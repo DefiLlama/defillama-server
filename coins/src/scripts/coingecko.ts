@@ -379,7 +379,7 @@ function shuffleArray(array: any[]) {
   return array;
 }
 
-export async function triggerFetchCoingeckoData(hourly: boolean) {
+async function triggerFetchCoingeckoData(hourly: boolean) {
   const step = 500;
   const coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
@@ -388,4 +388,14 @@ export async function triggerFetchCoingeckoData(hourly: boolean) {
   for (let i = 0; i < coins.length; i += step) {
     await fetchCoingeckoData(coins.slice(i, i + step), hourly, 0);
   }
+  process.exit(0);
+}
+
+if (process.argv.length < 3) {
+  console.error(`Missing argument, you need to provide the hourly bool.
+    Eg: ts-node coins/src/scripts/coingecko.ts true`);
+  process.exit(1);
+} else {
+  if (process.argv[2] == "true") triggerFetchCoingeckoData(true);
+  triggerFetchCoingeckoData(false);
 }

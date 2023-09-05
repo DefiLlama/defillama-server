@@ -10555,7 +10555,7 @@ const data3: Protocol[] = [
     twitter: "Equalizer0x",
     oracles: [],
     listedAt: 1687986921,
-    parentProtocol: "parent#equalizer0x",
+    parentProtocol: "parent#equalizer",
   },
   {
     id: "3174",

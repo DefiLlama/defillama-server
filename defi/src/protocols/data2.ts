@@ -21405,7 +21405,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Solidly"],
     oracles: ["TWAP"],
     listedAt: 1670154453,
-    parentProtocol: "parent#equalizer0x",
+    parentProtocol: "parent#equalizer",
   },
   {
     id: "2333",

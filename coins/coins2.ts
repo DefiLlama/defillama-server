@@ -309,6 +309,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
     )
       console.log(`${v.key} entry is invalid oops`);
   });
+  console.log(`${values.length} values to pg (should be <80)`);
   // console.log("creating a new pg instance");
   const sql = postgres(auth[0]);
   // console.log("created a new pg instance");

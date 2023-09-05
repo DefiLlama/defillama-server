@@ -39,7 +39,7 @@ export default {
         "id": "2548"
     },
     "morphex": {
-        parentId: "2662",
+        parentId: "Morphex",
         "protocolsData": {
             "derivatives": {
                 displayName: "Morphex - Derivatives",
@@ -298,5 +298,17 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "morphex-old": {
+        parentId: "Morphex",
+        "protocolsData": {
+            "derivatives": {
+                displayName: "Morphex - Derivatives",
+                "id": "3483",
+                "enabled": true
+            }
+        },
+        "enabled": true,
+        "id": "3483"
     }
 } as AdaptorsConfig

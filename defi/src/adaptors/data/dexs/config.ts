@@ -1404,7 +1404,7 @@ export default {
         "id": "2760"
     },
     "morphex": {
-        parentId: "2662",
+        parentId: "Morphex",
         "protocolsData": {
             "swap": {
                 "id": "2662",
@@ -1927,5 +1927,17 @@ export default {
     "aerodrome": {
         "enabled": true,
         "id": "3450"
+    },
+    "morphex-old": {
+        parentId: "Morphex",
+        "protocolsData": {
+            "swap": {
+                "id": "3483",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        },
+        "enabled": true,
+        "id": "3483"
     }
 } as AdaptorsConfig

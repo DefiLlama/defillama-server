@@ -17420,6 +17420,52 @@ const data3: Protocol[] = [
     parentProtocol: "parent#morphex",
     twitter: "MorphexFTM",
   },
+  {
+    id: "3484",
+    name: "PolyLend",
+    address: null,
+    symbol: "-",
+    url: "http://polylend.xyz",
+    description:
+      "A highly efficient decentralized lending protocol on Polygon zkEVM and powered by Pyth Network",
+    chain: "Polygon zkEVM",
+    logo: `${baseIconsUrl}/polylend.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Polygon zkEVM"],
+    module: "polylend/index.js",
+    oracles: [],
+    forkedFrom: ["AAVE V2"],
+    twitter: "polylendxyz",
+    github: ["polylendxyz"],
+    listedAt: 1693922462
+  },
+  {
+    id: "3485",
+    name: "Basetasm Finance",
+    address: null,
+    symbol: "-",
+    url: "https://basetasm.finance",
+    description:
+      "Fantasm Finance fork with slightly modified tokenomics.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/basetasm-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Base"],
+    module: "basetasm/index.js",
+    oracles: [],
+    forkedFrom: ["Fantasm"],
+    twitter: "BasetasmFinance",
+    github: ["basetasmfinance"],
+    listedAt: 1693922475
+  },
 ]
 
 export default data3

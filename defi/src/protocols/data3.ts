@@ -17488,6 +17488,28 @@ const data3: Protocol[] = [
     twitter: "aeriafinance",
     listedAt: 1693938331
   },
+  {
+    id: "3487",
+    name: "StealthPad",
+    address: "0xB18F98822C22492Bd6b77D19cae9367f3D60fcBf",
+    symbol: "STEALTH",
+    url: "https://stealthpad.xyz/",
+    description:
+      "StealthPad is the next generation decentralized launch pad for stealth coins. We are your one stop platform for stealth launch bot sniper and anti rug fund",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/stealthpad.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Ethereum"],
+    module: "stealthpad/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "stealthpadxyz",
+    listedAt: 1693952992
+  },
 ]
 
 export default data3

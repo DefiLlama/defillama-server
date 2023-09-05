@@ -10697,8 +10697,8 @@ const data3: Protocol[] = [
   {
     id: "3180",
     name: "zkSwap Finance",
-    address: null,
-    symbol: "-",
+    address: "era:0x31C2c031fDc9d33e974f327Ab0d9883Eae06cA4A",
+    symbol: "ZF",
     url: "https://zkswap.finance",
     description: "zkSwap Finance is the top DEX and the first Swap to Earn DeFi AMM on zkSync Era ecosystem, pioneering a unique incentive model that rewards both liquidity providers & traders",
     chain: "zkSync Era",

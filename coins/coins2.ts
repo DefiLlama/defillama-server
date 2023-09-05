@@ -124,7 +124,7 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
       console.error(`error parsing: ${v}`);
     }
   });
-  console.log(`${Object.keys(jsonValues).length} found in RD`);
+  // console.log(`${Object.keys(jsonValues).length} found in RD`);
 
   return jsonValues;
 }
@@ -163,7 +163,7 @@ async function queryPostgres(
     }
   }
   sql.end();
-  console.log(`${data.length} found in PG`);
+  // console.log(`${data.length} found in PG`);
 
   let dict: CoinDict = {};
   data.map((d: Coin) => {
@@ -258,7 +258,9 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
     if (!record || record.timestamp < c.timestamp) {
       writesToRedis.push(c);
     } else {
-      console.log(`${c.key} already fresher in redis`);
+      console.log(
+        `${c.key} already fresher in redis (${record.timestamp} stored vs: ${c.timestamp})`,
+      );
     }
   });
 
@@ -311,20 +313,24 @@ export async function writeCoins2(
   batchPostgresReads: boolean = true,
   margin?: number,
 ) {
-  console.log(`${values.length} values entering`);
-  const cleanValues = batchPostgresReads
-    ? cleanTimestamps(values, margin)
-    : values;
-  const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
-  values = cleanConfidences(values, storedRecords);
-  const writesToRedis = findRedisWrites(values, storedRecords);
-  const strings: { [key: string]: string } = {};
-  writesToRedis.map((v: Coin) => {
-    strings[v.key] = JSON.stringify(v);
-  });
+  const step = 100;
+  for (let i = 0; i < values.length; i += step) {
+    let theseValues = values.slice(i, i + step);
+    // console.log(`${values.length} values entering`);
+    const cleanValues = batchPostgresReads
+      ? cleanTimestamps(theseValues, margin)
+      : theseValues;
+    const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
+    theseValues = cleanConfidences(theseValues, storedRecords);
+    const writesToRedis = findRedisWrites(theseValues, storedRecords);
+    const strings: { [key: string]: string } = {};
+    writesToRedis.map((v: Coin) => {
+      strings[v.key] = JSON.stringify(v);
+    });
 
-  await writeToPostgres(values);
-  await writeToRedis(strings);
+    await writeToPostgres(theseValues);
+    await writeToRedis(strings);
+  }
 }
 export async function batchWrite2(
   values: Coin[],

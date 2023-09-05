@@ -9,7 +9,7 @@ export const platformMap = Object.entries(chainToCoingeckoId).reduce(
     o[i[1]] = i[0];
     return o;
   },
-  {}
+  {},
 ) as StringObject;
 
 export interface Coin {
@@ -22,13 +22,13 @@ export interface Coin {
 }
 
 function lowercase(address: string, chain: string) {
-  return chain === "solana" ? address : address.toLowerCase()
+  return chain === "solana" ? address : address.toLowerCase();
 }
 
 export async function iterateOverPlatforms(
   coin: Coin,
   iterator: (PK: string, tokenAddress: string, chain: string) => Promise<void>,
-  coinPlatformData: any
+  coinPlatformData: any,
 ) {
   const platforms = coin.platforms as StringObject;
   for (const platform in platforms) {
@@ -38,7 +38,8 @@ export async function iterateOverPlatforms(
         if (chain === undefined) {
           continue;
         }
-        const address = chain + ":" + lowercase(platforms[platform]!, chain).trim();
+        const address =
+          chain + ":" + lowercase(platforms[platform]!, chain).trim();
         const PK = `asset#${address}`;
         if (!coinPlatformData[PK]) {
           await iterator(PK, platforms[platform]!, chain);
@@ -50,12 +51,9 @@ export async function iterateOverPlatforms(
   }
 }
 
-
-export async function getCoinPlatformData(
-  coins: Coin[],
-) {
-  const coinPlatformData: any = {}
-  const pks = []
+export async function getCoinPlatformData(coins: Coin[]) {
+  const coinPlatformData: any = {};
+  const pks = [];
   try {
     for (const coin of coins) {
       const platforms = coin.platforms as StringObject;
@@ -65,20 +63,26 @@ export async function getCoinPlatformData(
           if (chain === undefined) {
             continue;
           }
-          const address = chain + ":" + lowercase(platforms[platform]!, chain).trim();
+          const address =
+            chain + ":" + lowercase(platforms[platform]!, chain).trim();
           const PK = `asset#${address}`;
-          pks.push(PK)
+          pks.push(PK);
         }
       }
     }
 
-    if (pks.length == 0) return 
-    const storedItems: any= await ddb.batchGet(pks.map((PK) => ({ PK, SK: 0, })))
-    storedItems.Responses["prod-coins-table"].forEach((item: any) => {
-      coinPlatformData[item.PK] = item;
-    })
+    const step = 100;
+    if (pks.length == 0) return;
+    for (let i = 0; i < pks.length; i += step) {
+      const storedItems: any = await ddb.batchGet(
+        pks.slice(i, i + step).map((PK) => ({ PK, SK: 0 })),
+      );
+      storedItems.Responses["prod-coins-table"].forEach((item: any) => {
+        coinPlatformData[item.PK] = item;
+      });
+    }
   } catch (e) {
     console.error(e);
   }
-  return coinPlatformData
+  return coinPlatformData;
 }

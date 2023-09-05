@@ -17398,6 +17398,27 @@ const data3: Protocol[] = [
     audit_links: ["https://gist.github.com/HollaDieWaldfee100/4a17ad22191753abba1cef6edd7efe60"],
     listedAt: 1693850602
   },
+  {
+    id: "3483",
+    name: "Morphex Old",
+    address: null,
+    symbol: "-",
+    url: "https://www.morphex.trade",
+    description:
+      "Decentralized perpetual exchange, powered by Fantom. (old version)",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/morphex-old.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fantom"],
+    module: "dummy.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "MorphexFTM",
+  },
 ]
 
 export default data3

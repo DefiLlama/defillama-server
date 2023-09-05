@@ -5309,13 +5309,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1614",
-    name: "0vix",
+    name: "Keom Protocol", //previous 0vix
     address: null,
     symbol: "-",
-    url: "https://www.0vix.com",
-    description: "0VIX is an open-source lending and borrowing protocol enhanced with veTokenomics",
+    url: "https://keom.io",
+    description: "Previous 0VIX. Keom is an innovative DeFi platform powered by cutting-edge AI technology and hard-coded compliance measures. It offers a suite of intelligent trading products, setting new standards for risk assessment, prioritizing regulatory compliance, and providing unique features like the Dynamic Interest Rate Curve and real-time liquidity risk measurement.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/0vix.png`,
+    logo: `${baseIconsUrl}/keom-protocol.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -5328,10 +5328,11 @@ const data2: Protocol[] = [
     },
     forkedFrom: ["Compound"],
     module: "0vix/index.js",
-    twitter: "0vixProtocol",
+    twitter: "KeomProtocol",
     audit_links: [
       "https://assets.website-files.com/622a09bc809cd190f58b7b15/627cd4450f5eb2df769b4ac1_PeckShield-Audit-Report-0VIX-v1.0.pdf",
-      "https://assets.website-files.com/622a09bc809cd190f58b7b15/627a5d6eea14146296b3261b_0VIX_Audit_Report_by_WatchPug.pdf"
+      "https://assets.website-files.com/622a09bc809cd190f58b7b15/627a5d6eea14146296b3261b_0VIX_Audit_Report_by_WatchPug.pdf",
+      "https://assets.website-files.com/622a09bc809cd190f58b7b15/631729e5bf942d7d0b47e5d2_omniscia-0vix-compressed.pdf"
     ],
     listedAt: 1649156430,
     github: ["0Vix"]

@@ -92,8 +92,9 @@ async function getAndStore(
 }
 
 const main = async () => {
-  console.log('DRY RUN: ', IS_DRY_RUN)
+  sdk.log('DRY RUN: ', IS_DRY_RUN)
   const protocolToRefill = process.argv[2]
+  sdk.log('Refilling for:', protocolToRefill)
   const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
   const batchSize = Number(process.argv[4] ?? 1); // how many days to fill in parallel
   if (process.env.HISTORICAL !== "true") {

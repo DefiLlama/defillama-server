@@ -19,32 +19,40 @@ const sequelize = new Sequelize({
   },
 });
 
-class GitCommitRaw extends Model { }
-GitCommitRaw.init(
-  {
-    sha: {
-      type: DataTypes.STRING,
-      primaryKey: true,
+const tables = {
+  GitCommitRaw: {
+    attributes: {
+      sha: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+      },
+      message: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      repo: DataTypes.STRING,
+      owner: DataTypes.STRING,
+      authors: DataTypes.JSONB,
+      is_merge_commit: DataTypes.BOOLEAN,
+      is_processed: DataTypes.BOOLEAN,
+      created_at: DataTypes.DATE,
     },
-    message: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    repo: DataTypes.STRING,
-    owner: DataTypes.STRING,
-    authors: DataTypes.JSONB,
-    is_merge_commit: DataTypes.BOOLEAN,
-    is_processed: DataTypes.BOOLEAN,
-    created_at: DataTypes.DATE,
-  },
-  {
-    sequelize,
-    tableName: 'git_commit_raw',
-    timestamps: true,
-    createdAt: 'createdat',
-    updatedAt: 'updatedat',
+    options: {
+      sequelize,
+      tableName: 'git_commit_raw',
+      timestamps: true,
+      createdAt: 'createdat',
+      updatedAt: 'updatedat',
+    }
   }
-);
+}
+
+class GitCommitRaw extends Model { }
+GitCommitRaw.init(tables.GitCommitRaw.attributes, tables.GitCommitRaw.options);
+
+
+class Deleted_GitCommitRaw extends Model { }
+Deleted_GitCommitRaw.init(tables.GitCommitRaw.attributes, { ...tables.GitCommitRaw.options, tableName: 'deleted_git_commit_raw', });
 
 /* 
 class GitCommitAuthor extends Model {}
@@ -298,6 +306,7 @@ module.exports = {
   GitRepo,
   GitCommitRaw,
   ProjectReport,
+  Deleted_GitCommitRaw,
   addRawCommit,
   addRawCommits,
   archiveExists,

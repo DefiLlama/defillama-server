@@ -3251,6 +3251,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "xdefi/index.js",
+    github: ['xdefilab'],
     twitter: "xdefilab",
     audit_links: [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=7b91209f526407299aee5f99688b62fb2c337a4316a6b305719a9e3cd5442348",
@@ -10785,6 +10786,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Telos"],
     module: "telos-swap/index.js",
+    github: ['Telos-Swaps'],
     twitter: null,
   },
   {
@@ -24272,6 +24274,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Kardia"],
     module: "sleepearn/index.js",
     twitter: "sleepearn",
+    github: ['sleepearn'],
     listedAt: 1641951111,
   },
   {

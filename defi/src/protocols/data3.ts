@@ -10915,8 +10915,8 @@ const data3: Protocol[] = [
   {
     id: "3190",
     name: "Kurrency",
-    address: "wemix:0x2ec6Fc5c495aF0C439E17268d595286d5f897dD0",
-    symbol: "WCD",
+    address: null,
+    symbol: "-",
     url: "https://kurrency.io",
     description:
       "Kurrency is a collateral-backed crypto dollar service where users can mint, deposit and swap WCD (WEMIX Crypto Dollar)",

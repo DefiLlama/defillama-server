@@ -45,7 +45,7 @@ export async function craftProtocolResponse({
   return craftProtocol({ protocolData, useNewChainNames, useHourlyData, skipAggregatedTvl });
 }
 
-export async function wrapResponseOrRedirect(response: any) {
+export async function wrapResponseOrRedirect(response: any, prefix:string = "") {
   if(response.statusCode !== undefined){
     return response
   }
@@ -55,7 +55,7 @@ export async function wrapResponseOrRedirect(response: any) {
   if (process.env.stage !== "prod" || dataLength < 5.5e6) {
     return cache20MinResponse(response);
   } else {
-    const filename = `protocol-${response.name}.json`;
+    const filename = `${prefix}protocol-${response.name}.json`;
 
     await storeDatasetR2(filename, jsonData, "application/json");
 

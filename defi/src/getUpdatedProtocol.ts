@@ -11,7 +11,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     skipAggregatedTvl: includeAggregatedTvl && includeAggregatedTvl === "true" ? false : true,
   });
 
-  return wrapResponseOrRedirect(response);
+  return wrapResponseOrRedirect(response, "updated/");
 };
 
 export default wrap(handler);

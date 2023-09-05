@@ -253,7 +253,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 
   if (writes2.length == 0) return;
   try {
-    await batchWrite2(writes2);
+    await batchWrite2(writes2, false);
   } catch (e) {
     console.error(e);
   }

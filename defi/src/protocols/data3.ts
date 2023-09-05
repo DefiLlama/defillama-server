@@ -17400,14 +17400,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3483",
-    name: "Morphex Old",
-    address: null,
-    symbol: "-",
+    name: "Morphex V1",
+    address: "fantom:0x66eed5ff1701e6ed8470dc391f05e27b1d0657eb",
+    symbol: "MPX",
     url: "https://www.morphex.trade",
     description:
       "Decentralized perpetual exchange, powered by Fantom. (old version)",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/morphex-old.jpg`,
+    logo: `${baseIconsUrl}/morphex-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -17417,6 +17417,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "parent#morphex",
     twitter: "MorphexFTM",
   },
 ]

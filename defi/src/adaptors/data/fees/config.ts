@@ -1259,5 +1259,9 @@ export default {
         parentId: "Morphex",
         "enabled": true,
         "id": "3483"
+    },
+    "pact": {
+        "enabled": true,
+        "id": "1468"
     }
 } as AdaptorsConfig

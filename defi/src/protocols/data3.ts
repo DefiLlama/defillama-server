@@ -17321,7 +17321,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum", "Mantle"],
+    chains: ["Mantle"],
     module: "myso-v2/index.js",
     oracles: [],
     forkedFrom: [],

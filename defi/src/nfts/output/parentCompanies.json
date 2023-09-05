@@ -183,6 +183,10 @@
       [
         "0x306b1ea3ecdf94ab739f1910bbda052ed4a9f949",
         "BEANZ Official"
+      ],
+      [
+        "0xb6a37b5d14d502c3ab0ae6f3a0e058bc9517786e",
+        "Elementals"
       ]
     ]
   },
@@ -198,28 +202,6 @@
       [
         "0x620b70123fb810f6c653da7644b5dd0b6312e4d8",
         "Space Doodles"
-      ]
-    ]
-  },
-  {
-    "name": "Parallel Alpha",
-    "url": "https://parallel.life",
-    "twitter": "ParallelTCG",
-    "nftCollections": [
-      [
-        "0x76be3b62873462d2142405439777e971754e8e77",
-        "Parallel Alpha"
-      ]
-    ]
-  },
-  {
-    "name": "Legends Reborn",
-    "url": "https://www.legendsreborn.game",
-    "twitter": "GoGalaGames",
-    "nftCollections": [
-      [
-        "0xc36cf0cfcb5d905b8b513860db0cfe63f6cf9f5c",
-        "Legends Reborn"
       ]
     ]
   },
@@ -251,28 +233,6 @@
     ]
   },
   {
-    "name": "Audioglyphs",
-    "url": "https://www.audioglyphs.io",
-    "twitter": "audioglyphs",
-    "nftCollections": [
-      [
-        "0xfb3765e0e7ac73e736566af913fa58c3cfd686b7",
-        "Audioglyphs"
-      ]
-    ]
-  },
-  {
-    "name": "Cool Cats NFT",
-    "url": "https://coolcatsnft.com",
-    "twitter": "coolcats",
-    "nftCollections": [
-      [
-        "0x1a92f7381b9f03921564a437210bb9396471050c",
-        "Cool Cats NFT"
-      ]
-    ]
-  },
-  {
     "name": "VeeFriends",
     "url": "https://veefriends.com",
     "twitter": "veefriends",
@@ -292,17 +252,6 @@
       [
         "0x6cb5c137ed297c74c8dc1f7c669bbd9a60b98c3c",
         "VeeFriends Mini Drops 2"
-      ]
-    ]
-  },
-  {
-    "name": "NFT Worlds",
-    "url": "https://www.nftworlds.com/",
-    "twitter": "TOPIAgg",
-    "nftCollections": [
-      [
-        "0xbd4455da5929d5639ee098abfaa3241e9ae111af",
-        "NFT Worlds"
       ]
     ]
   },
@@ -402,17 +351,6 @@
     ]
   },
   {
-    "name": "Prime Ape Planet PAP",
-    "url": "https://primeapeplanet.com",
-    "twitter": "PrimeApePlanet",
-    "nftCollections": [
-      [
-        "0x6632a9d63e142f17a668064d41a21193b49b41a0",
-        "Prime Ape Planet PAP"
-      ]
-    ]
-  },
-  {
     "name": "CyberKongz",
     "url": "https://www.cyberkongz.com/",
     "twitter": "CyberKongz",
@@ -470,50 +408,6 @@
     ]
   },
   {
-    "name": "0N1 Force",
-    "url": "https://www.0n1force.com",
-    "twitter": "0n1Force",
-    "nftCollections": [
-      [
-        "0x3bf2922f4520a8ba0c2efc3d2a1539678dad5e9d",
-        "0N1 Force"
-      ]
-    ]
-  },
-  {
-    "name": "Creature World",
-    "url": "https://www.creature.world",
-    "twitter": "creatureworld",
-    "nftCollections": [
-      [
-        "0xc92ceddfb8dd984a89fb494c376f9a48b999aafc",
-        "Creature World"
-      ]
-    ]
-  },
-  {
-    "name": "PhantaBear",
-    "url": "https://ezek.io",
-    "twitter": "EzekClub",
-    "nftCollections": [
-      [
-        "0x67d9417c9c3c250f61a83c7e8658dac487b56b09",
-        "PhantaBear"
-      ]
-    ]
-  },
-  {
-    "name": "HAPE PRIME",
-    "url": "https://hape.io",
-    "twitter": "HAPEsocial",
-    "nftCollections": [
-      [
-        "0x4db1f25d3d98600140dfc18deb7515be5bd293af",
-        "HAPE PRIME"
-      ]
-    ]
-  },
-  {
     "name": "Truth Labs",
     "url": "https://truthlabs.co",
     "twitter": "truth",
@@ -557,17 +451,6 @@
     ]
   },
   {
-    "name": "Karafuru",
-    "url": "https://karafuru.io/",
-    "twitter": "KarafuruNFT",
-    "nftCollections": [
-      [
-        "0xd2f668a8461d6761115daf8aeb3cdf5f40c532c6",
-        "Karafuru"
-      ]
-    ]
-  },
-  {
     "name": "Memeland",
     "url": "https://www.memeland.com/",
     "twitter": "Memeland",
@@ -602,6 +485,130 @@
       [
         "0x4d55109a17a6914130ace90325dc98cf66ebfa00",
         "Chimpers Genesis"
+      ]
+    ]
+  },
+  {
+    "name": "Pixel Vault",
+    "url": "https://pixelvault.com",
+    "twitter": "pixelvault_",
+    "nftCollections": [
+      [
+        "0x797a48c46be32aafcedcfd3d8992493d8a1f256b",
+        "Inhabitants: MintPass"
+      ],
+      [
+        "0x6dc6001535e15b9def7b0f6a20a2111dfa9454e2",
+        "Inhabitants: Generative Identities"
+      ],
+      [
+        "0x7deb7bce4d360ebe68278dee6054b882aa62d19c",
+        "Inhabitants: United Planets"
+      ],
+      [
+        "0x33cfae13a9486c29cd3b11391cc7eca53822e8c7",
+        "Inhabitants: MintPass"
+      ],
+      [
+        "0xd07597b64b4878add0965bb1727247ced90c6ce8",
+        "Inhabitants: DOTs"
+      ],
+      [
+        "0x5ab21ec0bfa0b29545230395e3adaca7d552c948",
+        "PUNKS Comic"
+      ],
+      [
+        "0x128675d4fddbc4a0d3f8aa777d8ee0fb8b427c2f",
+        "PUNKS Comic"
+      ],
+      [
+        "0xa173846434d21c1a0eb7740d47f629da89436af5",
+        "PUNKS Comic 2: BBA"
+      ],
+      [
+        "0xa379cec69303e3ec0fea64d9298f126658276f63",
+        "PUNKS Comic 2: HANZO"
+      ],
+      [
+        "0x15d164340c1548fa74fa1b98c24a3ea24fefb177",
+        "PUNKS Comic 2: BIZ"
+      ],
+      [
+        "0x37f02e4fa5f28a25baf64566083c717c387761d0",
+        "PUNKS Comic 2: KIKI"
+      ],
+      [
+        "0xce29001d6748c531b420163b88ff58ed326d7337",
+        "PUNKS Comic 2: GOLD-RILLA"
+      ],
+      [
+        "0xb716600ed99b4710152582a124c697a7fe78adbf",
+        "PUNKS Comic 3"
+      ]
+    ]
+  },
+  {
+    "name": "Lazy Lions",
+    "url": "https://www.lazylionsnft.com",
+    "twitter": "LazyLionsNFT",
+    "nftCollections": [
+      [
+        "0x8943c7bac1914c9a7aba750bf2b6b09fd21037e0",
+        "Lazy Lions"
+      ],
+      [
+        "0xd80eef7484c8fab1912a43e44a97774093007ab1",
+        "Lazy Lions Bungalows"
+      ]
+    ]
+  },
+  {
+    "name": "888 inner circle",
+    "url": "https://y.at/%E2%9C%A8",
+    "twitter": "crypto888crypto",
+    "nftCollections": [
+      [
+        "0x36d30b3b85255473d27dd0f7fd8f35e36a9d6f06",
+        "888 inner circle"
+      ],
+      [
+        "0x715565baf69afcbbe88f56d46f1c9fe2df828705",
+        "888 Inner Circle The Drops"
+      ],
+      [
+        "0x2378e88624c7dfdf73a6b02ded8733449916fdba",
+        "888 Inner Circle - Blue Realm"
+      ],
+      [
+        "0x87b5d8fe6cf8b37678b6cef7cca23a4852883c48",
+        "888 Inner Circle The Drops"
+      ],
+      [
+        "0xff063937523c4514179a4d9a6769694baab357a8",
+        "888 Inner Circle - Pink Realm"
+      ]
+    ]
+  },
+  {
+    "name": "Quirkies",
+    "url": "https://quirkies.io/quirklings",
+    "twitter": "quirkiesnft",
+    "nftCollections": [
+      [
+        "0x3903d4ffaaa700b62578a66e7a67ba4cb67787f9",
+        "Quirkies Originals - OLD"
+      ],
+      [
+        "0xda60730e1feaa7d8321f62ffb069edd869e57d02",
+        "Quirklings"
+      ],
+      [
+        "0xd4b7d9bb20fa20ddada9ecef8a7355ca983cccb1",
+        "Quirkies Originals"
+      ],
+      [
+        "0x8f1b132e9fd2b9a2b210baa186bf1ae650adf7ac",
+        "Quirklings New"
       ]
     ]
   }

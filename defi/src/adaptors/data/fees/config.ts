@@ -758,6 +758,7 @@ export default {
         "id": "2760"
     },
     "morphex": {
+        parentId: "Morphex",
         "enabled": true,
         "id": "2662"
     },
@@ -1240,5 +1241,10 @@ export default {
         parentId: "Lybra Finance",
         "enabled": true,
         "id": "3468"
+    },
+    "morphex-old": {
+        parentId: "Morphex",
+        "enabled": true,
+        "id": "3483"
     }
 } as AdaptorsConfig

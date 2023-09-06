@@ -17578,6 +17578,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     twitter: "AttentionToken",
   },
+  {
+    id: "3491",
+    name: "Wise Lending",
+    address: "0x66a0f676479cee1d7373f3dc2e2952778bff5bd6",
+    symbol: "WISE",
+    url: "https://wiselending.com/",
+    description:
+      "Wise Lending is both a crypto lending platform and a yield-farm aggregator. This combination allows capital from lenders to be leveraged towards other yield-farming dApps",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/wise-lending.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "wise-token11",
+    cmcId: "8167",
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "wise-lending/index.js",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    twitter: "Wise_Token",
+    listedAt: 1694020053
+  },
 ]
 
 export default data3

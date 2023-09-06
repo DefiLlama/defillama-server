@@ -12242,13 +12242,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3250",
-    name: "LineaBank",
+    name: "LayerBank", // previous LineaBank
     address: "linea:0xB97F21D1f2508fF5c73E7B5AF02847640B1ff75d",
     symbol: "LAB",
-    url: "https://lineabank.finance",
-    description: "A money market on LineaBuild.",
+    url: "https://layerbank.finance",
+    description: "(previous LineaBank). A universal permissionless on-chain bank designed to thrive across the omni-chain ecosystem",
     chain: "Linea",
-    logo: `${baseIconsUrl}/lineabank.jpg`,
+    logo: `${baseIconsUrl}/layerbank.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -12256,12 +12256,12 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Linea"],
     module: "lineabank/index.js",
-    twitter: "LineaBank",
+    twitter: "LayerBankFi",
     forkedFrom: ["Compound"],
     oracles: [],
     listedAt: 1689773129,
     audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-LineaBank-v1.0.pdf"],
-    github: ["lineabank"]
+    github: ["layerbank"]
   },
   {
     id: "3251",

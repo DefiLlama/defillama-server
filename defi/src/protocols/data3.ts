@@ -17533,6 +17533,7 @@ const data3: Protocol[] = [
   audit_links: ["https://fleek.ipfs.io/ipfs/bafybeiawdbrvhwwpvmuc6agcxsxpjrigv3bzjtfmwei2zftrjsf3gv4zlm"],
   listedAt: 1693993044
   },
+
 ]
 
 export default data3

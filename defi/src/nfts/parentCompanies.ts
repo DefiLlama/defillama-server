@@ -80,6 +80,7 @@ export const nftParentCompanies: NFTCompany[] = [
         nftCollections: [
             ["0xed5af388653567af2f388e6224dc7c4b3241c544", "Azuki"],
             ["0x306b1ea3ecdf94ab739f1910bbda052ed4a9f949", "BEANZ Official"],
+            ["0xb6a37b5d14d502c3ab0ae6f3a0e058bc9517786e", "Elementals"]
         ]
     },
     {

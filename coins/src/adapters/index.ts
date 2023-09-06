@@ -127,5 +127,6 @@ export default {
   wombat: require("./markets/wombat"),
   backed: require("./rwa/backed"),
   vela: require("./yield/vela"),
-  zkSwap: require("./markets/uniswap")
+  zkSwap: require("./markets/uniswap"),
+  chai: require("./yield/chai"),
 };

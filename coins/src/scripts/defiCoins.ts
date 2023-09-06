@@ -62,6 +62,11 @@ async function storeDefiCoins() {
       }
     }),
   );
+  await sendMessage(
+    `coolifys just finished defi coins`,
+    process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    true,
+  );
   process.exit();
 }
 storeDefiCoins();

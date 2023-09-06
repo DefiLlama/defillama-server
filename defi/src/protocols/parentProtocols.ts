@@ -2630,6 +2630,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MorphexFTM",
   },
+  {
+    id: "parent#empmoney",
+    name: "EmpMoney",
+    url: "https://emp.money",
+    description: "Where yield farming , staking pools, AMM & a seamless.",
+    logo: `${baseIconsUrl}/empmoney.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "EmpMoneyBSC",
+  },
 ];
 
 export default parentProtocols;

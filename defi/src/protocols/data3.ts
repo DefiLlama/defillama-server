@@ -17488,28 +17488,52 @@ const data3: Protocol[] = [
     twitter: "aeriafinance",
     listedAt: 1693938331
   },
-  {
-    id: "3487",
-    name: "StealthPad",
-    address: "0xB18F98822C22492Bd6b77D19cae9367f3D60fcBf",
-    symbol: "STEALTH",
-    url: "https://stealthpad.xyz/",
-    description:
-      "StealthPad is the next generation decentralized launch pad for stealth coins. We are your one stop platform for stealth launch bot sniper and anti rug fund",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/stealthpad.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Launchpad",
-    chains: ["Ethereum"],
-    module: "stealthpad/index.js",
-    oracles: [],
-    forkedFrom: [],
-    twitter: "stealthpadxyz",
-    listedAt: 1693952992
+  { id: "3487",
+  name: "StealthPad",
+  address: "0xB18F98822C22492Bd6b77D19cae9367f3D60fcBf",
+  symbol: "STEALTH",
+  url: "https://stealthpad.xyz/",
+  description:
+    "StealthPad is the next generation decentralized launch pad for stealth coins. We are your one stop platform for stealth launch bot sniper and anti rug fund",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/stealthpad.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Launchpad",
+  chains: ["Ethereum"],
+  module: "stealthpad/index.js",
+  oracles: [],
+  forkedFrom: [],
+  twitter: "stealthpadxyz",
+  listedAt: 1693952992
+},
+{
+   id: "3488",
+  name: "Sparkswap",
+  address: "pulse:0x6386704cD6f7A584EA9D23cccA66aF7EBA5a727e",
+  symbol: "SPARK",
+  url: "https://sparkswap.xyz",
+  description:
+  "Fully Decentralized Layered Yield Farm, AMM, & Bridge on IPFS & Pulsechain",
+  chain: "Pulse",
+  logo: `${baseIconsUrl}/sparkswap.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Pulse"],
+  module: "sparkswap/index.js",
+  oracles: ["PulseX"],
+  forkedFrom: [],
+  twitter: "sparkswap_",
+  parentProtocol: "parent#empmoney",
+  audit_links: ["https://fleek.ipfs.io/ipfs/bafybeiawdbrvhwwpvmuc6agcxsxpjrigv3bzjtfmwei2zftrjsf3gv4zlm"],
+  listedAt: 1693993044
   },
+
 ]
 
 export default data3

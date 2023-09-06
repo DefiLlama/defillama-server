@@ -17497,7 +17497,7 @@ const data3: Protocol[] = [
     "StealthPad is the next generation decentralized launch pad for stealth coins. We are your one stop platform for stealth launch bot sniper and anti rug fund",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/stealthpad.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -17507,6 +17507,7 @@ const data3: Protocol[] = [
   oracles: [],
   forkedFrom: [],
   twitter: "stealthpadxyz",
+  audit_links: ["https://github.com/cyberscope-io/audits/blob/main/1-tba/audit.pdf"],
   listedAt: 1693952992
 },
 {
@@ -17533,7 +17534,28 @@ const data3: Protocol[] = [
   audit_links: ["https://fleek.ipfs.io/ipfs/bafybeiawdbrvhwwpvmuc6agcxsxpjrigv3bzjtfmwei2zftrjsf3gv4zlm"],
   listedAt: 1693993044
   },
-
+  {
+    id: "3489",
+    name: "Haedal Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://haedal.xyz",
+    description:
+      "Haedal is a liquid staking protocol built on Sui that allows anyone to stake their SUI tokens to contribute to governance and decentralisation of the Sui blockchain. In the meantime, users will get haSUI in return so that they can continue to participate in DeFi activities to earn additional yields.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/haedal-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Sui"],
+    module: "haedal/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "HaedalProtocol",
+    listedAt: 1693995017
+  },
 ]
 
 export default data3

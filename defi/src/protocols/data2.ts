@@ -12582,6 +12582,7 @@ const data2: Protocol[] = [
     module: "emp-money/index.js",
     twitter: "EmpMoneyBSC",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/emp-money/EMP-Money_final-audit-report.pdf"],
+    parentProtocol: "parent#empmoney",
     listedAt: 1659036327
   },
   {

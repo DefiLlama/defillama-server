@@ -17556,6 +17556,27 @@ const data3: Protocol[] = [
     twitter: "HaedalProtocol",
     listedAt: 1693995017
   },
+  {
+    id: "3490",
+    name: "Basic Attention",
+    address: "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+    symbol: "BAT",
+    url: "https://basicattentiontoken.org",
+    description:
+      "BAT the crypto asset for the new Internet economy. Blockchain-based digital advertising.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/basic-attention.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "basic-attention-token",
+    cmcId: "1697",
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "AttentionToken",
+  },
 ]
 
 export default data3

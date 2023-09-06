@@ -10,6 +10,7 @@ import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { Write } from "../adapters/utils/dbInterfaces";
 import { filterWritesWithLowConfidence } from "../adapters/utils/database";
 import { batchWrite2 } from "../../coins2";
+import { sendMessage } from "../../../defi/src/utils/discord";
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
@@ -388,6 +389,11 @@ async function triggerFetchCoingeckoData(hourly: boolean) {
   for (let i = 0; i < coins.length; i += step) {
     await fetchCoingeckoData(coins.slice(i, i + step), hourly, 0);
   }
+  await sendMessage(
+    `coolifys just finished coingecko`,
+    process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    true,
+  );
   process.exit(0);
 }
 

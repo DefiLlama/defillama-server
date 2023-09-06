@@ -27,20 +27,17 @@ export async function retryCoingeckoRequest(
   for (let i = 0; i < retries; i++) {
     await getCoingeckoLock();
     try {
-      return (await fetch(
-        `https://api.coingecko.com/api/v3/${query}`,
+      const res = (await fetch(
+        `https://pro-api.coingecko.com/api/v3/${query}&x_cg_pro_api_key=${process.env.CG_KEY}`,
       ).then((r) => r.json())) as CoingeckoResponse;
-    } catch {
-      try {
-        return (await fetch(
-          `https://pro-api.coingecko.com/api/v3/${query}&x_cg_pro_api_key=${process.env.CG_KEY}`,
-        ).then((r) => r.json())) as CoingeckoResponse;
-      } catch (e) {
-        if ((i + 1) % 3 === 0 && retries > 3) {
-          await sleep(10e3); // 10s
-        }
-        continue;
+      if (Object.keys(res).length == 1 && Object.keys(res)[0] == "status")
+        throw new Error(`cg call failed`);
+      return res;
+    } catch (e) {
+      if ((i + 1) % 3 === 0 && retries > 3) {
+        await sleep(10e3); // 10s
       }
+      continue;
     }
   }
   return {};

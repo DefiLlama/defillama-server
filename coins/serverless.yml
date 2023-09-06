@@ -194,6 +194,12 @@ functions:
       timeout: 900
       environment:
         CG_KEY: ${env:CG_KEY}
+  triggerFetchCoingeckoData:
+    handler: src/triggerFetchCoingeckoData.triggerNewFetches
+    events:
+      - schedule: rate(5 minutes)
+    environment:
+      CG_KEY: ${env:CG_KEY}
   triggerHourlyFetchCoingeckoData:
     handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
     events:

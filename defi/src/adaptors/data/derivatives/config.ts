@@ -320,5 +320,15 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "zeta": {
+        "enabled": true,
+        "id": "1804",
+        "protocolsData": {
+            "derivatives": {
+                "id": "1804",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

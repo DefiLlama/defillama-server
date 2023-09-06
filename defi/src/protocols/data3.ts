@@ -17488,6 +17488,30 @@ const data3: Protocol[] = [
     twitter: "aeriafinance",
     listedAt: 1693938331
   },
+  {
+    id: "3487",
+    name: "Sparkswap",
+    address: "pulse:0x6386704cD6f7A584EA9D23cccA66aF7EBA5a727e",
+    symbol: "SPARK",
+    url: "https://sparkswap.xyz",
+    description:
+      "Fully Decentralized Layered Yield Farm, AMM, & Bridge on IPFS & Pulsechain",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/sparkswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Pulse"],
+    module: "sparkswap/index.js",
+    oracles: ["PulseX"],
+    forkedFrom: [],
+    twitter: "sparkswap_",
+    parentProtocol: "parent#empmoney",
+    audit_links: ["https://fleek.ipfs.io/ipfs/bafybeiawdbrvhwwpvmuc6agcxsxpjrigv3bzjtfmwei2zftrjsf3gv4zlm"],
+    listedAt: 1693993044
+  },
 ]
 
 export default data3

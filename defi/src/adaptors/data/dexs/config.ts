@@ -1945,5 +1945,9 @@ export default {
         },
         "enabled": true,
         "id": "3483"
+    },
+    "spicyswap": {
+        "enabled": true,
+        "id": "1029"
     }
 } as AdaptorsConfig

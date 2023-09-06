@@ -258,8 +258,10 @@ const handler = async (_event: any) => {
 
   const dataFalseTrue = getHistoricalTvlForAllProtocols(false, true);
   const dataFalseFalse = getHistoricalTvlForAllProtocols(false, false);
-  await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-true.json", JSON.stringify(await dataFalseTrue))
-  await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-false.json", JSON.stringify(await dataFalseFalse))
+  await Promise.all([
+    storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-true.json", JSON.stringify(await dataFalseTrue)),
+    storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-false.json", JSON.stringify(await dataFalseFalse))
+  ])
 };
 
 export default wrapScheduledLambda(handler);

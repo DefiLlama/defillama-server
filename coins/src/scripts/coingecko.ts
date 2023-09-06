@@ -386,9 +386,11 @@ async function triggerFetchCoingeckoData(hourly: boolean) {
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
   shuffleArray(coins);
+  let promises: Promise<void>[] = [];
   for (let i = 0; i < coins.length; i += step) {
-    await fetchCoingeckoData(coins.slice(i, i + step), hourly, 0);
+    promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
   }
+  await Promise.all(promises);
   await sendMessage(
     `coolifys just finished coingecko`,
     process.env.STALE_COINS_ADAPTERS_WEBHOOK!,

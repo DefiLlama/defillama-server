@@ -1263,5 +1263,9 @@ export default {
     "pact": {
         "enabled": true,
         "id": "1468"
+    },
+    "friend-room": {
+        "id": "3493",
+        "enabled": true
     }
 } as AdaptorsConfig

@@ -15255,7 +15255,7 @@ const data3: Protocol[] = [
     chains: ["Base"],
     module: "synthswap-v3/index.js",
     twitter: "synthswapio",
-    forkedFrom: ["Uniswap V3"],
+    forkedFrom: ["Algebra DEX"],
     oracles: [],
     parentProtocol: "parent#synthswap",
     listedAt: 1692025853

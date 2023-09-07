@@ -246,7 +246,10 @@ function cleanTimestamps(values: Coin[], margin: number = 15 * 60): Coin[] {
   const maxTimestamp = Math.max(...timestamps);
   const minTimestamp = Math.min(...timestamps);
 
-  if (maxTimestamp - minTimestamp > margin)
+  if (
+    maxTimestamp - minTimestamp > margin &&
+    process.env.DEFILLAMA_SDK_MUTED != "true"
+  )
     throw new Error("mixed timestamps are unsupported");
 
   return values.map((c: Coin) => ({ ...c, timestamp: maxTimestamp }));

@@ -17687,7 +17687,7 @@ const data3: Protocol[] = [
     module: "BroSwap/index.js",
     oracles: [],
     forkedFrom: ["Uniswap V2"],
-    twitter: "broswaptoken",
+    twitter: "broswaporg",
     github: ["broswap"],
     audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_ChewySwap_DEX.pdf"],
     listedAt: 1694094978

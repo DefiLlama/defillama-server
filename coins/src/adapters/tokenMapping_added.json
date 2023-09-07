@@ -2589,6 +2589,11 @@
       "decimals": "18",
       "symbol": "DSU",
       "to": "coingecko#digital-standard-unit"
+    },
+    "0xfEb4DfC8C4Cf7Ed305bb08065D08eC6ee6728429": {
+      "decimals": "18",
+      "symbol": "PAXG",
+      "to": "coingecko#pax-gold"
     }
   },
   "telos": {

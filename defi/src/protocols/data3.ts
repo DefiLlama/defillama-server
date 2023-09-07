@@ -17676,14 +17676,14 @@ const data3: Protocol[] = [
     url: "https://broswap.org",
     description:
       "BroSwap is a standout Swap DEX on the CoreDAO Chain network with various advantages that appeal to users.",
-    chain: "Core",
+    chain: "CORE",
     logo: `${baseIconsUrl}/broswap.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Core"],
+    chains: ["CORE"],
     module: "BroSwap/index.js",
     oracles: [],
     forkedFrom: ["Uniswap V2"],
@@ -17691,6 +17691,29 @@ const data3: Protocol[] = [
     github: ["broswap"],
     audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_ChewySwap_DEX.pdf"],
     listedAt: 1694094978
+  },
+  {
+    id: "3496",
+    name: "Esper Finance",
+    address: null,
+    symbol: "-",
+    url: "https://esper.finance",
+    description:
+      "Esper Finance is an ecosystem-focused, community-driven DEX built upon the robust, highly scalable Mantle Network. We aim to enable both builders and users on Mantle ecosystem to leverage our protocol infrastructure for a deep, adaptable, and sustainable liquidity.",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/esper-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    module: "esper-finance/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "EsperFinance",
+    audit_links: ["https://github.com/solidproof/projects/tree/main/2023/Esper%20Finance"],
+    listedAt: 1694096119
   },
 ]
 

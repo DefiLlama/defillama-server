@@ -299,7 +299,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
 
   values.map((v: Coin) => {
-    if (!v.price || !v.timestamp || !v.key || !v.confidence)
+    if (v.price == null || !v.timestamp || !v.key || !v.confidence)
       console.log(`${v.key} entry is invalid oops`);
   });
   console.log(`${values.length} values to pg (should be <80)`);

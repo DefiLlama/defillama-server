@@ -2465,6 +2465,11 @@
     }
   },
   "arbitrum": {
+    "0x1509706a6c66CA549ff0cB464de88231DDBe213B": {
+      "decimals": "18",
+      "symbol": "AURA",
+      "to": "coingecko#aura-finance"
+    },
     "0x894134a25a5faC1c2C26F1d8fBf05111a3CB9487": {
       "decimals": "18",
       "symbol": "GRAI",
@@ -2587,6 +2592,11 @@
     }
   },
   "telos": {
+    "0xdc2393dc10734bf153153038943a5deb42b209cd": {
+      "decimals": "18",
+      "symbol": "WTLOS",
+      "to": "coingecko#telos"
+    },
     "0x017043607270ecbb440e20b0f0bc5e760818b3d8": {
       "name": "Synthetic Binance-Peg BUSD Token from BSC",
       "decimals": "18",
@@ -4226,6 +4236,30 @@
     }
   },
   "sui": {
+    "0x1d58e26e85fbf9ee8596872686da75544342487f95b1773be3c9a49ab1061b19::suia_token::SUIA_TOKEN": {
+      "name": "SUIA",
+      "decimals": "9",
+      "symbol": "SUIA",
+      "to": "coingecko#suia"
+    },
+    "0xcf72ec52c0f8ddead746252481fb44ff6e8485a39b803825bde6b00d77cdb0bb::coin::COIN": {
+      "name": "USDC",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x06864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS": {
+      "name": "Cetus",
+      "decimals": "9",
+      "symbol": "CETUS",
+      "to": "coingecko#cetus"
+    },
+    "0xe4239cd951f6c53d9c41e25270d80d31f925ad1655e5ba5b543843d4a66975ee::SUIP::SUIP": {
+      "name": "SuiPad",
+      "decimals": "9",
+      "symbol": "SUIP",
+      "to": "coingecko#suipad"
+    },
     "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdt_coin::CELER_USDT_COIN": {
       "decimals": "6",
       "symbol": "CELER_USDT_COIN",
@@ -5043,6 +5077,11 @@
     }
   },
   "tezos": {
+    "KT1PnUZCp3u2KzWr93pn4DD7HAJnm3rWVrgn": {
+      "decimals": "6",
+      "symbol": "WTZ",
+      "to": "coingecko#tezos"
+    },
     "tezos": {
       "name": "tezos",
       "decimals": "0",
@@ -8332,6 +8371,89 @@
       "decimals": "6",
       "symbol": "WHALE",
       "to": "coingecko#white-whale"
+    }
+  },
+  "shibarium": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "BONE",
+      "to": "coingecko#bone-shibaswap"
+    },
+    "0x8ed7d143ef452316ab1123d28ab302dc3b80d3ce": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xc76f4c819d820369fb2d7c1531ab3bb18e6fe8d8": {
+      "decimals": "18",
+      "symbol": "BONE",
+      "to": "coingecko#bone-shibaswap"
+    },
+    "0x213c25900f365f1be338df478cd82bef7fd43f85": {
+      "decimals": "18",
+      "symbol": "BONE",
+      "to": "coingecko#bone-shibaswap"
+    },
+    "0x6c19a35875217b134e963ca9e61b005b855cad21": {
+      "decimals": "18",
+      "symbol": "BONE",
+      "to": "coingecko#bone-shibaswap"
+    },
+    "0x1b2f364032f12bd8a4c89e672e6272de03ae2680": {
+      "decimals": "18",
+      "symbol": "BONE",
+      "to": "coingecko#bone-shibaswap"
+    },
+    "0xa2899c776baaf9925d432f83c950d5054a6cf59c": {
+      "decimals": "18",
+      "symbol": "BONE",
+      "to": "coingecko#bone-shibaswap"
+    }
+  },
+  "secret": {
+    "secret14mzwd0ps5q277l20ly2q3aetqe3ev4m4260gf4": {
+      "decimals": "6",
+      "symbol": "ATOM",
+      "to": "coingecko#cosmos"
+    },
+    "uscrt": {
+      "decimals": "6",
+      "symbol": "SCRT",
+      "to": "coingecko#secret"
+    },
+    "secret1k0jntykt7e4g3y88ltc60czgjuqdy4c9e8fzek": {
+      "decimals": "6",
+      "symbol": "SCRT",
+      "to": "coingecko#secret"
+    },
+    "secret1vnjck36ld45apf8u4fedxd5zy7f5l92y3w5qwq": {
+      "decimals": "18",
+      "symbol": "DAI",
+      "to": "coingecko#dai"
+    },
+    "secret1h6z05y90gwm4sqxzhz4pkyp36cna9xtp7q0urv": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "secret18wpjn83dayu4meu6wnn29khfkwdxs7kyrz9c8f": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    }
+  },
+  "alv": {
+    "0xcb3e9919c56eff1004e54175a01e39163a352129": {
+      "decimals": "18",
+      "symbol": "ALV",
+      "to": "coingecko#alvey-chain"
+    }
+  },
+  "dsc": {
+    "0x1c5d8992da64c8d56ea413dd6f723061c29a7c0b": {
+      "decimals": "18",
+      "symbol": "DSC",
+      "to": "coingecko#decimal"
     }
   }
 }

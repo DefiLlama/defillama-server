@@ -8,6 +8,7 @@ import { sendMessage } from "../../../defi/src/utils/discord";
 import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
 import setEnvSecrets from "../../../defi/src/utils/shared/setEnvSecrets";
 import adapters from "../adapters/index";
+import { PromisePool } from "@supercharge/promise-pool";
 
 function shuffleArray(array: number[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -20,6 +21,7 @@ const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
 
 async function storeDefiCoins() {
+  console.log("entering storeDefiCoins");
   await setEnvSecrets();
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
@@ -28,8 +30,9 @@ async function storeDefiCoins() {
   shuffleArray(protocolIndexes);
   const a = Object.entries(adapters);
   const timestamp = 0;
-  await Promise.all(
-    protocolIndexes.map(async (i: any) => {
+  await PromisePool.withConcurrency(5)
+    .for(protocolIndexes)
+    .process(async (i) => {
       try {
         const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
@@ -60,8 +63,7 @@ async function storeDefiCoins() {
             true,
           );
       }
-    }),
-  );
+    });
   await sendMessage(
     `coolifys just finished defi coins`,
     process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
@@ -70,4 +72,3 @@ async function storeDefiCoins() {
   process.exit();
 }
 storeDefiCoins();
-// ts-node src/scripts/defiCoins.ts

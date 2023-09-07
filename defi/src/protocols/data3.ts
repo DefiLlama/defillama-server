@@ -17600,6 +17600,51 @@ const data3: Protocol[] = [
     twitter: "Wise_Token",
     listedAt: 1694020053
   },
+  {
+    id: "3492",
+    name: "Hodlify",
+    address: null,
+    symbol: "-",
+    url: "https://alpha.hodlify.io",
+    description:
+      "Dynamic Chains Earning Infrastructure for HODLers",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/hodlify.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Arbitrum", "Optimism"],
+    module: "hodlify/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "hodlifyapp",
+    listedAt: 1694092163
+  },
+  {
+    id: "3493",
+    name: "FriendRoom",
+    address: "0xbde4c4a9057595FA16D38e0BD7871EF119045a84",
+    symbol: "FRIEND",
+    url: "https://friendroom.org",
+    description:
+      "Buy, create, explore & Speculate on rooms with friends.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/friendroom.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "friendroom/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "friendroomorg",
+    github: ["FriendRoomRepo"],
+    listedAt: 1694092169
+  },
 ]
 
 export default data3

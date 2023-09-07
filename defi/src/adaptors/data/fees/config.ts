@@ -1263,9 +1263,5 @@ export default {
     "pact": {
         "enabled": true,
         "id": "1468"
-    },
-    "ktx-finance": {
-        "enabled": true,
-        "id": "3025"
     }
 } as AdaptorsConfig

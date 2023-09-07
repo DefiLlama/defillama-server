@@ -5935,18 +5935,18 @@ const data: Protocol[] = [
   },
   {
     id: "381",
-    name: "Premia",
+    name: "Premia V2",
     address: "0x6399c842dd2be3de30bf99bc7d1bbf6fa3650e70",
     symbol: "PREMIA",
     url: "https://premia.finance/",
     description:
       "Premia's automated options market enables best-in-class pricing based on realtime supply and demand, bringing fully-featured peer-to-pool trading and capital efficiency to DeFi options.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/premia.jpg`,
+    logo: `${baseIconsUrl}/premia-v2.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "premia",
-    cmcId: "8476",
+    gecko_id: null,
+    cmcId: null,
     category: "Options",
     chains: ["Ethereum", "Binance"],
     module: "premia/index.js",
@@ -5956,8 +5956,7 @@ const data: Protocol[] = [
       "https://hacken.io/audits/#solidstate",
       "https://hacken.io/audits/#premia_finance",
     ],
-    governanceID: ["snapshot:premia.eth"],
-    github: ["Premian-Labs"]
+    parentProtocol: "parent#premia",
   },
   {
     id: "382",

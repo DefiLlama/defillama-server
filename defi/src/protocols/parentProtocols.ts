@@ -2641,6 +2641,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "EmpMoneyBSC",
   },
+  {
+    id: "parent#premia",
+    name: "Premia",
+    url: "https://premia.finance",
+    description: "Premia's automated options market enables best-in-class pricing based on realtime supply and demand, bringing fully-featured peer-to-pool trading and capital efficiency to DeFi options.",
+    logo: `${baseIconsUrl}/premia.jpg`,
+    gecko_id: "premia",
+    cmcId: "8476",
+    chains: [],
+    twitter: "PremiaFinance",
+    governanceID: ["snapshot:premia.eth"],
+    github: ["Premian-Labs"]
+  },
 ];
 
 export default parentProtocols;

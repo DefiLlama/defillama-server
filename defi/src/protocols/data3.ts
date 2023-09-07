@@ -17715,6 +17715,29 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/solidproof/projects/tree/main/2023/Esper%20Finance"],
     listedAt: 1694096119
   },
+  {
+    id: "3496",
+    name: "Premia V3",
+    address: "0x6399c842dd2be3de30bf99bc7d1bbf6fa3650e70",
+    symbol: "PREMIA",
+    url: "https://premia.finance",
+    description:
+      "Premia's automated options market enables best-in-class pricing based on realtime supply and demand, bringing fully-featured peer-to-pool trading and capital efficiency to DeFi options.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/premia-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum"],
+    module: "premia-v3/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "PremiaFinance",
+    parentProtocol: "parent#premia",
+    listedAt: 1694096119
+  },
 ]
 
 export default data3

@@ -17716,7 +17716,7 @@ const data3: Protocol[] = [
     listedAt: 1694096119
   },
   {
-    id: "3496",
+    id: "3497",
     name: "Premia V3",
     address: "0x6399c842dd2be3de30bf99bc7d1bbf6fa3650e70",
     symbol: "PREMIA",

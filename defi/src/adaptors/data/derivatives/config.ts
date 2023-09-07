@@ -330,16 +330,5 @@ export default {
                 "enabled": true,
             }
         }
-    },
-    "ktx-finance": {
-        "enabled": true,
-        "id": "3025",
-        "protocolsData": {
-            "derivatives": {
-                "id": "3025",
-                "enabled": true,
-                "category": "Dexes"
-            }
-        }
     }
 } as AdaptorsConfig

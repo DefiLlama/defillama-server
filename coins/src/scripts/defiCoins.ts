@@ -18,7 +18,7 @@ function shuffleArray(array: number[]) {
 }
 
 const step = 2000;
-const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
+const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 1740000; //29mins
 
 async function storeDefiCoins() {
   console.log("entering storeDefiCoins");

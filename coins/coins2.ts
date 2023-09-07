@@ -246,7 +246,10 @@ function cleanTimestamps(values: Coin[], margin: number = 15 * 60): Coin[] {
   const maxTimestamp = Math.max(...timestamps);
   const minTimestamp = Math.min(...timestamps);
 
-  if (maxTimestamp - minTimestamp > margin)
+  if (
+    maxTimestamp - minTimestamp > margin &&
+    process.env.DEFILLAMA_SDK_MUTED != "true"
+  )
     throw new Error("mixed timestamps are unsupported");
 
   return values.map((c: Coin) => ({ ...c, timestamp: maxTimestamp }));
@@ -302,7 +305,6 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
     if (v.price == null || !v.timestamp || !v.key || !v.confidence)
       console.log(`${v.key} entry is invalid oops`);
   });
-  console.log(`${values.length} values to pg (should be <80)`);
   // console.log("creating a new pg instance");
   const sql = postgres(auth[0]);
   // console.log("created a new pg instance");

@@ -1949,5 +1949,16 @@ export default {
     "spicyswap": {
         "enabled": true,
         "id": "1029"
+    },
+    "ktx-finance": {
+        "enabled": true,
+        "id": "3025",
+        "protocolsData": {
+            "swap": {
+                "id": "3025",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        }
     }
 } as AdaptorsConfig

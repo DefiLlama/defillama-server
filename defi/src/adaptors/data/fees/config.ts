@@ -493,7 +493,18 @@ export default {
     },
     "premia": {
         "enabled": true,
-        "id": "381"
+        "id": "381",
+        parentId: "Premia",
+        protocolsData: {
+            v2: {
+                id: "381",
+                enabled: true,
+            },
+            v3: {
+                id: "3497",
+                enabled: true,
+            }
+        }
     },
     "kyberswap": {
         "enabled": true,

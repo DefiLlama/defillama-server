@@ -17184,7 +17184,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "prisma/index.js",
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["Liquity"],
     twitter: "PrismaFi",
     github: ["prisma-fi"],
     audit_links: [

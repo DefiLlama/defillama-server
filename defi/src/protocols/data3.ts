@@ -17645,6 +17645,53 @@ const data3: Protocol[] = [
     github: ["FriendRoomRepo"],
     listedAt: 1694092169
   },
+  {
+    id: "3494",
+    name: "ChewySwap",
+    address: null,
+    symbol: "-",
+    url: "https://chewyswap.dog",
+    description:
+      "ChewySwap is the leading Community-Based decentralized exchange on both Shibarium and Dogechain, the two leading EVM compatible blockchains for Dog lovers",
+    chain: "Shibarium",
+    logo: `${baseIconsUrl}/chewyswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shibarium"],
+    module: "ChewySwap/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "ChewySwap",
+    audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_ChewySwap_DEX.pdf"],
+    listedAt: 1694094971
+  },
+  {
+    id: "3495",
+    name: "BroSwap",
+    address: "core:0x8A5B3CE8e30a3A8826Cf36caddb2C5bB26CADBfe",
+    symbol: "BRO",
+    url: "https://broswap.org",
+    description:
+      "BroSwap is a standout Swap DEX on the CoreDAO Chain network with various advantages that appeal to users.",
+    chain: "Core",
+    logo: `${baseIconsUrl}/broswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Core"],
+    module: "BroSwap/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "broswaptoken",
+    github: ["broswap"],
+    audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_ChewySwap_DEX.pdf"],
+    listedAt: 1694094978
+  },
 ]
 
 export default data3

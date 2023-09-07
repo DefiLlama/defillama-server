@@ -17738,6 +17738,33 @@ const data3: Protocol[] = [
     parentProtocol: "parent#premia",
     listedAt: 1694096119
   },
+  {
+    id: "3498",
+    name: "Liquis",
+    address: "0xD82fd4D6D62f89A1E50b1db69AD19932314aa408",
+    symbol: "LIQ",
+    url: "www.liquis.app",
+    description:
+      "Liquis is a liquid governance wrapper for Bunni Pro, a liquidity management solution on top of Uniswap v3. With Liquis, users gain access to max-locked veLIT with secondary liquidity, subsidizing its opportunity cost",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/liquis.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "liquis",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "liquis/index.js",
+    oracles: [],
+    forkedFrom: ["Convex Finance"],
+    twitter: "Liquisfi",
+    audit_links: [
+      "https://github.com/liquisfi/security/blob/main/audits/Liquis_Audit_Report_by_Halborn.pdf",
+      "https://github.com/liquisfi/security/blob/main/audits/Liquis_Audit_Report_by_WatchPug.pdf",
+      "https://github.com/liquisfi/security/blob/main/audits/Liquis_Audit_Report_by_WatchPug_prelaunch.pdf"
+    ],
+    listedAt: 1694123371
+  },
 ]
 
 export default data3

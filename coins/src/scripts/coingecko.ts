@@ -137,9 +137,10 @@ async function getSymbolAndDecimals(
       const decimals = (decimalsQuery.value?.data as any)?.parsed?.info
         ?.decimals;
       if (typeof decimals !== "number") {
-        throw new Error(
-          `Token ${chain}:${tokenAddress} not found in solana token list`,
-        );
+        return;
+        // throw new Error(
+        //   `Token ${chain}:${tokenAddress} not found in solana token list`,
+        // );
       }
       return {
         symbol: coingeckoSymbol.toUpperCase(),
@@ -151,9 +152,10 @@ async function getSymbolAndDecimals(
       decimals: Number(token.decimals),
     };
   } else if (!tokenAddress.startsWith(`0x`)) {
-    throw new Error(
-      `Token ${chain}:${tokenAddress} is not on solana or EVM so we cant get token data yet`,
-    );
+    return;
+    // throw new Error(
+    //   `Token ${chain}:${tokenAddress} is not on solana or EVM so we cant get token data yet`,
+    // );
   } else {
     try {
       return {
@@ -161,9 +163,10 @@ async function getSymbolAndDecimals(
         decimals: Number((await decimals(tokenAddress, chain as any)).output),
       };
     } catch (e) {
-      throw new Error(
-        `ERC20 methods aren't working for token ${chain}:${tokenAddress}`,
-      );
+      return;
+      // throw new Error(
+      //   `ERC20 methods aren't working for token ${chain}:${tokenAddress}`,
+      // );
     }
   }
 }
@@ -219,11 +222,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           const previous = await ddb.get({ PK, SK: 0 });
           if (previous.Item?.confidence > 0.99) return;
 
-          const { decimals, symbol } = await getSymbolAndDecimals(
+          const data = await getSymbolAndDecimals(
             tokenAddress,
             chain,
             coin.symbol,
           );
+          if (!data) return;
+          const { decimals, symbol } = data;
 
           writes2.push({
             key: PK,

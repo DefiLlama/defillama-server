@@ -17837,6 +17837,53 @@ const data3: Protocol[] = [
                   ],
     listedAt: 1694173785
   },
+  {
+    id: "3502",
+    name: "Seamless Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.seamlessprotocol.com",
+    description:
+      "A decentralized, non-custodial liquidity market that creates a more seamless experience for Suppliers and Borrowers.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/seamless-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    module: "seamless/index.js",
+    oracles: ["Chainlink"],
+    forkedFrom: ["AAVE V3"],
+    twitter: "SeamlessFi",
+    github: ["seamless-protocol"],
+    listedAt: 1694174275
+  },
+  {
+    id: "3503",
+    name: "The Standard",
+    address: "arbitrum:0xf5A27E55C748bCDdBfeA5477CB9Ae924f0f7fd2e",
+    symbol: "TST",
+    url: "https://www.thestandard.io/",
+    description:
+      "The next-gen decentralized, over-collateralized stablecoin protocol backed by physical & digital assets.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/the-standard.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "standard-token",
+    cmcId: "22108",
+    category: "CDP",
+    chains: ["Arbitrum"],
+    module: "standard-smart-vaults/index.js",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    twitter: "thestandard_io",
+    audit_links: ["https://solidityscan.com/published-report/project/4ad1cae336c45bb1"],
+    github: ["the-standard"],
+    listedAt: 1694174275
+  },
 ]
 
 export default data3

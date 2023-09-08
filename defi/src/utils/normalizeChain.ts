@@ -1859,10 +1859,17 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
   },
   "DSC": {
-    geckoId: "DEL",
-    symbol: "decimal",
+    geckoId: "decimal",
+    symbol: "DEL",
     cmcId: null,
     github: ["decimalteam"],
+    categories: ["EVM"],
+  },
+  "Darwinia": {
+    geckoId: "darwinia-network-native-token",
+    symbol: "RING",
+    cmcId: "5798",
+    github: ["darwinia-network"],
     categories: ["EVM"],
   },
 } as unknown as {
@@ -2326,7 +2333,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "alv":
       return "ALV"
     case "dsc":
-      return "DSC"  
+      return "DSC"
+    case "darwinia":
+      return "Darwinia"  
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

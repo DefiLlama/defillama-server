@@ -17787,6 +17787,56 @@ const data3: Protocol[] = [
     twitter: "EkuboProtocol",
     listedAt: 1694136553
   },
+  {
+    id: "3500",
+    name: "Circuit Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.circuit.farm",
+    description:
+      "Circuit Protocol is a yield optimizer on Mantle. Circuit enables users to earn compound interest on their crypto holdings with non-custodial, automated yield vaults.",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/circuit-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Mantle"],
+    module: "circuit/index.js",
+    oracles: [],
+    forkedFrom: ["Beefy"],
+    twitter: "circuitprotocol",
+    github: ["Circuit-Finance-Org"],
+    listedAt: 1694173780
+  },
+  {
+    id: "3501",
+    name: "Valorem",
+    address: null,
+    symbol: "-",
+    url: "https://valorem.xyz",
+    description:
+      "The permissionless options protocol.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/valorem.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum"],
+    module: "valorem/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "valoremxyz",
+    audit_links: [
+                   "https://github.com/valorem-labs-inc/clear/blob/master/audits/Valoem_Options_Smart_Contract_Patch_Review.pdf",
+                   "https://github.com/valorem-labs-inc/clear/blob/master/audits/Valorem_April_2023_-_Zellic_Audit_Report.pdf",
+                   "https://github.com/valorem-labs-inc/clear/blob/master/audits/Valorem_December_2022_%20-%20Zellic%20Audit%20Report.pdf"
+                  ],
+    listedAt: 1694173785
+  },
 ]
 
 export default data3

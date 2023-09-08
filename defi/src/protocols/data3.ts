@@ -10706,7 +10706,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/zkswap-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "zkswap-finance",
     cmcId: null,
     category: "Dexes",
     chains: ["zkSync Era"],

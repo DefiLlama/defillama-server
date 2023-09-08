@@ -17907,7 +17907,7 @@ const data2: Protocol[] = [
     name: "Trader Joe Lend",
     address: "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
     symbol: "JOE",
-    url: "https://traderjoexyz.com/lending",
+    url: "https://v1.traderjoexyz.com/lend",
     description: "Trader Joe is your one-stop decentralized trading platform on the Avalanche network.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/trader-joe.png`,

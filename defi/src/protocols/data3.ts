@@ -17743,7 +17743,7 @@ const data3: Protocol[] = [
     name: "Liquis",
     address: "0xD82fd4D6D62f89A1E50b1db69AD19932314aa408",
     symbol: "LIQ",
-    url: "www.liquis.app",
+    url: "https://www.liquis.app/",
     description:
       "Liquis is a liquid governance wrapper for Bunni Pro, a liquidity management solution on top of Uniswap v3. With Liquis, users gain access to max-locked veLIT with secondary liquidity, subsidizing its opportunity cost",
     chain: "Ethereum",
@@ -17764,6 +17764,28 @@ const data3: Protocol[] = [
       "https://github.com/liquisfi/security/blob/main/audits/Liquis_Audit_Report_by_WatchPug_prelaunch.pdf"
     ],
     listedAt: 1694123371
+  },
+  {
+    id: "3499",
+    name: "Ekubo",
+    address: null,
+    symbol: "-",
+    url: "https://ekubo.org/",
+    description:
+      "Ekubo Protocol is a dex built for Starknet, that features concentrated liquidity, a singleton architecture, and extensions",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/ekubo.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Starknet"],
+    module: "ekubo/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "EkuboProtocol",
+    listedAt: 1694136553
   },
 ]
 

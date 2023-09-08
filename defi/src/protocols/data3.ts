@@ -15865,7 +15865,7 @@ const data3: Protocol[] = [
   {
     id: "3413",
     name: "FourDex",
-    address: "opbnb:0x9F673D3682AaCf02Bd09500961FbFFa3a91655BC",
+    address: "op_bnb:0x9F673D3682AaCf02Bd09500961FbFFa3a91655BC",
     symbol: "FDEX",
     url: "https://fourdex.cz/en/swap",
     description:
@@ -15909,7 +15909,7 @@ const data3: Protocol[] = [
   {
     id: "3416",
     name: "Knight DEX",
-    address: "opbnb:0xdea52f6aabe9E1005D7A2443568C1F0C0B18Bdd4",
+    address: "op_bnb:0xdea52f6aabe9E1005D7A2443568C1F0C0B18Bdd4",
     symbol: "KDX",
     url: "https://knightdex.cc/",
     description:
@@ -15978,7 +15978,7 @@ const data3: Protocol[] = [
   {
     id: "3419",
     name: "MobyDEX",
-    address: "opbnb:0x80592297613BF9318A622A43615f4fE1D1A9509E",
+    address: "op_bnb:0x80592297613BF9318A622A43615f4fE1D1A9509E",
     symbol: "MOBY",
     url: "https://mobydex.io",
     description:
@@ -16069,7 +16069,7 @@ const data3: Protocol[] = [
   {
     id: "3423",
     name: "Zena Finance",
-    address: "opbnb:0x9A0041a4D8C609FA460Db5a59077658bF616c4FA",
+    address: "op_bnb:0x9A0041a4D8C609FA460Db5a59077658bF616c4FA",
     symbol: "ZEN",
     url: "https://zena.fi",
     description:
@@ -16162,7 +16162,7 @@ const data3: Protocol[] = [
   {
     id: "3427",
     name: "BalloonSwap",
-    address: "opbnb:0xfb39b78daa75c2cc6827347fb54897e22f7d7846",
+    address: "op_bnb:0xfb39b78daa75c2cc6827347fb54897e22f7d7846",
     symbol: "Balloon",
     url: "https://balloonswap.org",
     description:
@@ -16365,7 +16365,7 @@ const data3: Protocol[] = [
   {
     id: "3436",
     name: "FeDex Finance",
-    address: "opbnb:0xa899f1830c64045b8b368781677d036a0b379d31",
+    address: "op_bnb:0xa899f1830c64045b8b368781677d036a0b379d31",
     symbol: "FED",
     url: "https://fedex.finance/#/swap",
     description: "Unleash the potential of decentralized trading with our proprietary AMM technology. Explore the DeFi platform with new technology, and build a new era for the future with low cost, abundant liquidity, and high scalability.",
@@ -16386,7 +16386,7 @@ const data3: Protocol[] = [
   {
     id: "3437",
     name: "PySwap",
-    address: "opbnb:0x2928CBA5b5e5B48113281263FC037c7a5d8E1EDf",
+    address: "op_bnb:0x2928CBA5b5e5B48113281263FC037c7a5d8E1EDf",
     symbol: "PYS",
     url: "https://www.pyswap.exchange",
     description: "Farm protocol on Op_Bnb Chain",
@@ -16560,7 +16560,7 @@ const data3: Protocol[] = [
   {
     id: "3445",
     name: "Xops Finance",
-    address: "opbnb:0xE413045ae03E56f0F627eA4f1272637e155D445f",
+    address: "op_bnb:0xE413045ae03E56f0F627eA4f1272637e155D445f",
     symbol: "XOS",
     url: "http://xops.finance",
     description: "The cutting-edge decentralised exchange (DEX) Xops Finance has swiftly become the most popular DEX on OpBNB, an Ethereum layer-2 scaling solution.",
@@ -17884,6 +17884,51 @@ const data3: Protocol[] = [
     audit_links: ["https://solidityscan.com/published-report/project/4ad1cae336c45bb1"],
     github: ["the-standard"],
     listedAt: 1694174275
+  },
+  {
+    id: "3504",
+    name: "Amphora",
+    address: "0x943c5F4F54509d1e78B1fCD93B92c43ce83d3141",
+    symbol: "AMPH",
+    url: "https://amphorafinance.com/",
+    description:
+      "The Amphora Protocol enhances sUSD (snxUSD) usability in Synthetix's V3 by establishing a vault lending market. Users can lend, borrow sUSD(v3) against various collaterals, and simultaneously yield farm with Convex LP positions",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/amphora.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "amphora/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "AmphoraProtocol",
+    github: ["AmphoraProtocol"],
+    listedAt: 1694195938
+  },
+  {
+    id: "3505",
+    name: "CUBISwap",
+    address: "op_bnb:0x9C7E6c29aF5851AEa6aF6846627c66B718f56D2E",
+    symbol: "CUBI",
+    url: "https://cubiswap.finance/",
+    description:
+      "CUBISwap is a DAO that offers a full suite of tools for DeFi opportunities",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/cubiswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "cubiswap/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "CUBISWAP",
+    listedAt: 1694196707
   },
 ]
 

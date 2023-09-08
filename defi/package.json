@@ -34,6 +34,7 @@
     "backfill-local": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node src/adaptors/cli/backfillUtilities/auto.ts",
     "interactive": "npx ts-node src/cli/interactive.ts",
     "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeTvlTask.ts",
+    "cache-config": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cacheConfig.ts",
     "run-local": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/runLocalTVL.ts"
   },
   "devDependencies": {

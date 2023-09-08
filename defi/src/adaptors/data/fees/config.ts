@@ -1278,5 +1278,9 @@ export default {
     "friend-room": {
         "id": "3493",
         "enabled": true
+    },
+    "liquis": {
+        "id": "3498",
+        "enabled": true
     }
 } as AdaptorsConfig

@@ -17877,6 +17877,7 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Arbitrum"],
     module: "standard-smart-vaults/index.js",
+    treasury: "the-standard.js",
     oracles: ["Chainlink"],
     forkedFrom: [],
     twitter: "thestandard_io",

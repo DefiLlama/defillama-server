@@ -17,7 +17,7 @@ inquirer.registerPrompt("date", DatePrompt)
 inquirer.registerPrompt('search-list', inquirerSearchPrompt);
 inquirer.registerPrompt('autocomplete', inquirerPrompt);
 const adapterChoices = [protocols, entities, treasuries].flat().map((p: any) => p.name)
-const adaperCommands = ['fillOld', 'fillLast', 'clear-cache']
+const adaperCommands = ['fillOld', 'fillLast', 'clear-cache', 'delete-tvl']
 const commandChoices = [...adaperCommands,]
 
 const prompts: any = {
@@ -32,7 +32,6 @@ const prompts: any = {
     name: 'main',
     message: 'command:',
     choices: commandChoices,
-    pageSize: Math.min(commandChoices.length, 3)
   },
   date: {
     type: "date",
@@ -43,17 +42,33 @@ const prompts: any = {
     // validate: (t: any) => t * 1000 < Date.now(),
     format: { month: 'short', hour: undefined, minute: undefined },
     clearable: true,
-  }
+  },
+  dateFrom: {
+    type: "date",
+    name: "dateFrom",
+    message: "timestamp [from]:",
+    default: new Date(),
+    filter: (d: any) => Math.floor(d.getTime() / 1000),
+    // validate: (t: any) => t * 1000 < Date.now(),
+    format: { month: 'short', hour: undefined, minute: undefined },
+    clearable: true,
+    lastAnswer: null,
+  },
+  dateTo: {
+    type: "date",
+    name: "dateTo",
+    message: "timestamp [to]:",
+    default: new Date(),
+    filter: (d: any) => Math.floor(d.getTime() / 1000),
+    // validate: (t: any) => t * 1000 < (prompts.dateFrom.default ?? Date.now()),
+    format: { month: 'short', hour: undefined, minute: undefined },
+    clearable: true,
+  },
 }
 
 const state: any = {
   runner: 0,
   prevShiftUp: false,
-}
-
-
-function importAdapter(protocol: Protocol) {
-  return require("@defillama/adapters/projects/" + [protocol.module])
 }
 
 async function run(prompt: any) {
@@ -73,6 +88,8 @@ async function run(prompt: any) {
     prompts[currentPrompt].default = response[currentPrompt]
     const answer = response[currentPrompt]
     const mainCommand = prompts.main.default
+    state.answer = answer
+    prompts[currentPrompt].lastAnswer = answer
 
     switch (currentPrompt) {
       case 'main':
@@ -90,16 +107,35 @@ async function run(prompt: any) {
         }
         else if (mainCommand === 'fillOld')
           state.nextPrompt = 'date'
+        else if (mainCommand === 'delete-tvl')
+          state.nextPrompt = 'dateFrom'
         else
           throw new Error('Unknown State')
         break;
       case 'date':
-        prompts[currentPrompt].default = new Date(prompts[currentPrompt].default * 1000)
         if (mainCommand === 'fillOld') {
-          await runScript(mainCommand, [prompts.adapter.default, answer])
+          await runScript(mainCommand, [prompts.adapter.lastAnswer, answer])
           state.nextPrompt = 'adapter'
         } else
           throw new Error('Unknown State')
+        prompts[currentPrompt].default = new Date(answer * 1000)
+        break;
+      case 'dateFrom':
+        if (mainCommand === 'delete-tvl') {
+          state.nextPrompt = 'dateTo'
+          if (!prompts.dateTo.default || prompts.dateTo.default > prompts.dateFrom.lastAnswer * 1000) prompts.dateTo.default = new Date(prompts.dateFrom.lastAnswer * 1000)
+        } else
+          throw new Error('Unknown State')
+        prompts[currentPrompt].default = new Date(answer * 1000)
+        break;
+      case 'dateTo':
+        if (mainCommand === 'delete-tvl') {
+          await runScript(mainCommand, [prompts.adapter.lastAnswer, prompts.dateFrom.lastAnswer, answer])
+          state.nextPrompt = 'main'
+        } else
+          throw new Error('Unknown State')
+        prompts[currentPrompt].default = new Date(answer * 1000)
+        break;
     }
 
     if (currentPrompt !== state.nextPrompt)

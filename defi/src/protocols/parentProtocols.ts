@@ -2654,17 +2654,6 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:premia.eth"],
     github: ["Premian-Labs"]
   },
-  {
-    id: "parent#baseswap",
-    name: "BaseSwap",
-    url: "https://baseswap.fi",
-    description: "The Native leading DEX on Base Chain. By Based team, for Based People. From simplistic to advanced BaseSwap has it all.",
-    logo: `${baseIconsUrl}/baseswap.png`,
-    gecko_id: "baseswap",
-    cmcId: "27764",
-    chains: [],
-    twitter: "BaseSwap_Fi",
-  },
 ];
 
 export default parentProtocols;

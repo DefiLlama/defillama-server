@@ -14079,13 +14079,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3333",
-    name: "BaseSwap",
+    name: "BaseSwap V2",
     address: "base:0x78a087d713Be963Bf307b18F2Ff8122EF9A63ae9",
     symbol: "BSWAP",
     url: "https://baseswap.fi/",
     description: "The Native leading DEX on Base Chain. By Based team, for Based People. From simplistic to advanced BaseSwap has it all",
     chain: "Base",
-    logo: `${baseIconsUrl}/baseswap.png`,
+    logo: `${baseIconsUrl}/baseswap-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "baseswap",
@@ -14096,6 +14096,7 @@ const data3: Protocol[] = [
     twitter: "BaseSwap_Fi",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
+    parentProtocol: "parent#baseswap",
     listedAt: 1691012408
   },
   {
@@ -17929,6 +17930,51 @@ const data3: Protocol[] = [
     forkedFrom: [],
     twitter: "CUBISWAP",
     listedAt: 1694196707
+  },
+  {
+    id: "3506",
+    name: "Dalmatian",
+    address: "shibarium:0x3eC440de85518fA270274bf6a5E84466E3090779",
+    symbol: "DAL",
+    url: "https://dalmatian.exchange",
+    description:
+      "Dalmatian emerges as a catalyst for DeFi's transformation on the Shibarium Chain, presenting a suite of features that redefine how users engage with decentralized finance.",
+    chain: "Shibarium",
+    logo: `${baseIconsUrl}/dalmatian.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shibarium"],
+    module: "dalmatiandex/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "DalmatianDex",
+    listedAt: 1694253768
+  },
+  {
+    id: "3507",
+    name: "BaseX",
+    address: "base:0x78a087d713Be963Bf307b18F2Ff8122EF9A63ae9",
+    symbol: "BSWAP",
+    url: "https://baseswap.fi",
+    description:
+      "Uniswap V3 fork on Base Chain.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/basex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "basex/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    twitter: "BaseSwap_Fi",
+    parentProtocol: "parent#baseswap",
+    listedAt: 1694255219
   },
 ]
 

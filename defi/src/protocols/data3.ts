@@ -16387,7 +16387,7 @@ const data3: Protocol[] = [
   {
     id: "3437",
     name: "PySwap",
-    address: "op_bnb:0x2928CBA5b5e5B48113281263FC037c7a5d8E1EDf",
+    address: "op_bnb:0x602aEe302B2703cD2BAC28e13192593228e0078C",
     symbol: "PYS",
     url: "https://www.pyswap.exchange",
     description: "AMM DEX, Staking, and Farming Protocol",
@@ -16397,7 +16397,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Dexes",
     chains: ["Op_Bnb"],
     oracles: [],
     module: "pyswap/index.js",

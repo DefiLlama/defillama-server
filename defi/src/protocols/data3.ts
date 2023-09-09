@@ -16390,7 +16390,7 @@ const data3: Protocol[] = [
     address: "op_bnb:0x2928CBA5b5e5B48113281263FC037c7a5d8E1EDf",
     symbol: "PYS",
     url: "https://www.pyswap.exchange",
-    description: "Farm protocol on Op_Bnb Chain",
+    description: "AMM DEX, Staking, and Farming Protocol",
     chain: "Op_Bnb",
     logo: `${baseIconsUrl}/pyswap.jpg`,
     audits: "0",

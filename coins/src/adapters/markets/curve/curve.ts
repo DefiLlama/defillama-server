@@ -429,97 +429,104 @@ async function unknownPools(
   chain: any,
   block: number | undefined,
   timestamp: number,
-  poolList: any,
+  poolList1: any,
   registries: string[],
   writes: Write[],
   unknownPoolList: any[],
   unknownTokensList: any[],
 ) {
   for (let registry of registries) {
-    for (let pool of Object.values(poolList[registry])) {
-      try {
-        const token: string = await PoolToToken(chain, pool, block);
-        // THIS IS GOOD FOR DEBUG
-        // if (
-        //   !["0x7f86bf177dd4f3494b841a37e810a34dd56c829b"].includes(
-        //     token.toLowerCase(),
-        //   )
-        // )
-        //   continue;
+    const poolList2 = poolList1[registry].splice(
+      poolList1[registry].length / 2,
+    );
+    await Promise.all(
+      [poolList1[registry], poolList2].map(async (poolList: any) => {
+        for (let pool of Object.values(poolList)) {
+          try {
+            const token: string = await PoolToToken(chain, pool, block);
+            // THIS IS GOOD FOR DEBUG
+            // if (
+            //   !["0x7f86bf177dd4f3494b841a37e810a34dd56c829b"].includes(
+            //     token.toLowerCase(),
+            //   )
+            // )
+            //   continue;
 
-        const [balances, tokenInfo] = await Promise.all([
-          registry == "pcs"
-            ? pcsPoolBalances(chain, pool, registry, block)
-            : poolBalances(chain, pool, registry, block),
-          getTokenInfo(chain, [token], block, { withSupply: true }),
-        ]);
+            const [balances, tokenInfo] = await Promise.all([
+              registry == "pcs"
+                ? pcsPoolBalances(chain, pool, registry, block)
+                : poolBalances(chain, pool, registry, block),
+              getTokenInfo(chain, [token], block, { withSupply: true }),
+            ]);
 
-        const poolTokens: any[] = await getUnderlyingPrices(
-          balances,
-          chain,
-          timestamp,
-          unknownTokensList,
-        );
-        if (poolTokens.includes(undefined) || poolTokens.length == 0) {
-          unknownPoolList.push({
-            address: [pool].map((i: any) => i.output)[0],
-            token,
-            balances,
-            tokenInfo,
-            poolTokens,
-          });
-          continue;
+            const poolTokens: any[] = await getUnderlyingPrices(
+              balances,
+              chain,
+              timestamp,
+              unknownTokensList,
+            );
+            if (poolTokens.includes(undefined) || poolTokens.length == 0) {
+              unknownPoolList.push({
+                address: [pool].map((i: any) => i.output)[0],
+                token,
+                balances,
+                tokenInfo,
+                poolTokens,
+              });
+              continue;
+            }
+
+            const isJunk = poolTokens.find(
+              (t: any) =>
+                t.price == null ||
+                t.price <= 0 ||
+                t.balance == null ||
+                t.balance == 0,
+            );
+            if (isJunk != null) continue;
+
+            const poolValue: number = poolTokens.reduce(
+              (p, c) => p + c.balance * c.price,
+              0,
+            );
+            if (poolValue < 400) continue;
+
+            const price =
+              (poolValue * 10 ** tokenInfo.decimals[0].output) /
+              tokenInfo.supplies[0].output;
+            if (
+              isNaN(price) ||
+              price == 0 ||
+              price == Infinity ||
+              tokenInfo.supplies[0].output == 0
+            )
+              continue;
+
+            const confidence =
+              poolTokens
+                .map((p: any) => {
+                  if (p.confidence == undefined) return 1;
+                  return p.confidence;
+                })
+                .reduce((a, b) => a + b, 0) / poolTokens.length;
+
+            addToDBWritesList(
+              writes,
+              chain,
+              token,
+              price,
+              tokenInfo.decimals[0].output,
+              tokenInfo.symbols[0].output,
+              timestamp,
+              "curve-LP",
+              confidence,
+            );
+          } catch {
+            //console.log([pool].map((i: any) => i.output)[0]);
+          }
         }
-
-        const isJunk = poolTokens.find(
-          (t: any) =>
-            t.price == null ||
-            t.price <= 0 ||
-            t.balance == null ||
-            t.balance == 0,
-        );
-        if (isJunk != null) continue;
-
-        const poolValue: number = poolTokens.reduce(
-          (p, c) => p + c.balance * c.price,
-          0,
-        );
-        if (poolValue < 400) continue;
-
-        const price =
-          (poolValue * 10 ** tokenInfo.decimals[0].output) /
-          tokenInfo.supplies[0].output;
-        if (
-          isNaN(price) ||
-          price == 0 ||
-          price == Infinity ||
-          tokenInfo.supplies[0].output == 0
-        )
-          continue;
-
-        const confidence =
-          poolTokens
-            .map((p: any) => {
-              if (p.confidence == undefined) return 1;
-              return p.confidence;
-            })
-            .reduce((a, b) => a + b, 0) / poolTokens.length;
-
-        addToDBWritesList(
-          writes,
-          chain,
-          token,
-          price,
-          tokenInfo.decimals[0].output,
-          tokenInfo.symbols[0].output,
-          timestamp,
-          "curve-LP",
-          confidence,
-        );
-      } catch {
-        //console.log([pool].map((i: any) => i.output)[0]);
-      }
-    }
+      }),
+    );
   }
 }
 export async function unknownTokens(
@@ -527,93 +534,102 @@ export async function unknownTokens(
   block: number | undefined,
   writes: Write[],
   timestamp: number,
-  unknownPoolList: any[],
+  unknownPoolList1: any[],
 ) {
   const usdSwapSize = 10 ** 5;
-  const knownTokenIndexes: TokenIndexes[] = unknownPoolList.map((p: any) => {
-    const unknownTokens = p.poolTokens.filter((t: any) => t == undefined);
-    const knownTokens = p.poolTokens.filter((t: any) => t != undefined);
-    return {
-      known: knownTokens.map((t: any) => p.poolTokens.indexOf(t)),
-      unknown: unknownTokens.map((t: any) => p.poolTokens.indexOf(t)),
-    };
-  });
-
-  const calls: any[] = knownTokenIndexes
-    .map((ts: TokenIndexes, i: number) => {
-      return ts.unknown.map((t: number) => {
-        const tokenInfo = unknownPoolList[i].poolTokens[ts.known[0]];
-        if (ts.known.length == 0 || tokenInfo.price == 0) return;
-        const realQuantity = BigNumber.from(
-          (usdSwapSize / tokenInfo.price).toFixed(0),
-        );
-        const decimalFactor = BigNumber.from("10").pow(tokenInfo.decimals);
-        const rawQuantity = realQuantity.mul(decimalFactor);
-        return [
-          {
-            params: [ts.known[0], t, rawQuantity],
-            target: unknownPoolList[i].address,
-          },
-          {
-            params: [ts.known[0], t, rawQuantity.div(usdSwapSize)],
-            target: unknownPoolList[i].address,
-          },
-        ];
-      });
-    })
-    .flat(2)
-    .filter((c: any) => c != undefined);
-
-  let dys: MultiCallResults = await multiCall({
-    chain,
-    calls,
-    abi: abi.get_dy,
-    block,
-    permitFailure: true,
-  });
-  await requery(dys, chain, abi.get_dy, block);
-  await requery(dys, chain, abi.get_dy2, block);
-  await requery(dys, chain, abi.get_dy2, block);
-
-  const unknownTokens = dys.output
-    .map((d: Result, i: number) => {
-      if (i % 2 == 0) return;
-      const index = d.input.params[1];
-      const poolInfo = unknownPoolList.find(
-        (p: any) => p.address == d.input.target,
+  const unknownPoolList2 = unknownPoolList1.splice(unknownPoolList1.length / 2);
+  await Promise.all(
+    [unknownPoolList1, unknownPoolList2].map(async (unknownPoolList: any) => {
+      const knownTokenIndexes: TokenIndexes[] = unknownPoolList.map(
+        (p: any) => {
+          const unknownTokens = p.poolTokens.filter((t: any) => t == undefined);
+          const knownTokens = p.poolTokens.filter((t: any) => t != undefined);
+          return {
+            known: knownTokens.map((t: any) => p.poolTokens.indexOf(t)),
+            unknown: unknownTokens.map((t: any) => p.poolTokens.indexOf(t)),
+          };
+        },
       );
-      return poolInfo.balances[index].input.target;
-    })
-    .filter((c: any) => c != undefined);
 
-  const unknownTokenInfos = await getTokenInfo(chain, unknownTokens, block);
+      const calls: any[] = knownTokenIndexes
+        .map((ts: TokenIndexes, i: number) => {
+          return ts.unknown.map((t: number) => {
+            const tokenInfo = unknownPoolList[i].poolTokens[ts.known[0]];
+            if (ts.known.length == 0 || tokenInfo.price == 0) return;
+            const realQuantity = BigNumber.from(
+              (usdSwapSize / tokenInfo.price).toFixed(0),
+            );
+            const decimalFactor = BigNumber.from("10").pow(tokenInfo.decimals);
+            const rawQuantity = realQuantity.mul(decimalFactor);
+            return [
+              {
+                params: [ts.known[0], t, rawQuantity],
+                target: unknownPoolList[i].address,
+              },
+              {
+                params: [ts.known[0], t, rawQuantity.div(usdSwapSize)],
+                target: unknownPoolList[i].address,
+              },
+            ];
+          });
+        })
+        .flat(2)
+        .filter((c: any) => c != undefined);
 
-  const prices = dys.output.map((d: Result, i: number) => {
-    const unknownToken = unknownTokens[Math.floor(i / 2)].toLowerCase();
-    const decimals = unknownTokenInfos.decimals.find(
-      (i: any) => i.input.target.toLowerCase() == unknownToken,
-    );
-    if (!decimals) return Infinity;
-    return (i % 2 == 0 ? usdSwapSize : 1) / (d.output / 10 ** decimals.output);
-  });
+      let dys: MultiCallResults = await multiCall({
+        chain,
+        calls,
+        abi: abi.get_dy,
+        block,
+        permitFailure: true,
+      });
+      await requery(dys, chain, abi.get_dy, block);
+      await requery(dys, chain, abi.get_dy2, block);
+      await requery(dys, chain, abi.get_dy2, block);
 
-  prices.map((p: any, i: number) => {
-    if (i % 2 == 0) return;
-    if (prices[i] == Infinity || prices[i - 1] == Infinity) return;
-    let confidence = p / prices[i - 1];
-    if (confidence > 0.989) confidence = 0.989;
-    addToDBWritesList(
-      writes,
-      chain,
-      unknownTokens[Math.floor(i / 2)],
-      p,
-      unknownTokenInfos.decimals[Math.floor(i / 2)].output,
-      unknownTokenInfos.symbols[Math.floor(i / 2)].output,
-      timestamp,
-      "curve-unknown-token",
-      confidence,
-    );
-  });
+      const unknownTokens = dys.output
+        .map((d: Result, i: number) => {
+          if (i % 2 == 0) return;
+          const index = d.input.params[1];
+          const poolInfo = unknownPoolList.find(
+            (p: any) => p.address == d.input.target,
+          );
+          return poolInfo.balances[index].input.target;
+        })
+        .filter((c: any) => c != undefined);
+
+      const unknownTokenInfos = await getTokenInfo(chain, unknownTokens, block);
+
+      const prices = dys.output.map((d: Result, i: number) => {
+        const unknownToken = unknownTokens[Math.floor(i / 2)].toLowerCase();
+        const decimals = unknownTokenInfos.decimals.find(
+          (i: any) => i.input.target.toLowerCase() == unknownToken,
+        );
+        if (!decimals) return Infinity;
+        return (
+          (i % 2 == 0 ? usdSwapSize : 1) / (d.output / 10 ** decimals.output)
+        );
+      });
+
+      prices.map((p: any, i: number) => {
+        if (i % 2 == 0) return;
+        if (prices[i] == Infinity || prices[i - 1] == Infinity) return;
+        let confidence = p / prices[i - 1];
+        if (confidence > 0.989) confidence = 0.989;
+        addToDBWritesList(
+          writes,
+          chain,
+          unknownTokens[Math.floor(i / 2)],
+          p,
+          unknownTokenInfos.decimals[Math.floor(i / 2)].output,
+          unknownTokenInfos.symbols[Math.floor(i / 2)].output,
+          timestamp,
+          "curve-unknown-token",
+          confidence,
+        );
+      });
+    }),
+  );
 }
 export default async function getTokenPrices(
   chain: any,
@@ -622,7 +638,7 @@ export default async function getTokenPrices(
   name: string | undefined = undefined,
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
-  const poolList = await getPools(chain, block, name);
+  let poolList = await getPools(chain, block, name);
   const writes: Write[] = [];
   let unknownTokensList: string[] = [];
   let unknownPoolList: any[] = [];

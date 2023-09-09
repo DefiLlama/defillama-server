@@ -28,8 +28,10 @@ async function storeDefiCoins() {
     Array(adaptersArray.length).keys(),
   );
   shuffleArray(protocolIndexes);
-  const a = Object.entries(adapters);
+  let a = Object.entries(adapters);
+  a = a.filter((n: any) => n[0] == "curve1");
   const timestamp = 0;
+  console.time("exec");
   await PromisePool.withConcurrency(10)
     .for(protocolIndexes)
     .process(async (i) => {
@@ -64,6 +66,7 @@ async function storeDefiCoins() {
           );
       }
     });
+  console.timeEnd("exec");
   await sendMessage(
     `coolifys just finished defi coins`,
     process.env.STALE_COINS_ADAPTERS_WEBHOOK!,

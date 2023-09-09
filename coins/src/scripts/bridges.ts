@@ -3,6 +3,7 @@ import { storeTokens } from "../adapters/bridges";
 import { storeR2JSONString } from "../utils/r2";
 
 async function bridges() {
+  console.log("actually entering bridges");
   const bridgedTokens = await storeTokens();
   await storeR2JSONString(
     `bridgedTokens.json`,
@@ -14,6 +15,7 @@ async function bridges() {
     process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
     true,
   );
+  console.log("actually exiting bridges");
   process.exit();
 }
 bridges(); // ts-node src/scripts/bridges.ts

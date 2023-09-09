@@ -55,11 +55,11 @@ export function curve6(timestamp: number = 0) {
 }
 export function curve6b(timestamp: number = 0) {
   console.log("starting curve6b");
-  return getTokenPrices(
-    "polygon",
-    ["cryptoFactory", "stableFactory"],
-    timestamp,
-  );
+  return getTokenPrices("polygon", ["stableFactory"], timestamp);
+}
+export function curve6c(timestamp: number = 0) {
+  console.log("starting curve6c");
+  return getTokenPrices("polygon", ["cryptoFactory"], timestamp);
 }
 export function curve7(timestamp: number = 0) {
   console.log("starting curve7");

@@ -17976,6 +17976,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#baseswap",
     listedAt: 1694255219
   },
+  {
+    id: "3508",
+    name: "PlantBaseSwap",
+    address: "base:0x23082Dd85355b51BAe42248C961E7F83486e7694",
+    symbol: "PLANT",
+    url: "https://plantbaseswap.xyz/",
+    description:
+      "Native DEX, Yield Farming, and Staking on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/plantbaseswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "plantbaseswap/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "PlantBaseSwap",
+    listedAt: 1694373921
+  },
 ]
 
 export default data3

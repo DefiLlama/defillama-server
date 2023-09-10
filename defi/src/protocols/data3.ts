@@ -17996,7 +17996,31 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     twitter: "PlantBaseSwap",
-    listedAt: 1694373921
+    listedAt: 1694373921,
+    github: ["plantbaseswap"]
+  },
+  {
+    id: "3509",
+    name: "Nether.Fi",
+    address: "base:0x60359A0DD148B18d5cF1Ddf8Aa1916221ED0cbCd",
+    symbol: "NFI",
+    url: "https://nether.fi/",
+    description:
+      "Trade confidently on Nether.Fi, offering both spot and leveraged trading up to 50x with remarkably low transaction fees. We prioritize your protection against sudden price fluctuations by utilizing Chainlink price feeds for enhanced trade stability. Stake NFI or mint NLP to benefit from our unique reward system, ensuring participants share in the protocol's success",
+    chain: "Base",
+    logo: `${baseIconsUrl}/nether.fi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "netherfi",
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "nether-fi/index.js",
+    oracles: ["Chainlink"],
+    forkedFrom: ["GMX V1"],
+    twitter: "netherlabs_",
+    listedAt: 1694374527,
+    github: ["nether-labs"]
   },
 ]
 

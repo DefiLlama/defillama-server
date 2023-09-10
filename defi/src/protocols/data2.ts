@@ -8830,7 +8830,7 @@ const data2: Protocol[] = [
     name: "ApolloX",
     address: "bsc:0x78F5d389F5CDCcFc41594aBaB4B0Ed02F31398b3",
     symbol: "APX",
-    url: "https://www.apollox.com/en/APX",
+    url: "https://www.apollox.finance/en",
     description: "ApolloX Finance is a decentralized crypto trading exchange. Unlike the common Automated Market Makers model (AMM) which is adopted by other decentralized exchanges, ApolloX Finance adopts the order book model, which supports both spot and futures trading. By using off-chain order books and on-chain settlement, its protocol aims to create an efficient, fair and trustless financial market that is not controlled by any centralized organization.",
     chain: "Binance",
     logo: `${baseIconsUrl}/apollox.png`,
@@ -8845,7 +8845,7 @@ const data2: Protocol[] = [
     },
     forkedFrom: [],
     module: "apollox/index.js",
-    twitter: "ApolloX_com",
+    twitter: "ApolloX_Finance",
     listedAt: 1652988932,
     governanceID: ["snapshot:apolloxdao.eth"],
     github: ["apollox-finance"]

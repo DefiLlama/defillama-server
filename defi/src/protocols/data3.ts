@@ -18070,6 +18070,56 @@ const data3: Protocol[] = [
     github: ["Leech-Protocol"],
     listedAt: 1694424799
   },
+  {
+    id: "3512",
+    name: "CairoFiSwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.cairofi.org",
+    description:
+      "CairoFi is a decentralized platform built on Starknet, utilizing 100% Cairo, aiming to provide the most convenient services for Starknet. Its core ethos is code is law",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/cairofiswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Starknet"],
+    module: "cairofiswap/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "CairoFi",
+    github: ["CairoFi"],
+    listedAt: 1694425550
+  },
+  {
+    id: "3513",
+    name: "CavalRe",
+    address: null,
+    symbol: "-",
+    url: "https://beta.caval.re",
+    description:
+      "CavalRe is on a mission to bring all capital markets on-chain. To do so, we must introduce radically capital-efficient and scalable financial primitives ultimately capable of supporting the entire global financial system.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/cavelre.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche"],
+    module: "cavel-re/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "TheCavalRe",
+    github: ["CavalRe"],
+    audit_links: [
+                   "https://3106160242-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMPC8VyOwEYMS3andgvMd%2Fuploads%2FSDbbJDn4JqYUPjWUvv6O%2FAudit%20%231.pdf?alt=media&token=bbfcbcf6-24d8-4fa3-ba6a-528cb7ce983c",
+                   "https://3106160242-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMPC8VyOwEYMS3andgvMd%2Fuploads%2FdlSoK7xFtp4ztQ9IP1iI%2FAudit%20%232.pdf?alt=media&token=285bde8b-3d96-4187-a4c9-e8409628e606",
+                 ],
+    listedAt: 1694425575
+  },
 ]
 
 export default data3

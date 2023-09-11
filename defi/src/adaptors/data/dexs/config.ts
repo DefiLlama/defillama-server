@@ -1955,5 +1955,9 @@ export default {
         parentId: "DackieSwap",
         "enabled": true,
         "id": "3515",
+    },
+    "sithswap": {
+        "enabled": true,
+        "id": "2719"
     }
 } as AdaptorsConfig

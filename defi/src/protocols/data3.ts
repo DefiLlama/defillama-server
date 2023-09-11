@@ -10510,7 +10510,7 @@ const data3: Protocol[] = [
     chains: ["Binance"],
     module: "kinza/index.js",
     twitter: "kinzafinance",
-    oracles: [],
+    oracles: ["Binance Oracle"],
     forkedFrom: ["AAVE V3"],
     treasury: "kinza.js",
     github: ["Kinza-Finance"],

@@ -23779,14 +23779,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2436",
-    name: "Arcade xyz",
+    name: "Arcade V2",
     address: null,
     symbol: "-",
     url: "https://www.arcade.xyz",
     description:
       "Decentralized Loan Marketplace for NFTs.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/arcade-xyz.jpg`,
+    logo: `${baseIconsUrl}/arcade-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -23799,7 +23799,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://docs.arcade.xyz/docs/audit-reports"],
     listedAt: 1673781145,
-    github: ["arcadexyz", "PawnFi"]
+    parentProtocol: "parent#arcade.xyz",
   },
   /*
   {

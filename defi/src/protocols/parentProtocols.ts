@@ -2666,6 +2666,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DackieSwap",
     github: ["DackieSwap"],
   },
+  {
+    id: "parent#arcade.xyz",
+    name: "Arcade.xyz",
+    url: "https://www.arcade.xyz",
+    description: "Decentralized Loan Marketplace for NFTs.",
+    logo: `${baseIconsUrl}/arcade.xyz.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Arcade_xyz",
+    github: ["arcadexyz", "PawnFi"],
+  },
 ];
 
 export default parentProtocols;

@@ -18168,6 +18168,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dackieswap",
     listedAt: 1694427785
   },
+  {
+    id: "3516",
+    name: "Arcade V3",
+    address: null,
+    symbol: "-",
+    url: "https://www.arcade.xyz",
+    description: "Decentralized Loan Marketplace for NFTs.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/arcade-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Lending",
+    chains: ["Ethereum"],
+    module: "arcade-xyz-v3/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "Arcade_xyz",
+    parentProtocol: "parent#arcade.xyz",
+    listedAt: 1694429112
+  },
 ]
 
 export default data3

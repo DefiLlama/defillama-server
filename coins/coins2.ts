@@ -25,6 +25,23 @@ type CoinDict = {
 
 let auth: string[];
 
+async function queryPostgresWithRetry(
+  query: string,
+  sql: any,
+  counter: number = 0,
+): Promise<any> {
+  try {
+    // console.log("created a new pg instance");
+    const res = await sql`
+        ${query}
+        `;
+    sql.end();
+    return res;
+  } catch (e) {
+    if (counter > 5) throw e;
+    queryPostgresWithRetry(query, counter + 1);
+  }
+}
 async function generateAuth() {
   auth = process.env.COINS2_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
@@ -140,23 +157,30 @@ async function queryPostgres(
   let data: Coin[] = [];
 
   let sql;
+  // console.log("creating a new pg instance");
   if (batchPostgresReads) {
     sql = postgres(auth[0]);
-    data = await sql`
-        select ${sql(pgColumns)} from main where 
-        key in ${sql(values.map((v: Coin) => v.key))}
-        and timestamp < ${upper}
-        and timestamp > ${lower}
-      `;
+    data = await queryPostgresWithRetry(
+      `
+    select ${sql(pgColumns)} from main where 
+    key in ${sql(values.map((v: Coin) => v.key))}
+    and timestamp < ${upper}
+    and timestamp > ${lower}
+  `,
+      sql,
+    );
   } else {
     sql = postgres(auth[0]);
     for (let i = 0; i < values.length; i++) {
-      const read = await sql`
+      const read = await queryPostgresWithRetry(
+        `
           select ${sql(pgColumns)} from main where 
           key = ${values[i].key}
           and timestamp < ${upper}
           and timestamp > ${lower}
-        `;
+        `,
+        sql,
+      );
       if (read.count) {
         data.push(read as any);
       }
@@ -308,36 +332,38 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
   // console.log("creating a new pg instance");
   const sql = postgres(auth[0]);
   // console.log("created a new pg instance");
-  await sql`
+  await queryPostgresWithRetry(
+    `
       insert into main
       ${sql(values, "key", "timestamp", "price", "confidence")}
       on conflict (key, timestamp) do nothing
-      `;
-  sql.end();
+      `,
+    sql,
+  );
 }
 export async function writeCoins2(
   values: Coin[],
   batchPostgresReads: boolean = true,
   margin?: number,
 ) {
-  const step = 100;
-  for (let i = 0; i < values.length; i += step) {
-    let theseValues = values.slice(i, i + step);
-    // console.log(`${values.length} values entering`);
-    const cleanValues = batchPostgresReads
-      ? cleanTimestamps(theseValues, margin)
-      : theseValues;
-    const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
-    theseValues = cleanConfidences(theseValues, storedRecords);
-    const writesToRedis = findRedisWrites(theseValues, storedRecords);
-    const strings: { [key: string]: string } = {};
-    writesToRedis.map((v: Coin) => {
-      strings[v.key] = JSON.stringify(v);
-    });
+  // const step = 100;
+  // for (let i = 0; i < values.length; i += step) {
+  let theseValues = values; //.slice(i, i + step);
+  // console.log(`${values.length} values entering`);
+  const cleanValues = batchPostgresReads
+    ? cleanTimestamps(theseValues, margin)
+    : theseValues;
+  const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
+  theseValues = cleanConfidences(theseValues, storedRecords);
+  const writesToRedis = findRedisWrites(theseValues, storedRecords);
+  const strings: { [key: string]: string } = {};
+  writesToRedis.map((v: Coin) => {
+    strings[v.key] = JSON.stringify(v);
+  });
 
-    await writeToPostgres(theseValues);
-    await writeToRedis(strings);
-  }
+  await writeToPostgres(theseValues);
+  await writeToRedis(strings);
+  // }
 }
 export async function batchWrite2(
   values: Coin[],

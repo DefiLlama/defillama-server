@@ -26,7 +26,7 @@ type CoinDict = {
 let auth: string[];
 
 async function queryPostgresWithRetry(
-  query: string,
+  query: any,
   sql: any,
   counter: number = 0,
 ): Promise<any> {
@@ -39,7 +39,7 @@ async function queryPostgresWithRetry(
     return res;
   } catch (e) {
     if (counter > 5) throw e;
-    queryPostgresWithRetry(query, counter + 1);
+    queryPostgresWithRetry(query, sql, counter + 1);
   }
 }
 async function generateAuth() {
@@ -158,10 +158,11 @@ async function queryPostgres(
 
   let sql;
   // console.log("creating a new pg instance");
+  batchPostgresReads = false;
   if (batchPostgresReads) {
     sql = postgres(auth[0]);
     data = await queryPostgresWithRetry(
-      `
+      sql`
     select ${sql(pgColumns)} from main where 
     key in ${sql(values.map((v: Coin) => v.key))}
     and timestamp < ${upper}
@@ -170,10 +171,10 @@ async function queryPostgres(
       sql,
     );
   } else {
-    sql = postgres(auth[0]);
     for (let i = 0; i < values.length; i++) {
+      sql = postgres(auth[0]);
       const read = await queryPostgresWithRetry(
-        `
+        sql`
           select ${sql(pgColumns)} from main where 
           key = ${values[i].key}
           and timestamp < ${upper}
@@ -186,7 +187,6 @@ async function queryPostgres(
       }
     }
   }
-  sql.end();
   // console.log(`${data.length} found in PG`);
 
   let dict: CoinDict = {};
@@ -333,7 +333,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
   const sql = postgres(auth[0]);
   // console.log("created a new pg instance");
   await queryPostgresWithRetry(
-    `
+    sql`
       insert into main
       ${sql(values, "key", "timestamp", "price", "confidence")}
       on conflict (key, timestamp) do nothing

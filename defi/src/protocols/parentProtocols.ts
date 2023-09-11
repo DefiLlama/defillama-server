@@ -2678,6 +2678,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Arcade_xyz",
     github: ["arcadexyz", "PawnFi"],
   },
+  {
+    id: "parent#messina.one",
+    name: "Messina.one",
+    url: "https://www.arcade.xyz",
+    description: "Messina.one is a cross-chain protocol built on top of Wormhole that aims to enable the next 1B blockchain users.",
+    logo: `${baseIconsUrl}/messina.one.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MessinaOne",
+  },
 ];
 
 export default parentProtocols;

@@ -18190,6 +18190,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#arcade.xyz",
     listedAt: 1694429112
   },
+  {
+    id: "3517",
+    name: "Ace of Base",
+    address: "base:0xb1a45A38b88b2183f7523Db2E5E5CEa55b050958",
+    symbol: "ACE",
+    url: "https://aceofbase.xyz",
+    description: "Ace of Base is a Yield Farming and Staking platform on Base Chain.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/ace-of-base.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    module: "aceofbase/index.js",
+    oracles: [],
+    forkedFrom: ["Goose Finance"],
+    twitter: "aceofbase_xyz",
+    listedAt: 1694447552
+  },
+  {
+    id: "3518",
+    name: "Messina Liquid",
+    address: null,
+    symbol: "-",
+    url: "https://messina.one",
+    description:
+      "Messina.one is a cross-chain protocol built on top of Wormhole that aims to enable the next 1B blockchain users.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/messina-liquid.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Algorand"],
+    module: "messinaone-ls/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "MessinaOne",
+    parentProtocol: "parent#messina.one",
+    listedAt: 1694447558
+  },
 ]
 
 export default data3

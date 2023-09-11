@@ -1178,6 +1178,7 @@ export default {
         "enabled": true
     },
     "dackieswap": {
+        parentId: "DackieSwap",
         "enabled": true,
         "id": "3345"
     },
@@ -1282,5 +1283,10 @@ export default {
     "liquis": {
         "id": "3498",
         "enabled": true
+    },
+    "dackieswap-v2": {
+        parentId: "DackieSwap",
+        "enabled": true,
+        "id": "3515",
     }
 } as AdaptorsConfig

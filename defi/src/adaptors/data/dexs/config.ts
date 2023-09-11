@@ -1873,6 +1873,7 @@ export default {
         parentId: "Throne"
     },
     "dackieswap": {
+        parentId: "DackieSwap",
         "enabled": true,
         "id": "3345",
         cleanRecordsConfig: {
@@ -1949,5 +1950,10 @@ export default {
     "spicyswap": {
         "enabled": true,
         "id": "1029"
+    },
+    "dackieswap-v2": {
+        parentId: "DackieSwap",
+        "enabled": true,
+        "id": "3515",
     }
 } as AdaptorsConfig

@@ -320,24 +320,24 @@ export async function writeCoins2(
   batchPostgresReads: boolean = true,
   margin?: number,
 ) {
-  const step = 100;
-  for (let i = 0; i < values.length; i += step) {
-    let theseValues = values.slice(i, i + step);
-    // console.log(`${values.length} values entering`);
-    const cleanValues = batchPostgresReads
-      ? cleanTimestamps(theseValues, margin)
-      : theseValues;
-    const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
-    theseValues = cleanConfidences(theseValues, storedRecords);
-    const writesToRedis = findRedisWrites(theseValues, storedRecords);
-    const strings: { [key: string]: string } = {};
-    writesToRedis.map((v: Coin) => {
-      strings[v.key] = JSON.stringify(v);
-    });
+  // const step = 100;
+  // for (let i = 0; i < values.length; i += step) {
+  let theseValues = values; //.slice(i, i + step);
+  // console.log(`${values.length} values entering`);
+  const cleanValues = batchPostgresReads
+    ? cleanTimestamps(theseValues, margin)
+    : theseValues;
+  const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
+  theseValues = cleanConfidences(theseValues, storedRecords);
+  const writesToRedis = findRedisWrites(theseValues, storedRecords);
+  const strings: { [key: string]: string } = {};
+  writesToRedis.map((v: Coin) => {
+    strings[v.key] = JSON.stringify(v);
+  });
 
-    await writeToPostgres(theseValues);
-    await writeToRedis(strings);
-  }
+  await writeToPostgres(theseValues);
+  await writeToRedis(strings);
+  // }
 }
 export async function batchWrite2(
   values: Coin[],

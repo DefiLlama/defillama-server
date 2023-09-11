@@ -2654,6 +2654,18 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:premia.eth"],
     github: ["Premian-Labs"]
   },
+  {
+    id: "parent#dackieswap",
+    name: "DackieSwap",
+    url: "https://dackieswap.xyz",
+    description: "Native and Most Trusted DEX on Base.",
+    logo: `${baseIconsUrl}/dackieswap.jpg`,
+    gecko_id: "dackieswap",
+    cmcId: "26979",
+    chains: [],
+    twitter: "DackieSwap",
+    github: ["DackieSwap"],
+  },
 ];
 
 export default parentProtocols;

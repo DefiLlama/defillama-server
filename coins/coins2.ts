@@ -184,7 +184,7 @@ async function queryPostgres(
         `,
         sql,
       );
-      if (read.count) {
+      if (read && read.count) {
         data.push(read as any);
       }
     }

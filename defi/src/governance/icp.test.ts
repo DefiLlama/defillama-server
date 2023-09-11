@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 import { GovCache, Proposal } from './types';
-import { get_nns_proposal, get_proposals_interval, update_internet_computer_cache } from './icp';
+import { EXCLUDED_TOPICS, get_nns_proposal, get_proposals_interval, update_internet_computer_cache } from './icp';
 import exp from 'constants';
 import { getProposals } from './snapshot';
 import { LimitOnUpdateNotSupportedError } from 'typeorm';
@@ -65,7 +65,7 @@ describe ('internet computer adapter ', () => {
             },
           );
         var latest_proposal_id = data.latest_proposal_id;
-        let offset = 1000;
+        let offset = 100;
         var cache:GovCache = {
             id:"1",
             metadata:{},
@@ -86,12 +86,8 @@ describe ('internet computer adapter ', () => {
             start: 0,
             end: 0,};
             cache = await update_internet_computer_cache(cache);
-            expect(Object.keys(cache.proposals).length).toBe(offset+1);
-            let lowest_id = latest_proposal_id-offset;
-            Object.keys(cache.proposals).forEach((key:string)=>{
-                expect(key).toBe(lowest_id.toString());
-                lowest_id++;
-            })
+            let proposals = await get_proposals_interval(100,0);
+            expect(Object.keys(cache.proposals).length).toBe(proposals.filter((p:Proposal) => p.title?!EXCLUDED_TOPICS.includes(p.title):false).length+1);
     },100000);
 
     test(("updating recent proposals"),async function() {

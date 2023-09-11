@@ -3,6 +3,9 @@ import { GovCache, Proposal } from './types';
 import * as fs from 'fs';
 import ic from 'ic0';
 const MAX_PROPOSALS_PER_REQUEST:number = 100;
+// Proposals with these topics should not be included in the data fetched
+export const EXCLUDED_TOPICS = ["TOPIC_EXCHANGE_RATE","TOPIC_NEURON_MANAGEMENT"];
+
 
 // Proposal response onject from the NNS data API
 interface NnsProposalResponse {
@@ -124,7 +127,7 @@ export async function get_nns_proposal(proposal_id:number): Promise<Proposal> {
 function convert_proposal_format(proposal:NnsProposalResponse):Proposal{
   return {
     id: proposal.proposal_id.toString(),
-    title: proposal.action,
+    title: proposal.topic,
     state: proposal.status,
     app: "Internet Computer",
     description: proposal.summary,
@@ -139,7 +142,7 @@ function convert_proposal_format(proposal:NnsProposalResponse):Proposal{
     score_curve2: 0,
     start: proposal.proposal_timestamp_seconds,
     end: proposal.latest_tally.timestamp_seconds,
-    executed: proposal.status==='EXECUTED'
+    executed: proposal.status==='EXECUTED',
   };
 }
 
@@ -177,7 +180,7 @@ export async function update_internet_computer_cache(cache:GovCache):Promise<Gov
 
     // The starting point of the interval is the lowest proposal id that has not yet been fetched plus the range length
     let offset = proposal_left_to_fetch - limit;
-    (await get_proposals_interval(limit,offset)).forEach((p:Proposal)=>cache.proposals[p.id]=p);  
+    (await get_proposals_interval(limit,offset)).filter((p:Proposal) => p.title?!EXCLUDED_TOPICS.includes(p.title):false).forEach((p:Proposal)=>cache.proposals[p.id]=p);  
 
     // Pump the lowest proposal id by the range length
     proposal_left_to_fetch-=limit;

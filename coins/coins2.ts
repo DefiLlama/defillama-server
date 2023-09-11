@@ -3,6 +3,7 @@ import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordCloses
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
 import postgres from "postgres";
+import { sleep } from "zksync-web3/build/src/utils";
 
 const read: boolean = false;
 const pgColumns: string[] = ["key", "timestamp", "price", "confidence"];
@@ -39,7 +40,8 @@ async function queryPostgresWithRetry(
     return res;
   } catch (e) {
     if (counter > 5) throw e;
-    queryPostgresWithRetry(query, sql, counter + 1);
+    await sleep(10000);
+    await queryPostgresWithRetry(query, sql, counter + 1);
   }
 }
 async function generateAuth() {

@@ -18102,7 +18102,7 @@ const data3: Protocol[] = [
     description:
       "CavalRe is on a mission to bring all capital markets on-chain. To do so, we must introduce radically capital-efficient and scalable financial primitives ultimately capable of supporting the entire global financial system.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/cavelre.jpg`,
+    logo: `${baseIconsUrl}/cavalre.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -18134,7 +18134,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Lending",
     chains: ["Optimism"],
     module: "vmex-fi/index.js",
     oracles: [],

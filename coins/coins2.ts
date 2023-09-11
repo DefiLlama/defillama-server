@@ -41,7 +41,7 @@ async function queryPostgresWithRetry(
   } catch (e) {
     if (counter > 5) throw e;
     await sleep(10000);
-    await queryPostgresWithRetry(query, sql, counter + 1);
+    return await queryPostgresWithRetry(query, sql, counter + 1);
   }
 }
 async function generateAuth() {

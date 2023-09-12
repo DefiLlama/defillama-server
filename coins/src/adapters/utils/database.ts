@@ -1,5 +1,5 @@
 require("dotenv").config();
-import axios from "axios";
+import axios, { all } from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
@@ -11,10 +11,19 @@ import {
   CoinData,
   Metadata,
 } from "./dbInterfaces";
-import { contracts } from "../other/distressedAssets";
 import { sendMessage } from "./../../../../defi/src/utils/discord";
 import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
+import pLimit from "p-limit"
+import { sliceIntoChunks } from "@defillama/sdk/build/util";
+import * as sdk from "@defillama/sdk";
+
+
+const rateLimited = pLimit(10)
+
+let cache: any = {}
+
+setInterval(() => cache = {}, 1000 * 60 * 10) // clear cache every 10 minutes
 
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -24,16 +33,46 @@ export async function getTokenAndRedirectData(
 ): Promise<CoinData[]> {
   if (tokens.length == 0) return [];
   tokens = [...new Set(tokens)];
-  if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
-    return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
+
+  if (tokens.length > 100) {
+    const chunks: any = sliceIntoChunks(tokens, 99)
+    const allData = []
+    for (const chunk of chunks) {
+      allData.push(await getTokenAndRedirectData(chunk, chain, timestamp, hoursRange))
+    }
+    return allData.flat()
   }
-  return await getTokenAndRedirectDataDB(
-    tokens,
-    chain,
-    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
-    hoursRange,
-  );
+
+
+  if (getCurrentUnixTimestamp() - timestamp < 30 * 60) timestamp = 0; // if timestamp is less than 30 minutes ago, use current timestamp
+
+  
+  const response: CoinData[] = []
+  await rateLimited(async () => {
+    const cacheKey = `${chain}-${hoursRange}`
+    if (!cache[cacheKey]) cache[cacheKey] = {}
+    const alreadyInCache: any[] = []
+    tokens.forEach((token: string) => {
+      if (cache[cacheKey][token]) {
+        alreadyInCache.push(token)
+        response.push(cache[cacheKey][token])
+      }
+    })
+    tokens = tokens.filter((t: string) => !alreadyInCache.includes(t))
+    let apiRes
+    if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
+      apiRes = await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
+    } else {
+      apiRes = await getTokenAndRedirectDataDB(tokens, chain, timestamp == 0 ? getCurrentUnixTimestamp() : timestamp, hoursRange,)
+    }
+    apiRes.map((r: any) => cache[cacheKey][r.address] = r)
+    response.push(...apiRes)
+  })
+
+  return response
 }
+
+
 export function addToDBWritesList(
   writes: Write[],
   chain: string,
@@ -286,8 +325,8 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
         "confidence" in r.dbEntry
           ? r.dbEntry.confidence
           : r.redirect.length != 0 && "confidence" in r.redirect[0]
-          ? r.redirect[0].confidence
-          : undefined;
+            ? r.redirect[0].confidence
+            : undefined;
 
       return {
         chain:
@@ -375,9 +414,8 @@ async function checkMovement(
       if (percentageChange > margin) {
         errors += `${d.adapter} \t ${d.PK.substring(
           d.PK.indexOf("#") + 1,
-        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${
-          previousItem.price
-        } to $${d.price}\n`;
+        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${previousItem.price
+          } to $${d.price}\n`;
         return;
       }
     }

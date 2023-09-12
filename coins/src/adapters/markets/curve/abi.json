@@ -263,6 +263,9 @@
       ]
     }
   },
+  "get_balances": {
+    "crypto": "function get_balances(address _pool) external view returns (uint256[8])"
+  },
   "get_id_info": {
     "name": "get_id_info",
     "outputs": [

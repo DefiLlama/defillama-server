@@ -1,10 +1,11 @@
 import getTokenPrices from "./curve";
+import getTokenPrices2 from "./curve2";
 import getGaugePrices from "./gauges";
 import getSpareTokens from "./spares";
 
 export function curve1(timestamp: number = 0) {
   console.log("starting curve1");
-  return getTokenPrices("ethereum", ["crypto"], timestamp);
+  return getTokenPrices2("ethereum", ["crypto"], timestamp);
 }
 export function curve2(timestamp: number = 0) {
   console.log("starting curve2");

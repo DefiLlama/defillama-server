@@ -18234,6 +18234,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#messina.one",
     listedAt: 1694447558
   },
+  {
+    id: "3519",
+    name: "BasePaint",
+    address: null,
+    symbol: "-",
+    url: "https://basepaint.xyz/",
+    description:
+      "BasePaint is a collaborative art project marking the launch of Base, where artists co-create on a pixel canvas that's minted daily as an NFT, with contributors earning based on their pixel contribution",
+    chain: "Base",
+    logo: `${baseIconsUrl}/basepaint.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Base"],
+    module: "dummy.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "basepaint_xyz",
+    listedAt: 1694479479
+  },
 ]
 
 export default data3

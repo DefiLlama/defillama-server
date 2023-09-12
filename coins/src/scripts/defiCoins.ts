@@ -28,8 +28,7 @@ async function storeDefiCoins() {
     Array(adaptersArray.length).keys(),
   );
   shuffleArray(protocolIndexes);
-  let a = Object.entries(adapters);
-  a = a.filter((n: any) => n[0] == "curve1");
+  const a = Object.entries(adapters);
   const timestamp = 0;
   console.time("exec");
   await PromisePool.withConcurrency(10)

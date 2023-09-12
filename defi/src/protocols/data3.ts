@@ -18256,6 +18256,28 @@ const data3: Protocol[] = [
     twitter: "basepaint_xyz",
     listedAt: 1694479479
   },
+  {
+    id: "3520",
+    name: "MonarchPay",
+    address: null,
+    symbol: "-",
+    url: "https://www.monarchpay.com/",
+    description:
+      "Subscription payments with cryptocurrencies. Instant access to recurring payments from any non-custodial wallet. Currently available on Kava",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/monarchpay.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Kava"],
+    module: "dummy.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "MonarchWallet",
+    listedAt: 1694538314
+  },
 ]
 
 export default data3

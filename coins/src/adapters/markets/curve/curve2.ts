@@ -185,6 +185,12 @@ async function PoolToToken(
   return token;
 }
 
+const chainBlacklistedPools: any = {
+  xdai: [
+    '0x8C720914Af9BB379fD7297DAB375c969d76e47D0'
+  ]
+}
+
 export default async function getTokenPrices2(chain: any, registries: string[], timestamp: number, name: string | undefined = undefined,) {
   const writes: Write[] = [];
   const cache = await getCache('curve', name ? name : chain)
@@ -206,8 +212,11 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
 
   const cPoolInfo = cache.poolInfo
   for (let registryType of registries) {
-    const rPoolList = poolList[registryType]
+    let blacklisedPools = new Set((chainBlacklistedPools[api.chain] ?? []).map((p: string) => p.toLowerCase()))
+    
+    const rPoolList = (poolList[registryType] ?? []).filter((p: string) => !blacklisedPools.has(p.toLowerCase()))
 
+    if (!rPoolList || !rPoolList.length) continue;
 
     // update cache info
     await PromisePool.withConcurrency(10)
@@ -237,9 +246,10 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
         poolData.tokens = poolData.tokens.map((t: string) => t.toLowerCase())
       });
 
+    sdk.log('curve', api.chain ,poolList[registryType].length, registryType)
     // set total supplies
     const lps = rPoolList.map((p: any) => cPoolInfo[p].lpToken)
-    const supplies = await api.multiCall({ calls: lps, abi: 'erc20:totalSupply' })
+    const supplies = await api.multiCall({ calls: lps, abi: 'erc20:totalSupply', permitFailure: true })
 
     // filter out pools with no supplies
     const filteredData: any[] = []
@@ -247,7 +257,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     rPoolList.forEach((pool: any, i: number) => {
       const poolData = { ...cPoolInfo[pool] }
 
-      if (supplies[i] === '0') {
+      if (!supplies[i] || supplies[i] === '0') {
         filteredOut++
       } else {
         poolData.totalSupply = supplies[i]
@@ -391,7 +401,10 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
 
   async function getPoolBalances(api: ChainApi, filteredData: any, registry: string, registryType: string) {
     const pools = filteredData.map((p: any) => p.pool)
-    const poolBalancesAll = await api.multiCall({ target: registry, calls: pools, abi: abi.get_balances[registryType], })
+    sdk.log(api.chain, registry, registryType)
+    let mabi = abi.get_balances[registryType] ?? abi.get_balances.crypto
+    if (api.chain === 'polygon' && registryType === 'cryptoFactory') mabi = "function get_balances(address _pool) external view returns (uint256[2])"
+    const poolBalancesAll = await api.multiCall({ target: registry, calls: pools, abi: mabi, })
     filteredData.forEach((poolData: any, i: number) => {
       poolData.balances = poolBalancesAll[i].slice(0, poolData.tokens.length)
     })

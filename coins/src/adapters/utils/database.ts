@@ -22,8 +22,7 @@ import * as sdk from "@defillama/sdk";
 const rateLimited = pLimit(10)
 
 let cache: any = {}
-
-setInterval(() => cache = {}, 1000 * 60 * 10) // clear cache every 10 minutes
+let lastCacheClear: number
 
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -46,9 +45,13 @@ export async function getTokenAndRedirectData(
 
   if (getCurrentUnixTimestamp() - timestamp < 30 * 60) timestamp = 0; // if timestamp is less than 30 minutes ago, use current timestamp
 
-  
+
   const response: CoinData[] = []
   await rateLimited(async () => {
+
+    if (!lastCacheClear) lastCacheClear = getCurrentUnixTimestamp()
+    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15) cache = {}  // clear cache every 15 minutes
+
     const cacheKey = `${chain}-${hoursRange}`
     if (!cache[cacheKey]) cache[cacheKey] = {}
     const alreadyInCache: any[] = []
@@ -58,7 +61,10 @@ export async function getTokenAndRedirectData(
         response.push(cache[cacheKey][token])
       }
     })
+
     tokens = tokens.filter((t: string) => !alreadyInCache.includes(t))
+    if (tokens.length == 0) return response
+
     let apiRes
     if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
       apiRes = await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);

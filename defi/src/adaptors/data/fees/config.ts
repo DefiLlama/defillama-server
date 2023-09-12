@@ -1288,5 +1288,9 @@ export default {
         parentId: "DackieSwap",
         "enabled": true,
         "id": "3515",
+    },
+    "basepaint": {
+        "enabled": true,
+        "id": "3519"
     }
 } as AdaptorsConfig

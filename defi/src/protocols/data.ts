@@ -9005,6 +9005,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     treasury: "wonderland.js",
     twitter: "thevoltaclub",
     github: ["Volta-Club"],
+    forkedFrom: ["Olympus DAO"],
     governanceID: ["snapshot:bestfork.eth"]
   },
   {

@@ -10920,7 +10920,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://kurrency.io",
     description:
-      "Kurrency is a collateral-backed crypto dollar service where users can mint, deposit and swap WCD (WEMIX Crypto Dollar)",
+      "Kurrency is a collateral-backed crypto dollar service where users can mint, deposit, and swap Crypto Dollars. All Crypto Dollars are minted on its own, individual chain and are designed to maintain the value of 1 USD.",
     chain: "WEMIX",
     logo: `${baseIconsUrl}/kurrency.png`,
     audits: "0",

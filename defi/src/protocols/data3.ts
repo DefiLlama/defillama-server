@@ -18278,6 +18278,28 @@ const data3: Protocol[] = [
     twitter: "MonarchWallet",
     listedAt: 1694538314
   },
+  {
+    id: "3521",
+    name: "One guy Finance",
+    address: null,
+    symbol: "-",
+    url: "https://oneguy.trade/",
+    description:
+      "OG Finance is a decentralized gamefi ecosystem of Defi products, protocols, and use cases",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/one-guy-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Polygon"],
+    module: "oneguyfinance/index.js",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    twitter: "oneguyfinance",
+    listedAt: 1694557962
+  },
 ]
 
 export default data3

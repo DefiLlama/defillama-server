@@ -8987,24 +8987,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "522",
-    name: "Wonderland",
-    address: "avax:0x0da67235dD5787D67955420C84ca1cEcd4E5Bb3b",
-    symbol: "wMEMO",
-    url: "https://wonderland.money",
+    name: "Volta Club", // previous Wonderland
+    address: "avax:0x9b06F3C5de42D4623D7A2Bd940EC735103c68A76", //Users are migrating from wMEMO to Volta on all four chains where both tokens are present, with a migration ratio of 1:330.
+    symbol: "VOLTA",
+    url: "https://volta.club/",
     description:
-      "Wonderland is the first decentralized reserve currency protocol available on the Avalanche Network, a collective that is motivated to empower crypto/web 3 protocols. Wonderland deploys capital at the earliest stages of projects and uses advanced treasury management strategies to maximize capital growth",
+      "Volta is the token that represents the Volta Club protocol. With a maximum and total supply of 1,000,000, it has been transitioned from the deprecated wMEMO, the native token of Wonderland DAO, at a 1:330 rate. As Wonderland undergoes rebranding, both tokens will be supported for now. However, Volta will be the sole officially supported token and will be used as the protocol's native token.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/wonderland.jpg`,
+    logo: `${baseIconsUrl}/volta-club.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "wrapped-memory",
-    cmcId: "17076",
+    gecko_id: "volta-club",
+    cmcId: "28003",
     category: "Reserve Currency",
     chains: ["Avalanche"],
     module: "wonderland/api.js",
     treasury: "wonderland.js",
-    twitter: "Wonderland_fi",
-    forkedFrom: ["Olympus DAO"],
+    twitter: "thevoltaclub",
+    github: ["Volta-Club"],
     governanceID: ["snapshot:bestfork.eth"]
   },
   {

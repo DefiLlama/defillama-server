@@ -3417,7 +3417,7 @@ const data2: Protocol[] = [
     category: "Reserve Currency",
     chains: ["Cronos"],
     oracles: [],
-    forkedFrom: ["Wonderland"],
+    forkedFrom: [],
     module: "gamblefi/index.js",
     twitter: "GambleFinance",
     listedAt: 1646949250,

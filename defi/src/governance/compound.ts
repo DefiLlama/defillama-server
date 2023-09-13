@@ -5,6 +5,7 @@ import { updateStats, toHex, getGovernanceSources, getChainNameFromId } from './
 import * as sdk from '@defillama/sdk'
 import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import { getProvider } from '@defillama/sdk/build/general'
+import { addICPProposals } from './icp'
 
 const PROPOSAL_STATES = ['Pending', 'Active', 'Canceled', 'Defeated', 'Succeeded', 'Queued', 'Expired', 'Executed']
 
@@ -81,7 +82,8 @@ export async function updateCompounds() {
     await Promise.all(ids.map(updateCache))
   }
 
-  return setCompoundOverview(overview)
+  await setCompoundOverview(overview)
+  await addICPProposals(overview)
 
   async function updateCache(id: string) {
 

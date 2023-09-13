@@ -1,13 +1,14 @@
 import axios from 'axios'
 import { GovCache, Proposal } from './types';
-import * as fs from 'fs';
-import ic from 'ic0';
+// import ic from 'ic0';
 import { PromisePool } from "@supercharge/promise-pool";
+import { updateStats } from './utils';
+import { getICPData, setICPData } from './cache';
 
-const MAX_PROPOSALS_PER_REQUEST:number = 100;
+const MAX_PROPOSALS_PER_REQUEST: number = 100;
 // Proposals with these topics should not be included in the data fetched
-export const EXCLUDED_TOPICS = ["TOPIC_EXCHANGE_RATE","TOPIC_NEURON_MANAGEMENT"];
-
+export const EXCLUDED_TOPICS = ["TOPIC_EXCHANGE_RATE", "TOPIC_NEURON_MANAGEMENT"];
+const HARDCODED_SUPPLY = 50456078503492260;
 
 // Proposal response onject from the NNS data API
 interface NnsProposalResponse {
@@ -54,7 +55,7 @@ export async function get_metadata() {
     },
   );
   // Connection to the NNS governance canister (Smart Contract)
-  const nns_icp_ledger = ic('ryjl3-tyaaa-aaaaa-aaaba-cai');
+  // const nns_icp_ledger = ic('ryjl3-tyaaa-aaaaa-aaaba-cai');
 
   return {
     // NNS Governance canister id
@@ -70,8 +71,9 @@ export async function get_metadata() {
       type: "ICRC-1 Ledger",
       name: "Network Nervous System Internet Computer Protocol Ledger",
       symbol: "NNS ICP Ledger",
-      supply:parseInt(await nns_icp_ledger.call('icrc1_total_supply')).toString(),
-      decimals:parseInt(await nns_icp_ledger.call('icrc1_decimals')).toString(),
+      // supply:parseInt(await nns_icp_ledger.call('icrc1_total_supply')).toString(),
+      // decimals:parseInt(await nns_icp_ledger.call('icrc1_decimals')).toString(),
+      supply: HARDCODED_SUPPLY,
       decimals: "8"
     }]
   }
@@ -171,7 +173,7 @@ export async function update_internet_computer_cache(cache: GovCache): Promise<G
   let latest_nns_proposal_id = data.latest_proposal_id
   let nns_proposals_in_cache: string[] = Object.keys(cache.proposals);
   nns_proposals_in_cache.reverse();
-  const latest_nns_proposal_in_cache = nns_proposals_in_cache.reduce((a: any, b: any) => a > +b ? a : b, 3) 
+  const latest_nns_proposal_in_cache = nns_proposals_in_cache.reduce((a: any, b: any) => a > +b ? a : b, 3)
 
   console.log(nns_proposals_in_cache.length, latest_nns_proposal_in_cache)
   // The proposals 0-2 are nor available => the lowest proposal id is 3
@@ -185,9 +187,9 @@ export async function update_internet_computer_cache(cache: GovCache): Promise<G
 
     // The starting point of the interval is the lowest proposal id that has not yet been fetched plus the range length
     let offset = proposal_left_to_fetch - limit;
-    (await get_proposals_interval(limit,offset))
-      .filter((p:Proposal) => p.title?!EXCLUDED_TOPICS.includes(p.title):false)
-      .forEach((p:Proposal)=>cache.proposals[p.id]=p);  
+    (await get_proposals_interval(limit, offset))
+      .filter((p: Proposal) => p.title ? !EXCLUDED_TOPICS.includes(p.title) : false)
+      .forEach((p: Proposal) => cache.proposals[p.id] = p);
 
     // Pump the lowest proposal id by the range length
     proposal_left_to_fetch -= limit;
@@ -222,9 +224,9 @@ async function update_recent_proposals(cache: GovCache): Promise<GovCache> {
     .process(async (key) => {
       let current_proposal = cache.proposals[key];
       // If the current proposal was created more than 12 weeks ago, the updating process is completed
-      if (current_proposal.start + time_frame < now) 
+      if (current_proposal.start + time_frame < now)
         return
-      
+
       // Only update those proposals which have not reached a terminal state yet
       if (!terminal_proposal_states.includes(current_proposal.state)) {
         cache.proposals[key] = await get_nns_proposal(parseInt(key));
@@ -234,13 +236,37 @@ async function update_recent_proposals(cache: GovCache): Promise<GovCache> {
   return cache;
 }
 
-async function main() {
-  if (fs.existsSync("cache.json")) {
-  let data = JSON.parse(fs.readFileSync('cache.json', 'utf8'))
-  const cache = await update_internet_computer_cache(data as any
-    )
-  fs.writeFileSync('cache.json', JSON.stringify(cache, null, 2))
+export async function addICPProposals(overview: any = {}) {
+  let cache = await getICPData()
+  await update_internet_computer_cache(cache as any)
+  cache.metadata = {
+    "id": "internet-computer",
+    "type": "ICP",
+    "tokens": [
+      {
+        "id": "ICP",
+        "type": "other",
+        "name": "Internet Computer",
+        "symbol": "ICP",
+        "supply": HARDCODED_SUPPLY,
+        "decimals": 8
+      }
+    ],
+    "strategies": [{
+      "name": "erc20-balance-of",
+      "network": "ICP",
+    }],
+    "name": "Internet Computer",
+    "slug": "icp",
+    "network": "icp",
+    "chainName": "ICP",
+    "symbol": "ICP",
   }
+  cache.id = "icp"
+  updateStats(cache, overview, cache.id)
+  if (overview[cache.id]) {
+    Object.values(overview[cache.id].months ?? {}).forEach((month: any) => delete month.proposals)
+  }
+  await setICPData(cache)
+  return overview
 }
-
-main();

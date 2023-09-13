@@ -85,3 +85,11 @@ export async function getTallyOverview() {
 export async function setTallyOverview(cache: any) {
   return setCache('overview', 'tally', cache)
 }
+
+export async function getICPData() {
+  return getCache('icp', 'proposalCache')
+}
+
+export async function setICPData(cache: any) {
+  return setCache('icp', 'proposalCache', cache)
+}

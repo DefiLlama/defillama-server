@@ -18168,6 +18168,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dackieswap",
     listedAt: 1694427785
   },
+  /*
   {
     id: "3516",
     name: "Arcade V3",
@@ -18190,6 +18191,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#arcade.xyz",
     listedAt: 1694429112
   },
+  */
   {
     id: "3517",
     name: "Ace of Base",

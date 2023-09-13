@@ -16,12 +16,22 @@ export default async function bridge(): Promise<Token[]> {
 
   const tokens: Token[] = [];
   bridge
-    .filter((token) => token.chainId === 10)
     .map((optToken) => {
       const ethToken = ethUrlMap[optToken.logoURI];
       if (ethToken === undefined) return;
+      let chain;
+      switch(optToken.chainId){
+        case 10:
+          chain = "optimism"
+          break;
+        case 8453:
+          chain = "base"
+          break;
+        default:
+          return;
+      }
       tokens.push({
-        from: `optimism:${optToken.address}`,
+        from: `${chain}:${optToken.address}`,
         to: `ethereum:${ethToken.address}`,
         symbol: optToken.symbol,
         decimals: optToken.decimals

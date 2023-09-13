@@ -18320,7 +18320,7 @@ const data3: Protocol[] = [
     chains: ["Pego"],
     module: "w3bank/index.js",
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["Compound V2"],
     twitter: "w3_foundation",
     audit_links: ["https://w3bank.finance/audit/W3BANK_Audit_Report_en.pdf"],
     listedAt: 1694613903

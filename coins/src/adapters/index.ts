@@ -43,7 +43,6 @@ export default {
   quickperps: require("./yield/quickperps"),
   timeless: require("./yield/timeless"),
   beefy: require("./yield/beefy"),
-  spares: require("./markets/curve"),
   platypus: require("./markets/platypus"),
   curve1: require("./markets/curve"),
   balancer1: require("./markets/balancer"),

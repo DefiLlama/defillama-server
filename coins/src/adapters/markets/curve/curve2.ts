@@ -191,12 +191,18 @@ const chainBlacklistedPools: any = {
   ]
 }
 
-export default async function getTokenPrices2(chain: any, registries: string[], timestamp: number, name: string | undefined = undefined,) {
+export default async function getTokenPrices2(chain: any, registries: string[], timestamp: number, name: string | undefined = undefined, customPools: any = undefined) {
   const writes: Write[] = [];
   const cache = await getCache('curve', name ? name : chain)
   const api = await getApi(chain, timestamp)
-
-  let poolList = await getPools(api, name, cache);
+  let poolList 
+  if (customPools) {
+    poolList = { custom: customPools }
+    registries = ['custom']
+    cache.registries = { custom: '' }
+  } else {
+    poolList = await getPools(api, name, cache);
+  }
   await unknownPools2(api, timestamp, poolList, registries, writes, cache)
   await setCache('curve', name ? name : chain, cache)
   return writes;
@@ -397,6 +403,19 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     if (registryType === 'pcs') {
       const tokens = await api.fetchList({ lengthAbi: 'uint256:N_COINS', itemAbi: 'function coins(uint256) view returns (address)', target: pool })
       return tokens
+    } else if (registryType === 'custom') {
+      const tokens = []
+      let i = 0
+      do {
+        try {
+          const token = await api.call({ target: pool, abi: 'function coins(uint256) view returns (address)', params: [i] })
+          tokens.push(token)
+        } catch (e) {
+          console.log('failed to get token', e)
+          i = 1000;
+        }
+      } while (i++ < 10)
+      return tokens;
     }
     const coins = await api.call({ target: registry, params: pool, abi: abi.get_coins[registryType], })
     return coins.filter((c: string) => c != nullAddress)
@@ -404,7 +423,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
 
   async function getPoolBalances(api: ChainApi, filteredData: any, registry: string, registryType: string) {
     const pools = filteredData.map((p: any) => p.pool)
-    if (registryType === 'pcs') {
+    if (registryType === 'pcs' || registryType === 'custom') {
       const calls: any = []
       filteredData.forEach((p: any) => {
         p.tokens.forEach((_t: string, i: number) => calls.push({ target: p.pool, params: i }))

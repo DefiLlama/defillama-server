@@ -13,7 +13,6 @@ export const normalizedChainReplacements = {
   "oasys": "oas",
   "map relay chain": "map",
   "pulsechain": "pulse",
-  "pego": "pg"
 } as {
   [chain: string]: string
 }
@@ -1946,8 +1945,6 @@ export function transformNewChainName(chain: string) {
       return "MAP Relay Chain"
     case "Pulse":
       return "PulseChain"
-    case "pg":
-        return "Pego"
     default:
       return chain
   }
@@ -2345,7 +2342,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "DSC"
     case "darwinia":
       return "Darwinia"
-    case "pego":
+    case "pg":
       return "Pego"    
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

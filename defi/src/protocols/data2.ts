@@ -29808,5 +29808,26 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true
   },
+  {
+    id: "2701",
+    name: "W3Bank",
+    address: "pego:0xCe721D6C56c628A5eBde4783abb9D70d2053AAb9",
+    symbol: "W3K",
+    url: "https://w3bank.finance/",
+    description: "W3BANK is a decentralized lending protocol built on the PEGO Network where users can deposit, withdraw, borrow, and repay.",
+    chain: "Pego",
+    logo: `${baseIconsUrl}/w3bank.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "pego-network",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Pego"],
+    oracles: [],
+    forkedFrom: [],
+    module: "w3bank/index.js",
+    twitter: "w3_foundation",
+    listedAt: 1693958400
+  },
 ]
 export default data2;

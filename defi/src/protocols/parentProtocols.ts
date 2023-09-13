@@ -2513,7 +2513,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#baseswap",
     name: "BaseSwap",
-    url: "https://metapool.app",
+    url: "https://baseswap.fi/",
     description: "Native DEX on Base chain",
     logo: `${baseIconsUrl}/baseswap.png`,
     gecko_id: "baseswap",

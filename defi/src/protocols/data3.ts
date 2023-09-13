@@ -14082,7 +14082,7 @@ const data3: Protocol[] = [
     name: "BaseSwap V2",
     address: "base:0x78a087d713Be963Bf307b18F2Ff8122EF9A63ae9",
     symbol: "BSWAP",
-    url: "https://baseswap.fi/",
+    url: "https://baseswap.fi/swap",
     description: "The Native leading DEX on Base Chain. By Based team, for Based People. From simplistic to advanced BaseSwap has it all",
     chain: "Base",
     logo: `${baseIconsUrl}/baseswap-v2.jpg`,

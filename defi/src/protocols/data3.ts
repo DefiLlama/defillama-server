@@ -17606,7 +17606,7 @@ const data3: Protocol[] = [
     name: "Hodlify",
     address: null,
     symbol: "-",
-    url: "https://alpha.hodlify.io",
+    url: "https://hodlify.io",
     description:
       "Dynamic Chains Earning Infrastructure for HODLers",
     chain: "Arbitrum",
@@ -17616,7 +17616,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Arbitrum", "Optimism"],
+    chains: ["Arbitrum", "Optimism", "Ethereum", "Polygon"],
     module: "hodlify/index.js",
     oracles: [],
     forkedFrom: [],

@@ -1872,6 +1872,12 @@ export const chainCoingeckoIds = {
     github: ["darwinia-network"],
     categories: ["EVM"],
   },
+  "Pego": {
+    geckoId: "pego-network-2",
+    symbol: "PG",
+    cmcId: "27723",
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2335,7 +2341,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "dsc":
       return "DSC"
     case "darwinia":
-      return "Darwinia"  
+      return "Darwinia"
+    case "pego":
+      return "Pego"    
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

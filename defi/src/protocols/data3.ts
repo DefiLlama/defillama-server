@@ -18072,7 +18072,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3512",
-    name: "CairoFiSwap",
+    name: "CairoFi",
     address: null,
     symbol: "-",
     url: "https://www.cairofi.org",

@@ -257,7 +257,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     rPoolList.forEach((pool: any, i: number) => {
       const poolData = { ...cPoolInfo[pool] }
 
-      if (!supplies[i] || supplies[i] === '0') {
+      if (!supplies[i] || supplies[i] === '0' || poolData.tokens == undefined) {
         filteredOut++
       } else {
         poolData.totalSupply = supplies[i]

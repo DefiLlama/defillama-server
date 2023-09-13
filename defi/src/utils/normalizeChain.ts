@@ -12,7 +12,8 @@ export const normalizedChainReplacements = {
   "eos evm": "eos_evm",
   "oasys": "oas",
   "map relay chain": "map",
-  "pulsechain": "pulse"
+  "pulsechain": "pulse",
+  "pego": "pg"
 } as {
   [chain: string]: string
 }
@@ -1945,6 +1946,8 @@ export function transformNewChainName(chain: string) {
       return "MAP Relay Chain"
     case "Pulse":
       return "PulseChain"
+    case "pg":
+        return "Pego"
     default:
       return chain
   }

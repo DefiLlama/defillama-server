@@ -82,8 +82,8 @@ export async function updateCompounds() {
     await Promise.all(ids.map(updateCache))
   }
 
-  await setCompoundOverview(overview)
   await addICPProposals(overview)
+  await setCompoundOverview(overview)
 
   async function updateCache(id: string) {
 

@@ -3,7 +3,7 @@ import { GovCache, Proposal } from './types';
 // import ic from 'ic0';
 import { PromisePool } from "@supercharge/promise-pool";
 import { updateStats } from './utils';
-import { getICPData, setICPData } from './cache';
+import { setCompound, getCompound } from './cache';
 
 const MAX_PROPOSALS_PER_REQUEST: number = 100;
 // Proposals with these topics should not be included in the data fetched
@@ -236,8 +236,10 @@ async function update_recent_proposals(cache: GovCache): Promise<GovCache> {
   return cache;
 }
 
+const GOV_ID = 'icp'
+
 export async function addICPProposals(overview: any = {}) {
-  let cache = await getICPData()
+  let cache = await getCompound(GOV_ID)
   await update_internet_computer_cache(cache as any)
   cache.metadata = {
     "id": "internet-computer",
@@ -262,11 +264,11 @@ export async function addICPProposals(overview: any = {}) {
     "chainName": "ICP",
     "symbol": "ICP",
   }
-  cache.id = "icp"
+  cache.id = GOV_ID
   updateStats(cache, overview, cache.id)
   if (overview[cache.id]) {
     Object.values(overview[cache.id].months ?? {}).forEach((month: any) => delete month.proposals)
   }
-  await setICPData(cache)
+  await setCompound(cache.id, cache)
   return overview
 }

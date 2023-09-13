@@ -1292,5 +1292,9 @@ export default {
     "basepaint": {
         "enabled": true,
         "id": "3519"
+    },
+    "monarchpay": {
+        "enabled": true,
+        "id": "3520"
     }
 } as AdaptorsConfig

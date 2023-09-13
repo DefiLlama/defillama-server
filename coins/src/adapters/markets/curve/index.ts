@@ -1,72 +1,68 @@
 import getTokenPrices from "./curve";
+import getTokenPrices2 from "./curve2";
 import getGaugePrices from "./gauges";
 import getSpareTokens from "./spares";
 
+const defaultRegistries = ['stableswap', 'crypto', 'stableFactory', 'cryptoFactory'];
 export function curve1(timestamp: number = 0) {
   console.log("starting curve1");
-  return getTokenPrices("ethereum", ["crypto"], timestamp);
+  return Promise.all([
+    getTokenPrices2("ethereum", ["crypto"], timestamp),
+    getTokenPrices2("arbitrum", defaultRegistries, timestamp),
+    getTokenPrices2("fantom", defaultRegistries, timestamp),
+    getTokenPrices2("moonbeam", defaultRegistries, timestamp),
+    getTokenPrices2("aurora", defaultRegistries, timestamp),
+    getTokenPrices2("optimism", defaultRegistries, timestamp),
+    getTokenPrices2("polygon", defaultRegistries, timestamp),
+    getTokenPrices2("celo", defaultRegistries, timestamp),
+    getTokenPrices2("xdai", defaultRegistries, timestamp),
+    getTokenPrices2("avax", defaultRegistries, timestamp),
+  ]);
+
 }
-export function curve2(timestamp: number = 0) {
+export function curve2(_timestamp: number = 0) {
   console.log("starting curve2");
-  return Promise.all([
-    getTokenPrices("arbitrum", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("xdai", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("arbitrum", ["stableFactory", "cryptoFactory"], timestamp),
-    getTokenPrices("xdai", ["stableFactory", "cryptoFactory"], timestamp),
-  ]);
+  return Promise.all([]);
 }
-export function curve3(timestamp: number = 0) {
+export function curve3(_timestamp: number = 0) {
   console.log("starting curve3");
-  return Promise.all([
-    getTokenPrices("avax", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("fantom", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("avax", ["stableFactory", "cryptoFactory"], timestamp),
-    getTokenPrices("fantom", ["stableFactory", "cryptoFactory"], timestamp),
-  ]);
+  return Promise.all([]);
 }
-export function curve4(timestamp: number = 0) {
+export function curve4(_timestamp: number = 0) {
   console.log("starting curve4");
-  return Promise.all([
-    getTokenPrices("moonbeam", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("aurora", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("moonbeam", ["stableFactory", "cryptoFactory"], timestamp),
-    getTokenPrices("aurora", ["stableFactory", "cryptoFactory"], timestamp),
-  ]);
+  return Promise.all([]);
 }
-export function curve5a(timestamp: number = 0) {
+export function curve5a(_timestamp: number = 0) {
   console.log("starting curve5a");
-  return getTokenPrices("optimism", ["stableswap"], timestamp);
+  return Promise.all([]);
 }
-export function curve5b(timestamp: number = 0) {
+export function curve5b(_timestamp: number = 0) {
   console.log("starting curve5b");
-  return getTokenPrices("optimism", ["crypto"], timestamp);
+  return Promise.all([]);
 }
-export function curve5c(timestamp: number = 0) {
+export function curve5c(_timestamp: number = 0) {
   console.log("starting curve5c");
-  return getTokenPrices("optimism", ["cryptoFactory"], timestamp);
+  return Promise.all([]);
 }
-export function curve5d(timestamp: number = 0) {
+export function curve5d(_timestamp: number = 0) {
   console.log("starting curve5d");
-  return getTokenPrices("optimism", ["stableFactory"], timestamp);
+  return Promise.all([]);
 }
-export function curve6(timestamp: number = 0) {
+export function curve6(_timestamp: number = 0) {
   console.log("starting curve6");
-  return getTokenPrices("polygon", ["stableswap", "crypto"], timestamp);
+  return Promise.all([]);
 }
-export function curve6b(timestamp: number = 0) {
+export function curve6b(_timestamp: number = 0) {
   console.log("starting curve6b");
-  return getTokenPrices("polygon", ["stableFactory"], timestamp);
+  return Promise.all([]);
 }
-export function curve6c(timestamp: number = 0) {
+export function curve6c(_timestamp: number = 0) {
   console.log("starting curve6c");
-  return getTokenPrices("polygon", ["cryptoFactory"], timestamp);
+  return Promise.all([]);
 }
-export function curve7(timestamp: number = 0) {
+export function curve7(_timestamp: number = 0) {
   console.log("starting curve7");
-  return Promise.all([
-    getTokenPrices("celo", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("celo", ["cryptoFactory", "stableFactory"], timestamp),
-  ]);
+  return Promise.all([]);
 }
 
 export function ellipsis(timestamp: number = 0) {

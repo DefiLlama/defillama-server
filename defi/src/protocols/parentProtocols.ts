@@ -2513,7 +2513,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#baseswap",
     name: "BaseSwap",
-    url: "https://metapool.app",
+    url: "https://baseswap.fi/",
     description: "Native DEX on Base chain",
     logo: `${baseIconsUrl}/baseswap.png`,
     gecko_id: "baseswap",
@@ -2666,6 +2666,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DackieSwap",
     github: ["DackieSwap"],
   },
+  /*
   {
     id: "parent#arcade.xyz",
     name: "Arcade.xyz",
@@ -2678,6 +2679,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Arcade_xyz",
     github: ["arcadexyz", "PawnFi"],
   },
+  */
   {
     id: "parent#messina.one",
     name: "Messina.one",

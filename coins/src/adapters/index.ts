@@ -44,7 +44,7 @@ export default {
   timeless: require("./yield/timeless"),
   beefy: require("./yield/beefy"),
   platypus: require("./markets/platypus"),
-  curve1: require("./markets/curve"),
+  curve: require("./markets/curve"),
   balancer1: require("./markets/balancer"),
   balancer2: require("./markets/balancer"),
   balancer3: require("./markets/balancer"),

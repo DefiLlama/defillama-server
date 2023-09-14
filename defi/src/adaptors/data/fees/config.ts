@@ -1288,5 +1288,13 @@ export default {
         parentId: "DackieSwap",
         "enabled": true,
         "id": "3515",
+    },
+    "basepaint": {
+        "enabled": true,
+        "id": "3519"
+    },
+    "monarchpay": {
+        "enabled": true,
+        "id": "3520"
     }
 } as AdaptorsConfig

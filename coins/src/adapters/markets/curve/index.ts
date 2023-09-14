@@ -2,8 +2,8 @@ import getTokenPrices2 from "./curve2";
 import getGaugePrices from "./gauges";
 
 const defaultRegistries = ['stableswap', 'crypto', 'stableFactory', 'cryptoFactory'];
-export function curve1(timestamp: number = 0) {
-  console.log("starting curve1");
+export function curve(timestamp: number = 0) {
+  console.log("starting curve");
   return Promise.all([
 
     getTokenPrices2("ethereum", ["crypto"], timestamp),

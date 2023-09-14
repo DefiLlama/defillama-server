@@ -14082,7 +14082,7 @@ const data3: Protocol[] = [
     name: "BaseSwap V2",
     address: "base:0x78a087d713Be963Bf307b18F2Ff8122EF9A63ae9",
     symbol: "BSWAP",
-    url: "https://baseswap.fi/",
+    url: "https://baseswap.fi/swap",
     description: "The Native leading DEX on Base Chain. By Based team, for Based People. From simplistic to advanced BaseSwap has it all",
     chain: "Base",
     logo: `${baseIconsUrl}/baseswap-v2.jpg`,
@@ -17606,7 +17606,7 @@ const data3: Protocol[] = [
     name: "Hodlify",
     address: null,
     symbol: "-",
-    url: "https://alpha.hodlify.io",
+    url: "https://hodlify.io",
     description:
       "Dynamic Chains Earning Infrastructure for HODLers",
     chain: "Arbitrum",
@@ -17616,7 +17616,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Arbitrum", "Optimism"],
+    chains: ["Arbitrum", "Optimism", "Ethereum", "Polygon"],
     module: "hodlify/index.js",
     oracles: [],
     forkedFrom: [],
@@ -18072,7 +18072,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3512",
-    name: "CairoFiSwap",
+    name: "CairoFi",
     address: null,
     symbol: "-",
     url: "https://www.cairofi.org",
@@ -18168,6 +18168,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dackieswap",
     listedAt: 1694427785
   },
+  /*
   {
     id: "3516",
     name: "Arcade V3",
@@ -18190,6 +18191,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#arcade.xyz",
     listedAt: 1694429112
   },
+  */
   {
     id: "3517",
     name: "Ace of Base",
@@ -18255,6 +18257,73 @@ const data3: Protocol[] = [
     forkedFrom: [],
     twitter: "basepaint_xyz",
     listedAt: 1694479479
+  },
+  {
+    id: "3520",
+    name: "MonarchPay",
+    address: null,
+    symbol: "-",
+    url: "https://www.monarchpay.com/",
+    description:
+      "Subscription payments with cryptocurrencies. Instant access to recurring payments from any non-custodial wallet. Currently available on Kava",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/monarchpay.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Kava"],
+    module: "dummy.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "MonarchWallet",
+    listedAt: 1694538314
+  },
+  {
+    id: "3521",
+    name: "One guy Finance",
+    address: null,
+    symbol: "-",
+    url: "https://oneguy.trade/",
+    description:
+      "OG Finance is a decentralized gamefi ecosystem of Defi products, protocols, and use cases",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/one-guy-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Polygon"],
+    module: "oneguyfinance/index.js",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    twitter: "oneguyfinance",
+    listedAt: 1694557962
+  },
+  {
+    id: "3522",
+    name: "w3bank",
+    address: "pego:0x5Ed98077189f82aB9d9D651343EDbfEd73d6F4e2",
+    symbol: "W3K",
+    url: "https://w3bank.finance",
+    description:
+      "W3BANK is a decentralized lending protocol built on the PEGO Network where users can deposit, withdraw, borrow, and repay loan.",
+    chain: "Pego",
+    logo: `${baseIconsUrl}/w3bank.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Pego"],
+    module: "w3bank/index.js",
+    oracles: [],
+    forkedFrom: ["Compound V2"],
+    twitter: "w3_foundation",
+    audit_links: ["https://w3bank.finance/audit/W3BANK_Audit_Report_en.pdf"],
+    listedAt: 1694613903
   },
 ]
 

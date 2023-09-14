@@ -191,15 +191,20 @@ const chainBlacklistedPools: any = {
   ]
 }
 
-export default async function getTokenPrices2(chain: any, registries: string[], timestamp: number, name: string | undefined = undefined,) {
+export default async function getTokenPrices2(chain: any, registries: string[], timestamp: number, name: string | undefined = undefined, customPools: any = undefined) {
   const writes: Write[] = [];
   const cache = await getCache('curve', name ? name : chain)
   const api = await getApi(chain, timestamp)
-
-  let poolList = await getPools(api, name, cache);
+  let poolList 
+  if (customPools) {
+    poolList = { custom: customPools }
+    registries = ['custom']
+    cache.registries = { custom: '' }
+  } else {
+    poolList = await getPools(api, name, cache);
+  }
   await unknownPools2(api, timestamp, poolList, registries, writes, cache)
   await setCache('curve', name ? name : chain, cache)
-
   return writes;
 }
 
@@ -213,7 +218,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
   const cPoolInfo = cache.poolInfo
   for (let registryType of registries) {
     let blacklisedPools = new Set((chainBlacklistedPools[api.chain] ?? []).map((p: string) => p.toLowerCase()))
-    
+
     const rPoolList = (poolList[registryType] ?? []).filter((p: string) => !blacklisedPools.has(p.toLowerCase()))
 
     if (!rPoolList || !rPoolList.length) continue;
@@ -246,7 +251,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
         poolData.tokens = poolData.tokens.map((t: string) => t.toLowerCase())
       });
 
-    sdk.log('curve', api.chain ,poolList[registryType].length, registryType)
+    sdk.log('curve', api.chain, poolList[registryType].length, registryType)
     // set total supplies
     const lps = rPoolList.map((p: any) => cPoolInfo[p].lpToken)
     const supplies = await api.multiCall({ calls: lps, abi: 'erc20:totalSupply', permitFailure: true })
@@ -257,7 +262,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     rPoolList.forEach((pool: any, i: number) => {
       const poolData = { ...cPoolInfo[pool] }
 
-      if (!supplies[i] || supplies[i] === '0' || poolData.tokens == undefined) {
+      if (!supplies[i] || supplies[i] === '0' || !poolData.tokens || !poolData.tokens.length) {
         filteredOut++
       } else {
         poolData.totalSupply = supplies[i]
@@ -395,15 +400,46 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
   }
 
   async function getPoolTokens(api: ChainApi, pool: any, registry: string, registryType: string) {
+    if (registryType === 'pcs') {
+      const tokens = await api.fetchList({ lengthAbi: 'uint256:N_COINS', itemAbi: 'function coins(uint256) view returns (address)', target: pool })
+      return tokens
+    } else if (registryType === 'custom') {
+      const tokens = []
+      let i = 0
+      do {
+        try {
+          const token = await api.call({ target: pool, abi: 'function coins(uint256) view returns (address)', params: [i] })
+          tokens.push(token)
+        } catch (e) {
+          console.log('failed to get token', e)
+          i = 1000;
+        }
+      } while (i++ < 10)
+      return tokens;
+    }
     const coins = await api.call({ target: registry, params: pool, abi: abi.get_coins[registryType], })
     return coins.filter((c: string) => c != nullAddress)
   }
 
   async function getPoolBalances(api: ChainApi, filteredData: any, registry: string, registryType: string) {
     const pools = filteredData.map((p: any) => p.pool)
+    if (registryType === 'pcs' || registryType === 'custom') {
+      const calls: any = []
+      filteredData.forEach((p: any) => {
+        p.tokens.forEach((_t: string, i: number) => calls.push({ target: p.pool, params: i }))
+      })
+      const balances = await api.multiCall({ abi: 'function balances(uint256) view returns (uint256)', calls })
+      let i = 0
+      filteredData.forEach((p: any) => {
+        p.balances = balances.slice(i, i + p.tokens.length)
+        i += p.tokens.length
+      })
+      return;
+    }
     sdk.log(api.chain, registry, registryType)
     let mabi = abi.get_balances[registryType] ?? abi.get_balances.crypto
     if (api.chain === 'polygon' && registryType === 'cryptoFactory') mabi = "function get_balances(address _pool) external view returns (uint256[2])"
+    if (api.chain === 'bsc' && registryType === 'stableswap') mabi = "function get_balances(address _pool) external view returns (uint256[4])"
     const poolBalancesAll = await api.multiCall({ target: registry, calls: pools, abi: mabi, })
     filteredData.forEach((poolData: any, i: number) => {
       poolData.balances = poolBalancesAll[i].slice(0, poolData.tokens.length)

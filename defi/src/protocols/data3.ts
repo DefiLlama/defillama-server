@@ -6466,8 +6466,8 @@ const data3: Protocol[] = [
   {
     id: "2992",
     name: "Gravita Protocol",
-    address: "0x15f74458ae0bfdaa1a96ca1aa779d715cc1eefe4",
-    symbol: "GRAI",
+    address: null,
+    symbol: "-",
     url: "https://www.gravitaprotocol.com/",
     description:
       "Gravita Protocol is an ETH-centric Borrowing Protocol for LSTs and Yield-Generating assets. GRAI is the debt token of the platform. Our motto is: fuelling decentralization. You cannot resist the pull of Gravita!",
@@ -6475,8 +6475,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/gravita-protocol.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "grai",
-    cmcId: "25337",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Ethereum"],
     module: "gravita-protocol/index.js",

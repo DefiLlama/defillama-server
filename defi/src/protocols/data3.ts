@@ -18325,6 +18325,29 @@ const data3: Protocol[] = [
     audit_links: ["https://w3bank.finance/audit/W3BANK_Audit_Report_en.pdf"],
     listedAt: 1694613903
   },
+  {
+    id: "3523",
+    name: "XBased",
+    address: "base:0x265a65AD2d2F9c6C7482a76f53B79eF12954c46f",
+    symbol: "XBD",
+    url: "https://xbased.xyz",
+    description:
+      "The first revenue-sharing DEX on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/xbased.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "xbased/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "xbased_xyz",
+    github: ["xbased-xyz"],
+    listedAt: 1694663767
+  },
 ]
 
 export default data3

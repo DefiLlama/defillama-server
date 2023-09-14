@@ -382,7 +382,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
       const decimalDiff = 10 ** (data.decimals - data.kInfo.decimals)
       const tokenPrice = (data.kInfo.price * d * decimalDiff) / rawCalls[i].params[2]
 
-      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-LP", data.kInfo.confidence,);
+      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-unknown-token", data.kInfo.confidence,);
     })
     const rawDys2 = await api.multiCall({ calls: failedCalls, abi: abi.get_dy2, permitFailure: true })
 
@@ -394,7 +394,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
       const decimalDiff = 10 ** (data.decimals - data.kInfo.decimals)
       const tokenPrice = (data.kInfo.price * d * decimalDiff) / failedCalls[i].params[2]
 
-      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-LP", data.kInfo.confidence,);
+      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-unknown-token", data.kInfo.confidence,);
     })
 
   }

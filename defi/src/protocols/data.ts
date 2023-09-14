@@ -10364,7 +10364,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "587",
     name: "Maple",
-    address: "0x33349b282065b0284d756f0577fb39c158f935e6",
+    address: "0x1915A8dE08A92b846dF7C845e140E4b0714820bd",
     symbol: "MPL",
     url: "https://www.maple.finance",
     description: "Maple Finance is an institutional capital marketplace powered by blockchain technology.",

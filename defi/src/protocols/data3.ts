@@ -9001,7 +9001,7 @@ const data3: Protocol[] = [
   {
     id: "3103",
     name: "Maple RWA",
-    address: "0x33349b282065b0284d756f0577fb39c158f935e6",
+    address: "0x1915A8dE08A92b846dF7C845e140E4b0714820bd",
     symbol: "MPL",
     url: "https://www.maple.finance",
     description:

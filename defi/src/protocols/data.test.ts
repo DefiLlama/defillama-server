@@ -99,6 +99,13 @@ test("Github repo on parent protocol when it exists", async () => {
   expect(childs.length).toBeLessThanOrEqual(0)
 });
 
+test("Github: track only orgs", async () => {
+  const childs = [...protocols, ...parentProtocols].filter(i => i.github?.find(g=>g.includes('/')))
+  if (childs.length)
+    console.log('Update github field to org/user or remove it: ', childs.map(i => i.name))
+  expect(childs.length).toBeLessThanOrEqual(0)
+})
+
 test("projects have a single chain or each chain has an adapter", async () => {
   for (const protocol of protocols) {
     if (protocol.module === 'dummy.js') continue;
@@ -199,7 +206,8 @@ test("no surprise category", async () => {
     'Options Vault',
     'Liquidity manager',
     'Staking Pool',
-    'Infrastructure',    
+    'Infrastructure',
+    'Decentralized Stablecoin',
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

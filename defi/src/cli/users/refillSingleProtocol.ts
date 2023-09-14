@@ -8,7 +8,7 @@ import postgres from "postgres";
 const sql = postgres(process.env.ACCOUNTS_DB!);
 
 async function main() {
-    const protocolName = process.argv[2]
+    const protocolName = process.argv[2].toLowerCase()
     const protocol = addressList.find(addresses => addresses.name.toLowerCase() === protocolName) as any
     if(protocol === undefined){
         console.error(`No protocol with name "${protocolName}"`)

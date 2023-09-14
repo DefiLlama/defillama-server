@@ -16,7 +16,7 @@ const ecosystemData = {}
 cache.clearTempFolders()
 const repoDir = cache.getTempFolder()
 const git = simpleGit(repoDir)
-const repoUrl = 'git@github.com:electric-capital/crypto-ecosystems.git'
+const repoUrl = 'https://github.com/electric-capital/crypto-ecosystems.git'
 
 function consolidateOrgData(title) {
   const data = ecosystemData[title]

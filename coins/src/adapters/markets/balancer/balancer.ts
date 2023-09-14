@@ -18,12 +18,16 @@ const subgraphNames: { [chain: string]: string } = {
   arbitrum: "balancer-arbitrum-v2",
   polygon: "balancer-polygon-v2",
   optimism: "balancer-optimism-v2",
+  avax: "balancer-avalanche-v2",
+  xdai: "balancer-gnosis-chain-v2",
 };
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
   arbitrum: "0xb08e16cfc07c684daa2f93c70323badb2a6cbfd2",
   polygon: "0x3b8ca519122cdd8efb272b0d3085453404b25bd0",
   optimism: "0x2E96068b3D5B5BAE3D7515da4A1D2E52d08A2647",
+  avax: "0xb08E16cFc07C684dAA2f93C70323BAdb2A6CBFd2",
+  xdai: "0x809B79b53F18E9bc08A961ED4678B901aC93213a",
 };
 type GqlResult = {
   id: string;
@@ -156,7 +160,7 @@ function getTokenValues(
     if (poolValue.length == 0) return;
     const price: number =
       (poolValue[0][1] * 10 ** poolInfos.decimals[i].output) / s.output;
-    if (isNaN(price)) return;
+    if (isNaN(price) || price == Infinity) return;
 
     tokenValues.push({
       address: s.input.target,

@@ -1,12 +1,12 @@
 import { storeTvl } from "./getAndStoreTvl";
 import { getCurrentBlock } from "./blocks";
-import { getCoingeckoLock, releaseCoingeckoLock } from "../utils/shared/coingeckoLocks";
 import protocols from "../protocols/data";
 import { importAdapter } from "../utils/imports/importAdapter";
 import { executeAndIgnoreErrors } from "./errorDb";
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { storeStaleCoins, StaleCoins } from "./staleCoins";
 import { PromisePool } from '@supercharge/promise-pool'
+import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
 const maxRetries = 4;
 const millisecondsBeforeLambdaEnd = 30e3; // 30s
@@ -16,6 +16,7 @@ export default async (protocolIndexes: number[], getRemainingTimeInMillis: () =>
     executeAndIgnoreErrors('INSERT INTO `timeouts` VALUES (?, ?)', [getCurrentUnixTimestamp(), "blocks"]),
     getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
   clearTimeout(blocksTimeout)
+  await setEnvSecrets()
 
   const staleCoins: StaleCoins = {};
   const actions = protocolIndexes.map(idx => protocols[idx])
@@ -37,17 +38,10 @@ export default async (protocolIndexes: number[], getRemainingTimeInMillis: () =>
         adapterModule,
         staleCoins,
         maxRetries,
-        getCoingeckoLock,
       )
       return clearTimeout(protocolTimeout)
     })
 
-  const timer = setInterval(() => {
-    // Rate limit is 100 calls/min for coingecko's API
-    // So we'll release one every 0.6 seconds to match it
-    releaseCoingeckoLock();
-  }, 600);
-  clearInterval(timer);
   
   await storeStaleCoins(staleCoins);
 

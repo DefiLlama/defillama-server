@@ -87,3 +87,92 @@ CREATE TABLE IF NOT EXISTS git_commit_author (
   FOREIGN KEY (author_id) REFERENCES git_author (id) ON DELETE CASCADE
 );
 
+
+CREATE INDEX idx_gcr_owner_updatedat ON git_commit_raw(owner, updatedat DESC);
+CREATE INDEX idx_gcr_owner ON git_commit_raw(owner);
+CREATE index idx_pr_project_id ON project_report(project_id);
+
+CREATE OR REPLACE PROCEDURE project_report_update_commit_time() LANGUAGE plpgsql AS $$
+DECLARE
+  pr project_report;
+BEGIN
+-- update last commit time for each project
+FOR pr IN SELECT * FROM project_report loop
+
+  UPDATE project_report
+    SET last_commit_update_time = (
+      SELECT updatedat FROM git_commit_raw WHERE owner = ANY(pr.linked_orgs)
+      ORDER BY updatedat DESC
+  LIMIT 1
+    )
+    WHERE project_id = pr.project_id;
+    
+END LOOP;
+END $$;
+
+
+CREATE OR REPLACE PROCEDURE update_project_reports() LANGUAGE plpgsql AS $$
+DECLARE
+    pr project_report;
+BEGIN
+    FOR pr IN SELECT * FROM project_report WHERE (last_commit_update_time > last_report_generated_time + INTERVAL '1 day' OR last_report_generated_time IS NULL) and  (last_commit_update_time IS NOT NULL) LOOP
+        UPDATE project_report
+        SET report = JSONB_SET(
+            JSONB_SET(
+                JSONB_SET(
+                    JSONB_SET(
+                        COALESCE(report, '{}'::jsonb),
+                        '{monthly_contributers}',
+                        (
+                            SELECT jsonb_agg(jsonb_build_object('k', commit_month, 'v', developer_count, 'cc', commit_count))
+                            FROM (
+                                SELECT commit_month, COUNT(distinct developer) as developer_count, SUM(commit_count) AS commit_count
+                                FROM view_agg_contributer_monthly_commits
+                                WHERE owner = any(pr.linked_orgs)
+                                GROUP BY commit_month
+                                ORDER BY commit_month
+                            ) AS subquery
+                        )
+                    ),
+                    '{monthly_devs}',
+                    (
+                        SELECT jsonb_agg(jsonb_build_object('k', commit_month, 'v', developer_count, 'cc', commit_count))
+                        FROM (
+                            SELECT commit_month, COUNT(distinct developer) as developer_count, SUM(commit_count) AS commit_count
+                            FROM view_agg_dev_monthly_commits
+                            WHERE owner = any(pr.linked_orgs)
+                            GROUP BY commit_month
+                            ORDER BY commit_month
+                        ) AS subquery
+                    )
+                ),
+                '{weekly_contributers}',
+                (
+                    SELECT jsonb_agg(jsonb_build_object('k', commit_week, 'v', developer_count, 'cc', commit_count))
+                    FROM (
+                        SELECT commit_week, COUNT(distinct developer) as developer_count, SUM(commit_count) AS commit_count
+                        FROM view_agg_contributer_weekly_commits
+                        WHERE owner = any(pr.linked_orgs)
+                        GROUP BY commit_week
+                        ORDER BY commit_week
+                    ) AS subquery
+                )
+            ),
+            '{weekly_devs}',
+            (
+                SELECT jsonb_agg(jsonb_build_object('k', commit_week, 'v', developer_count, 'cc', commit_count))
+                FROM (
+                    SELECT commit_week, COUNT(distinct developer) as developer_count, SUM(commit_count) AS commit_count
+                    FROM view_agg_dev_weekly_commits
+                    WHERE owner = any(pr.linked_orgs)
+                    GROUP BY commit_week
+                    ORDER BY commit_week
+                ) AS subquery
+            )
+        ),
+        last_report_generated_time = CURRENT_DATE,
+        exported_to_r2 = false
+        WHERE project_id = pr.project_id;
+    END LOOP;
+END;
+$$;

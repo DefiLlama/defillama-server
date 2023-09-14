@@ -1,79 +1,28 @@
-import getTokenPrices from "./curve";
+import getTokenPrices2 from "./curve2";
 import getGaugePrices from "./gauges";
-import getSpareTokens from "./spares";
 
-export function curve1(timestamp: number = 0) {
-  console.log("starting curve1");
-  return getTokenPrices("ethereum", ["crypto"], timestamp);
-}
-export function curve2(timestamp: number = 0) {
-  console.log("starting curve2");
+const defaultRegistries = ['stableswap', 'crypto', 'stableFactory', 'cryptoFactory'];
+export function curve(timestamp: number = 0) {
+  console.log("starting curve");
   return Promise.all([
-    getTokenPrices("arbitrum", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("xdai", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("arbitrum", ["stableFactory", "cryptoFactory"], timestamp),
-    getTokenPrices("xdai", ["stableFactory", "cryptoFactory"], timestamp),
+
+    getTokenPrices2("ethereum", ["crypto"], timestamp),
+    getTokenPrices2("arbitrum", defaultRegistries, timestamp),
+    getTokenPrices2("fantom", defaultRegistries, timestamp),
+    getTokenPrices2("moonbeam", defaultRegistries, timestamp),
+    getTokenPrices2("aurora", defaultRegistries, timestamp),
+    getTokenPrices2("optimism", defaultRegistries, timestamp),
+    getTokenPrices2("polygon", defaultRegistries, timestamp),
+    getTokenPrices2("celo", defaultRegistries, timestamp),
+    getTokenPrices2("bsc", defaultRegistries, timestamp),
+    getTokenPrices2("avax", defaultRegistries, timestamp),
+    getTokenPrices2("bsc", ['pcs'], timestamp, 'pcs'),
+    getTokenPrices2("xdai", defaultRegistries, timestamp),
+    getTokenPrices2("ethereum", [], timestamp, "eth-custom", ['0x7b0eff0c991f0aa880481fdfa5624cb0bc9b10e1']),
+
   ]);
-}
-export function curve3(timestamp: number = 0) {
-  console.log("starting curve3");
-  return Promise.all([
-    getTokenPrices("avax", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("fantom", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("avax", ["stableFactory", "cryptoFactory"], timestamp),
-    getTokenPrices("fantom", ["stableFactory", "cryptoFactory"], timestamp),
-  ]);
-}
-export function curve4(timestamp: number = 0) {
-  console.log("starting curve4");
-  return Promise.all([
-    getTokenPrices("moonbeam", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("aurora", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("moonbeam", ["stableFactory", "cryptoFactory"], timestamp),
-    getTokenPrices("aurora", ["stableFactory", "cryptoFactory"], timestamp),
-  ]);
-}
-export function curve5a(timestamp: number = 0) {
-  console.log("starting curve5a");
-  return getTokenPrices("optimism", ["stableswap"], timestamp);
-}
-export function curve5b(timestamp: number = 0) {
-  console.log("starting curve5b");
-  return getTokenPrices("optimism", ["crypto"], timestamp);
-}
-export function curve5c(timestamp: number = 0) {
-  console.log("starting curve5c");
-  return getTokenPrices("optimism", ["cryptoFactory"], timestamp);
-}
-export function curve5d(timestamp: number = 0) {
-  console.log("starting curve5d");
-  return getTokenPrices("optimism", ["stableFactory"], timestamp);
-}
-export function curve6(timestamp: number = 0) {
-  console.log("starting curve6");
-  return getTokenPrices("polygon", ["stableswap", "crypto"], timestamp);
-}
-export function curve6b(timestamp: number = 0) {
-  console.log("starting curve6b");
-  return getTokenPrices(
-    "polygon",
-    ["cryptoFactory", "stableFactory"],
-    timestamp,
-  );
 }
 
-export function ellipsis(timestamp: number = 0) {
-  console.log("starting ellipsis");
-  return getTokenPrices(
-    "bsc",
-    ["crypto", "stableswap", "stableFactory", "cryptoFactory"],
-    timestamp,
-  );
-}
-export function pcsStable(timestamp: number = 0) {
-  console.log("starting PCS stableswap");
-  return getTokenPrices("bsc", ["pcs"], timestamp, "pcs");
-}
 export function gauges(timestamp: number = 0) {
   console.log("starting gauges");
   return Promise.all([
@@ -85,16 +34,6 @@ export function gauges(timestamp: number = 0) {
     getGaugePrices("avax", timestamp),
     getGaugePrices("moonbeam", timestamp),
     getGaugePrices("xdai", timestamp),
-  ]);
-}
-
-export function spares(timestamp: number = 0) {
-  console.log("starting curve spares");
-  return getSpareTokens("ethereum", timestamp, [
-    {
-      address: "0x7b0eff0c991f0aa880481fdfa5624cb0bc9b10e1",
-      nCoins: "4",
-      token: "0x21ead867c8c5181854f6f8ce71f75b173d2bc16a",
-    },
+    getGaugePrices("celo", timestamp),
   ]);
 }

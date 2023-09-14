@@ -21,7 +21,7 @@ export async function storeChainTxs({ name, addresses, id }: {name:string, addre
             await PromisePool
                 .withConcurrency(10)
                 .for(usersChart as [string, number][]).process(async ([dateString, users]) => {
-                    const date = new Date(`${dateString} UTC`)
+                    const date = new Date(dateString)
                     const start = Math.round(date.getTime() / 1e3)
                     const end = start + 24 * 3600
                     if(end > Date.now()/1e3){
@@ -31,7 +31,7 @@ export async function storeChainTxs({ name, addresses, id }: {name:string, addre
                         await storeTxs(start, end, id, chain, users) // if already stored -> don't overwrite
                     } catch(e){
                         if(!String(e).includes("duplicate key value violates unique constraint")){
-                            console.error(`Couldn't store users for ${name} on ${chain}`, e)
+                            console.error(`Couldn't store chain txs for ${name} on ${chain}`, e)
                         }
                     }
                 })

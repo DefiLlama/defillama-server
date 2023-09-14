@@ -2,31 +2,25 @@ require("dotenv").config();
 import adapters from "./adapters/index";
 import {
   batchWriteWithAlerts,
-  // batchWrite2WithAlerts,
+  batchWrite2WithAlerts,
 } from "./adapters/utils/database";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
-
-const withTimeout = (millis: number, promise: any) => {
-  const timeout = new Promise((resolve, reject) =>
-    setTimeout(() => {
-      reject(`timed out after ${millis / 1000} s.`);
-      resolve;
-    }, millis),
-  );
-  return Promise.race([promise, timeout]);
-};
+import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
+import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
 
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
+
 export default async function handler(event: any) {
+  await setEnvSecrets();
   const a = Object.entries(adapters);
   const timestamp = 0;
   await Promise.all(
     event.protocolIndexes.map(async (i: any) => {
       try {
         const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
-        const resultsWithoutDuplicates = filterWritesWithLowConfidence(
+        const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat(),
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
@@ -35,10 +29,10 @@ export default async function handler(event: any) {
               resultsWithoutDuplicates.slice(i, i + step),
               true,
             ),
-            // await batchWrite2WithAlerts(
-            //   resultsWithoutDuplicates.slice(i, i + step),
-            // ),
           ]);
+          await batchWrite2WithAlerts(
+            resultsWithoutDuplicates.slice(i, i + step),
+          );
         }
         console.log(`${a[i][0]} done`);
       } catch (e) {
@@ -58,7 +52,7 @@ export default async function handler(event: any) {
   );
 }
 
-// ts-node src/storeCoins.ts
+// ts-node coins/src/storeCoins.ts
 async function main() {
   let a = {
     protocolIndexes: [0],

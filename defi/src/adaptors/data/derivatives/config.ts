@@ -6,7 +6,7 @@ export default {
         "id": "2299"
     },
     "gmx": {
-        parentId: "337",
+        parentId: "GMX",
         "protocolsData": {
             "derivatives": {
                 displayName: "GMX - Derivatives",
@@ -39,7 +39,7 @@ export default {
         "id": "2548"
     },
     "morphex": {
-        parentId: "2662",
+        parentId: "Morphex",
         "protocolsData": {
             "derivatives": {
                 displayName: "Morphex - Derivatives",
@@ -99,6 +99,7 @@ export default {
         "id": "2848"
     },
     "pika-protocol": {
+        parentId: "Pika Protocol",
         "enabled": true,
         "id": "916"
     },
@@ -159,5 +160,175 @@ export default {
                 "category": "Dexes",
             }
         },
+    },
+    "hmx": {
+        "enabled": true,
+        "id": "2296"
+    },
+    "y2k": {
+        "enabled": true,
+        "id": "2375",
+        protocolsData: {
+            v1: {
+                "enabled": true,
+                "id": "2375",
+            },
+            v2: {
+                "enabled": true,
+                "id": "3056",
+            }
+        }
+    },
+    "kwenta": {
+        "enabled": false,
+        "id": "2981"
+    },
+    "synthetix": {
+        "enabled": true,
+        "id": "115",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1689292800": true,
+                "1689379200": true,
+                "1689465600": true,
+                "1689638400": true,
+                "1689811309": true,
+            },
+        }
+    },
+    "pika-protocol-v4": {
+        parentId: "Pika Protocol",
+        "enabled": true,
+        "id": "3281"
+    },
+    "gains-network": {
+        "enabled": true,
+        "id": "1018"
+    },
+    "palmswap": {
+        "enabled": true,
+        "id": "3279"
+    },
+    "drift-protocol": {
+        "enabled": true,
+        "id": "970",
+        "protocolsData": {
+            "derivatives": {
+                "id": "970",
+                "enabled": true,
+            }
+        },
+    },
+    "aevo": {
+        "enabled": true,
+        "id": "2797"
+    },
+    "grizzly-trade": {
+        "enabled": true,
+        "id": "3301",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3301",
+                "enabled": true,
+            }
+        },
+    },
+    "rollup-finace": {
+        "enabled": true,
+        "id": "2889",
+        "protocolsData": {
+            "derivatives": {
+                "id": "2889",
+                "enabled": true,
+            }
+        },
+    },
+    "ktx": {
+        "enabled": true,
+        "id": "3025",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3025",
+                "enabled": true,
+            }
+        }
+    },
+    "metavault-derivative": {
+        "enabled": true,
+        "id": "1801"
+    },
+    "unidex": {
+        "enabled": true,
+        "id": "1833"
+    },
+    "satori": {
+        "enabled": true,
+        "id": "2982",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1691625600": true,
+            },
+        }
+    },
+    "aark": {
+        "enabled": true,
+        "id": "3376",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1691971200": true,
+                "1691884800": true,
+            },
+        }
+    },
+    "apex": {
+        "enabled": true,
+        "id": "1878"
+    },
+    "gmx-v2-trade": {
+        parentId: "GMX",
+        "enabled": true,
+        "id": "3365"
+    },
+    "meridian-trade": {
+        "enabled": true,
+        "id": "3386",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3386",
+                "enabled": true,
+            }
+        }
+    },
+    "morphex-old": {
+        parentId: "Morphex",
+        "protocolsData": {
+            "derivatives": {
+                displayName: "Morphex - Derivatives",
+                "id": "3483",
+                "enabled": true
+            }
+        },
+        "enabled": true,
+        "id": "3483"
+    },
+    "baseswap": {
+        "enabled": true,
+        "id": "3333",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3333",
+                "enabled": true,
+            }
+        }
+    },
+    "zeta": {
+        "enabled": true,
+        "id": "1804",
+        "protocolsData": {
+            "derivatives": {
+                "id": "1804",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

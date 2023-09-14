@@ -13,15 +13,26 @@ import { DbTokenInfos } from "../../utils/dbInterfaces";
 
 const vault: string = "0x7F51AC3df6A034273FB09BB29e383FCF655e473c";
 const nullAddress: string = "0x0000000000000000000000000000000000000000";
-const subgraphNames: { [chain: string]: string } = {
-  pulse: "pools-v2",
-};
-const gaugeFactories: { [chain: string]: string } = {
-  pulse: "0x69839544D669fA70D99b7db545745DfC1dE74F2B",
+const subgraphNames: {
+  [chain: string]: {
+    pool: string;
+    gauge: string
+  }
+} = {
+  pulse: {
+    pool: "pools-v2",
+    gauge: "gauges"
+  }
 };
 type GqlResult = {
   id: string;
   totalLiquidity: string;
+};
+type GqlGaugeResult = {
+  address: string;
+  gauges: [{
+    id: string;
+  }]
 };
 type PoolInfo = {
   balances: number[];
@@ -36,7 +47,7 @@ export type TokenValues = {
 async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
-  const subgraph: string = `https://sub.phatty.io/subgraphs/name/phux/${subgraphNames[chain] || chain
+  const subgraph: string = `https://sub.phatty.io/subgraphs/name/phux/${subgraphNames[chain].pool || chain
     }`;
   for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
@@ -59,6 +70,34 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
     addresses.push(...result.map((p: any) => p.id));
   }
   return addresses;
+}
+async function getGauges(chain: string): Promise<GqlGaugeResult[]> {
+  let poolGauges: GqlGaugeResult[] = [];
+  const subgraph: string = `https://sub.phatty.io/subgraphs/name/phux/${subgraphNames[chain].gauge || chain
+    }`;
+  let skip = 0;
+  for (let i = 0; i < 20; i++) {
+    const lpQuery = gql`
+    query {
+      pools (first: 1000, skip: ${skip}) {
+        address
+        gauges {
+          id
+        }
+      }
+    }`;
+    const res: any = await request(subgraph, lpQuery);
+    const result: GqlGaugeResult[] = res.pools;
+
+    poolGauges.push(...result);
+
+    if (result.length < 1000) {
+      break;
+    }
+    skip += 1000;
+  }
+
+  return poolGauges;
 }
 async function getPoolTokens(
   chain: any,
@@ -221,22 +260,17 @@ export default async function getTokenPrices(
   let writes: Write[] = [];
   const block: number | undefined = await getBlock(chain, timestamp);
   const poolIds: string[] = await getPoolIds(chain, timestamp);
+  const gaugePools = await getGauges(chain);
   const tokenValues: TokenValues[] = (
     await getLpPrices(poolIds, chain, timestamp, block)
   ).filter((t: TokenValues) => t.price != Infinity);
-  const gauges: string[] = (
-    await multiCall({
-      target: gaugeFactories[chain],
-      block,
-      chain,
-      calls: tokenValues
-        .map((t: any) => t.address)
-        .map((l: string) => ({
-          params: [l],
-        })),
-      abi: abi.getPoolGauge,
-    })
-  ).output.map((o: Result) => o.output);
+  const gauges: string[] = tokenValues.map(item => {
+    const gaugePool = gaugePools.find(info => info.address.toLowerCase() === item.address);
+    if (gaugePool && gaugePool.gauges) {
+      return gaugePool.gauges[0].id
+    }
+    return "";
+  })
 
   tokenValues.map((v: TokenValues, i: number) => {
     addToDBWritesList(

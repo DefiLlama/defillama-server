@@ -1,4 +1,4 @@
-import { createChartData } from "../emissions-adapters/utils/convertToChartData";
+import { createChartData, mapToServerData, nullFinder } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
 import { createCategoryData } from "../emissions-adapters/utils/categoryData";
 import adapters from "./utils/imports/emissions_adapters";
@@ -12,8 +12,7 @@ import parentProtocols from "./protocols/parentProtocols";
 import { PromisePool } from "@supercharge/promise-pool";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
-
-type Chart = { label: string; data: ApiChartData[] | undefined };
+import { withTimeout } from "./utils/shared/withTimeout";
 
 const prefix = "coingecko:";
 
@@ -29,7 +28,12 @@ function findPId(cgId: string | null) {
   return protocols.find((p) => p.gecko_id == cgId);
 }
 
-async function aggregateMetadata(protocolName: string, chart: Chart[], rawData: SectionData) {
+async function aggregateMetadata(
+  protocolName: string,
+  realTimeChart: ChartSection[],
+  documentedChart: ChartSection[],
+  rawData: SectionData
+) {
   const pId = rawData.metadata.protocolIds?.[0] ?? null;
   const cgId = getCgId(rawData.metadata.token);
   const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : findPId(cgId);
@@ -44,17 +48,27 @@ async function aggregateMetadata(protocolName: string, chart: Chart[], rawData: 
     name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;
   }
 
-  const tokenAllocation = createCategoryData(chart, rawData.categories, false);
+  const realTimeTokenAllocation = createCategoryData(realTimeChart, rawData.categories);
+  const documentedTokenAllocation = createCategoryData(documentedChart, rawData.categories);
 
   const futures = pData && "symbol" in pData ? await createFuturesData(pData.symbol) : undefined;
 
+  let documentedData;
+  let realTimeData;
+  if (documentedChart.length) {
+    documentedData = { data: mapToServerData(documentedChart), tokenAllocation: documentedTokenAllocation };
+    realTimeData = { data: mapToServerData(realTimeChart), tokenAllocation: realTimeTokenAllocation };
+  } else {
+    documentedData = { data: mapToServerData(realTimeChart), tokenAllocation: realTimeTokenAllocation };
+  }
+
   return {
     data: {
-      data: chart,
+      realTimeData,
+      documentedData,
       metadata: rawData.metadata,
-      name: name,
+      name,
       gecko_id: pData?.gecko_id,
-      tokenAllocation,
       futures,
     },
     id,
@@ -63,13 +77,17 @@ async function aggregateMetadata(protocolName: string, chart: Chart[], rawData: 
 
 async function processSingleProtocol(adapter: Protocol, protocolName: string): Promise<string> {
   const rawData = await createRawSections(adapter);
+  nullFinder(rawData.rawSections, "rawSections");
 
-  const chart: Chart[] = (await createChartData(protocolName, rawData, false)).map((s: ChartSection) => ({
-    label: s.section,
-    data: s.data.apiData,
-  }));
+  const { realTimeData, documentedData } = await createChartData(
+    protocolName,
+    rawData,
+    adapter.documented?.replaces ?? []
+  );
+  nullFinder(realTimeData, "realTimeData");
+  // must happen before this line because category datas off
+  const { data, id } = await aggregateMetadata(protocolName, realTimeData, documentedData, rawData);
 
-  const { data, id } = await aggregateMetadata(protocolName, chart, rawData);
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
 
   await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify(data));
@@ -78,21 +96,30 @@ async function processSingleProtocol(adapter: Protocol, protocolName: string): P
   return sluggifiedId;
 }
 
-async function handler() {
+function filterAdapters(protocolIndexes: number[]): any[] {
+  const selected: any[] = [];
+  const entries: any[] = Object.entries(adapters);
+  for (let i = 0; i < entries.length; i++) {
+    if (protocolIndexes.includes(i)) selected.push(entries[i]);
+  }
+  return selected;
+}
+async function processProtocolList(protocolIndexes: number[]) {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
 
-  await PromisePool.withConcurrency(1)
-    .for(shuffleArray(Object.entries(adapters)))
+  const protocolAdapters = filterAdapters(protocolIndexes);
+  await PromisePool.withConcurrency(2)
+    .for(shuffleArray(protocolAdapters))
     .process(async ([protocolName, rawAdapter]) => {
       let adapters = typeof rawAdapter.default === "function" ? await rawAdapter.default() : rawAdapter.default;
       if (!adapters.length) adapters = [adapters];
       await Promise.all(
         adapters.map((adapter: Protocol) =>
-          processSingleProtocol(adapter, protocolName)
+          withTimeout(180000, processSingleProtocol(adapter, protocolName), protocolName)
             .then((p: string) => protocolsArray.push(p))
             .catch((err: Error) => {
-              console.log(err.message, `: \n storing ${protocolName}`);
+              console.log(err.message ? `${err.message}: \n storing ${protocolName}` : err);
               protocolErrors.push(protocolName);
             })
         )
@@ -103,6 +130,13 @@ async function handler() {
   const res = await getR2(`emissionsProtocolsList`);
   if (res.body) protocolsArray = [...new Set([...protocolsArray, ...JSON.parse(res.body)])];
   await storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray));
+}
+async function handler(event: any) {
+  try {
+    await withTimeout(840000, processProtocolList(event.protocolIndexes));
+  } catch (e) {
+    process.env.UNLOCKS_WEBHOOK ? await sendMessage(`${e}`, process.env.UNLOCKS_WEBHOOK!) : console.log(e);
+  }
 }
 
 async function handlerErrors(errors: string[]) {
@@ -116,4 +150,4 @@ async function handlerErrors(errors: string[]) {
 }
 
 export default wrapScheduledLambda(handler);
-// handler(); // ts-node src/storeEmissions.ts
+//handler(); // ts-node src/storeEmissions.ts

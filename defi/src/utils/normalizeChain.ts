@@ -11,7 +11,8 @@ export const normalizedChainReplacements = {
   "polygon zkevm": "polygon_zkevm",
   "eos evm": "eos_evm",
   "oasys": "oas",
-  "map relay chain": "map"
+  "map relay chain": "map",
+  "pulsechain": "pulse",
 } as {
   [chain: string]: string
 }
@@ -103,7 +104,7 @@ export const chainCoingeckoIds = {
     geckoId: "conflux-token",
     symbol: "CFX",
     cmcId: "7334",
-    github: ['conflux-chain'],
+    github: ['Conflux-Chain'],
   },
   "Nuls": {
     geckoId: "nuls",
@@ -160,7 +161,7 @@ export const chainCoingeckoIds = {
     cmcId: "3513",
     categories: ["EVM"],
     chainId: 250,
-    github: ['Fantom-Foundation'],
+    github: ['Fantom-foundation'],
   },
   "Gnosis": {
     geckoId: "gnosis",
@@ -271,7 +272,7 @@ export const chainCoingeckoIds = {
   },
   "Rootstock": {
     geckoId: "rootstock",
-    github: ['RSKSmart'],
+    github: ['rsksmart'],
     symbol: "RBTC",
     cmcId: "3626",
     categories: ["EVM"],
@@ -283,7 +284,7 @@ export const chainCoingeckoIds = {
   },
   "Sifchain": {
     geckoId: "sifchain",
-    github: ['sifchain'],
+    github: ['Sifchain'],
     symbol: "EROWAN",
     cmcId: "8541",
     categories: ["Cosmos"],
@@ -1036,7 +1037,7 @@ export const chainCoingeckoIds = {
   },
   "Lachain": {
     geckoId: "latoken",
-    github: ['LAToken'],
+    github: ['LATOKEN'],
     symbol: "LA",
     cmcId: "2090",
     categories: ["EVM"],
@@ -1089,7 +1090,7 @@ export const chainCoingeckoIds = {
   },
   "Carbon": {
     geckoId: "switcheo",
-    github: ['switcheo'],
+    github: ['Switcheo'],
     symbol: "SWTH",
     cmcId: "2620",
     categories: ["Cosmos"],
@@ -1108,7 +1109,7 @@ export const chainCoingeckoIds = {
   },
   "Bytomsidechain": {
     geckoId: "bytom",
-    github: ['bytom'],
+    github: ['Bytom'],
     symbol: "BTM",
     cmcId: "1866",
     categories: ["EVM"],
@@ -1610,7 +1611,7 @@ export const chainCoingeckoIds = {
   },
   "Meta": {
     geckoId: "metadium",
-    github: ['metadium'],
+    github: ['METADIUM'],
     symbol: "META",
     cmcId: "3418",
     categories: ["EVM"],
@@ -1674,7 +1675,7 @@ export const chainCoingeckoIds = {
     cmcId: "23196",
     categories: ["EVM"]
   },
-  "Pulse": {
+  "PulseChain": {
     geckoId: "pulsechain",
     symbol: "PLS",
     cmcId: null,
@@ -1685,6 +1686,7 @@ export const chainCoingeckoIds = {
     geckoId: "xpla",
     symbol: "XPLA",
     cmcId: "22359",
+    github: ["xpladev"],
     categories: ["Cosmos"],
   },
   "Neutron": {
@@ -1698,33 +1700,39 @@ export const chainCoingeckoIds = {
     symbol: "ONUS",
     cmcId: "15261",
     categories: ["EVM"],
+    github: ["ONUS-APP"]
   },
   "Pokt": {
     geckoId: "pocket-network",
     symbol: "POKT",
     cmcId: "11823",
+    github: ["pokt-network"]
   },
   "Quasar": {
     geckoId: null,
     symbol: "QSR",
     cmcId: null,
+    github: ["quasar-finance"],
     categories: ["Cosmos"],
   },
   "Concordium": {
     geckoId: "concordium",
     symbol: "CCD",
     cmcId: "18031",
+    github: ["Concordium"]
   },
   "Chihuahua": {
     geckoId: "chihuahua-token",
     symbol: "HUAHUA",
     cmcId: "17208",
+    github: ["ChihuahuaChain"],
     categories: ["Cosmos"],
   },
   "Rollux": {
     geckoId: null,
     symbol: null,
     cmcId: null,
+    github: ["SYS-Labs"],
     categories: ["EVM", "Rollup"],
     chainid: 570, 
     parent: {
@@ -1736,6 +1744,138 @@ export const chainCoingeckoIds = {
     geckoId: "tenet-1b000f7b-59cb-4e06-89ce-d62b32d362b9",
     symbol: "TENET",
     cmcId: "24892",
+    github: ["tenet-org"],
+    categories: ["EVM"],
+  },
+  "Mantle": {
+    geckoId: "mantle",
+    symbol: "MNT",
+    cmcId: "27075",
+    github: ["mantlenetworkio"],
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 5000,
+  },
+  "Neon": {
+    geckoId: "neon",
+    symbol: "NEON",
+    cmcId: "26735",
+    github: ["neonevm"],
+    categories: ["EVM"],
+    chainId: 245022934,
+  },
+  "Base": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    github: ["base-org"],
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 8453,
+  },
+  "Linea": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    github: ["ConsenSys"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+  },
+  "GravityBridge": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+  },
+  "Aura Network": {
+    geckoId: "aura-network",
+    symbol: "AURA",
+    cmcId: "20326",
+    categories: ["Cosmos"],
+    github: ["aura-nw"]
+  },
+  "Sei": {
+    geckoId: "sei-network",
+    symbol: "SEI",
+    cmcId: "23149",
+    categories: ["Cosmos"],
+    github: ["sei-protocol"]
+  },
+  "Op_Bnb": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 204,
+  },
+  "Archway": {
+    geckoId: "archway",
+    symbol: "ARCH",
+    cmcId: "27358",
+    categories: ["Cosmos"],
+    github: ["archway-network"]
+  },
+  "HydraDX": {
+    geckoId: "hydradx",
+    github: ['galacticcouncil'],
+    symbol: "HDX",
+    cmcId: "6753",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+  },
+  "Shibarium": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "MVC": {
+    geckoId: "microvisionchain",
+    symbol: "SPACE",
+    cmcId: "24193",
+    categories: ["Cosmos"],
+  },
+  "ALV": {
+    geckoId: "alvey-chain",
+    symbol: "ALV",
+    cmcId: null,
+    github: ["AlveyCoin"],
+    categories: ["EVM"],
+  },
+  "DSC": {
+    geckoId: "decimal",
+    symbol: "DEL",
+    cmcId: null,
+    github: ["decimalteam"],
+    categories: ["EVM"],
+  },
+  "Darwinia": {
+    geckoId: "darwinia-network-native-token",
+    symbol: "RING",
+    cmcId: "5798",
+    github: ["darwinia-network"],
+    categories: ["EVM"],
+  },
+  "Pego": {
+    geckoId: "pego-network-2",
+    symbol: "PG",
+    cmcId: "27723",
     categories: ["EVM"],
   },
 } as unknown as {
@@ -1762,6 +1902,7 @@ chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
 chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
 chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
 chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
+chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -1802,6 +1943,8 @@ export function transformNewChainName(chain: string) {
       return "EOS EVM"
     case "Map":
       return "MAP Relay Chain"
+    case "Pulse":
+      return "PulseChain"
     default:
       return chain
   }
@@ -1837,6 +1980,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "MultiversX" : "Elrond"
     case "rsk":
       return useNewChainNames ? "Rootstock" : "RSK"
+    case "pulse":
+      return useNewChainNames ? "PulseChain" : "Pulse"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -2149,8 +2294,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Sui"
     case "grove":
       return "Grove"
-    case "pulse":
-      return "Pulse"
     case "xpla":
       return "XPLA"
     case "neutron":
@@ -2169,6 +2312,38 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Rollux"
     case "tenet":
       return "Tenet"
+    case "mantle":
+      return "Mantle"
+    case "neon_evm":
+      return "Neon"
+    case "base":
+      return "Base"
+    case "linea":
+      return "Linea"
+    case "gravitybridge":
+      return "GravityBridge"
+    case "aura":
+      return "Aura Network"
+    case "sei":
+      return "Sei"
+    case "op_bnb":
+      return "Op_Bnb"
+    case "archway":
+      return "Archway"
+    case "hydradx":
+      return "HydraDX"
+    case "shibarium":
+      return "Shibarium"
+    case "mvc":
+      return "MVC"
+    case "alv":
+      return "ALV"
+    case "dsc":
+      return "DSC"
+    case "darwinia":
+      return "Darwinia"
+    case "pg":
+      return "Pego"    
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -1,6 +1,6 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import treasuries from "./protocols/treasury";
 import invokeLambda from "./utils/shared/invokeLambda";
+import { treasuriesAndEntities } from "./protocols/entities";
 
 function shuffleArray(array:number[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -11,9 +11,9 @@ function shuffleArray(array:number[]) {
 
 const step = 40;
 const handler = async () => {
-  const protocolIndexes = Array.from(Array(treasuries.length).keys());
+  const protocolIndexes = Array.from(Array(treasuriesAndEntities.length).keys());
   shuffleArray(protocolIndexes);
-  for (let i = 0; i < treasuries.length; i += step) {
+  for (let i = 0; i < treasuriesAndEntities.length; i += step) {
     const event = {
       protocolIndexes: protocolIndexes.slice(i, i+step)
     };

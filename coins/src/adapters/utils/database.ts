@@ -1,5 +1,5 @@
 require("dotenv").config();
-import axios from "axios";
+import axios, { all } from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
@@ -11,10 +11,18 @@ import {
   CoinData,
   Metadata,
 } from "./dbInterfaces";
-import { contracts } from "../other/distressedAssets";
 import { sendMessage } from "./../../../../defi/src/utils/discord";
-// import { batchWrite2, translateItems } from "../../../coins2";
+import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
+import pLimit from "p-limit"
+import { sliceIntoChunks } from "@defillama/sdk/build/util";
+import * as sdk from "@defillama/sdk";
+
+
+const rateLimited = pLimit(10)
+
+let cache: any = {}
+let lastCacheClear: number
 
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -22,17 +30,55 @@ export async function getTokenAndRedirectData(
   timestamp: number,
   hoursRange: number = 12,
 ): Promise<CoinData[]> {
+  if (tokens.length == 0) return [];
   tokens = [...new Set(tokens)];
-  if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
-    return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
+
+  if (tokens.length > 100) {
+    const chunks: any = sliceIntoChunks(tokens, 99)
+    const allData = []
+    for (const chunk of chunks) {
+      allData.push(await getTokenAndRedirectData(chunk, chain, timestamp, hoursRange))
+    }
+    return allData.flat()
   }
-  return await getTokenAndRedirectDataDB(
-    tokens,
-    chain,
-    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
-    hoursRange,
-  );
+
+
+  if (getCurrentUnixTimestamp() - timestamp < 30 * 60) timestamp = 0; // if timestamp is less than 30 minutes ago, use current timestamp
+
+
+  const response: CoinData[] = []
+  await rateLimited(async () => {
+
+    if (!lastCacheClear) lastCacheClear = getCurrentUnixTimestamp()
+    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15) cache = {}  // clear cache every 15 minutes
+
+    const cacheKey = `${chain}-${hoursRange}`
+    if (!cache[cacheKey]) cache[cacheKey] = {}
+    const alreadyInCache: any[] = []
+    tokens.forEach((token: string) => {
+      if (cache[cacheKey][token]) {
+        alreadyInCache.push(token)
+        response.push(cache[cacheKey][token])
+      }
+    })
+
+    tokens = tokens.filter((t: string) => !alreadyInCache.includes(t))
+    if (tokens.length == 0) return response
+
+    let apiRes
+    if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
+      apiRes = await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
+    } else {
+      apiRes = await getTokenAndRedirectDataDB(tokens, chain, timestamp == 0 ? getCurrentUnixTimestamp() : timestamp, hoursRange,)
+    }
+    apiRes.map((r: any) => cache[cacheKey][r.address] = r)
+    response.push(...apiRes)
+  })
+
+  return response
 }
+
+
 export function addToDBWritesList(
   writes: Write[],
   chain: string,
@@ -200,24 +246,21 @@ async function getTokenAndRedirectDataDB(
   }
   return aggregateTokenAndRedirectData(allReads);
 }
-export function filterWritesWithLowConfidence(allWrites: Write[]) {
+export async function filterWritesWithLowConfidence(
+  allWrites: Write[],
+  latencyHours: number = 3,
+) {
+  const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
+
   allWrites = allWrites.filter((w: Write) => w != undefined);
+  const allReads = (
+    await batchGet(allWrites.map((w: Write) => ({ PK: w.PK, SK: 0 })))
+  ).filter((w: Write) => w.timestamp ?? 0 > recentTime);
+
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
 
   if (allWrites.length == 0) return [];
-
-  const chain = allWrites[0].PK.substring(
-    allWrites[0].PK.indexOf("#") + 1,
-    allWrites[0].PK.indexOf(":"),
-  );
-
-  const distressedAssets =
-    chain in contracts
-      ? Object.values(contracts[chain]).map((d: string) =>
-          chain == "solana" ? d : d.toLowerCase(),
-        )
-      : [];
 
   allWrites.map((w: Write) => {
     let checkedWritesOfThisKind = checkedWrites.filter(
@@ -241,7 +284,14 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
           (x.SK == 0 && w.SK == 0)),
     );
 
+    let allReadsOfThisKind = allReads.filter((x: any) => x.PK == w.PK);
+
     if (allWritesOfThisKind.length == 1) {
+      if (
+        allReadsOfThisKind.length == 1 &&
+        allWritesOfThisKind[0].confidence < allReadsOfThisKind[0].confidence
+      )
+        return;
       if (
         "confidence" in allWritesOfThisKind[0] &&
         allWritesOfThisKind[0].confidence > confidenceThreshold
@@ -252,7 +302,9 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     } else {
       const maxConfidence = Math.max.apply(
         null,
-        allWritesOfThisKind.map((x: Write) => x.confidence),
+        [...allWritesOfThisKind, ...allReadsOfThisKind].map(
+          (x: Write) => x.confidence,
+        ),
       );
       filteredWrites.push(
         allWritesOfThisKind.filter(
@@ -263,11 +315,7 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     }
   });
 
-  return filteredWrites.filter(
-    (f: Write) =>
-      f != undefined &&
-      !distressedAssets.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
-  );
+  return filteredWrites.filter((f: Write) => f != undefined);
 }
 function aggregateTokenAndRedirectData(reads: Read[]) {
   const coinData: CoinData[] = reads
@@ -283,8 +331,8 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
         "confidence" in r.dbEntry
           ? r.dbEntry.confidence
           : r.redirect.length != 0 && "confidence" in r.redirect[0]
-          ? r.redirect[0].confidence
-          : undefined;
+            ? r.redirect[0].confidence
+            : undefined;
 
       return {
         chain:
@@ -321,19 +369,20 @@ export async function batchWriteWithAlerts(
   );
   await batchWrite(filteredItems, failOnError);
 }
-// export async function batchWrite2WithAlerts(
-//   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-// ) {
-//   const previousItems: DbEntry[] = await readPreviousValues(items);
-//   const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
-//     items,
-//     previousItems,
-//   );
+export async function batchWrite2WithAlerts(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+) {
+  const previousItems: DbEntry[] = await readPreviousValues(items);
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
+    items,
+    previousItems,
+  );
 
-//   await batchWrite2(await translateItems(filteredItems));
-// }
+  await batchWrite2(await translateItems(filteredItems));
+}
 async function readPreviousValues(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  latencyHours: number = 6,
 ): Promise<DbEntry[]> {
   let queries: { PK: string; SK: number }[] = [];
   items.map(
@@ -345,7 +394,11 @@ async function readPreviousValues(
       });
     },
   );
-  return await batchGet(queries);
+  const results = await batchGet(queries);
+  const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
+  return results.filter(
+    (r: any) => r.timestamp > recentTime || r.confidence > 1,
+  );
 }
 async function checkMovement(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
@@ -367,9 +420,8 @@ async function checkMovement(
       if (percentageChange > margin) {
         errors += `${d.adapter} \t ${d.PK.substring(
           d.PK.indexOf("#") + 1,
-        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${
-          previousItem.price
-        } to $${d.price}\n`;
+        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${previousItem.price
+          } to $${d.price}\n`;
         return;
       }
     }

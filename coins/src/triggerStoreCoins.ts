@@ -1,5 +1,6 @@
 import invokeLambda from "./utils/shared/invokeLambda";
 import adapters from "./adapters/index";
+import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
 
 function shuffleArray(array: number[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -10,6 +11,7 @@ function shuffleArray(array: number[]) {
 
 const step = 3;
 export default async function handler() {
+  await setEnvSecrets();
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
     Array(adaptersArray.length).keys()

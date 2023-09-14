@@ -84,7 +84,7 @@ export default {
     "gmx": {
         "enabled": true,
         "id": "337",
-        parentId: "337",
+        parentId: "GMX",
         protocolsData: {
             "swap": {
                 "id": "337",
@@ -127,10 +127,12 @@ export default {
             v1: {
                 "id": "2630",
                 enabled: true,
+                disabled: true,
                 displayName: "Opensea V1"
             },
             v2: {
                 "id": "2631",
+                disabled: true,
                 enabled: true,
                 displayName: "Opensea V2"
             },
@@ -259,6 +261,7 @@ export default {
         },
     },
     "velodrome": {
+        parentId: "Velodrome",
         "enabled": true,
         "id": "1799"
     },
@@ -375,6 +378,7 @@ export default {
         "id": "1241"
     },
     "junoswap": {
+        disabled: true,
         "enabled": true,
         "id": "2052"
     },
@@ -483,12 +487,24 @@ export default {
         "id": "1401"
     },
     "kperp-exchange": {
+        "disabled": true,
         "enabled": true,
         "id": "2326"
     },
     "premia": {
         "enabled": true,
-        "id": "381"
+        "id": "381",
+        parentId: "Premia",
+        protocolsData: {
+            v2: {
+                id: "381",
+                enabled: true,
+            },
+            v3: {
+                id: "3497",
+                enabled: true,
+            }
+        }
     },
     "kyberswap": {
         "enabled": true,
@@ -528,6 +544,7 @@ export default {
         "id": "128"
     },
     "el-dorado-exchange": {
+        parentId: "EDE",
         "enabled": true,
         "id": "2356"
     },
@@ -542,6 +559,11 @@ export default {
         protocolsData: {
             "v320": {
                 id: "1657",
+                enabled: true,
+                disabled: true
+            },
+            "v5": {
+                id: "3324",
                 enabled: true
             }
         }
@@ -695,21 +717,25 @@ export default {
         id: "2706"
     },
     "chainlink-vrf-v1": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink VRF V1",
-        id: "2623",
+        id: "3339"
     },
     "chainlink-vrf-v2": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink VRF V2",
-        id: "2623"
+        id: "3340"
     },
     "chainlink-keepers": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink Keepers",
-        id: "2623"
+        id: "3338"
     },
     "chainlink-requests": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink Requests",
         id: "2623"
@@ -743,6 +769,7 @@ export default {
         "id": "2760"
     },
     "morphex": {
+        parentId: "Morphex",
         "enabled": true,
         "id": "2662"
     },
@@ -793,6 +820,7 @@ export default {
         "id": "2864"
     },
     "merlin": {
+        disabled: true,
         "enabled": true,
         "id": "2849"
     },
@@ -828,6 +856,7 @@ export default {
         },
     },
     "pika-protocol": {
+        parentId: "Pika Protocol",
         "enabled": true,
         "id": "916"
     },
@@ -909,6 +938,7 @@ export default {
         "id": "3038"
     },
     "lybra-finance": {
+        parentId: "Lybra Finance",
         "enabled": true,
         "id": "2904"
     },
@@ -982,15 +1012,20 @@ export default {
         enabled: true,
         id: "2795"
     },
-    "y2k-finance": {
+    "y2k": {
         parentId: "Y2K Finance",
         enabled: true,
-        id: "2375"
-    },
-    "y2k-finance-v2": {
-        parentId: "Y2K Finance",
-        enabled: true,
-        id: "3056"
+        id: "2375",
+        "protocolsData": {
+            "v1": {
+                "id": "2375",
+                "enabled": true,
+            },
+            "v2": {
+                "id": "3056",
+                "enabled": true,
+            }
+        },
     },
     "yield-yak-staked-avax": {
         enabled: true,
@@ -1017,5 +1052,249 @@ export default {
     "pinnako": {
         enabled: true,
         id: "3209"
+    },
+    "DerpDEX": {
+        enabled: true,
+        id: "3234"
+    },
+    "wigoswap": {
+        "enabled": true,
+        "id": "1351"
+    },
+    "apollox": {
+        "enabled": true,
+        "id": "1772"
+    },
+    "concordex-io": {
+        "enabled": true,
+        "id": "3172"
+    },
+    "vvs-finance": {
+        "enabled": true,
+        "id": "831"
+    },
+    "agni-fi": {
+        "enabled": true,
+        "id": "3265"
+    },
+    "benqi-lending": {
+        parentId: "Benqi",
+        "enabled": true,
+        "id": "467"
+    },
+    "pika-protocol-v4": {
+        parentId: "Pika Protocol",
+        "enabled": true,
+        "id": "3281"
+    },
+    "holdstation-defutures": {
+        "enabled": true,
+        "id": "2959"
+    },
+    "unicrypt": {
+        parentId: "UniCrypt",
+        "enabled": true,
+        "id": "1765"
+    },
+    "0x0dex": {
+        "enabled": true,
+        "id": "3264"
+    },
+    "base": {
+        "category": "Rollup",
+        "enabled": true,
+        "id": "8453"
+    },
+    "velodrome-v2": {
+        parentId: "Velodrome",
+        "enabled": true,
+        "id": "3302"
+    },
+    "sobal": {
+        "enabled": true,
+        "id": "3246"
+    },
+    "reserve": {
+        "enabled": true,
+        "id": "626"
+    },
+    "grizzly-trade": {
+        "enabled": true,
+        "id": "3301"
+    },
+    "rollup-finace": {
+        "enabled": true,
+        "id": "2889"
+    },
+    "ktx": {
+        "enabled": true,
+        "id": "3025"
+    },
+    "zunami": {
+        "enabled": true,
+        "id": "1201"
+    },
+    "fusionx-v3": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3239"
+    },
+    "ferro": {
+        "enabled": true,
+        "id": "1882"
+    },
+    "satori": {
+        "enabled": true,
+        "id": "2982"
+    },
+    "fcon-dex": {
+        "enabled": true,
+        "id": "3299"
+    },
+    "friend-tech": {
+        "enabled": true,
+        "id": "3377"
+    },
+    "fusionx-v2": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3238"
+    },
+    "vertex-protocol": {
+        "enabled": true,
+        "id": "2899"
+    },
+    "edebase": {
+        parentId: "EDE",
+        "enabled": true,
+        "id": "3375"
+    },
+    "venus-finance": {
+        "id": "212",
+        "enabled": true
+    },
+    "none-trading-bot": {
+        "id": "3337",
+        "enabled": true
+    },
+    "dackieswap": {
+        parentId: "DackieSwap",
+        "enabled": true,
+        "id": "3345"
+    },
+    "banana-gun-trading": {
+        "enabled": true,
+        "id": "3336"
+    },
+    "lynex": {
+        "enabled": true,
+        "id": "3408"
+    },
+    "op-bnb": {
+        "enabled": true,
+        "id": "204"
+    },
+    "meowl": {
+        "enabled": true,
+        "id": "3418"
+    },
+    "qidao": {
+        "enabled": true,
+        "id": "449"
+    },
+    "zksync-era": {
+        "category": "Rollup",
+        "enabled": true,
+        "id": "324"
+    },
+    "meridian-trade": {
+        "enabled": true,
+        "id": "3386"
+    },
+    "baseswap": {
+        "enabled": true,
+        "id": "3333",
+        protocolsData: {
+            "swap": {
+                "id": "3333",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "BaseSwap - SWAP"
+            },
+            "derivatives": {
+                displayName: "BaseSwap - Derivatives",
+                "id": "3333",
+                "enabled": true
+            }
+        }
+    },
+    "yfx-v3": {
+        "enabled": true,
+        "id": "3429"
+    },
+    "gmx-v2": {
+        parentId: "GMX",
+        "enabled": true,
+        "id": "3365"
+    },
+    "swapbased": {
+        parentId: "SwapBased",
+        "enabled": true,
+        "id": "3328"
+    },
+    "danogo": {
+        "enabled": true,
+        "id": "3454"
+    },
+    "sharesgram": {
+        "enabled": true,
+        "id": "3464"
+    },
+    "tigris": {
+        "enabled": true,
+        "id": "3129"
+    },
+    "aerodrome": {
+        "enabled": true,
+        "id": "3450"
+    },
+    "apex": {
+        "enabled": true,
+        "id": "1878"
+    },
+    "lybra-v2": {
+        parentId: "Lybra Finance",
+        "enabled": true,
+        "id": "3468"
+    },
+    "morphex-old": {
+        parentId: "Morphex",
+        "enabled": true,
+        "id": "3483"
+    },
+    "pact": {
+        "enabled": true,
+        "id": "1468"
+    },
+    "friend-room": {
+        "id": "3493",
+        "enabled": true
+    },
+    "liquis": {
+        "id": "3498",
+        "enabled": true
+    },
+    "dackieswap-v2": {
+        parentId: "DackieSwap",
+        "enabled": true,
+        "id": "3515",
+    },
+    "basepaint": {
+        "enabled": true,
+        "id": "3519"
+    },
+    "monarchpay": {
+        "enabled": true,
+        "id": "3520"
     }
 } as AdaptorsConfig

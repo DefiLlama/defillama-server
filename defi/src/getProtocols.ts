@@ -1,6 +1,7 @@
 import { wrap, IResponse, cache20MinResponse } from "./utils/shared";
 import protocols, { Protocol } from "./protocols/data";
 import treasuries from "./protocols/treasury";
+import entities from "./protocols/entities";
 import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import {
@@ -219,6 +220,10 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
 
 export const treasuriesHandler = async (): Promise<IResponse> => {
   return cache20MinResponse(await craftProtocolsResponseInternal(true, treasuries, true));
+};
+
+export const entitiesHandler = async (): Promise<IResponse> => {
+  return cache20MinResponse(await craftProtocolsResponseInternal(true, entities, true));
 };
 
 export default wrap(handler);

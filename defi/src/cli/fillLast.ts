@@ -2,10 +2,6 @@ require("dotenv").config();
 
 import { getProtocol, } from "./utils";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
-import {
-  getCoingeckoLock,
-  releaseCoingeckoLock,
-} from "../utils/shared/coingeckoLocks";
 import { importAdapter } from "./utils/importAdapter";
 import { util } from "@defillama/sdk";
 
@@ -19,9 +15,6 @@ const main = async () => {
   const adapterModule = await importAdapter(protocol)
   const ethereumBlock = undefined
   const chainBlocks = {}
-  setInterval(() => {
-    releaseCoingeckoLock();
-  }, 1.5e3);
   const tvl = await storeTvl(
     now,
     ethereumBlock as unknown as number,
@@ -30,7 +23,6 @@ const main = async () => {
     adapterModule,
     {},
     4,
-    getCoingeckoLock,
     false,
     true,
     true,

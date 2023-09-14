@@ -21,6 +21,7 @@ function insertOnDb(useCurrentPrices:boolean, query:string, params:(string|numbe
   if (process.env.LOCAL === 'true') return;
   if(useCurrentPrices === true && Math.random() <= probabilitySampling){
     const currentTime = getCurrentUnixTimestamp()
+    // sdk.log('inserting on db', query, 'params', JSON.stringify(params, null, 2), storedKey)
     executeAndIgnoreErrors(query, [currentTime, ...params, storedKey, storedKey.split("-")[0]])
   }
 }
@@ -148,7 +149,6 @@ export async function storeTvl(
   module: any,
   staleCoins: StaleCoins,
   maxRetries: number = 1,
-  _getCoingeckoLock?: () => Promise<unknown>, // TODO: remove unused
   storePreviousData: boolean = true,
   useCurrentPrices: boolean = true,
   breakIfTvlIsZero: boolean = false,

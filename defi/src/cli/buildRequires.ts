@@ -2,6 +2,7 @@ import protocols from "../protocols/data";
 import treasuries from "../protocols/treasury";
 import { writeFileSync, readdirSync } from "fs"
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
+import entities from "../protocols/entities";
 
 function getUnique(arry: string[]) {
     return [...new Set(arry)]
@@ -9,7 +10,7 @@ function getUnique(arry: string[]) {
 
 writeFileSync("./src/utils/imports/adapters.ts",
     `export default {
-    ${getUnique(protocols.concat(treasuries).map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
+    ${getUnique(protocols.concat(treasuries).concat(entities).map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
 }`)
 
 const excludeLiquidation = ["test.ts", "utils", "README.md"]

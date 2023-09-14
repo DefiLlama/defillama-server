@@ -181,14 +181,3 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
-
-async function main() {
-  let a = await handler({
-    pathParameters: {
-      coins: "ethereum:0xdF574c24545E5FfEcb9a659c229253D4111d87e1",
-    },
-    // queryStringParameters: {}, // searchWidth: "600", span: "10" },
-  });
-  return a;
-}
-main(); // ts-node coins/src/getCoinPriceChart.ts

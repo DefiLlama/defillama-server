@@ -1,4 +1,4 @@
-# defillama-server
+# defillama server
 
 ## Setup
 ```bash

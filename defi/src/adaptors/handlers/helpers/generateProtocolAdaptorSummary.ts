@@ -7,7 +7,7 @@ import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdapt
 import { getDisplayChainName } from "../../utils/getAllChainsFromAdaptors"
 import { sendDiscordAlert } from "../../utils/notify"
 import { calcNdChange, getWoWStats, sumAllVolumes } from "../../utils/volumeCalcs"
-import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverviewProcess"
+import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraN30DTypes, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverviewProcess"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import { convertDataToUSD } from "./convertRecordDataCurrency"
 import generateCleanRecords from "./generateCleanRecords"
@@ -26,8 +26,9 @@ const getAdapterKey = (
     adaptorRecordType: AdaptorRecordType,
     adaptorType: AdapterType,
     protocolType?: ProtocolType,
-    chainFilter?: string
-) => `generateCleanRecords/${adaptorType}/${adapterId}/${versionKey}/${protocolType}/${adaptorRecordType}_${chainFilter}`
+    chainFilter?: string,
+    extraN30DType?: string,
+) => `generateCleanRecords/${adaptorType}/${adapterId}/${versionKey}/${protocolType}/${adaptorRecordType}_${chainFilter}_${extraN30DType}`
 
 export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecordType, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
     console.info("Generating summary for:", adapter.name, "with params", adaptorRecordType, adaptorType, chainFilter)
@@ -60,6 +61,46 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])
             if (AdaptorRecordTypeMapReverse[recordType]) {
                 extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(await convertDataToUSD(cleanRecord.data, lastRecordRaw.timestamp)) : null
+            }
+        }
+
+        const extraN30DTypes: IJSON<number | null> = {}
+        for (const recordType of getExtraN30DTypes(adaptorType)) {
+            const _adaptorRecordsRawN30D = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType).catch(_e => { }) as AdaptorRecord[] | undefined
+            if (!_adaptorRecordsRawN30D) continue;
+            if (_adaptorRecordsRawN30D?.length && _adaptorRecordsRawN30D?.length === 0) continue;
+            const startTimestamp = adapter.startFrom
+            const startIndex = startTimestamp ? _adaptorRecordsRawN30D.findIndex((ar: any) => ar.timestamp === startTimestamp) : -1
+            let _adaptorRecordsN30D = _adaptorRecordsRawN30D.slice(startIndex + 1)
+            const cleanRecordsN30D = await getCachedReturnValue(
+                getAdapterKey(
+                    adapter.id,
+                    adapter.versionKey ?? adapter.module,
+                    recordType,
+                    adaptorType,
+                    adapter.protocolType,
+                    chainFilter,
+                    `${recordType}_30d`
+                ),
+                async () => generateCleanRecords(
+                    _adaptorRecordsN30D,
+                    adapter.chains,
+                    protocolsKeys,
+                    chainFilter,
+                    adapter.config?.cleanRecordsConfig
+                ))
+            const lastAvailableDataTimestamp = _adaptorRecordsN30D[_adaptorRecordsN30D.length - 1].timestamp
+            const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
+            const lastDaysExtrapolation = ((yesterdaysCleanTimestamp - lastAvailableDataTimestamp) / ONE_DAY_IN_SECONDS) < 5
+            const stats = getStats(adapter, _adaptorRecordsN30D, cleanRecordsN30D.cleanRecordsMap, lastAvailableDataTimestamp)
+            if (AdaptorRecordTypeMapReverse[recordType]) {
+                const extraN30DField = `${AdaptorRecordTypeMapReverse[recordType]}`.replace('daily', '');
+                const firstLetter = extraN30DField.charAt(0)
+                const firstLetterCap = firstLetter.toLowerCase()
+                const remainingLetters = extraN30DField.slice(1)
+
+                const key = `${firstLetterCap}${remainingLetters}30d`
+                extraN30DTypes[key] = (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total30d;
             }
         }
 
@@ -163,6 +204,10 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
                 acc[key] = (adapter.disabled || !lastDaysExtrapolation) ? null : value
                 return acc
             }, {} as typeof extraTypes),
+            ...Object.entries(extraN30DTypes).reduce((acc, [key, value]) => {
+                acc[key] = (adapter.disabled || !lastDaysExtrapolation) ? null : value
+                return acc
+            }, {} as typeof extraN30DTypes),
             spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined
         }
     } catch (error) {

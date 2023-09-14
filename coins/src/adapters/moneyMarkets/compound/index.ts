@@ -142,3 +142,19 @@ export function lodestar(timestamp: number = 0) {
     timestamp,
   );
 }
+export function marev2(timestamp: number = 0) {
+  console.log("starting marev2");
+  return getTokenPrices(
+    "kava",
+    "0xFcD7D41D5cfF03C7f6D573c9732B0506C72f5C72",
+    timestamp,
+  );
+}
+export function tenderfi(timestamp: number = 0) {
+  console.log("starting tenderfi");
+  return getTokenPrices(
+    "arbitrum",
+    "0xeed247Ba513A8D6f78BE9318399f5eD1a4808F8e",
+    timestamp,
+  );
+}

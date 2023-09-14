@@ -19,32 +19,40 @@ const sequelize = new Sequelize({
   },
 });
 
-class GitCommitRaw extends Model { }
-GitCommitRaw.init(
-  {
-    sha: {
-      type: DataTypes.STRING,
-      primaryKey: true,
+const tables = {
+  GitCommitRaw: {
+    attributes: {
+      sha: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+      },
+      message: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      repo: DataTypes.STRING,
+      owner: DataTypes.STRING,
+      authors: DataTypes.JSONB,
+      is_merge_commit: DataTypes.BOOLEAN,
+      is_processed: DataTypes.BOOLEAN,
+      created_at: DataTypes.DATE,
     },
-    message: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    repo: DataTypes.STRING,
-    owner: DataTypes.STRING,
-    authors: DataTypes.JSONB,
-    is_merge_commit: DataTypes.BOOLEAN,
-    is_processed: DataTypes.BOOLEAN,
-    created_at: DataTypes.DATE,
-  },
-  {
-    sequelize,
-    tableName: 'git_commit_raw',
-    timestamps: true,
-    createdAt: 'createdat',
-    updatedAt: 'updatedat',
+    options: {
+      sequelize,
+      tableName: 'git_commit_raw',
+      timestamps: true,
+      createdAt: 'createdat',
+      updatedAt: 'updatedat',
+    }
   }
-);
+}
+
+class GitCommitRaw extends Model { }
+GitCommitRaw.init(tables.GitCommitRaw.attributes, tables.GitCommitRaw.options);
+
+
+class Deleted_GitCommitRaw extends Model { }
+Deleted_GitCommitRaw.init(tables.GitCommitRaw.attributes, { ...tables.GitCommitRaw.options, tableName: 'deleted_git_commit_raw', });
 
 /* 
 class GitCommitAuthor extends Model {}
@@ -154,6 +162,30 @@ GitRepo.init(
   {
     sequelize,
     tableName: 'git_repo',
+    timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
+  }
+);
+
+class ProjectReport extends Model { }
+ProjectReport.init(
+  {
+    name: DataTypes.STRING,
+    project_type: DataTypes.STRING,
+    project_id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    linked_orgs: DataTypes.ARRAY(DataTypes.STRING),
+    report: DataTypes.JSONB,
+    last_report_generated_time: DataTypes.DATE,
+    last_commit_update_time: DataTypes.DATE,
+    exported_to_r2: DataTypes.BOOLEAN,
+  },
+  {
+    sequelize,
+    tableName: 'project_report',
     timestamps: true,
     createdAt: 'createdat',
     updatedAt: 'updatedat',
@@ -273,6 +305,8 @@ module.exports = {
   GitOwner,
   GitRepo,
   GitCommitRaw,
+  ProjectReport,
+  Deleted_GitCommitRaw,
   addRawCommit,
   addRawCommits,
   archiveExists,

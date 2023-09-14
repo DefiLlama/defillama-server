@@ -1,4 +1,4 @@
-import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectsCommand, } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectsCommand } from "@aws-sdk/client-s3";
 import axios from "axios";
 import type { Readable } from "stream";
 
@@ -69,8 +69,8 @@ export async function getR2(filename: string) {
   const data = await R2.send(command);
   return {
     body: await data.Body?.transformToString(),
-    lastModified: data.LastModified
-  }
+    lastModified: data.LastModified,
+  };
 }
 
 export async function storeDatasetR2(
@@ -110,6 +110,7 @@ export async function storeLiqsR2(
         }
       : {}),
   });
+  console.log("Storing liqs", `liqs/${filename}`);
   return await R2.send(command);
 }
 
@@ -159,22 +160,20 @@ export function buildRedirectR2(filename: string, cache?: number) {
 
 export const liquidationsFilename = `liquidations.json`;
 
-
-export async function deleteProtocolCache(
-  protocolId: string,
-) {
-  const cacheKey = (useNewChainNames:boolean, useHourlyData:boolean) => `protocolCache/${protocolId}-${useNewChainNames}-${useHourlyData}`
+export async function deleteProtocolCache(protocolId: string) {
+  const cacheKey = (useNewChainNames: boolean, useHourlyData: boolean) =>
+    `protocolCache/${protocolId}-${useNewChainNames}-${useHourlyData}`;
   const keys = [
-      [true, true],
-      [true, false],
-      [false, true],
-      [false, false]
-  ].map(t=>({Key:cacheKey(t[0], t[1])}))
+    [true, true],
+    [true, false],
+    [false, true],
+    [false, false],
+  ].map((t) => ({ Key: cacheKey(t[0], t[1]) }));
   const command = new DeleteObjectsCommand({
-      Bucket: datasetBucket,
-      Delete:{
-          Objects:keys
-      }
-  })
+    Bucket: datasetBucket,
+    Delete: {
+      Objects: keys,
+    },
+  });
   return await R2.send(command);
 }

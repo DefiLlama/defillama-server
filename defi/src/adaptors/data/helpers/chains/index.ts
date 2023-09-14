@@ -1344,7 +1344,23 @@ export default {
             chain: "Ethereum",
             types: ["L2", "gas"]
         },
-        chainid: 324,
+        chainId: 324,
+    },
+    "Base": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: [
+            "EVM"
+        ],
+        chainId: 8453
+    },
+    "Op_Bnb": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: ["EVM"],
+        chainId: 204,
     },
 } as unknown as {
     [chain: string]: {

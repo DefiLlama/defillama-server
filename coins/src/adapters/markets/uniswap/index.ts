@@ -293,5 +293,52 @@ export function extraUniV2Lps(timestamp: number = 0) {
       "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
       "avax",
     ),
+    getExtras(
+      timestamp,
+      "0x517F9dD285e75b599234F7221227339478d0FcC8",
+      "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "ethereum",
+    ),
   ]);
+}
+export function fvm(timestamp: number = 0) {
+  console.log("starting fvm");
+  return getTokenPrices(
+    "fantom",
+    "0x472f3C3c9608fe0aE8d702f3f8A2d12c410C881A",
+    "0x2E14B53E2cB669f3A974CeaF6C735e134F3Aa9BC",
+    undefined,
+    timestamp,
+  );
+}
+export function velocimeter(timestamp: number = 0) {
+  console.log("starting velocimeter");
+  return getTokenPrices(
+    "base",
+    "0xe21Aac7F113Bd5DC2389e4d8a8db854a87fD6951",
+    "0xE11b93B61f6291d35c5a2beA0A9fF169080160cF",
+    undefined,
+    timestamp,
+  );
+}
+export function pulsex(timestamp: number = 0) {
+  console.log("starting pulsex");
+  return getTokenPrices(
+    "pulse",
+    "0x1715a3E4A142d8b698131108995174F37aEBA10D",
+    "0xc40cE31d9bcBe2edFbD30D0a7503f6C663b69877",
+    undefined,
+    timestamp,
+  );
+}
+
+export function zkSwap(timestamp: number = 0) {
+  console.log("starting zkSwap finance");
+  return getTokenPrices(
+    "era",
+    "0x3a76e377ED58c8731F9DF3A36155942438744Ce3",
+    undefined,
+    undefined,
+    timestamp,
+  );
 }

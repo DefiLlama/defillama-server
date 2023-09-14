@@ -118,7 +118,8 @@ export type LiteProtocol = Pick<
   | "url"
   | "parentProtocol"
 > &
-  ProtocolTvls;
+  ProtocolTvls
+  & {defillamaId:string};
 
 export interface IChain {
   gecko_id?: string | null;

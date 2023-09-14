@@ -18348,6 +18348,28 @@ const data3: Protocol[] = [
     github: ["xbased-xyz"],
     listedAt: 1694663767
   },
+  {
+    id: "3524",
+    name: "Jumper Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://jumper.exchange",
+    description:
+      "Crypto's Everything Exchange",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/jumper-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "JumperExchange",
+    github: ["lifinance"],
+  },
 ]
 
 export default data3

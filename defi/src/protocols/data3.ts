@@ -8210,12 +8210,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "raft/index.js",
     twitter: "raft_fi",
-<<<<<<< HEAD
-    oracles: ["Chainlink", "Tellor", "RedStone"],
-    forkedFrom: ["Liquity"],
-=======
-    oracles: ["Chainlink"],
->>>>>>> 5df7fc7f55f87c77eaa5472dffe821cceef9c5c9
+    oracles: ["Chainlink", "RedStone"],
     audit_links: [ "https://github.com/trailofbits/publications/blob/master/reviews/2023-04-tempus-raft-securityreview.pdf"],
     github: ["raft-fi"],
     stablecoins: ["r"],

@@ -1296,5 +1296,9 @@ export default {
     "monarchpay": {
         "enabled": true,
         "id": "3520"
+    },
+    "perpetual-protocol": {
+        "enabled": true,
+        "id": "362"
     }
 } as AdaptorsConfig

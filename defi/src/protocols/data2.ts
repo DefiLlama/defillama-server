@@ -16327,7 +16327,7 @@ const data2: Protocol[] = [
     gecko_id: "pego-network",
     cmcId: "21080",
     category: "Dexes",
-    chains: ["Binance", "Pego"],
+    chains: ["Binance"],
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "w3swap/index.js",

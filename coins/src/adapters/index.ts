@@ -45,6 +45,7 @@ export default {
   beefy: require("./yield/beefy"),
   platypus: require("./markets/platypus"),
   curve: require("./markets/curve"),
+  curve2: require("./markets/curve"),
   balancer1: require("./markets/balancer"),
   balancer2: require("./markets/balancer"),
   balancer3: require("./markets/balancer"),

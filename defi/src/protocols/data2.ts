@@ -16316,10 +16316,10 @@ const data2: Protocol[] = [
   {
     id: "2108",
     name: "W3swap",
-    address: "bsc:0xc5db5afee4c55dfad5f2b8226c6ac882e6956a0a",
-    symbol: "OSK-DAO",
+    address: null,
+    symbol: "-",
     url: "https://w3swap.finance/",
-    description: "W3Swap DEX on bsc",
+    description: "W3Swap DEX on Pego Network",
     chain: "Binance",
     logo: `${baseIconsUrl}/w3swap.jpg`,
     audits: "0",
@@ -16327,11 +16327,11 @@ const data2: Protocol[] = [
     gecko_id: "pego-network",
     cmcId: "21080",
     category: "Dexes",
-    chains: ["Binance"],
+    chains: ["Binance", "Pego"],
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "w3swap/index.js",
-    twitter: "pegonetwork",
+    twitter: "w3_foundation",
     listedAt: 1663772859
   },
   {

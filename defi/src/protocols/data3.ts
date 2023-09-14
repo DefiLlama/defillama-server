@@ -18370,6 +18370,28 @@ const data3: Protocol[] = [
     twitter: "JumperExchange",
     github: ["lifinance"],
   },
+  {
+    id: "3525",
+    name: "FlashPulse",
+    address: "pulse:0x38e18751533a171b66f00a6be85E4d0f7bF1Ca48",
+    symbol: "FlashToken",
+    url: "https://flashpulse.xyz",
+    description:
+      "Farm on Pulse Chain",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/flashpulse.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Pulse"],
+    module: "flashpulse/index.js",
+    oracles: [],
+    forkedFrom: ["Goose Finance"],
+    twitter: "flashpulsechain",
+    listedAt: 1694698431
+  },
 ]
 
 export default data3

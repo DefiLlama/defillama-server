@@ -110,7 +110,7 @@ GROUP BY
                 await storeNewUsers(start, end, id, "all", users) // if already stored -> don't overwrite
             } catch(e){
                 if(!String(e).includes("duplicate key value violates unique constraint")){
-                    console.error(`Couldn't store users for ${name}`, e)
+                    console.error(`Couldn't store new users for ${name}`, e)
                 }
             }
         })

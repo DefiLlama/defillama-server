@@ -31,7 +31,7 @@ export async function storeChainUsers({ name, addresses, id }: {name:string, add
                     await storeUsers(start, end, id, chain, users) // if already stored -> don't overwrite
                 } catch(e){
                     if(!String(e).includes("duplicate key value violates unique constraint")){
-                        console.error(`Couldn't store users for ${name} on ${chain}`, e)
+                        console.error(`Couldn't store chain users for ${name} on ${chain}`, e)
                     }
                 }
             })
@@ -84,7 +84,7 @@ ORDER BY
               await storeUsers(start, end, id, "all", users) // if already stored -> don't overwrite
           } catch(e){
               if(!String(e).includes("duplicate key value violates unique constraint")){
-                  console.error(`Couldn't store users for ${name}`, e)
+                  console.error(`Couldn't store all users for ${name}`, e)
               }
           }
       })

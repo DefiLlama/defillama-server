@@ -33,7 +33,7 @@ export async function storeChainGas({ name, addresses, id }: {name:string, addre
                     await storeGas(start, end, id, chain, Number(gas), Number(gas)*price) // if already stored -> don't overwrite
                 } catch(e){
                     if(!String(e).includes("duplicate key value violates unique constraint")){
-                        console.error(`Couldn't store users for ${name} on ${chain}`, e)
+                        console.error(`Couldn't store chain gas for ${name} on ${chain}`, e)
                     }
                 }
             })

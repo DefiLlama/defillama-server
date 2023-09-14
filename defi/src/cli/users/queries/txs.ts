@@ -31,7 +31,7 @@ export async function storeChainTxs({ name, addresses, id }: {name:string, addre
                         await storeTxs(start, end, id, chain, users) // if already stored -> don't overwrite
                     } catch(e){
                         if(!String(e).includes("duplicate key value violates unique constraint")){
-                            console.error(`Couldn't store users for ${name} on ${chain}`, e)
+                            console.error(`Couldn't store chain txs for ${name} on ${chain}`, e)
                         }
                     }
                 })

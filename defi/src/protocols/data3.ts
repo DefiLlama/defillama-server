@@ -6199,7 +6199,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "gravita-protocol/index.js",
     twitter: "gravitaprotocol",
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "RedStone"],
     forkedFrom: ["Liquity"],
     stablecoins: ["grai"],
     audit_links: [
@@ -7924,7 +7924,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "raft/index.js",
     twitter: "raft_fi",
-    oracles: ["Chainlink", "Tellor"],
+    oracles: ["Chainlink", "Tellor", "RedStone"],
     forkedFrom: ["Liquity"],
     audit_links: [ "https://github.com/trailofbits/publications/blob/master/reviews/2023-04-tempus-raft-securityreview.pdf"],
     github: ["raft-fi"],

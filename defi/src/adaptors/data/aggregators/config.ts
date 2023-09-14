@@ -43,5 +43,9 @@ export default {
     "logx": {
         enabled: true,
         id: "3396"
+    },
+    "jumper-exchange": {
+        enabled: true,
+        id: "3524"
     }
 } as AdaptorsConfig

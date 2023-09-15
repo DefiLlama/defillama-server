@@ -9,33 +9,45 @@ const defaultRegistries = [
 ];
 export function curve(timestamp: number = 0) {
   console.log("starting curve");
-  return Promise.all([getTokenPrices2("ethereum", ["crypto"], timestamp)]);
+  return Promise.all([
+    getTokenPrices2("ethereum", ["crypto"], timestamp),
+    getGaugePrices("ethereum", timestamp),
+  ]);
 }
 export function curve1(timestamp: number = 0) {
   console.log("starting curve2");
-  return Promise.all([getTokenPrices2("fantom", defaultRegistries, timestamp)]);
+  return Promise.all([
+    getTokenPrices2("fantom", defaultRegistries, timestamp),
+    getGaugePrices("fantom", timestamp),
+  ]);
 }
 export function curve2(timestamp: number = 0) {
   console.log("starting curve2");
   return Promise.all([
     getTokenPrices2("arbitrum", defaultRegistries, timestamp),
+    getGaugePrices("arbitrum", timestamp),
   ]);
 }
 export function curve3(timestamp: number = 0) {
   console.log("starting curve3");
   return Promise.all([
     getTokenPrices2("optimism", defaultRegistries, timestamp),
+    getGaugePrices("optimism", timestamp),
   ]);
 }
 export function curve4(timestamp: number = 0) {
   console.log("starting curve4");
   return Promise.all([
     getTokenPrices2("polygon", defaultRegistries, timestamp),
+    getGaugePrices("polygon", timestamp),
   ]);
 }
 export function curve5(timestamp: number = 0) {
   console.log("starting curve5");
-  return Promise.all([getTokenPrices2("avax", defaultRegistries, timestamp)]);
+  return Promise.all([
+    getTokenPrices2("avax", defaultRegistries, timestamp),
+    getGaugePrices("avax", timestamp),
+  ]);
 }
 export function curve6(timestamp: number = 0) {
   console.log("starting curve6");
@@ -49,6 +61,7 @@ export function curve7(timestamp: number = 0) {
   console.log("starting curve7");
   return Promise.all([
     getTokenPrices2("moonbeam", defaultRegistries, timestamp),
+    getGaugePrices("moonbeam", timestamp),
   ]);
 }
 export function curve8(timestamp: number = 0) {
@@ -57,7 +70,10 @@ export function curve8(timestamp: number = 0) {
 }
 export function curve9(timestamp: number = 0) {
   console.log("starting curve9");
-  return Promise.all([getTokenPrices2("celo", defaultRegistries, timestamp)]);
+  return Promise.all([
+    getTokenPrices2("celo", defaultRegistries, timestamp),
+    getGaugePrices("celo", timestamp),
+  ]);
 }
 export function curve10(timestamp: number = 0) {
   console.log("starting curve10");
@@ -69,19 +85,8 @@ export function curve11(timestamp: number = 0) {
 }
 export function curve12(timestamp: number = 0) {
   console.log("starting curve12");
-  return Promise.all([getTokenPrices2("xdai", defaultRegistries, timestamp)]);
-}
-export function gauges(timestamp: number = 0) {
-  console.log("starting gauges");
   return Promise.all([
-    getGaugePrices("ethereum", timestamp),
-    getGaugePrices("arbitrum", timestamp),
-    getGaugePrices("polygon", timestamp),
-    getGaugePrices("fantom", timestamp),
-    getGaugePrices("optimism", timestamp),
-    getGaugePrices("avax", timestamp),
-    getGaugePrices("moonbeam", timestamp),
+    getTokenPrices2("xdai", defaultRegistries, timestamp),
     getGaugePrices("xdai", timestamp),
-    getGaugePrices("celo", timestamp),
   ]);
 }

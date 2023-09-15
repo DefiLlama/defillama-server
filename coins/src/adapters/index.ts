@@ -64,7 +64,6 @@ export default {
   balancer5: require("./markets/balancer"),
   linearPools: require("./markets/balancer"),
   hop: require("./markets/hop"),
-  gauges: require("./markets/curve"),
   ankr: require("./liquidStaking/ankr"),
   synthetix: require("./other"),
   glp: require("./other"),

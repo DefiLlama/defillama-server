@@ -330,5 +330,15 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "nether-fi": {
+        "protocolsData": {
+            "derivatives": {
+                "id": "3509",
+                "enabled": true,
+            }
+        },
+        "enabled": true,
+        "id": "3509"
     }
 } as AdaptorsConfig

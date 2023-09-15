@@ -1959,5 +1959,16 @@ export default {
     "sithswap": {
         "enabled": true,
         "id": "2719"
+    },
+    "nether-fi": {
+        "protocolsData": {
+            "swap": {
+                "id": "3509",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        },
+        "enabled": true,
+        "id": "3509"
     }
 } as AdaptorsConfig

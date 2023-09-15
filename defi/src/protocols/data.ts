@@ -3088,7 +3088,7 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/basketdao/contracts/tree/main/audits"],
   },
   {
-    id: "251",
+    id: "251", // previously Mimo Protocol
     name: "Parallel Protocol",
     address: "0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc",
     symbol: "MIMO",

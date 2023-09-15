@@ -3095,7 +3095,7 @@ const data: Protocol[] = [
     url: "https://mimo.capital",
     description: "Parallel is a decentralized protocol that issues stablecoins, PAR (EUR stablecoin) and paUSD (USD stablecoin), on the Ethereum, Polygon and Fantom blockchains. The PAR & paUSD stablecoin are decentralized, non-custodials, and collateral-backed FIAT stablecoins.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/parallel-protocol.jpg`,
+    logo: `${baseIconsUrl}/parallel-protocol.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "mimo-parallel-governance-token",

@@ -18215,14 +18215,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3518",
-    name: "Messina Liquid",
+    name: "Messina Liquid Staking",
     address: null,
     symbol: "-",
     url: "https://messina.one",
     description:
       "Messina.one is a cross-chain protocol built on top of Wormhole that aims to enable the next 1B blockchain users.",
     chain: "Algorand",
-    logo: `${baseIconsUrl}/messina-liquid.jpg`,
+    logo: `${baseIconsUrl}/messina-liquid-staking.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

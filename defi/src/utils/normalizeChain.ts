@@ -1184,6 +1184,7 @@ export const chainCoingeckoIds = {
     github: ['dfinity'],
     symbol: "ICP",
     cmcId: "8916",
+    governanceID: ["icp"]
   },
   "Nova Network": {
     geckoId: "supernova",

@@ -189,17 +189,6 @@ functions:
       - http:
           path: /{params+}
           method: options
-  storeDefiCoins:
-    handler: src/storeCoins.default
-    timeout: 900
-    memorySize: 1024
-    environment: 
-      STALE_COINS_ADAPTERS_WEBHOOK: ${env:STALE_COINS_ADAPTERS_WEBHOOK}
-  triggerStoreDefiCoins:
-    handler: src/triggerStoreCoins.default
-    timeout: 900
-    events:
-      - schedule: cron(45 * * * ? *) # Hourly
 
 resources:
   # CORS for api gateway errors

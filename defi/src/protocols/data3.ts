@@ -18433,7 +18433,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     oracles: [],
     forkedFrom: [],
-    twitter: "TheRexDex",
+    twitter: "Blazebot_io",
   },
 ]
 

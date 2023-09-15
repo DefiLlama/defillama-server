@@ -22818,14 +22818,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2394",
-    name: "Messina Cross",
+    name: "Messina Bridge",
     address: null,
     symbol: "-",
     url: "https://messina.one",
     description:
       "Messina.one is a cross-chain protocol built on top of Wormhole that aims to enable the next 1B blockchain users.",
     chain: "Algorand",
-    logo: `${baseIconsUrl}/messina-cross.jpg`,
+    logo: `${baseIconsUrl}/messina-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

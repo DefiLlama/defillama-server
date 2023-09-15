@@ -6,5 +6,22 @@
       "symbol": "CETUS",
       "to": "coingecko#cetus-protocol"
     }
+  },
+  "pg": {
+    "0x0cf4071940782b640d0b595cb17bdf3e90869d70": {
+      "decimals": "18",
+      "symbol": "WPG",
+      "to": "coingecko#pego-network-2"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "PG",
+      "to": "coingecko#pego-network-2"
+    },
+    "0x02F9Bebf5E54968D8Cc2562356C91ECDE135801B": {
+      "decimals": "18",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    }
   }
 }

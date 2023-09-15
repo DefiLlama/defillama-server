@@ -18392,6 +18392,49 @@ const data3: Protocol[] = [
     twitter: "flashpulsechain",
     listedAt: 1694698431
   },
+  {
+    id: "3526",
+    name: "RexDex",
+    address: "0x01A2947D9E6F58572028fA9fC6A2511646345841",
+    symbol: "REX",
+    url: "https://rexdex.finance",
+    description:
+      "RexDex is a decentralized trading platform that revolutionizes digital asset farming by harnessing the power of Small Arms Syndicate NFTs to supercharge your farming experience. With SAS NFTs, users can boost their yield farming capabilities. This innovative platform offers a decentralized and secure environment for users to stake and trade their assets. Join the future of DeFi with RexDex and take control of your farming journey with Small Arms Syndicate NFTs.",
+    chain: "Wanchain",
+    logo: `${baseIconsUrl}/rexdex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Wanchain"],
+    module: "rexdex/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "TheRexDex",
+    listedAt: 1694784487
+  },
+  {
+    id: "3527",
+    name: "BlazeBot",
+    address: null,
+    symbol: "BLAZE",
+    url: "https://blazebot.io",
+    description:
+      "Experience seamless and lightning-fast trading on the go with our subscription free Telegram bot.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/blazebot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "TheRexDex",
+  },
 ]
 
 export default data3

@@ -1308,5 +1308,9 @@ export default {
     "extra": {
         "enabled": true,
         "id": "2974"
+    },
+    "blazebot": {
+        "enabled": true,
+        "id": "3527"
     }
 } as AdaptorsConfig

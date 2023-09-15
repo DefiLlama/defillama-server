@@ -18435,6 +18435,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     twitter: "Blazebot_io",
   },
+  {
+    id: "3528",
+    name: "Caviar Tangible",
+    address: null,
+    symbol: "-",
+    url: "https://www.tangible.store/caviar",
+    description:
+      "Remove the complexity and commitment of ve(3,3) economics with Caviar, a simple token anyone can use. Stake, claim USDR rewards daily, exit at any time. Caviar helps you get more by doing less.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/caviar-tangible.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Polygon"],
+    module: "tangible-caviar/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "caviarAMM",
+    listedAt: 1694784903
+  },
+
 ]
 
 export default data3

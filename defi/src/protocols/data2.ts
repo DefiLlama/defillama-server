@@ -16316,10 +16316,10 @@ const data2: Protocol[] = [
   {
     id: "2108",
     name: "W3swap",
-    address: "bsc:0xc5db5afee4c55dfad5f2b8226c6ac882e6956a0a",
-    symbol: "OSK-DAO",
+    address: null,
+    symbol: "-",
     url: "https://w3swap.finance/",
-    description: "W3Swap DEX on bsc",
+    description: "W3Swap DEX on Pego Network",
     chain: "Binance",
     logo: `${baseIconsUrl}/w3swap.jpg`,
     audits: "0",
@@ -16331,7 +16331,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "w3swap/index.js",
-    twitter: "pegonetwork",
+    twitter: "w3_foundation",
     listedAt: 1663772859
   },
   {
@@ -22818,14 +22818,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2394",
-    name: "Messina Cross",
+    name: "Messina Bridge",
     address: null,
     symbol: "-",
     url: "https://messina.one",
     description:
       "Messina.one is a cross-chain protocol built on top of Wormhole that aims to enable the next 1B blockchain users.",
     chain: "Algorand",
-    logo: `${baseIconsUrl}/messina-cross.jpg`,
+    logo: `${baseIconsUrl}/messina-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -6466,8 +6466,8 @@ const data3: Protocol[] = [
   {
     id: "2992",
     name: "Gravita Protocol",
-    address: "0x15f74458ae0bfdaa1a96ca1aa779d715cc1eefe4",
-    symbol: "GRAI",
+    address: null,
+    symbol: "-",
     url: "https://www.gravitaprotocol.com/",
     description:
       "Gravita Protocol is an ETH-centric Borrowing Protocol for LSTs and Yield-Generating assets. GRAI is the debt token of the platform. Our motto is: fuelling decentralization. You cannot resist the pull of Gravita!",
@@ -6475,8 +6475,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/gravita-protocol.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "grai",
-    cmcId: "25337",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Ethereum"],
     module: "gravita-protocol/index.js",
@@ -9001,7 +9001,7 @@ const data3: Protocol[] = [
   {
     id: "3103",
     name: "Maple RWA",
-    address: "0x33349b282065b0284d756f0577fb39c158f935e6",
+    address: "0x1915A8dE08A92b846dF7C845e140E4b0714820bd",
     symbol: "MPL",
     url: "https://www.maple.finance",
     description:
@@ -18215,14 +18215,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3518",
-    name: "Messina Liquid",
+    name: "Messina Liquid Staking",
     address: null,
     symbol: "-",
     url: "https://messina.one",
     description:
       "Messina.one is a cross-chain protocol built on top of Wormhole that aims to enable the next 1B blockchain users.",
     chain: "Algorand",
-    logo: `${baseIconsUrl}/messina-liquid.jpg`,
+    logo: `${baseIconsUrl}/messina-liquid-staking.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -18369,6 +18369,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     twitter: "JumperExchange",
     github: ["lifinance"],
+  },
+  {
+    id: "3525",
+    name: "FlashPulse",
+    address: "pulse:0x38e18751533a171b66f00a6be85E4d0f7bF1Ca48",
+    symbol: "FlashToken",
+    url: "https://flashpulse.xyz",
+    description:
+      "Farm on Pulse Chain",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/flashpulse.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Pulse"],
+    module: "flashpulse/index.js",
+    oracles: [],
+    forkedFrom: ["Goose Finance"],
+    twitter: "flashpulsechain",
+    listedAt: 1694698431
   },
 ]
 

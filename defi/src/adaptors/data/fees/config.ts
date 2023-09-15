@@ -1304,5 +1304,9 @@ export default {
     "nether-fi": {
         "enabled": true,
         "id": "3509"
+    },
+    "extra": {
+        "enabled": true,
+        "id": "2974"
     }
 } as AdaptorsConfig

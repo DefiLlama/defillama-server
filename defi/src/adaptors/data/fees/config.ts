@@ -1300,5 +1300,9 @@ export default {
     "perpetual-protocol": {
         "enabled": true,
         "id": "362"
+    },
+    "nether-fi": {
+        "enabled": true,
+        "id": "3509"
     }
 } as AdaptorsConfig

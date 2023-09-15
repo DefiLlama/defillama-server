@@ -1879,6 +1879,13 @@ export const chainCoingeckoIds = {
     cmcId: "27723",
     categories: ["EVM"],
   },
+  "Kroma": {
+    geckoId: "kroma",
+    symbol: "KRO",
+    cmcId: null,
+    categories: ["EVM"],
+    github: ["kroma-network"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2344,7 +2351,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "darwinia":
       return "Darwinia"
     case "pg":
-      return "Pego"    
+      return "Pego"
+    case "kroma":
+        return "Kroma"      
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

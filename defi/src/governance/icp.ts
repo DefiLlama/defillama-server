@@ -242,7 +242,7 @@ export async function addICPProposals(overview: any = {}) {
   let cache = await getCompound(GOV_ID)
   await update_internet_computer_cache(cache as any)
   cache.metadata = {
-    "id": "internet-computer",
+    "id": GOV_ID,
     "type": "ICP",
     "tokens": [
       {

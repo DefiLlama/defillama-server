@@ -40,7 +40,7 @@ async function queryPostgresWithRetry(
     return res;
   } catch (e) {
     if (counter > 5) throw e;
-    await sleep(10000);
+    await sleep(5000 + 1e4 * Math.random());
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
 }

@@ -16327,11 +16327,12 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Binance", "Pego"],
+    chains: ["Binance"],
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "w3swap/index.js",
     twitter: "w3_foundation",
+    parentProtocol: "parent#w3-foundation",
     listedAt: 1663772859
   },
   {

@@ -2683,13 +2683,24 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#messina.one",
     name: "Messina.one",
-    url: "https://www.arcade.xyz",
+    url: "https://messina.one",
     description: "Messina.one is a cross-chain protocol built on top of Wormhole that aims to enable the next 1B blockchain users.",
     logo: `${baseIconsUrl}/messina.one.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "MessinaOne",
+  },
+  {
+    id: "parent#w3-foundation",
+    name: "W3 Foundation",
+    url: "https://w3swap.link/",
+    description: "W3 Foundation: A decentralized organization built on the W3 community, dedicated to the sustainable development of the W3 ecosystem. ",
+    logo: `${baseIconsUrl}/w3-foundation.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "w3_foundation",
   },
 ];
 

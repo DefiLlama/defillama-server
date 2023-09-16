@@ -18323,6 +18323,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Compound V2"],
     twitter: "w3_foundation",
     audit_links: ["https://w3bank.finance/audit/W3BANK_Audit_Report_en.pdf"],
+    parentProtocol: "parent#w3-foundation",
     listedAt: 1694613903
   },
   {

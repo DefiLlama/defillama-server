@@ -31,7 +31,7 @@ async function storeDefiCoins() {
   const a = Object.entries(adapters);
   const timestamp = 0;
   console.time("exec");
-  await PromisePool.withConcurrency(10)
+  await PromisePool.withConcurrency(2)
     .for(protocolIndexes)
     .process(async (i) => {
       try {

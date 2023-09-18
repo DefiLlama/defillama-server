@@ -254,7 +254,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     sdk.log('curve', api.chain, poolList[registryType].length, registryType)
     // set total supplies
     const lps = rPoolList.map((p: any) => cPoolInfo[p].lpToken)
-    const supplies = await api.multiCall({ calls: lps, abi: 'erc20:totalSupply', permitFailure: true })
+    const supplies = await api.multiCall({ calls: lps, abi: 'erc20:totalSupply', requery: true })
 
     // filter out pools with no supplies
     const filteredData: any[] = []
@@ -428,7 +428,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
       filteredData.forEach((p: any) => {
         p.tokens.forEach((_t: string, i: number) => calls.push({ target: p.pool, params: i }))
       })
-      const balances = await api.multiCall({ abi: 'function balances(uint256) view returns (uint256)', calls })
+      const balances = await api.multiCall({ abi: 'function balances(uint256) view returns (uint256)', calls, permitFailure: true })
       let i = 0
       filteredData.forEach((p: any) => {
         p.balances = balances.slice(i, i + p.tokens.length)
@@ -440,7 +440,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     let mabi = abi.get_balances[registryType] ?? abi.get_balances.crypto
     if (api.chain === 'polygon' && registryType === 'cryptoFactory') mabi = "function get_balances(address _pool) external view returns (uint256[2])"
     if (api.chain === 'bsc' && registryType === 'stableswap') mabi = "function get_balances(address _pool) external view returns (uint256[4])"
-    const poolBalancesAll = await api.multiCall({ target: registry, calls: pools, abi: mabi, })
+    const poolBalancesAll = await api.multiCall({ target: registry, calls: pools, abi: mabi, requery: true })
     filteredData.forEach((poolData: any, i: number) => {
       poolData.balances = poolBalancesAll[i].slice(0, poolData.tokens.length)
     })

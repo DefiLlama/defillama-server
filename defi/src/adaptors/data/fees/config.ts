@@ -1305,5 +1305,9 @@ export default {
     "blazebot": {
         "enabled": true,
         "id": "3527"
+    },
+    "stakewise": {
+        "enabled": true,
+        "id": "277"
     }
 } as AdaptorsConfig

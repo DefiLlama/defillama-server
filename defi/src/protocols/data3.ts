@@ -17416,7 +17416,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Fantom"],
-    module: "dummy.js",
+    module: "morphex-old/index.js",
     oracles: [],
     forkedFrom: [],
     parentProtocol: "parent#morphex",
@@ -18458,7 +18458,52 @@ const data3: Protocol[] = [
     twitter: "caviarAMM",
     listedAt: 1694784903
   },
-
+  {
+    id: "3529",
+    name: "DIP Exchange",
+    address: "base:0xAdBa4694F5deAF3251d06dec38C86946F8952EFB",
+    symbol: "DIP",
+    url: "https://www.dip.exchange",
+    description:
+      "Decentralized Perpetual Exchange Trade BTC, ETH and other top cryptocurrencies with up to 50x leverage directly from your wallet.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/dip-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "dip-exchange/index.js",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    twitter: "DIP_Exchange",
+    github: ["dip-exchange"],
+    listedAt: 1695037898
+  },
+  {
+    id: "3530",
+    name: "BMX",
+    address: "fantom:0x66eed5ff1701e6ed8470dc391f05e27b1d0657eb",
+    symbol: "MPX",
+    url: "https://bmx.morphex.trade",
+    description:
+      "BMX by Morphex is a decentralized perpetual exchange focused on bringing the highest capital efficiency to liquidity providers.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bmx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "bmx/index.js",
+    oracles: ["Chainlink", "Pyth"],
+    forkedFrom: ["GMX V1"],
+    twitter: "MorphexFTM",
+    parentProtocol: "parent#morphex",
+    listedAt: 1695037950
+  },
 ]
 
 export default data3

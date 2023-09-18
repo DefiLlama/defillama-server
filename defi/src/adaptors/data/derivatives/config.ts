@@ -340,5 +340,16 @@ export default {
         },
         "enabled": true,
         "id": "3509"
+    },
+    "bmx": {
+        parentId: "Morphex",
+        "enabled": true,
+        "id": "3530",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3530",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

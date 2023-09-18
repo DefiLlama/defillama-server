@@ -297,7 +297,6 @@ const data: Protocol[] = [
       "Fantom",
       "Binance",
       "Heco",
-      "Harmony",
       "Celo",
       "Moonriver",
       "Avalanche",

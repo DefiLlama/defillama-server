@@ -18274,7 +18274,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Services",
     chains: ["Kava"],
-    module: "dummy.js",
+    module: "monarchpay/index.js",
     oracles: [],
     forkedFrom: [],
     twitter: "MonarchWallet",

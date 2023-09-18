@@ -1177,7 +1177,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "ParaX Super App",
     url: "https://parax.ai",
     description: "ParaX is an upgrade from ParaSpace. ParaX is an everything app for web3 application, aiming to provide a simpler DeFi experience for 1 billion users. ParaX is powered by account abstraction, making the DeFi experience more efficient, cheaper and safer.",
-    logo: `${baseIconsUrl}/parax.jpg`,
+    logo: `${baseIconsUrl}/parax.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

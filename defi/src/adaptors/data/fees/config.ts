@@ -1218,13 +1218,6 @@ export default {
             "swap": {
                 "id": "3333",
                 "enabled": true,
-                "category": "Dexes",
-                "displayName": "BaseSwap - SWAP"
-            },
-            "derivatives": {
-                displayName: "BaseSwap - Derivatives",
-                "id": "3333",
-                "enabled": true
             }
         }
     },

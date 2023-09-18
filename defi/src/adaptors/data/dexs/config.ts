@@ -1970,5 +1970,17 @@ export default {
         },
         "enabled": true,
         "id": "3509"
+    },
+    "bmx": {
+        parentId: "Morphex",
+        "enabled": true,
+        "id": "3530",
+        "protocolsData": {
+            "swap": {
+                "id": "3530",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        }
     }
 } as AdaptorsConfig

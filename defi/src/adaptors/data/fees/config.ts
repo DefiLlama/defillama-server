@@ -1309,5 +1309,10 @@ export default {
     "stakewise": {
         "enabled": true,
         "id": "277"
+    },
+    "bmx": {
+        parentId: "Morphex",
+        "enabled": true,
+        "id": "3530"
     }
 } as AdaptorsConfig

@@ -1744,9 +1744,9 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#caviar",
-    name: "Tangible Protocol",
+    name: "Caviar",
     url: "https://www.caviar.sh",
-    description: "The easiest way to trade and earn yield on an NFT",
+    description: "Caviar is an NFT AMM that enables you to earn yield and easily provide liquidity for collections.",
     logo: `${baseIconsUrl}/tangible.jpg`,
     gecko_id: null,
     cmcId: null,

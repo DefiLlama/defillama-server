@@ -18456,6 +18456,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "caviarAMM",
+    parentProtocol: "parent#caviar",
     listedAt: 1694784903
   },
   {

@@ -1747,7 +1747,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Caviar",
     url: "https://www.caviar.sh",
     description: "Caviar is an NFT AMM that enables you to earn yield and easily provide liquidity for collections.",
-    logo: `${baseIconsUrl}/tangible.jpg`,
+    logo: `${baseIconsUrl}/caviar.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

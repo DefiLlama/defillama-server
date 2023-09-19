@@ -26,22 +26,24 @@
   },
   "kroma": {
     "0x49A5010110a358d9069282873F3e7eCf6B41DC10": {
-      "name": "USDC",
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     },
     "0x0Cf7c2A584988871b654Bd79f96899e4cd6C41C0": {
-      "name": "USDT",
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
     },
     "0x4200000000000000000000000000000000000001": {
-      "name": "Wrapped Ether",
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#weth"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
     }
   }
 }

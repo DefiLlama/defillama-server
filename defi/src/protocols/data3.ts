@@ -10510,7 +10510,7 @@ const data3: Protocol[] = [
     chains: ["Binance"],
     module: "kinza/index.js",
     twitter: "kinzafinance",
-    oracles: [],
+    oracles: ["Binance Oracle"],
     forkedFrom: ["AAVE V3"],
     treasury: "kinza.js",
     github: ["Kinza-Finance"],
@@ -12147,7 +12147,7 @@ const data3: Protocol[] = [
     twitter: "VenusProtocol",
     audit_links: ["https://docs-v4.venus.io/links/security-and-audits#isolated-pools"],
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Binance Oracle"],
     parentProtocol: "parent#venus-finance",
     listedAt: 1689719707
   },

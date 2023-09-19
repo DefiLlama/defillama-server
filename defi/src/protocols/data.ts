@@ -25931,7 +25931,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://bafybeiakdhweojvf7zvtp2tr32alzam4yyifbolf7fgrmsshalea7fv55m.ipfs.cf-ipfs.com/docs/Railgun%20Audit%20Report%20-%20ABDK%20July%202021.pdf",
     ],
     listedAt: 1643326249,
-    github: ["Railgun-Privacy"]
+    github: ["Railgun-Privacy", "Railgun-Community"]
   },
   {
     id: "1321",

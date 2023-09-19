@@ -18574,6 +18574,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#kinetix",
     listedAt: 1695101307
   },
+  {
+    id: "3534",
+    name: "Kinetix AMM V3",
+    address: null,
+    symbol: "-",
+    url: "https://kinetix.finance/",
+    description: "Fork of Uniswap V3",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/kinetix.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Kava"],
+    module: "kinetix-v2/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    twitter: "KinetixFi",
+    parentProtocol: "parent#kinetix",
+    listedAt: 1695105662
+  },
 ]
 
 export default data3

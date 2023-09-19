@@ -47,7 +47,7 @@ export function sushiswap3(timestamp: number = 0) {
     ),
     getTokenPrices("fantom", factoryAddress, undefined, undefined, timestamp),
     getTokenPrices("bsc", factoryAddress, undefined, undefined, timestamp),
-    getTokenPrices("xdai", factoryAddress, undefined, undefined, timestamp),
+    // getTokenPrices("xdai", factoryAddress, undefined, undefined, timestamp),
     // getTokenPrices("harmony", factoryAddress, undefined, undefined, timestamp)
   ]);
 }

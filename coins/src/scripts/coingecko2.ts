@@ -190,10 +190,11 @@ async function getAndStoreCoins(coinsData: CoinPriceData[], coinInfoMap: CoinInf
   const filteredCoins = coinsData.map(c => coinInfoMap[c.id]).filter(i => i);
   const coinPlatformData = await getCoinPlatformData(filteredCoins);
 
-  const prices: { [key: string]: number } = {};
+  const pricesAndMcaps: { [key: string]: { price: number; mcap?: number } } =
+    {};
   confidentCoins.map((c: Write) => {
     if (!c.price) return;
-    prices[c.PK] = c.price;
+    pricesAndMcaps[c.PK] = { price: c.price, mcap: c.mcap };
   });
   const writes2: any[] = [];
   await Promise.all(
@@ -216,11 +217,12 @@ async function getAndStoreCoins(coinsData: CoinPriceData[], coinInfoMap: CoinInf
           writes2.push({
             key: PK,
             timestamp: getCurrentUnixTimestamp(),
-            price: prices[cgPK(coin.id)],
+            price: pricesAndMcaps[cgPK(coin.id)].price,
             decimals: decimals,
             symbol: symbol,
             confidence: 0.99,
             adapter: "coingecko",
+            mcap: pricesAndMcaps[cgPK(coin.id)].mcap,
           });
           await ddb.put({
             PK,

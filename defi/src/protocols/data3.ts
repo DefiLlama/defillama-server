@@ -18589,7 +18589,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Kava"],
-    module: "kinetix-v2/index.js",
+    module: "kinetix-v3/index.js",
     oracles: [],
     forkedFrom: ["Uniswap V3"],
     twitter: "KinetixFi",

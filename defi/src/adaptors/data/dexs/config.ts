@@ -1982,5 +1982,16 @@ export default {
                 "category": "Dexes"
             }
         }
+    },
+    "mango-v4": {
+        parentId: "Mango Markets",
+        "enabled": true,
+        "id": "3174",
+        protocolsData: {
+            "spot": {
+                "id": "3174",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

@@ -1744,7 +1744,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#caviar",
-    name: "Tangible",
+    name: "Tangible Protocol",
     url: "https://www.caviar.sh",
     description: "The easiest way to trade and earn yield on an NFT",
     logo: `${baseIconsUrl}/tangible.jpg`,

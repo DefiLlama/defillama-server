@@ -351,5 +351,16 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "mango-v4": {
+        parentId: "Mango Markets",
+        "enabled": true,
+        "id": "3174",
+        protocolsData: {
+            "perp": {
+                "id": "3174",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

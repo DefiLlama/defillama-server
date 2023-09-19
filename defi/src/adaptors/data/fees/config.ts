@@ -1314,5 +1314,10 @@ export default {
         parentId: "Morphex",
         "enabled": true,
         "id": "3530"
+    },
+    "mango-v4": {
+        parentId: "Mango Markets",
+        "enabled": true,
+        "id": "3174"
     }
 } as AdaptorsConfig

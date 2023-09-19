@@ -18306,7 +18306,7 @@ const data3: Protocol[] = [
   {
     id: "3522",
     name: "w3bank",
-    address: "pego:0x5Ed98077189f82aB9d9D651343EDbfEd73d6F4e2",
+    address: "pego:0xCe721D6C56c628A5eBde4783abb9D70d2053AAb9",
     symbol: "W3K",
     url: "https://w3bank.finance",
     description:

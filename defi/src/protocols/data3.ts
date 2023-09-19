@@ -18456,8 +18456,7 @@ const data3: Protocol[] = [
     module: "tangible-caviar/index.js",
     oracles: [],
     forkedFrom: [],
-    twitter: "caviarAMM",
-    parentProtocol: "parent#caviar",
+    twitter: "tangibleDAO",
     listedAt: 1694784903
   },
   {

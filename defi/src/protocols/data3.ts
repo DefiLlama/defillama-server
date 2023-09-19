@@ -18596,6 +18596,48 @@ const data3: Protocol[] = [
     parentProtocol: "parent#kinetix",
     listedAt: 1695105662
   },
+  {
+    id: "3535",
+    name: "PostTechSoFi",
+    address: null,
+    symbol: "-",
+    url: "https://post.tech",
+    description: "Web3 social network on Arbitrum, where profiles become assets and interactions turn into profits.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/posttechsofi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Arbitrum"],
+    module: "posttech/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "PostTechSoFi",
+    listedAt: 1695134044
+  },
+  {
+    id: "3536",
+    name: "PunkSwap",
+    address: "shibarium:0x1Bf3f5b633800E6047dEb14cF14C4b49118a3570",
+    symbol: "PUNK",
+    url: "https://punkswap.exchange",
+    description: "PunkSwap operates across multiple blockchain networks and has garnered trust from a diverse and extensive user base. We provide a range of products and services for our PUNK token. We invite you to explore our platform and discover the possibilities..",
+    chain: "Shibarium",
+    logo: `${baseIconsUrl}/punkswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shibarium"],
+    module: "punkswap/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "PunkSwapDEX",
+    listedAt: 1695134049
+  },
 ]
 
 export default data3

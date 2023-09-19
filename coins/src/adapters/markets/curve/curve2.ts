@@ -252,14 +252,23 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
       });
 
     sdk.log('curve', api.chain, poolList[registryType].length, registryType)
+    
+    let filteredIndicies: number[] = []
+    let lps: string[] = []
     // set total supplies
-    const lps = rPoolList.map((p: any) => cPoolInfo[p].lpToken)
+    const tryLps = rPoolList.map((p: any) => cPoolInfo[p].lpToken)
+    tryLps.map((l: any, i: number) => l == null ? filteredIndicies.push(i) : lps.push(l))
     const supplies = await api.multiCall({ calls: lps, abi: 'erc20:totalSupply', requery: true })
 
+    // filter pools with no token 
+    let filteredOut = 0
+    const filteredRPoolList: string[] = []
+    rPoolList.map((p: any, i: number) => 
+      filteredIndicies.includes(i) ? filteredOut++ : filteredRPoolList.push(p)
+      )
     // filter out pools with no supplies
     const filteredData: any[] = []
-    let filteredOut = 0
-    rPoolList.forEach((pool: any, i: number) => {
+    filteredRPoolList.forEach((pool: any, i: number) => {
       const poolData = { ...cPoolInfo[pool] }
 
       if (!supplies[i] || supplies[i] === '0' || !poolData.tokens || !poolData.tokens.length) {

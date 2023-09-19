@@ -3,9 +3,12 @@ import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
 import ddb, { batchWrite, batchGet } from "../utils/shared/dynamodb";
-import { getCoinPlatformData } from "../utils/coingeckoPlatforms";
+import {
+  getCoinPlatformData,
+  Coin,
+  iterateOverPlatforms,
+} from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
-import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { Write } from "../adapters/utils/dbInterfaces";
 import { filterWritesWithLowConfidence } from "../adapters/utils/database";
@@ -209,11 +212,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   );
   const coinPlatformData = await getCoinPlatformData(filteredCoins);
 
-  const prices: { [key: string]: number } = {};
+  const pricesAndMcaps: { [key: string]: { price: number; mcap?: number } } =
+    {};
   confidentCoins.map((c: Write) => {
     if (!c.price) return;
-    prices[c.PK] = c.price;
+    pricesAndMcaps[c.PK] = { price: c.price, mcap: c.mcap };
   });
+
   const writes2: any[] = [];
   await Promise.all(
     filteredCoins.map(async (coin) =>
@@ -234,11 +239,12 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           writes2.push({
             key: PK,
             timestamp: getCurrentUnixTimestamp(),
-            price: prices[cgPK(coin.id)],
+            price: pricesAndMcaps[cgPK(coin.id)].price,
             decimals: decimals,
             symbol: symbol,
             confidence: 0.99,
             adapter: "coingecko",
+            mcap: pricesAndMcaps[cgPK(coin.id)].mcap,
           });
           await ddb.put({
             PK,

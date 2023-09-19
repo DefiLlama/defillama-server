@@ -16,6 +16,7 @@ export interface Write {
   adapter?: string;
   confidence: number;
   timestamp?: number;
+  mcap?: number
 }
 export interface DbQuery {
   PK: string;

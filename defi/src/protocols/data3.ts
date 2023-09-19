@@ -16996,7 +16996,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3465",
-    name: "Kinetix",
+    name: "Kinetix Derivatives",
     address: null,
     symbol: "-",
     url: "https://kinetix.finance/",
@@ -17013,6 +17013,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["GMX V1"],
     twitter: "KinetixFi",
+    parentProtocol: "parent#kinetix",
     listedAt: 1693433723
   },
   {
@@ -18550,6 +18551,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/solidproof/projects/blob/main/2023/Manga%20Fi/SmartContract_Audit_Solidproof_MangaFi.pdf"],
     listedAt: 1695092233,
     github: ["Manga-Token"]
+  },
+  {
+    id: "3533",
+    name: "Kinetix AMM V2",
+    address: null,
+    symbol: "-",
+    url: "https://kinetix.finance/",
+    description: "Fork of Uniswap V2",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/kinetix.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Kava"],
+    module: "kinetix-v2/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "KinetixFi",
+    parentProtocol: "parent#kinetix",
+    listedAt: 1695101307
   },
 ]
 

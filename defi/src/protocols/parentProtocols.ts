@@ -2702,6 +2702,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "w3_foundation",
   },
+  {
+    id: "parent#kinetix",
+    name: "Kinetix",
+    url: "https://kinetix.finance/",
+    description: "A one-stop DeFi Hub built exclusively on Kava EVM",
+    logo: `${baseIconsUrl}/kinetix.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "KinetixFi",
+  },
 ];
 
 export default parentProtocols;

@@ -2713,6 +2713,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "KinetixFi",
   },
+  {
+    id: "parent#tangible",
+    name: "Tangible",
+    url: "https://www.tangible.store",
+    description: "Maintain purchasing power with the first stablecoin backed by tokenized, yield-generating real estate.",
+    logo: `${baseIconsUrl}/tangible.png`,
+    gecko_id: "tangible",
+    cmcId: "20271",
+    chains: [],
+    twitter: "tangibleDAO",
+  },
 ];
 
 export default parentProtocols;

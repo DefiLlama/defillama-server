@@ -18457,6 +18457,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "tangibleDAO",
+    parentProtocol: "parent#tangible",
     listedAt: 1694784903
   },
   {

@@ -19114,14 +19114,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2231",
-    name: "Tangible",
+    name: "Tangible RWA",
     address: "polygon:0x49e6a20f1bbdfeec2a8222e052000bbb14ee6007",
     symbol: "TNGBL",
     url: "https://www.tangible.store",
     description:
       "Tangible is an NFT marketplace for Real World Assets. Tangible is also the creator of Real USD, the first stablecoin backed by tokenized, yield-producing real estate.Rental income from Real USD’s backing is paid out to Real USD holders in the form of a daily rebase projected to range between 10 - 15% APY.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/tangible.png`,
+    logo: `${baseIconsUrl}/tangible-rwa.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "tangible",
@@ -19133,6 +19133,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: ["Curve"],
     audit_links: ["https://github.com/cyberscope-io/audits/blob/main/tngbl/audit.pdf"],
+    parentProtocol: "parent#tangible",
     listedAt: 1666883108
   },
   {

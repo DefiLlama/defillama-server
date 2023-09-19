@@ -18505,6 +18505,52 @@ const data3: Protocol[] = [
     parentProtocol: "parent#morphex",
     listedAt: 1695037950
   },
+  {
+    id: "3531",
+    name: "Mozaic",
+    address: null,
+    symbol: "-",
+    url: "https://mozaic.finance/",
+    description:
+      "AI-Optimized Yield and Liquidity Strategies | Powered by LayerZero",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/mozaic.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum", "Binance", "Avalanche", "Polygon", "Fantom", "Kava"],
+    module: "mozaic/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "Mozaic_Fi",
+    listedAt: 1695092105
+  },
+  {
+    id: "3532",
+    name: "Manga FI",
+    address: "0x8F5ac7F3cfeFfB6EB638A8aDd2d32661F82C03FD",
+    symbol: "HONO",
+    url: "https://www.mangafi.org/",
+    description:
+      "MangaFi is a DeFi protocol that grows the value of its collection of DeFi fan coin assets and generates real yield for its users",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/manga-fi.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "Hono/index.js",
+    oracles: [],
+    forkedFrom: ["GND Protocol"],
+    twitter: "MangafiOfficial",
+    audit_links: ["https://github.com/solidproof/projects/blob/main/2023/Manga%20Fi/SmartContract_Audit_Solidproof_MangaFi.pdf"],
+    listedAt: 1695092233,
+    github: ["Manga-Token"]
+  },
 ]
 
 export default data3

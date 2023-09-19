@@ -47,6 +47,7 @@ async function storeCoinData(coinData: any[]) {
       confidence: c.confidence,
       symbol: c.symbol,
       adapter: "coingecko",
+      mcap: c.mcap
     });
   });
   try {

@@ -1319,5 +1319,9 @@ export default {
         parentId: "Mango Markets",
         "enabled": true,
         "id": "3174"
+    },
+    "hono": {
+        "enabled": true,
+        "id": "3532"
     }
 } as AdaptorsConfig

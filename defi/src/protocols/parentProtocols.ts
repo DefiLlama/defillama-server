@@ -20,7 +20,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AaveAave",
     governanceID: ["snapshot:aave.eth", 'eip155:1:0xEC568fffba86c094cf06b22134B23074DFE2252c'],
     wrongLiquidity: true, // missing balancer v1 pool
-    github: ["aave"],
+    github: ["aave", "bgd-labs"],
   },
   {
     id: "parent#sushi",

@@ -372,5 +372,9 @@ export default {
         parentId: "Thena",
         "enabled": true,
         "id": "3537",
+    },
+    "panacakeswap-perp": {
+        "enabled": true,
+        "id": "3538",
     }
 } as AdaptorsConfig

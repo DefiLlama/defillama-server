@@ -24,6 +24,13 @@
       "to": "coingecko#tether"
     }
   },
+  "flare": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "FLR",
+      "to": "coingecko#flare-networks"
+    }
+  },
   "kroma": {
     "0x49A5010110a358d9069282873F3e7eCf6B41DC10": {
       "decimals": "6",

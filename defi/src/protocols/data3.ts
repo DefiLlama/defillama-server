@@ -18644,7 +18644,7 @@ const data3: Protocol[] = [
     address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
     symbol: "THE",
     url: "https://alpha.thena.fi",
-    description: "ALPHA is THENA's intent-based derivatives trading platform offering over 100 crypto assets for trading with up to 60x leverage.",
+    description: "ALPHA is THENA's intent-based derivatives trading platform powered by SYMMIO, offering over 100 crypto assets for trading with up to 60x leverage.",
     chain: "Binance",
     logo: `${baseIconsUrl}/thena-alpha.jpg`,
     audits: "0",

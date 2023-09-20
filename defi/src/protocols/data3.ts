@@ -18638,6 +18638,27 @@ const data3: Protocol[] = [
     twitter: "PunkSwapDEX",
     listedAt: 1695134049
   },
+  {
+    id: "3537",
+    name: "THENA ALPHA",
+    address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
+    symbol: "THE",
+    url: "https://alpha.thena.fi",
+    description: "ALPHA is THENA's intent-based derivatives trading platform offering over 100 crypto assets for trading with up to 60x leverage.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/thena-alpha.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    module: "dummy.js",
+    oracles: [],
+    forkedFrom: [], //once we add symm protocol we can than add it as a fork of symm
+    twitter: "ThenaFi_",
+    parentProtocol: "parent#thena",
+  },
 ]
 
 export default data3

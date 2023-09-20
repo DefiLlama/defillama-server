@@ -251,7 +251,7 @@ export async function storeTvl(
   }
   try {
     if (!process.env.DRY_RUN) {
-      await storeNewTvl(protocol, unixTimestamp, usdTvls, storePreviousData); // Checks circuit breakers
+      await storeNewTvl(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances); // Checks circuit breakers
 
       const storeTokensAction = storeNewTokensValueLocked(
         protocol,

@@ -11,7 +11,7 @@ import {
 import { getLastRecord, hourlyTvl, dailyTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
 import getRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
-import { tvlsObject } from "../types";
+import { TokensValueLocked, tvlsObject } from "../types";
 import { util } from "@defillama/sdk";
 import { sendMessage } from "../utils/discord";
 import { extraSections } from "../utils/normalizeChain";
@@ -40,7 +40,8 @@ export default async function (
   protocol: Protocol,
   unixTimestamp: number,
   tvl: tvlsObject<number>,
-  storePreviousData: boolean
+  storePreviousData: boolean,
+  usdTokenBalances: tvlsObject<TokensValueLocked>,
 ) {
   const hourlyPK = hourlyTvl(protocol.id);
   const lastHourlyTVLRecord = getLastRecord(hourlyPK).then(
@@ -89,7 +90,14 @@ export default async function (
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
     const currentTvl = calculateTVLWithAllExtraSections(tvl)
     if(currentTvl > 100e9){
-      const errorMessage = `TVL of ${protocol.name} is over 100bn`
+      let errorMessage = `TVL of ${protocol.name} is over 100bn`
+      Object.values(usdTokenBalances).forEach(tokenBalances => {
+        for (const [token, value] of Object.entries(tokenBalances))
+          if (value > 1e7) {
+            errorMessage += `\n${token} has ${humanizeNumber(value)}`
+          }
+      })
+
       await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
       throw new Error(errorMessage)
     }

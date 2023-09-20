@@ -13,6 +13,7 @@ export const normalizedChainReplacements = {
   "oasys": "oas",
   "map relay chain": "map",
   "pulsechain": "pulse",
+  "opbnb": "op_bnb",
 } as {
   [chain: string]: string
 }
@@ -1811,7 +1812,7 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     github: ["sei-protocol"]
   },
-  "Op_Bnb": {
+  "opBNB": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -1953,6 +1954,8 @@ export function transformNewChainName(chain: string) {
       return "MAP Relay Chain"
     case "Pulse":
       return "PulseChain"
+    case "op_bnb":
+        return "opBNB"
     default:
       return chain
   }
@@ -2335,7 +2338,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "sei":
       return "Sei"
     case "op_bnb":
-      return "Op_Bnb"
+      return useNewChainNames ? "opBNB" : "op_bnb"
     case "archway":
       return "Archway"
     case "hydradx":

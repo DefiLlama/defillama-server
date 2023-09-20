@@ -2400,7 +2400,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#chronos",
     name: "Chronos",
     url: "https://chronos.exchange/",
-    description: "Velocore is a ve(3,3) DEX with real-time voting.",
+    description: "Chronos is a community-owned decentralized exchange (DEX) and liquidity provider constructed on Arbitrum",
     logo: `${baseIconsUrl}/chronos.png`,
     gecko_id: "chronos-finance",
     cmcId: "24158",

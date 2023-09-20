@@ -262,6 +262,16 @@ const entities = [
         module: "entities/polychain-capital.js",
         twitter: "polychain"
     },
+    {
+        id: "27",
+        name: "DWF Labs",
+        url: "https://www.dwf-labs.com",
+        description: "DWF Labs is the global digital asset market maker and multi-stage web3 investment firm, one of the world's largest high-frequency cryptocurrency trading entities, which trades spot and derivatives markets on over 60 top exchanges.",
+        logo: "dwf-labs.jpg",
+        category: "VC",
+        module: "entities/dwf-labs.js",
+        twitter: "DWFLabs"
+    },
 ].map(entity=>({
     ...entity,
     id: `entity-${entity.id}`,

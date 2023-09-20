@@ -153,7 +153,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Fantom"],
     module: "yearn/index.js", // TODO: Fix latest
     treasury: "yearn.js", // TODO: Fix latest
-    twitter: "iearnfinance",
+    twitter: "yearnfi",
     audit_links: ["https://github.com/yearn/yearn-audits"],
     language: "Vyper",
     governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"],

@@ -5446,7 +5446,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Payments",
-    chains: ["Arbitrum", "Binance", "Polygon"],
+    chains: ["Kava"],
     module: "ajira-pay-finance/index.js",
     treasury: "ajira-pay-finance.js",
     twitter: "ajiraPayDefi",

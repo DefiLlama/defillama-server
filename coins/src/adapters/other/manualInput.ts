@@ -125,6 +125,12 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       decimals: 6,
       redirect: "coingecko#cosmos",
     },
+    {
+      symbol: "WKAVA",
+      address: "0xc86c7c0efbd6a49b35e8714c5f59d99de09a225b",
+      decimals: 18,
+      redirect: "coingecko#kava",
+    },
   ],
 };
 
@@ -141,7 +147,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       a.symbol,
       timestamp,
       "manual input",
-      0.8,
+      1.01,
       a.redirect,
     );
   });

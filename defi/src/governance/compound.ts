@@ -32,6 +32,7 @@ const blacklisted = [
   "ethereum:0x323a76393544d5ecca80cd6ef2a560c6a395b7e3",
   "ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3",
   "ethereum:0x0bef27feb58e857046d630b2c03dfb7bae567494",
+  'internet-computer', // changed to new id: icp
 ]
 
 const missing = [

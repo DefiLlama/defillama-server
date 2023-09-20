@@ -1323,5 +1323,10 @@ export default {
     "hono": {
         "enabled": true,
         "id": "3532"
+    },
+    "thena-perp": {
+        parentId: "Thena",
+        "enabled": true,
+        "id": "3537",
     }
 } as AdaptorsConfig

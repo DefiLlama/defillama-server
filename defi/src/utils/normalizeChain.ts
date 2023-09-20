@@ -1821,6 +1821,7 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
+    github: ['bnb-chain'],
     chainId: 204,
   },
   "Archway": {

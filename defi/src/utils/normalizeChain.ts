@@ -1954,7 +1954,7 @@ export function transformNewChainName(chain: string) {
       return "MAP Relay Chain"
     case "Pulse":
       return "PulseChain"
-    case "op_bnb":
+    case "Op_Bnb":
         return "opBNB"
     default:
       return chain

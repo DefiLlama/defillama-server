@@ -18659,6 +18659,28 @@ const data3: Protocol[] = [
     twitter: "ThenaFi_",
     parentProtocol: "parent#thena",
   },
+  {
+    id: "3538",
+    name: "PancakeSwap Perps",
+    address: "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+    symbol: "CAKE",
+    url: "https://perp.pancakeswap.finance",
+    description: "The bunnies have rubbed their paws and worked very hard in conjunction with ApolloX to bring this new feature to PancakeSwap. Trade your favorite pairs in a decentralized way on the site! Without intermediaries, easy, fast, safe and within reach of your legs, well, hands",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/pancakeswap-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    module: "dummy.js",
+    oracles: [],
+    forkedFrom: [], 
+    twitter: "PancakeSwap",
+    parentProtocol: "parent#pancakeswap",
+    listedAt: 1695222044
+  },
 ]
 
 export default data3

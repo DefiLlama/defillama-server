@@ -367,5 +367,10 @@ export default {
                 "1695081600": true,
             },
         }
+    },
+    "thena-perp": {
+        parentId: "Thena",
+        "enabled": true,
+        "id": "3537",
     }
 } as AdaptorsConfig

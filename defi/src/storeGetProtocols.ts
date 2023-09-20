@@ -144,7 +144,7 @@ const handler = async (_event: any) => {
     })
   );
   await storeR2("lite/protocols2", compressedV2Response, true);
-  await storeR2("lite/v2/protocols", JSON.stringify(response.filter(p=> p.module!=="dummy.js" && p.category !== "Chain" && p.category !== "CEX").map(protocol=>({
+  await storeR2("lite/v2/protocols", JSON.stringify(response.filter(p=> p.category !== "Chain" && p.category !== "CEX").map(protocol=>({
     id: protocol.id,
     name: protocol.name,
     symbol: protocol.symbol,

@@ -1328,5 +1328,9 @@ export default {
         parentId: "Thena",
         "enabled": true,
         "id": "3537",
+    },
+    "post-tech": {
+        "enabled": true,
+        "id": "3535",
     }
 } as AdaptorsConfig

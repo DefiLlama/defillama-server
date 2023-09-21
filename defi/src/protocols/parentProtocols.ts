@@ -2207,7 +2207,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#venus-finance",
-    name: "Venus Finance",
+    name: "Venus",
     url: "https://venus.io/",
     description: "A Decentralized Marketplace for Lenders and Borrowers with Borderless Stablecoins",
     logo: `${baseIconsUrl}/venus.jpg`,

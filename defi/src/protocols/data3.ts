@@ -18870,6 +18870,28 @@ const data3: Protocol[] = [
     twitter: null,
     listedAt: 1695298435
   },
+  {
+    id: "3548",
+    name: "Shoebill V2",
+    address: null,
+    symbol: "-",
+    url: "https://shoebill.finance",
+    description: "Positive sum DeFi lending protocol. Zero-interest borrowing and stable yield lending.",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/shoebill-v2.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Klaytn"],
+    module: "shoebillFinance-v2/index.js",
+    oracles: [],
+    forkedFrom: ["Compound V2"], 
+    twitter: "ShoebillFinance",
+    parentProtocol: "parent#shoebill-finance",
+    listedAt: 1695311208
+  },
 ]
 
 export default data3

@@ -2724,6 +2724,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "tangibleDAO",
   },
+  {
+    id: "parent#shoebill-finance",
+    name: "Shoebill Finance",
+    url: "https://shoebill.finance",
+    description: "Positive sum DeFi lending protocol. Zero-interest borrowing and stable yield lending.",
+    logo: `${baseIconsUrl}/shoebill-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ShoebillFinance",
+  },
 ];
 
 export default parentProtocols;

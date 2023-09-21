@@ -27585,13 +27585,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2601",
-    name: "Shoebill Finance",
+    name: "Shoebill V1",
     address: null,
     symbol: "-",
     url: "https://app.shoebill.finance/",
     description: "Shoebill Finance is a DeFi lending protocol that allows users to earn high stablecoin yields or take out interest-free loans and earn interest with leverage. When a borrower deposits tokens as collateral, Shoebill Finance earns interest by depositing them into protocols like Kokoa Finance, Kokonutswap, and Stake.ly. These interest earnings are then converted into the same tokens deposited by the creditor and distributed as interest",
     chain: "Klaytn",
-    logo: `${baseIconsUrl}/shoebill-finance.png`,
+    logo: `${baseIconsUrl}/shoebill-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -27603,6 +27603,7 @@ const data2: Protocol[] = [
     module: "shoebillFinance/index.js",
     twitter: "ShoebillFinance",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Shoebill-v1.0.pdf"],
+    parentProtocol: "parent#shoebill-finance",
     listedAt: 1677473337,
   },
   {

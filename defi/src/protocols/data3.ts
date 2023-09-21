@@ -18892,6 +18892,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#shoebill-finance",
     listedAt: 1695311208
   },
+  {
+    id: "3548",
+    name: "AesirX",
+    address: null,
+    symbol: "-",
+    url: "https://aesirx.io",
+    description: "he AesirX project represents a transformative leap into the future of digital ecosystems. It is a comprehensive blockchain-based platform that encompasses AesirX Shield of Privacy, AesirX Analytics, AesirX Business Intelligence (BI), and AesirX Single Sign On (SSO). These four core components, working in harmony, are designed to redefine the way data is handled, privacy is safeguarded, and insights are derived.",
+    chain: "Concordium",
+    logo: `${baseIconsUrl}/aesirx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Concordium"],
+    module: "aesirx/index.js",
+    twitter: "aesirxio",
+    oracles: [],
+    listedAt: 1695313060
+  }
 ]
 
 export default data3

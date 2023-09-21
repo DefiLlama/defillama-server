@@ -18613,7 +18613,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "posttech/index.js",
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["friend.tech"],
     twitter: "PostTechSoFi",
     listedAt: 1695134044
   },
@@ -18698,7 +18698,7 @@ const data3: Protocol[] = [
     chains: ["Polygon"],
     module: "polyfriendtech/index.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: ["friend.tech"], 
     twitter: "polyfriendtech",
     listedAt: 1695254714
   },

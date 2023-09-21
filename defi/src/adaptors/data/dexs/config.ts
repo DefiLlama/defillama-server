@@ -325,6 +325,7 @@ export default {
         "id": "238"
     },
     "klex-finance": {
+        disabled: true,
         "enabled": true,
         "id": "2049"
     },
@@ -872,6 +873,7 @@ export default {
         "id": "1412"
     },
     "icecreamswap": {
+        disabled: true,
         "enabled": true,
         "id": "1990"
     },

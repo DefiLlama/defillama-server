@@ -577,6 +577,7 @@ export default {
         "id": "1980"
     },
     "defi-kingdoms": {
+        disabled: true,
         "enabled": true,
         "id": "556"
     },
@@ -807,6 +808,7 @@ export default {
         "id": "646"
     },
     "wineryswap": {
+        disabled: true,
         "enabled": true,
         "id": "2118"
     },
@@ -853,6 +855,7 @@ export default {
     },
     "algofi": {
         parentId: "Algofi",
+        disabled: true,
         "enabled": true,
         "id": "2091"
     },
@@ -1469,6 +1472,7 @@ export default {
         "id": "2773"
     },
     "covo-v2": {
+        disabled: true,
         "enabled": true,
         "id": "2730",
         parentId: "Covo Finance",
@@ -1476,6 +1480,7 @@ export default {
             "swap": {
                 "id": "2730",
                 "enabled": true,
+                disabled: true,
                 "category": "Dexes",
                 "displayName": "Covo V2 - SWAP",
                 cleanRecordsConfig: {
@@ -1494,6 +1499,7 @@ export default {
         "id": "2864"
     },
     "astroswap": {
+        disabled: true,
         "enabled": true,
         "id": "1368"
     },
@@ -1753,6 +1759,7 @@ export default {
         },
     },
     "croswap": {
+        disabled: true,
         enabled: true,
         id: "2942"
     },

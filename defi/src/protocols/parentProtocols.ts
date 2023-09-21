@@ -2735,6 +2735,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ShoebillFinance",
   },
+  {
+    id: "parent#vvs-finance",
+    name: "VVS Finance",
+    url: "https://vvs.finance",
+    description: "VVS is designed to be the simplest DeFi platform for users to swap tokens, earn high yields, and most importantly have fun!",
+    logo: `${baseIconsUrl}/vvs-finance.png`,
+    gecko_id: "vvs-finance",
+    cmcId: "14519",
+    chains: [],
+    twitter: "VVS_finance",
+    github: ["vvs-finance"],
+  },
 ];
 
 export default parentProtocols;

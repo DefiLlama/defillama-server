@@ -18892,6 +18892,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#shoebill-finance",
     listedAt: 1695311208
   },
+  {
+    id: "3549",
+    name: "VVS Flawless",
+    address: "cronos:0x2D03bECE6747ADC00E1a131BBA1469C15fD11e03",
+    symbol: "VVS",
+    url: "https://vvs.finance/liquidity",
+    description: "Select your preferred price range and fee tier for your liquidity.",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/vvs-flawless.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Cronos"],
+    module: "vvs-v3/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V3"], 
+    twitter: "VVS_finance",
+    parentProtocol: "parent#vvs-finance",
+    listedAt: 1695316335
+  },
+
 ]
 
 export default data3

@@ -18720,7 +18720,7 @@ const data3: Protocol[] = [
     module: "moonbase/index.js",
     oracles: [],
     forkedFrom: [], 
-    twitter: "MoonBaseDEX",
+    twitter: "moonbase_fi",
     listedAt: 1695254731
   },
   {

@@ -13,9 +13,8 @@
     "storeBridgedCoins": "ts-node src/cli/storeBridgedCoins",
     "build": "sls package",
     "runner-test": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/test.ts",
-    "fetch-cg-hourly": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node coins/src/scripts/coingecko2.ts hourly",
-    "fetch-cg-min": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node coins/src/scripts/coingecko2.ts mainCoins",
-    "fetch-cg-all": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node coins/src/scripts/coingecko2.ts allCoins",
+    "fetch-cg-hourly": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/coingecko.ts true",
+    "fetch-cg-min": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/coingecko.ts false",
     "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/defiCoins.ts",
     "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/bridges.ts"
   },

@@ -18664,7 +18664,7 @@ const data3: Protocol[] = [
     name: "PancakeSwap Perps",
     address: "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
     symbol: "CAKE",
-    url: "https://perp.pancakeswap.finance",
+    url: "https://perp.pancakeswap.finance/en/futures/v2/BTCUSD",
     description: "The bunnies have rubbed their paws and worked very hard in conjunction with ApolloX to bring this new feature to PancakeSwap. Trade your favorite pairs in a decentralized way on the site! Without intermediaries, easy, fast, safe and within reach of your legs, well, hands",
     chain: "Binance",
     logo: `${baseIconsUrl}/pancakeswap-perps.jpg`,

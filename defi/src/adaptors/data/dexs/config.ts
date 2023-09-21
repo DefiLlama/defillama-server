@@ -1998,5 +1998,9 @@ export default {
                 "1695081600": true,
             },
         }
+    },
+    "ekubo": {
+        "enabled": true,
+        "id": "3499"
     }
 } as AdaptorsConfig

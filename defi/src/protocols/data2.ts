@@ -26487,7 +26487,7 @@ const data2: Protocol[] = [
     chains: ["Vision"],
     module: "lenlen/index.js",
     twitter: "LenenProtocol",
-    forkedFrom: ["Compound"],
+    forkedFrom: ["Compound V3"],
     oracles: [],
     listedAt: 1676806751
   },

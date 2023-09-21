@@ -18765,6 +18765,48 @@ const data3: Protocol[] = [
     twitter: "tonstakers",
     listedAt: 1695288998
   },
+  {
+    id: "3543",
+    name: "Bitstamp",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitstamp.net",
+    description: "Bitstamp makes trading easy, fast & reliable. With live customer support, staking and bank-grade security & insurance. Trusted Crypto Exchange Since 2011.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bitstamp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum"],
+    module: "bitstamp/index.js",
+    oracles: [],
+    forkedFrom: [], 
+    twitter: "Bitstamp",
+    listedAt: 1695297539
+  },
+  {
+    id: "3544",
+    name: "CoinW",
+    address: null,
+    symbol: "-",
+    url: "https://www.coinw.com",
+    description: "CoinW is a world-class cryptocurrency exchange. Founded in 2017 by crypto, cybersecurity & finance veterans, CoinW provides spot, future and other services",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/coinw.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum", "Tron"],
+    module: "coinw/index.js",
+    oracles: [],
+    forkedFrom: [], 
+    twitter: "CoinWOfficial",
+    listedAt: 1695297555
+  },
 ]
 
 export default data3

@@ -18744,6 +18744,27 @@ const data3: Protocol[] = [
     twitter: "sandyswapxyz",
     listedAt: 1695254743
   },
+  {
+    id: "3542",
+    name: "Tonstakers",
+    address: null,
+    symbol: "-",
+    url: "https://tonstakers.com",
+    description: "The Open Network Liquid Staking protocol empowering TON DeFi ecosystem",
+    chain: "TON",
+    logo: `${baseIconsUrl}/tonstakers.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["TON"],
+    module: "tonstakers/index.js",
+    oracles: [],
+    forkedFrom: [], 
+    twitter: "tonstakers",
+    listedAt: 1695288998
+  },
 ]
 
 export default data3

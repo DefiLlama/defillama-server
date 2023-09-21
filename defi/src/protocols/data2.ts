@@ -14343,7 +14343,10 @@ const data2: Protocol[] = [
     cmcId: "16010",
     category: "Lending",
     chains: ["Ethereum"],
-    oracles: ["DIA"],
+    oraclesByChain: [
+      Arbitrum: ["Chainlink", "TWAP"],
+      Ethereum: ["Chainlink", "TWAP", "DIA"]
+    ],
     forkedFrom: [],
     module: "silo/index.js",
     treasury: "silo-finance.js",

@@ -446,6 +446,7 @@ export default {
         "id": "491"
     },
     "saros": {
+        disabled: true,
         "enabled": true,
         "id": "1262"
     },
@@ -1169,6 +1170,7 @@ export default {
         "id": "1179"
     },
     "darkness": {
+        disabled: true,
         "enabled": true,
         "id": "1555"
     },
@@ -1941,10 +1943,12 @@ export default {
             "swap": {
                 "id": "3483",
                 "enabled": true,
+                disabled: true,
                 "category": "Dexes"
             }
         },
         "enabled": true,
+        disabled: true,
         "id": "3483"
     },
     "spicyswap": {

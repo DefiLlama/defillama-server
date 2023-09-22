@@ -1332,5 +1332,9 @@ export default {
     "post-tech": {
         "enabled": true,
         "id": "3535",
+    },
+    "ekubo": {
+        "enabled": true,
+        "id": "3499"
     }
 } as AdaptorsConfig

@@ -730,12 +730,12 @@ functions:
     environment:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
       ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
-  storeNewActiveUsers:
-    handler: src/storeNewActiveUsers.default
+  storeActiveUsersRetrieve:
+    handler: src/storeActiveUsersRetrieve.default
     timeout: 900
     memorySize: 1000
     events:
-      - schedule: cron(0 0,8,16 * * ? *)
+      - schedule: cron(40 * * * ? *)
     environment:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
       ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}

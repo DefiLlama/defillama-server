@@ -126,31 +126,29 @@ async function pushMoreVaults(
 ) {
   if (manualVaults[chain as keyof typeof manualVaults].length == 0)
     return vaults;
-  const [
-    { output: tokens },
-    { output: symbols },
-  ]: MultiCallResults[] = await Promise.all([
-    multiCall({
-      abi: abi.token,
-      chain: chain as any,
-      calls: manualVaults[chain as keyof typeof manualVaults].map(
-        (v: string) => ({
-          target: v,
-        }),
-      ),
-      block,
-    }),
-    multiCall({
-      abi: "erc20:symbol",
-      chain: chain as any,
-      calls: manualVaults[chain as keyof typeof manualVaults].map(
-        (v: string) => ({
-          target: v,
-        }),
-      ),
-      block,
-    }),
-  ]);
+  const [{ output: tokens }, { output: symbols }]: MultiCallResults[] =
+    await Promise.all([
+      multiCall({
+        abi: abi.token,
+        chain: chain as any,
+        calls: manualVaults[chain as keyof typeof manualVaults].map(
+          (v: string) => ({
+            target: v,
+          }),
+        ),
+        block,
+      }),
+      multiCall({
+        abi: "erc20:symbol",
+        chain: chain as any,
+        calls: manualVaults[chain as keyof typeof manualVaults].map(
+          (v: string) => ({
+            target: v,
+          }),
+        ),
+        block,
+      }),
+    ]);
 
   const vaultInfo: VaultKeys[] = manualVaults[
     chain as keyof typeof manualVaults
@@ -175,7 +173,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   let vaults: VaultKeys[] = (
     await axios.get(
-      `https://api.yearn.fi/v1/chains/${
+      `https://api.yexporter.io/v1/chains/${
         chains[chain as keyof object]
       }/vaults/all`,
     )

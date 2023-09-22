@@ -15365,7 +15365,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "VVS_finance",
     audit_links: ["https://docs.vvs.finance/fundamentals/smart-contracts-and-security"],
     forkedFrom: ["Uniswap V2"],
-    parentProtocol: "parent#vvs-finance",
+    //parentProtocol: "parent#vvs-finance",
     listedAt: 1636736668,
   },
   {

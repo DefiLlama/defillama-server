@@ -193,9 +193,6 @@ export async function update_internet_computer_cache(cache: GovCache): Promise<G
 
     // Pump the lowest proposal id by the range length
     proposal_left_to_fetch -= limit;
-    if (proposal_left_to_fetch < 9000) {
-      proposal_left_to_fetch = 0
-    }
   }
   return cache;
 }

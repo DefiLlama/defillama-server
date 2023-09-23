@@ -147,6 +147,7 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
     delete currentData.error
     currentData = Object.entries(currentData).reduce((acc, [key, chainData]) => {
         if (typeof chainData !== 'number') delete chainData.error
+        if (Object.keys(chainData).length === 0) return acc
         acc[key] = chainData
         return acc
     }, {} as IRecordAdaptorRecordData)

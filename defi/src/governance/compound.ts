@@ -87,6 +87,7 @@ export async function updateCompounds() {
   await setCompoundOverview(overview)
 
   async function updateCache(id: string) {
+    if (id === 'icp') return;
 
     const [chain, address] = id.split(':')
     const cache = await getCompound(id)

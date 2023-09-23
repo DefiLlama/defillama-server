@@ -18914,7 +18914,49 @@ const data3: Protocol[] = [
     parentProtocol: "parent#vvs-finance",
     listedAt: 1695316335
   },*/
-
+  {
+    id: "3550",
+    name: "opBANANA",
+    address: null,
+    symbol: "-",
+    url: "https://www.opbanana.com",
+    description: "The slippery Dex now on opBNB | Trade with speed | Market Make efficienctly.",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/opbanana.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "opbanana/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"], 
+    twitter: "OpBananaFam",
+    listedAt: 1695474555
+  },
+  {
+    id: "3551",
+    name: "Tholgar",
+    address: "0x188cA46Aa2c7ae10C14A931512B62991D5901453",
+    symbol: "tWAR",
+    url: "https://tholgar.xyz",
+    description: "The governance tokens yielder. Pioneering Synergy with Paladin_vote",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tholgar.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "tholgar/index.js",
+    oracles: [],
+    forkedFrom: [], 
+    twitter: "TholgarFi",
+    github: ["astrodevs-labs"],
+    listedAt: 1695474711
+  },
 ]
 
 export default data3

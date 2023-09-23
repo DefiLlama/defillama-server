@@ -6,9 +6,10 @@ import { getR2 } from "./utils/r2";
 import { storeUserInfo, userQueriesFilename } from "./storeActiveUsers";
 import { retrieveAlliumResults } from "@defillama/dimension-adapters/helpers/allium";
 import { parseUserResponse } from "@defillama/dimension-adapters/users/utils/countUsers";
+import fetch from "node-fetch";
 
 async function storeActiveUsers() {
-    const queries = JSON.parse((await getR2(userQueriesFilename)).body!)
+    const queries = await fetch(`https://defillama-datasets.llama.fi/temp/userQueries.json`).then(r=>r.json())
     await PromisePool
         .withConcurrency(40)
         .for(shuffleArray(queries))

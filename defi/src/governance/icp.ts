@@ -230,6 +230,14 @@ async function update_recent_proposals(cache: GovCache): Promise<GovCache> {
       }
     });
 
+  Object.values(cache.proposals).forEach((i: any) => {
+    if (i?.scores_total > 1e14) {
+      i.scores_total /= 1e8
+      if (i.scores) {
+        i.scores = i.scores.map((j: any) => j / 1e8)
+      }
+    }
+  })
   return cache;
 }
 

@@ -2747,6 +2747,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "VVS_finance",
     github: ["vvs-finance"],
   },
+  {
+    id: "parent#aperture-finance",
+    name: "Aperture Finance",
+    url: "https://aperture.finance",
+    description: "Cross-chain investment ecosystem with a community-driven marketplace for strategies. All your DeFi needs taken care of in one single place.",
+    logo: `${baseIconsUrl}/aperture-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ApertureFinance",
+  },
 ];
 
 export default parentProtocols;

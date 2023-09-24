@@ -19022,6 +19022,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#aperture-finance",
     listedAt: 1695550869
   },
+  {
+    id: "3555",
+    name: "Radpie",
+    address: null,
+    symbol: "-",
+    url: "https://www.radiant.magpiexyz.io/stake",
+    description:
+      "Radpie is a Next-Generation SubDAO by @magpiexyz_io that leverages @RDNTCapital's robust infrastructure",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/radpie.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Binance", "Arbitrum"],
+    module: "radpie/index.js",
+    twitter: "Radpiexyz_io",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1695583401,
+    parentProtocol: "parent#magpie-ecosystem"
+  },
 ]
 
 export default data3

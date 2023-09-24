@@ -177,6 +177,14 @@ export function unknownTokens(timestamp: number = 0) {
       false,
       "base",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x9f8a222fd0b75239b32aa8a97c30669e5981db05",
+      "0x999999999939ba65abb254339eec0b2a0dac80e9",
+      "0xff3e7cf0c007f919807b32b30a4a9e7bd7bc4121",
+      false,
+      "klaytn",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {

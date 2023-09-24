@@ -24,6 +24,35 @@
       "to": "coingecko#tether"
     }
   },
+  "arbitrum": {
+    "0xfEb4DfC8C4Cf7Ed305bb08065D08eC6ee6728429": {
+      "decimals": "18",
+      "symbol": "PAXG",
+      "to": "coingecko#pax-gold"
+    }
+  },
+  "manta": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x0Dc808adcE2099A9F62AA87D9670745AbA741746": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xb73603c5d87fa094b7314c74ace2e64d165016fb": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0xf417f5a458ec102b90352f697d6e2ac3a3d2851f": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    }
+  },
   "flare": {
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
@@ -69,4 +98,5 @@
       "symbol": "SHD",
       "to": "coingecko#shade-protocol"
     }
+  }
 }

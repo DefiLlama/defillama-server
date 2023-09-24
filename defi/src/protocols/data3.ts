@@ -19000,6 +19000,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/reservoir-labs/amm-core/tree/dev/audits"],
     listedAt: 1695547568
   },
+  {
+    id: "3554",
+    name: "ApertureSwap",
+    address: null,
+    symbol: "-",
+    url: "https://app.aperture.finance/swap",
+    description: "Trade crypto and earn rewards on the innovative decentralized exchange with concentrated liquidity on Manta Pacific chain.",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/apertureswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Manta"],
+    module: "apertureSwap/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V3"], 
+    twitter: "ApertureFinance",
+    parentProtocol: "parent#aperture-finance",
+    listedAt: 1695550869
+  },
 ]
 
 export default data3

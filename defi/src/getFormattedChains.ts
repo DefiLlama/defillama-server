@@ -213,16 +213,17 @@ const formattedChains = async (category: string) => {
   // format chains data to use in stacked area chart
   const stackedDataset = Object.entries(
     chainsData.reduce((total, chains, i) => {
+      const chainName = chainsUnique[i];
       Object.entries(chains).forEach(([tvlType, values]: any) => {
         values.forEach((value: any) => {
           if (value[0] < 1596248105) return;
           if (total[value[0]] === undefined) {
             total[value[0]] = {};
           }
-          const b = total[value[0]][i];
+          const b = total[value[0]][chainName];
           const compressedType = tvlTypes[tvlType];
           if (compressedType !== undefined) {
-            total[value[0]][i] = {
+            total[value[0]][chainName] = {
               ...b,
               [compressedType]: to2Digits(value[1]),
             };

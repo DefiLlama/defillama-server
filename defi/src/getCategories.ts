@@ -1,6 +1,8 @@
-import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
+import { getHistoricalTvlForAllProtocols, IProtocol } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections } from "./utils/normalizeChain";
+import { getR2 } from "./utils/r2";
+import { getClosestDayStartTimestamp } from "./utils/date";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -62,21 +64,26 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
   const sumDailyTvls = {} as SumDailyTvls;
   const categoryProtocols = {} as IProtocolsByCategory;
 
-  await processProtocols(
-    async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
+  const historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>> = JSON.parse((await getR2(`cache/getHistoricalTvlForAllProtocols/false-false.json`)).body!)
+  const { historicalProtocolTvls, lastDailyTimestamp } = historicalProtocolTvlsData
+  
+  historicalProtocolTvls.forEach((protocolTvl) => {
+    if (!protocolTvl) {
+      return;
+    }
+    protocolTvl.historicalTvl.forEach((item) => {
+      const timestamp = getClosestDayStartTimestamp(item.SK);
       try {
-        let category = protocol.category;
+        let category = protocolTvl.protocol.category;
         if (category && category !== "CEX" && category !== 'Chain') {
-          sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocol);
+          sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocolTvl.protocol);
           return;
         }
       } catch (error) {
-        console.log(protocol.name, error);
+        console.log(protocolTvl.protocol.name, error);
       }
-    },
-    { includeBridge: true },
-    false
-  );
+    })
+  })
 
   return successResponse(
     {

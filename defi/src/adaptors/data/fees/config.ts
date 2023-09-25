@@ -1336,5 +1336,15 @@ export default {
     "ekubo": {
         "enabled": true,
         "id": "3499"
+    },
+    "tangible-rwa": {
+        parentId: "Tangible",
+        "enabled": true,
+        "id": "2231"
+    },
+    "caviar-tangible": {
+        parentId: "Tangible",
+        "enabled": true,
+        "id": "3528"
     }
 } as AdaptorsConfig

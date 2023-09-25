@@ -2015,5 +2015,9 @@ export default {
     "ekubo": {
         "enabled": true,
         "id": "3499"
+    },
+    "chronos-v2": {
+        "enabled": true,
+        "id": "3537"
     }
 } as AdaptorsConfig

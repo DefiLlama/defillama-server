@@ -19067,6 +19067,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1695651625
   },
+  {
+    id: "3557",
+    name: "Starksport",
+    address: null,
+    symbol: "-",
+    url: "https://starksport.finance",
+    description:
+      "Trade, lend and borrow unique digital items on our marketplace and make it valuable. Users can get access to the best liquidity, low fees and most efficient trading functions.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/starksport.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Starknet"],
+    module: "starkspot/index.js",
+    twitter: "starkfinance",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1695652604
+  },
 ]
 
 export default data3

@@ -205,7 +205,10 @@ const formattedChains = async (category: string) => {
   } as {
     [name: string]: string;
   };
-  const to2Digits = (n: number) => Number(n.toFixed(2));
+  const to2Digits = (n: number) => {
+    const fixed = n.toFixed(0)
+    return fixed.length < 6? Number(n): n.toExponential(2)
+  };
 
   // format chains data to use in stacked area chart
   const stackedDataset = Object.entries(

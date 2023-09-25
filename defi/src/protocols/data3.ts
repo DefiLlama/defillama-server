@@ -19089,6 +19089,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1695652604
   },
+  {
+    id: "3558",
+    name: "StakeStone",
+    address: null,
+    symbol: "-",
+    url: "https://stakestone.io/",
+    description:
+      "One-Stop Staking Protocol For Omnichain LST Liquidity.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/stakestone.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    module: "stakestone/index.js",
+    twitter: "Stake_Stone",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/Secure3Audit/Secure3Academy/blob/main/audit_reports/StakeStone/StakeStone_final_Secure3_Audit_Report.pdf"],
+    listedAt: 1695652625
+  },
 ]
 
 export default data3

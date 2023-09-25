@@ -19103,7 +19103,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: "Yield",
     chains: ["Ethereum"],
     module: "stakestone/index.js",
     twitter: "Stake_Stone",

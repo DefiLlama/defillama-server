@@ -19045,6 +19045,28 @@ const data3: Protocol[] = [
     listedAt: 1695583401,
     parentProtocol: "parent#magpie-ecosystem"
   },
+  {
+    id: "3556",
+    name: "AllInXSwap",
+    address: null,
+    symbol: "-",
+    url: "https://allinxswap.com",
+    description:
+      "AllInXSwap is a user-friendly platform created to enable effortless cryptocurrency trading on the opBNB Chain. Prioritizing censorship resistance, security, and user control, this protocol operates without intermediaries that could limit access.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/allinxswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance", "Op_Bnb"],
+    module: "allinxswap/index.js",
+    twitter: "allinxswap",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1695651625
+  },
 ]
 
 export default data3

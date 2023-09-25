@@ -2018,6 +2018,6 @@ export default {
     },
     "chronos-v2": {
         "enabled": true,
-        "id": "3537"
+        "id": "3341"
     }
 } as AdaptorsConfig

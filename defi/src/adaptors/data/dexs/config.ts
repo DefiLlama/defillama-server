@@ -1267,7 +1267,7 @@ export default {
         "id": "490"
     },
     "jediswap": {
-        "enabled": true,
+        "enabled": false,
         "id": "2344"
     },
     "solidlizard": {

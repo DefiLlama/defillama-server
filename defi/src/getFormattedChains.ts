@@ -2,6 +2,7 @@ import { chainCoingeckoIds } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 import { LiteProtocol } from "./types";
 import { errorResponse, successResponse, wrap } from "./utils/shared";
+import { wrapResponseOrRedirect } from "./getProtocol";
 
 interface IResponse {
   chains: string[];
@@ -244,7 +245,7 @@ const formattedChains = async (category: string) => {
 const handler = async (event: AWSLambda.APIGatewayEvent) => {
   const data = await formattedChains(event.pathParameters?.category ?? "");
 
-  return successResponse(data, 10 * 60); // 10 mins cache
+  return wrapResponseOrRedirect(data);
 };
 
 export default wrap(handler);

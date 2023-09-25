@@ -362,6 +362,7 @@ export default {
         "id": "270"
     },
     "geist-finance": {
+        disabled: true,
         "enabled": true,
         "id": "643"
     },
@@ -459,6 +460,7 @@ export default {
         "id": "1616"
     },
     "valas-finance": {
+        disabled: true,
         "enabled": true,
         "id": "1584"
     },
@@ -467,6 +469,7 @@ export default {
         "id": "1018"
     },
     "ghostmarket": {
+        disabled: true,
         category: "NFT Marketplace",
         allAddresses: [
             "neo:0x9b049f1283515eef1d3f6ac610e1595ed25ca3e9",

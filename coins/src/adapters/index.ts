@@ -11,7 +11,7 @@ export default {
   metronome: require("./other"),
   silo: require("./other"),
   buck: require("./other"),
-  ondo: require("./yield/ondo"),
+  // ondo: require("./yield/ondo"),
   aave: require("./moneyMarkets/aave"),
   geist: require("./moneyMarkets/aave"),
   radiant: require("./moneyMarkets/aave"),
@@ -127,4 +127,5 @@ export default {
   vela: require("./yield/vela"),
   zkSwap: require("./markets/uniswap"),
   chai: require("./yield/chai"),
+  ondo: require("./rwa/ondo"),
 };

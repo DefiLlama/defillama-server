@@ -19204,6 +19204,29 @@ const data3: Protocol[] = [
     oracles: [],
     github: ["celestiaorg"]
   },
+  {
+    id: "3563",
+    name: "cipher.rip",
+    address: null,
+    symbol: "-",
+    url: "https://cipher.rip/",
+    description:
+      "Social Finance project on Arbitrum",
+    chain: "Arbitrum", 
+    logo: `${baseIconsUrl}/cipher.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Arbitrum"], 
+    module: "cipher/index.js",
+    twitter: "CipherRip",
+    forkedFrom: [],
+    oracles: [],
+    github: [],
+    listedAt: 1695767007
+  },
 ]
 
 export default data3

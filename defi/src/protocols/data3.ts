@@ -19182,6 +19182,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1695740353
   },
+  {
+    id: "3562",
+    name: "Celestia",
+    address: null,
+    symbol: "-",
+    url: "https://celestia.org",
+    description:
+      "Celestia is a modular consensus and data network, built to enable anyone to easily deploy their own blockchain with minimal overhead.",
+    chain: "Celestia", //Celestia
+    logo: `${baseIconsUrl}/celestia.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"], //Celestia
+    module: "dummy.js",
+    twitter: "CelestiaOrg",
+    forkedFrom: [],
+    oracles: [],
+    github: ["celestiaorg"]
+  },
 ]
 
 export default data3

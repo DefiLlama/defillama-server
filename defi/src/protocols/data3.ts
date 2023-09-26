@@ -12769,7 +12769,7 @@ const data3: Protocol[] = [
     chains: ["zkSync Era"],
     module: "sharelock/index.js",
     twitter: "sharelockwin",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1690136249,
   },

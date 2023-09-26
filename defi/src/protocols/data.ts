@@ -749,7 +749,7 @@ const data: Protocol[] = [
     module: "snowswap.js",
     twitter: "snow_swap",
     audit_links: ["https://hackmd.io/@9GUQpanJRF6cloQ0fwyPFw/r1_ctUuqv"],
-    forkedFrom: ["Saddle Finance", "Uniswap"],
+    forkedFrom: ["Saddle Finance"],
     oracles: ["Chainlink"],
   },
   {
@@ -14573,7 +14573,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Boba"],
     module: "senpai/index.js",
     twitter: "senpaiswap",
-    forkedFrom: ["Olympus DAO", "Uniswap"],
+    forkedFrom: ["Olympus DAO"],
     listedAt: 1636194738,
   },
   {
@@ -23813,7 +23813,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "argano_io",
     audit_links: ["https://github.com/Tibereum/obelisk-audits/blob/main/Argano.pdf"],
     oracles: ["Chainlink", "TWAP"],
-    forkedFrom: ["Frax", "Uniswap"],
+    forkedFrom: ["Frax"],
     listedAt: 1641764731,
   },
   {
@@ -24104,7 +24104,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/solidproof/smart-contract-audits/blob/main/SmartContract_Audit_Solidproof_AgileFinance.pdf",
     ],
-    forkedFrom: ["Compound", "Uniswap"],
+    forkedFrom: ["Compound"],
     listedAt: 1641906290,
     deadUrl: true
   },

@@ -29,6 +29,11 @@
       "decimals": "18",
       "symbol": "PAXG",
       "to": "coingecko#pax-gold"
+    },
+    "0xf202ab403cd7e90197ec0f010ee897e283037706": {
+      "decimals": "18",
+      "symbol": "SVUSD",
+      "to": "coingecko#savvy-usd"
     }
   },
   "manta": {

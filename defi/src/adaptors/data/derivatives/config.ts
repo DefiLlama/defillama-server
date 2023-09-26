@@ -376,5 +376,9 @@ export default {
     "panacakeswap-perp": {
         "enabled": true,
         "id": "3538",
+    },
+    "apollox": {
+        "enabled": true,
+        "id": "1772"
     }
 } as AdaptorsConfig

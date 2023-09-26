@@ -19146,7 +19146,7 @@ const data3: Protocol[] = [
       "TProtocol V2 is decentralized RWA lending protocol which facilitates the liquidity and mass adoption of RWA tokens in DeFi ecosystems",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tprotocol.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -19159,6 +19159,28 @@ const data3: Protocol[] = [
     audit_links: ["https://admin.zokyo.io/uploads/T_Protocol_Zokyo_audit_report_Sep12th_2023_629e26d9de.pdf"],
     parentProtocol: "parent#tprotocol",
     listedAt: 1695705821,
+  },
+  {
+    id: "3561",
+    name: "Tegro",
+    address: "-",
+    symbol: "",
+    url: "https://tegro.com",
+    description:
+      "Market & Limit Orders | Orderbooks | Aggregated Liquidity | Real-time Token & NFT Price Charts",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tegro.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum", "Polygon", "Arbitrum"],
+    module: "dummy.js",
+    twitter: "TegroFi",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1695740353
   },
 ]
 

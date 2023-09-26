@@ -2768,6 +2768,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "TProtocol_",
+    treasury: "tprotocol.js",
+    github: ["TProtocol"]
   },
 ];
 

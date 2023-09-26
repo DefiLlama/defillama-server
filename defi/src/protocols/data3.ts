@@ -4964,9 +4964,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     parentProtocol: "parent#tprotocol",
-    treasury: "tprotocol.js",
     listedAt: 1683044490,
-    github: ["TProtocol"]
   },
   {
     id: "2924",
@@ -19160,7 +19158,6 @@ const data3: Protocol[] = [
     audit_links: ["https://admin.zokyo.io/uploads/T_Protocol_Zokyo_audit_report_Sep12th_2023_629e26d9de.pdf"],
     parentProtocol: "parent#tprotocol",
     listedAt: 1695705821,
-    github: ["TProtocol"]
   },
 ]
 

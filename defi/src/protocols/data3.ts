@@ -4945,17 +4945,17 @@ const data3: Protocol[] = [
   },
   {
     id: "2923",
-    name: "TProtocol",
-    address: "0x07Ac55797D4F43f57cA92a49E65ca582cC287c27",
-    symbol: "TBT",
-    url: "https://www.tprotocol.io",
+    name: "TProtocol V1",
+    address: "-",
+    symbol: "TPS",
+    url: "https://legacy.tprotocol.io/",
     description:
       "First DeFi composable LSD solution for stablecoins.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tprotocol.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "rebasing-tbt",
+    gecko_id: null,
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum"],
@@ -4963,7 +4963,10 @@ const data3: Protocol[] = [
     twitter: "TProtocol_",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1683044490
+    parentProtocol: "parent#tprotocol",
+    treasury: "tprotocol.js",
+    listedAt: 1683044490,
+    github: ["TProtocol"]
   },
   {
     id: "2924",
@@ -19111,6 +19114,53 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://github.com/Secure3Audit/Secure3Academy/blob/main/audit_reports/StakeStone/StakeStone_final_Secure3_Audit_Report.pdf"],
     listedAt: 1695652625
+  },
+  {
+    id: "3559",
+    name: "Armada",
+    address: null,
+    symbol: "-",
+    url: "https://app.armadafi.so/",
+    description:
+      "Armada's suite of tools revolutionizes how tokens are launched and managed, giving project treasuries the power to seamlessly unlock initial token distribution, liquidity, price discovery, and protocol revenue management",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/armada.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Solana"],
+    module: "armada/index.js",
+    twitter: "ArmadaFi",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1695705814
+  },
+  {
+    id: "3560",
+    name: "TProtocol V2",
+    address: "-",
+    symbol: "TPS",
+    url: "https://www.tprotocol.io",
+    description:
+      "TProtocol V2 is decentralized RWA lending protocol which facilitates the liquidity and mass adoption of RWA tokens in DeFi ecosystems",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tprotocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "t-protocol-v2/index.js",
+    twitter: "TProtocol_",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://admin.zokyo.io/uploads/T_Protocol_Zokyo_audit_report_Sep12th_2023_629e26d9de.pdf"],
+    parentProtocol: "parent#tprotocol",
+    listedAt: 1695705821,
+    github: ["TProtocol"]
   },
 ]
 

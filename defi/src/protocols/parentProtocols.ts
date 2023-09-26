@@ -2758,6 +2758,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ApertureFinance",
   },
+  {
+    id: "parent#tprotocol",
+    name: "TProtocol",
+    url: "https://www.tprotocol.io",
+    description: "RWA Liquidity Hub",
+    logo: `${baseIconsUrl}/tprotocol.jpg`,
+    gecko_id: "rebasing-tbt",
+    cmcId: null,
+    chains: [],
+    twitter: "TProtocol_",
+  },
 ];
 
 export default parentProtocols;

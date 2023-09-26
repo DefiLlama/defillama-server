@@ -19163,8 +19163,8 @@ const data3: Protocol[] = [
   {
     id: "3561",
     name: "Tegro",
-    address: "-",
-    symbol: "",
+    address: null,
+    symbol: "-",
     url: "https://tegro.com",
     description:
       "Market & Limit Orders | Orderbooks | Aggregated Liquidity | Real-time Token & NFT Price Charts",

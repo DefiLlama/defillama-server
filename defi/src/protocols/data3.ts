@@ -10471,6 +10471,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Savvy_DeFi_Smart_Contract_Securtity_Audit_Report_Halborn_Final.pdf"],
     oracles: ["Chainlink"],
     treasury: "savvy.js",
+    stablecoins: ["savvy-usd"],
     listedAt: 1687942907
   },
   {

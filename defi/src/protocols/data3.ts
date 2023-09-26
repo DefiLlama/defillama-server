@@ -19190,7 +19190,7 @@ const data3: Protocol[] = [
     url: "https://celestia.org",
     description:
       "Celestia is a modular consensus and data network, built to enable anyone to easily deploy their own blockchain with minimal overhead.",
-    chain: "Celestia", //Celestia
+    chain: "Ethereum", //Celestia
     logo: `${baseIconsUrl}/celestia.jpg`,
     audits: "0",
     audit_note: null,

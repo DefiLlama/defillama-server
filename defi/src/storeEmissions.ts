@@ -56,10 +56,19 @@ async function aggregateMetadata(
   let documentedData;
   let realTimeData;
   if (documentedChart.length) {
-    documentedData = { data: mapToServerData(documentedChart), tokenAllocation: documentedTokenAllocation };
-    realTimeData = { data: mapToServerData(realTimeChart), tokenAllocation: realTimeTokenAllocation };
+    documentedData = {
+      data: await mapToServerData(documentedChart, rawData.metadata.token),
+      tokenAllocation: documentedTokenAllocation,
+    };
+    realTimeData = {
+      data: await mapToServerData(realTimeChart, rawData.metadata.token),
+      tokenAllocation: realTimeTokenAllocation,
+    };
   } else {
-    documentedData = { data: mapToServerData(realTimeChart), tokenAllocation: realTimeTokenAllocation };
+    documentedData = {
+      data: await mapToServerData(realTimeChart, rawData.metadata.token),
+      tokenAllocation: realTimeTokenAllocation,
+    };
   }
 
   return {

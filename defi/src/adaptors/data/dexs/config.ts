@@ -2024,5 +2024,9 @@ export default {
         parentId: "Solidly Labs",
         "enabled": true,
         "id": "3481"
+    },
+    "tegro": {
+        "enabled": true,
+        "id": "3561"
     }
 } as AdaptorsConfig

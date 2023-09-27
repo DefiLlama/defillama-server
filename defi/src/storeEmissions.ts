@@ -70,6 +70,7 @@ async function aggregateMetadata(
       name,
       gecko_id: pData?.gecko_id,
       futures,
+      categgories: rawData.categories,
     },
     id,
   };

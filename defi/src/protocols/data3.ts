@@ -18894,7 +18894,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#shoebill-finance",
     listedAt: 1695311208
   },
-  /*{
+  {
     id: "3549",
     name: "VVS Flawless",
     address: "cronos:0x2D03bECE6747ADC00E1a131BBA1469C15fD11e03",
@@ -18915,7 +18915,7 @@ const data3: Protocol[] = [
     twitter: "VVS_finance",
     parentProtocol: "parent#vvs-finance",
     listedAt: 1695316335
-  },*/
+  },
   {
     id: "3550",
     name: "opBANANA",

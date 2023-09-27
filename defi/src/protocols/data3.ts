@@ -19227,6 +19227,29 @@ const data3: Protocol[] = [
     github: [],
     listedAt: 1695767007
   },
+  {
+    id: "3564",
+    name: "Star Shares",
+    address: null,
+    symbol: "-",
+    url: "https://www.starshares.xyz/",
+    description:
+      "Star Shares - trade twitter profiles on $AVAX. Buy and share your favorite creators and earn from their success",
+    chain: "Avalanche", 
+    logo: `${baseIconsUrl}/star-shares.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Avalanche"], 
+    module: "starshares/index.js",
+    twitter: "StarSharesXyz",
+    forkedFrom: ["friend.tech"],
+    oracles: [],
+    github: [],
+    listedAt: 1695774131
+  },
 ]
 
 export default data3

@@ -21,7 +21,6 @@ const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 1740000; //29mins
 
 async function storeDefiCoins() {
-  console.log("actually entering defi coins");
   await setEnvSecrets();
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
@@ -30,7 +29,6 @@ async function storeDefiCoins() {
   shuffleArray(protocolIndexes);
   const a = Object.entries(adapters);
   const timestamp = 0;
-  console.time("exec");
   await PromisePool.withConcurrency(2)
     .for(protocolIndexes)
     .process(async (i) => {
@@ -65,13 +63,6 @@ async function storeDefiCoins() {
           );
       }
     });
-  console.timeEnd("exec");
-  await sendMessage(
-    `coolifys just finished defi coins`,
-    process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-    true,
-  );
-  console.log("actually exiting defi coins");
   process.exit();
 }
 storeDefiCoins();

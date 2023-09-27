@@ -1354,5 +1354,9 @@ export default {
         parentId: "Solidly Labs",
         "enabled": true,
         "id": "3481"
+    },
+    "friend3": {
+        "enabled": true,
+        "id": "3566"
     }
 } as AdaptorsConfig

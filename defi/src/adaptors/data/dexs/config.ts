@@ -2021,6 +2021,7 @@ export default {
         "id": "3341"
     },
     "solidly-v3": {
+        parentId: "Solidly Labs",
         "enabled": true,
         "id": "3481"
     }

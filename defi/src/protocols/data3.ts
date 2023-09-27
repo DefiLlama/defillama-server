@@ -19297,6 +19297,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Friend3-Group/PeckShield-Audit-Report-Friend3/blob/main/PeckShield-Audit-Report-Friend3.pdf"],
     listedAt: 1695807089
   },
+  {
+    id: "3567",
+    name: "BlueMeteor",
+    address: "pulse:0x1452fEEab82Fb7dE81da0FbcBe3350bcbDC49C0d",
+    symbol: "Meteor",
+    url: "https://bluemeteor.xyz",
+    description:
+      "Swap, Farm and stake tokens to the BlueMeteor Ecosystem",
+    chain: "Pulse", 
+    logo: `${baseIconsUrl}/bluemeteor.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Pulse"], 
+    module: "bluemeteor/index.js",
+    twitter: "bluemeteorpls",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1695818597
+  },
 ]
 
 export default data3

@@ -2019,5 +2019,9 @@ export default {
     "chronos-v2": {
         "enabled": true,
         "id": "3341"
+    },
+    "solidly-v3": {
+        "enabled": true,
+        "id": "3481"
     }
 } as AdaptorsConfig

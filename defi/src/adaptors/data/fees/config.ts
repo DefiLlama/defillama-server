@@ -1349,5 +1349,10 @@ export default {
         parentId: "Tangible",
         "enabled": true,
         "id": "3528"
+    },
+    "solidly-v3": {
+        parentId: "Solidly Labs",
+        "enabled": true,
+        "id": "3481"
     }
 } as AdaptorsConfig

@@ -4406,7 +4406,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
-    oracles: [],
+    oracles: ["Stork"], //https://vertex-protocol.gitbook.io/docs/basics/pricing-oracles
     forkedFrom: [],
     module: "vertex/index.js",
     twitter: "vertex_protocol",

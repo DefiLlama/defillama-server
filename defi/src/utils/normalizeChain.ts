@@ -1907,7 +1907,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "IOTA",
-      types: ["L2", "gas"]
+      types: ["L2"]
     },
     github: ['iotaledger'],
     chainId: 148,

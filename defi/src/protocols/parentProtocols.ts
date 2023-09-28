@@ -2723,6 +2723,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "20271",
     chains: [],
     twitter: "tangibleDAO",
+    stablecoins: ["real-usd"]
   },
   {
     id: "parent#shoebill-finance",

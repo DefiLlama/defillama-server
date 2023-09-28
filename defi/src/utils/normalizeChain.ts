@@ -1818,7 +1818,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "Ethereum",
+      chain: "BSC",
       types: ["L2", "gas"]
     },
     github: ['bnb-chain'],
@@ -1894,11 +1894,23 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "Ethereum",
+      chain: "Manta Atlantic",
       types: ["L2", "gas"]
     },
     github: ['manta-network'],
     chainId: 169,
+  },
+  "ShimmerEVM": {
+    geckoId: "shimmer",
+    symbol: "SMR",
+    cmcId: "14801",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "IOTA",
+      types: ["L2", "gas"]
+    },
+    github: ['iotaledger'],
+    chainId: 148,
   },
 } as unknown as {
   [chain: string]: {
@@ -2371,7 +2383,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "kroma":
       return "Kroma" 
     case "manta":
-      return "Manta"           
+      return "Manta"
+    case "shimmer_evm":
+      return "ShimmerEVM"           
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

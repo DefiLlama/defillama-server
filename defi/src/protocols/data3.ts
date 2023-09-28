@@ -19319,6 +19319,55 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1695818597
   },
+  {
+    id: "3568",
+    name: "Bass Exchange",
+    address: "base:0x1F23B787053802108fED5B67CF703f0778AEBaD8",
+    symbol: "BASS",
+    url: "https://www.bass.exchange",
+    description:
+      "Bass Exchange is a hyper-efficient multichain stableswap with minimal slippage.",
+    chain: "Base", 
+    logo: `${baseIconsUrl}/bass-exchange.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"], 
+    module: "bassexhcnage/index.js",
+    twitter: "Bass_Exchange",
+    forkedFrom: ["Wombat Exchange"],
+    oracles: ["Chainlink"],
+    audit_links: ["https://github.com/EtherAuthority/Audit/blob/main/Bass%20Exchange.pdf"],
+    listedAt: 1695898552
+  },
+  {
+    id: "3569",
+    name: "PHAME Protocol",
+    address: "pulse:0x8854bc985fb5725f872c8856bea11b917caeb2fe",
+    symbol: "PHAME",
+    url: "https://dapp.phame.io",
+    description:
+      "Decentralized Perpetual DEX on PulseChain with noval design of LP (PHLP) & governance token staking (PHAME)",
+    chain: "Pulse", 
+    logo: `${baseIconsUrl}/phame-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "phame",
+    cmcId: "28160",
+    category: "Derivatives",
+    chains: ["Pulse"], 
+    module: "phame/index.js",
+    twitter: "Phamouscrypto",
+    forkedFrom: ["GMX V1"],
+    oracles: ["TWAP"],
+    audit_links: [
+                    "https://skynet.certik.com/projects/phame",
+                    "https://sourcehat.com/audits/Phame"
+                 ],
+    listedAt: 1695898558
+  },
 ]
 
 export default data3

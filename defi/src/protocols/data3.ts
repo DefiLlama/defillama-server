@@ -19369,7 +19369,7 @@ const data3: Protocol[] = [
     listedAt: 1695898558
   },
   {
-    id: "2570",
+    id: "3570",
     name: "marginfi LST",
     address: null,
     symbol: "-",
@@ -19390,6 +19390,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#marginfi",
     listedAt: 1695920989
+  },
+  {
+    id: "3571",
+    name: "ShimmerSea",
+    address: null,
+    symbol: "-",
+    url: "https://shimmersea.finance/",
+    description:
+      "ShimmerSea is a leading decentralized exchange (DEX) on Shimmer focused on offering a premier trading experience",
+    chain: "ShimmerEVM",
+    logo: `${baseIconsUrl}/shimmersea.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ShimmerEVM"],
+    module: "shimmersea/index.js",
+    twitter: "ShimmerSeaDEX",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    listedAt: 1695923248
   },
 ]
 

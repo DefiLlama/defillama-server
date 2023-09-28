@@ -15616,7 +15616,7 @@ const data3: Protocol[] = [
     module: "seaswap/index.js",
     twitter: "Seaswap_sei",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     listedAt: 1692264154,
   },
   {
@@ -15750,7 +15750,7 @@ const data3: Protocol[] = [
     module: "FuzioNetwork/index.js",
     twitter: "FuzioNetwork",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     listedAt: 1692289355
   },
   {
@@ -16041,7 +16041,7 @@ const data3: Protocol[] = [
     module: "mendi-finance/index.js",
     twitter: "MendiFinance",
     forkedFrom: ["Compound V2"],
-    oracles: [],
+    oracles: ["Pyth"],
     github: ["mendi-finance"],
     listedAt: 1692625594
   },
@@ -17012,7 +17012,7 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["Kava"],
     module: "kinetix/index.js",
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: ["GMX V1"],
     twitter: "KinetixFi",
     parentProtocol: "parent#kinetix",
@@ -18479,7 +18479,7 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     module: "dip-exchange/index.js",
-    oracles: ["Chainlink"],
+    oracles: ["Pyth", "Chainlink"],
     forkedFrom: [],
     twitter: "DIP_Exchange",
     github: ["dip-exchange"],

@@ -2772,6 +2772,17 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "tprotocol.js",
     github: ["TProtocol"]
   },
+  {
+    id: "parent#marginfi",
+    name: "marginfi",
+    url: "https://app.marginfi.com",
+    description: "Connecting liquidity across DeFi",
+    logo: `${baseIconsUrl}/marginfi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "marginfi",
+  },
 ];
 
 export default parentProtocols;

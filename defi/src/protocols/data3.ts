@@ -19368,6 +19368,29 @@ const data3: Protocol[] = [
                  ],
     listedAt: 1695898558
   },
+  {
+    id: "2570",
+    name: "marginfi LST",
+    address: null,
+    symbol: "-",
+    url: "https://app.marginfi.com/stake",
+    description:
+      "Liquid Staking solution on Solana to get exposure to SOL, $LST is built on mrgn's validator network and Jito's MEV rewards.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/marginfi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "marginfi-lst/index.js",
+    twitter: "marginfi",
+    oracles: [],
+    forkedFrom: [],
+    parentProtocol: "parent#marginfi",
+    listedAt: 1695920989
+  },
 ]
 
 export default data3

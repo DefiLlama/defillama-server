@@ -26866,7 +26866,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2570",
-    name: "marginfi",
+    name: "marginfi Lending",
     address: null,
     symbol: "-",
     url: "https://app.marginfi.com",
@@ -26884,6 +26884,7 @@ const data2: Protocol[] = [
     twitter: "marginfi",
     oracles: ["Pyth"],
     forkedFrom: [],
+    parentProtocol: "parent#marginfi",
     listedAt: 1677103747
   },
   {

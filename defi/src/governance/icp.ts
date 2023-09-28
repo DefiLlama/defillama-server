@@ -138,7 +138,7 @@ function convert_proposal_format(proposal: NnsProposalResponse): Proposal {
     description: proposal.summary,
     space: { canister_id: "rrkah-fqaaa-aaaaa-aaaaq-cai" },
     choices: ["Yes", "No", "Undecided"],
-    scores: [proposal.latest_tally.yes, proposal.latest_tally.no, proposal.latest_tally.total - proposal.latest_tally.yes - proposal.latest_tally.no].map(i => i/1e8),
+    scores: [proposal.latest_tally.yes, proposal.latest_tally.no, proposal.latest_tally.total - proposal.latest_tally.yes - proposal.latest_tally.no].map(i => i / 1e8),
     scores_total: proposal.latest_tally.total / 1e8,
     quorum: 0.03,
     votes: 0,
@@ -247,33 +247,38 @@ export async function addICPProposals(overview: any = {}) {
   let cache = await getCompound(GOV_ID)
   await update_internet_computer_cache(cache as any)
   cache.metadata = {
-    "id": GOV_ID,
-    "type": "ICP",
-    "tokens": [
-      {
-        "id": "ICP",
-        "type": "other",
-        "name": "Internet Computer",
-        "symbol": "ICP",
-        "supply": HARDCODED_SUPPLY,
-        "decimals": 8
-      }
-    ],
-    "strategies": [{
-      "name": "erc20-balance-of",
-      "network": "ICP",
-    }],
-    "name": "Internet Computer",
-    "slug": "icp",
-    "network": "icp",
-    "chainName": "ICP",
-    "symbol": "ICP",
+    ...cache.metadata,
+    ...{
+      "id": GOV_ID,
+      "strategies": [{
+        "name": "erc20-balance-of",
+        "network": "ICP",
+      }],
+      "slug": "icp",
+      "network": "icp",
+      type: "Network Nervous System",
+      symbol: "NNS",
+      chainName: "Internet Computer",
+      name: "Network Nervous System",
+      tokens: [{
+        // NNS ICP ledger canister id
+        id: "ryjl3-tyaaa-aaaaa-aaaba-cai",
+        type: "ICRC-1 Ledger",
+        name: "Network Nervous System Internet Computer Protocol Ledger",
+        symbol: "NNS ICP Ledger",
+        // supply:parseInt(await nns_icp_ledger.call('icrc1_total_supply')).toString(),
+        // decimals:parseInt(await nns_icp_ledger.call('icrc1_decimals')).toString(),
+        supply: HARDCODED_SUPPLY,
+        decimals: "8"
+      }]
+    }
   }
   cache.id = GOV_ID
   updateStats(cache, overview, cache.id)
   if (overview[cache.id]) {
     Object.values(overview[cache.id].months ?? {}).forEach((month: any) => delete month.proposals)
   }
+  if (cache.stats?.highestTotalScore > 1e14) cache.stats /= 1e8
   await setCompound(cache.id, cache)
   return overview
 }

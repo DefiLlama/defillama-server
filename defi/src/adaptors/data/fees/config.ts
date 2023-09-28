@@ -909,7 +909,7 @@ export default {
         "id": "2968"
     },
     "kwenta": {
-        "enabled": true,
+        "enabled": false,
         "id": "2981"
     },
     "gamma": {

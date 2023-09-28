@@ -8544,8 +8544,8 @@ const data3: Protocol[] = [
   {
     id: "3083",
     name: "Penpie",
-    address: null,
-    symbol: "-",
+    address: "0x7dedbce5a2e31e4c75f87fea60bf796c17718715",
+    symbol: "PNP",
     url: "https://www.pendle.magpiexyz.io/stake",
     description:
       "Penpie is a next-generation product by @magpiexyz_io that's set to revolutionize @pendle_fi",

@@ -19471,7 +19471,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
-    oracles: ["Redstone"],
+    oracles: ["RedStone"],
     forkedFrom: [],
     module: "arcanum/index.js",
     twitter: "0xArcanum",

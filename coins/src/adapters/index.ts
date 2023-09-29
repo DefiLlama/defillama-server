@@ -1,5 +1,6 @@
 export default {
   xexchange: require("./markets/xexchange"),
+  digift: require("./rwa/digift"),
   gmxV2: require("./other/gmxV2"),
   timeswap: require("./yield/timeswap"),
   // wemix: require("./markets/uniswap"),

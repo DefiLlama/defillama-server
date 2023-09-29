@@ -678,7 +678,7 @@ export default {
         id: "2644"
     },
     "equalizer-exchange": {
-        parentId: "Equalizer0x",
+        parentId: "Equalizer",
         enabled: true,
         id: "2332"
     },
@@ -1039,7 +1039,7 @@ export default {
         id: "3156"
     },
     "equity": {
-        parentId: "Equalizer0x",
+        parentId: "Equalizer",
         enabled: true,
         id: "3173"
     },
@@ -1358,5 +1358,10 @@ export default {
     "friend3": {
         "enabled": true,
         "id": "3566"
+    },
+    "Scale": {
+        parentId: "Equalizer",
+        "enabled": true,
+        "id": "3575"
     }
 } as AdaptorsConfig

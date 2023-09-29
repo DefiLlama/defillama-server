@@ -1211,7 +1211,7 @@ export default {
         "id": "1732"
     },
     "equalizer-exchange": {
-        parentId: "Equalizer0x",
+        parentId: "Equalizer",
         "enabled": true,
         "id": "2332"
     },
@@ -1735,7 +1735,7 @@ export default {
         },
     },
     "equity-spot": {
-        parentId: "Equalizer0x",
+        parentId: "Equalizer",
         enabled: true,
         id: "3173"
     },
@@ -2028,5 +2028,10 @@ export default {
     "tegro": {
         "enabled": true,
         "id": "3561"
+    },
+    "Scale": {
+        parentId: "Equalizer",
+        "enabled": true,
+        "id": "3575"
     }
 } as AdaptorsConfig

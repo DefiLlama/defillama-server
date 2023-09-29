@@ -43,6 +43,27 @@
       "to": "coingecko#penpie"
     }
   },
+  "linea": {
+    "0x808d7c71ad2ba3fa531b068a2417c63106bc0949": {
+      "decimals": "18",
+      "symbol": "STG",
+      "to": "coingecko#stargate-finance"
+    }
+  },
+  "base": {
+    "0xe3b53af74a4bf62ae5511055290838050bf764df": {
+      "decimals": "18",
+      "symbol": "STG",
+      "to": "coingecko#stargate-finance"
+    }
+  },
+  "avax": {
+    "0x5c49b268c9841aff1cc3b0a418ff5c3442ee3f3b": {
+      "decimals": "18",
+      "symbol": "MAI",
+      "to": "coingecko#mimatic"
+    }
+  },
   "manta": {
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",

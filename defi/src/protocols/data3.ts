@@ -19583,6 +19583,27 @@ const data3: Protocol[] = [
     module: "btse/index.js",
     twitter: "BTSE_Official",
   },
+  {
+    id: "3578",
+    name: "DigiFT",
+    address: null,
+    symbol: "-",
+    url: "https://www.digift.sg",
+    description: "DigiFT is the first and only RWA DEX enrolled within the Monetary Authority of Singapore (MAS) FinTech Regulatory Sandbox, built on the Ethereum public blockchain. DigiFT enables asset owners to issue, and eligible investors to purchase, blockchain-based security tokens. Investors can also access continuous liquidity on secondary market trading via an Automatic Market Maker mechanism.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/digift.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "DigiFT/index.js",
+    twitter: "DigiFTTech",
+    listedAt: 1695992751
+  },
 ]
 
 export default data3

@@ -25685,7 +25685,6 @@ const data2: Protocol[] = [
     twitter: "ParaSpace_NFT",
     oracles: ["Internal"],
     forkedFrom: [],
-    parentProtocol: "parent#parax",
     audit_links: ["https://docs.para.space/para-space/para-space/external-audits"],
     listedAt: 1675872130
   },

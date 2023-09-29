@@ -13363,7 +13363,7 @@ const data3: Protocol[] = [
     description: "Decentralized, non-custodial lending and borrowing market on MantleNetwork.",
     chain: "Mantle",
     logo: `${baseIconsUrl}/lendle.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -13373,7 +13373,10 @@ const data3: Protocol[] = [
     forkedFrom: ["AAVE V2"],
     module: "lendle/index.js",
     twitter: "lendlexyz",
-    listedAt: 1690465888
+    listedAt: 1690465888,
+    audit_links: [
+      "https://sourcehat.com/audits/Lendle/",
+    ],
   },
   {
     id: "3301",

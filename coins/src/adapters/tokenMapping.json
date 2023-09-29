@@ -36,6 +36,13 @@
       "to": "coingecko#savvy-usd"
     }
   },
+  "optimism": {
+    "0xc4a65a93dd6cd9717551ebe827e8baee025d1d7e": {
+      "decimals": "18",
+      "symbol": "PNP",
+      "to": "coingecko#penpie"
+    }
+  },
   "manta": {
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",

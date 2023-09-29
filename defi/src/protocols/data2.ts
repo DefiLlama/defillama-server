@@ -141,7 +141,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1385",
-    name: "Algebra DEX",
+    name: "Algebra DEX V1",
     address: "polygon:0x0169ec1f8f639b32eec6d923e24c2a2ff45b9dd6",
     symbol: "ALGB",
     url: "https://app.algebra.finance",
@@ -151,8 +151,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/algebra-dex.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "algebra",
-    cmcId: "13211",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Polygon"],
     oracles: [],
@@ -160,8 +160,8 @@ const data2: Protocol[] = [
     twitter: "CryptoAlgebra",
     language: "Solidity",
     audit_links: ["https://algebra.finance/static/Hacken_Algebra_Audit-317911476f86c632be77388fa51852c0.pdf"],
+    parentProtocol: "parent#algebra",
     listedAt: 1644509096,
-    github: ["cryptoalgebra"]
   },
   {
     id: "1386",

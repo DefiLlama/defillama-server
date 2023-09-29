@@ -2783,6 +2783,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "marginfi",
   },
+  {
+    id: "parent#algebra",
+    name: "Algebra DEX",
+    url: "https://app.algebra.finance",
+    description: "Algebra is the next-generation decentralized exchange supporting concentrated liquidity. Algebra goal is to create AMM for the main blockchains.",
+    logo: `${baseIconsUrl}/algebra-dex.png`,
+    gecko_id: "algebra",
+    cmcId: "13211",
+    chains: [],
+    twitter: "CryptoAlgebra",
+    github: ["cryptoalgebra"],
+  },
 ];
 
 export default parentProtocols;

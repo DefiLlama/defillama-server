@@ -19607,6 +19607,29 @@ const data3: Protocol[] = [
     twitter: "DigiFTTech",
     listedAt: 1695992751
   },
+  {
+    id: "3581",
+    name: "Algebra DEX V2",
+    address: "polygon:0x0169ec1f8f639b32eec6d923e24c2a2ff45b9dd6",
+    symbol: "ALGB",
+    url: "https://app.algebra.finance",
+    description:
+      "Algebra is the next-generation decentralized exchange supporting concentrated liquidity",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/algebra-dex.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche"],
+    oracles: [],
+    module: "algebra-v2/index.js",
+    twitter: "CryptoAlgebra",
+    audit_links: ["https://algebra.finance/static/ABDK_Algebra_Audit_v2-12e19519a284a6c99b72c0163d9166da.pdf"],
+    parentProtocol: "parent#algebra",
+    listedAt: 1696030521,
+  },
 ]
 
 export default data3

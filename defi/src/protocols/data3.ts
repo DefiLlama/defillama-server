@@ -19584,7 +19584,7 @@ const data3: Protocol[] = [
     twitter: "BTSE_Official",
   },
   {
-    id: "3578",
+    id: "3580",
     name: "DigiFT",
     address: null,
     symbol: "-",

@@ -1894,7 +1894,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "Manta Atlantic",
+      chain: "Ethereum",
       types: ["L2", "gas"]
     },
     github: ['manta-network'],

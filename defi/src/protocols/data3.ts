@@ -13363,7 +13363,7 @@ const data3: Protocol[] = [
     description: "Decentralized, non-custodial lending and borrowing market on MantleNetwork.",
     chain: "Mantle",
     logo: `${baseIconsUrl}/lendle.jpg`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

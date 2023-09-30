@@ -19631,6 +19631,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#glacier-finance",
     listedAt: 1696030521,
   },
+  {
+    id: "3582",
+    name: "ChainGPT",
+    address: "bsc:0x9840652DC04fb9db2C43853633f0F62BE6f00f98",
+    symbol: "CGPT",
+    url: "https://pad.chaingpt.org/staking-pools",
+    description:
+      "Sophisticated. Balanced. Secure. Enabling the future of Web3 innovation with AI; ChainGPT Pad is the decentralized fundraising platform incubating the next generation of crypto projects.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/chaingpt.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "chaingpt",
+    cmcId: "23756",
+    category: "Launchpad",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "chaingpt/index.js",
+    twitter: "Chain_GPT",
+    listedAt: 1696082183
+  },
+
 ]
 
 export default data3

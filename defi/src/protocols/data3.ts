@@ -19653,6 +19653,28 @@ const data3: Protocol[] = [
     twitter: "Chain_GPT",
     listedAt: 1696082183
   },
+  {
+    id: "3583",
+    name: "Ancora Finance",
+    address: null,
+    symbol: "ACR",
+    url: "https://app.ancora.finance/#/swap",
+    description:
+      "ANCORA FINANCE helps you make the most out of your crypto in three ways: Trade, Earn, and Win",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/ancora-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "ancora/index.js",
+    twitter: "AncoraFinance",
+    listedAt: 1696087235
+  },
 
 ]
 

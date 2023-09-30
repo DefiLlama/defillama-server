@@ -1906,7 +1906,7 @@ export const chainCoingeckoIds = {
     cmcId: "14801",
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "IOTA",
+      chain: "Shimmer",
       types: ["L2"]
     },
     github: ['iotaledger'],

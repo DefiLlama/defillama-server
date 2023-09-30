@@ -19675,6 +19675,62 @@ const data3: Protocol[] = [
     twitter: "AncoraFinance",
     listedAt: 1696087235
   },
+  {
+    id: "3584",
+    name: "Phiat Protocol",
+    address: "pulse:0x96e035ae0905efac8f733f133462f971cfa45db1",
+    symbol: "PHIAT",
+    url: "https://dapp.phiat.io/#/markets",
+    description:
+      "An Aave v2 fork on PulseChain with noval design of risk control and governance token staking",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/phiat-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "phiat-protocol",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Pulse"],
+    oracles: ["TWAP"],
+    forkedFrom: ["AAVE V2"],
+    module: "phiat/index.js",
+    twitter: "phiatcrypto",
+    audit_links: [
+      "https://solidity.finance/audits/PhiatProtocol/",
+      "https://skynet.certik.com/projects/phiat-io"
+    ],
+    listedAt: 1696096851
+  },
+  {
+    id: "3585",
+    name: "TangleSwap",
+    address: null,
+    symbol: "-",
+    url: "https://tangleswap.exchange",
+    description:
+      "TangleSwap is an omnichain protocol composed of a Concentrated Liquidity DEX plus 4 other user-centric dApps designed to make DeFi mainstream",
+    chain: "ShimmerEVM",
+    logo: `${baseIconsUrl}/tangleswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ShimmerEVM"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "tangleswap/index.js",
+    twitter: "TangleSwap",
+    audit_links: [
+      "https://admin.zokyo.io/uploads/Tangle_Swap_audit_Core_290a80005c.pdf",
+      "https://admin.zokyo.io/uploads/Tangle_Swap_audit_Periphery_b73961bfe5.pdf",
+      "https://admin.zokyo.io/uploads/Tangle_Swap_audit_NFT_Staking_0ed6c0d922.pdf",
+      "https://admin.zokyo.io/uploads/Tangle_Swap_audit_Farming_55eb30527c.pdf",
+      "https://admin.zokyo.io/uploads/Tangle_Swap_audit_VE_Staking_057af158dd.pdf",
+      "https://admin.zokyo.io/uploads/Tangle_Swap_audit_Investment_Hub_034d10ca3f.pdf"
+    ],
+    listedAt: 1696097373
+  },
 
 ]
 

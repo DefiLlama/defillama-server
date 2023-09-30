@@ -1302,7 +1302,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "glacier-finance/index.js",
     twitter: "Glacier_Fi",
-    parentProtocol: "parent#glacier-exchange",
+    parentProtocol: "parent#glacier-finance",
     listedAt: 1680317242
   },
   {

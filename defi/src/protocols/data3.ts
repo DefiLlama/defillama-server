@@ -19731,7 +19731,30 @@ const data3: Protocol[] = [
     ],
     listedAt: 1696097373
   },
-
+  {
+    id: "3586",
+    name: "Laari Finance",
+    address: "base:0x236f9ebE3A40F3b24CEa63a880704c712d5EC760",
+    symbol: "Laari",
+    url: "https://www.laari.finance",
+    description:
+      "Uniting the best of Base and other EVM chains on Laari Finance - the ultimate yield aggregator destination",
+    chain: "Base",
+    logo: `${baseIconsUrl}/laari-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: ["Yearn Finance"],
+    module: "laari-fi/index.js",
+    twitter: "LaariFinance",
+    audit_links: ["https://github.com/Vital-block/Smart-Contract-Audit/blob/main/LAARI%20FINANCE%20FULL%20CONTRACT%20AUDITING%20REPORT.pdf",
+                  "https://github.com/Vital-block/Project-KYC-Verification/blob/main/LAARI%20FINANCE%20KYC%20CERTIFICATE.pdf"],
+    listedAt: 1696158752
+  },
 ]
 
 export default data3

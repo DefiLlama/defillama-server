@@ -19701,6 +19701,7 @@ const data3: Protocol[] = [
     ],
     listedAt: 1696096851
   },
+  /*
   {
     id: "3585",
     name: "TangleSwap",
@@ -19731,6 +19732,7 @@ const data3: Protocol[] = [
     ],
     listedAt: 1696097373
   },
+  */
   {
     id: "3586",
     name: "Laari Finance",

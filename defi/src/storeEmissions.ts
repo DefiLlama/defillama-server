@@ -85,6 +85,54 @@ async function aggregateMetadata(
   };
 }
 
+async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggregateMetadata>>["data"]) {
+  try {
+    const incentiveCtegories = ["farming", "airdrop"];
+
+    const currDate = new Date().getTime() / 1000;
+    const incentiveCtegoriesNames = incentiveCtegories.map((cat) => emissionData?.categories[cat]).flat();
+
+    const unlocksByTimestamp: Record<string, number> = {};
+
+    emissionData.documentedData.data.forEach(
+      (chart: { data: Array<{ timestamp: number; unlocked: number }>; label: string }) => {
+        if (!incentiveCtegoriesNames?.includes(chart.label)) return;
+        chart.data
+          .filter((val) => val.timestamp < currDate)
+          .forEach((val) => {
+            unlocksByTimestamp[val.timestamp] = (unlocksByTimestamp[val.timestamp] || 0) + val.unlocked;
+          });
+      },
+      {}
+    );
+
+    const timestamps = Object.keys(unlocksByTimestamp);
+    const prices: Record<string, number> = {};
+
+    const token = emissionData?.metadata?.token;
+
+    if (token) {
+      await Promise.all(
+        timestamps.map(async (ts) => {
+          const price = await fetch(`https://coins.llama.fi/prices/historical/${ts}/${token}/`).then((r) => r.json());
+
+          console.log(price, token, ts, currDate);
+          prices[ts] = price?.coins?.[token]?.price;
+        })
+      );
+    }
+
+    const chartsWithPrices = Object.entries(unlocksByTimestamp)
+      .sort((a: any, b: any) => a[0] - b[0])
+      .map(([ts, unlocked]: [string, number], i, arr: any[]) => [ts, (unlocked - arr?.[i - 1]?.[1]) * prices[ts] || 0]);
+
+    return chartsWithPrices;
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
+
 async function processSingleProtocol(adapter: Protocol, protocolName: string): Promise<string> {
   const rawData = await createRawSections(adapter);
   nullFinder(rawData.rawSections, "rawSections");
@@ -97,11 +145,11 @@ async function processSingleProtocol(adapter: Protocol, protocolName: string): P
   nullFinder(realTimeData, "realTimeData");
   // must happen before this line because category datas off
   const { data, id } = await aggregateMetadata(protocolName, realTimeData, documentedData, rawData);
+  const unlockUsdChart = await getPricedUnlockChart(data);
 
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
 
-  await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify(data));
-  console.log(protocolName);
+  await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify({ ...data, unlockUsdChart }));
 
   return sluggifiedId;
 }

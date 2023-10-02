@@ -116,7 +116,11 @@ async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggr
     if (token) {
       await Promise.all(
         timestamps.map(async (ts) => {
-          const price = await fetch(`https://coins.llama.fi/prices/historical/${ts}/${token}/`).then((r) => r.json());
+          const price = await fetch(
+            `https://coins.llama.fi/prices/historical/${ts}/${token}/?apikey=${process.env.APIKEY}`
+          )
+            .then((r) => r.json())
+            .catch(() => {});
 
           console.log(price, token, ts, currDate);
           prices[ts] = price?.coins?.[token]?.price;

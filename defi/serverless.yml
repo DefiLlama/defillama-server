@@ -715,6 +715,7 @@ functions:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
       COINGLASS_KEY: ${env:COINGLASS_KEY}
       UNLOCKS_WEBHOOK: ${env:UNLOCKS_WEBHOOK}
+      APIKEY: ${env:APIKEY}
   storeGovernance:
     handler: src/storeGovernance.default
     timeout: 900

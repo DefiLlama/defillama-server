@@ -9084,11 +9084,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "zabu-token",
     cmcId: "11680",
-    category: "Yield",
+    category: "Yield Aggregator",
     chains: ["Avalanche"],
     module: "zabufinance/index.js",
     twitter: "zabufinance",
-    forkedFrom: ["Autofarm"],
+    forkedFrom: ["Yearn Finance"],
     deadUrl: true
   },
   {
@@ -10653,7 +10653,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "cubfinance/index.js",
     twitter: "FinanceLeo",
     audit_links: ["https://www.certik.org/projects/cubfinance"],
-    forkedFrom: ["Goose Finance", "Autofarm"],
+    forkedFrom: ["Goose Finance"],
     github: ["CubFinance"]
   },
   {

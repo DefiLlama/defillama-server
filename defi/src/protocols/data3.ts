@@ -19757,6 +19757,28 @@ const data3: Protocol[] = [
                   "https://github.com/Vital-block/Project-KYC-Verification/blob/main/LAARI%20FINANCE%20KYC%20CERTIFICATE.pdf"],
     listedAt: 1696158752
   },
+  {
+    id: "3587",
+    name: "fan.tech",
+    address: null,
+    symbol: "-",
+    url: "https://fan.tech",
+    description:
+      "Build a network, grow your networth. Fantech is redefining relationships in a hyperfinancialized world.",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/fan.tech.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Mantle"],
+    oracles: [],
+    forkedFrom: ["friend.tech"],
+    module: "fan-tech/index.js",
+    twitter: "joinfantech",
+    listedAt: 1696238296
+  },
 ]
 
 export default data3

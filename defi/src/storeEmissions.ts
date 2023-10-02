@@ -1,3 +1,6 @@
+import fetch from "node-fetch";
+import { PromisePool } from "@supercharge/promise-pool";
+
 import { createChartData, mapToServerData, nullFinder } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
 import { createCategoryData } from "../emissions-adapters/utils/categoryData";
@@ -9,7 +12,6 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
 import { sluggifyString } from "./utils/sluggify";
 import parentProtocols from "./protocols/parentProtocols";
-import { PromisePool } from "@supercharge/promise-pool";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
 import { withTimeout } from "./utils/shared/withTimeout";

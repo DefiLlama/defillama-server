@@ -89,7 +89,7 @@ async function aggregateMetadata(
 
 async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggregateMetadata>>["data"]) {
   try {
-    const incentiveCtegories = ["farming", "airdrop"];
+    const incentiveCtegories = ["farming"];
 
     const currDate = new Date().getTime() / 1000;
     const incentiveCtegoriesNames = incentiveCtegories.map((cat) => emissionData?.categories[cat]).flat();

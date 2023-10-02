@@ -92,6 +92,7 @@ provider:
     R2_ENDPOINT: ${file(./env.js):R2_ENDPOINT}
     INDEXA_DB: ${file(./env.js):INDEXA_DB}
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    APIKEY: ${file(./env.js):APIKEY}
 
 custom:
   stage: ${opt:stage, self:provider.stage}

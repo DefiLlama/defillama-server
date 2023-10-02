@@ -19779,6 +19779,51 @@ const data3: Protocol[] = [
     twitter: "joinfantech",
     listedAt: 1696238296
   },
+  {
+    id: "3588",
+    name: "OhMyCrypt",
+    address: null,
+    symbol: "-",
+    url: "https://ohmycrypt.com",
+    description:
+      "Limit-Order Orderbook DEX aiming to reunite the best of CEXs and DEXs.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/ohmycrypt.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "OhMyCrypt/index.js",
+    twitter: "OhMyCrypt_Off",
+    listedAt: 1696261252
+  },
+  {
+    id: "3589",
+    name: "FT33 DAO",
+    address: "base:0xe428c32fe2dfde4e25e9bb37c690ce22229f21ac",
+    symbol: "WSFTW",
+    url: "https://friendtech33.xyz/#/about",
+    description:
+      "THE FT33 DAO TAKES ETH & USDC AND FT RELATED ASSETS INTO ITS TREASURY VIA TWO MAIN MECHANISMS:THE FT33 FT KEYS TRADING FEES BONDING.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/ft33-dao.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "wrapped-sftw",
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "friendtech33/index.js",
+    treasury: "friendtech33",
+    twitter: "friendtech33",
+    listedAt: 1696261259
+  },
 ]
 
 export default data3

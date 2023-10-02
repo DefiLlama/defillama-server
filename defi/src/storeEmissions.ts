@@ -122,7 +122,6 @@ async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggr
             .then((r) => r.json())
             .catch(() => {});
 
-          console.log(price, token, ts, currDate);
           prices[ts] = price?.coins?.[token]?.price;
         })
       );

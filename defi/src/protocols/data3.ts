@@ -19701,7 +19701,6 @@ const data3: Protocol[] = [
     ],
     listedAt: 1696096851
   },
-  /*
   {
     id: "3585",
     name: "TangleSwap",
@@ -19730,9 +19729,8 @@ const data3: Protocol[] = [
       "https://admin.zokyo.io/uploads/Tangle_Swap_audit_VE_Staking_057af158dd.pdf",
       "https://admin.zokyo.io/uploads/Tangle_Swap_audit_Investment_Hub_034d10ca3f.pdf"
     ],
-    listedAt: 1696097373
+    listedAt: 1696261601
   },
-  */
   {
     id: "3586",
     name: "Laari Finance",

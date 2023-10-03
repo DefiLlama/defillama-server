@@ -5,8 +5,14 @@ import { Redis } from "ioredis";
 import postgres from "postgres";
 import { sleep } from "zksync-web3/build/src/utils";
 
-const read: boolean = false;
-const pgColumns: string[] = ["key", "timestamp", "price", "confidence"];
+const pgColumns: string[] = [
+  "key",
+  "chain",
+  "timestamp",
+  "price",
+  "confidence",
+  "mcap",
+];
 const latency: number = 1 * 60 * 60; // 1hr
 const margin: number = 12 * 60 * 60; // 12hr
 const confidenceThreshold: number = 0.3;
@@ -15,10 +21,12 @@ type Coin = {
   price: number;
   timestamp: number;
   key: string;
+  chain: string;
   adapter: string;
   confidence: number;
   decimals?: number;
   symbol: string;
+  mcap?: number | null;
 };
 type CoinDict = {
   [key: string]: Coin;
@@ -62,14 +70,17 @@ export async function translateItems(
       const {
         price,
         timestamp,
-        PK: key,
+        PK,
         adapter,
         confidence,
         decimals,
         symbol,
         redirect,
+        mcap,
       } = i;
 
+      const key = PK.substring(PK.indexOf("#") + 1);
+      const chain = key.substring(0, key.indexOf(":"));
       if (redirect) {
         redirects[redirect] = i;
       } else if (price == null) {
@@ -77,12 +88,14 @@ export async function translateItems(
       } else {
         remapped.push({
           price,
+          chain,
           timestamp,
           key,
           adapter,
           confidence,
           decimals,
           symbol,
+          mcap,
         });
       }
     });
@@ -102,20 +115,22 @@ export async function translateItems(
     const timestamp = redirects[r.PK].timestamp ?? getCurrentUnixTimestamp();
     const adapter = redirects[r.PK].adapter ?? null;
     const decimals = redirects[r.PK].decimals ?? null;
-    const { PK: key, confidence, symbol } = redirects[r.PK];
+    const { PK, confidence, symbol, mcap } = redirects[r.PK];
 
+    const key = PK.substring(PK.indexOf("#") + 1);
+    const chain = key.substring(0, key.indexOf(":"));
     remapped.push({
       price: r.price,
       timestamp,
       key,
+      chain,
       adapter,
       confidence,
       decimals,
       symbol,
+      mcap,
     });
   });
-
-  // console.error(`${errors.length} errors in translating to coins2`);
 
   return remapped;
 }
@@ -158,27 +173,30 @@ async function queryPostgres(
 
   let data: Coin[] = [];
 
+  const splitKeys = values.map((v: Coin) => ({
+    ...v,
+    key: v.key.substring(v.key.indexOf(":") + 1),
+  }));
+
   let sql;
-  // console.log("creating a new pg instance");
-  batchPostgresReads = false;
   if (batchPostgresReads) {
     sql = postgres(auth[0]);
     data = await queryPostgresWithRetry(
       sql`
-    select ${sql(pgColumns)} from main where 
-    key in ${sql(values.map((v: Coin) => v.key))}
+    select ${sql(pgColumns)} from splitkey where 
+    key in ${sql(splitKeys.map((v: Coin) => v.key))}
     and timestamp < ${upper}
     and timestamp > ${lower}
   `,
       sql,
     );
   } else {
-    for (let i = 0; i < values.length; i++) {
+    for (let i = 0; i < splitKeys.length; i++) {
       sql = postgres(auth[0]);
       const read = await queryPostgresWithRetry(
         sql`
-          select ${sql(pgColumns)} from main where 
-          key = ${values[i].key}
+          select ${sql(pgColumns)} from splitkey where 
+          key = ${splitKeys[i].key}
           and timestamp < ${upper}
           and timestamp > ${lower}
         `,
@@ -192,15 +210,28 @@ async function queryPostgres(
   // console.log(`${data.length} found in PG`);
 
   let dict: CoinDict = {};
-  data.map((d: Coin) => {
-    if (!(d.key in dict)) {
-      dict[d.key] = d;
+  data.flat().map((d: Coin) => {
+    const key = d.key.toString();
+    const chain = d.chain.toString();
+    const confidence = d.confidence / 32767;
+    if (!(key in dict)) {
+      dict[`${chain}:${key}`] = {
+        ...d,
+        confidence,
+        chain,
+        key,
+      };
       return;
     }
-    const savedTimestamp = dict[d.key].timestamp;
+    const savedTimestamp = dict[`${chain}:${key}`].timestamp;
     if (Math.abs(savedTimestamp - target) < Math.abs(d.timestamp - target))
       return;
-    dict[d.key] = d;
+    dict[`${chain}:${key}`] = {
+      ...d,
+      confidence,
+      chain,
+      key,
+    };
   });
 
   return dict;
@@ -236,6 +267,7 @@ async function combineRedisAndPostgresData(
         price: Number(p.price),
         timestamp: Number(p.timestamp),
         confidence: Number(p.confidence),
+        mcap: p.mcap,
       };
       return;
     }
@@ -322,7 +354,6 @@ async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
   });
   await redis.mset(strings);
   redis.quit();
-  // console.log("mset finished");
 }
 async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
@@ -331,14 +362,30 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
     if (v.price == null || !v.timestamp || !v.key || !v.confidence)
       console.log(`${v.key} entry is invalid oops`);
   });
+  const splitKey = values.map((v: Coin) => ({
+    ...v,
+    key: Buffer.from(v.key.substring(v.key.indexOf(":") + 1), "utf8"),
+    chain: Buffer.from(v.chain || "", "utf8"),
+    mcap: v.mcap ? Math.round(v.mcap) : null,
+    confidence: Math.round(v.confidence * 32767),
+  }));
   // console.log("creating a new pg instance");
   const sql = postgres(auth[0]);
   // console.log("created a new pg instance");
   await queryPostgresWithRetry(
     sql`
-      insert into main
-      ${sql(values, "key", "timestamp", "price", "confidence")}
-      on conflict (key, timestamp) do nothing
+      insert into splitkey
+      ${sql(
+        splitKey,
+        "chain",
+        "key",
+        "timestamp",
+        "price",
+        "confidence",
+        "mcap",
+      )}
+      on conflict (key, chain, timestamp) 
+      do nothing
       `,
     sql,
   );
@@ -348,31 +395,24 @@ export async function writeCoins2(
   batchPostgresReads: boolean = true,
   margin?: number,
 ) {
-  // const step = 100;
-  // for (let i = 0; i < values.length; i += step) {
-  let theseValues = values; //.slice(i, i + step);
-  // console.log(`${values.length} values entering`);
   const cleanValues = batchPostgresReads
-    ? cleanTimestamps(theseValues, margin)
-    : theseValues;
+    ? cleanTimestamps(values, margin)
+    : values;
   const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
-  theseValues = cleanConfidences(theseValues, storedRecords);
-  const writesToRedis = findRedisWrites(theseValues, storedRecords);
+  values = cleanConfidences(values, storedRecords);
+  const writesToRedis = findRedisWrites(values, storedRecords);
   const strings: { [key: string]: string } = {};
   writesToRedis.map((v: Coin) => {
     strings[v.key] = JSON.stringify(v);
   });
 
-  await writeToPostgres(theseValues);
+  await writeToPostgres(values);
   await writeToRedis(strings);
-  // }
 }
 export async function batchWrite2(
   values: Coin[],
   batchPostgresReads: boolean = true,
   margin: number = 15 * 60,
 ) {
-  read
-    ? await readCoins2(values, batchPostgresReads)
-    : await writeCoins2(values, batchPostgresReads, margin);
+  await writeCoins2(values, batchPostgresReads, margin);
 }

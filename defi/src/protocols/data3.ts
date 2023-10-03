@@ -12625,8 +12625,8 @@ const data3: Protocol[] = [
   {
     id: "3267",
     name: "Solid World",
-    address: "polygon:0xEF6Ab48ef8dFe984FAB0d5c4cD6AFF2E54dfdA14",
-    symbol: "CRISP-M",
+    address: null,
+    symbol: "-",
     url: "https://www.solid.world",
     description: "Solid World is a commodities trading platform that makes climate financing liquid and transparent.",
     chain: "Polygon",

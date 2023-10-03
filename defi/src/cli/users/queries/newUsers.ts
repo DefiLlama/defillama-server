@@ -38,7 +38,7 @@ WITH
         `SELECT
           block_timestamp,
           from_address,
-          hash,
+          tx_hash,
           to_address,
           '${chain}' as chain
         FROM

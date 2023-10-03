@@ -70,6 +70,7 @@ async function storeCoinData(coinData: any[]) {
       symbol: c.symbol,
       adapter: "coingecko",
       mcap: c.mcap || null,
+      chain: "coingecko",
     });
   });
   try {
@@ -100,6 +101,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
       timestamp: c.SK,
       price: c.price,
       confidence: c.confidence,
+      chain: "coingecko",
     });
   });
   try {
@@ -245,6 +247,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             confidence: 0.99,
             adapter: "coingecko",
             mcap: pricesAndMcaps[cgPK(coin.id)].mcap || null,
+            chain: "coingecko",
           });
           await ddb.put({
             PK,
@@ -322,6 +325,7 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
         confidence: 0.99,
         adapter: "coingecko",
         symbol: coin.symbol,
+        chain: "coingecko",
       })),
     false,
   );

@@ -21,7 +21,7 @@ type Coin = {
   price: number;
   timestamp: number;
   key: string;
-  chain?: string;
+  chain: string;
   adapter: string;
   confidence: number;
   decimals?: number;
@@ -212,7 +212,7 @@ async function queryPostgres(
   let dict: CoinDict = {};
   data.flat().map((d: Coin) => {
     const key = d.key.toString();
-    const chain = d.chain?.toString();
+    const chain = d.chain.toString();
     const confidence = d.confidence / 32767;
     if (!(key in dict)) {
       dict[`${chain}:${key}`] = {

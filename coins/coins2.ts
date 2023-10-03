@@ -213,7 +213,7 @@ async function queryPostgres(
   data.flat().map((d: Coin) => {
     const key = d.key.toString();
     const chain = d.chain.toString();
-    const confidence = d.confidence / 32767;
+    const confidence = d.confidence / 30000;
     if (!(key in dict)) {
       dict[`${chain}:${key}`] = {
         ...d,
@@ -367,7 +367,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
     key: Buffer.from(v.key.substring(v.key.indexOf(":") + 1), "utf8"),
     chain: Buffer.from(v.chain || "", "utf8"),
     mcap: v.mcap ? Math.round(v.mcap) : null,
-    confidence: Math.round(v.confidence * 32767),
+    confidence: Math.round(v.confidence * 30000),
   }));
   // console.log("creating a new pg instance");
   const sql = postgres(auth[0]);

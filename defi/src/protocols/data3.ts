@@ -19845,6 +19845,28 @@ const data3: Protocol[] = [
     github: ["violetprotocol"],
     listedAt: 1696324346
   },
+  {
+    id: "3591",
+    name: "Ton Locker",
+    address: null,
+    symbol: "-",
+    url: "https://blog.ton.cat/locker/",
+    description:
+      "The Locker or TON Believers Fund",
+    chain: "TON",
+    logo: `${baseIconsUrl}/ton-locker.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["TON"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ton-locker/index.js",
+    twitter: null,
+    listedAt: 1696324476
+  },
 ]
 
 export default data3

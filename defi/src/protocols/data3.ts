@@ -19232,7 +19232,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3564",
-    name: "Star Shares",
+    name: "Stars Arena",
     address: null,
     symbol: "-",
     url: "https://www.starshares.xyz/",
@@ -19247,7 +19247,7 @@ const data3: Protocol[] = [
     category: "SoFi",
     chains: ["Avalanche"], 
     module: "starshares/index.js",
-    twitter: "StarSharesXyz",
+    twitter: "starsarenacom",
     forkedFrom: ["friend.tech"],
     oracles: [],
     github: [],

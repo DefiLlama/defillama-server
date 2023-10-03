@@ -394,9 +394,9 @@ async function triggerFetchCoingeckoData(hourly: boolean) {
   const coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
-  // shuffleArray(coins);
+  shuffleArray(coins);
   let promises: Promise<void>[] = [];
-  for (let i = 0; i < 1; i += step) {
+  for (let i = 0; i < coins.length; i += step) {
     promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
   }
   await Promise.all(promises);

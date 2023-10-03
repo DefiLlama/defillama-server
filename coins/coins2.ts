@@ -70,7 +70,7 @@ export async function translateItems(
       const {
         price,
         timestamp,
-        PK: key1,
+        PK,
         adapter,
         confidence,
         decimals,
@@ -79,7 +79,7 @@ export async function translateItems(
         mcap,
       } = i;
 
-      const key = key1.substring(key1.indexOf("#") + 1);
+      const key = PK.substring(PK.indexOf("#") + 1);
       const chain = key.substring(0, key.indexOf(":"));
       if (redirect) {
         redirects[redirect] = i;
@@ -115,9 +115,9 @@ export async function translateItems(
     const timestamp = redirects[r.PK].timestamp ?? getCurrentUnixTimestamp();
     const adapter = redirects[r.PK].adapter ?? null;
     const decimals = redirects[r.PK].decimals ?? null;
-    const { PK: key1, confidence, symbol, mcap } = redirects[r.PK];
+    const { PK, confidence, symbol, mcap } = redirects[r.PK];
 
-    const key = key1.substring(key1.indexOf("#") + 1);
+    const key = PK.substring(PK.indexOf("#") + 1);
     const chain = key.substring(0, key.indexOf(":"));
     remapped.push({
       price: r.price,
@@ -354,7 +354,6 @@ async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
   });
   await redis.mset(strings);
   redis.quit();
-  console.log("done redis");
 }
 async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
@@ -390,7 +389,6 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
       `,
     sql,
   );
-  console.log("done pg");
 }
 export async function writeCoins2(
   values: Coin[],
@@ -410,7 +408,6 @@ export async function writeCoins2(
 
   await writeToPostgres(values);
   await writeToRedis(strings);
-  return;
 }
 export async function batchWrite2(
   values: Coin[],

@@ -19822,6 +19822,28 @@ const data3: Protocol[] = [
     twitter: "friendtech33",
     listedAt: 1696261259
   },
+  {
+    id: "3590",
+    name: "Mauve",
+    address: null,
+    symbol: "-",
+    url: "https://www.mauve.org",
+    description:
+      "Trade Trustless, Fully Compliant. Mauve is the first DEX with the compliance of traditional finance.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mauve.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "mauve/index.js",
+    twitter: "mauve_org",
+    listedAt: 1696324346
+  },
 ]
 
 export default data3

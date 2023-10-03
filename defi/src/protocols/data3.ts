@@ -19847,7 +19847,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3591",
-    name: "Ton Locker",
+    name: "TON Locker",
     address: null,
     symbol: "-",
     url: "https://blog.ton.cat/locker/",

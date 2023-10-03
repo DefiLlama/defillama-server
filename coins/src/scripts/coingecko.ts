@@ -63,13 +63,13 @@ async function storeCoinData(coinData: any[]) {
   coinData.map((c: Write) => {
     if (c.price == null) return;
     writes2.push({
-      key: c.PK,
+      key: c.PK.replace("#", ":"),
       timestamp: c.SK,
       price: c.price,
       confidence: c.confidence,
       symbol: c.symbol,
       adapter: "coingecko",
-      mcap: c.mcap,
+      mcap: c.mcap || null,
     });
   });
   try {
@@ -96,7 +96,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
   coinData.map((c: Write) => {
     if (c.price == null) return;
     writes2.push({
-      key: c.PK,
+      key: c.PK.replace("#", ":"),
       timestamp: c.SK,
       price: c.price,
       confidence: c.confidence,
@@ -211,8 +211,9 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   );
   const coinPlatformData = await getCoinPlatformData(filteredCoins);
 
-  const pricesAndMcaps: { [key: string]: { price: number; mcap?: number } } =
-    {};
+  const pricesAndMcaps: {
+    [key: string]: { price: number; mcap?: number };
+  } = {};
   confidentCoins.map((c: Write) => {
     if (!c.price) return;
     pricesAndMcaps[c.PK] = { price: c.price, mcap: c.mcap };
@@ -236,14 +237,14 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           const { decimals, symbol } = data;
 
           writes2.push({
-            key: PK,
+            key: PK.replace("#", ":"),
             timestamp: getCurrentUnixTimestamp(),
             price: pricesAndMcaps[cgPK(coin.id)].price,
             decimals: decimals,
             symbol: symbol,
             confidence: 0.99,
             adapter: "coingecko",
-            mcap: pricesAndMcaps[cgPK(coin.id)].mcap,
+            mcap: pricesAndMcaps[cgPK(coin.id)].mcap || null,
           });
           await ddb.put({
             PK,
@@ -316,7 +317,7 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
       })
       .map((price) => ({
         timestamp: toUNIXTimestamp(price[0]),
-        key: PK,
+        key: PK.replace("#", ":"),
         price: price[1],
         confidence: 0.99,
         adapter: "coingecko",
@@ -393,9 +394,9 @@ async function triggerFetchCoingeckoData(hourly: boolean) {
   const coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
-  shuffleArray(coins);
+  // shuffleArray(coins);
   let promises: Promise<void>[] = [];
-  for (let i = 0; i < coins.length; i += step) {
+  for (let i = 0; i < 1; i += step) {
     promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
   }
   await Promise.all(promises);

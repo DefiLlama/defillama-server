@@ -26,7 +26,7 @@ type Coin = {
   confidence: number;
   decimals?: number;
   symbol: string;
-  mcap: number | null;
+  mcap?: number | null;
 };
 type CoinDict = {
   [key: string]: Coin;
@@ -289,12 +289,6 @@ async function readCoins2(
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
   const redisData: CoinDict = await queryRedis(currentQueries);
-  const a = await combineRedisAndPostgresData(
-    redisData,
-    currentQueries,
-    values[0].timestamp,
-    batchPostgresReads,
-  );
 
   return historicalQueries.length > 0
     ? await combineRedisAndPostgresData(
@@ -373,7 +367,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
     ...v,
     key: Buffer.from(v.key.substring(v.key.indexOf(":") + 1), "utf8"),
     chain: Buffer.from(v.chain || "", "utf8"),
-    mcap: v.mcap || null,
+    mcap: v.mcap ? Math.round(v.mcap) : null,
     confidence: Math.round(v.confidence * 32767),
   }));
   // console.log("creating a new pg instance");

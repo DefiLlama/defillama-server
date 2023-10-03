@@ -19842,6 +19842,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "mauve/index.js",
     twitter: "mauve_org",
+    github: ["violetprotocol"],
     listedAt: 1696324346
   },
 ]

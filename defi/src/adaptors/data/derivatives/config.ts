@@ -206,7 +206,7 @@ export default {
         "id": "1018"
     },
     "palmswap": {
-        "enabled": true,
+        "enabled": false,
         "id": "3279"
     },
     "drift-protocol": {

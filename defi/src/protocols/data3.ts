@@ -18095,7 +18095,7 @@ const data3: Protocol[] = [
     module: "cairofiswap/index.js",
     oracles: [],
     forkedFrom: [],
-    twitter: "CairoFi",
+    twitter: "Cairo_Fi",
     github: ["CairoFi"],
     listedAt: 1694425550
   },

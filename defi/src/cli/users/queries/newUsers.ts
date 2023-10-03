@@ -42,7 +42,7 @@ WITH
           to_address,
           '${chain}' as chain
         FROM
-          ${chain}.raw.transactions`).join('\nUNION ALL\n')}
+          ${chain}.core.fact_transactions`).join('\nUNION ALL\n')}
       ) t
     WHERE
       t.to_address IN (${chainAddresses.map(a => `'${a.toLowerCase()}'`).join(',')})

@@ -5,7 +5,13 @@ import { createChartData, mapToServerData, nullFinder } from "../emissions-adapt
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
 import { createCategoryData } from "../emissions-adapters/utils/categoryData";
 import adapters from "./utils/imports/emissions_adapters";
-import { ApiChartData, ChartSection, Protocol, SectionData } from "../emissions-adapters/types/adapters";
+import {
+  ApiChartData,
+  ChartSection,
+  EmissionBreakdown,
+  Protocol,
+  SectionData,
+} from "../emissions-adapters/types/adapters";
 import { createFuturesData } from "../emissions-adapters/utils/futures";
 import { storeR2JSONString, getR2 } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
@@ -95,6 +101,7 @@ async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggr
     const incentiveCtegoriesNames = incentiveCtegories.map((cat) => emissionData?.categories[cat]).flat();
 
     const unlocksByTimestamp: Record<string, number> = {};
+    const now = new Date().getTime() / 1000;
 
     emissionData.documentedData.data.forEach(
       (chart: { data: Array<{ timestamp: number; unlocked: number }>; label: string }) => {
@@ -102,7 +109,8 @@ async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggr
         chart.data
           .filter((val) => val.timestamp < currDate)
           .forEach((val) => {
-            unlocksByTimestamp[val.timestamp] = (unlocksByTimestamp[val.timestamp] || 0) + val.unlocked;
+            if (val.timestamp < now)
+              unlocksByTimestamp[val.timestamp] = (unlocksByTimestamp[val.timestamp] || 0) + val.unlocked;
           });
       },
       {}
@@ -138,7 +146,14 @@ async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggr
   }
 }
 
-async function processSingleProtocol(adapter: Protocol, protocolName: string): Promise<string> {
+const getDateByDaysAgo = (days: number) => new Date(Date.now() - days * 24 * 60 * 60 * 1000).getTime() / 1000;
+const sum = (arr: number[]) => arr.reduce((acc, val) => acc + val, 0);
+
+async function processSingleProtocol(
+  adapter: Protocol,
+  protocolName: string,
+  emissionsBrakedown: EmissionBreakdown
+): Promise<string> {
   const rawData = await createRawSections(adapter);
   nullFinder(rawData.rawSections, "rawSections");
 
@@ -151,8 +166,26 @@ async function processSingleProtocol(adapter: Protocol, protocolName: string): P
   // must happen before this line because category datas off
   const { data, id } = await aggregateMetadata(protocolName, realTimeData, documentedData, rawData);
   const unlockUsdChart = await getPricedUnlockChart(data);
+  const weekAgo = getDateByDaysAgo(7);
+  const dayAgo = getDateByDaysAgo(1);
+  const monthAgo = getDateByDaysAgo(30);
+
+  const [day, week, month]: number[][] = [[], [], []];
 
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
+  unlockUsdChart.forEach(([ts, val]) => {
+    if (Number(ts) > monthAgo) month.push(Number(val));
+    if (Number(ts) > weekAgo) week.push(Number(val));
+    if (Number(ts) > dayAgo) day.push(Number(val));
+  });
+
+  const breakdown = {
+    emission24h: sum(day),
+    emission7d: sum(week),
+    emission30d: sum(month),
+  };
+
+  emissionsBrakedown[sluggifiedId] = breakdown;
 
   await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify({ ...data, unlockUsdChart }));
 
@@ -170,6 +203,7 @@ function filterAdapters(protocolIndexes: number[]): any[] {
 async function processProtocolList(protocolIndexes: number[]) {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
+  let emissionsBrakedown: EmissionBreakdown = {};
 
   const protocolAdapters = filterAdapters(protocolIndexes);
   await PromisePool.withConcurrency(2)
@@ -179,7 +213,7 @@ async function processProtocolList(protocolIndexes: number[]) {
       if (!adapters.length) adapters = [adapters];
       await Promise.all(
         adapters.map((adapter: Protocol) =>
-          withTimeout(180000, processSingleProtocol(adapter, protocolName), protocolName)
+          withTimeout(180000, processSingleProtocol(adapter, protocolName, emissionsBrakedown), protocolName)
             .then((p: string) => protocolsArray.push(p))
             .catch((err: Error) => {
               console.log(err.message ? `${err.message}: \n storing ${protocolName}` : err);
@@ -193,6 +227,7 @@ async function processProtocolList(protocolIndexes: number[]) {
   const res = await getR2(`emissionsProtocolsList`);
   if (res.body) protocolsArray = [...new Set([...protocolsArray, ...JSON.parse(res.body)])];
   await storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray));
+  await storeR2JSONString("emissionsBreakdown", JSON.stringify(emissionsBrakedown));
 }
 async function handler(event: any) {
   try {

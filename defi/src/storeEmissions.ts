@@ -174,6 +174,7 @@ async function processSingleProtocol(
 
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
   unlockUsdChart.forEach(([ts, val]) => {
+    if (Number(val) < 0) return;
     if (Number(ts) > monthAgo) month.push(Number(val));
     if (Number(ts) > weekAgo) week.push(Number(val));
     if (Number(ts) > dayAgo) day.push(Number(val));

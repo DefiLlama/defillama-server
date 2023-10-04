@@ -19867,6 +19867,51 @@ const data3: Protocol[] = [
     twitter: null,
     listedAt: 1696324476
   },
+  {
+    id: "3592",
+    name: "Promethium",
+    address: null,
+    symbol: "-",
+    url: "https://beta.promethium.finance",
+    description:
+      "Promethium is a lending optimizer protocol that's always on the hunt for the best rates, rebalancing your deposits and refinancing your loans while you sleep. And it doesn't stop there. Promethium also comes with a toolkit for managing deposits, loans, and liquidity mining rewards. It's like having a Swiss Army knife for DeFi",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/promethium.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "promethium/index.js",
+    twitter: "promethiumpro",
+    github: ["Spectrum-Dev-Team"],
+    listedAt: 1696418066
+  },
+  {
+    id: "3593",
+    name: "NewThrone",
+    address: null,
+    symbol: "-",
+    url: "https://newthrone.gg",
+    description:
+      "Join NewThrone today, a browser-based PVP Game project built on the Base Chain. NewThrone delivers an easy-to-use and profitable experience, as playing engages you in attacking enemies with the end goal of stealing WETH as a reward for battles won.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/newthrone.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "newthrone/index.js",
+    twitter: "newthronegg",
+    listedAt: 1696418075
+  },
 ]
 
 export default data3

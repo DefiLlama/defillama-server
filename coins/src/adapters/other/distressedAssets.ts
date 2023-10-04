@@ -155,7 +155,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     DHV: "0x5fcb9de282af6122ce3518cde28b7089c9f97b26",
     multiBTC: "0xf5b9b4a0534cf508ab9953c64c5310dfa0b303a1",
     MIM: "0x49a0400587a7f65072c87c4910449fdcc5c47242",
-    NCT: "0xd838290e877e0188a4a44700463419ed96c16107",
   },
   moonriver: {
     MIM: "0x0cae51e1032e8461f4806e26332c030e34de3adb",

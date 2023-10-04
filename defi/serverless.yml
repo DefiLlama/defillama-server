@@ -703,7 +703,14 @@ functions:
       - http:
           path: emissionsList
           method: get
-  triggerStoreEmissions: 
+  emissionsBreakdown:
+    handler: src/getEmissionsBreakdown.default
+    timeout: 30
+    events:
+      - http:
+          path: emissionsBreakdown
+          method: get
+  triggerStoreEmissions:
     handler: src/triggerStoreEmissions.default
     timeout: 900
     events:

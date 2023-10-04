@@ -13,7 +13,7 @@ async function buildCGCoinsList(){
   coins.forEach(coin=>{
     idToMcap[coin.PK] = coin.mcap;
   })
-  return list.map(c=>({...c, mcap: idToMcap[`coingecko#${c.id}`]}))
+  return list.map(c=>({...c, mcap: idToMcap[`coingecko#${c.id}`]})).sort((a, b)=>(b.mcap ?? 0) - (a.mcap ?? 0))
 }
 
 const handler = async () => {
@@ -36,7 +36,7 @@ async function getNfts() {
     mcap: (x.floorPrice * x.totalSupply * ethPrice) || 0,
     image: x.image,
   }));
-  return nfts
+  return nfts.sort((a:any, b:any)=>(b.mcap ?? 0) - (a.mcap ?? 0))
 }
 
 async function getProtocols() {
@@ -55,7 +55,7 @@ async function getProtocols() {
     category: x.category,
     tvl: x.tvl,
   }));
-  return protocols
+  return protocols.sort((a:any, b:any)=>(b.tvl ?? 0) - (a.tvl ?? 0))
 }
 
 function getOtherPages(){

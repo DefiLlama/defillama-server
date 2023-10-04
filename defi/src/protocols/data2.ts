@@ -24909,7 +24909,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Algo-Stables",
+    category: "Decentralized Stablecoin",
     chains: ["Cardano"],
     oraclesByChain: {
       cardano: ["COTI's Oracle"],

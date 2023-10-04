@@ -186,7 +186,7 @@ async function processSingleProtocol(
     emission30d: sum(month),
   };
 
-  emissionsBrakedown[sluggifiedId] = breakdown;
+  if (sum(Object.values(breakdown)) > 0) emissionsBrakedown[sluggifiedId] = breakdown;
 
   await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify({ ...data, unlockUsdChart }));
 

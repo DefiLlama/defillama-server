@@ -38,6 +38,12 @@ provider:
         - dynamodb:GetItem
       Resource:
         - "arn:aws:dynamodb:eu-central-1:856461987125:table/secrets"
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:BatchGetItem
+      Resource:
+        - "arn:aws:dynamodb:eu-central-1:856461987125:table/prod-coins-table"
     - Effect: Allow # Lambda logs on cloudwatch
       Action:
         - logs:CreateLogGroup

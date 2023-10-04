@@ -19456,7 +19456,7 @@ const data2: Protocol[] = [
   {
     id: "2245",
     name: "Starfish Finance",
-    address: "astar: 0xEe8138B3bd03905cF84aFE10cCD0dCcb820eE08E",
+    address: "astar:0xEe8138B3bd03905cF84aFE10cCD0dCcb820eE08E",
     symbol: "SEAN",
     url: "https://app.starfish.finance",
     description: "Starfish Finance is incubated by the Astar Network program. We are building the next generation multi-chain DeFi x NFT-Fi headquarters. Through gamification of user experience, Starfish Finance offers multi-asset swap, $DOT liquid staking and NFT-Fi on top of an enhanced Balancer V2 model to deepen the liquidity of crypto or NFT trading and financing.",

@@ -19912,6 +19912,30 @@ const data3: Protocol[] = [
     twitter: "newthronegg",
     listedAt: 1696418075
   },
+  {
+    id: "3594",
+    name: "Coinbase Wrapped Staked ETH",
+    address: null,
+    symbol: "-",
+    assetToken: "CBETH",
+    url: "https://www.coinbase.com/price/coinbase-wrapped-staked-eth",
+    description:
+      "Coinbase is allowing customers who stake ETH to receive an ERC20 utility token called Coinbase Wrapped Staked ETH (“cbETH”), which is a liquid representation of their staked-ETH.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/coinbase-wrapped-staked-eth.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "coinbase-wrapped-staked-eth",
+    cmcId: "21535",
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    module: "cbETH/index.js",
+    twitter: "coinbase",
+    forkedFrom: [],
+    oracles: [],
+    github: ["coinbase"],
+    listedAt: 1666641682
+  },
 ]
 
 export default data3

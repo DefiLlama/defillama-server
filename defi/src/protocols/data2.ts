@@ -18900,6 +18900,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#frax-finance",
     listedAt: 1666641678
   },
+  /*
   {
     id: "2222",
     name: "Coinbase Wrapped Staked ETH",
@@ -18909,7 +18910,7 @@ const data2: Protocol[] = [
     url: "https://www.coinbase.com/price/coinbase-wrapped-staked-eth",
     description:
       "Coinbase is allowing customers who stake ETH to receive an ERC20 utility token called Coinbase Wrapped Staked ETH (“cbETH”), which is a liquid representation of their staked-ETH.",
-    chain: "Velas",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/coinbase-wrapped-staked-eth.png`,
     audits: "0",
     audit_note: null,
@@ -18924,6 +18925,7 @@ const data2: Protocol[] = [
     github: ["coinbase"],
     listedAt: 1666641682
   },
+  */
   {
     id: "2223",
     name: "Meteora vaults",

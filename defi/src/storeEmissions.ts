@@ -174,6 +174,7 @@ async function processSingleProtocol(
 
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
   unlockUsdChart.forEach(([ts, val]) => {
+    if (Number(val) < 0) return;
     if (Number(ts) > monthAgo) month.push(Number(val));
     if (Number(ts) > weekAgo) week.push(Number(val));
     if (Number(ts) > dayAgo) day.push(Number(val));
@@ -227,7 +228,12 @@ async function processProtocolList(protocolIndexes: number[]) {
   const res = await getR2(`emissionsProtocolsList`);
   if (res.body) protocolsArray = [...new Set([...protocolsArray, ...JSON.parse(res.body)])];
   await storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray));
-  await storeR2JSONString("emissionsBreakdown", JSON.stringify(emissionsBrakedown));
+
+  const oldBreakdown = await getR2(`emissionsBreakdown`);
+  await storeR2JSONString(
+    "emissionsBreakdown",
+    JSON.stringify({ ...JSON.parse(oldBreakdown.body || "{}"), ...emissionsBrakedown })
+  );
 }
 async function handler(event: any) {
   try {

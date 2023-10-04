@@ -1,5 +1,5 @@
 import { storeR2JSONString } from "./utils/r2";
-import { batchGet } from "./utils/shared/dynamodb";
+import ddb, { batchGet } from "./utils/shared/dynamodb";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import fetch from "node-fetch";
 
@@ -17,8 +17,49 @@ async function buildCGCoinsList(){
 }
 
 const handler = async () => {
-  const list = await buildCGCoinsList();
-  await storeR2JSONString(`tokenlist/cgFull.json`, JSON.stringify(list), 60 * 60);
+  const tokens = await buildCGCoinsList();
+  await storeR2JSONString(`tokenlist/cgFull.json`, JSON.stringify(tokens), 12 * 60 * 60);
+  const [nfts, protocols, other] = await Promise.all([getNfts(), getProtocols(), getOtherPages()])
+  await storeR2JSONString(`tokenlist/search.json`, JSON.stringify({tokens, nfts, protocols, other}), 12 * 60 * 60);
 };
+
+async function getNfts() {
+  const raw = await fetch(`https://nft.llama.fi/collections`).then((res) => res.json());
+  const ethCoin = await ddb.get({
+    PK: `coingecko#ethereum`,
+    SK: 0,
+  })
+  const ethPrice = ethCoin.Item!.price
+  const nfts = raw.map((x:any)=>({
+    collectionId: x.collectionId,
+    name: x.name,
+    mcap: (x.floorPrice * x.totalSupply * ethPrice) || 0,
+    image: x.image,
+  }));
+  return nfts
+}
+
+async function getProtocols() {
+  const raw = await fetch("https://api.llama.fi/lite/protocols2").then((res) => res.json());
+  const parentProtocols:any[] = raw.parentProtocols.map((p:any)=>({...p, tvl:0}))
+  raw["protocols"].forEach((p:any)=>{
+    if(p.parentProtocol){
+      const parent = parentProtocols.find(pp=>pp.id === p.parentProtocol)
+      parent.tvl += p.tvl
+    }
+  })
+  const protocols = raw["protocols"].concat(parentProtocols).filter((protocol:any)=>protocol.tvl > 10e3 && !protocol.parentProtocol).map((x: any) => ({
+    name: x.name,
+    url: x.url,
+    logo: x.logo,
+    category: x.category,
+    tvl: x.tvl,
+  }));
+  return protocols
+}
+
+function getOtherPages(){
+  return fetch("https://raw.githubusercontent.com/DefiLlama/defillama-app/main/src/directory/directory-urls.json").then((res) => res.json());
+}
 
 export default wrapScheduledLambda(handler);

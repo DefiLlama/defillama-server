@@ -131,5 +131,17 @@
       "symbol": "SHD",
       "to": "coingecko#shade-protocol"
     }
+  },
+  "functionx": {
+    "0x0CE35b0D42608Ca54Eb7bcc8044f7087C18E7717": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xc8B4d3e67238e38B20d38908646fF6F4F48De5EC": {
+      "decimals": "18",
+      "symbol": "BAVA",
+      "to": "coingecko#baklava"
+    }
   }
 }

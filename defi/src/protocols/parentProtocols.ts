@@ -2794,6 +2794,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Glacier_Fi",
   },
+  {
+    id: "parent#perennial",
+    name: "Perennial",
+    url: "https://perennial.finance",
+    description: "Perennial is a decentralized derivatives protocol built from first-principles to be a powerful, flexible, and composable primitive that can scale to meet the needs of DeFi traders, liquidity providers, and developers.",
+    logo: `${baseIconsUrl}/perennial.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "perenniallabs",
+  },
 ];
 
 export default parentProtocols;

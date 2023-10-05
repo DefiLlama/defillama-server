@@ -2437,7 +2437,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/overnight-usdt+.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "usdtplus",
     cmcId: null,
     category: "CDP",
     chains: ["Binance"],

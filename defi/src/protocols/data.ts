@@ -19547,7 +19547,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/overnight-usd+.png`,
     audits: "1",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "usd",
     cmcId: null,
     category: "CDP",
     chains: ["Polygon"],

@@ -1287,7 +1287,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://overnight.fi",
     description: "Overnight Finance is an asset management protocol offering passive yield products based on delta-neutral strategies, primarily for conservative stablecoin investors.",
     logo: `${baseIconsUrl}/overnight-finance.jpg`,
-    gecko_id: null,
+    gecko_id: "overnight-finance",
     cmcId: null,
     chains: [],
     twitter: "overnight_fi",

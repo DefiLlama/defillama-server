@@ -84,6 +84,26 @@
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    },
+    "0x305e88d809c9dc03179554bfbf85ac05ce8f18d6": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0x1c466b9371f8aba0d7c458be10a62192fcb8aa71": {
+      "decimals": "18",
+      "symbol": "DAI",
+      "to": "coingecko#dai"
+    },
+    "0x2fe3ad97a60eb7c79a976fc18bb5ffd07dd94ba5": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
+    },
+    "0x6e9655611b42c10b9af25b6ca08be349df45c370": {
+      "decimals": "18",
+      "symbol": "rETH",
+      "to": "coingecko#rocket-pool-eth"
     }
   },
   "flare": {

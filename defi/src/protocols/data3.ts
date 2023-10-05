@@ -19985,6 +19985,30 @@ const data3: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/yieldflow"],
     listedAt: 1696511565
   },
+  {
+    id: "3597",
+    name: "ZeroLiquid",
+    address: "0xb0ed33f79d89541dfdcb04a8f04bc2c6be025ecc",
+    symbol: "ZERO",
+    url: "https://zeroliquid.xyz/",
+    description:
+      "ZeroLiquid adds additional utility to LSD tokens by enabling users to receive self repaying, 0% interest loans against their LSD tokens without any risk of liquidation.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zeroliquid.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["Ethereum"],
+    module: "zeroliquid/index.js",
+    twitter: "ZeroLiquid_xyz",
+    forkedFrom: ["Alchemix"],
+    oracles: [],
+    github: ["ZeroLiquid-xyz"],
+    audit_links: ["https://github.com/ZeroLiquid-xyz/zeroliquid-audit/blob/master/ZeroLiquid-BlockApex-Audit.pdf"],
+    listedAt: 1696514613
+  },
 ]
 
 export default data3

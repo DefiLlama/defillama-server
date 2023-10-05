@@ -19936,6 +19936,55 @@ const data3: Protocol[] = [
     github: ["coinbase"],
     listedAt: 1666641682
   },
+  {
+    id: "3595",
+    name: "Iotabee",
+    address: null,
+    symbol: "-",
+    assetToken: "-",
+    url: "https://iotabee.com/",
+    description:
+      "Iotabee is a combination of a decentralized peer-to-peer DEX protocol and a semi-centralized crosschain SWAP that people can use to create liquidity and trade tokens on IOTA, Shimmer, ShimmerEVM and other EVM chains like ETH, BSC.",
+    chain: "ShimmerEVM",
+    logo: `${baseIconsUrl}/iotabee.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ShimmerEVM"],
+    module: "iotabee/index.js",
+    twitter: "iotabee",
+    forkedFrom: [],
+    oracles: [],
+    github: ["iotabee"],
+    audit_links: ["https://iotabee.com/Numen%20Smart%20Contract%20Audit%20Report%20for%20Iotabee.pdf"],
+    listedAt: 1696511556
+  },
+  {
+    id: "3596",
+    name: "YieldFlow",
+    address: null,
+    symbol: "-",
+    url: "https://yieldflow.com",
+    description:
+      "YieldFlow is a decentralized platform for yieldfarming through staking, lending and liquidity mining.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/yieldflow.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Arbitrum"],
+    module: "yieldflow/index.js",
+    twitter: "yieldflowdotcom",
+    forkedFrom: [],
+    oracles: [],
+    github: ["yieldflow"],
+    audit_links: ["https://skynet.certik.com/projects/yieldflow"],
+    listedAt: 1696511565
+  },
 ]
 
 export default data3

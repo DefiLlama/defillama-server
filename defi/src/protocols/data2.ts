@@ -24877,7 +24877,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2483",
-    name: "Perennial",
+    name: "Perennial V1",
     address: null,
     symbol: "-",
     url: "https://perennial.finance",
@@ -24896,6 +24896,7 @@ const data2: Protocol[] = [
     oracles: ["Chainlink"],
     forkedFrom: [],
     audit_links: ["https://github.com/equilibria-xyz/perennial-mono/tree/master/packages/perennial/audits"],
+    parentProtocol: "parent#perennial",
     listedAt: 1675165374
   },
   {

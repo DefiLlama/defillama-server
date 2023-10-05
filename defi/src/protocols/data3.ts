@@ -20052,6 +20052,7 @@ const data3: Protocol[] = [
     twitter: "perenniallabs",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#perennial",
     listedAt: 1696533115
   },
 ]

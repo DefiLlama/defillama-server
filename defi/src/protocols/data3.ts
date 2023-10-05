@@ -20009,6 +20009,51 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/ZeroLiquid-xyz/zeroliquid-audit/blob/master/ZeroLiquid-BlockApex-Audit.pdf"],
     listedAt: 1696514613
   },
+  {
+    id: "3598",
+    name: "Mountain Protocol",
+    address: "0x59d9356e565ab3a36dd77763fc0d87feaf85508c",
+    symbol: "USDM",
+    url: "https://mountainprotocol.com",
+    description:
+      "Mountain Protocol presents USDM—a cutting-edge, yield-bearing, rebasing stable coin. Rooted in the stability of Treasury Bills and enhanced by the promise of returns, USDM is more than just a crypto token—it's a gateway to trusted and compliant decentralized finance. With its fully regulated, permissionless design, engage with a crypto experience that combines the best of tradition, innovation, and security.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mountain-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "mountain-protocol/index.js",
+    twitter: "MountainUSDM",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/mountainprotocol/audits/blob/main/OpenZeppelin%20Mountain%20Protocol%20USDM%20-%20Audit%20Report%20Jun%202023.pdf"],
+    listedAt: 1696533115
+  },
+  {
+    id: "3599",
+    name: "Perennial V2",
+    address: null,
+    symbol: "-",
+    url: "https://perennial.finance",
+    description:
+      "Perennial is a decentralized derivatives protocol built from first-principles to be a powerful, flexible, and composable primitive that can scale to meet the needs of DeFi traders, liquidity providers, and developers.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/perennial-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "perennial-v2/index.js",
+    twitter: "perenniallabs",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1696533115
+  },
 ]
 
 export default data3

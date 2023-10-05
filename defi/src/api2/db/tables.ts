@@ -1,0 +1,82 @@
+import { Sequelize, Model, DataTypes } from 'sequelize'
+
+const defaultDataColumns = {
+  id: {
+    type: DataTypes.STRING,
+    primaryKey: true,
+  },
+  timestamp: {
+    type: DataTypes.INTEGER, // Assuming 'unixtimestamp' is an integer type
+  },
+  data: {
+    type: DataTypes.JSON,
+  },
+  timeS: {
+    type: DataTypes.STRING,
+    primaryKey: true,
+  },
+  is_simulated: DataTypes.BOOLEAN,
+}
+
+export function initializeTables(sequelize: Sequelize) {
+  const defaultDataOptions = {
+    sequelize,
+    timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
+  }
+
+  class DAILY_TVL extends Model { }
+  class DAILY_TOKENS_TVL extends Model { }
+  class DAILY_USD_TOKENS_TVL extends Model { }
+  class DAILY_RAW_TOKENS_TVL extends Model { }
+  class HOURLY_TVL extends Model { }
+  class HOURLY_TOKENS_TVL extends Model { }
+  class HOURLY_USD_TOKENS_TVL extends Model { }
+  class HOURLY_RAW_TOKENS_TVL extends Model { }
+
+  DAILY_TVL.init(defaultDataColumns, {
+    ...defaultDataOptions,
+    tableName: 'dailyTvl',
+  })
+  DAILY_TOKENS_TVL.init(defaultDataColumns, {
+    ...defaultDataOptions,
+    tableName: 'dailyTokensTvl',
+  })
+  DAILY_USD_TOKENS_TVL.init(defaultDataColumns, {
+    ...defaultDataOptions,
+    tableName: 'dailyUsdTokensTvl',
+  })
+  DAILY_RAW_TOKENS_TVL.init(defaultDataColumns, {
+    ...defaultDataOptions,
+    tableName: 'dailyRawTokensTvl',
+  })
+  HOURLY_TVL.init(defaultDataColumns, {
+    ...defaultDataOptions,
+    tableName: 'hourlyTvl',
+  })
+  HOURLY_TOKENS_TVL.init(defaultDataColumns, {
+    ...defaultDataOptions,
+    tableName: 'hourlyTokensTvl',
+  })
+  HOURLY_USD_TOKENS_TVL.init(defaultDataColumns, {
+    ...defaultDataOptions,
+    tableName: 'hourlyUsdTokensTvl',
+  })
+  HOURLY_RAW_TOKENS_TVL.init(defaultDataColumns, {
+    ...defaultDataOptions,
+    tableName: 'hourlyRawTokensTvl',
+  })
+
+  const Tables = {
+    DAILY_TVL,
+    DAILY_TOKENS_TVL,
+    DAILY_USD_TOKENS_TVL,
+    DAILY_RAW_TOKENS_TVL,
+    HOURLY_TVL,
+    HOURLY_TOKENS_TVL,
+    HOURLY_USD_TOKENS_TVL,
+    HOURLY_RAW_TOKENS_TVL,
+  }
+  return Tables
+}

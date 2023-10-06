@@ -17804,7 +17804,7 @@ const data3: Protocol[] = [
       "Circuit Protocol is a yield optimizer on Mantle. Circuit enables users to earn compound interest on their crypto holdings with non-custodial, automated yield vaults.",
     chain: "Mantle",
     logo: `${baseIconsUrl}/circuit-protocol.jpg`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

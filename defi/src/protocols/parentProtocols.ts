@@ -2827,6 +2827,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    treasury: "contango.js",
     twitter: "Contango_xyz",
   },
 ];

@@ -20031,6 +20031,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://github.com/mountainprotocol/audits/blob/main/OpenZeppelin%20Mountain%20Protocol%20USDM%20-%20Audit%20Report%20Jun%202023.pdf"],
     github: ["mountainprotocol"],
+    stablecoins: ["usdm"],
     listedAt: 1696533115
   },
   {

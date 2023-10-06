@@ -36,6 +36,7 @@ export const cache: {
 export async function initCache() {
   await updateMetadata()
   await updateRaises()
+  console.log('Cache initialized')
 }
 
 async function updateMetadata() {

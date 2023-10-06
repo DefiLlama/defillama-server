@@ -2805,6 +2805,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "perenniallabs",
   },
+  {
+    id: "parent#taiga-protocol",
+    name: "Taiga Protocol",
+    url: "https://www.taigaprotocol.io/",
+    description: "A synthetic asset protocol designed to enable maximum efficiency for uniform assets on Kusama and Acala",
+    logo: `${baseIconsUrl}/taiga-protocol.png`,
+    gecko_id: "taiga",
+    cmcId: null,
+    chains: [],
+    twitter: "TaigaProtocol",
+    github: ["nutsfinance"],
+    stablecoins: ["3usd"],
+  },
 ];
 
 export default parentProtocols;

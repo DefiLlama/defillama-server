@@ -11672,7 +11672,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1899",
-    name: "Taiga Protocol",
+    name: "Taiga Karura",
     address: "karura:-",
     symbol: "TAI",
     url: "https://www.taigaprotocol.io/",
@@ -11689,9 +11689,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "taiga/index.js",
     twitter: "TaigaProtocol",
+    parentProtocol: "parent#taiga-protocol",
     listedAt: 1657807133,
-    stablecoins: ["3usd"],
-    github: ["nutsfinance"]
   },
   {
     id: "1900",
@@ -11712,8 +11711,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "tapio/index.js",
     twitter: "TaigaProtocol",
+    parentProtocol: "parent#taiga-protocol",
     listedAt: 1657825354,
-    github: ["nutsfinance"]
   },
   {
     id: "1901",

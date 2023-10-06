@@ -919,7 +919,7 @@ export default {
         "id": "1575"
     },
     "vortex-protocol": {
-        "enabled": true,
+        "enabled": false,
         "id": "1706"
     },
     "dinosaur-eggs": {

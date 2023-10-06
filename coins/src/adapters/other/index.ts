@@ -199,6 +199,7 @@ export function manualInput(timestamp: number = 0) {
     manualInputAdapter("polygon", timestamp),
     manualInputAdapter("kava", timestamp),
     manualInputAdapter("polygon_zkevm", timestamp),
+    manualInputAdapter("ethereum", timestamp),
   ]);
 }
 export function realt(timestamp: number = 0) {

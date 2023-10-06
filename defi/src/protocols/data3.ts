@@ -20056,6 +20056,51 @@ const data3: Protocol[] = [
     parentProtocol: "parent#perennial",
     listedAt: 1696533115
   },
+  {
+    id: "3600",
+    name: "CockFights Game",
+    address: "ton:EQAgpXksmpJdcItdKvn97G0zD844iztZuKJa_3JnRr0XkCdD",
+    symbol: "BCFT",
+    url: "https://cock-fights.com/",
+    description:
+      "The first eSports cockfighting simulator using blockchain technology",
+    chain: "TON",
+    logo: `${baseIconsUrl}/cockfights-game.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["TON"],
+    module: "cockfightsgame/index.js",
+    twitter: "Cock_Fights",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1696566065
+  },
+  {
+    id: "3601",
+    name: "ESCROW",
+    address: "0x75Ab8164fcFc7224266D6397c298a69427af8835",
+    symbol: "ESCROW",
+    url: "https://helloescrow.com/",
+    description:
+      "Preventing OTC ESCROW scams via on-chain escrow, for individuals and projects alike",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/escrow.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "escrow/index.js",
+    twitter: "escrowerc",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://app.solidproof.io/projects/helloescrow?audit_id=717", "https://www.rugfreecoins.com/coin-details/18825"],
+    listedAt: 1696566243
+  },
 ]
 
 export default data3

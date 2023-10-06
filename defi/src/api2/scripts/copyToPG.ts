@@ -4,7 +4,7 @@ import {
   dailyTokensTvl,
   dailyTvl,
   dailyUsdTokensTvl,
-  dailyRawTokensTvl,
+  // dailyRawTokensTvl,
 } from "../../utils/getLastRecord";
 import { getHistoricalValues } from "../../utils/shared/dynamodb";
 
@@ -22,7 +22,7 @@ const keyToRecord: any = {
   dailyTvl: { ddb: dailyTvl, pg: TABLES.DAILY_TVL },
   dailyTokensTvl: { ddb: dailyTokensTvl, pg: TABLES.DAILY_TOKENS_TVL },
   dailyUsdTokensTvl: { ddb: dailyUsdTokensTvl, pg: TABLES.DAILY_USD_TOKENS_TVL },
-  dailyRawTokensTvl: { ddb: dailyRawTokensTvl, pg: TABLES.DAILY_RAW_TOKENS_TVL },
+  // dailyRawTokensTvl: { ddb: dailyRawTokensTvl, pg: TABLES.DAILY_RAW_TOKENS_TVL },
 };
 
 async function main() {

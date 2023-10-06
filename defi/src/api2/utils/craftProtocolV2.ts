@@ -1,6 +1,5 @@
 import type { Protocol } from "../../protocols/types";
 import protocols from "../../protocols/data";
-import { importAdapter } from "../../utils/imports/importAdapter";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "../../utils/normalizeChain";
 import type { IProtocolResponse, } from "../../types";
 import parentProtocols from "../../protocols/parentProtocols";
@@ -20,8 +19,7 @@ export default async function craftProtocolV2({
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
 }) {
-  const module = await importAdapter(protocolData);
-  const misrepresentedTokens = module.misrepresentedTokens === true;
+  const { misrepresentedTokens = false, hallmarks, methodology, ...restProtocolData } = protocolData as any
 
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
     getAllProtocolItems(useHourlyData ? TABLES.HOURLY_TVL : TABLES.DAILY_TVL, protocolData.id),
@@ -37,6 +35,16 @@ export default async function craftProtocolV2({
     getLatestProtocolItem(TABLES.HOURLY_TOKENS_TVL, protocolData.id),
   ]);
 
+  let response: IProtocolResponse = {
+    ...restProtocolData,
+    chainTvls: {},
+    tvl: [],
+    chains: [],
+    currentChainTvls: {},
+    raises: getRaises(protocolData.id),
+    metrics: getAvailableMetricsById(protocolData.id),
+    mcap,
+  };
 
   const lastRecord = historicalUsdTvl[historicalUsdTvl.length - 1];
 
@@ -95,16 +103,6 @@ export default async function craftProtocolV2({
       historicalTokenTvl.push(lastTokenHourlyRecord);
   }
 
-  let response: IProtocolResponse = {
-    ...protocolData,
-    chainTvls: {},
-    tvl: [],
-    chains: [],
-    currentChainTvls: {},
-    raises: getRaises(protocolData.id),
-    metrics: getAvailableMetricsById(protocolData.id),
-    mcap,
-  };
 
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]: [string, any]) => {
     if (nonChains.includes(chain) && chain !== "tvl") {
@@ -189,14 +187,14 @@ export default async function craftProtocolV2({
     response.otherProtocols = [parentName, ...childProtocolsNames];
   }
 
-  if (module.methodology) {
-    response.methodology = module.methodology;
-  }
-  if (misrepresentedTokens === true) {
+  if (methodology)
+    response.methodology = methodology;
+  
+  if (misrepresentedTokens === true)
     response.misrepresentedTokens = true;
-  }
-  if (module.hallmarks) {
-    response.hallmarks = module.hallmarks;
+  
+  if (hallmarks) {
+    response.hallmarks = hallmarks;
     response.hallmarks?.sort((a, b) => a[0] - b[0]);
   }
 

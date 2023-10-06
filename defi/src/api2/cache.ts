@@ -6,6 +6,7 @@ import fetch from "node-fetch";
 import { METADATA_FILE } from './constants';
 import { protocolMcap } from '../utils/craftProtocol';
 import { IRaise } from '../types';
+import sluggify from '../utils/sluggify';
 const execAsync = promisify(exec);
 
 export const cache: {
@@ -16,6 +17,9 @@ export const cache: {
   },
   mcaps: Record<string, Promise<number | null>>,
   raises: any,
+  protocolSlugMap: any,
+  treasurySlugMap: any,
+  entitiesSlugMap: any,
 } = {
   metadata: {
     protocols: [],
@@ -24,6 +28,9 @@ export const cache: {
   },
   mcaps: {},
   raises: {},
+  protocolSlugMap: {},
+  treasurySlugMap: {},
+  entitiesSlugMap: {},
 }
 
 export async function initCache() {
@@ -32,12 +39,22 @@ export async function initCache() {
 }
 
 async function updateMetadata() {
-  const updateScript = __dirname + '/scripts/updateMetadata.ts';
-  await execAsync(`git pull`)
-  await execAsync(`ts-node ${updateScript}`)
+  await execAsync(`npm run update-metadata-file`)
   const dataString = fs.readFileSync(METADATA_FILE, 'utf8')
   const data = JSON.parse(dataString)
   cache.metadata = data
+  cache.protocolSlugMap = {}
+  cache.treasurySlugMap = {}
+  cache.entitiesSlugMap = {}
+  data.protocols.forEach((p: any) => {
+    cache.protocolSlugMap[sluggify(p)] = p
+  })
+  data.entities.forEach((p: any) => {
+    cache.entitiesSlugMap['entity-'+sluggify(p)] = p
+  })
+  data.treasuries.forEach((p: any) => {
+    cache.treasurySlugMap[sluggify(p).replace("-(treasury)", '')] = p
+  })
 }
 
 async function updateRaises() {

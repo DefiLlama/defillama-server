@@ -20101,6 +20101,29 @@ const data3: Protocol[] = [
     audit_links: ["https://app.solidproof.io/projects/helloescrow?audit_id=717", "https://www.rugfreecoins.com/coin-details/18825"],
     listedAt: 1696566243
   },
+  {
+    id: "3602",
+    name: "Contango V2",
+    address: null,
+    symbol: "-",
+    url: "https://contango.xyz",
+    description:
+      "Contango is a unique decentralized market offering expirables, contracts to buy or sell an asset at a set price and date in the future.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/contango-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "contango-v2/index.js",
+    twitter: "Contango_xyz",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#contango",
+    listedAt: 1696590696
+  },
 ]
 
 export default data3

@@ -22358,7 +22358,7 @@ const data2: Protocol[] = [
   */
   {
     id: "2374",
-    name: "Contango",
+    name: "Contango V1",
     address: null,
     symbol: "-",
     url: "https://contango.xyz/",
@@ -22376,6 +22376,7 @@ const data2: Protocol[] = [
     twitter: "Contango_xyz",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#contango",
     listedAt: 1671577485
   },
   {

@@ -2818,6 +2818,17 @@ const parentProtocols: IParentProtocol[] = [
     github: ["nutsfinance"],
     stablecoins: ["3usd"],
   },
+  {
+    id: "parent#contango",
+    name: "Contango",
+    url: "https://contango.xyz",
+    description: "Contango is a unique decentralized market offering expirables, contracts to buy or sell an asset at a set price and date in the future.",
+    logo: `${baseIconsUrl}/contango.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Contango_xyz",
+  },
 ];
 
 export default parentProtocols;

@@ -20125,6 +20125,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#contango",
     listedAt: 1696590696
   },
+  {
+    id: "3602",
+    name: "sDAI",
+    address: "gnosis:0xaf204776c7245bF4147c2612BF6e5972Ee483701",
+    symbol: "sDAI",
+    url: "https://agave.finance/sdai",
+    description:
+      "All the DAI bridged to Gnosis Chain is earning interest at MakerDAO. This interest is redirected to the sDAI holder. You can use sDAI in Defi like you would normally use xDAI.",
+    chain: "xDai",
+    logo: `${baseIconsUrl}/sdai.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "savings-xdai",
+    cmcId: null,
+    category: "CDP",
+    chains: ["xDai"],
+    module: "sdai/index.js",
+    twitter: null,
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1696593212
+  },
 ]
 
 export default data3

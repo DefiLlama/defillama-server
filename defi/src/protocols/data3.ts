@@ -12898,7 +12898,7 @@ const data3: Protocol[] = [
     chains: ["Binance"],
     module: "palmswap/index.js",
     twitter: "Palmswaporg",
-    forkedFrom: ["GMX V1"],
+    forkedFrom: [],
     oracles: [],
     audit_links: ["https://2474115411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FgSs7UmtCefVntVTkogKf%2Fuploads%2Fu9FNEjoK2kztwmuTa5o8%2FPalmSwap-audit-report.pdf?alt=media&token=120b83f0-1a98-4c59-919c-986c81dae7ad"],
     listedAt: 1690194324
@@ -20146,6 +20146,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1696593212
+  },
+  {
+    id: "3604",
+    name: "ZenDEX",
+    address: null,
+    symbol: "-",
+    url: "https://zendex.finance",
+    description:
+      "Creating a user-friendly trading platform with a Low fee & capital-efficient DeFi solution.",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/zendex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Manta"],
+    module: "zendex/index.js",
+    twitter: "Zendex_finance",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    github: ["ZenDEXFinance"],
+    listedAt: 1696612017
   },
 ]
 

@@ -1363,5 +1363,9 @@ export default {
         parentId: "Equalizer",
         "enabled": true,
         "id": "3575"
+    },
+    "stars-arena": {
+        "enabled": true,
+        "id": "3564"
     }
 } as AdaptorsConfig

@@ -20126,7 +20126,7 @@ const data3: Protocol[] = [
     listedAt: 1696590696
   },
   {
-    id: "3602",
+    id: "3603",
     name: "sDAI",
     address: "gnosis:0xaf204776c7245bF4147c2612BF6e5972Ee483701",
     symbol: "sDAI",

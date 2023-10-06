@@ -18,13 +18,25 @@ const defaultDataColumns = {
   is_simulated: DataTypes.BOOLEAN,
 }
 
+
 export function initializeTables(sequelize: Sequelize) {
-  const defaultDataOptions = {
+  const getTableOptions = (tableName: string) => ({
     sequelize,
     timestamps: true,
     createdAt: 'createdat',
     updatedAt: 'updatedat',
-  }
+    tableName,
+    indexes: [
+      {
+        name: tableName + '_id_index', // Name of the index for the 'id' field
+        fields: ['id'],
+      },
+      {
+        name: tableName + '_timestamp_index', // Name of the index for the 'timestamp' field
+        fields: ['timestamp'],
+      },
+    ]
+  })
 
   class DAILY_TVL extends Model { }
   class DAILY_TOKENS_TVL extends Model { }
@@ -35,38 +47,14 @@ export function initializeTables(sequelize: Sequelize) {
   class HOURLY_USD_TOKENS_TVL extends Model { }
   class HOURLY_RAW_TOKENS_TVL extends Model { }
 
-  DAILY_TVL.init(defaultDataColumns, {
-    ...defaultDataOptions,
-    tableName: 'dailyTvl',
-  })
-  DAILY_TOKENS_TVL.init(defaultDataColumns, {
-    ...defaultDataOptions,
-    tableName: 'dailyTokensTvl',
-  })
-  DAILY_USD_TOKENS_TVL.init(defaultDataColumns, {
-    ...defaultDataOptions,
-    tableName: 'dailyUsdTokensTvl',
-  })
-  DAILY_RAW_TOKENS_TVL.init(defaultDataColumns, {
-    ...defaultDataOptions,
-    tableName: 'dailyRawTokensTvl',
-  })
-  HOURLY_TVL.init(defaultDataColumns, {
-    ...defaultDataOptions,
-    tableName: 'hourlyTvl',
-  })
-  HOURLY_TOKENS_TVL.init(defaultDataColumns, {
-    ...defaultDataOptions,
-    tableName: 'hourlyTokensTvl',
-  })
-  HOURLY_USD_TOKENS_TVL.init(defaultDataColumns, {
-    ...defaultDataOptions,
-    tableName: 'hourlyUsdTokensTvl',
-  })
-  HOURLY_RAW_TOKENS_TVL.init(defaultDataColumns, {
-    ...defaultDataOptions,
-    tableName: 'hourlyRawTokensTvl',
-  })
+  DAILY_TVL.init(defaultDataColumns, getTableOptions('dailyTvl'))
+  DAILY_TOKENS_TVL.init(defaultDataColumns, getTableOptions('dailyTokensTvl'))
+  DAILY_USD_TOKENS_TVL.init(defaultDataColumns, getTableOptions('dailyUsdTokensTvl'))
+  DAILY_RAW_TOKENS_TVL.init(defaultDataColumns, getTableOptions('dailyRawTokensTvl'))
+  HOURLY_TVL.init(defaultDataColumns, getTableOptions('hourlyTvl'))
+  HOURLY_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyTokensTvl'))
+  HOURLY_USD_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyUsdTokensTvl'))
+  HOURLY_RAW_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyRawTokensTvl'))
 
   const Tables = {
     DAILY_TVL,

@@ -1,104 +1,42 @@
-import type { Protocol } from "../protocols/types";
-import protocols from "../protocols/data";
-import ddb, { getHistoricalValues } from "./shared/dynamodb";
-import {
-  getLastRecord,
-  hourlyTvl,
-  dailyTvl,
-  dailyUsdTokensTvl,
-  dailyTokensTvl,
-  hourlyUsdTokensTvl,
-  hourlyTokensTvl,
-} from "./getLastRecord";
-import { importAdapter } from "./imports/importAdapter";
-import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "./normalizeChain";
-import type { IProtocolResponse, IRaise } from "../types";
-import parentProtocols from "../protocols/parentProtocols";
-import fetch from "node-fetch";
-import { convertSymbols } from "./symbols/convert";
-import { getAvailableMetricsById } from "../adaptors/data/configs";
-import { getR2, storeR2 } from "./r2";
+import type { Protocol } from "../../protocols/types";
+import protocols from "../../protocols/data";
+import { importAdapter } from "../../utils/imports/importAdapter";
+import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "../../utils/normalizeChain";
+import type { IProtocolResponse, } from "../../types";
+import parentProtocols from "../../protocols/parentProtocols";
+import { getAvailableMetricsById } from "../../adaptors/data/configs";
+import { getRaises, getCachedMCap } from "../cache";
+import { TABLES, getAllProtocolItems, getLatestProtocolItem } from "../db/index";
+import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
 
-export function normalizeEthereum(balances: { [symbol: string]: number }) {
-  if (typeof balances === "object") {
-    convertSymbols(balances);
-  }
-  const formattedBalances: { [symbol: string]: number } = {};
-
-  for (const b in balances) {
-    if (typeof balances[b] === "string") {
-      formattedBalances[b] = Number(Number(balances[b]).toFixed(5));
-    } else {
-      formattedBalances[b] = Number(balances[b].toFixed(5));
-    }
-  }
-
-  return balances && formattedBalances;
-}
-
-export function selectChainFromItem(item: any, normalizedChain: string) {
-  let altChainName = undefined;
-  if (normalizedChain.startsWith("avax")) {
-    altChainName = normalizedChain.replace("avax", "avalanche");
-  } else if (normalizedChain.startsWith("avalanche")) {
-    altChainName = normalizedChain.replace("avalanche", "avax");
-  } else {
-    return item[normalizedChain];
-  }
-  return item[normalizedChain] ?? item[altChainName];
-}
-
-let raisesPromise: Promise<any> | undefined = undefined;
-
-async function getRaises() {
-  if (!raisesPromise) raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json())
-  return raisesPromise
-}
-
-
-export const protocolMcap = async (geckoId?: string | null) => {
-  if (!geckoId) return null;
-
-  const mcap = await fetch("https://coins.llama.fi/mcaps", {
-    method: "POST",
-    body: JSON.stringify({
-      coins: [`coingecko:${geckoId}`],
-    }),
-  })
-    .then((r) => r.json())
-    .catch((err) => {
-      console.log(err);
-      return {};
-    });
-
-  return mcap?.[`coingecko:${geckoId}`]?.mcap ?? null;
-};
-
-export async function buildCoreData({
+export default async function craftProtocolV2({
   protocolData,
   useNewChainNames,
   useHourlyData,
+  skipAggregatedTvl,
 }: {
   protocolData: Protocol;
   useNewChainNames: boolean;
   useHourlyData: boolean;
+  skipAggregatedTvl: boolean;
 }) {
   const module = await importAdapter(protocolData);
   const misrepresentedTokens = module.misrepresentedTokens === true;
-  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, ] = await Promise.all([
-    getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
+
+  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
+    getAllProtocolItems(useHourlyData ? TABLES.HOURLY_TVL : TABLES.DAILY_TVL, protocolData.id),
     misrepresentedTokens
       ? ([] as any[])
-      : getHistoricalValues((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id)),
+      : getAllProtocolItems(useHourlyData ? TABLES.HOURLY_USD_TOKENS_TVL : TABLES.DAILY_USD_TOKENS_TVL, protocolData.id),
     misrepresentedTokens
       ? ([] as any[])
-      : getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
+      : getAllProtocolItems(useHourlyData ? TABLES.HOURLY_TOKENS_TVL : TABLES.DAILY_TOKENS_TVL, protocolData.id),
+    getCachedMCap(protocolData.gecko_id),
+    getLatestProtocolItem(TABLES.HOURLY_TVL, protocolData.id),
+    getLatestProtocolItem(TABLES.HOURLY_USD_TOKENS_TVL, protocolData.id),
+    getLatestProtocolItem(TABLES.HOURLY_TOKENS_TVL, protocolData.id),
   ]);
 
-  let response: Pick<IProtocolResponse, "chainTvls" | "tvl"> = {
-    chainTvls: {},
-    tvl: [],
-  };
 
   const lastRecord = historicalUsdTvl[historicalUsdTvl.length - 1];
 
@@ -143,65 +81,6 @@ export async function buildCoreData({
       }
     }
   });
-  return response;
-}
-
-function fetchFrom(pk: string, start: number) {
-  return ddb
-    .query({
-      ExpressionAttributeValues: {
-        ":pk": pk,
-        ":sk": start,
-      },
-      KeyConditionExpression: "PK = :pk AND SK > :sk",
-    })
-    .then((r) => r.Items ?? []);
-}
-
-export default async function craftProtocol({
-  protocolData,
-  useNewChainNames,
-  useHourlyData,
-  skipAggregatedTvl,
-}: {
-  protocolData: Protocol;
-  useNewChainNames: boolean;
-  useHourlyData: boolean;
-  skipAggregatedTvl: boolean;
-}) {
-  const cacheKey = `protocolCache/${protocolData.id}-${useNewChainNames}-${useHourlyData}`;
-  let previousRun: Awaited<ReturnType<typeof buildCoreData>>;
-  try {
-    const data = (await getR2(cacheKey)).body;
-    if (data === undefined) {
-      throw new Error("No previous run");
-    }
-    previousRun = JSON.parse(data);
-  } catch (e) {
-    previousRun = await buildCoreData({ protocolData, useNewChainNames, useHourlyData });
-    await storeR2(cacheKey, JSON.stringify(previousRun));
-  }
-  const lastTimestamp = previousRun.tvl[previousRun.tvl.length - 1]?.date ?? 0; // Consider the case when array is empty
-  /* TODO: Update cache
-  if ((getCurrentUnixTimestamp() - lastTimestamp) > 24 * 3600) {
-  }
-  */
-
-  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
-    fetchFrom((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id), lastTimestamp),
-    fetchFrom((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id), lastTimestamp),
-    fetchFrom((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id), lastTimestamp),
-  ]);
-
-  const module = await importAdapter(protocolData);
-  const misrepresentedTokens = module.misrepresentedTokens === true;
-  const [lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord, { raises }, mcap] = await Promise.all([
-    getLastRecord(hourlyTvl(protocolData.id)),
-    getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
-    getLastRecord(hourlyTokensTvl(protocolData.id)),
-    getRaises(),
-    protocolMcap(protocolData.gecko_id),
-  ]);
 
   if (!useHourlyData) {
     // check for falsy values and push lastHourlyRecord to dataset
@@ -217,16 +96,17 @@ export default async function craftProtocol({
   }
 
   let response: IProtocolResponse = {
-    ...previousRun,
     ...protocolData,
+    chainTvls: {},
+    tvl: [],
     chains: [],
     currentChainTvls: {},
-    raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
+    raises: getRaises(protocolData.id),
     metrics: getAvailableMetricsById(protocolData.id),
     mcap,
   };
 
-  Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]) => {
+  Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]: [string, any]) => {
     if (nonChains.includes(chain) && chain !== "tvl") {
       return;
     }

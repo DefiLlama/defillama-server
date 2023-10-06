@@ -21,3 +21,4 @@ src/emissions/utils/*.png
 .vscode
 src/dexVolumes/cli/backfillUtilities/output
 src/adaptors/cli/*/output
+src/api2/metadata.json

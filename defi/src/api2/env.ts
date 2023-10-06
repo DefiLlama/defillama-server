@@ -1,7 +1,7 @@
 const ENV = process.env
 
-process.env.tableName = 'prod-table'
-process.env.AWS_REGION = 'eu-central-1'
+if (!process.env.tableName) process.env.tableName = 'prod-table'
+if (!process.env.AWS_REGION) process.env.AWS_REGION = 'eu-central-1'
 
 export default {
   tableName: ENV.tableName,

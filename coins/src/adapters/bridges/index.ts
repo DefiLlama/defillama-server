@@ -80,7 +80,7 @@ export const bridges = [
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { batchWrite2 } from "../../../coins2";
+import { Coin, batchWrite2, readCoins2, translateItems } from "../../../coins2";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
@@ -163,8 +163,47 @@ async function storeTokensOfBridge(bridge: Bridge) {
     }),
   );
 
+  const writes2: Coin[] = [];
+  const data = await readCoins2(
+    tokens.map((t: Token) => ({
+      key: t.to,
+      timestamp: getCurrentUnixTimestamp(),
+    })),
+  );
+  tokens.map(async (token) => {
+    if (!(token.to in data)) return;
+    let PK: string = token.from.includes("coingecko#")
+      ? token.from.replace("#", ":")
+      : token.from.substring(token.from.indexOf("#") + 1);
+    const [chain, key] = PK.split(":");
+    let decimals: number, symbol: string;
+    if ("getAllInfo" in token) {
+      try {
+        const newToken = await token.getAllInfo();
+        decimals = newToken.decimals;
+        symbol = newToken.symbol;
+      } catch (e) {
+        console.log("Skipping token", PK, e);
+        return;
+      }
+    } else {
+      decimals = token.decimals;
+      symbol = token.symbol;
+    }
+    writes2.push({
+      timestamp: getCurrentUnixTimestamp(),
+      price: data[token.to].price,
+      confidence: data[token.to].confidence,
+      key,
+      chain,
+      adapter: "bridges",
+      symbol,
+      decimals,
+    });
+  });
+
   await batchWrite(writes, true);
-  await batchWrite2(writes, true);
+  await batchWrite2(writes2, true);
   return tokens;
 }
 export async function storeTokens() {

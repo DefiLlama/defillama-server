@@ -11,13 +11,13 @@ import polygon from "./polygon";
 // import solana from "./solana";
 // import xdai from "./xdai";
 import cosmos from "./cosmos";
-import synapse from './synapse'
-import base from './base'
-import neon_evm from './neon_evm'
-import arbitrum_nova from './arbitrum_nova'
-import mantle from './mantle'
-import axelar from './axelar'
-import linea from './linea'
+import synapse from "./synapse";
+import base from "./base";
+import neon_evm from "./neon_evm";
+import arbitrum_nova from "./arbitrum_nova";
+import mantle from "./mantle";
+import axelar from "./axelar";
+import linea from "./linea";
 
 export type Token =
   | {
@@ -50,7 +50,7 @@ function normalizeBridgeResults(bridge: Bridge) {
       return {
         ...token,
         from: token.from.toLowerCase(),
-        to: token.to.toLowerCase()
+        to: token.to.toLowerCase(),
       };
     });
   };
@@ -80,6 +80,7 @@ export const bridges = [
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../../utils/date";
+import { Coin, batchWrite2, readCoins2, translateItems } from "../../../coins2";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
@@ -90,8 +91,8 @@ async function storeTokensOfBridge(bridge: Bridge) {
     await batchGet(
       tokens.map((t) => ({
         PK: `asset#${t.from}`,
-        SK: 0
-      }))
+        SK: 0,
+      })),
     )
   ).reduce((all, record) => {
     all[record.PK.substr("asset#".length)] = true;
@@ -106,8 +107,8 @@ async function storeTokensOfBridge(bridge: Bridge) {
   const toRecords = await batchGet(
     unlisted.map((t) => ({
       PK: craftToPK(t.to),
-      SK: 0
-    }))
+      SK: 0,
+    })),
   );
 
   await Promise.all(
@@ -118,11 +119,11 @@ async function storeTokensOfBridge(bridge: Bridge) {
       } else if (record.redirect) {
         redirectsNeeded.push({
           PK: record.redirect,
-          SK: 0
+          SK: 0,
         });
         redirectMap[record.redirect] = toPK;
       }
-    })
+    }),
   );
 
   const redirectRecords = await batchGet(redirectsNeeded);
@@ -143,9 +144,9 @@ async function storeTokensOfBridge(bridge: Bridge) {
           const newToken = await token.getAllInfo();
           decimals = newToken.decimals;
           symbol = newToken.symbol;
-        } catch(e){
+        } catch (e) {
           console.log("Skipping token", finalPK, e);
-          return
+          return;
         }
       } else {
         decimals = token.decimals;
@@ -157,14 +158,56 @@ async function storeTokensOfBridge(bridge: Bridge) {
         created: getCurrentUnixTimestamp(),
         decimals,
         symbol,
-        redirect: finalPK
+        redirect: finalPK,
       });
-    })
+    }),
   );
 
-  await batchWrite(writes, true);
+  const writes2: Coin[] = [];
+  const data = await readCoins2(
+    tokens.map((t: Token) => ({
+      key: t.to.includes("coingecko#") ? t.to.replace("#", ":") : t.to,
+      timestamp: getCurrentUnixTimestamp(),
+    })),
+  );
+  tokens.map(async (token) => {
+    const to = token.to.includes("coingecko#")
+      ? token.to.replace("#", ":")
+      : token.to;
+    if (!(to in data)) return;
+    let PK: string = token.from.includes("coingecko#")
+      ? token.from.replace("#", ":")
+      : token.from.substring(token.from.indexOf("#") + 1);
+    const [chain, key] = PK.split(":");
+    let decimals: number, symbol: string;
+    if ("getAllInfo" in token) {
+      try {
+        const newToken = await token.getAllInfo();
+        decimals = newToken.decimals;
+        symbol = newToken.symbol;
+      } catch (e) {
+        console.log("Skipping token", PK, e);
+        return;
+      }
+    } else {
+      decimals = token.decimals;
+      symbol = token.symbol;
+    }
+    writes2.push({
+      timestamp: getCurrentUnixTimestamp(),
+      price: data[to].price,
+      confidence: data[to].confidence,
+      key,
+      chain,
+      adapter: "bridges",
+      symbol,
+      decimals,
+    });
+  });
 
-  return tokens
+  await batchWrite(writes, true);
+  await batchWrite2(writes2, true);
+  return tokens;
 }
 export async function storeTokens() {
   return await Promise.all(bridges.map(storeTokensOfBridge));

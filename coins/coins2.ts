@@ -1,4 +1,4 @@
-import { DbEntry } from "./src/adapters/utils/dbInterfaces";
+import { CoinRead, DbEntry } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
@@ -17,7 +17,7 @@ const latency: number = 1 * 60 * 60; // 1hr
 const margin: number = 12 * 60 * 60; // 12hr
 const confidenceThreshold: number = 0.3;
 
-type Coin = {
+export type Coin = {
   price: number;
   timestamp: number;
   key: string;
@@ -78,7 +78,6 @@ export async function translateItems(
         redirect,
         mcap,
       } = i;
-
       const key = PK.substring(PK.indexOf("#") + 1);
       const chain = key.substring(0, key.indexOf(":"));
       if (redirect) {
@@ -134,10 +133,14 @@ export async function translateItems(
 
   return remapped;
 }
-async function queryRedis(values: Coin[]): Promise<CoinDict> {
+async function queryRedis(values: CoinRead[]): Promise<CoinDict> {
   if (values.length == 0) return {};
-  const keys: string[] = values.map((v: Coin) => v.key);
+  const keys: string[] = values.map((v: CoinRead) => v.key);
 
+  keys.push("asset#ethereum:0x9e32b13ce7f2e80a01932b42553652e053d6ed8e");
+  keys.push(
+    `asset#sui:0x5d4b302506645c37ff133b98c4b50a5ae14841659738d6d733d59d0d217a93bf::coin::coin`,
+  );
   // console.log(`${values.length} queried`);
 
   const redis = new Redis({
@@ -163,7 +166,7 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
   return jsonValues;
 }
 async function queryPostgres(
-  values: Coin[],
+  values: CoinRead[],
   target: number,
   batchPostgresReads: boolean,
 ): Promise<CoinDict> {
@@ -173,7 +176,7 @@ async function queryPostgres(
 
   let data: Coin[] = [];
 
-  const splitKeys = values.map((v: Coin) => ({
+  const splitKeys = values.map((v: CoinRead) => ({
     ...v,
     key: v.key.substring(v.key.indexOf(":") + 1),
   }));
@@ -184,7 +187,7 @@ async function queryPostgres(
     data = await queryPostgresWithRetry(
       sql`
     select ${sql(pgColumns)} from splitkey where 
-    key in ${sql(splitKeys.map((v: Coin) => v.key))}
+    key in ${sql(splitKeys.map((v: CoinRead) => v.key))}
     and timestamp < ${upper}
     and timestamp > ${lower}
   `,
@@ -236,11 +239,11 @@ async function queryPostgres(
 
   return dict;
 }
-function sortQueriesByTimestamp(values: Coin[]): Coin[][] {
+function sortQueriesByTimestamp(values: CoinRead[]): CoinRead[][] {
   const now = getCurrentUnixTimestamp();
-  const historicalQueries: Coin[] = [];
+  const historicalQueries: CoinRead[] = [];
 
-  values.map((v: Coin) => {
+  values.map((v: CoinRead) => {
     if (v.timestamp < now - latency) historicalQueries.push(v);
   });
 
@@ -248,9 +251,10 @@ function sortQueriesByTimestamp(values: Coin[]): Coin[][] {
 }
 async function combineRedisAndPostgresData(
   redisData: CoinDict,
-  historicalQueries: Coin[],
+  historicalQueries: CoinRead[],
   target: number,
   batchPostgresReads: boolean,
+  error: number = margin,
 ): Promise<CoinDict> {
   const postgresData: CoinDict = await queryPostgres(
     historicalQueries,
@@ -271,7 +275,7 @@ async function combineRedisAndPostgresData(
       };
       return;
     }
-    const withinMargin = Math.abs(r.timestamp - target) < margin;
+    const withinMargin = Math.abs(r.timestamp - target) < error;
     if (withinMargin) {
       combinedData[r.key] = r;
       return;
@@ -281,9 +285,10 @@ async function combineRedisAndPostgresData(
 
   return combinedData;
 }
-async function readCoins2(
-  values: Coin[],
+export async function readCoins2(
+  values: Coin[] | CoinRead[],
   batchPostgresReads: boolean = true,
+  error: number = margin,
 ): Promise<CoinDict> {
   await generateAuth();
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
@@ -296,8 +301,20 @@ async function readCoins2(
         historicalQueries,
         values[0].timestamp,
         batchPostgresReads,
+        error,
       )
     : redisData;
+}
+export async function readFirstTimestamp(pk: string) {
+  await generateAuth();
+  const sql = postgres(auth[0]);
+  const [chain, key] = pk.split(":");
+  const read = await sql`
+    select MIN (timestamp) from splitkey where 
+    chain = ${chain} and key = ${key}
+  `;
+  sql.end();
+  if (read[0] && read[0].min) return read[0].min;
 }
 function cleanTimestamps(values: Coin[], margin: number = 15 * 60): Coin[] {
   const timestamps = values.map((c: Coin) => c.timestamp);
@@ -391,7 +408,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
   );
 }
 export async function writeCoins2(
-  values: Coin[],
+  values: any[],
   batchPostgresReads: boolean = true,
   margin?: number,
 ) {

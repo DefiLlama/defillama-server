@@ -166,12 +166,15 @@ async function storeTokensOfBridge(bridge: Bridge) {
   const writes2: Coin[] = [];
   const data = await readCoins2(
     tokens.map((t: Token) => ({
-      key: t.to,
+      key: t.to.includes("coingecko#") ? t.to.replace("#", ":") : t.to,
       timestamp: getCurrentUnixTimestamp(),
     })),
   );
   tokens.map(async (token) => {
-    if (!(token.to in data)) return;
+    const to = token.to.includes("coingecko#")
+      ? token.to.replace("#", ":")
+      : token.to;
+    if (!(to in data)) return;
     let PK: string = token.from.includes("coingecko#")
       ? token.from.replace("#", ":")
       : token.from.substring(token.from.indexOf("#") + 1);
@@ -192,8 +195,8 @@ async function storeTokensOfBridge(bridge: Bridge) {
     }
     writes2.push({
       timestamp: getCurrentUnixTimestamp(),
-      price: data[token.to].price,
-      confidence: data[token.to].confidence,
+      price: data[to].price,
+      confidence: data[to].confidence,
       key,
       chain,
       adapter: "bridges",

@@ -136,11 +136,6 @@ export async function translateItems(
 async function queryRedis(values: CoinRead[]): Promise<CoinDict> {
   if (values.length == 0) return {};
   const keys: string[] = values.map((v: CoinRead) => v.key);
-
-  keys.push("asset#ethereum:0x9e32b13ce7f2e80a01932b42553652e053d6ed8e");
-  keys.push(
-    `asset#sui:0x5d4b302506645c37ff133b98c4b50a5ae14841659738d6d733d59d0d217a93bf::coin::coin`,
-  );
   // console.log(`${values.length} queried`);
 
   const redis = new Redis({
@@ -446,8 +441,6 @@ export async function queryPostgresMig(key: string): Promise<any[]> {
     key in ${sql([Buffer.from(address, "utf8")])}
     and 
     chain in ${sql([Buffer.from(chain, "utf8")])}
-    and
-    timestamp > ${1696287600}
   `,
     sql,
   );

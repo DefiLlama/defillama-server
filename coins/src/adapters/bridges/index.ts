@@ -178,7 +178,7 @@ async function storeTokensOfBridge(bridge: Bridge) {
     let PK: string = token.from.includes("coingecko#")
       ? token.from.replace("#", ":")
       : token.from.substring(token.from.indexOf("#") + 1);
-    const [chain, key] = PK.split(":");
+    const chain = PK.split(":")[0];
     let decimals: number, symbol: string;
     if ("getAllInfo" in token) {
       try {
@@ -197,7 +197,7 @@ async function storeTokensOfBridge(bridge: Bridge) {
       timestamp: getCurrentUnixTimestamp(),
       price: data[to].price,
       confidence: data[to].confidence,
-      key,
+      key: PK,
       chain,
       adapter: "bridges",
       symbol,

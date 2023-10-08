@@ -173,8 +173,8 @@ async function queryPostgres(
 
   const splitKeys = values.map((v: any) => ({
     ...v,
-    key: Buffer.from(v.key.substring(v.key.split(":")[1]), "utf8"),
-    chain: Buffer.from(v.key.substring(0, v.key.split(":")[0]), "utf8"),
+    key: Buffer.from(v.key.substring(v.key.split(":")[0].length + 1), "utf8"),
+    chain: Buffer.from(v.key.split(":")[0], "utf8"),
   }));
 
   let sql;
@@ -434,13 +434,16 @@ export async function batchWrite2(
 export async function queryPostgresMig(key: string): Promise<any[]> {
   await generateAuth();
   let sql = postgres(auth[0]);
-  const [chain, address] = key.split(":");
+  const chain = key.split(":")[0];
+  const address = key.substring(key.split(":")[0].length + 1);
   let data = await queryPostgresWithRetry(
     sql`
     select ${sql(pgColumns)} from splitkey where 
     key in ${sql([Buffer.from(address, "utf8")])}
     and 
     chain in ${sql([Buffer.from(chain, "utf8")])}
+    and
+    timestamp > ${1696287600}
   `,
     sql,
   );

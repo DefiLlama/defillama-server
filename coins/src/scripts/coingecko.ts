@@ -201,7 +201,25 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       symbol: idToSymbol[cgId].toUpperCase(),
       confidence: 0.99,
     }));
-  const confidentCoins = await filterWritesWithLowConfidence(writes, 1);
+
+  const prevWrites = await readCoins2(
+    writes.map((w: any) => ({
+      key: w.PK.replace("asset#", "").replace("#", ":"),
+      timestamp: getCurrentUnixTimestamp(),
+    })),
+    true,
+    86400,
+  );
+  const confidentCoins: Write[] = [];
+  writes.map((w: any) => {
+    if (
+      prevWrites[w.PK.replace("asset#", "").replace("#", ":")]?.confidence >
+      0.99
+    )
+      return;
+    confidentCoins.push(w);
+  });
+
   await storeCoinData(confidentCoins);
   await storeHistoricalCoinData(confidentCoins);
   const filteredCoins = coins.filter(
@@ -249,6 +267,9 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             mcap: pricesAndMcaps[cgPK(coin.id)].mcap || null,
             chain: "coingecko",
           });
+
+          const previous = await ddb.get({ PK, SK: 0 });
+          if (previous.Item?.confidence > 0.99) return;
           await ddb.put({
             PK,
             SK: 0,

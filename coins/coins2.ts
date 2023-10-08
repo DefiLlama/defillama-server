@@ -142,6 +142,7 @@ async function queryRedis(values: CoinRead[]): Promise<CoinDict> {
     port: 6379,
     host: auth[1],
     password: auth[2],
+    connectTimeout: 10000,
   });
   let res = await redis.mget(keys);
   // console.log("mget finished");
@@ -191,22 +192,24 @@ async function queryPostgres(
       sql,
     );
   } else {
-    splitKeys.map(async (key) => {
-      sql = postgres(auth[0]);
-      const read = await queryPostgresWithRetry(
-        sql`
+    await Promise.all(
+      splitKeys.map(async (key) => {
+        sql = postgres(auth[0]);
+        const read = await queryPostgresWithRetry(
+          sql`
         select ${sql(pgColumns)} from splitkey where 
         key = ${key.key}
         and chain = ${key.chain}
         and timestamp < ${upper}
         and timestamp > ${lower}
       `,
-        sql,
-      );
-      if (read && read.count) {
-        data.push(read as any);
-      }
-    });
+          sql,
+        );
+        if (read && read.count) {
+          data.push(read as any);
+        }
+      }),
+    );
   }
   // console.log(`${data.length} found in PG`);
 
@@ -366,6 +369,7 @@ async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
     port: 6379,
     host: auth[1],
     password: auth[2],
+    connectTimeout: 10000,
   });
   await redis.mset(strings);
   redis.quit();

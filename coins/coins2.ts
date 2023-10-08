@@ -176,9 +176,10 @@ async function queryPostgres(
 
   let data: Coin[] = [];
 
-  const splitKeys = values.map((v: CoinRead) => ({
+  const splitKeys = values.map((v: any) => ({
     ...v,
-    key: v.key.substring(v.key.indexOf(":") + 1),
+    key: Buffer.from(v.key.substring(v.key.split(":")[1]), "utf8"),
+    chain: Buffer.from(v.key.substring(0, v.key.split(":")[0]), "utf8"),
   }));
 
   let sql;
@@ -187,28 +188,30 @@ async function queryPostgres(
     data = await queryPostgresWithRetry(
       sql`
     select ${sql(pgColumns)} from splitkey where 
-    key in ${sql(splitKeys.map((v: CoinRead) => v.key))}
+    key in ${sql(splitKeys.map((v: any) => v.key))}
+    and chain in ${sql(splitKeys.map((v: any) => v.chain))}
     and timestamp < ${upper}
     and timestamp > ${lower}
   `,
       sql,
     );
   } else {
-    for (let i = 0; i < splitKeys.length; i++) {
+    splitKeys.map(async (key) => {
       sql = postgres(auth[0]);
       const read = await queryPostgresWithRetry(
         sql`
-          select ${sql(pgColumns)} from splitkey where 
-          key = ${splitKeys[i].key}
-          and timestamp < ${upper}
-          and timestamp > ${lower}
-        `,
+        select ${sql(pgColumns)} from splitkey where 
+        key = ${key.key}
+        and chain = ${key.chain}
+        and timestamp < ${upper}
+        and timestamp > ${lower}
+      `,
         sql,
       );
       if (read && read.count) {
         data.push(read as any);
       }
-    }
+    });
   }
   // console.log(`${data.length} found in PG`);
 
@@ -432,4 +435,21 @@ export async function batchWrite2(
   margin: number = 15 * 60,
 ) {
   await writeCoins2(values, batchPostgresReads, margin);
+}
+export async function queryPostgresMig(key: string): Promise<any[]> {
+  await generateAuth();
+  let sql = postgres(auth[0]);
+  const [chain, address] = key.split(":");
+  let data = await queryPostgresWithRetry(
+    sql`
+    select ${sql(pgColumns)} from splitkey where 
+    key in ${sql([Buffer.from(address, "utf8")])}
+    and 
+    chain in ${sql([Buffer.from(chain, "utf8")])}
+    and
+    timestamp > ${1696287600}
+  `,
+    sql,
+  );
+  return data;
 }

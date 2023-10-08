@@ -2,17 +2,13 @@ import fetch from "node-fetch";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
-import ddb, { batchWrite, batchGet } from "../utils/shared/dynamodb";
-import {
-  getCoinPlatformData,
-  Coin,
-  iterateOverPlatforms,
-} from "../utils/coingeckoPlatforms";
+import ddb, { batchWrite } from "../utils/shared/dynamodb";
+import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { Write } from "../adapters/utils/dbInterfaces";
 import { filterWritesWithLowConfidence } from "../adapters/utils/database";
-import { batchWrite2 } from "../../coins2";
+import { batchWrite2, readCoins2 } from "../../coins2";
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
@@ -211,7 +207,15 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const filteredCoins = coins.filter(
     (coin) => coinData[coin.id]?.usd !== undefined,
   );
-  const coinPlatformData = await getCoinPlatformData(filteredCoins);
+  const platformQueries = filteredCoins
+    .map((f: Coin) =>
+      Object.entries(f.platforms).map((p: any) => ({
+        key: `${p[0]}:${p[1]}`,
+        timestamp: getCurrentUnixTimestamp(),
+      })),
+    )
+    .flat();
+  const coinPlatformData = await readCoins2(platformQueries, true, 604800);
 
   const pricesAndMcaps: {
     [key: string]: { price: number; mcap?: number };
@@ -227,20 +231,16 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       iterateOverPlatforms(
         coin,
         async (PK, tokenAddress, chain) => {
-          const previous = await ddb.get({ PK, SK: 0 });
-          if (previous.Item?.confidence > 0.99) return;
-
-          const data = await getSymbolAndDecimals(
-            tokenAddress,
-            chain,
-            coin.symbol,
-          );
-          if (!data) return;
-          const { decimals, symbol } = data;
+          const timestamp = getCurrentUnixTimestamp();
+          const key = PK.replace("asset#", "");
+          const { decimals, symbol } =
+            coinPlatformData[key] ??
+            (await getSymbolAndDecimals(tokenAddress, chain, coin.symbol));
+          if (coinPlatformData[key]?.confidence > 0.99) return;
 
           writes2.push({
-            key: PK.replace("#", ":"),
-            timestamp: getCurrentUnixTimestamp(),
+            key,
+            timestamp,
             price: pricesAndMcaps[cgPK(coin.id)].price,
             decimals: decimals,
             symbol: symbol,
@@ -286,16 +286,18 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
     return;
   }
   const PK = cgPK(coin.id);
-  const prevWritenItems = await batchGet(
+
+  const prevWritenItems = await readCoins2(
     coinData.prices.map((price) => ({
-      SK: toUNIXTimestamp(price[0]),
-      PK,
+      timestamp: toUNIXTimestamp(price[0]),
+      key: `coingecko:${coin.id}`,
     })),
+    false,
+    300,
   );
-  const writtenTimestamps = prevWritenItems.reduce((all, item) => {
-    all[item.SK] = true;
-    return all;
-  }, {});
+  const writtenTimestamps = Object.values(prevWritenItems).map(
+    (c: any) => c.timestamp,
+  );
 
   await batchWrite(
     coinData.prices

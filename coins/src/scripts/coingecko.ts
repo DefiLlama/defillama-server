@@ -231,8 +231,9 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       iterateOverPlatforms(
         coin,
         async (PK, tokenAddress, chain) => {
-          const timestamp = getCurrentUnixTimestamp();
           const key = PK.replace("asset#", "");
+          if (coinPlatformData[key]?.confidence > 0.99) return;
+          const timestamp = getCurrentUnixTimestamp();
           const { decimals, symbol } =
             coinPlatformData[key] ??
             (await getSymbolAndDecimals(tokenAddress, chain, coin.symbol));

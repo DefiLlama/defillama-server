@@ -453,3 +453,27 @@ export async function queryPostgresMig(key: string): Promise<any[]> {
   );
   return data;
 }
+export async function batchReadPostgres(
+  key: string,
+  start: number,
+  end: number,
+): Promise<any[]> {
+  await generateAuth();
+  let sql = postgres(auth[0]);
+  const chain = key.split(":")[0];
+  const address = key.substring(key.split(":")[0].length + 1);
+  let data = await queryPostgresWithRetry(
+    sql`
+    select ${sql(pgColumns)} from splitkey where 
+    key in ${sql([Buffer.from(address, "utf8")])}
+    and 
+    chain in ${sql([Buffer.from(chain, "utf8")])}
+    and
+    timestamp > ${start} 
+    and 
+    timestamp < ${end}
+  `,
+    sql,
+  ); //start  1696287600
+  return data;
+}

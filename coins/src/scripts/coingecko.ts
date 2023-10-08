@@ -8,7 +8,7 @@ import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { Write } from "../adapters/utils/dbInterfaces";
 import { filterWritesWithLowConfidence } from "../adapters/utils/database";
-import { batchWrite2, readCoins2 } from "../../coins2";
+import { batchReadPostgres, batchWrite2, readCoins2 } from "../../coins2";
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
@@ -237,7 +237,6 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           const { decimals, symbol } =
             coinPlatformData[key] ??
             (await getSymbolAndDecimals(tokenAddress, chain, coin.symbol));
-          if (coinPlatformData[key]?.confidence > 0.99) return;
 
           writes2.push({
             key,
@@ -288,14 +287,12 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
   }
   const PK = cgPK(coin.id);
 
-  const prevWritenItems = await readCoins2(
-    coinData.prices.map((price) => ({
-      timestamp: toUNIXTimestamp(price[0]),
-      key: `coingecko:${coin.id}`,
-    })),
-    false,
-    300,
+  const prevWritenItems = await batchReadPostgres(
+    `coingecko:${coin.id}`,
+    toUNIXTimestamp(coinData.prices[0][0]),
+    toUNIXTimestamp(coinData.prices[coinData.prices.length - 1][0]),
   );
+  if (prevWritenItems[prevWritenItems.length - 1].confidence > 29700) return;
   const writtenTimestamps = Object.values(prevWritenItems).map(
     (c: any) => c.timestamp,
   );

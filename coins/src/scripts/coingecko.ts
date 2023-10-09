@@ -178,7 +178,7 @@ async function getSymbolAndDecimals(
     }
   }
 }
-
+const blacklist = [];
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinIds = coins.map((c) => c.id);
   const coinData = await retryCoingeckoRequest(
@@ -272,6 +272,10 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             );
             decimals = decimals ?? data?.decimals;
             symbol = symbol ?? data?.symbol ?? coin.symbol;
+          }
+          if (decimals == undefined || decimals == 0) {
+            blacklist.push(PK);
+            return;
           }
           writes2.push({
             key,

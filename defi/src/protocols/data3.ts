@@ -20173,6 +20173,29 @@ const data3: Protocol[] = [
     github: ["ZenDEXFinance"],
     listedAt: 1696612017
   },
+  {
+    id: "3605",
+    name: "BLEX",
+    address: null,
+    symbol: "-",
+    url: "https://blex.io",
+    description:
+      "BLEX is a decentralized perpetual contract exchange based on the index-based price feeding model, aimed at allowing users to deploy various trading strategies without permission, with low costs, high efficiency, and security while having control over their personal assets.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/blex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "blex/index.js",
+    twitter: "Blex_io",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    github: ["blex-dex"],
+    listedAt: 1696846653
+  },
 ]
 
 export default data3

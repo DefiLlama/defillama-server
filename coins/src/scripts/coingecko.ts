@@ -259,15 +259,15 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           const key = PK.replace("asset#", "");
           if (coinPlatformData[key]?.confidence > 0.99) return;
           const timestamp = getCurrentUnixTimestamp();
-          let decimals: number | undefined = coinPlatformData[key]?.decimals;
-          let symbol: string | undefined = coinPlatformData[key]?.symbol;
+          let decimals: number | undefined; // = coinPlatformData[key]?.decimals;
+          let symbol: string | undefined; // = coinPlatformData[key]?.symbol;
           if (!decimals || !symbol) {
             const data = await getSymbolAndDecimals(
               tokenAddress,
               chain,
               coin.symbol,
             );
-            decimals = data?.decimals ?? 0;
+            decimals = data?.decimals;
             symbol = data?.symbol ?? coin.symbol;
           }
           writes2.push({

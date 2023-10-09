@@ -4,6 +4,7 @@ import { getProtocol, } from "./utils";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import { importAdapter } from "./utils/importAdapter";
 import { util } from "@defillama/sdk";
+import { initializeTVLCacheDB } from "../api2/db";
 
 const { humanizeNumber: { humanizeNumber} } = util
 
@@ -13,6 +14,7 @@ const main = async () => {
   const now = Math.round(Date.now() / 1000);
 
   const adapterModule = await importAdapter(protocol)
+  await initializeTVLCacheDB()
   const ethereumBlock = undefined
   const chainBlocks = {}
   const tvl = await storeTvl(

@@ -2,6 +2,7 @@ import * as HyperExpress from "hyper-express";
 import { cache, initCache } from "./cache";
 import sluggify from "../utils/sluggify";
 import craftProtocolV2 from "./utils/craftProtocolV2";
+import craftParentProtocolV2 from "./utils/craftParentProtocolV2";
 const webserver = new HyperExpress.Server()
 
 const port = +(process.env.PORT ?? 80)
@@ -10,6 +11,19 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   try {
     let name = sluggify({ name: req.path_parameters.name } as any)
     const protocolData = (cache as any)[dataType + 'SlugMap'][name];
+
+    // check if it is a parent protocol
+    if (!protocolData && dataType === 'protocol') {
+      const parentProtocol = (cache as any)['parentProtocolSlugMap'][name];
+      if (parentProtocol) {
+        const responseData = await craftParentProtocolV2({
+          parentProtocol: parentProtocol,
+          useHourlyData: false,
+          skipAggregatedTvl: false,
+        });
+        return res.json(responseData);
+      }
+    }
 
     if (!protocolData) {
       res.status(404)

@@ -18,6 +18,7 @@ import { importAdapter } from "./utils/importAdapter";
 import * as sdk from '@defillama/sdk'
 import { Chain } from "@defillama/sdk/build/general";
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
+import { initializeTVLCacheDB } from "../api2/db";
 
 const { humanizeNumber: { humanizeNumber } } = sdk.util
 
@@ -129,6 +130,7 @@ const main = async () => {
   for (const chain of chains)
     if (!adapter[chain]) throw new Error('Protocol does not have the chain:' + chain)
 
+    await initializeTVLCacheDB()
   const data = await Promise.all([
     getHistoricalValues(dailyRawTokensTvl(protocol.id)),
     getHistoricalValues(dailyTvl(protocol.id)),

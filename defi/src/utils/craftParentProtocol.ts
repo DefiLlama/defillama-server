@@ -8,7 +8,7 @@ import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
 import { protocolMcap } from "./craftProtocol";
 
-interface ICombinedTvls {
+export interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
   chainTvls: {
     [chain: string]: {
@@ -80,8 +80,6 @@ export default async function craftParentProtocol({
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
     isTreasuryApi ? false : tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
 
-  const currentTime = Math.floor(Date.now() / 1000);
-
   if (isTreasuryApi) {
     const child = childProtocolsTvls.filter((prot: any) => (prot.message ? false : true))?.[0] ?? null;
 
@@ -101,6 +99,27 @@ export default async function craftParentProtocol({
       isParentProtocol: true,
     };
   }
+
+  return craftParentProtocolInternal({ parentProtocol, skipAggregatedTvl, isHourlyTvl, childProtocolsTvls, });
+}
+
+export async function craftParentProtocolInternal({
+  parentProtocol,
+  skipAggregatedTvl,
+  childProtocolsTvls,
+  isHourlyTvl,
+  fetchMcap,
+}: {
+  parentProtocol: IParentProtocol;
+  skipAggregatedTvl: boolean;
+  isHourlyTvl: Function;
+  fetchMcap?: Function;
+  childProtocolsTvls: Array<IProtocolResponse>;
+}) {
+
+  if (!fetchMcap) fetchMcap = protocolMcap;
+
+  const currentTime = Math.floor(Date.now() / 1000);
 
   const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls
     .filter((prot: any) => (prot.message ? false : true))
@@ -394,7 +413,7 @@ export default async function craftParentProtocol({
     totalLiquidityUSD,
   }));
 
-  const [tokenMcap] = await Promise.all([protocolMcap(parentProtocol.gecko_id)]);
+  const [tokenMcap] = await Promise.all([fetchMcap(parentProtocol.gecko_id)]);
 
   const response: IProtocolResponse = {
     ...parentProtocol,
@@ -410,7 +429,7 @@ export default async function craftParentProtocol({
     }, [] as Array<IRaise>),
     metrics: getAvailableMetricsById(parentProtocol.id),
     symbol: childProtocolsTvls.find((p) => p.symbol)?.symbol,
-    treasury: parentProtocol.treasury || childProtocols.find((p) => p.treasury)?.treasury,
+    treasury: parentProtocol.treasury,
     mcap: tokenMcap || childProtocolsTvls.find((p) => p.mcap)?.mcap,
   };
 

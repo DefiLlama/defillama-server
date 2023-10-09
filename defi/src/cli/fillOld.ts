@@ -16,6 +16,8 @@ import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapter } from "./utils/importAdapter";
 import * as sdk from '@defillama/sdk'
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
+import { initializeTVLCacheDB } from "../api2/db";
+
 
 const { humanizeNumber: { humanizeNumber } } = sdk.util
 const secondsInDay = 24 * 3600;
@@ -93,6 +95,7 @@ async function getAndStore(
 
 const main = async () => {
   sdk.log('DRY RUN: ', IS_DRY_RUN)
+  await initializeTVLCacheDB()
   const protocolToRefill = process.argv[2]
   sdk.log('Refilling for:', protocolToRefill)
   const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp

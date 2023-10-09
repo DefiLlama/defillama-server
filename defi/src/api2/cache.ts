@@ -14,23 +14,29 @@ export const cache: {
     protocols: any[],
     entities: any[],
     treasuries: any[],
+    parentProtocols: any[],
   },
   mcaps: Record<string, Promise<number | null>>,
   raises: any,
   protocolSlugMap: any,
   treasurySlugMap: any,
   entitiesSlugMap: any,
+  parentProtocolSlugMap: any,
+  childProtocols: any,
 } = {
   metadata: {
     protocols: [],
     entities: [],
     treasuries: [],
+    parentProtocols: [],
   },
   mcaps: {},
   raises: {},
   protocolSlugMap: {},
   treasurySlugMap: {},
   entitiesSlugMap: {},
+  parentProtocolSlugMap: {},
+  childProtocols: {},
 }
 
 export async function initCache() {
@@ -47,14 +53,22 @@ async function updateMetadata() {
   cache.protocolSlugMap = {}
   cache.treasurySlugMap = {}
   cache.entitiesSlugMap = {}
+  cache.parentProtocolSlugMap = {}
   data.protocols.forEach((p: any) => {
     cache.protocolSlugMap[sluggify(p)] = p
+    if (p.parentProtocol) {
+      if (!cache.childProtocols[p.parentProtocol]) cache.childProtocols[p.parentProtocol] = []
+      cache.childProtocols[p.parentProtocol].push(p)
+    }
   })
   data.entities.forEach((p: any) => {
     cache.entitiesSlugMap['entity-'+sluggify(p)] = p
   })
   data.treasuries.forEach((p: any) => {
     cache.treasurySlugMap[sluggify(p).replace("-(treasury)", '')] = p
+  })
+  data.parentProtocols.forEach((p: any) => {
+    cache.parentProtocolSlugMap[sluggify(p)] = p
   })
 }
 

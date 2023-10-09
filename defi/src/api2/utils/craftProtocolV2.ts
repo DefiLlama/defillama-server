@@ -7,6 +7,10 @@ import { getAvailableMetricsById } from "../../adaptors/data/configs";
 import { getRaises, getCachedMCap } from "../cache";
 import { TABLES, getAllProtocolItems, getLatestProtocolItem } from "../db/index";
 import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
+import { 
+  dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, dailyRawTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl, hourlyRawTokensTvl,
+ } from "../../utils/getLastRecord";
+
 
 export default async function craftProtocolV2({
   protocolData,

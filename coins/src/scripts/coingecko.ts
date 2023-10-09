@@ -117,16 +117,18 @@ async function storeHistoricalCoinData(coinData: Write[]) {
 }
 
 let solanaTokens: Promise<any>;
+let _solanaTokens: Promise<any>;
 async function getSymbolAndDecimals(
   tokenAddress: string,
   chain: string,
   coingeckoSymbol: string,
 ) {
   if (chain === "solana") {
-    if (solanaTokens === undefined) {
-      solanaTokens = fetch(
+    if (_solanaTokens === undefined) {
+      _solanaTokens = fetch(
         "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json",
-      ).then((r) => r.json());
+      )
+      solanaTokens = _solanaTokens.then((r) => r.json())
     }
     const token = ((await solanaTokens).tokens as any[]).find(
       (t) => t.address === tokenAddress,
@@ -138,10 +140,10 @@ async function getSymbolAndDecimals(
       const decimals = (decimalsQuery.value?.data as any)?.parsed?.info
         ?.decimals;
       if (typeof decimals !== "number") {
-        return;
-        // throw new Error(
-        //   `Token ${chain}:${tokenAddress} not found in solana token list`,
-        // );
+        // return;
+        throw new Error(
+          `Token ${chain}:${tokenAddress} not found in solana token list`,
+        );
       }
       return {
         symbol: coingeckoSymbol.toUpperCase(),

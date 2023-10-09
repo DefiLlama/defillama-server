@@ -1,4 +1,4 @@
-import { addToDBWritesList, getTokenAndRedirectData } from '../utils/database'; // Assuming you have a function to add data to the database
+import { addToDBWritesList, getTokenAndRedirectData } from '../utils/database';
 import { Write } from "../utils/dbInterfaces";
 import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
@@ -54,7 +54,7 @@ async function contractCalls(
   const [{ price: priceBvm }] = await getTokenAndRedirectData(['0xd386a121991e51eab5e3433bf5b1cf4c8884b47a'], 'base', timestamp);
 
   let price = (reserve0 * priceEth + reserve1 * priceBvm) / totalSupply;
-  price *= multiplier / 1e18; // mutiplier deicmals removed
+  price *= multiplier / 1e18; // mutiplier decimals removed
   price = priceEth / price;
 
   addToDBWritesList(

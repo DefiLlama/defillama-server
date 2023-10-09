@@ -260,7 +260,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
               chain,
               coin.symbol,
             );
-            decimals = data?.decimals;
+            decimals = data?.decimals ?? 0;
             symbol = data?.symbol ?? coin.symbol;
           }
 
@@ -424,10 +424,11 @@ function shuffleArray(array: any[]) {
 
 async function triggerFetchCoingeckoData(hourly: boolean) {
   const step = 500;
-  const coins = (await fetch(
+  let coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
-  shuffleArray(coins);
+  // shuffleArray(coins);
+  coins = coins.filter((c: Coin) => c.id == "aptos");
   let promises: Promise<void>[] = [];
   for (let i = 0; i < coins.length; i += step) {
     promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));

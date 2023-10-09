@@ -77,7 +77,7 @@ export async function getCoinPlatformData(coins: Coin[]) {
       const storedItems: any = await ddb.batchGet(
         pks.slice(i, i + step).map((PK) => ({ PK, SK: 0 })),
       );
-      storedItems.Responses["prod-coins-table"].forEach((item: any) => {
+      storedItems.Responses["prod-coins-table-restored"].forEach((item: any) => {
         coinPlatformData[item.PK] = item;
       });
     }

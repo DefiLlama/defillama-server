@@ -4,12 +4,12 @@ import {
   dailyTokensTvl,
   dailyTvl,
   dailyUsdTokensTvl,
-  // dailyRawTokensTvl,
+  dailyRawTokensTvl,
 } from "../../utils/getLastRecord";
 import { getHistoricalValues } from "../../utils/shared/dynamodb";
 
 
-import {  TABLES, syncTvlPostgresDB } from '../db/index'
+import { TABLES, syncTvlPostgresDB } from '../db/index'
 
 import protocols from "../../protocols/data";
 import { transformDDBToPGFormat } from "../utils";
@@ -22,18 +22,18 @@ const keyToRecord: any = {
   dailyTvl: { ddb: dailyTvl, pg: TABLES.DAILY_TVL },
   dailyTokensTvl: { ddb: dailyTokensTvl, pg: TABLES.DAILY_TOKENS_TVL },
   dailyUsdTokensTvl: { ddb: dailyUsdTokensTvl, pg: TABLES.DAILY_USD_TOKENS_TVL },
-  // dailyRawTokensTvl: { ddb: dailyRawTokensTvl, pg: TABLES.DAILY_RAW_TOKENS_TVL },
+  dailyRawTokensTvl: { ddb: dailyRawTokensTvl, pg: TABLES.DAILY_RAW_TOKENS_TVL },
 };
 
 async function main() {
   await syncTvlPostgresDB()
-  
+
   const items = [protocols, entities, treasuries].flat()
   shuffleArray(items)
   console.log('Total Items', items.length)
   await PromisePool.withConcurrency(21)
-  .for(items)
-  .process(copyProtocolData);
+    .for(items)
+    .process(copyProtocolData);
 }
 
 main().catch(console.error).then(() => {
@@ -54,7 +54,7 @@ async function copyProtocolData(protocol: any) {
       upsert: true, // Enable upsert mode
     })
     doneIndex++
-    console.log(Math.floor(doneIndex/4), protocol.name, key, items.length, ddb(id))
+    console.log(Math.floor(doneIndex / 4), protocol.name, key, items.length, ddb(id))
   }
 }
 

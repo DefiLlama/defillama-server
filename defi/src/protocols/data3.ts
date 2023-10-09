@@ -20105,7 +20105,7 @@ const data3: Protocol[] = [
     audit_links: ["https://app.solidproof.io/projects/helloescrow?audit_id=717", "https://www.rugfreecoins.com/coin-details/18825"],
     listedAt: 1696566243
   },
-  {
+  /*{
     id: "3602",
     name: "Contango V2",
     address: null,
@@ -20127,7 +20127,7 @@ const data3: Protocol[] = [
     oracles: [],
     parentProtocol: "parent#contango",
     listedAt: 1696590696
-  },
+  },*/
   {
     id: "3603",
     name: "sDAI",

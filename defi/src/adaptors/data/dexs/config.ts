@@ -2033,5 +2033,10 @@ export default {
         parentId: "Equalizer",
         "enabled": true,
         "id": "3575"
+    },
+    "fvm-exchange": {
+        parentId: "Velocimeter",
+        "enabled": true,
+        "id": "3291"
     }
 } as AdaptorsConfig

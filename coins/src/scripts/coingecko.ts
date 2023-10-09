@@ -117,17 +117,24 @@ async function storeHistoricalCoinData(coinData: Write[]) {
 }
 
 let solanaTokens: Promise<any>;
+let _solanaTokens: Promise<any>;
+
+async function cacheSolanaTokens() {
+  if (_solanaTokens === undefined) {
+    _solanaTokens = fetch(
+      "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json",
+    )
+    solanaTokens = _solanaTokens.then((r) => r.json())
+  }
+  return solanaTokens;
+}
+
 async function getSymbolAndDecimals(
   tokenAddress: string,
   chain: string,
   coingeckoSymbol: string,
 ) {
   if (chain === "solana") {
-    if (solanaTokens === undefined) {
-      solanaTokens = fetch(
-        "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json",
-      ).then((r) => r.json());
-    }
     const token = ((await solanaTokens).tokens as any[]).find(
       (t) => t.address === tokenAddress,
     );
@@ -138,10 +145,10 @@ async function getSymbolAndDecimals(
       const decimals = (decimalsQuery.value?.data as any)?.parsed?.info
         ?.decimals;
       if (typeof decimals !== "number") {
-        return;
-        // throw new Error(
-        //   `Token ${chain}:${tokenAddress} not found in solana token list`,
-        // );
+        // return;
+        throw new Error(
+          `Token ${chain}:${tokenAddress} not found in solana token list`,
+        );
       }
       return {
         symbol: coingeckoSymbol.toUpperCase(),
@@ -263,7 +270,6 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             decimals = data?.decimals ?? 0;
             symbol = data?.symbol ?? coin.symbol;
           }
-
           writes2.push({
             key,
             timestamp,
@@ -423,6 +429,7 @@ function shuffleArray(array: any[]) {
 }
 
 async function triggerFetchCoingeckoData(hourly: boolean) {
+  await cacheSolanaTokens()
   const step = 500;
   let coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,

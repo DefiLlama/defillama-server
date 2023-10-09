@@ -123,8 +123,8 @@ async function cacheSolanaTokens() {
   if (_solanaTokens === undefined) {
     _solanaTokens = fetch(
       "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json",
-    )
-    solanaTokens = _solanaTokens.then((r) => r.json())
+    );
+    solanaTokens = _solanaTokens.then((r) => r.json());
   }
   return solanaTokens;
 }
@@ -429,13 +429,12 @@ function shuffleArray(array: any[]) {
 }
 
 async function triggerFetchCoingeckoData(hourly: boolean) {
-  await cacheSolanaTokens()
+  await cacheSolanaTokens();
   const step = 500;
-  let coins = (await fetch(
+  const coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
-  // shuffleArray(coins);
-  coins = coins.filter((c: Coin) => c.id == "aptos");
+  shuffleArray(coins);
   let promises: Promise<void>[] = [];
   for (let i = 0; i < coins.length; i += step) {
     promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));

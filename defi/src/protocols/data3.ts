@@ -20201,7 +20201,7 @@ const data3: Protocol[] = [
     name: "diva",
     address: "0xbfabde619ed5c4311811cf422562709710db587d",
     symbol: "DIVA",
-    url: "https://staking.foundation/",
+    url: "https://diva.enzyme.finance/",
     description:
       "Diva Staking is an Ethereum Liquid Staking protocol powered by Distributed Validator Technology (DVT)",
     chain: "Ethereum",

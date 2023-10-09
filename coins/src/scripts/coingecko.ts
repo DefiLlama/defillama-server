@@ -123,8 +123,8 @@ async function cacheSolanaTokens() {
   if (_solanaTokens === undefined) {
     _solanaTokens = fetch(
       "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json",
-    )
-    solanaTokens = _solanaTokens.then((r) => r.json())
+    );
+    solanaTokens = _solanaTokens.then((r) => r.json());
   }
   return solanaTokens;
 }
@@ -267,7 +267,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
               chain,
               coin.symbol,
             );
-            decimals = data?.decimals;
+            decimals = data?.decimals ?? 0;
             symbol = data?.symbol ?? coin.symbol;
           }
           writes2.push({
@@ -429,7 +429,7 @@ function shuffleArray(array: any[]) {
 }
 
 async function triggerFetchCoingeckoData(hourly: boolean) {
-  await cacheSolanaTokens()
+  await cacheSolanaTokens();
   const step = 500;
   const coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,

@@ -20196,6 +20196,28 @@ const data3: Protocol[] = [
     github: ["blex-dex"],
     listedAt: 1696846653
   },
+  {
+    id: "3606",
+    name: "diva",
+    address: "0xbfabde619ed5c4311811cf422562709710db587d",
+    symbol: "DIVA",
+    url: "https://staking.foundation/",
+    description:
+      "Diva Staking is an Ethereum Liquid Staking protocol powered by Distributed Validator Technology (DVT)",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/diva.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    module: "diva/index.js",
+    twitter: "divastaking",
+    forkedFrom: [],
+    github: ["staking-foundation"],
+    listedAt: 1696868095
+  },
 ]
 
 export default data3

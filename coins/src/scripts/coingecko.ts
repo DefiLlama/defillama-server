@@ -259,16 +259,19 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           const key = PK.replace("asset#", "");
           if (coinPlatformData[key]?.confidence > 0.99) return;
           const timestamp = getCurrentUnixTimestamp();
-          let decimals: number | undefined; // = coinPlatformData[key]?.decimals;
-          let symbol: string | undefined; // = coinPlatformData[key]?.symbol;
+          const previous = await ddb.get({ PK, SK: 0 });
+          let decimals: number | undefined =
+            coinPlatformData[key]?.decimals ?? previous.Item?.decimals;
+          let symbol: string | undefined =
+            coinPlatformData[key]?.symbol ?? previous.Item?.symbol;
           if (!decimals || !symbol) {
             const data = await getSymbolAndDecimals(
               tokenAddress,
               chain,
               coin.symbol,
             );
-            decimals = data?.decimals;
-            symbol = data?.symbol ?? coin.symbol;
+            decimals = decimals ?? data?.decimals;
+            symbol = symbol ?? data?.symbol ?? coin.symbol;
           }
           writes2.push({
             key,
@@ -282,7 +285,6 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             chain: "coingecko",
           });
 
-          const previous = await ddb.get({ PK, SK: 0 });
           if (previous.Item?.confidence > 0.99) return;
           await ddb.put({
             PK,

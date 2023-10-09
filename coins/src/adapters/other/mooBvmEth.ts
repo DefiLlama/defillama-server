@@ -1,14 +1,11 @@
-
-// import { fetchPrice } from '../utils/fetchPrice'; // Assuming you have a function to fetch price
 import { addToDBWritesList, getTokenAndRedirectData } from '../utils/database'; // Assuming you have a function to add data to the database
 import { Write } from "../utils/dbInterfaces";
-import { call } from "@defillama/sdk/build/abi/index";
 import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
+import { call } from "@defillama/sdk/build/abi/index";
 
-// Moo BVM BVM-ETH"
+// Moo BVM (BVM-ETH)
 const targets = ['0x53713F956A4DA3F08B55A390B20657eDF9E0897B', '0xa3A4a4bf50B7b0d766b99C8d4B0F0E7fD02658a6'];
-
 const chain = 'base';
 
 export default async function getTokenPrice(timestamp: number) {
@@ -24,70 +21,30 @@ async function contractCalls(
   writes: Write[],
   timestamp: number,
 ) {
-  const contractAbi = [
-    {
-      constant: true,
-      inputs: [],
-      name: 'reserve0',
-      outputs: [{ name: '', type: 'uint256' }],
-      payable: false,
-      stateMutability: 'view',
-      type: 'function',
-    },
-    {
-      constant: true,
-      inputs: [],
-      name: 'reserve1',
-      outputs: [{ name: '', type: 'uint256' }],
-      payable: false,
-      stateMutability: 'view',
-      type: 'function',
-    },
-    {
-      constant: true,
-      inputs: [],
-      name: 'totalSupply',
-      outputs: [{ name: '', type: 'uint256' }],
-      payable: false,
-      stateMutability: 'view',
-      type: 'function',
-    },
-  ];
-  const contractAbiBeefy = [
-    {
-      constant: true,
-      inputs: [],
-      name: 'getPricePerFullShare',
-      outputs: [{ name: '', type: 'uint256' }],
-      payable: false,
-      stateMutability: 'view',
-      type: 'function',
-    },
-  ];
 
   const [reserve0, reserve1, totalSupply, multiplier, tokenInfos] = await Promise.all([
     call({
       target: targets[0],
       chain,
-      abi: contractAbi[0],
+      abi: contractAbi.reserve0,
       block,
     }),
     call({
       target: targets[0],
       chain,
-      abi: contractAbi[2],
+      abi: contractAbi.reserve1,
       block,
     }),
     call({
       target: targets[0],
       chain,
-      abi: contractAbi[2],
+      abi: contractAbi.totalSupply,
       block,
     }),
     call({
       targets: targets[1],
       chain,
-      abi: contractAbiBeefy[0],
+      abi: contractAbiBeefy.getPricePerFullShare,
       block,
     }),
     getTokenInfo(chain, [targets[1]], block),
@@ -99,8 +56,6 @@ async function contractCalls(
   let price = (reserve0 * priceEth + reserve1 * priceBvm) / totalSupply;
   price *= multiplier / 1e18; // mutiplier deicmals removed
   price = priceEth / price;
-
-
 
   addToDBWritesList(
     writes,
@@ -114,5 +69,46 @@ async function contractCalls(
     1,
   );
 }
+
+const contractAbi = {
+  "reserve0": {
+    constant: true,
+    inputs: [],
+    name: 'reserve0',
+    outputs: [{ name: '', type: 'uint256' }],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  "reserve1": {
+    constant: true,
+    inputs: [],
+    name: 'reserve1',
+    outputs: [{ name: '', type: 'uint256' }],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  "totalSupply": {
+    constant: true,
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [{ name: '', type: 'uint256' }],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+};
+const contractAbiBeefy = {
+  "getPricePerFullShare": {
+    constant: true,
+    inputs: [],
+    name: 'getPricePerFullShare',
+    outputs: [{ name: '', type: 'uint256' }],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+};
 
 

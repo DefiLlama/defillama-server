@@ -6,6 +6,7 @@ import { initializeTables, Tables as TABLES } from './tables'
 import {
   dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, dailyRawTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl, hourlyRawTokensTvl,
 } from "../../utils/getLastRecord"
+import { getTimestampString } from '../utils'
 
 const dummyId = 'dummyId'
 
@@ -20,11 +21,15 @@ const tableMapping = {
   [hourlyRawTokensTvl(dummyId)]: TABLES.HOURLY_RAW_TOKENS_TVL,
 }
 
-function getTVLCacheTable(ddbPKFunction: Function) {
+function getTVLCacheTable(ddbPKFunction: Function): ModelStatic<Model<any, any>> {
   const key = ddbPKFunction(dummyId)
   return tableMapping[key]
 }
 
+function isHourlyDDBPK(ddbPKFunction: Function) {
+  const key = ddbPKFunction(dummyId)
+  return key.includes('hourly')
+}
 
 let sequelize: Sequelize | null = null
 
@@ -51,7 +56,8 @@ async function initializeTVLCacheDB() {
   }
 }
 
-async function getAllProtocolItems(table: ModelStatic<Model<any, any>>, protocolId: string) {
+async function getAllProtocolItems(ddbPKFunction: Function, protocolId: string) {
+  const table = getTVLCacheTable(ddbPKFunction)
   const items = await table.findAll({
     where: { id: protocolId },
     attributes: ['data', 'timestamp'],
@@ -62,7 +68,8 @@ async function getAllProtocolItems(table: ModelStatic<Model<any, any>>, protocol
   return items.map((i: any) => i.data)
 }
 
-async function getLatestProtocolItem(table: ModelStatic<Model<any, any>>, protocolId: string) {
+async function getLatestProtocolItem(ddbPKFunction: Function, protocolId: string) {
+  const table = getTVLCacheTable(ddbPKFunction)
   const item: any = await table.findOne({
     where: { id: protocolId },
     attributes: ['data', 'timestamp'],
@@ -74,10 +81,35 @@ async function getLatestProtocolItem(table: ModelStatic<Model<any, any>>, protoc
   return item.data
 }
 
+async function getClosestProtocolItem(ddbPKFunction: Function, protocolId: string, timestamp: number) {
+  const table = getTVLCacheTable(ddbPKFunction)
+  const item: any = await table.findOne({
+    where: { id: protocolId, timestamp: { $lte: timestamp } },
+    attributes: ['data', 'timestamp'],
+    raw: true,
+    order: [['timestamp', 'DESC']],
+  })
+  if (!item) return null
+  item.data.SK = item.timestamp
+  return item.data
+}
+
+async function saveProtocolItem(ddbPKFunction: Function, protocolId: string, timestamp: number, data: any) {
+  const table = getTVLCacheTable(ddbPKFunction)
+  await table.upsert({
+    id: protocolId,
+    timestamp,
+    data,
+    timeS: getTimestampString(timestamp, isHourlyDDBPK(ddbPKFunction)),
+  })
+}
+
 export {
   TABLES,
   sequelize,
   getLatestProtocolItem,
   getAllProtocolItems,
+  getClosestProtocolItem,
+  saveProtocolItem,
   initializeTVLCacheDB,
 }

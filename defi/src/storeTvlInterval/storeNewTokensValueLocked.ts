@@ -4,6 +4,7 @@ import { getDay, getTimestampAtStartOfDay, secondsInDay } from "../utils/date";
 import { TokensValueLocked, tvlsObject } from "../types";
 import getTVLOfRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
 import { sendMessage } from "../utils/discord";
+import { saveProtocolItem } from "../api2/db";
 
 type PKconverted = (id: string) => string;
 
@@ -25,6 +26,7 @@ export default async (
     SK: unixTimestamp,
     ...tvl,
   });
+  saveProtocolItem(hourlyTvl, protocol.id, unixTimestamp, tvl);
 
   const closestDailyRecord = await getTVLOfRecordClosestToTimestamp(
     dailyTvl(protocol.id),
@@ -42,6 +44,7 @@ export default async (
       SK: getTimestampAtStartOfDay(unixTimestamp),
       ...tvl,
     });
+    saveProtocolItem(dailyTvl, protocol.id, unixTimestamp, tvl);
   }
 };
 async function checkForOutlierCoins(

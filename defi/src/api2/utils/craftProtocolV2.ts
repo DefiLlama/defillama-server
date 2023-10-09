@@ -7,9 +7,9 @@ import { getAvailableMetricsById } from "../../adaptors/data/configs";
 import { getRaises, getCachedMCap } from "../cache";
 import { TABLES, getAllProtocolItems, getLatestProtocolItem } from "../db/index";
 import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
-import { 
-  dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, dailyRawTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl, hourlyRawTokensTvl,
- } from "../../utils/getLastRecord";
+import {
+  dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl,
+} from "../../utils/getLastRecord"
 
 
 export default async function craftProtocolV2({
@@ -24,19 +24,16 @@ export default async function craftProtocolV2({
   skipAggregatedTvl: boolean;
 }) {
   const { misrepresentedTokens = false, hallmarks, methodology, ...restProtocolData } = protocolData as any
+  const dummyRes = ([] as any[])
 
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
-    getAllProtocolItems(useHourlyData ? TABLES.HOURLY_TVL : TABLES.DAILY_TVL, protocolData.id),
-    misrepresentedTokens
-      ? ([] as any[])
-      : getAllProtocolItems(useHourlyData ? TABLES.HOURLY_USD_TOKENS_TVL : TABLES.DAILY_USD_TOKENS_TVL, protocolData.id),
-    misrepresentedTokens
-      ? ([] as any[])
-      : getAllProtocolItems(useHourlyData ? TABLES.HOURLY_TOKENS_TVL : TABLES.DAILY_TOKENS_TVL, protocolData.id),
+    getAllProtocolItems(useHourlyData ? hourlyTvl : dailyTvl, protocolData.id),
+    misrepresentedTokens ? dummyRes : getAllProtocolItems(useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl, protocolData.id),
+    misrepresentedTokens ? dummyRes : getAllProtocolItems(useHourlyData ? hourlyTokensTvl : dailyTokensTvl, protocolData.id),
     getCachedMCap(protocolData.gecko_id),
-    getLatestProtocolItem(TABLES.HOURLY_TVL, protocolData.id),
-    getLatestProtocolItem(TABLES.HOURLY_USD_TOKENS_TVL, protocolData.id),
-    getLatestProtocolItem(TABLES.HOURLY_TOKENS_TVL, protocolData.id),
+    getLatestProtocolItem(hourlyTvl, protocolData.id),
+    getLatestProtocolItem(hourlyUsdTokensTvl, protocolData.id),
+    getLatestProtocolItem(hourlyTokensTvl, protocolData.id),
   ]);
 
   let response: IProtocolResponse = {
@@ -193,10 +190,10 @@ export default async function craftProtocolV2({
 
   if (methodology)
     response.methodology = methodology;
-  
+
   if (misrepresentedTokens === true)
     response.misrepresentedTokens = true;
-  
+
   if (hallmarks) {
     response.hallmarks = hallmarks;
     response.hallmarks?.sort((a, b) => a[0] - b[0]);

@@ -15,6 +15,10 @@ export function unixTSToHourString(unixTimestamp: number) {
   return `${year}-${month}-${day} ${hour}`
 }
 
+export function getTimestampString(unixTimestamp: number, hourly?: boolean) {
+  return hourly ? unixTSToHourString(unixTimestamp) : unixTSToDateString(unixTimestamp)
+}
+
 
 export function transformDDBToPGFormat(item: any, hourly?: boolean) {
   const { PK, SK, ...rest } = item
@@ -23,6 +27,6 @@ export function transformDDBToPGFormat(item: any, hourly?: boolean) {
     data: rest,
     id: PK.slice(PK.indexOf('#') + 1),
     timestamp: ts,
-    timeS: hourly ? unixTSToHourString(ts) : unixTSToDateString(ts),
+    timeS: getTimestampString(ts, hourly)
   }
 }

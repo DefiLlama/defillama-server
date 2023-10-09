@@ -9,7 +9,7 @@ import {
 import { getHistoricalValues } from "../../utils/shared/dynamodb";
 
 
-import { TABLES, syncTvlPostgresDB } from '../db/index'
+import { TABLES, initializeDB } from '../db/index'
 
 import protocols from "../../protocols/data";
 import { transformDDBToPGFormat } from "../utils";
@@ -26,7 +26,7 @@ const keyToRecord: any = {
 };
 
 async function main() {
-  await syncTvlPostgresDB()
+  await initializeDB()
 
   const items = [protocols, entities, treasuries].flat()
   shuffleArray(items)

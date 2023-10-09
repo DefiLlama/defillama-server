@@ -1,32 +1,31 @@
 import { Sequelize, Model, ModelStatic, } from 'sequelize'
 
-import ENV from '../env'
-import { initializeTables } from './tables'
+import getEnv from '../env'
+import { initializeTables, Tables as TABLES } from './tables'
 
-const dbOptions = {
-  host: ENV.host,
-  port: ENV.port,
-  username: ENV.user,
-  password: ENV.password,
-  database: ENV.db_name,
-  dialect: 'postgres',
-  logging: (msg: string) => {
-    // Log only error messages
-    if (msg.includes('ERROR')) {
-      console.error(msg);
+let sequelize: Sequelize | null = null
+
+async function initializeDB() {
+  if (!sequelize) {
+    const ENV = getEnv()
+    const dbOptions = {
+      host: ENV.host,
+      port: ENV.port,
+      username: ENV.user,
+      password: ENV.password,
+      database: ENV.db_name,
+      dialect: 'postgres',
+      logging: (msg: string) => {
+        if (msg.includes('ERROR')) { // Log only error messages
+          console.error(msg);
+        }
+      },
     }
-  },
-}
 
-const sequelize = new Sequelize(dbOptions as any);
-const TABLES = initializeTables(sequelize);
-
-let isDBSynced: any = null
-
-async function syncTvlPostgresDB() {
-  if (!isDBSynced)
-    isDBSynced = sequelize.sync()
-  return isDBSynced
+    sequelize = new Sequelize(dbOptions as any);
+    initializeTables(sequelize)
+    await sequelize.sync()
+  }
 }
 
 async function getAllProtocolItems(table: ModelStatic<Model<any, any>>, protocolId: string) {
@@ -57,5 +56,5 @@ export {
   sequelize,
   getLatestProtocolItem,
   getAllProtocolItems,
-  syncTvlPostgresDB,
+  initializeDB,
 }

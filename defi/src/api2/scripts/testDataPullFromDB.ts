@@ -1,4 +1,4 @@
-import { TABLES, getAllProtocolItems, getLatestProtocolItem, syncTvlPostgresDB, } from '../db'
+import { TABLES, getAllProtocolItems, getLatestProtocolItem, initializeDB, } from '../db'
 import { initCache, cache } from '../cache'
 import * as fs from 'fs'
 import craftProtocolV2 from '../utils/craftProtocolV2'
@@ -9,9 +9,9 @@ async function main() {
   await initCache()
   console.timeEnd('initCache')
 
-  console.time('syncTvlPostgresDB')
-  await syncTvlPostgresDB()
-  console.timeEnd('syncTvlPostgresDB')
+  console.time('initializeDB')
+  await initializeDB()
+  console.timeEnd('initializeDB')
 
 /*   console.time('getAllProtocolItems')
   const items = await getAllProtocolItems(TABLES.DAILY_TVL, '2245')

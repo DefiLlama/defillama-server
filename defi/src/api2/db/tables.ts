@@ -19,6 +19,26 @@ const defaultDataColumns = {
 }
 
 
+class DAILY_TVL extends Model { }
+class DAILY_TOKENS_TVL extends Model { }
+class DAILY_USD_TOKENS_TVL extends Model { }
+class DAILY_RAW_TOKENS_TVL extends Model { }
+class HOURLY_TVL extends Model { }
+class HOURLY_TOKENS_TVL extends Model { }
+class HOURLY_USD_TOKENS_TVL extends Model { }
+class HOURLY_RAW_TOKENS_TVL extends Model { }
+
+export const Tables = {
+  DAILY_TVL,
+  DAILY_TOKENS_TVL,
+  DAILY_USD_TOKENS_TVL,
+  DAILY_RAW_TOKENS_TVL,
+  HOURLY_TVL,
+  HOURLY_TOKENS_TVL,
+  HOURLY_USD_TOKENS_TVL,
+  HOURLY_RAW_TOKENS_TVL,
+}
+
 export function initializeTables(sequelize: Sequelize) {
   const getTableOptions = (tableName: string) => ({
     sequelize,
@@ -37,16 +57,6 @@ export function initializeTables(sequelize: Sequelize) {
       },
     ]
   })
-
-  class DAILY_TVL extends Model { }
-  class DAILY_TOKENS_TVL extends Model { }
-  class DAILY_USD_TOKENS_TVL extends Model { }
-  class DAILY_RAW_TOKENS_TVL extends Model { }
-  class HOURLY_TVL extends Model { }
-  class HOURLY_TOKENS_TVL extends Model { }
-  class HOURLY_USD_TOKENS_TVL extends Model { }
-  class HOURLY_RAW_TOKENS_TVL extends Model { }
-
   DAILY_TVL.init(defaultDataColumns, getTableOptions('dailyTvl'))
   DAILY_TOKENS_TVL.init(defaultDataColumns, getTableOptions('dailyTokensTvl'))
   DAILY_USD_TOKENS_TVL.init(defaultDataColumns, getTableOptions('dailyUsdTokensTvl'))
@@ -56,15 +66,5 @@ export function initializeTables(sequelize: Sequelize) {
   HOURLY_USD_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyUsdTokensTvl'))
   HOURLY_RAW_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyRawTokensTvl'))
 
-  const Tables = {
-    DAILY_TVL,
-    DAILY_TOKENS_TVL,
-    DAILY_USD_TOKENS_TVL,
-    DAILY_RAW_TOKENS_TVL,
-    HOURLY_TVL,
-    HOURLY_TOKENS_TVL,
-    HOURLY_USD_TOKENS_TVL,
-    HOURLY_RAW_TOKENS_TVL,
-  }
   return Tables
 }

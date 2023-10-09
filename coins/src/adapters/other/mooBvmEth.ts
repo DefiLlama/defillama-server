@@ -50,7 +50,7 @@ async function contractCalls(
     getTokenInfo(chain, [targets[1]], block),
   ]);
 
-  const [{ price: priceEth }] = await getTokenAndRedirectData(['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'], 'ethereum', timestamp);
+  const [{ price: priceEth }] = await getTokenAndRedirectData(['0x4200000000000000000000000000000000000006'], 'base', timestamp);
   const [{ price: priceBvm }] = await getTokenAndRedirectData(['0xd386a121991e51eab5e3433bf5b1cf4c8884b47a'], 'base', timestamp);
 
   let price = (reserve0 * priceEth + reserve1 * priceBvm) / totalSupply;

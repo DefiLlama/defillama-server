@@ -118,18 +118,23 @@ async function storeHistoricalCoinData(coinData: Write[]) {
 
 let solanaTokens: Promise<any>;
 let _solanaTokens: Promise<any>;
+
+async function cacheSolanaTokens() {
+  if (_solanaTokens === undefined) {
+    _solanaTokens = fetch(
+      "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json",
+    )
+    solanaTokens = _solanaTokens.then((r) => r.json())
+  }
+  return solanaTokens;
+}
+
 async function getSymbolAndDecimals(
   tokenAddress: string,
   chain: string,
   coingeckoSymbol: string,
 ) {
   if (chain === "solana") {
-    if (_solanaTokens === undefined) {
-      _solanaTokens = fetch(
-        "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json",
-      )
-      solanaTokens = _solanaTokens.then((r) => r.json())
-    }
     const token = ((await solanaTokens).tokens as any[]).find(
       (t) => t.address === tokenAddress,
     );
@@ -257,7 +262,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           const { decimals, symbol } =
             coinPlatformData[key] ??
             (await getSymbolAndDecimals(tokenAddress, chain, coin.symbol));
-
+          
           writes2.push({
             key,
             timestamp,
@@ -417,6 +422,7 @@ function shuffleArray(array: any[]) {
 }
 
 async function triggerFetchCoingeckoData(hourly: boolean) {
+  await cacheSolanaTokens()
   const step = 500;
   const coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,

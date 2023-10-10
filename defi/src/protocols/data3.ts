@@ -20235,7 +20235,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Beam"],
     module: "beam-swap/index.js",
-    twitter: "Beam Swap",
+    twitter: "BuildOnBeam",
     forkedFrom: ["Uniswap V2"],
     github: ["Merit-Circle"],
     listedAt: 1696919625

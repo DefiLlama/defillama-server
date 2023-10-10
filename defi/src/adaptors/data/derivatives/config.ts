@@ -384,5 +384,15 @@ export default {
     "based-markets": {
         "enabled": true,
         "id": "3609"
+    },
+    "blex": {
+        "enabled": true,
+        "id": "3605",
+        protocolsData: {
+            "derivatives": {
+                "id": "3605",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

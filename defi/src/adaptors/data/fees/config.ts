@@ -1367,5 +1367,9 @@ export default {
     "stars-arena": {
         "enabled": true,
         "id": "3564"
+    },
+    "based-markets": {
+        "enabled": true,
+        "id": "3609"
     }
 } as AdaptorsConfig

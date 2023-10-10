@@ -380,5 +380,9 @@ export default {
     "apollox": {
         "enabled": true,
         "id": "1772"
+    },
+    "based-markets": {
+        "enabled": true,
+        "id": "3609"
     }
 } as AdaptorsConfig

@@ -20218,6 +20218,28 @@ const data3: Protocol[] = [
     github: ["staking-foundation"],
     listedAt: 1696868095
   },
+  {
+    id: "3607",
+    name: "Beam Swap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.onbeam.com/",
+    description:
+      "Beam Swap is the primary decentralized exchange (DEX) on Beam, the gaming blockchain",
+    chain: "Beam",
+    logo: `${baseIconsUrl}/beam-swap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Beam"],
+    module: "beam-swap/index.js",
+    twitter: "Beam Swap",
+    forkedFrom: ["Uniswap V2"],
+    github: ["Merit-Circle"],
+    listedAt: 1696919625
+  },
 ]
 
 export default data3

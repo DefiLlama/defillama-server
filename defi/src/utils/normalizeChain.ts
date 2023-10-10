@@ -1912,6 +1912,18 @@ export const chainCoingeckoIds = {
     github: ['iotaledger'],
     chainId: 148,
   },
+  "Beam": {
+    geckoId: null,
+    github: ['Merit-Circle'],
+    symbol: "MC",
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Avalanche",
+      types: ["subnet"]
+    },
+    chainId: 4337,
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2385,7 +2397,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "manta":
       return "Manta"
     case "shimmer_evm":
-      return "ShimmerEVM"           
+      return "ShimmerEVM"       
+    case "beam":
+      return "Beam"    
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -18070,7 +18070,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Binance", "Avalanche", "Optimism"],
+    chains: ["Binance", "Avalanche", /*"Optimism"*/], // comment op until it is re-added in adapter
     module: "leech-protocol/index.js",
     oracles: [],
     forkedFrom: [],

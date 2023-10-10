@@ -20265,8 +20265,8 @@ const data3: Protocol[] = [
   {
     id: "3609",
     name: "basedmarkets",
-    address: null,
-    symbol: "-",
+    address: "base:0xba5e6fa2f33f3955f0cef50c63dcc84861eab663",
+    symbol: "BASED",
     url: "https://www.based.markets",
     description:
       "Intent-based p2p derivs.The CowSwap of perps,",
@@ -20280,7 +20280,30 @@ const data3: Protocol[] = [
     chains: ["Base"],
     module: "dummy.js",
     twitter: "basedmarkets",
+    github: ["Based-Markets"],
     forkedFrom: [],
+  },
+  {
+    id: "3610",
+    name: "Wild Base",
+    address: "base:0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E",
+    symbol: "WILDx",
+    url: "https://wildbase.farm",
+    description:
+      "Zap into one of the farms to earn WILDx as we prepare a new ecosystem of yield opportunities on BASE. All WILDx sales taxes are burned to reduce inflation and there are no non-native coins for whales to milk. Stay WILD and enjoy the yield!",
+    chain: "Base",
+    logo: `${baseIconsUrl}/wild-base.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    module: "wildbase/index.js",
+    twitter: "lodgecapital",
+    forkedFrom: [],
+    github: ["Lodge-Capital"],
+    listedAt: 1696937415
   },
 ]
 

@@ -20305,6 +20305,48 @@ const data3: Protocol[] = [
     github: ["Lodge-Capital"],
     listedAt: 1696937415
   },
+  {
+    id: "3611",
+    name: "Friendzy",
+    address: null,
+    symbol: "-",
+    url: "https://friendzy.gg",
+    description:
+      "Friendzy.gg is an easy-to-use platform where social media meets decentralized finance (DeFi).",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/friendzy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Solana"],
+    module: "friendzy-gg/index.js",
+    twitter: "Friendzygg_",
+    forkedFrom: [],
+    listedAt: 1696944488
+  },
+  {
+    id: "3612",
+    name: "hub3",
+    address: null,
+    symbol: "-",
+    url: "https://hub3.ee",
+    description:
+      "Join with Twitter, create your key, and dive into a dynamic marketplace. As keys change hands, their value shifts. Hold a key, start a chat.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/hub3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Solana"],
+    module: "hub3-ee/index.js",
+    twitter: "hub3ee",
+    forkedFrom: [],
+    listedAt: 1696944495
+  },
 ]
 
 export default data3

@@ -1,12 +1,15 @@
-import { addToDBWritesList, getTokenAndRedirectData } from '../utils/database';
+import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
 import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
 import { call } from "@defillama/sdk/build/abi/index";
 
 // Moo BVM (BVM-ETH)
-const targets = ['0x53713F956A4DA3F08B55A390B20657eDF9E0897B', '0xa3A4a4bf50B7b0d766b99C8d4B0F0E7fD02658a6'];
-const chain = 'base';
+const targets = [
+  "0x53713F956A4DA3F08B55A390B20657eDF9E0897B",
+  "0xa3A4a4bf50B7b0d766b99C8d4B0F0E7fD02658a6",
+];
+const chain = "base";
 
 export default async function getTokenPrice(timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
@@ -21,8 +24,13 @@ async function contractCalls(
   writes: Write[],
   timestamp: number,
 ) {
-
-  const [reserve0, reserve1, totalSupply, multiplier, tokenInfos] = await Promise.all([
+  const [
+    reserve0,
+    reserve1,
+    totalSupply,
+    multiplier,
+    tokenInfos,
+  ] = await Promise.all([
     call({
       target: targets[0],
       chain,
@@ -42,7 +50,7 @@ async function contractCalls(
       block,
     }),
     call({
-      targets: targets[1],
+      target: targets[1],
       chain,
       abi: contractAbiBeefy.getPricePerFullShare,
       block,
@@ -50,11 +58,21 @@ async function contractCalls(
     getTokenInfo(chain, [targets[1]], block),
   ]);
 
-  const [{ price: priceEth }] = await getTokenAndRedirectData(['0x4200000000000000000000000000000000000006'], 'base', timestamp);
-  const [{ price: priceBvm }] = await getTokenAndRedirectData(['0xd386a121991e51eab5e3433bf5b1cf4c8884b47a'], 'base', timestamp);
+  const [{ price: priceEth }] = await getTokenAndRedirectData(
+    ["0x4200000000000000000000000000000000000006"],
+    "base",
+    timestamp,
+  );
+  const [{ price: priceBvm }] = await getTokenAndRedirectData(
+    ["0xd386a121991e51eab5e3433bf5b1cf4c8884b47a"],
+    "base",
+    timestamp,
+  );
 
-  let price = (reserve0 * priceEth + reserve1 * priceBvm) / totalSupply;
-  price *= multiplier / 1e18; // mutiplier decimals removed
+  let price =
+    (reserve0.output * priceEth + reserve1.output * priceBvm) /
+    totalSupply.output;
+  price *= multiplier.output / 1e18; // mutiplier decimals removed
   price = priceEth / price;
 
   addToDBWritesList(
@@ -71,44 +89,42 @@ async function contractCalls(
 }
 
 const contractAbi = {
-  "reserve0": {
+  reserve0: {
     constant: true,
     inputs: [],
-    name: 'reserve0',
-    outputs: [{ name: '', type: 'uint256' }],
+    name: "reserve0",
+    outputs: [{ name: "", type: "uint256" }],
     payable: false,
-    stateMutability: 'view',
-    type: 'function',
+    stateMutability: "view",
+    type: "function",
   },
-  "reserve1": {
+  reserve1: {
     constant: true,
     inputs: [],
-    name: 'reserve1',
-    outputs: [{ name: '', type: 'uint256' }],
+    name: "reserve1",
+    outputs: [{ name: "", type: "uint256" }],
     payable: false,
-    stateMutability: 'view',
-    type: 'function',
+    stateMutability: "view",
+    type: "function",
   },
-  "totalSupply": {
+  totalSupply: {
     constant: true,
     inputs: [],
-    name: 'totalSupply',
-    outputs: [{ name: '', type: 'uint256' }],
+    name: "totalSupply",
+    outputs: [{ name: "", type: "uint256" }],
     payable: false,
-    stateMutability: 'view',
-    type: 'function',
+    stateMutability: "view",
+    type: "function",
   },
 };
 const contractAbiBeefy = {
-  "getPricePerFullShare": {
+  getPricePerFullShare: {
     constant: true,
     inputs: [],
-    name: 'getPricePerFullShare',
-    outputs: [{ name: '', type: 'uint256' }],
+    name: "getPricePerFullShare",
+    outputs: [{ name: "", type: "uint256" }],
     payable: false,
-    stateMutability: 'view',
-    type: 'function',
+    stateMutability: "view",
+    type: "function",
   },
 };
-
-

@@ -131,4 +131,5 @@ export default {
   zkSwap: require("./markets/uniswap"),
   chai: require("./yield/chai"),
   ondo: require("./rwa/ondo"),
+  mooBvm: require("./other"),
 };

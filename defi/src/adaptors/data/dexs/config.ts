@@ -2038,5 +2038,15 @@ export default {
         parentId: "Velocimeter",
         "enabled": true,
         "id": "3291"
+    },
+    "blex": {
+        "enabled": true,
+        "id": "3605",
+        protocolsData: {
+            "swap": {
+                "id": "3605",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

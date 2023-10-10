@@ -17,6 +17,7 @@ import shlb_ from "./shlb";
 import axios from "axios";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
+import mooBvmAdapter from "./mooBvmEth";
 
 export const shlb = shlb_;
 
@@ -280,4 +281,9 @@ export async function buck(timestamp: number = 0) {
   );
 
   return writes;
+}
+
+export async function mooBvm(timestamp: number = 0) {
+  console.log("starting moo bvm eth");
+  return mooBvmAdapter(timestamp);
 }

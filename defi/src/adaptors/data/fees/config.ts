@@ -1371,5 +1371,9 @@ export default {
     "based-markets": {
         "enabled": true,
         "id": "3609"
+    },
+    "allbridge": {
+        "enabled": true,
+        "id": "577"
     }
 } as AdaptorsConfig

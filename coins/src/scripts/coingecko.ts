@@ -178,6 +178,26 @@ async function getSymbolAndDecimals(
     }
   }
 }
+async function getPlatformData(coins: Coin[]) {
+  const coinIds = coins.map((c) => c.id);
+  const coinData = await retryCoingeckoRequest(
+    `simple/price?ids=${coinIds.join(
+      ",",
+    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true`,
+    10,
+  );
+  const filteredCoins = coins.filter(
+    (coin) => coinData[coin.id]?.usd !== undefined,
+  );
+  const keyMap: { [id: string]: string[] } = {};
+  filteredCoins.map((f: Coin) =>
+    Object.entries(f.platforms).map((p: any) => {
+      if (!(f.id in keyMap)) keyMap[f.id] = [];
+      keyMap[f.id].push(`${p[0]}:${p[1]}`);
+    }),
+  );
+  return keyMap;
+}
 const blacklist = [];
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinIds = coins.map((c) => c.id);
@@ -314,8 +334,12 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 }
 
 const HOUR = 3600;
-async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
-  const toTimestamp = getCurrentUnixTimestamp();
+async function getAndStoreHourly(
+  coin: Coin,
+  rejected: Coin[],
+  platformData: { [id: string]: string[] },
+  toTimestamp: number = getCurrentUnixTimestamp(), // for backfilling
+) {
   const fromTimestamp = toTimestamp - (24 * HOUR - 5 * 60); // 24h - 5 mins
   const coinData = await retryCoingeckoRequest(
     `coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`,
@@ -353,13 +377,14 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
     false,
   );
 
-  await batchWrite2(
-    coinData.prices
-      .filter((price) => {
-        const ts = toUNIXTimestamp(price[0]);
-        return !writtenTimestamps[ts];
-      })
-      .map((price) => ({
+  if (!(coin.id in platformData)) return;
+  const writes = coinData.prices
+    .filter((price) => {
+      const ts = toUNIXTimestamp(price[0]);
+      return !writtenTimestamps[ts];
+    })
+    .map((price) =>
+      platformData[coin.id].map((PK: string) => ({
         timestamp: toUNIXTimestamp(price[0]),
         key: PK.replace("#", ":"),
         price: price[1],
@@ -368,8 +393,13 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
         symbol: coin.symbol,
         chain: "coingecko",
       })),
-    false,
-  );
+    )
+    .flat();
+
+  const step = 10000;
+  for (let i = 0; i < writes.length; i += step) {
+    await batchWrite2(writes.slice(i, i + step), false);
+  }
 }
 
 async function filterCoins(coins: Coin[]): Promise<Coin[]> {
@@ -405,9 +435,23 @@ async function fetchCoingeckoData(
       currentCoins = await filterCoins(currentCoins);
       hourlyCoins.push(...currentCoins);
     }
+
+    // COMMENTS HERE ARE USEFUL FOR BACKFILLING CG DATA!!!!
+    // let start = 1696786585;
+    // const timestamps: number[] = [];
+    // while (start < 1696877028) {
+    //   timestamps.push(start);
+    //   start += 3600;
+    // }
+    // timestamps.push(start + 3600);
+    const platformData = await getPlatformData(hourlyCoins);
+    // for (let i = 0; i < timestamps.length; i++) {
     await Promise.all(
-      hourlyCoins.map((coin) => getAndStoreHourly(coin, rejected)),
+      hourlyCoins.map(
+        (coin) => getAndStoreHourly(coin, rejected, platformData), //, timestamps[i]),
+      ),
     );
+    // }
   } else {
     for (let i = 0; i < coins.length; i += step) {
       requests.push(getAndStoreCoins(coins.slice(i, i + step), rejected));

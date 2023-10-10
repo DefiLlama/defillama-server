@@ -2043,7 +2043,7 @@ export default {
         "enabled": true,
         "id": "3605",
         protocolsData: {
-            "swap": {
+            "volume": {
                 "id": "3605",
                 "enabled": true,
             }

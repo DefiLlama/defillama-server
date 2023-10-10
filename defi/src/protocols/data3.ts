@@ -20249,7 +20249,7 @@ const data3: Protocol[] = [
     description:
       "Welcome to New Bitcoin City - a radically new way to explore Bitcoin beyond just a currency. Join the community.",
     chain: "NOS",
-    logo: `${baseIconsUrl}/newbitcoin.jpg`,
+    logo: `${baseIconsUrl}/new-bitcoin.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

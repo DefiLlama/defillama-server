@@ -20240,6 +20240,28 @@ const data3: Protocol[] = [
     github: ["Merit-Circle"],
     listedAt: 1696919625
   },
+  {
+    id: "3608",
+    name: "New Bitcoin",
+    address: "nos:0x111808AbE352c8003e0eFfcc04998EaB26Cebe3c",
+    symbol: "BTC",
+    url: "https://newbitcoincity.com",
+    description:
+      "Welcome to New Bitcoin City - a radically new way to explore Bitcoin beyond just a currency. Join the community.",
+    chain: "NOS",
+    logo: `${baseIconsUrl}/newbitcoin.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["NOS"],
+    module: "newbitcoin/index.js",
+    twitter: "NewBitcoinCity",
+    forkedFrom: [],
+    github: ["TrustlessComputer"],
+    listedAt: 1696933150
+  },
 ]
 
 export default data3

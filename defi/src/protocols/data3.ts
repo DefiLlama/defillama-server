@@ -20262,6 +20262,26 @@ const data3: Protocol[] = [
     github: ["TrustlessComputer"],
     listedAt: 1696933150
   },
+  {
+    id: "3609",
+    name: "basedmarkets",
+    address: null,
+    symbol: "-",
+    url: "https://www.based.markets",
+    description:
+      "Intent-based p2p derivs.The CowSwap of perps,",
+    chain: "Base",
+    logo: `${baseIconsUrl}/basedmarkets.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "basedmarkets",
+    forkedFrom: [],
+  },
 ]
 
 export default data3

@@ -495,9 +495,9 @@ async function triggerFetchCoingeckoData(hourly: boolean) {
 
 if (process.argv.length < 3) {
   console.error(`Missing argument, you need to provide the hourly bool.
-    Eg: ts-node src/scripts/coingecko.ts true`);
+    Eg: ts-node coins/src/scripts/coingecko.ts true`);
   process.exit(1);
 } else {
   if (process.argv[2] == "true") triggerFetchCoingeckoData(true);
-  // triggerFetchCoingeckoData(false);
+  triggerFetchCoingeckoData(false);
 }

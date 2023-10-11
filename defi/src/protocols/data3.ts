@@ -10347,6 +10347,7 @@ const data3: Protocol[] = [
     module: "levvy-fi/index.js",
     twitter: "levvyfinance",
     audit_links: ["https://levvyprojects.nyc3.cdn.digitaloceanspaces.com/Levvy%20Finance%20Audit.pdf"],
+    parentProtocol: "parent#levvy-finance",
     listedAt: 1687861737
   },
   {
@@ -20479,6 +20480,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://tas.nyc3.cdn.digitaloceanspaces.com/Levvy%20v2%20Audit.pdf"],
     oracles: [],
+    parentProtocol: "parent#levvy-finance",
     listedAt: 1697055242
   },
   {

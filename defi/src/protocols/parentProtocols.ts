@@ -2830,6 +2830,17 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "contango.js",
     twitter: "Contango_xyz",
   },
+  {
+    id: "parent#levvy-finance",
+    name: "Levvy Finance",
+    url: "https://www.levvy.fi",
+    description: "An NFT lending protocol on Cardano.  Borrow $ADA instantly with your Cardano NFT's or lend $ADA to earn $ADA",
+    logo: `${baseIconsUrl}/levvy.fi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "levvyfinance",
+  },
 ];
 
 export default parentProtocols;

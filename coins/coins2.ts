@@ -81,7 +81,7 @@ export async function translateItems(
       const key = PK.substring(PK.indexOf("#") + 1);
       const chain = key.substring(0, key.indexOf(":"));
       if (redirect) {
-        redirects[redirect] = i;
+        redirects[i.PK] = redirect;
       } else if (price == null) {
         errors.push(key);
       } else {
@@ -100,8 +100,8 @@ export async function translateItems(
     });
 
   const redirectData = await Promise.all(
-    Object.values(redirects).map((r: DbEntry) => {
-      return getTVLOfRecordClosestToTimestamp(r.redirect, r.SK, 12 * 60 * 60);
+    [...new Set(Object.values(redirects))].map((r: string) => {
+      return getTVLOfRecordClosestToTimestamp(r, 0, 12 * 60 * 60);
     }),
   );
 
@@ -110,24 +110,26 @@ export async function translateItems(
       errors.push(Object.keys(redirects)[i]);
       return;
     }
+    const targets = items.filter((i: any) => i.redirect == r.PK);
 
-    const timestamp = redirects[r.PK].timestamp ?? getCurrentUnixTimestamp();
-    const adapter = redirects[r.PK].adapter ?? null;
-    const decimals = redirects[r.PK].decimals ?? null;
-    const { PK, confidence, symbol, mcap } = redirects[r.PK];
-
-    const key = PK.substring(PK.indexOf("#") + 1);
-    const chain = key.substring(0, key.indexOf(":"));
-    remapped.push({
-      price: r.price,
-      timestamp,
-      key,
-      chain,
-      adapter,
-      confidence,
-      decimals,
-      symbol,
-      mcap,
+    targets.map((t: any) => {
+      if (t.SK != 0) return;
+      const { mcap, price } = r;
+      const { timestamp, adapter, symbol, PK, confidence } = t;
+      const decimals = t.decimals ?? null;
+      const key = PK.substring(PK.indexOf("#") + 1);
+      const chain = key.substring(0, key.indexOf(":"));
+      remapped.push({
+        price,
+        timestamp,
+        key,
+        chain,
+        adapter,
+        confidence,
+        decimals,
+        symbol,
+        mcap,
+      });
     });
   });
 

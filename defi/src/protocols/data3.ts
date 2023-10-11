@@ -20369,6 +20369,28 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     listedAt: 1697018504
   },
+  {
+    id: "3614",
+    name: "Redemption Finance",
+    address: "base:0x41E99e0F73a88947C52070FF67C19B7aBc171A54",
+    symbol: "RDMP",
+    url: "https://rdmp.finance",
+    description:
+      "Redemption Finance is a revolutionary yield farming protocol designed to offer you a second chance in the decentralized finance (DeFi) world. Missed the Bitcoin or Ethereum boom? Redemption Finance is your sanctuary for unparalleled earning opportunities. With unique features like Clean Slate, Interventions, and Second Chances, we are redefining what it means to farm in DeFi.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/redemption-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    module: "redemptionfi/index.js",
+    twitter: "RedemptionFi",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1697029818
+  },
 ]
 
 export default data3

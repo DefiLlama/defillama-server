@@ -1375,5 +1375,9 @@ export default {
     "allbridge": {
         "enabled": true,
         "id": "577"
+    },
+    "cipher": {
+        "enabled": true,
+        "id": "3563"
     }
 } as AdaptorsConfig

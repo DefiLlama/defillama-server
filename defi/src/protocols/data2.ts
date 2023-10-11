@@ -3467,13 +3467,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1532",
-    name: "Proton Loan",
+    name: "MetalX Lending", // rebrand from proton loan
     address: "proton:LOAN-proton-loan.token",
     symbol: "LOAN",
     url: "https://protonloan.com",
-    description: "Proton Loan is a DeFi lending protocol powered by the Proton blockchain.",
+    description: "MetalX Lending is a DeFi lending protocol powered by the XPR Network",
     chain: "Proton",
-    logo: `${baseIconsUrl}/proton-loan.png`,
+    logo: `${baseIconsUrl}/metalx-lending.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "proton-loan",
@@ -3483,7 +3483,7 @@ const data2: Protocol[] = [
     oracles: ["TWAP"],
     forkedFrom: [],
     module: "proton-loan/index.js",
-    twitter: "ProtonLoan",
+    twitter: "MetalXApp",
     audit_links: ["https://docs.protonloan.com/developers/audit"],
     language: "C++",
     listedAt: 1646953530,
@@ -5197,13 +5197,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1609",
-    name: "Proton Swap",
+    name: "MetalX Swap", // rebrand from proton swap
     address: null,
     symbol: "-",
     url: "https://www.protonswap.com/swap",
-    description: "Instant on-chain token swaps on Proton with 0 gas fee.",
+    description: "Instant on-chain token swaps on XPR Network with 0 gas fee.",
     chain: "Proton",
-    logo: `${baseIconsUrl}/proton-swap.jpg`,
+    logo: `${baseIconsUrl}/metalx-swap.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -5213,10 +5213,9 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "proton-swap/index.js",
-    twitter: "ProtonSwap",
+    twitter: "MetalXApp",
     audit_links: ["https://drive.google.com/file/d/1sSr8DKzdHO4aV6Xeh3JaNuAkvH7Yxuqr/view?usp=sharing"],
     listedAt: 1649097710,
-    github: ["ProtonProtocol"]
   },
   {
     id: "1610",
@@ -27991,14 +27990,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2619",
-    name: "Proton Dex",
+    name: "MetalX Dex", // rebrand from Proton Dex
     address: "proton:",
     symbol: "-",
-    url: "https://protondex.com",
+    url: "https://app.metalx.com/dex",
     description:
-      "Dex on Proton Chain",
+      "Dex on XPR Network",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/proton-dex.png`,
+    logo: `${baseIconsUrl}/metalx-dex.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -28006,9 +28005,9 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Proton"],
     module: "proton-dex/index.js",
-    twitter: "ProtonXPR",
+    twitter: "MetalXApp",
     oracles: [],
-    listedAt: 1677755490
+    listedAt: 1677755490,
   },
   {
     id: "2620",

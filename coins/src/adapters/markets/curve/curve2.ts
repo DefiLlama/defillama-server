@@ -240,6 +240,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
             poolData.symbol = await api.call({ target: poolData.lpToken, abi: 'string:symbol' })
             poolData.name = await api.call({ target: poolData.lpToken, abi: 'string:name' })
           } catch (e) {
+            delete cPoolInfo[pool];
             console.log('failed to get lp token', e)
             return;
           }

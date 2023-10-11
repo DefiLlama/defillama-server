@@ -20347,6 +20347,27 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1696944495
   },
+  {
+    id: "3613",
+    name: "Scroll Swap",
+    address: null,
+    symbol: "-",
+    url: "https://scrollswap.app/#/swap",
+    description:
+      "Scroll_Swap committed to delivering a secure, user-friendly, and rewarding platform that caters to both crypto veterans ",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/scroll-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    module: "scrollswap/index.js",
+    twitter: "Scroll_1Dex",
+    forkedFrom: ["Uniswap V2"],
+    listedAt: 1697018504
+  },
 ]
 
 export default data3

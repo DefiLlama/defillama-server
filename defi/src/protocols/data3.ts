@@ -19017,8 +19017,7 @@ const data3: Protocol[] = [
     description: "Trade crypto and earn rewards on the innovative decentralized exchange with concentrated liquidity on Manta Pacific chain.",
     chain: "Manta",
     logo: `${baseIconsUrl}/apertureswap.jpg`,
-    audits: "1",
-    audit_links: ["https://docs.aperture.finance/docs/transparency/security-audit"],
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -19029,6 +19028,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"], 
     twitter: "ApertureFinance",
     parentProtocol: "parent#aperture-finance",
+    audit_links: ["https://docs.aperture.finance/docs/transparency/security-audit"],
     listedAt: 1695550869
   },
   {

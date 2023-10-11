@@ -8,7 +8,7 @@ import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimest
 type QueryParams = {
   coins: string[];
   period: number;
-  lookForward: boolean;
+  lookForward: string;
   timestamp: number;
 };
 type PriceChangeResponse = {
@@ -95,7 +95,7 @@ const handler = async (
   const params = formParamsObject(event);
   const timestamps = getTimestampsArray(
     params.timestamp,
-    params.lookForward,
+    params.lookForward == "true",
     params.period,
     2
   );

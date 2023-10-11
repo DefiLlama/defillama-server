@@ -5203,7 +5203,7 @@ const data2: Protocol[] = [
     url: "https://www.protonswap.com/swap",
     description: "Instant on-chain token swaps on XPR Network with 0 gas fee.",
     chain: "Proton",
-    logo: `${baseIconsUrl}/metalx-swap.jpg`,
+    logo: `${baseIconsUrl}/metalx-swap.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

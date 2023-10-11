@@ -20391,6 +20391,50 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1697029818
   },
+  {
+    id: "3615",
+    name: "DeeppDAO",
+    address: "arbitrum:0x9773367fB87CFbcB7F6A0AB9a9e3Ab635023b7Da",
+    symbol: "DEEPP",
+    url: "https://deepp.xyz",
+    description:
+      "Prediction market. Non custodial. Transparent. Trustless. Community owned.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/deepp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Arbitrum"],
+    module: "deepp/index.js",
+    twitter: "deeppxyz",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1697033590
+  },
+  {
+    id: "3616",
+    name: "Scrollswap Finance",
+    address: null,
+    symbol: "-",
+    url: "https://scrollswap.finance",
+    description:
+      "DeFi protocol provides liquidity, unlimited Web3 decentralized trading",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/scrollswap-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    module: "scrollswapfinance/index.js",
+    twitter: "ScrollSwap_ZKS",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1697033596
+  },
 ]
 
 export default data3

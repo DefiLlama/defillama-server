@@ -257,8 +257,8 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     let filteredIndicies: number[] = []
     let lps: string[] = []
     // set total supplies
-    const tryLps = rPoolList.map((p: any) => cPoolInfo[p].lpToken)
-    tryLps.map((l: any, i: number) => l == null ? filteredIndicies.push(i) : lps.push(l))
+    const tryLps = rPoolList.map((p: any) => cPoolInfo[p]?.lpToken)
+    tryLps.map((l: any, i: number) => l == null || l == undefined ? filteredIndicies.push(i) : lps.push(l))
     const supplies = await api.multiCall({ calls: lps, abi: 'erc20:totalSupply', permitFailure: true })
 
     // filter pools with no token 

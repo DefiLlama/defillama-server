@@ -1940,6 +1940,7 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
+    chainId: 534352,
   },
 } as unknown as {
   [chain: string]: {

@@ -898,7 +898,7 @@ export const chainCoingeckoIds = {
   },
   "Proton": {
     geckoId: "proton",
-    github: ['ProtonProtocol'],
+    github: ['ProtonProtocol', 'XPRNetwork'],
     symbol: "XPR",
     cmcId: "5350",
   },

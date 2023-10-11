@@ -1379,5 +1379,9 @@ export default {
     "cipher": {
         "enabled": true,
         "id": "3563"
+    },
+    "blex": {
+        "enabled": true,
+        "id": "3605"
     }
 } as AdaptorsConfig

@@ -15616,7 +15616,7 @@ const data3: Protocol[] = [
     module: "seaswap/index.js",
     twitter: "Seaswap_sei",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: [],
     listedAt: 1692264154,
   },
   {
@@ -15750,7 +15750,7 @@ const data3: Protocol[] = [
     module: "FuzioNetwork/index.js",
     twitter: "FuzioNetwork",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: [],
     listedAt: 1692289355
   },
   {

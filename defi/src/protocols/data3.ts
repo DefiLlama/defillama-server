@@ -20435,6 +20435,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1697033596
   },
+  {
+    id: "3617",
+    name: "NemoSwap",
+    address: null,
+    symbol: "-",
+    url: "https://nemo.renec.org/vi",
+    description:
+      "NemoSwap is the first DEX on the RENEC blockchain. Easily convert between Fiat and Cryptocurrencies with gasless transactions and low trading fee",
+    chain: "RENEC",
+    logo: `${baseIconsUrl}/nemoswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["RENEC"],
+    module: "nemoswap/index.js",
+    twitter: "NemoSwapDEX",
+    forkedFrom: ["Orca"],
+    audit_links: ["https://github.com/verichains/public-audit-reports/blob/main/Verichains%20Public%20Audit%20Report%20-%20NemoSwap%20Smartcontracts%20-%20v1.0.pdf"],
+    oracles: [],
+    listedAt: 1697054777
+  },
 ]
 
 export default data3

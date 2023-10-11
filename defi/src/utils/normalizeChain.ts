@@ -1942,6 +1942,12 @@ export const chainCoingeckoIds = {
     },
     chainId: 534352,
   },
+  "RENEC": {
+    geckoId: "renec",
+    symbol: "RENEC",
+    cmcId: "24143",
+    github: ["renec-chain"]
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2421,7 +2427,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "nos":
       return "NOS"  
     case "scroll":
-      return "Scroll"     
+      return "Scroll"
+    case "renec":
+      return "RENEC" 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

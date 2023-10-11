@@ -345,7 +345,16 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
     }
   });
 
-  return writesToRedis;
+  const filtered: Coin[] = [];
+  writesToRedis.map((c: Coin) => {
+    if (c.symbol && c.decimals) {
+      filtered.push(c);
+    } else {
+      console.log(`${c.key} has no decimals or symbol, skipping redis`);
+    }
+  });
+
+  return filtered;
 }
 function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
   const confidentValues: Coin[] = [];

@@ -22916,7 +22916,6 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Polygon"],
     module: "gyroscope/index.js",
-    treasury: "gyro.js",
     twitter: "GyroStable",
     forkedFrom: [],
     oracles: ["Chainlink", "TWAP", "Balancer Pool LP token"],

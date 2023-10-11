@@ -20458,6 +20458,52 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1697054777
   },
+  {
+    id: "3618",
+    name: "Levvy.fi Tokens",
+    address: null,
+    symbol: "-",
+    url: "https://levvy.fi/",
+    description:
+      "Levvy for Tokens is a P2P Orderbook Fungible Lending Protocol on Cardano. Offers fixed APYs and durations with variable LTVs set by users",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/levvy.fi-tokens.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Cardano"],
+    module: "levvy-fi-tokens/index.js",
+    twitter: "levvyfinance",
+    forkedFrom: [],
+    audit_links: ["https://tas.nyc3.cdn.digitaloceanspaces.com/Levvy%20v2%20Audit.pdf"],
+    oracles: [],
+    listedAt: 1697055242
+  },
+  {
+    id: "3619",
+    name: "Skydrome",
+    address: null,
+    symbol: "-",
+    url: "https://skydrome.finance/",
+    description:
+      "The first ve(3,3) exchange on Scroll. Empowering LPs, traders & protocols by optimizing the voted escrow model",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/skydrome.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    module: "skydrome/index.js",
+    twitter: "skydrome",
+    forkedFrom: ["Solidly"],
+    oracles: [],
+    github: ["SkyDromeFinance"],
+    listedAt: 1697055461
+  },
 ]
 
 export default data3

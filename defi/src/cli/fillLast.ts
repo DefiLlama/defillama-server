@@ -4,9 +4,9 @@ import { getProtocol, } from "./utils";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import { importAdapter } from "./utils/importAdapter";
 import { util } from "@defillama/sdk";
-import { initializeTVLCacheDB } from "../api2/db";
+import { closeConnection } from "../api2/db";
 
-const { humanizeNumber: { humanizeNumber} } = util
+const { humanizeNumber: { humanizeNumber } } = util
 
 const main = async () => {
   const protocolToFill = process.argv[2]
@@ -14,7 +14,6 @@ const main = async () => {
   const now = Math.round(Date.now() / 1000);
 
   const adapterModule = await importAdapter(protocol)
-  await initializeTVLCacheDB()
   const ethereumBlock = undefined
   const chainBlocks = {}
   const tvl = await storeTvl(
@@ -28,11 +27,14 @@ const main = async () => {
     false,
     true,
     true,
+    undefined,
+    { overwriteExistingData: true }
   );
-  console.log("TVL", typeof tvl === "number" ? humanizeNumber(tvl):tvl)
+  console.log("TVL", typeof tvl === "number" ? humanizeNumber(tvl) : tvl)
 };
 
-main().then(() => {
+main().then(async () => {
   console.log('Done!!!')
+  await closeConnection()
   process.exit(0)
 })

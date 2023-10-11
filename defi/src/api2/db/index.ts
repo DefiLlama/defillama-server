@@ -10,6 +10,17 @@ import { getTimestampString } from '../utils'
 
 const dummyId = 'dummyId'
 
+type TVLCacheRecord = {
+  id: string,
+  timestamp: number,
+  data: any,
+  timeS: string,
+}
+
+type SaveRecordOptions = {
+  overwriteExistingData?: boolean,
+}
+
 const tableMapping = {
   [dailyTvl(dummyId)]: TABLES.DAILY_TVL,
   [dailyTokensTvl(dummyId)]: TABLES.DAILY_TOKENS_TVL,
@@ -52,11 +63,11 @@ async function initializeTVLCacheDB() {
 
     sequelize = new Sequelize(dbOptions as any);
     initializeTables(sequelize)
-    await sequelize.sync()
+    // await sequelize.sync() // needed only for table creation/update
   }
 }
 
-async function getAllProtocolItems(ddbPKFunction: Function, protocolId: string) {
+async function _getAllProtocolItems(ddbPKFunction: Function, protocolId: string) {
   const table = getTVLCacheTable(ddbPKFunction)
   const items = await table.findAll({
     where: { id: protocolId },
@@ -68,7 +79,7 @@ async function getAllProtocolItems(ddbPKFunction: Function, protocolId: string) 
   return items.map((i: any) => i.data)
 }
 
-async function getLatestProtocolItem(ddbPKFunction: Function, protocolId: string) {
+async function _getLatestProtocolItem(ddbPKFunction: Function, protocolId: string) {
   const table = getTVLCacheTable(ddbPKFunction)
   const item: any = await table.findOne({
     where: { id: protocolId },
@@ -81,7 +92,7 @@ async function getLatestProtocolItem(ddbPKFunction: Function, protocolId: string
   return item.data
 }
 
-async function getClosestProtocolItem(ddbPKFunction: Function, protocolId: string, timestamp: number) {
+async function _getClosestProtocolItem(ddbPKFunction: Function, protocolId: string, timestamp: number) {
   const table = getTVLCacheTable(ddbPKFunction)
   const item: any = await table.findOne({
     where: { id: protocolId, timestamp: { $lte: timestamp } },
@@ -94,15 +105,56 @@ async function getClosestProtocolItem(ddbPKFunction: Function, protocolId: strin
   return item.data
 }
 
-async function saveProtocolItem(ddbPKFunction: Function, protocolId: string, timestamp: number, data: any) {
+async function _saveProtocolItem(ddbPKFunction: Function, record: TVLCacheRecord, options: SaveRecordOptions = {}) {
+  record.timeS = getTimestampString(record.timestamp, isHourlyDDBPK(ddbPKFunction))
+  validateRecord(record)
+
   const table = getTVLCacheTable(ddbPKFunction)
-  await table.upsert({
-    id: protocolId,
-    timestamp,
-    data,
-    timeS: getTimestampString(timestamp, isHourlyDDBPK(ddbPKFunction)),
-  })
+
+  if (options.overwriteExistingData) {
+    await table.upsert(record)
+  } else {
+    await table.findOrCreate({
+      where: { id: record.id, timeS: record.timeS },
+      defaults: record,
+    })
+  }
 }
+
+function validateRecord(record: TVLCacheRecord) {
+  if (!record.id || typeof record.id !== 'string') throw new Error('Missing id')
+  if (!record.timeS || typeof record.timeS !== 'string') throw new Error('Missing timeS')
+  if (!record.timestamp || typeof record.timestamp !== 'number') throw new Error('Missing timestamp')
+  if (!record.data || typeof record.data !== 'object') throw new Error('Missing data')
+}
+
+async function closeConnection() {
+  if (!sequelize) return;
+  try {
+    const closing = sequelize.close()
+    sequelize = null
+    await closing
+    console.log('Database connection closed.');
+  } catch (error) {
+    console.error('Error while closing the database connection:', error);
+  }
+}
+
+function callWrapper(fn: Function) {
+  return async (...args: any[]) => {
+    try {
+      await initializeTVLCacheDB()
+      return fn(...args)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+}
+
+const getLatestProtocolItem = callWrapper(_getLatestProtocolItem)
+const getAllProtocolItems = callWrapper(_getAllProtocolItems)
+const getClosestProtocolItem = callWrapper(_getClosestProtocolItem)
+const saveProtocolItem = callWrapper(_saveProtocolItem)
 
 export {
   TABLES,
@@ -112,4 +164,10 @@ export {
   getClosestProtocolItem,
   saveProtocolItem,
   initializeTVLCacheDB,
+  closeConnection,
 }
+
+// Add a process exit hook to close the database connection
+process.on('beforeExit', closeConnection);
+process.on('exit', closeConnection);
+

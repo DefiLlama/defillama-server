@@ -44,6 +44,7 @@ export default async function (
   tvl: tvlsObject<number>,
   storePreviousData: boolean,
   usdTokenBalances: tvlsObject<TokensValueLocked>,
+  overwriteExistingData = false,
 ) {
   const hourlyPK = hourlyTvl(protocol.id);
   const lastHourlyTVLRecord = getLastRecord(hourlyPK).then(
@@ -173,15 +174,19 @@ export default async function (
     ...hourlyData,
   });
 
-  await saveProtocolItem(hourlyTvl, protocol.id, unixTimestamp, hourlyData)
+  const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
+  const writeOptions = { overwriteExistingData };
+  await Promise.all([
+    saveProtocolItem(hourlyTvl, { id: protocol.id, timestamp: unixTimestamp, data: hourlyData, }, writeOptions),
+    saveProtocolItem(dailyTvl, { id: protocol.id, timestamp: unixTimestamp, data: tvl, }, writeOptions),
+  ])
 
-  const closestDailyRecord = await getTVLOfRecordClosestToTimestamp(
+  const closestDailyRecord = overwriteExistingData ? null : await getTVLOfRecordClosestToTimestamp(
     dailyPK,
     unixTimestamp,
     secondsInDay * 1.5
   );
-  if (getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp)) {
-    const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
+  if (overwriteExistingData || getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp)) {
     // First write of the day
     await dynamodb.put({
       PK: dailyTvl(protocol.id),
@@ -189,6 +194,5 @@ export default async function (
       ...tvl,
     });
 
-    await saveProtocolItem(dailyTvl, protocol.id, dayTimestamp, tvl)
   }
 }

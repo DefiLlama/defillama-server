@@ -18,7 +18,7 @@ import { importAdapter } from "./utils/importAdapter";
 import * as sdk from '@defillama/sdk'
 import { Chain } from "@defillama/sdk/build/general";
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
-import { initializeTVLCacheDB } from "../api2/db";
+import { closeConnection } from "../api2/db";
 
 const { humanizeNumber: { humanizeNumber } } = sdk.util
 
@@ -91,12 +91,14 @@ async function getAndStore(
     false,
     false,
     true,
-    () => deleteItemsOnSameDay(dailyItems, timestamp),
+    // () => deleteItemsOnSameDay(dailyItems, timestamp),
+    undefined,
     {
       chainsToRefill,
       partialRefill: true,
       returnCompleteTvlObject: true,
       cacheData,
+      overwriteExistingData: true,
     }
   );
   if (typeof tvl === 'object') {
@@ -130,7 +132,6 @@ const main = async () => {
   for (const chain of chains)
     if (!adapter[chain]) throw new Error('Protocol does not have the chain:' + chain)
 
-    await initializeTVLCacheDB()
   const data = await Promise.all([
     getHistoricalValues(dailyRawTokensTvl(protocol.id)),
     getHistoricalValues(dailyTvl(protocol.id)),
@@ -169,8 +170,9 @@ const main = async () => {
     return clearProtocolCacheById(protocol.id)
 };
 
-main().then(() => {
+main().then(async () => {
   console.log('Done!!!')
+  await closeConnection()
   process.exit(0)
 })
 
@@ -183,4 +185,3 @@ function debugPrintDailyItems(items: any[] = [], key = '') {
   items = items.slice(0, 32)
   sdk.log(JSON.stringify(items?.map(i => new Date(1e3 * i).toDateString()), null, 2))
 }
-

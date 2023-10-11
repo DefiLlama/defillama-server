@@ -9,7 +9,7 @@ import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import * as sdk from '@defillama/sdk'
 import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, getLastRecord } from "./utils/getLastRecord";
-import { initializeTVLCacheDB } from "./api2/db/index";
+import { closeConnection } from "./api2/db";
 
 const maxRetries = 2;
 
@@ -17,7 +17,6 @@ const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 
 async function main() {
 
-  await initializeTVLCacheDB()
   const staleCoins: StaleCoins = {};
   let actions = [protocols, entities, treasuries].flat()
   // const actions = [entities, treasuries].flat()
@@ -92,8 +91,9 @@ async function cacheCurrentBlocks() {
 main().catch((e) => {
   console.error(e)
   process.exit(1)
-}).then(() => {
+}).then(async () => {
   sdk.log('Exitting now...')
+  await closeConnection()
   process.exit(0)
 })
 

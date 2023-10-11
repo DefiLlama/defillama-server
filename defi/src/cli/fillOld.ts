@@ -16,7 +16,7 @@ import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapter } from "./utils/importAdapter";
 import * as sdk from '@defillama/sdk'
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
-import { initializeTVLCacheDB } from "../api2/db";
+import { closeConnection } from "../api2/db";
 
 
 const { humanizeNumber: { humanizeNumber } } = sdk.util
@@ -75,9 +75,11 @@ async function getAndStore(
     false,
     false,
     true,
-    () => deleteItemsOnSameDay(dailyItems, timestamp),
+    // () => deleteItemsOnSameDay(dailyItems, timestamp),
+    undefined,
     {
-      returnCompleteTvlObject: true
+      returnCompleteTvlObject: true,
+      overwriteExistingData: true,
     }
   );
 
@@ -95,7 +97,6 @@ async function getAndStore(
 
 const main = async () => {
   sdk.log('DRY RUN: ', IS_DRY_RUN)
-  await initializeTVLCacheDB()
   const protocolToRefill = process.argv[2]
   sdk.log('Refilling for:', protocolToRefill)
   const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
@@ -110,12 +111,12 @@ const main = async () => {
   }
   let dailyItems: any = []
 
-  if (!IS_DRY_RUN)
+  /* if (!IS_DRY_RUN)
     dailyItems = await Promise.all([
       getHistoricalValues(dailyTvl(protocol.id)),
       getHistoricalValues(dailyTokensTvl(protocol.id)),
       getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
-    ]);
+    ]); */
   const start = adapter.start ?? 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
@@ -143,8 +144,9 @@ const main = async () => {
     return clearProtocolCacheById(protocol.id)
 
 };
-main().then(() => {
+
+main().then(async () => {
   console.log('Done!!!')
+  await closeConnection()
   process.exit(0)
 })
-

@@ -1930,6 +1930,17 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
+  "Scroll": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    github: ["scroll-tech"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2407,7 +2418,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "beam":
       return "Beam"
     case "nos":
-      return "NOS"    
+      return "NOS"  
+    case "scroll":
+      return "Scroll"     
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -57,6 +57,7 @@ const handler = async (_event: any) => {
           parentProtocol: protocol.parentProtocol,
           defillamaId: protocol.id,
           governanceID: protocol.governanceID,
+          geckoId: protocol.gecko_id
         };
       })
     )

@@ -1,5 +1,6 @@
 import { util } from "@defillama/sdk";
-import { Chain } from "@defillama/sdk/build/general";
+import { Chain, } from "@defillama/sdk/build/general";
+import providers from "@defillama/sdk/build/providers.json";
 
 const { blocks: { getBlocks, getCurrentBlocks, } } = util
 
@@ -36,5 +37,6 @@ function getChainlist(adapterModule: any) {
 export async function getCurrentBlock(options: blockObjects = {}) {
   let { chains, adapterModule } = options
   if (adapterModule) chains = getChainlist(adapterModule)
+  chains = chains?.filter((i: string) => (providers as any)[i])
   return getCurrentBlocks(chains)
 }

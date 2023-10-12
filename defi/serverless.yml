@@ -516,8 +516,8 @@ functions:
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     timeout: 900
-    events:
-      - schedule: cron(0 * * * ? *)
+  #  events:
+  #    - schedule: cron(0 * * * ? *)
   # triggerStoreTreasuries:
   #   handler: src/triggerStoreTreasuries.default
   #   timeout: 900

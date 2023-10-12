@@ -18,6 +18,7 @@ export enum AdaptorRecordType {
     // fees & revenue
     dailyFees = "df",
     dailyBribesRevenue = "dbr",
+    dailyTokenTaxes = "dtt",
     dailyRevenue = "dr",
     dailyUserFees = "duf",
     dailySupplySideRevenue = "dssr",

@@ -3293,7 +3293,7 @@ const data2: Protocol[] = [
     address: "terra:terra12hgwnpupflfpuual532wgrxu2gjp0tcagzgx4n",
     symbol: "MARS",
     url: "https://marsprotocol.io",
-    description: "Lend, borrow and earn with an autonomous credit protocol on the Terra blockchain. Open to all, closed to none",
+    description: `Mars is a multichain credit protocol enabling borrowing and lending primitives in the Cosmos. With Mars v2, the protocol introduced "Rover credit accounts" to Osmosis. Much like Binance subaccounts, credit accounts act as transferrable NFT containers where users can deposit assets, and use them as collateral for borrowing, spot or margin trading, leveraged yield farming, and hedging — all with a single liquidation point`,
     chain: "Terra",
     logo: `${baseIconsUrl}/mars-protocol.png`,
     audits: "2",

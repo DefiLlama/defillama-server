@@ -135,7 +135,10 @@ export async function translateItems(
 
   return remapped;
 }
-async function queryRedis(values: CoinRead[]): Promise<CoinDict> {
+export async function queryRedis(
+  values: CoinRead[],
+  error: number = margin,
+): Promise<CoinDict> {
   if (values.length == 0) return {};
   const keys: string[] = values.map((v: CoinRead) => v.key);
   // console.log(`${values.length} queried`);
@@ -150,10 +153,13 @@ async function queryRedis(values: CoinRead[]): Promise<CoinDict> {
   // console.log("mget finished");
   redis.quit();
   const jsonValues: { [key: string]: Coin } = {};
+  const now = getCurrentUnixTimestamp();
+
   res.map((v: string | null) => {
     if (!v) return;
     try {
       const json: Coin = JSON.parse(v);
+      if (now - json.timestamp > error) return;
       jsonValues[json.key] = json;
     } catch {
       console.error(`error parsing: ${v}`);
@@ -296,7 +302,7 @@ export async function readCoins2(
   await generateAuth();
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
-  const redisData: CoinDict = await queryRedis(currentQueries);
+  const redisData: CoinDict = await queryRedis(currentQueries, error);
 
   return historicalQueries.length > 0
     ? await combineRedisAndPostgresData(
@@ -311,7 +317,8 @@ export async function readCoins2(
 export async function readFirstTimestamp(pk: string) {
   await generateAuth();
   const sql = postgres(auth[0]);
-  const [chain, key] = pk.split(":");
+  const chain = pk.split(":")[0];
+  const key = pk.substring(pk.split(":")[0].length + 1);
   const read = await sql`
     select MIN (timestamp) from splitkey where 
     chain = ${chain} and key = ${key}
@@ -372,7 +379,9 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
 
   return confidentValues;
 }
-async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
+export async function writeToRedis(strings: {
+  [key: string]: string;
+}): Promise<void> {
   if (Object.keys(strings).length == 0) return;
   // console.log("starting mset");
 
@@ -446,24 +455,6 @@ export async function batchWrite2(
 ) {
   await writeCoins2(values, batchPostgresReads, margin);
 }
-export async function queryPostgresMig(key: string): Promise<any[]> {
-  await generateAuth();
-  let sql = postgres(auth[0]);
-  const chain = key.split(":")[0];
-  const address = key.substring(key.split(":")[0].length + 1);
-  let data = await queryPostgresWithRetry(
-    sql`
-    select ${sql(pgColumns)} from splitkey where 
-    key in ${sql([Buffer.from(address, "utf8")])}
-    and 
-    chain in ${sql([Buffer.from(chain, "utf8")])}
-    and
-    timestamp > ${1696287600}
-  `,
-    sql,
-  );
-  return data;
-}
 export async function batchReadPostgres(
   key: string,
   start: number,
@@ -488,3 +479,17 @@ export async function batchReadPostgres(
   ); //start  1696287600
   return data;
 }
+
+// writeCoins2([
+//   {
+//     price: 0.010232641688277498,
+//     chain: "elrond",
+//     timestamp: 1697120031,
+//     key: "elrond:zpay-247875",
+//     adapter: "xexchange",
+//     confidence: 0.9,
+//     decimals: 18,
+//     symbol: "ZPAY",
+//     mcap: undefined,
+//   },
+// ]); // ts-node coins/coins2.ts

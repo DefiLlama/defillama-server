@@ -1383,5 +1383,15 @@ export default {
     "blex": {
         "enabled": true,
         "id": "3605"
+    },
+    "sudoswap-v1": {
+        parentId: "Sudoswap",
+        "enabled": true,
+        "id": "1917"
+    },
+    "sudoswap-v2": {
+        parentId: "Sudoswap",
+        "enabled": true,
+        "id": "3095"
     }
 } as AdaptorsConfig

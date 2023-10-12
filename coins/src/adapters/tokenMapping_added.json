@@ -445,12 +445,6 @@
       "symbol": "RAILBSC",
       "to": "ethereum:0xe76C6c83af64e4C60245D8C7dE953DF673a7A33D"
     },
-    "0x54261774905f3e6e9718f2abb10ed6555cae308a": {
-      "name": "Any Bitcoin",
-      "decimals": "8",
-      "symbol": "anyBTC",
-      "to": "coingecko#bitcoin"
-    },
     "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c": {
       "name": "Wrapped BNB",
       "decimals": "18",
@@ -699,77 +693,17 @@
     }
   },
   "fantom": {
-    "0x658b0c7613e890ee50b8c4bc6a3f41ef411208ad": {
-      "name": "fETH",
-      "decimals": "18",
-      "symbol": "FETH",
-      "to": "ethereum:0x0000000000000000000000000000000000000000"
-    },
     "0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx": {
       "name": "Fantom",
       "decimals": "18",
       "symbol": "FTM",
       "to": "ethereum:0x4e15361fd6b4bb609fa63c81a2be19d873717870"
     },
-    "0xbf07093ccd6adfc3deb259c557b61e94c1f66945": {
-      "name": "Moo Fantom BIFI",
-      "decimals": "18",
-      "symbol": "mooFantomBIFI",
-      "to": "fantom:0xd6070ae98b8069de6b494332d1a1a81b6179d960"
-    },
-    "0x0a03d2c1cfca48075992d810cc69bd9fe026384a": {
-      "name": "Moo Scream ETH",
-      "decimals": "18",
-      "symbol": "mooScreamETH",
-      "to": "ethereum:0x0000000000000000000000000000000000000000"
-    },
-    "0x97927abfe1abbe5429cbe79260b290222fc9fbba": {
-      "name": "Moo Scream WBTC",
-      "decimals": "18",
-      "symbol": "mooScreamWBTC",
-      "to": "ethereum:0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
-    },
-    "0x6dfe2aaea9daadadf0865b661b53040e842640f8": {
-      "name": "Moo Scream LINK",
-      "decimals": "18",
-      "symbol": "mooScreamLINK",
-      "to": "ethereum:0x514910771af9ca656af840dff83e8264ecf986ca"
-    },
-    "0x920786cff2a6f601975874bb24c63f0115df7dc8": {
-      "name": "Moo Scream DAI",
-      "decimals": "18",
-      "symbol": "mooScreamDAI",
-      "to": "ethereum:0x6b175474e89094c44da98b954eedeac495271d0f"
-    },
-    "0x49c68edb7aebd968f197121453e41b8704acde0c": {
-      "name": "Moo Scream FTM",
-      "decimals": "18",
-      "symbol": "mooScreamFTM",
-      "to": "fantom:0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83"
-    },
-    "0x7345a537a975d9ca588ee631befddfef34fd5e8f": {
-      "name": "Moo BinSPIRIT",
-      "decimals": "18",
-      "symbol": "mooBinSPIRIT",
-      "to": "fantom:0x5Cc61A78F164885776AA610fb0FE1257df78E59B"
-    },
-    "0xdbf31df14b66535af65aac99c32e9ea844e14501": {
-      "name": "renBTC",
-      "decimals": "8",
-      "symbol": "renBTC",
-      "to": "ethereum:0xeb4c2781e4eba804ce9a9803c67d0893436bb27d"
-    },
     "0x4a89338a2079a01edbf5027330eac10b615024e5": {
       "name": "USDL",
       "decimals": "18",
       "symbol": "USDL Stablecoin",
       "to": "fantom:0xad84341756bf337f5a0164515b1f6f993d194e1f"
-    },
-    "0xc0d9784fdba39746919bbf236eb73bc015fd351d": {
-      "name": "FTML",
-      "decimals": "18",
-      "symbol": "Fantom-L",
-      "to": "fantom:0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
     },
     "0xe3a486c1903ea794eed5d5fa0c9473c7d7708f40": {
       "name": "Creditum USD",
@@ -782,12 +716,6 @@
       "decimals": "18",
       "symbol": "SINGLE",
       "to": "cronos:0x0804702a4e749d39a35fde73d1df0b1f1d6b8347"
-    },
-    "0x95bf7e307bc1ab0ba38ae10fc27084bc36fcd605": {
-      "name": "USDC",
-      "decimals": "6",
-      "symbol": "anyUSDC",
-      "to": "ethereum:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
     },
     "0xc5cd01e988cd0794e05ab80f2bcdbdf13ce08bd3": {
       "name": "Wrapped Nova USD",
@@ -6389,12 +6317,6 @@
       "decimals": "18",
       "symbol": "ioDAI",
       "to": "coingecko#dai"
-    },
-    "0xd6070ae98b8069de6b494332d1a1a81b6179d960": {
-      "name": "xDollar Interverse Money",
-      "decimals": "18",
-      "symbol": "anyXIM",
-      "to": "coingecko#xdollar-stablecoin"
     },
     "0xec690cdd448e3cbb51ed135df72301c3265a8f80": {
       "name": "xDollar Interverse Money",

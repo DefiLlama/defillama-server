@@ -108,7 +108,8 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.dailyCreatorRevenue,
         AdaptorRecordType.dailySupplySideRevenue,
         AdaptorRecordType.dailyProtocolRevenue,
-        AdaptorRecordType.dailyBribesRevenue
+        AdaptorRecordType.dailyBribesRevenue,
+        AdaptorRecordType.dailyTokenTaxes
     ],
     [AdapterType.ROYALTIES]: [
         AdaptorRecordType.dailyRevenue,

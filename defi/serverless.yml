@@ -108,6 +108,7 @@ custom:
     concurrency: 4
     exclude:
       - pg-native
+      - pg-hstore
     # for debugging
     #keepOutputDirectory: true
   prune:

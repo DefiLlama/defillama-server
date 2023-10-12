@@ -2,7 +2,7 @@ const sdk = require('@defillama/sdk')
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-const api = 'https://nitter.net';
+const api = 'https://nitter.in.projectsegfau.lt';
 const getUrl = (handle, cursor = '') => `${api}/${handle}/search?f=tweets&q=&e-nativeretweets=on&e-replies=on&cursor=${cursor}`;
 const getUrlWithHref = (handle, href = '') => `${api}/${handle}/search${href}`;
 

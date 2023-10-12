@@ -134,9 +134,9 @@ const main = async () => {
 
   const data = await Promise.all([
     getHistoricalValues(dailyRawTokensTvl(protocol.id)),
-    getHistoricalValues(dailyTvl(protocol.id)),
-    getHistoricalValues(dailyTokensTvl(protocol.id)),
-    getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
+    // getHistoricalValues(dailyTvl(protocol.id)),
+    // getHistoricalValues(dailyTokensTvl(protocol.id)),
+    // getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
   ]);
   const [ rawTokenTvl, ...dailyItems] = data
   // const [dailyTvls, dailyTokens, dailyUsdTokens, ] = dailyItems

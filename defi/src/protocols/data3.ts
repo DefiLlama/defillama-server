@@ -20506,6 +20506,52 @@ const data3: Protocol[] = [
     github: ["SkyDromeFinance"],
     listedAt: 1697055461
   },
+  {
+    id: "3620",
+    name: "Xena Finance",
+    address: "base:0x981D41C115a2d48Cb1215D13Bda8f989d407c9c5",
+    symbol: "XEN",
+    url: "https://xena.finance",
+    description:
+      "Xena - Decentralized Perpetual Exchange.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/xena-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "xena/index.js",
+    twitter: "XenaFinance",
+    forkedFrom: ["Level Finance"],
+    oracles: ["Chainlink"],
+    audit_links: ["https://chainsecurity.com/security-audit/xena-smart-contracts"],
+    listedAt: 1697105728
+  },
+  {
+    id: "3621",
+    name: "Contrax Finance",
+    address: null,
+    symbol: "-",
+    url: "https://beta.contrax.finance",
+    description:
+      "Contrax is a staking and farming auto-compounder on Arbitrum that makes it easy to get started in DeFi with a few clicks and just ETH or USDC for all vaults.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/contrax-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum"],
+    module: "contrax-finance/index.js",
+    twitter: "Contrax_Finance",
+    forkedFrom: [],
+    oracles: [],
+    github: ["Contrax-co"],
+    listedAt: 1697105738
+  },
 ]
 
 export default data3

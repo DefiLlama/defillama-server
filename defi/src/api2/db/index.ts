@@ -146,7 +146,7 @@ function callWrapper(fn: Function) {
       await initializeTVLCacheDB()
       return fn(...args)
     } catch (e) {
-      console.error(e)
+      console.error((e as any)?.message)
     }
   }
 }

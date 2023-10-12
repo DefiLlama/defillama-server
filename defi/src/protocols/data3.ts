@@ -12262,7 +12262,7 @@ const data3: Protocol[] = [
     module: "lineabank/index.js",
     twitter: "LayerBankFi",
     forkedFrom: ["Compound V2"],
-    oracles: [],
+    oracles: ["Pyth"],
     listedAt: 1689773129,
     audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-LineaBank-v1.0.pdf"],
     github: ["layerbank"]
@@ -20058,7 +20058,7 @@ const data3: Protocol[] = [
     module: "perennial-v2/index.js",
     twitter: "perenniallabs",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     parentProtocol: "parent#perennial",
     listedAt: 1696533115
   },

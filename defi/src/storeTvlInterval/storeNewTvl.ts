@@ -175,11 +175,6 @@ export default async function (
   });
 
   const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
-  const writeOptions = { overwriteExistingData };
-  await Promise.all([
-    saveProtocolItem(hourlyTvl, { id: protocol.id, timestamp: unixTimestamp, data: hourlyData, }, writeOptions),
-    saveProtocolItem(dailyTvl, { id: protocol.id, timestamp: unixTimestamp, data: tvl, }, writeOptions),
-  ])
 
   const closestDailyRecord = overwriteExistingData ? null : await getTVLOfRecordClosestToTimestamp(
     dailyPK,
@@ -195,4 +190,10 @@ export default async function (
     });
 
   }
+
+  const writeOptions = { overwriteExistingData };
+  await Promise.all([
+    saveProtocolItem(hourlyTvl, { id: protocol.id, timestamp: unixTimestamp, data: hourlyData, }, writeOptions),
+    saveProtocolItem(dailyTvl, { id: protocol.id, timestamp: dayTimestamp, data: tvl, }, writeOptions),
+  ])
 }

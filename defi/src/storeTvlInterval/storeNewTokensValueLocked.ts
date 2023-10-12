@@ -20,7 +20,6 @@ type StoreTvlOptions = {
 
 export default async ({ protocol, unixTimestamp, tvl, hourlyTvl, dailyTvl, storePreviousData, overwriteExistingData, }: StoreTvlOptions) => {
   const hourlyPK = hourlyTvl(protocol.id);
-  const writeOptions = { overwriteExistingData };
   if (Object.keys(tvl).length === 0) {
     return;
   }
@@ -32,10 +31,6 @@ export default async ({ protocol, unixTimestamp, tvl, hourlyTvl, dailyTvl, store
   });
   const data = { id: protocol.id, timestamp: unixTimestamp, data: tvl }
   const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
-  await Promise.all([
-    saveProtocolItem(hourlyTvl, data, writeOptions),
-    saveProtocolItem(dailyTvl, { ...data, timestamp: dayTimestamp }, writeOptions),
-  ])
 
   const checkForOutliersCoins = hourlyPK.includes("hourlyUsdTokensTvl") && storePreviousData
   const closestDailyRecord = (overwriteExistingData && !checkForOutliersCoins) ? null : await getTVLOfRecordClosestToTimestamp(
@@ -55,6 +50,12 @@ export default async ({ protocol, unixTimestamp, tvl, hourlyTvl, dailyTvl, store
       ...tvl,
     });
   }
+
+  const writeOptions = { overwriteExistingData };
+  await Promise.all([
+    saveProtocolItem(hourlyTvl, data, writeOptions),
+    saveProtocolItem(dailyTvl, { ...data, timestamp: dayTimestamp }, writeOptions),
+  ])
 };
 async function checkForOutlierCoins(
   currentTvls: tvlsObject<TokensValueLocked>,

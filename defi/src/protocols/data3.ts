@@ -20244,7 +20244,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3608",
-    name: "New Bitcoin",
+    name: "New Bitcoin City",
     address: "nos:0x111808AbE352c8003e0eFfcc04998EaB26Cebe3c",
     symbol: "BTC",
     url: "https://newbitcoincity.com",

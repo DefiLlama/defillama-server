@@ -1,5 +1,8 @@
 export default {
   xexchange: require("./markets/xexchange"),
+  silo: require("./moneyMarkets/silo"),
+  hlp: require("./yield/hlp"),
+  digift: require("./rwa/digift"),
   gmxV2: require("./other/gmxV2"),
   timeswap: require("./yield/timeswap"),
   // wemix: require("./markets/uniswap"),
@@ -10,7 +13,6 @@ export default {
   sundaeswap: require("./markets/sundaeswap"),
   wingriders: require("./markets/wingriders"),
   metronome: require("./other"),
-  silo: require("./other"),
   buck: require("./other"),
   // ondo: require("./yield/ondo"),
   aave: require("./moneyMarkets/aave"),
@@ -129,4 +131,5 @@ export default {
   zkSwap: require("./markets/uniswap"),
   chai: require("./yield/chai"),
   ondo: require("./rwa/ondo"),
+  mooBvm: require("./other"),
 };

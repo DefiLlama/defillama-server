@@ -1,107 +1,11 @@
 {
   "sui": {
-    "0x06864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS": {
-      "name": "Cetus",
-      "decimals": "9",
-      "symbol": "CETUS",
-      "to": "coingecko#cetus-protocol"
-    }
   },
-  "pg": {
-    "0x0cf4071940782b640d0b595cb17bdf3e90869d70": {
-      "decimals": "18",
-      "symbol": "WPG",
-      "to": "coingecko#pego-network-2"
-    },
-    "0x0000000000000000000000000000000000000000": {
-      "decimals": "18",
-      "symbol": "PG",
-      "to": "coingecko#pego-network-2"
-    },
-    "0x02F9Bebf5E54968D8Cc2562356C91ECDE135801B": {
-      "decimals": "18",
-      "symbol": "USDT",
-      "to": "coingecko#tether"
-    }
-  },
-  "arbitrum": {
-    "0xfEb4DfC8C4Cf7Ed305bb08065D08eC6ee6728429": {
-      "decimals": "18",
-      "symbol": "PAXG",
-      "to": "coingecko#pax-gold"
-    },
-    "0xf202ab403cd7e90197ec0f010ee897e283037706": {
-      "decimals": "18",
-      "symbol": "SVUSD",
-      "to": "coingecko#savvy-usd"
-    }
-  },
-  "manta": {
-    "0x0000000000000000000000000000000000000000": {
-      "decimals": "18",
-      "symbol": "ETH",
-      "to": "coingecko#ethereum"
-    },
-    "0x0Dc808adcE2099A9F62AA87D9670745AbA741746": {
-      "decimals": "18",
-      "symbol": "WETH",
-      "to": "coingecko#ethereum"
-    },
-    "0xb73603c5d87fa094b7314c74ace2e64d165016fb": {
-      "decimals": "6",
-      "symbol": "USDC",
-      "to": "coingecko#usd-coin"
-    },
-    "0xf417f5a458ec102b90352f697d6e2ac3a3d2851f": {
-      "decimals": "6",
-      "symbol": "USDT",
-      "to": "coingecko#tether"
-    }
-  },
-  "flare": {
-    "0x0000000000000000000000000000000000000000": {
-      "decimals": "18",
-      "symbol": "FLR",
-      "to": "coingecko#flare-networks"
-    }
-  },
-  "kroma": {
-    "0x49A5010110a358d9069282873F3e7eCf6B41DC10": {
-      "decimals": "6",
-      "symbol": "USDC",
-      "to": "coingecko#usd-coin"
-    },
-    "0x0Cf7c2A584988871b654Bd79f96899e4cd6C41C0": {
-      "decimals": "6",
-      "symbol": "USDT",
-      "to": "coingecko#tether"
-    },
-    "0x4200000000000000000000000000000000000001": {
-      "decimals": "18",
-      "symbol": "WETH",
-      "to": "coingecko#weth"
-    },
-    "0x0000000000000000000000000000000000000000": {
-      "decimals": "18",
-      "symbol": "ETH",
-      "to": "coingecko#ethereum"
-    }
-  },
-  "ibc": {
-    "A7A5C44AA67317F1B3FFB27BAFC89C9CC04F61306F6F834F89A74B8F82D252A1": {
-      "decimals": "6",
-      "symbol": "SOMM",
-      "to": "coingecko#sommelier"
-    },
-    "FE98AAD68F02F03565E9FA39A5E627946699B2B07115889ED812D8BA639576A9": {
+  "polygon": {
+    "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359": {
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usdc-coin"
-    },
-    "590CE97A3681BC2058FED1F69B613040209DF3F17B7BD31DFFB8671C4D2CD99B": {
-      "decimals": "8",
-      "symbol": "SHD",
-      "to": "coingecko#shade-protocol"
     }
   }
 }

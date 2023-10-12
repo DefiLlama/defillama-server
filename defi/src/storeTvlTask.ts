@@ -5,10 +5,11 @@ import entities from "./protocols/entities";
 import treasuries from "./protocols/treasury";
 import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
 import { PromisePool } from '@supercharge/promise-pool'
-import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
+// import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import * as sdk from '@defillama/sdk'
 import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, getLastRecord } from "./utils/getLastRecord";
+import { closeConnection, initializeTVLCacheDB } from "./api2/db";
 
 const maxRetries = 2;
 
@@ -29,12 +30,13 @@ async function main() {
   // await cacheCurrentBlocks() // cache current blocks for all chains - reduce #getBlock calls
   await getCurrentBlock({ chains: [] })
   await initializeSdkInternalCache() // initialize sdk cache - this will cache abi call responses and reduce the number of calls to the blockchain
+  await initializeTVLCacheDB()
   let i = 0
   let skipped = 0
   let timeTaken = 0
   const startTimeAll = Date.now() / 1e3
   sdk.log('tvl adapter count:', actions.length)
-  console.log('[test env] AVAX_RPC:', process.env.AVAX_RPC)
+  sdk.log('[test env] AVAX_RPC:', process.env.AVAX_RPC)
   const alwaysRun = async (_adapterModule: any, _protocol: any) => true
 
   const runProcess = (filter = alwaysRun) => async (protocol: any) => {
@@ -48,6 +50,9 @@ async function main() {
       }
       // const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
       // NOTE: we are intentionally not fetching chain blocks, in theory this makes it easier for rpc calls as we no longer need to query at a particular block
+
+      // we are fetching current blocks but not using it because, this is to trigger check if rpc is returning stale data
+      await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
     } catch (e: any) { console.log('FAILED: ', protocol?.name, e?.message) }
@@ -80,18 +85,19 @@ function shuffleArray(array: any[]) {
   return array;
 }
 
-async function cacheCurrentBlocks() {
+/* async function cacheCurrentBlocks() {
   try {
     await getCurrentBlocks(['ethereum', "avax", "bsc", "polygon", "xdai", "fantom", "arbitrum", 'optimism', 'kava', 'era', 'base', 'harmony', 'moonriver', 'moonbeam', 'celo', 'heco', 'klaytn', 'metis', 'polygon_zkevm', 'linea', 'dogechain'])
     sdk.log('Cached current blocks ')
   } catch (e) { }
-}
+} */
 
 main().catch((e) => {
   console.error(e)
   process.exit(1)
-}).then(() => {
+}).then(async () => {
   sdk.log('Exitting now...')
+  await closeConnection()
   process.exit(0)
 })
 

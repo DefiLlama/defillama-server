@@ -8,7 +8,6 @@ import manualInputAdapter from "./manualInput";
 import realtAdapter from "./realt";
 import metronomeAdapter from "./metronome";
 import { contracts as metronomeContracts } from "./metronome";
-import siloAdapter, { contracts as siloContracts } from "./silo";
 import { wrappedGasTokens } from "../utils/gasTokens";
 import collateralizedAdapter from "./collateralizedAssets";
 import swethAdapter from "./sweth";
@@ -18,6 +17,7 @@ import shlb_ from "./shlb";
 import axios from "axios";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
+import mooBvmAdapter from "./mooBvmEth";
 
 export const shlb = shlb_;
 
@@ -32,13 +32,6 @@ export function metronome(timestamp: number = 0) {
     Object.keys(metronomeContracts).map((chain) =>
       metronomeAdapter(chain, timestamp),
     ),
-  );
-}
-
-export function silo(timestamp: number = 0) {
-  console.log("starting silo");
-  return Promise.all(
-    Object.keys(siloContracts).map((chain) => siloAdapter(chain, timestamp)),
   );
 }
 
@@ -207,6 +200,7 @@ export function manualInput(timestamp: number = 0) {
     manualInputAdapter("polygon", timestamp),
     manualInputAdapter("kava", timestamp),
     manualInputAdapter("polygon_zkevm", timestamp),
+    manualInputAdapter("ethereum", timestamp),
   ]);
 }
 export function realt(timestamp: number = 0) {
@@ -287,4 +281,9 @@ export async function buck(timestamp: number = 0) {
   );
 
   return writes;
+}
+
+export async function mooBvm(timestamp: number = 0) {
+  console.log("starting moo bvm eth");
+  return mooBvmAdapter(timestamp);
 }

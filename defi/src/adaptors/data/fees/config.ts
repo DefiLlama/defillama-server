@@ -678,7 +678,7 @@ export default {
         id: "2644"
     },
     "equalizer-exchange": {
-        parentId: "Equalizer0x",
+        parentId: "Equalizer",
         enabled: true,
         id: "2332"
     },
@@ -909,7 +909,7 @@ export default {
         "id": "2968"
     },
     "kwenta": {
-        "enabled": true,
+        "enabled": false,
         "id": "2981"
     },
     "gamma": {
@@ -1039,7 +1039,7 @@ export default {
         id: "3156"
     },
     "equity": {
-        parentId: "Equalizer0x",
+        parentId: "Equalizer",
         enabled: true,
         id: "3173"
     },
@@ -1349,5 +1349,49 @@ export default {
         parentId: "Tangible",
         "enabled": true,
         "id": "3528"
+    },
+    "solidly-v3": {
+        parentId: "Solidly Labs",
+        "enabled": true,
+        "id": "3481"
+    },
+    "friend3": {
+        "enabled": true,
+        "id": "3566"
+    },
+    "Scale": {
+        parentId: "Equalizer",
+        "enabled": true,
+        "id": "3575"
+    },
+    "stars-arena": {
+        "enabled": true,
+        "id": "3564"
+    },
+    "based-markets": {
+        "enabled": true,
+        "id": "3609"
+    },
+    "allbridge": {
+        "enabled": true,
+        "id": "577"
+    },
+    "cipher": {
+        "enabled": true,
+        "id": "3563"
+    },
+    "blex": {
+        "enabled": true,
+        "id": "3605"
+    },
+    "sudoswap-v1": {
+        parentId: "Sudoswap",
+        "enabled": true,
+        "id": "1917"
+    },
+    "sudoswap-v2": {
+        parentId: "Sudoswap",
+        "enabled": true,
+        "id": "3095"
     }
 } as AdaptorsConfig

@@ -272,6 +272,16 @@ const entities = [
         module: "entities/dwf-labs.js",
         twitter: "DWFLabs"
     },
+    {
+        id: "28",
+        name: "GSR",
+        url: "https://www.gsr.io/",
+        description: "GSR has ten years of deep crypto market expertise as a market maker and active, multi-stage investor. We build long-term relationships by offering exceptional service and trading capabilities tailored to the specific needs of our clients.",
+        logo: "gsr.jpg",
+        category: "VC",
+        module: "entities/gsr.js",
+        twitter: "GSR_io"
+    },
 ].map(entity=>({
     ...entity,
     id: `entity-${entity.id}`,

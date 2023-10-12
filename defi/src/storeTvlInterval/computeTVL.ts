@@ -180,7 +180,8 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
       readRequests.push(
         fetch("https://coins.llama.fi/prices?source=internal", {
           method: "POST",
-          body: JSON.stringify(body)
+          body: JSON.stringify(body),
+          // headers: { "Content-Type": "application/json" },
         }).then((r) => r.json()).then(r => {
           for (const [PK, value] of Object.entries(r.coins)) {
             priceCache[PK] = value

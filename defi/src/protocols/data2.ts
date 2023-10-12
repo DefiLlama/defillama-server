@@ -160,8 +160,8 @@ const data2: Protocol[] = [
     twitter: "CryptoAlgebra",
     language: "Solidity",
     audit_links: ["https://algebra.finance/static/Hacken_Algebra_Audit-317911476f86c632be77388fa51852c0.pdf"],
+    github: ["cryptoalgebra"],
     listedAt: 1644509096,
-    github: ["cryptoalgebra"]
   },
   {
     id: "1386",
@@ -3293,7 +3293,7 @@ const data2: Protocol[] = [
     address: "terra:terra12hgwnpupflfpuual532wgrxu2gjp0tcagzgx4n",
     symbol: "MARS",
     url: "https://marsprotocol.io",
-    description: "Lend, borrow and earn with an autonomous credit protocol on the Terra blockchain. Open to all, closed to none",
+    description: `Mars is a multichain credit protocol enabling borrowing and lending primitives in the Cosmos. With Mars v2, the protocol introduced "Rover credit accounts" to Osmosis. Much like Binance subaccounts, credit accounts act as transferrable NFT containers where users can deposit assets, and use them as collateral for borrowing, spot or margin trading, leveraged yield farming, and hedging — all with a single liquidation point`,
     chain: "Terra",
     logo: `${baseIconsUrl}/mars-protocol.png`,
     audits: "2",
@@ -3467,13 +3467,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1532",
-    name: "Proton Loan",
+    name: "MetalX Lending", // rebrand from proton loan
     address: "proton:LOAN-proton-loan.token",
     symbol: "LOAN",
     url: "https://protonloan.com",
-    description: "Proton Loan is a DeFi lending protocol powered by the Proton blockchain.",
+    description: "MetalX Lending is a DeFi lending protocol powered by the XPR Network",
     chain: "Proton",
-    logo: `${baseIconsUrl}/proton-loan.png`,
+    logo: `${baseIconsUrl}/metalx-lending.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "proton-loan",
@@ -3483,7 +3483,7 @@ const data2: Protocol[] = [
     oracles: ["TWAP"],
     forkedFrom: [],
     module: "proton-loan/index.js",
-    twitter: "ProtonLoan",
+    twitter: "MetalXApp",
     audit_links: ["https://docs.protonloan.com/developers/audit"],
     language: "C++",
     listedAt: 1646953530,
@@ -5197,13 +5197,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1609",
-    name: "Proton Swap",
+    name: "MetalX Swap", // rebrand from proton swap
     address: null,
     symbol: "-",
     url: "https://www.protonswap.com/swap",
-    description: "Instant on-chain token swaps on Proton with 0 gas fee.",
+    description: "Instant on-chain token swaps on XPR Network with 0 gas fee.",
     chain: "Proton",
-    logo: `${baseIconsUrl}/proton-swap.jpg`,
+    logo: `${baseIconsUrl}/metalx-swap.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -5213,10 +5213,9 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "proton-swap/index.js",
-    twitter: "ProtonSwap",
+    twitter: "MetalXApp",
     audit_links: ["https://drive.google.com/file/d/1sSr8DKzdHO4aV6Xeh3JaNuAkvH7Yxuqr/view?usp=sharing"],
     listedAt: 1649097710,
-    github: ["ProtonProtocol"]
   },
   {
     id: "1610",
@@ -11672,7 +11671,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1899",
-    name: "Taiga Protocol",
+    name: "Taiga Karura",
     address: "karura:-",
     symbol: "TAI",
     url: "https://www.taigaprotocol.io/",
@@ -11689,9 +11688,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "taiga/index.js",
     twitter: "TaigaProtocol",
+    parentProtocol: "parent#taiga-protocol",
     listedAt: 1657807133,
-    stablecoins: ["3usd"],
-    github: ["nutsfinance"]
   },
   {
     id: "1900",
@@ -11712,8 +11710,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "tapio/index.js",
     twitter: "TaigaProtocol",
+    parentProtocol: "parent#taiga-protocol",
     listedAt: 1657825354,
-    github: ["nutsfinance"]
   },
   {
     id: "1901",
@@ -16366,7 +16364,7 @@ const data2: Protocol[] = [
     name: "Ultron Staking Hub NFT",
     address: "ultron:0x3a4F06431457de873B588846d139EC0d86275d54",
     symbol: "ULX",
-    url: "https://ultron.foundation/validating-and-delegating",
+    url: "https://ultron.foundation/technology#staking-hub",
     description: "The Staking Hub is an innovative digital asset growth instrument developed by the Ultron Foundation that enables users to receive daily APR returns in ULX coins. The predefined amount of ULX supply is destined for the Staking Hub rewards distribution according to the tokenomics.. Every user has registration and dashboard, with ability to mint NFT and stake it on the protocol for 5 years with vesting schedule. All liquidity is locked on a staking smart-contract and could be claimed at certain timelines",
     chain: "Ultron",
     logo: `${baseIconsUrl}/ultron-staking-hub-nft.png`,
@@ -18900,6 +18898,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#frax-finance",
     listedAt: 1666641678
   },
+  /*
   {
     id: "2222",
     name: "Coinbase Wrapped Staked ETH",
@@ -18909,7 +18908,7 @@ const data2: Protocol[] = [
     url: "https://www.coinbase.com/price/coinbase-wrapped-staked-eth",
     description:
       "Coinbase is allowing customers who stake ETH to receive an ERC20 utility token called Coinbase Wrapped Staked ETH (“cbETH”), which is a liquid representation of their staked-ETH.",
-    chain: "Velas",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/coinbase-wrapped-staked-eth.png`,
     audits: "0",
     audit_note: null,
@@ -18924,6 +18923,7 @@ const data2: Protocol[] = [
     github: ["coinbase"],
     listedAt: 1666641682
   },
+  */
   {
     id: "2223",
     name: "Meteora vaults",
@@ -19456,7 +19456,7 @@ const data2: Protocol[] = [
   {
     id: "2245",
     name: "Starfish Finance",
-    address: "astar: 0xEe8138B3bd03905cF84aFE10cCD0dCcb820eE08E",
+    address: "astar:0xEe8138B3bd03905cF84aFE10cCD0dCcb820eE08E",
     symbol: "SEAN",
     url: "https://app.starfish.finance",
     description: "Starfish Finance is incubated by the Astar Network program. We are building the next generation multi-chain DeFi x NFT-Fi headquarters. Through gamification of user experience, Starfish Finance offers multi-asset swap, $DOT liquid staking and NFT-Fi on top of an enhanced Balancer V2 model to deepen the liquidity of crypto or NFT trading and financing.",
@@ -19466,12 +19466,12 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Dexes",
     chains: ["Astar"],
     module: "starfish-finance/index.js",
     twitter: "Starfish_Fi",
-    forkedFrom: ["Compound V2"],
-    oracles: ["DIA"],
+    forkedFrom: ["Balancer V2"],
+    oracles: [],
     parentProtocol: "parent#starfish",
     listedAt: 1667390191
   },
@@ -22357,7 +22357,7 @@ const data2: Protocol[] = [
   */
   {
     id: "2374",
-    name: "Contango",
+    name: "Contango V1",
     address: null,
     symbol: "-",
     url: "https://contango.xyz/",
@@ -22375,6 +22375,7 @@ const data2: Protocol[] = [
     twitter: "Contango_xyz",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#contango",
     listedAt: 1671577485
   },
   {
@@ -22914,7 +22915,6 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Polygon"],
     module: "gyroscope/index.js",
-    treasury: "gyro.js",
     twitter: "GyroStable",
     forkedFrom: [],
     oracles: ["Chainlink", "TWAP", "Balancer Pool LP token"],
@@ -24875,7 +24875,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2483",
-    name: "Perennial",
+    name: "Perennial V1",
     address: null,
     symbol: "-",
     url: "https://perennial.finance",
@@ -24894,6 +24894,7 @@ const data2: Protocol[] = [
     oracles: ["Chainlink"],
     forkedFrom: [],
     audit_links: ["https://github.com/equilibria-xyz/perennial-mono/tree/master/packages/perennial/audits"],
+    parentProtocol: "parent#perennial",
     listedAt: 1675165374
   },
   {
@@ -24909,7 +24910,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Algo-Stables",
+    category: "Decentralized Stablecoin",
     chains: ["Cardano"],
     oraclesByChain: {
       cardano: ["COTI's Oracle"],
@@ -25685,7 +25686,6 @@ const data2: Protocol[] = [
     twitter: "ParaSpace_NFT",
     oracles: ["Internal"],
     forkedFrom: [],
-    parentProtocol: "parent#parax",
     audit_links: ["https://docs.para.space/para-space/para-space/external-audits"],
     listedAt: 1675872130
   },
@@ -26866,7 +26866,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2570",
-    name: "marginfi",
+    name: "marginfi Lending",
     address: null,
     symbol: "-",
     url: "https://app.marginfi.com",
@@ -26884,6 +26884,7 @@ const data2: Protocol[] = [
     twitter: "marginfi",
     oracles: ["Pyth"],
     forkedFrom: [],
+    parentProtocol: "parent#marginfi",
     listedAt: 1677103747
   },
   {
@@ -27989,14 +27990,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2619",
-    name: "Proton Dex",
+    name: "MetalX Dex", // rebrand from Proton Dex
     address: "proton:",
     symbol: "-",
-    url: "https://protondex.com",
+    url: "https://app.metalx.com/dex",
     description:
-      "Dex on Proton Chain",
+      "Dex on XPR Network",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/proton-dex.png`,
+    logo: `${baseIconsUrl}/metalx-dex.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -28004,9 +28005,9 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Proton"],
     module: "proton-dex/index.js",
-    twitter: "ProtonXPR",
+    twitter: "MetalXApp",
     oracles: [],
-    listedAt: 1677755490
+    listedAt: 1677755490,
   },
   {
     id: "2620",
@@ -29718,8 +29719,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/overnight-dai+.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "overnight-dai",
+    cmcId: "25222",
     category: "CDP",
     chains: ["Optimism", "Arbitrum"],
     oracles: [],

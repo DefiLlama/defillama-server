@@ -898,7 +898,7 @@ export const chainCoingeckoIds = {
   },
   "Proton": {
     geckoId: "proton",
-    github: ['ProtonProtocol'],
+    github: ['ProtonProtocol', 'XPRNetwork'],
     symbol: "XPR",
     cmcId: "5350",
   },
@@ -1818,7 +1818,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "Ethereum",
+      chain: "BSC",
       types: ["L2", "gas"]
     },
     github: ['bnb-chain'],
@@ -1899,6 +1899,54 @@ export const chainCoingeckoIds = {
     },
     github: ['manta-network'],
     chainId: 169,
+  },
+  "ShimmerEVM": {
+    geckoId: "shimmer",
+    symbol: "SMR",
+    cmcId: "14801",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Shimmer",
+      types: ["L2"]
+    },
+    github: ['iotaledger'],
+    chainId: 148,
+  },
+  "Beam": {
+    geckoId: null,
+    github: ['Merit-Circle'],
+    symbol: "MC",
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Avalanche",
+      types: ["subnet"]
+    },
+    chainId: 4337,
+  },
+  "NOS": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Scroll": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    github: ["scroll-tech"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 534352,
+  },
+  "RENEC": {
+    geckoId: "renec",
+    symbol: "RENEC",
+    cmcId: "24143",
+    github: ["renec-chain"]
   },
 } as unknown as {
   [chain: string]: {
@@ -2371,7 +2419,17 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "kroma":
       return "Kroma" 
     case "manta":
-      return "Manta"           
+      return "Manta"
+    case "shimmer_evm":
+      return "ShimmerEVM"       
+    case "beam":
+      return "Beam"
+    case "nos":
+      return "NOS"  
+    case "scroll":
+      return "Scroll"
+    case "renec":
+      return "RENEC" 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

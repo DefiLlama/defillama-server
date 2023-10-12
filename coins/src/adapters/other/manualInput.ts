@@ -132,6 +132,20 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       redirect: "coingecko#kava",
     },
   ],
+  ethereum: [
+    {
+      symbol: "sdXAIFRAXBP3CRV-f-vault",
+      address: "0xd4ed44aa0ac185ad3024f5433442d9aef4b39ed8",
+      decimals: 18,
+      redirect: "asset#ethereum:0x326290a1b0004eee78fa6ed4f1d8f4b2523ab669",
+    },
+    {
+      symbol: "sdXAIFRAXBP3CRV-f-gauge",
+      address: "0x4b95f9f85857341cc2876c15c88091a04ee5cb31",
+      decimals: 18,
+      redirect: "asset#ethereum:0x326290a1b0004eee78fa6ed4f1d8f4b2523ab669",
+    },
+  ],
 };
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

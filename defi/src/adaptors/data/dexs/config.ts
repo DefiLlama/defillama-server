@@ -919,7 +919,7 @@ export default {
         "id": "1575"
     },
     "vortex-protocol": {
-        "enabled": true,
+        "enabled": false,
         "id": "1706"
     },
     "dinosaur-eggs": {
@@ -1211,7 +1211,7 @@ export default {
         "id": "1732"
     },
     "equalizer-exchange": {
-        parentId: "Equalizer0x",
+        parentId: "Equalizer",
         "enabled": true,
         "id": "2332"
     },
@@ -1735,7 +1735,7 @@ export default {
         },
     },
     "equity-spot": {
-        parentId: "Equalizer0x",
+        parentId: "Equalizer",
         enabled: true,
         id: "3173"
     },
@@ -2019,5 +2019,34 @@ export default {
     "chronos-v2": {
         "enabled": true,
         "id": "3341"
+    },
+    "solidly-v3": {
+        parentId: "Solidly Labs",
+        "enabled": true,
+        "id": "3481"
+    },
+    "tegro": {
+        "enabled": true,
+        "id": "3561"
+    },
+    "Scale": {
+        parentId: "Equalizer",
+        "enabled": true,
+        "id": "3575"
+    },
+    "fvm-exchange": {
+        parentId: "Velocimeter",
+        "enabled": true,
+        "id": "3291"
+    },
+    "blex": {
+        "enabled": true,
+        "id": "3605",
+        protocolsData: {
+            "volume": {
+                "id": "3605",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

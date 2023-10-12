@@ -206,7 +206,7 @@ export default {
         "id": "1018"
     },
     "palmswap": {
-        "enabled": true,
+        "enabled": false,
         "id": "3279"
     },
     "drift-protocol": {
@@ -380,5 +380,19 @@ export default {
     "apollox": {
         "enabled": true,
         "id": "1772"
+    },
+    "based-markets": {
+        "enabled": true,
+        "id": "3609"
+    },
+    "blex": {
+        "enabled": true,
+        "id": "3605",
+        protocolsData: {
+            "derivatives": {
+                "id": "3605",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

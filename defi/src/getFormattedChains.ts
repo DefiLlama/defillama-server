@@ -152,6 +152,9 @@ const formattedChains = async (category: string) => {
         if (extraPropPerChain[chain] === undefined) {
           extraPropPerChain[chain] = {};
         }
+        if(extraPropPerChain[chain][prop]?.tvl && extraPropPerChain[chain][prop]?.tvlPrevWeek && !extraPropPerChain[chain][prop]?.tvlPrevDay){
+          extraPropPerChain[chain][prop].tvlPrevDay = extraPropPerChain[chain][prop]?.tvl
+        }
         extraPropPerChain[chain][prop] = {
           tvl: (propValue.tvl || 0) + (extraPropPerChain[chain][prop]?.tvl ?? 0),
           tvlPrevDay: (propValue.tvlPrevDay || 0) + (extraPropPerChain[chain][prop]?.tvlPrevDay ?? 0),

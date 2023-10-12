@@ -38,6 +38,12 @@ provider:
         - dynamodb:GetItem
       Resource:
         - "arn:aws:dynamodb:eu-central-1:856461987125:table/secrets"
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:BatchGetItem
+      Resource:
+        - "arn:aws:dynamodb:eu-central-1:856461987125:table/prod-coins-table"
     - Effect: Allow # Lambda logs on cloudwatch
       Action:
         - logs:CreateLogGroup
@@ -92,6 +98,7 @@ provider:
     R2_ENDPOINT: ${file(./env.js):R2_ENDPOINT}
     INDEXA_DB: ${file(./env.js):INDEXA_DB}
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    APIKEY: ${file(./env.js):APIKEY}
 
 custom:
   stage: ${opt:stage, self:provider.stage}
@@ -101,6 +108,7 @@ custom:
     concurrency: 4
     exclude:
       - pg-native
+      - pg-hstore
     # for debugging
     #keepOutputDirectory: true
   prune:
@@ -508,8 +516,8 @@ functions:
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     timeout: 900
-  #   events:
-  #     - schedule: cron(0 * * * ? *)
+  #  events:
+  #    - schedule: cron(0 * * * ? *)
   # triggerStoreTreasuries:
   #   handler: src/triggerStoreTreasuries.default
   #   timeout: 900
@@ -702,7 +710,14 @@ functions:
       - http:
           path: emissionsList
           method: get
-  triggerStoreEmissions: 
+  emissionsBreakdown:
+    handler: src/getEmissionsBreakdown.default
+    timeout: 30
+    events:
+      - http:
+          path: emissionsBreakdown
+          method: get
+  triggerStoreEmissions:
     handler: src/triggerStoreEmissions.default
     timeout: 900
     events:
@@ -715,6 +730,7 @@ functions:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
       COINGLASS_KEY: ${env:COINGLASS_KEY}
       UNLOCKS_WEBHOOK: ${env:UNLOCKS_WEBHOOK}
+      APIKEY: ${env:APIKEY}
   storeGovernance:
     handler: src/storeGovernance.default
     timeout: 900

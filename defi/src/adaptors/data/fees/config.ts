@@ -1393,5 +1393,9 @@ export default {
         parentId: "Sudoswap",
         "enabled": true,
         "id": "3095"
+    },
+    "xena-finance": {
+        "enabled": true,
+        "id": "3620"
     }
 } as AdaptorsConfig

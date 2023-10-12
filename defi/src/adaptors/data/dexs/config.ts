@@ -2048,5 +2048,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "xena-finance": {
+        "enabled": true,
+        "id": "3620"
     }
 } as AdaptorsConfig

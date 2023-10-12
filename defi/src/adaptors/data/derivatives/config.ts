@@ -394,5 +394,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "xena-finance-derivative": {
+        "enabled": true,
+        "id": "3620"
     }
 } as AdaptorsConfig

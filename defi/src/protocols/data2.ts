@@ -28136,7 +28136,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum"],
+    chains: ["Arbitrum", "Sui"],
     module: "bluefin/index.js",
     twitter: "bluefinapp",
     oracles: [],

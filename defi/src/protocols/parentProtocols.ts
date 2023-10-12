@@ -2835,7 +2835,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Levvy Finance",
     url: "https://www.levvy.fi",
     description: "An NFT lending protocol on Cardano.  Borrow $ADA instantly with your Cardano NFT's or lend $ADA to earn $ADA",
-    logo: `${baseIconsUrl}/levvy.fi.jpg`,
+    logo: `${baseIconsUrl}/levvy-finance.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

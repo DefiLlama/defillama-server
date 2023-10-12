@@ -7,6 +7,7 @@ const { blocks: { getBlocks, getCurrentBlocks, } } = util
 type blockObjects = {
   chains?: Chain[] | undefined
   adapterModule?: any
+  catchOnlyStaleRPC?: boolean
 }
 type ChainBlocks = {
   [chain: string]: number;
@@ -34,9 +35,23 @@ function getChainlist(adapterModule: any) {
   return res.filter((i: string) => i !== 'default')
 }
 
-export async function getCurrentBlock(options: blockObjects = {}) {
-  let { chains, adapterModule } = options
+export async function getCurrentBlock(options: blockObjects = {}): Promise<getCurrentBlockResponse> {
+  let { chains, adapterModule, catchOnlyStaleRPC } = options
   if (adapterModule) chains = getChainlist(adapterModule)
   chains = chains?.filter((i: string) => (providers as any)[i])
-  return getCurrentBlocks(chains)
+  try {
+    const data = await getCurrentBlocks(chains)
+    return data
+  } catch (e) {
+    console.log((e as any)?.message)
+    if (!catchOnlyStaleRPC) throw e
+    if ((e as any)?.message.includes('into the past')) throw e
+    return getCurrentBlock({ chains: ['ethereum'] })
+  }
+}
+
+type getCurrentBlockResponse = {
+  timestamp: number
+  ethereumBlock: number
+  chainBlocks: any
 }

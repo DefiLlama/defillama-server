@@ -9,7 +9,7 @@ import { PromisePool } from '@supercharge/promise-pool'
 import * as sdk from '@defillama/sdk'
 import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, getLastRecord } from "./utils/getLastRecord";
-import { closeConnection } from "./api2/db";
+import { closeConnection, initializeTVLCacheDB } from "./api2/db";
 
 const maxRetries = 2;
 
@@ -30,6 +30,7 @@ async function main() {
   // await cacheCurrentBlocks() // cache current blocks for all chains - reduce #getBlock calls
   await getCurrentBlock({ chains: [] })
   await initializeSdkInternalCache() // initialize sdk cache - this will cache abi call responses and reduce the number of calls to the blockchain
+  await initializeTVLCacheDB()
   let i = 0
   let skipped = 0
   let timeTaken = 0
@@ -51,7 +52,7 @@ async function main() {
       // NOTE: we are intentionally not fetching chain blocks, in theory this makes it easier for rpc calls as we no longer need to query at a particular block
 
       // we are fetching current blocks but not using it because, this is to trigger check if rpc is returning stale data
-      await getCurrentBlock({ adapterModule})
+      await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
     } catch (e: any) { console.log('FAILED: ', protocol?.name, e?.message) }

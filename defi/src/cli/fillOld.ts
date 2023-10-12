@@ -50,7 +50,6 @@ const IS_DRY_RUN = !!process.env.DRY_RUN
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
-  dailyItems: DailyItems
 ) {
   if (failed > 3) {
     console.log('More than 3 failures in a row, exiting now')
@@ -130,7 +129,7 @@ const main = async () => {
       const batchedActions = [];
       for (let i = 0; i < batchSize && timestamp > start; i++) {
         sdk.log('refilling timestamp', timestamp)
-        batchedActions.push(getAndStore(timestamp, protocol, dailyItems));
+        batchedActions.push(getAndStore(timestamp, protocol));
         timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
       }
       await Promise.all(batchedActions);

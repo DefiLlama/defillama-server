@@ -60,6 +60,11 @@ async function initializeTVLCacheDB() {
         }
       },
     }
+    
+    if (ENV.isCoolifyTask) {
+      dbOptions.host = ENV.internalHost
+      delete dbOptions.port
+    }
 
     sequelize = new Sequelize(dbOptions as any);
     initializeTables(sequelize)

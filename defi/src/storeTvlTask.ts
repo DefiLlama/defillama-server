@@ -9,6 +9,7 @@ import { PromisePool } from '@supercharge/promise-pool'
 import * as sdk from '@defillama/sdk'
 import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, getLastRecord } from "./utils/getLastRecord";
+import { closeConnection } from "./api2/db";
 
 const maxRetries = 2;
 
@@ -93,8 +94,9 @@ function shuffleArray(array: any[]) {
 main().catch((e) => {
   console.error(e)
   process.exit(1)
-}).then(() => {
+}).then(async () => {
   sdk.log('Exitting now...')
+  await closeConnection()
   process.exit(0)
 })
 

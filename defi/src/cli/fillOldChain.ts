@@ -18,6 +18,7 @@ import { importAdapter } from "./utils/importAdapter";
 import * as sdk from '@defillama/sdk'
 import { Chain } from "@defillama/sdk/build/general";
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
+import { closeConnection } from "../api2/db";
 
 const { humanizeNumber: { humanizeNumber } } = sdk.util
 
@@ -90,12 +91,14 @@ async function getAndStore(
     false,
     false,
     true,
-    () => deleteItemsOnSameDay(dailyItems, timestamp),
+    // () => deleteItemsOnSameDay(dailyItems, timestamp),
+    undefined,
     {
       chainsToRefill,
       partialRefill: true,
       returnCompleteTvlObject: true,
       cacheData,
+      overwriteExistingData: true,
     }
   );
   if (typeof tvl === 'object') {
@@ -131,9 +134,9 @@ const main = async () => {
 
   const data = await Promise.all([
     getHistoricalValues(dailyRawTokensTvl(protocol.id)),
-    getHistoricalValues(dailyTvl(protocol.id)),
-    getHistoricalValues(dailyTokensTvl(protocol.id)),
-    getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
+    // getHistoricalValues(dailyTvl(protocol.id)),
+    // getHistoricalValues(dailyTokensTvl(protocol.id)),
+    // getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
   ]);
   const [ rawTokenTvl, ...dailyItems] = data
   // const [dailyTvls, dailyTokens, dailyUsdTokens, ] = dailyItems
@@ -167,8 +170,9 @@ const main = async () => {
     return clearProtocolCacheById(protocol.id)
 };
 
-main().then(() => {
+main().then(async () => {
   console.log('Done!!!')
+  await closeConnection()
   process.exit(0)
 })
 
@@ -181,4 +185,3 @@ function debugPrintDailyItems(items: any[] = [], key = '') {
   items = items.slice(0, 32)
   sdk.log(JSON.stringify(items?.map(i => new Date(1e3 * i).toDateString()), null, 2))
 }
-

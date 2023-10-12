@@ -10334,7 +10334,7 @@ const data3: Protocol[] = [
     name: "Levvy.Fi",
     address: null,
     symbol: "-",
-    url: "https://www.levvy.fi",
+    url: "https://levvy.fi",
     description: "Levvy is an innovative Peer-to-Peer NFT lending protocol that allows NFT owners to access instant liquidity from lenders at efficient market rates.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/levvy.fi.jpg`,

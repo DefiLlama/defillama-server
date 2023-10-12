@@ -138,7 +138,8 @@ type StoreTvlOptions = {
   returnCompleteTvlObject?: boolean,
   partialRefill?: boolean,
   chainsToRefill?: string[],
-  cacheData?: Object
+  cacheData?: Object,
+  overwriteExistingData?: boolean,
 }
 
 export async function storeTvl(
@@ -160,6 +161,7 @@ export async function storeTvl(
     returnCompleteTvlObject = false,
     chainsToRefill = [],
     cacheData,
+    overwriteExistingData = false,
   } = options
 
   if (partialRefill && (!chainsToRefill.length || !cacheData)) throw new Error('Missing chain list for refill')
@@ -251,32 +253,27 @@ export async function storeTvl(
   }
   try {
     if (!process.env.DRY_RUN) {
-      await storeNewTvl(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances); // Checks circuit breakers
+      await storeNewTvl(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances, overwriteExistingData ); // Checks circuit breakers
 
-      const storeTokensAction = storeNewTokensValueLocked(
-        protocol,
-        unixTimestamp,
-        tokensBalances,
-        hourlyTokensTvl,
-        dailyTokensTvl,
-        storePreviousData
-      );
-      const storeUsdTokensAction = storeNewTokensValueLocked(
-        protocol,
-        unixTimestamp,
-        usdTokenBalances,
-        hourlyUsdTokensTvl,
-        dailyUsdTokensTvl,
-        storePreviousData
-      );
-      const storeRawTokensAction = storeNewTokensValueLocked(
-        protocol,
-        unixTimestamp,
-        rawTokenBalances,
-        hourlyRawTokensTvl,
-        dailyRawTokensTvl,
-        storePreviousData
-      );
+      const options = { protocol, unixTimestamp, storePreviousData, overwriteExistingData, }
+      const storeTokensAction = storeNewTokensValueLocked({
+        ...options,
+        tvl: tokensBalances,
+        hourlyTvl: hourlyTokensTvl,
+        dailyTvl: dailyTokensTvl,
+      })
+      const storeUsdTokensAction = storeNewTokensValueLocked({
+        ...options,
+        tvl: usdTokenBalances,
+        hourlyTvl: hourlyUsdTokensTvl,
+        dailyTvl: dailyUsdTokensTvl,
+      });
+      const storeRawTokensAction = storeNewTokensValueLocked({
+        ...options,
+        tvl: rawTokenBalances,
+        hourlyTvl: hourlyRawTokensTvl,
+        dailyTvl: dailyRawTokensTvl,
+      });
 
       await Promise.all([storeTokensAction, storeUsdTokensAction, storeRawTokensAction]);
     }

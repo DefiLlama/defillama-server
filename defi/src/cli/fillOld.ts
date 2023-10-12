@@ -16,6 +16,8 @@ import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapter } from "./utils/importAdapter";
 import * as sdk from '@defillama/sdk'
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
+import { closeConnection } from "../api2/db";
+
 
 const { humanizeNumber: { humanizeNumber } } = sdk.util
 const secondsInDay = 24 * 3600;
@@ -73,9 +75,11 @@ async function getAndStore(
     false,
     false,
     true,
-    () => deleteItemsOnSameDay(dailyItems, timestamp),
+    // () => deleteItemsOnSameDay(dailyItems, timestamp),
+    undefined,
     {
-      returnCompleteTvlObject: true
+      returnCompleteTvlObject: true,
+      overwriteExistingData: true,
     }
   );
 
@@ -107,12 +111,12 @@ const main = async () => {
   }
   let dailyItems: any = []
 
-  if (!IS_DRY_RUN)
+  /* if (!IS_DRY_RUN)
     dailyItems = await Promise.all([
       getHistoricalValues(dailyTvl(protocol.id)),
       getHistoricalValues(dailyTokensTvl(protocol.id)),
       getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
-    ]);
+    ]); */
   const start = adapter.start ?? 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
@@ -140,8 +144,9 @@ const main = async () => {
     return clearProtocolCacheById(protocol.id)
 
 };
-main().then(() => {
+
+main().then(async () => {
   console.log('Done!!!')
+  await closeConnection()
   process.exit(0)
 })
-

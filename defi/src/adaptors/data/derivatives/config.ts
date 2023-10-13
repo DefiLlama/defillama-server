@@ -398,5 +398,9 @@ export default {
     "xena-finance-derivative": {
         "enabled": true,
         "id": "3620"
+    },
+    "gambit": {
+        "enabled": true,
+        "id": "3325"
     }
 } as AdaptorsConfig

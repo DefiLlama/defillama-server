@@ -1,11 +1,17 @@
 {
-  "sui": {
-  },
+  "sui": {},
   "polygon": {
     "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359": {
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usdc-coin"
+    }
+  },
+  "evmos": {
+    "evmos:0xb8f812b5943ab3bf941d5d4f1de90a4b326c5d8f": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   }
 }

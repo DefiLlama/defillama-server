@@ -8197,8 +8197,8 @@ const data3: Protocol[] = [
   {
     id: "3068",
     name: "Raft",
-    address: null,
-    symbol: "-",
+    address: "0x4c5cb5d87709387f8821709f7a6664f00dcf0c93",
+    symbol: "RAFT",
     url: "https://raft.fi/",
     description:
       "Raft is a DeFi protocol that lets you generate R by depositing liquid staking tokens (LSDs) as collateral, providing a capital-efficient way to borrow while keeping your staking rewards.",
@@ -8206,8 +8206,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/raft.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "raft",
+    cmcId: "27367",
     category: "CDP",
     chains: ["Ethereum"],
     module: "raft/index.js",

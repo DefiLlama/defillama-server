@@ -19763,7 +19763,8 @@ const data3: Protocol[] = [
     twitter: "LaariFinance",
     audit_links: ["https://github.com/Vital-block/Smart-Contract-Audit/blob/main/LAARI%20FINANCE%20FULL%20CONTRACT%20AUDITING%20REPORT.pdf",
                   "https://github.com/Vital-block/Project-KYC-Verification/blob/main/LAARI%20FINANCE%20KYC%20CERTIFICATE.pdf"],
-    listedAt: 1696158752
+    listedAt: 1696158752,
+    rugged: true
   },
   {
     id: "3587",

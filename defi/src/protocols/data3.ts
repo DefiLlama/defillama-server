@@ -20580,6 +20580,50 @@ const data3: Protocol[] = [
     github: ["pullstacker"],
     listedAt: 1697193850
   },
+  {
+    id: "3623",
+    name: "Voltage Liquid Staking",
+    address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
+    symbol: "VOLT",
+    url: "https://app.voltage.finance/#/stake",
+    description:
+      "Liquid Staking Protocol on the Fuse Network",
+    chain: "Fuse",
+    logo: `${baseIconsUrl}/voltage-liquid-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Fuse"],
+    module: "voltage-liquidstaking/index.js",
+    twitter: "voltfinance",
+    oracles: [],
+    parentProtocol: "parent#voltage",
+    listedAt: 1697196425
+  },
+  {
+    id: "3624",
+    name: "Voltage StableSwap",
+    address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
+    symbol: "VOLT",
+    url: "https://app.voltage.finance/#/home",
+    description:
+      "Stablecoins AMM on the Fuse Network",
+    chain: "Fuse",
+    logo: `${baseIconsUrl}/voltage-stableswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fuse"],
+    module: "voltage-stableswap/index.js",
+    twitter: "voltfinance",
+    oracles: [],
+    parentProtocol: "parent#voltage",
+    listedAt: 1697196450
+  },
 ]
 
 export default data3

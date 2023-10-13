@@ -8213,10 +8213,15 @@ const data3: Protocol[] = [
     module: "raft/index.js",
     twitter: "raft_fi",
     oracles: ["Chainlink"],
-    audit_links: [ "https://github.com/trailofbits/publications/blob/master/reviews/2023-04-tempus-raft-securityreview.pdf"],
+    audit_links: [
+      "https://github.com/trailofbits/publications/blob/master/reviews/2023-04-tempus-raft-securityreview.pdf",
+      "https://hatsfinance.medium.com/raft-finance-audit-competition-final-note-16e87dce23a2"
+    ],
     github: ["raft-fi"],
     stablecoins: ["r"],
-    listedAt: 1686074293
+    listedAt: 1686074293,
+    treasury: "raft.js",
+    governanceID: ["snapshot:raftgov.eth"]
   },
   {
     id: "3069",

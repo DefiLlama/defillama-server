@@ -15,6 +15,7 @@ const chainTokens = [
   ["harmony", "harmony", "ONE"],
   ["ontology", "ong", "ONG"],
   ["polygon_zkevm", "ethereum", "ETH"],
+  ["evmos", "evmos", "EVMOS"],
 ];
 
 export default async function bridge() {

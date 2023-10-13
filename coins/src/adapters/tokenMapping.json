@@ -8,7 +8,7 @@
     }
   },
   "evmos": {
-    "evmos:0xb8f812b5943ab3bf941d5d4f1de90a4b326c5d8f": {
+    "0xb8f812b5943ab3bf941d5d4f1de90a4b326c5d8f": {
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"

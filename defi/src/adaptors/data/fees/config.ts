@@ -1243,7 +1243,7 @@ export default {
         "id": "3454"
     },
     "sharesgram": {
-        "enabled": true,
+        "enabled": false,
         "id": "3464"
     },
     "tigris": {

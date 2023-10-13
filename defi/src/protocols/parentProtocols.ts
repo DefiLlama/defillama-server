@@ -2841,6 +2841,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "levvyfinance",
   },
+  {
+    id: "parent#voltage",
+    name: "Voltage",
+    url: "https://app.voltage.finance",
+    description: "Built atop the powerful Fuse blockchain and ecosystem, Voltage enables anyone to carry the power of DeFi in their pocket.",
+    logo: `${baseIconsUrl}/voltage.png`,
+    gecko_id: "fusefi",
+    cmcId: "12038",
+    chains: [],
+    twitter: "voltfinance",
+  },
 ];
 
 export default parentProtocols;

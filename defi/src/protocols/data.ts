@@ -13173,14 +13173,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "714",
-    name: "Voltage",
+    name: "Voltage AMM",
     address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
     symbol: "VOLT",
     url: "https://app.voltage.finance/",
     description:
       "Built atop the powerful Fuse blockchain and ecosystem, Voltage enables anyone to carry the power of DeFi in their pocket.",
     chain: "Fuse",
-    logo: `${baseIconsUrl}/voltage.png`,
+    logo: `${baseIconsUrl}/voltage-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "fusefi",
@@ -13190,6 +13190,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "fusefi/index.js",
     twitter: "voltfinance",
     forkedFrom: ["Uniswap V2", "Compound"],
+    parentProtocol: "parent#voltage",
     listedAt: 1635268314,
   },
   {

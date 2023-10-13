@@ -354,7 +354,10 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
 
   const filtered: Coin[] = [];
   writesToRedis.map((c: Coin) => {
-    if (c.symbol && (c.adapter == 'coingecko' || c.decimals)) {
+    if (
+      c.symbol &&
+      (["coingecko", "chainlink-nft"].includes(c.adapter) || c.decimals)
+    ) {
       filtered.push(c);
     } else {
       console.log(`${c.key} has no decimals or symbol, skipping redis`);

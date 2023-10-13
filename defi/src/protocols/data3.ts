@@ -20552,6 +20552,29 @@ const data3: Protocol[] = [
     github: ["Contrax-co"],
     listedAt: 1697105738
   },
+  {
+    id: "3622",
+    name: "Monocerus",
+    address: "avax:0x6F0167Dca1fAB2AaBe20cf56B7a7E1FdB47AC388",
+    symbol: "CERUS",
+    url: "https://monocerus.world/swap",
+    description:
+      "Monocerus Swap is a 20,000X capital efficiency, CLMM-based DEX built to support the Monocerus World MMORPG Gamers Ecosystem. Morph our LP NFT to become 3D Interactive SparkleVX that can be used as a Game Pass and other string on-chain Utilities.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/monocerus.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche"],
+    module: "monocerus/index.js",
+    twitter: "monocerusworld",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    github: ["pullstacker"],
+    listedAt: 1697193850
+  },
 ]
 
 export default data3

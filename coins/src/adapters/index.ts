@@ -132,4 +132,5 @@ export default {
   chai: require("./yield/chai"),
   ondo: require("./rwa/ondo"),
   mooBvm: require("./other"),
+  mux: require("./yield/mux"),
 };

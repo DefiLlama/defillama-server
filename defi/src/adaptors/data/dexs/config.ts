@@ -957,6 +957,7 @@ export default {
     },
     "4swap": {
         parentId: "Pando",
+        disabled: true,
         "enabled": true,
         "id": "951"
     },

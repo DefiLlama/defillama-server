@@ -402,5 +402,15 @@ export default {
     "gambit": {
         "enabled": true,
         "id": "3325"
+    },
+    "bluefin": {
+        "enabled": true,
+        "id": "2625",
+        protocolsData: {
+            "derivatives": {
+                "id": "2625",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

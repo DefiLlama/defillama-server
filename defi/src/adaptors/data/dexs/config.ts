@@ -2052,5 +2052,9 @@ export default {
     "xena-finance": {
         "enabled": true,
         "id": "3620"
+    },
+    "spectrum": {
+        "enabled": true,
+        "id": "1088"
     }
 } as AdaptorsConfig

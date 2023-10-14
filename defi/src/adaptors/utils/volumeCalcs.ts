@@ -39,6 +39,7 @@ const calcNdONdChange = (
     const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp);
     const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
 
+    let daysCounted = 0;
     let yesterdaysVolumeAll = 0
     for (let start = yesterdaysTimestamp; start > timestampNd; start -= ONE_DAY_IN_SECONDS) {
         let dex2SubstractVolumes: any = {}
@@ -49,6 +50,7 @@ const calcNdONdChange = (
             const yesterdaysVolume = dex.recordsMap?.[String(start)]?.data
             if (yesterdaysVolume && !Number.isNaN(sumAllVolumes(yesterdaysVolume))) {
                 yesterdaysVolumeAll += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
+                daysCounted++
             }
         }
     }
@@ -70,7 +72,8 @@ const calcNdONdChange = (
     const ndChange = yesterdaysVolumeAll && ndVolume ? (yesterdaysVolumeAll - ndVolume) / ndVolume * 100 : null
     return {
         change_NdoverNd: formatNdChangeNumber(ndChange),
-        totalNd: yesterdaysVolumeAll
+        totalNd: yesterdaysVolumeAll,
+        enoughDays: Object.keys(dex2Substract ? (dex2Substract?.recordsMap || {}) : {}).length >= daysCounted
     }
 }
 
@@ -83,13 +86,16 @@ export const getWoWStats = (
     const wow14 = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 14)
     const mom = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 30)
     const mom60 = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 60)
+    const yoy = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 365)
+
     return {
         change_7dover7d: wow.change_NdoverNd ?? 0,
         total7d: wow.totalNd,
         change_30dover30d: mom.change_NdoverNd ?? 0,
         total30d: mom.totalNd,
         total14dto7d: wow14.totalNd - wow.totalNd,
-        total60dto30d: mom60.totalNd - mom.totalNd
+        total60dto30d: mom60.totalNd - mom.totalNd,
+        total1y: yoy.enoughDays ? yoy.totalNd : 0
     }
 }
 

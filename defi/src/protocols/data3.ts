@@ -20625,6 +20625,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#voltage",
     listedAt: 1697196450
   },
+  {
+    id: "3625",
+    name: "Nano Swap",
+    address: "base:0x28f45eA79c50d3ED9e1FA8A41dC8595F636eC34D",
+    symbol: "NANO",
+    url: "https://www.nanoswap.xyz/",
+    description:
+      "Decentralized Exchange on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/nano-swap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "nanoswap/index.js",
+    twitter: "NanoswapBase",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    listedAt: 1697304358,
+    github: ["nanoswapbase"]
+  },
 ]
 
 export default data3

@@ -20648,6 +20648,28 @@ const data3: Protocol[] = [
     listedAt: 1697304358,
     github: ["nanoswapbase"]
   },
+  {
+    id: "3626",
+    name: "SpaceFi Scroll",
+    address: "scroll:-",
+    symbol: "SPACE",
+    url: "https://spacefi.io",
+    description: "SpaceFi is a cross-chain web3.0 platform, with DEX+Farm+NFT+Starter+Spacebase.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/spacefi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "spacefi-scroll/index.js",
+    twitter: "spacefi_io",
+    parentProtocol: "parent#spacefi",
+    listedAt: 1697345844
+  },
 ]
 
 export default data3

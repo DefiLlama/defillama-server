@@ -39,7 +39,7 @@ const calcNdONdChange = (
     const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp);
     const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
 
-    let daysCounted = 0;
+    const hasEnoughDays = Object.values(dexs).some(dex => Object.values(dex?.recordsMap || {}).length > nDaysChange)
     let yesterdaysVolumeAll = 0
     for (let start = yesterdaysTimestamp; start > timestampNd; start -= ONE_DAY_IN_SECONDS) {
         let dex2SubstractVolumes: any = {}
@@ -50,7 +50,6 @@ const calcNdONdChange = (
             const yesterdaysVolume = dex.recordsMap?.[String(start)]?.data
             if (yesterdaysVolume && !Number.isNaN(sumAllVolumes(yesterdaysVolume))) {
                 yesterdaysVolumeAll += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
-                daysCounted++
             }
         }
     }
@@ -73,7 +72,7 @@ const calcNdONdChange = (
     return {
         change_NdoverNd: formatNdChangeNumber(ndChange),
         totalNd: yesterdaysVolumeAll,
-        enoughDays: Object.keys(dex2Substract ? (dex2Substract?.recordsMap || {}) : {}).length >= daysCounted
+        enoughDays: hasEnoughDays
     }
 }
 

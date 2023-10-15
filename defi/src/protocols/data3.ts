@@ -20670,6 +20670,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#spacefi",
     listedAt: 1697345844
   },
+  {
+    id: "3627",
+    name: "Tomo",
+    address: null,
+    symbol: "-",
+    url: "https://tomo.inc",
+    description: "Trade, chat and meet your next Tomo now",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/tomo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Linea"],
+    oracles: [],
+    forkedFrom: ["friend.tech"],
+    module: "tomo/index.js",
+    twitter: "tomo_social",
+    listedAt: 1697345844
+  },
+
 ]
 
 export default data3

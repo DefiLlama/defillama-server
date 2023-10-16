@@ -2057,5 +2057,9 @@ export default {
     "spectrum": {
         "enabled": true,
         "id": "1088"
+    },
+    "turbos": {
+        "enabled": true,
+        "id": "2940"
     }
 } as AdaptorsConfig

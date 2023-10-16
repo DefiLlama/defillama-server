@@ -18,7 +18,7 @@ export default async function handler() {
   const a = Object.entries(adapters);
   const indexes = Array.from(Array(a.length).keys());
   const timestamp = 0;
-  await PromisePool.withConcurrency(2)
+  await PromisePool.withConcurrency(5)
     .for(indexes)
     .process(async (i: any) => {
       try {

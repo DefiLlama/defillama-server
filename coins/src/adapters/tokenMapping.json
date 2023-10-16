@@ -5,6 +5,11 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usdc-coin"
+    },
+    "0x40379a439d4f6795b6fc9aa5687db461677a2dba": {
+      "decimals": "9",
+      "symbol": "USDR",
+      "to": "coingecko#real-usd"
     }
   },
   "evmos": {
@@ -12,6 +17,32 @@
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    }
+  },
+  "ethereum": {
+    "0xcBc1065255cBc3aB41a6868c22d1f1C573AB89fd": {
+      "decimals": "18",
+      "symbol": "CRETH2",
+      "to": "coingecko#cream-eth2"
+    },
+    "0x8762db106b2c2a0bccb3a80d1ed41273552616e8": {
+      "decimals": "18",
+      "symbol": "RSR",
+      "to": "coingecko#reserve-rights-token"
+    }
+  },
+  "fantom": {
+    "0x10b620b2dbac4faa7d7ffd71da486f5d44cd86f9": {
+      "decimals": "18",
+      "symbol": "LQRD",
+      "to": "coingecko#liquiddriver"
+    }
+  },
+  "bsc": {
+    "0xe552fb52a4f19e44ef5a967632dbc320b0820639": {
+      "decimals": "18",
+      "symbol": "METIS",
+      "to": "coingecko#metis-token"
     }
   }
 }

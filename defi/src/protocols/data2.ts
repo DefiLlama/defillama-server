@@ -28546,6 +28546,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "CoWSwap",
+    governanceID: ["snapshot:cow.eth"]
   },
   {
     id: "2644",

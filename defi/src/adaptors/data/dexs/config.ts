@@ -2060,6 +2060,11 @@ export default {
     },
     "turbos": {
         "enabled": true,
-        "id": "2940"
+        "id": "2940",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1697328000": true,
+            },
+        }
     }
 } as AdaptorsConfig

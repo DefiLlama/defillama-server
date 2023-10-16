@@ -282,6 +282,46 @@ const entities = [
         module: "entities/gsr.js",
         twitter: "GSR_io"
     },
+    {
+        id: "29",
+        name: "ConsenSys",
+        url: "https://consensys.io",
+        description: "A complete suite of products to create and participate in web3.",
+        logo: "consensys.jpg",
+        category: "VC",
+        module: "entities/consensys.js",
+        twitter: "Consensys"
+    },
+    {
+        id: "30",
+        name: "Arrington Capital",
+        url: "https://www.arringtoncapital.com/",
+        description: "Arrington Capital is a thesis-driven firm investing in digital assets and web3 since 2017.",
+        logo: "arrington-capital.png",
+        category: "VC",
+        module: "entities/arrington-xrp-capital.js",
+        twitter: "Arrington_Cap"
+    },
+    {
+        id: "31",
+        name: "HashKey Capital",
+        url: "https://hashkey.capital",
+        description: "Global in influence and crypto-native, HashKey Capital is a digital asset and blockchain leader helping institutions, founders and talents advance the blockchain industry and find adoption anywhere.",
+        logo: "hashkey-capital.jpg",
+        category: "VC",
+        module: "entities/hashkey-capital.js",
+        twitter: "HashKey_Capital"
+    },
+    {
+        id: "32",
+        name: "Sequoia Capital",
+        url: "https://www.sequoiacap.com",
+        description: "We help the daring build legendary companies from idea to IPO and beyond.",
+        logo: "sequoia-capital.png",
+        category: "VC",
+        module: "entities/sequoia-capital.js",
+        twitter: "sequoia"
+    },
 ].map(entity=>({
     ...entity,
     id: `entity-${entity.id}`,

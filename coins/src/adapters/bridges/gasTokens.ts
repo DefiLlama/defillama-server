@@ -20,13 +20,23 @@ const chainTokens = [
 ];
 
 export default async function bridge() {
-  return chainTokens.map((t) => {
-    const [chain, cgId, symbol] = t;
-    return {
-      decimals: 18,
-      from: `${chain}:0x0000000000000000000000000000000000000000`,
-      to: `coingecko#${cgId}`,
-      symbol,
-    };
-  });
+  return chainTokens
+    .map((t) => {
+      const [chain, cgId, symbol] = t;
+      return [
+        {
+          decimals: 18,
+          from: `${chain}:0x0000000000000000000000000000000000000000`,
+          to: `coingecko#${cgId}`,
+          symbol,
+        },
+        {
+          decimals: 18,
+          from: `${chain}:0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee`,
+          to: `coingecko#${cgId}`,
+          symbol,
+        },
+      ];
+    })
+    .flat();
 }

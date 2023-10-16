@@ -8,6 +8,7 @@ import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
 import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
 import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
+import PromisePool from "@supercharge/promise-pool";
 
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
@@ -17,8 +18,9 @@ export default async function handler() {
   const a = Object.entries(adapters);
   const indexes = Array.from(Array(a.length).keys());
   const timestamp = 0;
-  await Promise.all(
-    indexes.map(async (i: any) => {
+  await PromisePool.withConcurrency(5)
+    .for(indexes)
+    .process(async (i: any) => {
       try {
         if (
           ![
@@ -60,6 +62,7 @@ export default async function handler() {
             true,
           );
       }
-    }),
-  );
+    });
 }
+
+// handler(); // ts-node coins/src/storeCoins.ts

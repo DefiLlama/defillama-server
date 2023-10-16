@@ -1,5 +1,3 @@
-import { sliceIntoChunks, } from '@defillama/sdk/build/util/index'
-
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../utils/date";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 import { AdaptorRecord, AdaptorRecordType, IRecordAdapterRecordChainData, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
@@ -105,7 +103,7 @@ export const getWoWStats = (
         total14dto7d: wow14.totalNd - wow.totalNd,
         total60dto30d: mom60.totalNd - mom.totalNd,
         total1y: yoy.enoughDays ? yoy.totalNd : 0,
-        average1Y: yoy.enoughDays ? yoy.nDaysAverage: 0,
+        average1y: yoy.enoughDays ? yoy.nDaysAverage: 0,
     }
 }
 

@@ -2852,6 +2852,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "voltfinance",
   },
+  {
+    id: "parent#pacificswap",
+    name: "PacificSwap",
+    url: "https://pacificswap.xyz",
+    description: "An innovative CLAMM using incentive-alignment to keep the liquidity flywheel moving on MantaNetwork",
+    logo: `${baseIconsUrl}/pacificswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "pacificswap",
+    github: ["Pacificswap"],
+  },
 ];
 
 export default parentProtocols;

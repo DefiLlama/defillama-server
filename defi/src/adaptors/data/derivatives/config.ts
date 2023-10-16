@@ -416,5 +416,9 @@ export default {
     "holdstation-defutures": {
         "enabled": true,
         "id": "2959"
+    },
+    "contango": {
+        "enabled": true,
+        "id": "2374"
     }
 } as AdaptorsConfig

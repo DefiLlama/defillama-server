@@ -20713,7 +20713,49 @@ const data3: Protocol[] = [
     github: ["KeySeaXyz"],
     listedAt: 1697345844
   },
-
+  {
+    id: "3629",
+    name: "MetaLend",
+    address: null,
+    symbol: "-",
+    url: "https://metalend.tech/app",
+    description: "Borrow against Axie Land, Staked RON and Staked AXS on Ronin.",
+    chain: "Ronin",
+    logo: `${baseIconsUrl}/metalend.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ronin"],
+    oracles: [],
+    forkedFrom: ["Compound V2"],
+    module: "metalend/index.js",
+    twitter: "MetaLend_DeFi",
+    listedAt: 1697452692
+  },
+  {
+    id: "3630",
+    name: "Factor Leverage Vault",
+    address: "arbitrum:0x6dd963c510c2d2f09d5eddb48ede45fed063eb36",
+    symbol: "FCTR",
+    url: "https://app.factor.fi/studio",
+    description: "Factor Leverage Vault is one-click looping, easy switching, easy migration, easy auto-compounding the reward.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/factor-leverage-vault.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "factor-leverage-vault/index.js",
+    twitter: "FactorDAO",
+    parentProtocol: "parent#factor",
+    listedAt: 1697452699
+  },
 ]
 
 export default data3

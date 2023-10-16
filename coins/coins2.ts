@@ -354,7 +354,10 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
 
   const filtered: Coin[] = [];
   writesToRedis.map((c: Coin) => {
-    if (c.symbol && c.decimals) {
+    if (
+      c.symbol &&
+      (["coingecko", "chainlink-nft"].includes(c.adapter) || c.decimals)
+    ) {
       filtered.push(c);
     } else {
       console.log(`${c.key} has no decimals or symbol, skipping redis`);
@@ -479,17 +482,3 @@ export async function batchReadPostgres(
   ); //start  1696287600
   return data;
 }
-
-// writeCoins2([
-//   {
-//     price: 0.010232641688277498,
-//     chain: "elrond",
-//     timestamp: 1697120031,
-//     key: "elrond:zpay-247875",
-//     adapter: "xexchange",
-//     confidence: 0.9,
-//     decimals: 18,
-//     symbol: "ZPAY",
-//     mcap: undefined,
-//   },
-// ]); // ts-node coins/coins2.ts

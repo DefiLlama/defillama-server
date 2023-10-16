@@ -18,6 +18,10 @@ export enum AdaptorRecordType {
     // fees & revenue
     dailyFees = "df",
     dailyBribesRevenue = "dbr",
+    dailyTokenTaxes = "dtt",
+    dailyShortOpenInterest = "dsoi",
+    dailyLongOpenInterest = "dloi",
+    dailyOpenInterest = "doi",
     dailyRevenue = "dr",
     dailyUserFees = "duf",
     dailySupplySideRevenue = "dssr",
@@ -165,12 +169,22 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         }, (currentData ?? {}) as IRecordAdaptorRecordData),
         eventTimestamp
     }
+    const obj2StoreRemoveReserveKeys = Object.entries(obj2Store).reduce((acc, [key, value]) => {
+        if (dynamoReservedKeywords.includes(key.toUpperCase())) {
+            delete acc[key];
+            return acc
+        }
+        acc[key] = value
+        return acc
+    }, {} as IRecordAdaptorRecordData)
+
+
     try {
-        console.log("Storing", obj2Store, adaptorRecord.keys())
+        console.log("Storing", obj2StoreRemoveReserveKeys, adaptorRecord.keys())
         await dynamodb.update({
             Key: adaptorRecord.keys(),
-            UpdateExpression: createUpdateExpressionFromObj(obj2Store),
-            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(obj2Store)
+            UpdateExpression: createUpdateExpressionFromObj(obj2StoreRemoveReserveKeys),
+            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(obj2StoreRemoveReserveKeys)
         }) // Upsert like
         return adaptorRecord
     } catch (error) {

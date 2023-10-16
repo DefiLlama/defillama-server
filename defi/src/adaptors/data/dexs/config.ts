@@ -957,6 +957,7 @@ export default {
     },
     "4swap": {
         parentId: "Pando",
+        disabled: true,
         "enabled": true,
         "id": "951"
     },
@@ -2047,6 +2048,23 @@ export default {
                 "id": "3605",
                 "enabled": true,
             }
+        }
+    },
+    "xena-finance": {
+        "enabled": true,
+        "id": "3620"
+    },
+    "spectrum": {
+        "enabled": true,
+        "id": "1088"
+    },
+    "turbos": {
+        "enabled": true,
+        "id": "2940",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1697328000": true,
+            },
         }
     }
 } as AdaptorsConfig

@@ -1243,7 +1243,7 @@ export default {
         "id": "3454"
     },
     "sharesgram": {
-        "enabled": true,
+        "enabled": false,
         "id": "3464"
     },
     "tigris": {
@@ -1393,5 +1393,13 @@ export default {
         parentId: "Sudoswap",
         "enabled": true,
         "id": "3095"
+    },
+    "xena-finance": {
+        "enabled": true,
+        "id": "3620"
+    },
+    "gambit": {
+        "enabled": true,
+        "id": "3325"
     }
 } as AdaptorsConfig

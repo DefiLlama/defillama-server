@@ -141,6 +141,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     LUNA: "0x95dd59343a893637be1c3228060ee6afbf6f0730",
     FEED: "0x5d5530eb3147152fe78d5c4bfeede054c8d1442a",
     GRAIN: "0x02838746d9e1413e07ee064fcbada57055417f21",
+    JEFE: "0x5b2af7fd27e2ea14945c82dd254c79d3ed34685e",
   },
   heco: {
     BIFI: "0x765277eebeca2e31912c9946eae1021199b39c61",
@@ -155,6 +156,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     DHV: "0x5fcb9de282af6122ce3518cde28b7089c9f97b26",
     multiBTC: "0xf5b9b4a0534cf508ab9953c64c5310dfa0b303a1",
     MIM: "0x49a0400587a7f65072c87c4910449fdcc5c47242",
+    JUSD: "0x0ba8a6ce46d369d779299dedade864318097b703",
   },
   moonriver: {
     MIM: "0x0cae51e1032e8461f4806e26332c030e34de3adb",

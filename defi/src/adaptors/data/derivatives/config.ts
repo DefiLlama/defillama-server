@@ -394,5 +394,31 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "xena-finance-derivative": {
+        "enabled": true,
+        "id": "3620"
+    },
+    "gambit": {
+        "enabled": true,
+        "id": "3325"
+    },
+    "bluefin": {
+        "enabled": true,
+        "id": "2625",
+        protocolsData: {
+            "derivatives": {
+                "id": "2625",
+                "enabled": true,
+            }
+        }
+    },
+    "holdstation-defutures": {
+        "enabled": true,
+        "id": "2959"
+    },
+    "contango": {
+        "enabled": true,
+        "id": "2374"
     }
 } as AdaptorsConfig

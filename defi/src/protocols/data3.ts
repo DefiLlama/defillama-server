@@ -20691,6 +20691,28 @@ const data3: Protocol[] = [
     twitter: "tomo_social",
     listedAt: 1697345844
   },
+  {
+    id: "3628",
+    name: "KeySea",
+    address: null,
+    symbol: "-",
+    url: "https://keysea.xyz/",
+    description: "Your gateway to the newest KEYs trading experience on the Linea blockchain",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/keysea.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Linea"],
+    oracles: [],
+    forkedFrom: ["friend.tech"],
+    module: "keysea/index.js",
+    twitter: "KeySeaXyz",
+    github: ["KeySeaXyz"],
+    listedAt: 1697345844
+  },
 
 ]
 

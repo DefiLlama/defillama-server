@@ -412,5 +412,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "holdstation-defutures": {
+        "enabled": true,
+        "id": "2959"
     }
 } as AdaptorsConfig

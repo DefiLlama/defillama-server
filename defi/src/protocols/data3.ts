@@ -13543,7 +13543,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sablier.com/",
-    description: "Sablier is a token streaming protocol, designed to facilitate by-the-second payments for cryptocurrencies, specifically ERC-20 assets",
+    description: "The 2nd release of the Sablier protocol",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sablier-finance.jpg`,
     audits: "2",

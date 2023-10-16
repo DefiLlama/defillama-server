@@ -2005,7 +2005,7 @@ const data: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sablier.finance/",
-    description: "The protocol for real-time finance.",
+    description: "The first release of the Sablier protocol",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sablier-finance.jpg`,
     audits: "2",

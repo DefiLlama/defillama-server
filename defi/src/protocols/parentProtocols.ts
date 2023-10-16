@@ -82,7 +82,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Pods",
     url: "https://www.pods.finance/",
     description:
-      "Buliding DeFi, Strategies, primitives and tooling. Welcome to Pods.",
+      "Building DeFi, Strategies, primitives and tooling. Welcome to Pods.",
     logo: `${baseIconsUrl}/pods-finance.jpg`,
     gecko_id: null,
     cmcId: null,

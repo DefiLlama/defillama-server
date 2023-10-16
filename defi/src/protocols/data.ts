@@ -8859,7 +8859,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "bsc:0x17b7163cf1dbd286e262ddc68b553d899b93f526",
     symbol: "QBT",
     url: "https://qbt.fi",
-    description: "Lend to Ascend, Borrow for Tomorrow. Revolutionary Lending Platfrom",
+    description: "Lend to Ascend, Borrow for Tomorrow. Revolutionary Lending Platform",
     chain: "Binance",
     logo: `${baseIconsUrl}/qubit.jpg`,
     audits: "2",

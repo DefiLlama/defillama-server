@@ -1,3 +1,5 @@
+import { sliceIntoChunks, } from '@defillama/sdk/build/util/index'
+
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../utils/date";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 import { AdaptorRecord, AdaptorRecordType, IRecordAdapterRecordChainData, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
@@ -5,6 +7,7 @@ import { ExtraTypes, IGeneralStats, ProtocolAdaptorSummary } from "../handlers/g
 import { ONE_DAY_IN_SECONDS } from "../handlers/getProtocol";
 
 import getDataPoints from "./getDataPoints";
+import { chunk, mean, sum } from 'lodash';
 
 const sumAllVolumes = (breakdownVolumes: IRecordAdaptorRecordData, protVersion?: string) => {
     if (breakdownVolumes) {
@@ -34,10 +37,13 @@ const calcNdONdChange = (
     dexs: Pick<ProtocolAdaptorSummary, 'recordsMap'>[],
     dex2Substract?: ProtocolAdaptorSummary,
     baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS,
-    nDaysChange: number = 1
+    nDaysChange: number = 1,
+    nDaysAvg = 0
 ) => {
     const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp);
     const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
+
+    const volumeValues = []
 
     const hasEnoughDays = Object.values(dexs).some(dex => Object.values(dex?.recordsMap || {}).length > nDaysChange)
     let yesterdaysVolumeAll = 0
@@ -49,7 +55,9 @@ const calcNdONdChange = (
             }
             const yesterdaysVolume = dex.recordsMap?.[String(start)]?.data
             if (yesterdaysVolume && !Number.isNaN(sumAllVolumes(yesterdaysVolume))) {
-                yesterdaysVolumeAll += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
+                const ystVol = yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
+                yesterdaysVolumeAll += ystVol
+                volumeValues.push(ystVol)
             }
         }
     }
@@ -67,12 +75,14 @@ const calcNdONdChange = (
         }
     }
 
+    const volumeAvg = nDaysAvg ? mean(chunk(volumeValues, nDaysAvg).map(chunk => sum(chunk))): 0;
 
     const ndChange = yesterdaysVolumeAll && ndVolume ? (yesterdaysVolumeAll - ndVolume) / ndVolume * 100 : null
     return {
         change_NdoverNd: formatNdChangeNumber(ndChange),
         totalNd: yesterdaysVolumeAll,
-        enoughDays: hasEnoughDays
+        enoughDays: hasEnoughDays,
+        nDaysAverage: volumeAvg
     }
 }
 
@@ -85,7 +95,7 @@ export const getWoWStats = (
     const wow14 = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 14)
     const mom = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 30)
     const mom60 = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 60)
-    const yoy = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 365)
+    const yoy = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 365, 30)
 
     return {
         change_7dover7d: wow.change_NdoverNd ?? 0,
@@ -94,7 +104,8 @@ export const getWoWStats = (
         total30d: mom.totalNd,
         total14dto7d: wow14.totalNd - wow.totalNd,
         total60dto30d: mom60.totalNd - mom.totalNd,
-        total1y: yoy.enoughDays ? yoy.totalNd : 0
+        total1y: yoy.enoughDays ? yoy.totalNd : 0,
+        average1Y: yoy.enoughDays ? yoy.nDaysAverage: 0,
     }
 }
 

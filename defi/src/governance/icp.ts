@@ -21,7 +21,7 @@ export const EXCLUDED_TOPICS = [ "TOPIC_EXCHANGE_RATE", "TOPIC_NEURON_MANAGEMENT
 // URLs for fetching NNS data
 const NNS_API_BASE_URL : string = "https://ic-api.internetcomputer.org/api/v3/";
 const DASHBOARD_BASE_URL : string = "https://dashboard.internetcomputer.org/proposal/";
-const ICP_LEDGER_METRICS_URL : string = "https://ryjl3-tyaaa-aaaaa-aaaba-cai.raw.ic0.app/metrics";
+const ICP_LEDGER_API_BASE_URL : string = "https://ledger-api.internetcomputer.org/";
 
 // Proposal response onject from the NNS data API
 export interface NnsProposalResponse
@@ -71,21 +71,16 @@ export async function get_metadata ()
     );
     let lates_proposal_id = data.latest_proposal_id;
     var { data, status } = await axios.get(
-        ICP_LEDGER_METRICS_URL
+        ICP_LEDGER_API_BASE_URL + "supply/total/latest"
         ,
         {
             headers: {
                 Accept: 'application/json',
             },
         },
-    );
-
-    // The metrics endpoint of the ICP ledger returns a string with metrics separated by a line break with each line having the format: NAME_OF_METRIC METRIC_VALUE \n
-    const metrics_lines = data.split( '\n' );
-    // The line we are looking for has the metric name 'ledger_balances_token_pool'
-    var substring = "ledger_balances_token_pool";
-    // Now we can extract that line and select the metric value
-    const token_supply = Math.floor( 18446744073709551615 / DECIMALS - parseInt( metrics_lines.find( ( line : string ) => line.startsWith( substring ) ).split( ' ' )[ 1 ] ) );
+    );  
+    console.log(data);
+    const token_supply = Math.floor(data[1]/DECIMALS);
 
     return {
         // NNS Governance canister id

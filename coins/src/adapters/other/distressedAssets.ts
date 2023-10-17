@@ -142,6 +142,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     FEED: "0x5d5530eb3147152fe78d5c4bfeede054c8d1442a",
     GRAIN: "0x02838746d9e1413e07ee064fcbada57055417f21",
     JEFE: "0x5b2af7fd27e2ea14945c82dd254c79d3ed34685e",
+    DAI: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
   },
   heco: {
     BIFI: "0x765277eebeca2e31912c9946eae1021199b39c61",

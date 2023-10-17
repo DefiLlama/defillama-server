@@ -20980,7 +20980,7 @@ const data3: Protocol[] = [
     name: "LyveFinance",
     address: "linea:0x21C4451914082EF76E2BdD4CDd689388E4ac979e",
     symbol: "LYVE",
-    url: "https://www.voltageswap.xyz",
+    url: "https://www.lyvefi.xyz/",
     description: "The first DeFi protocol to support LSD asset farming on layer 2",
     chain: "Linea",
     logo: `${baseIconsUrl}/lyvefinance.jpg`,

@@ -20861,7 +20861,7 @@ const data3: Protocol[] = [
     category: "SoFi",
     chains: ["zkSync Era"],
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["friend.tech"],
     module: "moneymates/index.js",
     twitter: "moneymatestech",
     listedAt: 1697516124

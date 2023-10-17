@@ -1401,5 +1401,9 @@ export default {
     "gambit": {
         "enabled": true,
         "id": "3325"
+    },
+    "tangleswap": {
+        "enabled": true,
+        "id": "3585"
     }
 } as AdaptorsConfig

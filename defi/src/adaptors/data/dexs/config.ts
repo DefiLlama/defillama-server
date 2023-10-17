@@ -2066,5 +2066,9 @@ export default {
                 "1697328000": true,
             },
         }
+    },
+    "tangleswap": {
+        "enabled": true,
+        "id": "3585"
     }
 } as AdaptorsConfig

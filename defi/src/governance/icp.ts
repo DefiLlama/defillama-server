@@ -1,19 +1,27 @@
 import axios from 'axios'
 import { GovCache, Proposal } from './types';
-import ic from 'ic0';
 import { PromisePool } from "@supercharge/promise-pool";
 import { updateStats } from './utils';
 import { setCompound, getCompound } from './cache';
-import * as fs from 'fs';
 
 const MAX_PROPOSALS_PER_REQUEST : number = 100;
 
+// Number of decimals that are supported by the governance canister
+const DECIMALS : number = 1e8;
+
+// The maximum number representation of u64
+const U64_MAX : number = 18446744073709551615;
+
 // Id of the NNS proposals stored in cache
 const GOV_ID = 'icp'
+
 // Proposals with these topics should not be included in the data fetched
 export const EXCLUDED_TOPICS = [ "TOPIC_EXCHANGE_RATE", "TOPIC_NEURON_MANAGEMENT" ];
+
+// URLs for fetching NNS data
 const NNS_API_BASE_URL : string = "https://ic-api.internetcomputer.org/api/v3/";
 const DASHBOARD_BASE_URL : string = "https://dashboard.internetcomputer.org/proposal/";
+const ICP_LEDGER_METRICS_URL : string = "https://ryjl3-tyaaa-aaaaa-aaaba-cai.raw.ic0.app/metrics";
 
 // Proposal response onject from the NNS data API
 export interface NnsProposalResponse
@@ -61,8 +69,23 @@ export async function get_metadata ()
             },
         },
     );
-    // Connection to the NNS governance canister (Smart Contract)
-    const nns_icp_ledger = ic( 'ryjl3-tyaaa-aaaaa-aaaba-cai' );
+
+    var { data, status } = await axios.get(
+        ICP_LEDGER_METRICS_URL
+        ,
+        {
+            headers: {
+                Accept: 'application/json',
+            },
+        },
+    );
+
+    // The metrics endpoint of the ICP ledger returns a string with metrics separated by a line break with each line having the format: NAME_OF_METRIC METRIC_VALUE \n
+    const lines = data.split( '\n' );
+    // The line we are looking for has the metric name 'ledger_balances_token_pool'
+    var substring = "ledger_balances_token_pool";
+    // Now we can extract that line and select the metric value
+    const token_supply = Math.floor( 18446744073709551615 / DECIMALS - parseInt( lines.find( ( line : string ) => line.startsWith( substring ) ).split( ' ' )[ 1 ] ) );
 
     return {
         // NNS Governance canister id
@@ -78,8 +101,8 @@ export async function get_metadata ()
             type: "ICRC-1 Ledger",
             name: "Network Nervous System Internet Computer Protocol Ledger",
             symbol: "NNS ICP Ledger",
-            supply: parseInt( await nns_icp_ledger.call( 'icrc1_total_supply' ) ).toString(),
-            decimals: parseInt( await nns_icp_ledger.call( 'icrc1_decimals' ) ).toString(),
+            supply: token_supply.toString(),
+            decimals: DECIMALS.toString(),
         } ]
     }
 }
@@ -140,8 +163,8 @@ export function convert_proposal_format ( proposal : NnsProposalResponse ) : Pro
         description: proposal.summary,
         space: { canister_id: "rrkah-fqaaa-aaaaa-aaaaq-cai" },
         choices: [ "Yes", "No", "Undecided" ],
-        scores: [ proposal.latest_tally.yes, proposal.latest_tally.no, proposal.latest_tally.total - proposal.latest_tally.yes - proposal.latest_tally.no ].map( i => i / 1e8 ),
-        scores_total: proposal.latest_tally.total / 1e8,
+        scores: [ proposal.latest_tally.yes, proposal.latest_tally.no, proposal.latest_tally.total - proposal.latest_tally.yes - proposal.latest_tally.no ].map( i => i / DECIMALS ),
+        scores_total: proposal.latest_tally.total / DECIMALS,
         quorum: 0.03,
         votes: 0,
         score_skew: 0,
@@ -245,10 +268,10 @@ async function update_recent_proposals ( cache : GovCache ) : Promise<GovCache>
     {
         if ( i?.scores_total > 1e14 )
         {
-            i.scores_total /= 1e8
+            i.scores_total /= DECIMALS
             if ( i.scores )
             {
-                i.scores = i.scores.map( ( j : any ) => j / 1e8 )
+                i.scores = i.scores.map( ( j : any ) => j / DECIMALS )
             }
         }
     } )
@@ -272,7 +295,7 @@ export async function addICPProposals ( overview : any = {} )
     {
         Object.values( overview[ cache.id ].months ?? {} ).forEach( ( month : any ) => delete month.proposals )
     }
-    if ( cache.stats?.highestTotalScore > 1e14 ) cache.stats /= 1e8
+    if ( cache.stats?.highestTotalScore > 1e14 ) cache.stats /= DECIMALS
     await setCompound( cache.id, cache )
     return overview
 }

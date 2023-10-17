@@ -20866,27 +20866,6 @@ const data3: Protocol[] = [
     twitter: "moneymatestech",
     listedAt: 1697516124
   },
-  {
-    id: "3636",
-    name: "Money Mates",
-    address: null,
-    symbol: "-",
-    url: "https://www.moneymates.tech/",
-    description: "Empowering the creator economy with tailored financial tools",
-    chain: "zkSync Era",
-    logo: `${baseIconsUrl}/money-mates.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "SoFi",
-    chains: ["zkSync Era"],
-    oracles: [],
-    forkedFrom: [],
-    module: "superrare/index.js",
-    twitter: "moneymatestech",
-    listedAt: 1697516124
-  },
 ]
 
 export default data3

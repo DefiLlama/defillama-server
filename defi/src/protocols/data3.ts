@@ -12475,7 +12475,7 @@ const data3: Protocol[] = [
     twitter: "AftermathFi",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "aftermath-finance",
+    parentProtocol: "parent#aftermath-finance",
     listedAt: 1689860538
   },
   {
@@ -20885,7 +20885,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "aftermath-fi-afsui/index.js",
     twitter: "AftermathFi",
-    parentProtocol: "aftermath-finance",
+    parentProtocol: "parent#aftermath-finance",
     listedAt: 1697537621
   },
 ]

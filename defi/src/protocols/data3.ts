@@ -20866,6 +20866,29 @@ const data3: Protocol[] = [
     twitter: "moneymatestech",
     listedAt: 1697516124
   },
+  {
+    id: "3636",
+    name: "Ultraswap",
+    address: null,
+    symbol: "-",
+    url: "https://app.folks.finance/ultraswap",
+    description: "Loop your loans through up and down positions.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/folks-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Algorand"],
+    oracles: [],
+    forkedFrom: [],
+    module: "folks-ultraswap/index.js",
+    twitter: "FolksFinance",
+    audit_links: [],
+    parentProtocol: "parent#folks-finance",
+    listedAt: 1697533200,
+  },
 ]
 
 export default data3

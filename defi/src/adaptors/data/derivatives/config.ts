@@ -282,7 +282,13 @@ export default {
     },
     "apex": {
         "enabled": true,
-        "id": "1878"
+        "id": "1878",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1697414400": true,
+                "1697328000": true
+            },
+        }
     },
     "gmx-v2-trade": {
         parentId: "GMX",

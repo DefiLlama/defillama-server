@@ -18,9 +18,14 @@ import axios from "axios";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
 import mooBvmAdapter from "./mooBvmEth";
+import defiChainAdapter from "./defichain";
 
 export const shlb = shlb_;
 
+export function defiChain(timestamp: number = 0) {
+  console.log("starting defiChain");
+  return defiChainAdapter(timestamp);
+}
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
   return synthetixAdapter(timestamp);

@@ -69,7 +69,7 @@ export async function get_metadata ()
             },
         },
     );
-
+    let lates_proposal_id = data.latest_proposal_id;
     var { data, status } = await axios.get(
         ICP_LEDGER_METRICS_URL
         ,
@@ -81,17 +81,17 @@ export async function get_metadata ()
     );
 
     // The metrics endpoint of the ICP ledger returns a string with metrics separated by a line break with each line having the format: NAME_OF_METRIC METRIC_VALUE \n
-    const lines = data.split( '\n' );
+    const metrics_lines = data.split( '\n' );
     // The line we are looking for has the metric name 'ledger_balances_token_pool'
     var substring = "ledger_balances_token_pool";
     // Now we can extract that line and select the metric value
-    const token_supply = Math.floor( 18446744073709551615 / DECIMALS - parseInt( lines.find( ( line : string ) => line.startsWith( substring ) ).split( ' ' )[ 1 ] ) );
+    const token_supply = Math.floor( 18446744073709551615 / DECIMALS - parseInt( metrics_lines.find( ( line : string ) => line.startsWith( substring ) ).split( ' ' )[ 1 ] ) );
 
     return {
         // NNS Governance canister id
         id: "rrkah-fqaaa-aaaaa-aaaaq-cai",
         type: "Network Nervous System",
-        proposalsCount: data.latest_proposal_id,
+        proposalsCount: lates_proposal_id,
         symbol: "NNS",
         chainName: "Internet Computer",
         name: "Network Nervous System",

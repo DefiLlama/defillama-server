@@ -12458,13 +12458,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3259",
-    name: "Aftermath Finance",
+    name: "Aftermath AMM",
     address: "sui:-",
     symbol: "-",
     url: "https://aftermath.finance",
     description: "The ease of a centralized exchange with none of the risk.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/aftermath-finance.jpg`,
+    logo: `${baseIconsUrl}/aftermath-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -12475,7 +12475,7 @@ const data3: Protocol[] = [
     twitter: "AftermathFi",
     forkedFrom: [],
     oracles: [],
-    github: ["AftermathFinance"],
+    parentProtocol: "aftermath-finance",
     listedAt: 1689860538
   },
   {
@@ -20865,6 +20865,28 @@ const data3: Protocol[] = [
     module: "moneymates/index.js",
     twitter: "moneymatestech",
     listedAt: 1697516124
+  },
+  {
+    id: "3636",
+    name: "Aftermath afSUI",
+    address: "sui:-",
+    symbol: "-",
+    url: "https://aftermath.finance",
+    description: "afSUI is Aftermath's liquid staked token that you receive when you stake SUI through their protocol. afSUI acts as a fungible extension of Sui's native staking mechanism, enabling permissionless delegation and enhanced capital efficiency through its deep DeFi integrations.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/aftermath-afsui.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Sui"],
+    oracles: [],
+    forkedFrom: [],
+    module: "aftermath-fi-afsui/index.js",
+    twitter: "AftermathFi",
+    parentProtocol: "aftermath-finance",
+    listedAt: 1697537621
   },
 ]
 

@@ -2864,6 +2864,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "pacificswap",
     github: ["Pacificswap"],
   },
+  {
+    id: "parent#aftermath-finance",
+    name: "Aftermath Finance",
+    url: "https://aftermath.finance",
+    description: "CEX on-chain. Built on Sui",
+    logo: `${baseIconsUrl}/aftermath-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AftermathFi",
+    github: ["AftermathFinance"],
+  },
 ];
 
 export default parentProtocols;

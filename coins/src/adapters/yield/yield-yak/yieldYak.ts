@@ -32,7 +32,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   const totalDeposits = await api.multiCall({ abi: 'uint256:totalDeposits', calls, permitFailure: true })
   const totalSupply = await api.multiCall({ abi: 'uint256:totalSupply', calls, permitFailure: true })
-  const depositToken = await api.multiCall({ abi: 'address:depositToken', calls, permitFailure: true  })
+  const depositToken = await api.multiCall({ abi: 'address:depositToken', calls })
 
   const pricesObject: any = {}
   calls.forEach((vault: any, i: any) => { 

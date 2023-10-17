@@ -419,6 +419,12 @@ export default {
     },
     "contango": {
         "enabled": true,
-        "id": "2374"
+        "id": "2374",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1697414400": true,
+                "1697328000": true
+            },
+        }
     }
 } as AdaptorsConfig

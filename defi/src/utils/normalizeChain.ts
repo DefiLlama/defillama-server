@@ -14,7 +14,7 @@ export const normalizedChainReplacements = {
   "map relay chain": "map",
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
-  "bifrost evm": "bfc"
+  "bifrost mainnet": "bfc"
 } as {
   [chain: string]: string
 }
@@ -1949,11 +1949,12 @@ export const chainCoingeckoIds = {
     cmcId: "24143",
     github: ["renec-chain"]
   },
-  "Bifrost EVM": {
+  "Bifrost Mainnet": {
     geckoId: "bifrost",
     symbol: "BFC",
     cmcId: "7817",
     categories: ["EVM"],
+    github: ["bifrost-platform"]
   },
 } as unknown as {
   [chain: string]: {
@@ -2133,8 +2134,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "zkSync Lite" : "zkSync"
     case "zksync era":
       return "zkSync Era"
-    case "bifrost evm":
-      return "Bifrost EVM"    
+    case "bifrost mainnet":
+      return "Bifrost Mainnet"    
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -2356,7 +2357,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "era":
       return "zkSync Era"
     case "bfc":
-      return "Bifrost EVM"
+      return "Bifrost Mainnet"
     case "polygon_zkevm":
       return "Polygon zkEVM"
     case "meta":

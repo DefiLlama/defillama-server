@@ -44,6 +44,16 @@
       "decimals": "18",
       "symbol": "NEST",
       "to": "coingecko#nest"
+    },
+    "0x40eb746dee876ac1e78697b7ca85142d178a1fc8": {
+      "decimals": "18",
+      "symbol": "IAG",
+      "to": "coingecko#iagon"
+    },
+    "0x15d4c048f83bd7e37d49ea4c83a07267ec4203da": {
+      "decimals": "8",
+      "symbol": "GALA",
+      "to": "coingecko#gala"
     }
   },
   "fantom": {
@@ -63,6 +73,11 @@
       "decimals": "18",
       "symbol": "OOE",
       "to": "coingecko#openocean"
+    },
+    "0x2859e4544c4bb03966803b044a93563bd2d0dd4d": {
+      "decimals": "18",
+      "symbol": "SHIB",
+      "to": "coingecko#shiba-inu"
     }
   },
   "arbitrum": {
@@ -70,6 +85,16 @@
       "decimals": "18",
       "symbol": "CADC",
       "to": "coingecko#cad-coin"
+    },
+    "0xba5ddd1f9d7f570dc94a51479a000e3bce967196": {
+      "decimals": "18",
+      "symbol": "AAVE",
+      "to": "coingecko#aave"
+    },
+    "0x0c4681e6c0235179ec3d4f4fc4df3d14fdd96017": {
+      "decimals": "18",
+      "symbol": "RDNT",
+      "to": "coingecko#radiant"
     }
   },
   "tezos": {
@@ -93,11 +118,11 @@
       "to": "coingecko#zyx"
     }
   },
-  "defichain": {
-    "eth": {
-      "decimals": "18",
-      "symbol": "WZYX",
-      "to": "coingecko#ethereum"
+  "aptos": {
+    "0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT": {
+      "decimals": "6",
+      "symbol": "USDCET",
+      "to": "coingecko#usd-coin-wormhole-from-ethereum"
     }
   }
 }

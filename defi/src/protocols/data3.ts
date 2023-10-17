@@ -20890,7 +20890,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3637",
-    name: "Hope Lend",
+    name: "HOPE Lend",
     address: null,
     symbol: "-",
     url: "https://hope.money",
@@ -20912,7 +20912,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3638",
-    name: "Hope Collateral",
+    name: "HOPE Collateral",
     address: null,
     symbol: "-",
     url: "https://hope.money",

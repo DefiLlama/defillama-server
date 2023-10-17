@@ -2878,7 +2878,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#hope-money",
-    name: "Hope Money",
+    name: "HOPE Money",
     url: "https://hope.money",
     description: "All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.",
     logo: `${baseIconsUrl}/hope-swap.png`,

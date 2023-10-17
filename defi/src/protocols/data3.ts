@@ -8218,6 +8218,7 @@ const data3: Protocol[] = [
       "https://hatsfinance.medium.com/raft-finance-audit-competition-final-note-16e87dce23a2"
     ],
     github: ["raft-fi"],
+    forkedFrom: ["Liquity"],
     stablecoins: ["r"],
     listedAt: 1686074293,
     treasury: "raft.js",

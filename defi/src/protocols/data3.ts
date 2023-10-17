@@ -20955,7 +20955,7 @@ const data3: Protocol[] = [
     listedAt: 1697549584
   },
   {
-    id: "3639",
+    id: "3640",
     name: "VoltageSwap",
     address: "scroll:0x515ba0F5B5Ed37b8E96289C9ef07F36b6DF490fA",
     symbol: "VOLT",

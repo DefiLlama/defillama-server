@@ -21282,7 +21282,7 @@ const data2: Protocol[] = [
     gecko_id: "neptune-mutual",
     cmcId: "22625",
     category: "Insurance",
-    chains: ["Ethereum", "Arbitrum"],
+    chains: ["Ethereum", "Arbitrum", "Binance"],
     module: "neptune-mutual/index.js",
     twitter: "neptunemutual",
     forkedFrom: [],
@@ -21294,6 +21294,7 @@ const data2: Protocol[] = [
       "https://neptunemutual.com/security/cyraacs-application-penetration-test-greybox/",
       "https://neptunemutual.com/security/cyraacs-application-penetration-test-blackbox/"
     ],
+    github: ["neptune-mutual-blue"],
     listedAt: 1669921501
   },
   {

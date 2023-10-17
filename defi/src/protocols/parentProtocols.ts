@@ -2876,6 +2876,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AftermathFi",
     github: ["AftermathFinance"],
   },
+  {
+    id: "parent#hope-money",
+    name: "HOPE Money",
+    url: "https://hope.money",
+    description: "All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.",
+    logo: `${baseIconsUrl}/hope-swap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Hope_money_",
+    github: ["Light-Ecosystem"]
+  },
 ];
 
 export default parentProtocols;

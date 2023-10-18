@@ -428,9 +428,9 @@ export async function craftParentProtocolInternal({
       return acc;
     }, [] as Array<IRaise>),
     metrics: getAvailableMetricsById(parentProtocol.id),
-    symbol: childProtocolsTvls.find((p) => p.symbol)?.symbol,
-    treasury: parentProtocol.treasury,
-    mcap: tokenMcap || childProtocolsTvls.find((p) => p.mcap)?.mcap,
+    symbol: parentProtocol.symbol ?? (parentProtocol.gecko_id ? childProtocolsTvls.find((p) => p.gecko_id === parentProtocol.gecko_id)?.symbol : null) ?? null,
+    treasury: parentProtocol.treasury ?? childProtocolsTvls.find((p) => p.treasury)?.treasury ?? null,
+    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null,
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

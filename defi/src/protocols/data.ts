@@ -19540,7 +19540,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "1023",
     name: "Overnight USD+",
     address: null,
-    symbol: "-",
+    symbol: "USD+",
     url: "https://app.overnight.fi/stats",
     description:
       "USD+ is USDC that pays yield daily via rebase. USD+ stablecoin can be instantly minted and redeemed to USDC 1:1. USD+ includes 3 components:1.Pegged to USDC 1:12.Yield generating 3.Insurance (soon)",
@@ -24908,7 +24908,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "1272",
     name: "ioTube",
     address: null,
-    symbol: "-",
+    symbol: "CIOTX",
     url: "https://iotube.org",
     description:
       "ioTube is the decentralized bridge for connecting Ethereum, Binance Smart Chain, Polygon (Matic), and IoTeX. ioTube enables bi-directional exchange of tokens between IoTeX, Ethereum, Binance Smart Chain, and now Polygon!",

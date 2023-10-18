@@ -21624,7 +21624,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2342",
-    name: "VaporDex",
+    name: "VaporDex V1",
     address: null,
     symbol: "-",
     url: "https://www.vapordex.io",
@@ -21642,8 +21642,8 @@ const data2: Protocol[] = [
     twitter: "Vapor_DEX",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#vapordex",
     listedAt: 1670517161,
-    github: ["VaporFi"]
   },
   {
     id: "2343",

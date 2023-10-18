@@ -2888,6 +2888,29 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Hope_money_",
     github: ["Light-Ecosystem"]
   },
+  {
+    id: "parent#nostra",
+    name: "Nostra",
+    url: "https://nostra.finance/",
+    description: "Nostra is your one-stop DeFi solution where you can lend, borrow, and swap crypto",
+    logo: `${baseIconsUrl}/nostra.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "nostrafinance"
+  },
+  {
+    id: "parent#vapordex",
+    name: "VaporDex",
+    url: "https://www.vapordex.io",
+    description: "The World  Most Rewarding DEX. Automatically earn rewards that boost your savings just by using VaporDEX",
+    logo: `${baseIconsUrl}/vapordex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Vapor_DEX",
+    github: ["VaporFi"]
+  },
 ];
 
 export default parentProtocols;

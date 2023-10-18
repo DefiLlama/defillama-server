@@ -1960,7 +1960,6 @@ export const chainCoingeckoIds = {
     geckoId: "radix",
     symbol: "XRD",
     cmcId: "11948",
-    categories: [],
     github: ["radixdlt"]
   }
 } as unknown as {

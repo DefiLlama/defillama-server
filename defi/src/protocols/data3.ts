@@ -21067,6 +21067,48 @@ const data3: Protocol[] = [
     twitter: "flooringproto",
     listedAt: 1697566485
   },
+  {
+    id: "3645",
+    name: "CaviarNine",
+    address: "radixdlt:resource_rdx1t5pyvlaas0ljxy0wytm5gvyamyv896m69njqdmm2stukr3xexc2up9",
+    symbol: "FLOOP",
+    url: "https://www.caviarnine.com/",
+    description: "CaviarNine is a fintech company focused on providing DeFi trading products built on the Radix platform",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/caviarnine.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Radix"],
+    oracles: [],
+    forkedFrom: [],
+    module: "caviarnine/index.js",
+    twitter: "CaviarNine",
+    listedAt: 1697590874
+  },
+  {
+    id: "3646",
+    name: "Ociswap",
+    address: "radixdlt:resource_rdx1t52pvtk5wfhltchwh3rkzls2x0r98fw9cjhpyrf3vsykhkuwrf7jg8",
+    symbol: "OCI",
+    url: "https://ociswap.com/",
+    description: "Ociswap is a modular and highly configurable decentralized exchange (DEX) developed on the Radix Network",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/ociswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Radix"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ociswap/index.js",
+    twitter: "ociswap",
+    listedAt: 1697592311
+  },
 ]
 
 export default data3

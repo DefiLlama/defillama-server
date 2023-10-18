@@ -21176,8 +21176,8 @@ const data3: Protocol[] = [
   {
     id: "3650",
     name: "DX25",
-    address: "elrond:-",
-    symbol: "DX25",
+    address: null,
+    symbol: "-",
     url: "https://dx25.com/",
     description: "DX25 is a revolutionary DEX on MultiversX, with single-sided liquidity, concentrated liquidity, and multiple fees for efficient trading and higher earnings",
     chain: "Elrond",

@@ -2775,7 +2775,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Starknet"],
-    oracles: [],
+    oracles: ["Pragma"], // https://docs.nostra.finance/lend/deployed-contracts/lend-mainnet
     forkedFrom: [],
     module: "nostra/index.js",
     twitter: "nostrafinance",
@@ -21233,7 +21233,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Starknet"],
-    oracles: [],
+    oracles: ["Pragma"], // https://docs.nostra.finance/lend/deployed-contracts/lend-mainnet
     forkedFrom: [],
     module: "nostra-alpha/index.js",
     twitter: "nostrafinance",

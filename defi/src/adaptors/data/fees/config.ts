@@ -1405,5 +1405,9 @@ export default {
     "tangleswap": {
         "enabled": true,
         "id": "3585"
+    },
+    "uniswap-lab": {
+        "enabled": true,
+        "id": "3657"
     }
 } as AdaptorsConfig

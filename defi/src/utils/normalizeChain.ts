@@ -14,6 +14,7 @@ export const normalizedChainReplacements = {
   "map relay chain": "map",
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
+  "bifrost mainnet": "bfc"
 } as {
   [chain: string]: string
 }
@@ -1948,6 +1949,26 @@ export const chainCoingeckoIds = {
     cmcId: "24143",
     github: ["renec-chain"]
   },
+  "Bifrost Mainnet": {
+    geckoId: "bifrost",
+    symbol: "BFC",
+    cmcId: "7817",
+    categories: ["EVM"],
+    github: ["bifrost-platform"]
+  },
+  "Radix": {
+    geckoId: "radix",
+    symbol: "XRD",
+    cmcId: "11948",
+    github: ["radixdlt"]
+  },
+  "Nolus": {
+    geckoId: "nolus",
+    symbol: "NLS",
+    cmcId: null,
+    categories: ["Cosmos"],
+    github: ["nolus-protocol"]
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2126,6 +2147,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "zkSync Lite" : "zkSync"
     case "zksync era":
       return "zkSync Era"
+    case "bifrost mainnet":
+      return "Bifrost Mainnet"    
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -2346,6 +2369,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Bone"
     case "era":
       return "zkSync Era"
+    case "bfc":
+      return "Bifrost Mainnet"
     case "polygon_zkevm":
       return "Polygon zkEVM"
     case "meta":
@@ -2430,6 +2455,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Scroll"
     case "renec":
       return "RENEC" 
+    case "radixdlt":
+      return "Radix"
+    case "nolus":
+      return "Nolus"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

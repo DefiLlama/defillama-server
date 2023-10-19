@@ -16,7 +16,12 @@ const pgColumns: string[] = [
 const latency: number = 1 * 60 * 60; // 1hr
 const margin: number = 12 * 60 * 60; // 12hr
 const confidenceThreshold: number = 0.3;
-
+const zeroDecimalAdapters: string[] = [
+  "coingecko",
+  "chainlink-nft",
+  "defichain",
+  "reservoir"
+];
 export type Coin = {
   price: number;
   timestamp: number;
@@ -354,14 +359,8 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
 
   const filtered: Coin[] = [];
   writesToRedis.map((c: Coin) => {
-    if (
-      c.symbol &&
-      (["coingecko", "chainlink-nft"].includes(c.adapter) || c.decimals)
-    ) {
+    if (c.symbol && (zeroDecimalAdapters.includes(c.adapter) || c.decimals))
       filtered.push(c);
-    } else {
-      console.log(`${c.key} has no decimals or symbol, skipping redis`);
-    }
   });
 
   return filtered;

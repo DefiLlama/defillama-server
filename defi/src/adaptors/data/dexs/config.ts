@@ -1067,7 +1067,17 @@ export default {
     },
     "vapordex": {
         "enabled": true,
-        "id": "2342"
+        "id": "2342",
+        protocolsData: {
+            v1: {
+                "id": "2342",
+                enabled: true,
+            },
+            v2: {
+                "id": "3654",
+                enabled: true,
+            }
+        }
     },
     "10kswap": {
         "enabled": true,
@@ -2060,6 +2070,23 @@ export default {
     },
     "turbos": {
         "enabled": true,
-        "id": "2940"
+        "id": "2940",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1697328000": true,
+            },
+        }
+    },
+    "tangleswap": {
+        "enabled": true,
+        "id": "3585"
+    },
+    "dx25": {
+        "enabled": true,
+        "id": "3650"
+    },
+    "shimmersea": {
+        "enabled": true,
+        "id": "3571"
     }
 } as AdaptorsConfig

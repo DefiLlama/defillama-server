@@ -23,7 +23,7 @@ export interface Protocol {
   listedAt?: number;
   openSource?: boolean;
   parentProtocol?: string;
-  treasury?: string;
+  treasury?: string | null;
   referralUrl?: string;
   oraclesByChain?: {
     [chain: string]: string[];
@@ -43,6 +43,7 @@ export interface IParentProtocol {
   description: string;
   logo: string;
   chains: Array<string>;
+  symbol?: string | null;
   gecko_id: string | null;
   cmcId: string | null;
   categories?: Array<string>;
@@ -51,7 +52,7 @@ export interface IParentProtocol {
   forkedFrom?: Array<string>;
   governanceID?: Array<string>;
   github?: Array<string>;
-  treasury?: string;
+  treasury?: string | null;
   stablecoins?: string[];
   wrongLiquidity?: boolean;
 }

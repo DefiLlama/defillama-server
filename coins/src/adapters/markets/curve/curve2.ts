@@ -205,7 +205,7 @@ export default async function getTokenPrices2(chain: any, registries: string[], 
   }
   await unknownPools2(api, timestamp, poolList, registries, writes, cache)
   await setCache('curve', name ? name : chain, cache)
-  return writes;
+  return writes.filter((w: Write) => w.price != undefined && !isNaN(w.price));
 }
 
 async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, registries: string[], writes: Write[], cache: any) {

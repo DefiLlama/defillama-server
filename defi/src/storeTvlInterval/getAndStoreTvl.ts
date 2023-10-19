@@ -13,16 +13,19 @@ import {
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 import BigNumber from "bignumber.js";
-import {executeAndIgnoreErrors} from "./errorDb"
+import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
 
-function insertOnDb(useCurrentPrices:boolean, query:string, params:(string|number)[], storedKey:string, probabilitySampling: number = 1){
-  if (process.env.LOCAL === 'true') return;
-  if(useCurrentPrices === true && Math.random() <= probabilitySampling){
-    const currentTime = getCurrentUnixTimestamp()
-    // sdk.log('inserting on db', query, 'params', JSON.stringify(params, null, 2), storedKey)
-    executeAndIgnoreErrors(query, [currentTime, ...params, storedKey, storedKey.split("-")[0]])
+async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
+  if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
+  try {
+    const time = getCurrentUnixTimestamp()
+    await table.upsert({
+      time, ...data
+    })
+  } catch (e: any) {
+    console.error(e?.message)
   }
 }
 
@@ -114,7 +117,7 @@ async function getTvl(
       if (i >= maxRetries - 1) {
         throw e
       } else {
-        insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], storedKey)
+        insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, chain: storedKey.split('-')[0], storedKey  })
         continue;
       }
     }
@@ -208,7 +211,7 @@ export async function storeTvl(
           chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
         }
         const currentTime = getCurrentUnixTimestamp()
-        insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, currentTime - startTimestamp], storedKey, 0.05)
+        insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { elapsedTime: currentTime - startTimestamp, storedKey, chain: storedKey.split('-')[0], protocol: protocol.name }, 0.05)
       }))
     })
     if (module.tvl || module.fetch) {
@@ -239,7 +242,7 @@ export async function storeTvl(
     }
   } catch (e) {
     console.error(protocol.name, e);
-    insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "aggregate")
+    insertOnDb( useCurrentPrices,  TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'aggregate', chain: 'aggregate' } )
     return;
   }
   if (breakIfTvlIsZero && Object.values(usdTvls).reduce((total, value) => total + value) === 0) {
@@ -279,11 +282,11 @@ export async function storeTvl(
     }
   } catch (e) {
     console.error(protocol.name, e);
-    insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "store")
+    insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'store', chain: 'store' } )
     return;
   }
 
-  insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all", 1)
+  insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, {  protocol: protocol.name, storedKey: 'all', chain: 'all', elapsedTime: getCurrentUnixTimestamp() - adapterStartTimestamp } )
   if (returnCompleteTvlObject) return usdTvls
   return usdTvls.tvl;
 }

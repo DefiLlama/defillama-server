@@ -18,6 +18,17 @@ const defaultDataColumns = {
   is_simulated: DataTypes.BOOLEAN,
 }
 
+const defaultTvlMetricsDataColumns = {
+  time: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+  },
+  protocol: {
+    type: DataTypes.STRING(200),
+    primaryKey: true,
+  },
+}
+
 
 class DAILY_TVL extends Model { }
 class DAILY_TOKENS_TVL extends Model { }
@@ -28,6 +39,13 @@ class HOURLY_TOKENS_TVL extends Model { }
 class HOURLY_USD_TOKENS_TVL extends Model { }
 class HOURLY_RAW_TOKENS_TVL extends Model { }
 
+
+class TvlMetricsErrors extends Model { }
+class TvlMetricsErrors2 extends Model { }
+class TvlMetricsCompleted extends Model { }
+class TvlMetricsTimeouts extends Model { }
+class TvlMetricsStaleCoins extends Model { }
+
 export const Tables = {
   DAILY_TVL,
   DAILY_TOKENS_TVL,
@@ -37,9 +55,14 @@ export const Tables = {
   HOURLY_TOKENS_TVL,
   HOURLY_USD_TOKENS_TVL,
   HOURLY_RAW_TOKENS_TVL,
+  TvlMetricsErrors,
+  TvlMetricsErrors2,
+  TvlMetricsCompleted,
+  TvlMetricsTimeouts,
+  TvlMetricsStaleCoins,
 }
 
-export function initializeTables(sequelize: Sequelize) {
+export function initializeTables(sequelize: Sequelize, mSequalize: Sequelize) {
   const getTableOptions = (tableName: string) => ({
     sequelize,
     timestamps: true,
@@ -57,6 +80,7 @@ export function initializeTables(sequelize: Sequelize) {
       },
     ]
   })
+
   DAILY_TVL.init(defaultDataColumns, getTableOptions('dailyTvl'))
   DAILY_TOKENS_TVL.init(defaultDataColumns, getTableOptions('dailyTokensTvl'))
   DAILY_USD_TOKENS_TVL.init(defaultDataColumns, getTableOptions('dailyUsdTokensTvl'))
@@ -65,6 +89,85 @@ export function initializeTables(sequelize: Sequelize) {
   HOURLY_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyTokensTvl'))
   HOURLY_USD_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyUsdTokensTvl'))
   HOURLY_RAW_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyRawTokensTvl'))
+
+  const getMetricsTableOptions = (tableName: string) => ({
+    sequelize: mSequalize,
+    timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
+    tableName,
+    indexes: [
+      {
+        name: tableName + '_idx_time',
+        fields: ['time'],
+      },
+      {
+        name: tableName + '_idx_protocol',
+        fields: ['protocol'],
+      },
+    ]
+  })
+
+  TvlMetricsErrors.init({
+    ...defaultTvlMetricsDataColumns,
+    error: {
+      type: DataTypes.TEXT,
+    },
+  }, getMetricsTableOptions('tvl_metrics_errors'))
+  TvlMetricsErrors2.init({
+    ...defaultTvlMetricsDataColumns,
+    error: {
+      type: DataTypes.TEXT,
+    },
+    storedKey: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    chain: {
+      type: DataTypes.STRING,
+    },
+  }, getMetricsTableOptions('tvl_metrics_errors2'))
+  TvlMetricsCompleted.init({
+    ...defaultTvlMetricsDataColumns,
+    elapsedTime: {
+      type: DataTypes.INTEGER,
+    },
+    storedKey: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    chain: {
+      type: DataTypes.STRING,
+    },
+  }, getMetricsTableOptions('tvl_metrics_completed'))
+  TvlMetricsTimeouts.init(defaultTvlMetricsDataColumns, getMetricsTableOptions('tvl_metrics_timeouts'))
+  TvlMetricsStaleCoins.init({
+    time: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
+    address: {
+      type: DataTypes.STRING(500),
+      primaryKey: true,
+    },
+    lastUpdate: {
+      type: DataTypes.INTEGER,
+    },
+    chain: {
+      type: DataTypes.STRING(200),
+      primaryKey: true,
+    },
+    symbol: {
+      type: DataTypes.STRING(200),
+    },
+  }, {
+    ...getMetricsTableOptions('tvl_metrics_stale_coins'),
+    indexes: [
+      {
+        name: 'tvl_metrics_stale_coins_id_index',
+        fields: ['time'],
+      }]
+  })
 
   return Tables
 }

@@ -29,6 +29,7 @@ export interface IGeneralStats extends ExtraTypes {
     change_7dover7d: number | null;
     change_30dover30d: number | null;
     breakdown24h: IRecordAdaptorRecordData | null
+    average1y: number | null
 }
 
 export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
@@ -122,6 +123,11 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     ],
     [AdapterType.OPTIONS]: [
         AdaptorRecordType.dailyPremiumVolume
+    ],
+    [AdapterType.DERIVATIVES]: [
+        AdaptorRecordType.dailyShortOpenInterest,
+        AdaptorRecordType.dailyLongOpenInterest,
+        AdaptorRecordType.dailyOpenInterest
     ]
 }
 
@@ -268,6 +274,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         total60dto30d: enableStats ? generalStats.total60dto30d : 0,
         total30d: enableStats ? generalStats.total30d : 0,
         total1y: enableStats ? generalStats.total1y : 0,
+        average1y: enableStats ? generalStats.average1y : null,
         change_1d: enableStats ? generalStats.change_1d : null,
         change_7d: enableStats ? generalStats.change_7d : null,
         change_1m: enableStats ? generalStats.change_1m : null,

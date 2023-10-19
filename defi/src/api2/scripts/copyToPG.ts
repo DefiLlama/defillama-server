@@ -16,6 +16,8 @@ import { transformDDBToPGFormat } from "../utils";
 import entities from "../../protocols/entities";
 import treasuries from "../../protocols/treasury";
 
+// NOTE: set tableName env for aws
+
 let doneIndex = 0
 
 const keyToRecord: any = {

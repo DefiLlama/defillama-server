@@ -1401,5 +1401,27 @@ export default {
     "gambit": {
         "enabled": true,
         "id": "3325"
+    },
+    "tangleswap": {
+        "enabled": true,
+        "id": "3585"
+    },
+    "uniswap-lab": {
+        "enabled": true,
+        "id": "3657"
+    },
+    "shimmersea": {
+        "enabled": true,
+        "id": "3571"
+    },
+    "vapordex": {
+        "enabled": true,
+        "id": "2342",
+        protocolsData: {
+            v2: {
+                "id": "3654",
+                enabled: true,
+            }
+        }
     }
 } as AdaptorsConfig

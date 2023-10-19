@@ -7,8 +7,8 @@ import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { Write } from "../adapters/utils/dbInterfaces";
-import { filterWritesWithLowConfidence } from "../adapters/utils/database";
 import { batchReadPostgres, batchWrite2, readCoins2 } from "../../coins2";
+import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
@@ -193,7 +193,8 @@ async function getPlatformData(coins: Coin[]) {
   filteredCoins.map((f: Coin) =>
     Object.entries(f.platforms).map((p: any) => {
       if (!(f.id in keyMap)) keyMap[f.id] = [];
-      keyMap[f.id].push(`${p[0]}:${p[1]}`);
+      const i = Object.values(chainToCoingeckoId).indexOf(p[0]);
+      keyMap[f.id].push(`${Object.keys(chainToCoingeckoId)[i]}:${p[1]}`);
     }),
   );
   return keyMap;
@@ -357,7 +358,11 @@ async function getAndStoreHourly(
     toUNIXTimestamp(coinData.prices[0][0]),
     toUNIXTimestamp(coinData.prices[coinData.prices.length - 1][0]),
   );
-  if (prevWritenItems[prevWritenItems.length - 1].confidence > 29700) return;
+  if (
+    prevWritenItems.length > 0 &&
+    prevWritenItems[prevWritenItems.length - 1].confidence > 29700
+  )
+    return;
   const writtenTimestamps = Object.values(prevWritenItems).map(
     (c: any) => c.timestamp,
   );
@@ -384,14 +389,14 @@ async function getAndStoreHourly(
       return !writtenTimestamps[ts];
     })
     .map((price) =>
-      platformData[coin.id].map((PK: string) => ({
+      [cgPK(coin.id), ...platformData[coin.id]].map((PK: string) => ({
         timestamp: toUNIXTimestamp(price[0]),
         key: PK.replace("#", ":"),
         price: price[1],
         confidence: 0.99,
         adapter: "coingecko",
         symbol: coin.symbol,
-        chain: "coingecko",
+        chain: PK.substring(0, PK.replace("#", ":").indexOf(":")),
       })),
     )
     .flat();

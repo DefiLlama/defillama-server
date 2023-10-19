@@ -143,5 +143,32 @@
       "symbol": "WRPG",
       "to": "coingecko#rangers-protocol-gas"
     }
+  },
+  "scroll": {
+    "0xca77eb3fefe3725dc33bccb54edefc3d9f764f97": {
+      "decimals": "18",
+      "symbol": "DAI",
+      "to": "coingecko#dai"
+    },
+    "0xf55bec9cafdbe8730f096aa55dad6d22d44099df": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xeb466342c4d449bc9f53a865d5cb90586f405215": {
+      "decimals": "6",
+      "symbol": "axlUSDC",
+      "to": "coingecko#axlusdc"
+    },
+    "0x3c1bca5a656e69edcd0d4e36bebb3fcdaca60cf1": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0xf610a9dfb7c89644979b4a0f27063e9e7d7cda32": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
+    }
   }
 }

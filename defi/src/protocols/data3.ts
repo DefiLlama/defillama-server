@@ -21369,6 +21369,48 @@ const data3: Protocol[] = [
     github: ["SociogramSoFi"],
     listedAt: 1697712540
   },
+  {
+    id: "3659",
+    name: "SolidPulse",
+    address: "pulse:0x33Fc1DDE91B6573c0bF782Fe631dd0C4381F3cbf",
+    symbol: "SOLID",
+    url: "https://app.solidpulse.xyz",
+    description: "SolidPulse a permissionless liquidity market community oriented ve(3,3).",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/solidpulse.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Pulse"],
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    module: "Solidpulse/index.js",
+    twitter: "solid_pulse",
+    listedAt: 1697722100
+  },
+  {
+    id: "3660",
+    name: "Sanctuary",
+    address: null,
+    symbol: "-",
+    url: "https://app.sanctuaryexchange.xyz/",
+    description: "Where wizardry meets DeFi, the most magical Scroll DEX & Launchpad",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/sanctuary.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "sanctuary/index.js",
+    twitter: "Sanctuary_ZKP",
+    listedAt: 1697722125
+  },
 ]
 
 export default data3

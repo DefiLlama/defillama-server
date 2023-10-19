@@ -20,6 +20,7 @@ const zeroDecimalAdapters: string[] = [
   "coingecko",
   "chainlink-nft",
   "defichain",
+  "reservoir"
 ];
 export type Coin = {
   price: number;
@@ -358,11 +359,8 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
 
   const filtered: Coin[] = [];
   writesToRedis.map((c: Coin) => {
-    if (c.symbol && (zeroDecimalAdapters.includes(c.adapter) || c.decimals)) {
+    if (c.symbol && (zeroDecimalAdapters.includes(c.adapter) || c.decimals))
       filtered.push(c);
-    } else {
-      console.log(`${c.key} has no decimals or symbol, skipping redis`);
-    }
   });
 
   return filtered;

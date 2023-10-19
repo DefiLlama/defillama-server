@@ -20991,7 +20991,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Linea"],
-    oracles: [],
+    oracles: ["Pyth","Chainlink"],
     forkedFrom: ["Solidly"],
     module: "lyve/index.js",
     twitter: "LyveFinance",

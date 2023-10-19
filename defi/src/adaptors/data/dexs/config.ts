@@ -2074,5 +2074,9 @@ export default {
     "dx25": {
         "enabled": true,
         "id": "3650"
+    },
+    "shimmersea": {
+        "enabled": true,
+        "id": "3571"
     }
 } as AdaptorsConfig

@@ -21457,6 +21457,27 @@ const data3: Protocol[] = [
     github: ["zksynth"],
     listedAt: 1697722575
   },
+  {
+    id: "3663",
+    name: "Nolus Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://nolus.io/",
+    description: "Nolus is a semi-permissioned blockchain bridging lenders and borrowers in a DeFi money market. With its DeFi Lease, borrowers can secure up to 150% financing on their initial investments, and access to the underlying leveraged assets through whitelisted strategies. Inspired by traditional leasing, where one pays a fraction upfront and gains ownership after repayment, Nolus' approach cuts down the DeFi sector's high over-collateralization standards. This boosts capital efficiency and offers borrowers better loan terms.",
+    chain: "Nolus",
+    logo: `${baseIconsUrl}/nolus-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Nolus"],
+    oracles: [],
+    forkedFrom: [],
+    module: "nolus/index.js",
+    twitter: "NolusProtocol",
+    listedAt: 1697724120
+  },
 ]
 
 export default data3

@@ -19523,7 +19523,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.gammaswap.com/",
-    description: "The first oracle free, decentralized, two sided market for volatility trading on any token pair",
+    description: "GammaSwap is a novel DeFi primitive built to scale liquidity in Automated Market Makers (AMMs) by creating permissionless and oracle free risk markets",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/gammaswap.png`,
     audits: "2",

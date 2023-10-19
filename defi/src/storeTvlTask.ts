@@ -33,6 +33,7 @@ async function main() {
   await initializeTVLCacheDB()
   let i = 0
   let skipped = 0
+  let failed = 0
   let timeTaken = 0
   const startTimeAll = Date.now() / 1e3
   sdk.log('tvl adapter count:', actions.length)
@@ -55,11 +56,14 @@ async function main() {
       await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
-    } catch (e: any) { console.log('FAILED: ', protocol?.name, e?.message) }
+    } catch (e: any) {
+      console.log('FAILED: ', protocol?.name, e?.message)
+      failed++
+    }
     const timeTakenI = (+Date.now() - startTime) / 1e3
     timeTaken += timeTakenI
     const avgTimeTaken = timeTaken / ++i
-    sdk.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped}`)
+    sdk.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
   }
 
   const normalAdapterRuns = PromisePool
@@ -105,7 +109,7 @@ function importAdapter(protocol: Protocol) {
   return require("@defillama/adapters/projects/" + [protocol.module])
 }
 
-async function rejectAfterXMinutes(promiseFn: any, minutes = 5) {
+async function rejectAfterXMinutes(promiseFn: any, minutes = 10) {
   const ms = minutes * 60 * 1e3
   return new Promise((resolve, reject) => {
     const timeoutId = setTimeout(() => {
@@ -149,7 +153,7 @@ async function filterProtocol(adapterModule: any, protocol: any) {
 
   let tvlHistkeys = ['tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
   // let tvlNowKeys = ['tvl', 'staking', 'pool2']
-  const getMax = ((i : any, keys = tvlHistkeys) => Math.max(...keys.map(k => i[k] ?? 0)))
+  const getMax = ((i: any, keys = tvlHistkeys) => Math.max(...keys.map(k => i[k] ?? 0)))
   const lastRecord = await getLastRecord(hourlyTvl(protocol.id))
   // for whatever reason if latest tvl record is not found, run tvl adapter
   if (!lastRecord)

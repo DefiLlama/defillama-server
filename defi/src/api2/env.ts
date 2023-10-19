@@ -24,5 +24,11 @@ export default function getTvlCacheEnv() {
     password: ENV.TVL_CACHE_DB_PASSWORD,
     isCoolifyTask,
     internalHost: ENV.TVL_CACHE_DB_HOST_INTERNAL,
+    metrics_db_name: ENV.DEV_METRICS_DB_NAME,
+    metrics_host: ENV.DEV_METRICS_DB_HOST,
+    metrics_port: ENV.DEV_METRICS_DB_PORT,
+    metrics_user: ENV.DEV_METRICS_DB_USERNAME,
+    metrics_password: ENV.DEV_METRICS_DB_PASSWORD,
+    metrics_internalHost: ENV.DEV_METRICS_DB_HOST_INTERNAL,
   }
 }

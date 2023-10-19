@@ -1,4 +1,4 @@
-import { Sequelize, Model, ModelStatic, } from 'sequelize'
+import { Sequelize, Model, ModelStatic, Op, } from 'sequelize'
 
 import getEnv from '../env'
 import { initializeTables, Tables as TABLES } from './tables'
@@ -43,6 +43,7 @@ function isHourlyDDBPK(ddbPKFunction: Function) {
 }
 
 let sequelize: Sequelize | null = null
+let mSequalize: Sequelize | null = null
 
 async function initializeTVLCacheDB() {
   if (!sequelize) {
@@ -60,15 +61,32 @@ async function initializeTVLCacheDB() {
         }
       },
     }
+    const metricsDbOptions = {
+      host: ENV.metrics_host,
+      port: ENV.metrics_port,
+      username: ENV.metrics_user,
+      password: ENV.metrics_password,
+      database: ENV.metrics_db_name,
+      dialect: 'postgres',
+      logging: (msg: string) => {
+        if (msg.includes('ERROR')) { // Log only error messages
+          console.error(msg);
+        }
+      },
+    }
     
     if (ENV.isCoolifyTask) {
       dbOptions.host = ENV.internalHost
+      metricsDbOptions.host = ENV.metrics_internalHost
       delete dbOptions.port
+      delete metricsDbOptions.port
     }
 
     sequelize = new Sequelize(dbOptions as any);
-    initializeTables(sequelize)
+    mSequalize = new Sequelize(metricsDbOptions as any);
+    initializeTables(sequelize, mSequalize)
     // await sequelize.sync() // needed only for table creation/update
+    // await mSequalize.sync() // needed only for table creation/update
   }
 }
 
@@ -100,7 +118,7 @@ async function _getLatestProtocolItem(ddbPKFunction: Function, protocolId: strin
 async function _getClosestProtocolItem(ddbPKFunction: Function, protocolId: string, timestamp: number) {
   const table = getTVLCacheTable(ddbPKFunction)
   const item: any = await table.findOne({
-    where: { id: protocolId, timestamp: { $lte: timestamp } },
+    where: { id: protocolId, timestamp: { [Op.lte]: timestamp } },
     attributes: ['data', 'timestamp'],
     raw: true,
     order: [['timestamp', 'DESC']],
@@ -124,6 +142,12 @@ async function _saveProtocolItem(ddbPKFunction: Function, record: TVLCacheRecord
       defaults: record,
     })
   }
+}
+
+async function deleteProtocolItems(ddbPKFunction: Function, where: any) {
+  const table = getTVLCacheTable(ddbPKFunction)
+  const response = await table.destroy({ where })
+  console.log('delete item count', response)
 }
 
 function validateRecord(record: TVLCacheRecord) {
@@ -170,6 +194,7 @@ export {
   saveProtocolItem,
   initializeTVLCacheDB,
   closeConnection,
+  deleteProtocolItems,
 }
 
 // Add a process exit hook to close the database connection

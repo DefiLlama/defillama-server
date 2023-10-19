@@ -21027,7 +21027,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://amphor.io",
-    description: "Amphor.io provides onchain and offchain yield products for the DeFi ecosystem.",
+    description: "Amphor offers easy access to innovative yield strategies on DeFi ecosystem.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/amphor.jpg`,
     audits: "2",

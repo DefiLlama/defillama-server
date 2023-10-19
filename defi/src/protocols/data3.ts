@@ -21278,7 +21278,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Avalanche"],
     module: "vapordex-v2/index.js",
-    twitter: "Vapor_DEX",
+    twitter: "VaporDex",
     forkedFrom: ["Uniswap V3"],
     oracles: [],
     parentProtocol: "parent#vapordex",

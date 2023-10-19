@@ -1409,5 +1409,9 @@ export default {
     "uniswap-lab": {
         "enabled": true,
         "id": "3657"
+    },
+    "shimmersea": {
+        "enabled": true,
+        "id": "3571"
     }
 } as AdaptorsConfig

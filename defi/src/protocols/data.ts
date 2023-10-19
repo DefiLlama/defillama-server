@@ -272,10 +272,8 @@ const data: Protocol[] = [
     module: "maker/index.js",
     twitter: "MakerDAO",
     audit_links: ["https://security.makerdao.com/"],
+    parentProtocol: "parent#maker",
     oracles: ["Chronicle"],
-    treasury: "maker.js",
-    stablecoins: ["dai"],
-    github: ["makerdao"] //check
   },
   {
     id: "119",

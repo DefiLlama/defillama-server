@@ -2912,6 +2912,20 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "VaporDex",
     github: ["VaporFi"]
   },
+  {
+    id: "parent#maker",
+    name: "Maker",
+    url: "https://makerdao.com/en",
+    description: "Builders of Dai, a digital currency that can be used by anyone, anywhere, anytime.",
+    logo: `${baseIconsUrl}/maker.jpg`,
+    gecko_id: "maker",
+    cmcId: "1518",
+    chains: [],
+    twitter: "MakerDAO",
+    treasury: "maker.js",
+    stablecoins: ["dai"],
+    github: ["makerdao"]   
+  },
 ];
 
 export default parentProtocols;

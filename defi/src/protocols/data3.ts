@@ -21500,6 +21500,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/primex-finance/audit-reports"],
     listedAt: 1697730940
   },
+  {
+    id: "3665",
+    name: "Maker RWA",
+    address: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+    symbol: "MKR",
+    url: "https://makerdao.com/en/",
+    description: "Real World Assets (RWAs) are a collateral type in the Maker Protocol which require legal entities to represent the MakerDAO in order to interact with real world counterparties in deals ratified by governance.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/maker-rwa.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "maker-rwa/index.js",
+    twitter: "MakerDAO",
+    listedAt: 1697730940
+  },
 ]
 
 export default data3

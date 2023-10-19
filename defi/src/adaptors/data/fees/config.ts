@@ -1413,5 +1413,15 @@ export default {
     "shimmersea": {
         "enabled": true,
         "id": "3571"
+    },
+    "vapordex": {
+        "enabled": true,
+        "id": "2342",
+        protocolsData: {
+            v2: {
+                "id": "3654",
+                enabled: true,
+            }
+        }
     }
 } as AdaptorsConfig

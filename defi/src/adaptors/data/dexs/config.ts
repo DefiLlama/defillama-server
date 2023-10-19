@@ -1067,7 +1067,17 @@ export default {
     },
     "vapordex": {
         "enabled": true,
-        "id": "2342"
+        "id": "2342",
+        protocolsData: {
+            v1: {
+                "id": "2342",
+                enabled: true,
+            },
+            v2: {
+                "id": "3654",
+                enabled: true,
+            }
+        }
     },
     "10kswap": {
         "enabled": true,

@@ -21478,6 +21478,28 @@ const data3: Protocol[] = [
     twitter: "NolusProtocol",
     listedAt: 1697724120
   },
+  {
+    id: "3664",
+    name: "Primex Finance",
+    address: "polygon:0xDc6D1bd104E1efa4A1bf0BBCf6E0BD093614E31A",
+    symbol: "ePMX",
+    url: "https://primex.finance",
+    description: "Primex is a non-custodial protocol that connects lenders with traders. It allows traders to enhance their trading positions with leverage backed by lender liquidity on popular decentralized exchanges (DEXs) like Uniswap, Balancer, Curve, and others.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/primex-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "primex-finance/index.js",
+    twitter: "primex_official",
+    audit_links: ["https://github.com/primex-finance/audit-reports"],
+    listedAt: 1697730940
+  },
 ]
 
 export default data3

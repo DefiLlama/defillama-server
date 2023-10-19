@@ -1405,5 +1405,9 @@ export default {
     "tangleswap": {
         "enabled": true,
         "id": "3585"
+    },
+    "dx25": {
+        "enabled": true,
+        "id": "3650"
     }
 } as AdaptorsConfig

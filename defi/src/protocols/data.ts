@@ -9252,6 +9252,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "thales/index.js",
     twitter: "thalesmarket",
+    oracles: [],
     treasury: "thales.js",
     audit_links: ["https://iosiro.com/audits/thales-airdrop-and-staking-smart-contract-audit"],
     github: ["thales-markets"]
@@ -14139,7 +14140,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "angle/index.js",
     twitter: "AngleProtocol",
     audit_links: ["https://github.com/AngleProtocol/angle-core/tree/main/audits"],
-    oracles: ["Chainlink", "TWAP", "RedStone"],
+    oracles: ["Chainlink", "TWAP", "RedStone","Pyth"],
     listedAt: 1635962344,
     governanceID: ["snapshot:anglegovernance.eth", "compound:ethereum:0x59153e939c5b4721543251ff3049ea04c755373b"],
     stablecoins: ["ageur"],

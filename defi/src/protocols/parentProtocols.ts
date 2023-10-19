@@ -1284,6 +1284,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#overnight-finance",
     name: "Overnight Finance",
+    symbol: "OVN",
     url: "https://overnight.fi",
     description: "Overnight Finance is an asset management protocol offering passive yield products based on delta-neutral strategies, primarily for conservative stablecoin investors.",
     logo: `${baseIconsUrl}/overnight-finance.jpg`,

@@ -65,6 +65,8 @@ export default {
   balancer3: require("./markets/balancer"),
   balancer4: require("./markets/balancer"),
   balancer5: require("./markets/balancer"),
+  balancer6: require("./markets/balancer"),
+  balancer7: require("./markets/balancer"),
   linearPools: require("./markets/balancer"),
   hop: require("./markets/hop"),
   ankr: require("./liquidStaking/ankr"),

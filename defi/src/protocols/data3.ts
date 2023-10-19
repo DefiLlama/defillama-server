@@ -21326,6 +21326,27 @@ const data3: Protocol[] = [
     twitter: "wordsdotart",
     listedAt: 1697670351
   },
+  {
+    id: "3657",
+    name: "Uniswap Labs",
+    address: null,
+    symbol: "-",
+    url: "https://uniswap.org/",
+    description: "We contribute to Uniswap - a protocol for trading and automated liquidity provision on Ethereum",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/uniswap-labs.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "Uniswap",
+    listedAt: 1697674181
+  },
 ]
 
 export default data3

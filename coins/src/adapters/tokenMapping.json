@@ -1,5 +1,11 @@
 {
-  "sui": {},
+  "sui": {
+    "0xb848cce11ef3a8f62eccea6eb5b35a12c4c2b1ee1af7755d02d7bd6218e8226f::coin::COIN": {
+      "decimals": "8",
+      "symbol": "BNB",
+      "to": "coingecko#binancecoin"
+    }
+  },
   "polygon": {
     "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359": {
       "decimals": "6",

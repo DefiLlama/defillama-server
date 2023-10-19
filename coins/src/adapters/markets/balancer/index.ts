@@ -24,6 +24,14 @@ export function balancer5(timestamp: number = 0) {
     getTokenPrices("xdai", timestamp),
   ]);
 }
+export function balancer6(timestamp: number = 0) {
+  console.log("starting balancer6 lps");
+  return getTokenPrices("base", timestamp);
+}
+export function balancer7(timestamp: number = 0) {
+  console.log("starting balancer7 lps");
+  return getTokenPrices("polygon_zkevm", timestamp);
+}
 export function linearPools(timestamp: number = 0) {
   console.log("starting balancer linear pools");
   return Promise.all([

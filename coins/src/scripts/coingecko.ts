@@ -66,7 +66,7 @@ async function storeCoinData(coinData: any[]) {
       symbol: c.symbol,
       adapter: "coingecko",
       mcap: c.mcap || null,
-      chain: "coingecko",
+      chain: c.PK.substring(0, c.PK.replace("#", ":").indexOf(":")),
     });
   });
   try {
@@ -255,10 +255,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   );
   const platformQueries = filteredCoins
     .map((f: Coin) =>
-      Object.entries(f.platforms).map((p: any) => ({
-        key: `${p[0]}:${p[1]}`,
-        timestamp: getCurrentUnixTimestamp(),
-      })),
+      Object.entries(f.platforms).map((p: any) => {
+        const i = Object.values(chainToCoingeckoId).indexOf(p[0]);
+        return {
+          key: `${Object.keys(chainToCoingeckoId)[i]}:${p[1]}`,
+          timestamp: getCurrentUnixTimestamp(),
+        };
+      }),
     )
     .flat();
   const coinPlatformData = await readCoins2(platformQueries, true, 604800);
@@ -307,7 +310,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             confidence: 0.99,
             adapter: "coingecko",
             mcap: pricesAndMcaps[cgPK(coin.id)].mcap || null,
-            chain: "coingecko",
+            chain: key.substring(0, key.indexOf(":")),
           });
 
           if (previous.Item?.confidence > 0.99) return;

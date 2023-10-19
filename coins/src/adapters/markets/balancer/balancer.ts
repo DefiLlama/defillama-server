@@ -14,12 +14,21 @@ import { DbTokenInfos } from "../../utils/dbInterfaces";
 const vault: string = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
 const nullAddress: string = "0x0000000000000000000000000000000000000000";
 const subgraphNames: { [chain: string]: string } = {
-  ethereum: "balancer-v2",
-  arbitrum: "balancer-arbitrum-v2",
-  polygon: "balancer-polygon-v2",
-  optimism: "balancer-optimism-v2",
-  avax: "balancer-avalanche-v2",
-  xdai: "balancer-gnosis-chain-v2",
+  ethereum: "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-v2",
+  arbitrum:
+    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-arbitrum-v2",
+  polygon:
+    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-polygon-v2",
+  optimism:
+    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-optimism-v2",
+  avax:
+    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-avalanche-v2",
+  xdai:
+    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-gnosis-chain-v2",
+  polygon_zkevm:
+    "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
+  base:
+    "https://api.studio.thegraph.com/query/24660/balancer-base-v2/version/latest",
 };
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
@@ -46,9 +55,8 @@ export type TokenValues = {
 async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
-  const subgraph: string = `https://api.thegraph.com/subgraphs/name/balancer-labs/${
-    subgraphNames[chain] || chain
-  }`;
+  const subgraph: string = subgraphNames[chain] || chain;
+
   for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
     query {
@@ -237,46 +245,61 @@ export default async function getTokenPrices(
   const tokenValues: TokenValues[] = (
     await getLpPrices(poolIds, chain, timestamp, block)
   ).filter((t: TokenValues) => t.price != Infinity);
-  const gauges: string[] = (
-    await multiCall({
-      target: gaugeFactories[chain],
-      block,
-      chain,
-      calls: tokenValues
-        .map((t: any) => t.address)
-        .map((l: string) => ({
-          params: [l],
-        })),
-      abi: abi.getPoolGauge,
-    })
-  ).output.map((o: Result) => o.output);
+  if (chain in Object.keys(gaugeFactories)) {
+    const gauges: string[] = (
+      await multiCall({
+        target: gaugeFactories[chain],
+        block,
+        chain,
+        calls: tokenValues
+          .map((t: any) => t.address)
+          .map((l: string) => ({
+            params: [l],
+          })),
+        abi: abi.getPoolGauge,
+      })
+    ).output.map((o: Result) => o.output);
 
-  tokenValues.map((v: TokenValues, i: number) => {
-    addToDBWritesList(
-      writes,
-      chain,
-      v.address,
-      v.price,
-      v.decimals,
-      v.symbol,
-      timestamp,
-      "balancer-lp",
-      0.9,
+    tokenValues.map((v: TokenValues, i: number) => {
+      addToDBWritesList(
+        writes,
+        chain,
+        v.address,
+        v.price,
+        v.decimals,
+        v.symbol,
+        timestamp,
+        "balancer-lp",
+        0.9,
+      );
+      if (gauges[i] == nullAddress) return;
+      addToDBWritesList(
+        writes,
+        chain,
+        gauges[i],
+        undefined,
+        v.decimals,
+        `${v.symbol}-gauge`,
+        timestamp,
+        "balancer-gauge",
+        0.9,
+        `asset#${chain}:${v.address}`,
+      );
+    });
+  } else {
+    tokenValues.map((v: TokenValues) =>
+      addToDBWritesList(
+        writes,
+        chain,
+        v.address,
+        v.price,
+        v.decimals,
+        v.symbol,
+        timestamp,
+        "balancer-lp",
+        0.9,
+      ),
     );
-    if (gauges[i] == nullAddress) return;
-    addToDBWritesList(
-      writes,
-      chain,
-      gauges[i],
-      undefined,
-      v.decimals,
-      `${v.symbol}-gauge`,
-      timestamp,
-      "balancer-gauge",
-      0.9,
-      `asset#${chain}:${v.address}`,
-    );
-  });
-
+  }
   return writes;
 }

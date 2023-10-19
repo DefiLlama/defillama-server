@@ -1961,7 +1961,14 @@ export const chainCoingeckoIds = {
     symbol: "XRD",
     cmcId: "11948",
     github: ["radixdlt"]
-  }
+  },
+  "Nolus": {
+    geckoId: "nolus",
+    symbol: "NLS",
+    cmcId: null,
+    categories: ["Cosmos"],
+    github: ["nolus-protocol"]
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2450,6 +2457,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "RENEC" 
     case "radixdlt":
       return "Radix"
+    case "nolus":
+      return "Nolus"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

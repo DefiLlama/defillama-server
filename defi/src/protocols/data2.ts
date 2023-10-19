@@ -18878,7 +18878,7 @@ const data2: Protocol[] = [
     id: "2221",
     name: "Frax Ether",
     address: null,
-    symbol: "FRXETH",
+    symbol: "-",
     assetToken: "FRXETH",
     url: "https://app.frax.finance/frxeth/mint",
     description:
@@ -24210,7 +24210,7 @@ const data2: Protocol[] = [
     id: "2454",
     name: "GETH",
     address: null,
-    symbol: "GETH",
+    symbol: "-",
     assetToken: "GETH",
     url: "https://guarda.com/staking/ethereum-staking/",
     description:

@@ -2922,7 +2922,7 @@ const data3: Protocol[] = [
     id: "2832",
     name: "uniETH",
     address: null,
-    symbol: "UNIETH",
+    symbol: "-",
     assetToken: "UNIETH",
     url: "https://bedrock.rockx.com/unieth",
     description: "uniETH represents the staked ETH in Bedrock plus all future staking rewards. uniETH is non-rebasing, i.e. does not grow in quantity over time but grows in value instead. In other words, 1 uniETH will be worth more than 1 ETH as time goes on, and its value will continue to increase as more time passes",
@@ -4743,7 +4743,7 @@ const data3: Protocol[] = [
     id: "2914",
     name: "Binance staked ETH",
     address: null,
-    symbol: "WBETH",
+    symbol: "-",
     assetToken:"WBETH",
     url: "https://www.binance.com/en/wbeth",
     description:
@@ -5142,7 +5142,7 @@ const data3: Protocol[] = [
     id: "2931",
     name: "BlazeStake",
     address: null,
-    symbol: "BSOL",
+    symbol: "-",
     assetToken: "bSOL",
     url: "https://stake.solblaze.org/",
     description:
@@ -19930,7 +19930,7 @@ const data3: Protocol[] = [
     id: "3594",
     name: "Coinbase Wrapped Staked ETH",
     address: null,
-    symbol: "CBETH",
+    symbol: "-",
     assetToken: "CBETH",
     url: "https://www.coinbase.com/price/coinbase-wrapped-staked-eth",
     description:

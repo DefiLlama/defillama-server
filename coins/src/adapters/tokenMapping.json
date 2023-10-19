@@ -124,5 +124,24 @@
       "symbol": "USDCET",
       "to": "coingecko#usd-coin-wormhole-from-ethereum"
     }
+  },
+  "cardano": {
+    "lovelace": {
+      "decimals": "6",
+      "symbol": "ADA",
+      "to": "coingecko#cardano"
+    }
+  },
+  "rpg": {
+    "0x9f30528dafa80778473ca664cd95a6f5d2b9d538": {
+      "decimals": "18",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x71d9cfd1b7adb1e8eb4c193ce6ffbe19b4aee0db": {
+      "decimals": "18",
+      "symbol": "WRPG",
+      "to": "coingecko#rangers-protocol-gas"
+    }
   }
 }

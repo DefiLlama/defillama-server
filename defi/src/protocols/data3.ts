@@ -21519,6 +21519,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "maker-rwa/index.js",
     twitter: "MakerDAO",
+    parentProtocol: "parent#maker",
     listedAt: 1697730940
   },
 ]

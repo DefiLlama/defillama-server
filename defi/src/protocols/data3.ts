@@ -21347,6 +21347,28 @@ const data3: Protocol[] = [
     twitter: "Uniswap",
     listedAt: 1697674181
   },
+  {
+    id: "3658",
+    name: "Sociogram",
+    address: null,
+    symbol: "-",
+    url: "https://sociogram.org",
+    description: "Sociogram is web3 social media with the first ERC20 based SocialFi token economy.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/sociogram.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "sociogram/index.js",
+    twitter: "SociogramSocFi",
+    github: ["SociogramSoFi"],
+    listedAt: 1697712540
+  },
 ]
 
 export default data3

@@ -21070,13 +21070,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3645",
-    name: "CaviarNine",
+    name: "CaviarNine Shape Liquidity",
     address: "radixdlt:resource_rdx1t5pyvlaas0ljxy0wytm5gvyamyv896m69njqdmm2stukr3xexc2up9",
     symbol: "FLOOP",
-    url: "https://www.caviarnine.com/",
-    description: "CaviarNine is a fintech company focused on providing DeFi trading products built on the Radix platform",
+    url: "https://www.caviarnine.com/trade",
+    description: "An AMM smart contract, much like Uniswap, SushiSwap and PancakeSwap, allowing users to manage token liquidity and execute swaps at algorithmically set prices",
     chain: "Radix",
-    logo: `${baseIconsUrl}/caviarnine.png`,
+    logo: `${baseIconsUrl}/caviarnine-shape-liquidity.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -21087,6 +21087,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "caviarnine/index.js",
     twitter: "CaviarNine",
+    parentProtocol: "parent#caviarnine",
     listedAt: 1697590874
   },
   {
@@ -21521,6 +21522,28 @@ const data3: Protocol[] = [
     twitter: "MakerDAO",
     parentProtocol: "parent#maker",
     listedAt: 1697730940
+  },
+  {
+    id: "3666",
+    name: "CaviarNine LSU Pool",
+    address: "radixdlt:resource_rdx1t5pyvlaas0ljxy0wytm5gvyamyv896m69njqdmm2stukr3xexc2up9",
+    symbol: "FLOOP",
+    url: "https://www.caviarnine.com/earn/lsu-pools",
+    description: "CaviarNine's LSU Pool elevates the Radix liquid staking experience. With CaviarNine, users can amplify their staking rewards, enjoy shared trading revenue, and benefit from features like zero impermanent loss and instant swaps, making their staked tokens more productive",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/caviarnine-lsu-pool.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Radix"],
+    oracles: [],
+    forkedFrom: [],
+    module: "caviarnine-lsu/index.js",
+    twitter: "CaviarNine",
+    parentProtocol: "parent#caviarnine",
+    listedAt: 1697590874
   },
 ]
 

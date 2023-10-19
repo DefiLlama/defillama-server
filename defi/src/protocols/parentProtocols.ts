@@ -2926,6 +2926,17 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["dai"],
     github: ["makerdao"]   
   },
+  {
+    id: "parent#caviarnine",
+    name: "CaviarNine",
+    url: "https://www.caviarnine.com/",
+    description: "CaviarNine is a fintech company focused on providing DeFi trading products built on the Radix platform",
+    logo: `${baseIconsUrl}/caviarnine.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "CaviarNine"
+  },
 ];
 
 export default parentProtocols;

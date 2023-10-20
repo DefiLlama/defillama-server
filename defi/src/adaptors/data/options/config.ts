@@ -53,5 +53,9 @@ export default {
     "rysk-finance": {
         "enabled": true,
         "id": "2605"
+    },
+    "tigris": {
+        "enabled": true,
+        "id": "3129"
     }
 } as AdaptorsConfig

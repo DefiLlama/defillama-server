@@ -161,6 +161,11 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     },
+    "0xae78736cd615f374d3085123a210448e74fc6393": {
+      "decimals": "18",
+      "symbol": "rETH",
+      "to": "coingecko#rocket-pool-eth"
+    },
     "0xeb466342c4d449bc9f53a865d5cb90586f405215": {
       "decimals": "6",
       "symbol": "axlUSDC",

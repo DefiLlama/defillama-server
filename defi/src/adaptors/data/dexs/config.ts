@@ -2088,5 +2088,9 @@ export default {
     "shimmersea": {
         "enabled": true,
         "id": "3571"
+    },
+    "kriya-dex": {
+        "enabled": true,
+        "id": "2939"
     }
 } as AdaptorsConfig

@@ -21610,6 +21610,27 @@ const data3: Protocol[] = [
     twitter: "AnonSocialTech",
     listedAt: 1697825029
   },
+  {
+    id: "3670",
+    name: "Cog",
+    address: null,
+    symbol: "-",
+    url: "https://www.cog.finance/",
+    description: "Isolated Lending Protocol on Scroll",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/cog.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Scroll"],
+    oracles: ["TWAP"],
+    forkedFrom: [],
+    module: "cog-finance/index.js",
+    twitter: "CogFinance",
+    listedAt: 1697826929
+  },
 ]
 
 export default data3

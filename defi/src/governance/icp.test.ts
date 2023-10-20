@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 import { GovCache, Proposal } from './types';
-import { EXCLUDED_TOPICS, NnsProposalResponse, convert_proposal_format, get_metadata, get_nns_proposal, get_proposals_interval, update_internet_computer_cache } from './icp';
+import { EXCLUDED_TOPICS, NsProposalResponse, convert_proposal_format, get_metadata, get_nns_proposal, get_proposals_interval, update_internet_computer_cache } from './icp';
 import exp from 'constants';
 import { getProposals } from './snapshot';
 import { LimitOnUpdateNotSupportedError } from 'typeorm';
@@ -42,9 +42,9 @@ describe( 'internet computer adapter ', () =>
             },
         );
         var latest_proposal_id = data.latest_proposal_id;
-        let proposals : NnsProposalResponse[] = await get_proposals_interval( 10, 0 );
+        let proposals : NsProposalResponse[] = await get_proposals_interval( 10, 0 );
         expect( proposals.length ).toBe( 10 );
-        proposals.forEach( ( nns_p : NnsProposalResponse ) =>
+        proposals.forEach( ( nns_p : NsProposalResponse ) =>
         {
             let p = convert_proposal_format( nns_p );
             expect( p.id ).toBe( latest_proposal_id.toString() );
@@ -55,7 +55,7 @@ describe( 'internet computer adapter ', () =>
         let offset = 10;
         proposals = await get_proposals_interval( 10, offset );
         expect( proposals.length ).toBe( 10 );
-        proposals.forEach( ( nns_p : NnsProposalResponse ) =>
+        proposals.forEach( ( nns_p : NsProposalResponse ) =>
         {
             let p = convert_proposal_format( nns_p );
             expect( p.id ).toBe( ( latest_proposal_id ).toString() );
@@ -98,7 +98,7 @@ describe( 'internet computer adapter ', () =>
         };
         cache = await update_internet_computer_cache( cache );
         let proposals = await get_proposals_interval( 100, 0 );
-        expect( Object.keys( cache.proposals ).length ).toBe( proposals.filter( ( p : NnsProposalResponse ) => p.topic ? !EXCLUDED_TOPICS.includes( p.topic ) : false ).length + 1 );
+        expect( Object.keys( cache.proposals ).length ).toBe( proposals.filter( ( p : NsProposalResponse ) => p.topic ? !EXCLUDED_TOPICS.includes( p.topic ) : false ).length + 1 );
     }, 100000 );
 
     test( ( "updating recent proposals" ), async function ()
@@ -121,7 +121,7 @@ describe( 'internet computer adapter ', () =>
         };
         let limit = 100;
         let proposals = await get_proposals_interval( limit, 0 );
-        proposals.forEach( ( nns_p : NnsProposalResponse ) =>
+        proposals.forEach( ( nns_p : NsProposalResponse ) =>
         {
             let p : Proposal = convert_proposal_format( nns_p );
             cache.proposals[ p.id ] = p;

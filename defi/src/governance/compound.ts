@@ -5,7 +5,7 @@ import { updateStats, toHex, getGovernanceSources, getChainNameFromId } from './
 import * as sdk from '@defillama/sdk'
 import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import { getProvider } from '@defillama/sdk/build/general'
-import { addICPProposals } from './icp'
+import { addICPProposals } from './nns'
 
 const PROPOSAL_STATES = ['Pending', 'Active', 'Canceled', 'Defeated', 'Succeeded', 'Queued', 'Expired', 'Executed']
 

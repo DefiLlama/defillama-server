@@ -921,7 +921,7 @@ export default {
         "id": "2641"
     },
     "veax": {
-        "enabled": true,
+        "enabled": false,
         "id": "2928"
     },
     "maestro": {
@@ -1069,7 +1069,7 @@ export default {
         "id": "1772"
     },
     "concordex-io": {
-        "enabled": true,
+        "enabled": false,
         "id": "3172"
     },
     "vvs-finance": {

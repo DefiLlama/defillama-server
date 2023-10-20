@@ -432,5 +432,9 @@ export default {
                 "1697328000": true
             },
         }
+    },
+    "tigris": {
+        "enabled": true,
+        "id": "3129"
     }
 } as AdaptorsConfig

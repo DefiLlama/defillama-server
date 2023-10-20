@@ -342,5 +342,33 @@
       "symbol": "DAI",
       "to": "coingecko#dai"
     }
+  },
+ "elysium": {
+    "0xa801b1A7846156d4C81bD188F96bfcb621517611": {
+      "decimals": "18",
+      "symbol": “PYR”,
+      "to": "coingecko#vulcan-forged"
+    },
+  "0xc8B8bfA1986309867DD36E2f6741B54253786CE8": {
+      "decimals": “6”,
+      "symbol": “USDT”,
+      "to": "coingecko#tether"
+    },
+  "0x5aa61d96bdCb5f5631fD6F20684705146c2645a1": {
+      "decimals": "18",
+      "symbol": “WETH”,
+      "to": "coingecko#weth"
+    },
+  "0xA92fEeE6fE45e2BF2b37e64f3cb732323C5747C5": {
+      "decimals": "18",
+      "symbol": “WMATIC”,
+      "to": "coingecko#wmatic"
+    },
+ "0xA3c322Ad15218fBFAEd26bA7f616249f7705D945": {
+      "decimals": "18",
+      "symbol": “MV”,
+      "to": "coingecko#gensokishis-metaverse"
+    },
+  
   }
 }

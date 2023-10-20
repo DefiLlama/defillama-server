@@ -21543,7 +21543,7 @@ const data3: Protocol[] = [
     module: "caviarnine-lsu/index.js",
     twitter: "CaviarNine",
     parentProtocol: "parent#caviarnine",
-    listedAt: 1697590874
+    listedAt: 1697765229
   },
 ]
 

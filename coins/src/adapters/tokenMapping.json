@@ -209,6 +209,12 @@
       "symbol": "WPG"
     }
   },
+  "mvc": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#microvisionchain", "decimals": "8",
+      "symbol": "MVC"
+    }
+  },
   "nos": {
     "0x111808AbE352c8003e0eFfcc04998EaB26Cebe3c": {
       "to": "coingecko#wrapped-bitcoin", "decimals": "18",
@@ -218,7 +224,7 @@
   "renec": {
     "So11111111111111111111111111111111111111112": {
       "to": "coingecko#renec", "decimals": "9",
-      "symbol": "WBTC"
+      "symbol": "RENEC"
     },
     "4Q89182juiadeFgGw3fupnrwnnDmBhf7e7fHWxnUP3S3": {
       "to": "coingecko#tether", "decimals": "9",

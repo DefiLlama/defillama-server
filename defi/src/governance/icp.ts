@@ -11,33 +11,33 @@ export const MAX_PROPOSALS_PER_REQUEST : number = 100;
 // The maximum number representation of u64
 const U64_MAX : number = 18446744073709551615;
 
-
-
-export interface NervousSystemConfig{
-    app:string;
-    ledger_url:string;
-    dashboard_url?:string;
-    ns_api_url:string;
-    governance_canister_id:string;
-    latest_proposal_id:number;
-    decimals:number;
-    convert_proposals:(p:any,config:NervousSystemConfig) => Proposal;
-    proposal_filter:(p:any) => boolean;
-    excluded_topics:string[];
+// A config file passed to the functions of this file to mitigate the differences between NNSes and SNSes 
+export interface NervousSystemConfig
+{
+    app : string;
+    ledger_url : string;
+    dashboard_url ?: string;
+    ns_api_url : string;
+    governance_canister_id : string;
+    latest_proposal_id : number;
+    decimals : number;
+    convert_proposals : ( p : any, config : NervousSystemConfig ) => Proposal;
+    proposal_filter : ( p : any ) => boolean;
+    excluded_topics : string[];
 }
 
 
 
 /**
- * Returns an array of Network Nervous proposals. The parameter limit states the number of proposals to be 
+ * Returns an array of Nervous System proposals. The parameter limit states the number of proposals to be 
  * fetched starting from the proposal with the highest proposal id.
  * The offset parameter states the offset from the proposal with the highest proposal id.
  * @param {number} limit
  * @param {number} offset
  * @returns {Promise<Proposal[]>}
  */
-export async function get_proposals_interval ( limit : number, offset : number,config:NervousSystemConfig ) : Promise<any[]>
-{   
+export async function get_proposals_interval ( limit : number, offset : number, config : NervousSystemConfig ) : Promise<any[]>
+{
 
     const nns_url : string = config.ns_api_url + `proposals?limit=${ limit >= MAX_PROPOSALS_PER_REQUEST ? MAX_PROPOSALS_PER_REQUEST : limit }&offset=${ offset }`
     const { data, status } = await axios.get(
@@ -57,7 +57,7 @@ export async function get_proposals_interval ( limit : number, offset : number,c
  * @param {number} proposal_id
  * @returns {Promise<Proposal>}
  */
-export async function get_nervous_system_proposal ( proposal_id : number, config:NervousSystemConfig ) : Promise<any>
+export async function get_nervous_system_proposal ( proposal_id : number, config : NervousSystemConfig ) : Promise<any>
 {
     const nns_url : string = config.ns_api_url + `proposals/${ proposal_id }`
 
@@ -78,12 +78,12 @@ export async function get_nervous_system_proposal ( proposal_id : number, config
  * @param {GovCache} cache
  * @returns {Promise<GovCache>}
  */
-export async function update_nervous_system_cache ( cache : GovCache,config:NervousSystemConfig ) : Promise<GovCache>
+export async function update_nervous_system_cache ( cache : GovCache, config : NervousSystemConfig ) : Promise<GovCache>
 {
     // Update recent proposals
-    cache = await update_recent_proposals( cache,config );
+    cache = await update_recent_proposals( cache, config );
 
-    let latest_nns_proposal_id:number = config.latest_proposal_id
+    let latest_nns_proposal_id : number = config.latest_proposal_id
     let nns_proposals_in_cache : string[] = Object.keys( cache.proposals );
     nns_proposals_in_cache.reverse();
     const latest_nns_proposal_in_cache = nns_proposals_in_cache.reduce( ( a : any, b : any ) => a > +b ? a : b, 3 )
@@ -94,13 +94,13 @@ export async function update_nervous_system_cache ( cache : GovCache,config:Nerv
     // Keep fetching proposals as long as there are proposals left to be fetched
     while ( proposal_left_to_fetch > 0 )
     {
-        // The maximum number of proposals is limited by the NNS
+        // The maximum number of proposals is limited by the Nervous Systems
         let limit = Math.min( MAX_PROPOSALS_PER_REQUEST, proposal_left_to_fetch );
 
         // The starting point of the interval is the lowest proposal id that has not yet been fetched plus the range length
         let offset = proposal_left_to_fetch - limit;
-        ( await get_proposals_interval( limit, offset,config ) ).filter( ( p : any ) => config.proposal_filter(p) )
-            .forEach( ( nns_p : any ) => { let p : Proposal = config.convert_proposals( nns_p ,config); cache.proposals[ p.id ] = p; } );
+        ( await get_proposals_interval( limit, offset, config ) ).filter( ( p : any ) => config.proposal_filter( p ) )
+            .forEach( ( nns_p : any ) => { let p : Proposal = config.convert_proposals( nns_p, config ); cache.proposals[ p.id ] = p; } );
         // Pump the lowest proposal id by the range length
         proposal_left_to_fetch -= limit;
     }
@@ -113,7 +113,7 @@ export async function update_nervous_system_cache ( cache : GovCache,config:Nerv
  * @param {GovCache} cache
  * @returns {Promise<GovCache>}
  */
-async function update_recent_proposals ( cache : GovCache,config:NervousSystemConfig ) : Promise<GovCache>
+async function update_recent_proposals ( cache : GovCache, config : NervousSystemConfig ) : Promise<GovCache>
 {
     if ( !cache.proposals ) cache.proposals = {};
     // Get current UNIX timestamp in seconds
@@ -139,11 +139,11 @@ async function update_recent_proposals ( cache : GovCache,config:NervousSystemCo
             // Only update those proposals which have not reached a terminal state yet
             if ( !terminal_proposal_states.includes( current_proposal.state ) )
             {
-                let proposal_response : any = await get_nervous_system_proposal( parseInt( key ),config );
+                let proposal_response : any = await get_nervous_system_proposal( parseInt( key ), config );
                 // Check for the topic of the proposal. Only include those which are not set to be excluded. 
                 if ( proposal_response.topic ? !config.excluded_topics.includes( proposal_response.topic ) : false )
                 {
-                    cache.proposals[ key ] = config.convert_proposals( proposal_response,config );
+                    cache.proposals[ key ] = config.convert_proposals( proposal_response, config );
                 }
             }
         } );

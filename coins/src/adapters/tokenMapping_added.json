@@ -6876,7 +6876,7 @@
     "FE98AAD68F02F03565E9FA39A5E627946699B2B07115889ED812D8BA639576A9": {
       "decimals": "6",
       "symbol": "USDC",
-      "to": "coingecko#usdc-coin"
+      "to": "coingecko#usd-coin"
     },
     "590CE97A3681BC2058FED1F69B613040209DF3F17B7BD31DFFB8671C4D2CD99B": {
       "decimals": "8",

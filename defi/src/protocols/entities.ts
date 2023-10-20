@@ -322,6 +322,26 @@ const entities = [
         module: "entities/sequoia-capital.js",
         twitter: "sequoia"
     },
+    {
+        id: "33",
+        name: "Digital Currency Group",
+        url: "https://dcg.co",
+        description: "We build, buy, and invest in bitcoin and blockchain companies. Parent of Grayscale, GenesisTrading, CoinDesk, FoundryServices, LunoGlobal",
+        logo: "digital-currency-group.jpg",
+        category: "VC",
+        module: "entities/digital-currency-group.js",
+        twitter: "DCGco"
+    },
+    {
+        id: "34",
+        name: "Brevan Howard",
+        url: "https://www.brevanhoward.com",
+        description: "Founded in 2002, we are a leading global alternative investment management platform, specialising in global macro and digital assets.",
+        logo: "brevan-howard.jpg",
+        category: "VC",
+        module: "entities/brevan-howard-digital.js",
+        twitter: "DCGco"
+    },
 ].map(entity=>({
     ...entity,
     id: `entity-${entity.id}`,

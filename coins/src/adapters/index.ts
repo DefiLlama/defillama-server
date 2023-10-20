@@ -1,4 +1,5 @@
 export default {
+  cantoLending: require("./moneyMarkets/compound"),
   xexchange: require("./markets/xexchange"),
   silo: require("./moneyMarkets/silo"),
   hlp: require("./yield/hlp"),

@@ -6,7 +6,7 @@ export interface compoundPricesOptions {
   chain: string;
   comptroller: string;
   timestamp: number;
-  abis: any;
+  abis?: any;
   projectName?: string;
 }
 

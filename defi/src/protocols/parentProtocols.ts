@@ -2330,12 +2330,13 @@ const parentProtocols: IParentProtocol[] = [
     name: "Factor",
     url: "https://factor.fi/",
     description: "Factor: A no-code middleware infrastructure enabling seamless creation, management, and integration of DeFi assets and liquidity pools via a unified interface",
-    logo: `${baseIconsUrl}/jewelswap.png`,
+    logo: `${baseIconsUrl}/factor.jpg`,
     gecko_id: "factor",
     cmcId: "23502",
     chains: [],
     twitter: "FactorDAO",
-    github: ["FactorDAO"]
+    github: ["FactorDAO"],
+    treasury: "factor-dao.js"
   },
   {
     id: "parent#velodrome",

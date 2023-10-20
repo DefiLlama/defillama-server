@@ -6,8 +6,6 @@ import { setCompound, getCompound } from './cache';
 
 export const MAX_PROPOSALS_PER_REQUEST : number = 100;
 
-
-
 // The maximum number representation of u64
 const U64_MAX : number = 18446744073709551615;
 
@@ -25,8 +23,6 @@ export interface NervousSystemConfig
     proposal_filter : ( p : any ) => boolean;
     excluded_topics : string[];
 }
-
-
 
 /**
  * Returns an array of Nervous System proposals. The parameter limit states the number of proposals to be 

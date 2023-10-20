@@ -33,7 +33,6 @@ async function getTokenPrices(timestamp: number) {
   const writes: Write[] = [];
   let pools = await getPools()
   pools.forEach(({  address, price, symbol, }: any) => {
-    if (address === 'resource_rdx1tknxxxxxxxxxradxrdxxxxxxxxx009923554798xxxxxxxxxradxrd') return;
     price = price.usd['1h']
     addToDBWritesList(writes, chain, address, price, 0, symbol, timestamp, 'ociswap', 0.9)
   })

@@ -21589,6 +21589,27 @@ const data3: Protocol[] = [
     github: ["zebra-xyz"],
     listedAt: 1697814579
   },
+  {
+    id: "3669",
+    name: "Anon Social",
+    address: null,
+    symbol: "-",
+    url: "https://anonsocial.io",
+    description: "Anon Social is the new Crypto Twitter, focused on rewarding its users.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/anon-social.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: ["friend.tech"],
+    module: "AnonSocial/index.js",
+    twitter: "AnonSocialTech",
+    listedAt: 1697825029
+  },
 ]
 
 export default data3

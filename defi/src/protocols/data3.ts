@@ -21536,7 +21536,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Staking Pool",
     chains: ["Radix"],
     oracles: [],
     forkedFrom: [],

@@ -2092,5 +2092,9 @@ export default {
     "kriya-dex": {
         "enabled": true,
         "id": "2939"
+    },
+    "primex-finance": {
+        "enabled": true,
+        "id": "3664"
     }
 } as AdaptorsConfig

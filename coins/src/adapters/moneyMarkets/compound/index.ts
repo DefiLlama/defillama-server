@@ -165,6 +165,7 @@ export function cantoLending(timestamp: number = 0) {
   return compoundPrices({
     chain: "canto",
     timestamp,
+    cether: '0xB65Ec550ff356EcA6150F733bA9B954b2e0Ca488',
     comptroller: "0x5e23dc409fc2f832f83cec191e245a191a4bcc5c",
     projectName: 'canto-lending',
   });

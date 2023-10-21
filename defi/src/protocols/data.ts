@@ -8189,7 +8189,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://marinade.finance/AckeeBlockchain.pdf",
       "https://marinade.finance/KudelskiSecurity.pdf",
     ],
-    github: ["marinade-finance"],
     parentProtocol: "parent#marinade-finance",
   },
   {

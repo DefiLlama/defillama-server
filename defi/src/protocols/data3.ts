@@ -21498,7 +21498,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "primex-finance/index.js",
     twitter: "primex_official",
-    audit_links: ["https://github.com/primex-finance/audit-reports"],
+    audit_links: ["https://github.com/primex-finance/primex-audits"],
     listedAt: 1697730940
   },
   {

@@ -2938,6 +2938,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CaviarNine"
   },
+  {
+    id: "parent#marinade-finance",
+    name: "Marinade Finance",
+    url: "https://www.caviarnine.com/",
+    description: "All you ever need in one place for Solana Staking",
+    logo: `${baseIconsUrl}/marinade-finance.jpg`,
+    gecko_id: "marinade",
+    cmcId: "13803",
+    chains: [],
+    twitter: "MarinadeFinance",
+    github: ["marinade-finance"]
+  },
 ];
 
 export default parentProtocols;

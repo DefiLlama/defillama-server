@@ -8169,7 +8169,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "484",
-    name: "Marinade Finance",
+    name: "Marinade Liquid Staking",
     address: "solana:MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey",
     symbol: "MNDE",
     url: "https://marinade.finance",
@@ -8178,8 +8178,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/marinade-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "marinade",
-    cmcId: "13803",
+    gecko_id: null,
+    cmcId: null,
     category: "Liquid Staking",
     chains: ["Solana"],
     module: "marinade.js",
@@ -8189,7 +8189,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://marinade.finance/AckeeBlockchain.pdf",
       "https://marinade.finance/KudelskiSecurity.pdf",
     ],
-    github: ["marinade-finance"]
+    github: ["marinade-finance"],
+    parentProtocol: "parent#marinade-finance",
   },
   {
     id: "485",

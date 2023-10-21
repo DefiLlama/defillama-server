@@ -1205,6 +1205,7 @@ export default {
         "id": "705"
     },
     "aequinox": {
+        disabled: true,
         "enabled": true,
         "id": "2090"
     },

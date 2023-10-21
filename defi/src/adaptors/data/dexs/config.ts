@@ -1304,6 +1304,7 @@ export default {
         "id": "2551"
     },
     "veniceswap": {
+        disabled: true,
         enabled: true,
         "id": "2550"
     },

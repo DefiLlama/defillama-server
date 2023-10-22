@@ -21702,7 +21702,7 @@ const data3: Protocol[] = [
     address: "pulse:0x303f764A9c9511c12837cD2D1ECF13d4a6F99E17",
     symbol: "Atrofa",
     url: "https://www.atrofarm.io/",
-    description: "A cross-chain privacy protocol built using LayerZero and Aztec.",
+    description: "Atrofarm is a yield farming protocol which aims to be the liquidity hub of PulseChain communities",
     chain: "Pulse",
     logo: `${baseIconsUrl}/atrofarm.jpg`,
     audits: "0",

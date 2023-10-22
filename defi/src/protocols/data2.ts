@@ -13587,7 +13587,7 @@ const data2: Protocol[] = [
     name: "Canto Lending",
     address: null,
     symbol: "-",
-    url: "https://lending.canto.io",
+    url: "https://canto.io/lending",
     description: "Lending on canto blockchain",
     chain: "Canto",
     logo: `${baseIconsUrl}/canto-lending.jpg`,

@@ -23128,7 +23128,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1672845040,
-    deadUrl: true
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "2407",

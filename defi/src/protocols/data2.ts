@@ -23127,7 +23127,8 @@ const data2: Protocol[] = [
     twitter: "TegroDEX",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1672845040
+    listedAt: 1672845040,
+    deadUrl: true
   },
   {
     id: "2407",

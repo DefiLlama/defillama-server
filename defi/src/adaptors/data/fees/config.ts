@@ -1134,7 +1134,8 @@ export default {
         "id": "3025"
     },
     "zunami": {
-        "enabled": false,
+        disabled: true,
+        "enabled": true,
         "id": "1201"
     },
     "fusionx-v3": {

@@ -2941,7 +2941,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#marinade-finance",
     name: "Marinade Finance",
-    url: "https://www.caviarnine.com/",
+    url: "https://marinade.finance/",
     description: "All you ever need in one place for Solana Staking",
     logo: `${baseIconsUrl}/marinade-finance.jpg`,
     gecko_id: "marinade",

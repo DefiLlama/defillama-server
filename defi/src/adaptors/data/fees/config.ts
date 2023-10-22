@@ -1134,6 +1134,7 @@ export default {
         "id": "3025"
     },
     "zunami": {
+        disabled: true,
         "enabled": true,
         "id": "1201"
     },

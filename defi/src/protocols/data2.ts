@@ -18596,30 +18596,28 @@ const data2: Protocol[] = [
     language: "Move",
     listedAt: 1666310467
   },
-  /*
-    {
-      id: "2209",
-      name: "Opulous",
-      address: "algorand:287867876",
-      symbol: "Opulous",
-      url: "https://opulous.org",
-      description:
-        "Opulous is a decentralised peer-to-peer loan platform built on the Algorand blockchain. It will help increase artists’ access to capital without the need for traditional institutions, such as banks. It’s all about providing financial options and flexibility for artists so they can develop their careers, support each other, and remain independent.",
-      chain: "Algorand",
-      logo: `${baseIconsUrl}/opulous.jpg`,
-      audits: "0",
-      audit_note: null,
-      gecko_id: "opulous",
-      cmcId: "10409",
-      category: "Lending",
-      chains: ["Algorand"],
-      module: "opulous/index.js",
-      twitter: "opulousapp",
-      forkedFrom: [],
-      oracles: [],
-      listedAt: 1666349179
-    },
-  */
+  {
+    id: "2209",
+    name: "Opulous",
+    address: "algorand:287867876",
+    symbol: "Opulous",
+    url: "https://opulous.org",
+    description:
+      "Opulous is a decentralised peer-to-peer loan platform built on the Algorand blockchain. It will help increase artists’ access to capital without the need for traditional institutions, such as banks. It’s all about providing financial options and flexibility for artists so they can develop their careers, support each other, and remain independent.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/opulous.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "opulous",
+    cmcId: "10409",
+    category: "Farm",
+    chains: ["Algorand"],
+    module: "opulous/index.js",
+    twitter: "opulousapp",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1666349179
+  },
   {
     id: "2210",
     name: "LiquidSwap",

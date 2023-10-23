@@ -35,7 +35,7 @@ async function storeDefiCoins() {
       try {
         const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
-          results.flat(),
+          results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
           await Promise.all([
@@ -66,3 +66,4 @@ async function storeDefiCoins() {
   process.exit();
 }
 storeDefiCoins();
+// ts-node coins/src/scripts/defiCoins.ts

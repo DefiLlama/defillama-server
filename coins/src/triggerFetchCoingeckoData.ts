@@ -20,6 +20,6 @@ const handler = (lambdaFunctioName: string) => async () => {
 };
 
 export const triggerNewFetches = wrapScheduledLambda(
-  handler(`coins-prod-fetchCoingeckoData`),
+  handler(`coins-prod-fetchCoingeckoData2`),
 );
 export const triggerHourlyFetches = wrapScheduledLambda(handler(hourlyLambda));

@@ -189,25 +189,25 @@ functions:
       - http:
           path: /{params+}
           method: options
-  fetchCoingeckoData:
+  fetchCoingeckoData2:
     handler: src/fetchCoingeckoData.fetchCoingeckoData
     timeout: 900
     environment:
       CG_KEY: ${env:CG_KEY}
-  triggerFetchCoingeckoData:
+  triggerFetchCoingeckoData2:
     handler: src/triggerFetchCoingeckoData.triggerNewFetches
     events:
       - schedule: rate(5 minutes)
     environment:
       CG_KEY: ${env:CG_KEY}
-  triggerHourlyFetchCoingeckoData:
+  triggerHourlyFetchCoingeckoData2:
     handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
     events:
       - schedule: cron(0 0,12 * * ? *) # every 12 hours
     environment:
       CG_KEY: ${env:CG_KEY}
   fetchHourlyCoingeckoData:
-    handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
+    handler: src/fetchCoingeckoData2.fetchHourlyCoingeckoData
     timeout: 900
     environment:
       CG_KEY: ${env:CG_KEY}

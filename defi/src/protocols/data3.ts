@@ -21428,7 +21428,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Ethereum", "Base", "Avalanche"],
     oracles: [],
-    forkedFrom: ["Solidly"],
+    forkedFrom: [],
     module: "poolside/index.js",
     twitter: "Poolside_Party",
     audit_links: ["https://github.com/buttonwood-protocol/buttonswap-core/blob/main/notes/statemind_2023-08-11.pdf"],

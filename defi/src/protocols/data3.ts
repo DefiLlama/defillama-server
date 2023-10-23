@@ -21941,7 +21941,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://swap.elysiumchain.tech/exchange/swap",
-    description: "Dexes on Elysiumchain",
+    description: "Decentralized exchange on Elysium chain",
     chain: "Elysium",
     logo: `${baseIconsUrl}/elysiumswap.jpg`,
     audits: "0",
@@ -21953,7 +21953,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "elysiumswap/index.js",
-    twitter: "Elysium_VF",
+    twitter: "ElysiumSwap",
     listedAt: 1698093199
   },
 ]

@@ -1424,5 +1424,10 @@ export default {
                 enabled: true,
             }
         }
+    },
+    "chainlink-ccip": {
+        parentId: "Chainlink",
+        "enabled": true,
+        "id": "3675"
     }
 } as AdaptorsConfig

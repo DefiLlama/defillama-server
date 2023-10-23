@@ -7,7 +7,7 @@ import { CoinsResponse } from "./utils/getCoinsUtils";
 import { getCurrentUnixTimestamp } from "./utils/date";
 
 const handler = async (
-  event: any
+  event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const body = parseRequestBody(event.body)
   const requestedCoins = body.coins;

@@ -1429,5 +1429,10 @@ export default {
         parentId: "Chainlink",
         "enabled": true,
         "id": "3675"
+    },
+    "crv-usd": {
+        parentId: "Curve Finance",
+        "enabled": true,
+        "id": "2994"
     }
 } as AdaptorsConfig

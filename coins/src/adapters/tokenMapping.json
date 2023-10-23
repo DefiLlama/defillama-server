@@ -124,6 +124,20 @@
       "to": "coingecko#zyx"
     }
   },
+  "avax": {
+    "0xa38bfa13beef9beb75f3698b4647f027fbe8f61d": {
+      "decimals": "18",
+      "symbol": "rsAVAX",
+      "to": "coingecko#avalanche-2"
+    }
+  },
+  "base": {
+    "0x692ef3afd21f172680b82285759bc13cf8e70710": {
+      "decimals": "18",
+      "symbol": "rcbETH",
+      "to": "coingecko#ethereum"
+    }
+  },
   "aptos": {
     "0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT": {
       "decimals": "6",

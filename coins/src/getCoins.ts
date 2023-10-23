@@ -4,9 +4,10 @@ import parseRequestBody from "./utils/shared/parseRequestBody";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { coinToPK, DAY, PKToCoin } from "./utils/processCoin";
 import { CoinsResponse } from "./utils/getCoinsUtils";
+import { getCurrentUnixTimestamp } from "./utils/date";
 
 const handler = async (
-  event: AWSLambda.APIGatewayEvent
+  event: any
 ): Promise<IResponse> => {
   const body = parseRequestBody(event.body)
   const requestedCoins = body.coins;
@@ -46,7 +47,7 @@ const handler = async (
       formattedCoin.price = finalCoin.price;
       formattedCoin.timestamp = finalCoin.SK;
     }
-    if (Math.abs(formattedCoin.timestamp - timestampRequested) < DAY * 2)
+    if (Math.abs(timestampRequested ?? getCurrentUnixTimestamp() - formattedCoin.timestamp) < DAY * 2)
       response[coinName] = formattedCoin;
   }))
   return successResponse({

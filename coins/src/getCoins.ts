@@ -46,7 +46,8 @@ const handler = async (
       formattedCoin.price = finalCoin.price;
       formattedCoin.timestamp = finalCoin.SK;
     }
-    response[coinName] = formattedCoin;
+    if (Math.abs(formattedCoin.timestamp - timestampRequested) < DAY * 2)
+      response[coinName] = formattedCoin;
   }))
   return successResponse({
     coins: response

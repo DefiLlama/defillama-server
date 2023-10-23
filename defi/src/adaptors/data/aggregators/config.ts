@@ -47,5 +47,9 @@ export default {
     "jumper-exchange": {
         enabled: true,
         id: "3524"
+    },
+    "slingshot": {
+        enabled: true,
+        id: "3681"
     }
 } as AdaptorsConfig

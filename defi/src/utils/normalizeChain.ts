@@ -1969,6 +1969,13 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     github: ["nolus-protocol"]
   },
+  "ETHF": {
+    geckoId: "ethereumfair",
+    symbol: "ETHF",
+    cmcId: "21842",
+    categories: ["EVM"],
+    github: ["ethereumfair"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2459,6 +2466,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Radix"
     case "nolus":
       return "Nolus"
+    case "ethf":
+      return "ETHF"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

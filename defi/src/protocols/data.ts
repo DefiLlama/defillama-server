@@ -16150,6 +16150,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.certik.org/projects/gibx-swap"],
     listedAt: 1637365166,
+    deadUrl: true
   },
   {
     id: "868",

@@ -2950,6 +2950,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MarinadeFinance",
     github: ["marinade-finance"]
   },
+  {
+    id: "parent#sienna-network",
+    name: "Sienna Network",
+    url: "https://sienna.network",
+    description: "Sienna Network is a cross-chain, privacy-first decentralized finance protocol built on Secret Network, that enables trust-less financial instruments, such as trading and lending with complete privacy for multiple blockchain ecosystems.",
+    logo: `${baseIconsUrl}/sienna-network.png`,
+    gecko_id: "sienna",
+    cmcId: "9388",
+    chains: [],
+    twitter: "sienna_network",
+    github: ["SiennaNetwork"]
+  },
 ];
 
 export default parentProtocols;

@@ -21892,6 +21892,28 @@ const data3: Protocol[] = [
     twitter: null,
     listedAt: 1698084471
   },
+  {
+    id: "3683",
+    name: "SiennaLend",
+    address: "secret:secret1rgm2m5t530tdzyd99775n6vzumxa5luxcllml4",
+    symbol: "SIENNA",
+    url: "https://sienna.network/lend",
+    description: "SiennaLend is the world's first private lending protocol. SiennaLend is also the first-ever protocol to enable private and permissionless Bitcoin and Monero lending.",
+    chain: "Secret",
+    logo: `${baseIconsUrl}/siennalend.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Secret"],
+    oracles: [],
+    forkedFrom: [],
+    module: "sienna-lend/index.js",
+    twitter: "sienna_network",
+    parentProtocol: "parent#sienna-network",
+    listedAt: 1698091589
+  },
 ]
 
 export default data3

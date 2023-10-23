@@ -21914,6 +21914,48 @@ const data3: Protocol[] = [
     parentProtocol: "parent#sienna-network",
     listedAt: 1698091589
   },
+  {
+    id: "3684",
+    name: "JamFrens",
+    address: null,
+    symbol: "-",
+    url: "https://www.jamfrens.so",
+    description: "Building the first Web3 native “Friend Tech” app based on Farcaster",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/jamfrens.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "jamfrens/index.js",
+    twitter: "Jamfrens",
+    listedAt: 1698093193
+  },
+  {
+    id: "3685",
+    name: "ElysiumSwap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.elysiumchain.tech/exchange/swap",
+    description: "Dexes on Elysiumchain",
+    chain: "Elsm",
+    logo: `${baseIconsUrl}/elysiumswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Elsm"],
+    oracles: [],
+    forkedFrom: [],
+    module: "elysiumswap/index.js",
+    twitter: "Elysium_VF",
+    listedAt: 1698093199
+  },
 ]
 
 export default data3

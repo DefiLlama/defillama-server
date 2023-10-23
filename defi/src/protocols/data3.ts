@@ -21871,6 +21871,27 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "SlingshotCrypto",
   },
+  {
+    id: "3682",
+    name: "CandySwap",
+    address: null,
+    symbol: "-",
+    url: "https://candyswap.exchange/",
+    description: "Uniswap V2 Fork on the MEER blockchain",
+    chain: "MEER",
+    logo: `${baseIconsUrl}/candyswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["MEER"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "candyswap/index.js",
+    twitter: null,
+    listedAt: 1698084471
+  },
 ]
 
 export default data3

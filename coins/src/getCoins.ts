@@ -36,6 +36,7 @@ const handler = async (
         }
         formattedCoin.price = redirectedCoin.Item.price;
         formattedCoin.timestamp = redirectedCoin.Item.timestamp;
+        formattedCoin.symbol = formattedCoin.symbol ?? redirectedCoin.Item.symbol
       }
     } else {
       const finalCoin = await getRecordClosestToTimestamp(
@@ -46,6 +47,7 @@ const handler = async (
       if (finalCoin.SK === undefined) return;
       formattedCoin.price = finalCoin.price;
       formattedCoin.timestamp = finalCoin.SK;
+      formattedCoin.symbol = formattedCoin.symbol ?? finalCoin.Item.symbol
     }
     if (Math.abs(timestampRequested ?? getCurrentUnixTimestamp() - formattedCoin.timestamp) < DAY * 2)
       response[coinName] = formattedCoin;

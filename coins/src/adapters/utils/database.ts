@@ -431,7 +431,7 @@ async function checkMovement(
   if (errors != "" && !process.env.LLAMA_RUN_LOCAL)
     await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
 
-  return filteredItems;
+  return filteredItems.filter((v: any) => v != null);
 }
 export async function getDbMetadata(
   assets: string[],

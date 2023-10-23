@@ -7083,7 +7083,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Privacy",
+    category: "Dexes",
     chains: ["Secret"],
     oracles: ["Band"],
     forkedFrom: [],

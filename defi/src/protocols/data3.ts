@@ -8213,7 +8213,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "raft/index.js",
     twitter: "raft_fi",
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "RedStone"],
     audit_links: [
       "https://github.com/trailofbits/publications/blob/master/reviews/2023-04-tempus-raft-securityreview.pdf",
       "https://hatsfinance.medium.com/raft-finance-audit-competition-final-note-16e87dce23a2"

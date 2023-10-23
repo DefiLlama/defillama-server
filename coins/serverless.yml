@@ -206,8 +206,8 @@ functions:
       - schedule: cron(0 0,12 * * ? *) # every 12 hours
     environment:
       CG_KEY: ${env:CG_KEY}
-  fetchHourlyCoingeckoData:
-    handler: src/fetchCoingeckoData2.fetchHourlyCoingeckoData
+  fetchHourlyCoingeckoData2:
+    handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
     timeout: 900
     environment:
       CG_KEY: ${env:CG_KEY}

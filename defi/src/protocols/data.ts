@@ -15590,7 +15590,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1637002081,
     deadUrl: true
   },
-  /*
   {
     id: "842",
     name: "Matrix Farm",
@@ -15607,13 +15606,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Fantom"],
-    module: "matrix.farm/index.js",
+    module: "matrix-farm/index.js",
     twitter: "farm_matrix",
     audit_links: ["https://solidity.finance/audits/MatrixFarm"],
     forkedFrom: ["Yearn Finance"],
     listedAt: 1637025517,
   },
-  */
   {
     id: "843",
     name: "Unirex Finance",

@@ -21851,6 +21851,26 @@ const data3: Protocol[] = [
     github: ["statixfarm"],
     listedAt: 1698055999
   },
+  {
+    id: "3681",
+    name: "Slingshot",
+    address: null,
+    symbol: "-",
+    url: "https://slingshot.finance",
+    description: "Say goodbye to CeFi. Swap over 50k cryptocurrencies at the best prices with 0% swap fees.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/slingshot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "SlingshotCrypto",
+  },
 ]
 
 export default data3

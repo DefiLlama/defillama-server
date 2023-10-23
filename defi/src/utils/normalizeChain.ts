@@ -1972,7 +1972,7 @@ export const chainCoingeckoIds = {
   "ETHF": {
     geckoId: "ethereumfair",
     symbol: "ETHF",
-    cmcId: null,
+    cmcId: "21842",
     categories: ["EVM"],
     github: ["ethereumfair"],
   },

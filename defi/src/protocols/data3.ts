@@ -21803,6 +21803,54 @@ const data3: Protocol[] = [
     audit_links: ["https://3654426464-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fmwt0Dje2oDasvK6hXXbX%2Fuploads%2FcbGpeJcK2hlOS4VDthCj%2FMerkle%20Trade%20Smart%20Contract%20%20Audit%20Report_final.pdf?alt=media&token=5506ee65-ef25-4a2c-82b5-0580f0bf8e02"],
     listedAt: 1698054975
   },
+  {
+    id: "3679",
+    name: "Phase",
+    address: "base:0xbe92452bb46485AF3308e6d77786bFBE3557808d",
+    symbol: "CASH",
+    url: "https://phase.cash",
+    description: "Phase aims to be a liquidity platform, allowing users to borrow a rock-solid stablecoin while earning yield at the same time. Using your collateral, even while borrowing CASH, you can earn interest.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/phase.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "phase/index.js",
+    twitter: "0xPhase",
+    audit_links: [
+                   "https://omniscia.io/reports/0xphase-core-protocol-643d1d1f88c1770014f3a77b",
+                   "https://omniscia.io/reports/0xphase-balancer-implementation-645cb15ec7eedb00140139f7"
+                 ],
+    github: ["0xphase"],
+    listedAt: 1698055992
+  },
+  {
+    id: "3680",
+    name: "Statix Farm",
+    address: "base:0xa28bac0427e4a722246ce4e9ad89ec95ff8b87a3",
+    symbol: "STATIX",
+    url: "https://www.statix.farm",
+    description: "The next generation Yield Farm platform running on Base chain.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/statix-farm.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: ["Goose Finance"],
+    module: "statixfarm/index.js",
+    twitter: "StatixFarm",
+    github: ["statixfarm"],
+    listedAt: 1698055999
+  },
 ]
 
 export default data3

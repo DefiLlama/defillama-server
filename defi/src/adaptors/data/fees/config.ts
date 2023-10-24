@@ -1434,5 +1434,9 @@ export default {
         parentId: "Curve Finance",
         "enabled": true,
         "id": "2994"
+    },
+    "shuriken": {
+        "enabled": true,
+        "id": "3687"
     }
 } as AdaptorsConfig

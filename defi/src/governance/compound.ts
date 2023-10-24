@@ -5,12 +5,15 @@ import { updateStats, toHex, getGovernanceSources, getChainNameFromId } from './
 import * as sdk from '@defillama/sdk'
 import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import { getProvider } from '@defillama/sdk/build/general'
-import { addICPProposals } from './icp'
+import { NNS_GOV_ID, addICPProposals } from './icp/nns'
+import { SNS_GOV_ID, addSNSProposals } from './icp/sns'
 
 const PROPOSAL_STATES = ['Pending', 'Active', 'Canceled', 'Defeated', 'Succeeded', 'Queued', 'Expired', 'Executed']
 
 // these are moved to tally
 const blacklisted = [
+  'icp',
+  'rrkah-fqaaa-aaaaa-aaaaq-cai',
   'ethereum:0x6f3e6272a167e8accb32072d08e0957f9c79223d',
   "ethereum:0x6853f8865ba8e9fbd9c8cce3155ce5023fb7eeb0",
   "ethereum:0xda9c9ed96f6d42f7e74f3c7eea6772d64ed84bdf",
@@ -32,7 +35,6 @@ const blacklisted = [
   "ethereum:0x323a76393544d5ecca80cd6ef2a560c6a395b7e3",
   "ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3",
   "ethereum:0x0bef27feb58e857046d630b2c03dfb7bae567494",
-  'internet-computer', // changed to new id: icp
 ]
 
 const missing = [
@@ -73,21 +75,23 @@ export function getCompoundIds(existingIds: string[]) {
 
 export async function updateCompounds() {
   const overview: any = await getCompoundOverview()
+
   blacklisted.forEach((i: any) => delete overview[i])
   const compoundIds = getCompoundIds(Object.keys(overview))
   // const compoundIds = ['ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3']
-  console.log('compound gov#', compoundIds.length)
   const idChunks = sliceIntoChunks(compoundIds, 8)
 
   for (const ids of idChunks) {
     await Promise.all(ids.map(updateCache))
   }
 
+  await addSNSProposals(overview)
   await addICPProposals(overview)
   await setCompoundOverview(overview)
 
   async function updateCache(id: string) {
-    if (id === 'icp') return;
+    if (id === NNS_GOV_ID) return;
+    if (id.startsWith(SNS_GOV_ID)) return;
 
     const [chain, address] = id.split(':')
     const cache = await getCompound(id)

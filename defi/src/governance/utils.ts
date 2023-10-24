@@ -39,13 +39,13 @@ export function updateStats(cache: GovCache, overview: any, _id: any) {
   const highestTotalScore = max(proposalsArray.map(i => i.scores_total))
   const timeNow = Math.floor(Date.now() / 1e3)
 
-  stats.proposalsCount = metadata.proposalsCount
+  stats.proposalsCount = metadata.proposalsCount ?? proposalsArray.length
   stats.successfulProposals = proposalsArray.filter(isSuccessfulProposal).length
   stats.followersCount = metadata.followersCount
   stats.name = metadata.name
   stats.chainName = metadata.chainName
   stats.id = metadata.id
-  stats.strategyCount = metadata.strategies.length
+  stats.strategyCount = metadata.strategies?.length
   stats.followersCount = metadata.followersCount
   stats.highestTotalScore = highestTotalScore
 

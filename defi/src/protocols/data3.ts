@@ -21978,6 +21978,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#lifinity",
     listedAt: 1698144138
   },
+  {
+    id: "3687",
+    name: "Shuriken",
+    address: null,
+    symbol: "-",
+    url: "https://app.shuriken.trade",
+    description: "Add the most powerful tool to your trading arsenal. Powered by custom MEV",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/shuriken.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "ShurikenTrade",
+  },
 ]
 
 export default data3

@@ -93,6 +93,7 @@ export default {
   // mmFinance: require("./markets/uniswap"),
   trisolaris: require("./markets/uniswap"),
   pangolin: require("./markets/uniswap"),
+  elysium: require("./markets/uniswap"),
   spiritswap: require("./markets/uniswap"),
   // pancakeswap: require("./markets/uniswap"),
   spookyswap: require("./markets/uniswap"),

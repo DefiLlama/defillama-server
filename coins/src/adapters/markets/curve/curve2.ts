@@ -224,7 +224,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     if (!rPoolList || !rPoolList.length) continue;
 
     // update cache info
-    await PromisePool.withConcurrency(10)
+    await PromisePool.withConcurrency(1)
       .for(rPoolList)
       .process(async (pool: any) => {
         if (!cPoolInfo[pool])

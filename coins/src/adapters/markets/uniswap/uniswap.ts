@@ -85,36 +85,33 @@ async function fetchUniV2MarketData(
   let token0s: MultiCallResults;
   let token1s: MultiCallResults;
   let reserves: MultiCallResults;
-  [token0s, token1s, reserves] = await Promise.all([
-    multiCall({
-      abi: abi.token0,
-      chain: chain as any,
-      calls: pairAddresses.map((pairAddress) => ({
-        target: pairAddress,
-      })),
-      block,
-      permitFailure: true,
-    }),
-    multiCall({
-      abi: abi.token1,
-      chain: chain as any,
-      calls: pairAddresses.map((pairAddress) => ({
-        target: pairAddress,
-      })),
-      block,
-      permitFailure: true,
-    }),
-    multiCall({
-      abi: abi.getReserves,
-      chain: chain as any,
-      calls: pairAddresses.map((pairAddress) => ({
-        target: pairAddress,
-      })),
-      block,
-      permitFailure: true,
-    }),
-  ]);
-
+  token0s = await multiCall({
+    abi: abi.token0,
+    chain: chain as any,
+    calls: pairAddresses.map((pairAddress) => ({
+      target: pairAddress,
+    })),
+    block,
+    permitFailure: true,
+  });
+  token1s = await multiCall({
+    abi: abi.token1,
+    chain: chain as any,
+    calls: pairAddresses.map((pairAddress) => ({
+      target: pairAddress,
+    })),
+    block,
+    permitFailure: true,
+  });
+  reserves = await multiCall({
+    abi: abi.getReserves,
+    chain: chain as any,
+    calls: pairAddresses.map((pairAddress) => ({
+      target: pairAddress,
+    })),
+    block,
+    permitFailure: true,
+  });
   return [token0s, token1s, reserves];
 }
 async function findPriceableLPs(

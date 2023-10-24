@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { GovCache, Proposal } from './types';
-import { updateStats } from './utils';
-import { setCompound, getCompound } from './cache';
+import { Proposal } from '../types';
+import { updateStats } from '../utils';
+import { setCompound, getCompound } from '../cache';
 import { update_nervous_system_cache, NervousSystemConfig } from './icp';
 
 // Number of decimals that are supported by the governance canister
@@ -11,7 +11,7 @@ export const DECIMALS : number = 1e8;
 export const EXCLUDED_TOPICS = [ "TOPIC_EXCHANGE_RATE", "TOPIC_NEURON_MANAGEMENT" ];
 
 // Id of the NNS proposals stored in cache
-const GOV_ID = 'icp'
+export const NNS_GOV_ID = 'icp-nns'
 
 // URLs for fetching NNS data
 export const NNS_API_BASE_URL : string = "https://ic-api.internetcomputer.org/api/v3/";
@@ -64,7 +64,8 @@ export async function get_metadata ()
             },
         },
     );
-    let lates_proposal_id = data.latest_proposal_id;
+
+    let latest_proposal_id = data.latest_proposal_id;
     var { data, status } = await axios.get(
         ICP_LEDGER_API_BASE_URL + "supply/total/latest"
         ,
@@ -78,9 +79,10 @@ export async function get_metadata ()
 
     return {
         // NNS Governance canister id
-        id: "rrkah-fqaaa-aaaaa-aaaaq-cai",
+        // id: "rrkah-fqaaa-aaaaa-aaaaq-cai",
+        id: NNS_GOV_ID,
         type: "Network Nervous System",
-        proposalsCount: lates_proposal_id,
+        latest_proposal_id,
         symbol: "NNS",
         chainName: "Internet Computer",
         name: "Network Nervous System",
@@ -128,7 +130,7 @@ export function convert_proposal_format ( proposal : NetworkNervousSystemProposa
 
 export async function addICPProposals ( overview : any = {} )
 {
-    let cache = await getCompound( GOV_ID )
+    let cache = await getCompound( NNS_GOV_ID )
     cache.metadata = {
         ...cache.metadata,
         ...
@@ -141,7 +143,7 @@ export async function addICPProposals ( overview : any = {} )
         ns_api_url:NNS_API_BASE_URL,
         dashboard_url:DASHBOARD_BASE_URL,
         ledger_url:ICP_LEDGER_API_BASE_URL,
-        latest_proposal_id: cache.metadata.proposal_count,
+        latest_proposal_id: cache.metadata.latest_proposal_id,
         decimals:DECIMALS,
         convert_proposals:convert_proposal_format,
         proposal_filter:(p:NetworkNervousSystemProposalResponse) => p.topic ? !EXCLUDED_TOPICS.includes( p.topic ) : false,
@@ -149,7 +151,7 @@ export async function addICPProposals ( overview : any = {} )
     };
     await update_nervous_system_cache( cache as any ,config)
 
-    cache.id = GOV_ID
+    cache.id = NNS_GOV_ID
     updateStats( cache, overview, cache.id )
     if ( overview[ cache.id ] )
     {

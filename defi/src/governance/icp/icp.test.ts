@@ -1,8 +1,8 @@
 
 import axios from 'axios'
-import { GovCache, Proposal } from './types';
+import { GovCache, Proposal } from '../types';
 import exp from 'constants';
-import { getProposals } from './snapshot';
+import { getProposals } from '../snapshot';
 import { LimitOnUpdateNotSupportedError } from 'typeorm';
 import { DASHBOARD_BASE_URL, DECIMALS, EXCLUDED_TOPICS, ICP_LEDGER_API_BASE_URL, NNS_API_BASE_URL, NetworkNervousSystemProposalResponse, convert_proposal_format, get_metadata } from './nns';
 import { NervousSystemConfig, get_nervous_system_proposal, get_proposals_interval, update_nervous_system_cache } from './icp';

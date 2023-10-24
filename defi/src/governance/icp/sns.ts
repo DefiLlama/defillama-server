@@ -1,8 +1,10 @@
 import axios from 'axios'
-import { GovCache, Proposal } from './types';
-import { updateStats } from './utils';
-import { setCompound, getCompound } from './cache';
+import { GovCache, Proposal } from '../types';
+import { updateStats } from '../utils';
+import { setCompound, getCompound } from '../cache';
 import { update_nervous_system_cache, NervousSystemConfig } from './icp';
+export const SNS_GOV_ID = 'icp-sns'
+const getGovId = (id: string) => SNS_GOV_ID+'-'+id
 
 // URLs for fetching SNS data
 const SNS_API_BASE_URL : string = "https://sns-api.internetcomputer.org/api/v1/snses/";
@@ -147,7 +149,8 @@ export async function get_metadata ( sns_metadata : SnsMetadata )
 
     return {
         // SNS Governance canister id
-        id: sns_metadata.sns_root_canister_id,
+        // id: sns_metadata.sns_root_canister_id,
+        id: getGovId(sns_metadata.sns_root_canister_id),
         type: "Service Nervous System",
         proposalsCount: lates_proposal_id,
         symbol: sns_metadata.icrc1_metadata.icrc1_symbol,
@@ -187,12 +190,13 @@ export async function addSNSProposals ( overview : any = {} ) : Promise<GovCache
                 proposal_filter: () => true,
                 excluded_topics: []
             };
-            let cache : GovCache = await getCompound( metadata.symbol );
+            let cache : GovCache = await getCompound( metadata.id );
             cache.metadata = {
                 ...cache.metadata,
                 ...
                 metadata
             };
+            cache.id = metadata.id;
             await update_nervous_system_cache( cache as any, nconf );
 
             updateStats( cache, overview, cache.id )

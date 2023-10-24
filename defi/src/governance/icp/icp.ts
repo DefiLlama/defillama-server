@@ -1,9 +1,7 @@
 import axios from 'axios'
-import { GovCache, Proposal } from './types';
+import { GovCache, Proposal } from '../types';
 import { PromisePool } from "@supercharge/promise-pool";
-import { updateStats } from './utils';
-import { setCompound, getCompound } from './cache';
-
+import * as sdk from '@defillama/sdk'
 export const MAX_PROPOSALS_PER_REQUEST : number = 100;
 
 // The maximum number representation of u64
@@ -82,16 +80,19 @@ export async function update_nervous_system_cache ( cache : GovCache, config : N
     let latest_nns_proposal_id : number = config.latest_proposal_id
     let nns_proposals_in_cache : string[] = Object.keys( cache.proposals );
     nns_proposals_in_cache.reverse();
-    const latest_nns_proposal_in_cache = nns_proposals_in_cache.reduce( ( a : any, b : any ) => a > +b ? a : b, 3 )
 
     // The proposals 0-2 are nor available => the lowest proposal id is 3
+    const min_proposal_id = cache.id === 'icp-nns' ? 3 : 0
+    const latest_nns_proposal_in_cache = nns_proposals_in_cache.reduce( ( a : any, b : any ) => a > +b ? a : b, min_proposal_id )
     let proposal_left_to_fetch = latest_nns_proposal_id - latest_nns_proposal_in_cache;
+    sdk.log({ id: cache.id, latest_nns_proposal_in_cache, latest_nns_proposal_id, proposal_left_to_fetch})
 
     // Keep fetching proposals as long as there are proposals left to be fetched
     while ( proposal_left_to_fetch > 0 )
     {
         // The maximum number of proposals is limited by the Nervous Systems
         let limit = Math.min( MAX_PROPOSALS_PER_REQUEST, proposal_left_to_fetch );
+        sdk.log({ limit, proposal_left_to_fetch, id: cache.id  })
 
         // The starting point of the interval is the lowest proposal id that has not yet been fetched plus the range length
         let offset = proposal_left_to_fetch - limit;

@@ -20924,7 +20924,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Cross Chain",
+    category: "Algo-Stables",
     chains: ["Ethereum", "Bitcoin"],
     oracles: [],
     forkedFrom: [],

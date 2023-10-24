@@ -6306,7 +6306,7 @@ const data: Protocol[] = [
     description:
       "ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/apebond-swap.jpg`,
+    logo: `${baseIconsUrl}/apeswap-amm.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

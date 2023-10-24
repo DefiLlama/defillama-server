@@ -436,5 +436,9 @@ export default {
     "tigris": {
         "enabled": true,
         "id": "3129"
+    },
+    "paradex": {
+        "enabled": true,
+        "id": "3648"
     }
 } as AdaptorsConfig

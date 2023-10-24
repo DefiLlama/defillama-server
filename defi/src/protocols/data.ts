@@ -6299,14 +6299,14 @@ const data: Protocol[] = [
   },
   {
     id: "398",
-    name: "ApeBond AMM",
+    name: "ApeSwap AMM",
     address: "bsc:0x603c7f932ed1fc6575303d8fb018fdcbb0f39a95",
     symbol: "BANANA",
     url: "https://apeswap.finance",
     description:
       "ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/apebond-amm.jpg`,
+    logo: `${baseIconsUrl}/apebond-swap.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

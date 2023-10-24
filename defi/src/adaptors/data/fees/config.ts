@@ -1442,5 +1442,10 @@ export default {
     "clipper": {
         "enabled": true,
         "id": "622"
+    },
+    "morpho-compound": {
+        parentId: "Morpho",
+        "enabled": true,
+        "id": "1997"
     }
 } as AdaptorsConfig

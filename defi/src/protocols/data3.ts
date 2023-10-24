@@ -21998,6 +21998,28 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "ShurikenTrade",
   },
+  {
+    id: "3688",
+    name: "HYDT Protocol",
+    address: "bsc:0x9810512Be701801954449408966c630595D0cD51",
+    symbol: "HYDT",
+    url: "https://hydtprotocol.com",
+    description: "HYDT Protocol offers industry leading high returns on HYDT Stablecoin Staking, along with decentralization, transparency and sustainability.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/hydt-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "yIELD",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hydt/index.js",
+    twitter: "HydtProtocol",
+    audit_links: ["https://www.cyberscope.io/audits/hydt"],
+    listedAt: 1698157836
+  },
 ]
 
 export default data3

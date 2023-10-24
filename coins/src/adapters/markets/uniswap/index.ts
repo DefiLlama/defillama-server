@@ -342,3 +342,14 @@ export function zkSwap(timestamp: number = 0) {
     timestamp,
   );
 }
+
+export function elysium(timestamp: number = 0) {
+  console.log("starting elysium unin v2");
+  return getTokenPrices(
+    "elsm",
+    "0x5bec5d65fAba8E90e4a74f3da787362c60F22DaE",
+    undefined,
+    undefined,
+    timestamp,
+  );
+}

@@ -2884,7 +2884,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://hope.money",
     description: "All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.",
     logo: `${baseIconsUrl}/hope-money.jpg`,
-    gecko_id: null,
+    gecko_id: "hope-2",
     cmcId: null,
     chains: [],
     twitter: "Hope_money_",

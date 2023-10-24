@@ -36,7 +36,8 @@
     "interactive": "npx ts-node src/cli/interactive.ts",
     "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeTvlTask.ts",
     "cache-config": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cacheConfig.ts",
-    "run-local": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/runLocalTVL.ts"
+    "run-local": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/runLocalTVL.ts",
+    "api2-start-server": "npx ts-node src/api2/index.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",

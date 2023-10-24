@@ -2098,5 +2098,9 @@ export default {
     "primex-finance": {
         "enabled": true,
         "id": "3664"
+    },
+    "candyswap": {
+        "enabled": true,
+        "id": "3682"
     }
 } as AdaptorsConfig

@@ -1438,5 +1438,9 @@ export default {
     "shuriken": {
         "enabled": true,
         "id": "3687"
+    },
+    "clipper": {
+        "enabled": true,
+        "id": "622"
     }
 } as AdaptorsConfig

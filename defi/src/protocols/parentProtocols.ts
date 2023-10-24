@@ -2962,6 +2962,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "sienna_network",
     github: ["SiennaNetwork"]
   },
+  {
+    id: "parent#lifinity",
+    name: "Lifinity",
+    url: "https://lifinity.io/pools",
+    description: "The first proactive market maker on Solana designed to improve capital efficiency and reduce impermanent loss.",
+    logo: `${baseIconsUrl}/lifinity.jpg`,
+    gecko_id: "lifinity",
+    cmcId: "19842",
+    chains: [],
+    twitter: "Lifinity_io",
+  },
 ];
 
 export default parentProtocols;

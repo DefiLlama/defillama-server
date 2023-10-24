@@ -21956,6 +21956,28 @@ const data3: Protocol[] = [
     twitter: "ElysiumSwap",
     listedAt: 1698093199
   },
+  {
+    id: "3686",
+    name: "Lifinity V2",
+    address: "solana:LFNTYraetVioAPnGJht4yNg2aUZFXR776cMeN9VMjXp",
+    symbol: "LFNTY",
+    url: "https://lifinity.io/pools",
+    description: "The first proactive market maker on Solana designed to improve capital efficiency and reduce impermanent loss.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/lifinity-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Solana"],
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    module: "lifinity-v2/index.js",
+    twitter: "Lifinity_io",
+    parentProtocol: "parent#lifinity",
+    listedAt: 1698144138
+  },
 ]
 
 export default data3

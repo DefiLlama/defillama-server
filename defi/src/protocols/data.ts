@@ -9515,7 +9515,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "PNT",
     url: "https://p.network",
     description:
-      "The pNetwork is a decentralized network of validators contributing to the verification of crypto asset switches across blockchains",
+      "pNetwork is a protocol that enables cross-chain operations, such as transferring assets from one blockchain to another. It is designed to provide interoperability between different blockchain networks, allowing users to take advantage of the unique features and capabilities of each network while still being able to access and use their assets on other networks.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/pnetwork.jpg`,
     audits: "2",

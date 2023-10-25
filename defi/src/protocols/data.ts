@@ -22338,7 +22338,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Umbrella Network",
     address: "0x6fC13EACE26590B80cCCAB1ba5d51890577D83B2",
     symbol: "UMB",
-    url: "https://umb.network/",
+    url: "https://staking.umb.network/",
     description:
       "Umbrella is the first truly decentralized oracle service providing low cost, massively scalable, and secure solutions for smart contracts.",
     chain: "Ethereum",
@@ -22354,7 +22354,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "umbrella-network",
     cmcId: "8385",
     category: "Oracle",
-    chains: ["Ethereum", "Binance", "Polygon", "Arbitrum", "Linea", "Base"],
+    chains: ["Ethereum", "Binance"],
     module: "umbrella/index.js",
     twitter: "UmbNetwork",
     listedAt: 1640829115,

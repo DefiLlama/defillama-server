@@ -4442,7 +4442,7 @@ const data3: Protocol[] = [
   },
   {
     id: "2901",
-    name: "Swell",
+    name: "Swell Liquid Staking",
     address: null,
     symbol: "-",
     url: "https://app.swellnetwork.io/",
@@ -4460,7 +4460,7 @@ const data3: Protocol[] = [
     module: "swell/index.js",
     twitter: "swellnetworkio",
     audit_links: ["https://docs.swellnetwork.io/swell/risks/smart-contract-audits"],
-    github: ["SwellNetwork"],
+    parentProtocol: "parent#swell",
     listedAt: 1682554957
   },
   {
@@ -22019,6 +22019,49 @@ const data3: Protocol[] = [
     twitter: "HydtProtocol",
     audit_links: ["https://www.cyberscope.io/audits/hydt"],
     listedAt: 1698157836
+  },
+  {
+    id: "3689",
+    name: "SongTech",
+    address: null,
+    symbol: "-",
+    url: "https://www.song.tech/",
+    description: "Market for Songs",
+    chain: "Base",
+    logo: `${baseIconsUrl}/songtech.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "songtech/index.js",
+    twitter: "songtech_",
+    listedAt: 1698210020
+  },
+  {
+    id: "3690",
+    name: "Swell Vault",
+    address: null,
+    symbol: "-",
+    url: "https://www.swellnetwork.io/vault",
+    description: "stETH deposited in this vault is unstaked and swapped into swETH, and then earns boosted yield from staking rewards, redirected Swell DAO commission, and Pearls for the upcoming $SWELL Voyage airdrop",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/swell.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "swell-vault/index.js",
+    twitter: "swellnetworkio",
+    parentProtocol: "parent#swell",
+    listedAt: 1698210027
   },
 ]
 

@@ -2973,6 +2973,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Lifinity_io",
   },
+  {
+    id: "parent#swell",
+    name: "Swell",
+    url: "https://www.swellnetwork.io/",
+    description: "A non-custodial ETH liquid staking protocol that helps you optimize yield in DeFi",
+    logo: `${baseIconsUrl}/swell.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "swellnetworkio",
+    github: ["SwellNetwork"],
+  },
 ];
 
 export default parentProtocols;

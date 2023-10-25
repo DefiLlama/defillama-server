@@ -1452,5 +1452,9 @@ export default {
         parentId: "Benqi",
         "enabled": true,
         "id": "1427"
+    },
+    "prisma-finance": {
+        "enabled": true,
+        "id": "3473"
     }
 } as AdaptorsConfig

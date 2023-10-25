@@ -22064,6 +22064,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#swell",
     listedAt: 1698210027
   },
+  {
+    id: "3691",
+    name: "Velvet V2",
+    address: null,
+    symbol: "-",
+    url: "https://app.velvet.capital/",
+    description: "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/velvet-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "velvet-capital-v2/index.js",
+    twitter: "Velvet_Capital",
+    parentProtocol: "parent#velvet.capital",
+    listedAt: 1698240672
+  },
+
 ]
 
 export default data3

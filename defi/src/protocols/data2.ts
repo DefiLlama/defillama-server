@@ -25550,14 +25550,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2512",
-    name: "Velvet.Capital",
+    name: "Velvet V1",
     address: null,
     symbol: "-",
     url: "https://app.velvet.capital/",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     chain: "Binance",
-    logo: `${baseIconsUrl}/velvet.capital.png`,
+    logo: `${baseIconsUrl}/velvet-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -25572,6 +25572,7 @@ const data2: Protocol[] = [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Velvet-v1.0.pdf",
       "https://audit.shellboxes.com/report.php?id=NKU750HSXU",
     ],
+    parentProtocol: "parent#velvet.capital",
     listedAt: 1675795158
   },
   {

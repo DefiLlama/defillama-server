@@ -2985,6 +2985,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "swellnetworkio",
     github: ["SwellNetwork"],
   },
+  {
+    id: "parent#velvet.capital",
+    name: "Velvet.Capital",
+    url: "https://app.velvet.capital",
+    description: "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
+    logo: `${baseIconsUrl}/velvet.capital.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Velvet_Capital",
+  },
 ];
 
 export default parentProtocols;

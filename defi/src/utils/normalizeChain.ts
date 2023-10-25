@@ -1515,7 +1515,7 @@ export const chainCoingeckoIds = {
     cmcId: "16389",
     categories: ["Cosmos"],
   },
-  "WEMIX": {
+  "WEMIX3.0": {
     geckoId: "wemix-token",
     github: ['wemixarchive'],
     symbol: "WEMIX",

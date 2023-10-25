@@ -71,7 +71,14 @@ export async function getTokenAndRedirectData(
     } else {
       apiRes = await getTokenAndRedirectDataDB(tokens, chain, timestamp == 0 ? getCurrentUnixTimestamp() : timestamp, hoursRange,)
     }
-    apiRes.map((r: any) => cache[cacheKey][r.address] = r)
+
+    apiRes.map((r: any) => {
+      if (r.address == null) return 
+      if (!(cacheKey in cache)) cache[cacheKey] = {}
+      cache[cacheKey][r.address] = r
+      return 
+    })
+
     response.push(...apiRes)
   })
 

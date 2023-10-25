@@ -1456,5 +1456,9 @@ export default {
     "prisma-finance": {
         "enabled": true,
         "id": "3473"
+    },
+    "impermax-finance": {
+        "enabled": true,
+        "id": "343"
     }
 } as AdaptorsConfig

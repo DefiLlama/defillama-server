@@ -1445,7 +1445,7 @@ export default {
     },
     "morpho-compound": {
         parentId: "Morpho",
-        "enabled": true,
+        "enabled": false,
         "id": "1997"
     }
 } as AdaptorsConfig

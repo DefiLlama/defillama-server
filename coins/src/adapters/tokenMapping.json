@@ -6,6 +6,13 @@
       "to": "coingecko#binancecoin"
     }
   },
+  "neutron": {
+    "untrn": {
+      "decimals": "6",
+      "symbol": "NTRN",
+      "to": "coingecko#neutron-3"
+    }
+  },
   "polygon": {
     "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359": {
       "decimals": "6",

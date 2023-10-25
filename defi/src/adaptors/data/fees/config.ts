@@ -1447,5 +1447,10 @@ export default {
         parentId: "Morpho",
         "enabled": false,
         "id": "1997"
+    },
+    "benqi-staked-avax": {
+        parentId: "Benqi",
+        "enabled": true,
+        "id": "1427"
     }
 } as AdaptorsConfig

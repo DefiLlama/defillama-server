@@ -2996,6 +2996,24 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Velvet_Capital",
   },
+  {
+    id: "parent#pooltogether",
+    name: "PoolTogether",
+    url: "https://pooltogether.com/",
+    description: "PoolTogether is an open source and decentralized protocol for no-loss prize games",
+    logo: `${baseIconsUrl}/pooltogether.jpg`,
+    gecko_id: "pooltogether",
+    cmcId: "8508",
+    chains: [],
+    twitter: "PoolTogether_",
+    github: ["pooltogether"],
+    treasury: "pooltogether.js",
+    governanceID: [
+      "snapshot:pooltogether.eth", 
+      "snapshot:poolpool.pooltogether.eth",
+      'eip155:1:0xB3a87172F555ae2a2AB79Be60B336D2F7D0187f0'
+    ],
+  },
 ];
 
 export default parentProtocols;

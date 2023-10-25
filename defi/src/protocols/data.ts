@@ -2830,30 +2830,24 @@ const data: Protocol[] = [
   },
   {
     id: "239",
-    name: "PoolTogether",
+    name: "PoolTogether V3",
     address: "0x0cec1a9154ff802e7934fc916ed7ca50bde6844e",
     symbol: "POOL",
     url: "https://pooltogether.com/",
-    description: "PoolTogetheris an open source and decentralized protocol for no-loss prize games",
+    description: "PoolTogether is an open source and decentralized protocol for no-loss prize games",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/pooltogether.jpg`,
+    logo: `${baseIconsUrl}/pooltogether-v3.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "pooltogether",
-    cmcId: "8508",
+    gecko_id: null,
+    cmcId: null,
     category: "Services",
-    chains: ["Ethereum", "Polygon", "Celo", "Binance"],
+    chains: ["Ethereum", "Celo", "Binance"],
     module: "pooltogether/index.js",
-    treasury: "pooltogether.js",
     twitter: "PoolTogether_",
     audit_links: ["https://docs.pooltogether.com/security/audits"],
     oracles: ["Chainlink"],
-    governanceID: [
-      "snapshot:pooltogether.eth", 
-      "snapshot:poolpool.pooltogether.eth",
-      'eip155:1:0xB3a87172F555ae2a2AB79Be60B336D2F7D0187f0'
-    ],
-    github: ["pooltogether"]
+    parentProtocol: "parent#pooltogether"
   },
   {
     id: "240",

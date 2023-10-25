@@ -56,10 +56,10 @@
       "symbol": "IAG",
       "to": "coingecko#iagon"
     },
-    "0x15d4c048f83bd7e37d49ea4c83a07267ec4203da": {
-      "decimals": "8",
-      "symbol": "GALA",
-      "to": "coingecko#gala"
+    "0xf4eA6B892853413bD9d9f1a5D3a620A0ba39c5b2": {
+      "decimals": "18",
+      "symbol": "ethPNT",
+      "to": "coingecko#pnetwork"
     }
   },
   "fantom": {

@@ -25995,7 +25995,7 @@ const data2: Protocol[] = [
    {
     id: "2531",
     name: "Vaultka",
-    address: null,
+    address: "arbitrum:0xafccb724e3aec1657fc9514e3e53a0e71e80622d",
     symbol: "VKA",
     url: "https://www.vaultka.com",
     description:
@@ -26004,7 +26004,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/vaultka.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "vaultka",
     cmcId: null,
     category: "Yield",
     chains: ["Arbitrum"],

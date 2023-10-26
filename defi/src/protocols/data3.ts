@@ -22305,6 +22305,26 @@ const data3: Protocol[] = [
     github: ["ChiliSwap"],
     listedAt: 1698328873
   },
+  {
+    id: "3702",
+    name: "CyberConnect",
+    address: null,
+    symbol: "-",
+    url: "https://cyberconnect.me",
+    description: "CyberConnect is web3's earliest and biggest decentralized social network.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cyberconnect.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Ethereum"],
+    oracles: [],
+    module: "dummy.js",
+    twitter: "CyberConnectHQ",
+    forkedFrom: [],
+  },
 ]
 
 export default data3

@@ -144,7 +144,7 @@ export async function get_metadata ( sns_metadata : SnsMetadata )
         },
     );
     const name = data.name;
-
+    const logo = data.logo;
     return {
         // SNS Governance canister id
         id: sns_metadata.sns_root_canister_id,
@@ -152,7 +152,7 @@ export async function get_metadata ( sns_metadata : SnsMetadata )
         proposalsCount: lates_proposal_id,
         symbol: sns_metadata.icrc1_metadata.icrc1_symbol,
         chainName: "Internet Computer",
-        name: sns_metadata.icrc1_metadata.icrc1_name,
+        name: name,
         tokens: [ {
             // SNS ICRC-1 ledger canister id
             id: sns_metadata.ledger_canister_id,
@@ -162,7 +162,7 @@ export async function get_metadata ( sns_metadata : SnsMetadata )
             supply: sns_metadata.icrc1_metadata.icrc1_total_supply.toString(),
             decimals: sns_metadata.icrc1_metadata.icrc1_decimals,
         } ],
-        logo: sns_metadata.icrc1_metadata.icrc1_logo
+        logo: logo
     };
 }
 

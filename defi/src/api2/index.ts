@@ -3,6 +3,9 @@ import { cache, initCache } from "./cache";
 import sluggify from "../utils/sluggify";
 import craftProtocolV2 from "./utils/craftProtocolV2";
 import craftParentProtocolV2 from "./utils/craftParentProtocolV2";
+import { initializeTVLCacheDB } from "./db";
+import * as sdk from '@defillama/sdk'
+
 const webserver = new HyperExpress.Server()
 
 const port = +(process.env.PORT ?? 80)
@@ -37,6 +40,7 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
     });
     return res.json(responseData);
   } catch (e) {
+    sdk.log(e)
     res.status(500)
     return res.send('Internal Error', true)
   }
@@ -48,6 +52,7 @@ webserver.get("/entity/:name", async (req, res) => getProtocolishData(req, res, 
 
 async function main() {
   await initCache()
+  await initializeTVLCacheDB()
 
   webserver.listen(port)
     .then(() => console.log('Webserver started on port ' + port))

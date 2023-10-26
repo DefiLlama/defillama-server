@@ -1460,5 +1460,9 @@ export default {
     "impermax-finance": {
         "enabled": true,
         "id": "343"
+    },
+    "defi-saver": {
+        "enabled": true,
+        "id": "177"
     }
 } as AdaptorsConfig

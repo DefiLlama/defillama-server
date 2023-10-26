@@ -21828,6 +21828,7 @@ const data3: Protocol[] = [
                    "https://omniscia.io/reports/0xphase-balancer-implementation-645cb15ec7eedb00140139f7"
                  ],
     github: ["0xphase"],
+    stablecoins: ["phase-dollar"],
     listedAt: 1698055992
   },
   {

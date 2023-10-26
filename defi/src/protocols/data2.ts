@@ -7072,18 +7072,18 @@ const data2: Protocol[] = [
   },
   {
     id: "1692",
-    name: "Sienna Network",
+    name: "SiennaSwap",
     address: "secret:secret1rgm2m5t530tdzyd99775n6vzumxa5luxcllml4",
     symbol: "SIENNA",
     url: "https://sienna.network",
     description: "Sienna Network is a cross-chain, privacy-first decentralized finance protocol built on Secret Network, that enables trust-less financial instruments, such as trading and lending with complete privacy for multiple blockchain ecosystems.",
     chain: "Secret",
-    logo: `${baseIconsUrl}/sienna-network.png`,
+    logo: `${baseIconsUrl}/siennaswap.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "sienna",
-    cmcId: "9388",
-    category: "Privacy",
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
     chains: ["Secret"],
     oracles: ["Band"],
     forkedFrom: [],
@@ -7091,7 +7091,7 @@ const data2: Protocol[] = [
     twitter: "sienna_network",
     audit_links: ["https://sienna.network/audits"],
     listedAt: 1651009772,
-    github: ["SiennaNetwork"]
+    parentProtocol: "parent#sienna-network"
   },
   {
     id: "1693",
@@ -12592,7 +12592,7 @@ const data2: Protocol[] = [
     url: "https://apeswap.finance",
     description: "ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/apeswap-lending.png`,
+    logo: `${baseIconsUrl}/apeswap-lending.jpg`,
     audits: "1",
     audit_note: null,
     gecko_id: null,
@@ -12601,7 +12601,7 @@ const data2: Protocol[] = [
     chains: ["Binance"],
     module: "apeswap-lending/index.js",
     forkedFrom: ["Compound V2"],
-    twitter: "ape_swap",
+    twitter: "ApeBond",
     audit_links: ["https://apeswap.gitbook.io/apeswap-finance/security/audits"],
     parentProtocol: "parent#apeswap",
     listedAt: 1659048081
@@ -13587,7 +13587,7 @@ const data2: Protocol[] = [
     name: "Canto Lending",
     address: null,
     symbol: "-",
-    url: "https://lending.canto.io",
+    url: "https://canto.io/lending",
     description: "Lending on canto blockchain",
     chain: "Canto",
     logo: `${baseIconsUrl}/canto-lending.jpg`,
@@ -17336,23 +17336,24 @@ const data2: Protocol[] = [
   },
   {
     id: "2154",
-    name: "Lifinity",
+    name: "Lifinity V1",
     address: "solana:LFNTYraetVioAPnGJht4yNg2aUZFXR776cMeN9VMjXp",
     symbol: "LFNTY",
     url: "https://lifinity.io/pools",
     description: "The first proactive market maker on Solana designed to improve capital efficiency and reduce impermanent loss.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/lifinity.jpg`,
+    logo: `${baseIconsUrl}/lifinity-v1.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "lifinity",
-    cmcId: "19842",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Solana"],
     oracles: ["Pyth"],
     forkedFrom: [],
     module: "lifinity/index.js",
     twitter: "Lifinity_io",
+    parentProtocol: "parent#lifinity",
     listedAt: 1664977775
   },
   {
@@ -18596,30 +18597,28 @@ const data2: Protocol[] = [
     language: "Move",
     listedAt: 1666310467
   },
-  /*
-    {
-      id: "2209",
-      name: "Opulous",
-      address: "algorand:287867876",
-      symbol: "Opulous",
-      url: "https://opulous.org",
-      description:
-        "Opulous is a decentralised peer-to-peer loan platform built on the Algorand blockchain. It will help increase artists’ access to capital without the need for traditional institutions, such as banks. It’s all about providing financial options and flexibility for artists so they can develop their careers, support each other, and remain independent.",
-      chain: "Algorand",
-      logo: `${baseIconsUrl}/opulous.jpg`,
-      audits: "0",
-      audit_note: null,
-      gecko_id: "opulous",
-      cmcId: "10409",
-      category: "Lending",
-      chains: ["Algorand"],
-      module: "opulous/index.js",
-      twitter: "opulousapp",
-      forkedFrom: [],
-      oracles: [],
-      listedAt: 1666349179
-    },
-  */
+  {
+    id: "2209",
+    name: "Opulous",
+    address: "algorand:287867876",
+    symbol: "Opulous",
+    url: "https://opulous.org",
+    description:
+      "Opulous is a decentralised peer-to-peer loan platform built on the Algorand blockchain. It will help increase artists’ access to capital without the need for traditional institutions, such as banks. It’s all about providing financial options and flexibility for artists so they can develop their careers, support each other, and remain independent.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/opulous.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "opulous",
+    cmcId: "10409",
+    category: "Farm",
+    chains: ["Algorand"],
+    module: "opulous/index.js",
+    twitter: "opulousapp",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1666349179
+  },
   {
     id: "2210",
     name: "LiquidSwap",
@@ -23127,7 +23126,9 @@ const data2: Protocol[] = [
     twitter: "TegroDEX",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1672845040
+    listedAt: 1672845040,
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "2407",
@@ -25549,14 +25550,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2512",
-    name: "Velvet.Capital",
+    name: "Velvet V1",
     address: null,
     symbol: "-",
     url: "https://app.velvet.capital/",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     chain: "Binance",
-    logo: `${baseIconsUrl}/velvet.capital.png`,
+    logo: `${baseIconsUrl}/velvet-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -25571,6 +25572,7 @@ const data2: Protocol[] = [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Velvet-v1.0.pdf",
       "https://audit.shellboxes.com/report.php?id=NKU750HSXU",
     ],
+    parentProtocol: "parent#velvet.capital",
     listedAt: 1675795158
   },
   {
@@ -25994,7 +25996,7 @@ const data2: Protocol[] = [
    {
     id: "2531",
     name: "Vaultka",
-    address: null,
+    address: "arbitrum:0xafccb724e3aec1657fc9514e3e53a0e71e80622d",
     symbol: "VKA",
     url: "https://www.vaultka.com",
     description:
@@ -26003,7 +26005,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/vaultka.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "vaultka",
     cmcId: null,
     category: "Yield",
     chains: ["Arbitrum"],

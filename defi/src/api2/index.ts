@@ -42,9 +42,9 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   }
 }
 
-webserver.get("/protocols/:name", async (req, res) => getProtocolishData(req, res, 'protocol'));
-webserver.get("/treasuries/:name", async (req, res) => getProtocolishData(req, res, 'treasury'));
-webserver.get("/entities/:name", async (req, res) => getProtocolishData(req, res, 'entities'));
+webserver.get("/protocol/:name", async (req, res) => getProtocolishData(req, res, 'protocol'));
+webserver.get("/treasury/:name", async (req, res) => getProtocolishData(req, res, 'treasury'));
+webserver.get("/entity/:name", async (req, res) => getProtocolishData(req, res, 'entities'));
 
 async function main() {
   await initCache()

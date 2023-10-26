@@ -1205,6 +1205,7 @@ export default {
         "id": "705"
     },
     "aequinox": {
+        disabled: true,
         "enabled": true,
         "id": "2090"
     },
@@ -1303,6 +1304,7 @@ export default {
         "id": "2551"
     },
     "veniceswap": {
+        disabled: true,
         enabled: true,
         "id": "2550"
     },
@@ -2088,5 +2090,17 @@ export default {
     "shimmersea": {
         "enabled": true,
         "id": "3571"
+    },
+    "kriya-dex": {
+        "enabled": true,
+        "id": "2939"
+    },
+    "primex-finance": {
+        "enabled": true,
+        "id": "3664"
+    },
+    "candyswap": {
+        "enabled": true,
+        "id": "3682"
     }
 } as AdaptorsConfig

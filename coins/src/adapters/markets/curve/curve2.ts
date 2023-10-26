@@ -234,21 +234,27 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
         // set pool LP information
         if (!poolData.lpToken) {
           try {
-
             poolData.lpToken = await PoolToToken(api, pool)
             poolData.decimals = await api.call({ target: poolData.lpToken, abi: 'erc20:decimals' })
             poolData.symbol = await api.call({ target: poolData.lpToken, abi: 'string:symbol' })
-            poolData.name = await api.call({ target: poolData.lpToken, abi: 'string:name' })
+            // poolData.name = await api.call({ target: poolData.lpToken, abi: 'string:name' })
           } catch (e) {
             delete cPoolInfo[pool];
-            console.log('failed to get lp token', e)
+            console.log('failed to get lp token', pool)
             return;
           }
         }
 
         // set pool tokens information
         if (!poolData.tokens)
+        try {
           poolData.tokens = await getPoolTokens(api, pool, cache.registries[registryType], registryType)
+        } catch {
+          delete cPoolInfo[pool];
+          console.log('failed to get pool underlyings', pool)
+          return;
+        }
+
         poolData.tokens = poolData.tokens.map((t: string) => t.toLowerCase())
       });
 

@@ -7,8 +7,8 @@ import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { Write } from "../adapters/utils/dbInterfaces";
-import { filterWritesWithLowConfidence } from "../adapters/utils/database";
 import { batchReadPostgres, batchWrite2, readCoins2 } from "../../coins2";
+import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
@@ -66,7 +66,7 @@ async function storeCoinData(coinData: any[]) {
       symbol: c.symbol,
       adapter: "coingecko",
       mcap: c.mcap || null,
-      chain: "coingecko",
+      chain: c.PK.substring(0, c.PK.replace("#", ":").indexOf(":")),
     });
   });
   try {
@@ -83,7 +83,7 @@ async function storeCoinData(coinData: any[]) {
       timestamp: c.timestamp,
       symbol: c.symbol,
       confidence: c.confidence,
-    })),
+    })).filter((c: any) => c.symbol != null),
     false,
   );
 }
@@ -193,7 +193,8 @@ async function getPlatformData(coins: Coin[]) {
   filteredCoins.map((f: Coin) =>
     Object.entries(f.platforms).map((p: any) => {
       if (!(f.id in keyMap)) keyMap[f.id] = [];
-      keyMap[f.id].push(`${p[0]}:${p[1]}`);
+      const i = Object.values(chainToCoingeckoId).indexOf(p[0]);
+      keyMap[f.id].push(`${Object.keys(chainToCoingeckoId)[i]}:${p[1]}`);
     }),
   );
   return keyMap;
@@ -254,10 +255,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   );
   const platformQueries = filteredCoins
     .map((f: Coin) =>
-      Object.entries(f.platforms).map((p: any) => ({
-        key: `${p[0]}:${p[1]}`,
-        timestamp: getCurrentUnixTimestamp(),
-      })),
+      Object.entries(f.platforms).map((p: any) => {
+        const i = Object.values(chainToCoingeckoId).indexOf(p[0]);
+        return {
+          key: `${Object.keys(chainToCoingeckoId)[i]}:${p[1]}`,
+          timestamp: getCurrentUnixTimestamp(),
+        };
+      }),
     )
     .flat();
   const coinPlatformData = await readCoins2(platformQueries, true, 604800);
@@ -306,7 +310,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             confidence: 0.99,
             adapter: "coingecko",
             mcap: pricesAndMcaps[cgPK(coin.id)].mcap || null,
-            chain: "coingecko",
+            chain: key.substring(0, key.indexOf(":")),
           });
 
           if (previous.Item?.confidence > 0.99) return;
@@ -327,7 +331,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 
   if (writes2.length == 0) return;
   try {
-    await batchWrite2(writes2, false);
+    await batchWrite2(writes2.filter((c: Coin) => c.symbol != null), false);
   } catch (e) {
     console.error(e);
   }
@@ -357,7 +361,11 @@ async function getAndStoreHourly(
     toUNIXTimestamp(coinData.prices[0][0]),
     toUNIXTimestamp(coinData.prices[coinData.prices.length - 1][0]),
   );
-  if (prevWritenItems[prevWritenItems.length - 1].confidence > 29700) return;
+  if (
+    prevWritenItems.length > 0 &&
+    prevWritenItems[prevWritenItems.length - 1].confidence > 29700
+  )
+    return;
   const writtenTimestamps = Object.values(prevWritenItems).map(
     (c: any) => c.timestamp,
   );
@@ -384,14 +392,14 @@ async function getAndStoreHourly(
       return !writtenTimestamps[ts];
     })
     .map((price) =>
-      platformData[coin.id].map((PK: string) => ({
+      [cgPK(coin.id), ...platformData[coin.id]].map((PK: string) => ({
         timestamp: toUNIXTimestamp(price[0]),
         key: PK.replace("#", ":"),
         price: price[1],
         confidence: 0.99,
         adapter: "coingecko",
         symbol: coin.symbol,
-        chain: "coingecko",
+        chain: PK.substring(0, PK.replace("#", ":").indexOf(":")),
       })),
     )
     .flat();

@@ -71,7 +71,14 @@ export async function getTokenAndRedirectData(
     } else {
       apiRes = await getTokenAndRedirectDataDB(tokens, chain, timestamp == 0 ? getCurrentUnixTimestamp() : timestamp, hoursRange,)
     }
-    apiRes.map((r: any) => cache[cacheKey][r.address] = r)
+
+    apiRes.map((r: any) => {
+      if (r.address == null) return 
+      if (!(cacheKey in cache)) cache[cacheKey] = {}
+      cache[cacheKey][r.address] = r
+      return 
+    })
+
     response.push(...apiRes)
   })
 
@@ -431,7 +438,7 @@ async function checkMovement(
   if (errors != "" && !process.env.LLAMA_RUN_LOCAL)
     await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
 
-  return filteredItems;
+  return filteredItems.filter((v: any) => v != null);
 }
 export async function getDbMetadata(
   assets: string[],

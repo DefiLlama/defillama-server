@@ -61,6 +61,15 @@ export async function storeR2JSONString(filename: string, body: string | Readabl
   return await R2.send(command);
 }
 
+export async function getR2JSONString(filename: string) {
+  const command = new GetObjectCommand({
+    Bucket: datasetBucket,
+    Key: filename,
+  });
+  const data = await R2.send(command);
+  return JSON.parse(await data.Body?.transformToString() as string)
+}
+
 export async function getR2(filename: string) {
   const command = new GetObjectCommand({
     Bucket: datasetBucket,

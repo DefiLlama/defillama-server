@@ -909,7 +909,7 @@ export default {
         "id": "2968"
     },
     "kwenta": {
-        "enabled": false,
+        "enabled": true,
         "id": "2981"
     },
     "gamma": {
@@ -921,7 +921,7 @@ export default {
         "id": "2641"
     },
     "veax": {
-        "enabled": true,
+        "enabled": false,
         "id": "2928"
     },
     "maestro": {
@@ -1069,7 +1069,7 @@ export default {
         "id": "1772"
     },
     "concordex-io": {
-        "enabled": true,
+        "enabled": false,
         "id": "3172"
     },
     "vvs-finance": {
@@ -1134,6 +1134,7 @@ export default {
         "id": "3025"
     },
     "zunami": {
+        disabled: true,
         "enabled": true,
         "id": "1201"
     },
@@ -1423,5 +1424,45 @@ export default {
                 enabled: true,
             }
         }
+    },
+    "chainlink-ccip": {
+        parentId: "Chainlink",
+        "enabled": true,
+        "id": "3675"
+    },
+    "crv-usd": {
+        parentId: "Curve Finance",
+        "enabled": true,
+        "id": "2994"
+    },
+    "shuriken": {
+        "enabled": true,
+        "id": "3687"
+    },
+    "clipper": {
+        "enabled": true,
+        "id": "622"
+    },
+    "morpho-compound": {
+        parentId: "Morpho",
+        "enabled": false,
+        "id": "1997"
+    },
+    "benqi-staked-avax": {
+        parentId: "Benqi",
+        "enabled": true,
+        "id": "1427"
+    },
+    "prisma-finance": {
+        "enabled": true,
+        "id": "3473"
+    },
+    "impermax-finance": {
+        "enabled": true,
+        "id": "343"
+    },
+    "defi-saver": {
+        "enabled": true,
+        "id": "177"
     }
 } as AdaptorsConfig

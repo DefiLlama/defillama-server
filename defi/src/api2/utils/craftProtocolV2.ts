@@ -59,25 +59,25 @@ export default async function craftProtocolV2({
     const container = {} as any;
 
     container.tvl = historicalUsdTvl
-      ?.map((item) => ({
+      ?.map((item: any) => ({
         date: item.SK,
         totalLiquidityUSD: selectChainFromItem(item, chain) && Number(selectChainFromItem(item, chain).toFixed(5)),
       }))
-      .filter((item) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD);
+      .filter((item: any) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD);
 
     container.tokensInUsd = historicalUsdTokenTvl
-      ?.map((item) => ({
+      ?.map((item: any) => ({
         date: item.SK,
         tokens: normalizeEthereum(selectChainFromItem(item, chain)),
       }))
-      .filter((item) => item.tokens);
+      .filter((item: any) => item.tokens);
 
     container.tokens = historicalTokenTvl
-      ?.map((item) => ({
+      ?.map((item: any) => ({
         date: item.SK,
         tokens: normalizeEthereum(selectChainFromItem(item, chain)),
       }))
-      .filter((item) => item.tokens);
+      .filter((item: any) => item.tokens);
 
     if (container.tvl !== undefined && container.tvl.length > 0) {
       if (chain === "tvl") {
@@ -126,29 +126,29 @@ export default async function craftProtocolV2({
 
     container?.tvl?.push(
       ...historicalUsdTvl
-        ?.map((item) => ({
+        ?.map((item: any) => ({
           date: item.SK,
           totalLiquidityUSD: selectChainFromItem(item, chain) && Number(selectChainFromItem(item, chain).toFixed(5)),
         }))
-        .filter((item) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD)
+        .filter((item: any) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD)
     );
 
     container?.tokensInUsd?.push(
       ...historicalUsdTokenTvl
-        ?.map((item) => ({
+        ?.map((item: any) => ({
           date: item.SK,
           tokens: normalizeEthereum(selectChainFromItem(item, chain)),
         }))
-        .filter((item) => item.tokens)
+        .filter((item: any) => item.tokens)
     );
 
     container?.tokens?.push(
       ...historicalTokenTvl
-        ?.map((item) => ({
+        ?.map((item: any) => ({
           date: item.SK,
           tokens: normalizeEthereum(selectChainFromItem(item, chain)),
         }))
-        .filter((item) => item.tokens)
+        .filter((item: any) => item.tokens)
     );
   });
 

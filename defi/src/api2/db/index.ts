@@ -77,9 +77,9 @@ async function initializeTVLCacheDB() {
     
     if (ENV.isCoolifyTask) {
       dbOptions.host = ENV.internalHost
-      metricsDbOptions.host = ENV.metrics_internalHost
+      // metricsDbOptions.host = ENV.metrics_internalHost
       delete dbOptions.port
-      delete metricsDbOptions.port
+      // delete metricsDbOptions.port
     }
 
     sequelize = new Sequelize(dbOptions as any);

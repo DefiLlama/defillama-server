@@ -1,4 +1,6 @@
 export default {
+  ociswap: require("./markets/ociswap"),
+  cantoLending: require("./moneyMarkets/compound"),
   xexchange: require("./markets/xexchange"),
   silo: require("./moneyMarkets/silo"),
   hlp: require("./yield/hlp"),
@@ -65,6 +67,8 @@ export default {
   balancer3: require("./markets/balancer"),
   balancer4: require("./markets/balancer"),
   balancer5: require("./markets/balancer"),
+  balancer6: require("./markets/balancer"),
+  balancer7: require("./markets/balancer"),
   linearPools: require("./markets/balancer"),
   hop: require("./markets/hop"),
   ankr: require("./liquidStaking/ankr"),
@@ -89,6 +93,7 @@ export default {
   // mmFinance: require("./markets/uniswap"),
   trisolaris: require("./markets/uniswap"),
   pangolin: require("./markets/uniswap"),
+  elysium: require("./markets/uniswap"),
   spiritswap: require("./markets/uniswap"),
   // pancakeswap: require("./markets/uniswap"),
   spookyswap: require("./markets/uniswap"),

@@ -29,13 +29,13 @@ async function storeDefiCoins() {
   shuffleArray(protocolIndexes);
   const a = Object.entries(adapters);
   const timestamp = 0;
-  await PromisePool.withConcurrency(2)
+  await PromisePool.withConcurrency(1)
     .for(protocolIndexes)
     .process(async (i) => {
       try {
         const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
-          results.flat(),
+          results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
           await Promise.all([
@@ -66,3 +66,4 @@ async function storeDefiCoins() {
   process.exit();
 }
 storeDefiCoins();
+// ts-node coins/src/scripts/defiCoins.ts

@@ -354,8 +354,8 @@ const handler = (hourly: boolean) => async (
       await sleep(10e3); // 10 seconds
       await invokeLambda(
         hourly
-          ? `coins-prod-fetchHourlyCoingeckoData`
-          : `coins-prod-fetchCoingeckoData`,
+          ? `coins-prod-fetchHourlyCoingeckoData2`
+          : `coins-prod-fetchCoingeckoData2`,
         {
           coins: rejected,
           depth: depth + 1,

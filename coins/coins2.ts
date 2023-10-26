@@ -20,6 +20,7 @@ const zeroDecimalAdapters: string[] = [
   "coingecko",
   "chainlink-nft",
   "defichain",
+  "radixdlt",
   "reservoir"
 ];
 export type Coin = {

@@ -1515,11 +1515,12 @@ export const chainCoingeckoIds = {
     cmcId: "16389",
     categories: ["Cosmos"],
   },
-  "WEMIX": {
+  "WEMIX3.0": {
     geckoId: "wemix-token",
     github: ['wemixarchive'],
     symbol: "WEMIX",
     cmcId: "7548",
+    categories: ["EVM"],
   },
   "Persistence": {
     geckoId: "persistence",
@@ -1969,6 +1970,25 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     github: ["nolus-protocol"]
   },
+  "ETHF": {
+    geckoId: "ethereumfair",
+    symbol: "ETHF",
+    cmcId: "21842",
+    categories: ["EVM"],
+    github: ["ethereumfair"],
+  },
+  "MEER": {
+    geckoId: "qitmeer-network",
+    symbol: "MEER",
+    cmcId: "15658",
+    categories: ["EVM"],
+  },
+  "Elysium": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1994,6 +2014,7 @@ chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
 chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
 chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
 chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
+chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -2038,6 +2059,8 @@ export function transformNewChainName(chain: string) {
       return "PulseChain"
     case "Op_Bnb":
         return "opBNB"
+    case "WEMIX":
+      return "WEMIX3.0"
     default:
       return chain
   }
@@ -2346,7 +2369,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "umee":
       return "Umee"
     case "wemix":
-      return "WEMIX"
+      return useNewChainNames ? "WEMIX3.0" : "WEMIX"
     case "persistence":
       return "Persistence"
     case "enuls":
@@ -2459,6 +2482,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Radix"
     case "nolus":
       return "Nolus"
+    case "ethf":
+      return "ETHF"
+    case "meer":
+      return "MEER"
+    case "elsm":
+      return "Elysium"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

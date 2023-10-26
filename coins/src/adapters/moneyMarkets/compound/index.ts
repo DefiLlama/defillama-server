@@ -1,3 +1,4 @@
+import { compoundPrices } from "../../utils/compound-fork";
 import getTokenPrices from "./compound";
 
 export function compound(timestamp: number = 0) {
@@ -157,4 +158,15 @@ export function tenderfi(timestamp: number = 0) {
     "0xeed247Ba513A8D6f78BE9318399f5eD1a4808F8e",
     timestamp,
   );
+}
+
+export function cantoLending(timestamp: number = 0) {
+  console.log("starting canto-Lending");
+  return compoundPrices({
+    chain: "canto",
+    timestamp,
+    cether: '0xB65Ec550ff356EcA6150F733bA9B954b2e0Ca488',
+    comptroller: "0x5e23dc409fc2f832f83cec191e245a191a4bcc5c",
+    projectName: 'canto-lending',
+  });
 }

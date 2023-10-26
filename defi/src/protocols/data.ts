@@ -272,10 +272,8 @@ const data: Protocol[] = [
     module: "maker/index.js",
     twitter: "MakerDAO",
     audit_links: ["https://security.makerdao.com/"],
+    parentProtocol: "parent#maker",
     oracles: ["Chronicle"],
-    treasury: "maker.js",
-    stablecoins: ["dai"],
-    github: ["makerdao"] //check
   },
   {
     id: "119",
@@ -2832,30 +2830,24 @@ const data: Protocol[] = [
   },
   {
     id: "239",
-    name: "PoolTogether",
+    name: "PoolTogether V3",
     address: "0x0cec1a9154ff802e7934fc916ed7ca50bde6844e",
     symbol: "POOL",
     url: "https://pooltogether.com/",
-    description: "PoolTogetheris an open source and decentralized protocol for no-loss prize games",
+    description: "PoolTogether is an open source and decentralized protocol for no-loss prize games",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/pooltogether.jpg`,
+    logo: `${baseIconsUrl}/pooltogether-v3.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "pooltogether",
-    cmcId: "8508",
+    gecko_id: null,
+    cmcId: null,
     category: "Services",
-    chains: ["Ethereum", "Polygon", "Celo", "Binance"],
+    chains: ["Ethereum", "Celo", "Binance"],
     module: "pooltogether/index.js",
-    treasury: "pooltogether.js",
     twitter: "PoolTogether_",
     audit_links: ["https://docs.pooltogether.com/security/audits"],
     oracles: ["Chainlink"],
-    governanceID: [
-      "snapshot:pooltogether.eth", 
-      "snapshot:poolpool.pooltogether.eth",
-      'eip155:1:0xB3a87172F555ae2a2AB79Be60B336D2F7D0187f0'
-    ],
-    github: ["pooltogether"]
+    parentProtocol: "parent#pooltogether"
   },
   {
     id: "240",
@@ -6308,7 +6300,7 @@ const data: Protocol[] = [
     description:
       "ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/apeswap-amm.png`,
+    logo: `${baseIconsUrl}/apeswap-amm.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -6317,7 +6309,7 @@ const data: Protocol[] = [
     chains: ["Binance", "Polygon", "Ethereum"],
     module: "apeswap-amm/index.js",
     forkedFrom: ["Uniswap V2"],
-    twitter: "ape_swap",
+    twitter: "ApeBond",
     audit_links: ["https://apeswap.gitbook.io/apeswap-finance/security/audits"],
     parentProtocol: "parent#apeswap",
   },
@@ -7964,17 +7956,17 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "CNR",
     url: "https://canary.exchange",
     description:
-      "Canary Exchange is a decentralized exchange (DEX) which runs on Avalanche, the most promising and the fastest blockchain!",
+      "Canary Exchange is a decentralized exchange (DEX) which runs on Avalanche and Scroll, the most promising and the fastest blockchain!",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/canary.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "canary",
     cmcId: "10555",
-    category: "Yield Aggregator",
-    chains: ["Avalanche"],
+    category: "Dexes",
+    chains: ["Avalanche", "Scroll"],
     module: "canary/index.js",
-    twitter: "CanaryDex",
+    twitter: "CanaryDefi",
     forkedFrom: ["Uniswap V2"],
     github: ["canarydex"]
   },
@@ -8171,7 +8163,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "484",
-    name: "Marinade Finance",
+    name: "Marinade Liquid Staking",
     address: "solana:MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey",
     symbol: "MNDE",
     url: "https://marinade.finance",
@@ -8180,8 +8172,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/marinade-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "marinade",
-    cmcId: "13803",
+    gecko_id: null,
+    cmcId: null,
     category: "Liquid Staking",
     chains: ["Solana"],
     module: "marinade.js",
@@ -8191,7 +8183,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://marinade.finance/AckeeBlockchain.pdf",
       "https://marinade.finance/KudelskiSecurity.pdf",
     ],
-    github: ["marinade-finance"]
+    parentProtocol: "parent#marinade-finance",
   },
   {
     id: "485",
@@ -9254,6 +9246,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "thales/index.js",
     twitter: "thalesmarket",
+    oracles: [],
     treasury: "thales.js",
     audit_links: ["https://iosiro.com/audits/thales-airdrop-and-staking-smart-contract-audit"],
     github: ["thales-markets"]
@@ -9516,7 +9509,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "PNT",
     url: "https://p.network",
     description:
-      "The pNetwork is a decentralized network of validators contributing to the verification of crypto asset switches across blockchains",
+      "pNetwork is a protocol that enables cross-chain operations, such as transferring assets from one blockchain to another. It is designed to provide interoperability between different blockchain networks, allowing users to take advantage of the unique features and capabilities of each network while still being able to access and use their assets on other networks.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/pnetwork.jpg`,
     audits: "2",
@@ -14141,7 +14134,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "angle/index.js",
     twitter: "AngleProtocol",
     audit_links: ["https://github.com/AngleProtocol/angle-core/tree/main/audits"],
-    oracles: ["Chainlink", "TWAP", "RedStone"],
+    oracles: ["Chainlink", "TWAP", "RedStone","Pyth"],
     listedAt: 1635962344,
     governanceID: ["snapshot:anglegovernance.eth", "compound:ethereum:0x59153e939c5b4721543251ff3049ea04c755373b"],
     stablecoins: ["ageur"],
@@ -15591,7 +15584,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1637002081,
     deadUrl: true
   },
-  /*
   {
     id: "842",
     name: "Matrix Farm",
@@ -15608,13 +15600,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Fantom"],
-    module: "matrix.farm/index.js",
+    module: "matrix-farm/index.js",
     twitter: "farm_matrix",
     audit_links: ["https://solidity.finance/audits/MatrixFarm"],
     forkedFrom: ["Yearn Finance"],
     listedAt: 1637025517,
   },
-  */
   {
     id: "843",
     name: "Unirex Finance",
@@ -16153,6 +16144,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.certik.org/projects/gibx-swap"],
     listedAt: 1637365166,
+    deadUrl: true
   },
   {
     id: "868",
@@ -22340,13 +22332,19 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Umbrella Network",
     address: "0x6fC13EACE26590B80cCCAB1ba5d51890577D83B2",
     symbol: "UMB",
-    url: "https://staking.umb.network",
+    url: "https://staking.umb.network/",
     description:
       "Umbrella is the first truly decentralized oracle service providing low cost, massively scalable, and secure solutions for smart contracts.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/umbrella-network.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
+    audit_links: [
+      "https://drive.google.com/file/d/1hvfhXMhGxAH_ztvtmJXucwlrzHocrviC/view?usp=drive_link",
+      "https://drive.google.com/file/d/1RuQAuCA82gckKRsqr23oZpmg9MTpxcgv/view?usp=drive_link",
+      "https://drive.google.com/file/d/1-2rj22AIevEIUNBTNiKlnwb8s3OqWFS5/view?usp=drive_link",
+      "https://drive.google.com/file/d/1gAodp0CPsm9PoUY9SQ3RqE4JBmRLE6te/view?usp=drive_link",
+    ],
     gecko_id: "umbrella-network",
     cmcId: "8385",
     category: "Oracle",

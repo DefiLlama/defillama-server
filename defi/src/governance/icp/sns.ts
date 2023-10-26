@@ -149,7 +149,8 @@ export async function get_metadata ( sns_metadata : SnsMetadata )
     const logo = data.logo;
     return {
         // SNS Governance canister id
-        id: sns_metadata.sns_root_canister_id,
+        // id: sns_metadata.sns_root_canister_id,
+        id: getGovId(sns_metadata.sns_root_canister_id),
         type: "Service Nervous System",
         proposalsCount: lates_proposal_id,
         symbol: sns_metadata.icrc1_metadata.icrc1_symbol,

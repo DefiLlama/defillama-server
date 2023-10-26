@@ -22237,6 +22237,48 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1698280827
   },
+  {
+    id: "3699",
+    name: "Elysium Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://bridge.elysiumchain.tech",
+    description: "Bridge for Elysium Chain",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/elysium-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Polygon", "Ethereum"],
+    oracles: [],
+    module: "elysiumBridge/index.js",
+    twitter: "Elysium_VF",
+    forkedFrom: [],
+    listedAt: 1698328107
+  },
+  {
+    id: "3700",
+    name: "CSWAP DEX",
+    address: null,
+    symbol: "-",
+    url: "https://cswap.fi",
+    description: "The first DEX for NFTs on Cardano. Instant Liquidity. Powered by an orderbook/AMM hybrid.",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/cswap-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Cardano"],
+    oracles: [],
+    module: "cswap-dex/index.js",
+    twitter: "CswapDEX",
+    forkedFrom: [],
+    listedAt: 1698328125
+  },
 ]
 
 export default data3

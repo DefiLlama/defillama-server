@@ -22227,7 +22227,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/hashnote.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: null,//
     cmcId: null,
     category: "RWA",
     chains: ["Canto"],

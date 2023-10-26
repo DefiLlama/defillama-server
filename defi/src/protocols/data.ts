@@ -19482,6 +19482,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "arkadiko.js",
     twitter: "ArkadikoFinance",
     language: "Clarity",
+    oracles: ["Pyth"]
     github: ["arkadiko-dao"],
     listedAt: 1639420466,
   },

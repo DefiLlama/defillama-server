@@ -18160,7 +18160,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Ethereum", "Fantom", "Avalanche", "Arbitrum", "Moonbeam", "Binance", "Optimism", "Polygon", "xDai"],
+    chains: ["Ethereum", "Fantom", "Avalanche", "Arbitrum", "Moonbeam", "Optimism", "Polygon", "xDai"],
     module: "sushiswap-bentobox/index.js",
     forkedFrom: [],
     oracles: [],

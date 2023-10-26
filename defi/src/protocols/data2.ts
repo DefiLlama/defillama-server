@@ -29046,7 +29046,7 @@ const data2: Protocol[] = [
     cmcId: "24771",
     category: "Lending",
     chains: ["Polygon"],
-    oracles: [],
+    oracles: ["Umbrella Network"],
     forkedFrom: ["Compound V2"],
     module: "paxo-finance/index.js",
     twitter: "wefi_xyz",

@@ -1,5 +1,6 @@
 export default {
   ociswap: require("./markets/ociswap"),
+  tangleswap: require("./markets/tangleswap"),
   cantoLending: require("./moneyMarkets/compound"),
   xexchange: require("./markets/xexchange"),
   silo: require("./moneyMarkets/silo"),

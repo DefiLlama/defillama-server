@@ -48,6 +48,7 @@ let mSequalize: Sequelize | null = null
 async function initializeTVLCacheDB() {
   if (!sequelize) {
     const ENV = getEnv()
+    console.log(ENV)
     const dbOptions = {
       host: ENV.host,
       port: ENV.port,

@@ -19287,7 +19287,7 @@ const data2: Protocol[] = [
     category: "Bridge",
     chains: ["Ethereum"],
     module: "alexar/index.js",
-    twitter: "axelarcore",
+    twitter: "axelarnetwork",
     forkedFrom: [],
     oracles: [],
     treasury: "axelar.js",

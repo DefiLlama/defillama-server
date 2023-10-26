@@ -21537,7 +21537,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Staking Pool",
+    category: "Liquid Staking",
     chains: ["Radix"],
     oracles: [],
     forkedFrom: [],
@@ -22278,6 +22278,32 @@ const data3: Protocol[] = [
     twitter: "CswapDEX",
     forkedFrom: [],
     listedAt: 1698328125
+  },
+  {
+    id: "3701",
+    name: "Chiliswap",
+    address: null,
+    symbol: "-",
+    url: "https://www.chiliswap.io",
+    description: "The First Community-driven all-in-one Exchange And MEME Coin On Scroll!",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/chiliswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    oracles: [],
+    module: "chiliswap/index.js",
+    twitter: "ChiliSwap_io",
+    forkedFrom: ["Uniswap V2"],
+    audit_links: [
+                   "https://github.com/ChiliSwap/ChiliToken/blob/main/doc/Smart%20Contract%20Secturity%20Audit%20Report%20For%20ChiliToken.pdf",
+                   "https://github.com/ChiliSwap/chili-swap-contract/blob/main/doc/Smart%20Contract%20Security%20Audit%20Report%20For%20ChillSwap.pdf"
+                 ],
+    github: ["ChiliSwap"],
+    listedAt: 1698328873
   },
 ]
 

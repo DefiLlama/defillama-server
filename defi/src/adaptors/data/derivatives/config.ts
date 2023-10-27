@@ -440,5 +440,16 @@ export default {
     "paradex": {
         "enabled": true,
         "id": "3648"
+    },
+    "swapbased": {
+        parentId: "SwapBased",
+        "enabled": true,
+        "id": "3328",
+        protocolsData: {
+            "perps": {
+                "id": "3373",
+                "enabled": true,
+            },
+        },
     }
 } as AdaptorsConfig

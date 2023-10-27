@@ -1949,7 +1949,17 @@ export default {
     "swapbased": {
         parentId: "SwapBased",
         "enabled": true,
-        "id": "3328"
+        "id": "3328",
+        protocolsData: {
+            "v2": {
+                "id": "3328",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "3409",
+                "enabled": true,
+            }
+        }
     },
     "danogo": {
         "enabled": true,

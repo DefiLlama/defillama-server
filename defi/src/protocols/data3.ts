@@ -9639,6 +9639,7 @@ const data3: Protocol[] = [
     twitter: "ResonateFi",
     listedAt: 1687208787
   },
+  /*
   {
     id: "3131",
     name: "Solv Protocol V3",
@@ -9659,8 +9660,10 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "SolvProtocol",
     audit_links: ["https://github.com/solv-finance/Audit"],
+    parentProtocol: "parent#solv-protocol",
     listedAt: 1687224991,
   },
+  */
   {
     id: "3132",
     name: "Daytona Finance",
@@ -19449,6 +19452,7 @@ const data3: Protocol[] = [
     module: "solv-protocol-funds/index.js",
     twitter: "SolvProtocol",
     audit_links: ["https://github.com/solv-finance/Audit"],
+    parentProtocol: "parent#solv-protocol",
     listedAt: 1695959391,
   },
   {
@@ -19471,6 +19475,7 @@ const data3: Protocol[] = [
     module: "solv-protocol-rwa/index.js",
     twitter: "SolvProtocol",
     audit_links: ["https://github.com/solv-finance/Audit"],
+    parentProtocol: "parent#solv-protocol",
     listedAt: 1695959397,
   },
   {

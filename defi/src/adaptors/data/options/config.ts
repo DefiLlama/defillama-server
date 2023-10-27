@@ -57,5 +57,9 @@ export default {
     "tigris": {
         "enabled": true,
         "id": "3129"
+    },
+    "valorem": {
+        "enabled": true,
+        "id": "3501"
     }
 } as AdaptorsConfig

@@ -3138,7 +3138,7 @@ const data: Protocol[] = [
     gecko_id: "bifi",
     cmcId: "8132",
     category: "Lending",
-    chains: ["Ethereum", "Binance", "Bitcoin", "Klaytn", "Bifrost Mainnet"],
+    chains: ["Ethereum", "Binance", "Bitcoin", "Klaytn", "Bifrost Network"],
     module: "bifi/index.js",
     twitter: "BIFROSTio",
     audit_links: [

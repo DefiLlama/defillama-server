@@ -19,6 +19,7 @@ function updateItemInfo(protocols) {
       const module = require('@defillama/adapters/projects/' + protocol.module)
       protocol.misrepresentedTokens = module.misrepresentedTokens
       protocol.hallmarks = module.hallmarks
+      protocol.deadFrom = module.deadFrom
     } catch (e) {
       console.error(e)
     }

@@ -43,12 +43,11 @@ function isHourlyDDBPK(ddbPKFunction: Function) {
 }
 
 let sequelize: Sequelize | null = null
-let mSequalize: Sequelize | null = null
+let mSequalize: Sequelize
 
 async function initializeTVLCacheDB() {
   if (!sequelize) {
     const ENV = getEnv()
-    console.log(ENV)
     const dbOptions = {
       host: ENV.host,
       port: ENV.port,
@@ -84,7 +83,8 @@ async function initializeTVLCacheDB() {
     }
 
     sequelize = new Sequelize(dbOptions as any);
-    mSequalize = new Sequelize(metricsDbOptions as any);
+    if (metricsDbOptions.host)
+      mSequalize = new Sequelize(metricsDbOptions as any);
     initializeTables(sequelize, mSequalize)
     // await sequelize.sync() // needed only for table creation/update
     // await mSequalize.sync() // needed only for table creation/update
@@ -158,6 +158,27 @@ function validateRecord(record: TVLCacheRecord) {
   if (!record.data || typeof record.data !== 'object') throw new Error('Missing data')
 }
 
+async function writeToPGCache(key: string, data: any) {
+  const table = TABLES.JSON_CACHE
+  if (typeof data !== 'object') data = JSON.stringify(data)
+  await table.upsert({ id: key, data, timestamp: Math.floor(Date.now()/1e3) })
+}
+
+async function readFromPGCache(key: string, { withTimestamp = false } = {}) {
+  const table = TABLES.JSON_CACHE
+  const item: any = await table.findOne({
+    where: { id: key },
+    attributes: ['data', 'timestamp'],
+    raw: true,
+  })
+  if (!item) return null
+  try {
+    item.data = JSON.parse(item.data)
+  } catch {}
+  if (withTimestamp) return item
+  return item.data
+}
+
 async function closeConnection() {
   if (!sequelize) return;
   try {
@@ -196,6 +217,8 @@ export {
   initializeTVLCacheDB,
   closeConnection,
   deleteProtocolItems,
+  writeToPGCache,
+  readFromPGCache,
 }
 
 // Add a process exit hook to close the database connection

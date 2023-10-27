@@ -51,10 +51,8 @@ webserver.get("/treasury/:name", async (req, res) => getProtocolishData(req, res
 webserver.get("/entity/:name", async (req, res) => getProtocolishData(req, res, 'entities'));
 
 async function main() {
-  await Promise.all([
-    initCache(),
-    initializeTVLCacheDB(),
-  ])
+  await initializeTVLCacheDB()
+  await initCache()
 
   webserver.listen(port)
     .then(() => console.log('Webserver started on port ' + port))

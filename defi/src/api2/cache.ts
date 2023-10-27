@@ -1,13 +1,10 @@
-import fs from 'fs'
-import { promisify } from 'util';
-import { exec } from 'child_process';
 import fetch from "node-fetch";
 
-import { METADATA_FILE } from './constants';
+import { PROTOCOL_METADATA_ALL_KEY } from './constants';
 import { protocolMcap } from '../utils/craftProtocol';
 import { IRaise } from '../types';
 import sluggify from '../utils/sluggify';
-const execAsync = promisify(exec);
+import { readFromPGCache } from './db';
 
 export const cache: {
   metadata: {
@@ -40,15 +37,15 @@ export const cache: {
 }
 
 export async function initCache() {
-  await updateMetadata()
-  await updateRaises()
+  await Promise.all([
+    updateMetadata(),
+    updateRaises(),
+  ])
   console.log('Cache initialized')
 }
 
 async function updateMetadata() {
-  await execAsync(`npm run update-metadata-file`)
-  const dataString = fs.readFileSync(METADATA_FILE, 'utf8')
-  const data = JSON.parse(dataString)
+  const data = await readFromPGCache(PROTOCOL_METADATA_ALL_KEY)
   cache.metadata = data
   cache.protocolSlugMap = {}
   cache.treasurySlugMap = {}
@@ -112,6 +109,8 @@ export async function getCachedMCap(geckoId: string | null) {
   return cache.mcaps[geckoId]
 }
 
-setInterval(updateRaises, 1000 * 60 * 60 * 24)
-setInterval(updateMetadata, 1000 * 60 * 30)
-setInterval(clearMCap, 1000 * 60 * 60 * 3)
+const HOUR = 1000 * 60 * 60
+
+setInterval(updateRaises, HOUR * 24)
+setInterval(updateMetadata, HOUR / 4)
+setInterval(clearMCap, HOUR * 2)

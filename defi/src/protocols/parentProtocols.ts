@@ -3014,6 +3014,17 @@ const parentProtocols: IParentProtocol[] = [
       'eip155:1:0xB3a87172F555ae2a2AB79Be60B336D2F7D0187f0'
     ],
   },
+  {
+    id: "parent#aptin-finance",
+    name: "Aptin Finance",
+    url: "https://aptin.io",
+    description: "Aptin is an algorithmic, decentralized protocol for lending and borrowing on Aptos. Aptin enables users to effortlessly lend, borrow, and earn interest within a global network.",
+    logo: `${baseIconsUrl}/aptin-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AptinLabs",
+  },
 ];
 
 export default parentProtocols;

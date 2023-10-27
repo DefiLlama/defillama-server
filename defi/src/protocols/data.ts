@@ -25125,9 +25125,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "RBC",
     url: "https://app.rubic.exchange/",
     description:
-      "Rubic, One-Click Cross-Chain Aggregator allows users to swap more than 15,000 assets between 13 major blockchains, with a simple and intuitive UI. Rubic's protocol offers easy trading for more than 15,000+ assets across Polygon, BNB Smart Chain, Ethereum, Avalanche, Fantom, Arbitrum, Gnosis, Fuse,  Celo, Optimism, Moonbeam, OKC and Cronos networks, using our custom and unique Cross-Chain Protocol.",
+      "Rubic aggregates 70+ blockchains and testnets, while it enables swaps of 15,500+ assets with the best rates, highest liquidity, and transaction speeds - in one click, thanks to the integration of 90+ DEXs and bridges. We focus on adding new emerging chains, which are often not present on giant DEXs and on-chain aggregators",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/rubic.png`,
+    logo: `${baseIconsUrl}/rubic.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "rubic",

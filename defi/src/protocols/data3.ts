@@ -21505,6 +21505,7 @@ const data3: Protocol[] = [
     twitter: "primex_official",
     github: ["primex-finance"],
     audit_links: ["https://github.com/primex-finance/primex-audits"],
+    treasury: "primex-finance.js",
     listedAt: 1697730940
   },
   {

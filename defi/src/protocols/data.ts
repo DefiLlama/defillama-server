@@ -1796,7 +1796,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "1inch/api.js",
     treasury: "1inch.js",
-    twitter: "1inchNetwork",
+    twitter: "1inch",
     audit_links: ["https://help.1inch.io/en/articles/4585088-how-secure-is-1inch"],
     oracles: ["Chainlink"],
     governanceID: ["snapshot:1inch.eth"],

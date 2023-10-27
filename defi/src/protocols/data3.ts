@@ -22399,6 +22399,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#aptin-finance",
     listedAt: 1698397365
   },
+  {
+    id: "3706",
+    name: "Dyson Finance",
+    address: null,
+    symbol: "-",
+    url: "https://dyson.finance/",
+    description: "Dyson Finance combines the strengths of dynamic AMM, dual investment, and a Membership Program",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/dyson-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    oracles: [],
+    module: "dyson/index.js",
+    twitter: "DysonFinance",
+    forkedFrom: [],
+    listedAt: 1698431567
+  },
 ]
 
 export default data3

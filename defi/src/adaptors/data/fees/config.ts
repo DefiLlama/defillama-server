@@ -1242,10 +1242,6 @@ export default {
             "v2": {
                 "id": "3328",
                 "enabled": true,
-            },
-            "v3": {
-                "id": "3409",
-                "enabled": true,
             }
         },
     },

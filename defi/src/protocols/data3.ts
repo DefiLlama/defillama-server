@@ -21494,7 +21494,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Polygon"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Umbrella Network"],
     forkedFrom: [],
     module: "primex-finance/index.js",
     twitter: "primex_official",

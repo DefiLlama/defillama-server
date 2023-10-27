@@ -8,7 +8,7 @@ import * as sdk from '@defillama/sdk'
 
 const webserver = new HyperExpress.Server()
 
-const port = +(process.env.PORT ?? 80)
+const port = +(process.env.PORT ?? 5001)
 
 async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, dataType: string) {
   try {

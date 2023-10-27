@@ -10,6 +10,7 @@ import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtoc
 import {
   dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl,
 } from "../../utils/getLastRecord"
+import * as sdk from '@defillama/sdk'
 
 
 export default async function craftProtocolV2({
@@ -24,22 +25,27 @@ export default async function craftProtocolV2({
   skipAggregatedTvl: boolean;
 }) {
   const { misrepresentedTokens = false, hallmarks, methodology, ...restProtocolData } = protocolData as any
-  const dummyRes = ([] as any[])
 
+  console.time("craftProtocolV2" + protocolData.name)
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
     getAllProtocolItems(useHourlyData ? hourlyTvl : dailyTvl, protocolData.id),
-    misrepresentedTokens ? dummyRes : getAllProtocolItems(useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl, protocolData.id),
-    misrepresentedTokens ? dummyRes : getAllProtocolItems(useHourlyData ? hourlyTokensTvl : dailyTokensTvl, protocolData.id),
+    getAllProtocolItems(useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl, protocolData.id),
+    getAllProtocolItems(useHourlyData ? hourlyTokensTvl : dailyTokensTvl, protocolData.id),
     getCachedMCap(protocolData.gecko_id),
     getLatestProtocolItem(hourlyTvl, protocolData.id),
     getLatestProtocolItem(hourlyUsdTokensTvl, protocolData.id),
     getLatestProtocolItem(hourlyTokensTvl, protocolData.id),
   ]);
+  console.timeEnd("craftProtocolV2" + protocolData.name)
+
+  sdk.log(protocolData.name, useHourlyData, historicalUsdTvl.length, historicalTokenTvl.length, historicalUsdTokenTvl.length)
 
   let response: IProtocolResponse = {
     ...restProtocolData,
     chainTvls: {},
     tvl: [],
+    tokensInUsd: [],
+    tokens: [],
     chains: [],
     currentChainTvls: {},
     raises: getRaises(protocolData.id),
@@ -47,7 +53,7 @@ export default async function craftProtocolV2({
     mcap,
   };
 
-  const lastRecord = historicalUsdTvl[historicalUsdTvl.length - 1];
+  /* const lastRecord = historicalUsdTvl[historicalUsdTvl.length - 1];
 
   Object.entries(lastRecord ?? {}).forEach(([chain]) => {
     if (nonChains.includes(chain) && chain !== "tvl") {
@@ -89,7 +95,7 @@ export default async function craftProtocolV2({
         response.chainTvls[displayChainName] = { ...container };
       }
     }
-  });
+  }); */
 
   if (!useHourlyData) {
     // check for falsy values and push lastHourlyRecord to dataset

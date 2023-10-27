@@ -22219,14 +22219,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2368",
-    name: "Aptin Finance",
+    name: "Aptin Finance V1",
     address: null,
     symbol: "-",
     url: "https://aptin.io",
     description:
       "Aptin is an algorithmic, decentralized protocol for lending and borrowing on Aptos. Aptin enables users to effortlessly lend, borrow, and earn interest within a global network.",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/aptin-finance.png`,
+    logo: `${baseIconsUrl}/aptin-finance-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -22238,6 +22238,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: ["Switchboard", "Pyth"],
     audit_links: ["https://github.com/AptinLabs/audit-report/blob/main/aptin_audit_report.pdf"],
+    parentProtocol: "parent#aptin-finance",
     listedAt: 1671445831
   },
   {

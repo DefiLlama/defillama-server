@@ -22375,6 +22375,29 @@ const data3: Protocol[] = [
     audit_links: ["https://beosin.com/audits/Match-Finance_202309281659.pdf"],
     listedAt: 1698345189
   },
+  {
+    id: "3705",
+    name: "Aptin Finance V2",
+    address: null,
+    symbol: "-",
+    url: "https://aptin.io",
+    description: "Aptin is an algorithmic, decentralized protocol for lending and borrowing on Aptos. Aptin enables users to effortlessly lend, borrow, and earn interest within a global network.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/aptin-finance-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Aptos"],
+    oracles: ["Pyth"],
+    module: "aptin-finance-v2/index.js",
+    twitter: "AptinLabs",
+    forkedFrom: [],
+    audit_links: ["https://github.com/AptinLabs/audit-report/blob/main/aptin_audit_report.pdf"],
+    parentProtocol: "parent#aptin-finance",
+    listedAt: 1698397365
+  },
 ]
 
 export default data3

@@ -1478,5 +1478,13 @@ export default {
     "valorem": {
         "enabled": true,
         "id": "3501"
+    },
+    "clever": {
+        "enabled": true,
+        "id": "1707"
+    },
+    "concentrator": {
+        "enabled": true,
+        "id": "1544"
     }
 } as AdaptorsConfig

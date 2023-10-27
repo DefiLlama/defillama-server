@@ -1464,5 +1464,9 @@ export default {
     "defi-saver": {
         "enabled": true,
         "id": "177"
+    },
+    "zapper-channels": {
+        "enabled": true,
+        "id": "3703"
     }
 } as AdaptorsConfig

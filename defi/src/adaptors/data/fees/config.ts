@@ -1474,5 +1474,9 @@ export default {
     "zapper-channels": {
         "enabled": true,
         "id": "3703"
+    },
+    "valorem": {
+        "enabled": true,
+        "id": "3501"
     }
 } as AdaptorsConfig

@@ -22240,7 +22240,7 @@ const data3: Protocol[] = [
     chains: ["Canto"],
     oracles: [],
     module: "hashnote/index.js",
-    twitter: null,
+    twitter: "Hashnote_Labs",
     forkedFrom: [],
     listedAt: 1698280827
   },

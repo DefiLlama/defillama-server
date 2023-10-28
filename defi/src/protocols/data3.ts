@@ -21928,7 +21928,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.jamfrens.so",
-    description: "Building the first Web3 native “Friend Tech” app based on Farcaster",
+    description: "Building the first Web3 native “Friend Tech” app based on Farcaster and LensProtocol",
     chain: "Polygon",
     logo: `${baseIconsUrl}/jamfrens.png`,
     audits: "0",

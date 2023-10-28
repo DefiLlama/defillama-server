@@ -22420,6 +22420,27 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1698431567
   },
+  {
+    id: "3707",
+    name: "TokenFi",
+    address: "0x4507cef57c46789ef8d1a19ea45f4216bae2b528",
+    symbol: "TOKEN",
+    url: "https://tokenfi.com/tokenfi",
+    description: "TokenFi is a platform for crypto and asset tokenization. It aims to make tokenization seamless and easy",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tokenfi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "tokenfi",
+    cmcId: "28299",
+    category: "Farm",
+    chains: ["Binance","Ethereum"],
+    oracles: [],
+    module: "tokenfi/index.js",
+    twitter: "tokenfi",
+    forkedFrom: [],
+    listedAt: 1698461747
+  },
 ]
 
 export default data3

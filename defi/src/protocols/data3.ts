@@ -22467,6 +22467,27 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1698517247
   },
+  {
+    id: "3709",
+    name: "Frensly",
+    address: null,
+    symbol: "-",
+    url: "https://frensly.io/",
+    description: "The next-generation SocialFi app focused on effective trading features and users' on-chain identity. Built on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/frensly.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    oracles: [],
+    module: "frensly/index.js",
+    twitter: "frenslyio",
+    forkedFrom: ["friend.tech"],
+    listedAt: 1698517487
+  },
 ]
 
 export default data3

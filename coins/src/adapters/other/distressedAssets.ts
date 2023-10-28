@@ -191,6 +191,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     USDC: "0xfa9343c3897324496a05fc75abed6bac29f8a40f",
     USDT: "0xb44a9b6905af7c801311e8f4e76932ee959c663c",
     WBTC: "0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b",
+    null:"0xa0eeda2e3075092d66384fe8c91a1da4bca21788"
   },
   kardia: {
     USDC: "0x765277eebeca2e31912c9946eae1021199b39c61",

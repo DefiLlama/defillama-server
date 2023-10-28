@@ -22441,6 +22441,32 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1698461747
   },
+  {
+    id: "3708",
+    name: "MEV Protocol",
+    address: null,
+    symbol: "-",
+    assetToken: "mevETH",
+    url: "https://mev.io/",
+    description: "Ethereum's next-generation seamless liquid staking protocol. Built from the ground up for MEV capture and Validator rewards",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mev-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    oracles: [],
+    module: "meveth/index.js",
+    twitter: "mevdotio",
+    audit_links: [
+      "https://manifoldfinance.slack.com/files/U058FSRGPLM/F060DJ8NJ2C/manifold_finance_july23_public__liquid_staking_.pdf",
+      "https://kebabsec.xyz/audits/manifold_finance_meveth2_audit/"
+    ],
+    forkedFrom: [],
+    listedAt: 1698517247
+  },
 ]
 
 export default data3

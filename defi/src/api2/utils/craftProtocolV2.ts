@@ -25,8 +25,9 @@ export default async function craftProtocolV2({
   skipAggregatedTvl: boolean;
 }) {
   const { misrepresentedTokens = false, hallmarks, methodology, ...restProtocolData } = protocolData as any
+  
+  const debug_t0 = performance.now(); // start the timer
 
-  console.time("craftProtocolV2" + protocolData.name)
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
     getAllProtocolItems(useHourlyData ? hourlyTvl : dailyTvl, protocolData.id),
     getAllProtocolItems(useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl, protocolData.id),
@@ -36,9 +37,8 @@ export default async function craftProtocolV2({
     getLatestProtocolItem(hourlyUsdTokensTvl, protocolData.id),
     getLatestProtocolItem(hourlyTokensTvl, protocolData.id),
   ]);
-  console.timeEnd("craftProtocolV2" + protocolData.name)
+  const debug_dbTime = performance.now() - debug_t0
 
-  sdk.log(protocolData.name, useHourlyData, historicalUsdTvl.length, historicalTokenTvl.length, historicalUsdTokenTvl.length)
 
   let response: IProtocolResponse = {
     ...restProtocolData,
@@ -204,6 +204,10 @@ export default async function craftProtocolV2({
     response.hallmarks = hallmarks;
     response.hallmarks?.sort((a, b) => a[0] - b[0]);
   }
+
+  // const debug_formTime = performance.now() - debug_t0 - debug_dbTime
+  const debug_totalTime = performance.now() - debug_t0
+  sdk.log(`${protocolData.name} | ${useHourlyData ? 'hourly' : 'daily'} | tvl: ${historicalTokenTvl.length} | tokens: ${historicalTokenTvl.length} | tokensUsd: ${historicalTokenTvl.length} | time (all): ${debug_totalTime.toFixed(2)}ms | time(db) ${debug_dbTime.toFixed(2)}ms`)
 
   return response;
 }

@@ -10,7 +10,14 @@ const webserver = new HyperExpress.Server()
 
 const port = +(process.env.PORT ?? 5001)
 
-async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, dataType: string) {
+type GetProtocolishOptions = {
+  dataType: string,
+  useHourlyData?: boolean,
+  skipAggregatedTvl?: boolean,
+  useNewChainNames?: boolean,
+}
+
+async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true }: GetProtocolishOptions) {
   try {
     let name = sluggify({ name: req.path_parameters.name } as any)
     const protocolData = (cache as any)[dataType + 'SlugMap'][name];
@@ -21,8 +28,8 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
       if (parentProtocol) {
         const responseData = await craftParentProtocolV2({
           parentProtocol: parentProtocol,
-          useHourlyData: false,
-          skipAggregatedTvl: false,
+          useHourlyData,
+          skipAggregatedTvl,
         });
         return res.json(responseData);
       }
@@ -34,9 +41,9 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
     }
     const responseData = await craftProtocolV2({
       protocolData,
-      useNewChainNames: true,
-      useHourlyData: false,
-      skipAggregatedTvl: dataType !== 'protocol',
+      useNewChainNames,
+      useHourlyData,
+      skipAggregatedTvl,
     });
     return res.json(responseData);
   } catch (e) {
@@ -46,9 +53,11 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   }
 }
 
-webserver.get("/protocol/:name", async (req, res) => getProtocolishData(req, res, 'protocol'));
-webserver.get("/treasury/:name", async (req, res) => getProtocolishData(req, res, 'treasury'));
-webserver.get("/entity/:name", async (req, res) => getProtocolishData(req, res, 'entities'));
+webserver.get("/protocol/:name", async (req, res) => getProtocolishData(req, res, { dataType: 'protocol', skipAggregatedTvl: false, useNewChainNames: false, }));
+webserver.get("/treasury/:name", async (req, res) => getProtocolishData(req, res, { dataType: 'treasury' }));
+webserver.get("/entity/:name", async (req, res) => getProtocolishData(req, res, { dataType: 'entities' }));
+webserver.get("/updatedProtocol/:name", async (req, res) => getProtocolishData(req, res, { dataType: 'protocol', useHourlyData: true, skipAggregatedTvl: req.query_parameters.includeAggregatedTvl !== 'true' }));
+webserver.get("/hourly/:name", async (req, res) => getProtocolishData(req, res, { dataType: 'protocol', useHourlyData: true, skipAggregatedTvl: false }));
 
 async function main() {
   await initializeTVLCacheDB()

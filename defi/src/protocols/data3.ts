@@ -22537,6 +22537,27 @@ const data3: Protocol[] = [
     ],
     listedAt: 1698603343
   },
+  {
+    id: "3712",
+    name: "Spirit Farm",
+    address: "base:0xC7A148Ad554826b5308E100a05Fdb037DDa0bDe4",
+    symbol: "SPIRIT",
+    url: "https://www.spiritfarm.app",
+    description: "Spirit Farm a new ecosystem of yield opportunities on Base Chain.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/spirit-farm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    oracles: [],
+    module: "spiritfarm/index.js",
+    twitter: "spiritfarmapp",
+    forkedFrom: [],
+    listedAt: 1698620679
+  },
 ]
 
 export default data3

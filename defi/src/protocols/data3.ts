@@ -16519,7 +16519,7 @@ const data3: Protocol[] = [
     description: "The first true AI meme token, combining Blockchain, Ai & DAO's. Power to teh people & not our AI overlords.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bad-idea-ai.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "bad-idea-ai",
     cmcId: "25479",
@@ -16530,6 +16530,7 @@ const data3: Protocol[] = [
     treasury: "badidea.js",
     twitter: "badideaai",
     forkedFrom: [],
+    audit_links: ["https://github.com/MrLightspeed/Bad-Idea-AI/blob/5fccc0cb709bae8f8306fe02995da6ff3ea3ed7e/Bad%20Idea%20AI%20Certik%20Audit.pdf"],
     listedAt: 1693049145
   },
   {

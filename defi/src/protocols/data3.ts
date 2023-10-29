@@ -22510,6 +22510,32 @@ const data3: Protocol[] = [
     parentProtocol: "parent#algebra",
     listedAt: 1698582539
   },
+  {
+    id: "3711",
+    name: "Volo",
+    address: null,
+    symbol: "-",
+    assetToken: "vSUI",
+    url: "https://www.volo.fi/",
+    description: "Volo is a decentralized liquid staking platform dedicated to offering vSUI as a fully decentralized LST for SUI and supporting the ecosystem's growth with LSDFi yield strategies",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/volo.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Sui"],
+    oracles: [],
+    module: "volo-vsui/index.js",
+    twitter: "volo_sui",
+    forkedFrom: [],
+    audit_links: [
+      "https://hacken.io/audits/volo/",
+      "https://movebit.xyz/reports/Volo-Smart-Contract-Audit-Report.pdf"
+    ],
+    listedAt: 1698603343
+  },
 ]
 
 export default data3

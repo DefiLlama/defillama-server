@@ -25,10 +25,10 @@ export default async function craftProtocolV2({
   skipAggregatedTvl: boolean;
 }) {
   const { misrepresentedTokens = false, hallmarks, methodology, ...restProtocolData } = protocolData as any
-  
+
   const debug_t0 = performance.now(); // start the timer
 
-  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
+  let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
     getAllProtocolItems(useHourlyData ? hourlyTvl : dailyTvl, protocolData.id),
     getAllProtocolItems(useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl, protocolData.id),
     getAllProtocolItems(useHourlyData ? hourlyTokensTvl : dailyTokensTvl, protocolData.id),
@@ -97,6 +97,13 @@ export default async function craftProtocolV2({
     }
   }); */
 
+  if (!lastUsdHourlyRecord)
+    lastUsdHourlyRecord = historicalUsdTvl[historicalUsdTvl.length - 1]
+  if (!lastUsdTokenHourlyRecord)
+    lastUsdTokenHourlyRecord = historicalUsdTokenTvl[historicalUsdTokenTvl.length - 1]
+  if (!lastTokenHourlyRecord)
+    lastTokenHourlyRecord = historicalTokenTvl[historicalTokenTvl.length - 1]
+
   if (!useHourlyData) {
     // check for falsy values and push lastHourlyRecord to dataset
     lastUsdHourlyRecord &&
@@ -109,7 +116,6 @@ export default async function craftProtocolV2({
       lastTokenHourlyRecord.SK !== historicalTokenTvl[historicalTokenTvl.length - 1]?.SK &&
       historicalTokenTvl.push(lastTokenHourlyRecord);
   }
-
 
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]: [string, any]) => {
     if (nonChains.includes(chain) && chain !== "tvl") {

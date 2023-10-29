@@ -59,7 +59,7 @@ async function updateMetadata() {
     }
   })
   data.entities.forEach((p: any) => {
-    cache.entitiesSlugMap['entity-'+sluggify(p)] = p
+    cache.entitiesSlugMap[sluggify(p)] = p
   })
   data.treasuries.forEach((p: any) => {
     cache.treasurySlugMap[sluggify(p).replace("-(treasury)", '')] = p

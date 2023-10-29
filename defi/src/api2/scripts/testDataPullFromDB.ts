@@ -5,23 +5,14 @@ import craftProtocolV2 from '../utils/craftProtocolV2'
 import PromisePool from '@supercharge/promise-pool'
 
 async function main() {
-  console.time('initCache')
-  await initCache()
-  console.timeEnd('initCache')
 
   console.time('initializeTVLCacheDB')
   await initializeTVLCacheDB()
   console.timeEnd('initializeTVLCacheDB')
-
-/*   console.time('getAllProtocolItems')
-  const items = await getAllProtocolItems(TABLES.DAILY_TVL, '2245')
-  console.timeEnd('getAllProtocolItems')
-
-  console.time('getLatestProtocolItem')
-  const item = await getLatestProtocolItem(TABLES.DAILY_TVL, '2245')
-  console.timeEnd('getLatestProtocolItem')
-
-  console.log(items.length) */
+  
+  console.time('initCache')
+  await initCache()
+  console.timeEnd('initCache')
 
   const res = await craftProtocolV2({
     protocolData: cache.protocolSlugMap['starfish-finance'],

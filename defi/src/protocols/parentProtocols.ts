@@ -3025,6 +3025,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AptinLabs",
   },
+  {
+    id: "parent#algebra",
+    name: "Algebra",
+    url: "https://algebra.finance/",
+    description: "Providing DEXs with the best concentrated liquidity solutions. Increase both capital efficiency & user convenience of your project effortlessly.",
+    logo: `${baseIconsUrl}/algebra.jpg`,
+    gecko_id: "algebra",
+    cmcId: "13211",
+    chains: [],
+    github: ["cryptoalgebra"],
+    twitter: "CryptoAlgebra",
+  },
 ];
 
 export default parentProtocols;

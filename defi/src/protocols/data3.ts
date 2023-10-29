@@ -22488,6 +22488,28 @@ const data3: Protocol[] = [
     forkedFrom: ["friend.tech"],
     listedAt: 1698517487
   },
+  {
+    id: "3710",
+    name: "Algebra Integral",
+    address: "polygon:0x0169ec1f8f639b32eec6d923e24c2a2ff45b9dd6",
+    symbol: "ALGB",
+    url: "https://app.algebra.finance",
+    description: "Algebra is the next-generation decentralized exchange supporting concentrated liquidity built on Polygon Network. Algebra goal is to create AMM for the main blockchains. Algebra introduces unique DEX features like Adaptive fees, Built-in farming, and Deflationary tokens support. Algebra’s team is formed by experienced managers who have already launched successful projects: MyWish, a smart contract builder supporting 9 blockchains, and Rubic, a multi-chain swap protocol.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/algebra-integral.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon"],
+    oracles: [],
+    module: "dummy.js",
+    twitter: "CryptoAlgebra",
+    forkedFrom: [],
+    parentProtocol: "parent#algebra",
+    listedAt: 1698582539
+  },
 ]
 
 export default data3

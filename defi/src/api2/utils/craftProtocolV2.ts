@@ -214,7 +214,7 @@ export default async function craftProtocolV2({
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime
   const debug_totalTime = performance.now() - debug_t0
-  sdk.log(`${protocolData.name} | ${useHourlyData ? 'hourly' : 'daily'} | tvl: ${historicalTokenTvl.length} | tokens: ${historicalTokenTvl.length} | tokensUsd: ${historicalTokenTvl.length} | time (all): ${(debug_totalTime / 1e3).toFixed(3)}s | time(db) ${(debug_dbTime / 1e3).toFixed(3)}ms`)
+  sdk.log(`${protocolData.name} |${useHourlyData ? 'h' : 'd'}|#: ${historicalTokenTvl.length} ${historicalTokenTvl.length} ${historicalTokenTvl.length} | T(all): ${(debug_totalTime / 1e3).toFixed(3)}s | T(db) ${(debug_dbTime / 1e3).toFixed(3)}s`)
 
   return response;
 }

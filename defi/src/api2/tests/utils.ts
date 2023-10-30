@@ -18,6 +18,14 @@ export function getRandomItems(array: any[], count: number) {
   return shuffled.slice(0, count);
 }
 
+export function getTests(items: any[], fnKey: string, title: string) {
+  const testCount = 10
+  jest.setTimeout(1000000);
+  for (const protocol of getRandomItems(items, testCount))
+    describe(title + ' ' + protocol, () =>
+      test.concurrent('Test', getProtoTestFunction(protocol, fnKey)))
+}
+
 export function getProtoTestFunction(protocol: any, fnKey: string) {
   return async () => {
     // const resV1 = await axios.get(endPointFn(protocol))

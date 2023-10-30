@@ -20,6 +20,8 @@ export const cache: {
   entitiesSlugMap: any,
   parentProtocolSlugMap: any,
   childProtocols: any,
+  protocolRes: any,
+  parentProtocolRes: any,
 } = {
   metadata: {
     protocols: [],
@@ -34,6 +36,8 @@ export const cache: {
   entitiesSlugMap: {},
   parentProtocolSlugMap: {},
   childProtocols: {},
+  protocolRes: {},
+  parentProtocolRes: {},
 }
 
 export async function initCache() {
@@ -109,8 +113,28 @@ export async function getCachedMCap(geckoId: string | null) {
   return cache.mcaps[geckoId]
 }
 
-const HOUR = 1000 * 60 * 60
+export function getCacheByCacheKey(key: string, id: string) {
+  return (cache as any)[key][id];
+}
+
+export function setCacheByCacheKey(key: string, id: string, data: any) {
+  (cache as any)[key][id] = data
+}
+
+export const CACHE_KEYS = {
+  PROTOCOL: 'protocolRes',
+  PARENT_PROTOCOL: 'parentProtocolRes',
+}
+
+function clearProtocolCache() {
+  cache.protocolRes = {};
+  cache.parentProtocolRes = {};
+}
+
+const MINUTE = 1000 * 60
+const HOUR = MINUTE * 60
 
 setInterval(updateRaises, HOUR * 24)
-setInterval(updateMetadata, HOUR / 4)
-setInterval(clearMCap, HOUR * 2)
+setInterval(updateMetadata, MINUTE * 15)
+setInterval(clearMCap, MINUTE * 30)
+setInterval(clearProtocolCache, MINUTE * 5)

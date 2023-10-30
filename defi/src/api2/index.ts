@@ -1,8 +1,8 @@
 import * as HyperExpress from "hyper-express";
 import { cache, initCache } from "./cache";
 import sluggify from "../utils/sluggify";
-import craftProtocolV2 from "./utils/craftProtocolV2";
-import craftParentProtocolV2 from "./utils/craftParentProtocolV2";
+import { cachedCraftProtocolV2 } from "./utils/craftProtocolV2";
+import { cachedCraftParentProtocolV2 } from "./utils/craftParentProtocolV2";
 import { initializeTVLCacheDB } from "./db";
 import * as sdk from '@defillama/sdk'
 
@@ -26,7 +26,7 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
     if (!protocolData && dataType === 'protocol') {
       const parentProtocol = (cache as any)['parentProtocolSlugMap'][name];
       if (parentProtocol) {
-        const responseData = await craftParentProtocolV2({
+        const responseData = await cachedCraftParentProtocolV2({
           parentProtocol: parentProtocol,
           useHourlyData,
           skipAggregatedTvl,
@@ -39,7 +39,7 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
       res.status(404)
       return res.send('Not found', true)
     }
-    const responseData = await craftProtocolV2({
+    const responseData = await cachedCraftProtocolV2({
       protocolData,
       useNewChainNames,
       useHourlyData,

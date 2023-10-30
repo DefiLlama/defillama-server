@@ -4,26 +4,27 @@ import { nonChains, getChainDisplayName, transformNewChainName, addToChains } fr
 import type { IProtocolResponse, } from "../../types";
 import parentProtocols from "../../protocols/parentProtocols";
 import { getAvailableMetricsById } from "../../adaptors/data/configs";
-import { getRaises, getCachedMCap } from "../cache";
-import { TABLES, getAllProtocolItems, getLatestProtocolItem } from "../db/index";
+import { getRaises, getCachedMCap, CACHE_KEYS, getCacheByCacheKey, setCacheByCacheKey, } from "../cache";
+import { getAllProtocolItems, getLatestProtocolItem, } from "../db/index";
 import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
 import {
   dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl,
 } from "../../utils/getLastRecord"
 import * as sdk from '@defillama/sdk'
 
+type CraftProtocolV2Options = {
+  protocolData: Protocol;
+  useNewChainNames: boolean;
+  useHourlyData: boolean;
+  skipAggregatedTvl: boolean;
+}
 
 export default async function craftProtocolV2({
   protocolData,
   useNewChainNames,
   useHourlyData,
   skipAggregatedTvl,
-}: {
-  protocolData: Protocol;
-  useNewChainNames: boolean;
-  useHourlyData: boolean;
-  skipAggregatedTvl: boolean;
-}) {
+}: CraftProtocolV2Options) {
   const { misrepresentedTokens = false, hallmarks, methodology, ...restProtocolData } = protocolData as any
 
   const debug_t0 = performance.now(); // start the timer
@@ -213,7 +214,16 @@ export default async function craftProtocolV2({
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime
   const debug_totalTime = performance.now() - debug_t0
-  sdk.log(`${protocolData.name} | ${useHourlyData ? 'hourly' : 'daily'} | tvl: ${historicalTokenTvl.length} | tokens: ${historicalTokenTvl.length} | tokensUsd: ${historicalTokenTvl.length} | time (all): ${debug_totalTime.toFixed(2)}ms | time(db) ${debug_dbTime.toFixed(2)}ms`)
+  sdk.log(`${protocolData.name} | ${useHourlyData ? 'hourly' : 'daily'} | tvl: ${historicalTokenTvl.length} | tokens: ${historicalTokenTvl.length} | tokensUsd: ${historicalTokenTvl.length} | time (all): ${(debug_totalTime / 1e3).toFixed(3)}s | time(db) ${(debug_dbTime / 1e3).toFixed(3)}ms`)
 
   return response;
+}
+
+export async function cachedCraftProtocolV2(options: CraftProtocolV2Options) {
+  const id = `${options.protocolData.id}-${options.useHourlyData ? 'hourly' : 'daily'}-${options.skipAggregatedTvl ? 'noAgg' : 'agg'}-${options.useNewChainNames ? 'new' : 'old'}`
+  let res = getCacheByCacheKey(CACHE_KEYS.PROTOCOL, id)
+  if (res) return res
+  res = craftProtocolV2(options)
+  setCacheByCacheKey(CACHE_KEYS.PROTOCOL, id, res)
+  return res
 }

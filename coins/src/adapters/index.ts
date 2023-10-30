@@ -137,6 +137,7 @@ export default {
   zkSwap: require("./markets/uniswap"),
   chai: require("./yield/chai"),
   ondo: require("./rwa/ondo"),
+  hashnote: require("./rwa/hashnote"),
   mooBvm: require("./other"),
   mux: require("./yield/mux"),
 };

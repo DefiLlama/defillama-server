@@ -22582,7 +22582,7 @@ const data3: Protocol[] = [
     listedAt: 1698667058
   },
   {
-    id: "3712",
+    id: "3714",
     name: "SharkSwap DEX",
     address: null,
     symbol: "-",

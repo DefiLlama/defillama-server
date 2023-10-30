@@ -8178,6 +8178,11 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#ethereum"
+    },
+    "0x5bE26527e817998A7206475496fDE1E68957c5A6": {
+      "decimals": "18",
+      "symbol": "USDY",
+      "to": "ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c"
     }
   },
   "linea": {

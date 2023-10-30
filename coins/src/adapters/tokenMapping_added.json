@@ -2568,6 +2568,36 @@
       "decimals": "18",
       "symbol": "WTLOS",
       "to": "telos:0x0000000000000000000000000000000000000000"
+    },
+    "0x8d97cea50351fb4329d591682b148d43a0c3611b": {
+      "name": "USD Coin",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x975ed13fa16857e83e7c493c7741d556eaad4a3f": {
+      "name": "Tether USD",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xa0fb8cd450c8fd3a11901876cd5f17eb47c6bc50": {
+      "name": "Ether",
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x26ed0f16e777c94a6fe798f9e20298034930bae8": {
+      "name": "BNB",
+      "decimals": "18",
+      "symbol": "BNB",
+      "to": "coingecko#binancecoin"
+    },
+    "0x7627b27594bc71e6ab0fce755ae8931eb1e12dac": {
+      "name": "Bitcoin",
+      "decimals": "8",
+      "symbol": "BTC.b",
+      "to": "coingecko#bitcoin"
     }
   },
   "solana": {

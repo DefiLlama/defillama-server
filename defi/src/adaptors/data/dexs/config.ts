@@ -2112,5 +2112,9 @@ export default {
     "candyswap": {
         "enabled": true,
         "id": "3682"
+    },
+    "luigiswap": {
+        "enabled": true,
+        "id": "3415"
     }
 } as AdaptorsConfig

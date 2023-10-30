@@ -3215,12 +3215,6 @@
       "symbol": "wstUSDT",
       "to": "coingecko#wrapped-staked-usdt"
     },
-    "0x0000000000000000000000000000000000000000": {
-      "name": "tron",
-      "decimals": "6",
-      "symbol": "TRX",
-      "to": "coingecko#tron"
-    },
     "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t": {
       "name": "tether",
       "decimals": "6",
@@ -4242,12 +4236,6 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     },
-    "0x06864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS": {
-      "name": "Cetus",
-      "decimals": "9",
-      "symbol": "CETUS",
-      "to": "coingecko#cetus"
-    },
     "0xe4239cd951f6c53d9c41e25270d80d31f925ad1655e5ba5b543843d4a66975ee::SUIP::SUIP": {
       "name": "SuiPad",
       "decimals": "9",
@@ -4263,11 +4251,6 @@
       "decimals": "6",
       "symbol": "CELER_USDC_COIN",
       "to": "coingecko#usd-coin"
-    },
-    "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdt_coin::CELER_USDT_COIN": {
-      "decimals": "6",
-      "symbol": "CELER_USDT_COIN",
-      "to": "coingecko:tether"
     },
     "0xdbe380b13a6d0f5cdedd58de8f04625263f113b3f9db32b3e1983f49e2841676::coin::COIN": {
       "decimals": "8",

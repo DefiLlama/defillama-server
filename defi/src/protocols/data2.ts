@@ -9984,13 +9984,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1824",
-    name: "Swapsicle",
+    name: "Swapsicle V1",
     address: "avax:0x240248628B7B6850352764C5dFa50D1592A033A8",
     symbol: "POPS",
     url: "https://swapsicle.io",
     description: "Swapsicle is a decentralised exchange built on the avalanche blockchain offering swaps, farming and staking opportunities.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/swapsicle.png`,
+    logo: `${baseIconsUrl}/swapsicle-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "swapsicle-pops",
@@ -10002,8 +10002,8 @@ const data2: Protocol[] = [
     module: "swapsicle/index.js",
     twitter: "SwapsicIeDEX",
     audit_links: ["https://www.certik.com/projects/swapsicle"],
+    parentProtocol: "parent#swapsicle",
     listedAt: 1655221773,
-    github: ["swapsicledex"]
   },
   {
     id: "1825",

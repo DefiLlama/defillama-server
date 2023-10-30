@@ -6497,6 +6497,7 @@ const data3: Protocol[] = [
     name: "NodeDAO",
     address: null,
     symbol: "-",
+    assetToken: "nETH",
     url: "https://www.nodedao.com",
     description:
       "Experience the ease of staking on Ethereum 2.0 through NodeDAO's liquid staking service.",

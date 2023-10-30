@@ -22645,6 +22645,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#swapsicle",
     listedAt: 1698671319
   },
+  {
+    id: "3717",
+    name: "Rivera Money",
+    address: null,
+    symbol: "-",
+    url: "https://rivera.money",
+    description: "Rivera Money is a permissionless liquidity management protocol that transforms concentrated positions into DeFi-composable yield tokens.",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/rivera-money.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Mantle", "Manta"],
+    oracles: [],
+    module: "rivera_money/index.js",
+    twitter: "Rivera_Money_",
+    forkedFrom: [],
+    audit_links: ["https://4021155802-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FLpn0ro0rTFSY7pLROElj%2Fuploads%2FJVxJuuhKySaFxumakZMo%2FRiveraMoney_Audit_Report.pdf?alt=media&token=50ad231b-91b1-49d5-86dc-d861eaf9fb30"],
+    listedAt: 1698679600
+  },
 ]
 
 export default data3

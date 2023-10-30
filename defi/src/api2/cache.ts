@@ -117,8 +117,28 @@ export function getCacheByCacheKey(key: string, id: string) {
   return (cache as any)[key][id];
 }
 
+export function deleteCacheByCacheKey(key: string, id: string) {
+  delete (cache as any)[key][id];
+}
+
 export function setCacheByCacheKey(key: string, id: string, data: any) {
   (cache as any)[key][id] = data
+}
+
+export async function cacheAndRespond({ key, id, origFunction, args }: { key: string, id: string, origFunction: any, args: any[] }) {
+  let res = getCacheByCacheKey(key, id)
+  if (res) return res
+  res = origFunction(...args)
+  setCacheByCacheKey(key, id, res)
+
+  // remove from cache if response is error
+  try {
+    const _response = await res
+    return _response
+  } catch (e) {
+    deleteCacheByCacheKey(key, id)
+    throw e
+  }
 }
 
 export const CACHE_KEYS = {

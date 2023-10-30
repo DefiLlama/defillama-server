@@ -21,9 +21,21 @@ export function getRandomItems(array: any[], count: number) {
 export function getTests(items: any[], fnKey: string, title: string) {
   const testCount = 10
   jest.setTimeout(1000000);
-  for (const protocol of getRandomItems(items, testCount))
+  items = getRandomItems(items, testCount)
+  test(title, async () => {
+    await Promise.all(items.map(async (protocol) => {
+      const resV2 = await axios.get(fnMap[fnKey](protocol, true))
+      expect(resV2.status).toBe(200);
+      const data = resV2.data
+      expect(data).toHaveProperty('chains')
+      expect(data).toHaveProperty('id')
+      expect(data).toHaveProperty('name')
+    }))
+  })
+
+  /* for (const protocol of items)
     describe(title + ' ' + protocol, () =>
-      test.concurrent('Test', getProtoTestFunction(protocol, fnKey)))
+      test.concurrent('Test', getProtoTestFunction(protocol, fnKey))) */
 }
 
 export function getProtoTestFunction(protocol: any, fnKey: string) {

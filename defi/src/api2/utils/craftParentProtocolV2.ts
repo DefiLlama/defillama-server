@@ -2,7 +2,7 @@ import type { IParentProtocol } from "../../protocols/types";
 import { errorResponse } from "../../utils/shared";
 import { IProtocolResponse, } from "../../types";
 import { craftParentProtocolInternal } from "../../utils/craftParentProtocol";
-import { cache, getCachedMCap, CACHE_KEYS, getCacheByCacheKey, setCacheByCacheKey, } from "../cache";
+import { cache, getCachedMCap, CACHE_KEYS, cacheAndRespond, } from "../cache";
 import { cachedCraftProtocolV2 } from './craftProtocolV2'
 import * as sdk from '@defillama/sdk'
 
@@ -36,17 +36,16 @@ export default async function craftParentProtocol({
     tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
 
   const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap })
-  
+
   const debug_totalTime = performance.now() - debug_t0
   const debug_dbTime = debug_t1 - debug_t0
   sdk.log(`${parentProtocol.name} |${useHourlyData ? 'h' : 'd'} | T(all): ${(debug_totalTime / 1e3).toFixed(3)}s | T(child) ${(debug_dbTime / 1e3).toFixed(3)}s`)
-  
+
   return res
 }
 
 export async function cachedCraftParentProtocolV2(options: CraftParentProtocolV2Options) {
   const id = `${options.parentProtocol.id}-${options.useHourlyData ? 'hourly' : 'daily'}-${options.skipAggregatedTvl ? 'noAgg' : 'agg'}`
-  if (!getCacheByCacheKey(CACHE_KEYS.PARENT_PROTOCOL, id))
-    setCacheByCacheKey(CACHE_KEYS.PARENT_PROTOCOL, id, craftParentProtocol(options))
-  return getCacheByCacheKey(CACHE_KEYS.PARENT_PROTOCOL, id)
+  const CACHE_KEY = CACHE_KEYS.PARENT_PROTOCOL
+  return cacheAndRespond({ key: CACHE_KEY, id, origFunction: craftParentProtocol, args: [options] })
 }

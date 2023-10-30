@@ -4,7 +4,7 @@ import { nonChains, getChainDisplayName, transformNewChainName, addToChains } fr
 import type { IProtocolResponse, } from "../../types";
 import parentProtocols from "../../protocols/parentProtocols";
 import { getAvailableMetricsById } from "../../adaptors/data/configs";
-import { getRaises, getCachedMCap, CACHE_KEYS, getCacheByCacheKey, setCacheByCacheKey, } from "../cache";
+import { getRaises, getCachedMCap, CACHE_KEYS, cacheAndRespond, } from "../cache";
 import { getAllProtocolItems, getLatestProtocolItem, } from "../db/index";
 import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
 import {
@@ -221,9 +221,6 @@ export default async function craftProtocolV2({
 
 export async function cachedCraftProtocolV2(options: CraftProtocolV2Options) {
   const id = `${options.protocolData.id}-${options.useHourlyData ? 'hourly' : 'daily'}-${options.skipAggregatedTvl ? 'noAgg' : 'agg'}-${options.useNewChainNames ? 'new' : 'old'}`
-  let res = getCacheByCacheKey(CACHE_KEYS.PROTOCOL, id)
-  if (res) return res
-  res = craftProtocolV2(options)
-  setCacheByCacheKey(CACHE_KEYS.PROTOCOL, id, res)
-  return res
+  const CACHE_KEY = CACHE_KEYS.PROTOCOL
+  return cacheAndRespond({ key: CACHE_KEY, id, origFunction: craftProtocolV2, args: [options] })
 }

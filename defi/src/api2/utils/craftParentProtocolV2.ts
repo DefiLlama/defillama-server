@@ -3,7 +3,7 @@ import { errorResponse } from "../../utils/shared";
 import { IProtocolResponse, } from "../../types";
 import { craftParentProtocolInternal } from "../../utils/craftParentProtocol";
 import { cache, getCachedMCap, CACHE_KEYS, getCacheByCacheKey, setCacheByCacheKey, } from "../cache";
-import craftProtocolV2 from './craftProtocolV2'
+import { cachedCraftProtocolV2 } from './craftProtocolV2'
 
 type CraftParentProtocolV2Options = {
   parentProtocol: IParentProtocol;
@@ -24,7 +24,7 @@ export default async function craftParentProtocol({
     });
   }
 
-  const getProtocolData = (protocolData: any) => craftProtocolV2({ protocolData, useNewChainNames: true, useHourlyData, skipAggregatedTvl: false, })
+  const getProtocolData = (protocolData: any) => cachedCraftProtocolV2({ protocolData, useNewChainNames: true, useHourlyData, skipAggregatedTvl: false, })
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(childProtocols.map(getProtocolData));
 

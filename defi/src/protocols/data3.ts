@@ -22623,6 +22623,28 @@ const data3: Protocol[] = [
     forkedFrom: ["GMX V1"],
     listedAt: 1698668474
   },
+  {
+    id: "3716",
+    name: "Swapsicle V2",
+    address: "mantle:0x8309Bc8BB43fB54dB02DA7d8bf87192355532829",
+    symbol: "SLUSH",
+    url: "https://www.swapsicle.io",
+    description: "Swapsicle is more than a DEX. Swapsicle features a dual token economy, single sided staking, utility NFTs, perpetuals trading, and much more. SLUSH is our native liquid token used for minting NFT’s and market trading. ICE is our farm reward token utilized inside our suite of products to earn additional real yield for users.",
+    chain: "Telos",
+    logo: `${baseIconsUrl}/swapsicle-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Telos", "Mantle"],
+    oracles: [],
+    module: "swapsicle-v2/index.js",
+    twitter: "SwapsicleDEX",
+    forkedFrom: ["Algebra Integral"],
+    parentProtocol: "parent#swapsicle",
+    listedAt: 1698671319
+  },
 ]
 
 export default data3

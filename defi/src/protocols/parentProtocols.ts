@@ -3037,6 +3037,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["cryptoalgebra"],
     twitter: "CryptoAlgebra",
   },
+  {
+    id: "parent#swapsicle",
+    name: "Swapsicle",
+    url: "https://www.swapsicle.io",
+    description: "Swapsicle is more than a DEX. Swapsicle features a dual token economy, single sided staking, utility NFTs, perpetuals trading, and much more. SLUSH is our native liquid token used for minting NFT’s and market trading. ICE is our farm reward token utilized inside our suite of products to earn additional real yield for users.",
+    logo: `${baseIconsUrl}/swapsicle.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["swapsicledex"],
+    twitter: "SwapsicleDEX",
+  },
 ];
 
 export default parentProtocols;

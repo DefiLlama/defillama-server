@@ -22602,6 +22602,27 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     listedAt: 1698667069
   },
+  {
+    id: "3715",
+    name: "Realperp",
+    address: "manta:0x9576ca6D15E7CcCe184fA7523085d21A554B1b52",
+    symbol: "RAP",
+    url: "https://realperp.com",
+    description: "Trade spot or perpetual BTC, ETH and other top cryptocurrencies with up to 50x leverage directly from your wallet on Manta Pacific.",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/realperp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Manta"],
+    oracles: [],
+    module: "realperp/index.js",
+    twitter: "Realperp_com",
+    forkedFrom: ["GMX V1"],
+    listedAt: 1698668474
+  },
 ]
 
 export default data3

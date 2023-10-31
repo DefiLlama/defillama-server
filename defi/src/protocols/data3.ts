@@ -22712,6 +22712,48 @@ const data3: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/solidus-ai-tech"],
     listedAt: 1698748399
   },
+  {
+    id: "3720",
+    name: "Spooky Base",
+    address: "base:0xd63EBbE933f422Bf8BC6F909FA27E467b537ca81",
+    symbol: "SPOOKY",
+    url: "https://www.spookybase.io",
+    description: "SpookyBase a new emerging DEX has landed on Base. At Spooky Base we ensure platform security and website speed as well as excellent returns thanks to our farms & pools on Spooky Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/spooky-base.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "spookybase/index.js",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    twitter: "SpookyBase",
+    listedAt: 1698750092
+  },
+  {
+    id: "3721",
+    name: "Perseid Finance",
+    address: "scroll:0xfeC65bFB6e5BbCC9ab8aE98f62A8AaB2EA51c495",
+    symbol: "PED",
+    url: "https://www.perseid.finance",
+    description: "Perseid Finance is a cutting-edge leveraged farming protocol that revolutionizes the world of decentralized finance (DeFi). With Perseid, users can amplify their earning potential by utilizing leverage to maximize their returns on farming strategies.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/perseid-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Scroll"],
+    module: "perseid-finance/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "perseidfi",
+    listedAt: 1698750099
+  },
 ]
 
 export default data3

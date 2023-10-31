@@ -17754,7 +17754,7 @@ const data3: Protocol[] = [
     category: "Options",
     chains: ["Arbitrum"],
     module: "premia-v3/index.js",
-    oracles: [],
+    oracles: ["RedStone"],
     forkedFrom: [],
     twitter: "PremiaFinance",
     parentProtocol: "parent#premia",

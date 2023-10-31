@@ -22754,6 +22754,30 @@ const data3: Protocol[] = [
     twitter: "perseidfi",
     listedAt: 1698750099
   },
+  {
+    id: "3722",
+    name: "Hipo",
+    address: null,
+    symbol: "-",
+    assetToken: "hTON",
+    url: "https://hipo.finance",
+    description: "Hipo is a decentralized liquid staking protocol on TON.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/hipo.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["TON"],
+    module: "perseid-finance/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "hipofinance",
+    audit_links: ["https://github.com/HipoFinance/audits#2023-10-tontech-hipo-audit-report", "https://github.com/HipoFinance/audits#2023-10-daniil-sedov-hipo-audit-report"],
+    github: ["HipoFinance"],
+    listedAt: 1698766792
+  },
 ]
 
 export default data3

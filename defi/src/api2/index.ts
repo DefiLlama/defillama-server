@@ -5,6 +5,7 @@ import { cachedCraftProtocolV2 } from "./utils/craftProtocolV2";
 import { cachedCraftParentProtocolV2 } from "./utils/craftParentProtocolV2";
 import { initializeTVLCacheDB } from "./db";
 import * as sdk from '@defillama/sdk'
+import { get20MinDate } from "../utils/shared";
 
 const webserver = new HyperExpress.Server()
 
@@ -21,6 +22,10 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   try {
     let name = sluggify({ name: req.path_parameters.name } as any)
     const protocolData = (cache as any)[dataType + 'SlugMap'][name];
+    res.setHeaders({
+      "Access-Control-Allow-Origin": "*",
+      "Expires": get20MinDate()
+    })
 
     // check if it is a parent protocol
     if (!protocolData && dataType === 'protocol') {

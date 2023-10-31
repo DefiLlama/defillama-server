@@ -22778,6 +22778,26 @@ const data3: Protocol[] = [
     github: ["HipoFinance"],
     listedAt: 1698766792
   },
+  {
+    id: "3723",
+    name: "PAAL AI",
+    address: "0x14fee680690900ba0cccfc76ad70fd1b95d10e16",
+    symbol: "PAAL",
+    url: "https://paalai.io",
+    description: "PAAL is an AI-powered digital companion that enhances user experiences on platforms like Discord and Telegram. Using advanced NLP, Machine Learning, and Automation, it offers personalized interactions.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/paal-ai.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "paal-ai",
+    cmcId: "27178",
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "PaalMind",
+  },
 ]
 
 export default data3

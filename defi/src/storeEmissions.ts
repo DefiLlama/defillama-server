@@ -6,7 +6,6 @@ import { createRawSections } from "../emissions-adapters/utils/convertToRawData"
 import { createCategoryData } from "../emissions-adapters/utils/categoryData";
 import adapters from "./utils/imports/emissions_adapters";
 import {
-  ApiChartData,
   ChartSection,
   EmissionBreakdown,
   Protocol,
@@ -21,6 +20,7 @@ import parentProtocols from "./protocols/parentProtocols";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
 import { withTimeout } from "./utils/shared/withTimeout";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const prefix = "coingecko:";
 
@@ -206,6 +206,7 @@ async function processProtocolList(protocolIndexes: number[]) {
   let protocolErrors: string[] = [];
   let emissionsBrakedown: EmissionBreakdown = {};
 
+  await setEnvSecrets();
   const protocolAdapters = filterAdapters(protocolIndexes);
   await PromisePool.withConcurrency(2)
     .for(shuffleArray(protocolAdapters))

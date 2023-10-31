@@ -22558,7 +22558,8 @@ const data3: Protocol[] = [
     module: "spiritfarm/index.js",
     twitter: "spiritfarmapp",
     forkedFrom: [],
-    listedAt: 1698620679
+    listedAt: 1698620679,
+    deadUrl: true,
   },
   {
     id: "3713",

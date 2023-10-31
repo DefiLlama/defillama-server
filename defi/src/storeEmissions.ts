@@ -215,7 +215,7 @@ async function processProtocolList(protocolIndexes: number[]) {
       if (!adapters.length) adapters = [adapters];
       await Promise.all(
         adapters.map((adapter: Protocol) =>
-          withTimeout(180000, processSingleProtocol(adapter, protocolName, emissionsBrakedown), protocolName)
+          withTimeout(600000, processSingleProtocol(adapter, protocolName, emissionsBrakedown), protocolName)
             .then((p: string) => protocolsArray.push(p))
             .catch((err: Error) => {
               console.log(err.message ? `${err.message}: \n storing ${protocolName}` : err);

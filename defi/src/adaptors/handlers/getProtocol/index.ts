@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse, notFoundResponse } from "../../../utils/shared";
+import { successResponse, wrap, IResponse, notFoundResponse, dayCache } from "../../../utils/shared";
 import sluggify, { sluggifyString } from "../../../utils/sluggify";
 import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, IRecordAdapterRecordChainData } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -66,18 +66,18 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     if (dexData) {
         const dexDataResponse = await getProtocolSummary(dexData, dataType, adaptorType)
         delete dexDataResponse.generatedSummary
-        return successResponse(dexDataResponse as IHandlerBodyResponse, 10 * 60); // 10 mins cache
+        return dayCache(dexDataResponse as IHandlerBodyResponse);
     }
 
     const parentData = parentProtocols.find(pp => pp.name.toLowerCase() === standardizeProtocolName(protocolName))
     if (parentData) {
         const parentResponse = await getProtocolSummaryParent(parentData, dataType, adaptorType)
-        return successResponse(parentResponse as IHandlerBodyResponse, 10 * 60); // 10 mins cache
+        return dayCache(parentResponse as IHandlerBodyResponse);
     }
 
     return notFoundResponse({
         message: `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
-    }, 10 * 60)
+    }, 60 * 60)
 };
 
 const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRecordType, adaptorType: AdapterType): Promise<IHandlerBodyResponse & { generatedSummary?: ProtocolAdaptorSummary }> => {

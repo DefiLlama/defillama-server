@@ -81,6 +81,23 @@ export function successResponse(
   });
 }
 
+export function dayCache(
+  json: IJSON,
+) {
+  const date = new Date();
+  date.setMinutes(10);
+  date.setHours(0);
+  date.setDate(date.getDate()+1)
+  return lambdaResponse({
+    body: json,
+    statusCode: 200,
+    allowCORS: true,
+    headers: {
+      "Expires": date.toUTCString()
+    },
+  });
+}
+
 // TTL must be in seconds
 export function notFoundResponse(
   json: IJSON,

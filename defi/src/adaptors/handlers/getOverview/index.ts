@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse } from "../../../utils/shared";
+import { successResponse, wrap, IResponse, dayCache } from "../../../utils/shared";
 import { getCachedResponseOnR2 } from "../../utils/storeR2Response";
 import { handler as process_handler, getOverviewCachedResponseKey, IGetOverviewResponseBody } from "../getOverviewProcess"
 import invokeLambda from "../../../utils/shared/invokeLambda";
@@ -44,7 +44,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (!enableAlerts)
         delete response.body.errors
 
-    return successResponse(response.body, 60 * 60); // 1h cache
+    return dayCache(response.body);
 };
 
 

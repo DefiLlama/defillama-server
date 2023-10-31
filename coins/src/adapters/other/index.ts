@@ -58,6 +58,15 @@ export function unknownTokens(timestamp: number = 0) {
   return Promise.all([
     unknownTokenAdapter(
       timestamp,
+      "0xe510c67dd0a54d06f04fd5af9094fe64ed605eab",
+      "0xd51bfa777609213a653a2cd067c9a0132a2d316a",
+      "0x76bf5e7d2bcb06b1444c0a2742780051d8d0e304",
+      false,
+      "beam",
+      1.01,
+    ),
+    unknownTokenAdapter(
+      timestamp,
       "0x09cabec1ead1c0ba254b09efb3ee13841712be14",
       "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
       wrappedGasTokens["ethereum"],

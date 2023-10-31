@@ -138,4 +138,5 @@ export default {
   ondo: require("./rwa/ondo"),
   mooBvm: require("./other"),
   mux: require("./yield/mux"),
+  velgd: require("./other"),
 };

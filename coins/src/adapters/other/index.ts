@@ -19,6 +19,7 @@ import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
 import mooBvmAdapter from "./mooBvmEth";
 import defiChainAdapter from "./defichain";
+import velgAdapter from "./velgd";
 
 export const shlb = shlb_;
 
@@ -291,4 +292,9 @@ export async function buck(timestamp: number = 0) {
 export async function mooBvm(timestamp: number = 0) {
   console.log("starting moo bvm eth");
   return mooBvmAdapter(timestamp);
+}
+
+export async function velgd(timestamp: number = 0) {
+  console.log("starting velgd");
+  return velgAdapter(timestamp);
 }

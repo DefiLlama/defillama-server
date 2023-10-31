@@ -1486,5 +1486,9 @@ export default {
     "concentrator": {
         "enabled": true,
         "id": "1544"
+    },
+    "touch.fan": {
+        "enabled": true,
+        "id": "3713"
     }
 } as AdaptorsConfig

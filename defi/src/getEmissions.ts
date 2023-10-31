@@ -1,9 +1,10 @@
 import { getR2 } from "./utils/r2";
-import { wrap, IResponse, successResponse } from "./utils/shared";
+import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared";
 
 const handler = async (_event: any): Promise<IResponse> => {
   const data = await getR2(`emissionsIndex`);
-  return successResponse(data, 10 ** 60);
+  if (data && data.body) return successResponse(JSON.parse(data.body).data, 10 ** 60);
+  else return errorResponse({ message: "could not get/parse emissionsIndex" });
 };
 
 export default wrap(handler);

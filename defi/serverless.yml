@@ -370,7 +370,7 @@ functions:
       AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
   oracles:
     handler: src/getOracles.default
-    timeout: 30
+    timeout: 60
     memorySize: 2000
     events:
       - http:

@@ -731,6 +731,15 @@ functions:
       COINGLASS_KEY: ${env:COINGLASS_KEY}
       UNLOCKS_WEBHOOK: ${env:UNLOCKS_WEBHOOK}
       APIKEY: ${env:APIKEY}
+  storeEmissionsIndex: 
+    handler: src/storeEmissionsIndex.default
+    timeout: 900
+    memorySize: 3000
+    environment:
+      APIKEY: ${env:APIKEY}
+      UNLOCKS_WEBHOOK: ${env:UNLOCKS_WEBHOOK}
+    events:
+      - schedule: cron(15 * * * ? *)
   storeGovernance:
     handler: src/storeGovernance.default
     timeout: 900

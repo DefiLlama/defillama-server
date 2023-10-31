@@ -26101,7 +26101,7 @@ const data2: Protocol[] = [
     twitter: "TheTNetwork",
     oracles: [],
     forkedFrom: [],
-    audit_links: ["https://leastauthority.com/blog/audits/audit-of-keep-network-tbtc-bridge-v2/"],
+    audit_links: ["https://threshold.network/about/#audits"],
     listedAt: 1676411129
   },
   {

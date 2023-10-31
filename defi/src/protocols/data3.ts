@@ -22770,7 +22770,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Liquid Staking",
     chains: ["TON"],
-    module: "perseid-finance/index.js",
+    module: "hipo/index.js",
     forkedFrom: [],
     oracles: [],
     twitter: "hipofinance",

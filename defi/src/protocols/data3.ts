@@ -7835,11 +7835,12 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Staking Pool",
+    category: "Liquid Staking",
     chains: ["Filecoin"],
     module: "letsfil/index.js",
     twitter: "filfi_io",
     oracles: [],
+    audit_links: ["https://docs.filfi.io/files/Filfi-Audit-Report-LeastAuthority.pdf"],
     listedAt: 1685612653
   },
   {

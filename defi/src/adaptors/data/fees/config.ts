@@ -1490,5 +1490,9 @@ export default {
     "touch.fan": {
         "enabled": true,
         "id": "3713"
+    },
+    "paal-ai": {
+        "enabled": true,
+        "id": "3723"
     }
 } as AdaptorsConfig

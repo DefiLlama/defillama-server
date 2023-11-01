@@ -22838,7 +22838,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     twitter: "BW_Swap",
-    github: ["https://github.com/DEXXX001"],
+    github: ["DEXXX001"],
     listedAt: 1698844206
   },
   {

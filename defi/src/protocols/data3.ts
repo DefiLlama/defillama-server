@@ -7831,7 +7831,7 @@ const data3: Protocol[] = [
       "FilFi is a DeFi protocol that creates the liquidity of Filecoin assets, providing services such as staking pool, lending, Joint Mining, hashrate trading, and FID funds.",
     chain: "Filecoin",
     logo: `${baseIconsUrl}/filfi.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -7840,6 +7840,7 @@ const data3: Protocol[] = [
     module: "letsfil/index.js",
     twitter: "filfi_io",
     oracles: [],
+    audit_links: ["https://docs.filfi.io/files/Filfi-Audit-Report-LeastAuthority.pdf"],
     listedAt: 1685612653
   },
   {

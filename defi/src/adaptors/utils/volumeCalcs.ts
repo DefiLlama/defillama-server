@@ -162,7 +162,7 @@ const getSumAllDexsToday = (
         change_1m: formatNdChangeNumber(((totalVolume - totalVolume30d) / totalVolume30d) * 100) ?? 0,
         change_1d_abs: formatNdChangeNumber(totalVolume - totalVolume1d),
         change_7d_abs: formatNdChangeNumber(totalVolume - totalVolume7d),
-        change_1m_abs: formatNdChangeNumber(totalVolume - totalVolume30d),
+        change_30d_abs: formatNdChangeNumber(totalVolume - totalVolume30d),
         ...getWoWStats(dexs, dex2Substract, baseTimestamp),
         breakdown24h: null,
         total48hto24h: totalVolume1d

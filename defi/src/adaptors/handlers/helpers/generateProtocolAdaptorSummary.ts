@@ -213,7 +213,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined,
             change_1d_abs: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.change_1d_abs,
             change_7d_abs: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.change_7d_abs,
-            change_1m_abs: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.change_1m_abs,
+            change_30d_abs: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.change_30d_abs,
         }
     } catch (error) {
         // TODO: handle better errors
@@ -253,7 +253,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             spikes: undefined,
             change_1d_abs: null,
             change_7d_abs: null,
-            change_1m_abs: null,
+            change_30d_abs: null,
         }
     }
 }
@@ -264,9 +264,9 @@ const getStats = (adapter: ProtocolAdaptor, adaptorRecordsArr: AdaptorRecord[], 
         change_1d: calcNdChange(adaptorRecordsMap, 1, baseTimestamp, true).ndChange,
         change_7d: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true).ndChange,
         change_1m: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true).ndChange,
-        change_1d_abs: calcNdChange(adaptorRecordsMap, 1, baseTimestamp, true).ndChangeAbs,
-        change_7d_abs: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true).ndChangeAbs,
-        change_1m_abs: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true).ndChangeAbs,
+        change_1d_abs: calcNdChange(adaptorRecordsMap, 1, baseTimestamp, true).totalNd,
+        change_7d_abs: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true).totalNd,
+        change_30d_abs: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true).totalNd,
         ...getWoWStats([{
             recordsMap: adaptorRecordsMap
         }], undefined, baseTimestamp),

@@ -370,7 +370,7 @@ functions:
       AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
   oracles:
     handler: src/getOracles.default
-    timeout: 60
+    timeout: 120
     memorySize: 2000
     events:
       - http:
@@ -378,7 +378,7 @@ functions:
           method: get
   forks:
     handler: src/getForks.default
-    timeout: 30
+    timeout: 120
     memorySize: 2000
     events:
       - http:

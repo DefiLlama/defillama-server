@@ -22798,6 +22798,27 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "PaalMind",
   },
+  {
+    id: "3724",
+    name: "JumpDefi",
+    address: null,
+    symbol: "-",
+    url: "https://www.jumpdefi.xyz/",
+    description: "Decentralized exchange on Telos",
+    chain: "Telos",
+    logo: `${baseIconsUrl}/jumpdefi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Telos"],
+    module: "jumpdefi/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "JumpDeFi",
+    listedAt: 1698819501
+  },
 ]
 
 export default data3

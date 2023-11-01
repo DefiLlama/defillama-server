@@ -2121,5 +2121,17 @@ export default {
         parentId: "Kinetix",
         "enabled": true,
         "id": "3534"
+    },
+    "caviarnine": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3645",
+        protocolsData: {
+            "orderbook": {
+                "id": "3645",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        }
     }
 } as AdaptorsConfig

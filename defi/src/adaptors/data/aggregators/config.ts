@@ -51,5 +51,16 @@ export default {
     "slingshot": {
         enabled: true,
         id: "3681"
+    },
+    "caviarnine": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3645",
+        protocolsData: {
+            "aggregator": {
+                "id": "3645",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

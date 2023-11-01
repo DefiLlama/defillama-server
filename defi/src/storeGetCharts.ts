@@ -14,7 +14,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";
-import { storeR2, storeR2JSONString } from "./utils/r2";
+import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
   if (sumDailyTvls[chain] === undefined) {
@@ -123,7 +123,14 @@ export async function processProtocols(
   { includeBridge }: { includeBridge: boolean },
   excludeProtocolsFromCharts = true
 ) {
-  const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols(includeBridge, excludeProtocolsFromCharts);
+  let historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>
+  
+  if(includeBridge === false){
+    historicalProtocolTvlsData = JSON.parse((await getR2(`cache/getHistoricalTvlForAllProtocols/false-${excludeProtocolsFromCharts}.json`)).body!)
+  } else {
+    historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(includeBridge, excludeProtocolsFromCharts);
+  }
+  const { historicalProtocolTvls, lastDailyTimestamp } = historicalProtocolTvlsData
 
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (!protocolTvl) {

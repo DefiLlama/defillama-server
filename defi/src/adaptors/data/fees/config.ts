@@ -1494,5 +1494,10 @@ export default {
     "paal-ai": {
         "enabled": true,
         "id": "3723"
+    },
+    "kinetix": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3534"
     }
 } as AdaptorsConfig

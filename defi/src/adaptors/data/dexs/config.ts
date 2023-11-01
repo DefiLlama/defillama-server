@@ -2116,5 +2116,10 @@ export default {
     "luigiswap": {
         "enabled": true,
         "id": "3415"
+    },
+    "kinetix": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3534"
     }
 } as AdaptorsConfig

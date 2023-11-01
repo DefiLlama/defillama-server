@@ -67,6 +67,11 @@
       "decimals": "18",
       "symbol": "ethPNT",
       "to": "coingecko#pnetwork"
+    },
+    "0x137ddb47ee24eaa998a535ab00378d6bfa84f893": {
+      "decimals": "18",
+      "symbol": "RDNT",
+      "to": "coingecko#radiant"
     }
   },
   "fantom": {

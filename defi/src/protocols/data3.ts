@@ -23042,6 +23042,27 @@ const data3: Protocol[] = [
     twitter: "GoTurnUp",
     listedAt: 1698953975
   },
+  {
+    id: "3735",
+    name: "Baki Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://baki.exchange",
+    description: "Baki provides the ability to offer infinite liquidity at the official conversion rate, and natively quote assets in local currencies on chain.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/baki-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Avalanche"],
+    module: "baki/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Canza_Finance",
+    listedAt: 1698954528
+  },
 ]
 
 export default data3

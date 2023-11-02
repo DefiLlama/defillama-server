@@ -2117,10 +2117,16 @@ export default {
         "enabled": true,
         "id": "3415"
     },
-    "kinetix": {
+    "kinetix-v3": {
         parentId: "Kinetix",
         "enabled": true,
-        "id": "3534"
+        "id": "3534",
+        protocolsData: {
+            "v3": {
+                "id": "3534",
+                "enabled": true,
+            }
+        }
     },
     "caviarnine": {
         parentId: "CaviarNine",
@@ -2133,5 +2139,10 @@ export default {
                 "category": "Dexes"
             }
         }
+    },
+    "kinetix-derivative": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3465"
     }
 } as AdaptorsConfig

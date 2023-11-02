@@ -6009,13 +6009,13 @@ const data3: Protocol[] = [
   },
   {
     id: "2971",
-    name: "Astro Swap", //rebrand from StarkEx
+    name: "AstroSwap AMM", //rebrand from StarkEx
     address: null,
     symbol: "-",
     url: "https://astroswap.xyz",
     description: "AstroSwap AMM,Liquidity Farms,and Reward pools on Starknet.",
     chain: "Starknet",
-    logo: `${baseIconsUrl}/astro-swap.jpg`,
+    logo: `${baseIconsUrl}/astroswap-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

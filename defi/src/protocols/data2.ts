@@ -25384,7 +25384,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     treasury: "rarible.js",
-    twitter: "rarible",
+    twitter: "rarifoundation",
     oracles: [],
     forkedFrom: [],
     governanceID: ["snapshot:rarible.eth"],

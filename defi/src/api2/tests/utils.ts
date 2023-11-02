@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const v1Endpoint = 'https://api.llama.fi'
-const v2Endpoint = 'https://ulysses-testing-stuffs.llama.team'
-// const v2Endpoint = 'localhost:5001'
+const v2Endpoint = 'http://127.0.0.1:5001'
 const getProtocolAPI = (name: string, isV2?: boolean) => `${isV2 ? v2Endpoint : v1Endpoint}/protocol/${name}`
 const getTreasuryAPI = (name: string, isV2?: boolean) => `${isV2 ? v2Endpoint : v1Endpoint}/treasury/${name}`
 const getEntityAPI = (name: string, isV2?: boolean) => `${isV2 ? v2Endpoint : v1Endpoint}/entity/${name}`
@@ -19,7 +18,7 @@ export function getRandomItems(array: any[], count: number) {
 }
 
 export function getTests(items: any[], fnKey: string, title: string) {
-  const testCount = 10
+  const testCount = 20
   jest.setTimeout(1000000);
   items = getRandomItems(items, testCount)
   test(title, async () => {

@@ -38,6 +38,7 @@
     "cache-config": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cacheConfig.ts",
     "run-local": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/runLocalTVL.ts",
     "api2-build": "bash src/api2/scripts/build.sh",
+    "api2-dev": "echo 'export default {}' > src/utils/imports/adapters.ts  && ts-node-dev --respawn --transpile-only src/api2/index.ts",
     "api2-start": "bash src/api2/scripts/start.sh"
   },
   "devDependencies": {

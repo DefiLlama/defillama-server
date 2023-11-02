@@ -85,7 +85,7 @@ export function dayCache(
   json: IJSON,
 ) {
   const date = new Date();
-  date.setMinutes(10);
+  date.setMinutes(50);
   date.setHours(0);
   date.setDate(date.getDate()+1)
   return lambdaResponse({

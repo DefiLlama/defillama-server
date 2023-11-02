@@ -6009,13 +6009,13 @@ const data3: Protocol[] = [
   },
   {
     id: "2971",
-    name: "StarkEx",
+    name: "Astro Swap", //rebrand from StarkEx
     address: null,
     symbol: "-",
-    url: "https://app.starkex.org",
-    description: "StarkEx AMM, Liquidity Farms, and Reward pools on StarkNet. StarkEx is also a community-based and open-source ecosystem for DeFi! Say goodbye to CeFi!.",
+    url: "https://astroswap.xyz",
+    description: "AstroSwap AMM,Liquidity Farms,and Reward pools on Starknet.",
     chain: "Starknet",
-    logo: `${baseIconsUrl}/starkex.jpg`,
+    logo: `${baseIconsUrl}/astro-swap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -6023,7 +6023,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Starknet"],
     module: "starkex/index.js",
-    twitter: "Starkex_org",
+    twitter: "AstroSwapreal",
     forkedFrom: [],
     oracles: [],
     listedAt: 1683886128

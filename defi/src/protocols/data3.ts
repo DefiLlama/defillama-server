@@ -22978,6 +22978,27 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.xave.co/contract-audits/fxpool-final-audit"],
     listedAt: 1698939999
   },
+  {
+    id: "3732",
+    name: "Robinhood",
+    address: null,
+    symbol: "-",
+    url: "https://robinhood.com",
+    description: "Democratizing finance for all. Crypto trading: Robinhood Crypto.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/robinhood.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Avalanche","Polygon", "Bitcoin"],
+    module: "robinhood/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "RobinhoodApp",
+    github: ["robinhood"],
+  },
 ]
 
 export default data3

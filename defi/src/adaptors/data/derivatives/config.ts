@@ -425,7 +425,7 @@ export default {
     },
     "contango": {
         "enabled": true,
-        "id": "2374",
+        "id": "3602",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1697414400": true,

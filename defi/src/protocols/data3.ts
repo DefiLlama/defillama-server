@@ -23060,7 +23060,7 @@ const data3: Protocol[] = [
     module: "baki/index.js",
     forkedFrom: [],
     oracles: [],
-    twitter: null,
+    twitter: "Canza_Finance",
     listedAt: 1698954528
   },
 ]

@@ -189,7 +189,7 @@ functions:
       - http:
           path: /{params+}
           method: options
-  fetchCoingeckoData:
+  fetchCoingeckoData2:
       handler: src/fetchCoingeckoData.fetchCoingeckoData
       timeout: 900
       environment:

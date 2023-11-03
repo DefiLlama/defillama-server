@@ -2144,5 +2144,9 @@ export default {
         parentId: "Kinetix",
         "enabled": true,
         "id": "3465"
+    },
+    "retro": {
+        "enabled": true,
+        "id": "3311"
     }
 } as AdaptorsConfig

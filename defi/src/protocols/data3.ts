@@ -22180,7 +22180,7 @@ const data3: Protocol[] = [
     module: "coffeefi/index.js",
     twitter: "coffee_vedex",
     forkedFrom: ["Solidly"],
-    oracles: [],
+    oracles: ["Pyth"],
     listedAt: 1698272432
   },
   {

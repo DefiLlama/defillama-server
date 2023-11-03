@@ -10548,7 +10548,7 @@ const data2: Protocol[] = [
     address: "acala:-",
     symbol: "DOT",
     url: "https://apps.acala.network/ldot",
-    description: "Liquidity for staked asset in the form of L-Token that is fungible and automatically accruing staking yields",
+    description: "Liquidity for staked assets. Instant redeem. Available for Polkadot and Kusama.",
     chain: "Acala",
     logo: `${baseIconsUrl}/acala-liquid-staking.png`,
     audits: "2",

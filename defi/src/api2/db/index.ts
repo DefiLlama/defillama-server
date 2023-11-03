@@ -136,10 +136,28 @@ async function _getClosestProtocolItem(ddbPKFunction: Function, protocolId: stri
   if (searchWidth && timestampFrom)
     throw new Error('Cannot use both searchWidth and timestampFrom')
 
-  // this has a bug, it will return the latest item not closest to timestampTo
-  if (searchWidth)
+  if (searchWidth) {
     timestampFilter = { [Op.gte]: timestampTo - searchWidth, [Op.lte]: timestampTo + searchWidth }
-  else if (timestampFrom)
+
+    const items: any = await table.findAll({
+      where: { id: protocolId, timestamp: timestampFilter },
+      attributes: ['data', 'timestamp'],
+      raw: true,
+      order: [['timestamp', 'DESC']],
+    })
+
+    if (!items.length) return null
+
+    let closest = items[0];
+    for (const item of items.slice(1)) {
+      if (Math.abs(item.timestamp - timestampTo) < Math.abs(closest.timestamp - timestampTo)) {
+        closest = item;
+      }
+    }
+    closest.data.SK = closest.timestamp
+    return closest.data
+
+  } else if (timestampFrom)
     timestampFilter = { [Op.gte]: timestampFrom, [Op.lte]: timestampTo }
 
   const item: any = await table.findOne({

@@ -1,6 +1,7 @@
 import { Protocol } from "../protocols/data";
 import * as sdk from "@defillama/sdk";
-import storeNewTvl from "./storeNewTvl";
+// import storeNewTvl from "./storeNewTvl";
+import storeNewTvl2 from "./storeNewTvl2";
 import { TokensValueLocked, tvlsObject } from "../types";
 import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
 import {
@@ -256,7 +257,7 @@ export async function storeTvl(
   }
   try {
     if (!process.env.DRY_RUN) {
-      await storeNewTvl(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances, overwriteExistingData ); // Checks circuit breakers
+      await storeNewTvl2(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances, overwriteExistingData ); // Checks circuit breakers
 
       const options = { protocol, unixTimestamp, storePreviousData, overwriteExistingData, }
       const storeTokensAction = storeNewTokensValueLocked({

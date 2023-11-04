@@ -1,4 +1,4 @@
-import { Sequelize, Model, ModelStatic, Op, } from 'sequelize'
+import { Sequelize, Model, ModelStatic, Op, Options as SequelizeOptions } from 'sequelize'
 
 import getEnv from '../env'
 import { initializeTables, Tables as TABLES } from './tables'
@@ -45,12 +45,14 @@ function isHourlyDDBPK(ddbPKFunction: Function) {
 let sequelize: Sequelize | null = null
 let mSequalize: Sequelize
 
-async function initializeTVLCacheDB() {
+async function initializeTVLCacheDB({
+  isApi2Server = false,
+} = {}) {
   if (!sequelize) {
     const ENV = getEnv()
-    const dbOptions = {
+    const dbOptions: SequelizeOptions = {
       host: ENV.host,
-      port: ENV.port,
+      port: (ENV.port as any),
       username: ENV.user,
       password: ENV.password,
       database: ENV.db_name,
@@ -61,6 +63,15 @@ async function initializeTVLCacheDB() {
         }
       },
     }
+    if (isApi2Server)
+      dbOptions.pool = {
+        max: 30,
+        min: 0,
+        idle: 5000,
+        acquire: 120000, // increase this if your queries take a long time to run
+        evict: 1000, // how often to run eviction checks
+      }
+
     const metricsDbOptions = {
       host: ENV.metrics_host,
       port: ENV.metrics_port,
@@ -74,7 +85,7 @@ async function initializeTVLCacheDB() {
         }
       },
     }
-    
+
     if (ENV.isCoolifyTask) {
       dbOptions.host = ENV.internalHost
       // metricsDbOptions.host = ENV.metrics_internalHost
@@ -91,10 +102,12 @@ async function initializeTVLCacheDB() {
   }
 }
 
-async function _getAllProtocolItems(ddbPKFunction: Function, protocolId: string) {
+async function _getAllProtocolItems(ddbPKFunction: Function, protocolId: string, { timestampAfter }: { timestampAfter?: number } = {}) {
   const table = getTVLCacheTable(ddbPKFunction)
+  const filterOptions: any = { id: protocolId }
+  if (timestampAfter) filterOptions.timestamp = { [Op.gt]: timestampAfter }
   const items = await table.findAll({
-    where: { id: protocolId },
+    where: filterOptions,
     attributes: ['data', 'timestamp'],
     order: [['timestamp', 'ASC']],
     raw: true,
@@ -116,10 +129,39 @@ async function _getLatestProtocolItem(ddbPKFunction: Function, protocolId: strin
   return item.data
 }
 
-async function _getClosestProtocolItem(ddbPKFunction: Function, protocolId: string, timestamp: number) {
+async function _getClosestProtocolItem(ddbPKFunction: Function, protocolId: string, timestampTo: number, { searchWidth, timestampFrom }: { searchWidth?: number, timestampFrom?: number }) {
   const table = getTVLCacheTable(ddbPKFunction)
+  let timestampFilter: any = { [Op.lte]: timestampTo }
+
+  if (searchWidth && timestampFrom)
+    throw new Error('Cannot use both searchWidth and timestampFrom')
+
+  if (searchWidth) {
+    timestampFilter = { [Op.gte]: timestampTo - searchWidth, [Op.lte]: timestampTo + searchWidth }
+
+    const items: any = await table.findAll({
+      where: { id: protocolId, timestamp: timestampFilter },
+      attributes: ['data', 'timestamp'],
+      raw: true,
+      order: [['timestamp', 'DESC']],
+    })
+
+    if (!items.length) return null
+
+    let closest = items[0];
+    for (const item of items.slice(1)) {
+      if (Math.abs(item.timestamp - timestampTo) < Math.abs(closest.timestamp - timestampTo)) {
+        closest = item;
+      }
+    }
+    closest.data.SK = closest.timestamp
+    return closest.data
+
+  } else if (timestampFrom)
+    timestampFilter = { [Op.gte]: timestampFrom, [Op.lte]: timestampTo }
+
   const item: any = await table.findOne({
-    where: { id: protocolId, timestamp: { [Op.lte]: timestamp } },
+    where: { id: protocolId, timestamp: timestampFilter },
     attributes: ['data', 'timestamp'],
     raw: true,
     order: [['timestamp', 'DESC']],
@@ -161,7 +203,7 @@ function validateRecord(record: TVLCacheRecord) {
 async function writeToPGCache(key: string, data: any) {
   const table = TABLES.JSON_CACHE
   if (typeof data !== 'object') data = JSON.stringify(data)
-  await table.upsert({ id: key, data, timestamp: Math.floor(Date.now()/1e3) })
+  await table.upsert({ id: key, data, timestamp: Math.floor(Date.now() / 1e3) })
 }
 
 async function readFromPGCache(key: string, { withTimestamp = false } = {}) {
@@ -174,9 +216,19 @@ async function readFromPGCache(key: string, { withTimestamp = false } = {}) {
   if (!item) return null
   try {
     item.data = JSON.parse(item.data)
-  } catch {}
+  } catch { }
   if (withTimestamp) return item
   return item.data
+}
+
+async function deleteFromPGCache(key: string) {
+  const table = TABLES.JSON_CACHE
+  await table.destroy({ where: { id: key } })
+}
+
+function getDailyTvlCacheId(id: string) {
+  if (!id) throw new Error('Missing required parameter: id')
+  return `tvl-cache-daily/${id}`
 }
 
 async function closeConnection() {
@@ -219,6 +271,8 @@ export {
   deleteProtocolItems,
   writeToPGCache,
   readFromPGCache,
+  deleteFromPGCache,
+  getDailyTvlCacheId,
 }
 
 // Add a process exit hook to close the database connection

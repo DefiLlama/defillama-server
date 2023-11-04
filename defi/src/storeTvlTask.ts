@@ -9,7 +9,7 @@ import { PromisePool } from '@supercharge/promise-pool'
 import * as sdk from '@defillama/sdk'
 import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, getLastRecord } from "./utils/getLastRecord";
-import { closeConnection, initializeTVLCacheDB } from "./api2/db";
+import { closeConnection, getLatestProtocolItem, initializeTVLCacheDB } from "./api2/db";
 
 const maxRetries = 2;
 
@@ -24,7 +24,7 @@ async function main() {
   // actions = actions.slice(0, 301) 
   entities.forEach((e: any) => e.isEntity = true)
   treasuries.forEach((e: any) => e.isTreasury = true)
-  protocols.forEach((e: any, idx: number) => e.isRecent = protocols.length - idx < 420)
+  protocols.forEach((e: any, idx: number) => e.isRecent = protocols.length - idx < 220)
 
   // we let the adapters take care of the blocks
   // await cacheCurrentBlocks() // cache current blocks for all chains - reduce #getBlock calls
@@ -154,7 +154,7 @@ async function filterProtocol(adapterModule: any, protocol: any) {
   let tvlHistkeys = ['tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
   // let tvlNowKeys = ['tvl', 'staking', 'pool2']
   const getMax = ((i: any, keys = tvlHistkeys) => Math.max(...keys.map(k => i[k] ?? 0)))
-  const lastRecord = await getLastRecord(hourlyTvl(protocol.id))
+  const lastRecord = await getLatestProtocolItem(hourlyTvl, protocol.id)
   // for whatever reason if latest tvl record is not found, run tvl adapter
   if (!lastRecord)
     return true
@@ -163,7 +163,7 @@ async function filterProtocol(adapterModule: any, protocol: any) {
   const MIN_WAIT_TIME = 0.75 * HOUR // 45 minutes - ideal wait time because we run every 30 minutes
   const currentTime = Math.round(Date.now() / 1000)
   const timeDiff = currentTime - lastRecord.SK
-  const highestRecentTvl = getMax(lastRecord, tvlHistkeys)
+  const highestRecentTvl = getMax(lastRecord)
 
   if (MIN_WAIT_TIME > timeDiff) // skip as tvl was updated recently
     return false
@@ -171,7 +171,7 @@ async function filterProtocol(adapterModule: any, protocol: any) {
   // always fetch tvl for recent protocols
   if (protocol.isRecent) return true
 
-  const runLessFrequently = protocol.isEntity || protocol.isTreasury || highestRecentTvl < 50_000
+  const runLessFrequently = protocol.isEntity || protocol.isTreasury || highestRecentTvl < 100_000
 
   if (runLessFrequently && timeDiff < 3 * HOUR)
     return false

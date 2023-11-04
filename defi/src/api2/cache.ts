@@ -51,10 +51,14 @@ export async function initCache() {
 async function updateMetadata() {
   const data = await readFromPGCache(PROTOCOL_METADATA_ALL_KEY)
   cache.metadata = data
+
+  // reset cache
   cache.protocolSlugMap = {}
   cache.treasurySlugMap = {}
   cache.entitiesSlugMap = {}
+  cache.childProtocols = {}
   cache.parentProtocolSlugMap = {}
+
   data.protocols.forEach((p: any) => {
     cache.protocolSlugMap[sluggify(p)] = p
     if (p.parentProtocol) {

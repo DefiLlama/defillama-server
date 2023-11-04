@@ -22234,7 +22234,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://usyc.hashnote.com/",
     description: "Hashnote is a regulated DeFi platform with permissioned smart contracts, on-chain transparency, and customizable investment strategies for optimized risk-reward profiles.  USYC is a Hashnote product which provides exposure to short duration US Treasuries and Reverse Repo on US Treasuries",
-    chain: "Canto",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/hashnote-usyc.png`,
     audits: "0",
     audit_note: null,

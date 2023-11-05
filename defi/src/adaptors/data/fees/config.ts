@@ -482,7 +482,7 @@ export default {
         "id": "2290"
     },
     "moonwell-artemis": {
-        "enabled": true,
+        "enabled": false,
         "id": "1853"
     },
     "moonwell-apollo": {

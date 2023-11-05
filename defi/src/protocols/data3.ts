@@ -23129,6 +23129,29 @@ const data3: Protocol[] = [
     audit_links: ["https://hacken.io/audits/rumi-finance/"],
     listedAt: 1699008865
   },
+  {
+    id: "3739",
+    name: "LST Optimizer",
+    address: null,
+    symbol: "-",
+    assetToken: "kETH",
+    url: "https://dapp.getketh.com/home/",
+    description: "The LST Optimizer automatically curates high performing ETH validators and holds liquid staking tokens",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lst-optimizer.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    module: "lst-optimizer/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "blockswap_team",
+    audit_links: ["https://www.blockswap.network/security/"],
+    listedAt: 1699210502                    
+  },
 ]
 
 export default data3

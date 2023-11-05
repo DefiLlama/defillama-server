@@ -13606,7 +13606,8 @@ const data3: Protocol[] = [
     module: "YogurtFinance/index.js",
     twitter: "YogurtDefi",
     oracles: [],
-    listedAt: 1690749085
+    listedAt: 1690749085,
+    deadUrl: true
   },
   {
     id: "3311",

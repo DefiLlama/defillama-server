@@ -16,6 +16,7 @@ import BigNumber from "bignumber.js";
 import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
+import { LogArray } from "@defillama/sdk/build/types";
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -66,7 +67,7 @@ async function getTvl(
             unixTimestamp,
             ethBlock,
             chainBlocks,
-            { api, chain, storedKey, block, },
+            { api, chain, storedKey, block, logArray: options.logArray },
           );
           if (!tvlBalances && Object.keys(api.getBalances()).length) tvlBalances = api.getBalances()
         }
@@ -143,6 +144,7 @@ type StoreTvlOptions = {
   chainsToRefill?: string[],
   cacheData?: Object,
   overwriteExistingData?: boolean,
+  logArray?: LogArray
 }
 
 export async function storeTvl(
@@ -199,8 +201,10 @@ export async function storeTvl(
           tvlFunctionIsFetch = true
         }
         const startTimestamp = getCurrentUnixTimestamp()
+        const logArray = protocol.category && ['Bridge', 'Chain'].includes(protocol.category) ? [] : undefined
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins, {...options, partialRefill, chainsToRefill, cacheData })
+          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins, 
+          {...options, partialRefill, chainsToRefill, cacheData, logArray })
         let keyToAddChainBalances = tvlType;
         if(tvlType === "tvl" || tvlType === "fetch"){
           keyToAddChainBalances = "tvl"

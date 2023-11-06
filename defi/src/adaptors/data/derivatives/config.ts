@@ -451,5 +451,9 @@ export default {
                 "enabled": true,
             },
         },
+    },
+    "levana": {
+        "enabled": true,
+        "id": "3474"
     }
 } as AdaptorsConfig

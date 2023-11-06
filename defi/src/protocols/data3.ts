@@ -20204,7 +20204,7 @@ const data3: Protocol[] = [
       "BLEX is a decentralized perpetual contract exchange based on the index-based price feeding model, aimed at allowing users to deploy various trading strategies without permission, with low costs, high efficiency, and security while having control over their personal assets.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/blex.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -20213,6 +20213,7 @@ const data3: Protocol[] = [
     module: "blex/index.js",
     twitter: "Blex_io",
     forkedFrom: [],
+    audit_links: ["https://skynet.certik.com/projects/blex-io"],
     oracles: ["Chainlink"],
     github: ["blex-dex"],
     listedAt: 1696846653

@@ -23197,6 +23197,27 @@ const data3: Protocol[] = [
     twitter: "torus_farm",
     listedAt: 1699291935                   
   },
+  {
+    id: "3742",
+    name: "Loreum",
+    address: null,
+    symbol: "-",
+    url: "https://www.loreum.org",
+    description: "The frontier of permissionless human coordination.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/loreum.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    treasury: "loreum.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "LoreumDAO",                 
+  },
 ]
 
 export default data3

@@ -1989,6 +1989,13 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
+  "EON": {
+    geckoId: "zencash",
+    symbol: "ZEN",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 7332,
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2488,6 +2495,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "MEER"
     case "elsm":
       return "Elysium"
+    case "eon":
+      return "EON"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

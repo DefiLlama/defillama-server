@@ -105,7 +105,8 @@ export async function getProtocolTvl(
 
           if (
             !extraSections.includes(chainDisplayName) &&
-            !chainDisplayName.includes("-")
+            !chainDisplayName.includes("-") &&
+            protocol.category !== "Bridge" && protocol.category !== "RWA"
           ) {
             if (isDoubleCount) {
               chainTvls[`${chainDisplayName}-doublecounted`] = {

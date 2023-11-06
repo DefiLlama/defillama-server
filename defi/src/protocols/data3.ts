@@ -22915,7 +22915,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3729",
-    name: "BackToBitcoin",
+    name: "B2B",
     address: null,
     symbol: "-",
     url: "https://b2b.money",

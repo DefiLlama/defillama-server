@@ -1653,7 +1653,7 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
   },
   "Oasys": {
-    geckoId: "Oasys",
+    geckoId: "oasys",
     github: ['oasysgames'],
     symbol: "OAS",
     cmcId: "22265",

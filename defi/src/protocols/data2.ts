@@ -28134,7 +28134,7 @@ const data2: Protocol[] = [
     description:
       "Bluefin is a decentralized exchange (DEX) for derivatives currently offering perpetual swaps trading with up to 20x leverage using isolated margin. The exchange is non-custodial and uses an off-chain order book for efficient price discovery.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/bluefin.png`,
+    logo: `${baseIconsUrl}/bluefin.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

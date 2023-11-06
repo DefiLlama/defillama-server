@@ -17,6 +17,7 @@ import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
 import { LogArray } from "@defillama/sdk/build/types";
+import storeTokenOwnerLogs from './tokenOwnerLog';
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -69,6 +70,7 @@ async function getTvl(
             chainBlocks,
             { api, chain, storedKey, block, logArray: options.logArray },
           );
+          await storeTokenOwnerLogs(options.logArray)
           if (!tvlBalances && Object.keys(api.getBalances()).length) tvlBalances = api.getBalances()
         }
         Object.keys(tvlBalances).forEach((key) => {

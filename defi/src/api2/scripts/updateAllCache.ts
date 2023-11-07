@@ -11,13 +11,13 @@ async function updateAllCache() {
   let actions = [protocols, entities, treasuries].flat()
   shuffleArray(actions) // randomize order of execution
   await PromisePool
-    .withConcurrency(200)
+    .withConcurrency(100)
     .for(actions)
     .process(updateProtocolCache);
 }
 
 async function updateProtocolCache(protocolData: any) {
-  // await deleteFromPGCache(protocolData.id) // clear postgres cache before fetching
+  await deleteFromPGCache(protocolData.id) // clear postgres cache before fetching
   await craftProtocolV2({ protocolData, useNewChainNames: true, useHourlyData: false, skipAggregatedTvl: true, })
 }
 

@@ -18,27 +18,27 @@ export function getRandomItems(array: any[], count: number) {
 }
 
 export function getTests(items: any[], fnKey: string, title: string) {
-  const testCount = 3
+  const testCount = 10
   jest.setTimeout(1000000);
   items = getRandomItems(items, testCount)
   items.forEach((protocol: any) => {
     describe(title + ' ' + protocol, () =>
-      test(protocol, getProtoTestFunction(protocol, fnKey)))
+      test.concurrent(protocol, getProtoTestFunction(protocol, fnKey)))
   })
 }
 
 export function getProtoTestFunction(protocol: any, fnKey: string) {
   return async () => {
 
-      const resV1 = await axios.get(fnMap[fnKey](protocol))
-      const resV2 = await axios.get(fnMap[fnKey](protocol, true))
-      expect(resV1.status).toBe(200);
-      expect(resV2.status).toBe(200);
-      const data = resV2.data
-      expect(data).toHaveProperty('chains')
-      expect(data).toHaveProperty('id')
-      expect(data).toHaveProperty('name')
-      compareJSONCustom(resV1.data, resV2.data)
+    const resV1 = await axios.get(fnMap[fnKey](protocol))
+    const resV2 = await axios.get(fnMap[fnKey](protocol, true))
+    expect(resV1.status).toBe(200);
+    expect(resV2.status).toBe(200);
+    const data = resV2.data
+    expect(data).toHaveProperty('chains')
+    expect(data).toHaveProperty('id')
+    expect(data).toHaveProperty('name')
+    compareJSONCustom(resV1.data, resV2.data)
   }
 }
 
@@ -51,6 +51,11 @@ export function compareJSONCustom(actual: any, expected: any) {
 
   compareJSONNumberish(actual.currentChainTvls, expected.currentChainTvls)
   compareJSONNumberish(actual.mcap, expected.mcap)
+
+  if (expected.tvl.length < actual.tvl.length) closishNumbers(actual.tvl.length, expected.tvl.length, 0.05)
+  if (expected.tokensInUsd.length < actual.tokensInUsd.length) closishNumbers(actual.tokensInUsd.length, expected.tokensInUsd.length, 0.05)
+  if (expected.tokens.length < actual.tokens.length) closishNumbers(actual.tokens.length, expected.tokens.length, 0.05)
+
   reduceProtoResponse(actual)
   reduceProtoResponse(expected)
 
@@ -77,6 +82,8 @@ export function compareJSONCustom(actual: any, expected: any) {
     delete obj.tokens
     delete obj.currentChainTvls
     delete obj.mcap
+    delete obj.deadFrom
+    if (!(Array.isArray(obj.hallmarks) && obj.hallmarks.length > 0)) delete obj.hallmarks
   }
 }
 

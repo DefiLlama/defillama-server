@@ -31,6 +31,7 @@ async function main() {
   await initializeTVLCacheDB()
 
   const items = [protocols, entities, treasuries].flat()
+    // .filter((p: any) => p.id === '308')
   shuffleArray(items)
   console.log('Total Items', items.length)
   await PromisePool.withConcurrency(21)
@@ -44,19 +45,31 @@ main().catch(console.error).then(() => {
 })
 
 async function copyProtocolData(protocol: any) {
-  const id = protocol.id
-  await Promise.all(Object.keys(keyToRecord).map(copyData))
+  try {
 
-  async function copyData(key: string) {
-    const { ddb, pg } = keyToRecord[key]
-    const items = await getHistoricalValues(ddb(id))
-    const transformedItems = items.map((i: any) => transformDDBToPGFormat(i))
-    await pg.bulkCreate(transformedItems, {
-      updateOnDuplicate: ['timestamp', 'data'], // Specify the columns to update if the record already exists
-      upsert: true, // Enable upsert mode
-    })
-    doneIndex++
-    console.log(Math.floor(doneIndex / 4), protocol.name, key, items.length, ddb(id))
+    const id = protocol.id
+    await Promise.all(Object.keys(keyToRecord).map(copyData))
+
+    async function copyData(key: string) {
+      const { ddb, pg } = keyToRecord[key]
+      const items = await getHistoricalValues(ddb(id))
+      let transformedItems = items.map((i: any) => transformDDBToPGFormat(i))
+      const oItems: any = {}
+      transformedItems.forEach((i: any) => {
+        if (!oItems[i.timeS]) oItems[i.timeS] = []
+        oItems[i.timeS].push(i)
+      })
+      // we remove duplicates here else we get error from pg
+      transformedItems = [...Object.values(oItems).map((i: any) => i[0])]
+      const i = await pg.bulkCreate(transformedItems, {
+        updateOnDuplicate: ['timestamp', 'data'], // Specify the columns to update if the record already exists
+        upsert: true, // Enable upsert mode
+      })
+      doneIndex++
+      console.log(Math.floor(doneIndex / 4), protocol.name, key, items.length, i.length, ddb(id))
+    }
+  } catch (e) {
+    console.error(e)
   }
 }
 

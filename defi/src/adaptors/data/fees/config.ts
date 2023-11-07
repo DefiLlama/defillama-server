@@ -1503,5 +1503,9 @@ export default {
     "retro": {
         "enabled": true,
         "id": "3311"
+    },
+    "hipo": {
+        "enabled": true,
+        "id": "3722"
     }
 } as AdaptorsConfig

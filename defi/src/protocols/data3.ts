@@ -23281,6 +23281,28 @@ const data3: Protocol[] = [
     twitter: "LendoraProtocol",
     listedAt: 1699358645                   
   },
+  {
+    id: "3746",
+    name: "DaVinciGraph",
+    address: null,
+    symbol: "-",
+    url: "https://davincigraph.io/devs/locks",
+    description: " DavinciGraph is a token management suite on the Hedera Network, offering services such as token and LP locking, token creation, burning, and soon, token vesting and launchpad functionalities.",
+    chain: "Hedera",
+    logo: `${baseIconsUrl}/davincigraph.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Hedera"],
+    module: "davincigraph/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "davincigraph",
+    github: ["DaVinciGraph"],
+    listedAt: 1699359208                   
+  },
 ]
 
 export default data3

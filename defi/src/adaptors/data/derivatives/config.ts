@@ -455,5 +455,9 @@ export default {
     "levana": {
         "enabled": true,
         "id": "3474"
+    },
+    "intent-x": {
+        "enabled": true,
+        "id": "3747"
     }
 } as AdaptorsConfig

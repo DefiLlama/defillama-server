@@ -1511,5 +1511,10 @@ export default {
     "intent-x": {
         "enabled": true,
         "id": "3747"
+    },
+    "caviarnine-lsu-pool": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3666"
     }
 } as AdaptorsConfig

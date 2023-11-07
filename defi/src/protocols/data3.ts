@@ -23218,6 +23218,27 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "LoreumDAO",                 
   },
+  {
+    id: "3743",
+    name: "QuickSwap Liquidity Hub",
+    address: "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
+    symbol: "QUICK",
+    url: "https://quickswap.exchange",
+    description: "Trade at lightning-fast speeds w/ near-zero gas fees ",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/quickswap-liquidity-hub.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Polygon"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#quickswap",
+    twitter: "QuickswapDEX",                 
+  },
 ]
 
 export default data3

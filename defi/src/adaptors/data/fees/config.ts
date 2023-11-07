@@ -1507,5 +1507,9 @@ export default {
     "hipo": {
         "enabled": true,
         "id": "3722"
+    },
+    "intent-x": {
+        "enabled": true,
+        "id": "3747"
     }
 } as AdaptorsConfig

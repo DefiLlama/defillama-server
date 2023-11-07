@@ -1,75 +1,72 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getPrices } from "../dimension-adapters/utils/prices";
-import { fetchTokenDeployers, fetchTokenOwnerLogs } from "./layer2pg";
+import { SupplyInsert, fetchAllTokens, updateAllTokenSupplies } from "./layer2pg";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
-import deployers from "./bridgeDeployers";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import { Address } from "@defillama/sdk/build/types";
+import { fetchIncomingTokens } from "./incoming";
 
 const zero = BigNumber(0);
-type SupplyData = {
-  total?: number;
-  bridged: number;
-};
+type Supplies = { [token: string]: number };
+
+async function fetchMissingSupplies(chain: Chain, storedSupplies: Supplies): Promise<Supplies> {
+  const calls: { target: string }[] = [];
+  const allSupplies: Supplies = {};
+
+  Object.keys(storedSupplies).map((target: Address) => {
+    if (storedSupplies[target]) allSupplies[target] = storedSupplies[target];
+    else calls.push({ target });
+  });
+
+  if (!calls.length) return storedSupplies;
+  const supplies = await multiCall({
+    chain,
+    calls,
+    abi: "erc20:totalSupply",
+    permitFailure: true,
+  });
+
+  const writes: SupplyInsert[] = [];
+  calls.map(({ target }, i: number) => {
+    const supply = supplies[i];
+    if (!supply) return;
+    allSupplies[target] = supply;
+    writes.push({ token: target, supply, chain });
+  });
+
+  await updateAllTokenSupplies(writes);
+
+  return allSupplies;
+}
 export default async function main(params: { chain: Chain; timestamp?: number; searchWidth?: number }) {
   const chain = params.chain;
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
-  const allTokens: string[] = []; // blah blah];
-  const bridgeContracts: string[] = (await fetchTokenOwnerLogs(chain, 1699285022)).map((t: any) => t.holder);
-  bridgeContracts.push(...deployers[chain]);
+  const incomingTokens: Address[] = Object.keys(await fetchIncomingTokens({ chain, timestamp }));
+  let storedSupplies = await fetchAllTokens(chain);
 
-  const tokenDeployers: { [token: string]: string } = await fetchTokenDeployers(chain);
-  const mintedTokens: { [token: string]: SupplyData } = {};
-  allTokens.map(async (token: string) => {
-    let deployer = tokenDeployers[token];
-    if (!deployer) deployer = await findUnknownTokenDeployer(token, chain);
-    if (bridgeContracts.includes(deployer)) return;
-    const outgoingBalances = await multiCall({
-      chain,
-      calls: bridgeContracts.map((params: string) => ({
-        target: token,
-        params,
-      })),
-      abi: "erc20:balanceOf",
-    });
-    const bridged = outgoingBalances.reduce((p: number, c: number) => BigNumber(c).plus(p), zero);
-    mintedTokens[token] = { bridged };
+  // filter any tokens that arent natively minted
+  incomingTokens.map((t: Address) => {
+    if (t in storedSupplies) delete storedSupplies[t];
   });
-
-  const supplies = await multiCall({
-    chain,
-    calls: Object.keys(mintedTokens).map((target: string) => ({
-      target,
-    })),
-    abi: "erc20:totalSupply",
-  });
-
-  Object.keys(mintedTokens).map((t: string, i: number) => {
-    mintedTokens[t].total = supplies[i];
-  });
+  await fetchMissingSupplies(chain, storedSupplies);
 
   const prices = await getPrices(
-    Object.keys(mintedTokens).map((t: string) => `${chain}:${t}`),
+    Object.keys(storedSupplies).map((t: string) => `${chain}:${t}`),
     timestamp
   );
 
   const mintedAssets: { [asset: string]: BigNumber } = {};
-  Object.keys(mintedTokens).map((t: string) => {
+  Object.keys(storedSupplies).map((t: string) => {
     const priceInfo = prices[`${chain}:${t}`];
-    const supplyData = mintedTokens[t];
-    if (!priceInfo) return;
-    if (!supplyData.total) return;
-    const onChainSupply = supplyData.total - supplyData.bridged;
+    const supplyData = storedSupplies[t];
+    if (!priceInfo || !supplyData) return;
     if (!(priceInfo.symbol in mintedAssets)) mintedAssets[priceInfo.symbol] = zero;
     const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
-    const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(onChainSupply)).div(decimalShift);
+    const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supplyData.total)).div(decimalShift);
     mintedAssets[priceInfo.symbol] = BigNumber(usdValue).plus(mintedAssets[priceInfo.symbol]);
   });
 
   return;
 }
-async function findUnknownTokenDeployer(token: string, chain: Chain) {
-  chain;
-  return token;
-}
-main({ chain: "ethereum" }); // ts-node defi/l2/bridged.ts
+main({ chain: "ethereum" }); // ts-node defi/l2/minted.ts

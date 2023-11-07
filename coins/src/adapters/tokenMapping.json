@@ -420,5 +420,47 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     }
+  },
+  "eon": {
+    "0x2c2E0B0c643aB9ad03adBe9140627A645E99E054": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#weth"
+    },
+    "0xF5cB8652a84329A2016A386206761f455bCEDab6": {
+      "decimals": "18",
+      "symbol": "ZEN",
+      "to": "coingecko#zencash"
+    },
+    "0x6318374DFb468113E06d3463ec5Ed0B6Ae0F0982": {
+      "decimals": "18",
+      "symbol": "WAVAX",
+      "to": "coingecko#wrapped-avax"
+    },
+    "0xCc44eB064CD32AAfEEb2ebb2a47bE0B882383b53": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0xA167bcAb6791304EDa9B636C8beEC75b3D2829E6": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x38C2a6953F86a7453622B1E7103b738239728754": {
+      "decimals": "6",
+      "symbol": "DAI",
+      "to": "coingecko#dai"
+    },
+    "0xDF8DBA35962Aa0fAD7ade0Df07501c54Ec7c4A89": {
+      "decimals": "18",
+      "symbol": "LINK",
+      "to": "coingecko#chainlink"
+    },
+    "0x1d7fb99AED3C365B4DEf061B7978CE5055Dfc1e7": {
+      "decimals": "18",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    }
   }
 }

@@ -197,6 +197,10 @@ export default {
             v3: {
                 enabled: true,
                 id: "2239"
+            },
+            "liquidityHub": {
+                enabled: true,
+                id: "3743"
             }
         }
     },

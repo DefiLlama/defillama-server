@@ -1337,6 +1337,7 @@ export default {
         "id": "2589"
     },
     "metavault.trade": {
+        parentId: "MetaVault",
         "enabled": true,
         "id": "1801"
     },
@@ -2152,5 +2153,10 @@ export default {
     "retro": {
         "enabled": true,
         "id": "3311"
+    },
+    "metavault-v3": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3750"
     }
 } as AdaptorsConfig

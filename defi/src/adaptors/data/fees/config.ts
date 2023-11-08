@@ -1516,5 +1516,9 @@ export default {
         parentId: "CaviarNine",
         "enabled": true,
         "id": "3666"
+    },
+    "caviarnine-shape-liquidity": {
+        "enabled": true,
+        "id": "3645"
     }
 } as AdaptorsConfig

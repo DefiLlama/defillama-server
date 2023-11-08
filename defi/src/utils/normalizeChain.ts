@@ -14,7 +14,8 @@ export const normalizedChainReplacements = {
   "map relay chain": "map",
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
-  "bifrost network": "bfc"
+  "bifrost network": "bfc",
+  "horizen eon": "eon"
 } as {
   [chain: string]: string
 }
@@ -1989,7 +1990,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
-  "EON": {
+  "Horizen EON": {
     geckoId: "zencash",
     symbol: "ZEN",
     cmcId: null,
@@ -2185,7 +2186,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "zksync era":
       return "zkSync Era"
     case "bifrost network":
-      return "Bifrost Network"    
+      return "Bifrost Network"
+    case "horizen eon":
+      return "Horizen EON"    
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -2503,7 +2506,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "elsm":
       return "Elysium"
     case "eon":
-      return "EON"
+      return "Horizen EON"
     case "chiliz":
       return "Chiliz"
     default:

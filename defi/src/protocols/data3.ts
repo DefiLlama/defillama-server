@@ -23412,6 +23412,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#wemix.fi",
     listedAt: 1699439426
   },
+  {
+    id: "3752",
+    name: "Stars League",
+    address: null,
+    symbol: "-",
+    url: "http://starsleague.com/",
+    description: "Buy, Sell & Trade Access to your favorite creators, athletes & artists",
+    chain: "Chiliz",
+    logo: `${baseIconsUrl}/stars-league.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Chiliz"],
+    oracles: [],
+    forkedFrom: ["friend.tech"],
+    module: "stars-league/index.js",
+    twitter: "StarsLeague",
+    listedAt: 1699439426
+  },
 ]
 
 export default data3

@@ -1525,6 +1525,12 @@ export default {
     "metavault-v3": {
         parentId: "Metavault",
         "enabled": true,
-        "id": "3750"
+        "id": "3750",
+        protocolsData: {
+            "v3": {
+                "id": "3750",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

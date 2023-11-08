@@ -23390,6 +23390,28 @@ const data3: Protocol[] = [
     listedAt: 1699390593,
     parentProtocol: "parent#metavault"
   },
+  {
+    id: "3751",
+    name: "WEMIX Concentrated Range Deposit",
+    address: null,
+    symbol: "-",
+    url: "https://wemix.fi",
+    description: "Uniswap V3 fork on the WEMIX network",
+    chain: "WEMIX",
+    logo: `${baseIconsUrl}/wemix-concentrated-range-deposit.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["WEMIX"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "wemix-v3/index.js",
+    twitter: "WemixNetwork",
+    parentProtocol: "parent#wemix.fi",
+    listedAt: 1699439426
+  },
 ]
 
 export default data3

@@ -12241,7 +12241,7 @@ const data3: Protocol[] = [
     name: "The Ennead Farm",
     address: "arbitrum:0x40301951Af3f80b8C1744ca77E55111dd3c1dba1",
     symbol: "needRAM",
-    url: "https://beta.ennead.farm/home",
+    url: "https://app.ennead.farm/home",
     description: "The Ennead allows ve(3,3) LP depositors and veNFT holders to maximize their returns.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/the-ennead-farm.jpg`,

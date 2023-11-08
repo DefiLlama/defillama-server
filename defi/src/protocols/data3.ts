@@ -23396,7 +23396,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://wemix.fi",
-    description: "Uniswap V3 fork on the WEMIX network",
+    description: "Concentrated Range deposit is a liquidity provisioning method where liquidity providers deposit their assets into predefined exchange rate ranges. Concentrated Range deposit service allows users to selectively supply liquidity to exchange rate ranges with active trading, offering a more efficient way to increase profit potentially than the full range deposit service.",
     chain: "WEMIX",
     logo: `${baseIconsUrl}/wemix-concentrated-range-deposit.jpg`,
     audits: "0",

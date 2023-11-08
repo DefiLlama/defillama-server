@@ -275,6 +275,7 @@ export default {
         "id": "1461"
     },
     "metavault.trade": {
+        parentId: "MetaVault",
         "enabled": true,
         "id": "1801"
     },
@@ -1520,5 +1521,10 @@ export default {
     "caviarnine-shape-liquidity": {
         "enabled": true,
         "id": "3645"
+    },
+    "metavault-v3": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3750"
     }
 } as AdaptorsConfig

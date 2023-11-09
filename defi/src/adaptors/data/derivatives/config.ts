@@ -459,5 +459,9 @@ export default {
     "intent-x": {
         "enabled": true,
         "id": "3747"
+    },
+    "equation": {
+        "enabled": true,
+        "id": "3726"
     }
 } as AdaptorsConfig

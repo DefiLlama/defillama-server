@@ -23680,7 +23680,7 @@ const data3: Protocol[] = [
     address: "polygon:0xe88Ac56C4dedc973a0a26C062F0F07568dfb23FA",
     symbol: "BOOM",
     url: "https://boom.trading",
-    description: "Stable yield or degen trading? Why not both",
+    description: "Polygon 2% reflect token with yield farming and buybacks",
     chain: "Polygon",
     logo: `${baseIconsUrl}/boom.jpg`,
     audits: "0",

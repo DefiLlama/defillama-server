@@ -1536,5 +1536,9 @@ export default {
     "xoxno": {
         "enabled": true,
         "id": "3753"
+    },
+    "equation": {
+        "enabled": true,
+        "id": "3726"
     }
 } as AdaptorsConfig

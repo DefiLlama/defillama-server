@@ -2164,5 +2164,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "equation": {
+        "enabled": true,
+        "id": "3726"
     }
 } as AdaptorsConfig

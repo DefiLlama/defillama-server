@@ -44,6 +44,12 @@ provider:
         - dynamodb:BatchGetItem
       Resource:
         - "arn:aws:dynamodb:eu-central-1:856461987125:table/prod-coins-table"
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:BatchGetItem
+      Resource:
+        - "arn:aws:dynamodb:eu-central-1:856461987125:table/auth"
     - Effect: Allow # Lambda logs on cloudwatch
       Action:
         - logs:CreateLogGroup
@@ -792,18 +798,6 @@ functions:
     environment:
       DL_NEWS_API: ${file(./env.js):DL_NEWS_API}
       DL_NEWS_ACCESS_TOKEN: ${file(./env.js):DL_NEWS_ACCESS_TOKEN}
-  checkSubscriptions:
-    handler: src/api-keys/checkSubscriptions.default
-    timeout: 30
-    events:
-      - schedule: cron(0 * * * ? *)
-  getApiKey:
-    handler: src/api-keys/getApiKey.default
-    timeout: 30
-    events:
-      - http:
-          path: auth/api-key
-          method: post
 
 resources:
   # CORS for api gateway errors

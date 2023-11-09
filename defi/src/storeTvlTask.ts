@@ -184,3 +184,8 @@ process.on('uncaughtException', (err) => {
   console.log(err.name, err.message);
   console.log('UNHANDLED EXCEPTION! Shutting down...');
 })
+
+setTimeout(() => {
+  console.log('Timeout! Shutting down...');
+  process.exit(1);
+}, 1000 * 60 * 60 * 0.5); // 30 minutes

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { deleteProtocolCache } from '../../utils/r2'
-import { deleteFromPGCache, getDailyTvlCacheId,  } from '../../api2/db'
+import { deleteFromPGCache, getDailyTvlCacheId,  initializeTVLCacheDB } from '../../api2/db'
 
 export async function clearProtocolCache(protocolName: string) {
   const { data: { protocols } } = await axios.get('https://defillama-datasets.llama.fi/lite/protocols2')
@@ -14,8 +14,10 @@ export async function clearProtocolCache(protocolName: string) {
 }
 
 export async function clearProtocolCacheById(protocolId: string) {
+  await initializeTVLCacheDB()
   await deleteProtocolCache(protocolId)
   const pgCaceId = getDailyTvlCacheId(protocolId)
   await deleteFromPGCache(pgCaceId) // clear postgres cache as well
+  // add command do it via discord bot
   return console.log("Protocol cache deleted id: ", protocolId)
 }

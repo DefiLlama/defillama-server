@@ -79,13 +79,13 @@ async function getTokenPrices(chain: string, timestamp: number) {
       calls: contracts.pools.map((target: string) => ({ target })),
       chain,
       block,
-    }).then((t: any) => t.toLowerCase()),
+    }).then((r: any) => r.map((t: string) => t.toLowerCase())),
     multiCall({
       abi: abi.tokenB,
       calls: contracts.pools.map((target: string) => ({ target })),
       chain,
       block,
-    }).then((t: any) => t.toLowerCase()),
+    }).then((r: any) => r.map((t: string) => t.toLowerCase())),
   ]);
 
   const uniqueAssets = [...new Set([...tokenAs, ...tokenBs])];

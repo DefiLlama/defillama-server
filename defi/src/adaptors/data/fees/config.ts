@@ -1213,7 +1213,7 @@ export default {
         "id": "324"
     },
     "meridian-trade": {
-        "enabled": true,
+        "enabled": false,
         "id": "3386"
     },
     "baseswap": {

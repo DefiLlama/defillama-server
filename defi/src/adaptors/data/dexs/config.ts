@@ -1924,12 +1924,12 @@ export default {
         "id": "3365"
     },
     "meridian-trade": {
-        "enabled": true,
+        "enabled": false,
         "id": "3386",
         "protocolsData": {
             "swap": {
                 "id": "3386",
-                "enabled": true,
+                "enabled": false,
             }
         }
     },

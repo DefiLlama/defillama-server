@@ -23538,6 +23538,54 @@ const data3: Protocol[] = [
     twitter: "tagdottech",
     listedAt: 1699529559
   },
+  {
+    id: "3758",
+    name: "Goku Money",
+    address: "manta:0x387660BC95682587efC12C543c987ABf0fB9778f",
+    symbol: "GOK",
+    url: "https://goku.money",
+    description: "Goku Money is a Decentralized Reserve Bank and the issuer of GAI, a fully backed, capital-efficient stablecoin hard-pegged to the US Dollar.",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/goku-money.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Manta"],
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    module: "goku-money/index.js",
+    twitter: "goku_stable",
+    audit_links: [
+                   "https://github.com/Goku-Money/audits/blob/2349a6e0798d656a013d8c447155591e6eec1e08/CertiK%20Audit%20Report.pdf",
+                   "https://github.com/Goku-Money/audits/blob/2349a6e0798d656a013d8c447155591e6eec1e08/PeckShield%20Audit%20Report.pdf",
+                   "https://github.com/Goku-Money/audits/blob/2349a6e0798d656a013d8c447155591e6eec1e08/SlowMist%20Audit%20Report.pdf"
+                 ],
+    listedAt: 1699530655
+  },
+  {
+    id: "3759",
+    name: "Derivio",
+    address: null,
+    symbol: "-",
+    url: "https://derivio.xyz",
+    description: "Institutional-grade decentralized derivatives ecosystem. Permissionlessly trade, earn, and compose.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/derivio.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["zkSync Era"],
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    module: "derivio/index.js",
+    twitter: "derivio_xyz",
+    audit_links: ["https://derivio.gitbook.io/doc/security#audits"],
+    listedAt: 1699530665
+  },
 ]
 
 export default data3

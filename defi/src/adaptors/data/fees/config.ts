@@ -1532,5 +1532,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "xoxno": {
+        "enabled": true,
+        "id": "3753"
     }
 } as AdaptorsConfig

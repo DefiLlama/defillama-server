@@ -23632,6 +23632,48 @@ const data3: Protocol[] = [
                  ],
     listedAt: 1699542025
   },
+  {
+    id: "3762",
+    name: "xfam.tech",
+    address: null,
+    symbol: "-",
+    url: "https://xfam.tech",
+    description: "Join now and shape the future of connectivity and profitability with our fam.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/xfam.tech.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Starknet"],
+    oracles: [],
+    forkedFrom: [],
+    module: "xfamtech/index.js",
+    twitter: "xfamtech",
+    listedAt: 1699554042
+  },
+  {
+    id: "3763",
+    name: "Mu Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://www.mu.exchange",
+    description: "Stable yield or degen trading? Why not both",
+    chain: "xDai",
+    logo: `${baseIconsUrl}/mu-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["xDai"],
+    oracles: [],
+    forkedFrom: [],
+    module: "mu-exchange/index.js",
+    twitter: "muexchange_",
+    listedAt: 1699554042
+  },
 ]
 
 export default data3

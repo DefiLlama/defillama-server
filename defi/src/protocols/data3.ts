@@ -23586,6 +23586,52 @@ const data3: Protocol[] = [
     audit_links: ["https://derivio.gitbook.io/doc/security#audits"],
     listedAt: 1699530665
   },
+  {
+    id: "3760",
+    name: "Drawtech",
+    address: null,
+    symbol: "-",
+    url: "https://www.draw.tech",
+    description: "An fully onchain drawing game.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/draw-tech.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "draw-tech/index.js",
+    twitter: "0xsmallbrain",
+    listedAt: 1699542003
+  },
+  {
+    id: "3761",
+    name: "HOPR",
+    address: "0xf5581dfefd8fb0e4aec526be659cfab1f8c781da",
+    symbol: "HOPR",
+    url: "https://hoprnet.org",
+    description: "The HOPR protocol provides full control over privacy, data and metadata. HOPR lays the groundwork for a more sovereign and safe internet. For everyone.",
+    chain: "xDai",
+    logo: `${baseIconsUrl}/hopr.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "hopr",
+    cmcId: "6520",
+    category: "Privacy",
+    chains: ["xDai"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hopr/index.js",
+    twitter: "hoprnet",
+    audit_links: [
+                   "https://chainsecurity.com/security-audit/hoprnet-node-management-module",
+                   "https://chainsecurity.com/security-audit/hopr-payment-channels"
+                 ],
+    listedAt: 1699542025
+  },
 ]
 
 export default data3

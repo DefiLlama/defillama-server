@@ -141,4 +141,5 @@ export default {
   mooBvm: require("./other"),
   mux: require("./yield/mux"),
   velgd: require("./other"),
+  maverick: require("./markets/maverick"),
 };

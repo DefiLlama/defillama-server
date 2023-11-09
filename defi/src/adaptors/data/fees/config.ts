@@ -977,6 +977,7 @@ export default {
         id: "2376"
     },
     "liondex": {
+        disabled: true,
         enabled: true,
         id: "2898"
     },

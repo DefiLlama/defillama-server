@@ -10200,7 +10200,7 @@ const data3: Protocol[] = [
     address: "fantom:0x1e89e41dF23162d05acaA18539E6173d59640000",
     symbol: "VMX",
     url: "https://voodoo.trade",
-    description: "Voodoo Trade is the ultimate ETH-focused perpetual DEX on Base Network. Voodoo caters solely to the ETH/USDC pair, offering the deepest liquidity and most competitive margin fees available, on par with CEX rates. LPs can earn real yield from both margin trades and swaps on Base's most highly traded pair, with no need to hold any tokens besides ETH and stables.",
+    description: "Voodoo Trade is the ultimate FTM-focused perpetual DEX on Fantom Network. Voodoo caters solely to FTM/stable pairs, offering the deepest liquidity and most competitive margin fees available, on par with CEX rates. LPs can earn real yield from both margin trades and swaps on Fantom.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/voodoo-trade.jpg`,
     audits: "2",

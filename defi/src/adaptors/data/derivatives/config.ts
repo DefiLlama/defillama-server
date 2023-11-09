@@ -434,7 +434,7 @@ export default {
         }
     },
     "tigris": {
-        "enabled": true,
+        "enabled": false,
         "id": "3129"
     },
     "paradex": {

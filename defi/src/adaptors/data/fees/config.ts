@@ -1255,7 +1255,7 @@ export default {
         "id": "3464"
     },
     "tigris": {
-        "enabled": true,
+        "enabled": false,
         "id": "3129"
     },
     "aerodrome": {

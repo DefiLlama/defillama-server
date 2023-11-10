@@ -23766,7 +23766,7 @@ const data3: Protocol[] = [
     address: "core:0x14fEE6cD1B0723a2BD1b564859bC92389e1aAE22",
     symbol: "DXL",
     url: "https://dxldao.org",
-    description: "DeFO is a SocialFi App built upon the decentralized social protocol DFON",
+    description: "Decentralized X Land - DAO Development and innovation through a uniquely designed program to foster a thriving ecosystem",
     chain: "CORE",
     logo: `${baseIconsUrl}/dexland.jpg`,
     audits: "0",

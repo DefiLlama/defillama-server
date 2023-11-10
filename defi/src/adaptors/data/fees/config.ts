@@ -1541,5 +1541,9 @@ export default {
     "equation": {
         "enabled": true,
         "id": "3726"
+    },
+    "hopr": {
+        "enabled": true,
+        "id": "3761"
     }
 } as AdaptorsConfig

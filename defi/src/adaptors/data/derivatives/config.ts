@@ -9,7 +9,7 @@ export default {
         parentId: "GMX",
         "protocolsData": {
             "derivatives": {
-                displayName: "GMX - Derivatives",
+                displayName: "GMX - Derivatives V1",
                 "id": "337",
                 "enabled": true
             }
@@ -293,7 +293,8 @@ export default {
     "gmx-v2-trade": {
         parentId: "GMX",
         "enabled": true,
-        "id": "3365"
+        "id": "3365",
+        displayName: "GMX - Derivatives V2",
     },
     "meridian-trade": {
         "enabled": false,

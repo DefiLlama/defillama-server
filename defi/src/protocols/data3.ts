@@ -17639,7 +17639,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Arbitrum", "Optimism", "Ethereum", "Polygon"],
+    chains: ["Arbitrum", "Optimism", "Polygon"],
     module: "hodlify/index.js",
     oracles: [],
     forkedFrom: [],

@@ -21409,7 +21409,7 @@ const data2: Protocol[] = [
     module: "Equalizer/index.js",
     twitter: "Equalizer0x",
     forkedFrom: ["Solidly"],
-    oracles: ["TWAP"],
+    oracles: [],
     listedAt: 1670154453,
     parentProtocol: "parent#equalizer",
   },
@@ -29261,7 +29261,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "ramses/index.js",
     twitter: "RamsesExchange",
-    oracles: ["TWAP"],
+    oracles: [],
     forkedFrom: ["Solidly"],
     parentProtocol: "parent#ramses-exchange",
     listedAt: 1678883899

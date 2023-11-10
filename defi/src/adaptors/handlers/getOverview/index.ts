@@ -46,7 +46,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (!enableAlerts)
         delete response.body.errors
 
-    return dayCache(wrapResponseOrRedirect(response.body, `dimensions/${cacheKey}`));
+    return wrapResponseOrRedirect(dayCache(response.body), `dimensions/${cacheKey}`);
 };
 
 

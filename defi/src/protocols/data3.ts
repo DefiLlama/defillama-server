@@ -22182,7 +22182,7 @@ const data3: Protocol[] = [
     module: "coffeefi/index.js",
     twitter: "coffee_vedex",
     forkedFrom: ["Solidly"],
-    oracles: [],
+    oracles: ["Pyth"],
     listedAt: 1698272432
   },
   {
@@ -23668,7 +23668,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["xDai"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: [],
     module: "mu-exchange/index.js",
     twitter: "muexchange_",

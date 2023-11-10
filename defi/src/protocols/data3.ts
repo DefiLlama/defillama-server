@@ -3051,7 +3051,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["zkSync Era"],
+    chains: ["zkSync Era", "Kava", "Fantom"],
     oracles: [],
     forkedFrom: ["Uniswap V3"],
     module: "wagmi-com/index.js",

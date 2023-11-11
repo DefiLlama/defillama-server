@@ -23805,6 +23805,29 @@ const data3: Protocol[] = [
     audit_links: ["https://www.cyberscope.io/audits/reyld"],
     listedAt: 1699615528
   },
+  {
+    id: "3770",
+    name: "Kamino Lend",
+    address: null,
+    symbol: "-",
+    url: "https://kamino.finance/",
+    description: "Kamino Lend (K-Lend) is a novel peer-to-pool borrowing primitive designed as foundational infrastructure to power complex financial products with leverage and automation and as a decentralized matchmaker between borrowers and lenders",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/kamino.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Solana"],
+    oracles: ["Scope", "Pyth", "Switchboard"],
+    forkedFrom: [],
+    module: "kamino-lending/index.js",
+    twitter: "kamino_finance",
+    audit_links: ["https://github.com/hubbleprotocol/kamino-audits"],
+    listedAt: 1699615528,
+    parentProtocol: "parent#kamino-finance"
+  },  
 ]
 
 export default data3

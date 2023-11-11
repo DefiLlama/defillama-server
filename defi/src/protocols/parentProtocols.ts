@@ -3049,6 +3049,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["swapsicledex"],
     twitter: "SwapsicleDEX",
   },
+  {
+    id: "parent#kamino-finance",
+    name: "Kamino Finance",
+    url: "https://kamino.finance/",
+    description: "Kamino: Solana's lending, liquidity & leverage venue",
+    logo: `${baseIconsUrl}/kamino.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["hubbleprotocol"],
+    twitter: "kamino_finance",
+  },
 ];
 
 export default parentProtocols;

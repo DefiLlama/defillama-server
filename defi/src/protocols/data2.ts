@@ -23729,7 +23729,7 @@ const data2: Protocol[] = [
       "FiRM is a Fixed Rate Market protocol to borrow the DOLA usd stablecoin at a fixed-rate with the DOLA Borrowing Right token DBR.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/inverse-finance-firm.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null, //Bug Bounty contest on Code4rena with 198 white-hat eyes on it and 140 reports
     gecko_id: "inverse-finance",
     cmcId: "8720",
@@ -23740,6 +23740,7 @@ const data2: Protocol[] = [
     twitter: "InverseFinance",
     forkedFrom: [],
     parentProtocol: "parent#inverse-finance",
+    audit_links: ["https://www.inverse.finance/audits"],
     listedAt: 1673620866
   },
   {

@@ -3043,7 +3043,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://wagmi.com/",
-    description: "Uniswap V3 fork on zkSync Era",
+    description: "Uniswap V3 fork",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/wagmi.png`,
     audits: "3",

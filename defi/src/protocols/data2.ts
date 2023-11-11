@@ -3781,7 +3781,7 @@ const data2: Protocol[] = [
     name: "Burrow",
     address: "near:-",
     symbol: "BRRR",
-    url: "https://app.burrow.cash/#/deposit",
+    url: "https://burrow.finance/",
     description: "Burrow is a decentralized, non-custodial pool-based interest rates platform that enables users to supply assets to earn interest, and to borrow against them to unlock liquidity. Burrow is similar in nature to Aave, Compound, and other pool-based protocols. Burrow runs natively on the NEAR blockchain, a layer 1, proof-of-stake, sharded blockchain with a WebAssembly runtime. The Burrow protocol's smart contracts are written in Rust.",
     chain: "Near",
     logo: `${baseIconsUrl}/burrow.png`,
@@ -3794,7 +3794,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "burrow.cash/index.js",
-    twitter: "burrowcash",
+    twitter: "burrow_finance",
     listedAt: 1647296278,
     github: ["NearDeFi"]
   },

@@ -1112,7 +1112,6 @@ export default {
         "id": "799"
     },
     "aux-exchange": {
-        disabled: true,
         "enabled": true,
         "id": "2213"
     },

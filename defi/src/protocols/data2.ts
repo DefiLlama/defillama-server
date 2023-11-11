@@ -17016,7 +17016,7 @@ const data2: Protocol[] = [
     cmcId: "18248",
     category: "Yield Aggregator",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["Chainlink", "RedStone"],
     forkedFrom: [],
     module: "sommelier/index.js",
     twitter: "sommfinance",

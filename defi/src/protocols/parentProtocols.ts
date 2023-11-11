@@ -3051,7 +3051,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#kamino-finance",
-    name: "Kamino Finance",
+    name: "Kamino",
     url: "https://kamino.finance/",
     description: "Kamino: Solana's lending, liquidity & leverage venue",
     logo: `${baseIconsUrl}/kamino.jpg`,

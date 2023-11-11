@@ -37,6 +37,8 @@ export default async function craftParentProtocol({
 
   const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap })
 
+  res.otherProtocols = [parentProtocol.name, ...childProtocols.map((p: any) => p.name)]
+
   const debug_totalTime = performance.now() - debug_t0
   const debug_dbTime = debug_t1 - debug_t0
   sdk.log(`${parentProtocol.name} |${useHourlyData ? 'h' : 'd'} | T(all): ${(debug_totalTime / 1e3).toFixed(3)}s | T(child) ${(debug_dbTime / 1e3).toFixed(3)}s`)

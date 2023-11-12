@@ -23829,7 +23829,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/hubbleprotocol/kamino-audits"],
     listedAt: 1699615528,
     parentProtocol: "parent#kamino-finance"
-  },  
+  },
+  {
+    id: "3771",
+    name: "PattieSwap",
+    address: "bsc:0x0eE4024E8d5ae9afFCe26f692028407dD2050B7D",
+    symbol: "PATTIE",
+    url: "https://pattieswap.finance/",
+    description: "PattieSwap is a decentralized exchange built on top of the Binance Smart Chain (BSC) that allows users to conduct swaps by its automated market maker (AMM)",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/pattieswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance"],
+    oracles: ["Binance"],
+    forkedFrom: ["Uniswap V2"],
+    module: "PattieSwap/index.js",
+    twitter: "PattieSwap",
+    listedAt: 1699817787,
+  }, 
 ]
 
 export default data3

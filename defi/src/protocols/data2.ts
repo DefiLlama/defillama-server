@@ -10200,7 +10200,7 @@ const data2: Protocol[] = [
     cmcId: "1058",
     category: "Derivatives",
     chains: ["Fantom"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: [],
     module: "unidex/index.js",
     twitter: "UniDexFinance",

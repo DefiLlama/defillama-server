@@ -23383,7 +23383,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Linea", "Scroll"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: ["Uniswap V3"],
     module: "metavault-v3/index.js",
     twitter: "MetavaultTRADE",

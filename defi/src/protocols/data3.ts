@@ -19364,7 +19364,9 @@ const data3: Protocol[] = [
     forkedFrom: ["Wombat Exchange"],
     oracles: ["Chainlink"],
     audit_links: ["https://github.com/EtherAuthority/Audit/blob/main/Bass%20Exchange.pdf"],
-    listedAt: 1695898552
+    listedAt: 1695898552,
+    rugged: true,
+    deadUrl: true
   },
   {
     id: "3569",

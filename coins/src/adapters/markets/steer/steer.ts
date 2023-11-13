@@ -115,9 +115,9 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
     const api = await getApi(chain.identifier, timestamp)
 
     const query = `{vaults(first: 1000, where: {totalLPTokensIssued_not: "0", lastSnapshot_not: "0"}) {id}}`
-    const data = await request(chain.subgraphEndpoint, query);
+    const data: any = await request(chain.subgraphEndpoint, query);
     
-    const vaults =  data.vaults.map((vault) => vault.id)
+    const vaults =  data.vaults.map((vault: any) => vault.id)
 
 
     const writes: Write[] = [];
@@ -139,7 +139,7 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
     ])
     const coinData = await getTokenAndRedirectData([...token0s, ...token1s], chain.identifier, timestamp)
 
-    uBalances.forEach(({ token0Bal, token1Bal }: any, i: number) => {
+    uBalances.forEach(({ total0: token0Bal, total1: token1Bal }: any, i: number) => {
         const t0Data = getTokenInfo(token0s[i])
         const t1Data = getTokenInfo(token1s[i])
 
@@ -152,6 +152,7 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
         const t1confidence = t1Data.confidence ?? 0.8
         const confidence = t0confidence < t1confidence ? t0confidence : t1confidence
 
+        if (isNaN(price)) return 
         addToDBWritesList(writes, chain.identifier, vaults[i], price, decimals, symbols[i], timestamp, 'steer', confidence)
         })
 

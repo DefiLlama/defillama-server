@@ -142,4 +142,5 @@ export default {
   mux: require("./yield/mux"),
   velgd: require("./other"),
   maverick: require("./markets/maverick"),
+  steer: require("./markets/steer"),
 };

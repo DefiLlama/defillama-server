@@ -814,7 +814,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "get-protocol/index.js",
     twitter: "GetProtocol",
     audit_links: [
       "https://www.get-protocol.io/files/GET-Protocol-Token-Sale-Matthew-Di-Ferrante.pdf",

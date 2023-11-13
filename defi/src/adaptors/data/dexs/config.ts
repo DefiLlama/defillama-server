@@ -528,6 +528,7 @@ export default {
         "id": "1274"
     },
     "wagyuswap": {
+        disabled: true,
         "enabled": true,
         "id": "1003"
     },

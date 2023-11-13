@@ -23670,7 +23670,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["xDai"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: [],
     module: "mu-exchange/index.js",
     twitter: "muexchange_",

@@ -2004,6 +2004,17 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 88888,
   },
+  "LightLink": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 1890
+  }
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2509,6 +2520,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Horizen EON"
     case "chz":
       return "Chiliz"
+    case "lightlink_phoenix":
+      return "LightLink"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

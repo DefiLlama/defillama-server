@@ -3061,6 +3061,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["hubbleprotocol"],
     twitter: "kamino_finance",
   },
+  {
+    id: "parent#chimeradex",
+    name: "Chimeradex",
+    url: "https://app.chimeradex.com/",
+    description: "Swap, finance and earn built on the leading liquidity lending protocol",
+    logo: `${baseIconsUrl}/chimeradex.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["chimeradex"],
+    twitter: "Chi_meradex",
+  },
 ];
 
 export default parentProtocols;

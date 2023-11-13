@@ -2,10 +2,12 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { sendMessage } from "./utils/discord";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import postgres from "postgres";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const hours = 2.5;
 
 const handler = async (_event: any) => {
+  await setEnvSecrets()
   const webhookUrl = process.env.STALE_COINS_ADAPTERS_WEBHOOK!;
   const now = getCurrentUnixTimestamp();
   const sql = postgres(process.env.COINS_DB!);

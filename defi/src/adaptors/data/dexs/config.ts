@@ -255,6 +255,7 @@ export default {
         "id": "419"
     },
     "platypus": {
+        disabled: true,
         "enabled": true,
         "id": "944"
     },

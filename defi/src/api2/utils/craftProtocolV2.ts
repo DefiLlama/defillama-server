@@ -1,10 +1,8 @@
 import type { Protocol } from "../../protocols/types";
-import protocols from "../../protocols/data";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "../../utils/normalizeChain";
 import type { IProtocolResponse, } from "../../types";
-import parentProtocols from "../../protocols/parentProtocols";
 import { getAvailableMetricsById } from "../../adaptors/data/configs";
-import { getRaises, getCachedMCap, CACHE_KEYS, cacheAndRespond, } from "../cache";
+import { getRaises, getCachedMCap, CACHE_KEYS, cacheAndRespond, cache, } from "../cache";
 import { getAllProtocolItems, getDailyTvlCacheId, getLatestProtocolItem, readFromPGCache, writeToPGCache, } from "../db/index";
 import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
 import {
@@ -192,11 +190,14 @@ export default async function craftProtocolV2({
     response.tokens = [];
   }
 
-  const childProtocolsNames = protocolData.parentProtocol
-    ? protocols.filter((p) => p.parentProtocol === protocolData.parentProtocol).map((p) => p.name)
-    : [];
+  let parentName = null;
+  let childProtocolsNames: string[] = [];
+  let parentProtocolId = protocolData.parentProtocol;
 
-  const parentName = parentProtocols.find((p) => p.id === protocolData.parentProtocol)?.name ?? null;
+  if (parentProtocolId) {
+    parentName = cache.metadata.parentProtocols.find((p) => p.id === parentProtocolId)?.name ?? null;
+    childProtocolsNames = cache.metadata.protocols.filter((p) => p.parentProtocol === parentProtocolId).map((p) => p.name);
+  }
 
   if (childProtocolsNames.length > 0 && parentName) {
     response.otherProtocols = [parentName, ...childProtocolsNames];

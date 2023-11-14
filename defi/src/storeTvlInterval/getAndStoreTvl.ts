@@ -17,6 +17,8 @@ import BigNumber from "bignumber.js";
 import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
+import { LogArray } from "@defillama/sdk/build/types";
+import { storeAllTokens, storeTokenOwnerLogs } from "../../l2/layer2pg";
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -51,6 +53,7 @@ async function getTvl(
   staleCoins: StaleCoins,
   options: StoreTvlOptions = {} as StoreTvlOptions
 ) {
+  let chainDashPromises
   for (let i = 0; i < maxRetries; i++) {
     try {
       if (!isFetchFunction) {
@@ -63,12 +66,14 @@ async function getTvl(
           const chain = storedKey.split('-')[0]
           const block = chainBlocks[chain]
           const api = new sdk.ChainApi({ chain, block, timestamp: unixTimestamp, })
+          const logArray: LogArray = [];
           tvlBalances = await tvlFunction(
             unixTimestamp,
             ethBlock,
             chainBlocks,
-            { api, chain, storedKey, block, },
+            { api, chain, storedKey, block, logArray },
           );
+          chainDashPromises = [storeAllTokens(Object.keys(tvlBalances)), storeTokenOwnerLogs(logArray)];
           if (!tvlBalances && Object.keys(api.getBalances()).length) tvlBalances = api.getBalances()
         }
         Object.keys(tvlBalances).forEach((key) => {
@@ -123,6 +128,7 @@ async function getTvl(
       }
     }
   }
+  if (chainDashPromises) await Promise.all(chainDashPromises)
 }
 
 function mergeBalances(key:string, storedKeys:string[], balancesObject:tvlsObject<TokensValueLocked>){
@@ -201,7 +207,8 @@ export async function storeTvl(
         }
         const startTimestamp = getCurrentUnixTimestamp()
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins, {...options, partialRefill, chainsToRefill, cacheData })
+          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins, 
+          {...options, partialRefill, chainsToRefill, cacheData })
         let keyToAddChainBalances = tvlType;
         if(tvlType === "tvl" || tvlType === "fetch"){
           keyToAddChainBalances = "tvl"

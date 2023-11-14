@@ -2165,5 +2165,15 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "derivio": {
+        "enabled": true,
+        "id": "3759",
+        protocolsData: {
+            "swap": {
+                "id": "3759",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

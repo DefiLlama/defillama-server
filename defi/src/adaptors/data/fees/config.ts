@@ -1545,5 +1545,9 @@ export default {
     "hopr": {
         "enabled": true,
         "id": "3761"
+    },
+    "solend": {
+        "enabled": true,
+        "id": "458"
     }
 } as AdaptorsConfig

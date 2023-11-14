@@ -24223,7 +24223,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3790",
-    name: "FrankCoin",
+    name: "Frankencoin",
     address: "0xB58E61C3098d85632Df34EecfB899A1Ed80921cB",
     symbol: "ZCHIF",
     url: "https://frankencoin.com",

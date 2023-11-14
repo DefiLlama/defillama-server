@@ -2,28 +2,8 @@ import postgres from "postgres";
 import { Address, LogArray } from "@defillama/sdk/build/types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { Chain } from "@defillama/sdk/build/general";
+import { DeployerInsert, OwnerInsert, SupplyInsert, TokenInsert } from "./types";
 
-type OwnerInsert = {
-  chain: string;
-  token: Address;
-  holder: Address;
-  amount: number;
-  timestamp?: number;
-};
-type DeployerInsert = {
-  token: Address;
-  deployer: Address;
-  chain: string;
-};
-type TokenInsert = {
-  token: Address;
-  chain: Chain;
-};
-export type SupplyInsert = {
-  token: Address;
-  chain: Chain;
-  supply: number;
-};
 let auth: string[];
 
 export function generateAuth() {
@@ -31,7 +11,7 @@ export function generateAuth() {
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 }
 export async function storeTokenOwnerLogs(logArray?: LogArray): Promise<void> {
-  if (!logArray) return;
+  if (!logArray || !logArray.length) return;
 
   const timestamp = getCurrentUnixTimestamp();
   const inserts: OwnerInsert[] = [];
@@ -89,10 +69,14 @@ export async function storeDeployers(chain: string, deployers: { [token: Address
 export async function storeAllTokens(tokens: string[]) {
   if (!tokens.length) return;
 
-  const inserts: TokenInsert[] = tokens.map((t: string) => {
+  const inserts: TokenInsert[] = [];
+  tokens.map((t: string) => {
     const [chain, token] = t.split(":");
-    return { chain, token };
+    if (!token) return;
+    inserts.push({ chain, token });
   });
+
+  if (!inserts.length) return;
   generateAuth();
   const sql = postgres(auth[0]);
   await sql`
@@ -107,12 +91,12 @@ export async function updateAllTokenSupplies(supplies: SupplyInsert[]) {
   if (!supplies.length) return;
   generateAuth();
   const sql = postgres(auth[0]);
-  const a = await sql`
-    update alltokens
-    set supply = update_data.supply
-    from (values ${sql(supplies)}) as update_data(supply, chain, token)
-    where update_data.token = alltokens.token
-    returning alltokens.token, alltokens.supply;
+  await sql`
+  insert into alltokens
+  ${sql(supplies, "supply", "chain", "token")}
+  on conflict (chain, token)
+  do update
+  set supply = excluded.supply
   `;
   sql.end();
 }
@@ -144,6 +128,22 @@ export async function fetchAllTokens(chain: Chain): Promise<any> {
   const res = await sql`
       select token, supply from alltokens
       where chain = ${chain}
+    `;
+  sql.end();
+
+  const obj: { [token: string]: number | undefined } = {};
+  res.map((t: any) => {
+    obj[t.token] = t.supply;
+  });
+  return obj;
+}
+export async function fetchTokenSupplies(chain: Chain, tokens: Address[]): Promise<any> {
+  generateAuth();
+  const sql = postgres(auth[0]);
+  const res = await sql`
+      select token, supply from alltokens
+      where chain = ${chain} and 
+      token in ${sql(tokens.map((t: string) => t.toLowerCase()))}
     `;
   sql.end();
 

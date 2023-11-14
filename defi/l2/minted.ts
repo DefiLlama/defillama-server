@@ -1,14 +1,15 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getPrices } from "../dimension-adapters/utils/prices";
-import { SupplyInsert, fetchAllTokens, updateAllTokenSupplies } from "./layer2pg";
+import { fetchAllTokens, updateAllTokenSupplies } from "./layer2pg";
+import { SupplyInsert } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { Address } from "@defillama/sdk/build/types";
 import { fetchIncomingTokens } from "./incoming";
-
-const zero = BigNumber(0);
-type Supplies = { [token: string]: number };
+import * as incomingAssets from "./adapters";
+import { DollarValues, Supplies } from "./types";
+import { zero } from "./constants";
 
 async function fetchMissingSupplies(chain: Chain, storedSupplies: Supplies): Promise<Supplies> {
   const calls: { target: string }[] = [];
@@ -39,34 +40,37 @@ async function fetchMissingSupplies(chain: Chain, storedSupplies: Supplies): Pro
 
   return allSupplies;
 }
-export default async function main(params: { chain: Chain; timestamp?: number; searchWidth?: number }) {
+export async function minted(params: {
+  chain: Chain;
+  timestamp?: number;
+  searchWidth?: number;
+}): Promise<DollarValues> {
   const chain = params.chain;
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
-  const incomingTokens: Address[] = Object.keys(await fetchIncomingTokens({ chain, timestamp }));
-  let storedSupplies = await fetchAllTokens(chain);
+  const incomingTokens: Address[] = await incomingAssets[chain](); //Object.keys(await fetchIncomingTokens({ chain, timestamp }));
+  const storedSupplies = await fetchAllTokens(chain);
 
   // filter any tokens that arent natively minted
   incomingTokens.map((t: Address) => {
     if (t in storedSupplies) delete storedSupplies[t];
   });
-  await fetchMissingSupplies(chain, storedSupplies);
+  const supplies = await fetchMissingSupplies(chain, storedSupplies);
 
   const prices = await getPrices(
-    Object.keys(storedSupplies).map((t: string) => `${chain}:${t}`),
+    Object.keys(supplies).map((t: string) => `${chain}:${t}`),
     timestamp
   );
 
-  const mintedAssets: { [asset: string]: BigNumber } = {};
-  Object.keys(storedSupplies).map((t: string) => {
+  const dollarValues: DollarValues = {};
+  Object.keys(supplies).map((t: string) => {
     const priceInfo = prices[`${chain}:${t}`];
-    const supplyData = storedSupplies[t];
-    if (!priceInfo || !supplyData) return;
-    if (!(priceInfo.symbol in mintedAssets)) mintedAssets[priceInfo.symbol] = zero;
+    const supply = supplies[t];
+    if (!priceInfo || !supply) return;
+    if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
     const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
-    const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supplyData.total)).div(decimalShift);
-    mintedAssets[priceInfo.symbol] = BigNumber(usdValue).plus(mintedAssets[priceInfo.symbol]);
+    const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
+    dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
   });
 
-  return;
+  return dollarValues;
 }
-main({ chain: "ethereum" }); // ts-node defi/l2/minted.ts

@@ -1,35 +1,29 @@
-import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { getPrices } from "../dimension-adapters/utils/prices";
-import { fetchTokenOwnerLogs } from "./layer2pg";
-import { Chain } from "@defillama/sdk/build/general";
-import { Address } from "@defillama/sdk/build/types";
-import BigNumber from "bignumber.js";
+import protocols, { Protocol } from "../src/protocols/data";
+import getTVLOfRecordClosestToTimestamp from "../src/utils/shared/getRecordClosestToTimestamp";
+import { getCurrentUnixTimestamp } from "../../high-usage/defiCode/utils/date";
+import { TokenTvlData } from "./types";
+import { aggregateChainTokenBalances } from "./utils";
 
-const zero = BigNumber(0);
-type TokenData = {
-  amount: number;
-  token: Address;
-  holder: Address;
-};
-
-export default async function main(params: { chain: Chain; timestamp?: number; searchWidth?: number }) {
-  const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
-  const bridgedTokens: TokenData[] = await fetchTokenOwnerLogs(params.chain, params.searchWidth);
-  const prices = await getPrices(
-    bridgedTokens.map((t: TokenData) => `${params.chain}:${t.token}`),
-    timestamp
+export default async function fetchBridgeUsdTokenTvls(timestamp: number, searchWidth: number): Promise<TokenTvlData[]> {
+  const bridgeProtocols: Protocol[] = protocols
+    .filter((p: Protocol) => p.category?.toLowerCase() == "bridge")
+    .slice(0, 5);
+  const usdTokenBalances: TokenTvlData[] = await Promise.all(
+    bridgeProtocols.map((b: Protocol) =>
+      getTVLOfRecordClosestToTimestamp(`hourlyUsdTokensTvl#${b.id}`, timestamp, searchWidth)
+    )
   );
 
-  const bridgedOutAssets: { [asset: string]: BigNumber } = {};
-  bridgedTokens.map((t: TokenData) => {
-    const priceInfo = prices[`${params.chain}:${t.token}`];
-    if (!priceInfo) return;
-    if (!(priceInfo.symbol in bridgedOutAssets)) bridgedOutAssets[priceInfo.symbol] = zero;
-    const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
-    const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(t.amount)).div(decimalShift);
-    bridgedOutAssets[priceInfo.symbol] = BigNumber(usdValue).plus(bridgedOutAssets[priceInfo.symbol]);
-  });
+  const missingProtocolTvlsLength = bridgeProtocols.length - usdTokenBalances.length;
+  if (missingProtocolTvlsLength) throw new Error(`missing hourlyUsdTokensTvl for ${missingProtocolTvlsLength} bridges`);
 
-  return;
+  return usdTokenBalances;
 }
-main({ chain: "ethereum" }); // ts-node defi/l2/bridged.ts
+
+export async function outgoing(params: { timestamp?: number; searchWidth?: number } = {}) {
+  const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
+  const searchWidth: number = params.searchWidth ?? 10800; // 3hr either side
+  const dbData = await fetchBridgeUsdTokenTvls(timestamp, searchWidth);
+  const tokenTvls = aggregateChainTokenBalances([dbData]);
+  return tokenTvls;
+}

@@ -1,11 +1,14 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getPrices } from "../dimension-adapters/utils/prices";
-import { fetchTokenOwnerLogs, fetchDeployedContracts } from "./layer2pg";
+import { fetchTokenOwnerLogs, fetchDeployedContracts, fetchTokenSupplies } from "./layer2pg";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import deployers from "./bridgeDeployers";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { Address } from "@defillama/sdk/build/types";
+import * as incomingAssets from "./adapters";
+import { DollarValues } from "./types";
+import { zero } from "./constants";
 
 async function fetchSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
   const res = await multiCall({
@@ -34,7 +37,7 @@ export async function fetchBridgedInTokens(
   params: { endTimestamp: number; startTimestamp?: number }
 ): Promise<{ [token: string]: number }> {
   const endTimestamp: number = params.endTimestamp ?? getCurrentUnixTimestamp();
-  const startTimestamp: number = params.startTimestamp ?? endTimestamp - 2 * 7 * 24 * 60 * 60; // 2w
+  const startTimestamp: number = params.startTimestamp ?? endTimestamp - 7 * 24 * 60 * 60 * 52; // 52w
   const contracts: Address[] = await fetchDeployedContracts({
     chain,
     startTimestamp,
@@ -51,7 +54,7 @@ export async function fetchIncomingTokens(params: {
   const bridgeContracts: string[] = await fetchBridgeContracts(chain);
   return await fetchBridgedInTokens(chain, bridgeContracts, { endTimestamp: params.timestamp });
 }
-export default async function main(params: { chain: Chain; timestamp?: number }) {
+export async function indexed(params: { chain: Chain; timestamp?: number }) {
   const chain = params.chain;
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
   const tokenSupplies = await fetchIncomingTokens({ chain, timestamp });
@@ -73,4 +76,28 @@ export default async function main(params: { chain: Chain; timestamp?: number })
 
   return incoming;
 }
-main({ chain: "ethereum" }); // ts-node defi/l2/minted.ts
+
+export async function incoming(params: { chain: Chain; timestamp?: number }) {
+  const chain = params.chain;
+  const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
+  const tokens = await incomingAssets[chain]();
+  const supplies = await fetchTokenSupplies(chain, tokens);
+
+  const prices = await getPrices(
+    Object.keys(supplies).map((t: string) => `${chain}:${t}`),
+    timestamp
+  );
+
+  const dollarValues: DollarValues = {};
+  Object.keys(supplies).map((t: string) => {
+    const priceInfo = prices[`${chain}:${t}`];
+    const supply = supplies[t];
+    if (!priceInfo || !supply) return;
+    if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
+    const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
+    const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
+    dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
+  });
+
+  return dollarValues;
+}

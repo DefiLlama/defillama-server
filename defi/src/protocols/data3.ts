@@ -24310,6 +24310,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#notional",
     listedAt: 1699978650
   },
+  {
+    id: "3794",
+    name: "9inch",
+    address: "pulse:0x3ca80d83277e721171284667829c686527B8b3c5",
+    symbol: "9INCH",
+    url: "https://app.9inch.io/?chain=pulsechain",
+    description: "Built by old-school Pulsicans and Hexicans who have been in the community for several years, we've been working on this in collaboration with the wider PulseChain community, as an answer to a need in the market for a truly fun, engaging, and open platform for the masses!",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/9inch.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Pulse"],
+    module: "9inch-io/index.js",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    twitter: "9inch_io",
+    listedAt: 1699980736
+  },
 ]
 
 export default data3

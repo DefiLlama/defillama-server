@@ -15,10 +15,10 @@ function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[
     if("wrongLiquidity" in p && p.wrongLiquidity === true){
         return
     }
-    let symbol:string|undefined, address:string|undefined|null;
+    let symbol:string|undefined|null, address:string|undefined|null;
     if("symbol" in p){
         symbol = p.symbol
-        address = p.address
+        address = (p as any).address
     } else {
         const children = protocols.filter((child) => child.parentProtocol === p.id)
         symbol = children.find((child) => child.symbol)?.symbol
@@ -78,7 +78,7 @@ const transformChainName = (address:string)=>{
 
 async function getDexPools(){
     const [pools, config, cgCoins, bridgedCoinsRaw] = await Promise.all([
-        fetch(`https://yields.llama.fi/allPools`).then(r => r.json()),
+        fetch(`https://yields.llama.fi/pools`).then(r => r.json()),
         fetch(`https://api.llama.fi/config/yields`).then(r => r.json()),
         fetch(`https://api.coingecko.com/api/v3/coins/list?include_platform=true`).then(r => r.json()),
         fetch(`https://defillama-datasets.llama.fi/bridgedTokens.json`).then(r => r.json())
@@ -92,7 +92,7 @@ async function getDexPools(){
         bridgedCoins[from].push(to)
         bridgedCoins[to].push(from)
     })
-    const dexPools = (pools as any[]).filter(
+    const dexPools = (pools.data as any[]).filter(
         (p) => config.protocols[p.project]?.category === "Dexes" && !excludedPools.includes(p.pool))
     return {dexPools, cgCoins, bridgedCoins}
 }

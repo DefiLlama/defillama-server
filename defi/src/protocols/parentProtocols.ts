@@ -3084,6 +3084,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "hummusdefi",
   },
+  {
+    id: "parent#voodoo-trade",
+    name: "Voodoo Trade",
+    url: "https://voodoo.trade",
+    description: "Voodoo Trade is the ultimate ETH-focused perpetual DEX on Base Network. Voodoo caters solely to the ETH/USDC pair, offering the deepest liquidity and most competitive margin fees available, on par with CEX rates. LPs can earn real yield from both margin trades and swaps on Base's most highly traded pair, with no need to hold any tokens besides ETH and stables. Voodoo is a fair launch platform with support from an array of Base Ecosystem stakeholders, and implements a long-term oriented tokenomics system that is the first of its kind for perpetual DEXs.",
+    logo: `${baseIconsUrl}/voodoo-trade.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TradeVoodoo",
+    github: ['voodoo-trade'],
+  },
 ];
 
 export default parentProtocols;

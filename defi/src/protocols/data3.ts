@@ -10196,13 +10196,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3156",
-    name: "Voodoo Trade",
+    name: "Voodoo Trade Fantom",
     address: "fantom:0x1e89e41dF23162d05acaA18539E6173d59640000",
     symbol: "VMX",
     url: "https://voodoo.trade",
     description: "Voodoo Trade is the ultimate FTM-focused perpetual DEX on Fantom Network. Voodoo caters solely to FTM/stable pairs, offering the deepest liquidity and most competitive margin fees available, on par with CEX rates. LPs can earn real yield from both margin trades and swaps on Fantom.",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/voodoo-trade.jpg`,
+    logo: `${baseIconsUrl}/voodoo-trade-fantom.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -10214,7 +10214,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/voodoo-trade/voodoo-contracts/blob/master/voodoo-audits/PeckShield-Audit-Report-Voodoo-v1.0.pdf"],
     oracles: ["Chainlink"],
     forkedFrom: ["GMX V1"],
-    github: ['voodoo-trade'],
+    parentProtocol: "parent#voodoo-trade",
     listedAt: 1687785853
   },
   {
@@ -24215,10 +24215,9 @@ const data3: Protocol[] = [
     category: "Yield",
     chains: ["Metis"],
     module: "hummus-weighted/index.js",
-    forkedFrom: [],
+    forkedFrom: ["Balancer V2"],
     oracles: [],
     twitter: "hummusdefi",
-    parentProtocol: "parent#hummus-exchange",
     listedAt: 1699970029
   },
   {
@@ -24264,6 +24263,28 @@ const data3: Protocol[] = [
     twitter: "Maya_Protocol",
     audit_links: ["https://maya-cdn.s3.amazonaws.com/Halborn/Cosmos_Security_Final.pdf", "https://maya-cdn.s3.amazonaws.com/Halborn/Liquidity_Auction_Final.pdf", "https://maya-cdn.s3.amazonaws.com/Halborn/Liquidity_Auction_Tiers_Final.pdf"],
     listedAt: 1699974081
+  },
+  {
+    id: "3792",
+    name: "Voodoo Trade Base",
+    address: "base:0x44d05c7Bf593b4cC4322088fFCa35613079E8D37",
+    symbol: "VMX",
+    url: "https://voodoo.trade",
+    description: "Voodoo Trade is the ultimate ETH-focused perpetual DEX on Base Network. Voodoo caters solely to the ETH/USDC pair, offering the deepest liquidity and most competitive margin fees available, on par with CEX rates. LPs can earn real yield from both margin trades and swaps on Base's most highly traded pair, with no need to hold any tokens besides ETH and stables. Voodoo is a fair launch platform with support from an array of Base Ecosystem stakeholders, and implements a long-term oriented tokenomics system that is the first of its kind for perpetual DEXs.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/voodoo-trade-base.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "voodoo-trade-base/index.js",
+    forkedFrom: ["GMX V1"],
+    oracles: ["Chainlink"],
+    twitter: "TradeVoodoo",
+    audit_links: ["https://github.com/voodoo-trade/voodoo-contracts/blob/master/voodoo-audits/PeckShield-Audit-Report-Voodoo-v1.0.pdf"],
+    listedAt: 1699978530
   },
 ]
 

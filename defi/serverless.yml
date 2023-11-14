@@ -243,7 +243,7 @@ functions:
   protocolsLiquidity:
     handler: src/storeProtocolsLiquidity.default
     memorySize: 1000
-    timeout: 60
+    timeout: 900
     events:
       - schedule: cron(18 * * * ? *)
     environment:

@@ -24223,9 +24223,9 @@ const data3: Protocol[] = [
   },
   {
     id: "3790",
-    name: "Frankencoin",
+    name: "FrankenCoin",
     address: "0xB58E61C3098d85632Df34EecfB899A1Ed80921cB",
-    symbol: "ZCHIF",
+    symbol: "ZCHF",
     url: "https://frankencoin.com",
     description: "Frankencoin is a collateralized, oracle-free stablecoin that tracks the value of the Swiss franc.",
     chain: "Ethereum",

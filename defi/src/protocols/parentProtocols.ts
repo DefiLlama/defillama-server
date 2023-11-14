@@ -3096,6 +3096,20 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TradeVoodoo",
     github: ['voodoo-trade'],
   },
+  {
+    id: "parent#notional",
+    name: "Notional",
+    url: "https://notional.finance",
+    description: "Fixed rate lending on Ethereum",
+    logo: `${baseIconsUrl}/notional.jpg`,
+    gecko_id: "notional-finance",
+    cmcId: "14631",
+    chains: [],
+    twitter: "NotionalFinance",
+    governanceID: ["snapshot:notional.eth"],
+    github: ["notional-finance"],
+    treasury: "notional.js",
+  },
 ];
 
 export default parentProtocols;

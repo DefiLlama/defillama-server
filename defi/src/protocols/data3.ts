@@ -24285,7 +24285,30 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"],
     twitter: "TradeVoodoo",
     audit_links: ["https://github.com/voodoo-trade/voodoo-contracts/blob/master/voodoo-audits/PeckShield-Audit-Report-Voodoo-v1.0.pdf"],
+    parentProtocol: "parent#voodoo-trade",
     listedAt: 1699978530
+  },
+  {
+    id: "3793",
+    name: "Notional V3",
+    address: "0xcfeaead4947f0705a14ec42ac3d44129e1ef3ed5",
+    symbol: "NOTE",
+    url: "https://notional.finance",
+    description: "Fixed rate lending on Ethereum",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/notional-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "notional-v3/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "NotionalFinance",
+    parentProtocol: "parent#notional",
+    listedAt: 1699978650
   },
 ]
 

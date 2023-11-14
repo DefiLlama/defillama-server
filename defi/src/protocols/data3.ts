@@ -24242,6 +24242,28 @@ const data3: Protocol[] = [
     github: ["Frankencoin-ZCHF"],
     listedAt: 1699970045
   },
+  {
+    id: "3791",
+    name: "Maya Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.mayaprotocol.com",
+    description: "MAYAChain is a friendly fork of THORChain. Similarly, it does not rely on pegging or wrapping assets, instead managing funds directly in on-chain vaults and safeguarding them through economic security. This is achieved using the Tendermint consensus engine, Cosmos-SDK state machine, and GG20 Threshold Signature Scheme (TSS).",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/maya-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Bitcoin", "Kujira", "Ethereum", "Dash", "Mayachain"],
+    module: "mayachain/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Maya_Protocol",
+    audit_links: ["https://maya-cdn.s3.amazonaws.com/Halborn/Cosmos_Security_Final.pdf", "https://maya-cdn.s3.amazonaws.com/Halborn/Liquidity_Auction_Final.pdf", "https://maya-cdn.s3.amazonaws.com/Halborn/Liquidity_Auction_Tiers_Final.pdf"],
+    listedAt: 1699974081
+  },
 ]
 
 export default data3

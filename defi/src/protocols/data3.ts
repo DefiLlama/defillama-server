@@ -23938,6 +23938,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#chimeradex",
     listedAt: 1699911252
   },
+  {
+    id: "3776",
+    name: "Ducky City SOFI",
+    address: null,
+    symbol: "-",
+    url: "https://ducky.city/",
+    description: "Ducky SOFI is a social network in the Ducky City ecosystem that allows users to make money from the content they share",
+    chain: "Base",
+    logo: `${baseIconsUrl}/ducky-city-sofi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: ["friend.tech"],
+    module: "ducky-city-sofi/index.js",
+    twitter: "duckycity_io",
+    listedAt: 1699936214
+  },
 ]
 
 export default data3

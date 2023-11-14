@@ -1655,7 +1655,7 @@ const data: Protocol[] = [
     url: "https://lido.fi/",
     referralUrl: "https://stake.lido.fi/?ref=0x08a3c2A819E3de7ACa384c798269B3Ce1CD0e437",
     description:
-      "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana, Polygon, Terra, Kusama & Polkadot.",
+      "Liquid staking for Ethereum and Polygon. Daily staking rewards, no lock ups.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lido.png`,
     audits: "2",

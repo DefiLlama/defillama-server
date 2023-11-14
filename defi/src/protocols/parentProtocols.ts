@@ -3073,6 +3073,17 @@ const parentProtocols: IParentProtocol[] = [
     github: ["chimeradex"],
     twitter: "Chi_meradex",
   },
+  {
+    id: "parent#hummus-exchange",
+    name: "Hummus Exchange",
+    url: "https://www.hummus.exchange",
+    description: "The Hummus protocol is a single-side Automated Market Maker designed for exchanging stable cryptocurrencies on the Metis blockchain.",
+    logo: `${baseIconsUrl}/hummus-exchange.png`,
+    gecko_id: "hummus",
+    cmcId: "19625",
+    chains: [],
+    twitter: "hummusdefi",
+  },
 ];
 
 export default parentProtocols;

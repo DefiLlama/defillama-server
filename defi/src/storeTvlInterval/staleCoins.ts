@@ -1,6 +1,7 @@
 import { getCurrentUnixTimestamp } from "../utils/date";
 import pgp from "pg-promise";
 import { sendMessage } from "../utils/discord";
+import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
 export interface StaleCoins {
   [address: string]: {
@@ -27,7 +28,9 @@ export function addStaleCoin(
 }
 
 export async function storeStaleCoins(staleCoins: StaleCoins) {
+  await setEnvSecrets()
   const webhookUrl = process.env.STALE_COINS_ADAPTERS_WEBHOOK!;
+  sendMessage(`allStaleCoins.length: ${Object.keys(staleCoins).length}`, webhookUrl, true)
   try {
     if (!process.env.COINS_DB) {
       sendMessage(`!COINS_DB`, webhookUrl, true)

@@ -2,6 +2,7 @@ import { Sequelize, Model, ModelStatic, Op, Options as SequelizeOptions } from '
 
 import getEnv from '../env'
 import { initializeTables, Tables as TABLES } from './tables'
+import { log } from '@defillama/sdk'
 
 import {
   dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, dailyRawTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl, hourlyRawTokensTvl,
@@ -99,6 +100,7 @@ async function initializeTVLCacheDB({
     initializeTables(sequelize, mSequalize)
     // await sequelize.sync() // needed only for table creation/update
     // await mSequalize.sync() // needed only for table creation/update
+    log('Database connection established.')
   }
 }
 
@@ -223,6 +225,7 @@ async function readFromPGCache(key: string, { withTimestamp = false } = {}) {
 
 async function deleteFromPGCache(key: string) {
   const table = TABLES.JSON_CACHE
+  log('Deleting from db cache:', key)
   await table.destroy({ where: { id: key } })
 }
 

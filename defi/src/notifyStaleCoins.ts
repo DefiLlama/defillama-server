@@ -7,7 +7,7 @@ import setEnvSecrets from "./utils/shared/setEnvSecrets";
 const hours = 2.5;
 
 const handler = async (_event: any) => {
-  await setEnvSecrets()
+  await setEnvSecrets();
   const webhookUrl = process.env.STALE_COINS_ADAPTERS_WEBHOOK!;
   const now = getCurrentUnixTimestamp();
   const sql = postgres(process.env.COINS_DB!);
@@ -21,6 +21,8 @@ const handler = async (_event: any) => {
     FROM public.stalecoins
     WHERE
       lastupdate < (${now - 3600 * hours})
+    AND 
+      lastupdate > (${now - 3600 * 24})
     GROUP BY address, symbol, latency, chain
     ORDER BY latency asc;`;
 
@@ -38,16 +40,18 @@ const handler = async (_event: any) => {
   //     ),
   //   );
 
-  promises.push(sql`DELETE FROM public.stalecoins`);
+  // promises.push(sql`DELETE FROM public.stalecoins`);
 
-  const message = (staleCoins as any[])
-    .map(
-      (coin) =>
-        `${coin.symbol}\t${coin.chain}:${coin.address.padEnd(10, " ")}\t${(
-          coin.latency / 3600
-        ).toFixed(2)} hours ago`,
-    )
-    .join("\n");
+  const message = staleCoins.length
+    ? (staleCoins as any[])
+        .map(
+          (coin) =>
+            `${coin.symbol}\t${coin.chain}:${coin.address.padEnd(10, " ")}\t${(coin.latency / 3600).toFixed(
+              2
+            )} hours ago`
+        )
+        .join("\n")
+    : `ll: ${process.env.COINS_DB?.indexOf(`116.202.222.22`)}`;
 
   promises.push(sendMessage(message, webhookUrl, true));
   await Promise.all(promises);

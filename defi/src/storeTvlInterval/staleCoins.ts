@@ -1,5 +1,6 @@
 import { getCurrentUnixTimestamp } from "../utils/date";
 import pgp from "pg-promise";
+import { sendMessage } from "../utils/discord";
 
 export interface StaleCoins {
   [address: string]: {
@@ -26,9 +27,16 @@ export function addStaleCoin(
 }
 
 export async function storeStaleCoins(staleCoins: StaleCoins) {
+  const webhookUrl = process.env.STALE_COINS_ADAPTERS_WEBHOOK!;
   try {
-    if (!process.env.COINS_DB) return;
-    if (Object.keys(staleCoins).length == 0) return;
+    if (!process.env.COINS_DB) {
+      sendMessage(`!COINS_DB`, webhookUrl, true)
+      return
+    };
+    if (Object.keys(staleCoins).length == 0) {
+      sendMessage(`!staleCoins.length`, webhookUrl, true)
+      return;
+    }
     if (db == null) db = PGP(process.env.COINS_DB!);
     const recentlyUpdatedCoins = await readCoins(staleCoins, db);
     const filteredStaleCoins = Object.keys(staleCoins)
@@ -37,7 +45,11 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
         obj[key] = staleCoins[key];
         return obj;
       }, {});
-    if (Object.keys(filteredStaleCoins).length == 0) return;
+    if (Object.keys(filteredStaleCoins).length == 0) {
+      sendMessage(`!filteredStaleCoins.length`, webhookUrl, true)
+      return;
+    }
+    sendMessage(`writing filtered stale coins..`, webhookUrl, true)
     await writeCoins(filteredStaleCoins, PGP, db);
   } catch (e) {
     console.error("write to postgres failed:");

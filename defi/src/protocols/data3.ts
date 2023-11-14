@@ -24218,6 +24218,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "hummusdefi",
+    parentProtocol: "parent#hummus-exchange",
     listedAt: 1699970029
   },
   {

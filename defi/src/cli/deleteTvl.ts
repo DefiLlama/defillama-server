@@ -1,5 +1,5 @@
 import dynamodb from "../utils/shared/dynamodb";
-import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, hourlyTvl } from "../utils/getLastRecord";
+import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl, } from "../utils/getLastRecord";
 import { getProtocol } from "./utils";
 import { PromisePool } from '@supercharge/promise-pool'
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
@@ -15,6 +15,7 @@ async function main() {
   if (!protocol) throw new Error('No protocol with that name')
   for (const tvlFunc of [dailyTokensTvl, dailyTvl, dailyUsdTokensTvl,
     // hourlyTvl // - we retain hourly in case we want to refill using it for some reason
+    // hourlyTokensTvl, hourlyUsdTokensTvl, hourlyTvl
   ]) {
     const data = await dynamodb.query({
       ExpressionAttributeValues: {
@@ -37,7 +38,7 @@ async function main() {
             PK: d.PK,
             SK: d.SK,
           },
-        });
+        }); // add code to delete from postgres, dicord bot
       })
 
   }

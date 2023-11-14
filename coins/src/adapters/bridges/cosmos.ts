@@ -12,7 +12,7 @@ export default async function bridge(): Promise<Token[]> {
   // const cosmosChainsSet = new Set([...Object.keys(cosmosAdapter.endPoints), ...tokenMapping.ibcChains, ...includeChains])
   const cosmosChainsSet = new Set([...includeChains, ...[
     "kujira", "migaloo", "xpla", "kava", 'crescent', 'osmosis', 'stargaze', 'juno', 'injective', 'cosmos', 'comdex', 'stargaze', 'umee', 'persistence', 'neutron', 'gravitybridge',
-    "archway",
+    "archway", "bostrom",
   ]])
   const chainMapping: any = {
     'gravitybridge': 'gravity-bridge'

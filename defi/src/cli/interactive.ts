@@ -130,7 +130,7 @@ async function run(prompt: any) {
         break;
       case 'dateTo':
         if (mainCommand === 'delete-tvl') {
-          await runScript(mainCommand, [prompts.adapter.lastAnswer, prompts.dateFrom.lastAnswer, answer])
+          await runScript(mainCommand, [prompts.adapter.lastAnswer, answer, prompts.dateFrom.lastAnswer,])
           state.nextPrompt = 'main'
         } else
           throw new Error('Unknown State')

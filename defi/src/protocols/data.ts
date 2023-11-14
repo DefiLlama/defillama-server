@@ -4703,11 +4703,11 @@ const data: Protocol[] = [
   {
     id: "326",
     name: "Beefy",
-    address: "bsc:0xca3f508b8e4dd382ee878a314789373d80a5190a",
+    address: "0xB1F1ee126e9c96231Cc3d3fAD7C08b4cf873b1f1",
     symbol: "BIFI",
     url: "https://beefy.com",
     description:
-      "Beefy is a Decentralized, Multichain Yield Optimizer platform that allows users to earn compound interest on crypto. Through a set of investment strategies secured and enforced by smart contracts, Beefy automatically maximizes rewards from various liquidity pools (LPs),‌ ‌automated market making (AMM) projects,‌ ‌and‌ ‌other yield‌ farming ‌opportunities in the DeFi ecosystem.",
+      "Beefy automates yield farming to make DeFi easy, safe and efficient for all. By autocompounding your tokens, Beefy unlocks higher returns so you earn more of what you love.",
     chain: "Binance",
     logo: `${baseIconsUrl}/beefy.png`,
     audits: "2",
@@ -5186,10 +5186,18 @@ const data: Protocol[] = [
     cmcId: "11289",
     category: "CDP",
     treasury: "abracadabra.js",
-    chains: ["Ethereum", "Avalanche", "Arbitrum", "Fantom"],
+    chains: ["Arbitrum", "Avalanche", "Ethereum", "Fantom"], // add binance soon "Kava", "Optimism"
     module: "abracadabra/api.js",
     twitter: "MIM_Spell",
-    oracles: ["Chainlink"],
+    oraclesByChain: {
+      arbitrum: ["Chainlink"],
+      avalanche: ["Chainlink"],
+    //  bsc: ["Chainlink"],
+      ethereum: ["Chainlink"],
+      fantom: ["Chainlink"],
+    //  kava: ["RedStone"],
+    //  optimism: ["Chainlink"],
+    },
     audit_links: ["https://abracadabramoney.gitbook.io/learn/our-ecosystem/our-contracts"],
     governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"],
     stablecoins: ["magic-internet-money"],
@@ -8618,7 +8626,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "KSM",
     url: "https://acala.network/karura",
     description:
-      "Stake your KSM for LKSM to earn rewards without sacrificing liquidity. LKSM is unlocked and ready to trade, take out collateralized loans, and provide liquidity for additional yield.",
+      "Liquidity for staked assets. Instant redeem. Available for Polkadot and Kusama.",
     chain: "Karura",
     logo: `${baseIconsUrl}/karura-liquid-staking.jpg`,
     audits: "0",

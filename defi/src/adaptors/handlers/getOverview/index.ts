@@ -4,6 +4,7 @@ import { handler as process_handler, getOverviewCachedResponseKey, IGetOverviewR
 import invokeLambda from "../../../utils/shared/invokeLambda";
 import { getTimestampAtStartOfDay } from "@defillama/dimension-adapters/utils/date";
 import processEventParameters from "../helpers/processEventParameters";
+import { wrapResponseOrRedirect } from "../../../getProtocol";
 
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
@@ -17,7 +18,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         chainFilter
     } = processEventParameters(event)
 
-    let response = await getCachedResponseOnR2<IGetOverviewResponseBody>(getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart)))
+    const cacheKey = getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart))
+    let response = await getCachedResponseOnR2<IGetOverviewResponseBody>(cacheKey)
         .catch(e => console.error("Unable to retrieve cached response...", e))
 
     delete event.queryStringParameters?.excludeTotalDataChart
@@ -44,7 +46,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (!enableAlerts)
         delete response.body.errors
 
-    return dayCache(response.body);
+    return wrapResponseOrRedirect(response.body, `dimensions/${cacheKey}`);
 };
 
 

@@ -20,6 +20,7 @@ function updateItemInfo(protocols) {
       protocol.misrepresentedTokens = module.misrepresentedTokens
       protocol.hallmarks = module.hallmarks
       protocol.deadFrom = module.deadFrom
+      protocol.methodology = module.methodology
     } catch (e) {
       console.error(e)
     }

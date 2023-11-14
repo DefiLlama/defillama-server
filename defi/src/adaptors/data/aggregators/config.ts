@@ -46,7 +46,12 @@ export default {
     },
     "jumper-exchange": {
         enabled: true,
-        id: "3524"
+        id: "3524",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1698883200": true
+            }
+        }
     },
     "slingshot": {
         enabled: true,

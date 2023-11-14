@@ -1,11 +1,9 @@
 import type { Protocol } from "../../protocols/types";
-import protocols from "../../protocols/data";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "../../utils/normalizeChain";
 import type { IProtocolResponse, } from "../../types";
-import parentProtocols from "../../protocols/parentProtocols";
 import { getAvailableMetricsById } from "../../adaptors/data/configs";
-import { getRaises, getCachedMCap, CACHE_KEYS, cacheAndRespond, } from "../cache";
-import { getAllProtocolItems, getLatestProtocolItem, } from "../db/index";
+import { getRaises, getCachedMCap, CACHE_KEYS, cacheAndRespond, cache, } from "../cache";
+import { getAllProtocolItems, getDailyTvlCacheId, getLatestProtocolItem, readFromPGCache, writeToPGCache, } from "../db/index";
 import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
 import {
   dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl,
@@ -28,18 +26,63 @@ export default async function craftProtocolV2({
   const { misrepresentedTokens = false, hallmarks, methodology, ...restProtocolData } = protocolData as any
 
   const debug_t0 = performance.now(); // start the timer
+  let debug_cache_read_time = 0
+  let debug_cache_write_time = 0
+  let cacheKey = getDailyTvlCacheId(protocolData.id)
+  let protocolCache: any = {
+    tvl: [],
+    tokensInUsd: [],
+    tokens: [],
+  }
+
+  let tvlQueryOptions = {}
+  let tokensInUsdQueryOptions = {}
+  let tokensQueryOptions = {}
+
+  if (!useHourlyData) {
+    protocolCache = await readFromPGCache(cacheKey)
+    debug_cache_read_time = performance.now() - debug_t0
+    if (protocolCache) {
+      // if cache is not empty, set query options to get only new records
+      if (protocolCache.tvl?.length)
+        tvlQueryOptions = { timestampAfter: protocolCache.tvl[protocolCache.tvl.length - 1].SK }
+      if (protocolCache.tokensInUsd?.length)
+        tokensInUsdQueryOptions = { timestampAfter: protocolCache.tokensInUsd[protocolCache.tokensInUsd.length - 1].SK }
+      if (protocolCache.tokens?.length)
+        tokensQueryOptions = { timestampAfter: protocolCache.tokens[protocolCache.tokens.length - 1].SK }
+    }
+  }
+
 
   let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
-    getAllProtocolItems(useHourlyData ? hourlyTvl : dailyTvl, protocolData.id),
-    getAllProtocolItems(useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl, protocolData.id),
-    getAllProtocolItems(useHourlyData ? hourlyTokensTvl : dailyTokensTvl, protocolData.id),
+    getAllProtocolItems(useHourlyData ? hourlyTvl : dailyTvl, protocolData.id, tvlQueryOptions),
+    getAllProtocolItems(useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl, protocolData.id, tokensInUsdQueryOptions),
+    getAllProtocolItems(useHourlyData ? hourlyTokensTvl : dailyTokensTvl, protocolData.id, tokensQueryOptions),
     getCachedMCap(protocolData.gecko_id),
     getLatestProtocolItem(hourlyTvl, protocolData.id),
     getLatestProtocolItem(hourlyUsdTokensTvl, protocolData.id),
     getLatestProtocolItem(hourlyTokensTvl, protocolData.id),
   ]);
-  const debug_dbTime = performance.now() - debug_t0
+  const debug_dbTime = performance.now() - debug_t0 - debug_cache_read_time
 
+  if (!useHourlyData) {
+    if (!protocolCache) protocolCache = {}
+
+    protocolCache.tvl = mergeSortAndRemoveDups(protocolCache.tvl, historicalUsdTvl)
+    protocolCache.tokensInUsd = mergeSortAndRemoveDups(protocolCache.tokensInUsd, historicalUsdTokenTvl)
+    protocolCache.tokens = mergeSortAndRemoveDups(protocolCache.tokens, historicalTokenTvl)
+
+    const updateCache = historicalTokenTvl.length > 6 || historicalUsdTokenTvl.length > 6 || historicalUsdTvl.length > 6
+    if (updateCache) {
+      await writeToPGCache(cacheKey, protocolCache)
+      debug_cache_write_time = performance.now() - debug_t0 - debug_dbTime - debug_cache_read_time
+    }
+
+    historicalUsdTvl = protocolCache.tvl
+    historicalUsdTokenTvl = protocolCache.tokensInUsd
+    historicalTokenTvl = protocolCache.tokens
+  }
+  const debug_dbTimeAll = performance.now() - debug_t0
 
   let response: IProtocolResponse = {
     ...restProtocolData,
@@ -53,50 +96,6 @@ export default async function craftProtocolV2({
     metrics: getAvailableMetricsById(protocolData.id),
     mcap,
   };
-
-  /* const lastRecord = historicalUsdTvl[historicalUsdTvl.length - 1];
-
-  Object.entries(lastRecord ?? {}).forEach(([chain]) => {
-    if (nonChains.includes(chain) && chain !== "tvl") {
-      return;
-    }
-
-    const displayChainName = getChainDisplayName(chain, useNewChainNames);
-
-    const container = {} as any;
-
-    container.tvl = historicalUsdTvl
-      ?.map((item: any) => ({
-        date: item.SK,
-        totalLiquidityUSD: selectChainFromItem(item, chain) && Number(selectChainFromItem(item, chain).toFixed(5)),
-      }))
-      .filter((item: any) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD);
-
-    container.tokensInUsd = historicalUsdTokenTvl
-      ?.map((item: any) => ({
-        date: item.SK,
-        tokens: normalizeEthereum(selectChainFromItem(item, chain)),
-      }))
-      .filter((item: any) => item.tokens);
-
-    container.tokens = historicalTokenTvl
-      ?.map((item: any) => ({
-        date: item.SK,
-        tokens: normalizeEthereum(selectChainFromItem(item, chain)),
-      }))
-      .filter((item: any) => item.tokens);
-
-    if (container.tvl !== undefined && container.tvl.length > 0) {
-      if (chain === "tvl") {
-        response = {
-          ...response,
-          ...container,
-        };
-      } else {
-        response.chainTvls[displayChainName] = { ...container };
-      }
-    }
-  }); */
 
   if (!lastUsdHourlyRecord)
     lastUsdHourlyRecord = historicalUsdTvl[historicalUsdTvl.length - 1]
@@ -191,11 +190,14 @@ export default async function craftProtocolV2({
     response.tokens = [];
   }
 
-  const childProtocolsNames = protocolData.parentProtocol
-    ? protocols.filter((p) => p.parentProtocol === protocolData.parentProtocol).map((p) => p.name)
-    : [];
+  let parentName = null;
+  let childProtocolsNames: string[] = [];
+  let parentProtocolId = protocolData.parentProtocol;
 
-  const parentName = parentProtocols.find((p) => p.id === protocolData.parentProtocol)?.name ?? null;
+  if (parentProtocolId) {
+    parentName = cache.metadata.parentProtocols.find((p) => p.id === parentProtocolId)?.name ?? null;
+    childProtocolsNames = cache.metadata.protocols.filter((p) => p.parentProtocol === parentProtocolId).map((p) => p.name);
+  }
 
   if (childProtocolsNames.length > 0 && parentName) {
     response.otherProtocols = [parentName, ...childProtocolsNames];
@@ -214,7 +216,8 @@ export default async function craftProtocolV2({
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime
   const debug_totalTime = performance.now() - debug_t0
-  sdk.log(`${protocolData.name} |${useHourlyData ? 'h' : 'd'}|#: ${historicalUsdTvl.length} ${historicalUsdTokenTvl.length} ${historicalTokenTvl.length} | T(all): ${(debug_totalTime / 1e3).toFixed(3)}s | T(db) ${(debug_dbTime / 1e3).toFixed(3)}s`)
+  sdk.log(`${protocolData.name} |${useHourlyData ? 'h' : 'd'}| #: ${historicalUsdTvl.length} ${historicalUsdTokenTvl.length} ${historicalTokenTvl.length} | Db: ${(debug_dbTimeAll / 1e3).toFixed(2)}s | All: ${(debug_totalTime / 1e3).toFixed(2)}s`)
+  // if (debug_cache_read_time) sdk.log(`[cache] read time: ${(debug_cache_read_time / 1e3).toFixed(3)}s | write time: ${debug_cache_write_time ? (debug_cache_write_time / 1e3).toFixed(3) : 0}s`)
 
   return response;
 }
@@ -223,4 +226,20 @@ export async function cachedCraftProtocolV2(options: CraftProtocolV2Options) {
   const id = `${options.protocolData.id}-${options.useHourlyData ? 'hourly' : 'daily'}-${options.skipAggregatedTvl ? 'noAgg' : 'agg'}-${options.useNewChainNames ? 'new' : 'old'}`
   const CACHE_KEY = CACHE_KEYS.PROTOCOL
   return cacheAndRespond({ key: CACHE_KEY, id, origFunction: craftProtocolV2, args: [options] })
+}
+
+function mergeSortAndRemoveDups(arr: any[] | undefined, arr2: any[] | undefined) {
+  if (!arr) arr = []
+  if (!arr2) arr2 = []
+  const merged = [...arr, ...arr2]
+  const sorted = merged.sort((a, b) => a.SK - b.SK)
+  const deduped = []
+  let last: any = null
+  for (const item of sorted) {
+    if (last === null || last.SK !== item.SK) {
+      deduped.push(item)
+      last = item
+    }
+  }
+  return deduped
 }

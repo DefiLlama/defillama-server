@@ -7,7 +7,7 @@ import { CoinsResponse } from "./utils/getCoinsUtils";
 import { getCurrentUnixTimestamp } from "./utils/date";
 
 const handler = async (
-  event: AWSLambda.APIGatewayEvent
+  event: any
 ): Promise<IResponse> => {
   const body = parseRequestBody(event.body)
   const requestedCoins = body.coins;
@@ -49,7 +49,7 @@ const handler = async (
       formattedCoin.timestamp = finalCoin.SK;
       formattedCoin.symbol = formattedCoin.symbol ?? finalCoin.Item.symbol
     }
-    if (Math.abs(timestampRequested ?? getCurrentUnixTimestamp() - formattedCoin.timestamp) < DAY * 2)
+    if (Math.abs((timestampRequested ?? getCurrentUnixTimestamp()) - formattedCoin.timestamp) < DAY * 2)
       response[coinName] = formattedCoin;
   }))
   return successResponse({

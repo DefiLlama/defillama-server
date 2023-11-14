@@ -9,7 +9,7 @@ export default {
         parentId: "GMX",
         "protocolsData": {
             "derivatives": {
-                displayName: "GMX - Derivatives",
+                displayName: "GMX - Derivatives V1",
                 "id": "337",
                 "enabled": true
             }
@@ -293,15 +293,16 @@ export default {
     "gmx-v2-trade": {
         parentId: "GMX",
         "enabled": true,
-        "id": "3365"
+        "id": "3365",
+        displayName: "GMX - Derivatives V2",
     },
     "meridian-trade": {
-        "enabled": true,
+        "enabled": false,
         "id": "3386",
         "protocolsData": {
             "derivatives": {
                 "id": "3386",
-                "enabled": true,
+                "enabled": false,
             }
         }
     },
@@ -425,7 +426,7 @@ export default {
     },
     "contango": {
         "enabled": true,
-        "id": "2374",
+        "id": "3602",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1697414400": true,
@@ -434,7 +435,7 @@ export default {
         }
     },
     "tigris": {
-        "enabled": true,
+        "enabled": false,
         "id": "3129"
     },
     "paradex": {
@@ -451,5 +452,17 @@ export default {
                 "enabled": true,
             },
         },
+    },
+    "levana": {
+        "enabled": true,
+        "id": "3474"
+    },
+    "intent-x": {
+        "enabled": true,
+        "id": "3747"
+    },
+    "equation": {
+        "enabled": true,
+        "id": "3726"
     }
 } as AdaptorsConfig

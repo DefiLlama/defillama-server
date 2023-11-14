@@ -22,11 +22,15 @@ export async function ondo(timestamp: number): Promise<Write[]> {
         abi: "uint256:rwaPrice",
         target: "0xc53e6824480d976180A65415c19A6931D17265BA",
       })) / 1e18,
-    USDYc: 1.006437,
+    USDYc: 
+      (await ethApi.call({
+        abi: "uint256:getPrice",
+        target: "0xa0219aa5b31e65bc920b5b6dfb8edf0988121de0",
+      })) / 1e18,
     USDY:
       (await ethApi.call({
-        abi: "uint256:getLatestPrice",
-        target: "0x7fb0228c6338da4EC948Df7b6a8E22aD2Bb2bfB5",
+        abi: "uint256:getPrice",
+        target: "0xa0219aa5b31e65bc920b5b6dfb8edf0988121de0",
       })) / 1e18,
   };
 

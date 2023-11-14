@@ -197,6 +197,10 @@ export default {
             v3: {
                 enabled: true,
                 id: "2239"
+            },
+            "liquidityHub": {
+                enabled: true,
+                id: "3743"
             }
         }
     },
@@ -235,7 +239,7 @@ export default {
         }
     },
     "ref-finance": {
-        "enabled": true,
+        "enabled": false,
         "id": "541"
     },
     "solidly": {
@@ -251,6 +255,7 @@ export default {
         "id": "419"
     },
     "platypus": {
+        disabled: true,
         "enabled": true,
         "id": "944"
     },
@@ -524,6 +529,7 @@ export default {
         "id": "1274"
     },
     "wagyuswap": {
+        disabled: true,
         "enabled": true,
         "id": "1003"
     },
@@ -1108,7 +1114,6 @@ export default {
         "id": "799"
     },
     "aux-exchange": {
-        disabled: true,
         "enabled": true,
         "id": "2213"
     },
@@ -1333,6 +1338,7 @@ export default {
         "id": "2589"
     },
     "metavault.trade": {
+        parentId: "MetaVault",
         "enabled": true,
         "id": "1801"
     },
@@ -1919,12 +1925,12 @@ export default {
         "id": "3365"
     },
     "meridian-trade": {
-        "enabled": true,
+        "enabled": false,
         "id": "3386",
         "protocolsData": {
             "swap": {
                 "id": "3386",
-                "enabled": true,
+                "enabled": false,
             }
         }
     },
@@ -2117,10 +2123,16 @@ export default {
         "enabled": true,
         "id": "3415"
     },
-    "kinetix": {
+    "kinetix-v3": {
         parentId: "Kinetix",
         "enabled": true,
-        "id": "3534"
+        "id": "3534",
+        protocolsData: {
+            "v3": {
+                "id": "3534",
+                "enabled": true,
+            }
+        }
     },
     "caviarnine": {
         parentId: "CaviarNine",
@@ -2131,6 +2143,26 @@ export default {
                 "id": "3645",
                 "enabled": true,
                 "category": "Dexes"
+            }
+        }
+    },
+    "kinetix-derivative": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3465"
+    },
+    "retro": {
+        "enabled": true,
+        "id": "3311"
+    },
+    "metavault-v3": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3750",
+        protocolsData: {
+            "v3": {
+                "id": "3750",
+                "enabled": true,
             }
         }
     }

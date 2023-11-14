@@ -14,7 +14,8 @@ export const normalizedChainReplacements = {
   "map relay chain": "map",
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
-  "bifrost network": "bfc"
+  "bifrost network": "bfc",
+  "horizen eon": "eon"
 } as {
   [chain: string]: string
 }
@@ -1653,7 +1654,7 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
   },
   "Oasys": {
-    geckoId: "Oasys",
+    geckoId: "oasys",
     github: ['oasysgames'],
     symbol: "OAS",
     cmcId: "22265",
@@ -1989,6 +1990,31 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
+  "Horizen EON": {
+    geckoId: "zencash",
+    symbol: "ZEN",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 7332,
+  },
+  "Chiliz": {
+    geckoId: "chiliz",
+    symbol: "CHZ",
+    cmcId: "4066",
+    categories: ["EVM"],
+    chainId: 88888,
+  },
+  "LightLink": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 1890
+  }
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2171,7 +2197,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "zksync era":
       return "zkSync Era"
     case "bifrost network":
-      return "Bifrost Network"    
+      return "Bifrost Network"
+    case "horizen eon":
+      return "Horizen EON"    
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -2488,6 +2516,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "MEER"
     case "elsm":
       return "Elysium"
+    case "eon":
+      return "Horizen EON"
+    case "chz":
+      return "Chiliz"
+    case "lightlink_phoenix":
+      return "LightLink"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

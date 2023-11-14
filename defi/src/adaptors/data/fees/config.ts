@@ -275,6 +275,7 @@ export default {
         "id": "1461"
     },
     "metavault.trade": {
+        parentId: "MetaVault",
         "enabled": true,
         "id": "1801"
     },
@@ -482,7 +483,7 @@ export default {
         "id": "2290"
     },
     "moonwell-artemis": {
-        "enabled": true,
+        "enabled": false,
         "id": "1853"
     },
     "moonwell-apollo": {
@@ -976,6 +977,7 @@ export default {
         id: "2376"
     },
     "liondex": {
+        disabled: true,
         enabled: true,
         id: "2898"
     },
@@ -1212,7 +1214,7 @@ export default {
         "id": "324"
     },
     "meridian-trade": {
-        "enabled": true,
+        "enabled": false,
         "id": "3386"
     },
     "baseswap": {
@@ -1254,7 +1256,7 @@ export default {
         "id": "3464"
     },
     "tigris": {
-        "enabled": true,
+        "enabled": false,
         "id": "3129"
     },
     "aerodrome": {
@@ -1499,5 +1501,49 @@ export default {
         parentId: "Kinetix",
         "enabled": true,
         "id": "3534"
+    },
+    "retro": {
+        "enabled": true,
+        "id": "3311"
+    },
+    "hipo": {
+        "enabled": true,
+        "id": "3722"
+    },
+    "intent-x": {
+        "enabled": true,
+        "id": "3747"
+    },
+    "caviarnine-lsu-pool": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3666"
+    },
+    "caviarnine-shape-liquidity": {
+        "enabled": true,
+        "id": "3645"
+    },
+    "metavault-v3": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3750",
+        protocolsData: {
+            "v3": {
+                "id": "3750",
+                "enabled": true,
+            }
+        }
+    },
+    "xoxno": {
+        "enabled": true,
+        "id": "3753"
+    },
+    "equation": {
+        "enabled": true,
+        "id": "3726"
+    },
+    "hopr": {
+        "enabled": true,
+        "id": "3761"
     }
 } as AdaptorsConfig

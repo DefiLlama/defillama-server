@@ -24179,6 +24179,26 @@ const data3: Protocol[] = [
     module: "starknet/index.js",
     twitter: "Starknet",
   },
+  {
+    id: "3788",
+    name: "zkSync Era txBridge",
+    address: null,
+    symbol: "-",
+    url: "https://portal.txsync.io/bridge",
+    description: "Imagine a platform where zksync enthusiasts and developers all come together to learn, create, and innovate",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/zksync-era-txbridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "txBridge/index.js",
+    twitter: "txSync_io",
+  },
 ]
 
 export default data3

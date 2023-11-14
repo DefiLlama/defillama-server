@@ -464,5 +464,15 @@ export default {
     "equation": {
         "enabled": true,
         "id": "3726"
+    },
+    "derivio": {
+        "enabled": true,
+        "id": "3759",
+        protocolsData: {
+            "derivatives": {
+                "id": "3759",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

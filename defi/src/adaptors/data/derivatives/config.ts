@@ -478,5 +478,9 @@ export default {
     "mu-exchange": {
         "enabled": true,
         "id": "3763"
+    },
+    "perennial-v2": {
+        "enabled": true,
+        "id": "3599"
     }
 } as AdaptorsConfig

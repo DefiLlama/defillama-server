@@ -481,6 +481,12 @@ export default {
     },
     "perennial-v2": {
         "enabled": true,
-        "id": "3599"
+        "id": "3599",
+        protocolsData: {
+            "derivatives": {
+                "id": "3599",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

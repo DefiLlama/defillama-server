@@ -73,8 +73,8 @@ async function getTvl(
             chainBlocks,
             { api, chain, storedKey, block, logArray },
           );
-          chainDashPromises = [storeAllTokens(Object.keys(tvlBalances)), storeTokenOwnerLogs(logArray)];
           if (!tvlBalances && Object.keys(api.getBalances()).length) tvlBalances = api.getBalances()
+          chainDashPromises = [storeAllTokens(Object.keys(tvlBalances)), storeTokenOwnerLogs(logArray)];
         }
         Object.keys(tvlBalances).forEach((key) => {
           if (+tvlBalances[key] === 0) delete tvlBalances[key]

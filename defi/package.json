@@ -92,6 +92,7 @@
     "promise.allsettled": "^1.0.5",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.33.0",
-    "typeorm": "^0.3.11"
+    "typeorm": "^0.3.11",
+    "zksync-web3": "^0.16.0"
   }
 }

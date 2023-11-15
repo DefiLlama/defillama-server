@@ -3,10 +3,12 @@ import { Address, LogArray } from "@defillama/sdk/build/types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { Chain } from "@defillama/sdk/build/general";
 import { DeployerInsert, OwnerInsert, SupplyInsert, TokenInsert } from "./types";
+import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 
 let auth: string[];
 
-export function generateAuth() {
+export async function generateAuth() {
+  if (!process.env.COINS2_AUTH) await setEnvSecrets();
   auth = process.env.COINS2_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 }
@@ -33,7 +35,7 @@ export async function storeTokenOwnerLogs(logArray?: LogArray): Promise<void> {
     });
   });
 
-  generateAuth();
+  await generateAuth();
   const sql = postgres(auth[0]);
   await sql`
     insert into bridgecontracts
@@ -56,7 +58,7 @@ export async function storeDeployers(chain: string, deployers: { [token: Address
     });
   });
 
-  generateAuth();
+  await generateAuth();
   const sql = postgres(auth[0]);
   await sql`
     insert into tokendeployers
@@ -77,7 +79,7 @@ export async function storeAllTokens(tokens: string[]) {
   });
 
   if (!inserts.length) return;
-  generateAuth();
+  await generateAuth();
   const sql = postgres(auth[0]);
   await sql`
     insert into alltokens
@@ -89,7 +91,7 @@ export async function storeAllTokens(tokens: string[]) {
 }
 export async function updateAllTokenSupplies(supplies: SupplyInsert[]) {
   if (!supplies.length) return;
-  generateAuth();
+  await generateAuth();
   const sql = postgres(auth[0]);
   await sql`
   insert into alltokens
@@ -102,7 +104,7 @@ export async function updateAllTokenSupplies(supplies: SupplyInsert[]) {
 }
 export async function fetchTokenOwnerLogs(chain: Chain, margin: number = 6 * 60 * 60): Promise<any> {
   const earliest = getCurrentUnixTimestamp() - margin;
-  generateAuth();
+  await generateAuth();
   const sql = postgres(auth[0]);
   const res = await sql`
       select token, holder, amount from bridgecontracts
@@ -113,7 +115,7 @@ export async function fetchTokenOwnerLogs(chain: Chain, margin: number = 6 * 60 
   return res;
 }
 export async function fetchTokenDeployers(chain: Chain): Promise<any> {
-  generateAuth();
+  await generateAuth();
   const sql = postgres(auth[0]);
   const res = await sql`
       select token, deployer from tokendeployers
@@ -123,7 +125,7 @@ export async function fetchTokenDeployers(chain: Chain): Promise<any> {
   return res;
 }
 export async function fetchAllTokens(chain: Chain): Promise<any> {
-  generateAuth();
+  await generateAuth();
   const sql = postgres(auth[0]);
   const res = await sql`
       select token, supply from alltokens
@@ -138,7 +140,7 @@ export async function fetchAllTokens(chain: Chain): Promise<any> {
   return obj;
 }
 export async function fetchTokenSupplies(chain: Chain, tokens: Address[]): Promise<any> {
-  generateAuth();
+  await generateAuth();
   const sql = postgres(auth[0]);
   const res = await sql`
       select token, supply from alltokens

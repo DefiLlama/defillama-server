@@ -63,6 +63,7 @@ export default {
   curve10: require("./markets/curve"),
   curve11: require("./markets/curve"),
   curve12: require("./markets/curve"),
+  curve13: require("./markets/curve"),
   balancer1: require("./markets/balancer"),
   balancer2: require("./markets/balancer"),
   balancer3: require("./markets/balancer"),

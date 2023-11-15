@@ -63,7 +63,7 @@ export default {
         "id": "3501"
     },
     "derivio": {
-        "enabled": true,
+        "enabled": false,
         "id": "3759",
         protocolsData: {
             "derivatives": {

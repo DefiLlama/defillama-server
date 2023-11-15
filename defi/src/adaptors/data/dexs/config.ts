@@ -2175,5 +2175,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "elektrik": {
+        "enabled": true,
+        "id": "3773"
     }
 } as AdaptorsConfig

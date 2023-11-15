@@ -1,15 +1,14 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { getPrices } from "../dimension-adapters/utils/prices";
 import { fetchAllTokens, updateAllTokenSupplies } from "./layer2pg";
-import { SupplyInsert } from "./types";
+import { SupplyInsert, TokenTvlData } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { Address } from "@defillama/sdk/build/types";
-import { fetchIncomingTokens } from "./incoming";
-import * as incomingAssets from "./adapters";
+import { fetchBridgeTokenList } from "./incoming";
 import { DollarValues, Supplies } from "./types";
 import { zero } from "./constants";
+import { getPrices } from "./utils";
 
 async function fetchMissingSupplies(chain: Chain, storedSupplies: Supplies): Promise<Supplies> {
   const calls: { target: string }[] = [];
@@ -40,37 +39,40 @@ async function fetchMissingSupplies(chain: Chain, storedSupplies: Supplies): Pro
 
   return allSupplies;
 }
-export async function minted(params: {
-  chain: Chain;
+export async function fetchMinted(params: {
+  chains: Chain[];
   timestamp?: number;
   searchWidth?: number;
-}): Promise<DollarValues> {
-  const chain = params.chain;
+}): Promise<TokenTvlData> {
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
-  const incomingTokens: Address[] = await incomingAssets[chain](); //Object.keys(await fetchIncomingTokens({ chain, timestamp }));
-  const storedSupplies = await fetchAllTokens(chain);
+  const data: TokenTvlData = {};
+  params.chains.map(async (chain: Chain) => {
+    const incomingTokens: Address[] = await fetchBridgeTokenList(chain);
+    const storedSupplies = await fetchAllTokens(chain);
 
-  // filter any tokens that arent natively minted
-  incomingTokens.map((t: Address) => {
-    if (t in storedSupplies) delete storedSupplies[t];
+    // filter any tokens that arent natively minted
+    incomingTokens.map((t: Address) => {
+      if (t in storedSupplies) delete storedSupplies[t];
+    });
+    const supplies = await fetchMissingSupplies(chain, storedSupplies);
+
+    const prices = await getPrices(
+      Object.keys(supplies).map((t: string) => `${chain}:${t}`),
+      timestamp
+    );
+
+    const dollarValues: DollarValues = {};
+    Object.keys(supplies).map((t: string) => {
+      const priceInfo = prices[`${chain}:${t}`];
+      const supply = supplies[t];
+      if (!priceInfo || !supply) return;
+      if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
+      const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
+      const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
+      dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
+    });
+
+    return (data[chain] = dollarValues);
   });
-  const supplies = await fetchMissingSupplies(chain, storedSupplies);
-
-  const prices = await getPrices(
-    Object.keys(supplies).map((t: string) => `${chain}:${t}`),
-    timestamp
-  );
-
-  const dollarValues: DollarValues = {};
-  Object.keys(supplies).map((t: string) => {
-    const priceInfo = prices[`${chain}:${t}`];
-    const supply = supplies[t];
-    if (!priceInfo || !supply) return;
-    if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
-    const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
-    const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-    dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
-  });
-
-  return dollarValues;
+  return data;
 }

@@ -1,5 +1,5 @@
 import BigNumber from "bignumber.js";
-import { Address, LogArray } from "@defillama/sdk/build/types";
+import { Address } from "@defillama/sdk/build/types";
 import { Chain } from "@defillama/sdk/build/general";
 
 export type Supplies = { [token: string]: number };
@@ -26,5 +26,26 @@ export type SupplyInsert = {
   supply: number;
 };
 export type TokenTvlData = {
-  [chain: Chain]: { [asset: string]: BigNumber };
+  [chain: Chain]: DollarValues;
+};
+export type CoinsApiData = {
+  decimals: number;
+  price: number;
+  symbol: string;
+  timestamp: number;
+  PK?: string;
+};
+export type TranslatedChainData = {
+  canonical: DollarValues;
+  incoming: DollarValues;
+  outgoing: DollarValues;
+  native: DollarValues;
+  // metadata: any;
+};
+export type ChainData = {
+  canonical: TokenTvlData;
+  incoming: TokenTvlData;
+  outgoing: TokenTvlData;
+  native: TokenTvlData;
+  // metadata: any;
 };

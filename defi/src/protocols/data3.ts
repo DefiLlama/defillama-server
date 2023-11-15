@@ -24331,6 +24331,29 @@ const data3: Protocol[] = [
     twitter: "9inch_io",
     listedAt: 1699980736
   },
+  {
+    id: "3795",
+    name: "Sweep",
+    address: "arbitrum:0x89B1e7068bF8E3232dD8f16c35cAc45bDA584f4E",
+    symbol: "SWEEPR",
+    url: "https://sweepr.finance",
+    description: "The Sweep liquidity layer eliminates cash drag and funds RWAs and L2s",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sweep.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum", "Arbitrum","Optimism"],
+    module: "sweep/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "SweeprFi",
+    audit_links: ["https://github.com/SweeprFi/sweepr-contracts/tree/main/audits/sublime"],
+    github: ["SweeprFi"],
+    listedAt: 1700083684
+  },
 ]
 
 export default data3

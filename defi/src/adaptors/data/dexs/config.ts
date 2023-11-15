@@ -2167,7 +2167,7 @@ export default {
         }
     },
     "derivio": {
-        "enabled": true,
+        "enabled": false,
         "id": "3759",
         protocolsData: {
             "swap": {

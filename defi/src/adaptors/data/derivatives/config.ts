@@ -474,5 +474,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "mu-exchange": {
+        "enabled": true,
+        "id": "3763"
     }
 } as AdaptorsConfig

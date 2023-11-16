@@ -721,29 +721,6 @@ functions:
       - http:
           path: emissionsBreakdown
           method: get
-  triggerStoreEmissions:
-    handler: src/triggerStoreEmissions.default
-    timeout: 900
-    events:
-      - schedule: cron(0 * * * ? *)
-  storeEmissions:
-    handler: src/storeEmissions.default
-    timeout: 900
-    memorySize: 3000
-    environment:
-      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
-      COINGLASS_KEY: ${env:COINGLASS_KEY}
-      UNLOCKS_WEBHOOK: ${env:UNLOCKS_WEBHOOK}
-      APIKEY: ${env:APIKEY}
-  storeEmissionsIndex: 
-    handler: src/storeEmissionsIndex.default
-    timeout: 900
-    memorySize: 3000
-    environment:
-      APIKEY: ${env:APIKEY}
-      UNLOCKS_WEBHOOK: ${env:UNLOCKS_WEBHOOK}
-    events:
-      - schedule: cron(15 * * * ? *)
   storeGovernance:
     handler: src/storeGovernance.default
     timeout: 900

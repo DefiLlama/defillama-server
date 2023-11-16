@@ -3,7 +3,6 @@ import { sendMessage } from "./utils/discord";
 import { withTimeout } from "./utils/shared/withTimeout";
 import setEnvSecrets from "./utils/shared/setEnvSecrets";
 import { storeR2JSONString } from "./utils/r2";
-import { wrapScheduledLambda } from "./utils/shared/wrap";
 
 async function getChainAssets() {
   const res = await chainAssets();
@@ -19,5 +18,4 @@ export async function handler() {
   }
 }
 
-export default wrapScheduledLambda(handler);
-// handler(); // ts-node defi/src/storeChainAssets.ts
+handler(); // ts-node defi/src/storeChainAssets.ts

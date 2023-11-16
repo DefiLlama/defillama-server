@@ -8,7 +8,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 async function getChainAssets() {
   const res = await chainAssets();
   await storeR2JSONString("chainAssets", JSON.stringify(res));
-  console.log('chain assets stored')
+  console.log("chain assets stored");
 }
 export async function handler() {
   try {
@@ -20,4 +20,4 @@ export async function handler() {
 }
 
 export default wrapScheduledLambda(handler);
-handler(); // ts-node defi/src/storeChainAssets.ts
+// handler(); // ts-node defi/src/storeChainAssets.ts

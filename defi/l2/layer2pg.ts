@@ -18,7 +18,7 @@ async function queryPostgresWithRetry(query: any, sql: any, counter: number = 0)
     return res;
   } catch (e) {
     if (counter > 5) throw e;
-    await sleep(5000 + 1e4 * Math.random());
+    await sleep(5000 + 2e4 * Math.random());
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
 }

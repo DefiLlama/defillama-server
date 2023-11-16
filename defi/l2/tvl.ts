@@ -1,6 +1,6 @@
 import { fetchTvls } from "./outgoing";
 import { fetchIncoming } from "./incoming";
-import { fetchMinted } from "./minted";
+import { fetchMinted } from "./native";
 import { fetchMetadata } from "./metadata";
 import { ChainData, DollarValues, TokenTvlData } from "./types";
 import BigNumber from "bignumber.js";
@@ -14,6 +14,7 @@ export default async function main() {
   let { tvlData: native, mcapData } = await fetchMinted({ chains: Object.keys(canonical) });
   let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({ mcapData, native });
   if (!adjustedNativeBalances) throw new Error(`Adjusting for mcaps has failed, debug manually`);
+  native = adjustedNativeBalances;
   const incoming = await fetchIncoming({ chains: Object.keys(canonical) });
   const { data: protocols } = await fetchTvls({ isCanonical: true, isProtocol: true });
   // const metadata = await Promise.all(Object.keys(canonical).map((chain: string) => fetchMetadata(chain)));

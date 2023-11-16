@@ -22,13 +22,13 @@ export function aggregateChainTokenBalances(usdTokenBalances: TokenTvlData[][]):
 
   return chainUsdTokenTvls;
 }
-async function restCallWrapper(request: () => Promise<any>, retries: number = 3, name: string = "-") {
+async function restCallWrapper(request: () => Promise<any>, retries: number = 4, name: string = "-") {
   while (retries > 0) {
     try {
       const res = await request();
       return res;
     } catch {
-      await sleep(10000); // 10s
+      await sleep(6000 + 2e4 * Math.random());
       restCallWrapper(request, retries--);
     }
   }

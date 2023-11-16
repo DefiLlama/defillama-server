@@ -1,6 +1,6 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { fetchAllTokens, updateAllTokenSupplies } from "./layer2pg";
-import { SupplyInsert, TokenTvlData } from "./types";
+import { McapData, SupplyInsert, TokenTvlData } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
@@ -8,7 +8,7 @@ import { Address } from "@defillama/sdk/build/types";
 import { fetchBridgeTokenList } from "./incoming";
 import { DollarValues, Supplies } from "./types";
 import { zero } from "./constants";
-import { getPrices } from "./utils";
+import { getMcaps, getPrices } from "./utils";
 
 async function fetchMissingSupplies(chain: Chain, storedSupplies: Supplies): Promise<Supplies> {
   const calls: { target: string }[] = [];
@@ -43,36 +43,49 @@ export async function fetchMinted(params: {
   chains: Chain[];
   timestamp?: number;
   searchWidth?: number;
-}): Promise<TokenTvlData> {
+}): Promise<{ tvlData: TokenTvlData; mcapData: McapData }> {
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
-  const data: TokenTvlData = {};
-  params.chains.map(async (chain: Chain) => {
-    const incomingTokens: Address[] = await fetchBridgeTokenList(chain);
-    const storedSupplies = await fetchAllTokens(chain);
+  const tvlData: TokenTvlData = {};
+  const mcapData: McapData = {};
 
-    // filter any tokens that arent natively minted
-    incomingTokens.map((t: Address) => {
-      if (t in storedSupplies) delete storedSupplies[t];
-    });
-    const supplies = await fetchMissingSupplies(chain, storedSupplies);
+  await Promise.all(
+    params.chains.map(async (chain: Chain) => {
+      const incomingTokens: Address[] = await fetchBridgeTokenList(chain);
+      const storedSupplies = await fetchAllTokens(chain);
 
-    const prices = await getPrices(
-      Object.keys(supplies).map((t: string) => `${chain}:${t}`),
-      timestamp
-    );
+      // filter any tokens that arent natively minted
+      incomingTokens.map((t: Address) => {
+        if (t in storedSupplies) delete storedSupplies[t];
+      });
+      const supplies = await fetchMissingSupplies(chain, storedSupplies);
 
-    const dollarValues: DollarValues = {};
-    Object.keys(supplies).map((t: string) => {
-      const priceInfo = prices[`${chain}:${t}`];
-      const supply = supplies[t];
-      if (!priceInfo || !supply) return;
-      if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
-      const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
-      const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-      dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
-    });
+      const [prices, mcaps] = await Promise.all([
+        getPrices(
+          Object.keys(supplies).map((t: string) => `${chain}:${t}`),
+          timestamp
+        ),
+        getMcaps(
+          Object.keys(supplies).map((t: string) => `${chain}:${t}`),
+          timestamp
+        ),
+      ]);
 
-    return (data[chain] = dollarValues);
-  });
-  return data;
+      const dollarValues: DollarValues = {};
+      Object.keys(supplies).map((t: string) => {
+        const priceInfo = prices[`${chain}:${t}`];
+        const mcapInfo = mcaps[`${chain}:${t}`];
+        const supply = supplies[t];
+        if (!priceInfo || !supply || !mcapInfo) return;
+        if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
+        const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
+        const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
+        if (!(priceInfo.symbol in mcapData))
+          mcapData[priceInfo.symbol] = { chain, native: usdValue, total: BigNumber(mcapInfo.mcap) };
+        dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
+      });
+
+      return (tvlData[chain] = dollarValues);
+    })
+  );
+  return { tvlData, mcapData };
 }

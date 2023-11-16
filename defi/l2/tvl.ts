@@ -1,4 +1,4 @@
-import { fetchOutgoing } from "./outgoing";
+import { fetchTvls } from "./outgoing";
 import { fetchIncoming } from "./incoming";
 import { fetchMinted } from "./minted";
 import { fetchMetadata } from "./metadata";
@@ -8,13 +8,15 @@ import { tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 
 type TranslatedData = { [chain: string]: any };
-export async function main() {
-  const outgoing = await fetchOutgoing();
-  const canonical = await fetchOutgoing({ isCanonical: true });
+
+export default async function main() {
+  const { data: canonical } = await fetchTvls({ isCanonical: true });
+  let { tvlData: native, mcapData } = await fetchMinted({ chains: Object.keys(canonical) });
+  let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({ mcapData, native });
+  if (!adjustedNativeBalances) throw new Error(`Adjusting for mcaps has failed, debug manually`);
   const incoming = await fetchIncoming({ chains: Object.keys(canonical) });
-  const native = await fetchMinted({ chains: Object.keys(canonical) });
+  const { data: protocols } = await fetchTvls({ isCanonical: true, isProtocol: true });
   // const metadata = await Promise.all(Object.keys(canonical).map((chain: string) => fetchMetadata(chain)));
-  const protocols = await fetchOutgoing({ isCanonical: true, isProtocol: true });
 
   const chains = translateToChainData({
     canonical,
@@ -36,7 +38,7 @@ function translateProtocols(chains: TranslatedData, protocols: TokenTvlData): Tr
       incoming: {},
       native: {},
       outgoing: {},
-      netflows: canonical,
+      total: canonical,
     };
   });
 
@@ -64,27 +66,24 @@ function translateToChainData(data: ChainData): TranslatedData {
 
   function processNetFlows() {
     Object.keys(translatedData).map((chain: Chain) => {
-      let netflows: { breakdown: DollarValues; total: BigNumber } = { breakdown: {}, total: zero };
+      let total: { breakdown: DollarValues; total: BigNumber } = { breakdown: {}, total: zero };
       Object.keys(translatedData[chain]).map((category: string) => {
         Object.keys(translatedData[chain][category].breakdown).map((symbol: string) => {
-          if (!(symbol in netflows.breakdown)) netflows.breakdown[symbol] = zero;
+          if (!(symbol in total.breakdown)) total.breakdown[symbol] = zero;
           if (category == "outgoing")
-            netflows.breakdown[symbol] = netflows.breakdown[symbol].minus(
-              translatedData[chain][category].breakdown[symbol]
-            );
+            total.breakdown[symbol] = total.breakdown[symbol].minus(translatedData[chain][category].breakdown[symbol]);
           else
-            netflows.breakdown[symbol] = netflows.breakdown[symbol].plus(
-              translatedData[chain][category].breakdown[symbol]
-            );
+            total.breakdown[symbol] = total.breakdown[symbol].plus(translatedData[chain][category].breakdown[symbol]);
         });
 
-        if (category == "outgoing") netflows.total = netflows.total.minus(translatedData[chain][category].total);
-        else netflows.total = netflows.total.plus(translatedData[chain][category].total);
+        if (category == "outgoing") total.total = total.total.minus(translatedData[chain][category].total);
+        else total.total = total.total.plus(translatedData[chain][category].total);
       });
 
-      translatedData[chain].netflows = netflows;
+      translatedData[chain].total = total;
     });
   }
 
   return translatedData;
 }
+// main(); // ts-node defi/l2/tvl.ts

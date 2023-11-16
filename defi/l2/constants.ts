@@ -13,7 +13,7 @@ export const canonicalBridgeIds: { [chain: string]: Chain } = {
   "3781": "linea",
   // "3783": "metis", // commented out until we get a native bridge token mapping
   "3784": "optimism",
-  "3785": "polygon_zkevm",
+  // "3785": "polygon_zkevm",
   "3786": "scroll",
   "3787": "starknet",
   "3788": "zksync",

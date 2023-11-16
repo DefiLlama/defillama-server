@@ -1549,5 +1549,9 @@ export default {
     "solend": {
         "enabled": true,
         "id": "458"
+    },
+    "thorswap": {
+        "enabled": true,
+        "id": "412"
     }
 } as AdaptorsConfig

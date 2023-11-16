@@ -291,6 +291,14 @@
     }
   },
   "manta": {
+    "0xb3a5eeBf23530165c3A6785400ff5d1700D5c0b3": {
+      "to": "manta:0x92351C9Aed156Bc8Ec76D52cB1441b93f153e550", "decimals": "18",
+      "symbol": "fsKLP"
+    },
+    "0xFe4169DFAfEC278C47F10b3409cF6E09406E73f9": {
+      "to": "manta:0x92351C9Aed156Bc8Ec76D52cB1441b93f153e550", "decimals": "18",
+      "symbol": "fKLP"
+    },
     "0x0Dc808adcE2099A9F62AA87D9670745AbA741746": {
       "to": "coingecko#ethereum", "decimals": "18",
       "symbol": "ETH"

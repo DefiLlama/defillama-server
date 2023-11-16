@@ -7392,7 +7392,7 @@ const data3: Protocol[] = [
     module: "winr-protocol/index.js",
     twitter: "WINRProtocol",
     forkedFrom: [],
-    oracles: ["Supra Oracles"],
+    oracles: ["Supra"],
     audit_links: ["https://docs.winr.games/developers/audits"],
     listedAt: 1685097004
   },
@@ -23084,7 +23084,7 @@ const data3: Protocol[] = [
     chains: ["Fuse"],
     module: "mirakle/index.js",
     forkedFrom: ["GMX V1"],
-    oracles: ["Supra Oracles"],
+    oracles: ["Supra"],
     twitter: "DefiMirakle",
     audit_links: ["https://github.com/verichains/public-audit-reports/blob/main/Verichains%20Public%20Audit%20Report%20-%20Mirakle%20Smartcontracts%20-%20v1.1.pdf"],
     listedAt: 1699008838

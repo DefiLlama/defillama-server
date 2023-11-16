@@ -1,5 +1,5 @@
 import synthetixAdapter from "./synthetix";
-import glpAdapter from "./glp";
+import glp from "./glp";
 import abraAdapter from "./abracadabra";
 import unknownTokenAdapter from "./unknownToken";
 import podsAdapter from "./pods";
@@ -20,6 +20,7 @@ import { addToDBWritesList } from "../utils/database";
 import mooBvmAdapter from "./mooBvmEth";
 import defiChainAdapter from "./defichain";
 import velgAdapter from "./velgd";
+export { glp };
 
 export const shlb = shlb_;
 
@@ -41,14 +42,6 @@ export function metronome(timestamp: number = 0) {
   );
 }
 
-export function glp(timestamp: number = 0) {
-  console.log("starting glp");
-  return Promise.all([
-    glpAdapter("arbitrum", timestamp),
-    glpAdapter("avax", timestamp),
-    glpAdapter("polygon", timestamp),
-  ]);
-}
 export function abracadabra(timestamp: number = 0) {
   console.log("starting abracadabra");
   return abraAdapter(timestamp);

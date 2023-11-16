@@ -192,7 +192,7 @@ async function _saveProtocolItem(ddbPKFunction: Function, record: TVLCacheRecord
 async function deleteProtocolItems(ddbPKFunction: Function, where: any) {
   const table = getTVLCacheTable(ddbPKFunction)
   const response = await table.destroy({ where })
-  console.log('delete item count', response)
+  console.log('[Postgres] delete item count', response)
 }
 
 function validateRecord(record: TVLCacheRecord) {

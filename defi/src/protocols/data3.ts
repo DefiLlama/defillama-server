@@ -24316,7 +24316,7 @@ const data3: Protocol[] = [
     address: "pulse:0x3ca80d83277e721171284667829c686527B8b3c5",
     symbol: "9INCH",
     url: "https://app.9inch.io/?chain=pulsechain",
-    description: "Built by old-school Pulsicans and Hexicans who have been in the community for several years, we've been working on this in collaboration with the wider PulseChain community, as an answer to a need in the market for a truly fun, engaging, and open platform for the masses!",
+    description: "The full-suite DEX and yield-farm where memcoins and PulseChain-related tokens enjoy the limelight on both Ethereum and PulseChain.",
     chain: "Pulse",
     logo: `${baseIconsUrl}/9inch.jpg`,
     audits: "0",

@@ -2031,6 +2031,13 @@ export const chainCoingeckoIds = {
     symbol: "DASH",
     cmcId: "131",
   },
+  "Bostrom": {
+    geckoId: "bostrom",
+    symbol: "BOOT",
+    cmcId: null,
+    categories: ["Cosmos"],
+    github: ["cybercongress"]
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2543,7 +2550,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "mayachain":
       return "Mayachain"
     case "dash":
-      return "Dash"  
+      return "Dash"
+    case "bostrom":
+      return "Bostrom"  
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

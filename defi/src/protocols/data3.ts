@@ -24430,7 +24430,7 @@ const data3: Protocol[] = [
     description: "Semantic non-deterministic Superintelligence consensus computer",
     chain: "Bostrom",
     logo: `${baseIconsUrl}/warp-dex.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -24441,6 +24441,28 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "cyber_devs",
     listedAt: 1700145998
+  },
+  {
+    id: "3800",
+    name: "Nocturne",
+    address: null,
+    symbol: "-",
+    url: "https://nocturne.xyz/",
+    description: "Nocturne is a protocol enabling private accounts on Ethereum",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/nocturne.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Privacy",
+    chains: ["Ethereum"],
+    module: "nocturne_xyz/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "nocturne_xyz",
+    audit_links: ["https://nocturne-xyz.gitbook.io/nocturne/developers/security"],
+    listedAt: 1700169527
   },
 ]
 

@@ -80,34 +80,40 @@ export async function indexed(params: { chain: Chain; timestamp?: number }) {
 export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
   const j = Object.keys(incomingAssets).indexOf(chain);
   if (j == -1) return [];
-  const tokens: Address[] = await Object.values(incomingAssets)[j]();
-  return tokens;
+  try {
+    const tokens: Address[] = await Object.values(incomingAssets)[j]();
+    return tokens;
+  } catch {
+    throw new Error(`${chain} bridge adapter failed`);
+  }
 }
 export async function fetchIncoming(params: { chains: Chain[]; timestamp?: number }): Promise<TokenTvlData> {
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
   const data: TokenTvlData = {};
-  params.chains.map(async (chain: Chain) => {
-    const tokens: string[] = await fetchBridgeTokenList(chain);
-    if (!tokens.length) return {};
-    const supplies = await fetchTokenSupplies(chain, tokens);
+  await Promise.all(
+    params.chains.map(async (chain: Chain) => {
+      const tokens: string[] = await fetchBridgeTokenList(chain);
+      if (!tokens.length) return {};
+      const supplies = await fetchTokenSupplies(chain, tokens);
 
-    const prices = await getPrices(
-      Object.keys(supplies).map((t: string) => `${chain}:${t}`),
-      timestamp
-    );
+      const prices = await getPrices(
+        Object.keys(supplies).map((t: string) => `${chain}:${t}`),
+        timestamp
+      );
 
-    const dollarValues: DollarValues = {};
-    Object.keys(supplies).map((t: string) => {
-      const priceInfo = prices[`${chain}:${t}`];
-      const supply = supplies[t];
-      if (!priceInfo || !supply) return;
-      if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
-      const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
-      const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-      dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
-    });
+      const dollarValues: DollarValues = {};
+      Object.keys(supplies).map((t: string) => {
+        const priceInfo = prices[`${chain}:${t}`];
+        const supply = supplies[t];
+        if (!priceInfo || !supply) return;
+        if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
+        const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
+        const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
+        dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
+      });
 
-    data[chain] = dollarValues;
-  });
+      data[chain] = dollarValues;
+    })
+  );
   return data;
 }

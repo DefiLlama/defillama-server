@@ -49,3 +49,11 @@ export type ChainData = {
   native: TokenTvlData;
   // metadata: any;
 };
+export type McapData = {
+  [symbol: string]: {
+    native: BigNumber;
+    outgoing?: BigNumber;
+    total: BigNumber;
+    chain: Chain;
+  };
+};

@@ -2179,5 +2179,10 @@ export default {
     "elektrik": {
         "enabled": true,
         "id": "3773"
+    },
+    "caviarnine-lsu-pool": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3666"
     }
 } as AdaptorsConfig

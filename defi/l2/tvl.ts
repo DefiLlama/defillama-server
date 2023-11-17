@@ -45,7 +45,6 @@ function translateProtocols(chains: TranslatedData, protocols: TokenTvlData): Tr
 
   return chains;
 }
-
 function translateToChainData(data: ChainData): TranslatedData {
   const translatedData: { [chain: Chain]: { [category: string]: { breakdown: any; total: BigNumber } } } = {};
   const selectedChains: Chain[] = Object.keys(data.canonical);
@@ -87,4 +86,3 @@ function translateToChainData(data: ChainData): TranslatedData {
 
   return translatedData;
 }
-// main(); // ts-node defi/l2/tvl.ts

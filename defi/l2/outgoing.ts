@@ -101,5 +101,15 @@ function addOutgoingToMcapData(
     if (outgoing && outgoing != zero) adjustedOutgoing[chain][symbol] = outgoing;
   });
 
+  // fill in the missing outgoings
+  Object.keys(allOutgoing).map((chain: string) => {
+    if (!Object.values(canonicalBridgeIds).includes(chain)) return;
+    Object.keys(allOutgoing[chain]).map((symbol: string) => {
+      if (!(chain in adjustedOutgoing)) return;
+      if (symbol in adjustedOutgoing[chain]) return;
+      adjustedOutgoing[chain][symbol] = allOutgoing[chain][symbol];
+    });
+  });
+
   return { data: adjustedOutgoing, native: adjustedNative };
 }

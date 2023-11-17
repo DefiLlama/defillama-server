@@ -4750,6 +4750,12 @@
       "decimals": "18",
       "symbol": "ETH",
       "to": "coingecko#ethereum"
+    },
+    "0x042b8f0484674ca266ac5d08e4ac6a3fe65bd3129795def2dca5c34ecc5f96d2": {
+      "name": "Starknet Wrapped Staked Ether",
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
     }
   },
   "ontology_evm": {

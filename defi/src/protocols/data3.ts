@@ -2937,7 +2937,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "unieth/index.js",
-    twitter: "rockx_official",
+    twitter: "Bedrock_DeFi",
     audit_links: ["https://github.com/RockX-SG/stake/blob/main/PeckShield-Audit-Report-RockXStaking-v1.0.pdf"],
     listedAt: 1681516422
   },

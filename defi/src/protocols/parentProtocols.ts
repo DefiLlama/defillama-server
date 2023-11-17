@@ -1968,7 +1968,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#solv-protocol",
     name: "Solv Protocol",
     url: "https://solv.finance/",
-    description: "Solv Protocol is a one-stop platform for creating, using and trading financial NFTs",
+    description: "A decentralized, non-custodial protocol for active asset management, powered by ERC-3525.",
     logo: `${baseIconsUrl}/solv-protocol.png`,
     gecko_id: null,
     cmcId: null,

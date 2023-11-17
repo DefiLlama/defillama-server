@@ -19468,7 +19468,7 @@ const data3: Protocol[] = [
     address: "0x256f2d67e52fe834726d2ddcd8413654f5eb8b53",
     symbol: "SOLV",
     url: "https://solv.finance/",
-    description: "Solv Finance is a liquidity platform that bridges the gap between asset managers and investors, enabling efficient capital allocation in a reliable and transparent marketplace",
+    description: "Leveraging its proprietary ERC-3525 token standard, Solv expands the DeFi ecosystem by tokenizing real-world assets. Solv RWA provides exposure to diverse revenue streams traditionally unavailable to crypto participants, all in a decentralized and transparent manner.",
     chain: "Mantle",
     logo: `${baseIconsUrl}/solv-rwa.png`,
     audits: "2",

@@ -24529,6 +24529,29 @@ const data3: Protocol[] = [
     audit_links: ["https://3838260506-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FTmzl9GX7emUArB9s00Rz%2Fuploads%2FvK1ML7oM7IwFeeR3bHaF%2FARYZE%20-%20eEUR%2C%20eGBP%2C%20eUSD%20and%20RYZE%20Code%20Audit.pdf?alt=media&token=0e1f74c0-0278-42bb-a7cd-c22ea0bf7b5d"],
     listedAt: 1700221875
   },
+  {
+    id: "3804",
+    name: "Thala LSD",
+    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
+    symbol: "THL",
+    url: "https://app.thala.fi/lsd",
+    description: "Thala's APT liquid staking primitive, designed to enable APT holders to achieve higher yields while leveraging DeFi and fueling the next wave of the DeFi boom on Aptos.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/thala-lsd.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Aptos"],
+    module: "thala-lsd/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "ThalaLabs",
+    audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
+    parentProtocol: "parent#thala-labs",
+    listedAt: 1700222569
+  },
 ]
 
 export default data3

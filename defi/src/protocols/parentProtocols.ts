@@ -3110,6 +3110,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["notional-finance"],
     treasury: "notional.js",
   },
+  {
+    id: "parent#bedrock",
+    name: "Bedrock",
+    url: "https://www.bedrock.technology",
+    description: "Bedrock is a non-custodial solution designed in partnership with RockX, a longstanding blockchain infrastructure company with strong roots in crypto staking. Designed with institutions in mind, Bedrock is a platform focused on security, compliance, and transparency.",
+    logo: `${baseIconsUrl}/bedrock.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "NotionalFinance",
+    github: ["Bedrock-Technology"],
+  },
 ];
 
 export default parentProtocols;

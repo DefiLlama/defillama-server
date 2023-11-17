@@ -2939,6 +2939,7 @@ const data3: Protocol[] = [
     module: "unieth/index.js",
     twitter: "Bedrock_DeFi",
     audit_links: ["https://github.com/RockX-SG/stake/blob/main/PeckShield-Audit-Report-RockXStaking-v1.0.pdf"],
+    parentProtocol: "parent#bedrock",
     listedAt: 1681516422
   },
   {
@@ -24469,6 +24470,7 @@ const data3: Protocol[] = [
     name: "uniIOTX",
     address: null,
     symbol: "-",
+    assetToken: "uniIOTX",
     url: "https://app.bedrock.technology/uniiotx",
     description: "UniIOTX is the first ever Liquid Staking dApp on IoTeX. UniIOTX token holders can earn staking rewards while keeping the tokens in play for trading, lending, or any other DeFi ventures.",
     chain: "IoTeX",
@@ -24484,6 +24486,7 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "Bedrock_DeFi",
     audit_links: ["https://github.com/RockX-SG/uniiotx/blob/main/docs/PeckShield-Audit-Report-Bedrock-v1.0.pdf"],
+    parentProtocol: "parent#bedrock",
     listedAt: 1700221805
   },
   {

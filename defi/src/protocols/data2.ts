@@ -21204,14 +21204,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2324",
-    name: "Jexchange",
+    name: "JEXchangeDefi",
     address: "elrond:erd1hmfwpvsqn8ktzw3dqd0ltpcyfyasgv8mr9w0qecnmpexyp280y8q47ca9d",
     symbol: "JEX",
     url: "https://jexchange.io",
     description:
-      "Decentralized P2P exchange on Elrond Blockchain. Simple and intuitive platform to create tokens exchange offers.",
+      "Decentralized exchange and DeFi tools built on MultiversX",
     chain: "Elrond",
-    logo: `${baseIconsUrl}/jexchange.jpg`,
+    logo: `${baseIconsUrl}/jexchangedefi.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "jexchange",
@@ -21219,7 +21219,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Elrond"],
     module: "jexchange/index.js",
-    twitter: "jexchangeP2P",
+    twitter: "JEXchangeDefi",
     forkedFrom: [],
     oracles: [],
     listedAt: 1669810598

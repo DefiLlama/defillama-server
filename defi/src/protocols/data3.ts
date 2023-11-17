@@ -19445,7 +19445,7 @@ const data3: Protocol[] = [
     address: "0x256f2d67e52fe834726d2ddcd8413654f5eb8b53",
     symbol: "SOLV",
     url: "https://solv.finance/",
-    description: "Solv Finance is a liquidity platform that bridges the gap between asset managers and investors, enabling efficient capital allocation in a reliable and transparent marketplace",
+    description: "Solv Funds aim to bring best-in-class asset management to crypto investors through transparent and risk-managed funds. Through our risk management system and proprietary token standard (ERC-3525), Solv manages the risk for investors while providing access to real yield and high quality assets.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/solv-funds.png`,
     audits: "2",

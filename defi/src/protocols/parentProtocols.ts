@@ -3119,7 +3119,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "NotionalFinance",
+    twitter: "Bedrock_DeFi",
     github: ["Bedrock-Technology"],
   },
 ];

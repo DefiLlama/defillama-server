@@ -24555,6 +24555,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#thala-labs",
     listedAt: 1700222569
   },
+  {
+    id: "3805",
+    name: "ShekelSwap",
+    address: "arbitrum:0xF549Ce4082978524f651DEC918E738EEfE77c3bC",
+    symbol: "SHEKEL",
+    url: "https://shekelswap.finance/#/",
+    description: "ShekelSwap is an automated liquidity protocol implemented in a system of non-upgradeable smart contracts on Arbitrum Mainnet",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/shekelswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "shekelswap/index.js",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    twitter: "ShekelSwap",
+    listedAt: 1700245919
+  },
 ]
 
 export default data3

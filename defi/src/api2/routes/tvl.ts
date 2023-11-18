@@ -149,7 +149,6 @@ async function getChainsData(_req: HyperExpress.Request, res: HyperExpress.Respo
   }
 }
 
-
 async function getProtocolTvl(req: HyperExpress.Request, res: HyperExpress.Response) {
   try {
     let name = sluggify({ name: req.path_parameters.name } as any)
@@ -189,7 +188,7 @@ async function getProtocolTvl(req: HyperExpress.Request, res: HyperExpress.Respo
 
 async function getTokenInProtocols(req: HyperExpress.Request, res: HyperExpress.Response) {
   try {
-    let symbol = sluggify({ name: req.path_parameters.symbol } as any)
+    let symbol = req.path_parameters.symbol
     if (!symbol) {
       res.status(404)
       return res.send('Ser you need to provide a token', true)

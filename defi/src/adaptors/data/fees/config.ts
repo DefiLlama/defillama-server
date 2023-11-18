@@ -833,6 +833,7 @@ export default {
         "id": "1673",
         protocolsData: {
             v2: {
+                disabled: true,
                 "enabled": true,
                 "id": "1673",
                 displayName: "Hydradex V2"

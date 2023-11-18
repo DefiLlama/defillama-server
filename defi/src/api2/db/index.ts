@@ -1,4 +1,4 @@
-import { Sequelize, Model, ModelStatic, Op, Options as SequelizeOptions } from 'sequelize'
+import { Sequelize, Model, ModelStatic, Op, Options as SequelizeOptions, QueryTypes } from 'sequelize'
 
 import getEnv from '../env'
 import { initializeTables, Tables as TABLES } from './tables'
@@ -195,6 +195,28 @@ async function deleteProtocolItems(ddbPKFunction: Function, where: any) {
   console.log('[Postgres] delete item count', response)
 }
 
+
+async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hours = false } = {}) {
+  const table = getTVLCacheTable(ddbPKFunction)
+  let whereClause = '';
+
+  if (filterLast24Hours) {
+    const date24HoursAgo = new Date()
+    date24HoursAgo.setDate(date24HoursAgo.getDate() - 1)
+    whereClause = ` WHERE timestamp >= '${Math.floor(+date24HoursAgo / 1e3)}'`;
+  }
+
+  const items = await table.sequelize!.query(
+    `SELECT DISTINCT ON (id) id, "data" , "timestamp" FROM "${table.getTableName()}" ${whereClause} ORDER BY id, timestamp DESC`,
+    { type: QueryTypes.SELECT }
+  )
+
+  log('[Postgres] fetch item count', table.getTableName(), items.length)
+
+  items.forEach((i: any) => i.data.SK = i.timestamp)
+  return items
+}
+
 function validateRecord(record: TVLCacheRecord) {
   if (!record.id || typeof record.id !== 'string') throw new Error('Missing id')
   if (!record.timeS || typeof record.timeS !== 'string') throw new Error('Missing timeS')
@@ -276,6 +298,7 @@ export {
   readFromPGCache,
   deleteFromPGCache,
   getDailyTvlCacheId,
+  getLatestProtocolItems,
 }
 
 // Add a process exit hook to close the database connection

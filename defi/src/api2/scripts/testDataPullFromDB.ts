@@ -1,26 +1,41 @@
-import { TABLES, getAllProtocolItems, getLatestProtocolItem, initializeTVLCacheDB, } from '../db'
+import { TABLES, getAllProtocolItems, getLatestProtocolItem, initializeTVLCacheDB, getLatestProtocolItems, } from '../db'
 import { initCache, cache } from '../cache'
 import * as fs from 'fs'
 import craftProtocolV2 from '../utils/craftProtocolV2'
 import PromisePool from '@supercharge/promise-pool'
+import { dailyTvl, hourlyTvl, } from '../../utils/getLastRecord'
 
 async function main() {
 
   console.time('initializeTVLCacheDB')
   await initializeTVLCacheDB()
   console.timeEnd('initializeTVLCacheDB')
-  
+
   console.time('initCache')
   await initCache()
-  console.timeEnd('initCache')
+  console.timeEnd('initCache') 
 
-  const res = await craftProtocolV2({
-    protocolData: cache.protocolSlugMap['starfish-finance'],
-    useNewChainNames: true,
-    useHourlyData: false,
-    skipAggregatedTvl: false,
-  })
-  fs.writeFileSync('test.json', JSON.stringify(res))
+  // console.time('getLatestProtocolItems dailyTvl')
+  // const dailyTvlres = await getLatestProtocolItems(dailyTvl)
+  // console.timeEnd('getLatestProtocolItems dailyTvl')
+
+  // console.time('getLatestProtocolItems hourlyTvl')
+  // const hourlyTvlRes = await getLatestProtocolItems(hourlyTvl)
+  // console.timeEnd('getLatestProtocolItems hourlyTvl')
+
+  //  const res = await craftProtocolV2({
+  //   protocolData: cache.protocolSlugMap['starfish-finance'],
+  //   useNewChainNames: true,
+  //   useHourlyData: false,
+  //   skipAggregatedTvl: false,
+  // })
+  // fs.writeFileSync('test.json', JSON.stringify(res))
+  // fs.writeFileSync('test_dailyTvlres.json', JSON.stringify(dailyTvlres))
+
+  console.time('getLatestProtocolItems hourlyTvl')
+  const hourlyTvlRes2 = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
+  console.timeEnd('getLatestProtocolItems hourlyTvl')
+  fs.writeFileSync('test_hourlyTvlRes.json', JSON.stringify(hourlyTvlRes2))
 }
 
 async function main1() {

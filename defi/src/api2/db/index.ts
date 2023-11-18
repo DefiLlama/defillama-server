@@ -196,14 +196,31 @@ async function deleteProtocolItems(ddbPKFunction: Function, where: any) {
 }
 
 
-async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hours = false } = {}) {
+async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hours = false, filterADayAgo = false, filterAWeekAgo = false, filterAMonthAgo = false, } = {}) {
   const table = getTVLCacheTable(ddbPKFunction)
   let whereClause = '';
 
   if (filterLast24Hours) {
     const date24HoursAgo = new Date()
     date24HoursAgo.setDate(date24HoursAgo.getDate() - 1)
-    whereClause = ` WHERE timestamp >= '${Math.floor(+date24HoursAgo / 1e3)}'`;
+    whereClause = ` WHERE timestamp >= '${getUnixTime(date24HoursAgo)}'`;
+  }
+
+  if (filterADayAgo || filterAWeekAgo || filterAMonthAgo) {
+    let dayCount = 1
+    if (filterAWeekAgo) dayCount = 7
+    if (filterAMonthAgo) dayCount = 30
+
+    // we give 20 minutes of buffer to make sure we don't miss any data
+    const date = new Date()
+    date.setDate(date.getDate() - dayCount)
+    date.setMinutes(date.getMinutes() + 20);
+    const toTime = getUnixTime(date)
+    date.setDate(date.getDate() - 1)
+    date.setMinutes(date.getMinutes() - 2 * 20);
+    const fromTime = getUnixTime(date)
+
+    whereClause = ` WHERE timestamp BETWEEN '${fromTime}' AND '${toTime}'`;
   }
 
   const items = await table.sequelize!.query(
@@ -215,6 +232,10 @@ async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hou
 
   items.forEach((i: any) => i.data.SK = i.timestamp)
   return items
+
+  function getUnixTime(date: Date) {
+    return Math.floor(+date / 1e3)
+  }
 }
 
 function validateRecord(record: TVLCacheRecord) {

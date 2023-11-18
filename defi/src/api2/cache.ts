@@ -1,10 +1,11 @@
 import fetch from "node-fetch";
 
 import { PROTOCOL_METADATA_ALL_KEY } from './constants';
-import { protocolMcap } from '../utils/craftProtocol';
-import { IRaise } from '../types';
+import { IRaise, IProtocol } from '../types';
 import sluggify from '../utils/sluggify';
-import { readFromPGCache } from './db';
+import { readFromPGCache, getLatestProtocolItems, } from './db';
+import { dailyTvl, dailyUsdTokensTvl, hourlyTvl, hourlyUsdTokensTvl } from "../utils/getLastRecord";
+import { log } from '@defillama/sdk'
 
 export const cache: {
   metadata: {
@@ -12,8 +13,9 @@ export const cache: {
     entities: any[],
     treasuries: any[],
     parentProtocols: any[],
+    isDoubleCountedProtocol: { [protocolId: string]: boolean },
   },
-  mcaps: Record<string, Promise<number | null>>,
+  mcaps: Record<string, { mcap: number, timestamp: number }>,
   raises: any,
   protocolSlugMap: any,
   treasurySlugMap: any,
@@ -22,12 +24,15 @@ export const cache: {
   childProtocols: any,
   protocolRes: any,
   parentProtocolRes: any,
+  tvlProtocol: any,
+  tvlUSDProtocol: any,
 } = {
   metadata: {
     protocols: [],
     entities: [],
     treasuries: [],
     parentProtocols: [],
+    isDoubleCountedProtocol: {},
   },
   mcaps: {},
   raises: {},
@@ -38,21 +43,30 @@ export const cache: {
   childProtocols: {},
   protocolRes: {},
   parentProtocolRes: {},
+  tvlProtocol: {},
+  tvlUSDProtocol: {},
 }
 
 export async function initCache() {
+  console.time('Cache initialized')
   await Promise.all([
-    updateMetadata(),
+    updateMetadata(true),
     updateRaises(),
   ])
-  console.log('Cache initialized')
+  await Promise.all([
+    await updateMCaps(),
+    await tvlProtocolDataUpdate(true),
+  ])
+
+  console.timeEnd('Cache initialized')
 }
 
-async function updateMetadata() {
+async function updateMetadata(isFirstRun = false) {
   const data = await readFromPGCache(PROTOCOL_METADATA_ALL_KEY)
   cache.metadata = data
 
   // reset cache
+  cache.metadata.isDoubleCountedProtocol = {}
   cache.protocolSlugMap = {}
   cache.treasurySlugMap = {}
   cache.entitiesSlugMap = {}
@@ -61,6 +75,8 @@ async function updateMetadata() {
 
   data.protocols.forEach((p: any) => {
     cache.protocolSlugMap[sluggify(p)] = p
+    cache.metadata.isDoubleCountedProtocol[p.id] = p.doublecounted === true
+    delete p.doublecounted
     if (p.parentProtocol) {
       if (!cache.childProtocols[p.parentProtocol]) cache.childProtocols[p.parentProtocol] = []
       cache.childProtocols[p.parentProtocol].push(p)
@@ -75,6 +91,8 @@ async function updateMetadata() {
   data.parentProtocols.forEach((p: any) => {
     cache.parentProtocolSlugMap[sluggify(p)] = p
   })
+  if (!isFirstRun) 
+    await tvlProtocolDataUpdate()
 }
 
 async function updateRaises() {
@@ -105,16 +123,36 @@ export function getRaises(protocolId: string): IRaise[] {
   return cache.raises[protocolId] ?? []
 }
 
-function clearMCap() {
-  cache.mcaps = {}
+async function updateMCaps() {
+  const geckoIdSet = new Set<string>()
+  const addGeckoId = (p: any) => p.gecko_id && geckoIdSet.add(p.gecko_id)
+  cache.metadata.protocols.forEach(addGeckoId)
+  cache.metadata.parentProtocols.forEach(addGeckoId)
+  const mcaps = await getProtocolMcaps([...geckoIdSet])
+  // cache.mcaps = {}
+  Object.entries(mcaps).forEach(([k, v]: any) => {
+    cache.mcaps[k] = v
+  })
+
+  async function getProtocolMcaps(geckoIds: string[]) {
+    const mcaps = await fetch("https://coins.llama.fi/mcaps", {
+      method: "POST",
+      body: JSON.stringify({
+        coins: geckoIds.map((id) => `coingecko:${id}`),
+      }),
+    }).then((r) => r.json())
+      .catch((err) => {
+        console.log(err);
+        return {};
+      });
+
+    return mcaps
+  };
 }
 
 export async function getCachedMCap(geckoId: string | null) {
   if (!geckoId) return null
-  if (!cache.mcaps.hasOwnProperty(geckoId)) {
-    cache.mcaps[geckoId] = protocolMcap(geckoId)
-  }
-  return cache.mcaps[geckoId]
+  return cache.mcaps['coingecko:' + geckoId]?.mcap ?? null
 }
 
 export function getCacheByCacheKey(key: string, id: string) {
@@ -145,6 +183,43 @@ export async function cacheAndRespond({ key, id, origFunction, args }: { key: st
   }
 }
 
+async function tvlProtocolDataUpdate(isFirstRun = false) {
+  if (isFirstRun === true) {
+    const allProtocolItems = await getLatestProtocolItems(dailyTvl)
+    const allProtocolUSDItems = await getLatestProtocolItems(dailyUsdTokensTvl)
+    allProtocolItems.forEach((item: any) => cache.tvlProtocol[item.id] = item.data)
+    allProtocolUSDItems.forEach((item: any) => cache.tvlUSDProtocol[item.id] = item.data)
+    log('tvlProtocolDataUpdate: initialized cache')
+    log('tvlProtocol#', Object.keys(cache.tvlProtocol).length)
+    log('tvlUSDProtocol#', Object.keys(cache.tvlUSDProtocol).length)
+  } 
+
+  const allProtocolItems = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
+  const allProtocolUSDItems = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterLast24Hours: true })
+  allProtocolItems.forEach((item: any) => cache.tvlProtocol[item.id] = item.data)
+  allProtocolUSDItems.forEach((item: any) => cache.tvlUSDProtocol[item.id] = item.data)
+}
+
+export function getCoinMarkets() {
+  return cache.mcaps
+}
+
+export function getLastHourlyRecord(protocol: IProtocol) {
+  return cache.tvlProtocol[protocol.id]
+}
+
+export function getLastHourlyTokensUsd(protocol: IProtocol) {
+  return cache.tvlUSDProtocol[protocol.id]
+}
+
+export function checkModuleDoubleCounted(protocolId: string) {
+  return cache.metadata.isDoubleCountedProtocol[protocolId] === true
+}
+
+export function protocolHasMisrepresentedTokens(protocol: IProtocol) {
+  return protocol.misrepresentedTokens
+}
+
 export const CACHE_KEYS = {
   PROTOCOL: 'protocolRes',
   PARENT_PROTOCOL: 'parentProtocolRes',
@@ -160,5 +235,6 @@ const HOUR = MINUTE * 60
 
 setInterval(updateRaises, HOUR * 24)
 setInterval(updateMetadata, MINUTE * 15)
-setInterval(clearMCap, MINUTE * 30)
+setInterval(updateMCaps, HOUR)
 setInterval(clearProtocolCache, MINUTE * 5)
+// setInterval(tvlProtocolDataUpdate, MINUTE * 15) // run as part of updateMetadata

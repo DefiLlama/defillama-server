@@ -1,24 +1,36 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import protocols from "./protocols/data";
+import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getChainDisplayName, chainCoingeckoIds, isDoubleCounted, isExcludedFromChainTvl } from "./utils/normalizeChain";
 import { excludeProtocolInCharts } from "./storeGetCharts";
-import { IChain } from "./types";
+import { IChain, } from "./types";
 import { importAdapter } from "./utils/imports/importAdapter";
 
-export async function craftChainsResponse(excludeDoublecountedAndLSD = false, useNewChainNames = false){
+async function _checkModuleDoubleCounted(protocol: Protocol){
+  const module = await importAdapter(protocol);
+  return module.doublecounted
+}
+
+async function _getLastHourlyRecord(protocol: Protocol){
+  return getLastRecord(hourlyTvl(protocol.id))
+}
+
+export async function craftChainsResponse(excludeDoublecountedAndLSD = false, useNewChainNames = false, {
+  checkModuleDoubleCounted = _checkModuleDoubleCounted,
+  getLastHourlyRecord = _getLastHourlyRecord,
+  protocolList = protocols,
+} = {}){
   const chainTvls = {} as {[chain:string]:number}
   await Promise.all(
-    protocols.map(async (protocol) => {
+    protocolList.map(async (protocol) => {
       if(excludeProtocolInCharts(protocol) || isExcludedFromChainTvl(protocol.category)){
         return undefined;
       }
-      const lastTvl = await getLastRecord(hourlyTvl(protocol.id))
+      const lastTvl = await getLastHourlyRecord(protocol)
       if(lastTvl === undefined){
           return
       }
-      const module = await importAdapter(protocol);
-      const excludeTvl = excludeDoublecountedAndLSD && (protocol.category === "Liquid Staking" || isDoubleCounted(module.doublecounted, protocol.category)  === true)
+      const excludeTvl = excludeDoublecountedAndLSD && (protocol.category === "Liquid Staking" || isDoubleCounted(await checkModuleDoubleCounted(protocol), protocol.category)  === true)
       let chainsAdded = 0
       Object.entries(lastTvl).forEach(([chain, chainTvl])=>{
           const chainName = getChainDisplayName(chain, useNewChainNames)

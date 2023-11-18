@@ -164,30 +164,30 @@ functions:
       - http:
           path: /v2/historicalChainTvl/{chain}
           method: get
-  protocols:
-    handler: src/getProtocols.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: protocols
-          method: get
-  treasuries:
-    handler: src/getProtocols.treasuriesHandler
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: treasuries
-          method: get
-  entities:
-    handler: src/getProtocols.entitiesHandler
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: entities
-          method: get
+  # protocols:
+  #   handler: src/getProtocols.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: protocols
+  #         method: get
+  # treasuries:
+  #   handler: src/getProtocols.treasuriesHandler
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: treasuries
+  #         method: get
+  # entities:
+  #   handler: src/getProtocols.entitiesHandler
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: entities
+  #         method: get
   reportError:
     handler: src/reportError.default
     timeout: 30
@@ -255,66 +255,66 @@ functions:
       - http:
           path: contractName2/{chain}/{contract}
           method: get
-  protocol:
-    handler: src/getProtocol.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: protocol/{protocol}
-          method: get
-  tokenProtocols:
-    handler: src/getTokenInProtocols.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: tokenProtocols/{symbol}
-          method: get
-  treasury:
-    handler: src/getTreasury.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: treasury/{protocol}
-          method: get
-  updatedProtocol:
-    handler: src/getUpdatedProtocol.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: updatedProtocol/{protocol}
-          method: get
-  updatedProtocolDraft:
-    handler: src/getUpdatedProtocol.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: updatedProtocolDraft/{protocol}
-          method: get
-  debugProtocol:
-    handler: src/getUpdatedProtocol.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: debugProtocol/{protocol}
-          method: get
-  protocolTvl:
-    handler: src/getProtocolTvl.default
-    events:
-      - http:
-          path: tvl/{protocol}
-          method: get
-  smolConfig:
-    handler: src/getSmolConfig.default
-    events:
-      - http:
-          path: config/smol/{protocol}
-          method: get
+  # protocol:
+  #   handler: src/getProtocol.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: protocol/{protocol}
+  #         method: get
+  # tokenProtocols:
+  #   handler: src/getTokenInProtocols.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: tokenProtocols/{symbol}
+  #         method: get
+  # treasury:
+  #   handler: src/getTreasury.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: treasury/{protocol}
+  #         method: get
+  # updatedProtocol:
+  #   handler: src/getUpdatedProtocol.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: updatedProtocol/{protocol}
+  #         method: get
+  # updatedProtocolDraft:
+  #   handler: src/getUpdatedProtocol.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: updatedProtocolDraft/{protocol}
+  #         method: get
+  # debugProtocol:
+  #   handler: src/getUpdatedProtocol.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: debugProtocol/{protocol}
+  #         method: get
+  # protocolTvl:
+  #   handler: src/getProtocolTvl.default
+  #   events:
+  #     - http:
+  #         path: tvl/{protocol}
+  #         method: get
+  # smolConfig:
+  #   handler: src/getSmolConfig.default
+  #   events:
+  #     - http:
+  #         path: config/smol/{protocol}
+  #         method: get
   coins:
     handler: src/getCoins.default
     timeout: 30
@@ -323,17 +323,17 @@ functions:
       - http:
           path: coins
           method: post
-  chains:
-    handler: src/getChains.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: chains
-          method: get
-      - http:
-          path: v2/chains
-          method: get
+  # chains:
+  #   handler: src/getChains.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: chains
+  #         method: get
+  #     - http:
+  #         path: v2/chains
+  #         method: get
   chains2:
     handler: src/getFormattedChains.default
     timeout: 30
@@ -398,14 +398,14 @@ functions:
       - http:
           path: categories
           method: get
-  testTvl:
-    handler: src/testTvl.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: testTvl
-          method: get
+  # testTvl:
+  #   handler: src/testTvl.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: testTvl
+  #         method: get
   storeLiquidations:
     handler: src/storeLiquidations.default
     timeout: 900

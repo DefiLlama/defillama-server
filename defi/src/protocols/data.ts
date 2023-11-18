@@ -11972,7 +11972,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "660",
     name: "Dopex",
-    address: "0xeec2be5c91ae7f8a338e1e5f3b5de49d07afdc81",
+    address: "0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81",
     symbol: "DPX",
     url: "https://www.dopex.io",
     description: "Dopex is a maximum liquidity and minimal exposure options protocol",
@@ -11985,15 +11985,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Options",
     chains: ["Ethereum", "Arbitrum"],
     oraclesByChain: {
-      metis: ["DIA"]
+      arbitrum: ["Chainlink", "DIA"]
     },
     module: "dopex/index.js",
     treasury: "dopex.js",
     twitter: "dopex_io",
-    audit_links: [
-      "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Dopex%20%5B21.06.2021%5D.pdf",
-      "https://solidity.finance/audits/Dopex/",
-    ],
+    audit_links: ["https://docs.dopex.io/developer/audits"],
     github: ["dopex-io"]
   },
   {

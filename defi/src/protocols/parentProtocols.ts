@@ -3122,6 +3122,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Bedrock_DeFi",
     github: ["Bedrock-Technology"],
   },
+  {
+    id: "parent#rollup-finance",
+    name: "Rollup Finance",
+    url: "https://www.rollup.finance/",
+    description: "Decentralized Perpetual Derivatives Trading Exchange",
+    logo: `${baseIconsUrl}/rollup-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Rollup_Finance",
+  },
 ];
 
 export default parentProtocols;

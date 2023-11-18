@@ -4174,7 +4174,7 @@ const data3: Protocol[] = [
   },
   {
     id: "2889",
-    name: "Rollup Finance",
+    name: "Rollup Finance vAMM",
     address: null,
     symbol: "-",
     url: "https://app.rollup.finance",
@@ -4195,6 +4195,7 @@ const data3: Protocol[] = [
       "https://972411339-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FlKZgazbrrlOv3lmzetUj%2Fuploads%2FYbZ40yoZOoHTV6I8qz3Y%2FRollup.Finance%20Smart%20Contract%20Security%20Audit%20Report.pdf?alt=media&token=91c34451-192e-4015-b3b2-6b74e1307951",
       "https://972411339-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FlKZgazbrrlOv3lmzetUj%2Fuploads%2F6yoR3zWB76OGB6zUH5YS%2FRollup.Finance%20Smart%20Contract%20Audit%20Report%20by%20Noneage.pdf?alt=media&token=2d3e3df2-6285-4291-88a6-e6a791f62e77"
     ],
+    parentProtocol: "parent#rollup-finance",
     listedAt: 1682430579
   },
   {
@@ -24575,6 +24576,29 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "ShekelSwap",
     listedAt: 1700245919
+  },
+  {
+    id: "3806",
+    name: "Rollup Finance Stake",
+    address: null,
+    symbol: "-",
+    url: "https://app.rollup.finance",
+    description: "Token staking for real yield.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/rollup-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "rollup-fi-pools/index.js",
+    twitter: "Rollup_Finance",
+    audit_links: [],
+    parentProtocol: "parent#rollup-finance",
+    listedAt: 1700323758
   },
 ]
 

@@ -164,30 +164,6 @@ functions:
       - http:
           path: /v2/historicalChainTvl/{chain}
           method: get
-  # protocols:
-  #   handler: src/getProtocols.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: protocols
-  #         method: get
-  # treasuries:
-  #   handler: src/getProtocols.treasuriesHandler
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: treasuries
-  #         method: get
-  # entities:
-  #   handler: src/getProtocols.entitiesHandler
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: entities
-  #         method: get
   reportError:
     handler: src/reportError.default
     timeout: 30
@@ -248,73 +224,6 @@ functions:
       - schedule: cron(18 * * * ? *)
     environment:
       CG_KEY: ${env:CG_KEY}
-  contractName:
-    handler: src/getContractName.default
-    timeout: 30
-    events:
-      - http:
-          path: contractName2/{chain}/{contract}
-          method: get
-  # protocol:
-  #   handler: src/getProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: protocol/{protocol}
-  #         method: get
-  # tokenProtocols:
-  #   handler: src/getTokenInProtocols.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: tokenProtocols/{symbol}
-  #         method: get
-  # treasury:
-  #   handler: src/getTreasury.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: treasury/{protocol}
-  #         method: get
-  # updatedProtocol:
-  #   handler: src/getUpdatedProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: updatedProtocol/{protocol}
-  #         method: get
-  # updatedProtocolDraft:
-  #   handler: src/getUpdatedProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: updatedProtocolDraft/{protocol}
-  #         method: get
-  # debugProtocol:
-  #   handler: src/getUpdatedProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: debugProtocol/{protocol}
-  #         method: get
-  # protocolTvl:
-  #   handler: src/getProtocolTvl.default
-  #   events:
-  #     - http:
-  #         path: tvl/{protocol}
-  #         method: get
-  # smolConfig:
-  #   handler: src/getSmolConfig.default
-  #   events:
-  #     - http:
-  #         path: config/smol/{protocol}
-  #         method: get
   coins:
     handler: src/getCoins.default
     timeout: 30
@@ -323,17 +232,6 @@ functions:
       - http:
           path: coins
           method: post
-  # chains:
-  #   handler: src/getChains.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: chains
-  #         method: get
-  #     - http:
-  #         path: v2/chains
-  #         method: get
   chains2:
     handler: src/getFormattedChains.default
     timeout: 30
@@ -348,64 +246,6 @@ functions:
       - http:
           path: inflows/{protocol}/{timestamp}
           method: get
-  langs:
-    handler: src/storeLangs.default
-    timeout: 60
-    memorySize: 2000
-    events:
-      - schedule: cron(30 0,12 * * ? *)
-  raises:
-    handler: src/getRaises.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: raises
-          method: get
-    environment:
-      AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
-  hacks:
-    handler: src/getHacks.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: hacks
-          method: get
-    environment:
-      AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
-  oracles:
-    handler: src/getOracles.default
-    timeout: 120
-    memorySize: 2000
-    events:
-      - http:
-          path: oracles
-          method: get
-  forks:
-    handler: src/getForks.default
-    timeout: 120
-    memorySize: 2000
-    events:
-      - http:
-          path: forks
-          method: get
-  categories:
-    handler: src/getCategories.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: categories
-          method: get
-  # testTvl:
-  #   handler: src/testTvl.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: testTvl
-  #         method: get
   storeLiquidations:
     handler: src/storeLiquidations.default
     timeout: 900
@@ -421,37 +261,6 @@ functions:
   #   handler: src/triggerFetchLiquidations.default
   #   events:
   #     - schedule: cron(40 * * * ? *)
-  dataset:
-    handler: src/getDataset.default
-    timeout: 30
-    memorySize: 10240
-    events:
-      - http:
-          path: dataset/{protocol}
-          method: get
-  simpleDataset:
-    handler: src/getSimpleChainDataset.default
-    timeout: 30
-    memorySize: 3000
-    events:
-      - http:
-          path: simpleChainDataset/{chain}
-          method: get
-  totalChainDataset:
-    handler: src/getTotalChainDataset.default
-    timeout: 30
-    memorySize: 3000
-    events:
-      - http:
-          path: totalChainDataset/{chain}
-          method: get
-  config:
-    handler: src/getConfig.default
-    timeout: 10
-    events:
-      - http:
-          path: config
-          method: get
   storeSortedTokenlist:
     handler: src/storeSortedTokenlist.default
     timeout: 60

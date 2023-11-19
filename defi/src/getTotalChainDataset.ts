@@ -1,12 +1,10 @@
 import { wrap, IResponse, errorResponse } from "./utils/shared";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
-import { getHistoricalTvlForAllProtocols } from "./storeGetCharts";
+import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols } from "./storeGetCharts";
 import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 
-const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const rawChain = decodeURI(event.pathParameters!.chain!);
+export async function getTotalChainDatasetInternal(rawChain: string, params: any = {}) {
   const globalChain = rawChain === "All" ? null : getChainDisplayName(rawChain, true);
-  const params = event.queryStringParameters ?? {};
 
   const sumDailyTvls = {} as {
     [ts: number]: {
@@ -14,7 +12,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     };
   };
 
-  const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols(false);
+  const { historicalProtocolTvls, lastDailyTimestamp }: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>> = await getCachedHistoricalTvlForAllProtocols(false);
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (protocolTvl === undefined) {
       return;
@@ -119,7 +117,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   });
 
   if (grid.length <= 2) {
-    return errorResponse({ message: "No chain with that name exists" });
+    return { error: "No chain with that name exists" }
   }
 
   // convert data to csv format
@@ -127,8 +125,18 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     .slice(0, 2)
     .map((r) => r.join(","))
     .join("\n");
+  return { csv }
+}
 
-  return { statusCode: 200, body: csv };
+const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  const rawChain = decodeURI(event.pathParameters!.chain!);
+  const params = event.queryStringParameters ?? {};
+  const { csv, error } = await getTotalChainDatasetInternal(rawChain, params);
+
+  if (error)
+    return errorResponse({ message: error });
+
+  return { statusCode: 200, body: csv! };
 };
 
 export default wrap(handler);

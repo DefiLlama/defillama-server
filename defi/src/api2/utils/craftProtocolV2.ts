@@ -17,6 +17,42 @@ type CraftProtocolV2Options = {
   skipAggregatedTvl: boolean;
 }
 
+export async function getAllProtocolData(protocol: Protocol) {
+
+  let cacheKey = getDailyTvlCacheId(protocol.id)
+  const protocolCache = await readFromPGCache(cacheKey)
+
+  let tvlQueryOptions = {}
+  let tokensInUsdQueryOptions = {}
+  let tokensQueryOptions = {}
+
+  if (protocolCache) {
+    // if cache is not empty, set query options to get only new records
+    protocolCache.tvl = protocolCache.tvl ?? []
+    protocolCache.tokensInUsd = protocolCache.tokensInUsd ?? []
+    protocolCache.tokens = protocolCache.tokens ?? []
+    if (protocolCache.tvl.length)
+      tvlQueryOptions = { timestampAfter: protocolCache.tvl[protocolCache.tvl.length - 1].SK }
+    if (protocolCache.tokensInUsd.length)
+      tokensInUsdQueryOptions = { timestampAfter: protocolCache.tokensInUsd[protocolCache.tokensInUsd.length - 1].SK }
+    if (protocolCache.tokens.length)
+      tokensQueryOptions = { timestampAfter: protocolCache.tokens[protocolCache.tokens.length - 1].SK }
+  }
+
+
+  let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl,] = await Promise.all([
+    getAllProtocolItems(dailyTvl, protocol.id, tvlQueryOptions),
+    getAllProtocolItems(dailyUsdTokensTvl, protocol.id, tokensInUsdQueryOptions),
+    getAllProtocolItems(dailyTokensTvl, protocol.id, tokensQueryOptions),
+  ]);
+
+  return [
+    [...protocolCache.tvl, ...historicalUsdTvl],
+    [...protocolCache.tokensInUsd, ...historicalUsdTokenTvl],
+    [...protocolCache.tokens, ...historicalTokenTvl],
+  ]
+}
+
 export default async function craftProtocolV2({
   protocolData,
   useNewChainNames,

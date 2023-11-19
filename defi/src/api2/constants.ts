@@ -1,7 +1,13 @@
 const METADATA_FILE = __dirname + '/metadata.json'
-const PROTOCOL_METADATA_ALL_KEY = 'protocol-metadata-all'
+
+const PG_CACHE_KEYS = {
+  PROTOCOL_METADATA_ALL: 'protocol-metadata-all',
+  ORACLES_DATA: 'oracles-data',
+  CATEGORIES_DATA: 'categories-data',
+  FORKS_DATA: 'forks-data',
+}
 
 export {
   METADATA_FILE,
-  PROTOCOL_METADATA_ALL_KEY,
+  PG_CACHE_KEYS,
 }

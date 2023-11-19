@@ -11,7 +11,7 @@ setTvlRoutes(webserver)
 
 async function main() {
   await initializeTVLCacheDB({ isApi2Server: true })
-  await initCache()
+  await initCache({ isApi2Server: true })
 
   webserver.listen(port)
     .then(() => console.log('Webserver started on port ' + port))

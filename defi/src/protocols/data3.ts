@@ -22800,7 +22800,7 @@ const data3: Protocol[] = [
     cmcId: "27178",
     category: "Services",
     chains: ["Ethereum"],
-    module: "projects/paal/index.js",
+    module: "paal/index.js",
     forkedFrom: [],
     oracles: [],
     twitter: "PaalMind",
@@ -24621,6 +24621,32 @@ const data3: Protocol[] = [
     twitter: "Bril_Finance",
     audit_links: [],
     listedAt: 1700394987
+  },
+  {
+    id: "3808",
+    name: "toupee.tech",
+    address: "base:0x58Dd173F30EcfFdfEbCd242C71241fB2f179e9B9",
+    symbol: "WIG",
+    url: "https://www.toupee.tech",
+    description: "A coordination system for ecosystem incentives.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/toupee.tech.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Base"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "toupee-tech/index.js",
+    twitter: "toupeetech",
+    github: ["Toupee-Tech"],
+    audit_links: [
+                   "https://2268926613-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5qfDTx0sJybWgitP8x4j%2Fuploads%2FnzcUOiAySnZr2UQCCpsK%2FPeckShield-Audit-Report-LilToken-v1.0rc%20(1).pdf?alt=media&token=4b8c3f95-1cae-4d7d-bdee-0ddbb2fb2abc",
+                   "https://2268926613-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5qfDTx0sJybWgitP8x4j%2Fuploads%2F0dGTom7KMTseCGo56Xg0%2FZokyoAudit.pdf?alt=media&token=9c4acb60-7ad6-49df-ab1c-cc0bfff8d711"
+],
+    listedAt: 1700429174
   },
 ]
 

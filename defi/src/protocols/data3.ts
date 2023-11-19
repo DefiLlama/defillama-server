@@ -24600,6 +24600,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#rollup-finance",
     listedAt: 1700323758
   },
+  {
+    id: "3807",
+    name: "Bril Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.bril.finance",
+    description: "Bril Finance is an intuitive DeFi platform that automates and optimizes portfolio strategies via professional grade liquidity provision algorithms. With single token deposit vaults and highly efficient yield optimization, Bril positions users for the optimal DeFi experience.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/bril-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bril-finance/index.js",
+    twitter: "Bril_Finance",
+    audit_links: [],
+    listedAt: 1700394987
+  },
 ]
 
 export default data3

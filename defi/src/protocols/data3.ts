@@ -24640,6 +24640,7 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"],
     forkedFrom: [],
     module: "toupee-tech/index.js",
+    treasury: "toupee-tech.js",
     twitter: "toupeetech",
     github: ["Toupee-Tech"],
     audit_links: [

@@ -44,6 +44,22 @@ export function addToChains(chains: string[], chainDisplayName: string) {
   }
 }
 
+export type ChainCoinGekcoId = {
+  geckoId: string | null,
+  symbol: string | null,
+  cmcId: string | null,
+  categories?: string[],
+  chainId?: number,
+  parent?: {
+    chain: string,
+    types: string[]
+  }
+}
+
+export type ChainCoinGekcoIds = {
+  [chain: string]: ChainCoinGekcoId
+}
+
 export const chainCoingeckoIds = {
   "Ethereum": {
     geckoId: "ethereum",
@@ -2038,19 +2054,8 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     github: ["cybercongress"]
   },
-} as unknown as {
-  [chain: string]: {
-    geckoId: string | null,
-    symbol: string | null,
-    cmcId: string | null,
-    categories?: string[],
-    chainId?: number,
-    parent?: {
-      chain: string,
-      types: string[]
-    }
-  }
-}
+} as unknown as ChainCoinGekcoIds
+
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
 chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
 chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]

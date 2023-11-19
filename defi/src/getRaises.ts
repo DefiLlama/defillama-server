@@ -4,7 +4,7 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 const SECTOR = "Description (very smol)";
 const VALUATION = "Valuation (millions)";
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+export async function getRaisesInternal() {
   let allRecords = await getAllAirtableRecords('appGpVsrkpqsZ9qHH/Raises')
 
   const formattedRaises = allRecords
@@ -27,13 +27,11 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
       valuation: r.fields[VALUATION]?.endsWith("\n") ? r.fields[VALUATION].slice(-1) : r.fields[VALUATION] || null,
       defillamaId: r.fields["DefiLlama Id"],
     }));
+  return { raises: formattedRaises }
+}
 
-  return successResponse(
-    {
-      raises: formattedRaises,
-    },
-    30 * 60
-  );
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  return successResponse(await getRaisesInternal(), 30 * 60);
 };
 
 export default wrap(handler);

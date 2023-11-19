@@ -57,27 +57,49 @@ export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: bool
   return exclude;
 }
 
-export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, excludeProtocolsFromCharts = true) {
+
+export type getHistoricalTvlForAllProtocolsOptionalOptions = {
+  usePGCache?: boolean;
+  protocolList?: Protocol[];
+  getLastTvl?: Function;
+  getAllTvlData?: Function;
+  getModule?: Function;
+  readFromR2Cache?: boolean;
+}
+
+export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, excludeProtocolsFromCharts = true, getHistTvlOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {}) {
   // get last daily timestamp by checking out all protocols most recent tvl value
   let lastDailyTimestamp = 0;
+  const protocolList = getHistTvlOptions.protocolList ?? protocols;
 
   const historicalProtocolTvls = await Promise.all(
-    protocols.map(async (protocol) => {
+    protocolList.map(async (protocol) => {
       if (!protocol || (excludeProtocolsFromCharts && excludeProtocolInCharts(protocol, includeBridge))) {
         return;
       }
+      let lastTvl: any, historicalTvl: any, module: any;
 
-      const [lastTvl, historicalTvl, module] = await Promise.all([
-        getLastRecord(hourlyTvl(protocol.id)),
-        getHistoricalValues(dailyTvl(protocol.id)),
-        importAdapter(protocol),
-      ]);
+      if (!getHistTvlOptions.usePGCache) {
+        const res = await Promise.all([
+          getLastRecord(hourlyTvl(protocol.id)),
+          getHistoricalValues(dailyTvl(protocol.id)),
+          importAdapter(protocol),
+        ]);
+        lastTvl = res[0];
+        historicalTvl = res[1];
+        module = res[2];
+      } else {
+        lastTvl = getHistTvlOptions.getLastTvl!(protocol);
+        historicalTvl = getHistTvlOptions.getAllTvlData!(protocol);
+        module = getHistTvlOptions.getModule!(protocol);
+      }
+
 
       if (historicalTvl.length < 1 || !module) {
         return;
       }
 
-      if(excludeProtocolsFromCharts && isExcludedFromChainTvl(protocol.category)){
+      if (excludeProtocolsFromCharts && isExcludedFromChainTvl(protocol.category)) {
         return;
       }
       // check if protocol is double counted
@@ -117,18 +139,27 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, ex
 }
 
 export type TvlItem = { [section: string]: any };
+export type processProtocolsOption = getHistoricalTvlForAllProtocolsOptionalOptions & {
+  includeBridge: boolean;
+};
+
+export async function getCachedHistoricalTvlForAllProtocols(includeBridge = false, excludeProtocolsFromCharts = true,) {
+  includeBridge = includeBridge === true
+  excludeProtocolsFromCharts = excludeProtocolsFromCharts === true
+  return JSON.parse((await getR2(`cache/getHistoricalTvlForAllProtocols/${includeBridge}-${excludeProtocolsFromCharts}.json`)).body!)
+}
 
 export async function processProtocols(
   processor: (timestamp: number, tvlItem: TvlItem, protocol: IProtocol) => Promise<void>,
-  { includeBridge }: { includeBridge: boolean },
+  { includeBridge, ...getHistTvlOptions }: processProtocolsOption,
   excludeProtocolsFromCharts = true
 ) {
   let historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>
-  
-  if(includeBridge === false){
-    historicalProtocolTvlsData = JSON.parse((await getR2(`cache/getHistoricalTvlForAllProtocols/false-${excludeProtocolsFromCharts}.json`)).body!)
+
+  if (getHistTvlOptions.usePGCache) {
+    historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(includeBridge, excludeProtocolsFromCharts, getHistTvlOptions);
   } else {
-    historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(includeBridge, excludeProtocolsFromCharts);
+    historicalProtocolTvlsData = await getCachedHistoricalTvlForAllProtocols(includeBridge, excludeProtocolsFromCharts);
   }
   const { historicalProtocolTvls, lastDailyTimestamp } = historicalProtocolTvlsData
 
@@ -163,7 +194,8 @@ export async function processProtocols(
   });
 }
 
-const handler = async (_event: any) => {
+export async function storeGetCharts({ ...options }: any = {}) {
+
   // store overall tvl charts and individual chain charts
   const sumDailyTvls: SumDailyTvls = {};
 
@@ -246,7 +278,7 @@ const handler = async (_event: any) => {
         }
       }
     },
-    { includeBridge: false }
+    { includeBridge: false, ...options }
   );
 
   await Promise.all(
@@ -263,10 +295,21 @@ const handler = async (_event: any) => {
     })
   );
 
-  const dataFalseTrue = getHistoricalTvlForAllProtocols(false, true);
-  const dataFalseFalse = getHistoricalTvlForAllProtocols(false, false);
+  const dataFalseTrue = getHistoricalTvlForAllProtocols(false, true, options);
+  const dataFalseFalse = getHistoricalTvlForAllProtocols(false, false, options);
   await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-true.json", JSON.stringify(await dataFalseTrue))
   await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-false.json", JSON.stringify(await dataFalseFalse))
+
+  if (options.usePGCache) {
+    const dataTrueTrue = await getHistoricalTvlForAllProtocols(true, true, options);
+    const dataTrueFalse = await getHistoricalTvlForAllProtocols(true, false, options);
+    await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/true-true.json", JSON.stringify(dataTrueTrue))
+    await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/true-false.json", JSON.stringify(dataTrueFalse))
+  }
+}
+
+const handler = async (_event: any) => {
+  await storeGetCharts();
 };
 
 export default wrapScheduledLambda(handler);

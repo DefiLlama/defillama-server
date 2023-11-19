@@ -13,7 +13,7 @@ async function main() {
 
   console.time('initCache')
   await initCache()
-  console.timeEnd('initCache') 
+  console.timeEnd('initCache')
 
   // console.time('getLatestProtocolItems dailyTvl')
   // const dailyTvlres = await getLatestProtocolItems(dailyTvl)

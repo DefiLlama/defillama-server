@@ -1,11 +1,16 @@
-import { TABLES, getAllProtocolItems, getLatestProtocolItem, initializeTVLCacheDB, getLatestProtocolItems, readFromPGCache, } from '../db'
+import { TABLES, getAllProtocolItems, getLatestProtocolItem, initializeTVLCacheDB, getLatestProtocolItems, readFromPGCache, writeToPGCache, } from '../db'
 import { initCache, cache } from '../cache'
 import * as fs from 'fs'
 import craftProtocolV2 from '../utils/craftProtocolV2'
 import { dailyTvl, hourlyTvl, } from '../../utils/getLastRecord'
-import { PROTOCOL_METADATA_ALL_KEY } from '../constants'
+import { PG_CACHE_KEYS } from '../constants'
 import { log } from '@defillama/sdk'
 import { PromisePool } from "@supercharge/promise-pool";
+import { getOraclesInternal } from '../../getOracles'
+import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from '../../storeGetCharts'
+import { getForksInternal } from '../../getForks'
+import { getCategoriesInternal } from '../../getCategories'
+import { storeLangs } from '../../storeLangs'
 
 async function main() {
 
@@ -14,9 +19,13 @@ async function main() {
   console.timeEnd('initializeTVLCacheDB')
 
   console.time('PROTOCOL_METADATA_ALL_KEY')
-  const metadata = await readFromPGCache(PROTOCOL_METADATA_ALL_KEY)
+  const metadata = await readFromPGCache(PG_CACHE_KEYS.PROTOCOL_METADATA_ALL)
   const { protocols } = metadata
   console.timeEnd('PROTOCOL_METADATA_ALL_KEY')
+
+  console.time('initCache')
+  await initCache()
+  console.timeEnd('initCache')
 
 
   console.time('getLatestProtocolItems filterLast24Hours')
@@ -47,7 +56,7 @@ async function main() {
   console.time('getAllProtocolItems')
   const protocolDataMap: { [key: string]: any } = {}
   metadata.protocolDataMap = protocolDataMap
-  
+
   let i = 0
   await PromisePool.withConcurrency(20)
     .for(protocols)
@@ -64,10 +73,10 @@ async function main() {
         dataObj.tvlAWeekAgo = latestProtocolItemsWeekAgoMap[protocol.id]
         dataObj.tvlAMonthAgo = latestProtocolItemsMonthAgoMap[protocol.id]
 
-        if (hourlyItem) {
-          if (!tvlData.length || tvlData[tvlData.length - 1].SK < hourlyItem.SK)
-            tvlData.push(hourlyItem)
-        }
+        // if (hourlyItem) {
+        //   if (!tvlData.length || tvlData[tvlData.length - 1].SK < hourlyItem.SK)
+        //     tvlData.push(hourlyItem)
+        // }
         i++
         if (i % 100 === 0) log(i, 'tvlData.length', tvlData.length, !!hourlyItem, protocol.name)
       } catch (e) {
@@ -123,11 +132,66 @@ async function main() {
 }
 
 async function main1() {
+  // console.time('initCache')
+  // await initCache()
+  // console.timeEnd('initCache')
+
   const data = fs.readFileSync('../../allTvlData.json', 'utf8')
   const metadata = JSON.parse(data)
   const { protocols, protocolDataMap } = metadata
-  console.log('protocols.length', protocols.length)
-  const protocolsWithData = protocols.filter((protocol: any) => protocolDataMap[protocol.id]?.tvlData?.length)
-  console.log('protocolsWithData.length', protocolsWithData.length)
+  const protocolMap: any = {}
+  protocols.forEach((protocol: any) => protocolMap[protocol.id] = protocol)
+  // console.log('protocols.length', protocols.length)
+  // const protocolsWithData = protocols.filter((protocol: any) => protocolDataMap[protocol.id]?.tvlData?.length)
+  // console.log('protocolsWithData.length', protocolsWithData.length)
+  const protocolList = protocols.map((i: any) => { // clone and remove doublecounted field
+    i = {...i}
+    delete i.doublecounted
+    return i
+  })
+
+  const processProtocolsOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {
+    usePGCache: true,
+    protocolList,
+    getLastTvl: (protocol: any) => protocolDataMap[protocol.id]?.lastHourlyRecord,
+    getAllTvlData: (protocol: any) => protocolDataMap[protocol.id]?.tvlData,
+    getModule: (protocol: any) => ({
+      doublecounted: protocolMap[protocol.id]?.doublecounted,
+    })
+  }
+
+  await storeOracles(processProtocolsOptions)
+  await storeForks(processProtocolsOptions)
+  await storeCategories(processProtocolsOptions)
+  // await storeLangs(processProtocolsOptions)
+  // await storeGetCharts(processProtocolsOptions)
 }
+
 main1().catch(console.error).then(() => process.exit(0))
+
+async function storeOracles(processProtocolsOptions: any) {
+  const debugString = 'get oracle data'
+  console.time(debugString)
+  const data = await getOraclesInternal(processProtocolsOptions)
+  // await writeToPGCache(PG_CACHE_KEYS.ORACLES_DATA, data)
+  fs.writeFileSync('../../oracleData.json', JSON.stringify(data))
+  console.timeEnd(debugString)
+}
+
+async function storeForks(processProtocolsOptions: any) {
+  const debugString = 'get forks data'
+  console.time(debugString)
+  const data = await getForksInternal(processProtocolsOptions)
+  // await writeToPGCache(PG_CACHE_KEYS.FORKS_DATA, data)
+  fs.writeFileSync('../../forksData.json', JSON.stringify(data))
+  console.timeEnd(debugString)
+}
+
+async function storeCategories(processProtocolsOptions: any) {
+  const debugString = 'get categories data'
+  console.time(debugString)
+  const data = await getCategoriesInternal(processProtocolsOptions)
+  // await writeToPGCache(PG_CACHE_KEYS.CATEGORIES_DATA, data)
+  fs.writeFileSync('../../categoriesData.json', JSON.stringify(data))
+  console.timeEnd(debugString)
+}

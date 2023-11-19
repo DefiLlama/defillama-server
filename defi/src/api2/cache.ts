@@ -1,11 +1,12 @@
 import fetch from "node-fetch";
 
-import { PROTOCOL_METADATA_ALL_KEY } from './constants';
+import { PG_CACHE_KEYS } from './constants';
 import { IRaise, IProtocol } from '../types';
 import sluggify from '../utils/sluggify';
 import { readFromPGCache, getLatestProtocolItems, } from './db';
 import { dailyTvl, dailyUsdTokensTvl, hourlyTvl, hourlyUsdTokensTvl } from "../utils/getLastRecord";
 import { log } from '@defillama/sdk'
+import { ChainCoinGekcoIds } from "../utils/normalizeChain";
 
 export const cache: {
   metadata: {
@@ -13,6 +14,7 @@ export const cache: {
     entities: any[],
     treasuries: any[],
     parentProtocols: any[],
+    chainCoingeckoIds: ChainCoinGekcoIds,
     isDoubleCountedProtocol: { [protocolId: string]: boolean },
   },
   mcaps: Record<string, { mcap: number, timestamp: number }>,
@@ -33,6 +35,7 @@ export const cache: {
     treasuries: [],
     parentProtocols: [],
     isDoubleCountedProtocol: {},
+    chainCoingeckoIds: {},
   },
   mcaps: {},
   raises: {},
@@ -47,22 +50,24 @@ export const cache: {
   tvlUSDProtocol: {},
 }
 
-export async function initCache() {
+export async function initCache({
+  isApi2Server = false,
+} = {}) {
   console.time('Cache initialized')
   await Promise.all([
-    updateMetadata(true),
+    updateMetadata(isApi2Server),
     updateRaises(),
   ])
   await Promise.all([
     await updateMCaps(),
-    await tvlProtocolDataUpdate(true),
+    await tvlProtocolDataUpdate(isApi2Server),
   ])
 
   console.timeEnd('Cache initialized')
 }
 
 async function updateMetadata(isFirstRun = false) {
-  const data = await readFromPGCache(PROTOCOL_METADATA_ALL_KEY)
+  const data = await readFromPGCache(PG_CACHE_KEYS.PROTOCOL_METADATA_ALL)
   cache.metadata = data
 
   // reset cache
@@ -91,7 +96,7 @@ async function updateMetadata(isFirstRun = false) {
   data.parentProtocols.forEach((p: any) => {
     cache.parentProtocolSlugMap[sluggify(p)] = p
   })
-  if (!isFirstRun) 
+  if (!isFirstRun)
     await tvlProtocolDataUpdate()
 }
 
@@ -192,7 +197,7 @@ async function tvlProtocolDataUpdate(isFirstRun = false) {
     log('tvlProtocolDataUpdate: initialized cache')
     log('tvlProtocol#', Object.keys(cache.tvlProtocol).length)
     log('tvlUSDProtocol#', Object.keys(cache.tvlUSDProtocol).length)
-  } 
+  }
 
   const allProtocolItems = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
   const allProtocolUSDItems = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterLast24Hours: true })

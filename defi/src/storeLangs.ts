@@ -63,7 +63,7 @@ function defaultLang(chainName: string) {
   return chainToLang[chainName];
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent) => {
+export async function storeLangs({ ...options }: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
   const languageProtocols = {} as LanguageProtocols;
   const sumDailySolanaOpenSourceTvls = {} as SumDailyTvls;
@@ -107,7 +107,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent) => {
         }
       }
     },
-    { includeBridge: false }
+    { includeBridge: false, ...options }
   );
 
   await storeR2JSONString(
@@ -119,6 +119,10 @@ const handler = async (_event: AWSLambda.APIGatewayEvent) => {
     }),
     10 * 60
   );
+}
+
+const handler = async (_event: AWSLambda.APIGatewayEvent) => {
+  await storeLangs();
 };
 
 export default wrapScheduledLambda(handler);

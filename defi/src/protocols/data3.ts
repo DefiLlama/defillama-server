@@ -22800,7 +22800,7 @@ const data3: Protocol[] = [
     cmcId: "27178",
     category: "Services",
     chains: ["Ethereum"],
-    module: "dummy.js",
+    module: "projects/paal/index.js",
     forkedFrom: [],
     oracles: [],
     twitter: "PaalMind",

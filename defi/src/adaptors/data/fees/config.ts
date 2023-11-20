@@ -1558,5 +1558,9 @@ export default {
     "amphor": {
         "enabled": true,
         "id": "3643"
-    }
+    },
+    "dydx": {
+        "id": "144",
+        "enabled": true
+    },
 } as AdaptorsConfig

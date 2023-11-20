@@ -1554,5 +1554,9 @@ export default {
     "thorswap": {
         "enabled": true,
         "id": "412"
+    },
+    "amphor": {
+        "enabled": true,
+        "id": "3643"
     }
 } as AdaptorsConfig

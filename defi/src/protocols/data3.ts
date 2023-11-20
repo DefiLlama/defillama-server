@@ -5576,8 +5576,8 @@ const data3: Protocol[] = [
   {
     id: "2950",
     name: "Origin Ether",
-    address: "0x9c354503c38481a7a7a51629142963f98ecc12d0",
-    symbol: "OGV",
+    address: null, // not added on team request
+    symbol: "-",
     assetToken: "OETH",
     url: "https://www.oeth.com/",
     description: "Origin Ether engages with Ethereum staking pools and LP strategies. It uses platforms like Convex and Curve, and plans to integrate with other AMMs, aiming to provide higher yield opportunities",

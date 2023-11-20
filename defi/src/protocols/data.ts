@@ -6946,8 +6946,8 @@ const data: Protocol[] = [
   {
     id: "427",
     name: "Origin Dollar",
-    address: "0x9c354503c38481a7a7a51629142963f98ecc12d0",
-    symbol: "OGV",
+    address: null, // not added on team request
+    symbol: "-",
     assetToken: "OUSD",
     url: "https://www.ousd.com",
     description:

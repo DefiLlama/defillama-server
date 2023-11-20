@@ -24631,7 +24631,7 @@ const data3: Protocol[] = [
     description: "A coordination system for ecosystem incentives.",
     chain: "Base",
     logo: `${baseIconsUrl}/toupee.tech.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -24648,6 +24648,26 @@ const data3: Protocol[] = [
                    "https://2268926613-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5qfDTx0sJybWgitP8x4j%2Fuploads%2F0dGTom7KMTseCGo56Xg0%2FZokyoAudit.pdf?alt=media&token=9c4acb60-7ad6-49df-ab1c-cc0bfff8d711"
 ],
     listedAt: 1700429174
+  },
+  {
+    id: "3809",
+    name: "Aggre",
+    address: "base:0x58Dd173F30EcfFdfEbCd242C71241fB2f179e9B9",
+    symbol: "WIG",
+    url: "https://aggre.io",
+    description: "Your Path to DeFis Best Rates. Simplify your trades with automatic splitting for optimal swap rates on multiple exchanges.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/aggre.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Scroll"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "aggreio",
   },
 ]
 

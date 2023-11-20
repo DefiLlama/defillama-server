@@ -67,5 +67,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "aggre": {
+        enabled: true,
+        id: "3809"
     }
 } as AdaptorsConfig

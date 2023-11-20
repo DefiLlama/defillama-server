@@ -2038,6 +2038,12 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     github: ["cybercongress"]
   },
+  "Alephium": {
+    geckoId: "alephium",
+    symbol: "ALPH",
+    cmcId: "14878",
+    github: ["alephium"]
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2553,6 +2559,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Dash"
     case "bostrom":
       return "Bostrom"  
+    case "alephium":
+      return "Alephium" 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

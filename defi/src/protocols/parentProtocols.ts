@@ -3066,7 +3066,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Chimeradex",
     url: "https://app.chimeradex.com/",
     description: "Swap, finance and earn built on the leading liquidity lending protocol",
-    logo: `${baseIconsUrl}/chimeradex.png`,
+    logo: `${baseIconsUrl}/chimeradex.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

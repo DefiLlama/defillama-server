@@ -20268,14 +20268,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3608",
-    name: "New Bitcoin City",
+    name: "Alpha", //previous New Bitcoin City
     address: "nos:0x111808AbE352c8003e0eFfcc04998EaB26Cebe3c",
     symbol: "BTC",
-    url: "https://newbitcoincity.com",
+    url: "https://alpha.wtf",
     description:
-      "Welcome to New Bitcoin City - a radically new way to explore Bitcoin beyond just a currency. Join the community.",
+      "Welcome to Alpha, previous New Bitcoin City - a radically new way to explore Bitcoin beyond just a currency. Join the community.",
     chain: "NOS",
-    logo: `${baseIconsUrl}/new-bitcoin.jpg`,
+    logo: `${baseIconsUrl}/alpha.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

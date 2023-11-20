@@ -24652,8 +24652,8 @@ const data3: Protocol[] = [
   {
     id: "3809",
     name: "Aggre",
-    address: "base:0x58Dd173F30EcfFdfEbCd242C71241fB2f179e9B9",
-    symbol: "WIG",
+    address: null,
+    symbol: "-",
     url: "https://aggre.io",
     description: "Your Path to DeFis Best Rates. Simplify your trades with automatic splitting for optimal swap rates on multiple exchanges.",
     chain: "Scroll",

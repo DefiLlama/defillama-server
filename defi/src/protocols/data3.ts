@@ -24910,6 +24910,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#handle-finance",
     listedAt: 1700581458
   },
+  {
+    id: "3821",
+    name: "Particle Money",
+    address: "base:0xaFe5451185513925F5E757F001425338Ff93412D",
+    symbol: "PARTICLE",
+    url: "https://app.particles.money/dapp",
+    description: "Particles Money is a decentralized solution developing synthetic ETH with a fractional collateralized system",
+    chain: "Base",
+    logo: `${baseIconsUrl}/particle-money.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: ["Fantasm"],
+    module: "particle-money/index.js",
+    twitter: "ParticlesMoney",
+    listedAt: 1700593464
+  },
 ]
 
 export default data3

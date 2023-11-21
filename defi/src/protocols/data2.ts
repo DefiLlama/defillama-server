@@ -29825,5 +29825,30 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true
   },
+  {
+    id: "2701",
+    name: "Xfai",
+    address: "ethereum:0x4aa41bC1649C9C3177eD16CaaA11482295fC7441",
+    symbol: "XFIT",
+    url: "https://xfai.com",
+    description: "Linea's next generation DEX",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/xfai.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: "xfit",
+    cmcId: "xfai",
+    category: "Dexes",
+    chains: ["Linea"],
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [
+      "https://www.xfai.com/audit.pdf",
+    ],
+    listedAt: 1692347965, // Aug-18-2023 08:39:25 AM +UTC
+    github: ["xfai-labs"],
+    module: "xfai/index.js",
+    twitter: "xfai_official",
+  },
 ]
 export default data2;

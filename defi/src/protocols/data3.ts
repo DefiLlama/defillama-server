@@ -24953,6 +24953,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.hover.market/risk-and-security"],
     listedAt: 1700593464
   },
+  {
+    id: "3823",
+    name: "Keom Protocol", //same team as 0vix
+    address: null,
+    symbol: "-",
+    url: "https://keom.io",
+    description: "The AI-enhanced suite of zk-powered trading products. Spearheading performant DeFi with intelligent tools and hard-coded compliance.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/keom-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Polygon", "Manta"],
+    oracles: ["Chainlink","Pyth"],
+    forkedFrom: ["Compound V2"],
+    module: "keom/index.js",
+    twitter: "KeomProtocol",
+    audit_links: ["https://uploads-ssl.webflow.com/64ef0efc368836241c571f09/655cfb6b72ce872795f652d3_yAudit_KEOM_upgrade_report.pdf"],
+    listedAt: 1700609632
+  },
 ]
 
 export default data3

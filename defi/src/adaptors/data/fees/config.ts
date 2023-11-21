@@ -1563,4 +1563,8 @@ export default {
         "id": "144",
         "enabled": true
     },
+    "justlend": {
+        "enabled": true,
+        "id": "494"
+    }
 } as AdaptorsConfig

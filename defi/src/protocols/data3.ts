@@ -24867,6 +24867,27 @@ const data3: Protocol[] = [
     github: ["gable-finance"],
     listedAt: 1700569429
   },
+  {
+    id: "3819",
+    name: "Black Panther",
+    address: null,
+    symbol: "-",
+    url: "https://blackpanther.fi",
+    description: "Panther Finance is a decentralized asset management protocol designed to help users achieve superior returns on their digital assets through intelligent vaults.",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/black-panther.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Injective"],
+    oracles: [],
+    forkedFrom: [],
+    module: "blackpanther/index.js",
+    twitter: "BlackPanther_Fi",
+    listedAt: 1700581402
+  },
 ]
 
 export default data3

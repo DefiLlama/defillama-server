@@ -4504,6 +4504,12 @@
       "decimals": "8",
       "symbol": "ALT",
       "to": "coingecko#aptos-launch-token"
+    },
+    "0x111ae3e5bc816a5e63c2da97d0aa3886519e0cd5e4b046659fa35796bd11542a::amapt_token::AmnisApt": {
+      "name": "amnis-apt",
+      "decimals": "8",
+      "symbol": "AMAPT",
+      "to": "coingecko#amnis-aptos"
     }
   },
   "dogechain": {

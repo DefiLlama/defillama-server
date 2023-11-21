@@ -24844,6 +24844,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dopex",
     listedAt: 1700566507
   },
+  {
+    id: "3818",
+    name: "Gable Finance",
+    address: "radixdlt:resource_rdx1tknu3dqlkysz9lt08s7spuvllz3kk2k2yccslfpdk73t4lnznl9jck",
+    symbol: "GAB",
+    url: "https://gable.finance",
+    description: "Gable is a lending protocol, built on Radix DLT.",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/gable-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield", //its correct, very small amount of tvl comes from lending
+    chains: ["Radix"],
+    oracles: [],
+    forkedFrom: [],
+    module: "gable/index.js",
+    twitter: "Gable_Finance",
+    audit_links: ["https://hacken.io/audits/gable-finance"],
+    github: ["gable-finance"],
+    listedAt: 1700569429
+  },
 ]
 
 export default data3

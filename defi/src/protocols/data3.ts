@@ -24888,6 +24888,28 @@ const data3: Protocol[] = [
     twitter: "BlackPanther_Fi",
     listedAt: 1700581402
   },
+  {
+    id: "3820",
+    name: "handle.fi hSP",
+    address: "0xdb298285fe4c5410b05390ca80e8fbe9de1f259b",
+    symbol: "FOREX",
+    url: "https://app.handle.fi/trade",
+    description: "the global defi FX protocol. borrow, convert & trade multi-currency #stablecoins ",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/handlefi-hsp.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "handlefi-hsp/index.js",
+    twitter: "handle_fi",
+    parentProtocol: "parent#handle-finance",
+    listedAt: 1700581458
+  },
 ]
 
 export default data3

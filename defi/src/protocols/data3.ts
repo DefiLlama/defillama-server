@@ -24931,6 +24931,28 @@ const data3: Protocol[] = [
     twitter: "ParticlesMoney",
     listedAt: 1700593464
   },
+  {
+    id: "3822",
+    name: "Hover",
+    address: "kava:0xCe82db637A2D750380ef27063518eAa263fbe10E",
+    symbol: "HOV",
+    url: "https://hover.market/",
+    description: "Hover is a non-custodial, enterprise-quality lending protocol on the Kava EVM. Combining integrated tokenomics and continuous market surveillance, Hover offers a novel platform to lend, borrow, and earn rewards",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/hover.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Kava"],
+    oracles: ["Pyth"],
+    forkedFrom: ["Compound V2"],
+    module: "hover/index.js",
+    twitter: "hover_market",
+    audit_links: ["https://docs.hover.market/risk-and-security"],
+    listedAt: 1700593464
+  },
 ]
 
 export default data3

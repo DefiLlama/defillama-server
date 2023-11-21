@@ -24743,7 +24743,7 @@ const data3: Protocol[] = [
     description: "The Alephium Bridge enables unlimited, decentralized cross-chain transfer of tokens.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/alephium-bridge.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -24754,6 +24754,28 @@ const data3: Protocol[] = [
     module: "alephium-bridge/index.js",
     twitter: "alephium",
     listedAt: 1700489950
+  },
+  {
+    id: "3814",
+    name: "Sumer.money",
+    address: "meter:0x553d713e0fb958932b6c40abaf0b5a1ffae73da2",
+    symbol: "SUMER",
+    url: "https://sumer.money",
+    description: "Sumer is a cross-chain synthetic assets protocol with a lending and borrowing market, deployed simultaneously on a network of supported chains. Sumer enables the creation of SuTokens (Synthetic Assets of USD, ETH and BTC) to provide a credit card-like experience to users. SuTokens break cross-chain liquidity & smart contract communication barriers while enabling non-custodial, highly decentralized & secure cross-chain transfers",
+    chain: "Meter",
+    logo: `${baseIconsUrl}/sumer.money.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Meter"],
+    oracles: ["Pyth", "Chainlink", "Witnet"],
+    forkedFrom: ["Compound V2"],
+    module: "sumer/index.js",
+    twitter: "SumerMoney",
+    audit_links: ["https://docs.sumer.money/security/audits"],
+    listedAt: 1700544773
   },
 ]
 

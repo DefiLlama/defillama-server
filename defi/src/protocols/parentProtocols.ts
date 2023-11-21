@@ -2087,6 +2087,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     wrongLiquidity: true, // Most liquidity is on serum/openbook, which we dont track
     twitter: "mangomarkets",
+    treasury: "mango.js",
     github: ["blockworks-foundation"]
   },
   {
@@ -2948,7 +2949,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "13803",
     chains: [],
     twitter: "MarinadeFinance",
-    github: ["marinade-finance"]
+    github: ["marinade-finance"],
+    treasury: "marinade.js"
   },
   {
     id: "parent#sienna-network",

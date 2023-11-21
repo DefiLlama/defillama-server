@@ -24810,9 +24810,8 @@ const data3: Protocol[] = [
     chain: "Linea",
     logo: `${baseIconsUrl}/xfai.jpg`,
     audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "xfit",
+    cmcId: "xfai",
     category: "Dexes",
     chains: ["Linea"],
     oracles: ["Chainlink"],
@@ -24820,6 +24819,7 @@ const data3: Protocol[] = [
     module: "xfai/index.js",
     twitter: "xfai_official",
     audit_links: ["https://xfai.com/audit.pdf"],
+    github: ["xfai-labs"],
     listedAt: 1700565125
   },
   {

@@ -112,6 +112,14 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       redirect: "coingecko#wrapped-steth",
     },
   ],
+  wemix: [
+    {
+      symbol: "WEMIX$",
+      address: "0x8e81fcc2d4a3baa0ee9044e0d7e36f59c9bba9c1",
+      decimals: 18,
+      redirect: "coingecko#usd-coin",
+    },
+  ],
   kava: [
     {
       symbol: "DEXI",

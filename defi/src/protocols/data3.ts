@@ -24822,6 +24822,28 @@ const data3: Protocol[] = [
     audit_links: ["https://xfai.com/audit.pdf"],
     listedAt: 1700565125
   },
+  {
+    id: "3817",
+    name: "Dopex CLAMM",
+    address: "0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81",
+    symbol: "DPX",
+    url: "https://www.dopex.io",
+    description: "Dopex is a maximum liquidity and minimal exposure options protocol",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/dopex-clamm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dopex-clamm/index.js",
+    twitter: "dopex_io",
+    parentProtocol: "parent#dopex",
+    listedAt: 1700566507
+  },
 ]
 
 export default data3

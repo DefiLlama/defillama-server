@@ -3133,6 +3133,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Rollup_Finance",
   },
+  {
+    id: "parent#dopex",
+    name: "Dopex",
+    url: "https://www.dopex.io",
+    description: "Dopex is a maximum liquidity and minimal exposure options protocol",
+    logo: `${baseIconsUrl}/dopex.png`,
+    gecko_id: "dopex",
+    cmcId: "11188",
+    chains: [],
+    github: ["dopex-io"],
+    treasury: "dopex.js",
+    twitter: "dopex_io",
+  },
 ];
 
 export default parentProtocols;

@@ -67,6 +67,10 @@ export type getHistoricalTvlForAllProtocolsOptionalOptions = {
   readFromR2Cache?: boolean;
 }
 
+const allProtocolRes: {
+  [key: string]: any
+} = {}
+
 export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, excludeProtocolsFromCharts = true, getHistTvlOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {}) {
   // get last daily timestamp by checking out all protocols most recent tvl value
   let lastDailyTimestamp = 0;
@@ -79,12 +83,19 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, ex
       }
       let lastTvl: any, historicalTvl: any, module: any;
 
+      async function _getAllProtocolData(protocol: Protocol) {
+        if (!allProtocolRes[protocol.id]) {
+          allProtocolRes[protocol.id] = Promise.all([
+            getLastRecord(hourlyTvl(protocol.id)),
+            getHistoricalValues(dailyTvl(protocol.id)),
+            importAdapter(protocol),
+          ]);
+        }
+        return allProtocolRes[protocol.id]
+      }
+
       if (!getHistTvlOptions.usePGCache) {
-        const res = await Promise.all([
-          getLastRecord(hourlyTvl(protocol.id)),
-          getHistoricalValues(dailyTvl(protocol.id)),
-          importAdapter(protocol),
-        ]);
+        const res = await _getAllProtocolData(protocol);
         lastTvl = res[0];
         historicalTvl = res[1];
         module = res[2];
@@ -300,12 +311,10 @@ export async function storeGetCharts({ ...options }: any = {}) {
   await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-true.json", JSON.stringify(await dataFalseTrue))
   await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-false.json", JSON.stringify(await dataFalseFalse))
 
-  if (options.usePGCache) {
-    const dataTrueTrue = await getHistoricalTvlForAllProtocols(true, true, options);
-    const dataTrueFalse = await getHistoricalTvlForAllProtocols(true, false, options);
-    await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/true-true.json", JSON.stringify(dataTrueTrue))
-    await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/true-false.json", JSON.stringify(dataTrueFalse))
-  }
+  const dataTrueTrue = await getHistoricalTvlForAllProtocols(true, true, options);
+  const dataTrueFalse = await getHistoricalTvlForAllProtocols(true, false, options);
+  await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/true-true.json", JSON.stringify(dataTrueTrue))
+  await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/true-false.json", JSON.stringify(dataTrueFalse))
 }
 
 const handler = async (_event: any) => {

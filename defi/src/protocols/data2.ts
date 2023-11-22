@@ -29438,7 +29438,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://davos.xyz/",
-    description: "Davos Protocol is an innovative collateralized debt position (CDP) protocol that tackles the limitations of traditional CDPs in the DeFi landscape. It achieves this by implementing an unbiased monetary policy and fair borrowing rates, ensuring user protection and fostering widespread DeFi adoption. Notably, users retain the upside of their collateral, preserving their potential returns.",
+    description: "Davos Protocol is a pioneering DeFi platform that revolutionizes the use of collateral in the cryptocurrency space. It uniquely integrates Liquid Staking Tokens (LSTs) and Liquid ReStaking Tokens (LRTs) as collateral for its Collateralized Debt Positions (CDPs), enabling users to borrow its versatile omnichain stablecoin, DUSD. By aligning Loan-to-Value (LTV) ratios with the risk profile of each collateral type, Davos offers a balanced and secure borrowing experience. Users can capitalize on their staked assets, maintain rewards, and explore compounded yield opportunities across various DeFi activities. Emphasizing user-centric governance and innovation, Davos Protocol is at the forefront of advancing DeFi composability and sustainable yield generation",
     chain: "Polygon",
     logo: `${baseIconsUrl}/davos-protocol.png`,
     audits: "2",

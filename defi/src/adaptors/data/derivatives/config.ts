@@ -488,5 +488,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "rabbitx": {
+        "enabled": true,
+        "id": "2886"
     }
 } as AdaptorsConfig

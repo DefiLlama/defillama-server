@@ -25062,6 +25062,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#sushi",
     listedAt: 1700657259
   },
+  {
+    id: "3828",
+    name: "White Protocol",
+    address: "opbnb:0x39B44F9C6e3ed4F1b4F7b01B9176B1F440195a2f",
+    symbol: "WTE",
+    url: "https://white-protocol.com",
+    description: "Protocol hosted on OpBNB that focuses on creating decentralized DeFi finance with a Deflationary nature and passive income for its users.",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/white-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Op_Bnb"],
+    oracles: [],
+    forkedFrom: [],
+    module: "white-protocol/index.js",
+    twitter: "XWhiteprotocol",
+    listedAt: 1700670198
+  },
 ]
 
 export default data3

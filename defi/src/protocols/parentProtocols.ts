@@ -3148,6 +3148,20 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "dopex.js",
     twitter: "dopex_io",
   },
+  {
+    id: "parent#spool-protocol",
+    name: "Spool Protocol",
+    url: "https://www.spool.fi",
+    description: "Spool Protocol serves as DeFi middleware, that allows users to participate in a subset of yield generating protocols in a risk diversified, automatically managed, and efficient fashion.",
+    logo: `${baseIconsUrl}/spool-protocol.png`,
+    gecko_id: "spool-dao-token",
+    cmcId: "18726",
+    chains: [],
+    github: ["SpoolFi"],
+    treasury: "spool-protocol.js",
+    governanceID: ["snapshot:spool.eth"],
+    twitter: "SpoolFi",
+  },
 ];
 
 export default parentProtocols;

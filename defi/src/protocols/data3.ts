@@ -25135,7 +25135,7 @@ const data3: Protocol[] = [
     url: "https://sailingprotocol.org",
     description: "Sailing Protocol brings traditional stocks onchain.",
     chain: "Kava",
-    logo: `${baseIconsUrl}/sailing-protocol.jpg`,
+    logo: `${baseIconsUrl}/sailing-protocol.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

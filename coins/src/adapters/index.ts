@@ -144,4 +144,5 @@ export default {
   velgd: require("./other"),
   maverick: require("./markets/maverick"),
   steer: require("./markets/steer"),
+  wstmtrg: require("./yield/wstmtrg"),
 };

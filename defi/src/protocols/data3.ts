@@ -24975,6 +24975,27 @@ const data3: Protocol[] = [
     audit_links: ["https://uploads-ssl.webflow.com/64ef0efc368836241c571f09/655cfb6b72ce872795f652d3_yAudit_KEOM_upgrade_report.pdf"],
     listedAt: 1700609632
   },
+  {
+    id: "3824",
+    name: "Blast",
+    address: null,
+    symbol: "-",
+    url: "https://blast.io/",
+    description: "Farm for Blast before rollup launch",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/blast.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "blast/index.js",
+    twitter: "Blast_L2",
+    listedAt: 1700619267
+  },
 ]
 
 export default data3

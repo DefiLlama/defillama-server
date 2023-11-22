@@ -24873,7 +24873,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://blackpanther.fi",
-    description: "Panther Finance is a decentralized asset management protocol designed to help users achieve superior returns on their digital assets through intelligent vaults.",
+    description: "Black Panther is a decentralized asset management protocol designed to help users achieve superior returns on their digital assets through intelligent vaults.",
     chain: "Injective",
     logo: `${baseIconsUrl}/black-panther.jpg`,
     audits: "2",

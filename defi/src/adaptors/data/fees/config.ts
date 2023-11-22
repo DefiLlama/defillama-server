@@ -1566,5 +1566,9 @@ export default {
     "justlend": {
         "enabled": true,
         "id": "494"
+    },
+    "wagmi": {
+        "enabled": true,
+        "id": "2837"
     }
 } as AdaptorsConfig

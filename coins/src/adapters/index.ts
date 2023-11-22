@@ -24,6 +24,7 @@ export default {
   uwulend: require("./moneyMarkets/aave"),
   //klap: require("./moneyMarkets/aave"),
   //valas: require("./moneyMarkets/aave"),
+  sumerian: require("./moneyMarkets/compound"),
   compound: require("./moneyMarkets/compound"),
   venus: require("./moneyMarkets/compound"),
   ironbank: require("./moneyMarkets/compound"),

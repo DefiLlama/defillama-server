@@ -170,3 +170,11 @@ export function cantoLending(timestamp: number = 0) {
     projectName: 'canto-lending',
   });
 }
+export function sumerian(timestamp: number = 0) {
+  console.log("starting sumerian");
+  return getTokenPrices(
+    "meter",
+    "0xcb4cdda50c1b6b0e33f544c98420722093b7aa88",
+    timestamp,
+  );
+}

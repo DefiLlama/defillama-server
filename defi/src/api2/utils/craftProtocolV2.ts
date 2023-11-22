@@ -47,9 +47,9 @@ export async function getAllProtocolData(protocol: Protocol) {
   ]);
 
   return [
-    [...protocolCache.tvl, ...historicalUsdTvl],
-    [...protocolCache.tokensInUsd, ...historicalUsdTokenTvl],
-    [...protocolCache.tokens, ...historicalTokenTvl],
+    mergeSortAndRemoveDups(protocolCache.tvl, historicalUsdTvl),
+    mergeSortAndRemoveDups(protocolCache.tokensInUsd, historicalUsdTokenTvl),
+    mergeSortAndRemoveDups(protocolCache.tokens, historicalTokenTvl),
   ]
 }
 

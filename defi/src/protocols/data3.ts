@@ -25040,6 +25040,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#spool-protocol",
     listedAt: 1700654995
   },
+  {
+    id: "3827",
+    name: "Sushi Aptos",
+    address: "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
+    symbol: "SUSHI",
+    url: "https://sushi.com/",
+    description: "SushiSwap on the Aptos chain.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/sushi-aptos.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "sushi-aptos/index.js",
+    twitter: "SushiSwap",
+    parentProtocol: "parent#sushi",
+    listedAt: 1700657259
+  },
 ]
 
 export default data3

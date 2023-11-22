@@ -16258,7 +16258,7 @@ const data3: Protocol[] = [
     name: "CuanSwap",
     address: "core:0xb62FdF96Ee7483F6B930aDF4191E2259536f9868",
     symbol: "CUAN",
-    url: "https://app.cuanswap.com",
+    url: "https://cuanswap.xyz/",
     description:
       "Trade CuanSwap Token, list and swap any coredao toekens.",
     chain: "CORE",
@@ -16270,7 +16270,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["CORE","Op_Bnb"],
     module: "cuanswap/index.js",
-    twitter: "CuanSwap",
+    twitter: "CuanToken",
     forkedFrom: [],
     oracles: [],
     listedAt: 1692718218

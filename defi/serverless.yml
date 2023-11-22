@@ -398,14 +398,14 @@ functions:
       - http:
           path: categories
           method: get
-  testTvl:
-    handler: src/testTvl.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: testTvl
-          method: get
+  # testTvl:
+  #   handler: src/testTvl.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: testTvl
+  #         method: get
   storeLiquidations:
     handler: src/storeLiquidations.default
     timeout: 900
@@ -437,14 +437,14 @@ functions:
       - http:
           path: simpleChainDataset/{chain}
           method: get
-  totalChainDataset:
-    handler: src/getTotalChainDataset.default
-    timeout: 30
-    memorySize: 3000
-    events:
-      - http:
-          path: totalChainDataset/{chain}
-          method: get
+  # totalChainDataset:
+  #   handler: src/getTotalChainDataset.default
+  #   timeout: 30
+  #   memorySize: 3000
+  #   events:
+  #     - http:
+  #         path: totalChainDataset/{chain}
+  #         method: get
   config:
     handler: src/getConfig.default
     timeout: 10

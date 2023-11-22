@@ -81,6 +81,13 @@
       "to": "coingecko#liquiddriver"
     }
   },
+  "meter": {
+    "0x983147fb73a45fc7f8b4dfa1cd61bdc7b111e5b6": {
+      "decimals": "18",
+      "symbol": "MTRG",
+      "to": "coingecko#ethereum"
+    }
+  },
   "bsc": {
     "0xe552fb52a4f19e44ef5a967632dbc320b0820639": {
       "decimals": "18",

@@ -4,6 +4,7 @@ import * as fs from 'fs'
 import craftProtocolV2 from '../utils/craftProtocolV2'
 import PromisePool from '@supercharge/promise-pool'
 import { dailyTvl, hourlyTvl, } from '../../utils/getLastRecord'
+import { shuffleArray } from '../../utils/shared/shuffleArray'
 
 async function main() {
 
@@ -64,11 +65,3 @@ async function main1() {
 }
 
 main().catch(console.error).then(() => process.exit(0))
-
-function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}

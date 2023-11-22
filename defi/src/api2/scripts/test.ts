@@ -5,6 +5,7 @@ import treasuries from "../../protocols/treasury";
 import PromisePool from "@supercharge/promise-pool";
 import sluggify from '../../utils/sluggify';
 import axios from "axios";
+import { shuffleArray } from "../../utils/shared/shuffleArray";
 
 const API_URL = process.env.API_URL || 'http://localhost:5001'
 
@@ -31,10 +32,3 @@ updateAllCache().then(() => {
   process.exit(0)
 })
 
-function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}

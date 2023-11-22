@@ -25536,7 +25536,7 @@ const data2: Protocol[] = [
     symbol: "HAWK",
     url: "https://hawksight.co",
     description:
-      "Hawksight is the leading destination to earn Solana altcoin yields from active CLMM (Concentrated Liquidity Market Making) strategies that autocompound, autorebalance, and can be personalized & optimized with HawkAI (http://hawkai.xyz/). Hawksigh's Yield Optimizer is the one-stop-shop to maximize gains across Solana DeFi, with self-custodial & yield-optimized strategies",
+      "Hawksight is a leading liquidity manager on Solana that maximizes LP profitability with self-custodial, automated, yield-optimized strategies. Earn yield from 150+ strategies that autocompound, autorebalance, and are transparently simulated by HawkAI (http://hawkai.xyz/)",
     chain: "Solana",
     logo: `${baseIconsUrl}/hawksight.jpg`,
     audits: "2",

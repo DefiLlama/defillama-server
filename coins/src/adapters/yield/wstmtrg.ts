@@ -38,4 +38,3 @@ export function wstmtrg(timestamp: number = 0) {
   console.log("starting wstMTRG");
   return getTokenPrices(timestamp);
 }
-wstmtrg(); // ts-node coins/src/adapters/yield/wstmtrg.ts

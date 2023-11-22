@@ -14,7 +14,7 @@ export async function getSimpleChainDatasetInternal(rawChain: string, params: an
     };
   };
 
-  let historicalProtocolTvlsData:Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>  = await getCachedHistoricalTvlForAllProtocols(categorySelected === "Bridge", false);
+  let historicalProtocolTvlsData:Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>  = await getCachedHistoricalTvlForAllProtocols(categorySelected === "Bridge", categorySelected === undefined);
   const { historicalProtocolTvls, lastDailyTimestamp } = historicalProtocolTvlsData
   
   historicalProtocolTvls.forEach((protocolTvl) => {

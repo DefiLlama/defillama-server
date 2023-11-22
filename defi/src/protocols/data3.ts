@@ -13574,7 +13574,7 @@ const data3: Protocol[] = [
     name: "Arbitrove",
     address: "arbitrum:0x982239d38af50b0168da33346d85fb12929c4c07",
     symbol: "TROVE",
-    url: "https://arbitrove.finance",
+    url: "https://nitrocartel.finance",
     description: "Arbitrove Protocol is a yield-bearing index protocol that allows people to one-click mint an index that give exposure to a batch of strategies consist of yield-bearing assets. Unlike traditional index protocol that only hold tokens, Arbitrove Protocol dynamically deploy capital to strategies. At launch, ALP will be the first index demonstrating Arbitrove's uniqueness. Designing an index is permissioned at launch and will be permissionless in later updates.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/arbitrove.jpg`,

@@ -9721,6 +9721,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://solidity.finance/audits/DefiKingdoms/"],
     forkedFrom: ["Uniswap V2"],
     governanceID: ["snapshot:dfkvote.eth"],
+    oracles: ["Supra"],
     github: ["DefiKingdoms"]
   },
   {

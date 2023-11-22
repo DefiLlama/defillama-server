@@ -491,6 +491,16 @@ export default {
     },
     "rabbitx": {
         "enabled": true,
-        "id": "2886"
+        "id": "2886",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1700524800": true,
+                "1700438400": true,
+                "1700352000": true,
+                "1700265600": true,
+                "1700179200": true
+            },
+        }
+
     }
 } as AdaptorsConfig

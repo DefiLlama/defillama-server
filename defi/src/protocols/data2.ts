@@ -8828,13 +8828,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1772",
-    name: "ApolloX",
+    name: "APX Finance", // previous ApolloX , they rebrand 22/11/23
     address: "bsc:0x78F5d389F5CDCcFc41594aBaB4B0Ed02F31398b3",
     symbol: "APX",
     url: "https://www.apollox.finance/en",
-    description: "ApolloX Finance is a decentralized crypto trading exchange. Unlike the common Automated Market Makers model (AMM) which is adopted by other decentralized exchanges, ApolloX Finance adopts the order book model, which supports both spot and futures trading. By using off-chain order books and on-chain settlement, its protocol aims to create an efficient, fair and trustless financial market that is not controlled by any centralized organization.",
+    description: "APX Finance (APX) is the foremost decentralized exchange (DEX) for crypto derivatives on BNB Chain. Offering both order book and on-chain perpetuals, APX offers trading with up to 1001x leverage, zero to minimal slippage and competitive fees. It also offers attractive LP yield for a LP pool made of majority stablecoins.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/apollox.png`,
+    logo: `${baseIconsUrl}/apx-finance.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "apollox-2",
@@ -8846,7 +8846,7 @@ const data2: Protocol[] = [
     },
     forkedFrom: [],
     module: "apollox/index.js",
-    twitter: "ApolloX_Finance",
+    twitter: "APX_Finance",
     listedAt: 1652988932,
     governanceID: ["snapshot:apolloxdao.eth"],
     github: ["apollox-finance"]

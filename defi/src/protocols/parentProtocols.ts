@@ -3159,7 +3159,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     github: ["SpoolFi"],
     treasury: "spool-protocol.js",
-    governanceID: ["snapshot:spool.eth"],
+    governanceID: ["snapshot:gov.spool.eth"],
     twitter: "SpoolFi",
   },
   {

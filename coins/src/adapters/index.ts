@@ -146,4 +146,5 @@ export default {
   maverick: require("./markets/maverick"),
   steer: require("./markets/steer"),
   wstmtrg: require("./yield/wstmtrg"),
+  zkswap: require("./markets/uniswap"),
 };

@@ -353,3 +353,14 @@ export function elysium(timestamp: number = 0) {
     timestamp,
   );
 }
+
+export function zkswap(timestamp: number = 0) {
+  console.log("starting zkswap v2");
+  return getTokenPrices(
+    "polygon_zkevm",
+    "0x51A0D4B81400581d8722627daFCd0c1Ff9357d1D",
+    undefined,
+    undefined,
+    timestamp,
+  );
+}

@@ -25213,6 +25213,27 @@ const data3: Protocol[] = [
     twitter: "DefinitelySoFi",
     listedAt: 1700740085
   },
+  {
+    id: "3835",
+    name: "SubstanceX",
+    address: null,
+    symbol: "-",
+    url: "https://app.substancex.io/perpetual/",
+    description: "SubstanceX is a derivatives protocol that leads the shift towards decentralized trading. SubstanceX offers futures and options, and achieves a pop-up-free trading experience through 1-click technology.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/substancex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "SubstanceX/index.js",
+    twitter: "SubstanceX_",
+    listedAt: 1700741881
+  },
 ]
 
 export default data3

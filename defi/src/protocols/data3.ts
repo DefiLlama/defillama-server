@@ -25234,6 +25234,28 @@ const data3: Protocol[] = [
     twitter: "SubstanceX_",
     listedAt: 1700741881
   },
+  {
+    id: "3836",
+    name: "Chimp Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://chimp.exchange",
+    description: "Chimp Dex is a next-gen DEX which innovates on the ve(3,3) using time based farms. Chimp Dex has stablepools as well as multi token weight pools.",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/chimp-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    oracles: [],
+    forkedFrom: ["Balancer"],
+    module: "chimpexchange/index.js",
+    twitter: "ChimpExchange",
+    github: ["Chimp-Exchange"],
+    listedAt: 1700753279
+  },
 ]
 
 export default data3

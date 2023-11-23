@@ -25256,6 +25256,27 @@ const data3: Protocol[] = [
     github: ["Chimp-Exchange"],
     listedAt: 1700753279
   },
+  {
+    id: "3837",
+    name: "DyorSwap",
+    address: "mode:0x097de1ADe6D7b46540637935C88B489860D310A2",
+    symbol: "DYOR",
+    url: "https://dyorswap.finance/?chainId=34443",
+    description: "Decentralized exchange on Mode Mainnet",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/dyorswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mode"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "dyorswap/index.js",
+    twitter: "dyorswap",
+    listedAt: 1700767143
+  },
 ]
 
 export default data3

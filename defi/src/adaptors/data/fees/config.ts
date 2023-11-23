@@ -1568,7 +1568,7 @@ export default {
         "id": "494"
     },
     "wagmi": {
-        "enabled": false,
+        "enabled": true,
         "id": "2837"
     }
 } as AdaptorsConfig

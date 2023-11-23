@@ -25148,6 +25148,28 @@ const data3: Protocol[] = [
     twitter: "sailingprotocol",
     listedAt: 1700675489
   },
+  {
+    id: "3832",
+    name: "LendLord",
+    address: null,
+    symbol: "-",
+    url: "https://lendlord.org/",
+    description: "Low Risk & Capital Efficient Lending Hub on Manta Network",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/lendlord.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Manta"],
+    oracles: [],
+    forkedFrom: [],
+    module: "lend-lord/index.js",
+    twitter: "lendlordorg",
+    github: ["LendLordorg"],
+    listedAt: 1700703932
+  },
 ]
 
 export default data3

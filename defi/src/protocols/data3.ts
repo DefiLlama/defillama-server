@@ -22896,13 +22896,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3728",
-    name: "Gondi",
+    name: "Gondi V1",
     address: null,
     symbol: "-",
     url: "https://www.gondi.xyz",
     description: "Borrow, Lend & Refinance NFTs on the most capital efficient lending protocol",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/gondi.png`,
+    logo: `${baseIconsUrl}/gondi-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -22914,7 +22914,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://docs.gondi.xyz/audits"],
     twitter: "gondixyz",
-    github: ["gondixyz"],
+    parentProtocol: "parent#gondi",
     listedAt: 1698924327
   },
   {
@@ -25276,6 +25276,28 @@ const data3: Protocol[] = [
     module: "dyorswap/index.js",
     twitter: "dyorswap",
     listedAt: 1700767143
+  },
+  {
+    id: "3838",
+    name: "Gondi V2",
+    address: null,
+    symbol: "-",
+    url: "https://www.gondi.xyz",
+    description: "Borrow, Lend & Refinance NFTs on the most capital efficient lending protocol",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/gondi-v2.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Lending",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "gondi-v2/index.js",
+    twitter: "gondixyz",
+    parentProtocol: "parent#gondi",
+    listedAt: 1700775318
   },
 ]
 

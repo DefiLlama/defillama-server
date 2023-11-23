@@ -3162,6 +3162,18 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:spool.eth"],
     twitter: "SpoolFi",
   },
+  {
+    id: "parent#gondi",
+    name: "Gondi",
+    url: "https://www.gondi.xyz",
+    description: "Borrow, Lend & Refinance NFTs on the most capital efficient lending protocol",
+    logo: `${baseIconsUrl}/gondi.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["gondixyz"],
+    twitter: "gondixyz",
+  },
 ];
 
 export default parentProtocols;

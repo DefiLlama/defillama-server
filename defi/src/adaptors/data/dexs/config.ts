@@ -2185,5 +2185,9 @@ export default {
         parentId: "CaviarNine",
         "enabled": true,
         "id": "3666"
+    },
+    "chimpexchange": {
+        "enabled": true,
+        "id": "3836"
     }
 } as AdaptorsConfig

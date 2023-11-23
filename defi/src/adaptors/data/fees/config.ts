@@ -1570,5 +1570,9 @@ export default {
     "wagmi": {
         "enabled": true,
         "id": "2837"
+    },
+    "chimpexchange": {
+        "enabled": true,
+        "id": "3836"
     }
 } as AdaptorsConfig

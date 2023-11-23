@@ -1,5 +1,5 @@
 import * as HyperExpress from "hyper-express";
-import { cache, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, checkModuleDoubleCounted, protocolHasMisrepresentedTokens, getRaises, } from "../cache";
+import { cache, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, checkModuleDoubleCounted, protocolHasMisrepresentedTokens, } from "../cache";
 import sluggify from "../../utils/sluggify";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";

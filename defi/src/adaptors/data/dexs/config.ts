@@ -239,7 +239,7 @@ export default {
         }
     },
     "ref-finance": {
-        "enabled": false,
+        "enabled": true,
         "id": "541"
     },
     "solidly": {

@@ -25342,6 +25342,48 @@ const data3: Protocol[] = [
     github: ["Plunderswap"],
     listedAt: 1700782921
   },
+  {
+    id: "3841",
+    name: "ArtCPAClub",
+    address: null,
+    symbol: "-",
+    url: "https://artcpaclub.com",
+    description: "Unique NFTs and Marketplace on MultiversX  NFT Staking & ESDT Staking Platform",
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/artcpaclub.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Elrond"],
+    oracles: [],
+    forkedFrom: [],
+    module: "artcpaclub/index.js",
+    twitter: "_Official_CPA",
+    listedAt: 1700837762
+  },
+  {
+    id: "3842",
+    name: "Modswap",
+    address: null,
+    symbol: "-",
+    url: "https://modswap.io/",
+    description: "The 1st native DEX on Mode Network",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/modswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mode"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "modSwapDefi/index.js",
+    twitter: "mod_swap",
+    listedAt: 1700837785
+  },
 ]
 
 export default data3

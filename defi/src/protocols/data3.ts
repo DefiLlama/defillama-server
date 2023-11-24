@@ -25215,11 +25215,11 @@ const data3: Protocol[] = [
   },
   {
     id: "3835",
-    name: "SubstanceX",
+    name: "Substance Exchange",
     address: null,
     symbol: "-",
     url: "https://app.substancex.io/perpetual/",
-    description: "SubstanceX is a derivatives protocol that leads the shift towards decentralized trading. SubstanceX offers futures and options, and achieves a pop-up-free trading experience through 1-click technology.",
+    description: "Substance Exchange (SubstanceX) is a derivatives protocol that leads the shift towards decentralized trading. SubstanceX offers futures and options, and achieves a pop-up-free trading experience through 1-click technology.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/substancex.jpg`,
     audits: "0",

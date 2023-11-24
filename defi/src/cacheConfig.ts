@@ -7,7 +7,6 @@ import entities from "./protocols/entities";
 import parentProtocols from "./protocols/parentProtocols";
 import treasuries from "./protocols/treasury";
 import { METADATA_FILE, PG_CACHE_KEYS } from "./api2/constants";
-import { initializeTVLCacheDB, readFromPGCache, writeToPGCache } from './api2/db';
 
 const updateMetadataCMD = `node ${__dirname}/api2/scripts/updateMetadataExtra.js`
 
@@ -18,9 +17,8 @@ async function main() {
 
   data = fs.readFileSync(METADATA_FILE, 'utf8')
   data = JSON.parse(data)
-  await sdk.cache.writeCache(PG_CACHE_KEYS.PROTOCOL_METADATA_ALL, data)
-  await initializeTVLCacheDB()
-  await writeToPGCache(PG_CACHE_KEYS.PROTOCOL_METADATA_ALL, data)
+  if (!process.env.SKIP_CAHE_WRITE_R2)
+    await sdk.cache.writeCache(PG_CACHE_KEYS.PROTOCOL_METADATA_ALL, data)
 }
 
 main().catch(console.error).then(() => process.exit(0))

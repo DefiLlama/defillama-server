@@ -28146,7 +28146,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum", "Sui"],
     module: "bluefin/index.js",
     twitter: "bluefinapp",
-    oracles: [],
+    oracles: ["Chainlink","Pyth"],
     forkedFrom: [],
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-dTrade-v1.0.pdf"],
     listedAt: 1677769578

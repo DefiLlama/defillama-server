@@ -7929,7 +7929,7 @@ const data3: Protocol[] = [
     module: "y2k-v2/index.js",
     twitter: "y2kfinance",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     audit_links: [
       "https://y2k-finance.gitbook.io/y2k-finance/learn-more/audits",
     ],

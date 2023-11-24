@@ -14344,7 +14344,7 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     oraclesByChain: {
-      arbitrum: ["Chainlink", "TWAP","DIA"],
+      arbitrum: ["Chainlink", "TWAP"],
       ethereum: ["Chainlink", "TWAP"]
     },
     forkedFrom: [],

@@ -23322,7 +23322,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Base"],
-    module: "dummy.js",
+    module: "intentx.js",
     forkedFrom: [],
     oracles: [],
     twitter: "IntentX_",            

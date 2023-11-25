@@ -25385,6 +25385,27 @@ const data3: Protocol[] = [
     twitter: "mod_swap",
     listedAt: 1700837785
   },
+  {
+    id: "3843",
+    name: "Clink",
+    address: null,
+    symbol: "-",
+    url: "https://clinkfi.io",
+    description: "SocialFi platform on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/clink.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: ["friend.tech"],
+    module: "clink/index.js",
+    twitter: "clink_fi",
+    listedAt: 1700945097
+  },
 ]
 
 export default data3

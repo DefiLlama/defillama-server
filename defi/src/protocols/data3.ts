@@ -23325,7 +23325,8 @@ const data3: Protocol[] = [
     module: "intentx.js",
     forkedFrom: [],
     oracles: [],
-    twitter: "IntentX_",            
+    twitter: "IntentX_",
+    listedAt: 1700881008            
   },
   {
     id: "3748",

@@ -4,7 +4,7 @@ import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl } from "../utils/getLastRec
 import { formatTimestampAsDate, getClosestDayStartTimestamp } from "../utils/date";
 import { normalizeChain } from "../utils/normalizeChain";
 import { PassThrough } from "stream";
-import { getAllProtocolData } from "../api2/utils/craftProtocolV2";
+import { getProtocolAllTvlData } from "../api2/utils/cachedFunctions";
 
 function normalizeChainTotal(chain: string) {
   return chain === "tvl" ? "Total" : chain;
@@ -88,7 +88,7 @@ export default async function (protocols: Protocol[], vertical = false, stream =
       let data;
 
       if (readFromPG) {
-        data = await getAllProtocolData(protocol)
+        data = await getProtocolAllTvlData(protocol, true)
       } else {
         data =  await Promise.all([
           getHistoricalValues(dailyTvl(protocol.id)),

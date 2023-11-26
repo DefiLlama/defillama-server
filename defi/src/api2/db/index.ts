@@ -8,6 +8,7 @@ import {
   dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, dailyRawTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl, hourlyRawTokensTvl,
 } from "../../utils/getLastRecord"
 import { getTimestampString } from '../utils'
+import { readFromPGCache, writeToPGCache, getDailyTvlCacheId, deleteFromPGCache } from '../cache/file-cache'
 
 const dummyId = 'dummyId'
 
@@ -66,10 +67,10 @@ async function initializeTVLCacheDB({
     }
     if (isApi2Server)
       dbOptions.pool = {
-        max: 30,
+        max: 10,
         min: 0,
         idle: 5000,
-        acquire: 120000, // increase this if your queries take a long time to run
+        acquire: 30000, // increase this if your queries take a long time to run
         evict: 1000, // how often to run eviction checks
       }
 
@@ -245,38 +246,6 @@ function validateRecord(record: TVLCacheRecord) {
   if (!record.data || typeof record.data !== 'object') throw new Error('Missing data')
 }
 
-async function writeToPGCache(key: string, data: any) {
-  const table = TABLES.JSON_CACHE
-  if (typeof data !== 'object') data = JSON.stringify(data)
-  await table.upsert({ id: key, data, timestamp: Math.floor(Date.now() / 1e3) })
-}
-
-async function readFromPGCache(key: string, { withTimestamp = false } = {}) {
-  const table = TABLES.JSON_CACHE
-  const item: any = await table.findOne({
-    where: { id: key },
-    attributes: ['data', 'timestamp'],
-    raw: true,
-  })
-  if (!item) return null
-  try {
-    item.data = JSON.parse(item.data)
-  } catch { }
-  if (withTimestamp) return item
-  return item.data
-}
-
-async function deleteFromPGCache(key: string) {
-  const table = TABLES.JSON_CACHE
-  log('Deleting from db cache:', key)
-  await table.destroy({ where: { id: key } })
-}
-
-function getDailyTvlCacheId(id: string) {
-  if (!id) throw new Error('Missing required parameter: id')
-  return `tvl-cache-daily/${id}`
-}
-
 async function closeConnection() {
   if (!sequelize) return;
   try {
@@ -315,8 +284,8 @@ export {
   initializeTVLCacheDB,
   closeConnection,
   deleteProtocolItems,
-  writeToPGCache,
   readFromPGCache,
+  writeToPGCache,
   deleteFromPGCache,
   getDailyTvlCacheId,
   getLatestProtocolItems,

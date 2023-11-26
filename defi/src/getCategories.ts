@@ -66,7 +66,7 @@ export async function getCategoriesInternal({ ...options }: any = {}) {
   const categoryProtocols = {} as IProtocolsByCategory;
 
   let historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>
-  if (options.usePGCache) {
+  if (options.isApi2CronProcess) {
     historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(false, false, options);
   } else {
     historicalProtocolTvlsData = await getCachedHistoricalTvlForAllProtocols(false, false)

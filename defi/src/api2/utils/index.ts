@@ -30,3 +30,19 @@ export function transformDDBToPGFormat(item: any, hourly?: boolean) {
     timeS: getTimestampString(ts, hourly)
   }
 }
+
+export function mergeSortAndRemoveDups(arr: any[] | undefined, arr2: any[] | undefined) {
+  if (!arr) arr = []
+  if (!arr2) arr2 = []
+  const merged = [...arr, ...arr2]
+  const sorted = merged.sort((a, b) => a.SK - b.SK)
+  const deduped = []
+  let last: any = null
+  for (const item of sorted) {
+    if (last === null || last.SK !== item.SK) {
+      deduped.push(item)
+      last = item
+    }
+  }
+  return deduped
+}

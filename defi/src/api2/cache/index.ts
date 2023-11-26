@@ -1,12 +1,17 @@
 import fetch from "node-fetch";
 
-import { PG_CACHE_KEYS } from './constants';
-import { IRaise, IProtocol } from '../types';
-import sluggify from '../utils/sluggify';
-import { readFromPGCache, getLatestProtocolItems, } from './db';
-import { dailyTvl, dailyUsdTokensTvl, hourlyTvl, hourlyUsdTokensTvl } from "../utils/getLastRecord";
+import { IRaise, IProtocol } from '../../types';
+import sluggify from '../../utils/sluggify';
+import { getLatestProtocolItems, } from '../db';
+import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl, hourlyTvl, hourlyUsdTokensTvl, hourlyTokensTvl, } from "../../utils/getLastRecord";
 import { log } from '@defillama/sdk'
-import { ChainCoinGekcoIds } from "../utils/normalizeChain";
+import { ChainCoinGekcoIds } from "../../utils/normalizeChain";
+import { getMetadataAll, readFromPGCache } from './file-cache'
+import { PG_CACHE_KEYS } from "../constants";
+import { Protocol } from "../../protocols/types";
+import { shuffleArray } from "../../utils/shared/shuffleArray";
+import PromisePool from "@supercharge/promise-pool";
+import { getProtocolAllTvlData } from "../utils/cachedFunctions";
 
 export const cache: {
   metadata: {
@@ -28,6 +33,9 @@ export const cache: {
   parentProtocolRes: any,
   tvlProtocol: any,
   tvlUSDProtocol: any,
+  tvlTokenProtocol: any,
+  allTvlData: any,
+  historicalTvlForAllProtocolsMeta: any,
 } = {
   metadata: {
     protocols: [],
@@ -48,27 +56,43 @@ export const cache: {
   parentProtocolRes: {},
   tvlProtocol: {},
   tvlUSDProtocol: {},
+  tvlTokenProtocol: {},
+  allTvlData: {},
+  historicalTvlForAllProtocolsMeta: {},
 }
 
-export async function initCache({
-  isApi2Server = false,
-} = {}) {
-  console.time('Cache initialized')
-  await Promise.all([
-    updateMetadata(isApi2Server),
-    updateRaises(),
-  ])
-  await Promise.all([
-    await updateMCaps(),
-    await tvlProtocolDataUpdate(isApi2Server),
-  ])
+const MINUTES = 60 * 1000
+const HOUR = 60 * MINUTES
 
-  console.timeEnd('Cache initialized')
+export async function initCache({ cacheType = 'cron' } = { cacheType: 'none' }) {
+  console.time('Cache initialized: ' + cacheType)
+  await updateMetadata()
+  if (cacheType === 'api-server') {
+    const _cache = (await readFromPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL)) ?? {}
+    Object.entries(_cache).forEach(([k, v]: any) => (cache as any)[k] = v)
+
+    await setHistoricalTvlForAllProtocols()
+
+    setInterval(updateRaises, 20 * MINUTES)
+    setInterval(updateMCaps, 20 * MINUTES)
+    setInterval(tvlProtocolDataUpdate, 20 * MINUTES)
+    setInterval(setHistoricalTvlForAllProtocols, 2 * HOUR)
+
+  } else if (cacheType === 'cron') {
+    await Promise.all([
+      updateRaises(),
+      updateMCaps(),
+      tvlProtocolDataUpdate(cacheType),
+      updateAllTvlData(cacheType),
+    ])
+  }
+
+  console.timeEnd('Cache initialized: ' + cacheType)
 }
 
-async function updateMetadata(isFirstRun = false) {
-  const data = await readFromPGCache(PG_CACHE_KEYS.PROTOCOL_METADATA_ALL)
-  cache.metadata = data
+async function updateMetadata() {
+  const data = await getMetadataAll()
+  cache.metadata = data as any
 
   // reset cache
   cache.metadata.isDoubleCountedProtocol = {}
@@ -96,8 +120,6 @@ async function updateMetadata(isFirstRun = false) {
   data.parentProtocols.forEach((p: any) => {
     cache.parentProtocolSlugMap[sluggify(p)] = p
   })
-  if (!isFirstRun)
-    await tvlProtocolDataUpdate()
 }
 
 async function updateRaises() {
@@ -110,6 +132,20 @@ async function updateRaises() {
     raisesObject[id].push(r)
   })
   cache.raises = raisesObject
+}
+
+async function updateAllTvlData(cacheType?: string) {
+  if (cacheType !== 'cron') return;
+  const { protocols, treasuries, entities } = cache.metadata
+  let actions = [protocols, treasuries, entities].flat()
+  shuffleArray(actions) // randomize order of execution
+  log('[All tvl] Updating', actions.length, 'protocols')
+  await PromisePool
+    .withConcurrency(13)
+    .for(actions)
+    .process(async (protocol: Protocol) => {
+      cache.allTvlData[protocol.id] = (await getProtocolAllTvlData(protocol, false))[0]
+    });
 }
 
 export function getProtocols() {
@@ -160,6 +196,10 @@ export async function getCachedMCap(geckoId: string | null) {
   return cache.mcaps['coingecko:' + geckoId]?.mcap ?? null
 }
 
+export function getCoinMarkets() {
+  return cache.mcaps
+}
+
 export function getCacheByCacheKey(key: string, id: string) {
   return (cache as any)[key][id];
 }
@@ -188,25 +228,26 @@ export async function cacheAndRespond({ key, id, origFunction, args }: { key: st
   }
 }
 
-async function tvlProtocolDataUpdate(isFirstRun = false) {
-  if (isFirstRun === true) {
-    const allProtocolItems = await getLatestProtocolItems(dailyTvl)
-    const allProtocolUSDItems = await getLatestProtocolItems(dailyUsdTokensTvl)
+async function tvlProtocolDataUpdate(cacheType?: string) {
+  let allProtocolItems, allProtocolUSDItems, allProtocolTokenItems
+  const isFirstRun = cacheType === 'cron' || Object.keys(cache.tvlProtocol).length === 0
+
+  if (isFirstRun) {
+    allProtocolItems = await getLatestProtocolItems(dailyTvl)
+    allProtocolUSDItems = await getLatestProtocolItems(dailyUsdTokensTvl)
+    allProtocolTokenItems = await getLatestProtocolItems(dailyTokensTvl)
     allProtocolItems.forEach((item: any) => cache.tvlProtocol[item.id] = item.data)
     allProtocolUSDItems.forEach((item: any) => cache.tvlUSDProtocol[item.id] = item.data)
-    log('tvlProtocolDataUpdate: initialized cache')
-    log('tvlProtocol#', Object.keys(cache.tvlProtocol).length)
-    log('tvlUSDProtocol#', Object.keys(cache.tvlUSDProtocol).length)
+    allProtocolTokenItems.forEach((item: any) => cache.tvlTokenProtocol[item.id] = item.data)
   }
 
-  const allProtocolItems = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
-  const allProtocolUSDItems = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterLast24Hours: true })
+
+  allProtocolItems = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
+  allProtocolUSDItems = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterLast24Hours: true })
+  allProtocolTokenItems = await getLatestProtocolItems(hourlyTokensTvl, { filterLast24Hours: true })
   allProtocolItems.forEach((item: any) => cache.tvlProtocol[item.id] = item.data)
   allProtocolUSDItems.forEach((item: any) => cache.tvlUSDProtocol[item.id] = item.data)
-}
-
-export function getCoinMarkets() {
-  return cache.mcaps
+  allProtocolTokenItems.forEach((item: any) => cache.tvlTokenProtocol[item.id] = item.data)
 }
 
 export function getLastHourlyRecord(protocol: IProtocol) {
@@ -215,6 +256,10 @@ export function getLastHourlyRecord(protocol: IProtocol) {
 
 export function getLastHourlyTokensUsd(protocol: IProtocol) {
   return cache.tvlUSDProtocol[protocol.id]
+}
+
+export function getLastHourlyTokens(protocol: IProtocol) {
+  return cache.tvlTokenProtocol[protocol.id]
 }
 
 export function checkModuleDoubleCounted(protocolId: string) {
@@ -230,16 +275,10 @@ export const CACHE_KEYS = {
   PARENT_PROTOCOL: 'parentProtocolRes',
 }
 
-function clearProtocolCache() {
-  cache.protocolRes = {};
-  cache.parentProtocolRes = {};
+async function setHistoricalTvlForAllProtocols() {
+  try {
+    cache.historicalTvlForAllProtocolsMeta = await readFromPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META)
+  } catch (e) {
+    console.error(e);
+  }
 }
-
-const MINUTE = 1000 * 60
-const HOUR = MINUTE * 60
-
-setInterval(updateRaises, HOUR * 24)
-setInterval(updateMetadata, MINUTE * 15)
-setInterval(updateMCaps, HOUR)
-setInterval(clearProtocolCache, MINUTE * 5)
-// setInterval(tvlProtocolDataUpdate, MINUTE * 15) // run as part of updateMetadata

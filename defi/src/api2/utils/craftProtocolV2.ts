@@ -2,75 +2,27 @@ import type { Protocol } from "../../protocols/types";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "../../utils/normalizeChain";
 import type { IProtocolResponse, } from "../../types";
 import { getAvailableMetricsById } from "../../adaptors/data/configs";
-import { getRaises, getCachedMCap, CACHE_KEYS, cacheAndRespond, cache, } from "../cache";
-import { getAllProtocolItems, getDailyTvlCacheId, getLatestProtocolItem, readFromPGCache, writeToPGCache, } from "../db/index";
+import { getRaises, getCachedMCap, CACHE_KEYS, cacheAndRespond, cache, getLastHourlyRecord, getLastHourlyTokensUsd, getLastHourlyTokens } from "../cache/index";
+import { getAllProtocolItems, } from "../db/index";
 import { normalizeEthereum, selectChainFromItem, } from "../../utils/craftProtocol";
 import {
-  dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl,
+  hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl,
 } from "../../utils/getLastRecord"
 import * as sdk from '@defillama/sdk'
+import { getProtocolAllTvlData } from "./cachedFunctions";
 
-type CraftProtocolV2Options = {
-  protocolData: Protocol;
+export type CraftProtocolV2Common = {
   useNewChainNames: boolean;
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
 }
 
-export async function getAllProtocolData(protocol: Protocol) {
 
-  let cacheKey = getDailyTvlCacheId(protocol.id)
-  let { data: protocolCache, timestamp } = (await readFromPGCache(cacheKey, { withTimestamp: true })) ?? { data: null, timestamp: null}
-
-  let tvlQueryOptions = {}
-  let tokensInUsdQueryOptions = {}
-  let tokensQueryOptions = {}
-
-  if (protocolCache) {
-    // if cache is not empty, set query options to get only new records
-    protocolCache.tvl = protocolCache.tvl ?? []
-    protocolCache.tokensInUsd = protocolCache.tokensInUsd ?? []
-    protocolCache.tokens = protocolCache.tokens ?? []
-    if (protocolCache.tvl.length)
-      tvlQueryOptions = { timestampAfter: protocolCache.tvl[protocolCache.tvl.length - 1].SK }
-    if (protocolCache.tokensInUsd.length)
-      tokensInUsdQueryOptions = { timestampAfter: protocolCache.tokensInUsd[protocolCache.tokensInUsd.length - 1].SK }
-    if (protocolCache.tokens.length)
-      tokensQueryOptions = { timestampAfter: protocolCache.tokens[protocolCache.tokens.length - 1].SK }
-  }
-
-  const unixNow = Math.floor(Date.now() / 1000)
-  const cacheIsOld = !timestamp || (unixNow - timestamp) > 2 * 60 * 60 // 2 hours
-  const fetchNewData = cacheIsOld || !protocolCache || !protocol.deadFrom
-
-  if (fetchNewData) {
-
-    let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl,]: any = await Promise.all([
-      getAllProtocolItems(dailyTvl, protocol.id, tvlQueryOptions),
-      getAllProtocolItems(dailyUsdTokensTvl, protocol.id, tokensInUsdQueryOptions),
-      getAllProtocolItems(dailyTokensTvl, protocol.id, tokensQueryOptions),
-    ]);
-
-    
-    const updateCache = historicalTokenTvl.length > 1 || historicalUsdTokenTvl.length > 1 || historicalUsdTvl.length > 1
-    if (!protocolCache) protocolCache = {}
-
-    if (updateCache || cacheIsOld) {
-      protocolCache.tvl = mergeSortAndRemoveDups(protocolCache.tvl, historicalUsdTvl)
-      protocolCache.tokensInUsd = mergeSortAndRemoveDups(protocolCache.tokensInUsd, historicalUsdTokenTvl)
-      protocolCache.tokens = mergeSortAndRemoveDups(protocolCache.tokens, historicalTokenTvl)
-      await writeToPGCache(cacheKey, protocolCache)
-    }
-  }
-
-  return [
-    protocolCache.tvl,
-    protocolCache.tokensInUsd,
-    protocolCache.tokens,
-  ]
+export type CraftProtocolV2Options = CraftProtocolV2Common & {
+  protocolData: Protocol;
 }
 
-export default async function craftProtocolV2({
+export async function craftProtocolV2({
   protocolData,
   useNewChainNames,
   useHourlyData,
@@ -80,24 +32,22 @@ export default async function craftProtocolV2({
 
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
-  const isDeadProtocol = !!protocolData.deadFrom
+  const isDeadProtocolOrHourly = !!protocolData.deadFrom || useHourlyData
 
-  if (!useHourlyData) 
-    protocolCache = await getAllProtocolData(protocolData)
-  
-
+  if (!useHourlyData)
+    protocolCache = await getProtocolAllTvlData(protocolData, true)
 
   let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
     !useHourlyData ? null : getAllProtocolItems(hourlyTvl, protocolData.id),
     !useHourlyData ? null : getAllProtocolItems(hourlyUsdTokensTvl, protocolData.id),
     !useHourlyData ? null : getAllProtocolItems(hourlyTokensTvl, protocolData.id),
     getCachedMCap(protocolData.gecko_id),
-    isDeadProtocol ? null : getLatestProtocolItem(hourlyTvl, protocolData.id),
-    isDeadProtocol ? null : getLatestProtocolItem(hourlyUsdTokensTvl, protocolData.id),
-    isDeadProtocol ? null : getLatestProtocolItem(hourlyTokensTvl, protocolData.id),
+    isDeadProtocolOrHourly ? null : getLastHourlyRecord(protocolData as any),
+    isDeadProtocolOrHourly ? null : getLastHourlyTokensUsd(protocolData as any),
+    isDeadProtocolOrHourly ? null : getLastHourlyTokens(protocolData as any),
   ]);
 
-  if (!useHourlyData) {  
+  if (!useHourlyData) {
     historicalUsdTvl = protocolCache[0]
     historicalUsdTokenTvl = protocolCache[1]
     historicalTokenTvl = protocolCache[2]
@@ -236,7 +186,7 @@ export default async function craftProtocolV2({
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime
   const debug_totalTime = performance.now() - debug_t0
-  sdk.log(`${protocolData.name} |${useHourlyData ? 'h' : 'd'}| #: ${historicalUsdTvl.length} ${historicalUsdTokenTvl.length} ${historicalTokenTvl.length} | Db: ${(debug_dbTimeAll / 1e3).toFixed(2)}s | All: ${(debug_totalTime / 1e3).toFixed(2)}s`)
+  // sdk.log(`${protocolData.name} |${useHourlyData ? 'h' : 'd'}| #: ${historicalUsdTvl.length} ${historicalUsdTokenTvl.length} ${historicalTokenTvl.length} | Db: ${(debug_dbTimeAll / 1e3).toFixed(2)}s | All: ${(debug_totalTime / 1e3).toFixed(2)}s`)
 
   return response;
 }
@@ -245,20 +195,4 @@ export async function cachedCraftProtocolV2(options: CraftProtocolV2Options) {
   const id = `${options.protocolData.id}-${options.useHourlyData ? 'hourly' : 'daily'}-${options.skipAggregatedTvl ? 'noAgg' : 'agg'}-${options.useNewChainNames ? 'new' : 'old'}`
   const CACHE_KEY = CACHE_KEYS.PROTOCOL
   return cacheAndRespond({ key: CACHE_KEY, id, origFunction: craftProtocolV2, args: [options] })
-}
-
-function mergeSortAndRemoveDups(arr: any[] | undefined, arr2: any[] | undefined) {
-  if (!arr) arr = []
-  if (!arr2) arr2 = []
-  const merged = [...arr, ...arr2]
-  const sorted = merged.sort((a, b) => a.SK - b.SK)
-  const deduped = []
-  let last: any = null
-  for (const item of sorted) {
-    if (last === null || last.SK !== item.SK) {
-      deduped.push(item)
-      last = item
-    }
-  }
-  return deduped
 }

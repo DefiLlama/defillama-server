@@ -406,7 +406,16 @@ export default {
     "iziswap": {
         parentId: "iZUMI Finance",
         "enabled": true,
-        "id": "1883"
+        "id": "1883",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1700524800": true,
+                "1700611200": true,
+                "1700697600": true,
+                "1700784000": true,
+                "1700870400": true,
+            },
+        }
     },
     "tinyman": {
         "enabled": true,

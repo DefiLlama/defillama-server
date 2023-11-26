@@ -6742,7 +6742,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://timeswap.io",
-    description: "Timeswap is the first fully permissionless, oracle-less, non-liquidatable, fixed maturity lending & borrowing protocol.",
+    description: "Timeswap is the first oracleless lending/borrowing protocol. Timeswap enables the creation of money markets for ANY ERC-20 tokens.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/timeswap-v1.jpg`,
     audits: "2",
@@ -26808,7 +26808,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://app.timeswap.io",
     description:
-      "V2 comes with the same design principles as V1, but with 5x more capital efficiency & more.",
+      "Timeswap is the first oracleless lending/borrowing protocol. Timeswap enables the creation of money markets for ANY ERC-20 tokens.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/timeswap-v2.jpg`,
     audits: "0",

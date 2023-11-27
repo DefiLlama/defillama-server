@@ -14,7 +14,6 @@ import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
 export default function setRoutes(router: HyperExpress.Router, routerBasePath: string) {
   // router.get("/hourly/:name", (async (req, res) => getProtocolishData(req, res, { dataType: 'protocol', useHourlyData: true, skipAggregatedTvl: false })));  // too expensive to handle here
   // router.get("/config/:chain/:contract", ew(getContractName));  // too many requests to handle here
-  // router.get("/totalChainDataset/:chain", ew(getTotalChainDataset)); // deprecated
   // add secret route to delete from PG cache
 
   router.get("/protocol/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'protocol', skipAggregatedTvl: false, useNewChainNames: false, })));

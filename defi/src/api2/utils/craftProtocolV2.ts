@@ -179,7 +179,7 @@ export async function craftProtocolV2({
   if (misrepresentedTokens === true)
     response.misrepresentedTokens = true;
 
-  if (hallmarks) {
+  if (Array.isArray(hallmarks) && hallmarks.length > 0) {
     response.hallmarks = hallmarks;
     response.hallmarks?.sort((a, b) => a[0] - b[0]);
   }

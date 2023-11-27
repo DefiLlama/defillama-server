@@ -80,7 +80,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Polygon", "Polygon zkEVM"],
     oraclesByChain: {
-      polygon: ["Chainlink"],
+      polygon: [],
       polygon_zkevm: ["API3"],
     },
     forkedFrom: [],
@@ -2355,7 +2355,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
-    oracles: ["Chainlink"],
+    oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "AstroFi/index.js",
     twitter: "Astrofiorg",
@@ -3667,7 +3667,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Arbitrum"],
-    oracles: ["Chainlink"],
+    oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "moonbase.js",
     twitter: "MBaseAlpha",
@@ -10928,7 +10928,7 @@ const data3: Protocol[] = [
     module: "konverter/index.js",
     twitter: "Konverter_",
     forkedFrom: ["Curve DEX"],
-    oracles: ["TWAP", "Chainlink"],
+    oracles: [],
     listedAt: 1688393148
   },
   {
@@ -14383,7 +14383,7 @@ const data3: Protocol[] = [
     module: "dackieswap/index.js",
     twitter: "DackieSwap",
     forkedFrom: ["Uniswap V3"],
-    oracles: ["Chainlink"],
+    oracles: [],
     parentProtocol: "parent#dackieswap",
     listedAt: 1691153591
   },
@@ -19364,7 +19364,7 @@ const data3: Protocol[] = [
     module: "bassexhcnage/index.js",
     twitter: "Bass_Exchange",
     forkedFrom: ["Wombat Exchange"],
-    oracles: ["Chainlink"],
+    oracles: [],
     audit_links: ["https://github.com/EtherAuthority/Audit/blob/main/Bass%20Exchange.pdf"],
     listedAt: 1695898552,
     rugged: true,

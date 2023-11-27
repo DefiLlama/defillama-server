@@ -748,7 +748,7 @@ const data: Protocol[] = [
     twitter: "snow_swap",
     audit_links: ["https://hackmd.io/@9GUQpanJRF6cloQ0fwyPFw/r1_ctUuqv"],
     forkedFrom: ["Saddle Finance"],
-    oracles: ["Chainlink"],
+    oracles: [],
   },
   {
     id: "140",
@@ -1261,7 +1261,7 @@ const data: Protocol[] = [
     module: "valuedefi.js",
     twitter: "value_defi",
     audit_links: ["https://valuedefi.io/audit"],
-    oracles: ["Chainlink"],
+    oracles: [],
     parentProtocol: "parent#value-finance",
   },
   {
@@ -1798,7 +1798,7 @@ const data: Protocol[] = [
     treasury: "1inch.js",
     twitter: "1inch",
     audit_links: ["https://help.1inch.io/en/articles/4585088-how-secure-is-1inch"],
-    oracles: ["Chainlink"],
+    oracles: [],
     governanceID: ["snapshot:1inch.eth"],
     github: ["1inch"]
   },
@@ -3889,7 +3889,7 @@ const data: Protocol[] = [
     module: "zerodex/index.js",
     twitter: "OfficialZeroDEX",
     forkedFrom: ["Uniswap V2"],
-    oracles: ["Chainlink"],
+    oracles: [],
   },
   /*
   {
@@ -5880,7 +5880,7 @@ const data: Protocol[] = [
     module: "makiswap/index.js",
     twitter: "MakiSwap",
     audit_links: ["https://www.certik.org/projects/makiswap"],
-    oracles: ["Chainlink"],
+    oracles: [],
     github: ["MakiSwap-Protocol"]
   },
   {
@@ -17171,7 +17171,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "vampireswap/index.js",
     twitter: "vampireswap",
-    oracles: ["Chainlink"],
+    oracles: [],
     listedAt: 1637883311,
     forkedFrom: ["Uniswap V2"],
     deadUrl: true
@@ -18629,7 +18629,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Aurora"],
     module: "wannaswap/index.js",
     twitter: "wannaswapamm",
-    oracles: ["Chainlink"],
+    oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.certik.com/projects/wannaswap"],
     listedAt: 1638702808,

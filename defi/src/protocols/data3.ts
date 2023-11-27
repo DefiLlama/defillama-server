@@ -17388,7 +17388,7 @@ const data3: Protocol[] = [
     description:
       "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/solidly-v3.jpg`,
+    logo: `${baseIconsUrl}/solidly-v3.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

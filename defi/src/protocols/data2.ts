@@ -29828,24 +29828,6 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true
   },
-  {
-    id: "2701",
-    name: "LlamaSwap",
-    address: null,
-    symbol: '',
-    url: "https://swap.defillama.com",
-    description: "Defillama Meta-Aggregator",
-    chain: 'Ethererum',
-    logo: `https://swap.defillama.com/_next/static/media/loader.268d236d.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Aggregator",
-    chains: [],
-    oracles: [],
-    forkedFrom: [],
-    module: "ZukeSwap/index.js",
-  },
+  
 ]
 export default data2;

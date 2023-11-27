@@ -7539,6 +7539,12 @@
       "decimals": "6",
       "symbol": "STUMEE",
       "to": "coingecko#umee"
+    },
+    "49D820DFDE9F885D7081725A58202ABA2F465CAEE4AFBC683DFB79A8E013E83E": {
+      "name": "injective-protocol",
+      "decimals": 18,
+      "symbol": "INJ",
+      "to": "coingecko#injective-protocol"
     }
   },
   "bitindi": {

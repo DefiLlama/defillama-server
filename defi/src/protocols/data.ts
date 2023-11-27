@@ -8101,7 +8101,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "kuswap/index.js",
     twitter: "kuswapfinance",
     forkedFrom: ["Uniswap V2"],
-    oracles: ["Pyth"],
+    oracles: [],
     github: ["KuSwap"]
   },
   {
@@ -13562,7 +13562,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "synthetify-token",
     cmcId: "9447",
-    category: "Dexes",
+    category: "Synthetics",
     chains: ["Solana"],
     module: "synthetify/index.js",
     twitter: "synthetify",

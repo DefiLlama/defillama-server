@@ -3457,7 +3457,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Solana"],
     oracles: ["Pyth"],
     forkedFrom: [],
@@ -7265,7 +7265,7 @@ const data2: Protocol[] = [
     cmcId: "19623",
     category: "Dexes",
     chains: ["Binance"],
-    oracles: ["Pyth"],
+    oracles: [],
     forkedFrom: [],
     module: "wombat-exchange/index.js",
     twitter: "WombatExchange",
@@ -17351,7 +17351,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Solana"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth"], // https://docs.lifinity.io/dex/oracle
     forkedFrom: [],
     module: "lifinity/index.js",
     twitter: "Lifinity_io",
@@ -17828,9 +17828,9 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "goosefx",
     cmcId: "12898",
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Solana"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth"], // https://docs.goosefx.io/features/perpetual-futures/understanding-perpetual-futures/oracles
     forkedFrom: [],
     module: "goosefx/index.js",
     twitter: "GooseFX1",
@@ -18259,7 +18259,7 @@ const data2: Protocol[] = [
     chains: ["Solana"],
     module: "beluga-protocol/index.js",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: ["Pyth"], // https://docs.beluga.so/dex/oracle
     twitter: "Belugadex",
     audit_links: ["https://kudelskisecurity.com/wp-content/uploads/PUBLIC_RELEASE_REDACTED_Kudelski_BelugaDex_SCR_2022_Retest_Report.pdf"],
     listedAt: 1666174631,
@@ -20436,7 +20436,7 @@ const data2: Protocol[] = [
     module: "cetus/index.js",
     twitter: "CetusProtocol",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: [],
     listedAt: 1668685096
   },
   {

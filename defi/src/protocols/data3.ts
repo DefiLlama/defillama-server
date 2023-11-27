@@ -6006,7 +6006,7 @@ const data3: Protocol[] = [
     module: "beluga-dex/index.js",
     twitter: "Belugadex",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: [],
     listedAt: 1683886126
   },
   {
@@ -21989,7 +21989,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Solana"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth"], // https://docs.lifinity.io/dex/oracle
     forkedFrom: [],
     module: "lifinity-v2/index.js",
     twitter: "Lifinity_io",

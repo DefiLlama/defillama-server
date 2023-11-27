@@ -25,7 +25,7 @@ async function run() {
   await initializeTVLCacheDB()
   await initCache({ cacheType: 'cron' })
   await initializeProtocolDataMap()
-  await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, protocolDataMap)   
+  await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, cache)   
 
 
   const processProtocolsOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {

@@ -14,6 +14,7 @@ export async function getAllAirtableRecords(sheet:string){
         },
       }
     ).then((r) => r.json());
+    console.log(`Fetched data records from Airtable`, data);
     offset = data.offset;
     allRecords = allRecords.concat(data.records);
   } while (offset !== undefined);

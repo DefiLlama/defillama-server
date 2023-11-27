@@ -1,0 +1,23 @@
+import { SwapEvent } from "./Models/SwapEvent";
+import { connection } from ".";
+
+export async function getSwapDailyVolume(date: string): Promise<string> {
+  const swapEventRepository = (await connection).getRepository(SwapEvent);
+  const startOfDay = new Date(+date * 1000);
+  startOfDay.setHours(0, 0, 0, 0);
+
+  const endOfDay = new Date(+date * 1000);
+  endOfDay.setHours(23, 59, 59, 999);
+
+  const result = await swapEventRepository
+    .createQueryBuilder("swapEvent")
+    .select("SUM(swapEvent.amountUsd)", "totalUsdVolume")
+    .where("swapEvent.createdAt BETWEEN :startOfDay AND :endOfDay", {
+      startOfDay,
+      endOfDay,
+    })
+    .andWhere("swapEvent.isError = false")
+    .getRawOne();
+
+  return result ? result.totalUsdVolume : "0";
+}

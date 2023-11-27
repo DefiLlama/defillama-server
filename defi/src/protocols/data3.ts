@@ -5364,7 +5364,7 @@ const data3: Protocol[] = [
     module: "turbos/index.js",
     twitter: "Turbos_finance",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Supra"],
     listedAt: 1683484936
   },
   {

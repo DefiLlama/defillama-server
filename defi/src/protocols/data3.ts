@@ -25420,7 +25420,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CDP",
-    chains: ["Linea", "Neon"],
+    chains: ["Linea"],
     oracles: ["Chainlink", "Pyth"],
     forkedFrom: ["Liquity"],
     module: "zkUSD/index.js",

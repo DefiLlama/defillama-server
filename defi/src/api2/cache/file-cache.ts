@@ -56,7 +56,7 @@ async function readFileData(subPath: string) {
     const data = await fs.promises.readFile(filePath, 'utf8')
     return JSON.parse(data)
   } catch (e) {
-    console.error(e)
+    log((e as any)?.message)
     return null
   }
 }

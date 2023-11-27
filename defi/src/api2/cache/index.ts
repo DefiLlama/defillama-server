@@ -144,7 +144,11 @@ async function updateAllTvlData(cacheType?: string) {
     .withConcurrency(13)
     .for(actions)
     .process(async (protocol: Protocol) => {
-      cache.allTvlData[protocol.id] = (await getProtocolAllTvlData(protocol, false))[0]
+      try {
+        cache.allTvlData[protocol.id] = (await getProtocolAllTvlData(protocol, false))[0]
+      } catch (e) {
+        console.error(e);
+      }
     });
 }
 

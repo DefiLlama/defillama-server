@@ -205,6 +205,20 @@ functions:
       - http:
           path: storeAggregatorEvent
           method: post
+  getSwapDailyVolume:
+    handler: src/getSwapDailyVolume.default
+    timeout: 30
+    events:
+      - http:
+          path: getSwapDailyVolume
+          method: get
+  getSwapTotalVolume:
+    handler: src/getSwapTotalVolume.default
+    timeout: 30
+    events:
+      - http:
+          path: getSwapTotalVolume
+          method: get
   getSwapsHistory:
     handler: src/getSwapsHistory.default
     timeout: 30

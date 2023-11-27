@@ -4,10 +4,11 @@ import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared"
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   try {
     const timestamp = event.queryStringParameters?.timestamp;
+    const chain = event.queryStringParameters?.chain;
 
-    if (!timestamp) return successResponse({}, 10);
+    if (!timestamp || !chain) return successResponse({}, 10);
 
-    const volume = await getSwapTotalVolume(timestamp);
+    const volume = await getSwapTotalVolume(timestamp, chain);
     return successResponse({ volume }, 10);
   } catch (e) {
     console.log(e);

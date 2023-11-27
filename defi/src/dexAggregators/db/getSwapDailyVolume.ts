@@ -1,7 +1,7 @@
 import { SwapEvent } from "./Models/SwapEvent";
 import { connection } from ".";
 
-export async function getSwapDailyVolume(date: string): Promise<string> {
+export async function getSwapDailyVolume(date: string, chain: string): Promise<string> {
   const swapEventRepository = (await connection).getRepository(SwapEvent);
   const startOfDay = new Date(+date * 1000);
   startOfDay.setHours(0, 0, 0, 0);
@@ -17,6 +17,7 @@ export async function getSwapDailyVolume(date: string): Promise<string> {
       endOfDay,
     })
     .andWhere("swapEvent.isError = false")
+    .andWhere(`swapEvent.chain = '${chain}'`)
     .getRawOne();
 
   return result ? result.totalUsdVolume : "0";

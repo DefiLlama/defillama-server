@@ -1574,5 +1574,9 @@ export default {
     "chimpexchange": {
         "enabled": true,
         "id": "3836"
+    },
+    "dln": {
+        "enabled": true,
+        "id": "3846"
     }
 } as AdaptorsConfig

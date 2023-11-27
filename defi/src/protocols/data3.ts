@@ -25470,6 +25470,25 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "DLN_Trade",
   },
+  {
+    id: "3847",
+    name: "LlamaSwap",
+    address: null,
+    symbol: '',
+    url: "https://swap.defillama.com",
+    description: "Defillama Meta-Aggregator",
+    chain: "Multi-Chain",
+    logo: `${baseIconsUrl}/llamaswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum", 'Arbitrum'],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+  },
 ]
 
 export default data3

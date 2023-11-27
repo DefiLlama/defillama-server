@@ -117,8 +117,7 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, ex
         module = getHistTvlOptions.getModule!(protocol);
       }
 
-
-      if (historicalTvl.length < 1 || !module) {
+      if (!historicalTvl || historicalTvl?.length < 1 || !module) {
         return;
       }
       // check if protocol is double counted

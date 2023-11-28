@@ -2069,8 +2069,15 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
-    chainId: 34443
+    chainId: 34443,
   },
+    "FSC": {
+      geckoId: "fonsmartchain",
+      symbol: "FON",
+      cmcId: "22607",
+      github: ["FONSmartChain"],
+      categories: ["EVM"],
+    },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2579,6 +2586,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Alephium" 
     case "mode":
       return "Mode"
+    case "fsc":
+       return "FSC"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

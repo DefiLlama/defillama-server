@@ -2069,6 +2069,7 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
+    chainId: 34443,
     "FSC": {
       geckoId: "fonsmartchain",
       symbol: "FON",
@@ -2076,7 +2077,6 @@ export const chainCoingeckoIds = {
       github: ["FONSmartChain"],
       categories: ["EVM"],
     },
-    chainId: 34443
   },
 } as unknown as ChainCoinGekcoIds
 

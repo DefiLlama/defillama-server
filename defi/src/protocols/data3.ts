@@ -22584,7 +22584,7 @@ const data3: Protocol[] = [
     category: "SoFi",
     chains: ["zkSync Era"],
     oracles: [],
-    module: "touch.fan/index.js",
+    module: "touch-fan/index.js",
     twitter: "TouchFanGlobal",
     forkedFrom: [],
     github: ["TouchFan"],

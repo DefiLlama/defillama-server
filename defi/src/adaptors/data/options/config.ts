@@ -55,7 +55,7 @@ export default {
         "id": "2605"
     },
     "tigris": {
-        "enabled": false,
+        "enabled": true,
         "id": "3129"
     },
     "valorem": {

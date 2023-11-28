@@ -2616,7 +2616,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Solidly Labs",
     url: "https://solidly.com",
     description: "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
-    logo: `${baseIconsUrl}/solidly-labs.png`,
+    logo: `${baseIconsUrl}/solidly-labs.jpg`,
     gecko_id: "solidlydex",
     cmcId: null,
     chains: [],

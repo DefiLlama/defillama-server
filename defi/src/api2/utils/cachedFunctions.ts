@@ -33,7 +33,7 @@ export async function getProtocolAllTvlData(protocol: Protocol, useOnlyCachedDat
 
   const unixNow = Math.floor(Date.now() / 1000)
   const currentHour = new Date().getHours();
-  const cacheAgeLimit = currentHour <= 2 ? 2 * 60 * 60 : 12 * 60 * 60; // 2 hours or 10 hours in seconds
+  const cacheAgeLimit = currentHour <= 2 ? 2 * 60 * 60 : 4 * 60 * 60; // 2 hours or 10 hours in seconds
   const cacheIsOld = !timestamp || (unixNow - timestamp) > cacheAgeLimit;
   const deadProtocolWithCache = protocol.deadFrom && protocolCache
   const fetchNewData = cacheIsOld  && !deadProtocolWithCache

@@ -2616,7 +2616,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Solidly Labs",
     url: "https://solidly.com",
     description: "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
-    logo: `${baseIconsUrl}/solidly-labs.jpg`,
+    logo: `${baseIconsUrl}/solidly-labs.png`,
     gecko_id: "solidlydex",
     cmcId: null,
     chains: [],
@@ -3173,6 +3173,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     github: ["gondixyz"],
     twitter: "gondixyz",
+  },
+  {
+    id: "parent#fuzion",
+    name: "Fuzion",
+    url: "https://dashboard.fuzion.app",
+    description: "Building on Kujira Blockchain, Connecting Capital with Ideas 1. Plasma - OTC Deals 2. Pilot - Launchpad and 3. Bonds - Capital Raising. Home of FUZN.",
+    logo: `${baseIconsUrl}/fuzion.png`,
+    gecko_id: "fuzion",
+    cmcId: null,
+    chains: [],
+    twitter: "Fuzion_App",
   },
 ];
 

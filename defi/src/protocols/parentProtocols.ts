@@ -3174,6 +3174,17 @@ const parentProtocols: IParentProtocol[] = [
     github: ["gondixyz"],
     twitter: "gondixyz",
   },
+  {
+    id: "parent#fuzion",
+    name: "Fuzion",
+    url: "https://dashboard.fuzion.app",
+    description: "Building on Kujira Blockchain, Connecting Capital with Ideas 1. Plasma - OTC Deals 2. Pilot - Launchpad and 3. Bonds - Capital Raising. Home of FUZN.",
+    logo: `${baseIconsUrl}/fuzion.png`,
+    gecko_id: "fuzion",
+    cmcId: null,
+    chains: [],
+    twitter: "Fuzion_App",
+  },
 ];
 
 export default parentProtocols;

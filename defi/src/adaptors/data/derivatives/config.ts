@@ -502,5 +502,9 @@ export default {
             },
         }
 
+    },
+    "SubstanceX": {
+        "enabled": true,
+        "id": "3835"
     }
 } as AdaptorsConfig

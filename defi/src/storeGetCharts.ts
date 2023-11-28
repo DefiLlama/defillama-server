@@ -16,6 +16,7 @@ import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";
 import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
 import { writeToPGCache, PG_CACHE_KEYS,storeRouteData, } from "./api2/cache/file-cache";
+import { excludeProtocolInCharts } from "./utils/excludeProtocols";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
   if (sumDailyTvls[chain] === undefined) {
@@ -43,22 +44,6 @@ export interface IProtocol extends Protocol {
   doublecounted: boolean;
 }
 
-export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: boolean) {
-  let exclude = false;
-  const excludedCategories = ['Chain', 'CEX', 'Infrastructure', 'Staking Pool']
-
-  if (excludedCategories.includes(protocol.category!)) {
-    return true;
-  }
-
-  if (!includeBridge) {
-    exclude = protocol.name === "AnySwap" || protocol.category === "Bridge";
-  }
-
-  return exclude;
-}
-
-
 export type getHistoricalTvlForAllProtocolsOptionalOptions = {
   isApi2CronProcess?: boolean;
   protocolList?: Protocol[];
@@ -72,7 +57,6 @@ export type getHistoricalTvlForAllProtocolsOptionalOptions = {
 const allProtocolRes: {
   [key: string]: any
 } = {}
-
 export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, excludeProtocolsFromCharts = true, getHistTvlOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {}) {
   // get last daily timestamp by checking out all protocols most recent tvl value
   let lastDailyTimestamp = 0;

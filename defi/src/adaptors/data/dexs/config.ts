@@ -2198,5 +2198,9 @@ export default {
     "chimpexchange": {
         "enabled": true,
         "id": "3836"
+    },
+    "lighterv2": {
+        "enabled": true,
+        "id": "3854"
     }
 } as AdaptorsConfig

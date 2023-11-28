@@ -1578,5 +1578,9 @@ export default {
     "dln": {
         "enabled": true,
         "id": "3846"
+    },
+    "near": {
+        "enabled": true,
+        "id": "6535"
     }
 } as AdaptorsConfig

@@ -25602,6 +25602,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#fuzion",
     listedAt: 1701178165
   },
+  {
+    id: "3853",
+    name: "Chainflip",
+    address: "0x826180541412d574cf1336d22c0c0a287822678a",
+    symbol: 'FLIP',
+    url: "https://chainflip.io",
+    description: "Chainflip is a cross-chain AMM enabling native asset swaps without wrapped tokens or specialised wallets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/chainflip.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "chainflip",
+    cmcId: "13268",
+    category: "Staking Pool",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "chainflip/index.js",
+    twitter: "Chainflip",
+    audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/2023-04-chainflip-securityreview.pdf"],
+    listedAt: 1701184034
+  },
 ]
 
 export default data3

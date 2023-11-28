@@ -26248,7 +26248,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "ondo-finance",
     cmcId: null,
-    category: "RWA",
+    category: "RWA Lending",
     chains: ["Ethereum"],
     module: "ondofinance/index.js",
     twitter: "OndoFinance",

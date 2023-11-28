@@ -1,6 +1,6 @@
 import { Sequelize, Model, ModelStatic, Op, Options as SequelizeOptions, QueryTypes } from 'sequelize'
 
-import getEnv from '../env'
+import getEnv, { validateEnv } from '../env'
 import { initializeTables, Tables as TABLES } from './tables'
 import { log } from '@defillama/sdk'
 
@@ -52,6 +52,7 @@ async function initializeTVLCacheDB({
 } = {}) {
   if (!sequelize) {
     const ENV = getEnv()
+    validateEnv()
     const dbOptions: SequelizeOptions = {
       host: ENV.host,
       port: (ENV.port as any),

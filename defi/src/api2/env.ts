@@ -1,5 +1,17 @@
 
 
+const requiredEnvVars = ['TVL_CACHE_DB_NAME', 'TVL_CACHE_DB_HOST', 'TVL_CACHE_DB_PORT', 'TVL_CACHE_DB_USERNAME', 'TVL_CACHE_DB_PASSWORD',]
+
+export function validateEnv() {
+  const ENV = process.env
+  const isCoolifyTask = ENV.IS_COOLIFY_TASK === 'true'
+
+  if (isCoolifyTask) requiredEnvVars.push('TVL_CACHE_DB_HOST_INTERNAL')
+
+  if (requiredEnvVars.some((envVar) => !ENV[envVar]))
+    throw new Error(`Missing required environment variables: ${requiredEnvVars.join(', ')}`)
+}
+
 export default function getTvlCacheEnv() {
   const ENV = process.env
 
@@ -7,13 +19,7 @@ export default function getTvlCacheEnv() {
   if (!process.env.AWS_REGION) process.env.AWS_REGION = 'eu-central-1'
   if (!process.env.API2_CACHE_DIR) process.env.API2_CACHE_DIR = '/api2-cache'
 
-  const requiredEnvVars = ['TVL_CACHE_DB_NAME', 'TVL_CACHE_DB_HOST', 'TVL_CACHE_DB_PORT', 'TVL_CACHE_DB_USERNAME', 'TVL_CACHE_DB_PASSWORD',]
   const isCoolifyTask = ENV.IS_COOLIFY_TASK === 'true'
-
-  if (isCoolifyTask) requiredEnvVars.push('TVL_CACHE_DB_HOST_INTERNAL')
-
-  if (requiredEnvVars.some((envVar) => !ENV[envVar]))
-    throw new Error(`Missing required environment variables: ${requiredEnvVars.join(', ')}`)
 
   return {
     tableName: ENV.tableName,

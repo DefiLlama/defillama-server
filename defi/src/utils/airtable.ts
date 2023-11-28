@@ -5,12 +5,13 @@ export async function getAllAirtableRecords(sheet: string) {
   let offset;
   let allRecords = [] as any[];
   if (!process.env.AIRTABLE_API_KEY) throw new Error("Missing AIRTABLE_API_KEY");
+  console.log('fetching data from Airtable', process.env.AIRTABLE_API_KEY, (process.env.AIRTABLE_API_KEY!).replace(/"'/g, ''))
   do {
     const { data }: any = await axios.get(
       `https://api.airtable.com/v0/${sheet}${offset ? `?offset=${offset}` : ""}`,
       {
         headers: {
-          Authorization: process.env.AIRTABLE_API_KEY!,
+          Authorization: (process.env.AIRTABLE_API_KEY!).replace(/"'/g, ''),
         },
       }
     )
@@ -18,7 +19,7 @@ export async function getAllAirtableRecords(sheet: string) {
       console.log('error fetching data from Airtable', data)
     offset = data.offset;
     allRecords = allRecords.concat(data.records);
-    if (offset) await sleep(1000)
+    if (offset) await sleep(420)
   } while (offset !== undefined);
   return allRecords
 }

@@ -9,9 +9,9 @@ const config: any = {
   arbitrum: [
     { eventEmitter: '0xc8ee91a54287db53897056e12d9819156d3822fb', fromBlock: 107737756, gmReader: '0x38d91ED96283d62182Fc6d990C24097A918a4d9b', tickers: 'https://arbitrum-api.gmxinfra.io/prices/tickers' },
   ],
-  avax: [
-    { eventEmitter: '0xDb17B211c34240B014ab6d61d4A31FA0C0e20c26', fromBlock: 32162455, tickers: 'https://avalanche-api.gmxinfra.io/prices/tickers', gmReader: '0x73BA021ACF4Bb6741E82690DdB821e7936050f8C', },
-  ],
+  // avax: [
+  //   { eventEmitter: '0xDb17B211c34240B014ab6d61d4A31FA0C0e20c26', fromBlock: 32162455, tickers: 'https://avalanche-api.gmxinfra.io/prices/tickers', gmReader: '0x73BA021ACF4Bb6741E82690DdB821e7936050f8C', },
+  // ], // TODO: re-enable it after upgrading avax rpc node
 }
 
 const chains = Object.keys(config)

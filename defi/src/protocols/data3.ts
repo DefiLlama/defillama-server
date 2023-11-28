@@ -11631,7 +11631,7 @@ const data3: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: "near",
-    cmcId: null,
+    cmcId: "6535",
     category: "Chain",
     chains: ["Near"],
     module: "dummy.js",

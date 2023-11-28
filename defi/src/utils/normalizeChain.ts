@@ -2070,6 +2070,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 34443,
+  },
     "FSC": {
       geckoId: "fonsmartchain",
       symbol: "FON",
@@ -2077,7 +2078,6 @@ export const chainCoingeckoIds = {
       github: ["FONSmartChain"],
       categories: ["EVM"],
     },
-  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]

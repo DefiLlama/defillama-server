@@ -25624,6 +25624,26 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/2023-04-chainflip-securityreview.pdf"],
     listedAt: 1701184034
   },
+  {
+    id: "3854",
+    name: "Lighter V2",
+    address: null,
+    symbol: '-',
+    url: "https://lighter.xyz",
+    description: "Liquid digital assets traded the way they were meant to be with the fully decentralized order book exchange for spot trading on L2’s, now live on Arbitrum.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/lighter-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "Lighter_xyz",
+  },
 ]
 
 export default data3

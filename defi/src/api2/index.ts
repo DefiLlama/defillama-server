@@ -12,6 +12,11 @@ if (!process.env.API2_SUBPATH) throw new Error('Missing API2_SUBPATH env var')
 
 async function main() {
   console.time('Api Server init')
+  webserver.use((_req, res, next) => {
+    res.append('Access-Control-Allow-Origin', '*');
+    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    next();
+  });
 
   await Promise.all([
     initializeTVLCacheDB({ isApi2Server: true }),
@@ -21,11 +26,6 @@ async function main() {
   const router = new HyperExpress.Router()
   const subPath = '/' + process.env.API2_SUBPATH
   webserver.use(subPath, router)
-  webserver.use((req, res, next) => {
-    res.append('Access-Control-Allow-Origin', '*');
-    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    next();
-  });
 
   setTvlRoutes(router, subPath)
 

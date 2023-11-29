@@ -25813,6 +25813,28 @@ const data3: Protocol[] = [
     module: "sovryn-bridge/index.js",
     twitter: "SovrynBTC",
   },
+  {
+    id: "3863",
+    name: "CSIX",
+    address: "0x04756126f044634c9a0f0e985e60c88a51acc206",
+    symbol: "CSIX",
+    url: "https://carbon.website",
+    description: "Carbon Browser is a fast decentralized web3 browser with 100% privacy and an integrated multi-chain wallet with cross-chain swaps.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/csix.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "carbon-browser",
+    cmcId: "23546",
+    category: "Services",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "csix/index.js",
+    twitter: "trycarbonio",
+    github: ["Carbon-Browser"],
+    listedAt: 1701264388
+  },
 ]
 
 export default data3

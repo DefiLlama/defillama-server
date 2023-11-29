@@ -17,10 +17,19 @@ export const canonicalBridgeIds: { [chain: string]: Chain } = {
   "3786": "scroll",
   "3787": "starknet",
   "3788": "zksync",
-
+  "1501": "everscale",
+  "349": "injecitve",
+  "801": "celo",
+  "1272": "iotex",
+  "2081": "wanchain",
+  "2214": "kekchain",
+  "3699": "elysium",
+  "3813": "alephium",
   "129": "xdai",
   "240": "polygon",
   "3779": "avax",
+  "3038": "aurora",
+  "3861": "rsk",
 };
 export const protocolBridgeIds: { [chain: string]: Chain } = {
   "144": "dydx",

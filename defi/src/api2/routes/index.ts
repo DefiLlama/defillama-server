@@ -1,6 +1,6 @@
 import * as HyperExpress from "hyper-express";
 import { cache, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
-import { readRouteData, } from "../cache/file-cache";
+import { readRouteData, readFromPGCache, deleteFromPGCache, } from "../cache/file-cache";
 import sluggify from "../../utils/sluggify";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
@@ -43,6 +43,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));
 
+  router.delete("/debug-pg/:filename", deletePGCache)
+  router.get("/debug-pg/:filename", readPGCache)
+
 
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
     const fullPath = req.path;
@@ -68,6 +71,33 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     try {
       res.set('Cache-Control', 'public, max-age=600'); // Set caching to 10 minutes
       res.json(await readRouteData(filePath))
+    } catch (e) {
+      console.error(e);
+      res.status(500)
+      return res.send('Internal server error', true)
+    }
+  }
+
+  async function readPGCache(req: HyperExpress.Request, res: HyperExpress.Response) {
+    try {
+      const fullPath = req.path;
+      const routerPath = fullPath.replace(routerBasePath + '/debug-pg', '');
+      console.log('readPGCache', routerPath)
+      res.json(await readFromPGCache(routerPath))
+    } catch (e) {
+      console.error(e);
+      res.status(500)
+      return res.send('Internal server error', true)
+    }
+  }
+
+  async function deletePGCache(req: HyperExpress.Request, res: HyperExpress.Response) {
+    try {
+      const fullPath = req.path;
+      const routerPath = fullPath.replace(routerBasePath + '/debug-pg', '');
+      console.log('deletePGCache', routerPath)
+      await deleteFromPGCache(routerPath)
+      res.json({ success: true })
     } catch (e) {
       console.error(e);
       res.status(500)

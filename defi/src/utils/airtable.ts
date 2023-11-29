@@ -5,7 +5,6 @@ export async function getAllAirtableRecords(sheet: string) {
   let offset;
   let allRecords = [] as any[];
   if (!process.env.AIRTABLE_API_KEY) throw new Error("Missing AIRTABLE_API_KEY");
-  console.log('fetching data from Airtable', process.env.AIRTABLE_API_KEY, (process.env.AIRTABLE_API_KEY!).replace(/("|')/g, ''))
   do {
     const { data }: any = await axios.get(
       `https://api.airtable.com/v0/${sheet}${offset ? `?offset=${offset}` : ""}`,

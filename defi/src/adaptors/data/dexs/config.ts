@@ -1629,6 +1629,7 @@ export default {
         }
     },
     "lighter": {
+        parentId: "Lighter",
         "enabled": true,
         "id": "2636"
     },
@@ -2200,6 +2201,7 @@ export default {
         "id": "3836"
     },
     "lighterv2": {
+        parentId: "Lighter",
         "enabled": true,
         "id": "3854"
     }

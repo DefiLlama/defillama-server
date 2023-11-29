@@ -4792,15 +4792,14 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/sovryn-dex.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "sovryn",
-    cmcId: "8669",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["RSK"],
     module: "sovryn-dex/index.js",
     twitter: "SovrynBTC",
-    governanceID: ["snapshot:sovrynbitocracy.eth"],
     audit_links: ["https://www.sovryn.app/library"],
-    github: ["DistributedCollective"]
+    parentProtocol: "parent#sovryn",
   },
   {
     id: "330",

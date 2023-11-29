@@ -3199,6 +3199,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DeriProtocol",
     github: ["deri-protocol"]
   },
+  {
+    id: "parent#lighter",
+    name: "Lighter",
+    url: "https://lighter.xyz",
+    description: "Liquid digital assets traded the way they were meant to be with the fully decentralized order book exchange for spot trading on L2’s, now live on Arbitrum.",
+    logo: `${baseIconsUrl}/lighter.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Lighter_xyz",
+  },
 ];
 
 export default parentProtocols;

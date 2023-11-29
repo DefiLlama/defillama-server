@@ -44,6 +44,12 @@ provider:
         - dynamodb:BatchGetItem
       Resource:
         - "arn:aws:dynamodb:eu-central-1:856461987125:table/prod-coins-table"
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:BatchGetItem
+      Resource:
+        - "arn:aws:dynamodb:eu-central-1:856461987125:table/auth"
     - Effect: Allow # Lambda logs on cloudwatch
       Action:
         - logs:CreateLogGroup
@@ -199,6 +205,20 @@ functions:
       - http:
           path: storeAggregatorEvent
           method: post
+  getSwapDailyVolume:
+    handler: src/getSwapDailyVolume.default
+    timeout: 30
+    events:
+      - http:
+          path: getSwapDailyVolume
+          method: get
+  getSwapTotalVolume:
+    handler: src/getSwapTotalVolume.default
+    timeout: 30
+    events:
+      - http:
+          path: getSwapTotalVolume
+          method: get
   getSwapsHistory:
     handler: src/getSwapsHistory.default
     timeout: 30
@@ -237,7 +257,7 @@ functions:
   protocolsLiquidity:
     handler: src/storeProtocolsLiquidity.default
     memorySize: 1000
-    timeout: 60
+    timeout: 900
     events:
       - schedule: cron(18 * * * ? *)
     environment:
@@ -370,7 +390,7 @@ functions:
       AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
   oracles:
     handler: src/getOracles.default
-    timeout: 30
+    timeout: 120
     memorySize: 2000
     events:
       - http:
@@ -378,7 +398,7 @@ functions:
           method: get
   forks:
     handler: src/getForks.default
-    timeout: 30
+    timeout: 120
     memorySize: 2000
     events:
       - http:
@@ -391,14 +411,6 @@ functions:
     events:
       - http:
           path: categories
-          method: get
-  testTvl:
-    handler: src/testTvl.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: testTvl
           method: get
   storeLiquidations:
     handler: src/storeLiquidations.default
@@ -430,14 +442,6 @@ functions:
     events:
       - http:
           path: simpleChainDataset/{chain}
-          method: get
-  totalChainDataset:
-    handler: src/getTotalChainDataset.default
-    timeout: 30
-    memorySize: 3000
-    events:
-      - http:
-          path: totalChainDataset/{chain}
           method: get
   config:
     handler: src/getConfig.default
@@ -499,7 +503,6 @@ functions:
     memorySize: 512
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
-      COINS_DB: ${env:COINS_DB}
       COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
       INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
       ERROR_DB: ${env:ERROR_DB}
@@ -647,7 +650,6 @@ functions:
       - schedule: cron(15 * * * ? *)
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
-      COINS_DB: ${env:COINS_DB}
       STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
   sendDiscordMessage:
     handler: src/sendDiscordMessage.default
@@ -717,26 +719,12 @@ functions:
       - http:
           path: emissionsBreakdown
           method: get
-  triggerStoreEmissions:
-    handler: src/triggerStoreEmissions.default
-    timeout: 900
-    events:
-      - schedule: cron(0 * * * ? *)
-  storeEmissions:
-    handler: src/storeEmissions.default
-    timeout: 900
-    memorySize: 3000
-    environment:
-      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
-      COINGLASS_KEY: ${env:COINGLASS_KEY}
-      UNLOCKS_WEBHOOK: ${env:UNLOCKS_WEBHOOK}
-      APIKEY: ${env:APIKEY}
-  storeGovernance:
-    handler: src/storeGovernance.default
-    timeout: 900
-    memorySize: 3000
-    events:
-      - schedule: cron(01 0 * * ? *)
+  # storeGovernance:
+  #   handler: src/storeGovernance.default
+  #   timeout: 900
+  #   memorySize: 3000
+  #   events:
+  #     - schedule: cron(01 0 * * ? *)
   storeActiveUsers:
     handler: src/storeActiveUsers.default
     timeout: 900
@@ -783,6 +771,13 @@ functions:
     environment:
       DL_NEWS_API: ${file(./env.js):DL_NEWS_API}
       DL_NEWS_ACCESS_TOKEN: ${file(./env.js):DL_NEWS_ACCESS_TOKEN}
+  chainAssets:
+    handler: src/getChainAssets.default
+    timeout: 30
+    events:
+      - http:
+          path: chainAssets
+          method: get
 
 resources:
   # CORS for api gateway errors

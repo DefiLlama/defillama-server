@@ -1,14 +1,12 @@
 import { wrap, IResponse, errorResponse } from "./utils/shared";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
-import { getHistoricalTvlForAllProtocols } from "./storeGetCharts";
+import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols } from "./storeGetCharts";
 import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { buildRedirectR2, getR2, storeDatasetR2 } from "./utils/r2";
 
-const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const rawChain = decodeURI(event.pathParameters!.chain!);
+export async function getSimpleChainDatasetInternal(rawChain: string, params: any = {}) {
+  const categorySelected = params.category === undefined ? undefined : decodeURI(params.category);
   const globalChain = rawChain === "All" ? null : getChainDisplayName(rawChain.toLowerCase(), true);
-  const params = event.queryStringParameters ?? {};
-  const categorySelected = params.category===undefined?undefined:decodeURI(params.category);
 
   const sumDailyTvls = {} as {
     [ts: number]: {
@@ -16,19 +14,16 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     };
   };
 
-  let historicalProtocolTvlsData:Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>
-  if(categorySelected === "Bridge"){
-    historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(true, false);
-  } else {
-    historicalProtocolTvlsData = JSON.parse((await getR2(`cache/getHistoricalTvlForAllProtocols/false-${categorySelected === undefined}.json`)).body!)
-  }
+  let historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>> = await getCachedHistoricalTvlForAllProtocols(categorySelected === "Bridge", categorySelected === undefined, {
+    getHistTvlMeta: params.getHistTvlMeta,
+  });
   const { historicalProtocolTvls, lastDailyTimestamp } = historicalProtocolTvlsData
-  
+
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (!protocolTvl) {
       return;
     }
-    if(categorySelected !== undefined && protocolTvl.protocol.category !== categorySelected){
+    if (categorySelected !== undefined && protocolTvl.protocol.category !== categorySelected) {
       return
     }
 
@@ -131,17 +126,27 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   });
 
   if (grid.length <= 2) {
-    return errorResponse({ message: "No chain with that name exists" });
+    return { error: "No chain with that name exists" }
+  } else {
+    // convert data to csv format
+    const csv = grid.map((r) => r.join(",")).join("\n");
+
+    const filename = `simpleDataset/chain-dataset-${rawChain}-${Object.entries(params).map(t => `${t[0]}=${t[1]}`).sort().join("&")}.csv`;
+
+    if (!params.readFromPG)
+      await storeDatasetR2(filename, csv);
+
+    return { filename, csv }
   }
+};
 
-  // convert data to csv format
-  const csv = grid.map((r) => r.join(",")).join("\n");
+const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  const rawChain = decodeURI(event.pathParameters!.chain!);
+  const params = event.queryStringParameters ?? {};
+  const { filename, error } = await getSimpleChainDatasetInternal(rawChain, params);
+  if (error) return errorResponse({ message: error });
 
-  const filename = `simpleDataset/chain-dataset-${rawChain}-${Object.entries(params).map(t=>`${t[0]}=${t[1]}`).sort().join("&")}.csv`;
-
-  await storeDatasetR2(filename, csv);
-
-  return buildRedirectR2(filename, 10*60);
+  return buildRedirectR2(filename!, 10 * 60);
 };
 
 export default wrap(handler);

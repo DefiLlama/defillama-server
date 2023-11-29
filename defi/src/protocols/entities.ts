@@ -342,6 +342,16 @@ const entities = [
         module: "entities/brevan-howard-digital.js",
         twitter: "DCGco"
     },
+    {
+        id: "35",
+        name: "Abraxas Capital",
+        url: "https://www.abraxascm.com",
+        description: "Founded by Fabio Frontini in 2002 with the objective of building a best-in-class asset manager boutique, from 2017 Abraxas Capital Management specialized in the digital assets space becoming a world leading digital asset manager. ",
+        logo: "abraxas-capital.jpg",
+        category: "VC",
+        module: "entities/abraxas-capital.js",
+        twitter: null
+    },
 ].map(entity=>({
     ...entity,
     id: `entity-${entity.id}`,

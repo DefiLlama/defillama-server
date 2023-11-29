@@ -35,10 +35,15 @@
     "backfill-local": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node src/adaptors/cli/backfillUtilities/auto.ts",
     "interactive": "npx ts-node src/cli/interactive.ts",
     "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeTvlTask.ts",
+    "store-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeChainAssets.ts",
+    "store-emissions": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeEmissions.ts",
+    "store-emissions-index": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeEmissionsIndex.ts",
     "cache-config": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cacheConfig.ts",
     "run-local": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/runLocalTVL.ts",
     "api2-build": "bash src/api2/scripts/build.sh",
-    "api2-start": "bash src/api2/scripts/start.sh"
+    "api2-dev": "echo 'export default {}' > src/utils/imports/adapters.ts  && ts-node-dev --respawn --transpile-only src/api2/index.ts",
+    "api2-start": "bash src/api2/scripts/start.sh",
+    "api2-cron-task": "npx ts-node src/api2/cron-task/index.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
@@ -75,7 +80,7 @@
     "@defillama/adapters": "file:./DefiLlama-Adapters",
     "@defillama/dimension-adapters": "file:./dimension-adapters",
     "@defillama/emissions-adapters": "file:./emissions-adapters",
-    "@defillama/sdk": "^4.0.46",
+    "@defillama/sdk": "^4.0.68",
     "@supercharge/promise-pool": "^2.3.2",
     "@types/aws-lambda": "^8.10.97",
     "axios": "^0.27.2",
@@ -91,6 +96,7 @@
     "promise.allsettled": "^1.0.5",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.33.0",
-    "typeorm": "^0.3.11"
+    "typeorm": "^0.3.11",
+    "zksync-web3": "^0.16.0"
   }
 }

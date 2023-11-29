@@ -91,3 +91,10 @@ export function curve12(timestamp: number = 0) {
     getGaugePrices("xdai", timestamp),
   ]);
 }
+export function curve13(timestamp: number = 0) {
+  console.log("starting curve13");
+  return Promise.all([
+    getTokenPrices2("kava", defaultRegistries, timestamp),
+    getGaugePrices("kava", timestamp),
+  ]);
+}

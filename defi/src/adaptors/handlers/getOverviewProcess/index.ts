@@ -26,6 +26,8 @@ export interface IGeneralStats extends ExtraTypes {
     change_1d: number | null;
     change_7d: number | null;
     change_1m: number | null;
+    totalVolume7d: number | null;
+    totalVolume30d: number | null;
     change_7dover7d: number | null;
     change_30dover30d: number | null;
     breakdown24h: IRecordAdaptorRecordData | null
@@ -278,6 +280,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         change_1d: enableStats ? generalStats.change_1d : null,
         change_7d: enableStats ? generalStats.change_7d : null,
         change_1m: enableStats ? generalStats.change_1m : null,
+        totalVolume7d: enableStats ? generalStats.totalVolume7d : null,
+        totalVolume30d: enableStats ? generalStats.totalVolume30d : null,
         change_7dover7d: enableStats ? generalStats.change_7dover7d : null,
         change_30dover30d: enableStats ? generalStats.change_30dover30d : null,
         breakdown24h: enableStats ? generalStats.breakdown24h : null,
@@ -313,6 +317,8 @@ const substractSubsetVolumes = (adapter: ProtocolAdaptorSummary, _index: number,
                 change_1d: newSum['change_1d'],
                 change_7d: newSum['change_7d'],
                 change_1m: newSum['change_1m'],
+                totalVolume7d: newSum['totalVolume7d'],
+                totalVolume30d: newSum['totalVolume30d'],
             }
         }
         return computedSummary

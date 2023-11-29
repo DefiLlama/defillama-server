@@ -275,6 +275,7 @@ export default {
         "id": "1461"
     },
     "metavault.trade": {
+        parentId: "MetaVault",
         "enabled": true,
         "id": "1801"
     },
@@ -482,7 +483,7 @@ export default {
         "id": "2290"
     },
     "moonwell-artemis": {
-        "enabled": true,
+        "enabled": false,
         "id": "1853"
     },
     "moonwell-apollo": {
@@ -832,6 +833,7 @@ export default {
         "id": "1673",
         protocolsData: {
             v2: {
+                disabled: true,
                 "enabled": true,
                 "id": "1673",
                 displayName: "Hydradex V2"
@@ -976,6 +978,7 @@ export default {
         id: "2376"
     },
     "liondex": {
+        disabled: true,
         enabled: true,
         id: "2898"
     },
@@ -1212,7 +1215,7 @@ export default {
         "id": "324"
     },
     "meridian-trade": {
-        "enabled": true,
+        "enabled": false,
         "id": "3386"
     },
     "baseswap": {
@@ -1486,5 +1489,98 @@ export default {
     "concentrator": {
         "enabled": true,
         "id": "1544"
+    },
+    "touch.fan": {
+        "enabled": true,
+        "id": "3713"
+    },
+    "paal-ai": {
+        "enabled": true,
+        "id": "3723"
+    },
+    "kinetix": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3534"
+    },
+    "retro": {
+        "enabled": true,
+        "id": "3311"
+    },
+    "hipo": {
+        "enabled": true,
+        "id": "3722"
+    },
+    "intent-x": {
+        "enabled": true,
+        "id": "3747"
+    },
+    "caviarnine-lsu-pool": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3666"
+    },
+    "caviarnine-shape-liquidity": {
+        "enabled": true,
+        "id": "3645"
+    },
+    "metavault-v3": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3750",
+        protocolsData: {
+            "v3": {
+                "id": "3750",
+                "enabled": true,
+            }
+        }
+    },
+    "xoxno": {
+        "enabled": true,
+        "id": "3753"
+    },
+    "equation": {
+        "enabled": true,
+        "id": "3726"
+    },
+    "hopr": {
+        "enabled": true,
+        "id": "3761"
+    },
+    "solend": {
+        "enabled": true,
+        "id": "458"
+    },
+    "thorswap": {
+        "enabled": true,
+        "id": "412"
+    },
+    "amphor": {
+        "enabled": true,
+        "id": "3643"
+    },
+    "dydx": {
+        "id": "144",
+        "enabled": true
+    },
+    "justlend": {
+        "enabled": true,
+        "id": "494"
+    },
+    "wagmi": {
+        "enabled": true,
+        "id": "2837"
+    },
+    "chimpexchange": {
+        "enabled": true,
+        "id": "3836"
+    },
+    "dln": {
+        "enabled": true,
+        "id": "3846"
+    },
+    "near": {
+        "enabled": true,
+        "id": "6535"
     }
 } as AdaptorsConfig

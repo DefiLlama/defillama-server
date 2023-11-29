@@ -1,19 +1,25 @@
-import fetch from "node-fetch";
+import axios from "axios";
+import sleep from "./shared/sleep";
 
-export async function getAllAirtableRecords(sheet:string){
+export async function getAllAirtableRecords(sheet: string) {
   let offset;
   let allRecords = [] as any[];
+  if (!process.env.AIRTABLE_API_KEY) throw new Error("Missing AIRTABLE_API_KEY");
+  console.log('fetching data from Airtable', process.env.AIRTABLE_API_KEY, (process.env.AIRTABLE_API_KEY!).replace(/("|')/g, ''))
   do {
-    const data: any = await fetch(
+    const { data }: any = await axios.get(
       `https://api.airtable.com/v0/${sheet}${offset ? `?offset=${offset}` : ""}`,
       {
         headers: {
-          Authorization: process.env.AIRTABLE_API_KEY!,
+          Authorization: (process.env.AIRTABLE_API_KEY!).replace(/("|')/g, ''),
         },
       }
-    ).then((r) => r.json());
+    )
+    if (!data.records)
+      console.log('error fetching data from Airtable', data)
     offset = data.offset;
     allRecords = allRecords.concat(data.records);
+    if (offset) await sleep(420)
   } while (offset !== undefined);
   return allRecords
 }

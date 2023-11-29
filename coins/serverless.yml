@@ -189,6 +189,50 @@ functions:
       - http:
           path: /{params+}
           method: options
+  fetchCoingeckoData2:
+      handler: src/fetchCoingeckoData.fetchCoingeckoData
+      timeout: 900
+      environment:
+        CG_KEY: ${env:CG_KEY}
+  triggerFetchCoingeckoData:
+    handler: src/triggerFetchCoingeckoData.triggerNewFetches
+    events:
+      - schedule: rate(5 minutes)
+    environment:
+      CG_KEY: ${env:CG_KEY}
+  triggerHourlyFetchCoingeckoData:
+    handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
+    events:
+      - schedule: cron(0 0,12 * * ? *) # every 12 hours
+    environment:
+      CG_KEY: ${env:CG_KEY}
+  fetchHourlyCoingeckoData:
+    handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
+    timeout: 900
+    environment:
+      CG_KEY: ${env:CG_KEY}
+  storeDefiCoins:
+    handler: src/storeCoins.default
+    timeout: 900
+    memorySize: 1024
+    environment: 
+      STALE_COINS_ADAPTERS_WEBHOOK: ${env:STALE_COINS_ADAPTERS_WEBHOOK}
+# triggerStoreDefiCoins:
+#   handler: src/triggerStoreCoins.default
+#   timeout: 900
+#   events:
+#     - schedule: cron(45 * * * ? *) # Hourly
+  StoreBridgedCoins:
+    handler: src/storeBridgedCoins.default
+    timeout: 900
+    memorySize: 1024
+    events:
+      - schedule: cron(45 * * * ? *) # Hourly
+    environment:
+      R2_ACCESS_KEY_ID: ${env:R2_ACCESS_KEY_ID}
+      R2_SECRET_ACCESS_KEY: ${env:R2_SECRET_ACCESS_KEY}
+      R2_ENDPOINT: ${env:R2_ENDPOINT}
+
 resources:
   # CORS for api gateway errors
   - ${file(resources/api-gateway-errors.yml)}

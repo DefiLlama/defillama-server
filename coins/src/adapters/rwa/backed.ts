@@ -12,13 +12,13 @@ const oracles: any = [
   },
   {
     key: "bCOIN",
-    oracle: "0x19c7e267554b5dde46dc5f2d6b23b94bd6cc512b",
+    oracle: "0x430d800d39c5a6af6f07d32a614bd8ab4d97b60f",
     chain: "arbitrum",
     ethToken: "0xbbcb0356bB9e6B3Faa5CbF9E5F36185d53403Ac9",
   },
   {
     key: "bNIU",
-    oracle: "0xcded6a54af652fe5986a3db5e6bc3313ebba64db",
+    oracle: "0x64ec00a5708e3816061a860feb3a405298a169dd",
     chain: "arbitrum",
     ethToken: "0x2f11eeee0bf21e7661a22dbbbb9068f4ad191b86",
   },
@@ -36,21 +36,33 @@ const oracles: any = [
   },
   {
     key: "bHIGH",
-    oracle: "0xf99c06c6911c8fcb81af40bbf6bfc9401a7c6e03",
+    oracle: "0xe7fd720d9920855cfb70a04feb4c2ee9b719ccd4",
     chain: "arbitrum",
     ethToken: "0x20C64dEE8FdA5269A78f2D5BDBa861CA1d83DF7a",
   },
   {
     key: "bC3M",
-    oracle: "0xc5f37a3538fc5599d35d1a84381c1693df8ed3bb",
+    oracle: "0x83bc9a0611497a3160ca4e37f7641bc4cd191a31",
     chain: "arbitrum",
     ethToken: "0x2F123cF3F37CE3328CC9B5b8415f9EC5109b45e7",
   },
   {
     key: "bERNA",
-    oracle: "0x0f5e11591c64163f04a448403dd59d6849ee4f0c",
+    oracle: "0x0bbc6c705db13e2bb99d58fa0f724d199fe4ea22",
     chain: "arbitrum",
     ethToken: "0x0f76D32CDccDcbd602A55Af23EAF58FD1eE17245",
+  },
+  {
+    key: "bERNX",
+    oracle: "0x676441c23211aad49245648533b7a633d9012390",
+    chain: "arbitrum",
+    ethToken: "0x3f95AA88dDbB7D9D484aa3D482bf0a80009c52c9",
+  },
+  {
+    key: "bZPR1",
+    oracle: "0xe3caf5d29f1728e1c59f18b60cc70426eb99dd68",
+    chain: "arbitrum",
+    ethToken: "0xAde6057FcAfa57d6d51FFa341C64ce4814995995",
   },
 ];
 

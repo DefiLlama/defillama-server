@@ -4504,6 +4504,12 @@
       "decimals": "8",
       "symbol": "ALT",
       "to": "coingecko#aptos-launch-token"
+    },
+    "0x111ae3e5bc816a5e63c2da97d0aa3886519e0cd5e4b046659fa35796bd11542a::amapt_token::AmnisApt": {
+      "name": "amnis-apt",
+      "decimals": "8",
+      "symbol": "AMAPT",
+      "to": "coingecko#amnis-aptos"
     }
   },
   "dogechain": {
@@ -4750,6 +4756,12 @@
       "decimals": "18",
       "symbol": "ETH",
       "to": "coingecko#ethereum"
+    },
+    "0x042b8f0484674ca266ac5d08e4ac6a3fe65bd3129795def2dca5c34ecc5f96d2": {
+      "name": "Starknet Wrapped Staked Ether",
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
     }
   },
   "ontology_evm": {
@@ -7527,6 +7539,12 @@
       "decimals": "6",
       "symbol": "STUMEE",
       "to": "coingecko#umee"
+    },
+    "49D820DFDE9F885D7081725A58202ABA2F465CAEE4AFBC683DFB79A8E013E83E": {
+      "name": "injective-protocol",
+      "decimals": 18,
+      "symbol": "INJ",
+      "to": "coingecko#injective-protocol"
     }
   },
   "bitindi": {
@@ -8514,6 +8532,21 @@
       "decimals": "18",
       "symbol": "DAI",
       "to": "coingecko#dai"
+    },
+    "0xcd91716ef98798A85E79048B78287B13ae6b99b2": {
+      "decimals": "18",
+      "symbol": "GAI",
+      "to": "coingecko#gai"
+    },
+    "0x387660BC95682587efC12C543c987ABf0fB9778f": {
+      "decimals": "18",
+      "symbol": "GOK",
+      "to": "coingecko#gok"
+    },
+    "0x6Fae4D9935E2fcb11fC79a64e917fb2BF14DaFaa": {
+      "decimals": "6",
+      "symbol": "TIA",
+      "to": "coingecko#celestia"
     },
     "0x2fe3ad97a60eb7c79a976fc18bb5ffd07dd94ba5": {
       "decimals": "18",

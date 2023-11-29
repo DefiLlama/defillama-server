@@ -197,6 +197,10 @@ export default {
             v3: {
                 enabled: true,
                 id: "2239"
+            },
+            "liquidityHub": {
+                enabled: true,
+                id: "3743"
             }
         }
     },
@@ -251,6 +255,7 @@ export default {
         "id": "419"
     },
     "platypus": {
+        disabled: true,
         "enabled": true,
         "id": "944"
     },
@@ -401,7 +406,16 @@ export default {
     "iziswap": {
         parentId: "iZUMI Finance",
         "enabled": true,
-        "id": "1883"
+        "id": "1883",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1700524800": true,
+                "1700611200": true,
+                "1700697600": true,
+                "1700784000": true,
+                "1700870400": true,
+            },
+        }
     },
     "tinyman": {
         "enabled": true,
@@ -524,6 +538,7 @@ export default {
         "id": "1274"
     },
     "wagyuswap": {
+        disabled: true,
         "enabled": true,
         "id": "1003"
     },
@@ -1108,7 +1123,6 @@ export default {
         "id": "799"
     },
     "aux-exchange": {
-        disabled: true,
         "enabled": true,
         "id": "2213"
     },
@@ -1333,6 +1347,7 @@ export default {
         "id": "2589"
     },
     "metavault.trade": {
+        parentId: "MetaVault",
         "enabled": true,
         "id": "1801"
     },
@@ -1529,6 +1544,7 @@ export default {
         "id": "1673",
         protocolsData: {
             v2: {
+                disabled: true,
                 "enabled": true,
                 "id": "1673",
                 displayName: "Hydradex V2"
@@ -1919,12 +1935,12 @@ export default {
         "id": "3365"
     },
     "meridian-trade": {
-        "enabled": true,
+        "enabled": false,
         "id": "3386",
         "protocolsData": {
             "swap": {
                 "id": "3386",
-                "enabled": true,
+                "enabled": false,
             }
         }
     },
@@ -2116,5 +2132,75 @@ export default {
     "luigiswap": {
         "enabled": true,
         "id": "3415"
+    },
+    "kinetix-v3": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3534",
+        protocolsData: {
+            "v3": {
+                "id": "3534",
+                "enabled": true,
+            }
+        }
+    },
+    "caviarnine": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3645",
+        protocolsData: {
+            "orderbook": {
+                "id": "3645",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        }
+    },
+    "kinetix-derivative": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3465"
+    },
+    "retro": {
+        "enabled": true,
+        "id": "3311"
+    },
+    "metavault-v3": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3750",
+        protocolsData: {
+            "v3": {
+                "id": "3750",
+                "enabled": true,
+            }
+        }
+    },
+    "derivio": {
+        "enabled": false,
+        "id": "3759",
+        protocolsData: {
+            "swap": {
+                "id": "3759",
+                "enabled": true,
+            }
+        }
+    },
+    "elektrik": {
+        "enabled": true,
+        "id": "3773"
+    },
+    "caviarnine-lsu-pool": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3666"
+    },
+    "chimpexchange": {
+        "enabled": true,
+        "id": "3836"
+    },
+    "lighterv2": {
+        "enabled": true,
+        "id": "3854"
     }
 } as AdaptorsConfig

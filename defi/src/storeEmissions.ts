@@ -1,26 +1,19 @@
 import fetch from "node-fetch";
 import { PromisePool } from "@supercharge/promise-pool";
-
 import { createChartData, mapToServerData, nullFinder } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
 import { createCategoryData } from "../emissions-adapters/utils/categoryData";
 import adapters from "./utils/imports/emissions_adapters";
-import {
-  ApiChartData,
-  ChartSection,
-  EmissionBreakdown,
-  Protocol,
-  SectionData,
-} from "../emissions-adapters/types/adapters";
+import { ChartSection, EmissionBreakdown, Protocol, SectionData } from "../emissions-adapters/types/adapters";
 import { createFuturesData } from "../emissions-adapters/utils/futures";
 import { storeR2JSONString, getR2 } from "./utils/r2";
-import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
 import { sluggifyString } from "./utils/sluggify";
 import parentProtocols from "./protocols/parentProtocols";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
 import { withTimeout } from "./utils/shared/withTimeout";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const prefix = "coingecko:";
 
@@ -192,21 +185,13 @@ async function processSingleProtocol(
 
   return sluggifiedId;
 }
-
-function filterAdapters(protocolIndexes: number[]): any[] {
-  const selected: any[] = [];
-  const entries: any[] = Object.entries(adapters);
-  for (let i = 0; i < entries.length; i++) {
-    if (protocolIndexes.includes(i)) selected.push(entries[i]);
-  }
-  return selected;
-}
-async function processProtocolList(protocolIndexes: number[]) {
+async function processProtocolList() {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
   let emissionsBrakedown: EmissionBreakdown = {};
 
-  const protocolAdapters = filterAdapters(protocolIndexes);
+  await setEnvSecrets();
+  const protocolAdapters = Object.entries(adapters);
   await PromisePool.withConcurrency(2)
     .for(shuffleArray(protocolAdapters))
     .process(async ([protocolName, rawAdapter]) => {
@@ -214,7 +199,7 @@ async function processProtocolList(protocolIndexes: number[]) {
       if (!adapters.length) adapters = [adapters];
       await Promise.all(
         adapters.map((adapter: Protocol) =>
-          withTimeout(180000, processSingleProtocol(adapter, protocolName, emissionsBrakedown), protocolName)
+          withTimeout(6000000, processSingleProtocol(adapter, protocolName, emissionsBrakedown), protocolName)
             .then((p: string) => protocolsArray.push(p))
             .catch((err: Error) => {
               console.log(err.message ? `${err.message}: \n storing ${protocolName}` : err);
@@ -235,14 +220,13 @@ async function processProtocolList(protocolIndexes: number[]) {
     JSON.stringify({ ...JSON.parse(oldBreakdown.body || "{}"), ...emissionsBrakedown })
   );
 }
-async function handler(event: any) {
+export async function handler() {
   try {
-    await withTimeout(840000, processProtocolList(event.protocolIndexes));
+    await withTimeout(8400000, processProtocolList());
   } catch (e) {
     process.env.UNLOCKS_WEBHOOK ? await sendMessage(`${e}`, process.env.UNLOCKS_WEBHOOK!) : console.log(e);
   }
 }
-
 async function handlerErrors(errors: string[]) {
   if (errors.length > 0) {
     let errorMessage: string = `storeEmissions errors: \n`;
@@ -253,5 +237,5 @@ async function handlerErrors(errors: string[]) {
   }
 }
 
-export default wrapScheduledLambda(handler);
-//handler(); // ts-node src/storeEmissions.ts
+// export default wrapScheduledLambda(handler);
+handler(); // ts-node src/triggerStoreEmissions.ts

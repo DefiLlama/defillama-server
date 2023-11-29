@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 import dynamodb from "../utils/shared/dynamodb";
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, hourlyTvl } from "../utils/getLastRecord";
 import { getProtocol } from "./utils";

@@ -46,10 +46,30 @@ export default {
     },
     "jumper-exchange": {
         enabled: true,
-        id: "3524"
+        id: "3524",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1698883200": true
+            }
+        }
     },
     "slingshot": {
         enabled: true,
         id: "3681"
+    },
+    "caviarnine": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3645",
+        protocolsData: {
+            "aggregator": {
+                "id": "3645",
+                "enabled": true,
+            }
+        }
+    },
+    "aggre": {
+        enabled: true,
+        id: "3809"
     }
 } as AdaptorsConfig

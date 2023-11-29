@@ -1,10 +1,9 @@
 import { getAllAirtableRecords } from "./utils/airtable";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+export async function getHacksInternal() {
   let allRecords = await getAllAirtableRecords('appopBYHROXemyCqN/Sheet1')
-
-  const formatted = allRecords
+  return allRecords
     .filter(
       (r) =>
         r.fields["Name"] !== undefined
@@ -22,11 +21,10 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
       returnedFunds: r.fields["Returned Funds"] ?? null,
       defillamaId: r.fields["DefiLlama Id"] ?? null,
     }));
+}
 
-  return successResponse(
-    formatted,
-    30 * 60
-  );
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  return successResponse(await getHacksInternal(), 30 * 60);
 };
 
 export default wrap(handler);

@@ -8,6 +8,7 @@ import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
 import { PromisePool } from '@supercharge/promise-pool'
 import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import * as sdk from '@defillama/sdk'
+import { shuffleArray } from "./utils/shared/shuffleArray";
 
 const maxRetries = 1;
 
@@ -56,15 +57,6 @@ async function main() {
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s`)
 
   await storeStaleCoins(staleCoins)
-}
-
-
-function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
 }
 
 async function cacheCurrentBlocks() {

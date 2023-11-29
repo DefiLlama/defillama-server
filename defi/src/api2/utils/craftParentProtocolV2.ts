@@ -2,7 +2,7 @@ import type { IParentProtocol } from "../../protocols/types";
 import { errorResponse } from "../../utils/shared";
 import { IProtocolResponse, } from "../../types";
 import { craftParentProtocolInternal } from "../../utils/craftParentProtocol";
-import { cache, getCachedMCap, CACHE_KEYS, cacheAndRespond, } from "../cache";
+import { cache, getCachedMCap, CACHE_KEYS, cacheAndRespond, } from "../cache/index";
 import { cachedCraftProtocolV2 } from './craftProtocolV2'
 import * as sdk from '@defillama/sdk'
 
@@ -12,12 +12,11 @@ type CraftParentProtocolV2Options = {
   skipAggregatedTvl: boolean;
 }
 
-export default async function craftParentProtocol({
+export async function craftParentProtocolV2({
   parentProtocol,
   useHourlyData,
   skipAggregatedTvl,
 }: CraftParentProtocolV2Options) {
-
   const debug_t0 = performance.now(); // start the timer
   const childProtocols = cache.childProtocols[parentProtocol.id] ?? []
 
@@ -37,9 +36,11 @@ export default async function craftParentProtocol({
 
   const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap })
 
+  res.otherProtocols = [parentProtocol.name, ...childProtocols.map((p: any) => p.name)]
+
   const debug_totalTime = performance.now() - debug_t0
   const debug_dbTime = debug_t1 - debug_t0
-  sdk.log(`${parentProtocol.name} |${useHourlyData ? 'h' : 'd'} | T(all): ${(debug_totalTime / 1e3).toFixed(3)}s | T(child) ${(debug_dbTime / 1e3).toFixed(3)}s`)
+  // sdk.log(`${parentProtocol.name} |${useHourlyData ? 'h' : 'd'} | T(all): ${(debug_totalTime / 1e3).toFixed(3)}s | T(child) ${(debug_dbTime / 1e3).toFixed(3)}s`)
 
   return res
 }
@@ -47,5 +48,5 @@ export default async function craftParentProtocol({
 export async function cachedCraftParentProtocolV2(options: CraftParentProtocolV2Options) {
   const id = `${options.parentProtocol.id}-${options.useHourlyData ? 'hourly' : 'daily'}-${options.skipAggregatedTvl ? 'noAgg' : 'agg'}`
   const CACHE_KEY = CACHE_KEYS.PARENT_PROTOCOL
-  return cacheAndRespond({ key: CACHE_KEY, id, origFunction: craftParentProtocol, args: [options] })
+  return cacheAndRespond({ key: CACHE_KEY, id, origFunction: craftParentProtocolV2, args: [options] })
 }

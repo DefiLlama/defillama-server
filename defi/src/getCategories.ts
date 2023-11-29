@@ -1,4 +1,4 @@
-import { getHistoricalTvlForAllProtocols, IProtocol } from "./storeGetCharts";
+import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols, IProtocol } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections } from "./utils/normalizeChain";
 import { getR2 } from "./utils/r2";
@@ -60,13 +60,20 @@ function sum(
   categoryProtocols[category].add(protocol.name);
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+export async function getCategoriesInternal({ ...options }: any = {}) {
+
   const sumDailyTvls = {} as SumDailyTvls;
   const categoryProtocols = {} as IProtocolsByCategory;
 
-  const historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>> = JSON.parse((await getR2(`cache/getHistoricalTvlForAllProtocols/false-false.json`)).body!)
-  const { historicalProtocolTvls, lastDailyTimestamp } = historicalProtocolTvlsData
+  let historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>
+  if (options.isApi2CronProcess) {
+    historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(false, false, options);
+  } else {
+    historicalProtocolTvlsData = await getCachedHistoricalTvlForAllProtocols(false, false)
+  }
   
+  const { historicalProtocolTvls, } = historicalProtocolTvlsData
+
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (!protocolTvl) {
       return;
@@ -85,13 +92,14 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     })
   })
 
-  return successResponse(
-    {
-      chart: sumDailyTvls,
-      categories: Object.fromEntries(Object.entries(categoryProtocols).map((c) => [c[0], Array.from(c[1])])),
-    },
-    10 * 60
-  ); // 10 mins cache
+  return {
+    chart: sumDailyTvls,
+    categories: Object.fromEntries(Object.entries(categoryProtocols).map((c) => [c[0], Array.from(c[1])])),
+  }
+}
+
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  return successResponse(await getCategoriesInternal(), 10 * 60); // 10 mins cache
 };
 
 export default wrap(handler);

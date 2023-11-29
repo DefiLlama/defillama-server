@@ -20,6 +20,8 @@ function updateItemInfo(protocols) {
       protocol.misrepresentedTokens = module.misrepresentedTokens
       protocol.hallmarks = module.hallmarks
       protocol.deadFrom = module.deadFrom
+      protocol.methodology = module.methodology
+      if (module.doublecounted) protocol.doublecounted = module.doublecounted
     } catch (e) {
       console.error(e)
     }

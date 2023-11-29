@@ -748,7 +748,7 @@ const data: Protocol[] = [
     twitter: "snow_swap",
     audit_links: ["https://hackmd.io/@9GUQpanJRF6cloQ0fwyPFw/r1_ctUuqv"],
     forkedFrom: ["Saddle Finance"],
-    oracles: ["Chainlink"],
+    oracles: [],
   },
   {
     id: "140",
@@ -1261,7 +1261,7 @@ const data: Protocol[] = [
     module: "valuedefi.js",
     twitter: "value_defi",
     audit_links: ["https://valuedefi.io/audit"],
-    oracles: ["Chainlink"],
+    oracles: [],
     parentProtocol: "parent#value-finance",
   },
   {
@@ -1655,7 +1655,7 @@ const data: Protocol[] = [
     url: "https://lido.fi/",
     referralUrl: "https://stake.lido.fi/?ref=0x08a3c2A819E3de7ACa384c798269B3Ce1CD0e437",
     description:
-      "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana, Polygon, Terra, Kusama & Polkadot.",
+      "Liquid staking for Ethereum and Polygon. Daily staking rewards, no lock ups.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lido.png`,
     audits: "2",
@@ -1798,7 +1798,7 @@ const data: Protocol[] = [
     treasury: "1inch.js",
     twitter: "1inch",
     audit_links: ["https://help.1inch.io/en/articles/4585088-how-secure-is-1inch"],
-    oracles: ["Chainlink"],
+    oracles: [],
     governanceID: ["snapshot:1inch.eth"],
     github: ["1inch"]
   },
@@ -2723,25 +2723,23 @@ const data: Protocol[] = [
   },
   {
     id: "234",
-    name: "Notional",
+    name: "Notional V2",
     address: "0xcfeaead4947f0705a14ec42ac3d44129e1ef3ed5",
     symbol: "NOTE",
     url: "https://notional.finance/",
     description: "Fixed rate lending on Ethereum\r\n",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/notional.jpg`,
+    logo: `${baseIconsUrl}/notional-v2.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "notional-finance",
-    cmcId: "14631",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
     module: "notional/index.js",
-    treasury: "notional.js",
     twitter: "NotionalFinance",
+    parentProtocol: "parent#notional",
     audit_links: ["https://blog.openzeppelin.com/notional-audit/"],
-    governanceID: ["snapshot:notional.eth"],
-    github: ["notional-finance"]
   },
   {
     id: "235",
@@ -3891,7 +3889,7 @@ const data: Protocol[] = [
     module: "zerodex/index.js",
     twitter: "OfficialZeroDEX",
     forkedFrom: ["Uniswap V2"],
-    oracles: ["Chainlink"],
+    oracles: [],
   },
   /*
   {
@@ -4703,11 +4701,11 @@ const data: Protocol[] = [
   {
     id: "326",
     name: "Beefy",
-    address: "bsc:0xca3f508b8e4dd382ee878a314789373d80a5190a",
+    address: "0xB1F1ee126e9c96231Cc3d3fAD7C08b4cf873b1f1",
     symbol: "BIFI",
     url: "https://beefy.com",
     description:
-      "Beefy is a Decentralized, Multichain Yield Optimizer platform that allows users to earn compound interest on crypto. Through a set of investment strategies secured and enforced by smart contracts, Beefy automatically maximizes rewards from various liquidity pools (LPs),‌ ‌automated market making (AMM) projects,‌ ‌and‌ ‌other yield‌ farming ‌opportunities in the DeFi ecosystem.",
+      "Beefy automates yield farming to make DeFi easy, safe and efficient for all. By autocompounding your tokens, Beefy unlocks higher returns so you earn more of what you love.",
     chain: "Binance",
     logo: `${baseIconsUrl}/beefy.png`,
     audits: "2",
@@ -4840,7 +4838,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Decentralized Stablecoin",
     chains: ["RSK"],
     module: "moneyonchain.js",
     twitter: "moneyonchainok",
@@ -5186,10 +5184,18 @@ const data: Protocol[] = [
     cmcId: "11289",
     category: "CDP",
     treasury: "abracadabra.js",
-    chains: ["Ethereum", "Avalanche", "Arbitrum", "Fantom"],
-    module: "abracadabra/api.js",
+    chains: ["Arbitrum", "Avalanche", "Ethereum", "Fantom", "Binance", "Kava", "Optimism"], 
+    module: "abracadabra/index.js",
     twitter: "MIM_Spell",
-    oracles: ["Chainlink"],
+    oraclesByChain: {
+      arbitrum: ["Chainlink"],
+      avalanche: ["Chainlink"],
+      bsc: ["Chainlink"],
+      ethereum: ["Chainlink"],
+      fantom: ["Chainlink"],
+      kava: ["RedStone"],
+      optimism: ["Chainlink"],
+    },
     audit_links: ["https://abracadabramoney.gitbook.io/learn/our-ecosystem/our-contracts"],
     governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"],
     stablecoins: ["magic-internet-money"],
@@ -5874,7 +5880,7 @@ const data: Protocol[] = [
     module: "makiswap/index.js",
     twitter: "MakiSwap",
     audit_links: ["https://www.certik.org/projects/makiswap"],
-    oracles: ["Chainlink"],
+    oracles: [],
     github: ["MakiSwap-Protocol"]
   },
   {
@@ -6940,8 +6946,9 @@ const data: Protocol[] = [
   {
     id: "427",
     name: "Origin Dollar",
-    address: "null",
+    address: null, // not added on team request
     symbol: "-",
+    assetToken: "OUSD",
     url: "https://www.ousd.com",
     description:
       "Origin Dollar (OUSD) is a new stablecoin that was initially launched on the Ethereum network. Its design is superior to existing stablecoins because OUSD captures competitive yields while being passively held in wallets.",
@@ -8094,7 +8101,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "kuswap/index.js",
     twitter: "kuswapfinance",
     forkedFrom: ["Uniswap V2"],
-    oracles: ["Pyth"],
+    oracles: [],
     github: ["KuSwap"]
   },
   {
@@ -8613,12 +8620,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "505",
-    name: "Karura Liquid-Staking",
-    address: null,
-    symbol: "-",
+    name: "Karura Liquid Staking",
+    address: "acala:",
+    symbol: "KSM",
     url: "https://acala.network/karura",
     description:
-      "Stake your KSM for LKSM to earn rewards without sacrificing liquidity. LKSM is unlocked and ready to trade, take out collateralized loans, and provide liquidity for additional yield.",
+      "Liquidity for staked assets. Instant redeem. Available for Polkadot and Kusama.",
     chain: "Karura",
     logo: `${baseIconsUrl}/karura-liquid-staking.jpg`,
     audits: "0",
@@ -11965,30 +11972,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "660",
-    name: "Dopex",
-    address: "0xeec2be5c91ae7f8a338e1e5f3b5de49d07afdc81",
+    name: "Dopex SSOV",
+    address: "0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81",
     symbol: "DPX",
     url: "https://www.dopex.io",
     description: "Dopex is a maximum liquidity and minimal exposure options protocol",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/dopex.png`,
+    logo: `${baseIconsUrl}/dopex-ssov.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "dopex",
-    cmcId: "11188",
+    gecko_id: null,
+    cmcId: null,
     category: "Options",
     chains: ["Ethereum", "Arbitrum"],
     oraclesByChain: {
-      metis: ["DIA"]
+      arbitrum: ["Chainlink", "DIA"]
     },
     module: "dopex/index.js",
-    treasury: "dopex.js",
     twitter: "dopex_io",
-    audit_links: [
-      "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Dopex%20%5B21.06.2021%5D.pdf",
-      "https://solidity.finance/audits/Dopex/",
-    ],
-    github: ["dopex-io"]
+    audit_links: ["https://docs.dopex.io/developer/audits"],
+    parentProtocol: "parent#dopex",
   },
   {
     id: "661",
@@ -13559,7 +13562,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "synthetify-token",
     cmcId: "9447",
-    category: "Dexes",
+    category: "Synthetics",
     chains: ["Solana"],
     module: "synthetify/index.js",
     twitter: "synthetify",
@@ -17168,7 +17171,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "vampireswap/index.js",
     twitter: "vampireswap",
-    oracles: ["Chainlink"],
+    oracles: [],
     listedAt: 1637883311,
     forkedFrom: ["Uniswap V2"],
     deadUrl: true
@@ -18626,7 +18629,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Aurora"],
     module: "wannaswap/index.js",
     twitter: "wannaswapamm",
-    oracles: ["Chainlink"],
+    oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.certik.com/projects/wannaswap"],
     listedAt: 1638702808,

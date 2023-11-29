@@ -1,5 +1,5 @@
 import synthetixAdapter from "./synthetix";
-import glpAdapter from "./glp";
+import glp from "./glp";
 import abraAdapter from "./abracadabra";
 import unknownTokenAdapter from "./unknownToken";
 import podsAdapter from "./pods";
@@ -19,6 +19,8 @@ import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
 import mooBvmAdapter from "./mooBvmEth";
 import defiChainAdapter from "./defichain";
+import velgAdapter from "./velgd";
+export { glp };
 
 export const shlb = shlb_;
 
@@ -40,14 +42,6 @@ export function metronome(timestamp: number = 0) {
   );
 }
 
-export function glp(timestamp: number = 0) {
-  console.log("starting glp");
-  return Promise.all([
-    glpAdapter("arbitrum", timestamp),
-    glpAdapter("avax", timestamp),
-    glpAdapter("polygon", timestamp),
-  ]);
-}
 export function abracadabra(timestamp: number = 0) {
   console.log("starting abracadabra");
   return abraAdapter(timestamp);
@@ -55,6 +49,15 @@ export function abracadabra(timestamp: number = 0) {
 export function unknownTokens(timestamp: number = 0) {
   console.log("starting unknownTokens");
   return Promise.all([
+    unknownTokenAdapter(
+      timestamp,
+      "0xe510c67dd0a54d06f04fd5af9094fe64ed605eab",
+      "0xd51bfa777609213a653a2cd067c9a0132a2d316a",
+      "0x76bf5e7d2bcb06b1444c0a2742780051d8d0e304",
+      false,
+      "beam",
+      1.01,
+    ),
     unknownTokenAdapter(
       timestamp,
       "0x09cabec1ead1c0ba254b09efb3ee13841712be14",
@@ -291,4 +294,9 @@ export async function buck(timestamp: number = 0) {
 export async function mooBvm(timestamp: number = 0) {
   console.log("starting moo bvm eth");
   return mooBvmAdapter(timestamp);
+}
+
+export async function velgd(timestamp: number = 0) {
+  console.log("starting velgd");
+  return velgAdapter(timestamp);
 }

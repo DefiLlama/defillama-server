@@ -43,8 +43,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));
 
-  router.delete("/debug-pg/:filename", deletePGCache)
-  router.get("/debug-pg/:filename", readPGCache)
+  router.delete("/debug-pg/:filename(*)", deletePGCache)
+  router.get("/debug-pg/:filename(*)", readPGCache)
 
 
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {

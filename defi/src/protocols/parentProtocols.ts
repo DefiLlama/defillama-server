@@ -3185,6 +3185,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Fuzion_App",
   },
+  {
+    id: "parent#deri",
+    name: "Deri",
+    url: "https://deri.io/#/index",
+    description: "Deri Protocol is a decentralized protocol for users to exchange risk exposures precisely and capital efficiently. It is the DeFi way to trade derivatives: to hedge, to speculate, to arbitrage, all on chain.",
+    logo: `${baseIconsUrl}/deri.png`,
+    gecko_id: "deri-protocol",
+    cmcId: "8424",
+    chains: [],
+    treasury: "deri-protocol.js",
+    twitter: "DeriProtocol",
+    github: ["deri-protocol"]
+  },
 ];
 
 export default parentProtocols;

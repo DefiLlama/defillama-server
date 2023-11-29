@@ -25687,6 +25687,28 @@ const data3: Protocol[] = [
     github: ["PeerMeHQ"],
     listedAt: 1701214798
   },
+  {
+    id: "3857",
+    name: "Deri V4",
+    address: "bsc:0xe60eaf5A997DFAe83739e035b005A33AfdCc6df5",
+    symbol: "DERI",
+    url: "https://deri.io/#/trade/options",
+    description: "Deri Protocol is a decentralized protocol for users to exchange risk exposures precisely and capital efficiently. It is the DeFi way to trade derivatives: to hedge, to speculate, to arbitrage, all on chain.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/deri-v4.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum", "Linea", "zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "deri-v4/index.js",
+    twitter: "DeriProtocol",
+    parentProtocol: "parent#deri",
+    listedAt: 1701256822
+  },
 ]
 
 export default data3

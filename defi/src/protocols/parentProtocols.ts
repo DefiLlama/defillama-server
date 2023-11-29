@@ -3210,6 +3210,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Lighter_xyz",
   },
+  {
+    id: "parent#dfx-finance",
+    name: "DFX Finance",
+    url: "https://app.dfx.finance",
+    description: "DFX is a decentralized foreign exchange protocol optimized for trading fiat-backed foreign stablecoins",
+    logo: `${baseIconsUrl}/dfx-finance.jpg`,
+    gecko_id: "dfx-finance",
+    cmcId: "8666",
+    chains: [],
+    twitter: "DFXFinance",
+    governanceID: ["snapshot:dfx.eth"],
+    github: ["dfx-finance"]
+  },
 ];
 
 export default parentProtocols;

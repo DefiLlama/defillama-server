@@ -1525,10 +1525,10 @@ export const chainCoingeckoIds = {
     symbol: "LIBRE",
     cmcId: null,
   },
-  "Umee": {
+  "UX": {
     geckoId: "umee",
     github: ['umee-network'],
-    symbol: "UMEE",
+    symbol: "UX",
     cmcId: "16389",
     categories: ["Cosmos"],
   },
@@ -2093,7 +2093,7 @@ chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
 chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
 chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
-
+chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -2139,6 +2139,8 @@ export function transformNewChainName(chain: string) {
         return "opBNB"
     case "WEMIX":
       return "WEMIX3.0"
+    case "Umee":
+        return "UX"
     default:
       return chain
   }
@@ -2447,7 +2449,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "libre":
       return "Libre"
     case "umee":
-      return "Umee"
+      return useNewChainNames ? "UX" : "Umee"
     case "wemix":
       return useNewChainNames ? "WEMIX3.0" : "WEMIX"
     case "persistence":

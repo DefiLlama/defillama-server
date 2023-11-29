@@ -120,6 +120,16 @@
       "decimals": "18",
       "symbol": "RDNT",
       "to": "coingecko#radiant"
+    },
+    "0x4e7e5023656863E26f50E2E6E59489A852C212c1": {
+      "decimals": "18",
+      "symbol": "CNG",
+      "to": "coingecko#changer"
+    },
+    "0x0000000000000000000000000000000000000001": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
     }
   },
   "tezos": {
@@ -257,6 +267,16 @@
     "0x111808AbE352c8003e0eFfcc04998EaB26Cebe3c": {
       "to": "coingecko#wrapped-bitcoin", "decimals": "18",
       "symbol": "WBTC"
+    },
+    "0x43bDa480DE297A14cec95bFb1C6A313615f809Ef": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xf1612388D43A6b00316CA05ca358BC1a2e7b8E97": {
+      "decimals": "18",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   },
   "renec": {
@@ -366,6 +386,26 @@
     }
   },
   "bfc": {
+    "0x1c1b06405058AbE02e4748753aeD1458BEFEE3B9": {
+      "decimals": "18",
+      "symbol": "WBFC",
+      "to": "coingecko#bifrost"
+    },
+    "0x047938C3aD13c1eB821C8e310B2B6F889b6d0003": {
+      "decimals": "18",
+      "symbol": "BIFI",
+      "to": "coingecko#bifi"
+    },
+    "0xB1f3A83597Bce2AD842c29bD750AE17afc474137": {
+      "decimals": "18",
+      "symbol": "WITCH",
+      "to": "coingecko#witch-token"
+    },
+    "0x17102AC78a02a98fC78B0c29B7b0506f035A99E5": {
+      "decimals": "18",
+      "symbol": "SAT",
+      "to": "coingecko#super-athletes-token"
+    },
     "0x6c9944674C1D2cF6c4c4999FC7290Ba105dcd70e": {
       "decimals": "18",
       "symbol": "ETH",
@@ -475,7 +515,7 @@
       "to": "coingecko#chainlink"
     },
     "0x1d7fb99AED3C365B4DEf061B7978CE5055Dfc1e7": {
-      "decimals": "18",
+      "decimals": "8",
       "symbol": "WBTC",
       "to": "coingecko#wrapped-bitcoin"
     }
@@ -495,6 +535,133 @@
       "decimals": "6",
       "symbol": "zUSDT",
       "to": "coingecko#tether"
+    }
+  },
+  "ethf": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "ETHF",
+      "to": "coingecko#ethereumfair"
+    },
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+      "decimals": "18",
+      "symbol": "WETHF",
+      "to": "coingecko#ethereumfair"
+    }
+  },
+  "chz": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "CHZ",
+      "to": "coingecko#chiliz"
+    }
+  },
+  "edg": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "EDG",
+      "to": "coingecko#edgeware"
+    },
+    "0x457dE4e275A6b3C0D3750519221dD1dF19d54f01": {
+      "decimals": "18",
+      "symbol": "WEDG",
+      "to": "coingecko#edgeware"
+    }
+  },
+  "elsm": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "LAVA",
+      "to": "coingecko#lava"
+    },
+    "0xd80Ef77B0289732e13D1769850B5A70eCC196777": {
+      "decimals": "18",
+      "symbol": "WLAVA",
+      "to": "coingecko#lava"
+    },
+    "0xa801b1a7846156d4c81bd188f96bfcb621517611": {
+      "decimals": "18",
+      "symbol": "PYR",
+      "to": "coingecko#vulcan-forged"
+    }
+  },
+  "meer": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "MEER",
+      "to": "coingecko#qitmeer-network"
+    },
+    "0x470cBFB236860eb5257bBF78715FB5bd77119C2F": {
+      "decimals": "18",
+      "symbol": "MEER",
+      "to": "coingecko#qitmeer-network"
+    },
+    "0x457dE4e275A6b3C0D3750519221dD1dF19d54f01": {
+      "decimals": "18",
+      "symbol": "MEER",
+      "to": "coingecko#qitmeer-network"
+    }
+  },
+  "neon_evm": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "NEON",
+      "to": "coingecko#neon"
+    }
+  },
+  "xdai": {
+    "0xD4fdec44DB9D44B8f2b6d529620f9C0C7066A2c1": {
+      "decimals": "18",
+      "symbol": "wxHOPR",
+      "to": "xdai:0xD057604A14982FE8D88c5fC25Aac3267eA142a08"
+    }
+  },
+  "mode": {
+    "0x4200000000000000000000000000000000000006": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    }
+  },
+  "fsc": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "FSC",
+      "to": "coingecko#fonsmartchain"
+    },
+    "0xb582fD9d0D5C3515EEB6b02fF2d6eE0b6E45E7A7": {
+      "decimals": "18",
+      "symbol": "WFSC",
+      "to": "coingecko#fonsmartchain"
+    }
+  },
+  "lightlink_phoenix": {
+    "0x18fb38404dadee1727be4b805c5b242b5413fa40": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x6308fa9545126237158778e74ae1b6b89022c5c0": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x46a5e3fa4a02b9ae43d9df9408c86ed643144a67": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0x7ebef2a4b1b09381ec5b9df8c5c6f2dbeca59c73": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    }
+  },
+  "linea": {
+    "0x0000000000000000000000000000000000000001": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
     }
   }
 }

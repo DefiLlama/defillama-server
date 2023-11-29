@@ -63,7 +63,8 @@ export default {
         "id": "3501"
     },
     "derivio": {
-        "enabled": false,
+        parentId: "Deri",
+        "enabled": true,
         "id": "3759",
         protocolsData: {
             "derivatives": {

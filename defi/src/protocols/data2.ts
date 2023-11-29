@@ -1899,7 +1899,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink"], //https://learn.woo.org/v/woofi-dev-docs/resources/on-chain-price-feeds
     forkedFrom: [],
     module: "woofi.js",
     twitter: "_WOOFi",
@@ -4123,9 +4123,9 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "peardao",
     cmcId: "16104",
-    category: "Dexes", // search category
+    category: "Services", // search category
     chains: ["Binance"],
-    oracles: ["Chainlink"],
+    oracles: [], // uses chainlink for price reference  https://peardao.gitbook.io/docs/pear-events/tokyo-ver-1.0-release/features
     forkedFrom: [],
     module: "peardao/index.js",
     treasury: "peardao.js",
@@ -12284,7 +12284,7 @@ const data2: Protocol[] = [
     cmcId: "12390",
     category: "Dexes",
     chains: ["Binance"],
-    oracles: ["Chainlink"],
+    oracles: [],
     forkedFrom: [],
     module: "octane/index.js",
     twitter: "octane_finance",

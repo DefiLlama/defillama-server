@@ -6672,7 +6672,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Polygon"],
-    oracles: ["Chainlink"],
+    oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "FlashLiquidity/index.js",
     twitter: "flashliquidity",
@@ -21509,7 +21509,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Polygon"],
-    oracles: ["Chainlink"],
+    oracles: [], // https://docs.primex.finance/guides/what-is-primex/economic-security/oracles uses chainlink on rinkeby testnet
     forkedFrom: [],
     module: "primex-finance/index.js",
     twitter: "primex_official",
@@ -22978,7 +22978,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Avalanche","Polygon"],
     module: "xave-finance/index.js",
     forkedFrom: [],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink"], // https://docs.xave.co/general-faqs#where-are-the-fx-prices-quoted-from
     twitter: "XaveFinance",
     github: ["bleu-fi"],
     audit_links: ["https://docs.xave.co/contract-audits/fxpool-final-audit"],
@@ -24815,7 +24815,7 @@ const data3: Protocol[] = [
     cmcId: "xfai",
     category: "Dexes",
     chains: ["Linea"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink"], // https://docs.xfai.com/products/core-concepts/pools
     forkedFrom: [],
     module: "xfai/index.js",
     twitter: "xfai_official",

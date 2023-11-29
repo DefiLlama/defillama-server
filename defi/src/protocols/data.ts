@@ -464,7 +464,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
     ],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink"], // https://www.cryptoninjas.net/2019/12/30/looprings-3-0-dex-protocol-integrates-chainlink-oracle-service/
     governanceID: ["snapshot:loopringdao.eth"],
     github: ["Loopring"] //check
   },
@@ -2697,7 +2697,7 @@ const data: Protocol[] = [
     module: "mcdex/index.js",
     twitter: "muxprotocol",
     audit_links: ["https://www.certik.com/projects/mux-protocol"],
-    oracles: ["Chainlink"],
+    oracles: [],
     governanceID: ["snapshot:vote.mcdex.eth"],
     wrongLiquidity: true, // token is repeated in MUX Protocol + most liquidity on arbi
   },

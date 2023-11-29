@@ -25835,6 +25835,29 @@ const data3: Protocol[] = [
     github: ["Carbon-Browser"],
     listedAt: 1701264388
   },
+  {
+    id: "3864",
+    name: "DFX V3",
+    address: "0x888888435fde8e7d4c54cab67f206e4199454c60",
+    symbol: "DFX",
+    url: "https://app.dfx.finance",
+    description:
+      "DFX is a decentralized foreign exchange protocol optimized for trading fiat-backed foreign stablecoins",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/dfx-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum", "Ethereum", "Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dfx-v3/index.js",
+    twitter: "DFXFinance",
+    parentProtocol: "parent#dfx-finance",
+    listedAt: 1701269069
+  },
 ]
 
 export default data3

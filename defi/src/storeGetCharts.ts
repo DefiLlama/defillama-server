@@ -101,6 +101,9 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, ex
         module = getHistTvlOptions.getModule!(protocol);
       }
 
+      if (lastTvl && !historicalTvl?.length)
+        historicalTvl = [lastTvl];
+
       if (!historicalTvl || historicalTvl?.length < 1 || !module) {
         return;
       }

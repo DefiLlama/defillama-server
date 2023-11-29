@@ -32,7 +32,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get('/v2/chains', defaultFileHandler)
   router.get("/tvl/:name", defaultFileHandler);
   router.get("/config/smol/:protocol", defaultFileHandler);
-  router.get("/raises", defaultFileHandler); // todo: add env AIRTABLE_API_KEY
+  router.get("/raises", defaultFileHandler);
   router.get("/hacks", defaultFileHandler);
   router.get("/oracles", defaultFileHandler);
   router.get("/forks", defaultFileHandler);
@@ -42,10 +42,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));
-
-  router.delete("/debug-pg/:filename(*)", deletePGCache)
-  router.get("/debug-pg/:filename(*)", readPGCache)
-
 
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
     const fullPath = req.path;
@@ -78,26 +74,24 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     }
   }
 
-  async function readPGCache(req: HyperExpress.Request, res: HyperExpress.Response) {
-    try {
-      const fullPath = req.path;
-      const routerPath = fullPath.replace(routerBasePath + '/debug-pg', '');
-      console.log('readPGCache', routerPath)
-      res.json(await readFromPGCache(routerPath))
-    } catch (e) {
-      console.error(e);
-      res.status(500)
-      return res.send('Internal server error', true)
-    }
-  }
+  router.get('/debug-pg/*', debugHandler)
+  router.delete('/debug-pg/*', debugHandler)
 
-  async function deletePGCache(req: HyperExpress.Request, res: HyperExpress.Response) {
+  async function debugHandler(req: any, res: any) {
+    const fullPath = req.path;
+    const routerPath = fullPath.replace(routerBasePath+'/debug-pg', '');
+    console.log('debug-pg', routerPath)
     try {
-      const fullPath = req.path;
-      const routerPath = fullPath.replace(routerBasePath + '/debug-pg', '');
-      console.log('deletePGCache', routerPath)
-      await deleteFromPGCache(routerPath)
-      res.json({ success: true })
+
+      switch (req.method) {
+        case 'GET':
+          return res.json(await readFromPGCache(routerPath))
+        case 'DELETE':
+          await deleteFromPGCache(routerPath)
+          return res.json({ success: true })
+        default:
+          throw new Error('Unsupported method')
+      }
     } catch (e) {
       console.error(e);
       res.status(500)

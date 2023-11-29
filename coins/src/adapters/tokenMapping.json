@@ -339,6 +339,10 @@
     "0xf417f5a458ec102b90352f697d6e2ac3a3d2851f": {
       "to": "coingecko#tether", "decimals": "6",
       "symbol": "USDT"
+    },
+    "0x6Fae4D9935E2fcb11fC79a64e917fb2BF14DaFaa": {
+      "to": "coingecko#celestia", "decimals": "6",
+      "symbol": "TIA"
     }
   },
   "beam": {

@@ -25642,6 +25642,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
+    parentProtocol: "parent#lighter",
     twitter: "Lighter_xyz",
   },
   {

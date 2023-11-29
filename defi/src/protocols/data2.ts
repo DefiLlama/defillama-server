@@ -28375,13 +28375,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2636",
-    name: "Lighter",
+    name: "Lighter V1",
     address: null,
     symbol: "-",
     url: "https://lighter.xyz",
     description: "Liquid digital assets traded the way they were meant to be with the fully decentralized order book exchange for spot trading on L2’s, now live on Arbitrum.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/lighter.jpg`,
+    logo: `${baseIconsUrl}/lighter-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -28393,6 +28393,7 @@ const data2: Protocol[] = [
     oracles: [],
     twitter: "Lighter_xyz",
     audit_links: ["https://www.certik.com/projects/lighter"],
+    parentProtocol: "parent#lighter",
     listedAt: 1678136619
   },
   {

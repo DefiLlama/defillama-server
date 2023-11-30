@@ -1582,5 +1582,9 @@ export default {
     "near": {
         "enabled": true,
         "id": "6535"
+    },
+    "substanceX": {
+        "enabled": true,
+        "id": "3835"
     }
 } as AdaptorsConfig

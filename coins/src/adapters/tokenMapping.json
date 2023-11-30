@@ -114,7 +114,7 @@
       "to": "coingecko#polkadot"
     },
     "0xdb25f211ab05b1c97d595516f45794528a807ad8": {
-      "decimals": "18",
+      "decimals": "2",
       "symbol":"EURS",
       "to": "coingecko#stasis-eurs"
     },
@@ -921,7 +921,7 @@
       "to": "coingecko#ethereum"
     },
     "0x774e8ee296d7d9f5033a7483ecbf71234bdec5cf": {
-      "decimals": "18",
+      "decimals": "2",
       "symbol":"EURS",
       "to": "coingecko#stasis-eurs"
     },

@@ -25858,6 +25858,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dfx-finance",
     listedAt: 1701269069
   },
+  {
+    id: "3865",
+    name: "Hatom Boster",
+    address: null,
+    symbol: "-",
+    url: "https://app.hatom.com/",
+    description:
+      "This product allows users to boost their rewards if they have an equivalent to 10% of their collateral staked in HTM.",
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/hatom-booster.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Elrond"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hatom-booster/index.js",
+    twitter: "HatomProtocol",
+    parentProtocol: "parent#hatom-protocol",
+    listedAt: 1701352413
+  },
 ]
 
 export default data3

@@ -25903,6 +25903,50 @@ const data3: Protocol[] = [
     twitter: "auroraisnear",
     listedAt: 1701356713
   },
+  {
+    id: "3867",
+    name: "Ascent Exchange V1",
+    address: "eon:0x01454691Ce0F245D952faD9A6B309A4B5a7D5b0A",
+    symbol: "AEX",
+    url: "https://ascent.exchange/swap?currency0=ETH",
+    description:
+      "Decentralized exchange on Horizon EON",
+    chain: "Horizen EON",
+    logo: `${baseIconsUrl}/ascent-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Horizen EON"],
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    module: "ascentexchange/index.js",
+    twitter: "AscentExchange",
+    listedAt: 1701356713
+  },
+  {
+    id: "3868",
+    name: "Ascent Exchange V3",
+    address: "eon:0x01454691Ce0F245D952faD9A6B309A4B5a7D5b0A",
+    symbol: "AEX",
+    url: "https://ascent.exchange/swap?currency0=ETH",
+    description:
+      "Concentrated Liquidity dex on Horizen EON",
+    chain: "Horizen EON",
+    logo: `${baseIconsUrl}/ascent-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Horizen EON"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "ascentexchange-v3/index.js",
+    twitter: "AscentExchange",
+    listedAt: 1701356713
+  },
 ]
 
 export default data3

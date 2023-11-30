@@ -3223,6 +3223,18 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:dfx.eth"],
     github: ["dfx-finance"]
   },
+  {
+    id: "parent#ascent-exchange",
+    name: "Ascent Exchange",
+    url: "https://ascent.exchange/",
+    description: "Ascent: The Next-Gen Liquidity Layer on Horizen Eon",
+    logo: `${baseIconsUrl}/ascent-exchange.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AscentExchange",
+    github: ["ascent-exchange"]
+  },
 ];
 
 export default parentProtocols;

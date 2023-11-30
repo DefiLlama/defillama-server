@@ -286,3 +286,9 @@ async function setHistoricalTvlForAllProtocols() {
     console.error(e);
   }
 }
+
+setInterval(() => {
+  Object.values(CACHE_KEYS).forEach((key) => {
+    (cache as any)[key] = {}
+  })
+}, 1 * MINUTES)

@@ -108,7 +108,7 @@ const data: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum", "Polygon", "Avalanche"],
     module: "aave/index.js",
-    twitter: "AaveAave",
+    twitter: "aave",
     audit_links: ["https://aave.com/security"],
     oracles: ["Chainlink"],
     parentProtocol: "parent#aave",

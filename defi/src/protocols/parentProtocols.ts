@@ -17,7 +17,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "aave",
     cmcId: "7278",
     treasury: "aave.js",
-    twitter: "AaveAave",
+    twitter: "aave",
     governanceID: ["snapshot:aave.eth", 'eip155:1:0xEC568fffba86c094cf06b22134B23074DFE2252c'],
     wrongLiquidity: true, // missing balancer v1 pool
     github: ["aave", "bgd-labs"],

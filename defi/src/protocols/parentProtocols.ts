@@ -3235,6 +3235,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AscentExchange",
     github: ["ascent-exchange"]
   },
+  {
+    id: "parent#charm-finance",
+    name: "Charm Finance",
+    url: "https://www.charm.fi/",
+    description: "The Liquidity Super App. The easiest way to provide and manage liquidity",
+    logo: `${baseIconsUrl}/charm-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "CharmFinance",
+    github: ['charmfinance'],
+  },
 ];
 
 export default parentProtocols;

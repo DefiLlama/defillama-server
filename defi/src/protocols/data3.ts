@@ -25947,6 +25947,28 @@ const data3: Protocol[] = [
     twitter: "AscentExchange",
     listedAt: 1701356713
   },
+  {
+    id: "3869",
+    name: "Charm Finance V2",
+    address: null,
+    symbol: "-",
+    url: "https://alpha.charm.fi/vaults",
+    description: "Alpha Vaults is a binary smart contract system for decentralised liquidity management. It creates liquidity vaults for any Uniswap V3 pool, and contains everything that's needed to manage the liquidity within a pool",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/charm-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Ethereum", "Optimism", "Polygon", "Base", "Boba", "Arbitrum"],
+    module: "charm-fi-vaults-v2/index.js",
+    twitter: "CharmFinance",
+    audit_links: [
+      "https://learn.charm.fi/charm/appendix/audit-reports",
+    ],
+    listedAt: 1701375467
+  },
 ]
 
 export default data3

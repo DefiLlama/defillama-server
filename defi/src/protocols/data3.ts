@@ -7524,7 +7524,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Services",
     chains: ["Ethereum"],
-    module: "rainbow/index.js",   //it was a dummy.js module, we replace it to used on wayne dash 
+    module: "dummy.js",   
     twitter: "rainbowdotme",
     github: ["rainbow-me"]
   },

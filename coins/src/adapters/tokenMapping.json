@@ -43,6 +43,11 @@
       "decimals": "18",
       "symbol":"WETH",
       "to": "coingecko#ethereum"
+    },
+    "0x9a27a8950c256921b0afbe26823be717d612b447": {
+      "decimals": "18",
+      "symbol":"XDC",
+      "to": "coingecko#xdce-crowd-sale"
     }
   },
   "evmos": {
@@ -122,6 +127,16 @@
       "decimals": "18",
       "symbol":"wanMOVR",
       "to": "coingecko#moonriver"
+    },
+    "0x135b810e48e4307ab2a59ea294a6f1724781bd3c": {
+      "decimals": "18",
+      "symbol":"WAN",
+      "to": "coingecko#wanchain"
+    },
+    "0x4917a9a03bdf9be520e0b342da8c3c8787237302": {
+      "decimals": "6",
+      "symbol":"wanXRP",
+      "to": "coingecko#ripple"
     }
   },
   "fantom": {
@@ -183,6 +198,11 @@
       "decimals": "18",
       "symbol":"USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0x3e7430a1decffa4756d8c651634de332940792d8": {
+      "decimals": "18",
+      "symbol":"XDC",
+      "to": "coingecko#xdce-crowd-sale"
     }
   },
   "arbitrum": {
@@ -269,6 +289,21 @@
       "decimals": "18",
       "symbol":"WETH.e",
       "to": "coingecko#ethereum"
+    },
+    "0xccf619a8a7a1557fbe3b61f551971309f4818e24": {
+      "decimals": "18",
+      "symbol":"WAN",
+      "to": "coingecko#wanchain"
+    },
+    "0x3a471089dc0a91676b1dbd62da7e49dab6b94d00": {
+      "decimals": "18",
+      "symbol":"XDC",
+      "to": "coingecko#xdce-crowd-sale"
+    },
+    "0x822c433922f80f905e4f6d052bda468389c8c379": {
+      "decimals": "6",
+      "symbol":"XRP",
+      "to": "coingecko#ripple"
     }
   },
   "base": {
@@ -629,6 +664,16 @@
       "decimals": "6",
       "symbol":"USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0x329f162550e3d5d9898a0aae05e21bfcd5f1cf83": {
+      "decimals": "18",
+      "symbol":"WAN",
+      "to": "coingecko#wanchain"
+    },
+    "0xb2c6979890fbad83a6a5266d41b7d50dbe24a87a": {
+      "decimals": "6",
+      "symbol":"XRP",
+      "to": "coingecko#ripple"
     }
   },
   "zilliqa": {
@@ -748,6 +793,21 @@
       "decimals": "6",
       "symbol":"wanUSDC",
       "to": "coingecko#usd-coin"
+    },
+    "0x11e77e27af5539872efed10abaa0b408cfd9fbbd": {
+      "decimals": "6",
+      "symbol":"wanUSDT",
+      "to": "coingecko#tether"
+    },
+    "0xc7dca84a81324075e90a39250b0e07b7daf4f45d": {
+      "decimals": "18",
+      "symbol":"XDC",
+      "to": "coingecko#xdce-crowd-sale"
+    },
+    "0xf665e0e3e75d16466345e1129530ec28839efaea": {
+      "decimals": "6",
+      "symbol":"wanXRP",
+      "to": "coingecko#ripple"
     }
   },
   "okexchain": {
@@ -795,6 +855,26 @@
       "decimals": "6",
       "symbol":"USDCw",
       "to": "coingecko#usd-coin"
+    },
+    "0x382bb369d343125bfb2117af9c149795c6c65c50": {
+      "decimals": "6",
+      "symbol":"USDT",
+      "to": "coingecko#tether"
+    },
+    "0x6a60b5099b68ac80b28f44eb30894c7d165a72f6": {
+      "decimals": "18",
+      "symbol":"WAN",
+      "to": "coingecko#wanchain"
+    },
+    "0xc791eb1d0a3db484aea29d424246c717be3c05c9": {
+      "decimals": "18",
+      "symbol":"XDCw",
+      "to": "coingecko#xdce-crowd-sale"
+    },
+    "0xe5d2525d247cfb9a9aeb1fa223eacda6eee1d09a": {
+      "decimals": "6",
+      "symbol":"XRPw",
+      "to": "coingecko#ripple"
     }
   },
   "xdc": {
@@ -812,6 +892,21 @@
       "decimals": "6",
       "symbol":"xUSDC",
       "to": "coingecko#usd-coin"
+    },
+    "0xd4b5f10d61916bd6e0860144a91ac658de8a1437": {
+      "decimals": "6",
+      "symbol":"xUSDT",
+      "to": "coingecko#tether"
+    },
+    "0xbe5187c2a7eb776c1caeed2c37e7599fb05000d3": {
+      "decimals": "18",
+      "symbol":"WAN",
+      "to": "coingecko#wanchain"
+    },
+    "0x4e35a02b12d7bd010e235da055b6d03e89601264": {
+      "decimals": "6",
+      "symbol":"xXRP",
+      "to": "coingecko#ripple"
     }
   },
   "telos": {
@@ -829,6 +924,11 @@
       "decimals": "18",
       "symbol":"ETH",
       "to": "coingecko#ethereum"
+    },
+    "0x19fbf2afe29526b5b7591cc281e527398d2338dc": {
+      "decimals": "6",
+      "symbol":"USDT",
+      "to": "coingecko#tether"
     }
   },
   "moonriver": {
@@ -870,6 +970,11 @@
       "decimals": "6",
       "symbol":"m.USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0xbb06dca3ae6887fabf931640f67cab3e3a16f4dc": {
+      "decimals": "6",
+      "symbol":"m.USDT",
+      "to": "coingecko#tether"
     }
   }
 }

@@ -25881,6 +25881,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hatom-protocol",
     listedAt: 1701352413
   },
+  {
+    id: "3866",
+    name: "Rainbow Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://rainbowbridge.app/transfer",
+    description:
+      "The Rainbow Bridge is the official bridge for transferring tokens between Ethereum, NEAR and the Aurora networks. The bridge is the product of Aurora, the Ethereum-compatible scaling solution built on NEAR.",
+    chain: "Aurora",
+    logo: `${baseIconsUrl}/rainbow-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Aurora", "Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "rainbow/index.js",
+    twitter: "auroraisnear",
+    listedAt: 1701356713
+  },
 ]
 
 export default data3

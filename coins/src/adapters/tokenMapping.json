@@ -84,7 +84,7 @@
   "meter": {
     "0x983147fb73a45fc7f8b4dfa1cd61bdc7b111e5b6": {
       "decimals": "18",
-      "symbol": "MTRG",
+      "symbol": "ETH",
       "to": "coingecko#ethereum"
     }
   },

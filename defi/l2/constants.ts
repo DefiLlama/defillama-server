@@ -28,7 +28,7 @@ export const canonicalBridgeIds: { [chain: string]: Chain } = {
   "129": "xdai",
   "240": "polygon",
   "3779": "avax",
-  "3038": "aurora",
+  "3866": "aurora",
   "3861": "rsk",
 };
 export const protocolBridgeIds: { [chain: string]: Chain } = {

@@ -1586,5 +1586,9 @@ export default {
     "substanceX": {
         "enabled": true,
         "id": "3835"
+    },
+    "up-vs-down-game": {
+        "enabled": true,
+        "id": "3872"
     }
 } as AdaptorsConfig

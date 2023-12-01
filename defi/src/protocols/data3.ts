@@ -25992,6 +25992,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#beta-finance",
     listedAt: 1701400910
   },
+  {
+    id: "3871",
+    name: "Wildcat Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://wildcat.finance",
+    description: "Wildcat is a protocol that allows borrowers to deploy undercollateralised credit lines.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/wildcat-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    oracles: [], 
+    chains: ["Ethereum"],
+    module: "wildcat-fi/index.js",
+    twitter: "WildcatFi",
+    github: ["wildcat-finance"],
+    listedAt: 1701425904
+  },
 ]
 
 export default data3

@@ -25967,7 +25967,29 @@ const data3: Protocol[] = [
     audit_links: [
       "https://learn.charm.fi/charm/appendix/audit-reports",
     ],
-    listedAt: 1701375467
+    listedAt: 1701375467,
+    parentProtocol: "parent#charm-finance"
+  },
+  {
+    id: "3870",
+    name: "Beta Finance V2",
+    address: "0xbe1a001fe942f96eea22ba08783140b9dcc09d28",
+    symbol: "BETA",
+    url: "https://www.betafinance.org/",
+    description: "Beta Finance is the permissionless money market for borrowing, lending, and shorting crypto assets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/beta-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "beta-finance-v2/index.js",
+    twitter: "beta_finance",
+    audit_links: ["https://betafinance.gitbook.io/betafinance/security-and-audits"],
+    parentProtocol: "parent#beta-finance",
+    listedAt: 1701400910
   },
 ]
 

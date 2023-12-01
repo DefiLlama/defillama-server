@@ -3247,6 +3247,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "CharmFinance",
     github: ['charmfinance'],
   },
+  {
+    id: "parent#beta-finance",
+    name: "Beta Finance",
+    url: "https://www.betafinance.org/",
+    description: "Beta Finance is the permissionless money market for borrowing, lending, and shorting crypto assets",
+    logo: `${baseIconsUrl}/beta-finance.png`,
+    gecko_id: "beta-finance",
+    cmcId: "11307",
+    chains: [],
+    twitter: "beta_finance",
+  },
 ];
 
 export default parentProtocols;

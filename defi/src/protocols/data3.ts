@@ -26032,6 +26032,26 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "bvb_matic",
   },
+  {
+    id: "3873",
+    name: "BrewSwap",
+    address: "polygon:0x2F86747a9c5Db9b80840a3A588E2B87f367188d6",
+    symbol: "BREWLABS",
+    url: "https://earn.brewlabs.info/swap",
+    description: "Decentralized exchange on Polygon",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/brewswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    oracles: [], 
+    chains: ["Polygon"],
+    module: "brewswap/index.js",
+    twitter: "teambrewlabs",
+    listedAt: 1701450936
+  },
 
 ]
 

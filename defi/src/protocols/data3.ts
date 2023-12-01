@@ -21080,7 +21080,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "flooring-io/index.js",
-    twitter: "flooringproto",
+    twitter: "flooringproto_",
     listedAt: 1697566485
   },
   {

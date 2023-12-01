@@ -1748,6 +1748,7 @@ export default {
         },
     },
     "litx": {
+        disabled: true,
         enabled: true,
         id: "3159"
     },

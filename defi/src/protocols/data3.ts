@@ -3100,7 +3100,7 @@ const data3: Protocol[] = [
     gecko_id: "interport-token",
     cmcId: "22877",
     category: "Cross Chain",
-    chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Polygon zkEVM", "Fantom", "Arbitrum", "zkSync Era", "Base", "Linea", "Optimism"],
+    chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Polygon zkEVM", "Fantom", "Arbitrum", "zkSync Era", "Base", "Linea", "Optimism", "Scroll", "Horizen EON", "opBNB"],
     oracles: [],
     forkedFrom: [],
     module: "interport-finance/index.js",
@@ -7524,7 +7524,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Services",
     chains: ["Ethereum"],
-    module: "dummy.js",   
+    module: "dummy.js",
     twitter: "rainbowdotme",
     github: ["rainbow-me"]
   },
@@ -9942,9 +9942,9 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "superrare",
     cmcId: null,
-    category: "NFT Marketplace", 
+    category: "NFT Marketplace",
     chains: ["Ethereum"],
-    module: "superrare/index.js", 
+    module: "superrare/index.js",
     twitter: "SuperRare",
     forkedFrom: [],
     oracles: [],
@@ -18703,7 +18703,7 @@ const data3: Protocol[] = [
     chains: ["Binance"],
     module: "dummy.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [],
     twitter: "PancakeSwap",
     parentProtocol: "parent#pancakeswap",
     listedAt: 1695222044
@@ -18725,7 +18725,7 @@ const data3: Protocol[] = [
     chains: ["Polygon"],
     module: "polyfriendtech/index.js",
     oracles: [],
-    forkedFrom: ["friend.tech"], 
+    forkedFrom: ["friend.tech"],
     twitter: "polyfriendtech",
     listedAt: 1695254714
   },
@@ -18746,7 +18746,7 @@ const data3: Protocol[] = [
     chains: ["Base"],
     module: "moonbase/index.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [],
     twitter: "moonbase_fi",
     listedAt: 1695254731
   },
@@ -18767,7 +18767,7 @@ const data3: Protocol[] = [
     chains: ["Polygon zkEVM"],
     module: "sandyswap/index.js",
     oracles: [],
-    forkedFrom: ["Solidly"], 
+    forkedFrom: ["Solidly"],
     twitter: "sandyswapxyz",
     listedAt: 1695254743
   },
@@ -18788,7 +18788,7 @@ const data3: Protocol[] = [
     chains: ["TON"],
     module: "tonstakers/index.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [],
     twitter: "tonstakers",
     listedAt: 1695288998
   },
@@ -18809,7 +18809,7 @@ const data3: Protocol[] = [
     chains: ["Bitcoin", "Ethereum"],
     module: "bitstamp/index.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [],
     twitter: "Bitstamp",
     listedAt: 1695297539
   },
@@ -18830,7 +18830,7 @@ const data3: Protocol[] = [
     chains: ["Bitcoin", "Ethereum", "Tron"],
     module: "coinw/index.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [],
     twitter: "CoinWOfficial",
     listedAt: 1695297555
   },
@@ -18851,7 +18851,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "kraken/index.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [],
     twitter: "krakenfx",
     listedAt: 1695298418
   },
@@ -18872,7 +18872,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Bitcoin", "Tron"],
     module: "coinex/index.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [],
     twitter: "coinexcom",
     listedAt: 1695298425
   },
@@ -18893,7 +18893,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Bitcoin", "Tron"],
     module: "fastex/index.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [],
     twitter: null,
     listedAt: 1695298435
   },
@@ -18914,7 +18914,7 @@ const data3: Protocol[] = [
     chains: ["Klaytn"],
     module: "shoebillFinance-v2/index.js",
     oracles: [],
-    forkedFrom: ["Compound V2"], 
+    forkedFrom: ["Compound V2"],
     twitter: "ShoebillFinance",
     parentProtocol: "parent#shoebill-finance",
     listedAt: 1695311208
@@ -18936,7 +18936,7 @@ const data3: Protocol[] = [
     chains: ["Cronos"],
     module: "vvs-v3/index.js",
     oracles: [],
-    forkedFrom: ["Uniswap V3"], 
+    forkedFrom: ["Uniswap V3"],
     twitter: "VVS_finance",
     parentProtocol: "parent#vvs-finance",
     listedAt: 1695316335
@@ -18958,7 +18958,7 @@ const data3: Protocol[] = [
     chains: ["Op_Bnb"],
     module: "opbanana/index.js",
     oracles: [],
-    forkedFrom: ["Uniswap V2"], 
+    forkedFrom: ["Uniswap V2"],
     twitter: "OpBananaFam",
     listedAt: 1695474555
   },
@@ -18979,7 +18979,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "tholgar/index.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [],
     twitter: "TholgarFi",
     github: ["astrodevs-labs"],
     listedAt: 1695474711
@@ -19001,7 +19001,7 @@ const data3: Protocol[] = [
     chains: ["Manta"],
     module: "mantaswap/index.js",
     oracles: [],
-    forkedFrom: ["Uniswap V2"], 
+    forkedFrom: ["Uniswap V2"],
     twitter: "MantaSwap_",
     listedAt: 1695547555
   },
@@ -19022,7 +19022,7 @@ const data3: Protocol[] = [
     chains: ["Avalanche"],
     module: "reservoir/index.js",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [],
     twitter: "ReservoirFi",
     audit_links: ["https://github.com/reservoir-labs/amm-core/tree/dev/audits"],
     listedAt: 1695547568
@@ -19044,7 +19044,7 @@ const data3: Protocol[] = [
     chains: ["Manta"],
     module: "apertureSwap/index.js",
     oracles: [],
-    forkedFrom: ["Uniswap V3"], 
+    forkedFrom: ["Uniswap V3"],
     twitter: "ApertureFinance",
     parentProtocol: "parent#aperture-finance",
     audit_links: ["https://docs.aperture.finance/docs/transparency/security-audit"],
@@ -19238,14 +19238,14 @@ const data3: Protocol[] = [
     url: "https://cipher.rip/",
     description:
       "Social Finance project on Arbitrum",
-    chain: "Arbitrum", 
+    chain: "Arbitrum",
     logo: `${baseIconsUrl}/cipher.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "SoFi",
-    chains: ["Arbitrum"], 
+    chains: ["Arbitrum"],
     module: "cipher/index.js",
     twitter: "CipherRip",
     forkedFrom: [],
@@ -19261,14 +19261,14 @@ const data3: Protocol[] = [
     url: "https://www.starshares.xyz/",
     description:
       "Star Shares - trade twitter profiles on $AVAX. Buy and share your favorite creators and earn from their success",
-    chain: "Avalanche", 
+    chain: "Avalanche",
     logo: `${baseIconsUrl}/star-shares.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "SoFi",
-    chains: ["Avalanche"], 
+    chains: ["Avalanche"],
     module: "starshares/index.js",
     twitter: "starsarenacom",
     forkedFrom: ["friend.tech"],
@@ -19284,14 +19284,14 @@ const data3: Protocol[] = [
     url: "https://ball.exchange",
     description:
       "Ball Exchange is an innovative and highly flexible DEX built to support the Shibarium ecosystem",
-    chain: "Shibarium", 
+    chain: "Shibarium",
     logo: `${baseIconsUrl}/ball-exchange.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Shibarium"], 
+    chains: ["Shibarium"],
     module: "BallExchange/index.js",
     twitter: "Ball_Exchange",
     forkedFrom: ["Uniswap V2"],
@@ -19308,14 +19308,14 @@ const data3: Protocol[] = [
     url: "https://friend3.group",
     description:
       "A social dApp that offers customizable pricing for your groups.",
-    chain: "Binance", 
+    chain: "Binance",
     logo: `${baseIconsUrl}/friend3.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "SoFi",
-    chains: ["Binance"], 
+    chains: ["Binance"],
     module: "friend3/index.js",
     twitter: "Friend3AI",
     forkedFrom: ["friend.tech"],
@@ -19331,14 +19331,14 @@ const data3: Protocol[] = [
     url: "https://bluemeteor.xyz",
     description:
       "Swap, Farm and stake tokens to the BlueMeteor Ecosystem",
-    chain: "Pulse", 
+    chain: "Pulse",
     logo: `${baseIconsUrl}/bluemeteor.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Pulse"], 
+    chains: ["Pulse"],
     module: "bluemeteor/index.js",
     twitter: "bluemeteorpls",
     forkedFrom: ["Uniswap V2"],
@@ -19353,14 +19353,14 @@ const data3: Protocol[] = [
     url: "https://www.bass.exchange",
     description:
       "Bass Exchange is a hyper-efficient multichain stableswap with minimal slippage.",
-    chain: "Base", 
+    chain: "Base",
     logo: `${baseIconsUrl}/bass-exchange.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Base"], 
+    chains: ["Base"],
     module: "bassexhcnage/index.js",
     twitter: "Bass_Exchange",
     forkedFrom: ["Wombat Exchange"],
@@ -19378,14 +19378,14 @@ const data3: Protocol[] = [
     url: "https://dapp.phame.io",
     description:
       "Decentralized Perpetual DEX on PulseChain with noval design of LP (PHLP) & governance token staking (PHAME)",
-    chain: "Pulse", 
+    chain: "Pulse",
     logo: `${baseIconsUrl}/phame-protocol.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "phame",
     cmcId: "28160",
     category: "Derivatives",
-    chains: ["Pulse"], 
+    chains: ["Pulse"],
     module: "phame/index.js",
     twitter: "Phamouscrypto",
     forkedFrom: ["GMX V1"],
@@ -23156,7 +23156,7 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "blockswap_team",
     audit_links: ["https://www.blockswap.network/security/"],
-    listedAt: 1699210502                    
+    listedAt: 1699210502
   },
   {
     id: "3740",
@@ -23178,7 +23178,7 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: null,
     github: ["kunalabs-io"],
-    listedAt: 1699291916                   
+    listedAt: 1699291916
   },
   {
     id: "3741",
@@ -23199,7 +23199,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     twitter: "torus_farm",
-    listedAt: 1699291935                   
+    listedAt: 1699291935
   },
   {
     id: "3742",
@@ -23220,7 +23220,7 @@ const data3: Protocol[] = [
     treasury: "loreum.js",
     forkedFrom: [],
     oracles: [],
-    twitter: "LoreumDAO",                 
+    twitter: "LoreumDAO",
   },
   {
     id: "3743",
@@ -23241,7 +23241,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     parentProtocol: "parent#quickswap",
-    twitter: "QuickswapDEX",                 
+    twitter: "QuickswapDEX",
   },
   {
     id: "3744",
@@ -23262,7 +23262,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "CofferCity",
-    listedAt: 1699358625                   
+    listedAt: 1699358625
   },
   {
     id: "3745",
@@ -23283,7 +23283,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Compound V2"],
     oracles: [],
     twitter: "LendoraProtocol",
-    listedAt: 1699358645                   
+    listedAt: 1699358645
   },
   {
     id: "3746",
@@ -23305,7 +23305,7 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "davincigraph",
     github: ["DaVinciGraph"],
-    listedAt: 1699359208                   
+    listedAt: 1699359208
   },
   {
     id: "3747",
@@ -23326,7 +23326,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "IntentX_",
-    listedAt: 1700881008            
+    listedAt: 1700881008
   },
   {
     id: "3748",
@@ -23349,7 +23349,7 @@ const data3: Protocol[] = [
     twitter: "marginlycom",
     audit_links: ["https://github.com/eq-lab/marginly/blob/main/audit/Quantstamp-marginly-final-report.pdf"],
     github: ["eq-lab"],
-    listedAt: 1699366414                 
+    listedAt: 1699366414
   },
   {
     id: "3749",
@@ -23371,7 +23371,7 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "grokswap_en",
     github: [],
-    listedAt: 1699390286                 
+    listedAt: 1699390286
   },
   {
     id: "3750",
@@ -23764,7 +23764,7 @@ const data3: Protocol[] = [
     module: "defo/index.js",
     twitter: "DefoWorld",
     listedAt: 1699614485
-  }, 
+  },
   {
     id: "3768",
     name: "Dexland",
@@ -26006,7 +26006,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    oracles: [], 
+    oracles: [],
     chains: ["Ethereum"],
     module: "wildcat-fi/index.js",
     twitter: "WildcatFi",

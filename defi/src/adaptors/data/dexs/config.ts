@@ -2178,7 +2178,7 @@ export default {
         }
     },
     "derivio": {
-        "enabled": true,
+        "enabled": false,
         parentId: "Deri",
         "id": "3759",
         protocolsData: {

@@ -26013,6 +26013,26 @@ const data3: Protocol[] = [
     github: ["wildcat-finance"],
     listedAt: 1701425904
   },
+  {
+    id: "3872",
+    name: "Bear Vs Bull",
+    address: null,
+    symbol: "-",
+    url: "https://bearvsbull.bet",
+    description: "Bear vs Bull is a platform that allows players to make predictions on the price of bitcoin",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/bear-vs-bull.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    oracles: [], 
+    chains: ["Polygon"],
+    module: "dummy.js",
+    twitter: "bvb_matic",
+  },
+
 ]
 
 export default data3

@@ -50,8 +50,15 @@ export async function getLPInfo(
   block: number | undefined,
 ) {
   const api = new sdk.ChainApi({ chain, block });
+
+  const supplies = await api.multiCall({
+    abi: "erc20:totalSupply",
+    calls: targets.map((i: any) => i.address),
+    withMetadata: true,
+    permitFailure: true,
+  });
+
   const [
-    supplies,
     lpDecimals,
     lpSymbols,
     underlyingDecimalAs,
@@ -59,11 +66,6 @@ export async function getLPInfo(
     symbolAs,
     symbolBs,
   ] = await Promise.all([
-    api.multiCall({
-      abi: "erc20:totalSupply",
-      calls: targets.map((i: any) => i.address),
-      withMetadata: true,
-    }),
     _getCachedData({
       api,
       targets: targets.map((i: any) => i.address),
@@ -95,6 +97,7 @@ export async function getLPInfo(
       subkey: "symbol",
     }),
   ]);
+
   return {
     supplies,
     lpDecimals,

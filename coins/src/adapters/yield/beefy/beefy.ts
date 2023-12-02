@@ -69,6 +69,7 @@ export const config = {
       '0x9e75f8298e458b76382870982788988a0799195b', // mooCurveWSTETH
       '0xa64A8CAAd2c412baCf215A351FA60cDC2a08C0E8', // Yama PlvGLP
       '0xAACB2FD100981d15cFdEc2BB54B06C5E6f1AdB35', // Yama snrLLP
+      '0xE48551b7a15e074810372B411e0526cdE45d4c02' // Yama staked JGLP
     ],
   },
   ethereum: {

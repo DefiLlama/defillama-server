@@ -17,7 +17,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "aave",
     cmcId: "7278",
     treasury: "aave.js",
-    twitter: "AaveAave",
+    twitter: "aave",
     governanceID: ["snapshot:aave.eth", 'eip155:1:0xEC568fffba86c094cf06b22134B23074DFE2252c'],
     wrongLiquidity: true, // missing balancer v1 pool
     github: ["aave", "bgd-labs"],
@@ -3222,6 +3222,41 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DFXFinance",
     governanceID: ["snapshot:dfx.eth"],
     github: ["dfx-finance"]
+  },
+  {
+    id: "parent#ascent-exchange",
+    name: "Ascent Exchange",
+    url: "https://ascent.exchange/",
+    description: "Ascent: The Next-Gen Liquidity Layer on Horizen Eon",
+    logo: `${baseIconsUrl}/ascent-exchange.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AscentExchange",
+    github: ["ascent-exchange"]
+  },
+  {
+    id: "parent#charm-finance",
+    name: "Charm Finance",
+    url: "https://www.charm.fi/",
+    description: "The Liquidity Super App. The easiest way to provide and manage liquidity",
+    logo: `${baseIconsUrl}/charm-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "CharmFinance",
+    github: ['charmfinance'],
+  },
+  {
+    id: "parent#beta-finance",
+    name: "Beta Finance",
+    url: "https://www.betafinance.org/",
+    description: "Beta Finance is the permissionless money market for borrowing, lending, and shorting crypto assets",
+    logo: `${baseIconsUrl}/beta-finance.png`,
+    gecko_id: "beta-finance",
+    cmcId: "11307",
+    chains: [],
+    twitter: "beta_finance",
   },
 ];
 

@@ -108,7 +108,7 @@ const data: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum", "Polygon", "Avalanche"],
     module: "aave/index.js",
-    twitter: "AaveAave",
+    twitter: "aave",
     audit_links: ["https://aave.com/security"],
     oracles: ["Chainlink"],
     parentProtocol: "parent#aave",
@@ -5579,7 +5579,7 @@ const data: Protocol[] = [
   },
   {
     id: "365",
-    name: "Charm Finance",
+    name: "Charm Finance V1",
     address: null,
     symbol: "-",
     url: "https://charm.fi/",
@@ -5594,10 +5594,10 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "charmfinance/index.js",
     twitter: "CharmFinance",
-    github: ['charmfinance'],
     audit_links: [
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Charm%20Finance%20%5B27.10.2020%5D.pdf",
     ],
+    parentProtocol: "parent#charm-finance"
   },
   {
     id: "366",
@@ -7742,7 +7742,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "464",
-    name: "Beta Finance",
+    name: "Beta Finance V1",
     address: "0xbe1a001fe942f96eea22ba08783140b9dcc09d28",
     symbol: "BETA",
     url: "https://www.betafinance.org/",
@@ -7751,13 +7751,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/beta-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "beta-finance",
-    cmcId: "11307",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
     module: "betafinance/index.js",
     twitter: "beta_finance",
     audit_links: ["https://betafinance.gitbook.io/betafinance/security-and-audits"],
+    parentProtocol: "parent#beta-finance"
   },
   {
     id: "465",

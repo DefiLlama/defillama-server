@@ -79,7 +79,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
   async function debugHandler(req: any, res: any) {
     const fullPath = req.path;
-    const routerPath = fullPath.replace(routerBasePath+'/debug-pg', '');
+    const routerPath = fullPath.replace(routerBasePath + '/debug-pg', '');
     console.log('debug-pg', routerPath)
     try {
 
@@ -140,6 +140,7 @@ async function getTokenInProtocols(req: HyperExpress.Request, res: HyperExpress.
     res.status(404)
     return res.send('Ser you need to provide a token', true)
   }
+  res.setHeaders({ "Expires": get20MinDate() })
 
   const responseData = await getTokensInProtocolsInternal(symbol, {
     protocolList: cache.metadata.protocols,
@@ -164,6 +165,7 @@ async function getSimpleChainDataset(req: HyperExpress.Request, res: HyperExpres
     return res.send(error, true)
   }
 
+  res.setHeaders({ "Expires": get20MinDate() })
   res.type('text/csv')
   res.setHeader('Content-Disposition', `attachment; filename=${filename}`)
 
@@ -182,6 +184,7 @@ async function getDataset(req: HyperExpress.Request, res: HyperExpress.Response)
 
   const csv = await craftCsvDataset([protocolData], true, false, { readFromPG: true });
 
+  res.setHeaders({ "Expires": get20MinDate() })
   res.type('text/csv')
   res.setHeader('Content-Disposition', `attachment; filename=${filename}`)
 

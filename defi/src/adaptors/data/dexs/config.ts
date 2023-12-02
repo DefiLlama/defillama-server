@@ -1748,6 +1748,7 @@ export default {
         },
     },
     "litx": {
+        disabled: true,
         enabled: true,
         id: "3159"
     },
@@ -2178,7 +2179,7 @@ export default {
         }
     },
     "derivio": {
-        "enabled": true,
+        "enabled": false,
         parentId: "Deri",
         "id": "3759",
         protocolsData: {

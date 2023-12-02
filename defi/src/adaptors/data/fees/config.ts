@@ -1582,5 +1582,13 @@ export default {
     "near": {
         "enabled": true,
         "id": "6535"
+    },
+    "substanceX": {
+        "enabled": true,
+        "id": "3835"
+    },
+    "up-vs-down-game": {
+        "enabled": true,
+        "id": "3872"
     }
 } as AdaptorsConfig

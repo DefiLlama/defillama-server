@@ -395,6 +395,10 @@
       "decimals": "18",
       "symbol": "ETH"
     },
+    "0x76b7D9c44B81717C9ACe369951c5a8978EeD3dC2": {
+      "to": "coingecko#ethereum", "decimals": "18",
+      "symbol": "ETH"
+    },
     "0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4": {
       "to": "coingecko#usd-coin",
       "decimals": "6",

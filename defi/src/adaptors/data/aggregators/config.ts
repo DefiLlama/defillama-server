@@ -71,5 +71,9 @@ export default {
     "aggre": {
         enabled: true,
         id: "3809"
+    },
+    "llamaswap": {
+        enabled: true,
+        id: "3847"
     }
 } as AdaptorsConfig

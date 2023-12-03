@@ -26052,6 +26052,28 @@ const data3: Protocol[] = [
     twitter: "teambrewlabs",
     listedAt: 1701450936
   },
+  {
+    id: "3874",
+    name: "ISSUAA",
+    address: "scroll:0x46EAd9Ad6BFA9986C53Dde09ABf929ac2A7d82c7",
+    symbol: "ISS",
+    url: "https://app.issuaa.org/",
+    description: `ISSUAA is a novel DeFi Protocol for derivatives of real-world, crypto, and practically any asset on the blockchain. Its distinct "twin-token" method enables the creation of synthetic assets that reflect the price of a real-world or crypto equivalent. This method offers high capital efficiency without requiring over-collateralization or exposing to the risk of liquidation. For liquidity providers, this twin-token approach substantially minimizes price risks, bringing them near to stable-coin levels`,
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/issuaa.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    chains: ["Scroll"],
+    module: "issuaa/index.js",
+    twitter: "issuaaOfficial",
+    github: ["issuaa"],
+    listedAt: 1701572447
+  },
 
 ]
 

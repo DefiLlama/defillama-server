@@ -23207,7 +23207,7 @@ const data2: Protocol[] = [
     name: "BAO Markets",
     address: null,
     symbol: "-",
-    url: "https://app.bao.finance",
+    url: "https://app.baofinance.io",
     description:
       "Lending Platform on Ethereum.",
     chain: "Ethereum",
@@ -23230,7 +23230,7 @@ const data2: Protocol[] = [
     name: "BAO Baskets",
     address: null,
     symbol: "-",
-    url: "https://app.bao.finance/baskets/",
+    url: "https://app.baofinance.io/baskets/",
     description:
       "Bao Baskets allow users to get balanced exposure to digital assets on the Ethereum Network. Baskets are designed to be truly set-and-forget, maximizing your returns at a fraction of the cost and effort. Baskets leverage automated strategies utilizing staking, lending, and yield farming",
     chain: "Ethereum",
@@ -23253,7 +23253,7 @@ const data2: Protocol[] = [
     name: "BAO Ballast",
     address: null,
     symbol: "-",
-    url: "https://app.bao.finance/ballast",
+    url: "https://app.baofinance.io/ballast",
     description:
       "The Ballast allows users to swap between bUSD and available DAI for a 1% fee.",
     chain: "Ethereum",

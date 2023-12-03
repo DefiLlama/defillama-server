@@ -1629,6 +1629,7 @@ export default {
         }
     },
     "lighter": {
+        parentId: "Lighter",
         "enabled": true,
         "id": "2636"
     },
@@ -1747,6 +1748,7 @@ export default {
         },
     },
     "litx": {
+        disabled: true,
         enabled: true,
         id: "3159"
     },
@@ -2178,6 +2180,7 @@ export default {
     },
     "derivio": {
         "enabled": false,
+        parentId: "Deri",
         "id": "3759",
         protocolsData: {
             "swap": {
@@ -2198,5 +2201,10 @@ export default {
     "chimpexchange": {
         "enabled": true,
         "id": "3836"
+    },
+    "lighterv2": {
+        parentId: "Lighter",
+        "enabled": true,
+        "id": "3854"
     }
 } as AdaptorsConfig

@@ -1257,7 +1257,7 @@ export default {
         "id": "3464"
     },
     "tigris": {
-        "enabled": false,
+        "enabled": true,
         "id": "3129"
     },
     "aerodrome": {
@@ -1574,5 +1574,21 @@ export default {
     "chimpexchange": {
         "enabled": true,
         "id": "3836"
+    },
+    "dln": {
+        "enabled": true,
+        "id": "3846"
+    },
+    "near": {
+        "enabled": true,
+        "id": "6535"
+    },
+    "substanceX": {
+        "enabled": true,
+        "id": "3835"
+    },
+    "up-vs-down-game": {
+        "enabled": true,
+        "id": "3872"
     }
 } as AdaptorsConfig

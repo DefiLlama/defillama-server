@@ -467,6 +467,7 @@ export default {
     },
     "derivio": {
         "enabled": false,
+        parentId: "Deri",
         "id": "3759",
         protocolsData: {
             "derivatives": {
@@ -502,5 +503,9 @@ export default {
             },
         }
 
+    },
+    "SubstanceX": {
+        "enabled": true,
+        "id": "3835"
     }
 } as AdaptorsConfig

@@ -1,6 +1,6 @@
-import { Sequelize, Model, ModelStatic, Op, Options as SequelizeOptions } from 'sequelize'
+import { Sequelize, Model, ModelStatic, Op, Options as SequelizeOptions, QueryTypes } from 'sequelize'
 
-import getEnv from '../env'
+import getEnv, { validateEnv } from '../env'
 import { initializeTables, Tables as TABLES } from './tables'
 import { log } from '@defillama/sdk'
 
@@ -8,6 +8,7 @@ import {
   dailyTvl, dailyTokensTvl, dailyUsdTokensTvl, dailyRawTokensTvl, hourlyTvl, hourlyTokensTvl, hourlyUsdTokensTvl, hourlyRawTokensTvl,
 } from "../../utils/getLastRecord"
 import { getTimestampString } from '../utils'
+import { readFromPGCache, writeToPGCache, getDailyTvlCacheId, deleteFromPGCache } from '../cache/file-cache'
 
 const dummyId = 'dummyId'
 
@@ -51,6 +52,7 @@ async function initializeTVLCacheDB({
 } = {}) {
   if (!sequelize) {
     const ENV = getEnv()
+    validateEnv()
     const dbOptions: SequelizeOptions = {
       host: ENV.host,
       port: (ENV.port as any),
@@ -66,10 +68,10 @@ async function initializeTVLCacheDB({
     }
     if (isApi2Server)
       dbOptions.pool = {
-        max: 30,
+        max: 10,
         min: 0,
         idle: 5000,
-        acquire: 120000, // increase this if your queries take a long time to run
+        acquire: 30000, // increase this if your queries take a long time to run
         evict: 1000, // how often to run eviction checks
       }
 
@@ -195,43 +197,54 @@ async function deleteProtocolItems(ddbPKFunction: Function, where: any) {
   console.log('[Postgres] delete item count', response)
 }
 
+
+async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hours = false, filterADayAgo = false, filterAWeekAgo = false, filterAMonthAgo = false, } = {}) {
+  const table = getTVLCacheTable(ddbPKFunction)
+  let whereClause = '';
+
+  if (filterLast24Hours) {
+    const date24HoursAgo = new Date()
+    date24HoursAgo.setDate(date24HoursAgo.getDate() - 1)
+    whereClause = ` WHERE timestamp >= '${getUnixTime(date24HoursAgo)}'`;
+  }
+
+  if (filterADayAgo || filterAWeekAgo || filterAMonthAgo) {
+    let dayCount = 1
+    if (filterAWeekAgo) dayCount = 7
+    if (filterAMonthAgo) dayCount = 30
+
+    // we give 20 minutes of buffer to make sure we don't miss any data
+    const date = new Date()
+    date.setDate(date.getDate() - dayCount)
+    date.setMinutes(date.getMinutes() + 20);
+    const toTime = getUnixTime(date)
+    date.setDate(date.getDate() - 1)
+    date.setMinutes(date.getMinutes() - 2 * 20);
+    const fromTime = getUnixTime(date)
+
+    whereClause = ` WHERE timestamp BETWEEN '${fromTime}' AND '${toTime}'`;
+  }
+
+  const items = await table.sequelize!.query(
+    `SELECT DISTINCT ON (id) id, "data" , "timestamp" FROM "${table.getTableName()}" ${whereClause} ORDER BY id, timestamp DESC`,
+    { type: QueryTypes.SELECT }
+  )
+
+  log('[Postgres] fetch item count', table.getTableName(), items.length)
+
+  items.forEach((i: any) => i.data.SK = i.timestamp)
+  return items
+
+  function getUnixTime(date: Date) {
+    return Math.floor(+date / 1e3)
+  }
+}
+
 function validateRecord(record: TVLCacheRecord) {
   if (!record.id || typeof record.id !== 'string') throw new Error('Missing id')
   if (!record.timeS || typeof record.timeS !== 'string') throw new Error('Missing timeS')
   if (!record.timestamp || typeof record.timestamp !== 'number') throw new Error('Missing timestamp')
   if (!record.data || typeof record.data !== 'object') throw new Error('Missing data')
-}
-
-async function writeToPGCache(key: string, data: any) {
-  const table = TABLES.JSON_CACHE
-  if (typeof data !== 'object') data = JSON.stringify(data)
-  await table.upsert({ id: key, data, timestamp: Math.floor(Date.now() / 1e3) })
-}
-
-async function readFromPGCache(key: string, { withTimestamp = false } = {}) {
-  const table = TABLES.JSON_CACHE
-  const item: any = await table.findOne({
-    where: { id: key },
-    attributes: ['data', 'timestamp'],
-    raw: true,
-  })
-  if (!item) return null
-  try {
-    item.data = JSON.parse(item.data)
-  } catch { }
-  if (withTimestamp) return item
-  return item.data
-}
-
-async function deleteFromPGCache(key: string) {
-  const table = TABLES.JSON_CACHE
-  log('Deleting from db cache:', key)
-  await table.destroy({ where: { id: key } })
-}
-
-function getDailyTvlCacheId(id: string) {
-  if (!id) throw new Error('Missing required parameter: id')
-  return `tvl-cache-daily/${id}`
 }
 
 async function closeConnection() {
@@ -272,10 +285,11 @@ export {
   initializeTVLCacheDB,
   closeConnection,
   deleteProtocolItems,
-  writeToPGCache,
   readFromPGCache,
+  writeToPGCache,
   deleteFromPGCache,
   getDailyTvlCacheId,
+  getLatestProtocolItems,
 }
 
 // Add a process exit hook to close the database connection

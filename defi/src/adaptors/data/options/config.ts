@@ -55,7 +55,7 @@ export default {
         "id": "2605"
     },
     "tigris": {
-        "enabled": false,
+        "enabled": true,
         "id": "3129"
     },
     "valorem": {
@@ -63,6 +63,7 @@ export default {
         "id": "3501"
     },
     "derivio": {
+        parentId: "Deri",
         "enabled": false,
         "id": "3759",
         protocolsData: {

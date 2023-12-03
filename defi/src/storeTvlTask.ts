@@ -10,6 +10,7 @@ import * as sdk from '@defillama/sdk'
 import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, getLastRecord } from "./utils/getLastRecord";
 import { closeConnection, getLatestProtocolItem, initializeTVLCacheDB } from "./api2/db";
+import { shuffleArray } from "./utils/shared/shuffleArray";
 
 const maxRetries = 2;
 
@@ -78,15 +79,6 @@ async function main() {
 
   await saveSdkInternalCache() // save sdk cache to r2
   await storeStaleCoins(staleCoins)
-}
-
-
-function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
 }
 
 /* async function cacheCurrentBlocks() {

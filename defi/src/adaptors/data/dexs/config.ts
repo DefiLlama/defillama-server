@@ -1755,11 +1755,11 @@ export default {
     "voodoo-trade": {
         enabled: true,
         disabled: true,
-        id: "3156",
+        id: "3792",
         "protocolsData": {
             "swap": {
                 disabled: true,
-                "id": "3156",
+                "id": "3792",
                 "enabled": true,
                 "category": "Dexes",
             }

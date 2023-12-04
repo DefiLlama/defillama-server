@@ -1039,7 +1039,7 @@ export default {
     },
     "voodoo-trade": {
         enabled: true,
-        id: "3156"
+        id: "3792"
     },
     "equity": {
         parentId: "Equalizer",

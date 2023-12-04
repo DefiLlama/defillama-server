@@ -1594,5 +1594,9 @@ export default {
     "aimbot": {
         "enabled": true,
         "id": "3875"
+    },
+    "sns": {
+        "enabled": true,
+        "id": "3877"
     }
 } as AdaptorsConfig

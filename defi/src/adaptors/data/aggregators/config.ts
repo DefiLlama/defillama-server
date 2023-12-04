@@ -77,7 +77,7 @@ export default {
     id: "3847",
   },
   "openocean": {
-    enabled: true,
+    enabled: false,
     id: "533",
   },
 } as AdaptorsConfig;

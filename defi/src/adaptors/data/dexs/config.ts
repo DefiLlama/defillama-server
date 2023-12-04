@@ -2210,5 +2210,9 @@ export default {
     "thick": {
         "enabled": true,
         "id": "3878"
+    },
+    "noah-swap": {
+        "enabled": true,
+        "id": "2855"
     }
 } as AdaptorsConfig

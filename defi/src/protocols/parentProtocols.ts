@@ -2343,7 +2343,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#velodrome",
     name: "Velodrome",
-    url: "https://app.velodrome.finance",
+    url: "https://velodrome.finance",
     description: "A revolutionary new AMM based on Solidly launched on Optimism.",
     logo: `${baseIconsUrl}/velodrome.png`,
     gecko_id: "velodrome-finance",

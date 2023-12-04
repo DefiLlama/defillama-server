@@ -26261,12 +26261,34 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    oracles: [],
-    forkedFrom: ["Pyth"],
+    oracles: ["Pyth"], // https://docs.storm.tg/protocol/price_feeds
+    forkedFrom: [],
     chains: ["TON"],
     module: "stormtrade/index.js",
     twitter: "storm_trade_ton",
     listedAt: 1701706347
+  },
+  {
+    id: "3884",
+    name: "Newswap",
+    address: null,
+    symbol: "-",
+    url: "https://app.newswap.org/",
+    description: `Decentralized exchange on Newton chain`,
+    chain: "Newton",
+    logo: `${baseIconsUrl}/newswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    chains: ["Newton"],
+    module: "newswap/index.js",
+    twitter: "NewSwapOfficial",
+    github: ["newswap"],
+    listedAt: 1701733018
   },
 ]
 

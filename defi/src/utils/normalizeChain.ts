@@ -2071,13 +2071,20 @@ export const chainCoingeckoIds = {
     },
     chainId: 34443,
   },
-    "FSC": {
-      geckoId: "fonsmartchain",
-      symbol: "FON",
-      cmcId: "22607",
-      github: ["FONSmartChain"],
-      categories: ["EVM"],
-    },
+  "FSC": {
+    geckoId: "fonsmartchain",
+    symbol: "FON",
+    cmcId: "22607",
+    github: ["FONSmartChain"],
+    categories: ["EVM"],
+  },
+  "Newton": {
+    geckoId: "newton-project",
+    symbol: "NEW",
+    cmcId: "3871",
+    github: ["newtonproject"],
+    categories: ["EVM"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2589,7 +2596,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "mode":
       return "Mode"
     case "fsc":
-       return "FSC"
+      return "FSC"
+    case "new":
+      return "Newton"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

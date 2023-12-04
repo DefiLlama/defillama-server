@@ -26181,6 +26181,29 @@ const data3: Protocol[] = [
     github: ["CherryLend"],
     listedAt: 1701694059
   },
+  {
+    id: "3880",
+    name: "StarkDeFI",
+    address: null,
+    symbol: "-",
+    url: "https://www.starkdefi.com",
+    description: `Explore Defi on Starknet with the StarkDeFi Protocol`,
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/starkdefi.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    oracles: [],
+    forkedFrom: [],
+    chains: ["Starknet"],
+    module: "starkdefi/index.js",
+    twitter: "StarkDefi",
+    github: ["Starkdefi"],
+    audit_links: ["https://github.com/blaize-security/blaize-security-audits/blob/main/s/starkdefi/StarkDeFi-audit-report-v2-%5B23-Oct-2023%5D.pdf"],
+    listedAt: 1701694470
+  },
 ]
 
 export default data3

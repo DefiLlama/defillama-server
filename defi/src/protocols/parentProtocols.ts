@@ -3258,6 +3258,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "beta_finance",
   },
+  {
+    id: "parent#buttonwood",
+    name: "Buttonwood",
+    url: "https://www.button.finance",
+    description: "Building DeFi's first Tranche Stablecoin & Poolside_Party, an AMM for Liquid Staking Tokens.",
+    logo: `${baseIconsUrl}/buttonwood.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ButtonDeFi",
+    github: ["buttonwood-protocol"],
+  },
 ];
 
 export default parentProtocols;

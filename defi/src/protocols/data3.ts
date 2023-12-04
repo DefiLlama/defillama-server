@@ -21447,7 +21447,6 @@ const data3: Protocol[] = [
     module: "poolside/index.js",
     twitter: "Poolside_Party",
     audit_links: ["https://github.com/buttonwood-protocol/buttonswap-core/blob/main/notes/statemind_2023-08-11.pdf"],
-    parentProtocol: "parent#buttonwood",
     listedAt: 1697722556
   },
   {
@@ -25526,7 +25525,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Yield",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

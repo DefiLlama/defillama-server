@@ -10,8 +10,8 @@ const config: any = {
     { eventEmitter: '0xc8ee91a54287db53897056e12d9819156d3822fb', fromBlock: 107737756, gmReader: '0x38d91ED96283d62182Fc6d990C24097A918a4d9b', tickers: 'https://arbitrum-api.gmxinfra.io/prices/tickers' },
   ],
   // avax: [
-  //   { eventEmitter: '0xDb17B211c34240B014ab6d61d4A31FA0C0e20c26', fromBlock: 32162455, },
-  // ],
+  //   { eventEmitter: '0xDb17B211c34240B014ab6d61d4A31FA0C0e20c26', fromBlock: 32162455, tickers: 'https://avalanche-api.gmxinfra.io/prices/tickers', gmReader: '0x73BA021ACF4Bb6741E82690DdB821e7936050f8C', },
+  // ], // TODO: re-enable it after upgrading avax rpc node
 }
 
 const chains = Object.keys(config)
@@ -64,13 +64,13 @@ async function getTokenPrices(chain: string, timestamp: number) {
 
     function getCallConfig(address: string) {
       address = address.toLowerCase()
-      if (address === '0x0000000000000000000000000000000000000000') return { min: 0, max: 0}
+      if (address === '0x0000000000000000000000000000000000000000') return { min: 0, max: 0 }
       let i = tickerDataObj[address]
       if (i) return { min: i.minPrice, max: i.maxPrice }
       i = coinDataObj[address]
       if (!i) return null
       const price = Math.floor(i.price * 1e12).toString()
-      return { min: price, max: price}
+      return { min: price, max: price }
     }
 
     const calls = logs.map((v: any) => {

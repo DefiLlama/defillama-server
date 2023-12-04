@@ -239,7 +239,7 @@ export default {
         }
     },
     "ref-finance": {
-        "enabled": false,
+        "enabled": true,
         "id": "541"
     },
     "solidly": {
@@ -406,7 +406,16 @@ export default {
     "iziswap": {
         parentId: "iZUMI Finance",
         "enabled": true,
-        "id": "1883"
+        "id": "1883",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1700524800": true,
+                "1700611200": true,
+                "1700697600": true,
+                "1700784000": true,
+                "1700870400": true,
+            },
+        }
     },
     "tinyman": {
         "enabled": true,
@@ -1620,6 +1629,7 @@ export default {
         }
     },
     "lighter": {
+        parentId: "Lighter",
         "enabled": true,
         "id": "2636"
     },
@@ -1738,6 +1748,7 @@ export default {
         },
     },
     "litx": {
+        disabled: true,
         enabled: true,
         id: "3159"
     },
@@ -2169,6 +2180,7 @@ export default {
     },
     "derivio": {
         "enabled": false,
+        parentId: "Deri",
         "id": "3759",
         protocolsData: {
             "swap": {
@@ -2185,5 +2197,14 @@ export default {
         parentId: "CaviarNine",
         "enabled": true,
         "id": "3666"
+    },
+    "chimpexchange": {
+        "enabled": true,
+        "id": "3836"
+    },
+    "lighterv2": {
+        parentId: "Lighter",
+        "enabled": true,
+        "id": "3854"
     }
 } as AdaptorsConfig

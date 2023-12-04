@@ -67,7 +67,7 @@ export function traderJoe(timestamp: number = 0) {
     "avax",
     "0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10",
     undefined,
-    "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange",
+    undefined,
     timestamp,
   );
 }
@@ -348,6 +348,17 @@ export function elysium(timestamp: number = 0) {
   return getTokenPrices(
     "elsm",
     "0x5bec5d65fAba8E90e4a74f3da787362c60F22DaE",
+    undefined,
+    undefined,
+    timestamp,
+  );
+}
+
+export function zkswap(timestamp: number = 0) {
+  console.log("starting zkswap v2");
+  return getTokenPrices(
+    "polygon_zkevm",
+    "0x51A0D4B81400581d8722627daFCd0c1Ff9357d1D",
     undefined,
     undefined,
     timestamp,

@@ -467,6 +467,7 @@ export default {
     },
     "derivio": {
         "enabled": false,
+        parentId: "Deri",
         "id": "3759",
         protocolsData: {
             "derivatives": {
@@ -488,5 +489,23 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "rabbitx": {
+        "enabled": true,
+        "id": "2886",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1700524800": true,
+                "1700438400": true,
+                "1700352000": true,
+                "1700265600": true,
+                "1700179200": true
+            },
+        }
+
+    },
+    "SubstanceX": {
+        "enabled": true,
+        "id": "3835"
     }
 } as AdaptorsConfig

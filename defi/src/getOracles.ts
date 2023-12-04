@@ -25,7 +25,7 @@ function sum(
   item: Item = {},
   oracleProtocols: OracleProtocols,
   protocol: IProtocol,
-  chain:string|null
+  chain: string | null
 ) {
   if (total[time] === undefined) {
     total[time] = {};
@@ -35,14 +35,14 @@ function sum(
   const sectionToAdd = chain ?? 'tvl'
 
   for (let section in item) {
-    if(chain !== null){
-      if(!section.startsWith(chain)){
+    if (chain !== null) {
+      if (!section.startsWith(chain)) {
         continue;
-      } else if(section.includes("-")){
+      } else if (section.includes("-")) {
         section = section.split("-")[1]
       }
     }
-    if(section === chain){
+    if (section === chain) {
       data.tvl = (data.tvl || 0) + item[section];
     } else if (section === sectionToAdd || extraSections.includes(section)) {
       data[section] = (data[section] || 0) + item[section];
@@ -69,15 +69,15 @@ function sum(
   oracleProtocols[oracle].add(protocol.name);
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+export async function getOraclesInternal({ ...options}: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
   const oracleProtocols = {} as OracleProtocols;
 
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
       try {
-        if(protocol.oraclesByChain){
-          Object.entries(protocol.oraclesByChain).forEach(([chain, oracles])=>{
+        if (protocol.oraclesByChain) {
+          Object.entries(protocol.oraclesByChain).forEach(([chain, oracles]) => {
             oracles.forEach((oracle) => {
               sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, chain);
             });
@@ -91,16 +91,16 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
         console.log(protocol.name, error);
       }
     },
-    { includeBridge: false }
+    { includeBridge: false, ...options }
   );
+  return {
+    chart: sumDailyTvls,
+    oracles: Object.fromEntries(Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])),
+  }
+}
 
-  return successResponse(
-    {
-      chart: sumDailyTvls,
-      oracles: Object.fromEntries(Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])),
-    },
-    10 * 60
-  ); // 10 mins cache
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  return successResponse(await getOraclesInternal(), 10 * 60); // 10 mins cache
 };
 
 export default wrap(handler);

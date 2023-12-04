@@ -1257,7 +1257,7 @@ export default {
         "id": "3464"
     },
     "tigris": {
-        "enabled": false,
+        "enabled": true,
         "id": "3129"
     },
     "aerodrome": {
@@ -1563,4 +1563,36 @@ export default {
         "id": "144",
         "enabled": true
     },
+    "justlend": {
+        "enabled": true,
+        "id": "494"
+    },
+    "wagmi": {
+        "enabled": true,
+        "id": "2837"
+    },
+    "chimpexchange": {
+        "enabled": true,
+        "id": "3836"
+    },
+    "dln": {
+        "enabled": true,
+        "id": "3846"
+    },
+    "near": {
+        "enabled": true,
+        "id": "6535"
+    },
+    "substanceX": {
+        "enabled": true,
+        "id": "3835"
+    },
+    "up-vs-down-game": {
+        "enabled": true,
+        "id": "3872"
+    },
+    "aimbot": {
+        "enabled": true,
+        "id": "3875"
+    }
 } as AdaptorsConfig

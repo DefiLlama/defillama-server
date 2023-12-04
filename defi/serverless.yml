@@ -205,6 +205,20 @@ functions:
       - http:
           path: storeAggregatorEvent
           method: post
+  getSwapDailyVolume:
+    handler: src/getSwapDailyVolume.default
+    timeout: 30
+    events:
+      - http:
+          path: getSwapDailyVolume
+          method: get
+  getSwapTotalVolume:
+    handler: src/getSwapTotalVolume.default
+    timeout: 30
+    events:
+      - http:
+          path: getSwapTotalVolume
+          method: get
   getSwapsHistory:
     handler: src/getSwapsHistory.default
     timeout: 30
@@ -398,14 +412,6 @@ functions:
       - http:
           path: categories
           method: get
-  testTvl:
-    handler: src/testTvl.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: testTvl
-          method: get
   storeLiquidations:
     handler: src/storeLiquidations.default
     timeout: 900
@@ -436,14 +442,6 @@ functions:
     events:
       - http:
           path: simpleChainDataset/{chain}
-          method: get
-  totalChainDataset:
-    handler: src/getTotalChainDataset.default
-    timeout: 30
-    memorySize: 3000
-    events:
-      - http:
-          path: totalChainDataset/{chain}
           method: get
   config:
     handler: src/getConfig.default

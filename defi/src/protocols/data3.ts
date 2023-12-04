@@ -2930,7 +2930,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/unieth.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "universal-eth",
+    gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Ethereum"],

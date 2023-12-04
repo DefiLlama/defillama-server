@@ -2206,5 +2206,9 @@ export default {
         parentId: "Lighter",
         "enabled": true,
         "id": "3854"
+    },
+    "thick": {
+        "enabled": true,
+        "id": "3878"
     }
 } as AdaptorsConfig

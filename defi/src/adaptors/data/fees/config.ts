@@ -1598,5 +1598,9 @@ export default {
     "sns": {
         "enabled": true,
         "id": "3877"
+    },
+    "thick": {
+        "enabled": true,
+        "id": "3878"
     }
 } as AdaptorsConfig

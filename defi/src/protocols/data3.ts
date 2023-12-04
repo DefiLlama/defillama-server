@@ -26116,6 +26116,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#buttonwood",
     listedAt: 1701684349
   },
+  {
+    id: "3877",
+    name: "Solana Name Service",
+    address: null,
+    symbol: "-",
+    url: "https://www.sns.id",
+    description: `Get your .sol domain that can be used to represent you in the metaverse`,
+    chain: "Solana",
+    logo: `${baseIconsUrl}/solana-name-service.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    oracles: [], 
+    forkedFrom: [],
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "bonfida",
+  },
 ]
 
 export default data3

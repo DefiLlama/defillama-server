@@ -1590,5 +1590,9 @@ export default {
     "up-vs-down-game": {
         "enabled": true,
         "id": "3872"
+    },
+    "aimbot": {
+        "enabled": true,
+        "id": "3875"
     }
 } as AdaptorsConfig

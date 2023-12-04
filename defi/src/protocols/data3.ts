@@ -26225,6 +26225,28 @@ const data3: Protocol[] = [
     twitter: "banx_gg",
     listedAt: 1701698566
   },
+  {
+    id: "3882",
+    name: "Mantle LSP",
+    address: "0x3c3a81e81dc49a522a592e7622a7e711c06bf354", //mnt
+    symbol: "MNT",
+    assetToken:"METH",
+    url: "https://www.mantle.xyz/meth",
+    description: `A permissionless, non-custodial ETH liquid staking protocol deployed on Ethereum L1 and governed by Mantle.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mantle-lsp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "mantle-staked-ether",
+    cmcId: null,
+    category: "Liquid Staking",
+    oracles: [],
+    forkedFrom: [],
+    chains: ["Ethereum"],
+    module: "mantle-meth/index.js",
+    twitter: "0xMantle",
+    listedAt: 1701703365
+  },
 ]
 
 export default data3

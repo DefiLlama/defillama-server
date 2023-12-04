@@ -142,10 +142,10 @@ export default {
     },
     "voodoo-trade": {
         enabled: true,
-        id: "3156",
+        id: "3792",
         "protocolsData": {
             "derivatives": {
-                "id": "3156",
+                "id": "3792",
                 "enabled": true
             }
         },

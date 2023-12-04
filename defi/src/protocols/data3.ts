@@ -14959,8 +14959,8 @@ const data3: Protocol[] = [
   {
     id: "3371",
     name: "Locus Finance",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xe1d3495717f9534Db67A6A8d4940Dd17435b6A9E",
+    symbol: "LOCUS",
     url: "https://www.locus.finance",
     description: "Locus is a platform for decentralized asset management that offers tokenized yield-bearing vaults of strategies",
     chain: "Ethereum",

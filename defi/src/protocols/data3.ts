@@ -26204,6 +26204,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/blaize-security/blaize-security-audits/blob/main/s/starkdefi/StarkDeFi-audit-report-v2-%5B23-Oct-2023%5D.pdf"],
     listedAt: 1701694470
   },
+  {
+    id: "3881",
+    name: "Banx",
+    address: "solana:ErGB9xa24Szxbk1M28u2Tx8rKPqzL6BroNkkzk5rG4zj",
+    symbol: "FRKT",
+    url: "https://banx.gg",
+    description: `Blazing fast, perpetual AF. Borrow from JPEGs`,
+    chain: "Solana",
+    logo: `${baseIconsUrl}/banx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Lending",
+    oracles: [],
+    forkedFrom: [],
+    chains: ["Solana"],
+    module: "banx/index.js",
+    twitter: "banx_gg",
+    listedAt: 1701698566
+  },
 ]
 
 export default data3

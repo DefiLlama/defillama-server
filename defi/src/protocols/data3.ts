@@ -21447,7 +21447,7 @@ const data3: Protocol[] = [
     module: "poolside/index.js",
     twitter: "Poolside_Party",
     audit_links: ["https://github.com/buttonwood-protocol/buttonswap-core/blob/main/notes/statemind_2023-08-11.pdf"],
-    github: ["buttonwood-protocol"],
+    parentProtocol: "parent#buttonwood",
     listedAt: 1697722556
   },
   {
@@ -25515,13 +25515,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3849",
-    name: "Buttonwood",
+    name: "Button Wrappers",
     address: null,
     symbol: '-',
     url: "https://www.button.finance",
     description: "Tranche is a protocol for stratifying price risk of crypto-assets. At the core, it allows users to deposit an asset in return for several Tranche assets, each representing a different risk level. The safer assets have relatively stable value, while the risky assets have value roughly equivalent to a leveraged position of the underlying asset.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/buttonwood.jpg`,
+    logo: `${baseIconsUrl}/button-wrappers.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -25532,7 +25532,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "buttonwood-tranche/index.js",
     audit_links: ["https://github.com/buttonwood-protocol/tranche/blob/main/audits/Certik-2021-07-30.pdf"],
-    github: ["buttonwood-protocol"],
     twitter: "ButtonDeFi",
     listedAt: 1701169995
   },
@@ -26095,7 +26094,28 @@ const data3: Protocol[] = [
     twitter: "AimBot_Coin",
     listedAt: 1701632088
   },
-
+  {
+    id: "3876",
+    name: "Tranche",
+    address: null,
+    symbol: "-",
+    url: "https://tranche.button.finance",
+    description: `Easily segment your crypto assets into senior and junior tranches to use across DeFi.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tranche.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    oracles: [], 
+    forkedFrom: [],
+    chains: ["Ethereum", "Avalanche", "Base"],
+    module: "buttonwood-button-wrappers/index.js",
+    twitter: "ButtonDeFi",
+    parentProtocol: "parent#buttonwood",
+    listedAt: 1701684349
+  },
 ]
 
 export default data3

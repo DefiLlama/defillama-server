@@ -1015,5 +1015,32 @@
       "symbol":"m.USDT",
       "to": "coingecko#tether"
     }
+  },
+  "starknet": {
+    "0x049210ffc442172463f3177147c1aeaa36c51d152c1b0630f2364c300d4f48ee": {
+      "decimals": "18",
+      "symbol": "UNI",
+      "to": "coingecko#uniswap"
+    },
+    "0x070a76fd48ca0ef910631754d77dd822147fe98a569b826ec85e3c33fde586ac": {
+      "decimals": "18",
+      "symbol": "LUSD",
+      "to": "coingecko#liquity-usd"
+    },
+    "0x0319111a5037cbec2b3e638cc34a3474e2d2608299f3e62866e9cc683208c610": {
+      "decimals": "18",
+      "symbol": "RETH",
+      "to": "coingecko#rocket-pool-eth"
+    },
+    "0x009c6b4fb13dfaa025c1383ed6190af8ed8cbb09d9588a3bb020feb152442406": {
+      "decimals": "18",
+      "symbol": "FRAX",
+      "to": "coingecko#frax"
+    },
+    "0x0058efd0e73c33a848ffaa88738d128ebf0af98ea78cf3c14dc757bb02d39ffb": {
+      "decimals": "18",
+      "symbol": "FXS",
+      "to": "coingecko#frax-share"
+    }
   }
 }

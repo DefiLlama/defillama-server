@@ -26247,6 +26247,27 @@ const data3: Protocol[] = [
     twitter: "0xMantle",
     listedAt: 1701703365
   },
+  {
+    id: "3883",
+    name: "Storm Trade",
+    address: null,
+    symbol: "-",
+    url: "https://storm.tg",
+    description: `Storm Trade is the first decentralized exchange in the TON blockchain that allows you to trade Crypto, Stock, Forex and Commodities, with leverage, both in Web App and Telegram.`,
+    chain: "TON",
+    logo: `${baseIconsUrl}/storm-trade.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    oracles: [],
+    forkedFrom: ["Pyth"],
+    chains: ["TON"],
+    module: "stormtrade/index.js",
+    twitter: "storm_trade_ton",
+    listedAt: 1701706347
+  },
 ]
 
 export default data3

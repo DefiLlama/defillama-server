@@ -13933,7 +13933,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: "1240",
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Carbon"],
     module: "demex/index.js",
     twitter: "demexchange",

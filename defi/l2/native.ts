@@ -71,6 +71,7 @@ export async function fetchMinted(params: {
       ]);
 
       const dollarValues: DollarValues = {};
+      mcapData[chain] = {};
       Object.keys(supplies).map((t: string) => {
         const priceInfo = prices[`${chain}:${t}`];
         const mcapInfo = mcaps[`${chain}:${t}`];
@@ -79,11 +80,8 @@ export async function fetchMinted(params: {
         if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
         const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
         const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-        if (
-          !(priceInfo.symbol in mcapData) ||
-          (priceInfo.symbol in mcapData && mcapData[priceInfo.symbol].supply < supply)
-        )
-          mcapData[priceInfo.symbol] = { chain, native: usdValue, total: BigNumber(mcapInfo.mcap), supply };
+        if (!(priceInfo.symbol in mcapData[chain]))
+          mcapData[chain][priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
 
         dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
       });

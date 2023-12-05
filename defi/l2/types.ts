@@ -51,11 +51,11 @@ export type ChainData = {
   // metadata: any;
 };
 export type McapData = {
-  [symbol: string]: {
-    native: BigNumber;
-    outgoing?: BigNumber;
-    supply: number;
-    total: BigNumber;
-    chain: Chain;
+  [chain: Chain]: {
+    [symbol: string]: {
+      native: BigNumber;
+      outgoing?: BigNumber;
+      total: BigNumber;
+    };
   };
 };

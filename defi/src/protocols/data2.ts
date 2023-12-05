@@ -22198,7 +22198,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2367",
-    name: "mySwap",
+    name: "mySwap V1",
     address: null,
     symbol: "-",
     url: "https://www.myswap.xyz",
@@ -22216,7 +22216,8 @@ const data2: Protocol[] = [
     twitter: "mySwapxyz",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1671361302
+    listedAt: 1671361302,
+    parentProtocol: "parent#myswap"
   },
   {
     id: "2368",

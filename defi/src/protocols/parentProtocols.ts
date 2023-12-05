@@ -3270,6 +3270,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ButtonDeFi",
     github: ["buttonwood-protocol"],
   },
+  {
+    id: "parent#myswap",
+    name: "mySwap",
+    url: "https://www.myswap.xyz/",
+    description: "A decentralized exchange on top of StarkNet",
+    logo: `${baseIconsUrl}/myswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "mySwapxyz",
+  },
 ];
 
 export default parentProtocols;

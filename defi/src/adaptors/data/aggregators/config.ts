@@ -77,11 +77,15 @@ export default {
     id: "3847",
   },
   "openocean": {
-    enabled: false,
+    enabled: true,
     id: "533",
   },
   "arcane-dex": {
     enabled: true,
-    id: "3885"
-  }
+    id: "3885",
+  },
+  "1inch": {
+    enabled: true,
+    id: "189",
+  },
 } as AdaptorsConfig;

@@ -38,7 +38,7 @@ const handler = async (
           return;
         }
         // only pass confidence from redirect if the addres is from CG
-        if (redirectedCoin.Item?.confidence == 0.99)
+        if (coin.confidence == 0.99)
           formattedCoin.mcap = redirectedCoin.Item?.mcap;
         formattedCoin.timestamp = redirectedCoin.Item?.timestamp;
       }

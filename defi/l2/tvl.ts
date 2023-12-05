@@ -4,7 +4,7 @@ import { fetchMinted } from "./native";
 import { fetchMetadata } from "./metadata";
 import { ChainData, DollarValues, TokenTvlData } from "./types";
 import BigNumber from "bignumber.js";
-import { tokenFlowCategories, zero } from "./constants";
+import { ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 
 type TranslatedData = { [chain: string]: any };
@@ -24,6 +24,7 @@ export default async function main() {
     incoming,
     outgoing,
     native,
+    ownTokens: {},
     // metadata,
   });
 
@@ -55,12 +56,14 @@ function translateToChainData(data: ChainData): TranslatedData {
   function processProperty(data: ChainData, key: keyof ChainData) {
     selectedChains.map((chain: Chain) => {
       if (!(chain in translatedData)) translatedData[chain] = {};
-      if (!data[key] || !data[key][chain]) {
-        translatedData[chain][key] = { total: zero, breakdown: {} };
-      } else {
-        const total = Object.values(data[key][chain]).reduce((p: any, c: any) => c.plus(p), zero);
-        translatedData[chain][key] = { total, breakdown: data[key][chain] };
+      if (!data[key] || !data[key][chain]) translatedData[chain][key] = { total: zero, breakdown: {} };
+      if (chain in ownTokens && ownTokens[chain] in data[key][chain]) processOwnTokens(data, key, chain);
+      if (!data[key][chain]) {
+        console.log(` NULL ERROR: key: ${key}, chain: ${chain}`);
+        return;
       }
+      const total = Object.values(data[key][chain]).reduce((p: any, c: any) => c.plus(p), zero);
+      translatedData[chain][key] = { total, breakdown: data[key][chain] };
     });
   }
 
@@ -84,5 +87,17 @@ function translateToChainData(data: ChainData): TranslatedData {
     });
   }
 
+  function processOwnTokens(data: ChainData, key: keyof ChainData, chain: Chain) {
+    if (key == "outgoing") return;
+    const ownToken = ownTokens[chain];
+    const total = data[key][chain][ownToken];
+    if (!translatedData[chain].ownTokens)
+      translatedData[chain].ownTokens = { total: zero, breakdown: { [ownToken]: zero } };
+    translatedData[chain].ownTokens.total.plus(total);
+    translatedData[chain].ownTokens.breakdown[ownToken].plus(total);
+    delete data[key][chain][ownToken];
+  }
+
   return translatedData;
 }
+main(); // ts-node defi/l2/tvl.ts

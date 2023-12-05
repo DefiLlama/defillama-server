@@ -79,8 +79,12 @@ export async function fetchMinted(params: {
         if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
         const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
         const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-        if (!(priceInfo.symbol in mcapData))
-          mcapData[priceInfo.symbol] = { chain, native: usdValue, total: BigNumber(mcapInfo.mcap) };
+        if (
+          !(priceInfo.symbol in mcapData) ||
+          (priceInfo.symbol in mcapData && mcapData[priceInfo.symbol].supply < supply)
+        )
+          mcapData[priceInfo.symbol] = { chain, native: usdValue, total: BigNumber(mcapInfo.mcap), supply };
+
         dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
       });
 

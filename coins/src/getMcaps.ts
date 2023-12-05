@@ -34,7 +34,6 @@ const handler = async (
             if (redirectedCoin.Item === undefined) {
                 return
             }
-            formattedCoin.mcap = redirectedCoin.Item?.mcap
             formattedCoin.timestamp = redirectedCoin.Item?.timestamp;
         }
         response[coinName] = formattedCoin;

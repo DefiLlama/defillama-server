@@ -417,6 +417,9 @@
     "0x6Fae4D9935E2fcb11fC79a64e917fb2BF14DaFaa": {
       "to": "coingecko#celestia", "decimals": "6",
       "symbol": "TIA"
+    },
+    "0xcd91716ef98798a85e79048b78287b13ae6b99b2": {
+      "to": "coingecko#goku-money-gai", "decimals": "18", "symbol": "GAI"
     }
   },
   "beam": {

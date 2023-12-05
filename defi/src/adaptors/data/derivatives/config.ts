@@ -507,5 +507,9 @@ export default {
     "SubstanceX": {
         "enabled": true,
         "id": "3835"
+    },
+    "stormtrade": {
+        "enabled": true,
+        "id": "3883"
     }
 } as AdaptorsConfig

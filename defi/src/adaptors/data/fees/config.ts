@@ -1606,5 +1606,9 @@ export default {
     "noah-swap": {
         "enabled": true,
         "id": "2855"
+    },
+    "stormtrade": {
+        "enabled": true,
+        "id": "3883"
     }
 } as AdaptorsConfig

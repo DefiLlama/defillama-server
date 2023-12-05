@@ -211,6 +211,16 @@
     }
   },
   "base": {
+    "0x9483ab65847a447e36d21af1cab8c87e9712ff93": {
+      "decimals": "9",
+      "symbol": "wUSDR",
+      "to": "coingecko#wrapped-usdr"
+    },
+    "0xbf1aea8670d2528e08334083616dd9c5f3b087ae": {
+      "decimals": "18",
+      "symbol": "MAI",
+      "to": "coingecko#mimatic"
+    },
     "0x692ef3afd21f172680b82285759bc13cf8e70710": {
       "decimals": "18",
       "symbol": "rcbETH",

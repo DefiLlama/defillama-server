@@ -26290,6 +26290,27 @@ const data3: Protocol[] = [
     github: ["newswap"],
     listedAt: 1701733018
   },
+  {
+    id: "3885",
+    name: "Arcane Dex",
+    address: null,
+    symbol: "-",
+    url: "https://arcanedex.com",
+    description: `Dexes Aggregator on arbitrum network.`,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/arcane-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    oracles: [],
+    forkedFrom: [],
+    chains: ["Arbitrum"],
+    module: "dummy.js",
+    twitter: "Arcane_DEX",
+  },
+
 ]
 
 export default data3

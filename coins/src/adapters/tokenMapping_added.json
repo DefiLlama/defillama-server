@@ -8533,11 +8533,6 @@
       "symbol": "DAI",
       "to": "coingecko#dai"
     },
-    "0xcd91716ef98798A85E79048B78287B13ae6b99b2": {
-      "decimals": "18",
-      "symbol": "GAI",
-      "to": "coingecko#gai"
-    },
     "0x387660BC95682587efC12C543c987ABf0fB9778f": {
       "decimals": "18",
       "symbol": "GOK",

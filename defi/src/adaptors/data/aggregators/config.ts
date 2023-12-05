@@ -80,4 +80,8 @@ export default {
     enabled: false,
     id: "533",
   },
+  "arcane-dex": {
+    enabled: true,
+    id: "3885"
+  }
 } as AdaptorsConfig;

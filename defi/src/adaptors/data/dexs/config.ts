@@ -2212,5 +2212,20 @@ export default {
     "noah-swap": {
         "enabled": true,
         "id": "2855"
+    },
+    "ascent": {
+        "enabled": true,
+        "id": "3867",
+        parentId: "Ascent Exchange",
+        protocolsData: {
+            "v2": {
+                "id": "3867",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "3868",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

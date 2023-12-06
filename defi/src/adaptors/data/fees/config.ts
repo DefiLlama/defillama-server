@@ -1614,5 +1614,15 @@ export default {
     "beethoven-x": {
         "enabled": true,
         "id": "654"
+    },
+    "ascent-v2": {
+        parentId: "Ascent Exchange",
+        "enabled": true,
+        "id": "3887"
+    },
+    "ascent-v3": {
+        parentId: "Ascent Exchange",
+        "enabled": true,
+        "id": "3868"
     }
 } as AdaptorsConfig

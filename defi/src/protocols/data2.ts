@@ -11275,7 +11275,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Polygon", "Optimism"],
+    chains: ["Polygon", "Optimism", "Arbitrum"],
     oracles: ["Chainlink"],
     forkedFrom: [],
     module: "toros/index.js",

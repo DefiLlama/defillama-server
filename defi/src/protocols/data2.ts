@@ -21295,6 +21295,7 @@ const data2: Protocol[] = [
       "https://neptunemutual.com/security/cyraacs-application-penetration-test-blackbox/"
     ],
     github: ["neptune-mutual-blue"],
+    treasury: "neptune-mutual.js",
     listedAt: 1669921501
   },
   {

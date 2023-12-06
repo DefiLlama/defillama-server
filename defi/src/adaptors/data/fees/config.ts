@@ -1181,6 +1181,7 @@ export default {
         "enabled": true
     },
     "none-trading-bot": {
+        disabled: true,
         "id": "3337",
         "enabled": true
     },

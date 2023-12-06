@@ -76,36 +76,36 @@ function addOutgoingToMcapData(
   allOutgoing: TokenTvlData,
   allMcapData: McapData
 ): { data: TokenTvlData; native: TokenTvlData } {
-  Object.keys(allMcapData).map((symbol: string) => {
-    Object.values(canonicalBridgeIds).map((chain: string) => {
-      if (!(chain in allOutgoing)) return;
-      if (!(symbol in allOutgoing[chain])) return;
-      if (allMcapData[symbol].chain != chain) return;
-      const outgoing = allOutgoing[chain][symbol];
-      allMcapData[symbol].outgoing = outgoing;
-      const chainMcap = allMcapData[symbol].native;
-      const fdv = allMcapData[symbol].total;
+  Object.keys(allMcapData).map((chain: string) => {
+    if (!(chain in allOutgoing) || !(chain in allMcapData)) return;
+    Object.keys(allMcapData[chain]).map((symbol: string) => {
+      const outgoing = allOutgoing[chain][symbol] ?? zero;
+      allMcapData[chain][symbol].outgoing = outgoing;
+      const chainMcap = allMcapData[chain][symbol].native;
+      const fdv = allMcapData[chain][symbol].total;
       const thisAssetMcap = BigNumber.min(chainMcap, fdv);
-      allMcapData[symbol].native = thisAssetMcap.minus(outgoing);
+      allMcapData[chain][symbol].native = thisAssetMcap.minus(outgoing);
     });
   });
 
   const adjustedNative: TokenTvlData = {};
   const adjustedOutgoing: TokenTvlData = {};
 
-  Object.keys(allMcapData).map((symbol: string) => {
-    const { chain, native, outgoing } = allMcapData[symbol];
-    if (!(chain in adjustedNative)) adjustedNative[chain] = {};
-    adjustedNative[chain][symbol] = native;
+  Object.keys(allMcapData).map((chain: string) => {
     if (!(chain in adjustedOutgoing)) adjustedOutgoing[chain] = {};
-    if (outgoing && outgoing != zero) adjustedOutgoing[chain][symbol] = outgoing;
+    if (!(chain in adjustedNative)) adjustedNative[chain] = {};
+    Object.keys(allMcapData[chain]).map((symbol: string) => {
+      const { native, outgoing } = allMcapData[chain][symbol];
+      adjustedNative[chain][symbol] = native;
+      if (outgoing && outgoing != zero) adjustedOutgoing[chain][symbol] = outgoing;
+    });
   });
 
   // fill in the missing outgoings
   Object.keys(allOutgoing).map((chain: string) => {
+    if (!(chain in adjustedOutgoing)) return;
     if (!Object.values(canonicalBridgeIds).includes(chain)) return;
     Object.keys(allOutgoing[chain]).map((symbol: string) => {
-      if (!(chain in adjustedOutgoing)) return;
       if (symbol in adjustedOutgoing[chain]) return;
       adjustedOutgoing[chain][symbol] = allOutgoing[chain][symbol];
     });

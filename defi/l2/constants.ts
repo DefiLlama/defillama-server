@@ -5,7 +5,7 @@ import { ChainData } from "./types";
 export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
 
-export const canonicalBridgeIds: { [chain: string]: Chain } = {
+export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3782": "mantle",
   "3777": "arbitrum",
   "3778": "nova",
@@ -39,3 +39,8 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "344": "zkswap",
 };
 export const tokenFlowCategories: (keyof ChainData)[] = ["outgoing", "canonical", "incoming", "native"];
+
+export const ownTokens: { [chain: Chain]: string } = {
+  optimism: "OP",
+  arbitrum: "ARB",
+};

@@ -22,7 +22,7 @@ export async function chai(timestamp = 0) {
   });
 
   const price = daiData.price * (chi / 1e27);
-  const confidence = daiData.confidence ?? 0.99;
+  const confidence = daiData.confidence ?? 0.98;
 
   const writes: Write[] = [];
   addToDBWritesList(writes, chain, token, price, decimals, symbol, timestamp, "chai", confidence);

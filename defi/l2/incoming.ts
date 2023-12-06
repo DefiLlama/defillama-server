@@ -6,6 +6,7 @@ import deployers from "./bridgeDeployers";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { Address } from "@defillama/sdk/build/types";
 import * as incomingAssets from "./adapters";
+import additional from "./adapters/manual";
 import { DollarValues, TokenTvlData } from "./types";
 import { zero } from "./constants";
 import { getPrices } from "./utils";
@@ -82,7 +83,9 @@ export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
   if (j == -1) return [];
   try {
     const tokens: Address[] = await Object.values(incomingAssets)[j]();
-    return tokens;
+    if (!(chain in additional)) return tokens;
+    const additionalTokens = additional[chain];
+    return [...tokens, ...additionalTokens];
   } catch {
     throw new Error(`${chain} bridge adapter failed`);
   }

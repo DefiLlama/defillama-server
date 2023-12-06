@@ -699,6 +699,7 @@ export default {
         "id": "2312"
     },
     "pegasys": {
+        parentId: "PegaSys",
         "enabled": true,
         "id": "1432"
     },
@@ -2227,5 +2228,10 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "pegasys-v3": {
+        parentId: "PegaSys",
+        "enabled": true,
+        "id": "3178"
     }
 } as AdaptorsConfig

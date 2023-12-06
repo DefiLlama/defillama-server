@@ -1610,5 +1610,9 @@ export default {
     "stormtrade": {
         "enabled": true,
         "id": "3883"
+    },
+    "beethoven-x": {
+        "enabled": true,
+        "id": "654"
     }
 } as AdaptorsConfig

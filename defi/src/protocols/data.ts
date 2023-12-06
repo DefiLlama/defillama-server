@@ -972,7 +972,7 @@ const data: Protocol[] = [
     treasury: "idle-dao.js",
     twitter: "idlefinance",
     audit_links: ["https://docs.idle.finance/developers/security/audits"],
-    oracles: ["Chainlink"],
+    oracles: [],
     governanceID: [
       "snapshot:staking.idlefinance.eth", 
       "snapshot:idlefinance.eth",

@@ -20752,7 +20752,7 @@ const data3: Protocol[] = [
     twitter: "MetaLend_DeFi",
     listedAt: 1697452692
   },
-  {
+/*   {
     id: "3630",
     name: "Factor Leverage Vault",
     address: "arbitrum:0x6dd963c510c2d2f09d5eddb48ede45fed063eb36",
@@ -20773,7 +20773,7 @@ const data3: Protocol[] = [
     twitter: "FactorDAO",
     parentProtocol: "parent#factor",
     listedAt: 1697452699
-  },
+  }, */
   {
     id: "3631",
     name: "Overnight ETH+",

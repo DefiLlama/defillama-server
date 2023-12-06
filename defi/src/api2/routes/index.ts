@@ -173,7 +173,10 @@ async function getSimpleChainDataset(req: HyperExpress.Request, res: HyperExpres
 }
 
 async function getDataset(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const protocolName = req.path_parameters.protocol?.toLowerCase()
+  let param = req.path_parameters.protocol?.toLowerCase() ?? ''
+  if (param.endsWith('.csv')) param = param.slice(0, -4)
+
+  const protocolName = param
   const filename = `${protocolName}.csv`;
   const name = sluggify({ name: protocolName } as any)
   const protocolData = cache.protocolSlugMap[name];

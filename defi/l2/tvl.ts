@@ -58,10 +58,6 @@ function translateToChainData(data: ChainData): TranslatedData {
       if (!(chain in translatedData)) translatedData[chain] = {};
       if (!data[key] || !data[key][chain]) translatedData[chain][key] = { total: zero, breakdown: {} };
       if (chain in ownTokens && ownTokens[chain] in data[key][chain]) processOwnTokens(data, key, chain);
-      if (!data[key][chain]) {
-        console.log(` NULL ERROR: key: ${key}, chain: ${chain}`);
-        return;
-      }
       const total = Object.values(data[key][chain]).reduce((p: any, c: any) => c.plus(p), zero);
       translatedData[chain][key] = { total, breakdown: data[key][chain] };
     });

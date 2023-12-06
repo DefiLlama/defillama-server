@@ -76,21 +76,25 @@ function addOutgoingToMcapData(
   allOutgoing: TokenTvlData,
   allMcapData: McapData
 ): { data: TokenTvlData; native: TokenTvlData } {
+  // use mcap data to find more realistic values on each chain
   Object.keys(allMcapData).map((chain: string) => {
     if (!(chain in allOutgoing) || !(chain in allMcapData)) return;
     Object.keys(allMcapData[chain]).map((symbol: string) => {
       const outgoing = allOutgoing[chain][symbol] ?? zero;
       allMcapData[chain][symbol].outgoing = outgoing;
-      const chainMcap = allMcapData[chain][symbol].native;
-      const fdv = allMcapData[chain][symbol].total;
-      const thisAssetMcap = BigNumber.min(chainMcap, fdv);
-      allMcapData[chain][symbol].native = thisAssetMcap.minus(outgoing);
+      const { native: chainMcap, total: fdv } = allMcapData[chain][symbol];
+      const interchainMcap = allMcapData.total[symbol].native;
+      const percOnThisChain = chainMcap.div(interchainMcap);
+      // need a better algo here that takes into account multichain
+      const thisAssetMcap = BigNumber.min(interchainMcap, fdv).times(percOnThisChain);
+      allMcapData[chain][symbol].native = thisAssetMcap; //.minus(outgoing);
     });
   });
 
   const adjustedNative: TokenTvlData = {};
   const adjustedOutgoing: TokenTvlData = {};
 
+  // use new mcap data from above to write adjusted chain TVLs
   Object.keys(allMcapData).map((chain: string) => {
     if (!(chain in adjustedOutgoing)) adjustedOutgoing[chain] = {};
     if (!(chain in adjustedNative)) adjustedNative[chain] = {};

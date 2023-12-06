@@ -46,7 +46,7 @@ export async function fetchMinted(params: {
 }): Promise<{ tvlData: TokenTvlData; mcapData: McapData }> {
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
   const tvlData: TokenTvlData = {};
-  const mcapData: McapData = {};
+  const mcapData: McapData = { total: {} };
 
   await Promise.all(
     params.chains.map(async (chain: Chain) => {
@@ -80,9 +80,10 @@ export async function fetchMinted(params: {
         if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
         const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
         const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-        if (!(priceInfo.symbol in mcapData[chain]))
-          mcapData[chain][priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
-
+        mcapData[chain][priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
+        if (priceInfo.symbol in mcapData.total)
+          mcapData.total[priceInfo.symbol].native = mcapData.total[priceInfo.symbol].native.plus(usdValue);
+        else mcapData.total[priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
         dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
       });
 

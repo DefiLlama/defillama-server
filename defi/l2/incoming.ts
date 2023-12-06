@@ -96,7 +96,12 @@ export async function fetchIncoming(params: { chains: Chain[]; timestamp?: numbe
   await Promise.all(
     params.chains.map(async (chain: Chain) => {
       const tokens: string[] = await fetchBridgeTokenList(chain);
-      if (!tokens.length) return {};
+
+      if (!tokens.length) {
+        data[chain] = {};
+        return;
+      }
+
       const supplies = await fetchTokenSupplies(chain, tokens);
 
       const prices = await getPrices(

@@ -26354,7 +26354,28 @@ const data3: Protocol[] = [
     listedAt: 1701813130,
     parentProtocol: "parent#myswap"
   },
-
+  {
+    id: "3888",
+    name: "Alien Base V3",
+    address: null,
+    symbol: "-",
+    url: "https://app.alienbase.xyz",
+    description: `Concentrated Liquidity platform powered by preset static farmable ranges.`,
+    chain: "Base",
+    logo: `${baseIconsUrl}/alien-base-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    chains: ["Base"],
+    module: "alienbase-v3/index.js",
+    twitter: "AlienBaseDEX",
+    listedAt: 1701883740,
+    parentProtocol: "parent#alien-base"
+  },
 ]
 
 export default data3

@@ -93,11 +93,10 @@ function translateToChainData(data: ChainData): TranslatedData {
     const total = data[key][chain][ownToken];
     if (!translatedData[chain].ownTokens)
       translatedData[chain].ownTokens = { total: zero, breakdown: { [ownToken]: zero } };
-    translatedData[chain].ownTokens.total.plus(total);
-    translatedData[chain].ownTokens.breakdown[ownToken].plus(total);
+    translatedData[chain].ownTokens.total = translatedData[chain].ownTokens.total.plus(total);
+    translatedData[chain].ownTokens.breakdown = translatedData[chain].ownTokens.breakdown[ownToken].plus(total);
     delete data[key][chain][ownToken];
   }
 
   return translatedData;
 }
-main(); // ts-node defi/l2/tvl.ts

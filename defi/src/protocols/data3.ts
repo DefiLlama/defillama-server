@@ -7236,11 +7236,14 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Binance"],
+    chains: ["Binance","Mantle"],
     module: "ktx/index.js",
     twitter: "KTX_finance",
     forkedFrom: ["GMX V1"],
-    oracles: ["Chainlink"],
+    oraclesByChain: {
+      binance: ["Chainlink"],
+      mantle: ["Pyth"],
+    },
     audit_links: ["https://ktx-public-assets.s3.ap-southeast-1.amazonaws.com/MetaScan_Report_KTX_Finance.pdf"],
     listedAt: 1685029448
   },

@@ -35,7 +35,7 @@ async function main() {
       console.log('Webserver started on port ' + port)
       process.send!('ready')
     })
-    .catch(() => console.log('Failed to start webserver on port ' + port))
+    .catch((e) => console.log('Failed to start webserver on port ' + port, e))
 }
 
 process.on('SIGINT', shutdown);

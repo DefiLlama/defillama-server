@@ -929,6 +929,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "plexus_fi",
+    github: ["PlexusExchange"]
   },
   {
     id: "2741",

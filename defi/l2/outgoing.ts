@@ -26,7 +26,10 @@ export default async function fetchBridgeUsdTokenTvls(
   );
 
   const missingProtocolTvlsLength = bridgeProtocols.length - usdTokenBalances.length;
-  if (missingProtocolTvlsLength) throw new Error(`missing hourlyUsdTokensTvl for ${missingProtocolTvlsLength} bridges`);
+  if (missingProtocolTvlsLength)
+    throw new Error(
+      `missing hourlyUsdTokensTvl for ${missingProtocolTvlsLength} ${isProtocol ? "protocol" : "bridge"}s`
+    );
 
   return usdTokenBalances;
 }
@@ -83,11 +86,15 @@ function addOutgoingToMcapData(
       const outgoing = allOutgoing[chain][symbol] ?? zero;
       allMcapData[chain][symbol].outgoing = outgoing;
       const { native: chainMcap, total: fdv } = allMcapData[chain][symbol];
-      const interchainMcap = allMcapData.total[symbol].native;
+      let interchainMcap = allMcapData.total[symbol].native;
+      if (!interchainMcap) {
+        const searchKey = Object.keys(allMcapData.total).find((k: string) => k.toLowerCase() == symbol.toLowerCase());
+        if (!searchKey) return;
+        interchainMcap = allMcapData.total[searchKey].native;
+      }
       const percOnThisChain = chainMcap.div(interchainMcap);
-      // need a better algo here that takes into account multichain
       const thisAssetMcap = BigNumber.min(interchainMcap, fdv).times(percOnThisChain);
-      allMcapData[chain][symbol].native = thisAssetMcap; //.minus(outgoing);
+      allMcapData[chain][symbol].native = thisAssetMcap;
     });
   });
 

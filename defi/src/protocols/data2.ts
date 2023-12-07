@@ -13053,7 +13053,7 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Solana"],
     module: "scallop/index.js",
-    oracles: ['Switchboard', 'Pyth'],
+    oracles: ['Supra', 'Switchboard', 'Pyth'],
     forkedFrom: [],
     twitter: "Scallop_io",
     parentProtocol: "parent#scallop",

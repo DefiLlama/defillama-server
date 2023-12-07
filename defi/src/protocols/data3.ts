@@ -13219,8 +13219,8 @@ const data3: Protocol[] = [
   {
     id: "3293",
     name: "Gravity Bridge",
-    address: null,
-    symbol: "-",
+    address: "gravitybridge:-",
+    symbol: "GRAV",
     assetToken: "-",
     url: "https://www.gravitybridge.net",
     description: "Gravity Bridge is a decentralized Cosmos blockchain whose primary purpose is to secure the operation of bridges between blockchains.",
@@ -24257,8 +24257,8 @@ const data3: Protocol[] = [
   {
     id: "3791",
     name: "Maya Protocol",
-    address: null,
-    symbol: "-",
+    address: "maya:-",
+    symbol: "CACAO",
     url: "https://www.mayaprotocol.com",
     description: "MAYAChain is a friendly fork of THORChain. Similarly, it does not rely on pegging or wrapping assets, instead managing funds directly in on-chain vaults and safeguarding them through economic security. This is achieved using the Tendermint consensus engine, Cosmos-SDK state machine, and GG20 Threshold Signature Scheme (TSS).",
     chain: "Ethereum",

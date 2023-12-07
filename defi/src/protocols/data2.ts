@@ -1116,8 +1116,8 @@ const data2: Protocol[] = [
   {
     id: "1427",
     name: "Benqi Staked Avax",
-    address: null,
-    symbol: "-",
+    address: "avax:0x8729438eb15e2c8b576fcc6aecda6a148776c0f5",
+    symbol: "QI",
     assetToken: "SAVAX",
     url: "https://staking.benqi.fi",
     description: "Stake AVAX on BENQI's Liquid Staking Protocol and freely utilize it within powerful Decentralized Financial applications.",

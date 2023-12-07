@@ -17351,10 +17351,10 @@ const data3: Protocol[] = [
     chains: ["Mantle"],
     module: "myso-v2/index.js",
     oraclesByChain: {
-      Arbitrum: [],
-      Mantle: ["API3"],
-      Ethereum: [],
-      Base: []
+      arbitrum: [],
+      mantle: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5149
+      ethereum: [],
+      base: []
     }
     forkedFrom: [],
     twitter: "MysoFinance",

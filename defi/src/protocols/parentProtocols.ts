@@ -744,7 +744,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://app.bao.finance",
     description:
       "Bao Finance is a decentralized, community-run project that uses synthetics to move the power of information from institutions to individuals",
-    logo: `${baseIconsUrl}/bao finance.jpg`,
+    logo: `${baseIconsUrl}/bao-finance.jpg`,
     gecko_id: "bao-finance-v2",
     cmcId: null,
     chains: [],

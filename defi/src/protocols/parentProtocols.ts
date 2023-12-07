@@ -3281,6 +3281,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "mySwapxyz",
   },
+  {
+    id: "parent#fortunafi",
+    name: "Fortunafi",
+    url: "https://fortunafi.com/",
+    description: `Fortunafi is a leading onchain financial institution spearheading advancements in the Real World Assets (RWA) sector. Through key partnerships and integrations, Fortunafi delivers the tokenization of RWAs onchain to bring DeFi-structured yield products, alternative lending, and all-in-one liquidity solutions to financial institutions, startups, and investors`,
+    logo: `${baseIconsUrl}/fortunafi.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "_Fortunafi",
+  },
 ];
 
 export default parentProtocols;

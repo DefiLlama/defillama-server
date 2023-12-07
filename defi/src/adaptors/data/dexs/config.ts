@@ -2233,5 +2233,9 @@ export default {
         parentId: "PegaSys",
         "enabled": true,
         "id": "3178"
+    },
+    "canary": {
+        "enabled": true,
+        "id": "474"
     }
 } as AdaptorsConfig

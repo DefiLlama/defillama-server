@@ -4854,7 +4854,7 @@ const data: Protocol[] = [
     description:
       "Bao Finance is like a combination of SNX and Aave, but use LP tokens for collateral. Rather than re-invent the wheel, Bao will create new features for existing DeFi protocols. The BAO token acts as a governance token for the fully community run project. It is also backed by the insurance fund where all Bao fees go.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bao-masterchef-v1.png`,
+    logo: `${baseIconsUrl}/bao-masterchef-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "bao-finance",

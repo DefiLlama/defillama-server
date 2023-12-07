@@ -244,6 +244,7 @@ async function getTokenAndRedirectDataDB(
 
         if (dbEntry == null && redirect == null)
           return { dbEntry: ld, redirect: ["FALSE"] };
+        if (dbEntry && ld.redirect) dbEntry.redirect = ld.redirect;
         if (redirect == null) return { dbEntry, redirect: [] };
         return { dbEntry: ld, redirect: [redirect] };
       })
@@ -355,9 +356,8 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
         price,
         timestamp: r.dbEntry.SK == 0 ? getCurrentUnixTimestamp() : r.dbEntry.SK,
         redirect:
-          r.redirect.length == 0 || r.redirect[0].PK == r.dbEntry.PK
-            ? undefined
-            : r.redirect[0].PK,
+          r.dbEntry.redirect ??
+          (r.redirect.length ? r.redirect[0].PK : undefined),
         confidence,
       };
     })

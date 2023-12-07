@@ -38,7 +38,7 @@ async function getPlentyData() {
     const { token, decimals } = i;
     const tvl = +i.tvl.value;
     if (tvl < 1000) return;
-    const confidence = tvl > 10000 ? 0.99 : 0.6;
+    const confidence = tvl > 10000 ? 0.98 : 0.6;
     let label = i.contract;
     if ([token, label, decimals, +i.price.value].includes(undefined)) return;
     if (i.hasOwnProperty("tokenId") && i.tokenId !== 0)
@@ -70,7 +70,7 @@ async function getTezToolsData() {
       // console.log('Ignoring', symbol, ' tvl is only', tvl)
       return;
     }
-    const confidence = tvl > 10000 ? 0.99 : 0.6;
+    const confidence = tvl > 10000 ? 0.98 : 0.6;
     let label = i.tokenAddress;
     if (i.hasOwnProperty("tokenId") && i.tokenId !== 0)
       label += "-" + i.tokenId;

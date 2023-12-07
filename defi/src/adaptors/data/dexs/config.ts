@@ -699,6 +699,7 @@ export default {
         "id": "2312"
     },
     "pegasys": {
+        parentId: "PegaSys",
         "enabled": true,
         "id": "1432"
     },
@@ -2212,5 +2213,29 @@ export default {
     "noah-swap": {
         "enabled": true,
         "id": "2855"
+    },
+    "ascent": {
+        "enabled": true,
+        "id": "3867",
+        parentId: "Ascent Exchange",
+        protocolsData: {
+            "v2": {
+                "id": "3867",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "3868",
+                "enabled": true,
+            }
+        }
+    },
+    "pegasys-v3": {
+        parentId: "PegaSys",
+        "enabled": true,
+        "id": "3178"
+    },
+    "canary": {
+        "enabled": true,
+        "id": "474"
     }
 } as AdaptorsConfig

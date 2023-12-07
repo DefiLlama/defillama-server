@@ -1181,6 +1181,7 @@ export default {
         "enabled": true
     },
     "none-trading-bot": {
+        disabled: true,
         "id": "3337",
         "enabled": true
     },
@@ -1610,5 +1611,19 @@ export default {
     "stormtrade": {
         "enabled": true,
         "id": "3883"
+    },
+    "beethoven-x": {
+        "enabled": true,
+        "id": "654"
+    },
+    "ascent-v2": {
+        parentId: "Ascent Exchange",
+        "enabled": true,
+        "id": "3867"
+    },
+    "ascent-v3": {
+        parentId: "Ascent Exchange",
+        "enabled": true,
+        "id": "3868"
     }
 } as AdaptorsConfig

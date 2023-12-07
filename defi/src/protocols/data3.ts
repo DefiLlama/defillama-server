@@ -26447,6 +26447,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/degatedev/protocols/blob/degate1.1.0/packages/loopring_v3/security_audit/DeGate_Report_EN-20231115.pdf"],
     listedAt: 1701955752
   },
+  {
+    id: "3892",
+    name: "Detto Finance",
+    address: "base:0x7bc401227777f173ff871993b198a8632741b9bb",
+    symbol: "DETO",
+    url: "https://www.detto.finance",
+    description: `One-stop platform that seamlessly integrates NFT trading, mining and yield farming into one.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/detto-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "detto-finance",
+    cmcId: null,
+    category: "Farm",
+    oracles: [],
+    forkedFrom: [],
+    chains: ["Ethereum"],
+    module: "detto-finance/index.js",
+    twitter: "DettoFinance",
+    listedAt: 1701967618
+  },
 ]
 
 export default data3

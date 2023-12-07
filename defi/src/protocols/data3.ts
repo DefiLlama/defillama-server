@@ -13902,7 +13902,7 @@ const data3: Protocol[] = [
     module: "navi/index.js",
     twitter: "navi_protocol",
     forkedFrom: [],
-    oracles: ["Supra", "Pyth"],
+    oracles: ["Supra", "Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5163/
     audit_links: ["https://2311140553-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYTRq6w3DGapKHxfqaA3Z%2Fuploads%2FsoS2qrvZPrclkXpPp9z2%2FNavi%20Smart%20Contract%20Preliminary%20Audit%20Report.pdf?alt=media&token=002c6c6c-a723-4e36-9689-f014791fb076"],
     listedAt: 1690897069,
     github: ["naviprotocol"]

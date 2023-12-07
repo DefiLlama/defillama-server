@@ -26377,6 +26377,28 @@ const data3: Protocol[] = [
     listedAt: 1701883740,
     parentProtocol: "parent#alien-base"
   },
+  {
+    id: "3889",
+    name: "YieldLend",
+    address: null,
+    symbol: "-",
+    url: "https://yieldlend.xyz",
+    description: `YieldLend is a lending protocol on Base with veMeme tokenomics.`,
+    chain: "Base",
+    logo: `${baseIconsUrl}/yieldlend.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    oracles: ["Chainlink"],
+    forkedFrom: ["AAVE V3"],
+    chains: ["Base"],
+    module: "yieldlend/index.js",
+    twitter: "yieldlend",
+    github: ["yieldlend"],
+    listedAt: 1701950319
+  },
 ]
 
 export default data3

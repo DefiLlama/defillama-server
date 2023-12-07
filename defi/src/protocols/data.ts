@@ -400,7 +400,7 @@ const data: Protocol[] = [
     forkedFrom: [],
     oraclesByChain: {
       ethereum: ["Chainlink"],
-      conflux: ["Pyth"],
+      conflux: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5150
     },
     governanceID: ["snapshot:dforcenet.eth"],
     stablecoins: ["dforce-usd"],
@@ -11252,11 +11252,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "mean_fi",
     audit_links: ["https://github.com/Mean-Finance/dca-v2-core/tree/main/audits"],
     oraclesByChain: {
-      Arbitrum: ["Chainlink", "TWAP"],
-      Polygon: ["API3", "TWAP"],
-      Optimism: ["Chainlink", "TWAP"],
-      Ethereum: ["Chainlink", "TWAP"],
-      BSC: ["Chainlink", "TWAP"] 
+      arbitrum: ["Chainlink", "TWAP"],
+      polygon: ["API3", "TWAP"],
+      optimism: ["Chainlink", "TWAP"],
+      ethereum: ["Chainlink", "TWAP"],
+      bsc: ["Chainlink", "TWAP"] 
     },
     github: ["Mean-Finance"]
   },

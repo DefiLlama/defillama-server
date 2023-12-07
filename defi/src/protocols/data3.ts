@@ -7241,8 +7241,8 @@ const data3: Protocol[] = [
     twitter: "KTX_finance",
     forkedFrom: ["GMX V1"],
     oraclesByChain: {
-      binance: ["Chainlink"],
-      mantle: ["Pyth"],
+      bsc: ["Chainlink"],
+      mantle: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5150
     },
     audit_links: ["https://ktx-public-assets.s3.ap-southeast-1.amazonaws.com/MetaScan_Report_KTX_Finance.pdf"],
     listedAt: 1685029448

@@ -1619,7 +1619,7 @@ export default {
     "ascent-v2": {
         parentId: "Ascent Exchange",
         "enabled": true,
-        "id": "3887"
+        "id": "3867"
     },
     "ascent-v3": {
         parentId: "Ascent Exchange",

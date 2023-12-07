@@ -16157,7 +16157,7 @@ const data3: Protocol[] = [
     module: "scallop-pool/index.js",
     twitter: "Scallop_io",
     forkedFrom: [],
-    oracles: ['Supra'],
+    oracles: [],
     parentProtocol: "parent#scallop",
     listedAt: 1692631527
   },

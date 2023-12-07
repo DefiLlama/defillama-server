@@ -393,12 +393,15 @@ const data: Protocol[] = [
     gecko_id: "dforce-token",
     cmcId: "4758",
     category: "Lending",
-    chains: ["Ethereum", "Binance", "Arbitrum"],
+    chains: ["Ethereum", "Binance", "Arbitrum","Conflux"],
     module: "dforce/index.js",
     twitter: "dForcenet",
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
     forkedFrom: [],
-    oracles: ["Chainlink"],
+    oraclesByChain: {
+      ethereum: ["Chainlink"],
+      conflux: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5150
+    },
     governanceID: ["snapshot:dforcenet.eth"],
     stablecoins: ["dforce-usd"],
     github: ["dforce-network"] //check
@@ -972,7 +975,7 @@ const data: Protocol[] = [
     treasury: "idle-dao.js",
     twitter: "idlefinance",
     audit_links: ["https://docs.idle.finance/developers/security/audits"],
-    oracles: [],
+    oracles: [], // https://github.com/DefiLlama/defillama-server/pull/5147
     governanceID: [
       "snapshot:staking.idlefinance.eth", 
       "snapshot:idlefinance.eth",
@@ -1808,7 +1811,7 @@ const data: Protocol[] = [
     address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
     symbol: "DHT",
     url: "https://www.dhedge.org/",
-    description: "Decentralized Hedge Funds on Ethereum",
+    description: "Explore the universe of top-tier tokenized vaults.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dhedge.png`,
     audits: "2",
@@ -1816,10 +1819,10 @@ const data: Protocol[] = [
     gecko_id: "dhedge-dao",
     cmcId: "7094",
     category: "Indexes",
-    chains: ["Ethereum", "Polygon"],
+    chains: ["Ethereum", "Polygon", "Optimism", "Arbitrum"],
     module: "dhedge.js",
     twitter: "dHedgeOrg",
-    audit_links: ["https://iosiro.com/audits/dhedge-platform-smart-contract-audit"],
+    audit_links: ["https://iosiro.com/audits/dhedge-platform-smart-contract-audit", "https://www.certik.com/projects/dhedge"],
     governanceID: ["snapshot:gov.dhedge.eth"],
     github: ["dhedge"]
   },
@@ -4854,7 +4857,7 @@ const data: Protocol[] = [
     description:
       "Bao Finance is like a combination of SNX and Aave, but use LP tokens for collateral. Rather than re-invent the wheel, Bao will create new features for existing DeFi protocols. The BAO token acts as a governance token for the fully community run project. It is also backed by the insurance fund where all Bao fees go.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bao-masterchef-v1.png`,
+    logo: `${baseIconsUrl}/bao-masterchef-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "bao-finance",
@@ -11249,11 +11252,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "mean_fi",
     audit_links: ["https://github.com/Mean-Finance/dca-v2-core/tree/main/audits"],
     oraclesByChain: {
-      Arbitrum: ["Chainlink", "TWAP"],
-      Polygon: ["API3", "TWAP"],
-      Optimism: ["Chainlink", "TWAP"],
-      Ethereum: ["Chainlink", "TWAP"],
-      BSC: ["Chainlink", "TWAP"] 
+      arbitrum: ["Chainlink", "TWAP"],
+      polygon: ["API3", "TWAP"],
+      optimism: ["Chainlink", "TWAP"],
+      ethereum: ["Chainlink", "TWAP"],
+      bsc: ["Chainlink", "TWAP"] 
     },
     github: ["Mean-Finance"]
   },

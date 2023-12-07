@@ -4,7 +4,6 @@ import { readRouteData, readFromPGCache, deleteFromPGCache, } from "../cache/fil
 import sluggify from "../../utils/sluggify";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import * as sdk from '@defillama/sdk'
 import { get20MinDate } from "../../utils/shared";
 import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
 import { successResponse, errorWrapper as ew } from "./utils";
@@ -152,7 +151,10 @@ async function getTokenInProtocols(req: HyperExpress.Request, res: HyperExpress.
 }
 
 async function getSimpleChainDataset(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const chain = req.path_parameters.chain
+  let param = req.path_parameters.chain ?? ''
+  if (param.endsWith('.csv')) param = param.slice(0, -4)
+
+  const chain = param
   const params = req.query_parameters
   const options = {
     ...params,
@@ -166,14 +168,17 @@ async function getSimpleChainDataset(req: HyperExpress.Request, res: HyperExpres
   }
 
   res.setHeaders({ "Expires": get20MinDate() })
-  res.type('text/csv')
+  res.setHeader('Content-Type', 'text/csv')
   res.setHeader('Content-Disposition', `attachment; filename=${filename}`)
 
-  return successResponse(res, csv, 10)
+  return successResponse(res, csv, 30, { isJson: false })
 }
 
 async function getDataset(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const protocolName = req.path_parameters.protocol?.toLowerCase()
+  let param = req.path_parameters.protocol?.toLowerCase() ?? ''
+  if (param.endsWith('.csv')) param = param.slice(0, -4)
+
+  const protocolName = param
   const filename = `${protocolName}.csv`;
   const name = sluggify({ name: protocolName } as any)
   const protocolData = cache.protocolSlugMap[name];
@@ -181,14 +186,13 @@ async function getDataset(req: HyperExpress.Request, res: HyperExpress.Response)
     res.status(404)
     return res.send('Not found', true)
   }
-
   const csv = await craftCsvDataset([protocolData], true, false, { readFromPG: true });
 
   res.setHeaders({ "Expires": get20MinDate() })
-  res.type('text/csv')
+  res.setHeader('Content-Type', 'text/csv')
   res.setHeader('Content-Disposition', `attachment; filename=${filename}`)
 
-  return successResponse(res, csv, 30)
+  return successResponse(res, csv, 30, { isJson: false })
 }
 
 type GetProtocolishOptions = {

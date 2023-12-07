@@ -427,14 +427,14 @@ functions:
   #   handler: src/triggerFetchLiquidations.default
   #   events:
   #     - schedule: cron(40 * * * ? *)
-  #dataset:
-  #  handler: src/getDataset.default
-  #  timeout: 30
-  #  memorySize: 10240
-  #  events:
-  #    - http:
-  #        path: dataset/{protocol}
-  #        method: get
+  dataset:
+    handler: src/getDataset.default
+    timeout: 30
+    memorySize: 10240
+    events:
+      - http:
+          path: dataset/{protocol}
+          method: get
   simpleDataset:
     handler: src/getSimpleChainDataset.default
     timeout: 30

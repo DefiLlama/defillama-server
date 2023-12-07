@@ -17354,7 +17354,12 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Mantle"],
     module: "myso-v2/index.js",
-    oracles: [],
+    oraclesByChain: {
+      arbitrum: [],
+      mantle: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5149
+      ethereum: [],
+      base: []
+    }
     forkedFrom: [],
     twitter: "MysoFinance",
     audit_links: ["https://omniscia.io/reports/myso-finance-lending-protocol-644911cef1412d00142bf698/", "https://github.com/trailofbits/publications/blob/master/reviews/2023-04-mysoloans-securityreview.pdf"],

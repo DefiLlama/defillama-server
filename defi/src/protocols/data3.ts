@@ -6228,7 +6228,7 @@ const data3: Protocol[] = [
     audit_links: [],
     forkedFrom: ["GMX V1"],
     parentProtocol: "parent#quickswap",
-    oracles: ["API3"],
+    oracles: ["Pyth","API3"],
     listedAt: 1684213007
   },
   {
@@ -7823,7 +7823,7 @@ const data3: Protocol[] = [
     audit_links: [
       "https://docs.cryptex.finance/audits"
     ],
-    oracles: ["Chainlink"],
+    oracles: ["Pyth","Chainlink"],
     parentProtocol: "parent#cryptex-finance",
     listedAt: 1685575484
   },

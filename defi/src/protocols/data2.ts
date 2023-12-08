@@ -9577,8 +9577,12 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Avalanche"],
-    oracles: ["Chainlink"],
+    chains: ["Sui", "Avalanche","Aptos"],
+    oraclesByChain: {
+      sui: ["Supra"], // https://github.com/DefiLlama/defillama-server/pull/5169
+      avalanche: ["Chainlink"],
+      aptos: [],
+    },
     forkedFrom: [],
     module: "mole/index.js",
     twitter: "moledefi",

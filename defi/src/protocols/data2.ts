@@ -9577,10 +9577,9 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Sui", "Avalanche","Aptos"],
+    chains: ["Sui", "Aptos"],
     oraclesByChain: {
       sui: ["Supra"], // https://github.com/DefiLlama/defillama-server/pull/5169
-      avalanche: [],
       aptos: [],
     },
     forkedFrom: [],

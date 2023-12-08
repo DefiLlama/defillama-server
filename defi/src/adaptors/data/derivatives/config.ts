@@ -511,5 +511,9 @@ export default {
     "stormtrade": {
         "enabled": true,
         "id": "3883"
+    },
+    "goosefx": {
+        "enabled": true,
+        "id": "2175"
     }
 } as AdaptorsConfig

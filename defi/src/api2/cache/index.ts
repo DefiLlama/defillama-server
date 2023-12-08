@@ -266,8 +266,8 @@ export function getLastHourlyTokens(protocol: IProtocol) {
   return cache.tvlTokenProtocol[protocol.id]
 }
 
-export function checkModuleDoubleCounted(protocolId: string) {
-  return cache.metadata.isDoubleCountedProtocol[protocolId] === true
+export function checkModuleDoubleCounted(protocol: IProtocol) {
+  return cache.metadata.isDoubleCountedProtocol[protocol.id] === true
 }
 
 export function protocolHasMisrepresentedTokens(protocol: IProtocol) {

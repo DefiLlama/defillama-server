@@ -31,18 +31,19 @@ export async function craftChainsResponse(excludeDoublecountedAndLSD = false, us
           return
       }
       const excludeTvl = excludeDoublecountedAndLSD && (protocol.category === "Liquid Staking" || isDoubleCounted(await checkModuleDoubleCounted(protocol), protocol.category)  === true)
+      if (excludeTvl) return;
       let chainsAdded = 0
       Object.entries(lastTvl).forEach(([chain, chainTvl])=>{
           const chainName = getChainDisplayName(chain, useNewChainNames)
           if(chainCoingeckoIds[chainName] === undefined){
               return
           }
-          chainTvls[chainName] = (chainTvls[chainName] ?? 0) + (excludeTvl?0:chainTvl)
+          chainTvls[chainName] = (chainTvls[chainName] ?? 0) + chainTvl
           chainsAdded += 1;
       })
-      if(chainsAdded === 0){
+      if(chainsAdded === 0){ // for fetch adapters
         const chainName = protocol.chain
-        chainTvls[chainName] = (chainTvls[chainName] ?? 0) + (excludeTvl?0:lastTvl.tvl)
+        chainTvls[chainName] = (chainTvls[chainName] ?? 0) + lastTvl.tvl
       }
     })
   );

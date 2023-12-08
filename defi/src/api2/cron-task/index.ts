@@ -35,7 +35,7 @@ async function run() {
     getLastTvl: (protocol: any) => protocolDataMap[protocol.id]?.lastHourlyRecord,
     getAllTvlData: (protocol: any) => protocolDataMap[protocol.id]?.tvlData,
     getModule: (protocol: any) => ({
-      doublecounted: checkModuleDoubleCounted(protocol.id),
+      doublecounted: checkModuleDoubleCounted(protocol),
     })
   }
 

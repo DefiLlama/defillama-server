@@ -2232,5 +2232,9 @@ export default {
     "canary": {
         "enabled": true,
         "id": "474"
+    },
+    "xfai": {
+        "enabled": true,
+        "id": "3816"
     }
 } as AdaptorsConfig

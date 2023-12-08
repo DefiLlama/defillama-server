@@ -1625,5 +1625,9 @@ export default {
         parentId: "Ascent Exchange",
         "enabled": true,
         "id": "3868"
+    },
+    "xfai": {
+        "enabled": true,
+        "id": "3816"
     }
 } as AdaptorsConfig

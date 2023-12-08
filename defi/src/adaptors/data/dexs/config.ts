@@ -1023,11 +1023,6 @@ export default {
         "enabled": true,
         "id": "2253"
     },
-    "goosefx": {
-        disabled: true,
-        "enabled": true,
-        "id": "2175"
-    },
     "3xcalibur": {
         "enabled": true,
         "id": "2283"

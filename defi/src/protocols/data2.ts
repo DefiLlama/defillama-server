@@ -9579,8 +9579,8 @@ const data2: Protocol[] = [
     category: "Yield",
     chains: ["Sui", "Avalanche","Aptos"],
     oraclesByChain: {
-      sui: ["Supra"],
-      avalanche: [],
+      sui: ["Supra"], // https://github.com/DefiLlama/defillama-server/pull/5169
+      avalanche: ["Chainlink"],
       aptos: [],
     },
     forkedFrom: [],

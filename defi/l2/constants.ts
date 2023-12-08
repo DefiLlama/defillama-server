@@ -40,7 +40,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
 };
 export const tokenFlowCategories: (keyof ChainData)[] = ["outgoing", "canonical", "incoming", "native"];
 
-export const ownTokens: { [chain: Chain]: string } = {
-  optimism: "OP",
-  arbitrum: "ARB",
+export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } = {
+  optimism: { ticker: "OP", address: "0x4200000000000000000000000000000000000042" },
+  arbitrum: { ticker: "ARB", address: "0x912CE59144191C1204E64559FE8253a0e49E6548" },
 };

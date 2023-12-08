@@ -26503,6 +26503,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#fortunafi",
     listedAt: 1701993423
   },
+  {
+    id: "3894",
+    name: "dVOL.Finance",
+    address: null,
+    symbol: "-",
+    url: "https://dvol.finance",
+    description: `Decentralized derivatives research lab offering innovative vaults with a focus on generating sustainable, transparent yield for on-chain assets.`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/dvol.finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    oracles: [],
+    forkedFrom: [],
+    chains: ["Binance"],
+    module: "dvol/index.js",
+    twitter: "dvolfinance",
+    github: ["dvol-finance"],
+    listedAt: 1702051133
+  },
 ]
 
 export default data3

@@ -795,7 +795,7 @@ export default {
         "id": "1979"
     },
     "synthetify": {
-        "enabled": true,
+        "enabled": false,
         "id": "731"
     },
     "pandora": {

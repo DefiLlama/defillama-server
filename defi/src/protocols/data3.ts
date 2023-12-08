@@ -2985,7 +2985,11 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "juicebox-v2/index.js",
     twitter: "juiceboxETH",
-    audit_links: ["https://docs.juicebox.money/assets/files/certik-audit-report-12b48328d22ac38207dad74162cac1db.pdf/"],
+    audit_links: [
+       "https://docs.juicebox.money/assets/files/certik-audit-report-12b48328d22ac38207dad74162cac1db.pdf",
+       "https://code4rena.com/contests/2022-07-juicebox-v2-contest",
+       "https://docs.juicebox.money/assets/files/peckshield-audit-report-ab36ee2b5dfb2a387410b4d64276f6ba.pdf/"
+                ],
     parentProtocol: "parent#juicebox",
     listedAt: 1681517022
   },

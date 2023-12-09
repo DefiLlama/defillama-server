@@ -13011,7 +13011,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Avalanche"],
     module: "hubble-exchange/index.js",
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Switchboard"],
     forkedFrom: [],
     twitter: "HubbleExchange",
     audit_links: ["https://docs.hubble.exchange/audit-reports"],
@@ -18946,7 +18946,7 @@ const data2: Protocol[] = [
     module: "mercurical-vaults/index.js",
     twitter: "MeteoraAG",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Switchboard"],
     audit_links: [
       "https://drive.google.com/file/d/1CjdMl7LhJisnI1LTrAFt2Bvi5ahqq1yc/view",
       "https://drive.google.com/file/d/1cJ2ZH23yj9uO1otR2pLDQ1MP3OJm84IW/view"
@@ -26893,7 +26893,7 @@ const data2: Protocol[] = [
     chains: ["Solana"],
     module: "marginfi/index.js",
     twitter: "marginfi",
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Switchboard"],
     forkedFrom: [],
     parentProtocol: "parent#marginfi",
     listedAt: 1677103747

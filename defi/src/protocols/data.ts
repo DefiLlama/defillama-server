@@ -7629,7 +7629,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "solend/index.js",
     twitter: "solendprotocol",
     audit_links: ["https://github.com/solendprotocol/solana-program-library/tree/master/token-lending/audit"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Switchboard"],
     github: ["solendprotocol"]
   },
   {
@@ -7871,7 +7871,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://drive.google.com/file/d/1iRy6v6_CsJKXOBSk_6mg4kmqvBL-Aqlj/view?usp=sharing",
       "https://drive.google.com/file/d/1HHHveh99XGfvkyqBZWvzzdNMot2ETm9q/view?usp=sharing",
     ],
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Switchboard'],
     github: ["port-finance"]
   },
   {
@@ -9298,7 +9298,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "larix.js",
     twitter: "ProjectLarix",
     audit_links: ["https://docs.projectlarix.com/how-to-prove/audit"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Switchboard"],
     openSource: false,
   },
   {
@@ -11102,7 +11102,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "francium.js",
     twitter: "Francium_Defi",
     audit_links: ["https://www.certik.org/projects/francium"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Switchboard"],
     openSource: false,
   },
   {

@@ -15532,10 +15532,11 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
-    module: "dummy.js",
+    module: "logx/index.js",
     twitter: "LogX_trade",
     forkedFrom: [],
     oracles: [],
+    listedAt: 1702086727
   },
   {
     id: "3397",

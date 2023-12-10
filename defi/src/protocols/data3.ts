@@ -26643,6 +26643,29 @@ const data3: Protocol[] = [
     github: ["poolshark-protocol"],
     listedAt: 1702143574
   },
+  {
+    id: "3900",
+    name: "Cardano",
+    address: null,
+    symbol: "ADA",
+    url: "https://cardano.org/",
+    description:
+      "Cardano is a blockchain platform",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/cardano.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "cardano",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Cardano"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "Cardano",
+    github: ["input-output-hk"],
+    treasury: "cardano.js"
+  },
 ]
 
 export default data3

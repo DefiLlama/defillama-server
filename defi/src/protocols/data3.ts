@@ -21599,7 +21599,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3668",
-    name: "Zebra",
+    name: "Zebra V1",
     address: null,
     symbol: "-",
     url: "https://zebra.xyz",
@@ -21616,7 +21616,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "Zebra/index.js",
     twitter: "ZebraProtocol",
-    github: ["zebra-xyz"],
+    parentProtocol: "parent#zebra",
+    audit_links: ["https://zebra.gitbook.io/zebra-document/contracts-and-security/security-audit"],
     listedAt: 1697814579
   },
   {
@@ -26665,6 +26666,29 @@ const data3: Protocol[] = [
     twitter: "Cardano",
     github: ["input-output-hk"],
     treasury: "cardano.js"
+  },
+  {
+    id: "3668",
+    name: "Zebra V2",
+    address: null,
+    symbol: "-",
+    url: "https://zebra.xyz",
+    description: "V2 will allow liquidity providers (LP) to concentrate their liquidity into a tighter price range",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/zebra.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "zebra-v2/index.js",
+    twitter: "ZebraProtocol",
+    audit_links: ["https://zebra.gitbook.io/zebra-document/contracts-and-security/security-audit"],
+    parentProtocol: "parent#zebra",
+    listedAt: 1702236495
   },
 ]
 

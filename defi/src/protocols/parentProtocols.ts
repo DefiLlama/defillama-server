@@ -3292,6 +3292,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "_Fortunafi",
   },
+  {
+    id: "parent#zebra",
+    name: "Zebra",
+    url: "https://fortunafi.com/",
+    description: `A one-stop liquidity hub for the Scroll ecosystem`,
+    logo: `${baseIconsUrl}/zebra.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ZebraProtocol",
+    github: ["zebra-xyz"],
+  },
 ];
 
 export default parentProtocols;

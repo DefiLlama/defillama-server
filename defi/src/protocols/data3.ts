@@ -26668,7 +26668,7 @@ const data3: Protocol[] = [
     treasury: "cardano.js"
   },
   {
-    id: "3668",
+    id: "3901",
     name: "Zebra V2",
     address: null,
     symbol: "-",

@@ -6232,7 +6232,7 @@ const data3: Protocol[] = [
     audit_links: [],
     forkedFrom: ["GMX V1"],
     parentProtocol: "parent#quickswap",
-    oracles: ["API3"],
+    oracles: ["Pyth","API3"], // https://github.com/DefiLlama/defillama-server/pull/5164
     listedAt: 1684213007
   },
   {

@@ -7823,7 +7823,7 @@ const data3: Protocol[] = [
     audit_links: [
       "https://docs.cryptex.finance/audits"
     ],
-    oracles: ["Pyth","Chainlink"],
+    oracles: ["Chainlink"],
     parentProtocol: "parent#cryptex-finance",
     listedAt: 1685575484
   },

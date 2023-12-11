@@ -2236,5 +2236,15 @@ export default {
     "xfai": {
         "enabled": true,
         "id": "3816"
+    },
+    "zebra-v1": {
+        parentId: "Zebra",
+        "enabled": true,
+        "id": "3668"
+    },
+    "zebra-v2": {
+        parentId: "Zebra",
+        "enabled": true,
+        "id": "3901"
     }
 } as AdaptorsConfig

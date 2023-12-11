@@ -142,10 +142,10 @@ export default {
     },
     "voodoo-trade": {
         enabled: true,
-        id: "3156",
+        id: "3792",
         "protocolsData": {
             "derivatives": {
-                "id": "3156",
+                "id": "3792",
                 "enabled": true
             }
         },
@@ -467,6 +467,7 @@ export default {
     },
     "derivio": {
         "enabled": false,
+        parentId: "Deri",
         "id": "3759",
         protocolsData: {
             "derivatives": {
@@ -502,5 +503,17 @@ export default {
             },
         }
 
+    },
+    "SubstanceX": {
+        "enabled": true,
+        "id": "3835"
+    },
+    "stormtrade": {
+        "enabled": true,
+        "id": "3883"
+    },
+    "goosefx": {
+        "enabled": true,
+        "id": "2175"
     }
 } as AdaptorsConfig

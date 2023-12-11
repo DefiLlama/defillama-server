@@ -67,7 +67,7 @@ export function traderJoe(timestamp: number = 0) {
     "avax",
     "0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10",
     undefined,
-    "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange",
+    undefined,
     timestamp,
   );
 }

@@ -147,4 +147,5 @@ export default {
   steer: require("./markets/steer"),
   wstmtrg: require("./yield/wstmtrg"),
   zkswap: require("./markets/uniswap"),
+  osETH: require("./yield/osETH"),
 };

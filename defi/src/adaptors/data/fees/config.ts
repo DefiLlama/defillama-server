@@ -1039,7 +1039,7 @@ export default {
     },
     "voodoo-trade": {
         enabled: true,
-        id: "3156"
+        id: "3792"
     },
     "equity": {
         parentId: "Equalizer",
@@ -1181,6 +1181,7 @@ export default {
         "enabled": true
     },
     "none-trading-bot": {
+        disabled: true,
         "id": "3337",
         "enabled": true
     },
@@ -1257,7 +1258,7 @@ export default {
         "id": "3464"
     },
     "tigris": {
-        "enabled": false,
+        "enabled": true,
         "id": "3129"
     },
     "aerodrome": {
@@ -1574,5 +1575,59 @@ export default {
     "chimpexchange": {
         "enabled": true,
         "id": "3836"
+    },
+    "dln": {
+        "enabled": true,
+        "id": "3846"
+    },
+    "near": {
+        "enabled": true,
+        "id": "6535"
+    },
+    "substanceX": {
+        "enabled": true,
+        "id": "3835"
+    },
+    "up-vs-down-game": {
+        "enabled": true,
+        "id": "3872"
+    },
+    "aimbot": {
+        "enabled": true,
+        "id": "3875"
+    },
+    "sns": {
+        "enabled": true,
+        "id": "3877"
+    },
+    "thick": {
+        "enabled": true,
+        "id": "3878"
+    },
+    "noah-swap": {
+        "enabled": true,
+        "id": "2855"
+    },
+    "stormtrade": {
+        "enabled": true,
+        "id": "3883"
+    },
+    "beethoven-x": {
+        "enabled": true,
+        "id": "654"
+    },
+    "ascent-v2": {
+        parentId: "Ascent Exchange",
+        "enabled": true,
+        "id": "3867"
+    },
+    "ascent-v3": {
+        parentId: "Ascent Exchange",
+        "enabled": true,
+        "id": "3868"
+    },
+    "xfai": {
+        "enabled": true,
+        "id": "3816"
     }
 } as AdaptorsConfig

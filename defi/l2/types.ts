@@ -35,25 +35,30 @@ export type CoinsApiData = {
   timestamp: number;
   PK?: string;
 };
-export type TranslatedChainData = {
-  canonical: DollarValues;
-  incoming: DollarValues;
-  outgoing: DollarValues;
-  native: DollarValues;
-  // metadata: any;
-};
 export type ChainData = {
   canonical: TokenTvlData;
   incoming: TokenTvlData;
   outgoing: TokenTvlData;
   native: TokenTvlData;
+  ownTokens: TokenTvlData;
   // metadata: any;
 };
+export type FinalData = {
+  [chain: Chain]: {
+    canonical: any;
+    thirdParty: any;
+    native: any;
+    ownTokens: any;
+    total: any;
+    // metadata: any;
+  };
+};
 export type McapData = {
-  [symbol: string]: {
-    native: BigNumber;
-    outgoing?: BigNumber;
-    total: BigNumber;
-    chain: Chain;
+  [chain: Chain]: {
+    [symbol: string]: {
+      native: BigNumber;
+      outgoing?: BigNumber;
+      total: BigNumber;
+    };
   };
 };

@@ -14,10 +14,13 @@ export async function clearProtocolCache(protocolName: string) {
 }
 
 export async function clearProtocolCacheById(protocolId: string) {
-  await initializeTVLCacheDB()
-  await deleteProtocolCache(protocolId)
+  // await initializeTVLCacheDB()
+  // await deleteProtocolCache(protocolId)
+  const { API2_SERVER_URL } = process.env
+  if (!API2_SERVER_URL) throw new Error('Missing required env var: API2_SERVER_URL')
   const pgCaceId = getDailyTvlCacheId(protocolId)
-  await deleteFromPGCache(pgCaceId) // clear postgres cache as well
+  await axios.delete(`${API2_SERVER_URL}/debug-pg/${pgCaceId}`)
+  // await deleteFromPGCache(pgCaceId) // clear postgres cache as well
   // add command do it via discord bot
   return console.log("Protocol cache deleted id: ", protocolId)
 }

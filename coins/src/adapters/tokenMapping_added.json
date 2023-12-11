@@ -4350,6 +4350,12 @@
       "decimals": "8",
       "symbol": "WBNB",
       "to": "coingecko:binance-coin"
+    },
+    "0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX": {
+      "name": "FlowX",
+      "decimals": "8",
+      "symbol": "FLX",
+      "to": "coingecko:flowx-finance"
     }
   },
   "kekchain": {
@@ -7539,6 +7545,12 @@
       "decimals": "6",
       "symbol": "STUMEE",
       "to": "coingecko#umee"
+    },
+    "49D820DFDE9F885D7081725A58202ABA2F465CAEE4AFBC683DFB79A8E013E83E": {
+      "name": "injective-protocol",
+      "decimals": 18,
+      "symbol": "INJ",
+      "to": "coingecko#injective-protocol"
     }
   },
   "bitindi": {
@@ -8526,11 +8538,6 @@
       "decimals": "18",
       "symbol": "DAI",
       "to": "coingecko#dai"
-    },
-    "0xcd91716ef98798A85E79048B78287B13ae6b99b2": {
-      "decimals": "18",
-      "symbol": "GAI",
-      "to": "coingecko#gai"
     },
     "0x387660BC95682587efC12C543c987ABf0fB9778f": {
       "decimals": "18",

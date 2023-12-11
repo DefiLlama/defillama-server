@@ -406,7 +406,16 @@ export default {
     "iziswap": {
         parentId: "iZUMI Finance",
         "enabled": true,
-        "id": "1883"
+        "id": "1883",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1700524800": true,
+                "1700611200": true,
+                "1700697600": true,
+                "1700784000": true,
+                "1700870400": true,
+            },
+        }
     },
     "tinyman": {
         "enabled": true,
@@ -690,6 +699,7 @@ export default {
         "id": "2312"
     },
     "pegasys": {
+        parentId: "PegaSys",
         "enabled": true,
         "id": "1432"
     },
@@ -1012,11 +1022,6 @@ export default {
     "metatdex": {
         "enabled": true,
         "id": "2253"
-    },
-    "goosefx": {
-        disabled: true,
-        "enabled": true,
-        "id": "2175"
     },
     "3xcalibur": {
         "enabled": true,
@@ -1620,6 +1625,7 @@ export default {
         }
     },
     "lighter": {
+        parentId: "Lighter",
         "enabled": true,
         "id": "2636"
     },
@@ -1738,17 +1744,16 @@ export default {
         },
     },
     "litx": {
+        disabled: true,
         enabled: true,
         id: "3159"
     },
     "voodoo-trade": {
         enabled: true,
-        disabled: true,
-        id: "3156",
+        id: "3792",
         "protocolsData": {
             "swap": {
-                disabled: true,
-                "id": "3156",
+                "id": "3792",
                 "enabled": true,
                 "category": "Dexes",
             }
@@ -2169,6 +2174,7 @@ export default {
     },
     "derivio": {
         "enabled": false,
+        parentId: "Deri",
         "id": "3759",
         protocolsData: {
             "swap": {
@@ -2189,5 +2195,46 @@ export default {
     "chimpexchange": {
         "enabled": true,
         "id": "3836"
+    },
+    "lighterv2": {
+        parentId: "Lighter",
+        "enabled": true,
+        "id": "3854"
+    },
+    "thick": {
+        "enabled": true,
+        "id": "3878"
+    },
+    "noah-swap": {
+        "enabled": true,
+        "id": "2855"
+    },
+    "ascent": {
+        "enabled": true,
+        "id": "3867",
+        parentId: "Ascent Exchange",
+        protocolsData: {
+            "v2": {
+                "id": "3867",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "3868",
+                "enabled": true,
+            }
+        }
+    },
+    "pegasys-v3": {
+        parentId: "PegaSys",
+        "enabled": true,
+        "id": "3178"
+    },
+    "canary": {
+        "enabled": true,
+        "id": "474"
+    },
+    "xfai": {
+        "enabled": true,
+        "id": "3816"
     }
 } as AdaptorsConfig

@@ -131,7 +131,7 @@ async function translateToChainData(
     const mcap = address ? mcaps[address].mcap : total;
     const thisAssetMcap = BigNumber.min(mcap, total).times(percOnThisChain);
     translatedData[chain].ownTokens.total = translatedData[chain].ownTokens.total.plus(thisAssetMcap);
-    translatedData[chain].ownTokens.breakdown =
+    translatedData[chain].ownTokens.breakdown[ownToken.ticker] =
       translatedData[chain].ownTokens.breakdown[ownToken.ticker].plus(thisAssetMcap);
     delete data[key][chain][ownToken.ticker];
   }

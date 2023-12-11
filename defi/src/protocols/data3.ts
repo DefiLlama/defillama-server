@@ -26756,6 +26756,28 @@ const data3: Protocol[] = [
     github: ["WeftFinance"],
     listedAt: 1702306055
   },
+  {
+    id: "3905",
+    name: "Chainlink Staking",
+    address: "0x514910771af9ca656af840dff83e8264ecf986ca",
+    symbol: "LINK",
+    url: "https://chain.link/economics/staking",
+    description: "Chainlink Staking represents a new era of cryptoeconomic security for the industry-standard oracle network.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/chainlink-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "chainlink/index.js",
+    twitter: "chainlink",
+    parentProtocol: "parent#chainlink",
+    listedAt: 1702312086
+  },
 ]
 
 export default data3

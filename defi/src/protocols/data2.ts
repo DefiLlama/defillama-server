@@ -13011,7 +13011,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Avalanche"],
     module: "hubble-exchange/index.js",
-    oracles: ["Chainlink", "Switchboard"],
+    oracles: ["Chainlink"],
     forkedFrom: [],
     twitter: "HubbleExchange",
     audit_links: ["https://docs.hubble.exchange/audit-reports"],

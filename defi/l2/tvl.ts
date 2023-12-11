@@ -8,8 +8,10 @@ import { ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
+import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 
 export default async function main() {
+  await setEnvSecrets();
   const { data: canonical } = await fetchTvls({ isCanonical: true });
   let { tvlData: native, mcapData } = await fetchMinted({ chains: Object.keys(canonical) });
   let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({ mcapData, native });

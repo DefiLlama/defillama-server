@@ -5148,8 +5148,8 @@ const data3: Protocol[] = [
   {
     id: "2931",
     name: "BlazeStake",
-    address: null,
-    symbol: "-",
+    address: "solana:BLZEEuZUBVqFhj8adcCFPJvPVCiCyVmh3hkJMrU8KuJA",
+    symbol: "BLZE",
     assetToken: "bSOL",
     url: "https://stake.solblaze.org/",
     description:
@@ -5158,8 +5158,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/blazestake.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "blazestake-staked-sol",
-    cmcId: null,
+    gecko_id: "solblaze",
+    cmcId: "25178",
     category: "Liquid Staking",
     chains: ["Solana"],
     module: "blazestake/index.js",

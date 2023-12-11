@@ -2946,7 +2946,7 @@ const data3: Protocol[] = [
   {
     id: "2833",
     name: "Juicebox V1",
-    address: "0x3abf2a4f8452ccc2cf7b4c1e4663147600646f66",
+    address: "0x4554CC10898f92D45378b98D6D6c2dD54c687Fb2",
     symbol: "JBX",
     url: "https://juicebox.money/",
     description: "The programmable crypto fundraising protocol for builders and creators. Light enough for a group of friends, powerful enough for a global network of anons. Community-owned, on Ethereum",
@@ -2969,7 +2969,7 @@ const data3: Protocol[] = [
   {
     id: "2834",
     name: "Juicebox V2",
-    address: "0x3abf2a4f8452ccc2cf7b4c1e4663147600646f66",
+    address: "0x4554CC10898f92D45378b98D6D6c2dD54c687Fb2",
     symbol: "JBX",
     url: "https://juicebox.money/",
     description: "The programmable crypto fundraising protocol for builders and creators. Light enough for a group of friends, powerful enough for a global network of anons. Community-owned, on Ethereum",
@@ -2996,7 +2996,7 @@ const data3: Protocol[] = [
   {
     id: "2835",
     name: "Juicebox V3",
-    address: "0x3abf2a4f8452ccc2cf7b4c1e4663147600646f66",
+    address: "0x4554CC10898f92D45378b98D6D6c2dD54c687Fb2",
     symbol: "JBX",
     url: "https://juicebox.money/",
     description: "The programmable crypto fundraising protocol for builders and creators. Light enough for a group of friends, powerful enough for a global network of anons. Community-owned, on Ethereum",

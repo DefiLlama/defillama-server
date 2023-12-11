@@ -41,7 +41,7 @@ export default {
     id: "3207",
   },
   "logx": {
-    enabled: true,
+    enabled: false,
     id: "3396",
   },
   "jumper-exchange": {
@@ -73,7 +73,7 @@ export default {
     id: "3809",
   },
   "llamaswap": {
-    enabled: true,
+    enabled: false,
     id: "3847",
   },
   "openocean": {

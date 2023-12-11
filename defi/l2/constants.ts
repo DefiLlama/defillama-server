@@ -41,6 +41,36 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
 export const tokenFlowCategories: (keyof ChainData)[] = ["outgoing", "canonical", "incoming", "native"];
 
 export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } = {
+  mantle: { ticker: "MNT", address: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000" },
+  arbitrum: { ticker: "ARB", address: "0x912ce59144191c1204e64559fe8253a0e49e6548" },
+  nova: { ticker: "ARB", address: "0xf823c3cd3cebe0a1fa952ba88dc9eef8e0bf46ad" },
   optimism: { ticker: "OP", address: "0x4200000000000000000000000000000000000042" },
-  arbitrum: { ticker: "ARB", address: "0x912CE59144191C1204E64559FE8253a0e49E6548" },
+  // starknet: { ticker: 'STRK', address: ''},
+  celo: { ticker: "CELO", address: "0x471ece3750da237f93b8e339c536989b8978a438" },
+  aurora: { ticker: "AURORA", address: "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79" },
+};
+
+export const gasTokens: { [chain: Chain]: string } = {
+  mantle: "ETH",
+  arbitrum: "ETH",
+  nova: "ETH",
+  base: "ETH",
+  linea: "ETH",
+  optimism: "ETH",
+  scroll: "ETH",
+  starknet: "ETH",
+  zksync: "ETH",
+  everscale: "EVER",
+  injective: "INJ",
+  celo: "CELO",
+  iotex: "IOTX",
+  wanchain: "WAN",
+  // kekchain: "",
+  elysium: "LAVA",
+  alephium: "ALPH",
+  xdai: "XDAI",
+  polygon: "MATIC",
+  avax: "AVAX",
+  aurora: "ETH",
+  rsk: "RBTC",
 };

@@ -31,6 +31,7 @@ export default {
         "id": "1801"
     },
     "synfutures": {
+        parentId: "SynFutures",
         "enabled": true,
         "id": "2328"
     },
@@ -515,5 +516,10 @@ export default {
     "goosefx": {
         "enabled": true,
         "id": "2175"
+    },
+    "synfutures-v2": {
+        parentId: "SynFutures",
+        "enabled": true,
+        "id": "3061"
     }
 } as AdaptorsConfig

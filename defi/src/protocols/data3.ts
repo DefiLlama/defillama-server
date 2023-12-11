@@ -26713,7 +26713,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3903",
-    name: " Rain.fi",
+    name: "Rain.fi",
     address: null,
     symbol: "-",
     url: "https://rain.fi",
@@ -26732,6 +26732,29 @@ const data3: Protocol[] = [
     twitter: "RainFi_",
     audit_links: ["https://rain.fi/security-audit"],
     listedAt: 1702295258
+  },
+  {
+    id: "3904",
+    name: "Weft Finance",
+    address: "radix:resource_rdx1tk3fxrz75ghllrqhyq8e574rkf4lsq2x5a0vegxwlh3defv225cth3",
+    symbol: "WEFT",
+    url: "https://docs.weft.finance",
+    description: "Weft Finance is a decentralized lending and borrowing application built on Radix DLT",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/weft-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Radix"],
+    oracles: [],
+    forkedFrom: [],
+    module: "weft-finance/index.js",
+    twitter: "Weft_Finance",
+    audit_links: ["https://github.com/pessimistic-io/audits/blob/main/Weft%20Finance%20Security%20Analysis%20by%20Pessimistic.pdf"],
+    github: ["WeftFinance"],
+    listedAt: 1702306055
   },
 ]
 

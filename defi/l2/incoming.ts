@@ -8,7 +8,7 @@ import { Address } from "@defillama/sdk/build/types";
 import * as incomingAssets from "./adapters";
 import additional from "./adapters/manual";
 import { DollarValues, TokenTvlData } from "./types";
-import { zero } from "./constants";
+import { gasTokens, zero } from "./constants";
 import { getPrices } from "./utils";
 
 async function fetchSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
@@ -117,7 +117,10 @@ export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp
         if (!priceInfo || !supply) return;
         if (!(priceInfo.symbol in dollarValues))
           dollarValues[priceInfo.symbol] =
-            priceInfo.symbol in canonicalTvls[chain] ? zero.minus(canonicalTvls[chain][priceInfo.symbol]) : zero;
+            !(gasTokens[chain] && [gasTokens[chain], `W${gasTokens[chain]}`].includes(priceInfo.symbol)) &&
+            priceInfo.symbol in canonicalTvls[chain]
+              ? zero.minus(canonicalTvls[chain][priceInfo.symbol])
+              : zero;
         const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
         const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
         dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);

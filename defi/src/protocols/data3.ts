@@ -2946,7 +2946,7 @@ const data3: Protocol[] = [
   {
     id: "2833",
     name: "Juicebox V1",
-    address: "0x4554CC10898f92D45378b98D6D6c2dD54c687Fb2",
+    address: "0x3abf2a4f8452ccc2cf7b4c1e4663147600646f66",
     symbol: "JBX",
     url: "https://juicebox.money/",
     description: "The programmable crypto fundraising protocol for builders and creators. Light enough for a group of friends, powerful enough for a global network of anons. Community-owned, on Ethereum",
@@ -2972,10 +2972,10 @@ const data3: Protocol[] = [
     address: "0x4554CC10898f92D45378b98D6D6c2dD54c687Fb2",
     symbol: "JBX",
     url: "https://juicebox.money/",
-    description: "The programmable crypto fundraising protocol for builders and creators. Light enough for a group of friends, powerful enough for a global network of anons. Community-owned, on Ethereum",
+    description: "Join thousands of projects using Juicebox to fund, operate, and scale their ideas & communities transparently on Ethereum.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/juicebox.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -2985,11 +2985,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "juicebox-v2/index.js",
     twitter: "juiceboxETH",
-    audit_links: [
-       "https://docs.juicebox.money/assets/files/certik-audit-report-12b48328d22ac38207dad74162cac1db.pdf",
-       "https://code4rena.com/contests/2022-07-juicebox-v2-contest",
-       "https://docs.juicebox.money/assets/files/peckshield-audit-report-ab36ee2b5dfb2a387410b4d64276f6ba.pdf/"
-                ],
+    audit_links: [],
     parentProtocol: "parent#juicebox",
     listedAt: 1681517022
   },
@@ -2999,10 +2995,10 @@ const data3: Protocol[] = [
     address: "0x4554CC10898f92D45378b98D6D6c2dD54c687Fb2",
     symbol: "JBX",
     url: "https://juicebox.money/",
-    description: "The programmable crypto fundraising protocol for builders and creators. Light enough for a group of friends, powerful enough for a global network of anons. Community-owned, on Ethereum",
+    description: "Join thousands of projects using Juicebox to fund, operate, and scale their ideas & communities transparently on Ethereum.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/juicebox.png`,
-    audits: "2",
+    audits: "6",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -3014,7 +3010,11 @@ const data3: Protocol[] = [
     twitter: "juiceboxETH",
     audit_links: [
       "https://hackmd.io/@berndartmueller/2023-01-juice-v3-migration",
-      "https://code4rena.com/reports/2022-10-juicebox/"
+      "https://code4rena.com/reports/2022-10-juicebox/",
+      "https://docs.juicebox.money/assets/files/certik-audit-report-12b48328d22ac38207dad74162cac1db.pdf",
+      "https://code4rena.com/contests/2022-07-juicebox-v2-contest",
+      "https://docs.juicebox.money/assets/files/peckshield-audit-report-ab36ee2b5dfb2a387410b4d64276f6ba.pdf/",
+      "https://code4rena.com/reports/2023-05-juicebox"
     ],
     parentProtocol: "parent#juicebox",
     listedAt: 1681517104

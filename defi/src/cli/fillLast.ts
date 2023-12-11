@@ -15,8 +15,9 @@ const main = async () => {
   const now = Math.round(Date.now() / 1000);
 
   const adapterModule = await importAdapter(protocol)
-  console.log(await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, }))
-  const ethereumBlock = undefined
+  const blockData = await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
+  console.log(blockData)
+  const ethereumBlock = blockData.ethereumBlock
   const chainBlocks = {}
   const tvl = await storeTvl(
     now,

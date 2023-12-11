@@ -26698,7 +26698,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "hubble/index.js",
     twitter: "HubbleProtocol",
     audit_links: ["https://hubble-markets.gitbook.io/hubble-protocol-official-docs/documentation/security-audits"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Switchboard"],
     listedAt: 1643884771,
     stablecoins: ["usdh"],
     github: ["hubbleprotocol"]

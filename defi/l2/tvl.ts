@@ -4,7 +4,7 @@ import { fetchMinted } from "./native";
 import { fetchMetadata } from "./metadata";
 import { ChainData, DollarValues, FinalData, TokenTvlData } from "./types";
 import BigNumber from "bignumber.js";
-import { ownTokens, tokenFlowCategories, zero } from "./constants";
+import { gasTokens, ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
@@ -111,9 +111,15 @@ async function translateToChainData(
     Object.keys(translatedData).map((chain: Chain) => {
       const breakdown: { [symbol: string]: BigNumber } = {};
       Object.keys(translatedData[chain].incoming.breakdown).map((symbol: string) => {
+        if (gasTokens[chain] && [gasTokens[chain], `W${gasTokens[chain]}`].includes(symbol)) {
+          return;
+        }
         breakdown[symbol] = translatedData[chain].incoming.breakdown[symbol];
       });
       Object.keys(translatedData[chain].outgoing.breakdown).map((symbol: string) => {
+        if (gasTokens[chain] && [gasTokens[chain], `W${gasTokens[chain]}`].includes(symbol)) {
+          return;
+        }
         if (symbol in breakdown)
           breakdown[symbol] = breakdown[symbol].plus(translatedData[chain].incoming.breakdown[symbol]);
         else breakdown[symbol] = translatedData[chain].outgoing.breakdown[symbol];

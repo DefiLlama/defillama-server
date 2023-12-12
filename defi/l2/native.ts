@@ -6,6 +6,7 @@ import BigNumber from "bignumber.js";
 import { Address } from "@defillama/sdk/build/types";
 import { zero } from "./constants";
 import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
+import fetchThirdPartyTokenList from "./adapters/thirdParty";
 
 export async function fetchMinted(params: {
   chains: Chain[];
@@ -18,7 +19,10 @@ export async function fetchMinted(params: {
 
   await Promise.all(
     params.chains.map(async (chain: Chain) => {
-      const incomingTokens: Address[] = await fetchBridgeTokenList(chain);
+      const canonicalTokens: Address[] = await fetchBridgeTokenList(chain);
+      const thirdPartyTokens: Address[] = (await fetchThirdPartyTokenList())[chain];
+      const incomingTokens = [...canonicalTokens, ...thirdPartyTokens];
+
       let storedTokens = await fetchAllTokens(chain);
 
       // filter any tokens that arent natively minted

@@ -59,20 +59,24 @@ async function translateToChainData(
   let translatedData: any = {};
   const selectedChains: Chain[] = Object.keys(data.canonical);
   // tidy this up
-  tokenFlowCategories.map((key: keyof ChainData) => {
-    selectedChains.map((chain: Chain) => {
-      Object.keys(data[key][chain]).map((symbol: string) => {
-        if (!nativeTokenSymbols.includes(symbol)) return;
-        if (!(symbol in nativeTokenTotalValues)) nativeTokenTotalValues[symbol] = zero;
-        nativeTokenTotalValues[symbol] = nativeTokenTotalValues[symbol].plus(data[key][chain][symbol]);
-      });
-    });
-  });
+  aggregateNativeTokens();
 
   await Promise.all(tokenFlowCategories.map((c: keyof ChainData) => processProperty(data, c)));
   // processProperty(data, "metadata");
   combineThirdPartyFlows();
   processNetFlows();
+
+  function aggregateNativeTokens() {
+    tokenFlowCategories.map((key: keyof ChainData) => {
+      selectedChains.map((chain: Chain) => {
+        Object.keys(data[key][chain]).map((symbol: string) => {
+          if (!nativeTokenSymbols.includes(symbol)) return;
+          if (!(symbol in nativeTokenTotalValues)) nativeTokenTotalValues[symbol] = zero;
+          nativeTokenTotalValues[symbol] = nativeTokenTotalValues[symbol].plus(data[key][chain][symbol]);
+        });
+      });
+    });
+  }
 
   async function processProperty(data: ChainData, key: keyof ChainData) {
     await Promise.all(

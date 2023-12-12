@@ -1,8 +1,12 @@
 import BigNumber from "bignumber.js";
-import { CoinsApiData, TokenTvlData } from "./types";
+import { CoinsApiData, McapsApiData, TokenTvlData } from "./types";
 import { excludedTvlKeys, zero } from "./constants";
 import fetch from "node-fetch";
 import sleep from "../src/utils/shared/sleep";
+import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import { Address } from "@defillama/sdk/build/types";
+import * as incomingAssets from "./adapters";
+import additional from "./adapters/manual";
 
 export function aggregateChainTokenBalances(usdTokenBalances: TokenTvlData[][]): TokenTvlData {
   const chainUsdTokenTvls: TokenTvlData = {};
@@ -78,11 +82,6 @@ export async function getPrices(
   });
   return aggregatedRes;
 }
-
-type McapsApiData = {
-  mcap: number;
-  timestamp: number;
-};
 export async function getMcaps(
   readKeys: string[],
   timestamp: number | "now"
@@ -116,4 +115,31 @@ export async function getMcaps(
     });
   });
   return aggregatedRes;
+}
+export async function fetchSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
+  const res = await multiCall({
+    chain,
+    calls: contracts.map((target: string) => ({
+      target,
+    })),
+    abi: "erc20:totalSupply",
+    permitFailure: true,
+  });
+  const supplies: { [token: string]: number } = {};
+  contracts.map((c: Address, i: number) => {
+    if (res[i]) supplies[c] = res[i];
+  });
+  return supplies;
+}
+export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
+  const j = Object.keys(incomingAssets).indexOf(chain);
+  if (j == -1) return [];
+  try {
+    const tokens: Address[] = await Object.values(incomingAssets)[j]();
+    if (!(chain in additional)) return tokens;
+    const additionalTokens = additional[chain];
+    return [...tokens, ...additionalTokens];
+  } catch {
+    throw new Error(`${chain} bridge adapter failed`);
+  }
 }

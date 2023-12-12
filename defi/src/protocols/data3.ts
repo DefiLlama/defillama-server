@@ -26846,6 +26846,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#lynex",
     listedAt: 1702381802
   },
+  {
+    id: "3909",
+    name: "Hashstack",
+    address: null,
+    symbol: "-",
+    url: "https://hashstack.finance",
+    description: "Yield farm on Starknet through Hashstack's permissionless under-collateralised loans.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/hashstack.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Uncollateralized Lending",
+    chains: ["Starknet"],
+    oracles: ["Pragma"], 
+    forkedFrom: [],
+    module: "hashstack/index.js",
+    twitter: "0xHashstack",
+    github: ["0xHashstack"],
+    listedAt: 1702386283
+  },
+
 ]
 
 export default data3

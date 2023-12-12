@@ -7463,7 +7463,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "scream/index.js",
     twitter: "Screamdotsh",
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Band"], //band contract https://ftmscan.com/address/0xda7a001b254cd22e46d3eab04d937489c93174c3#code
     forkedFrom: ["Compound V2"],
     governanceID: ["snapshot:screamsh.eth"],
     github: ["Scream-Finance"]
@@ -9657,6 +9657,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance", "Cronos"],
     module: "annex.js",
     twitter: "AnnexFinance",
+    oraclesByChain: {
+      cronos: ["Band"], //contract https://cronoscan.com/address/0xda7a001b254cd22e46d3eab04d937489c93174c3#code
+    },
     audit_links: ["https://www.certik.org/projects/annex"],
     github: ["annexfinance"]
   },

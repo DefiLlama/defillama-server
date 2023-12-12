@@ -26002,7 +26002,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    oracles: ["Band"], // https://blog.bandprotocol.com/omnibybetafinance-integrates-bandoracle-on-ethereum/
+    oracles: ["Band"], // https://blog.bandprotocol.com/omnibybetafinance-integrates-bandoracle-on-ethereum/ , contract https://etherscan.io/address/0x2609df43e246664c7c930303f9fcbc669f93fda6#code
     chains: ["Ethereum"],
     module: "beta-finance-v2/index.js",
     twitter: "beta_finance",

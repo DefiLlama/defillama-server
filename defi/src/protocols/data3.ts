@@ -26841,7 +26841,7 @@ const data3: Protocol[] = [
     chains: ["Linea"],
     oracles: [], 
     forkedFrom: ["Solidly"],
-    module: "projects/lynex-v1/index.js",
+    module: "lynex-v1/index.js",
     twitter: "LynexFi",
     parentProtocol: "parent#lynex",
     listedAt: 1702381802

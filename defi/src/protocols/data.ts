@@ -9657,7 +9657,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance", "Cronos"],
     module: "annex.js",
     twitter: "AnnexFinance",
-    oracles: ["Band"], //contract https://cronoscan.com/address/0xda7a001b254cd22e46d3eab04d937489c93174c3#code
+    oraclesByChain: {
+      cronos: ["Band"], //contract https://cronoscan.com/address/0xda7a001b254cd22e46d3eab04d937489c93174c3#code
+    },
     audit_links: ["https://www.certik.org/projects/annex"],
     github: ["annexfinance"]
   },

@@ -26779,6 +26779,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#chainlink",
     listedAt: 1702312086
   },
+  {
+    id: "3906",
+    name: "Rangers Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://rangersprotocol.com",
+    description: "Bridge on Rangers chain",
+    chain: "Rangers",
+    logo: `${baseIconsUrl}/rangers-bridge.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Rangers"],
+    oracles: [],
+    forkedFrom: [],
+    module: "rangers/index.js",
+    twitter: "RangersProtocol",
+    listedAt: 1702380485
+  },
+  {
+    id: "3907",
+    name: "Ryze.Fi",
+    address: null,
+    symbol: "-",
+    url: "https://www.ryze.fi",
+    description: "Ryze.fi is a decentralized binary options platform that allows users to speculate on the price movements of crypto assets. The platform enables users to make predictions on price direction over short time intervals, providing a simple, fast-paced trading experience.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ryze.fi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: ["Ryze Oracle"], // BTC - https://arbiscan.io/address/0x041422081470d64411d733e468176992e4f2dd85 , ETH - https://arbiscan.io/address/0x4e31baed56cf37436efa4184e3669050a59233da
+    forkedFrom: [],
+    module: "ryze/index.js",
+    twitter: "RyzeFi",
+    audit_links: ["https://assets-global.website-files.com/63f62b4cce8131e16ca56ecb/6511a7eb1c0ccd8228977194_Balance_Final_audit_report.pdf"],
+    github: ["ryzefi"],
+    listedAt: 1702380495
+  },
 ]
 
 export default data3

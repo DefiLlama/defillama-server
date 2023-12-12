@@ -26859,7 +26859,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Uncollateralized Lending",
+    category: "Lending",
     chains: ["Starknet"],
     oracles: ["Pragma"], 
     forkedFrom: [],

@@ -15785,14 +15785,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3408",
-    name: "Lynex",
+    name: "Lynex V2",
     address: null,
     symbol: "-",
     url: "https://app.lynex.fi/",
     description:
       "Linea's native on-chain liquidity marketplace. Powered by cutting-edge DEX infrastructure, it offers a highly capital-efficient DeFi solution",
     chain: "Linea",
-    logo: `${baseIconsUrl}/lynex.png`,
+    logo: `${baseIconsUrl}/lynex-v2.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: null,
@@ -15802,6 +15802,7 @@ const data3: Protocol[] = [
     module: "lynex/index.js",
     twitter: "LynexFi",
     forkedFrom: ["Algebra DEX"],
+    parentProtocol: "parent#lynex",
     oracles: [],
     listedAt: 1692294659
   },
@@ -26822,6 +26823,28 @@ const data3: Protocol[] = [
     audit_links: ["https://assets-global.website-files.com/63f62b4cce8131e16ca56ecb/6511a7eb1c0ccd8228977194_Balance_Final_audit_report.pdf"],
     github: ["ryzefi"],
     listedAt: 1702380495
+  },
+  {
+    id: "3908",
+    name: "Lynex V1",
+    address: null,
+    symbol: "-",
+    url: "https://app.lynex.fi",
+    description: "Linea's native on-chain liquidity marketplace. Powered by cutting-edge DEX infrastructure, it offers a highly capital-efficient DeFi solution",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/lynex-v1.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    oracles: [], 
+    forkedFrom: ["Solidly"],
+    module: "projects/lynex-v1/index.js",
+    twitter: "LynexFi",
+    parentProtocol: "parent#lynex",
+    listedAt: 1702381802
   },
 ]
 

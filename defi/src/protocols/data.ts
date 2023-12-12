@@ -2285,7 +2285,7 @@ const data: Protocol[] = [
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound V2"],
-    oracles: ["Chainlink", "Pyth", "TWAP"],
+    oracles: ["Chainlink", "Pyth", "TWAP", "RedStone"], // https://docs-v4.venus.io/risk/resilient-price-oracle
     parentProtocol: "parent#venus-finance"
   },
   {

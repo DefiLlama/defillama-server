@@ -125,14 +125,14 @@ export default [
         protocolId: "parent#aave",
         sources: ["https://aave.tokenlogic.com.au/aave-runway"],
         annualUsdCost: {
-            all: 1.6e6*12,
+            all: (2.1+4.2+2.2*4+0.9+0.2+0.166*5)*365*1e3,
         },
         annualTokenCosts: {
             "coingecko:aave": {
-                salaries: 12*(21/15+13.3/6+10/12+7.3/12+9.9/12+1.2/5)
+                salaries: (13.3+0.7+27.6)*365
             }
         },
-        lastUpdate: "2023-04-29"
+        lastUpdate: "2023-12-12"
     },
     {
         protocolId: "587", // Maple

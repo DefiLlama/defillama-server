@@ -22928,7 +22928,7 @@ const data3: Protocol[] = [
     module: "gondi/index.js",
     forkedFrom: [],
     oracles: [],
-    audit_links: ["https://docs.gondi.xyz/audits"],
+    audit_links: ["https://docs.gondi.xyz/security-and-audits"],
     twitter: "gondixyz",
     parentProtocol: "parent#gondi",
     listedAt: 1698924327
@@ -25305,7 +25305,7 @@ const data3: Protocol[] = [
     description: "Borrow, Lend & Refinance NFTs on the most capital efficient lending protocol",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gondi-v2.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -25315,6 +25315,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "gondi-v2/index.js",
     twitter: "gondixyz",
+    audit_links: ["https://docs.gondi.xyz/security-and-audits"],
     parentProtocol: "parent#gondi",
     listedAt: 1700775318
   },

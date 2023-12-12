@@ -51,20 +51,16 @@ export async function storeAllTokens(tokens: string[]) {
   );
 }
 
-export async function fetchAllTokens(chain: Chain): Promise<any> {
+export async function fetchAllTokens(chain: Chain): Promise<string[]> {
   await generateAuth();
   const sql = postgres(auth[0]);
   const res = await queryPostgresWithRetry(
     sql`
-      select token, supply from alltokens
+      select token from alltokens
       where chain = ${chain}
     `,
     sql
   );
 
-  const obj: { [token: string]: number | undefined } = {};
-  res.map((t: any) => {
-    obj[t.token] = t.supply;
-  });
-  return obj;
+  return res;
 }

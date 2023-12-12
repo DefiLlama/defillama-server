@@ -19,13 +19,15 @@ export async function fetchMinted(params: {
   await Promise.all(
     params.chains.map(async (chain: Chain) => {
       const incomingTokens: Address[] = await fetchBridgeTokenList(chain);
-      const storedSupplies = await fetchAllTokens(chain);
+      let storedTokens = await fetchAllTokens(chain);
 
       // filter any tokens that arent natively minted
       incomingTokens.map((t: Address) => {
-        if (t in storedSupplies) delete storedSupplies[t];
+        const i = storedTokens.indexOf(t);
+        if (i == -1) return;
+        storedTokens.splice(i, 1);
       });
-      const supplies = await fetchSupplies(chain, storedSupplies);
+      const supplies = await fetchSupplies(chain, storedTokens);
 
       const [prices, mcaps] = await Promise.all([
         getPrices(

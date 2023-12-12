@@ -2246,5 +2246,9 @@ export default {
         parentId: "Zebra",
         "enabled": true,
         "id": "3901"
+    },
+    "astroport-v2": {
+        "enabled": true,
+        "id": "3117"
     }
 } as AdaptorsConfig

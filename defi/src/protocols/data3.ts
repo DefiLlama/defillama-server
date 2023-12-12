@@ -16757,7 +16757,7 @@ const data3: Protocol[] = [
     description: "CygnusDAO is a decentralized Stablecoin Lending and Leverage Trading protocol for LPs.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/cygnusdao.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -16768,6 +16768,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     twitter: "CygnusDAO",
     github: ["CygnusDAO"],
+    audit_links: ["https://github.com/borosorus/CygnusDAO-audit"],
     listedAt: 1693318931
   },
   {
@@ -19634,7 +19635,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.digift.sg",
-    description: "DigiFT is the first and only RWA DEX enrolled within the Monetary Authority of Singapore (MAS) FinTech Regulatory Sandbox, built on the Ethereum public blockchain. DigiFT enables asset owners to issue, and eligible investors to purchase, blockchain-based security tokens. Investors can also access continuous liquidity on secondary market trading via an Automatic Market Maker mechanism.",
+    description: "DigiFT is the first regulated exchange for on-chain real-world assets, approved as a Recognised Market Operator with a Capital Markets Services license by the Monetary Authority of Singapore. DigiFT allows asset owners to issue blockchain-based security tokens and investors can trade with continuous liquidity via an AMM.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/digift.jpg`,
     audits: "0",

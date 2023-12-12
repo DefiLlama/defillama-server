@@ -3304,6 +3304,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ZebraProtocol",
     github: ["zebra-xyz"],
   },
+  {
+    id: "parent#lynex",
+    name: "Lynex",
+    url: "Lynex",
+    description: `Linea's native on-chain liquidity marketplace. Powered by cutting-edge DEX infrastructure, it offers a highly capital-efficient DeFi solution`,
+    logo: `${baseIconsUrl}/lynex.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "LynexFi",
+  },
 ];
 
 export default parentProtocols;

@@ -26891,7 +26891,28 @@ const data3: Protocol[] = [
     github: ["GryphonProtocolDAO"],
     listedAt: 1702394752
   },
-
+  {
+    id: "3911",
+    name: "Metavault Derivatives V2",
+    address: "linea:-",
+    symbol: "MVX",
+    url: "https://metavault.trade",
+    description: "Derivatives Protocol on the linea Chain",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/metavault-derivatives-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Linea"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "metavault-derivatives-v2/index.js",
+    twitter: "MetavaultTRADE",
+    parentProtocol: "parent#metavault",
+    listedAt: 1702420919
+  },
 ]
 
 export default data3

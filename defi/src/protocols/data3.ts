@@ -26868,6 +26868,28 @@ const data3: Protocol[] = [
     github: ["0xHashstack"],
     listedAt: 1702386283
   },
+  {
+    id: "3910",
+    name: "Gryphon",
+    address: null,
+    symbol: "-",
+    url: "https://gryphon.finance",
+    description: "Injectives premier liquid staking platform.With an integrated money market to earn compounded interest on Injective while accessing your locked liquidity.",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/gryphon.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Injective"],
+    oracles: ["Pyth"], 
+    forkedFrom: [],
+    module: "gryphon-staking/index.js",
+    twitter: "Gryphon_fi",
+    github: ["GryphonProtocolDAO"],
+    listedAt: 1702394752
+  },
 
 ]
 

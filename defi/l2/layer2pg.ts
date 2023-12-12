@@ -32,7 +32,7 @@ export async function storeAllTokens(tokens: string[]) {
 
   const inserts: TokenInsert[] = [];
   tokens.map((t: string) => {
-    const [chain, token] = t.split(":");
+    const [chain, token] = t.toLowerCase().split(":");
     if (!token) return;
     inserts.push({ chain, token });
   });
@@ -62,5 +62,5 @@ export async function fetchAllTokens(chain: Chain): Promise<string[]> {
     sql
   );
 
-  return res;
+  return res.map((r: any) => r.token);
 }

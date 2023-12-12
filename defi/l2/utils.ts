@@ -7,6 +7,7 @@ import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { Address } from "@defillama/sdk/build/types";
 import * as incomingAssets from "./adapters";
 import additional from "./adapters/manual";
+import { Chain } from "@defillama/sdk/build/general";
 
 export function aggregateChainTokenBalances(usdTokenBalances: TokenTvlData[][]): TokenTvlData {
   const chainUsdTokenTvls: TokenTvlData = {};
@@ -117,29 +118,42 @@ export async function getMcaps(
   return aggregatedRes;
 }
 export async function fetchSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
-  const res = await multiCall({
-    chain,
-    calls: contracts.map((target: string) => ({
-      target,
-    })),
-    abi: "erc20:totalSupply",
-    permitFailure: true,
-  });
-  const supplies: { [token: string]: number } = {};
-  contracts.map((c: Address, i: number) => {
-    if (res[i]) supplies[c] = res[i];
-  });
-  return supplies;
+  try {
+    const res = await multiCall({
+      chain,
+      calls: contracts.map((target: string) => ({
+        target,
+      })),
+      abi: "erc20:totalSupply",
+      permitFailure: true,
+    });
+    const supplies: { [token: string]: number } = {};
+    contracts.map((c: Address, i: number) => {
+      if (res[i]) supplies[c] = res[i];
+    });
+    return supplies;
+  } catch (e) {
+    throw new Error(`multicalling token supplies failed for chain ${chain}`);
+  }
 }
 export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
   const j = Object.keys(incomingAssets).indexOf(chain);
   if (j == -1) return [];
   try {
     const tokens: Address[] = await Object.values(incomingAssets)[j]();
-    if (!(chain in additional)) return tokens;
-    const additionalTokens = additional[chain];
-    return [...tokens, ...additionalTokens];
+    const normalizedTokens: Address[] = tokens.map((t: string) => t.toLowerCase());
+    if (!(chain in additional)) return normalizedTokens;
+    const additionalTokens = additional[chain].map((t: string) => t.toLowerCase());
+    return [...normalizedTokens, ...additionalTokens];
   } catch {
     throw new Error(`${chain} bridge adapter failed`);
   }
+}
+export function sortBySize() {
+  const coins: { [value: string]: string } = {};
+  const res = Object.entries(coins).sort(([_A, valueA], [_B, valueB]) => {
+    [_A, _B];
+    return Number(valueB) - Number(valueA);
+  });
+  console.log(res.slice(0, 10));
 }

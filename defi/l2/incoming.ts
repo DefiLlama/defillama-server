@@ -33,12 +33,8 @@ export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp
           const priceInfo = prices[`${chain}:${t}`];
           const supply = supplies[t];
           if (!priceInfo || !supply) return;
-          if (!(priceInfo.symbol in dollarValues))
-            dollarValues[priceInfo.symbol] =
-              !(gasTokens[chain] && [gasTokens[chain], `W${gasTokens[chain]}`].includes(priceInfo.symbol)) &&
-              priceInfo.symbol in canonicalTvls[chain]
-                ? zero.minus(canonicalTvls[chain][priceInfo.symbol])
-                : zero;
+          if (priceInfo.symbol in canonicalTvls[chain]) return;
+          if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
           const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
           const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
           dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);

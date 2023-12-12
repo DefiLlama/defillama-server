@@ -26738,7 +26738,7 @@ const data3: Protocol[] = [
     name: "Weft Finance",
     address: "radix:resource_rdx1tk3fxrz75ghllrqhyq8e574rkf4lsq2x5a0vegxwlh3defv225cth3",
     symbol: "WEFT",
-    url: "https://docs.weft.finance",
+    url: "https://app.weft.finance",
     description: "Weft Finance is a decentralized lending and borrowing application built on Radix DLT",
     chain: "Radix",
     logo: `${baseIconsUrl}/weft-finance.jpg`,

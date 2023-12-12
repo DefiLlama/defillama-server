@@ -1,44 +1,12 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { fetchAllTokens, updateAllTokenSupplies } from "./layer2pg";
-import { McapData, SupplyInsert, TokenTvlData } from "./types";
+import { fetchAllTokens } from "./layer2pg";
+import { McapData, TokenTvlData, DollarValues } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { Address } from "@defillama/sdk/build/types";
-import { fetchBridgeTokenList } from "./incoming";
-import { DollarValues, Supplies } from "./types";
 import { zero } from "./constants";
-import { getMcaps, getPrices } from "./utils";
+import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
 
-async function fetchMissingSupplies(chain: Chain, storedSupplies: Supplies): Promise<Supplies> {
-  const calls: { target: string }[] = [];
-  const allSupplies: Supplies = {};
-
-  Object.keys(storedSupplies).map((target: Address) => {
-    if (storedSupplies[target]) allSupplies[target] = storedSupplies[target];
-    else calls.push({ target });
-  });
-
-  if (!calls.length) return storedSupplies;
-  const supplies = await multiCall({
-    chain,
-    calls,
-    abi: "erc20:totalSupply",
-    permitFailure: true,
-  });
-
-  const writes: SupplyInsert[] = [];
-  calls.map(({ target }, i: number) => {
-    const supply = supplies[i];
-    if (!supply) return;
-    allSupplies[target] = supply;
-    writes.push({ token: target, supply, chain });
-  });
-
-  await updateAllTokenSupplies(writes);
-
-  return allSupplies;
-}
 export async function fetchMinted(params: {
   chains: Chain[];
   timestamp?: number;
@@ -57,7 +25,7 @@ export async function fetchMinted(params: {
       incomingTokens.map((t: Address) => {
         if (t in storedSupplies) delete storedSupplies[t];
       });
-      const supplies = await fetchMissingSupplies(chain, storedSupplies);
+      const supplies = await fetchSupplies(chain, storedSupplies);
 
       const [prices, mcaps] = await Promise.all([
         getPrices(
@@ -70,22 +38,26 @@ export async function fetchMinted(params: {
         ),
       ]);
 
+      function findDollarValues() {
+        Object.keys(supplies).map((t: string) => {
+          const priceInfo = prices[`${chain}:${t}`];
+          const mcapInfo = mcaps[`${chain}:${t}`];
+          const supply = supplies[t];
+          if (!priceInfo || !supply || !mcapInfo) return;
+          if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
+          const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
+          const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
+          mcapData[chain][priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
+          if (priceInfo.symbol in mcapData.total)
+            mcapData.total[priceInfo.symbol].native = mcapData.total[priceInfo.symbol].native.plus(usdValue);
+          else mcapData.total[priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
+          dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
+        });
+      }
+
       const dollarValues: DollarValues = {};
       mcapData[chain] = {};
-      Object.keys(supplies).map((t: string) => {
-        const priceInfo = prices[`${chain}:${t}`];
-        const mcapInfo = mcaps[`${chain}:${t}`];
-        const supply = supplies[t];
-        if (!priceInfo || !supply || !mcapInfo) return;
-        if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
-        const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
-        const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-        mcapData[chain][priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
-        if (priceInfo.symbol in mcapData.total)
-          mcapData.total[priceInfo.symbol].native = mcapData.total[priceInfo.symbol].native.plus(usdValue);
-        else mcapData.total[priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
-        dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
-      });
+      findDollarValues();
 
       return (tvlData[chain] = dollarValues);
     })

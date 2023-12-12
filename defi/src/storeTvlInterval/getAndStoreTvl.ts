@@ -18,7 +18,7 @@ import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
 import { LogArray } from "@defillama/sdk/build/types";
-import { storeAllTokens, storeTokenOwnerLogs } from "../../l2/layer2pg";
+import { storeAllTokens } from "../../l2/layer2pg";
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -53,7 +53,7 @@ async function getTvl(
   staleCoins: StaleCoins,
   options: StoreTvlOptions = {} as StoreTvlOptions
 ) {
-  let chainDashPromises
+  let chainDashPromise
   for (let i = 0; i < maxRetries; i++) {
     try {
       if (!isFetchFunction) {
@@ -74,7 +74,7 @@ async function getTvl(
             { api, chain, storedKey, block, logArray },
           );
           if (!tvlBalances && Object.keys(api.getBalances()).length) tvlBalances = api.getBalances()
-          chainDashPromises = [storeAllTokens(Object.keys(tvlBalances)), storeTokenOwnerLogs(logArray)];
+          chainDashPromise = storeAllTokens(Object.keys(tvlBalances));
         }
         Object.keys(tvlBalances).forEach((key) => {
           if (+tvlBalances[key] === 0) delete tvlBalances[key]
@@ -128,7 +128,7 @@ async function getTvl(
       }
     }
   }
-  if (chainDashPromises) await Promise.all(chainDashPromises)
+  if (chainDashPromise) await chainDashPromise;
 }
 
 function mergeBalances(key:string, storedKeys:string[], balancesObject:tvlsObject<TokensValueLocked>){
@@ -262,6 +262,7 @@ export async function storeTvl(
   if (runBeforeStore !== undefined) {
     await runBeforeStore();
   }
+  console.log(usdTvls)
   try {
     if (!process.env.DRY_RUN) {
       await storeNewTvl2(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances, overwriteExistingData ); // Checks circuit breakers

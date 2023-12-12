@@ -26633,7 +26633,7 @@ const data3: Protocol[] = [
       "Poolshark Protocol combines noncustodial smart contracts for a decentralized exchange with directional and bidirectional liquidity, merging AMM and LOB features with greater transaction throughput, and enhancing AMMs with limit orders and stop-losses for liquidity providers",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/poolshark.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -26641,7 +26641,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "poolshark/index.js",
     twitter: "PoolsharkLabs",
-    audit_links: [],
+    audit_links: ["https://github.com/poolshark-protocol/limit/blob/master/audits/Guardian_Audits_Poolshark_Limit.pdf"],
     oracles: [],
     github: ["poolshark-protocol"],
     listedAt: 1702143574

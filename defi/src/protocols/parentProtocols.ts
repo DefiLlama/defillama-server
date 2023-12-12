@@ -1479,7 +1479,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#juicebox",
     name: "Juicebox",
     url: "https://juicebox.money/",
-    description: "The programmable crypto fundraising protocol for builders and creators. Light enough for a group of friends, powerful enough for a global network of anons. Community-owned, on Ethereum",
+    description: "Join thousands of projects using Juicebox to fund, operate, and scale their ideas & communities transparently on Ethereum.",
     logo: `${baseIconsUrl}/juicebox.png`,
     gecko_id: "juicebox",
     cmcId: "15456",

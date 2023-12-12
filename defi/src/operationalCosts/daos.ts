@@ -123,7 +123,7 @@ export default [
     },
     {
         protocolId: "parent#aave",
-        sources: ["https://community.llama.xyz/aave/runway"],
+        sources: ["https://aave.tokenlogic.com.au/aave-runway"],
         annualUsdCost: {
             all: 1.6e6*12,
         },

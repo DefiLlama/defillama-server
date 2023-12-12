@@ -103,7 +103,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   solana: {
     YAKU: "NGK3iHqqQkyRZUj4uhJDQqEyKKcZ7mdawWpqwMffM3s",
-    BONK: "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
     SNS: "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd"
   },
   avax: {

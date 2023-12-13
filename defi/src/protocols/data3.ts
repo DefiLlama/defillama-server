@@ -10737,7 +10737,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["zkSync Era"],
     oracles: [],
-    forkedFrom: ["SyncSwap"],
+    forkedFrom: ["Uniswap v2"],
     module: "zkSwap-finance/index.js",
     twitter: "zkSwap_finance",
     audit_links: ["https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ZKSWAP%20FINANCE%20AUDIT%20REPORT.pdf"],

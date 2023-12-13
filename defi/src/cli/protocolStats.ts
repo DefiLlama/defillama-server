@@ -3,7 +3,11 @@ import protocols, { Protocol } from "../protocols/data";
 import { PromisePool } from '@supercharge/promise-pool'
 import * as sdk from '@defillama/sdk'
 import { hourlyTvl, getLastRecord } from "../utils/getLastRecord";
-import { importAdapter } from "../utils/imports/importAdapter";
+
+
+function importAdapter(protocol: Protocol) {
+  return require("@defillama/adapters/projects/" + [protocol.module])
+}
 
 const cacheFile = '../../protocolRunInfo.json'
 

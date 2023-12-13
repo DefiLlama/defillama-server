@@ -13,8 +13,8 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3781": "linea",
   // "3783": "metis", // commented out until we get a native bridge token mapping
   "3784": "optimism",
-  // "3785": "polygon_zkevm",
-  "3786": "scroll", // multiCall RPC failure
+  "3785": "polygon_zkevm",
+  "3786": "scroll",
   "3787": "starknet",
   "3788": "zksync",
   "1501": "everscale",
@@ -25,9 +25,9 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "2214": "kekchain",
   "3699": "elysium",
   "3813": "alephium",
-  "129": "xdai", // multiCall RPC failure
+  "129": "xdai",
   "240": "polygon",
-  "3779": "avax", // multiCall RPC failure
+  "3779": "avax",
   "3866": "aurora",
   "3861": "rsk",
 };
@@ -45,8 +45,15 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   arbitrum: { ticker: "ARB", address: "0x912ce59144191c1204e64559fe8253a0e49e6548" },
   nova: { ticker: "ARB", address: "0xf823c3cd3cebe0a1fa952ba88dc9eef8e0bf46ad" },
   optimism: { ticker: "OP", address: "0x4200000000000000000000000000000000000042" },
+  polygon_zkevm: { ticker: "MATIC", address: "0xa2036f0538221a77a3937f1379699f44945018d0" },
   // starknet: { ticker: 'STRK', address: ''},
+  everscale: { ticker: "EVER", address: "0x29d578cec46b50fa5c88a99c6a4b70184c062953" },
   celo: { ticker: "CELO", address: "0x471ece3750da237f93b8e339c536989b8978a438" },
+  iotex: { ticker: "IOTX", address: "0xa00744882684c3e4747faefd68d283ea44099d03" },
+  wanchain: { ticker: "WAN", address: "0xdabd997ae5e4799be47d6e69d9431615cba28f48" },
+  xdai: { ticker: "XDAI", address: "0xe91d153e0b41518a2ce8dd3d7944fa863463a97d" },
+  polygon: { ticker: "MATIC", address: "0x0000000000000000000000000000000000001010" },
+  avax: { ticker: "AVAX", address: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7" },
   aurora: { ticker: "AURORA", address: "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79" },
 };
 

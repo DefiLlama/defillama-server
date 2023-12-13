@@ -25942,6 +25942,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "ascentexchange/index.js",
     twitter: "AscentExchange",
+    parentProtocol: "parent#ascent-exchange",
     listedAt: 1701356713
   },
   {
@@ -25964,6 +25965,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "ascentexchange-v3/index.js",
     twitter: "AscentExchange",
+    parentProtocol: "parent#ascent-exchange",
     listedAt: 1701356713
   },
   {

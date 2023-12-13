@@ -26906,7 +26906,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Linea"],
-    oracles: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5205
+    oracles: ["Pyth","API3"], // https://github.com/DefiLlama/defillama-server/pull/5205
     forkedFrom: [],
     module: "metavault-derivatives-v2/index.js",
     twitter: "MetavaultTRADE",

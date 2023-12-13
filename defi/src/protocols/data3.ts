@@ -50,7 +50,7 @@ const data3: Protocol[] = [
     url: "https://fairyswap.finance",
     description: " FairySwap v2, the first DEX upgrade on Findora (FRA) delivering great trading experience and earning opportunities.",
     chain: "Findora",
-    logo: `${baseIconsUrl}/fairyswap-v2.jpg`,
+    o: `${baseIconsUrl}/fairyswap-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -15535,7 +15535,7 @@ const data3: Protocol[] = [
     module: "logx/index.js",
     twitter: "LogX_trade",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5205
     listedAt: 1702086727
   },
   {
@@ -26906,7 +26906,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Linea"],
-    oracles: [], 
+    oracles: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5205
     forkedFrom: [],
     module: "metavault-derivatives-v2/index.js",
     twitter: "MetavaultTRADE",

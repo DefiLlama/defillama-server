@@ -1629,5 +1629,9 @@ export default {
     "xfai": {
         "enabled": true,
         "id": "3816"
+    },
+    "defiplaza": {
+        "enabled": true,
+        "id": "728"
     }
 } as AdaptorsConfig

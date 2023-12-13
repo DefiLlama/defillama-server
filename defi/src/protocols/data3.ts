@@ -1113,7 +1113,7 @@ const data3: Protocol[] = [
     address: "0x518b63Da813D46556FEa041A88b52e3CAa8C16a8",
     symbol: "ATF",
     url: "https://antfarm.finance",
-    description: "Antfarm finance is a multichain pool optimizer built specifically for Liquidity Providers and crypto projects. Antfarm's mission is to attract, compensate and retain LPs, increasing their profits while reducing the risks taken.",
+    description: "Onchain rebalancing, ingeniously automated. Antfarm lets you turn market volatility into your strategic advantage, experiencing seamless, stress-free, and long-term growth leveraging the Tolerance Band Rebalancing strategy.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/antfarm-finance.jpg`,
     audits: "2",

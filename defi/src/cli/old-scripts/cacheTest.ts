@@ -1,12 +1,12 @@
 require("dotenv").config();
 
-import protocols from "../protocols/data";
-import type { Protocol } from "../protocols/data";
-import { importAdapter } from "./utils/importAdapter";
-import { getBlocksRetry } from "../storeTvlInterval/blocks";
+import protocols from "../../protocols/data";
+import type { Protocol } from "../../protocols/data";
+import { getBlocksRetry } from "../../storeTvlInterval/blocks";
 import * as sdk from '@defillama/sdk'
 import * as fs from 'fs'
 import { PromisePool } from '@supercharge/promise-pool'
+import { importAdapterDynamic } from "../../utils/imports/importAdapter";
 
 const cacheFile = __dirname + '/../../../../serverCache.json'
 const cache = JSON.parse(fs.readFileSync(cacheFile) as any)
@@ -31,7 +31,7 @@ async function run() {
     .process(async (protocol: Protocol, _index: number) => {
       running++
       console.log('runnnng for ', protocol.name)
-      const adapterModule = await importAdapter(protocol)
+      const adapterModule = await importAdapterDynamic(protocol)
 
       if (_index % 100 === 0) 
         fs.writeFileSync(cacheFile, JSON.stringify(cache))

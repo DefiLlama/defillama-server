@@ -14,7 +14,7 @@ import {
 } from "../utils/getLastRecord";
 import { getHistoricalValues} from "../utils/shared/dynamodb";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
-import { importAdapter } from "./utils/importAdapter";
+import { importAdapterDynamic } from '../../utils/imports/importAdapter';
 import { log } from '../../DefiLlama-Adapters/projects/helper/utils'
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
 import chains from '@defillama/dimension-adapters/users/chains';
@@ -72,7 +72,7 @@ const ex_main = async () => {
       getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
     ]);
     // console.log(JSON.stringify(dailyTvls, null, 2))
-    let adapterModule: any = await importAdapter(tProtocol)
+    let adapterModule: any = await importAdapterDynamic(tProtocol)
     adapterModule = { ...adapterModule }
 
     await PromisePool

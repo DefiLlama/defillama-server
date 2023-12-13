@@ -2285,7 +2285,7 @@ const data: Protocol[] = [
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound V2"],
-    oracles: ["Chainlink", "Pyth", "TWAP", "RedStone"], // https://docs-v4.venus.io/risk/resilient-price-oracle
+    oracles: ["Chainlink"], // https://docs-v4.venus.io/risk/resilient-price-oracle Venus team confirmed:  Our Core Pool Resilient Oracle system uses Chainlink as principal source and 4 additional Oracles. The main one is Chainlink but, we also use Pyth, RedStone, Binance Oracle and TWAP
     parentProtocol: "parent#venus-finance"
   },
   {

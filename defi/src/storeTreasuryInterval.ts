@@ -1,7 +1,7 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { storeTvl } from "./storeTvlInterval/getAndStoreTvl";
 import { getCurrentBlock } from "./storeTvlInterval/blocks";
-import { importAdapterDynamic } from "./utils/imports/importAdapter";
+import { importAdapter } from "./utils/imports/importAdapter";
 import { initializeTVLCacheDB, TABLES } from "./api2/db/index";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
@@ -37,7 +37,7 @@ async function storeIntervals(protocolIndexes: number[], getRemainingTimeInMilli
         () => TABLES.TvlMetricsTimeouts.upsert({ timestamp: getCurrentUnixTimestamp(), protocol: protocol.name }),
         getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd
       );
-      const adapterModule = importAdapterDynamic(protocol); // won't work on lambda now with esbuild
+      const adapterModule = importAdapter(protocol);
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
 
       await storeTvl(

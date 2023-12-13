@@ -7,7 +7,6 @@ docker
 .DS_Store
 .esbuild
 src/utils/imports/adapters.ts
-src/utils/imports/tvlAdapterData.json
 src/utils/imports/adapters_volumes.ts
 src/utils/imports/adapters_fees.ts
 src/utils/imports/adapters_liquidations.ts

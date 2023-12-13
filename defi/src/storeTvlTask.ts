@@ -11,7 +11,6 @@ import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, getLastRecord } from "./utils/getLastRecord";
 import { closeConnection, getLatestProtocolItem, initializeTVLCacheDB } from "./api2/db";
 import { shuffleArray } from "./utils/shared/shuffleArray";
-import { importAdapterDynamic } from "./utils/imports/importAdapter";
 
 const maxRetries = 2;
 
@@ -45,7 +44,7 @@ async function main() {
   const runProcess = (filter = alwaysRun) => async (protocol: any) => {
     const startTime = +Date.now()
     try {
-      const adapterModule = importAdapterDynamic(protocol)
+      const adapterModule = importAdapter(protocol)
       if (!(await filter(adapterModule, protocol))) {
         i++
         skipped++
@@ -97,6 +96,10 @@ main().catch((e) => {
   await closeConnection()
   process.exit(0)
 })
+
+function importAdapter(protocol: Protocol) {
+  return require("@defillama/adapters/projects/" + [protocol.module])
+}
 
 async function rejectAfterXMinutes(promiseFn: any, minutes = 10) {
   const ms = minutes * 60 * 1e3

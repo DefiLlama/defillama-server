@@ -26968,7 +26968,7 @@ const data3: Protocol[] = [
     url: "https://app.xspswap.finance",
     description: "Uniswap v3 fork on XDC network",
     chain: "XDC",
-    logo: `${baseIconsUrl}/xspswap-v3.jpg`,
+    logo: `${baseIconsUrl}/xswap-v3.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -26473,7 +26473,7 @@ const data3: Protocol[] = [
     description: `One-stop platform that seamlessly integrates NFT trading, mining and yield farming into one.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/detto-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "detto-finance",
     cmcId: null,
@@ -26483,6 +26483,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "detto-finance/index.js",
     twitter: "DettoFinance",
+    audit_links: ["https://github.com/DettoFinance/Audit/blob/main/DettoFinanceAuditCertiK.pdf"],
     listedAt: 1701967618
   },
   {

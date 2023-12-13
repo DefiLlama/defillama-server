@@ -3234,7 +3234,7 @@ const data2: Protocol[] = [
     cmcId: "9237",
     category: "Derivatives",
     chains: ["Binance"],
-    oracles: ["Chainlink","Pyth"],
+    oracles: ["Chainlink","Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5205
     forkedFrom: ["Synthetix"],
     module: "horizon/index.js",
     twitter: "HorizonProtocol",

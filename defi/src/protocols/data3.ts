@@ -15535,7 +15535,7 @@ const data3: Protocol[] = [
     module: "logx/index.js",
     twitter: "LogX_trade",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     listedAt: 1702086727
   },
   {
@@ -26906,7 +26906,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Linea"],
-    oracles: [], 
+    oracles: ["Pyth"],
     forkedFrom: [],
     module: "metavault-derivatives-v2/index.js",
     twitter: "MetavaultTRADE",

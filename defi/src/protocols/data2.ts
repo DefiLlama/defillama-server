@@ -3234,7 +3234,7 @@ const data2: Protocol[] = [
     cmcId: "9237",
     category: "Derivatives",
     chains: ["Binance"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink","Pyth"],
     forkedFrom: ["Synthetix"],
     module: "horizon/index.js",
     twitter: "HorizonProtocol",

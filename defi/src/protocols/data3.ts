@@ -50,7 +50,7 @@ const data3: Protocol[] = [
     url: "https://fairyswap.finance",
     description: " FairySwap v2, the first DEX upgrade on Findora (FRA) delivering great trading experience and earning opportunities.",
     chain: "Findora",
-    o: `${baseIconsUrl}/fairyswap-v2.jpg`,
+    logo: `${baseIconsUrl}/fairyswap-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

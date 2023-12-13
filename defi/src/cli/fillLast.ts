@@ -2,7 +2,7 @@ require("dotenv").config();
 
 import { getProtocol, } from "./utils";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
-import { importAdapter } from "./utils/importAdapter";
+import { importAdapterDynamic } from "../utils/imports/importAdapter";
 import { util } from "@defillama/sdk";
 import { closeConnection } from "../api2/db";
 import { getCurrentBlock } from "../storeTvlInterval/blocks";
@@ -14,7 +14,7 @@ const main = async () => {
   const protocol = getProtocol(protocolToFill);
   const now = Math.round(Date.now() / 1000);
 
-  const adapterModule = await importAdapter(protocol)
+  const adapterModule = await importAdapterDynamic(protocol)
   const blockData = await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
   console.log(blockData)
   const ethereumBlock = blockData.ethereumBlock

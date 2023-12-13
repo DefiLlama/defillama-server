@@ -3307,13 +3307,25 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#lynex",
     name: "Lynex",
-    url: "Lynex",
+    url: "https://app.lynex.fi",
     description: `Linea's native on-chain liquidity marketplace. Powered by cutting-edge DEX infrastructure, it offers a highly capital-efficient DeFi solution`,
     logo: `${baseIconsUrl}/lynex.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "LynexFi",
+  },
+  {
+    id: "parent#xswap-protocol",
+    name: "XSwap Protocol",
+    url: "https://app.xspswap.finance/swap",
+    description: `XSWAP is the first decentralized exchange (DEX) that utilizes an automated market maker (AMM) system on the Xinfin network and is powered by XDC. The vision of XSWAP is to grow and expand the Xinfin network. It allows the swap and exchange of XRC20 tokens and offers staking & yield farming. XSwap is also home to the first launchpad in the XDC network which offers token creation, presale creation, token & liquidity locker and multisender for all XRC20 tokens.`,
+    logo: `${baseIconsUrl}/xswap-protocol.png`,
+    gecko_id: "xswap-protocol",
+    cmcId: "14613",
+    chains: [],
+    twitter: "XSwapProtocol",
+    github: ["XRC20-Swap"]
   },
 ];
 

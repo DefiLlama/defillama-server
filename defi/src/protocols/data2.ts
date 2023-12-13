@@ -17136,29 +17136,29 @@ const data2: Protocol[] = [
   },
   {
     id: "2145",
-    name: "XSwap Protocol",
+    name: "XSwap V2",
     address: "xdc:0x36726235dadbdb4658d33e62a249dca7c4b2bc68",
     symbol: "XSP",
     url: "https://app.xspswap.finance",
     description: "XSWAP is the first decentralized exchange (DEX) that utilizes an automated market maker (AMM) system on the Xinfin network and is powered by XDC. The vision of XSWAP is to grow and expand the Xinfin network. It allows the swap and exchange of XRC20 tokens and offers staking & yield farming. XSwap is also home to the first launchpad in the XDC network which offers token creation, presale creation, token & liquidity locker and multisender for all XRC20 tokens.",
     chain: "XDC",
-    logo: `${baseIconsUrl}/xswap-protocol.png`,
+    logo: `${baseIconsUrl}/xswap-v2.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "xswap-protocol",
-    cmcId: "14613",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["XDC"],
     oracles: [], //xUSDT WanChain bridge
     forkedFrom: ["Uniswap V2"],
     module: "xspswap/index.js",
     twitter: "XSwapProtocol",
+    parentProtocol: "parent#xswap-protocol",
     audit_links: [
       "https://github.com/XRC20-Swap/DEX-Audit/blob/main/DEX%20Audit%20Techrate.pdf",
       "https://www.certik.com/projects/xswap-protocol"
     ],
     listedAt: 1664803068,
-    github: ["XRC20-Swap"]
   },
   {
     id: "2146",

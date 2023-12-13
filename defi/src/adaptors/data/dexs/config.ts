@@ -2250,5 +2250,9 @@ export default {
     "astroport-v2": {
         "enabled": true,
         "id": "3117"
+    },
+    "kizuna": {
+        "enabled": true,
+        "id": "3913"
     }
 } as AdaptorsConfig

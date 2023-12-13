@@ -13503,7 +13503,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "defiplaza",
     cmcId: "14636",
     category: "Dexes",
-    chains: ["Ethereum", "Radix"],
+    chains: ["Ethereum"], //add Radix in a bit
     module: "defiplaza.js",
     twitter: "DefiPlaza",
     audit_links: [

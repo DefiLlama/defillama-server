@@ -26960,6 +26960,28 @@ const data3: Protocol[] = [
     github: ["kizuna-dex"],
     listedAt: 1702470950
   },
+  {
+    id: "3914",
+    name: "XSwap V3",
+    address: "xdc:0x36726235dadbdb4658d33e62a249dca7c4b2bc68",
+    symbol: "XSP",
+    url: "https://app.xspswap.finance",
+    description: "Uniswap v3 fork on XDC network",
+    chain: "XDC",
+    logo: `${baseIconsUrl}/xspswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["XDC"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    module: "xspswap-v3/index.js",
+    twitter: "XSwapProtocol",
+    parentProtocol: "parent#xswap-protocol",
+    listedAt: 1702478273
+  },
 ]
 
 export default data3

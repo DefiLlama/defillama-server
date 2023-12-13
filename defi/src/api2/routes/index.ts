@@ -9,6 +9,10 @@ import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
 import { successResponse, errorWrapper as ew } from "./utils";
 import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
 import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
+import { getCurrentUnixTimestamp } from "../../utils/date";
+import { getClosestProtocolItem } from "../db";
+import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
+import { computeInflowsData } from "../../getInflows";
 
 export default function setRoutes(router: HyperExpress.Router, routerBasePath: string) {
   // router.get("/hourly/:name", (async (req, res) => getProtocolishData(req, res, { dataType: 'protocol', useHourlyData: true, skipAggregatedTvl: false })));  // too expensive to handle here
@@ -38,6 +42,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/categories", defaultFileHandler);
   router.get("/langs", defaultFileHandler); // TODO: find where old lang endpoint is used and update it
   router.get("/lite/charts/:chain", defaultFileHandler); // TODO: find where old lang endpoint is used and update it
+  router.get("/inflows/:protocol/:timestamp", ew(getInflows))
 
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));
@@ -200,4 +205,39 @@ type GetProtocolishOptions = {
   useHourlyData?: boolean,
   skipAggregatedTvl?: boolean,
   useNewChainNames?: boolean,
+}
+
+async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response) {
+  let name = sluggify({ name: req.path_parameters.protocol } as any)
+  const protocolData = cache.protocolSlugMap[name]
+  if (!protocolData) {
+    res.status(404)
+    return res.send('Unable to find Protocol', true)
+  }
+
+  const protocolId = protocolData.id
+  const tokensToExclude = req.query_parameters.tokensToExclude?.split(",") ?? []
+  const timestamp = Number(req.path_parameters.timestamp)
+  const endTimestamp = Number(req.query_parameters?.end ?? getCurrentUnixTimestamp());
+
+  const old = await getClosestProtocolItem(hourlyTokensTvl, protocolId, timestamp, { searchWidth: 2 * 3600 })
+
+  if (old.SK === undefined) {
+    res.status(404)
+    return res.send('No data at that timestamp', true)
+  }
+
+
+  const [currentTokens, currentUsdTokens] = await Promise.all(
+    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getClosestProtocolItem(prefix, protocolId, endTimestamp, 2 * 3600))
+  );
+
+  if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK) {
+    res.status(404)
+    return res.send('No data', true)
+  }
+
+  const responseData = computeInflowsData(protocolData, currentTokens, currentUsdTokens, old, tokensToExclude)
+
+  return successResponse(res, responseData, 1);
 }

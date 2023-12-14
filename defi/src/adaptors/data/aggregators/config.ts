@@ -88,4 +88,8 @@ export default {
     enabled: true,
     id: "189",
   },
+  "0x": {
+    enabled: true,
+    id: "2116",
+  },
 } as AdaptorsConfig;

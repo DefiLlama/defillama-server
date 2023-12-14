@@ -54,6 +54,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/chains2", ew(getFormattedChainsData))
   router.get("/chains2/:category", ew(getFormattedChainsData))
   router.get("/config/yields", defaultFileHandler)
+  router.get("/outdated", defaultFileHandler)
   
 
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {

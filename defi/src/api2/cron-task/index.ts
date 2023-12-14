@@ -20,6 +20,7 @@ import { getCategoriesInternal } from "../../getCategories";
 import { storeLangs } from "../../storeLangs";
 import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
+import { getOutdated } from "../../stats/getOutdated";
 
 const protocolDataMap: { [key: string]: any } = {}
 
@@ -60,6 +61,7 @@ async function run() {
   console.timeEnd('write /charts')
   await writeProtocolsChart()
   await storeRouteData('config/yields', getYieldsConfig())
+  await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
   // await writeRaises()
   // await writeHacks()

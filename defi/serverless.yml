@@ -516,9 +516,9 @@ functions:
   #     COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
   #     INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
   #     ERROR_DB: ${env:ERROR_DB}
-  triggerStoreTvls:
-    handler: src/triggerStoreTvls.default
-    timeout: 900
+  # triggerStoreTvls: # while enabling this check/ update how tvl adapter modules are imported (use adapters.ts for import instead of mock function & build)
+  #   handler: src/triggerStoreTvls.default
+  #   timeout: 900
   #  events:
   #    - schedule: cron(0 * * * ? *)
   # triggerStoreTreasuries:
@@ -634,14 +634,14 @@ functions:
     memorySize: 10240
     events:
       - schedule: rate(1 day)
-  notifyOutdated:
-    handler: src/notifyOutdated.default
-    timeout: 900
-    memorySize: 1024
-    events:
-      - schedule: rate(1 hour)
-    environment:
-      HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
+  # notifyOutdated:
+  #   handler: src/notifyOutdated.default
+  #   timeout: 900
+  #   memorySize: 1024
+  #   events:
+  #     - schedule: rate(1 hour)
+  #   environment:
+  #     HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
   notifyStaleCoins:
     handler: src/notifyStaleCoins.default
     timeout: 900
@@ -672,14 +672,14 @@ functions:
       - http:
           path: missedUpdates/{timestamp}
           method: get
-  outdated:
-    handler: src/stats/getOutdated.default
-    timeout: 30
-    memorySize: 10240
-    events:
-      - http:
-          path: outdated
-          method: get
+  # outdated:
+  #   handler: src/stats/getOutdated.default
+  #   timeout: 30
+  #   memorySize: 10240
+  #   events:
+  #     - http:
+  #         path: outdated
+  #         method: get
   storeNpmData:
     handler: src/storeNpmData.default
     timeout: 900

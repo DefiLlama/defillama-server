@@ -44,7 +44,8 @@
     "api2-build": "bash src/api2/scripts/build.sh",
     "api2-dev": "ts-node-dev --respawn --transpile-only src/api2/index.ts",
     "api2-start": "bash src/api2/scripts/start.sh",
-    "api2-cron-task": "npx ts-node src/api2/cron-task/index.ts"
+    "api2-cron-task": "npx ts-node src/api2/cron-task/index.ts",
+    "notify-outdated": "npx ts-node src/server-scripts/notifyOutdated.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",

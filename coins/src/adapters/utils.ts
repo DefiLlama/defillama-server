@@ -12,6 +12,7 @@ export function formatExtraTokens(chain: string, tokens: [string, string, string
     }))
 }
 
+// TODO: inefficient, dont use, use multiCall instead
 export function getAllInfo(address: string, chain:string, to:string) {
     return async () => {
         for (let i = 0; i < 3; i++) {

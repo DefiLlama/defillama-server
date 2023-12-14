@@ -13,6 +13,7 @@ import { getCurrentUnixTimestamp } from "../../utils/date";
 import { getClosestProtocolItem } from "../db";
 import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { computeInflowsData } from "../../getInflows";
+import { getFormattedChains } from "../../getFormattedChains";
 
 export default function setRoutes(router: HyperExpress.Router, routerBasePath: string) {
   // router.get("/hourly/:name", (async (req, res) => getProtocolishData(req, res, { dataType: 'protocol', useHourlyData: true, skipAggregatedTvl: false })));  // too expensive to handle here
@@ -27,7 +28,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/tokenProtocols/:symbol", ew(getTokenInProtocols));
   router.get("/protocols", protocolsRouteResponse);
   router.get("/config", configRouteResponse);
-  router.get("/lite/charts", liteChartsRouteResponse); // TODO: find where old lang endpoint is used and update it
+  router.get("/lite/charts", liteChartsRouteResponse);
 
   router.get("/treasuries", defaultFileHandler);
   router.get("/entities", defaultFileHandler);
@@ -40,12 +41,20 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/oracles", defaultFileHandler);
   router.get("/forks", defaultFileHandler);
   router.get("/categories", defaultFileHandler);
-  router.get("/langs", defaultFileHandler); // TODO: find where old lang endpoint is used and update it
-  router.get("/lite/charts/:chain", defaultFileHandler); // TODO: find where old lang endpoint is used and update it
-  router.get("/inflows/:protocol/:timestamp", ew(getInflows))
+  router.get("/langs", defaultFileHandler);
+  router.get("/lite/charts/:chain", defaultFileHandler);
 
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));
+
+  
+  router.get("/inflows/:protocol/:timestamp", ew(getInflows))
+  router.get("/lite/protocols2", defaultFileHandler);
+  router.get("/lite/v2/protocols", defaultFileHandler);
+  router.get("/chains2", ew(getFormattedChainsData))
+  router.get("/chains2/:category", ew(getFormattedChainsData))
+  router.get("/config/yields", defaultFileHandler)
+  
 
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
     const fullPath = req.path;
@@ -240,4 +249,9 @@ async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response)
   const responseData = computeInflowsData(protocolData, currentTokens, currentUsdTokens, old, tokensToExclude)
 
   return successResponse(res, responseData, 1);
+}
+
+async function getFormattedChainsData(req: HyperExpress.Request, res: HyperExpress.Response) {
+  let category = req.path_parameters.category ?? ''
+  return successResponse(res, await getFormattedChains(category), 30);
 }

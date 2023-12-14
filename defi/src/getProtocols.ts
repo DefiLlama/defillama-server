@@ -216,8 +216,8 @@ export async function craftProtocolsResponseInternal(
   return response;
 }
 
-export async function craftProtocolsResponse(useNewChainNames: boolean) {
-  return craftProtocolsResponseInternal(useNewChainNames, protocols);
+export async function craftProtocolsResponse(useNewChainNames: boolean, includeTokenBreakdowns?: boolean, options?: any) {
+  return craftProtocolsResponseInternal(useNewChainNames, protocols, includeTokenBreakdowns, options);
 }
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {

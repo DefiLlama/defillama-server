@@ -2254,5 +2254,9 @@ export default {
     "kizuna": {
         "enabled": true,
         "id": "3913"
+    },
+    "butterxyz": {
+        "enabled": true,
+        "id": "3918"
     }
 } as AdaptorsConfig

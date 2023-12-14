@@ -15785,14 +15785,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3408",
-    name: "Lynex V2",
+    name: "Lynex Fusion",
     address: null,
     symbol: "-",
     url: "https://app.lynex.fi/",
     description:
       "Linea's native on-chain liquidity marketplace. Powered by cutting-edge DEX infrastructure, it offers a highly capital-efficient DeFi solution",
     chain: "Linea",
-    logo: `${baseIconsUrl}/lynex-v2.jpg`,
+    logo: `${baseIconsUrl}/lynex-fusion.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: null,

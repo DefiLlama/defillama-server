@@ -27031,7 +27031,7 @@ const data3: Protocol[] = [
     id: "3917",
     name: "Stablecomp",
     address: "0xd94A8f9caeD25E63eCc90EDfefAf3635eA1e182a",
-    symbol: "$COMP",
+    symbol: "SCOMP",
     url: "https://www.stablecomp.com",
     description: "Stablecomp is the DeFi protocol focused on making it easy for users to earn yields on stablecoins.",
     chain: "Ethereum",

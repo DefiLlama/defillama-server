@@ -4245,7 +4245,7 @@
     "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdt_coin::CELER_USDT_COIN": {
       "decimals": "6",
       "symbol": "CELER_USDT_COIN",
-      "to": "coingecko:tether"
+      "to": "coingecko#tether"
     },
     "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdc_coin::CELER_USDC_COIN": {
       "decimals": "6",
@@ -4301,61 +4301,61 @@
       "name": "USDC",
       "decimals": "6",
       "symbol": "USDC",
-      "to": "coingecko:usd-coin"
+      "to": "coingecko#usd-coin"
     },
     "0x0000000000000000000000000000000000000000000000000000000000000002::sui::sui": {
       "name": "SUI",
       "decimals": "9",
       "symbol": "SUI",
-      "to": "coingecko:sui"
+      "to": "coingecko#sui"
     },
     "0x02::sui::sui": {
       "name": "SUI",
       "decimals": "9",
       "symbol": "SUI",
-      "to": "coingecko:sui"
+      "to": "coingecko#sui"
     },
     "0x2::sui::sui": {
       "name": "SUI",
       "decimals": "9",
       "symbol": "SUI",
-      "to": "coingecko:sui"
+      "to": "coingecko#sui"
     },
     "0xc060006111016b8a020ad5b33834984a437aaa7d3c74c18e09a95d48aceab08c::coin::coin": {
       "name": "USDT",
       "decimals": "6",
       "symbol": "USDT",
-      "to": "coingecko:tether"
+      "to": "coingecko#tether"
     },
     "0xaf8cd5edc19c4512f4259f0bee101a40d41ebed738ade5874359610ef8eeced5::coin::coin": {
       "name": "WETH",
       "decimals": "8",
       "symbol": "WETH",
-      "to": "coingecko:ethereum"
+      "to": "coingecko#ethereum"
     },
     "0xb231fcda8bbddb31f2ef02e6161444aec64a514e2c89279584ac9806ce9cf037::coin::coin": {
       "name": "USDC",
       "decimals": "6",
       "symbol": "USDC",
-      "to": "coingecko:usd-coin"
+      "to": "coingecko#usd-coin"
     },
     "0xb7844e289a8410e50fb3ca48d69eb9cf29e27d223ef90353fe1bd8e27ff8f3f8::coin::coin": {
       "name": "Wrapped SOL",
       "decimals": "8",
       "symbol": "SOL",
-      "to": "coingecko:solana"
+      "to": "coingecko#solana"
     },
     "0xb848cce11ef3a8f62eccea6eb5b35a12c4c2b1ee1af7755d02d7bd6218e8226f::coin::coin": {
       "name": "Wrapped BNB",
       "decimals": "8",
       "symbol": "WBNB",
-      "to": "coingecko:binance-coin"
+      "to": "coingecko#binance-coin"
     },
     "0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX": {
       "name": "FlowX",
       "decimals": "8",
       "symbol": "FLX",
-      "to": "coingecko:flowx-finance"
+      "to": "coingecko#flowx-finance"
     }
   },
   "kekchain": {
@@ -4383,7 +4383,7 @@
       "name": "thala",
       "decimals": "8",
       "symbol": "THL",
-      "to": "coingecko:thala"
+      "to": "coingecko#thala"
     },
     "0x1::aptos_coin::AptosCoin": {
       "name": "aptos",

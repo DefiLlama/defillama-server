@@ -1633,5 +1633,9 @@ export default {
     "defiplaza": {
         "enabled": true,
         "id": "728"
+    },
+    "butterxyz": {
+        "enabled": true,
+        "id": "3918"
     }
 } as AdaptorsConfig

@@ -262,7 +262,6 @@ export async function storeTvl(
   if (runBeforeStore !== undefined) {
     await runBeforeStore();
   }
-  console.log(usdTvls)
   try {
     if (!process.env.DRY_RUN) {
       await storeNewTvl2(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances, overwriteExistingData ); // Checks circuit breakers

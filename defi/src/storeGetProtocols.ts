@@ -8,6 +8,7 @@ import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
 import { storeR2 } from "./utils/r2";
 import { getChainDisplayName } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
+import fetch from "node-fetch"
 
 function compress(data: string) {
   return brotliCompressSync(data, {

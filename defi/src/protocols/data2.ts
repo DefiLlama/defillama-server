@@ -24792,7 +24792,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://deltaprime.io",
     description:
-      "DeltaPrime aggregates the best of Avalanche in one DeFi ecosystem. Within this ecosystem investors gain access to extra capital, which they can use in a completely trustless fashion. This way, they multiply their returns with a balanced portfolio, whether through trading, LPing or farming.",
+      "DeltaPrime aggregates the best projects from your chain within one DeFi ecosystem. Within this ecosystem you can borrow extra capital trustless and anonymous. This way, you multiply your returns with a balanced portfolio, whether through trading, LPing or farming",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/deltaprime.jpg`,
     audits: "2",

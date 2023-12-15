@@ -20893,7 +20893,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "Thetanuts Finance is a decentralized on-chain options protocol focused on altcoin options, allowing users to go long or short on on-chain options.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/thetanuts-finance.png`,
-    audits: "3",
+    audits: "2",
     audit_note: null,
     gecko_id: "thetanuts-finance",
     cmcId: null,

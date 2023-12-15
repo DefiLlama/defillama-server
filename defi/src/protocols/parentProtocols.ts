@@ -3327,6 +3327,20 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "XSwapProtocol",
     github: ["XRC20-Swap"]
   },
+  {
+    id: "parent#lyra",
+    name: "Lyra",
+    url: "https://www.lyra.finance/",
+    description: `Trade options, perps and spot on the most powerful self-custodial exchange.`,
+    logo: `${baseIconsUrl}/lyra.jpg`,
+    gecko_id: "lyra-finance",
+    cmcId: "15447",
+    chains: [],
+    twitter: "lyrafinance",
+    governanceID: ["snapshot:lyra.eth"],
+    github: ["lyra-finance"],
+    treasury: "lyra.js",
+  },
 ];
 
 export default parentProtocols;

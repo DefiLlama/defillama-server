@@ -14,6 +14,7 @@ import { getClosestProtocolItem } from "../db";
 import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { computeInflowsData } from "../../getInflows";
 import { getFormattedChains } from "../../getFormattedChains";
+import { getR2 } from "../../utils/r2";
 
 export default function setRoutes(router: HyperExpress.Router, routerBasePath: string) {
   // todo add logging middleware to all routes
@@ -56,6 +57,11 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/chains2/:category", ew(getFormattedChainsData))
   router.get("/config/yields", defaultFileHandler)
   router.get("/outdated", defaultFileHandler)
+  router.get("/emissions", r2Wrapper({ endpoint: 'emissionsIndex' }))
+  router.get("/emissionsList", r2Wrapper({ endpoint: 'emissionsProtocolsList' }))
+  router.get("/emissionsBreakdown", r2Wrapper({ endpoint: 'emissionsBreakdown' }))
+  router.get("/emission/:name", emissionProtocolHandler)
+
 
 
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -178,7 +184,7 @@ async function getTokenInProtocols(req: HyperExpress.Request, res: HyperExpress.
   let symbol = req.path_parameters.symbol
   if (!symbol)
     return errorResponse(res, 'Ser you need to provide a token')
-  
+
   res.setHeaders({ "Expires": get20MinDate() })
 
   const responseData = await getTokensInProtocolsInternal(symbol, {
@@ -224,7 +230,7 @@ async function getDataset(req: HyperExpress.Request, res: HyperExpress.Response)
   const protocolData = cache.protocolSlugMap[name];
   if (!protocolData)
     return errorResponse(res, 'Protocol not found')
-  
+
   const csv = await craftCsvDataset([protocolData], true, false, { readFromPG: true });
 
   res.setHeaders({ "Expires": get20MinDate() })
@@ -272,4 +278,37 @@ async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response)
 async function getFormattedChainsData(req: HyperExpress.Request, res: HyperExpress.Response) {
   let category = req.path_parameters.category ?? ''
   return successResponse(res, await getFormattedChains(category), 30);
+}
+
+type R2DataOptions = {
+  endpoint: string;
+  parseJson?: boolean;
+  errorMessage?: any;
+  cacheMinutes?: number;
+  res?: HyperExpress.Response;
+}
+
+async function returnR2Data({ endpoint, parseJson = true, errorMessage, cacheMinutes = 30, res }: R2DataOptions) {
+  try {
+    const response = await getR2(endpoint);
+    if (!parseJson) return successResponse(res!, response, cacheMinutes);
+    let data = response?.body;
+    if (data) data = JSON.parse(data)
+    if (data && endpoint === 'emissionsIndex') data = (data as any).data
+    if (!data) throw new Error('No data')
+    return successResponse(res!, data, cacheMinutes);
+  } catch (e) {
+    return errorResponse(res!, errorMessage ?? 'no data')
+  }
+}
+
+function r2Wrapper({ endpoint, parseJson, errorMessage, cacheMinutes, }: R2DataOptions) {
+  return ew(async (_req: HyperExpress.Request, res: HyperExpress.Response) => {
+    return returnR2Data({ endpoint, parseJson, errorMessage, cacheMinutes, res })
+  });
+}
+
+async function emissionProtocolHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const name = req.path_parameters.name
+  return returnR2Data({ endpoint: `emissions/${name}`, errorMessage: `protocol '${name}' has no chart to fetch`, res, parseJson: false })
 }

@@ -865,6 +865,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://github.com/dexter-zone/dexter_core/tree/main/audit"],
+    github: ["dexter-zone"],
     listedAt: 1680009924
   },
   {

@@ -411,6 +411,10 @@
       "to": "coingecko#ethereum", "decimals": "18",
       "symbol": "ETH"
     },
+    "0xEc901DA9c68E90798BbBb74c11406A32A70652C3": {
+      "to": "coingecko#stakestone-ether", "decimals": "18",
+      "symbol": "STONE"
+    },
     "0xb73603c5d87fa094b7314c74ace2e64d165016fb": {
       "to": "coingecko#usd-coin", "decimals": "6",
       "symbol": "USDC"

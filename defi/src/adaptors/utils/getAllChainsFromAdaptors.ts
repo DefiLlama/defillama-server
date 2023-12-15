@@ -116,7 +116,9 @@ export const normalizeDimensionChainsMap = {
     'sxnetwork': CHAIN.SX,
     'ontologyevm': CHAIN.ONTOLOGY_EVM,
     'wanchain': CHAIN.WAN,
-    'oasys': CHAIN.OAS
+    'oasys': CHAIN.OAS,
+    'wemix3.0': CHAIN.WEMIX,
+    'radix': CHAIN.RADIXDLT
 } as IJSON<CHAIN>
 
 export const formatChainKey = (chain: string) => {

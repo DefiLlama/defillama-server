@@ -24,7 +24,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     skipAggregatedTvl: true,
   });
 
-  return wrapResponseOrRedirect(response);
+  return wrapResponseOrRedirect(response, "treasury/");
 };
 
 export default wrap(handler);

@@ -9,7 +9,7 @@ export default {
         parentId: "GMX",
         "protocolsData": {
             "derivatives": {
-                displayName: "GMX - Derivatives",
+                displayName: "GMX - Derivatives V1",
                 "id": "337",
                 "enabled": true
             }
@@ -31,6 +31,7 @@ export default {
         "id": "1801"
     },
     "synfutures": {
+        parentId: "SynFutures",
         "enabled": true,
         "id": "2328"
     },
@@ -142,10 +143,10 @@ export default {
     },
     "voodoo-trade": {
         enabled: true,
-        id: "3156",
+        id: "3792",
         "protocolsData": {
             "derivatives": {
-                "id": "3156",
+                "id": "3792",
                 "enabled": true
             }
         },
@@ -293,15 +294,16 @@ export default {
     "gmx-v2-trade": {
         parentId: "GMX",
         "enabled": true,
-        "id": "3365"
+        "id": "3365",
+        displayName: "GMX - Derivatives V2",
     },
     "meridian-trade": {
-        "enabled": true,
+        "enabled": false,
         "id": "3386",
         "protocolsData": {
             "derivatives": {
                 "id": "3386",
-                "enabled": true,
+                "enabled": false,
             }
         }
     },
@@ -425,7 +427,7 @@ export default {
     },
     "contango": {
         "enabled": true,
-        "id": "2374",
+        "id": "3602",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1697414400": true,
@@ -434,11 +436,90 @@ export default {
         }
     },
     "tigris": {
-        "enabled": true,
+        "enabled": false,
         "id": "3129"
     },
     "paradex": {
         "enabled": true,
         "id": "3648"
+    },
+    "swapbased": {
+        parentId: "SwapBased",
+        "enabled": true,
+        "id": "3328",
+        protocolsData: {
+            "perps": {
+                "id": "3373",
+                "enabled": true,
+            },
+        },
+    },
+    "levana": {
+        "enabled": true,
+        "id": "3474"
+    },
+    "intent-x": {
+        "enabled": true,
+        "id": "3747"
+    },
+    "equation": {
+        "enabled": true,
+        "id": "3726"
+    },
+    "derivio": {
+        "enabled": false,
+        parentId: "Deri",
+        "id": "3759",
+        protocolsData: {
+            "derivatives": {
+                "id": "3759",
+                "enabled": true,
+            }
+        }
+    },
+    "mu-exchange": {
+        "enabled": true,
+        "id": "3763"
+    },
+    "perennial-v2": {
+        "enabled": true,
+        "id": "3599",
+        protocolsData: {
+            "derivatives": {
+                "id": "3599",
+                "enabled": true,
+            }
+        }
+    },
+    "rabbitx": {
+        "enabled": true,
+        "id": "2886",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1700524800": true,
+                "1700438400": true,
+                "1700352000": true,
+                "1700265600": true,
+                "1700179200": true
+            },
+        }
+
+    },
+    "SubstanceX": {
+        "enabled": true,
+        "id": "3835"
+    },
+    "stormtrade": {
+        "enabled": true,
+        "id": "3883"
+    },
+    "goosefx": {
+        "enabled": true,
+        "id": "2175"
+    },
+    "synfutures-v2": {
+        parentId: "SynFutures",
+        "enabled": true,
+        "id": "3061"
     }
 } as AdaptorsConfig

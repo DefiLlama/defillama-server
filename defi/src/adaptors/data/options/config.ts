@@ -57,5 +57,20 @@ export default {
     "tigris": {
         "enabled": true,
         "id": "3129"
+    },
+    "valorem": {
+        "enabled": true,
+        "id": "3501"
+    },
+    "derivio": {
+        parentId: "Deri",
+        "enabled": false,
+        "id": "3759",
+        protocolsData: {
+            "derivatives": {
+                "id": "3759",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

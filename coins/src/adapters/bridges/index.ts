@@ -1,4 +1,4 @@
-import anyswap from "./anyswap";
+// import anyswap from "./anyswap";
 import arbitrum from "./arbitrum";
 import avax from "./avax";
 // import bsc from "./bsc";
@@ -18,6 +18,7 @@ import arbitrum_nova from "./arbitrum_nova";
 import mantle from "./mantle";
 import axelar from "./axelar";
 import linea from "./linea";
+import manta from "./manta";
 
 export type Token =
   | {
@@ -76,6 +77,7 @@ export const bridges = [
   mantle,
   axelar,
   linea,
+  manta,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

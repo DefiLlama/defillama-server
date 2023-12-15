@@ -38,6 +38,7 @@ class HOURLY_TVL extends Model { }
 class HOURLY_TOKENS_TVL extends Model { }
 class HOURLY_USD_TOKENS_TVL extends Model { }
 class HOURLY_RAW_TOKENS_TVL extends Model { }
+class JSON_CACHE extends Model { }
 
 
 class TvlMetricsErrors extends Model { }
@@ -55,6 +56,7 @@ export const Tables = {
   HOURLY_TOKENS_TVL,
   HOURLY_USD_TOKENS_TVL,
   HOURLY_RAW_TOKENS_TVL,
+  JSON_CACHE,
   TvlMetricsErrors,
   TvlMetricsErrors2,
   TvlMetricsCompleted,
@@ -62,7 +64,7 @@ export const Tables = {
   TvlMetricsStaleCoins,
 }
 
-export function initializeTables(sequelize: Sequelize, mSequalize: Sequelize) {
+export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
   const getTableOptions = (tableName: string) => ({
     sequelize,
     timestamps: true,
@@ -89,6 +91,36 @@ export function initializeTables(sequelize: Sequelize, mSequalize: Sequelize) {
   HOURLY_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyTokensTvl'))
   HOURLY_USD_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyUsdTokensTvl'))
   HOURLY_RAW_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyRawTokensTvl'))
+
+  JSON_CACHE.init({
+    id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    timestamp: {
+      type: DataTypes.INTEGER, // Assuming 'unixtimestamp' is an integer type
+    },
+    data: {
+      type: DataTypes.JSON,
+    },
+  }, {
+    sequelize,
+    timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
+    tableName: 'json_cache',
+    indexes: [
+      {
+        name: 'json_cache_id_index', // Name of the index for the 'id' field
+        fields: ['id'],
+      },
+    ]
+  })
+
+  if (!mSequalize) {
+    console.log('Metrics DB config is missing, skipping metrics tables initialization')
+    return Tables
+  }
 
   const getMetricsTableOptions = (tableName: string) => ({
     sequelize: mSequalize,

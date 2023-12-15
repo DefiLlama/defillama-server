@@ -108,7 +108,7 @@ const data: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum", "Polygon", "Avalanche"],
     module: "aave/index.js",
-    twitter: "AaveAave",
+    twitter: "aave",
     audit_links: ["https://aave.com/security"],
     oracles: ["Chainlink"],
     parentProtocol: "parent#aave",
@@ -393,12 +393,15 @@ const data: Protocol[] = [
     gecko_id: "dforce-token",
     cmcId: "4758",
     category: "Lending",
-    chains: ["Ethereum", "Binance", "Arbitrum"],
+    chains: ["Ethereum", "Binance", "Arbitrum","Conflux"],
     module: "dforce/index.js",
     twitter: "dForcenet",
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
     forkedFrom: [],
-    oracles: ["Chainlink"],
+    oraclesByChain: {
+      ethereum: ["Chainlink"],
+      conflux: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5150
+    },
     governanceID: ["snapshot:dforcenet.eth"],
     stablecoins: ["dforce-usd"],
     github: ["dforce-network"] //check
@@ -464,7 +467,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
     ],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink"], // https://www.cryptoninjas.net/2019/12/30/looprings-3-0-dex-protocol-integrates-chainlink-oracle-service/
     governanceID: ["snapshot:loopringdao.eth"],
     github: ["Loopring"] //check
   },
@@ -748,7 +751,7 @@ const data: Protocol[] = [
     twitter: "snow_swap",
     audit_links: ["https://hackmd.io/@9GUQpanJRF6cloQ0fwyPFw/r1_ctUuqv"],
     forkedFrom: ["Saddle Finance"],
-    oracles: ["Chainlink"],
+    oracles: [],
   },
   {
     id: "140",
@@ -972,7 +975,7 @@ const data: Protocol[] = [
     treasury: "idle-dao.js",
     twitter: "idlefinance",
     audit_links: ["https://docs.idle.finance/developers/security/audits"],
-    oracles: ["Chainlink"],
+    oracles: [], // https://github.com/DefiLlama/defillama-server/pull/5147
     governanceID: [
       "snapshot:staking.idlefinance.eth", 
       "snapshot:idlefinance.eth",
@@ -1038,7 +1041,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "cofix",
     cmcId: "7381",
-    category: "Dexes",
+    category: "Dexes", // https://docs.cofix.io/#3.1-price-source
     chains: ["Ethereum"],
     module: "cofix.js",
     twitter: "CoFiXProtocol",
@@ -1261,7 +1264,7 @@ const data: Protocol[] = [
     module: "valuedefi.js",
     twitter: "value_defi",
     audit_links: ["https://valuedefi.io/audit"],
-    oracles: ["Chainlink"],
+    oracles: [],
     parentProtocol: "parent#value-finance",
   },
   {
@@ -1655,7 +1658,7 @@ const data: Protocol[] = [
     url: "https://lido.fi/",
     referralUrl: "https://stake.lido.fi/?ref=0x08a3c2A819E3de7ACa384c798269B3Ce1CD0e437",
     description:
-      "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana, Polygon, Terra, Kusama & Polkadot.",
+      "Liquid staking for Ethereum and Polygon. Daily staking rewards, no lock ups.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lido.png`,
     audits: "2",
@@ -1796,9 +1799,9 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "1inch/api.js",
     treasury: "1inch.js",
-    twitter: "1inchNetwork",
+    twitter: "1inch",
     audit_links: ["https://help.1inch.io/en/articles/4585088-how-secure-is-1inch"],
-    oracles: ["Chainlink"],
+    oracles: [],
     governanceID: ["snapshot:1inch.eth"],
     github: ["1inch"]
   },
@@ -1808,7 +1811,7 @@ const data: Protocol[] = [
     address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
     symbol: "DHT",
     url: "https://www.dhedge.org/",
-    description: "Decentralized Hedge Funds on Ethereum",
+    description: "Explore the universe of top-tier tokenized vaults.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dhedge.png`,
     audits: "2",
@@ -1816,10 +1819,10 @@ const data: Protocol[] = [
     gecko_id: "dhedge-dao",
     cmcId: "7094",
     category: "Indexes",
-    chains: ["Ethereum", "Polygon"],
+    chains: ["Ethereum", "Polygon", "Optimism", "Arbitrum"],
     module: "dhedge.js",
     twitter: "dHedgeOrg",
-    audit_links: ["https://iosiro.com/audits/dhedge-platform-smart-contract-audit"],
+    audit_links: ["https://iosiro.com/audits/dhedge-platform-smart-contract-audit", "https://www.certik.com/projects/dhedge"],
     governanceID: ["snapshot:gov.dhedge.eth"],
     github: ["dhedge"]
   },
@@ -2282,7 +2285,7 @@ const data: Protocol[] = [
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound V2"],
-    oracles: ["Chainlink", "Pyth", "TWAP"],
+    oracles: ["Chainlink"], // https://docs-v4.venus.io/risk/resilient-price-oracle Venus team confirmed:  Our Core Pool Resilient Oracle system uses Chainlink as principal source and 4 additional Oracles. The main one is Chainlink but, we also use Pyth, RedStone, Binance Oracle and TWAP
     parentProtocol: "parent#venus-finance"
   },
   {
@@ -2697,7 +2700,7 @@ const data: Protocol[] = [
     module: "mcdex/index.js",
     twitter: "muxprotocol",
     audit_links: ["https://www.certik.com/projects/mux-protocol"],
-    oracles: ["Chainlink"],
+    oracles: [],
     governanceID: ["snapshot:vote.mcdex.eth"],
     wrongLiquidity: true, // token is repeated in MUX Protocol + most liquidity on arbi
   },
@@ -2723,25 +2726,23 @@ const data: Protocol[] = [
   },
   {
     id: "234",
-    name: "Notional",
+    name: "Notional V2",
     address: "0xcfeaead4947f0705a14ec42ac3d44129e1ef3ed5",
     symbol: "NOTE",
     url: "https://notional.finance/",
     description: "Fixed rate lending on Ethereum\r\n",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/notional.jpg`,
+    logo: `${baseIconsUrl}/notional-v2.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "notional-finance",
-    cmcId: "14631",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
     module: "notional/index.js",
-    treasury: "notional.js",
     twitter: "NotionalFinance",
+    parentProtocol: "parent#notional",
     audit_links: ["https://blog.openzeppelin.com/notional-audit/"],
-    governanceID: ["snapshot:notional.eth"],
-    github: ["notional-finance"]
   },
   {
     id: "235",
@@ -2802,7 +2803,7 @@ const data: Protocol[] = [
     module: "swipeswap.js",
     twitter: "Swipe",
     audit_links: ["https://www.certik.org/projects/swipe"],
-    oracles: ["Chainlink", "Band"],
+    oracles: [],
     deadUrl: true
   },
   {
@@ -3138,7 +3139,7 @@ const data: Protocol[] = [
     gecko_id: "bifi",
     cmcId: "8132",
     category: "Lending",
-    chains: ["Ethereum", "Binance", "Bitcoin", "Klaytn", "Bifrost Mainnet"],
+    chains: ["Ethereum", "Binance", "Bitcoin", "Klaytn", "Bifrost Network"],
     module: "bifi/index.js",
     twitter: "BIFROSTio",
     audit_links: [
@@ -3891,7 +3892,7 @@ const data: Protocol[] = [
     module: "zerodex/index.js",
     twitter: "OfficialZeroDEX",
     forkedFrom: ["Uniswap V2"],
-    oracles: ["Chainlink"],
+    oracles: [],
   },
   /*
   {
@@ -4703,11 +4704,11 @@ const data: Protocol[] = [
   {
     id: "326",
     name: "Beefy",
-    address: "bsc:0xca3f508b8e4dd382ee878a314789373d80a5190a",
+    address: "0xB1F1ee126e9c96231Cc3d3fAD7C08b4cf873b1f1",
     symbol: "BIFI",
     url: "https://beefy.com",
     description:
-      "Beefy is a Decentralized, Multichain Yield Optimizer platform that allows users to earn compound interest on crypto. Through a set of investment strategies secured and enforced by smart contracts, Beefy automatically maximizes rewards from various liquidity pools (LPs),‌ ‌automated market making (AMM) projects,‌ ‌and‌ ‌other yield‌ farming ‌opportunities in the DeFi ecosystem.",
+      "Beefy automates yield farming to make DeFi easy, safe and efficient for all. By autocompounding your tokens, Beefy unlocks higher returns so you earn more of what you love.",
     chain: "Binance",
     logo: `${baseIconsUrl}/beefy.png`,
     audits: "2",
@@ -4794,15 +4795,14 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/sovryn-dex.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "sovryn",
-    cmcId: "8669",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["RSK"],
     module: "sovryn-dex/index.js",
     twitter: "SovrynBTC",
-    governanceID: ["snapshot:sovrynbitocracy.eth"],
     audit_links: ["https://www.sovryn.app/library"],
-    github: ["DistributedCollective"]
+    parentProtocol: "parent#sovryn",
   },
   {
     id: "330",
@@ -4840,7 +4840,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Decentralized Stablecoin",
     chains: ["RSK"],
     module: "moneyonchain.js",
     twitter: "moneyonchainok",
@@ -4857,7 +4857,7 @@ const data: Protocol[] = [
     description:
       "Bao Finance is like a combination of SNX and Aave, but use LP tokens for collateral. Rather than re-invent the wheel, Bao will create new features for existing DeFi protocols. The BAO token acts as a governance token for the fully community run project. It is also backed by the insurance fund where all Bao fees go.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bao-masterchef-v1.png`,
+    logo: `${baseIconsUrl}/bao-masterchef-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "bao-finance",
@@ -5186,10 +5186,18 @@ const data: Protocol[] = [
     cmcId: "11289",
     category: "CDP",
     treasury: "abracadabra.js",
-    chains: ["Ethereum", "Avalanche", "Arbitrum", "Fantom"],
-    module: "abracadabra/api.js",
+    chains: ["Arbitrum", "Avalanche", "Ethereum", "Fantom", "Binance", "Kava", "Optimism"], 
+    module: "abracadabra/index.js",
     twitter: "MIM_Spell",
-    oracles: ["Chainlink"],
+    oraclesByChain: {
+      arbitrum: ["Chainlink"],
+      avalanche: ["Chainlink"],
+      bsc: ["Chainlink"],
+      ethereum: ["Chainlink"],
+      fantom: ["Chainlink"],
+      kava: ["RedStone"],
+      optimism: ["Chainlink"],
+    },
     audit_links: ["https://abracadabramoney.gitbook.io/learn/our-ecosystem/our-contracts"],
     governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"],
     stablecoins: ["magic-internet-money"],
@@ -5574,7 +5582,7 @@ const data: Protocol[] = [
   },
   {
     id: "365",
-    name: "Charm Finance",
+    name: "Charm Finance V1",
     address: null,
     symbol: "-",
     url: "https://charm.fi/",
@@ -5589,33 +5597,32 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "charmfinance/index.js",
     twitter: "CharmFinance",
-    github: ['charmfinance'],
     audit_links: [
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Charm%20Finance%20%5B27.10.2020%5D.pdf",
     ],
+    parentProtocol: "parent#charm-finance"
   },
   {
     id: "366",
-    name: "DFX Finance",
+    name: "DFX V2",
     address: "0x888888435fde8e7d4c54cab67f206e4199454c60",
     symbol: "DFX",
     url: "https://app.dfx.finance",
     description:
       "DFX is a decentralized foreign exchange protocol optimized for trading fiat-backed foreign stablecoins",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/dfx-finance.jpg`,
+    logo: `${baseIconsUrl}/dfx-v2.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "dfx-finance",
-    cmcId: "8666",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
     forkedFrom: ["Shell Protocol"],
     module: "dfx/index.js",
     twitter: "DFXFinance",
+    parentProtocol: "parent#dfx-finance",
     audit_links: ["https://github.com/dfx-finance/protocol/blob/main/audits/2021-05-03-Trail_of_Bits.pdf"],
-    governanceID: ["snapshot:dfx.eth"],
-    github: ["dfx-finance"]
   },
   {
     id: "367",
@@ -5874,7 +5881,7 @@ const data: Protocol[] = [
     module: "makiswap/index.js",
     twitter: "MakiSwap",
     audit_links: ["https://www.certik.org/projects/makiswap"],
-    oracles: ["Chainlink"],
+    oracles: [],
     github: ["MakiSwap-Protocol"]
   },
   {
@@ -6864,16 +6871,15 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/deri-protocol.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "deri-protocol",
-    cmcId: "8424",
+    gecko_id: null,
+    cmcId: null,
     category: "Options",
     chains: ["Binance", "Polygon"],
     module: "deri/index.js",
-    treasury: "deri-protocol.js",
     twitter: "DeriProtocol",
     audit_links: ["https://docs.deri.io/library/code-audits"],
     oracles: ["Chainlink"],
-    github: ["deri-protocol"]
+    parentProtocol: "parent#deri",
   },
   // {
   //   id: "424",
@@ -6940,8 +6946,9 @@ const data: Protocol[] = [
   {
     id: "427",
     name: "Origin Dollar",
-    address: "null",
+    address: null, // not added on team request
     symbol: "-",
+    assetToken: "OUSD",
     url: "https://www.ousd.com",
     description:
       "Origin Dollar (OUSD) is a new stablecoin that was initially launched on the Ethereum network. Its design is superior to existing stablecoins because OUSD captures competitive yields while being passively held in wallets.",
@@ -7406,7 +7413,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "balance-tokens",
     cmcId: "11262",
-    category: "Dexes",
+    category: "Dexes", // tvl also counts lending/cdp product
     chains: ["Icon"],
     module: "balanced/index.js",
     twitter: "BalancedDAO",
@@ -7456,7 +7463,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "scream/index.js",
     twitter: "Screamdotsh",
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Band"], //band contract https://ftmscan.com/address/0xda7a001b254cd22e46d3eab04d937489c93174c3#code
     forkedFrom: ["Compound V2"],
     governanceID: ["snapshot:screamsh.eth"],
     github: ["Scream-Finance"]
@@ -7622,7 +7629,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "solend/index.js",
     twitter: "solendprotocol",
     audit_links: ["https://github.com/solendprotocol/solana-program-library/tree/master/token-lending/audit"],
-    oracles: ["Pyth"],
+    oracles: ["Switchboard"], // https://github.com/DefiLlama/defillama-server/pull/5174
     github: ["solendprotocol"]
   },
   {
@@ -7738,7 +7745,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "464",
-    name: "Beta Finance",
+    name: "Beta Finance V1",
     address: "0xbe1a001fe942f96eea22ba08783140b9dcc09d28",
     symbol: "BETA",
     url: "https://www.betafinance.org/",
@@ -7747,13 +7754,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/beta-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "beta-finance",
-    cmcId: "11307",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
     module: "betafinance/index.js",
     twitter: "beta_finance",
     audit_links: ["https://betafinance.gitbook.io/betafinance/security-and-audits"],
+    parentProtocol: "parent#beta-finance"
   },
   {
     id: "465",
@@ -8094,7 +8102,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "kuswap/index.js",
     twitter: "kuswapfinance",
     forkedFrom: ["Uniswap V2"],
-    oracles: ["Pyth"],
+    oracles: [],
     github: ["KuSwap"]
   },
   {
@@ -8613,12 +8621,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "505",
-    name: "Karura Liquid-Staking",
-    address: null,
-    symbol: "-",
+    name: "Karura Liquid Staking",
+    address: "acala:",
+    symbol: "KSM",
     url: "https://acala.network/karura",
     description:
-      "Stake your KSM for LKSM to earn rewards without sacrificing liquidity. LKSM is unlocked and ready to trade, take out collateralized loans, and provide liquidity for additional yield.",
+      "Liquidity for staked assets. Instant redeem. Available for Polkadot and Kusama.",
     chain: "Karura",
     logo: `${baseIconsUrl}/karura-liquid-staking.jpg`,
     audits: "0",
@@ -9245,7 +9253,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Prediction Market",
     chains: ["Ethereum"],
     module: "thales/index.js",
-    twitter: "thalesmarket",
+    twitter: "thales_io",
     oracles: [],
     treasury: "thales.js",
     audit_links: ["https://iosiro.com/audits/thales-airdrop-and-staking-smart-contract-audit"],
@@ -9649,6 +9657,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance", "Cronos"],
     module: "annex.js",
     twitter: "AnnexFinance",
+    oraclesByChain: {
+      cronos: ["Band"], //contract https://cronoscan.com/address/0xda7a001b254cd22e46d3eab04d937489c93174c3#code
+    },
     audit_links: ["https://www.certik.org/projects/annex"],
     github: ["annexfinance"]
   },
@@ -11244,11 +11255,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "mean_fi",
     audit_links: ["https://github.com/Mean-Finance/dca-v2-core/tree/main/audits"],
     oraclesByChain: {
-      Arbitrum: ["Chainlink", "TWAP"],
-      Polygon: ["API3", "TWAP"],
-      Optimism: ["Chainlink", "TWAP"],
-      Ethereum: ["Chainlink", "TWAP"],
-      BSC: ["Chainlink", "TWAP"] 
+      arbitrum: ["Chainlink", "TWAP"],
+      polygon: ["API3", "TWAP"],
+      optimism: ["Chainlink", "TWAP"],
+      ethereum: ["Chainlink", "TWAP"],
+      bsc: ["Chainlink", "TWAP"] 
     },
     github: ["Mean-Finance"]
   },
@@ -11965,30 +11976,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "660",
-    name: "Dopex",
-    address: "0xeec2be5c91ae7f8a338e1e5f3b5de49d07afdc81",
+    name: "Dopex SSOV",
+    address: "0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81",
     symbol: "DPX",
     url: "https://www.dopex.io",
     description: "Dopex is a maximum liquidity and minimal exposure options protocol",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/dopex.png`,
+    logo: `${baseIconsUrl}/dopex-ssov.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "dopex",
-    cmcId: "11188",
+    gecko_id: null,
+    cmcId: null,
     category: "Options",
     chains: ["Ethereum", "Arbitrum"],
     oraclesByChain: {
-      metis: ["DIA"]
+      arbitrum: ["Chainlink", "DIA"]
     },
     module: "dopex/index.js",
-    treasury: "dopex.js",
     twitter: "dopex_io",
-    audit_links: [
-      "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Dopex%20%5B21.06.2021%5D.pdf",
-      "https://solidity.finance/audits/Dopex/",
-    ],
-    github: ["dopex-io"]
+    audit_links: ["https://docs.dopex.io/developer/audits"],
+    parentProtocol: "parent#dopex",
   },
   {
     id: "661",
@@ -12900,7 +12907,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "behodler/index.js",
     twitter: "BehodlerAMM",
-    oracles: ["Internal"],
+    oracles: [],
     listedAt: 1635103000,
     github: ["Behodler"]
   },
@@ -13382,12 +13389,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "fang-token",
     cmcId: "12671",
-    category: "Dexes",
+    category: "Farm",
     chains: ["Fantom"],
     module: "potluckprotocol/index.js",
     twitter: "PotluckProtocol",
     audit_links: ["https://dessertswap.finance/audits/Potluck%20BSC-FTM%20audit%2011437133.pdf"],
-    oracles: ["Internal"],
+    oracles: [],
     forkedFrom: ["Goose Finance"],
     listedAt: 1635465731,
   },
@@ -13488,15 +13495,15 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "0x2f57430a6ceda85a67121757785877b4a71b8e6d",
     symbol: "DFP2",
     url: "https://defiplaza.net/",
-    description: "DefiPlaza is the low-cost distributed exchange on Ethereum",
+    description: "DefiPlaza creates DEXes optimized for high capital efficiency and reduced Impermanent Loss risk on Ethereum and Radix.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/defiplaza.svg`,
+    logo: `${baseIconsUrl}/defiplaza.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "defiplaza",
     cmcId: "14636",
     category: "Dexes",
-    chains: ["Ethereum"],
+    chains: ["Ethereum"], //add Radix in a bit
     module: "defiplaza.js",
     twitter: "DefiPlaza",
     audit_links: [
@@ -13559,7 +13566,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "synthetify-token",
     cmcId: "9447",
-    category: "Dexes",
+    category: "Synthetics",
     chains: ["Solana"],
     module: "synthetify/index.js",
     twitter: "synthetify",
@@ -15312,7 +15319,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "standard-tech/index.js",
     twitter: "standarddefi",
     forkedFrom: ["Uniswap V2"],
-    oracles: ["DIA", "Internal"],
+    oracles: [],
     listedAt: 1636671594,
     github: ["standardweb3"]
   },
@@ -17168,7 +17175,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "vampireswap/index.js",
     twitter: "vampireswap",
-    oracles: ["Chainlink"],
+    oracles: [],
     listedAt: 1637883311,
     forkedFrom: ["Uniswap V2"],
     deadUrl: true
@@ -18626,7 +18633,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Aurora"],
     module: "wannaswap/index.js",
     twitter: "wannaswapamm",
-    oracles: ["Chainlink"],
+    oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.certik.com/projects/wannaswap"],
     listedAt: 1638702808,
@@ -19482,6 +19489,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "arkadiko.js",
     twitter: "ArkadikoFinance",
     language: "Clarity",
+    oracles: ["Pyth"],
     github: ["arkadiko-dao"],
     listedAt: 1639420466,
   },
@@ -25124,9 +25132,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "RBC",
     url: "https://app.rubic.exchange/",
     description:
-      "Rubic, One-Click Cross-Chain Aggregator allows users to swap more than 15,000 assets between 13 major blockchains, with a simple and intuitive UI. Rubic's protocol offers easy trading for more than 15,000+ assets across Polygon, BNB Smart Chain, Ethereum, Avalanche, Fantom, Arbitrum, Gnosis, Fuse,  Celo, Optimism, Moonbeam, OKC and Cronos networks, using our custom and unique Cross-Chain Protocol.",
+      "Rubic aggregates 70+ blockchains and testnets, while it enables swaps of 15,500+ assets with the best rates, highest liquidity, and transaction speeds - in one click, thanks to the integration of 90+ DEXs and bridges. We focus on adding new emerging chains, which are often not present on giant DEXs and on-chain aggregators",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/rubic.png`,
+    logo: `${baseIconsUrl}/rubic.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "rubic",
@@ -25220,7 +25228,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Telos"],
     module: "omnidex/index.js",
     twitter: "OmniDex1",
-    oracles: ["DIA"],
+    oracles: [],
     forkedFrom: ["Uniswap V2"],
     parentProtocol: "parent#omnidex",
     listedAt: 1642579561,
@@ -25282,7 +25290,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "beamswap/index.js",
     twitter: "Beamswapio",
     audit_links: ["https://docs.beamswap.io/contracts/audit"],
-    oracles: ["DIA"],
+    oracles: [],
     forkedFrom: ["Uniswap V2"],
     parentProtocol: "parent#beamswap",
     listedAt: 1642599283,

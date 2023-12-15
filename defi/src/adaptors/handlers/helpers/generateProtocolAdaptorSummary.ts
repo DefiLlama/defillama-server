@@ -210,7 +210,9 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
                 acc[key] = (adapter.disabled || !lastDaysExtrapolation) ? null : value
                 return acc
             }, {} as typeof extraN30DTypes),
-            spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined
+            spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined,
+            totalVolume7d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.totalVolume7d,
+            totalVolume30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.totalVolume30d,
         }
     } catch (error) {
         // TODO: handle better errors
@@ -248,6 +250,8 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             change_30dover30d: null,
             chains: chainFilter ? [getDisplayChainName(chainFilter)] : adapter.chains.map(getDisplayChainName),
             spikes: undefined,
+            totalVolume7d: null,
+            totalVolume30d: null,
         }
     }
 }
@@ -258,6 +262,8 @@ const getStats = (adapter: ProtocolAdaptor, adaptorRecordsArr: AdaptorRecord[], 
         change_1d: calcNdChange(adaptorRecordsMap, 1, baseTimestamp, true).ndChange,
         change_7d: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true).ndChange,
         change_1m: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true).ndChange,
+        totalVolume7d: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true).totalNd,
+        totalVolume30d: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true).totalNd,
         ...getWoWStats([{
             recordsMap: adaptorRecordsMap
         }], undefined, baseTimestamp),

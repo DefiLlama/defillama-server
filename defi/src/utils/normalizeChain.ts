@@ -14,7 +14,8 @@ export const normalizedChainReplacements = {
   "map relay chain": "map",
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
-  "bifrost mainnet": "bfc"
+  "bifrost network": "bfc",
+  "horizen eon": "eon"
 } as {
   [chain: string]: string
 }
@@ -41,6 +42,22 @@ export function addToChains(chains: string[], chainDisplayName: string) {
     const chainName = chainDisplayName.split('-')[0]
     addToChains(chains, chainName)
   }
+}
+
+export type ChainCoinGekcoId = {
+  geckoId: string | null,
+  symbol: string | null,
+  cmcId: string | null,
+  categories?: string[],
+  chainId?: number,
+  parent?: {
+    chain: string,
+    types: string[]
+  }
+}
+
+export type ChainCoinGekcoIds = {
+  [chain: string]: ChainCoinGekcoId
 }
 
 export const chainCoingeckoIds = {
@@ -1508,10 +1525,10 @@ export const chainCoingeckoIds = {
     symbol: "LIBRE",
     cmcId: null,
   },
-  "Umee": {
+  "UX": {
     geckoId: "umee",
     github: ['umee-network'],
-    symbol: "UMEE",
+    symbol: "UX",
     cmcId: "16389",
     categories: ["Cosmos"],
   },
@@ -1653,7 +1670,7 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
   },
   "Oasys": {
-    geckoId: "Oasys",
+    geckoId: "oasys",
     github: ['oasysgames'],
     symbol: "OAS",
     cmcId: "22265",
@@ -1950,7 +1967,7 @@ export const chainCoingeckoIds = {
     cmcId: "24143",
     github: ["renec-chain"]
   },
-  "Bifrost Mainnet": {
+  "Bifrost Network": {
     geckoId: "bifrost",
     symbol: "BFC",
     cmcId: "7817",
@@ -1989,19 +2006,87 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
-} as unknown as {
-  [chain: string]: {
-    geckoId: string | null,
-    symbol: string | null,
-    cmcId: string | null,
-    categories?: string[],
-    chainId?: number,
-    parent?: {
-      chain: string,
-      types: string[]
-    }
-  }
-}
+  "Horizen EON": {
+    geckoId: "zencash",
+    symbol: "ZEN",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 7332,
+  },
+  "Chiliz": {
+    geckoId: "chiliz",
+    symbol: "CHZ",
+    cmcId: "4066",
+    categories: ["EVM"],
+    chainId: 88888,
+  },
+  "LightLink": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 1890
+  },
+  "PGN": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Mayachain": {
+    geckoId: "cacao",
+    symbol: "CACAO",
+    cmcId: null,
+  },
+  "Dash": {
+    geckoId: "dash",
+    symbol: "DASH",
+    cmcId: "131",
+  },
+  "Bostrom": {
+    geckoId: "bostrom",
+    symbol: "BOOT",
+    cmcId: null,
+    categories: ["Cosmos"],
+    github: ["cybercongress"]
+  },
+  "Alephium": {
+    geckoId: "alephium",
+    symbol: "ALPH",
+    cmcId: "14878",
+    github: ["alephium"]
+  },
+  "Mode": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 34443,
+  },
+  "FSC": {
+    geckoId: "fonsmartchain",
+    symbol: "FON",
+    cmcId: "22607",
+    github: ["FONSmartChain"],
+    categories: ["EVM"],
+  },
+  "Newton": {
+    geckoId: "newton-project",
+    symbol: "NEW",
+    cmcId: "3871",
+    github: ["newtonproject"],
+    categories: ["EVM"],
+  },
+} as unknown as ChainCoinGekcoIds
+
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
 chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
 chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
@@ -2015,7 +2100,7 @@ chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
 chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
 chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
-
+chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -2061,6 +2146,8 @@ export function transformNewChainName(chain: string) {
         return "opBNB"
     case "WEMIX":
       return "WEMIX3.0"
+    case "Umee":
+        return "UX"
     default:
       return chain
   }
@@ -2170,8 +2257,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "zkSync Lite" : "zkSync"
     case "zksync era":
       return "zkSync Era"
-    case "bifrost mainnet":
-      return "Bifrost Mainnet"    
+    case "bifrost network":
+      return "Bifrost Network"
+    case "horizen eon":
+      return "Horizen EON"    
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -2367,7 +2456,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "libre":
       return "Libre"
     case "umee":
-      return "Umee"
+      return useNewChainNames ? "UX" : "Umee"
     case "wemix":
       return useNewChainNames ? "WEMIX3.0" : "WEMIX"
     case "persistence":
@@ -2393,7 +2482,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "era":
       return "zkSync Era"
     case "bfc":
-      return "Bifrost Mainnet"
+      return "Bifrost Network"
     case "polygon_zkevm":
       return "Polygon zkEVM"
     case "meta":
@@ -2488,6 +2577,28 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "MEER"
     case "elsm":
       return "Elysium"
+    case "eon":
+      return "Horizen EON"
+    case "chz":
+      return "Chiliz"
+    case "lightlink_phoenix":
+      return "LightLink"
+    case "pgn":
+      return "PGN"
+    case "mayachain":
+      return "Mayachain"
+    case "dash":
+      return "Dash"
+    case "bostrom":
+      return "Bostrom"  
+    case "alephium":
+      return "Alephium" 
+    case "mode":
+      return "Mode"
+    case "fsc":
+      return "FSC"
+    case "new":
+      return "Newton"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

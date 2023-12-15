@@ -197,6 +197,10 @@ export default {
             v3: {
                 enabled: true,
                 id: "2239"
+            },
+            "liquidityHub": {
+                enabled: true,
+                id: "3743"
             }
         }
     },
@@ -251,6 +255,7 @@ export default {
         "id": "419"
     },
     "platypus": {
+        disabled: true,
         "enabled": true,
         "id": "944"
     },
@@ -401,7 +406,16 @@ export default {
     "iziswap": {
         parentId: "iZUMI Finance",
         "enabled": true,
-        "id": "1883"
+        "id": "1883",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1700524800": true,
+                "1700611200": true,
+                "1700697600": true,
+                "1700784000": true,
+                "1700870400": true,
+            },
+        }
     },
     "tinyman": {
         "enabled": true,
@@ -524,6 +538,7 @@ export default {
         "id": "1274"
     },
     "wagyuswap": {
+        disabled: true,
         "enabled": true,
         "id": "1003"
     },
@@ -684,6 +699,7 @@ export default {
         "id": "2312"
     },
     "pegasys": {
+        parentId: "PegaSys",
         "enabled": true,
         "id": "1432"
     },
@@ -1007,11 +1023,6 @@ export default {
         "enabled": true,
         "id": "2253"
     },
-    "goosefx": {
-        disabled: true,
-        "enabled": true,
-        "id": "2175"
-    },
     "3xcalibur": {
         "enabled": true,
         "id": "2283"
@@ -1108,7 +1119,6 @@ export default {
         "id": "799"
     },
     "aux-exchange": {
-        disabled: true,
         "enabled": true,
         "id": "2213"
     },
@@ -1333,6 +1343,7 @@ export default {
         "id": "2589"
     },
     "metavault.trade": {
+        parentId: "MetaVault",
         "enabled": true,
         "id": "1801"
     },
@@ -1529,6 +1540,7 @@ export default {
         "id": "1673",
         protocolsData: {
             v2: {
+                disabled: true,
                 "enabled": true,
                 "id": "1673",
                 displayName: "Hydradex V2"
@@ -1613,6 +1625,7 @@ export default {
         }
     },
     "lighter": {
+        parentId: "Lighter",
         "enabled": true,
         "id": "2636"
     },
@@ -1731,17 +1744,16 @@ export default {
         },
     },
     "litx": {
+        disabled: true,
         enabled: true,
         id: "3159"
     },
     "voodoo-trade": {
         enabled: true,
-        disabled: true,
-        id: "3156",
+        id: "3792",
         "protocolsData": {
             "swap": {
-                disabled: true,
-                "id": "3156",
+                "id": "3792",
                 "enabled": true,
                 "category": "Dexes",
             }
@@ -1919,12 +1931,12 @@ export default {
         "id": "3365"
     },
     "meridian-trade": {
-        "enabled": true,
+        "enabled": false,
         "id": "3386",
         "protocolsData": {
             "swap": {
                 "id": "3386",
-                "enabled": true,
+                "enabled": false,
             }
         }
     },
@@ -1949,7 +1961,17 @@ export default {
     "swapbased": {
         parentId: "SwapBased",
         "enabled": true,
-        "id": "3328"
+        "id": "3328",
+        protocolsData: {
+            "v2": {
+                "id": "3328",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "3409",
+                "enabled": true,
+            }
+        }
     },
     "danogo": {
         "enabled": true,
@@ -2102,5 +2124,139 @@ export default {
     "candyswap": {
         "enabled": true,
         "id": "3682"
+    },
+    "luigiswap": {
+        "enabled": true,
+        "id": "3415"
+    },
+    "kinetix-v3": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3534",
+        protocolsData: {
+            "v3": {
+                "id": "3534",
+                "enabled": true,
+            }
+        }
+    },
+    "caviarnine": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3645",
+        protocolsData: {
+            "orderbook": {
+                "id": "3645",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        }
+    },
+    "kinetix-derivative": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3465"
+    },
+    "retro": {
+        "enabled": true,
+        "id": "3311"
+    },
+    "metavault-v3": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3750",
+        protocolsData: {
+            "v3": {
+                "id": "3750",
+                "enabled": true,
+            }
+        }
+    },
+    "derivio": {
+        "enabled": false,
+        parentId: "Deri",
+        "id": "3759",
+        protocolsData: {
+            "swap": {
+                "id": "3759",
+                "enabled": true,
+            }
+        }
+    },
+    "elektrik": {
+        "enabled": true,
+        "id": "3773"
+    },
+    "caviarnine-lsu-pool": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3666"
+    },
+    "chimpexchange": {
+        "enabled": true,
+        "id": "3836"
+    },
+    "lighterv2": {
+        parentId: "Lighter",
+        "enabled": true,
+        "id": "3854"
+    },
+    "thick": {
+        "enabled": true,
+        "id": "3878"
+    },
+    "noah-swap": {
+        "enabled": true,
+        "id": "2855"
+    },
+    "ascent": {
+        "enabled": true,
+        "id": "3867",
+        parentId: "Ascent Exchange",
+        protocolsData: {
+            "v2": {
+                "id": "3867",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "3868",
+                "enabled": true,
+            }
+        }
+    },
+    "pegasys-v3": {
+        parentId: "PegaSys",
+        "enabled": true,
+        "id": "3178"
+    },
+    "canary": {
+        "enabled": true,
+        "id": "474"
+    },
+    "xfai": {
+        "enabled": true,
+        "id": "3816"
+    },
+    "zebra-v1": {
+        parentId: "Zebra",
+        "enabled": true,
+        "id": "3668"
+    },
+    "zebra-v2": {
+        parentId: "Zebra",
+        "enabled": true,
+        "id": "3901"
+    },
+    "astroport-v2": {
+        "enabled": true,
+        "id": "3117"
+    },
+    "kizuna": {
+        "enabled": true,
+        "id": "3913"
+    },
+    "butterxyz": {
+        "enabled": true,
+        "id": "3918"
     }
 } as AdaptorsConfig

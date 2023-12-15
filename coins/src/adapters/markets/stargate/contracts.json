@@ -184,5 +184,11 @@
       "underlying": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
       "pool": "0x12edeA9cd262006cC3C4E77c90d2CD2DD4b1eb97"
     }
+  },
+  "kava": {
+    "usdt": {
+      "underlying": "0x919C1c267BC06a7039e03fcc2eF738525769109c",
+      "pool": "0xAad094F6A75A14417d39f04E690fC216f080A41a"
+    }
   }
 }

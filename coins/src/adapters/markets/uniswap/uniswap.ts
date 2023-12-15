@@ -48,14 +48,14 @@ async function fetchUniV2MarketsFromSubgraph(
 ) {
   let addresses: string[] = [];
   let reservereThreshold: Number = 0;
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 10; i++) {
     const lpQuery = gql`
       query lps {
-        pairs(first: 1000, orderBy: volumeUSD, orderDirection: desc,
+        pairs(first: 1000, orderBy: trackedReserveETH, orderDirection: desc,
           where: {${
             i == 0
               ? ``
-              : `volumeUSD_lt: ${Number(reservereThreshold).toFixed(4)}`
+              : `trackedReserveETH_lt: ${Number(reservereThreshold).toFixed(4)}`
           }
           ${
             timestamp == 0
@@ -64,14 +64,14 @@ async function fetchUniV2MarketsFromSubgraph(
           }
         }) {
           id
-          volumeUSD
+          trackedReserveETH
         }
       }`;
     const res: any = await request(subgraph, lpQuery);
     const pairs = res.pairs;
     if (pairs.length < 1000) i = 20;
     if (pairs.length == 0) return addresses;
-    reservereThreshold = pairs[Math.max(pairs.length - 1, 0)].volumeUSD;
+    reservereThreshold = pairs[Math.max(pairs.length - 1, 0)].trackedReserveETH;
     addresses.push(...pairs.map((p: any) => p.id));
     sleep(5000);
   }

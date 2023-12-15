@@ -34,6 +34,7 @@ export interface Protocol {
   wrongLiquidity?: boolean;
   rugged?: boolean;
   deadUrl?: boolean;
+  deadFrom?: number | string;
 }
 
 export interface IParentProtocol {

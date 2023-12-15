@@ -6,7 +6,7 @@ import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import { getBlocksRetry } from "../storeTvlInterval/blocks";
 import { dailyTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import { date } from './utils'
-import { importAdapter } from "./utils/importAdapter";
+import { importAdapterDynamic } from "../utils/imports/importAdapter";
 
 const projectsToRefill: string[] = ["Trader Joe"];
 const notify = false;
@@ -68,7 +68,7 @@ async function main() {
                     tvl,
                   });
                 } else {
-                  const adapterModule = await importAdapter(protocol)
+                  const adapterModule = await importAdapterDynamic(protocol)
                   const { ethereumBlock, chainBlocks } = await getBlocksRetry(
                     nextTimestamp, { adapterModule },
                   );

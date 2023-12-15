@@ -14,6 +14,7 @@ import {
 } from "./utils/normalizeChain";
 import { craftChainsResponse } from "./getChains";
 import type { IProtocol, IChain, ITvlsByChain } from "./types";
+import fetch from "node-fetch"
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -118,31 +119,43 @@ function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownT
   return breakdown;
 }
 
-async function craftProtocolsResponseInternal(
-  useNewChainNames: boolean,
-  protocolList: Protocol[],
-  includeTokenBreakdowns?: boolean
-) {
-  const coinMarkets = await fetch("https://coins.llama.fi/mcaps", {
+const apiV1Functions = {
+  getCoinMarkets: async (protocols: Protocol[]) => fetch("https://coins.llama.fi/mcaps", {
     method: "POST",
     body: JSON.stringify({
-      coins: protocolList
+      coins: protocols
         .filter((protocol) => typeof protocol.gecko_id === "string")
         .map((protocol) => `coingecko:${protocol.gecko_id}`),
     }),
-  }).then((r) => r.json());
+  }).then((r) => r.json()),
+  getLastHourlyRecord: async (protocol: Protocol) => getLastRecord(hourlyTvl(protocol.id)),
+  getLastHourlyTokensUsd: async (protocol: Protocol) => getLastRecord(hourlyUsdTokensTvl(protocol.id)),
+}
+
+export async function craftProtocolsResponseInternal(
+  useNewChainNames: boolean,
+  protocolList: Protocol[],
+  includeTokenBreakdowns?: boolean,
+  {
+    getCoinMarkets = apiV1Functions.getCoinMarkets,
+    getLastHourlyRecord = apiV1Functions.getLastHourlyRecord,
+    getLastHourlyTokensUsd = apiV1Functions.getLastHourlyTokensUsd,
+  } = {}
+) {
+  const coinMarkets = await getCoinMarkets(protocolList);
 
   const response = (
     await Promise.all(
       protocolList.map(async (protocol) => {
-        const [lastHourlyRecord, lastHourlyTokensUsd] = await Promise.all([
-          getLastRecord(hourlyTvl(protocol.id)),
-          includeTokenBreakdowns ? getLastRecord(hourlyUsdTokensTvl(protocol.id)) : {},
+        let [lastHourlyRecord, lastHourlyTokensUsd] = await Promise.all([
+          getLastHourlyRecord(protocol),
+          includeTokenBreakdowns ? getLastHourlyTokensUsd(protocol) : {},
         ]);
 
         if (!lastHourlyRecord) {
           return null;
         }
+        // if (!lastHourlyRecord) lastHourlyRecord = {}
 
         const returnedProtocol: Partial<Protocol> = { ...protocol };
         delete returnedProtocol.module;
@@ -204,8 +217,8 @@ async function craftProtocolsResponseInternal(
   return response;
 }
 
-export async function craftProtocolsResponse(useNewChainNames: boolean) {
-  return craftProtocolsResponseInternal(useNewChainNames, protocols);
+export async function craftProtocolsResponse(useNewChainNames: boolean, includeTokenBreakdowns?: boolean, options?: any) {
+  return craftProtocolsResponseInternal(useNewChainNames, protocols, includeTokenBreakdowns, options);
 }
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {

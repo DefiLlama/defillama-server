@@ -2568,6 +2568,36 @@
       "decimals": "18",
       "symbol": "WTLOS",
       "to": "telos:0x0000000000000000000000000000000000000000"
+    },
+    "0x8d97cea50351fb4329d591682b148d43a0c3611b": {
+      "name": "USD Coin",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x975ed13fa16857e83e7c493c7741d556eaad4a3f": {
+      "name": "Tether USD",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xa0fb8cd450c8fd3a11901876cd5f17eb47c6bc50": {
+      "name": "Ether",
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x26ed0f16e777c94a6fe798f9e20298034930bae8": {
+      "name": "BNB",
+      "decimals": "18",
+      "symbol": "BNB",
+      "to": "coingecko#binancecoin"
+    },
+    "0x7627b27594bc71e6ab0fce755ae8931eb1e12dac": {
+      "name": "Bitcoin",
+      "decimals": "8",
+      "symbol": "BTC.b",
+      "to": "coingecko#bitcoin"
     }
   },
   "solana": {
@@ -3184,12 +3214,6 @@
       "decimals": "18",
       "symbol": "wstUSDT",
       "to": "coingecko#wrapped-staked-usdt"
-    },
-    "0x0000000000000000000000000000000000000000": {
-      "name": "tron",
-      "decimals": "6",
-      "symbol": "TRX",
-      "to": "coingecko#tron"
     },
     "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t": {
       "name": "tether",
@@ -4212,12 +4236,6 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     },
-    "0x06864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS": {
-      "name": "Cetus",
-      "decimals": "9",
-      "symbol": "CETUS",
-      "to": "coingecko#cetus"
-    },
     "0xe4239cd951f6c53d9c41e25270d80d31f925ad1655e5ba5b543843d4a66975ee::SUIP::SUIP": {
       "name": "SuiPad",
       "decimals": "9",
@@ -4227,17 +4245,12 @@
     "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdt_coin::CELER_USDT_COIN": {
       "decimals": "6",
       "symbol": "CELER_USDT_COIN",
-      "to": "coingecko:tether"
+      "to": "coingecko#tether"
     },
     "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdc_coin::CELER_USDC_COIN": {
       "decimals": "6",
       "symbol": "CELER_USDC_COIN",
       "to": "coingecko#usd-coin"
-    },
-    "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdt_coin::CELER_USDT_COIN": {
-      "decimals": "6",
-      "symbol": "CELER_USDT_COIN",
-      "to": "coingecko:tether"
     },
     "0xdbe380b13a6d0f5cdedd58de8f04625263f113b3f9db32b3e1983f49e2841676::coin::COIN": {
       "decimals": "8",
@@ -4288,55 +4301,61 @@
       "name": "USDC",
       "decimals": "6",
       "symbol": "USDC",
-      "to": "coingecko:usd-coin"
+      "to": "coingecko#usd-coin"
     },
     "0x0000000000000000000000000000000000000000000000000000000000000002::sui::sui": {
       "name": "SUI",
       "decimals": "9",
       "symbol": "SUI",
-      "to": "coingecko:sui"
+      "to": "coingecko#sui"
     },
     "0x02::sui::sui": {
       "name": "SUI",
       "decimals": "9",
       "symbol": "SUI",
-      "to": "coingecko:sui"
+      "to": "coingecko#sui"
     },
     "0x2::sui::sui": {
       "name": "SUI",
       "decimals": "9",
       "symbol": "SUI",
-      "to": "coingecko:sui"
+      "to": "coingecko#sui"
     },
     "0xc060006111016b8a020ad5b33834984a437aaa7d3c74c18e09a95d48aceab08c::coin::coin": {
       "name": "USDT",
       "decimals": "6",
       "symbol": "USDT",
-      "to": "coingecko:tether"
+      "to": "coingecko#tether"
     },
     "0xaf8cd5edc19c4512f4259f0bee101a40d41ebed738ade5874359610ef8eeced5::coin::coin": {
       "name": "WETH",
       "decimals": "8",
       "symbol": "WETH",
-      "to": "coingecko:ethereum"
+      "to": "coingecko#ethereum"
     },
     "0xb231fcda8bbddb31f2ef02e6161444aec64a514e2c89279584ac9806ce9cf037::coin::coin": {
       "name": "USDC",
       "decimals": "6",
       "symbol": "USDC",
-      "to": "coingecko:usd-coin"
+      "to": "coingecko#usd-coin"
     },
     "0xb7844e289a8410e50fb3ca48d69eb9cf29e27d223ef90353fe1bd8e27ff8f3f8::coin::coin": {
       "name": "Wrapped SOL",
       "decimals": "8",
       "symbol": "SOL",
-      "to": "coingecko:solana"
+      "to": "coingecko#solana"
     },
     "0xb848cce11ef3a8f62eccea6eb5b35a12c4c2b1ee1af7755d02d7bd6218e8226f::coin::coin": {
       "name": "Wrapped BNB",
       "decimals": "8",
       "symbol": "WBNB",
-      "to": "coingecko:binance-coin"
+      "to": "coingecko#binance-coin"
+    },
+    "0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX": {
+      "name": "FlowX",
+      "decimals": "8",
+      "symbol": "FLX",
+      "to": "coingecko#flowx-finance"
     }
   },
   "kekchain": {
@@ -4364,7 +4383,7 @@
       "name": "thala",
       "decimals": "8",
       "symbol": "THL",
-      "to": "coingecko:thala"
+      "to": "coingecko#thala"
     },
     "0x1::aptos_coin::AptosCoin": {
       "name": "aptos",
@@ -4491,6 +4510,12 @@
       "decimals": "8",
       "symbol": "ALT",
       "to": "coingecko#aptos-launch-token"
+    },
+    "0x111ae3e5bc816a5e63c2da97d0aa3886519e0cd5e4b046659fa35796bd11542a::amapt_token::AmnisApt": {
+      "name": "amnis-apt",
+      "decimals": "8",
+      "symbol": "AMAPT",
+      "to": "coingecko#amnis-aptos"
     }
   },
   "dogechain": {
@@ -4737,6 +4762,12 @@
       "decimals": "18",
       "symbol": "ETH",
       "to": "coingecko#ethereum"
+    },
+    "0x042b8f0484674ca266ac5d08e4ac6a3fe65bd3129795def2dca5c34ecc5f96d2": {
+      "name": "Starknet Wrapped Staked Ether",
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
     }
   },
   "ontology_evm": {
@@ -7514,6 +7545,12 @@
       "decimals": "6",
       "symbol": "STUMEE",
       "to": "coingecko#umee"
+    },
+    "49D820DFDE9F885D7081725A58202ABA2F465CAEE4AFBC683DFB79A8E013E83E": {
+      "name": "injective-protocol",
+      "decimals": 18,
+      "symbol": "INJ",
+      "to": "coingecko#injective-protocol"
     }
   },
   "bitindi": {
@@ -8165,6 +8202,11 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#ethereum"
+    },
+    "0x5bE26527e817998A7206475496fDE1E68957c5A6": {
+      "decimals": "18",
+      "symbol": "USDY",
+      "to": "ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c"
     }
   },
   "linea": {
@@ -8496,6 +8538,16 @@
       "decimals": "18",
       "symbol": "DAI",
       "to": "coingecko#dai"
+    },
+    "0x387660BC95682587efC12C543c987ABf0fB9778f": {
+      "decimals": "18",
+      "symbol": "GOK",
+      "to": "coingecko#gok"
+    },
+    "0x6Fae4D9935E2fcb11fC79a64e917fb2BF14DaFaa": {
+      "decimals": "6",
+      "symbol": "TIA",
+      "to": "coingecko#celestia"
     },
     "0x2fe3ad97a60eb7c79a976fc18bb5ffd07dd94ba5": {
       "decimals": "18",

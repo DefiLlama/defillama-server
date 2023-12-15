@@ -92,4 +92,8 @@ export default {
     enabled: true,
     id: "2116",
   },
+  "cowswap": {
+    enabled: true,
+    id: "2643",
+  },
 } as AdaptorsConfig;

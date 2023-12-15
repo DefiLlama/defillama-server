@@ -11037,7 +11037,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "bogged-finance",
     cmcId: "8723",
-    category: "DEX Aggregator",
+    category: "Dexes",
     chains: ["Binance"],
     module: "bogged.js",
     twitter: "boggedfinance",

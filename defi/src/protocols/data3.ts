@@ -27078,7 +27078,7 @@ const data3: Protocol[] = [
     address: "arbitrum:0x802124EB78E43FD8d3d4E6DAAAa4Be28Dc7993dc",
     symbol: "SPINAQ",
     url: "https://www.spinaq.xyz",
-    description: "Butter is an AMM token swap on Mantle and a perpetuals exchange with low fees, high liquidity, and a popular rewards program.",
+    description: "SpinaqDex is a decentralized exchange  on Arbitrum",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/spinaqdex.jpg`,
     audits: "2",

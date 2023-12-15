@@ -27095,6 +27095,49 @@ const data3: Protocol[] = [
     github: ["spinaqdex-xyz"],
     listedAt: 1702568985
   },
+  {
+    id: "3920",
+    name: "BorB",
+    address: "bsc:0xfcC9b8a55F63b1fec16622F02c64D85CC53D38A6",
+    symbol: "B",
+    url: "https://borb.fi/",
+    description: `BorB is an open source and non-custodial crypto derivatives platform dedicated to trading on a new asset class: fixed length crypto contracts. This is a "bullish or bearish" type of contract`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/borb.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    oracles: ["Chainlink"], // https://docs.borb.fi/borb-intro/faq#what-are-you-using-for-your-price-feed
+    forkedFrom: [],
+    module: "borb/index.js",
+    twitter: "borb_fi",
+    github: ["borb-fi"],
+    listedAt: 1702602847
+  },
+  {
+    id: "3921",
+    name: "Pharaoh Exchange",
+    address: "avax:0xAAAB9D12A30504559b0C5a9A5977fEE4A6081c6b",
+    symbol: "PHAR",
+    url: "https://pharaoh.exchange/swap/",
+    description: `Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity`,
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/pharaoh-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    module: "pharaoh-exchange/index.js",
+    twitter: "PharaohExchange",
+    listedAt: 1702603157
+  },
 ]
 
 export default data3

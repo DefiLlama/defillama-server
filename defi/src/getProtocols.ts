@@ -14,6 +14,7 @@ import {
 } from "./utils/normalizeChain";
 import { craftChainsResponse } from "./getChains";
 import type { IProtocol, IChain, ITvlsByChain } from "./types";
+import fetch from "node-fetch"
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;

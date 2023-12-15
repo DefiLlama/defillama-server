@@ -11395,7 +11395,7 @@ const data2: Protocol[] = [
     cmcId: "13675",
     category: "Cross Chain",
     chains: ["Kintsugi"],
-    oracles: [],
+    oracles: ["DIA"], // https://www.diadata.org/blog/post/partnership-with-interlay/
     forkedFrom: [],
     module: "kintsugi/index.js",
     twitter: "kintsugi_btc",
@@ -14653,7 +14653,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Bridge",
     chains: ["Interlay"],
-    oracles: [],
+    oracles: ["DIA"], // https://www.diadata.org/blog/post/partnership-with-interlay/
     forkedFrom: [],
     module: "interlay-btc/index.js",
     twitter: "InterlayHQ",

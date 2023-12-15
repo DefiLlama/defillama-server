@@ -18,6 +18,13 @@ export function successResponse(res: HyperExpress.Response, data: any, cacheMinu
   isJson ? res.json(data) : res.send(data)
 }
 
+export function errorResponse(res: HyperExpress.Response, data: any = 'Internal server error', {
+  statusCode = 400,
+} = {}) {
+  res.status(statusCode)
+  res.send(data, true)
+}
+
 export function errorWrapper(routeFn: any) {
   return async (req: HyperExpress.Request, res: HyperExpress.Response) => {
     try {

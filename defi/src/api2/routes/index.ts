@@ -1,12 +1,12 @@
 import * as HyperExpress from "hyper-express";
-import { cache, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
+import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
 import { readRouteData, readFromPGCache, deleteFromPGCache, } from "../cache/file-cache";
 import sluggify from "../../utils/sluggify";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { get20MinDate } from "../../utils/shared";
 import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
-import { successResponse, errorWrapper as ew } from "./utils";
+import { successResponse, errorResponse, errorWrapper as ew } from "./utils";
 import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
 import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
 import { getCurrentUnixTimestamp } from "../../utils/date";
@@ -16,6 +16,7 @@ import { computeInflowsData } from "../../getInflows";
 import { getFormattedChains } from "../../getFormattedChains";
 
 export default function setRoutes(router: HyperExpress.Router, routerBasePath: string) {
+  // todo add logging middleware to all routes
   // router.get("/hourly/:name", (async (req, res) => getProtocolishData(req, res, { dataType: 'protocol', useHourlyData: true, skipAggregatedTvl: false })));  // too expensive to handle here
   // router.get("/config/:chain/:contract", ew(getContractName));  // too many requests to handle here
   // add secret route to delete from PG cache
@@ -34,8 +35,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/entities", defaultFileHandler);
   router.get('/chains', defaultFileHandler)
   router.get('/v2/chains', defaultFileHandler)
-  router.get("/tvl/:name", defaultFileHandler);
-  router.get("/config/smol/:protocol", defaultFileHandler);
+  router.get("/tvl/:name", ew(tvlHandler));
+  router.get("/config/smol/:name", ew(smolConfigHandler));
   router.get("/raises", defaultFileHandler);
   router.get("/hacks", defaultFileHandler);
   router.get("/oracles", defaultFileHandler);
@@ -47,7 +48,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/simpleChainDataset/:chain", ew(getSimpleChainDataset));
   router.get("/dataset/:protocol", ew(getDataset));
 
-  
+
   router.get("/inflows/:protocol/:timestamp", ew(getInflows))
   router.get("/lite/protocols2", defaultFileHandler);
   router.get("/lite/v2/protocols", defaultFileHandler);
@@ -55,7 +56,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/chains2/:category", ew(getFormattedChainsData))
   router.get("/config/yields", defaultFileHandler)
   router.get("/outdated", defaultFileHandler)
-  
+
 
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
     const fullPath = req.path;
@@ -77,14 +78,41 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     return fileResponse('protocols', res);
   }
 
+  function tvlHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+    let name = sluggify({ name: req.path_parameters.name } as any)
+
+    let protocolData = cache.protocolSlugMap[name]
+    if (protocolData) return successResponse(res, getLastHourlyRecord(protocolData)?.tvl, 10 * 60);
+
+    const parentData = cache.parentProtocolSlugMap[name]
+    if (parentData) {
+      const childProtocols = cache.childProtocols[parentData.id] ?? []
+      if (childProtocols.length < 1 || childProtocols.map((p: any) => p.name).includes(parentData.name))
+        return errorResponse(res, 'bad parent protocol')
+
+      const tvl = childProtocols.map(getLastHourlyRecord).reduce((acc: number, cur: any) => acc + cur.tvl, 0);
+      return successResponse(res, tvl, 10 * 60);
+    }
+
+    return errorResponse(res, 'Protocol not found')
+  }
+
+  function smolConfigHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+    let name = sluggify({ name: req.path_parameters.name } as any)
+    let protocolData = cache.protocolSlugMap[name]
+    if (protocolData) return successResponse(res, protocolData, 10 * 60);
+    protocolData = cache.parentProtocolSlugMap[name]
+    if (protocolData) return successResponse(res, protocolData, 10 * 60);
+    return errorResponse(res, 'Protocol not found')
+  }
+
   async function fileResponse(filePath: string, res: HyperExpress.Response) {
     try {
       res.set('Cache-Control', 'public, max-age=600'); // Set caching to 10 minutes
       res.json(await readRouteData(filePath))
     } catch (e) {
       console.error(e);
-      res.status(500)
-      return res.send('Internal server error', true)
+      return errorResponse(res, 'Internal server error', { statusCode: 500 })
     }
   }
 
@@ -108,8 +136,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
       }
     } catch (e) {
       console.error(e);
-      res.status(500)
-      return res.send('Internal server error', true)
+      return errorResponse(res, 'Internal server error', { statusCode: 500 })
     }
   }
 }
@@ -135,10 +162,9 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
     }
   }
 
-  if (!protocolData) {
-    res.status(404)
-    return res.send('Not found', true)
-  }
+  if (!protocolData)
+    return errorResponse(res, 'Protocol not found')
+
   const responseData = await cachedCraftProtocolV2({
     protocolData,
     useNewChainNames,
@@ -150,10 +176,9 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
 
 async function getTokenInProtocols(req: HyperExpress.Request, res: HyperExpress.Response) {
   let symbol = req.path_parameters.symbol
-  if (!symbol) {
-    res.status(404)
-    return res.send('Ser you need to provide a token', true)
-  }
+  if (!symbol)
+    return errorResponse(res, 'Ser you need to provide a token')
+  
   res.setHeaders({ "Expires": get20MinDate() })
 
   const responseData = await getTokensInProtocolsInternal(symbol, {
@@ -178,8 +203,8 @@ async function getSimpleChainDataset(req: HyperExpress.Request, res: HyperExpres
   }
   const { error, filename, csv } = await getSimpleChainDatasetInternal(chain, options)
   if (error) {
-    res.status(400)
-    return res.send(error, true)
+    console.log(error)
+    return errorResponse(res)
   }
 
   res.setHeaders({ "Expires": get20MinDate() })
@@ -197,10 +222,9 @@ async function getDataset(req: HyperExpress.Request, res: HyperExpress.Response)
   const filename = `${protocolName}.csv`;
   const name = sluggify({ name: protocolName } as any)
   const protocolData = cache.protocolSlugMap[name];
-  if (!protocolData) {
-    res.status(404)
-    return res.send('Not found', true)
-  }
+  if (!protocolData)
+    return errorResponse(res, 'Protocol not found')
+  
   const csv = await craftCsvDataset([protocolData], true, false, { readFromPG: true });
 
   res.setHeaders({ "Expires": get20MinDate() })
@@ -220,10 +244,8 @@ type GetProtocolishOptions = {
 async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response) {
   let name = sluggify({ name: req.path_parameters.protocol } as any)
   const protocolData = cache.protocolSlugMap[name]
-  if (!protocolData) {
-    res.status(404)
-    return res.send('Unable to find Protocol', true)
-  }
+  if (!protocolData)
+    return errorResponse(res, 'Protocol not found')
 
   const protocolId = protocolData.id
   const tokensToExclude = req.query_parameters.tokensToExclude?.split(",") ?? []
@@ -232,20 +254,15 @@ async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response)
 
   const old = await getClosestProtocolItem(hourlyTokensTvl, protocolId, timestamp, { searchWidth: 2 * 3600 })
 
-  if (old.SK === undefined) {
-    res.status(404)
-    return res.send('No data at that timestamp', true)
-  }
-
+  if (old.SK === undefined)
+    return errorResponse(res, 'No data at that timestamp')
 
   const [currentTokens, currentUsdTokens] = await Promise.all(
     [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getClosestProtocolItem(prefix, protocolId, endTimestamp, 2 * 3600))
   );
 
-  if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK) {
-    res.status(404)
-    return res.send('No data', true)
-  }
+  if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK)
+    return errorResponse(res, 'No data')
 
   const responseData = computeInflowsData(protocolData, currentTokens, currentUsdTokens, old, tokensToExclude)
 

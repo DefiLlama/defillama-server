@@ -45,7 +45,7 @@ async function run() {
   }
 
 
-  await writeProtocolTvlData()
+  // await writeProtocolTvlData()  // to be served from rest api instead
   await writeProtocols()
   await writeConfig()
   await writeOracles()
@@ -271,14 +271,15 @@ async function run() {
     await storeRouteData('configs', data)
 
 
-    const withConcurrency = 25
-
-    let items = shuffleArray(Object.entries(cache.protocolSlugMap))
-    await PromisePool.withConcurrency(withConcurrency).for(items)
-      .process(async ([slugName, protocolData]: [string, IProtocol]) => {
-        const key = `config/smol/${slugName}`
-        await storeRouteData(key, protocolData)
-      })
+    // this is handled in rest server now
+    // const withConcurrency = 25
+ 
+    // let items = shuffleArray(Object.entries(cache.protocolSlugMap))
+    // await PromisePool.withConcurrency(withConcurrency).for(items)
+    //   .process(async ([slugName, protocolData]: [string, IProtocol]) => {
+    //     const key = `config/smol/${slugName}`
+    //     await storeRouteData(key, protocolData)
+    //   })
     console.timeEnd('write /config')
   }
 

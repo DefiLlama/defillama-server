@@ -247,7 +247,10 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   bittorrent: {
     WBTT: '0x8d193c6efa90bcff940a98785d1ce9d093d3dc8a'
-  }
+  },
+  aptos: {
+    USDCET: "0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6",
+  },
 };
 const eulerTokens = [
   "0x1b808f49add4b8c6b5117d9681cf7312fcf0dc1d",

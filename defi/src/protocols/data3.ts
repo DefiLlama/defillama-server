@@ -27139,6 +27139,27 @@ const data3: Protocol[] = [
     twitter: "PharaohExchange",
     listedAt: 1702603157
   },
+  {
+    id: "3922",
+    name: "Love.io",
+    address: "0xb55EE890426341FE45EE6dc788D2D93d25B59063",
+    symbol: "LOVE",
+    url: "https://love.io",
+    description: `Love.io is a decentralized protocol for peer to peer value transfer connecting Web3, with traditional Social Media and E-Commerce platforms. The protocol enables peer-to-peer micro-tipping and to earn LOVE loyalty rewards through sophisticated dApps. The protocol enables micro-tipping on X.com, Youtube, Twitch, Instagram, Facebook and much more.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/love.io.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Ethereum", "Pulse", "Binance"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "love/index.js",
+    twitter: "lovedotio",
+    listedAt: 1702642804
+  },
 ]
 
 export default data3

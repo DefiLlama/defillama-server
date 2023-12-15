@@ -7629,7 +7629,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "solend/index.js",
     twitter: "solendprotocol",
     audit_links: ["https://github.com/solendprotocol/solana-program-library/tree/master/token-lending/audit"],
-    oracles: ["Switchboard"], // https://github.com/DefiLlama/defillama-server/pull/5174
+    oracles: ["Pyth","Switchboard"], // https://github.com/DefiLlama/defillama-server/pull/5174
     github: ["solendprotocol"]
   },
   {

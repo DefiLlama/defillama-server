@@ -27160,6 +27160,28 @@ const data3: Protocol[] = [
     twitter: "lovedotio",
     listedAt: 1702642804
   },
+  {
+    id: "3923",
+    name: "Lyra V2",
+    address: "optimism:0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
+    symbol: "LYRA",
+    url: "https://www.lyra.finance/",
+    description: `Trade options, perps and spot on the most powerful self-custodial exchange.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lyra-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "lyra-v2/index.js",
+    twitter: "lyrafinance",
+    parentProtocol: "parent#lyra",
+    listedAt: 1702643004
+  },
 ]
 
 export default data3

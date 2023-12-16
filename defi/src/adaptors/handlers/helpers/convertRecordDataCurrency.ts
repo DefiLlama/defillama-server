@@ -61,6 +61,7 @@ const addToPricesObject = async (token: string, fromTimestamp: number) => {
     })
 }
 
+// TODO: improve this logic, change how token prices are pulled
 export const convertDataToUSD = async (data: IRecordAdaptorRecordData, timestamp: number) => {
     const rrr = await Object.entries(data).reduce(async (accP, [chain, chainData]) => {
         let acc = await accP

@@ -17,6 +17,7 @@ import { getFormattedChains } from "../../getFormattedChains";
 import { getR2 } from "../../utils/r2";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
+import { getOverviewHandler } from "../utils/dimensionsUtils";
 
 export default function setRoutes(router: HyperExpress.Router, routerBasePath: string) {
   // todo add logging middleware to all routes
@@ -65,11 +66,14 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/emissionsBreakdown", r2Wrapper({ endpoint: 'emissionsBreakdown' }))
   router.get("/emission/:name", emissionProtocolHandler)
   router.get("/chainAssets", r2Wrapper({ endpoint: 'chainAssets' }))
-  
+
   router.get("/charts", ew(getChartsData))
   router.get("/charts/:name", ew(getChartsData))
   router.get("/v2/historicalChainTvl", ew(getHistoricalChainTvlData))
   router.get("/v2/historicalChainTvl/:name", ew(getHistoricalChainTvlData))
+
+  router.get("/overview/:type", ew(getOverviewHandler))
+  router.get("/overview/:type/:chain", ew(getOverviewHandler))
 
 
 

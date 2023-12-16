@@ -27203,6 +27203,7 @@ const data3: Protocol[] = [
     twitter: "d8x_exchange",
     audit_links: ["https://d8x.gitbook.io/d8x/audit"],
     github: ["D8-X"],
+    treasury: "d8x.js",
     listedAt: 1702688019
   },
   {

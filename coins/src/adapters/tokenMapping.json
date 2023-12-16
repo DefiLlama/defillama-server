@@ -247,6 +247,11 @@
       "decimals": "8",
       "symbol": "stAPT",
       "to": "coingecko#aptos"
+    },
+    "0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT": {
+      "decimals": "8",
+      "symbol": "CAKE",
+      "to": "coingecko#pancakeswap-token"
     }
   },
   "cardano": {

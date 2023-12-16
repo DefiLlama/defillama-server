@@ -615,8 +615,8 @@ functions:
     handler: src/adaptors/handlers/refreshDimensionOverviewCache/index.default
     timeout: 180
     memorySize: 1024
-    events:
-      - schedule: rate(1 hour)
+    #events:
+    #  - schedule: rate(1 hour)
   cacheExternalResponse:
     handler: src/externalEndpointsCache/index.cacheExternalResponseHandler
     timeout: 180

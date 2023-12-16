@@ -323,12 +323,12 @@ functions:
   #     - http:
   #         path: tvl/{protocol}
   #         method: get
-  # smolConfig:
-  #   handler: src/getSmolConfig.default
-  #   events:
-  #     - http:
-  #         path: config/smol/{protocol}
-  #         method: get
+  smolConfig:
+    handler: src/getSmolConfig.default
+    events:
+      - http:
+          path: config/smol/{protocol}
+          method: get
   coins:
     handler: src/getCoins.default
     timeout: 30
@@ -443,13 +443,13 @@ functions:
   #     - http:
   #         path: simpleChainDataset/{chain}
   #         method: get
-  # config:
-  #   handler: src/getConfig.default
-  #   timeout: 10
-  #   events:
-  #     - http:
-  #         path: config
-  #         method: get
+  config:
+    handler: src/getConfig.default
+    timeout: 10
+    events:
+      - http:
+          path: config
+          method: get
   storeSortedTokenlist:
     handler: src/storeSortedTokenlist.default
     timeout: 60

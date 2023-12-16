@@ -62,9 +62,6 @@ async function storeActiveUsers() {
                     if(!addresses){
                         addresses = await getAddresses()
                     }
-                    if(addresses.bsc !== undefined){
-                        return; // allium has no support for bsc atm
-                    }
                     const users = await countNewUsers(addresses, start, end)
                     queries.push({users, start, end, id, name, type: "newUsers"})
                 }

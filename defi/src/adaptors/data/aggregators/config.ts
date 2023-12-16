@@ -100,4 +100,8 @@ export default {
     enabled: true,
     id: "127",
   },
+  "yield-yak": {
+    enabled: true,
+    id: "475",
+  },
 } as AdaptorsConfig;

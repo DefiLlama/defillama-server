@@ -96,4 +96,8 @@ export default {
     enabled: true,
     id: "2643",
   },
+  "kyberswap": {
+    enabled: true,
+    id: "127",
+  },
 } as AdaptorsConfig;

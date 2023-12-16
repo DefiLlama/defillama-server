@@ -27182,6 +27182,51 @@ const data3: Protocol[] = [
     parentProtocol: "parent#lyra",
     listedAt: 1702643004
   },
+  {
+    id: "3924",
+    name: "D8X",
+    address: "polygon_zkevm:0xDc28023CCdfbE553643c41A335a4F555Edf937Df",
+    symbol: "D8X",
+    url: "https://d8x.exchange/",
+    description: `D8X is an institutional-grade perpetual futures DEX built to be white-labeled`,
+    chain: "Polygon zkEVM",
+    logo: `${baseIconsUrl}/d8x.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Polygon zkEVM"],
+    oracles: ["Pyth"], // https://d8x.gitbook.io/d8x/contracts/matic-pool
+    forkedFrom: [],
+    module: "d8x/index.js",
+    twitter: "d8x_exchange",
+    audit_links: ["https://d8x.gitbook.io/d8x/audit"],
+    github: ["D8-X"],
+    listedAt: 1702688019
+  },
+  {
+    id: "3925",
+    name: "SingularityNet AGIX Staking",
+    address: "cardano:-",
+    symbol: "AGIX",
+    url: "https://staking.singularitynet.io/howitworks",
+    description: `By staking AGIX tokens, you support the operations of our blockchain network and in doing so you will be rewarded with more AGIX tokens for your contributions`,
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/singularitynet-agix-staking.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Cardano"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "agix-staking/index.js",
+    twitter: "SingularityNET",
+    github: ["singnet"],
+    listedAt: 1702689077
+  },
 ]
 
 export default data3

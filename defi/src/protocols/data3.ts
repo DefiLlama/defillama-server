@@ -27228,6 +27228,28 @@ const data3: Protocol[] = [
     github: ["singnet"],
     listedAt: 1702689077
   },
+  {
+    id: "3926",
+    name: "Accumulated Finance",
+    address: null,
+    symbol: "-",
+    url: "https://accumulated.finance",
+    description: `Accumulated Finance is a multi-chain liquid staking protocol, integrated with Curve Finance`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/accumulated-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum", "Arbitrum", "Velas"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "accumulated-finance/index.js",
+    twitter: "AccumulatedFi",
+    github: ["AccumulatedFinance"],
+    listedAt: 1702741107
+  },
 ]
 
 export default data3

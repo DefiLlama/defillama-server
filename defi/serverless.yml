@@ -761,6 +761,15 @@ functions:
       - http:
           path: userData/{type}/{protocolId}
           method: get
+  storeChainNftVolume:
+    handler: src/storeChainNftVolume.default
+    timeout: 900
+    memorySize: 1000
+    events:
+      - schedule: cron(30 * * * ? *)
+    environment:
+      ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
+      FLIPSIDE_API_KEY: ${env:FLIPSIDE_API_KEY}
   newsArticles:
     handler: src/getNewsArticles.default
     timeout: 30

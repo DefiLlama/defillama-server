@@ -88,7 +88,7 @@ export default {
     enabled: true,
     id: "189",
   },
-  "0x": {
+  "zrx": {
     enabled: true,
     id: "2116",
   },
@@ -103,5 +103,21 @@ export default {
   "yield-yak": {
     enabled: true,
     id: "475",
+  },
+  "bebop": {
+    enabled: true,
+    id: "3927",
+  },
+  "dodo": {
+    enabled: true,
+    id: "146",
+  },
+  "paraswap": {
+    enabled: true,
+    id: "894",
+  },
+  "tokenlon": {
+    enabled: true,
+    id: "405",
   },
 } as AdaptorsConfig;

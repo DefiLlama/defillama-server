@@ -27250,6 +27250,28 @@ const data3: Protocol[] = [
     github: ["AccumulatedFinance"],
     listedAt: 1702741107
   },
+  {
+    id: "3927",
+    name: "Bebop",
+    address: null,
+    symbol: "-",
+    url: "https://bebop.xyz/",
+    description: "Buy or sell, we'll execute it. Seamless and efficient crypto trading for everyone",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bebop.xyz`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum", "Arbitrum", "Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    treasury: null,
+    twitter: "bebop_dex",
+    listedAt: 1702771200,
+  },
 ]
 
 export default data3

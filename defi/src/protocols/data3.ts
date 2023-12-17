@@ -27258,7 +27258,7 @@ const data3: Protocol[] = [
     url: "https://bebop.xyz/",
     description: "Buy or sell, we'll execute it. Seamless and efficient crypto trading for everyone",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bebop.xyz`,
+    logo: `${baseIconsUrl}/bebop.svg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

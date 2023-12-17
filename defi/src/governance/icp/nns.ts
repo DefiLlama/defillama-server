@@ -1,8 +1,9 @@
 import axios from 'axios'
-import { Proposal } from '../types';
+import { GovCache, Proposal } from '../types';
 import { updateStats } from '../utils';
 import { setCompound, getCompound } from '../cache';
 import { update_nervous_system_cache, NervousSystemConfig } from './icp';
+const fs = require('fs');
 
 // Number of decimals that are supported by the governance canister
 export const DECIMALS : number = 1e8;
@@ -82,7 +83,8 @@ export async function get_metadata ()
         // id: "rrkah-fqaaa-aaaaa-aaaaq-cai",
         id: NNS_GOV_ID,
         type: "Network Nervous System",
-        latest_proposal_id,
+        latestProposalId: latest_proposal_id,
+        proposalsCount:latest_proposal_id,
         symbol: "NNS",
         chainName: "Internet Computer",
         name: "Network Nervous System",
@@ -143,14 +145,14 @@ export async function addICPProposals ( overview : any = {} )
         ns_api_url:NNS_API_BASE_URL,
         dashboard_url:DASHBOARD_BASE_URL,
         ledger_url:ICP_LEDGER_API_BASE_URL,
-        latest_proposal_id: cache.metadata.latest_proposal_id,
+        latest_proposal_id: cache.metadata.latestProposalId,
         decimals:DECIMALS,
         convert_proposals:convert_proposal_format,
         proposal_filter:(p:NetworkNervousSystemProposalResponse) => p.topic ? !EXCLUDED_TOPICS.includes( p.topic ) : false,
         excluded_topics:EXCLUDED_TOPICS
     };
     await update_nervous_system_cache( cache as any ,config)
-
+    cache.metadata.proposalsCount = Object.keys(cache.proposals).length
     cache.id = NNS_GOV_ID
     updateStats( cache, overview, cache.id )
     if ( overview[ cache.id ] )

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {Proposal } from '../types';
+import { Proposal } from '../types';
 import { updateStats } from '../utils';
 import { setCompound, getCompound } from '../cache';
 import { update_nervous_system_cache, NervousSystemConfig } from './icp';

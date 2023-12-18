@@ -21,8 +21,10 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "349": "injecitve",
   "801": "celo",
   "1272": "iotex",
+  // "1541": "solana",
   "2081": "wanchain",
   "2214": "kekchain",
+  "2316": "meter",
   "3699": "elysium",
   "3813": "alephium",
   "129": "xdai",
@@ -55,6 +57,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   polygon: { ticker: "MATIC", address: "0x0000000000000000000000000000000000001010" },
   avax: { ticker: "AVAX", address: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7" },
   aurora: { ticker: "AURORA", address: "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79" },
+  // solana: { ticker: "SOL", address: "" },
 };
 
 export const gasTokens: { [chain: Chain]: string } = {

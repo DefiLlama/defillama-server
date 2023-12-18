@@ -25,11 +25,13 @@ export default async function fetchBridgeUsdTokenTvls(
     )
   );
 
-  const missingProtocolTvlsLength = bridgeProtocols.length - usdTokenBalances.length;
-  if (missingProtocolTvlsLength)
-    throw new Error(
-      `missing hourlyUsdTokensTvl for ${missingProtocolTvlsLength} ${isProtocol ? "protocol" : "bridge"}s`
-    );
+  let missingIds: string = ``;
+  usdTokenBalances.map((b: any, i: number) => {
+    if (!b.SK) missingIds += ` ${canonicalIds[i]},`;
+  });
+
+  if (missingIds.length)
+    throw new Error(`missing hourlyUsdTokensTvl for ${isProtocol ? "protocol" : "bridge"} IDs: ${missingIds}`);
 
   return usdTokenBalances;
 }

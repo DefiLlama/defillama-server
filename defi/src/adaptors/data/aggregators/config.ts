@@ -24,10 +24,10 @@ export default {
     enabled: true,
     id: "2420",
   },
-  "dforce": {
-    enabled: true,
-    id: "123",
-  },
+  // "dforce": {
+  //   enabled: true,
+  //   id: "123",
+  // },
   "plexus": {
     enabled: true,
     id: "2740",
@@ -76,10 +76,10 @@ export default {
     enabled: false,
     id: "3847",
   },
-  "openocean": {
-    enabled: true,
-    id: "533",
-  },
+  // "openocean": {
+  //   enabled: false,
+  //   id: "533",
+  // },
   "arcane-dex": {
     enabled: true,
     id: "3885",

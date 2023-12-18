@@ -20162,11 +20162,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-<<<<<<< Updated upstream
     chains: ["Arbitrum", "Optimism", "Ethereum", "Polygon", "xDai", "Base"],
-=======
-    chains: ["Arbitrum", "Optimism", "Ethereum", "Polygon"],
->>>>>>> Stashed changes
     module: "contango-v2/index.js",
     twitter: "Contango_xyz",
     forkedFrom: [],

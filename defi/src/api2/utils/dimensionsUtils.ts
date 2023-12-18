@@ -6,9 +6,10 @@ import { DEFAULT_CHART_BY_ADAPTOR_TYPE, getOverviewProcess } from "../../adaptor
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import * as HyperExpress from "hyper-express";
-import { successResponse } from "../routes/utils";
+import { errorResponse, successResponse } from "../routes/utils";
 import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
+import { getProtocolDataHandler } from "../../adaptors/handlers/getProtocol";
 
 export function getAdapterCacheKey(adaptor: ProtocolAdaptor, type: AdaptorRecordType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL") {
   return `${adaptor.id}-${type}-${mode}`
@@ -33,16 +34,26 @@ export async function getAdaptorRecord2({ adapter, type, mode = 'ALL', adaptorTy
   return (await cache.feesAdapterCache[fileKey])[cacheKey]
 }
 
-
-
 export async function getOverviewHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
   const eventParameters = getEventParameters(req)
   const key = `overview-${eventParameters.adaptorType}`
   console.time(key)
   const data = await getOverviewProcess(eventParameters)
   console.timeEnd(key)
-  return successResponse(res, data, 30 * 60);
+  return successResponse(res, data, 60);
 }
+
+
+export async function getDimensionProtocolHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const protocolName = req.path_parameters.name?.toLowerCase() 
+  const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
+  const rawDataType = req.query_parameters?.dataType
+  const data = await getProtocolDataHandler(protocolName, adaptorType, rawDataType)
+  if (data) return successResponse(res, data, 6 * 60);
+
+  return errorResponse(res, `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`)
+}
+
 
 function getEventParameters(req: HyperExpress.Request) {
   const pathChain = req.path_parameters.chain?.toLowerCase()

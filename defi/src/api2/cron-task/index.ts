@@ -63,8 +63,8 @@ async function run() {
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
-  // await writeRaises()
-  // await writeHacks()
+  // await writeRaises() // moved to different cron task
+  // await writeHacks()  // moved to different cron task
 
   // Commenting this out as it takes long time to run, will be served from rest api instead
   // await writeProtocolRoute()

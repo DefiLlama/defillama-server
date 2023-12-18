@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 import * as HyperExpress from "hyper-express";
 import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
 import { readRouteData, readFromPGCache, deleteFromPGCache, } from "../cache/file-cache";
@@ -17,7 +18,18 @@ import { getFormattedChains } from "../../getFormattedChains";
 import { getR2 } from "../../utils/r2";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
-import { getOverviewHandler } from "../utils/dimensionsUtils";
+import { getDimensionProtocolHandler, getOverviewHandler } from "../utils/dimensionsUtils";
+import { getProtocolUsersHandler } from "../../getProtocolUsers";
+import { getActiveUsers } from "../../getActiveUsers";
+import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
+import { getSwapTotalVolume } from "../../dexAggregators/db/getSwapTotalVolume";
+import { getHistory } from "../../dexAggregators/db/getHistory";
+import { getLatestSwap } from "../../dexAggregators/db/getLatestSwap";
+import { getPermitBlackList } from "../../dexAggregators/db/getPermitBlackList";
+import { historicalLiquidity } from "../../getHistoricalLiquidity";
+import { saveEvent } from "../../dexAggregators/db/saveEvent";
+import { reportError } from "../../reportError";
+import { saveBlacklistPemrit } from "../../dexAggregators/db/saveBlacklistPemrit";
 
 export default function setRoutes(router: HyperExpress.Router, routerBasePath: string) {
   // todo add logging middleware to all routes
@@ -74,6 +86,22 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
   router.get("/overview/:type", ew(getOverviewHandler))
   router.get("/overview/:type/:chain", ew(getOverviewHandler))
+  router.get("/summary/:type/:name", ew(getDimensionProtocolHandler))
+
+  router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
+
+  router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set
+  router.get("/activeUsers", ew(getActiveUsersHandler)) // TODO: ensure that env vars are set
+
+  router.post("/reportError", ew(reportErrorHandler)) // TODO: ensure that env vars are set
+  router.post("/storeAggregatorEvent", ew(storeAggregatorEventHandler)) // TODO: ensure that env vars are set
+  router.get("/getSwapDailyVolume", ew(getSwapDailyVolumeHandler)) // TODO: ensure that env vars are set
+  router.get("/getSwapTotalVolume", ew(getSwapTotalVolumeHandler)) // TODO: ensure that env vars are set
+  router.get("/getSwapsHistory", ew(getSwapsHistoryHandler)) // TODO: ensure that env vars are set
+  router.get("/getLatestSwap", ew(getLatestSwapHandler)) // TODO: ensure that env vars are set
+  router.get("/getBlackListedTokens", ew(getBlackListedTokensHandler)) // TODO: ensure that env vars are set
+  router.post("/storeBlacklistPermit", ew(storeBlacklistPermitHandler)) // TODO: ensure that env vars are set
+  router.post("/historicalLiquidity/:token", ew(getHistoricalLiquidityHandler)) // TODO: ensure that env vars are set
 
 
 
@@ -345,4 +373,89 @@ async function getHistoricalChainTvlData(req: HyperExpress.Request, res: HyperEx
   } catch (e) {
     return errorResponse(res, 'There is no chain with that name')
   }
+}
+
+async function getProtocolUsers(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const { protocolId, type } = req.path_parameters
+  const data = await getProtocolUsersHandler(protocolId, type)
+  return successResponse(res, data, 60)
+}
+
+async function getActiveUsersHandler(_req: HyperExpress.Request, res: HyperExpress.Response) {
+  const data = await getActiveUsers()
+  return successResponse(res, data, 60)
+}
+
+async function getSwapDailyVolumeHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const { timestamp, chain } = req.query_parameters
+  let volume = {}
+  if (timestamp && chain)
+    volume = await getSwapDailyVolume(timestamp, chain)
+  return successResponse(res, volume, 1 / 6)
+}
+
+async function getSwapTotalVolumeHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const { timestamp, chain } = req.query_parameters
+  let volume = {}
+  if (timestamp && chain)
+    volume = await getSwapTotalVolume(timestamp, chain)
+  return successResponse(res, volume, 1 / 6)
+}
+
+async function getSwapsHistoryHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const { userId, chain } = req.query_parameters
+  let data = {}
+  if (userId && chain)
+    data = await getHistory(userId, chain)
+  return successResponse(res, data, 1 / 6)
+} 
+
+async function getLatestSwapHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const { tokenA, tokenB } = req.query_parameters
+  let data
+  if (tokenA && tokenB)
+    data = await getLatestSwap(tokenA, tokenB)
+  return successResponse(res, data ?? {}, 1 / 6)
+}
+
+async function getBlackListedTokensHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const { chain } = req.query_parameters
+  let data = {}
+  if (chain)
+    data = await getPermitBlackList(chain)
+  return successResponse(res, data, 1 / 6)
+}
+
+async function getHistoricalLiquidityHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  let { token } = req.path_parameters
+  token = token?.toLowerCase()?.replace("$", "#")
+  if (!token) return errorResponse(res, 'Token not found')
+  const protocolsLiquidity = (await fetch(`https://defillama-datasets.llama.fi/liquidity.json`).then(r=>r.json())).find((p:any)=>p.id===token)
+
+  if(!protocolsLiquidity?.tokenPools?.length || protocolsLiquidity?.tokenPools?.length === 0)
+    return errorResponse(res, "No liquidity info available")
+    
+  const liquidity = await historicalLiquidity(protocolsLiquidity!.tokenPools)
+  return successResponse(res, liquidity, 60)
+}
+
+async function storeAggregatorEventHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
+  
+  const swapEvent = await saveEvent(body);
+  return successResponse(res, swapEvent, undefined, { isPost: true })
+}
+
+async function storeBlacklistPermitHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
+  
+  const data = await saveBlacklistPemrit(body);
+  return successResponse(res, data, 1/6)
+}
+
+async function reportErrorHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
+  
+  await reportError(body);
+  return successResponse(res, {message: "success"}, undefined, { isPost: true })
 }

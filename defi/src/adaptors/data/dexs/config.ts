@@ -884,6 +884,7 @@ export default {
         "id": "707"
     },
     "unicly": {
+        disabled: true,
         "enabled": true,
         "id": "324"
     },

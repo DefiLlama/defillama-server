@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import { wrap, IResponse, cache20MinResponse, errorResponse } from "./utils/shared";
 import { getTimestampAtStartOfDay } from "./utils/date";
 
-async function historicalLiquidity(tokenPools:any[]){
+export async function historicalLiquidity(tokenPools:any[]){
     const historicalPoolInfo = await Promise.all(tokenPools.map(p=>fetch(`https://yields.llama.fi/chart/${p.pool}`).then(r=>r.json()).catch(e=>{
         console.error(`Failed to get pool ${p.pool}`, e)
         return {data:[]}

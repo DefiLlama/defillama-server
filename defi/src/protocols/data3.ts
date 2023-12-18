@@ -27337,6 +27337,29 @@ const data3: Protocol[] = [
     twitter: "Goose Finance",
     listedAt: 1702903750
   },
+  {
+    id: "3931",
+    name: "Symmetry Trade",
+    address: null,
+    symbol: "-",
+    url: "https://symmetry.trade",
+    description: "Decentralized Derivatives Exchange.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/symmetry-trade.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Scroll"],
+    oracles: ["Chainlink", "Pyth"],
+    forkedFrom: [],
+    module: "symmetry-trade/index.js",
+    twitter: "SymmetryDEX",
+    audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-Symmetry-v1.0.pdf"],
+    github: ["symmetrytrade"],
+    listedAt: 1702912934
+  },
 ]
 
 export default data3

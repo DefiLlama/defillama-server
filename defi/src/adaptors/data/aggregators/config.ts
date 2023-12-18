@@ -108,7 +108,7 @@ export default {
     enabled: true,
     id: "3927",
   },
-  "dodo": {
+  "dodo-agg": {
     enabled: true,
     id: "146",
   },
@@ -116,7 +116,7 @@ export default {
     enabled: true,
     id: "894",
   },
-  "tokenlon": {
+  "tokenlon-agg": {
     enabled: true,
     id: "405",
   },

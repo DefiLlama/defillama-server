@@ -8,7 +8,7 @@ module.exports = {
       listen_timeout: 120000, // Wait 60 seconds for the app to start
       kill_timeout: 120000, // Wait 60 seconds for the app to start
       wait_ready: true, // Wait for the 'ready' signal
-      instances: 3,
+      instances: 2,
       exec_mode: 'cluster', // Start in cluster mode
     },
   ],

@@ -1641,5 +1641,10 @@ export default {
     "pharaoh-exchange": {
         "enabled": true,
         "id": "3921"
+    },
+    "metavault-derivatives-v2": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3911"
     }
 } as AdaptorsConfig

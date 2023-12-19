@@ -72,5 +72,10 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "dopex": {
+        parentId: "Dopex",
+        "enabled": true,
+        "id": "3817"
     }
 } as AdaptorsConfig

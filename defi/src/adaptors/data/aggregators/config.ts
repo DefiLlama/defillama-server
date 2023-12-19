@@ -84,7 +84,7 @@ export default {
     enabled: true,
     id: "3885",
   },
-  "1inch": {
+  "1inch-agg": {
     enabled: true,
     id: "189",
   },

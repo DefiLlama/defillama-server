@@ -1646,5 +1646,16 @@ export default {
         parentId: "Metavault",
         "enabled": true,
         "id": "3911"
+    },
+    "dopex": {
+        parentId: "Dopex",
+        "enabled": true,
+        "id": "3817",
+        protocolsData: {
+            "clamm": {
+                "id": "3817",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

@@ -27410,6 +27410,30 @@ const data3: Protocol[] = [
     github: ["Renzo-Protocol"],
     listedAt: 1702962127
   },
+  {
+    id: "3934",
+    name: "StackingDAO",
+    address: null,
+    symbol: "-",
+    assetToken: "stSTX",
+    url: "https://app.stackingdao.com",
+    description: "Start stacking STX, review your existing STX locked in PoX, and unstack at any time, for the best price.",
+    chain: "Stacks",
+    logo: `${baseIconsUrl}/stackingdao.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Stacks"],
+    oracles: [],
+    forkedFrom: [],
+    module: "stackingdao/index.js",
+    twitter: "StackingDao",
+    github: ["StackingDAO"],
+    audit_links: ["https://github.com/StackingDAO/app/blob/master/Audit-2023-11.pdf"],
+    listedAt: 1702999258
+  },
 ]
 
 export default data3

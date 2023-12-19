@@ -77,7 +77,13 @@ export default {
     "dopex": {
         parentId: "Dopex",
         "enabled": true,
-        "id": "3817"
+        "id": "3817",
+        protocolsData: {
+            "clamm": {
+                "id": "3817",
+                "enabled": true,
+            }
+        }
     },
     "lyra-v2": {
         parentId: "Lyra",

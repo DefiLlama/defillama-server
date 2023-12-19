@@ -27511,7 +27511,7 @@ const data3: Protocol[] = [
     gecko_id: "unitus-2",
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Arbitrum", "Kava", "Conflux"],
+    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Arbitrum", "Conflux"],
     oraclesByChain: {
       conflux: ["Pyth"],
     },

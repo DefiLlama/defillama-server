@@ -521,5 +521,10 @@ export default {
         parentId: "SynFutures",
         "enabled": true,
         "id": "3061"
+    },
+    "metavault-derivatives-v2": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3911"
     }
 } as AdaptorsConfig

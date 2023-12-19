@@ -25447,7 +25447,7 @@ const data2: Protocol[] = [
     name: "BitVenus",
     address: null,
     symbol: "-",
-    url: "https://www.bitvenus.me",
+    url: "https://www.bitvenus.com",
     description:
       "BitVenus (BV for short) is a well-known digital asset trading platform in Europe, supporting hundreds of digital asset transactions. Officially established in London County, England in June 2018",
     chain: "Ethereum",
@@ -25459,7 +25459,7 @@ const data2: Protocol[] = [
     category: "CEX",
     chains: ["Ethereum", "Binance", "Bitcoin"],
     module: "bitvenus/index.js",
-    twitter: "bit_venus",
+    twitter: "bitvenus_global",
     oracles: [],
     forkedFrom: [],
     listedAt: 1675767017

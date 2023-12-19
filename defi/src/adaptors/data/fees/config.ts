@@ -1637,5 +1637,9 @@ export default {
     "butterxyz": {
         "enabled": true,
         "id": "3918"
+    },
+    "pharaoh-exchange": {
+        "enabled": true,
+        "id": "3921"
     }
 } as AdaptorsConfig

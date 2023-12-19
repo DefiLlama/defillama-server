@@ -23712,14 +23712,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1217",
-    name: "Parallel Liquid Crowdloan",
+    name: "Parallel Polkadot Crowdloan",
     address: null,
     symbol: "-",
     url: "https://parallel.fi",
     description:
       "Parallel Finance is a Decentralized Money Market Protocol that offers lending, staking, and borrowing in the Polkadot ecosystem. Depositors can lend and stake simultaneously to earn double yield on their staked coins, and borrowers can collateralize to borrow.",
     chain: "Parallel",
-    logo: `${baseIconsUrl}/parallel-defi-super-app.jpg`,
+    logo: `${baseIconsUrl}/parallel-super-app.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

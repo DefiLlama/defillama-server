@@ -104,7 +104,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:apeswap-finance.eth"],
     github: ["ApeSwapFinance"],
   },
-  {
+  /*{
     id: "parent#parallel-deFi-super-app",
     name: "Parallel DeFi Super App",
     url: "https://parallel.fi",
@@ -115,7 +115,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "12887",
     chains: [],
     twitter: "ParallelFi",
-  },
+  },*/
   {
     id: "parent#value-finance",
     name: "Value Finance",
@@ -1174,14 +1174,14 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#parax",
-    name: "ParaX Super App",
+    name: "Parallel Super App",
     url: "https://parax.ai",
-    description: "ParaX is an upgrade from ParaSpace. ParaX is an everything app for web3 application, aiming to provide a simpler DeFi experience for 1 billion users. ParaX is powered by account abstraction, making the DeFi experience more efficient, cheaper and safer.",
-    logo: `${baseIconsUrl}/parax.png`,
+    description: "The Parallel Super App, deployed on the universal Layer 2 solution, Parallel, stands as an integrated platform merging Parallel Finance and ParaX products into a user-centric space. Offering a comprehensive range of DeFi functionalities spanning yield generation, lending, staking, trading, and more across diverse blockchain networks, the app confronts existing DeFi challenges. Leveraging Parallel's versatile Layer 2 infrastructure, it delivers benefits like gasless transactions, rapid processing, heightened security, and a seamless DeFi encounter. As an all-in-one solution, the app enables cross-margin NFT lending, staking, trading, and user-friendly features within its interface",
+    logo: `${baseIconsUrl}/parallel-super-app.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "ParaSpace_NFT",
+    twitter: "ParallelFi",
     github: ["para-space"]
   },
   {

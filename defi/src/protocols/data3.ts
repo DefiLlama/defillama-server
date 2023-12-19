@@ -25736,7 +25736,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://amulet.org",
-    description: "Amulet Protocol is a RiskFi protocol, blending high-quality yield strategies with robust security. It provides a direct avenue for safety and assurance to Web3 users by seamlessly integrating its yield vaults with top yield-generating protocols.",
+    description: "Amulet Protocol is the first yield protocol with built-in protection. It provides safe yields by combining yield and protection in one user-friendly Web3 platform. Users are able to earn from a variety of integrated yield strategies that are being protected automatically upon deposit.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/amulet-v2.jpg`,
     audits: "0",

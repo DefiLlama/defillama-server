@@ -17450,7 +17450,7 @@ const data2: Protocol[] = [
     name: "Amulet V1",
     address: null,
     symbol: "-",
-    url: "https://appv1.amulet.org/",
+    url: "https://solana.amulet.org/",
     description: "Amulet V1 (Amulet) is a decentralized risk protection protocol (RPP) built for Rust-based ecosystems, starting with the Solana blockchain. Amulet has designed an innovative and open risk protection model which not only effectively addresses the common challenges of existing decentralized RPPs, but also creates a new paradigm shift for the whole risk protection sector. Amulet's vision is to offer Simple, Reliable Cover for everyone in Web3",
     chain: "Solana",
     logo: `${baseIconsUrl}/amulet-protocol.png`,

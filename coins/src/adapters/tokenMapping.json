@@ -6,7 +6,7 @@
       "to": "coingecko#binancecoin"
     },
     "0x9a5502414b5d51d01c8b5641db7436d789fa15a245694b24aa37c25c2a6ce001::scb::SCB": {
-      "decimals": "18",
+      "decimals": "5",
       "symbol": "SCB",
       "to": "coingecko#sacabam"
     }

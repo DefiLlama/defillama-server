@@ -2263,5 +2263,19 @@ export default {
     "pharaoh-exchange": {
         "enabled": true,
         "id": "3921"
+    },
+    "swaap": {
+        "enabled": true,
+        "id": "2104",
+        protocolsData: {
+            "v1": {
+                "id": "2104",
+                "enabled": true,
+            },
+            "v2": {
+                "id": "3218",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

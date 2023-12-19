@@ -166,4 +166,18 @@ export default [
         },
         lastUpdate: "2023-05-06"
     },
+    {
+        protocolId: "parent#sphere", // 
+        sources: ["https://www.sphere.finance/treasury-report"],
+        //headcount: 12, not sure, confirm this
+        annualUsdCost: {
+            staffPayroll: 319610,
+            operationalCosts: 43000,
+            subscriptionsServices: 600,
+            additionalMarketing: 49795,
+            ylSPHEREDispersments: 134331
+        },
+        notes: ["Using data from Q3 2023"],
+        lastUpdate: "2023-12-19"
+    },
 ]

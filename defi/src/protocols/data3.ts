@@ -16668,7 +16668,7 @@ const data3: Protocol[] = [
     description:
       "Parallel Lending is a decentralized lending protocol enabling users to borrow and lend using both Non-Fungible Tokens (NFTs) and Fungible Tokens (FTs). It offers the ability to leverage untapped capital for additional investments while generating yields. Notably, Parallel stands out as the pioneer in cross-margin NFT Finance, allowing users to borrow and lend ERC-721 and ERC-20 tokens within a unified account and credit line. This protocol empowers asset holders to access liquidity and earn yields effortlessly across their entire asset portfolio, offering a user-friendly yet robust solution",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/parallel-super-app.jpg`,
+    logo: `${baseIconsUrl}/parallel-super-app.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -16691,7 +16691,7 @@ const data3: Protocol[] = [
     url: "https://app.parallel.fi/ethereum/apps/paraspace/ape-staking",
     description: "Parallel Staking introduces an innovative approach for users to optimize their ApeCoin staking. By enabling simultaneous staking and borrowing against NFTs like Bored Ape Yacht Club, Mutant Ape Yacht Club, and Bored Ape Kennel Club, it addresses the challenge faced by holders lacking sufficient ApeCoin or NFTs for maximum yields. Parallel resolves this by allowing NFT staking and borrowing ApeCoin against them, facilitating auto-compounding of rewards, and offering Peer-to-Peer staking options. Through this, both NFT and ApeCoin holders can secure fixed shares of auto-compounded rewards, enhancing their staking experience and returns",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/parallel-super-app.jpg`,
+    logo: `${baseIconsUrl}/parallel-super-app.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

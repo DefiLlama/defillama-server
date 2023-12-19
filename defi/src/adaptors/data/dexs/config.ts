@@ -2277,5 +2277,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "phoenix": {
+        "enabled": true,
+        "id": "3170"
     }
 } as AdaptorsConfig

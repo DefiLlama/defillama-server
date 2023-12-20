@@ -11,7 +11,6 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3778": "nova",
   "3780": "base",
   "3781": "linea",
-  // "3783": "metis", // commented out until we get a native bridge token mapping
   "3784": "optimism",
   "3785": "polygon_zkevm",
   "3786": "scroll",
@@ -21,7 +20,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "349": "injecitve",
   "801": "celo",
   "1272": "iotex",
-  // "1541": "solana",
+  // "1541": "solana", // wip
   "2081": "wanchain",
   "2214": "kekchain",
   "2316": "meter",
@@ -30,8 +29,11 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "129": "xdai",
   "240": "polygon",
   "3779": "avax",
+  // "3783": "metis", // pending canonical token mapping
   "3866": "aurora",
   "3861": "rsk",
+  "3936": "zksync",
+  "3935": "boba",
 };
 export const protocolBridgeIds: { [chain: string]: Chain } = {
   "144": "dydx",
@@ -57,6 +59,8 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   polygon: { ticker: "MATIC", address: "0x0000000000000000000000000000000000001010" },
   avax: { ticker: "AVAX", address: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7" },
   aurora: { ticker: "AURORA", address: "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79" },
+  loopring: { ticker: "LRC", address: "0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD" },
+  immutablex: { ticker: "IMX", address: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff" },
   // solana: { ticker: "SOL", address: "" },
 };
 

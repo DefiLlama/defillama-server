@@ -30,7 +30,7 @@ export default async function fetchBridgeUsdTokenTvls(
     if (!b.SK) missingIds += ` ${canonicalIds[i]},`;
   });
 
-  if (missingIds.length)
+  if (isCanonical && missingIds.length)
     throw new Error(`missing hourlyUsdTokensTvl for ${isProtocol ? "protocol" : "bridge"} IDs: ${missingIds}`);
 
   return usdTokenBalances;
@@ -72,6 +72,11 @@ function sortCanonicalBridgeBalances(
     Object.keys(data.tvl).map((s: string) => {
       bigNumberBalances[s] = BigNumber(data.tvl[s]);
     });
+    if (data.staking) {
+      Object.keys(data.staking).map((s: string) => {
+        bigNumberBalances[s] = BigNumber(data.staking[s]);
+      });
+    }
 
     canonicalBridgeTokenBalances[ids[id]] = bigNumberBalances;
   });

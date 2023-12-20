@@ -2,7 +2,7 @@ import { fetchTvls } from "./outgoing";
 import { fetchIncoming } from "./incoming";
 import { fetchMinted } from "./native";
 import { fetchMetadata } from "./metadata";
-import { ChainData, DollarValues, FinalData, TokenTvlData } from "./types";
+import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
 import { gasTokens, ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
@@ -20,33 +20,21 @@ export default async function main() {
   const incoming = await fetchIncoming({ canonical });
   const { data: protocols } = await fetchTvls({ isCanonical: true, isProtocol: true });
   // const metadata = await Promise.all(Object.keys(canonical).map((chain: string) => fetchMetadata(chain)));
+  Object.keys(protocols).map((pid: string) => {
+    canonical[pid] = protocols[pid];
+  });
+
   const chains = await translateToChainData({
     canonical,
     incoming,
     outgoing,
     native,
     ownTokens: {},
-    // metadata,
-  });
-
-  return translateProtocols(chains, protocols);
-}
-
-function translateProtocols(chains: FinalData, protocols: TokenTvlData): FinalData {
-  Object.keys(protocols).map((pid: string) => {
-    const total = Object.values(protocols[pid]).reduce((p: any, c: any) => c.plus(p), zero);
-    const canonical = { total, breakdown: protocols[pid] };
-    chains[pid] = {
-      canonical,
-      native: {},
-      thirdParty: {},
-      ownTokens: {}, // this should be staking TVL
-      total: canonical,
-    };
   });
 
   return chains;
 }
+
 async function translateToChainData(
   data: ChainData,
   timestamp: number = getCurrentUnixTimestamp()
@@ -69,6 +57,7 @@ async function translateToChainData(
   function aggregateNativeTokens() {
     tokenFlowCategories.map((key: keyof ChainData) => {
       selectedChains.map((chain: Chain) => {
+        if (!(chain in data[key])) return;
         Object.keys(data[key][chain]).map((symbol: string) => {
           if (!nativeTokenSymbols.includes(symbol)) return;
           if (!(symbol in nativeTokenTotalValues)) nativeTokenTotalValues[symbol] = zero;
@@ -81,6 +70,7 @@ async function translateToChainData(
   async function processProperty(data: ChainData, key: keyof ChainData) {
     await Promise.all(
       selectedChains.map(async (chain: Chain) => {
+        if (!(chain in data[key])) return;
         if (!(chain in translatedData)) translatedData[chain] = {};
         if (!data[key] || !data[key][chain]) translatedData[chain][key] = { total: zero, breakdown: {} };
         if (chain in ownTokens && ownTokens[chain].ticker in data[key][chain]) await processOwnTokens(data, key, chain);
@@ -110,6 +100,7 @@ async function translateToChainData(
   function combineThirdPartyFlows() {
     Object.keys(translatedData).map((chain: Chain) => {
       const breakdown: { [symbol: string]: BigNumber } = {};
+      if (!("incoming" in translatedData[chain])) return;
       Object.keys(translatedData[chain].incoming.breakdown).map((symbol: string) => {
         if (gasTokens[chain] && [gasTokens[chain], `W${gasTokens[chain]}`].includes(symbol)) {
           return;

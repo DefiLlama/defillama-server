@@ -68,7 +68,15 @@ async function initializeTVLCacheDB({
     }
     if (isApi2Server)
       dbOptions.pool = {
-        max: 10,
+        max: 5,
+        min: 0,
+        idle: 5000,
+        acquire: 30000, // increase this if your queries take a long time to run
+        evict: 1000, // how often to run eviction checks
+      }
+    else 
+      dbOptions.pool = {
+        max: 5,
         min: 0,
         idle: 5000,
         acquire: 30000, // increase this if your queries take a long time to run

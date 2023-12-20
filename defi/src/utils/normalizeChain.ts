@@ -2092,6 +2092,12 @@ export const chainCoingeckoIds = {
     github: null,
     categories: ["EVM"],
   },
+  "Sommelier": {
+    geckoId: "sommelier",
+    symbol: "SOMM",
+    cmcId: "18248",
+    categories: ["Cosmos"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2608,6 +2614,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Newton"
     case "jbc":
       return "JBC"
+    case "sommelier":
+      return "Sommelier"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

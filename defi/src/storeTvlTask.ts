@@ -149,7 +149,7 @@ async function filterProtocol(adapterModule: any, protocol: any) {
     return true
 
   const HOUR = 60 * 60
-  const MIN_WAIT_TIME = 0.75 * HOUR // 45 minutes - ideal wait time because we run every 30 minutes
+  const MIN_WAIT_TIME = 1.01 * HOUR // 45 minutes - ideal wait time because we run every 30 minutes
   const currentTime = Math.round(Date.now() / 1000)
   const timeDiff = currentTime - lastRecord.SK
   const highestRecentTvl = getMax(lastRecord)

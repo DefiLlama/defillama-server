@@ -70,20 +70,22 @@ async function storeCoinData(coinData: any[]) {
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60);
+    // await batchWrite2(writes2, false, 5 * 60);
   } catch (e) {
     console.error(e);
   }
   return batchWrite(
-    coinData.map((c) => ({
-      PK: c.PK,
-      SK: 0,
-      price: c.price,
-      mcap: c.mcap,
-      timestamp: c.timestamp,
-      symbol: c.symbol,
-      confidence: c.confidence,
-    })).filter((c: any) => c.symbol != null),
+    coinData
+      .map((c) => ({
+        PK: c.PK,
+        SK: 0,
+        price: c.price,
+        mcap: c.mcap,
+        timestamp: c.timestamp,
+        symbol: c.symbol,
+        confidence: c.confidence,
+      }))
+      .filter((c: any) => c.symbol != null),
     false,
   );
 }
@@ -101,7 +103,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60);
+    // await batchWrite2(writes2, false, 5 * 60);
   } catch (e) {
     console.error(e);
   }
@@ -331,7 +333,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 
   if (writes2.length == 0) return;
   try {
-    await batchWrite2(writes2.filter((c: Coin) => c.symbol != null), false);
+    // await batchWrite2(writes2.filter((c: Coin) => c.symbol != null), false);
   } catch (e) {
     console.error(e);
   }
@@ -406,7 +408,7 @@ async function getAndStoreHourly(
 
   const step = 10000;
   for (let i = 0; i < writes.length; i += step) {
-    await batchWrite2(writes.slice(i, i + step), false);
+    // await batchWrite2(writes.slice(i, i + step), false);
   }
 }
 

@@ -384,6 +384,18 @@
       "symbol": "USDT"
     }
   },
+  "solana": {
+    "i7u4r16TcsJTgq1kAG8opmVZyVnAKBwLKu6ZPMwzxNc": {
+      "decimals": "6",
+      "symbol": "OUSG",
+      "to": "coingecko#ousg"
+    },
+    "A1KLoBrKBde8Ty9qtNQUtq3C2ortoC3u7twggz7sEto6": {
+      "decimals": "6",
+      "symbol": "USDY",
+      "to": "coingecko#ondo-us-dollar-yield"
+    }
+  },
   "ton": {
     "EQBq4d4GPyBoh-Pjnf3wxUyQSS28WY2Yt-7cPAG8FHpWpNRX": {
       "to": "coingecko#matic-network", "decimals": "18",

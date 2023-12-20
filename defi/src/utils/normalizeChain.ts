@@ -15,7 +15,8 @@ export const normalizedChainReplacements = {
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
   "bifrost network": "bfc",
-  "horizen eon": "eon"
+  "horizen eon": "eon",
+  "bahamut": "ftn"
 } as {
   [chain: string]: string
 }
@@ -2098,7 +2099,7 @@ export const chainCoingeckoIds = {
     cmcId: "18248",
     categories: ["Cosmos"],
   },
-  "FTN": {
+  "Bahamut": {
     geckoId: "fasttoken",
     symbol: "FTN",
     cmcId: "22615",
@@ -2503,6 +2504,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "zkSync Era"
     case "bfc":
       return "Bifrost Network"
+    case "ftn":
+      return "Bahamut"
     case "polygon_zkevm":
       return "Polygon zkEVM"
     case "meta":
@@ -2623,8 +2626,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "JBC"
     case "sommelier":
       return "Sommelier"
-    case "ftn":
-      return "FTN"
+    case "bahamut":
+      return "Bahamut"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

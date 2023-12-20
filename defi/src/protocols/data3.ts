@@ -27610,6 +27610,54 @@ const data3: Protocol[] = [
     github: ["BitStable-Finance"],
     listedAt: 1703093713
   },
+  {
+    id: "3943",
+    name: "Lolik Liquid Staking",
+    address: null,
+    symbol: "-",
+    assetToken: "STFTN",
+    url: "http://www.lolik.com",
+    description:
+      "Lolik is a decentralized liquid staking platform that supports staking on leading EVM blockchains including Ethereum, Polygon, and Bahamut. Anyone can participate in the staking process with their web3 wallet (e.g. MetaMask) directly through the platform, and earn daily rewards.",
+    chain: "FTN",
+    logo: `${baseIconsUrl}/lolik-liquid-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["FTN"],
+    oracles: [],
+    forkedFrom: ["Lido"],
+    module: "lolik/index.js",
+    twitter: null,
+    github: ["loliklabs"],
+    listedAt: 1703094857
+  },
+  {
+    id: "3944",
+    name: "Allbridge Core",
+    address: null,
+    symbol: "-",
+    url: "https://core.allbridge.io",
+    description:
+      "Allbridge Core enables the transfer of value between blockchains by offering cross-chain swaps of native stablecoins. Being messaging protocol agnostic, Allbridge Core connects a variety of EVM and non-EVM networks.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/allbridge-core.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Solana", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "allbridge-core/index.js",
+    twitter: "Allbridge_io",
+    audit_links: ["https://kudelskisecurity.com/wp-content/uploads/Stable-Bridge-Secure-Code-Review-v3.1-public-redacted-1.pdf"],
+    github: ["allbridge-io"],
+    listedAt: 1703094865
+  },
 ]
 
 export default data3

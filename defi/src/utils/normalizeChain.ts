@@ -2098,6 +2098,13 @@ export const chainCoingeckoIds = {
     cmcId: "18248",
     categories: ["Cosmos"],
   },
+  "FTN": {
+    geckoId: "fasttoken",
+    symbol: "FTN",
+    cmcId: "22615",
+    categories: ["EVM"],
+    github: ["fastexlabs"]
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2616,6 +2623,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "JBC"
     case "sommelier":
       return "Sommelier"
+    case "ftn":
+      return "FTN"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

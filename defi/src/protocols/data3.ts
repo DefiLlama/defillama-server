@@ -27522,7 +27522,7 @@ const data3: Protocol[] = [
     github: ["UnitusLabs"],
     listedAt: 1703014661
   },
-  {
+  /*{
     id: "3939",
     name: "Phoenix",
     address: null,
@@ -27541,7 +27541,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "PhoenixTrade",
     listedAt: 1703042291
-  },
+  },*/
 ]
 
 export default data3

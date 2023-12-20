@@ -10501,7 +10501,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3170",
-    name: "Phoenix Trade", // previous name: "Ellipsis Labs", 
+    name: "Phoenix", // previous name: "Ellipsis Labs", 
     address: null,
     symbol: "-",
     url: "https://phoenix.trade",

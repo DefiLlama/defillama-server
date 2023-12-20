@@ -21042,14 +21042,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2317",
-    name: "Archly Finance",
+    name: "Archly V1",
     address: "telos:0xa84df7aFbcbCC1106834a5feD9453bd1219B1fb5",
     symbol: "ARC",
     url: "https://archly.fi",
     description:
       "Archly Finance is a liquidity solution for protocols on a wide range of EVM chains to properly incentivize liquidity for their own use cases.",
     chain: "Telos",
-    logo: `${baseIconsUrl}/archly-finance.png`,
+    logo: `${baseIconsUrl}/archly-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -21060,6 +21060,7 @@ const data2: Protocol[] = [
     twitter: "ArchlyFinance",
     forkedFrom: ["Solidly"],
     oracles: [],
+    parentProtocol: "parent#archly-finance",
     listedAt: 1669728918
   },
   {

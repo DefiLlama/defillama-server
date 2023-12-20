@@ -27542,6 +27542,29 @@ const data3: Protocol[] = [
     twitter: "PhoenixTrade",
     listedAt: 1703042291
   },*/
+  {
+    id: "3940",
+    name: "Archly V2",
+    address: "telos:0xa84df7aFbcbCC1106834a5feD9453bd1219B1fb5",
+    symbol: "ARC",
+    url: "https://archly.fi",
+    description:
+      "Archly Finance is a liquidity solution for protocols on a wide range of EVM chains to properly incentivize liquidity for their own use cases.",
+    chain: "Telos",
+    logo: `${baseIconsUrl}/archly-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum", "Telos", "Base", "Kava", "Optimism"],
+    oracles: [],
+    forkedFrom: [],
+    module: "archly-finance-v2/index.js",
+    parentProtocol: "parent#archly-finance",
+    twitter: "ArchlyFinance",
+    listedAt: 1703074387
+  },
 ]
 
 export default data3

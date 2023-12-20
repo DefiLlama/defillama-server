@@ -72,6 +72,11 @@ function sortCanonicalBridgeBalances(
     Object.keys(data.tvl).map((s: string) => {
       bigNumberBalances[s] = BigNumber(data.tvl[s]);
     });
+    if (data.staking) {
+      Object.keys(data.staking).map((s: string) => {
+        bigNumberBalances[s] = BigNumber(data.staking[s]);
+      });
+    }
 
     canonicalBridgeTokenBalances[ids[id]] = bigNumberBalances;
   });

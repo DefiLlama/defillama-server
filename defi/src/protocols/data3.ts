@@ -27522,6 +27522,26 @@ const data3: Protocol[] = [
     github: ["UnitusLabs"],
     listedAt: 1703014661
   },
+  {
+    id: "3939",
+    name: "Phoenix",
+    address: null,
+    symbol: "-",
+    url: "https://app.phoenix.trade/",
+    description: "Phoenix is a decentralized limit order book on Solana, supporting markets for spot assets",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/phoenix.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Solana"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "PhoenixTrade",
+    listedAt: 1703042291
+  },
 ]
 
 export default data3

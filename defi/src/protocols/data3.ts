@@ -10507,7 +10507,7 @@ const data3: Protocol[] = [
     url: "https://phoenix.trade",
     description: "Phoenix is a decentralized limit order book on Solana that is fully on-chain, non-custodial, and crankless.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/ellipsis-labs.jpg`,
+    logo: `${baseIconsUrl}/phoenix-trade.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

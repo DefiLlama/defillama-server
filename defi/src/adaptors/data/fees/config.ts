@@ -1657,5 +1657,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "bluefin": {
+        "enabled": true,
+        "id": "2625"
     }
 } as AdaptorsConfig

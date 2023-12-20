@@ -60,6 +60,7 @@ const additional: { [chain: string]: string[] } = {
   base: [
     "0x23ee2343b892b1bb63503a4fabc840e0e2c6810f", // AXL
     "0x50c5725949a6f0c72e6c4a641f24049a917db0cb", // DAI
+    "0xfd4330b0312fdeec6d4225075b82e00493ff2e3f", // SDEX
   ],
   avax: [
     "0x44c784266cf024a60e8acf2427b9857ace194c5d", // AXL

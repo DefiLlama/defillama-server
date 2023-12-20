@@ -30,7 +30,7 @@ export default async function fetchBridgeUsdTokenTvls(
     if (!b.SK) missingIds += ` ${canonicalIds[i]},`;
   });
 
-  if (missingIds.length)
+  if (isCanonical && missingIds.length)
     throw new Error(`missing hourlyUsdTokensTvl for ${isProtocol ? "protocol" : "bridge"} IDs: ${missingIds}`);
 
   return usdTokenBalances;

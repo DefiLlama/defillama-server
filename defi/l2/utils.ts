@@ -6,7 +6,7 @@ import sleep from "../src/utils/shared/sleep";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { Address } from "@defillama/sdk/build/types";
 import * as incomingAssets from "./adapters";
-import additional from "./adapters/manual";
+import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
 
 export function aggregateChainTokenBalances(usdTokenBalances: TokenTvlData[][]): TokenTvlData {
@@ -141,7 +141,9 @@ export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
   if (j == -1) return [];
   try {
     const tokens: Address[] = await Object.values(incomingAssets)[j]();
-    const normalizedTokens: Address[] = tokens.map((t: string) => t.toLowerCase());
+    const filteredTokens: Address[] =
+      chain in excluded ? tokens.filter((t: string) => !excluded[chain].includes(t)) : tokens;
+    const normalizedTokens: Address[] = filteredTokens.map((t: string) => t.toLowerCase());
     if (!(chain in additional)) return normalizedTokens;
     const additionalTokens = additional[chain].map((t: string) => t.toLowerCase());
     return [...normalizedTokens, ...additionalTokens];

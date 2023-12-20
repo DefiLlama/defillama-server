@@ -1,4 +1,4 @@
-const additional: { [chain: string]: string[] } = {
+export const additional: { [chain: string]: string[] } = {
   optimism: [
     "0x1f514a61bcde34f94bc39731235690ab9da737f7", // TAROT
     "0xe05a08226c49b636acf99c40da8dc6af83ce5bb3", // ankrETH
@@ -76,4 +76,11 @@ const additional: { [chain: string]: string[] } = {
     "0x4b9eb6c0b6ea15176bbf62841c6b2a8a398cb656", // DAI
   ],
 };
-export default additional;
+export const excluded: { [chain: string]: string[] } = {
+  optimism: [
+    "0x0b2c639c533813f4aa9d7837caf62653d097ff85", // USDC
+  ],
+  base: [
+    "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USDC
+  ],
+};

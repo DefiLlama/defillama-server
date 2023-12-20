@@ -3341,6 +3341,17 @@ const parentProtocols: IParentProtocol[] = [
     github: ["lyra-finance"],
     treasury: "lyra.js",
   },
+  {
+    id: "parent#archly-finance",
+    name: "Archly Finance",
+    url: "https://archly.fi",
+    description: `Archly Finance is a liquidity solution for protocols on a wide range of EVM chains to properly incentivize liquidity for their own use cases.`,
+    logo: `${baseIconsUrl}/archly-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ArchlyFinance",
+  },
 ];
 
 export default parentProtocols;

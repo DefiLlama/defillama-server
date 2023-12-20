@@ -27565,6 +27565,28 @@ const data3: Protocol[] = [
     twitter: "ArchlyFinance",
     listedAt: 1703074387
   },
+  {
+    id: "3941",
+    name: "YLDR",
+    address: null,
+    symbol: "-",
+    url: "https://yldr.com",
+    description:
+      "YLDR is the first lending protocol for Uniswap. Users can either leverage their Uniswap V3 position or get a loan against it.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yldr.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending", //could also be Leveraged Farming
+    chains: ["Arbitrum", "Ethereum"],
+    oracles: ["Chainlink"],
+    forkedFrom: ["AAVE V3"],
+    module: "yldr/index.js",
+    twitter: "yldrcom",
+    listedAt: 1703075636
+  },
 ]
 
 export default data3

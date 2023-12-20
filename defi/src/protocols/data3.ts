@@ -27587,6 +27587,29 @@ const data3: Protocol[] = [
     twitter: "yldrcom",
     listedAt: 1703075636
   },
+  {
+    id: "3942",
+    name: "BitStable Finance",
+    address: "0xda31d0d1bc934fc34f7189e38a413ca0a5e8b44f",
+    symbol: "BSSB",
+    url: "https://bitstable.finance",
+    description:
+      "BitStable enables the generation of stablecoin DAII against the bitcoin ecosystem collateral assets.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/bitstable-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "bitstable-finance",
+    cmcId: "28608",
+    category: "CDP",
+    chains: ["Binance", "Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bitstable-finance/index.js",
+    twitter: "bssbstable",
+    github: ["BitStable-Finance"],
+    listedAt: 1703093713
+  },
 ]
 
 export default data3

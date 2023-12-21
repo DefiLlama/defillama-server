@@ -15872,7 +15872,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Elrond"],
     module: "maiar/index.js",
-    twitter: "MaiarExchange",
+    twitter: "xExchangeApp",
     listedAt: 1637185638,
     github: ["multiversx"]
   },

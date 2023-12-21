@@ -92,7 +92,7 @@ export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: str
 
 export const getDisplayChainName = (chain: string) => {
     if (!chain) return chain
-    let c = chain.toLowerCase()
+    let c = formatChainKey(chain.toLowerCase())
     return getChainDisplayName(c, true)
 }
 

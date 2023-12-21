@@ -14,15 +14,14 @@ import {
 import { sendMessage } from "./../../../../defi/src/utils/discord";
 import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
-import pLimit from "p-limit"
+import pLimit from "p-limit";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
 import * as sdk from "@defillama/sdk";
 
+const rateLimited = pLimit(10);
 
-const rateLimited = pLimit(10)
-
-let cache: any = {}
-let lastCacheClear: number
+let cache: any = {};
+let lastCacheClear: number;
 
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -34,57 +33,60 @@ export async function getTokenAndRedirectData(
   tokens = [...new Set(tokens)];
 
   if (tokens.length > 100) {
-    const chunks: any = sliceIntoChunks(tokens, 99)
-    const allData = []
+    const chunks: any = sliceIntoChunks(tokens, 99);
+    const allData = [];
     for (const chunk of chunks) {
-      allData.push(await getTokenAndRedirectData(chunk, chain, timestamp, hoursRange))
+      allData.push(
+        await getTokenAndRedirectData(chunk, chain, timestamp, hoursRange),
+      );
     }
-    return allData.flat()
+    return allData.flat();
   }
-
 
   if (getCurrentUnixTimestamp() - timestamp < 30 * 60) timestamp = 0; // if timestamp is less than 30 minutes ago, use current timestamp
 
-
-  const response: CoinData[] = []
+  const response: CoinData[] = [];
   await rateLimited(async () => {
+    if (!lastCacheClear) lastCacheClear = getCurrentUnixTimestamp();
+    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15) cache = {}; // clear cache every 15 minutes
 
-    if (!lastCacheClear) lastCacheClear = getCurrentUnixTimestamp()
-    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15) cache = {}  // clear cache every 15 minutes
-
-    const cacheKey = `${chain}-${hoursRange}`
-    if (!cache[cacheKey]) cache[cacheKey] = {}
-    const alreadyInCache: any[] = []
+    const cacheKey = `${chain}-${hoursRange}`;
+    if (!cache[cacheKey]) cache[cacheKey] = {};
+    const alreadyInCache: any[] = [];
     tokens.forEach((token: string) => {
       if (cache[cacheKey][token]) {
-        alreadyInCache.push(token)
-        response.push(cache[cacheKey][token])
+        alreadyInCache.push(token);
+        response.push(cache[cacheKey][token]);
       }
-    })
+    });
 
-    tokens = tokens.filter((t: string) => !alreadyInCache.includes(t))
-    if (tokens.length == 0) return response
+    tokens = tokens.filter((t: string) => !alreadyInCache.includes(t));
+    if (tokens.length == 0) return response;
 
-    let apiRes
+    let apiRes;
     if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
       apiRes = await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
     } else {
-      apiRes = await getTokenAndRedirectDataDB(tokens, chain, timestamp == 0 ? getCurrentUnixTimestamp() : timestamp, hoursRange,)
+      apiRes = await getTokenAndRedirectDataDB(
+        tokens,
+        chain,
+        timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
+        hoursRange,
+      );
     }
 
     apiRes.map((r: any) => {
-      if (r.address == null) return 
-      if (!(cacheKey in cache)) cache[cacheKey] = {}
-      cache[cacheKey][r.address] = r
-      return 
-    })
+      if (r.address == null) return;
+      if (!(cacheKey in cache)) cache[cacheKey] = {};
+      cache[cacheKey][r.address] = r;
+      return;
+    });
 
-    response.push(...apiRes)
-  })
+    response.push(...apiRes);
+  });
 
-  return response
+  return response;
 }
-
 
 export function addToDBWritesList(
   writes: Write[],
@@ -263,7 +265,7 @@ export async function filterWritesWithLowConfidence(
   allWrites = allWrites.filter((w: Write) => w != undefined);
   const allReads = (
     await batchGet(allWrites.map((w: Write) => ({ PK: w.PK, SK: 0 })))
-  ).filter((w: Write) => w.timestamp ?? 0 > recentTime);
+  ).filter((w: Write) => (w.timestamp ?? 0) > recentTime);
 
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
@@ -339,8 +341,8 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
         "confidence" in r.dbEntry
           ? r.dbEntry.confidence
           : r.redirect.length != 0 && "confidence" in r.redirect[0]
-            ? r.redirect[0].confidence
-            : undefined;
+          ? r.redirect[0].confidence
+          : undefined;
 
       return {
         chain:
@@ -427,8 +429,9 @@ async function checkMovement(
       if (percentageChange > margin) {
         errors += `${d.adapter} \t ${d.PK.substring(
           d.PK.indexOf("#") + 1,
-        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${previousItem.price
-          } to $${d.price}\n`;
+        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${
+          previousItem.price
+        } to $${d.price}\n`;
         return;
       }
     }

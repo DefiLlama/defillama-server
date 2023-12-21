@@ -299,6 +299,12 @@ export function extraUniV2Lps(timestamp: number = 0) {
       "0x6B175474E89094C44Da98b954EedeAC495271d0F",
       "ethereum",
     ),
+    getExtras(
+      timestamp,
+      "0x3A0eF60e803aae8e94f741E7F61c7CBe9501e569",
+      "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "ethereum",
+    ),
   ]);
 }
 export function fvm(timestamp: number = 0) {

@@ -2279,6 +2279,7 @@ export default {
         }
     },
     "phoenix": {
+        displayName: "Phoenix",
         "enabled": true,
         "id": "3170"
     }

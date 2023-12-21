@@ -9,6 +9,11 @@
       "decimals": "5",
       "symbol": "SCB",
       "to": "coingecko#sacabam"
+    },
+    "0xbde4ba4c2e274a60ce15c1cfff9e5c42e41654ac8b6d906a57efa4bd3c29f47d::hasui::HASUI": {
+      "decimals": "9",
+      "symbol": "HASUI",
+      "to": "coingecko#haedal-staked-sui"
     }
   },
   "neutron": {

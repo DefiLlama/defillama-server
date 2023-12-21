@@ -36,6 +36,8 @@ export const config = {
       '0x5d2EF803D6e255eF4D1c66762CBc8845051B54dB',
       '0xA4e2EE5a7fF51224c27C98098D8DB5C770bAAdbE',
       '0xD8dd2EA228968F7f043474Db610A20aF887866c7',
+      '0x8b92de822b121761a3caf894627a09a9f87864c0',
+      '0xf723ae5478b1f03ca88c204f1ae5498d3576b78f',
     ],
   },
   moonriver: {
@@ -55,9 +57,19 @@ export const config = {
       '0xa0FdCDDA62C4C6a0109A702a7Efe59B4E8807e3f', // mooMvxMVLP
     ],
   },
+  polygon_zkevm: {
+    wantVaults: [
+      '0x4Ebbf072288856dD7EBaE9CdEDd4f2Fd049523F7' // Yama QLP
+    ]
+  },
   arbitrum: {
     wantVaults: [
       '0x9dbbBaecACEDf53d5Caa295b8293c1def2055Adc', // mooGmxGLP
+      '0x5b904f19fb9ccf493b623e5c8ce91603665788b0', // mooGmxGMX
+      '0x9e75f8298e458b76382870982788988a0799195b', // mooCurveWSTETH
+      '0xa64A8CAAd2c412baCf215A351FA60cDC2a08C0E8', // Yama PlvGLP
+      '0xAACB2FD100981d15cFdEc2BB54B06C5E6f1AdB35', // Yama snrLLP
+      '0xE48551b7a15e074810372B411e0526cdE45d4c02' // Yama staked JGLP
     ],
   },
   ethereum: {

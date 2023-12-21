@@ -42,49 +42,49 @@ function formParamsObject(event: any): QueryParams {
   let params: any = {
     coins: (event.pathParameters?.coins ?? "").split(","),
     span: "0",
-    start: "1514764800", // 1/1/18
-    period: "d",
+    period: quantisePeriod("d"),
   };
 
-  for (let p of Object.keys(event.queryStringParameters)) {
-    let value;
+  if (event.queryStringParameters) {
+    for (let p of Object.keys(event.queryStringParameters)) {
+      let value;
 
-    switch (p) {
-      case "period":
-        value = quantisePeriod(
-          event.queryStringParameters?.period?.toLowerCase(),
-        );
-        break;
+      switch (p) {
+        case "period":
+          value = quantisePeriod(
+            event.queryStringParameters?.period?.toLowerCase(),
+          );
+          break;
 
-      case "searchWidth":
-        value = quantisePeriod(
-          event.queryStringParameters?.searchWidth?.toLowerCase(),
-        );
-        break;
+        case "searchWidth":
+          value = quantisePeriod(
+            event.queryStringParameters?.searchWidth?.toLowerCase(),
+          );
+          break;
 
-      case "end":
-        value = parseInt(event.queryStringParameters?.[p]);
-        break;
+        case "end":
+          value = parseInt(event.queryStringParameters?.[p]);
+          break;
 
-      case "start":
-        value = parseInt(event.queryStringParameters?.[p]);
-        break;
+        case "start":
+          value = parseInt(event.queryStringParameters?.[p]);
+          break;
 
-      case "span":
-        value = parseInt(event.queryStringParameters?.[p]);
-        break;
+        case "span":
+          value = parseInt(event.queryStringParameters?.[p]);
+          break;
 
-      default:
-        params[p] = errorResponse({
-          message: `${p} is either an invalid param`,
-        });
-        continue;
+        default:
+          params[p] = errorResponse({
+            message: `${p} is an invalid param`,
+          });
+          continue;
+      }
+
+      params[p] = uintCheck(value, p);
     }
-
-    params[p] = uintCheck(value, p);
   }
-
-  if (params.start + params.end == 0) params.end = getCurrentUnixTimestamp();
+  if (!params.start && !params.end) params.end = getCurrentUnixTimestamp();
   if (!("searchWidth" in params)) params.searchWidth = params.period / 10;
 
   return params;
@@ -129,9 +129,7 @@ async function fetchDBData(
   await Promise.all(promises);
   return response;
 }
-const handler = async (
-  event: AWSLambda.APIGatewayEvent,
-): Promise<IResponse> => {
+const handler = async (event: any): Promise<IResponse> => {
   if (
     event.queryStringParameters?.start != null &&
     event.queryStringParameters?.end != null
@@ -145,7 +143,7 @@ const handler = async (
   const paramError: any = Object.values(params).find(
     (p: any) => typeof p == "object" && p.length == undefined,
   );
-  if (paramError) return paramError;
+  if (paramError) return errorResponse(paramError);
 
   const timestamps: number[] = getTimestampsArray(
     params.end == null ? params.start : params.end,
@@ -156,17 +154,24 @@ const handler = async (
 
   const { PKTransforms, coins } = await getBasicCoins(params.coins);
 
-  const response: PriceChartResponse = await fetchDBData(
+  let response: PriceChartResponse = await fetchDBData(
     params,
     timestamps,
     coins,
     PKTransforms,
   );
-  Object.values(response).map((r: any) =>
-    r.prices.sort((a: TimedPrice, b: TimedPrice) =>
+
+  Object.values(response).map((r: any) => {
+    const unique = r.prices.filter(
+      (v: TimedPrice, i: number, a: TimedPrice[]) =>
+        a.findIndex((v2) => v2.timestamp === v.timestamp) === i,
+    );
+    unique.sort((a: TimedPrice, b: TimedPrice) =>
       a.timestamp > b.timestamp ? 1 : -1,
-    ),
-  );
+    );
+    r.prices = unique;
+  });
+
   return successResponse(
     {
       coins: response,

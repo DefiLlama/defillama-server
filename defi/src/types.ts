@@ -65,7 +65,7 @@ export interface IRaise {
 }
 
 export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "module"> {
-  symbol?: string;
+  symbol?: string | null;
   chain?: string;
   module?: string;
   otherProtocols?: Array<string>;
@@ -81,6 +81,9 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   raises: Array<IRaise>;
   metrics?: IJSON<boolean>;
   mcap?: number | null;
+  tokenPrice?: number | null;
+  tokenMcap?: number | null;
+  tokenSupply?: number | null;
 }
 
 export interface IProtocol
@@ -115,7 +118,8 @@ export type LiteProtocol = Pick<
   | "url"
   | "parentProtocol"
 > &
-  ProtocolTvls;
+  ProtocolTvls
+  & {defillamaId:string};
 
 export interface IChain {
   gecko_id?: string | null;

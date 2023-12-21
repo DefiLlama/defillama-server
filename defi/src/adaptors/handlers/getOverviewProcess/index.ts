@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, IChartData, IChartDataByDex } from "../../utils/volumeCalcs";
-import { formatChain } from "../../utils/getAllChainsFromAdaptors";
+import { getDisplayChainName } from "../../utils/getAllChainsFromAdaptors";
 import { sendDiscordAlert } from "../../utils/notify";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -11,8 +11,9 @@ import loadAdaptorsData from "../../data"
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 import { delay } from "../triggerStoreAdaptorData";
 import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
-import { cacheResponseOnR2 } from "../../utils/storeR2Response";
+import { cacheResponseOnR2, getCachedResponseOnR2 } from "../../utils/storeR2Response";
 import { CATEGORIES } from "../../data/helpers/categories";
+import processEventParameters from "../helpers/processEventParameters";
 
 export interface IGeneralStats extends ExtraTypes {
     total24h: number | null;
@@ -21,16 +22,21 @@ export interface IGeneralStats extends ExtraTypes {
     total14dto7d: number | null;
     total30d: number | null;
     total60dto30d: number | null;
+    total1y: number | null;
     change_1d: number | null;
     change_7d: number | null;
     change_1m: number | null;
+    totalVolume7d: number | null;
+    totalVolume30d: number | null;
     change_7dover7d: number | null;
     change_30dover30d: number | null;
     breakdown24h: IRecordAdaptorRecordData | null
+    average1y: number | null
 }
 
 export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     'name'
+    | 'defillamaId'
     | 'disabled'
     | 'displayName'
     | 'chains'
@@ -59,6 +65,7 @@ export type IGetOverviewResponseBody = IGeneralStats & {
     totalDataChartBreakdown?: IChartDataByDex,
     protocols: ProtocolsResponse[]
     allChains: string[]
+    chain: string | null
     errors?: string[]
 }
 
@@ -104,7 +111,9 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.dailyHoldersRevenue,
         AdaptorRecordType.dailyCreatorRevenue,
         AdaptorRecordType.dailySupplySideRevenue,
-        AdaptorRecordType.dailyProtocolRevenue
+        AdaptorRecordType.dailyProtocolRevenue,
+        AdaptorRecordType.dailyBribesRevenue,
+        AdaptorRecordType.dailyTokenTaxes
     ],
     [AdapterType.ROYALTIES]: [
         AdaptorRecordType.dailyRevenue,
@@ -116,8 +125,20 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     ],
     [AdapterType.OPTIONS]: [
         AdaptorRecordType.dailyPremiumVolume
+    ],
+    [AdapterType.DERIVATIVES]: [
+        AdaptorRecordType.dailyShortOpenInterest,
+        AdaptorRecordType.dailyLongOpenInterest,
+        AdaptorRecordType.dailyOpenInterest
     ]
 }
+
+const EXTRA_N30D_TYPE: IJSON<AdaptorRecordType[]> = {
+    [AdapterType.FEES]: [
+        AdaptorRecordType.dailyHoldersRevenue,
+    ],
+}
+export const getExtraN30DTypes = (type: AdapterType) => EXTRA_N30D_TYPE[type] ?? []
 
 export const getExtraTypes = (type: AdapterType) => EXTRA_TYPES[type] ?? []
 
@@ -146,16 +167,15 @@ export const getOverviewCachedResponseKey = (
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     console.info("Event received", JSON.stringify(event))
-    const pathChain = event.pathParameters?.chain?.toLowerCase()
-    const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
-    const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChart?.toLowerCase() === 'true'
-    const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
-    const rawDataType = event.queryStringParameters?.dataType
-    const rawCategory = event.queryStringParameters?.category
-    const category = (rawCategory === 'dexs' ? 'dexes' : rawCategory) as CATEGORIES
-    const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
-    const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
-    const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
+    const {
+        adaptorType,
+        excludeTotalDataChart,
+        excludeTotalDataChartBreakdown,
+        category,
+        fullChart,
+        dataType,
+        chainFilter
+    } = processEventParameters(event)
     console.info("Parameters parsing OK")
 
     if (!adaptorType) throw new Error("Missing parameter")
@@ -197,7 +217,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     console.info("Sending discord alerts:", errors.length)
     for (const errorMSG of errors) {
         await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
-        await delay(1000)
+        await delay(750)
     }
 
     // Handle rejected dexs
@@ -236,7 +256,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     for (const { spikes } of okProtocols) {
         if (spikes) {
-            await sendDiscordAlert(spikes, adaptorType).catch(e => console.log("discord error", e))
+            await sendDiscordAlert(spikes, adaptorType, false).catch(e => console.log("discord error", e))
             await delay(1000)
         }
     }
@@ -248,15 +268,20 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: okProtocols,
         allChains,
+        chain: chainFilter ? getDisplayChainName(chainFilter) : null,
         total24h: enableStats ? generalStats.total24h : 0,
         total48hto24h: null,
         total7d: enableStats ? generalStats.total7d : 0,
         total14dto7d: enableStats ? generalStats.total14dto7d : 0,
         total60dto30d: enableStats ? generalStats.total60dto30d : 0,
         total30d: enableStats ? generalStats.total30d : 0,
+        total1y: enableStats ? generalStats.total1y : 0,
+        average1y: enableStats ? generalStats.average1y : null,
         change_1d: enableStats ? generalStats.change_1d : null,
         change_7d: enableStats ? generalStats.change_7d : null,
         change_1m: enableStats ? generalStats.change_1m : null,
+        totalVolume7d: enableStats ? generalStats.totalVolume7d : null,
+        totalVolume30d: enableStats ? generalStats.totalVolume30d : null,
         change_7dover7d: enableStats ? generalStats.change_7dover7d : null,
         change_30dover30d: enableStats ? generalStats.change_30dover30d : null,
         breakdown24h: enableStats ? generalStats.breakdown24h : null,
@@ -270,8 +295,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         successResponseObj['errors'] = errors
     }
     console.info("Storing response to R2")
-    await cacheResponseOnR2(getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart)), JSON.stringify(successResponseObj))
+    const cacheKey = getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart))
+    await cacheResponseOnR2(cacheKey, JSON.stringify(successResponseObj))
         .then(() => console.info("Stored R2 OK")).catch(e => console.error("Unable to cache...", e))
+    const cachedResponse = await getCachedResponseOnR2(cacheKey).catch(e => console.error("Failed to retrieve...", cacheKey, e))
+    console.log("cachedResponse", cachedResponse)
     // console.info("Returning response:", JSON.stringify(successResponseObj))
     return successResponse(successResponseObj, 10 * 60); // 10 mins cache
 };
@@ -289,6 +317,8 @@ const substractSubsetVolumes = (adapter: ProtocolAdaptorSummary, _index: number,
                 change_1d: newSum['change_1d'],
                 change_7d: newSum['change_7d'],
                 change_1m: newSum['change_1m'],
+                totalVolume7d: newSum['totalVolume7d'],
+                totalVolume30d: newSum['totalVolume30d'],
             }
         }
         return computedSummary
@@ -314,7 +344,7 @@ export const removeEventTimestampAttribute = (v: AdaptorRecord) => {
 }
 
 export const getAllChainsUniqueString = (chains: string[]) => {
-    return chains.map(formatChain).filter((value, index, self) => {
+    return chains.map(getDisplayChainName).filter((value, index, self) => {
         return self.indexOf(value) === index;
     })
 }

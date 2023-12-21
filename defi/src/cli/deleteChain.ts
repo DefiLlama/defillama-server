@@ -1,5 +1,5 @@
-const protocolName = "sushiswap"
-const chainToDelete = "okexchain"
+const protocolName = "velocimeter v2"
+const chainToDelete = "fantom"
 
 import dynamodb from "../utils/shared/dynamodb";
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
@@ -24,7 +24,9 @@ async function main() {
             d.tvl -= chainData
         } else {
             Object.entries(chainData).forEach(tokenData=>{
-                d.tvl[tokenData[0]] -= tokenData[1] as number
+                if(tokenData[1] !== 0){
+                  d.tvl[tokenData[0]] -= tokenData[1] as number
+                }
             })
         }
         await dynamodb.put(d);

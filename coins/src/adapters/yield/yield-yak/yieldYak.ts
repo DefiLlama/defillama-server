@@ -2,7 +2,7 @@ import { Write, } from "../../utils/dbInterfaces";
 import { getApi } from "../../utils/sdk";
 import getWrites from "../../utils/getWrites";
 
-const config = {
+export const config = {
   avax: {
     tokens: {
       "YY_AAVE_AVAX": "0xaAc0F2d0630d1D09ab2B5A400412a4840B866d95",
@@ -14,7 +14,15 @@ const config = {
       "YY_TJ_AVAX_sAVAX_LP": "0x22EDe03f1115666CF05a4bAfafaEe8F43D42cD56",
       "YY_fsGLP": "0x9f637540149f922145c06e1aa3f38dcDc32Aff5C",
     }
-  }
+  },
+  arbitrum: {
+    tokens: {
+      "YY_WOMAT-LP-DAI": "0x1817fe376740b53cae73224b7f0a57f23dd4c9b5",
+      "YY_WOMAT-LP-USDT": "0x8bc6968b7a9eed1dd0a259efa85dc2325b923dd2",
+      "YY GMX sGLP-": "0x28f37fa106aa2159c91c769f7ae415952d28b6ac",
+      "YY_WOMAT-LP-USDC.e": "0x4649c7c3316b27c4a3db5f3b47f87c687776eb8c",
+    }
+  },
 } as any
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
@@ -22,12 +30,14 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const api = await getApi(chain, timestamp)
   const calls = Object.values(config[chain].tokens) as string[]
 
-  const totalDeposits = await api.multiCall({ abi: 'uint256:totalDeposits', calls, })
-  const totalSupply = await api.multiCall({ abi: 'uint256:totalSupply', calls, })
-  const depositToken = await api.multiCall({ abi: 'address:depositToken', calls, })
+  const totalDeposits = await api.multiCall({ abi: 'uint256:totalDeposits', calls, permitFailure: true })
+  const totalSupply = await api.multiCall({ abi: 'uint256:totalSupply', calls, permitFailure: true })
+  const depositToken = await api.multiCall({ abi: 'address:depositToken', calls })
 
   const pricesObject: any = {}
-  calls.forEach((vault: any, i: any) => { pricesObject[vault] = { underlying: depositToken[i], price: totalDeposits[i] / totalSupply[i]  } })
+  calls.forEach((vault: any, i: any) => { 
+    if (isNaN(totalDeposits[i]) || isNaN(totalSupply[i])) return 
+    pricesObject[vault] = { underlying: depositToken[i], price: totalDeposits[i] / totalSupply[i]  } })
 
   return getWrites({ chain, timestamp, writes, pricesObject, projectName: 'yield-yak' })
 }

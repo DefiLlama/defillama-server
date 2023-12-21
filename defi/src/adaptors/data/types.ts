@@ -1,8 +1,10 @@
 import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { IImportObj } from "../../cli/buildRequires"
 import { Protocol } from "../../protocols/types"
+import { ICleanRecordsConfig } from "../handlers/helpers/generateCleanRecords"
 
 export interface ProtocolAdaptor extends Protocol {
+    defillamaId: string
     displayName: string
     config?: IConfig
     disabled: boolean
@@ -17,12 +19,14 @@ export interface ProtocolAdaptor extends Protocol {
 
 export interface IConfig {
     id: string
+    parentId?: string
     latestFetchIsOk?: boolean
     enabled?: boolean
     includedVolume?: string[]
     startFrom?: number
     disabled?: boolean
     displayName?: string
+    cleanRecordsConfig?: ICleanRecordsConfig
     protocolsData?: IJSON<Omit<IConfig, 'protocolsData'>>,
 }
 

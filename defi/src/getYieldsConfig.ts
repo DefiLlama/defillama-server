@@ -2,10 +2,8 @@ import { cache20MinResponse, wrap, IResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import sluggify from "./utils/sluggify";
 
-const handler = async (
-    _event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
-    return cache20MinResponse({
+export function getYieldsConfig() {
+    return {
         protocols: protocols.reduce((all, p) => ({
             ...all,
             [sluggify(p)]: {
@@ -18,7 +16,13 @@ const handler = async (
                 symbol: p.symbol,
             }
         }), {}),
-    });
+    }
+}
+
+const handler = async (
+    _event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
+    return cache20MinResponse(getYieldsConfig());
 };
 
 export default wrap(handler);

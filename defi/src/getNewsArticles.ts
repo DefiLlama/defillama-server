@@ -90,7 +90,7 @@ const fetchArticles = async () => {
 	)
 		.then((res) => res.json())
     
-	return successResponse(articlesRes, 10*60)
+	return successResponse(articlesRes, 5*3600)
 }
 
 export default wrap(fetchArticles);

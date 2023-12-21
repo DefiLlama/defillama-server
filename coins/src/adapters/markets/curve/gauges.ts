@@ -77,6 +77,7 @@ async function getUnderlyings(
       })),
       abi: abi.lp_token,
       block,
+      permitFailure: true,
     })
   ).output.map((c: any) => c.output);
 }
@@ -115,13 +116,13 @@ export default async function getTokenPrices(
   );
 
   successfulCallResults.map((c: any, i: number) => {
-    const dbEntries = tokenAndRedirectData.filter(
+    const dbEntry = tokenAndRedirectData.find(
       (e: CoinData) => e.address == c.lp.toLowerCase(),
     );
     if (
       tokenInfos.symbols[i].output == null ||
       tokenInfos.decimals[i].output == null ||
-      dbEntries.length == 0
+      dbEntry == null
     )
       return;
     addToDBWritesList(
@@ -134,7 +135,7 @@ export default async function getTokenPrices(
       timestamp,
       "curve-gauges",
       0.8,
-      `asset#${chain}:${c.lp.toLowerCase()}`,
+      dbEntry.redirect ?? `asset#${chain}:${c.lp.toLowerCase()}`,
     );
   });
 

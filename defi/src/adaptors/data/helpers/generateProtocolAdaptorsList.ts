@@ -1,14 +1,12 @@
 import data, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
-import { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
+import { getDisplayChainName, getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { getChainDisplayName } from "../../../utils/normalizeChain"
 import chainCoingeckoIds from "./chains"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
-import { getCollectionsMap } from "./collections";
-import { seaportCollections } from "../fees/collections";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -46,23 +44,12 @@ const chainDataMap = chainData.reduce((acc, curr) => {
 
 export type IImportsMap = IJSON<IImportObj>
 
-//TODO: refactor
-const addressMap = {
-    'opensea-seaport-collections': seaportCollections,
-    'opensea-v1-collections': seaportCollections,
-    'opensea-v2-collections': seaportCollections
-} as IJSON<typeof seaportCollections>
-
 // This could be much more efficient
 export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): Promise<ProtocolAdaptor[]> => {
-    const collectionsMap = await getCollectionsMap()
     return Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = dataMap
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
             list = chainDataMap
-        }
-        else if (adapterObj.module.default?.protocolType === ProtocolType.COLLECTION) {
-            list = collectionsMap
         }
         const protocolId = config?.[adapterKey]?.id
         let moduleObject = imports_obj[adapterKey].module.default
@@ -75,7 +62,7 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
             baseModuleObject = moduleObject.adapter
         }
         else if ('breakdown' in moduleObject) {
-            const protocolsData = config?.[adapterKey]?.protocolsData ?? addressMap[adapterKey]
+            const protocolsData = config?.[adapterKey]?.protocolsData
             if (!protocolsData) {
                 console.error(`No protocols data defined in ${type}'s config for adapter with breakdown`, adapterKey)
                 return
@@ -87,37 +74,50 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
         }
         if (dexFoundInProtocolsArr.length > 0 && imports_obj[adapterKey].module.default) {
             return dexFoundInProtocolsArr.map((dexFoundInProtocols => {
-                let configObj = config[adapterKey]
-                let versionKey = undefined
-                const protData = config?.[adapterKey]?.protocolsData ?? addressMap[adapterKey]
-                if ('breakdown' in moduleObject) {
-                    const [key, vConfig] = Object.entries(protData ?? {}).find(([, pd]) => pd.id === dexFoundInProtocols.id) ?? []
-                    configObj = vConfig ?? config[adapterKey]
-                    if (key) {
-                        versionKey = key
-                        baseModuleObject = moduleObject.breakdown[key]
+                try {
+                    let configObj = config[adapterKey]
+                    let versionKey = undefined
+                    const protData = config?.[adapterKey]?.protocolsData
+                    if ('breakdown' in moduleObject) {
+                        const [key, vConfig] = Object.entries(protData ?? {}).find(([, pd]) => pd.id === dexFoundInProtocols.id) ?? []
+                        configObj = vConfig ?? config[adapterKey]
+                        if (key) {
+                            versionKey = key
+                            baseModuleObject = moduleObject.breakdown[key]
+                        }
                     }
+                    if (!configObj || !dexFoundInProtocols) return
+                    if (!baseModuleObject) throw "Unable to find the module adapter, please check the breakdown keys or config module names"
+                    const parentConfig = JSON.parse(JSON.stringify(config[adapterKey]))
+                    delete parentConfig.protocolsData
+                    const infoItem: ProtocolAdaptor = {
+                        ...dexFoundInProtocols,
+                        ...configObj,
+                        id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id, // used to query db, eventually should be changed to defillamaId
+                        defillamaId: !isNaN(+configObj?.id) ? configObj.id : config[adapterKey].id,
+                        module: adapterKey,
+                        config: {
+                            ...parentConfig,
+                            ...configObj,
+                        },
+                        chains: getChainsFromBaseAdapter(baseModuleObject),
+                        logo: getLlamaoLogo(dexFoundInProtocols.logo),
+                        disabled: configObj.disabled ?? false,
+                        displayName: configObj.displayName ?? dexFoundInProtocols.name,
+                        protocolType: adapterObj.module.default?.protocolType,
+                        methodologyURL: adapterObj.codePath,
+                        methodology: undefined
+                    }
+                    const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, type, infoItem.category)
+                    if (methodology)
+                        infoItem.methodology = methodology
+                    if (versionKey)
+                        infoItem.versionKey = versionKey
+                    return infoItem
+                } catch (e) {
+                    console.error(e)
+                    return undefined
                 }
-                if (!configObj || !dexFoundInProtocols) return
-                const infoItem: ProtocolAdaptor = {
-                    ...dexFoundInProtocols,
-                    ...configObj,
-                    id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id,
-                    module: adapterKey,
-                    config: config[adapterKey],
-                    chains: getChainsFromBaseAdapter(baseModuleObject),
-                    disabled: configObj.disabled ?? false,
-                    displayName: configObj.displayName ?? dexFoundInProtocols.name,
-                    protocolType: adapterObj.module.default?.protocolType,
-                    methodologyURL: adapterObj.codePath,
-                    methodology: undefined
-                }
-                const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, type, infoItem.category)
-                if (methodology)
-                    infoItem.methodology = methodology
-                if (versionKey)
-                    infoItem.versionKey = versionKey
-                return infoItem
             }))
         }
         // TODO: Handle better errors
@@ -129,6 +129,12 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
 function getLogoKey(key: string) {
     if (key.toLowerCase() === 'bsc') return 'binance'
     else return key.toLowerCase()
+}
+
+const getLlamaoLogo = (logo: string | null) => {
+    if (!logo) return logo
+    if (logo.includes('chains')) return logo.replace("https://icons.llama.fi/", "https://icons.llamao.fi/icons/")
+    return logo.replace("https://icons.llama.fi/", "https://icons.llamao.fi/icons/protocols/")
 }
 
 // This should be changed to be easier to mantain

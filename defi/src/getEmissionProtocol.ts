@@ -6,7 +6,7 @@ const handler = async (event: any): Promise<IResponse> => {
 
   try {
     const data = await getR2(`emissions/${protocolName}`);
-    return successResponse(data);
+    return successResponse(data, 3600);
   } catch (e) {
     return notFoundResponse({
       message: `protocol '${protocolName}' has no chart to fetch`,

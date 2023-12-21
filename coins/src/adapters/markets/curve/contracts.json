@@ -128,5 +128,15 @@
     "addressProvider": "0x31d236483a15f9b9dd60b36d4013d75e9dbf852b",
     "gasTokenDummy": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
     "wrapped": "0x968f6f898a6df937fc1859b323ac2f14643e3fed"
+  },
+  "celo": {
+    "addressProvider": "0x0000000022d53366457f9d5e68ec105046fc4383",
+    "gasTokenDummy": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "wrapped": "0x471ece3750da237f93b8e339c536989b8978a438"
+  },
+  "kava": {
+    "addressProvider": "0x0000000022D53366457F9d5E68Ec105046FC4383",
+    "gasTokenDummy": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "wrapped": "0xc86c7C0eFbd6A49B35E8714C5f59D99De09A225b"
   }
 }

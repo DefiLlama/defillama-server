@@ -1,7 +1,10 @@
-import protocols, { Protocol, treasuries } from "./data";
+import protocols from "./data";
+import treasuries  from "./treasury";
 import { baseIconsUrl } from "../constants";
-import { importAdapter, } from "../cli/utils/importAdapter";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
+import parentProtocols from "./parentProtocols";
+import emissionsAdapters from "../utils/imports/emissions_adapters";
+import { importAdapter } from "../utils/imports/importAdapter";
 const fs = require("fs");
 
 test("all the dynamic imports work", async () => {
@@ -22,14 +25,42 @@ test("all chains are on chainMap", async () => {
         }
       }
     })
-    protocol.chains.concat(protocol.chain).map(chainRaw => {
+    const chains = [...protocol.chains]
+    if (protocol.chain) chains.push(protocol.chain)
+    chains.map(chainRaw => {
       const chain = transformNewChainName(chainRaw)
       if (chainCoingeckoIds[chain] === undefined && chain !== "Multi-Chain") {
-        throw new Error(`${chain} (found in ${protocol.name}) should be on chainMap`)
+        throw new Error(`${chain} (or ${chainRaw}) (found in ${protocol.name}) should be on chainMap`)
       }
     })
   }
 });
+
+test("there are no repeated values in unlock adapters", async () => {
+  const tokens = [] as string[], protocolIds = [] as string[][], notes = [] as string[][], sources = [] as string[][];
+  for (const [protocolName, protocolFile] of Object.entries(emissionsAdapters)) {
+    if(protocolName === "daomaker"){
+      continue
+    }
+    const rawProtocol = protocolFile.default
+    const protocol = rawProtocol.meta;
+    expect(protocol.token).not.toBe(undefined)
+    expect(tokens).not.toContain(protocol.token);
+    tokens.push(protocol.token);
+    if(protocol.protocolIds){
+      expect(protocolIds).not.toContain(protocol.protocolIds);
+      protocolIds.push(protocol.protocolIds);
+    }
+    if(protocol.notes){
+      expect(notes).not.toContain(protocol.notes);
+      notes.push(protocol.notes);
+    }
+    if(protocol.sources){
+      expect(sources).not.toContain(protocol.sources);
+      sources.push(protocol.sources);
+    }
+  }
+})
 
 test("valid treasury fields", async () => {
   const treasuryKeys = new Set(['ownTokens', 'tvl'])
@@ -45,6 +76,35 @@ test("valid treasury fields", async () => {
     }
   }))
 });
+
+
+test("treasury on parent protocol when it exists", async () => {
+  const childWithTreasury = protocols.filter(i => i.treasury && i.parentProtocol)
+  if (childWithTreasury.length)
+    console.log('Migrate treasuries for: ', childWithTreasury.map(i => i.name))
+  expect(childWithTreasury.length).toBeLessThanOrEqual(0)
+});
+
+test("governance on parent protocol when it exists", async () => {
+  const childGovs = protocols.filter(i => i.governanceID && i.parentProtocol && !['1384', '1401', '1853'].includes(i.id))
+  if (childGovs.length)
+    console.log('Migrate Governance ids for: ', childGovs.map(i => i.name))
+  expect(childGovs.length).toBeLessThanOrEqual(0)
+});
+
+test("Github repo on parent protocol when it exists", async () => {
+  const childs = protocols.filter(i => i.github && i.parentProtocol)
+  if (childs.length)
+    console.log('Migrate Guthub config for: ', childs.map(i => i.name))
+  expect(childs.length).toBeLessThanOrEqual(0)
+});
+
+test("Github: track only orgs", async () => {
+  const childs = [...protocols, ...parentProtocols].filter(i => i.github?.find(g=>g.includes('/')))
+  if (childs.length)
+    console.log('Update github field to org/user or remove it: ', childs.map(i => i.name))
+  expect(childs.length).toBeLessThanOrEqual(0)
+})
 
 test("projects have a single chain or each chain has an adapter", async () => {
   for (const protocol of protocols) {
@@ -66,11 +126,33 @@ test("projects have a single chain or each chain has an adapter", async () => {
   }
 });
 
+test("parentProtocol exists", async () => {
+  const parentIds = parentProtocols.map(p=>p.id)
+  for (const protocol of protocols) {
+    if(protocol.parentProtocol)
+    expect(parentIds).toContain(protocol.parentProtocol);
+  }
+});
+
 test("no id is repeated", async () => {
   const ids = [];
-  for (const protocol of protocols) {
+  for (const protocol of (protocols as {id:string}[]).concat(parentProtocols)) {
     expect(ids).not.toContain(protocol.id);
     ids.push(protocol.id);
+  }
+});
+
+test("all oracle names match exactly", async () => {
+  const oracles = {} as any;
+  for (const protocol of (protocols).concat(parentProtocols as any)) {
+    for(const oracle of (protocol.oracles ?? [])){
+      const prevOracle = oracles[oracle.toLowerCase()]
+      if(prevOracle === undefined){
+        oracles[oracle.toLowerCase()]=oracle
+      } else {
+        expect(prevOracle).toBe(oracle)
+      }
+    }
   }
 });
 
@@ -122,6 +204,12 @@ test("no surprise category", async () => {
     'Leveraged Farming',
     'RWA Lending',
     'Options Vault',
+    'Liquidity manager',
+    'Staking Pool',
+    'Infrastructure',
+    'Decentralized Stablecoin',
+    'SoFi',
+    'DEX Aggregator'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);
@@ -133,6 +221,7 @@ test("no module repeated", async () => {
   for (const protocol of protocols) {
     const script = protocol.module
     if (script === 'dummy.js') continue; // dummy.js is an exception
+    if (script === 'anyhedge/index.js') continue; // anyhedge/index.js is an exception, used as short hand for skipping tvl update
     expect(ids).not.toContain(script);
     ids.push(script);
   }

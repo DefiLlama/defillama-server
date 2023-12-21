@@ -1,5 +1,6 @@
 import { DISABLED_ADAPTER_KEY, Adapter, BaseAdapter, AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
+import { getChainDisplayName, normalizedChainReplacements } from "../../utils/normalizeChain";
 import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 
@@ -60,34 +61,6 @@ export const isDisabled = (adaptor: Adapter) => {
         throw new Error(`Invalid adapter`)
 }
 
-export const getChainByProtocolVersion = (moduleAdapterName: string, moduleAdapter: Adapter, chainFilter?: string, filter: boolean = true): IJSON<string[]> => {
-    if ("adapter" in moduleAdapter) {
-        return {
-            [moduleAdapterName]: Object.keys(moduleAdapter.adapter).filter(c => (!filter || c !== DISABLED_ADAPTER_KEY))
-        }
-    } else if ("breakdown" in moduleAdapter) {
-        const chainsAcc = {} as IJSON<string[]>
-        for (const [protVersion, brokenDownDex] of Object.entries(moduleAdapter.breakdown)) {
-            const chains = Object.keys(brokenDownDex).filter(c => (!filter || c !== DISABLED_ADAPTER_KEY))
-            for (const c of chains) {
-                const chain = c
-                if (chainFilter && chain !== formatChainKey(chainFilter)) continue
-                if (chainsAcc[protVersion]) {
-                    if (!chainsAcc[protVersion].includes(chain)) chainsAcc[protVersion].push(chain)
-                }
-                else chainsAcc[protVersion] = [chain]
-            }
-        }
-        return chainsAcc
-    } else throw new Error("Invalid adapter")
-}
-
-/* export const isDisabledByProtocolVersion = (moduleAdapterName: string, moduleAdapter: Adapter, chainFilter?: string, protV?: string) => {
-    const chs = getChainByProtocolVersion(moduleAdapterName, moduleAdapter, chainFilter, false)
-    if (!chs || !protV) return false
-    return chs[protV] ? chs[protV].includes(DISABLED_ADAPTER_KEY) : true
-} */
-
 export const getMethodologyData = (displayName: string, adaptorKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
     if (
         'adapter' in moduleAdapter
@@ -117,20 +90,40 @@ export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: str
     }
 }
 
-export const formatChain = (chain: string) => {
+export const getDisplayChainName = (chain: string) => {
     if (!chain) return chain
     let c = chain.toLowerCase()
-    if (c === 'avax') return "Avalanche"
-    if (c === 'bsc') return c.toUpperCase()
-    if (c === 'xdai') return "xDai"
-    if (c === 'terra' || c === 'terra-classic') return "Terra Classic"
-    return c[0].toUpperCase() + c.slice(1)
+    return getChainDisplayName(c, true)
 }
 
+export const normalizeDimensionChainsMap = {
+    ...normalizedChainReplacements,
+    'avalanche': CHAIN.AVAX,
+    'terra classic': CHAIN.TERRA,
+    'terra-classic': CHAIN.TERRA,
+    'karura': CHAIN.KARURA,
+    'zksync era': CHAIN.ERA,
+    'zksync lite': CHAIN.ZKSYNC,
+    'multiversx': CHAIN.ELROND,
+    'okxchain': CHAIN.OKEXCHAIN,
+    'gnosis': CHAIN.XDAI,
+    'godwokenv1': CHAIN.GODWOKEN_V1,
+    'milkomeda c1': CHAIN.MILKOMEDA,
+    'oraichain': CHAIN.ORAI,
+    'cosmoshub': CHAIN.COSMOS,
+    'rangers': CHAIN.RPG,
+    'polygon zkevm': CHAIN.POLYGON_ZKEVM,
+    'sxnetwork': CHAIN.SX,
+    'ontologyevm': CHAIN.ONTOLOGY_EVM,
+    'wanchain': CHAIN.WAN,
+    'oasys': CHAIN.OAS,
+    'wemix3.0': CHAIN.WEMIX,
+    'radix': CHAIN.RADIXDLT
+} as IJSON<CHAIN>
+
 export const formatChainKey = (chain: string) => {
-    if (chain === 'avalanche') return CHAIN.AVAX
-    if (chain === 'terra classic' || chain === 'terra-classic') return CHAIN.TERRA
-    if (chain.toLowerCase() === 'karura') return CHAIN.KARURA
+    if (normalizeDimensionChainsMap[chain.toLowerCase()])
+        return normalizeDimensionChainsMap[chain.toLowerCase()]
     return chain
 }
 

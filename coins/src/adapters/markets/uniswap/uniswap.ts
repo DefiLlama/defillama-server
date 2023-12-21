@@ -48,14 +48,14 @@ async function fetchUniV2MarketsFromSubgraph(
 ) {
   let addresses: string[] = [];
   let reservereThreshold: Number = 0;
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 10; i++) {
     const lpQuery = gql`
       query lps {
-        pairs(first: 1000, orderBy: volumeUSD, orderDirection: desc,
+        pairs(first: 1000, orderBy: trackedReserveETH, orderDirection: desc,
           where: {${
             i == 0
               ? ``
-              : `volumeUSD_lt: ${Number(reservereThreshold).toFixed(4)}`
+              : `trackedReserveETH_lt: ${Number(reservereThreshold).toFixed(4)}`
           }
           ${
             timestamp == 0
@@ -64,15 +64,16 @@ async function fetchUniV2MarketsFromSubgraph(
           }
         }) {
           id
-          volumeUSD
+          trackedReserveETH
         }
       }`;
-    const result = (await request(subgraph, lpQuery)).pairs;
-    if (result.length < 1000) i = 20;
-    if (result.length == 0) return addresses;
-    reservereThreshold = result[Math.max(result.length - 1, 0)].volumeUSD;
-    addresses.push(...result.map((p: any) => p.id));
-    sleep(500);
+    const res: any = await request(subgraph, lpQuery);
+    const pairs = res.pairs;
+    if (pairs.length < 1000) i = 20;
+    if (pairs.length == 0) return addresses;
+    reservereThreshold = pairs[Math.max(pairs.length - 1, 0)].trackedReserveETH;
+    addresses.push(...pairs.map((p: any) => p.id));
+    sleep(5000);
   }
   return addresses;
 }
@@ -84,33 +85,33 @@ async function fetchUniV2MarketData(
   let token0s: MultiCallResults;
   let token1s: MultiCallResults;
   let reserves: MultiCallResults;
-  [token0s, token1s, reserves] = await Promise.all([
-    multiCall({
-      abi: abi.token0,
-      chain: chain as any,
-      calls: pairAddresses.map((pairAddress) => ({
-        target: pairAddress,
-      })),
-      block,
-    }),
-    multiCall({
-      abi: abi.token1,
-      chain: chain as any,
-      calls: pairAddresses.map((pairAddress) => ({
-        target: pairAddress,
-      })),
-      block,
-    }),
-    multiCall({
-      abi: abi.getReserves,
-      chain: chain as any,
-      calls: pairAddresses.map((pairAddress) => ({
-        target: pairAddress,
-      })),
-      block,
-    }),
-  ]);
-
+  token0s = await multiCall({
+    abi: abi.token0,
+    chain: chain as any,
+    calls: pairAddresses.map((pairAddress) => ({
+      target: pairAddress,
+    })),
+    block,
+    permitFailure: true,
+  });
+  token1s = await multiCall({
+    abi: abi.token1,
+    chain: chain as any,
+    calls: pairAddresses.map((pairAddress) => ({
+      target: pairAddress,
+    })),
+    block,
+    permitFailure: true,
+  });
+  reserves = await multiCall({
+    abi: abi.getReserves,
+    chain: chain as any,
+    calls: pairAddresses.map((pairAddress) => ({
+      target: pairAddress,
+    })),
+    block,
+    permitFailure: true,
+  });
   return [token0s, token1s, reserves];
 }
 async function findPriceableLPs(
@@ -187,6 +188,7 @@ async function lps(
     const value =
       (coinData.price * 2 * l.primaryBalance) /
       10 ** tokenInfos.underlyingDecimalAs[i].output;
+    if (value < 400) return;
     const lpPrice: number = value / supply;
     if (isNaN(lpPrice)) return;
 
@@ -266,7 +268,7 @@ async function unknownTokens(
     );
   });
 }
-function translateQty(
+export function translateQty(
   usdSwapSize: number,
   decimals: number,
   tokenValue: number,
@@ -276,11 +278,23 @@ function translateQty(
     tokenValue
   ).toString();
   if (scientificNotation.indexOf("e") == -1) {
+    let qty: BigNumber;
     try {
-      const qty: BigNumber = BigNumber.from(parseInt(scientificNotation));
-      return qty;
+      return BigNumber.from(parseInt(scientificNotation));
     } catch {
-      return;
+      try {
+        if (decimals > 9) {
+          qty = BigNumber.from(usdSwapSize).mul(tokenValue * 10 ** 9);
+          qty = BigNumber.from(usdSwapSize).mul(
+            tokenValue * 10 ** (decimals - 9),
+          );
+        } else {
+          qty = BigNumber.from(usdSwapSize).mul(tokenValue * 10 ** decimals);
+        }
+        return qty;
+      } catch {
+        return;
+      }
     }
   }
   const power: string = scientificNotation.substring(
@@ -307,14 +321,13 @@ async function getConfidenceScores(
   tokenInfos: TokenInfos,
   chain: string,
 ) {
-  const usdSwapSize: number = 5 * 10 ** 5;
+  const usdSwapSize: number = 10 ** 5;
   const ratio: number = 10000;
   const calls = lpsWithUnknown
     .map((l: any, i: number) => {
       const j = priceableLPs.indexOf(l);
       const swapSize =
-        10 ** tokenInfos.underlyingDecimalBs[j].output /
-        tokenValues[i].toFixed();
+        10 ** tokenInfos.underlyingDecimalBs[j].output / tokenValues[i];
       if (isNaN(swapSize) || !isFinite(swapSize)) return [];
 
       const qty: BigNumber | undefined = translateQty(
@@ -343,6 +356,7 @@ async function getConfidenceScores(
     abi: abi.getAmountsOut,
     chain: chain as any,
     calls: calls as any,
+    permitFailure: true,
   });
 
   const confidences: { [address: string]: number } = {};

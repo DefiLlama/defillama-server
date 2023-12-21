@@ -41,7 +41,7 @@ async function getPrices(coin: Coin, fromTimestamp: number, toTimestamp: number)
     );
   }
   const { prices } = await coingeckoRequest(
-    `https://pro-api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}?&x_cg_pro_api_key=${process.env.CG_KEY}`
+    `https://pro-api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}&x_cg_pro_api_key=${process.env.CG_KEY}`
   ) as PriceRangeResponse
   return prices
 }

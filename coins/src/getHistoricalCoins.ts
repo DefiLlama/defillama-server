@@ -2,8 +2,6 @@ require("dotenv").config();
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
-import { storeMissingCoins } from "./utils/missingCoins";
-import { getCurrentUnixTimestamp } from "./utils/date";
 import { quantisePeriod } from "./utils/timestampUtils";
 
 const handler = async (
@@ -47,7 +45,6 @@ const handler = async (
       };
     })
   );
-  // await storeMissingCoins(requestedCoins, response, timestampRequested);
   return successResponse(
     {
       coins: response

@@ -3,6 +3,7 @@ import { AdaptorRecord, IRecordAdaptorRecordData } from "../../db-utils/adaptor-
 import { formatChainKey } from "../../utils/getAllChainsFromAdaptors"
 import { sumAllVolumes } from "../../utils/volumeCalcs"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
+import { DISCORD_USER_0xgnek_ID } from "../notifyStatus"
 import { convertDataToUSD } from "./convertRecordDataCurrency"
 
 /**
@@ -10,7 +11,12 @@ import { convertDataToUSD } from "./convertRecordDataCurrency"
  * If there's missing data it tries to average it based on previos/next available data.
  */
 
-export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
+export interface ICleanRecordsConfig {
+    genuineSpikes: IJSON<boolean> | boolean
+}
+
+export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string, cleanRecordsConfig?: ICleanRecordsConfig) => {
+    const genuineSpikes = cleanRecordsConfig?.genuineSpikes ?? {}
     const currentTimestamp = Math.trunc(Date.now() / 1000)
     const spikesLogs: string[] = []
     const chains = chainsRaw.map(formatChainKey)
@@ -138,8 +144,8 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             timestamp,
             await convertDataToUSD(generatedData, timestamp)
         )
-
-        if (timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
+        const checkSpike = typeof genuineSpikes === 'boolean' ? !genuineSpikes : !genuineSpikes[String(timestamp)]
+        if (checkSpike && timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
             checkSpikes(acc.lastDataRecord, newGen, spikesLogs, acc.ath)
 
         const dayVolume = sumAllVolumes(newGen.data)
@@ -200,10 +206,15 @@ function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: A
             }
         }
     }, {} as IRecordAdaptorRecordData)
-    const prev = ath//sumAllVolumes(prevObj)
+    const prevVal = sumAllVolumes(prevObj)
+    const prev = ath
     const chg1d = Math.abs((current - prev) / prev) * 100
-    if (chg1d && chg1d > 10000 && current > 10000000) {
-        spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)
+    if (prevVal !== 0 && chg1d && chg1d > 10000 && current > 10000000) {
+        spikesLogs.push(`SPIKE DETECTED ON ${newGen.pk}
+1dChange: ${chg1d}
+Timestamp: ${newGen.timestamp}
+Record: ${JSON.stringify(newGen, null, 2)}
+Please ${DISCORD_USER_0xgnek_ID} take a look`)
         newGen.data = prevObj
     }
 }

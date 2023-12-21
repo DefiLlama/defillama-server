@@ -1,14 +1,36 @@
-import {users as chains} from "../dimension-adapters/users/chains";
 import { cache20MinResponse, wrap, IResponse } from "./utils/shared";
-import { getLastRecord } from "./utils/getLastRecord";
+import { getLatestUsersData } from "./users/storeUsers";
+import { getCurrentUnixTimestamp } from "./utils/date";
+import protocols from "./protocols/data";
+import parentProtocols from "./protocols/parentProtocols";
+
+type userTypes = "users" | "newUsers" | "txs" | "gasUsd"
 
 const handler = async (): Promise<IResponse> => {
-    const activeAddresses = (await Promise.all(chains.map(async ({name})=>{
-        const users = await getLastRecord(`users#${name}`)
-        if(users === undefined) return null
-        return {name, users: users.users}
-    }))).filter(p=>p!==null)
-    return cache20MinResponse(activeAddresses)
+    const latestRecords = await Promise.all((["users", "newUsers", "txs", "gasUsd"] as (userTypes)[])
+        .map(type => getLatestUsersData(type, getCurrentUnixTimestamp() - 8 * 3600).then(rows => ({type, rows})))) // -8h
+    const latestRecordByProtocol = {} as {
+        [protocol: string]: {
+            [type:string]: {value: number, end: number}
+        }
+    }
+    const allProtocols = protocols.concat(parentProtocols as any).reduce((acc, item)=>({
+        ...acc,
+        [item.id]: item.name
+    }), {} as any)
+    latestRecords.forEach(({type, rows}) => {
+        rows.forEach(record => {
+            if(latestRecordByProtocol[record.protocolid] === undefined){
+                latestRecordByProtocol[record.protocolid] = {
+                    name: allProtocols[record.protocolid]
+                }
+            }
+            if (latestRecordByProtocol[record.protocolid][type] === undefined || latestRecordByProtocol[record.protocolid][type].end < record.endtime) {
+                latestRecordByProtocol[record.protocolid][type] = { value: record[type === "newUsers" || type==="users"?"users":"sum"], end: record.endtime }
+            }
+        })
+    })
+    return cache20MinResponse(latestRecordByProtocol)
 }
 
 export default wrap(handler);

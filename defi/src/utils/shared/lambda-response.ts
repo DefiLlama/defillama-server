@@ -81,6 +81,21 @@ export function successResponse(
   });
 }
 
+export function dayCache(
+  json: IJSON,
+) {
+  const date = new Date();
+  date.setHours(date.getHours()+2);
+  return lambdaResponse({
+    body: json,
+    statusCode: 200,
+    allowCORS: true,
+    headers: {
+      "Expires": date.toUTCString()
+    },
+  });
+}
+
 // TTL must be in seconds
 export function notFoundResponse(
   json: IJSON,
@@ -104,21 +119,24 @@ export function acceptedResponse(message: string) {
   }
 }
 
-export function cache20MinResponse(
-  json: IJSON,
-) {
+export function get20MinDate(){
   const date = new Date();
   date.setMinutes(20);
   if (date < new Date()) { // we are past the :20 mark, roll over to next hour
     date.setHours(date.getHours() + 1)
   }
+  return date.toUTCString()
+}
 
+export function cache20MinResponse(
+  json: IJSON,
+) {
   return lambdaResponse({
     body: json,
     statusCode: 200,
     allowCORS: true,
     headers: {
-      "Expires": date.toUTCString(),
+      "Expires": get20MinDate()
     },
   });
 }

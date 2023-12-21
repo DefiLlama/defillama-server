@@ -8,14 +8,15 @@ export const wrappedGasTokens: { [key: string]: any } = {
   avax: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
   bsc: "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
   aurora: "0xc9bdeed33cd01541e1eed10f90519d2c06fe3feb",
-  polygon: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
+  polygon: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+  kava: "0xc86c7C0eFbd6A49B35E8714C5f59D99De09A225b",
 };
 export async function getGasTokenBalance(
   chain: string,
   target: any,
   balances: any,
   block: number | undefined,
-  gasTokenDummyAddress: string = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  gasTokenDummyAddress: string = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
 ) {
   if (
     !balances
@@ -28,21 +29,23 @@ export async function getGasTokenBalance(
     await getBalance({
       target,
       chain: chain as any,
-      block
+      block,
     })
   ).output;
-  balances.push({
+
+  const i = balances.indexOf(
+    balances.find(
+      (b: any) => b == null || b.success == false || b.output == "0",
+    ),
+  );
+  balances[i] = {
     input: {
       target: wrappedGasTokens[chain] || null,
-      params: [target]
+      params: [target],
     },
     output: gasTokenBalance,
-    success: true
-  });
-
-  balances = balances.filter(
-    (b: any) => b.input.target != gasTokenDummyAddress
-  );
+    success: true,
+  };
 
   return balances;
 }

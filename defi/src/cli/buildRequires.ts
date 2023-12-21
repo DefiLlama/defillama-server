@@ -1,6 +1,9 @@
-import protocols, {treasuries} from "../protocols/data";
+import protocols from "../protocols/data";
+import treasuries from "../protocols/treasury";
 import { writeFileSync, readdirSync } from "fs"
+import { execSync } from "child_process"
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
+import entities from "../protocols/entities";
 
 function getUnique(arry: string[]) {
     return [...new Set(arry)]
@@ -8,8 +11,10 @@ function getUnique(arry: string[]) {
 
 writeFileSync("./src/utils/imports/adapters.ts",
     `export default {
-    ${getUnique(protocols.concat(treasuries).map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
+    ${getUnique(protocols.concat(treasuries).concat(entities).map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
 }`)
+
+createImportAdaptersJSON()
 
 const excludeLiquidation = ["test.ts", "utils", "README.md"]
 writeFileSync("./src/utils/imports/adapters_liquidations.ts",
@@ -28,7 +33,7 @@ function getDirectories(source: string) {
 const extensions = ['ts', 'md', 'js']
 function removeDotTs(s: string) {
     const splitted = s.split('.')
-    if (splitted.length > 1 && extensions.includes(splitted[1]))
+    if (splitted.length > 1 && extensions.includes(splitted[splitted.length - 1]))
         splitted.pop()
     return splitted.join('.')
 }
@@ -101,6 +106,14 @@ export interface IImportObj {
 // emissions-adapters
 const emission_keys = getDirectories(`./emissions-adapters/protocols`)
 writeFileSync(`./src/utils/imports/emissions_adapters.ts`,
-`export default {
-    ${emission_keys.map(k=>`"${removeDotTs(k)}":require("@defillama/emissions-adapters/protocols/${k}"),`).join('\n')}
+    `export default {
+    ${emission_keys.map(k => `"${removeDotTs(k)}":require("@defillama/emissions-adapters/protocols/${k}"),`).join('\n')}
 }`)
+
+function createImportAdaptersJSON() {
+    const adaptersFile = __dirname + "/../utils/imports/tvlAdapterData.json"
+    let data: any = {}
+    protocols.concat(treasuries).concat(entities).map(p => data[p.module] = `@defillama/adapters/projects/${p.module}`)
+    writeFileSync(adaptersFile, JSON.stringify(data, null, 2))
+    execSync(['node', __dirname + "/buildTvlModuleData.js", adaptersFile].join(' '), { stdio: 'inherit' })
+}

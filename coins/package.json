@@ -7,9 +7,16 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "serve": "node --max-old-space-size=8192 node_modules/serverless/bin/serverless offline start",
     "test": "jest",
+    "test-coin": "ts-node src/test.ts",
     "test:watch": "jest --watch",
     "refill": "tableName='prod-coins-table' AWS_REGION='eu-central-1' ts-node src/refill",
-    "build": "sls package"
+    "storeBridgedCoins": "ts-node src/cli/storeBridgedCoins",
+    "build": "sls package",
+    "runner-test": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/test.ts",
+    "fetch-cg-hourly": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/coingecko.ts true",
+    "fetch-cg-min": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/coingecko.ts false",
+    "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/defiCoins.ts",
+    "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/bridges.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.12",
@@ -27,7 +34,6 @@
     "serverless": "^2.31.0",
     "serverless-esbuild": "^1.26.2",
     "serverless-offline": "^7.0.0",
-    "serverless-plugin-datadog": "^5.14.1",
     "serverless-plugin-log-retention": "^2.0.0",
     "serverless-prune-plugin": "^1.4.4",
     "ts-jest": "^26.5.4",
@@ -36,20 +42,25 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@defillama/sdk": "^3.0.0",
+    "@aws-sdk/client-s3": "^3.354.0",
+    "@defillama/sdk": "^4.0.58",
     "@ethersproject/bignumber": "^5.5.0",
     "@sentry/serverless": "^6.19.7",
     "@sentry/tracing": "^6.19.7",
     "@solana/web3.js": "^1.73.3",
     "@supercharge/promise-pool": "^2.1.0",
+    "axios": "^1.4.0",
+    "dayjs": "^1.11.10",
     "dotenv": "^8.6.0",
     "ethers": "^5.6.9",
     "fs": "^0.0.1-security",
     "graphql": "^16.6.0",
     "graphql-request": "^5.1.0",
-    "mysql2": "^2.3.3",
-    "node-fetch": "^2.6.1",
+    "ioredis": "^5.3.2",
+    "node-fetch": "2.6.1",
+    "p-limit": "^3.1.0",
     "path": "^0.12.7",
+    "postgres": "^3.3.5",
     "zksync-web3": "^0.14.3"
   }
 }

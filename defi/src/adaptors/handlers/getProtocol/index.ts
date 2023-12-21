@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse, notFoundResponse } from "../../../utils/shared";
+import { successResponse, wrap, IResponse, notFoundResponse, dayCache } from "../../../utils/shared";
 import sluggify, { sluggifyString } from "../../../utils/sluggify";
 import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, IRecordAdapterRecordChainData } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -20,6 +20,7 @@ export interface ChartItem {
 export interface IHandlerBodyResponse extends
     Omit<Pick<ProtocolAdaptor,
         "name"
+        | "defillamaId"
         | "displayName"
         | "logo"
         | "address"
@@ -44,6 +45,7 @@ export interface IHandlerBodyResponse extends
     totalAllTime: number | null
     latestFetchIsOk: boolean
     methodologyURL: string | null
+    methodology?: {[key: string]: string} | null
     module: string | null
     childProtocols: string[] | null
 }
@@ -64,18 +66,18 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     if (dexData) {
         const dexDataResponse = await getProtocolSummary(dexData, dataType, adaptorType)
         delete dexDataResponse.generatedSummary
-        return successResponse(dexDataResponse as IHandlerBodyResponse, 10 * 60); // 10 mins cache
+        return dayCache(dexDataResponse as IHandlerBodyResponse);
     }
 
     const parentData = parentProtocols.find(pp => pp.name.toLowerCase() === standardizeProtocolName(protocolName))
     if (parentData) {
         const parentResponse = await getProtocolSummaryParent(parentData, dataType, adaptorType)
-        return successResponse(parentResponse as IHandlerBodyResponse, 10 * 60); // 10 mins cache
+        return dayCache(parentResponse as IHandlerBodyResponse);
     }
 
     return notFoundResponse({
         message: `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
-    }, 10 * 60)
+    }, 60 * 60)
 };
 
 const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRecordType, adaptorType: AdapterType): Promise<IHandlerBodyResponse & { generatedSummary?: ProtocolAdaptorSummary }> => {
@@ -84,6 +86,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
         const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)
 
         dexDataResponse = {
+            defillamaId: dexData.defillamaId,
             name: generatedSummary.name,
             displayName: generatedSummary.displayName,
             disabled: generatedSummary.disabled,
@@ -108,6 +111,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
             protocolType: generatedSummary.protocolType,
             chains: generatedSummary.chains,
             methodologyURL: generatedSummary.methodologyURL,
+            methodology: generatedSummary.methodology,
             allAddresses: generatedSummary.allAddresses,
             latestFetchIsOk: generatedSummary.latestFetchIsOk,
             parentProtocol: generatedSummary.parentProtocol,
@@ -117,6 +121,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
     } catch (error) {
         console.error(`Error generating summary for ${dexData.module} ${JSON.stringify(error)}`)
         dexDataResponse = {
+            defillamaId: dexData.defillamaId,
             name: dexData.name,
             displayName: dexData.displayName,
             logo: dexData.logo,
@@ -173,13 +178,15 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
     )
     return {
         ...parentData,
+        defillamaId: parentData.id,
         displayName: parentData.name,
         total24h: totalToday,
-        totalAllTime: sumReduce(summaries, 'totalAllTime'),
+        totalAllTime: summaries.every(c=>c.totalAllTime)? sumReduce(summaries, 'totalAllTime'):null,
         latestFetchIsOk: true,
         disabled: false,
         change_1d,
         methodologyURL: null,
+        methodology: null,
         module: null,
         totalDataChart,
         totalDataChartBreakdown,

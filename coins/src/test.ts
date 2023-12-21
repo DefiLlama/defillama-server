@@ -28,13 +28,13 @@ async function main() {
   }
 
   const results = await protocolWrapper[protocol](0);
-  const resultsWithoutDuplicates = filterWritesWithLowConfidence(
+  const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
     results.flat()
   );
 
   const lTable: any = []
   resultsWithoutDuplicates.forEach(i => { 
-    lTable[i.PK] = { symbol: i.symbol, price: i.price, decimals: i.decimals }
+    lTable[i.PK] = { symbol: i.symbol, price: i.price, decimals: i.decimals, PK: i.PK }
    })
   console.log(`==== Example results ====`);
   const indexesToLog = selectRandom(resultsWithoutDuplicates.length);

@@ -29,10 +29,24 @@ export function aave(timestamp: number = 0) {
       "v2",
       timestamp
     ),
+    //polygon V3
+    getTokenPrices(
+      "polygon",
+      "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
+      "v3",
+      timestamp
+    ),
     getTokenPrices(
       "avax",
       "0x4235E22d9C3f28DCDA82b58276cb6370B01265C2",
       "v2",
+      timestamp
+    ),
+    //avax V3
+    getTokenPrices(
+      "avax",
+      "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
+      "v3",
       timestamp
     )
   ]);

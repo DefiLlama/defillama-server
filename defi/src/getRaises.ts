@@ -1,24 +1,11 @@
+import { getAllAirtableRecords } from "./utils/airtable";
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import fetch from "node-fetch";
 
 const SECTOR = "Description (very smol)";
 const VALUATION = "Valuation (millions)";
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  let offset;
-  let allRecords = [] as any[];
-  do {
-    const data: any = await fetch(
-      `https://api.airtable.com/v0/appGpVsrkpqsZ9qHH/Raises${offset ? `?offset=${offset}` : ""}`,
-      {
-        headers: {
-          Authorization: process.env.AIRTABLE_API_KEY!,
-        },
-      }
-    ).then((r) => r.json());
-    offset = data.offset;
-    allRecords = allRecords.concat(data.records);
-  } while (offset !== undefined);
+export async function getRaisesInternal() {
+  let allRecords = await getAllAirtableRecords('appGpVsrkpqsZ9qHH/Raises')
 
   const formattedRaises = allRecords
     .filter(
@@ -40,13 +27,11 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
       valuation: r.fields[VALUATION]?.endsWith("\n") ? r.fields[VALUATION].slice(-1) : r.fields[VALUATION] || null,
       defillamaId: r.fields["DefiLlama Id"],
     }));
+  return { raises: formattedRaises }
+}
 
-  return successResponse(
-    {
-      raises: formattedRaises,
-    },
-    30 * 60
-  );
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  return successResponse(await getRaisesInternal(), 30 * 60);
 };
 
 export default wrap(handler);

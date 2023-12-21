@@ -32,5 +32,28 @@
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
+  },
+  "swETHToETHRate": {
+    "inputs": [],
+    "name": "swETHToETHRate",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "GDpriceToStakedToken": {
+    "inputs": [
+      { "internalType": "uint256", "name": "_pid", "type": "uint256" }
+    ],
+    "name": "GDpriceToStakedtoken",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "underlying": {
+    "inputs": [],
+    "name": "underlying",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
   }
 }

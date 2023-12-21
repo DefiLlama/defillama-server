@@ -16,7 +16,8 @@ export const normalizedChainReplacements = {
   "opbnb": "op_bnb",
   "bifrost network": "bfc",
   "horizen eon": "eon",
-  "bahamut": "ftn"
+  "bahamut": "ftn",
+  "viction": "tomochain"
 } as {
   [chain: string]: string
 }
@@ -507,10 +508,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 60,
   },
-  "TomoChain": {
+  "Viction": { // previously TomoChain
     geckoId: "tomochain",
-    github: ['tomochain'],
-    symbol: "TOMO",
+    github: ['tomochain','BuildOnViction'],
+    symbol: "VIC",
     cmcId: "2570",
     categories: ["EVM"],
     chainId: 88,
@@ -2122,6 +2123,7 @@ chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
 chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
+chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -2168,7 +2170,9 @@ export function transformNewChainName(chain: string) {
     case "WEMIX":
       return "WEMIX3.0"
     case "Umee":
-        return "UX"
+      return "UX"
+    case "TomoChain":
+      return "Viction"
     default:
       return chain
   }
@@ -2233,7 +2237,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "gochain":
       return "GoChain"
     case "tomochain":
-      return "TomoChain"
+      return useNewChainNames ? "Viction" : "TomoChain"
     case "fusion":
       return "Fusion"
     case "kardia":

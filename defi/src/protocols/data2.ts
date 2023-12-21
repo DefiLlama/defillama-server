@@ -18107,6 +18107,7 @@ const data2: Protocol[] = [
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20Cyfrin%20-%202023-08-23.pdf",
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20SECBIT%20-%202021-08-02.pdf",
     ],
+    github: ["dolomite-exchange"],
     listedAt: 1666000576
   },
   {

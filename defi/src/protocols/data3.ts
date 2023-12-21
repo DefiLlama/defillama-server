@@ -27728,6 +27728,52 @@ const data3: Protocol[] = [
     audit_links: ["https://desynprotocol.gitbook.io/docs/security/audit-report"],
     listedAt: 1703178529
   },
+  {
+    id: "3948",
+    name: "ckBTC",
+    address: null,
+    symbol: "-",
+    assetToken: "ckBTC",
+    url: "https://dashboard.internetcomputer.org/bitcoin",
+    description:
+      "ICP offers protocol-level integration with the Bitcoin network. A canister smart contract, the Bitcoin canister, operates effectively as an on-chain “Bitcoin light node”, receiving, holding, and indexing the complete set of unspent transaction outputs (UTXOs) in an efficiently queryable form.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/ckbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ckbtc/index.js",
+    twitter: "dfinity",
+    listedAt: 1703183604
+  },
+  {
+    id: "3949",
+    name: "ckETH",
+    address: null,
+    symbol: "-",
+    assetToken: "ckETH",
+    url: "https://dashboard.internetcomputer.org/ethereum",
+    description:
+      "Canister smart contracts on ICP can integrate with the Ethereum network using a combination of replicated HTTPS outcalls to a known set of public Ethereum nodes to read state and submit transactions, and chain-key ECDSA (ckECDSA) signatures, an enhanced version of threshold ECDSA, to sign those submitted transactions.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cketh.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "cketh/index.js",
+    twitter: "dfinity",
+    listedAt: 1703183625
+  },
 ]
 
 export default data3

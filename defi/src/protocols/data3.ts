@@ -27658,6 +27658,53 @@ const data3: Protocol[] = [
     github: ["allbridge-io"],
     listedAt: 1703094865
   },
+  {
+    id: "3945",
+    name: "Gracy Staking",
+    address: "0x7C95e7AD2B349dc2f82d0f1117a44B561fA2699a",
+    symbol: "GRACY",
+    url: "https://staking.gracy.io/",
+    description:
+      "Gracy is launching GRACY Staking system, where token holders will be incentivized to deposit their tokens and be rewarded for participating in stabilizing token price to activate the Gracy platform.Staking rewards will be paid out from the predefined reward pool, and the exact amount of reward will be jointly determined by the Gracy team and the community through snapshot voting",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/gracy-staking.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "gracy",
+    cmcId: "12515",
+    category: "Staking Pool",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "gracy-staking/index.js",
+    twitter: "gracytoken",
+    listedAt: 1703173831
+  },
+  {
+    id: "3946",
+    name: "Kelp Dao",
+    address: null,
+    symbol: "-",
+    url: "https://stage.kelpdao.xyz/",
+    assetToken: "rsETH",
+    description:
+      "rsETH is a Liquid Restaked Token (LRT) issued by Kelp DAO designed to offer liquidity to illiquid assets deposited into restaking platforms, such as EigenLayer. It aims to address the risks and challenges posed by the current offering of restaking",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/kelp-dao.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Infrastructure",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "kelp-dao/index.js",
+    twitter: "KelpDAO",
+    audit_links: ["https://kelp.gitbook.io/kelp/audits"],
+    github: ["Kelp-DAO"],
+    listedAt: 1703173957
+  },
 ]
 
 export default data3

@@ -20886,7 +20886,7 @@ const data2: Protocol[] = [
     audit_links: [
       "https://docs.indigoprotocol.io/resources/audit"
     ],
-    oracles: ["Chainlink"],
+    oracles: [],
     listedAt: 1669327585,
     stablecoins: ["iusd"],
     wrongLiquidity: true, // coingecko has the wrong address for it

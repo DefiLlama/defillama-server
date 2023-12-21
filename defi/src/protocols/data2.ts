@@ -15299,7 +15299,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Liquidity manager",
     chains: ["Solana"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: [],
     module: "kamino/index.js",
     twitter: "Kamino_Finance",

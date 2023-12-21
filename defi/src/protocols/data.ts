@@ -10745,7 +10745,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Liquid Staking",
     chains: ["Solana"],
     module: "socean/index.js",
-    twitter: "SoceanFinance",
+    twitter: "soceanstake",
     audit_links: [
       "http://solana.com/SolanaNeodymeStakePoolAudit.pdf",
       "http://solana.com/SolanaQuantstampStakePoolAudit.pdf",

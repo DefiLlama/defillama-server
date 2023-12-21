@@ -18090,7 +18090,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dolomite.io",
-    description: "A next-gen money market and margin trading protocol on Arbitrum.",
+    description: "A next-gen money market and DeFi prime brokerage.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/dolomite.jpg`,
     audits: "2",
@@ -18103,7 +18103,10 @@ const data2: Protocol[] = [
     twitter: "Dolomite_io",
     forkedFrom: [],
     oracles: ["Chainlink"],
-    audit_links: ["https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite_Protocol_V2_Report_EN.pdf"],
+    audit_links: [
+      "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20Cyfrin%20-%202023-08-23.pdf",
+      "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20SECBIT%20-%202021-08-02.pdf",
+    ],
     listedAt: 1666000576
   },
   {

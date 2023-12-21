@@ -27705,6 +27705,29 @@ const data3: Protocol[] = [
     github: ["Kelp-DAO"],
     listedAt: 1703173957
   },
+  {
+    id: "3947",
+    name: "DeSyn Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.desyn.io/",
+    description:
+      "DeSyn Protocol is an innovative decentralized asset management infrastructure on Web 3, empowering users to securely and transparently create and manage customized pool-based portfolios with various on-chain assets (tokens, NFTs, derivatives, etc.) via smart contract",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/desyn-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "desyn/index.js",
+    twitter: "DesynLab",
+    audit_links: ["https://desynprotocol.gitbook.io/docs/security/audit-report"],
+    listedAt: 1703178529
+  },
 ]
 
 export default data3

@@ -1,111 +1,129 @@
-import { getCurrentUnixTimestamp } from "../utils/date";
-import pgp from "pg-promise";
-import { sendMessage } from "../utils/discord";
 import setEnvSecrets from "../utils/shared/setEnvSecrets";
+import postgres from "postgres";
+import { queryPostgresWithRetry } from "../../l2/layer2pg";
+import { searchWidth } from "../../../coins/src/getCoins";
+import { sendMessage } from "../utils/discord";
 
-export interface StaleCoins {
-  [address: string]: {
-    symbol: string;
-    lastUpdate: number;
+export type StaleCoins = {
+  [key: string]: StaleCoinData;
+};
+export type StaleCoinData = {
+  latency: number;
+  usd_amount: number;
+  symbol: string;
+  protocol: string;
+  key: string;
+  percentage?: number;
+};
+
+let auth: string[];
+let sql: any;
+export const columns = ["latency", "usd_amount", "symbol", "percentage", "key", "protocol"];
+
+async function generateAuth() {
+  if (!process.env.COINS2_AUTH) await setEnvSecrets();
+  auth = process.env.COINS2_AUTH?.split(",") ?? [];
+  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
+}
+
+export function addStaleCoin(staleCoins: any, data: StaleCoinData) {
+  if (!data.key) return;
+  if (data.key in staleCoins && staleCoins[data.key].usdAmount > data.usd_amount) return;
+  staleCoins[data.key] = data;
+}
+
+export function appendToStaleCoins(usdTvl: number, staleCoinsInclusive: StaleCoins, staleCoins: StaleCoins) {
+  const threshold = usdTvl * 0.01; // 1% of protocol TVL
+  Object.values(staleCoinsInclusive).map((v: StaleCoinData) => {
+    if (v.usd_amount < threshold) return;
+    v.percentage = (v.usd_amount * 100) / usdTvl;
+    addStaleCoin(staleCoins, v);
+  });
+}
+
+export function checkForStaleness(
+  usd_amount: number,
+  response: any,
+  now: number,
+  protocol: string,
+  staleCoins2: StaleCoins
+): void {
+  if (usd_amount < 1e5) return; // if <10k its minor
+  const latency = (now - response.timestamp) / 3600; // hours late
+  if (latency < 1) return; // if less than 4 hours stale its a non-issue
+  staleCoins2[response.PK] = {
+    latency,
+    usd_amount,
+    symbol: response.symbol,
+    protocol,
+    key: response.PK,
   };
 }
 
-const PGP = pgp();
-let db: any = null;
-
-export function addStaleCoin(
-  staleCoins: StaleCoins,
-  address: string,
-  symbol: string,
-  lastUpdate: number,
-) {
-  if (staleCoins[address] === undefined) {
-    staleCoins[address] = {
-      symbol,
-      lastUpdate,
-    };
-  }
-}
-
 export async function storeStaleCoins(staleCoins: StaleCoins) {
-  await setEnvSecrets()
+  if (Object.keys(staleCoins).length == 0) return;
+  await generateAuth();
+  if (sql == null) sql = postgres(auth[0]);
+
+  const stored: StaleCoinData[] = await queryPostgresWithRetry(
+    sql`
+      select ${sql(columns)} from stalecoins where 
+      key in ${sql(Object.keys(staleCoins))}
+      `,
+    sql
+  );
+
+  stored.map((s: StaleCoinData) => {
+    if (staleCoins[s.key].latency < s.latency) delete staleCoins[s.key];
+  });
+
+  const inserts: StaleCoinData[] = Object.values(staleCoins).map((c: StaleCoinData) => ({
+    latency: Number(c.latency.toFixed(0)),
+    usd_amount: Number(c.usd_amount.toPrecision(4)),
+    symbol: c.symbol,
+    percentage: Number(c.percentage?.toFixed(0)),
+    key: c.key,
+    protocol: c.protocol,
+  }));
+
+  if (inserts.length)
+    await queryPostgresWithRetry(
+      sql`
+      insert into stalecoins
+      ${sql(inserts, ...columns)}
+      on conflict (key)
+      do update set 
+        latency = excluded.latency, 
+        usd_amount = excluded.usd_amount, 
+        symbol = excluded.symbol, 
+        protocol = excluded.protocol,
+        percentage = excluded.percentage;
+      `,
+      sql
+    );
+
+  return;
+}
+
+export async function notify() {
+  await generateAuth();
   const webhookUrl = process.env.STALE_COINS_ADAPTERS_WEBHOOK!;
-  sendMessage(`allStaleCoins.length: ${Object.keys(staleCoins).length}`, webhookUrl, true)
-  try {
-    if (!process.env.COINS_DB) {
-      sendMessage(`!COINS_DB`, webhookUrl, true)
-      return
-    };
-    if (Object.keys(staleCoins).length == 0) {
-      sendMessage(`!staleCoins.length`, webhookUrl, true)
-      return;
-    }
-    if (db == null) db = PGP(process.env.COINS_DB!);
-    const recentlyUpdatedCoins = await readCoins(staleCoins, db);
-    const filteredStaleCoins = Object.keys(staleCoins)
-      .filter((key) => !recentlyUpdatedCoins.includes(key))
-      .reduce((obj: { [id: string]: any }, key) => {
-        obj[key] = staleCoins[key];
-        return obj;
-      }, {});
-    if (Object.keys(filteredStaleCoins).length == 0) {
-      sendMessage(`!filteredStaleCoins.length`, webhookUrl, true)
-      return;
-    }
-    sendMessage(`writing filtered stale coins..`, webhookUrl, true)
-    await writeCoins(filteredStaleCoins, PGP, db);
-  } catch (e) {
-    console.error("write to postgres failed:");
-    console.error(e);
-  }
+  const sql = postgres(auth[0]);
+
+  const stored: StaleCoinData[] = await sql` select ${sql(columns)} from stalecoins`;
+
+  const promises: any = [];
+  const timeout: number = searchWidth / 3600;
+  let message: string = "";
+  stored.map((d: StaleCoinData) => {
+    let readableTvl: string = d.usd_amount > 1e7 ? `${d.usd_amount / 1e7}M` : `${d.usd_amount / 1e4}k`;
+    message += `\nIn ${timeout - d.latency}h a ${d.protocol} TVL chart will lose ${readableTvl}$ (${
+      d.percentage
+    }%) because ${d.key} is ${d.latency}h stale`;
+  });
+
+  promises.push(sql`delete from stalecoins`);
+  promises.push(sendMessage(message, webhookUrl, true));
+  await Promise.all(promises);
 }
-
-async function readCoins(staleCoins: StaleCoins, db: any): Promise<string[]> {
-  const time = getCurrentUnixTimestamp();
-  return (
-    await db.any(
-      `SELECT 
-        id, 
-        time
-      FROM stalecoins
-      WHERE id IN ($1:csv) AND time > ${time - 1200}`,
-      [Object.keys(staleCoins).map((c: string) => c.toLowerCase())],
-    )
-  ).map((e: any) => e.id);
-}
-
-async function writeCoins(
-  staleCoins: StaleCoins,
-  PGP: any,
-  db: any,
-): Promise<void> {
-  const time = getCurrentUnixTimestamp();
-
-  const insertData = Object.entries(staleCoins)
-    .map(([pk, details]) => ({
-      id: pk,
-      time,
-      address: pk.split(":")[1],
-      lastupdate: details.lastUpdate,
-      chain: pk.split(":")[0],
-      symbol: details.symbol,
-    }))
-    .filter((c: any) => c.lastupdate > time - 3600 * 24);
-  if(insertData.length === 0){
-    return;
-  }
-
-  const columnSets = new PGP.helpers.ColumnSet(
-    ["id", "time", "address", "lastupdate", "chain", "symbol"],
-    { table: "stalecoins" },
-  );
-
-  await db.none(
-    PGP.helpers.insert(insertData, columnSets) +
-      " ON CONFLICT (id) DO UPDATE SET " +
-      columnSets.assignColumns({
-        from: "EXCLUDED",
-        skip: ["id", "address", "chain", "symbol"],
-      }),
-  );
-}
+// ts-node src/notifyStaleCoins.ts

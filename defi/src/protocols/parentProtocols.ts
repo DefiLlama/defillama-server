@@ -477,7 +477,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Amulet",
     url: "https://amulet.org",
     description:
-      "Amulet has designed an innovative and open risk protection model which not only effectively addresses the common challenges of existing decentralized RPPs, but also creates a new paradigm shift for the whole risk protection sector.",
+      "Amulet was born to make earning in the Web3 world safe and simple. Our goal is clear: to combine yield and protection for every crypto user globally. We envision a space where safe yields are the norm. Our mission is to build a user-friendly Web3 platform that empowers everyone to earn securely. Rooted in user-focused, trust, security, and innovation, our brand values guide our commitment. Amulet is more than a platform; it's a safe space where users of all levels can confidently earn in a protected environment.",
     logo: `${baseIconsUrl}/amulet.jpg`,
     gecko_id: null,
     cmcId: null,

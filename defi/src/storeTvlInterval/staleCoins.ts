@@ -46,12 +46,12 @@ export function checkForStaleness(
   response: any,
   now: number,
   protocol: string,
-  staleCoins2: StaleCoins
+  staleCoins: StaleCoins
 ): void {
   if (usd_amount < 1e5) return; // if <10k its minor
   const latency = (now - response.timestamp) / 3600; // hours late
-  if (latency < 1) return; // if less than 4 hours stale its a non-issue
-  staleCoins2[response.PK] = {
+  if (latency < 4) return; // if less than 4 hours stale its a non-issue
+  staleCoins[response.PK] = {
     latency,
     usd_amount,
     symbol: response.symbol,
@@ -126,4 +126,3 @@ export async function notify() {
   promises.push(sendMessage(message, webhookUrl, true));
   await Promise.all(promises);
 }
-// ts-node src/notifyStaleCoins.ts

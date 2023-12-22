@@ -26162,7 +26162,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2538",
-    name: "Parcl",
+    name: "Parcl V2",
     address: null,
     symbol: "-",
     url: "https://www.parcl.co",
@@ -26180,6 +26180,7 @@ const data2: Protocol[] = [
     module: "parcl/index.js",
     twitter: "Parcl",
     audit_links: ["https://docs.parcl.co/security"],
+    parentProtocol: "parent#parcl",
     listedAt: 1676483939
   },
   {

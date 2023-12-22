@@ -26711,7 +26711,7 @@ const data3: Protocol[] = [
     description: "Algorithmic, autonomous and cross-chain lending protocol built on perpDEX LP token.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/glori-finance.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -26720,7 +26720,8 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"],
     forkedFrom: ["Compound V2"],
     module: "glorifinance/index.js",
-    twitter: "GloriFinance",
+    twitter: "Glori_Finance",
+    audit_links: ["https://github.com/blocksecteam/audit-reports/blob/main/solidity/blocksec_glorifinance_v1.0-signed.pdf"],
     listedAt: 1702295229
   },
   {

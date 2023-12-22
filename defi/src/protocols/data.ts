@@ -10751,6 +10751,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "http://solana.com/SolanaQuantstampStakePoolAudit.pdf",
       "http://solana.com/SolanaKudelskiStakePoolAudit.pdf",
     ],
+    github: ["igneous-labs"],
     openSource: false,
   },
   {

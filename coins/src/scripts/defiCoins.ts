@@ -44,9 +44,9 @@ async function storeDefiCoins() {
               true,
             ),
           ]);
-          // await batchWrite2WithAlerts(
-          //   resultsWithoutDuplicates.slice(i, i + step),
-          // );
+          await batchWrite2WithAlerts(
+            resultsWithoutDuplicates.slice(i, i + step),
+          );
         }
         console.log(`${a[i][0]} done`);
       } catch (e) {
@@ -55,12 +55,12 @@ async function storeDefiCoins() {
             process.env.LLAMA_RUN_LOCAL ? "" : `:${e}`
           }`,
         );
-        if (!process.env.LLAMA_RUN_LOCAL)
-          await sendMessage(
-            `${a[i][0]} adapter failed: ${e}`,
-            process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-            true,
-          );
+        // if (!process.env.LLAMA_RUN_LOCAL)
+        //   await sendMessage(
+        //     `${a[i][0]} adapter failed: ${e}`,
+        //     process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        //     true,
+        //   );
       }
     });
   process.exit();

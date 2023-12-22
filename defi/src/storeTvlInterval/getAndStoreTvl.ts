@@ -17,7 +17,6 @@ import BigNumber from "bignumber.js";
 import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
-import { LogArray } from "@defillama/sdk/build/types";
 import { storeAllTokens } from "../../l2/layer2pg";
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
@@ -66,12 +65,11 @@ async function getTvl(
           const chain = storedKey.split('-')[0]
           const block = chainBlocks[chain]
           const api = new sdk.ChainApi({ chain, block, timestamp: unixTimestamp, })
-          const logArray: LogArray = [];
           tvlBalances = await tvlFunction(
             unixTimestamp,
             ethBlock,
             chainBlocks,
-            { api, chain, storedKey, block, logArray },
+            { api, chain, storedKey, block },
           );
           if (!tvlBalances && Object.keys(api.getBalances()).length) tvlBalances = api.getBalances()
           chainDashPromise = storeAllTokens(Object.keys(tvlBalances));
@@ -83,7 +81,7 @@ async function getTvl(
           (balance) => typeof balance[1] === "string"
         ); // Can't use stored prices because coingecko has undocumented aliases which we rely on (eg: busd -> binance-usd)
         let tvlPromise: ReturnType<any>;
-        tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, staleCoins);
+        tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, protocol.name, staleCoins);
         const tvlResults = await tvlPromise;
         usdTvls[storedKey] = tvlResults.usdTvl;
         tokensBalances[storedKey] = tvlResults.tokenBalances;

@@ -375,11 +375,6 @@ async function triggerFetchCoingeckoData(runType: string) {
   coins.forEach((coin) => (coinInfoMap[coin.id] = coin));
   await fetchCoingeckoData(coinInfoMap, runType, cgCache);
   setCache("coingecko", runType, cgCache);
-  await sendMessage(
-    `coolifys just finished coingecko: ${runType} run`,
-    process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-    true,
-  );
   process.exit(0);
 }
 

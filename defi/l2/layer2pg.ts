@@ -6,7 +6,7 @@ import sleep from "../src/utils/shared/sleep";
 
 let auth: string[];
 
-async function queryPostgresWithRetry(query: any, sql: any, counter: number = 0): Promise<any> {
+export async function queryPostgresWithRetry(query: any, sql: any, counter: number = 0): Promise<any> {
   try {
     // console.log("created a new pg instance");
     const res = await sql`
@@ -22,7 +22,7 @@ async function queryPostgresWithRetry(query: any, sql: any, counter: number = 0)
   }
 }
 
-export async function generateAuth() {
+async function generateAuth() {
   if (!process.env.COINS2_AUTH) await setEnvSecrets();
   auth = process.env.COINS2_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");

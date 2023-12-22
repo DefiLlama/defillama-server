@@ -24351,7 +24351,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "proxy",
     cmcId: "11148",
-    category: "Yield",
+    category: "Bridge",
     chains: ["Polygon", "Ethereum"],
     module: "prxy/index.js",
     twitter: "BTC_proxy",

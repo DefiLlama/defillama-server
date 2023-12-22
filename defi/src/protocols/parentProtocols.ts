@@ -3352,6 +3352,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ArchlyFinance",
   },
+  {
+    id: "parent#parcl",
+    name: "Parcl",
+    url: "https://www.parcl.co",
+    description: `Trade real estate prices with up to 10x leverage`,
+    logo: `${baseIconsUrl}/parcl.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Parcl",
+  },
 ];
 
 export default parentProtocols;

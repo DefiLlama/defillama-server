@@ -27798,6 +27798,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#parcl",
     listedAt: 1703211654
   },
+  {
+    id: "3951",
+    name: "ODOS",
+    address: null,
+    symbol: "-",
+    url: "https://app.odos.xyz",
+    description: "Odos is a cutting-edge platform that caters to both institutional and retail traders, empowering them with a competitive edge in swaps, using our comprehensive suite of tools to offer a wide array of functionalities to enhance trading strategies and optimize capital efficiency.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/odos.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js", // we can add adapter
+    twitter: "odosprotocol",
+    audit_links: ["https://skynet.certik.com/projects/odos", "https://github.com/Zellic/publications/blob/master/Odos%20-%20Zellic%20Audit%20Report.pdf"],
+  },
 ]
 
 export default data3

@@ -149,9 +149,6 @@ export default {
     "serum": {
         disabled: true,
         "enabled": true,
-        "includedVolume": [
-            "raydium"
-        ],
         "id": "145"
     },
     "curve": {

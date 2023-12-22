@@ -27774,6 +27774,29 @@ const data3: Protocol[] = [
     twitter: "dfinity",
     listedAt: 1703183625
   },
+  {
+    id: "3950",
+    name: "Parcl V3",
+    address: null,
+    symbol: "-",
+    url: "https://www.parcl.co",
+    description: "Parcl v3 is a perpetuals dex that offers real estate index markets for speculating or hedging",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/parcl.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Solana"],
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    module: "parcl-v3/index.js",
+    twitter: "Parcl",
+    audit_links: ["https://docs.parcl.co/security"],
+    parentProtocol: "parent#parcl",
+    listedAt: 1703211654
+  },
 ]
 
 export default data3

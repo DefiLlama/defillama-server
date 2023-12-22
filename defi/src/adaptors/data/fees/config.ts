@@ -1661,5 +1661,9 @@ export default {
     "bluefin": {
         "enabled": true,
         "id": "2625"
+    },
+    "odos": {
+        "enabled": true,
+        "id": "3951"
     }
 } as AdaptorsConfig

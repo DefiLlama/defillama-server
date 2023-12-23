@@ -19753,8 +19753,8 @@ const data3: Protocol[] = [
   {
     id: "3585",
     name: "TangleSwap",
-    address: null,
-    symbol: "-",
+    address: "ethereum:-",
+    symbol: "VOID",
     url: "https://tangleswap.exchange",
     description:
       "TangleSwap is an omnichain protocol composed of a Concentrated Liquidity DEX plus 4 other user-centric dApps designed to make DeFi mainstream",

@@ -1580,6 +1580,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "hashflow/index.js",
+    treasury: "hasflow.js",
     twitter: "hashflow",
     listedAt: 1645555257,
     governanceID: ["snapshot:hashflowdao.eth"]

@@ -10216,7 +10216,7 @@ const data2: Protocol[] = [
     name: "Optimus",
     address: "icon:cx785d504f44b5d2c8dac04c5a1ecd75f18ee57d16",
     symbol: "FIN",
-    url: "https://optimus.finance",
+    url: "https://optimusfinance.network",
     description: "Optimus is an on-chain yield optimizer that maximizes your investment return with a minimal risk level possible.",
     chain: "Icon",
     logo: `${baseIconsUrl}/optimus.png`,

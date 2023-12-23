@@ -3,6 +3,7 @@ export default {
   tangleswap: require("./markets/tangleswap"),
   cantoLending: require("./moneyMarkets/compound"),
   xexchange: require("./markets/xexchange"),
+  balanced: require("./markets/balanced"),
   tinyman: require("./markets/tinyman"),
   silo: require("./moneyMarkets/silo"),
   hlp: require("./yield/hlp"),

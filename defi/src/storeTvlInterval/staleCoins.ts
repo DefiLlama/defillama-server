@@ -112,6 +112,7 @@ export async function notify() {
 
   const stored: StaleCoinData[] = await sql` select ${sql(columns)} from stalecoins`;
 
+  stored.sort((a, b) => b.latency - a.latency)
   const promises: any = [];
   const timeout: number = searchWidth / 3600;
   let message: string = "";
@@ -123,6 +124,6 @@ export async function notify() {
   });
 
   promises.push(sql`delete from stalecoins`);
-  promises.push(sendMessage(message, webhookUrl, true));
+  if (message.length) promises.push(sendMessage(message, webhookUrl, true));
   await Promise.all(promises);
 }

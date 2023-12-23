@@ -107,23 +107,31 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
 
 export async function notify() {
   await generateAuth();
-  const webhookUrl = process.env.STALE_COINS_ADAPTERS_WEBHOOK!;
   const sql = postgres(auth[0]);
 
   const stored: StaleCoinData[] = await sql` select ${sql(columns)} from stalecoins`;
 
-  stored.sort((a, b) => b.latency - a.latency)
+  stored.sort((a, b) => b.latency - a.latency);
   const promises: any = [];
   const timeout: number = searchWidth / 3600;
   let message: string = "";
+  let teamMessage: string = "";
   stored.map((d: StaleCoinData) => {
     let readableTvl: string = d.usd_amount > 1e7 ? `${d.usd_amount / 1e7}M` : `${d.usd_amount / 1e4}k`;
     message += `\nIn ${timeout - d.latency}h a ${d.protocol} TVL chart will lose ${readableTvl}$ (${
       d.percentage
     }%) because ${d.key} is ${d.latency}h stale`;
+    if (d.usd_amount > 1e8 && timeout - d.latency < 7) {
+      teamMessage += `\nIn ${timeout - d.latency}h a ${d.protocol} TVL chart will lose ${readableTvl}$ (${
+        d.percentage
+      }%) because ${d.key} is ${d.latency}h stale`;
+    }
   });
 
   promises.push(sql`delete from stalecoins`);
-  if (message.length) promises.push(sendMessage(message, webhookUrl, true));
+  if (message.length) promises.push(sendMessage(message, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true));
+  if (!process.env.TEAM_WEBHOOK)
+    promises.push(sendMessage("missing team webhook", process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true));
+  if (teamMessage.length) promises.push(sendMessage(teamMessage, process.env.TEAM_WEBHOOK!, true));
   await Promise.all(promises);
 }

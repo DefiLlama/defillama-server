@@ -80,27 +80,32 @@ async function getAndStore(
   ethereumBlock = res.ethereumBlock
   chainBlocks = res.chainBlocks
 
-  const tvl: any = await storeTvl(
-    timestamp,
-    ethereumBlock as unknown as number,
-    chainBlocks,
-    protocol,
-    adapterModule,
-    {},
-    4,
-    false,
-    false,
-    true,
-    // () => deleteItemsOnSameDay(dailyItems, timestamp),
-    undefined,
-    {
-      chainsToRefill,
-      partialRefill: true,
-      returnCompleteTvlObject: true,
-      cacheData,
-      overwriteExistingData: true,
-    }
-  );
+  let tvl: any = undefined
+  try {
+    tvl = await storeTvl(
+      timestamp,
+      ethereumBlock as unknown as number,
+      chainBlocks,
+      protocol,
+      adapterModule,
+      {},
+      4,
+      false,
+      false,
+      true,
+      // () => deleteItemsOnSameDay(dailyItems, timestamp),
+      undefined,
+      {
+        chainsToRefill,
+        partialRefill: true,
+        returnCompleteTvlObject: true,
+        cacheData,
+        overwriteExistingData: true,
+      }
+    );
+  } catch (e) {
+    console.error(e)
+  }
   if (typeof tvl === 'object') {
     Object.entries(tvl).forEach(([key, val]) => sdk.log(key, humanizeNumber((val ?? 0) as number)))
   }
@@ -138,7 +143,7 @@ const main = async () => {
     // getHistoricalValues(dailyTokensTvl(protocol.id)),
     // getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
   ]);
-  const [ rawTokenTvl, ...dailyItems] = data
+  const [rawTokenTvl, ...dailyItems] = data
   // const [dailyTvls, dailyTokens, dailyUsdTokens, ] = dailyItems
   // debugPrintDailyItems(dailyTvls, 'dailyTvls')
   // debugPrintDailyItems(dailyTokens, 'dailyTokens')

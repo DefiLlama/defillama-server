@@ -63,24 +63,29 @@ async function getAndStore(
     chainBlocks = res.chainBlocks
   }
 
-  const tvl: any = await storeTvl(
-    timestamp,
-    ethereumBlock as unknown as number,
-    chainBlocks,
-    protocol,
-    adapterModule,
-    {},
-    4,
-    false,
-    false,
-    true,
-    // () => deleteItemsOnSameDay(dailyItems, timestamp),
-    undefined,
-    {
-      returnCompleteTvlObject: true,
-      overwriteExistingData: true,
-    }
-  );
+  let tvl: any = undefined
+  try {
+    tvl = await storeTvl(
+      timestamp,
+      ethereumBlock as unknown as number,
+      chainBlocks,
+      protocol,
+      adapterModule,
+      {},
+      4,
+      false,
+      false,
+      true,
+      // () => deleteItemsOnSameDay(dailyItems, timestamp),
+      undefined,
+      {
+        returnCompleteTvlObject: true,
+        overwriteExistingData: true,
+      }
+    );
+  } catch (e) {
+    console.error(e)
+  }
 
   //  sdk.log(tvl);
   if (typeof tvl === 'object') {

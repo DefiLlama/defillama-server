@@ -57,7 +57,8 @@ async function main() {
       // we are fetching current blocks but not using it because, this is to trigger check if rpc is returning stale data
       await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
-      await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
+      // await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
+      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,)
     } catch (e: any) {
       console.log('FAILED: ', protocol?.name, e?.message)
       failed++
@@ -65,11 +66,11 @@ async function main() {
     const timeTakenI = (+Date.now() - startTime) / 1e3
     timeTaken += timeTakenI
     const avgTimeTaken = timeTaken / ++i
-    sdk.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
+    console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
   }
 
   const normalAdapterRuns = PromisePool
-    .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 15))
+    .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 32))
     .for(actions)
     .process(runProcess(filterProtocol))
 

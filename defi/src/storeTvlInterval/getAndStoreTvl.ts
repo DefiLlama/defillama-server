@@ -247,9 +247,9 @@ export async function storeTvl(
       throw new Error("Tarot TVL is not 0")
     }
   } catch (e) {
-    console.error(protocol.name, e);
+    // console.error(protocol.name, e);
     insertOnDb( useCurrentPrices,  TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'aggregate', chain: 'aggregate' } )
-    return;
+    throw e
   }
   if (breakIfTvlIsZero && Object.values(usdTvls).reduce((total, value) => total + value) === 0) {
     throw new Error(

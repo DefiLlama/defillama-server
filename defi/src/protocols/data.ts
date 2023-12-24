@@ -7411,8 +7411,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/balanced.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "balance-tokens",
-    cmcId: "11262",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes", // tvl also counts lending/cdp product
     chains: ["Icon"],
     module: "balanced/index.js",

@@ -27891,6 +27891,27 @@ const data3: Protocol[] = [
     audit_links: ["https://skynet.certik.com/zh-CN/projects/surf-protocol", "https://www.beosin.com/audits/Surf%20protocol_202311080924.pdf"],
     listedAt: 1703359767
   },///
+    {
+    id: "3955",
+    name: "ChocoINU Avax",
+    address: "avax:0x7fF68aD4366F84d2a64D0599fef6A6ac28Ca73a6",
+    symbol: "CHOCO",
+    url: "https://chocoinu.xyz",
+    description: "Sweeten your DeFi journey with ChocoInu. Embrace creamy yields and crumbly rewards on Avalanche Blockchain.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/chocoinu-avax.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche"],
+    oracles: [],
+    forkedFrom: [],
+    module: "Chocoinu/index.js", 
+    twitter: "ChocoInuAvax",
+    listedAt: 1703414992
+  },
 ]
 
 export default data3

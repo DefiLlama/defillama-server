@@ -27912,6 +27912,28 @@ const data3: Protocol[] = [
     twitter: "ChocoInuAvax",
     listedAt: 1703414992
   },
+  {
+    id: "3956",
+    name: "Balanced Dollar",
+    address: "icon:cxf61cd5a45dc9f91c15aa65831a30a90d59a09619",
+    symbol: "BALN",
+    url: "https://balanced.network",
+    description: "The Balanced Dollar (bnUSD) is a decentralised stablecoin that tracks the price of 1 USD. It uses cryptocurrency as collateral to guarantee its value, with support for assets from a variety of blockchains. bnUSD is not experimental or algorithmic: it’s over-collateralised, so the total supply cannot exceed the value that backs it.",
+    chain: "Icon",
+    logo: `${baseIconsUrl}/balanced-dollar.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "balanced-dollars",
+    cmcId: "11261",
+    category: "CDP",
+    chains: ["Icon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "balanced-bnUSD/index.js", 
+    twitter: "BalancedDAO",
+    parentProtocol: "parent#balanceddao",
+    listedAt: 1703416030
+  },
 ]
 
 export default data3

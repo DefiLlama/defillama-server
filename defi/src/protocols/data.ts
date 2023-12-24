@@ -7418,6 +7418,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "balanced/index.js",
     twitter: "BalancedDAO",
     audit_links: ["https://docs.balanced.network/security#smart-contract-audits"],
+    parentProtocol: "parent#balanceddao",
     oracles: ["Band"],
     github: ["balancednetwork"]
   },

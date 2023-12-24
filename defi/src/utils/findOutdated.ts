@@ -81,10 +81,13 @@ export function buildOutdatedMessage(outdated: [string, InfoProtocol, boolean, n
   }
   const maxLengthProtocolName = outdated.reduce((max, line) => Math.max(max, line[0].length), 0)
   return `REFILLABLE
-${printOutdated(outdated.filter(p => p[2]), maxLengthProtocolName, now)}
+${printOutdated(outdated.filter(p => p[2]).slice(0, 25), maxLengthProtocolName, now)}
+${outdated.filter(p => p[2]).length > 25 ? `... and ${outdated.filter(p => p[2]).length - 25} more` : ""}
 
 CAN'T BE REFILLED (needs fixing asap)
-${printOutdated(outdated.filter(p => !p[2]), maxLengthProtocolName, now)}`
+${printOutdated(outdated.filter(p => !p[2]).slice(0, 25), maxLengthProtocolName, now)}
+${outdated.filter(p => !p[2]).length > 25 ? `... and ${outdated.filter(p => !p[2]).length - 25} more` : ""}`
+
 }
 
 export default async function findOutdated(maxDrift: number) {

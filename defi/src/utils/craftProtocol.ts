@@ -169,23 +169,8 @@ export default async function craftProtocol({
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
 }) {
-  const cacheKey = `protocolCache/${protocolData.id}-${useNewChainNames}-${useHourlyData}`;
-  let previousRun: Awaited<ReturnType<typeof buildCoreData>>;
-  try {
-    const data = (await getR2(cacheKey)).body;
-    if (data === undefined) {
-      throw new Error("No previous run");
-    }
-    previousRun = JSON.parse(data);
-  } catch (e) {
-    previousRun = await buildCoreData({ protocolData, useNewChainNames, useHourlyData });
-    await storeR2(cacheKey, JSON.stringify(previousRun));
-  }
-  const lastTimestamp = previousRun.tvl[previousRun.tvl.length - 1]?.date ?? 0; // Consider the case when array is empty
-  /* TODO: Update cache
-  if ((getCurrentUnixTimestamp() - lastTimestamp) > 24 * 3600) {
-  }
-  */
+  const previousRun = await buildCoreData({ protocolData, useNewChainNames, useHourlyData });
+  const lastTimestamp = 0
 
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
     fetchFrom((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id), lastTimestamp),

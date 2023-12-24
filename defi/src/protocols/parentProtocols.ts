@@ -3373,6 +3373,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "BalancedDAO",
+    github: ["balancednetwork"]
   },
 ];
 

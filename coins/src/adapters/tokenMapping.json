@@ -1037,6 +1037,11 @@
       "symbol": "GLMR",
       "to": "coingecko#moonbeam"
     },
+    "0xFFFfffFf15e1b7E3dF971DD813Bc394deB899aBf": {
+      "decimals": "18",
+      "symbol":"xcvDOT",
+      "to": "coingecko#voucher-dot"
+    },
     "0x5331141912a84875beb757e175d991a2c6c89ef4": {
       "decimals": "10",
       "symbol":"DOT",

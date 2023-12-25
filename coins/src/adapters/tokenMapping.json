@@ -1038,7 +1038,7 @@
       "to": "coingecko#moonbeam"
     },
     "0xFFFfffFf15e1b7E3dF971DD813Bc394deB899aBf": {
-      "decimals": "18",
+      "decimals": "10",
       "symbol":"xcvDOT",
       "to": "coingecko#voucher-dot"
     },
@@ -1051,6 +1051,31 @@
       "decimals": "18",
       "symbol":"MOVR",
       "to": "coingecko#"
+    },
+    "0x99Fec54a5Ad36D50A4Bba3a41CAB983a5BB86A7d": {
+      "decimals": "9",
+      "symbol":"SOL",
+      "to": "coingecko#solana"
+    },
+    "0xFFffffFf7cC06abdF7201b350A1265c62C8601d2": {
+      "decimals": "12",
+      "symbol":"xcBNC",
+      "to": "coingecko#bifrost-native-coin"
+    },
+    "0xFFfFfFffA9cfFfa9834235Fe53f4733F1b8B28d4": {
+      "decimals": "10",
+      "symbol":"xcLDOT",
+      "to": "coingecko#liquid-staking-dot"
+    },
+    "0xFFFFfffF71815ab6142E0E20c7259126C6B40612": {
+      "decimals": "10",
+      "symbol":"xcZTG",
+      "to": "coingecko#zeitgeist"
+    },
+    "0xFFfFfFff44bD9D2FFEE20B25D1Cf9E78Edb6Eae3": {
+      "decimals": "10",
+      "symbol":"xcCFG",
+      "to": "coingecko#centrifuge"
     }
   },
   "metis": {

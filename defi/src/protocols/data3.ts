@@ -7554,7 +7554,7 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum"],
     module: "tai-money/index.js",
-    twitter: "taimoney6",
+    twitter: "realtaimoney",
     forkedFrom: ["Reflexer"],
     oracles: ["Chainlink"],
     audit_links: [],

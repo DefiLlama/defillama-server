@@ -27973,7 +27973,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "yiedl-vaults/index.js", 
+    module: "dsf-finance/index.js", 
     twitter: "DsfFinance", 
     audit_links: ["https://github.com/DSFfinance/DSF_Protocol_Mk1/blob/main/audit/DSF_security_review.pdf"],
     listedAt: 1703504958

@@ -27516,7 +27516,7 @@ const data3: Protocol[] = [
     oraclesByChain: {
       conflux: ["Pyth"],
     },
-    forkedFrom: ["Compound V2"],
+    forkedFrom: [],
     module: "unitus/index.js",
     twitter: "unitusfi",
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],

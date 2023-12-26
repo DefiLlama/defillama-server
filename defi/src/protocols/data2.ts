@@ -9555,7 +9555,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Options",
+    category: "Derivatives",
     chains: ["Solana"],
     oracles: ["Pyth"],
     forkedFrom: [],

@@ -192,7 +192,7 @@ export default {
         }
     },
     "raydium": {
-        "enabled": true,
+        "enabled": false,
         "id": "214"
     },
     "spookyswap": {

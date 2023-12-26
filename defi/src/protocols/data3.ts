@@ -26533,7 +26533,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield", //they have a options vault now product now, but still low amount of TVL 
+    category: "Options Vault",
     oracles: [], 
     forkedFrom: [],
     chains: ["Binance"],

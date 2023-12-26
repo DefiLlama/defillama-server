@@ -1674,5 +1674,9 @@ export default {
         parentId: "Velocimeter",
         "enabled": true,
         "id": "3291"
+    },
+    "kiloex": {
+        "enabled": true,
+        "id": "3329"
     }
 } as AdaptorsConfig

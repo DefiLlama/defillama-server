@@ -526,5 +526,9 @@ export default {
         parentId: "Metavault",
         "enabled": true,
         "id": "3911"
+    },
+    "kiloex": {
+        "enabled": true,
+        "id": "3329"
     }
 } as AdaptorsConfig

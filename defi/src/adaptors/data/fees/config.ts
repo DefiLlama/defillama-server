@@ -1669,5 +1669,10 @@ export default {
     "dexter": {
         enabled: true,
         id: "2737"
+    },
+    "fvm-exchange": {
+        parentId: "Velocimeter",
+        "enabled": true,
+        "id": "3291"
     }
 } as AdaptorsConfig

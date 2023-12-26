@@ -6289,7 +6289,7 @@ const data3: Protocol[] = [
     description: "First DeFi Options Protocol on zkSync Era with the highest capital efficiency. Zomma protocol aims to be the underlying fuel for all on-chain financial products, focusing to contribute to the DeFi world by building an array of innovative and diversified products, that include staking, yield mining, buy & sell European style options, settlements and minimal collateral to achieve ultimate capital efficiency for all our ecosystem participants.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/zomma-protocol.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -6297,6 +6297,9 @@ const data3: Protocol[] = [
     chains: ["zkSync Era"],
     module: "zomma/index.js",
     twitter: "ZommaProtocol",
+		audit_links: [
+			"https://zomma-protocol.gitbook.io/welcome-to-zomma/trading-mechanism/security-audits"
+    ],
     forkedFrom: [],
     oracles: ["Internal"],
     listedAt: 1684244892

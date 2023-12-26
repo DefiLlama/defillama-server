@@ -169,7 +169,6 @@ export default async function craftProtocol({
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
 }) {
-  const previousRun = await buildCoreData({ protocolData, useNewChainNames, useHourlyData });
   const lastTimestamp = 0
 
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
@@ -202,7 +201,10 @@ export default async function craftProtocol({
   }
 
   let response: IProtocolResponse = {
-    ...previousRun,
+    tvl:[],
+    chainTvls: {},
+    tokensInUsd:[],
+    tokens:[],
     ...protocolData,
     chains: [],
     currentChainTvls: {},

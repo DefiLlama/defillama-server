@@ -61,34 +61,37 @@ export function checkForStaleness(
 }
 
 export async function storeStaleCoins(staleCoins: StaleCoins) {
-  if (Object.keys(staleCoins).length == 0) return;
-  await generateAuth();
-  if (sql == null) sql = postgres(auth[0]);
+  try {
+    if (Object.keys(staleCoins).length == 0) return;
+    await generateAuth();
+    if (sql == null) sql = postgres(auth[0]);
 
-  const stored: StaleCoinData[] = await queryPostgresWithRetry(
-    sql`
+    const stored: StaleCoinData[] = await queryPostgresWithRetry(
+      sql`
       select ${sql(columns)} from stalecoins where 
       key in ${sql(Object.keys(staleCoins))}
       `,
-    sql
-  );
+      sql
+    );
 
-  stored.map((s: StaleCoinData) => {
-    if (staleCoins[s.key].latency < s.latency) delete staleCoins[s.key];
-  });
+    stored.map((s: StaleCoinData) => {
+      if (staleCoins[s.key].latency < s.latency) delete staleCoins[s.key];
+    });
 
-  const inserts: StaleCoinData[] = Object.values(staleCoins).map((c: StaleCoinData) => ({
-    latency: Number(c.latency.toFixed(0)),
-    usd_amount: Number(c.usd_amount.toPrecision(4)),
-    symbol: c.symbol,
-    percentage: Number(c.percentage?.toFixed(0)),
-    key: c.key,
-    protocol: c.protocol,
-  }));
+    const inserts: StaleCoinData[] = Object.values(staleCoins).map((c: StaleCoinData) => ({
+      latency: Number(c.latency.toFixed(0)),
+      usd_amount: Number(c.usd_amount.toPrecision(4)),
+      symbol: c.symbol,
+      percentage: Number(c.percentage?.toFixed(0)),
+      key: c.key,
+      protocol: c.protocol,
+    }));
 
-  if (inserts.length)
-    await queryPostgresWithRetry(
-      sql`
+    sendMessage(`writing ${inserts.length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
+
+    if (inserts.length)
+      await queryPostgresWithRetry(
+        sql`
       insert into stalecoins
       ${sql(inserts, ...columns)}
       on conflict (key)
@@ -99,10 +102,13 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
         protocol = excluded.protocol,
         percentage = excluded.percentage;
       `,
-      sql
-    );
+        sql
+      );
 
-  return;
+    return;
+  } catch (e) {
+    console.error(`storeStaleCoins failed with: ${e}`);
+  }
 }
 
 export async function notify() {

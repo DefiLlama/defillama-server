@@ -8429,7 +8429,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Orion Protocol",
     address: "0x0258f474786ddfd37abce6df6bbb1dd5dfc4434a",
     symbol: "ORN",
-    url: "https://www.orionprotocol.io",
+    url: "https://orion.xyz/",
     description:
       "The Orion Protocol is an open source protocol that provides liquidity and token swaps through its suite of persistent smart contracts enabling a trustless and fully decentralized trading ecosystem. It connects and aggregates the orderbooks of the largest centralized and decentralized liquidity sources in the industry on the most popular networks to minimize price volatility and slippage and maximize security and accessibility.",
     chain: "Ethereum",
@@ -8441,7 +8441,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Ethereum", "Binance"],
     module: "orionprotocol/index.js",
-    twitter: "orion_protocol",
+    twitter: "TradeOnOrion",
     audit_links: ["https://www.certik.org/projects/orionprotocol"],
     forkedFrom: ["Uniswap V2"],
     github: ["orionprotocol"]
@@ -9249,10 +9249,15 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "thales",
     cmcId: "11973",
     category: "Prediction Market",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Optimism", "Arbitrum", "Base", "Binance", "Polygon"],
     module: "thales/index.js",
     twitter: "thales_io",
-    oracles: ["Chainlink","Pyth"],
+    oraclesByChain: {
+      optimism: ["Chainlink"], //  https://github.com/DefiLlama/defillama-server/pull/5327#issuecomment-1869801081
+      arbitrum: ["Chainlink"], // since the speedmarkets products is only a very small amout of TVL , we can not add it to the oracles. Our rule is around 50% TVL https://github.com/DefiLlama/DefiLlama-Adapters/discussions/6254
+      polygon: ["Chainlink"],
+      base: ["Chainlink"],
+    },
     treasury: "thales.js",
     audit_links: ["https://iosiro.com/audits/thales-airdrop-and-staking-smart-contract-audit"],
     github: ["thales-markets"]

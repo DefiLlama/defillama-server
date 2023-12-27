@@ -12,6 +12,7 @@ import { hourlyTvl, getLastRecord } from "./utils/getLastRecord";
 import { closeConnection, getLatestProtocolItem, initializeTVLCacheDB } from "./api2/db";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { importAdapterDynamic } from "./utils/imports/importAdapter";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const maxRetries = 2;
 
@@ -19,6 +20,7 @@ const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 
 async function main() {
 
+  await setEnvSecrets()
   const staleCoins: StaleCoins = {};
   let actions = [protocols, entities, treasuries].flat()
   // const actions = [entities, treasuries].flat()

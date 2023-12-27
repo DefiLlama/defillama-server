@@ -26533,7 +26533,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield", //they have a options vault now product now, but still low amount of TVL 
+    category: "Options Vault",
     oracles: [], 
     forkedFrom: [],
     chains: ["Binance"],
@@ -28031,7 +28031,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://infernoswap.xyz/",
-    description: "Discover a new era of decentralized trading excellence on Beam Network with InfernoSwap. Enjoy The Lowest & minimalistic Trading fees (0.2%) on Beam Network",
+    description: "Decentralized exchange on Beam Network",
     chain: "Beam",
     logo: `${baseIconsUrl}/inferno-swap.png`,
     audits: "0",

@@ -69,7 +69,7 @@ export default {
         },
     },
     "raydium": {
-        "enabled": false,
+        "enabled": true,
         "id": "214"
     },
     "uniswap": {
@@ -2279,5 +2279,9 @@ export default {
         displayName: "Phoenix",
         "enabled": true,
         "id": "3170"
+    },
+    "ryze": {
+        "enabled": true,
+        "id": "3907"
     }
 } as AdaptorsConfig

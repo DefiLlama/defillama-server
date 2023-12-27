@@ -64,7 +64,9 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     }, 60 * 60)
 };
 
-export async function getProtocolDataHandler(protocolName?: string, adaptorType?: AdapterType, rawDataType?: string) {
+export async function getProtocolDataHandler(protocolName?: string, adaptorType?: AdapterType, rawDataType?: string, {
+    isApi2RestServer = false
+} = {}) {
     if (!protocolName || !adaptorType) throw new Error("Missing name or type")
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
@@ -72,14 +74,14 @@ export async function getProtocolDataHandler(protocolName?: string, adaptorType?
 
     const dexData = await getProtocolData(protocolName, adaptorType)
     if (dexData) {
-        const dexDataResponse = await getProtocolSummary(dexData, dataType, adaptorType)
+        const dexDataResponse = await getProtocolSummary(dexData, dataType, adaptorType, { isApi2RestServer })
         delete dexDataResponse.generatedSummary
         return dexDataResponse
     }
 
     const parentData = parentProtocols.find(pp => pp.name.toLowerCase() === standardizeProtocolName(protocolName))
     if (parentData) {
-        return getProtocolSummaryParent(parentData, dataType, adaptorType)
+        return getProtocolSummaryParent(parentData, dataType, adaptorType, { isApi2RestServer })
     }
 }
 

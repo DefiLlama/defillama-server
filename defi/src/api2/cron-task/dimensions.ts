@@ -68,12 +68,12 @@ async function writeAdapterType(adaptorRecordType: AdapterType, dataType: Adapto
 
       let lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 1]
 
-      if (ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType]) {
-        const rawTotalRecord = await wrappedGetAdaptorRecord(adapter, ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType], "LAST").catch(_e => { }) as AdaptorRecord | undefined
+      const lastKey = ACCOMULATIVE_ADAPTOR_TYPE[dataType]
+      if (lastKey) {
+        const rawTotalRecord = await wrappedGetAdaptorRecord(adapter, lastKey, "LAST").catch(_e => { }) as AdaptorRecord | undefined
         if (rawTotalRecord)
-          data[getKey(adapter, ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType], 'LAST')] = rawTotalRecord
+          data[getKey(adapter, lastKey, 'LAST')] = rawTotalRecord
       }
-
 
       for (const recordType of getExtraTypes(adaptorRecordType)) {
         const value = await wrappedGetAdaptorRecord(adapter, recordType, "TIMESTAMP", lastRecordRaw.timestamp).catch(_e => { }) as AdaptorRecord | undefined

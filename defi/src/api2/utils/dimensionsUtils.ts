@@ -28,7 +28,7 @@ export async function getAdaptorRecord2({ adapter, type, mode = 'ALL', adaptorTy
         data[key] = AdaptorRecord.fromJSON(value)
       })
       return data
-    }) 
+    })
   
   const cacheKey = getAdapterCacheKey(adapter, type, mode)
   return (await cache.feesAdapterCache[fileKey])[cacheKey]
@@ -48,7 +48,7 @@ export async function getDimensionProtocolHandler(req: HyperExpress.Request, res
   const protocolName = req.path_parameters.name?.toLowerCase() 
   const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
   const rawDataType = req.query_parameters?.dataType
-  const data = await getProtocolDataHandler(protocolName, adaptorType, rawDataType)
+  const data = await getProtocolDataHandler(protocolName, adaptorType, rawDataType, { isApi2RestServer: true })
   if (data) return successResponse(res, data, 6 * 60);
 
   return errorResponse(res, `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`)

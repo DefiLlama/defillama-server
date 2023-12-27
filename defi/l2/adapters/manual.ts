@@ -33,6 +33,7 @@ export const additional: { [chain: string]: string[] } = {
     "0x9d2F299715D94d8A7E6F5eaa8E654E8c74a988A7", // FXS
     "0x0c880f6761F1af8d9Aa9C466984b80DAb9a8c9e8", // PENDLE
     "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1", // DAI
+    "0x912CE59144191C1204E64559FE8253a0e49E6548", // ARB
   ],
   polygon: [
     "0x1C954E8fe737F99f68Fa1CCda3e51ebDB291948C", // KNC

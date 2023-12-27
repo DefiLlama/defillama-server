@@ -87,6 +87,8 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
       protocol: c.protocol,
     }));
 
+    sendMessage(`writing ${inserts.length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
+
     if (inserts.length)
       await queryPostgresWithRetry(
         sql`

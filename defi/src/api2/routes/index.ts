@@ -19,7 +19,7 @@ import { getR2 } from "../../utils/r2";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
 import { getDimensionProtocolHandler, getOverviewHandler } from "../utils/dimensionsUtils";
-import { getProtocolUsersHandler } from "../../getProtocolUsers";
+/* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
 import { getSwapTotalVolume } from "../../dexAggregators/db/getSwapTotalVolume";
@@ -29,7 +29,7 @@ import { getPermitBlackList } from "../../dexAggregators/db/getPermitBlackList";
 import { historicalLiquidity } from "../../getHistoricalLiquidity";
 import { saveEvent } from "../../dexAggregators/db/saveEvent";
 import { reportError } from "../../reportError";
-import { saveBlacklistPemrit } from "../../dexAggregators/db/saveBlacklistPemrit";
+import { saveBlacklistPemrit } from "../../dexAggregators/db/saveBlacklistPemrit"; */
 
 export default function setRoutes(router: HyperExpress.Router, routerBasePath: string) {
   // todo add logging middleware to all routes
@@ -87,7 +87,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/:type", ew(getOverviewHandler))
   router.get("/overview/:type/:chain", ew(getOverviewHandler))
   router.get("/summary/:type/:name", ew(getDimensionProtocolHandler))
-
+/* 
   router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
 
   router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set
@@ -102,7 +102,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/getBlackListedTokens", ew(getBlackListedTokensHandler)) // TODO: ensure that env vars are set
   router.post("/storeBlacklistPermit", ew(storeBlacklistPermitHandler)) // TODO: ensure that env vars are set
   router.post("/historicalLiquidity/:token", ew(getHistoricalLiquidityHandler)) // TODO: ensure that env vars are set
-
+ */
 
 
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -374,7 +374,7 @@ async function getHistoricalChainTvlData(req: HyperExpress.Request, res: HyperEx
     return errorResponse(res, 'There is no chain with that name')
   }
 }
-
+/* 
 async function getProtocolUsers(req: HyperExpress.Request, res: HyperExpress.Response) {
   const { protocolId, type } = req.path_parameters
   const data = await getProtocolUsersHandler(protocolId, type)
@@ -458,4 +458,4 @@ async function reportErrorHandler(req: HyperExpress.Request, res: HyperExpress.R
   
   await reportError(body);
   return successResponse(res, {message: "success"}, undefined, { isPost: true })
-}
+} */

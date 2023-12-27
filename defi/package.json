@@ -46,6 +46,7 @@
     "api2-start": "bash src/api2/scripts/start.sh",
     "api2-cron-task": "npx ts-node src/api2/cron-task/index.ts",
     "run-governance": "npx ts-node src/governance/test.ts",
+    "cron-dimensions": "npm run prebuild && npx ts-node src/api2/cron-task/dimensions.ts",
     "notify-outdated": "npx ts-node src/server-scripts/notifyOutdated.ts"
   },
   "devDependencies": {

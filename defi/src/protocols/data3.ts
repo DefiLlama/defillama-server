@@ -28113,6 +28113,27 @@ const data3: Protocol[] = [
     github: ["stakee-metadata"],
     listedAt: 1703591969
   },
+  {
+    id: "3965",
+    name: "Dojoswap",
+    address: null,
+    symbol: "-",
+    url: "https://dojo.trading",
+    description: "A Native AMM Dex on Injective. Providing efficient trading and liquidity mining to the Injective ecosystem",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/dojoswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Injective"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dojoswap/index.js", 
+    twitter: "Dojo_Swap", 
+    listedAt: 1703694681
+  },
 ]
 
 export default data3

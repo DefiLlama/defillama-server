@@ -36,6 +36,7 @@ export const cache: {
   tvlTokenProtocol: any,
   allTvlData: any,
   historicalTvlForAllProtocolsMeta: any,
+  feesAdapterCache: any,
 } = {
   metadata: {
     protocols: [],
@@ -59,6 +60,7 @@ export const cache: {
   tvlTokenProtocol: {},
   allTvlData: {},
   historicalTvlForAllProtocolsMeta: {},
+  feesAdapterCache: {},
 }
 
 const MINUTES = 60 * 1000

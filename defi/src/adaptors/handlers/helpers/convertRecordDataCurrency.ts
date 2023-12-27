@@ -5,6 +5,19 @@ import { formatTimestampAsDate, getClosestDayStartTimestamp } from "../../../uti
 import { IJSON } from "../../data/types"
 import { IRecordAdapterRecordChainData, IRecordAdaptorRecordData } from "../../db-utils/adaptor-record"
 import getDataPoints from "../../utils/getDataPoints"
+import * as sdk from '@defillama/sdk'
+
+
+async function getUsdValue(obj: any, timestamp?: number) {
+    const numValue = Number(obj)
+    if (!isNaN(numValue)) return numValue
+    if (typeof obj === 'object') {
+        const balances = new sdk.Balances({ timestamp })
+        balances.addBalances(obj)
+        return balances.getUSDValue()
+    }
+    return 0
+}
 
 interface IPricesResponse {
     chaintoken: string
@@ -61,7 +74,8 @@ const addToPricesObject = async (token: string, fromTimestamp: number) => {
     })
 }
 
-export const convertDataToUSD = async (data: IRecordAdaptorRecordData, timestamp: number) => {
+// TODO: improve this logic, change how token prices are pulled
+export const convertDataToUSD = async (data: IRecordAdaptorRecordData, timestamp?: number) => {
     const rrr = await Object.entries(data).reduce(async (accP, [chain, chainData]) => {
         let acc = await accP
         if (typeof chainData === 'number') acc[chain] = chainData
@@ -69,14 +83,7 @@ export const convertDataToUSD = async (data: IRecordAdaptorRecordData, timestamp
             acc[chain] = await Object.entries(chainData).reduce(async (accP, [protocol, protocolData]) => {
                 let acc = await accP
                 if (protocol === 'error') return acc
-                else if (typeof protocolData === 'number') acc[protocol] = protocolData
-                else if (typeof protocolData === 'object') acc[protocol] = await Object.entries(protocolData).reduce(async (accP, [chaintoken, balance]) => {
-                    let acc = await accP
-                    if (!prices?.[chaintoken]?.prices?.[timestamp]?.price) await addToPricesObject(chaintoken, timestamp)
-                    if (prices?.[chaintoken]?.prices?.[timestamp]?.price)
-                        acc += prices[chaintoken].prices[timestamp].price * Number(balance)
-                    return acc
-                }, Promise.resolve(0))
+                else if (['number', 'object'].includes(typeof protocolData)) acc[protocol] = await getUsdValue(protocolData, timestamp)
                 return acc
             }, Promise.resolve({}) as Promise<IRecordAdapterRecordChainData>)
         }

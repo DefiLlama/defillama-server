@@ -620,7 +620,7 @@ functions:
   cacheExternalResponse:
     handler: src/externalEndpointsCache/index.cacheExternalResponseHandler
     timeout: 180
-  cachedExternalResponse:
+  cachedExternalResponse: # used in defillama-app repo for cex volume
     handler: src/externalEndpointsCache/index.default
     timeout: 30
     memorySize: 2000

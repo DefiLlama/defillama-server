@@ -1678,5 +1678,9 @@ export default {
     "kiloex": {
         "enabled": true,
         "id": "3329"
+    },
+    "railgun": {
+        "enabled": true,
+        "id": "1320"
     }
 } as AdaptorsConfig

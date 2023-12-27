@@ -26601,7 +26601,7 @@ const data2: Protocol[] = [
     module: "bhavish/index.js",
     twitter: "NexterDotFi",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     audit_links: ["https://nexter.fi/docs/blocksec-audit-report.pdf", "https://nexter.fi/docs/slowmist-audit-report.pdf"],
     listedAt: 1676983479,
     github: ["Bhavish-finance"]

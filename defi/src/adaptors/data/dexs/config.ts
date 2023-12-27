@@ -69,7 +69,7 @@ export default {
         },
     },
     "raydium": {
-        "enabled": false,
+        "enabled": true,
         "id": "214"
     },
     "uniswap": {

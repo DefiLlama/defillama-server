@@ -5,6 +5,7 @@ import { ExtraTypes, IGeneralStats, ProtocolAdaptorSummary } from "../handlers/g
 import { ONE_DAY_IN_SECONDS } from "../handlers/getProtocol";
 
 import getDataPoints from "./getDataPoints";
+// @ts-ignore
 import { chunk, mean, sum } from 'lodash';
 
 const sumAllVolumes = (breakdownVolumes: IRecordAdaptorRecordData, protVersion?: string) => {

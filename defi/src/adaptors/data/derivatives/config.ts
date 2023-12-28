@@ -530,5 +530,9 @@ export default {
     "kiloex": {
         "enabled": true,
         "id": "3329"
+    },
+    "surfone": {
+        "enabled": true,
+        "id": "3954"
     }
 } as AdaptorsConfig

@@ -21,7 +21,7 @@ const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 async function main() {
 
   await setEnvSecrets()
-  const staleCoins: StaleCoins = {};
+  const staleCoinWrites: Promise<void>[] = []
   let actions = [protocols, entities, treasuries].flat()
   // const actions = [entities, treasuries].flat()
   shuffleArray(actions) // randomize order of execution
@@ -47,6 +47,7 @@ async function main() {
   const runProcess = (filter = alwaysRun) => async (protocol: any) => {
     const startTime = +Date.now()
     try {
+      const staleCoins: StaleCoins = {};
       const adapterModule = importAdapterDynamic(protocol)
       if (!(await filter(adapterModule, protocol))) {
         i++
@@ -61,6 +62,7 @@ async function main() {
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       // await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
       await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,)
+      staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
       console.log('FAILED: ', protocol?.name, e?.message)
       failed++
@@ -82,7 +84,7 @@ async function main() {
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped}`)
 
   await saveSdkInternalCache() // save sdk cache to r2
-  await storeStaleCoins(staleCoins)
+  await Promise.all(staleCoinWrites)
 }
 
 /* async function cacheCurrentBlocks() {

@@ -62,8 +62,11 @@ export function checkForStaleness(
 
 export async function storeStaleCoins(staleCoins: StaleCoins) {
   try {
+    if (process.env.STALE_COINS_ADAPTERS_WEBHOOK) console.log("WASD webhook is here though");
+    await sendMessage(`entering storeStaleCoins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
     if (Object.keys(staleCoins).length == 0) return;
     await generateAuth();
+    await sendMessage(`setting pg`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
     if (sql == null) sql = postgres(auth[0]);
 
     const stored: StaleCoinData[] = await queryPostgresWithRetry(
@@ -73,6 +76,7 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
       `,
       sql
     );
+    await sendMessage(`found ${stored.length} stored`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
 
     stored.map((s: StaleCoinData) => {
       if (staleCoins[s.key].latency < s.latency) delete staleCoins[s.key];
@@ -87,7 +91,7 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
       protocol: c.protocol,
     }));
 
-    sendMessage(`writing ${inserts.length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
+    await sendMessage(`writing ${inserts.length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
 
     if (inserts.length)
       await queryPostgresWithRetry(

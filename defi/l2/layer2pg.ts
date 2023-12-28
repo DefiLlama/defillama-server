@@ -5,6 +5,7 @@ import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 import sleep from "../src/utils/shared/sleep";
 
 let auth: string[];
+let sql: any;
 
 export async function queryPostgresWithRetry(query: any, sql: any, counter: number = 0): Promise<any> {
   try {
@@ -17,7 +18,7 @@ export async function queryPostgresWithRetry(query: any, sql: any, counter: numb
   } catch (e) {
     if (counter > 5) throw e;
     await sleep(5000 + 2e4 * Math.random());
-    const sql = postgres(auth[0]);
+    sql = postgres(auth[0]);
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
 }
@@ -33,14 +34,15 @@ export async function storeAllTokens(tokens: string[]) {
 
   const inserts: TokenInsert[] = [];
   tokens.map((t: string) => {
-    const [chain, token] = t.toLowerCase().split(":");
+    const [chain, token1] = t.split(":");
+    const token = chain == "solana" ? token1 : token1.toLowerCase();
     if (!token) return;
     inserts.push({ chain, token });
   });
 
   if (!inserts.length) return;
   await generateAuth();
-  const sql = postgres(auth[0]);
+  if (!sql) sql = postgres(auth[0]);
   await queryPostgresWithRetry(
     sql`
     insert into alltokens
@@ -54,7 +56,7 @@ export async function storeAllTokens(tokens: string[]) {
 
 export async function fetchAllTokens(chain: Chain): Promise<string[]> {
   await generateAuth();
-  const sql = postgres(auth[0]);
+  if (!sql) sql = postgres(auth[0]);
   const res = await queryPostgresWithRetry(
     sql`
       select token from alltokens

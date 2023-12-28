@@ -7407,7 +7407,7 @@ const data3: Protocol[] = [
     module: "winr-protocol/index.js",
     twitter: "WINRProtocol",
     forkedFrom: [],
-    oracles: ["Supra"],
+    oracles: ["Pyth"],
     audit_links: ["https://docs.winr.games/developers/audits"],
     listedAt: 1685097004
   },

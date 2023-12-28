@@ -142,6 +142,11 @@
       "decimals": "6",
       "symbol":"wanXRP",
       "to": "coingecko#ripple"
+    },
+    "0xe07F9D810a48ab5c3c914BA3cA53AF14E4491e8A": {
+      "decimals": "18",
+      "symbol":"GYD",
+      "to": "coingecko#gyroscope-gyd"
     }
   },
   "fantom": {

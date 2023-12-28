@@ -85,6 +85,7 @@
     "@types/aws-lambda": "^8.10.97",
     "@types/inquirer-autocomplete-prompt": "^2.0.0",
     "@types/jest": "^27.5.1",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^14.18.35",
     "@types/node-fetch": "^2.5.10",
     "@types/promise.allsettled": "^1.0.6",

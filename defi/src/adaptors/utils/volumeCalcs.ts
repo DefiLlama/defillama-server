@@ -5,11 +5,7 @@ import { ExtraTypes, IGeneralStats, ProtocolAdaptorSummary } from "../handlers/g
 import { ONE_DAY_IN_SECONDS } from "../handlers/getProtocol";
 
 import getDataPoints from "./getDataPoints";
-
-// import { chunk, mean, sum } from 'lodash';
-import * as _ from 'lodash';
-
-const { chunk, mean, sum }: any = _
+import { chunk, mean, sum } from 'lodash';
 
 const sumAllVolumes = (breakdownVolumes: IRecordAdaptorRecordData, protVersion?: string) => {
     if (breakdownVolumes) {
@@ -77,7 +73,7 @@ const calcNdONdChange = (
         }
     }
 
-    const volumeAvg = nDaysAvg ? mean(chunk(volumeValues, nDaysAvg).map((i: any) => sum(i))): 0;
+    const volumeAvg = nDaysAvg ? mean(chunk(volumeValues, nDaysAvg).map(chunk => sum(chunk))): 0;
 
     const ndChange = yesterdaysVolumeAll && ndVolume ? (yesterdaysVolumeAll - ndVolume) / ndVolume * 100 : null
     return {

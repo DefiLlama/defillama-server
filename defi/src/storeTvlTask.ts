@@ -17,11 +17,11 @@ import setEnvSecrets from "./utils/shared/setEnvSecrets";
 const maxRetries = 2;
 
 const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
+const staleCoins: StaleCoins = {};
 
 async function main() {
 
   await setEnvSecrets()
-  const staleCoinWrites: Promise<void>[] = []
   let actions = [protocols, entities, treasuries].flat()
   // const actions = [entities, treasuries].flat()
   shuffleArray(actions) // randomize order of execution
@@ -62,7 +62,6 @@ async function main() {
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       // await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
       await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,)
-      staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
       console.log('FAILED: ', protocol?.name, e?.message)
       failed++
@@ -82,9 +81,16 @@ async function main() {
   clearPriceCache()
 
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped}`)
+  await preExit()
+}
 
-  await saveSdkInternalCache() // save sdk cache to r2
-  await Promise.all(staleCoinWrites)
+async function preExit() {
+  try {
+    await saveSdkInternalCache() // save sdk cache to r2
+    await storeStaleCoins(staleCoins)
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 /* async function cacheCurrentBlocks() {
@@ -179,7 +185,8 @@ process.on('uncaughtException', (err) => {
   console.log('UNHANDLED EXCEPTION! Shutting down...');
 })
 
-setTimeout(() => {
+setTimeout(async () => {
   console.log('Timeout! Shutting down...');
+  preExit()
   process.exit(1);
-}, 1000 * 60 * 60 * 0.5); // 30 minutes
+}, 1000 * 60 * 40); // 40 minutes

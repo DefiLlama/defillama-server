@@ -55,7 +55,24 @@ export const linea = async (): Promise<Address[]> => {
   addresses.linea = data.tokens.map((t: any) => t.address.toLowerCase());
   return addresses.linea;
 };
-// export const metis = (): Promise<Address[]> => {};
+export const metis = async (): Promise<Address[]> => {
+  return [
+    "0x0000000000000000000000000000000000000000", // METIS
+    "0x420000000000000000000000000000000000000A", // ETH
+    "0x433E43047B95cB83517abd7c9978Bdf7005E9938", // WBTC
+    "0xEA32A96608495e54156Ae48931A7c20f0dcc1a21", // USDC
+    "0xbb06dca3ae6887fabf931640f67cab3e3a16f4dc", // USDT
+    "0x0x4c078361FC9BbB78DF910800A991C7c3DD2F6ce0", // DAI
+    "0xb809cda0c2f79f43248C32b5DcB09d5cD26BbF10", // BUSD
+    "0xd1F0A4E5444EEd0fbcd6624DCef7Ef33043E6168", // AAVE
+    "0xf5F66d5daa89c090A7afa10E6C1553B2887a9A33", // LINK
+    "0x17Ee7E4dA37B01FC1bcc908fA63DF343F23B4B7C", // SUSHI
+    "0x54acd90360cD3915773f2328c653587db79a4323", // SUSHI
+    "0xC5cDb08E75595D8c55091cBA9B02960b5782B96E", // UNI
+    "0x029a43Aa51D5924D4c18A42EFbC0e0A84ECc355C", // CRV
+    "0x5CE34d9abe4bF239cbc08B89287c87f4CD6d80B7", // WOW
+  ];
+};
 export const optimism = async (): Promise<Address[]> => {
   if (addresses.optimism) return addresses.optimism;
   const data = await fetch("https://static.optimism.io/optimism.tokenlist.json").then((r) => r.json());
@@ -113,4 +130,15 @@ export const zksync = async (): Promise<Address[]> => {
   const data = await provider.getConfirmedTokens();
   addresses.zksync = data.map((d: any) => d.l2Address.toLowerCase());
   return addresses.zksync;
+};
+export const solana = async (): Promise<Address[]> => {
+  const tokenlist = await fetch(
+    "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json"
+  ).then((r) => r.json());
+  const tokens = tokenlist.tokens.filter(
+    (t: any) =>
+      "tags" in t && (t.tags.includes("wrapped") || t.tags.includes("stablecoin") || t.tags.includes("ethereum"))
+  );
+  addresses.solana = tokens.map((t: any) => t.address);
+  return addresses.solana;
 };

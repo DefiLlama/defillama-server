@@ -2,7 +2,7 @@ import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { DollarValues, TokenTvlData } from "./types";
-import { gasTokens, zero } from "./constants";
+import { zero } from "./constants";
 import { fetchBridgeTokenList, fetchSupplies, getPrices } from "./utils";
 
 export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp?: number }): Promise<TokenTvlData> {

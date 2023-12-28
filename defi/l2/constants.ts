@@ -5,6 +5,7 @@ import { ChainData } from "./types";
 export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
 
+export const chainsWithoutCanonicalBridges: string[] = []; //"solana"];
 export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3782": "mantle",
   "3777": "arbitrum",
@@ -20,7 +21,6 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "349": "injecitve",
   "801": "celo",
   "1272": "iotex",
-  // "1541": "solana", // wip
   "2081": "wanchain",
   "2214": "kekchain",
   "2316": "meter",
@@ -29,7 +29,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "129": "xdai",
   "240": "polygon",
   "3779": "avax",
-  // "3783": "metis", // pending canonical token mapping
+  "3783": "metis",
   "3866": "aurora",
   "3861": "rsk",
   "3936": "zksync",
@@ -61,7 +61,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   aurora: { ticker: "AURORA", address: "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79" },
   loopring: { ticker: "LRC", address: "0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD" },
   immutablex: { ticker: "IMX", address: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff" },
-  // solana: { ticker: "SOL", address: "" },
+  solana: { ticker: "SOL", address: "" },
 };
 
 export const gasTokens: { [chain: Chain]: string } = {

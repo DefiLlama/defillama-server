@@ -8,6 +8,7 @@ import { Address } from "@defillama/sdk/build/types";
 import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
+import PromisePool from "@supercharge/promise-pool";
 
 export function aggregateChainTokenBalances(usdTokenBalances: TokenTvlData[][]): TokenTvlData {
   const chainUsdTokenTvls: TokenTvlData = {};
@@ -117,8 +118,32 @@ export async function getMcaps(
   });
   return aggregatedRes;
 }
+
+async function getSolanaTokenSupply(tokens: string[]): Promise<{ [token: string]: number }> {
+  const supplies: { [token: string]: number } = {};
+  await PromisePool.withConcurrency(50)
+    .for(tokens.slice(0, 1000))
+    .process(async (token) => {
+      if (!process.env.SOLANA_RPC) throw new Error(`no Solana RPC supplied`);
+      const res = await fetch(process.env.SOLANA_RPC, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method: "getTokenSupply",
+          params: [token],
+        }),
+      }).then((r) => r.json());
+      supplies[token] = res.result.value.amount;
+    })
+    .catch((token) => console.log(token));
+  return supplies;
+}
 export async function fetchSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
   try {
+    if (chain == "solana") return await getSolanaTokenSupply(contracts);
+
     const res = await multiCall({
       chain,
       calls: contracts.map((target: string) => ({
@@ -143,6 +168,7 @@ export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
     const tokens: Address[] = await Object.values(incomingAssets)[j]();
     const filteredTokens: Address[] =
       chain in excluded ? tokens.filter((t: string) => !excluded[chain].includes(t)) : tokens;
+    if (chain == "solana") return filteredTokens;
     const normalizedTokens: Address[] = filteredTokens.map((t: string) => t.toLowerCase());
     if (!(chain in additional)) return normalizedTokens;
     const additionalTokens = additional[chain].map((t: string) => t.toLowerCase());

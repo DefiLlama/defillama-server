@@ -3,7 +3,7 @@ import getTVLOfRecordClosestToTimestamp from "../src/utils/shared/getRecordClose
 import { getCurrentUnixTimestamp } from "../../high-usage/defiCode/utils/date";
 import { DollarValues, McapData, TokenTvlData } from "./types";
 import { aggregateChainTokenBalances } from "./utils";
-import { canonicalBridgeIds, protocolBridgeIds, zero } from "./constants";
+import { canonicalBridgeIds, chainsWithoutCanonicalBridges, protocolBridgeIds, zero } from "./constants";
 import BigNumber from "bignumber.js";
 
 export default async function fetchBridgeUsdTokenTvls(
@@ -79,6 +79,10 @@ function sortCanonicalBridgeBalances(
     }
 
     canonicalBridgeTokenBalances[ids[id]] = bigNumberBalances;
+  });
+
+  chainsWithoutCanonicalBridges.map((chain: string) => {
+    canonicalBridgeTokenBalances[chain] = {};
   });
   return { data: canonicalBridgeTokenBalances };
 }

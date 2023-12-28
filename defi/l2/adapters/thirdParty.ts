@@ -37,7 +37,5 @@ const axelar = async (): Promise<void> => {
 export default tokenAddresses;
 
 // layerzero
-// wormhole
-// deBridge
 // gravity bridge
 // pNetwork

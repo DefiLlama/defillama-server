@@ -20,7 +20,7 @@ export async function fetchMinted(params: {
   await Promise.all(
     params.chains.map(async (chain: Chain) => {
       const canonicalTokens: Address[] = await fetchBridgeTokenList(chain);
-      const thirdPartyTokens: Address[] = (await fetchThirdPartyTokenList())[chain];
+      const thirdPartyTokens: Address[] = (await fetchThirdPartyTokenList())[chain] ?? [];
       const incomingTokens = [...canonicalTokens, ...thirdPartyTokens];
 
       let storedTokens = await fetchAllTokens(chain);

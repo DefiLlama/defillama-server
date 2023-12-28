@@ -4,7 +4,7 @@ import { fetchMinted } from "./native";
 import { fetchMetadata } from "./metadata";
 import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
-import { gasTokens, ownTokens, tokenFlowCategories, zero } from "./constants";
+import { chainsWithoutCanonicalBridges, gasTokens, ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
@@ -13,7 +13,9 @@ import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 export default async function main() {
   await setEnvSecrets();
   const { data: canonical } = await fetchTvls({ isCanonical: true });
-  let { tvlData: native, mcapData } = await fetchMinted({ chains: Object.keys(canonical) });
+  let { tvlData: native, mcapData } = await fetchMinted({
+    chains: [...Object.keys(canonical), ...chainsWithoutCanonicalBridges],
+  });
   let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({ mcapData, native });
   if (!adjustedNativeBalances) throw new Error(`Adjusting for mcaps has failed, debug manually`);
   native = adjustedNativeBalances;

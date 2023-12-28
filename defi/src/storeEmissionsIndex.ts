@@ -49,11 +49,15 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
           }
         );
       } catch {
-        console.error(`${protocol} failed`);
+        console.error(`${protocol} res parsing failed`);
         return;
       }
 
       const formattedData = Object.entries(data);
+      if (!formattedData.length) {
+        console.error(`${protocol} failed with 0 length data section`);
+        return;
+      }
       const maxSupply = formattedData[formattedData.length - 1][1];
       const rawNextEvent = res.metadata.events.find((e: any) => e.timestamp > now);
 
@@ -132,7 +136,7 @@ const fetchProtocolEmissionData = async (protocol: ProtocolData) => {
 };
 export default async function handler(): Promise<void> {
   try {
-    await setEnvSecrets()
+    await setEnvSecrets();
     const allProtocols = (await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!))) as string[];
     const data: ProtocolData[] = await fetchProtocolData(allProtocols);
     await fetchCoinsApiData(data);

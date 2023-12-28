@@ -35,6 +35,10 @@ export async function storeAllTokens(tokens: string[]) {
   const inserts: TokenInsert[] = [];
   tokens.map((t: string) => {
     const [chain, token1] = t.split(":");
+    if(!token1) {
+      console.warn("token1 is undefined", t)
+      return
+    }
     const token = chain == "solana" ? token1 : token1.toLowerCase();
     if (!token) return;
     inserts.push({ chain, token });

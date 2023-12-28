@@ -3375,6 +3375,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "BalancedDAO",
     github: ["balancednetwork"]
   },
+  {
+    id: "parent#baptswap",
+    name: "BaptSwap",
+    url: "https://baptswap.com",
+    description: `A protocol for trading and liquidity provision, an AMM with Fee-On-Transfer support on the Aptos Network`,
+    logo: `${baseIconsUrl}/baptswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "baptswap",
+    github: ["BAPTSWAP"]
+  },
 ];
 
 export default parentProtocols;

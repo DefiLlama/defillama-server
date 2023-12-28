@@ -252,7 +252,7 @@ const data3: Protocol[] = [
   */
   {
     id: "2710",
-    name: "BaptSwap",
+    name: "BaptSwap V1",
     address: null,
     symbol: "-",
     url: "https://baptswap.com",
@@ -270,6 +270,7 @@ const data3: Protocol[] = [
     module: "baptswap/index.js",
     twitter: "baptswap",
     audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_BAPT_SWAP.pdf"],
+    parentProtocol: "parent#baptswap",
     listedAt: 1679483195
   },
   {
@@ -28133,6 +28134,29 @@ const data3: Protocol[] = [
     module: "dojoswap/index.js", 
     twitter: "Dojo_Swap", 
     listedAt: 1703694681
+  },
+  {
+    id: "3966",
+    name: "BaptSwap V2",
+    address: null,
+    symbol: "-",
+    url: "https://baptswap.com",
+    description: "Swap. Stake. Secure. The first DEX to support fee-on-transfer tokens on Aptos.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/baptswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "baptswap-v2/index.js",
+    twitter: "baptswap",
+    audit_links: ["https://docs.baptswap.com/technical-references/technical-references/advanced-topics/security"],
+    parentProtocol: "parent#baptswap",
+    listedAt: 1703726463
   },
 ]
 

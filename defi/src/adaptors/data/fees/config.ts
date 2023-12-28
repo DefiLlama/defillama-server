@@ -1682,5 +1682,9 @@ export default {
     "railgun": {
         "enabled": true,
         "id": "1320"
+    },
+    "surfone": {
+        "enabled": true,
+        "id": "3954"
     }
 } as AdaptorsConfig

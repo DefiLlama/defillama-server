@@ -2107,6 +2107,16 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     github: ["fastexlabs"]
   },
+  "Zkfair": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2632,6 +2642,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Sommelier"
     case "bahamut":
       return "Bahamut"
+    case "zkfair":
+      return "Zkfair"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

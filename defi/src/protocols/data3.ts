@@ -27875,7 +27875,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3954",
-    name: "Surf.one",
+    name: "Surf Protocol",
     address: null,
     symbol: "-",
     url: "https://www.surf.one/",

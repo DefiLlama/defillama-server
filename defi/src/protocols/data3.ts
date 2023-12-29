@@ -28267,6 +28267,56 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/DefiLlama/DefiLlama-Adapters/files/13788327/PEN-PDF_Popfi_Solana_Program_Audit_Final_Report_202312011501-1.pdf"],
     listedAt: 1703850808
   },
+  {
+    id: "3972",
+    name: "Agus",
+    address: "core:0x6ba6A4515b9Bf1EdC995C7DB18009a28fA688ef6",
+    symbol: "DANA",
+    url: "https://app.aguscrypto.com",
+    description: "Decentralized Exchange (DEX V2)",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/agus.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "agus/index.js",
+    twitter: "agusCryptocom",
+    github: ["aguscryptocom"],
+    listedAt: 1703852046
+  },
+  {
+    id: "3973",
+    name: "Yearn Ether",
+    address: "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
+    symbol: "YFI",
+    assetToken: "yETH",
+    url: "https://yeth.yearn.fi",
+    description: "yETH is a user-governed liquidity pool token consisting of various Ethereum Liquid Staking Derivatives (LSTs). The yETH pool is an Automated Market Maker (AMM) for LSTs. Each LST in the yETH pool is priced according to the amount of beacon chain ETH it represents.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yearn-ether.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "yearn-ether/index.js",
+    twitter: "yearnfi",
+    audit_links: [
+                    "https://chainsecurity.com/security-audit/yearn-yeth-smart-contracts/",
+                    "https://chainsecurity.com/security-audit/yearn-yeth-periphery/",
+                    "https://chainsecurity.com/security-audit/yearn-yeth-governance/",
+                    "https://github.com/mixbytes/audits_public/tree/master/Yearn%20Finance/yETH-bootstrap"
+                 ],
+    listedAt: 1703852065
+  },
 ]
 
 export default data3

@@ -13,6 +13,7 @@ import { closeConnection, getLatestProtocolItem, initializeTVLCacheDB } from "./
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { importAdapterDynamic } from "./utils/imports/importAdapter";
 import setEnvSecrets from "./utils/shared/setEnvSecrets";
+import { sendMessage } from "./utils/discord";
 
 const maxRetries = 2;
 
@@ -87,6 +88,7 @@ async function main() {
 async function preExit() {
   try {
     await saveSdkInternalCache() // save sdk cache to r2
+    await sendMessage(`storing ${Object.keys(staleCoins).length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
     await storeStaleCoins(staleCoins)
   } catch (e) {
     console.error(e)

@@ -28244,6 +28244,29 @@ const data3: Protocol[] = [
     twitter: "SideswapZK",
     listedAt: 1703778458
   },
+  {
+    id: "3971",
+    name: "PopFi",
+    address: null,
+    symbol: "-",
+    url: "https://www.popfi.io",
+    description: "PopFi is a decentralized trading platform built on the Solana blockchain, specializing in perpetual futures and binary options. Leveraging the Pyth Oracle, PopFi provides accurate and reliable pricing, ensuring high levels of capital efficiency. The platform is distinguished by its use of synthetic leverages, allowing users to engage in trades with up to 200x leverage.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/popfi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Solana"],
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    module: "popfi/index.js",
+    treasury: "pop-fi.js",
+    twitter: "PopFi_io",
+    audit_links: ["https://github.com/DefiLlama/DefiLlama-Adapters/files/13788327/PEN-PDF_Popfi_Solana_Program_Audit_Final_Report_202312011501-1.pdf"],
+    listedAt: 1703850808
+  },
 ]
 
 export default data3

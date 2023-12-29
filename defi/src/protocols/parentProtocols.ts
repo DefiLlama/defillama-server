@@ -3401,6 +3401,18 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"],
     github: ["iearn-finance", "yearn"] 
   },
+  {
+    id: "parent#orion-protocol",
+    name: "Orion Protocol",
+    url: "https://orion.xyz",
+    description: `The Orion Protocol is an open source protocol that provides liquidity and token swaps through its suite of persistent smart contracts enabling a trustless and fully decentralized trading ecosystem. It connects and aggregates the orderbooks of the largest centralized and decentralized liquidity sources in the industry on the most popular networks to minimize price volatility and slippage and maximize security and accessibility.`,
+    logo: `${baseIconsUrl}/orion-protocol.png`,
+    gecko_id: "orion-protocol",
+    cmcId: "5631",
+    chains: [],
+    twitter: "TradeOnOrion",
+    github: ["orionprotocol"]
+  },
 ];
 
 export default parentProtocols;

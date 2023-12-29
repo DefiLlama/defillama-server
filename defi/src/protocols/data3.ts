@@ -28379,6 +28379,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "orion-rfq/index.js",
     twitter: "TradeOnOrion",
+    parentProtocol: "parent#orion-protocol",
     listedAt: 1703860590
   },
 ]

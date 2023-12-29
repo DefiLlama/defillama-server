@@ -34,10 +34,12 @@ export async function storeAllTokens(tokens: string[]) {
 
   const inserts: TokenInsert[] = [];
   tokens.map((t: string) => {
-    const [chain, token1] = t.split(":");
-    if(!token1) {
-      console.warn("token1 is undefined", t)
-      return
+    let [chain, token1] = t.split(":");
+    if (!token1 && chain.startsWith("0x")) {
+      token1 = chain;
+      chain = "ethereum";
+    } else {
+      return;
     }
     const token = chain == "solana" ? token1 : token1.toLowerCase();
     if (!token) return;
@@ -58,12 +60,57 @@ export async function storeAllTokens(tokens: string[]) {
   );
 }
 
+export async function storeNotTokens(tokens: string[]) {
+  if (!tokens.length) return;
+
+  const inserts: TokenInsert[] = [];
+  tokens.map((t: string) => {
+    let [chain, token1] = t.split(":");
+    if (!token1 && chain.startsWith("0x")) {
+      token1 = chain;
+      chain = "ethereum";
+    } else {
+      return;
+    }
+    const token = chain == "solana" ? token1 : token1.toLowerCase();
+    if (!token) return;
+    inserts.push({ chain, token });
+  });
+
+  if (!inserts.length) return;
+  await generateAuth();
+  if (!sql) sql = postgres(auth[0]);
+  await queryPostgresWithRetry(
+    sql`
+    insert into nottokens
+    ${sql(inserts, "chain", "token")}
+    on conflict (chain, token)
+    do nothing
+  `,
+    sql
+  );
+}
+
 export async function fetchAllTokens(chain: Chain): Promise<string[]> {
   await generateAuth();
   if (!sql) sql = postgres(auth[0]);
   const res = await queryPostgresWithRetry(
     sql`
       select token from alltokens
+      where chain = ${chain}
+    `,
+    sql
+  );
+
+  return res.map((r: any) => r.token);
+}
+
+export async function fetchNotTokens(chain: Chain): Promise<string[]> {
+  await generateAuth();
+  if (!sql) sql = postgres(auth[0]);
+  const res = await queryPostgresWithRetry(
+    sql`
+      select token from nottokens
       where chain = ${chain}
     `,
     sql

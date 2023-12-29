@@ -3387,6 +3387,20 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "baptswap",
     github: ["BAPTSWAP"]
   },
+  {
+    id: "parent#yearn",
+    name: "Yearn",
+    url: "https://yearn.fi/",
+    description: `Yearn Finance is DeFi’s premier yield aggregator. Giving individuals, DAOs and other protocols a way to deposit digital assets and receive yield.`,
+    logo: `${baseIconsUrl}/yearn.jpg`,
+    gecko_id: "yearn-finance",
+    cmcId: "5864",
+    chains: [],
+    twitter: "yearnfi",
+    treasury: "yearn.js",
+    governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"],
+    github: ["iearn-finance", "yearn"] 
+  },
 ];
 
 export default parentProtocols;

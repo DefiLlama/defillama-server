@@ -145,19 +145,17 @@ const data: Protocol[] = [
       "Yearn.finance is an aggregator service for decentralized finance (DeFi) investors, using automation to allow them to maximize profits from yield farming.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/yearn-finance.jpg`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
-    gecko_id: "yearn-finance",
-    cmcId: "5864",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum", "Fantom"],
     module: "yearn/index.js", // TODO: Fix latest
-    treasury: "yearn.js", // TODO: Fix latest
     twitter: "yearnfi",
     audit_links: ["https://github.com/yearn/yearn-audits"],
+    parentProtocol: "parent#yearn",
     language: "Vyper",
-    governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"],
-    github: ["iearn-finance", "yearn"] //check
   },
   {
     id: "114",

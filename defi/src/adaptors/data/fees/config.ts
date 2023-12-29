@@ -1383,9 +1383,9 @@ export default {
         "enabled": true,
         "id": "3609"
     },
-    "allbridge": {
+    "allbridge-core": {
         "enabled": true,
-        "id": "577"
+        "id": "3944"
     },
     "cipher": {
         "enabled": true,

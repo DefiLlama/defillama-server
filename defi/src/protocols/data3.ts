@@ -28366,7 +28366,7 @@ const data3: Protocol[] = [
     address: "0x0258f474786ddfd37abce6df6bbb1dd5dfc4434a",
     symbol: "ORN",
     url: "https://orion.xyz/",
-    description: "The Orion Protocol is an open source protocol that provides liquidity and token swaps through its suite of persistent smart contracts enabling a trustless and fully decentralized trading ecosystem. It connects and aggregates the orderbooks of the largest centralized and decentralized liquidity sources in the industry on the most popular networks to minimize price volatility and slippage and maximize security and accessibility.",
+    description: "Liquidity Nodes are the building blocks on which the Delta Neutral Liquidity Provisioning (DNLP) system is built. The Liquidity Nodes make their liquidity available to users by providing 1:1 quotes with those of the CEXs in a completely decentralized manner, while earning a delta neutral yield.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/orion-liquidity-nodes.jpg`, 
     audits: "0",

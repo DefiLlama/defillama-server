@@ -88,6 +88,10 @@ export async function getPrices(
       if (a.PK) aggregatedRes[a.PK] = a;
     });
   });
+
+  const notPricedTokens = filterForNotTokens(readKeys, Object.keys(aggregatedRes));
+  await storeNotTokens(notPricedTokens);
+
   return aggregatedRes;
 }
 export async function getMcaps(
@@ -140,7 +144,7 @@ async function getSolanaTokenSupply(tokens: string[]): Promise<{ [token: string]
       tokens;
       i;
       try {
-        const res = await fetch(process.env.SOLANA_RPC ?? '', {
+        const res = await fetch(process.env.SOLANA_RPC ?? "", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

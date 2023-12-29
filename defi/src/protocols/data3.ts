@@ -28045,7 +28045,9 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "Infernoswap/index.js", 
     twitter: "Infernoswap", 
-    listedAt: 1703552631
+    listedAt: 1703552631,
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "3962",

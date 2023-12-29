@@ -13,15 +13,16 @@ import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 export default async function main() {
   await setEnvSecrets();
   const { data: canonical } = await fetchTvls({ isCanonical: true });
-  let { tvlData: native, mcapData } = await fetchMinted({
-    chains: [...Object.keys(canonical), ...chainsWithoutCanonicalBridges],
-  });
+  let [{ tvlData: native, mcapData }, incoming, { data: protocols }] = await Promise.all([
+    fetchMinted({
+      chains: [...Object.keys(canonical), ...chainsWithoutCanonicalBridges],
+    }),
+    fetchIncoming({ canonical }),
+    fetchTvls({ isCanonical: true, isProtocol: true }),
+  ]);
   let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({ mcapData, native });
   if (!adjustedNativeBalances) throw new Error(`Adjusting for mcaps has failed, debug manually`);
   native = adjustedNativeBalances;
-  const incoming = await fetchIncoming({ canonical });
-  const { data: protocols } = await fetchTvls({ isCanonical: true, isProtocol: true });
-  // const metadata = await Promise.all(Object.keys(canonical).map((chain: string) => fetchMetadata(chain)));
   Object.keys(protocols).map((pid: string) => {
     canonical[pid] = protocols[pid];
   });

@@ -31,18 +31,13 @@ export async function fetchMinted(params: {
         if (i == -1) return;
         storedTokens.splice(i, 1);
       });
-      const supplies = await fetchSupplies(chain, storedTokens);
 
-      const [prices, mcaps] = await Promise.all([
-        getPrices(
-          Object.keys(supplies).map((t: string) => `${chain}:${t}`),
-          timestamp
-        ),
-        getMcaps(
-          Object.keys(supplies).map((t: string) => `${chain}:${t}`),
-          timestamp
-        ),
-      ]);
+      const keys = storedTokens.map((t: string) => `${chain}:${t}`);
+
+      // do these in order to lighten rpc, rest load
+      const supplies = await fetchSupplies(chain, keys);
+      const prices = await getPrices(Object.keys(supplies), timestamp);
+      const mcaps = await getMcaps(Object.keys(prices), timestamp);
 
       function findDollarValues() {
         Object.keys(supplies).map((t: string) => {

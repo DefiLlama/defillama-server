@@ -22441,7 +22441,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dyson.finance/",
-    description: "Dyson Finance combines the strengths of dynamic AMM, dual investment, and a Membership Program",
+    description: "Empowering Everyone with Accessibility and Profitability through our DEX & Dual Investment",
     chain: "Linea",
     logo: `${baseIconsUrl}/dyson-finance.png`,
     audits: "0",

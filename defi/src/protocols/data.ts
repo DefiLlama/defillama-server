@@ -8424,14 +8424,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "496",
-    name: "Orion V2",
+    name: "Orion Pools",
     address: "0x0258f474786ddfd37abce6df6bbb1dd5dfc4434a",
     symbol: "ORN",
     url: "https://orion.xyz/",
     description:
       "The Orion Protocol is an open source protocol that provides liquidity and token swaps through its suite of persistent smart contracts enabling a trustless and fully decentralized trading ecosystem. It connects and aggregates the orderbooks of the largest centralized and decentralized liquidity sources in the industry on the most popular networks to minimize price volatility and slippage and maximize security and accessibility.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/orion-v2.jpg`,
+    logo: `${baseIconsUrl}/orion-pools.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

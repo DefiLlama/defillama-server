@@ -3,12 +3,13 @@ import { CoinsApiData, McapsApiData, TokenTvlData } from "./types";
 import { excludedTvlKeys, zero } from "./constants";
 import fetch from "node-fetch";
 import sleep from "../src/utils/shared/sleep";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import { call, multiCall } from "@defillama/sdk/build/abi/abi2";
 import { Address } from "@defillama/sdk/build/types";
 import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
+import { fetchNotTokens, storeNotTokens } from "./layer2pg";
 
 export function aggregateChainTokenBalances(usdTokenBalances: TokenTvlData[][]): TokenTvlData {
   const chainUsdTokenTvls: TokenTvlData = {};
@@ -34,7 +35,7 @@ async function restCallWrapper(request: () => Promise<any>, retries: number = 4,
       const res = await request();
       return res;
     } catch {
-      await sleep(6000 + 2e4 * Math.random());
+      await sleep(10000 + 4e4 * Math.random());
       restCallWrapper(request, retries--);
     }
   }
@@ -56,11 +57,16 @@ export async function getPrices(
     readRequests.push(
       restCallWrapper(
         () =>
-          fetch("https://coins.llama.fi/prices?source=internal", {
-            method: "POST",
-            body: JSON.stringify(body),
-            headers: { "Content-Type": "application/json" },
-          })
+          fetch(
+            `https://coins.llama.fi/prices?source=internal${
+              process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""
+            }`,
+            {
+              method: "POST",
+              body: JSON.stringify(body),
+              headers: { "Content-Type": "application/json" },
+            }
+          )
             .then((r) => r.json())
             .then((r) =>
               Object.entries(r.coins).map(([PK, value]) => ({
@@ -98,12 +104,15 @@ export async function getMcaps(
       body.timestamp = timestamp;
     }
     readRequests.push(
-      restCallWrapper(() =>
-        fetch("https://coins.llama.fi/mcaps", {
-          method: "POST",
-          body: JSON.stringify(body),
-          headers: { "Content-Type": "application/json" },
-        }).then((r) => r.json())
+      restCallWrapper(
+        () =>
+          fetch(`https://coins.llama.fi/mcaps${process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""}`, {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: { "Content-Type": "application/json" },
+          }).then((r) => r.json()),
+        undefined,
+        "mcaps"
       )
     );
   }
@@ -121,42 +130,86 @@ export async function getMcaps(
 
 async function getSolanaTokenSupply(tokens: string[]): Promise<{ [token: string]: number }> {
   const supplies: { [token: string]: number } = {};
+  let i = 0;
+  let j = 0;
+  const notTokens: string[] = [];
+  if (!process.env.SOLANA_RPC) throw new Error(`no Solana RPC supplied`);
   await PromisePool.withConcurrency(50)
-    .for(tokens.slice(0, 1000))
+    .for(tokens.slice(0, Math.min(tokens.length, 5000)))
     .process(async (token) => {
-      if (!process.env.SOLANA_RPC) throw new Error(`no Solana RPC supplied`);
-      const res = await fetch(process.env.SOLANA_RPC, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          jsonrpc: "2.0",
-          id: 1,
-          method: "getTokenSupply",
-          params: [token],
-        }),
-      }).then((r) => r.json());
-      supplies[token] = res.result.value.amount;
-    })
-    .catch((token) => console.log(token));
+      tokens;
+      i;
+      try {
+        const res = await fetch(process.env.SOLANA_RPC ?? '', {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            jsonrpc: "2.0",
+            id: 1,
+            method: "getTokenSupply",
+            params: [token],
+          }),
+        }).then((r) => r.json());
+        i++;
+
+        if (res.error) {
+          notTokens.push(`solana:${token}`);
+          res.error;
+        } else supplies[token] = res.result.value.amount;
+      } catch (e) {
+        j++;
+      }
+    });
+
+  let a = Object.keys(supplies).length;
+  await storeNotTokens(notTokens);
   return supplies;
+}
+async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
+  const step: number = 200;
+  const supplies: { [token: string]: number } = {};
+
+  for (let i = 0; i < contracts.length; i += step) {
+    try {
+      const res = await multiCall({
+        chain,
+        calls: contracts.slice(i, i + step).map((target: string) => ({
+          target,
+        })),
+        abi: "erc20:totalSupply",
+        permitFailure: true,
+      });
+      contracts.slice(i, i + step).map((c: Address, i: number) => {
+        if (res[i]) supplies[c] = res[i];
+      });
+    } catch {
+      await PromisePool.withConcurrency(20)
+        .for(contracts.slice(i, i + step))
+        .process(async (target) => {
+          const res = await call({
+            chain,
+            target,
+            abi: "erc20:totalSupply",
+          });
+          if (res) supplies[target] = res;
+        });
+    }
+  }
+  return supplies;
+}
+export function filterForNotTokens(tokens: Address[], notTokens: Address[]): Address[] {
+  const map: any = new Map();
+  for (let item of notTokens) {
+    map.set(item, true);
+  }
+  return tokens.filter((item) => !map[item]);
 }
 export async function fetchSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
   try {
-    if (chain == "solana") return await getSolanaTokenSupply(contracts);
-
-    const res = await multiCall({
-      chain,
-      calls: contracts.map((target: string) => ({
-        target,
-      })),
-      abi: "erc20:totalSupply",
-      permitFailure: true,
-    });
-    const supplies: { [token: string]: number } = {};
-    contracts.map((c: Address, i: number) => {
-      if (res[i]) supplies[c] = res[i];
-    });
-    return supplies;
+    const notTokens = chain == "solana" ? await fetchNotTokens(chain) : [];
+    const tokens = filterForNotTokens(contracts, notTokens);
+    if (chain == "solana") return await getSolanaTokenSupply(tokens);
+    return await getEVMSupplies(chain, tokens);
   } catch (e) {
     throw new Error(`multicalling token supplies failed for chain ${chain}`);
   }

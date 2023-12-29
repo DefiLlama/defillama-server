@@ -50,7 +50,7 @@ let failed = 0
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
-  dailyItems: DailyItems,
+  _dailyItems: DailyItems,
   options: {
     chainsToRefill: string[],
     rawTokenTvl: DocumentClient.ItemList

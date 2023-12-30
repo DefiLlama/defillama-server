@@ -21032,7 +21032,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Linea"],
-    oracles: [],
+    oracles: ["Pyth"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/8532#issuecomment-1872435243
     forkedFrom: ["Gravita Protocol"],
     module: "lyve/index.js",
     twitter: "LyveFinance",
@@ -22441,7 +22441,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dyson.finance/",
-    description: "Empowering Everyone with Accessibility and Profitability through our DEX & Dual Investment",
+    description: "Empowering Everyone with Accessibility and Profitability through our DEX & Dual Investment #PoweredbyPython",
     chain: "Linea",
     logo: `${baseIconsUrl}/dyson-finance.png`,
     audits: "0",
@@ -22453,7 +22453,7 @@ const data3: Protocol[] = [
     oracles: [],
     module: "dyson/index.js",
     twitter: "DysonFinance",
-    forkedFrom: [],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1698431567
   },
   {

@@ -10740,7 +10740,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap v2"],
     module: "zkSwap-finance/index.js",
     twitter: "zkSwap_finance",
-    audit_links: ["https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ZKSWAP%20FINANCE%20AUDIT%20REPORT.pdf, https://skynet.certik.com/projects/zkswap-finance"],
+    audit_links: ["https://skynet.certik.com/projects/zkswap-finance, https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ZKSWAP%20FINANCE%20AUDIT%20REPORT.pdf"],
     listedAt: 1688134493,
     github: ["ZkSwapFinance"]
   },

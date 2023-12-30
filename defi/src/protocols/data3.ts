@@ -28273,8 +28273,8 @@ const data3: Protocol[] = [
   {
     id: "3972",
     name: "Agus",
-    address: "core:0x6ba6A4515b9Bf1EdC995C7DB18009a28fA688ef6",
-    symbol: "DANA",
+    address: "core:0x01065D48363713fA32C6cA51387E0803023C872c",
+    symbol: "AGUS",
     url: "https://app.aguscrypto.com",
     description: "Decentralized Exchange (DEX V2)",
     chain: "CORE",

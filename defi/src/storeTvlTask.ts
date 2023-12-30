@@ -18,11 +18,11 @@ import { sendMessage } from "./utils/discord";
 const maxRetries = 2;
 
 const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
-const staleCoins: StaleCoins = {};
 
 async function main() {
 
   await setEnvSecrets()
+  const staleCoinWrites: Promise<void>[] = []
   let actions = [protocols, entities, treasuries].flat()
   // const actions = [entities, treasuries].flat()
   shuffleArray(actions) // randomize order of execution
@@ -63,6 +63,7 @@ async function main() {
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       // await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
       await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,)
+      staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
       console.log('FAILED: ', protocol?.name, e?.message)
       failed++
@@ -82,14 +83,15 @@ async function main() {
   clearPriceCache()
 
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped}`)
+  await Promise.all(staleCoinWrites)
   await preExit()
 }
 
 async function preExit() {
   try {
     await saveSdkInternalCache() // save sdk cache to r2
-    await sendMessage(`storing ${Object.keys(staleCoins).length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
-    await storeStaleCoins(staleCoins)
+    // await sendMessage(`storing ${Object.keys(staleCoins).length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
+    // await storeStaleCoins(staleCoins)
   } catch (e) {
     console.error(e)
   }

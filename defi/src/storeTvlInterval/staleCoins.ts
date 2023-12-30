@@ -87,8 +87,6 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
       protocol: c.protocol,
     }));
 
-    await sendMessage(`writing ${inserts.length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
-
     if (inserts.length)
       await queryPostgresWithRetry(
         sql`
@@ -104,10 +102,6 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
       `,
         sql
       );
-
-    await sendMessage(`written ${inserts.length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
-
-    return;
   } catch (e) {
     console.error(`storeStaleCoins failed with: ${e}`);
   }

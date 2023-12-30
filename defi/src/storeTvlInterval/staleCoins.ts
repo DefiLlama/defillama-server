@@ -136,10 +136,10 @@ export async function notify() {
     }
   });
 
-  // promises.push(sql`delete from stalecoins`);
+  promises.push(sql`delete from stalecoins`);
   if (message.length) promises.push(sendMessage(message, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true));
   if (!process.env.TEAM_WEBHOOK)
     promises.push(sendMessage("missing team webhook", process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true));
-  // if (teamMessage.length) promises.push(sendMessage(teamMessage, process.env.TEAM_WEBHOOK!, true));
+  if (teamMessage.length) promises.push(sendMessage(teamMessage, process.env.TEAM_WEBHOOK!, true));
   await Promise.all(promises);
 }

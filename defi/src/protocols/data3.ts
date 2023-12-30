@@ -16534,7 +16534,8 @@ const data3: Protocol[] = [
     twitter: "autotronicbase",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1693000319,
-    github: ["AutoTronicProject"]
+    github: ["AutoTronicProject"],
+    deadUrl: true
   },
   {
     id: "3442",

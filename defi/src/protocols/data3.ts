@@ -1024,8 +1024,8 @@ const data3: Protocol[] = [
   {
     id: "2745",
     name: "LeetSwap",
-    address: null,
-    symbol: "-",
+    address: "canto:0x9aeff862435cc243d12cee915e7129629c6a8d5d",
+    symbol: "LEET",
     url: "https://leetswap.finance",
     description: "LeetSwap is an emerging DEX and DeFi ecosystem built on the Canto blockchain with a focus on retaining a secure, fast, and user-friendly experience, while introducing novel approaches and ideas to the space.",
     chain: "Canto",

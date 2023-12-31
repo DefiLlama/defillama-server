@@ -25936,8 +25936,8 @@ const data3: Protocol[] = [
   {
     id: "3867",
     name: "Ascent Exchange V1",
-    address: "eon:0x01454691Ce0F245D952faD9A6B309A4B5a7D5b0A",
-    symbol: "AEX",
+    address: null, //eon:0x01454691Ce0F245D952faD9A6B309A4B5a7D5b0A  tecnically not live yet
+    symbol: "-", //AEX
     url: "https://ascent.exchange/swap?currency0=ETH",
     description:
       "Decentralized exchange on Horizon EON",
@@ -25959,8 +25959,8 @@ const data3: Protocol[] = [
   {
     id: "3868",
     name: "Ascent Exchange V3",
-    address: "eon:0x01454691Ce0F245D952faD9A6B309A4B5a7D5b0A",
-    symbol: "AEX",
+    address: null, //eon:0x01454691Ce0F245D952faD9A6B309A4B5a7D5b0A  tecnically not live yet
+    symbol: "-", //AEX
     url: "https://ascent.exchange/swap?currency0=ETH",
     description:
       "Concentrated Liquidity dex on Horizen EON",

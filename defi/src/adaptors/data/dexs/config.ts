@@ -2283,5 +2283,16 @@ export default {
     "ryze": {
         "enabled": true,
         "id": "3907"
+    },
+    "beamex": {
+        "enabled": true,
+        parentId: "BeamSwap",
+        "id": "3251",
+        protocolsData: {
+            "beamex-swap": {
+                "id": "3251",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

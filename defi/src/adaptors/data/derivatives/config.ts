@@ -534,5 +534,16 @@ export default {
     "surfone": {
         "enabled": true,
         "id": "3954"
+    },
+    "beamex": {
+        "enabled": true,
+        parentId: "BeamSwap",
+        "id": "3251",
+        protocolsData: {
+            "beamex-perps": {
+                "id": "3251",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

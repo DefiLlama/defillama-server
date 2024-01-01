@@ -1690,5 +1690,10 @@ export default {
     "squa-defi": {
         "enabled": true,
         "id": "3977"
+    },
+    "beamex": {
+        "enabled": true,
+        parentId: "BeamSwap",
+        "id": "3251"
     }
 } as AdaptorsConfig

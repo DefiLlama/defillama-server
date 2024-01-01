@@ -1695,5 +1695,16 @@ export default {
         "enabled": true,
         parentId: "BeamSwap",
         "id": "3251"
+    },
+    "beamswap-v3": {
+        parentId: "BeamSwap",
+        "enabled": true,
+        "id": "3092",
+        protocolsData: {
+            "v3": {
+                "id": "3092",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

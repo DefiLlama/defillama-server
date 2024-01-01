@@ -124,4 +124,8 @@ export default {
     enabled: true,
     id: "3259",
   },
+  "dexhunter": {
+    enabled: true,
+    id: "3979",
+  },
 } as AdaptorsConfig;

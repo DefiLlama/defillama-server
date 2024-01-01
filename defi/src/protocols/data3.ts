@@ -28450,6 +28450,26 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "DexHunterIO",
   },
+  {
+    id: "3980",
+    name: "Conveyor",
+    address: null,
+    symbol: "-",
+    url: "https://conveyor.finance/",
+    description: "Conveyor meta-aggregates several aggregators and 100's of on-chain DEX's in order to provide the best prices on swaps.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/conveyor.png`, 
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum", "Polygon", "Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "conveyorlabs",
+  },
 ]
 
 export default data3

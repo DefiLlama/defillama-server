@@ -120,4 +120,8 @@ export default {
     enabled: true,
     id: "405",
   },
+  "aftermath-aggregator": {
+    enabled: true,
+    id: "3259",
+  },
 } as AdaptorsConfig;

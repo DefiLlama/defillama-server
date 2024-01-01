@@ -1686,5 +1686,9 @@ export default {
     "surfone": {
         "enabled": true,
         "id": "3954"
+    },
+    "squa-defi": {
+        "enabled": true,
+        "id": "3977"
     }
 } as AdaptorsConfig

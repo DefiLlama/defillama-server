@@ -28428,6 +28428,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#interlay",
     listedAt: 1703880347
   },
+  {
+    id: "3979",
+    name: "DexHunter",
+    address: null,
+    symbol: "-",
+    url: "https://app.dexhunter.io",
+    description: "Biggest Cardano DEX Aggregator for Optimal DeFi Trading",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/dexhunter.jpg`, 
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Cardano"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "DexHunterIO",
+  },
 ]
 
 export default data3

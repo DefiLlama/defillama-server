@@ -63,7 +63,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             const value = await getAdaptorRecord({ adaptorType, adapter, type: recordType, mode: "TIMESTAMP", timestamp: lastRecordRaw.timestamp }).catch(_e => { }) as AdaptorRecord | undefined
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])
             if (AdaptorRecordTypeMapReverse[recordType]) {
-                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(await convertDataToUSD(cleanRecord.data)) : null
+                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(await convertDataToUSD(cleanRecord.data, cleanRecord.timestamp)) : null
             }
         }
 
@@ -146,7 +146,7 @@ Adapter: ${adapter.name} [${adapter.id}]
 ${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated${missingChains.length > 0 ? ` with missing chains: ${missingChains.join(', ')}` : ''}
 ${formatTimestampAsDate(yesterdaysCleanTimestamp.toString())} <- Report date
 ${formatTimestampAsDate(lastAvailableDataTimestamp.toString())} <- Last date found
-${sumAllVolumes(await convertDataToUSD(lastRecordRaw.data))} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}
+${sumAllVolumes(await convertDataToUSD(lastRecordRaw.data, lastRecordRaw.timestamp))} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}
 Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
 `))
         }
@@ -190,7 +190,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             total60dto30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total60dto30d,
             total1y: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total1y,
             average1y: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.average1y,
-            totalAllTime: totalRecord ? sumAllVolumes(await convertDataToUSD(totalRecord.data)) : null,
+            totalAllTime: totalRecord ? sumAllVolumes(await convertDataToUSD(totalRecord.data, totalRecord.timestamp)) : null,
             breakdown24h: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.breakdown24h,
             config: getConfigByType(adaptorType, adapter.module),
             chains: chainFilter ? [getDisplayChainName(chainFilter)] : adapter.chains.map(getDisplayChainName),

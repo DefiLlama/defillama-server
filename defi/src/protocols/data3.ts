@@ -28449,6 +28449,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
+    treasury: "dexhunter.js",
     twitter: "DexHunterIO",
   },
 ]

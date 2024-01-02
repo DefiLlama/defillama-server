@@ -119,7 +119,7 @@ export async function notify() {
   let message: string = "";
   let teamMessage: string = "";
   stored.map((d: StaleCoinData) => {
-    let readableTvl: string = d.usd_amount > 1e7 ? `${d.usd_amount / 1e7}M` : `${d.usd_amount / 1e4}k`;
+    let readableTvl: string = d.usd_amount > 1e6 ? `${d.usd_amount / 1e6}M` : `${d.usd_amount / 1e3}k`;
     message += `\nIn ${timeout - d.latency}h a ${d.protocol} TVL chart will lose ${readableTvl}$ (${
       d.percentage
     }%) because ${d.key} is ${d.latency}h stale`;

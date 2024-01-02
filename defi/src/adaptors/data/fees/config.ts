@@ -1711,5 +1711,10 @@ export default {
         parentId: "BeamSwap",
         "enabled": true,
         "id": "1289"
+    },
+    "shoebillFinance-v2": {
+        parentId: "Shoebill Finance",
+        "enabled": true,
+        "id": "3548"
     }
 } as AdaptorsConfig

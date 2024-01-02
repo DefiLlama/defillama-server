@@ -1870,7 +1870,7 @@ export default {
         "enabled": true,
         "id": "3315"
     },
-    "brine": {
+    "tanx": {
         "enabled": true,
         "id": "3316"
     },

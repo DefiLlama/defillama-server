@@ -13757,7 +13757,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Ethereum", "Polygon"],
-    module: "tanx/index.js",
+    module: "brine/index.js",
     forkedFrom: [],
     twitter: "tanXfinance",
     oracles: [],

@@ -1245,7 +1245,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "pegasys/index.js",
-    twitter: "PegasysDEX",
+    twitter: "PegasysDAO",
     parentProtocol: "parent#pegasys",
     listedAt: 1645139464,
   },

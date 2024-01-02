@@ -15094,7 +15094,7 @@ const data3: Protocol[] = [
     url: "https://app.aark.digital/",
     description: "Aark Digital is a Peer-to-Pool perpetuals DEX built on Arbitrum",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/aark-digital.png`,
+    logo: `${baseIconsUrl}/aark-digital.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

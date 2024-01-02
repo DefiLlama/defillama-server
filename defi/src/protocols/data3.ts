@@ -28514,6 +28514,27 @@ const data3: Protocol[] = [
     audit_links: ["https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/"],
     parentProtocol: "parent#kyberswap"
   },
+  {
+    id: "3983",
+    name: "ImmortalX",
+    address: "celo:0x84084B3a9fF2cb1f617355D0773Eb37722BA1D49",
+    symbol: "IMTX",
+    url: "https://www.immortalx.io/",
+    description:
+      "ImmortalX is the first decentralized perpetual exchange with unique mechanisms on Celo, offering a variety of competitive features to Celo ecosystem users",
+    chain: "Celo",
+    logo: `${baseIconsUrl}/immortalx.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    oracles: ["Pyth"], // https://docs.immortalx.io/introduction/mechanism#why-clv
+    chains: ["Celo"],
+    module: "immortalx/index.js",
+    twitter: "immortalx_io",
+    listedAt: 1704223587
+  },
 ]
 
 export default data3

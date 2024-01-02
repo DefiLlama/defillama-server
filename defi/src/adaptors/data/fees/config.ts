@@ -1706,5 +1706,10 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "beamswap": {
+        parentId: "BeamSwap",
+        "enabled": true,
+        "id": "1289"
     }
 } as AdaptorsConfig

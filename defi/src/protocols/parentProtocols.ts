@@ -2112,7 +2112,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "pegasys",
     cmcId: null,
     chains: [],
-    twitter: "PegasysDEX",
+    twitter: "PegasysDAO",
     github: ["pegasys-fi"],
   },
   {

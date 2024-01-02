@@ -1716,5 +1716,10 @@ export default {
         parentId: "Shoebill Finance",
         "enabled": true,
         "id": "3548"
+    },
+    "pepe-swaves": {
+        parentId: "PepeTeam",
+        "enabled": true,
+        "id": "2351"
     }
 } as AdaptorsConfig

@@ -98,7 +98,7 @@ export default {
   },
   "kyberswap": {
     enabled: true,
-    id: "127",
+    id: "3982",
   },
   "yield-yak": {
     enabled: true,
@@ -122,7 +122,7 @@ export default {
   },
   "aftermath-aggregator": {
     enabled: true,
-    id: "3259",
+    id: "3981",
   },
   "dexhunter": {
     enabled: true,

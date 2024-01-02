@@ -10,7 +10,7 @@ export default {
   digift: require("./rwa/digift"),
   gmxV2: require("./other/gmxV2"),
   timeswap: require("./yield/timeswap"),
-  // wemix: require("./markets/uniswap"),
+  wemix: require("./markets/uniswap"),
   dforce: require("./moneyMarkets/dforce"),
   shlb: require("./other"),
   minswap: require("./markets/minswap2"),
@@ -150,4 +150,5 @@ export default {
   wstmtrg: require("./yield/wstmtrg"),
   zkswap: require("./markets/uniswap"),
   osETH: require("./yield/osETH"),
+  weETH: require("./yield/weETH"),
 };

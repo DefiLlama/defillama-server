@@ -97,15 +97,8 @@ export default {
     id: "2643",
   },
   "kyberswap": {
-    parentId: "KyberSwap",
     enabled: true,
     id: "3982",
-    protocolsData: {
-      aggregator: {
-        id: "3982",
-        enabled: true
-      }
-    }
   },
   "yield-yak": {
     enabled: true,
@@ -128,15 +121,8 @@ export default {
     id: "405",
   },
   "aftermath-aggregator": {
-    parentId: "Aftermath Finance",
     enabled: true,
     id: "3981",
-    protocolsData: {
-      aggregator: {
-        id: "3981",
-        enabled: true,
-      }
-    }
   },
   "dexhunter": {
     enabled: true,

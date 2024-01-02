@@ -28535,6 +28535,28 @@ const data3: Protocol[] = [
     twitter: "immortalx_io",
     listedAt: 1704223587
   },
+  {
+    id: "3984",
+    name: "Kryptonite",
+    address: "sei:sei10knxlv9e54z0xcywdhtycc63uf970aefeec73ycqwd75ep9nu45sh66m6a",
+    symbol: "SEILOR",
+    url: "https://app.kryptonite.finance/home",
+    description:
+      "The Essential Engine for Liquid Staking, Leverage & Lending on Sei",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/kryptonite.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "kryptonite",
+    cmcId: "27838",
+    category: "Liquid Staking",
+    oracles: [], // need docs describing how Pyth secures tvl
+    chains: ["Sei"],
+    module: "kryptonite/index.js",
+    twitter: "Kryptonite_fi",
+    github: ["KryptoniteDAO"],
+    listedAt: 1704233424
+  },
 ]
 
 export default data3

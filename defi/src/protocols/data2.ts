@@ -1245,7 +1245,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "pegasys/index.js",
-    twitter: "PegasysDEX",
+    twitter: "PegasysDAO",
     parentProtocol: "parent#pegasys",
     listedAt: 1645139464,
   },
@@ -27760,7 +27760,6 @@ const data2: Protocol[] = [
     listedAt: 1677584770,
     stablecoins: ["frax-price-index"],
   },
-  /*
   {
     id: "2608",
     name: "Streamflow",
@@ -27784,7 +27783,6 @@ const data2: Protocol[] = [
     listedAt: 1677586293,
     github: ["StreamFlow-Finance"]
   },
-  */
   {
     id: "2609",
     name: "Hord",

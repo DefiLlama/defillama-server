@@ -128,4 +128,8 @@ export default {
     enabled: true,
     id: "3979",
   },
+  "conveyor": {
+    enabled: true,
+    id: "3980",
+  },
 } as AdaptorsConfig;

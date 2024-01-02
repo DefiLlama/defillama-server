@@ -27934,7 +27934,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "DEX Aggregator",
+    category: "Dexes",
     chains: ["Ethereum", "Polygon", "Binance", "Avalanche"],
     module: "kyber/index.js",
     twitter: "KyberNetwork",

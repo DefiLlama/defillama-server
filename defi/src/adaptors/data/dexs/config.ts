@@ -1898,6 +1898,7 @@ export default {
         "id": "3349"
     },
     "fcon-dex": {
+        disabled: true,
         "enabled": true,
         "id": "3299"
     },

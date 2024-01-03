@@ -532,6 +532,7 @@ export default {
         "id": "2252"
     },
     "0vix": {
+        disabled: true,
         "enabled": true,
         "id": "1614"
     },

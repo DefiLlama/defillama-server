@@ -151,4 +151,5 @@ export default {
   zkswap: require("./markets/uniswap"),
   osETH: require("./yield/osETH"),
   weETH: require("./yield/weETH"),
+  pxeth: require("./liquidStaking/pxeth"),
 };

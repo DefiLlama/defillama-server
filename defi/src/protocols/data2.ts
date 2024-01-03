@@ -11532,7 +11532,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Prediction Market",
     chains: ["xDai"],
-    oracles: ["Chainlink"],
+    oracles: ["Supra", "Chainlink"],
     forkedFrom: [],
     module: "azuro/index.js",
     twitter: "azuroprotocol",

@@ -911,6 +911,7 @@ export default {
         "id": "2968"
     },
     "kwenta": {
+        disabled: true,
         "enabled": true,
         "id": "2981"
     },

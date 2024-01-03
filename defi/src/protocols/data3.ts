@@ -27745,10 +27745,10 @@ const data3: Protocol[] = [
     assetToken: "ckBTC",
     url: "https://dashboard.internetcomputer.org/bitcoin",
     description:
-      "ICP offers protocol-level integration with the Bitcoin network. A canister smart contract, the Bitcoin canister, operates effectively as an on-chain “Bitcoin light node”, receiving, holding, and indexing the complete set of unspent transaction outputs (UTXOs) in an efficiently queryable form.",
+      "Chain-key Bitcoin (ckBTC) is a token on the Internet Computer (ICP) that is backed 1:1 by bitcoin (BTC). Conversion and redemption is fully automated via canister smart contracts using threshold cryptography - no trusted intermediaries required.ckBTC transactions have a 1-2 second finality and incur negligible fees, making it a viable option for everyday economic activities such as buying groceries or getting a coffee.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/ckbtc.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -27758,6 +27758,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "ckbtc/index.js",
     twitter: "dfinity",
+    audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/2023-06-dfinity-ckBTC-securityreview.pdf"],
     listedAt: 1703183604
   },
   {
@@ -27768,7 +27769,7 @@ const data3: Protocol[] = [
     assetToken: "ckETH",
     url: "https://dashboard.internetcomputer.org/ethereum",
     description:
-      "Canister smart contracts on ICP can integrate with the Ethereum network using a combination of replicated HTTPS outcalls to a known set of public Ethereum nodes to read state and submit transactions, and chain-key ECDSA (ckECDSA) signatures, an enhanced version of threshold ECDSA, to sign those submitted transactions.",
+      "Chain-key Ether (ckETH) is a token on the Internet Computer (ICP) that is backed 1:1 by Ether (ETH). Conversion and redemption is fully automated via canister smart contracts using threshold cryptography - no trusted intermediaries required.Chain-key tokens enable a fully decentralized, no-KYC method of transferring value between Bitcoin and Ethereum. The ckETH/ckBTC trading pair is available on several ICP-based DEXs",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cketh.jpg`,
     audits: "0",

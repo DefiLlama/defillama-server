@@ -99,6 +99,12 @@ export default {
   "kyberswap": {
     enabled: true,
     id: "3982",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+          "1704153600": true,
+          "1704067200": true,
+      },
+    }
   },
   "yield-yak": {
     enabled: true,

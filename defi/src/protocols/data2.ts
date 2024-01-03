@@ -22324,9 +22324,9 @@ const data2: Protocol[] = [
     name: "Polytrade",
     address: "polygon:0x692ac1e363ae34b6b489148152b12e2785a3d8d6",
     symbol: "TRADE",
-    url: "https://lender.polytrade.app",
+    url: "https://www.polytrade.finance/",
     description:
-      "Polytrade is a blockchain-enabled Trade Finance Platform, allowing SMEs to get unprecedented direct access to trade financing opportunities while offering attractive rewards to those that support the lending pools. We are here to make trade financing more accessible, efficient and transparent by bridging TradeFi and DeFi.",
+      "Polytrade is the first global marketplace focused exclusively on tokenized real-world assets. The RWA marketplace uses Polytrade's ERC-6960 to enhance discovery, consideration, investment, trade, fractionalization, and leverage for assets ranging from treasury bills, real estate, trade finance, commodities, and stocks to physical items such as collectibles and luxury items. Users can use Polytrade as a single gateway to global tokenized opportunities.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/polytrade.jpg`,
     audits: "2",

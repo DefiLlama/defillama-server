@@ -15554,8 +15554,8 @@ const data3: Protocol[] = [
   {
     id: "3397",
     name: "Binary Swap",
-    address: null,
-    symbol: "-",
+    address: "bsc:0xa41b3067ec694dbec668c389550ba8fc589e5797",
+    symbol: "0101",
     url: "https://www.binaryswap.io/#/swap",
     description:
       "Decentralized exchange and yield farm on OpBNB network",
@@ -15563,7 +15563,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/binary-swap.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "binary-swap",
     cmcId: null,
     category: "Dexes",
     chains: ["Op_Bnb"],

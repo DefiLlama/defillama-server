@@ -50,7 +50,7 @@ export function selectChainFromItem(item: any, normalizedChain: string) {
 
 let raisesPromise: Promise<any> | undefined = undefined;
 
-async function getRaises() {
+export async function getRaises() {
   if (!raisesPromise) raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json())
   return raisesPromise
 }

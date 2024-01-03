@@ -6,7 +6,7 @@ import sluggify from "./sluggify";
 import fetch from "node-fetch";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
-import { protocolMcap } from "./craftProtocol";
+import { protocolMcap, getRaises } from "./craftProtocol";
 
 export interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -100,7 +100,9 @@ export default async function craftParentProtocol({
     };
   }
 
-  return craftParentProtocolInternal({ parentProtocol, skipAggregatedTvl, isHourlyTvl, childProtocolsTvls, });
+  const {raises} = await getRaises();
+  return craftParentProtocolInternal({ parentProtocol, skipAggregatedTvl, isHourlyTvl, childProtocolsTvls, 
+    parentRaises:raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === parentProtocol.id.toString()) ?? [] });
 }
 
 export async function craftParentProtocolInternal({
@@ -109,12 +111,14 @@ export async function craftParentProtocolInternal({
   childProtocolsTvls,
   isHourlyTvl,
   fetchMcap,
+  parentRaises
 }: {
   parentProtocol: IParentProtocol;
   skipAggregatedTvl: boolean;
   isHourlyTvl: Function;
   fetchMcap?: Function;
   childProtocolsTvls: Array<IProtocolResponse>;
+  parentRaises: IRaise[]
 }) {
 
   if (!fetchMcap) fetchMcap = protocolMcap;
@@ -426,7 +430,7 @@ export async function craftParentProtocolInternal({
     raises: childProtocolsTvls?.reduce((acc, curr) => {
       acc = [...acc, ...(curr.raises || [])];
       return acc;
-    }, [] as Array<IRaise>),
+    }, parentRaises as Array<IRaise>),
     metrics: getAvailableMetricsById(parentProtocol.id),
     symbol: parentProtocol.symbol ?? (parentProtocol.gecko_id ? childProtocolsTvls.find((p) => p.gecko_id === parentProtocol.gecko_id)?.symbol : null) ?? null,
     treasury: parentProtocol.treasury ?? childProtocolsTvls.find((p) => p.treasury)?.treasury ?? null,

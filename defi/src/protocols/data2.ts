@@ -27760,7 +27760,6 @@ const data2: Protocol[] = [
     listedAt: 1677584770,
     stablecoins: ["frax-price-index"],
   },
-  /*
   {
     id: "2608",
     name: "Streamflow",
@@ -27784,7 +27783,6 @@ const data2: Protocol[] = [
     listedAt: 1677586293,
     github: ["StreamFlow-Finance"]
   },
-  */
   {
     id: "2609",
     name: "Hord",

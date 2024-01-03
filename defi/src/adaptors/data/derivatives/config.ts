@@ -545,5 +545,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "merkle-trade": {
+        "enabled": true,
+        "id": "3678"
     }
 } as AdaptorsConfig

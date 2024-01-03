@@ -10953,7 +10953,7 @@ const data2: Protocol[] = [
     url: "https://sonic.ooo",
     description: "Swap tokens, earn fees as a liquidity provider, and build on the Internet Computer's Automated Market Maker (AMM)",
     chain: "ICP",
-    logo: `${baseIconsUrl}/sonic.png`,
+    logo: `${baseIconsUrl}/sonic.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

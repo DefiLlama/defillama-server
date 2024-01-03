@@ -22445,7 +22445,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dyson.finance/",
-    description: "Empowering Everyone with Accessibility and Profitability through our DEX & Dual Investment #PoweredbyPython",
+    description: "Empowering Everyone with Accessibility and Profitability through our DEX & Dual Investment #PoweredbyPyth",
     chain: "Linea",
     logo: `${baseIconsUrl}/dyson-finance.png`,
     audits: "0",

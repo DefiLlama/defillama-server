@@ -3,7 +3,7 @@ import getTVLOfRecordClosestToTimestamp from "../src/utils/shared/getRecordClose
 import { getCurrentUnixTimestamp } from "../../high-usage/defiCode/utils/date";
 import { DollarValues, McapData, TokenTvlData } from "./types";
 import { aggregateChainTokenBalances } from "./utils";
-import { canonicalBridgeIds, protocolBridgeIds, zero } from "./constants";
+import { canonicalBridgeIds, chainsWithoutCanonicalBridges, protocolBridgeIds, zero } from "./constants";
 import BigNumber from "bignumber.js";
 
 export default async function fetchBridgeUsdTokenTvls(
@@ -25,11 +25,13 @@ export default async function fetchBridgeUsdTokenTvls(
     )
   );
 
-  const missingProtocolTvlsLength = bridgeProtocols.length - usdTokenBalances.length;
-  if (missingProtocolTvlsLength)
-    throw new Error(
-      `missing hourlyUsdTokensTvl for ${missingProtocolTvlsLength} ${isProtocol ? "protocol" : "bridge"}s`
-    );
+  let missingIds: string = ``;
+  usdTokenBalances.map((b: any, i: number) => {
+    if (!b.SK) missingIds += ` ${canonicalIds[i]},`;
+  });
+
+  if (isCanonical && missingIds.length)
+    throw new Error(`missing hourlyUsdTokensTvl for ${isProtocol ? "protocol" : "bridge"} IDs: ${missingIds}`);
 
   return usdTokenBalances;
 }
@@ -70,8 +72,17 @@ function sortCanonicalBridgeBalances(
     Object.keys(data.tvl).map((s: string) => {
       bigNumberBalances[s] = BigNumber(data.tvl[s]);
     });
+    if (data.staking) {
+      Object.keys(data.staking).map((s: string) => {
+        bigNumberBalances[s] = BigNumber(data.staking[s]);
+      });
+    }
 
     canonicalBridgeTokenBalances[ids[id]] = bigNumberBalances;
+  });
+
+  chainsWithoutCanonicalBridges.map((chain: string) => {
+    canonicalBridgeTokenBalances[chain] = {};
   });
   return { data: canonicalBridgeTokenBalances };
 }

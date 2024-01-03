@@ -24,11 +24,12 @@ export default async function handler() {
       try {
         if (
           ![
-            "uniswap",
-            "curve",
-            "curve12",
-            "sushiswap1",
-            "unknownTokens",
+            "",
+            // "uniswap",
+            // "curve",
+            // "curve12",
+            // "sushiswap1",
+            // "unknownTokens",
           ].includes(a[i][0]) &&
           !process.env.LLAMA_RUN_LOCAL
         )

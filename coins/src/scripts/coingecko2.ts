@@ -47,11 +47,11 @@ async function storeCoinData(coinData: any[]) {
       confidence: c.confidence,
       symbol: c.symbol,
       adapter: "coingecko",
-      mcap: c.mcap
+      mcap: c.mcap,
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60);
+    // await batchWrite2(writes2, false, 5 * 60);
   } catch (e) {
     console.error(e);
   }
@@ -81,7 +81,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60);
+    // await batchWrite2(writes2, false, 5 * 60);
   } catch (e) {
     console.error(e);
   }
@@ -99,7 +99,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
 const debugStats = {
   tokenSymbolInfoFetches: 0,
   cgPremiumCalls: 0,
-}
+};
 
 let solanaTokens: Promise<any>;
 async function getSymbolAndDecimals(
@@ -141,13 +141,13 @@ async function getSymbolAndDecimals(
         symbol: coingeckoSymbol.toUpperCase(),
         decimals: decimals,
       };
-      return chainCache[tokenAddress]
+      return chainCache[tokenAddress];
     }
     chainCache[tokenAddress] = {
       symbol: token.symbol,
       decimals: Number(token.decimals),
     };
-    return chainCache[tokenAddress]
+    return chainCache[tokenAddress];
   } else if (!tokenAddress.startsWith(`0x`)) {
     return;
     // throw new Error(
@@ -159,7 +159,7 @@ async function getSymbolAndDecimals(
         symbol: (await symbol(tokenAddress, chain as any)).output,
         decimals: Number((await decimals(tokenAddress, chain as any)).output),
       };
-      return chainCache[tokenAddress]
+      return chainCache[tokenAddress];
     } catch (e) {
       return;
       // throw new Error(
@@ -169,29 +169,35 @@ async function getSymbolAndDecimals(
   }
 }
 
-async function getAndStoreCoins(coinsData: CoinPriceData[], coinInfoMap: CoinInfoMap, cgCache: any) {
-  coinsData = coinsData.filter((c) => c.current_price)
+async function getAndStoreCoins(
+  coinsData: CoinPriceData[],
+  coinInfoMap: CoinInfoMap,
+  cgCache: any,
+) {
+  coinsData = coinsData.filter((c) => c.current_price);
   const idToSymbol = {} as IdToSymbol;
-  coinsData.forEach(coin => idToSymbol[coin.id] = coin.symbol)
+  coinsData.forEach((coin) => (idToSymbol[coin.id] = coin.symbol));
   const timestamp = getCurrentUnixTimestamp();
-  const writes = coinsData
-    .map(data => ({
-      PK: cgPK(data.id),
-      SK: Math.floor(+new Date(data.last_updated) / 1e3),
-      price: data.current_price,
-      mcap: data.market_cap,
-      timestamp,
-      symbol: data.symbol.toUpperCase(),
-      confidence: 0.99,
-    }));
+  const writes = coinsData.map((data) => ({
+    PK: cgPK(data.id),
+    SK: Math.floor(+new Date(data.last_updated) / 1e3),
+    price: data.current_price,
+    mcap: data.market_cap,
+    timestamp,
+    symbol: data.symbol.toUpperCase(),
+    confidence: 0.99,
+  }));
   const confidentCoins = await filterWritesWithLowConfidence(writes, 1);
   await storeCoinData(confidentCoins);
   await storeHistoricalCoinData(confidentCoins);
-  const filteredCoins = coinsData.map(c => coinInfoMap[c.id]).filter(i => i);
+  const filteredCoins = coinsData
+    .map((c) => coinInfoMap[c.id])
+    .filter((i) => i);
   const coinPlatformData = await getCoinPlatformData(filteredCoins);
 
-  const pricesAndMcaps: { [key: string]: { price: number; mcap?: number } } =
-    {};
+  const pricesAndMcaps: {
+    [key: string]: { price: number; mcap?: number };
+  } = {};
   confidentCoins.map((c: Write) => {
     if (!c.price) return;
     pricesAndMcaps[c.PK] = { price: c.price, mcap: c.mcap };
@@ -241,7 +247,7 @@ async function getAndStoreCoins(coinsData: CoinPriceData[], coinInfoMap: CoinInf
 
   if (writes2.length == 0) return;
   try {
-    await batchWrite2(writes2, false);
+    // await batchWrite2(writes2, false);
   } catch (e) {
     console.error(e);
   }
@@ -251,13 +257,17 @@ const HOUR = 3600;
 async function getAndStoreHourly(coin: Coin) {
   const toTimestamp = getCurrentUnixTimestamp();
   const fromTimestamp = toTimestamp - (36 * HOUR - 5 * 60);
-  const { prices } = await getCGData(`/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`);
+  const { prices } = await getCGData(
+    `/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`,
+  );
   if (!Array.isArray(prices)) {
     console.error(`Couldn't get data for ${coin.id}`);
     return;
   }
   const PK = cgPK(coin.id);
-  const prevWritenItems = await batchGet(prices.map((price: any) => ({ SK: toUNIXTimestamp(price[0]), PK, })),);
+  const prevWritenItems = await batchGet(
+    prices.map((price: any) => ({ SK: toUNIXTimestamp(price[0]), PK })),
+  );
   const writtenTimestamps = prevWritenItems.reduce((all, item) => {
     all[item.SK] = true;
     return all;
@@ -278,78 +288,93 @@ async function getAndStoreHourly(coin: Coin) {
     false,
   );
 
-  await batchWrite2(
-    prices
-      .filter((price) => {
-        const ts = toUNIXTimestamp(price[0]);
-        return !writtenTimestamps[ts];
-      })
-      .map((price) => ({
-        timestamp: toUNIXTimestamp(price[0]),
-        key: PK,
-        price: price[1],
-        confidence: 0.99,
-        adapter: "coingecko",
-        symbol: coin.symbol,
-      })),
-    false,
-  );
+  // await batchWrite2(
+  //   prices
+  //     .filter((price) => {
+  //       const ts = toUNIXTimestamp(price[0]);
+  //       return !writtenTimestamps[ts];
+  //     })
+  //     .map((price) => ({
+  //       timestamp: toUNIXTimestamp(price[0]),
+  //       key: PK,
+  //       price: price[1],
+  //       confidence: 0.99,
+  //       adapter: "coingecko",
+  //       symbol: coin.symbol,
+  //     })),
+  //   false,
+  // );
 }
 
 async function getCGData(uri: string) {
   try {
-    let data = await fetch('https://api.coingecko.com' + uri);
-    data = await data.json()
+    let data = await fetch("https://api.coingecko.com" + uri);
+    data = await data.json();
 
     if (Object.keys(data).length == 1 && Object.keys(data)[0] == "status")
       throw new Error(`cg call failed`);
 
     return data;
   } catch (e) {
-    let data = await fetch(`https://pro-api.coingecko.com${uri}&x_cg_pro_api_key=${process.env.CG_KEY}`);
-    return data.json()
+    let data = await fetch(
+      `https://pro-api.coingecko.com${uri}&x_cg_pro_api_key=${process.env.CG_KEY}`,
+    );
+    return data.json();
   }
 }
 
-async function fetchCoingeckoData(coinInfoMap: CoinInfoMap, runType: string, cgCache: any) {
+async function fetchCoingeckoData(
+  coinInfoMap: CoinInfoMap,
+  runType: string,
+  cgCache: any,
+) {
   let page = 1;
   let hasMore = true;
-  const allData: any[] = []
+  const allData: any[] = [];
   do {
-    let coinData = await getCGData(`/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=${page}&sparkline=false&locale=en`) as CoinPriceData[];
-    page++
+    let coinData = (await getCGData(
+      `/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=${page}&sparkline=false&locale=en`,
+    )) as CoinPriceData[];
+    page++;
 
     switch (runType) {
-      case 'hourly':
-        hasMore = coinData.filter(coin => coin.market_cap > 1e8).length === 250
-        coinData = coinData.filter(coin => coin.market_cap > 1e8 && coin.total_volume > 1e7)
+      case "hourly":
+        hasMore =
+          coinData.filter((coin) => coin.market_cap > 1e8).length === 250;
+        coinData = coinData.filter(
+          (coin) => coin.market_cap > 1e8 && coin.total_volume > 1e7,
+        );
         for (const coin of coinData) {
-          await getAndStoreHourly(coinInfoMap[coin.id])
+          await getAndStoreHourly(coinInfoMap[coin.id]);
         }
         break;
-      case 'mainCoins':
-        hasMore = coinData.filter(coin => coin.market_cap > 1e6).length === 250
-        coinData = coinData.filter(coin => coin.market_cap > 1e6 && coin.total_volume > 1e5)
-        await getAndStoreCoins(coinData, coinInfoMap, cgCache)
+      case "mainCoins":
+        hasMore =
+          coinData.filter((coin) => coin.market_cap > 1e6).length === 250;
+        coinData = coinData.filter(
+          (coin) => coin.market_cap > 1e6 && coin.total_volume > 1e5,
+        );
+        await getAndStoreCoins(coinData, coinInfoMap, cgCache);
         break;
-      case 'allCoins':
+      case "allCoins":
       default:
-        hasMore = coinData.length === 250
-        await getAndStoreCoins(coinData, coinInfoMap, cgCache)
+        hasMore = coinData.length === 250;
+        await getAndStoreCoins(coinData, coinInfoMap, cgCache);
     }
-    allData.push(...coinData)
-  } while (hasMore)
-  return allData
+    allData.push(...coinData);
+  } while (hasMore);
+  return allData;
 }
 
 async function triggerFetchCoingeckoData(runType: string) {
-  const cgCache = await getCache('coingecko', runType)
-  const coins = (await getCGData(`/api/v3/coins/list?include_platform=true`)) as Coin[];
-  const coinInfoMap: CoinInfoMap = {}
-  coins.forEach((coin) => coinInfoMap[coin.id] = coin)
+  const cgCache = await getCache("coingecko", runType);
+  const coins = (await getCGData(
+    `/api/v3/coins/list?include_platform=true`,
+  )) as Coin[];
+  const coinInfoMap: CoinInfoMap = {};
+  coins.forEach((coin) => (coinInfoMap[coin.id] = coin));
   await fetchCoingeckoData(coinInfoMap, runType, cgCache);
-  setCache('coingecko', runType, cgCache)
-  await sendMessage(`coolifys just finished coingecko: ${runType} run`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true,);
+  setCache("coingecko", runType, cgCache);
   process.exit(0);
 }
 
@@ -363,6 +388,6 @@ switch (runType) {
     break;
   default:
     console.error(`Missing argument, you need to provide a run type: hourly, mainCoins, allCoins
-      Eg: ts-node coins/src/scripts/coingecko2.ts hourly`)
+      Eg: ts-node coins/src/scripts/coingecko2.ts hourly`);
     process.exit(1);
 }

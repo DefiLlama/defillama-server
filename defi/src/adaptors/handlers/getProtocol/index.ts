@@ -53,37 +53,44 @@ export interface IHandlerBodyResponse extends
 export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-    const protocolName = event.pathParameters?.name?.toLowerCase()
+    const protocolName = event.pathParameters?.name?.toLowerCase() 
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
     const rawDataType = event.queryStringParameters?.dataType
-    const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
-    if (!protocolName || !adaptorType) throw new Error("Missing name or type")
-    if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
-    if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
-
-
-    const dexData = await getProtocolData(protocolName, adaptorType)
-    if (dexData) {
-        const dexDataResponse = await getProtocolSummary(dexData, dataType, adaptorType)
-        delete dexDataResponse.generatedSummary
-        return dayCache(dexDataResponse as IHandlerBodyResponse);
-    }
-
-    const parentData = parentProtocols.find(pp => pp.name.toLowerCase() === standardizeProtocolName(protocolName))
-    if (parentData) {
-        const parentResponse = await getProtocolSummaryParent(parentData, dataType, adaptorType)
-        return dayCache(parentResponse as IHandlerBodyResponse);
-    }
+    const data = await getProtocolDataHandler(protocolName, adaptorType, rawDataType)
+    if (data) return dayCache(data as IHandlerBodyResponse)
 
     return notFoundResponse({
         message: `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
     }, 60 * 60)
 };
 
-const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRecordType, adaptorType: AdapterType): Promise<IHandlerBodyResponse & { generatedSummary?: ProtocolAdaptorSummary }> => {
+export async function getProtocolDataHandler(protocolName?: string, adaptorType?: AdapterType, rawDataType?: string, {
+    isApi2RestServer = false
+} = {}) {
+    if (!protocolName || !adaptorType) throw new Error("Missing name or type")
+    const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
+    if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
+    if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
+
+    const dexData = await getProtocolData(protocolName, adaptorType)
+    if (dexData) {
+        const dexDataResponse = await getProtocolSummary(dexData, dataType, adaptorType, { isApi2RestServer })
+        delete dexDataResponse.generatedSummary
+        return dexDataResponse
+    }
+
+    const parentData = parentProtocols.find(pp => pp.name.toLowerCase() === standardizeProtocolName(protocolName))
+    if (parentData) {
+        return getProtocolSummaryParent(parentData, dataType, adaptorType, { isApi2RestServer })
+    }
+}
+
+const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRecordType, adaptorType: AdapterType, {
+    isApi2RestServer = false
+} = {}): Promise<IHandlerBodyResponse & { generatedSummary?: ProtocolAdaptorSummary }> => {
     let dexDataResponse = {} as IHandlerBodyResponse
     try {
-        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)
+        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType, undefined, undefined, { isApi2RestServer })
 
         dexDataResponse = {
             defillamaId: dexData.defillamaId,
@@ -148,7 +155,9 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
     return dexDataResponse
 }
 
-const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: AdaptorRecordType, adaptorType: AdapterType): Promise<IHandlerBodyResponse> => {
+const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: AdaptorRecordType, adaptorType: AdapterType, {
+    isApi2RestServer = false
+} = {}): Promise<IHandlerBodyResponse> => {
     const adaptorsData = await loadAdaptorsData(adaptorType as AdapterType)
     const childs = adaptorsData.default.reduce((acc, curr) => {
         const parentId = curr.parentProtocol
@@ -156,7 +165,7 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
             acc[parentId] = acc[parentId] ? [...acc[parentId], curr] : [curr]
         return acc
     }, {} as IJSON<ProtocolAdaptor[]>)[parentData.id]
-    const summaries = await Promise.all(childs.map(child => getProtocolSummary(child, dataType, adaptorType)))
+    const summaries = await Promise.all(childs.map(child => getProtocolSummary(child, dataType, adaptorType, { isApi2RestServer })))
     const totalToday = sumReduce(summaries, 'total24h')
     const totalYesterday = sumReduce(summaries, 'total48hto24h')
     const change_1d = formatNdChangeNumber(totalToday && totalYesterday ? ((totalToday - totalYesterday) / totalYesterday) * 100 : null)

@@ -14,6 +14,7 @@ import {
 } from "./utils/normalizeChain";
 import { craftChainsResponse } from "./getChains";
 import type { IProtocol, IChain, ITvlsByChain } from "./types";
+import fetch from "node-fetch"
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -216,8 +217,8 @@ export async function craftProtocolsResponseInternal(
   return response;
 }
 
-export async function craftProtocolsResponse(useNewChainNames: boolean) {
-  return craftProtocolsResponseInternal(useNewChainNames, protocols);
+export async function craftProtocolsResponse(useNewChainNames: boolean, includeTokenBreakdowns?: boolean, options?: any) {
+  return craftProtocolsResponseInternal(useNewChainNames, protocols, includeTokenBreakdowns, options);
 }
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {

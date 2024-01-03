@@ -4,6 +4,7 @@ import { AdaptorsConfig } from "../types"
 
 export default {
     "lyra": {
+        parentId: "Lyra",
         "enabled": true,
         "startFrom": 1656460800,
         "id": "503"
@@ -72,5 +73,21 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "dopex": {
+        parentId: "Dopex",
+        "enabled": true,
+        "id": "3817",
+        protocolsData: {
+            "clamm": {
+                "id": "3817",
+                "enabled": true,
+            }
+        }
+    },
+    "lyra-v2": {
+        parentId: "Lyra",
+        "enabled": true,
+        "id": "3923"
     }
 } as AdaptorsConfig

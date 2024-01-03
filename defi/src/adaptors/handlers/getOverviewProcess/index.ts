@@ -165,18 +165,17 @@ export const getOverviewCachedResponseKey = (
 ) => `overview/${adaptorType}/${dataType}/${chainFilter}_${category}_${fullChart}`
 
 // -> /overview/{type}/{chain}
-export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
-    console.info("Event received", JSON.stringify(event))
-    const {
-        adaptorType,
-        excludeTotalDataChart,
-        excludeTotalDataChartBreakdown,
-        category,
-        fullChart,
-        dataType,
-        chainFilter
-    } = processEventParameters(event)
-    console.info("Parameters parsing OK")
+export async function getOverviewProcess({
+    adaptorType,
+    excludeTotalDataChart,
+    excludeTotalDataChartBreakdown,
+    category,
+    fullChart,
+    dataType,
+    chainFilter,
+    enableAlerts = false,
+    isApi2RestServer = false,
+}: any) {
 
     if (!adaptorType) throw new Error("Missing parameter")
     if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
@@ -184,7 +183,6 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 
     // Import data list
-    console.info("Loading adaptors...")
     const loadedAdaptors = await loadAdaptorsData(adaptorType)
     const protocolsList = Object.keys(loadedAdaptors.config)
     const adaptersList: ProtocolAdaptor[] = []
@@ -198,7 +196,6 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     } catch (error) {
         console.error(`Couldn't load adaptors with type ${adaptorType} :${JSON.stringify(error)}`, error)
     }
-    console.info("Loaded OK:", adaptersList.length)
     const allChains = getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[]))
     if (chainFilter !== undefined && !allChains.map(c => c.toLowerCase()).includes(chainFilter)) throw new Error(`Chain not supported ${chainFilter}`)
 
@@ -211,14 +208,14 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 errors.push(e.message)
                 //await sendDiscordAlert(e.message).catch(e => console.log("discord error", e))
             }
-        })
+        }, { isApi2RestServer })
     }))
 
-    console.info("Sending discord alerts:", errors.length)
-    for (const errorMSG of errors) {
-        await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
-        await delay(750)
-    }
+    if (!isApi2RestServer)
+        for (const errorMSG of errors) {
+            await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
+            await delay(750)
+        }
 
     // Handle rejected dexs
     const rejectedDexs = results.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
@@ -254,12 +251,14 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes), undefined, baseRecord ? +baseRecord[0] : undefined, extraTypes)
     console.info("Stats OK")
 
-    for (const { spikes } of okProtocols) {
-        if (spikes) {
-            await sendDiscordAlert(spikes, adaptorType, false).catch(e => console.log("discord error", e))
-            await delay(1000)
+
+    if (!isApi2RestServer)
+        for (const { spikes } of okProtocols) {
+            if (spikes) {
+                await sendDiscordAlert(spikes, adaptorType, false).catch(e => console.log("discord error", e))
+                await delay(1000)
+            }
         }
-    }
 
     const enableStats = okProtocols.filter(okp => !okp.disabled).length > 0
     okProtocols.forEach(removeVolumesObject)
@@ -294,12 +293,22 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (enableAlerts) {
         successResponseObj['errors'] = errors
     }
-    console.info("Storing response to R2")
-    const cacheKey = getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart))
+    return successResponseObj
+};
+
+// -> /overview/{type}/{chain}
+export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
+    // console.info("Event received", JSON.stringify(event))
+    const eventParams: any = processEventParameters(event)
+    // console.info("Parameters parsing OK")
+    eventParams.enableAlerts = enableAlerts
+    const successResponseObj = await getOverviewProcess(eventParams)
+    // console.info("Storing response to R2")
+    const cacheKey = getOverviewCachedResponseKey(eventParams.adaptorType, eventParams.chainFilter, eventParams.dataType, eventParams.category, String(eventParams.fullChart))
     await cacheResponseOnR2(cacheKey, JSON.stringify(successResponseObj))
         .then(() => console.info("Stored R2 OK")).catch(e => console.error("Unable to cache...", e))
-    const cachedResponse = await getCachedResponseOnR2(cacheKey).catch(e => console.error("Failed to retrieve...", cacheKey, e))
-    console.log("cachedResponse", cachedResponse)
+    // const cachedResponse = await getCachedResponseOnR2(cacheKey).catch(e => console.error("Failed to retrieve...", cacheKey, e))
+    // console.log("cachedResponse", cachedResponse)
     // console.info("Returning response:", JSON.stringify(successResponseObj))
     return successResponse(successResponseObj, 10 * 60); // 10 mins cache
 };

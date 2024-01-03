@@ -149,9 +149,6 @@ export default {
     "serum": {
         disabled: true,
         "enabled": true,
-        "includedVolume": [
-            "raydium"
-        ],
         "id": "145"
     },
     "curve": {
@@ -884,6 +881,7 @@ export default {
         "id": "707"
     },
     "unicly": {
+        disabled: true,
         "enabled": true,
         "id": "324"
     },
@@ -1022,11 +1020,6 @@ export default {
     "metatdex": {
         "enabled": true,
         "id": "2253"
-    },
-    "goosefx": {
-        disabled: true,
-        "enabled": true,
-        "id": "2175"
     },
     "3xcalibur": {
         "enabled": true,
@@ -1905,6 +1898,7 @@ export default {
         "id": "3349"
     },
     "fcon-dex": {
+        disabled: true,
         "enabled": true,
         "id": "3299"
     },
@@ -2237,5 +2231,80 @@ export default {
     "canary": {
         "enabled": true,
         "id": "474"
+    },
+    "xfai": {
+        "enabled": true,
+        "id": "3816"
+    },
+    "zebra-v1": {
+        parentId: "Zebra",
+        "enabled": true,
+        "id": "3668"
+    },
+    "zebra-v2": {
+        parentId: "Zebra",
+        "enabled": true,
+        "id": "3901"
+    },
+    "astroport-v2": {
+        "enabled": true,
+        "id": "3117"
+    },
+    "kizuna": {
+        "enabled": true,
+        "id": "3913"
+    },
+    "butterxyz": {
+        "enabled": true,
+        "id": "3918"
+    },
+    "pharaoh-exchange": {
+        "enabled": true,
+        "id": "3921"
+    },
+    "swaap": {
+        "enabled": true,
+        "id": "2104",
+        protocolsData: {
+            "v1": {
+                "id": "2104",
+                "enabled": true,
+            },
+            "v2": {
+                "id": "3218",
+                "enabled": true,
+            }
+        }
+    },
+    "phoenix": {
+        displayName: "Phoenix",
+        "enabled": true,
+        "id": "3170"
+    },
+    "ryze": {
+        "enabled": true,
+        "id": "3907"
+    },
+    "beamex": {
+        "enabled": true,
+        parentId: "BeamSwap",
+        "id": "3251",
+        protocolsData: {
+            "beamex-swap": {
+                "id": "3251",
+                "enabled": true,
+            }
+        }
+    },
+    "beamswap-v3": {
+        parentId: "BeamSwap",
+        "enabled": true,
+        "id": "3092",
+        protocolsData: {
+            "v3": {
+                "id": "3092",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

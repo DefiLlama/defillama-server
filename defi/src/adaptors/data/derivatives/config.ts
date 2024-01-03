@@ -31,6 +31,7 @@ export default {
         "id": "1801"
     },
     "synfutures": {
+        parentId: "SynFutures",
         "enabled": true,
         "id": "2328"
     },
@@ -511,5 +512,42 @@ export default {
     "stormtrade": {
         "enabled": true,
         "id": "3883"
+    },
+    "goosefx": {
+        "enabled": true,
+        "id": "2175"
+    },
+    "synfutures-v2": {
+        parentId: "SynFutures",
+        "enabled": true,
+        "id": "3061"
+    },
+    "metavault-derivatives-v2": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3911"
+    },
+    "kiloex": {
+        "enabled": true,
+        "id": "3329"
+    },
+    "surfone": {
+        "enabled": true,
+        "id": "3954"
+    },
+    "beamex": {
+        "enabled": true,
+        parentId: "BeamSwap",
+        "id": "3251",
+        protocolsData: {
+            "beamex-perps": {
+                "id": "3251",
+                "enabled": true,
+            }
+        }
+    },
+    "merkle-trade": {
+        "enabled": true,
+        "id": "3678"
     }
 } as AdaptorsConfig

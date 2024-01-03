@@ -2,6 +2,7 @@
 import arbitrum from "./arbitrum";
 import avax from "./avax";
 // import bsc from "./bsc";
+import brc20 from "./brc20";
 import fantom from "./fantom";
 import era from "./era";
 import gasTokens from "./gasTokens";
@@ -39,7 +40,7 @@ export type Token =
     };
 type Bridge = () => Promise<Token[]>;
 
-export const chainsThatShouldNotBeLowerCased = ["solana"];
+export const chainsThatShouldNotBeLowerCased = ["solana", "bitcoin"];
 function normalizeBridgeResults(bridge: Bridge) {
   return async () => {
     const tokens = await bridge();
@@ -61,6 +62,7 @@ export const bridges = [
   // anyswap,
   arbitrum,
   avax,
+  brc20,
   //bsc,
   fantom,
   era,

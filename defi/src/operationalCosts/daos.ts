@@ -123,16 +123,16 @@ export default [
     },
     {
         protocolId: "parent#aave",
-        sources: ["https://community.llama.xyz/aave/runway"],
+        sources: ["https://aave.tokenlogic.com.au/aave-runway"],
         annualUsdCost: {
-            all: 1.6e6*12,
+            all: (2.1+4.2+2.2*4+0.9+0.2+0.166*6)*365*1e3,
         },
         annualTokenCosts: {
             "coingecko:aave": {
-                salaries: 12*(21/15+13.3/6+10/12+7.3/12+9.9/12+1.2/5)
+                salaries: (13.3+0.7+27.6)*365
             }
         },
-        lastUpdate: "2023-04-29"
+        lastUpdate: "2023-12-12"
     },
     {
         protocolId: "587", // Maple
@@ -165,5 +165,19 @@ export default [
             gasCosts: 50e3
         },
         lastUpdate: "2023-05-06"
+    },
+    {
+        protocolId: "parent#sphere", // 
+        sources: ["https://www.sphere.finance/treasury-report"],
+        //headcount: 12, not sure, confirm this
+        annualUsdCost: {
+            staffPayroll: 319610,
+            operationalCosts: 43000,
+            subscriptionsServices: 600,
+            additionalMarketing: 49795,
+            ylSPHEREDispersments: 134331
+        },
+        notes: ["Using data from Q3 2023"],
+        lastUpdate: "2023-12-19"
     },
 ]

@@ -38,7 +38,7 @@ function getChainlist(adapterModule: any) {
 export async function getCurrentBlock(options: blockObjects = {}): Promise<getCurrentBlockResponse> {
   let { chains, adapterModule, catchOnlyStaleRPC } = options
   if (adapterModule) chains = getChainlist(adapterModule)
-  chains = chains?.filter((i: string) => (providers as any)[i]).filter((i: string) => !['filecoin', 'crab', 'kava', ].includes(i))
+  chains = chains?.filter((i: string) => (providers as any)[i]).filter((i: string) => !['filecoin', 'crab', 'echelon','kava', 'boba_avax', 'milkomeda_a1', 'dogechain', 'clv', 'okexchain'].includes(i))
   try {
     const data = await getCurrentBlocks(chains)
     return data

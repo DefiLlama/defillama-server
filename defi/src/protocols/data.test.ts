@@ -1,10 +1,10 @@
 import protocols from "./data";
 import treasuries  from "./treasury";
 import { baseIconsUrl } from "../constants";
-import { importAdapter, } from "../cli/utils/importAdapter";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
 import parentProtocols from "./parentProtocols";
 import emissionsAdapters from "../utils/imports/emissions_adapters";
+import { importAdapter } from "../utils/imports/importAdapter";
 const fs = require("fs");
 
 test("all the dynamic imports work", async () => {
@@ -208,7 +208,8 @@ test("no surprise category", async () => {
     'Staking Pool',
     'Infrastructure',
     'Decentralized Stablecoin',
-    'SoFi'
+    'SoFi',
+    'DEX Aggregator'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

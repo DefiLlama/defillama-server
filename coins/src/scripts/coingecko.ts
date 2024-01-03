@@ -75,15 +75,17 @@ async function storeCoinData(coinData: any[]) {
     console.error(e);
   }
   return batchWrite(
-    coinData.map((c) => ({
-      PK: c.PK,
-      SK: 0,
-      price: c.price,
-      mcap: c.mcap,
-      timestamp: c.timestamp,
-      symbol: c.symbol,
-      confidence: c.confidence,
-    })).filter((c: any) => c.symbol != null),
+    coinData
+      .map((c) => ({
+        PK: c.PK,
+        SK: 0,
+        price: c.price,
+        mcap: c.mcap,
+        timestamp: c.timestamp,
+        symbol: c.symbol,
+        confidence: c.confidence,
+      }))
+      .filter((c: any) => c.symbol != null),
     false,
   );
 }
@@ -331,7 +333,10 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 
   if (writes2.length == 0) return;
   try {
-    await batchWrite2(writes2.filter((c: Coin) => c.symbol != null), false);
+    await batchWrite2(
+      writes2.filter((c: Coin) => c.symbol != null),
+      false,
+    );
   } catch (e) {
     console.error(e);
   }

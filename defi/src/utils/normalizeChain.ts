@@ -15,7 +15,9 @@ export const normalizedChainReplacements = {
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
   "bifrost network": "bfc",
-  "horizen eon": "eon"
+  "horizen eon": "eon",
+  "bahamut": "ftn",
+  "viction": "tomochain"
 } as {
   [chain: string]: string
 }
@@ -506,10 +508,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 60,
   },
-  "TomoChain": {
+  "Viction": { // previously TomoChain
     geckoId: "tomochain",
-    github: ['tomochain'],
-    symbol: "TOMO",
+    github: ['tomochain','BuildOnViction'],
+    symbol: "VIC",
     cmcId: "2570",
     categories: ["EVM"],
     chainId: 88,
@@ -2085,6 +2087,36 @@ export const chainCoingeckoIds = {
     github: ["newtonproject"],
     categories: ["EVM"],
   },
+  "JBC": {
+    geckoId: null,
+    symbol: "JBC",
+    cmcId: null,
+    github: null,
+    categories: ["EVM"],
+  },
+  "Sommelier": {
+    geckoId: "sommelier",
+    symbol: "SOMM",
+    cmcId: "18248",
+    categories: ["Cosmos"],
+  },
+  "Bahamut": {
+    geckoId: "fasttoken",
+    symbol: "FTN",
+    cmcId: "22615",
+    categories: ["EVM"],
+    github: ["fastexlabs"]
+  },
+  "Zkfair": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2101,6 +2133,7 @@ chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
 chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
+chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -2147,7 +2180,9 @@ export function transformNewChainName(chain: string) {
     case "WEMIX":
       return "WEMIX3.0"
     case "Umee":
-        return "UX"
+      return "UX"
+    case "TomoChain":
+      return "Viction"
     default:
       return chain
   }
@@ -2212,7 +2247,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "gochain":
       return "GoChain"
     case "tomochain":
-      return "TomoChain"
+      return useNewChainNames ? "Viction" : "TomoChain"
     case "fusion":
       return "Fusion"
     case "kardia":
@@ -2483,6 +2518,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "zkSync Era"
     case "bfc":
       return "Bifrost Network"
+    case "ftn":
+      return "Bahamut"
     case "polygon_zkevm":
       return "Polygon zkEVM"
     case "meta":
@@ -2599,6 +2636,14 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "FSC"
     case "new":
       return "Newton"
+    case "jbc":
+      return "JBC"
+    case "sommelier":
+      return "Sommelier"
+    case "bahamut":
+      return "Bahamut"
+    case "zkfair":
+      return "Zkfair"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

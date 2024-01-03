@@ -9,7 +9,7 @@ import {
   secondsInWeek,
   HOUR,
 } from "../utils/date";
-import { hourlyTvl, dailyTvl } from "../utils/getLastRecord";
+import { hourlyTvl, dailyTvl, hourlyUsdTokensTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
 import { TokensValueLocked, tvlsObject } from "../types";
 import { util } from "@defillama/sdk";
@@ -38,12 +38,14 @@ export default async function (
 
   const [
     lastHourlyTVLObject,
+    lastHourlyUsdTVLObject,
     lastDailyTVLRecord,
     lastWeeklyTVLRecord,
     dayDailyTvlRecord,
     weekDailyTvlRecord,
   ] = (await Promise.all([
     getLatestProtocolItem(hourlyTvl, protocol.id),
+    getLatestProtocolItem(hourlyUsdTokensTvl, protocol.id),
     getClosestProtocolItem(hourlyTvl, protocol.id, unixTimestamp - secondsInDay, { timestampFrom: unixTimestamp - 2 * secondsInDay }),
     getClosestProtocolItem(hourlyTvl, protocol.id, unixTimestamp - secondsInWeek, { timestampFrom: unixTimestamp - 2 * secondsInWeek }),
     getClosestProtocolItem(dailyTvl, protocol.id, unixTimestamp - secondsInDay, { timestampFrom: unixTimestamp - 2 * secondsInDay }),
@@ -115,6 +117,23 @@ export default async function (
           protocol.name
         );
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
+      }
+    }
+    if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
+      let tvlFromMissingTokens = 0;
+      [...extraSections, "tvl"].forEach(section => {
+        Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
+          if (usdTokenBalances[section]?.[coin] === undefined) {
+            tvlFromMissingTokens += Number(tvl)
+          }
+        })
+      })
+      if (tvlFromMissingTokens > lastHourlyTVL * 0.25) {
+        const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens. It's been disabled.`
+        await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
+        throw new Error(
+          errorMessage
+        );
       }
     }
   }

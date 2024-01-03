@@ -532,6 +532,7 @@ export default {
         "id": "2252"
     },
     "0vix": {
+        disabled: true,
         "enabled": true,
         "id": "1614"
     },
@@ -911,6 +912,7 @@ export default {
         "id": "2968"
     },
     "kwenta": {
+        disabled: true,
         "enabled": true,
         "id": "2981"
     },
@@ -1155,6 +1157,7 @@ export default {
         "id": "2982"
     },
     "fcon-dex": {
+        disabled: true,
         "enabled": true,
         "id": "3299"
     },
@@ -1383,9 +1386,9 @@ export default {
         "enabled": true,
         "id": "3609"
     },
-    "allbridge": {
+    "allbridge-core": {
         "enabled": true,
-        "id": "577"
+        "id": "3944"
     },
     "cipher": {
         "enabled": true,
@@ -1625,5 +1628,101 @@ export default {
         parentId: "Ascent Exchange",
         "enabled": true,
         "id": "3868"
+    },
+    "xfai": {
+        "enabled": true,
+        "id": "3816"
+    },
+    "defiplaza": {
+        "enabled": true,
+        "id": "728"
+    },
+    "butterxyz": {
+        "enabled": true,
+        "id": "3918"
+    },
+    "pharaoh-exchange": {
+        "enabled": true,
+        "id": "3921"
+    },
+    "metavault-derivatives-v2": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3911"
+    },
+    "dopex": {
+        parentId: "Dopex",
+        "enabled": true,
+        "id": "3817",
+        protocolsData: {
+            "clamm": {
+                "id": "3817",
+                "enabled": true,
+            }
+        }
+    },
+    "bluefin": {
+        "enabled": true,
+        "id": "2625"
+    },
+    "odos": {
+        "enabled": true,
+        "id": "3951"
+    },
+    "dexter": {
+        enabled: true,
+        id: "2737"
+    },
+    "fvm-exchange": {
+        parentId: "Velocimeter",
+        "enabled": true,
+        "id": "3291"
+    },
+    "kiloex": {
+        "enabled": true,
+        "id": "3329"
+    },
+    "railgun": {
+        "enabled": true,
+        "id": "1320"
+    },
+    "surfone": {
+        "enabled": true,
+        "id": "3954"
+    },
+    "squa-defi": {
+        "enabled": true,
+        "id": "3977"
+    },
+    "beamex": {
+        "enabled": true,
+        parentId: "BeamSwap",
+        "id": "3251"
+    },
+    "beamswap-v3": {
+        parentId: "BeamSwap",
+        "enabled": true,
+        "id": "3092",
+        protocolsData: {
+            "v3": {
+                "id": "3092",
+                "enabled": true,
+            }
+        }
+    },
+    "beamswap": {
+        parentId: "BeamSwap",
+        "enabled": true,
+        "id": "1289"
+    },
+    "shoebillFinance-v2": {
+        parentId: "Shoebill Finance",
+        "enabled": true,
+        "id": "3548"
+    },
+    "pepe-swaves": {
+        parentId: "PepeTeam",
+        "enabled": true,
+        "id": "2351"
     }
 } as AdaptorsConfig

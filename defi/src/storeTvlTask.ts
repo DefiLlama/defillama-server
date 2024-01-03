@@ -11,6 +11,9 @@ import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, getLastRecord } from "./utils/getLastRecord";
 import { closeConnection, getLatestProtocolItem, initializeTVLCacheDB } from "./api2/db";
 import { shuffleArray } from "./utils/shared/shuffleArray";
+import { importAdapterDynamic } from "./utils/imports/importAdapter";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
+import { sendMessage } from "./utils/discord";
 
 const maxRetries = 2;
 
@@ -18,7 +21,8 @@ const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 
 async function main() {
 
-  const staleCoins: StaleCoins = {};
+  await setEnvSecrets()
+  const staleCoinWrites: Promise<void>[] = []
   let actions = [protocols, entities, treasuries].flat()
   // const actions = [entities, treasuries].flat()
   shuffleArray(actions) // randomize order of execution
@@ -44,7 +48,8 @@ async function main() {
   const runProcess = (filter = alwaysRun) => async (protocol: any) => {
     const startTime = +Date.now()
     try {
-      const adapterModule = importAdapter(protocol)
+      const staleCoins: StaleCoins = {};
+      const adapterModule = importAdapterDynamic(protocol)
       if (!(await filter(adapterModule, protocol))) {
         i++
         skipped++
@@ -56,7 +61,9 @@ async function main() {
       // we are fetching current blocks but not using it because, this is to trigger check if rpc is returning stale data
       await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
-      await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
+      // await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
+      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,)
+      staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
       console.log('FAILED: ', protocol?.name, e?.message)
       failed++
@@ -64,11 +71,11 @@ async function main() {
     const timeTakenI = (+Date.now() - startTime) / 1e3
     timeTaken += timeTakenI
     const avgTimeTaken = timeTaken / ++i
-    sdk.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
+    console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
   }
 
   const normalAdapterRuns = PromisePool
-    .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 15))
+    .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 32))
     .for(actions)
     .process(runProcess(filterProtocol))
 
@@ -76,9 +83,18 @@ async function main() {
   clearPriceCache()
 
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped}`)
+  await Promise.all(staleCoinWrites)
+  await preExit()
+}
 
-  await saveSdkInternalCache() // save sdk cache to r2
-  await storeStaleCoins(staleCoins)
+async function preExit() {
+  try {
+    await saveSdkInternalCache() // save sdk cache to r2
+    // await sendMessage(`storing ${Object.keys(staleCoins).length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
+    // await storeStaleCoins(staleCoins)
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 /* async function cacheCurrentBlocks() {
@@ -96,10 +112,6 @@ main().catch((e) => {
   await closeConnection()
   process.exit(0)
 })
-
-function importAdapter(protocol: Protocol) {
-  return require("@defillama/adapters/projects/" + [protocol.module])
-}
 
 async function rejectAfterXMinutes(promiseFn: any, minutes = 10) {
   const ms = minutes * 60 * 1e3
@@ -152,7 +164,7 @@ async function filterProtocol(adapterModule: any, protocol: any) {
     return true
 
   const HOUR = 60 * 60
-  const MIN_WAIT_TIME = 0.75 * HOUR // 45 minutes - ideal wait time because we run every 30 minutes
+  const MIN_WAIT_TIME = 1.01 * HOUR // 45 minutes - ideal wait time because we run every 30 minutes
   const currentTime = Math.round(Date.now() / 1000)
   const timeDiff = currentTime - lastRecord.SK
   const highestRecentTvl = getMax(lastRecord)
@@ -177,7 +189,8 @@ process.on('uncaughtException', (err) => {
   console.log('UNHANDLED EXCEPTION! Shutting down...');
 })
 
-setTimeout(() => {
+setTimeout(async () => {
   console.log('Timeout! Shutting down...');
+  preExit()
   process.exit(1);
-}, 1000 * 60 * 60 * 0.5); // 30 minutes
+}, 1000 * 60 * 40); // 40 minutes

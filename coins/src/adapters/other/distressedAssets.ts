@@ -103,8 +103,11 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   solana: {
     YAKU: "NGK3iHqqQkyRZUj4uhJDQqEyKKcZ7mdawWpqwMffM3s",
-    BONK: "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
-    SNS: "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd"
+    SNS: "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd",
+    PEEP: "n54ZwXEcLnc3o7zK48nhrLV4KTU5wWD4iq7Gvdt5tik",
+    WIF: 'EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm',
+    GUAC: 'AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR',
+    OVOL: '4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6'
   },
   avax: {
     DUEL: "0xc1a49c0b9c10f35850bd8e15eaef0346be63e002",
@@ -145,6 +148,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     GRAIN: "0x02838746d9e1413e07ee064fcbada57055417f21",
     JEFE: "0x5b2af7fd27e2ea14945c82dd254c79d3ed34685e",
     DAI: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
+    BASED: "0x8d7d3409881b51466b483b11ea1b8a03cded89ae",
+    BSHARE: '0x49C290Ff692149A4E16611c694fdED42C954ab7a'
   },
   heco: {
     BIFI: "0x765277eebeca2e31912c9946eae1021199b39c61",
@@ -242,7 +247,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   bittorrent: {
     WBTT: '0x8d193c6efa90bcff940a98785d1ce9d093d3dc8a'
-  }
+  },
 };
 const eulerTokens = [
   "0x1b808f49add4b8c6b5117d9681cf7312fcf0dc1d",

@@ -4,6 +4,16 @@
       "decimals": "8",
       "symbol": "BNB",
       "to": "coingecko#binancecoin"
+    },
+    "0x9a5502414b5d51d01c8b5641db7436d789fa15a245694b24aa37c25c2a6ce001::scb::SCB": {
+      "decimals": "5",
+      "symbol": "SCB",
+      "to": "coingecko#sacabam"
+    },
+    "0xbde4ba4c2e274a60ce15c1cfff9e5c42e41654ac8b6d906a57efa4bd3c29f47d::hasui::HASUI": {
+      "decimals": "9",
+      "symbol": "HASUI",
+      "to": "coingecko#haedal-staked-sui"
     }
   },
   "neutron": {
@@ -14,6 +24,16 @@
     }
   },
   "polygon": {
+    "0x2297aebd383787a160dd0d9f71508148769342e3": {
+      "decimals": "8",
+      "symbol": "BTC.b",
+      "to": "coingecko#bitcoin-avalanche-bridged-btc-b"
+    },
+    "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
+    },
     "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359": {
       "decimals": "6",
       "symbol": "USDC",
@@ -122,6 +142,11 @@
       "decimals": "6",
       "symbol":"wanXRP",
       "to": "coingecko#ripple"
+    },
+    "0xe07F9D810a48ab5c3c914BA3cA53AF14E4491e8A": {
+      "decimals": "18",
+      "symbol":"GYD",
+      "to": "coingecko#gyroscope-gyd"
     }
   },
   "fantom": {
@@ -228,7 +253,7 @@
     }
   },
   "aptos": {
-    "0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT": {
+    "0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::T": {
       "decimals": "6",
       "symbol": "USDCET",
       "to": "coingecko#usd-coin-wormhole-from-ethereum"
@@ -242,6 +267,11 @@
       "decimals": "8",
       "symbol": "stAPT",
       "to": "coingecko#aptos"
+    },
+    "0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT": {
+      "decimals": "8",
+      "symbol": "CAKE",
+      "to": "coingecko#pancakeswap-token"
     }
   },
   "cardano": {
@@ -369,6 +399,18 @@
       "symbol": "USDT"
     }
   },
+  "solana": {
+    "i7u4r16TcsJTgq1kAG8opmVZyVnAKBwLKu6ZPMwzxNc": {
+      "decimals": "6",
+      "symbol": "OUSG",
+      "to": "coingecko#ousg"
+    },
+    "A1KLoBrKBde8Ty9qtNQUtq3C2ortoC3u7twggz7sEto6": {
+      "decimals": "6",
+      "symbol": "USDY",
+      "to": "coingecko#ondo-us-dollar-yield"
+    }
+  },
   "ton": {
     "EQBq4d4GPyBoh-Pjnf3wxUyQSS28WY2Yt-7cPAG8FHpWpNRX": {
       "to": "coingecko#matic-network", "decimals": "18",
@@ -405,6 +447,10 @@
     "0x0Dc808adcE2099A9F62AA87D9670745AbA741746": {
       "to": "coingecko#ethereum", "decimals": "18",
       "symbol": "ETH"
+    },
+    "0xEc901DA9c68E90798BbBb74c11406A32A70652C3": {
+      "to": "coingecko#stakestone-ether", "decimals": "18",
+      "symbol": "STONE"
     },
     "0xb73603c5d87fa094b7314c74ace2e64d165016fb": {
       "to": "coingecko#usd-coin", "decimals": "6",
@@ -1001,6 +1047,11 @@
       "symbol": "GLMR",
       "to": "coingecko#moonbeam"
     },
+    "0xFFFfffFf15e1b7E3dF971DD813Bc394deB899aBf": {
+      "decimals": "10",
+      "symbol":"xcvDOT",
+      "to": "coingecko#voucher-dot"
+    },
     "0x5331141912a84875beb757e175d991a2c6c89ef4": {
       "decimals": "10",
       "symbol":"DOT",
@@ -1010,6 +1061,31 @@
       "decimals": "18",
       "symbol":"MOVR",
       "to": "coingecko#"
+    },
+    "0x99Fec54a5Ad36D50A4Bba3a41CAB983a5BB86A7d": {
+      "decimals": "9",
+      "symbol":"SOL",
+      "to": "coingecko#solana"
+    },
+    "0xFFffffFf7cC06abdF7201b350A1265c62C8601d2": {
+      "decimals": "12",
+      "symbol":"xcBNC",
+      "to": "coingecko#bifrost-native-coin"
+    },
+    "0xFFfFfFffA9cfFfa9834235Fe53f4733F1b8B28d4": {
+      "decimals": "10",
+      "symbol":"xcLDOT",
+      "to": "coingecko#liquid-staking-dot"
+    },
+    "0xFFFFfffF71815ab6142E0E20c7259126C6B40612": {
+      "decimals": "10",
+      "symbol":"xcZTG",
+      "to": "coingecko#zeitgeist"
+    },
+    "0xFFfFfFff44bD9D2FFEE20B25D1Cf9E78Edb6Eae3": {
+      "decimals": "18",
+      "symbol":"xcCFG",
+      "to": "coingecko#centrifuge"
     }
   },
   "metis": {

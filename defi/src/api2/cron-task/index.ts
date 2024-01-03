@@ -18,8 +18,13 @@ import { getOraclesInternal } from "../../getOracles";
 import { getForksInternal } from "../../getForks";
 import { getCategoriesInternal } from "../../getCategories";
 import { storeLangs } from "../../storeLangs";
+import { storeGetProtocols } from "../../storeGetProtocols";
+import { getYieldsConfig } from "../../getYieldsConfig";
+import { getOutdated } from "../../stats/getOutdated";
 
 const protocolDataMap: { [key: string]: any } = {}
+
+let getYesterdayTvl: Function, getLastWeekTvl: Function, getLastMonthTvl: Function
 
 async function run() {
   await initializeTVLCacheDB()
@@ -35,11 +40,12 @@ async function run() {
     getLastTvl: (protocol: any) => protocolDataMap[protocol.id]?.lastHourlyRecord,
     getAllTvlData: (protocol: any) => protocolDataMap[protocol.id]?.tvlData,
     getModule: (protocol: any) => ({
-      doublecounted: checkModuleDoubleCounted(protocol.id),
+      doublecounted: checkModuleDoubleCounted(protocol),
     })
   }
 
-  await writeProtocolTvlData()
+
+  // await writeProtocolTvlData()  // to be served from rest api instead
   await writeProtocols()
   await writeConfig()
   await writeOracles()
@@ -53,9 +59,12 @@ async function run() {
   console.time('write /charts')
   await storeGetCharts(processProtocolsOptions)
   console.timeEnd('write /charts')
+  await writeProtocolsChart()
+  await storeRouteData('config/yields', getYieldsConfig())
+  await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
-  // await writeRaises()
-  // await writeHacks()
+  // await writeRaises() // moved to different cron task
+  // await writeHacks()  // moved to different cron task
 
   // Commenting this out as it takes long time to run, will be served from rest api instead
   // await writeProtocolRoute()
@@ -88,6 +97,9 @@ async function run() {
     console.timeEnd('getLatestProtocolItems filterAMonthAgo')
 
     console.time('getAllProtocolItems')
+    getYesterdayTvl = (protocol: any) => latestProtocolItemsDayAgoMap[protocol.id] ?? {}
+    getLastWeekTvl = (protocol: any) => latestProtocolItemsWeekAgoMap[protocol.id] ?? {}
+    getLastMonthTvl = (protocol: any) => latestProtocolItemsMonthAgoMap[protocol.id] ?? {}
 
     await PromisePool.withConcurrency(20)
       .for(cache.metadata.protocols)
@@ -114,7 +126,7 @@ async function run() {
   async function writeProtocolRoute() {
     console.time('write /protocol/:name')
     const withConcurrency = 25
-    const options = {useNewChainNames: false, useHourlyData: false, skipAggregatedTvl: false }
+    const options = { useNewChainNames: false, useHourlyData: false, skipAggregatedTvl: false }
 
     let items = shuffleArray(Object.entries(cache.protocolSlugMap))
 
@@ -259,14 +271,15 @@ async function run() {
     await storeRouteData('configs', data)
 
 
-    const withConcurrency = 25
-
-    let items = shuffleArray(Object.entries(cache.protocolSlugMap))
-    await PromisePool.withConcurrency(withConcurrency).for(items)
-      .process(async ([slugName, protocolData]: [string, IProtocol]) => {
-        const key = `config/smol/${slugName}`
-        await storeRouteData(key, protocolData)
-      })
+    // this is handled in rest server now
+    // const withConcurrency = 25
+ 
+    // let items = shuffleArray(Object.entries(cache.protocolSlugMap))
+    // await PromisePool.withConcurrency(withConcurrency).for(items)
+    //   .process(async ([slugName, protocolData]: [string, IProtocol]) => {
+    //     const key = `config/smol/${slugName}`
+    //     await storeRouteData(key, protocolData)
+    //   })
     console.timeEnd('write /config')
   }
 
@@ -305,6 +318,15 @@ async function run() {
     console.time(debugString)
     const data = await getCategoriesInternal(processProtocolsOptions)
     await storeRouteData('categories', data)
+    console.timeEnd(debugString)
+  }
+
+  async function writeProtocolsChart() {
+    const debugString = 'write /lite/protocols2'
+    console.time(debugString)
+    const { protocols2Data, v2ProtocolData } = await storeGetProtocols({ getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, getYesterdayTvl, getLastWeekTvl, getLastMonthTvl, })
+    await storeRouteData('lite/protocols2', protocols2Data)
+    await storeRouteData('lite/v2/protocols', v2ProtocolData)
     console.timeEnd(debugString)
   }
 }

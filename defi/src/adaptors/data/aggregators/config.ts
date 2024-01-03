@@ -24,10 +24,10 @@ export default {
     enabled: true,
     id: "2420",
   },
-  "dforce": {
-    enabled: true,
-    id: "123",
-  },
+  // "dforce": {
+  //   enabled: true,
+  //   id: "123",
+  // },
   "plexus": {
     enabled: true,
     id: "2740",
@@ -41,7 +41,7 @@ export default {
     id: "3207",
   },
   "logx": {
-    enabled: true,
+    enabled: false,
     id: "3396",
   },
   "jumper-exchange": {
@@ -73,19 +73,69 @@ export default {
     id: "3809",
   },
   "llamaswap": {
-    enabled: true,
+    enabled: false,
     id: "3847",
   },
-  "openocean": {
-    enabled: true,
-    id: "533",
-  },
+  // "openocean": {
+  //   enabled: false,
+  //   id: "533",
+  // },
   "arcane-dex": {
     enabled: true,
     id: "3885",
   },
-  "1inch": {
+  "1inch-agg": {
     enabled: true,
     id: "189",
+  },
+  // "zrx": {
+  //   enabled: true,
+  //   id: "2116",
+  // },
+  "cowswap": {
+    enabled: true,
+    id: "2643",
+  },
+  "kyberswap": {
+    enabled: true,
+    id: "3982",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+          "1704153600": true,
+          "1704067200": true,
+      },
+    }
+  },
+  "yield-yak": {
+    enabled: true,
+    id: "475",
+  },
+  "bebop": {
+    enabled: true,
+    id: "3927",
+  },
+  "dodo-agg": {
+    enabled: true,
+    id: "146",
+  },
+  "paraswap": {
+    enabled: true,
+    id: "894",
+  },
+  "tokenlon-agg": {
+    enabled: true,
+    id: "405",
+  },
+  "aftermath-aggregator": {
+    enabled: true,
+    id: "3981",
+  },
+  "dexhunter": {
+    enabled: true,
+    id: "3979",
+  },
+  "conveyor": {
+    enabled: true,
+    id: "3980",
   },
 } as AdaptorsConfig;

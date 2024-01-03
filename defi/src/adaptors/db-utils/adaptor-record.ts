@@ -3,8 +3,8 @@ import dynamodb from "../../utils/shared/dynamodb"
 import { getDisplayChainName, formatChainKey } from "../utils/getAllChainsFromAdaptors"
 import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
-import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
-import { IJSON } from "../data/types"
+import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
+import { IJSON, ProtocolAdaptor } from "../data/types"
 import dynamoReservedKeywords from "./dynamo-reserved-keywords"
 
 export enum AdaptorRecordType {
@@ -85,6 +85,13 @@ export class AdaptorRecord extends Item {
             return acc
         }, {} as IRecordAdaptorRecordData)
         return new AdaptorRecord(recordType, dexId, timestamp, clean_body, protocolType)
+    }
+
+    static fromJSON(json: any): AdaptorRecord | AdaptorRecord[] {
+        if (Array.isArray(json)) return json.map(i => AdaptorRecord.fromJSON(i)) as AdaptorRecord[]
+        let { type, adaptorId, timestamp, data, protocolType } = json
+        // data = JSON.parse(JSON.stringify(data)) // deep copy
+        return new AdaptorRecord(type, adaptorId, timestamp, data, protocolType)
     }
 
     get pk(): string {
@@ -220,6 +227,20 @@ function createExpressionAttributeValuesFromObj(obj: IRecordAdaptorRecordData): 
             [`:${key}`]: value
         }
     }, {} as Record<string, unknown>)
+}
+
+export type GetAdaptorRecordOptions = {
+    adapter: ProtocolAdaptor,
+    type: AdaptorRecordType,
+    adaptorType?: AdapterType,
+    timestamp?: number,
+    mode?: "ALL" | "LAST" | "TIMESTAMP"
+}
+
+export async function getAdaptorRecord2({ adapter, type, timestamp, mode = 'ALL' }: GetAdaptorRecordOptions): Promise<AdaptorRecord[] | AdaptorRecord> {
+    const adaptorId = adapter.id
+    const protocolType = adapter.protocolType
+    return getAdaptorRecord(adaptorId, type, protocolType, mode, timestamp)
 }
 
 export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType, protocolType?: ProtocolType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number): Promise<AdaptorRecord[] | AdaptorRecord> => {

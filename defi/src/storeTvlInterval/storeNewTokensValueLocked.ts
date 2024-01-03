@@ -103,10 +103,10 @@ async function checkForOutlierCoins(
     });
   });
 
-  if (alertString != headline)
-    await sendMessage(
-      alertString,
-      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-      true,
-    );
+  // if (alertString != headline)
+  //   await sendMessage(
+  //     alertString,
+  //     process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+  //     true,
+  //   );
 }

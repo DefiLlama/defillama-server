@@ -17,8 +17,7 @@ import BigNumber from "bignumber.js";
 import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
-import { LogArray } from "@defillama/sdk/build/types";
-import { storeAllTokens, storeTokenOwnerLogs } from "../../l2/layer2pg";
+import { storeAllTokens } from "../../l2/layer2pg";
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -53,7 +52,7 @@ async function getTvl(
   staleCoins: StaleCoins,
   options: StoreTvlOptions = {} as StoreTvlOptions
 ) {
-  let chainDashPromises
+  let chainDashPromise
   for (let i = 0; i < maxRetries; i++) {
     try {
       if (!isFetchFunction) {
@@ -66,15 +65,14 @@ async function getTvl(
           const chain = storedKey.split('-')[0]
           const block = chainBlocks[chain]
           const api = new sdk.ChainApi({ chain, block, timestamp: unixTimestamp, })
-          const logArray: LogArray = [];
           tvlBalances = await tvlFunction(
             unixTimestamp,
             ethBlock,
             chainBlocks,
-            { api, chain, storedKey, block, logArray },
+            { api, chain, storedKey, block },
           );
           if (!tvlBalances && Object.keys(api.getBalances()).length) tvlBalances = api.getBalances()
-          chainDashPromises = [storeAllTokens(Object.keys(tvlBalances)), storeTokenOwnerLogs(logArray)];
+          chainDashPromise = storeAllTokens(Object.keys(tvlBalances));
         }
         Object.keys(tvlBalances).forEach((key) => {
           if (+tvlBalances[key] === 0) delete tvlBalances[key]
@@ -83,7 +81,7 @@ async function getTvl(
           (balance) => typeof balance[1] === "string"
         ); // Can't use stored prices because coingecko has undocumented aliases which we rely on (eg: busd -> binance-usd)
         let tvlPromise: ReturnType<any>;
-        tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, staleCoins);
+        tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, protocol.name, staleCoins);
         const tvlResults = await tvlPromise;
         usdTvls[storedKey] = tvlResults.usdTvl;
         tokensBalances[storedKey] = tvlResults.tokenBalances;
@@ -128,7 +126,7 @@ async function getTvl(
       }
     }
   }
-  if (chainDashPromises) await Promise.all(chainDashPromises)
+  if (chainDashPromise) await chainDashPromise;
 }
 
 function mergeBalances(key:string, storedKeys:string[], balancesObject:tvlsObject<TokensValueLocked>){
@@ -249,9 +247,9 @@ export async function storeTvl(
       throw new Error("Tarot TVL is not 0")
     }
   } catch (e) {
-    console.error(protocol.name, e);
+    // console.error(protocol.name, e);
     insertOnDb( useCurrentPrices,  TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'aggregate', chain: 'aggregate' } )
-    return;
+    throw e
   }
   if (breakIfTvlIsZero && Object.values(usdTvls).reduce((total, value) => total + value) === 0) {
     throw new Error(

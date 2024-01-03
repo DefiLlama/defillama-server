@@ -29,5 +29,5 @@ export async function sendMessage(message: string, webhookUrl:string|undefined, 
         })
       }
     ).then((body: any) => body.json())
-    console.log("discord", response)
+    // console.log("discord", response)
 }

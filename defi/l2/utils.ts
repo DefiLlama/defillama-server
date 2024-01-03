@@ -89,6 +89,7 @@ export async function getPrices(
     });
   });
 
+  // this here is filtering in the opposite way as planned
   const notPricedTokens = filterForNotTokens(readKeys, Object.keys(aggregatedRes));
   await storeNotTokens(notPricedTokens);
 
@@ -202,10 +203,8 @@ async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [to
   return supplies;
 }
 export function filterForNotTokens(tokens: Address[], notTokens: Address[]): Address[] {
-  const map: any = new Map();
-  for (let item of notTokens) {
-    map.set(item, true);
-  }
+  const map: { [token: string]: boolean } = {};
+  notTokens.map((item) => (map[item] = true));
   return tokens.filter((item) => !map[item]);
 }
 export async function fetchSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {

@@ -28146,7 +28146,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://bluefin.io",
     description:
-      "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms.",
+      "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/bluefin.jpg`,
     audits: "2",
@@ -28154,11 +28154,10 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum", "Sui"],
+    chains: ["Sui"],
     module: "bluefin/index.js",
     twitter: "bluefinapp",
     oraclesByChain: {
-      arbitrum: ["Chainlink"],
       sui: ["Pyth"],
     },
     forkedFrom: [],

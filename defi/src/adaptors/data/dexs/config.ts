@@ -2306,5 +2306,10 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "aftermath-fi-amm": {
+        parentId: "Aftermath Finance",
+        "enabled": true,
+        "id": "3259"
     }
 } as AdaptorsConfig

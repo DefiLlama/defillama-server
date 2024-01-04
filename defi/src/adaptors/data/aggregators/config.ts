@@ -127,6 +127,7 @@ export default {
     id: "405",
   },
   "aftermath-aggregator": {
+    parentId: "Aftermath Finance",
     enabled: true,
     id: "3981",
   },

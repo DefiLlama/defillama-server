@@ -10972,6 +10972,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://backend.swop.fi/files/en/deemru.pdf", "https://backend.swop.fi/files/en/fairyproof.pdf"],
     github: ["swopfi"]
   },
+  /*
   {
     id: "614",
     name: "WX Network",
@@ -10992,6 +10993,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "WXNetwork",
     github: ["waves-exchange"]
   },
+  */
   {
     id: "615",
     name: "BNBMiner Finance",

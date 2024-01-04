@@ -15794,7 +15794,8 @@ const data3: Protocol[] = [
     twitter: "FuzioNetwork",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1692289355
+    listedAt: 1692289355,
+    deadUrl: true
   },
   {
     id: "3408",

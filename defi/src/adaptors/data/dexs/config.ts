@@ -2314,6 +2314,11 @@ export default {
     },
     "sanctum": {
         "enabled": true,
-        "id": "3388"
+        "id": "3388",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1704240000": true,
+            },
+        }
     }
 } as AdaptorsConfig

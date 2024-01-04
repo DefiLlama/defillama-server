@@ -2311,5 +2311,9 @@ export default {
         parentId: "Aftermath Finance",
         "enabled": true,
         "id": "3259"
+    },
+    "sanctum": {
+        "enabled": true,
+        "id": "3388"
     }
 } as AdaptorsConfig

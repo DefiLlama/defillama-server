@@ -6496,7 +6496,14 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "gravita-protocol/index.js",
     twitter: "gravitaprotocol",
-    oracles: ["Chainlink", "RedStone"],
+    oraclesByChain: {
+      ethereum: ["Chainlink","Redstone"],
+      arbitrum: ["Chainlink"],
+      zksync_era: ["Chainlink"],
+      linea: ["Chainlink"],
+      polygon_zkevm: ["Chainlink"],
+      optimism: ["Chainlink"],
+    },
     forkedFrom: ["Liquity"],
     stablecoins: ["grai"],
     audit_links: [

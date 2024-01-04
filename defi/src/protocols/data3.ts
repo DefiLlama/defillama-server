@@ -26773,7 +26773,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/weft-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "weft-finance",
     cmcId: null,
     category: "Lending",
     chains: ["Radix"],

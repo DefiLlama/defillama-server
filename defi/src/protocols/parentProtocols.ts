@@ -1821,7 +1821,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://www.synfutures.com/",
     description: 'Next-generation derivatives platform designed for any blockchain',
     logo: `${baseIconsUrl}/synfutures.svg`,
-    gecko_id: "synfutures",
+    gecko_id: null,
     cmcId: "1504",
     chains: [],
     twitter: "SynFuturesDefi",

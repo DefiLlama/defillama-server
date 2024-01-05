@@ -28590,6 +28590,28 @@ const data3: Protocol[] = [
     twitter: "CleopatraDEX",
     listedAt: 1704422495
   },
+  {
+    id: "3986",
+    name: "DropCopy",
+    address: "solana:DropTpWcDmP7kVRUEoKSJaMVi62hGo9jp19Hz19JVsjh",
+    symbol: "DROP",
+    url: "https://dropcopy.io/pari",
+    description:
+      "DropCopy is a parimutuel prediction market that allows players to predict the future price of cryptoccurrencies",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/dropcopy.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    chains: ["Solana"],
+    module: "DropCopy/index.js",
+    twitter: "dropcopy_io",
+    listedAt: 1704484985
+  },
 ]
 
 export default data3

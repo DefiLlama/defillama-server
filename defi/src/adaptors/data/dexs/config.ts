@@ -2320,5 +2320,9 @@ export default {
                 "1704240000": true,
             },
         }
+    },
+    "jibswap": {
+        "enabled": true,
+        "id": "3928"
     }
 } as AdaptorsConfig

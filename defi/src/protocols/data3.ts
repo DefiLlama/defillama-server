@@ -20621,7 +20621,7 @@ const data3: Protocol[] = [
     symbol: "CERUS",
     url: "https://monocerus.world/swap",
     description:
-      "Monocerus Swap is a 20,000X capital efficiency, CLMM-based DEX built to support the Monocerus World MMORPG Gamers Ecosystem. Morph our LP NFT to become 3D Interactive SparkleVX that can be used as a Game Pass and other string on-chain Utilities.",
+      "Monocerus is a MMORPG 3.0 (Massive Multi-players Online Role Playing Game on Web3) with CLMM DEX Gamification",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/monocerus.jpg`,
     audits: "0",
@@ -20629,7 +20629,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Avalanche"],
+    chains: ["Avalanche", "Manta"],
     module: "monocerus/index.js",
     twitter: "monocerusworld",
     forkedFrom: ["Uniswap V3"],

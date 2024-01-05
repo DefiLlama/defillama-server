@@ -28612,6 +28612,28 @@ const data3: Protocol[] = [
     twitter: "dropcopy_io",
     listedAt: 1704484985
   },
+  {
+    id: "3987",
+    name: "BracketX",
+    address: null,
+    symbol: "-",
+    url: "https://app.bracketx.fi/",
+    description:
+      "Simple range-bound products to make money in any volatility condition",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/bracketx.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    chains: ["Arbitrum"],
+    module: "bracketX/index.js",
+    twitter: "Bracket_Labs_",
+    listedAt: 1704486381
+  },
 ]
 
 export default data3

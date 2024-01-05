@@ -3139,7 +3139,7 @@ const data: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum", "Binance", "Bitcoin", "Klaytn", "Bifrost Network"],
     module: "bifi/index.js",
-    twitter: "BIFROSTio",
+    twitter: "BiFi_lending",
     audit_links: [
       "https://github.com/bifrost-platform/BiFi-X/blob/main/docs/bifrost_bifix_audit.pdf",
       "https://github.com/bifrost-platform/BIFI/blob/master/docs/ENG/(ENG)_BiFi_BIFROST_Extension_Theori.pdf",

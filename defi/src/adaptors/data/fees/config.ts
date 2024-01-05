@@ -1729,5 +1729,9 @@ export default {
         parentId: "Maple Finance",
         "enabled": true,
         "id": "587"
+    },
+    "jibswap": {
+        "enabled": true,
+        "id": "3928"
     }
 } as AdaptorsConfig

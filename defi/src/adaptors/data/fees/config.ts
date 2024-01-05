@@ -1737,5 +1737,9 @@ export default {
     "cleopatra-exchange": {
         "enabled": true,
         "id": "3985"
+    },
+    "immortalx": {
+        "enabled": true,
+        "id": "3983"
     }
 } as AdaptorsConfig

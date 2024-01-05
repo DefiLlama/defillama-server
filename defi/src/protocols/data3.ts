@@ -6699,10 +6699,10 @@ const data3: Protocol[] = [
   {
     id: "3001",
     name: "Astra DAO",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xd3188e0df68559c0B63361f6160c57Ad88B239D8",
+    symbol: "ASTRADAO",
     url: "https://astradao.org/",
-    description: "Astra DAO is a decentralized and non-custodial automated crypto asset allocator built on Ethereum. Astra DAO provides convenient and practical access to crypto-oriented investment strategies. Astra DAO’s use case includes providing various investment products/indices, participation units marketplace, user staking, harvesting investment strategies profits, zero-fees user participation model, and an improvement culture using the DAO-managed Treasury.",
+    description: "Astra DAO is a decentralized and non-custodial automated crypto asset allocator built on Ethereum. Astra DAO provides convenient and practical access to crypto-oriented investment strategies. Astra DAO’s use case includes providing various investment products/indices, participation units marketplace, user staking, harvesting investment strategies profits, zero-fees user participation model, and an improvement culture using the DAO-managed Treasury",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/astra-dao.jpg`,
     audits: "2",
@@ -6710,7 +6710,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Indexes",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Arbitrum"],
     oracles: [],
     forkedFrom: [],
     module: "astra-dao/index.js",
@@ -20617,7 +20617,7 @@ const data3: Protocol[] = [
   {
     id: "3622",
     name: "Monocerus",
-    address: "manta: 0x657218E3535B32EDef9a722E35dcd6EA40E1202e, avax: 0x6F0167Dca1fAB2AaBe20cf56B7a7E1FdB47AC388",
+    address: "manta: 0x657218E3535B32EDef9a722E35dcd6EA40E1202e",
     symbol: "CERUS",
     url: "https://monocerus.world",
     description:
@@ -20629,7 +20629,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Gaming",
-    chains: ["Manta","Avalanche"],
+    chains: ["Manta","Avalanche"]
     module: "monocerus/index.js",
     twitter: "https://x.com/monocerusworld",
     forkedFrom: ["Uniswap V3"],
@@ -28285,7 +28285,7 @@ const data3: Protocol[] = [
   {
     id: "3972",
     name: "Agus",
-    address: "core:0x01065D48363713fA32C6cA51387E0803023C872c",
+    address: "bsc:0x334eD8117A7cd5EfA17681093C3e66af61F877c1",
     symbol: "AGUS",
     url: "https://app.aguscrypto.com",
     description: "Decentralized Exchange (DEX V2)",
@@ -28295,7 +28295,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Dexes",
     chains: ["CORE"],
     oracles: [],
     forkedFrom: ["Uniswap V2"],
@@ -28567,6 +28567,28 @@ const data3: Protocol[] = [
     twitter: "Kryptonite_fi",
     github: ["KryptoniteDAO"],
     listedAt: 1704233424
+  },
+  {
+    id: "3985",
+    name: "Cleopatra Exchange",
+    address: "mantle:0xC1E0C8C30F251A07a894609616580ad2CEb547F2",
+    symbol: "CLEO",
+    url: "https://cleo.exchange",
+    description:
+      "Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/cleopatra-exchange.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: "cleopatra",
+    cmcId: null,
+    category: "Dexes",
+    oracles: [],
+    forkedFrom: ["Uniswap V3","Solidly"],
+    chains: ["Mantle"],
+    module: "cleopatra-exchange/index.js",
+    twitter: "CleopatraDEX",
+    listedAt: 1704422495
   },
 ]
 

@@ -2324,5 +2324,9 @@ export default {
     "jibswap": {
         "enabled": true,
         "id": "3928"
+    },
+    "cleopatra-exchange": {
+        "enabled": true,
+        "id": "3985"
     }
 } as AdaptorsConfig

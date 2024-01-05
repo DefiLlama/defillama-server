@@ -1724,5 +1724,10 @@ export default {
         parentId: "PepeTeam",
         "enabled": true,
         "id": "2351"
+    },
+    "maple-finance": {
+        parentId: "Maple Finance",
+        "enabled": true,
+        "id": "587"
     }
 } as AdaptorsConfig

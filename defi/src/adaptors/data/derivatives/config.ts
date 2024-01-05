@@ -549,5 +549,9 @@ export default {
     "merkle-trade": {
         "enabled": true,
         "id": "3678"
+    },
+    "immortalx": {
+        "enabled": true,
+        "id": "3983"
     }
 } as AdaptorsConfig

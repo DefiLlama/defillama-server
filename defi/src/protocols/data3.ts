@@ -28634,6 +28634,28 @@ const data3: Protocol[] = [
     twitter: "Bracket_Labs_",
     listedAt: 1704486381
   },
+  {
+    id: "3988",
+    name: "Panther Protocol",
+    address: "0x909E34d3f6124C324ac83DccA84b74398a6fa173",
+    symbol: "ZKP",
+    url: "https://www.pantherprotocol.io/",
+    description:
+      "Panther is a cross-protocol layer that uses zero-knowledge technology to build DeFi solutions that meet regulatory requirements and satisfy users' on-chain data privacy needs. The goal of Panther is to allow seamless access to DeFi and create a cross-chain-supported architecture that serves different use cases",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/panther-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "panther",
+    cmcId: "12087",
+    category: "Services",
+    oracles: [], 
+    forkedFrom: [],
+    chains: ["Ethereum", "Polygon"],
+    module: "panther-protocol/index.js",
+    twitter: "ZKPanther",
+    listedAt: 1704487521
+  },
 ]
 
 export default data3

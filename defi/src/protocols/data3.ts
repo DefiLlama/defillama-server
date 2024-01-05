@@ -28679,6 +28679,28 @@ const data3: Protocol[] = [
     github: ["AbstraDex"],
     listedAt: 1704488220
   },
+  {
+    id: "3990",
+    name: "Interlay Lending",
+    address: null,
+    symbol: "-",
+    url: "http://interlay.io/",
+    description: "Interlay lending total value locked",
+    chain: "Interlay",
+    logo: `${baseIconsUrl}/interlay.png`, 
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Interlay"],
+    oracles: [],
+    forkedFrom: [],
+    module: "interlay-lending/index.js",
+    twitter: "InterlayHQ",
+    parentProtocol: "parent#interlay",
+    listedAt: 1704489965
+  },
 ]
 
 export default data3

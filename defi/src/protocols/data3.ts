@@ -28656,6 +28656,29 @@ const data3: Protocol[] = [
     twitter: "ZKPanther",
     listedAt: 1704487521
   },
+  {
+    id: "3989",
+    name: "AbstraDEX",
+    address: null,
+    symbol: "-",
+    url: "https://zkf.abstradex.xyz/",
+    description:
+      "AbstraDEX is a suite of DEX products that provide concentrated liquidity on multi-chain, seamless trading, and a smooth experience for traders",
+    chain: "Zkfair",
+    logo: `${baseIconsUrl}/abstradex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    chains: ["Zkfair"],
+    module: "abstraDex/index.js",
+    twitter: "AbstraDEX",
+    github: ["AbstraDex"],
+    listedAt: 1704488220
+  },
 ]
 
 export default data3

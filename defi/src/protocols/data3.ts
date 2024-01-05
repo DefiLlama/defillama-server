@@ -28285,7 +28285,7 @@ const data3: Protocol[] = [
   {
     id: "3972",
     name: "Agus",
-    address: "core:0x01065D48363713fA32C6cA51387E0803023C872c",
+    address: "bsc:0x334eD8117A7cd5EfA17681093C3e66af61F877c1",
     symbol: "AGUS",
     url: "https://app.aguscrypto.com",
     description: "Decentralized Exchange (DEX V2)",
@@ -28295,7 +28295,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Dexes",
     chains: ["CORE"],
     oracles: [],
     forkedFrom: ["Uniswap V2"],

@@ -28627,7 +28627,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink"], // https://bracket-labs.gitbook.io/bracket-labs/oracle
     forkedFrom: [],
     chains: ["Arbitrum"],
     module: "bracketX/index.js",

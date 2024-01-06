@@ -1,8 +1,8 @@
 import setEnvSecrets from "../utils/shared/setEnvSecrets";
 import postgres from "postgres";
 import { queryPostgresWithRetry } from "../../l2/layer2pg";
-import { searchWidth } from "../../../coins/src/getCoins";
 import { sendMessage } from "../utils/discord";
+import { searchWidth } from "../utils/shared/constants";
 
 export type StaleCoins = {
   [key: string]: StaleCoinData;

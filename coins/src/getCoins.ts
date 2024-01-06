@@ -2,11 +2,10 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 import ddb, { batchGet } from "./utils/shared/dynamodb";
 import parseRequestBody from "./utils/shared/parseRequestBody";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
-import { coinToPK, DAY, PKToCoin } from "./utils/processCoin";
+import { coinToPK, PKToCoin } from "./utils/processCoin";
 import { CoinsResponse } from "./utils/getCoinsUtils";
 import { getCurrentUnixTimestamp } from "./utils/date";
-
-export const searchWidth = DAY
+import { searchWidth } from "./utils/shared/constants";
 
 const handler = async (
   event: any

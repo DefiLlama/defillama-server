@@ -138,10 +138,10 @@ async function getSolanaTokenSupply(tokens: string[]): Promise<{ [token: string]
   let i = 0;
   let j = 0;
   const notTokens: string[] = [];
-  let b = Math.min(tokens.length, 5000);
+  console.log(`length: ${tokens.length}`);
   if (!process.env.SOLANA_RPC) throw new Error(`no Solana RPC supplied`);
   await PromisePool.withConcurrency(50)
-    .for(tokens.slice(0, Math.min(tokens.length, 5000))) // REMOVE
+    .for(tokens)
     .process(async (token) => {
       tokens;
       i;

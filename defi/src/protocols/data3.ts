@@ -28352,7 +28352,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "venuSwap/index.js",
     twitter: "Venu_Swap",
-    listedAt: 1703852744
+    listedAt: 1703852744,
+    deadUrl: true
   },
   {
     id: "3975",

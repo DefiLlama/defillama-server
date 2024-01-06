@@ -268,6 +268,21 @@
     }
   },
   "aptos": {
+    "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::WBTC": {
+      "decimals": "6",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0xfaf4e633ae9eb31366c9ca24214231760926576c7b625313b3688b5e900731f6::staking::StakedThalaAPT": {
+      "decimals": "8",
+      "symbol": "sthAPT",
+      "to": "coingecko#staked-thala-apt"
+    },
+    "0xfaf4e633ae9eb31366c9ca24214231760926576c7b625313b3688b5e900731f6::staking::ThalaAPT": {
+      "decimals": "8",
+      "symbol": "thAPT",
+      "to": "coingecko#thala-apt"
+    },
     "0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::T": {
       "decimals": "6",
       "symbol": "USDCET",

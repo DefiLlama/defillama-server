@@ -28701,6 +28701,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#interlay",
     listedAt: 1704489965
   },
+  {
+    id: "3991",
+    name: "Archon Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://bridge.archon.finance/",
+    description: "A simple bridge aggregator for various chains and tokens",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/archon-bridge.png`, 
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum","Avalanche","Horizen EON"],
+    oracles: [],
+    forkedFrom: [],
+    module: "archon-bridge/index.js",
+    twitter: "archonFinance",
+    listedAt: 1704566453
+  },
 ]
 
 export default data3

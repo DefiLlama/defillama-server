@@ -131,14 +131,3 @@ export const zksync = async (): Promise<Address[]> => {
   addresses.zksync = data.map((d: any) => d.l2Address.toLowerCase());
   return addresses.zksync;
 };
-export const solana = async (): Promise<Address[]> => {
-  const tokenlist = await fetch(
-    "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json"
-  ).then((r) => r.json());
-  const tokens = tokenlist.tokens.filter(
-    (t: any) =>
-      "tags" in t && (t.tags.includes("wrapped") || t.tags.includes("stablecoin") || t.tags.includes("ethereum"))
-  );
-  addresses.solana = tokens.map((t: any) => t.address);
-  return addresses.solana;
-};

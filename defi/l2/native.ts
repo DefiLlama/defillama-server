@@ -39,8 +39,8 @@ export async function fetchMinted(params: {
 
       function findDollarValues() {
         Object.keys(supplies).map((t: string) => {
-          const priceInfo = prices[`${chain}:${t}`];
-          const mcapInfo = mcaps[`${chain}:${t}`];
+          const priceInfo = prices[t];
+          const mcapInfo = mcaps[t];
           const supply = supplies[t];
           if (!priceInfo || !supply || !mcapInfo) return;
           if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;

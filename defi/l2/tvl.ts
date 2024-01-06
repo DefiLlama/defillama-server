@@ -4,7 +4,7 @@ import { fetchMinted } from "./native";
 import { fetchMetadata } from "./metadata";
 import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
-import { chainsWithoutCanonicalBridges, gasTokens, ownTokens, tokenFlowCategories, zero } from "./constants";
+import { gasTokens, ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
@@ -15,7 +15,7 @@ export default async function main() {
   const { data: canonical } = await fetchTvls({ isCanonical: true });
   let [{ tvlData: native, mcapData }, incoming, { data: protocols }] = await Promise.all([
     fetchMinted({
-      chains: [...Object.keys(canonical), ...chainsWithoutCanonicalBridges],
+      chains: Object.keys(canonical),
     }),
     fetchIncoming({ canonical }),
     fetchTvls({ isCanonical: true, isProtocol: true }),

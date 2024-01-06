@@ -9,7 +9,7 @@ const addresses: { [chain: Chain]: Address[] } = {};
 chains.map((c: string) => (addresses[c] = []));
 
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
-  await Promise.all([axelar()]);
+  await Promise.all([axelar(), wormhole()]);
   return addresses;
 };
 
@@ -32,6 +32,18 @@ const axelar = async (): Promise<void> => {
       addresses[normalizedChain].push(token.addresses[chain].address.toLowerCase());
     });
   });
+};
+
+// CHECK THIS IS WORKING
+const wormhole = async (): Promise<void> => {
+  const tokenlist = await fetch(
+    "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json"
+  ).then((r) => r.json());
+  const tokens = tokenlist.tokens.filter(
+    (t: any) =>
+      "tags" in t && (t.tags.includes("wrapped") || t.tags.includes("stablecoin") || t.tags.includes("ethereum"))
+  );
+  addresses.solana = tokens.map((t: any) => t.address);
 };
 
 export default tokenAddresses;

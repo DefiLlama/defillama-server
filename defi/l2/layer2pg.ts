@@ -69,11 +69,10 @@ export async function storeNotTokens(tokens: string[]) {
     if (!token1 && chain.startsWith("0x")) {
       token1 = chain;
       chain = "ethereum";
-    } else {
+    } else if (!token1) {
       return;
     }
     const token = chain == "solana" ? token1 : token1.toLowerCase();
-    if (!token) return;
     inserts.push({ chain, token });
   });
 

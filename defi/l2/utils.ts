@@ -138,9 +138,10 @@ async function getSolanaTokenSupply(tokens: string[]): Promise<{ [token: string]
   let i = 0;
   let j = 0;
   const notTokens: string[] = [];
+  let b = Math.min(tokens.length, 5000);
   if (!process.env.SOLANA_RPC) throw new Error(`no Solana RPC supplied`);
   await PromisePool.withConcurrency(50)
-    .for(tokens.slice(0, Math.min(tokens.length, 5000)))
+    .for(tokens.slice(0, Math.min(tokens.length, 5000))) // REMOVE
     .process(async (token) => {
       tokens;
       i;
@@ -160,7 +161,7 @@ async function getSolanaTokenSupply(tokens: string[]): Promise<{ [token: string]
         if (res.error) {
           notTokens.push(`solana:${token}`);
           res.error;
-        } else supplies[token] = res.result.value.amount;
+        } else supplies[`solana:${token}`] = res.result.value.amount;
       } catch (e) {
         j++;
       }
@@ -185,7 +186,7 @@ async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [to
         permitFailure: true,
       });
       contracts.slice(i, i + step).map((c: Address, i: number) => {
-        if (res[i]) supplies[c] = res[i];
+        if (res[i]) supplies[`${chain}:${c}`] = res[i];
       });
     } catch {
       await PromisePool.withConcurrency(20)
@@ -196,7 +197,7 @@ async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [to
             target,
             abi: "erc20:totalSupply",
           });
-          if (res) supplies[target] = res;
+          if (res) supplies[`${chain}:${target}`] = res;
         });
     }
   }

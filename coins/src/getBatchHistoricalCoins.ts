@@ -87,7 +87,7 @@ const handler = async (event: any): Promise<IResponse> => {
 
     return successResponse({ coins: dbData }, 3600); // 1 hour cache
   } catch (e: any) {
-    return errorResponse({ message: e.toString() });
+    return errorResponse({ message: e.stack });
   }
 };
 

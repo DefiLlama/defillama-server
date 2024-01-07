@@ -43,6 +43,7 @@ process.on('SIGTERM', shutdown);
 
 function shutdown() {
   console.log('Shutting down gracefully...');
+  setTimeout(() => process.exit(0), 5000); // wait 5 seconds before forcing shutdown
   webserver.close(() => {
     console.log('Server has been shut down gracefully');
     process.exit(0);

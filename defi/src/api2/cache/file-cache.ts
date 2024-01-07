@@ -54,7 +54,7 @@ async function readFileData(subPath: string) {
   const filePath = path.join(CACHE_DIR!, subPath)
   try {
     const data = await fs.promises.readFile(filePath, 'utf8')
-    return JSON.parse(data)
+    return JSON.parse(data.toString())
   } catch (e) {
     log((e as any)?.message)
     return null

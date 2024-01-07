@@ -139,4 +139,8 @@ export default {
     enabled: true,
     id: "3980",
   },
+  "unidex": {
+    enabled: true,
+    id: "1833"
+},
 } as AdaptorsConfig;

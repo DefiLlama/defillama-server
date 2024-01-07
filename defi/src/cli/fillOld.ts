@@ -47,6 +47,12 @@ let failed = 0
 
 const IS_DRY_RUN = !!process.env.DRY_RUN
 
+process.on('SIGINT', async () => {
+  console.log('Received SIGINT. Cleaning up and exiting...');
+  process.exit(0);
+});
+
+
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,

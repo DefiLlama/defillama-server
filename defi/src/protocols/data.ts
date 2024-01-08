@@ -6080,7 +6080,7 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "bearnfi/index.js",
     twitter: "BearnFi",
-    forkedFrom: ["Uniswap V2", "Compound"],
+    forkedFrom: ["Uniswap V2", "Compound V2"],
     github: ["bearn-defi"]
   },
   {
@@ -13198,7 +13198,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fuse"],
     module: "fusefi/index.js",
     twitter: "voltfinance",
-    forkedFrom: ["Uniswap V2", "Compound"],
+    forkedFrom: ["Uniswap V2"], 
     parentProtocol: "parent#voltage",
     listedAt: 1635268314,
   },
@@ -19882,7 +19882,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "firedao/index.js",
     twitter: "FIREDAO_",
-    forkedFrom: ["Yearn Finance", "Compound"],
+    forkedFrom: ["Yearn Finance"],
     audit_links: ["https://github.com/FIREDAO/firedao-protocol/tree/main/audit"],
     listedAt: 1639798738,
     deadUrl: true
@@ -24119,7 +24119,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/solidproof/smart-contract-audits/blob/main/SmartContract_Audit_Solidproof_AgileFinance.pdf",
     ],
-    forkedFrom: ["Compound"],
+    forkedFrom: ["Compound V2"],
     listedAt: 1641906290,
     deadUrl: true
   },

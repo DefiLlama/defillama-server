@@ -12,7 +12,6 @@ chains.map((c: string) => (addresses[c] = []));
 
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
   await Promise.all([axelar(), wormhole()]);
-  return addresses;
   const filteredAddresses: { [chain: Chain]: Address[] } = {};
   Object.keys(addresses).map((chain: string) => {
     const chainAddresses =

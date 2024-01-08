@@ -49,7 +49,6 @@ async function translateToChainData(
 
   let translatedData: any = {};
   const selectedChains: Chain[] = Object.keys(data.canonical);
-  // tidy this up
   aggregateNativeTokens();
 
   await Promise.all(tokenFlowCategories.map((c: keyof ChainData) => processProperty(data, c)));

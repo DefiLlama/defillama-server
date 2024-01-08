@@ -89,7 +89,6 @@ export async function getPrices(
     });
   });
 
-  // this here is filtering in the opposite way as planned
   const notPricedTokens = filterForNotTokens(readKeys, Object.keys(aggregatedRes));
   await storeNotTokens(notPricedTokens);
 

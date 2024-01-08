@@ -64,7 +64,7 @@ export async function getHistoricalTvlForAllProtocols(
 ) {
   // get last daily timestamp by checking out all protocols most recent tvl value
   let lastDailyTimestamp = 0;
-  const protocolList = getHistTvlOptions.protocolList ?? protocols.slice(0, 10);
+  const protocolList = getHistTvlOptions.protocolList ?? protocols;
   const { storeMeta = false } = getHistTvlOptions;
   const excludedProcolsIds: any = {};
   const excludedProcolsIdsExceptBridge: any = {};

@@ -2640,7 +2640,7 @@ const data: Protocol[] = [
   },
   {
     id: "230",
-    name: "IDEX",
+    name: "IDEX Classic",
     address: "0xb705268213d593b8fd88d3fdeff93aff5cbdcfae",
     symbol: "IDEX",
     url: "https://idex.io/",
@@ -2649,8 +2649,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/idex.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "aurora-dao",
-    cmcId: "310",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
     module: "idex/index.js",
@@ -2659,7 +2659,8 @@ const data: Protocol[] = [
       "https://github.com/idexio/idex-contracts/tree/master/audits",
       "https://callisto.network/idex-security-audit/",
     ],
-    github: ["idexio"]
+    github: ["idexio"],
+    parentProtocol: "parent#idex"
   },
   {
     id: "231",

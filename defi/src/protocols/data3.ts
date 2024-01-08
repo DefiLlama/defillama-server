@@ -28855,7 +28855,29 @@ const data3: Protocol[] = [
     audit_links: ["https://compound.finance/docs/security"],
     oracles: [],
     parentProtocol: "parent#compound-finance",
-    listedAt: 1704740672
+  },
+  {
+    id: "3998",
+    name: "IDEX V1",
+    address: "0xb705268213d593b8fd88d3fdeff93aff5cbdcfae",
+    symbol: "IDEX",
+    url: "https://idex.io/",
+    description: "The fastest, most secure decentralized exchange.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/idex.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    module: "idex-v1/index.js",
+    twitter: "idexio",
+    audit_links: [
+      "https://github.com/idexio/idex-contracts/tree/master/audits",
+      "https://callisto.network/idex-security-audit/",
+    ],
+    parentProtocol: "parent#idex"
   },
 ]
 

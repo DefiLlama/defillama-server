@@ -3413,6 +3413,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TradeOnOrion",
     github: ["orionprotocol"]
   },
+  {
+    id: "parent#idex",
+    name: "IDEX",
+    url: "https://idex.io/",
+    description: `The fastest, most secure decentralized exchange`,
+    logo: `${baseIconsUrl}/orion.png`,
+    gecko_id: "aurora-dao",
+    cmcId: "310",
+    chains: [],
+    twitter: "idexio",
+    github: ["idexio"]
+  },
 ];
 
 export default parentProtocols;

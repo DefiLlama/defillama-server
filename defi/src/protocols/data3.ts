@@ -28787,6 +28787,53 @@ const data3: Protocol[] = [
     twitter: "Solanaminer",
     listedAt: 1704728118
   },
+  {
+    id: "3995",
+    name: "Repl",
+    address: null,
+    symbol: "-",
+    url: "https://repl.fi/",
+    description: "Repl is the first repledging Protocol for pledged FIL assets. It aims to enhance the efficiency of pledged FIL, remove idiosyncratic risks among Filecoin storage providers, and lower the complexity for people to earn Filecoin mining return",
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/repl.png`, 
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Infrastructure",
+    chains: ["Filecoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "repl/index.js",
+    twitter: null,
+    audit_links: [
+      "https://docs.repl.fi/assets/files/Repl_Zokyo_audit_report_2023-75580faff2dc76b2dd8d98cde41cf2dc.pdf",
+      "https://docs.repl.fi/assets/files/SlowMist_Audit_Report-47a5f3b63df90c99a4aa4d39ce367307.pdf"
+    ],
+    listedAt: 1704733578
+  },
+  {
+    id: "3996",
+    name: "CommuDAO GameSwap",
+    address: null,
+    symbol: "-",
+    url: "https://commudao.xyz/gameswap",
+    description: "GameSwap is the first decentralized exchange on JBC by CommuDAO, the web3 multiverse of crypto-community",
+    chain: "JBC",
+    logo: `${baseIconsUrl}/commudao-gameswap.png`, 
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["JBC"],
+    oracles: [],
+    forkedFrom: [],
+    module: "cmdao-gameswap/index.js",
+    twitter: null,
+    github: ["coshi-labs"],
+    listedAt: 1704733585
+  },
 ]
 
 export default data3

@@ -5,7 +5,7 @@ import { ChainData } from "./types";
 export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
 
-export const chainsWithoutCanonicalBridges: string[] = []; //"solana"];
+export const chainsWithoutCanonicalBridges: string[] = ["solana"];
 export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3782": "mantle",
   "3777": "arbitrum",
@@ -74,17 +74,18 @@ export const gasTokens: { [chain: Chain]: string } = {
   scroll: "ETH",
   starknet: "ETH",
   zksync: "ETH",
-  // everscale: "EVER",
-  // injective: "INJ",
-  // celo: "CELO",
-  // iotex: "IOTX",
-  // wanchain: "WAN",
-  // kekchain: "",
-  // elysium: "LAVA",
-  // alephium: "ALPH",
-  // xdai: "XDAI",
-  // polygon: "MATIC",
-  // avax: "AVAX",
-  // aurora: "ETH",
-  // rsk: "RBTC",
+  everscale: "EVER",
+  injective: "INJ",
+  celo: "CELO",
+  iotex: "IOTX",
+  wanchain: "WAN",
+  kekchain: "",
+  elysium: "LAVA",
+  alephium: "ALPH",
+  xdai: "XDAI",
+  polygon: "MATIC",
+  avax: "AVAX",
+  aurora: "ETH",
+  rsk: "RBTC",
+  solana: "SOL",
 };

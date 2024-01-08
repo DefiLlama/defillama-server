@@ -20,17 +20,14 @@ export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp
 
       const supplies = await fetchSupplies(chain, tokens);
 
-      const prices = await getPrices(
-        Object.keys(supplies).map((t: string) => `${chain}:${t}`),
-        timestamp
-      );
+      const prices = await getPrices(Object.keys(supplies), timestamp);
 
       data[chain] = findDollarValues();
 
       function findDollarValues() {
         const dollarValues: DollarValues = {};
         Object.keys(supplies).map((t: string) => {
-          const priceInfo = prices[`${chain}:${t}`];
+          const priceInfo = prices[t];
           const supply = supplies[t];
           if (!priceInfo || !supply) return;
           if (priceInfo.symbol in canonicalTvls[chain]) return;

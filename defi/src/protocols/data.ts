@@ -2659,7 +2659,6 @@ const data: Protocol[] = [
       "https://github.com/idexio/idex-contracts/tree/master/audits",
       "https://callisto.network/idex-security-audit/",
     ],
-    github: ["idexio"],
     parentProtocol: "parent#idex"
   },
   {

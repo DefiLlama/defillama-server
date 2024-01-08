@@ -13757,7 +13757,7 @@ const data3: Protocol[] = [
     url: "https://www.tanx.fi",
     description: "The decentralized order-book exchange for traders crafted by traders. Gasless, Instant, Multi-Chain, Secure, Trustless. Powered by @StarkWareLtd",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/tanx.fi.jpg`,
+    logo: `${baseIconsUrl}/tanx.fi.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

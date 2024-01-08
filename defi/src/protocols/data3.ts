@@ -28834,6 +28834,29 @@ const data3: Protocol[] = [
     github: ["coshi-labs"],
     listedAt: 1704733585
   },
+  {
+    id: "3997",
+    name: "Compound V1",
+    address: "0xc00e94cb662c3520282e6f5717214004a7f26888",
+    symbol: "COMP",
+    url: "https://compound.finance",
+    description:
+      "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/compound.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "compound-v1/index.js",
+    twitter: "compoundfinance",
+    audit_links: ["https://compound.finance/docs/security"],
+    oracles: [],
+    parentProtocol: "parent#compound-finance",
+    listedAt: 1704740672
+  },
 ]
 
 export default data3

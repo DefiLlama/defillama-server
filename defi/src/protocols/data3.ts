@@ -20619,7 +20619,7 @@ const data3: Protocol[] = [
     name: "Monocerus",
     address: "manta:0x657218E3535B32EDef9a722E35dcd6EA40E1202e",
     symbol: "CERUS",
-    url: "https://monocerus.world/swap",
+    url: "https://monocerus.world",
     description:
       "Monocerus is a MMORPG 3.0 (Massive Multi-players Online Role Playing Game on Web3) with CLMM DEX Gamification",
     chain: "Avalanche",

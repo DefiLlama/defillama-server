@@ -11140,7 +11140,7 @@ const data3: Protocol[] = [
     address: "evmos:0x98fAFD9F714CE0B4bB2870527076F2F314aAed82",
     symbol: "TASHI",
     url: "https://tashi.finance",
-    description: "Tashi empowers users to seamlessly engage in lending, borrowing, and earning block rewards with their digital assets. Depositors earn block rewards by providing liquidity into the protocol, while borrowers can access funds in an over-collateralized manner.",
+    description: "Tashi empowers users to seamlessly engage in lending, borrowing, and earning block rewards with their digital assets. Depositors earn block rewards by providing liquidity into the protocol, while borrowers can access funds in an over-collateralized manner. #PoweredByPyth",
     chain: "Evmos",
     logo: `${baseIconsUrl}/tashi.png`,
     audits: "2",

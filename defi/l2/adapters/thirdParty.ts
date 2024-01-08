@@ -84,10 +84,7 @@ const wormhole = async (): Promise<void> => {
   lines.shift();
   lines.map((l: string) => {
     const rows = l.split(",");
-    if (!(rows[0] in chainMap)) {
-      console.log(rows[0]);
-      return;
-    }
+    if (!(rows[0] in chainMap)) return;
     const chain = chainMap[rows[0]];
     if (!addresses[chain]) addresses[chain] = [];
     addresses[chain].push(rows[3]);

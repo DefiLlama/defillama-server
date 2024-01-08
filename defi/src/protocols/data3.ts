@@ -20617,7 +20617,7 @@ const data3: Protocol[] = [
   {
     id: "3622",
     name: "Monocerus",
-    address: "avax:0x6F0167Dca1fAB2AaBe20cf56B7a7E1FdB47AC388",
+    address: "manta:0x657218E3535B32EDef9a722E35dcd6EA40E1202e",
     symbol: "CERUS",
     url: "https://monocerus.world/swap",
     description:

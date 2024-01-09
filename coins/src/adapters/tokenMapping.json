@@ -193,6 +193,12 @@
       "decimals": "18",
       "symbol": "SHIB",
       "to": "coingecko#shiba-inu"
+    },
+    "0xa63f56985f9c7f3bc9ffc5685535649e0c1a55f3": {
+      "name": "Staked FRAX",
+      "decimals": "18",
+      "symbol": "sFRAX",
+      "to": "ethereum:0xa663b02cf0a4b149d2ad41910cb81e23e1c41c32"
     }
   },
   "arbitrum": {

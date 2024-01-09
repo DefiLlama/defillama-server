@@ -28899,6 +28899,28 @@ const data3: Protocol[] = [
     module: "cega-v2/index.js",
     twitter: "cega_fi",
   },
+  {
+    id: "4000",
+    name: "ArtdeFinance",
+    address: "polygon:0x6BD10299f4f1d31b3489Dc369eA958712d27c81b",
+    symbol: "ADF",
+    url: "https://artdefinance.io",
+    description: "Seeding is an Art de Finance's unique staking service that allows artists and Seeding participants to share ADF token' staking profit as ecosystem participation reward",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/artdefinance.jpg`, 
+    audits: "0",
+    audit_note: null,
+    gecko_id: "art-de-finance",
+    cmcId: "24796",
+    category: "Yield",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "artdefinance-seeding/index.js",
+    twitter: "ArtdeFinance",
+    github: ["Artdefinance"],
+    listedAt: 1704800522
+  },
 ]
 
 export default data3

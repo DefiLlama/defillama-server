@@ -1741,5 +1741,9 @@ export default {
     "immortalx": {
         "enabled": true,
         "id": "3983"
+    },
+    "goku-money": {
+        "enabled": true,
+        "id": "3758"
     }
 } as AdaptorsConfig

@@ -19778,7 +19778,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/tangleswap.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "tangleswap-void",
     cmcId: null,
     category: "Dexes",
     chains: ["ShimmerEVM"],
@@ -19794,7 +19794,8 @@ const data3: Protocol[] = [
       "https://admin.zokyo.io/uploads/Tangle_Swap_audit_VE_Staking_057af158dd.pdf",
       "https://admin.zokyo.io/uploads/Tangle_Swap_audit_Investment_Hub_034d10ca3f.pdf"
     ],
-    listedAt: 1696261601
+    listedAt: 1696261601,
+    wrongLiquidity: true // pulling data for VOID token on Solana
   },
   {
     id: "3586",

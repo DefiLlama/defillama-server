@@ -2328,5 +2328,9 @@ export default {
     "cleopatra-exchange": {
         "enabled": true,
         "id": "3985"
+    },
+    "zkswap": {
+        "enabled": true,
+        "id": "3280"
     }
 } as AdaptorsConfig

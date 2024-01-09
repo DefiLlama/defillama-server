@@ -295,10 +295,11 @@ export async function storeGetCharts({ ...options }: any = {}) {
         //  check if its a valid chain name and not extra tvl section like pool2, staking etc
         if (chainCoingeckoIds[chainName] !== undefined) {
           sum(sumDailyTvls, chainName, tvlSection, timestamp, tvl);
-          sum(sumCategoryTvls, protocol.category || "", chain, timestamp, tvl);
+
           // doublecounted and liquidstaking === tvl on the chain, so check if tvlSection is not staking, pool2 etc
 
           if (tvlSection === "tvl") {
+            sum(sumCategoryTvls, (protocol.category || "").toLowerCase().replace(" ", "_"), chain, timestamp, tvl);
             if (protocol?.doublecounted) {
               sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
             }

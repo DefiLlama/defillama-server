@@ -1212,6 +1212,13 @@
       "to": "coingecko#lords"
     }
   },
+  "milkomeda": {
+    "0x6085c822b7a4c688d114468b1380a0ed1873a0b3": {
+      "decimals": "18",
+      "symbol": "VOID",
+      "to": "coingecko#tangleswap-void"
+    }
+  },
   "kroma": {
     "0x0257e4d92c00c9efcca1d641b224d7d09cfa4522": {
       "decimals": "6",

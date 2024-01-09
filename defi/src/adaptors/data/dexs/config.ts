@@ -2336,5 +2336,9 @@ export default {
     "trisolaris": {
         "enabled": true,
         "id": "784"
+    },
+    "nearpad": {
+        "enabled": true,
+        "id": "953"
     }
 } as AdaptorsConfig

@@ -895,7 +895,7 @@ export default {
         "id": "1990"
     },
     "arctic": {
-        "enabled": true,
+        "enabled": false,
         "id": "2176"
     },
     "swapsicle": {

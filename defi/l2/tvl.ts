@@ -114,10 +114,10 @@ async function translateToChainData(
           return;
         }
         if (symbol in breakdown)
-          breakdown[symbol] = breakdown[symbol].plus(translatedData[chain].incoming.breakdown[symbol]);
-        else breakdown[symbol] = translatedData[chain].outgoing.breakdown[symbol];
+          breakdown[symbol] = breakdown[symbol].minus(translatedData[chain].incoming.breakdown[symbol]);
+        else breakdown[symbol] = BigNumber(-1).times(translatedData[chain].outgoing.breakdown[symbol]);
       });
-      const total = translatedData[chain].outgoing.total.plus(translatedData[chain].incoming.total);
+      const total = Object.values(breakdown).reduce((p: BigNumber, c: BigNumber) => p.plus(c), zero);
       translatedData[chain].thirdParty = { total, breakdown };
       delete translatedData[chain].incoming;
       delete translatedData[chain].outgoing;

@@ -48,3 +48,4 @@ export type McapsApiData = {
   mcap: number;
   timestamp: number;
 };
+export type AllProtocols = { [id: string]: TokenTvlData };

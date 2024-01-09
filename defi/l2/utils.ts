@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
-import { CoinsApiData, McapsApiData, TokenTvlData } from "./types";
-import { excludedTvlKeys, zero } from "./constants";
+import { AllProtocols, CoinsApiData, McapsApiData, TokenTvlData } from "./types";
+import { canonicalBridgeIds, excludedTvlKeys, zero } from "./constants";
 import fetch from "node-fetch";
 import sleep from "../src/utils/shared/sleep";
 import { call, multiCall } from "@defillama/sdk/build/abi/abi2";
@@ -11,21 +11,22 @@ import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
 import { fetchNotTokens, storeNotTokens } from "./layer2pg";
 
-export function aggregateChainTokenBalances(usdTokenBalances: TokenTvlData[][]): TokenTvlData {
+export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
   const chainUsdTokenTvls: TokenTvlData = {};
 
-  usdTokenBalances.map((type: TokenTvlData[]) =>
-    type.map((bridge: any) => {
-      Object.keys(bridge).map((chain: string) => {
-        if (excludedTvlKeys.includes(chain)) return;
-        if (!(chain in chainUsdTokenTvls)) chainUsdTokenTvls[chain] = {};
-        Object.keys(bridge[chain]).map((asset: string) => {
-          if (!(asset in chainUsdTokenTvls[chain])) chainUsdTokenTvls[chain][asset] = zero;
-          chainUsdTokenTvls[chain][asset] = BigNumber(bridge[chain][asset]).plus(chainUsdTokenTvls[chain][asset]);
-        });
+  Object.keys(usdTokenBalances).map((id: string) => {
+    const bridge = usdTokenBalances[id];
+    Object.keys(bridge).map((chain: string) => {
+      if (canonicalBridgeIds[id] == chain) return;
+      if (excludedTvlKeys.includes(chain)) return;
+
+      if (!(chain in chainUsdTokenTvls)) chainUsdTokenTvls[chain] = {};
+      Object.keys(bridge[chain]).map((asset: string) => {
+        if (!(asset in chainUsdTokenTvls[chain])) chainUsdTokenTvls[chain][asset] = zero;
+        chainUsdTokenTvls[chain][asset] = BigNumber(bridge[chain][asset]).plus(chainUsdTokenTvls[chain][asset]);
       });
-    })
-  );
+    });
+  });
 
   return chainUsdTokenTvls;
 }
@@ -235,9 +236,11 @@ export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
 }
 export function sortBySize() {
   const coins: { [value: string]: string } = {};
+
   const res = Object.entries(coins).sort(([_A, valueA], [_B, valueB]) => {
     [_A, _B];
     return Number(valueB) - Number(valueA);
   });
   console.log(res.slice(0, 10));
 }
+// sortBySize(); // ts-node defi/l2/utils.ts

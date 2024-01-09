@@ -2117,6 +2117,20 @@ export const chainCoingeckoIds = {
       types: ["L2"]
     },
   },
+  "CMP": {
+    geckoId: null,
+    symbol: "CMP",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 256256
+  },
+  "Firechain": {
+    geckoId: null,
+    symbol: "FIRE",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 529
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2644,6 +2658,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Bahamut"
     case "zkfair":
       return "Zkfair"
+    case "cmp":
+      return "CMP"
+    case "firechain":
+      return "Firechain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

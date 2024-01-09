@@ -2340,5 +2340,9 @@ export default {
     "nearpad": {
         "enabled": true,
         "id": "953"
+    },
+    "auroraswap": {
+        "enabled": true,
+        "id": "1174"
     }
 } as AdaptorsConfig

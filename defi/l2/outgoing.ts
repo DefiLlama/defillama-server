@@ -1,39 +1,23 @@
-import protocols, { Protocol } from "../src/protocols/data";
 import getTVLOfRecordClosestToTimestamp from "../src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "../../high-usage/defiCode/utils/date";
-import { DollarValues, McapData, TokenTvlData } from "./types";
+import { AllProtocols, DollarValues, McapData, TokenTvlData } from "./types";
 import { aggregateChainTokenBalances } from "./utils";
 import { canonicalBridgeIds, chainsWithoutCanonicalBridges, protocolBridgeIds, zero } from "./constants";
 import BigNumber from "bignumber.js";
 
-export default async function fetchBridgeUsdTokenTvls(
-  timestamp: number,
-  searchWidth: number,
-  isCanonical: boolean,
-  isProtocol: boolean
-): Promise<TokenTvlData[]> {
-  const canonicalIds = Object.keys(isProtocol ? protocolBridgeIds : canonicalBridgeIds);
-  const alBridgeProtocols: Protocol[] = isProtocol
-    ? protocols
-    : protocols.filter((p: Protocol) => p.category?.toLowerCase() == "bridge" || p.category?.toLowerCase() == "chain");
-  const bridgeProtocols = alBridgeProtocols.filter((p: Protocol) =>
-    isCanonical ? canonicalIds.includes(p.id) : !canonicalIds.includes(p.id)
-  );
-  const usdTokenBalances: TokenTvlData[] = await Promise.all(
-    bridgeProtocols.map((b: Protocol) =>
-      getTVLOfRecordClosestToTimestamp(`hourlyUsdTokensTvl#${b.id}`, timestamp, searchWidth)
-    )
+let allProtocols: AllProtocols = {};
+
+export default async function fetchBridgeUsdTokenTvls(timestamp: number, searchWidth: number): Promise<void> {
+  if (Object.keys(allProtocols).length) return;
+  const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds)];
+  const usdTokenBalances: any[] = await Promise.all(
+    ids.map((i: string) => getTVLOfRecordClosestToTimestamp(`hourlyUsdTokensTvl#${i}`, timestamp, searchWidth))
   );
 
-  let missingIds: string = ``;
-  usdTokenBalances.map((b: any, i: number) => {
-    if (!b.SK) missingIds += ` ${canonicalIds[i]},`;
+  ids.map((id: string, i: number) => {
+    if (usdTokenBalances[i].SK == null) throw new Error(`missing hourlyUsdTokensTvl for id ${id}`);
+    allProtocols[id] = usdTokenBalances[i];
   });
-
-  if (isCanonical && missingIds.length)
-    throw new Error(`missing hourlyUsdTokensTvl for ${isProtocol ? "protocol" : "bridge"} IDs: ${missingIds}`);
-
-  return usdTokenBalances;
 }
 
 export async function fetchTvls(
@@ -50,22 +34,20 @@ export async function fetchTvls(
   const searchWidth: number = params.searchWidth ?? 10800; // 3hr either side
   const isCanonical: boolean = params.isCanonical ?? false;
   const isProtocol: boolean = params.isProtocol ?? false;
-  const dbData = await fetchBridgeUsdTokenTvls(timestamp, searchWidth, isCanonical, isProtocol);
+  await fetchBridgeUsdTokenTvls(timestamp, searchWidth);
 
-  if (isCanonical) return sortCanonicalBridgeBalances(dbData, isProtocol);
-  const aggregate = aggregateChainTokenBalances([dbData]);
+  if (isCanonical) return sortCanonicalBridgeBalances(isProtocol);
+  const aggregate = aggregateChainTokenBalances(allProtocols);
 
   if (params.mcapData && params.native) return addOutgoingToMcapData(aggregate, params.mcapData);
   return { data: aggregate };
 }
-function sortCanonicalBridgeBalances(
-  usdTokenBalances: TokenTvlData[],
-  isProtocol: boolean
-): { data: TokenTvlData; native?: TokenTvlData } {
+function sortCanonicalBridgeBalances(isProtocol: boolean): { data: TokenTvlData; native?: TokenTvlData } {
   const ids = isProtocol ? protocolBridgeIds : canonicalBridgeIds;
   const canonicalBridgeTokenBalances: TokenTvlData = {};
+
   Object.keys(ids).map((id: string) => {
-    const data: TokenTvlData | undefined = usdTokenBalances.find((d: any) => d.PK == `hourlyUsdTokensTvl#${id}`);
+    const data: TokenTvlData | undefined = allProtocols[id];
     if (!data) return;
 
     const bigNumberBalances: DollarValues = {};
@@ -84,6 +66,7 @@ function sortCanonicalBridgeBalances(
   chainsWithoutCanonicalBridges.map((chain: string) => {
     canonicalBridgeTokenBalances[chain] = {};
   });
+
   return { data: canonicalBridgeTokenBalances };
 }
 function addOutgoingToMcapData(

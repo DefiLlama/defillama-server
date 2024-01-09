@@ -28958,7 +28958,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ['Arbitrum', 'Astar', 'Aurora', 'Avalanche', 'Base', 'Binance', 'Celo', 'CMP', 'Conflux', 'CORE', 'Dogechain', 'Ethereum', 'Fantom', 'Flare', 'Fuse', 'Fusion', 'Heco', 'Kucoin', 'Kardia', 'Kava', 'Linea', 'Metis', 'Moonbeam', 'Moonriver', 'Optimism', 'Palm', 'Polygon', 'Polygon zkEVM', 'Thundercore'],
+    chains: ['Arbitrum', 'Astar', 'Aurora', 'Avalanche', 'Base', 'Binance', 'Celo', 'CMP', 'Conflux', 'CORE', 'Dogechain', 'Ethereum', 'Fantom', 'Flare', 'Fuse', 'Fusion', 'Heco', 'Kucoin', 'Kardia', 'Kava', 'Linea', 'Metis', 'Moonbeam', 'Moonriver', 'Optimism', 'Palm', 'Polygon', 'Polygon zkEVM', 'ThunderCore'],
     oracles: [],
     forkedFrom: [],
     module: "donaswap-v2/index.js",

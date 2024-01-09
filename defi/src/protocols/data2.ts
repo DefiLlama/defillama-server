@@ -15082,7 +15082,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2053",
-    name: "Cega",
+    name: "Cega V1",
     address: null,
     symbol: "-",
     url: "https://app.cega.fi",

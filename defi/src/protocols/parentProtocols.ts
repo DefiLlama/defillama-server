@@ -3425,6 +3425,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "idexio",
     github: ["idexio"]
   },
+  {
+    id: "parent#cega",
+    name: "Cega",
+    url: "https://app.cega.fi",
+    description: `Cega is a decentralized exotic derivatives protocol`,
+    logo: `${baseIconsUrl}/cega.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "cega_fi"
+  },
 ];
 
 export default parentProtocols;

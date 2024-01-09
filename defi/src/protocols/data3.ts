@@ -28879,6 +28879,26 @@ const data3: Protocol[] = [
     ],
     parentProtocol: "parent#idex"
   },
+  {
+    id: "3999",
+    name: "Cega V2",
+    address: null,
+    symbol: "-",
+    url: "https://app.cega.fi",
+    description: "Cega is a decentralized exotic derivatives protocol",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cega.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "cega-v2/index.js",
+    twitter: "cega_fi",
+  },
 ]
 
 export default data3

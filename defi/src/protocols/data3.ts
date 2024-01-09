@@ -28934,7 +28934,7 @@ const data3: Protocol[] = [
     audits: "2",
     audit_note: null,
     gecko_id: "creo-engine",
-    cmcId: null,
+    cmcId: "17000",
     category: "Gaming",
     chains: ["Binance"],
     oracles: [],

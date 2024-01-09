@@ -2118,9 +2118,9 @@ export const chainCoingeckoIds = {
     },
   },
   "CMP": {
-    geckoId: null,
+    geckoId: "caduceus",
     symbol: "CMP",
-    cmcId: null,
+    cmcId: "20056",
     categories: ["EVM"],
     chainId: 256256
   },

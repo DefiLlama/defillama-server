@@ -437,6 +437,11 @@
       "to": "coingecko#tether",
       "decimals": "18",
       "symbol": "USDT"
+    },
+    "0x7c6b91d9be155a6db01f749217d76ff02a7227f2": {
+      "to": "coingecko#bitcoin-bep2",
+      "decimals": "18",
+      "symbol": "BTCB"
     }
   },
   "solana": {

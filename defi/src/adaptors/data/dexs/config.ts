@@ -2344,5 +2344,9 @@ export default {
     "auroraswap": {
         "enabled": true,
         "id": "1174"
+    },
+    "wannaswap": {
+        "enabled": true,
+        "id": "980"
     }
 } as AdaptorsConfig

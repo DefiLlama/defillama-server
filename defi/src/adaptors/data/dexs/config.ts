@@ -2332,5 +2332,9 @@ export default {
     "zkswap": {
         "enabled": true,
         "id": "3280"
+    },
+    "trisolaris": {
+        "enabled": true,
+        "id": "784"
     }
 } as AdaptorsConfig

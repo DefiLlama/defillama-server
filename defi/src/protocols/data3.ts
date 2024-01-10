@@ -29054,6 +29054,31 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.merchantmoe.com/resources/audits"],
     listedAt: 1704837211
   },
+  {
+    id: "4007",
+    name: "Cakepie",
+    address: null,
+    symbol: "-",
+    url: "https://www.pancake.magpiexyz.io/stake",
+    description: "Cakepie is a Next-Generation SubDAO by @magpiexyz_io that leverages @pancakeswap's robust infrastructure",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/cakepie.jpg`, 
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "cakepie/index.js",
+    twitter: "Cakepiexyz_io",
+    audit_links: [
+                   "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Cakepie-v1.0.pdf",
+                   "https://github.com/blocksecteam/audit-reports/blob/main/solidity/blocksec_cakepie_v1.0-signed.pdf"
+                 ],
+    listedAt: 1704897926
+  },
 ]
 
 export default data3

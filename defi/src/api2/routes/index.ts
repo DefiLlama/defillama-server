@@ -195,7 +195,6 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   let name = sluggify({ name: req.path_parameters.name } as any)
   const protocolData = (cache as any)[dataType + 'SlugMap'][name];
   res.setHeaders({
-    "Access-Control-Allow-Origin": "*",
     "Expires": get20MinDate()
   })
 

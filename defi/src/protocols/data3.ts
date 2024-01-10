@@ -29031,6 +29031,29 @@ const data3: Protocol[] = [
     github: ["zokyo-sec"],
     listedAt: 1704837211
   },
+  {
+    id: "4006",
+    name: "Merchant Moe",
+    address: "mantle:0x4515A45337F461A11Ff0FE8aBF3c606AE5dC00c9",
+    symbol: "MOE",
+    url: "https://merchantmoe.com/",
+    description: "A decentralized exchange on Mantle",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/merchant-moe.png`, 
+    audits: "2",
+    audit_note: null,
+    gecko_id: "moe-3",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    oracles: [],
+    forkedFrom: [],
+    module: "merchant-moe/index.js",
+    twitter: "MerchantMoe_xyz",
+    github: ["merchant-moe"],
+    audit_links: ["https://docs.merchantmoe.com/resources/audits"],
+    listedAt: 1704837211
+  },
 ]
 
 export default data3

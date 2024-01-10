@@ -29047,7 +29047,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Mantle"],
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["Solidly"],
     module: "merchant-moe/index.js",
     twitter: "MerchantMoe_xyz",
     github: ["merchant-moe"],

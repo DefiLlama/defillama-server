@@ -1221,7 +1221,7 @@
     "0x6085c822b7a4c688d114468b1380a0ed1873a0b3": {
       "decimals": "18",
       "symbol": "VOID",
-      "to": "shimmer_evm:#0xe5f3dcc241dd008e3c308e57cf4f7880ea9210f8"
+      "to": "shimmer_evm:0xe5f3dcc241dd008e3c308e57cf4f7880ea9210f8"
     }
   },
   "kroma": {

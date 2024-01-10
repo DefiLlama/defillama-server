@@ -18045,7 +18045,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Aurora"],
     module: "nearpad/index.js",
-    twitter: "NearPad",
+    twitter: "pad_finance",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1638393212,
   },

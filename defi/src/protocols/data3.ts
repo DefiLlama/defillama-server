@@ -29077,6 +29077,7 @@ const data3: Protocol[] = [
                    "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Cakepie-v1.0.pdf",
                    "https://github.com/blocksecteam/audit-reports/blob/main/solidity/blocksec_cakepie_v1.0-signed.pdf"
                  ],
+    parentProtocol: "parent#magpie-ecosystem",
     listedAt: 1704897926
   },
 ]

@@ -1745,5 +1745,9 @@ export default {
     "goku-money": {
         "enabled": true,
         "id": "3758"
+    },
+    "allbridge-classic": {
+        "enabled": true,
+        "id": "577"
     }
 } as AdaptorsConfig

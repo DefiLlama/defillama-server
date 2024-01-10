@@ -2348,5 +2348,9 @@ export default {
     "wannaswap": {
         "enabled": true,
         "id": "980"
+    },
+    "allbridge-classic": {
+        "enabled": true,
+        "id": "577"
     }
 } as AdaptorsConfig

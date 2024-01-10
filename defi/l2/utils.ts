@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
 import { AllProtocols, CoinsApiData, McapsApiData, TokenTvlData } from "./types";
-import { canonicalBridgeIds, excludedTvlKeys, zero } from "./constants";
+import { canonicalBridgeIds, excludedTvlKeys, mixedCaseChains, zero } from "./constants";
 import fetch from "node-fetch";
 import sleep from "../src/utils/shared/sleep";
 import { call, multiCall } from "@defillama/sdk/build/abi/abi2";
@@ -84,9 +84,12 @@ export async function getPrices(
   const tokenData = await Promise.all(readRequests);
 
   const aggregatedRes: { [address: string]: CoinsApiData } = {};
+  const normalizedReadKeys = readKeys.map((k: string) => k.toLowerCase());
   tokenData.map((batch: CoinsApiData[]) => {
     batch.map((a: CoinsApiData) => {
-      if (a.PK) aggregatedRes[a.PK] = a;
+      if (!a.PK) return;
+      const i = normalizedReadKeys.indexOf(a.PK.toLowerCase());
+      aggregatedRes[readKeys[i]] = a;
     });
   });
 
@@ -186,7 +189,7 @@ async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [to
         permitFailure: true,
       });
       contracts.slice(i, i + step).map((c: Address, i: number) => {
-        if (res[i]) supplies[`${chain}:${c}`] = res[i];
+        if (res[i]) supplies[`${chain}:${mixedCaseChains.includes(chain) ? c : c.toLowerCase()}`] = res[i];
       });
     } catch {
       await PromisePool.withConcurrency(20)
@@ -197,10 +200,14 @@ async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [to
             target,
             abi: "erc20:totalSupply",
           });
-          if (res) supplies[`${chain}:${target}`] = res;
+          if (res) supplies[`${chain}:${mixedCaseChains.includes(chain) ? target : target.toLowerCase()}`] = res;
+        })
+        .catch((e) => {
+          e;
         });
     }
   }
+
   return supplies;
 }
 export function filterForNotTokens(tokens: Address[], notTokens: Address[]): Address[] {
@@ -210,7 +217,7 @@ export function filterForNotTokens(tokens: Address[], notTokens: Address[]): Add
 }
 export async function fetchSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
   try {
-    const notTokens = chain == "solana" ? await fetchNotTokens(chain) : [];
+    const notTokens = await fetchNotTokens(chain);
     const tokens = filterForNotTokens(contracts, notTokens);
     if (chain == "solana") return await getSolanaTokenSupply(tokens);
     return await getEVMSupplies(chain, tokens);
@@ -223,14 +230,18 @@ export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
   if (j == -1) return [];
   try {
     const tokens: Address[] = await Object.values(incomingAssets)[j]();
-    const filteredTokens: Address[] =
+    let filteredTokens: Address[] =
       chain in excluded ? tokens.filter((t: string) => !excluded[chain].includes(t)) : tokens;
-    if (chain == "solana") return filteredTokens;
-    const normalizedTokens: Address[] = filteredTokens.map((t: string) => t.toLowerCase());
-    if (!(chain in additional)) return normalizedTokens;
-    const additionalTokens = additional[chain].map((t: string) => t.toLowerCase());
-    return [...normalizedTokens, ...additionalTokens];
-  } catch {
+    if (!mixedCaseChains.includes(chain)) filteredTokens = filteredTokens.map((t: string) => t.toLowerCase());
+
+    if (!(chain in additional)) return filteredTokens;
+
+    const additionalTokens = mixedCaseChains.includes(chain)
+      ? additional[chain]
+      : additional[chain].map((t: string) => t.toLowerCase());
+
+    return [...filteredTokens, ...additionalTokens];
+  } catch (e) {
     throw new Error(`${chain} bridge adapter failed`);
   }
 }

@@ -126,12 +126,26 @@ export const starknet = async (): Promise<Address[]> => {
 };
 export const zksync = async (): Promise<Address[]> => {
   if (addresses.zksync) return addresses.zksync;
-  const { data: { result: data } } = await axios.post("https://mainnet.era.zksync.io", {
-    "method": "zks_getConfirmedTokens",
-    "params": [0, 255],
-    "id": 1,
-    "jsonrpc": "2.0"
-  })
+  const {
+    data: { result: data },
+  } = await axios.post("https://mainnet.era.zksync.io", {
+    method: "zks_getConfirmedTokens",
+    params: [0, 255],
+    id: 1,
+    jsonrpc: "2.0",
+  });
   addresses.zksync = data.map((d: any) => d.l2Address.toLowerCase());
   return addresses.zksync;
+};
+export const tron = async (): Promise<Address[]> => {
+  if (!("tron" in addresses)) addresses.tron = [];
+  addresses.tron.push(
+    ...[
+      "TN3W4H6rK2ce4vX9YnFQHwKENnHjoxb3m9", // BTC
+      "THb4CqiFdwNHsWsQCs4JhzwjMWys4aqCbF", // ETHold
+      "TR3DLthpnDdCGabhVDbD3VMsiJoCXY3bZd", // LTC
+      "THbVQp8kMjStKNnf2iCY6NEzThKMK5aBHg", // DOGE
+    ]
+  );
+  return addresses.tron;
 };

@@ -38,7 +38,7 @@ export async function fetchMinted(params: {
       const mcaps = await getMcaps(Object.keys(prices), timestamp);
 
       function findDollarValues() {
-        Object.keys(supplies).map((t: string) => {
+        Object.keys(mcaps).map((t: string) => {
           const priceInfo = prices[t];
           const mcapInfo = mcaps[t];
           const supply = supplies[t];

@@ -3,6 +3,7 @@ import { Chain } from "@defillama/sdk/build/general";
 import { TokenInsert } from "./types";
 import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 import sleep from "../src/utils/shared/sleep";
+import { mixedCaseChains } from "./constants";
 
 let auth: string[];
 let sql: any;
@@ -41,7 +42,7 @@ export async function storeAllTokens(tokens: string[]) {
     } else if (!token1) {
       return;
     }
-    const token = chain == "solana" ? token1 : token1.toLowerCase();
+    const token = mixedCaseChains.includes(chain) ? token1 : token1.toLowerCase();
     if (!token) return;
     inserts.push({ chain, token });
   });
@@ -72,7 +73,7 @@ export async function storeNotTokens(tokens: string[]) {
     } else if (!token1) {
       return;
     }
-    const token = chain == "solana" ? token1 : token1.toLowerCase();
+    const token = mixedCaseChains.includes(chain) ? token1 : token1.toLowerCase();
     inserts.push({ chain, token });
   });
 

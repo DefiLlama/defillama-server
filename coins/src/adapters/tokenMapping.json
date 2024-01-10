@@ -271,6 +271,11 @@
       "decimals": "18",
       "symbol": "rcbETH",
       "to": "coingecko#ethereum"
+    },
+    "0xcc7ff230365bd730ee4b352cc2492cedac49383e": {
+      "decimals": "18",
+      "symbol": "hyUSD",
+      "to": "coingecko#high-yield-usd-base"
     }
   },
   "aptos": {

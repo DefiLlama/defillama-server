@@ -22463,7 +22463,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Linea"],
-    oracles: [],
+    oracles: ["Pyth"],
     module: "dyson/index.js",
     twitter: "DysonFinance",
     forkedFrom: ["Uniswap V2"],

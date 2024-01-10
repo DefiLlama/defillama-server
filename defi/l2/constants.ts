@@ -5,6 +5,7 @@ import { ChainData } from "./types";
 export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
 
+export const mixedCaseChains: string[] = ["solana", "tron"];
 export const chainsWithoutCanonicalBridges: string[] = ["ethereum", "solana"];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -23,7 +24,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "801": "celo",
   "1272": "iotex",
   "2081": "wanchain",
-  "2214": "kekchain",
+  // "2214": "kekchain",
   "2316": "meter",
   "3699": "elysium",
   "3813": "alephium",

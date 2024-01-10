@@ -1,6 +1,6 @@
 import { Chain } from "@defillama/sdk/build/general";
 import { Address } from "@defillama/sdk/build/types";
-import { canonicalBridgeIds } from "../constants";
+import { canonicalBridgeIds, mixedCaseChains } from "../constants";
 import fetch from "node-fetch";
 import { additional, excluded } from "./manual";
 import axios from "axios";
@@ -14,19 +14,17 @@ const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
   await Promise.all([axelar(), wormhole()]);
   const filteredAddresses: { [chain: Chain]: Address[] } = {};
   Object.keys(addresses).map((chain: string) => {
-    const chainAddresses =
+    let chainAddresses =
       chain in excluded ? addresses[chain].filter((t: string) => !excluded[chain].includes(t)) : addresses[chain];
-    if (chain == "solana") {
+    if (!mixedCaseChains.includes(chain)) chainAddresses = chainAddresses.map((t: string) => t.toLowerCase());
+    if (!(chain in additional)) {
       filteredAddresses[chain] = chainAddresses;
       return;
     }
-    const normalizedTokens: Address[] = chainAddresses.map((t: string) => t.toLowerCase());
-    if (!(chain in additional)) {
-      filteredAddresses[chain] = normalizedTokens;
-      return;
-    }
-    const additionalTokens = additional[chain].map((t: string) => t.toLowerCase());
-    filteredAddresses[chain] = [...normalizedTokens, ...additionalTokens];
+    const additionalTokens = mixedCaseChains.includes(chain)
+      ? additional[chain]
+      : additional[chain].map((t: string) => t.toLowerCase());
+    filteredAddresses[chain] = [...chainAddresses, ...additionalTokens];
   });
 
   return filteredAddresses;

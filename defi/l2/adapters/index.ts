@@ -1,8 +1,8 @@
 import { call } from "@defillama/sdk/build/abi/abi2";
 import { Chain } from "@defillama/sdk/build/general";
 import { Address } from "@defillama/sdk/build/types";
+import axios from "axios";
 import fetch from "node-fetch";
-import * as zk from "zksync-web3";
 
 let addresses: { [chain: Chain]: Address[] } = {};
 export const arbitrum = async (): Promise<Address[]> => {
@@ -126,8 +126,12 @@ export const starknet = async (): Promise<Address[]> => {
 };
 export const zksync = async (): Promise<Address[]> => {
   if (addresses.zksync) return addresses.zksync;
-  const provider = new zk.Provider("https://mainnet.era.zksync.io");
-  const data = await provider.getConfirmedTokens();
+  const { data: { result: data } } = await axios.post("https://mainnet.era.zksync.io", {
+    "method": "zks_getConfirmedTokens",
+    "params": [0, 255],
+    "id": 1,
+    "jsonrpc": "2.0"
+  })
   addresses.zksync = data.map((d: any) => d.l2Address.toLowerCase());
   return addresses.zksync;
 };

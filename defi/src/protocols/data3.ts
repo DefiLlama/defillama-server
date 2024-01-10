@@ -29080,6 +29080,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#magpie-ecosystem",
     listedAt: 1704897926
   },
+  {
+    id: "4008",
+    name: "SwapGPT",
+    address: null,
+    symbol: "-",
+    url: "https://www.swapgpt.ai",
+    description: "Interactive Super dApp with Trade, Swap, Earn & Risk-Adjusted Market Making Strategies.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/swapgpt.jpg`, 
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "SwapGPT",
+  },
 ]
 
 export default data3

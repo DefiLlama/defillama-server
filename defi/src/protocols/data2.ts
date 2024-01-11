@@ -15099,6 +15099,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "cega/index.js",
     twitter: "cega_fi",
+    parentProtocol: "parent#cega",
     listedAt: 1662140513
   },
   {

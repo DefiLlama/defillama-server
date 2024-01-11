@@ -29169,6 +29169,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "Injective_",
+  },
+  {
+    id: "4012",
+    name: "Margined Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.margined.io/",
+    description: "Power Perpetuals for Cosmos based chains, leveraging Osmosis's Concentrated Liquidity Pools for on-chain price discovery",
+    chain: "Osmosis",
+    logo: `${baseIconsUrl}/margined-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Osmosis"],
+    oracles: ["TWAP"], // Osmosis Concentrated Liquidity Pool TWAP
+    forkedFrom: [],
+    module: "margined-protocol/index.js",
+    twitter: "margined_io",
+    audit_links: ["https://github.com/oak-security/audit-reports/blob/master/Margined%20Protocol/2023-10-25%20Audit%20Report%20-%20Margined%20Power%20v1.0.pdf"],
+    github: ["margined-protocol"],
+    listedAt: 1704983739
   }
 ]
 

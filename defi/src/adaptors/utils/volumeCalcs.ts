@@ -5,6 +5,7 @@ import { ExtraTypes, IGeneralStats, ProtocolAdaptorSummary } from "../handlers/g
 import { ONE_DAY_IN_SECONDS } from "../handlers/getProtocol";
 
 import getDataPoints from "./getDataPoints";
+import { chunk, mean, sum } from 'lodash';
 
 const sumAllVolumes = (breakdownVolumes: IRecordAdaptorRecordData, protVersion?: string) => {
     if (breakdownVolumes) {
@@ -34,11 +35,15 @@ const calcNdONdChange = (
     dexs: Pick<ProtocolAdaptorSummary, 'recordsMap'>[],
     dex2Substract?: ProtocolAdaptorSummary,
     baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS,
-    nDaysChange: number = 1
+    nDaysChange: number = 1,
+    nDaysAvg = 0
 ) => {
     const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp);
     const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
 
+    const volumeValues = []
+
+    const hasEnoughDays = Object.values(dexs).some(dex => Object.values(dex?.recordsMap || {}).length > nDaysChange)
     let yesterdaysVolumeAll = 0
     for (let start = yesterdaysTimestamp; start > timestampNd; start -= ONE_DAY_IN_SECONDS) {
         let dex2SubstractVolumes: any = {}
@@ -48,7 +53,9 @@ const calcNdONdChange = (
             }
             const yesterdaysVolume = dex.recordsMap?.[String(start)]?.data
             if (yesterdaysVolume && !Number.isNaN(sumAllVolumes(yesterdaysVolume))) {
-                yesterdaysVolumeAll += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
+                const ystVol = yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
+                yesterdaysVolumeAll += ystVol
+                volumeValues.push(ystVol)
             }
         }
     }
@@ -66,11 +73,14 @@ const calcNdONdChange = (
         }
     }
 
+    const volumeAvg = nDaysAvg ? mean(chunk(volumeValues, nDaysAvg).map(chunk => sum(chunk))): 0;
 
     const ndChange = yesterdaysVolumeAll && ndVolume ? (yesterdaysVolumeAll - ndVolume) / ndVolume * 100 : null
     return {
         change_NdoverNd: formatNdChangeNumber(ndChange),
-        totalNd: yesterdaysVolumeAll
+        totalNd: yesterdaysVolumeAll,
+        enoughDays: hasEnoughDays,
+        nDaysAverage: volumeAvg
     }
 }
 
@@ -83,13 +93,17 @@ export const getWoWStats = (
     const wow14 = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 14)
     const mom = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 30)
     const mom60 = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 60)
+    const yoy = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 365, 30)
+
     return {
         change_7dover7d: wow.change_NdoverNd ?? 0,
         total7d: wow.totalNd,
         change_30dover30d: mom.change_NdoverNd ?? 0,
         total30d: mom.totalNd,
         total14dto7d: wow14.totalNd - wow.totalNd,
-        total60dto30d: mom60.totalNd - mom.totalNd
+        total60dto30d: mom60.totalNd - mom.totalNd,
+        total1y: yoy.enoughDays ? yoy.totalNd : 0,
+        average1y: yoy.enoughDays ? yoy.nDaysAverage: 0,
     }
 }
 
@@ -146,6 +160,8 @@ const getSumAllDexsToday = (
         change_1d: formatNdChangeNumber(((totalVolume - totalVolume1d) / totalVolume1d) * 100) ?? 0,
         change_7d: formatNdChangeNumber(((totalVolume - totalVolume7d) / totalVolume7d) * 100) ?? 0,
         change_1m: formatNdChangeNumber(((totalVolume - totalVolume30d) / totalVolume30d) * 100) ?? 0,
+        totalVolume7d,
+        totalVolume30d,
         ...getWoWStats(dexs, dex2Substract, baseTimestamp),
         breakdown24h: null,
         total48hto24h: totalVolume1d
@@ -275,10 +291,12 @@ const calcNdChange = (volumes: IJSON<AdaptorRecord>, nDaysChange: number, baseTi
     totalVolume = yesterdaysVolume ? totalVolume + sumAllVolumes(yesterdaysVolume) : null
     totalVolumeNd = volumeNd ? totalVolumeNd + sumAllVolumes(volumeNd) : null
     const ndChange = totalVolume && totalVolumeNd ? (totalVolume - totalVolumeNd) / totalVolumeNd * 100 : null
+    const ndChangeAbs = totalVolume && totalVolumeNd ? (totalVolume - totalVolumeNd) : null
     return {
         ndChange: formatNdChangeNumber(ndChange),
         totalNd: totalVolumeNd,
-        total24h: totalVolume
+        total24h: totalVolume,
+        ndChangeAbs: formatNdChangeNumber(ndChangeAbs)
     }
 }
 

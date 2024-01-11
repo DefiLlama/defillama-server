@@ -8,20 +8,35 @@ import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
 import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
 import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
+import PromisePool from "@supercharge/promise-pool";
 
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
 
-export default async function handler(event: any) {
+export default async function handler() {
   await setEnvSecrets();
   const a = Object.entries(adapters);
+  const indexes = Array.from(Array(a.length).keys());
   const timestamp = 0;
-  await Promise.all(
-    event.protocolIndexes.map(async (i: any) => {
+  await PromisePool.withConcurrency(5)
+    .for(indexes)
+    .process(async (i: any) => {
       try {
+        if (
+          ![
+            "",
+            // "uniswap",
+            // "curve",
+            // "curve12",
+            // "sushiswap1",
+            // "unknownTokens",
+          ].includes(a[i][0]) &&
+          !process.env.LLAMA_RUN_LOCAL
+        )
+          return;
         const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
-          results.flat(),
+          results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
           await Promise.all([
@@ -48,16 +63,7 @@ export default async function handler(event: any) {
             true,
           );
       }
-    }),
-  );
+    });
 }
 
-// ts-node coins/src/storeCoins.ts
-async function main() {
-  let a = {
-    protocolIndexes: [0],
-  };
-  await handler(a);
-  if (process.env.LLAMA_RUN_LOCAL) process.exit(0);
-}
-if (process.env.LLAMA_RUN_LOCAL) main();
+// handler(); // ts-node coins/src/storeCoins.ts

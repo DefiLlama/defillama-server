@@ -54,6 +54,7 @@ export function curve6(timestamp: number = 0) {
   return Promise.all([
     getTokenPrices2("ethereum", [], timestamp, "eth-custom", [
       "0x7b0eff0c991f0aa880481fdfa5624cb0bc9b10e1",
+      "0x326290a1b0004eee78fa6ed4f1d8f4b2523ab669",
     ]),
   ]);
 }
@@ -88,5 +89,12 @@ export function curve12(timestamp: number = 0) {
   return Promise.all([
     getTokenPrices2("xdai", defaultRegistries, timestamp),
     getGaugePrices("xdai", timestamp),
+  ]);
+}
+export function curve13(timestamp: number = 0) {
+  console.log("starting curve13");
+  return Promise.all([
+    getTokenPrices2("kava", defaultRegistries, timestamp),
+    getGaugePrices("kava", timestamp),
   ]);
 }

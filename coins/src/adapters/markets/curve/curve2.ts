@@ -205,7 +205,7 @@ export default async function getTokenPrices2(chain: any, registries: string[], 
   }
   await unknownPools2(api, timestamp, poolList, registries, writes, cache)
   await setCache('curve', name ? name : chain, cache)
-  return writes;
+  return writes.filter((w: Write) => w.price != undefined && !isNaN(w.price));
 }
 
 async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, registries: string[], writes: Write[], cache: any) {
@@ -224,7 +224,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     if (!rPoolList || !rPoolList.length) continue;
 
     // update cache info
-    await PromisePool.withConcurrency(10)
+    await PromisePool.withConcurrency(2)
       .for(rPoolList)
       .process(async (pool: any) => {
         if (!cPoolInfo[pool])
@@ -234,20 +234,27 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
         // set pool LP information
         if (!poolData.lpToken) {
           try {
-
             poolData.lpToken = await PoolToToken(api, pool)
             poolData.decimals = await api.call({ target: poolData.lpToken, abi: 'erc20:decimals' })
             poolData.symbol = await api.call({ target: poolData.lpToken, abi: 'string:symbol' })
-            poolData.name = await api.call({ target: poolData.lpToken, abi: 'string:name' })
+            // poolData.name = await api.call({ target: poolData.lpToken, abi: 'string:name' })
           } catch (e) {
-            console.log('failed to get lp token', e)
+            delete cPoolInfo[pool];
+            console.log('failed to get lp token', pool)
             return;
           }
         }
 
         // set pool tokens information
         if (!poolData.tokens)
+        try {
           poolData.tokens = await getPoolTokens(api, pool, cache.registries[registryType], registryType)
+        } catch {
+          delete cPoolInfo[pool];
+          console.log('failed to get pool underlyings', pool)
+          return;
+        }
+
         poolData.tokens = poolData.tokens.map((t: string) => t.toLowerCase())
       });
 
@@ -256,8 +263,8 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     let filteredIndicies: number[] = []
     let lps: string[] = []
     // set total supplies
-    const tryLps = rPoolList.map((p: any) => cPoolInfo[p].lpToken)
-    tryLps.map((l: any, i: number) => l == null ? filteredIndicies.push(i) : lps.push(l))
+    const tryLps = rPoolList.map((p: any) => cPoolInfo[p]?.lpToken)
+    tryLps.map((l: any, i: number) => l == null || l == undefined ? filteredIndicies.push(i) : lps.push(l))
     const supplies = await api.multiCall({ calls: lps, abi: 'erc20:totalSupply', permitFailure: true })
 
     // filter pools with no token 

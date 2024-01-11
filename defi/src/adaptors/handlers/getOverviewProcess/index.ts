@@ -22,12 +22,16 @@ export interface IGeneralStats extends ExtraTypes {
     total14dto7d: number | null;
     total30d: number | null;
     total60dto30d: number | null;
+    total1y: number | null;
     change_1d: number | null;
     change_7d: number | null;
     change_1m: number | null;
+    totalVolume7d: number | null;
+    totalVolume30d: number | null;
     change_7dover7d: number | null;
     change_30dover30d: number | null;
     breakdown24h: IRecordAdaptorRecordData | null
+    average1y: number | null
 }
 
 export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
@@ -108,7 +112,8 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.dailyCreatorRevenue,
         AdaptorRecordType.dailySupplySideRevenue,
         AdaptorRecordType.dailyProtocolRevenue,
-        AdaptorRecordType.dailyBribesRevenue
+        AdaptorRecordType.dailyBribesRevenue,
+        AdaptorRecordType.dailyTokenTaxes
     ],
     [AdapterType.ROYALTIES]: [
         AdaptorRecordType.dailyRevenue,
@@ -120,6 +125,11 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     ],
     [AdapterType.OPTIONS]: [
         AdaptorRecordType.dailyPremiumVolume
+    ],
+    [AdapterType.DERIVATIVES]: [
+        AdaptorRecordType.dailyShortOpenInterest,
+        AdaptorRecordType.dailyLongOpenInterest,
+        AdaptorRecordType.dailyOpenInterest
     ]
 }
 
@@ -155,18 +165,17 @@ export const getOverviewCachedResponseKey = (
 ) => `overview/${adaptorType}/${dataType}/${chainFilter}_${category}_${fullChart}`
 
 // -> /overview/{type}/{chain}
-export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
-    console.info("Event received", JSON.stringify(event))
-    const {
-        adaptorType,
-        excludeTotalDataChart,
-        excludeTotalDataChartBreakdown,
-        category,
-        fullChart,
-        dataType,
-        chainFilter
-    } = processEventParameters(event)
-    console.info("Parameters parsing OK")
+export async function getOverviewProcess({
+    adaptorType,
+    excludeTotalDataChart,
+    excludeTotalDataChartBreakdown,
+    category,
+    fullChart,
+    dataType,
+    chainFilter,
+    enableAlerts = false,
+    isApi2RestServer = false,
+}: any) {
 
     if (!adaptorType) throw new Error("Missing parameter")
     if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
@@ -174,7 +183,6 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 
     // Import data list
-    console.info("Loading adaptors...")
     const loadedAdaptors = await loadAdaptorsData(adaptorType)
     const protocolsList = Object.keys(loadedAdaptors.config)
     const adaptersList: ProtocolAdaptor[] = []
@@ -188,7 +196,6 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     } catch (error) {
         console.error(`Couldn't load adaptors with type ${adaptorType} :${JSON.stringify(error)}`, error)
     }
-    console.info("Loaded OK:", adaptersList.length)
     const allChains = getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[]))
     if (chainFilter !== undefined && !allChains.map(c => c.toLowerCase()).includes(chainFilter)) throw new Error(`Chain not supported ${chainFilter}`)
 
@@ -201,14 +208,14 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 errors.push(e.message)
                 //await sendDiscordAlert(e.message).catch(e => console.log("discord error", e))
             }
-        })
+        }, { isApi2RestServer })
     }))
 
-    console.info("Sending discord alerts:", errors.length)
-    for (const errorMSG of errors) {
-        await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
-        await delay(750)
-    }
+    if (!isApi2RestServer)
+        for (const errorMSG of errors) {
+            await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
+            await delay(750)
+        }
 
     // Handle rejected dexs
     const rejectedDexs = results.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
@@ -244,12 +251,14 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes), undefined, baseRecord ? +baseRecord[0] : undefined, extraTypes)
     console.info("Stats OK")
 
-    for (const { spikes } of okProtocols) {
-        if (spikes) {
-            await sendDiscordAlert(spikes, adaptorType, false).catch(e => console.log("discord error", e))
-            await delay(1000)
+
+    if (!isApi2RestServer)
+        for (const { spikes } of okProtocols) {
+            if (spikes) {
+                await sendDiscordAlert(spikes, adaptorType, false).catch(e => console.log("discord error", e))
+                await delay(1000)
+            }
         }
-    }
 
     const enableStats = okProtocols.filter(okp => !okp.disabled).length > 0
     okProtocols.forEach(removeVolumesObject)
@@ -265,9 +274,13 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         total14dto7d: enableStats ? generalStats.total14dto7d : 0,
         total60dto30d: enableStats ? generalStats.total60dto30d : 0,
         total30d: enableStats ? generalStats.total30d : 0,
+        total1y: enableStats ? generalStats.total1y : 0,
+        average1y: enableStats ? generalStats.average1y : null,
         change_1d: enableStats ? generalStats.change_1d : null,
         change_7d: enableStats ? generalStats.change_7d : null,
         change_1m: enableStats ? generalStats.change_1m : null,
+        totalVolume7d: enableStats ? generalStats.totalVolume7d : null,
+        totalVolume30d: enableStats ? generalStats.totalVolume30d : null,
         change_7dover7d: enableStats ? generalStats.change_7dover7d : null,
         change_30dover30d: enableStats ? generalStats.change_30dover30d : null,
         breakdown24h: enableStats ? generalStats.breakdown24h : null,
@@ -280,12 +293,22 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (enableAlerts) {
         successResponseObj['errors'] = errors
     }
-    console.info("Storing response to R2")
-    const cacheKey = getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart))
+    return successResponseObj
+};
+
+// -> /overview/{type}/{chain}
+export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
+    // console.info("Event received", JSON.stringify(event))
+    const eventParams: any = processEventParameters(event)
+    // console.info("Parameters parsing OK")
+    eventParams.enableAlerts = enableAlerts
+    const successResponseObj = await getOverviewProcess(eventParams)
+    // console.info("Storing response to R2")
+    const cacheKey = getOverviewCachedResponseKey(eventParams.adaptorType, eventParams.chainFilter, eventParams.dataType, eventParams.category, String(eventParams.fullChart))
     await cacheResponseOnR2(cacheKey, JSON.stringify(successResponseObj))
         .then(() => console.info("Stored R2 OK")).catch(e => console.error("Unable to cache...", e))
-    const cachedResponse = await getCachedResponseOnR2(cacheKey).catch(e => console.error("Failed to retrieve...", cacheKey, e))
-    console.log("cachedResponse", cachedResponse)
+    // const cachedResponse = await getCachedResponseOnR2(cacheKey).catch(e => console.error("Failed to retrieve...", cacheKey, e))
+    // console.log("cachedResponse", cachedResponse)
     // console.info("Returning response:", JSON.stringify(successResponseObj))
     return successResponse(successResponseObj, 10 * 60); // 10 mins cache
 };
@@ -303,6 +326,8 @@ const substractSubsetVolumes = (adapter: ProtocolAdaptorSummary, _index: number,
                 change_1d: newSum['change_1d'],
                 change_7d: newSum['change_7d'],
                 change_1m: newSum['change_1m'],
+                totalVolume7d: newSum['totalVolume7d'],
+                totalVolume30d: newSum['totalVolume30d'],
             }
         }
         return computedSummary

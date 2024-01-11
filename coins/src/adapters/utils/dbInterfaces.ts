@@ -16,7 +16,7 @@ export interface Write {
   adapter?: string;
   confidence: number;
   timestamp?: number;
-  mcap?: number
+  mcap?: number;
 }
 export interface DbQuery {
   PK: string;
@@ -59,3 +59,7 @@ export interface DbTokenInfos {
   supplies: Result[];
   symbols: Result[];
 }
+export type CoinRead = {
+  timestamp: number;
+  key: string;
+};

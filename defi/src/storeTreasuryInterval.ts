@@ -1,8 +1,8 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { storeTvl } from "./storeTvlInterval/getAndStoreTvl";
 import { getCurrentBlock } from "./storeTvlInterval/blocks";
-import { importAdapter } from "./utils/imports/importAdapter";
-import { executeAndIgnoreErrors } from "./storeTvlInterval/errorDb";
+import { importAdapterDynamic } from "./utils/imports/importAdapter";
+import { initializeTVLCacheDB, TABLES } from "./api2/db/index";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
 import { PromisePool } from "@supercharge/promise-pool";
@@ -19,12 +19,13 @@ const handler = async (event: any, context: AWSLambda.Context) => {
 export default wrapScheduledLambda(handler);
 
 async function storeIntervals(protocolIndexes: number[], getRemainingTimeInMillis: () => number) {
-  const blocksTimeout = setTimeout(
-    () => executeAndIgnoreErrors("INSERT INTO `timeouts` VALUES (?, ?)", [getCurrentUnixTimestamp(), "blocks"]),
-    getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd
-  );
-  clearTimeout(blocksTimeout);
+  const blocksTimeout = setTimeout(() =>
+  () => TABLES.TvlMetricsTimeouts.upsert({ timestamp: getCurrentUnixTimestamp(), protocol: 'blocks' }),
+    getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
+  clearTimeout(blocksTimeout)
+  
   await setEnvSecrets()
+  await initializeTVLCacheDB()
 
   const staleCoins: StaleCoins = {};
   const actions = protocolIndexes.map((idx) => treasuriesAndEntities[idx]);
@@ -33,11 +34,10 @@ async function storeIntervals(protocolIndexes: number[], getRemainingTimeInMilli
     .for(actions)
     .process(async (protocol: any) => {
       const protocolTimeout = setTimeout(
-        () =>
-          executeAndIgnoreErrors("INSERT INTO `timeouts` VALUES (?, ?)", [getCurrentUnixTimestamp(), protocol.name]),
+        () => TABLES.TvlMetricsTimeouts.upsert({ timestamp: getCurrentUnixTimestamp(), protocol: protocol.name }),
         getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd
       );
-      const adapterModule = importAdapter(protocol);
+      const adapterModule = importAdapterDynamic(protocol); // won't work on lambda now with esbuild
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
 
       await storeTvl(

@@ -1,6 +1,6 @@
 import * as sdk from '@defillama/sdk'
 import fetch from "node-fetch"
-import { storeR2JSONString } from '../utils/r2';
+import { storeR2JSONString, getR2JSONString } from '../utils/r2';
 
 function getKey(govType: string, project: string): string {
   return `governance-cache/${govType}/${project.toLowerCase()}.json`.replace(/(:|'’)/g, '/')
@@ -15,7 +15,7 @@ export async function getCache(govType: string, project: string, { } = {}) {
 
   // sdk.log('[FETCHING] ', Key, getLink(govType, project))
   try {
-    const json = await (fetch(getLink(govType, project)).then(r => r.json()))
+    const json = await getR2JSONString(getKey(govType, project))
     return json
   } catch (e) {
     sdk.log('failed to fetch data from s3 bucket:', Key)

@@ -19,6 +19,8 @@ inquirer.registerPrompt('autocomplete', inquirerPrompt);
 const adapterChoices = [protocols, entities, treasuries].flat().map((p: any) => p.name)
 const adaperCommands = ['fillOld', 'fillLast', 'clear-cache', 'delete-tvl']
 const commandChoices = [...adaperCommands,]
+process.env.AWS_REGION = process.env.AWS_REGION || 'eu-central-1'
+process.env.tableName = process.env.tableName || 'prod-table'
 
 const prompts: any = {
   adapter: {
@@ -130,7 +132,7 @@ async function run(prompt: any) {
         break;
       case 'dateTo':
         if (mainCommand === 'delete-tvl') {
-          await runScript(mainCommand, [prompts.adapter.lastAnswer, prompts.dateFrom.lastAnswer, answer])
+          await runScript(mainCommand, [prompts.adapter.lastAnswer, answer, prompts.dateFrom.lastAnswer,])
           state.nextPrompt = 'main'
         } else
           throw new Error('Unknown State')

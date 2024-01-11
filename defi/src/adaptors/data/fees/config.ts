@@ -275,6 +275,7 @@ export default {
         "id": "1461"
     },
     "metavault.trade": {
+        parentId: "MetaVault",
         "enabled": true,
         "id": "1801"
     },
@@ -482,7 +483,7 @@ export default {
         "id": "2290"
     },
     "moonwell-artemis": {
-        "enabled": true,
+        "enabled": false,
         "id": "1853"
     },
     "moonwell-apollo": {
@@ -531,6 +532,7 @@ export default {
         "id": "2252"
     },
     "0vix": {
+        disabled: true,
         "enabled": true,
         "id": "1614"
     },
@@ -678,7 +680,7 @@ export default {
         id: "2644"
     },
     "equalizer-exchange": {
-        parentId: "Equalizer0x",
+        parentId: "Equalizer",
         enabled: true,
         id: "2332"
     },
@@ -832,6 +834,7 @@ export default {
         "id": "1673",
         protocolsData: {
             v2: {
+                disabled: true,
                 "enabled": true,
                 "id": "1673",
                 displayName: "Hydradex V2"
@@ -909,6 +912,7 @@ export default {
         "id": "2968"
     },
     "kwenta": {
+        disabled: true,
         "enabled": true,
         "id": "2981"
     },
@@ -921,7 +925,7 @@ export default {
         "id": "2641"
     },
     "veax": {
-        "enabled": true,
+        "enabled": false,
         "id": "2928"
     },
     "maestro": {
@@ -976,6 +980,7 @@ export default {
         id: "2376"
     },
     "liondex": {
+        disabled: true,
         enabled: true,
         id: "2898"
     },
@@ -1036,10 +1041,10 @@ export default {
     },
     "voodoo-trade": {
         enabled: true,
-        id: "3156"
+        id: "3792"
     },
     "equity": {
-        parentId: "Equalizer0x",
+        parentId: "Equalizer",
         enabled: true,
         id: "3173"
     },
@@ -1069,7 +1074,7 @@ export default {
         "id": "1772"
     },
     "concordex-io": {
-        "enabled": true,
+        "enabled": false,
         "id": "3172"
     },
     "vvs-finance": {
@@ -1134,6 +1139,7 @@ export default {
         "id": "3025"
     },
     "zunami": {
+        disabled: true,
         "enabled": true,
         "id": "1201"
     },
@@ -1151,6 +1157,7 @@ export default {
         "id": "2982"
     },
     "fcon-dex": {
+        disabled: true,
         "enabled": true,
         "id": "3299"
     },
@@ -1177,6 +1184,7 @@ export default {
         "enabled": true
     },
     "none-trading-bot": {
+        disabled: true,
         "id": "3337",
         "enabled": true
     },
@@ -1211,7 +1219,7 @@ export default {
         "id": "324"
     },
     "meridian-trade": {
-        "enabled": true,
+        "enabled": false,
         "id": "3386"
     },
     "baseswap": {
@@ -1236,14 +1244,20 @@ export default {
     "swapbased": {
         parentId: "SwapBased",
         "enabled": true,
-        "id": "3328"
+        "id": "3328",
+        protocolsData: {
+            "v2": {
+                "id": "3328",
+                "enabled": true,
+            }
+        },
     },
     "danogo": {
         "enabled": true,
         "id": "3454"
     },
     "sharesgram": {
-        "enabled": true,
+        "enabled": false,
         "id": "3464"
     },
     "tigris": {
@@ -1358,5 +1372,382 @@ export default {
     "friend3": {
         "enabled": true,
         "id": "3566"
+    },
+    "Scale": {
+        parentId: "Equalizer",
+        "enabled": true,
+        "id": "3575"
+    },
+    "stars-arena": {
+        "enabled": true,
+        "id": "3564"
+    },
+    "based-markets": {
+        "enabled": true,
+        "id": "3609"
+    },
+    "allbridge-core": {
+        "enabled": true,
+        "id": "3944"
+    },
+    "cipher": {
+        "enabled": true,
+        "id": "3563"
+    },
+    "blex": {
+        "enabled": true,
+        "id": "3605"
+    },
+    "sudoswap-v1": {
+        parentId: "Sudoswap",
+        "enabled": true,
+        "id": "1917"
+    },
+    "sudoswap-v2": {
+        parentId: "Sudoswap",
+        "enabled": true,
+        "id": "3095"
+    },
+    "xena-finance": {
+        "enabled": true,
+        "id": "3620"
+    },
+    "gambit": {
+        "enabled": true,
+        "id": "3325"
+    },
+    "tangleswap": {
+        "enabled": true,
+        "id": "3585"
+    },
+    "uniswap-lab": {
+        "enabled": true,
+        "id": "3657"
+    },
+    "shimmersea": {
+        "enabled": true,
+        "id": "3571"
+    },
+    "vapordex": {
+        "enabled": true,
+        "id": "2342",
+        protocolsData: {
+            v2: {
+                "id": "3654",
+                enabled: true,
+            }
+        }
+    },
+    "chainlink-ccip": {
+        parentId: "Chainlink",
+        "enabled": true,
+        "id": "3675"
+    },
+    "crv-usd": {
+        parentId: "Curve Finance",
+        "enabled": true,
+        "id": "2994"
+    },
+    "shuriken": {
+        "enabled": true,
+        "id": "3687"
+    },
+    "clipper": {
+        "enabled": true,
+        "id": "622"
+    },
+    "morpho-compound": {
+        parentId: "Morpho",
+        "enabled": false,
+        "id": "1997"
+    },
+    "benqi-staked-avax": {
+        parentId: "Benqi",
+        "enabled": true,
+        "id": "1427"
+    },
+    "prisma-finance": {
+        "enabled": true,
+        "id": "3473"
+    },
+    "impermax-finance": {
+        "enabled": true,
+        "id": "343"
+    },
+    "defi-saver": {
+        "enabled": true,
+        "id": "177"
+    },
+    "zapper-channels": {
+        "enabled": true,
+        "id": "3703"
+    },
+    "valorem": {
+        "enabled": true,
+        "id": "3501"
+    },
+    "clever": {
+        "enabled": true,
+        "id": "1707"
+    },
+    "concentrator": {
+        "enabled": true,
+        "id": "1544"
+    },
+    "touch.fan": {
+        "enabled": true,
+        "id": "3713"
+    },
+    "paal-ai": {
+        "enabled": true,
+        "id": "3723"
+    },
+    "kinetix": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3534"
+    },
+    "retro": {
+        "enabled": true,
+        "id": "3311"
+    },
+    "hipo": {
+        "enabled": true,
+        "id": "3722"
+    },
+    "intent-x": {
+        "enabled": true,
+        "id": "3747"
+    },
+    "caviarnine-lsu-pool": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3666"
+    },
+    "caviarnine-shape-liquidity": {
+        "enabled": true,
+        "id": "3645"
+    },
+    "metavault-v3": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3750",
+        protocolsData: {
+            "v3": {
+                "id": "3750",
+                "enabled": true,
+            }
+        }
+    },
+    "xoxno": {
+        "enabled": true,
+        "id": "3753"
+    },
+    "equation": {
+        "enabled": true,
+        "id": "3726"
+    },
+    "hopr": {
+        "enabled": true,
+        "id": "3761"
+    },
+    "solend": {
+        "enabled": true,
+        "id": "458"
+    },
+    "thorswap": {
+        "enabled": true,
+        "id": "412"
+    },
+    "amphor": {
+        "enabled": true,
+        "id": "3643"
+    },
+    "dydx": {
+        "id": "144",
+        "enabled": true
+    },
+    "justlend": {
+        "enabled": true,
+        "id": "494"
+    },
+    "wagmi": {
+        "enabled": true,
+        "id": "2837"
+    },
+    "chimpexchange": {
+        "enabled": true,
+        "id": "3836"
+    },
+    "dln": {
+        "enabled": true,
+        "id": "3846"
+    },
+    "near": {
+        "enabled": true,
+        "id": "6535"
+    },
+    "substanceX": {
+        "enabled": true,
+        "id": "3835"
+    },
+    "up-vs-down-game": {
+        "enabled": true,
+        "id": "3872"
+    },
+    "aimbot": {
+        "enabled": true,
+        "id": "3875"
+    },
+    "sns": {
+        "enabled": true,
+        "id": "3877"
+    },
+    "thick": {
+        "enabled": true,
+        "id": "3878"
+    },
+    "noah-swap": {
+        "enabled": true,
+        "id": "2855"
+    },
+    "stormtrade": {
+        "enabled": true,
+        "id": "3883"
+    },
+    "beethoven-x": {
+        "enabled": true,
+        "id": "654"
+    },
+    "ascent-v2": {
+        parentId: "Ascent Exchange",
+        "enabled": true,
+        "id": "3867"
+    },
+    "ascent-v3": {
+        parentId: "Ascent Exchange",
+        "enabled": true,
+        "id": "3868"
+    },
+    "xfai": {
+        "enabled": true,
+        "id": "3816"
+    },
+    "defiplaza": {
+        "enabled": true,
+        "id": "728"
+    },
+    "butterxyz": {
+        "enabled": true,
+        "id": "3918"
+    },
+    "pharaoh-exchange": {
+        "enabled": true,
+        "id": "3921"
+    },
+    "metavault-derivatives-v2": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3911"
+    },
+    "dopex": {
+        parentId: "Dopex",
+        "enabled": true,
+        "id": "3817",
+        protocolsData: {
+            "clamm": {
+                "id": "3817",
+                "enabled": true,
+            }
+        }
+    },
+    "bluefin": {
+        "enabled": true,
+        "id": "2625"
+    },
+    "odos": {
+        "enabled": true,
+        "id": "3951"
+    },
+    "dexter": {
+        enabled: true,
+        id: "2737"
+    },
+    "fvm-exchange": {
+        parentId: "Velocimeter",
+        "enabled": true,
+        "id": "3291"
+    },
+    "kiloex": {
+        "enabled": true,
+        "id": "3329"
+    },
+    "railgun": {
+        "enabled": true,
+        "id": "1320"
+    },
+    "surfone": {
+        "enabled": true,
+        "id": "3954"
+    },
+    "squa-defi": {
+        "enabled": true,
+        "id": "3977"
+    },
+    "beamex": {
+        "enabled": true,
+        parentId: "BeamSwap",
+        "id": "3251"
+    },
+    "beamswap-v3": {
+        parentId: "BeamSwap",
+        "enabled": true,
+        "id": "3092",
+        protocolsData: {
+            "v3": {
+                "id": "3092",
+                "enabled": true,
+            }
+        }
+    },
+    "beamswap": {
+        parentId: "BeamSwap",
+        "enabled": true,
+        "id": "1289"
+    },
+    "shoebillFinance-v2": {
+        parentId: "Shoebill Finance",
+        "enabled": true,
+        "id": "3548"
+    },
+    "pepe-swaves": {
+        parentId: "PepeTeam",
+        "enabled": true,
+        "id": "2351"
+    },
+    "maple-finance": {
+        parentId: "Maple Finance",
+        "enabled": true,
+        "id": "587"
+    },
+    "jibswap": {
+        "enabled": true,
+        "id": "3928"
+    },
+    "cleopatra-exchange": {
+        "enabled": true,
+        "id": "3985"
+    },
+    "immortalx": {
+        "enabled": true,
+        "id": "3983"
+    },
+    "goku-money": {
+        "enabled": true,
+        "id": "3758"
+    },
+    "allbridge-classic": {
+        "enabled": true,
+        "id": "577"
     }
 } as AdaptorsConfig

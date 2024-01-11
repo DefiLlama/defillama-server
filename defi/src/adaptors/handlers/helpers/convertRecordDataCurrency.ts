@@ -5,6 +5,19 @@ import { formatTimestampAsDate, getClosestDayStartTimestamp } from "../../../uti
 import { IJSON } from "../../data/types"
 import { IRecordAdapterRecordChainData, IRecordAdaptorRecordData } from "../../db-utils/adaptor-record"
 import getDataPoints from "../../utils/getDataPoints"
+import * as sdk from '@defillama/sdk'
+
+
+async function getUsdValue(obj: any, timestamp?: number) {
+    const numValue = Number(obj)
+    if (!isNaN(numValue)) return numValue
+    if (typeof obj === 'object') {
+        const balances = new sdk.Balances({ timestamp })
+        balances.addBalances(obj)
+        return balances.getUSDValue()
+    }
+    return 0
+}
 
 interface IPricesResponse {
     chaintoken: string
@@ -61,6 +74,7 @@ const addToPricesObject = async (token: string, fromTimestamp: number) => {
     })
 }
 
+// TODO: improve this logic, change how token prices are pulled
 export const convertDataToUSD = async (data: IRecordAdaptorRecordData, timestamp: number) => {
     const rrr = await Object.entries(data).reduce(async (accP, [chain, chainData]) => {
         let acc = await accP

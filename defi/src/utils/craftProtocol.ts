@@ -19,7 +19,7 @@ import { convertSymbols } from "./symbols/convert";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
 import { getR2, storeR2 } from "./r2";
 
-function normalizeEthereum(balances: { [symbol: string]: number }) {
+export function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (typeof balances === "object") {
     convertSymbols(balances);
   }
@@ -36,7 +36,7 @@ function normalizeEthereum(balances: { [symbol: string]: number }) {
   return balances && formattedBalances;
 }
 
-function selectChainFromItem(item: any, normalizedChain: string) {
+export function selectChainFromItem(item: any, normalizedChain: string) {
   let altChainName = undefined;
   if (normalizedChain.startsWith("avax")) {
     altChainName = normalizedChain.replace("avax", "avalanche");
@@ -48,7 +48,13 @@ function selectChainFromItem(item: any, normalizedChain: string) {
   return item[normalizedChain] ?? item[altChainName];
 }
 
-const raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json());
+let raisesPromise: Promise<any> | undefined = undefined;
+
+export async function getRaises() {
+  if (!raisesPromise) raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json())
+  return raisesPromise
+}
+
 
 export const protocolMcap = async (geckoId?: string | null) => {
   if (!geckoId) return null;
@@ -79,7 +85,7 @@ export async function buildCoreData({
 }) {
   const module = await importAdapter(protocolData);
   const misrepresentedTokens = module.misrepresentedTokens === true;
-  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, { raises }] = await Promise.all([
+  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, ] = await Promise.all([
     getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
     misrepresentedTokens
       ? ([] as any[])
@@ -87,7 +93,6 @@ export async function buildCoreData({
     misrepresentedTokens
       ? ([] as any[])
       : getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
-    raisesPromise,
   ]);
 
   let response: Pick<IProtocolResponse, "chainTvls" | "tvl"> = {
@@ -164,23 +169,7 @@ export default async function craftProtocol({
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
 }) {
-  const cacheKey = `protocolCache/${protocolData.id}-${useNewChainNames}-${useHourlyData}`;
-  let previousRun: Awaited<ReturnType<typeof buildCoreData>>;
-  try {
-    const data = (await getR2(cacheKey)).body;
-    if (data === undefined) {
-      throw new Error("No previous run");
-    }
-    previousRun = JSON.parse(data);
-  } catch (e) {
-    previousRun = await buildCoreData({ protocolData, useNewChainNames, useHourlyData });
-    await storeR2(cacheKey, JSON.stringify(previousRun));
-  }
-  const lastTimestamp = previousRun.tvl[previousRun.tvl.length - 1]?.date ?? 0; // Consider the case when array is empty
-  /* TODO: Update cache
-  if ((getCurrentUnixTimestamp() - lastTimestamp) > 24 * 3600) {
-  }
-  */
+  const lastTimestamp = 0
 
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
     fetchFrom((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id), lastTimestamp),
@@ -194,7 +183,7 @@ export default async function craftProtocol({
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
     getLastRecord(hourlyTokensTvl(protocolData.id)),
-    raisesPromise,
+    getRaises(),
     protocolMcap(protocolData.gecko_id),
   ]);
 
@@ -212,7 +201,10 @@ export default async function craftProtocol({
   }
 
   let response: IProtocolResponse = {
-    ...previousRun,
+    tvl:[],
+    chainTvls: {},
+    tokensInUsd:[],
+    tokens:[],
     ...protocolData,
     chains: [],
     currentChainTvls: {},

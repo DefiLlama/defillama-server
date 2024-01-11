@@ -43,8 +43,8 @@ export const getPercentChange = (valueNow: string, value24HoursAgo: string) => {
   return adjustedPercentChange;
 };
 
-const formattedChains = async (category: string) => {
-  const res: IResponse = await fetch("https://defillama-datasets.llama.fi/lite/protocols2").then((res) => res.json());
+export const getFormattedChains = async (category: string) => {
+  const res: IResponse = await fetch("https://api.llama.fi/lite/protocols2").then((res) => res.json());
 
   // get all chains by parent and not include them in categories below as we don't want to show these links, but user can access with url
   const chainsByParent: string[] = [];
@@ -115,12 +115,12 @@ const formattedChains = async (category: string) => {
     chainsUnique.map(async (elem: string) => {
       for (let i = 0; i < 5; i++) {
         try {
-          return await fetch(`https://defillama-datasets.llama.fi/lite/charts/${elem}`).then((resp) => resp.json());
+          return await fetch(`https://api.llama.fi/lite/charts/${elem}`).then((resp) => resp.json());
         } catch (e) {
           console.log(elem, e);
         }
       }
-      throw new Error(`https://defillama-datasets.llama.fi/lite/charts/${elem} is broken`);
+      throw new Error(`https://api.llama.fi/lite/charts/${elem} is broken`);
     })
   );
 
@@ -151,6 +151,9 @@ const formattedChains = async (category: string) => {
         const chain = propKey.split("-")[0];
         if (extraPropPerChain[chain] === undefined) {
           extraPropPerChain[chain] = {};
+        }
+        if(extraPropPerChain[chain][prop]?.tvl && extraPropPerChain[chain][prop]?.tvlPrevWeek && !extraPropPerChain[chain][prop]?.tvlPrevDay){
+          extraPropPerChain[chain][prop].tvlPrevDay = extraPropPerChain[chain][prop]?.tvl
         }
         extraPropPerChain[chain][prop] = {
           tvl: (propValue.tvl || 0) + (extraPropPerChain[chain][prop]?.tvl ?? 0),
@@ -243,9 +246,9 @@ const formattedChains = async (category: string) => {
 };
 
 const handler = async (event: AWSLambda.APIGatewayEvent) => {
-  const data = await formattedChains(event.pathParameters?.category ?? "");
+  const data = await getFormattedChains(event.pathParameters?.category ?? "");
 
-  return wrapResponseOrRedirect(data);
+  return wrapResponseOrRedirect(data, "chains/");
 };
 
 export default wrap(handler);

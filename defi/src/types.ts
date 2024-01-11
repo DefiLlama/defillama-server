@@ -65,7 +65,7 @@ export interface IRaise {
 }
 
 export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "module"> {
-  symbol?: string;
+  symbol?: string | null;
   chain?: string;
   module?: string;
   otherProtocols?: Array<string>;

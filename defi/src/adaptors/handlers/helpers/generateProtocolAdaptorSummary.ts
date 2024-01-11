@@ -3,15 +3,15 @@ import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../uti
 import { DimensionRules } from "../../data"
 import { getConfigByType } from "../../data/configs"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
-import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
+import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord2 as _getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { getDisplayChainName } from "../../utils/getAllChainsFromAdaptors"
-import { sendDiscordAlert } from "../../utils/notify"
 import { calcNdChange, getWoWStats, sumAllVolumes } from "../../utils/volumeCalcs"
 import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraN30DTypes, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverviewProcess"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import { convertDataToUSD } from "./convertRecordDataCurrency"
 import generateCleanRecords from "./generateCleanRecords"
 import getCachedReturnValue from "./getCachedReturnValue"
+import { getAdaptorRecord2 } from "../../../api2/utils/dimensionsUtils"
 
 /**
  * All this iterations can be avoided by;
@@ -30,13 +30,16 @@ const getAdapterKey = (
     extraN30DType?: string,
 ) => `generateCleanRecords/${adaptorType}/${adapterId}/${versionKey}/${protocolType}/${adaptorRecordType}_${chainFilter}_${extraN30DType}`
 
-export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecordType, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
-    console.info("Generating summary for:", adapter.name, "with params", adaptorRecordType, adaptorType, chainFilter)
+export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecordType, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>, {
+    isApi2RestServer = false
+} = {}): Promise<ProtocolAdaptorSummary> => {
+    const getAdaptorRecord = isApi2RestServer ? getAdaptorRecord2 : _getAdaptorRecord
+    // console.info("Generating summary for:", adapter.name, "with params", adaptorRecordType, adaptorType, chainFilter)
     try {
         // Get all records from db
-        let adaptorRecordsRaw = await getAdaptorRecord(adapter.id, adaptorRecordType, adapter.protocolType)
+        let adaptorRecordsRaw = await getAdaptorRecord({ adaptorType, adapter, type: adaptorRecordType })
         const rawTotalRecord = ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType]
-            ? await getAdaptorRecord(adapter.id, ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType], adapter.protocolType, "LAST").catch(_e => { }) as AdaptorRecord | undefined
+            ? await getAdaptorRecord({ adaptorType, adapter, type: ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType], mode: "LAST" }).catch(_e => { }) as AdaptorRecord | undefined
             : undefined
 
         let protocolsKeys = [adapter.module]
@@ -57,38 +60,36 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         // Get extra revenue
         const extraTypes: IJSON<number | null> = {}
         for (const recordType of getExtraTypes(adaptorType)) {
-            const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "TIMESTAMP", lastRecordRaw.timestamp).catch(_e => { }) as AdaptorRecord | undefined
+            const value = await getAdaptorRecord({ adaptorType, adapter, type: recordType, mode: "TIMESTAMP", timestamp: lastRecordRaw.timestamp }).catch(_e => { }) as AdaptorRecord | undefined
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])
             if (AdaptorRecordTypeMapReverse[recordType]) {
-                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(await convertDataToUSD(cleanRecord.data, lastRecordRaw.timestamp)) : null
+                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(await convertDataToUSD(cleanRecord.data, cleanRecord.timestamp)) : null
             }
         }
 
         const extraN30DTypes: IJSON<number | null> = {}
         for (const recordType of getExtraN30DTypes(adaptorType)) {
-            const _adaptorRecordsRawN30D = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType).catch(_e => { }) as AdaptorRecord[] | undefined
+            const _adaptorRecordsRawN30D = await getAdaptorRecord({ adaptorType, adapter, type: recordType }).catch(_e => { }) as AdaptorRecord[] | undefined
             if (!_adaptorRecordsRawN30D) continue;
             if (_adaptorRecordsRawN30D?.length && _adaptorRecordsRawN30D?.length === 0) continue;
             const startTimestamp = adapter.startFrom
             const startIndex = startTimestamp ? _adaptorRecordsRawN30D.findIndex((ar: any) => ar.timestamp === startTimestamp) : -1
             let _adaptorRecordsN30D = _adaptorRecordsRawN30D.slice(startIndex + 1)
-            const cleanRecordsN30D = await getCachedReturnValue(
-                getAdapterKey(
-                    adapter.id,
-                    adapter.versionKey ?? adapter.module,
-                    recordType,
-                    adaptorType,
-                    adapter.protocolType,
-                    chainFilter,
-                    `${recordType}_30d`
-                ),
-                async () => generateCleanRecords(
-                    _adaptorRecordsN30D,
-                    adapter.chains,
-                    protocolsKeys,
-                    chainFilter,
-                    adapter.config?.cleanRecordsConfig
-                ))
+            const getCleanRecords = async () => generateCleanRecords(
+                _adaptorRecordsN30D,
+                adapter.chains,
+                protocolsKeys,
+                chainFilter,
+                adapter.config?.cleanRecordsConfig
+            )
+            let cleanRecordsN30D
+            if (isApi2RestServer)
+                cleanRecordsN30D = await getCleanRecords()
+            else
+                cleanRecordsN30D = await getCachedReturnValue(
+                    getAdapterKey(adapter.id, adapter.versionKey ?? adapter.module, recordType, adaptorType, adapter.protocolType, chainFilter, `${recordType}_30d`),
+                    getCleanRecords
+                )
             const lastAvailableDataTimestamp = _adaptorRecordsN30D[_adaptorRecordsN30D.length - 1].timestamp
             const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
             const lastDaysExtrapolation = ((yesterdaysCleanTimestamp - lastAvailableDataTimestamp) / ONE_DAY_IN_SECONDS) < 5
@@ -110,24 +111,22 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
 
 
         // Clean data by chain
-        console.info("Cleaning records", adapter.name, adapter.id, adapter.module, adaptorRecords.length, adapter.config)
-        const cleanRecords = await getCachedReturnValue(
-            getAdapterKey(
-                adapter.id,
-                adapter.versionKey ?? adapter.module,
-                adaptorRecordType,
-                adaptorType,
-                adapter.protocolType,
-                chainFilter
-            ),
-            async () => generateCleanRecords(
-                adaptorRecords,
-                adapter.chains,
-                protocolsKeys,
-                chainFilter,
-                adapter.config?.cleanRecordsConfig
-            ))
-        console.info("Cleaning records OK", adapter.name, adapter.id, adapter.module, cleanRecords.cleanRecordsArr.length)
+        // console.info("Cleaning records", adapter.name, adapter.id, adapter.module, adaptorRecords.length, adapter.config)
+        const getCleanRecords = async () => generateCleanRecords(
+            adaptorRecords,
+            adapter.chains,
+            protocolsKeys,
+            chainFilter,
+            adapter.config?.cleanRecordsConfig
+        )
+        let cleanRecords
+        if (isApi2RestServer)
+            cleanRecords = await getCleanRecords()
+        else
+            cleanRecords = await getCachedReturnValue(
+                getAdapterKey(adapter.id, adapter.versionKey ?? adapter.module, adaptorRecordType, adaptorType, adapter.protocolType, chainFilter),
+                getCleanRecords)
+        // console.info("Cleaning records OK", adapter.name, adapter.id, adapter.module, cleanRecords.cleanRecordsArr.length)
 
 
         adaptorRecords = cleanRecords.cleanRecordsArr
@@ -189,6 +188,8 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             total30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total30d,
             total14dto7d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total14dto7d,
             total60dto30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total60dto30d,
+            total1y: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total1y,
+            average1y: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.average1y,
             totalAllTime: totalRecord ? sumAllVolumes(await convertDataToUSD(totalRecord.data, totalRecord.timestamp)) : null,
             breakdown24h: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.breakdown24h,
             config: getConfigByType(adaptorType, adapter.module),
@@ -208,7 +209,9 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
                 acc[key] = (adapter.disabled || !lastDaysExtrapolation) ? null : value
                 return acc
             }, {} as typeof extraN30DTypes),
-            spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined
+            spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined,
+            totalVolume7d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.totalVolume7d,
+            totalVolume30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.totalVolume30d,
         }
     } catch (error) {
         // TODO: handle better errors
@@ -233,6 +236,8 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             total30d: null,
             total14dto7d: null,
             total60dto30d: null,
+            total1y: null,
+            average1y: null,
             totalAllTime: null,
             breakdown24h: null,
             change_1d: null,
@@ -244,6 +249,8 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             change_30dover30d: null,
             chains: chainFilter ? [getDisplayChainName(chainFilter)] : adapter.chains.map(getDisplayChainName),
             spikes: undefined,
+            totalVolume7d: null,
+            totalVolume30d: null,
         }
     }
 }
@@ -254,6 +261,8 @@ const getStats = (adapter: ProtocolAdaptor, adaptorRecordsArr: AdaptorRecord[], 
         change_1d: calcNdChange(adaptorRecordsMap, 1, baseTimestamp, true).ndChange,
         change_7d: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true).ndChange,
         change_1m: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true).ndChange,
+        totalVolume7d: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true).totalNd,
+        totalVolume30d: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true).totalNd,
         ...getWoWStats([{
             recordsMap: adaptorRecordsMap
         }], undefined, baseTimestamp),

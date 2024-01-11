@@ -14,6 +14,10 @@ export const normalizedChainReplacements = {
   "map relay chain": "map",
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
+  "bifrost network": "bfc",
+  "horizen eon": "eon",
+  "bahamut": "ftn",
+  "viction": "tomochain"
 } as {
   [chain: string]: string
 }
@@ -40,6 +44,22 @@ export function addToChains(chains: string[], chainDisplayName: string) {
     const chainName = chainDisplayName.split('-')[0]
     addToChains(chains, chainName)
   }
+}
+
+export type ChainCoinGekcoId = {
+  geckoId: string | null,
+  symbol: string | null,
+  cmcId: string | null,
+  categories?: string[],
+  chainId?: number,
+  parent?: {
+    chain: string,
+    types: string[]
+  }
+}
+
+export type ChainCoinGekcoIds = {
+  [chain: string]: ChainCoinGekcoId
 }
 
 export const chainCoingeckoIds = {
@@ -488,10 +508,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 60,
   },
-  "TomoChain": {
+  "Viction": { // previously TomoChain
     geckoId: "tomochain",
-    github: ['tomochain'],
-    symbol: "TOMO",
+    github: ['tomochain','BuildOnViction'],
+    symbol: "VIC",
     cmcId: "2570",
     categories: ["EVM"],
     chainId: 88,
@@ -898,7 +918,7 @@ export const chainCoingeckoIds = {
   },
   "Proton": {
     geckoId: "proton",
-    github: ['ProtonProtocol'],
+    github: ['ProtonProtocol', 'XPRNetwork'],
     symbol: "XPR",
     cmcId: "5350",
   },
@@ -1507,18 +1527,19 @@ export const chainCoingeckoIds = {
     symbol: "LIBRE",
     cmcId: null,
   },
-  "Umee": {
+  "UX": {
     geckoId: "umee",
     github: ['umee-network'],
-    symbol: "UMEE",
+    symbol: "UX",
     cmcId: "16389",
     categories: ["Cosmos"],
   },
-  "WEMIX": {
+  "WEMIX3.0": {
     geckoId: "wemix-token",
     github: ['wemixarchive'],
     symbol: "WEMIX",
     cmcId: "7548",
+    categories: ["EVM"],
   },
   "Persistence": {
     geckoId: "persistence",
@@ -1651,7 +1672,7 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
   },
   "Oasys": {
-    geckoId: "Oasys",
+    geckoId: "oasys",
     github: ['oasysgames'],
     symbol: "OAS",
     cmcId: "22265",
@@ -1818,7 +1839,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "Ethereum",
+      chain: "BSC",
       types: ["L2", "gas"]
     },
     github: ['bnb-chain'],
@@ -1900,19 +1921,218 @@ export const chainCoingeckoIds = {
     github: ['manta-network'],
     chainId: 169,
   },
-} as unknown as {
-  [chain: string]: {
-    geckoId: string | null,
-    symbol: string | null,
-    cmcId: string | null,
-    categories?: string[],
-    chainId?: number,
-    parent?: {
-      chain: string,
-      types: string[]
-    }
-  }
-}
+  "ShimmerEVM": {
+    geckoId: "shimmer",
+    symbol: "SMR",
+    cmcId: "14801",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Shimmer",
+      types: ["L2"]
+    },
+    github: ['iotaledger'],
+    chainId: 148,
+  },
+  "Beam": {
+    geckoId: null,
+    github: ['Merit-Circle'],
+    symbol: "MC",
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Avalanche",
+      types: ["subnet"]
+    },
+    chainId: 4337,
+  },
+  "NOS": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Scroll": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    github: ["scroll-tech"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 534352,
+  },
+  "RENEC": {
+    geckoId: "renec",
+    symbol: "RENEC",
+    cmcId: "24143",
+    github: ["renec-chain"]
+  },
+  "Bifrost Network": {
+    geckoId: "bifrost",
+    symbol: "BFC",
+    cmcId: "7817",
+    categories: ["EVM"],
+    github: ["bifrost-platform"]
+  },
+  "Radix": {
+    geckoId: "radix",
+    symbol: "XRD",
+    cmcId: "11948",
+    github: ["radixdlt"]
+  },
+  "Nolus": {
+    geckoId: "nolus",
+    symbol: "NLS",
+    cmcId: null,
+    categories: ["Cosmos"],
+    github: ["nolus-protocol"]
+  },
+  "ETHF": {
+    geckoId: "ethereumfair",
+    symbol: "ETHF",
+    cmcId: "21842",
+    categories: ["EVM"],
+    github: ["ethereumfair"],
+  },
+  "MEER": {
+    geckoId: "qitmeer-network",
+    symbol: "MEER",
+    cmcId: "15658",
+    categories: ["EVM"],
+  },
+  "Elysium": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Horizen EON": {
+    geckoId: "zencash",
+    symbol: "ZEN",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 7332,
+  },
+  "Chiliz": {
+    geckoId: "chiliz",
+    symbol: "CHZ",
+    cmcId: "4066",
+    categories: ["EVM"],
+    chainId: 88888,
+  },
+  "LightLink": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 1890
+  },
+  "PGN": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Mayachain": {
+    geckoId: "cacao",
+    symbol: "CACAO",
+    cmcId: null,
+  },
+  "Dash": {
+    geckoId: "dash",
+    symbol: "DASH",
+    cmcId: "131",
+  },
+  "Bostrom": {
+    geckoId: "bostrom",
+    symbol: "BOOT",
+    cmcId: null,
+    categories: ["Cosmos"],
+    github: ["cybercongress"]
+  },
+  "Alephium": {
+    geckoId: "alephium",
+    symbol: "ALPH",
+    cmcId: "14878",
+    github: ["alephium"]
+  },
+  "Mode": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 34443,
+  },
+  "FSC": {
+    geckoId: "fonsmartchain",
+    symbol: "FON",
+    cmcId: "22607",
+    github: ["FONSmartChain"],
+    categories: ["EVM"],
+  },
+  "Newton": {
+    geckoId: "newton-project",
+    symbol: "NEW",
+    cmcId: "3871",
+    github: ["newtonproject"],
+    categories: ["EVM"],
+  },
+  "JBC": {
+    geckoId: null,
+    symbol: "JBC",
+    cmcId: null,
+    github: null,
+    categories: ["EVM"],
+  },
+  "Sommelier": {
+    geckoId: "sommelier",
+    symbol: "SOMM",
+    cmcId: "18248",
+    categories: ["Cosmos"],
+  },
+  "Bahamut": {
+    geckoId: "fasttoken",
+    symbol: "FTN",
+    cmcId: "22615",
+    categories: ["EVM"],
+    github: ["fastexlabs"]
+  },
+  "Zkfair": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+  },
+  "CMP": {
+    geckoId: "caduceus",
+    symbol: "CMP",
+    cmcId: "20056",
+    categories: ["EVM"],
+    chainId: 256256
+  },
+  "Firechain": {
+    geckoId: null,
+    symbol: "FIRE",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 529
+  },
+} as unknown as ChainCoinGekcoIds
+
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
 chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
 chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
@@ -1925,7 +2145,9 @@ chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
 chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
 chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
 chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
-
+chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
+chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
+chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -1969,6 +2191,12 @@ export function transformNewChainName(chain: string) {
       return "PulseChain"
     case "Op_Bnb":
         return "opBNB"
+    case "WEMIX":
+      return "WEMIX3.0"
+    case "Umee":
+      return "UX"
+    case "TomoChain":
+      return "Viction"
     default:
       return chain
   }
@@ -2033,7 +2261,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "gochain":
       return "GoChain"
     case "tomochain":
-      return "TomoChain"
+      return useNewChainNames ? "Viction" : "TomoChain"
     case "fusion":
       return "Fusion"
     case "kardia":
@@ -2078,6 +2306,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "zkSync Lite" : "zkSync"
     case "zksync era":
       return "zkSync Era"
+    case "bifrost network":
+      return "Bifrost Network"
+    case "horizen eon":
+      return "Horizen EON"    
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -2273,9 +2505,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "libre":
       return "Libre"
     case "umee":
-      return "Umee"
+      return useNewChainNames ? "UX" : "Umee"
     case "wemix":
-      return "WEMIX"
+      return useNewChainNames ? "WEMIX3.0" : "WEMIX"
     case "persistence":
       return "Persistence"
     case "enuls":
@@ -2298,6 +2530,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Bone"
     case "era":
       return "zkSync Era"
+    case "bfc":
+      return "Bifrost Network"
+    case "ftn":
+      return "Bahamut"
     case "polygon_zkevm":
       return "Polygon zkEVM"
     case "meta":
@@ -2371,7 +2607,61 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "kroma":
       return "Kroma" 
     case "manta":
-      return "Manta"           
+      return "Manta"
+    case "shimmer_evm":
+      return "ShimmerEVM"       
+    case "beam":
+      return "Beam"
+    case "nos":
+      return "NOS"  
+    case "scroll":
+      return "Scroll"
+    case "renec":
+      return "RENEC" 
+    case "radixdlt":
+      return "Radix"
+    case "nolus":
+      return "Nolus"
+    case "ethf":
+      return "ETHF"
+    case "meer":
+      return "MEER"
+    case "elsm":
+      return "Elysium"
+    case "eon":
+      return "Horizen EON"
+    case "chz":
+      return "Chiliz"
+    case "lightlink_phoenix":
+      return "LightLink"
+    case "pgn":
+      return "PGN"
+    case "mayachain":
+      return "Mayachain"
+    case "dash":
+      return "Dash"
+    case "bostrom":
+      return "Bostrom"  
+    case "alephium":
+      return "Alephium" 
+    case "mode":
+      return "Mode"
+    case "fsc":
+      return "FSC"
+    case "new":
+      return "Newton"
+    case "jbc":
+      return "JBC"
+    case "sommelier":
+      return "Sommelier"
+    case "bahamut":
+      return "Bahamut"
+    case "zkfair":
+      return "Zkfair"
+    case "cmp":
+      return "CMP"
+    case "firechain":
+      return "Firechain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -103,6 +103,11 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   solana: {
     YAKU: "NGK3iHqqQkyRZUj4uhJDQqEyKKcZ7mdawWpqwMffM3s",
+    SNS: "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd",
+    PEEP: "n54ZwXEcLnc3o7zK48nhrLV4KTU5wWD4iq7Gvdt5tik",
+    WIF: 'EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm',
+    GUAC: 'AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR',
+    OVOL: '4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6'
   },
   avax: {
     DUEL: "0xc1a49c0b9c10f35850bd8e15eaef0346be63e002",
@@ -141,6 +146,10 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     LUNA: "0x95dd59343a893637be1c3228060ee6afbf6f0730",
     FEED: "0x5d5530eb3147152fe78d5c4bfeede054c8d1442a",
     GRAIN: "0x02838746d9e1413e07ee064fcbada57055417f21",
+    JEFE: "0x5b2af7fd27e2ea14945c82dd254c79d3ed34685e",
+    DAI: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
+    BASED: "0x8d7d3409881b51466b483b11ea1b8a03cded89ae",
+    BSHARE: '0x49C290Ff692149A4E16611c694fdED42C954ab7a'
   },
   heco: {
     BIFI: "0x765277eebeca2e31912c9946eae1021199b39c61",
@@ -155,6 +164,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     DHV: "0x5fcb9de282af6122ce3518cde28b7089c9f97b26",
     multiBTC: "0xf5b9b4a0534cf508ab9953c64c5310dfa0b303a1",
     MIM: "0x49a0400587a7f65072c87c4910449fdcc5c47242",
+    JUSD: "0x0ba8a6ce46d369d779299dedade864318097b703",
   },
   moonriver: {
     MIM: "0x0cae51e1032e8461f4806e26332c030e34de3adb",
@@ -188,6 +198,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     USDC: "0xfa9343c3897324496a05fc75abed6bac29f8a40f",
     USDT: "0xb44a9b6905af7c801311e8f4e76932ee959c663c",
     WBTC: "0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b",
+    null:"0xa0eeda2e3075092d66384fe8c91a1da4bca21788"
   },
   kardia: {
     USDC: "0x765277eebeca2e31912c9946eae1021199b39c61",
@@ -233,6 +244,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   coingecko: {
     PREMIO: "premio",
     TFBX: "truefeedbackchain",
+  },
+  bittorrent: {
+    WBTT: '0x8d193c6efa90bcff940a98785d1ce9d093d3dc8a'
   },
 };
 const eulerTokens = [

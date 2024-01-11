@@ -3,19 +3,25 @@ import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
 import * as ethers from 'ethers'
+import axios from 'axios'
 
 const config: any = {
   arbitrum: [
-    { eventEmitter: '0xc8ee91a54287db53897056e12d9819156d3822fb', fromBlock: 107737756, gmReader: '0x38d91ED96283d62182Fc6d990C24097A918a4d9b' },
+    { eventEmitter: '0xc8ee91a54287db53897056e12d9819156d3822fb', fromBlock: 107737756, gmReader: '0x38d91ED96283d62182Fc6d990C24097A918a4d9b', tickers: 'https://arbitrum-api.gmxinfra.io/prices/tickers' },
   ],
-  // avax: [
-  //   { eventEmitter: '0xDb17B211c34240B014ab6d61d4A31FA0C0e20c26', fromBlock: 32162455, },
-  // ],
+  avax: [
+    { eventEmitter: '0xDb17B211c34240B014ab6d61d4A31FA0C0e20c26', fromBlock: 32162455, tickers: 'https://avalanche-api.gmxinfra.io/prices/tickers', gmReader: '0x73BA021ACF4Bb6741E82690DdB821e7936050f8C', },
+  ], // TODO: re-enable it after upgrading avax rpc node
 }
 
 const chains = Object.keys(config)
 
 export function gmxV2(timestamp: number = 0) {
+
+  const THIRY_MINUTES = 1800
+  if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
+    throw new Error("Can't fetch historical data")
+
   console.log("starting GMX V2");
   return Promise.all(chains.map(i => getTokenPrices(i, timestamp)))
 }
@@ -35,7 +41,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
 
   return writes
 
-  async function _getWrites({ eventEmitter, fromBlock, gmReader }: any = {}) {
+  async function _getWrites({ eventEmitter, fromBlock, gmReader, tickers }: any = {}) {
     const logs = await getLogs({
       api,
       target: eventEmitter,
@@ -44,28 +50,43 @@ async function getTokenPrices(chain: string, timestamp: number) {
       onlyArgs: true,
       fromBlock,
     })
-
+    const tickerData = await axios.get(tickers)
+    const tickerDataObj = Object.fromEntries(tickerData.data.map((i: any) => [i.tokenAddress.toLowerCase(), i]))
 
     const underlyingTokens = logs.map((i: any) => {
       const [_, index, long, short] = i[4].addressItems.items.map((i: any) => i.value)
-      return [index, long, short]
+      return [index, long, short].map((i: any) => i.toLowerCase())
     }).flat()
     const coinData = await getTokenAndRedirectData(underlyingTokens, chain, timestamp)
     const coinDataObj = Object.fromEntries(coinData.map((i: any) => [i.address.toLowerCase(), i]))
     const symbols: string[] = []
     const marketTokens: string[] = []
 
+    function getCallConfig(address: string) {
+      address = address.toLowerCase()
+      if (address === '0x0000000000000000000000000000000000000000') return { min: 0, max: 0 }
+      let i = tickerDataObj[address]
+      if (i) return { min: i.minPrice, max: i.maxPrice }
+      i = coinDataObj[address]
+      if (!i) return null
+      const price = Math.floor(i.price * 1e12).toString()
+      return { min: price, max: price }
+    }
+
     const calls = logs.map((v: any) => {
       const [market, index, long, short] = v[4].addressItems.items.map((i: any) => i.value.toLowerCase())
-      if (!coinDataObj[index] || !coinDataObj[long] || !coinDataObj[short]) return;
+      const indexConfig = getCallConfig(index)
+      const longConfig = getCallConfig(long)
+      const shortConfig = getCallConfig(short)
+      if (!indexConfig || !longConfig || !shortConfig) {
+        console.log('missing coin data', index, long, short, market)
+        return;
+      }
 
-      if (index === '0x0000000000000000000000000000000000000000') return; // skip for now, until non USDC base is handled correctly
+      // if (index === '0x0000000000000000000000000000000000000000') return; // skip for now, until non USDC base is handled correctly
+      // if (market === '0xe2fedb9e6139a182b98e7c2688ccfa3e9a53c665') return; // skip for now, until DAI - USDC base is handled correctly
       symbols.push(`${coinDataObj[long].symbol}-${coinDataObj[short].symbol}-GMX-V2`)
       marketTokens.push(market)
-
-      const indexTokenPrice = Math.floor(coinDataObj[index].price * 1e12).toString()
-      const longTokenPrice = Math.floor(coinDataObj[long].price * 1e12).toString()
-      const shortTokenPrice =  ethers.BigNumber.from(Math.floor(coinDataObj[short].price * 1e8).toString()).mul(ethers.BigNumber.from(10).pow(+coinDataObj[short].decimals + 18 - 8)).toString()
 
       return {
         params: [
@@ -73,9 +94,9 @@ async function getTokenPrices(chain: string, timestamp: number) {
           {
             indexToken: index, longToken: long, shortToken: short, marketToken: market,
           },
-          { min: indexTokenPrice, max: indexTokenPrice, },
-          { min: longTokenPrice, max: longTokenPrice, },
-          { min: shortTokenPrice, max: shortTokenPrice, },
+          indexConfig,
+          longConfig,
+          shortConfig,
           hashString("MAX_PNL_FACTOR_FOR_DEPOSITS"),
           true,
         ],

@@ -1,18 +1,19 @@
+import fetch from "node-fetch";
+import { PromisePool } from "@supercharge/promise-pool";
 import { createChartData, mapToServerData, nullFinder } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
 import { createCategoryData } from "../emissions-adapters/utils/categoryData";
 import adapters from "./utils/imports/emissions_adapters";
-import { ApiChartData, ChartSection, Protocol, SectionData } from "../emissions-adapters/types/adapters";
+import { ChartSection, EmissionBreakdown, Protocol, SectionData } from "../emissions-adapters/types/adapters";
 import { createFuturesData } from "../emissions-adapters/utils/futures";
 import { storeR2JSONString, getR2 } from "./utils/r2";
-import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
 import { sluggifyString } from "./utils/sluggify";
 import parentProtocols from "./protocols/parentProtocols";
-import { PromisePool } from "@supercharge/promise-pool";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
 import { withTimeout } from "./utils/shared/withTimeout";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const prefix = "coingecko:";
 
@@ -56,10 +57,19 @@ async function aggregateMetadata(
   let documentedData;
   let realTimeData;
   if (documentedChart.length) {
-    documentedData = { data: mapToServerData(documentedChart), tokenAllocation: documentedTokenAllocation };
-    realTimeData = { data: mapToServerData(realTimeChart), tokenAllocation: realTimeTokenAllocation };
+    documentedData = {
+      data: mapToServerData(documentedChart),
+      tokenAllocation: documentedTokenAllocation,
+    };
+    realTimeData = {
+      data: mapToServerData(realTimeChart),
+      tokenAllocation: realTimeTokenAllocation,
+    };
   } else {
-    documentedData = { data: mapToServerData(realTimeChart), tokenAllocation: realTimeTokenAllocation };
+    documentedData = {
+      data: mapToServerData(realTimeChart),
+      tokenAllocation: realTimeTokenAllocation,
+    };
   }
 
   return {
@@ -70,12 +80,73 @@ async function aggregateMetadata(
       name,
       gecko_id: pData?.gecko_id,
       futures,
+      categories: rawData.categories,
     },
     id,
   };
 }
 
-async function processSingleProtocol(adapter: Protocol, protocolName: string): Promise<string> {
+async function getPricedUnlockChart(emissionData: Awaited<ReturnType<typeof aggregateMetadata>>["data"]) {
+  try {
+    const incentiveCtegories = ["farming"];
+
+    const currDate = new Date().getTime() / 1000;
+    const incentiveCtegoriesNames = incentiveCtegories.map((cat) => emissionData?.categories[cat]).flat();
+
+    const unlocksByTimestamp: Record<string, number> = {};
+    const now = new Date().getTime() / 1000;
+
+    emissionData.documentedData.data.forEach(
+      (chart: { data: Array<{ timestamp: number; unlocked: number }>; label: string }) => {
+        if (!incentiveCtegoriesNames?.includes(chart.label)) return;
+        chart.data
+          .filter((val) => val.timestamp < currDate)
+          .forEach((val) => {
+            if (val.timestamp < now)
+              unlocksByTimestamp[val.timestamp] = (unlocksByTimestamp[val.timestamp] || 0) + val.unlocked;
+          });
+      },
+      {}
+    );
+
+    const timestamps = Object.keys(unlocksByTimestamp);
+    const prices: Record<string, number> = {};
+
+    const token = emissionData?.metadata?.token;
+
+    if (token) {
+      await Promise.all(
+        timestamps.map(async (ts) => {
+          const price = await fetch(
+            `https://coins.llama.fi/prices/historical/${ts}/${token}/?apikey=${process.env.APIKEY}`
+          )
+            .then((r) => r.json())
+            .catch(() => {});
+
+          prices[ts] = price?.coins?.[token]?.price;
+        })
+      );
+    }
+
+    const chartsWithPrices = Object.entries(unlocksByTimestamp)
+      .sort((a: any, b: any) => a[0] - b[0])
+      .map(([ts, unlocked]: [string, number], i, arr: any[]) => [ts, (unlocked - arr?.[i - 1]?.[1]) * prices[ts] || 0]);
+
+    return chartsWithPrices;
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
+
+const getDateByDaysAgo = (days: number) => new Date(Date.now() - days * 24 * 60 * 60 * 1000).getTime() / 1000;
+const sum = (arr: number[]) => arr.reduce((acc, val) => acc + val, 0);
+
+async function processSingleProtocol(
+  adapter: Protocol,
+  protocolName: string,
+  emissionsBrakedown: EmissionBreakdown
+): Promise<string> {
   const rawData = await createRawSections(adapter);
   nullFinder(rawData.rawSections, "rawSections");
 
@@ -87,28 +158,40 @@ async function processSingleProtocol(adapter: Protocol, protocolName: string): P
   nullFinder(realTimeData, "realTimeData");
   // must happen before this line because category datas off
   const { data, id } = await aggregateMetadata(protocolName, realTimeData, documentedData, rawData);
+  const unlockUsdChart = await getPricedUnlockChart(data);
+  const weekAgo = getDateByDaysAgo(7);
+  const dayAgo = getDateByDaysAgo(1);
+  const monthAgo = getDateByDaysAgo(30);
+
+  const [day, week, month]: number[][] = [[], [], []];
 
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
+  unlockUsdChart.forEach(([ts, val]) => {
+    if (Number(val) < 0) return;
+    if (Number(ts) > monthAgo) month.push(Number(val));
+    if (Number(ts) > weekAgo) week.push(Number(val));
+    if (Number(ts) > dayAgo) day.push(Number(val));
+  });
 
-  await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify(data));
-  console.log(protocolName);
+  const breakdown = {
+    emission24h: sum(day),
+    emission7d: sum(week),
+    emission30d: sum(month),
+  };
+
+  if (sum(Object.values(breakdown)) > 0) emissionsBrakedown[sluggifiedId] = breakdown;
+
+  await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify({ ...data, unlockUsdChart }));
 
   return sluggifiedId;
 }
-
-function filterAdapters(protocolIndexes: number[]): any[] {
-  const selected: any[] = [];
-  const entries: any[] = Object.entries(adapters);
-  for (let i = 0; i < entries.length; i++) {
-    if (protocolIndexes.includes(i)) selected.push(entries[i]);
-  }
-  return selected;
-}
-async function processProtocolList(protocolIndexes: number[]) {
+async function processProtocolList() {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
+  let emissionsBrakedown: EmissionBreakdown = {};
 
-  const protocolAdapters = filterAdapters(protocolIndexes);
+  await setEnvSecrets();
+  const protocolAdapters = Object.entries(adapters);
   await PromisePool.withConcurrency(2)
     .for(shuffleArray(protocolAdapters))
     .process(async ([protocolName, rawAdapter]) => {
@@ -116,7 +199,7 @@ async function processProtocolList(protocolIndexes: number[]) {
       if (!adapters.length) adapters = [adapters];
       await Promise.all(
         adapters.map((adapter: Protocol) =>
-          withTimeout(180000, processSingleProtocol(adapter, protocolName), protocolName)
+          withTimeout(6000000, processSingleProtocol(adapter, protocolName, emissionsBrakedown), protocolName)
             .then((p: string) => protocolsArray.push(p))
             .catch((err: Error) => {
               console.log(err.message ? `${err.message}: \n storing ${protocolName}` : err);
@@ -130,15 +213,20 @@ async function processProtocolList(protocolIndexes: number[]) {
   const res = await getR2(`emissionsProtocolsList`);
   if (res.body) protocolsArray = [...new Set([...protocolsArray, ...JSON.parse(res.body)])];
   await storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray));
+
+  const oldBreakdown = await getR2(`emissionsBreakdown`);
+  await storeR2JSONString(
+    "emissionsBreakdown",
+    JSON.stringify({ ...JSON.parse(oldBreakdown.body || "{}"), ...emissionsBrakedown })
+  );
 }
-async function handler(event: any) {
+export async function handler() {
   try {
-    await withTimeout(840000, processProtocolList(event.protocolIndexes));
+    await withTimeout(8400000, processProtocolList());
   } catch (e) {
     process.env.UNLOCKS_WEBHOOK ? await sendMessage(`${e}`, process.env.UNLOCKS_WEBHOOK!) : console.log(e);
   }
 }
-
 async function handlerErrors(errors: string[]) {
   if (errors.length > 0) {
     let errorMessage: string = `storeEmissions errors: \n`;
@@ -149,5 +237,5 @@ async function handlerErrors(errors: string[]) {
   }
 }
 
-export default wrapScheduledLambda(handler);
-//handler(); // ts-node src/storeEmissions.ts
+// export default wrapScheduledLambda(handler);
+handler(); // ts-node src/triggerStoreEmissions.ts

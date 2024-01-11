@@ -67,7 +67,7 @@ export function traderJoe(timestamp: number = 0) {
     "avax",
     "0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10",
     undefined,
-    "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange",
+    undefined,
     timestamp,
   );
 }
@@ -299,6 +299,12 @@ export function extraUniV2Lps(timestamp: number = 0) {
       "0x6B175474E89094C44Da98b954EedeAC495271d0F",
       "ethereum",
     ),
+    getExtras(
+      timestamp,
+      "0x3A0eF60e803aae8e94f741E7F61c7CBe9501e569",
+      "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "ethereum",
+    ),
   ]);
 }
 export function fvm(timestamp: number = 0) {
@@ -337,6 +343,28 @@ export function zkSwap(timestamp: number = 0) {
   return getTokenPrices(
     "era",
     "0x3a76e377ED58c8731F9DF3A36155942438744Ce3",
+    undefined,
+    undefined,
+    timestamp,
+  );
+}
+
+export function elysium(timestamp: number = 0) {
+  console.log("starting elysium unin v2");
+  return getTokenPrices(
+    "elsm",
+    "0x5bec5d65fAba8E90e4a74f3da787362c60F22DaE",
+    undefined,
+    undefined,
+    timestamp,
+  );
+}
+
+export function zkswap(timestamp: number = 0) {
+  console.log("starting zkswap v2");
+  return getTokenPrices(
+    "polygon_zkevm",
+    "0x51A0D4B81400581d8722627daFCd0c1Ff9357d1D",
     undefined,
     undefined,
     timestamp,

@@ -30,12 +30,14 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const api = await getApi(chain, timestamp)
   const calls = Object.values(config[chain].tokens) as string[]
 
-  const totalDeposits = await api.multiCall({ abi: 'uint256:totalDeposits', calls, })
-  const totalSupply = await api.multiCall({ abi: 'uint256:totalSupply', calls, })
-  const depositToken = await api.multiCall({ abi: 'address:depositToken', calls, })
+  const totalDeposits = await api.multiCall({ abi: 'uint256:totalDeposits', calls, permitFailure: true })
+  const totalSupply = await api.multiCall({ abi: 'uint256:totalSupply', calls, permitFailure: true })
+  const depositToken = await api.multiCall({ abi: 'address:depositToken', calls })
 
   const pricesObject: any = {}
-  calls.forEach((vault: any, i: any) => { pricesObject[vault] = { underlying: depositToken[i], price: totalDeposits[i] / totalSupply[i]  } })
+  calls.forEach((vault: any, i: any) => { 
+    if (isNaN(totalDeposits[i]) || isNaN(totalSupply[i])) return 
+    pricesObject[vault] = { underlying: depositToken[i], price: totalDeposits[i] / totalSupply[i]  } })
 
   return getWrites({ chain, timestamp, writes, pricesObject, projectName: 'yield-yak' })
 }

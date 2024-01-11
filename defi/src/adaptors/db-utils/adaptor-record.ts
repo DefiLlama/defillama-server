@@ -3,8 +3,8 @@ import dynamodb from "../../utils/shared/dynamodb"
 import { getDisplayChainName, formatChainKey } from "../utils/getAllChainsFromAdaptors"
 import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
-import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
-import { IJSON } from "../data/types"
+import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
+import { IJSON, ProtocolAdaptor } from "../data/types"
 import dynamoReservedKeywords from "./dynamo-reserved-keywords"
 
 export enum AdaptorRecordType {
@@ -18,6 +18,10 @@ export enum AdaptorRecordType {
     // fees & revenue
     dailyFees = "df",
     dailyBribesRevenue = "dbr",
+    dailyTokenTaxes = "dtt",
+    dailyShortOpenInterest = "dsoi",
+    dailyLongOpenInterest = "dloi",
+    dailyOpenInterest = "doi",
     dailyRevenue = "dr",
     dailyUserFees = "duf",
     dailySupplySideRevenue = "dssr",
@@ -81,6 +85,13 @@ export class AdaptorRecord extends Item {
             return acc
         }, {} as IRecordAdaptorRecordData)
         return new AdaptorRecord(recordType, dexId, timestamp, clean_body, protocolType)
+    }
+
+    static fromJSON(json: any): AdaptorRecord | AdaptorRecord[] {
+        if (Array.isArray(json)) return json.map(i => AdaptorRecord.fromJSON(i)) as AdaptorRecord[]
+        let { type, adaptorId, timestamp, data, protocolType } = json
+        // data = JSON.parse(JSON.stringify(data)) // deep copy
+        return new AdaptorRecord(type, adaptorId, timestamp, data, protocolType)
     }
 
     get pk(): string {
@@ -165,12 +176,22 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         }, (currentData ?? {}) as IRecordAdaptorRecordData),
         eventTimestamp
     }
+    const obj2StoreRemoveReserveKeys = Object.entries(obj2Store).reduce((acc, [key, value]) => {
+        if (dynamoReservedKeywords.includes(key.toUpperCase())) {
+            delete acc[key];
+            return acc
+        }
+        acc[key] = value
+        return acc
+    }, {} as IRecordAdaptorRecordData)
+
+
     try {
-        console.log("Storing", obj2Store, adaptorRecord.keys())
+        console.log("Storing", obj2StoreRemoveReserveKeys, adaptorRecord.keys())
         await dynamodb.update({
             Key: adaptorRecord.keys(),
-            UpdateExpression: createUpdateExpressionFromObj(obj2Store),
-            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(obj2Store)
+            UpdateExpression: createUpdateExpressionFromObj(obj2StoreRemoveReserveKeys),
+            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(obj2StoreRemoveReserveKeys)
         }) // Upsert like
         return adaptorRecord
     } catch (error) {
@@ -206,6 +227,20 @@ function createExpressionAttributeValuesFromObj(obj: IRecordAdaptorRecordData): 
             [`:${key}`]: value
         }
     }, {} as Record<string, unknown>)
+}
+
+export type GetAdaptorRecordOptions = {
+    adapter: ProtocolAdaptor,
+    type: AdaptorRecordType,
+    adaptorType?: AdapterType,
+    timestamp?: number,
+    mode?: "ALL" | "LAST" | "TIMESTAMP"
+}
+
+export async function getAdaptorRecord2({ adapter, type, timestamp, mode = 'ALL' }: GetAdaptorRecordOptions): Promise<AdaptorRecord[] | AdaptorRecord> {
+    const adaptorId = adapter.id
+    const protocolType = adapter.protocolType
+    return getAdaptorRecord(adaptorId, type, protocolType, mode, timestamp)
 }
 
 export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType, protocolType?: ProtocolType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number): Promise<AdaptorRecord[] | AdaptorRecord> => {

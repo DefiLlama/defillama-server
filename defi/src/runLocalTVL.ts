@@ -8,6 +8,8 @@ import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
 import { PromisePool } from '@supercharge/promise-pool'
 import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import * as sdk from '@defillama/sdk'
+import { shuffleArray } from "./utils/shared/shuffleArray";
+import { importAdapterDynamic } from "./utils/imports/importAdapter";
 
 const maxRetries = 1;
 
@@ -30,7 +32,7 @@ async function main() {
     .process(async (protocol: any) => {
       const startTime = +Date.now()
       try {
-        const adapterModule = importAdapter(protocol)
+        const adapterModule: any = importAdapterDynamic(protocol)
         if (!adapterModule.tron) {
           i++
           return;
@@ -58,15 +60,6 @@ async function main() {
   await storeStaleCoins(staleCoins)
 }
 
-
-function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-
 async function cacheCurrentBlocks() {
   try {
     await getCurrentBlocks(['ethereum', "avax", "bsc", "polygon", "xdai", "fantom", "arbitrum", 'optimism', 'kava', 'era', 'base', 'harmony', 'moonriver', 'moonbeam', 'celo', 'heco', 'klaytn', 'metis', 'polygon_zkevm', 'linea', 'dogechain'])
@@ -78,10 +71,6 @@ main().then(() => {
   sdk.log('Exitting now...')
   process.exit(0)
 })
-
-function importAdapter(protocol: Protocol) {
-  return require("@defillama/adapters/projects/" + [protocol.module])
-}
 
 async function rejectAfterXMinutes(promiseFn: any, minutes = 5) {
   const ms = minutes * 60 * 1e3

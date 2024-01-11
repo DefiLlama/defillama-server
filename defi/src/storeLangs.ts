@@ -3,6 +3,8 @@ import { processProtocols, TvlItem } from "./storeGetCharts";
 import type { Protocol } from "./protocols/data";
 import { storeR2JSONString } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
+import { writeToPGCache } from "./api2/db";
+import { PG_CACHE_KEYS } from "./api2/constants";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -63,7 +65,7 @@ function defaultLang(chainName: string) {
   return chainToLang[chainName];
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent) => {
+export async function storeLangs({ ...options }: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
   const languageProtocols = {} as LanguageProtocols;
   const sumDailySolanaOpenSourceTvls = {} as SumDailyTvls;
@@ -107,18 +109,25 @@ const handler = async (_event: AWSLambda.APIGatewayEvent) => {
         }
       }
     },
-    { includeBridge: false }
+    { includeBridge: false, ...options }
   );
 
-  await storeR2JSONString(
-    "temp/langs.json",
-    JSON.stringify({
-      chart: sumDailyTvls,
-      protocols: Object.fromEntries(Object.entries(languageProtocols).map((c) => [c[0], Array.from(c[1])])),
-      sumDailySolanaOpenSourceTvls,
-    }),
-    10 * 60
-  );
+  const data = {
+    chart: sumDailyTvls,
+    protocols: Object.fromEntries(Object.entries(languageProtocols).map((c) => [c[0], Array.from(c[1])])),
+    sumDailySolanaOpenSourceTvls,
+  }
+
+  if (options.isApi2CronProcess) {
+    await writeToPGCache(PG_CACHE_KEYS.LANG_DATA, data) // TODO: verify how/where this is read and update it to use the api
+    return;
+  } else {
+    await storeR2JSONString("temp/langs.json", JSON.stringify(data), 10 * 60);
+  }
+}
+
+const handler = async (_event: AWSLambda.APIGatewayEvent) => {
+  await storeLangs();
 };
 
 export default wrapScheduledLambda(handler);

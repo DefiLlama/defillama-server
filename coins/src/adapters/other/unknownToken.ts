@@ -12,6 +12,7 @@ export default async function getTokenPrices(
   knownToken: string,
   knownTokenIsGas: boolean,
   chain: any,
+  confidence: number = 0.51
 ) {
   const writes: Write[] = [];
   const block: number | undefined = await getBlock(chain, timestamp);
@@ -78,7 +79,7 @@ export default async function getTokenPrices(
     symbol,
     timestamp,
     "unknownTokenRequested",
-    0.51,
+    confidence
   );
 
   return writes;

@@ -1,10 +1,11 @@
 require("dotenv").config();
-import { isAcceptedChain } from "../../../../dimension-adapters/users/utils/convertChain";
+import { convertChainToFlipside, isAcceptedChain } from "../../../../dimension-adapters/users/utils/convertChain";
 import { queryFlipside } from "../../../../dimension-adapters/helpers/flipsidecrypto";
 import { PromisePool } from '@supercharge/promise-pool'
 import { storeNewUsers } from "../../../users/storeUsers";
 
 export async function storeAllNewUsers({ name, addresses, id }: {name:string, addresses:{[chain:string]:any}, id:any}) {
+  const chainArray = Object.keys(addresses).filter((chain)=>isAcceptedChain(chain)).map(convertChainToFlipside)
     const chainAddresses = Object.entries(addresses).filter(([chain])=>isAcceptedChain(chain)).reduce((all, c)=>all.concat(c[1]), [] as string[])
     const usersChart = await queryFlipside(`
 WITH
@@ -33,59 +34,15 @@ WITH
       ) AS first_seen_chain
     FROM
       (
-        SELECT
+        ${chainArray.map(chain=>
+        `SELECT
           block_timestamp,
           from_address,
           tx_hash,
           to_address,
-          'bsc' as chain
+          '${chain}' as chain
         FROM
-          bsc.core.fact_transactions
-        UNION ALL
-        SELECT
-          block_timestamp,
-          from_address,
-          tx_hash,
-          to_address,
-          'ethereum' as chain
-        FROM
-          ethereum.core.fact_transactions
-        UNION ALL
-        SELECT
-          block_timestamp,
-          from_address,
-          tx_hash,
-          to_address,
-          'polygon' as chain
-        FROM
-          polygon.core.fact_transactions
-        UNION ALL
-        SELECT
-          block_timestamp,
-          from_address,
-          tx_hash,
-          to_address,
-          'arbitrum' as chain
-        FROM
-          arbitrum.core.fact_transactions
-        UNION ALL
-        SELECT
-          block_timestamp,
-          from_address,
-          tx_hash,
-          to_address,
-          'optimism' as chain
-        FROM
-          optimism.core.fact_transactions
-        UNION ALL
-        SELECT
-          block_timestamp,
-          from_address,
-          tx_hash,
-          to_address,
-          'avalanche' as chain
-        FROM
-          avalanche.core.fact_transactions
+          ${chain}.core.fact_transactions`).join('\nUNION ALL\n')}
       ) t
     WHERE
       t.to_address IN (${chainAddresses.map(a => `'${a.toLowerCase()}'`).join(',')})

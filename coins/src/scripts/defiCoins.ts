@@ -21,7 +21,6 @@ const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 1740000; //29mins
 
 async function storeDefiCoins() {
-  console.log("actually entering defi coins");
   await setEnvSecrets();
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
@@ -30,14 +29,13 @@ async function storeDefiCoins() {
   shuffleArray(protocolIndexes);
   const a = Object.entries(adapters);
   const timestamp = 0;
-  console.time("exec");
-  await PromisePool.withConcurrency(2)
+  await PromisePool.withConcurrency(1)
     .for(protocolIndexes)
     .process(async (i) => {
       try {
         const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
-          results.flat(),
+          results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
           await Promise.all([
@@ -57,21 +55,15 @@ async function storeDefiCoins() {
             process.env.LLAMA_RUN_LOCAL ? "" : `:${e}`
           }`,
         );
-        if (!process.env.LLAMA_RUN_LOCAL)
-          await sendMessage(
-            `${a[i][0]} adapter failed: ${e}`,
-            process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-            true,
-          );
+        // if (!process.env.LLAMA_RUN_LOCAL)
+        //   await sendMessage(
+        //     `${a[i][0]} adapter failed: ${e}`,
+        //     process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        //     true,
+        //   );
       }
     });
-  console.timeEnd("exec");
-  await sendMessage(
-    `coolifys just finished defi coins`,
-    process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-    true,
-  );
-  console.log("actually exiting defi coins");
   process.exit();
 }
 storeDefiCoins();
+// ts-node coins/src/scripts/defiCoins.ts

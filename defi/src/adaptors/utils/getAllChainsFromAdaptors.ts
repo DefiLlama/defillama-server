@@ -92,7 +92,7 @@ export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: str
 
 export const getDisplayChainName = (chain: string) => {
     if (!chain) return chain
-    let c = chain.toLowerCase()
+    let c = formatChainKey(chain.toLowerCase())
     return getChainDisplayName(c, true)
 }
 
@@ -116,7 +116,9 @@ export const normalizeDimensionChainsMap = {
     'sxnetwork': CHAIN.SX,
     'ontologyevm': CHAIN.ONTOLOGY_EVM,
     'wanchain': CHAIN.WAN,
-    'oasys': CHAIN.OAS
+    'oasys': CHAIN.OAS,
+    'wemix3.0': CHAIN.WEMIX,
+    'radix': CHAIN.RADIXDLT
 } as IJSON<CHAIN>
 
 export const formatChainKey = (chain: string) => {

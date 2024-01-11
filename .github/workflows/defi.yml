@@ -4,6 +4,7 @@ on:
   push:
     branches: [master]
   repository_dispatch:
+  workflow_dispatch:
 
 defaults:
   run:
@@ -32,7 +33,7 @@ jobs:
       - name: Get Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "16"
+          node-version: '16'
       - run: echo "TODAY=$(date +%Y%m%d)" >> $GITHUB_ENV
       - name: Get jest cache
         uses: actions/cache@v3
@@ -106,3 +107,4 @@ jobs:
           UNLOCKS_WEBHOOK: ${{ secrets.UNLOCKS_WEBHOOK }}
           SMARDEX_SUBGRAPH_API_KEY: ${{ secrets.SMARDEX_SUBGRAPH_API_KEY }}
           DUNE_API_KEYS: ${{ secrets.DUNE_API_KEYS }}
+          APIKEY: ${{ secrets.APIKEY }}

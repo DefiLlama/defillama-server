@@ -1,21 +1,36 @@
-import { fetch, getAllInfo } from "../utils"
+import { fetch, formatExtraTokens } from "../utils";
 
-const tokenList = "https://api-polygon-tokens.polygon.technology/tokenlists/polygonTokens.tokenlist.json";
-
+const chain = 'polygon'
 export default async function bridge() {
-    const tokens = await fetch(
-        tokenList
-      )
-      .then((r) => r.tokens);
+  const tokens = (
+    await fetch("https://raw.githubusercontent.com/maticnetwork/polygon-token-list/dev/src/tokens/polygon.json")
+  ) as any[];
 
-    return tokens.map((token: any) => {
-        const polygonAddress = token.address.toLowerCase()
-        const from = "polygon:" + polygonAddress
-        const to = "ethereum:" + token.extensions.rootAddress.toLowerCase()
-        return {
-            from,
-            to,
-            getAllInfo: getAllInfo(polygonAddress, 'polygon', to)
-        }
+  console.log(Array.isArray(tokens), tokens.length)
+  const polygonTokens = tokens
+    .filter((token) => token.chainId === 137 && token.extensions?.originTokenAddress && token.extensions.originTokenAddress !== '0x0000000000000000000000000000000000000000' && token.extensions?.originTokenNetwork === 0)
+    .map((token) => {
+      const bridged = token.extensions.originTokenAddress;
+      return {
+        from: `${chain}:${token.address}`,
+        to: `ethereum:${bridged}`,
+        symbol: token.symbol,
+        decimals: token.decimals
+      };
     })
+    .concat(extraTokens);
+  const zkEVMTokens = tokens
+    .filter((token) => token.chainId === 1101 && token.extensions?.originTokenAddress && token.extensions.originTokenAddress !== '0x0000000000000000000000000000000000000000' && token.extensions?.originTokenNetwork === 0)
+    .map((token) => {
+      const bridged = token.extensions.originTokenAddress;
+      return {
+        from: `polygon_zkevm:${token.address}`,
+        to: `ethereum:${bridged}`,
+        symbol: token.symbol,
+        decimals: token.decimals
+      };
+    })
+  return polygonTokens.concat(zkEVMTokens)
 }
+
+const extraTokens = formatExtraTokens(chain, []);

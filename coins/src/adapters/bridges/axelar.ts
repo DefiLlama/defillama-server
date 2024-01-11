@@ -14,6 +14,7 @@ export default async function bridge(): Promise<Token[]> {
   //   const unknownChains: string[] = [];
   const chainSlugs = JSON.parse((await getChains()).body);
   tokenMap.map((token: any) => {
+    if (!token.addresses) return;
     Object.keys(token.addresses).map((chain: string) => {
       let normalizedChain: string;
       if (chain in chainMap) {

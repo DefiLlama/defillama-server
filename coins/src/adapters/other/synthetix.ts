@@ -4,13 +4,39 @@ import axios from "axios";
 import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
 import { multiCall } from "@defillama/sdk/build/abi";
+import dayjs from "dayjs";
+import { getCurrentUnixTimestamp } from "../../utils/date";
 const abi = require("./abi.json");
 
+async function getForexRates(
+  uniqueTickers: string[],
+  timestamp: number,
+): Promise<{ [string: string]: number }> {
+  const date = dayjs(timestamp == 0 ? Date.now() : timestamp * 1000)
+    .locale("US")
+    .format("YYYY-MM-DD");
+
+  const symbols = [...uniqueTickers, "USD"]
+    .reduce((p: string, c: string) => `${p},${c}`, "")
+    .substring(1);
+
+  const rates = (
+    await axios.get(
+      `http://data.fixer.io/api/${date}?access_key=${process.env.FIXER_IO_KEY}&symbols=${symbols}`,
+    )
+  ).data.rates;
+
+  const forexPrices: { [string: string]: number } = {};
+  Object.keys(rates).map(
+    (r: string) => (forexPrices[r] = rates["USD"] / rates[r]),
+  );
+  return forexPrices;
+}
 const tokens = {
   optimism: {
     EUR: "0xdedb0b04aff1525bb4b6167f00e61601690c1ff2",
     USD: "0xdfa2d3a0d32f870d87f8a0d7aa6b9cdeb7bc5adb",
-    INR: "0x34c2360ffe5d21542f76e991ffd104f281d4b3fb"
+    INR: "0x34c2360ffe5d21542f76e991ffd104f281d4b3fb",
   },
   ethereum: {
     AUD: "0xfb020ca7f4e8c4a5bbbe060f59a249c6275d2b69",
@@ -20,21 +46,21 @@ const tokens = {
     JPY: "0xe1cc2332852b2ac0da59a1f9d3051829f4ef3c1c",
     KRW: "0xdae6c79c46ab3b280ca28259000695529cbd1339",
     //USD: "0x10a5f7d9d65bcc2734763444d4940a31b109275f"
-  }
+  },
 };
 async function getProxies(
   chain: string,
   tokens: any,
-  block: number | undefined
+  block: number | undefined,
 ) {
   return (
     await multiCall({
       abi: abi.proxy,
       calls: tokens.map((target: string) => ({
-        target: target
+        target: target,
       })),
       chain: chain as any,
-      block
+      block,
     })
   ).output.map((r: any) => r.output);
 }
@@ -47,14 +73,7 @@ export default async function getTokenPrices(timestamp: number = 0) {
     });
   });
 
-  const forexPrices: { [string: string]: number } = {};
-  (
-    await Promise.all(
-      uniqueTickers.map((ticker: any) =>
-        axios.get(`https://api.exchangerate.host/convert?from=${ticker}&to=USD`)
-      )
-    )
-  ).map((r: any) => (forexPrices[r.data.query.from] = r.data.result));
+  const forexPrices = await getForexRates(uniqueTickers, timestamp);
 
   for (let addresses of Object.entries(tokens)) {
     const chain = addresses[0];
@@ -64,7 +83,7 @@ export default async function getTokenPrices(timestamp: number = 0) {
 
     const [tokenInfos, tokenAddresses] = await Promise.all([
       getTokenInfo(chain, tokens, block),
-      getProxies(chain, tokens, block)
+      getProxies(chain, tokens, block),
     ]);
 
     tickers.map((t: string, i: number) => {
@@ -80,7 +99,7 @@ export default async function getTokenPrices(timestamp: number = 0) {
         tokenInfos.symbols[i].output,
         timestamp,
         "synthetix",
-        0.9
+        0.9,
       );
     });
   }

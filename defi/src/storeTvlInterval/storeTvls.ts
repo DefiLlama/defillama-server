@@ -1,8 +1,8 @@
 import { storeTvl } from "./getAndStoreTvl";
 import { getCurrentBlock } from "./blocks";
 import protocols from "../protocols/data";
-import { importAdapter } from "../utils/imports/importAdapter";
-import { executeAndIgnoreErrors } from "./errorDb";
+import { importAdapterDynamic } from "../utils/imports/importAdapter";
+import { initializeTVLCacheDB, TABLES } from "../api2/db/index";
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { storeStaleCoins, StaleCoins } from "./staleCoins";
 import { PromisePool } from '@supercharge/promise-pool'
@@ -13,23 +13,24 @@ const millisecondsBeforeLambdaEnd = 30e3; // 30s
 
 export default async (protocolIndexes: number[], getRemainingTimeInMillis: () => number) => {
   const blocksTimeout = setTimeout(() =>
-    executeAndIgnoreErrors('INSERT INTO `timeouts` VALUES (?, ?)', [getCurrentUnixTimestamp(), "blocks"]),
+  () => TABLES.TvlMetricsTimeouts.upsert({ timestamp: getCurrentUnixTimestamp(), protocol: 'blocks' }),
     getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
   clearTimeout(blocksTimeout)
   await setEnvSecrets()
 
   const staleCoins: StaleCoins = {};
   const actions = protocolIndexes.map(idx => protocols[idx])
+  await initializeTVLCacheDB()
 
   await PromisePool
     .withConcurrency(16)
     .for(actions)
     .process(async  (protocol: any) => {
       const protocolTimeout = setTimeout(() =>
-        executeAndIgnoreErrors('INSERT INTO `timeouts` VALUES (?, ?)', [getCurrentUnixTimestamp(), protocol.name]),
+      () => TABLES.TvlMetricsTimeouts.upsert({ timestamp: getCurrentUnixTimestamp(), protocol: protocol.name }),
         getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
-      const adapterModule = importAdapter(protocol)
-      const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
+      const adapterModule = importAdapterDynamic(protocol) // won't work on lambda now with esbuild
+      const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({adapterModule, catchOnlyStaleRPC: true, });
       await storeTvl(
         timestamp,
         ethereumBlock,

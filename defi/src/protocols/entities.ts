@@ -272,6 +272,86 @@ const entities = [
         module: "entities/dwf-labs.js",
         twitter: "DWFLabs"
     },
+    {
+        id: "28",
+        name: "GSR",
+        url: "https://www.gsr.io/",
+        description: "GSR has ten years of deep crypto market expertise as a market maker and active, multi-stage investor. We build long-term relationships by offering exceptional service and trading capabilities tailored to the specific needs of our clients.",
+        logo: "gsr.jpg",
+        category: "VC",
+        module: "entities/gsr.js",
+        twitter: "GSR_io"
+    },
+    {
+        id: "29",
+        name: "ConsenSys",
+        url: "https://consensys.io",
+        description: "A complete suite of products to create and participate in web3.",
+        logo: "consensys.jpg",
+        category: "VC",
+        module: "entities/consensys.js",
+        twitter: "Consensys"
+    },
+    {
+        id: "30",
+        name: "Arrington Capital",
+        url: "https://www.arringtoncapital.com/",
+        description: "Arrington Capital is a thesis-driven firm investing in digital assets and web3 since 2017.",
+        logo: "arrington-capital.png",
+        category: "VC",
+        module: "entities/arrington-xrp-capital.js",
+        twitter: "Arrington_Cap"
+    },
+    {
+        id: "31",
+        name: "HashKey Capital",
+        url: "https://hashkey.capital",
+        description: "Global in influence and crypto-native, HashKey Capital is a digital asset and blockchain leader helping institutions, founders and talents advance the blockchain industry and find adoption anywhere.",
+        logo: "hashkey-capital.jpg",
+        category: "VC",
+        module: "entities/hashkey-capital.js",
+        twitter: "HashKey_Capital"
+    },
+    {
+        id: "32",
+        name: "Sequoia Capital",
+        url: "https://www.sequoiacap.com",
+        description: "We help the daring build legendary companies from idea to IPO and beyond.",
+        logo: "sequoia-capital.png",
+        category: "VC",
+        module: "entities/sequoia-capital.js",
+        twitter: "sequoia"
+    },
+    {
+        id: "33",
+        name: "Digital Currency Group",
+        url: "https://dcg.co",
+        description: "We build, buy, and invest in bitcoin and blockchain companies. Parent of Grayscale, GenesisTrading, CoinDesk, FoundryServices, LunoGlobal",
+        logo: "digital-currency-group.jpg",
+        category: "VC",
+        module: "entities/digital-currency-group.js",
+        twitter: "DCGco"
+    },
+    {
+        id: "34",
+        name: "Brevan Howard",
+        url: "https://www.brevanhoward.com",
+        description: "Founded in 2002, we are a leading global alternative investment management platform, specialising in global macro and digital assets.",
+        logo: "brevan-howard.jpg",
+        category: "VC",
+        module: "entities/brevan-howard-digital.js",
+        twitter: "DCGco"
+    },
+    {
+        id: "35",
+        name: "Abraxas Capital",
+        url: "https://www.abraxascm.com",
+        description: "Founded by Fabio Frontini in 2002 with the objective of building a best-in-class asset manager boutique, from 2017 Abraxas Capital Management specialized in the digital assets space becoming a world leading digital asset manager. ",
+        logo: "abraxas-capital.jpg",
+        category: "VC",
+        module: "entities/abraxas-capital.js",
+        twitter: null
+    },
 ].map(entity=>({
     ...entity,
     id: `entity-${entity.id}`,

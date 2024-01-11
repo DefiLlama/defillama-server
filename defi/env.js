@@ -45,4 +45,5 @@ module.exports = {
   INDEXA_DB: process.env.INDEXA_DB,
   DL_NEWS_API: process.env.DL_NEWS_API,
   DL_NEWS_ACCESS_TOKEN: process.env.DL_NEWS_ACCESS_TOKEN,
+  APIKEY: process.env.APIKEY,
 };

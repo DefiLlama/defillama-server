@@ -298,23 +298,6 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
       })),
     false,
   );
-
-  await batchWrite2(
-    coinData.prices
-      .filter((price) => {
-        const ts = toUNIXTimestamp(price[0]);
-        return !writtenTimestamps[ts];
-      })
-      .map((price) => ({
-        timestamp: toUNIXTimestamp(price[0]),
-        key: PK,
-        price: price[1],
-        confidence: 0.99,
-        adapter: "coingecko",
-        symbol: coin.symbol,
-      })),
-    false,
-  );
 }
 
 async function filterCoins(coins: Coin[]): Promise<Coin[]> {
@@ -371,8 +354,8 @@ const handler = (hourly: boolean) => async (
       await sleep(10e3); // 10 seconds
       await invokeLambda(
         hourly
-          ? `coins-prod-fetchHourlyCoingeckoData`
-          : `coins-prod-fetchCoingeckoData`,
+          ? `coins-prod-fetchHourlyCoingeckoData2`
+          : `coins-prod-fetchCoingeckoData2`,
         {
           coins: rejected,
           depth: depth + 1,

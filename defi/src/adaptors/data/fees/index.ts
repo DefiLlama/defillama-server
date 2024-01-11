@@ -24,7 +24,8 @@ export const KEYS_TO_STORE = {
     [AdaptorRecordType.totalProtocolRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalProtocolRevenue],
     [AdaptorRecordType.totalHoldersRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalHoldersRevenue],
     [AdaptorRecordType.totalCreatorRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalCreatorRevenue],
-    [AdaptorRecordType.dailyBribesRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyBribesRevenue]
+    [AdaptorRecordType.dailyBribesRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyBribesRevenue],
+    [AdaptorRecordType.dailyTokenTaxes]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyTokenTaxes]
 }
 
 export { default as config } from "./config";

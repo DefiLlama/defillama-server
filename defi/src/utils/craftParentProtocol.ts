@@ -6,9 +6,9 @@ import sluggify from "./sluggify";
 import fetch from "node-fetch";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
-import { protocolMcap } from "./craftProtocol";
+import { protocolMcap, getRaises } from "./craftProtocol";
 
-interface ICombinedTvls {
+export interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
   chainTvls: {
     [chain: string]: {
@@ -80,8 +80,6 @@ export default async function craftParentProtocol({
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
     isTreasuryApi ? false : tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
 
-  const currentTime = Math.floor(Date.now() / 1000);
-
   if (isTreasuryApi) {
     const child = childProtocolsTvls.filter((prot: any) => (prot.message ? false : true))?.[0] ?? null;
 
@@ -101,6 +99,31 @@ export default async function craftParentProtocol({
       isParentProtocol: true,
     };
   }
+
+  const {raises} = await getRaises();
+  return craftParentProtocolInternal({ parentProtocol, skipAggregatedTvl, isHourlyTvl, childProtocolsTvls, 
+    parentRaises:raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === parentProtocol.id.toString()) ?? [] });
+}
+
+export async function craftParentProtocolInternal({
+  parentProtocol,
+  skipAggregatedTvl,
+  childProtocolsTvls,
+  isHourlyTvl,
+  fetchMcap,
+  parentRaises
+}: {
+  parentProtocol: IParentProtocol;
+  skipAggregatedTvl: boolean;
+  isHourlyTvl: Function;
+  fetchMcap?: Function;
+  childProtocolsTvls: Array<IProtocolResponse>;
+  parentRaises: IRaise[]
+}) {
+
+  if (!fetchMcap) fetchMcap = protocolMcap;
+
+  const currentTime = Math.floor(Date.now() / 1000);
 
   const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls
     .filter((prot: any) => (prot.message ? false : true))
@@ -394,7 +417,7 @@ export default async function craftParentProtocol({
     totalLiquidityUSD,
   }));
 
-  const [tokenMcap] = await Promise.all([protocolMcap(parentProtocol.gecko_id)]);
+  const [tokenMcap] = await Promise.all([fetchMcap(parentProtocol.gecko_id)]);
 
   const response: IProtocolResponse = {
     ...parentProtocol,
@@ -407,11 +430,11 @@ export default async function craftParentProtocol({
     raises: childProtocolsTvls?.reduce((acc, curr) => {
       acc = [...acc, ...(curr.raises || [])];
       return acc;
-    }, [] as Array<IRaise>),
+    }, parentRaises as Array<IRaise>),
     metrics: getAvailableMetricsById(parentProtocol.id),
-    symbol: childProtocolsTvls.find((p) => p.symbol)?.symbol,
-    treasury: parentProtocol.treasury || childProtocols.find((p) => p.treasury)?.treasury,
-    mcap: tokenMcap || childProtocolsTvls.find((p) => p.mcap)?.mcap,
+    symbol: parentProtocol.symbol ?? (parentProtocol.gecko_id ? childProtocolsTvls.find((p) => p.gecko_id === parentProtocol.gecko_id)?.symbol : null) ?? null,
+    treasury: parentProtocol.treasury ?? childProtocolsTvls.find((p) => p.treasury)?.treasury ?? null,
+    mcap: tokenMcap ?? childProtocolsTvls.find((p) => p.mcap)?.mcap ?? null,
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

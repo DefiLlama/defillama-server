@@ -29161,7 +29161,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/injective.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "injective-protocol",
+    gecko_id: null,
     cmcId: null,
     category: "Chain",
     chains: ["Injective"],

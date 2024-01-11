@@ -3436,6 +3436,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "cega_fi"
   },
+  {
+    id: "parent#squadswap",
+    name: "SquadSwap",
+    url: "https://squadswap.com/",
+    description: `SquadSwap is a DEX backed by the Squad NFT community and powered by the SQUAD token`,
+    logo: `${baseIconsUrl}/squadswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "squad_swap"
+  },
 ];
 
 export default parentProtocols;

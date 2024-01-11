@@ -6,7 +6,7 @@ export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
 
 export const mixedCaseChains: string[] = ["solana", "tron"];
-export const chainsWithoutCanonicalBridges: string[] = ["bsc", "tron", "ethereum", "solana"];
+export const chainsWithoutCanonicalBridges: string[] = ["cronos", "kava", "bsc", "tron", "ethereum", "solana"];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3782": "mantle",

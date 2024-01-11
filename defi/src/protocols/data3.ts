@@ -27450,7 +27450,7 @@ const data3: Protocol[] = [
     module: "stackingdao/index.js",
     twitter: "StackingDao",
     github: ["StackingDAO"],
-    audit_links: ["https://github.com/StackingDAO/app/blob/master/Audit-2023-11.pdf"],
+    audit_links: ["https://github.com/StackingDAO/app"],
     listedAt: 1702999258
   },
   {

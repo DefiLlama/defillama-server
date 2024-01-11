@@ -75,19 +75,23 @@ function addOutgoingToMcapData(
 ): { data: TokenTvlData; native: TokenTvlData } {
   // use mcap data to find more realistic values on each chain
   Object.keys(allMcapData).map((chain: string) => {
-    if (!(chain in allOutgoing) || !(chain in allMcapData)) return;
+    if (!(chain in allMcapData)) return;
     Object.keys(allMcapData[chain]).map((symbol: string) => {
-      const outgoing = allOutgoing[chain][symbol] ?? zero;
+      const outgoing = chain in allOutgoing ? allOutgoing[chain][symbol] ?? zero : zero;
       allMcapData[chain][symbol].outgoing = outgoing;
       const { native: chainMcap, total: fdv } = allMcapData[chain][symbol];
       let interchainMcap = allMcapData.total[symbol].native;
       if (!interchainMcap) {
         const searchKey = Object.keys(allMcapData.total).find((k: string) => k.toLowerCase() == symbol.toLowerCase());
         if (!searchKey) return;
-        interchainMcap = allMcapData.total[searchKey].native;
+        interchainMcap = BigNumber.min(allMcapData.total[searchKey].native, allMcapData.total[searchKey].total);
       }
-      const percOnThisChain = chainMcap.div(interchainMcap);
-      const thisAssetMcap = BigNumber.min(interchainMcap, fdv).times(percOnThisChain);
+      const percOnThisChain = BigNumber.min(chainMcap, fdv).div(interchainMcap);
+      const thisAssetMcap = interchainMcap.times(percOnThisChain);
+      if (chain == "cronos" && symbol == "VNO") {
+        const a = BigNumber.min(interchainMcap, fdv).times(percOnThisChain);
+        console.log();
+      }
       allMcapData[chain][symbol].native = thisAssetMcap;
     });
   });
@@ -100,6 +104,9 @@ function addOutgoingToMcapData(
     if (!(chain in adjustedOutgoing)) adjustedOutgoing[chain] = {};
     if (!(chain in adjustedNative)) adjustedNative[chain] = {};
     Object.keys(allMcapData[chain]).map((symbol: string) => {
+      if (chain == "cronos" && symbol == "VNO") {
+        console.log();
+      }
       const { native, outgoing } = allMcapData[chain][symbol];
       adjustedNative[chain][symbol] = native;
       if (outgoing && outgoing != zero) adjustedOutgoing[chain][symbol] = outgoing;

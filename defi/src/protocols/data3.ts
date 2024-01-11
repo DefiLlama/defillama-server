@@ -29214,7 +29214,51 @@ const data3: Protocol[] = [
     module: "bswap/index.js",
     twitter: "BSwap_BEVM",
     listedAt: 1705001480
-  }
+  },
+  {
+    id: "4014",
+    name: "BEVM",
+    address: null,
+    symbol: "-",
+    url: "https://www.bevm.io/",
+    description: "BEVM is the first fully decentralized EVM-compatible Bitcoin L2 that uses BTC as Gas. It allows all DApps which can run in the Ethereum ecosystem to operate on Bitcoin L2.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/bevm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Bitcoin"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "bevm/index.js",
+    twitter: "BTClayer2",
+    listedAt: 1705008584
+  },
+  {
+    id: "4015",
+    name: "Deepr Finance",
+    address: "shimmerevm:0x326f23422ce22ee5fbb5f37f9fa1092d095546f8",
+    symbol: "DEEPR",
+    url: "https://www.deepr.finance/",
+    description: "Discover the Potential of Decentralized Lending Bringing a Secure and Efficient Lending Platform to Shimmer",
+    chain: "ShimmerEVM",
+    logo: `${baseIconsUrl}/deepr-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "deepr",
+    cmcId: null,
+    category: "Lending",
+    chains: ["ShimmerEVM"],
+    oracles: ["Pyth"], // https://twitter.com/DeeprFinance/status/1711747922440667441 SMR/USD pricefeed
+    forkedFrom: ["Compound V2"],
+    module: "deepr-finance/index.js",
+    twitter: "DeeprFinance",
+    audit_links: ["https://hashex.org/audits/deepr-finance/"],
+    github: ["Deepr-Finance"],
+    listedAt: 1705009111
+  },
 ]
 
 export default data3

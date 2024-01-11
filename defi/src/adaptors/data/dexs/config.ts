@@ -2352,5 +2352,9 @@ export default {
     "allbridge-classic": {
         "enabled": true,
         "id": "577"
+    },
+    "monocerus": {
+        "enabled": true,
+        "id": "3622"
     }
 } as AdaptorsConfig

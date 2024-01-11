@@ -46,6 +46,10 @@ export async function fetchMinted(params: {
           if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
           const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
           const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
+          if (usdValue.isGreaterThan(BigNumber(1e12))) {
+            console.log(`token ${t} on ${chain} has over a trillion usdValue LOL`);
+            return;
+          }
           mcapData[chain][priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
           if (priceInfo.symbol in mcapData.total)
             mcapData.total[priceInfo.symbol].native = mcapData.total[priceInfo.symbol].native.plus(usdValue);

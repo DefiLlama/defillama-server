@@ -29007,6 +29007,7 @@ const data3: Protocol[] = [
     module: "csrfi/index.js",
     twitter: "CSR_fi",
     github: ["CSRfi"],
+    treasury: "csrfi.js",
     listedAt: 1704837203
   },
   {

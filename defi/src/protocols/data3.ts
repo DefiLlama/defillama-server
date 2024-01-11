@@ -6663,8 +6663,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/ethos-reserve.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "oath",
-    cmcId: "24370",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Optimism"],
     oracles: [],
@@ -6672,6 +6672,7 @@ const data3: Protocol[] = [
     module: "ethos/index.js",
     twitter: "EthosReserve",
     audit_links: ["https://docsend.com/view/szchhyvbcbiv3ti9"],
+    parentProtocol: "parent#oath-foundation",
     listedAt: 1684502476
   },
   {

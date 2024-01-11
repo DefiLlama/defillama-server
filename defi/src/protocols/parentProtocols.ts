@@ -3447,6 +3447,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "squad_swap"
   },
+  {
+    id: "parent#oath-foundation",
+    name: "OATH Foundation",
+    url: "https://www.oath.eco/",
+    description: `The OATH ecosystem is focused on providing sustainable and positive-sum infrastructure for DeFi markets, developing protocols that aim to increase yield for users, reduce costs for developers, and minimize risk overall`,
+    logo: `${baseIconsUrl}/squadswap.png`,
+    gecko_id: "oath",
+    cmcId: "24370",
+    chains: [],
+    twitter: "squad_swap"
+  },
 ];
 
 export default parentProtocols;

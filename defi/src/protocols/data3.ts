@@ -29150,6 +29150,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#squadswap",
     listedAt: 1704933361
   },
+  {
+    id: "4011",
+    name: "Injective",
+    address: "ethereum:0xe28b3b32b6c345a34ff64674606124dd5aceca30",
+    symbol: "INJ",
+    url: "https://injective.com/",
+    description: "Injective is powered by a global network of developers, validators, builders, institutions and partners. Explore the fastest growing community pioneering a new world of finance.",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/injective.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "injective-protocol",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Injective"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "Injective_",
+  }
 ]
 
 export default data3

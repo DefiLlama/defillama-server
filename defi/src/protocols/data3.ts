@@ -28787,7 +28787,9 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "solana_miner/index.js",
     twitter: "Solanaminer",
-    listedAt: 1704728118
+    listedAt: 1704728118,
+    rugged: true,
+    deadUrl: true
   },
   {
     id: "3995",

@@ -29192,6 +29192,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/oak-security/audit-reports/blob/master/Margined%20Protocol/2023-10-25%20Audit%20Report%20-%20Margined%20Power%20v1.0.pdf"],
     github: ["margined-protocol"],
     listedAt: 1704983739
+  },
+  {
+    id: "4013",
+    name: "BSwap Dex",
+    address: null,
+    symbol: "-",
+    url: "https://bswap.bevm.io/#/info",
+    description: "BSwap is the first AMM DEX on the Bitcoin Layer 2 -- BEVM that uses BTC as Gas and supports BRC20 asset trading pairs",
+    chain: "BEVM",
+    logo: `${baseIconsUrl}/bswap-dex.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["BEVM"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "bswap/index.js",
+    twitter: "BSwap_BEVM",
+    listedAt: 1705001480
   }
 ]
 

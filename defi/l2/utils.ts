@@ -128,9 +128,12 @@ export async function getMcaps(
   const tokenData = await Promise.all(readRequests);
 
   const aggregatedRes: { [address: string]: any } = {};
+  const normalizedReadKeys = readKeys.map((k: string) => k.toLowerCase());
   tokenData.map((batch: { [address: string]: McapsApiData }[]) => {
     Object.keys(batch).map((a: any) => {
-      if (batch[a].mcap) aggregatedRes[a] = batch[a];
+      if (!batch[a].mcap) return;
+      const i = normalizedReadKeys.indexOf(a.toLowerCase());
+      aggregatedRes[readKeys[i]] = batch[a];
     });
   });
   return aggregatedRes;

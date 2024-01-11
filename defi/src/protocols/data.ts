@@ -6222,7 +6222,7 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/reaper-farm.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "oath",
+    gecko_id: null,
     cmcId: "18520",
     category: "Yield Aggregator",
     chains: ["Fantom"],

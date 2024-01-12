@@ -1753,5 +1753,9 @@ export default {
     "monocerus": {
         "enabled": true,
         "id": "3622"
+    },
+    "first-crypto-bank": {
+        enabled: true,
+        id: "4017"
     }
 } as AdaptorsConfig

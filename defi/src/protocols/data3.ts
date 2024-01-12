@@ -11911,7 +11911,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3233",
-    name: "Ajna",
+    name: "Ajna V1",
     address: null,
     symbol: "-",
     url: "https://www.ajna.finance/",
@@ -11929,8 +11929,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://github.com/ajna-finance/audits"],
+    parentProtocol: "parent#ajna",
     listedAt: 1689441053,
-    github: ["ajna-finance"]
   },
   {
     id: "3234",
@@ -26943,7 +26943,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3912",
-    name: "Dinero-Pirex ETH",
+    name: "Dinero-PirexETH",
     address: null,
     symbol: "-",
     assetToken: "pxETH",
@@ -29321,6 +29321,29 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.baptswap.com/technical-references/security"],
     parentProtocol: "parent#baptswap",
     listedAt: 1705091436
+  },
+  {
+    id: "4019",
+    name: "Ajna V2",
+    address: null,
+    symbol: "-",
+    url: "https://www.ajna.finance/",
+    description: `Ajna is a peer to peer, oracleless, permissionless lending protocol with no governance, accepting both fungible and non fungible tokens as collateral`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ajna-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "ajna-v2/index.js",
+    twitter: "ajnafi",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://github.com/ajna-finance/audits"],
+    parentProtocol: "parent#ajna",
+    listedAt: 1705092987,
   },
 ]
 

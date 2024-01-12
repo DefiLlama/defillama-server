@@ -1,3 +1,4 @@
+import { nullFinder } from "../../emissions-adapters/utils/convertToChartData";
 import { baseIconsUrl } from "../constants";
 import type { IParentProtocol } from "./types";
 
@@ -3457,6 +3458,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "24370",
     chains: [],
     twitter: "squad_swap"
+  },
+  {
+    id: "parent#ajna",
+    name: "Ajna Protocol",
+    url: "https://www.ajna.finance/",
+    description: `The Ajna Protocol is a noncustodial, peer-to-pool, permissionless lending, borrowing and trading system that requires no governance or external price feeds to function`,
+    logo: `${baseIconsUrl}/ajna-protocol.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ajnafi",
+    github: ["ajna-finance"]
   },
 ];
 

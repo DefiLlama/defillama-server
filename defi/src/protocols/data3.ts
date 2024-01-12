@@ -29299,6 +29299,29 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "FirstBankETH",
   },
+  {
+    id: "4018",
+    name: "BaptSwap V2.1",
+    address: null,
+    symbol: "-",
+    url: "https://baptswap.com",
+    description: "Swap. Stake. Secure. The first DEX to support fee-on-transfer tokens on Aptos.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/baptswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "baptswap-v2-1/index.js",
+    twitter: "baptswap",
+    audit_links: ["https://docs.baptswap.com/technical-references/technical-references/advanced-topics/security"],
+    parentProtocol: "parent#baptswap",
+    listedAt: 1705091436
+  },
 ]
 
 export default data3

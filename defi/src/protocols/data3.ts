@@ -29259,6 +29259,26 @@ const data3: Protocol[] = [
     github: ["Deepr-Finance"],
     listedAt: 1705009111
   },
+  {
+    id: "4016",
+    name: "Kana Labs",
+    address: null,
+    symbol: "-",
+    url: "https://kanalabs.io",
+    description: "Swap, Stake, Trade, Invest and more across 40 liquidity sources.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/kana-labs.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Arbitrum", "Avalanche", "Polygon"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "kanalabs",
+  },
 ]
 
 export default data3

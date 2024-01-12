@@ -6209,7 +6209,7 @@ const data3: Protocol[] = [
     chains: ["Aptos", "Mantle"],
     module: "tsunami-fi/index.js",
     twitter: "TsunamiFinance_",
-    forkedFrom: ["MX V1"],
+    forkedFrom: ["GMX V1"],
     oracles: ["Pyth"],
     audit_links: ["https://docsend.com/view/mfqrf4mcdxk9jvwf"],
     listedAt: 1684183136

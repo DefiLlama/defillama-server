@@ -26943,7 +26943,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3912",
-    name: "Dinero",
+    name: "Dinero-Pirex ETH",
     address: null,
     symbol: "-",
     assetToken: "pxETH",

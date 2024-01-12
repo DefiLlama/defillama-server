@@ -28171,7 +28171,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "baptswap-v2/index.js",
     twitter: "baptswap",
-    audit_links: ["https://docs.baptswap.com/technical-references/technical-references/advanced-topics/security"],
+    audit_links: ["https://docs.baptswap.com/technical-references/security"],
     parentProtocol: "parent#baptswap",
     listedAt: 1703726463
   },
@@ -29318,7 +29318,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "baptswap-v2-1/index.js",
     twitter: "baptswap",
-    audit_links: ["https://docs.baptswap.com/technical-references/technical-references/advanced-topics/security"],
+    audit_links: ["https://docs.baptswap.com/technical-references/security"],
     parentProtocol: "parent#baptswap",
     listedAt: 1705091436
   },

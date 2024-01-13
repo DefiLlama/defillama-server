@@ -1698,6 +1698,7 @@ export default {
         "id": "3090"
     },
     "hummus": {
+        disabled: true,
         "enabled": true,
         "id": "1715"
     },

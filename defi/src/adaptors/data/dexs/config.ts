@@ -1624,6 +1624,7 @@ export default {
     },
     "lighter": {
         parentId: "Lighter",
+        disabled: true,
         "enabled": true,
         "id": "2636"
     },

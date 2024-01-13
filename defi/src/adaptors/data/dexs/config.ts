@@ -1101,7 +1101,7 @@ export default {
         "id": "1302"
     },
     "wx.network": {
-        "enabled": true,
+        "enabled": false,
         "id": "614"
     },
     "myswap": {

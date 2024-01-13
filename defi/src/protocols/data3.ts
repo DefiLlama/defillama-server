@@ -26967,10 +26967,10 @@ const data3: Protocol[] = [
   },
   {
     id: "3913",
-    name: "Kizuna Exchange",
+    name: "KIM Exchange",
     address: null,
     symbol: "-",
-    url: "https://kizuna.exchange",
+    url: "https://kim.exchange",
     description: "Native DEX for the Mode Network with staking modules to incentivize LPs",
     chain: "Mode",
     logo: `${baseIconsUrl}/kizuna-exchange.jpg`,
@@ -26983,7 +26983,7 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: ["Uniswap V2"],
     module: "kizuna/index.js",
-    twitter: "kizunaexchange",
+    twitter: "kimprotocol",
     github: ["kizuna-dex"],
     listedAt: 1702470950
   },

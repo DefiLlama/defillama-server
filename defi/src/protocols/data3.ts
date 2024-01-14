@@ -29433,7 +29433,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4024",
-    name: "Tropical Swap",
+    name: "TropicalSwap",
     address: null,
     symbol: "-",
     url: "https://tropicalswap.exchange",

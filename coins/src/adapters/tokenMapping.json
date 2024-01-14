@@ -19,6 +19,11 @@
       "decimals": "9",
       "symbol": "vSUI",
       "to": "coingecko#volo-staked-sui"
+    },
+    "0xf325ce1300e8dac124071d3152c5c5ee6174914f8bc2161e88329cf579246efc::afsui::AFSUI": {
+      "decimals": "9",
+      "symbol": "afSUI",
+      "to": "coingecko#aftermath-staked-sui"
     }
   },
   "neutron": {

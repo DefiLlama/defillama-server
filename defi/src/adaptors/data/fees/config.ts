@@ -1757,5 +1757,9 @@ export default {
     "first-crypto-bank": {
         enabled: true,
         id: "4017"
+    },
+    "fwx": {
+        "enabled": true,
+        "id": "4026"
     }
 } as AdaptorsConfig

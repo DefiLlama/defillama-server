@@ -36,6 +36,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3861": "rsk",
   "3936": "zksync",
   "3935": "boba",
+  "4032": "manta",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

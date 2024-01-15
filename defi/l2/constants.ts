@@ -6,7 +6,7 @@ export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
 
 export const mixedCaseChains: string[] = ["solana", "tron"];
-export const chainsWithoutCanonicalBridges: string[] = ["tron", "ethereum", "solana"];
+export const chainsWithoutCanonicalBridges: string[] = ["cronos", "kava", "bsc", "tron", "ethereum", "solana"];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3782": "mantle",
@@ -65,7 +65,13 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   aurora: { ticker: "AURORA", address: "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79" },
   loopring: { ticker: "LRC", address: "0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD" },
   immutablex: { ticker: "IMX", address: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff" },
+
+  ethereum: { ticker: "ETH", address: "0x0000000000000000000000000000000000000000" },
   solana: { ticker: "SOL", address: "" },
+  cronos: { ticker: "CRO", address: "0x0000000000000000000000000000000000000000" },
+  kava: { ticker: "KAVA", address: "0x0000000000000000000000000000000000000000" },
+  bsc: { ticker: "BNB", address: "0x0000000000000000000000000000000000000000" },
+  tron: { ticker: "TRON", address: "0x0000000000000000000000000000000000000000" },
 };
 
 export const gasTokens: { [chain: Chain]: string } = {
@@ -92,4 +98,9 @@ export const gasTokens: { [chain: Chain]: string } = {
   aurora: "ETH",
   rsk: "RBTC",
   solana: "SOL",
+  cronos: "CRO",
+  kava: "KAVA",
+  ethereum: "ETH",
+  bsc: "BNB",
+  tron: "TRON",
 };

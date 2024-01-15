@@ -42,6 +42,7 @@ export async function fetchTvls(
   if (params.mcapData && params.native) return addOutgoingToMcapData(aggregate, params.mcapData);
   return { data: aggregate };
 }
+
 function sortCanonicalBridgeBalances(isProtocol: boolean): { data: TokenTvlData; native?: TokenTvlData } {
   const ids = isProtocol ? protocolBridgeIds : canonicalBridgeIds;
   const canonicalBridgeTokenBalances: TokenTvlData = {};
@@ -69,15 +70,24 @@ function sortCanonicalBridgeBalances(isProtocol: boolean): { data: TokenTvlData;
 
   return { data: canonicalBridgeTokenBalances };
 }
+
+function sortChains(chains: string[]) {
+  const index = chains.indexOf("total");
+  chains.splice(index, 1);
+  chains.push("total");
+  return chains;
+}
+
 function addOutgoingToMcapData(
   allOutgoing: TokenTvlData,
   allMcapData: McapData
 ): { data: TokenTvlData; native: TokenTvlData } {
   // use mcap data to find more realistic values on each chain
-  Object.keys(allMcapData).map((chain: string) => {
-    if (!(chain in allOutgoing) || !(chain in allMcapData)) return;
+  const chains = sortChains(Object.keys(allMcapData));
+  chains.map((chain: string) => {
+    if (!(chain in allMcapData)) return;
     Object.keys(allMcapData[chain]).map((symbol: string) => {
-      const outgoing = allOutgoing[chain][symbol] ?? zero;
+      const outgoing = chain in allOutgoing ? allOutgoing[chain][symbol] ?? zero : zero;
       allMcapData[chain][symbol].outgoing = outgoing;
       const { native: chainMcap, total: fdv } = allMcapData[chain][symbol];
       let interchainMcap = allMcapData.total[symbol].native;
@@ -96,7 +106,7 @@ function addOutgoingToMcapData(
   const adjustedOutgoing: TokenTvlData = {};
 
   // use new mcap data from above to write adjusted chain TVLs
-  Object.keys(allMcapData).map((chain: string) => {
+  chains.map((chain: string) => {
     if (!(chain in adjustedOutgoing)) adjustedOutgoing[chain] = {};
     if (!(chain in adjustedNative)) adjustedNative[chain] = {};
     Object.keys(allMcapData[chain]).map((symbol: string) => {
@@ -109,7 +119,6 @@ function addOutgoingToMcapData(
   // fill in the missing outgoings
   Object.keys(allOutgoing).map((chain: string) => {
     if (!(chain in adjustedOutgoing)) return;
-    if (!Object.values(canonicalBridgeIds).includes(chain)) return;
     Object.keys(allOutgoing[chain]).map((symbol: string) => {
       if (symbol in adjustedOutgoing[chain]) return;
       adjustedOutgoing[chain][symbol] = allOutgoing[chain][symbol];

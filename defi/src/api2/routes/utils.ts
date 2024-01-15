@@ -13,7 +13,6 @@ export function successResponse(res: HyperExpress.Response, data: any, cacheMinu
   isPost = false,
 } = {}) {
   res.setHeaders({
-    "Access-Control-Allow-Origin": "*",
     "Expires": getTimeInFutureMinutes(cacheMinutes) // cache for 5 minutes
   })
   if (isPost)

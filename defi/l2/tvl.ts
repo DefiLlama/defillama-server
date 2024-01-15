@@ -113,9 +113,9 @@ async function translateToChainData(
         if (gasTokens[chain] && [gasTokens[chain], `W${gasTokens[chain]}`].includes(symbol)) {
           return;
         }
-        if (symbol in breakdown)
-          breakdown[symbol] = breakdown[symbol].minus(translatedData[chain].incoming.breakdown[symbol]);
-        else breakdown[symbol] = BigNumber(-1).times(translatedData[chain].outgoing.breakdown[symbol]);
+        if (!(symbol in breakdown)) return;
+        breakdown[symbol] = breakdown[symbol].minus(translatedData[chain].incoming.breakdown[symbol]);
+        // else breakdown[symbol] = BigNumber(-1).times(translatedData[chain].outgoing.breakdown[symbol]);
       });
       const total = Object.values(breakdown).reduce((p: BigNumber, c: BigNumber) => p.plus(c), zero);
       translatedData[chain].thirdParty = { total, breakdown };

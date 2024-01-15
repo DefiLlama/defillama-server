@@ -29409,7 +29409,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "PythNetwork",
-    listedAt: 1705226626
   },
   {
     id: "4023",
@@ -29520,6 +29519,26 @@ const data3: Protocol[] = [
     module: "hexaswap/index.js",
     twitter: "hexaswap",
     listedAt: 1705261851
+  },
+  {
+    id: "4028",
+    name: "Stepn",
+    address: "solana:7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx",
+    symbol: "GMT",
+    url: "https://stepn.com",
+    description: "STEPN is a Move-to-Earn health and fitness application. Users equipped with Sneaker NFT can move outdoors to earn tokens and NFT rewards. STEPN has a built-in wallet, swap, marketplace, and RNPL (Rent Now Pay Later) system to make STEPN a bridge between crypto and non-crypto users.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/stepn.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'stepn',
+    cmcId: null,
+    category: "Chain",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "stepnofficial",
   },
 ]
 

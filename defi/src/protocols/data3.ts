@@ -29540,6 +29540,28 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "stepnofficial",
   },
+  {
+    id: "4029",
+    name: "ManXSwap",
+    address: null,
+    symbol: "-",
+    url: "https://manxswap.app",
+    description: "Trade crypto and earn rewards on the innovative decentralized exchange with concentrated liquidity on Manta Pacific chain.",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/manxswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Manta"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "manxswap/index.js",
+    twitter: "ManXSwap",
+    github: ["manxswap"],
+    listedAt: 1705319831
+  },
 ]
 
 export default data3

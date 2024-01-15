@@ -27802,7 +27802,7 @@ const data3: Protocol[] = [
     url: "https://www.parcl.co",
     description: "Parcl v3 is a perpetuals dex that offers real estate index markets for speculating or hedging",
     chain: "Solana",
-    logo: `${baseIconsUrl}/parcl.jpg`,
+    logo: `${baseIconsUrl}/parcl-v3.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

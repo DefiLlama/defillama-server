@@ -1095,6 +1095,11 @@
       "decimals": "6",
       "symbol": "xXRP",
       "to": "coingecko#ripple"
+    },
+    "0x49d3f7543335cf38fa10889ccff10207e22110b5": {
+      "decimals": "18",
+      "symbol": "FXD",
+      "to": "coingecko#fathom-dollar"
     }
   },
   "telos": {

@@ -26170,7 +26170,7 @@ const data2: Protocol[] = [
     url: "https://www.parcl.co",
     description: "Real estate synthetics built on Solana. Buy and short real estate markets around the world.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/parcl.jpg`,
+    logo: `${baseIconsUrl}/parcl-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

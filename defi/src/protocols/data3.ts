@@ -10951,7 +10951,7 @@ const data3: Protocol[] = [
     chains: ["WEMIX"],
     module: "konverter/index.js",
     twitter: "Konverter_",
-    forkedFrom: ["Curve DEX"],
+    forkedFrom: ["Curve"],
     oracles: [],
     listedAt: 1688393148
   },

@@ -2358,5 +2358,10 @@ export default {
     "monocerus": {
         "enabled": true,
         "id": "3622"
+    },
+    "sunswap-v3": {
+        parentId: "SUN.io",
+        "enabled": true,
+        "id": "4031"
     }
 } as AdaptorsConfig

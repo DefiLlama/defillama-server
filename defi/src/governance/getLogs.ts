@@ -75,8 +75,8 @@ export async function getLogs(options: logOptions) {
 
     // remove possible duplicates
     cache.logs = cache.logs.filter((i: any) => {
-      let key = i.transactionHash + i.logIndex
-      if (!i.hasOwnProperty('logIndex') || !i.hasOwnProperty('transactionHash')) {
+      let key = i.transactionHash + (i.logIndex ?? i.index)
+      if ((!i.hasOwnProperty('logIndex') && !i.hasOwnProperty('index')) || !i.hasOwnProperty('transactionHash')) {
         sdk.log(i)
         throw new Error('Missing crucial field')
       }

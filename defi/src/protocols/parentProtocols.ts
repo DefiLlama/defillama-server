@@ -1498,7 +1498,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8669",
     chains: [],
     twitter: "SovrynBTC",
-    governanceID: ["snapshot:sovrynbitocracy.eth"],
+    governanceID: ["snapshot:sovrynbitocracy.eth", "compound:rsk:0x6496df39d000478a7a7352c01e0e713835051ccd"],
     github: ["DistributedCollective"]
   },
   {

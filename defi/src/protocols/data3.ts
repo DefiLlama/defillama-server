@@ -29583,8 +29583,32 @@ const data3: Protocol[] = [
     module: "genesis-lrt/index.js",
     twitter: "Genesis_LRT",
     audit_links: ["https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2024/01/VAR-GenesisLRT-231221-first-draft.pdf"],
-    listedAt: 1705319831
+    listedAt: 1705319900
   },
+  {
+    id: "4031",
+    name: "SUNSwap V3",
+    address: "tron:TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S",
+    symbol: "SUN",
+    url: "https://sunswap.com/#/home",
+    description:
+      "SUNSwap V3 is a TRON-based decentralized trading protocol for automated liquidity provision and an open financial market accessible to all.",
+    chain: "Tron",
+    logo: `${baseIconsUrl}/sunswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Tron"],
+    oracles: [],
+    forkedFrom: [],
+    module: "sunswap-v3/index.js",
+    twitter: "DeFi_JUST",
+    parentProtocol: "parent#sun",
+    listedAt: 1705319990
+  },
+
 ]
 
 export default data3

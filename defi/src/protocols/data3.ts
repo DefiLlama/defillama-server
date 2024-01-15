@@ -12141,8 +12141,7 @@ const data3: Protocol[] = [
     description: `ZeroLend is a powerful decentralized lending protocol built on L2s. Based on Aave V3 and powered by Pyth and Chainlink`,
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/zerolend.png`,
-    audits: "1",
-    audit_links: ["https://github.com/zerolend/audits/blob/main/mundus/zerolend_report_depcheck_final.pdf"],
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -12152,8 +12151,9 @@ const data3: Protocol[] = [
     twitter: "zerolendxyz",
     oracles: ["Pyth"],
     forkedFrom: ["AAVE V3"],
+    audit_links: ["https://github.com/zerolend/audits/blob/main/mundus/zerolend_report_depcheck_final.pdf"],
+    github: ["zerolend"],
     listedAt: 1689662621,
-    github: ["zerolend"]
   },
   {
     id: "3244",

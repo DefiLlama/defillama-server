@@ -8,6 +8,7 @@ import { gasTokens, ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
+import { verifyChanges } from "./test";
 import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 
 export default async function main() {
@@ -34,6 +35,8 @@ export default async function main() {
     native,
     ownTokens: {},
   });
+
+  await verifyChanges(chains);
 
   return chains;
 }

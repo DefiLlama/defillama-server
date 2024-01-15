@@ -29562,6 +29562,29 @@ const data3: Protocol[] = [
     github: ["manxswap"],
     listedAt: 1705319831
   },
+  {
+    id: "4030",
+    name: "Genesis LRT",
+    address: null,
+    symbol: "-",
+    assetToken: "genETH",
+    url: "https://www.genesislrt.com",
+    description: "Unveil a new era of staking with Genesis protocol. The restaking flow is as simple as 1,2,3: Deposit amount of ETH you want to restake. Receive genETH, the liquid restaking token. Journey into DeFi with your assets working for you.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/genesis-lrt.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Infrastructure",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "genesis-lrt/index.js",
+    twitter: "Genesis_LRT",
+    audit_links: ["https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2024/01/VAR-GenesisLRT-231221-first-draft.pdf"],
+    listedAt: 1705319831
+  },
 ]
 
 export default data3

@@ -29608,7 +29608,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#sun",
     listedAt: 1705319990
   },
-
+  {
+    id: "4032",
+    name: "Manta Pacific",
+    address: null,
+    symbol: "-",
+    url: "https://pacific-bridge.manta.network",
+    description:
+      "Bridge between Ethereum and Manta Pacific Chain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/manta-pacific.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "manta-pacific/index.js",
+    twitter: "MantaNetwork",
+  },
 ]
 
 export default data3

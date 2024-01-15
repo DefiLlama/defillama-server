@@ -1498,7 +1498,10 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8669",
     chains: [],
     twitter: "SovrynBTC",
-    governanceID: ["snapshot:sovrynbitocracy.eth", "compound:rsk:0x6496df39d000478a7a7352c01e0e713835051ccd"],
+    governanceID: [
+      "compound:rsk:0x6496df39d000478a7a7352c01e0e713835051ccd",
+      //  "snapshot:sovrynbitocracy.eth",
+    ],
     github: ["DistributedCollective"]
   },
   {
@@ -2606,7 +2609,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#myso",
     name: "MYSO",
     url: "https://www.myso.finance",
-        description:"We're building a liquidation-free, fixed-interest and oracle-free borrowing solution. Borrowers are freed from liquidation risk while liquidity providers gain exposure to a passive option writing strategy, unlocking option selling as a sustainable yield source.",
+    description: "We're building a liquidation-free, fixed-interest and oracle-free borrowing solution. Borrowers are freed from liquidation risk while liquidity providers gain exposure to a passive option writing strategy, unlocking option selling as a sustainable yield source.",
     logo: `${baseIconsUrl}/myso.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -2928,7 +2931,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MakerDAO",
     treasury: "maker.js",
     stablecoins: ["dai"],
-    github: ["makerdao"]   
+    github: ["makerdao"]
   },
   {
     id: "parent#caviarnine",
@@ -3013,7 +3016,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["pooltogether"],
     treasury: "pooltogether.js",
     governanceID: [
-      "snapshot:pooltogether.eth", 
+      "snapshot:pooltogether.eth",
       "snapshot:poolpool.pooltogether.eth",
       'eip155:1:0xB3a87172F555ae2a2AB79Be60B336D2F7D0187f0'
     ],
@@ -3400,7 +3403,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "yearnfi",
     treasury: "yearn.js",
     governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"],
-    github: ["iearn-finance", "yearn"] 
+    github: ["iearn-finance", "yearn"]
   },
   {
     id: "parent#orion-protocol",

@@ -20000,6 +20000,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Stader",
     address: "0x30d20208d987713f46dfd34ef128bb16c404d10f",
     symbol: "SD",
+    assetToken: "ETHX",
     url: "https://staderlabs.com",
     description: "Stader offers the most convenient & safest way to maximize your returns on staking.",
     chain: "Terra",

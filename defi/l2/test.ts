@@ -18,11 +18,13 @@ export async function verifyChanges(chains: FinalData) {
     const change = (100 * Math.abs(totalNew - totalOld)) / totalOld;
     if (!(change > 10)) return;
 
-    message += `\n${chain} has had a change of ${change.toFixed(0)}% in ${hours}`;
+    message += `\n${chain} has had a ${totalNew > totalOld ? "increase" : "decrease"} of ${change.toFixed(
+      0
+    )}% in ${hours}`;
   });
 
   if (!message.length) return;
 
-  await sendMessage(message, process.env.CHAIN_ASSET_WEBHOOK!);
+  // await sendMessage(message, process.env.CHAIN_ASSET_WEBHOOK!);
   throw new Error(message);
 }

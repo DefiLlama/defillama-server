@@ -12953,8 +12953,8 @@ const data3: Protocol[] = [
   {
     id: "3280",
     name: "ZKBase", //previous ZKSwap (ZKSync)
-    address: "0xe4815AE53B124e7263F08dcDBBB757d41Ed658c6",
-    symbol: "ZKS",
+    address: "0xBBBbbBBB46A1dA0F0C3F64522c275BAA4C332636",
+    symbol: "ZKB", //Previous token was zks
     url: "https://zkbase.org/",
     description: "ZKBase (previous ZKSwap (ZKSync)) is an infrastructure protocol based on Zero-Knowledge (ZK) proof technology, dedicated to providing scaling solutions for mainstream blockchains including Ethereum and Bitcoin.",
     chain: "zkSync Era",

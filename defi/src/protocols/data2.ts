@@ -14611,7 +14611,7 @@ const data2: Protocol[] = [
     cmcId: "19476",
     category: "Dexes",
     chains: ["Binance"],
-    oracles: [],
+    oracles: ["Supra"], // https://docs.tifi.net/#/TiFiBank/Introduction
     forkedFrom: ["Uniswap V2"],
     module: "tifi-bank/index.js",
     twitter: "TiFiToken",

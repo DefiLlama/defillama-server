@@ -33,6 +33,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     "pETH-ETH-f": "0x9848482da3ee3076165ce6497eda906e66bb85c5",
     "msETH-ETH-f": "0xc897b98272aa23714464ea2a0bd5180f1b8c0025",
     FUNB: "0xd86c0b9b686f78a7a5c3780f03e700dbbad40e01",
+    SHIB2_0: "0xdfef6416ea3e6ce587ed42aa7cb2e586362cbbfa"
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
@@ -149,7 +150,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     JEFE: "0x5b2af7fd27e2ea14945c82dd254c79d3ed34685e",
     DAI: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
     BASED: "0x8d7d3409881b51466b483b11ea1b8a03cded89ae",
-    BSHARE: '0x49C290Ff692149A4E16611c694fdED42C954ab7a'
+    // BSHARE: '0x49C290Ff692149A4E16611c694fdED42C954ab7a'
   },
   heco: {
     BIFI: "0x765277eebeca2e31912c9946eae1021199b39c61",

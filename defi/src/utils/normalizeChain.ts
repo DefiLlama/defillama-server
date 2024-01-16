@@ -17,7 +17,8 @@ export const normalizedChainReplacements = {
   "bifrost network": "bfc",
   "horizen eon": "eon",
   "bahamut": "ftn",
-  "viction": "tomochain"
+  "viction": "tomochain",
+  "bevm": "chainx"
 } as {
   [chain: string]: string
 }
@@ -2131,6 +2132,13 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 529
   },
+  "BEVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    github: ["btclayer2"]
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2308,6 +2316,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "zkSync Era"
     case "bifrost network":
       return "Bifrost Network"
+    case "bevm":
+      return "BEVM"
     case "horizen eon":
       return "Horizen EON"    
     case "godwoken":
@@ -2532,6 +2542,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "zkSync Era"
     case "bfc":
       return "Bifrost Network"
+    case "chainx":
+      return "BEVM"
     case "ftn":
       return "Bahamut"
     case "polygon_zkevm":

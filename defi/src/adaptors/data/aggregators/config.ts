@@ -142,5 +142,13 @@ export default {
   "unidex": {
     enabled: true,
     id: "1833"
-},
+  },
+  "swapgpt": {
+    enabled: true,
+    id: "4008",
+  },
+  "kanalabs": {
+    enabled: true,
+    id: "4016",
+  }
 } as AdaptorsConfig;

@@ -33,6 +33,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     "pETH-ETH-f": "0x9848482da3ee3076165ce6497eda906e66bb85c5",
     "msETH-ETH-f": "0xc897b98272aa23714464ea2a0bd5180f1b8c0025",
     FUNB: "0xd86c0b9b686f78a7a5c3780f03e700dbbad40e01",
+    SHIB2_0: "0xdfef6416ea3e6ce587ed42aa7cb2e586362cbbfa"
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",

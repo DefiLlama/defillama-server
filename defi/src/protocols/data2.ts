@@ -9612,7 +9612,7 @@ const data2: Protocol[] = [
     listedAt: 1654508924,
     github: ["Phuturedao"]
   },
-  {
+/*   {
     id: "1807",
     name: "PinkSale",
     address: "bsc:0x602ba546a7b06e0fc7f58fd27eb6996ecc824689",
@@ -9632,7 +9632,7 @@ const data2: Protocol[] = [
     module: "pinksale/api.js",
     twitter: "pinkecosystem",
     listedAt: 1654537684
-  },
+  }, */
   {
     id: "1808",
     name: "Axia Protocol",

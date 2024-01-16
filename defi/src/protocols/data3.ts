@@ -26969,7 +26969,7 @@ const data3: Protocol[] = [
   {
     id: "3913",
     name: "KIM Exchange", // previous Kizuna Exchange
-    address: null,
+    address: "mode:0xc02155946dd8C89D3D3238A6c8A64D04E2CD4500",
     symbol: "-",
     url: "https://kim.exchange",
     description: "Native DEX for the Mode Network with staking modules to incentivize LPs",

@@ -198,8 +198,8 @@ export async function updateCompounds() {
 
       async function updateProposal(id: string, data: any) {
         const {
-          startBlock = +logMap[id].startBlock,
-          endBlock = +logMap[id].endBlock,
+          startBlock = Number(logMap[id].startBlock),
+          endBlock = Number(logMap[id].endBlock),
           proposer = logMap[id].proposer,
           forVotes,
           againstVotes,
@@ -250,6 +250,7 @@ export async function updateCompounds() {
       async function getProposalLogs() {
         const fromBlocks: any = {
           ethereum: 12006099, // the deployment block of compound
+          rsk: 3100000, // the deployment block of sovryn
         }
         const logs = await getLogs({
           api,

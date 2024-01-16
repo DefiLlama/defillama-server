@@ -1,3 +1,4 @@
+import { nullFinder } from "../../emissions-adapters/utils/convertToChartData";
 import { baseIconsUrl } from "../constants";
 import type { IParentProtocol } from "./types";
 
@@ -92,11 +93,11 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#apeswap",
-    name: "ApeSwap", //rebrand from apeswap
+    name: "ApeBond", //rebrand from apeswap
     url: "https://apeswap.finance",
     description:
       "ApeSwap has rebranded to ApeBond. ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
-    logo: `${baseIconsUrl}/apeswap.jpg`,
+    logo: `${baseIconsUrl}/apebond.png`,
     gecko_id: "apeswap-finance",
     cmcId: "8497",
     chains: [],
@@ -1497,7 +1498,10 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8669",
     chains: [],
     twitter: "SovrynBTC",
-    governanceID: ["snapshot:sovrynbitocracy.eth"],
+    governanceID: [
+      "compound:rsk:0x6496df39d000478a7a7352c01e0e713835051ccd",
+      //  "snapshot:sovrynbitocracy.eth",
+    ],
     github: ["DistributedCollective"]
   },
   {
@@ -2605,7 +2609,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#myso",
     name: "MYSO",
     url: "https://www.myso.finance",
-        description:"We're building a liquidation-free, fixed-interest and oracle-free borrowing solution. Borrowers are freed from liquidation risk while liquidity providers gain exposure to a passive option writing strategy, unlocking option selling as a sustainable yield source.",
+    description: "We're building a liquidation-free, fixed-interest and oracle-free borrowing solution. Borrowers are freed from liquidation risk while liquidity providers gain exposure to a passive option writing strategy, unlocking option selling as a sustainable yield source.",
     logo: `${baseIconsUrl}/myso.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -2927,7 +2931,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MakerDAO",
     treasury: "maker.js",
     stablecoins: ["dai"],
-    github: ["makerdao"]   
+    github: ["makerdao"]
   },
   {
     id: "parent#caviarnine",
@@ -3012,7 +3016,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["pooltogether"],
     treasury: "pooltogether.js",
     governanceID: [
-      "snapshot:pooltogether.eth", 
+      "snapshot:pooltogether.eth",
       "snapshot:poolpool.pooltogether.eth",
       'eip155:1:0xB3a87172F555ae2a2AB79Be60B336D2F7D0187f0'
     ],
@@ -3399,7 +3403,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "yearnfi",
     treasury: "yearn.js",
     governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"],
-    github: ["iearn-finance", "yearn"] 
+    github: ["iearn-finance", "yearn"]
   },
   {
     id: "parent#orion-protocol",
@@ -3435,6 +3439,40 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "cega_fi"
+  },
+  {
+    id: "parent#squadswap",
+    name: "SquadSwap",
+    url: "https://squadswap.com/",
+    description: `SquadSwap is a DEX backed by the Squad NFT community and powered by the SQUAD token`,
+    logo: `${baseIconsUrl}/squadswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "squad_swap"
+  },
+  {
+    id: "parent#oath-foundation",
+    name: "OATH Foundation",
+    url: "https://www.oath.eco/",
+    description: `The OATH ecosystem is focused on providing sustainable and positive-sum infrastructure for DeFi markets, developing protocols that aim to increase yield for users, reduce costs for developers, and minimize risk overall`,
+    logo: `${baseIconsUrl}/oath-foundation.png`,
+    gecko_id: "oath",
+    cmcId: "24370",
+    chains: [],
+    twitter: "squad_swap"
+  },
+  {
+    id: "parent#ajna",
+    name: "Ajna Protocol",
+    url: "https://www.ajna.finance/",
+    description: `The Ajna Protocol is a noncustodial, peer-to-pool, permissionless lending, borrowing and trading system that requires no governance or external price feeds to function`,
+    logo: `${baseIconsUrl}/ajna-protocol.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ajnafi",
+    github: ["ajna-finance"]
   },
 ];
 

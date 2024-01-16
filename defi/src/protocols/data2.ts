@@ -9470,8 +9470,8 @@ const data2: Protocol[] = [
     cmcId: "19900",
     category: "Liquid Staking",
     chains: ["Cronos"],
-    oracles: ["Witnet"],
-    forkedFrom: ["DIA"],
+    oracles: ["Witnet", "DIA"],
+    forkedFrom: [],
     module: "argofinance/index.js",
     twitter: "ArgoProtocol",
     audit_links: ["https://www.certik.com/projects/argo"],
@@ -15099,6 +15099,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "cega/index.js",
     twitter: "cega_fi",
+    parentProtocol: "parent#cega",
     listedAt: 1662140513
   },
   {
@@ -25336,22 +25337,22 @@ const data2: Protocol[] = [
   {
     id: "2502",
     name: "Mantle Treasury", // rebranded from BitDAO
-    address: "0x1a4b46696b2bb4794eb3d4c26f1c55f9170fa4c5",
-    symbol: "BIT",
-    url: "https://www.bitdao.io",
+    address: "0x3c3a81e81dc49a522a592e7622a7e711c06bf354",
+    symbol: "MNT",
+    url: "https://www.mantle.xyz/",
     description:
-      "BitDAO is a collective of builders, products, and mutually beneficial ecosystems governed by $BIT token holders.",
+      "Mantle Network is a technology stack for scaling Ethereum",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mantle-treasury.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "bitdao",
-    cmcId: "11221",
+    gecko_id: "mantle",
+    cmcId: "27075",
     category: "Services",
     chains: ["Ethereum"],
     module: "dummy.js",
     treasury: "bitdao.js",
-    twitter: "BitDAO_Official",
+    twitter: "0xMantle",
     oracles: [],
     forkedFrom: [],
     governanceID: ["snapshot:bitdao.eth"]
@@ -26169,7 +26170,7 @@ const data2: Protocol[] = [
     url: "https://www.parcl.co",
     description: "Real estate synthetics built on Solana. Buy and short real estate markets around the world.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/parcl.jpg`,
+    logo: `${baseIconsUrl}/parcl-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -26601,7 +26602,7 @@ const data2: Protocol[] = [
     module: "bhavish/index.js",
     twitter: "NexterDotFi",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5339
     audit_links: ["https://nexter.fi/docs/blocksec-audit-report.pdf", "https://nexter.fi/docs/slowmist-audit-report.pdf"],
     listedAt: 1676983479,
     github: ["Bhavish-finance"]

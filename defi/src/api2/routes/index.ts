@@ -195,7 +195,6 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   let name = sluggify({ name: req.path_parameters.name } as any)
   const protocolData = (cache as any)[dataType + 'SlugMap'][name];
   res.setHeaders({
-    "Access-Control-Allow-Origin": "*",
     "Expires": get20MinDate()
   })
 
@@ -244,7 +243,7 @@ async function getSimpleChainDataset(req: HyperExpress.Request, res: HyperExpres
   let param = req.path_parameters.chain ?? ''
   if (param.endsWith('.csv')) param = param.slice(0, -4)
 
-  const chain = param
+  const chain = param.replace('%20', ' ').toLowerCase()
   const params = req.query_parameters
   const options = {
     ...params,

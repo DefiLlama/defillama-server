@@ -1101,7 +1101,7 @@ export default {
         "id": "1302"
     },
     "wx.network": {
-        "enabled": true,
+        "enabled": false,
         "id": "614"
     },
     "myswap": {
@@ -1624,6 +1624,7 @@ export default {
     },
     "lighter": {
         parentId: "Lighter",
+        disabled: true,
         "enabled": true,
         "id": "2636"
     },
@@ -1697,6 +1698,7 @@ export default {
         "id": "3090"
     },
     "hummus": {
+        disabled: true,
         "enabled": true,
         "id": "1715"
     },
@@ -2348,5 +2350,18 @@ export default {
     "wannaswap": {
         "enabled": true,
         "id": "980"
+    },
+    "allbridge-classic": {
+        "enabled": true,
+        "id": "577"
+    },
+    "monocerus": {
+        "enabled": true,
+        "id": "3622"
+    },
+    "sunswap-v3": {
+        parentId: "SUN.io",
+        "enabled": true,
+        "id": "4031"
     }
 } as AdaptorsConfig

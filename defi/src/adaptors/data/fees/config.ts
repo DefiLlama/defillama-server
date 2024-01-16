@@ -1745,5 +1745,21 @@ export default {
     "goku-money": {
         "enabled": true,
         "id": "3758"
+    },
+    "allbridge-classic": {
+        "enabled": true,
+        "id": "577"
+    },
+    "monocerus": {
+        "enabled": true,
+        "id": "3622"
+    },
+    "first-crypto-bank": {
+        enabled: true,
+        id: "4017"
+    },
+    "fwx": {
+        "enabled": true,
+        "id": "4026"
     }
 } as AdaptorsConfig

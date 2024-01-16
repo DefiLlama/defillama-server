@@ -29722,6 +29722,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#kujira-protocol",
     listedAt: 1705418998
   },
+  {
+    id: "4037",
+    name: "Lila Finance",
+    address: "arbitrum:0xDF53cC6771ceC9b4Ef97AC726725a16b0fb41Aa3",
+    symbol: "LILA",
+    url: "https://www.lila.finance/",
+    description:
+      "Lila Finance swaps interest rates on yield-generating protocols, allowing users to earn a fixed or floating rate",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/lila-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "lila-finance/index.js",
+    twitter: "LilaFinance",
+    github: ["Lila-Finance"],
+    listedAt: 1705438657
+  },
 ]
 
 export default data3

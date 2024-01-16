@@ -93,11 +93,11 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#apeswap",
-    name: "ApeSwap", //rebrand from apeswap
+    name: "ApeBond", //rebrand from apeswap
     url: "https://apeswap.finance",
     description:
       "ApeSwap has rebranded to ApeBond. ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
-    logo: `${baseIconsUrl}/apeswap.jpg`,
+    logo: `${baseIconsUrl}/apebond.png`,
     gecko_id: "apeswap-finance",
     cmcId: "8497",
     chains: [],

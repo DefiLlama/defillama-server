@@ -8,6 +8,7 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 async function getChainAssets() {
   const res: any = await chainAssets();
   res.timestamp = getCurrentUnixTimestamp();
+  res.avalanche = res.avax;
   await storeR2JSONString("chainAssets", JSON.stringify(res));
   console.log("chain assets stored");
   process.exit();

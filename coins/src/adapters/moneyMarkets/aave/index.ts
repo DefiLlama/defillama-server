@@ -4,6 +4,12 @@ export function aave(timestamp: number = 0) {
   console.log("starting aave");
   return Promise.all([
     getTokenPrices(
+      "base",
+      "0x2f6571d3Eb9a4e350C68C36bCD2afe39530078E2",
+      "v3",
+      timestamp
+    ),
+    getTokenPrices(
       "optimism",
       "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
       "v3",

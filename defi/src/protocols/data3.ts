@@ -29629,6 +29629,54 @@ const data3: Protocol[] = [
     module: "manta-pacific/index.js",
     twitter: "MantaNetwork",
   },
+  {
+    id: "4033",
+    name: "SiloStake",
+    address: null,
+    symbol: "-",
+    assetToken: "iSEI",
+    url: "https://www.silostaking.io",
+    description:
+      "Liquid staking and MEV focused protocol on Sei.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/silostake.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Sei"],
+    oracles: [],
+    forkedFrom: [],
+    module: "silostake/index.js",
+    twitter: "Silo_Stake",
+    github: ["silostaking"],
+    listedAt: 1705417767
+  },
+  {
+    id: "4034",
+    name: "CoinCollect",
+    address: null,
+    symbol: "-",
+    url: "https://coincollect.org",
+    description:
+      "Earn Passive Income through NFTs",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/coincollect.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "coincollect/index.js",
+    twitter: "CoinCollectOrg",
+    github: ["Coin-Collect"],
+    listedAt: 1705417788
+  },
+
 ]
 
 export default data3

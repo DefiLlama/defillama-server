@@ -29676,7 +29676,52 @@ const data3: Protocol[] = [
     github: ["Coin-Collect"],
     listedAt: 1705417788
   },
-
+  {
+    id: "4035",
+    name: "FirepotSwap",
+    address: null,
+    symbol: "-",
+    url: "https://airdao.io/firepot/swap",
+    description:
+      "FirepotSwap is one of in-house dApps of AirDAO Ecosystem. AirDAO is a decentralized autonomous organization governing the AMB-NET blockchain and its network of dApps.",
+    chain: "AirDAO",
+    logo: `${baseIconsUrl}/firepotswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["AirDAO"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "FirepotSwap/index.js",
+    twitter: "airdao_io",
+    github: ["Firepot-Finance"],
+    listedAt: 1705418998
+  },
+  {
+    id: "4036",
+    name: "Bow Leverage",
+    address: null,
+    symbol: "-",
+    url: "https://bow.kujira.network",
+    description:
+      "BOW Leverage allows you to provide liquidity with just one side of the liquidity pool, borrowing the remaining assets from GHOST. The total assets are deposited into BOW, and the minted LP tokens are held as collateral.",
+    chain: "Kujira",
+    logo: `${baseIconsUrl}/bow-leverage.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Kujira"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bow-leverage/index.js",
+    twitter: "TeamKujira",
+    parentProtocol: "parent#kujira-protocol",
+    listedAt: 1705418998
+  },
 ]
 
 export default data3

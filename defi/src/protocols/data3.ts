@@ -6904,7 +6904,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3010",
-    name: "zkSwap Era",
+    name: "zkSwap Era", 
     address: "era:0xAbdb137D013b8B328FA43Fc04a6fA340D1CeA733",
     symbol: "ZKS",
     url: "https://zkswap.biz",
@@ -12952,13 +12952,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3280",
-    name: "ZKSwap (ZKSync)",
+    name: "ZKBase", //previous ZKSwap (ZKSync)
     address: "0xe4815AE53B124e7263F08dcDBBB757d41Ed658c6",
     symbol: "ZKS",
-    url: "https://zksync.zks.app/swap",
-    description: "ZKSwap is the first Layer 2 AMM DEX powered by ZK-Rollups technology. It operates on both ZKSpace and the EVM chain ZKSync Era.",
+    url: "https://zkbase.org/",
+    description: "ZKBase (previous ZKSwap (ZKSync)) is an infrastructure protocol based on Zero-Knowledge (ZK) proof technology, dedicated to providing scaling solutions for mainstream blockchains including Ethereum and Bitcoin.",
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/zkswap-(zksync).jpg`,
+    logo: `${baseIconsUrl}/zkbase.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -12966,7 +12966,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["zkSync Era"],
     module: "zkswap-2/index.js",
-    twitter: "ZKSpaceOfficial",
+    twitter: "ZKBaseOfficial",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1690194329

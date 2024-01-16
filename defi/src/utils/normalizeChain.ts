@@ -2139,6 +2139,14 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     github: ["btclayer2"]
   },
+  "AirDAO": {
+    geckoId: "amber",
+    symbol: "AMB",
+    cmcId: "2081",
+    categories: ["EVM"],
+    github: ["ambrosus"],
+    chainId: 16718
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2674,6 +2682,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "CMP"
     case "firechain":
       return "Firechain"
+    case "airdao":
+      return "AirDAO"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

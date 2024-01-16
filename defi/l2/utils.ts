@@ -37,7 +37,7 @@ async function restCallWrapper(request: () => Promise<any>, retries: number = 4,
       return res;
     } catch {
       await sleep(10000 + 4e4 * Math.random());
-      restCallWrapper(request, retries--);
+      restCallWrapper(request, retries--, name);
     }
   }
   throw new Error(`couldnt work ${name} call after retries!`);
@@ -75,7 +75,7 @@ export async function getPrices(
                 PK,
               }))
             ),
-        3,
+        undefined,
         "coin prices"
       )
     );

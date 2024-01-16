@@ -8,6 +8,7 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 async function getChainAssets() {
   const res: any = await chainAssets();
   res.timestamp = getCurrentUnixTimestamp();
+  res.avalanche = res.avax;
   await storeR2JSONString("chainAssets", JSON.stringify(res));
   console.log("chain assets stored");
   process.exit();
@@ -15,7 +16,7 @@ async function getChainAssets() {
 export async function handler() {
   try {
     await setEnvSecrets();
-    await withTimeout(840000, getChainAssets()); // 14 mins
+    await withTimeout(8400000, getChainAssets()); // 140 mins
   } catch (e) {
     process.env.CHAIN_ASSET_WEBHOOK ? await sendMessage(`${e}`, process.env.CHAIN_ASSET_WEBHOOK!) : console.log(e);
     process.exit();

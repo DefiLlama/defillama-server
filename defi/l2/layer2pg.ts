@@ -30,22 +30,24 @@ async function generateAuth() {
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 }
 
+function splitKey(inserts: TokenInsert[], key: string) {
+  const index = key.indexOf(":");
+  let [chain, token1] = [key.substring(0, index), key.substring(index + 1)];
+  if (!chain && token1.startsWith("0x")) {
+    chain = "ethereum";
+  } else if (!chain) {
+    return;
+  }
+  const token = mixedCaseChains.includes(chain) ? token1 : token1.toLowerCase();
+  if (!token) return;
+  inserts.push({ chain, token });
+}
+
 export async function storeAllTokens(tokens: string[]) {
   if (!tokens.length) return;
 
   const inserts: TokenInsert[] = [];
-  tokens.map((t: string) => {
-    let [chain, token1] = t.split(":");
-    if (!token1 && chain.startsWith("0x")) {
-      token1 = chain;
-      chain = "ethereum";
-    } else if (!token1) {
-      return;
-    }
-    const token = mixedCaseChains.includes(chain) ? token1 : token1.toLowerCase();
-    if (!token) return;
-    inserts.push({ chain, token });
-  });
+  tokens.map((t: string) => splitKey(inserts, t));
 
   if (!inserts.length) return;
   await generateAuth();
@@ -65,17 +67,7 @@ export async function storeNotTokens(tokens: string[]) {
   if (!tokens.length) return;
 
   const inserts: TokenInsert[] = [];
-  tokens.map((t: string) => {
-    let [chain, token1] = t.split(":");
-    if (!token1 && chain.startsWith("0x")) {
-      token1 = chain;
-      chain = "ethereum";
-    } else if (!token1) {
-      return;
-    }
-    const token = mixedCaseChains.includes(chain) ? token1 : token1.toLowerCase();
-    inserts.push({ chain, token });
-  });
+  tokens.map((t: string) => splitKey(inserts, t));
 
   if (!inserts.length) return;
   await generateAuth();

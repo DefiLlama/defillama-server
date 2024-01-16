@@ -5509,7 +5509,7 @@ const data3: Protocol[] = [
     module: "typus-finance/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: ["Internal"],
+    oracles: ["Supra", "Internal"],
     audit_links: ["https://docs.typus.finance/audit"],
     listedAt: 1683552946
   },

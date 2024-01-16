@@ -15,7 +15,7 @@ async function getChainAssets() {
 export async function handler() {
   try {
     await setEnvSecrets();
-    await withTimeout(840000, getChainAssets()); // 14 mins
+    await withTimeout(8400000, getChainAssets()); // 140 mins
   } catch (e) {
     process.env.CHAIN_ASSET_WEBHOOK ? await sendMessage(`${e}`, process.env.CHAIN_ASSET_WEBHOOK!) : console.log(e);
     process.exit();

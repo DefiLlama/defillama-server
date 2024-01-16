@@ -220,7 +220,7 @@ export function filterForNotTokens(tokens: Address[], notTokens: Address[]): Add
 }
 export async function fetchSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
   try {
-    const notTokens = await fetchNotTokens(chain);
+    const notTokens: string[] = []; //await fetchNotTokens(chain);
     const tokens = filterForNotTokens(contracts, notTokens);
     if (chain == "solana") return await getSolanaTokenSupply(tokens);
     return await getEVMSupplies(chain, tokens);

@@ -18951,7 +18951,11 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Klaytn"],
     module: "shoebillFinance-v2/index.js",
-    oracles: ["Pyth"],
+    oraclesByChain: {
+      wemix: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5434#issuecomment-1889510580
+      manta: ["Chainlink"],
+      Klaytn: ["Witnet"]
+    },
     forkedFrom: ["Compound V2"], 
     twitter: "ShoebillFinance",
     parentProtocol: "parent#shoebill-finance",

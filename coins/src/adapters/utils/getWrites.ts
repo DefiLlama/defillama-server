@@ -13,7 +13,8 @@ export default async function getWrites(params: { chain: string, timestamp: numb
       token: token.toLowerCase(),
       price: obj.price,
       underlying: obj.underlying?.toLowerCase(),
-      symbol: obj.symbol ?? undefined
+      symbol: obj.symbol ?? undefined,
+      decimals: obj.decimals ?? undefined,
     }
   })
 
@@ -25,8 +26,9 @@ export default async function getWrites(params: { chain: string, timestamp: numb
     getTokenAndRedirectData(entries.map(i => i.underlying).filter(i => i), chain, timestamp)
   ])
 
-  entries.map(({token, price, underlying, symbol }, i) => {
+  entries.map(({token, price, underlying, symbol, decimals }, i) => {
     const finalSymbol = symbol ?? tokenInfos.symbols[i].output
+    const finalDecimals = decimals ?? tokenInfos.decimals[i].output
     let coinData: (CoinData | undefined) = coinsData.find(
       (c: CoinData) => c.address.toLowerCase() === underlying
     );
@@ -36,7 +38,7 @@ export default async function getWrites(params: { chain: string, timestamp: numb
     } as CoinData;
     if (!coinData) return;
 
-    addToDBWritesList(writes, chain, token, coinData.price * price, tokenInfos.decimals[i].output, finalSymbol, timestamp, params.projectName, coinData.confidence as number)
+    addToDBWritesList(writes, chain, token, coinData.price * price, finalDecimals, finalSymbol, timestamp, params.projectName, coinData.confidence as number)
   })
 
   const writesObject: any = {}

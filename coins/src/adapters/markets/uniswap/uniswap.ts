@@ -18,12 +18,13 @@ async function fetchUniV2Markets(
   chain: string,
   factory: string,
   block: number | undefined,
+  poolsAbi: boolean,
 ) {
   let pairsLength: string = (
     await call({
       target: factory,
       chain: chain as any,
-      abi: abi.allPairsLength,
+      abi: poolsAbi ? abi.allPoolsLength : abi.allPairsLength,
       block,
     })
   ).output;
@@ -31,7 +32,7 @@ async function fetchUniV2Markets(
   const pairNums: number[] = Array.from(Array(Number(pairsLength)).keys());
 
   const pairs: MultiCallResults = await multiCall({
-    abi: abi.allPairs,
+    abi: poolsAbi ? abi.allPools : abi.allPairs,
     chain: chain as any,
     calls: pairNums.map((num) => ({
       target: factory,
@@ -219,6 +220,8 @@ async function unknownTokens(
   priceableLPs: any[],
   tokenPrices: CoinData[],
   tokenInfos: TokenInfos,
+  poolsAbi: boolean,
+  factory: string,
 ) {
   if (router == undefined) return;
   const lpsWithUnknown = priceableLPs.filter(
@@ -249,6 +252,8 @@ async function unknownTokens(
     tokenValues,
     tokenInfos,
     chain,
+    poolsAbi,
+    factory,
   );
 
   lpsWithUnknown.map((l: any, i: number) => {
@@ -320,6 +325,8 @@ async function getConfidenceScores(
   tokenValues: any[],
   tokenInfos: TokenInfos,
   chain: string,
+  poolsAbi: boolean,
+  factory: string,
 ) {
   const usdSwapSize: number = 10 ** 5;
   const ratio: number = 10000;
@@ -336,24 +343,25 @@ async function getConfidenceScores(
         tokenValues[i],
       );
       if (qty == undefined) return [];
+      const route = poolsAbi
+        ? [[l.secondaryUnderlying, l.primaryUnderlying, false, factory]]
+        : [l.secondaryUnderlying, l.primaryUnderlying];
+
       return [
         {
           target,
-          params: [qty, [l.secondaryUnderlying, l.primaryUnderlying]],
+          params: [qty, route],
         },
         {
           target,
-          params: [
-            qty.div(ratio),
-            [l.secondaryUnderlying, l.primaryUnderlying],
-          ],
+          params: [qty.div(ratio), route],
         },
       ];
     })
     .flat();
 
   const { output: swapResults }: MultiCallResults = await multiCall({
-    abi: abi.getAmountsOut,
+    abi: poolsAbi ? abi.getAmountsOut2 : abi.getAmountsOut,
     chain: chain as any,
     calls: calls as any,
     permitFailure: true,
@@ -367,7 +375,10 @@ async function getConfidenceScores(
       confidence = r.output[1] / (ratio * swapResults[i + 1].output[1]);
       if (confidence > 0.989) confidence = 0.989;
     } catch {}
-    confidences[r.input.params[1][0].toLowerCase()] = confidence;
+    const queryAddress = poolsAbi
+      ? r.input.params[1][0][0].toLowerCase()
+      : r.input.params[1][0].toLowerCase();
+    confidences[queryAddress] = confidence;
   });
   return confidences;
 }
@@ -377,6 +388,7 @@ export default async function getTokenPrices(
   router: string | undefined,
   subgraph: string | undefined = undefined,
   timestamp: number,
+  poolsAbi: boolean = false,
 ) {
   router;
   let token0s;
@@ -388,7 +400,7 @@ export default async function getTokenPrices(
   if (subgraph != undefined) {
     pairAddresses = await fetchUniV2MarketsFromSubgraph(subgraph, timestamp);
   } else {
-    pairAddresses = await fetchUniV2Markets(chain, factory, block);
+    pairAddresses = await fetchUniV2Markets(chain, factory, block, poolsAbi);
   }
 
   [token0s, token1s, reserves] = await fetchUniV2MarketData(
@@ -434,6 +446,8 @@ export default async function getTokenPrices(
     priceableLPs,
     tokenPrices,
     tokenInfos,
+    poolsAbi,
+    factory,
   );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 

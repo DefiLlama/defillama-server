@@ -18943,20 +18943,25 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://shoebill.finance",
-    description: "Positive sum DeFi lending protocol. Zero-interest borrowing and stable yield lending.",
+    description: "LST Collaterizable Leverage Lending Protocol maximizing yield or utilize asset for better opporunity",
     chain: "Klaytn",
     logo: `${baseIconsUrl}/shoebill-v2.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Lending",
     chains: ["Klaytn"],
     module: "shoebillFinance-v2/index.js",
-    oracles: [],
+    oraclesByChain: {
+      wemix: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5434#issuecomment-1889510580
+      manta: ["Chainlink"],
+      Klaytn: ["Witnet"]
+    },
     forkedFrom: ["Compound V2"], 
     twitter: "ShoebillFinance",
     parentProtocol: "parent#shoebill-finance",
+    audit_links: ['https://github.com/ShoebillFinance/audit-report/blob/main/Certik-Shoebill-final-20231121T015445Z.pdf'],
     listedAt: 1695311208
   },
   {

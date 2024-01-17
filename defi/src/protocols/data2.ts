@@ -20916,6 +20916,7 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1669379407
   },
+  /*
   {
     id: "2311",
     name: "CoinDCX",
@@ -20937,6 +20938,7 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1669389751
   },
+  */
   {
     id: "2312",
     name: "Step Exchange",

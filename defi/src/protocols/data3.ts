@@ -29818,6 +29818,27 @@ const data3: Protocol[] = [
     github: ["iclighthouse"],
     listedAt: 1705503661
   },
+  {
+    id: "4041",
+    name: "Horiza",
+    address: null,
+    symbol: "-",
+    url: "https://horiza.io",
+    description: "Uniswap V3 fork on arbitrum chain.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/horiza.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    module: "horiza/index.js",
+    twitter: "horizaio",
+    listedAt: 1705508558
+  },
 ]
 
 export default data3

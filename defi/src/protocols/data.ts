@@ -10153,6 +10153,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Insurance",
     chains: ["Binance"],
     module: "unore/index.js",
+    treasury: "unore.js",
     twitter: "unoreinsure",
     audit_links: ["https://github.com/Uno-Re/audit-reports"],
     oracles: ["Chainlink"],

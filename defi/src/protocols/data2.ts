@@ -14611,7 +14611,7 @@ const data2: Protocol[] = [
     cmcId: "19476",
     category: "Dexes",
     chains: ["Binance"],
-    oracles: [],
+    oracles: ["Supra"], // https://docs.tifi.net/#/TiFiBank/Introduction
     forkedFrom: ["Uniswap V2"],
     module: "tifi-bank/index.js",
     twitter: "TiFiToken",
@@ -28163,7 +28163,8 @@ const data2: Protocol[] = [
     },
     forkedFrom: [],
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-dTrade-v1.0.pdf"],
-    listedAt: 1677769578
+    listedAt: 1677769578,
+    github: ["fireflyprotocol"]
   },
   {
     id: "2626",

@@ -1761,5 +1761,9 @@ export default {
     "fwx": {
         "enabled": true,
         "id": "4026"
+    },
+    "keom": {
+        "enabled": true,
+        "id": "3823"
     }
 } as AdaptorsConfig

@@ -585,6 +585,7 @@ functions:
       ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
       FLIPSIDE_API_KEY: ${env:FLIPSIDE_API_KEY}
       SMARDEX_SUBGRAPH_API_KEY: ${env:SMARDEX_SUBGRAPH_API_KEY}
+      PERENNIAL_V2_SUBGRAPH_API_KEY: ${file(./env.js):PERENNIAL_V2_SUBGRAPH_API_KEY}
       DUNE_API_KEYS: ${env:DUNE_API_KEYS}
   triggerStoreAdaptorData:
     handler: src/adaptors/handlers/triggerStoreAdaptorData.default

@@ -45,9 +45,9 @@ async function getCollections({ limit = 5000 } = {}) {
 function filterCollections(collections: any) {
   const floorAskPrice = (i: any) => i.floorAskPrice > 0.2
   const openseaVerificationStatus = (i: any) => i.openseaVerificationStatus === 'verified'
-  const allTimeVolume = (i: any) => i.allTimeVolume > 2000
+  const allTimeVolume = (i: any) => i.allTimeVolume > 1000
   return collections
-    .filter(openseaVerificationStatus)
+    // .filter(openseaVerificationStatus)
     .filter(floorAskPrice)
     .filter(allTimeVolume)
 }

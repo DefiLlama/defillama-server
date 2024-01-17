@@ -3474,6 +3474,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ajnafi",
     github: ["ajna-finance"]
   },
+  {
+    id: "parent#kim-exchange",
+    name: "KIM Exchange",
+    url: "https://kim.exchange",
+    description: `Native DEX for the Mode Network with staking modules to incentivize LPs`,
+    logo: `${baseIconsUrl}/kim-exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "kimprotocol",
+    github: ["kizuna-dex"],
+  },
 ];
 
 export default parentProtocols;

@@ -26973,7 +26973,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3913",
-    name: "KIM Exchange", // previous Kizuna Exchange
+    name: "KIM Exchange V1", // previous Kizuna Exchange
     address: null,
     symbol: "-",
     url: "https://kim.exchange",
@@ -26990,7 +26990,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "kizuna/index.js",
     twitter: "kimprotocol",
-    github: ["kizuna-dex"],
+    parentProtocol: "parent#kim-exchange",
     listedAt: 1702470950
   },
   {
@@ -29749,6 +29749,28 @@ const data3: Protocol[] = [
     twitter: "LilaFinance",
     github: ["Lila-Finance"],
     listedAt: 1705438657
+  },
+  {
+    id: "4038",
+    name: "KIM Exchange V2",
+    address: null,
+    symbol: "-",
+    url: "https://kim.exchange",
+    description: "Native DEX for the Mode Network with staking modules to incentivize LPs",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/kim-exchange.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mode"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "kim-v2/index.js",
+    twitter: "kimprotocol",
+    parentProtocol: "parent#kim-exchange",
+    listedAt: 1705463777
   },
 ]
 

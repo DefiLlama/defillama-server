@@ -34,6 +34,7 @@
       "decimals": "9",
       "symbol": "TURBOS",
       "to": "coingecko#turbos-finance"
+    },
     "0xf325ce1300e8dac124071d3152c5c5ee6174914f8bc2161e88329cf579246efc::afsui::AFSUI": {
       "decimals": "9",
       "symbol": "afSUI",
@@ -226,6 +227,11 @@
     }
   },
   "arbitrum": {
+    "0x561877b6b3dd7651313794e5f2894b2f18be0766": {
+      "decimals": "18",
+      "symbol": "MATIC",
+      "to": "coingecko#matic-network"
+    },
     "0x2b28e826b55e399f4d4699b85f68666ac51e6f70": {
       "decimals": "18",
       "symbol": "CADC",

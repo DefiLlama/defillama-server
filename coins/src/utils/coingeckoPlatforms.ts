@@ -1,4 +1,5 @@
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
+import { mixedCaseChains } from "./shared/constants";
 import ddb from "./shared/dynamodb";
 
 interface StringObject {
@@ -22,7 +23,7 @@ export interface Coin {
 }
 
 function lowercase(address: string, chain: string) {
-  return chain === "solana" ? address : address.toLowerCase();
+  return mixedCaseChains.includes(chain) ? address : address.toLowerCase();
 }
 
 export async function iterateOverPlatforms(

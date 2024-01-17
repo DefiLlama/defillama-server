@@ -1,5 +1,8 @@
+import { mixedCaseChains } from "./shared/constants"
+
 export function lowercaseAddress(coin: string) {
-    if (coin.startsWith("solana:")) {
+    const chain = coin.substring(0, coin.indexOf(':'))
+    if (mixedCaseChains.includes(chain)) {
         return coin
     } else if (coin.startsWith("gnosis:")) {
         return coin.replace("gnosis:", "xdai:").toLowerCase()

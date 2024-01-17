@@ -17,6 +17,7 @@ const confidenceThreshold: number = 0.3;
 import pLimit from "p-limit";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
 import * as sdk from "@defillama/sdk";
+import { mixedCaseChains } from "../../utils/shared/constants";
 
 const rateLimited = pLimit(10);
 
@@ -103,7 +104,9 @@ export function addToDBWritesList(
   const PK: string =
     chain == "coingecko"
       ? `coingecko#${token.toLowerCase()}`
-      : `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`;
+      : `asset#${chain}:${
+          mixedCaseChains.includes(chain) ? token : token.toLowerCase()
+        }`;
   if (timestamp == 0) {
     writes.push(
       ...[
@@ -181,7 +184,7 @@ async function getTokenAndRedirectDataDB(
         return getTVLOfRecordClosestToTimestamp(
           chain == "coingecko"
             ? `coingecko#${t.toLowerCase()}`
-            : `asset#${chain}:${chain == "solana" ? t : t.toLowerCase()}`,
+            : `asset#${chain}:${mixedCaseChains.includes(chain) ? t : t.toLowerCase()}`,
           timestamp,
           hoursRange * 60 * 60,
         );
@@ -195,7 +198,7 @@ async function getTokenAndRedirectDataDB(
         PK:
           chain == "coingecko"
             ? `coingecko#${t.toLowerCase()}`
-            : `asset#${chain}:${chain == "solana" ? t : t.toLowerCase()}`,
+            : `asset#${chain}:${mixedCaseChains.includes(chain) ? t : t.toLowerCase()}`,
         SK: 0,
       })),
     );
@@ -439,7 +442,7 @@ async function checkMovement(
   });
 
   // if (errors != "" && !process.env.LLAMA_RUN_LOCAL)
-    // await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
+  // await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
 
   return filteredItems.filter((v: any) => v != null);
 }
@@ -452,7 +455,7 @@ export async function getDbMetadata(
       PK:
         chain == "coingecko"
           ? `coingecko#${a.toLowerCase()}`
-          : `asset#${chain}:${chain == "solana" ? a : a.toLowerCase()}`,
+          : `asset#${chain}:${mixedCaseChains.includes(chain) ? a : a.toLowerCase()}`,
       SK: 0,
     })),
   );

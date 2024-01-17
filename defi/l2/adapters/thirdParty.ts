@@ -1,9 +1,10 @@
 import { Chain } from "@defillama/sdk/build/general";
 import { Address } from "@defillama/sdk/build/types";
-import { canonicalBridgeIds, mixedCaseChains } from "../constants";
+import { canonicalBridgeIds } from "../constants";
 import fetch from "node-fetch";
 import { additional, excluded } from "./manual";
 import axios from "axios";
+import { mixedCaseChains } from "../../src/utils/shared/constants";
 
 let bridgePromises: { [bridge: string]: Promise<any> } = {};
 const chains = Object.values(canonicalBridgeIds);

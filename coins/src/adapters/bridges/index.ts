@@ -40,13 +40,12 @@ export type Token =
     };
 type Bridge = () => Promise<Token[]>;
 
-export const chainsThatShouldNotBeLowerCased = ["solana", "bitcoin"];
 function normalizeBridgeResults(bridge: Bridge) {
   return async () => {
     const tokens = await bridge();
     return tokens.map((token) => {
       const chain = token.from.split(":")[0];
-      if (chainsThatShouldNotBeLowerCased.includes(chain)) {
+      if (mixedCaseChains.includes(chain)) {
         return token;
       }
       return {
@@ -85,6 +84,7 @@ export const bridges = [
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { Coin, batchWrite2, readCoins2, translateItems } from "../../../coins2";
+import { mixedCaseChains } from "../../utils/shared/constants";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 

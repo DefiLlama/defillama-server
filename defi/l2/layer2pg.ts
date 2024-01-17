@@ -3,7 +3,7 @@ import { Chain } from "@defillama/sdk/build/general";
 import { TokenInsert } from "./types";
 import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 import sleep from "../src/utils/shared/sleep";
-import { mixedCaseChains } from "./constants";
+import { mixedCaseChains } from "../src/utils/shared/constants";
 
 let auth: string[];
 let sql: any;

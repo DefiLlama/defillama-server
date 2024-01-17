@@ -29859,6 +29859,27 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "4043",
+    name: "LiquidLoans",
+    address: null,
+    symbol: "-",
+    url: "https://www.liquidloans.io",
+    description: "Fully Backed Stablecoin. Low 110% Collateral Ratio. No Repayment Schedule. Immutable. Governance-Free. No Admin Keys.",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/liquidloans.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Pulse"],
+    oracles: [], 
+    forkedFrom: ["Liquity"],
+    module: "liquidloans-io/index.js",
+    twitter: "liquidloansio",
+    listedAt: 1705526564
+  },
 ]
 
 export default data3

@@ -177,6 +177,34 @@ async function getSolanaTokenSupply(tokens: string[]): Promise<{ [token: string]
   await storeNotTokens(notTokens);
   return supplies;
 }
+async function getSuiSupplies(tokens: Address[]): Promise<{ [token: string]: number }> {
+  const supplies: { [token: string]: number } = {};
+  const notTokens: string[] = [];
+
+  await PromisePool.withConcurrency(5)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        const res = await fetch("https://fullnode.mainnet.sui.io/", {
+          method: "POST",
+          body: JSON.stringify({
+            jsonrpc: "2.0",
+            id: 1,
+            method: "suix_getTotalSupply",
+            params: [token],
+          }),
+          headers: { "Content-Type": "application/json" },
+        }).then((r) => r.json());
+        if (res && res.result && res.result.value) supplies[token] = res.result.value;
+        else notTokens.push(token);
+      } catch (e) {
+        console.log(token);
+      }
+    });
+
+  await storeNotTokens(notTokens);
+  return supplies;
+}
 async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
   const step: number = 200;
   const supplies: { [token: string]: number } = {};
@@ -223,6 +251,7 @@ export async function fetchSupplies(chain: Chain, contracts: Address[]): Promise
     const notTokens: string[] = []; //await fetchNotTokens(chain);
     const tokens = filterForNotTokens(contracts, notTokens);
     if (chain == "solana") return await getSolanaTokenSupply(tokens);
+    if (chain == "sui") return await getSuiSupplies(tokens);
     return await getEVMSupplies(chain, tokens);
   } catch (e) {
     throw new Error(`multicalling token supplies failed for chain ${chain}`);

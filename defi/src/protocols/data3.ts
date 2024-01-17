@@ -29796,6 +29796,28 @@ const data3: Protocol[] = [
     github: ["SizeLending"],
     listedAt: 1705488185
   },
+  {
+    id: "4040",
+    name: "ICDex",
+    address: "icp:-",
+    symbol: "ICL",
+    url: "https://iclight.io",
+    description: "ICDex: A fully on-chain order book DEX on the IC",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/icdex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ICP"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "ICDex/index.js",
+    twitter: "ICLighthouse",
+    github: ["iclighthouse"],
+    listedAt: 1705503661
+  },
 ]
 
 export default data3

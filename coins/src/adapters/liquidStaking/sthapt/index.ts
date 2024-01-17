@@ -21,6 +21,7 @@ export async function sthApt(timestamp: number = 0): Promise<Write[]> {
       underlying: `${address}::ThalaAPT`,
       price: qtys[0] / qtys[1],
       symbol: "sthAPT",
+      decimals: 8,
     },
   };
 

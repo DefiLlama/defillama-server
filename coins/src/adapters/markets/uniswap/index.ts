@@ -370,3 +370,15 @@ export function zkswap(timestamp: number = 0) {
     timestamp,
   );
 }
+
+export function aerodrome(timestamp: number = 0) {
+  console.log("starting aerodrome");
+  return getTokenPrices(
+    "base",
+    "0x420DD381b31aEf6683db6B902084cB0FFECe40Da",
+    "0xcF77a3Ba9A5CA399B7c97c74d54e5b1Beb874E43",
+    undefined,
+    timestamp,
+    true,
+  );
+}

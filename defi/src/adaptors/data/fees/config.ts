@@ -1765,5 +1765,15 @@ export default {
     "keom": {
         "enabled": true,
         "id": "3823"
+    },
+    "squadswap-v2": {
+        parentId: "SquadSwap",
+        "enabled": true,
+        "id": "4009"
+    },
+    "squadswap-v3": {
+        parentId: "SquadSwap",
+        "enabled": true,
+        "id": "4010"
     }
 } as AdaptorsConfig

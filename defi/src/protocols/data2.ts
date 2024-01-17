@@ -28163,7 +28163,8 @@ const data2: Protocol[] = [
     },
     forkedFrom: [],
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-dTrade-v1.0.pdf"],
-    listedAt: 1677769578
+    listedAt: 1677769578,
+    github: ["fireflyprotocol"]
   },
   {
     id: "2626",

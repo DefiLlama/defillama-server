@@ -206,11 +206,11 @@ test("no surprise category", async () => {
     'Options Vault',
     'Liquidity manager',
     'Staking Pool',
-    'Infrastructure',
     'Decentralized Stablecoin',
     'SoFi',
     'DEX Aggregator',
-    'Liquid Restaking'
+    'Liquid Restaking',
+    'Restaking',
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

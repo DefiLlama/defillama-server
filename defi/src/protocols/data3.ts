@@ -29839,6 +29839,26 @@ const data3: Protocol[] = [
     twitter: "horizaio",
     listedAt: 1705508558
   },
+  {
+    id: "4042",
+    name: "CoinDCX",
+    address: null,
+    symbol: "-",
+    url: "https://coindcx.com",
+    description: "1.3 Crore + Indians choose CoinDCX, India's most valued Crypto Investment App",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/coindcx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Cardano", "Tron", "Binance"],
+    module: "coindcx/index.js",
+    twitter: "CoinDCX",
+    forkedFrom: [],
+    oracles: [],
+  },
 ]
 
 export default data3

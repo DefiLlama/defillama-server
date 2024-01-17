@@ -116,6 +116,7 @@ export default {
   thena: require("./markets/uniswap"),
   fvm: require("./markets/uniswap"),
   velocimeter: require("./markets/uniswap"),
+  aerodrome: require("./markets/uniswap"),
   stargate: require("./markets/stargate"),
   jarvis: require("./markets/jarvis"),
   chainlinkNFT: require("./nft/chainlink"),
@@ -152,4 +153,5 @@ export default {
   osETH: require("./yield/osETH"),
   weETH: require("./yield/weETH"),
   pxeth: require("./liquidStaking/pxeth"),
+  sthApt: require("./liquidStaking/sthapt"),
 };

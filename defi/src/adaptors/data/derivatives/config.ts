@@ -553,5 +553,9 @@ export default {
     "immortalx": {
         "enabled": true,
         "id": "3983"
+    },
+    "fwx": {
+        "enabled": true,
+        "id": "4026"
     }
 } as AdaptorsConfig

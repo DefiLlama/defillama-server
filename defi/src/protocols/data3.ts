@@ -12956,7 +12956,7 @@ const data3: Protocol[] = [
     address: "0xBBBbbBBB46A1dA0F0C3F64522c275BAA4C332636",
     symbol: "ZKB", //Previous token was zks
     url: "https://zkbase.org/",
-    description: "ZKBase (previous ZKSwap (ZKSync)) is an infrastructure protocol based on Zero-Knowledge (ZK) proof technology, dedicated to providing scaling solutions for mainstream blockchains including Ethereum and Bitcoin.",
+    description: "ZKSwap based on ZKBase (previously ZKSpace) is an infrastructure protocol based on Zero-Knowledge (ZK) proof technology, dedicated to providing scaling solutions for mainstream blockchains including Ethereum and Bitcoin.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/zkbase.jpg`,
     audits: "0",
@@ -29771,6 +29771,28 @@ const data3: Protocol[] = [
     twitter: "kimprotocol",
     parentProtocol: "parent#kim-exchange",
     listedAt: 1705463777
+  },
+  {
+    id: "4039",
+    name: "Size Lending",
+    address: null,
+    symbol: "-",
+    url: "https://size.cash",
+    description: "Size is the first marketplace for fixed rate loans with unified liquidity across all terms.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/size-lending.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    oracles: ["Chainlink"], 
+    forkedFrom: [],
+    module: "size/index.js",
+    twitter: "SizeLending",
+    github: ["SizeLending"],
+    listedAt: 1705488185
   },
 ]
 

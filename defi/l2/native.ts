@@ -7,6 +7,7 @@ import { Address } from "@defillama/sdk/build/types";
 import { zero } from "./constants";
 import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
+import { fetchAdaTokens } from "./adapters/ada";
 
 export async function fetchMinted(params: {
   chains: Chain[];
@@ -32,6 +33,7 @@ export async function fetchMinted(params: {
         storedTokens.splice(i, 1);
       });
 
+      if (chain == "cardano") storedTokens = await fetchAdaTokens();
       // do these in order to lighten rpc, rest load
       const supplies = await fetchSupplies(chain, storedTokens);
       const prices = await getPrices(Object.keys(supplies), timestamp);
@@ -62,7 +64,7 @@ export async function fetchMinted(params: {
       mcapData[chain] = {};
       findDollarValues();
 
-      return (tvlData[chain] = dollarValues);
+      tvlData[chain] = dollarValues;
     })
   );
   return { tvlData, mcapData };

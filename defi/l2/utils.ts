@@ -195,8 +195,8 @@ async function getSuiSupplies(tokens: Address[]): Promise<{ [token: string]: num
           }),
           headers: { "Content-Type": "application/json" },
         }).then((r) => r.json());
-        if (res && res.result && res.result.value) supplies[token] = res.result.value;
-        else notTokens.push(token);
+        if (res && res.result && res.result.value) supplies[`sui:${token}`] = res.result.value;
+        else notTokens.push(`sui:${token}`);
       } catch (e) {
         console.log(token);
       }

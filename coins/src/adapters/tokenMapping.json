@@ -657,6 +657,46 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": "8",
       "symbol": "WBTC"
+    },
+    "0x9d7d6a2f1a2a45b158d8a051ce1db263d2806764": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xece555d37c37d55a6341b80cf35ef3bc57401d1a": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x4638C9fb4eFFe36C49d8931BB713126063BF38f9": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xb0119035d08CB5f467F9ed8Eae4E5f9626Aa7402": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0xE6373A7Bb9B5a3e71D1761a6Cb4992AD8537Bf28": {
+      "decimals": "18",
+      "symbol": "MATIC",
+      "to": "coingecko#matic-network"
+    },
+    "0xEAf8553fD72417C994525178fC917882d5AEc725": {
+      "decimals": "18",
+      "symbol": "AVAX",
+      "to": "coingecko#avalanche-2"
+    },
+    "0x2A6F394085B8E33fbD9dcFc776BCE4ed95F1900D": {
+      "decimals": "18",
+      "symbol": "BNB",
+      "to": "coingecko#binancecoin"
+    },
+    "0x8C96Dd1A8B1952Ce6F3a582170bb173eD591D40D": {
+      "decimals": "18",
+      "symbol": "FTM",
+      "to": "coingecko#fantom"
     }
   },
   "bfc": {

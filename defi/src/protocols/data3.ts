@@ -25671,7 +25671,10 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "chainflip/index.js",
     twitter: "Chainflip",
-    audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/2023-04-chainflip-securityreview.pdf"],
+    audit_links: [
+                   "https://github.com/chainflip-io/chainflip-backend/blob/main/audits/Multisig-Kudelski-Q1-2022.pdf",
+                   "https://github.com/chainflip-io/chainflip-backend/blob/main/audits/2023-04-TrailOfBits-securityreview.pdf"
+                  ],
     listedAt: 1701184034
   },
   {

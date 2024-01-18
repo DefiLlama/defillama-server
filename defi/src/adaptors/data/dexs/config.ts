@@ -2373,5 +2373,9 @@ export default {
         parentId: "SquadSwap",
         "enabled": true,
         "id": "4010"
+    },
+    "ICDex": {
+        "enabled": true,
+        "id": "4040"
     }
 } as AdaptorsConfig

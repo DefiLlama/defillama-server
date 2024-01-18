@@ -29883,6 +29883,28 @@ const data3: Protocol[] = [
     twitter: "liquidloansio",
     listedAt: 1705526564
   },
+  {
+    id: "4044",
+    name: "JIBLEND",
+    address: "jbc:0x5F4dbBE4553d7176116a014ac81378d8eE57a1a9",
+    symbol: "JLEND",
+    url: "https://jiblend.xyz",
+    description: "JIBLEND is a decentralized finance (DeFi) lending protocol allows users to lend and borrow various crypto assets in a secure and decentralized manner. Our platform aims to provide users with a user-friendly interface, competitive interest rates, and a diverse range of supported assets",
+    chain: "JBC",
+    logo: `${baseIconsUrl}/jiblend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "liquid-loans",
+    cmcId: null,
+    category: "Lending",
+    chains: ["JBC"],
+    oracles: [], 
+    forkedFrom: ["Compound V2"],
+    module: "jiblend/index.js",
+    twitter: "jiblendxyz",
+    github: ["jiblend"],
+    listedAt: 1705614623
+  },
 ]
 
 export default data3

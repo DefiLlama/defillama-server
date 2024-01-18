@@ -226,9 +226,11 @@ export default {
     },
     "grizzly-trade": {
         "enabled": true,
+        disabled: true,
         "id": "3301",
         "protocolsData": {
             "derivatives": {
+                disabled: true,
                 "id": "3301",
                 "enabled": true,
             }

@@ -1127,6 +1127,7 @@ export default {
         "id": "626"
     },
     "grizzly-trade": {
+        disabled: true,
         "enabled": true,
         "id": "3301"
     },

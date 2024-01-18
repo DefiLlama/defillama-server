@@ -1859,10 +1859,12 @@ export default {
         "id": "3246"
     },
     "grizzly-trade": {
+        disabled: true,
         "enabled": true,
         "id": "3301",
         "protocolsData": {
             "swap": {
+                disabled: true,
                 "id": "3301",
                 "enabled": true,
             }

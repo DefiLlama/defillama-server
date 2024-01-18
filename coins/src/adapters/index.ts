@@ -117,6 +117,7 @@ export default {
   fvm: require("./markets/uniswap"),
   velocimeter: require("./markets/uniswap"),
   aerodrome: require("./markets/uniswap"),
+  jibswap: require("./markets/uniswap"),
   stargate: require("./markets/stargate"),
   jarvis: require("./markets/jarvis"),
   chainlinkNFT: require("./nft/chainlink"),

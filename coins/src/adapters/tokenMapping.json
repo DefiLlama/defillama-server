@@ -308,6 +308,43 @@
       "to": "coingecko#high-yield-usd-base"
     }
   },
+  "jbc": {
+    "0xFD8Ef75c1cB00A594D02df48ADdc27414Bd07F8a": {
+      "decimals": "18",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x55b25214363306686E1F5424d5f96Fb330F51D4c": {
+      "decimals": "18",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x17Fc6A15d85414fb7058ee7f54496763B8594344": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x0D89386044FF9975deCe36E8b85b6222B7B40A2c": {
+      "decimals": "18",
+      "symbol": "OP",
+      "to": "coingecko#optimism"
+    },
+    "0xE6Af001741A2de21aEa4Bb1DA17d32d7f579c6a1": {
+      "decimals": "18",
+      "symbol": "BNB",
+      "to": "coingecko#binancecoin"
+    },
+    "0x2cd11cdBeD000B5a680C015F2825569Bc5d8CF88": {
+      "decimals": "18",
+      "symbol": "JFIN",
+      "to": "coingecko#jfin-coin"
+    },
+    "0x28953231bc533bE90f5FDf9CE62Ac259018ee847": {
+      "decimals": "18",
+      "symbol": "KUB",
+      "to": "coingecko#bitkub-coin"
+    }
+  },
   "aptos": {
     "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::WBTC": {
       "decimals": "6",

@@ -382,3 +382,14 @@ export function aerodrome(timestamp: number = 0) {
     true,
   );
 }
+
+export function jibswap(timestamp: number = 0) {
+  console.log("starting jibswap");
+  return getTokenPrices(
+    "jbc",
+    "0x4BBdA880C5A0cDcEc6510f0450c6C8bC5773D499",
+    "0x766F8C9321704DC228D43271AF9b7aAB0E529D38",
+    undefined,
+    timestamp,
+  );
+}

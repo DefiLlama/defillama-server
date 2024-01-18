@@ -29894,7 +29894,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/jiblend.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "liquid-loans",
+    gecko_id: null,
     cmcId: null,
     category: "Lending",
     chains: ["JBC"],

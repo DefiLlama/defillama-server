@@ -41,17 +41,10 @@ export const supportedChains = [
     },
     {
         name: 'Avalanche',
-        subgraphEndpoint: 'https://api.thegraph.com/subgraphs/name/rakeshbhatt10/avalance-test-subgraph',
+        subgraphEndpoint: 'https://api.thegraph.com/subgraphs/name/steerprotocol/steer-protocol-avalanche',
         chainId: 43114,
         merkl: false,
         identifier: 'avax'
-    },
-    {
-        name: 'Thundercore',
-        subgraphEndpoint: 'http://52.77.49.1:8000/subgraphs/name/steerprotocol/steer-thundercore',
-        chainId: 108,
-        merkl: false,
-        identifier: 'thundercore'
     },
     {
         name: 'Kava',
@@ -67,13 +60,13 @@ export const supportedChains = [
         merkle: false,
         identifier: 'base'
     },
-    // {
-    //   name: 'Linea',
-    //   subgraphEndpoint: 'https://subgraph.steer.finance/linea/subgraphs/name/steerprotocol/steer-linea/graphql',
-    //   chainId: 59144,
-    //   merkle: false,
-    //   identifier: 'linea'
-    // },
+    {
+        name: 'Linea',
+        subgraphEndpoint: 'https://api.goldsky.com/api/public/project_clohj3ta78ok12nzs5m8yag0b/subgraphs/steer-protocol-linea/1.0.1/gn',
+        chainId: 59144,
+        merkle: false,
+        identifier: 'linea'
+    },
     {
         name: 'Metis',
         subgraphEndpoint: 'https://subgraph.satsuma-prod.com/769a117cc018/steer/steer-protocol-metis/api',
@@ -81,13 +74,13 @@ export const supportedChains = [
         merkle: false,
         identifier: 'metis'
     },
-    // {
-    //   name: 'Manta',
-    //   subgraphEndpoint: 'https://subgraph.steer.finance/manta/subgraphs/name/steerprotocol/steer-manta/graphql',
-    //   chainId: 169,
-    //   merkle: false,
-    //   identifier: 'manta'
-    // },
+    {
+        name: 'Manta',
+        subgraphEndpoint: 'https://api.goldsky.com/api/public/project_clohj3ta78ok12nzs5m8yag0b/subgraphs/steer-protocol-manta/1.1.1/gn',
+        chainId: 169,
+        merkle: false,
+        identifier: 'manta'
+    },
     // {
     //   name: 'PolygonZKEVM',
     //   subgraphEndpoint: 'https://subgraph.steer.finance/zkevm/subgraphs/name/steerprotocol/steer-zkevm',
@@ -95,13 +88,13 @@ export const supportedChains = [
     //   merkle: false,
     //   identifier: 'polyzkevm'
     // },
-    // {
-    //   name: 'Scroll',
-    //   subgraphEndpoint: 'https://subgraph.steer.finance/scroll/subgraphs/name/steerprotocol/steer-scroll/graphql',
-    //   chainId: 534352,
-    //   merkle: false,
-    //   identifier: 'scroll'
-    // },
+    {
+        name: 'Scroll',
+        subgraphEndpoint: 'https://api.goldsky.com/api/public/project_clohj3ta78ok12nzs5m8yag0b/subgraphs/steer-protocol-scroll/1.0.0/gn',
+        chainId: 534352,
+        merkle: false,
+        identifier: 'scroll'
+    },
     // {
     //   name: 'Celo',
     //   subgraphEndpoint: 'https://api.thegraph.com/subgraphs/name/rakeshbhatt10/steer-test-celo',

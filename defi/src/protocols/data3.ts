@@ -29927,6 +29927,29 @@ const data3: Protocol[] = [
     github: ["sudofina"],
     listedAt: 1705662884
   },
+  {
+    id: "4046",
+    name: "WEMIX Liquid Staking",
+    address: null,
+    symbol: "-",
+    assetToken: "stWEMIX",
+    url: "https://wemix.fi/staking",
+    description: "stWEMIX staking program that enhances both value and liquidity.",
+    chain: "WEMIX",
+    logo: `${baseIconsUrl}/sudo-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["WEMIX"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "wemix-liquid-staking/index.js",
+    twitter: "WemixNetwork",
+    parentProtocol: "parent#wemix.fi",
+    listedAt: 1705674362
+  },
 ]
 
 export default data3

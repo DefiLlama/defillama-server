@@ -73,7 +73,7 @@ export const handler = async (event: IHandlerEvent) => {
     try {
       // Import adaptor
       const adaptor: Adapter = importModule(module).default;
-      console.info("Improted OK")
+      console.info("Imported OK")
 
       // Get list of adapters to run
       const adaptersToRun: [string, BaseAdapter][] = []

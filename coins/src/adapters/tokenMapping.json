@@ -603,6 +603,11 @@
       "to": "coingecko#goku-money-gai",
       "decimals": "18",
       "symbol": "GAI"
+    },
+    "0x95cef13441be50d20ca4558cc0a27b601ac544e5": {
+      "to": "coingecko#manta-network",
+      "decimals": "18",
+      "symbol": "MANTA"
     }
   },
   "beam": {

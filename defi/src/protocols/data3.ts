@@ -1140,7 +1140,7 @@ const data3: Protocol[] = [
     url: "https://nuon.fi",
     description: "Meet Nuon, the new standard for money. Nuon is a decentralised cryptocurrency that protects your purchasing power from inflation. Get started in seconds.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/antfarm-finance.jpg`,
+    logo: `${baseIconsUrl}/nuon-finance.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

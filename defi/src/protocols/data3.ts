@@ -1117,7 +1117,7 @@ const data3: Protocol[] = [
     url: "https://antfarm.finance",
     description: "Onchain rebalancing, ingeniously automated. Antfarm lets you turn market volatility into your strategic advantage, experiencing seamless, stress-free, and long-term growth leveraging the Tolerance Band Rebalancing strategy.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/antfarm-finance.jpg`,
+    logo: `${baseIconsUrl}/antfarm-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "antfarm-governance-token",

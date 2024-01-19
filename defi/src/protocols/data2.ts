@@ -28173,7 +28173,7 @@ const data2: Protocol[] = [
     name: "ether.fi",
     address: null,
     symbol: "-",
-    url: "https://www.mainnet.ether.fi",
+    url: "https://app.ether.fi",
     description:
       "Decentralized and non-custodial Ethereum staking protocol..",
     chain: "Ethereum",

@@ -29905,6 +29905,28 @@ const data3: Protocol[] = [
     github: ["jiblend"],
     listedAt: 1705614623
   },
+  {
+    id: "4045",
+    name: "Sudo Finance",
+    address: "sui:0xc44d97a4bc4e5a33ca847b72b123172c88a6328196b71414f32c3070233604b2::slp::SLP",
+    symbol: "SLP",
+    url: "https://app.sudo.finance",
+    description: "Sudo is a decentralized first-world synthetic asset trading platform. Sudo wraps real world assets and virtual assets into synthetic financial product on chain and enables high-leveraged trading of synthetic assets on the protocol.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/sudo-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["Sui"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "sudo-finance/index.js",
+    twitter: "sudofinance",
+    github: ["sudofina"],
+    listedAt: 1705662884
+  },
 ]
 
 export default data3

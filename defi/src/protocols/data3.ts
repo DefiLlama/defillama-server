@@ -29951,6 +29951,48 @@ const data3: Protocol[] = [
     parentProtocol: "parent#wemix.fi",
     listedAt: 1705674362
   },
+  {
+    id: "4047",
+    name: "ZKFairSwap",
+    address: "zkfair:0x4d928b11bDF551eC30309Ecd7cA02e8cB5B1cBd4",
+    symbol: "ZKS",
+    url: "https://zkfairswap.com/",
+    description: "AMM, dex and liquidity marketplace on ZKFair",
+    chain: "Zkfair",
+    logo: `${baseIconsUrl}/zkfairswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Zkfair"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "zkfairswap/index.js",
+    twitter: "zkfairswapdex",
+    listedAt: 1705709803
+  },
+  {
+    id: "4048",
+    name: "CirclePacific",
+    address: "manta:0x41C49790967067A71f893B51f2F311aCe46fb773",
+    symbol: "CIRCLE",
+    url: "https://circlepacific.xyz/",
+    description: "Dex on Manta Pacific",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/circlepacific.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Manta"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "CirclePacific/index.js",
+    twitter: "circlepacificEN",
+    listedAt: 1705709807
+  },
 ]
 
 export default data3

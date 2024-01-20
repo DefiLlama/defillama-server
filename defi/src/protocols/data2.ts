@@ -28164,7 +28164,7 @@ const data2: Protocol[] = [
       sui: ["Pyth"],
     },
     forkedFrom: [],
-    audit_links: ["https://docsend.com/view/wmrbwchgaf95rywc","https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-dTrade-v1.0.pdf"],
+    audit_links: ["https://docsend.com/view/wzxqw5ajgxd4pdsq","https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-dTrade-v1.0.pdf"],
     listedAt: 1677769578,
     github: ["fireflyprotocol"]
   },

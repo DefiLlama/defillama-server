@@ -8701,7 +8701,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/defily-dex.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "defily",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Onus"],

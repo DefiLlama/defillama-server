@@ -559,5 +559,9 @@ export default {
     "fwx": {
         "enabled": true,
         "id": "4026"
+    },
+    "orderly-network-derivatives": {
+        "enabled": true,
+        "id": "2264"
     }
 } as AdaptorsConfig

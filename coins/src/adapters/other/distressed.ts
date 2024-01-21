@@ -27,8 +27,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     "pETH-ETH-f": "0x9848482da3ee3076165ce6497eda906e66bb85c5",
     "msETH-ETH-f": "0xc897b98272aa23714464ea2a0bd5180f1b8c0025",
     FUNB: "0xd86c0b9b686f78a7a5c3780f03e700dbbad40e01",
-    FLEET: '0xfd56a3dcfc0690881a466ae432d71bb2db588083',
-    SHIB2_0: '0xdfef6416ea3e6ce587ed42aa7cb2e586362cbbfa',
+    FLEET: "0xfd56a3dcfc0690881a466ae432d71bb2db588083",
+    SHIB2_0: "0xdfef6416ea3e6ce587ed42aa7cb2e586362cbbfa",
     // Euler tokens
     EULER_LP1: "0x1b808f49add4b8c6b5117d9681cf7312fcf0dc1d",
     EULER_LP2: "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
@@ -63,7 +63,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   arbitrum: {
     GOLD: "0xc4be0798e5b5b1C15edA36d9B2D8c1A60717fA92",
-    MIM: "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
     BIFI: "0x99c409e5f62e4bd2ac142f17cafb6810b8f0baae",
     MINTME: "0x7d05d38e6109a3aeeebf0a570eb8f6856cb4b55e",
     GRAIN: "0x80bb30d62a16e1f2084deae84dc293531c3ac3a1",
@@ -103,8 +102,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MINTME: "0x138218c8e064ed2a011c9ff203759a8a1e23e6c8",
     GRAIN: "0x8f87a7d376821c7b2658a005aaf190ec778bf37a",
     FITFI: "0x7588df009c3d82378be6ab81f2108fa963c10fc8",
-    JEFE: '0x80fa6d5384bdde296a28a321f73ab70977575129',
-    LORT: '0xd24616870ca41bc01074446988faeb0085a71190',
+    JEFE: "0x80fa6d5384bdde296a28a321f73ab70977575129",
+    LORT: "0xd24616870ca41bc01074446988faeb0085a71190",
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
@@ -114,9 +113,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     YAKU: "NGK3iHqqQkyRZUj4uhJDQqEyKKcZ7mdawWpqwMffM3s",
     SNS: "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd",
     PEEP: "n54ZwXEcLnc3o7zK48nhrLV4KTU5wWD4iq7Gvdt5tik",
-    WIF: 'EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm',
-    GUAC: 'AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR',
-    OVOL: '4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6'
+    WIF: "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+    GUAC: "AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR",
+    OVOL: "4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6",
   },
   avax: {
     DUEL: "0xc1a49c0b9c10f35850bd8e15eaef0346be63e002",
@@ -207,7 +206,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     USDC: "0xfa9343c3897324496a05fc75abed6bac29f8a40f",
     USDT: "0xb44a9b6905af7c801311e8f4e76932ee959c663c",
     WBTC: "0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b",
-    null:"0xa0eeda2e3075092d66384fe8c91a1da4bca21788"
+    null: "0xa0eeda2e3075092d66384fe8c91a1da4bca21788",
   },
   kardia: {
     USDC: "0x765277eebeca2e31912c9946eae1021199b39c61",
@@ -255,12 +254,19 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     TFBX: "truefeedbackchain",
   },
   bittorrent: {
-    WBTT: '0x8d193c6efa90bcff940a98785d1ce9d093d3dc8a'
+    WBTT: "0x8d193c6efa90bcff940a98785d1ce9d093d3dc8a",
   },
 };
 
-export const distressedAssets = Object.fromEntries(Object.entries(contracts).map(([chain, tokens])=>{
-    return Object.entries(tokens).map(([_symbol, address])=>{
-        return [`${chain}:${chain==="solana"?address:address.toLowerCase()}`, true]
+export const distressedAssets = Object.fromEntries(
+  Object.entries(contracts)
+    .map(([chain, tokens]) => {
+      return Object.entries(tokens).map(([_symbol, address]) => {
+        return [
+          `${chain}:${chain === "solana" ? address : address.toLowerCase()}`,
+          true,
+        ];
+      });
     })
-}).flat())
+    .flat(),
+);

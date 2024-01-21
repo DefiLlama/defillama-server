@@ -314,6 +314,11 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     },
+    "0x24599b658b57f91E7643f4F154B16bcd2884f9ac": {
+      "decimals": "18",
+      "symbol": "JUSDT",
+      "to": "coingecko#tether"
+    },
     "0x55b25214363306686E1F5424d5f96Fb330F51D4c": {
       "decimals": "18",
       "symbol": "USDC",

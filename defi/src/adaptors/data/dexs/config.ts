@@ -2358,6 +2358,7 @@ export default {
         "id": "577"
     },
     "monocerus": {
+        disabled: true,
         "enabled": true,
         "id": "3622"
     },

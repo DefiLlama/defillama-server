@@ -1777,5 +1777,9 @@ export default {
         parentId: "SquadSwap",
         "enabled": true,
         "id": "4010"
+    },
+    "zerion-wallet": {
+        "enabled": true,
+        "id": "4049"
     }
 } as AdaptorsConfig

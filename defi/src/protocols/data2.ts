@@ -19912,13 +19912,13 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Near"],
     module: "orderly-network/index.js",
     twitter: "OrderlyNetwork",
     forkedFrom: [],
     oracles: [],
-    audit_links: ["https://www.certik.com/projects/orderly-network"],
+    audit_links: ["https://github.com/OrderlyNetwork/Audits"],
     listedAt: 1668086145
   },
   {

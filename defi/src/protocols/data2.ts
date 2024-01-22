@@ -5553,7 +5553,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "ambire-wallet",
     cmcId: "17722",
-    category: "Services",
+    category: "Wallets",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

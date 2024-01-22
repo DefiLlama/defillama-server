@@ -5,9 +5,9 @@ import {
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import axios from "axios";
 import { multiCall } from "@defillama/sdk/build/abi";
+import * as sdk from "@defillama/sdk";
 const abi = require("./abi.json");
 import getBlock from "../../utils/block";
-import { BigNumber } from "ethers";
 import { Result } from "../../utils/sdkInterfaces";
 
 interface Market {
@@ -101,7 +101,7 @@ export default async function getTokenPrices(
       abi: abi.convertBalanceToUnderlying,
       calls: markets.map((m: Market) => ({
         target: m.address,
-        params: [BigNumber.from(10).pow(BigNumber.from(18)).toString()]
+        params: [sdk.util.convertToBigInt(1e18).toString()]
       })),
       chain: chain as any,
       block,

@@ -45,3 +45,10 @@ async function main() {
   logTable(Object.values(lTable))
 }
 main();
+
+
+// catch unhandled errors
+process.on("uncaughtException", (err) => {
+  console.error('uncaught error', err);
+  process.exit(1);
+});

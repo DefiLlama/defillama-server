@@ -43,8 +43,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     topic: 'IlkAdded(bytes6,bytes6)'
   })
 
-  let iface = new ethers.utils.Interface([abis.IlkAdded])
-  let parsedLogs = logs.map((log: any) => (iface.parseLog(log)).args)
+  let iface = new ethers.Interface([abis.IlkAdded])
+  let parsedLogs = logs.map((log: any) => ((iface as any).parseLog(log)).args)
   const seriesIds = parsedLogs.map((i: any) => i.seriesId)
 
   let pools = await api.multiCall({

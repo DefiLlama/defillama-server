@@ -30069,7 +30069,7 @@ const data3: Protocol[] = [
     gecko_id: "minterest",
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum", "Manta"],
+    chains: ["Ethereum", "Mantle"],
     oraclesByChain: {
       ethereum: ["Chainlink"], 
       manta: ["API3"],

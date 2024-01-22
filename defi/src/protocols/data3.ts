@@ -30013,7 +30013,27 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "zerion",
   },
-
+  {
+    id: "4050",
+    name: "FerdyFlip",
+    address: null,
+    symbol: "-",
+    url: "https://www.ferdyflip.xyz",
+    description: "Decentralized casino with revenue share. No KYC and instant settlements.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/ferdyflip.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Avalanche", "Base"],
+    oracles: ["Chainlink"], 
+    forkedFrom: [],
+    module: "ferdyflip/index.js",
+    twitter: "ferdyfishh",
+    listedAt: 1705933290
+  },
 ]
 
 export default data3

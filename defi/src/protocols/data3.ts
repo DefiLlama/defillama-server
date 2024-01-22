@@ -29993,6 +29993,27 @@ const data3: Protocol[] = [
     twitter: "circlepacificEN",
     listedAt: 1705709807
   },
+  {
+    id: "4049",
+    name: "Zerion Wallet",
+    address: null,
+    symbol: "-",
+    url: "https://zerion.io",
+    description: "A crypto wallet for everything onchain",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zerion-wallet.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum", "Binance", "Optimism", "Arbitrum", "Base", "Polygon"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "zerion",
+  },
+
 ]
 
 export default data3

@@ -1781,5 +1781,9 @@ export default {
     "zerion-wallet": {
         "enabled": true,
         "id": "4049"
+    },
+    "goldfinch": {
+        "enabled": true,
+        "id": "703"
     }
 } as AdaptorsConfig

@@ -30034,6 +30034,61 @@ const data3: Protocol[] = [
     twitter: "ferdyfishh",
     listedAt: 1705933290
   },
+  {
+    id: "4051",
+    name: "ApplePie",
+    address: "bsc:0x574f75bc522CB42ec2365dc54485D471f2eFb4B6",
+    symbol: "Pie",
+    url: "https://applepies.co",
+    description: "ApplePies Revolutionized Crosschain Defi Miners. A fun spin twist to generate 10%/Day — Pool as a Service (PAAS)",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/applepie.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Binance"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "applepie/index.js",
+    twitter: "Applepiefin",
+    listedAt: 1705936845
+  },
+  {
+    id: "4052",
+    name: "Minterest",
+    address: "0x149caC67F1cd5d80651E7c9Bb359ec285D821a05",
+    symbol: "MNT",
+    url: "https://minterest.com",
+    description: "Minterest is a landing protocol which captures more fees than any other lending protocol and redistributes them as rewards back to users who contribute to its governance.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/minterest.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "minterest",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum", "Manta"],
+    oraclesByChain: {
+      ethereum: ["Chainlink"], 
+      manta: ["API3"],
+    },
+    forkedFrom: ["Compound V2"],
+    module: "minterest/index.js",
+    twitter: "Minterest",
+    github: ["minterest-finance"],
+    audit_links: [
+                    "https://minterest.com/audit-report-trail-of-bits/",
+                    "https://minterest.com/audit-report-hacken/",
+                    "https://minterest.com/audit-report-peckshield/",
+                    "https://minterest.com/audit-report-zokyo/",
+                    "https://minterest.com/zokyo-audit-report-2/",
+                    "https://minterest.com/audit-report-zokyo-3/",
+                    "https://minterest.com/audit-report-zokyo-4/"
+                 ],
+    listedAt: 1705936885
+  }, 
 ]
 
 export default data3

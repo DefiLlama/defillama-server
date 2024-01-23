@@ -1785,5 +1785,9 @@ export default {
     "goldfinch": {
         "enabled": true,
         "id": "703"
+    },
+    "zkswap-finance": {
+        "enabled": true,
+        "id": "3180"
     }
 } as AdaptorsConfig

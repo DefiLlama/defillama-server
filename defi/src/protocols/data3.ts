@@ -8000,7 +8000,7 @@ const data3: Protocol[] = [
     module: "tropykus-zkevm/index.js",
     twitter: "tropykus",
     forkedFrom: ["AAVE V2"],
-    oracles: [],
+    oracles: ["API3"],
     parentProtocol: "parent#tropykus-finance",
     listedAt: 1685700448
   },

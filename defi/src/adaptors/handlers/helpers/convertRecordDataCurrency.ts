@@ -88,7 +88,8 @@ export const convertDataToUSD = async (data: IRecordAdaptorRecordData, timestamp
                     // const tempBalances = new sdk.Balances({ timestamp })
                     // tempBalances.addBalances(protocolData)
                     // acc[protocol] = await tempBalances.getUSDValue()
-                    sdk.log('skipping balances object', protocol, protocolData, timestamp)
+                    if (Object.keys(protocolData).length > 0)
+                        sdk.log('skipping balances object', protocol, protocolData, timestamp)
                 }
                 return acc
             }, Promise.resolve({}) as Promise<IRecordAdapterRecordChainData>)

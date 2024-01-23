@@ -2765,17 +2765,17 @@ const data3: Protocol[] = [
   },
   {
     id: "2825",
-    name: "Nostra mainnet",
+    name: "Nostra Money Market",
     address: null,
     symbol: "-",
     url: "https://nostra.finance",
     description: "Nostra is your one-stop DeFi solution where you can lend, borrow, and swap crypto.",
     chain: "Starknet",
     logo: `${baseIconsUrl}/nostra.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
-    cmcId: null,
+    cmcId: "22743",
     category: "Lending",
     chains: ["Starknet"],
     oracles: ["Pragma"], // https://docs.nostra.finance/lend/deployed-contracts/lend-mainnet
@@ -21284,17 +21284,17 @@ const data3: Protocol[] = [
   },
   {
     id: "3652",
-    name: "Nostra alpha",
+    name: "Nostra Money Market (Alpha)",
     address: null,
     symbol: "-",
     url: "https://alpha.nostra.finance/",
     description: "Nostra is your one-stop DeFi solution where you can lend, borrow, and swap crypto.",
     chain: "Starknet",
     logo: `${baseIconsUrl}/nostra.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
-    cmcId: null,
+    cmcId: "22743",
     category: "Lending",
     chains: ["Starknet"],
     oracles: ["Pragma"], // https://docs.nostra.finance/lend/deployed-contracts/lend-mainnet
@@ -30089,7 +30089,29 @@ const data3: Protocol[] = [
                     "https://minterest.com/audit-report-zokyo-4/"
                  ],
     listedAt: 1705936885
-  }, 
+  },
+  {
+    id: "4053",
+    name: "Nostra Pools",
+    address: null,
+    symbol: "-",
+    url: "https://app.nostra.finance/pools",
+    description: "Nostra is your one-stop DeFi solution where you can lend, borrow, and swap crypto.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/nostra.jpg`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: "22743",
+    category: "Dexes",
+    chains: ["Starknet"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "nostra-pools/index.js",
+    twitter: "nostrafinance",
+    parentProtocol: "parent#nostra",
+    listedAt: 1706026308
+  },
 ]
 
 export default data3

@@ -742,14 +742,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#bao-finance",
     name: "BAO Finance",
-    url: "https://app.bao.finance",
+    url: "https://app.baofinance.io",
     description:
       "Bao Finance is a decentralized, community-run project that uses synthetics to move the power of information from institutions to individuals",
     logo: `${baseIconsUrl}/bao-finance.jpg`,
     gecko_id: "bao-finance-v2",
     cmcId: null,
     chains: [],
-    twitter: "BaoFinance",
+    twitter: "BaoCommunity",
     governanceID: ["snapshot:pandaswapbsc.eth", "snapshot:baovotes.eth"],
     stablecoins: ["baousd"],
     github: ["baofinance"]

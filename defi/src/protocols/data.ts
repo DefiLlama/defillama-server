@@ -601,8 +601,8 @@ const data: Protocol[] = [
   {
     id: "133",
     name: "Shell Protocol",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xe47ba52f326806559c1deC7ddd997F6957d0317D",
+    symbol: "SHELL",
     url: "https://www.shellprotocol.io/",
     description: "DeFi hub for users & builders. Breakthrough accounting architecture and AMM engine.",
     chain: "Ethereum",

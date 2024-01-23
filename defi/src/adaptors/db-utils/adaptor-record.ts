@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk"
-import dynamodb from "../../utils/shared/dynamodb"
+import dynamodb, { getHistoricalValues } from "../../utils/shared/dynamodb"
 import { getDisplayChainName, formatChainKey } from "../utils/getAllChainsFromAdaptors"
-import removeErrors from "../utils/removeErrors"
+import removeErrors, { getErrorData } from "../utils/removeErrors"
 import { Item } from "./base"
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { IJSON, ProtocolAdaptor } from "../data/types"
@@ -150,6 +150,7 @@ export class AdaptorRecord extends Item {
 
 export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTimestamp: number): Promise<AdaptorRecord> => {
     if (Object.entries(adaptorRecord.data).length === 0) throw new Error(`${adaptorRecord.type}: Can't store empty adaptor record`)
+    let errorData = getErrorData(adaptorRecord.data)
     const currentRecord = await getAdaptorRecord(adaptorRecord.adaptorId, adaptorRecord.type, adaptorRecord.protocolType, "TIMESTAMP", adaptorRecord.timestamp).catch(() => console.info("No previous data found, writting new row..."))
     let currentData: IRecordAdaptorRecordData = {}
     if (currentRecord instanceof AdaptorRecord) currentData = currentRecord.data
@@ -176,23 +177,37 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         }, (currentData ?? {}) as IRecordAdaptorRecordData),
         eventTimestamp
     }
-    const obj2StoreRemoveReserveKeys = Object.entries(obj2Store).reduce((acc, [key, value]) => {
-        if (dynamoReservedKeywords.includes(key.toUpperCase())) {
-            delete acc[key];
-            return acc
-        }
-        acc[key] = value
-        return acc
-    }, {} as IRecordAdaptorRecordData)
-
+    // const obj2StoreRemoveReserveKeys = Object.entries(obj2Store).reduce((acc, [key, value]) => {
+    //     if (dynamoReservedKeywords.includes(key.toUpperCase())) {
+    //         delete acc[key];
+    //         return acc
+    //     }
+    //     acc[key] = value
+    //     return acc
+    // }, {} as IRecordAdaptorRecordData)
+    adaptorRecord.data = obj2Store 
+    const record = adaptorRecord.getCleanAdaptorRecord()
+    const { PK, SK } = adaptorRecord.keys()
 
     try {
-        console.log("Storing", obj2StoreRemoveReserveKeys, adaptorRecord.keys())
-        await dynamodb.update({
-            Key: adaptorRecord.keys(),
-            UpdateExpression: createUpdateExpressionFromObj(obj2StoreRemoveReserveKeys),
-            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(obj2StoreRemoveReserveKeys)
-        }) // Upsert like
+        console.log("Storing", adaptorRecord.keys())
+        if (record) {
+            await dynamodb.put(record.toItem())
+        }
+        if (errorData) {
+            Object.entries(errorData).forEach(([chain, error]) => {
+                if (dynamoReservedKeywords.includes(chain.toUpperCase())) {
+                    errorData[replaceReservedKeyword(chain)] = error
+                    delete errorData[chain];
+                }
+            })
+            await dynamodb.put({ PK: `${PK}#error`, SK, ...errorData })
+        }
+        // await dynamodb.update({
+        //     Key: adaptorRecord.keys(),
+        //     UpdateExpression: createUpdateExpressionFromObj(obj2StoreRemoveReserveKeys),
+        //     ExpressionAttributeValues: createExpressionAttributeValuesFromObj(obj2StoreRemoveReserveKeys)
+        // }) // Upsert like
         return adaptorRecord
     } catch (error) {
         throw error
@@ -254,19 +269,20 @@ export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordTyp
         expressionAttributeValues[":sk"] = timestamp
         keyConditionExpression = `${keyConditionExpression} and SK = :sk`
     }
-    try {
-        const resp = await dynamodb.query({
+    let resp: any
+    if (mode === "ALL") {
+        resp = await getHistoricalValues(adaptorRecord.pk)
+    } else {
+        resp = await dynamodb.query({
             // TODO: Change for upsert like
             KeyConditionExpression: keyConditionExpression,
             ExpressionAttributeValues: expressionAttributeValues,
             Limit: mode === "LAST" ? 1 : undefined,
             ScanIndexForward: mode === "LAST" ? false : true
         })
-        if (!resp.Items || resp.Items.length === 0) throw Error(`No items found for ${adaptorRecord.pk}${timestamp ? ` at ${timestamp}` : ''}`)
-        return mode === "LAST" || mode === 'TIMESTAMP' ? AdaptorRecord.fromItem(resp.Items[0]) : resp.Items.map(AdaptorRecord.fromItem)
-    } catch (error) {
-        throw error
     }
+    if (!resp || resp.length === 0) throw Error(`No items found for ${adaptorRecord.pk}${timestamp ? ` at ${timestamp}` : ''}`)
+    return mode === "LAST" || mode === 'TIMESTAMP' ? AdaptorRecord.fromItem(resp.Items[0]) : resp.map(AdaptorRecord.fromItem)
 }
 
 // REMOVES ALL VOLUMES, DO NOT USE!

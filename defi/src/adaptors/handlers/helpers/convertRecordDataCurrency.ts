@@ -84,13 +84,12 @@ export const convertDataToUSD = async (data: IRecordAdaptorRecordData, timestamp
                 let acc = await accP
                 if (protocol === 'error') return acc
                 else if (typeof protocolData === 'number') acc[protocol] = protocolData
-                else if (typeof protocolData === 'object') acc[protocol] = await Object.entries(protocolData).reduce(async (accP, [chaintoken, balance]) => {
-                    let acc = await accP
-                    if (!prices?.[chaintoken]?.prices?.[timestamp]?.price) await addToPricesObject(chaintoken, timestamp)
-                    if (prices?.[chaintoken]?.prices?.[timestamp]?.price)
-                        acc += prices[chaintoken].prices[timestamp].price * Number(balance)
-                    return acc
-                }, Promise.resolve(0))
+                else if (typeof protocolData === 'object') {
+                    // const tempBalances = new sdk.Balances({ timestamp })
+                    // tempBalances.addBalances(protocolData)
+                    // acc[protocol] = await tempBalances.getUSDValue()
+                    sdk.log('skipping balances object', protocol, protocolData, timestamp)
+                }
                 return acc
             }, Promise.resolve({}) as Promise<IRecordAdapterRecordChainData>)
         }

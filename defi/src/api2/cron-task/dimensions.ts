@@ -17,7 +17,7 @@ async function run() {
     const pormises = allDataTypes.map(i => _writeAdapterType(adaptorRecordType, i, data))
     await Promise.all(pormises)
     // TODO: remove from ddb or move to different db and handle it task runner while pulling data
-    removeErrorField(data)
+    // removeErrorField(data)
     await writeToPGCache(fileKey, data)
   })
   await Promise.all(promises)
@@ -73,6 +73,10 @@ async function writeAdapterType(adaptorRecordType: AdapterType, dataType: Adapto
         const rawTotalRecord = await wrappedGetAdaptorRecord(adapter, lastKey, "LAST").catch(_e => { }) as AdaptorRecord | undefined
         if (rawTotalRecord)
           data[getKey(adapter, lastKey, 'LAST')] = rawTotalRecord
+        // enable below lines to get & clean cummulative records - but there is no point in caching all cummulative records, we are interested only in the last one
+        // const allRecords = await wrappedGetAdaptorRecord(adapter, lastKey)
+        // if ((allRecords as any)?.length)
+        //   data[getKey(adapter, lastKey)] = allRecords
       }
 
       for (const recordType of getExtraTypes(adaptorRecordType)) {

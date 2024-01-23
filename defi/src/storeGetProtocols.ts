@@ -8,7 +8,7 @@ import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
 import { storeR2 } from "./utils/r2";
 import { getChainDisplayName } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
-import fetch from "node-fetch"
+import fetch from "node-fetch";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -20,8 +20,8 @@ function compress(data: string) {
 function replaceChainNames(
   oraclesByChain?:
     | {
-      [chain: string]: string[];
-    }
+        [chain: string]: string[];
+      }
     | undefined
 ) {
   if (!oraclesByChain) return oraclesByChain;
@@ -29,7 +29,6 @@ function replaceChainNames(
     Object.entries(oraclesByChain).map(([chain, vals]) => [getChainDisplayName(chain, true), vals])
   );
 }
-
 
 export async function storeGetProtocols({
   getCoinMarkets,
@@ -39,7 +38,6 @@ export async function storeGetProtocols({
   getLastWeekTvl,
   getLastMonthTvl,
 }: any = {}) {
-
   const response = await craftProtocolsResponse(true, undefined, {
     getCoinMarkets,
     getLastHourlyRecord,
@@ -76,7 +74,7 @@ export async function storeGetProtocols({
           parentProtocol: protocol.parentProtocol,
           defillamaId: protocol.id,
           governanceID: protocol.governanceID,
-          geckoId: protocol.gecko_id
+          geckoId: protocol.gecko_id,
         };
       })
     )
@@ -108,36 +106,39 @@ export async function storeGetProtocols({
     }
   });
 
-  const getParentCoinMarkets = () => fetch("https://coins.llama.fi/mcaps", {
-    method: "POST",
-    body: JSON.stringify({
-      coins: parentProtocolsList
-        .filter((parent) => typeof parent.gecko_id === "string")
-        .map((parent) => `coingecko:${parent.gecko_id}`),
-    }),
-  }).then((r) => r.json())
+  const getParentCoinMarkets = () =>
+    fetch("https://coins.llama.fi/mcaps", {
+      method: "POST",
+      body: JSON.stringify({
+        coins: parentProtocolsList
+          .filter((parent) => typeof parent.gecko_id === "string")
+          .map((parent) => `coingecko:${parent.gecko_id}`),
+      }),
+    }).then((r) => r.json());
 
-  const _getCoinMarkets = getCoinMarkets ?? getParentCoinMarkets
+  const _getCoinMarkets = getCoinMarkets ?? getParentCoinMarkets;
   const coinMarkets = await _getCoinMarkets();
 
-  const extendedParentProtocols = [] as any[]
+  const extendedParentProtocols = [] as any[];
   const parentProtocols: IParentProtocol[] = parentProtocolsList.map((parent) => {
     const chains: Set<string> = new Set();
 
     const children = response.filter((protocol) => protocol.parentProtocol === parent.id);
-    let symbol = '-', tvl = 0, chainTvls = {} as { [chain: string]: number }
+    let symbol = "-",
+      tvl = 0,
+      chainTvls = {} as { [chain: string]: number };
     children.forEach((child) => {
       if (child.symbol !== "-") {
-        symbol = child.symbol
+        symbol = child.symbol;
       }
-      tvl += child.tvl;
+      tvl += child.tvl ?? 0;
       Object.entries(child.chainTvls).forEach(([chain, chainTvl]) => {
-        chainTvls[chain] = (chainTvls[chain] ?? 0) + chainTvl
-      })
+        chainTvls[chain] = (chainTvls[chain] ?? 0) + chainTvl;
+      });
       child.chains?.forEach((chain: string) => chains.add(chain));
     });
 
-    const mcap = parent.gecko_id ? coinMarkets?.[`coingecko:${parent.gecko_id}`]?.mcap ?? null : null
+    const mcap = parent.gecko_id ? coinMarkets?.[`coingecko:${parent.gecko_id}`]?.mcap ?? null : null;
     extendedParentProtocols.push({
       id: parent.id,
       name: parent.name,
@@ -148,7 +149,7 @@ export async function storeGetProtocols({
       mcap,
       gecko_id: parent.gecko_id,
       isParent: true,
-    })
+    });
     return {
       ...parent,
       chains: Array.from(chains),
@@ -163,21 +164,26 @@ export async function storeGetProtocols({
       .map((c) => c[0]),
     protocolCategories: [...protocolCategoriesSet].filter((category) => category),
     parentProtocols,
-  }
+  };
 
-  const v2ProtocolData = response.filter(p => p.category !== "Chain" && p.category !== "CEX").map(protocol => ({
-    id: protocol.id,
-    name: protocol.name,
-    symbol: protocol.symbol,
-    category: protocol.category,
-    tvl: protocol.tvl,
-    chainTvls: Object.fromEntries(Object.entries(protocol.chainTvls).filter(c => !c[0].includes("-") && !extraSections.includes(c[0]))),
-    mcap: protocol.mcap,
-    gecko_id: protocol.gecko_id,
-    parent: protocol.parentProtocol,
-  })).concat(extendedParentProtocols)
+  const v2ProtocolData = response
+    .filter((p) => p.category !== "Chain" && p.category !== "CEX")
+    .map((protocol) => ({
+      id: protocol.id,
+      name: protocol.name,
+      symbol: protocol.symbol,
+      category: protocol.category,
+      tvl: protocol.tvl,
+      chainTvls: Object.fromEntries(
+        Object.entries(protocol.chainTvls).filter((c) => !c[0].includes("-") && !extraSections.includes(c[0]))
+      ),
+      mcap: protocol.mcap,
+      gecko_id: protocol.gecko_id,
+      parent: protocol.parentProtocol,
+    }))
+    .concat(extendedParentProtocols);
 
-  return { protocols2Data, v2ProtocolData }
+  return { protocols2Data, v2ProtocolData };
 }
 
 const handler = async (_event: any) => {

@@ -193,7 +193,7 @@ export async function craftProtocolsResponseInternal(
           tvl: lastHourlyRecord?.tvl ?? null,
           chainTvls,
           chains: chains.sort((a, b) => chainTvls[b] - chainTvls[a]),
-          chain: getDisplayChain(chains) ?? null,
+          chain: getDisplayChain(chains),
           change_1h: lastHourlyRecord ? getPercentChange(lastHourlyRecord.tvlPrev1Hour, lastHourlyRecord.tvl) : null,
           change_1d: lastHourlyRecord ? getPercentChange(lastHourlyRecord.tvlPrev1Day, lastHourlyRecord.tvl) : null,
           change_7d: lastHourlyRecord ? getPercentChange(lastHourlyRecord.tvlPrev1Week, lastHourlyRecord.tvl) : null,
@@ -214,7 +214,7 @@ export async function craftProtocolsResponseInternal(
     )
   )
     .filter((protocol) => protocol !== null)
-    .sort((a, b) => b!.tvl - a!.tvl) as IProtocol[];
+    .sort((a, b) => (b?.tvl ?? 0) - (a?.tvl ?? 0)) as IProtocol[];
 
   return response;
 }

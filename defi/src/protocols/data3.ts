@@ -30090,7 +30090,7 @@ const data3: Protocol[] = [
     listedAt: 1705936885
   }, 
   {
-    id: "4052",
+    id: "4053",
     name: "Pyth Network",
     address: "solana:HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
     symbol: "PYTH",

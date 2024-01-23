@@ -7557,6 +7557,24 @@
       "decimals": 18,
       "symbol": "INJ",
       "to": "coingecko#injective-protocol"
+    },
+    "E67ADA2204A941CD4743E70771BA08E24885E1ADD6FD140CE1F9E0FEBB68C6B2": {
+      "name": "fantom",
+      "decimals": 18,
+      "symbol": "wFTM",
+      "to": "coingecko#fantom"
+    },
+    "FC59D6840A41252352263CEA2B832BB86D68D03CBA194263CB9F3C15946796FB": {
+      "name": "chainlink",
+      "decimals": 18,
+      "symbol": "LINK",
+      "to": "coingecko#chainlink"
+    },
+    "E5CA126979E2FFB4C70C072F8094D07ECF27773B37623AD2BF7582AD0726F0F3": {
+      "name": "wrapped-solana",
+      "decimals": 8,
+      "symbol": "whSOL",
+      "to": "coingecko#solana"
     }
   },
   "bitindi": {

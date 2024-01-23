@@ -30089,6 +30089,28 @@ const data3: Protocol[] = [
                  ],
     listedAt: 1705936885
   }, 
+  {
+    id: "4052",
+    name: "Pyth Network",
+    address: "solana:HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
+    symbol: "PYTH",
+    url: "https://pyth.network",
+    description: "(Staking). Secure your smart contracts with reliable, low-latency market data from institutional sources. Build apps with high-fidelity oracle feeds designed for mission-critical systems.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/pyth-network.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "pyth-network",
+    cmcId: "28177",
+    category: "Oracle",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "pyth/index.js",
+    twitter: "PythNetwork",
+    github: ["pyth-network"],
+    listedAt: 1706009359
+  }, 
 ]
 
 export default data3

@@ -13071,7 +13071,7 @@ const data3: Protocol[] = [
     url: "https://vault.teahouse.finance",
     description: "Teahouse Managed Vaults are single-asset strategy vaults that operate on a periodic schedule (users can only enter/exit at certain times). They run dedicated DeFi strategies that dynamically responds to market signals and are managed by professional Strategy Managers.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/teahouse-managed.jpg`,
+    logo: `${baseIconsUrl}/teahouse-managed.jpg`, //logo
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -13094,7 +13094,7 @@ const data3: Protocol[] = [
     url: "https://vault.teahouse.finance",
     description: "Teahouse Permissionless Vaults are flexible liquidity provision vaults (dual asset pairs) where users can deposit and withdraw at any time. They run dedicated DeFi strategies that dynamically respond to market signals and are managed by professional Strategy Managers.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/teahouse-permissionless.jpg`,
+    logo: `${baseIconsUrl}/teahouse-permissionless.jpg`, //logo
     audits: "2",
     audit_note: null,
     gecko_id: null,

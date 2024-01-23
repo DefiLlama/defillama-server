@@ -2290,7 +2290,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Teahouse Finance",
     url: "https://vault.teahouse.finance",
     description: "Teahouse is a multi-strategy DeFi asset manager similar to a hedge fund. We help enterprise and individual clients grow their crypto assets on our secure and transparent platform.",
-    logo: `${baseIconsUrl}/teahouse-finance.jpg`,
+    logo: `${baseIconsUrl}/teahouse-finance.jpg`, //logo
     gecko_id: null,
     cmcId: null,
     chains: [],

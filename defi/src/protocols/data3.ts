@@ -14462,8 +14462,8 @@ const data3: Protocol[] = [
     twitter: "MeridianFi",
     forkedFrom: ["Liquity"],
     oracles: ["DIA"],
+    parentProtocol: "parent#meridian",
     listedAt: 1691326424,
-    github: ["MeridianDollar"]
   },
   {
     id: "3348",
@@ -15335,7 +15335,7 @@ const data3: Protocol[] = [
     twitter: "MeridianFi",
     forkedFrom: ["GMX V1"],
     oracles: ["DIA"],
-    github: ["MeridianDollar"],
+    parentProtocol: "parent#meridian",
     listedAt: 1692093398
   },
   {
@@ -30289,6 +30289,7 @@ const data3: Protocol[] = [
     forkedFrom: ["AAVE V2"],
     module: "meridian-lend/index.js",
     twitter: "MeridianFi",
+    parentProtocol: "parent#meridian",
     listedAt: 1706133526
   },
 ]

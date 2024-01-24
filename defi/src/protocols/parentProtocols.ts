@@ -3510,6 +3510,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Dojo_Swap",
   },
+  {
+    id: "parent#meridian",
+    name: "Meridian",
+    url: "https://www.meridianfinance.net",
+    description: `Meridian is a non-custodial, decentralised financial trading platform that offers interest-free stable coin borrowing, leverage trading and zero slippage swaps all in one place. `,
+    logo: `${baseIconsUrl}/meridian.jpg`,
+    gecko_id: "meridian-mst",
+    cmcId: null,
+    chains: [],
+    twitter: "MeridianFi",
+    github: ["MeridianDollar"]
+  },
 ];
 
 export default parentProtocols;

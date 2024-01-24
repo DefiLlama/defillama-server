@@ -398,10 +398,13 @@ export async function writeToRedis(strings: {
       `https://coins.llama.fi/prices/current/${key}`,
     ).then((r) => r.json());
     const realPrice = real.coins[key].price;
-    let b = ob.price;
+    await sendMessage(
+      `test redis alert for ${key}, prices ${ob.price}, ${realPrice}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    );
     if (Math.abs(ob.price - realPrice) / realPrice < 0.9) {
       await sendMessage(
-        `redis ${real.symbol} price is being written as ${ob.price} when it should be about ${real.price}!!`,
+        `redis price is being written as ${ob.price} when it should be about ${realPrice}!!`,
         process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
       );
     }

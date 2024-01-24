@@ -30112,6 +30112,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#nostra",
     listedAt: 1706065335
   },
+  {
+    id: "4054",
+    name: "INIT Capital",
+    address: null,
+    symbol: "-",
+    url: "https://app.init.capital",
+    description: "The Liquidity Hook Money Market: Lend, Borrow, and Access Yield Strategies with Liquidity Hook.",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/init-capital.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Mantle"],
+    oracles: [], // they mention API3 in the listing process, but no mention of how is securing their TVL, neither there is no mention of oracles in the docs
+    forkedFrom: [],
+    module: "init-capital/index.js",
+    twitter: "InitCapital_",
+    audit_links: ["https://github.com/init-capital/init-core-public/tree/master/audits"],
+    github: ["init-capital"],
+    listedAt: 1706098233
+  },
+  {
+    id: "4055",
+    name: "Fyde Protocol",
+    address: "0x87Cc45fFF5c0933bb6aF6bAe7Fc013b7eC7df2Ee",
+    symbol: "TRSY",
+    url: "http://www.fyde.fi",
+    description: "Fyde Treasury Protocol enables the crypto ecosystem to diversify portfolios & treasuries, unlock token liquidity, and generate yield. The protocol introduces an innovation of the Liquid Vault that creates large multi-asset liquidity vaults directly accessible by the user's native governance token.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fyde-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "fyde-treasury",
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: ["Chainlink", "TWAP"],  // https://etherscan.io/address/0x9b122361e8708be33b785e44fce4d6ca86ab6c5a#code
+    forkedFrom: [],
+    module: "fyde/index.js",
+    twitter: "FydeTreasury",
+    listedAt: 1706099158
+  },
 ]
 
 export default data3

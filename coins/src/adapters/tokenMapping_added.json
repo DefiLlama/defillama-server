@@ -3549,6 +3549,12 @@
       "decimals": "6",
       "symbol": "OSMO",
       "to": "coingecko#osmosis"
+    },
+    "factory:osmo1pfyxruwvtwk00y8z06dh2lqjdj82ldvy74wzm3:WOSMO": {
+      "name": "Wrapped Osmo",
+      "decimals": "6",
+      "symbol": "WOSMO",
+      "to": "coingecko#osmosis"
     }
   },
   "kujira": {

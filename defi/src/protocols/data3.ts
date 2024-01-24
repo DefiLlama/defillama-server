@@ -28152,7 +28152,7 @@ const data3: Protocol[] = [
     url: "https://dojo.trading",
     description: "A Native AMM Dex on Injective. Providing efficient trading and liquidity mining to the Injective ecosystem",
     chain: "Injective",
-    logo: `${baseIconsUrl}/dojoswap-amm.png`,
+    logo: `${baseIconsUrl}/dojoswap-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

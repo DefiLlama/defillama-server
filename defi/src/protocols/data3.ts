@@ -30292,6 +30292,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#meridian",
     listedAt: 1706133526
   },
+  {
+    id: "4062",
+    name: "DeltaSwap",
+    address: null,
+    symbol: "-",
+    url: "https://gammaswap.com",
+    description: "GammaSwap is a novel DeFi primitive built to scale liquidity in Automated Market Makers (AMMs) by providing better risk adjusted returns to Liquidity Providers (LPs).",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/deltaswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    oracles: [],  
+    forkedFrom: [],
+    module: "gammaswap-deltaswap/index.js",
+    twitter: "GammaSwapLabs",
+    audit_links: ["https://docs.gammaswap.com/more-info/audits"],
+    listedAt: 1706135741
+  },
 ]
 
 export default data3

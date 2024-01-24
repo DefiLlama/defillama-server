@@ -829,7 +829,7 @@
       "to": "coingecko#tether"
     },
     "0x38C2a6953F86a7453622B1E7103b738239728754": {
-      "decimals": "6",
+      "decimals": "18",
       "symbol": "DAI",
       "to": "coingecko#dai"
     },

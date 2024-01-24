@@ -30217,7 +30217,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "brickken",
     cmcId: "21822",
-    category: "Services",
+    category: "RWA",
     chains: ["Ethereum"],
     oracles: ["Chainlink", "TWAP"],  
     forkedFrom: [],

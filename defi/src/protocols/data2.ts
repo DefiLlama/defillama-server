@@ -22137,14 +22137,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2364",
-    name: "Butter Network",
+    name: "Butter Swap", //previous Butter Network
     address: null,
     symbol: "-",
     url: "https://butternetwork.io",
     description:
       "Butter is set to change how users, projects, and dApps move tokens and NFTs between blockchains with a suite of proven-secure and user-friendly products",
     chain: "Binance",
-    logo: `${baseIconsUrl}/butter-network.png`,
+    logo: `${baseIconsUrl}/butter-swap.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

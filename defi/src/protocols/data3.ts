@@ -28146,13 +28146,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3965",
-    name: "Dojoswap",
+    name: "Dojoswap AMM",
     address: null,
     symbol: "-",
     url: "https://dojo.trading",
     description: "A Native AMM Dex on Injective. Providing efficient trading and liquidity mining to the Injective ecosystem",
     chain: "Injective",
-    logo: `${baseIconsUrl}/dojoswap.png`,
+    logo: `${baseIconsUrl}/dojoswap-amm.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -28163,6 +28163,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dojoswap/index.js", 
     twitter: "Dojo_Swap", 
+    parentProtocol: "parent#dojoswap",
     listedAt: 1703694681
   },
   {
@@ -30178,6 +30179,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dojoswap-lsd/index.js",
     twitter: "Dojo_Swap",
+    parentProtocol: "parent#dojoswap",
     listedAt: 1706108284
   },
   {
@@ -30199,6 +30201,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Algebra Integral"],
     module: "swapr-v3/index.js",
     twitter: "Swapr_dapp",
+    parentProtocol: "parent#swapr",
     listedAt: 1706108295
   },
   {

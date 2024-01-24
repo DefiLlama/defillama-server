@@ -3486,6 +3486,30 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "kimprotocol",
     github: ["kizuna-dex"],
   },
+  {
+    id: "parent#swapr",
+    name: "Swapr",
+    url: "https://swapr.eth.limo/",
+    description: `A governance-enabled automated-market maker with adjustable fees, made by DXdao.`,
+    logo: `${baseIconsUrl}/swapr.jpg`,
+    gecko_id: "swapr",
+    cmcId: null,
+    chains: [],
+    twitter: "Swapr_dapp",
+    governanceID: ["snapshot:swpr.eth"],
+    github: ["levelkdev"]
+  },
+  {
+    id: "parent#dojoswap",
+    name: "Dojoswap",
+    url: "https://dojo.trading",
+    description: `A Native AMM Dex on Injective. Providing efficient trading and liquidity mining to the Injective ecosystem`,
+    logo: `${baseIconsUrl}/dojoswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Dojo_Swap",
+  },
 ];
 
 export default parentProtocols;

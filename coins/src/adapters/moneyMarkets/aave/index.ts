@@ -76,6 +76,12 @@ export function radiant(timestamp: number = 0) {
       "0x7BB843f889e3a0B307299c3B65e089bFfe9c0bE0",
       "v2",
       timestamp
+    ),
+    getTokenPrices(
+      "arbitrum",
+      "0x9D36DCe6c66E3c206526f5D7B3308fFF16c1aa5E",
+      "v2",
+      timestamp
     )
   ]);
 }

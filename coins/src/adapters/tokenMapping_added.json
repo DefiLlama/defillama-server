@@ -2957,6 +2957,12 @@
       "decimals": "18",
       "symbol": "JPYC",
       "to": "coingecko#jpy-coin"
+    },
+    "0xFfFfFfff00000000000000010000000000000008": {
+      "name": "Voucher DOT",
+      "decimals": "10",
+      "symbol": "vDOT",
+      "to": "coingecko#voucher-dot"
     }
   },
   "cardano": {

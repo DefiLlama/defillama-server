@@ -1789,5 +1789,9 @@ export default {
     "zkswap-finance": {
         "enabled": true,
         "id": "3180"
+    },
+    "horiza": {
+        "enabled": true,
+        "id": "4041"
     }
 } as AdaptorsConfig

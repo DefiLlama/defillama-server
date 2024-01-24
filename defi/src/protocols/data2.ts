@@ -27027,7 +27027,7 @@ const data2: Protocol[] = [
   {
     id: "2576",
     name: "Goledo",
-    address: "conflux:0xa4b59aa3de2af57959c23e2c9c89a2fcb408ce6a",
+    address: "conflux:0x19aae9e4269ab47ff291125b5c0c2f7296a635ab",
     symbol: "GOL",
     url: "https://www.goledo.cash",
     description:
@@ -27036,7 +27036,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/goledo.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "goledo",
+    gecko_id: "goledo-2",
     cmcId: "22284",
     category: "Lending",
     chains: ["Conflux"],

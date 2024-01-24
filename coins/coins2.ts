@@ -3,7 +3,9 @@ import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordCloses
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
 import postgres from "postgres";
-import { sleep } from "zksync-web3/build/src/utils";
+import sleep from "./src/utils/shared/sleep";
+import fetch from "node-fetch";
+import { sendMessage } from "../defi/src/utils/discord";
 
 const pgColumns: string[] = [
   "key",
@@ -21,7 +23,7 @@ const zeroDecimalAdapters: string[] = [
   "chainlink-nft",
   "defichain",
   "radixdlt",
-  "reservoir"
+  "reservoir",
 ];
 export type Coin = {
   price: number;
@@ -388,6 +390,25 @@ export async function writeToRedis(strings: {
   if (Object.keys(strings).length == 0) return;
   // console.log("starting mset");
 
+  const key = "ethereum:0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0";
+  let debug = strings[key];
+  if (debug) {
+    let ob = JSON.parse(debug).coins[key];
+    const real = await fetch(
+      `https://coins.llama.fi/prices/current/${key}`,
+    ).then((r) => r.json());
+    const realPrice = real.coins[key].price;
+    await sendMessage(
+      `test redis alert for ${key}, prices ${ob.price}, ${realPrice}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    );
+    if (Math.abs(ob.price - realPrice) / realPrice < 0.9) {
+      await sendMessage(
+        `redis price is being written as ${ob.price} when it should be about ${realPrice}!!`,
+        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+      );
+    }
+  }
   const redis = new Redis({
     port: 6379,
     host: auth[1],

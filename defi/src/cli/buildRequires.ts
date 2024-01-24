@@ -38,7 +38,7 @@ function removeDotTs(s: string) {
     return splitted.join('.')
 }
 
-// dimension-adapters   
+// dimension-adapters
 
 const excludeKeys = ["index", "README"]
 const baseFolderPath = "./dimension-adapters" // path relative to current working directory -> `cd /defi`
@@ -51,6 +51,7 @@ const importPaths = [
     "options",
     "incentives",
     "protocols",
+    "aggregator-derivatives",
 ]
 
 for (const folderPath of importPaths) {
@@ -64,7 +65,7 @@ ${paths_keys.map(path => createDimensionAdaptersModule(path, folderPath)).join('
     module: { default: Adapter },
     codePath: string
 } }
-        
+
 
 function mockTvlFunction() {
     throw new Error('This is a mock function, you should not be calling it, maybe you need to use importAdapterDynamic instead?')
@@ -78,7 +79,7 @@ function mockFunctions(obj: any) {
         Object.keys(obj).forEach((key) => obj[key] = mockFunctions(obj[key]))
     }
     return obj
-}        
+}
         `)
 }
 

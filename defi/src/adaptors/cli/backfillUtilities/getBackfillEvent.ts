@@ -30,6 +30,7 @@ const KEYS_TO_CHECK: TKeysToCheck = {
     [AdapterType.OPTIONS]: 'dv',
     [AdapterType.PROTOCOLS]: 'dv',
     [AdapterType.ROYALTIES]: 'dv',
+    [AdapterType.AGGREGATOR_DERIVATIVES]: 'dv',
 }
 
 export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {

@@ -10,6 +10,7 @@ src/utils/imports/adapters.ts
 src/utils/imports/tvlAdapterData.json
 src/utils/imports/adapters_volumes.ts
 src/utils/imports/adapters_fees.ts
+src/utils/imports/aggregator-derivatives_adapters.ts
 src/utils/imports/adapters_liquidations.ts
 src/utils/imports/fees_adapters.ts
 src/utils/imports/dexs_adapters.ts

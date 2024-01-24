@@ -5,6 +5,7 @@ import options from "./options/config";
 import incentives from "./incentives/config";
 import protocols from "./protocols/config";
 import derivatives from "./derivatives/config";
+import aggregatorDerivatives from "./aggregator-derivatives/config";
 import { AdaptorsConfig, IJSON } from "./types";
 
 const configs = {
@@ -15,6 +16,7 @@ const configs = {
   incentives,
   protocols,
   derivatives,
+  aggregatorDerivatives
 } as IJSON<AdaptorsConfig>;
 
 export const getConfigByType = (type: string, module: string) => configs[type]?.[module];

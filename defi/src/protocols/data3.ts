@@ -30270,6 +30270,27 @@ const data3: Protocol[] = [
     github: ["PRINT3Rxyz"],
     listedAt: 1706109818
   },
+  {
+    id: "4061",
+    name: "Meridian Lend",
+    address: null,
+    symbol: "-",
+    url: "https://www.meridianfinance.net",
+    description: "Meridian Lend is non-custodial lending protocol enabling depositors to earn interest on their assets borrowers to obtain over collateralized loans.",
+    chain: "Telos",
+    logo: `${baseIconsUrl}/meridian-lend.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Telos"],
+    oracles: [],  
+    forkedFrom: ["AAVE V2"],
+    module: "meridian-lend/index.js",
+    twitter: "MeridianFi",
+    listedAt: 1706133526
+  },
 ]
 
 export default data3

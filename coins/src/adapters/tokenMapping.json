@@ -1346,6 +1346,102 @@
       "to": "shimmer_evm:0xe5f3dcc241dd008e3c308e57cf4f7880ea9210f8"
     }
   },
+  "new": {
+    "0xf4905b9bc02ce21c98eac1803693a9357d5253bf": {
+      "decimals": "18",
+      "symbol": "NEW",
+      "to": "coingecko#newton-project"
+    }
+  },
+  "astar": {
+    "0xffffffff00000000000000010000000000000008": {
+      "decimals": "10",
+      "symbol": "vDOT",
+      "to": "coingecko#voucher-dot"
+    }
+  },
+  "acala": {
+    "0x0000000000000000000100000000000000000002": {
+      "decimals": "10",
+      "symbol": "DOT",
+      "to": "coingecko#polkadot"
+    },
+    "0x0000000000000000000100000000000000000003": {
+      "decimals": "10",
+      "symbol": "LDOT",
+      "to": "coingecko#liquid-staking-dot"
+    },
+    "0x07DF96D1341A7d16Ba1AD431E2c847d978BC2bCe": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    }
+  },
+  "conflux": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "CFLX",
+      "to": "coingecko#conflux-token"
+    }
+  },
+  "chainx": {
+    "0x09Ff8E49D0EA411A3422ed95E8f5497D4241F532": {
+      "decimals": "18",
+      "symbol": "BTC",
+      "to": "coingecko#wrapped-bitcoin"
+    }
+  },
+  "airdao": {
+    "0x2b2d892c3fe2b4113dd7ac0d2c1882af202fb28f": {
+      "decimals": "18",
+      "symbol": "SAMB",
+      "to": "coingecko#amber"
+    },
+    "0xd8dd0273d31c1cd9dba104daca7c1dfee4f7b805": {
+      "decimals": "18",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x7a477aa8ed4884509387dba81ba6f2b7c97597e2": {
+      "decimals": "18",
+      "symbol": "BUSD",
+      "to": "coingecko#binance-usd"
+    }
+  },
+  "zkfair": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0xD33Db7EC50A98164cC865dfaa64666906d79319C": {
+      "decimals": "18",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    }
+  },
+  "icon": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "ICX",
+      "to": "coingecko#icon"
+    },
+    "cxb49d82c46be6b61cab62aaf9824b597c6cf8a25d": {
+      "decimals": "18",
+      "symbol": "BUSD",
+      "to": "coingecko#binance-usd"
+    },
+    "cx5b5a03cb525a1845d0af3a872d525b18a810acb0": {
+      "decimals": "18",
+      "symbol": "BTCB",
+      "to": "coingecko#bitcoin-bep2"
+    },
+    "cx288d13e1b63563459a2ac6179f237711f6851cb5": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    }
+  },
   "kroma": {
     "0x0257e4d92c00c9efcca1d641b224d7d09cfa4522": {
       "decimals": "6",

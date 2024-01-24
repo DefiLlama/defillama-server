@@ -30244,6 +30244,29 @@ const data3: Protocol[] = [
     twitter: "AptoslaunchIO",
     listedAt: 1706108865
   },
+  {
+    id: "4060",
+    name: "PRINT3R",
+    address: null,
+    symbol: "-",
+    url: "https://aptoslaunch.io",
+    description: "PRINT3R is a gamified decentralized derivatives platform that focuses on ease of use and encouraging user loyalty through engaging user interactions, and sharing revenue.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/print3r.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    oracles: ["Chainlink"],  
+    forkedFrom: ["GMX V1"],
+    module: "PRINT3R/index.js",
+    twitter: "PRINT3Rxyz",
+    audit_links: ["https://github.com/d3ployco/Smart_Contract_Audits/blob/main/PRINT3R/SmartContract_Audit_Print3r_v1.1.pdf"],
+    github: ["PRINT3Rxyz"],
+    listedAt: 1706109818
+  },
 ]
 
 export default data3

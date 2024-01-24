@@ -19598,6 +19598,7 @@ const data3: Protocol[] = [
     module: "gammaswap/index.js",
     twitter: "gammaswaplabs",
     audit_links: ["https://docs.gammaswap.com/more-info/audits"],
+    parentProtocol: "parent#gammaswaplabs",
     github: ["gammaswap"],
     listedAt: 1695959981,
   },
@@ -30308,10 +30309,11 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Arbitrum"],
     oracles: [],  
-    forkedFrom: [],
+    forkedFrom: ["Uniswap V2"],
     module: "gammaswap-deltaswap/index.js",
     twitter: "GammaSwapLabs",
     audit_links: ["https://docs.gammaswap.com/more-info/audits"],
+    parentProtocol: "parent#gammaswaplabs",
     listedAt: 1706135741
   },
 ]

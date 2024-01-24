@@ -3522,6 +3522,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MeridianFi",
     github: ["MeridianDollar"]
   },
+  {
+    id: "parent#gammaswaplabs",
+    name: "GammaSwapLabs",
+    url: "https://gammaswap.com/",
+    description: `A novel primitive for scaling DeFi liquidity through permissionless risk markets`,
+    logo: `${baseIconsUrl}/gammaswaplabs.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "GammaSwapLabs",
+    github: ["gammaswap"]
+  },
 ];
 
 export default parentProtocols;

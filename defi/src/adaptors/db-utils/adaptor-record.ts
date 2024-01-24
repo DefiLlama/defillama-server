@@ -177,14 +177,6 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         }, (currentData ?? {}) as IRecordAdaptorRecordData),
         eventTimestamp
     }
-    // const obj2StoreRemoveReserveKeys = Object.entries(obj2Store).reduce((acc, [key, value]) => {
-    //     if (dynamoReservedKeywords.includes(key.toUpperCase())) {
-    //         delete acc[key];
-    //         return acc
-    //     }
-    //     acc[key] = value
-    //     return acc
-    // }, {} as IRecordAdaptorRecordData)
     adaptorRecord.data = obj2Store 
     const record = adaptorRecord.getCleanAdaptorRecord()
     const { PK, SK } = adaptorRecord.keys()
@@ -194,7 +186,7 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         if (record) {
             await dynamodb.put(record.toItem())
         }
-        if (errorData) {
+        /* if (errorData) { // commenting it out for now, can store the errors in error db once we switch to coolify
             Object.entries(errorData).forEach(([chain, error]) => {
                 if (dynamoReservedKeywords.includes(chain.toUpperCase())) {
                     errorData[replaceReservedKeyword(chain)] = error
@@ -202,12 +194,7 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
                 }
             })
             await dynamodb.put({ PK: `${PK}#error`, SK, ...errorData })
-        }
-        // await dynamodb.update({
-        //     Key: adaptorRecord.keys(),
-        //     UpdateExpression: createUpdateExpressionFromObj(obj2StoreRemoveReserveKeys),
-        //     ExpressionAttributeValues: createExpressionAttributeValuesFromObj(obj2StoreRemoveReserveKeys)
-        // }) // Upsert like
+        } */
         return adaptorRecord
     } catch (error) {
         throw error
@@ -223,25 +210,6 @@ function revertReservedKeyword(key: string) {
     if (key.includes(normalizeSuffix))
         return key.slice(0, -normalizeSuffix.length)
     return key
-}
-
-function createUpdateExpressionFromObj(obj: IRecordAdaptorRecordData): string {
-    const removeExpression = `${Object.entries(obj)
-        .filter(([, obj]) => typeof obj === 'object' && Object.keys(obj).length === 0)
-        .map(([field]) => `${field}`).join(',')}`
-    return `set ${Object.entries(obj)
-        .filter(([, obj]) => typeof obj !== 'object' || typeof obj === 'object' && Object.keys(obj).length > 0)
-        .map(([field]) => `${field}=:${field}`).join(',')}${removeExpression ? ` remove ${removeExpression}` : ''}`
-}
-
-function createExpressionAttributeValuesFromObj(obj: IRecordAdaptorRecordData): Record<string, unknown> {
-    return Object.entries(obj).reduce((acc, [key, value]) => {
-        if (typeof value === 'object' && Object.keys(value).length === 0) return acc
-        return {
-            ...acc,
-            [`:${key}`]: value
-        }
-    }, {} as Record<string, unknown>)
 }
 
 export type GetAdaptorRecordOptions = {

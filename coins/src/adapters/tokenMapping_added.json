@@ -4213,6 +4213,12 @@
       "decimals": "18",
       "symbol": "rUSDT",
       "to": "coingecko#tether"
+    },
+    "0xe700691dA7b9851F2F35f8b8182c69c53CcaD9Db": {
+      "name": "Dollar on Chain",
+      "decimals": "18",
+      "symbol": "DOC",
+      "to": "coingecko#dollar-on-chain"
     }
   },
   "polis": {

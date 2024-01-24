@@ -3992,7 +3992,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Ethereum", "xDai", "Arbitrum"],
     module: "swapr/index.js",
-    twitter: "SwaprEth",
+    twitter: "Swapr_dapp",
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://gateway.ipfs.io/ipfs/QmNspbn2dQgQMQ9uXkMc7Fjf12RUVVJTzB27ywGeLUXXdn"],
     governanceID: ["snapshot:swpr.eth"],

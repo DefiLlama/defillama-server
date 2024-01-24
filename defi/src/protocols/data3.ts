@@ -30298,7 +30298,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://gammaswap.com",
-    description: "GammaSwap is a novel DeFi primitive built to scale liquidity in Automated Market Makers (AMMs) by providing better risk adjusted returns to Liquidity Providers (LPs).",
+    description: "DeltaSwap, a commission free decentralized exchange for spot token trading",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/deltaswap.jpg`,
     audits: "2",

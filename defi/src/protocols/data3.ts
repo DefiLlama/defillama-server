@@ -30090,6 +30090,28 @@ const data3: Protocol[] = [
                  ],
     listedAt: 1705936885
   }, 
+  {
+    id: "4053",
+    name: "Nostra Pools",
+    address: null,
+    symbol: "-",
+    url: "https://app.nostra.finance/swap",
+    description: "Nostra is your one-stop DeFi solution where you can lend, borrow, and swap crypto.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/nostra.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Starknet"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "nostra-pools/index.js",
+    twitter: "nostrafinance",
+    parentProtocol: "parent#nostra",
+    listedAt: 1706065335
+  },
 ]
 
 export default data3

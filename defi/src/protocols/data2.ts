@@ -22142,7 +22142,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://butternetwork.io",
     description:
-      "Butter is set to change how users, projects, and dApps move tokens and NFTs between blockchains with a suite of proven-secure and user-friendly products",
+      "Built upon the Bitcoin L2 MAP Protocol, ButterSwap is the first ZK light-client cross-chain aggregator swap that minimized ZK verification time and optimized gas fees. Exchange between popular chains & BTC ecosystem in one click!",
     chain: "Binance",
     logo: `${baseIconsUrl}/butter-swap.png`,
     audits: "0",

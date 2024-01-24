@@ -2380,5 +2380,9 @@ export default {
     "ICDex": {
         "enabled": true,
         "id": "4040"
+    },
+    "horiza": {
+        "enabled": true,
+        "id": "4041"
     }
 } as AdaptorsConfig

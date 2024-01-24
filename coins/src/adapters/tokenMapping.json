@@ -1352,5 +1352,22 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     }
+  },
+  "acala": {
+    "0x0000000000000000000100000000000000000002": {
+      "decimals": "10",
+      "symbol": "DOT",
+      "to": "coingecko#polkadot"
+    },
+    "0x0000000000000000000100000000000000000003": {
+      "decimals": "10",
+      "symbol": "LDOT",
+      "to": "coingecko#liquid-staking-dot"
+    },
+    "0x07DF96D1341A7d16Ba1AD431E2c847d978BC2bCe": {
+      "decimals": "6",
+      "symbol": "USDCet",
+      "to": "coingecko#usd-coin"
+    }
   }
 }

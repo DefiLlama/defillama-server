@@ -29829,7 +29829,7 @@ const data3: Protocol[] = [
     address: "arbitrum:0xE594b57E7F11ec1E8Af9f003F74Fa52B7aefdc9F",
     symbol: "HRA",
     url: "https://horiza.io",
-    description: "Horiza is a Unive(3,3) DEX with first ever yield-bearing options token on the Arbitrum blockchain. Manage concentrated liquidity manually or using automated strategies through a unique UI",
+    description: "Horiza is a Unive(3,3) DEX with first ever yield-bearing options token on the Arbitrum blockchain. Manage concentrated liquidity manually or using automated strategies through a unique UI.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/horiza.jpg`,
     audits: "3",

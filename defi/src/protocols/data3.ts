@@ -19599,7 +19599,6 @@ const data3: Protocol[] = [
     twitter: "gammaswaplabs",
     audit_links: ["https://docs.gammaswap.com/more-info/audits"],
     parentProtocol: "parent#gammaswaplabs",
-    github: ["gammaswap"],
     listedAt: 1695959981,
   },
   {

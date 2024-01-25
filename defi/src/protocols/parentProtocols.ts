@@ -2903,7 +2903,7 @@ const parentProtocols: IParentProtocol[] = [
     description: "Nostra is your one-stop DeFi solution where you can lend, borrow, and swap crypto",
     logo: `${baseIconsUrl}/nostra.jpg`,
     gecko_id: null,
-    cmcId: null,
+    cmcId: "22743",
     chains: [],
     twitter: "nostrafinance"
   },

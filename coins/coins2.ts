@@ -6,6 +6,7 @@ import postgres from "postgres";
 import sleep from "./src/utils/shared/sleep";
 import fetch from "node-fetch";
 import { sendMessage } from "../defi/src/utils/discord";
+import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 
 const pgColumns: string[] = [
   "key",
@@ -393,6 +394,7 @@ export async function writeToRedis(strings: {
   const key = "ethereum:0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0";
   let debug = strings[key];
   if (debug) {
+    await setEnvSecrets();
     let ob = JSON.parse(debug).coins[key];
     const real = await fetch(
       `https://coins.llama.fi/prices/current/${key}`,

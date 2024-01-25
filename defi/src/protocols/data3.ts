@@ -13914,13 +13914,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3323",
-    name: "NAVI Protocol",
+    name: "NAVI Lending",
     address: null,
     symbol: "-",
     url: "https://www.naviprotocol.io/",
     description: "NAVI offers over collateralized lending/borrowing for SUI, USDC, USDT, wETH and wBTC and supports features like isolated pool, flash loan and soon to come crosschain lending/borrowing.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/navi-protocol.jpg`,
+    logo: `${baseIconsUrl}/navi-lending.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -13933,7 +13933,7 @@ const data3: Protocol[] = [
     oracles: ["Supra", "Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5163/
     audit_links: ["https://2311140553-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYTRq6w3DGapKHxfqaA3Z%2Fuploads%2FsoS2qrvZPrclkXpPp9z2%2FNavi%20Smart%20Contract%20Preliminary%20Audit%20Report.pdf?alt=media&token=002c6c6c-a723-4e36-9689-f014791fb076"],
     listedAt: 1690897069,
-    github: ["naviprotocol"]
+    parentProtocol: "parent#navi-protocol"
   },
   {
     id: "3324",
@@ -22592,6 +22592,7 @@ const data3: Protocol[] = [
       "https://hacken.io/audits/volo/",
       "https://movebit.xyz/reports/Volo-Smart-Contract-Audit-Report.pdf"
     ],
+    parentProtocol: "parent#navi-protocol",
     listedAt: 1698603343
   },
   {

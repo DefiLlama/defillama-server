@@ -30076,7 +30076,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Mantle"],
     oraclesByChain: {
       ethereum: ["Chainlink"], 
-      mantle: ["API3"],
+      mantle: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5644
     },
     forkedFrom: ["Compound V2"],
     module: "minterest/index.js",
@@ -30130,7 +30130,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mantle"],
-    oracles: ["API3"],
+    oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5644
     forkedFrom: [],
     module: "init-capital/index.js",
     twitter: "InitCapital_",

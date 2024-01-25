@@ -25981,7 +25981,6 @@ const data3: Protocol[] = [
     parentProtocol: "parent#ascent-exchange",
     listedAt: 1701356713
   },
-  /*
   {
     id: "3868",
     name: "Ascent Exchange V3",
@@ -26005,7 +26004,6 @@ const data3: Protocol[] = [
     parentProtocol: "parent#ascent-exchange",
     listedAt: 1701356713
   },
-  */
   {
     id: "3869",
     name: "Charm Finance V2",

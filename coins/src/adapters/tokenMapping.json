@@ -103,6 +103,11 @@
     }
   },
   "ethereum": {
+    "0xbce0cf87f513102f22232436cca2ca49e815c3ac": {
+      "decimals": "18",
+      "symbol": "pxCVX",
+      "to": "ethereum:0x389fb29230d02e67eb963c1f5a00f2b16f95beb7"
+    },
     "0xcBc1065255cBc3aB41a6868c22d1f1C573AB89fd": {
       "decimals": "18",
       "symbol": "CRETH2",

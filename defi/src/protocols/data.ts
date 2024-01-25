@@ -15732,14 +15732,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "848",
-    name: "Talent Protocol",
+    name: "Talent Protocol V1",
     address: null,
     symbol: "-",
     url: "https://www.talentprotocol.com",
     description:
       "Talent Protocol is a web3 platform where talent can easily launch a social token (called Talent Tokens) to accelerate their career, and where supporters can back people they believe in.",
     chain: "Celo",
-    logo: `${baseIconsUrl}/talent-protocol.png`,
+    logo: `${baseIconsUrl}/talent-protocol-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

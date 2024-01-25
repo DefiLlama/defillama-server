@@ -191,7 +191,7 @@ export function unknownTokens(timestamp: number = 0) {
       timestamp,
       "0x280608DD7712a5675041b95d0000B9089903B569",
       "0x24599b658b57f91E7643f4F154B16bcd2884f9ac",
-      "0x0000000000000000000000000000000000000000",
+      "0xC4B7C87510675167643e3DE6EEeD4D2c06A9e747",
       true,
       "jbc",
     ),

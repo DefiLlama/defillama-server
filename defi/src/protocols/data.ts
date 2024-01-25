@@ -8614,7 +8614,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://celo.org/audits"],
     stablecoins: ["celo-dollar", "celo-euro"],
     github: ["mento-protocol"],
-    oracles: ['cLabs', 'T-Systems MMS', 'Redstone']
+    oracles: ['cLabs', 'T-Systems MMS', 'RedStone']
   },
   {
     id: "505",

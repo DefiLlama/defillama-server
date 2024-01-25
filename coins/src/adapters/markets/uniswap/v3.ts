@@ -1,5 +1,5 @@
 import { multiCall } from "@defillama/sdk/build/abi";
-import { BigNumber } from "ethers";
+import * as sdk from "@defillama/sdk";
 import getBlock from "../../utils/block";
 import { translateQty } from "./uniswap";
 import { Write } from "../../utils/dbInterfaces";
@@ -45,8 +45,8 @@ async function estimateValuesAndFetchMetadata(
           [
             contracts[chain].tokenOut,
             t,
-            BigNumber.from(1e6).toString(),
-            BigNumber.from(f).toString(),
+            sdk.util.convertToBigInt(1e6).toString(),
+            f,
             sqrtPriceLimitX96,
           ],
         ],
@@ -130,8 +130,8 @@ function createMainQuoterCalls(data: Data): Call[] {
               [
                 t,
                 contracts[chain].tokenOut,
-                BigNumber.from(largeQty).toString(),
-                BigNumber.from(f).toString(),
+                sdk.util.convertToBigInt(largeQty).toString(),
+                sdk.util.convertToBigInt(f).toString(),
                 sqrtPriceLimitX96,
               ],
             ],
@@ -142,8 +142,8 @@ function createMainQuoterCalls(data: Data): Call[] {
               [
                 t,
                 contracts[chain].tokenOut,
-                BigNumber.from(largeQty.div(dollarAmt)).toString(),
-                BigNumber.from(f).toString(),
+                sdk.util.convertToBigInt(Number(+largeQty /dollarAmt).toFixed(0)).toString(),
+                f,
                 sqrtPriceLimitX96,
               ],
             ],

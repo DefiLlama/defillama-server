@@ -5,7 +5,6 @@ import {
   addToDBWritesList,
   getTokenAndRedirectData,
 } from "../../utils/database";
-import { BigNumber } from "ethers";
 import { getApi, } from "../../utils/sdk";
 import { ChainApi } from "@defillama/sdk";
 import { getCache, setCache } from "../../../utils/cache";
@@ -195,7 +194,7 @@ export default async function getTokenPrices2(chain: any, registries: string[], 
   const writes: Write[] = [];
   const cache = await getCache('curve', name ? name : chain)
   const api = await getApi(chain, timestamp)
-  let poolList 
+  let poolList
   if (customPools) {
     poolList = { custom: customPools }
     registries = ['custom']
@@ -247,19 +246,19 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
 
         // set pool tokens information
         if (!poolData.tokens)
-        try {
-          poolData.tokens = await getPoolTokens(api, pool, cache.registries[registryType], registryType)
-        } catch {
-          delete cPoolInfo[pool];
-          console.log('failed to get pool underlyings', pool)
-          return;
-        }
+          try {
+            poolData.tokens = await getPoolTokens(api, pool, cache.registries[registryType], registryType)
+          } catch {
+            delete cPoolInfo[pool];
+            console.log('failed to get pool underlyings', pool)
+            return;
+          }
 
         poolData.tokens = poolData.tokens.map((t: string) => t.toLowerCase())
       });
 
     sdk.log('curve', api.chain, poolList[registryType].length, registryType)
-    
+
     let filteredIndicies: number[] = []
     let lps: string[] = []
     // set total supplies
@@ -270,9 +269,9 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     // filter pools with no token 
     let filteredOut = 0
     const filteredRPoolList: string[] = []
-    rPoolList.map((p: any, i: number) => 
+    rPoolList.map((p: any, i: number) =>
       filteredIndicies.includes(i) ? filteredOut++ : filteredRPoolList.push(p)
-      )
+    )
     // filter out pools with no supplies
     const filteredData: any[] = []
     filteredRPoolList.forEach((pool: any, i: number) => {
@@ -367,10 +366,10 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
         p.poolComponents.forEach((c: any) => {
           if (!c || c.token === t || c.value < 20000) return; // ignore tokens with less than $20k
           if (!knownTokenInfo || knownTokenInfo.value < c.value) {
-            const realQuantity = BigNumber.from((usdSwapSize).toFixed(0));
-            const decimalFactor = BigNumber.from("10").pow(decimals);
-            const priceBN = BigNumber.from((c.price * 1e8).toFixed(0));
-            const rawQuantity = realQuantity.mul(decimalFactor).div(priceBN).mul(1e8);
+            const realQuantity = usdSwapSize
+            const decimalFactor = 10 ** decimals
+            const priceBN = c.price * 1e8
+            const rawQuantity = sdk.util.convertToBigInt(Number(realQuantity * decimalFactor * 1e8 / priceBN).toFixed(0))
             knownTokenInfo = { kInfo: c, pool: p.pool, uTokenIndex, kTokenIndex: p.tokens.indexOf(c.token), rawQuantity: rawQuantity.toString(), realQuantity: realQuantity.toString() }
           }
         })

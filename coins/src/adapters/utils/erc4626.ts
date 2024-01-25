@@ -1,6 +1,5 @@
 import { multiCall } from "@defillama/sdk/build/abi";
-import { log } from "@defillama/sdk";
-import { BigNumber, utils } from "ethers";
+import * as sdk from "@defillama/sdk";
 import getBlock from "./block";
 import { getTokenAndRedirectData } from "./database";
 import { CoinData } from "./dbInterfaces";
@@ -37,27 +36,18 @@ export async function calculate4626Prices(
     if (!assetInfo) continue;
 
     const assetMagnitude = magnitude(assetInfo.decimals);
-    let assetPriceBN = BigNumber.from("0");
-    try {
-      assetPriceBN = utils.parseUnits(`${assetInfo.price}`, assetInfo.decimals);
-    } catch (e) {
-      assetPriceBN = BigNumber.from(
-        (assetInfo.price * 10 ** assetInfo.decimals).toFixed(0),
-      );
-    }
+    let assetPriceBN = 0;
+    assetPriceBN = assetInfo.price
     if (ratios[i] !== null) {
-      const sharePrice = assetPriceBN.mul(ratios[i]).div(assetMagnitude);
+      const sharePrice = assetPriceBN * ratios[i] / +assetMagnitude
       result.push({
         token: tokens[i].toLowerCase(),
-        price: parseFloat(utils.formatUnits(sharePrice, assetInfo.decimals)),
+        price: sharePrice,
         decimals: sharesDecimals[i],
         symbol: symbols[i],
       });
-    } else {
-      result.push(null);
     }
   }
-  log(result);
   return result;
 }
 
@@ -107,5 +97,5 @@ async function getTokenData(
 }
 
 function magnitude(decimals: number) {
-  return BigNumber.from(10).pow(decimals).toString();
+  return sdk.util.convertToBigInt(10 ** decimals).toString();
 }

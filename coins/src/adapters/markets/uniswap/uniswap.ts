@@ -9,7 +9,7 @@ import { Write, Read, CoinData } from "../../utils/dbInterfaces";
 import { MultiCallResults, TokenInfos } from "../../utils/sdkInterfaces";
 import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
-import { BigNumber } from "ethers";
+import * as sdk from "@defillama/sdk"
 
 const sleep = (delay: number) =>
   new Promise((resolve) => setTimeout(resolve, delay));
@@ -278,45 +278,11 @@ export function translateQty(
   decimals: number,
   tokenValue: number,
 ) {
-  const scientificNotation: string = (
-    (usdSwapSize * 10 ** decimals) /
-    tokenValue
-  ).toString();
-  if (scientificNotation.indexOf("e") == -1) {
-    let qty: BigNumber;
-    try {
-      return BigNumber.from(parseInt(scientificNotation));
-    } catch {
-      try {
-        if (decimals > 9) {
-          qty = BigNumber.from(usdSwapSize).mul(tokenValue * 10 ** 9);
-          qty = BigNumber.from(usdSwapSize).mul(
-            tokenValue * 10 ** (decimals - 9),
-          );
-        } else {
-          qty = BigNumber.from(usdSwapSize).mul(tokenValue * 10 ** decimals);
-        }
-        return qty;
-      } catch {
-        return;
-      }
-    }
-  }
-  const power: string = scientificNotation.substring(
-    scientificNotation.indexOf("e") + 2,
-  );
-  const root: string = scientificNotation.substring(
-    0,
-    scientificNotation.indexOf("e"),
-  );
-
-  const zerosToAppend: number = parseInt(power) - root.length + 2;
-  let zerosString: string = "";
-  for (let i = 0; i < zerosToAppend; i++) {
-    zerosString = `${zerosString}0`;
-  }
-
-  return BigNumber.from(`${root.replace(/[.]/g, "")}${zerosString}`);
+  const bigInt = sdk.util.convertToBigInt(
+    Number((usdSwapSize * 10 ** decimals) /
+    tokenValue).toFixed(0)
+  )
+  return bigInt.toString()
 }
 async function getConfidenceScores(
   lpsWithUnknown: any[],
@@ -337,7 +303,7 @@ async function getConfidenceScores(
         10 ** tokenInfos.underlyingDecimalBs[j].output / tokenValues[i];
       if (isNaN(swapSize) || !isFinite(swapSize)) return [];
 
-      const qty: BigNumber | undefined = translateQty(
+      const qty: string | undefined = translateQty(
         usdSwapSize,
         tokenInfos.underlyingDecimalBs[j].output,
         tokenValues[i],
@@ -354,7 +320,7 @@ async function getConfidenceScores(
         },
         {
           target,
-          params: [qty.div(ratio), route],
+          params: [sdk.util.convertToBigInt(Number(+qty/ratio).toFixed(0)).toString(), route],
         },
       ];
     })

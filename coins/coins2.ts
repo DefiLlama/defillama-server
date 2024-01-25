@@ -1,12 +1,14 @@
-import { CoinRead, DbEntry } from "./src/adapters/utils/dbInterfaces";
+import { CoinRead, } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
 import postgres from "postgres";
-import sleep from "./src/utils/shared/sleep";
-import fetch from "node-fetch";
 import { sendMessage } from "../defi/src/utils/discord";
 import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 const pgColumns: string[] = [
   "key",

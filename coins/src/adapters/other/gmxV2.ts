@@ -123,8 +123,8 @@ async function getTokenPrices(chain: string, timestamp: number) {
 
 
 function hashData(dataTypes: any, dataValues: any) {
-  const bytes = ethers.utils.defaultAbiCoder.encode(dataTypes, dataValues);
-  const hash = ethers.utils.keccak256(ethers.utils.arrayify(bytes));
+  const bytes = ethers.AbiCoder.defaultAbiCoder().encode(dataTypes, dataValues);
+  const hash = ethers.keccak256(ethers.getBytes(bytes));
 
   return hash;
 }

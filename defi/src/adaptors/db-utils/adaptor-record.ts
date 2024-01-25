@@ -217,16 +217,17 @@ export type GetAdaptorRecordOptions = {
     type: AdaptorRecordType,
     adaptorType?: AdapterType,
     timestamp?: number,
+    lastKey?: number,
     mode?: "ALL" | "LAST" | "TIMESTAMP"
 }
 
-export async function getAdaptorRecord2({ adapter, type, timestamp, mode = 'ALL' }: GetAdaptorRecordOptions): Promise<AdaptorRecord[] | AdaptorRecord> {
+export async function getAdaptorRecord2({ adapter, type, timestamp, mode = 'ALL', lastKey, }: GetAdaptorRecordOptions): Promise<AdaptorRecord[] | AdaptorRecord> {
     const adaptorId = adapter.id
     const protocolType = adapter.protocolType
-    return getAdaptorRecord(adaptorId, type, protocolType, mode, timestamp)
+    return getAdaptorRecord(adaptorId, type, protocolType, mode, timestamp, lastKey)
 }
 
-export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType, protocolType?: ProtocolType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number): Promise<AdaptorRecord[] | AdaptorRecord> => {
+export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType, protocolType?: ProtocolType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number, lastKey?: number): Promise<AdaptorRecord[] | AdaptorRecord> => {
     // Creating dummy object to get the correct key
     const adaptorRecord = new AdaptorRecord(type, adaptorId, null!, null!, protocolType)
     let keyConditionExpression = "PK = :pk"
@@ -239,7 +240,7 @@ export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordTyp
     }
     let resp: any
     if (mode === "ALL") {
-        resp = await getHistoricalValues(adaptorRecord.pk)
+        resp = await getHistoricalValues(adaptorRecord.pk, lastKey)
     } else {
         resp = await dynamodb.query({
             // TODO: Change for upsert like

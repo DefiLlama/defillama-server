@@ -30130,7 +30130,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mantle"],
-    oracles: ["API3"], // they mention API3 in the listing process, but no mention of how is securing their TVL, neither there is no mention of oracles in the docs
+    oracles: ["API3"],
     forkedFrom: [],
     module: "init-capital/index.js",
     twitter: "InitCapital_",

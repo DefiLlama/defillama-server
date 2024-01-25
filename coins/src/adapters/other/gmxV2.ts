@@ -85,6 +85,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
 
       // if (index === '0x0000000000000000000000000000000000000000') return; // skip for now, until non USDC base is handled correctly
       // if (market === '0xe2fedb9e6139a182b98e7c2688ccfa3e9a53c665') return; // skip for now, until DAI - USDC base is handled correctly
+      if (!coinDataObj[long] || !coinDataObj[short]) return 
       symbols.push(`${coinDataObj[long].symbol}-${coinDataObj[short].symbol}-GMX-V2`)
       marketTokens.push(market)
 

@@ -3560,6 +3560,17 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:dydxgov.eth"],
     github: ["dydxfoundation", "dydxprotocol"] 
   },
+  {
+    id: "parent#fringe-finance",
+    name: "Fringe Finance",
+    url: "https://fringe.fi",
+    description: `DeFi lending, borrowing & margin trading ecosystem`,
+    logo: `${baseIconsUrl}/fringe.png`,
+    gecko_id: "fringe-finance",
+    cmcId: "17456",
+    chains: [],
+    twitter: "fringefinance",
+  },
 ];
 
 export default parentProtocols;

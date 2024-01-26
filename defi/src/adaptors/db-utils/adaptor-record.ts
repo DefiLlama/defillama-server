@@ -177,6 +177,7 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         }, (currentData ?? {}) as IRecordAdaptorRecordData),
         eventTimestamp
     }
+
     adaptorRecord.data = obj2Store
     const record = adaptorRecord.getCleanAdaptorRecord()
     const { PK, SK } = adaptorRecord.keys()
@@ -184,7 +185,8 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
     try {
         console.log("Storing", adaptorRecord.keys())
         if (record) {
-            await dynamodb.put(record.toItem())
+            const recordWithTimestamp = {...record.toItem(), eventTimestamp};
+            await dynamodb.put(recordWithTimestamp)
         }
         /* if (errorData) { // commenting it out for now, can store the errors in error db once we switch to coolify
             Object.entries(errorData).forEach(([chain, error]) => {

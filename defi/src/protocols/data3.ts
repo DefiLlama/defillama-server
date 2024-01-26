@@ -30406,6 +30406,26 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/cyberscope-io/audits/blob/main/11-minu/audit.pdf"],
     listedAt: 1706186069
   },
+  {
+    id: "4067",
+    name: "dYdX V4",
+    address: "dydx:ibc/831F0B1BBB1D08A2B75311892876D71565478C532967545476DF4C2D7492E48C",
+    symbol: "dYdX",
+    url: "https://dydx.trade",
+    description: " dYdX Chain Mainnet, a robust blockchain built with the CosmosSDK. This documentation is diligently maintained by the dYdX Operations subDAO to provide a comprehensive resource for validators, developers, and the dYdX community at large.",
+    chain: "dYdX",
+    logo: `${baseIconsUrl}/dydx-v4.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["dYdX"],
+    oracles: [],  
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "dYdX",
+  },
 ]
 
 export default data3

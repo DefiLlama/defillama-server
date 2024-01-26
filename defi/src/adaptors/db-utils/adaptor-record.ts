@@ -237,9 +237,14 @@ export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordTyp
     if (mode === 'TIMESTAMP') {
         expressionAttributeValues[":sk"] = timestamp
         keyConditionExpression = `${keyConditionExpression} and SK = :sk`
+    } else if (mode === 'ALL' && lastKey !== undefined) {
+        expressionAttributeValues[":sk"] = lastKey
+        keyConditionExpression = `${keyConditionExpression} and SK > :sk`
     }
     let resp: any
-    if (mode === "ALL") {
+    let moreThanAWeekAway = !lastKey || lastKey < (Date.now()/1e3 ) - 7 * 24 * 60 * 60
+    let getAllValues = mode === "ALL" && moreThanAWeekAway
+    if (getAllValues) {
         resp = await getHistoricalValues(adaptorRecord.pk, lastKey)
     } else {
         resp = await dynamodb.query({

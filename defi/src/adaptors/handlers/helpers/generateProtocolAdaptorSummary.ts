@@ -108,6 +108,11 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const startTimestamp = adapter.startFrom
         const startIndex = startTimestamp ? adaptorRecordsRaw.findIndex(ar => ar.timestamp === startTimestamp) : -1
         let adaptorRecords = adaptorRecordsRaw.slice(startIndex + 1)
+        // const debugObject = {
+        //     adapter,
+        //     startIndex, startTimestamp, adapterCount: adaptorRecords.length, adaptorRecordsRawCount: adaptorRecordsRaw.length,
+        //     key: getAdapterKey(adapter.id, adapter.versionKey ?? adapter.module, adaptorRecordType, adaptorType, adapter.protocolType, chainFilter)
+        // }
 
 
         // Clean data by chain
@@ -130,7 +135,10 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
 
 
         adaptorRecords = cleanRecords.cleanRecordsArr
-        if (adaptorRecords.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
+        if (adaptorRecords.length === 0) {
+            // console.log(debugObject, isApi2RestServer, JSON.stringify(adaptorRecordsRaw.slice(0, 3), null, 2))
+            throw new Error(`${adapter.name} ${adapter.id} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
+        }
 
         // Calc stats with last available data
         const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)

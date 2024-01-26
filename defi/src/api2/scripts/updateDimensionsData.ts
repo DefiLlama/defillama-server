@@ -91,11 +91,12 @@ async function replaceBalancesObjects(file: any, key: any, value: any) {
 }
 
 async function modifyProblematicRecords(file: any, json: any) {
-  if (!file.startsWith('3643')) return;
+  if (!file.startsWith('3643')) return console.log('skipping update', file);
   console.log('modifying records', file, json.length)
   for (const item of json) {
     const { data, timestamp } = item
     const PK = `${item.type}#${item.protocolType}#${item.adaptorId}`
+    if (PK === 'ti#chain#1') return;
     const SK = timestamp
     for (const [k1, v1] of Object.entries(data)) {
       if (typeof v1 !== 'object') continue;
@@ -104,7 +105,8 @@ async function modifyProblematicRecords(file: any, json: any) {
         data[k1][k2] = await getUSDVaule(v2 as any, timestamp)
         console.log(PK, k1, k2, Number(data[k1][k2] / 1e3).toFixed(3), new Date(timestamp * 1000))
         const item = { ...data, PK, SK, }
-        // await dynamodb.put(item)
+        // console.log('putting', item)
+        await dynamodb.put(item)
         // console.log(item)
         // process.exit(0)
       }

@@ -12,11 +12,11 @@ import { sluggifyString } from "../../utils/sluggify";
 import { getProtocolDataHandler } from "../../adaptors/handlers/getProtocol";
 
 export function getAdapterCacheKey(adaptor: ProtocolAdaptor, type: AdaptorRecordType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL") {
-  return `${adaptor.id}-${type}-${mode}`
+  return `${adaptor.protocolType ?? 'protocol'}-${adaptor.id}-${type}-${mode}`
 }
 
 export function getFileCacheKey(adaptorRecordType: AdapterType) {
-  return `dimensions-data/${adaptorRecordType}`
+  return `dimensions-data-v1/${adaptorRecordType}`
 }
 
 export async function getAdaptorRecord2({ adapter, type, mode = 'ALL', adaptorType }: GetAdaptorRecordOptions): Promise<AdaptorRecord[] | AdaptorRecord> {

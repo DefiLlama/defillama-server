@@ -30427,6 +30427,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dydx",
     twitter: "dYdX",
   },
+  {
+    id: "4068",
+    name: "BaseX Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.basex.fi",
+    description: "Your gateway to seamless DeFi experiences with low-cost, low-slippage swaps powered by Coinbase's Base Chain, UniSwap V3 CLMM and ve(3,3) model",
+    chain: "Base",
+    logo: `${baseIconsUrl}/basex-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    oracles: [],  
+    forkedFrom: ["Uniswap V3"],
+    module: "basexfi/index.js",
+    twitter: "basex_fi",
+    listedAt: 1706284436
+  },
 ]
 
 export default data3

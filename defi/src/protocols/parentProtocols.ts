@@ -3546,6 +3546,20 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "navi_protocol",
     github: ["naviprotocol"]
   },
+  {
+    id: "parent#dydx",
+    name: "dYdX",
+    url: "https://dydx.exchange",
+    description: `The most powerful open trading platform for crypto assets. Margin trade, borrow, and lend cryptocurrency.`,
+    logo: `${baseIconsUrl}/dydx.jpg`,
+    gecko_id: "dydx-chain",
+    cmcId: "28324",
+    chains: [],
+    twitter: "dYdX",
+    treasury: "dydx.js",
+    governanceID: ["snapshot:dydxgov.eth"],
+    github: ["dydxfoundation", "dydxprotocol"] 
+  },
 ];
 
 export default parentProtocols;

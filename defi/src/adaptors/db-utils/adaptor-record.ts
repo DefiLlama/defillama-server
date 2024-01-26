@@ -130,7 +130,7 @@ export class AdaptorRecord extends Item {
         }
         const newDataNoErr = removeErrors(data)
         if (AdaptorRecord.isDataEmpty(newDataNoErr)) return null
-        return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newDataNoErr)
+        return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newDataNoErr, this.protocolType)
     }
 
     static isDataEmpty(data: IRecordAdaptorRecordData) {
@@ -177,7 +177,7 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         }, (currentData ?? {}) as IRecordAdaptorRecordData),
         eventTimestamp
     }
-    adaptorRecord.data = obj2Store 
+    adaptorRecord.data = obj2Store
     const record = adaptorRecord.getCleanAdaptorRecord()
     const { PK, SK } = adaptorRecord.keys()
 

@@ -563,5 +563,9 @@ export default {
     "orderly-network-derivatives": {
         "enabled": true,
         "id": "2264"
+    },
+    "dydx-v4": {
+        "enabled": true,
+        "id": "4067"
     }
 } as AdaptorsConfig

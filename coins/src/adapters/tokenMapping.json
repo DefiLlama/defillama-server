@@ -1212,6 +1212,11 @@
       "decimals": "18",
       "symbol": "FXD",
       "to": "coingecko#fathom-dollar"
+    },
+    "0x1ebb2c8a71a9ec59bf558886a8adf8f4a565814f": {
+      "decimals": "2",
+      "symbol": "EURS",
+      "to": "coingecko#stasis-eurs"
     }
   },
   "telos": {

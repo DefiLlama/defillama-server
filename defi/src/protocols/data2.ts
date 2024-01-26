@@ -10751,7 +10751,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1858",
-    name: "Fringe",
+    name: "Fringe V1",
     address: "0xC9fE6E1C76210bE83DC1B5b20ec7FD010B0b1D15",
     symbol: "FRIN",
     url: "https://fringe.fi",
@@ -10760,8 +10760,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/fringe.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "fringe-finance",
-    cmcId: "17456",
+    gecko_id: null,
+    cmcId:null,
     category: "Lending",
     chains: ["Ethereum"],
     oracles: ["Chainlink"],
@@ -10769,6 +10769,7 @@ const data2: Protocol[] = [
     module: "fringe/index.js",
     twitter: "fringefinance",
     audit_links: ["https://github.com/HashEx/public_audits/blob/master/Fringe%20Finance/Fringe%20Finance.pdf"],
+    parentProtocol: "parent#fringe-finance",
     listedAt: 1656379167
   },
   {

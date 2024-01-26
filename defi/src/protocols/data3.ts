@@ -30493,6 +30493,29 @@ const data3: Protocol[] = [
     github: ["ionicprotocol"],
     listedAt: 1706291385
   },
+  {
+    id: "4071",
+    name: "Fringe V2",
+    address: "0xC9fE6E1C76210bE83DC1B5b20ec7FD010B0b1D15",
+    symbol: "FRIN",
+    url: "https://fringe.fi",
+    description: "DeFi lending, borrowing & margin trading ecosystem",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fringe.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId:null,
+    category: "Lending",
+    chains: ["Ethereum", "Arbitrum", "Optimism", "zkSync Era", "Polygon"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "fringe-v2/index.js",
+    twitter: "fringefinance",
+    audit_links: ["https://fringe.fi/audits"],
+    parentProtocol: "parent#fringe-finance",
+    listedAt: 1706305997
+  },
 ]
 
 export default data3

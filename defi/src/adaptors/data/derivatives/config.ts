@@ -83,6 +83,7 @@ export default {
         "enabled": true
     },
     "dydx": {
+        parentId: "dYdX",
         "id": "144",
         "enabled": true
     },
@@ -565,7 +566,13 @@ export default {
         "id": "2264"
     },
     "dydx-v4": {
+        parentId: "dYdX",
         "enabled": true,
-        "id": "4067"
+        "id": "4067",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1706140800": true,
+            },
+        }
     }
 } as AdaptorsConfig

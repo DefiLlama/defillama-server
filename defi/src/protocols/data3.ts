@@ -30522,7 +30522,7 @@ const data3: Protocol[] = [
     address: "linea:0xAAAac83751090C6ea42379626435f805DDF54DC8",
     symbol: "NILE",
     url: "https://www.thenile.exchange",
-    description: "DeFi lending, borrowing & margin trading ecosystem",
+    description: "Concentrated liquidity DEX on Linea",
     chain: "Linea",
     logo: `${baseIconsUrl}/nile-exchange.png`,
     audits: "0",

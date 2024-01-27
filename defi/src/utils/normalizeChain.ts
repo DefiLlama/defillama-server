@@ -18,7 +18,8 @@ export const normalizedChainReplacements = {
   "horizen eon": "eon",
   "bahamut": "ftn",
   "viction": "tomochain",
-  "bevm": "chainx"
+  "bevm": "chainx",
+  "bitnet": "btn"
 } as {
   [chain: string]: string
 }
@@ -2154,7 +2155,7 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     github: ["dydxfoundation", "dydxprotocol"]
   },
-  "BTN": {
+  "Bitnet": {
     geckoId: "bitnet",
     symbol: "BTN",
     cmcId: null,
@@ -2701,7 +2702,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "dydx":
         return "dYdX"
     case "btn":
-        return "BTN"
+        return "Bitnet"
+    case "bitnet":
+        return "Bitnet"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

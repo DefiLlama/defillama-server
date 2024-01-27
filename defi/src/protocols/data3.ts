@@ -19305,14 +19305,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3564",
-    name: "Stars Arena",
+    name: "The Arena", // previous Stars Arena
     address: null,
     symbol: "-",
-    url: "https://www.starshares.xyz/",
+    url: "https://starsarena.com/",
     description:
       "Star Shares - trade twitter profiles on $AVAX. Buy and share your favorite creators and earn from their success",
     chain: "Avalanche", 
-    logo: `${baseIconsUrl}/star-shares.png`,
+    logo: `${baseIconsUrl}/the-arena.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -19320,7 +19320,7 @@ const data3: Protocol[] = [
     category: "SoFi",
     chains: ["Avalanche"], 
     module: "starshares/index.js",
-    twitter: "starsarenacom",
+    twitter: "TheArenaApp",
     forkedFrom: ["friend.tech"],
     oracles: [],
     github: [],

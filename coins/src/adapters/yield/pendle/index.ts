@@ -11,6 +11,7 @@ const config: { [chain: string]: any } = {
     factory: "0xf5a7de2d276dbda3eef1b62a9e718eff4d29ddc8",
     fromBlock: 62979673,
     toAsset: "0xAdB09F65bd90d19e3148D9ccb693F3161C6DB3E8",
+    v2Factory: "0x2fcb47b58350cd377f94d3821e7373df60bd9ced"
   },
   bsc: {
     factory: "0x2bEa6BfD8fbFF45aA2a893EB3B6d85D10EFcC70E",

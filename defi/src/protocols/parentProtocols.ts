@@ -2541,6 +2541,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "Scallop_io",
+    github: ["scallop-io"],
   },
   {
     id: "parent#spacefi",

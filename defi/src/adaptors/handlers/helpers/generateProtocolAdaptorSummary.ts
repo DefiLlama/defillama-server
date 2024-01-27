@@ -146,7 +146,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const lastDaysExtrapolation = ((yesterdaysCleanTimestamp - lastAvailableDataTimestamp) / ONE_DAY_IN_SECONDS) < 5
         const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap, lastAvailableDataTimestamp)
 
-        /* if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null || Object.keys(cleanLastReacord.data).length < adapter.chains.length) {
+        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null || Object.keys(cleanLastReacord.data).length < adapter.chains.length) {
             const storedChains = Object.keys(cleanLastReacord?.data ?? {})
             const missingChains = adapter.chains.filter(chain => !storedChains.includes(chain))
             if (onError) onError(new Error(`
@@ -157,7 +157,7 @@ ${formatTimestampAsDate(lastAvailableDataTimestamp.toString())} <- Last date fou
 ${sumAllVolumes(await convertDataToUSD(lastRecordRaw.data, lastRecordRaw.timestamp))} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}
 Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
 `))
-        } */
+        }
 
         // Now we add adaptorRecordType to the extra types object
         extraTypes[AdaptorRecordTypeMapReverse[adaptorRecordType]] = stats.total24h

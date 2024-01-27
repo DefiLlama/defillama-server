@@ -5,6 +5,7 @@ const config: { [chain: string]: any } = {
     factory: "0x27b1dacd74688af24a64bd3c9c1b143118740784",
     fromBlock: 16032059,
     toAsset: "0x263833d47eA3fA4a30f269323aba6a107f9eB14C",
+    v2Factory: "0x1a6fcc85557bc4fb7b534ed835a03ef056552d52"
   },
   arbitrum: {
     factory: "0xf5a7de2d276dbda3eef1b62a9e718eff4d29ddc8",

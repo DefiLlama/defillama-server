@@ -13,7 +13,7 @@ export default async function getTokenPrices(
   config: any,
 ): Promise<Write[]> {
   const writes: Write[] = [];
-  const { factory, fromBlock, toAsset } = config;
+  const { factory, fromBlock, toAsset, v2Factory } = config;
   const api: ChainApi = await getApi(chain, timestamp);
   const logs: any[][] = await newMarkets();
 
@@ -56,7 +56,7 @@ export default async function getTokenPrices(
     );
 
   async function newMarkets() {
-    return await getLogs({
+    let logs = await getLogs({
       api,
       target: factory,
       topics: [
@@ -67,6 +67,20 @@ export default async function getTokenPrices(
       onlyArgs: true,
       fromBlock,
     });
+    if(v2Factory){
+      logs = logs.concat(await getLogs({
+        api,
+        target: v2Factory,
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
+        eventAbi:
+          "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        onlyArgs: true,
+        fromBlock,
+      }))
+    }
+    return logs
   }
 
   async function syWrites() {

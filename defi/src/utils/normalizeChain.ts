@@ -1503,6 +1503,7 @@ export const chainCoingeckoIds = {
     symbol: "OMAX",
     cmcId: "13916",
     categories: ["EVM"],
+    github: ["OMAX-Development"]
   },
   "Bitindi": {
     geckoId: "bitindi-chain",

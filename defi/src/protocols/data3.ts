@@ -27718,7 +27718,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3946",
-    name: "Kelp Dao",
+    name: "Kelp DAO",
     address: null,
     symbol: "-",
     url: "https://kelpdao.xyz/",

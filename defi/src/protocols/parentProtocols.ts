@@ -3572,6 +3572,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "fringefinance",
   },
+  {
+    id: "parent#equation",
+    name: "Equation",
+    url: "https://equation.org",
+    description: `Equation is a decentralized perpetual contract built on Arbitrum. With its innovative BRMM model, Equation provides both traders and Liquidity Providers (LPs) with up to 100x leverage, enabling traders to establish larger and unrestricted positions while enhancing capital efficiency for LPs. It offers the industry's lowest maintenance margin rate at just 0.25%, thus significantly reducing liquidation risk.`,
+    logo: `${baseIconsUrl}/equation.jpg`,
+    gecko_id: "equation",
+    cmcId: "28346",
+    chains: [],
+    twitter: "EquationDAO",
+    github: ["EquationDAO"],
+  },
 ];
 
 export default parentProtocols;

@@ -22904,17 +22904,17 @@ const data3: Protocol[] = [
   },
   {
     id: "3726",
-    name: "Equation",
+    name: "Equation V1",
     address: "arbitrum:0x87AAfFdF26c6885f6010219208D5B161ec7609c0",
     symbol: "EQU",
     url: "https://equation.org",
     description: "Equation is a decentralized perpetual contract built on Arbitrum. With its innovative BRMM model, Equation provides both traders and Liquidity Providers (LPs) with up to 200x leverage, enabling traders to establish larger and unrestricted positions while enhancing capital efficiency for LPs.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/equation.jpg`,
+    logo: `${baseIconsUrl}/equation-v1.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "equation",
-    cmcId: "28346",
+    gecko_id: null,
+    cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
     module: "equation/index.js",
@@ -22922,7 +22922,7 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"],
     twitter: "EquationDAO",
     audit_links: ["https://github.com/EquationDAO/equation-contracts/blob/main/contracts/audits/ABDK_Equation_EquationDAO_v_1_0.pdf"],
-    github: ["EquationDAO"],
+    parentProtocol: "parent#equation",
     listedAt: 1698844225
   },
   {
@@ -30540,7 +30540,7 @@ const data3: Protocol[] = [
   {
     id: "4073",
     name: "Xenwave",
-    address: "btn:0x738f255b9d3386e49e1c4392a9c7d850c6c7c86d",
+    address: "bitnet:0x738f255b9d3386e49e1c4392a9c7d850c6c7c86d",
     symbol: "STRAT",
     url: "https://xenwave.com",
     description: "Xenwave is the all-powerful app where you can unleash your creativity, productivity, and socialize on the Web 3.0",
@@ -30558,6 +30558,28 @@ const data3: Protocol[] = [
     twitter: "RestratagemTech",
     github: ["Restratagem"],
     listedAt: 1706367520
+  },
+  {
+    id: "4074",
+    name: "Equation V2",
+    address: "arbitrum:0x87AAfFdF26c6885f6010219208D5B161ec7609c0",
+    symbol: "EQU",
+    url: "https://equation.org",
+    description: "Equation is a decentralized perpetual contract built on Arbitrum. With its innovative BRMM model, Equation provides both traders and Liquidity Providers (LPs) with up to 100x leverage, enabling traders to establish larger and unrestricted positions while enhancing capital efficiency for LPs. It offers the industry's lowest maintenance margin rate at just 0.25%, thus significantly reducing liquidation risk.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/equation-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId:null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [], // they added pyth as oracle on the listing, but 0 mention of that, no documments, nothing
+    forkedFrom: [],
+    module: "equation-v2/index.js",
+    twitter: "EquationDAO",
+    parentProtocol: "parent#equation",
+    listedAt: 1706528505
   },
 ]
 

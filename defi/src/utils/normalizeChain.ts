@@ -2073,6 +2073,7 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
+    github: ["mode-network"],
     chainId: 34443,
   },
   "FSC": {

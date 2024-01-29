@@ -72,7 +72,7 @@ async function storeCoinData(coinData: any[]) {
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60);
+    await batchWrite2(writes2, false, 5 * 60, 'fetchCGD 75');
   } catch (e) {
     console.error(e);
   }
@@ -102,7 +102,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60);
+    await batchWrite2(writes2, false, 5 * 60, 'fetchCGD 105');
   } catch (e) {
     console.error(e);
   }
@@ -253,7 +253,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 
   if (writes2.length == 0) return;
   try {
-    await batchWrite2(writes2);
+    await batchWrite2(writes2, undefined, undefined, 'fetchCGD 256');
   } catch (e) {
     console.error(e);
   }

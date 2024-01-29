@@ -388,9 +388,12 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
 
   return confidentValues;
 }
-export async function writeToRedis(strings: {
-  [key: string]: string;
-}): Promise<void> {
+export async function writeToRedis(
+  strings: {
+    [key: string]: string;
+  },
+  source: string = "UNKNOWN",
+): Promise<void> {
   if (Object.keys(strings).length == 0) return;
   // console.log("starting mset");
 
@@ -406,7 +409,7 @@ export async function writeToRedis(strings: {
       const realPrice = real.coins[key].price;
       if (Math.abs(ob.price - realPrice) / realPrice > 0.05) {
         await sendMessage(
-          `redis price is being written as ${ob.price} when it should be about ${realPrice}!!`,
+          `redis price is being written as ${ob.price} when it should be about ${realPrice}!! SOURCE: ${source}`,
           process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
         );
       }
@@ -465,6 +468,7 @@ export async function writeCoins2(
   values: any[],
   batchPostgresReads: boolean = true,
   margin?: number,
+  source?: string,
 ) {
   const cleanValues = batchPostgresReads
     ? cleanTimestamps(values, margin)
@@ -478,14 +482,15 @@ export async function writeCoins2(
   });
 
   await writeToPostgres(values);
-  await writeToRedis(strings);
+  await writeToRedis(strings, source);
 }
 export async function batchWrite2(
   values: Coin[],
   batchPostgresReads: boolean = true,
   margin: number = 15 * 60,
+  source?: string,
 ) {
-  await writeCoins2(values, batchPostgresReads, margin);
+  await writeCoins2(values, batchPostgresReads, margin, source);
 }
 export async function batchReadPostgres(
   key: string,

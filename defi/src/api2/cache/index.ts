@@ -75,10 +75,14 @@ export async function initCache({ cacheType = 'cron' } = { cacheType: 'none' }) 
 
     await setHistoricalTvlForAllProtocols()
 
-    setInterval(updateRaises, 20 * MINUTES)
-    setInterval(updateMCaps, 20 * MINUTES)
-    setInterval(tvlProtocolDataUpdate, 20 * MINUTES)
-    setInterval(setHistoricalTvlForAllProtocols, 2 * HOUR)
+    // dont run it for local dev env
+    if (!process.env.API2_DEBUG_MODE) {
+      setInterval(updateRaises, 20 * MINUTES)
+      setInterval(updateMCaps, 20 * MINUTES)
+      setInterval(tvlProtocolDataUpdate, 20 * MINUTES)
+      setInterval(setHistoricalTvlForAllProtocols, 2 * HOUR)
+    }
+
 
   } else if (cacheType === 'cron') {
     await Promise.all([

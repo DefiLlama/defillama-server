@@ -28119,7 +28119,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Polygon"],
     oracles: [], 
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     module: "virtuswap/index.js", 
     twitter: "VirtuSwap", 
     audit_links: ["https://github.com/Virtuswap/v1-core/tree/main/audits"],

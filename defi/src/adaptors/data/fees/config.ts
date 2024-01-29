@@ -1793,5 +1793,10 @@ export default {
     "horiza": {
         "enabled": true,
         "id": "4041"
+    },
+    "manta": {
+        category: "Rollup",
+        "enabled": true,
+        "id": "13631"
     }
 } as AdaptorsConfig

@@ -1,4 +1,4 @@
-import { CoinRead, } from "./src/adapters/utils/dbInterfaces";
+import { CoinRead } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
@@ -7,7 +7,7 @@ import { sendMessage } from "../defi/src/utils/discord";
 import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 
 function sleep(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 const pgColumns: string[] = [
@@ -395,23 +395,30 @@ export async function writeToRedis(strings: {
 
   const key = "ethereum:0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0";
   let debug = strings[key];
-  if (debug) {
-    await setEnvSecrets();
-    let ob = JSON.parse(debug).coins[key];
-    const real = await fetch(
-      `https://coins.llama.fi/prices/current/${key}`,
-    ).then((r) => r.json());
-    const realPrice = real.coins[key].price;
-    await sendMessage(
-      `test redis alert for ${key}, prices ${ob.price}, ${realPrice}`,
-      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-    );
-    if (Math.abs(ob.price - realPrice) / realPrice < 0.9) {
+  try {
+    if (debug) {
+      await setEnvSecrets();
+      let ob = JSON.parse(debug).coins[key];
+      const real = await fetch(
+        `https://coins.llama.fi/prices/current/${key}`,
+      ).then((r) => r.json());
+      const realPrice = real.coins[key].price;
       await sendMessage(
-        `redis price is being written as ${ob.price} when it should be about ${realPrice}!!`,
+        `test redis alert for ${key}, prices ${ob.price}, ${realPrice}`,
         process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
       );
+      if (Math.abs(ob.price - realPrice) / realPrice < 0.9) {
+        await sendMessage(
+          `redis price is being written as ${ob.price} when it should be about ${realPrice}!!`,
+          process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        );
+      }
     }
+  } catch (e) {
+    await sendMessage(
+      `Redis debug error: ${e}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    );
   }
   const redis = new Redis({
     port: 6379,

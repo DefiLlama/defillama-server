@@ -30582,6 +30582,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#equation",
     listedAt: 1706528505
   },
+  {
+    id: "4075",
+    name: "Eigenpie",
+    address: null,
+    symbol: "-",
+    url: "https://www.eigenlayer.magpiexyz.io",
+    description: "Eigenpie is an innovative SubDAO created by Magpie, focusing on the restaking of ETH LSTs via EigenLayer. As a liquid restaking platform for Ethereum, Eigenpie’s core mechanism enables users to convert their Liquid Staked ETH tokens into Isolated Liquid Restaked ETH tokens. These are restaked versions of ETH LSTs, created by Eigenpie. This process allows users to earn passive income from Ethereum staking and EigenLayer revenue simultaneously, without requiring a lockup period.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/eigenpie.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId:null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum"],
+    oracles: ["Chainlink"], 
+    forkedFrom: [],
+    module: "eigenpie/index.js",
+    twitter: "Eigenpiexyz_io",
+    parentProtocol: "parent#magpie-ecosystem",
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Eigenpie-v1.0.pdf"],
+    listedAt: 1706537731
+  },
 ]
 
 export default data3

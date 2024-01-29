@@ -200,7 +200,7 @@ async function storeTokensOfBridge(bridge: Bridge, i: number) {
     writes2.push({
       timestamp: getCurrentUnixTimestamp(),
       price: data[to].price,
-      confidence: 0.9,
+      confidence: Math.min(data[to].confidence, 0.9),
       key: PK,
       chain,
       adapter: "bridges",

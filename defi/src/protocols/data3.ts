@@ -30605,6 +30605,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Eigenpie-v1.0.pdf"],
     listedAt: 1706537731
   },
+  {
+    id: "4076",
+    name: "Swap Omax",
+    address: null,
+    symbol: "-",
+    url: "https://swap.omax.app/swap",
+    description: "The #1 AMM and DEX on Omax Chain powered by OMAX Network.",
+    chain: "Omax",
+    logo: `${baseIconsUrl}/swap-omax.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId:null,
+    category: "Dexes",
+    chains: ["Omax"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "omax-swap/index.js",
+    twitter: "OmaxToken",
+    listedAt: 1706545218
+  },
 ]
 
 export default data3

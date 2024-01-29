@@ -17069,6 +17069,7 @@ const data2: Protocol[] = [
     module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
     forkedFrom: [],
     twitter: "JupiterExchange",
+    parentProtocol: "parent#jupiter",
     listedAt: 1664608359
   },
   {

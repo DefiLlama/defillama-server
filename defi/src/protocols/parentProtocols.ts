@@ -3584,6 +3584,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "EquationDAO",
     github: ["EquationDAO"],
   },
+  {
+    id: "parent#jupiter",
+    name: "Jupiter",
+    url: "https://jup.ag",
+    description: `Best exchange in DeFi. Full stack ecosystem play focused on advancing the meta.`,
+    logo: `${baseIconsUrl}/jupiter.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "JupiterExchange",
+  },
 ];
 
 export default parentProtocols;

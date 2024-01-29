@@ -30626,6 +30626,28 @@ const data3: Protocol[] = [
     twitter: "OmaxToken",
     listedAt: 1706545218
   },
+  {
+    id: "4077",
+    name: "Jupiter Perpetual Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://jup.ag/perps",
+    description: "Jupiter Perpetual Exchange is a LP-to-trader perpetual exchange based on oracle prices.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jupiter-perpetual-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId:null,
+    category: "Derivatives",
+    chains: ["Solana"],
+    oracles: ["Pyth"], 
+    forkedFrom: [],
+    module: "jupiter-perpetual.js",
+    twitter: "JupiterExchange",
+    parentProtocol: "parent#jupiter",
+    listedAt: 1706560048
+  },
 ]
 
 export default data3

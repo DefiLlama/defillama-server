@@ -398,7 +398,7 @@ export async function writeToRedis(strings: {
   try {
     if (debug) {
       await setEnvSecrets();
-      let ob = JSON.parse(debug).coins[key];
+      let ob = JSON.parse(debug)[key];
       const real = await fetch(
         `https://coins.llama.fi/prices/current/${key}`,
       ).then((r) => r.json());

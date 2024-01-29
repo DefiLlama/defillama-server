@@ -1,6 +1,6 @@
 import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import { extraSections } from "./utils/normalizeChain";
+import { extraSections, getChainDisplayName } from "./utils/normalizeChain";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -45,8 +45,12 @@ function sum(
     }
     if (section === chain) {
       data.tvl = (data.tvl || 0) + item[section];
-    } else if (section === sectionToAdd || extraSections.includes(section) || includeChains) {
+    } else if (section === sectionToAdd || extraSections.includes(section)) {
       data[section] = (data[section] || 0) + item[section];
+    } else if (includeChains) {
+      const sectionItem = section.split("-")[1];
+      const sectionKey = `${getChainDisplayName(section.split("-")[0], true)}${sectionItem ? `-${sectionItem}` : ""}`;
+      data[sectionKey] = (data[sectionKey] || 0) + item[section];
     }
   }
 

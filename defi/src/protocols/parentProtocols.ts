@@ -3525,7 +3525,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#gammaswaplabs",
-    name: "GammaSwap protocol",
+    name: "GammaSwap Protocol",
     url: "https://gammaswap.com/",
     description: `A novel primitive for scaling DeFi liquidity through permissionless risk markets`,
     logo: `${baseIconsUrl}/gammaswaplabs.jpg`,

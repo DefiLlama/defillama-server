@@ -583,6 +583,13 @@ export default {
     "equation-v2": {
         parentId: "Equation",
         "enabled": true,
-        "id": "4074"
+        "id": "4074",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1706400000": true,
+                "1706313600": true,
+                "1706227200": true,
+            },
+        }
     }
 } as AdaptorsConfig

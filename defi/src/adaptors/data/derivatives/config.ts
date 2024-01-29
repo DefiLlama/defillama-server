@@ -574,5 +574,9 @@ export default {
                 "1706140800": true,
             },
         }
+    },
+    "helix-perp": {
+        "enabled": true,
+        "id": "2259"
     }
 } as AdaptorsConfig

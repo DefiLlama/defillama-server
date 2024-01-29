@@ -88,7 +88,7 @@ import { Coin, batchWrite2, readCoins2, translateItems } from "../../../coins2";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
-async function storeTokensOfBridge(bridge: Bridge) {
+async function storeTokensOfBridge(bridge: Bridge, i: number) {
   const tokens = await bridge();
 
   const alreadyLinked = (
@@ -210,9 +210,11 @@ async function storeTokensOfBridge(bridge: Bridge) {
   });
 
   await batchWrite(writes, true);
-  await batchWrite2(writes2, true, undefined, "bridges 213");
+  await batchWrite2(writes2, true, undefined, `bridge index ${i}`);
   return tokens;
 }
 export async function storeTokens() {
-  return await Promise.all(bridges.map(storeTokensOfBridge));
+  return await Promise.all(
+    bridges.map((b: Bridge, i: number) => storeTokensOfBridge(b, i)),
+  );
 }

@@ -466,6 +466,7 @@ export default {
         "id": "3747"
     },
     "equation": {
+        parentId: "Equation",
         "enabled": true,
         "id": "3726"
     },
@@ -578,5 +579,10 @@ export default {
     "helix-perp": {
         "enabled": true,
         "id": "2259"
+    },
+    "equation-v2": {
+        parentId: "Equation",
+        "enabled": true,
+        "id": "4074"
     }
 } as AdaptorsConfig

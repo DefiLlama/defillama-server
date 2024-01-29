@@ -70,7 +70,7 @@ async function storeCoinData(coinData: any[]) {
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60);
+    await batchWrite2(writes2, false, 5 * 60, "line 74");
   } catch (e) {
     console.error(e);
   }
@@ -103,7 +103,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60);
+    await batchWrite2(writes2, false, 5 * 60, "line 106");
   } catch (e) {
     console.error(e);
   }
@@ -336,6 +336,8 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     await batchWrite2(
       writes2.filter((c: Coin) => c.symbol != null),
       false,
+      undefined,
+      "line 329",
     );
   } catch (e) {
     console.error(e);
@@ -411,7 +413,7 @@ async function getAndStoreHourly(
 
   const step = 10000;
   for (let i = 0; i < writes.length; i += step) {
-    await batchWrite2(writes.slice(i, i + step), false);
+    await batchWrite2(writes.slice(i, i + step), false, undefined, "line 416");
   }
 }
 

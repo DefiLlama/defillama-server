@@ -5,6 +5,7 @@ import { Redis } from "ioredis";
 import postgres from "postgres";
 import { sendMessage } from "../defi/src/utils/discord";
 import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
+import fetch from "node-fetch";
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -398,7 +399,7 @@ export async function writeToRedis(strings: {
   try {
     if (debug) {
       await setEnvSecrets();
-      let ob = JSON.parse(debug)[key];
+      let ob = JSON.parse(debug);
       const real = await fetch(
         `https://coins.llama.fi/prices/current/${key}`,
       ).then((r) => r.json());

@@ -1912,16 +1912,16 @@ export const chainCoingeckoIds = {
     github: ["kroma-network"],
   },
   "Manta": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "manta-network",
+    symbol: "MANTA",
+    cmcId: "13631",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
     github: ['manta-network'],
-    chainId: 169,
+    chainId: 169, //being used as id for volume/fees
   },
   "ShimmerEVM": {
     geckoId: "shimmer",

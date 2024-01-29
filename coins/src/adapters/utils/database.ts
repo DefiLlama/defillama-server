@@ -372,22 +372,23 @@ export async function batchWriteWithAlerts(
   failOnError: boolean,
 ): Promise<void> {
   const previousItems: DbEntry[] = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
-    items,
-    previousItems,
-  );
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+    await checkMovement(items, previousItems);
   await batchWrite(filteredItems, failOnError);
 }
 export async function batchWrite2WithAlerts(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
 ) {
   const previousItems: DbEntry[] = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
-    items,
-    previousItems,
-  );
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+    await checkMovement(items, previousItems);
 
-  await batchWrite2(await translateItems(filteredItems));
+  await batchWrite2(
+    await translateItems(filteredItems),
+    undefined,
+    undefined,
+    "DB 390",
+  );
 }
 async function readPreviousValues(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
@@ -414,7 +415,8 @@ async function checkMovement(
   previousItems: DbEntry[],
   margin: number = 0.5,
 ): Promise<AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]> {
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = [];
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+    [];
   const obj: { [PK: string]: any } = {};
   let errors: string = "";
   previousItems.map((i: any) => (obj[i.PK] = i));
@@ -439,7 +441,7 @@ async function checkMovement(
   });
 
   // if (errors != "" && !process.env.LLAMA_RUN_LOCAL)
-    // await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
+  // await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
 
   return filteredItems.filter((v: any) => v != null);
 }

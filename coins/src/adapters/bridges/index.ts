@@ -210,7 +210,7 @@ async function storeTokensOfBridge(bridge: Bridge) {
   });
 
   await batchWrite(writes, true);
-  await batchWrite2(writes2, true);
+  await batchWrite2(writes2, true, undefined, "bridges 213");
   return tokens;
 }
 export async function storeTokens() {

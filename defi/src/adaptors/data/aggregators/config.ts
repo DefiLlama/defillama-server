@@ -88,10 +88,10 @@ export default {
     enabled: true,
     id: "189",
   },
-  // "zrx": {
-  //   enabled: true,
-  //   id: "2116",
-  // },
+  "zrx": {
+    enabled: true,
+    id: "2116",
+  },
   "cowswap": {
     enabled: true,
     id: "2643",
@@ -101,10 +101,10 @@ export default {
     id: "3982",
     cleanRecordsConfig: {
       genuineSpikes: {
-          "1704153600": true,
-          "1704067200": true,
+        "1704153600": true,
+        "1704067200": true,
       },
-    }
+    },
   },
   "yield-yak": {
     enabled: true,
@@ -141,7 +141,7 @@ export default {
   },
   "unidex": {
     enabled: true,
-    id: "1833"
+    id: "1833",
   },
   "swapgpt": {
     enabled: true,
@@ -150,5 +150,5 @@ export default {
   "kanalabs": {
     enabled: true,
     id: "4016",
-  }
+  },
 } as AdaptorsConfig;

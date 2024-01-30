@@ -18,7 +18,8 @@ export const normalizedChainReplacements = {
   "horizen eon": "eon",
   "bahamut": "ftn",
   "viction": "tomochain",
-  "bevm": "chainx"
+  "bevm": "chainx",
+  "bitnet": "btn"
 } as {
   [chain: string]: string
 }
@@ -1502,6 +1503,7 @@ export const chainCoingeckoIds = {
     symbol: "OMAX",
     cmcId: "13916",
     categories: ["EVM"],
+    github: ["OMAX-Development"]
   },
   "Bitindi": {
     geckoId: "bitindi-chain",
@@ -1510,7 +1512,7 @@ export const chainCoingeckoIds = {
     cmcId: "22026",
     categories: ["EVM"],
   },
-  "MAP Relay Chain": {
+  "MAP Protocol": {
     geckoId: "marcopolo",
     symbol: "MAP",
     cmcId: "4956",
@@ -1911,16 +1913,16 @@ export const chainCoingeckoIds = {
     github: ["kroma-network"],
   },
   "Manta": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "manta-network",
+    symbol: "MANTA",
+    cmcId: "13631",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
     github: ['manta-network'],
-    chainId: 169,
+    chainId: 169, //being used as id for volume/fees
   },
   "ShimmerEVM": {
     geckoId: "shimmer",
@@ -2072,6 +2074,7 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
+    github: ["mode-network"],
     chainId: 34443,
   },
   "FSC": {
@@ -2147,6 +2150,20 @@ export const chainCoingeckoIds = {
     github: ["ambrosus"],
     chainId: 16718
   },
+  "dYdX": {
+    geckoId: "dydx-chain",
+    symbol: "dYdX",
+    cmcId: "28324",
+    categories: ["Cosmos"],
+    github: ["dydxfoundation", "dydxprotocol"]
+  },
+  "Bitnet": {
+    geckoId: "bitnet",
+    symbol: "BTN",
+    cmcId: null,
+    categories: ["EVM"],
+    github: ["BitnetMoney"]
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2159,7 +2176,7 @@ chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
 chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
 chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
-chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
+chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Protocol"]
 chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
@@ -2202,7 +2219,7 @@ export function transformNewChainName(chain: string) {
     case "eos_evm":
       return "EOS EVM"
     case "Map":
-      return "MAP Relay Chain"
+      return "MAP Protocol"
     case "Pulse":
       return "PulseChain"
     case "Op_Bnb":
@@ -2517,7 +2534,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bitindi":
       return "Bitindi"
     case "map":
-      return useNewChainNames ? "MAP Relay Chain" : "Map"
+      return useNewChainNames ? "MAP Protocol" : "Map"
     case "stargaze":
       return "Stargaze"
     case "libre":
@@ -2684,6 +2701,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Firechain"
     case "airdao":
       return "AirDAO"
+    case "dydx":
+        return "dYdX"
+    case "btn":
+        return "Bitnet"
+    case "bitnet":
+        return "Bitnet"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -43,9 +43,8 @@ const dynamodb = {
 };
 export default dynamodb;
 
-export async function getHistoricalValues(pk: string) {
+export async function getHistoricalValues(pk: string, lastKey = -1) {
   let items = [] as any[];
-  let lastKey = -1;
   do {
     const result = await dynamodb.query({
       ExpressionAttributeValues: {

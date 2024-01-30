@@ -1,6 +1,6 @@
 import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import { extraSections } from "./utils/normalizeChain";
+import { extraSections, getChainDisplayName } from "./utils/normalizeChain";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -25,27 +25,32 @@ function sum(
   item: Item = {},
   oracleProtocols: OracleProtocols,
   protocol: IProtocol,
-  chain: string | null
+  chain: string | null,
+  includeChains = false
 ) {
   if (total[time] === undefined) {
     total[time] = {};
   }
   const data = total[time][oracle] || {};
 
-  const sectionToAdd = chain ?? 'tvl'
+  const sectionToAdd = chain ?? "tvl";
 
   for (let section in item) {
     if (chain !== null) {
-      if (!section.startsWith(chain)) {
+      if (!section.startsWith(chain) && !includeChains) {
         continue;
-      } else if (section.includes("-")) {
-        section = section.split("-")[1]
+      } else if (section.includes("-") && !includeChains) {
+        section = section.split("-")[1];
       }
     }
     if (section === chain) {
       data.tvl = (data.tvl || 0) + item[section];
     } else if (section === sectionToAdd || extraSections.includes(section)) {
       data[section] = (data[section] || 0) + item[section];
+    } else if (includeChains) {
+      const sectionItem = section.split("-")[1];
+      const sectionKey = `${getChainDisplayName(section.split("-")[0], true)}${sectionItem ? `-${sectionItem}` : ""}`;
+      data[sectionKey] = (data[sectionKey] || 0) + item[section];
     }
   }
 
@@ -69,8 +74,9 @@ function sum(
   oracleProtocols[oracle].add(protocol.name);
 }
 
-export async function getOraclesInternal({ ...options}: any = {}) {
+export async function getOraclesInternal({ ...options }: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
+  const sumDailyTvlsByChain = {} as SumDailyTvls;
   const oracleProtocols = {} as OracleProtocols;
 
   await processProtocols(
@@ -81,10 +87,13 @@ export async function getOraclesInternal({ ...options}: any = {}) {
             oracles.forEach((oracle) => {
               sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, chain);
             });
-          })
+          });
         } else if (protocol.oracles) {
           protocol.oracles.forEach((oracle) => {
             sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, null);
+            protocol.chains?.forEach((chain) => {
+              sum(sumDailyTvlsByChain, oracle, timestamp, item, oracleProtocols, protocol, chain, true);
+            });
           });
         }
       } catch (error) {
@@ -95,8 +104,9 @@ export async function getOraclesInternal({ ...options}: any = {}) {
   );
   return {
     chart: sumDailyTvls,
+    chainChart: sumDailyTvlsByChain,
     oracles: Object.fromEntries(Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])),
-  }
+  };
 }
 
 const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {

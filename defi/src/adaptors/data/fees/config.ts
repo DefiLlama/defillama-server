@@ -1545,6 +1545,7 @@ export default {
         "id": "3753"
     },
     "equation": {
+        parentId: "Equation",
         "enabled": true,
         "id": "3726"
     },
@@ -1793,5 +1794,15 @@ export default {
     "horiza": {
         "enabled": true,
         "id": "4041"
+    },
+    "manta": {
+        category: "Rollup",
+        "enabled": true,
+        "id": "13631"
+    },
+    "equation-v2": {
+        parentId: "Equation",
+        "enabled": true,
+        "id": "4074"
     }
 } as AdaptorsConfig

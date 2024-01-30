@@ -85,6 +85,7 @@ jobs:
           AGGREGATORS_WEBHOOK: ${{ secrets.AGGREGATORS_WEBHOOK }}
           OPTIONS_WEBHOOK: ${{ secrets.OPTIONS_WEBHOOK }}
           ZEROx_API_KEY: ${{ secrets.ZEROx_API_KEY }}
+          PANCAKESWAP_OPBNB_SUBGRAPH: ${{ secrets.PANCAKESWAP_OPBNB_SUBGRAPH }}
           PERENNIAL_V2_SUBGRAPH_API_KEY: ${{ secrets.PERENNIAL_V2_SUBGRAPH_API_KEY }}
           INDEXER_DB: ${{ secrets.INDEXER_DB }}
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}

@@ -17,7 +17,7 @@ async function run() {
     const pormises = allDataTypes.map(i => _writeAdapterType(adaptorRecordType, i, data))
     await Promise.all(pormises)
     // TODO: remove from ddb or move to different db and handle it task runner while pulling data
-    removeErrorField(data)
+    // removeErrorField(data)
     await writeToPGCache(fileKey, data)
   })
   await Promise.all(promises)
@@ -73,6 +73,10 @@ async function writeAdapterType(adaptorRecordType: AdapterType, dataType: Adapto
         const rawTotalRecord = await wrappedGetAdaptorRecord(adapter, lastKey, "LAST").catch(_e => { }) as AdaptorRecord | undefined
         if (rawTotalRecord)
           data[getKey(adapter, lastKey, 'LAST')] = rawTotalRecord
+        // enable below lines to get & clean cummulative records - but there is no point in caching all cummulative records, we are interested only in the last one
+        // const allRecords = await wrappedGetAdaptorRecord(adapter, lastKey)
+        // if ((allRecords as any)?.length)
+        //   data[getKey(adapter, lastKey)] = allRecords
       }
 
       for (const recordType of getExtraTypes(adaptorRecordType)) {
@@ -83,9 +87,13 @@ async function writeAdapterType(adaptorRecordType: AdapterType, dataType: Adapto
       }
 
       for (const recordType of getExtraN30DTypes(adaptorRecordType)) {
-        const value = await wrappedGetAdaptorRecord(adapter, recordType).catch(_e => { }) as AdaptorRecord | undefined
+        const key = getKey(adapter, recordType)
+        let existingData = data[key] ?? []
+        let lastKey = existingData.length ? existingData[existingData.length - 1].data.eventTimestamp : undefined
+        if (lastKey) lastKey -= 2 * 24 * 3600 // 2 days ago
+         const value = await wrappedGetAdaptorRecord(adapter, recordType, lastKey).catch(_e => { }) as AdaptorRecord | undefined
         if (value)
-          data[getKey(adapter, recordType)] = value
+          data[getKey(adapter, recordType)] = removeDupsAndSortArrays(existingData, value)
       }
 
     } catch (error) {
@@ -98,10 +106,10 @@ async function writeAdapterType(adaptorRecordType: AdapterType, dataType: Adapto
   console.timeEnd(timeKey)
 }
 
-async function wrappedGetAdaptorRecord(adapter: ProtocolAdaptor, type: AdaptorRecordType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number): Promise<AdaptorRecord[] | AdaptorRecord> {
+async function wrappedGetAdaptorRecord(adapter: ProtocolAdaptor, type: AdaptorRecordType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number, lastKey?: number): Promise<AdaptorRecord[] | AdaptorRecord> {
   const key = getKey(adapter, type, mode)
   if (!cachePromises[key])
-    cachePromises[key] = getAdaptorRecord2({ adapter, type, mode, timestamp })
+    cachePromises[key] = getAdaptorRecord2({ adapter, type, mode, timestamp, lastKey })
   return cachePromises[key]
 }
 
@@ -118,4 +126,18 @@ function removeErrorField(obj: any) {
     }
   }
   return obj
+}
+
+function removeDupsAndSortArrays(...arr: any[]) {
+  const eventMap = {} as any
+  arr.forEach((e) => {
+    e.forEach((val: any) => {
+      if (!val?.data?.eventTimestamp)
+        return
+      eventMap[val.data.eventTimestamp] = val
+    })
+  })
+  let array = Object.values(eventMap)
+  array.sort((a: any, b: any) => a.data.eventTimestamp - b.data.eventTimestamp)
+  return array
 }

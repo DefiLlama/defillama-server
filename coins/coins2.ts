@@ -445,9 +445,9 @@ export async function writeToRedis(
   if (Object.keys(strings).length == 0) return;
   // console.log("starting mset");
 
-  const key = "tron:0x0000000000000000000000000000000000000000";
+  const key = "beam:0xd51bfa777609213a653a2cd067c9a0132a2d316a";
   let debug = strings[key];
-  const query = "decimals";
+  const query = "price";
   try {
     if (debug) {
       await setEnvSecrets();

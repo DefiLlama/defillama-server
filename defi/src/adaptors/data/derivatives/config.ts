@@ -594,6 +594,12 @@ export default {
     },
     "jupiter-perpetual": {
         "enabled": true,
-        "id": "4077"
+        "id": "4077",
+        "protocolsData": {
+            "derivatives": {
+                "id": "4077",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

@@ -39,6 +39,11 @@
       "decimals": "9",
       "symbol": "afSUI",
       "to": "coingecko#aftermath-staked-sui"
+    },
+    "0x3a5143bb1196e3bcdfab6203d1683ae29edd26294fc8bfeafe4aaa9d2704df37::coin::COIN": {
+      "decimals": "8",
+      "symbol": "APT",
+      "to": "coingecko#aptos"
     }
   },
   "neutron": {

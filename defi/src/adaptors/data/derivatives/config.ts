@@ -591,5 +591,9 @@ export default {
                 "1706227200": true,
             },
         }
+    },
+    "jupiter-perpetual": {
+        "enabled": true,
+        "id": "4077"
     }
 } as AdaptorsConfig

@@ -11,6 +11,7 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+const changedAdapterColumns: any[] = ["key", "from", "to", "change"];
 const pgColumns: string[] = [
   "key",
   "chain",
@@ -43,6 +44,7 @@ export type Coin = {
 type CoinDict = {
   [key: string]: Coin;
 };
+type ChangedAdapter = { to: string; from: string; change: number };
 
 let auth: string[];
 
@@ -372,19 +374,65 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
 
   return filtered;
 }
-const swappedAdapter: {
-  [key: string]: { to: string; from: string; change: number };
-} = {};
-async function notifySwappedAdapters() {
-  let message = ``;
-  Object.keys(swappedAdapter).map((k: string) => {
-    message += `\n${k} adapter from ${swappedAdapter[k].from}, to ${swappedAdapter[k].to} with a change of ${swappedAdapter[k].to}%`;
-  });
-  if (!message.length) return;
-  await sendMessage(message, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
+async function storeChangedAdapter(changedAdapters: {
+  [key: string]: ChangedAdapter;
+}) {
+  try {
+    if (Object.keys(changedAdapters).length == 0) return;
+    await generateAuth();
+    const sql = postgres(auth[0]);
+
+    const inserts: ChangedAdapter[] = Object.entries(changedAdapters).map(
+      ([key, c]) => ({
+        key,
+        from: c.from,
+        to: c.to,
+        change: c.change,
+      }),
+    );
+
+    if (inserts.length)
+      await queryPostgresWithRetry(
+        sql`
+      insert into adapterchanges
+      ${sql(inserts, ...changedAdapterColumns)}
+      on conflict (key)
+      do nothing
+      `,
+        sql,
+      );
+  } catch (e) {
+    console.error(`storeChangedAdapters failed with: ${e}`);
+  }
 }
-function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
+export async function notifyChangedAdapter() {
+  await generateAuth();
+  const sql = postgres(auth[0]);
+
+  const stored: ChangedAdapter[] = await sql` select ${sql(
+    changedAdapterColumns,
+  )} from adapterchanges`;
+
+  stored.sort((a, b) => b.change - a.change);
+  const promises: any = [];
+  let message: string = "";
+  stored.map((k: ChangedAdapter) => {
+    message += `\n${k} adapter from ${k.from}, to ${k.to} with a change of ${k.change}%`;
+  });
+
+  promises.push(sql`delete from adapterchanges`);
+  if (message.length)
+    promises.push(
+      sendMessage(message, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true),
+    );
+  await Promise.all(promises);
+}
+async function cleanConfidences(
+  values: Coin[],
+  storedRecords: CoinDict,
+): Promise<Coin[]> {
   const confidentValues: Coin[] = [];
+  const changedAdapters: { [key: string]: ChangedAdapter } = {};
 
   values.map((c: Coin) => {
     if (c.confidence < confidenceThreshold) return;
@@ -395,15 +443,19 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
     }
     if (c.confidence < storedRecord.confidence) return;
     if (c.adapter && c.adapter != storedRecord.adapter) {
-      swappedAdapter[c.key] = {
+      const change =
+        (100 * Math.abs(c.price - storedRecord.price)) / storedRecord.price;
+      if (change < 1) return;
+      changedAdapters[c.key] = {
         to: c.adapter,
         from: storedRecord.adapter,
-        change: Math.abs(c.price - storedRecord.price) / storedRecord.price,
+        change,
       };
     }
     confidentValues.push(c);
   });
 
+  await storeChangedAdapter(changedAdapters);
   return confidentValues;
 }
 export async function writeToRedis(
@@ -492,7 +544,7 @@ export async function writeCoins2(
     ? cleanTimestamps(values, margin)
     : values;
   const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
-  values = cleanConfidences(values, storedRecords);
+  values = await cleanConfidences(values, storedRecords);
   const writesToRedis = findRedisWrites(values, storedRecords);
   const strings: { [key: string]: string } = {};
   writesToRedis.map((v: Coin) => {
@@ -501,7 +553,6 @@ export async function writeCoins2(
 
   await writeToPostgres(values);
   await writeToRedis(strings, source);
-  await notifySwappedAdapters();
 }
 export async function batchWrite2(
   values: Coin[],

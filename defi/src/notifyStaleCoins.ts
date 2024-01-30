@@ -1,6 +1,9 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { notify } from "./storeTvlInterval/staleCoins";
+import { notifyStaleCoins } from "./storeTvlInterval/staleCoins";
+import { notifyChangedAdapter } from "../../coins/coins2";
 
-const handler = async (_event: any) => await notify();
+const handler = async (_event: any) => {
+  await Promise.all([notifyStaleCoins(), notifyChangedAdapter()]);
+};
 
 export default wrapScheduledLambda(handler);

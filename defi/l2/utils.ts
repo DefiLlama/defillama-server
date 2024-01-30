@@ -59,7 +59,7 @@ export async function getPrices(
       restCallWrapper(
         () =>
           fetch(
-            `https://coins2.llama.fi/prices?source=internal${
+            `https://coins.llama.fi/prices?source=internal${
               process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""
             }`,
             {

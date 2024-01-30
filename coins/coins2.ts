@@ -445,8 +445,9 @@ export async function writeToRedis(
   if (Object.keys(strings).length == 0) return;
   // console.log("starting mset");
 
-  const key = "ethereum:0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0";
+  const key = "okexchain:0x382bb369d343125bfb2117af9c149795c6c65c50";
   let debug = strings[key];
+  const query = "decimals";
   try {
     if (debug) {
       await setEnvSecrets();
@@ -454,10 +455,10 @@ export async function writeToRedis(
       const real = await fetch(
         `https://coins.llama.fi/prices/current/${key}`,
       ).then((r) => r.json());
-      const realPrice = real.coins[key].price;
-      if (Math.abs(ob.price - realPrice) / realPrice > 0.05) {
+      const realData = real.coins[key][query];
+      if (Math.abs(ob[query] - realData) / realData > 0.05) {
         await sendMessage(
-          `redis price is being written as ${ob.price} when it should be about ${realPrice}!! SOURCE: ${source}`,
+          `redis ${query} is being written as ${ob[query]} when it should be about ${realData}!! SOURCE: ${source}`,
           process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
         );
       }

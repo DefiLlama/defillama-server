@@ -405,28 +405,6 @@ async function storeChangedAdapter(changedAdapters: {
     console.error(`storeChangedAdapters failed with: ${e}`);
   }
 }
-export async function notifyChangedAdapter() {
-  await generateAuth();
-  const sql = postgres(auth[0]);
-
-  const stored: ChangedAdapter[] = await sql` select ${sql(
-    changedAdapterColumns,
-  )} from adapterchanges`;
-
-  stored.sort((a, b) => b.change - a.change);
-  const promises: any = [];
-  let message: string = "";
-  stored.map((k: ChangedAdapter) => {
-    message += `\n${k} adapter from ${k.from}, to ${k.to} with a change of ${k.change}%`;
-  });
-
-  promises.push(sql`delete from adapterchanges`);
-  if (message.length)
-    promises.push(
-      sendMessage(message, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true),
-    );
-  await Promise.all(promises);
-}
 async function cleanConfidences(
   values: Coin[],
   storedRecords: CoinDict,

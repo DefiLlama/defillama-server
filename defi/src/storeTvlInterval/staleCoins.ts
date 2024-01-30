@@ -4,6 +4,8 @@ import { queryPostgresWithRetry } from "../../l2/layer2pg";
 import { sendMessage } from "../utils/discord";
 import { searchWidth } from "../utils/shared/constants";
 
+type ChangedAdapter = { to: string; from: string; change: number };
+
 export type StaleCoins = {
   [key: string]: StaleCoinData;
 };
@@ -107,7 +109,7 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
   }
 }
 
-export async function notify() {
+export async function notifyStaleCoins() {
   await generateAuth();
   const sql = postgres(auth[0]);
 
@@ -135,5 +137,25 @@ export async function notify() {
   if (!process.env.TEAM_WEBHOOK)
     promises.push(sendMessage("missing team webhook", process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true));
   if (teamMessage.length) promises.push(sendMessage(teamMessage, process.env.TEAM_WEBHOOK!, true));
+  await Promise.all(promises);
+}
+
+const changedAdapterColumns: any[] = ["key", "from", "to", "change"];
+
+export async function notifyChangedAdapter() {
+  await generateAuth();
+  const sql = postgres(auth[0]);
+
+  const stored: ChangedAdapter[] = await sql` select ${sql(changedAdapterColumns)} from adapterchanges`;
+
+  stored.sort((a, b) => b.change - a.change);
+  const promises: any = [];
+  let message: string = "";
+  stored.map((k: ChangedAdapter) => {
+    message += `\n${k} adapter from ${k.from}, to ${k.to} with a change of ${k.change}%`;
+  });
+
+  promises.push(sql`delete from adapterchanges`);
+  if (message.length) promises.push(sendMessage(message, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true));
   await Promise.all(promises);
 }

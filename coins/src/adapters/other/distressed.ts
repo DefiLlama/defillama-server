@@ -41,6 +41,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     EULER_LP8: "0x4169Df1B7820702f566cc10938DA51F6F597d264",
     EULER_LP9: "0xbd1bd5c956684f7eb79da40f582cbe1373a1d593",
   },
+  beam: {
+    WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
+  },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
     WrappedEther: "0xF720b7910C6b2FF5bd167171aDa211E226740bfe",

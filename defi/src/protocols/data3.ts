@@ -9140,7 +9140,7 @@ const data3: Protocol[] = [
     twitter: "eigenlayer",
     oracles: [],
     forkedFrom: [],
-    audit_links: ["https://docs.eigenlayer.xyz/overview/audits"],
+    audit_links: ["https://docs.eigenlayer.xyz/security/audits"],
     github: ["Layr-Labs"],
     listedAt: 1686776222
   },

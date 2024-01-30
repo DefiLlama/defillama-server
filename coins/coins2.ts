@@ -394,7 +394,7 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
       return;
     }
     if (c.confidence < storedRecord.confidence) return;
-    if (c.adapter != storedRecord.adapter) {
+    if (c.adapter && c.adapter != storedRecord.adapter) {
       swappedAdapter[c.key] = {
         to: c.adapter,
         from: storedRecord.adapter,

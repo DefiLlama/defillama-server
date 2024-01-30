@@ -626,11 +626,6 @@
     }
   },
   "beam": {
-    "0xD51BFa777609213A653a2CD067c9A0132a2D316A": {
-      "to": "coingecko#merit-circle",
-      "decimals": "18",
-      "symbol": "WMC"
-    },
     "0x76BF5E7d2Bcb06b1444C0a2742780051D8D0E304": {
       "to": "coingecko#usd-coin",
       "decimals": "6",

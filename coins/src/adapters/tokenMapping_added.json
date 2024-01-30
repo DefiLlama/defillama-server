@@ -3587,7 +3587,13 @@
       "decimals": "6",
       "symbol": "LOCAL",
       "to": "coingecko#local-money"
-    }
+    },
+    "kujira:factory/kujira1sc6a0347cc5q3k890jj0pf3ylx2s38rh4sza4t/ufuzn": {
+      "name": "fuzn",
+      "decimals": "6",
+      "symbol": "FUZN",
+      "to": "coingecko#fuzion"
+    }        
   },
   "injective": {
     "inj": {

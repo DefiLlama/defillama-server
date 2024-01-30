@@ -1512,7 +1512,7 @@ export const chainCoingeckoIds = {
     cmcId: "22026",
     categories: ["EVM"],
   },
-  "MAP Relay Chain": {
+  "MAP Protocol": {
     geckoId: "marcopolo",
     symbol: "MAP",
     cmcId: "4956",
@@ -2176,7 +2176,7 @@ chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
 chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
 chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
-chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
+chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Protocol"]
 chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
@@ -2219,7 +2219,7 @@ export function transformNewChainName(chain: string) {
     case "eos_evm":
       return "EOS EVM"
     case "Map":
-      return "MAP Relay Chain"
+      return "MAP Protocol"
     case "Pulse":
       return "PulseChain"
     case "Op_Bnb":
@@ -2534,7 +2534,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bitindi":
       return "Bitindi"
     case "map":
-      return useNewChainNames ? "MAP Relay Chain" : "Map"
+      return useNewChainNames ? "MAP Protocol" : "Map"
     case "stargaze":
       return "Stargaze"
     case "libre":

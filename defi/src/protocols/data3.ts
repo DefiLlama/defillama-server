@@ -2935,7 +2935,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: "Liquid Restaking", // they move to fully LRT https://twitter.com/Bedrock_DeFi/status/1752240875131084854
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

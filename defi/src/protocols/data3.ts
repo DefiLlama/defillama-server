@@ -30648,6 +30648,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#jupiter",
     listedAt: 1706560048
   },
+  {
+    id: "4078",
+    name: "Swell Restake",
+    address: null,
+    symbol: "-",
+    assetToken: "rswETH",
+    url: "https://app.swellnetwork.io/restake",
+    description: 'rswETH is an ERC-20 Liquid Restaking Token that provides liquidity for users who are wanting to "restake" their ETH into restaking protocols such as EigenLayer without having their restaked ETH locked',
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/swell.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "swell-restaking/index.js",
+    twitter: "swellnetworkio",
+    audit_links: ["https://docs.swellnetwork.io/swell/risks/smart-contract-audits"],
+    parentProtocol: "parent#swell",
+    listedAt: 1706584385
+  },
 ]
 
 export default data3

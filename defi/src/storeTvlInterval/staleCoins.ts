@@ -4,7 +4,7 @@ import { queryPostgresWithRetry } from "../../l2/layer2pg";
 import { sendMessage } from "../utils/discord";
 import { searchWidth } from "../utils/shared/constants";
 
-type ChangedAdapter = { to: string; from: string; change: number };
+type ChangedAdapter = { to: string; from: string; change: number; key: string };
 
 export type StaleCoins = {
   [key: string]: StaleCoinData;
@@ -152,7 +152,7 @@ export async function notifyChangedAdapter() {
   const promises: any = [];
   let message: string = "";
   stored.map((k: ChangedAdapter) => {
-    message += `\n${k} adapter from ${k.from}, to ${k.to} with a change of ${k.change}%`;
+    message += `\n${k.key} adapter from ${k.from}, to ${k.to} with a change of ${k.change}%`;
   });
 
   promises.push(sql`delete from adapterchanges`);

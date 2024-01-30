@@ -445,7 +445,7 @@ export async function writeToRedis(
   if (Object.keys(strings).length == 0) return;
   // console.log("starting mset");
 
-  const key = "okexchain:0x382bb369d343125bfb2117af9c149795c6c65c50";
+  const key = "tron:0x0000000000000000000000000000000000000000";
   let debug = strings[key];
   const query = "decimals";
   try {

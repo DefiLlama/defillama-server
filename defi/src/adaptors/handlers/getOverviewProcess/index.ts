@@ -202,8 +202,10 @@ export async function getOverviewProcess({
 
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {
+        if (chainFilter && !adapter.chains.includes(chainFilter)) return { records: null } as any
         return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
-            console.error("Error generating summary:", adapter.module, e) // this should be a warning
+            if (!isApi2RestServer || process.env.API2_DEBUG_MODE)
+                console.error("Error generating summary:", adapter.module, e) // this should be a warning
             // TODO, move error handling to rejected promises
             if (enableAlerts && !adapter.disabled) {
                 errors.push(e.message)

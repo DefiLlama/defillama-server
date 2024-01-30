@@ -83,6 +83,7 @@ export default {
         "enabled": true
     },
     "dydx": {
+        parentId: "dYdX",
         "id": "144",
         "enabled": true
     },
@@ -465,6 +466,7 @@ export default {
         "id": "3747"
     },
     "equation": {
+        parentId: "Equation",
         "enabled": true,
         "id": "3726"
     },
@@ -563,5 +565,41 @@ export default {
     "orderly-network-derivatives": {
         "enabled": true,
         "id": "2264"
+    },
+    "dydx-v4": {
+        parentId: "dYdX",
+        "enabled": true,
+        "id": "4067",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1706140800": true,
+            },
+        }
+    },
+    "helix-perp": {
+        "enabled": true,
+        "id": "2259"
+    },
+    "equation-v2": {
+        parentId: "Equation",
+        "enabled": true,
+        "id": "4074",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1706400000": true,
+                "1706313600": true,
+                "1706227200": true,
+            },
+        }
+    },
+    "jupiter-perpetual": {
+        "enabled": true,
+        "id": "4077",
+        "protocolsData": {
+            "derivatives": {
+                "id": "4077",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

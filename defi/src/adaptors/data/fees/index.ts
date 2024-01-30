@@ -7,10 +7,6 @@ export const importModule = (module: string) => fees_imports[module].module
 // KEYS USED TO MAP ATTRIBUTE -> KEY IN DYNAMO
 export const KEYS_TO_STORE = {
     [AdaptorRecordType.dailyFees]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyFees],
-    [AdaptorRecordType.totalFees]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalFees],
-    [AdaptorRecordType.totalRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalRevenue],
-    [AdaptorRecordType.dailyRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyRevenue],
-    [AdaptorRecordType.dailyFees]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyFees],
     [AdaptorRecordType.dailyRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyRevenue],
     [AdaptorRecordType.dailyUserFees]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyUserFees],
     [AdaptorRecordType.dailySupplySideRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailySupplySideRevenue],

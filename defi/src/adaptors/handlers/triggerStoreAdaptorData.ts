@@ -20,7 +20,18 @@ export interface IHandlerEvent {
   }>
 }
 
-const quarantineList = {
+export const ADAPTER_TYPES = [
+  AdapterType.FEES,
+  AdapterType.OPTIONS,
+  AdapterType.INCENTIVES,
+  AdapterType.AGGREGATORS,
+  AdapterType.DERIVATIVES,
+  AdapterType.DEXS,
+  AdapterType.PROTOCOLS,
+  AdapterType.AGGREGATOR_DERIVATIVES,
+]
+
+export const quarantineList = {
   [AdapterType.FEES]: ["chainlink-vrf-v1", 'chainlink-vrf-v2', 'chainlink-keepers', "dodo"],
   [AdapterType.DEXS]: ["vanswap", "dodo"]
 } as IJSON<string[]>
@@ -49,16 +60,7 @@ export const handler = async (event: IHandlerEvent) => {
   }
   else {
     await Promise.all(
-      [
-        AdapterType.FEES,
-        AdapterType.OPTIONS,
-        AdapterType.INCENTIVES,
-        AdapterType.AGGREGATORS,
-        AdapterType.DERIVATIVES,
-        AdapterType.DEXS,
-        AdapterType.PROTOCOLS,
-        AdapterType.AGGREGATOR_DERIVATIVES
-      ].map(type => invokeLambda(`defillama-prod-triggerStoreAdaptorData`, { type }))
+      ADAPTER_TYPES.map(type => invokeLambda(`defillama-prod-triggerStoreAdaptorData`, { type }))
     )
   }
 };

@@ -10751,7 +10751,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1858",
-    name: "Fringe",
+    name: "Fringe V1",
     address: "0xC9fE6E1C76210bE83DC1B5b20ec7FD010B0b1D15",
     symbol: "FRIN",
     url: "https://fringe.fi",
@@ -10760,8 +10760,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/fringe.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "fringe-finance",
-    cmcId: "17456",
+    gecko_id: null,
+    cmcId:null,
     category: "Lending",
     chains: ["Ethereum"],
     oracles: ["Chainlink"],
@@ -10769,6 +10769,7 @@ const data2: Protocol[] = [
     module: "fringe/index.js",
     twitter: "fringefinance",
     audit_links: ["https://github.com/HashEx/public_audits/blob/master/Fringe%20Finance/Fringe%20Finance.pdf"],
+    parentProtocol: "parent#fringe-finance",
     listedAt: 1656379167
   },
   {
@@ -17068,6 +17069,7 @@ const data2: Protocol[] = [
     module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
     forkedFrom: [],
     twitter: "JupiterExchange",
+    parentProtocol: "parent#jupiter",
     listedAt: 1664608359
   },
   {
@@ -22140,7 +22142,7 @@ const data2: Protocol[] = [
     name: "Butter Swap", //previous Butter Network
     address: null,
     symbol: "-",
-    url: "https://butternetwork.io",
+    url: "https://www.butterswap.io/swap",
     description:
       "Built upon the Bitcoin L2 MAP Protocol, ButterSwap is the first ZK light-client cross-chain aggregator swap that minimized ZK verification time and optimized gas fees. Exchange between popular chains & BTC ecosystem in one click!",
     chain: "Binance",
@@ -22150,9 +22152,9 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Polygon", "Near", "Binance"],
+    chains: ["Polygon", "Near", "Binance", "Map"],
     module: "butternetwork/index.js",
-    twitter: "ButterNetworkio",
+    twitter: "ButterSwapio",
     forkedFrom: [],
     oracles: [],
     listedAt: 1671145989,
@@ -29067,8 +29069,8 @@ const data2: Protocol[] = [
     gecko_id: "wefi-finance",
     cmcId: "24771",
     category: "Lending",
-    chains: ["Polygon"],
-    oracles: ["Umbrella Network"],
+    chains: ["Polygon", "Linea"],
+    oracles: ["Chainlink", "API3"],
     forkedFrom: ["Compound V2"],
     module: "paxo-finance/index.js",
     twitter: "wefi_xyz",

@@ -144,6 +144,7 @@ export default {
   chai: require("./yield/chai"),
   ondo: require("./rwa/ondo"),
   hashnote: require("./rwa/hashnote"),
+  hiyield: require("./rwa/hiyield"),
   mooBvm: require("./other"),
   mux: require("./yield/mux"),
   velgd: require("./other"),

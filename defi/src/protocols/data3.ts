@@ -30070,7 +30070,7 @@ const data3: Protocol[] = [
     address: "0x149caC67F1cd5d80651E7c9Bb359ec285D821a05",
     symbol: "MNT",
     url: "https://minterest.com",
-    description: "Minterest is a landing protocol which captures more fees than any other lending protocol and redistributes them as rewards back to users who contribute to its governance.",
+    description: "Minterest is a lending protocol which captures more fees than any other lending protocol and redistributes them as rewards back to users who contribute to its governance.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/minterest.jpg`,
     audits: "2",

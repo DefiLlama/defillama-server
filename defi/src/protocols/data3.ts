@@ -30650,7 +30650,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4078",
-    name: "Swell Restake",
+    name: "Swell Liquid Restaking",
     address: null,
     symbol: "-",
     assetToken: "rswETH",

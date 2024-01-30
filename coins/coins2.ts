@@ -372,6 +372,17 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
 
   return filtered;
 }
+const swappedAdapter: {
+  [key: string]: { to: string; from: string; change: number };
+} = {};
+async function notifySwappedAdapters() {
+  let message = ``;
+  Object.keys(swappedAdapter).map((k: string) => {
+    message += `\n${k} adapter from ${swappedAdapter[k].from}, to ${swappedAdapter[k].to} with a change of ${swappedAdapter[k].to}%`;
+  });
+  if (!message.length) return;
+  await sendMessage(message, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
+}
 function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
   const confidentValues: Coin[] = [];
 
@@ -383,6 +394,13 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
       return;
     }
     if (c.confidence < storedRecord.confidence) return;
+    if (c.adapter != storedRecord.adapter) {
+      swappedAdapter[c.key] = {
+        to: c.adapter,
+        from: storedRecord.adapter,
+        change: Math.abs(c.price - storedRecord.price) / storedRecord.price,
+      };
+    }
     confidentValues.push(c);
   });
 
@@ -483,6 +501,7 @@ export async function writeCoins2(
 
   await writeToPostgres(values);
   await writeToRedis(strings, source);
+  await notifySwappedAdapters();
 }
 export async function batchWrite2(
   values: Coin[],

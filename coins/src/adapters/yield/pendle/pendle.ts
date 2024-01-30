@@ -13,15 +13,36 @@ export default async function getTokenPrices(
   config: any,
 ): Promise<Write[]> {
   const writes: Write[] = [];
-  const { factory, fromBlock, toAsset, v2Factory } = config;
+  const { factories, toAsset } = config;
   const api: ChainApi = await getApi(chain, timestamp);
-  const logs: any[][] = await newMarkets();
+  const logs: any[][] = [];
+
+  await Promise.all(
+    factories.map(async (f: any) => {
+      const { factory, fromBlock, toBlock, eventAbi } = f;
+      const factoryLogs: any[][] = await newMarkets();
+      logs.push(...factoryLogs);
+
+      async function newMarkets() {
+        return await getLogs({
+          api,
+          target: factory,
+          topics: [
+            "0x166ae5f55615b65bbd9a2496e98d4e4d78ca15bd6127c0fe2dc27b76f6c03143",
+          ],
+          eventAbi,
+          onlyArgs: true,
+          fromBlock,
+          toBlock,
+        });
+      }
+    }),
+  );
 
   const markets: string[] = logs.map((l: any) => l.market);
   const tokens: string[][] = await api.multiCall({
     calls: markets,
-    abi:
-      "function readTokens() view returns (address _SY, address _PT, address _YT)",
+    abi: "function readTokens() view returns (address _SY, address _PT, address _YT)",
   });
 
   const SYs: string[] = tokens.map((t: any) => t._SY.toLowerCase());
@@ -34,8 +55,7 @@ export default async function getTokenPrices(
   ).map((i: any) => i.toLowerCase());
   const underlyingTokens: string[] = (
     await api.multiCall({
-      abi:
-        "function assetInfo() view returns (uint8 asseetType, address assetAddress, uint8 assetDecimals)",
+      abi: "function assetInfo() view returns (uint8 asseetType, address assetAddress, uint8 assetDecimals)",
       calls: SYs,
     })
   ).map((i: any) => i.assetAddress.toLowerCase());
@@ -54,34 +74,6 @@ export default async function getTokenPrices(
         timestamp,
       )),
     );
-
-  async function newMarkets() {
-    let logs = await getLogs({
-      api,
-      target: factory,
-      topics: [
-        "0x166ae5f55615b65bbd9a2496e98d4e4d78ca15bd6127c0fe2dc27b76f6c03143",
-      ],
-      eventAbi:
-        "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor)",
-      onlyArgs: true,
-      fromBlock,
-    });
-    if(v2Factory){
-      logs = logs.concat(await getLogs({
-        api,
-        target: v2Factory,
-        topics: [
-          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
-        ],
-        eventAbi:
-          "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
-        onlyArgs: true,
-        fromBlock,
-      }))
-    }
-    return logs
-  }
 
   async function syWrites() {
     const [decimals, symbols] = await Promise.all([
@@ -122,8 +114,7 @@ export default async function getTokenPrices(
           api.call({
             target: toAsset,
             params,
-            abi:
-              "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
+            abi: "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
           }),
         ),
       ),
@@ -209,40 +200,35 @@ export default async function getTokenPrices(
   }
 
   async function lpWrites() {
-    const [
-      ptBalances,
-      syBalances,
-      supplies,
-      decimals,
-      symbols,
-    ] = await Promise.all([
-      api.multiCall({
-        abi: "erc20:balanceOf",
-        calls: markets.map((m: string, i: number) => ({
-          target: PTs[i],
-          params: m,
-        })),
-      }),
-      api.multiCall({
-        abi: "erc20:balanceOf",
-        calls: markets.map((m: string, i: number) => ({
-          target: SYs[i],
-          params: m,
-        })),
-      }),
-      api.multiCall({
-        abi: "erc20:totalSupply",
-        calls: markets,
-      }),
-      api.multiCall({
-        abi: "erc20:decimals",
-        calls: markets,
-      }),
-      api.multiCall({
-        abi: "erc20:symbol",
-        calls: markets,
-      }),
-    ]);
+    const [ptBalances, syBalances, supplies, decimals, symbols] =
+      await Promise.all([
+        api.multiCall({
+          abi: "erc20:balanceOf",
+          calls: markets.map((m: string, i: number) => ({
+            target: PTs[i],
+            params: m,
+          })),
+        }),
+        api.multiCall({
+          abi: "erc20:balanceOf",
+          calls: markets.map((m: string, i: number) => ({
+            target: SYs[i],
+            params: m,
+          })),
+        }),
+        api.multiCall({
+          abi: "erc20:totalSupply",
+          calls: markets,
+        }),
+        api.multiCall({
+          abi: "erc20:decimals",
+          calls: markets,
+        }),
+        api.multiCall({
+          abi: "erc20:symbol",
+          calls: markets,
+        }),
+      ]);
 
     markets.map((m: string, i: number) => {
       if (!m || !PTs[i] || !SYs[i]) return;

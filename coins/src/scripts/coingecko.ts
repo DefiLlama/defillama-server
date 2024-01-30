@@ -286,10 +286,20 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           if (coinPlatformData[key]?.confidence > 0.99) return;
           const timestamp = getCurrentUnixTimestamp();
           const previous = await ddb.get({ PK, SK: 0 });
-          let decimals: number | undefined =
-            coinPlatformData[key]?.decimals ?? previous.Item?.decimals;
-          let symbol: string | undefined =
-            coinPlatformData[key]?.symbol ?? previous.Item?.symbol;
+          const ref = findRef();
+
+          function findRef(): any {
+            const dynamoData = previous.Item;
+            const pgData = coinPlatformData[key];
+            if (dynamoData && pgData)
+              return dynamoData.confidence > pgData.confidence
+                ? dynamoData
+                : pgData;
+            return dynamoData ?? pgData;
+          }
+
+          let decimals: number | undefined = ref.decimals;
+          let symbol: string | undefined = ref.symbol;
           if (!decimals || !symbol) {
             const data = await getSymbolAndDecimals(
               tokenAddress,

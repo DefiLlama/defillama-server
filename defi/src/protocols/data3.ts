@@ -30781,6 +30781,29 @@ const data3: Protocol[] = [
     twitter: "ninjarollorg",
     listedAt: 1706655241
   },
+  {
+    id: "4084",
+    name: "Hydro Protocol",
+    address: null,
+    symbol: "-",
+    assetToken: "hINJ",
+    url: "https://app.hydroprotocol.finance",
+    description: 'Ultimate LSD & LSDFi Infrastructure Platform on Injective',
+    chain: "Injective",
+    logo: `${baseIconsUrl}/hydro-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Injective"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hydro-protocol/index.js",
+    twitter: "hydro_fi",
+    audit_links: ["https://hydroprotocol.finance/files/audit_scv.pdf"],
+    listedAt: 1706721360
+  },
 ]
 
 export default data3

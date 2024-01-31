@@ -39,7 +39,8 @@ const dynamodb = {
       .promise(),
   scan: (params: Omit<AWS.DynamoDB.DocumentClient.ScanInput, "TableName">) =>
     client.scan({ TableName, ...params }).promise(),
-  getEnvSecrets: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }).promise()
+  getEnvSecrets: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
+  getExtensionTwitterConfig: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'twitter' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
 };
 export default dynamodb;
 

@@ -54,6 +54,8 @@ export type ChainCoinGekcoId = {
   cmcId: string | null,
   categories?: string[],
   chainId?: number,
+  twitter?: string | null;
+  url?: string | null;
   parent?: {
     chain: string,
     types: string[]

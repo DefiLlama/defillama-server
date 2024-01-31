@@ -22151,7 +22151,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
+    category: "Cross Chain",
     chains: ["Polygon", "Near", "Binance", "Map"],
     module: "butternetwork/index.js",
     twitter: "ButterSwapio",

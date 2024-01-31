@@ -1,6 +1,7 @@
 export default {
   ociswap: require("./markets/ociswap"),
   tangleswap: require("./markets/tangleswap"),
+  defiChain: require("./other"),
   cantoLending: require("./moneyMarkets/compound"),
   xexchange: require("./markets/xexchange"),
   balanced: require("./markets/balanced"),

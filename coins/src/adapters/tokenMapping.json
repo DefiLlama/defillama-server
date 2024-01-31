@@ -1001,6 +1001,16 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#ethereum"
+    },
+    "0x3aab2285ddcddad8edf438c1bab47e1a9d05a9b4": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0xb5bedd42000b71fdde22d3ee8a79bd49a568fc8f": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
     }
   },
   "wan": {

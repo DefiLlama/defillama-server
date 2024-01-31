@@ -2055,7 +2055,7 @@ export const chainCoingeckoIds = {
   "Bostrom": {
     geckoId: "bostrom",
     symbol: "BOOT",
-    cmcId: null,
+    cmcId: "19111",
     categories: ["Cosmos"],
     github: ["cybercongress"]
   },

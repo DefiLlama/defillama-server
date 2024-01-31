@@ -83,6 +83,7 @@ export default {
   glp: require("./other"),
   abracadabra: require("./other"),
   unknownTokens: require("./other"),
+  unknownTokens2: require("./other"),
   pods: require("./other"),
   distressed: require("./other"),
   manualInput: require("./other"),

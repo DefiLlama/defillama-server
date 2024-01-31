@@ -282,6 +282,13 @@
       "to": "coingecko#qi-dao"
     }
   },
+  "rsk": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "RBTC",
+      "to": "coingecko#bitcoin"
+    }
+  },
   "zyx": {
     "0xc9e1aea009b0bae9141f3dc7523fb42fd48c8656": {
       "decimals": "18",

@@ -197,7 +197,7 @@ export async function craftProtocolsResponseInternal(
           change_1h: lastHourlyRecord ? getPercentChange(lastHourlyRecord.tvlPrev1Hour, lastHourlyRecord.tvl) : null,
           change_1d: lastHourlyRecord ? getPercentChange(lastHourlyRecord.tvlPrev1Day, lastHourlyRecord.tvl) : null,
           change_7d: lastHourlyRecord ? getPercentChange(lastHourlyRecord.tvlPrev1Week, lastHourlyRecord.tvl) : null,
-          tokenBreakdowns: includeTokenBreakdowns ? getTokenBreakdowns(lastHourlyTokensUsd as any) : {},
+          tokenBreakdowns: includeTokenBreakdowns && lastHourlyTokensUsd ? getTokenBreakdowns(lastHourlyTokensUsd as any) : {},
           mcap: protocol.gecko_id ? coinMarkets?.[`coingecko:${protocol.gecko_id}`]?.mcap ?? null : null,
         };
 

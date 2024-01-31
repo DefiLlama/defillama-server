@@ -59,6 +59,11 @@ export function unknownTokens(timestamp: number = 0) {
       "beam",
       1.01,
     ),
+  ]);
+}
+export function unknownTokens2(timestamp: number = 0) {
+  console.log("starting unknownTokens2");
+  return Promise.all([
     unknownTokenAdapter(
       timestamp,
       "0x09cabec1ead1c0ba254b09efb3ee13841712be14",
@@ -194,6 +199,14 @@ export function unknownTokens(timestamp: number = 0) {
       "0xC4B7C87510675167643e3DE6EEeD4D2c06A9e747",
       true,
       "jbc",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xb5E331615FdbA7DF49e05CdEACEb14Acdd5091c3",
+      "0xCc7FF230365bD730eE4B352cC2492CEdAC49383e",
+      "0xCfA3Ef56d303AE4fAabA0592388F19d7C3399FB4",
+      false,
+      "base",
     ),
   ]);
 }

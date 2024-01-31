@@ -29,6 +29,7 @@ const zeroDecimalAdapters: string[] = [
   "defichain",
   "radixdlt",
   "reservoir",
+  "ociswap",
 ];
 export type Coin = {
   price: number;

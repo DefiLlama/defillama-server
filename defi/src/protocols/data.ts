@@ -13815,20 +13815,21 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "COMBO",
     url: "https://furucombo.app",
     description:
-      "Furucombo starts from a tool built for end-users to optimize their DeFi strategy simply by drag and drop, and it's now a DeFi portal to optimize your crypto wealth.",
+      "Furucombo is a DeFi aggregator that allows a user to perform trading actions from our easy to use drag-and-drop interface. This includes multi-swap, multi-send, or managing their positions using our flashloan functionality. Our most recent product, our Lending Dashboard, allows anyone to manage their position from our intuitive interface which allows for one click position management. This includes debt swaps, collateral swaps, leverage, and deleverage without any upfront funds using our Flashloan functionality. Additionally we just launched Protocolink, our public API and SDK that allows developers to easily create products utilizing the composability of Furucombo",
     chain: "Polygon",
     logo: `${baseIconsUrl}/furucombo.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "furucombo",
     cmcId: "8259",
-    category: "Yield",
+    category: "Services",
     chains: ["Polygon"],
     module: "furucombo/index.js",
     twitter: "furucombo",
     audit_links: ["https://docs.furucombo.app/audit"],
     listedAt: 1635804510,
-    github: ["dinngodev"]
+    github: ["dinngodev"],
+    governanceID: ["snapshot:furucombodao.eth"]
   },
   {
     id: "743",

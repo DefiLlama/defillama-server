@@ -30682,7 +30682,7 @@ const data3: Protocol[] = [
     description: 'Aspida is an efficient liquid staking protocol that offers a decentralized, secure, and highly compatible staking service and LSD assets. By leveraging the power of liquid staking, Aspida enables users across different layers and networks to earn profitable rewards while maintaining the flexibility to participate in multiple staking opportunities.',
     chain: "Ethereum",
     logo: `${baseIconsUrl}/aspida.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -30693,6 +30693,7 @@ const data3: Protocol[] = [
     module: "aspida/index.js",
     twitter: "aspidanet",
     github: ["aspidanet"],
+    audit_links: ["https://github.com/aspidanet/documents/blob/main/audits/Aspida%20Network%20Contracts%20Security%20Audit%20Report.pdf"],
     listedAt: 1706616953
   },
   {

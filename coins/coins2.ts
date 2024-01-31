@@ -30,6 +30,8 @@ const zeroDecimalAdapters: string[] = [
   "radixdlt",
   "reservoir",
   "ociswap",
+  "aktionariat",
+  "minswap",
 ];
 export type Coin = {
   price: number;
@@ -369,7 +371,10 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
 
   const filtered: Coin[] = [];
   writesToRedis.map((c: Coin) => {
-    if (c.symbol && (zeroDecimalAdapters.includes(c.adapter) || c.decimals))
+    if (
+      (c.symbol && (zeroDecimalAdapters.includes(c.adapter) || c.decimals)) ||
+      c.key == "tezos:tezos"
+    )
       filtered.push(c);
   });
 
@@ -446,7 +451,7 @@ export async function writeToRedis(
   if (Object.keys(strings).length == 0) return;
   // console.log("starting mset");
 
-  const key = "beam:0xd51bfa777609213a653a2cd067c9a0132a2d316a";
+  const key = "";
   let debug = strings[key];
   const query = "price";
   try {

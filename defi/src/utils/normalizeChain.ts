@@ -867,7 +867,7 @@ export const chainCoingeckoIds = {
     twitter: "Ronin_Network",
     url: "https://roninchain.com/"
   },
-  "SmartBCH": {
+  "smartBCH": {
     geckoId: "bitcoin-cash",
     github: ['smartbch'],
     symbol: "BCH",

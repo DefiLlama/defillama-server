@@ -30760,6 +30760,27 @@ const data3: Protocol[] = [
     github: ["ispolink"],
     listedAt: 1706655241
   },
+  {
+    id: "4083",
+    name: "NinjaRoll",
+    address: "injective:inj1qv98cmfdaj5f382a0klq7ps4mnjp6calzh20h3",
+    symbol: "ROLL",
+    url: "https://ninjaroll.org",
+    description: 'NinjaRoll is a decentralized gaming platform built on Injective. Unlike traditional games that operate in black boxes, NinjaRoll runs on smart contracts that are fair, transparent, non-custodial, and immutable.',
+    chain: "Injective",
+    logo: `${baseIconsUrl}/ninjaroll.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Injective"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ninjaroll/index.js",
+    twitter: "ninjarollorg",
+    listedAt: 1706655241
+  },
 ]
 
 export default data3

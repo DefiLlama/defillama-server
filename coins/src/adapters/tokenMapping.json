@@ -404,6 +404,13 @@
       "to": "coingecko#pancakeswap-token"
     }
   },
+  "velas": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "VLX",
+      "to": "coingecko#velas"
+    }
+  },
   "cardano": {
     "lovelace": {
       "decimals": "6",

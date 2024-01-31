@@ -1,5 +1,6 @@
 export default {
   ociswap: require("./markets/ociswap"),
+  optimBonds: require("./other/optimBonds"),
   tangleswap: require("./markets/tangleswap"),
   defiChain: require("./other"),
   cantoLending: require("./moneyMarkets/compound"),

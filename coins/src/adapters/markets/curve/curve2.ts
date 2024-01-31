@@ -339,7 +339,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
       if (isNaN(price) || price == 0 || price == Infinity) return;
 
       const confidence = poolComponents.map((p: any) => {
-        if (p.confidence == undefined) return 1;
+        if (p.confidence == undefined) return 0.9;
         return p.confidence;
       }).reduce((a: any, b: any) => a + b, 0) / poolComponents.length;
 

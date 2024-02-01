@@ -601,5 +601,15 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "lexer": {
+        "enabled": true,
+        "id": "4087",
+        protocolsData: {
+            "derivatives": {
+                "id": "4087",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

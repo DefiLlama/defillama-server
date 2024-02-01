@@ -2384,5 +2384,15 @@ export default {
     "horiza": {
         "enabled": true,
         "id": "4041"
+    },
+    "lexer": {
+        "enabled": true,
+        "id": "4087",
+        protocolsData: {
+            "swap": {
+                "id": "4087",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

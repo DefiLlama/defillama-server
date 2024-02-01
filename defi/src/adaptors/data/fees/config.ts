@@ -1804,5 +1804,9 @@ export default {
         parentId: "Equation",
         "enabled": true,
         "id": "4074"
+    },
+    "lexer": {
+        "enabled": true,
+        "id": "4087"
     }
 } as AdaptorsConfig

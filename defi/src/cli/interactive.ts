@@ -186,6 +186,12 @@ async function runScript(script: string, params: any[] = []) {
   return new Promise((resolve: any, _reject: any) => {
     const subProcess = childProcess.spawn('npm', ['run', script, ...params], { stdio: 'inherit', env: env });
 
+    // catch unhandled errors
+process.on('uncaughtException', function (err) {
+  console.error('Caught exception: ', err);
+  process.exit(1);
+});
+
     subProcess.on('close', (code: any) => {
       const runTime = ((+(new Date) - start) / 1e3).toFixed(1)
       sdk.log(`[Done] ${script} | runtime: ${runTime}s  `)

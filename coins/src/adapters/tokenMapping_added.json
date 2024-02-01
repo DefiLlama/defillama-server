@@ -8660,6 +8660,11 @@
       "decimals": "18",
       "symbol": "ETH.ETH",
       "to": "coingecko#ethereum"
+    },
+    "0x48f80608b672dc30dc7e3dbbd0343c5f02c738eb": {
+      "decimals": "18",
+      "symbol": "BNB.BSC",
+      "to": "coingecko#binancecoin"
     }
   }
 }

@@ -64,7 +64,7 @@ async function run() {
 
   console.log('Twitter: Whitelisted handle count', whitelistedHandlesArray.length)
   console.log('Twitter: Blacklisted handle count', blacklistedHandlesArray.length)
-  await storeR2JSONString('extension/twitter-config.json', JSON.stringify({ whitelist: whitelistedHandlesArray, blacklist: blacklistedHandlesArray }), 15 * 60)
+  await storeR2JSONString('extension/twitter-config.json', JSON.stringify({ whitelist: whitelistedHandlesArray, blacklist: blacklistedHandlesArray }), 60 * 60)
 }
 
 run()

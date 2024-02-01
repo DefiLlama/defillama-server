@@ -30936,6 +30936,7 @@ const data3: Protocol[] = [
     module: "mint-club-v2/index.js",
     twitter: "MintClubPro",
     audit_links: ["https://github.com/Steemhunt/mint.club-v2-contract/blob/main/security-audits/CertiK-20240118.pdf"],
+    parentProtocol: "parent#mint-club",
     listedAt: 1706795796
   },
   {
@@ -31002,6 +31003,27 @@ const data3: Protocol[] = [
     module: "neptune-finance/index.js",
     twitter: "neptune_finance",
     listedAt: 1706799489
+  },
+  {
+    id: "4094",
+    name: "Hyperion Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://hyperionx.xyz",
+    description: "HyperionX, as the first perp DEX on the ZKFair network, distinguishes itself with 100% original code, all-chain liquidity, lowest fees, and faster token listing compared to other DEXs. HyperionX is dedicated to providing pioneering, fair, and decentralized trading experiences.",
+    chain: "Zkfair",
+    logo: `${baseIconsUrl}/hyperion-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Zkfair"],
+    oracles: [],
+    forkedFrom: [],
+    module: "Hyperionx/index.js",
+    twitter: "HyperionX_xyz",
+    listedAt: 1706804430
   },
 ]
 

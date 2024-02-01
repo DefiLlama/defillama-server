@@ -30828,6 +30828,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#tenderize",
     listedAt: 1706749007
   },
+  {
+    id: "4086",
+    name: "Garden",
+    address: null,
+    symbol: "-",
+    url: "https://garden.finance",
+    description: "Garden provides one of the easiest ways for you to acquire WBTC with real BTC. The Garden uses atomic swaps to facilitate trustless conversions.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/garden.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Bitcoin", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "garden_finance",
+    audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
+  },
 ]
 
 export default data3

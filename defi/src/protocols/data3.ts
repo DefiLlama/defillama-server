@@ -30849,6 +30849,28 @@ const data3: Protocol[] = [
     twitter: "garden_finance",
     audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
   },
+  {
+    id: "4087",
+    name: "Lexer Markets",
+    address: "arbitrum:0x6bB7A17AcC227fd1F6781D1EEDEAE01B42047eE0",
+    symbol: "LEX",
+    url: "https://www.lexer.markets",
+    description: " Lexer is a decentralized perpetual trading platform supporting a wide range of markets with deep liquidity.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/lexer-markets.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: ["Chainlink"],
+    forkedFrom: ["GMX V1"],
+    module: "lexer-markets/index.js",
+    twitter: "lexermarkets",
+    audit_links: ["https://medium.com/@hyacinthcrypto/lexer-markets-security-review-2d7795693f69"],
+    listedAt: 1706789797
+  },
 ]
 
 export default data3

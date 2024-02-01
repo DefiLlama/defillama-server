@@ -18,10 +18,11 @@ export async function unwrap4626(
   tokens: string[],
   timestamp: number,
   adapter: string,
+  hardCodedAssets?: string[]
 ) {
   const writes: Write[] = [];
   if (tokens.length > 0) {
-    const prices = await calculate4626Prices(chain, timestamp, tokens);
+    const prices = await calculate4626Prices(chain, timestamp, tokens, hardCodedAssets);
     const validPrices = prices.filter((priceData): priceData is Result4626 => !!priceData)
     for (const { token, price, decimals, symbol } of validPrices) {
       addToDBWritesList(

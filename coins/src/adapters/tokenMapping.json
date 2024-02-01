@@ -1,4 +1,21 @@
 {
+  "celo": {
+    "0xd71ffd0940c920786ec4dbb5a12306669b5b81ef": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0x9d767eccf4920ecb74952eaf88bd9343301fc8bb": {
+      "decimals": "18",
+      "symbol": "cSOL",
+      "to": "coingecko#solana"
+    },
+    "0xae30409409942b21aa884bb51f09ef414ccaafa9": {
+      "decimals": "18",
+      "symbol": "cBNB",
+      "to": "coingecko#binancecoin"
+    }
+  },
   "sui": {
     "0xb848cce11ef3a8f62eccea6eb5b35a12c4c2b1ee1af7755d02d7bd6218e8226f::coin::COIN": {
       "decimals": "8",

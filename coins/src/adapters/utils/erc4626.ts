@@ -15,12 +15,14 @@ export async function calculate4626Prices(
   chain: any,
   timestamp: number,
   tokens: string[],
+  hardCodedAssets?: string[],
 ): Promise<(Result4626 | null)[]> {
   const block: number | undefined = await getBlock(chain, timestamp);
   const { sharesDecimals, assets, symbols, ratios } = await getTokenData(
     block,
     chain,
     tokens,
+    hardCodedAssets,
   );
   const assetsInfo: CoinData[] = await getTokenAndRedirectData(
     assets,
@@ -60,13 +62,15 @@ async function getTokenData(
   block: number | undefined,
   chain: any,
   tokens: string[],
+  hardCodedAssets?: string[],
 ) {
   const targets = tokens.map((target: string) => ({ target }));
   const multiCallForAbi = (abi: any) =>
     multiCall({ calls: targets, chain, block, abi });
-  const [sharesDecimalsPromise, assetsPromise, symbolsPromise] = [
+  let assetsPromise;
+  if (!hardCodedAssets) assetsPromise = multiCallForAbi(abi.asset);
+  const [sharesDecimalsPromise, symbolsPromise] = [
     multiCallForAbi("erc20:decimals"),
-    multiCallForAbi(abi.asset),
     multiCallForAbi("erc20:symbol"),
   ];
   const sharesDecimals = await sharesDecimalsPromise;
@@ -80,7 +84,13 @@ async function getTokenData(
     abi: abi.convertToAssets,
   });
   const [assets, symbols, ratios] = await Promise.all([
-    assetsPromise,
+    hardCodedAssets
+      ? {
+          output: hardCodedAssets.map((output: string) => ({
+            output,
+          })),
+        }
+      : assetsPromise,
     symbolsPromise,
     ratiosPromise,
   ]);

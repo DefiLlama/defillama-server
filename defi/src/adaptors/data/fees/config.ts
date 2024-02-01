@@ -1808,5 +1808,9 @@ export default {
     "lexer": {
         "enabled": true,
         "id": "4087"
+    },
+    "garden": {
+        "enabled": true,
+        "id": "4086"
     }
 } as AdaptorsConfig

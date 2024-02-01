@@ -8624,5 +8624,17 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     }
+  },
+  "zeta": {
+    "0x5f0b1a82749cb4e2278ec87f8bf6b618dc71a8bf": {
+      "decimals": "18",
+      "symbol": "WZETA",
+      "to": "coingecko#zetachain"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "ZETA",
+      "to": "coingecko#zetachain"
+    }
   }
 }

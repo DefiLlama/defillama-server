@@ -2551,7 +2551,7 @@ export const chainCoingeckoIds = {
     twitter: "BitnetMoney",
     url: "https://bitnet.money/",
   },
-  "Zeta": {
+  "ZetaChain": {
     geckoId: "zetachain",
     symbol: "ZETA",
     cmcId: "21259",
@@ -3104,7 +3104,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bitnet":
         return "Bitnet"
     case "zeta":
-        return "Zeta"
+        return "ZetaChain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

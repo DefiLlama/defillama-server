@@ -3595,6 +3595,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "JupiterExchange",
   },
+  {
+    id: "parent#tenderize",
+    name: "Tenderize",
+    url: "https://tenderize.me",
+    description: `Liquid Staking 2.0 - Stake to the validator of your choice and earn staking rewards. Use your validator specific LSTs in DeFi.`,
+    logo: `${baseIconsUrl}/tenderize.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "tenderize_me",
+  },
 ];
 
 export default parentProtocols;

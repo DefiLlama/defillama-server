@@ -9099,7 +9099,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1784",
-    name: "Tenderize",
+    name: "Tenderize V1",
     address: null,
     symbol: "WAGYU",
     url: "https://tenderize.me",
@@ -9117,6 +9117,7 @@ const data2: Protocol[] = [
     module: "tenderize/index.js",
     twitter: "tenderize_me",
     audit_links: ["https://hacken.io/audits/#tenderize"],
+    parentProtocol: "parent#tenderize",
     listedAt: 1653590791
   },
   {

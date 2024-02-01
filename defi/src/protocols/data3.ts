@@ -30805,6 +30805,29 @@ const data3: Protocol[] = [
     audit_links: ["https://hydroprotocol.finance/files/audit_scv.pdf"],
     listedAt: 1706721360
   },
+  {
+    id: "4085",
+    name: "Tenderize V2",
+    address: null,
+    symbol: "WAGYU",
+    url: "https://tenderize.me",
+    description: "Liquid Staking 2.0 - Stake to the validator of your choice and earn staking rewards. Use your validator specific LSTs in DeFi.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tenderize.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "tenderize-v2/index.js",
+    twitter: "tenderize_me",
+    audit_links: ["https://github.com/Tenderize/staking/tree/main/audits"],
+    parentProtocol: "parent#tenderize",
+    listedAt: 1706749007
+  },
 ]
 
 export default data3

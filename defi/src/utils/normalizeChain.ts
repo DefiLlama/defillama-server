@@ -2554,7 +2554,7 @@ export const chainCoingeckoIds = {
   "Zeta": {
     geckoId: "zetachain",
     symbol: "ZETA",
-    cmcId: null,
+    cmcId: "21259",
     categories: ["EVM"],
     github: ["zeta-chain"],
     twitter: "zetablockchain",

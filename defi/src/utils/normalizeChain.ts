@@ -2551,6 +2551,15 @@ export const chainCoingeckoIds = {
     twitter: "BitnetMoney",
     url: "https://bitnet.money/",
   },
+  "Zeta": {
+    geckoId: "zetachain",
+    symbol: "ZETA",
+    cmcId: "21259",
+    categories: ["EVM"],
+    github: ["zeta-chain"],
+    twitter: "zetablockchain",
+    url: "https://www.zetachain.com",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3094,6 +3103,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
         return "Bitnet"
     case "bitnet":
         return "Bitnet"
+    case "zeta":
+        return "Zeta"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

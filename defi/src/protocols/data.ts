@@ -14036,7 +14036,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
                    "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FgraEwSrcK8twmgCxivTx%2FUmami%20Audit.pdf?alt=media&token=ccac6185-814e-4284-9b15-b868b00933a0",
                    "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2Fwpi8lo0iYzlsGyFzSXsR%2FUmami%20DAO%20-%20mUMAMI%20(Zokyo).pdf?alt=media&token=c2d1256c-3660-48cb-95ae-ab38728c9c75",
                    "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FrmEbxybwXnR3s1rkCk0k%2FUmami%20DAO%20-%20cmUMAMI%20(Zokyo).pdf?alt=media&token=1aaa2f3e-82be-4f71-af50-3a4c0fd7917b",
-                   "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FBBYm4TbSjsNSCVFacoEm%2FUmami_GLP_Vaults_Zokyo_audit_report_June16_2023.pdf?alt=media&token=a9404fa0-dee2-4110-8ebf-71f8327da29a"
+                   "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FBBYm4TbSjsNSCVFacoEm%2FUmami_GLP_Vaults_Zokyo_audit_report_June16_2023.pdf?alt=media&token=a9404fa0-dee2-4110-8ebf-71f8327da29a",
+                   "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FmmWuHBOPwbdZAMEZaULv%2FUmami_Final_Report.pdf?alt=media&token=6c80872c-0976-4f9d-82e0-ae10b4750235"
                  ],
     listedAt: 1635877329,
     github: ["UmamiDAO"]

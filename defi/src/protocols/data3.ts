@@ -15117,7 +15117,7 @@ const data3: Protocol[] = [
     module: "aark/index.js",
     twitter: "Aark_Digital",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Stork"], // https://twitter.com/StorkOracle/status/1752761185886470440
     listedAt: 1691812695
   },
   {

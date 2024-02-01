@@ -9104,7 +9104,7 @@ const data3: Protocol[] = [
   {
     id: "3106",
     name: "Unibot",
-    address: "0x25127685dc35d4dc96c7feac7370749d004c5040",
+    address: "0xf819d9cb1c2a819fd991781a822de3ca8607c3c9",
     symbol: "UNIBOT",
     url: "https://unibot.app",
     description:

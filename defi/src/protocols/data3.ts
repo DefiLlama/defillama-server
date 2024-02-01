@@ -31026,6 +31026,28 @@ const data3: Protocol[] = [
     twitter: "HyperionX_xyz",
     listedAt: 1706804430
   },
+  {
+    id: "4095",
+    name: "OcelotDex",
+    address: null,
+    symbol: "-",
+    url: "https://app.ocelotdex.xyz/#/swap",
+    description: "OcelotDex is your gateway to boundless liquidity and seamless asset exchange on Zetachain.",
+    chain: "Zeta",
+    logo: `${baseIconsUrl}/ocelotdex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Zeta"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "ocelot-dex/index.js",
+    twitter: "OcelotDex",
+    github: ["Ocelotdex"],
+    listedAt: 1706820470
+  },
 ]
 
 export default data3

@@ -34,6 +34,7 @@
     "get-snapshot-ids": "npx ts-node src/governance/getSnapshotIds.ts",
     "backfill": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --transpile-only src/adaptors/cli/backfillUtilities/auto.ts",
     "backfill-local": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node  --transpile-only src/adaptors/cli/backfillUtilities/auto.ts",
+    "get-overview-local": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node  --transpile-only src/adaptors/cli/runGetOverview.ts",
     "interactive": "npx ts-node src/cli/interactive.ts",
     "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --transpile-only src/storeTvlTask.ts",
     "store-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeChainAssets.ts",

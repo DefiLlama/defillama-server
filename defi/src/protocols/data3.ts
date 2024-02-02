@@ -31123,7 +31123,27 @@ const data3: Protocol[] = [
     github: ["zetaearn"],
     listedAt: 1706905531
   },
-
+  {
+    id: "4099",
+    name: "ModeSwap",
+    address: "mode:0xCcd76EDcA45d2c74Fbb395743156c770cf8E354a",
+    symbol: "MODE",
+    url: "https://modeswap.finance/",
+    description: "A Trading and Liquidity marketplace on Mode Network. Developed and managed independently from the Mode Team",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/modeswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mode"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "modeswap/index.js",
+    twitter: "ModeSwapFi",
+    listedAt: 1706916843
+  },
 ]
 
 export default data3

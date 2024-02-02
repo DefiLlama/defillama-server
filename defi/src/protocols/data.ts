@@ -84,7 +84,7 @@ const data: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Polygon", "Fantom", "xDai", "Arbitrum", "Avalanche", "Harmony"],
+    chains: ["Ethereum", "Polygon", "Fantom", "xDai", "Arbitrum", "Avalanche", "Harmony"],
     module: "curve/index.js",
     twitter: "CurveFinance",
     audit_links: ["https://curve.fi/audits"],

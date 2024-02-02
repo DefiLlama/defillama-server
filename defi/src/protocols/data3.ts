@@ -31049,6 +31049,32 @@ const data3: Protocol[] = [
     github: ["Ocelotdex"],
     listedAt: 1706820470
   },
+  {
+    id: "4096",
+    name: "Salvor",
+    address: "avax:0xf99516bc189af00ff8effd5a1f2295b67d70a90e",
+    symbol: "ART",
+    url: "https://salvor.io",
+    description: "Salvor is an innovative NFT marketplace tailored for traders, offering a unique Peer-to-Peer Lending protocol. Users can easily borrow AVAX by using their NFTs as collateral, blending the worlds of digital art and finance.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/salvor.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Avalanche"],
+    oracles: [],
+    forkedFrom: [],
+    module: "salvor/index.js",
+    twitter: "salvor_io",
+    audit_links: [
+                   "https://salvor.gitbook.io/en/platform-art.salvor.io/contracts-and-audit-reports",
+                   "https://3739368890-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FfUJhj5pOCZ1OqOS2mFCs%2Fuploads%2FaHdorsVLkkSsvnJ1557L%2FSalvor_SC%20Audit%20Report_15022023__.pdf?alt=media&token=f6a8e441-0c22-4a82-b3bc-d47af248e66a",
+                   "https://3739368890-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FfUJhj5pOCZ1OqOS2mFCs%2Fuploads%2FkvTuvmkMW2m2WJhcqjQB%2FSalvor_19122022_SCAudit_Report_%5BSA-871%5D.pdf?alt=media&token=7cb850b7-dd7f-4842-b661-0fecb10d2996"
+                 ],
+    listedAt: 1706885553
+  },
 ]
 
 export default data3

@@ -26529,7 +26529,9 @@ const data3: Protocol[] = [
     module: "detto-finance/index.js",
     twitter: "DettoFinance",
     audit_links: ["https://github.com/DettoFinance/Audit/blob/main/DettoFinanceAuditCertiK.pdf"],
-    listedAt: 1701967618
+    listedAt: 1701967618,
+    rugged: true,
+    deadUrl: true
   },
   {
     id: "3893",

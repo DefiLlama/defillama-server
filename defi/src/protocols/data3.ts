@@ -30425,7 +30425,7 @@ const data3: Protocol[] = [
     chains: ["dYdX"],
     oracles: [],  
     forkedFrom: [],
-    module: "dummy.js",
+    module: "projects/dydx-v4/index.js", // added on the 02/02/2024
     parentProtocol: "parent#dydx",
     twitter: "dYdX",
   },

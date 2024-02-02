@@ -1498,6 +1498,12 @@
       "decimals": "18",
       "symbol": "UwU",
       "to": "coingecko#uwu-lend"
+    },
+    "0x465a5a630482f3abd6d3b84b39b29b07214d19e5": {
+      "name": "fUSDC",
+      "decimals": "8",
+      "symbol": "UwU",
+      "to": "coingecko#flux-usdc"
     }
   },
   "klaytn": {

@@ -3605,6 +3605,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "tenderize_me",
+    github: ["Tenderize"]
   },
   {
     id: "parent#mint-club",

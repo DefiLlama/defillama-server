@@ -31098,6 +31098,30 @@ const data3: Protocol[] = [
     twitter: "ZedaSwap",
     listedAt: 1706885879
   },
+  {
+    id: "4098",
+    name: "ZetaEarn",
+    address: null,
+    symbol: "-",
+    assetToken: "stZETA",
+    url: "https://zetaearn.com",
+    description: "Seamless Staking, Boundless Earning",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/zetaearn.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["ZetaChain"],
+    oracles: [],
+    forkedFrom: [],
+    module: "zetaEarn/index.js",
+    twitter: "ZetaEarn",
+    github: ["zetaearn"],
+    listedAt: 1706905531
+  },
+
 ]
 
 export default data3

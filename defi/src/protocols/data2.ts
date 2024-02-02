@@ -24473,7 +24473,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Omax"],
-    module: "omaxswap/index.js",
+    module: "omax-swap/index.js",
     twitter: "omaxtoken",
     oracles: [],
     forkedFrom: ["Uniswap V2"],

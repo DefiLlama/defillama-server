@@ -611,5 +611,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "hyperionx": {
+        "enabled": true,
+        "id": "4094"
     }
 } as AdaptorsConfig

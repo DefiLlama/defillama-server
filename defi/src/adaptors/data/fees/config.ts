@@ -1812,5 +1812,9 @@ export default {
     "garden": {
         "enabled": true,
         "id": "4086"
+    },
+    "hyperionx": {
+        "enabled": true,
+        "id": "4094"
     }
 } as AdaptorsConfig

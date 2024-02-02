@@ -137,6 +137,8 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
 const EXTRA_N30D_TYPE: IJSON<AdaptorRecordType[]> = {
     [AdapterType.FEES]: [
         AdaptorRecordType.dailyHoldersRevenue,
+        AdaptorRecordType.dailyBribesRevenue,
+        AdaptorRecordType.dailyTokenTaxes,
     ],
 }
 export const getExtraN30DTypes = (type: AdapterType) => EXTRA_N30D_TYPE[type] ?? []

@@ -2560,6 +2560,15 @@ export const chainCoingeckoIds = {
     twitter: "zetablockchain",
     url: "https://www.zetachain.com",
   },
+  "Celestia": {
+    geckoId: "celestia",
+    symbol: "TIA",
+    cmcId: "22861",
+    categories: ["Cosmos"],
+    github: ["celestiaorg"],
+    twitter: "CelestiaOrg",
+    url: "https://celestia.org",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3105,6 +3114,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
         return "Bitnet"
     case "zeta":
         return "ZetaChain"
+    case "celestia":
+          return "Celestia"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

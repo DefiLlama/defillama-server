@@ -31075,6 +31075,27 @@ const data3: Protocol[] = [
                  ],
     listedAt: 1706885553
   },
+  {
+    id: "4097",
+    name: "ZedaSwap",
+    address: null,
+    symbol: "-",
+    url: "https://zedaswap.xyz",
+    description: "Ultrafast Ominichain DEX, Lowest Fees, High Rewards, User-Centric Design.",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/zedaswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ZetaChain"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "zedaswap/index.js",
+    twitter: "ZedaSwap",
+    listedAt: 1706885879
+  },
 ]
 
 export default data3

@@ -30607,6 +30607,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Eigenpie-v1.0.pdf"],
     listedAt: 1706537731
   },
+  /*
   {
     id: "4076",
     name: "Swap Omax",
@@ -30628,6 +30629,7 @@ const data3: Protocol[] = [
     twitter: "OmaxToken",
     listedAt: 1706545218
   },
+  */
   {
     id: "4077",
     name: "Jupiter Perpetual Exchange",

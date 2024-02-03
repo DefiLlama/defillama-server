@@ -614,6 +614,11 @@ export default {
     },
     "hyperionx": {
         "enabled": true,
-        "id": "4094"
+        "id": "4094",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1706832000": true,
+            },
+        }
     }
 } as AdaptorsConfig

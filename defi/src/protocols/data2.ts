@@ -24462,7 +24462,7 @@ const data2: Protocol[] = [
     name: "Omax Swap",
     address: null,
     symbol: "-",
-    url: "https://omaxswap.com/swap",
+    url: "https://omax.app/",
     description:
       "AMM DEX on Omax chain",
     chain: "Omax",

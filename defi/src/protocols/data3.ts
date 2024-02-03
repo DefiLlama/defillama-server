@@ -31144,6 +31144,28 @@ const data3: Protocol[] = [
     twitter: "ModeSwapFi",
     listedAt: 1706916843
   },
+  {
+    id: "4100",
+    name: "Pike",
+    address: null,
+    symbol: "-",
+    url: "https://www.pike.finance/",
+    description: "Pike is a universal liquidity market optimized for native assets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/pike.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum","Base", "Optimism", "Arbitrum"],
+    oracles: ["Pyth"], // https://docs.pike.finance/introduction-to-pike/pyth-oracles-and-price-feeds
+    forkedFrom: [],
+    module: "pike/index.js",
+    twitter: "PikeFinance",
+    github: ["nutsfinance"],
+    listedAt: 1706973667
+  },
 ]
 
 export default data3

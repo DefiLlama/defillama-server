@@ -30995,7 +30995,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://nept.finance/",
-    description: "Lend, borrow, and build with better rates. Built from the ground-up, Neptune is Injective's first and largest peer-to-peer lending market designed to enhance efficiency and modularity for users and builders in a secure, inexpensive, and lightning fast envionment.",
+    description: "Lend, borrow, and build with better rates. Built from the ground-up, Neptune is Injective's first and largest peer-to-peer lending market designed to enhance efficiency and modularity for users and builders in a secure, inexpensive, and lightning fast environment.",
     chain: "Injective",
     logo: `${baseIconsUrl}/neptune-finance.jpg`,
     audits: "0",

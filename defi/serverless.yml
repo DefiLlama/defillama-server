@@ -96,7 +96,6 @@ provider:
     #PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     #INDEXER_DB: ${file(./env.js):INDEXER_DB}
     AGGREGATOR_DB_URL: ${file(./env.js):AGGREGATOR_DB_URL}
-    AGGREGATOR_DB_URL_NEW: ${file(./env.js):AGGREGATOR_DB_URL_NEW}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
     R2_ACCESS_KEY_ID: ${file(./env.js):R2_ACCESS_KEY_ID}

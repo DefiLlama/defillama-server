@@ -31166,6 +31166,28 @@ const data3: Protocol[] = [
     github: ["nutsfinance"],
     listedAt: 1706973667
   },
+  {
+    id: "4101",
+    name: "Omnipool",
+    address: null,
+    symbol: "-",
+    url: "https://www.omnipool.app",
+    description: "Omnipool is the top leading service for liquid staking on Zetachain, earning rewards on tokens. Staked your assets for use via DeFi applications, unlocking extra incentives.",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/omnipool.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["ZetaChain"],
+    oracles: [],
+    forkedFrom: [],
+    module: "omnipool/index.js",
+    twitter: "Omnipool_app",
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Omnipool-v1.0.pdf"],
+    listedAt: 1707132090
+  },
 ]
 
 export default data3

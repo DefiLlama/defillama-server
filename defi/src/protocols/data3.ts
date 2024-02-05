@@ -31188,6 +31188,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Omnipool-v1.0.pdf"],
     listedAt: 1707132090
   },
+  {
+    id: "4102",
+    name: "Pingu Exchange",
+    address: "arbitrum:0x4615fa30fFA5716984d4372030ce28D99fCB702f",
+    symbol: "PINGU",
+    url: "https://pingu.exchange",
+    description: "Pingu Exchange is a community driven decentralized perpetual protocol live on Arbitrum.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/pingu-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: ["Chainlink", "Pyth"], //https://docs.pingu.exchange/pingu-exchange-docs/other/contracts
+    forkedFrom: ["Cap V4"],
+    module: "pingu/index.js",
+    twitter: "PinguExchange",
+    listedAt: 1707132955
+  },
 ]
 
 export default data3

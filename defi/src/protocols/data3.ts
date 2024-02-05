@@ -31107,7 +31107,7 @@ const data3: Protocol[] = [
     symbol: "-",
     assetToken: "stZETA",
     url: "https://zetaearn.com",
-    description: "Seamless Staking, Boundless Earning",
+    description: "ZetaEarn is the first and largest liquid staking platform on ZetaChain. We aim to become a one-stop staking protocol for omnichain liquidity and value capture. Seamless Staking, Boundless Earning.",
     chain: "ZetaChain",
     logo: `${baseIconsUrl}/zetaearn.jpg`,
     audits: "0",

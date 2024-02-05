@@ -25686,6 +25686,7 @@ const data3: Protocol[] = [
                   ],
     listedAt: 1701184034
   },
+/*
   {
     id: "3854",
     name: "Lighter V2",
@@ -25707,6 +25708,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#lighter",
     twitter: "Lighter_xyz",
   },
+*/
   {
     id: "3855",
     name: "RosSwap",

@@ -659,8 +659,38 @@
     },
     "0x999f90f25a2922ae1b21A06066F7EDEbedad42a9": {
       "to": "coingecko#tether",
-      "decimals": "18",
+      "decimals": "6",
       "symbol": "USDT"
+    },
+    "0xD51BFa777609213A653a2CD067c9A0132a2D316A": {
+      "to": "coingecko#beam-2",
+      "decimals": "18",
+      "symbol": "WBEAM"
+    },
+    "0x00E69e0b6014d77040b28E04F2b8ac25A6EA5d34": {
+      "to": "coingecko#avalanche-2",
+      "decimals": "18",
+      "symbol": "AVAX"
+    },
+    "0xe338aa35d844d5c1a4e052380dbfa939e0cce13f": {
+      "to": "coingecko#raini-studios-token",
+      "decimals": "18",
+      "symbol": "RST"
+    },
+    "0x7fb5a9921cf98362aa425e42f66bf3484c2c2b5f": {
+      "to": "coingecko#goons-of-balatroon",
+      "decimals": "18",
+      "symbol": "GOB"
+    },
+    "0x9DA978718b6Bd84Bf485b475EAb253CF76d77b59": {
+      "to": "coingecko#nekoverse-city-of-greed-anima-spirit-gem",
+      "decimals": "18",
+      "symbol": "ASG"
+    },
+    "0x61b24c2755371e0aaffd5f7fc75a3bc074f9a56e": {
+      "to": "coingecko#beamcat",
+      "decimals": "18",
+      "symbol": "BCAT"
     }
   },
   "shimmer_evm": {

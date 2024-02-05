@@ -31209,6 +31209,29 @@ const data3: Protocol[] = [
     twitter: "PinguExchange",
     listedAt: 1707132955
   },
+  {
+    id: "4103",
+    name: "Fringe V2",
+    address: "0xC9fE6E1C76210bE83DC1B5b20ec7FD010B0b1D15",
+    symbol: "FRIN",
+    url: "https://fringe.fi",
+    description: "A multi-chain lending and margin trading platform with advanced features, eventually 150+ supported assets and resistance against market manipulation attacks. DeFi for everyone.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fringe.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId:null,
+    category: "Derivatives",
+    chains: [ "Ethereum", "Arbitrum", "Polygon", "Optimism", "zkSync" ],
+    oracles: [ "Pyth", "Chainlink" ],
+    forkedFrom: [],
+    module: "fringe-v2/index.js",
+    twitter: "fringefinance",
+    audit_links: ["https://fringe.fi/audits"],
+    parentProtocol: "parent#fringe-finance",
+    listedAt: 1707132959
+  },
 ]
 
 export default data3

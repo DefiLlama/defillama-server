@@ -31211,6 +31211,29 @@ const data3: Protocol[] = [
     twitter: "PinguExchange",
     listedAt: 1707132955
   },
+  {
+    id: "4103",
+    name: "Prime Staked ETH",
+    address: null,
+    symbol: "-",
+    url: "https://www.primestaked.com/",
+    assetToken: "primeETH",
+    description: "PrimeStaked allows EigenLayer restakers to retain liquidity on their restaked assets and earn extra rewards",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/prime-staked-eth.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: ["Kelp DAO"],
+    module: "prime-staked/index.js",
+    twitter: "PrimeStaked",
+    github: ["oplabs"],
+    listedAt: 1707183377
+  },
 ]
 
 export default data3

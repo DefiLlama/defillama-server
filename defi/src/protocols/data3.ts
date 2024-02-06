@@ -26966,14 +26966,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3912",
-    name: "Dinero-PirexETH",
+    name: "Dinero (Pirex ETH)", //previous Dinero-PirexETH
     address: null,
     symbol: "-",
     assetToken: "pxETH",
     url: "https://dineroismoney.com",
     description: "Dinero is a protocol designed to bring together ETH staking, block creation, an RPC, and other features into a single, synergistic protocol. Dinero is composed of Pirex ETH, the Redacted Relayer RPC, and the DINERO stablecoin.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/dinero.jpg`,
+    logo: `${baseIconsUrl}/dinero-(pirex-eth).jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

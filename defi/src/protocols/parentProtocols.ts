@@ -2667,7 +2667,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#dackieswap",
     name: "DackieSwap",
     url: "https://dackieswap.xyz",
-    description: "Native and Most Trusted DEX on Base.",
+    description: "The Premier User-Friendly Multi-chain DEX",
     logo: `${baseIconsUrl}/dackieswap.jpg`,
     gecko_id: "dackieswap",
     cmcId: "26979",

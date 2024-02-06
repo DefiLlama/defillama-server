@@ -31319,6 +31319,54 @@ const data3: Protocol[] = [
     twitter: "FlashTrade_",
     listedAt: 1707227945
   },
+  {
+    id: "4108",
+    name: "Avantis",
+    address: null,
+    symbol: "-",
+    url: "https://www.avantisfi.com",
+    description: "Avantis is a onchain perpetuals DEX built offering advanced risk management for LPs, loss protection for traders, and access to trading leverage crypto and synthetic real world assets. Avantis is built on and backed Base, and other investors such as Pantera Capital and Galaxy Digital.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/avantis.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    oracles: ["Pyth", "Chainlink"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/8865
+    forkedFrom: [],
+    module: "avantisfi/index.js",
+    twitter: "avantisfinance",
+    audit_links: [
+                   "https://586275454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F76vAZHPcNKY10NzuKsC4%2Fuploads%2FQugrQyVYa7gCMa8FUQdy%2FAvantis_-_Zellic_Audit_Report.pdf?alt=media&token=6c659734-a0f8-4190-b020-bf0c9ce2d9ab",
+                   "https://586275454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F76vAZHPcNKY10NzuKsC4%2Fuploads%2Fap10BwpWhzNMappneMgr%2FAvantis%20audit%20report.pdf?alt=media&token=cf670d4b-e0ff-48b0-be2c-42a415c74e61"
+                 ],
+    github: ["Avantis-Labs"],
+    listedAt: 1707230877
+  },
+  {
+    id: "4109",
+    name: "Segment Finance",
+    address: "bsc:0x5de40c1152c990492eaeaeecc4ecaab788bbc4fd",
+    symbol: "SEF",
+    url: "https://segment.finance",
+    description: "Segment Finance is a decentralized lending and borrowing platform built on BNB Chain.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/segment-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "segment",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    oracles: ["Chainlink"], 
+    forkedFrom: ["Compound V2"],
+    module: "segment-finance/index.js",
+    twitter: "segment_fi",
+    audit_links: ["https://1437394138-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FcYvodOcCalriGDOIk0m4%2Fuploads%2F2aV2FDinQ3TxtFSRRnqN%2FSegment_Finance_-_Public_Report.pdf?alt=media&token=f87acc83-c3b7-4caa-a5d4-cbc7d68dc21d"],
+    listedAt: 1707231018
+  },
 ]
 
 export default data3

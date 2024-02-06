@@ -14405,10 +14405,10 @@ const data3: Protocol[] = [
     symbol: "DACKIE",
     url: "https://dackieswap.xyz",
     description:
-      "Native and Most Trusted DEX on Base.",
+      "The Premier User-Friendly Multi-chain DEX",
     chain: "Base",
     logo: `${baseIconsUrl}/dackieswap-v3.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -14418,6 +14418,7 @@ const data3: Protocol[] = [
     twitter: "DackieSwap",
     forkedFrom: ["Uniswap V3"],
     oracles: [],
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-DackieSwap-v1.0.pdf"],
     parentProtocol: "parent#dackieswap",
     listedAt: 1691153591
   },
@@ -18224,10 +18225,10 @@ const data3: Protocol[] = [
     symbol: "DACKIE",
     url: "https://dackieswap.xyz",
     description:
-      "Native and Most Trusted DEX on Base.",
+      "The Premier User-Friendly Multi-chain DEX",
     chain: "Base",
     logo: `${baseIconsUrl}/dackieswap-v2.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -18237,7 +18238,6 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     twitter: "DackieSwap",
-    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-DackieSwap-v1.0.pdf"],
     parentProtocol: "parent#dackieswap",
     listedAt: 1694427785
   },

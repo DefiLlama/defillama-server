@@ -31373,7 +31373,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://kinetix.finance/home",
-    description: "Segment Finance is a decentralized lending and borrowing platform built on BNB Chain.",
+    description: "A DeFi Hub for Kava",
     chain: "Kava",
     logo: `${baseIconsUrl}/kinetix-derivatives-v2.jpg`,
     audits: "0",

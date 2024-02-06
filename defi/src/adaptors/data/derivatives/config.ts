@@ -620,5 +620,9 @@ export default {
                 "1706832000": true,
             },
         }
+    },
+    "demex-perp": {
+        "enabled": true,
+        "id": "2001"
     }
 } as AdaptorsConfig

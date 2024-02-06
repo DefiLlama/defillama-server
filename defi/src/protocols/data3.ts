@@ -30492,7 +30492,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mode"],
-    oracles: ["Pyth"],  
+    oracles: ["Pyth"],  // https://twitter.com/modenetwork/status/1754878770840752421
     forkedFrom: ["Compound V2"],
     module: "ionic/index.js",
     twitter: "ionicmoney",

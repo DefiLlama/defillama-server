@@ -31384,7 +31384,7 @@ const data3: Protocol[] = [
     chains: ["Kava"],
     oracles: [], 
     forkedFrom: [],
-    module: "segment-finance/index.js",
+    module: "kinetix-derivatives-v2/index.js",
     twitter: "KinetixFi",
     parentProtocol: "parent#kinetix",
     listedAt: 1707231637

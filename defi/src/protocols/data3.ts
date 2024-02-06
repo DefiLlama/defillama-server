@@ -31234,6 +31234,28 @@ const data3: Protocol[] = [
     github: ["oplabs"],
     listedAt: 1707183377
   },
+  {
+    id: "4104",
+    name: "KatanaSwap",
+    address: "zeta:0x27d2eE0D55435130816a79DBa444192f33a07abD",
+    symbol: "KTN",
+    url: "https://katanaswap.xyz",
+    description: "Katana is a Decentralized Trading Protocol on Zetachain with a commitment to user security, lightning-fast transactions, and unique features.",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/katanaswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ZetaChain"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "katanaswap/index.js",
+    twitter: "KatanaSwap",
+    github: ["KatanaSwapXYZ"],
+    listedAt: 1707219457
+  },
 ]
 
 export default data3

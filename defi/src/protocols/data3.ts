@@ -31367,6 +31367,28 @@ const data3: Protocol[] = [
     audit_links: ["https://1437394138-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FcYvodOcCalriGDOIk0m4%2Fuploads%2F2aV2FDinQ3TxtFSRRnqN%2FSegment_Finance_-_Public_Report.pdf?alt=media&token=f87acc83-c3b7-4caa-a5d4-cbc7d68dc21d"],
     listedAt: 1707231018
   },
+  {
+    id: "4110",
+    name: "Kinetix Derivatives V2",
+    address: null,
+    symbol: "-",
+    url: "https://kinetix.finance/home",
+    description: "Segment Finance is a decentralized lending and borrowing platform built on BNB Chain.",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/kinetix-derivatives-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Kava"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "segment-finance/index.js",
+    twitter: "KinetixFi",
+    parentProtocol: "parent#kinetix",
+    listedAt: 1707231637
+  },
 ]
 
 export default data3

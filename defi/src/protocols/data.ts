@@ -19326,7 +19326,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Stargate Finance",
     address: "bsc:0x141381f07Fa31432243113Cda2F617d5d255d39a",
     symbol: "STG",
-    url: "https://www.stargate.zone/#/stake",
+    url: "",
     description:
       "Stargate Finance is a decentralized reserve currency protocol based on the SGT token on Binance Smart Chain. Economically, it imitates the model created by OlympusDao. ",
     chain: "Binance",

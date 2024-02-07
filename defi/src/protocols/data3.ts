@@ -31435,6 +31435,28 @@ const data3: Protocol[] = [
     github: ["SynonymFinance"],
     listedAt: 1707281721
   },
+  {
+    id: "4113",
+    name: "HiveSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://www.hiveswap.io/",
+    description: "Uniswap V3 fork on map blockchain",
+    chain: "Map",
+    logo: `${baseIconsUrl}/hiveswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Map"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "hiveswap-v3/index.js",
+    twitter: "hiveswap_io",
+    parentProtocol: "parent#hiveswap",
+    listedAt: 1707314286
+  },
 ]
 
 export default data3

@@ -24946,14 +24946,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2485",
-    name: "HiveSwap",
+    name: "HiveSwap V2",
     address: "null",
     symbol: "-",
     url: "https://swap.hiveswap.io",
     description:
-      "Uniswap fork on map blockchain",
+      "Uniswap V2 fork on map blockchain",
     chain: "Map",
-    logo: `${baseIconsUrl}/hiveswap.png`,
+    logo: `${baseIconsUrl}/hiveswap-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -24961,9 +24961,10 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Map"],
     module: "hiveswap/index.js",
-    twitter: null,
+    twitter: "hiveswap_io",
     oracles: [],
     forkedFrom: ["Uniswap V2"],
+    parentProtocol: "parent#hiveswap",
     listedAt: 1675271563
   },
   /* {

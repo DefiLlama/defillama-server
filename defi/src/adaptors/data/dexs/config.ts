@@ -2394,5 +2394,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "starkdefi": {
+        "enabled": true,
+        "id": "3880"
     }
 } as AdaptorsConfig

@@ -31457,6 +31457,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hiveswap",
     listedAt: 1707314286
   },
+  {
+    id: "4114",
+    name: "ClayStack Matic",
+    address: null,
+    symbol: "-",
+    assetToken: "CSMATIC",
+    url: "https://claystack.com",
+    description: "ClayStack is a decentralized liquid staking platform that enables you to unlock the liquidity of staked assets across multiple chains. You can stake your assets and use the issued staking derivatives across the DeFi ecosystem.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/claystack-matic.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "claystack-matic/index.js",
+    twitter: "ClayStack_HQ",
+    audit_links: ["https://chainsecurity.com/security-audit/claystack-matic"],
+    parentProtocol: "parent#claystack",
+    listedAt: 1707314660
+  },
 ]
 
 export default data3

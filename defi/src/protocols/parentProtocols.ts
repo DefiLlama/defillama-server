@@ -3643,6 +3643,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "hiveswap_io",
   },
+  {
+    id: "parent#claystack",
+    name: "ClayStack",
+    url: "https://claystack.com",
+    description: "ClayStack is a decentralized liquid staking platform that enables you to unlock the liquidity of staked assets across multiple chains. You can stake your assets and use the issued staking derivatives across the DeFi ecosystem.",
+    logo: `${baseIconsUrl}/claystack.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ClayStack_HQ",
+  },
 ];
 
 export default parentProtocols;

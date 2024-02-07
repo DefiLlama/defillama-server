@@ -31512,7 +31512,7 @@ const data3: Protocol[] = [
     description: "Premiere DEX on Mode, the native all in one hub for your liquidity",
     chain: "Mode",
     logo: `${baseIconsUrl}/swapmode.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -31522,7 +31522,10 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "SwapMode/index.js",
     twitter: "SwapModeFi",
-    audit_links: [],
+    audit_links: [
+      "https://blocksafu.com/audit/0xc1e624C810D297FD70eF53B0E08F44FABE468591",
+      "https://blocksafu.com/audit/0xfb926356BAf861c93C3557D7327Dbe8734A71891"
+    ],
     listedAt: 1707344969
   },
 ]

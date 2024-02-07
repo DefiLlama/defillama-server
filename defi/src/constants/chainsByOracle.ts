@@ -64,7 +64,7 @@ const chainsByOracle = {
     "Arbitrum",
     "Aurora",
     "Avalanche",
-    "Bnb",
+    "BSC",
     "Bittorrent",
     "Base",
     "Boba",

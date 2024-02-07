@@ -629,5 +629,9 @@ export default {
         parentId: "Kinetix",
         "enabled": true,
         "id": "4110"
+    },
+    "pingu": {
+        "enabled": true,
+        "id": "4102"
     }
 } as AdaptorsConfig

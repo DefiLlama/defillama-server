@@ -8785,15 +8785,15 @@ const data2: Protocol[] = [
   },
   {
     id: "1770",
-    name: "ClayStack",
-    address: null,
+    name: "ClayStack ETH",
+    address: "null",
     symbol: "-",
     assetToken: "csETH",
     url: "https://claystack.com",
     description: "ClayStack is a decentralized liquid staking platform that enables you to unlock the liquidity of staked assets across multiple chains. You can stake your assets and use the issued staking derivatives across the DeFi ecosystem.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/claystack.png`,
-    audits: "2",
+    logo: `${baseIconsUrl}/claystack-eth.png`,
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -8803,7 +8803,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "claystack/index.js",
     twitter: "ClayStack_HQ",
-    audit_links: ["https://chainsecurity.com/security-audit/claystack-matic"],
+    parentProtocol: "parent#claystack",
     listedAt: 1652905173
   },
   {
@@ -24949,7 +24949,7 @@ const data2: Protocol[] = [
     name: "HiveSwap V2",
     address: "null",
     symbol: "-",
-    url: "https://swap.hiveswap.io",
+    url: " https://www.hiveswap.io/",
     description:
       "Uniswap V2 fork on map blockchain",
     chain: "Map",

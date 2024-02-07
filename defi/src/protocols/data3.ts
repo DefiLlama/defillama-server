@@ -14607,9 +14607,9 @@ const data3: Protocol[] = [
   {
     id: "3354",
     name: "Synclub Staked BNB",
-    address: "bsc:0xb0b84d294e0c75a6abe60171b70edeb2efd14a1b",
-    symbol: "SNBNB",
-    //assetToken: "SNBNB",
+    address: null,
+    symbol: "-",
+    assetToken: "SNBNB",
     url: "https://www.synclub.io/",
     description:
       "SnBNB is the yield bearing & liquid staking token for Synclub, which appreciates against BNB in line with BNB’s staking APR.",
@@ -14617,8 +14617,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/synclub-staked-bnb.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "synclub-staked-bnb",
-    cmcId: "27568",
+    gecko_id: null,
+    cmcId: null,
     category: "Liquid Staking",
     chains: ["Binance"],
     module: "synclub-staked-bnb/index.js",
@@ -14626,6 +14626,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://synclub.gitbook.io/synclub-docs/protocol/security"],
+    parentProtocol: "parent#lista-dao",
     listedAt: 1691438200
   },
   {

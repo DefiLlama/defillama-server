@@ -3619,6 +3619,19 @@ const parentProtocols: IParentProtocol[] = [
     github: ["Steemhunt"],
     twitter: "MintClubPro",
   },
+  {
+    id: "parent#lista-dao",
+    name: "Lista DAO",
+    url: "https://lista.org/",
+    description: `Lista DAO functions as the open-source decentralized stablecoin lending protocol powered by LSDfi. Users can undergo staking and liquid staking on Lista, as well as borrow lisUSD against a variety of decentralized collateral`,
+    logo: `${baseIconsUrl}/lista-dao.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["helio-money"],
+    twitter: "lista_dao",
+    stablecoins: ["hay"],
+  },
 ];
 
 export default parentProtocols;

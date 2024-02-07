@@ -14772,8 +14772,7 @@ const data2: Protocol[] = [
     twitter: "Helio_Money",
     audit_links: ["https://github.com/helio-money/helio-smart-contracts/tree/master/audits"],
     listedAt: 1661888773,
-    stablecoins: ["hay"],
-    github: ["helio-money"]
+    parentProtocol: "parent#lista-dao"
   },
   {
     id: "2039",

@@ -3632,6 +3632,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "lista_dao",
     stablecoins: ["hay"],
   },
+  {
+    id: "parent#hiveswap",
+    name: "HiveSwap",
+    url: "https://www.hiveswap.io/",
+    description: `Hiveswap is a Liquidity Mining Swap for BRC-20 assets on the Bitcoin Layer-2`,
+    logo: `${baseIconsUrl}/hiveswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "hiveswap_io",
+  },
 ];
 
 export default parentProtocols;

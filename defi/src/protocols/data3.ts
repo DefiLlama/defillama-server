@@ -31390,6 +31390,51 @@ const data3: Protocol[] = [
     parentProtocol: "parent#kinetix",
     listedAt: 1707231637
   },
+  {
+    id: "4111",
+    name: "Sygma",
+    address: null,
+    symbol: "-",
+    url: "https://buildwithsygma.com",
+    description: "Sygma is a modular, open-source, cross-chain connectivity protocol. With Sygma, developers can easily extend their applications across EVM, Substrate, and beyond",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sygma.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    oracles: ["Internal"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/8880
+    forkedFrom: [],
+    module: "sygma/index.js",
+    twitter: "buildwithsygma",
+    github: ["sygmaprotocol"],
+    audit_links: ["https://docs.buildwithsygma.com/audits/"],
+    listedAt: 1707280300
+  },
+  {
+    id: "4112",
+    name: "Synonym Finance",
+    address: "arbitrum:0x577fd586c9e6ba7f2e85e025d5824dbe19896656",
+    symbol: "SYNO",
+    url: "https://www.synonym.finance/",
+    description: "Synonym is a truly cross-chain money market built on the Wormhole xChain technology stack",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/synonym-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "synonym-finance",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    oracles: ["Pyth", "Chainlink"], // https://synonym-finance.gitbook.io/synonym-finance/documentation/risk-management#oracles
+    forkedFrom: [],
+    module: "synonym-finance/index.js",
+    twitter: "synonymfinance",
+    github: ["SynonymFinance"],
+    listedAt: 1707281721
+  },
 ]
 
 export default data3

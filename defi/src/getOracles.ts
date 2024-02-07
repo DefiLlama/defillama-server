@@ -1,6 +1,7 @@
 import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections, getChainDisplayName } from "./utils/normalizeChain";
+import { chainsByOracle } from "./constants/chainsByOracle";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -106,6 +107,7 @@ export async function getOraclesInternal({ ...options }: any = {}) {
     chart: sumDailyTvls,
     chainChart: sumDailyTvlsByChain,
     oracles: Object.fromEntries(Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])),
+    chainsByOracle,
   };
 }
 

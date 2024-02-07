@@ -30818,7 +30818,7 @@ const data3: Protocol[] = [
     id: "4085",
     name: "Tenderize V2",
     address: null,
-    symbol: "WAGYU",
+    symbol: "-",
     url: "https://tenderize.me",
     description: "Liquid Staking 2.0 - Stake to the validator of your choice and earn staking rewards. Use your validator specific LSTs in DeFi.",
     chain: "Ethereum",

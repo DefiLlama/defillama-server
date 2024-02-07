@@ -1816,5 +1816,10 @@ export default {
     "hyperionx": {
         "enabled": true,
         "id": "4094"
+    },
+    "kinetix-derivatives-v2": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "4110"
     }
 } as AdaptorsConfig

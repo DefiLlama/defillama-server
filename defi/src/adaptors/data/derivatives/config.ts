@@ -624,5 +624,10 @@ export default {
     "demex-perp": {
         "enabled": true,
         "id": "2001"
+    },
+    "kinetix-derivatives-v2": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "4110"
     }
 } as AdaptorsConfig

@@ -107,7 +107,10 @@ export async function getOraclesInternal({ ...options }: any = {}) {
     chart: sumDailyTvls,
     chainChart: sumDailyTvlsByChain,
     oracles: Object.fromEntries(Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])),
-    chainsByOracle,
+    chainsByOracle: chainsByOracle?.map(({ name, chains }) => ({
+      name,
+      chains: chains.map((chain) => getChainDisplayName(chain, true)),
+    })),
   };
 }
 

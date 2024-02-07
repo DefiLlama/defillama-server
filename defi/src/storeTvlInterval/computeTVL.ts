@@ -178,7 +178,7 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
         body.timestamp = timestamp;
       }
       readRequests.push(
-        fetch("https://coins2.llama.fi/prices?source=internal", {
+        fetch("https://coins.llama.fi/prices?source=internal", {
           method: "POST",
           body: JSON.stringify(body),
           headers: { "Content-Type": "application/json" },

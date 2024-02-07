@@ -430,7 +430,7 @@ async function cleanConfidences(
     if (c.adapter && c.adapter != storedRecord.adapter) {
       const change =
         (100 * Math.abs(c.price - storedRecord.price)) / storedRecord.price;
-      if (change < 1) return;
+      if (change < 5) return;
       changedAdapters[c.key] = {
         to: c.adapter,
         from: storedRecord.adapter,
@@ -495,7 +495,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
   const splitKey = values.map((v: Coin) => ({
     ...v,
     key: Buffer.from(v.key.substring(v.key.indexOf(":") + 1), "utf8"),
-    chain: Buffer.from(v.chain || "", "utf8"),
+    chain: Buffer.from(v.key.split(":")[0], "utf8"),
     mcap: v.mcap ? Math.round(v.mcap) : null,
     confidence: Math.round(v.confidence * 30000),
   }));
@@ -567,7 +567,7 @@ export async function batchReadPostgres(
     timestamp > ${start} 
     and 
     timestamp < ${end}
-  `,
+    `,
     sql,
   ); //start  1696287600
   return data;

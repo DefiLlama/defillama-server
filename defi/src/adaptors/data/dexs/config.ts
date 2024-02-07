@@ -2397,6 +2397,11 @@ export default {
     },
     "starkdefi": {
         "enabled": true,
-        "id": "3880"
+        "id": "3880",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1707177600": true,
+            },
+        }
     }
 } as AdaptorsConfig

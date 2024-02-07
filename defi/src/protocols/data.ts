@@ -19321,6 +19321,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639331363,
     deadUrl: true
   },
+/*
   {
     id: "1013",
     name: "Stargate Finance",
@@ -19345,6 +19346,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639331903,
     deadUrl: true
   },
+*/
   {
     id: "1014",
     name: "TempoDAO", //rebranded to revenant

@@ -3658,7 +3658,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#supswap",
     name: "SupSwap",
     url: "https://supswap.xyz",
-    description: "DEX on Mode Network.",
+    description: "Supswap is Native Liquidity Layer for Mode Network with Capital Efficient AMM",
     logo: `${baseIconsUrl}/supswap.jpg`,
     gecko_id: null,
     cmcId: null,

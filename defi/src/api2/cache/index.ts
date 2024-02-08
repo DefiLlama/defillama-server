@@ -12,6 +12,7 @@ import { Protocol } from "../../protocols/types";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { getProtocolAllTvlData } from "../utils/cachedFunctions";
+import { loadDimensionsCache } from "../utils/dimensionsUtils";
 
 export const cache: {
   metadata: {
@@ -74,6 +75,8 @@ export async function initCache({ cacheType = 'cron' } = { cacheType: 'none' }) 
     Object.entries(_cache).forEach(([k, v]: any) => (cache as any)[k] = v)
 
     await setHistoricalTvlForAllProtocols()
+    await loadDimensionsCache()
+
 
     // dont run it for local dev env
     if (!process.env.API2_DEBUG_MODE) {

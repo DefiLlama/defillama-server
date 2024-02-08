@@ -16,8 +16,7 @@ export type IGetHistoricalPricesResponse = {
     decimals: IPricesResponse['decimals']
     prices: IJSON<IPricesResponse['prices'][number]>
 }
-
-export const convertDataToUSD = async (data: IRecordAdaptorRecordData, _timestamp: number) => {
+export const convertDataToUSD = (data: IRecordAdaptorRecordData) => {
     const rrr = Object.entries(data).reduce((acc, [chain, chainData]) => {
         if (typeof chainData === 'number') acc[chain] = chainData
         else {
@@ -28,6 +27,6 @@ export const convertDataToUSD = async (data: IRecordAdaptorRecordData, _timestam
             }, {} as IRecordAdapterRecordChainData)
         }
         return acc
-    }, data as IRecordAdaptorRecordData)
+    }, data)
     return rrr
 }

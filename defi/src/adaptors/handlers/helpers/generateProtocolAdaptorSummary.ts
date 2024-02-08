@@ -41,17 +41,17 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const rawTotalRecord = ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType]
             ? await getAdaptorRecord({ adaptorType, adapter, type: ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType], mode: "LAST" }).catch(_e => { }) as AdaptorRecord | undefined
             : undefined
-
         let protocolsKeys = [adapter.module]
         if (adapter?.enabled && adapter.versionKey) {
             protocolsKeys = [adapter.versionKey]
         }
-        const totalRecord = rawTotalRecord?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])
+        const chainFilterArray = chainFilter ? [chainFilter] : undefined
+        const totalRecord = rawTotalRecord?.getCleanAdaptorRecord(chainFilterArray, protocolsKeys[0])
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecordsRaw instanceof Array)) throw new Error("Wrong volume queried")
         if (adaptorRecordsRaw.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
         let lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 1]
-        const cleanLastReacord = JSON.parse(JSON.stringify(lastRecordRaw.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])))
+        const cleanLastReacord = JSON.parse(JSON.stringify(lastRecordRaw.getCleanAdaptorRecord(chainFilterArray, protocolsKeys[0])))
         if (sumAllVolumes(lastRecordRaw.data) === 0) {
             lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 2]
             adaptorRecordsRaw[adaptorRecordsRaw.length - 1].data = adaptorRecordsRaw[adaptorRecordsRaw.length - 2].data
@@ -61,9 +61,9 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const extraTypes: IJSON<number | null> = {}
         for (const recordType of getExtraTypes(adaptorType)) {
             const value = await getAdaptorRecord({ adaptorType, adapter, type: recordType, mode: "TIMESTAMP", timestamp: lastRecordRaw.timestamp }).catch(_e => { }) as AdaptorRecord | undefined
-            const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])
+            const cleanRecord = value?.getCleanAdaptorRecord(chainFilterArray, protocolsKeys[0])
             if (AdaptorRecordTypeMapReverse[recordType]) {
-                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(await convertDataToUSD(cleanRecord.data, cleanRecord.timestamp)) : null
+                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(convertDataToUSD(cleanRecord.data)) : null
             }
         }
 
@@ -75,7 +75,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             const startTimestamp = adapter.startFrom
             const startIndex = startTimestamp ? _adaptorRecordsRawN30D.findIndex((ar: any) => ar.timestamp === startTimestamp) : -1
             let _adaptorRecordsN30D = _adaptorRecordsRawN30D.slice(startIndex + 1)
-            const getCleanRecords = async () => generateCleanRecords(
+            const getCleanRecords = () => generateCleanRecords(
                 _adaptorRecordsN30D,
                 adapter.chains,
                 protocolsKeys,
@@ -84,11 +84,11 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             )
             let cleanRecordsN30D
             if (isApi2RestServer)
-                cleanRecordsN30D = await getCleanRecords()
+                cleanRecordsN30D = getCleanRecords()
             else
                 cleanRecordsN30D = await getCachedReturnValue(
                     getAdapterKey(adapter.id, adapter.versionKey ?? adapter.module, recordType, adaptorType, adapter.protocolType, chainFilter, `${recordType}_30d`),
-                    getCleanRecords
+                    getCleanRecords as any
                 )
             const lastAvailableDataTimestamp = _adaptorRecordsN30D[_adaptorRecordsN30D.length - 1].timestamp
             const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
@@ -117,7 +117,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
 
         // Clean data by chain
         // console.info("Cleaning records", adapter.name, adapter.id, adapter.module, adaptorRecords.length, adapter.config)
-        const getCleanRecords = async () => generateCleanRecords(
+        const getCleanRecords = () => generateCleanRecords(
             adaptorRecords,
             adapter.chains,
             protocolsKeys,
@@ -126,13 +126,12 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         )
         let cleanRecords
         if (isApi2RestServer)
-            cleanRecords = await getCleanRecords()
+            cleanRecords = getCleanRecords()
         else
             cleanRecords = await getCachedReturnValue(
                 getAdapterKey(adapter.id, adapter.versionKey ?? adapter.module, adaptorRecordType, adaptorType, adapter.protocolType, chainFilter),
-                getCleanRecords)
+                getCleanRecords as any)
         // console.info("Cleaning records OK", adapter.name, adapter.id, adapter.module, cleanRecords.cleanRecordsArr.length)
-
 
         adaptorRecords = cleanRecords.cleanRecordsArr
         if (adaptorRecords.length === 0) {
@@ -149,12 +148,12 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null || Object.keys(cleanLastReacord.data).length < adapter.chains.length) {
             const storedChains = Object.keys(cleanLastReacord?.data ?? {})
             const missingChains = adapter.chains.filter(chain => !storedChains.includes(chain))
-            if (onError) onError(new Error(`
+            if (onError && !isApi2RestServer) onError(new Error(`
 Adapter: ${adapter.name} [${adapter.id}]
 ${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated${missingChains.length > 0 ? ` with missing chains: ${missingChains.join(', ')}` : ''}
 ${formatTimestampAsDate(yesterdaysCleanTimestamp.toString())} <- Report date
 ${formatTimestampAsDate(lastAvailableDataTimestamp.toString())} <- Last date found
-${sumAllVolumes(await convertDataToUSD(lastRecordRaw.data, lastRecordRaw.timestamp))} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}
+${sumAllVolumes(convertDataToUSD(lastRecordRaw.data))} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}
 Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
 `))
         }
@@ -198,7 +197,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             total60dto30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total60dto30d,
             total1y: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total1y,
             average1y: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.average1y,
-            totalAllTime: totalRecord ? sumAllVolumes(await convertDataToUSD(totalRecord.data, totalRecord.timestamp)) : null,
+            totalAllTime: totalRecord ? sumAllVolumes(convertDataToUSD(totalRecord.data)) : null,
             breakdown24h: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.breakdown24h,
             config: getConfigByType(adaptorType, adapter.module),
             chains: chainFilter ? [getDisplayChainName(chainFilter)] : adapter.chains.map(getDisplayChainName),

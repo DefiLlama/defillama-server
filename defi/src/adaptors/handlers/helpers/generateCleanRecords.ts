@@ -15,7 +15,7 @@ export interface ICleanRecordsConfig {
     genuineSpikes: IJSON<boolean> | boolean
 }
 
-export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string, cleanRecordsConfig?: ICleanRecordsConfig) => {
+export default (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string, cleanRecordsConfig?: ICleanRecordsConfig) => {
     const genuineSpikes = cleanRecordsConfig?.genuineSpikes ?? {}
     const currentTimestamp = Math.trunc(Date.now() / 1000)
     const spikesLogs: string[] = []
@@ -26,8 +26,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
     // Get adaptor id for all records
     const adaptorId = adaptorRecords[0].adaptorId
     // Process adaptors. Should be changed to process based on timestamps instead of stored records
-    const processed = await adaptorRecords.reduce(async (accP, adaptorRecord, currentIndex, array) => {
-        const acc = await accP
+    const processed = adaptorRecords.reduce((acc, adaptorRecord, currentIndex, array) => {
         // Let's work with a clean record
         const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0])
         // Here will be stored the normalized data (aka data with no errors and if missing, extrapolation of that day)
@@ -142,7 +141,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             type,
             adaptorId,
             timestamp,
-            await convertDataToUSD(generatedData, timestamp)
+            convertDataToUSD(generatedData)
         )
         const checkSpike = typeof genuineSpikes === 'boolean' ? !genuineSpikes : !genuineSpikes[String(timestamp)]
         if (checkSpike && timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
@@ -159,7 +158,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         acc.adaptorRecords.push(newGen)
         acc.recordsMap[String(newGen.timestamp)] = newGen
         return acc
-    }, Promise.resolve({
+    }, {
         adaptorRecords: [] as AdaptorRecord[],
         lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0]) }), {}),
         nextDataRecord: {},
@@ -171,7 +170,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         adaptorRecords: AdaptorRecord[],
         recordsMap: IJSON<AdaptorRecord>, // Might be good idea to merge it with adaptorRecords list since its the same
         ath: number
-    }))
+    })
     return {
         cleanRecordsArr: processed.adaptorRecords,
         cleanRecordsMap: processed.recordsMap,

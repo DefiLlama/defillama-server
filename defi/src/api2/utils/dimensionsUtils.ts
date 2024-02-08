@@ -19,19 +19,29 @@ export function getFileCacheKey(adaptorRecordType: AdapterType) {
   return `dimensions-data-v1/${adaptorRecordType}`
 }
 
-export async function getAdaptorRecord2({ adapter, type, mode = 'ALL', adaptorType }: GetAdaptorRecordOptions): Promise<AdaptorRecord[] | AdaptorRecord> {
-  if (!adaptorType) throw new Error("adaptorType is required")
-  const fileKey = getFileCacheKey(adaptorType)
-  if (!cache.feesAdapterCache[fileKey])
-    cache.feesAdapterCache[fileKey] = readFromPGCache(fileKey).then(data => {
-      Object.entries(data).forEach(([key, value]) => {
-        data[key] = AdaptorRecord.fromJSON(value)
-      })
-      return data
+let cacheLoaded = false
+
+export async function loadDimensionsCache() {
+  for (const adaptorRecordType of Object.values(AdapterType)) {
+    const fileKey = getFileCacheKey(adaptorRecordType)
+    const data = await readFromPGCache(fileKey)
+    cache.feesAdapterCache[fileKey] = data
+    Object.entries(data).forEach(([key, value]) => {
+      data[key] = AdaptorRecord.fromJSON(value)
     })
-  
+  }
+  cacheLoaded = true
+}
+
+export async function getAdaptorRecord2({ adapter, type, mode = 'ALL', adaptorType }: GetAdaptorRecordOptions): Promise<AdaptorRecord[] | AdaptorRecord> {
+  if (!cacheLoaded) throw new Error("Dimensions Cache not loaded")
+  if (!adaptorType) throw new Error("adaptorType is required")
+
+  const fileKey = getFileCacheKey(adaptorType)
+  if (!cache.feesAdapterCache[fileKey]) throw new Error("Cache not found: " + fileKey)
+
   const cacheKey = getAdapterCacheKey(adapter, type, mode)
-  return (await cache.feesAdapterCache[fileKey])[cacheKey]
+  return cache.feesAdapterCache[fileKey][cacheKey]
 }
 
 export async function getOverviewHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -45,7 +55,7 @@ export async function getOverviewHandler(req: HyperExpress.Request, res: HyperEx
 
 
 export async function getDimensionProtocolHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const protocolName = req.path_parameters.name?.toLowerCase() 
+  const protocolName = req.path_parameters.name?.toLowerCase()
   const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
   const rawDataType = req.query_parameters?.dataType
   const data = await getProtocolDataHandler(protocolName, adaptorType, rawDataType, { isApi2RestServer: true })

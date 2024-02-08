@@ -1279,6 +1279,7 @@ export default {
         "id": "1384"
     },
     "hiveswap": {
+        parentId: "HiveSwap",
         "enabled": true,
         "id": "2485"
     },
@@ -2403,5 +2404,10 @@ export default {
                 "1707177600": true,
             },
         }
+    },
+    "hiveswap-v3": {
+        parentId: "HiveSwap",
+        "enabled": true,
+        "id": "4113"
     }
 } as AdaptorsConfig

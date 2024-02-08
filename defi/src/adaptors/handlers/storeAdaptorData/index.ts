@@ -165,8 +165,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   // Timestamp to query, defaults current timestamp - 2 minutes delay
   const currentTimestamp = event.timestamp ?? LAMBDA_TIMESTAMP;
   // Get clean day
-  const cleanCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
-  const cleanPreviousDayTimestamp = getTimestampAtStartOfDayUTC(cleanCurrentDayTimestamp - 1)
+  const toTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
+  const fromTimestamp = getTimestampAtStartOfDayUTC(toTimestamp - 1)
 
   // Import data list to be used
   const dataModule = await loadAdaptorsData(event.adaptorType)
@@ -190,7 +190,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   await Promise.all(
     allChains.map(async (chain) => {
       try {
-        const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
+        const latestBlock = await getBlock(toTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
         if (latestBlock)
           chainBlocks[chain] = latestBlock
       } catch (e) { console.log(e) }
@@ -201,17 +201,30 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   console.info(`- count: ${adaptorsList.length}`)
 
   const { errors, results } = await PromisePool
-    .withConcurrency(42)
+    .withConcurrency(11)
     .for(adaptorsList)
     .process(runAndStoreProtocol)
 
+  const shortenString = (str: string, length: number = 250) => str.length > length ? str.slice(0, length) + '...' : str
+
+  const errorObjects = errors.map(({ raw, item, message }: any) => {
+    return {
+      adapter: `${item.name} - ${item.versionKey ?? ''}`,
+      message: shortenString(message),
+      chain: raw.chain,
+      // stack: raw.stack?.split('\n').slice(1, 2).join('\n')
+    }
+  })
+  console.info(`adaptorType: ${event.adaptorType}`)
   console.info(`Success: ${results.length}`)
   console.info(`Errors: ${errors.length}`)
+  if (errorObjects.length) console.table(errorObjects)
+  // console.log(JSON.stringify(errorObjects, null, 2))
 
   console.info(`**************************`)
 
   async function runAndStoreProtocol(protocol: ProtocolAdaptor, index: number) {
-    console.info(`- ${index + 1}/${adaptorsList.length} - ${protocol.module}`)
+    // console.info(`- ${index + 1}/${adaptorsList.length} - ${protocol.module}`)
     // Get adapter info
     let { id, module, versionKey } = protocol;
     // console.info(`Adapter found ${id} ${module} ${versionKey}`)
@@ -242,11 +255,11 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
           id = colletionConfig.id
           const rawRecords: RawRecordMap = {}
           const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
-          if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - cleanCurrentDayTimestamp) > 60 * 60 * 2) continue
-          const runAdapterRes = await runAdapter(adapter, cleanCurrentDayTimestamp, chainBlocks, module, version)
+          if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 2) continue
+          const runAdapterRes = await runAdapter(adapter, toTimestamp, chainBlocks, module, version)
           processFulfilledPromises(runAdapterRes, rawRecords, version, FILTRED_KEYS_TO_STORE)
           for (const [recordType, record] of Object.entries(rawRecords)) {
-            const promise = storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
+            const promise = storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
             promises.push(promise)
           }
         }
@@ -254,13 +267,13 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const rawRecords: RawRecordMap = {}
         for (const [version, adapter] of adaptersToRun) {
           const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
-          if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - cleanCurrentDayTimestamp) > 60 * 60 * 2) continue
-          const runAdapterRes = await runAdapter(adapter, cleanCurrentDayTimestamp, chainBlocks, module, version)
+          if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 2) continue
+          const runAdapterRes = await runAdapter(adapter, toTimestamp, chainBlocks, module, version)
           processFulfilledPromises(runAdapterRes, rawRecords, version, FILTRED_KEYS_TO_STORE)
         }
 
         for (const [recordType, record] of Object.entries(rawRecords)) {
-          const promise = storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
+          const promise = storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
           promises.push(promise)
         }
       }

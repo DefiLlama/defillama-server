@@ -150,57 +150,27 @@ export class AdaptorRecord extends Item {
 
 export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTimestamp: number): Promise<AdaptorRecord> => {
     if (Object.entries(adaptorRecord.data).length === 0) throw new Error(`${adaptorRecord.type}: Can't store empty adaptor record`)
-    let errorData = getErrorData(adaptorRecord.data)
-    const currentRecord = await getAdaptorRecord(adaptorRecord.adaptorId, adaptorRecord.type, adaptorRecord.protocolType, "TIMESTAMP", adaptorRecord.timestamp).catch(() => console.info("No previous data found, writting new row..."))
-    let currentData: IRecordAdaptorRecordData = {}
-    if (currentRecord instanceof AdaptorRecord) currentData = currentRecord.data
 
     // Proceed to remove previous errors
-    delete currentData.error
-    currentData = Object.entries(currentData).reduce((acc, [key, chainData]) => {
-        if (typeof chainData !== 'number') delete chainData.error
-        if (Object.keys(chainData).length === 0) return acc
-        acc[key] = chainData
-        return acc
-    }, {} as IRecordAdaptorRecordData)
     const obj2Store: IRecordAdaptorRecordData = {
         ...Object.entries(adaptorRecord.data).reduce((acc, [chain, data]) => {
             const currentChainValue = acc[chain]
             const clean_chain = replaceReservedKeyword(chain)
             if (typeof data === 'number' || typeof currentChainValue === 'number' || chain === 'error') return acc
             if (currentChainValue && Object.keys(currentChainValue).length === 0) return acc
-            acc[clean_chain] = {
-                ...currentChainValue,
-                ...data,
-            }
+            acc[clean_chain] = { ...currentChainValue, ...data, }
             return acc
-        }, (currentData ?? {}) as IRecordAdaptorRecordData),
-        eventTimestamp
+        }, {} as IRecordAdaptorRecordData), eventTimestamp
     }
 
     adaptorRecord.data = obj2Store
     const record = adaptorRecord.getCleanAdaptorRecord()
-    const { PK, SK } = adaptorRecord.keys()
 
-    try {
-        console.log("Storing", adaptorRecord.keys())
-        if (record) {
-            const recordWithTimestamp = {...record.toItem(), eventTimestamp};
-            await dynamodb.put(recordWithTimestamp)
-        }
-        /* if (errorData) { // commenting it out for now, can store the errors in error db once we switch to coolify
-            Object.entries(errorData).forEach(([chain, error]) => {
-                if (dynamoReservedKeywords.includes(chain.toUpperCase())) {
-                    errorData[replaceReservedKeyword(chain)] = error
-                    delete errorData[chain];
-                }
-            })
-            await dynamodb.put({ PK: `${PK}#error`, SK, ...errorData })
-        } */
-        return adaptorRecord
-    } catch (error) {
-        throw error
+    if (record) {
+        const recordWithTimestamp = { ...record.toItem(), eventTimestamp };
+        await dynamodb.put(recordWithTimestamp)
     }
+    return adaptorRecord
 }
 
 const normalizeSuffix = "_key"
@@ -244,7 +214,7 @@ export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordTyp
         keyConditionExpression = `${keyConditionExpression} and SK > :sk`
     }
     let resp: any
-    let moreThanAWeekAway = !lastKey || lastKey < (Date.now()/1e3 ) - 7 * 24 * 60 * 60
+    let moreThanAWeekAway = !lastKey || lastKey < (Date.now() / 1e3) - 7 * 24 * 60 * 60
     let getAllValues = mode === "ALL" && moreThanAWeekAway
     if (getAllValues) {
         resp = await getHistoricalValues(adaptorRecord.pk, lastKey)

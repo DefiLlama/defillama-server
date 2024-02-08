@@ -633,5 +633,15 @@ export default {
     "pingu": {
         "enabled": true,
         "id": "4102"
+    },
+    "ipor": {
+        "enabled": true,
+        "id": "2147",
+        protocolsData: {
+            "derivatives": {
+                "id": "2147",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

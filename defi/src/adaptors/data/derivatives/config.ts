@@ -643,5 +643,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "sudofinance": {
+        "enabled": true,
+        "id": "4045"
     }
 } as AdaptorsConfig

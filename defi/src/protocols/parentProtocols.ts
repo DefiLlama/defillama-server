@@ -3654,6 +3654,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ClayStack_HQ",
   },
+  {
+    id: "parent#supswap",
+    name: "SupSwap",
+    url: "https://supswap.xyz",
+    description: "DEX on Mode Network.",
+    logo: `${baseIconsUrl}/supswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SupswapXyz",
+    github: ["supswap"]
+  },
 ];
 
 export default parentProtocols;

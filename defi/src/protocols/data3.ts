@@ -27403,7 +27403,7 @@ const data3: Protocol[] = [
     oracles: ["Chainlink", "Pyth"],
     forkedFrom: [],
     module: "symmetry-trade/index.js",
-    twitter: "SymmetryDEX",
+    twitter: "symmetry_trade",
     audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-Symmetry-v1.0.pdf"],
     github: ["symmetrytrade"],
     listedAt: 1702912934

@@ -158,18 +158,21 @@ export default wrapScheduledLambda(handler);
 export type IStoreAdaptorDataHandlerEvent = {
   timestamp?: number
   adaptorType: AdapterType
+  adaptorNames?: Set<string>
+  maxConcurrency?: number
 }
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  console.info(`- timestamp: ${event.timestamp}`)
+  const { timestamp, adaptorType, adaptorNames, maxConcurrency = 13 } = event
+  console.info(`- timestamp: ${timestamp}`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
-  const currentTimestamp = event.timestamp ?? LAMBDA_TIMESTAMP;
+  const currentTimestamp = timestamp ?? LAMBDA_TIMESTAMP;
   // Get clean day
   const toTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
   const fromTimestamp = getTimestampAtStartOfDayUTC(toTimestamp - 1)
 
   // Import data list to be used
-  const dataModule = await loadAdaptorsData(event.adaptorType)
+  const dataModule = await loadAdaptorsData(adaptorType)
   const dataList = dataModule.default
   const dataMap = dataList.reduce((acc, curr) => {
     acc[curr.module] = curr
@@ -179,7 +182,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const { importModule, KEYS_TO_STORE, config } = dataModule
 
   // Get list of adaptors to run
-  const adaptorsList = Object.values(dataMap).filter(p => p)
+  const allAdaptors = Object.values(dataMap).filter(p => p)
+  const adaptorsList = allAdaptors.filter(p => !adaptorNames || adaptorNames.has(p.displayName))
+  if (adaptorNames) console.log('refilling for', adaptorsList.map(a => a.module), adaptorsList.length)
 
   // Get closest block to clean day. Only for EVM compatible ones.
   const allChains = adaptorsList.reduce((acc, { chains }) => {
@@ -201,7 +206,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   console.info(`- count: ${adaptorsList.length}`)
 
   const { errors, results } = await PromisePool
-    .withConcurrency(11)
+    .withConcurrency(maxConcurrency)
     .for(adaptorsList)
     .process(runAndStoreProtocol)
 
@@ -215,7 +220,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       // stack: raw.stack?.split('\n').slice(1, 2).join('\n')
     }
   })
-  console.info(`adaptorType: ${event.adaptorType}`)
+  console.info(`adaptorType: ${adaptorType}`)
   console.info(`Success: ${results.length}`)
   console.info(`Errors: ${errors.length}`)
   if (errorObjects.length) console.table(errorObjects)
@@ -224,7 +229,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   console.info(`**************************`)
 
   async function runAndStoreProtocol(protocol: ProtocolAdaptor, index: number) {
-    // console.info(`- ${index + 1}/${adaptorsList.length} - ${protocol.module}`)
+    console.info(`[${adaptorType}] - ${index + 1}/${adaptorsList.length} - ${protocol.module}`)
     // Get adapter info
     let { id, module, versionKey } = protocol;
     // console.info(`Adapter found ${id} ${module} ${versionKey}`)

@@ -31537,7 +31537,7 @@ const data3: Protocol[] = [
     description: "Supswap is Native Liquidity Layer for Mode Network with Capital Efficient AMM",
     chain: "Mode",
     logo: `${baseIconsUrl}/supswap-v2.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -31548,6 +31548,7 @@ const data3: Protocol[] = [
     module: "supswap-v2/index.js",
     twitter: "SupswapXyz",
     parentProtocol: "parent#supswap",
+    audit_links: ["https://github.com/Zellic/publications/blob/master/SupSwap%20-%20Zellic%20Audit%20Report.pdf"],
     listedAt: 1707428465
   },
   {

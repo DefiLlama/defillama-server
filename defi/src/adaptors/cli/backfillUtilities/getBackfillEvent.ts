@@ -110,17 +110,17 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             if ("adapter" in dexAdapter) {
                 const st = await Object.values(dexAdapter.adapter)
                     .reduce(async (accP, { start, runAtCurrTime }) => {
-                        const acc = await accP
-                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : +(await start().catch(() => nowSTimestamp))
-                        return (currstart && currstart < acc && currstart !== 0) ? currstart : acc
-                    }, Promise.resolve(nowSTimestamp + 1))
-                startTimestamp = st
+                        const acc = await accP;
+                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (typeof start === 'function' ? await start().catch(() => nowSTimestamp) : start);
+                        return (currstart && currstart < acc && currstart !== 0) ? currstart : acc;
+                    }, Promise.resolve(nowSTimestamp + 1));
+                startTimestamp = st;
             } else {
                 const st = await Object.values(dexAdapter.breakdown).reduce(async (accP, dexAdapter) => {
                     const acc = await accP
                     const bst = await Object.values(dexAdapter).reduce(async (accP, { start, runAtCurrTime }) => {
                         const acc = await accP
-                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (await start().catch(() => nowSTimestamp))
+                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (typeof start === 'function' ? await start().catch(() => nowSTimestamp) : start)
                         return (typeof currstart === 'number' && currstart < acc && currstart !== 0) ? currstart : acc
                     }, Promise.resolve(nowSTimestamp + 1))
 

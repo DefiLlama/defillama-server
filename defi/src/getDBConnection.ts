@@ -30,3 +30,28 @@ export async function getCoins2Connection() {
   }
   return coins2Connection
 }
+
+
+export async function closeConnection() {
+  if (accountsDBConnection) {
+    console.log('Closing Accounts DB connection')
+    await accountsDBConnection.end({ timeout: 2 })
+    console.log('Accounts DB connection closed')
+  }
+
+  if (errorReportsConnection) {
+    console.log('Closing Error Reports DB connection')
+    await errorReportsConnection.end({ timeout: 2 })
+    console.log('Error Reports DB connection closed')
+  }
+
+  if (coins2Connection && (coins2Connection as any) !== 'isBeingSet') {
+    console.log('Closing Coins2 DB connection')
+    await coins2Connection.end({ timeout: 2 })
+    console.log('Coins2 DB connection closed')
+  }
+}
+
+process.on('exit', closeConnection)
+process.on('SIGINT', closeConnection)
+process.on('SIGTERM', closeConnection)

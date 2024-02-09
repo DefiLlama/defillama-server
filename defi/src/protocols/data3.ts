@@ -31618,6 +31618,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1707443045
   },
+  {
+    id: "4121",
+    name: "TezFin",
+    address: null,
+    symbol: "-",
+    url: "https://app.tezos.finance/dashboard",
+    description: "Decentralized on-chain lending/borrowing for Tezos DeFi",
+    chain: "Tezos",
+    logo: `${baseIconsUrl}/tezfin.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Tezos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "tezfin/index.js",
+    twitter: "TezosFinance",
+    audit_links: ["https://docs.tezos.finance/welcome/audit-report"],
+    listedAt: 1707458397
+  },
 ]
 
 export default data3

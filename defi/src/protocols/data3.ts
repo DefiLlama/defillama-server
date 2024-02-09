@@ -7607,7 +7607,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/houdini-swap.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "houdini-swap",
     cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],

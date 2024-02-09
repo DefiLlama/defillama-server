@@ -7598,8 +7598,8 @@ const data3: Protocol[] = [
   {
     id: "3041",
     name: "Houdini Swap",
-    address: "0x888cea2bbdd5d47a4032cf63668d7525c74af57a",
-    symbol: "POOF",
+    address: "0x922D8563631B03C2c4cf817f4d18f6883AbA0109",
+    symbol: "LOCK",
     url: "https://houdiniswap.com/",
     description:
       "Houdini Swap is an aggregator of non-custodial exchanges. It uses the Monero blockchain to anonymize your transactions, automatically swaping from your desired input currency to Monero on one exchange, then sends the Monero to a different exchange and swaps the Monero to your desired receiving currency",

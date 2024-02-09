@@ -31640,6 +31640,51 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.tezos.finance/welcome/audit-report"],
     listedAt: 1707458397
   },
+  {
+    id: "4122",
+    name: "Octopus Network",
+    address: "near:f5cfbc74057c610c8ef151a439252680ac68c6dc.factory.bridge.near",
+    symbol: "OCT",
+    url: "https://oct.network/",
+    description: "The Octopus Network is a multi-chain Web3 infrastructure that empowers appchains with flexible and affordable share security, trust-minimized interoperability, and more",
+    chain: "Near",
+    logo: `${baseIconsUrl}/octopus-network.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "octopus-network",
+    cmcId: "12043",
+    category: "Restaking",
+    chains: ["Near"],
+    oracles: [],
+    forkedFrom: [],
+    module: "octopus-network.js",
+    twitter: "oct_network",
+    audit_links: ["https://github.com/octopus-network/restaking-base/blob/main/blocksec_octopus_network_restaking_v1.0_signed.pdf"],
+    github: ["octopus-network"],
+    listedAt: 1707497245
+  },
+  {
+    id: "4123",
+    name: "Omni Liquid Staking",
+    address: null,
+    symbol: "-",
+    url: "https://omni.ls/",
+    description: "An omni-chain liquid staking protocol developed based on Bifrost Finance SLPx, cross-chain interoperability security provided by Polkadot XCM",
+    chain: "Moonbeam",
+    logo: `${baseIconsUrl}/omni-liquid-staking.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Moonbeam", "Moonriver", "Astar"],
+    oracles: ["DIA"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/8895
+    forkedFrom: [],
+    module: "omni/index.js",
+    twitter: "OmniLST",
+    audit_links: ["https://docs.bifrost.finance/resources/audit-report#common-prefix-audit-report-slpx"],
+    listedAt: 1707497778
+  },
 ]
 
 export default data3

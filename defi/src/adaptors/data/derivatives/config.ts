@@ -564,7 +564,13 @@ export default {
     },
     "orderly-network-derivatives": {
         "enabled": true,
-        "id": "2264"
+        "id": "2264",
+        protocolsData: {
+            "orderly-network-derivatives": {
+                "id": "2264",
+                "enabled": true,
+            }
+        }
     },
     "dydx-v4": {
         parentId: "dYdX",

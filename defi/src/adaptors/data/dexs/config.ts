@@ -1052,7 +1052,13 @@ export default {
     },
     "orderly-network": {
         "enabled": true,
-        "id": "2264"
+        "id": "2264",
+        protocolsData: {
+            "orderly-network": {
+                "id": "2264",
+                enabled: true,
+            }
+        }
     },
     "ghostmarket": {
         "enabled": false,

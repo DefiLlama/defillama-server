@@ -562,7 +562,7 @@ export default {
         "enabled": true,
         "id": "4026"
     },
-    "orderly-network-derivatives": {
+    "orderly-network": {
         "enabled": true,
         "id": "2264",
         protocolsData: {

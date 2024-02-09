@@ -67,6 +67,6 @@ async function run() {
   // await storeR2JSONString('extension/twitter-config.json', JSON.stringify({ whitelist: whitelistedHandlesArray, blacklist: blacklistedHandlesArray }), 60 * 60)
   await storeR2JSONString('extension/twitter-config.json', JSON.stringify({ whitelist: [], blacklist: blacklistedHandlesArray }), 60 * 15)
 }
-
+/* 
 run()
-  .then(() => process.exit(0))
+  .then(() => process.exit(0)) */

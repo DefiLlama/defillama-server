@@ -31685,6 +31685,27 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.bifrost.finance/resources/audit-report#common-prefix-audit-report-slpx"],
     listedAt: 1707497778
   },
+  {
+    id: "4124",
+    name: "Merlin's Seal",
+    address: null,
+    symbol: "-",
+    url: "https://merlinchain.io/bridge/staking",
+    description: "Merlin's Seal is an event associated with the Merlin Chain, focusing on the fair launch of its governance token, $MERL. Users stake assets to earn M-points, which are then used to determine the distribution of $MERL rewards",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/merlin's-seal.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Bitcoin"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "merlin-l2/index.js",
+    twitter: "MerlinLayer2",
+    listedAt: 1707505602
+  },
 ]
 
 export default data3

@@ -33,8 +33,11 @@ async function notifyAdapterStatus({ adaptorType }: { adaptorType: AdapterType }
     if (!returnedProtocols.has(prot))
       notIncluded.push(prot)
   const zeroValueProtocols = []
-  for (const [key, value] of Object.entries(parsedBody.totalDataChartBreakdown?.slice(-1)[0][1] ?? {})) {
-    if (value === 0) zeroValueProtocols.push(key)
+  const currenntData = parsedBody.totalDataChartBreakdown?.slice(-1)[0][1] ?? {}
+  const prevData = parsedBody.totalDataChartBreakdown?.slice(-2)[0][1] ?? {}
+
+  for (const [key, value] of Object.entries(currenntData)) {
+    if (value === 0 || prevData[key] === currenntData[key]) zeroValueProtocols.push(key)
   }
 
   // console.log(adaptorType, "zeroValueProtocols", zeroValueProtocols.length, zeroValueProtocols)

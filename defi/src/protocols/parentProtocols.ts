@@ -3636,7 +3636,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#hiveswap",
     name: "HiveSwap",
     url: "https://www.hiveswap.io/",
-    description: `Hiveswap is a Liquidity Mining Swap for BRC-20 assets on the Bitcoin Layer-2`,
+    description: `Hiveswap is the No.1 swap in the Bitcoin ecosystem, providing liquidity services for assets in the Bitcoin ecosystem`,
     logo: `${baseIconsUrl}/hiveswap.png`,
     gecko_id: null,
     cmcId: null,

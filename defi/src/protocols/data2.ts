@@ -24951,7 +24951,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: " https://www.hiveswap.io/",
     description:
-      "Uniswap V2 fork on map blockchain",
+      "Hiveswap is the No.1 swap in the Bitcoin ecosystem, providing liquidity services for assets in the Bitcoin ecosystem",
     chain: "Map",
     logo: `${baseIconsUrl}/hiveswap-v2.jpg`,
     audits: "0",

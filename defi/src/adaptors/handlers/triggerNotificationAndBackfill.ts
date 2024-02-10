@@ -33,11 +33,13 @@ async function notifyAdapterStatus({ adaptorType }: { adaptorType: AdapterType }
     if (!returnedProtocols.has(prot))
       notIncluded.push(prot)
   const zeroValueProtocols = []
+  const notUpdatedProtocols = []
   const currenntData = parsedBody.totalDataChartBreakdown?.slice(-1)[0][1] ?? {}
   const prevData = parsedBody.totalDataChartBreakdown?.slice(-2)[0][1] ?? {}
 
   for (const [key, value] of Object.entries(currenntData)) {
-    if (value === 0 || prevData[key] === currenntData[key]) zeroValueProtocols.push(key)
+    if (value === 0) zeroValueProtocols.push(key)
+    if ((currenntData[key] === prevData[key]) && value !== 0) notUpdatedProtocols.push(key)
   }
 
   // console.log(adaptorType, "zeroValueProtocols", zeroValueProtocols.length, zeroValueProtocols)
@@ -50,10 +52,14 @@ async function notifyAdapterStatus({ adaptorType }: { adaptorType: AdapterType }
   else
     await sendDiscordAlert(`[${adaptorType}] All protocols have been ranked`, adaptorType, false)
   const hasZeroValues = zeroValueProtocols.length > 0
+  const hasNotUpdatedValues = notUpdatedProtocols.length > 0
   if (hasZeroValues) {
+    if (hasNotUpdatedValues)
+      await sendDiscordAlert(`${notUpdatedProtocols.length} adapters haven't been updated since the last check...\n${notUpdatedProtocols.join(', ')}`, adaptorType)
     if (hasZeroValues)
       await sendDiscordAlert(`${zeroValueProtocols.length} adapters report 0 value dimension, this might be because the source haven't update the volume for today or because simply theres no activity on the protocol... Will retry later... \n${zeroValueProtocols.join(', ')}`, adaptorType)
-    await handler2({ adaptorType, adaptorNames: new Set(zeroValueProtocols), maxConcurrency: 3 })
+    const protocolNames = new Set([...zeroValueProtocols, ...notUpdatedProtocols])
+    await handler2({ adaptorType, adaptorNames: new Set(protocolNames), maxConcurrency: 3 })
   }
   else
     await sendDiscordAlert(`[${adaptorType}] Looks like all good`, adaptorType)

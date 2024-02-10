@@ -706,7 +706,7 @@ export default {
     },
     "ramses-exchange": {
         parentId: "Ramses Exchange",
-        enabled: true,
+        enabled: false,
         id: "2675"
     },
     "blastapi": {

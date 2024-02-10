@@ -1,22 +1,3 @@
-import { handler2 } from ".";
-import { ADAPTER_TYPES } from "../triggerStoreAdaptorData";
-
-async function run() {
-  console.time("**** Run All Adaptor types")
-  await Promise.all(ADAPTER_TYPES.map(async (adaptorType) => {
-    const key = "**** Run Adaptor type: " + adaptorType
-    console.time(key)
-    try {
-      await handler2({ adaptorType })
-    } catch (e) {
-      console.error("error", e)
-    }
-    console.timeEnd(key)
-  }))
-  console.timeEnd("**** Run All Adaptor types")
-}
-
-run().catch(console.error).then(() => process.exit(0))
 
 // catch unhandled rejections
 process.on('unhandledRejection', (reason, promise) => {
@@ -28,6 +9,28 @@ process.on('uncaughtException', (error) => {
   console.error('Dimensions runner: Uncaught Exception thrown', error);
   process.exit(1)
 })
+
+import { handler2 } from ".";
+import { ADAPTER_TYPES } from "../triggerStoreAdaptorData";
+
+async function run() {
+  console.time("**** Run All Adaptor types")
+  await Promise.all(ADAPTER_TYPES.map(async (adaptorType) => {
+    const key = "**** Run Adaptor type: " + adaptorType
+    // if (adaptorType !== 'dexs') return;
+    console.time(key)
+    try {
+      // await handler2({ adaptorType, adaptorNames: new Set(["Katana DEX"]) })
+      await handler2({ adaptorType })
+    } catch (e) {
+      console.error("error", e)
+    }
+    console.timeEnd(key)
+  }))
+  console.timeEnd("**** Run All Adaptor types")
+}
+
+run().catch(console.error).then(() => process.exit(0))
 
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")

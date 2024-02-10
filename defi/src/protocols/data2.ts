@@ -18988,7 +18988,7 @@ const data2: Protocol[] = [
   {
     id: "2225",
     name: "AtoDEX",
-    address: "aptos:0x1d7a81a523f95a7c9bcaa90add9d9986976062c1d121daf547ac6902e19864f3",
+    address: "aptos:0x1d7a81a523f95a7c9bcaa90add9d9986976062c1d121daf547ac6902e19864f3::ADXTOKEN::ADX",
     symbol: "ADX",
     url: "https://atodex.io",
     description:
@@ -21339,7 +21339,7 @@ const data2: Protocol[] = [
   {
     id: "2329",
     name: "HoustonSwap",
-    address: "aptos:0x7ab72b249ec24f76fe66b6de19dcee1e3d3361db5c2cccfaa48ea8659060a1bd",
+    address: "aptos:0x7ab72b249ec24f76fe66b6de19dcee1e3d3361db5c2cccfaa48ea8659060a1bd::coin::HOU",
     symbol: "HOU",
     url: "https://houstonswap.io/",
     description:

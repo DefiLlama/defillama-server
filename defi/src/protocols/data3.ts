@@ -1977,7 +1977,7 @@ const data3: Protocol[] = [
   {
     id: "2789",
     name: "Thala CDP",
-    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
+    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::THL",
     symbol: "THL",
     url: "https://www.thala.fi/",
     description: "Thala is a decentralized finance protocol powered by the Move language, enabling seamless borrowing of a decentralized, over-collateralized stablecoin in Move Dollar and capital-efficient liquidity provisioning via a rebalancing AMM on the Aptos blockchain",
@@ -2106,7 +2106,7 @@ const data3: Protocol[] = [
   {
     id: "2795",
     name: "ThalaSwap",
-    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
+    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::THL",
     symbol: "THL",
     url: "https://www.thala.fi/",
     description: "Thala is a decentralized finance protocol powered by the Move language, enabling seamless borrowing of a decentralized, over-collateralized stablecoin in Move Dollar and capital-efficient liquidity provisioning via a rebalancing AMM on the Aptos blockchain",
@@ -24596,7 +24596,7 @@ const data3: Protocol[] = [
   {
     id: "3804",
     name: "Thala LSD",
-    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
+    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::THL",
     symbol: "THL",
     url: "https://app.thala.fi/lsd",
     description: "Thala's APT liquid staking primitive, designed to enable APT holders to achieve higher yields while leveraging DeFi and fueling the next wave of the DeFi boom on Aptos.",
@@ -30240,7 +30240,7 @@ const data3: Protocol[] = [
   {
     id: "4059",
     name: "AptosLaunch",
-    address: "aptos:0xd0b4efb4be7c3508d9a26a9b5405cf9f860d0b9e5fe2f498b90e68b8d2cedd3e",
+    address: "aptos:0xd0b4efb4be7c3508d9a26a9b5405cf9f860d0b9e5fe2f498b90e68b8d2cedd3e::aptos_launch_token::AptosLaunchToken",
     symbol: "ALT",
     url: "https://aptoslaunch.io",
     description: "Empower Your Crypto Project with Community-Powered Liquidity. Aptos Web 3.0 Launchpad on the Safest and Scalable Layer 1 Blockchain.",

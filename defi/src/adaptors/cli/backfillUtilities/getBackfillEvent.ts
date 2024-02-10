@@ -50,7 +50,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         console.info(`Checking missing ${type} at ${formatTimestampAsDate(timestamp)}`)
         const adapters2Backfill: string[] = []
         // Go through all adapters checking if data for today is available
-        for (const adapter of adaptorsData.default) {
+        for (const adapter of adaptorsData.default.filter(adapter => adapter.enabled).filter(ad => ad?.disabled !== true)) {
             // Query timestamp data from dynamo
             const volume = await getAdaptorRecord(adapter.id, type as AdaptorRecordType, adapter.protocolType, "TIMESTAMP", timestamp).catch(_e => { })
             // if data is missing add 2 backfill

@@ -18988,7 +18988,7 @@ const data2: Protocol[] = [
   {
     id: "2225",
     name: "AtoDEX",
-    address: "aptos:0x1d7a81a523f95a7c9bcaa90add9d9986976062c1d121daf547ac6902e19864f3::ADXTOKEN::ADX",
+    address: "aptos:0x1d7a81a523f95a7c9bcaa90add9d9986976062c1d121daf547ac6902e19864f3",
     symbol: "ADX",
     url: "https://atodex.io",
     description:
@@ -21339,7 +21339,7 @@ const data2: Protocol[] = [
   {
     id: "2329",
     name: "HoustonSwap",
-    address: "aptos:0x7ab72b249ec24f76fe66b6de19dcee1e3d3361db5c2cccfaa48ea8659060a1bd::coin::HOU",
+    address: "aptos:0x7ab72b249ec24f76fe66b6de19dcee1e3d3361db5c2cccfaa48ea8659060a1bd",
     symbol: "HOU",
     url: "https://houstonswap.io/",
     description:
@@ -22896,7 +22896,7 @@ const data2: Protocol[] = [
   {
     id: "2396",
     name: "BlueMove Staking",
-    address: "aptos:0x27fafcc4e39daac97556af8a803dbb52bcb03f0821898dc845ac54225b9793eb::move_coin::MoveCoin",
+    address: "aptos:0x27fafcc4e39daac97556af8a803dbb52bcb03f0821898dc845ac54225b9793eb",
     symbol: "MOVE",
     url: "https://bluemove.net",
     description:
@@ -25274,7 +25274,7 @@ const data2: Protocol[] = [
   {
     id: "2499",
     name: "Eternal Finance",
-    address: "aptos:0x25a64579760a4c64be0d692327786a6375ec80740152851490cfd0b53604cf95::coin::ETERN",
+    address: "aptos:0x25a64579760a4c64be0d692327786a6375ec80740152851490cfd0b53604cf95",
     symbol: "ETERN",
     url: "https://eternalfinance.io",
     description:
@@ -26914,7 +26914,7 @@ const data2: Protocol[] = [
   {
     id: "2571",
     name: "Mosquitos Finance",
-    address: "aptos:0x4db735a9d57f0ed393e44638540efc8e2ef2dccca3bd30c29bd09353b6285832::MosquitoCoin::SUCKR",
+    address: "aptos:0x4db735a9d57f0ed393e44638540efc8e2ef2dccca3bd30c29bd09353b6285832",
     symbol: "SUCKR",
     url: "https://app.mosquitos.finance",
     description:

@@ -53,7 +53,7 @@ async function notifyAdapterStatus({ adaptorType }: { adaptorType: AdapterType }
     await sendDiscordAlert(`[${adaptorType}] All protocols have been ranked`, adaptorType, false)
   const hasZeroValues = zeroValueProtocols.length > 0
   const hasNotUpdatedValues = notUpdatedProtocols.length > 0
-  if (hasZeroValues) {
+  if (hasZeroValues || hasNotUpdatedValues) {
     if (hasNotUpdatedValues)
       await sendDiscordAlert(`${notUpdatedProtocols.length} adapters haven't been updated since the last check...\n${notUpdatedProtocols.join(', ')}`, adaptorType)
     if (hasZeroValues)

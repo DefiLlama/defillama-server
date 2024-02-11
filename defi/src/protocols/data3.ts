@@ -30516,7 +30516,7 @@ const data3: Protocol[] = [
     cmcId:null,
     category: "Derivatives",
     chains: ["Ethereum", "Arbitrum", "Optimism", "zkSync Era", "Polygon"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Pyth"], // https://docs.fringe.fi/fringe-finance-documentation/v2-fringe-smart-contract-addresses
     forkedFrom: [],
     module: "fringe-v2/index.js",
     twitter: "fringefinance",

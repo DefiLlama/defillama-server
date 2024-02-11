@@ -3861,7 +3861,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Derivatives",
     chains: ["Solana"],
     module: "mango-markets/index.js",
     twitter: "mangomarkets",

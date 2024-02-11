@@ -272,7 +272,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const rawRecords: RawRecordMap = {}
         for (const [version, adapter] of adaptersToRun) {
           const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
-          if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 2) continue
+          if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 3) continue // allow run current time if within 3 hours
           const runAdapterRes = await runAdapter(adapter, toTimestamp, chainBlocks, module, version)
           processFulfilledPromises(runAdapterRes, rawRecords, version, FILTRED_KEYS_TO_STORE)
         }

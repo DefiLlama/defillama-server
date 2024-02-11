@@ -55,9 +55,9 @@ async function notifyAdapterStatus({ adaptorType }: { adaptorType: AdapterType }
   const hasNotUpdatedValues = notUpdatedProtocols.length > 0
   if (hasZeroValues || hasNotUpdatedValues) {
     if (hasNotUpdatedValues)
-      await sendDiscordAlert(`${notUpdatedProtocols.length} adapters haven't been updated since the last check...\n${notUpdatedProtocols.join(', ')}`, adaptorType)
+      await sendDiscordAlert(`${notUpdatedProtocols.length} adapters haven't been updated since the last check...`, adaptorType)
     if (hasZeroValues)
-      await sendDiscordAlert(`${zeroValueProtocols.length} adapters report 0 value dimension, this might be because the source haven't update the volume for today or because simply theres no activity on the protocol... Will retry later... \n${zeroValueProtocols.join(', ')}`, adaptorType)
+      await sendDiscordAlert(`${zeroValueProtocols.length} adapters report 0 value dimension...Will retry later...`, adaptorType)
     const protocolNames = new Set([...zeroValueProtocols, ...notUpdatedProtocols])
     await handler2({ adaptorType, adaptorNames: new Set(protocolNames), maxConcurrency: 3 })
   }

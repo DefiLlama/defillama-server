@@ -7034,7 +7034,7 @@ const data3: Protocol[] = [
     chains: ["Sui"],
     module: "interest-protocol/index.js",
     twitter: "interest_dinero",
-    oracles: [],
+    oracles: ["Pyth"],
     audit_links: [
       "https://github.com/interest-protocol/sui-defi/blob/main/audits/Interest%20Protocol%20DEX%20Smart%20Contract%20Audit%20Report.pdf"
     ],

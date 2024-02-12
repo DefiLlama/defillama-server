@@ -1016,7 +1016,7 @@ export const chainCoingeckoIds = {
   },
   "Moonbeam": {
     geckoId: "moonbeam",
-    github: ['PureStake'],
+    github: ['moonbeam-foundation'],
     symbol: "GLMR",
     cmcId: "6836",
     categories: ["EVM", "Parachain"],

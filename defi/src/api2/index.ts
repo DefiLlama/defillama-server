@@ -1,16 +1,3 @@
-
-// catch unhandled rejections
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Dimensions runner: Unhandled Rejection at:', reason, 'promise:', promise);
-  process.exit(1)
-});
-
-process.on('uncaughtException', (error) => {
-  console.error('Dimensions runner: Uncaught Exception thrown', error);
-  process.exit(1)
-})
-
-
 import * as HyperExpress from "hyper-express";
 import { initCache } from "./cache/index";
 import { initializeTVLCacheDB } from "./db";

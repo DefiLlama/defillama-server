@@ -354,7 +354,7 @@ export const chainCoingeckoIds = {
     github: ['rsksmart'],
     symbol: "RBTC",
     cmcId: "3626",
-    categories: ["EVM"],
+    categories: ["EVM","Bitcoin Sidechains"],
     parent: {
       chain: "Bitcoin",
       types: ["gas"]
@@ -1580,7 +1580,7 @@ export const chainCoingeckoIds = {
     github: ['interlay'],
     symbol: "INTR",
     cmcId: "20366",
-    categories: ["Parachain"],
+    categories: ["Parachain", "Bitcoin Sidechains"],
     parent: {
       chain: "Polkadot",
       types: ["parachain"]
@@ -1809,7 +1809,7 @@ export const chainCoingeckoIds = {
     geckoId: "marcopolo",
     symbol: "MAP",
     cmcId: "4956",
-    categories: ["EVM"],
+    categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "MapProtocol",
     url: "https://www.mapprotocol.io/",
   },
@@ -1825,6 +1825,7 @@ export const chainCoingeckoIds = {
   "Libre": {
     geckoId: "libre",
     symbol: "LIBRE",
+    categories: ["Bitcoin Sidechains"],
     cmcId: null,
   },
   "UX": {
@@ -1888,7 +1889,7 @@ export const chainCoingeckoIds = {
     github: ['coredao-org'],
     symbol: "CORE",
     cmcId: "23254",
-    categories: ["EVM"],
+    categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "Coredao_Org",
     url: "https://coredao.org/",
   },
@@ -2311,7 +2312,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Bitcoin Sidechains"],
   },
   "Scroll": {
     geckoId: null,
@@ -2522,7 +2523,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Bitcoin Sidechains"],
     github: ["btclayer2"]
   },
   "AirDAO": {

@@ -46,7 +46,7 @@ const json2CSV = (headers: any[], map: IJSON<AdaptorRecord>, name: string) => {
     for (const adaptor of adaptersList) {
         const rawData = await getAdaptorRecord(adaptor.id, AdaptorRecordType.dailyVolume, adaptor.protocolType, "ALL").catch(console.error)
         if (!(rawData instanceof Array)) continue
-        const data = await generateCleanRecords(
+        const data = generateCleanRecords(
             rawData,
             adaptor.chains,
             adaptor.versionKey ? [adaptor.versionKey]: [adaptor.module]

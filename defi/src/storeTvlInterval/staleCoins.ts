@@ -1,6 +1,5 @@
-import setEnvSecrets from "../utils/shared/setEnvSecrets";
-import postgres from "postgres";
 import { queryPostgresWithRetry } from "../../l2/layer2pg";
+import { getCoins2Connection } from "../getDBConnection";
 import { sendMessage } from "../utils/discord";
 import { searchWidth } from "../utils/shared/constants";
 
@@ -18,15 +17,7 @@ export type StaleCoinData = {
   percentage?: number;
 };
 
-let auth: string[];
-let sql: any;
 export const columns = ["latency", "usd_amount", "symbol", "percentage", "key", "protocol"];
-
-async function generateAuth() {
-  if (!process.env.COINS2_AUTH) await setEnvSecrets();
-  auth = process.env.COINS2_AUTH?.split(",") ?? [];
-  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
-}
 
 export function addStaleCoin(staleCoins: any, data: StaleCoinData) {
   if (!data.key) return;
@@ -65,8 +56,7 @@ export function checkForStaleness(
 export async function storeStaleCoins(staleCoins: StaleCoins) {
   try {
     if (Object.keys(staleCoins).length == 0) return;
-    await generateAuth();
-    if (sql == null) sql = postgres(auth[0]);
+    const sql = await getCoins2Connection()
 
     const stored: StaleCoinData[] = await queryPostgresWithRetry(
       sql`
@@ -93,7 +83,7 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
       await queryPostgresWithRetry(
         sql`
       insert into stalecoins
-      ${sql(inserts, ...columns)}
+      ${(sql as any)(inserts, ...columns)}
       on conflict (key)
       do update set 
         latency = excluded.latency, 
@@ -110,8 +100,7 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
 }
 
 export async function notifyStaleCoins() {
-  await generateAuth();
-  const sql = postgres(auth[0]);
+  const sql = await getCoins2Connection()
 
   const stored: StaleCoinData[] = await sql` select ${sql(columns)} from stalecoins`;
 
@@ -143,8 +132,7 @@ export async function notifyStaleCoins() {
 const changedAdapterColumns: any[] = ["key", "from", "to", "change"];
 
 export async function notifyChangedAdapter() {
-  await generateAuth();
-  const sql = postgres(auth[0]);
+  const sql = await getCoins2Connection()
 
   const stored: ChangedAdapter[] = await sql` select ${sql(changedAdapterColumns)} from adapterchanges`;
 

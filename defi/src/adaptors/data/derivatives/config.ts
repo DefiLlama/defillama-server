@@ -562,9 +562,15 @@ export default {
         "enabled": true,
         "id": "4026"
     },
-    "orderly-network-derivatives": {
+    "orderly-network": {
         "enabled": true,
-        "id": "2264"
+        "id": "2264",
+        protocolsData: {
+            "orderly-network-derivatives": {
+                "id": "2264",
+                "enabled": true,
+            }
+        }
     },
     "dydx-v4": {
         parentId: "dYdX",
@@ -601,5 +607,51 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "lexer": {
+        "enabled": true,
+        "id": "4087",
+        protocolsData: {
+            "derivatives": {
+                "id": "4087",
+                "enabled": true,
+            }
+        }
+    },
+    "hyperionx": {
+        "enabled": true,
+        "id": "4094",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1706832000": true,
+            },
+        }
+    },
+    "demex-perp": {
+        "enabled": true,
+        "id": "2001"
+    },
+    "kinetix-derivatives-v2": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "4110"
+    },
+    "pingu": {
+        "enabled": true,
+        "id": "4102"
+    },
+    "ipor": {
+        "enabled": true,
+        "id": "2147",
+        protocolsData: {
+            "derivatives": {
+                "id": "2147",
+                "enabled": true,
+            }
+        }
+    },
+    "sudofinance": {
+        "enabled": true,
+        "id": "4045"
     }
 } as AdaptorsConfig

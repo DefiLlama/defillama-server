@@ -1,3 +1,4 @@
+// https://pm2.keymetrics.io/docs/usage/application-declaration/
 module.exports = {
   apps: [
     {
@@ -5,8 +6,8 @@ module.exports = {
       script: './src/api2/index.ts', // Path to your main TypeScript file
       interpreter: 'node',
       args: '-r ts-node/register', // Use ts-node for running TypeScript files
-      listen_timeout: 120000, // Wait 60 seconds for the app to start
-      kill_timeout: 10000, // Wait 10 seconds for the app to start
+      listen_timeout: 120_000, // Wait 120 seconds for the app to start
+      kill_timeout: 10_000, // Wait 10 seconds for the app to start
       wait_ready: true, // Wait for the 'ready' signal
       instances: 2,
       exec_mode: 'cluster', // Start in cluster mode

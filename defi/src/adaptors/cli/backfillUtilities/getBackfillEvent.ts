@@ -50,7 +50,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         console.info(`Checking missing ${type} at ${formatTimestampAsDate(timestamp)}`)
         const adapters2Backfill: string[] = []
         // Go through all adapters checking if data for today is available
-        for (const adapter of adaptorsData.default) {
+        for (const adapter of adaptorsData.default.filter(adapter => adapter.enabled).filter(ad => ad?.disabled !== true)) {
             // Query timestamp data from dynamo
             const volume = await getAdaptorRecord(adapter.id, type as AdaptorRecordType, adapter.protocolType, "TIMESTAMP", timestamp).catch(_e => { })
             // if data is missing add 2 backfill
@@ -110,17 +110,17 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             if ("adapter" in dexAdapter) {
                 const st = await Object.values(dexAdapter.adapter)
                     .reduce(async (accP, { start, runAtCurrTime }) => {
-                        const acc = await accP
-                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : +(await start().catch(() => nowSTimestamp))
-                        return (currstart && currstart < acc && currstart !== 0) ? currstart : acc
-                    }, Promise.resolve(nowSTimestamp + 1))
-                startTimestamp = st
+                        const acc = await accP;
+                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (typeof start === 'function' ? await start().catch(() => nowSTimestamp) : start);
+                        return (currstart && currstart < acc && currstart !== 0) ? currstart : acc;
+                    }, Promise.resolve(nowSTimestamp + 1));
+                startTimestamp = st;
             } else {
                 const st = await Object.values(dexAdapter.breakdown).reduce(async (accP, dexAdapter) => {
                     const acc = await accP
                     const bst = await Object.values(dexAdapter).reduce(async (accP, { start, runAtCurrTime }) => {
                         const acc = await accP
-                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (await start().catch(() => nowSTimestamp))
+                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (typeof start === 'function' ? await start().catch(() => nowSTimestamp) : start)
                         return (typeof currstart === 'number' && currstart < acc && currstart !== 0) ? currstart : acc
                     }, Promise.resolve(nowSTimestamp + 1))
 

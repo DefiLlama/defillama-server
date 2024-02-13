@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, IChartData, IChartDataByDex } from "../../utils/volumeCalcs";
-import { getDisplayChainName } from "../../utils/getAllChainsFromAdaptors";
+import { formatChainKey, getDisplayChainName } from "../../utils/getAllChainsFromAdaptors";
 import { sendDiscordAlert } from "../../utils/notify";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -137,6 +137,8 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
 const EXTRA_N30D_TYPE: IJSON<AdaptorRecordType[]> = {
     [AdapterType.FEES]: [
         AdaptorRecordType.dailyHoldersRevenue,
+        AdaptorRecordType.dailyBribesRevenue,
+        AdaptorRecordType.dailyTokenTaxes,
     ],
 }
 export const getExtraN30DTypes = (type: AdapterType) => EXTRA_N30D_TYPE[type] ?? []
@@ -202,7 +204,7 @@ export async function getOverviewProcess({
 
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {
-        if (chainFilter && !adapter.chains.includes(chainFilter)) return { records: null } as any
+        if (chainFilter && !adapter.chains.includes(formatChainKey(chainFilter))) return { records: null } as any
         return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
             if (!isApi2RestServer || process.env.API2_DEBUG_MODE)
                 console.error("Error generating summary:", adapter.module, e) // this should be a warning

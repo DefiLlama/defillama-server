@@ -155,6 +155,12 @@ const main = async () => {
 
 };
 
+// catch unhandled errors
+process.on('uncaughtException', function (err) {
+  console.error('Caught exception: ', err);
+  process.exit(1);
+});
+
 main().then(async () => {
   console.log('Done!!!')
   await closeConnection()

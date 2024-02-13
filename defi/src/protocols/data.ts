@@ -3861,7 +3861,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Derivatives",
     chains: ["Solana"],
     module: "mango-markets/index.js",
     twitter: "mangomarkets",
@@ -6920,24 +6920,24 @@ const data: Protocol[] = [
   },
   {
     id: "426",
-    name: "Mint Club",
+    name: "Mint Club V1",
     address: "bsc:0x1f3af095cda17d63cad238358837321e95fc5915",
     symbol: "MINT",
     url: "https://mint.club",
     description:
       "Mint Club is a smart token building platform that has no need to code and provides instant liquidity. Anyone can launch a smart token with just a few simple clicks.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/mint-club.png`,
+    logo: `${baseIconsUrl}/mint-club-v1.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "mint-club",
-    cmcId: "10977",
+    gecko_id: null,
+    cmcId: null,
     category: "Launchpad",
     chains: ["Binance"],
     module: "mint-club/index.js",
     twitter: "MintClubPro",
+    parentProtocol: "parent#mint-club",
     audit_links: ["https://github.com/Steemhunt/mint.club-contract/tree/main/audits"],
-    github: ["Steemhunt"]
   },
   {
     id: "427",
@@ -8611,7 +8611,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://celo.org/audits"],
     stablecoins: ["celo-dollar", "celo-euro"],
     github: ["mento-protocol"],
-    oracles: ['cLabs'] // Redstone is only used as backup
+    oracles: ['cLabs', 'RedStone'] // Redstone is now being used as primary too after this GOV vote https://celo.stake.id/#/proposal/145
   },
   {
     id: "505",
@@ -14036,7 +14036,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
                    "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FgraEwSrcK8twmgCxivTx%2FUmami%20Audit.pdf?alt=media&token=ccac6185-814e-4284-9b15-b868b00933a0",
                    "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2Fwpi8lo0iYzlsGyFzSXsR%2FUmami%20DAO%20-%20mUMAMI%20(Zokyo).pdf?alt=media&token=c2d1256c-3660-48cb-95ae-ab38728c9c75",
                    "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FrmEbxybwXnR3s1rkCk0k%2FUmami%20DAO%20-%20cmUMAMI%20(Zokyo).pdf?alt=media&token=1aaa2f3e-82be-4f71-af50-3a4c0fd7917b",
-                   "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FBBYm4TbSjsNSCVFacoEm%2FUmami_GLP_Vaults_Zokyo_audit_report_June16_2023.pdf?alt=media&token=a9404fa0-dee2-4110-8ebf-71f8327da29a"
+                   "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FBBYm4TbSjsNSCVFacoEm%2FUmami_GLP_Vaults_Zokyo_audit_report_June16_2023.pdf?alt=media&token=a9404fa0-dee2-4110-8ebf-71f8327da29a",
+                   "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FmmWuHBOPwbdZAMEZaULv%2FUmami_Final_Report.pdf?alt=media&token=6c80872c-0976-4f9d-82e0-ae10b4750235"
                  ],
     listedAt: 1635877329,
     github: ["UmamiDAO"]
@@ -16972,14 +16973,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "TANGO",
     url: "https://tangoswap.cash/swap",
     description: "Decentralized exchange DEX (Swap - Staking - Farming) on SmartBCH.",
-    chain: "SmartBCH",
+    chain: "smartBCH",
     logo: `${baseIconsUrl}/tangoswap.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "tangoswap",
     cmcId: "16365",
     category: "Dexes",
-    chains: ["SmartBCH"],
+    chains: ["smartBCH"],
     module: "tangoswap/index.js",
     twitter: "TangoSwapCash",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/tangoswap/TangoSwap_final-audit.pdf"],
@@ -18180,14 +18181,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "1BCH",
     url: "https://1bch.com",
     description: "Creating a more complete Smartbch DEX and DeFi experience together.",
-    chain: "SmartBCH",
+    chain: "smartBCH",
     logo: `${baseIconsUrl}/1bch.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "1bch",
     cmcId: null,
     category: "Dexes",
-    chains: ["SmartBCH"],
+    chains: ["smartBCH"],
     forkedFrom: ["Uniswap V2"],
     module: "1bch/index.js",
     twitter: "1BCHOfficial",
@@ -19320,12 +19321,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639331363,
     deadUrl: true
   },
+/*
   {
     id: "1013",
     name: "Stargate Finance",
     address: "bsc:0x141381f07Fa31432243113Cda2F617d5d255d39a",
     symbol: "STG",
-    url: "https://www.stargate.zone/#/stake",
+    url: "",
     description:
       "Stargate Finance is a decentralized reserve currency protocol based on the SGT token on Binance Smart Chain. Economically, it imitates the model created by OlympusDao. ",
     chain: "Binance",
@@ -19344,6 +19346,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639331903,
     deadUrl: true
   },
+*/
   {
     id: "1014",
     name: "TempoDAO", //rebranded to revenant
@@ -22832,14 +22835,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://app.tropical.finance",
     description:
       "Tropical Finance is a state of the art DEX and yield farming application on SmartBCH Chain with unique features which offers its investors brand new ways to maximize APRs.",
-    chain: "SmartBCH",
+    chain: "smartBCH",
     logo: `${baseIconsUrl}/tropical-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "tropical-finance",
     cmcId: null,
     category: "Dexes",
-    chains: ["SmartBCH"],
+    chains: ["smartBCH"],
     module: "tropicalfinance/index.js",
     twitter: "tropicalfi_",
     audit_links: ["https://tropical.finance/audit.pdf"],
@@ -23236,7 +23239,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "sperax/index.js",
     twitter: "SperaxUSD",
     oracles: ["DIA"],
-    audit_links: ["https://github.com/Sperax/Audit_Reports"],
+    audit_links: [
+                    "https://github.com/Sperax/Audit_Reports/blob/main/Sperax%20-%20USDs%20-%20Report%20(1).pdf",
+                    "https://github.com/Sperax/Audit_Reports"
+                ],
     parentProtocol: "parent#sperax",
     listedAt: 1641400651,
   },
@@ -26562,18 +26568,18 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1350",
-    name: "TreasureDAO",
-    address: "0xb0c7a3ba49c7a6eaba6cd4a96c55a1391070ac9a",
+    name: "Treasure",
+    address: "arbitrum:0x539bdE0d7Dbd336b79148AA742883198BBF60342",
     symbol: "MAGIC",
     url: "https://www.treasure.lol/",
-    description: "Building bridges between metaverses with $MAGIC ✨and treasures",
+    description: "Treasure is the decentralized gaming ecosystem bringing games and players together through MAGIC",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/treasuredao.jpg`,
+    logo: `${baseIconsUrl}/treasure.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "magic",
     cmcId: "14783",
-    category: "Yield",
+    category: "Gaming",
     chains: ["Arbitrum"],
     module: "treasuredao/index.js",
     treasury: "treasure-dao.js",

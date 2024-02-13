@@ -1052,7 +1052,13 @@ export default {
     },
     "orderly-network": {
         "enabled": true,
-        "id": "2264"
+        "id": "2264",
+        protocolsData: {
+            "orderly-network": {
+                "id": "2264",
+                enabled: true,
+            }
+        }
     },
     "ghostmarket": {
         "enabled": false,
@@ -1279,6 +1285,7 @@ export default {
         "id": "1384"
     },
     "hiveswap": {
+        parentId: "HiveSwap",
         "enabled": true,
         "id": "2485"
     },
@@ -2384,5 +2391,29 @@ export default {
     "horiza": {
         "enabled": true,
         "id": "4041"
+    },
+    "lexer": {
+        "enabled": true,
+        "id": "4087",
+        protocolsData: {
+            "swap": {
+                "id": "4087",
+                "enabled": true,
+            }
+        }
+    },
+    "starkdefi": {
+        "enabled": true,
+        "id": "3880",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1707177600": true,
+            },
+        }
+    },
+    "hiveswap-v3": {
+        parentId: "HiveSwap",
+        "enabled": true,
+        "id": "4113"
     }
 } as AdaptorsConfig

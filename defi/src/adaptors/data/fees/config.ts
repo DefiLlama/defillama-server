@@ -706,7 +706,7 @@ export default {
     },
     "ramses-exchange": {
         parentId: "Ramses Exchange",
-        enabled: true,
+        enabled: false,
         id: "2675"
     },
     "blastapi": {
@@ -1804,5 +1804,26 @@ export default {
         parentId: "Equation",
         "enabled": true,
         "id": "4074"
+    },
+    "lexer": {
+        "enabled": true,
+        "id": "4087"
+    },
+    "garden": {
+        "enabled": true,
+        "id": "4086"
+    },
+    "hyperionx": {
+        "enabled": true,
+        "id": "4094"
+    },
+    "kinetix-derivatives-v2": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "4110"
+    },
+    "pingu": {
+        "enabled": true,
+        "id": "4102"
     }
 } as AdaptorsConfig

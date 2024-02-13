@@ -6312,7 +6312,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://streamprotocol.money",
-    description: "Stream is a pioneering DeFi solution bridging the gap between the crypto world and traditional finance. By strategically investing in US Treasury Bonds, it offers users a unique blend of stability, security, and attractive returns. We are redefining DeFi investment, blending traditional financial security with the benefits of decentralization.",
+    description: "Stream offers exposure to market making opportunities and delta neutral strategies via decentralized strategies. In exchange for using this software, users may pay up to 10% in performance fees and Stream may keep more if it outperforms predicted APY. These strategies focus primarily on DEX and DeFi only trades. However in the event of reaching over capacity, Stream reserves the right to work with third parties such as major market makers to earn yield for users. If these positions are entered into there will be an announcement and it will be visible in the transparency dashboard.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/stream-finance.png`,
     audits: "0",
@@ -6502,9 +6502,8 @@ const data3: Protocol[] = [
       arbitrum: ["Chainlink"],
       zksync_era: ["Chainlink"],
       linea: ["Chainlink"],
-      polygon_zkevm: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5829
+      polygon_zkevm: ["Chainlink"],
       optimism: ["Chainlink"],
-      mantle: ["API3"],
     },
     forkedFrom: ["Liquity"],
     stablecoins: ["grai"],
@@ -7035,7 +7034,7 @@ const data3: Protocol[] = [
     chains: ["Sui"],
     module: "interest-protocol/index.js",
     twitter: "interest_dinero",
-    oracles: ["Pyth"], // https://twitter.com/interest_dinero/status/1756237453910835644
+    oracles: [],
     audit_links: [
       "https://github.com/interest-protocol/sui-defi/blob/main/audits/Interest%20Protocol%20DEX%20Smart%20Contract%20Audit%20Report.pdf"
     ],
@@ -9111,7 +9110,7 @@ const data3: Protocol[] = [
     description:
       "The Fastest Telegram Uniswap Sniper, Swap and snipe at lightning-speed with our free-to-use app",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/unibot.png`,
+    logo: `${baseIconsUrl}/teamunibot.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "unibot",
@@ -10612,7 +10611,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Lending",
     chains: ["Solana"],
     forkedFrom: [],
     module: "mango-markets-v4/index.js",
@@ -11368,7 +11367,7 @@ const data3: Protocol[] = [
     description: `Liquidity Locked Tokens Locked with V3.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/uncx-network-v3.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -11378,6 +11377,7 @@ const data3: Protocol[] = [
     twitter: "UNCX_token",
     oracles: [],
     forkedFrom: [],
+    audit_links: ["https://blog.openzeppelin.com/uncx-uniswapv3-liquidity-locker-audit"],
     parentProtocol: "parent#uncx-network",
     listedAt: 1688652343
   },
@@ -14745,7 +14745,7 @@ const data3: Protocol[] = [
   {
     id: "3360",
     name: "Aquarius Loan",
-    address: "arbitrum:0x2EADCE7EBDEDF3c7291F1f658208A2720Ff4B74d",
+    address: "core:0x204e2D49b7cDA6d93301bcF667A2Da28Fb0e5780",
     symbol: "ARS",
     url: "https://www.aquarius.loan/",
     description:
@@ -30515,9 +30515,9 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId:null,
-    category: "Derivatives",
+    category: "Lending",
     chains: ["Ethereum", "Arbitrum", "Optimism", "zkSync Era", "Polygon"],
-    oracles: ["Chainlink", "Pyth"], // https://docs.fringe.fi/fringe-finance-documentation/v2-fringe-smart-contract-addresses
+    oracles: ["Chainlink"],
     forkedFrom: [],
     module: "fringe-v2/index.js",
     twitter: "fringefinance",

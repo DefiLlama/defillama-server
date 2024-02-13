@@ -8693,7 +8693,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "unicrypt/api.js",
     twitter: "UNCX_token",
-    audit_links: ["https://github.com/chainsulting/Smart-Contract-Security-Audits/tree/master/Unicrypt", "https://www.certik.com/projects/unicrypt"],
+    audit_links: ["https://github.com/softstackHQ/Smart-Contract-Security-Audits/tree/master/Unicrypt", "https://www.certik.com/projects/unicrypt"],
     parentProtocol: "parent#uncx-network",
     listedAt: 1652762212
   },

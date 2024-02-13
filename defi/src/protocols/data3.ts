@@ -31707,6 +31707,27 @@ const data3: Protocol[] = [
     twitter: "MerlinLayer2",
     listedAt: 1707505602
   },
+  {
+    id: "4125",
+    name: "Ambit Finance",
+    address: null,
+    symbol: "-",
+    url: "https://ambit.finance",
+    description: "Ambit Finance is a lending protocol designed to power organic yields for a decentralized AUSD stabelcoin.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/ambit-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    oracles: ["Chainlink"], 
+    forkedFrom: [],
+    module: "ambit-finance/index.js",
+    twitter: "ambitfinance",
+    listedAt: 1707836637
+  },
 ]
 
 export default data3

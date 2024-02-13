@@ -159,6 +159,7 @@ export async function queryRedis(
   error: number = margin,
 ): Promise<CoinDict> {
   if (values.length == 0) return {};
+  if (!auth) await generateAuth();
   const keys: string[] = values.map((v: CoinRead) => v.key);
   // console.log(`${values.length} queried`);
 
@@ -318,7 +319,7 @@ export async function readCoins2(
   batchPostgresReads: boolean = true,
   error: number = margin,
 ): Promise<CoinDict> {
-  await generateAuth();
+  if (!auth) await generateAuth();
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
   const redisData: CoinDict = await queryRedis(currentQueries, error);
@@ -334,7 +335,7 @@ export async function readCoins2(
     : redisData;
 }
 export async function readFirstTimestamp(pk: string) {
-  await generateAuth();
+  if (!auth) await generateAuth();
   const sql = postgres(auth[0]);
   const chain = pk.split(":")[0];
   const key = pk.substring(pk.split(":")[0].length + 1);
@@ -387,7 +388,7 @@ async function storeChangedAdapter(changedAdapters: {
 }) {
   try {
     if (Object.keys(changedAdapters).length == 0) return;
-    await generateAuth();
+    if (!auth) await generateAuth();
     const sql = postgres(auth[0]);
 
     const inserts: ChangedAdapter[] = Object.entries(changedAdapters).map(
@@ -477,6 +478,8 @@ export async function writeToRedis(
       process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
     );
   }
+
+  if (!auth) await generateAuth();
   const redis = new Redis({
     port: 6379,
     host: auth[1],
@@ -527,6 +530,7 @@ export async function writeCoins2(
   margin?: number,
   source?: string,
 ) {
+  if (!auth) await generateAuth();
   const cleanValues = batchPostgresReads
     ? cleanTimestamps(values, margin)
     : values;
@@ -554,7 +558,7 @@ export async function batchReadPostgres(
   start: number,
   end: number,
 ): Promise<any[]> {
-  await generateAuth();
+  if (!auth) await generateAuth();
   let sql = postgres(auth[0]);
   const chain = key.split(":")[0];
   const address = key.substring(key.split(":")[0].length + 1);

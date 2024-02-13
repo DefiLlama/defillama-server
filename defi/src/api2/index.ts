@@ -37,6 +37,7 @@ async function main() {
       try {
         const currentCommitHash = fs.readFileSync(__dirname + '/../../.current_commit_hash', 'utf8')
         console.log('current code hash: ', currentCommitHash)
+        fs.writeFileSync(__dirname + '/../../.safe_commit_hash', currentCommitHash)
       } catch (e) { }
       process.send!('ready')
     })

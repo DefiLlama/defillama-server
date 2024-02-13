@@ -3599,6 +3599,12 @@
       "decimals": "6",
       "symbol": "FUZN",
       "to": "coingecko#fuzion"
+    },
+    "factory:kujira1aaudpfr9y23lt9d45hrmskphpdfaq9ajxd3ukh:unstk": {
+      "name": "nstk",
+      "decimals": "6",
+      "symbol": "NSTK",
+      "to": "coingecko#unstake-fi"
     }        
   },
   "injective": {

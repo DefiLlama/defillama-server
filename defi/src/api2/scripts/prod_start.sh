@@ -34,7 +34,7 @@ handle_error_and_rollback() {
 
 if [ $exit_status -eq 124 ]
 then
-    MESSAGE="The command was terminated because it ran for more than 4 minutes."
+    MESSAGE="pm2 command was terminated because it ran for more than 4 minutes."
     handle_error_and_rollback
 elif [ $exit_status -ne 0 ]
 then
@@ -43,7 +43,7 @@ then
 else
     SAFE_COMMIT_HASH=$(cat "$ROOT_DIR/.safe_commit_hash")
     if [[ $SAFE_COMMIT_HASH != $CURRENT_COMMIT_HASH ]]; then
-        MESSAGE="Current commit hash does not match safe commit hash. Current: $CURRENT_COMMIT_HASH, Safe: $SAFE_COMMIT_HASH"
+        MESSAGE="Current commit hash does not match safe commit hash. Current: $CURRENT_COMMIT_HASH"
         handle_error_and_rollback
     else
         echo "API2 rest server started without issue: $SAFE_COMMIT_HASH"

@@ -11,7 +11,7 @@ exit_status=$?
 
 handle_error_and_rollback() {
   SAFE_COMMIT_HASH=$(cat "$ROOT_DIR/.safe_commit_hash")
-  MESSAGE_2="$MESSAGE | rolling back to use last successful commit: $SAFE_COMMIT_HASH"
+  MESSAGE_2="$MESSAGE | rolling back to use last successful commit: $SAFE_COMMIT_HASH. Current: $CURRENT_COMMIT_HASH"
   echo "ERROR: $MESSAGE_2"
 
   # notify team on discord that there is an issue
@@ -43,7 +43,7 @@ then
 else
     SAFE_COMMIT_HASH=$(cat "$ROOT_DIR/.safe_commit_hash")
     if [[ $SAFE_COMMIT_HASH != $CURRENT_COMMIT_HASH ]]; then
-        MESSAGE="Current commit hash does not match safe commit hash. Current: $CURRENT_COMMIT_HASH"
+        MESSAGE="Current commit hash does not match safe commit hash"
         handle_error_and_rollback
     else
         echo "API2 rest server started without issue: $SAFE_COMMIT_HASH"

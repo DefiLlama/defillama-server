@@ -6,7 +6,7 @@ SAFE_COMMIT_HASH=$(cat "$ROOT_DIR/.safe_commit_hash")
 CURRENT_COMMIT_HASH=$(git rev-parse HEAD)
 
 # start API2 server
-npx pm2 start src/api2/ecosystem.config.js || npx pm2 reload >/dev/null
+npx pm2 startOrReload src/api2/ecosystem.config.js
 if [ $? -ne 0 ]; then
 
   MESSAGE="Issue starting API2 server, rolling back to use last successful commit: $SAFE_COMMIT_HASH"
@@ -26,7 +26,7 @@ if [ $? -ne 0 ]; then
       git reset --hard $SAFE_COMMIT_HASH
       echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash
       npm run prebuild
-      npx pm2 start src/api2/ecosystem.config.js || npx pm2 reload >/dev/null
+      npx pm2 startOrReload src/api2/ecosystem.config.js
 
   else
       echo "Could not find safe commit hash file, exiting..."
@@ -36,3 +36,4 @@ if [ $? -ne 0 ]; then
     echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.safe_commit_hash
     echo "API2 rest server started without issue: $CURRENT_COMMIT_HASH"
 fi 
+npx pm2 status api2-rest-server

@@ -31385,7 +31385,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Kava"],
-    oracles: [], 
+    oracles: ["Pyth", "API3"], // https://github.com/DefiLlama/defillama-server/pull/5845
     forkedFrom: [],
     module: "kinetix-derivatives-v2/index.js",
     twitter: "KinetixFi",

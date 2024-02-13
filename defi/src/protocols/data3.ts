@@ -6504,6 +6504,7 @@ const data3: Protocol[] = [
       linea: ["Chainlink"],
       polygon_zkevm: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5829
       optimism: ["Chainlink"],
+      mantle: ["API3"],
     },
     forkedFrom: ["Liquity"],
     stablecoins: ["grai"],

@@ -29,6 +29,7 @@ async function main() {
   webserver.use(subPath, router)
 
   setTvlRoutes(router, subPath)
+  webserver.get('/hash', (_req, res) => res.send(process.env.CURRENT_COMMIT_HASH))
 
   webserver.listen(port)
     .then(() => {
@@ -36,6 +37,7 @@ async function main() {
       console.log('Webserver started on port ' + port)
       try {
         const currentCommitHash = fs.readFileSync(__dirname + '/../../.current_commit_hash', 'utf8')
+        process.env.CURRENT_COMMIT_HASH = currentCommitHash
         console.log('current code hash: ', currentCommitHash)
         fs.writeFileSync(__dirname + '/../../.safe_commit_hash', currentCommitHash)
       } catch (e) { }

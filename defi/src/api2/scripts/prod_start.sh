@@ -3,6 +3,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 ROOT_DIR=$SCRIPT_DIR/../../..
 
 CURRENT_COMMIT_HASH=$(git rev-parse HEAD)
+echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash
 
 # start API2 server
 timeout 4m npx pm2 startOrReload src/api2/ecosystem.config.js

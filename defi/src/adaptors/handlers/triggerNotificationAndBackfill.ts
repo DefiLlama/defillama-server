@@ -11,7 +11,11 @@ setTimeout(() => {
 }, 1000 * 60 * 60 * 2) // 1 hours
 
 export const handler = async () => {
-  await Promise.all(ADAPTER_TYPES.map(adaptorType => notifyAdapterStatus({ adaptorType })))
+  try {
+    await Promise.all(ADAPTER_TYPES.map(adaptorType => notifyAdapterStatus({ adaptorType })))
+  } catch (e) {
+    console.error("Error in notifyAdapterStatus", e)
+  }
 };
 
 handler().catch(console.error).then(() => process.exit(0))

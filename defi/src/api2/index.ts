@@ -3,6 +3,7 @@ import { initCache } from "./cache/index";
 import { initializeTVLCacheDB } from "./db";
 import setTvlRoutes from "./routes";
 import process from "process";
+import fs from 'fs'
 
 const webserver = new HyperExpress.Server()
 
@@ -28,11 +29,18 @@ async function main() {
   webserver.use(subPath, router)
 
   setTvlRoutes(router, subPath)
+  webserver.get('/hash', (_req, res) => res.send(process.env.CURRENT_COMMIT_HASH))
 
   webserver.listen(port)
     .then(() => {
       console.timeEnd('Api Server init')
       console.log('Webserver started on port ' + port)
+      try {
+        const currentCommitHash = fs.readFileSync(__dirname + '/../../.current_commit_hash', 'utf8')
+        process.env.CURRENT_COMMIT_HASH = currentCommitHash
+        console.log('current code hash: ', currentCommitHash)
+        fs.writeFileSync(__dirname + '/../../.safe_commit_hash', currentCommitHash)
+      } catch (e) { }
       process.send!('ready')
     })
     .catch((e) => console.log('Failed to start webserver on port ' + port, e))

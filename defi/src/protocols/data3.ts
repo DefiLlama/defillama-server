@@ -6502,7 +6502,7 @@ const data3: Protocol[] = [
       arbitrum: ["Chainlink"],
       zksync_era: ["Chainlink"],
       linea: ["Chainlink"],
-      polygon_zkevm: ["Chainlink"],
+      polygon_zkevm: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5829
       optimism: ["Chainlink"],
     },
     forkedFrom: ["Liquity"],
@@ -7034,7 +7034,7 @@ const data3: Protocol[] = [
     chains: ["Sui"],
     module: "interest-protocol/index.js",
     twitter: "interest_dinero",
-    oracles: [],
+    oracles: ["Pyth"], // https://twitter.com/interest_dinero/status/1756237453910835644
     audit_links: [
       "https://github.com/interest-protocol/sui-defi/blob/main/audits/Interest%20Protocol%20DEX%20Smart%20Contract%20Audit%20Report.pdf"
     ],
@@ -9110,7 +9110,7 @@ const data3: Protocol[] = [
     description:
       "The Fastest Telegram Uniswap Sniper, Swap and snipe at lightning-speed with our free-to-use app",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/teamunibot.png`,
+    logo: `${baseIconsUrl}/unibot.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "unibot",
@@ -10611,7 +10611,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Derivatives",
     chains: ["Solana"],
     forkedFrom: [],
     module: "mango-markets-v4/index.js",
@@ -14745,7 +14745,7 @@ const data3: Protocol[] = [
   {
     id: "3360",
     name: "Aquarius Loan",
-    address: "core:0x204e2D49b7cDA6d93301bcF667A2Da28Fb0e5780",
+    address: "arbitrum:0x2EADCE7EBDEDF3c7291F1f658208A2720Ff4B74d",
     symbol: "ARS",
     url: "https://www.aquarius.loan/",
     description:
@@ -14756,12 +14756,12 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "aquarius-loan",
     cmcId: "27847",
-    category: "Lending",
+    category: "Derivatives",
     chains: ["CORE"],
     module: "aquarius-loan/index.js",
     twitter: "AquariusLoan",
     forkedFrom: ["Compound V2"],
-    oracles: [],
+    oracles: ["Chainlink", "Pyth"], // https://docs.fringe.fi/fringe-finance-documentation/v2-fringe-smart-contract-addresses
     github: ["aquarius-loan"],
     audit_links: ["https://docs.aquarius.loan/security/formal-verification"],
     listedAt: 1691521815

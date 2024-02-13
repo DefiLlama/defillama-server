@@ -371,6 +371,7 @@ export default {
         "id": "1823"
     },
     "beethoven-x": {
+        parentId: "Beethoven X",
         "enabled": true,
         "id": "654"
     },

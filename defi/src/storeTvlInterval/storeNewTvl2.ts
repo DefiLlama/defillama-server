@@ -122,6 +122,7 @@ export default async function (
     if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
       let tvlFromMissingTokens = 0;
       [...extraSections, "tvl"].forEach(section => {
+        if (!lastHourlyUsdTVLObject|| !lastHourlyUsdTVLObject[section]) return;
         Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
           if (usdTokenBalances[section]?.[coin] === undefined) {
             tvlFromMissingTokens += Number(tvl)

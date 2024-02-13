@@ -25,7 +25,7 @@ if [ $? -ne 0 ]; then
       git stash # stash local changes
       git reset --hard $SAFE_COMMIT_HASH
       echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash
-      npmm run prebuild
+      npm run prebuild
       npx pm2 start src/api2/ecosystem.config.js || npx pm2 reload >/dev/null
 
   else

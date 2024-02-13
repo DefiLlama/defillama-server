@@ -31728,6 +31728,29 @@ const data3: Protocol[] = [
     twitter: "ambitfinance",
     listedAt: 1707836637
   },
+  {
+    id: "4126",
+    name: "Beethoven X sFTMx",
+    address: "fantom:0xf24bcf4d1e507740041c9cfd2dddb29585adce1e",
+    symbol: "BEETS",
+    assetToken: "sFTMx",
+    url: "https://beets.fi",
+    description: "sFTMx Liquid Staking.",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/beethoven-x-sftmx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Fantom"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "beethovenx-sftmx/index.js",
+    twitter: "beethoven_x",
+    parentProtocol: "parent#beethoven-x",
+    listedAt: 1707837410
+  },
 ]
 
 export default data3

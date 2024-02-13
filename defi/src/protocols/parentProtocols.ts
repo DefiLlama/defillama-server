@@ -3666,6 +3666,20 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SupswapXyz",
     github: ["supswap"]
   },
+  {
+    id: "parent#beethoven-x",
+    name: "Beethoven X",
+    url: "https://beets.fi",
+    description: "We leverage best in breed DeFi protocols to offer novel decentralized investment strategies. Built on Balancer V2, Beethoven X is the first next-generation AMM protocol on Fantom.",
+    logo: `${baseIconsUrl}/beethoven-x.png`,
+    gecko_id: "beethoven-x",
+    cmcId: "13244",
+    chains: [],
+    twitter: "beethoven_x",
+    governanceID: ["snapshot:beets.eth"],
+    treasury: "beethovenx.js",
+    github: ["beethovenxfi"]
+  },
 ];
 
 export default parentProtocols;

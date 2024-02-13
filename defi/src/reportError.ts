@@ -1,16 +1,15 @@
+import { getErrorDBConnection } from "./getDBConnection";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { sendMessage } from "./utils/discord";
 import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared";
-import postgres from "postgres";
 import { sluggifyString } from "./utils/sluggify";
 
-const sql = postgres(process.env.ERROR_REPORTS_DB!);
 // CREATE TABLE errorReports (time INT, protocol VARCHAR(200), dataType VARCHAR(200), message TEXT, correctSource TEXT, id serial primary key);
 
 export async function reportError({ message, protocol, dataType, correctSource }: any) {
 
-  const previousErrors = await sql`select protocol, dataType from errorReports where time > ${getCurrentUnixTimestamp() - 24 * 3600} and protocol = ${protocol} and dataType = ${dataType}`
-  await sql`
+  const previousErrors = await getErrorDBConnection()`select protocol, dataType from errorReports where time > ${getCurrentUnixTimestamp() - 24 * 3600} and protocol = ${protocol} and dataType = ${dataType}`
+  await getErrorDBConnection()`
   insert into errorReports (
     time, protocol, dataType, message, correctSource
   ) values (

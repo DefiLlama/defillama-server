@@ -1,12 +1,8 @@
-import postgres from "postgres";
 import { Chain } from "@defillama/sdk/build/general";
 import { TokenInsert } from "./types";
-import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 import sleep from "../src/utils/shared/sleep";
 import { mixedCaseChains } from "./constants";
-
-let auth: string[];
-let sql: any;
+import { getCoins2Connection } from "../src/getDBConnection";
 
 export async function queryPostgresWithRetry(query: any, sql: any, counter: number = 0): Promise<any> {
   try {
@@ -14,21 +10,14 @@ export async function queryPostgresWithRetry(query: any, sql: any, counter: numb
     const res = await sql`
         ${query}
         `;
-    sql.end();
     return res;
   } catch (e) {
     if (counter > 5) throw e;
     await sleep(5000 + 2e4 * Math.random());
-    sql = postgres(auth[0]);
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
 }
 
-async function generateAuth() {
-  if (!process.env.COINS2_AUTH) await setEnvSecrets();
-  auth = process.env.COINS2_AUTH?.split(",") ?? [];
-  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
-}
 
 function splitKey(inserts: TokenInsert[], key: string) {
   const index = key.indexOf(":");
@@ -50,8 +39,7 @@ export async function storeAllTokens(tokens: string[]) {
   tokens.map((t: string) => splitKey(inserts, t));
 
   if (!inserts.length) return;
-  await generateAuth();
-  if (!sql) sql = postgres(auth[0]);
+  const sql = await getCoins2Connection()
   await queryPostgresWithRetry(
     sql`
     insert into alltokens
@@ -70,8 +58,7 @@ export async function storeNotTokens(tokens: string[]) {
   tokens.map((t: string) => splitKey(inserts, t));
 
   if (!inserts.length) return;
-  await generateAuth();
-  if (!sql) sql = postgres(auth[0]);
+  const sql = await getCoins2Connection()
   await queryPostgresWithRetry(
     sql`
     insert into nottokens
@@ -84,8 +71,7 @@ export async function storeNotTokens(tokens: string[]) {
 }
 
 export async function fetchAllTokens(chain: Chain): Promise<string[]> {
-  await generateAuth();
-  if (!sql) sql = postgres(auth[0]);
+  const sql = await getCoins2Connection()
   const res = await queryPostgresWithRetry(
     sql`
       select token from alltokens
@@ -98,8 +84,7 @@ export async function fetchAllTokens(chain: Chain): Promise<string[]> {
 }
 
 export async function fetchNotTokens(chain: Chain): Promise<string[]> {
-  await generateAuth();
-  if (!sql) sql = postgres(auth[0]);
+  const sql = await getCoins2Connection()
   const res = await queryPostgresWithRetry(
     sql`
       select token from nottokens

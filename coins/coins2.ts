@@ -2,7 +2,7 @@ import { CoinRead } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
-import postgres from "postgres";
+import { getCoins2Connection} from './getDBConnection'
 import { sendMessage } from "../defi/src/utils/discord";
 import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 import fetch from "node-fetch";
@@ -62,17 +62,12 @@ async function queryPostgresWithRetry(
     const res = await sql`
         ${query}
         `;
-    sql.end();
     return res;
   } catch (e) {
     if (counter > 5) throw e;
     await sleep(5000 + 1e4 * Math.random());
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
-}
-async function generateAuth() {
-  auth = process.env.COINS2_AUTH?.split(",") ?? [];
-  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 }
 export async function translateItems(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
@@ -206,7 +201,7 @@ async function queryPostgres(
 
   let sql;
   if (batchPostgresReads) {
-    sql = postgres(auth[0]);
+    sql = await getCoins2Connection()
     data = await queryPostgresWithRetry(
       sql`
     select ${sql(pgColumns)} from splitkey where 
@@ -220,7 +215,7 @@ async function queryPostgres(
   } else {
     await Promise.all(
       splitKeys.map(async (key) => {
-        sql = postgres(auth[0]);
+        sql = await getCoins2Connection()
         const read = await queryPostgresWithRetry(
           sql`
         select ${sql(pgColumns)} from splitkey where 
@@ -317,7 +312,6 @@ export async function readCoins2(
   batchPostgresReads: boolean = true,
   error: number = margin,
 ): Promise<CoinDict> {
-  await generateAuth();
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
   const redisData: CoinDict = await queryRedis(currentQueries, error);
@@ -333,15 +327,13 @@ export async function readCoins2(
     : redisData;
 }
 export async function readFirstTimestamp(pk: string) {
-  await generateAuth();
-  const sql = postgres(auth[0]);
+  const sql = await getCoins2Connection()
   const chain = pk.split(":")[0];
   const key = pk.substring(pk.split(":")[0].length + 1);
   const read = await sql`
     select MIN (timestamp) from splitkey where 
     chain = ${chain} and key = ${key}
   `;
-  sql.end();
   if (read[0] && read[0].min) return read[0].min;
 }
 function cleanTimestamps(values: Coin[], margin: number = 15 * 60): Coin[] {
@@ -386,8 +378,7 @@ async function storeChangedAdapter(changedAdapters: {
 }) {
   try {
     if (Object.keys(changedAdapters).length == 0) return;
-    await generateAuth();
-    const sql = postgres(auth[0]);
+    let sql = await getCoins2Connection();
 
     const inserts: ChangedAdapter[] = Object.entries(changedAdapters).map(
       ([key, c]) => ({
@@ -500,7 +491,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
     confidence: Math.round(v.confidence * 30000),
   }));
   // console.log("creating a new pg instance");
-  const sql = postgres(auth[0]);
+  let sql = await getCoins2Connection();
   // console.log("created a new pg instance");
   await queryPostgresWithRetry(
     sql`
@@ -553,8 +544,7 @@ export async function batchReadPostgres(
   start: number,
   end: number,
 ): Promise<any[]> {
-  await generateAuth();
-  let sql = postgres(auth[0]);
+  let sql = await getCoins2Connection();
   const chain = key.split(":")[0];
   const address = key.substring(key.split(":")[0].length + 1);
   let data = await queryPostgresWithRetry(

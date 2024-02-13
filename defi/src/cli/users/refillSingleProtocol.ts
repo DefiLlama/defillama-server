@@ -1,13 +1,12 @@
 import { addressList } from "../../../dimension-adapters/users/list";
+import { getAccountsDBConnection } from "../../getDBConnection";
 import { storeChainGas } from "./queries/gas";
 import { storeAllNewUsers } from "./queries/newUsers";
 import { storeChainTxs } from "./queries/txs";
 import { storeAllUsers, storeChainUsers } from "./queries/users";
-import postgres from "postgres";
-
-const sql = postgres(process.env.ACCOUNTS_DB!);
 
 async function main() {
+    const sql = getAccountsDBConnection()
     const protocolName = process.argv[2].toLowerCase()
     const protocol = addressList.find(addresses => addresses.name.toLowerCase() === protocolName) as any
     if(protocol === undefined){

@@ -6502,7 +6502,7 @@ const data3: Protocol[] = [
       arbitrum: ["Chainlink"],
       zksync_era: ["Chainlink"],
       linea: ["Chainlink"],
-      polygon_zkevm: ["API3"],
+      polygon_zkevm: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5829
       optimism: ["Chainlink"],
       mantle: ["API3"],
     },

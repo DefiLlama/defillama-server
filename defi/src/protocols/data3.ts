@@ -9111,7 +9111,7 @@ const data3: Protocol[] = [
     description:
       "The Fastest Telegram Uniswap Sniper, Swap and snipe at lightning-speed with our free-to-use app",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/teamunibot.png`,
+    logo: `${baseIconsUrl}/unibot.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "unibot",

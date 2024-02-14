@@ -2,7 +2,7 @@ import { CoinRead } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
-import { getCoins2Connection} from './getDBConnection'
+import { getCoins2Connection } from "./getDBConnection";
 import { sendMessage } from "../defi/src/utils/discord";
 import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 import fetch from "node-fetch";
@@ -207,7 +207,7 @@ async function queryPostgres(
 
   let sql;
   if (batchPostgresReads) {
-    sql = await getCoins2Connection()
+    sql = await getCoins2Connection();
     data = await queryPostgresWithRetry(
       sql`
     select ${sql(pgColumns)} from splitkey where 
@@ -221,14 +221,14 @@ async function queryPostgres(
   } else {
     await Promise.all(
       splitKeys.map(async (key) => {
-        sql = await getCoins2Connection()
+        sql = await getCoins2Connection();
         const read = await queryPostgresWithRetry(
           sql`
         select ${sql(pgColumns)} from splitkey where 
         key = ${key.key}
         and chain = ${key.chain}
-        and timestamp < ${upper}
-        and timestamp > ${lower}
+        and timestamp < ${Number(key.timestamp) + Number(margin)}
+        and timestamp > ${Number(key.timestamp) - Number(margin)}
       `,
           sql,
         );
@@ -245,7 +245,7 @@ async function queryPostgres(
     const key = d.key.toString();
     const chain = d.chain.toString();
     const confidence = d.confidence / 30000;
-    if (!(key in dict)) {
+    if (!`${chain}:${key}`) {
       dict[`${chain}:${key}`] = {
         ...d,
         confidence,
@@ -335,9 +335,9 @@ export async function readCoins2(
 }
 export async function readFirstTimestamp(pk: string) {
   if (!auth) await generateAuth();
-  const sql = await getCoins2Connection()
-  const chain = pk.split(":")[0];
-  const key = pk.substring(pk.split(":")[0].length + 1);
+  const sql = await getCoins2Connection();
+  const chain = Buffer.from(pk.split(":")[0], "utf8");
+  const key = Buffer.from(pk.substring(pk.split(":")[0].length + 1), "utf8");
   const read = await sql`
     select MIN (timestamp) from splitkey where 
     chain = ${chain} and key = ${key}

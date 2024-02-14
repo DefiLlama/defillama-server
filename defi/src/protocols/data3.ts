@@ -31839,6 +31839,27 @@ const data3: Protocol[] = [
     audit_links: ["https://blog.openzeppelin.com/retro-thena-audit"],
     listedAt: 1707924950
   },
+  {
+    id: "4131",
+    name: "Harbor Market",
+    address: "bsc:0x42c95788f791a2be3584446854c8d9bb01be88a9",
+    symbol: "HBR",
+    url: "https://www.harbor.market",
+    description: "Decentralized lending protocol on BNBChain",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/harbor-market.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "harbor-2",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    oracles: [], 
+    forkedFrom: ["AAVE V2"],
+    module: "harbor/index.js",
+    twitter: "0xHarborMarket",
+    listedAt: 1707950813
+  },
 ]
 
 export default data3

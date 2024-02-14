@@ -31854,11 +31854,37 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Binance"],
-    oracles: [], 
+    oracles: ["Chainlink"],  //https://bscscan.com/address/0xc2a0e71ddeef10d402017e027782beec250237af#code
     forkedFrom: ["AAVE V2"],
     module: "harbor/index.js",
     twitter: "0xHarborMarket",
     listedAt: 1707950813
+  },
+  {
+    id: "4132",
+    name: "Sturdy V2",
+    address: null,
+    symbol: "-",
+    url: "https://v2.sturdy.finance/",
+    description: "Sturdy enables anyone to create a liquid money market for any token. Sturdy uses a novel two-tier architecture to isolate risk between assets while avoiding liquidity fragmentation. The base layer consists of risk-isolated pools; aggregation built on top enables lenders to select which collateral assets can be used as collateral for their deposits.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sturdy-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: ["AAVE V2"],
+    module: "sturdy-v2/index.js",
+    twitter: "0xHarborMarket",
+    audit_links: [ 
+                   "https://github.com/Zellic/publications/blob/master/Sturdy%20-%20Zellic%20Audit%20Report.pdf",
+                   "https://chainsecurity.com/security-audit/sturdy-aggregator-smart-contracts/"
+                 ],
+    parentProtocol: "parent#sturdy",
+    listedAt: 1707952500
   },
 ]
 

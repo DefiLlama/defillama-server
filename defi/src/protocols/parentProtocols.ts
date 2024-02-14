@@ -3680,6 +3680,19 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "beethovenx.js",
     github: ["beethovenxfi"]
   },
+  {
+    id: "parent#sturdy",
+    name: "Sturdy",
+    url: "https://sturdy.finance/",
+    description: "Sturdy is a first of its kind DeFi protocol for interest-free borrowing and high yield lending. Rather than charging borrowers interest, Sturdy stakes their collateral and passes the yield to lenders. This model changes the relationship between borrowers and lenders to make Sturdy the first positive-sum lending protocol.",
+    logo: `${baseIconsUrl}/sturdy.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SturdyFinance",
+    governanceID: ["snapshot:sturdyfi.eth"],
+    github: ["sturdyfi"]
+  },
 ];
 
 export default parentProtocols;

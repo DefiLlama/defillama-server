@@ -629,7 +629,13 @@ export default {
     },
     "demex-perp": {
         "enabled": true,
-        "id": "2001"
+        "id": "2001",
+        protocolsData: {
+            "demex-perp": {
+                "id": "2001",
+                "enabled": true,
+            }
+        }
     },
     "kinetix-derivatives-v2": {
         parentId: "Kinetix",

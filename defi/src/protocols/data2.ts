@@ -4478,13 +4478,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1577",
-    name: "Sturdy",
+    name: "Sturdy V1",
     address: null,
     symbol: "-",
     url: "https://app.sturdy.finance",
     description: "Sturdy is a first of its kind DeFi protocol for interest-free borrowing and high yield lending. Rather than charging borrowers interest, Sturdy stakes their collateral and passes the yield to lenders. This model changes the relationship between borrowers and lenders to make Sturdy the first positive-sum lending protocol.",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/sturdy.png`,
+    logo: `${baseIconsUrl}/sturdy-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -4496,8 +4496,8 @@ const data2: Protocol[] = [
     module: "sturdy/index.js",
     twitter: "SturdyFinance",
     audit_links: ["https://www.certik.com/projects/sturdy"],
+    parentProtocol: "parent#sturdy",
     listedAt: 1648061916,
-    governanceID: ["snapshot:sturdyfi.eth"]
   },
   {
     id: "1578",

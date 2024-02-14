@@ -1,3 +1,5 @@
+import '../../api2/utils/failOnError'
+
 import { ADAPTER_TYPES } from "./triggerStoreAdaptorData";
 import { sendDiscordAlert } from "../utils/notify";
 import loadAdaptorsData from "../data"

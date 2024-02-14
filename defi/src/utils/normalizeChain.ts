@@ -2533,6 +2533,7 @@ export const chainCoingeckoIds = {
     cmcId: "2081",
     categories: ["EVM"],
     github: ["ambrosus"],
+    governanceID: ["snapshot:airdaofoundation.eth"],
     chainId: 16718
   },
   "dYdX": {

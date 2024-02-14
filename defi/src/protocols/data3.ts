@@ -14533,7 +14533,7 @@ const data3: Protocol[] = [
     category: "Payments",
     chains: ["Elrond"],
     module: "pulsar-money/index.js",
-    twitter: "pulsarmoney",
+    twitter: "PulsarMoneyApp",
     forkedFrom: [],
     oracles: [],
     listedAt: 1691414977

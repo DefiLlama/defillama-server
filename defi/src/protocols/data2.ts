@@ -19627,7 +19627,7 @@ const data2: Protocol[] = [
     name: "Llamalend",
     address: null,
     symbol: "-",
-    url: "https://llamalend.com/",
+    url: "https://llamalendnft.com/",
     description:
       "Deposit NFTs and borrow ETH for small illiquid NFT collections that can't get into the main NFT lending markets",
     chain: "Ethereum",

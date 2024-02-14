@@ -125,7 +125,7 @@ export const chainCoingeckoIds = {
     cmcId: "4847",
     github: ['stacks-network'],
     twitter: "Stacks",
-    category: ["Bitcoin Sidechains"],
+    categories: ["Bitcoin Sidechains"],
     url: "https://www.stacks.co/"
   },
   "PolyNetwork": {

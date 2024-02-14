@@ -1826,5 +1826,15 @@ export default {
     "pingu": {
         "enabled": true,
         "id": "4102"
+    },
+    "supswap-v2": {
+        parentId: "SupSwap",
+        "enabled": true,
+        "id": "4117"
+    },
+    "supswap-v3": {
+        parentId: "SupSwap",
+        "enabled": true,
+        "id": "4118"
     }
 } as AdaptorsConfig

@@ -2422,5 +2422,15 @@ export default {
         parentId: "HiveSwap",
         "enabled": true,
         "id": "4113"
+    },
+    "supswap-v2": {
+        parentId: "SupSwap",
+        "enabled": true,
+        "id": "4117"
+    },
+    "supswap-v3": {
+        parentId: "SupSwap",
+        "enabled": true,
+        "id": "4118"
     }
 } as AdaptorsConfig

@@ -1184,7 +1184,13 @@ export default {
     },
     "demex": {
         "enabled": true,
-        "id": "2001"
+        "id": "2001",
+        "protocolsData": {
+            "demex": {
+                "id": "2001",
+                enabled: true,
+            }
+        }
     },
     "syrup-finance": {
         disabled: true,

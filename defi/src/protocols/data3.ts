@@ -31752,6 +31752,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#beethoven-x",
     listedAt: 1707837410
   },
+  {
+    id: "4127",
+    name: "Restake Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.restakefinance.com/",
+    description: "Restake Finance DAO innovates on EigenLayer with a platform that makes it easy to restake liquid staking tokens and maximise on-chain rewards through $rTokens",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/restake-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "restake-finance/index.js",
+    twitter: "restakefi",
+    audit_links: ["https://github.com/Restake-Finance/Audits"],
+    listedAt: 1707878293
+  },
 ]
 
 export default data3

@@ -31776,7 +31776,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4128",
-    name: "Econia",
+    name: "Econia", 
     address: null,
     symbol: "-",
     url: "https://www.econialabs.com",
@@ -31791,7 +31791,7 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     oracles: [], 
     forkedFrom: [],
-    module: "dummy.js",
+    module: "dummy.js", //check tvl adapter
     twitter: "EconiaLabs",
   },
   {

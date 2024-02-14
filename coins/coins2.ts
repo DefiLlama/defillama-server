@@ -374,7 +374,7 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
   writesToRedis.map((c: Coin) => {
     if (
       (c.symbol && (zeroDecimalAdapters.includes(c.adapter) || c.decimals)) ||
-      c.key == "tezos:tezos"
+      c.key == "tezos:tezos" || c.key?.startsWith("bitcoin:")
     )
       filtered.push(c);
   });

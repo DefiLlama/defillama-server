@@ -20,7 +20,13 @@ export const handler = async () => {
   }
 };
 
-handler().catch(console.error).then(() => process.exit(0))
+(async () => {
+  try {
+    await handler();
+  } catch (e) {
+    console.error("Error in notifyAdapterStatus", e)
+  }
+})();
 
 const DISCORD_USER_0xgnek_ID = '<@!736594617918554182>'
 

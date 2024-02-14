@@ -45,6 +45,7 @@ export const getPercentChange = (valueNow: string, value24HoursAgo: string) => {
 
 export const getFormattedChains = async (category: string) => {
   const res: IResponse = await fetch("https://api.llama.fi/lite/protocols2").then((res) => res.json());
+  category = decodeURIComponent(category)
 
   // get all chains by parent and not include them in categories below as we don't want to show these links, but user can access with url
   const chainsByParent: string[] = [];

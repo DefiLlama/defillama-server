@@ -31774,6 +31774,26 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Restake-Finance/Audits"],
     listedAt: 1707878293
   },
+  {
+    id: "4128",
+    name: "Econia",
+    address: null,
+    symbol: "-",
+    url: "https://www.econialabs.com",
+    description: "Building Econia: a hyper-parallelized on-chain order book",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/econia.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aptos"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "EconiaLabs",
+  },
 ]
 
 export default data3

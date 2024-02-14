@@ -194,8 +194,8 @@ async function queryPostgres(
   batchPostgresReads: boolean,
 ): Promise<CoinDict> {
   if (values.length == 0) return {};
-  const upper: number = target + margin;
-  const lower: number = target - margin;
+  const upper: number = Number(target) + Number(margin);
+  const lower: number = Number(target) - Number(margin);
 
   let data: Coin[] = [];
 
@@ -245,7 +245,7 @@ async function queryPostgres(
     const key = d.key.toString();
     const chain = d.chain.toString();
     const confidence = d.confidence / 30000;
-    if (!`${chain}:${key}`) {
+    if (!(`${chain}:${key}` in dict)) {
       dict[`${chain}:${key}`] = {
         ...d,
         confidence,

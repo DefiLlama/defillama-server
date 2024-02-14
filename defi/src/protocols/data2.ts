@@ -18935,7 +18935,6 @@ const data2: Protocol[] = [
     listedAt: 1666641682
   },
   */
-/*
   {
     id: "2223",
     name: "Meteora vaults",
@@ -18964,7 +18963,6 @@ const data2: Protocol[] = [
     listedAt: 1666698713
 
   },
-*/
   {
     id: "2224",
     name: "Aptoswap",

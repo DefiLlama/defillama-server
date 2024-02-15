@@ -68,7 +68,7 @@ export async function getOverviewHandler(req: HyperExpress.Request, res: HyperEx
     console.timeEnd('getOverviewProcess: ' + key)
   }
 
-  return successResponse(res, await reqCache[key], 6 * 60);
+  return successResponse(res, await reqCache[key], 2 * 60);
 }
 
 
@@ -85,7 +85,7 @@ export async function getDimensionProtocolHandler(req: HyperExpress.Request, res
     console.timeEnd('getProtocolDataHandler: ' + dataKey)
   }
   const data = await reqCache[dataKey]
-  if (data) return successResponse(res, data, 6 * 60);
+  if (data) return successResponse(res, data, 2 * 60);
 
   return errorResponse(res, `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`)
 }

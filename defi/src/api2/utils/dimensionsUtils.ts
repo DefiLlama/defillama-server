@@ -44,10 +44,19 @@ export async function getAdaptorRecord2({ adapter, type, mode = 'ALL', adaptorTy
   return cache.feesAdapterCache[fileKey][cacheKey]
 }
 
+const reqCache: any = {}
+
 export async function getOverviewHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
   const eventParameters = getEventParameters(req)
-  const data = await getOverviewProcess(eventParameters)
-  return successResponse(res, data, 60);
+  const key = JSON.stringify(eventParameters)
+  if (!reqCache[key]) {
+    console.time('getOverviewProcess: ' + key)
+    reqCache[key] = getOverviewProcess(eventParameters)
+    await reqCache[key]
+    console.timeEnd('getOverviewProcess: ' + key)
+  }
+
+  return successResponse(res, await reqCache[key], 60);
 }
 
 
@@ -55,7 +64,14 @@ export async function getDimensionProtocolHandler(req: HyperExpress.Request, res
   const protocolName = req.path_parameters.name?.toLowerCase()
   const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
   const rawDataType = req.query_parameters?.dataType
-  const data = await getProtocolDataHandler(protocolName, adaptorType, rawDataType, { isApi2RestServer: true })
+  const dataKey = `${protocolName}-${adaptorType}-${rawDataType}`
+  if (!reqCache[dataKey]) {
+    console.time('getProtocolDataHandler: ' + dataKey)
+    reqCache[dataKey] = getProtocolDataHandler(protocolName, adaptorType, rawDataType, { isApi2RestServer: true })
+    await reqCache[dataKey]
+    console.timeEnd('getProtocolDataHandler: ' + dataKey)
+  }
+  const data = await reqCache[dataKey]
   if (data) return successResponse(res, data, 6 * 60);
 
   return errorResponse(res, `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`)

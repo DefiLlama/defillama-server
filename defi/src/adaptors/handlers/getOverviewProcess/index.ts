@@ -230,8 +230,6 @@ export async function getOverviewProcess({
     })
 
     const okProtocols = results.map(fd => fd.status === "fulfilled" && fd.value.records !== null ? fd.value : undefined).filter(d => d !== undefined) as ProtocolAdaptorSummary[]
-    console.info("Fullfiled results:", okProtocols.length)
-    console.info("Creating charts...")
     let totalDataChartResponse: IGetOverviewResponseBody['totalDataChart'] = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(okProtocols)
     let totalDataChartBreakdownResponse: IGetOverviewResponseBody['totalDataChartBreakdown'] = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
 
@@ -250,12 +248,9 @@ export async function getOverviewProcess({
             totalDataChartBreakdownResponse.length - [...totalDataChartBreakdownResponse].reverse().findIndex(it => sumBreakdownItem(it[1]) !== 0)
         )
     }
-    console.info("Charts OK")
-    console.info("Calculating stats...")
     const extraTypes = (getExtraTypes(adaptorType) as string[]).map(type => AdaptorRecordTypeMapReverse[type]).filter(notUndefined) as (keyof ExtraTypes)[]
     const baseRecord = totalDataChartResponse[totalDataChartResponse.length - 1]
     const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes), undefined, baseRecord ? +baseRecord[0] : undefined, extraTypes)
-    console.info("Stats OK")
 
 
     if (!isApi2RestServer)

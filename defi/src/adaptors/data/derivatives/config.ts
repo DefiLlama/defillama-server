@@ -627,7 +627,7 @@ export default {
             },
         }
     },
-    "demex-perp": {
+    "demex": {
         "enabled": true,
         "id": "2001",
         protocolsData: {

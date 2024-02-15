@@ -31886,6 +31886,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#sturdy",
     listedAt: 1707952500
   },
+  {
+    id: "4133",
+    name: "Ethena",
+    address: null,
+    symbol: "-",
+    url: "https://www.ethena.fi/",
+    description: "Ethena is a synthetic dollar protocol built on Ethereum",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ethena.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    oracles: ["Pyth"], // https://ethena-labs.gitbook.io/ethena-labs/solution-design/hedging-system/managing-risk-from-dependencies
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "ethena_labs",
+    audit_links: ["https://ethena-labs.gitbook.io/ethena-labs/resources/audits#quantstamp-audit-on-v2-of-contracts"],
+    listedAt: 1708016301
+  },
 ]
 
 export default data3

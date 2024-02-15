@@ -2446,5 +2446,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "Omnidrome": {
+        "enabled": true,
+        "id": "4119"
     }
 } as AdaptorsConfig

@@ -1840,5 +1840,9 @@ export default {
     "vaultka": {
         "enabled": true,
         "id": "2531"
+    },
+    "Omnidrome": {
+        "enabled": true,
+        "id": "4119"
     }
 } as AdaptorsConfig

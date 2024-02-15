@@ -31932,6 +31932,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#ajira-pay",
     listedAt: 1683552941
   },
+  {
+    id: "4135",
+    name: "Iagon",
+    address: "cardano:5d16cc1a177b5d9ba9cfa9793b07e60f1fb70fea1f8aef064415d114494147",
+    symbol: "IAG",
+    url: "https://iagon.com",
+    description:
+      "Iagon is an AI-driven shared storage and compute economy, bridging decentralization with compliance",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/iagon.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "iagon",
+    cmcId: "11078",
+    category: "Services",
+    chains: ["Cardano"],
+    module: "iagon/index.js",
+    twitter: "IagonOfficial",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    github: ["Iagonorg"],
+    listedAt: 1708035448
+  },
 ]
 
 export default data3

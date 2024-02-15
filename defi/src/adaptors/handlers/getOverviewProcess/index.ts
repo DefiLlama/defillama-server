@@ -199,8 +199,9 @@ export async function getOverviewProcess({
     } catch (error) {
         console.error(`Couldn't load adaptors with type ${adaptorType} :${JSON.stringify(error)}`, error)
     }
+    if (chainFilter?.toLowerCase() === 'all') chainFilter = undefined
     const allChains = getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[]))
-    if (chainFilter !== undefined && !allChains.map(c => c.toLowerCase()).includes(chainFilter)) throw new Error(`Chain not supported ${chainFilter}`)
+    // if (chainFilter !== undefined && !allChains.map(c => c.toLowerCase()).includes(chainFilter)) throw new Error(`Chain not supported ${chainFilter}`)
 
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {

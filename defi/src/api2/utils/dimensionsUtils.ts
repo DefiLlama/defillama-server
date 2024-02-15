@@ -46,10 +46,7 @@ export async function getAdaptorRecord2({ adapter, type, mode = 'ALL', adaptorTy
 
 export async function getOverviewHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
   const eventParameters = getEventParameters(req)
-  const key = `overview-${eventParameters.adaptorType}`
-  console.time(key)
   const data = await getOverviewProcess(eventParameters)
-  console.timeEnd(key)
   return successResponse(res, data, 60);
 }
 

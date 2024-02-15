@@ -3067,7 +3067,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     github: ["hubbleprotocol"],
-    twitter: "kamino_finance",
+    twitter: "KaminoFinance",
   },
   {
     id: "parent#chimeradex",

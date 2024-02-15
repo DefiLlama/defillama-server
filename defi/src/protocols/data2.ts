@@ -15305,7 +15305,7 @@ const data2: Protocol[] = [
     oracles: ["Pyth"],
     forkedFrom: [],
     module: "kamino/index.js",
-    twitter: "Kamino_Finance",
+    twitter: "KaminoFinance",
     audit_links: ["https://smartstate.tech/reports/kamino-finance-report-27082022.html"],
     listedAt: 1662391548,
     parentProtocol: "parent#kamino-finance"

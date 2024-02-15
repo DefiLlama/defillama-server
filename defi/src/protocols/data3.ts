@@ -23889,7 +23889,7 @@ const data3: Protocol[] = [
     oracles: ["Scope", "Pyth", "Switchboard"],
     forkedFrom: [],
     module: "kamino-lending/index.js",
-    twitter: "kamino_finance",
+    twitter: "KaminoFinance",
     audit_links: ["https://github.com/hubbleprotocol/kamino-audits"],
     listedAt: 1699615528,
     parentProtocol: "parent#kamino-finance"

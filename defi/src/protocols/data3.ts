@@ -5446,7 +5446,7 @@ const data3: Protocol[] = [
   },
   {
     id: "2944",
-    name: "Ajira Pay Finance",
+    name: "Ajira Pay Finance V1",
     address: "arbitrum:0x9DBC0Ad09184226313FbDe094E7c3DD75c94f997",
     symbol: "AJP",
     url: "https://ajirapay.finance",
@@ -5466,6 +5466,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/Coinsult/solidity/blob/main/Coinsult_AjiraPay_0x9D...f997_Audit.pdf"],
+    parentProtocol: "parent#ajira-pay",
     listedAt: 1683552941
   },
   {
@@ -31907,6 +31908,31 @@ const data3: Protocol[] = [
     twitter: "ethena_labs",
     audit_links: ["https://ethena-labs.gitbook.io/ethena-labs/resources/audits#quantstamp-audit-on-v2-of-contracts"],
     listedAt: 1708016301
+  },
+  {
+    id: "4134",
+    name: "Ajira Pay Finance V2",
+    address: "arbitrum:0x9DBC0Ad09184226313FbDe094E7c3DD75c94f997",
+    symbol: "AJP",
+    url: "https://ajirapay.finance",
+    description:
+      "Ajira Pay Finance is a Multichain Decentralized Web3 protocol for secure and seamless crypto payments.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ajira-pay-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Kava"],
+    module: "ajira-pay-finance-v2/index.js",
+    treasury: "ajira-pay-finance.js",
+    twitter: "ajiraPayDefi",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    parentProtocol: "parent#ajira-pay",
+    listedAt: 1683552941
   },
 ]
 

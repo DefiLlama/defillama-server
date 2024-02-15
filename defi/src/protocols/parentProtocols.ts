@@ -3693,6 +3693,17 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:sturdyfi.eth"],
     github: ["sturdyfi"]
   },
+  {
+    id: "parent#ajira-pay",
+    name: "Ajira Pay Finance",
+    url: "https://ajirapay.finance/",
+    description: "Ajira Pay Finance is a Multichain Decentralized Web3 protocol for secure and seamless crypto payments.",
+    logo: `${baseIconsUrl}/ajira-pay-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ajiraPayDefi",
+  },
 ];
 
 export default parentProtocols;

@@ -14,12 +14,13 @@ setTimeout(() => {
 
 export const handler = async () => {
   try {
-    await Promise.all(ADAPTER_TYPES.map(adaptorType => notifyAdapterStatus({ adaptorType })))
+    console.info("Starting notifyAdapterStatus...")
+    await Promise.all(ADAPTER_TYPES.filter(e => e === AdapterType.FEES).map(adaptorType => notifyAdapterStatus({ adaptorType })))
   } catch (e) {
     console.error("Error in notifyAdapterStatus", e)
   }
 };
-
+console.info("Hello from notifyAdapterStatus");
 (async () => {
   try {
     await handler();
@@ -70,7 +71,7 @@ async function notifyAdapterStatus({ adaptorType }: { adaptorType: AdapterType }
       await sendDiscordAlert(`${notUpdatedProtocols.length} adapters haven't been updated since the last check...`, adaptorType)
     if (hasZeroValues)
       await sendDiscordAlert(`${zeroValueProtocols.length} adapters report 0 value dimension...Will retry later...`, adaptorType)
-    const protocolNames = new Set([...zeroValueProtocols, ...notUpdatedProtocols])
+    const protocolNames: string[] = [...new Set([...zeroValueProtocols, ...notUpdatedProtocols])];
     await handler2({ adaptorType, adaptorNames: new Set(protocolNames), maxConcurrency: 3 })
   }
   else

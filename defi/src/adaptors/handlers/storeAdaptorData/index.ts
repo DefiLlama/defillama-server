@@ -183,7 +183,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
   // Get list of adaptors to run
   const allAdaptors = Object.values(dataMap).filter(p => p)
-  const adaptorsList = allAdaptors.filter(p => !adaptorNames || adaptorNames.has(p.displayName))
+  const adaptorsList = allAdaptors
+    .filter(p => !adaptorNames || adaptorNames.has(p.displayName))
+    .filter(p => p.module.toLowerCase() === 'amphor')
   if (adaptorNames) console.log('refilling for', adaptorsList.map(a => a.module), adaptorsList.length)
 
   // Get closest block to clean day. Only for EVM compatible ones.
@@ -278,6 +280,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         }
 
         for (const [recordType, record] of Object.entries(rawRecords)) {
+          console.info("STORING -> ", module, adaptorType, recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType)
           const promise = storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
           promises.push(promise)
         }

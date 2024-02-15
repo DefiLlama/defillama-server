@@ -1,3 +1,5 @@
+import '../../../api2/utils/failOnError'
+
 import { handler2 } from ".";
 import { ADAPTER_TYPES } from "../triggerStoreAdaptorData";
 

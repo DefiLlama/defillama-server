@@ -2432,5 +2432,9 @@ export default {
         parentId: "SupSwap",
         "enabled": true,
         "id": "4118"
+    },
+    "econia": {
+        "enabled": true,
+        "id": "4128"
     }
 } as AdaptorsConfig

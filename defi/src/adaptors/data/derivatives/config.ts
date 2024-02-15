@@ -659,9 +659,5 @@ export default {
     "sudofinance": {
         "enabled": true,
         "id": "4045"
-    },
-    "econia": {
-        "enabled": true,
-        "id": "4128"
     }
 } as AdaptorsConfig

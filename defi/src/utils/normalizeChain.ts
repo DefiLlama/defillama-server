@@ -2534,6 +2534,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     github: ["ambrosus"],
     governanceID: ["snapshot:airdaofoundation.eth"],
+    url: "https://airdao.io/",
     chainId: 16718
   },
   "dYdX": {

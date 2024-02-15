@@ -15838,7 +15838,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Arbitrum"],
-    oracles: ["Chainlink", "TWAP","Pyth"],
+    oracles: ["Chainlink", "TWAP","Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5856
     forkedFrom: [],
     module: "ragetrade/index.js",
     twitter: "rage_trade",

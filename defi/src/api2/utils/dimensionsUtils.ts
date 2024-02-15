@@ -44,9 +44,21 @@ export async function getAdaptorRecord2({ adapter, type, mode = 'ALL', adaptorTy
   return cache.feesAdapterCache[fileKey][cacheKey]
 }
 
+let lastCacheUpdate = new Date().getTime()
 const reqCache: any = {}
 
+function clearCache() {
+  const now = new Date().getTime()
+  if (now - lastCacheUpdate > 1000 * 60 * 60) { // clear cache if it is older than an hour
+    Object.keys(reqCache).forEach(key => {
+      delete reqCache[key]
+    })
+    lastCacheUpdate = now
+  }
+}
+
 export async function getOverviewHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  clearCache()
   const eventParameters = getEventParameters(req)
   const key = JSON.stringify(eventParameters)
   if (!reqCache[key]) {
@@ -56,11 +68,12 @@ export async function getOverviewHandler(req: HyperExpress.Request, res: HyperEx
     console.timeEnd('getOverviewProcess: ' + key)
   }
 
-  return successResponse(res, await reqCache[key], 60);
+  return successResponse(res, await reqCache[key], 6 * 60);
 }
 
 
 export async function getDimensionProtocolHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+  clearCache()
   const protocolName = req.path_parameters.name?.toLowerCase()
   const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
   const rawDataType = req.query_parameters?.dataType

@@ -31900,7 +31900,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "CDP",
     chains: ["Ethereum"],
     oracles: ["Pyth"], // https://ethena-labs.gitbook.io/ethena-labs/solution-design/hedging-system/managing-risk-from-dependencies
     forkedFrom: [],

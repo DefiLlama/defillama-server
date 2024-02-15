@@ -233,7 +233,8 @@ export default async function getTokenPrices(
     markets.map((m: string, i: number) => {
       if (!m || !PTs[i] || !SYs[i]) return;
       const underlying: CoinData | undefined = underlyingTokenData.find(
-        (u: CoinData) => u.address == yieldTokens[i],
+        (u: CoinData) =>
+          u.address == yieldTokens[i] || u.address == underlyingTokens[i],
       );
       const PT: Write | undefined = writes.find(
         (u: Write) => u.PK.includes(PTs[i]) && u.SK == 0,

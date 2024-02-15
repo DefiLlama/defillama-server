@@ -1836,5 +1836,9 @@ export default {
         parentId: "SupSwap",
         "enabled": true,
         "id": "4118"
+    },
+    "vaultka": {
+        "enabled": true,
+        "id": "2531"
     }
 } as AdaptorsConfig

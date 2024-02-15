@@ -5510,7 +5510,7 @@ const data3: Protocol[] = [
     module: "typus-finance/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: ["Internal"],
+    oracles: ["Internal","Pyth","Supra"], // https://github.com/DefiLlama/defillama-server/pull/5856
     audit_links: ["https://docs.typus.finance/audit"],
     listedAt: 1683552946
   },
@@ -25770,7 +25770,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Options",
     chains: ["Arbitrum", "Linea", "zkSync Era"],
-    oracles: [],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5856
     forkedFrom: [],
     module: "deri-v4/index.js",
     twitter: "DeriProtocol",

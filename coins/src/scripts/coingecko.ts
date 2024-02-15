@@ -290,11 +290,16 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 
           function findRef(): any {
             const dynamoData = previous.Item;
-            const pgData = coinPlatformData[key];
-            if (dynamoData && pgData)
+            let pgData: any = coinPlatformData[key];
+            if (dynamoData && pgData) {
+              ["decimals", "symbol"].map((key) => {
+                if (dynamoData[key] && !(key in pgData))
+                  pgData[key] = dynamoData[key];
+              });
               return dynamoData.confidence > pgData.confidence
                 ? dynamoData
                 : pgData;
+            }
             return dynamoData ?? pgData;
           }
 
@@ -526,3 +531,4 @@ if (process.argv.length < 3) {
   if (process.argv[2] == "true") triggerFetchCoingeckoData(true);
   triggerFetchCoingeckoData(false);
 }
+// ts-node coins/src/scripts/coingecko.ts false

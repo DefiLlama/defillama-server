@@ -1646,5 +1646,17 @@
       "symbol": "xGRAV",
       "to": "coingecko#graviton"
     }
+  },
+  "klaytn": {
+    "0x19aac5f612f524b754ca7e7c41cbfa2e981a4432": {
+      "decimals": "18",
+      "symbol": "WKLAY",
+      "to": "coingecko#klay-token"
+    },
+    "0x15d9f3ab1982b0e5a415451259994ff40369f584": {
+      "decimals": "18",
+      "symbol": "BTCB",
+      "to": "coingecko#bitcoin"
+    }
   }
 }

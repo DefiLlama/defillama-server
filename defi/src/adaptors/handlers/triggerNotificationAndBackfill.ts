@@ -15,7 +15,7 @@ setTimeout(() => {
 export const handler = async () => {
   try {
     console.info("Starting notifyAdapterStatus...")
-    await Promise.all(ADAPTER_TYPES.filter(e => e === AdapterType.FEES).map(adaptorType => notifyAdapterStatus({ adaptorType })))
+    await Promise.all(ADAPTER_TYPES.map((adaptorType: AdapterType) => notifyAdapterStatus({ adaptorType })))
   } catch (e) {
     console.error("Error in notifyAdapterStatus", e)
   }

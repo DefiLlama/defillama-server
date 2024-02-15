@@ -30910,7 +30910,7 @@ const data3: Protocol[] = [
     name: "Vector Reserve",
     address: "0x1bb9b64927e0c5e207c9db4093b3738eef5d8447",
     symbol: "VEC",
-    assetToken: "vETH",
+   // assetToken: "vETH",
     url: "https://vectorreserve.com",
     description: "Vector Reserve is DeFi’s first Liquidity Layer and issuer of the first LPD: vETH. Powered by EigenLayer and Superfluid Staking",
     chain: "Ethereum",

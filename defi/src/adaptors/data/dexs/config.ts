@@ -2436,5 +2436,15 @@ export default {
     "econia": {
         "enabled": true,
         "id": "4128"
+    },
+    "symmetric": {
+        "enabled": true,
+        "id": "528",
+        protocolsData: {
+            "v2": {
+                "id": "528",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

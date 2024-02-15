@@ -4,8 +4,6 @@ import { getApi } from "../utils/sdk";
 
 export async function weETH(timestamp: number) {
   const chain = "ethereum";
-  const writes: Write[] = [];
-
   const api = await getApi(chain, timestamp, true);
   const rate = await api.call({
     abi: "function getEETHByWeETH(uint256) view returns (uint256)",
@@ -20,11 +18,17 @@ export async function weETH(timestamp: number) {
     },
   };
 
-  return getWrites({
+  const writes: Write[] = await getWrites({
     chain,
     timestamp,
-    writes,
     pricesObject,
     projectName: "weETH",
   });
+
+  let arbwrites = writes.map((w: Write) => {
+    w.PK = `asset#arbitrum:0x35751007a407ca6feffe80b3cb397736d2cf4dbe`;
+    return w;
+  });
+  writes.push(...arbwrites);
+  return writes;
 }

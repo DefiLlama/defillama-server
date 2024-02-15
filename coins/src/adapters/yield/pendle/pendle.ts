@@ -7,6 +7,15 @@ import {
   getTokenAndRedirectData,
 } from "../../utils/database";
 
+const customMapping: { [chain: string]: { [key: string]: string } } = {
+  arbitrum: {
+    "0x0000000000000000000000000000000000000000":
+      "0xa1290d69c65a6fe4df752f95823fae25cb99e5a7",
+    "0x35fa164735182de50811e8e2e824cfb9b6118ac2":
+      "0x35751007a407ca6feffe80b3cb397736d2cf4dbe",
+  },
+};
+
 export default async function getTokenPrices(
   timestamp: number,
   chain: string,
@@ -53,14 +62,14 @@ export default async function getTokenPrices(
       calls: SYs,
     })
   ).map((i: any) => i.toLowerCase());
-  const underlyingTokens: string[] = (
+  let underlyingTokens: string[] = (
     await api.multiCall({
       abi: "function assetInfo() view returns (uint8 asseetType, address assetAddress, uint8 assetDecimals)",
       calls: SYs,
     })
   ).map((i: any) => i.assetAddress.toLowerCase());
 
-  const underlyingTokenData: CoinData[] = await getTokenAndRedirectData(
+  let underlyingTokenData: CoinData[] = await getTokenAndRedirectData(
     [...new Set([...yieldTokens, ...underlyingTokens])],
     chain,
     timestamp,
@@ -69,11 +78,23 @@ export default async function getTokenPrices(
   if (chain == "arbitrum")
     underlyingTokenData.push(
       ...(await getTokenAndRedirectData(
-        ["0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84"],
+        [
+          "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+          "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+        ],
         "ethereum",
         timestamp,
       )),
     );
+
+  if (chain in customMapping) {
+    underlyingTokens = underlyingTokens.map((t: string) =>
+      t in customMapping[chain] ? customMapping[chain][t] : t,
+    );
+    underlyingTokenData = underlyingTokenData.filter(
+      (u: CoinData) => !(u.address in customMapping[chain]),
+    );
+  }
 
   async function syWrites() {
     const [decimals, symbols] = await Promise.all([

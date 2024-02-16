@@ -2947,10 +2947,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#marinade-finance",
-    name: "Marinade Finance",
+    name: "Marinade",
     url: "https://marinade.finance/",
     description: "All you ever need in one place for Solana Staking",
-    logo: `${baseIconsUrl}/marinade-finance.jpg`,
+    logo: `${baseIconsUrl}/marinade.jpg`,
     gecko_id: "marinade",
     cmcId: "13803",
     chains: [],

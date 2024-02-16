@@ -32050,6 +32050,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dragonswap",
     listedAt: 1708083058
   },
+  {
+    id: "4140",
+    name: "Clip Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.clip.finance/",
+    description:
+      "Simplifying yield farming and maximizing profitability by leveraging AI-driven liquidity management",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/clip-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Binance", "Linea"],
+    module: "clip-finance/index.js",
+    twitter: "ClipFinance",
+    forkedFrom: [],
+    oracles: ["Chainlink","TWAP"], // https://docs.clip.finance/clip-one-click-yield-solution/strategy-mechanics/deposit
+    github: ["ClipFinance"],
+    audit_links: ["https://docs.clip.finance/about-us/security"],
+    listedAt: 1708101870
+  },
 ]
 
 export default data3

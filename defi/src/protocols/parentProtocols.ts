@@ -3704,6 +3704,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ajiraPayDefi",
   },
+  {
+    id: "parent#dragonswap",
+    name: "DragonSwap",
+    url: "https://dgswap.io",
+    description: "DragonSwap is a decentralized automated liquidity protocol.",
+    logo: `${baseIconsUrl}/dragonswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "dgswap",
+    github: ["dragon-swap-klaytn"],
+  },
 ];
 
 export default parentProtocols;

@@ -32004,6 +32004,52 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Seneca_SenecaDefi_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf"],
     listedAt: 1708081532
   },
+  {
+    id: "4138",
+    name: "DragonSwap V2",
+    address: null,
+    symbol: "-",
+    url: "https://dgswap.io",
+    description:
+      "DragonSwap is a decentralized automated liquidity protocol.",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/dragonswap-v2.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Klaytn"],
+    module: "dragonswap/index.js",
+    twitter: "dgswap",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    parentProtocol: "parent#dragonswap",
+    listedAt: 1708083024
+  },
+  {
+    id: "4139",
+    name: "DragonSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://dgswap.io",
+    description:
+      "DragonSwap is a decentralized automated liquidity protocol.",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/dragonswap-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Klaytn"],
+    module: "dragonswap-v3/index.js",
+    twitter: "dgswap",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    parentProtocol: "parent#dragonswap",
+    listedAt: 1708083058
+  },
 ]
 
 export default data3

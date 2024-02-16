@@ -31600,13 +31600,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4120",
-    name: "EddyFinance",
+    name: "ZetaHub", //previous EddyFinance
     address: null,
     symbol: "-",
     url: "https://www.eddy.finance/",
-    description: "EddyFinance is a dex built on top of ZetaChain",
+    description: "ZetaHub is a dex built on top of ZetaChain",
     chain: "ZetaChain",
-    logo: `${baseIconsUrl}/eddyfinance.png`,
+    logo: `${baseIconsUrl}/zetahub.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

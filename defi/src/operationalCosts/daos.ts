@@ -180,4 +180,15 @@ export default [
         notes: ["Using data from Q3 2023"],
         lastUpdate: "2023-12-19"
     },
+    {
+        protocolId: "parent#marinade-finance", // 
+        sources: null,
+        headcount: 8,
+        annualUsdCost: {
+            salaries: 820000,
+            operationalCosts: 14000,
+        },
+        notes: ["Using data from Q1 2024"],
+        lastUpdate: "2024-2-16"
+    },
 ]

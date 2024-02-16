@@ -10183,7 +10183,7 @@ const data3: Protocol[] = [
     description: "AVNU is a decentralized exchange aggregator protocol on Starknet",
     chain: "Starknet",
     logo: `${baseIconsUrl}/avnu.jpg`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

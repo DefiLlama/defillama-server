@@ -17021,7 +17021,7 @@ const data2: Protocol[] = [
     gecko_id: "sommelier",
     cmcId: "18248",
     category: "Yield Aggregator",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Arbitrum"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/5226
     forkedFrom: [],
     module: "sommelier/index.js",

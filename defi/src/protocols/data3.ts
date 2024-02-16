@@ -31980,6 +31980,30 @@ const data3: Protocol[] = [
     github: ["BitflowFinance"],
     listedAt: 1708044671
   },
+  {
+    id: "4137",
+    name: "Seneca",
+    address: null,
+    symbol: "-",
+    url: "https://senecaprotocol.com",
+    description:
+      "Seneca is an omnichain CDP protocol for yield-bearing assets. Borrow collateralized stablecoin senUSD using supported collateral.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/seneca.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "seneca",
+    cmcId: "28915",
+    category: "CDP",
+    chains: ["Arbitrum", "Ethereum"],
+    module: "seneca/index.js",
+    twitter: "SenecaUSD",
+    forkedFrom: [],
+    oracles: ["DIA", "Chainlink"],
+    github: ["SenecaDefi"],
+    audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Seneca_SenecaDefi_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf"],
+    listedAt: 1708081532
+  },
 ]
 
 export default data3

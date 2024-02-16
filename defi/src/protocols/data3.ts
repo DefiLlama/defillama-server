@@ -31956,6 +31956,30 @@ const data3: Protocol[] = [
     github: ["Iagonorg"],
     listedAt: 1708035448
   },
+  {
+    id: "4136",
+    name: "Bitflow",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitflow.finance/",
+    description:
+      "Bitflow's decentralized exchange (DEX) provides unique advantages to Bitcoiners in DeFi, allowing them to trade and earn with BTC while leveraging the security and network effects of the Bitcoin blockchain",
+    chain: "Stacks",
+    logo: `${baseIconsUrl}/bitflow.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Stacks"],
+    module: "bitflow/index.js",
+    twitter: "Bitflow_Finance",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.bitflow.finance/bitflow-documentation/resources/audits"],
+    github: ["BitflowFinance"],
+    listedAt: 1708044671
+  },
 ]
 
 export default data3

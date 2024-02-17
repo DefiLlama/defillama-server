@@ -17,7 +17,7 @@ export interface NervousSystemConfig
     governance_canister_id : string;
     latest_proposal_id : number;
     decimals : number;
-    convert_proposals : ( p : any, config : NervousSystemConfig ) => Proposal;
+    convert_proposals : (...args: any[]) => Proposal;
     proposal_filter : ( p : any ) => boolean;
     excluded_topics : string[];
 }

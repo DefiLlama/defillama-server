@@ -25,10 +25,18 @@ export async function weETH(timestamp: number) {
     projectName: "weETH",
   });
 
-  let arbwrites = writes.map((w: Write) => {
-    w.PK = `asset#arbitrum:0x35751007a407ca6feffe80b3cb397736d2cf4dbe`;
-    return w;
-  });
-  writes.push(...arbwrites);
+  const length = writes.length;
+  for (let i = 0; i < length; i++) {
+    const arbWrite: any = {
+      PK: `asset#arbitrum:0x35751007a407ca6feffe80b3cb397736d2cf4dbe`,
+    };
+    Object.keys(writes[i]).map((k: any) => {
+      if (k == "PK") return;
+      const write: any = writes[i];
+      arbWrite[k] = write[k];
+    });
+    writes.push(arbWrite);
+  }
+
   return writes;
 }

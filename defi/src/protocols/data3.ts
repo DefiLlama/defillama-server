@@ -11339,6 +11339,7 @@ const data3: Protocol[] = [
     oracles: ["Supra", "Switchboard","Pyth"],
     forkedFrom: [],
     audit_links: ["https://github.com/Bucket-Protocol/Audit"],
+    stablecoins: ["buck"],
     listedAt: 1688644029
   },
   {

@@ -6297,8 +6297,8 @@ const data: Protocol[] = [
   {
     id: "398",
     name: "ApeSwap AMM",
-    address: "bsc:0x603c7f932ed1fc6575303d8fb018fdcbb0f39a95",
-    symbol: "BANANA",
+    address: "bsc:0x34294afabcbaffc616ac6614f6d2e17260b78bed",
+    symbol: "ABOND",
     url: "https://apeswap.finance",
     description:
       "ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",

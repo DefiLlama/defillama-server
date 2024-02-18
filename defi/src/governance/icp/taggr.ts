@@ -3,8 +3,6 @@ import { Proposal, GovCache } from '../types';
 import { updateStats } from '../utils';
 import { setCompound, getCompound } from '../cache';
 
-export const DECIMALS : number = 1e8;
-
 export const TAGGR_URL: string = "https://6qfxa-ryaaa-aaaai-qbhsq-cai.raw.icp0.io/";
 export const TAGGR_ID: string = "6qfxa-ryaaa-aaaai-qbhsq-cai";
 
@@ -41,37 +39,28 @@ export type Payload =
           ["Reward"]: Reward;
       };
 
-const PayloadType = {
-    Noop: "Noop",
-    Release: "Release",
-    Fund: "Fund",
-    ICPTransfer: "ICPTransfer",
-    AddRealmController: "AddRealmController",
-    Reward: "Reward"
-};
-
 function stringifyPayload(payload: Payload) {
     const type = Object.keys(payload)[0];
     const data = Object.values(payload)[0]
     let description = `Payload type: ${type}\n`;
 
     switch (type) {
-        case PayloadType.Noop:
+        case "Noop":
             description += "No operation";
             break;
-        case PayloadType.Release:
+        case "Release":
             description += `Release commit: ${data.commit}, hash: ${data.hash}`;
             break;
-        case PayloadType.Fund:
+        case "Fund":
             description += `Funding recipient: ${data[0]}, amount: ${data[1]}`;
             break;
-        case PayloadType.ICPTransfer:
+        case "ICPTransfer":
             description += `ICP transfer: ${data[1].e8s} e8s to ${data[0].join(", ")}`;
             break;
-        case PayloadType.AddRealmController:
+        case "AddRealmController":
             description += `Adding controller ${data[1]} to realm ${data[0]}`;
             break;
-        case PayloadType.Reward:
+        case "Reward":
             description += `Rewarding ${data.receiver} with ${data.minted} tokens for votes: ${JSON.stringify(data.votes)}`;
             break;
         default:
@@ -99,8 +88,8 @@ export interface TaggrProposalReponse {
  */
 export async function get_metadata ()
 {
-    var { data, status } = await axios.get(
-        TAGGR_URL + "/latest-proposal-id"
+    var { data, _status } = await axios.get(
+        TAGGR_URL + "/api/v1/metadata"
         ,
         {
             headers: {
@@ -109,33 +98,22 @@ export async function get_metadata ()
         },
     );
 
-    let latest_proposal_id = data.latest_proposal_id;
-    var { token_supply, status } = await axios.get(
-        TAGGR_URL + "api/v1/total_supply"
-        ,
-        {
-            headers: {
-                Accept: 'application/json',
-            },
-        },
-    );  
-
     return {
         id: TAGGR_ID,
         type: "Taggr DAO",
-        latestProposalId: latest_proposal_id,
-        proposalsCount: latest_proposal_id,
+        latestProposalId: data.latest_proposal_id,
+        proposalsCount: data.proposal_count,
         symbol: "TAGGR",
         chainName: "Internet Computer",
         name: "Taggr",
         tokens: [ {
             // Taggr ledger canister id
-            id: "6qfxa-ryaaa-aaaai-qbhsq-cai",
+            id: TAGGR_ID,
             type: "ICRC-1 Ledger",
-            name: "Taggr",
-            symbol: "TAGGR",
-            supply: token_supply.toString(),
-            decimals: DECIMALS.toString(),
+            name: data.token_name,
+            symbol: data.symbol,
+            supply: data.token_supply.toString(),
+            decimals: data.decimals.toString(),
         } ]
     }
 }

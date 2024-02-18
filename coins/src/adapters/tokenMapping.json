@@ -1125,6 +1125,16 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#ethereum"
+    },
+    "0xe06fe7298243d8e47092a1e0679351f305e5f856": {
+      "decimals": "18",
+      "symbol": "BUSD.b",
+      "to": "coingecko#binance-usd"
+    },
+    "0x81a1f39f7394c4849e4261aa02aac73865d13774": {
+      "decimals": "18",
+      "symbol": "WBNB.b",
+      "to": "coingecko#binancecoin"
     }
   },
   "linea": {

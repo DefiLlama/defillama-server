@@ -6858,11 +6858,11 @@ const data: Protocol[] = [
   {
     id: "423",
     name: "Deri Protocol",
-    address: "bsc:0xe60eaf5A997DFAe83739e035b005A33AfdCc6df5",
+    address: "ethereum:0xA487bF43cF3b10dffc97A9A744cbB7036965d3b9",
     symbol: "DERI",
-    url: "https://deri.io/#/trade/options",
+    url: "https://deri.io/",
     description:
-      "Deri Protocol is a decentralized protocol for users to exchange risk exposures precisely and capital efficiently. It is the DeFi way to trade derivatives: to hedge, to speculate, to arbitrage, all on chain.",
+      "Deri, your option, your future! Deri Protocol is a decentralized protocol for users to exchange risk exposures precisely and capital efficiently. It is the DeFi way to trade derivatives: to hedge, to speculate, to arbitrage, all on chain",
     chain: "Binance",
     logo: `${baseIconsUrl}/deri-protocol.png`,
     audits: "2",
@@ -6870,11 +6870,11 @@ const data: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Options",
-    chains: ["Binance", "Polygon"],
+    chains: ["Binance", "Polygon", "zkSync Era", "Arbitrum"],
     module: "deri/index.js",
     twitter: "DeriProtocol",
     audit_links: ["https://docs.deri.io/library/code-audits"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5390
     parentProtocol: "parent#deri",
   },
   // {

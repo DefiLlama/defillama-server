@@ -178,7 +178,7 @@ export async function get_proposals_interval ( limit : number, offset : number )
     return data.data;
 };
 
-export async function addTaggrProposal ( overview : any = {} ) : Promise<GovCache[]>
+export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCache[]>
 {
     let metadata = await get_metadata();
     let cache : GovCache = await getCompound( TAGGR_ID );

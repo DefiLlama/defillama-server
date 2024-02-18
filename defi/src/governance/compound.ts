@@ -7,7 +7,7 @@ import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import { getProvider } from '@defillama/sdk/build/general'
 import { NNS_GOV_ID, addICPProposals } from './icp/nns'
 import { SNS_GOV_ID, addSNSProposals } from './icp/sns'
-import { addTaggrProposal } from './icp/taggr'
+import { addTaggrProposals } from './icp/taggr'
 
 const PROPOSAL_STATES = ['Pending', 'Active', 'Canceled', 'Defeated', 'Succeeded', 'Queued', 'Expired', 'Executed']
 
@@ -88,7 +88,7 @@ export async function updateCompounds() {
 
   await addSNSProposals(overview)
   await addICPProposals(overview)
-  await addTaggrProposal(overview)
+  await addTaggrProposals(overview)
   await setCompoundOverview(overview)
 
   async function updateCache(id: string) {

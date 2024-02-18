@@ -32075,6 +32075,56 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.clip.finance/about-us/security"],
     listedAt: 1708101870
   },
+  {
+    id: "4141",
+    name: "B² Network",
+    address: null,
+    symbol: "-",
+    url: "https://www.bsquared.network",
+    description:
+      "Launched by B² Network, B² Buzz is a staking event where a user can deposit major cryptocurrency assets from Bitcoin, Ethereum, BNB Chain, and Polygon. By doing so, a user will receive a certain amount of Parts which can be used to assemble Mining Rigs. Mining Rigs are employed to mine B² native tokens.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/b²-network.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Bitcoin", "Ethereum", "Polygon", "Binance"],
+    module: "bsquared/index.js",
+    twitter: "BSquaredNetwork",
+    forkedFrom: [],
+    oracles: [],
+    github: ["b2network"],
+    listedAt: 1708269183
+  },
+  {
+    id: "4142",
+    name: "Stratum Exchange",
+    address: "mantle:0x5a093a9c4f440c6b105F0AF7f7C4f1fBE45567f9",
+    symbol: "STRAT",
+    url: "https://stratumexchange.com",
+    description:
+      "Stratum Exchange is a native liquidity hub built as a public good to drive TVL and user acquisition to the Mantle ecosystem. Taking inspiration from Solidly and Velodrome, Stratum utilizes the ‘vote escrow’ NFT (veNFT) model, to deliver a protocol on which the projects building on Mantle to derive sustainable liquidity for their tokens and enable users to transact in a cost effective and frictionless manner.",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/stratum-exchange.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "stratum-exchange",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    module: "stratumexchange/index.js",
+    twitter: "stratumexchange",
+    forkedFrom: ["Solidly"],
+    oracles: [],
+    github: ["stratum-exchange"],
+    audit_links: [
+                   "https://stratum-exchange.gitbook.io/stratum-exchange/audit",
+                   "https://github.com/stratum-exchange/v1/tree/main/audit",
+                 ],
+    listedAt: 1708269198
+  },
 ]
 
 export default data3

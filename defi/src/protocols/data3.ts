@@ -32171,6 +32171,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#jediswap",
     listedAt: 1708338490
   },
+  {
+    id: "4145",
+    name: "WEMIX on Kroma",
+    address: null,
+    symbol: "-",
+    assetToken: "stWEMIX.e",
+    url: "https://wemixonkroma.xyz",
+    description:
+      "Liquid Staking Service: Offers liquid staking for WEMIX.e tokens on the Kroma network.",
+    chain: "Kroma",
+    logo: `${baseIconsUrl}/wemix-on-kroma.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Kroma"],
+    module: "wemix-on-kroma/index.js",
+    twitter: "kroma_network",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1708354998
+  },
 ]
 
 export default data3

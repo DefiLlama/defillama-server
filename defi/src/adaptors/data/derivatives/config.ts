@@ -27,7 +27,7 @@ export default {
     },
     "metavault.trade": {
         parentId: "Metavault",
-        "enabled": true,
+        "enabled": false,
         "id": "1801"
     },
     "synfutures": {

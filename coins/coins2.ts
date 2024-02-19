@@ -402,7 +402,8 @@ async function checkMetadataChanges(
     else filtered.push(c);
   });
 
-  await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
+  if (errors.length)
+    await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
   return filtered;
 }
 async function storeChangedAdapter(changedAdapters: {
@@ -599,3 +600,18 @@ export async function batchReadPostgres(
   ); //start  1696287600
   return data;
 }
+// async function main() {
+//   await writeToRedis({
+//     "tron:0x0000000000000000000000000000000000000000": JSON.stringify({
+//       "tron:0x0000000000000000000000000000000000000000": {
+//         decimals: 6,
+//         symbol: "TRX",
+//         price: 0.135772,
+//         timestamp: 1708352731,
+//         confidence: 0.99,
+//       },
+//     }),
+//   });
+//   return;
+// }
+// main(); // ts-node coins/coins2.ts

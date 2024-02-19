@@ -31851,7 +31851,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/harbor-market.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "harbor-2",
+    gecko_id: "harbor-3",
     cmcId: null,
     category: "Lending",
     chains: ["Binance"],

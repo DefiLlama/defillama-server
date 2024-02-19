@@ -32218,6 +32218,28 @@ const data3: Protocol[] = [
     oracles: [],
     github: ["karpatkey"],
   },
+  {
+    id: "4147",
+    name: "0xScans",
+    address: "0x10703ca5e253306e2ababd68e963198be8887c81",
+    symbol: "SCAN",
+    url: "https://www.0xscans.com",
+    description:
+      "Leveraging AI and automated testing, this revolutionary smart contract analysis tool provides a fast and detailed list of errors, along with the immediate generation of detailed audit reports. These reports outline vulnerabilities and offer actionable insights.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/0xscans.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "0xscans",
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "0xscans/index.js",
+    twitter: "0xscans",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1708379959
+  },
 ]
 
 export default data3

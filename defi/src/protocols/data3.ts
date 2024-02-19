@@ -32077,14 +32077,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4141",
-    name: "B² Network",
+    name: "B2 Buzz",
     address: null,
     symbol: "-",
     url: "https://www.bsquared.network",
     description:
       "Launched by B² Network, B² Buzz is a staking event where a user can deposit major cryptocurrency assets from Bitcoin, Ethereum, BNB Chain, and Polygon. By doing so, a user will receive a certain amount of Parts which can be used to assemble Mining Rigs. Mining Rigs are employed to mine B² native tokens.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/b²-network.jpg`,
+    logo: `${baseIconsUrl}/b2-buzz.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

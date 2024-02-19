@@ -1357,7 +1357,13 @@ export default {
     "metavault.trade": {
         parentId: "MetaVault",
         "enabled": true,
-        "id": "1801"
+        "id": "1801",
+        protocolsData: {
+            "metavault.trade": {
+                "id": "1801",
+                enabled: true,
+            }
+        }
     },
     "1inch": {
         enabled: false,

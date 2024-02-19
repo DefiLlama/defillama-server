@@ -27,8 +27,14 @@ export default {
     },
     "metavault.trade": {
         parentId: "Metavault",
-        "enabled": false,
-        "id": "1801"
+        "enabled": true,
+        "id": "1801",
+        "protocolsData": {
+            "metavault-derivative": {
+                "id": "1801",
+                "enabled": true,
+            }
+        }
     },
     "synfutures": {
         parentId: "SynFutures",
@@ -258,7 +264,7 @@ export default {
         }
     },
     "metavault-derivative": {
-        "enabled": true,
+        "enabled": false,
         "id": "1801"
     },
     "unidex": {

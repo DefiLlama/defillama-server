@@ -5,7 +5,21 @@ import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewCha
 import parentProtocols from "./parentProtocols";
 import emissionsAdapters from "../utils/imports/emissions_adapters";
 import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
+import dimensionConfigs from "../adaptors/data/configs";
 const fs = require("fs");
+
+test("Dimensions: no repeated ids", async () => {
+  for (const [metric, map] of Object.entries(dimensionConfigs)) {
+    const ids = new Set();
+    for (const value of Object.values(map)) {
+      if (!value.enabled) continue;
+      const id = value.isChain ? 'chain#'+value.id : value.id
+      if (ids.has(id)) console.log(`Dimensions: Repeated id ${id} in ${metric}`)
+      expect(ids).not.toContain(id);
+      ids.add(id);
+    }
+  }
+})
 
 test("all the dynamic imports work", async () => {
   await Promise.all(protocols.map(importAdapter))

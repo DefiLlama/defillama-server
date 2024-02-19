@@ -41,6 +41,10 @@ const dynamodb = {
     client.scan({ TableName, ...params }).promise(),
   getEnvSecrets: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
   getExtensionTwitterConfig: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'twitter' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
+  putDimensionsData: (
+    item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
+    params?: Partial<AWS.DynamoDB.DocumentClient.PutItemInput>
+  ) => client.put({ TableName: 'fees-volume', ...params, Item: item }).promise(),
 };
 export default dynamodb;
 

@@ -10,6 +10,7 @@ import { processFulfilledPromises, } from "./helpers";
 import loadAdaptorsData from "../../data"
 import { IJSON, ProtocolAdaptor, } from "../../data/types";
 import { PromisePool } from '@supercharge/promise-pool'
+import { AdapterRecord, storeAdapterRecord } from "../../db-utils/AdapterRecord";
 
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
@@ -180,6 +181,11 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   }, {} as IJSON<typeof dataList[number]>)
   // Import some utils
   const { importModule, KEYS_TO_STORE, config } = dataModule
+  const configIdMap: any = {}
+  Object.entries(config).forEach(([key, i]) => {
+  const id = config[key].isChain ? 'chain#' + i.id : i.id
+    configIdMap[id] = i
+  })
 
   // Get list of adaptors to run
   const allAdaptors = Object.values(dataMap).filter(p => p)
@@ -203,7 +209,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     })
   );
 
-  console.info(`*************Storing for the following indexs ${adaptorsList.map(a => a.module)} *************`)
+  // console.info(`*************Storing for the following indexs ${adaptorsList.map(a => a.module)} *************`)
   console.info(`- count: ${adaptorsList.length}`)
 
   const { errors, results } = await PromisePool
@@ -252,38 +258,27 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       } else
         throw new Error("Invalid adapter")
 
-      const FILTRED_KEYS_TO_STORE = KEYS_TO_STORE
-      const promises = []
-      if (adaptor.protocolType === ProtocolType.COLLECTION) {
-        for (const [version, adapter] of adaptersToRun) {
-          const colletionConfig = config[module]?.protocolsData?.[version]
-          if (!colletionConfig) continue
-          id = colletionConfig.id
-          const rawRecords: RawRecordMap = {}
-          const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
-          if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 2) continue
-          const runAdapterRes = await runAdapter(adapter, toTimestamp, chainBlocks, module, version)
-          processFulfilledPromises(runAdapterRes, rawRecords, version, FILTRED_KEYS_TO_STORE)
-          for (const [recordType, record] of Object.entries(rawRecords)) {
-            const promise = storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
-            promises.push(promise)
-          }
-        }
-      } else {
-        const rawRecords: RawRecordMap = {}
-        for (const [version, adapter] of adaptersToRun) {
-          const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
-          if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 3) continue // allow run current time if within 3 hours
-          const runAdapterRes = await runAdapter(adapter, toTimestamp, chainBlocks, module, version)
-          processFulfilledPromises(runAdapterRes, rawRecords, version, FILTRED_KEYS_TO_STORE)
-        }
-
-        for (const [recordType, record] of Object.entries(rawRecords)) {
-          console.info("STORING -> ", module, adaptorType, recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType)
-          const promise = storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
-          promises.push(promise)
-        }
+      const promises: any = []
+      const rawRecords: RawRecordMap = {}
+      const adaptorRecords: {
+        [key: string]: AdaptorRecord
+      } = {}
+      for (const [version, adapter] of adaptersToRun) {
+        const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
+        if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 3) continue // allow run current time if within 3 hours
+        const runAdapterRes = await runAdapter(adapter, toTimestamp, chainBlocks, module, version)
+        processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }
+
+      for (const [recordType, record] of Object.entries(rawRecords)) {
+        // console.info("STORING -> ", module, adaptorType, recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType, protocol.defillamaId, protocol.versionKey)
+        adaptorRecords[recordType] = new AdaptorRecord(recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType)
+        const promise = storeAdaptorRecord(adaptorRecords[recordType], LAMBDA_TIMESTAMP)
+        promises.push(promise)
+      }
+      const adapterRecord = AdapterRecord.formAdaptorRecord2({ adaptorRecords, protocolType: adaptor.protocolType, adapterType: adaptorType, protocol, configIdMap })
+      if (adapterRecord)
+        await storeAdapterRecord(adapterRecord)
       await Promise.all(promises)
     }
     catch (error) {

@@ -28572,6 +28572,7 @@ const data2: Protocol[] = [
     category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "dummy.js",
+    treasury: "cowswap.js",
     forkedFrom: [],
     oracles: [],
     twitter: "CoWSwap",

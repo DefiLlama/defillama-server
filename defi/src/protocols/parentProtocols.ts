@@ -3717,6 +3717,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "dgswap",
     github: ["dragon-swap-klaytn"],
   },
+  {
+    id: "parent#jediswap",
+    name: "JediSwap",
+    url: "https://jediswap.xyz",
+    description: "A community-led fully permissionless and composable AMM on Starknet by StarkWareLtd.",
+    logo: `${baseIconsUrl}/jediswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "JediSwap",
+  },
 ];
 
 export default parentProtocols;

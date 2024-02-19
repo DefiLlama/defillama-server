@@ -121,7 +121,7 @@ export const starknet = async (): Promise<Address[]> => {
   const data = await fetch(
     "https://raw.githubusercontent.com/starknet-io/starknet-addresses/master/bridged_tokens/mainnet.json"
   ).then((r) => r.json());
-  addresses.starknet = data.map((t: any) => t.l2_token_address.toLowerCase());
+  addresses.starknet = data.map((t: any) => t.l2_token_address?.toLowerCase()).filter((t: any) => t != null);
   return addresses.starknet;
 };
 export const zksync = async (): Promise<Address[]> => {

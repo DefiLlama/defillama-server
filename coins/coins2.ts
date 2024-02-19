@@ -397,8 +397,8 @@ async function checkMetadataChanges(
     const record = storedRecords[c.key];
     if (record && record.decimals != c.decimals)
       errors += `\n${c.key} is trying to change metadata from ${record.decimals} to ${c.decimals} source: ${source}, skipping!!`;
-    else if (record && record.symbol != c.symbol)
-      errors += `\n${c.key} is trying to change metadata from ${record.symbol} to ${c.symbol} source: ${source}, skipping!!`;
+    // else if (record && record.symbol != c.symbol)
+    //   errors += `\n${c.key} is trying to change metadata from ${record.symbol} to ${c.symbol} source: ${source}, skipping!!`;
     else filtered.push(c);
   });
 
@@ -600,18 +600,3 @@ export async function batchReadPostgres(
   ); //start  1696287600
   return data;
 }
-// async function main() {
-//   await writeToRedis({
-//     "tron:0x0000000000000000000000000000000000000000": JSON.stringify({
-//       "tron:0x0000000000000000000000000000000000000000": {
-//         decimals: 6,
-//         symbol: "TRX",
-//         price: 0.135772,
-//         timestamp: 1708352731,
-//         confidence: 0.99,
-//       },
-//     }),
-//   });
-//   return;
-// }
-// main(); // ts-node coins/coins2.ts

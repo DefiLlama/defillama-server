@@ -32125,6 +32125,52 @@ const data3: Protocol[] = [
                  ],
     listedAt: 1708269198
   },
+  {
+    id: "4143",
+    name: "SOBAX",
+    address: "polygon:0x0709E962221dd8AC9eC5c56f85ef789D3C1b9776",
+    symbol: "SBX",
+    url: "https://sobax.io",
+    description:
+      "Decentralised Perpetual Exchange. Trade BTC, ETH, MATIC and more with up to 100x leverage directly from your wallet at SobaX open-source ecosystem",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/sobax.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Polygon"],
+    module: "sobax-io/index.js",
+    twitter: "SOBAX_DEX",
+    forkedFrom: ["GMX V1"],
+    oracles: [],
+    listedAt: 1708338460
+  },
+  {
+    id: "4144",
+    name: "JediSwap V2",
+    address: null,
+    symbol: "-",
+    url: "https://jediswap.xyz",
+    description:
+      "A community-led fully permissionless and composable AMM on Starknet by StarkWareLtd.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/jediswap-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Starknet"],
+    module: "jediswap-v2/index.js",
+    twitter: "JediSwap",
+    forkedFrom: [],
+    oracles: [],
+    language: "Cairo",
+    parentProtocol: "parent#jediswap",
+    listedAt: 1708338490
+  },
 ]
 
 export default data3

@@ -21684,14 +21684,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2344",
-    name: "JediSwap",
+    name: "JediSwap V1",
     address: null,
     symbol: "-",
     url: "https://jediswap.xyz",
     description:
       "A community-led fully permissionless and composable AMM on Starknet by StarkWareLtd",
     chain: "Starknet",
-    logo: `${baseIconsUrl}/jediswap.jpg`,
+    logo: `${baseIconsUrl}/jediswap-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -21703,6 +21703,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     language: "Cairo",
+    parentProtocol: "parent#jediswap",
     listedAt: 1670534876
   },
   {

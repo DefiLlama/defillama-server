@@ -32194,6 +32194,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1708354998
   },
+  {
+    id: "4146",
+    name: "karpatkey",
+    address: null,
+    symbol: "-",
+    url: "https://www.karpatkey.com/",
+    description:
+      "We help decentralised organisations to preserve capital through state-of-the-art risk management and trust-minimised DeFi treasury execution.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/karpatkey.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    treasury: "karpatkey.js",
+    twitter: "karpatkey",
+    forkedFrom: [],
+    oracles: [],
+    github: ["karpatkey"],
+  },
 ]
 
 export default data3

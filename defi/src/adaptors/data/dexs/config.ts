@@ -1301,6 +1301,7 @@ export default {
         "id": "490"
     },
     "jediswap": {
+        parentId: "JediSwap",
         "enabled": false,
         "id": "2344"
     },
@@ -2456,5 +2457,10 @@ export default {
     "Omnidrome": {
         "enabled": true,
         "id": "4119"
+    },
+    "jediswap-v2": {
+        parentId: "JediSwap",
+        "enabled": true,
+        "id": "4144"
     }
 } as AdaptorsConfig

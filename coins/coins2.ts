@@ -357,7 +357,10 @@ function cleanTimestamps(values: Coin[], margin: number = 15 * 60): Coin[] {
 
   return values.map((c: Coin) => ({ ...c, timestamp: maxTimestamp }));
 }
-function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
+async function findRedisWrites(
+  values: Coin[],
+  storedRecords: CoinDict,
+): Promise<Coin[]> {
   const writesToRedis: Coin[] = [];
   values.map((c: Coin) => {
     const record = storedRecords[c.key];
@@ -374,11 +377,30 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
   writesToRedis.map((c: Coin) => {
     if (
       (c.symbol && (zeroDecimalAdapters.includes(c.adapter) || c.decimals)) ||
-      c.key == "tezos:tezos" || c.key?.startsWith("bitcoin:")
+      c.key == "tezos:tezos" ||
+      c.key?.startsWith("bitcoin:")
     )
       filtered.push(c);
   });
 
+  return await checkMetadataChanges(filtered, storedRecords);
+}
+async function checkMetadataChanges(
+  writes: Coin[],
+  storedRecords: CoinDict,
+): Promise<Coin[]> {
+  const filtered: Coin[] = [];
+  let errors: string = ``;
+  writes.map((c: Coin) => {
+    const record = storedRecords[c.key];
+    if (record && record.decimals != c.decimals)
+      errors += `\n${c.key} is trying to change metadata from ${record.decimals} to ${c.decimals}, skipping!!`;
+    else if (record && record.symbol != c.symbol)
+      errors += `\n${c.key} is trying to change metadata from ${record.symbol} to ${c.symbol}, skipping!!`;
+    else filtered.push(c);
+  });
+
+  await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
   return filtered;
 }
 async function storeChangedAdapter(changedAdapters: {
@@ -430,7 +452,7 @@ async function cleanConfidences(
     if (c.adapter && c.adapter != storedRecord.adapter) {
       const change =
         (100 * Math.abs(c.price - storedRecord.price)) / storedRecord.price;
-      if (change < 5) return;
+      if (change < 5 || ["minswap", "sundaeswap"].includes(c.adapter)) return;
       changedAdapters[c.key] = {
         to: c.adapter,
         from: storedRecord.adapter,
@@ -534,7 +556,7 @@ export async function writeCoins2(
     : values;
   const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
   values = await cleanConfidences(values, storedRecords);
-  const writesToRedis = findRedisWrites(values, storedRecords);
+  const writesToRedis = await findRedisWrites(values, storedRecords);
   const strings: { [key: string]: string } = {};
   writesToRedis.map((v: Coin) => {
     strings[v.key] = JSON.stringify(v);

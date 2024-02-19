@@ -360,6 +360,7 @@ function cleanTimestamps(values: Coin[], margin: number = 15 * 60): Coin[] {
 async function findRedisWrites(
   values: Coin[],
   storedRecords: CoinDict,
+  source?: string,
 ): Promise<Coin[]> {
   const writesToRedis: Coin[] = [];
   values.map((c: Coin) => {
@@ -383,20 +384,21 @@ async function findRedisWrites(
       filtered.push(c);
   });
 
-  return await checkMetadataChanges(filtered, storedRecords);
+  return await checkMetadataChanges(filtered, storedRecords, source);
 }
 async function checkMetadataChanges(
   writes: Coin[],
   storedRecords: CoinDict,
+  source: string = "UNKNOWN",
 ): Promise<Coin[]> {
   const filtered: Coin[] = [];
   let errors: string = ``;
   writes.map((c: Coin) => {
     const record = storedRecords[c.key];
     if (record && record.decimals != c.decimals)
-      errors += `\n${c.key} is trying to change metadata from ${record.decimals} to ${c.decimals}, skipping!!`;
+      errors += `\n${c.key} is trying to change metadata from ${record.decimals} to ${c.decimals} source: ${source}, skipping!!`;
     else if (record && record.symbol != c.symbol)
-      errors += `\n${c.key} is trying to change metadata from ${record.symbol} to ${c.symbol}, skipping!!`;
+      errors += `\n${c.key} is trying to change metadata from ${record.symbol} to ${c.symbol} source: ${source}, skipping!!`;
     else filtered.push(c);
   });
 
@@ -556,7 +558,7 @@ export async function writeCoins2(
     : values;
   const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
   values = await cleanConfidences(values, storedRecords);
-  const writesToRedis = await findRedisWrites(values, storedRecords);
+  const writesToRedis = await findRedisWrites(values, storedRecords, source);
   const strings: { [key: string]: string } = {};
   writesToRedis.map((v: Coin) => {
     strings[v.key] = JSON.stringify(v);

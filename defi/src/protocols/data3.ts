@@ -31906,6 +31906,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "ethena_labs",
+    github: ["ethena-labs"],
     audit_links: ["https://ethena-labs.gitbook.io/ethena-labs/resources/audits#quantstamp-audit-on-v2-of-contracts"],
     listedAt: 1708016301
   },

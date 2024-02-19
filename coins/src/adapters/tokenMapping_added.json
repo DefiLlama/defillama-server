@@ -3212,11 +3212,6 @@
     }
   },
   "tron": {
-    "0x0000000000000000000000000000000000000000": {
-      "decimals": "18",
-      "symbol": "TRX",
-      "to": "coingecko#tron"
-    },
     "TRFe3hT5oYhjSZ6f3ji5FJ7YCfrkWnHRvh": {
       "decimals": "18",
       "symbol": "ETH",
@@ -3605,7 +3600,7 @@
       "decimals": "6",
       "symbol": "NSTK",
       "to": "coingecko#unstake-fi"
-    }        
+    }
   },
   "injective": {
     "inj": {

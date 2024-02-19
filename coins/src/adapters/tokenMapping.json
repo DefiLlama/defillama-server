@@ -862,6 +862,16 @@
     }
   },
   "ibc": {
+    "6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244": {
+      "decimals": "10",
+      "symbol": "DOT",
+      "to": "coingecko#polkadot"
+    },
+    "980E82A9F8E7CA8CD480F4577E73682A6D3855A267D1831485D7EBEF0E7A6C2C": {
+      "decimals": "18",
+      "symbol": "stDYDX",
+      "to": "coingecko#stride-staked-dydx"
+    },
     "71B441E27F1BBB44DD0891BCD370C2794D404D60A4FFE5AECCD9B1E28BC89805": {
       "decimals": "6",
       "symbol": "USDT",

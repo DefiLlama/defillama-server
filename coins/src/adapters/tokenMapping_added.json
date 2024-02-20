@@ -6080,6 +6080,12 @@
       "decimals": "18",
       "symbol": "PREMIO",
       "to": "coingecko#premio"
+    },
+    "0x919C1c267BC06a7039e03fcc2eF738525769109c": {
+      "name": "TetherUSDt",
+      "decimals": "6",
+      "symbol": "USDt",
+      "to": "coingecko#tether"
     }
   },
   "sx": {

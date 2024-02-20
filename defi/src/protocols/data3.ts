@@ -32289,6 +32289,57 @@ const data3: Protocol[] = [
     parentProtocol: "parent#oath-foundation",
     listedAt: 1708396298
   },
+  {
+    id: "4150",
+    name: "GGP Vault",
+    address: null,
+    symbol: "-",
+    url: "https://seafi.app",
+    description:
+      "GGP Vault is a protocol that allows you to earn yield on your idle GGP.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/ggp-vault.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Avalanche"],
+    module: "ggpVault/index.js",
+    twitter: null,
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [
+                   "https://github.com/SeaFi-Labs/GGP-Vault/blob/main/audits/GGP%20Vault%20Audit%20Feb%2019%202024.pdf",
+                   "https://github.com/SeaFi-Labs/GGP-Vault/blob/main/audits/GGP-Vault%20Audit%20Report%20Ethan%20Cemer.pdf"
+                 ],
+    github: ["SeaFi-Labs"],
+    listedAt: 1708427956
+  },
+  {
+    id: "4151",
+    name: "SHPRD",
+    address: null,
+    symbol: "-",
+    url: "https://shprd.finance",
+    description:
+      "Decentralized Asset Management Platform.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/shprd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "shprd/index.js",
+    twitter: null,
+    forkedFrom: [],
+    oracles: ["Chainlink"], //https://docs.shprd.finance/understand-shprd/protocol-overview#vault
+    audit_links: [],
+    github: ["stealth-defi"],
+    listedAt: 1708427989
+  },
 ]
 
 export default data3

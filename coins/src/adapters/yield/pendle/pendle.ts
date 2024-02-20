@@ -49,6 +49,14 @@ export default async function getTokenPrices(
   );
 
   const markets: string[] = logs.map((l: any) => l.market);
+
+  if (chain == "arbitrum")
+    markets.push(
+      ...[
+        "0xe11f9786b06438456b044b3e21712228adcaa0d1",
+        "0x6f02c88650837c8dfe89f66723c4743e9cf833cd",
+      ],
+    );
   const tokens: string[][] = await api.multiCall({
     calls: markets,
     abi: "function readTokens() view returns (address _SY, address _PT, address _YT)",

@@ -1320,7 +1320,13 @@ export default {
     },
     "helix": {
         "enabled": true,
-        "id": "2259"
+        "id": "2259",
+        protocolsData: {
+            "helix": {
+                "id": "2259",
+                enabled: true,
+            }
+        }
     },
     "ashswap": {
         "enabled": true,

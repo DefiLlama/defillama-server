@@ -151,4 +151,8 @@ export default {
     enabled: true,
     id: "4016",
   },
+  "odos": {
+    "enabled": true,
+    "id": "3951"
+  }
 } as AdaptorsConfig;

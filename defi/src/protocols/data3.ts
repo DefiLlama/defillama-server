@@ -32340,6 +32340,53 @@ const data3: Protocol[] = [
     github: ["stealth-defi"],
     listedAt: 1708427989
   },
+  {
+    id: "4152",
+    name: "Polter Finance",
+    address: "fantom:0x5c725631FD299703D0A74C23F89a55c6B9A0C52F",
+    symbol: "POLTER",
+    url: "https://polter.finance",
+    description:
+      "Polter is a decentralized non-custodial lending and borrowing platform on $FTM",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/polter-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Fantom"],
+    module: "polter/index.js",
+    twitter: "polterfinance",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1708444740
+  },
+  {
+    id: "4153",
+    name: "Meow Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://meowprotocol.xyz",
+    description:
+      "Meow is a decentralized lending protocol that focuses on providing lending services for a variety of asset categories.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/meow-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum", "Scroll"],
+    module: "MeowProtocol/index.js",
+    twitter: "0xMeowProtocol",
+    forkedFrom: [],
+    oracles: ["Chainlink"], //:https://github.com/0xMeowProtocol/contract.git
+    audit_links: ["https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/12/VAR-0xMeowProtocol-231127-V2.pdf"],
+    github: ["0xMeowProtocol"],
+    listedAt: 1708444798
+  },
 ]
 
 export default data3

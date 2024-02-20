@@ -32244,8 +32244,8 @@ const data3: Protocol[] = [
   {
     id: "4148",
     name: "Meteora DLMM",
-    address: "solana:MERt85fc5boKw3BW1eYdxonEuJNvXbiMbs6hvheau5K",
-    symbol: "MER",
+    address: null,
+    symbol: "-",
     url: "https://app.meteora.ag/dlmm",
     description:
       "Meteora's DLMM introduces a zero-slippage, bin-based concentrated liquidity AMM on Solana, enhancing LP profitability with dynamic fees and enabling precise liquidity strategies and shapes for deeper market liquidity",

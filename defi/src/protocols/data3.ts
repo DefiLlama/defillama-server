@@ -31792,8 +31792,9 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     oracles: [], 
     forkedFrom: [],
-    module: "dummy.js", //check tvl adapter
+    module: "econia.js", 
     twitter: "EconiaLabs",
+    listedAt: 1708387853
   },
   {
     id: "4129",
@@ -32239,6 +32240,30 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1708379959
+  },
+  {
+    id: "4148",
+    name: "Meteora DLMM",
+    address: "solana:MERt85fc5boKw3BW1eYdxonEuJNvXbiMbs6hvheau5K",
+    symbol: "MER",
+    url: "https://app.meteora.ag/dlmm",
+    description:
+      "Meteora's DLMM introduces a zero-slippage, bin-based concentrated liquidity AMM on Solana, enhancing LP profitability with dynamic fees and enabling precise liquidity strategies and shapes for deeper market liquidity",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/meteora.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Solana"],
+    module: "meteora-dlmm/index.js",
+    twitter: "MeteoraAG",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    parentProtocol: "parent#meteora",
+    listedAt: 1708387360
   },
 ]
 

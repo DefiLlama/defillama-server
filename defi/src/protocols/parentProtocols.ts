@@ -3631,7 +3631,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     github: ["lista-dao"],
     twitter: "lista_dao",
-    stablecoins: ["lisUSD"]
+    stablecoins: ["lista-usd"]
   },
   {
     id: "parent#hiveswap",

@@ -6020,8 +6020,8 @@ const data: Protocol[] = [
   {
     id: "385",
     name: "Meteora pools",
-    address: "solana:MERt85fc5boKw3BW1eYdxonEuJNvXbiMbs6hvheau5K",
-    symbol: "MER",
+    address: null,
+    symbol: "-",
     url: "https://mercurial.finance/",
     description: "Meteora Pools is building the infrastructure for stable and pegged assets for Solana.",
     chain: "Solana",

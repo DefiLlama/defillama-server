@@ -12,11 +12,15 @@ import { getHistoricalValues } from "../utils/shared/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import type { Protocol } from "../protocols/data";
+import entities from "../protocols/entities";
+import treasuries from "../protocols/treasury";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapterDynamic } from "../utils/imports/importAdapter"; 
 import * as sdk from '@defillama/sdk'
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
 import { closeConnection } from "../api2/db";
+import setEnvSecrets from "../utils/shared/setEnvSecrets";
+import PromisePool from "@supercharge/promise-pool";
 
 
 const { humanizeNumber: { humanizeNumber } } = sdk.util
@@ -106,16 +110,26 @@ async function getAndStore(
 }
 
 const main = async () => {
-  sdk.log('DRY RUN: ', IS_DRY_RUN)
-  const protocolToRefill = process.argv[2]
-  sdk.log('Refilling for:', protocolToRefill)
+  await setEnvSecrets()
+  let actions = [protocols, entities, treasuries].flat();
+  entities.forEach((e: any) => (e.isEntity = true));
+  treasuries.forEach((e: any) => (e.isTreasury = true));
+  protocols.forEach((e: any, idx: number) => (e.isRecent = protocols.length - idx < 220));
+  const start = 1706659200 // 00:00 31 Jan 
+  await PromisePool.withConcurrency(1).for(actions).process(a => main2(start, a))
+}
+const main2 = async (start: any, protocol: Protocol) => {
+  // sdk.log('DRY RUN: ', IS_DRY_RUN)
+  // const protocolToRefill = process.argv[2]
+  const adapter = await importAdapterDynamic(protocol);
+  if (!('tron' in adapter)) return 
+  sdk.log('Refilling for:', protocol.name)
   const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
   const batchSize = Number(process.argv[4] ?? 1); // how many days to fill in parallel
   if (process.env.HISTORICAL !== "true") {
     throw new Error(`You must set HISTORICAL="true" in your .env`)
   }
-  const protocol = getProtocol(protocolToRefill);
-  const adapter = await importAdapterDynamic(protocol);
+  // const protocol = getProtocol(protocolToRefill);
   if (adapter.timetravel === false) {
     throw new Error("Adapter doesn't support refilling");
   }
@@ -127,7 +141,7 @@ const main = async () => {
       getHistoricalValues(dailyTokensTvl(protocol.id)),
       getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
     ]); */
-  const start = adapter.start ?? 0;
+  // const start = adapter.start ?? 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
   if (timestamp > now) {

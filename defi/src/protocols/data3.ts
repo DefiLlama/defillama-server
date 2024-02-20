@@ -8001,7 +8001,7 @@ const data3: Protocol[] = [
     module: "tropykus-zkevm/index.js",
     twitter: "tropykus",
     forkedFrom: ["AAVE V2"],
-    oracles: ["API3"],
+    oracles: ["API3"], // https://medium.com/api3/tropykus-to-launch-on-polygon-zkevm-using-api3s-data-feeds-710fdc29b1c8
     parentProtocol: "parent#tropykus-finance",
     listedAt: 1685700448
   },
@@ -32264,6 +32264,30 @@ const data3: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#meteora",
     listedAt: 1708387360
+  },
+  {
+    id: "4149",
+    name: "Aurelius",
+    address: "mantle:-",
+    symbol: "AU",
+    url: "https://www.aurelius.finance/",
+    description:
+      "Aurelius is a combination of a CDP and money market platform (Ethos Reserve and Granary/Aave combined) on Mantle",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/aurelius.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Mantle"],
+    module: "aurelius/index.js",
+    twitter: "AureliusFi",
+    forkedFrom: ["Liquity","AAVE V2"],
+    oracles: ["API3"], // https://docs.aurelius.finance/security#oracles
+    audit_links: [],
+    parentProtocol: "parent#oath-foundation",
+    listedAt: 1708396298
   },
 ]
 

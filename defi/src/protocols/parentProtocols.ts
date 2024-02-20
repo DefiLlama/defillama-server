@@ -3629,9 +3629,9 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    github: ["helio-money"],
+    github: ["lista-dao"],
     twitter: "lista_dao",
-    stablecoins: ["hay"],
+    stablecoins: ["lisUSD"]
   },
   {
     id: "parent#hiveswap",

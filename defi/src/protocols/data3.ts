@@ -14612,7 +14612,7 @@ const data3: Protocol[] = [
     name: "Synclub Staked BNB",
     address: null,
     symbol: "-",
-    assetToken: "SNBNB",
+    assetToken: "slisBNB",
     url: "https://www.synclub.io/",
     description:
       "SnBNB is the yield bearing & liquid staking token for Synclub, which appreciates against BNB in line with BNB’s staking APR.",
@@ -14625,7 +14625,7 @@ const data3: Protocol[] = [
     category: "Liquid Staking",
     chains: ["Binance"],
     module: "synclub-staked-bnb/index.js",
-    twitter: "Helio_Money",
+    twitter: "LISTA_DAO",
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://synclub.gitbook.io/synclub-docs/protocol/security"],
@@ -32283,7 +32283,7 @@ const data3: Protocol[] = [
     chains: ["Mantle"],
     module: "aurelius/index.js",
     twitter: "AureliusFi",
-    forkedFrom: ["Liquity","AAVE V2"],
+    forkedFrom: ["Liquity", "AAVE V2"],
     oracles: ["API3"], // https://docs.aurelius.finance/security#oracles
     audit_links: [],
     parentProtocol: "parent#oath-foundation",

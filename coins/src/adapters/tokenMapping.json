@@ -1489,6 +1489,11 @@
     }
   },
   "starknet": {
+    "0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d": {
+      "decimals": "18",
+      "symbol": "STRK",
+      "to": "coingecko#starknet"
+    },
     "0x049210ffc442172463f3177147c1aeaa36c51d152c1b0630f2364c300d4f48ee": {
       "decimals": "18",
       "symbol": "UNI",

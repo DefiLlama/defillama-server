@@ -14755,9 +14755,10 @@ const data2: Protocol[] = [
     id: "2038",
     name: "Helio Protocol",
     address: "bsc:0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
-    symbol: "HAY",
+    symbol: "lisUSD",
     url: "https://helio.money/",
-    description: "Helio Protocol is an open-source liquidity protocol for borrowing and earning yield on HAY —a new BNB backed over-collateralized destablecoin. The protocol aims to position HAY as the leading decentralized destablecoin protocol in the BNB Chain ecosystem, by leveraging Proof-of- Stake (PoS) rewards, liquid staking and yield-bearing assets. Helio Protocol will operate as a DAO, where the community will govern the protocol’s treasury, revenue pool and future direction.",
+    description:
+      "Helio Protocol is an open-source liquidity protocol for borrowing and earning yield on HAY —a new BNB backed over-collateralized destablecoin. The protocol aims to position HAY as the leading decentralized destablecoin protocol in the BNB Chain ecosystem, by leveraging Proof-of- Stake (PoS) rewards, liquid staking and yield-bearing assets. Helio Protocol will operate as a DAO, where the community will govern the protocol’s treasury, revenue pool and future direction.",
     chain: "Binance",
     logo: `${baseIconsUrl}/helio-protocol.png`,
     audits: "2",
@@ -14769,8 +14770,8 @@ const data2: Protocol[] = [
     oracles: ["Binance Oracle"],
     forkedFrom: ["MakerDAO"],
     module: "helio-money/index.js",
-    twitter: "Helio_Money",
-    audit_links: ["https://github.com/helio-money/helio-smart-contracts/tree/master/audits"],
+    twitter: "LISTA_DAO",
+    audit_links: ["https://github.com/lista-dao/lista-dao-contracts/tree/master/audits"],
     listedAt: 1661888773,
     parentProtocol: "parent#lista-dao"
   },

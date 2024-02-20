@@ -588,9 +588,15 @@ export default {
             },
         }
     },
-    "helix-perp": {
+    "helix": {
         "enabled": true,
-        "id": "2259"
+        "id": "2259",
+        protocolsData: {
+            "helix-perp": {
+                "id": "2259",
+                "enabled": true,
+            }
+        }
     },
     "equation-v2": {
         parentId: "Equation",

@@ -32387,6 +32387,29 @@ const data3: Protocol[] = [
     github: ["0xMeowProtocol"],
     listedAt: 1708444798
   },
+  {
+    id: "4154",
+    name: "Orby Network",
+    address: "cronos:0x6f762331636923DB1cCcDb7256eE21fB04c0A8A0",
+    symbol: "ORB",
+    url: "https://orby.network/borrow/",
+    description:
+      "Cronos Network's first native stablecoin lending protocol",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/orby-network.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Cronos"],
+    module: "orby-network/index.js",
+    twitter: "OrbyNetwork",
+    forkedFrom: ["Liquity"],
+    oracles: ["Internal"], //https://doc.orby.network/additional-info/price-oracle
+    audit_links: ["https://doc.orby.network/overview/security-and-audits"],
+    listedAt: 1708475032
+  },
 ]
 
 export default data3

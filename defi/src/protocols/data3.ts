@@ -32433,6 +32433,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#apeswap",
     listedAt: 1708541231
   },
+  {
+    id: "4156",
+    name: "Pythagorean",
+    address: null,
+    symbol: "-",
+    url: "https://pyth.ooo",
+    description:
+      "Perpetual futures based on Pythagorean bonding curves.",
+    chain: "Obyte",
+    logo: `${baseIconsUrl}/pythagorean.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Obyte"],
+    module: "pythagorean/index.js",
+    twitter: "ObyteOrg",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1708543168
+  },
 ]
 
 export default data3

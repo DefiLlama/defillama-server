@@ -140,7 +140,7 @@ export default {
     id: "3980",
   },
   "unidex": {
-    enabled: true,
+    enabled: false,
     id: "1833",
   },
   "swapgpt": {

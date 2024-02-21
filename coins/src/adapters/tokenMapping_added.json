@@ -8674,6 +8674,11 @@
       "symbol": "BNB.BSC",
       "to": "coingecko#binancecoin"
     },
+    "0x45334a5b0a01ce6c260f2b570ec941c680ea62c0": {
+      "decimals": "18",
+      "symbol": "stZETA",
+      "to": "coingecko#zetaearn-staked-zeta"
+    },
     "0x13A0c5930C028511Dc02665E7285134B6d11A5f4": {
       "decimals": "18",
       "symbol": "BTC.BTC",

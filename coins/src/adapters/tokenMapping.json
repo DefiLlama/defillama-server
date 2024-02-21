@@ -1469,7 +1469,12 @@
       "decimals": "18",
       "symbol": "xcCFG",
       "to": "coingecko#centrifuge"
-    }
+    },
+    "0xffffffff7d3875460d4509eb8d0362c611b4e841": {
+      "decimals": "18",
+      "symbol": "xcMANTA",
+      "to": "coingecko#manta-network"
+    } 
   },
   "metis": {
     "0x420000000000000000000000000000000000000a": {

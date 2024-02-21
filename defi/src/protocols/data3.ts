@@ -6498,7 +6498,7 @@ const data3: Protocol[] = [
     module: "gravita-protocol/index.js",
     twitter: "gravitaprotocol",
     oraclesByChain: {
-      ethereum: ["Chainlink"], // Redstone currently only secures certain assets on mainnet not total 50% of the tvl on mainnet, it can be added in at a later time: https://github.com/DefiLlama/defillama-server/pull/5430
+      ethereum: ["Chainlink", "RedStone"], // https://github.com/DefiLlama/defillama-server/pull/5898
       arbitrum: ["Chainlink"],
       zksync_era: ["Chainlink"],
       linea: ["Chainlink"],

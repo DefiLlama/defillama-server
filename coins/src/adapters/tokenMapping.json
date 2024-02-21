@@ -953,6 +953,11 @@
       "decimals": "6",
       "symbol": "ANDR",
       "to": "coingecko#andromeda-2"
+    },
+    "6569E05DEE32B339D9286A52BE33DFCEFC97267F23EF9CFDE0C055140967A9A5": {
+      "decimals": "6",
+      "symbol": "STTIA",
+      "to": "coingecko#stride-staked-tia"
     }
   },
   "eon": {

@@ -374,27 +374,27 @@ async function findRedisWrites(
     }
   });
 
-  const filtered: Coin[] = [];
+  const filtered: CoinDict = {};
   writesToRedis.map((c: Coin) => {
     if (
       (c.symbol && (zeroDecimalAdapters.includes(c.adapter) || c.decimals)) ||
       c.key == "tezos:tezos" ||
       c.key?.startsWith("bitcoin:")
     )
-      filtered.push(c);
+      filtered[c.key] = c;
   });
 
-  return await checkMetadataChanges(filtered, storedRecords, source);
+  return await checkMetadataChanges(filtered, writesToRedis, source);
 }
 async function checkMetadataChanges(
-  writes: Coin[],
-  storedRecords: CoinDict,
+  writes: CoinDict,
+  storedRecords: Coin[],
   source: string = "UNKNOWN",
 ): Promise<Coin[]> {
   const filtered: Coin[] = [];
   let errors: string = ``;
-  writes.map((c: Coin) => {
-    const record = storedRecords[c.key];
+  storedRecords.map((c: Coin) => {
+    const record = writes[c.key];
     if (record && record.decimals != c.decimals)
       errors += `\n${c.key} is trying to change metadata from ${record.decimals} to ${c.decimals} source: ${source}, skipping!!`;
     // else if (record && record.symbol != c.symbol)

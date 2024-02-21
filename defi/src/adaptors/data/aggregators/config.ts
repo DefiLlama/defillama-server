@@ -122,9 +122,15 @@ export default {
     enabled: true,
     id: "894",
   },
-  "tokenlon-agg": {
+  "tokenlon": {
     enabled: true,
     id: "405",
+    "protocolsData": {
+      "tokenlon-agg": {
+        id: "405",
+        enabled: true,
+      }
+    }
   },
   "aftermath-aggregator": {
     parentId: "Aftermath Finance",

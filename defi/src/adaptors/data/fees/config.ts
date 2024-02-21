@@ -1847,5 +1847,15 @@ export default {
     "Omnidrome": {
         "enabled": true,
         "id": "4119"
+    },
+    "marinade-liquid-staking": {
+        parentId: "Marinade",
+        "enabled": true,
+        "id": "484"
+    },
+    "marinade-native": {
+        parentId: "Marinade",
+        "enabled": true,
+        "id": "3672"
     }
 } as AdaptorsConfig

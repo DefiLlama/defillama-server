@@ -32330,7 +32330,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Indexes",
     chains: ["Ethereum"],
     module: "shprd/index.js",
     twitter: null,

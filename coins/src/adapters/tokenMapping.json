@@ -1162,7 +1162,22 @@
       "decimals": "18",
       "symbol": "wstETH",
       "to": "coingecko#wrapped-steth"
-    }
+    },
+    "0xa88b54e6b76fb97cdb8ecae868f1458e18a953f4": {
+      "decimals": "18",
+      "symbol": "DUSD",
+      "to": "coingecko#davos-protocol"
+    },
+    "0x1a51b19ce03dbe0cb44c1528e34a7edd7771e9af": {
+      "decimals": "18",
+      "symbol": "LYNX",
+      "to": "coingecko#lynex"
+    },
+    "0x1a7e4e63778b4f12a199c062f3efdd288afcbce8": {
+      "decimals": "18",
+      "symbol": "agEUR",
+      "to": "coingecko#ageur"
+    } 
   },
   "wan": {
     "0x0000000000000000000000000000000000000000": {

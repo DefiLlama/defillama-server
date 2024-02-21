@@ -32455,6 +32455,28 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1708543168
   },
+  {
+    id: "4157",
+    name: "Yuzu Market",
+    address: null,
+    symbol: "-",
+    url: "https://www.yuzu.market/",
+    description:
+      "Decentralized lending protocol on EON",
+    chain: "Horizen EON",
+    logo: `${baseIconsUrl}/yuzu-market.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Horizen EON"],
+    module: "yuzu-market/index.js",
+    twitter: "Yuzu_Market",
+    forkedFrom: ["AAVE V2"],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9032
+    listedAt: 1708559017
+  },
 ]
 
 export default data3

@@ -1731,7 +1731,13 @@ export default {
     },
     "tokenlon": {
         "enabled": true,
-        "id": "405"
+        "id": "405",
+        "protocolsData": {
+            "tokenlon": {
+                "id": "405",
+                enabled: true,
+            }
+        }
     },
     "ramses-exchange-v2": {
         parentId: "Ramses Exchange",

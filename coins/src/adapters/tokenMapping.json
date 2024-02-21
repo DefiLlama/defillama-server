@@ -70,6 +70,13 @@
       "to": "coingecko#neutron-3"
     }
   },
+  "tron": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "6",
+      "symbol": "TRON",
+      "to": "coingecko#tron"
+    }
+  },
   "polygon": {
     "0x2297aebd383787a160dd0d9f71508148769342e3": {
       "decimals": "8",

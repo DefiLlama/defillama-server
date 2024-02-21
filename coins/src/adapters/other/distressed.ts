@@ -40,7 +40,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     EULER_LP7: "0x3c66B18F67CA6C1A71F829E2F6a0c987f97462d0",
     EULER_LP8: "0x4169Df1B7820702f566cc10938DA51F6F597d264",
     EULER_LP9: "0xbd1bd5c956684f7eb79da40f582cbe1373a1d593",
-    // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab"
+    // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab",
+    PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78"
   },
   beam: {
     WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'

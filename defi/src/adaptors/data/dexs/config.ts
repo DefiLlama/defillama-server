@@ -2468,5 +2468,10 @@ export default {
         parentId: "JediSwap",
         "enabled": true,
         "id": "4144"
+    },
+    "swapsicle-v2": {
+        parentId: "Swapsicle",
+        "enabled": true,
+        "id": "3716"
     }
 } as AdaptorsConfig

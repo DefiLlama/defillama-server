@@ -2573,6 +2573,14 @@ export const chainCoingeckoIds = {
     twitter: "CelestiaOrg",
     url: "https://celestia.org",
   },
+  "Fraxtal": {
+    geckoId: "fraxtal",
+    symbol: "FXTL",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "fraxfinance",
+    url: "https://frax.finance",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3111,15 +3119,17 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "airdao":
       return "AirDAO"
     case "dydx":
-        return "dYdX"
+      return "dYdX"
     case "btn":
-        return "Bitnet"
+      return "Bitnet"
     case "bitnet":
-        return "Bitnet"
+      return "Bitnet"
     case "zeta":
-        return "ZetaChain"
+      return "ZetaChain"
     case "celestia":
-          return "Celestia"
+      return "Celestia"
+    case "fraxtal":
+      return "Fraxtal"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

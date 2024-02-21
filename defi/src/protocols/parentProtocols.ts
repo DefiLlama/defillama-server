@@ -3315,7 +3315,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://app.lynex.fi",
     description: `Linea's native on-chain liquidity marketplace. Powered by cutting-edge DEX infrastructure, it offers a highly capital-efficient DeFi solution`,
     logo: `${baseIconsUrl}/lynex.png`,
-    gecko_id: null,
+    gecko_id: "lynex",
     cmcId: null,
     chains: [],
     twitter: "LynexFi",

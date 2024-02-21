@@ -15818,8 +15818,8 @@ const data3: Protocol[] = [
   {
     id: "3408",
     name: "Lynex Fusion",
-    address: null,
-    symbol: "-",
+    address: "linea:0x1a51b19ce03dbe0cb44c1528e34a7edd7771e9af",
+    symbol: "LYNX",
     url: "https://app.lynex.fi/",
     description:
       "Linea's native on-chain liquidity marketplace. Powered by cutting-edge DEX infrastructure, it offers a highly capital-efficient DeFi solution",
@@ -26883,8 +26883,8 @@ const data3: Protocol[] = [
   {
     id: "3908",
     name: "Lynex V1",
-    address: null,
-    symbol: "-",
+    address: "linea:0x1a51b19ce03dbe0cb44c1528e34a7edd7771e9af",
+    symbol: "LYNX",
     url: "https://app.lynex.fi",
     description: "Linea's native on-chain liquidity marketplace. Powered by cutting-edge DEX infrastructure, it offers a highly capital-efficient DeFi solution",
     chain: "Linea",

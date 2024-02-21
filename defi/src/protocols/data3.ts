@@ -31880,7 +31880,7 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: ["AAVE V2"],
     module: "sturdy-v2/index.js",
-    twitter: "0xHarborMarket",
+    twitter: "SturdyFinance",
     audit_links: [ 
                    "https://github.com/Zellic/publications/blob/master/Sturdy%20-%20Zellic%20Audit%20Report.pdf",
                    "https://chainsecurity.com/security-audit/sturdy-aggregator-smart-contracts/"

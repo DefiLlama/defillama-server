@@ -2775,7 +2775,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "alcor/index.js",
-    twitter: "theparallel_io",
+    twitter: "alcorexchange",
     audit_links: ["https://t.me/alcorexchange/38987"],
     listedAt: 1646333163,
   },

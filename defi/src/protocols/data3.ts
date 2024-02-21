@@ -6498,7 +6498,7 @@ const data3: Protocol[] = [
     module: "gravita-protocol/index.js",
     twitter: "gravitaprotocol",
     oraclesByChain: {
-      ethereum: ["Chainlink", "RedStone"],
+      ethereum: ["Chainlink", "RedStone"], // https://github.com/DefiLlama/defillama-server/pull/5898
       arbitrum: ["Chainlink"],
       zksync_era: ["Chainlink"],
       linea: ["Chainlink"],

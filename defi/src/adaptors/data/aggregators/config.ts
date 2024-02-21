@@ -153,6 +153,14 @@ export default {
   },
   "odos": {
     "enabled": true,
-    "id": "3951"
+    "id": "3951",
+    "cleanRecordsConfig": {
+      "genuineSpikes": {
+        "1708128000": true,
+        "1708214400": true,
+        "1708300800": true,
+        "1708387200": true
+      }
+    }
   }
 } as AdaptorsConfig;

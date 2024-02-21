@@ -1,7 +1,6 @@
 const METADATA_FILE = __dirname + '/metadata.json'
 
 const PG_CACHE_KEYS = {
-  PROTOCOL_METADATA_ALL: 'protocol-metadata-all',
   CACHE_DATA_ALL: 'cache-data-all',
   ORACLES_DATA: 'oracles-data',
   CATEGORIES_DATA: 'categories-data',

@@ -3594,6 +3594,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "JupiterExchange",
+    github: ["jup-ag"]
   },
   {
     id: "parent#tenderize",
@@ -3628,9 +3629,9 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    github: ["helio-money"],
+    github: ["lista-dao"],
     twitter: "lista_dao",
-    stablecoins: ["hay"],
+    stablecoins: ["lista-usd"]
   },
   {
     id: "parent#hiveswap",
@@ -3715,6 +3716,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dgswap",
     github: ["dragon-swap-klaytn"],
+  },
+  {
+    id: "parent#jediswap",
+    name: "JediSwap",
+    url: "https://jediswap.xyz",
+    description: "A community-led fully permissionless and composable AMM on Starknet by StarkWareLtd.",
+    logo: `${baseIconsUrl}/jediswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "JediSwap",
   },
 ];
 

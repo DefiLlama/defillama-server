@@ -27,6 +27,7 @@ export interface IConfig {
     disabled?: boolean
     displayName?: string
     cleanRecordsConfig?: ICleanRecordsConfig
+    isChain?: boolean
     protocolsData?: IJSON<Omit<IConfig, 'protocolsData'>>,
 }
 

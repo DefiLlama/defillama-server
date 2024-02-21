@@ -8,6 +8,7 @@ import derivatives from "./derivatives/config";
 import aggregatorDerivatives from "./aggregator-derivatives/config";
 import { AdaptorsConfig, IJSON } from "./types";
 
+// TODO: add check to ensure that the parentIds are valid & if protocol type is chain, it is valid defillama id
 const configs = {
   dexs,
   fees,
@@ -21,24 +22,27 @@ const configs = {
 
 export const getConfigByType = (type: string, module: string) => configs[type]?.[module];
 
-export const getAvailableMetricsById = (id: string) =>
-  Object.entries(configs).reduce((acc, [metric, map]) => {
-    const idMaps = {} as IJSON<IJSON<AdaptorsConfig[string]>>;
 
-    if (!idMaps[metric]) {
-      idMaps[metric] = Object.values(map).reduce((acc, curr) => {
-        acc[curr.id] = curr;
-        if (curr.parentId) {
-          acc[curr.parentId] = curr;
-        }
-        if (curr.protocolsData) {
-          Object.values(curr.protocolsData).forEach((protData) => {
-            acc[protData.id] = protData;
-          });
-        }
-        return acc;
-      }, {} as IJSON<AdaptorsConfig[string]>);
-    }
+const idMaps = {} as IJSON<IJSON<AdaptorsConfig[string]>>; 
+Object.entries(configs).forEach(([metric, map]) => {
+  if (!idMaps[metric]) {
+    idMaps[metric] = Object.values(map).reduce((acc, curr) => {
+      acc[curr.id] = curr;
+      if (curr.parentId) {
+        acc[curr.parentId] = curr;
+      }
+      if (curr.protocolsData) {
+        Object.values(curr.protocolsData).forEach((protData) => {
+          acc[protData.id] = protData;
+        });
+      }
+      return acc;
+    }, {} as IJSON<AdaptorsConfig[string]>);
+  }
+});
+
+export const getAvailableMetricsById = (id: string) =>
+  Object.entries(configs).reduce((acc, [metric]) => {
     const isMetricEnabled = idMaps?.[metric]?.[id]?.enabled;
     if (isMetricEnabled === true) acc[metric] = isMetricEnabled;
     return acc;

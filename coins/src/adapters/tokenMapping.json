@@ -862,6 +862,16 @@
     }
   },
   "ibc": {
+    "6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244": {
+      "decimals": "10",
+      "symbol": "DOT",
+      "to": "coingecko#polkadot"
+    },
+    "980E82A9F8E7CA8CD480F4577E73682A6D3855A267D1831485D7EBEF0E7A6C2C": {
+      "decimals": "18",
+      "symbol": "stDYDX",
+      "to": "coingecko#stride-staked-dydx"
+    },
     "71B441E27F1BBB44DD0891BCD370C2794D404D60A4FFE5AECCD9B1E28BC89805": {
       "decimals": "6",
       "symbol": "USDT",
@@ -1125,6 +1135,16 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#ethereum"
+    },
+    "0xe06fe7298243d8e47092a1e0679351f305e5f856": {
+      "decimals": "18",
+      "symbol": "BUSD.b",
+      "to": "coingecko#binance-usd"
+    },
+    "0x81a1f39f7394c4849e4261aa02aac73865d13774": {
+      "decimals": "18",
+      "symbol": "WBNB.b",
+      "to": "coingecko#binancecoin"
     }
   },
   "linea": {
@@ -1469,6 +1489,11 @@
     }
   },
   "starknet": {
+    "0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d": {
+      "decimals": "18",
+      "symbol": "STRK",
+      "to": "coingecko#starknet"
+    },
     "0x049210ffc442172463f3177147c1aeaa36c51d152c1b0630f2364c300d4f48ee": {
       "decimals": "18",
       "symbol": "UNI",

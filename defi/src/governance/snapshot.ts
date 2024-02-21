@@ -66,6 +66,7 @@ export async function updateSnapshots() {
     const firstFetchIds: string[] = []
     const fetchOnlyProposals: string[] = []
     metadataAll.forEach((v: any) => {
+      v.domain = v.domain || `https://snapshot.org/#/${v.id}`
       idMap[v.id].metadata = v
       if (v.network) v.chainName = getChainNameFromId(v.network)
       idMap[v.id].id = v.id

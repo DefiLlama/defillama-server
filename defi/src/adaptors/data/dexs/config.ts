@@ -1301,6 +1301,7 @@ export default {
         "id": "490"
     },
     "jediswap": {
+        parentId: "JediSwap",
         "enabled": false,
         "id": "2344"
     },
@@ -1319,7 +1320,13 @@ export default {
     },
     "helix": {
         "enabled": true,
-        "id": "2259"
+        "id": "2259",
+        protocolsData: {
+            "helix": {
+                "id": "2259",
+                enabled: true,
+            }
+        }
     },
     "ashswap": {
         "enabled": true,
@@ -1357,7 +1364,13 @@ export default {
     "metavault.trade": {
         parentId: "MetaVault",
         "enabled": true,
-        "id": "1801"
+        "id": "1801",
+        protocolsData: {
+            "metavault.trade": {
+                "id": "1801",
+                enabled: true,
+            }
+        }
     },
     "1inch": {
         enabled: false,
@@ -2450,5 +2463,10 @@ export default {
     "Omnidrome": {
         "enabled": true,
         "id": "4119"
+    },
+    "jediswap-v2": {
+        parentId: "JediSwap",
+        "enabled": true,
+        "id": "4144"
     }
 } as AdaptorsConfig

@@ -28,11 +28,17 @@ export default {
     "metavault.trade": {
         parentId: "Metavault",
         "enabled": true,
-        "id": "1801"
+        "id": "1801",
+        "protocolsData": {
+            "metavault-derivative": {
+                "id": "1801",
+                "enabled": true,
+            }
+        }
     },
     "synfutures": {
         parentId: "SynFutures",
-        "enabled": true,
+        "enabled": false,
         "id": "2328"
     },
     "vela": {
@@ -258,7 +264,7 @@ export default {
         }
     },
     "metavault-derivative": {
-        "enabled": true,
+        "enabled": false,
         "id": "1801"
     },
     "unidex": {
@@ -582,9 +588,15 @@ export default {
             },
         }
     },
-    "helix-perp": {
+    "helix": {
         "enabled": true,
-        "id": "2259"
+        "id": "2259",
+        protocolsData: {
+            "helix-perp": {
+                "id": "2259",
+                "enabled": true,
+            }
+        }
     },
     "equation-v2": {
         parentId: "Equation",

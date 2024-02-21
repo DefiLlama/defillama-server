@@ -40,7 +40,7 @@
     "store-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeChainAssets.ts",
     "store-emissions": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeEmissions.ts",
     "store-emissions-index": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeEmissionsIndex.ts",
-    "cache-config": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cacheConfig.ts",
+    "cache-config": "npx ts-node --transpile-only src/cacheConfig.ts",
     "run-local": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node  --transpile-only src/runLocalTVL.ts",
     "api2-build": "bash src/api2/scripts/build.sh",
     "api2-dev": "ts-node-dev --respawn --transpile-only src/api2/index.ts",

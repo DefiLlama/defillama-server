@@ -49,7 +49,8 @@ export default {
     },
     "bitcoin": {
         "enabled": true,
-        "id": "1"
+        "id": "1",
+        "isChain": true
     },
     "bsc": {
         "enabled": true,
@@ -767,7 +768,8 @@ export default {
     },
     "waves": {
         enabled: true,
-        id: "1274"
+        id: "1274",
+        isChain: true
     },
     "maia-v3": {
         "enabled": true,
@@ -1204,7 +1206,8 @@ export default {
     },
     "op-bnb": {
         "enabled": true,
-        "id": "204"
+        "id": "204",
+        "isChain": true
     },
     "meowl": {
         "enabled": true,

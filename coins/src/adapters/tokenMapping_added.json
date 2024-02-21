@@ -8684,5 +8684,52 @@
       "symbol": "BTC.BTC",
       "to": "coingecko#bitcoin"
     }
+  },
+  "fraxtal": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "frxETH",
+      "to": "ethereum:0x5E8422345238F34275888049021821E8E08CAa1f"
+    },
+    "0xfc00000000000000000000000000000000000006": {
+      "decimals": "18",
+      "symbol": "wfrxETH",
+      "to": "ethereum:0x5E8422345238F34275888049021821E8E08CAa1f"
+    },
+    "0xfc00000000000000000000000000000000000005": {
+      "decimals": "18",
+      "symbol": "sfrxETH",
+      "to": "ethereum:0xac3E018457B222d93114458476f3E3416Abbe38F"
+    },
+    "0xfc00000000000000000000000000000000000002": {
+      "decimals": "18",
+      "symbol": "FXS",
+      "to": "ethereum:0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0"
+    },
+    "0xfc00000000000000000000000000000000000001": {
+      "decimals": "18",
+      "symbol": "FRAX",
+      "to": "ethereum:0x853d955aCEf822Db058eb8505911ED77F175b99e"
+    },
+    "0xfc00000000000000000000000000000000000008": {
+      "decimals": "18",
+      "symbol": "sFRAX",
+      "to": "coingecko:staked-frax"
+    },
+    "0xfc00000000000000000000000000000000000007": {
+      "decimals": "18",
+      "symbol": "frxBTC",
+      "to": "coingecko:bitcoin"
+    },
+    "0xfc00000000000000000000000000000000000003": {
+      "decimals": "18",
+      "symbol": "FPI",
+      "to": "coingecko:frax-price-index"
+    },
+    "0xfc00000000000000000000000000000000000004": {
+      "decimals": "18",
+      "symbol": "FPIS",
+      "to": "coingecko:frax-price-index-share"
+    }
   }
 }

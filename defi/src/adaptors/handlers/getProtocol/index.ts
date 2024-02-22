@@ -158,7 +158,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
 const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: AdaptorRecordType, adaptorType: AdapterType, {
     isApi2RestServer = false
 } = {}): Promise<IHandlerBodyResponse> => {
-    const adaptorsData = await loadAdaptorsData(adaptorType as AdapterType)
+    const adaptorsData = loadAdaptorsData(adaptorType as AdapterType)
     const childs = adaptorsData.default.reduce((acc, curr) => {
         const parentId = curr.parentProtocol
         if (parentId)
@@ -212,12 +212,12 @@ const sumReduce = (summaries: IJSON<any>[], key: string) => summaries.reduce((ac
 const getProtocolData = async (protocolName: string, adaptorType: AdapterType) => {
     // Import data list
     const adapters2load: string[] = [adaptorType, "protocols"]
-    const protocolsList = Object.keys((await loadAdaptorsData(adaptorType)).config)
+    const protocolsList = Object.keys((loadAdaptorsData(adaptorType)).config)
     let dexData: ProtocolAdaptor | undefined = undefined
     let adaptorsData: AdaptorData | undefined = undefined
     for (const type2load of adapters2load) {
         try {
-            adaptorsData = await loadAdaptorsData(type2load as AdapterType)
+            adaptorsData = loadAdaptorsData(type2load as AdapterType)
             dexData = adaptorsData.default
                 .find(va => protocolsList.includes(va.module)
                     && (sluggifyString(va.name) === protocolName || sluggifyString(va.displayName) === protocolName)

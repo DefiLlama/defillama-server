@@ -7,6 +7,7 @@ export interface ProtocolAdaptor extends Protocol {
     defillamaId: string
     displayName: string
     config?: IConfig
+    id2: string
     disabled: boolean
     enabled?: boolean
     protocolType?: ProtocolType
@@ -15,6 +16,7 @@ export interface ProtocolAdaptor extends Protocol {
     methodology?: string | IJSON<string>
     allAddresses?: Array<string>
     startFrom?: number
+    childProtocols?: Array<ProtocolAdaptor>
 }
 
 export interface IConfig {
@@ -40,8 +42,10 @@ export type AdaptorsConfig = IJSON<IConfig>
 
 export type AdaptorData = {
     default: ProtocolAdaptor[]
-    importModule: (module: string) => IImportObj['module']
+    protocolAdaptors: ProtocolAdaptor[]
+    childProtocolAdaptors: ProtocolAdaptor[]
+    importModule: (module: string) => any
     KEYS_TO_STORE: IJSON<string>
     config: IJSON<IConfig>
-    dimensionRules?: IJSON<(extraDimensions: IJSON<number | null>, category: string) => void>
+    rules?: IJSON<(extraDimensions: IJSON<number | null>, category: string) => void>
 }

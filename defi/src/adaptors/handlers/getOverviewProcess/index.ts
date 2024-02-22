@@ -11,7 +11,7 @@ import loadAdaptorsData from "../../data"
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 import { delay } from "../triggerStoreAdaptorData";
 import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
-import { cacheResponseOnR2, getCachedResponseOnR2 } from "../../utils/storeR2Response";
+import { cacheResponseOnR2, } from "../../utils/storeR2Response";
 import { CATEGORIES } from "../../data/helpers/categories";
 import processEventParameters from "../helpers/processEventParameters";
 
@@ -186,7 +186,7 @@ export async function getOverviewProcess({
     if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 
     // Import data list
-    const loadedAdaptors = await loadAdaptorsData(adaptorType)
+    const loadedAdaptors = loadAdaptorsData(adaptorType)
     const protocolsList = Object.keys(loadedAdaptors.config)
     const adaptersList: ProtocolAdaptor[] = []
     try {

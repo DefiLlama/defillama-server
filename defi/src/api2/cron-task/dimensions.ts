@@ -41,7 +41,7 @@ async function writeAdapterType(adaptorRecordType: AdapterType, dataType: Adapto
     console.error("Invalid data type", dataType)
     return
   }
-  const loadedAdaptors = await loadAdaptorsData(adaptorRecordType)
+  const loadedAdaptors = loadAdaptorsData(adaptorRecordType)
   const protocolsList = Object.keys(loadedAdaptors.config)
   const adaptersList: ProtocolAdaptor[] = []
   try {

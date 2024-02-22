@@ -39,7 +39,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
 
     // load all adapters data
     const adapterName = adapter
-    const adaptorsData = await loadAdaptorsData(adaptorType)
+    const adaptorsData = loadAdaptorsData(adaptorType)
 
     // build event with all adapters with missing data for specified timestamp
     if (adapterName[0] === 'all') {

@@ -1,11 +1,8 @@
 
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
-import { AdaptorRecord, AdaptorRecordType, RawRecordMap } from "./adaptor-record"
+import { AdaptorRecord, AdaptorRecordType, } from "./adaptor-record"
 import { ProtocolAdaptor } from "../data/types"
 import { getTimestampString } from "../../api2/utils"
-import { Tables } from "../../api2/db/tables"
-import dynamodb from "../../utils/shared/dynamodb"
-import { initializeTVLCacheDB } from "../../api2/db"
 
 function toStartOfDay(unixTimestamp: number) {
   const date = new Date(unixTimestamp * 1e3)
@@ -31,7 +28,7 @@ type DataJSON = {
   }
 }
 
-export class AdapterRecord {
+export class AdapterRecord2 {
   data: DataJSON
   timeS: string
   timestamp: number
@@ -53,7 +50,7 @@ export class AdapterRecord {
     this.id = adaptorId
   }
 
-  static formAdaptorRecord2({ adaptorRecords, protocolType, adapterType, protocol, configIdMap, }: {
+  static formAdaptarRecord2({ adaptorRecords, protocolType, adapterType, protocol, configIdMap, }: {
     adaptorRecords: {
       [key: string]: AdaptorRecord
     },
@@ -61,11 +58,11 @@ export class AdapterRecord {
     adapterType: AdapterType,
     protocol: ProtocolAdaptor,
     configIdMap: any,
-  }): AdapterRecord | null {
+  }): AdapterRecord2 | null {
     // clone & clean to be safe
     const data: DataJSON = { aggregated: {} }
     let eventTimestamp: number
-    const adaptorId = protocolType === ProtocolType.CHAIN ? `chain#${protocol.id}` : protocol.id
+    const adaptorId = protocol.id2
     const configItem = configIdMap[adaptorId] ?? configIdMap[protocol.id]
     const hasBreakdown = !!configItem.protocolsData
     const whitelistedVersionKeys = new Set(hasBreakdown ? Object.keys(configItem.protocolsData) : [])
@@ -76,7 +73,7 @@ export class AdapterRecord {
       return null
     }
 
-    return new AdapterRecord({ data, adaptorId, adapterType, timestamp: eventTimestamp, protocolType, })
+    return new AdapterRecord2({ data, adaptorId, adapterType, timestamp: eventTimestamp, protocolType, })
 
 
     function transformRecord(record: AdaptorRecord | null, key: AdaptorRecordType) {
@@ -150,22 +147,4 @@ export class AdapterRecord {
       data: this.data,
     }
   }
-}
-
-let isInitialized: any
-
-export async function storeAdapterRecord(record: AdapterRecord) {
-
-  if (!isInitialized) isInitialized = initializeTVLCacheDB()
-  await isInitialized
-
-  const pgItem = record.getPGItem()
-  const hourlyDDbItem = record.getHourlyDDBItem()
-  const ddbItem = record.getDDBItem()
-  
-  await Promise.all([
-    Tables.DIMENSIONS_DATA.upsert(pgItem),
-    dynamodb.putDimensionsData(ddbItem),
-    dynamodb.putDimensionsData(hourlyDDbItem),
-  ])
 }

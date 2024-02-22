@@ -52,7 +52,7 @@ export const handler = async (event: IHandlerEvent) => {
     }
   }
   else if (type) {
-    const adaptorsData = await data(type)
+    const adaptorsData = data(type)
     const protocolModules = adaptorsData.default.filter(m => !quarantinedModules.includes(m.module)).map(m => m.module)
     await invokeLambdas(protocolModules, type)
     const protocolModulesConfined = adaptorsData.default.filter(m => quarantinedModules.includes(m.module)).map(m => m.module)

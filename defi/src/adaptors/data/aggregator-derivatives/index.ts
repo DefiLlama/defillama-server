@@ -10,4 +10,4 @@ export const KEYS_TO_STORE = {
 
 export { default as config } from "./config";
 
-export { default as aggregators_derivatives_imports } from "../../../utils/imports/aggregator-derivatives_adapters"
+export { default as imports } from "../../../utils/imports/aggregator-derivatives_adapters"

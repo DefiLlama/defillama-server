@@ -32519,7 +32519,7 @@ const data3: Protocol[] = [
     module: "prisma-lrt/index.js",
     twitter: "PrismaFi",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["RedStone"], //https://docs.prismafinance.com/what-is-prismalrt#price-oracle
     parentProtocol: "parent#prisma",
     listedAt: 1708605362
   },

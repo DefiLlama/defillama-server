@@ -1857,5 +1857,20 @@ export default {
         parentId: "Marinade",
         "enabled": true,
         "id": "3672"
+    },
+    "dragonswap": {
+        "enabled": true,
+        parentId: "DragonSwap",
+        "id": "4138",
+        protocolsData: {
+            "v2": {
+                "id": "4138",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "4139",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

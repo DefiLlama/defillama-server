@@ -15,6 +15,7 @@ import entities from "../../protocols/entities";
 import treasuries from "../../protocols/treasury";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import { tronPIds } from "../../cli/tronPatch";
+import setEnvSecrets from "../../utils/shared/setEnvSecrets";
 
 // NOTE: set tableName env for aws
 
@@ -44,8 +45,9 @@ async function copyAll() {
     .process(copyProtocolData);
 }
 
-
+// ts-node defi/src/api2/scripts/copyToPG.ts
 async function copyFiltered() {
+  await setEnvSecrets()
   await initializeTVLCacheDB()
 
   const allItems = [protocols, entities, treasuries].flat()

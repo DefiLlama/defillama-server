@@ -31908,6 +31908,7 @@ const data3: Protocol[] = [
     twitter: "ethena_labs",
     github: ["ethena-labs"],
     audit_links: ["https://ethena-labs.gitbook.io/ethena-labs/resources/audits#quantstamp-audit-on-v2-of-contracts"],
+    stablecoins: ["ethena-usde"],
     listedAt: 1708016301
   },
   {

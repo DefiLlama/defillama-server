@@ -100,7 +100,13 @@ export default {
     },
     "mux-protocol": {
         "enabled": true,
-        "id": "2254"
+        "id": "2254",
+        "protocolsData": {
+            "mux-protocol": {
+                "id": "2254",
+                "enabled": true,
+            }
+        },
     },
     "polynomial-trade": {
         "enabled": true,

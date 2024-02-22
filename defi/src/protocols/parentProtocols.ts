@@ -3728,6 +3728,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "JediSwap",
   },
+  {
+    id: "parent#prisma",
+    name: "Prisma",
+    url: "https://prismafinance.com",
+    description: "The end game for liquid staking tokens. A non-custodial and decentralized Ethereum LST-backed stablecoin.",
+    logo: `${baseIconsUrl}/prisma.jpg`,
+    gecko_id: "prisma-governance-token",
+    cmcId: "28335",
+    chains: [],
+    twitter: "PrismaFi",
+    github: ["prisma-fi"],
+    stablecoins: ["mkusd"],
+  },
 ];
 
 export default parentProtocols;

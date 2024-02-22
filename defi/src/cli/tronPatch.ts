@@ -77,7 +77,7 @@ async function main() {
   await setEnvSecrets();
   let actions: Protocol[] = [protocols, entities, treasuries].flat();
   const tronProtocols: Protocol[] = actions.filter((a: Protocol) => ids.includes(a.id));
-  const end: number = getCurrentUnixTimestamp();
+  const end: number = 1708473600;
   const writes: Promise<void>[] = [];
 
   await PromisePool.withConcurrency(1)

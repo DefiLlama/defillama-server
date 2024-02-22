@@ -14157,14 +14157,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "757",
-    name: "Brahma",
+    name: "Brahma Vaults (Sunset)", // previous brahma
     address: null,
     symbol: "-",
-    url: "https://www.brahma.fi",
+    url: "https://www.brahma.fi/blog/withdrawal-mode-brahma-vaults",
     description:
-      "Brahma manages interactions and risk with multiple chains, dApps and instruments in a fully transparent and composable way, so you can earn yield, hedge and deploy capital in an efficient manner.",
+      "Brahma Vaults managed interactions and risk with multiple chains, dApps and instruments in a fully transparent and composable way, to earn yield, hedge and deploy capital in an efficient manner",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/brahma.jpg`,
+    logo: `${baseIconsUrl}/brahma-vaults-(sunset).jpg`,
     audits: "2",
     audit_links: [
       "https://github.com/Brahma-fi/brahma-security/blob/master/audits/brahma-fi-audit-2022-05-consensys.pdf",

@@ -17248,20 +17248,19 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/prisma-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "prisma-governance-token",
-    cmcId: "28335",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Ethereum"],
     module: "prisma/index.js",
     oracles: [],
     forkedFrom: ["Liquity"],
     twitter: "PrismaFi",
-    github: ["prisma-fi"],
     audit_links: [
       "https://github.com/prisma-fi/audits/blob/main/audit-nomoi.pdf",
       "https://github.com/prisma-fi/audits/blob/main/audit-zellic.pdf"
     ],
-    stablecoins: ["mkusd"],
+    parentProtocol: "parent#prisma",
     listedAt: 1693488775
   },
   {
@@ -32476,6 +32475,53 @@ const data3: Protocol[] = [
     forkedFrom: ["AAVE V2"],
     oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9032
     listedAt: 1708559017
+  },
+  {
+    id: "4158",
+    name: "Crypto.com Staked ETH",
+    address: null,
+    symbol: "-",
+    assetToken: "CDCETH",
+    url: "https://crypto.com/staking",
+    description:
+      "Liquid staking is available for ETH! Earn rewards and receive tradeable CDCETH",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/crypto.com-staked-eth.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Cronos"],
+    module: "cdc-eth/index.js",
+    twitter: "cryptocom",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1708604490
+  },
+  {
+    id: "4159",
+    name: "PrismaLRT",
+    address: "0xda47862a83dac0c112ba89c6abc2159b95afd71c",
+    symbol: "PRISMA",
+    assetToken: "ULTRA",
+    url: "https://app.prismafinance.com/vaults",
+    description:
+      "ULTRA is a new stablecoin issued by PrismaLRT, a new borrowing protocol developed by Prisma focused on unlocking liquidity for Liquid Restaking Tokens (LRTs).",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/prismalrt.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum"],
+    module: "prisma-lrt/index.js",
+    twitter: "PrismaFi",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#prisma",
+    listedAt: 1708605362
   },
 ]
 

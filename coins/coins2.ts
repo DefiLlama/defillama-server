@@ -578,7 +578,11 @@ export async function writeCoins2(
     strings[v.key] = JSON.stringify(v);
   });
 
-  await Promise.all([writeToPostgres(values), writeToRedis(strings, source)]);
+  await writeToRedis(strings, source);
+  await Promise.all([
+    writeToPostgres(values),
+    //writeToRedis(strings, source)
+  ]);
 }
 export async function batchWrite2(
   values: Coin[],

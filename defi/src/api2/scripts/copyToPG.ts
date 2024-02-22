@@ -17,13 +17,66 @@ import { shuffleArray } from "../../utils/shared/shuffleArray";
 
 // NOTE: set tableName env for aws
 
+const ids: string[] = [
+  "2",
+  "431",
+  "494",
+  "646",
+  "690",
+  "691",
+  "694",
+  "1033",
+  "1154",
+  "1252",
+  "1594",
+  "1896",
+  "2081",
+  "2269",
+  "2272",
+  "2274",
+  "2275",
+  "2276",
+  "2286",
+  "2300",
+  "2304",
+  "2305",
+  "2314",
+  "2346",
+  "2352",
+  "2363",
+  "2366",
+  "2371",
+  "2391",
+  "2432",
+  "2507",
+  "2561",
+  "2765",
+  "2836",
+  "2932",
+  "3005",
+  "3006",
+  "3007",
+  "3013",
+  "3075",
+  "3113",
+  "3193",
+  "3544",
+  "3546",
+  "3547",
+  "3578",
+  "3944",
+  "4031",
+  "4042",
+  "2724-treasury",
+];
+
 let doneIndex = 0
 
 const keyToRecord: any = {
   dailyTvl: { ddb: dailyTvl, pg: TABLES.DAILY_TVL },
   dailyTokensTvl: { ddb: dailyTokensTvl, pg: TABLES.DAILY_TOKENS_TVL },
   dailyUsdTokensTvl: { ddb: dailyUsdTokensTvl, pg: TABLES.DAILY_USD_TOKENS_TVL },
-  dailyRawTokensTvl: { ddb: dailyRawTokensTvl, pg: TABLES.DAILY_RAW_TOKENS_TVL },
+  // dailyRawTokensTvl: { ddb: dailyRawTokensTvl, pg: TABLES.DAILY_RAW_TOKENS_TVL },
   /* hourlyTvl: { ddb: hourlyTvl, pg: TABLES.HOURLY_TVL },
   hourlyTokensTvl: { ddb: hourlyTokensTvl, pg: TABLES.HOURLY_TOKENS_TVL },
   hourlyUsdTokensTvl: { ddb: hourlyUsdTokensTvl, pg: TABLES.HOURLY_USD_TOKENS_TVL },
@@ -47,10 +100,10 @@ async function copyAll() {
 async function copyFiltered() {
   await initializeTVLCacheDB()
 
-  const items = protocols
-    .filter((p: any) => p.category === 'CEX')
+  const allItems = [protocols, entities, treasuries].flat()
+  const items = allItems.filter((a) => ids.includes(a.id));
   shuffleArray(items)
-  console.log('Total Items [CEX]', items.length)
+  console.log('Total Items', items.length)
   await PromisePool.withConcurrency(5)
     .for(items)
     .process(copyProtocolData);

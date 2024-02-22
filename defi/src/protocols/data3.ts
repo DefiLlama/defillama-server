@@ -32523,6 +32523,53 @@ const data3: Protocol[] = [
     parentProtocol: "parent#prisma",
     listedAt: 1708605362
   },
+  {
+    id: "4160",
+    name: "BlackrockFund",
+    address: "0xbD6323A83b613F668687014E8A5852079494fB68",
+    symbol: "BTC",
+    url: "https://www.blackrockfund.finance",
+    description:
+      "State of the art Defi Hedge Fund with disruptive debase mechanism",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/blackrockfund.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Reserve Currency",
+    chains: ["Ethereum"],
+    module: "blackrock-fund/index.js",
+    twitter: "BlackRockFi",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1708611494
+  },
+  {
+    id: "4161",
+    name: "SHUI",
+    address: null,
+    symbol: "-",
+    assetToken: "WCFX",
+    url: "https://app.shui.finance",
+    description:
+      "SHUI is a Liquid Staking Protocol on Conflux. Earn rewards securely and smoothly on your CFX without locking them up.",
+    chain: "Conflux",
+    logo: `${baseIconsUrl}/shui.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Conflux"],
+    module: "shui/index.js",
+    twitter: "shui_finance",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/Shui-LST_audit_report_2023-12-14.pdf"],
+    github: ["Shui-LST"],
+    listedAt: 1708611499
+  },
 ]
 
 export default data3

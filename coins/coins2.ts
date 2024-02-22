@@ -501,16 +501,22 @@ export async function writeToRedis(
       process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
     );
   }
-
-  if (!auth) await generateAuth();
-  const redis = new Redis({
-    port: 6379,
-    host: auth[1],
-    password: auth[2],
-    connectTimeout: 10000,
-  });
-  await redis.mset(strings);
-  redis.quit();
+  try {
+    if (!auth) await generateAuth();
+    const redis = new Redis({
+      port: 6379,
+      host: auth[1],
+      password: auth[2],
+      connectTimeout: 10000,
+    });
+    await redis.mset(strings);
+    redis.quit();
+  } catch (e) {
+    await sendMessage(
+      `write to coins redis is fugged with ${e}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    );
+  }
 }
 async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
@@ -526,11 +532,12 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
     mcap: v.mcap ? Math.round(v.mcap) : null,
     confidence: Math.round(v.confidence * 30000),
   }));
-  // console.log("creating a new pg instance");
-  let sql = await getCoins2Connection();
-  // console.log("created a new pg instance");
-  await queryPostgresWithRetry(
-    sql`
+  try {
+    // console.log("creating a new pg instance");
+    let sql = await getCoins2Connection();
+    // console.log("created a new pg instance");
+    await queryPostgresWithRetry(
+      sql`
       insert into splitkey
       ${sql(
         splitKey,
@@ -544,8 +551,14 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
       on conflict (key, chain, timestamp) 
       do nothing
       `,
-    sql,
-  );
+      sql,
+    );
+  } catch (e) {
+    await sendMessage(
+      `write to coins pg is fugged with ${e}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    );
+  }
 }
 export async function writeCoins2(
   values: any[],

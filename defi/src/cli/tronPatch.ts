@@ -8,7 +8,7 @@ import dynamodb, { batchWrite } from "../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../utils/date";
 import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
-const ids: string[] = [
+export const tronPIds: string[] = [
   "2",
   "431",
   "494",
@@ -76,7 +76,7 @@ export default async function getTVLsOfRecordBetweenTimestamps(PK: string, start
 async function main() {
   await setEnvSecrets();
   let actions: Protocol[] = [protocols, entities, treasuries].flat();
-  const tronProtocols: Protocol[] = actions.filter((a: Protocol) => ids.includes(a.id));
+  const tronProtocols: Protocol[] = actions.filter((a: Protocol) => tronPIds.includes(a.id));
   const end: number = 1708473600;
   const writes: Promise<void>[] = [];
 

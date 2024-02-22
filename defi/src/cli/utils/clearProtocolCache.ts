@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { deleteProtocolCache } from '../../utils/r2'
 import { deleteFromPGCache, getDailyTvlCacheId,  initializeTVLCacheDB } from '../../api2/db'
+import { tronPIds } from '../tronPatch'
 
 export async function clearProtocolCache(protocolName: string) {
   const { data: { protocols } } = await axios.get('https://api.llama.fi/lite/protocols2')
@@ -24,3 +25,8 @@ export async function clearProtocolCacheById(protocolId: string) {
   // add command do it via discord bot
   return console.log("Protocol cache deleted id: ", protocolId)
 }
+async function main() {
+  await Promise.all(
+  tronPIds.map((i: string) => clearProtocolCacheById(i)))
+}
+main()

@@ -32625,14 +32625,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4164",
-    name: "Mori",
+    name: "Mori-Protocol",
     address: null,
     symbol: "-",
     url: "https://app.moriprotocol.io/",
     description:
       "All-in-one DEX built on VICTION",
     chain: "TomoChain",
-    logo: `${baseIconsUrl}/mori.png`,
+    logo: `${baseIconsUrl}/mori-protocol.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

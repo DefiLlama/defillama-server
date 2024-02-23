@@ -32600,6 +32600,29 @@ const data3: Protocol[] = [
     treasury: "goat-protocol.js",
     listedAt: 1708652625
   },
+  {
+    id: "4163",
+    name: "ROUP",
+    address: "map:0x5a1c3f3aae616146c7b9bf9763e0aba9bafc5eae",
+    symbol: "Roup",
+    url: "https://www.rolluper.xyz",
+    description:
+      "ROUP is the key channel for rolling up BRC20 assets to Bitcoin Layer2 trading, initiated by the community and with revenues fed back to the community.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/roup.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    module: "goat-protocol/index.js",
+    twitter: "brc20roup",
+    forkedFrom: [],
+    oracles: [],
+    github: [],
+    listedAt: 1708686152
+  },
 ]
 
 export default data3

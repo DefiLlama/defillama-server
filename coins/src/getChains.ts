@@ -231,7 +231,7 @@ const adaptersRepoChainsJson: string[] = [
 ];
 export const handler = async (): Promise<IResponse> => {
   const allChains = [
-    ...new Set([...adaptersRepoChainsJson, Object.keys(chainToCoingeckoId)]),
+    ...new Set([...adaptersRepoChainsJson, ...Object.keys(chainToCoingeckoId)]),
   ];
   return successResponse(allChains, 3600);
 };

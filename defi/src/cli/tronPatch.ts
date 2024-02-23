@@ -5,8 +5,8 @@ import entities from "../protocols/entities";
 import treasuries from "../protocols/treasury";
 import PromisePool from "@supercharge/promise-pool";
 import dynamodb, { batchWrite } from "../utils/shared/dynamodb";
-import { getCurrentUnixTimestamp } from "../utils/date";
 import setEnvSecrets from "../utils/shared/setEnvSecrets";
+import { getCurrentUnixTimestamp } from "../utils/date";
 
 export const tronPIds: string[] = [
   "2",
@@ -77,41 +77,63 @@ async function main() {
   await setEnvSecrets();
   let actions: Protocol[] = [protocols, entities, treasuries].flat();
   const tronProtocols: Protocol[] = actions.filter((a: Protocol) => tronPIds.includes(a.id));
-  const end: number = 1708473600;
+  const end: number = getCurrentUnixTimestamp();
   const writes: Promise<void>[] = [];
 
   await PromisePool.withConcurrency(1)
     .for(tronProtocols)
     .process(async (protocol: Protocol) => {
-      let [dailyTvls, dailyUsdTvls, dailyRawTvls] = await Promise.all([
-        getTVLsOfRecordBetweenTimestamps(dailyTvl(protocol.id), start, end),
-        getTVLsOfRecordBetweenTimestamps(dailyUsdTokensTvl(protocol.id), start, end),
-        getTVLsOfRecordBetweenTimestamps(dailyTokensTvl(protocol.id), start, end),
-      ]);
+      try {
+        let [dailyTvls, dailyUsdTvls, dailyRawTvls] = await Promise.all([
+          getTVLsOfRecordBetweenTimestamps(dailyTvl(protocol.id), start, end),
+          getTVLsOfRecordBetweenTimestamps(dailyUsdTokensTvl(protocol.id), start, end),
+          getTVLsOfRecordBetweenTimestamps(dailyTokensTvl(protocol.id), start, end),
+        ]);
 
-      dailyUsdTvls.Items?.map((entry: any) => {
-        if ("tron" in entry && "TRX" in entry.tron) {
+        dailyUsdTvls.Items?.map((entry: any) => {
+          if ("tron" in entry && "TRX" in entry.tron) {
+            const old = entry.tron.TRX;
+            if (old > 100) {
+              return;
+            }
+            const scaled = entry.tron.TRX * 1e12;
+            const delta = scaled - old;
+            entry.tron.TRX = scaled;
+            entry.tvl.TRX += delta;
+            const daily = dailyTvls.Items?.find((d: any) => Math.abs(d.SK - entry.SK) < 60 * 60);
+            if (!daily) {
+              return;
+            }
+            daily.tron += delta;
+            daily.tvl += delta;
+          }
+        });
+
+        dailyRawTvls.Items?.map((entry: any) => {
+          if (!("tron" in entry && "TRX" in entry.tron)) {
+            return;
+          }
           const old = entry.tron.TRX;
-          const scaled = (entry.tron.TRX *= 1e12);
+          if (old > 1000000) {
+            return;
+          }
+          const scaled = entry.tron.TRX * 1e12;
           const delta = scaled - old;
-          const daily = dailyTvls.Items?.find((d: any) => d.SK == entry.SK);
-          if (!daily) throw new Error(`wheres the daily for id ${protocol.id}`);
-          daily.tron += delta;
-          daily.tvl += delta;
-          daily.entry.tron.TRX *= 1e12;
-        }
-      });
+          entry.tron.TRX = scaled;
+          entry.tvl.TRX += delta;
+        });
 
-      dailyRawTvls.Items?.map((entry: any) => {
-        if (!("tron" in entry && "TRX" in entry.tron)) throw new Error(`wheres the raw for id ${protocol.id}`);
-        entry.tron.TRX *= 1e12;
-      });
-
-      const writes = [...(dailyTvls.Items ?? []), ...(dailyUsdTvls.Items ?? []), ...(dailyRawTvls.Items ?? [])];
-      writes.push(batchWrite(writes, true));
+        const writes2 = [...(dailyTvls.Items ?? []), ...(dailyUsdTvls.Items ?? []), ...(dailyRawTvls.Items ?? [])];
+        // writes.push(batchWrite(writes2, true));
+      } catch (e) {
+        console.log(e);
+      }
+    })
+    .catch((e) => {
+      console.log(e);
     });
 
   await Promise.all(writes);
   console.log("done");
 }
-main(); // ts-node defi/src/cli/tronPatch.ts
+// main(); // ts-node defi/src/cli/tronPatch.ts

@@ -144,6 +144,9 @@ const EXTRA_N30D_TYPE: IJSON<AdaptorRecordType[]> = {
 export const getExtraN30DTypes = (type: AdapterType) => EXTRA_N30D_TYPE[type] ?? []
 
 export const getExtraTypes = (type: AdapterType) => EXTRA_TYPES[type] ?? []
+export const getAdapterRecordTypes = (type: AdapterType) => {
+    return [DEFAULT_CHART_BY_ADAPTOR_TYPE[type], ...getExtraTypes(type)]
+}
 
 export interface IGetOverviewEventParams {
     pathParameters: {

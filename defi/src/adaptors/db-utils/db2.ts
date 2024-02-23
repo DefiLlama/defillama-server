@@ -6,6 +6,7 @@ import { AdapterRecord2 } from "./AdapterRecord2"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import configs from "../data/configs"
 import { QueryTypes } from "sequelize"
+import { sliceIntoChunks } from "@defillama/sdk/build/util"
 
 let isInitialized: any
 
@@ -14,19 +15,69 @@ async function init() {
   return isInitialized
 }
 
-export async function storeAdapterRecord(record: AdapterRecord2) {
+export async function storeAdapterRecord(record: AdapterRecord2, retriesLeft = 3) {
+
+  try {
+
+    await init()
+
+    const pgItem = record.getPGItem()
+    const hourlyDDbItem = record.getHourlyDDBItem()
+    const ddbItem = record.getDDBItem()
+
+    await Promise.all([
+      Tables.DIMENSIONS_DATA.upsert(pgItem),
+      dynamodb.putDimensionsData(ddbItem),
+      dynamodb.putDimensionsData(hourlyDDbItem),
+    ])
+  } catch (error) {
+    if (retriesLeft > 0) {
+      console.error('Error writing to ddb, retrying...', retriesLeft, record.id)
+      await new Promise(resolve => setTimeout(resolve, 1000)) // wait for 1 second
+      await storeAdapterRecord(record, retriesLeft - 1)
+    } else {
+      console.error('Error writing to ddb', error)
+      throw error
+    }
+  }
+}
+
+// used for migration from old db
+export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
 
   await init()
 
-  const pgItem = record.getPGItem()
-  const hourlyDDbItem = record.getHourlyDDBItem()
-  const ddbItem = record.getDDBItem()
+  const pgItems = records.map(record => record.getPGItem())
+  const ddbItems = records.map(record => record.getDDBItem())
 
-  await Promise.all([
-    Tables.DIMENSIONS_DATA.upsert(pgItem),
-    dynamodb.putDimensionsData(ddbItem),
-    dynamodb.putDimensionsData(hourlyDDbItem),
-  ])
+  // console.log('storing', pgItems.length, 'records', pgItems[0])
+  // console.log('storing', ddbItems.length, 'records', ddbItems[0])
+
+
+  // you can write max 25 items at a time to dynamodb
+  const ddbChunks = sliceIntoChunks(ddbItems, 25)
+  for (const chunk of ddbChunks) {
+    await writeChunkToDDB(chunk)
+  }
+
+  await Tables.DIMENSIONS_DATA.bulkCreate(pgItems, {
+    updateOnDuplicate: ['timestamp', 'data', 'type']
+  });
+
+  async function writeChunkToDDB(chunk: any, retriesLeft = 3) {
+    try {
+      await dynamodb.putDimensionsDataBulk(chunk)
+    } catch (error) {
+      if (retriesLeft > 0) {
+        console.error('Error writing to ddb, retrying...', chunk.length, chunk[0]?.id)
+        await new Promise(resolve => setTimeout(resolve, 1000)) // wait for 1 second
+        await writeChunkToDDB(chunk, retriesLeft - 1)
+      } else {
+        console.error('Error writing to ddb', error)
+        throw error
+      }
+    }
+  }
 }
 
 export async function getItemsLastUpdated(adapterType: AdapterType) {
@@ -40,22 +91,24 @@ export async function getItemsLastUpdated(adapterType: AdapterType) {
   FROM (
     SELECT id, MAX(timestamp) as latest_timestamp
     FROM DIMENSIONS_DATA
-    WHERE type = :adapterType
+    WHERE type = :adapterType AND timestamp >=  (EXTRACT(EPOCH FROM NOW() - INTERVAL '7 days'))
     GROUP BY id
   ) as t1
   JOIN DIMENSIONS_DATA as t2
   ON t1.id = t2.id AND t1.latest_timestamp = t2.timestamp AND t2.type = :adapterType
 `, {
-  replacements: { adapterType: adapterType },
-  type: QueryTypes.SELECT
-})
+    replacements: { adapterType: adapterType },
+    type: QueryTypes.SELECT
+  })
 
   console.timeEnd(label)
-  const response: { [key: string]: {
-    latest_timestamp: number
-    data: any
-    id: string
-  } } = {}
+  const response: {
+    [key: string]: {
+      latest_timestamp: number
+      data: any
+      id: string
+    }
+  } = {}
   result.forEach((item: any) => {
     response[item.id] = item
   })
@@ -63,38 +116,43 @@ export async function getItemsLastUpdated(adapterType: AdapterType) {
   return response
 }
 
-// to get all the second to last updated items for a given adapter type in the last 7 days
-export async function getItemsLastButOneUpdated(adapterType: AdapterType) {
+// to get all last two data points of each project for a given adapter type in the last 7 days
+export async function getLastTwoRecordsWIP(adapterType: AdapterType) {
   await init()
 
   const label = `getItemsLastButOneUpdated(${adapterType})`
   console.time(label)
-
-  const result = await (Tables.DIMENSIONS_DATA! as any).sequelize.query(`
-  SELECT t1.id, t1.latest_timestamp, t2.data
+  const result = await (Tables.DIMENSIONS_DATA! as any).query(`
+  SELECT t1.id, t1.latest_two_timestamps, ARRAY[t2.data, t3.data] as latest_two_data
   FROM (
-    SELECT id, MAX(timestamp) as latest_timestamp
+    SELECT id, 
+      ARRAY[(ARRAY_AGG(timestamp ORDER BY timestamp DESC))[1], (ARRAY_AGG(timestamp ORDER BY timestamp DESC))[2]] as latest_two_timestamps
     FROM DIMENSIONS_DATA
-    WHERE type = :adapterType AND timestamp >= (NOW() - INTERVAL '7 days')
+    WHERE type = :adapterType AND timestamp >= (EXTRACT(EPOCH FROM NOW() - INTERVAL '7 days'))
     GROUP BY id
   ) as t1
   JOIN DIMENSIONS_DATA as t2
-  ON t1.id = t2.id AND t1.latest_timestamp = t2.timestamp AND t2.type = :adapterType AND t2.timestamp >= (NOW() - INTERVAL '7 days')
+  ON t1.id = t2.id AND t1.latest_two_timestamps[1] = t2.timestamp AND t2.type = :adapterType
+  JOIN DIMENSIONS_DATA as t3
+  ON t1.id = t3.id AND t1.latest_two_timestamps[2] = t3.timestamp AND t3.type = :adapterType
 `, {
-  replacements: { adapterType: adapterType },
-  type: QueryTypes.SELECT
-})
+    replacements: { adapterType: adapterType },
+    type: QueryTypes.SELECT
+  });
 
   console.timeEnd(label)
-  const response: { [key: string]: {
-    latest_timestamp: number
-    data: any
-    id: string
-  } } = {}
+  console.log(result)
+  /* const response: {
+    [key: string]: {
+      latest_timestamp: number
+      data: any
+      id: string
+    }
+  } = {}
   result.forEach((item: any) => {
     response[item.id] = item
   })
 
-  return response
+  return response */
 }
 

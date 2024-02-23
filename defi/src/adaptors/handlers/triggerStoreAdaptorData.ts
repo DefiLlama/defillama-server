@@ -20,16 +20,7 @@ export interface IHandlerEvent {
   }>
 }
 
-export const ADAPTER_TYPES = [
-  AdapterType.FEES,
-  AdapterType.OPTIONS,
-  AdapterType.INCENTIVES,
-  AdapterType.AGGREGATORS,
-  AdapterType.DERIVATIVES,
-  AdapterType.DEXS,
-  AdapterType.PROTOCOLS,
-  AdapterType.AGGREGATOR_DERIVATIVES,
-]
+export const ADAPTER_TYPES = Object.values(AdapterType)
 
 export const quarantineList = {
   [AdapterType.FEES]: ["chainlink-vrf-v1", 'chainlink-vrf-v2', 'chainlink-keepers', "dodo"],

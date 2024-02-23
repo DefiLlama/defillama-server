@@ -69,7 +69,8 @@ export class AdapterRecord2 {
     Object.keys(adaptorRecords).forEach((key: any) => transformRecord((adaptorRecords as any)[key].getCleanAdaptorRecord(), key))
 
     if (!eventTimestamp!) {
-      console.info('empty record?')
+      // console.info('empty record?')
+      console.info('empty record?', protocol.id2, protocol.name, adaptorRecords, protocolType, adapterType)
       return null
     }
 

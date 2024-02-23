@@ -1,23 +1,20 @@
 import { AdaptorRecord, AdaptorRecordType, getAdaptorRecord2, } from "../../adaptors/db-utils/adaptor-record";
-import { ACCOMULATIVE_ADAPTOR_TYPE, DEFAULT_CHART_BY_ADAPTOR_TYPE, getExtraN30DTypes, getExtraTypes, } from "../../adaptors/handlers/getOverviewProcess";
+import { ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, getExtraN30DTypes, getExtraTypes, } from "../../adaptors/handlers/getOverviewProcess";
 import { writeToPGCache, } from "../cache/file-cache";
-import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data"
 import { ProtocolAdaptor } from "../../adaptors/data/types";
 import { getFileCacheKey, getAdapterCacheKey as getKey } from "../utils/dimensionsUtils";
+import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
 
 async function run() {
   // Go over all types
-  let allTypes = Object.values(AdapterType)
-  // allTypes = [AdapterType.OPTIONS]
-  const promises: any = allTypes.map(async (adaptorRecordType) => {
+  const promises: any = ADAPTER_TYPES.map(async (adapterType) => {
     const data: any = {}
-    const fileKey = getFileCacheKey(adaptorRecordType)
-    const allDataTypes = [DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorRecordType], ...getExtraTypes(adaptorRecordType)]
-    const pormises = allDataTypes.map(i => _writeAdapterType(adaptorRecordType, i, data))
+    const fileKey = getFileCacheKey(adapterType)
+    const recordTypes = getAdapterRecordTypes(adapterType)
+    const pormises = recordTypes.map(i => _writeAdapterType(adapterType, i, data))
     await Promise.all(pormises)
-    // TODO: remove from ddb or move to different db and handle it task runner while pulling data
-    // removeErrorField(data)
     await writeToPGCache(fileKey, data)
   })
   await Promise.all(promises)
@@ -25,23 +22,23 @@ async function run() {
 
 let cachePromises: any = {}
 
-async function _writeAdapterType(adaptorRecordType: AdapterType, dataType: AdaptorRecordType, data: any) {
+async function _writeAdapterType(adapterType: AdapterType, recordType: AdaptorRecordType, data: any) {
   try {
-    await writeAdapterType(adaptorRecordType, dataType, data)
+    await writeAdapterType(adapterType, recordType, data)
   } catch (error) {
-    console.error(`Couldn't write adaptorRecordType: ${adaptorRecordType} dataType: ${dataType}`, error)
+    console.error(`Couldn't write adaptorRecordType: ${adapterType} recordType: ${recordType}`, error)
   }
 }
 
-async function writeAdapterType(adaptorRecordType: AdapterType, dataType: AdaptorRecordType, data: any) {
-  const timeKey = `write adaptorRecordType: ${adaptorRecordType} dataType: ${dataType}`
+async function writeAdapterType(adapterType: AdapterType, recordType: AdaptorRecordType, data: any) {
+  const timeKey = `write adapterType: ${adapterType} recordType: ${recordType}`
   console.time(timeKey)
 
-  if (!Object.values(AdaptorRecordType).includes(dataType)) {
-    console.error("Invalid data type", dataType)
+  if (!Object.values(AdaptorRecordType).includes(recordType)) {
+    console.error("Invalid data type", recordType)
     return
   }
-  const loadedAdaptors = loadAdaptorsData(adaptorRecordType)
+  const loadedAdaptors = loadAdaptorsData(adapterType)
   const protocolsList = Object.keys(loadedAdaptors.config)
   const adaptersList: ProtocolAdaptor[] = []
   try {
@@ -52,23 +49,23 @@ async function writeAdapterType(adaptorRecordType: AdapterType, dataType: Adapto
       return
     })
   } catch (error) {
-    console.error(`Couldn't load adaptors with type ${adaptorRecordType} :${JSON.stringify(error)}`, error)
+    console.error(`Couldn't load adaptors with type ${adapterType} :${JSON.stringify(error)}`, error)
     return;
   }
 
   await Promise.all(adaptersList.map(async (adapter) => {
-    const dataFileKey = `${dataType}/${adaptorRecordType}/${adapter.id}`
+    const dataFileKey = `${recordType}/${adapterType}/${adapter.id}`
     try {
 
-      const adaptorRecordsRaw = await wrappedGetAdaptorRecord(adapter, dataType)
-      data[getKey(adapter, dataType)] = adaptorRecordsRaw
+      const adaptorRecordsRaw = await wrappedGetAdaptorRecord(adapter, recordType)
+      data[getKey(adapter, recordType)] = adaptorRecordsRaw
       // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
       if (!(adaptorRecordsRaw instanceof Array)) throw new Error("Wrong volume queried")
       if (adaptorRecordsRaw.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored`)
 
       let lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 1]
 
-      const lastKey = ACCOMULATIVE_ADAPTOR_TYPE[dataType]
+      const lastKey = ACCOMULATIVE_ADAPTOR_TYPE[recordType]
       if (lastKey) {
         const rawTotalRecord = await wrappedGetAdaptorRecord(adapter, lastKey, "LAST").catch(_e => { }) as AdaptorRecord | undefined
         if (rawTotalRecord)
@@ -79,14 +76,14 @@ async function writeAdapterType(adaptorRecordType: AdapterType, dataType: Adapto
         //   data[getKey(adapter, lastKey)] = allRecords
       }
 
-      for (const recordType of getExtraTypes(adaptorRecordType)) {
+      for (const recordType of getExtraTypes(adapterType)) {
         const value = await wrappedGetAdaptorRecord(adapter, recordType, "TIMESTAMP", lastRecordRaw.timestamp).catch(_e => { }) as AdaptorRecord | undefined
         if (value)
           data[getKey(adapter, recordType, 'TIMESTAMP')] = value
 
       }
 
-      for (const recordType of getExtraN30DTypes(adaptorRecordType)) {
+      for (const recordType of getExtraN30DTypes(adapterType)) {
         const key = getKey(adapter, recordType)
         let existingData = data[key] ?? []
         let lastKey = existingData.length ? existingData[existingData.length - 1].data.eventTimestamp : undefined

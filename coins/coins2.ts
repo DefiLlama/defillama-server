@@ -2,7 +2,7 @@ import { CoinRead } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
-import { getCoins2Connection } from "./getDBConnection";
+import { closeConnection, getCoins2Connection } from "./getDBConnection";
 import { sendMessage } from "../defi/src/utils/discord";
 import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 import fetch from "node-fetch";
@@ -583,6 +583,7 @@ export async function writeCoins2(
     writeToPostgres(values),
     //writeToRedis(strings, source)
   ]);
+  await closeConnection()
 }
 export async function batchWrite2(
   values: Coin[],

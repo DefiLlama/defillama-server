@@ -29512,7 +29512,7 @@ const data3: Protocol[] = [
     url: "https://fwx.finance/",
     description: "FWX is an AMM-based leveraged swap platform that enables anyone to list tokens from the first days they are minted by simply providing liquidity",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/fwx.png`,
+    logo: `${baseIconsUrl}/fwx.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

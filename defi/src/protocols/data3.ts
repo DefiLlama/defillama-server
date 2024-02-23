@@ -32623,6 +32623,29 @@ const data3: Protocol[] = [
     github: [],
     listedAt: 1708686152
   },
+  {
+    id: "4164",
+    name: "Mori",
+    address: null,
+    symbol: "-",
+    url: "https://app.moriprotocol.io/",
+    description:
+      "All-in-one DEX built on VICTION",
+    chain: "TomoChain",
+    logo: `${baseIconsUrl}/mori.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["TomoChain"],
+    module: "mori/index.js",
+    twitter: "MoriProtocol",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    github: [],
+    listedAt: 1708713977
+  },
 ]
 
 export default data3

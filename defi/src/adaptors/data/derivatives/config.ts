@@ -334,16 +334,6 @@ export default {
         "enabled": true,
         "id": "3483"
     },
-    "baseswap": {
-        "enabled": true,
-        "id": "3333",
-        "protocolsData": {
-            "derivatives": {
-                "id": "3333",
-                "enabled": true,
-            }
-        }
-    },
     "zeta": {
         "enabled": true,
         "id": "1804",

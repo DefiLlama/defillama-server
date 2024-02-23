@@ -32412,14 +32412,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4155",
-    name: "ApeBond Bonding",
+    name: "ApeBond Staking",
     address: "bsc:0x34294afabcbaffc616ac6614f6d2e17260b78bed",
     symbol: "ABOND",
     url: "https://ape.bond",
     description:
       "ApeBond is a multi-chain bonding protocol committed to building a sustainable DeFi future for projects and communities.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/apebond-bonding.jpg`,
+    logo: `${baseIconsUrl}/apebond-staking.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

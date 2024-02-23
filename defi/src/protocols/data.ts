@@ -6314,7 +6314,6 @@ const data: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     twitter: "ApeBond",
     audit_links: ["https://apeswap.gitbook.io/apeswap-finance/security/audits"],
-    parentProtocol: "parent#apeswap",
   },
   {
     id: "399",

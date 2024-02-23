@@ -370,13 +370,14 @@ export async function storeGetCharts({ ...options }: any = {}) {
 
       if (options.isApi2CronProcess) {
         await storeRouteData(filename, chainResponse);
-      } else {
+      } 
+      // else {
         const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
           [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
           [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
         });
         await storeR2(filename, compressedRespone, true);
-      }
+      // }
     })
   );
 

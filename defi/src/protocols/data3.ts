@@ -32625,7 +32625,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4164",
-    name: "Mori-Protocol",
+    name: "Mori Protocol",
     address: null,
     symbol: "-",
     url: "https://app.moriprotocol.io/",

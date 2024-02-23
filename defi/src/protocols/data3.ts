@@ -32616,7 +32616,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Bridge",
     chains: ["Bitcoin"],
-    module: "goat-protocol/index.js",
+    module: "roup/index.js",
     twitter: "brc20roup",
     forkedFrom: [],
     oracles: [],

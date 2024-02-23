@@ -153,7 +153,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     sSPELL: "0xbb29d2a58d880af8aa5859e30470134deaf84f2b",
     LIQR: "0x33333ee26a7d02e41c33828b42fb1e0889143477",
     BELUGA: "0x4a13a2cf881f5378def61e430139ed26d843df9a",
-    MIM: "0x82f0b8b456c1a451378467398982d4834b6829c1",
     UST: "0xe2d27f06f63d98b8e11b38b5b08a75d0c8dd62b9",
     BIFI: "0xd6070ae98b8069de6b494332d1a1a81b6179d960",
     LUNA: "0x95dd59343a893637be1c3228060ee6afbf6f0730",

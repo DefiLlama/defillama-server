@@ -32522,6 +32522,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["RedStone"], //https://docs.prismafinance.com/what-is-prismalrt#price-oracle
     parentProtocol: "parent#prisma",
+    stablecoins: ["prismalrt-ultra"],
     listedAt: 1708605362
   },
   {

@@ -32571,6 +32571,34 @@ const data3: Protocol[] = [
     github: ["Shui-LST"],
     listedAt: 1708611499
   },
+  {
+    id: "4162",
+    name: "Goat Protocol",
+    address: "arbitrum:0x8c6Bd546fB8B53fE371654a0E54D7a5bD484b319",
+    symbol: "GOA",
+    url: "https://goat.fi/",
+    description:
+      "The Goat Protocol is a decentralized yield optimizer. It allows users, DAOs and other protocols earn the yield on their digital assets by auto compounding the rewards into more of what they've deposited",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/goat-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Arbitrum"],
+    module: "goat-protocol/index.js",
+    twitter: "goatfidao",
+    forkedFrom: ["Beefy"],
+    oracles: [],
+    audit_links: [
+      "https://github.com/goatfi/audits/blob/main/02102024-Fortifyx-security-review.pdf",
+      "https://github.com/goatfi/audits/blob/main/02142024-tpiliposian-security-review.md"
+    ],
+    github: ["goatfi"],
+    treasury: "goat-protocol.js",
+    listedAt: 1708652625
+  },
 ]
 
 export default data3

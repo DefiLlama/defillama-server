@@ -1229,9 +1229,14 @@ export default {
     "baseswap": {
         "enabled": true,
         "id": "3333",
-        protocolsData: {
-            "swap": {
+        parentId: "BaseSwap",
+        "protocolsData": {
+            "v2": {
                 "id": "3333",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "3507",
                 "enabled": true,
             }
         }

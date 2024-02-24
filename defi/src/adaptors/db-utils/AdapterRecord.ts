@@ -163,9 +163,9 @@ export async function storeAdapterRecord(record: AdapterRecord) {
   const hourlyDDbItem = record.getHourlyDDBItem()
   const ddbItem = record.getDDBItem()
   
-  await Promise.all([
+  /* await Promise.all([
     Tables.DIMENSIONS_DATA.upsert(pgItem),
     dynamodb.putDimensionsData(ddbItem),
     dynamodb.putDimensionsData(hourlyDDbItem),
-  ])
+  ]) */
 }

@@ -19,6 +19,12 @@ export function getFileCacheKey(adaptorRecordType: AdapterType) {
   return `dimensions-data-v1/${adaptorRecordType}`
 }
 
+
+export function getFileCacheKeyV2() {
+  return `dimensions-data-v2`
+}
+
+
 let cacheLoaded = false
 
 export async function loadDimensionsCache() {

@@ -56,6 +56,10 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
 
   const protocolAdaptors = generateProtocolAdaptorsList2(all.imports[adapterType], config, adapterType)
   const childProtocolAdaptors = protocolAdaptors.flatMap((protocolAdaptor: ProtocolAdaptor) => protocolAdaptor.childProtocols || [])
+  const protocolMap = protocolAdaptors.reduce((acc, curr) => {
+    acc[curr.id2] = curr
+    return acc
+  }, {} as IJSON<ProtocolAdaptor>)
 
   return {
     default: generateProtocolAdaptorsList(all.imports[adapterType], config, adapterType),
@@ -65,6 +69,7 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
     rules: getRules(adapterType),
     protocolAdaptors,
     childProtocolAdaptors,
+    protocolMap,
   }
 }
 

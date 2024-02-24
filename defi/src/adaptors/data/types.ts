@@ -11,6 +11,7 @@ export interface ProtocolAdaptor extends Protocol {
     disabled: boolean
     enabled?: boolean
     protocolType?: ProtocolType
+    adapterType?: ProtocolType
     versionKey?: string
     methodologyURL: string
     methodology?: string | IJSON<string>
@@ -47,5 +48,6 @@ export type AdaptorData = {
     importModule: (module: string) => any
     KEYS_TO_STORE: IJSON<string>
     config: IJSON<IConfig>
-    rules?: IJSON<(extraDimensions: IJSON<number | null>, category: string) => void>
+    rules?: IJSON<(extraDimensions: IJSON<number | null>, category: string) => void>,
+    protocolMap: IJSON<ProtocolAdaptor>
 }

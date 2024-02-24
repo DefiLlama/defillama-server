@@ -4,7 +4,7 @@ import { AdaptorRecord, AdaptorRecordType, } from "./adaptor-record"
 import { ProtocolAdaptor } from "../data/types"
 import { getTimestampString } from "../../api2/utils"
 
-function toStartOfDay(unixTimestamp: number) {
+export function toStartOfDay(unixTimestamp: number) {
   const date = new Date(unixTimestamp * 1e3)
   date.setUTCHours(0, 0, 0, 0)
   return Math.floor(date.getTime() / 1000)

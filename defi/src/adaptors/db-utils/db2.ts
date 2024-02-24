@@ -5,7 +5,7 @@ import { initializeTVLCacheDB } from "../../api2/db"
 import { AdapterRecord2 } from "./AdapterRecord2"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import configs from "../data/configs"
-import { QueryTypes } from "sequelize"
+import { Op, QueryTypes } from "sequelize"
 import { sliceIntoChunks } from "@defillama/sdk/build/util"
 
 let isInitialized: any
@@ -122,7 +122,7 @@ export async function getLastTwoRecordsWIP(adapterType: AdapterType) {
 
   const label = `getItemsLastButOneUpdated(${adapterType})`
   console.time(label)
-  const result = await (Tables.DIMENSIONS_DATA! as any).query(`
+  const result = await (Tables.DIMENSIONS_DATA! as any).sequelize.query(`
   SELECT t1.id, t1.latest_two_timestamps, ARRAY[t2.data, t3.data] as latest_two_data
   FROM (
     SELECT id, 
@@ -156,3 +156,20 @@ export async function getLastTwoRecordsWIP(adapterType: AdapterType) {
   return response */
 }
 
+export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adapterType: AdapterType, timestamp: number}) {
+  await init()
+  if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
+
+  const label = `getAllItemsUpdatedAfter(${adapterType})`
+  console.time(label)
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where: { type: adapterType, timestamp: { [Op.gte]: timestamp  } },
+    attributes: ['data', 'timestamp', 'id', 'timeS'],
+    raw: true,
+    order: [['timestamp', 'ASC']],
+  })
+
+  console.timeEnd(label)
+  return result
+}

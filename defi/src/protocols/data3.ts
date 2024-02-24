@@ -32646,6 +32646,52 @@ const data3: Protocol[] = [
     github: [],
     listedAt: 1708713977
   },
+  {
+    id: "4165",
+    name: "Secta Finance V2",
+    address: null,
+    symbol: "-",
+    url: "https://secta.finance/",
+    description:
+      "Secta is a Linea-native decentralized exchange (DEX) and launchpad. It supports Uniswap V2 and V3 pools on the DEX and aims to be top interface into decentralized finance on Linea",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/secta-finance-v2.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    module: "secta-v2/index.js",
+    twitter: "SectaFinance",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    github: [],
+    listedAt: 1708805901
+  },
+  {
+    id: "4166",
+    name: "Secta Finance V3",
+    address: null,
+    symbol: "-",
+    url: "https://secta.finance/",
+    description:
+      "Secta is a Linea-native decentralized exchange (DEX) and launchpad. It supports Uniswap V2 and V3 pools on the DEX and aims to be top interface into decentralized finance on Linea",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/secta-finance-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    module: "secta-v3/index.js",
+    twitter: "SectaFinance",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    github: [],
+    listedAt: 1708805907
+  },
 ]
 
 export default data3

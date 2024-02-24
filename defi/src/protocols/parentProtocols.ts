@@ -3741,6 +3741,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["prisma-fi"],
     stablecoins: ["mkusd"],
   },
+  {
+    id: "parent#secta-finance",
+    name: "Secta Finance",
+    url: "https://secta.finance/",
+    description: "Secta is a Linea-native decentralized exchange (DEX) and launchpad. It supports Uniswap V2 and V3 pools on the DEX and aims to be top interface into decentralized finance on Linea",
+    logo: `${baseIconsUrl}/secta-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SectaFinance",
+    github: ["secta-finance"],
+  },
 ];
 
 export default parentProtocols;

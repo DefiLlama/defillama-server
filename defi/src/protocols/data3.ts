@@ -12314,7 +12314,12 @@ const data3: Protocol[] = [
     module: "lineabank/index.js",
     twitter: "LayerBankFi",
     forkedFrom: ["Compound V2"],
-    oracles: ["Pyth"],
+    oraclesByChain: {
+      manta: ["RedStone"],
+      scroll: ["Pyth"],
+      linea: ["Pyth"],
+      mode: ["Pyth"]
+    },
     listedAt: 1689773129,
     audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-LineaBank-v1.0.pdf"],
     github: ["layerbank"]

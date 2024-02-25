@@ -17239,13 +17239,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3473",
-    name: "Prisma Finance",
+    name: "PrismaLST", // previous Prisma Finance
     address: "0xda47862a83dac0c112ba89c6abc2159b95afd71c",
     symbol: "PRISMA",
     url: "https://prismafinance.com",
     description: "The end game for liquid staking tokens. A non-custodial and decentralized Ethereum LST-backed stablecoin.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/prisma-finance.jpg`,
+    logo: `${baseIconsUrl}/prismalst.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -32515,14 +32515,14 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Restaking",
+    category: "CDP",
     chains: ["Ethereum"],
     module: "prisma-lrt/index.js",
     twitter: "PrismaFi",
     forkedFrom: [],
     oracles: ["RedStone"], //https://docs.prismafinance.com/what-is-prismalrt#price-oracle
     parentProtocol: "parent#prisma",
-    stablecoins: ["prismalrt-ultra"],
+  //  stablecoins: ["prismalrt-ultra"],
     listedAt: 1708605362
   },
   {

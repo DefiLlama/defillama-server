@@ -27622,6 +27622,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/yldr.png`,
     audits: "2",
     audit_note: null,
+    audit_links: ["https://skynet.certik.com/projects/yldr"],
     gecko_id: null,
     cmcId: null,
     category: "Lending", //could also be Leveraged Farming

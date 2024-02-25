@@ -32667,7 +32667,6 @@ const data3: Protocol[] = [
     twitter: "SectaFinance",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    github: [],
     parentProtocol: "parent#secta-finance",
     listedAt: 1708805901
   },
@@ -32691,7 +32690,6 @@ const data3: Protocol[] = [
     twitter: "SectaFinance",
     forkedFrom: ["Uniswap V3"],
     oracles: [],
-    github: [],
     parentProtocol: "parent#secta-finance",
     listedAt: 1708805907
   },

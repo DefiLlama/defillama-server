@@ -32716,6 +32716,29 @@ const data3: Protocol[] = [
     github: [],
     listedAt: 1708863218
   },
+  {
+    id: "4168",
+    name: "Bouncebit",
+    address: null,
+    symbol: "-",
+    url: "https://bouncebit.io",
+    description:
+      "BounceBit is the first-ever native BTC restaking chain. The BounceBit network is secured by staking both the BTC token and the BounceBit token. BounceBit's PoS mechanism introduces a unique dual-token staking system by leveraging native BTC security with full EVM compatibility.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/boucebit.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum", "Tron", "Binance"],
+    module: "bounce-bit/index.js",
+    twitter: "bounce_bit",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["BounceBit-Labs"],
+    listedAt: 1708895046
+  },
 ]
 
 export default data3

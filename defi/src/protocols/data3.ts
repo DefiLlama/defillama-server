@@ -32668,6 +32668,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     github: [],
+    parentProtocol: "parent#secta-finance",
     listedAt: 1708805901
   },
   {
@@ -32691,6 +32692,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     oracles: [],
     github: [],
+    parentProtocol: "parent#secta-finance",
     listedAt: 1708805907
   },
   {

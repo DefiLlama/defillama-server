@@ -1113,6 +1113,11 @@
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    },
+    "0xcdd475325d6f564d27247d1dddbb0dac6fa0a5cf": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
     }
   },
   "fsc": {

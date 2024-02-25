@@ -32692,6 +32692,29 @@ const data3: Protocol[] = [
     github: [],
     listedAt: 1708805907
   },
+  {
+    id: "4167",
+    name: "Fluid",
+    address: null,
+    symbol: "-",
+    url: "https://fluid.instadapp.io",
+    description:
+      "An ever-evolving DeFi protocol and base for future financial system by Instadapp",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fluid.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "fluid/index.js",
+    twitter: "0xfluid",
+    forkedFrom: [],
+    oracles: [],
+    github: [],
+    listedAt: 1708863218
+  },
 ]
 
 export default data3

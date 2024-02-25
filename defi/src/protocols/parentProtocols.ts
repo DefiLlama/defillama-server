@@ -3143,10 +3143,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#dopex",
-    name: "Dopex",
+    name: "Stryke", // previous dopex
     url: "https://www.dopex.io",
-    description: "Dopex is a maximum liquidity and minimal exposure options protocol",
-    logo: `${baseIconsUrl}/dopex.png`,
+    description: "Stryke (previous Dopex) is a maximum liquidity and minimal exposure options protocol",
+    logo: `${baseIconsUrl}/stryke.jpg`,
     gecko_id: "dopex",
     cmcId: "11188",
     chains: [],

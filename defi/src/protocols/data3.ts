@@ -6279,8 +6279,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Internal"],
     audit_links: ["https://github.com/satoridao/contract_audit_report/blob/main/Satori_audit_report.pdf"],
+    parentProtocol: "parent#satori-finance",
     listedAt: 1684244889,
-    github: ["satori-hq"]
   },
   {
     id: "2983",
@@ -32797,6 +32797,51 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://skynet.certik.com/ko/projects/deltafixyz"],
     listedAt: 1708948249
+  },
+  {
+    id: "4171",
+    name: "Poseidollar",
+    address: null,
+    symbol: "-",
+    url: "https://poseidollar.com",
+    description:
+      "Poseidollar - the first algorithmic stablecoin pegged to $USDC running on the Sui Network.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/poseidollar.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Sui"],
+    module: "poseidollar/index.js",
+    twitter: "poseidollar",
+    forkedFrom: ["Basis Cash"],
+    oracles: [],
+    listedAt: 1708949792
+  },
+  {
+    id: "4172",
+    name: "Satori AMM",
+    address: null,
+    symbol: "-",
+    url: "https://satori.finance",
+    description:
+      "Uniswap V2 fork on linea and base",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/satori-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea", "Base"],
+    module: "satoriSwap/index.js",
+    twitter: "SatoriFinance",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    parentProtocol: "parent#satori-finance",
+    listedAt: 1708949850
   },
 ]
 

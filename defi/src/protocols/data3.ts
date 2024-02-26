@@ -32725,7 +32725,7 @@ const data3: Protocol[] = [
     description:
       "BounceBit is the first-ever native BTC restaking chain. The BounceBit network is secured by staking both the BTC token and the BounceBit token. BounceBit's PoS mechanism introduces a unique dual-token staking system by leveraging native BTC security with full EVM compatibility.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/boucebit.jpg`,
+    logo: `${baseIconsUrl}/bouncebit.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

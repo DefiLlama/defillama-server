@@ -17266,6 +17266,7 @@ const data3: Protocol[] = [
       "https://github.com/prisma-fi/audits/blob/main/audit-zellic.pdf"
     ],
     parentProtocol: "parent#prisma",
+    stablecoins: ["mkusd"],
     listedAt: 1693488775
   },
   {
@@ -32536,7 +32537,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["RedStone"], //https://docs.prismafinance.com/what-is-prismalrt#price-oracle
     parentProtocol: "parent#prisma",
-  //  stablecoins: ["prismalrt-ultra"],
+    stablecoins: ["prismalrt-ultra"],
     listedAt: 1708605362
   },
   {

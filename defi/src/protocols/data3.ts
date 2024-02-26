@@ -32843,6 +32843,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#satori-finance",
     listedAt: 1708949850
   },
+  {
+    id: "4173",
+    name: "WOWMAX",
+    address: null,
+    symbol: "-",
+    url: "https://app.wowmax.exchange",
+    description: "WOWMAX is a groundbreaking DEX aggregator designed to optimize your trading experience by executing an additional back-run arbitrage during each swap, ensuring that all profits are redirected directly back to you, the trader. This distinctive approach guarantees that WOWMAX consistently offers exchange rates more favorable than any other DEX aggregator out there.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/wowmax.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "WowmaxExchange",
+    audit_links: ["https://wp.hacken.io/wp-content/uploads/2023/09/WoW-Max_SC-Audit-Report_29082023_SA-1675.pdf"],
+  },
 ]
 
 export default data3

@@ -12315,10 +12315,10 @@ const data3: Protocol[] = [
     twitter: "LayerBankFi",
     forkedFrom: ["Compound V2"],
     oraclesByChain: {
-      manta: ["RedStone"],
+      manta: ["RedStone"],    // https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0
       scroll: ["Pyth"],
       linea: ["Pyth"],
-      mode: ["RedStone"]
+      mode: ["RedStone"]     // https://docs.layerbank.finance/protocol/lending/oracles
     },
     listedAt: 1689773129,
     audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-LineaBank-v1.0.pdf"],
@@ -32745,8 +32745,58 @@ const data3: Protocol[] = [
     twitter: "bounce_bit",
     forkedFrom: [],
     oracles: [],
-    audit_links: ["BounceBit-Labs"],
+    github: ["BounceBit-Labs"],
     listedAt: 1708895046
+  },
+  {
+    id: "4169",
+    name: "Metastrike",
+    address: "bsc:0x496cc0b4ee12aa2ac4c42e93067484e7ff50294b",
+    symbol: "MTS",
+    url: "https://metastrike.io",
+    description:
+      "Metastrike is a Metaverse FPS Blockchain Game project that includes many essential and advanced features of a shooting game, with VR feature gameplay and high effort investment in both visuals and gameplay.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/metastrike.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "metastrike",
+    cmcId: "16033",
+    category: "Gaming",
+    chains: ["Binance"],
+    module: "metastrike/index.js",
+    twitter: "bounce_bit",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [
+                    "https://github.com/MetastrikeHQ/smartcontracts/blob/main/audit-reports/PeckShield-Audit-Report-ERC20-MetaStrike-v1.0.pdf",
+                    "https://github.com/MetastrikeHQ/smartcontracts/blob/main/audit-reports/Verichains-Public-Audit-Report-MetaStrike-tokens-v1.2.pdf"
+                 ],
+    github: ["MetastrikeHQ"],
+    listedAt: 1708947569
+  },
+  {
+    id: "4170",
+    name: "DELTAFi",
+    address: "wemix:0xb3e96d25F84bB405eCBaCf5B26dF0CDc66e07813",
+    symbol: "DELTA",
+    url: "https://www.deltafi.xyz",
+    description:
+      "DETLAFi is a tokenization protocol for tokenizing onchain investment strategies and positions into decentralized exchange traded products (dETPs) leveraging composability and native yields available in DeFi ecosystem.",
+    chain: "WEMIX",
+    logo: `${baseIconsUrl}/deltafi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["WEMIX"],
+    module: "deltafi/index.js",
+    twitter: "deltafixyz",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://skynet.certik.com/ko/projects/deltafixyz"],
+    listedAt: 1708948249
   },
 ]
 

@@ -2503,5 +2503,10 @@ export default {
     "merchant-moe": {
         "enabled": true,
         "id": "4006"
+    },
+    "deltaswap": {
+        parentId: "GammaSwap Protocol",
+        "enabled": true,
+        "id": "4062"
     }
 } as AdaptorsConfig

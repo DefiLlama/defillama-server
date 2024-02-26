@@ -2499,5 +2499,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "merchant-moe": {
+        "enabled": true,
+        "id": "4006"
     }
 } as AdaptorsConfig

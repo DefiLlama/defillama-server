@@ -32727,7 +32727,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4168",
-    name: "Bouncebit",
+    name: "BounceBit",
     address: null,
     symbol: "-",
     url: "https://bouncebit.io",
@@ -32842,6 +32842,28 @@ const data3: Protocol[] = [
     oracles: [],
     parentProtocol: "parent#satori-finance",
     listedAt: 1708949850
+  },
+  {
+    id: "4173",
+    name: "Satsat",
+    address: "map:0xF5a59f961a8e86285Dae2e45ac4Ae50E4E47Ba97",
+    symbol: "STST",
+    url: "https://satsat.exchange",
+    description:
+      "STST is a Community-Oriented Bitcoin Layer2 BRC20 Trading Platform with Fairness, Shared Benefits, Transparency, and Low Gas Fees SATSAT is an order book trading system for BRC20 tokens that is built on the Bitcoin second-layer network,MAP Protocol.",
+    chain: "Map",
+    logo: `${baseIconsUrl}/satsat.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Map"],
+    module: "satsat/index.js",
+    twitter: "satsatstst",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1708951549
   },
 ]
 

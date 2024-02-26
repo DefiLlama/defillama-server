@@ -12318,7 +12318,7 @@ const data3: Protocol[] = [
       manta: ["RedStone"],
       scroll: ["Pyth"],
       linea: ["Pyth"],
-      mode: ["Pyth"]
+      mode: ["RedStone"]
     },
     listedAt: 1689773129,
     audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-LineaBank-v1.0.pdf"],

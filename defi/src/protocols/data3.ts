@@ -32916,6 +32916,29 @@ const data3: Protocol[] = [
     github: ["imonai"],
     listedAt: 1708960580
   },
+  {
+    id: "4176",
+    name: "DeFiVerse",
+    address: null,
+    symbol: "-",
+    url: "https://defi-verse.org",
+    description:
+      "DeFiVerse is a novel initiative designed to bridge the existing divide between Blockchain Games (BCG) and Decentralized Finance (DeFi). Built as a layer-2 blockchain on Oasys - a platform specialized for gaming - DeFiVerse integrates these two previously distinct domains.",
+    chain: "DeFiVerse",
+    logo: `${baseIconsUrl}/defiverse.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["DeFiVerse"],
+    module: "defiverse/index.js",
+    twitter: "DeFiVerse_org",
+    forkedFrom: ["Compound V2"],
+    oracles: [],
+    github: ["Defiverse-GamingDEX"],
+    listedAt: 1708966623
+  },
 ]
 
 export default data3

@@ -1,4 +1,11 @@
 {
+  "kava": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "KAVA",
+      "to": "coingecko#kava"
+    }
+  },
   "celo": {
     "0xd71ffd0940c920786ec4dbb5a12306669b5b81ef": {
       "decimals": "8",

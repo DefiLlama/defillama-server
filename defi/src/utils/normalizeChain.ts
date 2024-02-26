@@ -21,7 +21,6 @@ export const normalizedChainReplacements = {
   "bevm": "chainx",
   "bitnet": "btn",
   "areon network": "area",
-  "manta atlantic": "manta_atlantic"
 } as {
   [chain: string]: string
 }
@@ -2678,8 +2677,6 @@ export function transformNewChainName(chain: string) {
       return "UX"
     case "TomoChain":
       return "Viction"
-    case "manta_atlantic":
-      return "Manta Atlantic"
     default:
       return chain
   }
@@ -3170,7 +3167,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "defiverse":
       return "DeFiVerse"
     case "manta_atlantic":
-      return useNewChainNames ? "Manta Atlantic" : "Manta Atlantic"
+      return "Manta Atlantic"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

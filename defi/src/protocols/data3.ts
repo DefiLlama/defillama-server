@@ -24361,7 +24361,7 @@ const data3: Protocol[] = [
     description: "Fixed rate lending on Ethereum",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/notional-v3.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -24372,6 +24372,10 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "NotionalFinance",
     parentProtocol: "parent#notional",
+    audit_links: [
+                    "https://app.sherlock.xyz/audits/contests/59",
+                    "https://audits.sherlock.xyz/contests/142/report"
+                ],
     listedAt: 1699978650
   },
   {

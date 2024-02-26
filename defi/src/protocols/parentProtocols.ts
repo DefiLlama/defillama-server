@@ -3143,10 +3143,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#dopex",
-    name: "Dopex",
+    name: "Stryke", // previous dopex
     url: "https://www.dopex.io",
-    description: "Dopex is a maximum liquidity and minimal exposure options protocol",
-    logo: `${baseIconsUrl}/dopex.png`,
+    description: "Stryke (previous Dopex) is a maximum liquidity and minimal exposure options protocol",
+    logo: `${baseIconsUrl}/stryke.jpg`,
     gecko_id: "dopex",
     cmcId: "11188",
     chains: [],
@@ -3730,16 +3730,16 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#prisma",
-    name: "Prisma",
+    name: "Prisma Finance",
     url: "https://prismafinance.com",
     description: "The end game for liquid staking tokens. A non-custodial and decentralized Ethereum LST-backed stablecoin.",
-    logo: `${baseIconsUrl}/prisma.jpg`,
+    logo: `${baseIconsUrl}/prisma-finance.jpg`,
     gecko_id: "prisma-governance-token",
     cmcId: "28335",
     chains: [],
     twitter: "PrismaFi",
     github: ["prisma-fi"],
-    stablecoins: ["mkusd"],
+    stablecoins: ["mkusd","prismalrt-ultra"],
   },
   {
     id: "parent#secta-finance",
@@ -3752,6 +3752,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SectaFinance",
     github: ["secta-finance"],
+  },
+  {
+    id: "parent#satori-finance",
+    name: "Satori Finance",
+    url: "https://satori.finance",
+    description: "Expand your trading horizons on zkEVMs",
+    logo: `${baseIconsUrl}/satori-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SatoriFinance",
+    github: ["satori-hq"],
   },
 ];
 

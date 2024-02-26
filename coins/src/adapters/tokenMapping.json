@@ -1113,6 +1113,11 @@
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    },
+    "0xcdd475325d6f564d27247d1dddbb0dac6fa0a5cf": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
     }
   },
   "fsc": {
@@ -1636,6 +1641,21 @@
       "decimals": "18",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0x4b21b980d0dc7d3c0c6175b0a412694f3a1c7c6b": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x3f97bf3cd76b5ca9d4a4e9cd8a73c24e32d6c193": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x813bcb548f99bc081e5efeeaa65e3018befb92ae": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
     }
   },
   "icon": {

@@ -2569,11 +2569,11 @@ const data3: Protocol[] = [
   {
     id: "2816",
     name: "Dypius",
-    address: "bsc:0x961C8c0B1aaD0c0b10a51FeF6a867E3091BCef17",
+    address: "0x39b46b212bdf15b42b166779b9d1787a68b9d0c3",
     symbol: "DYP",
     url: "https://www.dypius.com",
     description: "Dypius is a powerful, decentralized ecosystem with a focus on scalability, security, and global adoption through next-gen infrastructure.",
-    chain: "Binance",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/dypius.jpg`,
     audits: "2",
     audit_note: null,
@@ -2581,11 +2581,11 @@ const data3: Protocol[] = [
     cmcId: "28543",
     category: "Yield",
     chains: ["Binance", "Ethereum", "Avalanche"],
-    oracles: [],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/5973
     forkedFrom: [],
     module: "dypius/index.js",
     twitter: "dypius",
-    audit_links: ["https://github.com/dypfinance/Buyback-Farm-Stake-Governance-V2/tree/main/Audit"],
+    audit_links: ["https://github.com/dypfinance/Dypius-token-bridge-bsc/tree/master/Audits"],
     listedAt: 1681309756
   },
   {

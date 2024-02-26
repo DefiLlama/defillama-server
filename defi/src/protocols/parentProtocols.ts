@@ -3739,7 +3739,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PrismaFi",
     github: ["prisma-fi"],
-    stablecoins: ["mkusd","prismalrt-ultra"],
+   // stablecoins: ["mkusd","prismalrt-ultra"], since its not possible to show both/more than 1 stablecoins under the parentProtocol. Will add each stablecoin under their respective listing
   },
   {
     id: "parent#secta-finance",

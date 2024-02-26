@@ -18968,7 +18968,7 @@ const data3: Protocol[] = [
     module: "shoebillFinance-v2/index.js",
     oraclesByChain: {
       wemix: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5434#issuecomment-1889510580
-      manta: ["Chainlink"],
+      manta: ["RedStone"],
       Klaytn: ["Witnet"]
     },
     forkedFrom: ["Compound V2"], 

@@ -2581,7 +2581,7 @@ const data3: Protocol[] = [
     cmcId: "28543",
     category: "Yield",
     chains: ["Binance", "Ethereum", "Avalanche"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/5973
     forkedFrom: [],
     module: "dypius/index.js",
     twitter: "dypius",

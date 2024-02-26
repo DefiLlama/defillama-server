@@ -22475,22 +22475,26 @@ const data3: Protocol[] = [
   {
     id: "3706",
     name: "Dyson Finance",
-    address: null,
-    symbol: "-",
+    address: "0x9CBD81b43ba263ca894178366Cfb89A246D1159C",
+    symbol: "DYSN",
     url: "https://dyson.finance/",
     description: "Empowering Everyone with Accessibility and Profitability through our DEX & Dual Investment #PoweredbyPyth",
     chain: "Linea",
     logo: `${baseIconsUrl}/dyson-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "dyson-sphere",
     cmcId: null,
     category: "Dexes",
-    chains: ["Linea"],
+    chains: ["Linea", "Polygon zkEVM"],
     oracles: [],
     module: "dyson/index.js",
     twitter: "DysonFinance",
     forkedFrom: ["Uniswap V2"],
+    audit_links: [
+                   "https://github.com/DysonFinance/dyson-audit-reports/blob/main/Dyson%20Finance%20Audit%20Report_2023.pdf",
+                   "https://github.com/DysonFinance/dyson-audit-reports/blob/main/Dyson%20Finance%20Audit%20-%20October%20'22.pdf"
+                 ],
     listedAt: 1698431567
   },
   {
@@ -32732,10 +32736,10 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://bouncebit.io",
     description:
-      "BounceBit is the first-ever native BTC restaking chain. The BounceBit network is secured by staking both the BTC token and the BounceBit token. BounceBit's PoS mechanism introduces a unique dual-token staking system by leveraging native BTC security with full EVM compatibility.",
+      "BounceBit is building a BTC restaking infrastructure that provides a foundational layer for different restaking products, secured by the regulated custody of Mainnet Digital and Ceffu. The BounceBit chain, designed as a showcase of a restaking product within the BounceBit ecosystem, is a PoS Layer 1 secured by validators staking both BTC and BounceBit’s native token – A dual-token system leveraging native Bitcoin’s security with full EVM compatibility. Critical ecosystem infrastructure like bridges and oracles are secured by restaked BTC.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bouncebit.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -32746,6 +32750,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     github: ["BounceBit-Labs"],
+    audit_links: ["https://3876813834-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaNWumH92fd1205exOOBs%2Fuploads%2FKFpCcHfuzqSvO1yGpUJL%2FBounceBit-Vault_audit_report_2024-02-09.pdf?alt=media&token=cbf843a2-8ec1-43bc-addc-1a584d4deacf"],
     listedAt: 1708895046
   },
   {

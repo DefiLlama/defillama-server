@@ -32771,7 +32771,7 @@ const data3: Protocol[] = [
     category: "Gaming",
     chains: ["Binance"],
     module: "metastrike/index.js",
-    twitter: "bounce_bit",
+    twitter: "MetastrikeHQ",
     forkedFrom: [],
     oracles: [],
     audit_links: [

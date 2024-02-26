@@ -32939,6 +32939,52 @@ const data3: Protocol[] = [
     github: ["Defiverse-GamingDEX"],
     listedAt: 1708966623
   },
+  {
+    id: "4177",
+    name: "MantaDEX",
+    address: null,
+    symbol: "-",
+    url: "https://mantadex.com",
+    description:
+      "MantaDEX is a groundbreaking exchange on the Manta Network. Dive into a realm of innovation driven by modular ZK systems, shaping the future of web3 ecosystems and decentralized applications. Join us in redefining secure and interoperable trading experiences, guided by the strength of Zero-Knowledge technology.",
+    chain: "Manta Atlantic",
+    logo: `${baseIconsUrl}/mantadex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Manta Atlantic"],
+    module: "mantadex/index.js",
+    twitter: "MantaDex",
+    forkedFrom: [],
+    oracles: [],
+    github: ["MantaDEX"],
+    listedAt: 1708971836
+  },
+  {
+    id: "4178",
+    name: "Manta Atlantic Stake",
+    address: null,
+    symbol: "-",
+    url: "https://app.manta.network/manta/stake",
+    description:
+      "Stake Manta on Manta Atlantic",
+    chain: "Manta Atlantic",
+    logo: `${baseIconsUrl}/manta-atlantic-stake.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Manta Atlantic"],
+    module: "manta-atlantic-stake/index.js",
+    twitter: "MantaDex",
+    forkedFrom: [],
+    oracles: [],
+    github: ["MantaDEX"],
+    listedAt: 1708971950
+  },
 ]
 
 export default data3

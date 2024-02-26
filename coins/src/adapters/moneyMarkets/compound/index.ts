@@ -182,7 +182,7 @@ export function hover(timestamp: number = 0) {
   console.log("starting hover");
   return getTokenPrices(
     "kava",
-    "0xb618fb7C9921fB35A75FDdf5Ee1bBdf19080020C",
+    "0x3A4Ec955a18eF6eB33025599505E7d404a4d59eC",
     timestamp,
   );
 }

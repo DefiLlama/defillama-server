@@ -28,6 +28,7 @@ export default {
   uwulend: require("./moneyMarkets/aave"),
   //klap: require("./moneyMarkets/aave"),
   //valas: require("./moneyMarkets/aave"),
+  hover: require("./moneyMarkets/compound"),
   sumerian: require("./moneyMarkets/compound"),
   compound: require("./moneyMarkets/compound"),
   venus: require("./moneyMarkets/compound"),

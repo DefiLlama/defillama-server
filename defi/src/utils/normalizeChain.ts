@@ -3170,7 +3170,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "defiverse":
       return "DeFiVerse"
     case "manta_atlantic":
-      return "Manta Atlantic"
+      return useNewChainNames ? "Manta Atlantic" : "Manta Atlantic"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -20,7 +20,8 @@ export const normalizedChainReplacements = {
   "viction": "tomochain",
   "bevm": "chainx",
   "bitnet": "btn",
-  "areon network": "area"
+  "areon network": "area",
+  "manta atlantic": "manta_atlantic"
 } as {
   [chain: string]: string
 }
@@ -2599,6 +2600,18 @@ export const chainCoingeckoIds = {
     twitter: "DeFiVerse_org",
     url: "https://defi-verse.org",
   },
+  "Manta Atlantic": {
+    geckoId: null,
+    symbol: "MANTA",
+    cmcId: null,
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+    twitter: "MantaNetwork",
+    url: "https://atlantic.manta.network"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2665,6 +2678,8 @@ export function transformNewChainName(chain: string) {
       return "UX"
     case "TomoChain":
       return "Viction"
+    case "manta_atlantic":
+      return "Manta Atlantic"
     default:
       return chain
   }
@@ -3154,6 +3169,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Areon Network"
     case "defiverse":
       return "DeFiVerse"
+    case "manta_atlantic":
+      return "Manta Atlantic"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

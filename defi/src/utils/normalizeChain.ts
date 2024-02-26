@@ -2591,6 +2591,14 @@ export const chainCoingeckoIds = {
     github: "areon-network",
     url: "https://areon.network",
   },
+  "DeFiVerse": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "DeFiVerse_org",
+    url: "https://defi-verse.org",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3144,6 +3152,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Areon Network"
     case "areon network":
       return "Areon Network"
+    case "defiverse":
+      return "DeFiVerse"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

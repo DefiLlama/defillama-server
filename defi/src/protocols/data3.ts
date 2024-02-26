@@ -32870,6 +32870,51 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1708951549
   },
+  {
+    id: "4174",
+    name: "hyperswap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.areon.network",
+    description:
+      "Our community is building a comprehensive decentralized trading platform on Areon for the future of finance.",
+    chain: "Areon Network",
+    logo: `${baseIconsUrl}/hyperswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Areon Network"],
+    module: "areon-swap/index.js",
+    twitter: "AreonNetwork",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1708960437
+  },
+  {
+    id: "4175",
+    name: "IMONSwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.imon.ai",
+    description:
+      "Fully community-driven revolution of decentralized finance on the blockchain with the power of revolutionary technology",
+    chain: "Chiliz",
+    logo: `${baseIconsUrl}/imonswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Chiliz"],
+    module: "imonswap/index.js",
+    twitter: "imondotai",
+    forkedFrom: [],
+    oracles: [],
+    github: ["imonai"],
+    listedAt: 1708960580
+  },
 ]
 
 export default data3

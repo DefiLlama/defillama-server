@@ -19,7 +19,8 @@ export const normalizedChainReplacements = {
   "bahamut": "ftn",
   "viction": "tomochain",
   "bevm": "chainx",
-  "bitnet": "btn"
+  "bitnet": "btn",
+  "areon network": "area"
 } as {
   [chain: string]: string
 }
@@ -2581,6 +2582,15 @@ export const chainCoingeckoIds = {
     twitter: "fraxfinance",
     url: "https://frax.finance",
   },
+  "Areon Network": {
+    geckoId: "areon-network",
+    symbol: "AREA",
+    cmcId: "23262",
+    categories: ["EVM"],
+    twitter: "AreonNetwork",
+    github: "areon-network",
+    url: "https://areon.network",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3130,6 +3140,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Celestia"
     case "fraxtal":
       return "Fraxtal"
+    case "area":
+      return "Areon Network"
+    case "areon network":
+      return "Areon Network"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

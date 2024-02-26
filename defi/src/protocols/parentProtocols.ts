@@ -3753,6 +3753,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SectaFinance",
     github: ["secta-finance"],
   },
+  {
+    id: "parent#satori-finance",
+    name: "Satori Finance",
+    url: "https://satori.finance",
+    description: "Expand your trading horizons on zkEVMs",
+    logo: `${baseIconsUrl}/satori-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SatoriFinance",
+    github: ["satori-hq"],
+  },
 ];
 
 export default parentProtocols;

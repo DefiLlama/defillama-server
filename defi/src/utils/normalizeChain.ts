@@ -20,7 +20,6 @@ export const normalizedChainReplacements = {
   "viction": "tomochain",
   "bevm": "chainx",
   "bitnet": "btn",
-  "areon network": "area",
 } as {
   [chain: string]: string
 }
@@ -3161,8 +3160,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "fraxtal":
       return "Fraxtal"
     case "area":
-      return "Areon Network"
-    case "areon network":
       return "Areon Network"
     case "defiverse":
       return "DeFiVerse"

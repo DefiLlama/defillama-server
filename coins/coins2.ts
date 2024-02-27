@@ -70,9 +70,9 @@ async function queryPostgresWithRetry(
         `;
     return res;
   } catch (e) {
-    if (counter = 3) {
-      const sql = postgres(auth[0], { idle_timeout: 90,})
-      return await queryPostgresWithRetry(query, sql, counter + 1)
+    if (counter == 3) {
+      const sql = postgres(auth[0], { idle_timeout: 90 });
+      return await queryPostgresWithRetry(query, sql, counter + 1);
     }
     if (counter > 5) throw e;
     await sleep(5000 + 1e4 * Math.random());
@@ -588,7 +588,7 @@ export async function writeCoins2(
     writeToPostgres(values),
     //writeToRedis(strings, source)
   ]);
-  await closeConnection()
+  await closeConnection();
 }
 export async function batchWrite2(
   values: Coin[],

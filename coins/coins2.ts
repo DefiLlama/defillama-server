@@ -72,7 +72,10 @@ async function queryPostgresWithRetry(
   } catch (e) {
     if (counter > 5) throw e;
     await sleep(5000 + 1e4 * Math.random());
-    if (counter == 3) sql = postgres(auth[0], { idle_timeout: 90 });
+    if (counter == 3) {
+      await closeConnection()
+      sql = await getCoins2Connection()
+    }
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
 }

@@ -15311,17 +15311,17 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "829",
-    name: "Standard Protocol",
+    name: "Standard Protocol Shiden",
     address: "shiden:0x722377A047e89CA735f09Eb7CccAb780943c4CB4",
     symbol: "STND",
     url: "https://standard.tech",
     description: "Self-sovereign money on multichains",
     chain: "Shiden",
-    logo: `${baseIconsUrl}/standard-protocol.jpg`,
+    logo: `${baseIconsUrl}/standard-protocol-shiden.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "standard-protocol",
-    cmcId: "9251",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Shiden"],
     module: "standard-tech/index.js",
@@ -15329,7 +15329,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1636671594,
-    github: ["standardweb3"]
+    parentProtocol: "parent#standard-protocol",
+    deadUrl: true
   },
   {
     id: "830",

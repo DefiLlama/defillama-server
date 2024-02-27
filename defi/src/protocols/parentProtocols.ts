@@ -3800,6 +3800,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "iLendorg",
   },
+  {
+    id: "parent#standard-protocol",
+    name: "Standard Protocol",
+    url: "https://standardweb3.com/",
+    description: "All-in-one DeFi app offering trading without slippage",
+    logo: `${baseIconsUrl}/standard-protocol.png`,
+    gecko_id: "standard-protocol",
+    cmcId: "9251",
+    chains: [],
+    twitter: "standardweb3",
+    github: ["standardweb3"],
+  },
 ];
 
 export default parentProtocols;

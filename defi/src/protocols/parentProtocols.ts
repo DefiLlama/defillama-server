@@ -3777,6 +3777,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "fixesOnFlow",
     github: ["fixes-world"],
   },
+  {
+    id: "parent#taikai",
+    name: "TAIKAI",
+    url: "https://taikai.network",
+    description: "We bring organizations and talented developers together to build innovative solutions in any chain.",
+    logo: `${baseIconsUrl}/taikai.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "taikainetwork",
+  },
 ];
 
 export default parentProtocols;

@@ -33053,6 +33053,31 @@ const data3: Protocol[] = [
     github: ["Scopuly"],
     listedAt: 1709034413
   },
+  {
+    id: "4182",
+    name: "BakerFi",
+    address: null,
+    symbol: "-",
+    assetToken: "brETH",
+    url: "https://bakerfi.xyz/",
+    description:
+      "BakerFi is an innovative DeFi protocol designed to optimize asset growth through efficient staking, re-staking, and recursive strategies, all aimed at enhancing the APY for users. Our platform automates these strategies, streamlining capital allocation, and offers a user-friendly interface accessible to all levels of expertise. Whether you're a novice or seasoned investor, BakerFi provides a seamless experience to maximize your returns.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/bakerfi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Arbitrum"],
+    module: "bakerfi/index.js",
+    twitter: "bakerfi_",
+    forkedFrom: [],
+    oracles: [],
+    github: ["baker-fi"],
+    parentProtocol: "parent#taikai",
+    listedAt: 1709045112
+  },
 ]
 
 export default data3

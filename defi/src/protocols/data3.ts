@@ -33077,6 +33077,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#taikai",
     listedAt: 1709045112
   },
+  {
+    id: "4183",
+    name: "PizzaX",
+    address: "bsc:0x488739D593DC2BC13Fd738CBaa35498bad5F8556",
+    symbol: "PizzaX",
+    url: "https://pizzax.club",
+    description:
+      "PizzaX miner let you earn upto 15% of daily reward without any hustle and bustle. First come first invest in miner pools so you can enjoy unstoppable lifetime reward.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/pizzax.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Binance"],
+    module: "pizzax/index.js",
+    twitter: "PizzaXXX",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1709067462
+  },
 ]
 
 export default data3

@@ -21394,7 +21394,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "16360",
     category: "Leveraged Farming",
     chains: ["Ethereum"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "RedStone"],
     module: "gearbox/index.js",
     treasury: "gearbox.js",
     twitter: "GearboxProtocol",

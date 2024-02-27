@@ -470,7 +470,7 @@ async function cleanConfidences(
     confidentValues.push(c);
   });
 
-  await storeChangedAdapter(changedAdapters);
+  // await storeChangedAdapter(changedAdapters);
   return confidentValues;
 }
 export async function writeToRedis(

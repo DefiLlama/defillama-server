@@ -1,26 +1,23 @@
 import postgres from "postgres";
 import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 
-let coins2Connection: Promise<ReturnType<typeof postgres>>;
+let coins2Connection: Promise<postgres.Sql<{}>>;
 
 export async function getCoins2Connection() {
   if (!coins2Connection) {
-    coins2Connection = new Promise(async (resolve) => {
-      // @ts-ignore
-      let auth: any = process.env.COINS2_AUTH;
-      if (!auth) await setEnvSecrets();
-      // @ts-ignore
-      auth = process.env.COINS2_AUTH?.split(",") ?? [];
-      if (!auth || auth.length != 3)
-        throw new Error(
-          "there arent 3 auth params. Cannot initialize coins2 connection.",
-        );
-      resolve(postgres(auth[0], { idle_timeout: 90,
-        // max_lifetime: 60 * 10
-       }));
+    let auth: any = process.env.COINS2_AUTH;
+    if (!auth) await setEnvSecrets();
+    auth = process.env.COINS2_AUTH?.split(",") ?? [];
+    if (!auth || auth.length != 3)
+      throw new Error(
+        "there arent 3 auth params. Cannot initialize coins2 connection.",
+      );
+    return postgres(auth[0], {
+      idle_timeout: 90,
+      // max_lifetime: 60 * 10
     });
   }
-  return coins2Connection;
+  return coins2Connection
 }
 
 export async function closeConnection() {

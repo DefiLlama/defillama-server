@@ -32969,7 +32969,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://app.manta.network/manta/stake",
     description:
-      "Stake Manta on Manta Atlantic",
+      "Stake MANTA on Manta Atlantic",
     chain: "Manta Atlantic",
     logo: `${baseIconsUrl}/manta-atlantic-stake.jpg`,
     audits: "0",
@@ -32979,10 +32979,9 @@ const data3: Protocol[] = [
     category: "Services",
     chains: ["Manta Atlantic"],
     module: "manta-atlantic-stake/index.js",
-    twitter: "MantaDex",
+    twitter: "MantaNetwork",
     forkedFrom: [],
     oracles: [],
-    github: ["MantaDEX"],
     listedAt: 1708971950
   },
 ]

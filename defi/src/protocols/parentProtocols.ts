@@ -3786,6 +3786,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    github: ["baker-fi"],
     twitter: "taikainetwork",
   },
 ];

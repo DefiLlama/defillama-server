@@ -33074,7 +33074,6 @@ const data3: Protocol[] = [
     twitter: "bakerfi_",
     forkedFrom: [],
     oracles: [],
-    github: ["baker-fi"],
     parentProtocol: "parent#taikai",
     listedAt: 1709045112
   },

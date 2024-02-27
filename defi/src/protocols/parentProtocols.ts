@@ -3789,6 +3789,17 @@ const parentProtocols: IParentProtocol[] = [
     github: ["baker-fi"],
     twitter: "taikainetwork",
   },
+  {
+    id: "parent#ilend",
+    name: "iLend",
+    url: "https://ilend.xyz",
+    description: "The First Native Money Markets Protocol on Injective",
+    logo: `${baseIconsUrl}/ilend.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "iLendorg",
+  },
 ];
 
 export default parentProtocols;

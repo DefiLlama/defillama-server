@@ -30389,7 +30389,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4065",
-    name: "iLend",
+    name: "iLend V1",
     address: null,
     symbol: "-",
     url: "https://ilend.xyz",
@@ -30406,6 +30406,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "ilend/index.js",
     twitter: "iLendorg",
+    parentProtocol: "parent#ilend",
     listedAt: 1706186055
   },
   {
@@ -33098,6 +33099,52 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1709067462
+  },
+  {
+    id: "4184",
+    name: "Haiko",
+    address: null,
+    symbol: "-",
+    url: "https://www.haiko.xyz/",
+    description:
+      "Haiko is an audited Automated Market Maker (AMM) protocol live on Starknet Mainnet, providing simple access to market making yield with Automated Strategies,",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/haiko.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Starknet"],
+    module: "haiko/index.js",
+    twitter: "haikoxyz",
+    forkedFrom: [],
+    oracles: [],
+    github: ["haiko-xyz"],
+    audit_links: ["https://haiko-docs.gitbook.io/docs/security-and-audits"],
+    listedAt: 1709071097
+  },
+  {
+    id: "4185",
+    name: "iLend V2",
+    address: null,
+    symbol: "-",
+    url: "https://ilend.xyz",
+    description: "The First Native Money Markets Protocol on Injective",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/ilend.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Injective"],
+    oracles: [],  
+    forkedFrom: [],
+    module: "ilend_v2/index.js",
+    twitter: "iLendorg",
+    parentProtocol: "parent#ilend",
+    listedAt: 1709071101
   },
 ]
 

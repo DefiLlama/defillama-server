@@ -73,8 +73,8 @@ async function queryPostgresWithRetry(
     if (counter > 5) throw e;
     await sleep(5000 + 1e4 * Math.random());
     if (counter == 3) {
-      await closeConnection();
-      sql = await getCoins2Connection();
+      // await closeConnection();
+      // sql = await getCoins2Connection();
     }
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
@@ -470,7 +470,7 @@ async function cleanConfidences(
     confidentValues.push(c);
   });
 
-  await storeChangedAdapter(changedAdapters);
+  // await storeChangedAdapter(changedAdapters);
   return confidentValues;
 }
 export async function writeToRedis(

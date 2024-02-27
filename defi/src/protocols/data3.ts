@@ -32984,6 +32984,52 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1708971950
   },
+  {
+    id: "4179",
+    name: "Fixes World",
+    address: null,
+    symbol: "-",
+    url: "https://fixes.world",
+    description:
+      "FIXeS is an executable inscription protocol on Flow blockchain. It allows users to inscribe anything on the blockchain and also provides the 𝔉rc20 fungible tokens.",
+    chain: "Flow",
+    logo: `${baseIconsUrl}/fixes-world.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Flow"],
+    module: "fixes-frc20/index.js",
+    twitter: "fixesOnFlow",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#fixes-inscription",
+    listedAt: 1709032664
+  },
+  {
+    id: "4180",
+    name: "Fixes World Staking",
+    address: null,
+    symbol: "-",
+    url: "https://fixes.world",
+    description:
+      "FIXeS is an executable inscription protocol on Flow blockchain. It allows users to inscribe anything on the blockchain and also provides the 𝔉rc20 fungible tokens.",
+    chain: "Flow",
+    logo: `${baseIconsUrl}/fixes-world-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Flow"],
+    module: "fixes-frc20-staking/index.js",
+    twitter: "fixesOnFlow",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#fixes-inscription",
+    listedAt: 1709032689
+  },
 ]
 
 export default data3

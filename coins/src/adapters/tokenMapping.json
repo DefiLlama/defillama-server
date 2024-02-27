@@ -139,6 +139,16 @@
     }
   },
   "ethereum": {
+    "0x5C5e5117E26374870c80a5FA04c3f75a821440D6": {
+      "decimals": "18",
+      "symbol": "stkcvxcrvUSDUSDT-f",
+      "to": "ethereum:0x390f3595bca2df7d23783dfd126427cceb997bf4"
+    },
+    "0xDb4217B9C8DB788Aa3871d45B4BE6ac5D1FF8C49": {
+      "decimals": "18",
+      "symbol": "stkcvxcrvUSDUSDC-f",
+      "to": "ethereum:0x4dece678ceceb27446b35c672dc7d61f30bad69e"
+    },
     "0xbce0cf87f513102f22232436cca2ca49e815c3ac": {
       "decimals": "18",
       "symbol": "pxCVX",

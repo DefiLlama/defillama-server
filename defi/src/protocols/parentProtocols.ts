@@ -3765,6 +3765,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SatoriFinance",
     github: ["satori-hq"],
   },
+  {
+    id: "parent#fixes-inscription",
+    name: "Fixes Inscription",
+    url: "https://fixes.world",
+    description: "FIXeS is an executable inscription protocol on Flow blockchain. It allows users to inscribe anything on the blockchain and also provides the 𝔉rc20 fungible tokens.",
+    logo: `${baseIconsUrl}/fixes-inscription.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "fixesOnFlow",
+    github: ["fixes-world"],
+  },
 ];
 
 export default parentProtocols;

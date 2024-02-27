@@ -7,6 +7,7 @@ import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import configs from "../data/configs"
 import { Op, QueryTypes } from "sequelize"
 import { sliceIntoChunks } from "@defillama/sdk/build/util"
+import { IJSON } from "../data/types"
 
 let isInitialized: any
 
@@ -16,7 +17,6 @@ async function init() {
 }
 
 export async function storeAdapterRecord(record: AdapterRecord2, retriesLeft = 3) {
-
   try {
 
     await init()
@@ -44,6 +44,10 @@ export async function storeAdapterRecord(record: AdapterRecord2, retriesLeft = 3
 
 // used for migration from old db
 export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
+  const recordMap: IJSON<AdapterRecord2> = {}
+  records.map(i => recordMap[i.getUniqueKey()] = i)
+  records = Object.values(recordMap)
+
 
   await init()
 
@@ -55,10 +59,10 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
 
 
   // you can write max 25 items at a time to dynamodb
-  const ddbChunks = sliceIntoChunks(ddbItems, 25)
+  /* const ddbChunks = sliceIntoChunks(ddbItems, 25)
   for (const chunk of ddbChunks) {
     await writeChunkToDDB(chunk)
-  }
+  } */
 
   await Tables.DIMENSIONS_DATA.bulkCreate(pgItems, {
     updateOnDuplicate: ['timestamp', 'data', 'type']

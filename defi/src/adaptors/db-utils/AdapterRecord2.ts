@@ -50,7 +50,7 @@ export class AdapterRecord2 {
     this.id = adaptorId
   }
 
-  static formAdaptarRecord2({ adaptorRecords, protocolType, adapterType, protocol, configIdMap, }: {
+  static formAdaptarRecord2({ adaptorRecords, protocolType, adapterType, protocol, configIdMap, skipZeroValue = false }: {
     adaptorRecords: {
       [key: string]: AdaptorRecord
     },
@@ -58,38 +58,41 @@ export class AdapterRecord2 {
     adapterType: AdapterType,
     protocol: ProtocolAdaptor,
     configIdMap: any,
+    skipZeroValue?: boolean
   }): AdapterRecord2 | null {
     // clone & clean to be safe
     const data: DataJSON = { aggregated: {} }
-    let eventTimestamp: number
     const adaptorId = protocol.id2
     const configItem = configIdMap[adaptorId] ?? configIdMap[protocol.id]
     const hasBreakdown = !!configItem.protocolsData
-    const whitelistedVersionKeys = new Set(hasBreakdown ? Object.keys(configItem.protocolsData) : [])
+    let whitelistedVersionKeys = new Set(hasBreakdown ? Object.keys(configItem.protocolsData) : [protocol.module])
+    const skipAdapterKeyCheck = hasBreakdown || !protocol.isProtocolInOtherCategories
+    let timestamp
     Object.keys(adaptorRecords).forEach((key: any) => transformRecord((adaptorRecords as any)[key].getCleanAdaptorRecord(), key))
 
-    if (!eventTimestamp!) {
+    if (!timestamp || Object.keys(data.aggregated).length === 0) {
       // console.info('empty record?')
-      console.info('empty record?', protocol.id2, protocol.name, adaptorRecords, protocolType, adapterType)
+      if (Object.keys(data.aggregated).length)
+        console.info('empty record?',skipAdapterKeyCheck, protocol.module, protocol.id2, protocol.name, JSON.stringify(adaptorRecords), JSON.stringify(data.aggregated), protocolType, adapterType)
       return null
     }
 
-    return new AdapterRecord2({ data, adaptorId, adapterType, timestamp: eventTimestamp, protocolType, })
+    return new AdapterRecord2({ data, adaptorId, adapterType, timestamp: timestamp!, protocolType, })
 
 
     function transformRecord(record: AdaptorRecord | null, key: AdaptorRecordType) {
       if (!record) return;
-      eventTimestamp = record.timestamp
+      
+      timestamp = record.timestamp
       let value = 0
-      const chains: {
-        [chain: string]: number
-      } = {}
+      const chains: { [chain: string]: number } = {}
       let breakdown: any = {}
+
       Object.keys(record.data).forEach((chain: any) => {
         const chainData: any = record.data[chain]
         chain = chain.endsWith('_key') ? chain.slice(0, -4) : chain
         Object.keys(chainData).forEach((key: any) => {
-          if (hasBreakdown && !whitelistedVersionKeys.has(key)) return;
+          if (!skipAdapterKeyCheck && !whitelistedVersionKeys.has(key)) return;
           const chainDataKey: number = chainData[key]
           value += chainDataKey
           chains[chain] = (chains[chain] ?? 0) + chainDataKey
@@ -105,12 +108,20 @@ export class AdapterRecord2 {
           }
         })
       })
+
+      if (skipZeroValue && value === 0) return;
+
       data.aggregated[key] = { value, chains, }
       if (hasBreakdown) {
         if (!data.breakdown) data.breakdown = {}
         data.breakdown[key] = breakdown
       }
+
     }
+  }
+
+  getUniqueKey() {
+    return `${this.adapterType}#${this.id}#${this.timeS}`
   }
 
   getPGItem() {

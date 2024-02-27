@@ -3,7 +3,7 @@ import parentProtocols from "../../../protocols/parentProtocols";
 import { AdaptorsConfig, IJSON } from "../types"
 import { getDisplayChainName, getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
-import { BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { getChainDisplayName } from "../../../utils/normalizeChain"
 import chainCoingeckoIds from "./chains"
 import { baseIconsUrl } from "../../../constants";
@@ -137,8 +137,8 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
 }
 
 
-export function generateProtocolAdaptorsList2(imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): ProtocolAdaptor[] {
-  return Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
+export function generateProtocolAdaptorsList2({allImports, config, adapterType, otherATId2s }: {allImports: IImportsMap, config: AdaptorsConfig, adapterType?: AdapterType, otherATId2s: Set<string>}): ProtocolAdaptor[] {
+  return Object.entries(allImports).map(([adapterKey, adapterObj]) => {
     try {
       let list = protocolMap
       if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN)
@@ -148,7 +148,7 @@ export function generateProtocolAdaptorsList2(imports_obj: IImportsMap, config: 
       let configObj = config[adapterKey]
       if (!configObj?.enabled) return;
       const protocolId = config?.[adapterKey].id
-      let moduleObject = imports_obj[adapterKey].module.default
+      let moduleObject = allImports[adapterKey].module.default
       if (!moduleObject) throw new Error(`No module found for ${adapterKey}`)
 
       const protocolType = (moduleObject as any).default?.protocolType
@@ -171,7 +171,7 @@ export function generateProtocolAdaptorsList2(imports_obj: IImportsMap, config: 
 
         const protocolsData = config?.[adapterKey]?.protocolsData
         if (!protocolsData)
-          console.error(`No protocols data defined in ${type}'s config for adapter with breakdown`, adapterKey)
+          console.error(`No protocols data defined in ${adapterType}'s config for adapter with breakdown`, adapterKey)
         const ids: Array<string> = []
         const parentIds: Array<string> = []
 
@@ -196,12 +196,13 @@ export function generateProtocolAdaptorsList2(imports_obj: IImportsMap, config: 
           }
 
           if (!childProtocol) console.error(`Protocol not found with id ${versionConfig.id} and key ${adapterKey}`)
+          const id2 = protocolType === ProtocolType.CHAIN ? `chain#${id}` : id
 
           childProtocols.push({
             ...childProtocol,
             ...childConfig,
             id,
-            id2: protocolType === ProtocolType.CHAIN ? `chain#${id}` : id,
+            id2,
             defillamaId: versionConfig.id,
             module: adapterKey,
             config: { ...childConfig },
@@ -211,8 +212,9 @@ export function generateProtocolAdaptorsList2(imports_obj: IImportsMap, config: 
             displayName: childConfig.displayName ?? childProtocol.name,
             protocolType,
             versionKey,
+            isProtocolInOtherCategories: otherATId2s.has(id2),
             methodologyURL: adapterObj.codePath,
-            methodology: getMethodologyDataByBaseAdapter(adapter, type, childProtocol.category) ?? undefined
+            methodology: getMethodologyDataByBaseAdapter(adapter, adapterType, childProtocol.category) ?? undefined
           })
         })
 
@@ -240,13 +242,14 @@ export function generateProtocolAdaptorsList2(imports_obj: IImportsMap, config: 
       const parentConfig = JSON.parse(JSON.stringify(config[adapterKey]))
       delete parentConfig.protocolsData
       const id = isNaN(+configObj.id) ? configObj.id : config[adapterKey].id // used to query db, eventually should be changed to defillamaId
+      const id2 = protocolType === ProtocolType.CHAIN ? `chain#${id}` : id
 
 
       const infoItem: ProtocolAdaptor = {
         ...protocol!,
         ...configObj,
         id,
-        id2: protocolType === ProtocolType.CHAIN ? `chain#${id}` : id,
+        id2,
         defillamaId: protocol.id,
         module: adapterKey,
         config: { ...configObj, },
@@ -256,11 +259,12 @@ export function generateProtocolAdaptorsList2(imports_obj: IImportsMap, config: 
         disabled: configObj.disabled ?? false,
         displayName: configObj.displayName ?? protocol!.name,
         protocolType,
+        isProtocolInOtherCategories: otherATId2s.has(id2),
         methodologyURL: adapterObj.codePath,
         methodology: undefined
       } as any
 
-      const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, type, infoItem.category)
+      const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
       if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
 
@@ -269,7 +273,7 @@ export function generateProtocolAdaptorsList2(imports_obj: IImportsMap, config: 
 
     } catch (e) {
       console.error(e)
-      console.error(`Missing info for ${adapterKey} on ${type}`)
+      console.error(`Missing info for ${adapterKey} on ${adapterType}`)
       return undefined
     }
   }).filter(notUndefined);

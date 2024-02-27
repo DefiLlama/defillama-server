@@ -26,7 +26,7 @@ async function run() {
   // Go over all types
   for (const adapterType of ADAPTER_TYPES) {
 
-    // if (adapterType !== AdapterType.AGGREGATORS) continue;
+    if (adapterType !== AdapterType.AGGREGATORS) continue;
 
     const consoleKey = `-----------------adapterType: ${adapterType}`
     console.time(consoleKey)
@@ -44,10 +44,10 @@ async function run() {
     let progressCount = 0
     const total = protocolAdaptors.length
 
-    const { errors } = await PromisePool.withConcurrency(5)
+    const { errors } = await PromisePool.withConcurrency(25)
       .for(protocolAdaptors)
       .process(async (protocol) => {
-        if (protocol.id2 !== '2052') return;
+        // if (protocol.id2 !== '2116') return;
         const protocolData = data[protocol.id2]
         if (!protocolData) {
           console.error(`No records found for ${protocol.id2} ${protocol.name}`)
@@ -55,10 +55,12 @@ async function run() {
         }
 
         console.log(`${protocol.id2} ${protocol.name} ${Object.keys(protocolData).length} items`)
-
+        let count = 0
         const dataDayMap: any = {}
         Object.keys(protocolData).forEach((recordType) => {
           protocolData[recordType].forEach((record: any) => {
+            count++
+            // if (count > 12) return;
             if (!record.timestamp) throw new Error(`No timestamp found for ${protocol.id2} ${protocol.name} ${recordType}`)
             const dateKey = getTimestampString(record.timestamp)
             if (!dataDayMap[dateKey]) dataDayMap[dateKey] = {}
@@ -67,21 +69,21 @@ async function run() {
         })
         const protocolKey = `Writing ${adapterType} ${protocol.id2} ${protocol.name} ${Object.keys(dataDayMap).length} days`
         console.time(protocolKey)
-        const items: AdapterRecord2[] = Object.values(dataDayMap).map((adaptorRecords: any) => AdapterRecord2.formAdaptarRecord2({ adaptorRecords, adapterType, protocol, configIdMap, protocolType: protocol.protocolType })).filter(i => i) as any
+        const items: AdapterRecord2[] = Object.values(dataDayMap).map((adaptorRecords: any) => AdapterRecord2.formAdaptarRecord2({ adaptorRecords, adapterType, protocol, configIdMap, protocolType: protocol.protocolType, skipZeroValue: true })).filter(i => i) as any
 
         // if (protocol.id2 === '3951')
         //   items.map((item: any) => console.log(item.data.aggregated.dv))
 
-        // await storeAdapterRecordBulk(items)
-        const chunks = sliceIntoChunks(items, 5)
-        for (const chunk of chunks) {
-          try {
-            await storeAdapterRecordBulk(chunk)
-          } catch (error) {
-            console.error(`Error writing to ddb`, error)
-            console.log(JSON.stringify(chunk, null, 2)  )
-          }
-        }
+        await storeAdapterRecordBulk(items)
+        // const chunks = sliceIntoChunks(items, 5)
+        // for (const chunk of chunks) {
+        //   try {
+        //     await storeAdapterRecordBulk(chunk)
+        //   } catch (error) {
+        //     console.error(`Error writing to ddb`, error)
+        //     console.log(JSON.stringify(chunk, null, 2)  )
+        //   }
+        // }
 
         console.timeEnd(protocolKey)
         console.log(`Progress: ${adapterType} ${Number(++progressCount * 100 / total).toFixed(2)} % `)

@@ -1,4 +1,4 @@
-import { AdapterType, } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import { AdaptorData, IJSON, ProtocolAdaptor } from "./types";
 import * as dexData from "./dexs"
 import * as derivativesData from "./derivatives"
@@ -10,6 +10,7 @@ import * as protocolsData from "./protocols"
 import * as royaltiesData from "./royalties"
 import * as aggregatorDerivativesData from "./aggregator-derivatives";
 import generateProtocolAdaptorsList, { IImportsMap, generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
+import { ADAPTER_TYPES } from "../handlers/triggerStoreAdaptorData";
 
 const mapping = {
   [AdapterType.DEXS]: dexData,
@@ -36,9 +37,41 @@ export default (adaptorType: AdapterType): AdaptorData => {
 
 const protocolImports = protocolsData.imports
 
+function getOtherAdaperTypeId2s(adapterType: AdapterType): Set<string> {
+  const otherAdapterIds = new Set<string>()
+
+  ADAPTER_TYPES.forEach((type) => {
+    if (type === adapterType) return;
+    if (!mapping[type]) return;
+    const imports = getImports(type)
+    const config = mapping[type].config
+    Object.entries(imports).forEach(([adapterKey, adapterObj]) => {
+      if (!config[adapterKey]?.enabled) return;
+      const isChain = adapterObj.module.default?.protocolType === ProtocolType.CHAIN
+      const id = isChain ? 'chain#' + config[adapterKey].id : config[adapterKey].id
+      otherAdapterIds.add(id)
+      Object.values(config[adapterKey].protocolsData ?? {}).forEach(config => {
+        if (config.enabled) otherAdapterIds.add(config.id)
+      })
+    })
+  })
+
+  return otherAdapterIds
+}
+
 const allImportsSqaushed = Object.values(mapping).reduce((acc, curr) => {
   return { ...acc, ...curr.imports }
 }, {})
+
+function getImports(adapterType: AdapterType) {
+  if (!all.imports[adapterType])
+    all.imports[adapterType] = {
+      ...allImportsSqaushed,
+      ...protocolImports,
+      ...mapping[adapterType].imports,
+    }
+  return all.imports[adapterType]
+}
 
 const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
 
@@ -47,14 +80,9 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
   if (!mapping[adapterType]) throw new Error(`Couldn't find data for ${adapterType} type`)
   const { config, KEYS_TO_STORE, imports } = mapping[adapterType]
 
-  if (!all.imports[adapterType])
-    all.imports[adapterType] = {
-      ...allImportsSqaushed,
-      ...protocolImports,
-      ...imports,
-    }
-
-  const protocolAdaptors = generateProtocolAdaptorsList2(all.imports[adapterType], config, adapterType)
+  const allImports = getImports(adapterType)
+  const otherATId2s = getOtherAdaperTypeId2s(adapterType)
+  const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, otherATId2s })
   const childProtocolAdaptors = protocolAdaptors.flatMap((protocolAdaptor: ProtocolAdaptor) => protocolAdaptor.childProtocols || [])
   const protocolMap = protocolAdaptors.reduce((acc, curr) => {
     acc[curr.id2] = curr

@@ -21,6 +21,8 @@ export function getKey(adaptor: ProtocolAdaptor, recordType: AdaptorRecordType) 
 async function run() {
   // Go over all types
   const promises: any = ADAPTER_TYPES.map(async (adapterType) => {
+    if (adapterType !== AdapterType.AGGREGATORS) return;
+    
     const data: any = {}
     const fileKey = getFileCacheKey(adapterType)
     const recordTypes = getAdapterRecordTypes(adapterType)
@@ -72,8 +74,6 @@ async function wrappedGetAdaptorRecord(adapter: ProtocolAdaptor, type: AdaptorRe
   const key = getKey(adapter, type)
   if (!cachePromises[key])
     cachePromises[key] = getAdaptorRecord2({ adapter, type,})
-  else 
-    console.info('------------cache hit', key)
   return cachePromises[key]
 }
 

@@ -1,140 +1,415 @@
 import { AdaptorRecord, AdaptorRecordType, getAdaptorRecord2, } from "../../adaptors/db-utils/adaptor-record";
 import { ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, getExtraN30DTypes, getExtraTypes, } from "../../adaptors/handlers/getOverviewProcess";
-import { writeToPGCache, } from "../cache/file-cache";
+import { readFromPGCache, writeToPGCache, } from "../cache/file-cache";
 import { AdapterType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data"
-import { ProtocolAdaptor } from "../../adaptors/data/types";
-import { getFileCacheKey, getAdapterCacheKey as getKey } from "../utils/dimensionsUtils";
+import { IJSON, ProtocolAdaptor } from "../../adaptors/data/types";
+import { getDimensionsCacheV2, storeDimensionsCacheV2, } from "../utils/dimensionsUtils";
 import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
+import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
+import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
+import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow } from "../utils/time";
+
+
+const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
+const lastTimeString = getTimeSDaysAgo(0)
+const dayBeforeLastTimeString = getTimeSDaysAgo(1)
+const weekAgoTimeString = getTimeSDaysAgo(7)
+const monthAgoTimeString = getTimeSDaysAgo(30)
+const lastWeekTimeStrings = new Set(Array.from({ length: 7 }, (_, i) => getTimeSDaysAgo(i)))
+const lastTwoWeektoLastWeekTimeStrings = new Set(Array.from({ length: 7 }, (_, i) => getTimeSDaysAgo(i + 7)))
+const lastTwoWeekTimeStrings = new Set(Array.from({ length: 14 }, (_, i) => getTimeSDaysAgo(i)))
+const last30DaysTimeStrings = new Set(Array.from({ length: 30 }, (_, i) => getTimeSDaysAgo(i)))
+const last60to30DaysTimeStrings = new Set(Array.from({ length: 30 }, (_, i) => getTimeSDaysAgo(i + 30)))
+const lastOneYearTimeStrings = new Set(Array.from({ length: 365 }, (_, i) => getTimeSDaysAgo(i)))
 
 async function run() {
+
   // Go over all types
+  // const data = await getDimensionsCacheV2()
+  const data: any = {}
+
+  function roundVaules(obj: any) {
+    if (!obj) return obj;
+    if (typeof obj === 'number') return Math.round(obj)
+    if (typeof obj === 'object') {
+      Object.entries(obj).forEach(([key, value]) => {
+        obj[key] = roundVaules(value)
+      })
+    }
+    return obj
+  }
+
   const promises: any = ADAPTER_TYPES.map(async (adapterType) => {
-    const data: any = {}
-    const fileKey = getFileCacheKey(adapterType)
-    const recordTypes = getAdapterRecordTypes(adapterType)
-    const pormises = recordTypes.map(i => _writeAdapterType(adapterType, i, data))
-    await Promise.all(pormises)
-    await writeToPGCache(fileKey, data)
-  })
-  await Promise.all(promises)
-}
+    if (adapterType !== AdapterType.AGGREGATORS) return;
 
-let cachePromises: any = {}
+    const timeKey1 = `data load ${adapterType}`
+    const timeKey2 = `db call ${adapterType}`
+    const timeKey3 = `summary ${adapterType}`
 
-async function _writeAdapterType(adapterType: AdapterType, recordType: AdaptorRecordType, data: any) {
-  try {
-    await writeAdapterType(adapterType, recordType, data)
-  } catch (error) {
-    console.error(`Couldn't write adaptorRecordType: ${adapterType} recordType: ${recordType}`, error)
-  }
-}
+    console.time(timeKey1)
+    const { protocolMap } = loadAdaptorsData(adapterType)
+    console.timeEnd(timeKey1)
 
-async function writeAdapterType(adapterType: AdapterType, recordType: AdaptorRecordType, data: any) {
-  const timeKey = `write adapterType: ${adapterType} recordType: ${recordType}`
-  console.time(timeKey)
+    if (!data[adapterType]) data[adapterType] = {
+      lastUpdated: 0,
+      protocols: {}
+    }
+    const adapterData = data[adapterType]
 
-  if (!Object.values(AdaptorRecordType).includes(recordType)) {
-    console.error("Invalid data type", recordType)
-    return
-  }
-  const loadedAdaptors = loadAdaptorsData(adapterType)
-  const protocolsList = Object.keys(loadedAdaptors.config)
-  const adaptersList: ProtocolAdaptor[] = []
-  try {
-    loadedAdaptors.default.forEach(va => {
-      if (protocolsList.includes(va.module))
-        if (loadedAdaptors.config[va.module]?.enabled)
-          adaptersList.push(va)
-      return
+    let lastUpdated = data[adapterType].lastUpdated ? data[adapterType].lastUpdated - 10 * 60 : 0 // 10 minutes ago
+
+    const results = await getAllItemsUpdatedAfter({ adapterType, timestamp: lastUpdated })
+
+    console.time(timeKey3)
+
+    results.forEach((result: any) => {
+      const { id, timestamp, data, timeS, } = result
+      roundVaules(data)
+      if (!adapterData.protocols[id]) adapterData.protocols[id] = {
+        records: {}
+      }
+      adapterData.protocols[id].records[timeS] = { ...data, timestamp, }
     })
-  } catch (error) {
-    console.error(`Couldn't load adaptors with type ${adapterType} :${JSON.stringify(error)}`, error)
-    return;
-  }
 
-  await Promise.all(adaptersList.map(async (adapter) => {
-    const dataFileKey = `${recordType}/${adapterType}/${adapter.id}`
-    try {
+    const summaries: IJSON<RecordSummary> = {}
+    const chainSet = new Set<string>()
+    const recordTypes = getAdapterRecordTypes(adapterType)
 
-      const adaptorRecordsRaw = await wrappedGetAdaptorRecord(adapter, recordType)
-      data[getKey(adapter, recordType)] = adaptorRecordsRaw
-      // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
-      if (!(adaptorRecordsRaw instanceof Array)) throw new Error("Wrong volume queried")
-      if (adaptorRecordsRaw.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored`)
+    for (const [id, protocol] of Object.entries(adapterData.protocols) as any) {
+      if (!protocolMap[id]) continue; // skip if protocol is not enabled
+      // console.log('Processing', protocolMap[id].displayName, Object.values(adapterData.protocols[id].records).length, 'records')
 
-      let lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 1]
+      const protocolName = protocolMap[id].displayName ?? protocolMap[id].name
+      const protocolData: any = {}
+      protocol.summaries = {} as any
+      const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData(protocol.records)
 
-      const lastKey = ACCOMULATIVE_ADAPTOR_TYPE[recordType]
-      if (lastKey) {
-        const rawTotalRecord = await wrappedGetAdaptorRecord(adapter, lastKey, "LAST").catch(_e => { }) as AdaptorRecord | undefined
-        if (rawTotalRecord)
-          data[getKey(adapter, lastKey, 'LAST')] = rawTotalRecord
-        // enable below lines to get & clean cummulative records - but there is no point in caching all cummulative records, we are interested only in the last one
-        // const allRecords = await wrappedGetAdaptorRecord(adapter, lastKey)
-        // if ((allRecords as any)?.length)
-        //   data[getKey(adapter, lastKey)] = allRecords
-      }
+      Object.entries(protocolRecordMapWithMissingData).forEach(([timeS, record]: any) => {
+        let { aggregated, timestamp } = record
 
-      for (const recordType of getExtraTypes(adapterType)) {
-        const value = await wrappedGetAdaptorRecord(adapter, recordType, "TIMESTAMP", lastRecordRaw.timestamp).catch(_e => { }) as AdaptorRecord | undefined
-        if (value)
-          data[getKey(adapter, recordType, 'TIMESTAMP')] = value
+        if (timestamp > startOfDayTimestamp) return; // skip today's data
 
-      }
+        if (!summaries.earliestTimestamp || timestamp < summaries.earliestTimestamp) summaries.earliestTimestamp = timestamp
 
-      for (const recordType of getExtraN30DTypes(adapterType)) {
-        const key = getKey(adapter, recordType)
-        let existingData = data[key] ?? []
-        let lastKey = existingData.length ? existingData[existingData.length - 1].data.eventTimestamp : undefined
-        if (lastKey) lastKey -= 2 * 24 * 3600 // 2 days ago
-         const value = await wrappedGetAdaptorRecord(adapter, recordType, lastKey).catch(_e => { }) as AdaptorRecord | undefined
-        if (value)
-          data[getKey(adapter, recordType)] = removeDupsAndSortArrays(existingData, value)
-      }
 
-    } catch (error) {
-      const errorStr = error!.toString()
-      if (!errorStr.includes("No items found ") && !errorStr.includes('No protocols data')) {
-        console.error('error', dataFileKey, error)
+        Object.entries(aggregated).forEach(([recordType, aggData]: any) => {
+          let { chains, value } = aggData
+
+          if (value === 0) return; // skip zero values
+
+          if (!summaries[recordType]) summaries[recordType] = initSummaryItem()
+          if (!protocolData[recordType]) protocolData[recordType] = initProtocolDataItem()
+
+          const summary = summaries[recordType] as RecordSummary
+          const protocolRecord = protocolData[recordType]
+
+          if (!summary.chart[timeS]) {
+            summary.chart[timeS] = 0
+            summary.chartBreakdown[timeS] = {}
+          }
+
+          summary.chart[timeS] += value
+          summary.chartBreakdown[timeS][protocolName] = value
+
+          if (timestamp > protocolRecord.latestTimestamp)
+            protocolRecord.latest = record
+          if (timeS === lastTimeString) {
+            // summary.total24h += value
+            protocolRecord.today = record
+          } else if (timeS === dayBeforeLastTimeString) {
+            // summary.total48hto24h += value
+            protocolRecord.yesterday = record
+          } else if (timeS === weekAgoTimeString) {
+            protocolRecord.sevenDaysAgo = record
+          } else if (timeS === monthAgoTimeString) {
+            protocolRecord.thirtyDaysAgo = record
+          }
+
+          if (lastWeekTimeStrings.has(timeS)) {
+            protocolRecord.lastWeekData.push(aggData)
+          } else if (lastTwoWeektoLastWeekTimeStrings.has(timeS)) {
+            protocolRecord.lastTwoWeekToOneWeekData.push(aggData)
+          } else if (lastTwoWeekTimeStrings.has(timeS)) {
+            protocolRecord.lastTwoWeekData.push(aggData)
+          } else if (last30DaysTimeStrings.has(timeS)) {
+            protocolRecord.last30DaysData.push(aggData)
+          } else if (last60to30DaysTimeStrings.has(timeS)) {
+            protocolRecord.last60to30DaysData.push(aggData)
+          } else if (lastOneYearTimeStrings.has(timeS)) {
+            protocolRecord.lastOneYearData.push(aggData)
+          }
+
+          Object.keys(chains).forEach(chain => chainSet.add(chain))
+          Object.entries(chains).forEach(([chain, value]: any) => {
+            if (!value) return; // skip zero values
+            if (!summary.chainSummary![chain])
+              summary.chainSummary![chain] = initSummaryItem(true)
+            const chainSummary = summary.chainSummary![chain]
+
+            if (!chainSummary.earliestTimestamp || timestamp < chainSummary.earliestTimestamp)
+              chainSummary.earliestTimestamp = timestamp
+
+
+
+            chainSummary.chart[timeS] = (chainSummary.chart[timeS] ?? 0) + value
+            if (!chainSummary.chartBreakdown[timeS]) chainSummary.chartBreakdown[timeS] = {}
+            chainSummary.chartBreakdown[timeS][protocolName] = value
+          })
+        })
+      })
+
+      for (const recordType of recordTypes) {
+        let _protocolData = protocolData[recordType]
+        if (!_protocolData) continue
+        const todayRecord = _protocolData.today || _protocolData.latest
+        const yesterdayRecord = _protocolData.yesterday || _protocolData.latest
+        const protocolSummary = initSummaryItem() as ProtocolSummary
+        protocol.summaries[recordType] = protocolSummary
+
+        addToSummary({ record: todayRecord?.aggregated[recordType], summaryKey: 'total24h', recordType, protocolSummary })
+        addToSummary({ record: yesterdayRecord?.aggregated[recordType], summaryKey: 'total48hto24h', recordType, protocolSummary })
+        addToSummary({ record: _protocolData.sevenDaysAgo?.aggregated[recordType], summaryKey: 'total7DaysAgo', recordType, protocolSummary })
+        addToSummary({ record: _protocolData.thirtyDaysAgo?.aggregated[recordType], summaryKey: 'total30DaysAgo', recordType, protocolSummary })
+        addToSummary({ records: _protocolData.lastWeekData, summaryKey: 'total7d', recordType, protocolSummary })
+        // addToSummary({ records: _protocolData.lastTwoWeekData, summaryKey: 'total14d', recordType, protocolSummary })
+        addToSummary({ records: _protocolData.lastTwoWeekToOneWeekData, summaryKey: 'total14dto7d', recordType, protocolSummary })
+        addToSummary({ records: _protocolData.last30DaysData, summaryKey: 'total30d', recordType, protocolSummary })
+        addToSummary({ records: _protocolData.last60to30DaysData, summaryKey: 'total60dto30d', recordType, protocolSummary })
+        addToSummary({ records: _protocolData.lastOneYearData, summaryKey: 'total1y', recordType, protocolSummary })
+
+        // totalAllTime
+        Object.values(protocol.records).forEach(({ aggregated }: any) => {
+          if (!aggregated[recordType]) return;
+          const { value, chains } = aggregated[recordType]
+          if (!protocolSummary.totalAllTime) protocolSummary.totalAllTime = 0
+          protocolSummary.totalAllTime += value
+          Object.entries(chains).forEach(([chain, value]: any) => {
+            if (!protocolSummary.chainSummary![chain]) protocolSummary.chainSummary![chain] = initSummaryItem(true)
+            const chainSummary = protocolSummary.chainSummary![chain] as ProtocolSummary
+            if (!chainSummary.totalAllTime) chainSummary.totalAllTime = 0
+            chainSummary.totalAllTime += value
+          })
+        })
+
+        // average1y
+        protocolSummaryAction(protocolSummary, (summary: any) => {
+          if (summary.total1y && _protocolData.lastOneYearData?.length > 0)
+            summary.average1y = summary.total1y / protocol.records.length
+        })
+        // change_1d
+        protocolSummaryAction(protocolSummary, (summary: any) => {
+          if (typeof summary.total24h === 'number' && typeof summary.total48hto24h === 'number' && summary.total48hto24h !== 0)
+            summary.change_1d = (summary.total24h - summary.total48hto24h) / summary.total48hto24h
+        })
+        // change_7d
+        protocolSummaryAction(protocolSummary, (summary: any) => {
+          if (typeof summary.total24h === 'number' && typeof summary.total7DaysAgo === 'number' && summary.total7DaysAgo !== 0)
+            summary.change_7d = (summary.total24h - summary.total7DaysAgo) / summary.total7DaysAgo
+        })
+        // change_30d
+        protocolSummaryAction(protocolSummary, (summary: any) => {
+          if (typeof summary.total24h === 'number' && typeof summary.total30DaysAgo === 'number' && summary.total30DaysAgo !== 0)
+            summary.change_7d = (summary.total24h - summary.total30DaysAgo) / summary.total30DaysAgo
+        })
+        // change_7dover7d
+        protocolSummaryAction(protocolSummary, (summary: any) => {
+          if (typeof summary.total7d === 'number' && typeof summary.total14dto7d === 'number' && summary.total14dto7d !== 0)
+            summary.change_7dover7d = (summary.total7d - summary.total14dto7d) / summary.total14dto7d
+        })
+        // change_30dover30d
+        protocolSummaryAction(protocolSummary, (summary: any) => {
+          if (typeof summary.total30d === 'number' && typeof summary.total60dto30d === 'number' && summary.total60dto30d !== 0)
+            summary.change_30dover30d = (summary.total30d - summary.total60dto30d) / summary.total60dto30d
+        })
+
+        // breakdown24h
+        const todayData = protocol.records[lastTimeString]
+        if (todayData) {
+          const { aggregated, breakdown = {} } = todayData
+          protocolSummary.breakdown24h = {}
+          Object.entries(breakdown).forEach(([recordType, breakdown]: any) => {
+            if (!aggregated[recordType]) return;
+            let breakdownData = breakdown ?? { [protocolName]: aggregated[recordType].chains }
+            const result: any = {}
+            Object.entries(breakdownData).forEach(([subModuleName, { chains}]: any) => {
+              Object.entries(chains).forEach(([chain, value]: any) => {
+                if (!result[chain]) result[chain] = {}
+                result[chain][subModuleName] = value
+              })
+            })
+            protocolSummary.breakdown24h[recordType] = result
+          })
+        } else {
+          protocolSummary.breakdown24h = null
+        }
       }
     }
-  }))
-  console.timeEnd(timeKey)
+
+    // delete (summaries.dv as any).chart
+    // delete (summaries.dv as any).chartBreakdown
+    // delete (summaries as any).earliestTimestamp
+
+    // adapterData.allChains = Array.from(chainSet)
+    // adapterData.protocols = {}
+    adapterData.summaries = summaries
+    adapterData.lastUpdated = getUnixTimeNow()
+    console.timeEnd(timeKey3)
+
+    function addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, protocolSummary }: { records?: any[], recordType: string, summaryKey: string, chainSummaryKey?: string, record?: any, protocolSummary: any }) {
+      if (protocolSummary) _addToSummary({ record, records, recordType, summaryKey, chainSummaryKey, summary: protocolSummary })
+      _addToSummary({ record, records, recordType, summaryKey, chainSummaryKey })
+    }
+    function _addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, summary }: { records?: any[], recordType: string, summaryKey: string, chainSummaryKey?: string, record?: any, summary?: any }) {
+      if (!chainSummaryKey) chainSummaryKey = summaryKey
+      if (record) records = [record]
+      if (!records?.length) return;
+
+      if (!summary) {
+        if (!summaries[recordType]) summaries[recordType] = initSummaryItem()
+        summary = summaries[recordType] as any
+      }
+
+      records.forEach(({ value, chains }: { value: number, chains: IJSON<number> }) => {
+        if (!value) return;
+        summary[summaryKey] = (summary[summaryKey] ?? 0) + value
+        Object.entries(chains).forEach(([chain, value]: any) => {
+          if (!summary.chainSummary![chain]) summary.chainSummary![chain] = initSummaryItem(true)
+          const chainSummary = summary.chainSummary![chain]
+
+          if (!chainSummary[chainSummaryKey!]) chainSummary[chainSummaryKey!] = 0
+          chainSummary[chainSummaryKey!] += value
+        })
+      })
+    }
+
+    function protocolSummaryAction(summary: ProtocolSummary, fn: any) {
+      fn(summary)
+      Object.entries(summary.chainSummary!).forEach(([_chain, chainSummary]: any) => {
+        fn(chainSummary)
+      })
+    }
+
+  })
+  await Promise.all(promises)
+  await storeDimensionsCacheV2(data)
 }
 
-async function wrappedGetAdaptorRecord(adapter: ProtocolAdaptor, type: AdaptorRecordType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number, lastKey?: number): Promise<AdaptorRecord[] | AdaptorRecord> {
-  const key = getKey(adapter, type, mode)
-  if (!cachePromises[key])
-    cachePromises[key] = getAdaptorRecord2({ adapter, type, mode, timestamp, lastKey })
-  return cachePromises[key]
+function initSummaryItem(isChain = false) {
+  const response: RecordSummary = {
+    earliestTimestamp: undefined,
+    chart: {},
+    chartBreakdown: {},
+    total24h: 0,
+    total48hto24h: 0,
+    chainSummary: {},
+  }
+  if (isChain)
+    delete response.chainSummary
+  return response
+}
+
+function initProtocolDataItem() {
+  return {
+    today: null,
+    yesterday: null,
+    sevenDaysAgo: null,
+    lastWeekData: [],
+    lastTwoWeekData: [],
+    lastTwoWeekToOneWeekData: [],
+    last30DaysData: [],
+    last60DaysData: [],
+    last60to30DaysData: [],
+    lastOneYearData: [],
+    latestTimestamp: 0,
+  }
+}
+
+type RecordSummary = {
+  total24h: number
+  total48hto24h: number
+  chart: IJSON<number>
+  chartBreakdown: IJSON<IJSON<number>>
+  earliestTimestamp?: number
+  chainSummary?: IJSON<RecordSummary>
+  total7d?: number
+  total30d?: number
+  total14dto7d?: number
+  total60dto30d?: number
+  total1y?: number
+}
+
+type ProtocolSummary = RecordSummary & {
+  change_1d?: number
+  change_7d?: number
+  change_1m?: number
+  change_7dover7d?: number
+  average1y?: number
+  totalAllTime?: number
+  breakdown24h?: any
 }
 
 run().catch(console.error).then(() => process.exit(0))
 
-// iterate through object and delete 'error' fields
-function removeErrorField(obj: any) {
-  if (!Array.isArray(obj) && typeof obj !== 'object') return obj;
-  for (const key in obj) {
-    if (key === 'error') { // delete error field or should be set it as empty? 
-      delete obj[key]
-    } else if (typeof obj[key] === 'object') {
-      removeErrorField(obj[key])
+// fill all missing data with the last available data
+function getProtocolRecordMapWithMissingData(records: IJSON<any>) {
+  let firstTimestamp: number
+  let firstTimeS: string
+  let lastTimeSWithData: string
+  let nextTimeS: string
+  let currentTime = +Date.now()
+  let prevRecord: any
+  const response: IJSON<any> = { ...records }
+
+  Object.entries(records).forEach(([timeS, record]: any) => {
+    if (!firstTimestamp || record.timestamp < firstTimestamp) {
+      firstTimestamp = record.timestamp
+      firstTimeS = timeS
+      lastTimeSWithData = timeS
     }
+  })
+
+  if (!firstTimeS!) return {}
+
+  nextTimeS = firstTimeS
+  addTotalValueDataTypesToRecord(records[firstTimeS])
+
+  while (+new Date(nextTimeS) < currentTime) {
+    if (records[nextTimeS])
+      lastTimeSWithData = nextTimeS
+    else
+      response[nextTimeS] = records[lastTimeSWithData!]
+
+    const currentRecord = response[nextTimeS]
+    addTotalValueDataTypesToRecord(currentRecord, prevRecord)
+
+    nextTimeS = getNextTimeS(nextTimeS)
+    prevRecord = currentRecord
   }
-  return obj
+
+  return response
 }
 
-function removeDupsAndSortArrays(...arr: any[]) {
-  const eventMap = {} as any
-  arr.forEach((e) => {
-    e.forEach((val: any) => {
-      if (!val?.data?.eventTimestamp)
-        return
-      eventMap[val.data.eventTimestamp] = val
-    })
+function addTotalValueDataTypesToRecord(record: IJSON<any>, previousRecord?: IJSON<any>) {
+  const prevAggData = previousRecord?.aggregated ?? {}
+  const aggData = record.aggregated
+  let recordTypes = Object.keys(aggData).concat(Object.keys(prevAggData))
+  recordTypes = Array.from(new Set(recordTypes))
+  recordTypes.forEach(recordType => {
+    const accRecordType = ACCOMULATIVE_ADAPTOR_TYPE[recordType]
+
+    if (!accRecordType) return; // either it is already an accumulative type or this record type does not have an accumulative type
+    if (aggData.hasOwnProperty(accRecordType)) return; // already has the accumulative type data
+
+    if (!record.aggregated[accRecordType]) record.aggregated[accRecordType] = { value: 0, chains: {} }
+    addData(aggData[recordType])
+    addData(prevAggData[recordType])
+
+    function addData({ value = 0, chains = {} }: any = {}) {
+      record.aggregated[accRecordType].value += value
+      Object.entries(chains).forEach(([chain, value]: any) => {
+        record.aggregated[accRecordType].chains[chain] = (record.aggregated[accRecordType].chains[chain] ?? 0) + value
+      })
+    }
   })
-  let array = Object.values(eventMap)
-  array.sort((a: any, b: any) => a.data.eventTimestamp - b.data.eventTimestamp)
-  return array
 }

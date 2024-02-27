@@ -10,6 +10,7 @@ export interface ProtocolAdaptor extends Protocol {
     id2: string
     disabled: boolean
     enabled?: boolean
+    isProtocolInOtherCategories?: boolean
     protocolType?: ProtocolType
     adapterType?: ProtocolType
     versionKey?: string

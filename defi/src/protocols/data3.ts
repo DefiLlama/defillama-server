@@ -33030,6 +33030,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#fixes-inscription",
     listedAt: 1709032689
   },
+  {
+    id: "4181",
+    name: "Scopuly",
+    address: "stellar:GC6OYQJIZF3HFXCYPFCBXYXNGIBQ4TNSFUBUXQJOZWIP6F3YZK4QH3VQ",
+    symbol: "SCOP",
+    url: "http://scopuly.com",
+    description:
+      "Scopuly is the perfect way to buy, store, invest, trade, pay and transfer your crypto assets on Stellar. Only you control your funds.",
+    chain: "Stellar",
+    logo: `${baseIconsUrl}/scopuly.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Stellar"],
+    module: "scopuly/index.js",
+    twitter: "scopuly",
+    forkedFrom: [],
+    oracles: [],
+    github: ["Scopuly"],
+    listedAt: 1709034413
+  },
 ]
 
 export default data3

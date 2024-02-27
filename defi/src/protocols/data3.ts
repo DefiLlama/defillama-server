@@ -6261,13 +6261,13 @@ const data3: Protocol[] = [
   },
   {
     id: "2982",
-    name: "Satori",
+    name: "Satori Perp", // previous Satori
     address: null,
     symbol: "-",
     url: "https://satori.finance",
     description: "A decentralized financial derivatives platform built on zkEVM Polygon zkEVM",
     chain: "Polygon zkEVM",
-    logo: `${baseIconsUrl}/satori.jpg`,
+    logo: `${baseIconsUrl}/satori-perp.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -32828,14 +32828,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4172",
-    name: "Satori AMM",
+    name: "Satori Spots", // prevous Satori AMM
     address: null,
     symbol: "-",
     url: "https://satori.finance",
     description:
       "Uniswap V2 fork on linea and base",
     chain: "Linea",
-    logo: `${baseIconsUrl}/satori-amm.jpg`,
+    logo: `${baseIconsUrl}/satori-spots.jpg`, 
     audits: "0",
     audit_note: null,
     gecko_id: null,

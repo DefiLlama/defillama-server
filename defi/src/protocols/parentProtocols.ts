@@ -3758,7 +3758,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Satori Finance",
     url: "https://satori.finance",
     description: "Expand your trading horizons on zkEVMs",
-    logo: `${baseIconsUrl}/satori-finance.png`,
+    logo: `${baseIconsUrl}/satori-finance.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

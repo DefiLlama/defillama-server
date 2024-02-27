@@ -6,6 +6,7 @@ import { closeConnection, getCoins2Connection } from "./getDBConnection";
 import { sendMessage } from "../defi/src/utils/discord";
 import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 import fetch from "node-fetch";
+import postgres from "postgres";
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -69,6 +70,10 @@ async function queryPostgresWithRetry(
         `;
     return res;
   } catch (e) {
+    if (counter = 3) {
+      const sql = postgres(auth[0], { idle_timeout: 90,})
+      return await queryPostgresWithRetry(query, sql, counter + 1)
+    }
     if (counter > 5) throw e;
     await sleep(5000 + 1e4 * Math.random());
     return await queryPostgresWithRetry(query, sql, counter + 1);

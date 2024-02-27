@@ -15826,13 +15826,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2086",
-    name: "Rage Trade",
+    name: "Rage Trade v1 (Deprecated)", // previous Rage Trade, is a deprecated product now
     address: null,
     symbol: "-",
     url: "https://www.rage.trade/",
     description: "The most liquid, composable, and omnichain ETH perp.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/rage-trade.png`,
+    logo: `${baseIconsUrl}/rage-trade-v1-(deprecated).png`, //rage-trade-v1-(deprecated).png
     audits: "2",
     audit_note: null,
     gecko_id: null,

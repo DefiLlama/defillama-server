@@ -13822,6 +13822,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Services",
     chains: ["Polygon"],
     module: "furucombo/index.js",
+    treasury: "furucombo.js",
     twitter: "furucombo",
     audit_links: ["https://docs.furucombo.app/audit"],
     listedAt: 1635804510,

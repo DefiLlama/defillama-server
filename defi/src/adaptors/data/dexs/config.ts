@@ -2514,5 +2514,10 @@ export default {
         parentId: "GammaSwap Protocol",
         "enabled": true,
         "id": "4062"
+    },
+    "lynex-v1": {
+        parentId: "Lynex",
+        "enabled": true,
+        "id": "3908"
     }
 } as AdaptorsConfig

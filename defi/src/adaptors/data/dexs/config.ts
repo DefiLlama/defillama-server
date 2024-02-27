@@ -1961,10 +1961,16 @@ export default {
         "enabled": true,
         "id": "3408"
     },
-    "gmx-v2-swap": {
+    "gmx-v2": {
         parentId: "GMX",
         "enabled": true,
-        "id": "3365"
+        "id": "3365",
+        protocolsData: {
+            "gmx-v2-swap": {
+                "id": "3365",
+                "enabled": true,
+            }
+        }
     },
     "meridian-trade": {
         "enabled": false,

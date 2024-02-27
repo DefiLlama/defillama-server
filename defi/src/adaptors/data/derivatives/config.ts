@@ -306,11 +306,17 @@ export default {
             },
         }
     },
-    "gmx-v2-trade": {
+    "gmx-v2": {
         parentId: "GMX",
         "enabled": true,
         "id": "3365",
         displayName: "GMX - Derivatives V2",
+        protocolsData: {
+            "gmx-v2-trade": {
+                "id": "3365",
+                "enabled": true,
+            }
+        }
     },
     "meridian-trade": {
         "enabled": false,

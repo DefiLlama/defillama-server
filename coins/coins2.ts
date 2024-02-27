@@ -73,8 +73,8 @@ async function queryPostgresWithRetry(
     if (counter > 5) throw e;
     await sleep(5000 + 1e4 * Math.random());
     if (counter == 3) {
-      await closeConnection()
-      sql = await getCoins2Connection()
+      await closeConnection();
+      sql = await getCoins2Connection();
     }
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
@@ -584,10 +584,10 @@ export async function writeCoins2(
   });
 
   await writeToRedis(strings, source);
-  await Promise.all([
-    writeToPostgres(values),
-    //writeToRedis(strings, source)
-  ]);
+  // await Promise.all([
+  //   writeToPostgres(values),
+  //writeToRedis(strings, source)
+  // ]);
   await closeConnection();
 }
 export async function batchWrite2(

@@ -20171,14 +20171,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2276",
-    name: "Huobi",
+    name: "HTX",
     address: null,
     symbol: "-",
     url: "https://www.huobi.com",
     description:
       "Huobi Global is a world-leading cryptocurrency trading exchange.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/huobi.jpg`,
+    logo: `${baseIconsUrl}/htx.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

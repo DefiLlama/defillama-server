@@ -9413,13 +9413,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1798",
-    name: "TFM",
+    name: "Terraformer",
     address: null,
     symbol: "-",
     url: "tfm/index.js",
     description: "DEX/ NFT Aggregator/ AMM",
     chain: "Terra",
-    logo: `${baseIconsUrl}/tfm.png`,
+    logo: `${baseIconsUrl}/terraformer.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -9429,7 +9429,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Terraswap"],
     module: "tfm/index.js",
-    twitter: "tfm_com",
+    twitter: "terraformer",
     audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/TerraFormer/TerraFormer%20-%20Staking%20-%20Audit%20Test%20Report%20v1.0.pdf"],
     listedAt: 1654136062
   },
@@ -20387,7 +20387,7 @@ const data2: Protocol[] = [
   {
     id: "2287",
     name: "ThorChain DEX",
-    address: null, 
+    address: null,
     symbol: "RUNE",
     url: "https://thorchain.org/",
     description:
@@ -26036,7 +26036,7 @@ const data2: Protocol[] = [
     twitter: "Vaultkaofficial",
     forkedFrom: [],
     oracles: ["Chainlink"],
-    audit_links: ["https://github.com/Vaultka/vaultka-contracts/blob/main/Audits/Fortitude-Vaultka-Audit-Report.pdf", "https://admin.zokyo.io/uploads/Vaultka_Zokyo_audit_report_July25th_2023_1aed462dc9.pdf"], 
+    audit_links: ["https://github.com/Vaultka/vaultka-contracts/blob/main/Audits/Fortitude-Vaultka-Audit-Report.pdf", "https://admin.zokyo.io/uploads/Vaultka_Zokyo_audit_report_July25th_2023_1aed462dc9.pdf"],
     listedAt: 1676372614
   },
   {
@@ -29850,6 +29850,6 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true
   },
-  
+
 ]
 export default data2;

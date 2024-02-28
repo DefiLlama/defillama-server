@@ -478,8 +478,8 @@ functions:
       - schedule: cron(16 * * * ? *)
   storeCharts:
     handler: src/storeGetCharts.default
-    timeout: 180
-    memorySize: 4000
+    timeout: 300
+    memorySize: 6000
     events:
       - schedule: cron(16 * * * ? *)
   hourly:

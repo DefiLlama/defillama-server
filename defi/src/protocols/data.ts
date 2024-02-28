@@ -5969,6 +5969,9 @@ const data: Protocol[] = [
     module: "pendle/index.js",
     twitter: "pendle_fi",
     audit_links: ["https://github.com/pendle-finance/pendle-core-v2-public/tree/main/audits"],
+    oraclesByChain: {
+      arbitrum: ["Redstone"],
+    },
     github: ["pendle-finance"]
   },
   {

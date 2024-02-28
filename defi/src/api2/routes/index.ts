@@ -18,7 +18,7 @@ import { getFormattedChains } from "../../getFormattedChains";
 import { getR2 } from "../../utils/r2";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
-import { getDimensionProtocolHandler, getOverviewHandler } from "../utils/dimensionsUtils";
+import { getDimensionProtocolHandler, getOverviewHandler } from "./dimensions";
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";

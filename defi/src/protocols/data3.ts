@@ -33212,6 +33212,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#voltage",
     listedAt: 1709096009,
   },
+  {
+    id: "4189",
+    name: "KaleidoCube",
+    address: null,
+    symbol: "-",
+    url: "https://dex.kaleidocube.xyz",
+    description:
+      "Uniswap V3 fork on Xai Network",
+    chain: "Xai",
+    logo: `${baseIconsUrl}/kaleidocube.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Xai", "Arbitrum"],
+    module: "kaleidoswap/index.js",
+    twitter: "kaleidocube_xyz",
+    forkedFrom: [], 
+    listedAt: 1709130785
+  },
+  {
+    id: "4190",
+    name: "RealT RMM Marketplace V2",
+    address: null,
+    symbol: "-",
+    url: "https://rmm.realtoken.network/markets/",
+    description:
+      "RMM V3, building on Aave V3, is a specialized platform for lending and borrowing that leverages RealTokens - tokens tied to real estate assets - as collateral. Users can use these RealTokens to borrow stablecoins, merging real estate investment with the DeFi space. This innovative approach offers a streamlined way for property investors to maintain liquidity and leverage their investments in the digital finance realm.",
+    chain: "xDai",
+    logo: `${baseIconsUrl}/realt-rmm-markekplace-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["xDai"],
+    module: "realtoken-rmm-v3/index.js",
+    twitter: "RealTPlatform",
+    forkedFrom: ["AAVE V3"], 
+    oracles: ["Internal"], // https://gnosisscan.io/address/0xb4AE809Ad7CEB7e5B579dEdD0De7c213aD5AB516#code
+    parentProtocol: "parent#realt",
+    listedAt: 1709130798
+  },
 ]
 
 export default data3

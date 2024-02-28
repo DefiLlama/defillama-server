@@ -2610,6 +2610,18 @@ export const chainCoingeckoIds = {
     twitter: "MantaNetwork",
     url: "https://atlantic.manta.network"
   },
+  "Xai": {
+    geckoId: "xai-blockchain",
+    symbol: "XAI",
+    cmcId: "28374",
+    categories: ["EVM"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "XAI_GAMES",
+    url: "https://xai.games"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3165,6 +3177,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "DeFiVerse"
     case "manta_atlantic":
       return "Manta Atlantic"
+    case "xai":
+      return "Xai"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

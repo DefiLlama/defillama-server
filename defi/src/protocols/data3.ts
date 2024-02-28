@@ -33190,6 +33190,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/21.co_Wrapped_Assets_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf"],
     listedAt: 1709078063
   },
+  {
+    id: "4188",
+    name: "Voltage AMM V3",
+    address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
+    symbol: "VOLT",
+    url: "https://app.voltage.finance/",
+    description:
+      "Built atop the powerful Fuse blockchain and ecosystem, Voltage enables anyone to carry the power of DeFi in their pocket.",
+    chain: "Fuse",
+    logo: `${baseIconsUrl}/voltage-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fuse"],
+    module: "fusefi-v3/index.js",
+    twitter: "voltfinance",
+    forkedFrom: ["Uniswap V3"], 
+    parentProtocol: "parent#voltage",
+    listedAt: 1709096009,
+  },
 ]
 
 export default data3

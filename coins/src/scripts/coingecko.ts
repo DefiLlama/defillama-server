@@ -103,7 +103,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60, "line 106");
+    // await batchWrite2(writes2, false, 5 * 60, "line 106");
   } catch (e) {
     console.error(e);
   }

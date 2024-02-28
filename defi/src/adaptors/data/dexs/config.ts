@@ -1172,7 +1172,13 @@ export default {
     },
     "level-finance": {
         "enabled": true,
-        "id": "2395"
+        "id": "2395",
+        protocolsData: {
+            "level-finance": {
+                "id": "2395",
+                enabled: true,
+            }
+        }
     },
     "hyperjump": {
         "enabled": true,

@@ -93,10 +93,16 @@ export default {
         "id": "144",
         "enabled": true
     },
-    "level-finance-derivative": {
+    "level-finance": {
         "enabled": true,
         "id": "2395",
-        "displayName": "Level Finance - Derivatives"
+        "displayName": "Level Finance - Derivatives",
+        "protocolsData": {
+            "level-finance-derivative": {
+                "id": "2395",
+                "enabled": true
+            }
+        }
     },
     "mux-protocol": {
         "enabled": true,

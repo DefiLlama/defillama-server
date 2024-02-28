@@ -1890,5 +1890,9 @@ export default {
         parentId: "Inverse Finance",
         "enabled": true,
         "id": "2433"
+    },
+    "furucombo": {
+        "enabled": true,
+        "id": "742"
     }
 } as AdaptorsConfig

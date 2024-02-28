@@ -198,6 +198,8 @@ async function queryPostgres(
   target: number,
   batchPostgresReads: boolean,
 ): Promise<CoinDict> {
+  return {};
+
   if (values.length == 0) return {};
   const upper: number = Number(target) + Number(margin);
   const lower: number = Number(target) - Number(margin);

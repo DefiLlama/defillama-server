@@ -2525,5 +2525,9 @@ export default {
         parentId: "Lynex",
         "enabled": true,
         "id": "3908"
+    },
+    "Scopuly": {
+        "enabled": true,
+        "id": "4181"
     }
 } as AdaptorsConfig

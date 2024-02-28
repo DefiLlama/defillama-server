@@ -33192,7 +33192,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4188",
-    name: "Voltage AMM V3",
+    name: "Voltage V3",
     address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
     symbol: "VOLT",
     url: "https://app.voltage.finance/",

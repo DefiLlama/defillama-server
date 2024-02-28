@@ -33242,7 +33242,7 @@ const data3: Protocol[] = [
     description:
       "RMM V3, building on Aave V3, is a specialized platform for lending and borrowing that leverages RealTokens - tokens tied to real estate assets - as collateral. Users can use these RealTokens to borrow stablecoins, merging real estate investment with the DeFi space. This innovative approach offers a streamlined way for property investors to maintain liquidity and leverage their investments in the digital finance realm.",
     chain: "xDai",
-    logo: `${baseIconsUrl}/realt-rmm-markekplace-v2.jpg`,
+    logo: `${baseIconsUrl}/realt-rmm-marketplace-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -33256,6 +33256,49 @@ const data3: Protocol[] = [
     parentProtocol: "parent#realt",
     listedAt: 1709130798
   },
+  {
+    id: "4191",
+    name: "MerlinSwap",
+    address: null,
+    symbol: "-",
+    url: "https://merlinswap.org",
+    description:
+      "MerlinSwap is an innovative and highly capital efficient DEX built to support the Merlin ecosystem.",
+    chain: "Merlin",
+    logo: `${baseIconsUrl}/merlinswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Merlin"],
+    module: "merlinswap/index.js",
+    twitter: "MerlinSwap",
+    forkedFrom: ["iZiSwap"], 
+    oracles: [],
+    listedAt: 1709143758
+  },
+  {
+    id: "4192",
+    name: "WOWMAX Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://wowmax.exchange",
+    description:
+      "WOWMAX is the next generation DEX aggregation protocol that uses slippage as an additional source of optimization.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/wowmax-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "WowmaxExchange",
+    forkedFrom: [], 
+    oracles: [],
+  },
 ]
 
 export default data3

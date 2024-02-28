@@ -2622,6 +2622,14 @@ export const chainCoingeckoIds = {
     twitter: "XAI_GAMES",
     url: "https://xai.games"
   },
+  "Merlin": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "MerlinLayer2",
+    url: "https://merlinchain.io",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3179,6 +3187,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Manta Atlantic"
     case "xai":
       return "Xai"
+    case "merlin":
+        return "Merlin"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

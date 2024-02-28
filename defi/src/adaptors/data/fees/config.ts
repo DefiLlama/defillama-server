@@ -1885,5 +1885,10 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "inverse-finance": {
+        parentId: "Inverse Finance",
+        "enabled": true,
+        "id": "2433"
     }
 } as AdaptorsConfig

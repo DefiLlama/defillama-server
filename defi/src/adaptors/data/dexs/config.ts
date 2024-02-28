@@ -2525,10 +2525,5 @@ export default {
         parentId: "Lynex",
         "enabled": true,
         "id": "3908"
-    },
-    "inverse-finance": {
-        parentId: "Inverse Finance",
-        "enabled": true,
-        "id": "2433"
     }
 } as AdaptorsConfig

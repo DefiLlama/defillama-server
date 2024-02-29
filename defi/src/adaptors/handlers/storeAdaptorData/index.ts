@@ -189,8 +189,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
   // Get list of adaptors to run
   const allAdaptors = Object.values(dataMap).filter(p => p)
-  const adaptorsList = allAdaptors
+  let adaptorsList = allAdaptors
     .filter(p => !adaptorNames || adaptorNames.has(p.displayName))
+  // randomize the order of execution
+  adaptorsList = adaptorsList.sort(() => Math.random() - 0.5)
   if (adaptorNames) console.log('refilling for', adaptorsList.map(a => a.module), adaptorsList.length)
 
   // Get closest block to clean day. Only for EVM compatible ones.
@@ -246,8 +248,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const adaptor: Adapter = importModule(module).default;
       const adapterVersion = adaptor.version
       const isVersion2 = adapterVersion === 2
-      const endTimestamp = isVersion2 ? LAMBDA_TIMESTAMP : toTimestamp
-      const recordTimestamp = isVersion2 ? toTimestamp : fromTimestamp
+      const endTimestamp = (isVersion2 && !timestamp) ? LAMBDA_TIMESTAMP : toTimestamp // if version 2 and no timestamp, use current time as input for running the adapter
+      const recordTimestamp = isVersion2 ? toTimestamp : fromTimestamp // if version 2, store the record at with timestamp end of range, else store at start of range
 
       // Get list of adapters to run
       const adaptersToRun: [string, BaseAdapter][] = []
@@ -269,7 +271,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       } = {}
       for (const [version, adapter] of adaptersToRun) {
         const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
-        if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - endTimestamp) > 60 * 60 * 3) continue // allow run current time if within 3 hours
+        if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - endTimestamp) > 60 * 60 * 3) 
+          throw new Error('This Adapter can be run only around current time') // allow run current time if within 3 hours
         const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }

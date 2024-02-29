@@ -24,7 +24,7 @@ export interface IHandlerEvent {
   protocolVersion?: string
 }
 
-const LAMBDA_TIMESTAMP = Math.trunc((Date.now()) / 1000)
+const LAMBDA_TIMESTAMP = Math.trunc((Date.now()) / 1000) - 60 * 30 // 30 minutes ago
 
 export const handler = async (event: IHandlerEvent) => {
   console.info(`*************Storing for the following indexs ${event.protocolModules} *************`)
@@ -183,7 +183,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const { importModule, KEYS_TO_STORE, config } = dataModule
   const configIdMap: any = {}
   Object.entries(config).forEach(([key, i]) => {
-  const id = config[key].isChain ? 'chain#' + i.id : i.id
+    const id = config[key].isChain ? 'chain#' + i.id : i.id
     configIdMap[id] = i
   })
 
@@ -244,6 +244,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     try {
       // Import adaptor
       const adaptor: Adapter = importModule(module).default;
+      const adapterVersion = adaptor.version
+      const isVersion2 = adapterVersion === 2
+      const endTimestamp = isVersion2 ? LAMBDA_TIMESTAMP : toTimestamp
+      const recordTimestamp = isVersion2 ? toTimestamp : fromTimestamp
 
       // Get list of adapters to run
       const adaptersToRun: [string, BaseAdapter][] = []
@@ -265,14 +269,14 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       } = {}
       for (const [version, adapter] of adaptersToRun) {
         const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
-        if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 3) continue // allow run current time if within 3 hours
-        const runAdapterRes = await runAdapter(adapter, toTimestamp, chainBlocks, module, version)
+        if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - endTimestamp) > 60 * 60 * 3) continue // allow run current time if within 3 hours
+        const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }
 
       for (const [recordType, record] of Object.entries(rawRecords)) {
         // console.info("STORING -> ", module, adaptorType, recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType, protocol.defillamaId, protocol.versionKey)
-        adaptorRecords[recordType] = new AdaptorRecord(recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType)
+        adaptorRecords[recordType] = new AdaptorRecord(recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType)
         const promise = storeAdaptorRecord(adaptorRecords[recordType], LAMBDA_TIMESTAMP)
         promises.push(promise)
       }

@@ -1894,5 +1894,9 @@ export default {
     "furucombo": {
         "enabled": true,
         "id": "742"
+    },
+    "instadapp": {
+        "enabled": true,
+        "id": "120"
     }
 } as AdaptorsConfig

@@ -68,6 +68,11 @@
       "decimals": "8",
       "symbol": "APT",
       "to": "coingecko#aptos"
+    },
+    "0x960b531667636f39e85867775f52f6b1f220a058c4de786905bdf761e06a56bb::usdy::USDY": {
+      "decimals": "6",
+      "symbol": "USDY",
+      "to": "coingecko#ondo-us-dollar-yield"
     }
   },
   "neutron": {

@@ -1184,6 +1184,11 @@
       "decimals": "18",
       "symbol": "WBNB.b",
       "to": "coingecko#binancecoin"
+    },
+    "0xe03ba6851335d01d38dd6087c46c26008d16af92": {
+      "decimals": "18",
+      "symbol": "CSIX.b",
+      "to": "coingecko#carbon-browser"
     }
   },
   "linea": {

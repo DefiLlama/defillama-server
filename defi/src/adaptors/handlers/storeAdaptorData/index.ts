@@ -1,5 +1,5 @@
 import { wrapScheduledLambda } from "../../../utils/shared/wrap";
-import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
+import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
 import { ChainBlocks, Adapter, AdapterType, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import canGetBlock from "../../utils/canGetBlock";
 import runAdapter from "@defillama/dimension-adapters/adapters/utils/runAdapter";
@@ -24,7 +24,7 @@ export interface IHandlerEvent {
   protocolVersion?: string
 }
 
-const LAMBDA_TIMESTAMP = Math.trunc((Date.now()) / 1000) - 60 * 30 // 30 minutes ago
+const LAMBDA_TIMESTAMP = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
 
 export const handler = async (event: IHandlerEvent) => {
   console.info(`*************Storing for the following indexs ${event.protocolModules} *************`)
@@ -167,6 +167,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const { timestamp, adaptorType, adaptorNames, maxConcurrency = 13 } = event
   console.info(`- timestamp: ${timestamp}`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
+  const isTimestampProvided = timestamp !== undefined
   const currentTimestamp = timestamp ?? LAMBDA_TIMESTAMP;
   // Get clean day
   const toTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
@@ -246,6 +247,15 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     try {
       // Import adaptor
       const adaptor: Adapter = importModule(module).default;
+      // if an adaptor is expensive and no timestamp is provided, we try to avoid running every hour, but only from 21:55 to 01:55
+      if (adaptor.isExpensiveAdapter && !isTimestampProvided) {
+        const date = new Date(currentTimestamp * 1000)
+        const hours = date.getUTCHours()
+        if (hours < 22 || hours > 1) {
+          console.info(`[${adaptorType}] - ${index + 1}/${adaptorsList.length} - ${protocol.module} - skipping because it's an expensive adapter and it's not the right time`)
+          return
+        }
+      }
       const adapterVersion = adaptor.version
       const isVersion2 = adapterVersion === 2
       const endTimestamp = (isVersion2 && !timestamp) ? LAMBDA_TIMESTAMP : toTimestamp // if version 2 and no timestamp, use current time as input for running the adapter

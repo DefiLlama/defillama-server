@@ -33320,6 +33320,7 @@ const data3: Protocol[] = [
     twitter: "CrunchyTez",
     forkedFrom: [], 
     oracles: [],
+    parentProtocol: "parent#crunchy-network",
     listedAt: 1709208498
   },
   {
@@ -33390,6 +33391,30 @@ const data3: Protocol[] = [
     oracles: [],
     github: ["sbt-contracts"],
     listedAt: 1709208650
+  },
+  {
+    id: "4197",
+    name: "Secured Finance",
+    address: null,
+    symbol: "-",
+    url: "https://secured.finance",
+    description:
+      "Secured Finance built a full on-chain Orderbook-based Rates DeFi Trading Platform to facilitate the lending and borrowing of digital assets to construct yield curves in the DeFi space.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/secured-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum", "Ethereum", "Avalanche"],
+    module: "SecuredFinance/index.js",
+    twitter: "Secured_Fi",
+    forkedFrom: [], 
+    oracles: [],
+    audit_links: ["https://github.com/Secured-Finance/contracts/blob/develop/audits/2023-12-Quantstamp.pdf"],
+    github: ["Secured-Finance"],
+    listedAt: 1709216649
   },
 ]
 

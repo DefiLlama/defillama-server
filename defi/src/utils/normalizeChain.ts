@@ -2630,6 +2630,18 @@ export const chainCoingeckoIds = {
     twitter: "MerlinLayer2",
     url: "https://merlinchain.io",
   },
+  "Blast": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    twitter: "Blast_L2",
+    url: "https://blast.io",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3188,7 +3200,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "xai":
       return "Xai"
     case "merlin":
-        return "Merlin"
+      return "Merlin"
+    case "blast":
+      return "Blast"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

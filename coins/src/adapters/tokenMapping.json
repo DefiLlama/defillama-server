@@ -1767,5 +1767,17 @@
       "symbol": "BTCB",
       "to": "coingecko#bitcoin"
     }
+  },
+  "blast": {
+    "0x4300000000000000000000000000000000000004": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x4300000000000000000000000000000000000003": {
+      "decimals": "18",
+      "symbol": "USDB",
+      "to": "coingecko#usd-coin"
+    }
   }
 }

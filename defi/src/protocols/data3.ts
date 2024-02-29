@@ -12155,7 +12155,10 @@ const data3: Protocol[] = [
     chains: ["zkSync Era"],
     module: "zerolend/index.js",
     twitter: "zerolendxyz",
-    oracles: ["Pyth"],
+    oraclesByChain: {
+      manta: ["RedStone"],
+      zkSync: ["Pyth"]
+    },
     forkedFrom: ["AAVE V3"],
     audit_links: ["https://github.com/zerolend/audits/blob/main/mundus/zerolend_report_depcheck_final.pdf"],
     github: ["zerolend"],

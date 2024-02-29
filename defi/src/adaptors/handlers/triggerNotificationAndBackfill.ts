@@ -72,7 +72,7 @@ async function notifyAdapterStatus({ adaptorType }: { adaptorType: AdapterType }
     if (hasZeroValues)
       await sendDiscordAlert(`${zeroValueProtocols.length} adapters report 0 value dimension...Will retry later...`, adaptorType)
     const protocolNames: string[] = [...new Set([...zeroValueProtocols, ...notUpdatedProtocols])];
-    await handler2({ adaptorType, adaptorNames: new Set(protocolNames), maxConcurrency: 3 })
+    // await handler2({ adaptorType, adaptorNames: new Set(protocolNames), maxConcurrency: 3 }) // this is disabled as we are gonna run all the adapters hourly
   }
   else
     await sendDiscordAlert(`[${adaptorType}] Looks like all good`, adaptorType)

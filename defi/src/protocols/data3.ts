@@ -33439,6 +33439,28 @@ const data3: Protocol[] = [
     github: ["evaafi"],
     listedAt: 1709220208
   },
+  {
+    id: "4199",
+    name: "Thruster",
+    address: null,
+    symbol: "-",
+    url: "https://app.thruster.finance",
+    description:
+      "Uni v3 fork on blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/thruster.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "thruster-fi/index.js",
+    twitter: "ThrusterFi",
+    forkedFrom: ["Uniswap V3"], 
+    oracles: [],
+    listedAt: 1709248720
+  },
 ]
 
 export default data3

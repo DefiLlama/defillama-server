@@ -1,5 +1,5 @@
 import { wrapScheduledLambda } from "../../../utils/shared/wrap";
-import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
+import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
 import { ChainBlocks, Adapter, AdapterType, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import canGetBlock from "../../utils/canGetBlock";
 import runAdapter from "@defillama/dimension-adapters/adapters/utils/runAdapter";
@@ -24,7 +24,7 @@ export interface IHandlerEvent {
   protocolVersion?: string
 }
 
-const LAMBDA_TIMESTAMP = Math.trunc((Date.now()) / 1000)
+const LAMBDA_TIMESTAMP = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
 
 export const handler = async (event: IHandlerEvent) => {
   console.info(`*************Storing for the following indexs ${event.protocolModules} *************`)
@@ -167,6 +167,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const { timestamp, adaptorType, adaptorNames, maxConcurrency = 13 } = event
   console.info(`- timestamp: ${timestamp}`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
+  const isTimestampProvided = timestamp !== undefined
   const currentTimestamp = timestamp ?? LAMBDA_TIMESTAMP;
   // Get clean day
   const toTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
@@ -183,14 +184,16 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const { importModule, KEYS_TO_STORE, config } = dataModule
   const configIdMap: any = {}
   Object.entries(config).forEach(([key, i]) => {
-  const id = config[key].isChain ? 'chain#' + i.id : i.id
+    const id = config[key].isChain ? 'chain#' + i.id : i.id
     configIdMap[id] = i
   })
 
   // Get list of adaptors to run
   const allAdaptors = Object.values(dataMap).filter(p => p)
-  const adaptorsList = allAdaptors
+  let adaptorsList = allAdaptors
     .filter(p => !adaptorNames || adaptorNames.has(p.displayName))
+  // randomize the order of execution
+  adaptorsList = adaptorsList.sort(() => Math.random() - 0.5)
   if (adaptorNames) console.log('refilling for', adaptorsList.map(a => a.module), adaptorsList.length)
 
   // Get closest block to clean day. Only for EVM compatible ones.
@@ -244,6 +247,19 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     try {
       // Import adaptor
       const adaptor: Adapter = importModule(module).default;
+      // if an adaptor is expensive and no timestamp is provided, we try to avoid running every hour, but only from 21:55 to 01:55
+      if (adaptor.isExpensiveAdapter && !isTimestampProvided) {
+        const date = new Date(currentTimestamp * 1000)
+        const hours = date.getUTCHours()
+        if (hours < 22 || hours > 1) {
+          console.info(`[${adaptorType}] - ${index + 1}/${adaptorsList.length} - ${protocol.module} - skipping because it's an expensive adapter and it's not the right time`)
+          return
+        }
+      }
+      const adapterVersion = adaptor.version
+      const isVersion2 = adapterVersion === 2
+      const endTimestamp = (isVersion2 && !timestamp) ? LAMBDA_TIMESTAMP : toTimestamp // if version 2 and no timestamp, use current time as input for running the adapter
+      const recordTimestamp = isVersion2 ? toTimestamp : fromTimestamp // if version 2, store the record at with timestamp end of range, else store at start of range
 
       // Get list of adapters to run
       const adaptersToRun: [string, BaseAdapter][] = []
@@ -265,14 +281,15 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       } = {}
       for (const [version, adapter] of adaptersToRun) {
         const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
-        if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 3) continue // allow run current time if within 3 hours
-        const runAdapterRes = await runAdapter(adapter, toTimestamp, chainBlocks, module, version)
+        if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - endTimestamp) > 60 * 60 * 3) 
+          throw new Error('This Adapter can be run only around current time') // allow run current time if within 3 hours
+        const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }
 
       for (const [recordType, record] of Object.entries(rawRecords)) {
         // console.info("STORING -> ", module, adaptorType, recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType, protocol.defillamaId, protocol.versionKey)
-        adaptorRecords[recordType] = new AdaptorRecord(recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType)
+        adaptorRecords[recordType] = new AdaptorRecord(recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType)
         const promise = storeAdaptorRecord(adaptorRecords[recordType], LAMBDA_TIMESTAMP)
         promises.push(promise)
       }

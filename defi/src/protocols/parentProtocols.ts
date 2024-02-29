@@ -3812,6 +3812,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "standardweb3",
     github: ["standardweb3"],
   },
+  {
+    id: "parent#crunchy-network",
+    name: "Crunchy Network",
+    url: "https://crunchy.network",
+    description:"Crunchy provides DeFi services and solutions on Tezos to projects, developers, and end users. We like to think of ourselves as a DeFi-as-a-Service (DaaS) platform. Crunchy is maintained by independent developers and is governed by CrDAO holders.",
+    logo: `${baseIconsUrl}/crunchy-network.png`,
+    gecko_id: "crunchy-dao",
+    cmcId: "13438",
+    chains: [],
+    twitter: "CrunchyTez",
+    github: ["crunchy-network"]
+  },
 ];
 
 export default parentProtocols;

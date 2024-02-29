@@ -9985,23 +9985,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "569",
-    name: "Crunchy Network",
+    name: "Crunchy",
     address: "tezos:KT1XPFjZqCULSnqfKaaYy8hJjeY63UNSGwXg",
     symbol: "crDAO",
     url: "https://crunchy.network",
     description:
       "Crunchy provides DeFi services and solutions on Tezos to projects, developers, and end users. We like to think of ourselves as a DeFi-as-a-Service (DaaS) platform. Crunchy is maintained by independent developers and is governed by CrDAO holders.",
     chain: "Tezos",
-    logo: `${baseIconsUrl}/crunchy-network.png`,
+    logo: `${baseIconsUrl}/crunchy.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "crunchy-dao",
-    cmcId: "13438",
+    gecko_id: null,
+    cmcId: null,
     category: "Services",
     chains: ["Tezos"],
     module: "crunchynetwork/index.js",
+    parentProtocol: "parent#crunchy-network",
     twitter: "CrunchyTez",
-    github: ["crunchy-network"]
   },
   {
     id: "570",

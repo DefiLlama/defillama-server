@@ -18448,8 +18448,7 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://hacken.io/audits/#bepro"],
     listedAt: 1666273430,
-    parentProtocol: "parent#taikai",
-    //github: ["bepronetwork"]
+    github: ["bepronetwork"]
   },
   {
     id: "2202",

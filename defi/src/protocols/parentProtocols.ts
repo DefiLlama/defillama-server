@@ -3777,6 +3777,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "fixesOnFlow",
     github: ["fixes-world"],
   },
+  /*
   {
     id: "parent#taikai",
     name: "TAIKAI",
@@ -3789,6 +3790,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["baker-fi"],
     twitter: "taikainetwork",
   },
+  */
   {
     id: "parent#ilend",
     name: "iLend",

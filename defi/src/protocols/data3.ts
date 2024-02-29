@@ -33416,6 +33416,29 @@ const data3: Protocol[] = [
     github: ["Secured-Finance"],
     listedAt: 1709216649
   },
+  {
+    id: "4198",
+    name: "EVAA Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://evaa.finance",
+    description:
+      "The first decentralized lending protocol on TON that lets users lend or borrow assets without going to a centralized intermediary.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/evaa-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["TON"],
+    module: "evaa/index.js",
+    twitter: "evaaprotocol",
+    forkedFrom: [], 
+    oracles: [],
+    github: ["evaafi"],
+    listedAt: 1709220208
+  },
 ]
 
 export default data3

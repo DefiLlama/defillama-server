@@ -33445,14 +33445,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4199",
-    name: "Thruster",
+    name: "Thruster V3",
     address: null,
     symbol: "-",
     url: "https://app.thruster.finance",
     description:
       "Uni v3 fork on blast",
     chain: "Blast",
-    logo: `${baseIconsUrl}/thruster.jpg`,
+    logo: `${baseIconsUrl}/thruster-v3.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -33463,6 +33463,7 @@ const data3: Protocol[] = [
     twitter: "ThrusterFi",
     forkedFrom: ["Uniswap V3"], 
     oracles: [],
+    parentProtocol: "parent#thruster",
     listedAt: 1709248720
   },
   {
@@ -33623,6 +33624,51 @@ const data3: Protocol[] = [
     oracles: [], 
     github: ["Bladeswap"],
     listedAt: 1709294950
+  },
+  {
+    id: "4207",
+    name: "Thruster V2",
+    address: null,
+    symbol: "-",
+    url: "https://app.thruster.finance",
+    description:
+      "Uniswap V2 fork on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/thruster-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "thruster-fi-v2/index.js",
+    twitter: "ThrusterFi",
+    forkedFrom: ["Uniswap V2"], 
+    oracles: [], 
+    parentProtocol: "parent#thruster",
+    listedAt: 1709308594
+  },
+  {
+    id: "4208",
+    name: "Juice Finance",
+    address: null,
+    symbol: "-",
+    url: "https://juice.finance",
+    description:
+      "Maximize your yield by using your ETH as collateral to access 300% USDB leverage to deploy throughout the Blast ecosystem.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/juice-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    module: "juice-finance/index.js",
+    twitter: "Juice_Finance",
+    forkedFrom: [], 
+    oracles: ["Pyth"],  //https://juice-finance.gitbook.io/juice-finance/technical-documents-and-section/technical-and-contracts-synopsis/pythpriceprovide
+    listedAt: 1709308594
   },
 ]
 

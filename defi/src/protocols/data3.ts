@@ -33807,6 +33807,30 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1709318288
   },
+  {
+    id: "4215",
+    name: "SynFutures V2",
+    address: null,
+    symbol: "-",
+    url: "https://trade.synfutures.com/#/trade",
+    description:
+      "SynFutures is a permissionless web3 infrastructure for derivatives",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/synfutures.svg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum","Blast","Linea","Scroll"],
+    module: "synfutures-v3/index.js",
+    twitter: "SynFuturesDefi",
+    forkedFrom: [],
+    oracles: ["Chainlink", "TWAP"],
+    audit_links: ["https://www.synfutures.com/PeckShield-Audit-Report-SynFuturesV2-v1.0.pdf"],
+    parentProtocol: "parent#synfutures",
+    listedAt: 1709324603
+  },
 ]
 
 export default data3

@@ -2642,6 +2642,15 @@ export const chainCoingeckoIds = {
     twitter: "Blast_L2",
     url: "https://blast.io",
   },
+  "Bitrock": {
+    geckoId: "bitrock",
+    symbol: "BROCK",
+    cmcId: "27606",
+    categories: ["EVM"],
+    twitter: "BitRockChain",
+    url: "https://www.bit-rock.io",
+    github: ["BitrockChain"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3203,6 +3212,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Merlin"
     case "blast":
       return "Blast"
+    case "bitrock":
+      return "Bitrock"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

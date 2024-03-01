@@ -33514,7 +33514,7 @@ const data3: Protocol[] = [
     description: "Maximize your yield by using your ETH as collateral to access 300% USDB leverage to deploy throughout the Blast ecosystem.",
     chain: "Blast",
     logo: `${baseIconsUrl}/juice-finance.png`,
-    audits: "1",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

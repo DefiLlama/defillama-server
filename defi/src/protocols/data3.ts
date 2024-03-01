@@ -33505,6 +33505,26 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1709270369
   },
+  {
+    id: "4202",
+    name: "Juice Finance",
+    address: null,
+    symbol: '-',
+    url: "https://juice.finance",
+    description: "Maximize your yield by using your ETH as collateral to access 300% USDB leverage to deploy throughout the Blast ecosystem.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/juice-finance.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    module: "juice-finance/index.js",
+    twitter: "Juice_Finance"
+  },
 ]
 
 export default data3

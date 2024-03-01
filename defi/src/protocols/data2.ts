@@ -29849,6 +29849,5 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true
   },
-  
 ]
 export default data2;

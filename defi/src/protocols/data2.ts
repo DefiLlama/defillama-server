@@ -5968,7 +5968,7 @@ const data2: Protocol[] = [
     url: "https://folks.finance/",
     description: "Innovative DeFi platform to lend, borrow, trade and manage digital assets.",
     chain: "Algorand",
-    logo: `${baseIconsUrl}/folks-finance-lending.png`,
+    logo: `${baseIconsUrl}/folks-finance-lending.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

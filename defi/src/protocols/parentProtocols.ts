@@ -551,7 +551,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://folks.finance/",
     description:
       "Innovative DeFi platform to lend, borrow, trade and manage digital assets.",
-    logo: `${baseIconsUrl}/folks-finance.png`,
+    logo: `${baseIconsUrl}/folks-finance.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

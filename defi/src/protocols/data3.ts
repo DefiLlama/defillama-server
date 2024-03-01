@@ -33672,7 +33672,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4209",
-    name: "MonoSwap",
+    name: "MonoSwap V2",
     address: null,
     symbol: "-",
     url: "https://www.monoswap.io",

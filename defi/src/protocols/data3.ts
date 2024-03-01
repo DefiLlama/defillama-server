@@ -33716,6 +33716,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#monoswap",
     listedAt: 1709309995
   },
+  {
+    id: "4211",
+    name: "Pac Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.pac.finance/",
+    description:
+      "A self-repaying lending and margin trading protocol on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/pac-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    module: "pac-finance/index.js",
+    twitter: "pac_finance",
+    forkedFrom: ["AAVE V3"], 
+    oracles: ["Pyth"], // https://docs.pac.finance/
+    listedAt: 1709309995
+  },
 ]
 
 export default data3

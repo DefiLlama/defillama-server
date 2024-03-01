@@ -33461,6 +33461,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1709248720
   },
+  {
+    id: "4200",
+    name: "Pond0x",
+    address: "0x423f4e6138e475d85cf7ea071ac92097ed631eea",
+    symbol: "PNDC",
+    url: "https://www.pondcoin.com/",
+    description:
+      "Pond DEX is a platform that aggregates liquidity for swaps at optimal rates, returning generated fees as claimable rewards",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/pond0x.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "pond-coin",
+    cmcId: "27712",
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    module: "pond0x/index.js",
+    twitter: "Pond0x",
+    forkedFrom: [], 
+    oracles: [],
+    listedAt: 1709268615
+  },
 ]
 
 export default data3

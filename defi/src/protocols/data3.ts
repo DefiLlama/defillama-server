@@ -33761,6 +33761,29 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.particle.trade/contracts/audits"],
     listedAt: 1709315727
   },
+  {
+    id: "4213",
+    name: "Orbit Protocol",
+    address: "blast:0x42E12D42b3d6C4A74a88A61063856756Ea2DB357",
+    symbol: "ORBIT",
+    url: "https://app.orbitlending.io/",
+    description:
+      "Orbit is a decentralized liquidity protocol that facilitates the lending and borrowing of Blast assets",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/orbit-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    module: "orbitlending-io/index.js",
+    twitter: "OrbitLending",
+    forkedFrom: ["Compound V2"], 
+    oracles: ["Pyth"], // https://book.orbitlending.io/protocol-design/price-oracle
+    audit_links: [],
+    listedAt: 1709316471
+  },
 ]
 
 export default data3

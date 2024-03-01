@@ -25702,7 +25702,8 @@ const data3: Protocol[] = [
     twitter: "Chainflip",
     audit_links: [
                    "https://github.com/chainflip-io/chainflip-backend/blob/main/audits/Multisig-Kudelski-Q1-2022.pdf",
-                   "https://github.com/chainflip-io/chainflip-backend/blob/main/audits/2023-04-TrailOfBits-securityreview.pdf"
+                   "https://github.com/chainflip-io/chainflip-backend/blob/main/audits/2023-04-TrailOfBits-securityreview.pdf",
+                   "https://github.com/chainflip-io/chainflip-backend/blob/main/audits/Chainflip_Backend_-_Zellic_Audit_Report.pdf"
                   ],
     listedAt: 1701184034
   },

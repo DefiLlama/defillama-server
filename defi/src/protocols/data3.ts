@@ -33483,6 +33483,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1709268615
   },
+  {
+    id: "4201",
+    name: "BlastDEX",
+    address: "blast:0x60701c37Cd9Fed322dDe7c17Dc1e356f09a35B88",
+    symbol: "BD",
+    url: "https://blastdex.xyz",
+    description:
+      "Maximizing Profit for Liquidity Providers and Traders, Optimizing Asset Utilization Under Secure Management",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/blastdex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "blastdex/index.js",
+    twitter: "Blast_Dex",
+    forkedFrom: ["Uniswap V2"], 
+    oracles: [],
+    listedAt: 1709270369
+  },
 ]
 
 export default data3

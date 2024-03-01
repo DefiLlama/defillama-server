@@ -33505,6 +33505,52 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1709270369
   },
+  {
+    id: "4202",
+    name: "Cyberblast V2",
+    address: "blast:0xE070B87c4d88826D4cD1b85BAbE186fdB14CD321",
+    symbol: "CBR",
+    url: "https://cyberblast.io",
+    description:
+      "Maximizing Profit for Liquidity Providers and Traders, Optimizing Asset Utilization Under Secure Management",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/cyberblast-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "cyberblast-v2/index.js",
+    twitter: "CyberblastDex",
+    forkedFrom: ["Uniswap V2"], 
+    oracles: [],
+    parentProtocol: "parent#cyberblast",
+    listedAt: 1709293678
+  },
+  {
+    id: "4203",
+    name: "Cyberblast V3",
+    address: "blast:0xE070B87c4d88826D4cD1b85BAbE186fdB14CD321",
+    symbol: "CBR",
+    url: "https://cyberblast.io",
+    description:
+      "Maximizing Profit for Liquidity Providers and Traders, Optimizing Asset Utilization Under Secure Management",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/cyberblast-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "cyberblast-v3/index.js",
+    twitter: "CyberblastDex",
+    forkedFrom: ["Uniswap V3"], 
+    oracles: [],
+    parentProtocol: "parent#cyberblast",
+    listedAt: 1709293678
+  },
 ]
 
 export default data3

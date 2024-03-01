@@ -3826,6 +3826,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "CrunchyTez",
     github: ["crunchy-network"]
   },
+  {
+    id: "parent#cyberblast",
+    name: "Cyberblast",
+    url: "https://cyberblast.io",
+    description:"Maximizing Profit for Liquidity Providers and Traders, Optimizing Asset Utilization Under Secure Management",
+    logo: `${baseIconsUrl}/cyberblast.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "CyberblastDex",
+  },
 ];
 
 export default parentProtocols;

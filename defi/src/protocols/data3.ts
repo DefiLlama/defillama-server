@@ -33831,6 +33831,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#synfutures",
     listedAt: 1709324603
   },
+  {
+    id: "4216",
+    name: "SwapBlast",
+    address: "blast:0xd07379a755A8f11B57610154861D694b2A0f615a",
+    symbol: "SBF",
+    url: "https://swapblast.finance/#/swap",
+    description: "SwapBlast is an automated liquidity protocol implemented in a system of non-upgradeable smart contracts on the Blast blockchain",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/swapblast.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "swapblast/index.js",
+    twitter: "SwapBlast",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    parentProtocol: "parent#swapbased",
+    listedAt: 1709336512
+  },
 ]
 
 export default data3

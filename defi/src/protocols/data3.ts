@@ -33736,7 +33736,30 @@ const data3: Protocol[] = [
     twitter: "pac_finance",
     forkedFrom: ["AAVE V3"], 
     oracles: ["Pyth"], // https://docs.pac.finance/
-    listedAt: 1709309995
+    listedAt: 1709315721
+  },
+  {
+    id: "4212",
+    name: "Particle",
+    address: null,
+    symbol: "-",
+    url: "https://app.particle.trade/",
+    description:
+      "Permissionless leverage trading protocol for any digital asset. Backed by Polychain built on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/particle.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    module: "particle-trade/index.js",
+    twitter: "particle_trade",
+    forkedFrom: [], 
+    oracles: [], 
+    audit_links: ["https://docs.particle.trade/contracts/audits"],
+    listedAt: 1709315727
   },
 ]
 

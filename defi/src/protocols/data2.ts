@@ -9413,13 +9413,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1798",
-    name: "TFM",
+    name: "TFM", // previous name TFM
     address: null,
     symbol: "-",
     url: "tfm/index.js",
     description: "DEX/ NFT Aggregator/ AMM",
     chain: "Terra",
-    logo: `${baseIconsUrl}/tfm.png`,
+    logo: `${baseIconsUrl}/terraformer.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -9429,7 +9429,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Terraswap"],
     module: "tfm/index.js",
-    twitter: "tfm_com",
+    twitter: "terraformer",
     audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/TerraFormer/TerraFormer%20-%20Staking%20-%20Audit%20Test%20Report%20v1.0.pdf"],
     listedAt: 1654136062
   },

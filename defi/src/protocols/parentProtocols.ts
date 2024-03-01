@@ -3837,6 +3837,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CyberblastDex",
   },
+  {
+    id: "parent#thruster",
+    name: "Thruster",
+    url: "https://app.thruster.finance",
+    description:"To Blast off, we need Thrust Blast_l2s core liquidity and fair launch DEX layer, backed by DeFi's best.",
+    logo: `${baseIconsUrl}/thruster.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ThrusterFi",
+  },
 ];
 
 export default parentProtocols;

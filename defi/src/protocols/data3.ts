@@ -33784,6 +33784,29 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1709316471
   },
+  {
+    id: "4214",
+    name: "Blitz",
+    address: null,
+    symbol: "-",
+    url: "https://app.blitz.exchange/",
+    description:
+      "Blazing fast orderbook for spot and futures trading built on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/blitz.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "blitz-exchange/index.js",
+    twitter: "tradeonblitz",
+    forkedFrom: [], 
+    oracles: [], 
+    audit_links: [],
+    listedAt: 1709318288
+  },
 ]
 
 export default data3

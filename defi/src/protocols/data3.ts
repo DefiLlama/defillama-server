@@ -25062,7 +25062,7 @@ const data3: Protocol[] = [
     url: "https://blast.io/",
     description: "Farm for Blast before rollup launch",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/blast.png`,
+    logo: `${baseIconsUrl}/blast-pre-launch-farm.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

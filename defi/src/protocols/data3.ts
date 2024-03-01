@@ -33551,6 +33551,75 @@ const data3: Protocol[] = [
     parentProtocol: "parent#cyberblast",
     listedAt: 1709293678
   },
+  {
+    id: "4204",
+    name: "Rockswap",
+    address: "bitrock:0x826628622a8B55F4AF6aC2A1DD1273bF837e651a",
+    symbol: "ROCK",
+    url: "https://rock-swap.io",
+    description:
+      "Rockswap is the official DEX for the Bitrock Blockchain ecosystem.",
+    chain: "Bitrock",
+    logo: `${baseIconsUrl}/rockswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Bitrock"],
+    module: "rockswap/index.js",
+    twitter: "RockswapBROCK",
+    forkedFrom: ["Uniswap V2"], 
+    oracles: [],
+    listedAt: 1709294815
+  },
+  {
+    id: "4205",
+    name: "Cygnus Finance",
+    address: "base:",
+    symbol: "-",
+    url: "https://cygnus.finance",
+    description:
+      "Cygnus Finance is a RWA stablecoin protocol built on pure, short-term U.S. debt assets. It is also the first native interest-bearing stablecoin protocol and the first native RWA protocol on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/cygnus-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Base"],
+    module: "cygnus-finance/index.js",
+    twitter: "CygnusFi",
+    forkedFrom: [], 
+    oracles: ["Chainlink"], // https://twitter.com/chainlink/status/1707711868570140778
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Cygnus-v1.0.pdf"],
+    github: ["arks-labs"],
+    listedAt: 1709294898
+  },
+  {
+    id: "4206",
+    name: "BladeSwap",
+    address: "blast:0xD1FedD031b92f50a50c05E2C45aF1aDb4CEa82f4",
+    symbol: "BLADE",
+    url: "https://bladeswap.xyz",
+    description:
+      "Velocore V2 fork on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/bladeswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "bladeswap/index.js",
+    twitter: "Bladeswapxyz",
+    forkedFrom: ["Velocore V2"], 
+    oracles: [], 
+    github: ["Bladeswap"],
+    listedAt: 1709294950
+  },
 ]
 
 export default data3

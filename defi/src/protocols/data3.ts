@@ -33670,6 +33670,52 @@ const data3: Protocol[] = [
     oracles: ["Pyth"],  //https://juice-finance.gitbook.io/juice-finance/technical-documents-and-section/technical-and-contracts-synopsis/pythpriceprovide
     listedAt: 1709308594
   },
+  {
+    id: "4209",
+    name: "MonoSwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.monoswap.io",
+    description:
+      "Uniswap V2 fork on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/monoswap-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "monoswap-v2/index.js",
+    twitter: "monoswapio",
+    forkedFrom: ["Uniswap V2"], 
+    oracles: [], 
+    parentProtocol: "parent#monoswap",
+    listedAt: 1709309984
+  },
+  {
+    id: "4210",
+    name: "MonoSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://www.monoswap.io",
+    description:
+      "Uniswap V3 fork on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/monoswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "monoswap-v3/index.js",
+    twitter: "monoswapio",
+    forkedFrom: ["Uniswap V3"], 
+    oracles: [], 
+    parentProtocol: "parent#monoswap",
+    listedAt: 1709309995
+  },
 ]
 
 export default data3

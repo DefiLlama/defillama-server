@@ -3848,6 +3848,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ThrusterFi",
   },
+  {
+    id: "parent#monoswap",
+    name: "MonoSwap",
+    url: "https://www.monoswap.io",
+    description:"Native yield reimagined. Home of the impossibles on Blast_L2.",
+    logo: `${baseIconsUrl}/monoswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "monoswapio",
+  },
 ];
 
 export default parentProtocols;

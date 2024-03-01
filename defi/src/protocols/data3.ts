@@ -33809,7 +33809,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4215",
-    name: "SynFutures V2",
+    name: "SynFutures V3",
     address: null,
     symbol: "-",
     url: "https://trade.synfutures.com/#/trade",

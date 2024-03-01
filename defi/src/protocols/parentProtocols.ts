@@ -3830,7 +3830,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#cyberblast",
     name: "Cyberblast",
     url: "https://cyberblast.io",
-    description:"Maximizing Profit for Liquidity Providers and Traders, Optimizing Asset Utilization Under Secure Management",
+    description:"Cyberblast, the pioneering native DEX on the Blast L2",
     logo: `${baseIconsUrl}/cyberblast.jpg`,
     gecko_id: null,
     cmcId: null,

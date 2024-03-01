@@ -33517,7 +33517,7 @@ const data3: Protocol[] = [
     symbol: "CBR",
     url: "https://cyberblast.io",
     description:
-      "Maximizing Profit for Liquidity Providers and Traders, Optimizing Asset Utilization Under Secure Management",
+      "Cyberblast, the pioneering native DEX on the Blast L2",
     chain: "Blast",
     logo: `${baseIconsUrl}/cyberblast-v2.jpg`,
     audits: "0",
@@ -33540,7 +33540,7 @@ const data3: Protocol[] = [
     symbol: "CBR",
     url: "https://cyberblast.io",
     description:
-      "Maximizing Profit for Liquidity Providers and Traders, Optimizing Asset Utilization Under Secure Management",
+      "Cyberblast, the pioneering native DEX on the Blast L2",
     chain: "Blast",
     logo: `${baseIconsUrl}/cyberblast-v3.jpg`,
     audits: "0",

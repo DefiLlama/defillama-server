@@ -1898,5 +1898,9 @@ export default {
     "instadapp": {
         "enabled": true,
         "id": "120"
+    },
+    "summer.fi": {
+        "enabled": true,
+        "id": "3284"
     }
 } as AdaptorsConfig

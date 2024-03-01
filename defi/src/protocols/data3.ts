@@ -25056,7 +25056,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3824",
-    name: "Blast",
+    name: "Blast pre-launch Farm",
     address: null,
     symbol: "-",
     url: "https://blast.io/",

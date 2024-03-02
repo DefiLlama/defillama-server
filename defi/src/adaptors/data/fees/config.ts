@@ -1902,5 +1902,9 @@ export default {
     "summer.fi": {
         "enabled": true,
         "id": "3284"
+    },
+    "integral": {
+        "enabled": true,
+        "id": "291"
     }
 } as AdaptorsConfig

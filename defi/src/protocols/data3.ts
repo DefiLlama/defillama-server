@@ -33822,7 +33822,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum","Blast","Linea","Scroll"],
+    chains: ["Arbitrum","Blast"],
     module: "synfutures-v3/index.js",
     twitter: "SynFuturesDefi",
     forkedFrom: [],

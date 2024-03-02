@@ -33827,7 +33827,7 @@ const data3: Protocol[] = [
     twitter: "SynFuturesDefi",
     forkedFrom: [],
     oracles: ["Chainlink", "TWAP"],
-    audit_links: ["https://www.synfutures.com/PeckShield-Audit-Report-SynFuturesV2-v1.0.pdf"],
+    audit_links: ["https://www.synfutures.com/Quantstamp-Audit-Report-SynFuturesV3.pdf"],
     parentProtocol: "parent#synfutures",
     listedAt: 1709324603
   },

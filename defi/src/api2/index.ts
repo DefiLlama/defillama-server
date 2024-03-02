@@ -4,7 +4,6 @@ import { initializeTVLCacheDB } from "./db";
 import setTvlRoutes from "./routes";
 import process from "process";
 import fs from 'fs'
-import { initLlamaswapDB } from "./db/llamaswap";
 
 const webserver = new HyperExpress.Server()
 
@@ -23,7 +22,6 @@ async function main() {
   await Promise.all([
     initializeTVLCacheDB({ isApi2Server: true }),
     initCache({ cacheType: 'api-server' }),
-    initLlamaswapDB()
   ])
 
   const router = new HyperExpress.Router()

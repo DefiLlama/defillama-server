@@ -33999,7 +33999,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Yield",
     chains: ["Blast"],
     module: "ring-few/index.js",
     twitter: "ProtocolRing",
@@ -34008,6 +34008,28 @@ const data3: Protocol[] = [
     oracles: [],
     parentProtocol: "parent#ring-protocol",
     listedAt: 1709414739
+  },
+  {
+    id: "4224",
+    name: "Strater",
+    address: null,
+    symbol: "-",
+    url: "https://www.strater.xyz/",
+    description: "One-Stop DeFi operation hub for SUI ecosystem",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/strater.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Sui"],
+    module: "strater/index.js",
+    twitter: "strater_sui",
+    forkedFrom: [],
+    audit_links: [],
+    oracles: [],
+    listedAt: 1709415603
   },
 ]
 

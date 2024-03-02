@@ -33871,7 +33871,7 @@ const data3: Protocol[] = [
     module: "wand/index.js",
     twitter: "WandProtocol",
     forkedFrom: [],
-    oracles: ["Redstone"],// https://docs.wand.fi/product-introduction/redstone-oracles
+    oracles: ["RedStone"],// https://docs.wand.fi/product-introduction/redstone-oracles
     github: ["wandfi"],
     listedAt: 1709402190
   },

@@ -2529,5 +2529,9 @@ export default {
     "Scopuly": {
         "enabled": true,
         "id": "4181"
+    },
+    "standard-mode": {
+        "enabled": true,
+        "id": "4186"
     }
 } as AdaptorsConfig

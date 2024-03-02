@@ -3860,6 +3860,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "monoswapio",
   },
+  {
+    id: "parent#ring-protocol",
+    name: "Ring Protocol",
+    url: "https://ring.exchange/",
+    description:"Ring is a new era in Decentralized Exchange revolutionizing asset utilization",
+    logo: `${baseIconsUrl}/ring-protocol.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ProtocolRing",
+    github: ["RingProtocol"]
+  },
 ];
 
 export default parentProtocols;

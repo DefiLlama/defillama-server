@@ -3775,7 +3775,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "fixesOnFlow",
+    twitter: "fixesWorld",
     github: ["fixes-world"],
   },
   /*

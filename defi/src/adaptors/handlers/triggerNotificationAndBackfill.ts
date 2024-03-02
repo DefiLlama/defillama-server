@@ -5,7 +5,6 @@ import { sendDiscordAlert } from "../utils/notify";
 import loadAdaptorsData from "../data"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import axios from 'axios'
-import { handler2 } from "./storeAdaptorData/index";
 
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions: notify & backfill ...")

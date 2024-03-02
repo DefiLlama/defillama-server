@@ -2533,5 +2533,10 @@ export default {
     "standard-mode": {
         "enabled": true,
         "id": "4186"
+    },
+    "sushi-aptos": {
+        parentId: "Sushi",
+        "enabled": true,
+        "id": "3827"
     }
 } as AdaptorsConfig

@@ -1829,6 +1829,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "1504",
     chains: [],
     twitter: "SynFuturesDefi",
+    github: ["SynFutures"],
   },
   {
     id: "parent#shade-protocol",

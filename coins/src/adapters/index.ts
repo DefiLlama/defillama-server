@@ -1,5 +1,6 @@
 export default {
   dinari: require("./rwa/dinari"),
+  few: require("./other/few"),
   ociswap: require("./markets/ociswap"),
   optimBonds: require("./other/optimBonds"),
   tangleswap: require("./markets/tangleswap"),

@@ -33940,6 +33940,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1709403023
   },
+  {
+    id: "4221",
+    name: "Blast Futures",
+    address: null,
+    symbol: "-",
+    url: "https://bfx.trade/",
+    description: "Blast Futures Exchange (BFX) is a fully integrated perpetual futures exchange with native yield. BFX offers the best rewards and liquidity",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/blast-futures.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Blast"],
+    module: "blastfutures/index.js",
+    twitter: "BlastFutures",
+    forkedFrom: [],
+    audit_links: ["https://github.com/BlastFutures/Blast-Futures-Exchange/blob/main/bfx_audit_report_hats.pdf"],
+    github: ["BlastFutures"],
+    oracles: [],
+    listedAt: 1709403349
+  },
 ]
 
 export default data3

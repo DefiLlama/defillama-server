@@ -682,6 +682,14 @@ export default {
     },
     "blastfutures": {
         "enabled": true,
-        "id": "4221"
+        "id": "4221",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1709337600": true,
+                "1709251200": true,
+                "1709164800": true,
+                "1709078400": true,
+            },
+        }
     }
 } as AdaptorsConfig

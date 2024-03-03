@@ -679,5 +679,9 @@ export default {
     "sudofinance": {
         "enabled": true,
         "id": "4045"
+    },
+    "blastfutures": {
+        "enabled": true,
+        "id": "4221"
     }
 } as AdaptorsConfig

@@ -33966,7 +33966,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4222",
-    name: "Ring DEX",
+    name: "Ring Swap",
     address: null,
     symbol: "-",
     url: "https://ring.exchange/#/swap",

@@ -33989,11 +33989,11 @@ const data3: Protocol[] = [
   },
   {
     id: "4223",
-    name: "Ring Earn",
+    name: "Ring Few",
     address: null,
     symbol: "-",
     url: "https://ring.exchange/#/earn",
-    description: "Farming product on Ring Protocol",
+    description: "Wrapper protocol within Ring Protocol",
     chain: "Blast",
     logo: `${baseIconsUrl}/ring-protocol.png`,
     audits: "2",

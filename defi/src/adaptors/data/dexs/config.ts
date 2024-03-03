@@ -1550,7 +1550,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": true,
+        "enabled": false,
         "id": "2864"
     },
     "astroswap": {

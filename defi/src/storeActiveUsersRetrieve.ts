@@ -5,7 +5,7 @@ import { storeNewUsers } from "./users/storeUsers";
 import { getR2 } from "./utils/r2";
 import { storeUserInfo, userQueriesFilename } from "./storeActiveUsers";
 import { retrieveAlliumResults } from "@defillama/dimension-adapters/helpers/allium";
-import { parseUserResponse } from "@defillama/dimension-adapters/users/utils/countUsers";
+import { parseChainResponse, parseUserResponse } from "@defillama/dimension-adapters/users/utils/countUsers";
 import fetch from "node-fetch";
 
 async function storeActiveUsers() {
@@ -27,7 +27,12 @@ async function storeActiveUsers() {
                     }
                     await storeNewUsers(start, end, id, "all", Number(result))
                 } else {
-                    const result = await parseUserResponse(users.queryId, users.params)
+                    let result;
+                    if(id.startsWith("chain")){
+                        result = await parseChainResponse(users.queryId)
+                    } else {
+                        result = await parseUserResponse(users.queryId, users.params)
+                    }
                     await storeUserInfo(result, start, end, id)
                 }
             } catch (e) {

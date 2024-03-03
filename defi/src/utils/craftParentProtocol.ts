@@ -7,6 +7,7 @@ import fetch from "node-fetch";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
 import { protocolMcap, getRaises } from "./craftProtocol";
+import { getClosestDayStartTimestamp } from "./date";
 
 export interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -156,6 +157,8 @@ export async function craftParentProtocolInternal({
             let nearestDate = date;
             if (index === curr.chainTvls[chain].tvl.length - 1) {
               nearestDate = currentTime;
+            } else {
+              nearestDate = getClosestDayStartTimestamp(date)
             }
 
             if (index !== 0 && !isTvlDataHourly) {

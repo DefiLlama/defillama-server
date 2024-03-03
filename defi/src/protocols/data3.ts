@@ -31548,6 +31548,7 @@ const data3: Protocol[] = [
       "https://blocksafu.com/audit/0xc1e624C810D297FD70eF53B0E08F44FABE468591",
       "https://blocksafu.com/audit/0xfb926356BAf861c93C3557D7327Dbe8734A71891"
     ],
+    github: ["swapmode"],
     listedAt: 1707344969
   },
   {
@@ -34030,6 +34031,50 @@ const data3: Protocol[] = [
     audit_links: [],
     oracles: [],
     listedAt: 1709415603
+  },
+  {
+    id: "4225",
+    name: "AvoLend",
+    address: "blast:0x95b9B27F2EbA05433b4A64257F0342285D89a479",
+    symbol: "AVO",
+    url: "https://www.avolend.finance",
+    description: "Lend and borrow from the decentralized lending platform on Blast.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/avolend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    module: "AvoLend/index.js",
+    twitter: "Avolend_Finance",
+    forkedFrom: ["Compound V2"],
+    audit_links: [],
+    oracles: [],
+    listedAt: 1709464355
+  },
+  {
+    id: "4226",
+    name: "LemonBlast",
+    address: "blast:0xFaAe7D1ba05fBbFe5F32F1d8C69ed7bAEE9C3e18",
+    symbol: "LEMON",
+    url: "https://lemonblast.xyz",
+    description: "Your favorite yield farming project on Blast_L2",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/lemonblast.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Blast"],
+    module: "LemonBlast/index.js",
+    twitter: "LemonblastX",
+    forkedFrom: ["Goose Finance"],
+    audit_links: [],
+    oracles: [],
+    listedAt: 1709464368
   },
 ]
 

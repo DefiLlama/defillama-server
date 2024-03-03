@@ -34076,6 +34076,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1709464368
   },
+  {
+    id: "4227",
+    name: "BONKbot",
+    address: null,
+    symbol: "-",
+    url: "https://www.bonkbot.io/",
+    description: "Solana's FREE telegram tool, by the Bonk community, to trade any SPL token",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/bonkbot.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "bonkbot_io",
+    forkedFrom: [],
+    audit_links: [],
+    oracles: [],
+    listedAt: 1709494263
+  },
 ]
 
 export default data3

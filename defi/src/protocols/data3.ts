@@ -34254,6 +34254,27 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.baseline.markets/assets/audit_trust_security.pdf"],
     listedAt: 1709554968
   },
+  {
+    id: "4235",
+    name: "Lens Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.lens.xyz",
+    description: "Onchain social.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/lens-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Polygon"],
+    module: "dummy.js",
+    twitter: "LensProtocol",
+    forkedFrom: [],
+    oracles: [],
+    github: ["lens-protocol"],
+  },
 ]
 
 export default data3

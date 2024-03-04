@@ -219,7 +219,6 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     }
     idToSymbol[coin.id] = coin.symbol;
   });
-  const timestamp = getCurrentUnixTimestamp();
   const writes = Object.entries(coinData)
     .filter((c) => c[1]?.usd !== undefined)
     .map(([cgId, data]) => ({
@@ -227,7 +226,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       SK: data.last_updated_at,
       price: data.usd,
       mcap: data.usd_market_cap,
-      timestamp,
+      timestamp: data.last_updated_at,
       symbol: idToSymbol[cgId].toUpperCase(),
       confidence: 0.99,
     }));

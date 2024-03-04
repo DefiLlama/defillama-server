@@ -14161,7 +14161,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Base"],
     module: "baseswap/index.js",
-    twitter: "BaseSwap_Fi",
+    twitter: "BaseSwapDex",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     parentProtocol: "parent#baseswap",
@@ -18058,7 +18058,7 @@ const data3: Protocol[] = [
     module: "basex/index.js",
     oracles: [],
     forkedFrom: ["Uniswap V3"],
-    twitter: "BaseSwap_Fi",
+    twitter: "BaseSwapDex",
     parentProtocol: "parent#baseswap",
     listedAt: 1694255219
   },

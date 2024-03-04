@@ -2528,7 +2528,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "baseswap",
     cmcId: "27764",
     chains: [],
-    twitter: "BaseSwap_Fi",
+    twitter: "BaseSwapDex",
     treasury: "baseswap.js",
   },
   {

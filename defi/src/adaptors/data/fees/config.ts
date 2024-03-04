@@ -1910,5 +1910,9 @@ export default {
     "bonk-bot": {
         "enabled": true,
         "id": "4227"
+    },
+    "lens-protocol": {
+        "enabled": true,
+        "id": "4235"
     }
 } as AdaptorsConfig

@@ -27,8 +27,12 @@ export interface IHandlerEvent {
 
 const LAMBDA_TIMESTAMP = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
 
-export const handler = async () => {
-  throw new Error("This is broken now, use handler2 instead.")
+export const handler = async (event: IHandlerEvent) => {
+  return handler2({
+    timestamp: event.timestamp,
+    adapterType: event.adaptorType,
+    protocolNames: event.protocolModules ? new Set(event.protocolModules) : undefined,
+  })
 };
 
 export default wrapScheduledLambda(handler);

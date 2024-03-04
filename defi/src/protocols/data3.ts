@@ -34315,6 +34315,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "4238",
+    name: "Zircuit Staking",
+    address: null,
+    symbol: "-",
+    url: "https://stake.zircuit.com/",
+    description: "The Zircuit staking is designed to reward participating users and communities that help bootstrap native, day-one liquidity to Zircuit. Zircuit is a modular zk rollup with AI-enabled security at the sequencer level",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zircuit-staking.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Ethereum"],
+    module: "zircuit/index.js",
+    twitter: "ZircuitL2",
+    audit_links: ["https://dubiw3zgo51jg.cloudfront.net/zircuit_audit_final.pdf"],
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1709594345
+  },
 ]
 
 export default data3

@@ -2643,6 +2643,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "minswap/index.js",
+    treasury: "minswap.js",
     twitter: "MinswapDEX",
     listedAt: 1646175638,
     github: ["minswap"]

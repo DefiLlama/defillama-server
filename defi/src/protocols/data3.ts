@@ -34230,6 +34230,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1709553498
   },
+  {
+    id: "4234",
+    name: "Baseline Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.baseline.markets/",
+    description: "Baseline is an automated tokenomics engine for ERC20 tokens. By utilizing a dynamic supply model and a basic market making strategy, Baseline gives new ERC20s persistent on-chain liquidity and non-liquidatable leverage right out of the box. When a Baseline token is deployed, it automatically seeds initial liquidity into a Uniswap V3 pool. At launch, 100% of token supply is kept on-chain by the protocol and used to protect their value forever.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/baseline-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Blast"],
+    module: "baseline/index.js",
+    twitter: "BaselineMarkets",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.baseline.markets/assets/audit_trust_security.pdf"],
+    listedAt: 1709554968
+  },
 ]
 
 export default data3

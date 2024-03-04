@@ -5965,7 +5965,7 @@ const data: Protocol[] = [
     gecko_id: "pendle",
     cmcId: "9481",
     category: "Yield",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Binance"],
     module: "pendle/index.js",
     twitter: "pendle_fi",
     audit_links: ["https://github.com/pendle-finance/pendle-core-v2-public/tree/main/audits"],

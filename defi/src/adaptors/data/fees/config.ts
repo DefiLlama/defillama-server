@@ -1906,5 +1906,9 @@ export default {
     "integral": {
         "enabled": true,
         "id": "291"
+    },
+    "bonk-bot": {
+        "enabled": true,
+        "id": "4227"
     }
 } as AdaptorsConfig

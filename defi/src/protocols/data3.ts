@@ -33753,7 +33753,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Derivatives",
     chains: ["Blast"],
     module: "particle-trade/index.js",
     twitter: "particle_trade",

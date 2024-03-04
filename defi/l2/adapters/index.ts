@@ -149,3 +149,24 @@ export const tron = async (): Promise<Address[]> => {
   );
   return addresses.tron;
 };
+export const blast = async (): Promise<Address[]> => {
+  if (!("blast" in addresses)) addresses.blast = [];
+  addresses.blast.push(
+    ...[
+      "0x4300000000000000000000000000000000000004", // WETH
+    ]
+  );
+  return addresses.tron;
+};
+export const mode = async (): Promise<Address[]> => {
+  if (!("mode" in addresses)) addresses.mode = [];
+  addresses.mode.push(
+    ...[
+      "0x4300000000000000000000000000000000000004", // WETH
+      "0xcDd475325D6F564d27247D1DddBb0DAc6fA0a5CF", // WBTC
+      "0xd988097fb8612cc24eeC14542bC03424c656005f", // USDC
+      "0xf0F161fDA2712DB8b566946122a5af183995e2eD", // USDT
+    ]
+  );
+  return addresses.tron;
+};

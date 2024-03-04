@@ -164,4 +164,5 @@ export default {
   pxeth: require("./liquidStaking/pxeth"),
   sthApt: require("./liquidStaking/sthapt"),
   ambitFinance: require("./yield/ambit-finance"),
+  eigenpie: require("./yield/eigenpie"),
 };

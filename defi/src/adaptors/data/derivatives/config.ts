@@ -691,5 +691,10 @@ export default {
                 "1709078400": true,
             },
         }
+    },
+    "synfutures-v3": {
+        parentId: "SynFutures",
+        "enabled": true,
+        "id": "4215"
     }
 } as AdaptorsConfig

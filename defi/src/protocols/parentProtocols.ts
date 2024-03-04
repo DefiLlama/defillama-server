@@ -1823,7 +1823,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#synfutures",
     name: "SynFutures",
     url: "https://www.synfutures.com/",
-    description: 'Next-generation derivatives platform designed for any blockchain',
+    description: 'SynFutures is a leading decentralized protocol for perpetual futures, democratizing the derivatives market by empowering users to trade any asset and create arbitrary futures contracts within seconds',
     logo: `${baseIconsUrl}/synfutures.svg`,
     gecko_id: null,
     cmcId: "1504",

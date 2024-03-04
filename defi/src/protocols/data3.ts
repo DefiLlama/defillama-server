@@ -33815,7 +33815,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://trade.synfutures.com/#/trade",
     description:
-      "SynFutures is a permissionless web3 infrastructure for derivatives",
+      "SynFutures is a leading decentralized protocol for perpetual futures, democratizing the derivatives market by empowering users to trade any asset and create arbitrary futures contracts within seconds. Its V3 oAMM introduces the industry's first-ever integration of a unified AMM and on-chain matching order book model.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/synfutures.svg`,
     audits: "2",

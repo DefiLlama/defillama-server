@@ -37,6 +37,8 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3936": "zksync",
   "3935": "boba",
   "4032": "manta",
+  "4236": 'blast', 
+  '4237': 'mode'
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -73,6 +75,9 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   kava: { ticker: "KAVA", address: "0x0000000000000000000000000000000000000000" },
   bsc: { ticker: "BNB", address: "0x0000000000000000000000000000000000000000" },
   tron: { ticker: "TRON", address: "0x0000000000000000000000000000000000000000" },
+
+  // blast: { ticker: 'BLAST', address: ''}
+  // mode: { ticker: 'MODE', address: ''}
 };
 
 export const gasTokens: { [chain: Chain]: string } = {
@@ -104,4 +109,6 @@ export const gasTokens: { [chain: Chain]: string } = {
   ethereum: "ETH",
   bsc: "BNB",
   tron: "TRON",
+  blast: 'ETH', 
+  mode: 'ETH'
 };

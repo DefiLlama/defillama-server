@@ -1172,7 +1172,13 @@ export default {
     },
     "level-finance": {
         "enabled": true,
-        "id": "2395"
+        "id": "2395",
+        protocolsData: {
+            "level-finance": {
+                "id": "2395",
+                enabled: true,
+            }
+        }
     },
     "hyperjump": {
         "enabled": true,
@@ -1544,7 +1550,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": true,
+        "enabled": false,
         "id": "2864"
     },
     "astroswap": {
@@ -1961,10 +1967,16 @@ export default {
         "enabled": true,
         "id": "3408"
     },
-    "gmx-v2-swap": {
+    "gmx-v2": {
         parentId: "GMX",
         "enabled": true,
-        "id": "3365"
+        "id": "3365",
+        protocolsData: {
+            "gmx-v2-swap": {
+                "id": "3365",
+                "enabled": true,
+            }
+        }
     },
     "meridian-trade": {
         "enabled": false,
@@ -2499,5 +2511,32 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "merchant-moe": {
+        "enabled": true,
+        "id": "4006"
+    },
+    "deltaswap": {
+        parentId: "GammaSwap Protocol",
+        "enabled": true,
+        "id": "4062"
+    },
+    "lynex-v1": {
+        parentId: "Lynex",
+        "enabled": true,
+        "id": "3908"
+    },
+    "Scopuly": {
+        "enabled": true,
+        "id": "4181"
+    },
+    "standard-mode": {
+        "enabled": true,
+        "id": "4186"
+    },
+    "sushi-aptos": {
+        parentId: "Sushi",
+        "enabled": true,
+        "id": "3827"
     }
 } as AdaptorsConfig

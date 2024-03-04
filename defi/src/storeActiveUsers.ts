@@ -53,7 +53,7 @@ async function storeActiveUsers() {
                         await storeUserInfo(users, start, end, id)
                     }
                 }
-                if(![0, 8., 16].includes(new Date().getHours())){
+                if(![0, 8, 16].includes(new Date().getHours())){
                     return
                 }
                 if(getNewUsers){

@@ -6,6 +6,7 @@ import { closeConnection, getCoins2Connection } from "./getDBConnection";
 import { sendMessage } from "../defi/src/utils/discord";
 import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 import fetch from "node-fetch";
+import postgres from "postgres";
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -71,6 +72,10 @@ async function queryPostgresWithRetry(
   } catch (e) {
     if (counter > 5) throw e;
     await sleep(5000 + 1e4 * Math.random());
+    if (counter == 3) {
+      // await closeConnection();
+      // sql = await getCoins2Connection();
+    }
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
 }
@@ -193,6 +198,8 @@ async function queryPostgres(
   target: number,
   batchPostgresReads: boolean,
 ): Promise<CoinDict> {
+  return {};
+
   if (values.length == 0) return {};
   const upper: number = Number(target) + Number(margin);
   const lower: number = Number(target) - Number(margin);
@@ -465,7 +472,7 @@ async function cleanConfidences(
     confidentValues.push(c);
   });
 
-  await storeChangedAdapter(changedAdapters);
+  // await storeChangedAdapter(changedAdapters);
   return confidentValues;
 }
 export async function writeToRedis(
@@ -579,11 +586,11 @@ export async function writeCoins2(
   });
 
   await writeToRedis(strings, source);
-  await Promise.all([
-    writeToPostgres(values),
-    //writeToRedis(strings, source)
-  ]);
-  await closeConnection()
+  // await Promise.all([
+  //   writeToPostgres(values),
+  //writeToRedis(strings, source)
+  // ]);
+  await closeConnection();
 }
 export async function batchWrite2(
   values: Coin[],

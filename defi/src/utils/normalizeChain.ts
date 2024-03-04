@@ -19,7 +19,7 @@ export const normalizedChainReplacements = {
   "bahamut": "ftn",
   "viction": "tomochain",
   "bevm": "chainx",
-  "bitnet": "btn"
+  "bitnet": "btn",
 } as {
   [chain: string]: string
 }
@@ -2581,6 +2581,76 @@ export const chainCoingeckoIds = {
     twitter: "fraxfinance",
     url: "https://frax.finance",
   },
+  "Areon Network": {
+    geckoId: "areon-network",
+    symbol: "AREA",
+    cmcId: "23262",
+    categories: ["EVM"],
+    twitter: "AreonNetwork",
+    github: "areon-network",
+    url: "https://areon.network",
+  },
+  "DeFiVerse": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "DeFiVerse_org",
+    url: "https://defi-verse.org",
+  },
+  "Manta Atlantic": {
+    geckoId: null,
+    symbol: "MANTA",
+    cmcId: null,
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+    twitter: "MantaNetwork",
+    url: "https://atlantic.manta.network"
+  },
+  "Xai": {
+    geckoId: "xai-blockchain",
+    symbol: "XAI",
+    cmcId: "28374",
+    categories: ["EVM"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "XAI_GAMES",
+    url: "https://xai.games"
+  },
+  "Merlin": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "MerlinLayer2",
+    url: "https://merlinchain.io",
+  },
+  "Blast": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    twitter: "Blast_L2",
+    url: "https://blast.io",
+  },
+  "Bitrock": {
+    geckoId: "bitrock",
+    symbol: "BROCK",
+    cmcId: "27606",
+    categories: ["EVM"],
+    twitter: "BitRockChain",
+    url: "https://www.bit-rock.io",
+    github: ["BitrockChain"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3130,6 +3200,20 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Celestia"
     case "fraxtal":
       return "Fraxtal"
+    case "area":
+      return "Areon Network"
+    case "defiverse":
+      return "DeFiVerse"
+    case "manta_atlantic":
+      return "Manta Atlantic"
+    case "xai":
+      return "Xai"
+    case "merlin":
+      return "Merlin"
+    case "blast":
+      return "Blast"
+    case "bitrock":
+      return "Bitrock"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

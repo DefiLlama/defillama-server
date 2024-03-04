@@ -1,4 +1,7 @@
 export default {
+  unknownTokensV3: require("./other/unknownTokensV3"),
+  dinari: require("./rwa/dinari"),
+  few: require("./other/few"),
   ociswap: require("./markets/ociswap"),
   optimBonds: require("./other/optimBonds"),
   tangleswap: require("./markets/tangleswap"),
@@ -28,6 +31,7 @@ export default {
   uwulend: require("./moneyMarkets/aave"),
   //klap: require("./moneyMarkets/aave"),
   //valas: require("./moneyMarkets/aave"),
+  hover: require("./moneyMarkets/compound"),
   sumerian: require("./moneyMarkets/compound"),
   compound: require("./moneyMarkets/compound"),
   venus: require("./moneyMarkets/compound"),

@@ -823,7 +823,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": true,
+        "enabled": false,
         "id": "2864"
     },
     "merlin": {
@@ -1856,7 +1856,15 @@ export default {
     "marinade-liquid-staking": {
         parentId: "Marinade",
         "enabled": true,
-        "id": "484"
+        "id": "484",
+        "cleanRecordsConfig": {
+            genuineSpikes: {
+                "1708387200": true,
+                "1708473600": true,
+                "1708560000": true,
+                "1708646400": true,
+            }
+        }
     },
     "marinade-native": {
         parentId: "Marinade",
@@ -1877,5 +1885,30 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "inverse-finance": {
+        parentId: "Inverse Finance",
+        "enabled": true,
+        "id": "2433"
+    },
+    "furucombo": {
+        "enabled": true,
+        "id": "742"
+    },
+    "instadapp": {
+        "enabled": true,
+        "id": "120"
+    },
+    "summer.fi": {
+        "enabled": true,
+        "id": "3284"
+    },
+    "integral": {
+        "enabled": true,
+        "id": "291"
+    },
+    "bonk-bot": {
+        "enabled": true,
+        "id": "4227"
     }
 } as AdaptorsConfig

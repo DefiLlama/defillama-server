@@ -168,5 +168,9 @@ export default {
         "1708387200": true
       }
     }
+  },
+  "wowmax": {
+    "enabled": true,
+    "id": "4192"
   }
 } as AdaptorsConfig;

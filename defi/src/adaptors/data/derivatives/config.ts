@@ -93,10 +93,16 @@ export default {
         "id": "144",
         "enabled": true
     },
-    "level-finance-derivative": {
+    "level-finance": {
         "enabled": true,
         "id": "2395",
-        "displayName": "Level Finance - Derivatives"
+        "displayName": "Level Finance - Derivatives",
+        "protocolsData": {
+            "level-finance-derivative": {
+                "id": "2395",
+                "enabled": true
+            }
+        }
     },
     "mux-protocol": {
         "enabled": true,
@@ -306,11 +312,17 @@ export default {
             },
         }
     },
-    "gmx-v2-trade": {
+    "gmx-v2": {
         parentId: "GMX",
         "enabled": true,
         "id": "3365",
         displayName: "GMX - Derivatives V2",
+        protocolsData: {
+            "gmx-v2-trade": {
+                "id": "3365",
+                "enabled": true,
+            }
+        }
     },
     "meridian-trade": {
         "enabled": false,
@@ -667,5 +679,22 @@ export default {
     "sudofinance": {
         "enabled": true,
         "id": "4045"
+    },
+    "blastfutures": {
+        "enabled": true,
+        "id": "4221",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1709337600": true,
+                "1709251200": true,
+                "1709164800": true,
+                "1709078400": true,
+            },
+        }
+    },
+    "synfutures-v3": {
+        parentId: "SynFutures",
+        "enabled": true,
+        "id": "4215"
     }
 } as AdaptorsConfig

@@ -15,9 +15,12 @@ export async function getCoins2Connection() {
         throw new Error(
           "there arent 3 auth params. Cannot initialize coins2 connection.",
         );
-      resolve(postgres(auth[0], { idle_timeout: 90,
-        // max_lifetime: 60 * 10
-       }));
+      resolve(
+        postgres(auth[0], {
+          idle_timeout: 90,
+          // max_lifetime: 60 * 10
+        }),
+      );
     });
   }
   return coins2Connection;

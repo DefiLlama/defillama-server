@@ -21,6 +21,7 @@ type ProtocolData = {
   gecko_id?: string;
   mcap?: any;
   events?: any;
+  unlocksPerDay: number
 };
 
 const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> => {
@@ -77,6 +78,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
       }
       const nextUnlockIndex = formattedData.findIndex(([date]) => Number(date) > now);
       const circSupply = nextUnlockIndex != -1 ? formattedData[nextUnlockIndex - 1]?.[1] ?? [] : maxSupply;
+      const unlocksPerDay = formattedData[nextUnlockIndex]?.[1] - formattedData[nextUnlockIndex - 1]?.[1]
 
       protocolsData.push({
         token: res.metadata.token,
@@ -89,6 +91,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         gecko_id: res.gecko_id,
         events: res.metadata.events,
         nextEvent,
+        unlocksPerDay
       });
     })
   );
@@ -146,4 +149,4 @@ export default async function handler(): Promise<void> {
     await sendMessage(`Store index error: ${e}`, process.env.UNLOCKS_WEBHOOK!);
   }
 }
-handler(); // ts-node defi/src/storeEmissionsIndex.ts
+handler(); // ts-node src/storeEmissionsIndex.ts

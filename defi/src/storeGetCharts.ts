@@ -256,6 +256,24 @@ export async function storeGetCharts({ ...options }: any = {}) {
   const sumDailyTvls: SumDailyTvls = {};
   const sumCategoryTvls: SumDailyTvls = {};
 
+  if (options.isApi2CronProcess) {
+    const data = await getHistoricalTvlForAllProtocols(false, false, { ...options, storeMeta: true });
+    // await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/meta.json", JSON.stringify(await data))
+    await writeToPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META, data);
+    // TODO: I hope cache/getHistoricalTvlForAllProtocols/false-true.json is not used anywhere else
+  } else {
+    const dataFalseTrue = getHistoricalTvlForAllProtocols(false, true, options);
+    const dataFalseFalse = getHistoricalTvlForAllProtocols(false, false, options);
+    await storeR2JSONString(
+      "cache/getHistoricalTvlForAllProtocols/false-true.json",
+      JSON.stringify(await dataFalseTrue)
+    );
+    await storeR2JSONString(
+      "cache/getHistoricalTvlForAllProtocols/false-false.json",
+      JSON.stringify(await dataFalseFalse)
+    );
+  }
+
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
       // total - sum of all protocols on all chains
@@ -380,24 +398,6 @@ export async function storeGetCharts({ ...options }: any = {}) {
       }
     })
   );
-
-  if (options.isApi2CronProcess) {
-    const data = await getHistoricalTvlForAllProtocols(false, false, { ...options, storeMeta: true });
-    // await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/meta.json", JSON.stringify(await data))
-    await writeToPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META, data);
-    // TODO: I hope cache/getHistoricalTvlForAllProtocols/false-true.json is not used anywhere else
-  } else {
-    const dataFalseTrue = getHistoricalTvlForAllProtocols(false, true, options);
-    const dataFalseFalse = getHistoricalTvlForAllProtocols(false, false, options);
-    await storeR2JSONString(
-      "cache/getHistoricalTvlForAllProtocols/false-true.json",
-      JSON.stringify(await dataFalseTrue)
-    );
-    await storeR2JSONString(
-      "cache/getHistoricalTvlForAllProtocols/false-false.json",
-      JSON.stringify(await dataFalseFalse)
-    );
-  }
 }
 
 const handler = async (_event: any) => {

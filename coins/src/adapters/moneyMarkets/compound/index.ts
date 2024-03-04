@@ -165,9 +165,9 @@ export function cantoLending(timestamp: number = 0) {
   return compoundPrices({
     chain: "canto",
     timestamp,
-    cether: '0xB65Ec550ff356EcA6150F733bA9B954b2e0Ca488',
+    cether: "0xB65Ec550ff356EcA6150F733bA9B954b2e0Ca488",
     comptroller: "0x5e23dc409fc2f832f83cec191e245a191a4bcc5c",
-    projectName: 'canto-lending',
+    projectName: "canto-lending",
   });
 }
 export function sumerian(timestamp: number = 0) {
@@ -175,6 +175,14 @@ export function sumerian(timestamp: number = 0) {
   return getTokenPrices(
     "meter",
     "0xcb4cdda50c1b6b0e33f544c98420722093b7aa88",
+    timestamp,
+  );
+}
+export function hover(timestamp: number = 0) {
+  console.log("starting hover");
+  return getTokenPrices(
+    "kava",
+    "0x3A4Ec955a18eF6eB33025599505E7d404a4d59eC",
     timestamp,
   );
 }

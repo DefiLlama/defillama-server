@@ -1,72 +1,47 @@
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { fetch } from "../utils";
 import { addToDBWritesList } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
-import { Feed, abi, mapping } from "./pythConfig";
+import { getApi } from "../utils/sdk";
+import { getConfig } from "../../utils/cache";
 
 const now = getCurrentUnixTimestamp();
 
-async function fetchPrices(feeds: Feed[], timestamp: number) {
-  const prices: { [id: string]: number } = {};
-
-  const pricesRes = await multiCall({
-    chain: "arbitrum",
-    target: "0xff1a0f4744e8582DF1aE09D5611b887B6a12925C",
-    calls: feeds.map((f: Feed) => `0x${f.id}`),
-    abi,
-  });
-
-  pricesRes.map((p: any, i: number) => {
-    if (p.publishTime + 300 < timestamp) return; // 5 min latency
-    prices[feeds[i].id] = p.price * 10 ** p.expo;
-  });
-
-  return prices;
+type Feed = {
+  id: string;
+  symbol: string;
 }
 
 async function fetchFeedIds(): Promise<Feed[]> {
-  const feedsRes = await fetch(`https://benchmarks.pyth.network/v1/price_feeds/
-    `);
+  const feedsRes = await getConfig('pyth-feeds', `https://benchmarks.pyth.network/v1/price_feeds/`);
   const feeds: Feed[] = [];
-  feedsRes.map((r: any) => {
-    const ticker = r.attributes.base;
-    const keys = mapping[ticker];
-    if (keys)
-      feeds.push({
-        ticker,
-        quote: r.attributes.quote_currency,
-        id: r.id,
-        keys,
-      });
-  });
+  feedsRes.forEach(({ id, attributes: { symbol = undefined, quote_currency = undefined } = {} }: any = {}) => {
+    if (!id || !symbol || quote_currency !== 'USD') return;
+    feeds.push({ id: '0x' + id, symbol: symbol.replace(/\//g, ':') } as any);
+  })
 
   return feeds;
 }
 
 export async function pyth(timestamp: number = now) {
-  if (timestamp != now) return [];
+  // if (timestamp != now) return [];
+  console.log("starting pyth");
+  const api = await getApi('arbitrum', timestamp);
+  const THREE_DAYS = 3 * 24 * 60 * 60;
+  const threeDaysAgo = (timestamp ? timestamp : now) - THREE_DAYS;
 
   const feeds: Feed[] = await fetchFeedIds();
-
-  const prices = await fetchPrices(feeds, timestamp);
-
+  const contract = '0xff1a0f4744e8582df1ae09d5611b887b6a12925c'
+  const calls = feeds.map(i => i.id)
+  const res = await api.multiCall({ target: contract, abi: "function getPriceUnsafe(bytes32 id) view returns ((int64 price, uint64 conf, int32 expo, uint256 publishTime) price)", calls, permitFailure: true, })
   const writes: Write[] = [];
-  feeds.map((f: Feed) =>
-    f.keys.map((k: string) =>
-      addToDBWritesList(
-        writes,
-        k.split(":")[0],
-        k.split(":")[1],
-        prices[f.id],
-        0,
-        f.ticker,
-        0,
-        "pyth",
-        0.8,
-      ),
-    ),
-  );
+  res.forEach((i, idx) => {
+    if (!i) return;
+    const { price, expo, publishTime } = i;
+    if (!price) return;
+    if (publishTime < threeDaysAgo) return;
+    const { symbol } = feeds[idx];
+    addToDBWritesList(writes, 'pyth', symbol, price * (10 ** expo), 0, symbol, timestamp, 'pyth', 0.95)
+  })
 
   return writes;
 }

@@ -83,6 +83,11 @@
     }
   },
   "tron": {
+    "tthzxnrlrw2brp9dctqu8i4wd9udcwedz3": {
+      "decimals": "18",
+      "symbol": "stUSDT",
+      "to": "coingecko#tether"
+    },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "6",
       "symbol": "TRON",

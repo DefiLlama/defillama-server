@@ -8,7 +8,8 @@ import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFr
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { getAdapterTypeCache } from "../utils/dimensionsUtils";
-import { timeSToUnix } from "../utils/time";
+import { timeSToUnixString } from "../utils/time";
+import * as fs from 'fs'
 
 let lastCacheUpdate = new Date().getTime()
 const reqCache: any = {}
@@ -51,17 +52,39 @@ async function getOverviewProcess(eventParameters: any) {
   if (!eventParameters.excludeTotalDataChart) {
     response.totalDataChart = formatChartData(summary.chart)
   }
+
   if (!eventParameters.excludeTotalDataChartBreakdown) {
     response.totalDataChartBreakdown = formatChartData(summary.chartBreakdown)
-    console.log(response.totalDataChartBreakdown[0])
   }
+
+  // todo:  add code to convert chain key to chain display name
+  response.breakdown24h = null // TODO: missing breakdown24h/fix it?
+  response.chain = chain ?? null
+
+  // TODO: missing average1y
+  const responseKeys = ['total24', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', ]
+
+  responseKeys.forEach(key => {
+    response[key] = summary[key]
+  })
+
+  response.change_1d = getPercentage(summary.total24, summary.total48hto24h)
+  response.change_7d = getPercentage(summary.total24, summary.total7DaysAgo)
+  response.change_30d = getPercentage(summary.total24, summary.total30DaysAgo)
+  response.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
+  response.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
+
 
   console.timeEnd('getAdapterTypeCache: ' + eventParameters.adaptorType)
   return response
 }
 
 function formatChartData(data: any) {
-  return Object.entries(data).map(([key, value]: any) => [timeSToUnix(key), value]).sort(([a]: any, [b]: any) => a - b)
+  return Object.entries(data).map(([key, value]: any) => [timeSToUnixString(key), value]).sort(([a]: any, [b]: any) => a - b)
+}
+
+function getPercentage(a: number, b: number) {
+  return +Number(((a-b) / b ) * 100).toFixed(2)
 }
 
 
@@ -122,8 +145,8 @@ async function run() {
     excludeTotalDataChart: false,
     excludeTotalDataChartBreakdown: false,
   }).catch(e => console.error(e))
-  console.log('hello ')
-  console.log(a)
+  // console.log(a)
+  fs.writeFileSync('a.json', JSON.stringify(a, null, 2))
 }
 
 run().then(_i => process.exit(0))

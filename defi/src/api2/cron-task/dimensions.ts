@@ -1,10 +1,8 @@
-import { AdaptorRecord, AdaptorRecordType, getAdaptorRecord2, } from "../../adaptors/db-utils/adaptor-record";
-import { ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, getExtraN30DTypes, getExtraTypes, } from "../../adaptors/handlers/getOverviewProcess";
-import { readFromPGCache, writeToPGCache, } from "../cache/file-cache";
-import { AdapterType, } from "@defillama/dimension-adapters/adapters/types";
+import { ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, } from "../../adaptors/handlers/getOverviewProcess";
+import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data"
-import { IJSON, ProtocolAdaptor } from "../../adaptors/data/types";
-import { getDimensionsCacheV2, storeDimensionsCacheV2, } from "../utils/dimensionsUtils";
+import { IJSON, } from "../../adaptors/data/types";
+import { storeDimensionsCacheV2, } from "../utils/dimensionsUtils";
 import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
@@ -83,6 +81,11 @@ async function run() {
       const protocolName = protocolMap[id].displayName ?? protocolMap[id].name
       const protocolData: any = {}
       protocol.summaries = {} as any
+      const info = { ...protocolMap[id] }
+      protocol.info = {};
+      ['name', 'defillamaId', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology'].forEach(key => protocol.info[key] = (info as any)[key])
+      protocol.info.latestFetchIsOk = true
+      protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData(protocol.records)
 
       Object.entries(protocolRecordMapWithMissingData).forEach(([timeS, record]: any) => {
@@ -232,7 +235,7 @@ async function run() {
             if (!aggregated[recordType]) return;
             let breakdownData = breakdown ?? { [protocolName]: aggregated[recordType].chains }
             const result: any = {}
-            Object.entries(breakdownData).forEach(([subModuleName, { chains}]: any) => {
+            Object.entries(breakdownData).forEach(([subModuleName, { chains }]: any) => {
               Object.entries(chains).forEach(([chain, value]: any) => {
                 if (!result[chain]) result[chain] = {}
                 result[chain][subModuleName] = value

@@ -2,6 +2,7 @@
 const timeSDaysAgoCache: { [days: number]: string } = {}
 const getNextTimeSCache: { [timeS: string]: string } = {}
 const getTimeSToUnix: { [timeS: string]: number } = {}
+const getTimeSToUnixString: { [timeS: string]: string } = {}
 
 export function getTimeSDaysAgo(days: number) {
   if (!timeSDaysAgoCache[days]) timeSDaysAgoCache[days] = _getTimeSDaysAgo()
@@ -39,4 +40,9 @@ export function getUnixTimeNow() {
 export function timeSToUnix(timeS: string) {
   if (!getTimeSToUnix[timeS]) getTimeSToUnix[timeS] = Math.floor(new Date(timeS).getTime() / 1000)
   return getTimeSToUnix[timeS]
+}
+
+export function timeSToUnixString(timeS: string) {
+  if (!getTimeSToUnixString[timeS]) getTimeSToUnixString[timeS] = Math.floor(new Date(timeS).getTime() / 1000).toString()
+  return getTimeSToUnixString[timeS]
 }

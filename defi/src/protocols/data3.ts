@@ -34424,6 +34424,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#voltage",
     listedAt: 1635268314,
   },
+  {
+    id: "4243",
+    name: "ALTA Finance",
+    address: null,
+    symbol: "-",
+    url: "https://alta.finance/how-it-works",
+    description:
+      "Web3 platform for investing in real-world assets using $USDC",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/alta-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Polygon"],
+    module: "alta-finance/index.js",
+    twitter: "altafinance",
+    forkedFrom: [], 
+    listedAt: 1709675515,
+  },
 ]
 
 export default data3

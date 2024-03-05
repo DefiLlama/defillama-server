@@ -34358,7 +34358,50 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1709639594
   },
-
+  {
+    id: "4240",
+    name: "Tonnel Network",
+    address: "ton:EQDNDv54v_TEU5t26rFykylsdPQsv5nsSZaH_v7JSJPtMitv",
+    symbol: "TONNEL",
+    url: "https://tonnel.network",
+    description: "TONNEL uses ZK technology to bring privacy to the SocialFi ecosystem on TON Blockchain which is deeply integrated into Telegram.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/tonnel-network.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: "29091",
+    category: "Privacy",
+    chains: ["TON"],
+    module: "tonnel/index.js",
+    twitter: "tonnel_network",
+    forkedFrom: [],
+    oracles: [],
+    github: ["Tonnel-Network"],
+    listedAt: 1709648587
+  },
+  {
+    id: "4241",
+    name: "Lava",
+    address: null,
+    symbol: "-",
+    url: "https://lava.ag",
+    description: "Decentralised, non-custodial, multichain liquidity optimisation. Lend, borrow, lever liquidity positions from Uniswap, Curve, GMX, and more.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/lava.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum", "Base"],
+    module: "lava/index.js",
+    twitter: "LavaLending",
+    forkedFrom: ["AAVE V2"],
+    oracles: ["Chainlink"], // https://arbiscan.io/address/0x9a88F515e6269C9b3c8cB5df8b7625712FBa4297, https://basescan.org/address/0xe7ddd3104399aF09ef34d1F755a1ba2163f0eBF7
+    github: [],
+    listedAt: 1709648597
+  },
 ]
 
 export default data3

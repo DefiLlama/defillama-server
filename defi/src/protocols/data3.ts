@@ -34402,6 +34402,28 @@ const data3: Protocol[] = [
     github: [],
     listedAt: 1709648597
   },
+  {
+    id: "4242",
+    name: "Voltage Lending",
+    address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
+    symbol: "VOLT",
+    url: "https://app.voltage.finance/",
+    description:
+      "Built atop the powerful Fuse blockchain and ecosystem, Voltage enables anyone to carry the power of DeFi in their pocket.",
+    chain: "Fuse",
+    logo: `${baseIconsUrl}/voltage-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Fuse"],
+    module: "fusefi-lending/index.js",
+    twitter: "voltfinance",
+    forkedFrom: ["Compound V2"], 
+    parentProtocol: "parent#voltage",
+    listedAt: 1635268314,
+  },
 ]
 
 export default data3

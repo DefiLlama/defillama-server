@@ -33950,7 +33950,7 @@ const data3: Protocol[] = [
     url: "https://bfx.trade/",
     description: "Blast Futures Exchange (BFX) is a fully integrated perpetual futures exchange with native yield. BFX offers the best rewards and liquidity",
     chain: "Blast",
-    logo: `${baseIconsUrl}/blast-futures.png`,
+    logo: `${baseIconsUrl}/blast-futures.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

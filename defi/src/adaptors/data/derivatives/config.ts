@@ -681,7 +681,7 @@ export default {
         "id": "4045"
     },
     "blastfutures": {
-        "enabled": true,
+        "enabled": false,
         "id": "4221",
         cleanRecordsConfig: {
             genuineSpikes: {

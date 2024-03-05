@@ -32992,7 +32992,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4179",
-    name: "Fixes 𝔉rc20",
+    name: "Fixes frc20",
     address: null,
     symbol: "-",
     url: "https://fixes.world",
@@ -33015,7 +33015,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4180",
-    name: "Fixes 𝔉rc20 Staking",
+    name: "Fixes frc20 Staking",
     address: null,
     symbol: "-",
     url: "https://fixes.world",

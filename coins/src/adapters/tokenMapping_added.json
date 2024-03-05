@@ -7847,6 +7847,21 @@
       "decimals": "6",
       "symbol": "MIA",
       "to": "coingecko#miamicoin"
+    },
+    "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token::ststx": {
+      "decimals": "6",
+      "symbol": "stSTX",
+      "to": "coingecko#blockstac"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.token-susdt::bridged-usdt": {
+      "decimals": "8",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.token-abtc::bridged-btc": {
+      "decimals": "8",
+      "symbol": "aBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "map": {
@@ -7886,6 +7901,61 @@
       "decimals": "18",
       "symbol": "DAI",
       "to": "coingecko#dai"
+    },
+    "0x3e76deF74d4187B5a01aBE4E011Bd94d9f057d94": {
+      "decimals": "18",
+      "symbol": "ROUP",
+      "to": "coingecko#roup"
+    },
+    "0x5a1c3f3aaE616146C7b9bf9763E0ABA9bAFc5eaE": {
+      "decimals": "18",
+      "symbol": "WROUP",
+      "to": "coingecko#roup"
+    },
+    "0xB719e46B6eB5b23E2759526CdE24589d87097733": {
+      "decimals": "18",
+      "symbol": "ORD",
+      "to": "coingecko#ordinals"
+    },
+    "0x9CA528368964cFb92cfFdd51dCcED25E27ACCef9": {
+      "decimals": "18",
+      "symbol": "WORD",
+      "to": "coingecko#ordinals"
+    },
+    "0xcAF17cDdb80F72484e5A279921b98a0a9A2391ee": {
+      "decimals": "18",
+      "symbol": "RATS",
+      "to": "coingecko#rats"
+    },
+    "0x6369414F2b0e973c7E85A362141aA1430bc30056": {
+      "decimals": "18",
+      "symbol": "WRATS",
+      "to": "coingecko#rats"
+    },
+    "0x640a4C0AaA4870BaDE2F646B7Da87b3D53819C4f": {
+      "decimals": "18",
+      "symbol": "CSAS",
+      "to": "coingecko#comsat"
+    },
+    "0x141b30Dd30FAFb87ec10312d52e5dbD86122FE14": {
+      "decimals": "18",
+      "symbol": "WCSAS",
+      "to": "coingecko#comsat"
+    },
+    "0x0e2cA3e003f3c73C8cC18ec244d46DB9d4c4DCEB": {
+      "decimals": "18",
+      "symbol": "BTCS",
+      "to": "coingecko#btcs"
+    },
+    "0xBE81B9390D894fEBf5e5D4Ea1486a003C1e8dc63": {
+      "decimals": "18",
+      "symbol": "WBTCS",
+      "to": "coingecko#btcs"
+    },
+    "0x0fBb3B3Fb1e928f75B3Ed8b506bAb4503373fdca": {
+      "decimals": "18",
+      "symbol": "MMSS",
+      "to": "coingecko#mmss"
     }
   },
   "loop": {

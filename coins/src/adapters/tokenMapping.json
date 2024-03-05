@@ -1531,6 +1531,21 @@
       "decimals": "18",
       "symbol": "GLMR",
       "to": "coingecko#moonbeam"
+    },
+    "0xffffffff98e37bf6a393504b5adc5b53b4d0ba11": {
+      "decimals": "18",
+      "symbol": "MOVR",
+      "to": "coingecko#moonriver"
+    },
+    "0xffffffff3646a00f78cadf8883c5a2791bfcddc4": {
+      "decimals": "12",
+      "symbol": "BNC",
+      "to": "coingecko#bifrost-native-coin"
+    },
+    "0xffffffffc6deec7fc8b11a2c8dde9a59f8c62efe": {
+      "decimals": "12",
+      "symbol": "KSM",
+      "to": "coingecko#kusama"
     }
   },
   "moonbeam": {
@@ -1583,7 +1598,17 @@
       "decimals": "18",
       "symbol": "xcMANTA",
       "to": "coingecko#manta-network"
-    } 
+    },
+    "0xffffffff99dabe1a8de0ea22baa6fd48fde96f6c": {
+      "decimals": "18",
+      "symbol": "VGLMR",
+      "to": "coingecko#voucher-glmr"
+    },
+    "0xffffffffcd0ad0ea6576b7b285295c85e94cf4c1": {
+      "decimals": "18",
+      "symbol": "FIL",
+      "to": "coingecko#filecoin"
+    }
   },
   "metis": {
     "0x420000000000000000000000000000000000000a": {
@@ -1658,6 +1683,11 @@
       "decimals": "10",
       "symbol": "vDOT",
       "to": "coingecko#voucher-dot"
+    },
+    "0xffffffff00000000000000010000000000000010": {
+      "decimals": "18",
+      "symbol": "ASTR",
+      "to": "coingecko#astar"
     }
   },
   "acala": {
@@ -1877,6 +1907,33 @@
       "decimals": "9",
       "symbol": "BTR",
       "to": "coingecko#bitrock"
+    }
+  },
+  "tomochain": {
+    "0xc054751bdbd24ae713ba3dc9bd9434abe2abc1ce": {
+      "decimals": "18",
+      "symbol": "TOMO",
+      "to": "coingecko#tomochain"
+    },
+    "0xbbbfab9dcc27771d21d027f37f36b67cc4a25db0": {
+      "decimals": "18",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x20cc4574f263c54eb7ad630c9ac6d4d9068cf127": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x9ede19ede2baf93d25fba4c8f58577e008b8f963": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xb786d9c8120d311b948cf1e5aa48d8fbacf477e2": {
+      "decimals": "18",
+      "symbol": "SAROS",
+      "to": "coingecko#saros-finance"
     }
   }
 }

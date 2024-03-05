@@ -1,4 +1,5 @@
 export default {
+  pyth: require("./oracles/pyth"),
   unknownTokensV3: require("./other/unknownTokensV3"),
   dinari: require("./rwa/dinari"),
   few: require("./other/few"),

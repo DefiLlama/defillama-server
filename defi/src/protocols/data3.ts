@@ -33790,7 +33790,7 @@ const data3: Protocol[] = [
     name: "Blitz",
     address: null,
     symbol: "-",
-    url: "https://app.blitz.exchange/",
+    url: "https://blitz.exchange",
     description:
       "Blazing fast orderbook for spot and futures trading built on Blast",
     chain: "Blast",
@@ -33799,11 +33799,11 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Blast"],
     module: "blitz-exchange/index.js",
     twitter: "tradeonblitz",
-    forkedFrom: [], 
+    forkedFrom: ["Vertex Protocol"], // it uses edges product from vertex https://edge.vertexprotocol.com/ "Vertex Edge’s composable orderbook solves the problems of liquidity fragmentation and creates economic alliances across chains."
     oracles: [], 
     audit_links: [],
     listedAt: 1709318288

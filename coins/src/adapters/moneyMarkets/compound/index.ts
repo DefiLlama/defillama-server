@@ -186,3 +186,12 @@ export function hover(timestamp: number = 0) {
     timestamp,
   );
 }
+
+export function moonwell(timestamp: number = 0) {
+  console.log("starting moonwell");
+  return getTokenPrices(
+    "base",
+    "0xfBb21d0380beE3312B33c4353c8936a0F13EF26C",
+    timestamp,
+  );
+}

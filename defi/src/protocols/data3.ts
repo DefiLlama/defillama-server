@@ -22479,7 +22479,7 @@ const data3: Protocol[] = [
   {
     id: "3706",
     name: "Dyson Finance",
-    address: "0x9CBD81b43ba263ca894178366Cfb89A246D1159C",
+    address: "polygon_zkevm:0x9CBD81b43ba263ca894178366Cfb89A246D1159C",
     symbol: "DYSN",
     url: "https://dyson.finance/",
     description: "Empowering Everyone with Accessibility and Profitability through our DEX & Dual Investment #PoweredbyPyth",
@@ -22494,7 +22494,7 @@ const data3: Protocol[] = [
     oracles: [],
     module: "dyson/index.js",
     twitter: "DysonFinance",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     audit_links: [
                    "https://github.com/DysonFinance/dyson-audit-reports/blob/main/Dyson%20Finance%20Audit%20Report_2023.pdf",
                    "https://github.com/DysonFinance/dyson-audit-reports/blob/main/Dyson%20Finance%20Audit%20-%20October%20'22.pdf"

@@ -3,6 +3,7 @@ import { getBalance } from "@defillama/sdk/build/eth/index";
 export const wrappedGasTokens: { [key: string]: any } = {
   ethereum: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
   optimism: "0x4200000000000000000000000000000000000006",
+  base: "0x4200000000000000000000000000000000000006",
   arbitrum: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
   fantom: "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",
   avax: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",

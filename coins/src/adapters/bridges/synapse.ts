@@ -32,6 +32,10 @@ const tokenAddresses: { [symbol: string]: { [chain: string]: string } } = {
     avax: "0x19E1ae0eE35c0404f835521146206595d37981ae",
     harmony: "0x0b5740c6b4a97f90eF2F0220651Cca420B868FfB",
   },
+  nUSD2: {
+    reference: "ethereum:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    optimism: "0x2c6d91accc5aa38c84653f28a80aec69325bdd12"
+  }
 };
 
 export default async function bridge(): Promise<Token[]> {

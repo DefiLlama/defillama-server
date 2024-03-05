@@ -9,6 +9,7 @@ export function stargate(timestamp: number = 0) {
     getTokenPrices("polygon", timestamp),
     getTokenPrices("arbitrum", timestamp),
     getTokenPrices("optimism", timestamp),
+    getTokenPrices("base", timestamp),
     getTokenPrices("fantom", timestamp),
     getTokenPrices("kava", timestamp)
   ]);

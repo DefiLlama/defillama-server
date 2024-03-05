@@ -34337,6 +34337,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1709594345
   },
+  {
+    id: "4239",
+    name: "Blume",
+    address: null,
+    symbol: "-",
+    url: "https://blume.fm",
+    description: "Blume is a lending protocol with native yield on Blast.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/blume.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    module: "blume-fm/index.js",
+    twitter: "blumefm",
+    forkedFrom: ["Compound V2"],
+    oracles: [],
+    listedAt: 1709639594
+  },
+
 ]
 
 export default data3

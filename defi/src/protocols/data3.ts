@@ -34445,6 +34445,31 @@ const data3: Protocol[] = [
     forkedFrom: [], 
     listedAt: 1709675515,
   },
+  {
+    id: "4244",
+    name: "Staking Rewards srETH",
+    address: null,
+    symbol: "-",
+    assetToken: "srETH2",
+    url: "https://www.stakingrewards.com/sreth",
+    description:
+      "Staking Rewards ETH (srETH) is a robust Ethereum Liquid Staking Index, which minimises volatility with a more predictable yield. srETH is owned and managed by the Staking Rewards team and powered by Spool V2 Smart Vault technology",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/staking-rewards-sreth.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Ethereum"],
+    module: "spool-fi-sreth/index.js",
+    twitter: "StakingRewards",
+    oracles: ["Chainlink"], // https://github.com/SpoolFi/spool-v2-core/blob/main/src/managers/UsdPriceFeedManager.sol
+    audit_links: ["https://docs.spool.fi/technical-reference/audits"],
+    parentProtocol: "parent#spool-protocol",
+    forkedFrom: [], 
+    listedAt: 1709679710,
+  },
 ]
 
 export default data3

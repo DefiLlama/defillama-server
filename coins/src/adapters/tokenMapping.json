@@ -649,6 +649,11 @@
     }
   },
   "manta": {
+    "0xbdad407f77f44f7da6684b416b1951eca461fb07": {
+      "to": "coingecko#mountain-protocol-usdm",
+      "decimals": "18",
+      "symbol": "wUSDM"
+    },
     "0x0Dc808adcE2099A9F62AA87D9670745AbA741746": {
       "to": "coingecko#ethereum",
       "decimals": "18",

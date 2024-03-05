@@ -1914,5 +1914,9 @@ export default {
     "lens-protocol": {
         "enabled": true,
         "id": "4235"
+    },
+    "ethena": {
+        "enabled": true,
+        "id": "4133"
     }
 } as AdaptorsConfig

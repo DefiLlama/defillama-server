@@ -7851,7 +7851,7 @@
     "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token::ststx": {
       "decimals": "6",
       "symbol": "stSTX",
-      "to": "coingecko#blockstac"
+      "to": "coingecko#blockstack"
     },
     "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.token-susdt::bridged-usdt": {
       "decimals": "8",

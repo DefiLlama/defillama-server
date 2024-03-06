@@ -34582,7 +34582,7 @@ const data3: Protocol[] = [
     module: "velodrome-CL/index.js",
     twitter: "VelodromeFi",
     oracles: [], 
-    forkedFrom: [], 
+    forkedFrom: ["Uniswap V3"], 
     parentProtocol: "parent#velodrome",
     listedAt: 1709748910
   },

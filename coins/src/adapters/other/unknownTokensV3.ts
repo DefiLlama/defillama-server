@@ -8,6 +8,9 @@ const config: any = {
   blast: {
     '0x216a5a1135a9dab49fa9ad865e0f22fe22b5630a': '0x017f31dc55144f24836c2566ed7dc651256c338a' // PUMP
   },
+  map: {
+    '0x756af1d3810a01d3292fad62f295bbcc6c200aea': '0xc6a16fac07c059689873988fa4c635d45ca170e2' // LSGS
+  },
 }
 
 export function unknownTokensV3(timestamp: number = 0) {

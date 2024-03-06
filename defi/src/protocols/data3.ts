@@ -3100,7 +3100,7 @@ const data3: Protocol[] = [
     gecko_id: "interport-token",
     cmcId: "22877",
     category: "Cross Chain",
-    chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Polygon zkEVM", "Fantom", "Arbitrum", "zkSync Era", "Base", "Linea", "Optimism"],
+    chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Polygon zkEVM", "Fantom", "Arbitrum", "zkSync Era", "Base", "Linea", "Optimism", "Horizen EON", "Scroll", "opBNB", "Manta"],
     oracles: [],
     forkedFrom: [],
     module: "interport-finance/index.js",

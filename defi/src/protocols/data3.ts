@@ -32992,14 +32992,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4179",
-    name: "Fixes frc20",
+    name: "Fixes frc20", // previous Fixes World
     address: null,
     symbol: "-",
     url: "https://fixes.world",
     description:
       "FIXeS is an executable inscription protocol on Flow blockchain. It allows users to inscribe anything on the blockchain and also provides the 𝔉rc20 fungible tokens.",
     chain: "Flow",
-    logo: `${baseIconsUrl}/fixes-world.jpg`,
+    logo: `${baseIconsUrl}/fixes-frc20.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -33015,14 +33015,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4180",
-    name: "Fixes frc20 Staking",
+    name: "Fixes frc20 Staking", // previous Fixes World Staking
     address: null,
     symbol: "-",
     url: "https://fixes.world",
     description:
       "FIXeS is an executable inscription protocol on Flow blockchain. It allows users to inscribe anything on the blockchain and also provides the 𝔉rc20 fungible tokens.",
     chain: "Flow",
-    logo: `${baseIconsUrl}/fixes-world-staking.jpg`,
+    logo: `${baseIconsUrl}/fixes-frc20-staking.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

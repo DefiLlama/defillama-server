@@ -34563,6 +34563,29 @@ const data3: Protocol[] = [
     forkedFrom: [], 
     listedAt: 1709740125
   },
+  {
+    id: "4249",
+    name: "Velodrome V3",
+    address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+    symbol: "VELO",
+    url: "https://velodrome.finance",
+    description:
+      "The primary objective of Slipstream is to add support for concentrated liquidity pools as an additional option on top of our existing sAMM and vAMM models in a way that uniquely leverages the Velodrome flywheel.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/velodrome-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Optimism"],
+    module: "velodrome-CL/index.js",
+    twitter: "VelodromeFi",
+    oracles: [], 
+    forkedFrom: [], 
+    parentProtocol: "parent#velodrome",
+    listedAt: 1709748910
+  },
 ]
 
 export default data3

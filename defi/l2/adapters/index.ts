@@ -156,7 +156,7 @@ export const blast = async (): Promise<Address[]> => {
       "0x4300000000000000000000000000000000000004", // WETH
     ]
   );
-  return addresses.tron;
+  return addresses.blast;
 };
 export const mode = async (): Promise<Address[]> => {
   if (!("mode" in addresses)) addresses.mode = [];
@@ -168,5 +168,5 @@ export const mode = async (): Promise<Address[]> => {
       "0xf0F161fDA2712DB8b566946122a5af183995e2eD", // USDT
     ]
   );
-  return addresses.tron;
+  return addresses.mode;
 };

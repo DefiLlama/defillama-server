@@ -54,7 +54,25 @@ export function aave(timestamp: number = 0) {
       "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
       "v3",
       timestamp
-    )
+    ),
+    getTokenPrices(
+      "scroll",
+      "0xFBedc64AeE24921cb43004312B9eF367a4162b57",
+      "v3",
+      timestamp
+    ),
+    getTokenPrices(
+      "metis",
+      "0x9E7B73ffD9D2026F3ff4212c29E209E09C8A91F5",
+      "v3",
+      timestamp
+    ),
+    getTokenPrices(
+      "bsc",
+      "0x117684358D990E42Eb1649E7e8C4691951dc1E71",
+      "v3",
+      timestamp
+    ),
   ]);
 }
 export function geist(timestamp: number = 0) {

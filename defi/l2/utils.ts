@@ -30,13 +30,13 @@ export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Tok
 
   return chainUsdTokenTvls;
 }
-async function restCallWrapper(request: () => Promise<any>, retries: number = 4, name: string = "-") {
+async function restCallWrapper(request: () => Promise<any>, retries: number = 8, name: string = "-") {
   while (retries > 0) {
     try {
       const res = await request();
       return res;
     } catch {
-      await sleep(10000 + 4e4 * Math.random());
+      await sleep(60000 + 40000 * Math.random());
       restCallWrapper(request, retries--, name);
     }
   }
@@ -59,7 +59,7 @@ export async function getPrices(
       restCallWrapper(
         () =>
           fetch(
-            `https://coins2.llama.fi/prices?source=internal${
+            `https://coins.llama.fi/prices?source=internal${
               process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""
             }`,
             {
@@ -223,19 +223,23 @@ async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [to
         if (res[i]) supplies[`${chain}:${mixedCaseChains.includes(chain) ? c : c.toLowerCase()}`] = res[i];
       });
     } catch {
-      await PromisePool.withConcurrency(20)
-        .for(contracts.slice(i, i + step))
-        .process(async (target) => {
-          const res = await call({
-            chain,
-            target,
-            abi: "erc20:totalSupply",
+      try {
+        await PromisePool.withConcurrency(20)
+          .for(contracts.slice(i, i + step))
+          .process(async (target) => {
+            const res = await call({
+              chain,
+              target,
+              abi: "erc20:totalSupply",
+            });
+            if (res) supplies[`${chain}:${mixedCaseChains.includes(chain) ? target : target.toLowerCase()}`] = res;
+          })
+          .catch((e) => {
+            e;
           });
-          if (res) supplies[`${chain}:${mixedCaseChains.includes(chain) ? target : target.toLowerCase()}`] = res;
-        })
-        .catch((e) => {
-          e;
-        });
+      } catch (e) {
+        e;
+      }
     }
   }
 

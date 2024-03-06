@@ -34548,7 +34548,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://kaisen.xyz",
     description:
-      "Blast’s First Active Liquidity Management Protocol",
+      "Blast's First Active Liquidity Management Protocol",
     chain: "Blast",
     logo: `${baseIconsUrl}/kaisen.jpg`,
     audits: "0",
@@ -34585,6 +34585,51 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"], 
     parentProtocol: "parent#velodrome",
     listedAt: 1709748910
+  },
+  {
+    id: "4250",
+    name: "Ironclad Finance",
+    address: null,
+    symbol: "-",
+    url: "https://ironclad.finance/",
+    description:
+      "Ironclad Finance is a decentralized, user-driven borrowing and lending liquidity market inspired by Aave",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/ironclad-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Mode"],
+    module: "ironclad/index.js",
+    twitter: "IroncladFinance",
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9221 
+    forkedFrom: ["AAVE V2"], 
+    listedAt: 1709767737
+  },
+  {
+    id: "4251",
+    name: "Graphene by Velocimeter",
+    address: null,
+    symbol: "-",
+    url: "https://graphene.velocimeter.xyz/",
+    description:
+      "Graphene is a licensed fork of Carbon DeFi in the Velocimeter eco-system. This product allow users to create automated on-chain limit orders, range limit orders, re-occurring limit/range orders, overlapping liquidity orders",
+    chain: "Base",
+    logo: `${baseIconsUrl}/graphene-by-velocimeter.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base","Fantom","Mantle"],
+    module: "graphene/index.js",
+    twitter: "VelocimeterDEX",
+    oracles: [], 
+    forkedFrom: ["Carbon Defi"], 
+    parentProtocol: "parent#velocimeter",
+    listedAt: 1709767892
   },
 ]
 

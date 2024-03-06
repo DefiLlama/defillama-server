@@ -34517,6 +34517,52 @@ const data3: Protocol[] = [
     github: ["BlastOffOrg"],
     listedAt: 1709726525
   },
+  {
+    id: "4247",
+    name: "LazyOtter Finance",
+    address: null,
+    symbol: "-",
+    url: "https://lazyotter.finance",
+    description:
+      "Your One-Stop-Shop for DeFi Risk Management: Stay informed and Stay Protected.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/lazyotter-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Scroll"],
+    module: "lazyotter/index.js",
+    twitter: "lazyotter_fi",
+    oracles: [], 
+    forkedFrom: [], 
+    github: ["lazyotter-finance"],
+    audit_links: ["https://github.com/lazyotter-finance/lazyotter-contract/blob/develop/audit/SlowMist%20Audit%20Report%20-%20Lazyotter.pdf"],
+    listedAt: 1709740093
+  },
+  {
+    id: "4248",
+    name: "Kaisen",
+    address: null,
+    symbol: "-",
+    url: "https://kaisen.xyz",
+    description:
+      "Blast’s First Active Liquidity Management Protocol",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/kaisen.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Blast"],
+    module: "kaisen/index.js",
+    twitter: "kaisenxyz",
+    oracles: [], 
+    forkedFrom: [], 
+    listedAt: 1709740125
+  },
 ]
 
 export default data3

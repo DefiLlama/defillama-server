@@ -638,6 +638,11 @@
       "symbol": "OUSG",
       "to": "coingecko#ousg"
     },
+    "ZScHuTtqZukUrtZS43teTKGs2VqkKL8k4QCouR2n6Uo": {
+      "decimals": "8",
+      "symbol": "wSTETH",
+      "to": "coingecko#ethereum:0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+    },
     "A1KLoBrKBde8Ty9qtNQUtq3C2ortoC3u7twggz7sEto6": {
       "decimals": "6",
       "symbol": "USDY",

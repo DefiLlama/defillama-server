@@ -34470,6 +34470,53 @@ const data3: Protocol[] = [
     forkedFrom: [], 
     listedAt: 1709679710,
   },
+  {
+    id: "4245",
+    name: "LessGas",
+    address: null,
+    symbol: "-",
+    url: "https://lessgas.xyz",
+    description:
+      "Bitcoin Layer2 inscription platform with ultra-low gas fees,zero failures,and zero congestion.",
+    chain: "Map",
+    logo: `${baseIconsUrl}/lessgas.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Map"],
+    module: "lessgas/index.js",
+    twitter: "Less_Gas",
+    oracles: [], 
+    audit_links: [],
+    forkedFrom: [], 
+    listedAt: 1709726419
+  },
+  {
+    id: "4246",
+    name: "Blastoff",
+    address: null,
+    symbol: "-",
+    url: "https://blastoff.zone",
+    description:
+      "A Native Yield Based - LaunchPad and Yield Aggregator. Unlocking a new world of idle earnings.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/blastoff.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Blast"],
+    module: "blastoff/index.js",
+    twitter: "blastozone",
+    oracles: [], 
+    audit_links: [],
+    forkedFrom: [], 
+    github: ["BlastOffOrg"],
+    listedAt: 1709726525
+  },
 ]
 
 export default data3

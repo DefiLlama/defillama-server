@@ -1,11 +1,16 @@
 import postgres from "postgres";
 import { queryPostgresWithRetry } from "../l2/layer2pg";
+import { FinalChainData, FinalData } from "./types";
 
-export default async function storeHistoricalToDB(res: any) {
-  const auth = process.env.COINS2_AUTH?.split(",") ?? [];
+let auth: string[] = [];
+function iniDbConnection() {
+  auth = process.env.COINS2_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 
-  const sql = postgres(auth[0], { idle_timeout: 90 });
+  return postgres(auth[0], { idle_timeout: 90 });
+}
+export default async function storeHistoricalToDB(res: any) {
+  const sql = iniDbConnection();
 
   const read = await queryPostgresWithRetry(
     sql`
@@ -50,5 +55,32 @@ export default async function storeHistoricalToDB(res: any) {
   );
 
   sql.end();
-  process.exit();
+}
+export async function fetchHistoricalFromDB(chain: string = "*") {
+  const sql = iniDbConnection();
+
+  const timeseries = await queryPostgresWithRetry(
+    chain == "*" ? sql`select * from chainassets` : sql`select ${sql(chain)}, timestamp from chainassets`,
+    sql
+  );
+  sql.end();
+
+  const result: { timestamp: string; data: FinalChainData | FinalData }[] = [];
+  timeseries.map((t: any) => {
+    if (chain != "*") {
+      result.push({ timestamp: t.timestamp, data: JSON.parse(t[chain]) });
+      return;
+    }
+
+    const data: FinalData = {};
+
+    Object.keys(t).map((c: string) => {
+      if (c == "timestamp") return;
+      data[c] = JSON.parse(t[c]);
+    });
+
+    result.push({ timestamp: t.timestamp, data });
+  });
+
+  return result;
 }

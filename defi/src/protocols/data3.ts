@@ -33582,8 +33582,8 @@ const data3: Protocol[] = [
   {
     id: "4205",
     name: "Cygnus Finance",
-    address: "base:",
-    symbol: "-",
+    address: "base:0xCa72827a3D211CfD8F6b00Ac98824872b72CAb49",
+    symbol: "cgUSD",
     url: "https://cygnus.finance",
     description:
       "Cygnus Finance is a RWA stablecoin protocol built on pure, short-term U.S. debt assets. It is also the first native interest-bearing stablecoin protocol and the first native RWA protocol on Base.",

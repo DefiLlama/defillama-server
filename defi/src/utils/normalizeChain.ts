@@ -2671,8 +2671,8 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM", "Bitcoin Sidechains"],
-    twitter: "BVMnetwork",
-    url: "https://bvm.network/",
+    twitter: "naka_chain",
+    url: "https://nakachain.xyz/",
   },
 } as unknown as ChainCoinGekcoIds
 

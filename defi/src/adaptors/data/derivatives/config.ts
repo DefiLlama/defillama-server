@@ -696,5 +696,9 @@ export default {
         parentId: "SynFutures",
         "enabled": true,
         "id": "4215"
+    },
+    "avantis": {
+        enabled: true,
+        "id": "4108"
     }
 } as AdaptorsConfig

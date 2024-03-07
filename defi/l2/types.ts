@@ -25,15 +25,16 @@ export type ChainData = {
   ownTokens: TokenTvlData;
   // metadata: any;
 };
+export type FinalChainData = {
+  canonical: any;
+  thirdParty: any;
+  native: any;
+  ownTokens: any;
+  total: any;
+  // metadata: any;
+};
 export type FinalData = {
-  [chain: Chain]: {
-    canonical: any;
-    thirdParty: any;
-    native: any;
-    ownTokens: any;
-    total: any;
-    // metadata: any;
-  };
+  [chain: Chain]: FinalChainData;
 };
 export type McapData = {
   [chain: Chain]: {

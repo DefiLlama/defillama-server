@@ -34404,7 +34404,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4242",
-    name: "Voltage Lending",
+    name: "Fusefi Lending",
     address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
     symbol: "VOLT",
     url: "https://app.voltage.finance/",

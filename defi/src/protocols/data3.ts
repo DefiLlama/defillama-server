@@ -34671,7 +34671,7 @@ const data3: Protocol[] = [
     chains: ["Blast"],
     module: "alien-finance/index.js",
     twitter: "aliendotfinance",
-    oracles: [],  // they added redstone on the listing, but the contract they provide is close source, cant confirm nothing
+    oracles: ["RedStone"],  // https://blastscan.io/address/0x3A9B69eE4b7F238c38380A540B211f682f724968#readContract
     forkedFrom: [], 
     listedAt: 1709815505
   },

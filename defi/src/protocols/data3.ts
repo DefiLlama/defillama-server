@@ -34748,6 +34748,52 @@ const data3: Protocol[] = [
     github: ["stabilitydao"],
     listedAt: 1709824120
   },
+  {
+    id: "4257",
+    name: "Definitive.fi",
+    address: null,
+    symbol: "-",
+    url: "https://www.definitive.fi",
+    description:
+      "Definitive is the premier non-custodial platform for advanced DeFi yield and on-chain trade execution.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/definitive.fi.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Arbitrum", "Polygon", "Optimism", "Base", "Avalanche"],
+    module: "definitive/index.js",
+    twitter: "DefinitiveFi",
+    oracles: [], 
+    forkedFrom: [], 
+    github: ["DefinitiveCo"],
+    audit_links: ["https://github.com/DefinitiveCo/definitive-public/tree/main/audits"],
+    listedAt: 1709828870
+  },
+  {
+    id: "4258",
+    name: "Naka Dex",
+    address: null,
+    symbol: "-",
+    url: "https://nakachain.xyz/swap",
+    description:
+      "Uniswap V2 fork on nakachain",
+    chain: "Naka",
+    logo: `${baseIconsUrl}/naka-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Naka"],
+    module: "naka-dex/index.js",
+    twitter: "naka_chain",
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"], 
+    listedAt: 1709828880
+  },
 ]
 
 export default data3

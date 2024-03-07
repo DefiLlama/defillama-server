@@ -3239,6 +3239,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Bitrock"
     case "astrzk":
       return "Astar zkEVM"
+    case "naka":
+      return "Naka"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

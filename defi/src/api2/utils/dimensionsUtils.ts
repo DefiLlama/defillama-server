@@ -1,5 +1,6 @@
 import { ProtocolAdaptor } from "../../adaptors/data/types";
 import { AdaptorRecord, AdaptorRecordType, GetAdaptorRecordOptions } from "../../adaptors/db-utils/adaptor-record";
+import { sluggifyString } from "../../utils/sluggify";
 import { cache } from "../cache";
 import { readFromPGCache, writeToPGCache } from "../db";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
@@ -23,6 +24,33 @@ export async function getDimensionsCacheV2() {
   const fileKey = getFileCacheKeyV2()
   if (!dimensionsCache)
     dimensionsCache = readFromPGCache(fileKey).then(data => data ?? {})
+  const data = await dimensionsCache
+  for (const adapterData of Object.values(data) as any) {
+    const protocolNameMap: any = {}
+    const childProtocolNameMap: any = {}
+    const childProtocolVersionKeyMap: any = {}
+    for (const protocolData of Object.values(adapterData.protocols) as any) {
+      if (protocolData?.info?.name)
+        protocolNameMap[sluggifyString(protocolData?.info?.name)] = protocolData
+      if (protocolData?.info?.displayName)
+        protocolNameMap[sluggifyString(protocolData?.info?.displayName)] = protocolData
+      if (protocolData?.info?.childProtocols) {
+        for (const childProtocol of protocolData?.info?.childProtocols) {
+          if (childProtocol?.name) {
+            childProtocolNameMap[sluggifyString(childProtocol?.name)] = protocolData
+            childProtocolVersionKeyMap[sluggifyString(childProtocol?.name)] = childProtocol.versionKey
+          }
+          if (childProtocol?.displayName) {
+            childProtocolNameMap[sluggifyString(childProtocol?.displayName)] = protocolData
+            childProtocolVersionKeyMap[sluggifyString(childProtocol?.displayName)] = childProtocol.versionKey
+          }
+        }
+      }
+    }
+    adapterData.protocolNameMap = protocolNameMap
+    adapterData.childProtocolNameMap = childProtocolNameMap
+    adapterData.childProtocolVersionKeyMap = childProtocolVersionKeyMap
+  }
   return dimensionsCache
 }
 

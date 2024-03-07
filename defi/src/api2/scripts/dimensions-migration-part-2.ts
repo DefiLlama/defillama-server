@@ -69,7 +69,7 @@ async function run() {
         })
         const protocolKey = `Writing ${adapterType} ${protocol.id2} ${protocol.name} ${Object.keys(dataDayMap).length} days`
         console.time(protocolKey)
-        const items: AdapterRecord2[] = Object.values(dataDayMap).map((adaptorRecords: any) => AdapterRecord2.formAdaptarRecord2({ adaptorRecords, adapterType, protocol, configIdMap, protocolType: protocol.protocolType, skipZeroValue: true })).filter(i => i) as any
+        const items: AdapterRecord2[] = Object.values(dataDayMap).map((adaptorRecords: any) => AdapterRecord2.formAdaptarRecord2({ adaptorRecords, adapterType, protocol, configIdMap, protocolType: protocol.protocolType, skipZeroValue: false })).filter(i => i) as any
 
         // if (protocol.id2 === '3951')
         //   items.map((item: any) => console.log(item.data.aggregated.dv))

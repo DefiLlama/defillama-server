@@ -6,7 +6,7 @@ import { storeDimensionsCacheV2, } from "../utils/dimensionsUtils";
 import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
-import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow } from "../utils/time";
+import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow, timeSToUnix, getStartOfTodayTime } from "../utils/time";
 
 
 const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
@@ -83,7 +83,8 @@ async function run() {
       protocol.summaries = {} as any
       const info = { ...protocolMap[id] }
       protocol.info = {};
-      ['name', 'defillamaId', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology'].forEach(key => protocol.info[key] = (info as any)[key])
+      ['name', 'defillamaId', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url'].forEach(key => protocol.info[key] = (info as any)[key])
+      if (info.parentProtocol) protocol.info.parentProtocol = info.parentProtocol
       protocol.info.latestFetchIsOk = true
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData(protocol.records)
@@ -99,7 +100,7 @@ async function run() {
         Object.entries(aggregated).forEach(([recordType, aggData]: any) => {
           let { chains, value } = aggData
 
-          if (value === 0) return; // skip zero values
+          // if (value === 0) return; // skip zero values
 
           if (!summaries[recordType]) summaries[recordType] = initSummaryItem()
           if (!protocolData[recordType]) protocolData[recordType] = initProtocolDataItem()
@@ -171,6 +172,9 @@ async function run() {
         protocol.summaries[recordType] = protocolSummary
 
         addToSummary({ record: todayRecord?.aggregated[recordType], summaryKey: 'total24h', recordType, protocolSummary })
+        // if (protocol.info.defillamaId === '3809') {
+        //   console.log('todayRecord',  protocolSummary, _protocolData.today, _protocolData.latest, lastTimeString, dayBeforeLastTimeString, _protocolData.today, _protocolData.yesterday)
+        // }
         addToSummary({ record: yesterdayRecord?.aggregated[recordType], summaryKey: 'total48hto24h', recordType, protocolSummary })
         addToSummary({ record: _protocolData.sevenDaysAgo?.aggregated[recordType], summaryKey: 'total7DaysAgo', recordType, protocolSummary })
         addToSummary({ record: _protocolData.thirtyDaysAgo?.aggregated[recordType], summaryKey: 'total30DaysAgo', recordType, protocolSummary })
@@ -360,7 +364,7 @@ function getProtocolRecordMapWithMissingData(records: IJSON<any>) {
   let firstTimeS: string
   let lastTimeSWithData: string
   let nextTimeS: string
-  let currentTime = +Date.now()
+  let currentTime = getStartOfTodayTime()
   let prevRecord: any
   const response: IJSON<any> = { ...records }
 
@@ -377,7 +381,7 @@ function getProtocolRecordMapWithMissingData(records: IJSON<any>) {
   nextTimeS = firstTimeS
   addTotalValueDataTypesToRecord(records[firstTimeS])
 
-  while (+new Date(nextTimeS) < currentTime) {
+  while (timeSToUnix(nextTimeS) < currentTime) {
     if (records[nextTimeS])
       lastTimeSWithData = nextTimeS
     else

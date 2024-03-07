@@ -11,11 +11,11 @@ export function getTimeSDaysAgo(days: number) {
   function _getTimeSDaysAgo() {
     const date = new Date();
     date.setDate(date.getDate() - days - 1) // move a day back
-    return DateToTimeS(date);
+    return dateToTimeS(date);
   }
 }
 
-export function DateToTimeS(date: Date) {
+export function dateToTimeS(date: Date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based in JavaScript
   const day = String(date.getDate()).padStart(2, '0');
@@ -29,7 +29,7 @@ export function getNextTimeS(timeS: string) {
   function _getNextTimeS() {
     const date = new Date(timeS);
     date.setDate(date.getDate() + 1);
-    return DateToTimeS(date);
+    return dateToTimeS(date);
   }
 }
 
@@ -45,4 +45,10 @@ export function timeSToUnix(timeS: string) {
 export function timeSToUnixString(timeS: string) {
   if (!getTimeSToUnixString[timeS]) getTimeSToUnixString[timeS] = Math.floor(new Date(timeS).getTime() / 1000).toString()
   return getTimeSToUnixString[timeS]
+}
+
+let startOfTodayTime: number
+export function getStartOfTodayTime() {
+  if (!startOfTodayTime) startOfTodayTime = timeSToUnix(dateToTimeS(new Date()))
+  return startOfTodayTime
 }

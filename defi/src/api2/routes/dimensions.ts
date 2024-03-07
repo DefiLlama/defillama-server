@@ -1,5 +1,5 @@
 
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, IJSON } from "@defillama/dimension-adapters/adapters/types";
 import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../adaptors/db-utils/adaptor-record";
@@ -8,15 +8,16 @@ import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFr
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { getAdapterTypeCache } from "../utils/dimensionsUtils";
-import { timeSToUnixString } from "../utils/time";
+import { timeSToUnix, timeSToUnixString } from "../utils/time";
 import * as fs from 'fs'
 
 let lastCacheUpdate = new Date().getTime()
 const reqCache: any = {}
+const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
 
 function clearCache() {
   const now = new Date().getTime()
-  if (now - lastCacheUpdate > 1000 * 60 * 60) { // clear cache if it is older than an hour
+  if (now - lastCacheUpdate > 3 * 60 * 1000) { // clear cache if it is older than three minutes
     Object.keys(reqCache).forEach(key => {
       delete reqCache[key]
     })
@@ -62,15 +63,15 @@ async function getOverviewProcess(eventParameters: any) {
   response.chain = chain ?? null
 
   // TODO: missing average1y
-  const responseKeys = ['total24', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', ]
+  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y',]
 
   responseKeys.forEach(key => {
     response[key] = summary[key]
   })
 
-  response.change_1d = getPercentage(summary.total24, summary.total48hto24h)
-  response.change_7d = getPercentage(summary.total24, summary.total7DaysAgo)
-  response.change_30d = getPercentage(summary.total24, summary.total30DaysAgo)
+  response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
+  response.change_7d = getPercentage(summary.total24h, summary.total7DaysAgo)
+  response.change_30d = getPercentage(summary.total24h, summary.total30DaysAgo)
   response.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
   response.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
 
@@ -80,23 +81,112 @@ async function getOverviewProcess(eventParameters: any) {
 }
 
 function formatChartData(data: any) {
-  return Object.entries(data).map(([key, value]: any) => [timeSToUnixString(key), value]).sort(([a]: any, [b]: any) => a - b)
+  return Object.entries(data).map(([key, value]: any) => [timeSToUnix(key), value]).sort(([a]: any, [b]: any) => a - b)
 }
 
 function getPercentage(a: number, b: number) {
-  return +Number(((a-b) / b ) * 100).toFixed(2)
+  return +Number(((a - b) / b) * 100).toFixed(2)
 }
 
+async function getProtocolDataHandler(eventParameters: any) {
+  const adapterType = eventParameters.adaptorType
+  const recordType = eventParameters.dataType
+  const cacheData = await getAdapterTypeCache(adapterType)
+  const pName = eventParameters.protocolName.toLowerCase()
+
+  console.time('getProtocolDataHandler: ' + eventParameters.adaptorType)
+  let protocolData = cacheData.protocolNameMap[pName]
+  let isChildProtocol = false
+  let childProtocolVersionKey: string
+
+  if (!protocolData) {
+    protocolData = cacheData.childProtocolNameMap[pName]
+    if (!protocolData)
+      throw new Error("protocol not found")
+    isChildProtocol = true
+    childProtocolVersionKey = cacheData.childProtocolVersionKeyMap[pName]
+  }
+
+  const { records, summaries, info } = protocolData
+  const summary = summaries[recordType]
+  if (!summary) throw new Error("Missing protocol summary")
+  const versionKeyNameMap: IJSON<string> = {}
+
+  const response: any = { ...info, childProtocols: null, }
+  if (info.childProtocols?.length > 1) {
+    response.childProtocols = info.childProtocols.map((child: any) => {
+      versionKeyNameMap[child.versionKey] = child.displayName ?? child.name
+      return child.displayName ?? child.name
+    })
+  }
+  const protocolName = response.displayName ?? response.name
+  const getBreakdownName = (key: string) => versionKeyNameMap[key] ?? key
+
+  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime']
+  if (!isChildProtocol)
+    responseKeys.forEach(key => response[key] = summary[key])
+
+  if (!eventParameters.excludeTotalDataChart) {
+    const chart = {} as any
+    Object.entries(records).forEach(([date, value]: any) => {
+      if (!value.aggregated[recordType]) return;
+
+      if (!isChildProtocol)
+        chart[date] = value.aggregated[recordType]?.value
+      else {
+        const val = value.breakdown?.[recordType]?.[childProtocolVersionKey]?.value
+        if (typeof val === 'number')
+          chart[date] = val
+      }
+
+    })
+    response.totalDataChart = formatChartData(chart)
+  }
+
+  if (!eventParameters.excludeTotalDataChartBreakdown) {
+    const chartBreakdown = {} as any
+    Object.entries(records).forEach(([date, value]: any) => {
+      let breakdown = value.breakdown?.[recordType]
+      if (!breakdown) {
+        if (!value.aggregated[recordType]) return;
+        const chains = value.aggregated[recordType].chains
+        breakdown = { [protocolName]: chains }
+      }
+      chartBreakdown[date] = formatBreakDownData(breakdown)
+    })
+    response.totalDataChartBreakdown = formatChartData(chartBreakdown)
+  }
+
+  // todo:  add code to convert chain key to chain display name
+  response.breakdown24h = null // TODO: missing breakdown24h/fix it?
+  response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
+
+  console.timeEnd('getProtocolDataHandler: ' + eventParameters.adaptorType)
+  return response
+
+
+  function formatBreakDownData(data: any) {
+    const res = {} as any
+    Object.entries(data).forEach(([label, chains]: any) => {
+      if (isChildProtocol && label !== childProtocolVersionKey) return;
+      Object.entries(chains).forEach(([chain, value]: any) => {
+        if (!res[chain]) res[chain] = {}
+        res[chain][getBreakdownName(label)] = value
+      })
+    })
+    return res
+  }
+}
 
 export async function getDimensionProtocolHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
   clearCache()
   const protocolName = req.path_parameters.name?.toLowerCase()
   const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
-  const rawDataType = req.query_parameters?.dataType
-  const dataKey = `${protocolName}-${adaptorType}-${rawDataType}`
+  const eventParameters = getEventParameters(req, false)
+  const dataKey = 'protocol-' + JSON.stringify(eventParameters)
   if (!reqCache[dataKey]) {
     console.time('getProtocolDataHandler: ' + dataKey)
-    // reqCache[dataKey] = getProtocolDataHandler(protocolName, adaptorType, rawDataType, { isApi2RestServer: true })
+    reqCache[dataKey] = getProtocolDataHandler(eventParameters)
     await reqCache[dataKey]
     console.timeEnd('getProtocolDataHandler: ' + dataKey)
   }
@@ -106,10 +196,7 @@ export async function getDimensionProtocolHandler(req: HyperExpress.Request, res
   return errorResponse(res, `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`)
 }
 
-
-
-function getEventParameters(req: HyperExpress.Request) {
-  const pathChain = req.path_parameters.chain?.toLowerCase()
+function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   const adaptorType = req.path_parameters.type?.toLowerCase() as AdapterType
   const excludeTotalDataChart = req.query_parameters.excludeTotalDataChart?.toLowerCase() === 'true'
   const excludeTotalDataChartBreakdown = req.query_parameters.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
@@ -118,14 +205,19 @@ function getEventParameters(req: HyperExpress.Request) {
   const category = (rawCategory === 'dexs' ? 'dexes' : rawCategory) as CATEGORIES
   const fullChart = req.query_parameters.fullChart?.toLowerCase() === 'true'
   const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
-  const chainFilterRaw = (pathChain ? decodeURI(pathChain) : pathChain)?.toLowerCase()
-  const chainFilter = Object.keys(normalizeDimensionChainsMap).find(chainKey =>
-    chainFilterRaw === sluggifyString(chainKey.toLowerCase())
-  ) ?? chainFilterRaw
   if (!adaptorType) throw new Error("Missing parameter")
   if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
   if (category !== undefined && !Object.values(CATEGORIES).includes(category)) throw new Error("Category not supported")
   if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
+
+  if (!isSummary) {
+    const protocolName = req.path_parameters.name?.toLowerCase()
+    return { adaptorType, dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown, category, fullChart, protocolName }
+  }
+
+  const pathChain = req.path_parameters.chain?.toLowerCase()
+  const chainFilterRaw = (pathChain ? decodeURI(pathChain) : pathChain)?.toLowerCase()
+  const chainFilter = sluggifiedNormalizedChains[chainFilterRaw] ?? chainFilterRaw
 
   return {
     adaptorType,
@@ -139,11 +231,18 @@ function getEventParameters(req: HyperExpress.Request) {
 }
 
 async function run() {
-  const a = await getOverviewProcess({
+  /* const a = await getOverviewProcess({
     adaptorType: 'aggregators',
     dataType: 'dv',
     excludeTotalDataChart: false,
     excludeTotalDataChartBreakdown: false,
+  }).catch(e => console.error(e)) */
+  const a = await getProtocolDataHandler({
+    adaptorType: 'aggregators',
+    dataType: 'dv',
+    excludeTotalDataChart: false,
+    excludeTotalDataChartBreakdown: false,
+    protocolName: 'Aggre'
   }).catch(e => console.error(e))
   // console.log(a)
   fs.writeFileSync('a.json', JSON.stringify(a, null, 2))

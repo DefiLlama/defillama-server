@@ -240,19 +240,19 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
 }
 
 async function run() {
-  /* const a = await getOverviewProcess({
+  const a = await getOverviewProcess({
     adaptorType: 'aggregators',
     dataType: 'dv',
     excludeTotalDataChart: false,
     excludeTotalDataChartBreakdown: false,
-  }).catch(e => console.error(e)) */
-  const a = await getProtocolDataHandler({
+  }).catch(e => console.error(e))
+  /* const a = await getProtocolDataHandler({
     adaptorType: 'aggregators',
     dataType: 'dv',
     excludeTotalDataChart: false,
     excludeTotalDataChartBreakdown: false,
     protocolName: 'Aggre'
-  }).catch(e => console.error(e))
+  }).catch(e => console.error(e)) */
   // console.log(a)
   fs.writeFileSync('a.json', JSON.stringify(a, null, 2))
 }

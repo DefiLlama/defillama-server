@@ -31029,7 +31029,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Injective"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.nept.finance/developers/price-oracle-queries
     forkedFrom: [],
     module: "neptune-finance/index.js",
     twitter: "neptune_finance",
@@ -33079,7 +33079,7 @@ const data3: Protocol[] = [
     module: "bakerfi/index.js",
     twitter: "bakerfi_",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://twitter.com/bakerfi_/status/1765391913346277481?s=20
     github: ["baker-fi"],
     listedAt: 1709045112
   },

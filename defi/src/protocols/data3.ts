@@ -34797,6 +34797,29 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"], 
     listedAt: 1709828880
   },
+  {
+    id: "4259",
+    name: "ETCPOW",
+    address: "ethereumclassic:0x6c3B413C461c42a88160Ed1B1B31d6f7b02a1C83",
+    symbol: "ETCPOW",
+    url: "https://etc-mc.com",
+    description:
+      "ETCPOW is an ERC20 token on the Ethereum Classic network. It is designed to become the lifeblood of the ETCMC ecosystem, a community-driven initiative aimed at promoting decentralization and rewarding network participation. With a fixed supply of 1 billion tokens, ETCPOW is poised to become a cornerstone of the Ethereum Classic landscape.",
+    chain: "EthereumClassic",
+    logo: `${baseIconsUrl}/etcpow.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["EthereumClassic"],
+    module: "etcmc/index.js",
+    twitter: "ETCMC777",
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"], 
+    audit_links: ["https://github.com/Nowalski/ETCMC_Audit/blob/main/ETCMC_Farming_Audit_Report_20Feb.pdf"],
+    listedAt: 1709850484
+  },
 ]
 
 export default data3

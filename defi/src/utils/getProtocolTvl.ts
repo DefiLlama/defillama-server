@@ -146,7 +146,7 @@ export async function getProtocolTvl(
           if (chain === "tvl" || includeSection(chainDisplayName)) {
             chainTvls[chain === "tvl" ? "excludeParent" : `${chainDisplayName}-excludeParent`] = {
               tvl: Object.entries(usdTokens[chain]).reduce((sum, token) => {
-                if (protocol.tokensExcludedFromParent?.includes(token[0])) {
+                if (protocol.tokensExcludedFromParent?.includes(token[0].toUpperCase())) {
                   sum += token[1] as number
                 }
                 return sum

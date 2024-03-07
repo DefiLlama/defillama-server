@@ -34820,6 +34820,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Nowalski/ETCMC_Audit/blob/main/ETCMC_Farming_Audit_Report_20Feb.pdf"],
     listedAt: 1709850484
   },
+  {
+    id: "4260",
+    name: "Ra Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://www.ra.exchange/swap",
+    description:
+      "RA pairs incentives with concentrated liquidity for next-level capital efficiency.",
+    chain: "Fraxtal",
+    logo: `${baseIconsUrl}/ra-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fraxtal"],
+    module: "ra/index.js",
+    twitter: "exchange_RA",
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"], 
+    listedAt: 1709854630
+  },
 ]
 
 export default data3

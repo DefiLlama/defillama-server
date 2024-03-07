@@ -33962,7 +33962,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/BlastFutures/Blast-Futures-Exchange/blob/main/bfx_audit_report_hats.pdf"],
     github: ["BlastFutures"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.blastfutures.com/get-started/dynamic-amm#how-it-works
     listedAt: 1709403349
   },
   {

@@ -1995,7 +1995,8 @@ const data3: Protocol[] = [
     twitter: "ThalaLabs",
     audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
     parentProtocol: "parent#thala-labs",
-    listedAt: 1680889424
+    listedAt: 1680889424,
+    tokensExcludedFromParent: ["STHAPT", "THAPT"]
   },
   {
     id: "2790",
@@ -2124,7 +2125,8 @@ const data3: Protocol[] = [
     twitter: "ThalaLabs",
     audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
     parentProtocol: "parent#thala-labs",
-    listedAt: 1680980221
+    listedAt: 1680980221,
+    tokensExcludedFromParent: ["STHAPT", "THAPT"]
   },
   {
     id: "2796",
@@ -12253,6 +12255,7 @@ const data3: Protocol[] = [
     listedAt: 1689760675,
     audit_links: ["https://docs.hatom.com/getting-started/security/security-reports"],
     parentProtocol: "parent#hatom-protocol",
+    tokensExcludedFromParent: ["SEGLD"]
   },
   {
     id: "3248",

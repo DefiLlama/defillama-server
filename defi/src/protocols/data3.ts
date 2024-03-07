@@ -34631,6 +34631,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#velocimeter",
     listedAt: 1709767892
   },
+  {
+    id: "4252",
+    name: "BlaSpace",
+    address: null,
+    symbol: "-",
+    url: "https://blaspace.io",
+    description:
+      "Uniswap V2 fork on Blast chain",
+    chain: "Base",
+    logo: `${baseIconsUrl}/blaspace.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "blaspace/index.js",
+    twitter: "blaspace_io",
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"], 
+    listedAt: 1709815406
+  },
+  {
+    id: "4253",
+    name: "Alien Finance",
+    address: null,
+    symbol: "-",
+    url: "https://alien.finance",
+    description:
+      "Alien Finance is a cutting-edge lending protocol that has been making waves in DeFi. With a focus on innovation, capital efficiency, and user-friendliness, Alien Finance aims to revolutionize the way users utilize capital by lending protocols.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/alien-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    module: "alien-finance/index.js",
+    twitter: "aliendotfinance",
+    oracles: [],  // they added redstone on the listing, but the contract they provide is close source, cant confirm nothing
+    forkedFrom: [], 
+    listedAt: 1709815505
+  },
 ]
 
 export default data3

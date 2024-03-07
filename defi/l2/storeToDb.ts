@@ -1,16 +1,18 @@
 import postgres from "postgres";
 import { queryPostgresWithRetry } from "../l2/layer2pg";
 import { FinalChainData, FinalData } from "./types";
+import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 
 let auth: string[] = [];
-function iniDbConnection() {
+async function iniDbConnection() {
+  await setEnvSecrets();
   auth = process.env.COINS2_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 
   return postgres(auth[0], { idle_timeout: 90 });
 }
 export default async function storeHistoricalToDB(res: any) {
-  const sql = iniDbConnection();
+  const sql = await iniDbConnection();
 
   const read = await queryPostgresWithRetry(
     sql`
@@ -57,7 +59,7 @@ export default async function storeHistoricalToDB(res: any) {
   sql.end();
 }
 export async function fetchHistoricalFromDB(chain: string = "*") {
-  const sql = iniDbConnection();
+  const sql = await iniDbConnection();
 
   const timeseries = await queryPostgresWithRetry(
     chain == "*" ? sql`select * from chainassets` : sql`select ${sql(chain)}, timestamp from chainassets`,

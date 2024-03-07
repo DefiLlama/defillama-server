@@ -2666,6 +2666,14 @@ export const chainCoingeckoIds = {
     twitter: "AstarNetwork",
     url: "https://astar.network/"
   },
+  "Naka": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "naka_chain",
+    url: "https://nakachain.xyz/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3231,6 +3239,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Bitrock"
     case "astrzk":
       return "Astar zkEVM"
+    case "naka":
+      return "Naka"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

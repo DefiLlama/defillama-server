@@ -33827,7 +33827,7 @@ const data3: Protocol[] = [
     module: "synfutures-v3/index.js",
     twitter: "SynFuturesDefi",
     forkedFrom: [],
-    oracles: ["Chainlink", "TWAP"],
+    oracles: ["Chainlink", "TWAP","Pyth"], // https://docs.synfutures.com/docs/User-Guide/Protocol-Parameters
     audit_links: ["https://www.synfutures.com/Quantstamp-Audit-Report-SynFuturesV3.pdf"],
     parentProtocol: "parent#synfutures",
     listedAt: 1709324603

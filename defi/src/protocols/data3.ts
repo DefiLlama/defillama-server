@@ -34723,6 +34723,29 @@ const data3: Protocol[] = [
     github: ["MonroeProtocol"],
     listedAt: 1709822785
   },
+  {
+    id: "4256",
+    name: "Stability",
+    address: null,
+    symbol: "-",
+    url: "https://stability.farm",
+    description:
+      "Asset management, liquidity mining and yield farming platform.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/stability.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Polygon"],
+    module: "stability/index.js",
+    twitter: "stabilitydao",
+    oracles: [], 
+    forkedFrom: [], 
+    github: ["stabilitydao"],
+    listedAt: 1709824120
+  },
 ]
 
 export default data3

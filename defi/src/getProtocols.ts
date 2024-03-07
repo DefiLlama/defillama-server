@@ -47,6 +47,7 @@ const majors = [
   "icETH",
   "BTCB",
   "BETH",
+  "mETH"
 ].map((t) => t.toUpperCase());
 const stablecoins = [
   "USDT",
@@ -90,6 +91,8 @@ const stablecoins = [
   "aAvaDAI",
   "avUSDT",
   "aOptUSDC",
+  "sUSDe",
+  "USDY"
 ].map((t) => t.toUpperCase());
 
 function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownTokens: { [token: string]: number } }) {

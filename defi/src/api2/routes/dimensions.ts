@@ -4,7 +4,7 @@ import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../adaptors/db-utils/adaptor-record";
 import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/handlers/getOverviewProcess";
-import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { getDisplayChainName, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { getAdapterTypeCache } from "../utils/dimensionsUtils";
@@ -23,6 +23,13 @@ function clearCache() {
     })
     lastCacheUpdate = now
   }
+}
+
+const chainNameCache: IJSON<string> = {}
+
+function _getDisplayChainName(chain: string) {
+  if (!chainNameCache[chain]) chainNameCache[chain] = getDisplayChainName(chain) ?? chain
+  return chainNameCache[chain]
 }
 
 export async function getOverviewHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -122,7 +129,7 @@ async function getProtocolDataHandler(eventParameters: any) {
   const protocolName = response.displayName ?? response.name
   const getBreakdownName = (key: string) => versionKeyNameMap[key] ?? key
 
-  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime']
+  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime', ]
   if (!isChildProtocol)
     responseKeys.forEach(key => response[key] = summary[key])
 
@@ -150,15 +157,16 @@ async function getProtocolDataHandler(eventParameters: any) {
       if (!breakdown) {
         if (!value.aggregated[recordType]) return;
         const chains = value.aggregated[recordType].chains
-        breakdown = { [protocolName]: chains }
+        // breakdown = { [protocolName]: chains }
+        breakdown = { [response.module]: chains }
       }
       chartBreakdown[date] = formatBreakDownData(breakdown)
     })
     response.totalDataChartBreakdown = formatChartData(chartBreakdown)
   }
 
-  // todo:  add code to convert chain key to chain display name
   response.breakdown24h = null // TODO: missing breakdown24h/fix it?
+  response.chains =response.chains?.map((chain: string) => _getDisplayChainName(chain))
   response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
 
   console.timeEnd('getProtocolDataHandler: ' + eventParameters.adaptorType)
@@ -171,7 +179,8 @@ async function getProtocolDataHandler(eventParameters: any) {
       if (isChildProtocol && label !== childProtocolVersionKey) return;
       Object.entries(chains).forEach(([chain, value]: any) => {
         if (!res[chain]) res[chain] = {}
-        res[chain][getBreakdownName(label)] = value
+        // res[chain][getBreakdownName(label)] = value
+        res[chain][label] = value
       })
     })
     return res

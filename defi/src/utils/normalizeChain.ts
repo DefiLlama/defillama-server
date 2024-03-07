@@ -2666,6 +2666,14 @@ export const chainCoingeckoIds = {
     twitter: "AstarNetwork",
     url: "https://astar.network/"
   },
+  "Naka": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "BVMnetwork",
+    url: "https://bvm.network/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]

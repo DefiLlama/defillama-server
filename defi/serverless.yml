@@ -793,7 +793,7 @@ functions:
     timeout: 30
     events:
       - http:
-          path: chainAssetsChart
+          path: chainAssetsChart/{chain}
           method: get
 
 resources:

@@ -1918,5 +1918,9 @@ export default {
     "ethena": {
         "enabled": true,
         "id": "4133"
+    },
+    "avantis": {
+        enabled: true,
+        "id": "4108"
     }
 } as AdaptorsConfig

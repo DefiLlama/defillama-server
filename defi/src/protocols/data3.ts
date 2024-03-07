@@ -34699,6 +34699,7 @@ const data3: Protocol[] = [
     github: ["chromatic-protocol"],
     listedAt: 1709822756
   },
+  /*
   {
     id: "4255",
     name: "Monroe Protocol",
@@ -34723,6 +34724,7 @@ const data3: Protocol[] = [
     github: ["MonroeProtocol"],
     listedAt: 1709822785
   },
+  */
   {
     id: "4256",
     name: "Stability",

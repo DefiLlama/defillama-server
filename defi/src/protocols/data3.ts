@@ -34675,6 +34675,54 @@ const data3: Protocol[] = [
     forkedFrom: [], 
     listedAt: 1709815505
   },
+  {
+    id: "4254",
+    name: "Chromatic Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.chromatic.finance",
+    description:
+      "Chromatic Protocol is a decentralized perpetual futures protocol that provides permissionless, trustless, and unopinionated building blocks which enable participants in the DeFi ecosystem to create balanced two-sided markets exposed to oracle price feeds and trade futures in those markets using various strategies.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/chromatic-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "chromatic-protocol/index.js",
+    twitter: "chromatic_perp",
+    oracles: [], 
+    forkedFrom: [], 
+    audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Chromatic_Protocol_EVM_Contracts_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf"],
+    github: ["chromatic-protocol"],
+    listedAt: 1709822756
+  },
+  {
+    id: "4255",
+    name: "Monroe Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://monroeprotocol.com/",
+    description:
+      "Monroe is a decentralized omnichain LST backed stablecoin factory.",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/monroe-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Manta"],
+    module: "monroeprotocol/index.js",
+    twitter: "MonroeProtocol",
+    oracles: [], 
+    forkedFrom: [], 
+    audit_links: ["https://app.monroeprotocol.com/audit-Peckshield.pdf"],
+    github: ["MonroeProtocol"],
+    listedAt: 1709822785
+  },
 ]
 
 export default data3

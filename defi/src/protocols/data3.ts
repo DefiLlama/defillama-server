@@ -34990,7 +34990,7 @@ const data3: Protocol[] = [
     description:
       "MPEPE stands out as the initial Pepe coin for mining on Binance Smart Chain. It comes with its own decentralized app and Mobile App, offering miners a 12% daily return in BNB and MPEPE tokens. Additionally, Mpepe's native token boosts the Total Value Locked (TVL) of miners by 2% with each transaction (whether buying or selling), directly benefiting the miner's contract. Only those who hold $MPEPE/Cake/BNB tokens can kickstart mining activities in the available miner pools and receive daily rewards for lifetime.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/miner-pepe.jpg`,
+    logo: `${baseIconsUrl}/miner-pepe.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

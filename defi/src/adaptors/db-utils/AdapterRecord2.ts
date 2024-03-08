@@ -66,7 +66,7 @@ export class AdapterRecord2 {
     const configItem = configIdMap[adaptorId] ?? configIdMap[protocol.id]
     const hasBreakdown = !!configItem.protocolsData
     let whitelistedVersionKeys = new Set(hasBreakdown ? Object.keys(configItem.protocolsData) : [protocol.module])
-    const skipAdapterKeyCheck = hasBreakdown || !protocol.isProtocolInOtherCategories
+    const skipAdapterKeyCheck = !hasBreakdown && !protocol.isProtocolInOtherCategories
     let timestamp
     Object.keys(adaptorRecords).forEach((key: any) => transformRecord((adaptorRecords as any)[key].getCleanAdaptorRecord(), key))
 

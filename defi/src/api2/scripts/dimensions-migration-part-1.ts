@@ -55,12 +55,13 @@ async function writeAdapterType(adapterType: AdapterType, recordType: AdaptorRec
   const adaptersList: ProtocolAdaptor[] = protocolAdaptors
 
   await Promise.all(adaptersList.map(async (adapter) => {
-    // if (adapter.id2 !== '3501') return;
+    // if (adapter.id2 !== '381') return;
     const dataFileKey = `${adapterType}/${adapter.id2}/${recordType}`
     try {
       if (!data[adapter.id2]) data[adapter.id2] = {}
       data[adapter.id2][recordType] = await wrappedGetAdaptorRecord(adapter, recordType)
       console.info('fetched', dataFileKey, data[adapter.id2][recordType].length, 'items')
+      // console.log(JSON.stringify(data[adapter.id2][recordType].slice(0, 6), null, 2))
     } catch (error) {
       const errorStr = error!.toString()
       if (!errorStr.includes("No items found ") && !errorStr.includes('No protocols data')) {

@@ -51,9 +51,9 @@ async function getOverviewProcess(eventParameters: any) {
   const recordType = eventParameters.dataType
   const cacheData = await getAdapterTypeCache(adapterType)
   console.time('getAdapterTypeCache: ' + eventParameters.adaptorType)
-  const { summaries, protocols } = cacheData
+  const { summaries, protocols, allChains } = cacheData
   const chain = eventParameters.chainFilter
-  const summary = chain ? summaries[recordType].chainData[chain] : summaries[recordType]
+  const summary = chain ? summaries[recordType].chainSummary[chain] : summaries[recordType]
   const response: any = {}
   if (!summary) throw new Error("Summary not found")
 
@@ -65,12 +65,12 @@ async function getOverviewProcess(eventParameters: any) {
     response.totalDataChartBreakdown = formatChartData(summary.chartBreakdown)
   }
 
-  // todo:  add code to convert chain key to chain display name
-  response.breakdown24h = null // TODO: missing breakdown24h/fix it?
+  response.breakdown24h = null
   response.chain = chain ?? null
+  response.allChains = allChains
 
   // TODO: missing average1y
-  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y',]
+  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d',]
 
   responseKeys.forEach(key => {
     response[key] = summary[key]
@@ -81,6 +81,23 @@ async function getOverviewProcess(eventParameters: any) {
   response.change_30d = getPercentage(summary.total24h, summary.total30DaysAgo)
   response.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
   response.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
+
+  const protocolInfoKeys = ['defillamaId', 'name', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'latestFetchIsOk']
+  const protocolDataKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'totalAllTime', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'breakdown24h',]  // TODO: missing breakdown24h/fix it?
+
+  response.protocols = Object.values(protocols).map(({ summaries, info }: any) => {
+    const res: any = {}
+
+    let summary = summaries?.[recordType]
+    if (chain) summary = summary?.chainSummary[chain]
+
+    if (summary)
+      protocolDataKeys.forEach(key => res[key] = summary[key])
+
+
+    protocolInfoKeys.forEach(key => res[key] = info[key])
+    return res
+  }).filter((i: any) => i)
 
 
   console.timeEnd('getAdapterTypeCache: ' + eventParameters.adaptorType)
@@ -129,7 +146,7 @@ async function getProtocolDataHandler(eventParameters: any) {
   const protocolName = response.displayName ?? response.name
   const getBreakdownName = (key: string) => versionKeyNameMap[key] ?? key
 
-  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime', ]
+  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime',]
   if (!isChildProtocol)
     responseKeys.forEach(key => response[key] = summary[key])
 
@@ -166,7 +183,7 @@ async function getProtocolDataHandler(eventParameters: any) {
   }
 
   response.breakdown24h = null // TODO: missing breakdown24h/fix it?
-  response.chains =response.chains?.map((chain: string) => _getDisplayChainName(chain))
+  response.chains = response.chains?.map((chain: string) => _getDisplayChainName(chain))
   response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
 
   console.timeEnd('getProtocolDataHandler: ' + eventParameters.adaptorType)

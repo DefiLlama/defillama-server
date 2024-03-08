@@ -7,6 +7,7 @@ import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
 import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow, timeSToUnix, getStartOfTodayTime } from "../utils/time";
+import { getDisplayChainName } from "../../adaptors/utils/getAllChainsFromAdaptors";
 
 
 const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
@@ -87,6 +88,8 @@ async function run() {
       if (info.parentProtocol) protocol.info.parentProtocol = info.parentProtocol
       protocol.info.latestFetchIsOk = true
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
+      protocol.info.chains = info.chains.map(_getDisplayChainName)
+      protocol.info.chains.forEach((chain: string) => chainSet.add(chain))
       const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData(protocol.records)
 
       Object.entries(protocolRecordMapWithMissingData).forEach(([timeS, record]: any) => {
@@ -144,7 +147,6 @@ async function run() {
             protocolRecord.lastOneYearData.push(aggData)
           }
 
-          Object.keys(chains).forEach(chain => chainSet.add(chain))
           Object.entries(chains).forEach(([chain, value]: any) => {
             if (!value) return; // skip zero values
             if (!summary.chainSummary![chain])
@@ -257,9 +259,9 @@ async function run() {
     // delete (summaries.dv as any).chartBreakdown
     // delete (summaries as any).earliestTimestamp
 
-    // adapterData.allChains = Array.from(chainSet)
     // adapterData.protocols = {}
     adapterData.summaries = summaries
+    adapterData.allChains = Array.from(chainSet)
     adapterData.lastUpdated = getUnixTimeNow()
     console.timeEnd(timeKey3)
 
@@ -423,4 +425,12 @@ function addTotalValueDataTypesToRecord(record: IJSON<any>, previousRecord?: IJS
       })
     }
   })
+}
+
+
+const chainNameCache: IJSON<string> = {}
+
+function _getDisplayChainName(chain: string) {
+  if (!chainNameCache[chain]) chainNameCache[chain] = getDisplayChainName(chain) ?? chain
+  return chainNameCache[chain]
 }

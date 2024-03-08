@@ -31385,8 +31385,11 @@ const data3: Protocol[] = [
     gecko_id: "segment",
     cmcId: null,
     category: "Lending",
-    chains: ["Binance"],
-    oracles: ["Chainlink"], 
+    chains: ["Binance", "opBNB"],
+    oraclesByChain: {
+      bsc: ["Chainlink"],
+      op_bnb: ["Binance Oracle"]
+    },
     forkedFrom: ["Compound V2"],
     module: "segment-finance/index.js",
     twitter: "segment_fi",

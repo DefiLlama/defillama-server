@@ -34842,6 +34842,26 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"], 
     listedAt: 1709854630
   },
+  {
+    id: "4261",
+    name: "PumpX",
+    address: null,
+    symbol: "-",
+    url: "https://pumpx.io/",
+    description:
+      "A Peer-to-Peer protocol enables Lending & Earning on NFTs, based on pooling other L2's liquidity together on Blast. The rollout of PumpX is planned in 3 stages, with the Blast Native Yield integrated throughout each phase.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/pumpx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Lending",
+    chains: ["Ethereum", "Blast"],
+    module: "pumpx/index.js",
+    twitter: "pumpx_io",
+    oracles: [],
+  },
 ]
 
 export default data3

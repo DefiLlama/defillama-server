@@ -2986,12 +2986,6 @@
       "symbol": "OMAX",
       "to": "coingecko#omax-token"
     },
-    "0xfebabc6a9b2ec46d6357879b8bf39b593f11a5b9": {
-      "name": "Wrapped OMAX",
-      "decimals": "18",
-      "symbol": "WOMAX",
-      "to": "coingecko#omax-token"
-    },
     "0x373e4b4e4d328927bc398a9b50e0082c6f91b7bb": {
       "name": "Wrapped OMAX",
       "decimals": "18",

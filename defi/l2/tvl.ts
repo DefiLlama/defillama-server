@@ -79,7 +79,7 @@ async function translateToChainData(
         if (!(chain in data[key])) return;
         if (!(chain in translatedData)) translatedData[chain] = {};
         if (!data[key] || !data[key][chain]) translatedData[chain][key] = { total: zero, breakdown: {} };
-        if (chain in ownTokens) await processOwnTokens(data, key, chain);
+        if (chain in ownTokens && ownTokens[chain].ticker in data[key][chain]) await processOwnTokens(data, key, chain);
         const total = Object.values(data[key][chain]).reduce((p: any, c: any) => c.plus(p), zero);
         translatedData[chain][key] = { total, breakdown: data[key][chain] };
       })
@@ -131,19 +131,18 @@ async function translateToChainData(
   async function processOwnTokens(data: ChainData, key: keyof ChainData, chain: Chain) {
     if (key == "outgoing") return;
     const ownToken = ownTokens[chain];
+    const total = data[key][chain][ownToken.ticker];
+    if (!translatedData[chain].ownTokens)
+      translatedData[chain].ownTokens = { total: zero, breakdown: { [ownToken.ticker]: zero } };
+    const percOnThisChain = data[key][chain][ownToken.ticker].div(nativeTokenTotalValues[ownToken.ticker]);
     const mcaps = await mcapsPromise;
-    [ownToken.ticker, ownToken.ticker.toLowerCase()].map((s: string) => {
-      const total = data[key][chain][s];
-      if (!total) return;
-      if (!translatedData[chain].ownTokens) translatedData[chain].ownTokens = { total: zero, breakdown: { [s]: zero } };
-      const percOnThisChain = data[key][chain][s].div(nativeTokenTotalValues[s]);
-      const address = Object.keys(mcaps).find((k: string) => k.startsWith(chain));
-      const mcap = address ? mcaps[address].mcap : total;
-      const thisAssetMcap = BigNumber.min(mcap, total).times(percOnThisChain);
-      translatedData[chain].ownTokens.total = translatedData[chain].ownTokens.total.plus(thisAssetMcap);
-      translatedData[chain].ownTokens.breakdown[s] = translatedData[chain].ownTokens.breakdown[s].plus(thisAssetMcap);
-      delete data[key][chain][s];
-    });
+    const address = Object.keys(mcaps).find((k: string) => k.startsWith(chain));
+    const mcap = address ? mcaps[address].mcap : total;
+    const thisAssetMcap = BigNumber.min(mcap, total).times(percOnThisChain);
+    translatedData[chain].ownTokens.total = translatedData[chain].ownTokens.total.plus(thisAssetMcap);
+    translatedData[chain].ownTokens.breakdown[ownToken.ticker] =
+      translatedData[chain].ownTokens.breakdown[ownToken.ticker].plus(thisAssetMcap);
+    delete data[key][chain][ownToken.ticker];
   }
 
   return translatedData;

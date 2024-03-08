@@ -34937,6 +34937,29 @@ const data3: Protocol[] = [
     audit_links: ["https://sourcehat.com/audits/MuitoFinance"],
     listedAt: 1709896689
   },
+  {
+    id: "4265",
+    name: "Superstate",
+    address: null,
+    symbol: "-",
+    url: "https://superstate.co",
+    description:
+      "The Superstate Short Duration U.S. Government Securities Fund (USTB) is a private fund tokenized on the Ethereum blockchain, offered exclusively to U.S. Qualified Purchasers",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/superstate.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "superstate/index.js",
+    twitter: "superstatefunds",
+    oracles: [], 
+    forkedFrom: [], 
+    github: ["superstateinc"],
+    listedAt: 1709914041
+  },
 ]
 
 export default data3

@@ -12,7 +12,7 @@ import {
 import getTVLOfRecordClosestToTimestamp from "./shared/getRecordClosestToTimestamp";
 
 const _getLastHourlyRecord = (protocol: Protocol) => getLastRecord(hourlyTvl(protocol.id))
-const _getLastTokensHourlyRecord = (protocol: Protocol) => getLastRecord(hourlyUsdTokensTvl(protocol.id))
+const _getLastHourlyTokensUsd = (protocol: Protocol) => getLastRecord(hourlyUsdTokensTvl(protocol.id))
 const _getYesterdayTvl = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInDay, secondsInDay)
 const _getLastWeekTvl = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInWeek, secondsInDay)
 const _getLastMonthTvl = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInWeek * 4, secondsInDay)
@@ -23,7 +23,7 @@ export async function getProtocolTvl(
   protocol: Readonly<Protocol>,
   useNewChainNames: boolean, {
     getLastHourlyRecord = _getLastHourlyRecord,
-    getLastTokensHourlyRecord = _getLastTokensHourlyRecord,
+    getLastHourlyTokensUsd = _getLastHourlyTokensUsd,
     getYesterdayTvl = _getYesterdayTvl,
     getLastWeekTvl = _getLastWeekTvl,
     getLastMonthTvl = _getLastMonthTvl,
@@ -48,7 +48,7 @@ export async function getProtocolTvl(
       getLastWeekTvl(protocol),
       getLastMonthTvl(protocol),
       importAdapter(protocol),
-      protocol.tokensExcludedFromParent !== undefined ? getLastTokensHourlyRecord(protocol):null
+      protocol.tokensExcludedFromParent !== undefined ? getLastHourlyTokensUsd(protocol):null
     ]);
 
     const isDoubleCount = isDoubleCounted(module.doublecounted, protocol.category);

@@ -34888,6 +34888,52 @@ const data3: Protocol[] = [
     github: ["hyperlockfi"],
     listedAt: 1709895750
   },
+  {
+    id: "4263",
+    name: "Gaming DEX",
+    address: null,
+    symbol: "-",
+    url: "https://www.gaming-dex.com",
+    description:
+      "Gaming DEX is a DeFi infrastructure protocol that provides token liquidity.It will be implemented on DeFi Verse, a Blockchain for Games-related Oasys Layer 2 blockchain.",
+    chain: "DeFiVerse",
+    logo: `${baseIconsUrl}/gaming-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["DeFiVerse"],
+    module: "gaming-dex/index.js",
+    twitter: "GamingDEX_Oasys",
+    oracles: [], 
+    forkedFrom: ["Balancer"], 
+    github: ["Defiverse-GamingDEX"],
+    listedAt: 1709896631
+  },
+  {
+    id: "4264",
+    name: "Muito Finance",
+    address: "mantle:0x029d924928888697d3F3d169018d9d98d9f0d6B4",
+    symbol: "MUTO",
+    url: "https://www.muito.finance",
+    description:
+      "Muito Finance is a yield aggregator on Mantle that provides a variety of strategies to users of all risk preferences. The automation of claiming and re-investing generates far greater return than what ordinary users can obtain manually.",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/muito-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Mantle"],
+    module: "muito-finance/index.js",
+    twitter: "muitofinance",
+    oracles: [], 
+    forkedFrom: [], 
+    audit_links: ["https://sourcehat.com/audits/MuitoFinance"],
+    listedAt: 1709896689
+  },
 ]
 
 export default data3

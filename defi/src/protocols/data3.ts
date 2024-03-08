@@ -31388,7 +31388,7 @@ const data3: Protocol[] = [
     chains: ["Binance", "opBNB"],
     oraclesByChain: {
       bsc: ["Chainlink"],
-      op_bnb: ["Binance Oracle"]
+    //  op_bnb: ["Binance Oracle"]
     },
     forkedFrom: ["Compound V2"],
     module: "segment-finance/index.js",

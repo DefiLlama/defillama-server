@@ -10767,7 +10767,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3181",
-    name: "Sui",
+    name: "Sui Foundation",
     address: null,
     symbol: "-",
     url: "https://sui.io",

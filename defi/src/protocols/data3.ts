@@ -34842,6 +34842,52 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"], 
     listedAt: 1709854630
   },
+  {
+    id: "4261",
+    name: "Gomble Games",
+    address: null,
+    symbol: "-",
+    url: "https://gomblegames.com",
+    description:
+      "Strategic Casual Game Studio",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/gomble-games.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Binance"],
+    module: "gomble/index.js",
+    twitter: "gomblegames",
+    oracles: [], 
+    forkedFrom: [], 
+    audit_links: ["https://beosin.com/audits/GOMBLE_202402231621.pdf"],
+    listedAt: 1709895625
+  },
+  {
+    id: "4262",
+    name: "Hyperlock Finance",
+    address: null,
+    symbol: "-",
+    url: "https://hyperlock.finance",
+    description:
+      "Yield & metagovernance protocol built on ThrusterFi and optimized for Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/hyperlock-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Blast"],
+    module: "hyperlock/index.js",
+    twitter: "hyperlockfi",
+    oracles: [], 
+    forkedFrom: [], 
+    github: ["hyperlockfi"],
+    listedAt: 1709895750
+  },
 ]
 
 export default data3

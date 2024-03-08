@@ -39,7 +39,7 @@ async function run() {
   }
 
   const promises: any = ADAPTER_TYPES.map(async (adapterType) => {
-    if (adapterType !== AdapterType.AGGREGATORS) return;
+    if (adapterType !== AdapterType.OPTIONS) return;
 
     const timeKey1 = `data load ${adapterType}`
     const timeKey2 = `db call ${adapterType}`
@@ -278,7 +278,11 @@ async function run() {
       }
 
       records.forEach(({ value, chains }: { value: number, chains: IJSON<number> }) => {
-        if (!value) return;
+        // if (!value) return;
+        if (typeof value !== 'number') {
+          console.log(value, chains)
+          return;
+        }
         summary[summaryKey] = (summary[summaryKey] ?? 0) + value
         Object.entries(chains).forEach(([chain, value]: any) => {
           if (!summary.chainSummary![chain]) summary.chainSummary![chain] = initSummaryItem(true)

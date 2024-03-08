@@ -241,8 +241,8 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
 
 async function run() {
   const a = await getOverviewProcess({
-    adaptorType: 'aggregators',
-    dataType: 'dv',
+    adaptorType: AdapterType.OPTIONS,
+    dataType: AdaptorRecordType.dailyNotionalVolume,
     excludeTotalDataChart: false,
     excludeTotalDataChartBreakdown: false,
   }).catch(e => console.error(e))

@@ -26,7 +26,7 @@ async function run() {
   // Go over all types
   for (const adapterType of ADAPTER_TYPES) {
 
-    if (adapterType !== AdapterType.AGGREGATORS) continue;
+    if (adapterType !== AdapterType.OPTIONS) continue;
 
     const consoleKey = `-----------------adapterType: ${adapterType}`
     console.time(consoleKey)

@@ -73,7 +73,7 @@ export class AdapterRecord2 {
     if (!timestamp || Object.keys(data.aggregated).length === 0) {
       // console.info('empty record?')
       if (Object.keys(data.aggregated).length)
-        console.info('empty record?',skipAdapterKeyCheck, protocol.module, protocol.id2, protocol.name, JSON.stringify(adaptorRecords), JSON.stringify(data.aggregated), protocolType, adapterType)
+        console.info('empty record?', skipAdapterKeyCheck, protocol.module, protocol.id2, protocol.name, JSON.stringify(adaptorRecords), JSON.stringify(data.aggregated), protocolType, adapterType)
       return null
     }
 
@@ -82,7 +82,7 @@ export class AdapterRecord2 {
 
     function transformRecord(record: AdaptorRecord | null, key: AdaptorRecordType) {
       if (!record) return;
-      
+
       timestamp = record.timestamp
       let value = 0
       const chains: { [chain: string]: number } = {}
@@ -93,7 +93,13 @@ export class AdapterRecord2 {
         chain = chain.endsWith('_key') ? chain.slice(0, -4) : chain
         Object.keys(chainData).forEach((key: any) => {
           if (!skipAdapterKeyCheck && !whitelistedVersionKeys.has(key)) return;
-          const chainDataKey: number = chainData[key]
+          let chainDataKey: number = chainData[key]
+          if (typeof chainDataKey !== 'number') {
+            if (!(typeof chainDataKey === 'object' && Object.keys(chainDataKey).length === 0))
+              console.log('invalid chainDataKey', chainDataKey, chain, key, protocol.id2, protocol.name, protocolType, adapterType)
+            return;
+          }
+          chainDataKey = Math.round(chainDataKey)
           value += chainDataKey
           chains[chain] = (chains[chain] ?? 0) + chainDataKey
           if (hasBreakdown) {

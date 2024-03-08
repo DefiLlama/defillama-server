@@ -21,7 +21,7 @@ export function getKey(adaptor: ProtocolAdaptor, recordType: AdaptorRecordType) 
 async function run() {
   // Go over all types
   const promises: any = ADAPTER_TYPES.map(async (adapterType) => {
-    if (adapterType !== AdapterType.AGGREGATORS) return;
+    if (adapterType !== AdapterType.OPTIONS) return;
     
     const data: any = {}
     const fileKey = getFileCacheKey(adapterType)
@@ -55,6 +55,7 @@ async function writeAdapterType(adapterType: AdapterType, recordType: AdaptorRec
   const adaptersList: ProtocolAdaptor[] = protocolAdaptors
 
   await Promise.all(adaptersList.map(async (adapter) => {
+    // if (adapter.id2 !== '3501') return;
     const dataFileKey = `${adapterType}/${adapter.id2}/${recordType}`
     try {
       if (!data[adapter.id2]) data[adapter.id2] = {}

@@ -31383,7 +31383,10 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Binance", "opBNB"],
-    oracles: ["Chainlink", "Binance Oracle"], 
+    oraclesByChain: {
+      bsc: ["Chainlink"],
+      op_bnb: ["Binance Oracle"]
+    },
     forkedFrom: ["Compound V2"],
     module: "segment-finance/index.js",
     twitter: "segment_fi",

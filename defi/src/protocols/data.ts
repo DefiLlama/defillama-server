@@ -2277,7 +2277,7 @@ const data: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Binance", "opBNB"],
+    chains: ["Binance"],
     module: "venus.js",
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],

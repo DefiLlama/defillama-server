@@ -34960,6 +34960,49 @@ const data3: Protocol[] = [
     github: ["superstateinc"],
     listedAt: 1709914041
   },
+  {
+    id: "4266",
+    name: "Backpack",
+    address: null,
+    symbol: "-",
+    url: "https://backpack.exchange",
+    description:
+      "Next-level crypto wallet and exchange. ",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/backpack.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Solana"],
+    module: "backpack/index.js",
+    twitter: "Backpack",
+    oracles: [], 
+    forkedFrom: [], 
+  },
+  {
+    id: "4267",
+    name: "Miner PEPE",
+    address: "bsc:0x6d306C2C9CD931160763D99376a68C14D33DC954",
+    symbol: "mPEPE",
+    url: "https://minerpepe.com",
+    description:
+      "MPEPE stands out as the initial Pepe coin for mining on Binance Smart Chain. It comes with its own decentralized app and Mobile App, offering miners a 12% daily return in BNB and MPEPE tokens. Additionally, Mpepe's native token boosts the Total Value Locked (TVL) of miners by 2% with each transaction (whether buying or selling), directly benefiting the miner's contract. Only those who hold $MPEPE/Cake/BNB tokens can kickstart mining activities in the available miner pools and receive daily rewards for lifetime.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/miner-pepe.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Binance"],
+    module: "minerPepe/index.js",
+    twitter: "MinerPepe_Coin",
+    oracles: [], 
+    forkedFrom: [], 
+    listedAt: 1709918594
+  },
 ]
 
 export default data3

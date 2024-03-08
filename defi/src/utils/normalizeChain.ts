@@ -2505,6 +2505,7 @@ export const chainCoingeckoIds = {
     },
     twitter: "ZKFCommunity",
     url: "https://zkfair.io/",
+    chainId: 42766
   },
   "CMP": {
     geckoId: "caduceus",
@@ -2650,6 +2651,28 @@ export const chainCoingeckoIds = {
     twitter: "BitRockChain",
     url: "https://www.bit-rock.io",
     github: ["BitrockChain"],
+  },
+  "Astar zkEVM": {
+    geckoId: null,
+    github: ['AstarNetwork'],
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 3776,
+    twitter: "AstarNetwork",
+    url: "https://astar.network/"
+  },
+  "Naka": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "naka_chain",
+    url: "https://nakachain.xyz/",
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -3214,6 +3237,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Blast"
     case "bitrock":
       return "Bitrock"
+    case "astrzk":
+      return "Astar zkEVM"
+    case "naka":
+      return "Naka"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

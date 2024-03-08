@@ -43,9 +43,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab",
     PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78"
   },
-  beam: {
-    WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
-  },
+  // beam: {
+  //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
+  // },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
     WrappedEther: "0xF720b7910C6b2FF5bd167171aDa211E226740bfe",

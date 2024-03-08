@@ -97,6 +97,7 @@ export const chainToCoingeckoId = {
   shiden: "shiden network",
   flare: "flare-network",
   functionx: "function-x",
+  beam: "beam",
   // chz: "chiliz",
   // stellar: "stellar",
   // stacks: "stacks",

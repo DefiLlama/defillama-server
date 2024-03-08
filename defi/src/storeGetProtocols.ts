@@ -49,6 +49,7 @@ export async function storeGetProtocols({
       response.map(async (protocol: IProtocol) => {
         const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol, true, {
           getLastHourlyRecord,
+          getLastHourlyTokensUsd,
           getYesterdayTvl,
           getLastWeekTvl,
           getLastMonthTvl,

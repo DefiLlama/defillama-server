@@ -823,7 +823,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": false,
+        "enabled": true,
         "id": "2864"
     },
     "merlin": {
@@ -1918,5 +1918,9 @@ export default {
     "ethena": {
         "enabled": true,
         "id": "4133"
+    },
+    "avantis": {
+        enabled: true,
+        "id": "4108"
     }
 } as AdaptorsConfig

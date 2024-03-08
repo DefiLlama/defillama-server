@@ -4,12 +4,14 @@ import { withTimeout } from "./utils/shared/withTimeout";
 import setEnvSecrets from "./utils/shared/setEnvSecrets";
 import { storeR2JSONString } from "./utils/r2";
 import { getCurrentUnixTimestamp } from "./utils/date";
+import storeHistorical from "../l2/storeToDb";
 
 async function getChainAssets() {
   const res: any = await chainAssets();
   res.timestamp = getCurrentUnixTimestamp();
   res.avalanche = res.avax;
   await storeR2JSONString("chainAssets", JSON.stringify(res));
+  await storeHistorical(res);
   console.log("chain assets stored");
   process.exit();
 }

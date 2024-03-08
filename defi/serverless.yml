@@ -788,6 +788,13 @@ functions:
       - http:
           path: chainAssets
           method: get
+  chainAssetsChart: 
+    handler: src/getChainAssetsChart.default
+    timeout: 30
+    events:
+      - http:
+          path: chainAssetsChart/{chain}
+          method: get
 
 resources:
   # CORS for api gateway errors

@@ -7783,6 +7783,16 @@
     }
   },
   "stacks": {
+    "SP3Y2ZSH8P7D50B0VBTSX11S7XSG24M1VB9YFQA4K.token-aeusdc::aeUSDC": {
+      "decimals": "6",
+      "symbol": "aeUSDC",
+      "to": "coingecko#usd-coin"
+    },
+    "SP3Y2ZSH8P7D50B0VBTSX11S7XSG24M1VB9YFQA4K.token-aeusdc": {
+      "decimals": "6",
+      "symbol": "aeUSDC",
+      "to": "coingecko#usd-coin"
+    },
     "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin::wrapped-bitcoin": {
       "decimals": "8",
       "symbol": "BTC",
@@ -7851,7 +7861,7 @@
     "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token::ststx": {
       "decimals": "6",
       "symbol": "stSTX",
-      "to": "coingecko#blockstac"
+      "to": "coingecko#blockstack"
     },
     "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.token-susdt::bridged-usdt": {
       "decimals": "8",

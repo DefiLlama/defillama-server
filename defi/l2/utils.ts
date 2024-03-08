@@ -10,6 +10,7 @@ import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
 import { fetchNotTokens, storeNotTokens } from "./layer2pg";
+import { getBlock } from "@defillama/sdk/build/util/blocks";
 
 export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
   const chainUsdTokenTvls: TokenTvlData = {};
@@ -139,7 +140,9 @@ export async function getMcaps(
   return aggregatedRes;
 }
 
-async function getSolanaTokenSupply(tokens: string[]): Promise<{ [token: string]: number }> {
+async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Solana adapter!`);
+
   const supplies: { [token: string]: number } = {};
   let i = 0;
   let j = 0;
@@ -177,7 +180,8 @@ async function getSolanaTokenSupply(tokens: string[]): Promise<{ [token: string]
   await storeNotTokens(notTokens);
   return supplies;
 }
-async function getSuiSupplies(tokens: Address[]): Promise<{ [token: string]: number }> {
+async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Sui adapter!`);
   const supplies: { [token: string]: number } = {};
   const notTokens: string[] = [];
 
@@ -205,9 +209,14 @@ async function getSuiSupplies(tokens: Address[]): Promise<{ [token: string]: num
   await storeNotTokens(notTokens);
   return supplies;
 }
-async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
+async function getEVMSupplies(
+  chain: Chain,
+  contracts: Address[],
+  timestamp?: number
+): Promise<{ [token: string]: number }> {
   const step: number = 200;
   const supplies: { [token: string]: number } = {};
+  const block: any = timestamp ? await getBlock(chain, timestamp) : undefined;
 
   for (let i = 0; i < contracts.length; i += step) {
     try {
@@ -218,6 +227,7 @@ async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [to
         })),
         abi: "erc20:totalSupply",
         permitFailure: true,
+        block,
       });
       contracts.slice(i, i + step).map((c: Address, i: number) => {
         if (res[i]) supplies[`${chain}:${mixedCaseChains.includes(chain) ? c : c.toLowerCase()}`] = res[i];
@@ -231,6 +241,7 @@ async function getEVMSupplies(chain: Chain, contracts: Address[]): Promise<{ [to
               chain,
               target,
               abi: "erc20:totalSupply",
+              block,
             });
             if (res) supplies[`${chain}:${mixedCaseChains.includes(chain) ? target : target.toLowerCase()}`] = res;
           })
@@ -250,13 +261,17 @@ export function filterForNotTokens(tokens: Address[], notTokens: Address[]): Add
   notTokens.map((item) => (map[item] = true));
   return tokens.filter((item) => !map[item]);
 }
-export async function fetchSupplies(chain: Chain, contracts: Address[]): Promise<{ [token: string]: number }> {
+export async function fetchSupplies(
+  chain: Chain,
+  contracts: Address[],
+  timestamp: number | undefined
+): Promise<{ [token: string]: number }> {
   try {
     const notTokens: string[] = []; //await fetchNotTokens(chain);
     const tokens = filterForNotTokens(contracts, notTokens);
-    if (chain == "solana") return await getSolanaTokenSupply(tokens);
-    if (chain == "sui") return await getSuiSupplies(tokens);
-    return await getEVMSupplies(chain, tokens);
+    if (chain == "solana") return await getSolanaTokenSupply(tokens, timestamp);
+    if (chain == "sui") return await getSuiSupplies(tokens, timestamp);
+    return await getEVMSupplies(chain, tokens, timestamp);
   } catch (e) {
     throw new Error(`multicalling token supplies failed for chain ${chain}`);
   }

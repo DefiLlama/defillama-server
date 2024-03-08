@@ -18,7 +18,7 @@ export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp
         return;
       }
 
-      const supplies = await fetchSupplies(chain, tokens);
+      const supplies = await fetchSupplies(chain, tokens, params.timestamp);
 
       const prices = await getPrices(Object.keys(supplies), timestamp);
 

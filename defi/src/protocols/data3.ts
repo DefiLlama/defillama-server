@@ -31385,7 +31385,7 @@ const data3: Protocol[] = [
     gecko_id: "segment",
     cmcId: null,
     category: "Lending",
-    chains: ["Binance", "opBNB"],
+    chains: ["Binance"],
     oraclesByChain: {
       bsc: ["Chainlink"],
     //  op_bnb: ["Binance Oracle"]

@@ -34799,14 +34799,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4259",
-    name: "ETCPOW",
+    name: "ETCMC DEX", // previous ETCPOW 
     address: "ethereumclassic:0x6c3B413C461c42a88160Ed1B1B31d6f7b02a1C83",
     symbol: "ETCPOW",
     url: "https://etc-mc.com",
     description:
       "ETCPOW is an ERC20 token on the Ethereum Classic network. It is designed to become the lifeblood of the ETCMC ecosystem, a community-driven initiative aimed at promoting decentralization and rewarding network participation. With a fixed supply of 1 billion tokens, ETCPOW is poised to become a cornerstone of the Ethereum Classic landscape.",
     chain: "EthereumClassic",
-    logo: `${baseIconsUrl}/etcpow.jpg`,
+    logo: `${baseIconsUrl}/etcmc-dex.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -16773,7 +16773,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3451",
-    name: "Astarter Launch",
+    name: "Astarter Launch ISPO",
     address: "cardano:-",
     symbol: "AA",
     url: "https://astarter.io/",
@@ -16784,7 +16784,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Launchpad",
+    category: "Farm",
     chains: ["Cardano"],
     oracles: [],
     forkedFrom: [],

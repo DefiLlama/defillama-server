@@ -35046,7 +35046,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Neon"],
-    module: "moraswap/index.js",
+    module: "moraswap-v3/index.js",
     twitter: "moraswap_amm",
     oracles: [],
     forkedFrom: ["Uniswap V3"],

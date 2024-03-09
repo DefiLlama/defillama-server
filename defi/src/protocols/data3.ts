@@ -35025,6 +35025,7 @@ const data3: Protocol[] = [
     forkedFrom: [], 
     audit_links: ["https://docs.clone.so/links-and-resources/security-audits"],
     github: ["Clone-Protocol"],
+    treasury: "clone.js",
     listedAt: 1709943113
   },
 ]

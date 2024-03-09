@@ -34885,7 +34885,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Yield",
     chains: ["Blast"],
     module: "hyperlock/index.js",
     twitter: "hyperlockfi",

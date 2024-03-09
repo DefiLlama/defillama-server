@@ -35003,6 +35003,30 @@ const data3: Protocol[] = [
     forkedFrom: [], 
     listedAt: 1709918594
   },
+  {
+    id: "4268",
+    name: "Clone Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://clone.so/",
+    description:
+      "Bringing non-native token liquidity to Solana through cloned assets",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/clone-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Solana"],
+    module: "clone/index.js",
+    twitter: "CloneProtocol",
+    oracles: ["Pyth"], 
+    forkedFrom: [], 
+    audit_links: ["https://docs.clone.so/links-and-resources/security-audits"],
+    github: ["Clone-Protocol"],
+    listedAt: 1709943113
+  },
 ]
 
 export default data3

@@ -34944,7 +34944,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://superstate.co",
     description:
-      "The Superstate Short Duration U.S. Government Securities Fund (USTB) is a private fund tokenized on the Ethereum blockchain, offered exclusively to U.S. Qualified Purchasers",
+      "The Superstate Short Duration U.S. Government Securities Fund (USTB) is a private fund tokenized on the Ethereum blockchain (ERC-20), offered exclusively to Qualified Purchasers. USTB invests in short-duration U.S. Treasury Bills and U.S. Government Agency securities (“Government Securities”) and provides yield targeting returns in line with the federal funds rate.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/superstate.jpg`,
     audits: "0",

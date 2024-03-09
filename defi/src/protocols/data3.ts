@@ -31032,7 +31032,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Injective"],
-    oracles: [],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/6111
     forkedFrom: [],
     module: "neptune-finance/index.js",
     twitter: "neptune_finance",
@@ -33085,7 +33085,7 @@ const data3: Protocol[] = [
     module: "bakerfi/index.js",
     twitter: "bakerfi_",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], //github.com/DefiLlama/defillama-server/pull/6111
     github: ["baker-fi"],
     listedAt: 1709045112
   },
@@ -33833,7 +33833,10 @@ const data3: Protocol[] = [
     module: "synfutures-v3/index.js",
     twitter: "SynFuturesDefi",
     forkedFrom: [],
-    oracles: ["Chainlink", "TWAP"], 
+    oraclesByChain: {
+      arbitrum: ["Chainlink"],  //github.com/DefiLlama/defillama-server/pull/6111
+      blast: ["Pyth"]  //github.com/DefiLlama/defillama-server/pull/6111
+    },
     audit_links: ["https://www.synfutures.com/Quantstamp-Audit-Report-SynFuturesV3.pdf"],
     parentProtocol: "parent#synfutures",
     listedAt: 1709324603
@@ -33968,7 +33971,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/BlastFutures/Blast-Futures-Exchange/blob/main/bfx_audit_report_hats.pdf"],
     github: ["BlastFutures"],
-    oracles: [],
+    oracles: ["Pyth"],  //github.com/DefiLlama/defillama-server/pull/6111
     listedAt: 1709403349
   },
   {

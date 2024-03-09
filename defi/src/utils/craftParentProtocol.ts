@@ -139,13 +139,8 @@ export async function craftParentProtocolInternal({
         const tokensExcludedFromParent = curr.tokensExcludedFromParent ?? [];
         const isTvlDataHourly = isHourlyTvl(curr.tvl);
 
-        // TOTAL TVL OF EACH CHAIN
-        for (const name in curr.currentChainTvls) {
-          acc.currentChainTvls = {
-            ...acc.currentChainTvls,
-            [name]: (acc.currentChainTvls[name] || 0) + curr.currentChainTvls[name],
-          };
-        }
+        // store tvl to exclude by chain
+        const tvlToExcludeByChain: { [chain: string]: number } = {};
 
         // TVL, NO.OF TOKENS, TOKENS IN USD OF EACH CHAIN BY DATE
         for (const chain in curr.chainTvls) {
@@ -205,7 +200,8 @@ export async function craftParentProtocolInternal({
               }
             }
           });
-          console.log("TVL TO EXCLUDE", Object.entries(tvlToExcludeByDate).slice(-5));
+          tvlToExcludeByChain[chain] = Object.values(tvlToExcludeByDate).slice(-1)?.[0] ?? 0;
+
           // TVLS OF EACH CHAIN BY DATE
           curr.chainTvls[chain].tvl.forEach(({ date, totalLiquidityUSD }, index) => {
             if (!acc.chainTvls[chain]) {
@@ -295,6 +291,14 @@ export async function craftParentProtocolInternal({
               }
             }
           });
+        }
+
+        // TOTAL TVL OF EACH CHAIN
+        for (const name in curr.currentChainTvls) {
+          acc.currentChainTvls = {
+            ...acc.currentChainTvls,
+            [name]: (acc.currentChainTvls[name] || 0) + curr.currentChainTvls[name] - (tvlToExcludeByChain[name] ?? 0),
+          };
         }
 
         if (!skipAggregatedTvl) {

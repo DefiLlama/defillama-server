@@ -34927,7 +34927,7 @@ const data3: Protocol[] = [
       "Muito Finance is a yield aggregator on Mantle that provides a variety of strategies to users of all risk preferences. The automation of claiming and re-investing generates far greater return than what ordinary users can obtain manually.",
     chain: "Mantle",
     logo: `${baseIconsUrl}/muito-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

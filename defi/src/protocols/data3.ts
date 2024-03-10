@@ -20461,7 +20461,8 @@ const data3: Protocol[] = [
     module: "scrollswap/index.js",
     twitter: "Scroll_1Dex",
     forkedFrom: ["Uniswap V2"],
-    listedAt: 1697018504
+    listedAt: 1697018504,
+    deadUrl: true
   },
   {
     id: "3614",

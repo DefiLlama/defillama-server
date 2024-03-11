@@ -762,6 +762,15 @@ functions:
       - http:
           path: userData/{type}/{protocolId}
           method: get
+  totalProtocolUsers:
+    handler: src/getTotalProtocolUsersData.default
+    timeout: 90
+    environment:
+      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+    events:
+      - http:
+          path: totalProtocolUsers
+          method: get
   storeChainNftVolume:
     handler: src/storeChainNftVolume.default
     timeout: 900

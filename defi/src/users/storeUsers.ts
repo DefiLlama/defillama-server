@@ -126,3 +126,41 @@ export function getLatestProtocolUsersData(type: "users" | "newusers" | "txs" | 
     gasUsd: () => getConnection()`SELECT endTime, sum(gasUsd) FROM hourlyGas WHERE endTime > ${minEnd} AND protocolId = ${protocolId} group by endTime`,
   }[type]()
 }
+
+export function getTotalProtocolUsersData() {
+  const sql = getConnection()
+  return sql`
+WITH USAGE AS (
+    SELECT
+        users.protocolId,
+        SUM(txs.txs) AS total_txs,
+        SUM(users.users) AS total_users
+    FROM
+        (
+            SELECT
+                protocolId,
+                SUM(users) AS users
+            FROM
+                dailyNewUsers
+            GROUP BY
+                protocolId
+        ) AS users
+        LEFT JOIN (
+            SELECT
+                protocolId,
+                SUM(txs) AS txs
+            FROM
+                dailyTxs
+            GROUP BY
+                protocolId
+        ) AS txs ON users.protocolId = txs.protocolId
+    GROUP BY
+        users.protocolId
+)
+SELECT
+    *,
+    total_txs / NULLIF(total_users, 0) AS txs_over_users
+FROM
+    USAGE
+  `
+}

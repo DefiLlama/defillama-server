@@ -2000,6 +2000,11 @@
       "symbol": "WBTC",
       "to": "coingecko#merlin-chain-bridged-wrapped-btc-merlin"
     },
+    "0xF6D226f9Dc15d9bB51182815b320D3fBE324e1bA": {
+      "decimals": "18",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
     "0x480e158395cc5b41e5584347c495584ca2caf78d": {
       "decimals": "18",
       "symbol": "VOYA",

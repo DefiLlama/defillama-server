@@ -35172,6 +35172,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1710198832
   },
+  {
+    id: "4275",
+    name: "illumineX",
+    address: null,
+    symbol: "-",
+    url: "https://illuminex.xyz/swap",
+    description:
+      "illumineX is a decentralised cross-chain layer asset bridge offering private swaps and transfers between assets, utilising Oasis Sapphire technology to provide compliant confidential and non-custodial exchange.",
+    chain: "Sapphire",
+    logo: `${baseIconsUrl}/illuminex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Sapphire"],
+    module: "illuminex/index.js",
+    twitter: "illuminexswap",
+    oracles: [], 
+    forkedFrom: [],
+    audit_links: ["https://dedaub.com/audits/illuminex/illuminex-jan-19-2024/"],
+    listedAt: 1710199785
+  },
 ]
 
 export default data3

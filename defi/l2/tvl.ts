@@ -8,22 +8,32 @@ import { gasTokens, ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { verifyChanges } from "./test";
+import { flagChainErrors, verifyChanges } from "./test";
 import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 
-export default async function main() {
+export default async function main(timestamp?: number) {
   await setEnvSecrets();
-  const { data: canonical } = await fetchTvls({ isCanonical: true });
+  const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp });
   let [{ tvlData: native, mcapData }, incoming, { data: protocols }] = await Promise.all([
     fetchMinted({
       chains: Object.keys(canonical),
+      timestamp,
     }),
-    fetchIncoming({ canonical }),
-    fetchTvls({ isCanonical: true, isProtocol: true }),
+    fetchIncoming({ canonical, timestamp }),
+    fetchTvls({ isCanonical: true, isProtocol: true, timestamp }),
   ]);
-  let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({ mcapData, native });
+  let { data: outgoing, native: adjustedNativeBalances } = await fetchTvls({ mcapData, native, timestamp });
+
   if (!adjustedNativeBalances) throw new Error(`Adjusting for mcaps has failed, debug manually`);
   native = adjustedNativeBalances;
+
+  Object.keys(canonical).map((c: string) => {
+    if (c in incoming && c in outgoing && c in native) return;
+    delete outgoing[c];
+    delete incoming[c];
+    delete native[c];
+  });
+
   Object.keys(protocols).map((pid: string) => {
     canonical[pid] = protocols[pid];
   });
@@ -36,7 +46,8 @@ export default async function main() {
     ownTokens: {},
   });
 
-  await verifyChanges(chains);
+  // await verifyChanges(chains);
+  flagChainErrors(chains);
 
   return chains;
 }

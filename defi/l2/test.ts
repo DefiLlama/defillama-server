@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import { FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { sendMessage } from "../src/utils/discord";
+import { allChainKeys } from "./constants";
 
 export async function verifyChanges(chains: FinalData) {
   const res = await fetch(`https://api.llama.fi/chainAssets`).then((r) => r.json());
@@ -26,5 +27,18 @@ export async function verifyChanges(chains: FinalData) {
   if (!message.length) return;
 
   // await sendMessage(message, process.env.CHAIN_ASSET_WEBHOOK!);
+  throw new Error(message);
+}
+export function flagChainErrors(chains: FinalData) {
+  let message: string = ``;
+  allChainKeys.map((c: string) => {
+    if (c in chains) return;
+    message += `${c}, `;
+  });
+
+  if (!message.length) return;
+
+  message = message.slice(0, -1) + `adapters have failed`;
+
   throw new Error(message);
 }

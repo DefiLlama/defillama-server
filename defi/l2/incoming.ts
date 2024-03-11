@@ -11,33 +11,37 @@ export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp
   const data: TokenTvlData = {};
   await Promise.all(
     Object.keys(canonicalTvls).map(async (chain: Chain) => {
-      const tokens: string[] = await fetchBridgeTokenList(chain);
+      try {
+        const tokens: string[] = await fetchBridgeTokenList(chain);
 
-      if (!tokens.length) {
-        data[chain] = {};
-        return;
-      }
+        if (!tokens.length) {
+          data[chain] = {};
+          return;
+        }
 
-      const supplies = await fetchSupplies(chain, tokens);
+        const supplies = await fetchSupplies(chain, tokens, params.timestamp);
 
-      const prices = await getPrices(Object.keys(supplies), timestamp);
+        const prices = await getPrices(Object.keys(supplies), timestamp);
 
-      data[chain] = findDollarValues();
+        data[chain] = findDollarValues();
 
-      function findDollarValues() {
-        const dollarValues: DollarValues = {};
-        Object.keys(supplies).map((t: string) => {
-          const priceInfo = prices[t];
-          const supply = supplies[t];
-          if (!priceInfo || !supply) return;
-          if (priceInfo.symbol in canonicalTvls[chain]) return;
-          if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
-          const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
-          const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-          dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
-        });
+        function findDollarValues() {
+          const dollarValues: DollarValues = {};
+          Object.keys(supplies).map((t: string) => {
+            const priceInfo = prices[t];
+            const supply = supplies[t];
+            if (!priceInfo || !supply) return;
+            if (priceInfo.symbol in canonicalTvls[chain]) return;
+            if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
+            const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
+            const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
+            dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
+          });
 
-        return dollarValues;
+          return dollarValues;
+        }
+      } catch (e) {
+        console.error(`fetchIncoming() failed for ${chain} with ${e}`);
       }
     })
   );

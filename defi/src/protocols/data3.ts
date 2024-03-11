@@ -10767,7 +10767,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3181",
-    name: "Sui",
+    name: "Sui Foundation",
     address: null,
     symbol: "-",
     url: "https://sui.io",
@@ -11327,7 +11327,7 @@ const data3: Protocol[] = [
     address: "sui:0xce7ff77a83ea0cb6fd39bd8748e2ec89a3f41e8efdc3f4eb123e0ca37b184db2::bkt::BKT",
     symbol: "BKT",
     url: "https://bucketprotocol.io",
-    description: `Bucket Protocol is a Collateralized Debt Position (CDP) protocol within the Sui ecosystem, supporting multiple assets for collateralization while extending stablecoin loans in $BUCK at a zero-interest rate. Its real-time liquidation mechanism ensures both security and capital efficiency, and the inbuilt flash loan services facilitate the price stability of the stablecoin BUCK.`,
+    description: `Bucket Protocol is the leading Collateralized Debt Position (CDP) protocol within the Sui ecosystem, supporting multiple assets for collateralization while extending stablecoin loans in $BUCK at a fixed low-cost. Its real-time liquidation mechanism ensures both security and capital efficiency, and the inbuilt flash loan services facilitate the price stability of the stablecoin BUCK.`,
     chain: "Sui",
     logo: `${baseIconsUrl}/bucket-protocol.jpg`,
     audits: "2",
@@ -12119,7 +12119,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3242",
-    name: "Moraswap",
+    name: "Moraswap V2",
     address: null,
     symbol: "-",
     url: "https://moraswap.com/exchange/swap#",
@@ -12137,8 +12137,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/moraswap/v2-periphery/blob/master/audits/masterchef-by-hashex.pdf"],
+    parentProtocol: "parent#moraswap",
     listedAt: 1689658469,
-    github: ["moraswap"]
   },
   {
     id: "3243",
@@ -14410,6 +14410,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/f(x)_Protocol_Report_v1.0_2023_06_14.pdf"],
+    stablecoins: ["fractional-eth"],
     listedAt: 1691149929
   },
   {
@@ -16773,7 +16774,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3451",
-    name: "Astarter Launch",
+    name: "Astarter Launch ISPO",
     address: "cardano:-",
     symbol: "AA",
     url: "https://astarter.io/",
@@ -16784,7 +16785,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Launchpad",
+    category: "Farm",
     chains: ["Cardano"],
     oracles: [],
     forkedFrom: [],
@@ -20461,7 +20462,8 @@ const data3: Protocol[] = [
     module: "scrollswap/index.js",
     twitter: "Scroll_1Dex",
     forkedFrom: ["Uniswap V2"],
-    listedAt: 1697018504
+    listedAt: 1697018504,
+    deadUrl: true
   },
   {
     id: "3614",
@@ -31032,7 +31034,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Injective"],
-    oracles: [],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/6111
     forkedFrom: [],
     module: "neptune-finance/index.js",
     twitter: "neptune_finance",
@@ -33085,7 +33087,7 @@ const data3: Protocol[] = [
     module: "bakerfi/index.js",
     twitter: "bakerfi_",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], //github.com/DefiLlama/defillama-server/pull/6111
     github: ["baker-fi"],
     listedAt: 1709045112
   },
@@ -33607,6 +33609,7 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"], // https://twitter.com/chainlink/status/1707711868570140778
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Cygnus-v1.0.pdf"],
     github: ["arks-labs"],
+    stablecoins: ["cygnus-finance-global-usd"],
     listedAt: 1709294898
   },
   {
@@ -33833,7 +33836,10 @@ const data3: Protocol[] = [
     module: "synfutures-v3/index.js",
     twitter: "SynFuturesDefi",
     forkedFrom: [],
-    oracles: ["Chainlink", "TWAP"],
+    oraclesByChain: {
+      arbitrum: ["Chainlink"],  //github.com/DefiLlama/defillama-server/pull/6111
+      blast: ["Pyth"]  //github.com/DefiLlama/defillama-server/pull/6111
+    },
     audit_links: ["https://www.synfutures.com/Quantstamp-Audit-Report-SynFuturesV3.pdf"],
     parentProtocol: "parent#synfutures",
     listedAt: 1709324603
@@ -33968,7 +33974,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/BlastFutures/Blast-Futures-Exchange/blob/main/bfx_audit_report_hats.pdf"],
     github: ["BlastFutures"],
-    oracles: [],
+    oracles: ["Pyth"],  //github.com/DefiLlama/defillama-server/pull/6111
     listedAt: 1709403349
   },
   {
@@ -34882,7 +34888,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Yield",
     chains: ["Blast"],
     module: "hyperlock/index.js",
     twitter: "hyperlockfi",
@@ -34924,7 +34930,7 @@ const data3: Protocol[] = [
       "Muito Finance is a yield aggregator on Mantle that provides a variety of strategies to users of all risk preferences. The automation of claiming and re-investing generates far greater return than what ordinary users can obtain manually.",
     chain: "Mantle",
     logo: `${baseIconsUrl}/muito-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -34944,7 +34950,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://superstate.co",
     description:
-      "The Superstate Short Duration U.S. Government Securities Fund (USTB) is a private fund tokenized on the Ethereum blockchain, offered exclusively to U.S. Qualified Purchasers",
+      "The Superstate Short Duration U.S. Government Securities Fund (USTB) is a private fund tokenized on the Ethereum blockchain (ERC-20), offered exclusively to Qualified Purchasers. USTB invests in short-duration U.S. Treasury Bills and U.S. Government Agency securities (“Government Securities”) and provides yield targeting returns in line with the federal funds rate.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/superstate.jpg`,
     audits: "0",
@@ -34959,6 +34965,143 @@ const data3: Protocol[] = [
     forkedFrom: [], 
     github: ["superstateinc"],
     listedAt: 1709914041
+  },
+  {
+    id: "4266",
+    name: "Backpack",
+    address: null,
+    symbol: "-",
+    url: "https://backpack.exchange",
+    description:
+      "Next-level crypto wallet and exchange. ",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/backpack.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Solana"],
+    module: "backpack/index.js",
+    twitter: "Backpack",
+    oracles: [], 
+    forkedFrom: [], 
+  },
+  {
+    id: "4267",
+    name: "Miner PEPE",
+    address: "bsc:0x6d306C2C9CD931160763D99376a68C14D33DC954",
+    symbol: "mPEPE",
+    url: "https://minerpepe.com",
+    description:
+      "MPEPE stands out as the initial Pepe coin for mining on Binance Smart Chain. It comes with its own decentralized app and Mobile App, offering miners a 12% daily return in BNB and MPEPE tokens. Additionally, Mpepe's native token boosts the Total Value Locked (TVL) of miners by 2% with each transaction (whether buying or selling), directly benefiting the miner's contract. Only those who hold $MPEPE/Cake/BNB tokens can kickstart mining activities in the available miner pools and receive daily rewards for lifetime.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/miner-pepe.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Binance"],
+    module: "minerPepe/index.js",
+    twitter: "MinerPepe_Coin",
+    oracles: [], 
+    forkedFrom: [], 
+    listedAt: 1709918594
+  },
+  {
+    id: "4268",
+    name: "Clone Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://clone.so/",
+    description:
+      "Bringing non-native token liquidity to Solana through cloned assets",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/clone-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Solana"],
+    module: "clone/index.js",
+    twitter: "CloneProtocol",
+    oracles: ["Pyth"], 
+    forkedFrom: [], 
+    audit_links: ["https://docs.clone.so/links-and-resources/security-audits"],
+    github: ["Clone-Protocol"],
+    treasury: "clone.js",
+    listedAt: 1709943113
+  },
+  {
+    id: "4269",
+    name: "Moraswap V3",
+    address: null,
+    symbol: "-",
+    url: "https://v3-beta.moraswap.com/",
+    description: `The leading DeFi shop servicing all your needs on Neon: Trade, Earn and Win on the grounds of transparency, safety and innovation`,
+    chain: "Neon",
+    logo: `${baseIconsUrl}/moraswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Neon"],
+    module: "moraswap-v3/index.js",
+    twitter: "moraswap_amm",
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    parentProtocol: "parent#moraswap",
+    listedAt: 1710005129,
+  },
+  {
+    id: "4270",
+    name: "Gasline Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://gasline.markets",
+    description:
+      "First Baseline fork on Blast and BNB Chain made by Gas404",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/gasline-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Blast","Binance"],
+    module: "gasline/index.js",
+    twitter: "GaslineMarkets",
+    oracles: [], 
+    github: ["zerotwodao"],
+    forkedFrom: ["Baseline Protocol"],
+    listedAt: 1710005544
+  },
+  {
+    id: "4271",
+    name: "PerfectSwap",
+    address: "arbitrum:0x05ACc9F737AEdD1E8C0F44bCF6961b73766AA43e",
+    symbol: "PRFCT",
+    url: "https://perfectswap.io/",
+    description:
+      "Autonomous decentralized exchange that focuses on optimizing the acquisition of healthy Total Value Locked (TVL) in a capital-efficient manner",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/perfectswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "perfectswap/index.js",
+    twitter: "perfectswapio",
+    oracles: [], 
+    github: ["perfect-swap"],
+    forkedFrom: [],
+    audit_links: ["https://github.com/solidproof/projects/tree/main/2024/PerfectSwap"],
+    listedAt: 1710125372
   },
 ]
 

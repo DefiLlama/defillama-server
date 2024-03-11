@@ -51,10 +51,9 @@ export function selectChainFromItem(item: any, normalizedChain: string) {
 let raisesPromise: Promise<any> | undefined = undefined;
 
 export async function getRaises() {
-  if (!raisesPromise) raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json())
-  return raisesPromise
+  if (!raisesPromise) raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json());
+  return raisesPromise;
 }
-
 
 export const protocolMcap = async (geckoId?: string | null) => {
   if (!geckoId) return null;
@@ -85,7 +84,7 @@ export async function buildCoreData({
 }) {
   const module = await importAdapter(protocolData);
   const misrepresentedTokens = module.misrepresentedTokens === true;
-  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, ] = await Promise.all([
+  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
     getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
     misrepresentedTokens
       ? ([] as any[])
@@ -169,7 +168,7 @@ export default async function craftProtocol({
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
 }) {
-  const lastTimestamp = 0
+  const lastTimestamp = 0;
 
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
     fetchFrom((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id), lastTimestamp),
@@ -201,10 +200,10 @@ export default async function craftProtocol({
   }
 
   let response: IProtocolResponse = {
-    tvl:[],
+    tvl: [],
     chainTvls: {},
-    tokensInUsd:[],
-    tokens:[],
+    tokensInUsd: [],
+    tokens: [],
     ...protocolData,
     chains: [],
     currentChainTvls: {},
@@ -265,13 +264,14 @@ export default async function craftProtocol({
   if (response.chainTvls[singleChain] === undefined && response.chains.length === 0) {
     response.chains.push(singleChain);
     response.chainTvls[singleChain] = {
-      tvl: response.tvl,
+      tvl: response.tvl ?? [],
       tokensInUsd: response.tokensInUsd,
       tokens: response.tokens,
     };
   }
 
   if (
+    response.tvl &&
     response.chainTvls[singleChain] !== undefined &&
     response.chainTvls[singleChain].tvl.length < response.tvl.length
   ) {

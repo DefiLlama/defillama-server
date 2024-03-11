@@ -2678,10 +2678,10 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM"],
     parent: {
       chain: "Injective",
-      types: ["L2", "gas"]
+      types: ["gas"]
     },
     chainId: 2525,
     twitter: "injective",

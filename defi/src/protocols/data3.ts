@@ -11327,7 +11327,7 @@ const data3: Protocol[] = [
     address: "sui:0xce7ff77a83ea0cb6fd39bd8748e2ec89a3f41e8efdc3f4eb123e0ca37b184db2::bkt::BKT",
     symbol: "BKT",
     url: "https://bucketprotocol.io",
-    description: `Bucket Protocol is a Collateralized Debt Position (CDP) protocol within the Sui ecosystem, supporting multiple assets for collateralization while extending stablecoin loans in $BUCK at a zero-interest rate. Its real-time liquidation mechanism ensures both security and capital efficiency, and the inbuilt flash loan services facilitate the price stability of the stablecoin BUCK.`,
+    description: `Bucket Protocol is the leading Collateralized Debt Position (CDP) protocol within the Sui ecosystem, supporting multiple assets for collateralization while extending stablecoin loans in $BUCK at a fixed low-cost. Its real-time liquidation mechanism ensures both security and capital efficiency, and the inbuilt flash loan services facilitate the price stability of the stablecoin BUCK.`,
     chain: "Sui",
     logo: `${baseIconsUrl}/bucket-protocol.jpg`,
     audits: "2",

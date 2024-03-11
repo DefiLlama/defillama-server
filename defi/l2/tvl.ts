@@ -28,7 +28,7 @@ export default async function main(timestamp?: number) {
   native = adjustedNativeBalances;
 
   Object.keys(canonical).map((c: string) => {
-    if (c in incoming && c in outgoing && c in native) return;
+    if (c in incoming && c in native) return;
     delete outgoing[c];
     delete incoming[c];
     delete native[c];

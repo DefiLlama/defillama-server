@@ -19,9 +19,16 @@ export async function fetchIncoming(params: { canonical: TokenTvlData; timestamp
           return;
         }
 
-        const supplies = await fetchSupplies(chain, tokens, params.timestamp);
+        const prices = await getPrices(
+          tokens.map((t: string) => `${chain}:${t}`),
+          timestamp
+        );
 
-        const prices = await getPrices(Object.keys(supplies), timestamp);
+        const supplies = await fetchSupplies(
+          chain,
+          Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
+          params.timestamp
+        );
 
         data[chain] = findDollarValues();
 

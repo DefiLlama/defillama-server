@@ -2687,6 +2687,19 @@ export const chainCoingeckoIds = {
     twitter: "injective",
     url: "https://inevm.com/"
   },
+  "Sapphire": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Oasis",
+      types: ["gas"]
+    },
+    chainId: 23294,
+    twitter: "OasisProtocol",
+    url: "https://oasisprotocol.org/sapphire"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3256,6 +3269,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Naka"
     case "inevm":
       return "inEVM"
+    case "sapphire":
+      return "Sapphire"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -2685,7 +2685,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 2525,
     twitter: "injective",
-    url: "https://injective.com"
+    url: "https://inevm.com/"
   },
 } as unknown as ChainCoinGekcoIds
 

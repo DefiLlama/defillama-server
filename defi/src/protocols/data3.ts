@@ -35113,7 +35113,7 @@ const data3: Protocol[] = [
       "ArthSwap is a one-stop Defi protocol that aspires to be the main DEX on the Astar Networks.",
     chain: "Astar",
     logo: `${baseIconsUrl}/arthswap-v3.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -35123,7 +35123,7 @@ const data3: Protocol[] = [
     twitter: "arthswap",
     oracles: [], 
     forkedFrom: ["Uniswap V3"],
-    audit_links: ["https://certificate.quantstamp.com/full/arth-swap"],
+    parentProtocol: "parent#arthswap",
     listedAt: 1710174743
   },
 ]

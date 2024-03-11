@@ -15,8 +15,9 @@ export default async function fetchBridgeUsdTokenTvls(timestamp: number, searchW
   );
 
   ids.map((id: string, i: number) => {
-    if (usdTokenBalances[i].SK == null) throw new Error(`missing hourlyUsdTokensTvl for id ${id}`);
-    allProtocols[id] = usdTokenBalances[i];
+    if (usdTokenBalances[i].SK == null) {
+      console.error(`missing hourlyUsdTokensTvl for id ${id}`);
+    } else allProtocols[id] = usdTokenBalances[i];
   });
 }
 
@@ -31,7 +32,7 @@ export async function fetchTvls(
   } = {}
 ): Promise<{ data: TokenTvlData; native?: TokenTvlData }> {
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
-  const searchWidth: number = params.searchWidth ?? 10800; // 3hr either side
+  const searchWidth: number = params.searchWidth ?? (params.timestamp ? 43200 : 10800); // 12,3hr either side
   const isCanonical: boolean = params.isCanonical ?? false;
   const isProtocol: boolean = params.isProtocol ?? false;
   await fetchBridgeUsdTokenTvls(timestamp, searchWidth);

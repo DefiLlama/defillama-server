@@ -273,7 +273,7 @@ export async function fetchSupplies(
     if (chain == "sui") return await getSuiSupplies(tokens, timestamp);
     return await getEVMSupplies(chain, tokens, timestamp);
   } catch (e) {
-    throw new Error(`multicalling token supplies failed for chain ${chain}`);
+    throw new Error(`multicalling token supplies failed for chain ${chain} with ${e}`);
   }
 }
 export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
@@ -293,7 +293,7 @@ export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
 
     return [...filteredTokens, ...additionalTokens];
   } catch (e) {
-    throw new Error(`${chain} bridge adapter failed`);
+    throw new Error(`${chain} bridge adapter failed with ${e}`);
   }
 }
 export function sortBySize() {

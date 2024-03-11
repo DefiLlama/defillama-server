@@ -268,7 +268,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       if (adaptor.isExpensiveAdapter && !isTimestampProvided) {
         const date = new Date(currentTimestamp * 1000)
         const hours = date.getUTCHours()
-        if (hours < 22 && hours > 1) {
+        if (hours > 21 || hours < 2) {
           console.info(`[${adaptorType}] - ${index + 1}/${adaptorsList.length} - ${protocol.module} - skipping because it's an expensive adapter and it's not the right time`)
           return
         }

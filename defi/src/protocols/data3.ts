@@ -35150,6 +35150,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.artemisfinance.io/audit"],
     listedAt: 1710194258
   },
+  {
+    id: "4274",
+    name: "Suilend",
+    address: null,
+    symbol: "-",
+    url: "https://www.suilend.fi",
+    description:
+      "Lending and borrowing platform on Sui. Sister project to solendprotocol.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/suilend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Sui"],
+    module: "suilend/index.js",
+    twitter: "suilendprotocol",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1710198832
+  },
 ]
 
 export default data3

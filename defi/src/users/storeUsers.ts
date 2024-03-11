@@ -133,8 +133,8 @@ export function getTotalProtocolUsersData() {
 WITH USAGE AS (
     SELECT
         users.protocolId,
-        SUM(txs.txs) AS total_txs,
-        SUM(users.users) AS total_users
+        txs.txs AS total_txs,
+        users.users AS total_users
     FROM
         (
             SELECT
@@ -154,12 +154,10 @@ WITH USAGE AS (
             GROUP BY
                 protocolId
         ) AS txs ON users.protocolId = txs.protocolId
-    GROUP BY
-        users.protocolId
 )
 SELECT
     *,
-    total_txs / NULLIF(total_users, 0) AS txs_over_users
+    total_txs / (NULLIF(total_users, 0) * 1.0) AS txs_over_users
 FROM
     USAGE
   `

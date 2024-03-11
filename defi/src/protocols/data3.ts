@@ -35101,6 +35101,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/solidproof/projects/tree/main/2024/PerfectSwap"],
     listedAt: 1710125372
   },
+  {
+    id: "4272",
+    name: "Overnight USDC+",
+    address: null,
+    symbol: "USDC+",
+    url: "https://app.overnight.fi/market/usdc",
+    description: "Crypto-to-stable LP positions with hedge against crypto price fluctuations",
+    chain: "Base",
+    logo: `${baseIconsUrl}/overnight-usdc+.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "usdc-plus-overnight",
+    cmcId: null,
+    category: "CDP",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "overnight-usdcPlus/index.js",
+    twitter: "overnight_fi",
+    parentProtocol: "parent#overnight-finance",
+    listedAt: 1710140861
+  },
 ]
 
 export default data3

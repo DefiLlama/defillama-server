@@ -35103,6 +35103,29 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/solidproof/projects/tree/main/2024/PerfectSwap"],
     listedAt: 1710125372
   },
+  {
+    id: "4272",
+    name: "ArthSwap V3",
+    address: "astar:0xde2578edec4669ba7f41c5d5d2386300bcea4678",
+    symbol: "ARSW",
+    url: "https://app.arthswap.org",
+    description:
+      "ArthSwap is a one-stop Defi protocol that aspires to be the main DEX on the Astar Networks.",
+    chain: "Astar",
+    logo: `${baseIconsUrl}/arthswap-v3.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Astar"],
+    module: "arthswap-v3/index.js",
+    twitter: "arthswap",
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    audit_links: ["https://certificate.quantstamp.com/full/arth-swap"],
+    listedAt: 1710174743
+  },
 ]
 
 export default data3

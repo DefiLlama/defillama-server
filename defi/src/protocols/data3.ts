@@ -14410,6 +14410,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/f(x)_Protocol_Report_v1.0_2023_06_14.pdf"],
+    stablecoins: ["fractional-eth"],
     listedAt: 1691149929
   },
   {
@@ -33608,6 +33609,7 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"], // https://twitter.com/chainlink/status/1707711868570140778
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Cygnus-v1.0.pdf"],
     github: ["arks-labs"],
+    stablecoins: ["cygnus-finance-global-usd"],
     listedAt: 1709294898
   },
   {

@@ -49,6 +49,12 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "344": "zkswap",
 };
 
+export const allChainKeys: string[] = [
+  ...chainsWithoutCanonicalBridges,
+  ...Object.values(canonicalBridgeIds),
+  ...Object.values(protocolBridgeIds),
+];
+
 export const tokenFlowCategories: (keyof ChainData)[] = ["outgoing", "canonical", "incoming", "native"];
 
 export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } = {

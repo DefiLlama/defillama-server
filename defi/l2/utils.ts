@@ -227,7 +227,7 @@ async function getEVMSupplies(
         })),
         abi: "erc20:totalSupply",
         permitFailure: true,
-        block,
+        block: block.block,
       });
       contracts.slice(i, i + step).map((c: Address, i: number) => {
         if (res[i]) supplies[`${chain}:${mixedCaseChains.includes(chain) ? c : c.toLowerCase()}`] = res[i];

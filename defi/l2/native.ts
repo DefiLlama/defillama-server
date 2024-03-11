@@ -36,8 +36,17 @@ export async function fetchMinted(params: {
 
         if (chain == "cardano") storedTokens = await fetchAdaTokens();
         // do these in order to lighten rpc, rest load
-        const supplies = await fetchSupplies(chain, storedTokens, params.timestamp);
-        const prices = await getPrices(Object.keys(supplies), timestamp);
+        const prices = await getPrices(
+          storedTokens.map((t: string) => `${chain}:${t}`),
+          timestamp
+        );
+
+        const supplies = await fetchSupplies(
+          chain,
+          Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
+          params.timestamp
+        );
+
         const mcaps = await getMcaps(Object.keys(prices), timestamp);
 
         function findDollarValues() {

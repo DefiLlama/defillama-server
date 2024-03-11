@@ -173,11 +173,11 @@ export async function craftParentProtocolInternal({
                   acc.chainTvls[chain].tokensInUsd[prevDate] = {};
                 }
                 for (const token in tokens) {
-                  if (!tokensExcludedFromParent.includes(token)) {
-                    acc.chainTvls[chain].tokensInUsd[prevDate][token] =
-                      (acc.chainTvls[chain].tokensInUsd[prevDate][token] || 0) +
-                      ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
-                  } else {
+                  acc.chainTvls[chain].tokensInUsd[prevDate][token] =
+                    (acc.chainTvls[chain].tokensInUsd[prevDate][token] || 0) +
+                    ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
+
+                  if (tokensExcludedFromParent.includes(token)) {
                     // store tvl to exclude by date
                     tvlToExcludeByDate[prevDate] =
                       (tvlToExcludeByDate[prevDate] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
@@ -191,10 +191,10 @@ export async function craftParentProtocolInternal({
             }
 
             for (const token in tokens) {
-              if (!tokensExcludedFromParent.includes(token)) {
-                acc.chainTvls[chain].tokensInUsd[nearestDate][token] =
-                  (acc.chainTvls[chain].tokensInUsd[nearestDate][token] || 0) + tokens[token];
-              } else {
+              acc.chainTvls[chain].tokensInUsd[nearestDate][token] =
+                (acc.chainTvls[chain].tokensInUsd[nearestDate][token] || 0) + tokens[token];
+
+              if (tokensExcludedFromParent.includes(token)) {
                 // store tvl to exclude by date
                 tvlToExcludeByDate[nearestDate] = (tvlToExcludeByDate[nearestDate] || 0) + tokens[token];
               }
@@ -271,11 +271,9 @@ export async function craftParentProtocolInternal({
                   acc.chainTvls[chain].tokens[prevDate] = {};
                 }
                 for (const token in tokens) {
-                  if (!tokensExcludedFromParent.includes(token)) {
-                    acc.chainTvls[chain].tokens[prevDate][token] =
-                      (acc.chainTvls[chain].tokens[prevDate][token] || 0) +
-                      ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
-                  }
+                  acc.chainTvls[chain].tokens[prevDate][token] =
+                    (acc.chainTvls[chain].tokens[prevDate][token] || 0) +
+                    ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
                 }
               }
             }
@@ -285,10 +283,8 @@ export async function craftParentProtocolInternal({
             }
 
             for (const token in tokens) {
-              if (!tokensExcludedFromParent.includes(token)) {
-                acc.chainTvls[chain].tokens[nearestDate][token] =
-                  (acc.chainTvls[chain].tokens[nearestDate][token] || 0) + tokens[token];
-              }
+              acc.chainTvls[chain].tokens[nearestDate][token] =
+                (acc.chainTvls[chain].tokens[nearestDate][token] || 0) + tokens[token];
             }
           });
         }
@@ -302,6 +298,9 @@ export async function craftParentProtocolInternal({
         }
 
         if (!skipAggregatedTvl) {
+          // store tvl to exclude by date
+          const tvlToExcludeByDate: { [date: number]: number } = {};
+
           if (curr.tokensInUsd) {
             curr.tokensInUsd.forEach(({ date, tokens }, index) => {
               // roundoff lasthourly date
@@ -323,6 +322,12 @@ export async function craftParentProtocolInternal({
 
                     acc.tokens[prevDate][token] =
                       (acc.tokens[prevDate][token] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
+
+                    if (!tokensExcludedFromParent.includes(token)) {
+                      // store tvl to exclude by date
+                      tvlToExcludeByDate[prevDate] =
+                        (tvlToExcludeByDate[prevDate] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
+                    }
                   });
                 }
               }
@@ -333,6 +338,11 @@ export async function craftParentProtocolInternal({
                 }
 
                 acc.tokensInUsd[nearestDate][token] = (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
+
+                if (!tokensExcludedFromParent.includes(token)) {
+                  tvlToExcludeByDate[nearestDate] =
+                    (tvlToExcludeByDate[nearestDate] || 0) + (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
+                }
               });
             });
           }
@@ -385,11 +395,15 @@ export async function craftParentProtocolInternal({
                 while (nearestDate - prevDate > 86400) {
                   prevDate += 86400;
                   const prev = curr.tvl![index - 1];
-                  acc.tvl[prevDate] = (acc.tvl[prevDate] || 0) + (prev.totalLiquidityUSD + totalLiquidityUSD) / 2;
+                  acc.tvl[prevDate] =
+                    (acc.tvl[prevDate] || 0) +
+                    (prev.totalLiquidityUSD + totalLiquidityUSD) / 2 -
+                    (tvlToExcludeByDate[prevDate] || 0);
                 }
               }
 
-              acc.tvl[nearestDate] = (acc.tvl[nearestDate] || 0) + totalLiquidityUSD;
+              acc.tvl[nearestDate] =
+                (acc.tvl[nearestDate] || 0) + totalLiquidityUSD - (tvlToExcludeByDate[nearestDate] || 0);
             });
           }
         }

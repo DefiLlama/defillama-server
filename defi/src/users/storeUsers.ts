@@ -160,5 +160,6 @@ SELECT
     total_txs / (NULLIF(total_users, 0) * 1.0) AS txs_over_users
 FROM
     USAGE
+WHERE protocolId NOT LIKE 'chain%'
   `
 }

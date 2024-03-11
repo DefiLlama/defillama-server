@@ -35077,6 +35077,30 @@ const data3: Protocol[] = [
     forkedFrom: ["Baseline Protocol"],
     listedAt: 1710005544
   },
+  {
+    id: "4271",
+    name: "PerfectSwap",
+    address: "arbitrum:0x05ACc9F737AEdD1E8C0F44bCF6961b73766AA43e",
+    symbol: "PRFCT",
+    url: "https://perfectswap.io/",
+    description:
+      "Autonomous decentralized exchange that focuses on optimizing the acquisition of healthy Total Value Locked (TVL) in a capital-efficient manner",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/perfectswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "perfectswap/index.js",
+    twitter: "perfectswapio",
+    oracles: [], 
+    github: ["perfect-swap"],
+    forkedFrom: [],
+    audit_links: ["https://github.com/solidproof/projects/tree/main/2024/PerfectSwap"],
+    listedAt: 1710125372
+  },
 ]
 
 export default data3

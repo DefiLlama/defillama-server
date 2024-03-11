@@ -10767,7 +10767,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3181",
-    name: "Sui",
+    name: "Sui Foundation",
     address: null,
     symbol: "-",
     url: "https://sui.io",
@@ -11327,7 +11327,7 @@ const data3: Protocol[] = [
     address: "sui:0xce7ff77a83ea0cb6fd39bd8748e2ec89a3f41e8efdc3f4eb123e0ca37b184db2::bkt::BKT",
     symbol: "BKT",
     url: "https://bucketprotocol.io",
-    description: `Bucket Protocol is a Collateralized Debt Position (CDP) protocol within the Sui ecosystem, supporting multiple assets for collateralization while extending stablecoin loans in $BUCK at a zero-interest rate. Its real-time liquidation mechanism ensures both security and capital efficiency, and the inbuilt flash loan services facilitate the price stability of the stablecoin BUCK.`,
+    description: `Bucket Protocol is the leading Collateralized Debt Position (CDP) protocol within the Sui ecosystem, supporting multiple assets for collateralization while extending stablecoin loans in $BUCK at a fixed low-cost. Its real-time liquidation mechanism ensures both security and capital efficiency, and the inbuilt flash loan services facilitate the price stability of the stablecoin BUCK.`,
     chain: "Sui",
     logo: `${baseIconsUrl}/bucket-protocol.jpg`,
     audits: "2",
@@ -12119,7 +12119,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3242",
-    name: "Moraswap",
+    name: "Moraswap V2",
     address: null,
     symbol: "-",
     url: "https://moraswap.com/exchange/swap#",
@@ -12137,8 +12137,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/moraswap/v2-periphery/blob/master/audits/masterchef-by-hashex.pdf"],
+    parentProtocol: "parent#moraswap",
     listedAt: 1689658469,
-    github: ["moraswap"]
   },
   {
     id: "3243",
@@ -14410,6 +14410,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/f(x)_Protocol_Report_v1.0_2023_06_14.pdf"],
+    stablecoins: ["fractional-eth"],
     listedAt: 1691149929
   },
   {
@@ -16773,7 +16774,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3451",
-    name: "Astarter Launch",
+    name: "Astarter Launch ISPO",
     address: "cardano:-",
     symbol: "AA",
     url: "https://astarter.io/",
@@ -16784,7 +16785,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Launchpad",
+    category: "Farm",
     chains: ["Cardano"],
     oracles: [],
     forkedFrom: [],
@@ -20461,7 +20462,8 @@ const data3: Protocol[] = [
     module: "scrollswap/index.js",
     twitter: "Scroll_1Dex",
     forkedFrom: ["Uniswap V2"],
-    listedAt: 1697018504
+    listedAt: 1697018504,
+    deadUrl: true
   },
   {
     id: "3614",
@@ -33607,6 +33609,7 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"], // https://twitter.com/chainlink/status/1707711868570140778
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Cygnus-v1.0.pdf"],
     github: ["arks-labs"],
+    stablecoins: ["cygnus-finance-global-usd"],
     listedAt: 1709294898
   },
   {
@@ -34885,7 +34888,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Yield",
     chains: ["Blast"],
     module: "hyperlock/index.js",
     twitter: "hyperlockfi",
@@ -34927,7 +34930,7 @@ const data3: Protocol[] = [
       "Muito Finance is a yield aggregator on Mantle that provides a variety of strategies to users of all risk preferences. The automation of claiming and re-investing generates far greater return than what ordinary users can obtain manually.",
     chain: "Mantle",
     logo: `${baseIconsUrl}/muito-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -35030,6 +35033,75 @@ const data3: Protocol[] = [
     github: ["Clone-Protocol"],
     treasury: "clone.js",
     listedAt: 1709943113
+  },
+  {
+    id: "4269",
+    name: "Moraswap V3",
+    address: null,
+    symbol: "-",
+    url: "https://v3-beta.moraswap.com/",
+    description: `The leading DeFi shop servicing all your needs on Neon: Trade, Earn and Win on the grounds of transparency, safety and innovation`,
+    chain: "Neon",
+    logo: `${baseIconsUrl}/moraswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Neon"],
+    module: "moraswap-v3/index.js",
+    twitter: "moraswap_amm",
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    parentProtocol: "parent#moraswap",
+    listedAt: 1710005129,
+  },
+  {
+    id: "4270",
+    name: "Gasline Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://gasline.markets",
+    description:
+      "First Baseline fork on Blast and BNB Chain made by Gas404",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/gasline-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Blast","Binance"],
+    module: "gasline/index.js",
+    twitter: "GaslineMarkets",
+    oracles: [], 
+    github: ["zerotwodao"],
+    forkedFrom: ["Baseline Protocol"],
+    listedAt: 1710005544
+  },
+  {
+    id: "4271",
+    name: "PerfectSwap",
+    address: "arbitrum:0x05ACc9F737AEdD1E8C0F44bCF6961b73766AA43e",
+    symbol: "PRFCT",
+    url: "https://perfectswap.io/",
+    description:
+      "Autonomous decentralized exchange that focuses on optimizing the acquisition of healthy Total Value Locked (TVL) in a capital-efficient manner",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/perfectswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "perfectswap/index.js",
+    twitter: "perfectswapio",
+    oracles: [], 
+    github: ["perfect-swap"],
+    forkedFrom: [],
+    audit_links: ["https://github.com/solidproof/projects/tree/main/2024/PerfectSwap"],
+    listedAt: 1710125372
   },
 ]
 

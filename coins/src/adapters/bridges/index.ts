@@ -20,6 +20,7 @@ import mantle from "./mantle";
 import axelar from "./axelar";
 import linea from "./linea";
 import manta from "./manta";
+import astrzk from "./astrzk";
 
 export type Token =
   | {
@@ -80,6 +81,7 @@ export const bridges = [
   axelar,
   linea,
   manta,
+  astrzk,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

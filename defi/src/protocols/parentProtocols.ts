@@ -3872,6 +3872,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ProtocolRing",
     github: ["RingProtocol"]
   },
+  {
+    id: "parent#moraswap",
+    name: "Moraswap",
+    url: "https://moraswap.com/exchange/swap#",
+    description:"Moraswap is a decentralized exchange (DEX) built on Solana's Neon EVM",
+    logo: `${baseIconsUrl}/moraswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "moraswap_amm",
+    github: ["moraswap"]
+  },
 ];
 
 export default parentProtocols;

@@ -73,6 +73,11 @@
       "decimals": "6",
       "symbol": "USDY",
       "to": "coingecko#ondo-us-dollar-yield"
+    },
+    "0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX": {
+      "decimals": "9",
+      "symbol": "NAVX",
+      "to": "coingecko#navi"
     }
   },
   "neutron": {
@@ -1999,6 +2004,11 @@
       "decimals": "18",
       "symbol": "WBTC",
       "to": "coingecko#merlin-chain-bridged-wrapped-btc-merlin"
+    },
+    "0xF6D226f9Dc15d9bB51182815b320D3fBE324e1bA": {
+      "decimals": "18",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
     },
     "0x480e158395cc5b41e5584347c495584ca2caf78d": {
       "decimals": "18",

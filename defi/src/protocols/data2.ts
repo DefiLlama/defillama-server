@@ -374,17 +374,17 @@ const data2: Protocol[] = [
   },
   {
     id: "1395",
-    name: "ArthSwap",
+    name: "ArthSwap V2",
     address: "astar:0xde2578edec4669ba7f41c5d5d2386300bcea4678",
     symbol: "ARSW",
     url: "https://app.arthswap.org/#/swap",
     description:
       "ArthSwap is the No.1 decentralized exchange with the largest community on Astar Network. It has very high APY and simple UI, quite easy to use.",
     chain: "Astar",
-    logo: `${baseIconsUrl}/arthswap.png`,
+    logo: `${baseIconsUrl}/arthswap-v2.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "arthswap",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Astar"],
@@ -393,9 +393,9 @@ const data2: Protocol[] = [
     module: "arthswap/index.js",
     twitter: "arthswap",
     language: "Solidity",
+    parentProtocol: "parent#arthswap",
     audit_links: ["https://certificate.quantstamp.com/full/arth-swap"],
     listedAt: 1644594055,
-    github: ["ArthSwap"]
   },
   {
     id: "1396",

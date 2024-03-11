@@ -3884,6 +3884,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "moraswap_amm",
     github: ["moraswap"]
   },
+  {
+    id: "parent#arthswap",
+    name: "ArthSwap",
+    url: "https://app.arthswap.org",
+    description:
+      "ArthSwap is a one-stop Defi protocol that aspires to be the main DEX on the Astar Networks.",
+    logo: `${baseIconsUrl}/arthswap.png`,
+    gecko_id: "arthswap",
+    cmcId: null,
+    chains: [],
+    twitter: "arthswap",
+    github: ["ArthSwap"]
+  },
 ];
 
 export default parentProtocols;

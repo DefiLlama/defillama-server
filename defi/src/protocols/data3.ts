@@ -35126,6 +35126,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#arthswap",
     listedAt: 1710174743
   },
+  {
+    id: "4273",
+    name: "Artemis Finance",
+    address: null,
+    symbol: "-",
+    assetToken: "artMETIS",
+    url: "https://artemisfinance.io/",
+    description:
+      "Artemis Finance is a liquid staking protocol designed exclusively for Metis Decentralised Sequencer Pools. Users can stake their METIS token on Artemis Finance and receive the liquid token - artMETIS.",
+    chain: "Metis",
+    logo: `${baseIconsUrl}/artemis-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Metis"],
+    module: "ngad-artemis/index.js",
+    twitter: "Artemisfinance",
+    oracles: [], 
+    forkedFrom: [],
+    audit_links: ["https://docs.artemisfinance.io/audit"],
+    listedAt: 1710194258
+  },
 ]
 
 export default data3

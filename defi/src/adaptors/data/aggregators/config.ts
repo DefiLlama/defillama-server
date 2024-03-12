@@ -176,5 +176,9 @@ export default {
   "opt-agg": {
     "enabled": true,
     "id": "4277"
+  },
+  "fibrous-finance": {
+    "enabled": true,
+    "id": "4278"
   }
 } as AdaptorsConfig;

@@ -35371,6 +35371,27 @@ const data3: Protocol[] = [
     github: ["Blaster-Labs"],
     listedAt: 1710246595
   },
+  {
+    id: "4284",
+    name: "MethLab",
+    address: null,
+    symbol: "-",
+    url: "https://www.methlab.xyz",
+    description: "Join the Methlab and enter the DeFi Metaverse",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/methlab.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Mantle"],
+    oracles: [],
+    forkedFrom: [],
+    module: "methlab-xyz/index.js",
+    twitter: "methlabxyz",
+    listedAt: 1710246895
+  },
 ]
 
 export default data3

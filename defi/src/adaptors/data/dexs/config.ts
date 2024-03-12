@@ -2538,5 +2538,9 @@ export default {
         parentId: "Sushi",
         "enabled": true,
         "id": "3827"
+    },
+    "cellana-finance": {
+        "id": "4194",
+        "enabled": true,
     }
 } as AdaptorsConfig

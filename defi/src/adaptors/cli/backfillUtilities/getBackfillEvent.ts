@@ -91,7 +91,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             type: adaptorType,
             backfill: [{
                 dexNames: adapterName,
-                timestamp: cliArguments.timestamp + ONE_DAY_IN_SECONDS,
+                timestamp: cliArguments.timestamp,
                 chain: cliArguments.chain as Chain,
                 adaptorRecordTypes: cliArguments.recordTypes,
                 protocolVersion: cliArguments.version,

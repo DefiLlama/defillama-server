@@ -154,6 +154,11 @@
     }
   },
   "ethereum": {
+    "0x57f5e098cad7a3d1eed53991d4d66c45c9af7812": {
+      "decimals": "18",
+      "symbol": "WUSDM",
+      "to": "coingecko#wrapped-usdm"
+    },
     "0x0d3bd40758df4f79aad316707fcb809cd4815ffe": {
       "decimals": "6",
       "symbol": "21XRP",

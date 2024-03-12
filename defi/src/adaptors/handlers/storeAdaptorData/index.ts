@@ -96,7 +96,7 @@ export const handler = async (event: IHandlerEvent) => {
       const adaptor: Adapter = importModule(module).default;
       const adapterVersion = adaptor.version
       const isVersion2 = adapterVersion === 2
-      const recordTimestamp = isVersion2 ? endTimestamp : startTimestamp
+      const recordTimestamp = isVersion2 ? endTimestamp : (event.timestamp ? endTimestamp : startTimestamp)
 
       console.info("Imported OK")
 

@@ -700,5 +700,15 @@ export default {
     "avantis": {
         enabled: true,
         "id": "4108"
+    },
+    "flashtrade": {
+        enabled: true,
+        "id": "4107",
+        protocolsData: {
+            "perp": {
+                "id": "4107",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

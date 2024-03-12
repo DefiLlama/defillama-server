@@ -357,6 +357,21 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#ethereum"
+    },
+    "0xa9004a5421372e1d83fb1f85b0fc986c912f91f3": {
+      "decimals": "18",
+      "symbol": "WBNB",
+      "to": "coingecko#binancecoin"
+    },
+    "0x565609faf65b92f7be02468acf86f8979423e514": {
+      "decimals": "18",
+      "symbol": "WAVAX",
+      "to": "coingecko#avalanche-2"
+    },
+    "0xac800fd6159c2a2cb8fc31ef74621eb430287a5a": {
+      "decimals": "18",
+      "symbol": "OP",
+      "to": "coingecko#optimism"
     }
   },
   "tezos": {

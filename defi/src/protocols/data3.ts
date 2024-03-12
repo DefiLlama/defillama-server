@@ -31261,6 +31261,7 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: ["Kelp DAO"],
     module: "prime-staked/index.js",
+    parentProtocol: "parent#origin-defi",
     twitter: "PrimeStaked",
     github: ["oplabs"],
     listedAt: 1707183377

@@ -1,6 +1,7 @@
 import { getCurrentUnixTimestamp, secondsInDay } from "../src/utils/date";
 import PromisePool from "@supercharge/promise-pool";
 import findTvls from "./tvl";
+import storeHistorical from "./storeToDb";
 
 const end = getCurrentUnixTimestamp();
 const start = getStart("2024-01-01");
@@ -11,7 +12,7 @@ function getStart(dateString: string): number {
   return Math.floor(raw.getTime() / 1000);
 }
 function getTimestampArray(start: number, end: number) {
-  const arr: number[] = [end];
+  const arr: number[] = [];
   while (end > start) {
     end -= secondsInDay;
     arr.push(end);
@@ -20,13 +21,19 @@ function getTimestampArray(start: number, end: number) {
 }
 const timestampArray: number[] = getTimestampArray(start, end);
 
+async function proc(timestamp: number) {
+  const res: any = await findTvls(timestamp);
+  res.timestamp = timestamp;
+  res.avalanche = res.avax;
+  await storeHistorical(res);
+}
 async function backfill() {
   const errors: number[] = [];
   let successCount: number = 0;
-  await PromisePool.withConcurrency(10)
+  await PromisePool.withConcurrency(1)
     .for(timestampArray)
     .process(async (timestamp) =>
-      findTvls(timestamp)
+      proc(timestamp)
         .then(() => {
           successCount += 1;
           console.log(`done ${successCount}/${timestampArray.length}`);
@@ -40,4 +47,4 @@ async function backfill() {
   console.log(errors.toString());
 }
 
-await backfill(); // ts-node defi/l2/backfill.ts
+backfill(); // ts-node defi/l2/backfill.ts

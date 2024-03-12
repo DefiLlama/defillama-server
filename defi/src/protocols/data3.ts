@@ -34528,7 +34528,7 @@ const data3: Protocol[] = [
     chains: ["Blast"],
     module: "blastoff/index.js",
     twitter: "blastozone",
-    oracles: [], 
+    oracles: ["RedStone"], //https://docs.blastoff.zone/partnerships/technical-integrations
     audit_links: [],
     forkedFrom: [], 
     github: ["BlastOffOrg"],

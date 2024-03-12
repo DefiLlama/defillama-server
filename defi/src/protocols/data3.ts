@@ -35369,7 +35369,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V3"],
     module: "Blaster/index.js",
-    twitter: "blasterdex_",
+    twitter: "blasterdex__",
     github: ["Blaster-Labs"],
     listedAt: 1710246595
   },

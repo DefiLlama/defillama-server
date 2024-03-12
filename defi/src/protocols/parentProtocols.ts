@@ -3903,11 +3903,23 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://www.thenile.exchange",
     description:
       "Dex on linea",
-    logo: `${baseIconsUrl}/nile-exchang.png`,
+    logo: `${baseIconsUrl}/nile-exchange.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "NileExchange",
+  },
+  {
+    id: "parent#cleopatra-exchange",
+    name: "Cleopatra Exchange",
+    url: "https://cleo.exchange",
+    description:
+      "Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity",
+    logo: `${baseIconsUrl}/cleopatra-exchange.png`,
+    gecko_id: "cleopatra",
+    cmcId: null,
+    chains: [],
+    twitter: "CleopatraDEX",
   },
 ];
 

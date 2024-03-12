@@ -28625,17 +28625,17 @@ const data3: Protocol[] = [
   },
   {
     id: "3985",
-    name: "Cleopatra Exchange",
+    name: "Cleopatra V3",
     address: "mantle:0xC1E0C8C30F251A07a894609616580ad2CEb547F2",
     symbol: "CLEO",
     url: "https://cleo.exchange",
     description:
       "Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity",
     chain: "Mantle",
-    logo: `${baseIconsUrl}/cleopatra-exchange.png`,
+    logo: `${baseIconsUrl}/cleopatra-v3.jpg`,
     audits: "3",
     audit_note: null,
-    gecko_id: "cleopatra",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     oracles: [],
@@ -28643,6 +28643,7 @@ const data3: Protocol[] = [
     chains: ["Mantle"],
     module: "cleopatra-exchange/index.js",
     twitter: "CleopatraDEX",
+    parentProtocol: "parent#cleopatra-exchange",
     listedAt: 1704422495
   },
   {
@@ -35413,6 +35414,28 @@ const data3: Protocol[] = [
     module: "nile-exchange-v1/index.js",
     twitter: "NileExchange",
     parentProtocol: "parent#nile-exchange",
+    listedAt: 1710246595
+  },
+  {
+    id: "4286",
+    name: "Cleopatra V2",
+    address: "mantle:0xC1E0C8C30F251A07a894609616580ad2CEb547F2",
+    symbol: "CLEO",
+    url: "https://cleo.exchange",
+    description: "Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/cleopatra-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "cleopatra-exchange-v1/index.js",
+    twitter: "CleopatraDEX",
+    parentProtocol: "parent#cleopatra-exchange",
     listedAt: 1710246595
   },
 ]

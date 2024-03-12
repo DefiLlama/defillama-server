@@ -27195,16 +27195,16 @@ const data3: Protocol[] = [
   },
   {
     id: "3921",
-    name: "Pharaoh Exchange",
+    name: "Pharaoh V3",
     address: "avax:0xAAAB9D12A30504559b0C5a9A5977fEE4A6081c6b",
     symbol: "PHAR",
     url: "https://pharaoh.exchange/swap/",
     description: `Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity`,
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/pharaoh-exchange.png`,
+    logo: `${baseIconsUrl}/pharaoh-v3.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "pharaoh",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Avalanche"],
@@ -27212,6 +27212,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "pharaoh-exchange/index.js",
     twitter: "PharaohExchange",
+    parentProtocol: "parent#pharaoh-exchange",
     listedAt: 1702603157
   },
   {
@@ -35438,6 +35439,28 @@ const data3: Protocol[] = [
     twitter: "CleopatraDEX",
     parentProtocol: "parent#cleopatra-exchange",
     listedAt: 1710246595
+  },
+  {
+    id: "4287",
+    name: "Pharaoh V2",
+    address: "avax:0xAAAB9D12A30504559b0C5a9A5977fEE4A6081c6b",
+    symbol: "PHAR",
+    url: "https://pharaoh.exchange/swap/",
+    description: "Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/pharaoh-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "pharaoh-exchange-v1/index.js",
+    twitter: "PharaohExchange",
+    parentProtocol: "parent#pharaoh-exchange",
+    listedAt: 1710260268
   },
 ]
 

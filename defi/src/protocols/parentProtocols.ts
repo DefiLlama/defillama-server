@@ -3921,6 +3921,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CleopatraDEX",
   },
+  {
+    id: "parent#pharaoh-exchange",
+    name: "Pharaoh Exchange",
+    url: "https://pharaoh.exchange",
+    description:
+      "Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity",
+    logo: `${baseIconsUrl}/pharaoh-exchange.png`,
+    gecko_id: "pharaoh",
+    cmcId: null,
+    chains: [],
+    twitter: "PharaohExchange",
+  },
 ];
 
 export default parentProtocols;

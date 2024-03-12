@@ -1922,5 +1922,9 @@ export default {
     "avantis": {
         enabled: true,
         "id": "4108"
+    },
+    "cellana-finance": {
+        "id": "4194",
+        "enabled": true,
     }
 } as AdaptorsConfig

@@ -985,7 +985,7 @@ export const chainCoingeckoIds = {
     twitter: "Meter_IO",
     url: "https://meter.io/"
   },
-  "Oasis": {
+  "Oasis Emerald": {
     geckoId: "oasis-network",
     github: ['oasisprotocol'],
     symbol: "ROSE",
@@ -1600,7 +1600,7 @@ export const chainCoingeckoIds = {
   },
   "Tombchain": {
     geckoId: "tomb",
-    github: ['tomochain'],
+    github: ['tombchain'],
     symbol: "TOMB",
     cmcId: "11495",
     categories: ["EVM"],
@@ -2687,7 +2687,7 @@ export const chainCoingeckoIds = {
     twitter: "injective",
     url: "https://inevm.com/"
   },
-  "Sapphire": {
+  "Oasis Sapphire": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -2766,6 +2766,10 @@ export function transformNewChainName(chain: string) {
       return "UX"
     case "TomoChain":
       return "Viction"
+    case "Sapphire":
+      return "Oasis Sapphire"
+    case "Oasis":
+      return "Oasis Emerald"
     default:
       return chain
   }
@@ -2803,6 +2807,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Rootstock" : "RSK"
     case "pulse":
       return useNewChainNames ? "PulseChain" : "Pulse"
+    case "sapphire":
+      return useNewChainNames ? "Oasis Sapphire" : "Sapphire"
+    case "oasis":
+      return useNewChainNames ? "Oasis Emerald" : "Oasis"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -2891,8 +2899,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Ergo"
     case "parallel":
       return "Parallel"
-    case "oasis":
-      return "Oasis"
     case "theta":
       return "Theta"
     case "meter":
@@ -3269,8 +3275,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Naka"
     case "inevm":
       return "inEVM"
-    case "sapphire":
-      return "Sapphire"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

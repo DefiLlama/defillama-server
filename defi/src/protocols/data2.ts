@@ -29765,6 +29765,7 @@ const data2: Protocol[] = [
     module: "overnight-daiPlus/index.js",
     twitter: "overnight_fi",
     parentProtocol: "parent#overnight-finance",
+    stablecoins: ["dai+"],
     listedAt: 1679332234
   },
   {

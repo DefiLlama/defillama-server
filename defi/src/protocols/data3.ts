@@ -2451,6 +2451,7 @@ const data3: Protocol[] = [
     module: "overnight-usdtPlus/index.js",
     twitter: "overnight_fi",
     parentProtocol: "parent#overnight-finance",
+    stablecoins: ["usdt+"],
     listedAt: 1681228187
   },
   {

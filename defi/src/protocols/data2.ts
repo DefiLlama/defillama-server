@@ -29284,7 +29284,7 @@ const data2: Protocol[] = [
     description:
       "RAMSES is a ve(3,3) DEX that masterfully adapts Andre Cronje's initial vision of Solidly. The original Solidly fundamentals have been long forgotten, and RAMSES aims to revitalize three core tenets: Community, Decentralization, and Functionality.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/ramses-exchange.jpg`,
+    logo: `${baseIconsUrl}/ramses-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

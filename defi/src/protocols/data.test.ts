@@ -225,7 +225,8 @@ test("no surprise category", async () => {
     'DEX Aggregator',
     'Liquid Restaking',
     'Restaking',
-    'Wallets'
+    'Wallets',
+    'NftFi'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

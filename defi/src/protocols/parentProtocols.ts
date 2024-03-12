@@ -926,7 +926,7 @@ const parentProtocols: IParentProtocol[] = [
       "Trade. Earn. Win. NFT.",
     logo: `${baseIconsUrl}/pancakeswap.jpg`,
     gecko_id: "pancakeswap-token",
-    cmcId: "1165",
+    cmcId: "7186",
     chains: [],
     twitter: "PancakeSwap",
     governanceID: ["snapshot:cakevote.eth"],

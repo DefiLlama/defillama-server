@@ -30554,13 +30554,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4072",
-    name: "Nile Exchange",
+    name: "Nile Exchange V3",
     address: "linea:0xAAAac83751090C6ea42379626435f805DDF54DC8",
     symbol: "NILE",
     url: "https://www.thenile.exchange",
     description: "Concentrated liquidity DEX on Linea",
     chain: "Linea",
-    logo: `${baseIconsUrl}/nile-exchange.png`,
+    logo: `${baseIconsUrl}/nile-exchange-v3.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -30571,6 +30571,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "nile-exchange/index.js",
     twitter: "NileExchange",
+    parentProtocol: "parent#nile-exchange",
     listedAt: 1706367420
   },
   {
@@ -35391,6 +35392,28 @@ const data3: Protocol[] = [
     module: "methlab-xyz/index.js",
     twitter: "methlabxyz",
     listedAt: 1710246895
+  },
+  {
+    id: "4285",
+    name: "Nile Exchange V2",
+    address: "linea:0xAAAac83751090C6ea42379626435f805DDF54DC8",
+    symbol: "NILE",
+    url: "https://www.thenile.exchange",
+    description: "Uniswap V2 fork on linea",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/nile-exchange-v2.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "nile-exchange-v1/index.js",
+    twitter: "NileExchange",
+    parentProtocol: "parent#nile-exchange",
+    listedAt: 1710246595
   },
 ]
 

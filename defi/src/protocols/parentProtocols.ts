@@ -3897,6 +3897,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "arthswap",
     github: ["ArthSwap"]
   },
+  {
+    id: "parent#nile-exchange",
+    name: "Nile Exchange",
+    url: "https://www.thenile.exchange",
+    description:
+      "Dex on linea",
+    logo: `${baseIconsUrl}/nile-exchang.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "NileExchange",
+  },
 ];
 
 export default parentProtocols;

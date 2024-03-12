@@ -172,5 +172,9 @@ export default {
   "wowmax": {
     "enabled": true,
     "id": "4192"
+  },
+  "opt-agg": {
+    "enabled": true,
+    "id": "4277"
   }
 } as AdaptorsConfig;

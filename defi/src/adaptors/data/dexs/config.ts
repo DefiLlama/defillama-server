@@ -2251,7 +2251,7 @@ export default {
     },
     "lighterv2": {
         parentId: "Lighter",
-        "enabled": true,
+        "enabled": false,
         "id": "3854"
     },
     "thick": {

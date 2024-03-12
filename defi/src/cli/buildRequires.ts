@@ -87,12 +87,13 @@ function createDimensionAdaptersModule(path: string, folderPath: string) {
     const moduleFilePath = `${basePackagePath}/${folderPath}/${removeDotTs(path)}`
     let moduleString = `require("${moduleFilePath}")`
 
-    if (process.env.IS_API2_SERVER) {
+    // if (process.env.IS_API2_SERVER) {
         const module = mockFunctions(require(moduleFilePath))
         moduleString = `mockFunctions(${JSON.stringify(module)})`
-    }
+    // }
 
     return `"${removeDotTs(path)}": {
+        moduleFilePath: "${moduleFilePath}",
         module: ${moduleString},
         codePath: "${baseGithubURL}/${folderPath}/${path}"
     },`
@@ -102,6 +103,7 @@ function createDimensionAdaptersModule(path: string, folderPath: string) {
 export interface IImportObj {
     module: { default: Adapter },
     codePath: string
+    moduleFilePath: string
 }
 
 // emissions-adapters

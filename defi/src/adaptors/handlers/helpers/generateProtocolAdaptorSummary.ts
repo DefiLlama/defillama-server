@@ -1,6 +1,6 @@
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../utils/date"
-import { DimensionRules } from "../../data"
+import { getRules } from "../../data"
 import { getConfigByType } from "../../data/configs"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord2 as _getAdaptorRecord } from "../../db-utils/adaptor-record"
@@ -164,7 +164,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
         extraTypes[AdaptorRecordTypeMapReverse[adaptorRecordType]] = stats.total24h
 
         // And calculate the missing types
-        const rules = DimensionRules(adaptorType) ?? {}
+        const rules = getRules(adaptorType) ?? {}
         for (const rule of Object.values(rules)) {
             rule(extraTypes, adapter.category ?? '')
         }

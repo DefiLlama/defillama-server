@@ -212,10 +212,14 @@ export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordTyp
     } else if (mode === 'ALL' && lastKey !== undefined) {
         expressionAttributeValues[":sk"] = lastKey
         keyConditionExpression = `${keyConditionExpression} and SK > :sk`
+    } else if (mode === 'ALL' && timestamp !== undefined) {
+        expressionAttributeValues[":sk"] = timestamp
+        keyConditionExpression = `${keyConditionExpression} and SK <= :sk`
     }
     let resp: any
     let moreThanAWeekAway = !lastKey || lastKey < (Date.now() / 1e3) - 7 * 24 * 60 * 60
-    let getAllValues = mode === "ALL" && moreThanAWeekAway
+    let getAllValues = mode === "ALL" && moreThanAWeekAway && !timestamp
+
     if (getAllValues) {
         resp = await getHistoricalValues(adaptorRecord.pk, lastKey)
     } else {
@@ -226,9 +230,10 @@ export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordTyp
             Limit: mode === "LAST" ? 1 : undefined,
             ScanIndexForward: mode === "LAST" ? false : true
         })
+
     }
     if (!resp || resp.length === 0) throw Error(`No items found for ${adaptorRecord.pk}${timestamp ? ` at ${timestamp}` : ''}`)
-    return mode === "LAST" || mode === 'TIMESTAMP' ? AdaptorRecord.fromItem(resp.Items[0]) : resp.map(AdaptorRecord.fromItem)
+    return mode === "LAST" || mode === 'TIMESTAMP' ? AdaptorRecord.fromItem(resp.Items[0]) : Object.keys(resp).includes('Items') ? resp.Items.map(AdaptorRecord.fromItem) : resp.map(AdaptorRecord.fromItem)
 }
 
 // REMOVES ALL VOLUMES, DO NOT USE!

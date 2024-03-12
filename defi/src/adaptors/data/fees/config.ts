@@ -1926,5 +1926,15 @@ export default {
     "cellana-finance": {
         "id": "4194",
         "enabled": true,
+    },
+    "nile-exchange": {
+        parentId: "Nile Exchange",
+        "enabled": true,
+        "id": "4072"
+    },
+    "nile-exchange-v1": {
+        parentId: "Nile Exchange",
+        "enabled": true,
+        "id": "4285"
     }
 } as AdaptorsConfig

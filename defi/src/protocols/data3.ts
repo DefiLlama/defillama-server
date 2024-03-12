@@ -8882,7 +8882,7 @@ const data3: Protocol[] = [
     description:
       "RAMSES V2 will be taking the ve(3,3) DEX model to another iteration of innovation, by utilizing UniswapV3's concentrated liquidity design in junction with the original solidly model",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/ramses-exchange.jpg`,
+    logo: `${baseIconsUrl}/ramses-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

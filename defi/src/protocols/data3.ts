@@ -35195,6 +35195,29 @@ const data3: Protocol[] = [
     audit_links: ["https://dedaub.com/audits/illuminex/illuminex-jan-19-2024/"],
     listedAt: 1710199785
   },
+  {
+    id: "4276",
+    name: "CIAN LSTs",
+    address: null,
+    symbol: "-",
+    url: "https://cian.app",
+    description: "CIAN is an open automation platform for onchain applications that allows users to swiftly build, optimize and protect intricate strategies using unrivaled automation primitives",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cian.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum", "Optimism","Arbitrum", "Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "cian-lst/index.js",
+    twitter: "CIAN_protocol",
+    audit_links: ["https://docs.cian.app/security-and-risk/audit-report"],
+    listedAt: 1710212538,
+    github: ["cian-ai"],
+  },
 ]
 
 export default data3

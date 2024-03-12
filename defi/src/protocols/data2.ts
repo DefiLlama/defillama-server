@@ -12320,7 +12320,7 @@ const data2: Protocol[] = [
     listedAt: 1658804851,
     github: ["merofinance"]
   },
-  {
+  /*{
     id: "1928",
     name: "CIAN",
     address: null,
@@ -12342,7 +12342,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.cian.app/security-and-risk/audit-report"],
     listedAt: 1658824413,
     github: ["cian-ai"]
-  },
+  },*/
   {
     id: "1929",
     name: "Algem",

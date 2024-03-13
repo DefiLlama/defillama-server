@@ -44,7 +44,7 @@ async function run() {
     let progressCount = 0
     const total = protocolAdaptors.length
 
-    const { errors } = await PromisePool.withConcurrency(25)
+    const { errors } = await PromisePool.withConcurrency(15)
       .for(protocolAdaptors)
       .process(async (protocol) => {
         // if (protocol.id2 !== '2116') return;

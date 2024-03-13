@@ -53,6 +53,7 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
 
   const pgItems = records.map(record => record.getPGItem())
   const ddbItems = records.map(record => record.getDDBItem())
+  // console.log('storing', ddbItems.length, 'records', JSON.stringify(ddbItems.slice(0, 4), null, 2))
 
   // console.log('storing', pgItems.length, 'records', pgItems[0])
   // console.log('storing', ddbItems.length, 'records', ddbItems[0])
@@ -68,7 +69,7 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
     updateOnDuplicate: ['timestamp', 'data', 'type']
   });
 
-  async function writeChunkToDDB(chunk: any, retriesLeft = 7) {
+  async function writeChunkToDDB(chunk: any, retriesLeft = 3) {
     try {
       await dynamodb.putDimensionsDataBulk(chunk)
     } catch (error) {

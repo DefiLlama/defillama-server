@@ -35555,6 +35555,28 @@ const data3: Protocol[] = [
     github: ["U235-pro"],
     listedAt: 1710343653
   },
+  {
+    id: "4292",
+    name: "Nostra Staked STRK",
+    address: null,
+    symbol: "-",
+    url: "https://nostra.finance",
+    description: "Liquid Staking for Starknet. Pre-stake your STRK, and use nstSTRK in DeFi to accrue rewards.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/nostra-money-market.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Starknet"],
+    oracles: [],
+    forkedFrom: [],
+    module: "nostra-staked-strk/index.js",
+    twitter: "nostrafinance",
+    parentProtocol: "parent#nostra",
+    listedAt: 1710349200
+  },
 ]
 
 export default data3

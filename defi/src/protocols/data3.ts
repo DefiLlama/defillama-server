@@ -35555,6 +35555,28 @@ const data3: Protocol[] = [
     github: ["U235-pro"],
     listedAt: 1710343653
   },
+  {
+    id: "4292",
+    name: "Nostra nstSTRK",
+    address: null,
+    symbol: "-",
+    url: "https://app.nostra.finance/stake",
+    description: "Nostra Staked STRK (nstSTRK) is a transferable liquid staking token that represents the share of the total STRK staked through Nostra. nstSTRK uses the ERC 4626 standard that enables yield-bearing tokens to be easily integrated into DeFi protocols",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/nostra.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Starknet"],
+    oracles: [],
+    forkedFrom: [],
+    module: "nostra-staked-strk/index.js",
+    twitter: "nostrafinance",
+    parentProtocol: "parent#nostra",
+    listedAt: 1710361819
+  },
 ]
 
 export default data3

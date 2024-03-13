@@ -106,7 +106,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         const nowSTimestamp = Math.trunc((Date.now()) / 1000)
         const adapterData = adaptorsData.default.find(adapter => adapter.module === (adapterName[0]))
         if (adapterData) {
-            const dexAdapter: Adapter = adaptorsData.importModule(adapterData.module).default
+            const dexAdapter: Adapter = await adaptorsData.importModule(adapterData.module).default
             if ("adapter" in dexAdapter) {
                 const st = await Object.values(dexAdapter.adapter)
                     .reduce(async (accP, { start, runAtCurrTime }) => {

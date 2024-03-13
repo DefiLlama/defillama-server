@@ -68,7 +68,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   let protocols = protocolAdaptors
 
   // Filter adaptors
-  protocols = protocols.filter(p => !protocolNames || protocolNames.has(p.displayName))
+  protocols = protocols.filter(p => !protocolNames || protocolNames.has(p.displayName) || protocolNames.has(p.module))
   // randomize the order of execution
   protocols = protocols.sort(() => Math.random() - 0.5)
   if (protocolNames) console.log('refilling for', protocols.map(a => a.module), protocols.length)
@@ -123,7 +123,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
     try {
       // Import adaptor
-      const adaptor: Adapter = importModule(module).default;
+      const adaptor: Adapter = (await importModule(module)).default;
       // if an adaptor is expensive and no timestamp is provided, we try to avoid running every hour, but only from 21:55 to 01:55
       if (adaptor.isExpensiveAdapter && !isTimestampProvided) {
         const date = new Date(currentTimestamp * 1000)

@@ -9,7 +9,7 @@ export const KEYS_TO_STORE = {
     [AdaptorRecordType.tokenIncentives]: AdaptorRecordTypeMapReverse[AdaptorRecordType.tokenIncentives]
 }
 
-export { default as incentives_imports } from "../../../utils/imports/incentives_adapters"
+export { default as imports } from "../../../utils/imports/incentives_adapters"
 
 export { default as config } from "./config";
 

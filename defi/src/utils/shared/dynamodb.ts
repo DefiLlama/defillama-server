@@ -45,6 +45,9 @@ const dynamodb = {
     item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
     params?: Partial<AWS.DynamoDB.DocumentClient.PutItemInput>
   ) => client.put({ TableName: 'fees-volume', ...params, Item: item }).promise(),
+  putDimensionsDataBulk: (
+    items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  ) => client.batchWrite({ RequestItems: { 'fees-volume': items.map((item) => ({ PutRequest: { Item: item } })) } }).promise(),
 };
 export default dynamodb;
 

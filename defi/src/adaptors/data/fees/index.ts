@@ -28,4 +28,4 @@ export { default as config } from "./config";
 
 export { default as rules } from "./rules"
 
-export { default as fees_imports } from "../../../utils/imports/fees_adapters"
+export { default as imports } from "../../../utils/imports/fees_adapters"

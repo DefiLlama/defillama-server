@@ -5,11 +5,11 @@ import { ADAPTER_TYPES } from "../triggerStoreAdaptorData";
 
 async function run() {
   console.time("**** Run All Adaptor types")
-  await Promise.all(ADAPTER_TYPES.map(async (adaptorType) => {
-    const key = "**** Run Adaptor type: " + adaptorType
+  await Promise.all(ADAPTER_TYPES.map(async (adapterType) => {
+    const key = "**** Run Adaptor type: " + adapterType
     console.time(key)
     try {
-      await handler2({ adaptorType })
+      await handler2({ adapterType })
     } catch (e) {
       console.error("error", e)
     }

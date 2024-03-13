@@ -1220,6 +1220,21 @@
       "decimals": "18",
       "symbol": "ETH",
       "to": "coingecko#ethereum"
+    },
+    "0x2416092f143378750bb29b79eD961ab195CcEea5": {
+      "decimals": "18",
+      "symbol": "ezETH",
+      "to": "coingecko#renzo-restaked-eth"
+    },
+    "0x028227c4dd1e5419d11Bb6fa6e661920c519D4F5": {
+      "decimals": "18",
+      "symbol": "weETH",
+      "to": "coingecko#wrapped-eeth"
+    },
+    "0x80137510979822322193FC997d400D5A6C747bf7": {
+      "decimals": "18",
+      "symbol": "STONE",
+      "to": "coingecko#tranquil-staked-one"
     }
   },
   "fsc": {

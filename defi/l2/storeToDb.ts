@@ -1,9 +1,10 @@
 import postgres from "postgres";
 import { queryPostgresWithRetry } from "../l2/layer2pg";
-import { FinalChainData, FinalData } from "./types";
+import { ChartData, FinalData } from "./types";
 import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 
 let auth: string[] = [];
+const secondsInADay = 86400;
 async function iniDbConnection() {
   await setEnvSecrets();
   auth = process.env.COINS2_AUTH?.split(",") ?? [];
@@ -67,10 +68,11 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
   );
   sql.end();
 
-  const result: { timestamp: string; data: FinalChainData | FinalData }[] = [];
+  const result: ChartData[] = [];
   timeseries.map((t: any) => {
     if (chain != "*") {
-      result.push({ timestamp: t.timestamp, data: JSON.parse(t[chain]) });
+      const data = JSON.parse(t[chain]);
+      if (Object.keys(data).length) result.push({ timestamp: t.timestamp, data });
       return;
     }
 
@@ -84,5 +86,25 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
     result.push({ timestamp: t.timestamp, data });
   });
 
-  return result;
+  result.sort((a: ChartData, b: ChartData) => Number(a.timestamp) - Number(b.timestamp));
+  return findDailyEntries(result);
+}
+function findDailyEntries(raw: ChartData[]): ChartData[] {
+  const clean: ChartData[] = [];
+  const timestamps = raw.map((r: ChartData) => Number(r.timestamp));
+
+  let timestamp = Math.floor(timestamps[0] / secondsInADay) * secondsInADay;
+  const cleanEnd = Math.floor(timestamps[timestamps.length - 1] / secondsInADay) * secondsInADay;
+
+  while (timestamp < cleanEnd) {
+    const index = timestamps.indexOf(
+      timestamps.reduce((p, c) => (Math.abs(c - timestamp) < Math.abs(p - timestamp) ? c : p))
+    );
+    clean.push({ data: raw[index].data, timestamp: timestamp.toString() });
+    timestamp += secondsInADay;
+  }
+
+  clean.push(raw[raw.length - 1]);
+
+  return clean;
 }

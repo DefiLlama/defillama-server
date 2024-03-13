@@ -795,14 +795,14 @@ functions:
     timeout: 30
     events:
       - http:
-          path: chainAssets
+          path: chain-assets
           method: get
   chainAssetsChart: 
     handler: src/getChainAssetsChart.default
     timeout: 30
     events:
       - http:
-          path: chainAssetsChart/{chain}
+          path: chain-assets/{sub}/{chain}
           method: get
 
 resources:

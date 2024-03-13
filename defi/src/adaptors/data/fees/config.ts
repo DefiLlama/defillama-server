@@ -1934,7 +1934,7 @@ export default {
     },
     "nile-exchange-v1": {
         parentId: "Nile Exchange",
-        "enabled": true,
+        "enabled": false,
         "id": "4285"
     }
 } as AdaptorsConfig

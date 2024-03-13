@@ -6321,6 +6321,7 @@ const data: Protocol[] = [
     module: "apeswap-amm/index.js",
     forkedFrom: ["Uniswap V2"],
     twitter: "ApeBond",
+    parentProtocol: "parent#apeswap",
     audit_links: ["https://apeswap.gitbook.io/apeswap-finance/security/audits"],
   },
   {

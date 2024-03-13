@@ -710,5 +710,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "wefi": {
+        enabled: true,
+        "id": "2666"
     }
 } as AdaptorsConfig

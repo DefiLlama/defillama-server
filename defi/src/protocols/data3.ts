@@ -35577,6 +35577,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#nostra",
     listedAt: 1710361819
   },
+  {
+    id: "4293",
+    name: "Primordium",
+    address: null,
+    symbol: "-",
+    url: "https://t.me/solana_unibot",
+    description: "Built by and for Solana Traders: TG Bot",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/primordium.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "PrimordiumGroup",
+    listedAt: 1710373322
+  },
 ]
 
 export default data3

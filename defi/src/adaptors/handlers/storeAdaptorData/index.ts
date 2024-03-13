@@ -136,8 +136,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const adapterVersion = adaptor.version
       const isVersion2 = adapterVersion === 2
       const endTimestamp = (isVersion2 && !timestamp) ? LAMBDA_TIMESTAMP : toTimestamp // if version 2 and no timestamp, use current time as input for running the adapter
-      const recordTimestamp = isVersion2 ? toTimestamp : fromTimestamp // if version 2, store the record at with timestamp end of range, else store at start of range
-
+      const recordTimestamp = isVersion2 ? toTimestamp : (timestamp !== undefined ? toTimestamp : fromTimestamp) // if version 2, store the record at with timestamp end of range, else store at start of range
       // Get list of adapters to run
       const adaptersToRun: [string, BaseAdapter][] = []
       if ("adapter" in adaptor) {
@@ -165,7 +164,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       }
 
       for (const [recordType, record] of Object.entries(rawRecords)) {
-        // console.info("STORING -> ", module, adaptorType, recordType as AdaptorRecordType, id, fromTimestamp, record, adaptor.protocolType, protocol.defillamaId, protocol.versionKey)
+        // console.info("STORING -> ", module, adapterType, recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType, protocol.defillamaId, protocol.versionKey)
         adaptorRecords[recordType] = new AdaptorRecord(recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType)
         const promise = storeAdaptorRecord(adaptorRecords[recordType], LAMBDA_TIMESTAMP)
         promises.push(promise)

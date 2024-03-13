@@ -12320,6 +12320,7 @@ const data2: Protocol[] = [
     listedAt: 1658804851,
     github: ["merofinance"]
   },
+  /*
   {
     id: "1928",
     name: "CIAN",
@@ -12343,6 +12344,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#cian-protocol",
     listedAt: 1658824413,
   },
+  */
   {
     id: "1929",
     name: "Algem",

@@ -3952,14 +3952,13 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://cian.app",
     description:
       "CIAN is an open automation platform for onchain applications that allows users to swiftly build, optimize and protect intricate strategies using unrivaled automation primitives",
-    logo: `${baseIconsUrl}/cian-protocol.jpg`,
+    logo: `${baseIconsUrl}/cian.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "CIAN_protocol",
     github: ["cian-ai"]
   },
-
 ];
 
 export default parentProtocols;

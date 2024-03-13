@@ -23648,6 +23648,7 @@ const data3: Protocol[] = [
                    "https://github.com/Goku-Money/audits/blob/2349a6e0798d656a013d8c447155591e6eec1e08/PeckShield%20Audit%20Report.pdf",
                    "https://github.com/Goku-Money/audits/blob/2349a6e0798d656a013d8c447155591e6eec1e08/SlowMist%20Audit%20Report.pdf"
                  ],
+    stablecoins: ["gai-stablecoin"],
     listedAt: 1699530655
   },
   {

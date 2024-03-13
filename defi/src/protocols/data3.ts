@@ -35220,7 +35220,7 @@ const data3: Protocol[] = [
     twitter: "CIAN_protocol",
     audit_links: ["https://docs.cian.app/security-and-risk/audit-report"],
     listedAt: 1710212538,
-    github: ["cian-ai"],
+    parentProtocol: "parent#cian-protocol"
   },
   {
     id: "4277",

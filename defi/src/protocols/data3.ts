@@ -31023,6 +31023,7 @@ const data3: Protocol[] = [
     module: "3a-dao/index.js",
     twitter: "3aaaDAO",
     github: ["3A-DAO"],
+    stablecoins: ["euro3"],
     listedAt: 1706799471
   },
   {

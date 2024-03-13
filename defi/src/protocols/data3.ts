@@ -35460,6 +35460,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#pharaoh-exchange",
     listedAt: 1710260268
   },
+  {
+    id: "4288",
+    name: "Unilend V2",
+    address: "0x0202be363b8a4820f3f4de7faf5224ff05943ab1",
+    symbol: "UFT",
+    url: "https://v2.unilend.finance/",
+    description: "UniLend is a comprehensive permissionless DeFi protocol. Anyone can list any asset on UniLend to access decentralized trading, lending/borrowing, and the industry’s most cost-effective flash loans.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/unilend-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "unilend-v2/index.js",
+    twitter: "UniLend_Finance",
+    parentProtocol: "parent#unilend",
+    listedAt: 1710332290
+  },
 ]
 
 export default data3

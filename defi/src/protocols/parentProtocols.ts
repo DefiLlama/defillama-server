@@ -3933,6 +3933,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PharaohExchange",
   },
+  {
+    id: "parent#unilend",
+    name: "Unilend",
+    url: "https://unilend.finance",
+    description:
+      "UniLend is a comprehensive permissionless DeFi protocol. Anyone can list any asset on UniLend to access decentralized trading, lending/borrowing, and the industry’s most cost-effective flash loans.",
+    logo: `${baseIconsUrl}/unilend.jpg`,
+    gecko_id: "unlend-finance",
+    cmcId: "7412",
+    chains: [],
+    twitter: "UniLend_Finance",
+    github: ["UniLend"]
+  },
 ];
 
 export default parentProtocols;

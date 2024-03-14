@@ -154,6 +154,7 @@ export const blast = async (): Promise<Address[]> => {
   addresses.blast.push(
     ...[
       "0x4300000000000000000000000000000000000004", // WETH
+      "0x4300000000000000000000000000000000000003", // USDB
     ]
   );
   return addresses.blast;

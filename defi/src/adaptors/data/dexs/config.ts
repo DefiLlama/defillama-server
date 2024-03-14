@@ -1271,6 +1271,7 @@ export default {
         "id": "133"
     },
     "archly-finance": {
+        parentId: "Archly Finance",
         "enabled": true,
         "id": "2317"
     },
@@ -2552,5 +2553,10 @@ export default {
         parentId: "Nile Exchange",
         "enabled": true,
         "id": "4285"
+    },
+    "archly-finance-v2": {
+        parentId: "Archly Finance",
+        "id": "3940",
+        enabled: true
     }
 } as AdaptorsConfig

@@ -137,7 +137,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
 }
 
 
-export function generateProtocolAdaptorsList2({allImports, config, adapterType, otherATId2s }: {allImports: IImportsMap, config: AdaptorsConfig, adapterType?: AdapterType, otherATId2s: Set<string>}): ProtocolAdaptor[] {
+export function generateProtocolAdaptorsList2({ allImports, config, adapterType, otherATId2s }: { allImports: IImportsMap, config: AdaptorsConfig, adapterType?: AdapterType, otherATId2s: Set<string> }): ProtocolAdaptor[] {
   return Object.entries(allImports).map(([adapterKey, adapterObj]) => {
     try {
       let list = protocolMap
@@ -201,7 +201,7 @@ export function generateProtocolAdaptorsList2({allImports, config, adapterType, 
           childProtocols.push({
             ...childProtocol,
             ...childConfig,
-            id,
+            id: isNaN(+versionConfig.id) ? versionConfig.id : config[adapterKey].id,
             id2,
             defillamaId: versionConfig.id,
             module: adapterKey,
@@ -243,7 +243,7 @@ export function generateProtocolAdaptorsList2({allImports, config, adapterType, 
       let singleVersionKey: string
 
       if (parentConfig.protocolsData) {
-        const keys  = Object.entries(parentConfig.protocolsData).filter(([_key, value]: any) => value.enabled).map(([key]: any) => key)
+        const keys = Object.entries(parentConfig.protocolsData).filter(([_key, value]: any) => value.enabled).map(([key]: any) => key)
         if (keys.length === 1) singleVersionKey = keys[0]
       }
       delete parentConfig.protocolsData

@@ -2700,6 +2700,15 @@ export const chainCoingeckoIds = {
     twitter: "OasisProtocol",
     url: "https://oasisprotocol.org/sapphire"
   },
+  "Dymension": {
+    geckoId: "dymension",
+    symbol: "DYM",
+    cmcId: "28932",
+    github: ["dymensionxyz"],
+    categories: ["Cosmos"],
+    twitter: "dymension",
+    url: "https://portal.dymension.xyz/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3275,6 +3284,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Naka"
     case "inevm":
       return "inEVM"
+    case "dymension":
+      return "Dymension"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

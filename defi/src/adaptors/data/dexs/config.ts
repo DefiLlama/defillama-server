@@ -2557,6 +2557,11 @@ export default {
     "archly-finance-v2": {
         parentId: "Archly Finance",
         "id": "3940",
-        enabled: true
+        enabled: true,
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1710288000": true
+            }
+        }
     }
 } as AdaptorsConfig

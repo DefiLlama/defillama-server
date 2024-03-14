@@ -2689,7 +2689,7 @@ export const chainCoingeckoIds = {
   },
   "Oasis Sapphire": {
     geckoId: null,
-    symbol: null,
+    symbol: "ROSE",
     cmcId: null,
     categories: ["EVM"],
     parent: {
@@ -2708,6 +2708,15 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "dymension",
     url: "https://portal.dymension.xyz/"
+  },
+  "Q Protocol": {
+    geckoId: null,
+    symbol: "QGOV",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "QBlockchain",
+    url: "https://q.org/",
+    chainId: 35441
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -3286,6 +3295,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "inEVM"
     case "dymension":
       return "Dymension"
+    case "q":
+      return "Q Protocol"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

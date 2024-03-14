@@ -135,8 +135,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       }
       const adapterVersion = adaptor.version
       const isVersion2 = adapterVersion === 2
-      const endTimestamp = (isVersion2 && !timestamp) ? LAMBDA_TIMESTAMP : toTimestamp // if version 2 and no timestamp, use current time as input for running the adapter
-      const recordTimestamp = isVersion2 ? toTimestamp : (timestamp !== undefined ? toTimestamp : fromTimestamp) // if version 2, store the record at with timestamp end of range, else store at start of range
+      const v1Timestamp = (timestamp !== undefined ? toTimestamp : fromTimestamp)
+      const endTimestamp = (isVersion2 && !timestamp) ? LAMBDA_TIMESTAMP : v1Timestamp // if version 2 and no timestamp, use current time as input for running the adapter
+      const recordTimestamp = isVersion2 ? toTimestamp : v1Timestamp // if version 2, store the record at with timestamp end of range, else store at start of range
       // Get list of adapters to run
       const adaptersToRun: [string, BaseAdapter][] = []
       if ("adapter" in adaptor) {

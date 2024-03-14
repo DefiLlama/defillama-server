@@ -18044,6 +18044,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Arbitrum"],
     module: "handlefi-fxpreps/index.js",
+    oracles: ["Stork"], //  https://docs.handle.fi/protocol-specs/oracles
     twitter: "handle_fi",
     forkedFrom: ["GMX V1"],
     listedAt: 1665919003,

@@ -35545,7 +35545,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Scroll"],
     oracles: [],
-    forkedFrom: ["AAVE V2"],
+    forkedFrom: ["AAVE V3"],
     module: "u235/index.js",
     twitter: "U235_Pro",
     audit_links: [

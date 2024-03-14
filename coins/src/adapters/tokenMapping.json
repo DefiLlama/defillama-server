@@ -377,6 +377,11 @@
       "decimals": "18",
       "symbol": "OP",
       "to": "coingecko#optimism"
+    },
+    "0x8c6bd546fb8b53fe371654a0e54d7a5bd484b319": {
+      "decimals": "18",
+      "symbol": "GOA",
+      "to": "coingecko#goat-protocol"
     }
   },
   "tezos": {

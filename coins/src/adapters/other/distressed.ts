@@ -178,6 +178,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     multiBTC: "0xf5b9b4a0534cf508ab9953c64c5310dfa0b303a1",
     MIM: "0x49a0400587a7f65072c87c4910449fdcc5c47242",
     JUSD: "0x0ba8a6ce46d369d779299dedade864318097b703",
+    SX: "0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79"
   },
   moonriver: {
     MIM: "0x0cae51e1032e8461f4806e26332c030e34de3adb",

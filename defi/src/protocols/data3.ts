@@ -35644,6 +35644,28 @@ const data3: Protocol[] = [
     github: ["hai-on-op"],
     listedAt: 1710426403
   },
+  {
+    id: "4296",
+    name: "Blasterswap",
+    address: null,
+    symbol: "-",
+    url: "https://blasterswap.com/",
+    description: "Uni v2 fork on blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/blasterswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "blasterswap-v2/index.js",
+    twitter: "BlasterSwap",
+    audit_links: ["https://github.com/blasterswap/blasterswap-core-v2/blob/main/AstraSec-AuditReport-BlasterSwap.pdf"],
+    listedAt: 1710427551
+  },
 ]
 
 export default data3

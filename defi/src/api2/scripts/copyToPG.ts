@@ -48,9 +48,10 @@ async function copyFiltered() {
   await initializeTVLCacheDB()
 
   const items = protocols
-    .filter((p: any) => p.category === 'CEX')
+    .filter((p: any) => p.id === '4293')
+    // .filter((p: any) => p.category === 'CEX')
   shuffleArray(items)
-  console.log('Total Items [CEX]', items.length)
+  console.log('Total Items', items.length)
   await PromisePool.withConcurrency(5)
     .for(items)
     .process(copyProtocolData);

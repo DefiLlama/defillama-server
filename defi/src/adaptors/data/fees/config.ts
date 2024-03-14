@@ -1936,5 +1936,9 @@ export default {
         parentId: "Nile Exchange",
         "enabled": false,
         "id": "4285"
+    },
+    "primordium": {
+        "id": "4293",
+        enabled: true
     }
 } as AdaptorsConfig

@@ -102,7 +102,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
           const infoItem: ProtocolAdaptor = {
             ...dexFoundInProtocols,
             ...configObj,
-            id,
+            id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id, // used to query db, eventually should be changed to defillamaId,
             id2: protocolType === ProtocolType.CHAIN ? `chain#${id}` : id,
             defillamaId: isNaN(+configObj?.id) ? configObj.id : config[adapterKey].id,
             module: adapterKey,

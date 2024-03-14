@@ -243,7 +243,7 @@ export function generateProtocolAdaptorsList2({allImports, config, adapterType, 
       let singleVersionKey: string
 
       if (parentConfig.protocolsData) {
-        const keys  = Object.entries(parentConfig.protocolsData).filter(([key, value]: any) => value.enabled).map(([key]: any) => key)
+        const keys  = Object.entries(parentConfig.protocolsData).filter(([_key, value]: any) => value.enabled).map(([key]: any) => key)
         if (keys.length === 1) singleVersionKey = keys[0]
       }
       delete parentConfig.protocolsData
@@ -267,7 +267,9 @@ export function generateProtocolAdaptorsList2({allImports, config, adapterType, 
         protocolType,
         isProtocolInOtherCategories: otherATId2s.has(id2),
         methodologyURL: adapterObj.codePath,
-        methodology: undefined
+        methodology: undefined,
+        _stat_adapterVersion: adapterObj.module.default?.version ?? 1,
+        _stat_runAtCurrTime: JSON.stringify(adapterObj.module.default ?? '').includes('runAtCurrTime'),
       } as any
 
       if (singleVersionKey!) infoItem.versionKey = singleVersionKey

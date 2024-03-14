@@ -35597,7 +35597,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "PrimordiumGroup",
     listedAt: 1710373322
-  },
+  }, //trigger server build
 ]
 
 export default data3

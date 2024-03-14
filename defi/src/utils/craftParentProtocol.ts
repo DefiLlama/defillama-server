@@ -323,7 +323,7 @@ export async function craftParentProtocolInternal({
                     acc.tokens[prevDate][token] =
                       (acc.tokens[prevDate][token] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
 
-                    if (!tokensExcludedFromParent.includes(token)) {
+                    if (tokensExcludedFromParent.includes(token)) {
                       // store tvl to exclude by date
                       tvlToExcludeByDate[prevDate] =
                         (tvlToExcludeByDate[prevDate] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
@@ -339,7 +339,7 @@ export async function craftParentProtocolInternal({
 
                 acc.tokensInUsd[nearestDate][token] = (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
 
-                if (!tokensExcludedFromParent.includes(token)) {
+                if (tokensExcludedFromParent.includes(token)) {
                   tvlToExcludeByDate[nearestDate] =
                     (tvlToExcludeByDate[nearestDate] || 0) + (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
                 }

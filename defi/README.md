@@ -68,3 +68,11 @@ To ignore submodule (on git status for example):
 ```
 git config submodule.DefiLlama-Adapters.ignore all
 ```
+
+## To run a specific file ex: storeGetProtocols.ts
+
+```bash
+export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeGetProtocols.ts
+```
+
+make sure to add `handler({pathParameters:{protocol: "uncx-network"}} as any).then(console.log)` (replace parameters as needed) at the end of the file, and remove it before pushing the code!

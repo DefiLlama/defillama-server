@@ -29338,13 +29338,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4017",
-    name: "F1rst Crypto Bank",
+    name: "Bank AI", //previous F1rst Crypto Bank
     address: null,
     symbol: "-",
     url: "https://firstcryptobank.capital",
     description: "The F1rst Crypto bank will be the first of its kind to provide traditional banking services with a modern twist, offering a full suite of cryptocurrency services.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/f1rst-crypto-bank.jpg`,
+    logo: `${baseIconsUrl}/bank-ai.jpg`, //
     audits: "0",
     audit_note: null,
     gecko_id: null,

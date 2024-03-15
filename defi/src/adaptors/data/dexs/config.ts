@@ -2556,47 +2556,14 @@ export default {
             }
         }
     },
-    "arthswap-v3": {
-        parentId: "ArthSwap",
-        "enabled": true,
-        "id": "4272",
-    },
-    "alienbase-v3": {
-        parentId: "Alien Base",
-        "enabled": true,
-        "id": "3361",
-    },
-    "blasterswap": {
-        "enabled": true,
-        "id": "4296",
-    },
-    "cleopatra-v2": {
-        parentId: "Cleopatra Exchange",
-        "enabled": true,
-        "id": "4286",
-    },
     "cleopatra-exchange": {
         parentId: "Cleopatra Exchange",
         "enabled": true,
         "id": "3985"
     },
-    "moraswap-v3": {
-        parentId: "Moraswap",
-        "enabled": true,
-        "id": "4269",
-    },
-    "infusion": {
-        "enabled": true,
-        "id": "4294",
-    },
     "pharaoh-exchange": {
         parentId: "Pharaoh Exchange",
         "enabled": true,
         "id": "3921"
-    },
-    "pharaoh-v2": {
-        parentId: "Pharaoh Exchange",
-        "enabled": true,
-        "id": "4287"
-    },
+    }
 } as AdaptorsConfig

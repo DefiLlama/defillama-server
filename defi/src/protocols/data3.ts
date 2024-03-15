@@ -35738,7 +35738,7 @@ const data3: Protocol[] = [
   {
     id: "4300",
     name: "HyperBlast",
-    address: "0x9FE9991dAF6b9a5d79280F48cbb6827D46DE2EA4",
+    address: "blast:0x9FE9991dAF6b9a5d79280F48cbb6827D46DE2EA4",
     symbol: "HYPE",
     url: "https://hyperblast.io",
     description: `HyperBlast is a decentralized exchange focusing on providing a seamless and secure trading experience. It leverages blockchain technology and smart contracts to ensure fast, transparent, and secure transactions. HyperBlast’s distinguishing feature is its integration with the Blast (L2) layer, which enhances scalability and efficiency, making it a potential frontrunner in the DEX market.`,
@@ -35753,6 +35753,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "HyperBlast/index.js",
+    treasury: "hyperblast.js",
     twitter: "HyperBlastDex",
     listedAt: 1710508638
   },

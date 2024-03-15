@@ -31912,7 +31912,9 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oracles: [], 
+    oraclesByChain: {
+      mode: ["RedStone"], //https://docs.sturdy.finance/overview/security-and-audits
+    },
     forkedFrom: ["AAVE V2"],
     module: "sturdy-v2/index.js",
     twitter: "SturdyFinance",

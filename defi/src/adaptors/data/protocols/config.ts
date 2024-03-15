@@ -93,5 +93,9 @@ export default {
         parentId: "Pharaoh Exchange",
         "enabled": true,
         "id": "4287"
+    },
+    "omax-swap": {
+        "enabled": true,
+        "id": "2464",
     }
 } as AdaptorsConfig

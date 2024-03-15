@@ -35202,13 +35202,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4276",
-    name: "CIAN LSTs",
+    name: "CIAN Vaults", // previous CIAN LSTs
     address: null,
     symbol: "-",
     url: "https://cian.app",
     description: "CIAN is an open automation platform for onchain applications that allows users to swiftly build, optimize and protect intricate strategies using unrivaled automation primitives",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/cian.png`,
+    logo: `${baseIconsUrl}/cian-vaults.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

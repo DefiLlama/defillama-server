@@ -35843,6 +35843,28 @@ const data3: Protocol[] = [
     github: ["geodnet"],
     twitter: "GEODNET_",
   },
+  {
+    id: "4305",
+    name: "MVL Staking",
+    address: "0xa849eaae994fb86afa73382e9bd88c2b6b18dc71",
+    symbol: "MVL",
+    url: "https://mvlbridge.io/",
+    description: `For the past few years, MVL has successfully operated 'TADA', a fast-growing ride-hailing service in Southeast Asia, and 'ONiON Mobility', which develops and operates electric vehicle production and energy infrastructure. MVL is in the process of connecting this to the blockchain ecosystem. MVL Staking rewards are based on the actual business profits of TADA and ONiON. MVL uses Ethereum and BSC and has single staking and LP staking. It is divided into staking with daily rewards and staking with lock up`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mvl.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "mass-vehicle-ledger",
+    cmcId: "2982",
+    category: "Yield", 
+    chains: ["Ethereum","Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "mvl/index.js",
+    twitter: "mvlchain",
+    audit_links: ["https://skynet.certik.com/ko/projects/mvl-mass-vehicle-ledger?utm_source=CMC&utm_campaign=AuditByCertiKLink"],
+    listedAt: 1710538502
+  },
 ]
 
 export default data3

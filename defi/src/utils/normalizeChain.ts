@@ -2588,7 +2588,7 @@ export const chainCoingeckoIds = {
     cmcId: "23262",
     categories: ["EVM"],
     twitter: "AreonNetwork",
-    github: "areon-network",
+    github: ["areon-network"],
     url: "https://areon.network",
   },
   "DeFiVerse": {

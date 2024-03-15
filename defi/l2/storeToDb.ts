@@ -80,8 +80,9 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
   timeseries.map((t: any) => {
     if (chain != "*") {
       const rawData = JSON.parse(t[chain]);
+      if (!rawData) return;
       const data = removeTokenBreakdown(rawData);
-      if (Object.keys(data).length) result.push({ timestamp: t.timestamp, data });
+      result.push({ timestamp: t.timestamp, data });
       return;
     }
 
@@ -90,6 +91,7 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
     Object.keys(t).map((c: string) => {
       if (c == "timestamp") return;
       const rawData = JSON.parse(t[c]);
+      if (!rawData) return;
       data[c] = removeTokenBreakdown(rawData);
     });
 

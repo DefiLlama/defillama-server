@@ -30525,7 +30525,9 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mode"],
-    oracles: ["Pyth"],  // https://twitter.com/modenetwork/status/1754878770840752421
+    oraclesByChain: {
+      mode: ["RedStone"] //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
+    },
     forkedFrom: ["Compound V2"],
     module: "ionic/index.js",
     twitter: "ionicmoney",
@@ -31912,7 +31914,9 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oracles: [], 
+    oraclesByChain: {
+      mode: ["RedStone"], //https://docs.sturdy.finance/overview/security-and-audits
+    },
     forkedFrom: ["AAVE V2"],
     module: "sturdy-v2/index.js",
     twitter: "SturdyFinance",
@@ -34623,7 +34627,7 @@ const data3: Protocol[] = [
     chains: ["Mode"],
     module: "ironclad/index.js",
     twitter: "IroncladFinance",
-    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9221 
+    oracles: ["RedStone"], // https://docs.ironclad.finance/resources/protocol-security#base-oracle-provider
     forkedFrom: ["AAVE V2"], 
     listedAt: 1709767737
   },

@@ -1940,5 +1940,9 @@ export default {
     "primordium": {
         "id": "4293",
         enabled: true
+    },
+    "geodnet": {
+        "id": "4304",
+        enabled: true
     }
 } as AdaptorsConfig

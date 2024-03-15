@@ -328,6 +328,11 @@
     }
   },
   "arbitrum": {
+    "0x2416092f143378750bb29b79eD961ab195CcEea5": {
+      "decimals": "18",
+      "symbol": "ezETH",
+      "to": "coingecko#renzo-restaked-eth"
+    },
     "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
       "decimals": "18",
       "symbol": "rsETH",

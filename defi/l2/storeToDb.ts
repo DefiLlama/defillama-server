@@ -1,6 +1,6 @@
 import postgres from "postgres";
 import { queryPostgresWithRetry } from "../l2/layer2pg";
-import { ChartData, FinalData } from "./types";
+import { ChartData, FinalChainData, FinalData } from "./types";
 import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 
 let auth: string[] = [];
@@ -59,6 +59,14 @@ export default async function storeHistoricalToDB(res: any) {
 
   sql.end();
 }
+function removeTokenBreakdown(data: FinalChainData): FinalChainData {
+  const overviewData: any = {};
+  Object.entries(data).map(([key, value]) => {
+    overviewData[key] = Number(value.total).toFixed();
+  });
+
+  return overviewData;
+}
 export async function fetchHistoricalFromDB(chain: string = "*") {
   const sql = await iniDbConnection();
 
@@ -71,7 +79,8 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
   const result: ChartData[] = [];
   timeseries.map((t: any) => {
     if (chain != "*") {
-      const data = JSON.parse(t[chain]);
+      const rawData = JSON.parse(t[chain]);
+      const data = removeTokenBreakdown(rawData);
       if (Object.keys(data).length) result.push({ timestamp: t.timestamp, data });
       return;
     }
@@ -80,7 +89,8 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
 
     Object.keys(t).map((c: string) => {
       if (c == "timestamp") return;
-      data[c] = JSON.parse(t[c]);
+      const rawData = JSON.parse(t[c]);
+      data[c] = removeTokenBreakdown(rawData);
     });
 
     result.push({ timestamp: t.timestamp, data });

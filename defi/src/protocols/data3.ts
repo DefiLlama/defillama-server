@@ -34627,7 +34627,7 @@ const data3: Protocol[] = [
     chains: ["Mode"],
     module: "ironclad/index.js",
     twitter: "IroncladFinance",
-    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9221 
+    oracles: ["RedStone"], // https://docs.ironclad.finance/resources/protocol-security#base-oracle-provider
     forkedFrom: ["AAVE V2"], 
     listedAt: 1709767737
   },

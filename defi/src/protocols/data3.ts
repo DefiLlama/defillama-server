@@ -30525,7 +30525,9 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mode"],
-    oracles: ["Pyth"],  // https://twitter.com/modenetwork/status/1754878770840752421
+    oraclesByChain: {
+      mode: ["RedStone"] //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
+    },
     forkedFrom: ["Compound V2"],
     module: "ionic/index.js",
     twitter: "ionicmoney",

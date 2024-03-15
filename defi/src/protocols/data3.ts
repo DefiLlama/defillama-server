@@ -29341,8 +29341,8 @@ const data3: Protocol[] = [
     name: "Bank AI", //previous F1rst Crypto Bank
     address: null,
     symbol: "-",
-    url: "https://firstcryptobank.capital",
-    description: "The F1rst Crypto bank will be the first of its kind to provide traditional banking services with a modern twist, offering a full suite of cryptocurrency services.",
+    url: "https://bankai.app",
+    description: "Bank AI ecosystem provides a comprehensive suite of crypto services built on layers of technologies, ensuring a secure, scalable and efficient environment for crypto enthusiast to build, launch and integrate many crypto services, without needing blockchain coding skills.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bank-ai.jpg`, //
     audits: "0",

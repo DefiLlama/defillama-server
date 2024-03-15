@@ -10,12 +10,18 @@ const config: { [chain: string]: any } = {
         toBlock: 18969420,
         eventAbi:
           "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor)",
+        topics: [
+          "0x166ae5f55615b65bbd9a2496e98d4e4d78ca15bd6127c0fe2dc27b76f6c03143",
+        ],
       },
       {
         factory: "0x1A6fCc85557BC4fB7B534ed835a03EF056552D52",
         fromBlock: 18969410,
         eventAbi:
           "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
       },
     ],
   },
@@ -28,12 +34,18 @@ const config: { [chain: string]: any } = {
         toBlock: 156987308,
         eventAbi:
           "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor)",
+        topics: [
+          "0x166ae5f55615b65bbd9a2496e98d4e4d78ca15bd6127c0fe2dc27b76f6c03143",
+        ],
       },
       {
         factory: "0x2FCb47B58350cD377f94d3821e7373Df60bD9Ced",
         fromBlock: 156987300,
         eventAbi:
           "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
       },
     ],
   },
@@ -46,12 +58,18 @@ const config: { [chain: string]: any } = {
         toBlock: 33884419,
         eventAbi:
           "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor)",
+        topics: [
+          "0x166ae5f55615b65bbd9a2496e98d4e4d78ca15bd6127c0fe2dc27b76f6c03143",
+        ],
       },
       {
         factory: "0xC40fEbF5A33b8C92B187d9be0fD3fe0ac2E4B07c",
         fromBlock: 33884419,
         eventAbi:
           "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
       },
     ],
   },
@@ -64,12 +82,18 @@ const config: { [chain: string]: any } = {
         toBlock: 112783590,
         eventAbi:
           "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor)",
+        topics: [
+          "0x166ae5f55615b65bbd9a2496e98d4e4d78ca15bd6127c0fe2dc27b76f6c03143",
+        ],
       },
       {
         factory: "0x4A2B38b9cBd83c86F261a4d64c243795D4d44aBC",
         fromBlock: 112783590,
         eventAbi:
           "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
       },
     ],
   },

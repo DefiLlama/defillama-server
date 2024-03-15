@@ -28,17 +28,15 @@ export default async function getTokenPrices(
 
   await Promise.all(
     factories.map(async (f: any) => {
-      const { factory, fromBlock, toBlock, eventAbi } = f;
+      const { factory: target, fromBlock, toBlock, eventAbi, topics } = f;
       const factoryLogs: any[][] = await newMarkets();
       logs.push(...factoryLogs);
 
       async function newMarkets() {
         return await getLogs({
           api,
-          target: factory,
-          topics: [
-            "0x166ae5f55615b65bbd9a2496e98d4e4d78ca15bd6127c0fe2dc27b76f6c03143",
-          ],
+          target,
+          topics,
           eventAbi,
           onlyArgs: true,
           fromBlock,
@@ -55,6 +53,21 @@ export default async function getTokenPrices(
       ...[
         "0xe11f9786b06438456b044b3e21712228adcaa0d1",
         "0x6f02c88650837c8dfe89f66723c4743e9cf833cd",
+        "0xb7ffe52ea584d2169ae66e7f0423574a5e15056f",
+        "0xaccd9a7cb5518326bed715f90bd32cdf2fec2d14",
+        "0x99e9028e274feafa2e1d8787e1ee6de39c6f7724",
+        "0x60712e3c9136cf411c561b4e948d4d26637561e7",
+        "0xba4a858d664ddb052158168db04afa3cff5cfcc8",
+      ],
+    );
+  if (chain == "ethereum")
+    markets.push(
+      ...[
+        "0x1729981345aa5cacdc19ea9eeffea90cf1c6e28b",
+        "0xbce250b572955c044c0c4e75b2fa8016c12cabf9",
+        "0x17be998a578fd97687b24e83954fec86dc20c979",
+        "0xb4460e76d99ecad95030204d3c25fb33c4833997",
+        "0x8f7627bd46b30e296aa3aabe1df9bfac10920b6e",
       ],
     );
   const tokens: string[][] = await api.multiCall({

@@ -714,5 +714,9 @@ export default {
     "wefi": {
         enabled: true,
         "id": "2666"
+    },
+    "anyhedge": {
+        enabled: true,
+        "id": "2633"
     }
 } as AdaptorsConfig

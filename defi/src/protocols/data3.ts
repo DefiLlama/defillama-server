@@ -21169,7 +21169,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "DEX Aggregator",
+    category: "Dexes",
     chains: ["Radix"],
     oracles: [],
     forkedFrom: [],

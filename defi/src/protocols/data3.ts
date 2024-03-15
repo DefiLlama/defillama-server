@@ -35821,6 +35821,27 @@ const data3: Protocol[] = [
     twitter: "Bifrost_Network",
     listedAt: 1710509784
   },
+  {
+    id: "4304",
+    name: "Geodnet",
+    address: "polygon:0xac0f66379a6d7801d7726d5a943356a172549adb",
+    symbol: "GEOD",
+    url: "https://geodnet.com",
+    description: `RTK (Real-Time Kinematics) enables a 100x improvement in position accuracy as compared to standalone GPS. GEODNET's global RTK Network naturally complements on-device sensors such as Cameras, LiDAR, and IMU's to power AI-based Autonomous Systems.`,
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/geodnet.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "geodnet",
+    cmcId: "20969",
+    category: "Services", // DePin stuff
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    github: ["geodnet"],
+    twitter: "GEODNET_",
+  },
 ]
 
 export default data3

@@ -1,4 +1,4 @@
-
+require("dotenv").config();
 import { PromisePool } from "@supercharge/promise-pool";
 import {
   dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, dailyRawTokensTvl,

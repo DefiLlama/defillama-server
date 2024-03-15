@@ -5,7 +5,7 @@ const cache = require('../utils/cache')
 const { setTomlFile } = require('../utils/r2')
 
 const path = require('path');
-const toml = require('toml');
+const toml = require('@iarna/toml');
 let orgData = []
 let allOrgData = []
 let repoOrgs = []

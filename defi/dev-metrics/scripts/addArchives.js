@@ -5,12 +5,12 @@ const moment = require('moment');
 
 // Define the start and end dates
 // let startDate = moment('2015-01-01-00', 'YYYY-MM-DD-HH');
-const startDate = moment('2023-08-11-2', 'YYYY-MM-DD-HH');
+const startDate = moment('2024-02-26-2', 'YYYY-MM-DD-HH');
 // const endDate = moment('2015-01-04-00', 'YYYY-MM-DD-HH');
 const endDate = moment().startOf('hour').subtract(4, 'hour');
 
 async function main() {
-  await sequelize.sync()
+  // await sequelize.sync()
 
   let fileNumber = { i: 1, startTimestamp: +Date.now(), totalHours: (endDate - startDate) / (3600 * 1e3), checked: 0 }
   const checkedTill = moment('2020-08-27-8', 'YYYY-MM-DD-HH');

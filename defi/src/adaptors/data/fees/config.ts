@@ -1944,5 +1944,9 @@ export default {
     "geodnet": {
         "id": "4304",
         enabled: true
+    },
+    "econia": {
+        "enabled": true,
+        "id": "4128"
     }
 } as AdaptorsConfig

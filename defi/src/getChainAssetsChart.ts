@@ -7,7 +7,7 @@ const handler = async (event: any): Promise<IResponse> => {
     const chains = await fetchHistoricalFromDB(chain);
     return successResponse(chains, 10 * 60); // 10 min cache
   } catch (e: any) {
-    return errorResponse({ message: e });
+    return errorResponse({ message: e.message });
   }
 };
 

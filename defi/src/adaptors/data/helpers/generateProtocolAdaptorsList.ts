@@ -98,7 +98,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
           const parentConfig = JSON.parse(JSON.stringify(config[adapterKey]))
           delete parentConfig.protocolsData
           const id = !isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id // used to query db, eventually should be changed to defillamaId
-          const protocolType = (moduleObject as any).default?.protocolType
+          const protocolType = (moduleObject as any).protocolType
           const infoItem: ProtocolAdaptor = {
             ...dexFoundInProtocols,
             ...configObj,
@@ -151,7 +151,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       let moduleObject = allImports[adapterKey].module.default
       if (!moduleObject) throw new Error(`No module found for ${adapterKey}`)
 
-      const protocolType = (moduleObject as any).default?.protocolType
+      const protocolType = (moduleObject as any).protocolType
       let protocol: Protocol | IParentProtocol
       let baseModuleObject = {} as BaseAdapter
       let chains: string[] = []

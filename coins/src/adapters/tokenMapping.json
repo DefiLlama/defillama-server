@@ -330,8 +330,8 @@
   "arbitrum": {
     "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
       "decimals": "18",
-      "symbol": "MATIC",
-      "to": "kelp-dao-restaked-eth"
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
     },
     "0x561877b6b3dd7651313794e5f2894b2f18be0766": {
       "decimals": "18",
@@ -1321,7 +1321,7 @@
       "decimals": "18",
       "symbol": "agEUR",
       "to": "coingecko#ageur"
-    } 
+    }
   },
   "wan": {
     "0x0000000000000000000000000000000000000000": {

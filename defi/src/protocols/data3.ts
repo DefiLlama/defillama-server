@@ -18576,8 +18576,8 @@ const data3: Protocol[] = [
   {
     id: "3530",
     name: "BMX",
-    address: "fantom:0x66eed5ff1701e6ed8470dc391f05e27b1d0657eb",
-    symbol: "MPX",
+    address: "base:0x548f93779fbc992010c07467cbaf329dd5f059b7",
+    symbol: "BMX",
     url: "https://bmx.morphex.trade",
     description:
       "BMX by Morphex is a decentralized perpetual exchange focused on bringing the highest capital efficiency to liquidity providers.",

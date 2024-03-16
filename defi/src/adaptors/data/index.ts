@@ -80,7 +80,14 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
   if (!mapping[adapterType]) throw new Error(`Couldn't find data for ${adapterType} type`)
   const { config, KEYS_TO_STORE, imports } = mapping[adapterType]
 
-  const allImports = getImports(adapterType)
+  const allImportsByAdaptertype = getImports(adapterType)
+  const allImportsTypeProtocols = [AdapterType.DEXS, AdapterType.FEES].includes(adapterType) ? getImports(AdapterType.PROTOCOLS) : {}
+  const allImports = Object.entries(allImportsTypeProtocols).reduce((acc, [key, value]) => {
+    if (!acc.hasOwnProperty(key)) {
+        acc[key] = value;
+    }
+    return acc;
+}, {...allImportsByAdaptertype});
   const otherATId2s = getOtherAdaperTypeId2s(adapterType)
   const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, otherATId2s })
   const childProtocolAdaptors = protocolAdaptors.flatMap((protocolAdaptor: ProtocolAdaptor) => protocolAdaptor.childProtocols || [])

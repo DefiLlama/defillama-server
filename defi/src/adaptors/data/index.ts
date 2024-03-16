@@ -79,15 +79,22 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
   // Thats why we create an object with all adapters using the spread operator which only references the objects (they load all of them into memory anyways)
   if (!mapping[adapterType]) throw new Error(`Couldn't find data for ${adapterType} type`)
   const { config, KEYS_TO_STORE, imports } = mapping[adapterType]
-
+  const isProtocolTypeDexsOrFees = [AdapterType.DEXS, AdapterType.FEES].includes(adapterType);
+  const protocolConfig = isProtocolTypeDexsOrFees ? mapping[AdapterType.PROTOCOLS].config : {};
   const allImportsByAdaptertype = getImports(adapterType)
-  const allImportsTypeProtocols = [AdapterType.DEXS, AdapterType.FEES].includes(adapterType) ? getImports(AdapterType.PROTOCOLS) : {}
+  const allImportsTypeProtocols = isProtocolTypeDexsOrFees ? getImports(AdapterType.PROTOCOLS) : {}
   const allImports = Object.entries(allImportsTypeProtocols).reduce((acc, [key, value]) => {
     if (!acc.hasOwnProperty(key)) {
         acc[key] = value;
     }
     return acc;
-}, {...allImportsByAdaptertype});
+  }, {...allImportsByAdaptertype});
+  const allConfig = Object.entries(protocolConfig).reduce((acc, [key, value]) => {
+    if (!acc.hasOwnProperty(key)) {
+        acc[key] = value;
+    }
+    return acc;
+  }, {...config});
   const otherATId2s = getOtherAdaperTypeId2s(adapterType)
   const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, otherATId2s })
   const childProtocolAdaptors = protocolAdaptors.flatMap((protocolAdaptor: ProtocolAdaptor) => protocolAdaptor.childProtocols || [])
@@ -97,10 +104,10 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
   }, {} as IJSON<ProtocolAdaptor>)
 
   return {
-    default: generateProtocolAdaptorsList(all.imports[adapterType], config, adapterType),
+    default: generateProtocolAdaptorsList(allImports, allConfig, adapterType),
     KEYS_TO_STORE,
     importModule: importModule(adapterType),
-    config,
+    config: allConfig,
     rules: getRules(adapterType),
     protocolAdaptors,
     childProtocolAdaptors,

@@ -333,6 +333,11 @@
       "symbol": "ezETH",
       "to": "coingecko#renzo-restaked-eth"
     },
+    "0x02f92800F57BCD74066F5709F1Daa1A4302Df875": {
+      "decimals": "18",
+      "symbol": "PEAS",
+      "to": "coingecko#peapods-finance"
+    },
     "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
       "decimals": "18",
       "symbol": "rsETH",

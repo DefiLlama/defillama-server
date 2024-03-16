@@ -53,7 +53,7 @@ export interface IHandlerBodyResponse extends
 export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-    const protocolName = event.pathParameters?.name?.toLowerCase() 
+    const protocolName = event.pathParameters?.name?.toLowerCase()
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
     const rawDataType = event.queryStringParameters?.dataType
     const data = await getProtocolDataHandler(protocolName, adaptorType, rawDataType)
@@ -211,21 +211,18 @@ const sumReduce = (summaries: IJSON<any>[], key: string) => summaries.reduce((ac
 
 const getProtocolData = async (protocolName: string, adaptorType: AdapterType) => {
     // Import data list
-    const adapters2load: string[] = [adaptorType, "protocols"]
-    const protocolsList = Object.keys((loadAdaptorsData(adaptorType)).config)
     let dexData: ProtocolAdaptor | undefined = undefined
     let adaptorsData: AdaptorData | undefined = undefined
-    for (const type2load of adapters2load) {
-        try {
-            adaptorsData = loadAdaptorsData(type2load as AdapterType)
-            dexData = adaptorsData.default
-                .find(va => protocolsList.includes(va.module)
-                    && (sluggifyString(va.name) === protocolName || sluggifyString(va.displayName) === protocolName)
-                )
-            if (dexData) break
-        } catch (error) {
-            console.error(`Couldn't load adaptors with type ${type2load} :${JSON.stringify(error)}`)
-        }
+    try {
+        adaptorsData = loadAdaptorsData(adaptorType)
+        dexData = adaptorsData.default
+            .find(va =>
+                sluggifyString(va.name) === protocolName
+                || sluggifyString(va.displayName) === protocolName
+                || va.module === protocolName
+            )
+    } catch (error) {
+        console.error(`Couldn't load adaptors with type ${adaptorType} :${JSON.stringify(error)}`)
     }
     return dexData
 }

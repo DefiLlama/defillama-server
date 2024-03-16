@@ -35955,6 +35955,28 @@ const data3: Protocol[] = [
     github: ["frontrun-market"],
     listedAt: 1710596650
   },
+  {
+    id: "4310",
+    name: "Dradex",
+    address: null,
+    symbol: "-",
+    url: "https://dradex.xyz/",
+    description: `AMM & Order Book exchange, built on Solana`,
+    chain: "Solana",
+    logo: `${baseIconsUrl}/dradex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dradex/index.js",
+    twitter: "Dradex_io",
+    github: ["dradex-io "],
+    listedAt: 1710611677
+  },
 ]
 
 export default data3

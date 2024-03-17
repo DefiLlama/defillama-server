@@ -35602,7 +35602,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "PrimordiumGroup",
-    listedAt: 1710373322
   },
   {
     id: "4294",

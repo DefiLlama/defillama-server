@@ -35093,7 +35093,7 @@ const data3: Protocol[] = [
   {
     id: "4271",
     name: "PerfectSwap",
-    address: "arbitrum:0x05ACc9F737AEdD1E8C0F44bCF6961b73766AA43e",
+    address: "arbitrum:0xA108a69A996d5467444780e2B1b36aD5851de2Ef",
     symbol: "PRFCT",
     url: "https://perfectswap.io/",
     description:

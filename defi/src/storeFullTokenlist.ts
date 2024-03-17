@@ -48,12 +48,13 @@ async function getProtocols() {
       parent.tvl += p.tvl
     }
   })
-  const protocols = raw["protocols"].concat(parentProtocols).filter((protocol:any)=>protocol.tvl > 10e3 && !protocol.parentProtocol).map((x: any) => ({
+  const protocols = raw["protocols"].concat(parentProtocols).filter((protocol:any)=> (protocol.tvl > 10e3 || protocol.mcap > 100e3) && !protocol.parentProtocol).map((x: any) => ({
     name: x.name,
     url: x.url,
     logo: x.logo,
     category: x.category,
     tvl: x.tvl,
+    mcap: x.mcap
   }));
   return protocols.sort((a:any, b:any)=>(b.tvl ?? 0) - (a.tvl ?? 0))
 }

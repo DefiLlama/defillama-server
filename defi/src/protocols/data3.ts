@@ -4407,7 +4407,7 @@ const data3: Protocol[] = [
   },
   {
     id: "2899",
-    name: "Vertex Protocol",
+    name: "Vertex",
     address: "arbitrum:0x95146881b86b3ee99e63705ec87afe29fcc044d9",
     symbol: "VRTX",
     url: "https://vertexprotocol.com",
@@ -33825,7 +33825,7 @@ const data3: Protocol[] = [
     chains: ["Blast"],
     module: "blitz-exchange/index.js",
     twitter: "tradeonblitz",
-    forkedFrom: ["Vertex Protocol"], // it uses edges product from vertex https://edge.vertexprotocol.com/ "Vertex Edge’s composable orderbook solves the problems of liquidity fragmentation and creates economic alliances across chains."
+    forkedFrom: ["Vertex"], // it uses edges product from vertex https://edge.vertexprotocol.com/ "Vertex Edge’s composable orderbook solves the problems of liquidity fragmentation and creates economic alliances across chains."
     oracles: [], 
     audit_links: [],
     listedAt: 1709318288

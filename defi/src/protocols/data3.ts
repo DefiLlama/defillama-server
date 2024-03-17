@@ -7088,6 +7088,7 @@ const data3: Protocol[] = [
     treasury: "femboy-dao.js",
     governanceID: ["eip155:1:0x710C7E422A98963d6BA216840b1d83E77064A031"],
   },
+  /*
   {
     id: "3018",
     name: "CowSwap smartBCH",
@@ -7110,6 +7111,7 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1684949852,
   },
+  */
   {
     id: "3019",
     name: "Maestro",

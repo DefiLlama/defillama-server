@@ -7091,14 +7091,14 @@ const data3: Protocol[] = [
   /*
   {
     id: "3018",
-    name: "CowSwap smartBCH",
+    name: "Old CowSwap smartBCH",
     address: null,
     symbol: "-",
     url: "http://cowswap.cash/",
     description:
       "Decentralized exchange on smartBCH",
     chain: "smartBCH",
-    logo: `${baseIconsUrl}/cowswap-smartbch.png`,
+    logo: `${baseIconsUrl}/old-cowswap-smartbch.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

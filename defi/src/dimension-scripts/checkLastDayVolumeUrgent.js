@@ -7,11 +7,11 @@ axios.get(apiUrl)
     .then(response => {
         const protocols = response.data.protocols || [];
 
-        // Filter protocols where change_1d is null or 0 and totalVolume7d is greater than 500k and no negative numbers
+        // Filter protocols where change_1d is null or 0 and totalVolume7d is greater than 500k 
         const problematicProtocols = protocols.filter(protocol => {
             return (
                 (protocol.change_1d === null || protocol.change_1d === 0) &&
-                protocol.totalVolume7d > 500000 && protocol.change_1d < 0 
+                protocol.totalVolume7d > 500000 // && protocol.change_1d < 0 
             );
         });
 

@@ -21,7 +21,7 @@ type ProtocolData = {
   gecko_id?: string;
   mcap?: any;
   events?: any;
-  unlocksPerDay: number
+  unlocksPerDay: number;
 };
 
 const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> => {
@@ -59,7 +59,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         console.error(`${protocol} failed with 0 length data section`);
         return;
       }
-      const maxSupply = formattedData[formattedData.length - 1][1];
+      const maxSupply = res.metadata.total ?? formattedData[formattedData.length - 1][1];
       const rawNextEvent = res.metadata.events.find((e: any) => e.timestamp > now);
 
       let nextEvent;
@@ -78,7 +78,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
       }
       const nextUnlockIndex = formattedData.findIndex(([date]) => Number(date) > now);
       const circSupply = nextUnlockIndex != -1 ? formattedData[nextUnlockIndex - 1]?.[1] ?? [] : maxSupply;
-      const unlocksPerDay = formattedData[nextUnlockIndex]?.[1] - formattedData[nextUnlockIndex - 1]?.[1]
+      const unlocksPerDay = formattedData[nextUnlockIndex]?.[1] - formattedData[nextUnlockIndex - 1]?.[1];
 
       protocolsData.push({
         token: res.metadata.token,
@@ -91,7 +91,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         gecko_id: res.gecko_id,
         events: res.metadata.events,
         nextEvent,
-        unlocksPerDay
+        unlocksPerDay,
       });
     })
   );

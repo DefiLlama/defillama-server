@@ -3591,8 +3591,8 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://jup.ag",
     description: `Best exchange in DeFi. Full stack ecosystem play focused on advancing the meta.`,
     logo: `${baseIconsUrl}/jupiter.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "jupiter-exchange-solana",
+    cmcId: "29210",
     chains: [],
     twitter: "JupiterExchange",
     github: ["jup-ag"]

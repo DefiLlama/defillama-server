@@ -17060,8 +17060,8 @@ const data2: Protocol[] = [
   {
     id: "2141",
     name: "Jupiter Aggregator",
-    address: null,
-    symbol: "-",
+    address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    symbol: "JUP",
     url: "https://jup.ag/",
     description:
       "The best swap aggregator & infrastructure for Solana -  powering best price, token selection and UX for all users and devs",

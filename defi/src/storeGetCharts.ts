@@ -18,7 +18,8 @@ import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
 import { writeToPGCache, PG_CACHE_KEYS, storeRouteData } from "./api2/cache/file-cache";
 import { excludeProtocolInCharts } from "./utils/excludeProtocols";
 
-export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
+export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
+  const timestamp = getClosestDayStartTimestamp(timestampRaw)
   if (sumDailyTvls[chain] === undefined) {
     sumDailyTvls[chain] = {};
   }

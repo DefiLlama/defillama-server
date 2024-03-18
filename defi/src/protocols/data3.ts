@@ -30675,8 +30675,8 @@ const data3: Protocol[] = [
   {
     id: "4077",
     name: "Jupiter Perpetual Exchange",
-    address: null,
-    symbol: "-",
+    address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    symbol: "JUP",
     url: "https://jup.ag/perps",
     description: "Jupiter Perpetual Exchange is a LP-to-trader perpetual exchange based on oracle prices.",
     chain: "Solana",

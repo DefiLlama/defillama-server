@@ -36128,6 +36128,55 @@ const data3: Protocol[] = [
     github: ["dao-envelop"],
     listedAt: 1710777807
   },
+  {
+    id: "4318",
+    name: "LiquiX",
+    address: null,
+    symbol: "-",
+    url: "https://liquix.finance/",
+    description: `A protocol built as one-station LP infrastructure solution.LiquiX offers non-custodial,highly efficient and secure LP service to users via automated execution of algorithm strategies on various dapps and chains aggregated by the protocol`,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/liquix.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager", 
+    chains: ["Arbitrum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "liquix/index.js",
+    twitter: "liqui_x",
+    audit_links: ["https://github.com/LiquiX-Finance/Private-Pool-Vault/blob/main/SlowMist%20Audit%20Report%20-%20LiquiX.pdf"],
+    listedAt: 1710785382
+  },
+  {
+    id: "4319",
+    name: "MYX Finance",
+    address: null,
+    symbol: "-",
+    url: "https://myx.finance/",
+    description: `A decentralized derivatives protocol with a Matching Pool Mechanism`,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/myx-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives", 
+    chains: ["Arbitrum", "Linea"],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9342
+    forkedFrom: [],
+    module: "myx-finance/index.js",
+    twitter: "MYX_Finance",
+    github: ["myx-protocol"],
+    audit_links: [
+      "https://1570067552-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FHCv4CkXABCLemz93mpi7%2Fuploads%2FuhcjNXBHA9yHn3b49ibX%2FPeckShield-Audit-Report-MYX-v1.0.pdf?alt=media&token=0b011c50-cb83-432b-a37b-84fd88c3f5f9",
+      "https://1570067552-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FHCv4CkXABCLemz93mpi7%2Fuploads%2FjSF3929CurPBEmPKgS1C%2FSlowMist%20Audit%20Report%20-%20MYX%20Protocol.pdf?alt=media&token=1000fd1e-f8b1-42dc-b95b-5aad70928c31",
+      "https://1570067552-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FHCv4CkXABCLemz93mpi7%2Fuploads%2Fa73mi2pbsoZwjmQ8TN5F%2FSlowMist%20Audit%20Report%20-%20MYX%20Protocol%20Phase2.pdf?alt=media&token=0a349499-a86c-4ccd-b1b0-1c6a8a7608d0"
+    ],
+    listedAt: 1710785415
+  },
 ]
 
 export default data3

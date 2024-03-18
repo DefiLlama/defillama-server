@@ -97,5 +97,10 @@ export default {
     "omax-swap": {
         "enabled": true,
         "id": "2464",
+    },
+    "kim-exchange-v2": {
+        "enabled": true,
+        "id": "4038",
+        parentId: "KIM Exchange",
     }
 } as AdaptorsConfig

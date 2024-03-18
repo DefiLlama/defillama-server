@@ -2306,6 +2306,7 @@ export default {
         "id": "3117"
     },
     "kizuna": {
+        parentId: "KIM Exchange",
         "enabled": true,
         "id": "3913"
     },
@@ -2565,5 +2566,10 @@ export default {
         parentId: "Pharaoh Exchange",
         "enabled": true,
         "id": "3921"
+    },
+    "kim-exchange-v3": {
+        parentId: "KIM Exchange",
+        "enabled": true,
+        "id": "4299"
     }
 } as AdaptorsConfig

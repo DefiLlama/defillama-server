@@ -35975,8 +35975,30 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dradex/index.js",
     twitter: "Dradex_io",
-    github: ["dradex-io "],
+    github: ["dradex-io"],
     listedAt: 1710611677
+  },
+  {
+    id: "4311",
+    name: "Molend",
+    address: null,
+    symbol: "-",
+    url: "https://molend.org",
+    description: `Molend is a decentralized, non-custodial liquidity market protocol deployed on Mode Network, where users can participate as depositors or borrowers. The protocol allows depositors to provide liquidity to the market and earn passive income, while borrowers can borrow in an over-collateralized and perpetual manner.`,
+    chain: "Mode",
+    logo: `${baseIconsUrl}/molend.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending", 
+    chains: ["Mode"],
+    oracles: [], // they added pyth on the form, but no mention of it in their docs, or any place
+    forkedFrom: ["AAVE V2"],
+    module: "molend/index.js",
+    twitter: "MolendProtocol",
+    github: ["molend-labs"],
+    listedAt: 1710772242
   },
 ]
 

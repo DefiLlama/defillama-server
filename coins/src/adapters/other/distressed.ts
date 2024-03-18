@@ -1,5 +1,6 @@
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
+    hBTC: '0x0316eb71485b0ab14103307bf65a021042c6d380',
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
     PSY_SCAM: "0xe5a2363904d91c6a311a378537b29c7c6d4f230d",
     GVR_OLD: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",

@@ -106,5 +106,10 @@ export default {
     "swapmode-v2": {
         "enabled": true,
         "id": "4116",
-    }
+    },
+    "kim-exchange-v3": {
+        "enabled": true,
+        "id": "4299",
+        parentId: "KIM Exchange",
+    },
 } as AdaptorsConfig

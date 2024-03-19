@@ -36265,6 +36265,28 @@ const data3: Protocol[] = [
     github: ["aera-finance"],
     listedAt: 1710850850
   },
+  {
+    id: "4324",
+    name: "Armada Staking",
+    address: null,
+    symbol: "-",
+    url: "https://armadafi.so",
+    description: `Armada staking is an open sourced protocol that allows Solana projects to add staking to their tokenomics with minimal effort. It is part of a suite of tooling that allows projects to focus on their core product instead of building token mechanisms.`,
+    chain: "Solana",
+    logo: `${baseIconsUrl}/armada-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm", 
+    chains: ["Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "armada-staking/idl.js",
+    twitter: "ArmadaFi",
+    github: ["mithraiclabs"],
+    listedAt: 1710856979
+  },
 ]
 
 export default data3

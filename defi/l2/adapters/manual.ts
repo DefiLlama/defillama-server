@@ -76,6 +76,9 @@ export const additional: { [chain: string]: string[] } = {
   zksync: [
     "0x4b9eb6c0b6ea15176bbf62841c6b2a8a398cb656", // DAI
   ],
+  mode: [
+    '0x2416092f143378750bb29b79eD961ab195CcEea5', // ezETH
+  ]
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [

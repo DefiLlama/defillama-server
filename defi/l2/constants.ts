@@ -13,8 +13,8 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "tron",
   "ethereum",
   "solana",
-  "sui",
-  "aptos",
+  // "sui",
+  // "aptos",
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {

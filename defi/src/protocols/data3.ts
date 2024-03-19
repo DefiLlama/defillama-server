@@ -35930,7 +35930,7 @@ const data3: Protocol[] = [
     chains: ["Waves"],
     oracles: [],
     forkedFrom: [],
-    module: "wx-network/index.js",
+    module: "waves-exchange/index.js",
     twitter: "WXNetwork",
     listedAt: 1710596580
   },

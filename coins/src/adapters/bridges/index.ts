@@ -21,6 +21,7 @@ import axelar from "./axelar";
 import linea from "./linea";
 import manta from "./manta";
 import astrzk from "./astrzk";
+import zklink from "./zklink";
 
 export type Token =
   | {
@@ -82,6 +83,7 @@ export const bridges = [
   linea,
   manta,
   astrzk,
+  zklink,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

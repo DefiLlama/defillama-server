@@ -36282,7 +36282,7 @@ const data3: Protocol[] = [
     chains: ["Solana"],
     oracles: [], 
     forkedFrom: [],
-    module: "armada-staking/idl.js",
+    module: "armada-staking/index.js",
     twitter: "ArmadaFi",
     github: ["mithraiclabs"],
     listedAt: 1710856979

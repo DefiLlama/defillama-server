@@ -36293,6 +36293,27 @@ const data3: Protocol[] = [
     github: ["mithraiclabs"],
     listedAt: 1710856979
   },
+  {
+    id: "4325",
+    name: "VulcanDex",
+    address: null,
+    symbol: "-",
+    url: "https://vulcandex.app",
+    description: `Play, Swap, Stake, Earn. Popular decentralized exchange dedicated to gaming tokens.`,
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/vulcandex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Polygon"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "vulcandex/index.js",
+    twitter: "VulcanForged",
+    listedAt: 1710888996
+  },
 ]
 
 export default data3

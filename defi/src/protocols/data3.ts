@@ -36221,6 +36221,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#curve-finance",
     listedAt: 1710843413
   },
+  {
+    id: "4322",
+    name: "Blastex",
+    address: null,
+    symbol: "-",
+    url: "https://blastex.net",
+    description: `Blastex is the crypto Super Dex, powered by Blast, where you can explore the benefits of bonding and ETH staking, divide the profit from the platform into the Treasury and earn additional Blast points.`,
+    chain: "Blast",
+    logo: `${baseIconsUrl}/blastex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm", 
+    chains: ["Blast"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "blastex/index.js",
+    twitter: "Blastex_net",
+    listedAt: 1710850613
+  },
+  {
+    id: "4323",
+    name: "Aera",
+    address: null,
+    symbol: "-",
+    url: "https://www.aera.finance",
+    description: `Autonomous onchain treasury management protocol for DAOs, built by the team at Gauntlet.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/aera.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services", 
+    chains: ["Ethereum", "Polygon"],
+    oracles: ["Chainlink"], //https://docs.aera.finance/
+    forkedFrom: [],
+    module: "aera/index.js",
+    twitter: "aerafinance",
+    audit_links: ["https://github.com/aera-finance/aera-contracts-public/blob/main/v2/audits/spearbit/2023-09-22.pdf"],
+    github: ["aera-finance"],
+    listedAt: 1710850850
+  },
 ]
 
 export default data3

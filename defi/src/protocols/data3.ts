@@ -28856,7 +28856,7 @@ const data3: Protocol[] = [
     symbol: "-",
     assetToken: "pFIL",
     url: "https://repl.fi/",
-    description: "Repl is the first repledging Protocol for pledged FIL assets. It aims to enhance the efficiency of pledged FIL, remove idiosyncratic risks among Filecoin storage providers, and lower the complexity for people to earn Filecoin mining return",
+    description: "Repl is the first restaking protocol for DePINs, enabling natively pledged DePIN tokens and DePIN liquid staking tokens to be reused to secure new DePIN initiatives and applications. It also creates a simple way for BTC and ETH staking and restaking projects to access DePIN protocol rewards.",
     chain: "Filecoin",
     logo: `${baseIconsUrl}/repl.png`, 
     audits: "0",

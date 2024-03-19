@@ -33145,7 +33145,7 @@ const data3: Protocol[] = [
     module: "haiko/index.js",
     twitter: "haikoxyz",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pragma"], // https://haiko-docs.gitbook.io/docs/protocol/strategy-vaults/live-vaults/replicating-strategy , https://prnt.sc/X_GoF6yNW838
     github: ["haiko-xyz"],
     audit_links: ["https://haiko-docs.gitbook.io/docs/security-and-audits"],
     listedAt: 1709071097

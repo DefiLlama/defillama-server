@@ -804,6 +804,13 @@ functions:
       - http:
           path: chain-assets/chart/{chain}
           method: get
+  chainAssetFlows: 
+    handler: src/getChainAssetFlows.default
+    timeout: 30
+    events:
+      - http:
+          path: chain-assets/flows/{period}
+          method: get
 
 resources:
   # CORS for api gateway errors

@@ -8444,14 +8444,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3077",
-    name: "Fathom Dex",
+    name: "Fathom", // previous Fathom Dex
     address: "xdc:0x35Ad816bC01C0Ed46eF3ce918f7b458d7b1CC18e",
     symbol: "FTHM",
     url: "https://swap.fathom.fi/#/swap",
     description:
       "A decentralized overcollateralized stablecoin (FXD) with an integrated DEX and a governance token (FTHM).",
     chain: "XDC",
-    logo: `${baseIconsUrl}/fathom-dex.png`,
+    logo: `${baseIconsUrl}/fathom.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "fathom-protocol",

@@ -35915,13 +35915,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4308",
-    name: "wx network",
+    name: "Waves Exchange", // previous wx network
     address: null,
     symbol: "-",
     url: "https://wx.network",
     description: `WX Network is a full-featured liquidity platform for self-sovereign crypto management with a suite of investment tools and secure, easy-to-use interface..`,
     chain: "Waves",
-    logo: `${baseIconsUrl}/wx-network.jpg`,
+    logo: `${baseIconsUrl}/waves-exchange.jpg`, //wx-network waves-exchange
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -35930,7 +35930,7 @@ const data3: Protocol[] = [
     chains: ["Waves"],
     oracles: [],
     forkedFrom: [],
-    module: "wx-network-waves/index.js",
+    module: "wx-network/index.js",
     twitter: "WXNetwork",
     listedAt: 1710596580
   },

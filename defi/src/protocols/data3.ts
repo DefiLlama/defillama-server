@@ -21550,15 +21550,20 @@ const data3: Protocol[] = [
   {
     id: "3663",
     name: "Nolus Protocol",
-    address: "nolus:-",
+    address: "osmosis:ibc/D9AFCECDD361D38302AA66EB3BAC23B95234832C51D12489DC451FA2B7C72782",
     symbol: "NLS",
     url: "https://nolus.io/",
     description: "Nolus is a semi-permissioned blockchain bridging lenders and borrowers in a DeFi money market. With its DeFi Lease, borrowers can secure up to 150% financing on their initial investments, and access to the underlying leveraged assets through whitelisted strategies. Inspired by traditional leasing, where one pays a fraction upfront and gains ownership after repayment, Nolus' approach cuts down the DeFi sector's high over-collateralization standards. This boosts capital efficiency and offers borrowers better loan terms.",
     chain: "Nolus",
     logo: `${baseIconsUrl}/nolus-protocol.jpg`,
-    audits: "0",
+    audits: "3",
     audit_note: null,
-    gecko_id: null,
+    audit_links: [
+      "https://github.com/oak-security/audit-reports/blob/master/Nolus/2022-12-12%20Audit%20Report%20-%20Nolus%20Core%20v1.1.pdf",
+      "https://github.com/oak-security/audit-reports/blob/master/Nolus/2023-01-27%20Audit%20Report%20-%20Nolus%20Money%20Market%20v1.1.pdf",
+      "https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Nolus_Money_Market_CosmWasm_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf"
+    ],
+    gecko_id: "nolus",
     cmcId: null,
     category: "Lending",
     chains: ["Nolus"],
@@ -21566,6 +21571,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "nolus/index.js",
     twitter: "NolusProtocol",
+    github: ["nolus-protocol"],
+    openSource: true,
     listedAt: 1697724120
   },
   {

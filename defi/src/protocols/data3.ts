@@ -35993,7 +35993,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending", 
     chains: ["Mode"],
-    oracles: [], // they added pyth on the form, but no mention of it in their docs, or any place
+    oracles: ["Pyth"], // https://docs.molend.org/oracles , https://explorer.mode.network/address/0x86592C8141Aec8f7B836f4559614233b253c55F1?tab=contract
     forkedFrom: ["AAVE V2"],
     module: "molend/index.js",
     twitter: "MolendProtocol",

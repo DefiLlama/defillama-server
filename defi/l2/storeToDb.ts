@@ -85,6 +85,8 @@ function parsePgData(timeseries: any[], chain: string) {
       if (c == "timestamp") return;
       const rawData = JSON.parse(t[c]);
       if (!rawData) return;
+      // DEBUG:
+      // data[c] = rawData
       data[c] = removeTokenBreakdown(rawData);
     });
 
@@ -104,6 +106,8 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
   sql.end();
 
   const result = parsePgData(timeseries, chain);
+  // DEBUG:
+  // return result
   return findDailyEntries(result);
 }
 function findDailyEntries(raw: ChartData[], period: number = secondsInADay): ChartData[] {

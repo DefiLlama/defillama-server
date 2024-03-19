@@ -30528,7 +30528,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Mode"],
     oraclesByChain: {
-      mode: ["RedStone"] //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
+      mode: ["RedStone","Pyth"] //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
     },
     forkedFrom: ["Compound V2"],
     module: "ionic/index.js",

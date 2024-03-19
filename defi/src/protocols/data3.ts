@@ -21556,7 +21556,7 @@ const data3: Protocol[] = [
     description: "Nolus is a semi-permissioned blockchain bridging lenders and borrowers in a DeFi money market. With its DeFi Lease, borrowers can secure up to 150% financing on their initial investments, and access to the underlying leveraged assets through whitelisted strategies. Inspired by traditional leasing, where one pays a fraction upfront and gains ownership after repayment, Nolus' approach cuts down the DeFi sector's high over-collateralization standards. This boosts capital efficiency and offers borrowers better loan terms.",
     chain: "Nolus",
     logo: `${baseIconsUrl}/nolus-protocol.jpg`,
-    audits: "3",
+    audits: "2",
     audit_note: null,
     audit_links: [
       "https://github.com/oak-security/audit-reports/blob/master/Nolus/2022-12-12%20Audit%20Report%20-%20Nolus%20Core%20v1.1.pdf",
@@ -21572,7 +21572,6 @@ const data3: Protocol[] = [
     module: "nolus/index.js",
     twitter: "NolusProtocol",
     github: ["nolus-protocol"],
-    openSource: true,
     listedAt: 1697724120
   },
   {

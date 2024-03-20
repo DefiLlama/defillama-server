@@ -36517,7 +36517,7 @@ const data3: Protocol[] = [
     url: "https://zklink.io",
     description: `The first aggregated Layer 3 zkEVM network that links Ethereum and its Layer 2 Rollups for any use case, with exceptional composability, interoperability, scalability, and security through zero-knowledge proofs.`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/zklink-nova.png`,
+    logo: `${baseIconsUrl}/zklink-nova.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

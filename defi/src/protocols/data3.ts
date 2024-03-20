@@ -36488,6 +36488,27 @@ const data3: Protocol[] = [
     twitter: "meleganza",
     listedAt: 1710975958
   },
+  {
+    id: "4334",
+    name: "bitsCrunch",
+    address: "0xBEF26Bd568e421D6708CCA55Ad6e35f8bfA0C406",
+    symbol: "BCUT",
+    url: "https://bitscrunch.com",
+    description: `bitsCrunch is an AI-powered, decentralized NFT data platform that enables developers to build reliable NFT applications (dApps) quick and easy.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bitscrunch.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "bitscrunch-token",
+    cmcId: "28559",
+    category: "Services", 
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    treasury: "bitsCrunch.js",
+    twitter: "bitsCrunch",
+  },
 ]
 
 export default data3

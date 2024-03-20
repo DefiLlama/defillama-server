@@ -33206,7 +33206,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.21.co/tokens",
-    description: "Connecting cross-chain liquidity and security to TradFi institutional expertise",
+    description: "Onchain Access to Cross-Chain Liquidity",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/21.co.png`,
     audits: "2",

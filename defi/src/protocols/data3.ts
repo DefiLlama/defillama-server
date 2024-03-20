@@ -36446,6 +36446,48 @@ const data3: Protocol[] = [
     github: ["lydialabs"],
     listedAt: 1710944068
   },
+  {
+    id: "4332",
+    name: "SolidBlast",
+    address: null,
+    symbol: "-",
+    url: "https://solidblast.xyz/",
+    description: `SolidBlast is an BLAST decentralized exchange that allows swaps at a low cost in swap fees and has a governance structure based on the ve(3,3) system`,
+    chain: "Blast",
+    logo: `${baseIconsUrl}/solidblast.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    module: "solidblast/index.js",
+    twitter: "solid_blast",
+    listedAt: 1710975903
+  },
+  {
+    id: "4333",
+    name: "Melegaswap",
+    address: null,
+    symbol: "-",
+    url: "https://melegaswap.org",
+    description: `The new black AMM DEX on Binance Smart Chain (BSC) providing friendly trading and better project support.`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/melegaswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "melegaswap/index.js",
+    twitter: "meleganza",
+    listedAt: 1710975958
+  },
 ]
 
 export default data3

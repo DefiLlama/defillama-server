@@ -3959,6 +3959,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "CIAN_protocol",
     github: ["cian-ai"]
   },
+  {
+    id: "parent#orchai",
+    name: "Orchai",
+    url: "https://orchai.io",
+    description:
+      "Orchai - DeFi Orchestrator Powered by AI - provides a set of multiple protocols and features, which assist users not only in optimizing the asset flow but also in improving the management & investing strategy.",
+    logo: `${baseIconsUrl}/orchai.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "orchai_protocol",
+  },
 ];
 
 export default parentProtocols;

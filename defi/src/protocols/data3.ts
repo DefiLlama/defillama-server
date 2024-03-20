@@ -14809,14 +14809,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3362",
-    name: "Orchai",
+    name: "Orchai LST",
     address: null,
     symbol: "-",
     url: "https://orchai.io",
     description:
       "Orchai - DeFi Orchestrator Powered by AI - provides a set of multiple protocols and features, which assist users not only in optimizing the asset flow but also in improving the management & investing strategy.",
     chain: "Orai",
-    logo: `${baseIconsUrl}/orchai.jpg`,
+    logo: `${baseIconsUrl}/orchai-lst.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -14827,6 +14827,7 @@ const data3: Protocol[] = [
     twitter: "orchai_protocol",
     forkedFrom: ["Lido"],
     oracles: ["Oraichain"],
+    parentProtocol: "parent#orchai",
     audit_links: ["https://trufy.io/reports/orchai.pdf"],
     listedAt: 1691591862
   },
@@ -36376,6 +36377,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "orchai-lending/index.js",
     twitter: "orchai_protocol",
+    parentProtocol: "parent#orchai",
     listedAt: 1710939712
   },
   {

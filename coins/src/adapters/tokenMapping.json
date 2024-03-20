@@ -986,6 +986,16 @@
     }
   },
   "ibc": {
+    "698350B8A61D575025F3ED13E9AC9C0F45C89DEFE92F76D5838F1D3C1A7FF7C9": {
+      "decimals": "6",
+      "symbol": "stTIA",
+      "to": "coingecko#stride-staked-tia"
+    },
+    "FA602364BEC305A696CBDF987058E99D8B479F0318E47314C49173E8838C5BAC": {
+      "decimals": "6",
+      "symbol": "qATOM",
+      "to": "coingecko#qatom"
+    },
     "6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244": {
       "decimals": "10",
       "symbol": "DOT",

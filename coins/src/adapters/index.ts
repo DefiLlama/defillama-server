@@ -168,4 +168,7 @@ export default {
   sthApt: require("./liquidStaking/sthapt"),
   ambitFinance: require("./yield/ambit-finance"),
   eigenpie: require("./yield/eigenpie"),
+  steadefi: require("./other"),
+  teahouse: require("./other"),
+  opdx: require("./other"),
 };

@@ -36400,6 +36400,28 @@ const data3: Protocol[] = [
     twitter: "StaQ_io",
     listedAt: 1710939890
   },
+  {
+    id: "4330",
+    name: "Hakura Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.hakura.io",
+    description: `Hakura is a revolutionary P2P lending protocol on Optimism.`,
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/hakura-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending", 
+    chains: ["Optimism"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hakura/index.j",
+    twitter: "Hakura_io",
+    audit_links: ["https://www.cyberscope.io/audits/haku"],
+    listedAt: 1710939890
+  },
 ]
 
 export default data3

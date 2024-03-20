@@ -1270,7 +1270,7 @@ const data3: Protocol[] = [
     name: "Sharpe Magnum",
     address: null,
     symbol: "SHARPE",
-    url: "https://www.sharpe.ai/magnum",
+    url: "https://www.sharpe.ai",
     description: "Sharpe Magnum is a leveraged staking layer built on top of Lido stETH. Magnum functions as a staking optimizer, enhancing the capital efficiency of staking pools by leveraging staked assets via lending protocols and flashloans while keeping the same underlying guarantees.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sharpe-magnum.png`,
@@ -1283,7 +1283,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "SharpeLabs/index.js",
-    twitter: "sharpe_ai",
+    twitter: "SharpeLabs", // previous sharpe_ai
     listedAt: 1680306454
   },
   {
@@ -36417,10 +36417,32 @@ const data3: Protocol[] = [
     chains: ["Optimism"],
     oracles: [],
     forkedFrom: [],
-    module: "hakura/index.j",
+    module: "hakura/index.js",
     twitter: "Hakura_io",
     audit_links: ["https://www.cyberscope.io/audits/haku"],
     listedAt: 1710939890
+  },
+  {
+    id: "4331",
+    name: "HiYield",
+    address: null,
+    symbol: "-",
+    url: "https://www.hiyield.xyz",
+    description: `Enabling access to traditional capital markets for web3 natives`,
+    chain: "Canto",
+    logo: `${baseIconsUrl}/hiyield.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA", 
+    chains: ["Canto", "Avalanche"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hiyield/index.js",
+    twitter: "hiyield_xyz",
+    github: ["lydialabs"],
+    listedAt: 1710944068
   },
 ]
 

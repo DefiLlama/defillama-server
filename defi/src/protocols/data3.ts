@@ -18943,7 +18943,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Klaytn"],
     module: "shoebillFinance-v2/index.js",
-    oracles: [],
+    oracles: ["Supra"],
     forkedFrom: ["Compound V2"], 
     twitter: "ShoebillFinance",
     parentProtocol: "parent#shoebill-finance",

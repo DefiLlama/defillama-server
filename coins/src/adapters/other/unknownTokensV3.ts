@@ -15,6 +15,9 @@ const config: any = {
   mantle: {
     '0x029d924928888697d3F3d169018d9d98d9f0d6B4': '0x417ed45c1adf3a3eb21fba7a40a4e2e4c3405050' // Muito
   },
+  ethereum: {
+    '0xBEF26Bd568e421D6708CCA55Ad6e35f8bfA0C406': '0x26FA8b07DcE29Fb1F0fb3C889E01b59dEbADeFdA' // BCUT
+  },
 }
 
 export function unknownTokensV3(timestamp: number = 0) {

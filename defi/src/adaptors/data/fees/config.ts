@@ -1948,5 +1948,9 @@ export default {
     "econia": {
         "enabled": true,
         "id": "4128"
+    },
+    "sharpe-earn": {
+        "enabled": true,
+        "id": "2756"
     }
 } as AdaptorsConfig

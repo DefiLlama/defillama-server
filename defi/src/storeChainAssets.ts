@@ -10,6 +10,7 @@ async function getChainAssets() {
   const res: any = await chainAssets();
   res.timestamp = getCurrentUnixTimestamp();
   res.avalanche = res.avax;
+  res.gnosis = res.xdai
   await storeR2JSONString("chainAssets", JSON.stringify(res));
   await storeHistorical(res);
   console.log("chain assets stored");

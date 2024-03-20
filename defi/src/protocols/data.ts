@@ -19448,7 +19448,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Gains Network",
     address: "polygon:0xe5417af564e4bfda1c483642db72007871397896",
     symbol: "GNS",
-    url: "https://gainsnetwork.io",
+    url: "https://gains.trade/",
     description:
       "Gains Network is building the decentralized finance ecosystem of the future. Our goal is to build the most advanced and optimised suite of DeFi products in the space.",
     chain: "Polygon",

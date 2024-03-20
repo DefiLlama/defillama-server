@@ -36509,6 +36509,27 @@ const data3: Protocol[] = [
     treasury: "bitsCrunch.js",
     twitter: "bitsCrunch",
   },
+  {
+    id: "4335",
+    name: "zkLink Nova",
+    address: null,
+    symbol: "-",
+    url: "https://zklink.io",
+    description: `The first aggregated Layer 3 zkEVM network that links Ethereum and its Layer 2 Rollups for any use case, with exceptional composability, interoperability, scalability, and security through zero-knowledge proofs.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zklink-nova.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain", 
+    chains: ["Ethereum", "Arbitrum", "Linea", "Mantle", "Manta", "Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "zkLink/index.js",
+    audit_links: ["https://github.com/zkLinkProtocol/zklink-audit-report/blob/master/zklink_Nova_Secure3_Audit_Report.pdf"],
+    twitter: "zkLink_Official",
+  },
 ]
 
 export default data3

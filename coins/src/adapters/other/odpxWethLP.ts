@@ -5,12 +5,10 @@ import getBlock from "../utils/block";
 import { call } from "@defillama/sdk/build/abi/index";
 // odpxWETH-USDC
 const chain = "arbitrum";
-const orangeVault = "0xe1B68841E764Cc31be1Eb1e59d156a4ED1217c2C"
-const odpx_vault = "0xb2aD0378dC0232c0A40b82C9675D9Df172C693e3"
+const orangeVault = "0xe1B68841E764Cc31be1Eb1e59d156a4ED1217c2C";
+const odpx_vault = "0xb2aD0378dC0232c0A40b82C9675D9Df172C693e3";
 
-const targets = [
-  orangeVault
-];
+const targets = [orangeVault];
 
 export default async function getTokenPrice(timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
@@ -25,28 +23,25 @@ async function contractCalls(
   writes: Write[],
   timestamp: number,
 ) {
-  const [
-    balance,
-    tokenInfos,
-  ] = await Promise.all([
+  const [balance, tokenInfos] = await Promise.all([
     call({
       target: targets[0],
       params: odpx_vault,
       chain,
       abi: abi.balanceOf,
-      block}),
+      block,
+    }),
     getTokenInfo(chain, [targets[0]], block),
   ]);
 
-  const [
-    val,
-  ] = await Promise.all([
+  const [val] = await Promise.all([
     call({
       target: targets[0],
-      param: balance,
+      params: balance.output,
       chain,
       abi: abi.convertToAssets,
-      block})
+      block,
+    }),
   ]);
 
   const [{ price: priceEth }] = await getTokenAndRedirectData(
@@ -54,9 +49,8 @@ async function contractCalls(
     "arbitrum",
     timestamp,
   );
- 
-  let price = (val * priceEth ) / 1e18
 
+  let price = (val.output * priceEth) / balance.output;
 
   addToDBWritesList(
     writes,
@@ -73,24 +67,24 @@ async function contractCalls(
 
 const abi = {
   balanceOf: {
-    "constant": true,
-    "inputs": [
+    constant: true,
+    inputs: [
       {
-        "name": "_owner",
-        "type": "address"
-      }
+        name: "_owner",
+        type: "address",
+      },
     ],
-    "name": "balanceOf",
-    "outputs": [
+    name: "balanceOf",
+    outputs: [
       {
-        "name": "balance",
-        "type": "uint256"
-      }
+        name: "balance",
+        type: "uint256",
+      },
     ],
-    "payable": false,
-    "type": "function"
-    
-  },   convertToAssets : {
+    payable: false,
+    type: "function",
+  },
+  convertToAssets: {
     constant: true,
     inputs: [{ name: "", type: "uint256" }],
     name: "convertToAssets",
@@ -99,5 +93,4 @@ const abi = {
     stateMutability: "view",
     type: "function",
   },
-
 };

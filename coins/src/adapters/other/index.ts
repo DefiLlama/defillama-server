@@ -21,10 +21,27 @@ import { addToDBWritesList } from "../utils/database";
 import mooBvmAdapter from "./mooBvmEth";
 import defiChainAdapter from "./defichain";
 import velgAdapter from "./velgd";
+import steadefiEth from "./steadefi_eth";
+import steadefiWbtc from "./steadefi_wbtc";
+import opdxAdapter from "./odpxWethLP";
+import teahouseAdapter from "./teahouse";
+
 export { glp };
 
 export const shlb = shlb_;
 
+export function steadefi(timestamp: number = 0) {
+  console.log("starting steadefi");
+  return Promise.all([steadefiEth(timestamp), steadefiWbtc(timestamp)]);
+}
+export function teahouse(timestamp: number = 0) {
+  console.log("starting teahouse");
+  return teahouseAdapter(timestamp);
+}
+export function opdx(timestamp: number = 0) {
+  console.log("starting opdx");
+  return opdxAdapter(timestamp);
+}
 export function defiChain(timestamp: number = 0) {
   console.log("starting defiChain");
   return defiChainAdapter(timestamp);

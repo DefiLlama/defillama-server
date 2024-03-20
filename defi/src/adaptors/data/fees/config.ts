@@ -1952,5 +1952,10 @@ export default {
     "sharpe-earn": {
         "enabled": true,
         "id": "2756"
+    },
+    "morpho": {
+        parentId: "Morpho",
+        "enabled": true,
+        "id": "4025"
     }
 } as AdaptorsConfig

@@ -36314,6 +36314,49 @@ const data3: Protocol[] = [
     twitter: "VulcanForged",
     listedAt: 1710888996
   },
+  {
+    id: "4326",
+    name: "Cadence Protocol",
+    address: "canto:0x8f20150205165c31d9b29c55a7b01f4911396306",
+    symbol: "CAD",
+    url: "https://www.cadenceprotocol.io",
+    description: `Cadence Protocol is an intent-based perpetuals aggregator that unites DeFi by enabling an omnichain perpetuals experience with near-instant cross-chain execution speeds. It abstracts away all bridges, wallets, and chains into a simple one-click experience.`,
+    chain: "Canto",
+    logo: `${baseIconsUrl}/cadence-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "cadence-protocol",
+    cmcId: "29258",
+    category: "Derivatives", 
+    chains: ["Canto"],
+    oracles: ["RedStone"],  //https://cadenceprotocol.gitbook.io/cadence-protocol/trading-on-cadence-protocol/decentralized-keepers
+    forkedFrom: ["GMX V1"],
+    module: "cadence-protocol/index.js",
+    twitter: "CadenceProtocol",
+    listedAt: 1710938784
+  },
+  {
+    id: "4327",
+    name: "Tensorplex",
+    address: null,
+    symbol: "-",
+    assetToken: "stTAO",
+    url: "https://stake.tensorplex.ai/",
+    description: `Liquid Staking for Decentralised AI Networks such as Bittensor.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tensorplex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking", 
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "tensorplex/index.js",
+    twitter: "TensorplexLabs",
+    listedAt: 1710938850
+  },
 ]
 
 export default data3

@@ -2170,5 +2170,17 @@
       "symbol": "WUSDC",
       "to": "coingecko#usd-coin"
     }
+  },
+  "bahamut": {
+    "0xDeF886C55a79830C47108eeb9c37e78a49684e41": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x4237e0A5b55233D5B6D6d1D9BF421723954130D8": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    }
   }
 }

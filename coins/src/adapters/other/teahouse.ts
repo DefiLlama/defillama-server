@@ -4,13 +4,14 @@ import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
 import { call } from "@defillama/sdk/build/abi/index";
 
-const teahouse_vault = "0xB38e48B8Bc33CD65551BdaC8d954801D56625eeC";
+
+const chain = "arbitrum";
+const teahouseV3 = "0x99c2901d2883F8D295A989544f118e31eC21823e"; // to price
+const corpa_teahouse = "0x9aa3C3d624e1503bE3B6808bb45b0608F3Ad6841"; 
 
 const targets = [
-  teahouse_vault, // lending vault
+  teahouseV3, 
 ];
-const chain = "arbitrum";
-
 export default async function getTokenPrice(timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const writes: Write[] = [];
@@ -23,11 +24,8 @@ async function contractCalls(
   block: number | undefined,
   writes: Write[],
   timestamp: number,
-) {
-  
-  const teahouseV3 = "0x99c2901d2883F8D295A989544f118e31eC21823e"; // to price
-  const corpa_teahouse = "0x9aa3C3d624e1503bE3B6808bb45b0608F3Ad6841"; 
-
+  ) {
+    
   const [
     shareAmount,
     estimatedValueInToken0,
@@ -74,7 +72,7 @@ const price = estimatedAmount * r;
   addToDBWritesList(
     writes,
     chain,
-    targets[1],
+    targets[0],
     price,
     tokenInfos.decimals[0].output,
     tokenInfos.symbols[0].output,

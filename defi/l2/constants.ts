@@ -48,6 +48,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4032": "manta",
   "4236": "blast",
   "4237": "mode",
+  "4335": "zklink",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

@@ -36094,7 +36094,7 @@ const data3: Protocol[] = [
     name: "KaoyaSwap",
     address: null,
     symbol: "-",
-    url: "https://kaoyaswap.com",
+    url: "https://kaoyaswap.xyz",
     description: `Kaoyaswap is an AMM-based Decentralized Exchange on BNB chain.`,
     chain: "Binance",
     logo: `${baseIconsUrl}/kaoyaswap.png`,

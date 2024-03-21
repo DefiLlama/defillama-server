@@ -2742,6 +2742,15 @@ export const chainCoingeckoIds = {
     github: ["KintoXYZ"],
     url: "https://www.kinto.xyz/"
   },
+  "Immutable zkEVM": {
+    geckoId: "immutable-x",
+    symbol: "IMX",
+    cmcId: "10603",
+    categories: ["EVM"],
+    twitter: "Immutable",
+    url: "https://www.immutable.com",
+    chainId: 13371
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3325,6 +3334,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "zkLink"
     case "kinto":
       return "Kinto"
+    case "imx":
+      return "Immutable zkEVM"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

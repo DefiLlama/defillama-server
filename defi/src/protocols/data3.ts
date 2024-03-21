@@ -36614,6 +36614,27 @@ const data3: Protocol[] = [
     github: ["Velar-co"],
     listedAt: 1711031250
   },
+  {
+    id: "4340",
+    name: "DegenDex",
+    address: null,
+    symbol: "-",
+    url: "https://degendex.xyz",
+    description: `Farm on bsc and Dogechain`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/degendex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm", 
+    chains: ["Binance", "Dogechain"],
+    oracles: [],
+    forkedFrom: [],
+    module: "DegenDex/index.js",
+    twitter: "DegenApeDev",
+    listedAt: 1711064233
+  },
 ]
 
 export default data3

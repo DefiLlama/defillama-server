@@ -28867,7 +28867,7 @@ const data3: Protocol[] = [
     description: "Repl is the first restaking protocol for DePINs, enabling natively pledged DePIN tokens and DePIN liquid staking tokens to be reused to secure new DePIN initiatives and applications. It also creates a simple way for BTC and ETH staking and restaking projects to access DePIN protocol rewards.",
     chain: "Filecoin",
     logo: `${baseIconsUrl}/repl.png`, 
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -28877,10 +28877,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "repl/index.js",
     twitter: null,
-    audit_links: [
-      "https://docs.repl.fi/assets/files/Repl_Zokyo_audit_report_2023-75580faff2dc76b2dd8d98cde41cf2dc.pdf",
-      "https://docs.repl.fi/assets/files/SlowMist_Audit_Report-47a5f3b63df90c99a4aa4d39ce367307.pdf"
-    ],
+    audit_links: ["https://docs.repl.fi/safe/audit"],
     listedAt: 1704733578
   },
   {

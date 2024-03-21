@@ -1957,5 +1957,9 @@ export default {
         parentId: "Morpho",
         "enabled": true,
         "id": "4025"
+    },
+    "blitz": {
+        id: "4214",
+        enabled: true,
     }
 } as AdaptorsConfig

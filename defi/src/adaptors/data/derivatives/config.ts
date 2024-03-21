@@ -718,5 +718,15 @@ export default {
     "anyhedge": {
         enabled: true,
         "id": "2633"
+    },
+    "blitz": {
+        id: "4214",
+        enabled: true,
+        protocolsData: {
+            "derivatives": {
+                "id": "4214",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

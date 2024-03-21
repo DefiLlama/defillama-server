@@ -2571,5 +2571,9 @@ export default {
         parentId: "KIM Exchange",
         "enabled": true,
         "id": "4299"
+    },
+    "cauldron": {
+        id: "3993",
+        enabled: true,
     }
 } as AdaptorsConfig

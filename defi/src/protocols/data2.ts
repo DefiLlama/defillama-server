@@ -11535,7 +11535,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Prediction Market",
     chains: ["xDai"],
-    oracles: ["Supra", "Chainlink"], // https://azuroprotocol.medium.com/azuro-partnerships-cross-chain-oracle-solution-supraoracles-f2e72f96fa3d
+    oracles: ["Supra"], // https://azuroprotocol.medium.com/azuro-partnerships-cross-chain-oracle-solution-supraoracles-f2e72f96fa3d
     forkedFrom: [],
     module: "azuro/index.js",
     twitter: "azuroprotocol",
@@ -27637,7 +27637,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Klaytn"],
-    oracles: ["Chainlink", "Internal"],
+    oracles: ["Internal"],
     forkedFrom: [],
     module: "shoebillFinance/index.js",
     twitter: "ShoebillFinance",

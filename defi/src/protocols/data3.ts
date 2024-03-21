@@ -5513,7 +5513,7 @@ const data3: Protocol[] = [
     module: "typus-finance/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: ["Internal","Pyth","Supra"], // https://github.com/DefiLlama/defillama-server/pull/5856
+    oracles: ["Pyth"], // https://docs.typus.finance/options-specifications
     audit_links: ["https://docs.typus.finance/audit"],
     listedAt: 1683552946
   },

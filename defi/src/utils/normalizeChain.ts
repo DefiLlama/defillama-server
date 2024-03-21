@@ -2728,6 +2728,20 @@ export const chainCoingeckoIds = {
     github: ["zkLinkProtocol"],
     chainId: 810180
   },
+  "Kinto": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 7887,
+    twitter: "KintoXYZ",
+    github: ["KintoXYZ"],
+    url: "https://www.kinto.xyz/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3309,6 +3323,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Q Protocol"
     case "zklink":
       return "zkLink"
+    case "kinto":
+      return "Kinto"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

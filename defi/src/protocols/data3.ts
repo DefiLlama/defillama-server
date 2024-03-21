@@ -33360,8 +33360,8 @@ const data3: Protocol[] = [
   {
     id: "4194",
     name: "Cellana Finance",
-    address: null,
-    symbol: "-",
+    address: "aptos:0x2ebb2ccac5e027a87fa0e2e5f656a3a4238d6a48d93ec9b610d570fc0aa0df12",
+    symbol: "CELL",
     url: "https://cellana.finance",
     description:
       "Cellana is a community-owned decentralized exchange on the Aptos network that fosters DeFi growth through a sustainable liquidity incentives model. This innovative DEX is the first ever which use the Ve(3,3) Model in Move Language.",
@@ -33369,7 +33369,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/cellana-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "cellena-finance",
     cmcId: null,
     category: "Dexes",
     chains: ["Aptos"],

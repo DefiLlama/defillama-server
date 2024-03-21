@@ -2171,7 +2171,7 @@
       "to": "coingecko#usd-coin"
     }
   },
-  "bahamut": {
+  "ftn": {
     "0xDeF886C55a79830C47108eeb9c37e78a49684e41": {
       "decimals": "6",
       "symbol": "USDT",

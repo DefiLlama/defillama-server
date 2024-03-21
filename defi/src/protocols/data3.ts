@@ -36530,6 +36530,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/zkLinkProtocol/zklink-audit-report/blob/master/zklink_Nova_Secure3_Audit_Report.pdf"],
     twitter: "zkLink_Official",
   },
+  {
+    id: "4336",
+    name: "Kinto Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://www.kinto.xyz/",
+    description: `Kinto is the only Sybil Resistant blockchain with User-Owned KYC and enforced Account Abstraction. 100% focused on finance.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/kinto-bridge.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain", 
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "kinto/index.js",
+    audit_links: ["https://github.com/KintoXYZ/security/tree/main/audits"],
+    twitter: "KintoXYZ",
+  },
 ]
 
 export default data3

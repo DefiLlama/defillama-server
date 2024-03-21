@@ -328,6 +328,11 @@
     }
   },
   "arbitrum": {
+    "0x0eda601e814cf942a17c0ae3f97dbbeb855c03e9": {
+      "decimals": "18",
+      "symbol": "wstjUSDC",
+      "to": "arbitrum:0xe66998533a1992ecE9eA99cDf47686F4fc8458E0"
+    },
     "0x2416092f143378750bb29b79eD961ab195CcEea5": {
       "decimals": "18",
       "symbol": "ezETH",

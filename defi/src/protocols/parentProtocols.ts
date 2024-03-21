@@ -3971,6 +3971,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "orchai_protocol",
   },
+  {
+    id: "parent#sharpe-ai",
+    name: "Sharpe AI",
+    url: "https://www.sharpe.ai",
+    description:
+      "Sharpe Magnum is a leveraged staking layer built on top of Lido stETH. Magnum functions as a staking optimizer, enhancing the capital efficiency of staking pools by leveraging staked assets via lending protocols and flashloans while keeping the same underlying guarantees.",
+    logo: `${baseIconsUrl}/sharpe-ai.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SharpeLabs",
+  },
 ];
 
 export default parentProtocols;

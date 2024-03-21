@@ -2575,5 +2575,15 @@ export default {
     "cauldron": {
         id: "3993",
         enabled: true,
+    },
+    "blitz": {
+        id: "4214",
+        enabled: true,
+        protocolsData: {
+            "swap": {
+                "id": "4214",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

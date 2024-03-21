@@ -33697,7 +33697,7 @@ const data3: Protocol[] = [
     module: "juice-finance/index.js",
     twitter: "Juice_Finance",
     forkedFrom: [], 
-    oracles: ["API3", "RedStone"],  //https://juice-finance.gitbook.io/juice-finance/juice-finance/quick-links
+    oracles: ["API3"],  //https://juice-finance.gitbook.io/juice-finance/juice-finance/quick-links API3 has the ETH feed
     listedAt: 1709308594
   },
   {

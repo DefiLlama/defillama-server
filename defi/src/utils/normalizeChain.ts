@@ -2725,6 +2725,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "zkLink_Official",
     url: "https://zk.link",
+    github: ["zkLinkProtocol"],
     chainId: 810180
   },
 } as unknown as ChainCoinGekcoIds

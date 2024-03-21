@@ -55,6 +55,13 @@ async function getTvl(
   let chainDashPromise
   for (let i = 0; i < maxRetries; i++) {
     try {
+      const chain = storedKey.split('-')[0]
+      const block = chainBlocks[chain]
+      const params: any = { chain, block, timestamp: unixTimestamp, storedKey }
+      const api: any = new sdk.ChainApi(params)
+      api.api = api
+      api.storedKey = storedKey
+
       if (!isFetchFunction) {
         let tvlBalances: any
         if (options.partialRefill && !options.chainsToRefill?.includes(storedKey)) {
@@ -62,15 +69,7 @@ async function getTvl(
           if (!tvlBalances)
             throw new Error('Cache data missing for '+ storedKey)
         } else {
-          const chain = storedKey.split('-')[0]
-          const block = chainBlocks[chain]
-          const api = new sdk.ChainApi({ chain, block, timestamp: unixTimestamp, })
-          tvlBalances = await tvlFunction(
-            unixTimestamp,
-            ethBlock,
-            chainBlocks,
-            { api, chain, storedKey, block },
-          );
+          tvlBalances = await tvlFunction(api, ethBlock, chainBlocks, api);
           if (!tvlBalances && Object.keys(api.getBalances()).length) tvlBalances = api.getBalances()
           chainDashPromise = storeAllTokens(Object.keys(tvlBalances));
         }
@@ -102,11 +101,7 @@ async function getTvl(
           rawTokenBalances[storedKey] = normalizedBalances;
         }
       } else {
-        usdTvls[storedKey] = Number(await tvlFunction(
-          unixTimestamp,
-          ethBlock,
-          chainBlocks
-        ));
+        usdTvls[storedKey] = Number(await tvlFunction(api, ethBlock, chainBlocks, api));
       }
       if (
         typeof usdTvls[storedKey] !== "number" ||

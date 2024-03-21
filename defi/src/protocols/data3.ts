@@ -1284,6 +1284,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "SharpeLabs/index.js",
     twitter: "SharpeLabs", // previous sharpe_ai
+    parentProtocol: "parent#sharpe-ai",
     listedAt: 1680306454
   },
   {
@@ -36550,6 +36551,27 @@ const data3: Protocol[] = [
     module: "kinto/index.js",
     audit_links: ["https://github.com/KintoXYZ/security/tree/main/audits"],
     twitter: "KintoXYZ",
+  },
+  {
+    id: "4337",
+    name: "Sharpe Earn",
+    address: null,
+    symbol: "SHARPE",
+    url: "https://www.sharpe.ai",
+    description: "Sharpe Magnum is a leveraged staking layer built on top of Lido stETH. Magnum functions as a staking optimizer, enhancing the capital efficiency of staking pools by leveraging staked assets via lending protocols and flashloans while keeping the same underlying guarantees.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sharpe-earn.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    parentProtocol: "parent#sharpe-ai",
+    twitter: "SharpeLabs", // previous sharpe_ai
   },
 ]
 

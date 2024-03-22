@@ -36744,7 +36744,7 @@ const data3: Protocol[] = [
     listedAt: 1711119554
   },
   {
-    id: "4345",
+    id: "4346",
     name: "SingularX",
     address: null,
     symbol: "-",

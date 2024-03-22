@@ -36656,6 +36656,48 @@ const data3: Protocol[] = [
     twitter: "Vine_Money",
     listedAt: 1711105995
   },
+  {
+    id: "4342",
+    name: "WarpGate",
+    address: null,
+    symbol: "-",
+    url: "https://warpgate.pro",
+    description: `The First Decentralised Exchange on Immutable zkEVM - An Exchange for Gamers by Gamers`,
+    chain: "Immutable zkEVM",
+    logo: `${baseIconsUrl}/warpgate.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Immutable zkEVM"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "warpgate/index.js",
+    twitter: "WarpGateX",
+    listedAt: 1711107219
+  },
+  {
+    id: "4343",
+    name: "LolPad Finance",
+    address: null,
+    symbol: "-",
+    url: "https://lolpad.finance",
+    description: `Lolpad Finance is a Dex Ecosystem launching on the new Layer2 Blockchains.`,
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/lolpad-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Scroll"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "lolpad/index.js",
+    twitter: "LolPad_Finance",
+    listedAt: 1711108219
+  },
 ]
 
 export default data3

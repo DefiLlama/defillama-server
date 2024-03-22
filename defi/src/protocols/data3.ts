@@ -36380,14 +36380,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4329",
-    name: "Bitstaq",
+    name: "StaQ", //previous bitstaq
     address: null,
     symbol: "-",
     assetToken: "stMAP",
     url: "https://bitstaq.io",
     description: `Liquidity for staked tokens in the Bitcoin L2 ecosystem.`,
     chain: "Map",
-    logo: `${baseIconsUrl}/bitstaq.jpg`,
+    logo: `${baseIconsUrl}/staq.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

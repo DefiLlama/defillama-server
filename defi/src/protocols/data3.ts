@@ -36811,6 +36811,30 @@ const data3: Protocol[] = [
     treasury: "altr-lend.js",
     listedAt: 1711126402
   },
+  {
+    id: "4349",
+    name: "Fungify",
+    address: "0x0e4e7f2aecf408aff4f82f067677050239bdc58a",
+    symbol: "FUNG",
+    url: "https://fungify.it/",
+    description: `Fungify is composed of two parts: Index and Pools. Pools is a cross-margin lending platform that enables borrowing and lending of any assets, including NFTs, while earning yield. The Index is a marketcap weighted basket of blue-chip NFTs, like the S&P500 of NFTs`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fungify.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "fungify-token",
+    cmcId: null,
+    category: "Lending", 
+    chains: ["Ethereum"],
+    oracles: ["Chainlink"], // https://docs.fungify.it/protocol/oracle
+    forkedFrom: ["Compound V2"],
+    module: "fungify/index.js",
+    twitter: "FungifyNFT",
+    audit_links: [
+      "https://docs.fungify.it/governance/security",
+    ],
+    listedAt: 1711134727
+  },
 ]
 
 export default data3

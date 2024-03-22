@@ -36635,6 +36635,27 @@ const data3: Protocol[] = [
     twitter: "DegenApeDev",
     listedAt: 1711064233
   },
+  {
+    id: "4341",
+    name: "Vine Money",
+    address: null,
+    symbol: "-",
+    url: "https://vinemoney.xyz",
+    description: `The first privacy focused omnichain stablecoin, powered by Oasis Sapphire EVM $ROSE.`,
+    chain: "Sapphire",
+    logo: `${baseIconsUrl}/vine-money.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP", 
+    chains: ["Sapphire"],
+    oracles: [],
+    forkedFrom: [],
+    module: "vine/index.js",
+    twitter: "Vine_Money",
+    listedAt: 1711105995
+  },
 ]
 
 export default data3

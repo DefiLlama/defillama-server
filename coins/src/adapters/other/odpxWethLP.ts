@@ -55,7 +55,7 @@ async function contractCalls(
   addToDBWritesList(
     writes,
     chain,
-    targets[1],
+    targets[0],
     price,
     tokenInfos.decimals[0].output,
     tokenInfos.symbols[0].output,

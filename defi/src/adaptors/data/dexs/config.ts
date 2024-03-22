@@ -2585,5 +2585,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "warpgate": {
+        "id": "4342",
+        enabled: true,
     }
 } as AdaptorsConfig

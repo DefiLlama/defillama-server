@@ -36713,7 +36713,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives", 
     chains: ["Blast"],
-    oracles: [],
+    oracles: ["Pyth"], // https://blastscan.io/address/0x69633b5ada326ba7a782a4c8ac69e812619414c2#internaltx and feed https://blastscan.io/address/0xa2aa501b19aff244d90cc15a4cf739d2725b5729
     forkedFrom: [],
     module: "dtx/index.js",
     twitter: "0xDTX",

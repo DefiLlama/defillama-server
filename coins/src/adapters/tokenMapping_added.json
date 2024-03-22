@@ -8579,6 +8579,11 @@
       "decimals": "18",
       "symbol": "BONE",
       "to": "coingecko#bone-shibaswap"
+    },
+    "0x839fdb6cc98342b428e074c1573adf6d48ca3bfd": {
+      "decimals": "18",
+      "symbol": "BONE",
+      "to": "coingecko#bone-shibaswap"
     }
   },
   "secret": {

@@ -36698,6 +36698,29 @@ const data3: Protocol[] = [
     twitter: "LolPad_Finance",
     listedAt: 1711108219
   },
+  {
+    id: "4344",
+    name: "DTX",
+    address: null,
+    symbol: "-",
+    url: "https://dtx.trade",
+    description: `Unlike order book systems, DTX's unique synthetic architecture guarantees a seamless trading experience for traders by eliminating slippage and ensuring guaranteed order execution. Additionally, it offers flexibility in collateral usage and market-making while simultaneously maximizing capital efficiency for LPs.`,
+    chain: "Blast",
+    logo: `${baseIconsUrl}/dtx.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives", 
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dtx/index.js",
+    twitter: "0xDTX",
+    audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SlowMist%20Audit%20Report%20-%20DTX%20Protocol_en-us.pdf"],
+    github: ["dtx-trade"],
+    listedAt: 1711108522
+  },
 ]
 
 export default data3

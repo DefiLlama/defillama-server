@@ -36785,6 +36785,33 @@ const data3: Protocol[] = [
     twitter: "glyph_exchange",
     listedAt: 1711126267
   },
+  {
+    id: "4348",
+    name: "Altr Lend",
+    address: null,
+    symbol: "-",
+    url: "https://lend.altr.trade/",
+    description: `The Altr Lending platform introduces an approach to leveraging luxury collectibles as financial assets, blending high-value collectibles and financial services`,
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/altr-lend.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending", 
+    chains: ["Polygon"],
+    oracles: ["Internal"], // https://docs.lucidao.com/dapps/altr-lending/core-concepts/price-index-oracle-committee
+    forkedFrom: [],
+    module: "altr-lend/index.js",
+    twitter: "Lucidao_",
+    audit_links: [
+      "https://storage.fleek-internal.com/51d374ec-06bd-4bc4-b296-40513052fbe0-bucket/altr-lending-audits/quantstamp-audit.pdf", 
+      "https://storage.fleek-internal.com/51d374ec-06bd-4bc4-b296-40513052fbe0-bucket/altr-lending-audits/hacken-audit.pdf"
+    ],
+    github: ["lucidao-developer"],
+    treasury: "altr-lend.js",
+    listedAt: 1711126402
+  },
 ]
 
 export default data3

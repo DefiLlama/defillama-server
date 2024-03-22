@@ -1961,5 +1961,9 @@ export default {
     "blitz": {
         id: "4214",
         enabled: true,
+    },
+    "fx-protocol": {
+        enabled: true,
+        id: "3344"
     }
 } as AdaptorsConfig

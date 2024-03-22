@@ -36358,13 +36358,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4328",
-    name: "Orchai Lending",
+    name: "Orchai Money Market", // previous Orchai Lending
     address: null,
     symbol: "-",
     url: "https://orchai.io",
     description: `Orchai - DeFi Orchestrator Powered by AI - provides a set of multiple protocols and features, which assist users not only in optimizing the asset flow but also in improving the management & investing strategy.`,
     chain: "Orai",
-    logo: `${baseIconsUrl}/orchai-lending.jpg`,
+    logo: `${baseIconsUrl}/orchai-money-market.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

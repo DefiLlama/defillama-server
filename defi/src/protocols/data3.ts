@@ -36764,6 +36764,27 @@ const data3: Protocol[] = [
     twitter: "realSingularX",
     listedAt: 1711119672
   },
+  {
+    id: "4347",
+    name: "Glyph Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://glyph.exchange",
+    description: `Glyph Exchange is a DEX for Bitcoin DeFi on the Core blockchain. The platform drives EVM liquidity to amplify Bitcoin-Powered crypto asset trading, connecting EVMs to Bitcoin Building Bitcoin-Fi on CoreDAO`,
+    chain: "CORE",
+    logo: `${baseIconsUrl}/glyph-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "GlyphExchange/index.js",
+    twitter: "glyph_exchange",
+    listedAt: 1711126267
+  },
 ]
 
 export default data3

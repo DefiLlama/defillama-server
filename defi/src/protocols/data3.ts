@@ -36835,6 +36835,31 @@ const data3: Protocol[] = [
     ],
     listedAt: 1711134727
   },
+  {
+    id: "4350",
+    name: "Smilee Finance",
+    address: null,
+    symbol: "-",
+    url: "https://smilee.finance/",
+    description: `On-chain options enabling volatility trading. Creators of the first Impermanent Gain options`,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/smilee-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options", 
+    chains: ["Arbitrum"],
+    oracles: ["Chainlink"], // https://docs.smilee.finance/protocol-design/oracles-and-risks
+    forkedFrom: [],
+    module: "smilee-finance/index.js",
+    twitter: "SmileeFinance",
+    audit_links: [
+      "https://docs.smilee.finance/resources/audits",
+    ],
+    github: ["dverso"],
+    listedAt: 1711149739
+  },
 ]
 
 export default data3

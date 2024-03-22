@@ -36575,7 +36575,7 @@ const data3: Protocol[] = [
     name: "ctez",
     address: "tezos:KT1SjXiUX63QvdNMcM2m492f7kuf8JxXRLp4",
     symbol: "CTEZ",
-    url: "https://ctez.app/trade",
+    url: "https://ctezos.app/",
     description: `AMM on tezos network.`,
     chain: "Tezos",
     logo: `${baseIconsUrl}/ctez.jpg`,

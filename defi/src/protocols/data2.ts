@@ -27797,7 +27797,7 @@ const data2: Protocol[] = [
     twitter: "streamflow_fi",
     audit_links: ["https://github.com/streamflow-finance/rust-sdk/blob/main/protocol_audit.pdf"],
     listedAt: 1677586293,
-    github: ["StreamFlow-Finance"]
+    github: ["streamflow-finance"]
   },
   {
     id: "2609",

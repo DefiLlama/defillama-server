@@ -2589,5 +2589,9 @@ export default {
     "warpgate": {
         "id": "4342",
         enabled: true,
+    },
+    "glyph-exchange": {
+        "id": "4343",
+        enabled: true,
     }
 } as AdaptorsConfig

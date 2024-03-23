@@ -36883,6 +36883,29 @@ const data3: Protocol[] = [
     twitter: "CryptoValleys",
     listedAt: 1711207625
   },
+  {
+    id: "4352",
+    name: "Satoshi Finance",
+    address: "bsc:0x708bAac4B235d3F62bD18e58c0594b8B20b2ED5B",
+    symbol: "SATO",
+    url: "https://www.satofi.app/",
+    description: `Satoshi Finance is a decentralized stable coin protocol that allows user to mint a USD-pegged token called btUSD by using BTCB as collateral on BNB Smart Chain`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/satoshi-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP", 
+    chains: ["Binance"],
+    oracles: ["Chainlink"], // https://satoshi-finance.github.io/satofi.github.io/
+    forkedFrom: ["Liquity"],
+    module: "satoshi-finance/index.js",
+    twitter: "finance_sa54216",
+    audit_links: ["https://github.com/Satoshi-Finance/security"],
+    github: ["Satoshi-Finance"],
+    listedAt: 1711213467
+  },
 ]
 
 export default data3

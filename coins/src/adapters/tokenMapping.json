@@ -1953,6 +1953,11 @@
       "decimals": "18",
       "symbol": "USDB",
       "to": "coingecko#usdb"
+    },
+    "0x67fa2887914fA3729e9EED7630294Fe124f417A0": {
+      "decimals": "18",
+      "symbol": "YIELD",
+      "to": "coingecko#crypto-valleys-yield-token"
     }
   },
   "bitcoin": {

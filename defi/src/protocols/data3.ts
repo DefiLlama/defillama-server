@@ -36556,7 +36556,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "SHARPE",
     url: "https://www.sharpe.ai",
-    description: "Sharpe Magnum is a leveraged staking layer built on top of Lido stETH. Magnum functions as a staking optimizer, enhancing the capital efficiency of staking pools by leveraging staked assets via lending protocols and flashloans while keeping the same underlying guarantees.",
+    description: "Sharpe is an AI-powered DeFi automation and execution environment designed for pro-traders and institutions. Our unified platform streamlines DeFi asset management, execution, and custody and provides traders with a comprehensive environment for earning yields, building strategies, advanced DEX trading, lending automation and so much more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sharpe-earn.jpg`,
     audits: "0",

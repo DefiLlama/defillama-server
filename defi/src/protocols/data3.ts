@@ -35225,7 +35225,9 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Ethereum", "Optimism","Arbitrum", "Binance"],
-    oracles: [],
+    oraclesByChain: {
+      ethereum: ["Redstone"], // https://github.com/DefiLlama/defillama-server/pull/6225 , confirmed with cian team that is only using redstone on ETH chain for now. 
+    },
     forkedFrom: [],
     module: "cian-lst/index.js",
     twitter: "CIAN_protocol",

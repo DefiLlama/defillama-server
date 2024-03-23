@@ -36862,6 +36862,27 @@ const data3: Protocol[] = [
     github: ["dverso"],
     listedAt: 1711149739
   },
+  {
+    id: "4351",
+    name: "Crypto Valleys",
+    address: null,
+    symbol: "-",
+    url: "https://cryptovalleys.io",
+    description: `Farm, Adventure, Compete, Craft & Trade. `,
+    chain: "Blast",
+    logo: `${baseIconsUrl}/crypto-valleys.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming", 
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "cryptovalley/index.js",
+    twitter: "CryptoValleys",
+    listedAt: 1711207625
+  },
 ]
 
 export default data3

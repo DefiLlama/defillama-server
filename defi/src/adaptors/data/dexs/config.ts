@@ -2591,7 +2591,7 @@ export default {
         enabled: true,
     },
     "glyph-exchange": {
-        "id": "4343",
+        "id": "4347",
         enabled: true,
     }
 } as AdaptorsConfig

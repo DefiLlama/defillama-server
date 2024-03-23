@@ -288,6 +288,11 @@
       "decimals": "18",
       "symbol": "GYD",
       "to": "coingecko#gyroscope-gyd"
+    },
+    "0x66d5c66E7C83E0682d947176534242c9f19b3365": {
+      "decimals": "9",
+      "symbol": "sVEC",
+      "to": "coingecko#vector-reserve"
     }
   },
   "fantom": {

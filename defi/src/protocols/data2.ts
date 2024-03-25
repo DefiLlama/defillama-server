@@ -4480,8 +4480,8 @@ const data2: Protocol[] = [
   {
     id: "1577",
     name: "Sturdy V1",
-    address: null,
-    symbol: "-",
+    address: "0xaeb3607ec434454ceb308f5cd540875efb54309a",
+    symbol: "STRDY",
     url: "https://app.sturdy.finance",
     description: "Sturdy is a first of its kind DeFi protocol for interest-free borrowing and high yield lending. Rather than charging borrowers interest, Sturdy stakes their collateral and passes the yield to lenders. This model changes the relationship between borrowers and lenders to make Sturdy the first positive-sum lending protocol.",
     chain: "Fantom",

@@ -31909,8 +31909,8 @@ const data3: Protocol[] = [
   {
     id: "4132",
     name: "Sturdy V2",
-    address: null,
-    symbol: "-",
+    address: "0xaeb3607ec434454ceb308f5cd540875efb54309a",
+    symbol: "STRDY",
     url: "https://v2.sturdy.finance/",
     description: "Sturdy enables anyone to create a liquid money market for any token. Sturdy uses a novel two-tier architecture to isolate risk between assets while avoiding liquidity fragmentation. The base layer consists of risk-isolated pools; aggregation built on top enables lenders to select which collateral assets can be used as collateral for their deposits.",
     chain: "Ethereum",

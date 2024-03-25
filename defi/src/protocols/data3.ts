@@ -37141,6 +37141,50 @@ const data3: Protocol[] = [
     twitter: "YieldWars", 
     listedAt: 1711393450
   },
+  {
+    id: "4364",
+    name: "IXSwap RWA",
+    address: "0x73d7c860998ca3c01ce8c808f5577d94d545d1b4",
+    symbol: "IXS",
+    url: "https://ixswap.io/",
+    description: `Uniswap for Real-World Asset Tokens (RWA).`,
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/ixswap-rwa.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "ix-swap",
+    cmcId: "11620",
+    category: "Dexes", 
+    chains: ["Polygon"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "ixswap/index.js",
+    twitter: "IxSwap", 
+    audit_links: ["https://ixswap.gitbook.io/ix-swap-gitbook/other-documentation/smart-contract-audits"],
+    github: ["IX-Swap"],
+    listedAt: 1711394081
+  },
+  {
+    id: "4365",
+    name: "Swych Perpetual",
+    address: "bsc:0x9334e37fad7c41cd6c9565bff3a97ce31cee52a3",
+    symbol: "SWYCH",
+    url: "https://trade.swych.finance/",
+    description: `Swych is a multi-platform ecosystem that offers a perpetual exchange as a main component`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/swych-perpetual.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives", 
+    chains: ["Binance"],
+    oracles: ["Chainlink"],  //https://bscscan.com/address/0xe4460109425EbC1CE34cAd59Ab7ce60535956BF5#code
+    forkedFrom: [],
+    module: "swych/index.js",
+    twitter: "SwychFinance", 
+    listedAt: 1711394281
+  },
 ]
 
 export default data3

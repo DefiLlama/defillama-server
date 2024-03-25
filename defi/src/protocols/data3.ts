@@ -27657,7 +27657,7 @@ const data3: Protocol[] = [
     description:
       "YLDR is the first lending protocol for Uniswap. Users can either leverage their Uniswap V3 position or get a loan against it.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/yldr.png`,
+    logo: `${baseIconsUrl}/yldr.jpg`,
     audits: "2",
     audit_note: null,
     audit_links: ["https://skynet.certik.com/projects/yldr"],

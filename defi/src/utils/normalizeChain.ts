@@ -2751,6 +2751,15 @@ export const chainCoingeckoIds = {
     url: "https://www.immutable.com",
     chainId: 13371
   },
+  "Zora": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 7777777,
+    twitter: "ourZORA",
+    url: "https://zora.co"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3336,6 +3345,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Kinto"
     case "imx":
       return "Immutable zkEVM"
+    case "zors":
+      return "Zora"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

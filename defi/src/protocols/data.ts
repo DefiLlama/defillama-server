@@ -10739,6 +10739,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     oracles: [],
   },
+  /*
   {
     id: "603",
     name: "Socean",
@@ -10765,6 +10766,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     github: ["igneous-labs"],
     openSource: false,
   },
+  */
   {
     id: "604",
     name: "Sherlock",

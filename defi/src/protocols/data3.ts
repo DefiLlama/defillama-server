@@ -37207,6 +37207,49 @@ const data3: Protocol[] = [
     github: ["Javsphere"],
     listedAt: 1711394968
   },
+  {
+    id: "4367",
+    name: "Echelon Market",
+    address: null,
+    symbol: "-",
+    url: "https://app.echelon.market/",
+    description: `Composable, Efficient & Secure Move Money Market.`,
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/echelon-market.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending", 
+    chains: ["Aptos"],
+    oracles: ["Pyth"],   //https://docs.echelon.market/echelon-v1/risks#oracle-risk
+    forkedFrom: [],
+    module: "echelon/index.js",
+    twitter: "EchelonMarket", 
+    audit_links: ["https://docs.echelon.market/echelon-v1/audit-reports"],
+    listedAt: 1711395200
+  },
+  {
+    id: "4368",
+    name: "Sanctum Infinity",
+    address: null,
+    symbol: "-",
+    url: "https://www.sanctum.so",
+    description: `Infinity is a multi-LST liquidity pool (LP). Most LPs only have two assets (e.g. USDC-SOL). Some LPs, like a Curve stableswap pool, support three or four assets (e.g. USDC-USDT-DAI). Infinity supports all whitelisted LSTs (e.g. SOL-bSOL-bonkSOL-cgntSOL-compassSOL-driftSOL-…)`,
+    chain: "Solana",
+    logo: `${baseIconsUrl}/sanctum-infinity.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "sanctum-infinity/index.js",
+    twitter: "sanctumso", 
+    listedAt: 1711395350
+  },
 ]
 
 export default data3

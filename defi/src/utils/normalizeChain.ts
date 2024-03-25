@@ -2771,6 +2771,14 @@ export const chainCoingeckoIds = {
     twitter: "defichain",
     url: "https://defichain.com/"
   },
+  "RSS3": {
+    geckoId: "rss3",
+    symbol: "RSS3",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "rss3_",
+    url: "https://rss3.io/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3360,6 +3368,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Zora"
     case "defichain_evm":
       return "DeFiChain EVM"
+    case "rss3_vsl":
+      return "RSS3"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

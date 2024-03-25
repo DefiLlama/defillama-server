@@ -37363,6 +37363,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hercules",
     listedAt: 1711406547
   },
+  {
+    id: "4374",
+    name: "Openswap VSL",
+    address: null,
+    symbol: "-",
+    url: "https://openswap.fi/pools",
+    description: `The first DEX build top on RSS3 Mainnet VSL.`,
+    chain: "RSS3",
+    logo: `${baseIconsUrl}/openswap-vsl.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["RSS3"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "openswap/index.js",
+    twitter: "Openswap_", 
+    listedAt: 1711409045
+  },
 ]
 
 export default data3

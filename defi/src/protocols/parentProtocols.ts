@@ -3983,6 +3983,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SharpeLabs",
   },
+  {
+    id: "parent#sanctum",
+    name: "Sanctum",
+    url: "https://www.sanctum.so",
+    description:
+      "Sanctum is Solana’s on-chain stability protocol. Sanctum unlocks staked SOL to be used throughout DeFi by providing a backstop of SOL liquidity, and makes sure DeFi borrow-lend protocols remain solvent by providing a safe haven of SOL to flash loan and close LST-collateralised positions.",
+    logo: `${baseIconsUrl}/sanctum.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "sanctumso",
+  },
 ];
 
 export default parentProtocols;

@@ -15386,13 +15386,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3388",
-    name: "Sanctum",
+    name: "Sanctum Reserve",
     address: null,
     symbol: "-",
     url: "https://www.sanctum.so",
     description: "Sanctum is Solana’s on-chain stability protocol. Sanctum unlocks staked SOL to be used throughout DeFi by providing a backstop of SOL liquidity, and makes sure DeFi borrow-lend protocols remain solvent by providing a safe haven of SOL to flash loan and close LST-collateralised positions.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/sanctum.jpg`,
+    logo: `${baseIconsUrl}/sanctum-reserve.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -15404,6 +15404,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/igneous-labs/sanctum-unstake-program/blob/master/audits/sec3-20230724.pdf"],
+    parentProtocol: "parent#sanctum",
     listedAt: 1692111232
   },
   {
@@ -37248,6 +37249,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "sanctum-infinity/index.js",
     twitter: "sanctumso", 
+    parentProtocol: "parent#sanctum",
     listedAt: 1711395350
   },
 ]

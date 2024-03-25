@@ -2593,5 +2593,9 @@ export default {
     "glyph-exchange": {
         "id": "4347",
         enabled: true,
+    },
+    "swop": {
+        enabled: true,
+        id: "613"
     }
 } as AdaptorsConfig

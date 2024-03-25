@@ -1965,5 +1965,9 @@ export default {
     "fx-protocol": {
         enabled: true,
         id: "3344"
+    },
+    "swop": {
+        enabled: true,
+        id: "613"
     }
 } as AdaptorsConfig

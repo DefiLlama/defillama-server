@@ -153,6 +153,13 @@
       "to": "coingecko#usd-coin"
     }
   },
+  "era": {
+    "0x2416092f143378750bb29b79eD961ab195CcEea5": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
+    }
+  },
   "ethereum": {
     "0x2416092f143378750bb29b79eD961ab195CcEea5": {
       "decimals": "18",

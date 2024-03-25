@@ -36949,6 +36949,52 @@ const data3: Protocol[] = [
     twitter: "TokenDotStore",
     listedAt: 1711372950
   },
+  {
+    id: "4355",
+    name: "Akropolis",
+    address: "0x8ab7404063ec4dbcfd4598215992dc3f8ec853d7",
+    symbol: "AKRO",
+    url: "https://akropolis.finance",
+    description: `DeFi yield farming aggregator and Dollar Cost Averaging tool that offers synthetic savings and high yield “accounts” aimed at DeFi-curious users with no deep technical knowledge and some understanding of Ethereum and crypto.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/akropolis.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "akropolis",
+    cmcId: "4134",
+    category: "Services", 
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "akropolis/index.js",
+    twitter: "akropolisio", 
+    audit_links: ["https://github.com/akropolisio/vortex/blob/development/audit/Xtropy-Audit.pdf"],
+    github: ["akropolisio"],
+    listedAt: 1711375855
+  },
+  {
+    id: "4356",
+    name: "Euclid Finance",
+    address: null,
+    symbol: "-",
+    url: "https://euclidfinance.io",
+    description: `Building Omnichain Liquid Restake Assets`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/euclid-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking", 
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "ngad-euclid/index.js",
+    twitter: "Euclidfi", 
+    audit_links: ["https://docs.euclidfinance.io/mechanism/audit"],
+    listedAt: 1711375955
+  },
+
 ]
 
 export default data3

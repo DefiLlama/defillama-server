@@ -36907,6 +36907,48 @@ const data3: Protocol[] = [
     github: ["Satoshi-Finance"],
     listedAt: 1711213467
   },
+  {
+    id: "4353",
+    name: "PyreSwap",
+    address: null,
+    symbol: "-",
+    url: "https://pyreswap.finance/",
+    description: `A decentralized exchange within the Seigniorage Circus Hegemony.`,
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/pyreswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Binance", "Fantom", "Avalanche"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "PyreSwap/index.js",
+    twitter: "PyreSwap",
+    listedAt: 1711372814
+  },
+  {
+    id: "4354",
+    name: "TokenStore",
+    address: null,
+    symbol: "-",
+    url: "https://tokenstore.app",
+    description: `TokenStore is one of the oldest, fully trustless decentralized exchanges on the Ethereum network. All funds are held on an open smart contract (and not by the exchange), thereby eliminating many security risks faced by centralized and semi-decentralized exchanges.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tokenstore.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "tokenstore/index.js",
+    twitter: "TokenDotStore",
+    listedAt: 1711372950
+  },
 ]
 
 export default data3

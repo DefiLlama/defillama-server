@@ -730,7 +730,7 @@ export default {
         }
     },
     "myx-finance": {
-        enabled: true,
+        enabled: false,
         "id": "4319"
     }
 } as AdaptorsConfig

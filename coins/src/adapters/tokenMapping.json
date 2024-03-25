@@ -1959,6 +1959,11 @@
       "symbol": "USDB",
       "to": "coingecko#usdb"
     },
+    "0x2416092f143378750bb29b79eD961ab195CcEea5": {
+      "decimals": "18",
+      "symbol": "ezETH",
+      "to": "ethereum:0x2416092f143378750bb29b79eD961ab195CcEea5"
+    },
     "0x67fa2887914fA3729e9EED7630294Fe124f417A0": {
       "decimals": "18",
       "symbol": "YIELD",

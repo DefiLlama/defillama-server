@@ -2760,6 +2760,15 @@ export const chainCoingeckoIds = {
     twitter: "ourZORA",
     url: "https://zora.co"
   },
+  "DeFiChain EVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 1130,
+    twitter: "defichain",
+    url: "https://defichain.com/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3347,6 +3356,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Immutable zkEVM"
     case "zora":
       return "Zora"
+    case "defichain_evm":
+      return "DeFiChain EVM"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -20,6 +20,8 @@ export const normalizedChainReplacements = {
   "viction": "tomochain",
   "bevm": "chainx",
   "bitnet": "btn",
+  "defichain evm": "defichain_evm"
+
 } as {
   [chain: string]: string
 }

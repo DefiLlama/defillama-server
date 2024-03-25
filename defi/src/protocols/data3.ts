@@ -37099,6 +37099,48 @@ const data3: Protocol[] = [
     twitter: "BetFolioX", 
     listedAt: 1711379225
   },
+  {
+    id: "4362",
+    name: "Blastbrrr",
+    address: "blast:0x47efb5793b3aa8e15808c6fa794e6d7c93394047",
+    symbol: "BRRR",
+    url: "https://blastbrrr.com",
+    description: `Yield go BRRR. Mint "BRRR" to join no-loss yield competition.`,
+    chain: "Blast",
+    logo: `${baseIconsUrl}/blastbrrr.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm", 
+    chains: ["Blast"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "brrr/index.js",
+    twitter: "blastbrrr", 
+    listedAt: 1711393328
+  },
+  {
+    id: "4363",
+    name: "Yield Wars",
+    address: "0xf4A81C18816C9B0AB98FAC51B36Dcb63b0E58Fde",
+    symbol: "WAR",
+    url: "https://yieldwars.xyz",
+    description: `DeFi Battle Royale. Humble Farmers, Rise Up & Fight!`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yield-wars.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm", 
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "yieldwars/index.js",
+    twitter: "YieldWars", 
+    listedAt: 1711393450
+  },
 ]
 
 export default data3

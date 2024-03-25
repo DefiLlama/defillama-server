@@ -37185,6 +37185,28 @@ const data3: Protocol[] = [
     twitter: "SwychFinance", 
     listedAt: 1711394281
   },
+  {
+    id: "4366",
+    name: "Javsphere",
+    address: null,
+    symbol: "-",
+    url: "https://www.javsphere.com/#products",
+    description: `The Gateway to the real-world assets on Bitcoin with DeFi Meta Chain and its revolutionary decentralized applications built with Ethereum Virtual Machine from DeFiChain.`,
+    chain: "DefiChain",
+    logo: `${baseIconsUrl}/javsphere.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield", 
+    chains: ["DefiChain", "DeFiChain EVM"],
+    oracles: ["Internal"],  
+    forkedFrom: [],
+    module: "javsphere/index.js",
+    twitter: "Javsphere", 
+    github: ["Javsphere"],
+    listedAt: 1711394968
+  },
 ]
 
 export default data3

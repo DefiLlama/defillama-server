@@ -1764,6 +1764,11 @@
       "decimals": "18",
       "symbol": "LORDS",
       "to": "coingecko#lords"
+    },
+    "0x719b5092403233201aa822ce928bd4b551d0cdb071a724edd7dc5e5f57b7f34": {
+      "decimals": "18",
+      "symbol": "UNO",
+      "to": "coingecko#nostra-uno"
     }
   },
   "milkomeda": {
@@ -1985,6 +1990,11 @@
       "decimals": "18",
       "symbol": "YES",
       "to": "coingecko#yes-money"
+    },
+    "0x76da31d7c9cbeae102aff34d3398bc450c8374c1": {
+      "decimals": "18",
+      "symbol": "MIM",
+      "to": "coingecko#magic-internet-money"
     }
   },
   "bitcoin": {

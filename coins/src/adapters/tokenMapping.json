@@ -1980,6 +1980,11 @@
       "decimals": "18",
       "symbol": "YIELD",
       "to": "coingecko#crypto-valleys-yield-token"
+    },
+    "0x20fe91f17ec9080e3cac2d688b4ecb48c5ac3a9c": {
+      "decimals": "18",
+      "symbol": "YES",
+      "to": "coingecko#yes-money"
     }
   },
   "bitcoin": {

@@ -2123,6 +2123,31 @@
       "decimals": "18",
       "symbol": "ETH",
       "to": "coingecko#ethereum"
+    },
+    "0x7d5d845fd0f763cefc24a1cb1675669c3da62615": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xdf41220c7e322bfef933d85d01821ad277f90172": {
+      "decimals": "18",
+      "symbol": "ASTR",
+      "to": "coingecko#astar"
+    },
+    "0x7746ef546d562b443ae4b4145541a3b1a3d75717": {
+      "decimals": "18",
+      "symbol": "VASTR",
+      "to": "coingecko#bifrost-voucher-astr"
+    },
+    "0x7cb5d4d178d93d59ea0592abf139459957898a59": {
+      "decimals": "18",
+      "symbol": "DOT",
+      "to": "coingecko#polkadot"
+    },
+    "0x52ee2febf20cc81a575e6fabb6a3c54c307cbdac": {
+      "decimals": "18",
+      "symbol": "ARSW",
+      "to": "coingecko#arthswap"
     }
   },
   "inevm": {

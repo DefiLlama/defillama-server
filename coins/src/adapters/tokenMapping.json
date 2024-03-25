@@ -154,6 +154,11 @@
     }
   },
   "ethereum": {
+    "0x2416092f143378750bb29b79eD961ab195CcEea5": {
+      "decimals": "18",
+      "symbol": "ezETH",
+      "to": "coingecko#renzo-restaked-eth"
+    },
     "0x57f5e098cad7a3d1eed53991d4d66c45c9af7812": {
       "decimals": "18",
       "symbol": "WUSDM",
@@ -2178,6 +2183,11 @@
     }
   },
   "sapphire": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "ROSE",
+      "to": "coingecko#oasis-network"
+    },
     "0x8bc2b030b299964eefb5e1e0b36991352e56d2d3": {
       "decimals": "18",
       "symbol": "ROSE",

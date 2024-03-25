@@ -37078,6 +37078,27 @@ const data3: Protocol[] = [
     twitter: "SwitcheoLabs", 
     listedAt: 1711377850
   },
+  {
+    id: "4361",
+    name: "BetFolio",
+    address: null,
+    symbol: "-",
+    url: "https://betfolio.co",
+    description: `A Prediction Market for Crypto Portfolios. `,
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/betfolio.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market", 
+    chains: ["Polygon"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "betfolio/index.js",
+    twitter: "BetFolioX", 
+    listedAt: 1711379225
+  },
 ]
 
 export default data3

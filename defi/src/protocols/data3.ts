@@ -15303,7 +15303,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://pwn.xyz",
     description: "PWN is a peer-to-peer permissionless lending protocol. In the true spirit of DeFi composability, PWN users can borrow against—or lend using—any asset in their wallet (ERC-20, NFT, and even a bundle of both), while enjoying absolute flexibility on the loan terms (LTV, duration, APY, etc.). The oracle-less nature of the protocol protects all PWN loans from price-based liquidations. The only way to lose collateral is to default on a loan. \nOperating on seven EVM-compatible networks, PWN opens up new liquidity avenues, composability options, and leverage opportunities, while giving its users both optimized capital efficiency and predictability on both sides of the loan. A win on all fronts.",
-    chain: "Ethereum",
+    chain: "Polygon",
     logo: `${baseIconsUrl}/pwn.jpg`,
     audits: "2",
     audit_note: null,

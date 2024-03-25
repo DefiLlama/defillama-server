@@ -37036,6 +37036,48 @@ const data3: Protocol[] = [
     twitter: "dego_finance", 
     listedAt: 1711376563
   },
+  {
+    id: "4359",
+    name: "Rosy Stake",
+    address: "sapphire:0x6665a6Cae3F52959f0f653E3D04270D54e6f13d8",
+    symbol: "ROSY",
+    url: "https://rosytoken.com",
+    description: `Rosy is the first memecoin on Oasis Network. Rosy's "Burnt Steak" protocol" is a memecoin hype protool that allows ROSY token holders to stake and earn Carbon points and to increase the token's deflationary rate.`,
+    chain: "Sapphire",
+    logo: `${baseIconsUrl}/rosy-stake.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "rosy",
+    cmcId: null,
+    category: "Services", 
+    chains: ["Sapphire"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "rosy-burnt-steak/index.js",
+    twitter: "rosytoken", 
+    listedAt: 1711377673
+  },
+  {
+    id: "4360",
+    name: "Switcheo Finance",
+    address: null,
+    symbol: "-",
+    url: "https://switcheo.finance",
+    description: `Switcheo Finance is the decentralized cryptocurrency exchange on the ethereum blockchain. Our focus is on building an open and decentralized financial network.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/switcheo-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services", 
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "switcheofinance/index.js",
+    twitter: "SwitcheoLabs", 
+    listedAt: 1711377850
+  },
 ]
 
 export default data3

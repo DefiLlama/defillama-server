@@ -3995,6 +3995,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "sanctumso",
   },
+  {
+    id: "parent#hercules",
+    name: "Hercules",
+    url: "https://app.hercules.exchange",
+    description:
+      "Bringing composability and custom liquidity to Metis.",
+    logo: `${baseIconsUrl}/hercules.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TheHerculesDEX",
+  },
 ];
 
 export default parentProtocols;

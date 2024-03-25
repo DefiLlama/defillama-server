@@ -36994,7 +36994,48 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.euclidfinance.io/mechanism/audit"],
     listedAt: 1711375955
   },
-
+  {
+    id: "4357",
+    name: "3F Mutual",
+    address: null,
+    symbol: "-",
+    url: "https://3fmutual.org",
+    description: `MakerDAO Crash Insurance Pool. You buy some units of insurance. The price of a single unit is determined by a given formula.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/3f-mutual.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services", 
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "3fmutual/index.js",
+    twitter: "HakkaFinance", 
+    listedAt: 1711376333
+  },
+  {
+    id: "4358",
+    name: "Dego Finance",
+    address: null,
+    symbol: "-",
+    url: "https://degofinance.xyz/",
+    description: `DEGO equals to LEGO in the DeFi world. Each DeFi protocol as a brick, It could be the stable coin(DAI), flash Loans(Aave, Compound), DEX exchanges(Uniswap and Balancer), derivatives( Synthetix), insurances (Nexus Mutual).`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/dego-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services", 
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "degofinance/index.js",
+    twitter: "dego_finance", 
+    listedAt: 1711376563
+  },
 ]
 
 export default data3

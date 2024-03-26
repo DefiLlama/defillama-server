@@ -35185,8 +35185,9 @@ const data3: Protocol[] = [
     chains: ["Sui"],
     module: "suilend/index.js",
     twitter: "suilendprotocol",
-    oracles: [], 
+    oracles: ["Pyth"], 
     forkedFrom: [],
+    audit_links: ["https://docs.suilend.fi/security/audit"],
     listedAt: 1710198832
   },
   {

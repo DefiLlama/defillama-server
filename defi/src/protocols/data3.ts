@@ -35174,7 +35174,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.suilend.fi",
     description:
-      "Lending and borrowing platform on Sui. Sister project to solendprotocol.",
+      "Suilend is a lending protocol on Sui, built by the team behind Solend. The Suilend team has years of experience navigating the ups and downs of the toughest crypto markets.",
     chain: "Sui",
     logo: `${baseIconsUrl}/suilend.png`,
     audits: "0",

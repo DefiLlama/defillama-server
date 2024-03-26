@@ -10648,7 +10648,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "shapeshift/index.js",
     treasury: "shapeshift.js",
-    twitter: "ShapeShift_io",
+    twitter: "ShapeShift",
     governanceID: ["snapshot:shapeshiftdao.eth"],
     github: ["shapeshift"]
   },

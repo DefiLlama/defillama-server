@@ -8521,7 +8521,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "StakeSteak",
     address: "fantom:0x05848B832E872d9eDd84AC5718D58f21fD9c9649",
     symbol: "STEAK",
-    url: "https://stakesteak.app/",
+    url: "",
     description: "The first Fantom-native, interest-bearing Stable Coin: iFUSD",
     chain: "Fantom",
     logo: `${baseIconsUrl}/stakesteak.png`,

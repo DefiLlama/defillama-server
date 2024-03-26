@@ -37385,7 +37385,7 @@ const data3: Protocol[] = [
     twitter: "Openswap_", 
     listedAt: 1711409045
   },
-  {
+  /*{
     id: "4375",
     name: "BloctoSwap",
     address: null,
@@ -37405,7 +37405,7 @@ const data3: Protocol[] = [
     module: "bloctoswap/index.js",
     twitter: "Bloctoswap", 
     listedAt: 1711467107
-  },
+  },*/
   {
     id: "4376",
     name: "POWERCITY Earn Protocol",

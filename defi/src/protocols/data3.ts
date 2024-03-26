@@ -35174,10 +35174,10 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.suilend.fi",
     description:
-      "Suilend is a lending protocol on Sui, built by the team behind Solend. The Suilend team has years of experience navigating the ups and downs of the toughest crypto markets.",
+      "Suilend is a lending protocol on Sui, built by the team behind Solend.",
     chain: "Sui",
     logo: `${baseIconsUrl}/suilend.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

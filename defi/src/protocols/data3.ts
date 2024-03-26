@@ -29152,13 +29152,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4008",
-    name: "SwapGPT",
+    name: "Panora", // previous SwapGPT 
     address: null,
     symbol: "-",
-    url: "https://www.swapgpt.ai",
-    description: "Interactive Super dApp with Trade, Swap, Earn & Risk-Adjusted Market Making Strategies.",
+    url: "https://panora.exchange",
+    description: "Aptos Native Meta-DEX Aggregator and On-Chain Orderbook",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/swapgpt.jpg`, 
+    logo: `${baseIconsUrl}/panora.jpg`, 
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -29168,7 +29168,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "SwapGPT",
+    github: ["PanoraExchange"],
+    twitter: "PanoraExchange",
   },
   {
     id: "4009",

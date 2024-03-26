@@ -1969,5 +1969,9 @@ export default {
     "swop": {
         enabled: true,
         id: "613"
+    },
+    "javsphere": {
+        enabled: true,
+        id: "4366"
     }
 } as AdaptorsConfig

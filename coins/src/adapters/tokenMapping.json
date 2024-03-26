@@ -1774,6 +1774,11 @@
       "decimals": "18",
       "symbol": "UNO",
       "to": "coingecko#nostra-uno"
+    },
+    "0x0719b5092403233201aa822ce928bd4b551d0cdb071a724edd7dc5e5f57b7f34": {
+      "decimals": "18",
+      "symbol": "UNO",
+      "to": "coingecko#nostra-uno"
     }
   },
   "milkomeda": {

@@ -37445,7 +37445,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: [],
-    module: "unipilot/index.js",
+    module: "a51-finance-v3/index.js",
     twitter: "A51_Fi",
     audit_links: ["https://github.com/a51finance/concentrated-liquidity-tool/blob/main/audits/Hashlock/A51%20Finance%20%20Smart%20Contract%20Audit%20Report%20-%20Revised%20Report%20v2.pdf"],
     listedAt: 1711470832,

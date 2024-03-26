@@ -33844,19 +33844,19 @@ const data3: Protocol[] = [
     url: "https://trade.synfutures.com/#/trade",
     description:
       "SynFutures is a leading decentralized protocol for perpetual futures, democratizing the derivatives market by empowering users to trade any asset and create arbitrary futures contracts within seconds. Its V3 oAMM introduces the industry's first-ever integration of a unified AMM and on-chain matching order book model.",
-    chain: "Arbitrum",
+    chain: "Blast",
     logo: `${baseIconsUrl}/synfutures.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum","Blast"],
+    chains: ["Blast"],
     module: "synfutures-v3/index.js",
     twitter: "SynFuturesDefi",
     forkedFrom: [],
     oraclesByChain: {
-      arbitrum: ["Chainlink"],  //github.com/DefiLlama/defillama-server/pull/6111
+      // arbitrum: ["Chainlink"],  //github.com/DefiLlama/defillama-server/pull/6111
       blast: ["Pyth"]  //github.com/DefiLlama/defillama-server/pull/6111
     },
     audit_links: ["https://www.synfutures.com/Quantstamp-Audit-Report-SynFuturesV3.pdf"],

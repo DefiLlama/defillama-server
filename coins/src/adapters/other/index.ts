@@ -23,6 +23,10 @@ import defiChainAdapter from "./defichain";
 import velgAdapter from "./velgd";
 import steadefiEth from "./steadefi_eth";
 import steadefiWbtc from "./steadefi_wbtc";
+import steadefiUsdArb from "./steadefi_usdc_arb";
+import steadefiUsdEth from "./steadefi_usdc_eth";
+import steadefiUsdLink from "./steadefi_usdc_link";
+import steadefiUsdWbtc from "./steadefi_usdc_wbtc";
 import opdxAdapter from "./odpxWethLP";
 import teahouseAdapter from "./teahouse";
 
@@ -32,7 +36,14 @@ export const shlb = shlb_;
 
 export function steadefi(timestamp: number = 0) {
   console.log("starting steadefi");
-  return Promise.all([steadefiEth(timestamp), steadefiWbtc(timestamp)]);
+  return Promise.all([
+    steadefiEth(timestamp),
+    steadefiWbtc(timestamp),
+    steadefiUsdArb(timestamp),
+    steadefiUsdEth(timestamp),
+    steadefiUsdLink(timestamp),
+    steadefiUsdWbtc(timestamp),
+  ]);
 }
 export function teahouse(timestamp: number = 0) {
   console.log("starting teahouse");

@@ -4007,6 +4007,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "TheHerculesDEX",
   },
+  {
+    id: "parent#a51-finance",
+    name: "A51 Finance",
+    url: "https://a51.finance/",
+    description:
+      "A51 Finance is an Autonomous Liquidity Provisioning (ALP) protocol offering customizable tools for creating tailored liquidity strategies empowering LPs with dynamic adjustments based on their preferences",
+    logo: `${baseIconsUrl}/a51-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "A51_Fi",
+    github: ["Unipilot","a51finance"]
+  },
 ];
 
 export default parentProtocols;

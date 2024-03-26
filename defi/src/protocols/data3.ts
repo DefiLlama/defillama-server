@@ -35229,7 +35229,7 @@ const data3: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum", "Optimism","Arbitrum", "Binance"],
     oraclesByChain: {
-      ethereum: ["Redstone"], // https://github.com/DefiLlama/defillama-server/pull/6225 , confirmed with cian team that is only using redstone on ETH chain for now. 
+      ethereum: ["RedStone"], // https://github.com/DefiLlama/defillama-server/pull/6225 , confirmed with cian team that is only using redstone on ETH chain for now. 
     },
     forkedFrom: [],
     module: "cian-lst/index.js",
@@ -37384,6 +37384,49 @@ const data3: Protocol[] = [
     module: "openswap/index.js",
     twitter: "Openswap_", 
     listedAt: 1711409045
+  },
+  {
+    id: "4375",
+    name: "BloctoSwap",
+    address: null,
+    symbol: "-",
+    url: "https://blocto.finance",
+    description: `Inter-chain automatic market-making decentralized exchange on Flow, with assets bridged from Ethereum`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bloctoswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "bloctoswap/index.js",
+    twitter: "Bloctoswap", 
+    listedAt: 1711467107
+  },
+  {
+    id: "4376",
+    name: "POWERCITY Earn Protocol",
+    address: "pulse:0xb513038BbFdF9D40B676F41606f4F61D4b02c4A2",
+    symbol: "EARN",
+    url: "https://www.earn.powercity.io/",
+    description: `EARN Protocol is a decentralized borrowing protocol on PulseChain that allows you to draw interest-free loans against $PLSX used as collateral. Loans are paid out in PXDC (a USD pegged stablecoin) and need to maintain a minimum collateral ratio of 110%.`,
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/powercity-earn-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP", 
+    chains: ["Pulse"],
+    oracles: ["TWAP"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9551
+    forkedFrom: ["Liquity"],
+    module: "earn-powercity-io/index.js",
+    twitter: "POWERCITYio", 
+    audit_links: ["https://omniscia.io/reports/powercity-earn-implementation-646b3050e69c940014643ed6/"],
+    listedAt: 1711467561
   },
 ]
 

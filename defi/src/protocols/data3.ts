@@ -37389,12 +37389,12 @@ const data3: Protocol[] = [
     twitter: "Openswap_", 
     listedAt: 1711409045
   },
-  /*{
+  {
     id: "4375",
     name: "BloctoSwap",
     address: null,
     symbol: "-",
-    url: "https://blocto.finance",
+    url: "https://swap.blocto.app/#/",
     description: `Inter-chain automatic market-making decentralized exchange on Flow, with assets bridged from Ethereum`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bloctoswap.png`,
@@ -37407,9 +37407,9 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
     module: "bloctoswap/index.js",
-    twitter: "Bloctoswap", 
+    twitter: "BloctoApp", 
     listedAt: 1711467107
-  },*/
+  },
   {
     id: "4376",
     name: "POWERCITY Earn Protocol",

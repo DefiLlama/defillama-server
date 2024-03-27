@@ -37606,6 +37606,28 @@ const data3: Protocol[] = [
     module: "rss3/index.js",
     twitter: "rss3_",
   },
+  {
+    id: "4385",
+    name: "Poolz Network",
+    address: "bsc:0xbaea9aba1454df334943951d51116ae342eab255",
+    symbol: "POOLX",
+    url: "https://www.poolz.finance",
+    description: "Blockchain Agnostic Launchpad",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/poolz-network.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "poolz-finance-2",
+    cmcId: "8271",
+    category: "Farm",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "poolznetwork/index.js",
+    twitter: "Poolz__",
+    github: ["The-Poolz"],
+    listedAt: 1711556896
+  },
 ]
 
 export default data3

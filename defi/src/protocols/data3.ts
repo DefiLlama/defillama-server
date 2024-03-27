@@ -37628,6 +37628,28 @@ const data3: Protocol[] = [
     github: ["The-Poolz"],
     listedAt: 1711556896
   },
+  {
+    id: "4386",
+    name: "HELIX Finance",
+    address: null,
+    symbol: "-",
+    url: "https://helixfinance.io/",
+    description: "HELIX is an RWA protocol leveraging Big-Data and proprietary credit analytics to connect on-chain investors with uncorrelated and sustainable yields from real-world assets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/helix-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "helix/index.js",
+    twitter: "helix_finance",
+    audit_links: ["https://helilabs.journey.io/p/helixaudit"],
+    listedAt: 1711561900
+  },
 ]
 
 export default data3

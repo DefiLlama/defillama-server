@@ -732,5 +732,15 @@ export default {
     "myx-finance": {
         enabled: false,
         "id": "4319"
+    },
+    "logx": {
+        enabled: true,
+        id: "3396",
+        protocolsData: {
+            "derivative": {
+                enabled: true,
+                id: "3396",
+            }
+        }
     }
 } as AdaptorsConfig

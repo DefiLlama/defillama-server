@@ -737,10 +737,10 @@ export default {
         enabled: true,
         id: "3396",
         protocolsData: {
-        "derivative": {
-            enabled: true,
-            id: "3396",
+            "derivative": {
+                enabled: true,
+                id: "3396",
+            }
         }
-    }
     }
 } as AdaptorsConfig

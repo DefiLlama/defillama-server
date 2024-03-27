@@ -159,6 +159,21 @@
     }
   },
   "era": {
+    "0x0e6d09D44F3A929d3030B84bFbCc9AE43F42ac8F": {
+      "decimals": "18",
+      "symbol": "AAVE",
+      "to": "coingecko#aave"
+    },
+    "0x60e14dd50ef2ff19cd1c71b76f1e17054a32f030": {
+      "decimals": "9",
+      "symbol": "SOL",
+      "to": "coingecko#solana"
+    },
+    "0x1c6f53185061d7cc387e481c350ad00c2c876f3e": {
+      "decimals": "18",
+      "symbol": "UNI",
+      "to": "coingecko#uniswap"
+    },
     "0x2416092f143378750bb29b79eD961ab195CcEea5": {
       "decimals": "18",
       "symbol": "wstETH",

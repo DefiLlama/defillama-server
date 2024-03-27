@@ -88,7 +88,7 @@ export interface TaggrProposalReponse {
  */
 export async function get_metadata ()
 {
-    var { data, _status } = await axios.get(
+    var { data, } = await axios.get(
         TAGGR_URL + "/api/v1/metadata"
         ,
         {
@@ -112,8 +112,8 @@ export async function get_metadata ()
             type: "ICRC-1 Ledger",
             name: data.token_name,
             symbol: data.symbol,
-            supply: data.token_supply.toString(),
-            decimals: data.decimals.toString(),
+            supply: data.token_supply?.toString(),
+            decimals: data.decimals?.toString(),
         } ]
     }
 }

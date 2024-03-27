@@ -27977,7 +27977,8 @@ const data3: Protocol[] = [
     audit_links: ["https://skynet.certik.com/zh-CN/projects/surf-protocol", "https://www.beosin.com/audits/Surf%20protocol_202311080924.pdf"],
     listedAt: 1703359767
   },///
-    {
+  /*
+  {
     id: "3955",
     name: "ChocoINU Avax",
     address: "avax:0x7fF68aD4366F84d2a64D0599fef6A6ac28Ca73a6",
@@ -27998,6 +27999,7 @@ const data3: Protocol[] = [
     twitter: "ChocoInuAvax",
     listedAt: 1703414992
   },
+  */
   {
     id: "3956",
     name: "Balanced Dollar",

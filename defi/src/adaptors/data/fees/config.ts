@@ -1973,5 +1973,10 @@ export default {
     "javsphere": {
         enabled: true,
         id: "4366"
+    },
+    "frax-amo": {
+        parentId: "Frax Finance",
+        enabled: true,
+        id: "359"
     }
 } as AdaptorsConfig

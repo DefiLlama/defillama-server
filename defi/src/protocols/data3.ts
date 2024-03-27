@@ -35865,7 +35865,7 @@ const data3: Protocol[] = [
     url: "https://mvlbridge.io/",
     description: `For the past few years, MVL has successfully operated 'TADA', a fast-growing ride-hailing service in Southeast Asia, and 'ONiON Mobility', which develops and operates electric vehicle production and energy infrastructure. MVL is in the process of connecting this to the blockchain ecosystem. MVL Staking rewards are based on the actual business profits of TADA and ONiON. MVL uses Ethereum and BSC and has single staking and LP staking. It is divided into staking with daily rewards and staking with lock up`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/mvl-staking.png`,
+    logo: `${baseIconsUrl}/mvl-staking.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "mass-vehicle-ledger",

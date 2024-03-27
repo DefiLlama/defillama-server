@@ -40,10 +40,6 @@ export default {
     enabled: true,
     id: "3207",
   },
-  "logx": {
-    enabled: false,
-    id: "3396",
-  },
   "jumper-exchange": {
     enabled: true,
     id: "3524",

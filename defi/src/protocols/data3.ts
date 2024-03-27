@@ -16869,6 +16869,7 @@ const data3: Protocol[] = [
     github: ["danogo2023"],
     listedAt: 1693321887
   },
+  /*
   {
     id: "3455",
     name: "ChocoInu",
@@ -16890,6 +16891,7 @@ const data3: Protocol[] = [
     twitter: "TheKitchenBase",
     listedAt: 1693327715
   },
+  */
   {
     id: "3456",
     name: "MARSWAP",

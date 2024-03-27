@@ -37599,7 +37599,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chains",
+    category: "Chain",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

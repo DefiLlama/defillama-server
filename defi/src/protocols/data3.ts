@@ -37633,7 +37633,7 @@ const data3: Protocol[] = [
     name: "HELIX Finance",
     address: null,
     symbol: "-",
-    url: "https://www.poolz.finance",
+    url: "https://helixfinance.io/",
     description: "HELIX is an RWA protocol leveraging Big-Data and proprietary credit analytics to connect on-chain investors with uncorrelated and sustainable yields from real-world assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/helix-finance.jpg`,

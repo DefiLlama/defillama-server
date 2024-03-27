@@ -164,8 +164,8 @@ function chainAndAddrFromId(id: string) {
 
 async function updateProposal(data: any, cache: any) {
   let {
-    start,
-    end,
+    // start,
+    // end,
     voteStats,
     startBlock,
     endBlock,
@@ -173,15 +173,15 @@ async function updateProposal(data: any, cache: any) {
     eta,
     governanceId,
   } = data
-  if (typeof start === 'object' && start.timestamp) {
-    if (!startBlock) startBlock = start.number
-    start = Math.floor(+new Date(start.timestamp) / 1e3)
-  }
+  // if (typeof start === 'object' && start.timestamp) {
+  //   if (!startBlock) startBlock = start.number
+  //   start = Math.floor(+new Date(start.timestamp) / 1e3)
+  // }
 
-  if (typeof end === 'object' && end.timestamp) {
-    if (!endBlock) endBlock = end.number
-    end = Math.floor(+new Date(end.timestamp) / 1e3)
-  }
+  // if (typeof end === 'object' && end.timestamp) {
+  //   if (!endBlock) endBlock = end.number
+  //   end = Math.floor(+new Date(end.timestamp) / 1e3)
+  // }
 
   statusChanges.sort((a: any, b: any) => +new Date(a.blockTimestamp) - +new Date(b.blockTimestamp))
   const lastStatus = statusChanges.pop()
@@ -201,7 +201,8 @@ async function updateProposal(data: any, cache: any) {
 
   let proposal = {
     ...data,
-    start, end, startBlock, endBlock, canceled, executed, eta,
+    // start, end,
+    startBlock, endBlock, canceled, executed, eta,
     state, scores, scores_total,
     choices: ['For', 'Against', 'Abstain'],
     network: governanceId.split(':')[1],

@@ -20,7 +20,8 @@ export const normalizedChainReplacements = {
   "viction": "tomochain",
   "bevm": "chainx",
   "bitnet": "btn",
-  "defichain evm": "defichain_evm"
+  "defichain evm": "defichain_evm",
+  "op mainnet": "optimism"
 
 } as {
   [chain: string]: string
@@ -106,7 +107,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 11297108109,
   },
-  "Optimism": {
+  "OP Mainnet": {
     geckoId: "optimism",
     symbol: "OP",
     cmcId: "11840",
@@ -2796,6 +2797,7 @@ chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
+chainCoingeckoIds["Optimism"] = chainCoingeckoIds["OP Mainnet"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -2849,6 +2851,8 @@ export function transformNewChainName(chain: string) {
       return "Oasis Sapphire"
     case "Oasis":
       return "Oasis Emerald"
+    case "Optimism":
+      return "OP Mainnet"
     default:
       return chain
   }
@@ -2890,6 +2894,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Oasis Sapphire" : "Sapphire"
     case "oasis":
       return useNewChainNames ? "Oasis Emerald" : "Oasis"
+    case "optimism":
+      return useNewChainNames ? "OP Mainnet" : "Optimism"
     case "avax":
       return "Avalanche"
     case "xdaiarb":

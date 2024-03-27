@@ -37586,6 +37586,26 @@ const data3: Protocol[] = [
     github: ["BlastNameCom"],
     listedAt: 1711540920
   },
+  {
+    id: "4384",
+    name: "RSS3 Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://explorer.rss3.io/bridge",
+    description: "Bridge to/from the VSL chain",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rss3-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "rss3/index.js",
+    twitter: "rss3_",
+  },
 ]
 
 export default data3

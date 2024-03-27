@@ -3988,7 +3988,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Sanctum",
     url: "https://www.sanctum.so",
     description:
-      "Sanctum is Solana’s on-chain stability protocol. Sanctum unlocks staked SOL to be used throughout DeFi by providing a backstop of SOL liquidity, and makes sure DeFi borrow-lend protocols remain solvent by providing a safe haven of SOL to flash loan and close LST-collateralised positions.",
+      "Sanctum is a new primitive built on Solana to power liquid staking and bring Solana into an infinite-LST future. Sanctum enables users that stake SOL natively or with a liquid staking token (LST) to tap into a powerful unified liquidity layer.",
     logo: `${baseIconsUrl}/sanctum.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -4006,6 +4006,19 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "TheHerculesDEX",
+  },
+  {
+    id: "parent#a51-finance",
+    name: "A51 Finance",
+    url: "https://a51.finance/",
+    description:
+      "A51 Finance is an Autonomous Liquidity Provisioning (ALP) protocol offering customizable tools for creating tailored liquidity strategies empowering LPs with dynamic adjustments based on their preferences",
+    logo: `${baseIconsUrl}/a51-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "A51_Fi",
+    github: ["Unipilot","a51finance"]
   },
 ];
 

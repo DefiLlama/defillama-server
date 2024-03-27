@@ -7,7 +7,6 @@ const chain = "arbitrum";
 
 const name = "ETH Lend ETH-USDC GMX";
 const steadefi_lv = "0x27aa75c4f7fec50A0720630E5d0f36A3bb7c6671"; //ETH  lv
-const copra_steadefi_eth = "0xFd7691716eD342Da087036F69712D966D45e666e";
 const wad = 1e18;
 
 export default async function getTokenPrice(timestamp: number) {
@@ -22,14 +21,7 @@ async function contractCalls(
   writes: Write[],
   timestamp: number,
 ) {
-  const [balanceOfCopra, lvTokenValue, tokenInfos] = await Promise.all([
-    call({
-      target: steadefi_lv,
-      params: copra_steadefi_eth,
-      chain,
-      abi: "erc20:balanceOf",
-      block,
-    }),
+  const [lvTokenValue, tokenInfos] = await Promise.all([
     call({
       target: steadefi_lv,
       chain,
@@ -38,8 +30,12 @@ async function contractCalls(
     }),
     getTokenInfo(chain, [steadefi_lv], block),
   ]);
-
-  const price = (lvTokenValue.output * balanceOfCopra.output) / wad;
+  const [{ price: priceWETH }] = await getTokenAndRedirectData(
+    ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+    "arbitrum",
+    timestamp,
+  );
+  const price = (lvTokenValue.output * priceWETH) / wad;
 
   addToDBWritesList(
     writes,

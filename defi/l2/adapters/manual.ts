@@ -77,8 +77,13 @@ export const additional: { [chain: string]: string[] } = {
     "0x4b9eb6c0b6ea15176bbf62841c6b2a8a398cb656", // DAI
   ],
   mode: [
-    '0x2416092f143378750bb29b79eD961ab195CcEea5', // ezETH
-  ]
+    "0x2416092f143378750bb29b79eD961ab195CcEea5", // ezETH
+  ],
+  manta: [
+    "0x3B95bC951EE0f553ba487327278cAc44f29715E5", // wUSDM
+    "0xEc901DA9c68E90798BbBb74c11406A32A70652C3", // STONE
+    "0x6Fae4D9935E2fcb11fC79a64e917fb2BF14DaFaa", // TIA
+  ],
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [

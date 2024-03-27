@@ -17,7 +17,7 @@ export async function verifyChanges(chains: FinalData) {
     const totalNew = allNew.total.total;
     const totalOld = allOld.total.total;
     const change = (100 * Math.abs(totalNew - totalOld)) / totalOld;
-    if (!(change > 10)) return;
+    if (!(change > 20)) return;
 
     message += `\n${chain} has had a ${totalNew > totalOld ? "increase" : "decrease"} of ${change.toFixed(
       0

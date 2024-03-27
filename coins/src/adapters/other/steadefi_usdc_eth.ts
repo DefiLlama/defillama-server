@@ -5,9 +5,9 @@ import getBlock from "../utils/block";
 import { call } from "@defillama/sdk/build/abi/index";
 const chain = "arbitrum";
 
-const name = "WBTC Lend WBTC-USDC GMX";
-const steadefi_lv = "0xabbe8a66bad38982b27f1410dfa0de329ae2a5da"; //WBTC  lv
-const wad = 1e8;
+const name = "USDC Lend ETH-USDC GMX";
+const steadefi_lv = "0xa9ED07Ba2e3347F0068A3F0B9d2d943AE7D86F90"; //USDC - eth  lv
+const wad = 1e6;
 
 export default async function getTokenPrice(timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
@@ -30,12 +30,12 @@ async function contractCalls(
     }),
     getTokenInfo(chain, [steadefi_lv], block),
   ]);
-  const [{ price: priceWBTC }] = await getTokenAndRedirectData(
-    ["0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f"],
+  const [{ price: priceUSDC }] = await getTokenAndRedirectData(
+    ["0xaf88d065e77c8cC2239327C5EDb3A432268e5831"],
     "arbitrum",
     timestamp,
   );
-  const price = (lvTokenValue.output * priceWBTC) / wad;
+  const price = (lvTokenValue.output * priceUSDC) / wad;
 
   addToDBWritesList(
     writes,

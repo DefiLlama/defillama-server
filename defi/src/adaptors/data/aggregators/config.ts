@@ -176,5 +176,10 @@ export default {
   "fibrous-finance": {
     "enabled": true,
     "id": "4278"
+  },
+  "aperture-swap": {
+    parentId: "Aperture Finance",
+    "enabled": true,
+    "id": "3554"
   }
 } as AdaptorsConfig;

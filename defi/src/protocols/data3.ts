@@ -36134,7 +36134,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "NftFi", 
-    chains: ["Blast"],
+    chains: ["Ethereum", "Binance", "Polygon", "Arbitrum", "Optimism", "Avalanche", "Blast"],
     oracles: ["Internal"], // https://docs.envelop.is/tutorials/oracle
     forkedFrom: [],
     module: "envelop/index.js",

@@ -1,6 +1,6 @@
-import getTokenPrices from "./yieldYak";
+import getTokenPrices, { config } from "./yieldYak";
 
 export function yieldYak(timestamp: number = 0) {
   console.log("starting yield-yak");
-  return getTokenPrices("avax", timestamp);
+  return Promise.all(Object.keys(config).map(chain => getTokenPrices(chain, timestamp)));
 }

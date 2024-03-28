@@ -1,6 +1,8 @@
-import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
+import { getCachedHistoricalTvlForAllProtocols, getHistoricalTvlForAllProtocols, IProtocol } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections } from "./utils/normalizeChain";
+import { getR2 } from "./utils/r2";
+import { getClosestDayStartTimestamp } from "./utils/date";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -58,32 +60,46 @@ function sum(
   categoryProtocols[category].add(protocol.name);
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+export async function getCategoriesInternal({ ...options }: any = {}) {
+
   const sumDailyTvls = {} as SumDailyTvls;
   const categoryProtocols = {} as IProtocolsByCategory;
 
-  await processProtocols(
-    async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
+  let historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>
+  if (options.isApi2CronProcess) {
+    historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(false, false, options);
+  } else {
+    historicalProtocolTvlsData = await getCachedHistoricalTvlForAllProtocols(false, false)
+  }
+  
+  const { historicalProtocolTvls, } = historicalProtocolTvlsData
+
+  historicalProtocolTvls.forEach((protocolTvl) => {
+    if (!protocolTvl) {
+      return;
+    }
+    protocolTvl.historicalTvl.forEach((item) => {
+      const timestamp = getClosestDayStartTimestamp(item.SK);
       try {
-        let category = protocol.category;
-        if (category) {
-          sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocol);
+        let category = protocolTvl.protocol.category;
+        if (category && category !== "CEX" && category !== 'Chain') {
+          sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocolTvl.protocol);
           return;
         }
       } catch (error) {
-        console.log(protocol.name, error);
+        console.log(protocolTvl.protocol.name, error);
       }
-    },
-    { includeBridge: true }
-  );
+    })
+  })
 
-  return successResponse(
-    {
-      chart: sumDailyTvls,
-      categories: Object.fromEntries(Object.entries(categoryProtocols).map((c) => [c[0], Array.from(c[1])])),
-    },
-    10 * 60
-  ); // 10 mins cache
+  return {
+    chart: sumDailyTvls,
+    categories: Object.fromEntries(Object.entries(categoryProtocols).map((c) => [c[0], Array.from(c[1])])),
+  }
+}
+
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  return successResponse(await getCategoriesInternal(), 10 * 60); // 10 mins cache
 };
 
 export default wrap(handler);

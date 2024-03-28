@@ -14,14 +14,29 @@ import { DbTokenInfos } from "../../utils/dbInterfaces";
 const vault: string = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
 const nullAddress: string = "0x0000000000000000000000000000000000000000";
 const subgraphNames: { [chain: string]: string } = {
-  ethereum: "balancer-v2",
-  arbitrum: "balancer-arbitrum-v2",
-  polygon: "balancer-polygon-v2",
+  ethereum: "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-v2",
+  arbitrum:
+    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-arbitrum-v2",
+  polygon:
+    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-polygon-v2",
+  optimism:
+    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-optimism-v2",
+  avax:
+    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-avalanche-v2",
+  xdai:
+    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-gnosis-chain-v2",
+  polygon_zkevm:
+    "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
+  base:
+    "https://api.studio.thegraph.com/query/24660/balancer-base-v2/version/latest",
 };
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
   arbitrum: "0xb08e16cfc07c684daa2f93c70323badb2a6cbfd2",
   polygon: "0x3b8ca519122cdd8efb272b0d3085453404b25bd0",
+  optimism: "0x2E96068b3D5B5BAE3D7515da4A1D2E52d08A2647",
+  avax: "0xb08E16cFc07C684dAA2f93C70323BAdb2A6CBFd2",
+  xdai: "0x809B79b53F18E9bc08A961ED4678B901aC93213a",
 };
 type GqlResult = {
   id: string;
@@ -31,7 +46,7 @@ type PoolInfo = {
   balances: number[];
   tokens: string[];
 };
-type TokenValues = {
+export type TokenValues = {
   address: string;
   decimals: number;
   price: number;
@@ -40,9 +55,8 @@ type TokenValues = {
 async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
-  const subgraph: string = `https://api.thegraph.com/subgraphs/name/balancer-labs/${
-    subgraphNames[chain] || chain
-  }`;
+  const subgraph: string = subgraphNames[chain] || chain;
+
   for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
     query {
@@ -56,7 +70,8 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
         totalLiquidity
       }
     }`;
-    const result: GqlResult[] = (await request(subgraph, lpQuery)).pools;
+    const res: any = await request(subgraph, lpQuery);
+    const result: GqlResult[] = res.pools;
     if (result.length < 1000) i = 20;
     if (result.length == 0) return addresses;
     reservereThreshold = Number(
@@ -153,7 +168,7 @@ function getTokenValues(
     if (poolValue.length == 0) return;
     const price: number =
       (poolValue[0][1] * 10 ** poolInfos.decimals[i].output) / s.output;
-    if (isNaN(price)) return;
+    if (isNaN(price) || price == Infinity) return;
 
     tokenValues.push({
       address: s.input.target,
@@ -164,12 +179,13 @@ function getTokenValues(
   });
   return tokenValues;
 }
-async function getLpPrices(
+export async function getLpPrices(
+  poolIds: string[],
   chain: string,
   timestamp: number,
   block: number | undefined,
+  supplyAbi: any = abi.getActualSupply,
 ): Promise<TokenValues[]> {
-  const poolIds: string[] = await getPoolIds(chain, timestamp);
   const poolTokens: PoolInfo[] = await getPoolTokens(chain, block, poolIds);
   const poolValues: { [poolId: string]: number } = await getPoolValues(
     chain,
@@ -197,9 +213,10 @@ async function getLpPrices(
   const actualSupplies: Result[] = (
     await multiCall({
       calls,
-      abi: abi.getActualSupply,
+      abi: supplyAbi,
       chain,
       block,
+      permitFailure: true,
     })
   ).output;
 
@@ -224,49 +241,65 @@ export default async function getTokenPrices(
 ): Promise<Write[]> {
   let writes: Write[] = [];
   const block: number | undefined = await getBlock(chain, timestamp);
+  const poolIds: string[] = await getPoolIds(chain, timestamp);
   const tokenValues: TokenValues[] = (
-    await getLpPrices(chain, timestamp, block)
+    await getLpPrices(poolIds, chain, timestamp, block)
   ).filter((t: TokenValues) => t.price != Infinity);
-  const gauges: string[] = (
-    await multiCall({
-      target: gaugeFactories[chain],
-      block,
-      chain,
-      calls: tokenValues
-        .map((t: any) => t.address)
-        .map((l: string) => ({
-          params: [l],
-        })),
-      abi: abi.getPoolGauge,
-    })
-  ).output.map((o: Result) => o.output);
+  if (chain in Object.keys(gaugeFactories)) {
+    const gauges: string[] = (
+      await multiCall({
+        target: gaugeFactories[chain],
+        block,
+        chain,
+        calls: tokenValues
+          .map((t: any) => t.address)
+          .map((l: string) => ({
+            params: [l],
+          })),
+        abi: abi.getPoolGauge,
+      })
+    ).output.map((o: Result) => o.output);
 
-  tokenValues.map((v: TokenValues, i: number) => {
-    addToDBWritesList(
-      writes,
-      chain,
-      v.address,
-      v.price,
-      v.decimals,
-      v.symbol,
-      timestamp,
-      "balancer-lp",
-      0.9,
+    tokenValues.map((v: TokenValues, i: number) => {
+      addToDBWritesList(
+        writes,
+        chain,
+        v.address,
+        v.price,
+        v.decimals,
+        v.symbol,
+        timestamp,
+        "balancer-lp",
+        0.9,
+      );
+      if (gauges[i] == nullAddress) return;
+      addToDBWritesList(
+        writes,
+        chain,
+        gauges[i],
+        undefined,
+        v.decimals,
+        `${v.symbol}-gauge`,
+        timestamp,
+        "balancer-gauge",
+        0.9,
+        `asset#${chain}:${v.address}`,
+      );
+    });
+  } else {
+    tokenValues.map((v: TokenValues) =>
+      addToDBWritesList(
+        writes,
+        chain,
+        v.address,
+        v.price,
+        v.decimals,
+        v.symbol,
+        timestamp,
+        "balancer-lp",
+        0.9,
+      ),
     );
-    if (gauges[i] == nullAddress) return;
-    addToDBWritesList(
-      writes,
-      chain,
-      gauges[i],
-      undefined,
-      v.decimals,
-      `${v.symbol}-gauge`,
-      timestamp,
-      "balancer-gauge",
-      0.9,
-      `asset#${chain}:${v.address}`,
-    );
-  });
-
+  }
   return writes;
 }

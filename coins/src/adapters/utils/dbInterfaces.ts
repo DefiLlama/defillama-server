@@ -1,5 +1,11 @@
 import { Result } from "./sdkInterfaces";
 
+export interface Metadata {
+  [address: string]: {
+    symbol: string;
+    decimals: number;
+  };
+}
 export interface Write {
   SK: number;
   PK: string;
@@ -10,6 +16,7 @@ export interface Write {
   adapter?: string;
   confidence: number;
   timestamp?: number;
+  mcap?: number;
 }
 export interface DbQuery {
   PK: string;
@@ -52,3 +59,7 @@ export interface DbTokenInfos {
   supplies: Result[];
   symbols: Result[];
 }
+export type CoinRead = {
+  timestamp: number;
+  key: string;
+};

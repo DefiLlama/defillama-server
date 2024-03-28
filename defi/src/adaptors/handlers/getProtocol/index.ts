@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse, notFoundResponse } from "../../../utils/shared";
+import { successResponse, wrap, IResponse, notFoundResponse, dayCache } from "../../../utils/shared";
 import sluggify, { sluggifyString } from "../../../utils/sluggify";
 import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, IRecordAdapterRecordChainData } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -45,6 +45,7 @@ export interface IHandlerBodyResponse extends
     totalAllTime: number | null
     latestFetchIsOk: boolean
     methodologyURL: string | null
+    methodology?: {[key: string]: string} | null
     module: string | null
     childProtocols: string[] | null
 }
@@ -55,34 +56,41 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     const protocolName = event.pathParameters?.name?.toLowerCase()
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
     const rawDataType = event.queryStringParameters?.dataType
-    const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
+    const data = await getProtocolDataHandler(protocolName, adaptorType, rawDataType)
+    if (data) return dayCache(data as IHandlerBodyResponse)
+
+    return notFoundResponse({
+        message: `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
+    }, 60 * 60)
+};
+
+export async function getProtocolDataHandler(protocolName?: string, adaptorType?: AdapterType, rawDataType?: string, {
+    isApi2RestServer = false
+} = {}) {
     if (!protocolName || !adaptorType) throw new Error("Missing name or type")
+    const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
     if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 
-
     const dexData = await getProtocolData(protocolName, adaptorType)
     if (dexData) {
-        const dexDataResponse = await getProtocolSummary(dexData, dataType, adaptorType)
+        const dexDataResponse = await getProtocolSummary(dexData, dataType, adaptorType, { isApi2RestServer })
         delete dexDataResponse.generatedSummary
-        return successResponse(dexDataResponse as IHandlerBodyResponse, 10 * 60); // 10 mins cache
+        return dexDataResponse
     }
 
     const parentData = parentProtocols.find(pp => pp.name.toLowerCase() === standardizeProtocolName(protocolName))
     if (parentData) {
-        const parentResponse = await getProtocolSummaryParent(parentData, dataType, adaptorType)
-        return successResponse(parentResponse as IHandlerBodyResponse, 10 * 60); // 10 mins cache
+        return getProtocolSummaryParent(parentData, dataType, adaptorType, { isApi2RestServer })
     }
+}
 
-    return notFoundResponse({
-        message: `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
-    }, 10 * 60)
-};
-
-const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRecordType, adaptorType: AdapterType): Promise<IHandlerBodyResponse & { generatedSummary?: ProtocolAdaptorSummary }> => {
+const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRecordType, adaptorType: AdapterType, {
+    isApi2RestServer = false
+} = {}): Promise<IHandlerBodyResponse & { generatedSummary?: ProtocolAdaptorSummary }> => {
     let dexDataResponse = {} as IHandlerBodyResponse
     try {
-        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)
+        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType, undefined, undefined, { isApi2RestServer })
 
         dexDataResponse = {
             defillamaId: dexData.defillamaId,
@@ -110,6 +118,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
             protocolType: generatedSummary.protocolType,
             chains: generatedSummary.chains,
             methodologyURL: generatedSummary.methodologyURL,
+            methodology: generatedSummary.methodology,
             allAddresses: generatedSummary.allAddresses,
             latestFetchIsOk: generatedSummary.latestFetchIsOk,
             parentProtocol: generatedSummary.parentProtocol,
@@ -146,15 +155,17 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
     return dexDataResponse
 }
 
-const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: AdaptorRecordType, adaptorType: AdapterType): Promise<IHandlerBodyResponse> => {
-    const adaptorsData = await loadAdaptorsData(adaptorType as AdapterType)
+const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: AdaptorRecordType, adaptorType: AdapterType, {
+    isApi2RestServer = false
+} = {}): Promise<IHandlerBodyResponse> => {
+    const adaptorsData = loadAdaptorsData(adaptorType as AdapterType)
     const childs = adaptorsData.default.reduce((acc, curr) => {
         const parentId = curr.parentProtocol
         if (parentId)
             acc[parentId] = acc[parentId] ? [...acc[parentId], curr] : [curr]
         return acc
     }, {} as IJSON<ProtocolAdaptor[]>)[parentData.id]
-    const summaries = await Promise.all(childs.map(child => getProtocolSummary(child, dataType, adaptorType)))
+    const summaries = await Promise.all(childs.map(child => getProtocolSummary(child, dataType, adaptorType, { isApi2RestServer })))
     const totalToday = sumReduce(summaries, 'total24h')
     const totalYesterday = sumReduce(summaries, 'total48hto24h')
     const change_1d = formatNdChangeNumber(totalToday && totalYesterday ? ((totalToday - totalYesterday) / totalYesterday) * 100 : null)
@@ -179,11 +190,12 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
         defillamaId: parentData.id,
         displayName: parentData.name,
         total24h: totalToday,
-        totalAllTime: sumReduce(summaries, 'totalAllTime'),
+        totalAllTime: summaries.every(c=>c.totalAllTime)? sumReduce(summaries, 'totalAllTime'):null,
         latestFetchIsOk: true,
         disabled: false,
         change_1d,
         methodologyURL: null,
+        methodology: null,
         module: null,
         totalDataChart,
         totalDataChartBreakdown,
@@ -199,21 +211,18 @@ const sumReduce = (summaries: IJSON<any>[], key: string) => summaries.reduce((ac
 
 const getProtocolData = async (protocolName: string, adaptorType: AdapterType) => {
     // Import data list
-    const adapters2load: string[] = [adaptorType, "protocols"]
-    const protocolsList = Object.keys((await loadAdaptorsData(adaptorType)).config)
     let dexData: ProtocolAdaptor | undefined = undefined
     let adaptorsData: AdaptorData | undefined = undefined
-    for (const type2load of adapters2load) {
-        try {
-            adaptorsData = await loadAdaptorsData(type2load as AdapterType)
-            dexData = adaptorsData.default
-                .find(va => protocolsList.includes(va.module)
-                    && (sluggifyString(va.name) === protocolName || sluggifyString(va.displayName) === protocolName)
-                )
-            if (dexData) break
-        } catch (error) {
-            console.error(`Couldn't load adaptors with type ${type2load} :${JSON.stringify(error)}`)
-        }
+    try {
+        adaptorsData = loadAdaptorsData(adaptorType)
+        dexData = adaptorsData.default
+            .find(va =>
+                sluggifyString(va.name) === protocolName
+                || sluggifyString(va.displayName) === protocolName
+                || va.module === protocolName
+            )
+    } catch (error) {
+        console.error(`Couldn't load adaptors with type ${adaptorType} :${JSON.stringify(error)}`)
     }
     return dexData
 }

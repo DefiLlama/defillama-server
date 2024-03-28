@@ -11,15 +11,13 @@ import {
 import { getHistoricalValues } from "../utils/shared/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
-import {
-  getCoingeckoLock,
-  releaseCoingeckoLock,
-} from "../utils/shared/coingeckoLocks";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
-import { importAdapter } from "./utils/importAdapter";
+import { importAdapterDynamic } from "../utils/imports/importAdapter"; 
 import * as sdk from '@defillama/sdk'
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
+import { closeConnection } from "../api2/db";
+
 
 const { humanizeNumber: { humanizeNumber } } = sdk.util
 const secondsInDay = 24 * 3600;
@@ -49,16 +47,21 @@ let failed = 0
 
 const IS_DRY_RUN = !!process.env.DRY_RUN
 
+process.on('SIGINT', async () => {
+  console.log('Received SIGINT. Cleaning up and exiting...');
+  process.exit(0);
+});
+
+
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
-  dailyItems: DailyItems
 ) {
   if (failed > 3) {
     console.log('More than 3 failures in a row, exiting now')
     process.exit(0)
   }
-  const adapterModule = await importAdapter(protocol)
+  const adapterModule = await importAdapterDynamic(protocol)
   let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
   if (!process.env.SKIP_BLOCK_FETCH) {
     const res = await getBlocksRetry(timestamp, { adapterModule })
@@ -66,30 +69,36 @@ async function getAndStore(
     chainBlocks = res.chainBlocks
   }
 
-  const tvl: any = await storeTvl(
-    timestamp,
-    ethereumBlock as unknown as number,
-    chainBlocks,
-    protocol,
-    adapterModule,
-    {},
-    4,
-    getCoingeckoLock,
-    false,
-    false,
-    true,
-    () => deleteItemsOnSameDay(dailyItems, timestamp),
-    {
-      returnCompleteTvlObject: true
-    }
-  );
+  let tvl: any = undefined
+  try {
+    tvl = await storeTvl(
+      timestamp,
+      ethereumBlock as unknown as number,
+      chainBlocks,
+      protocol,
+      adapterModule,
+      {},
+      4,
+      false,
+      false,
+      true,
+      // () => deleteItemsOnSameDay(dailyItems, timestamp),
+      undefined,
+      {
+        returnCompleteTvlObject: true,
+        overwriteExistingData: true,
+      }
+    );
+  } catch (e) {
+    console.error(e)
+  }
 
   //  sdk.log(tvl);
   if (typeof tvl === 'object') {
     Object.entries(tvl).forEach(([key, val]) => sdk.log(key, humanizeNumber((val ?? 0) as number)))
   }
 
-  const finalTvl = typeof tvl.tvl === "number" ? humanizeNumber(tvl.tvl) : tvl.tvl
+  const finalTvl = typeof tvl?.tvl === "number" ? humanizeNumber(tvl.tvl) : tvl?.tvl
 
   console.log(timestamp, new Date(timestamp * 1000).toDateString(), finalTvl);
   if (tvl === undefined) failed++
@@ -97,42 +106,41 @@ async function getAndStore(
 }
 
 const main = async () => {
-  console.log('DRY RUN: ', IS_DRY_RUN)
+  sdk.log('DRY RUN: ', IS_DRY_RUN)
   const protocolToRefill = process.argv[2]
+  sdk.log('Refilling for:', protocolToRefill)
   const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
   const batchSize = Number(process.argv[4] ?? 1); // how many days to fill in parallel
   if (process.env.HISTORICAL !== "true") {
     throw new Error(`You must set HISTORICAL="true" in your .env`)
   }
   const protocol = getProtocol(protocolToRefill);
-  const adapter = await importAdapter(protocol);
+  const adapter = await importAdapterDynamic(protocol);
   if (adapter.timetravel === false) {
     throw new Error("Adapter doesn't support refilling");
   }
   let dailyItems: any = []
 
-  if (!IS_DRY_RUN)
+  /* if (!IS_DRY_RUN)
     dailyItems = await Promise.all([
       getHistoricalValues(dailyTvl(protocol.id)),
       getHistoricalValues(dailyTokensTvl(protocol.id)),
       getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
-    ]);
+    ]); */
   const start = adapter.start ?? 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
   if (timestamp > now) {
     timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
   }
-  setInterval(() => {
-    releaseCoingeckoLock();
-  }, 1.5e3);
   let atLeastOneUpdateSuccessful = false
 
   try {
     while (timestamp > start) {
       const batchedActions = [];
       for (let i = 0; i < batchSize && timestamp > start; i++) {
-        batchedActions.push(getAndStore(timestamp, protocol, dailyItems));
+        sdk.log('refilling timestamp', timestamp)
+        batchedActions.push(getAndStore(timestamp, protocol));
         timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
       }
       await Promise.all(batchedActions);
@@ -146,8 +154,15 @@ const main = async () => {
     return clearProtocolCacheById(protocol.id)
 
 };
-main().then(() => {
+
+// catch unhandled errors
+process.on('uncaughtException', function (err) {
+  console.error('Caught exception: ', err);
+  process.exit(1);
+});
+
+main().then(async () => {
   console.log('Done!!!')
+  await closeConnection()
   process.exit(0)
 })
-

@@ -1,8 +1,8 @@
-import { connection } from ".";
+import { getConnection } from ".";
 import { PermitBlackList } from "./Models/PermitBlackList";
 
 export async function getPermitBlackList(chain: string): Promise<PermitBlackList[]> {
-  const permitBlacklistRepository = (await connection).getRepository(PermitBlackList);
+  const permitBlacklistRepository = (await getConnection()).getRepository(PermitBlackList);
   const blacklistedTokens = await permitBlacklistRepository
     .createQueryBuilder()
     .select("permitBlackList")

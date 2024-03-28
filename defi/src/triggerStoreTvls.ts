@@ -11,7 +11,7 @@ const handler = async () => {
     const event = {
       protocolIndexes: protocolIndexes.slice(i, i+step)
     };
-    await invokeLambda(`defillama-prod-storeTvlInterval`, event);
+    await invokeLambda(`defillama-prod-storeTvlInterval2`, event);
   }
 };
 

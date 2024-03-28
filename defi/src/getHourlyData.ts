@@ -10,7 +10,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     useHourlyData: true,
     skipAggregatedTvl: false,
   });
-  return wrapResponseOrRedirect(response);
+  return wrapResponseOrRedirect(response, "hourly/");
 };
 
 export default wrap(handler);

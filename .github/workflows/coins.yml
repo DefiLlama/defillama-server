@@ -31,7 +31,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-    - run: npm ci && ln -s ../coins/node_modules/ ../defi/node_modules
+    - run: (npm ci || npm i) && ln -s ../coins/node_modules/ ../defi/node_modules
     - name: Deploy infrastructure stack
       run: npm run deploy:prod
       env:
@@ -46,5 +46,9 @@ jobs:
         SOLANA_RPC: ${{ secrets.SOLANA_RPC }}
         CG_KEY: ${{ secrets.CG_KEY }}
         MISSING_COINS_DB_PWD: ${{ secrets.MISSING_COINS_DB_PWD }}
+        STALE_COINS_ADAPTERS_WEBHOOK: ${{ secrets.STALE_COINS_ADAPTERS_WEBHOOK }}
+        R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+        R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

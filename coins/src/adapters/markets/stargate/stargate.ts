@@ -17,26 +17,30 @@ async function processDbData(
   coinsData: CoinData[],
   chain: string,
 ) {
-  return Object.keys(pools).map((b: string) => {
-    const token =
-      pools[b].underlying.toLowerCase() === gasTokenDummyAddress
-        ? wrappedGasTokens[chain]
-        : pools[b].underlying.toLowerCase();
-    const coinData: CoinData = coinsData.filter(
-      (c: CoinData) => c.address.toLowerCase() === token,
-    )[0];
+  return Object.keys(pools)
+    .map((b: string) => {
+      const token =
+        pools[b].underlying.toLowerCase() === gasTokenDummyAddress
+          ? wrappedGasTokens[chain]
+          : pools[b].underlying.toLowerCase();
+      const coinData: CoinData = coinsData.filter(
+        (c: CoinData) => c.address.toLowerCase() === token,
+      )[0];
 
-    if (coinData == undefined) {
-      console.log(`Couldn't find underlying data for ${chain}:${token} on stargate`)
-      return;
-    }
-    return {
-      price: coinData.price,
-      decimals: coinData.decimals,
-      confidence: coinData.confidence,
-      address: coinData.address,
-    };
-  }).filter(t=>t!==undefined);
+      if (coinData == undefined) {
+        console.log(
+          `Couldn't find underlying data for ${chain}:${token} on stargate`,
+        );
+        return;
+      }
+      return {
+        price: coinData.price,
+        decimals: coinData.decimals,
+        confidence: coinData.confidence,
+        address: coinData.address,
+      };
+    })
+    .filter((t) => t !== undefined);
 }
 function formWrites(
   underlyingTokenData: any[],
@@ -105,6 +109,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       })),
       chain: chain as any,
       block,
+      permitFailure: true,
     }),
     getTokenInfo(
       chain,

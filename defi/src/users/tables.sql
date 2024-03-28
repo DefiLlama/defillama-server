@@ -15,3 +15,9 @@ CREATE TABLE hourlyGas (start INT, endTime INT, protocolId VARCHAR(200), chain V
 CREATE INDEX hourlyGas_time ON hourlyGas (start);
 CREATE TABLE dailyGas (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), gas double precision, gasUsd double precision, realStart INT, PRIMARY KEY(start, protocolId, chain));
 CREATE INDEX dailyGas_time2 ON dailyGas (start);
+
+-- new users
+CREATE TABLE hourlyNewUsers (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), users INT, PRIMARY KEY(start, protocolId, chain));
+CREATE INDEX hourlyNewUsers_time ON hourlyNewUsers (start);
+CREATE TABLE dailyNewUsers (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), users INT, realStart INT, PRIMARY KEY(start, protocolId, chain));
+CREATE INDEX dailyNewUsers_time ON dailyNewUsers (start);

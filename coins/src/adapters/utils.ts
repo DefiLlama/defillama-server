@@ -1,7 +1,7 @@
 import nodeFetch from "node-fetch"
 import {decimals, symbol} from "@defillama/sdk/build/erc20";
 
-export const fetch = async (url: string) => nodeFetch(url).then(r => r.json())
+export const fetch = async (url: string, requestParams?: any) => nodeFetch(url, requestParams).then(r => r.json())
 
 export function formatExtraTokens(chain: string, tokens: [string, string, string, number][]) {
     return tokens.map(([fromAddress, to, symbol, decimals]) => ({
@@ -12,6 +12,7 @@ export function formatExtraTokens(chain: string, tokens: [string, string, string
     }))
 }
 
+// TODO: inefficient, dont use, use multiCall instead
 export function getAllInfo(address: string, chain:string, to:string) {
     return async () => {
         for (let i = 0; i < 3; i++) {

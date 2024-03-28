@@ -6,11 +6,12 @@ import { getSnapshot, setSnapshot, getSnapshotOverview, setSnapshotOverview, } f
 import { GovCache, Proposal, } from './types'
 import { updateStats, getGovernanceSources, getChainNameFromId, } from './utils'
 
+const blacklist: any = []
 export function getSnapshotIds() {
   const snapshotIds = new Set()
   const addSnapshot = (i: any) => i.governanceID?.filter((j: any) => j.startsWith('snapshot:')).forEach((j: any) => snapshotIds.add(j))
   getGovernanceSources().map(addSnapshot)
-  return [...snapshotIds].map((i: any) => i.replace('snapshot:', ''))
+  return [...snapshotIds].map((i: any) => i.replace('snapshot:', '')).filter(i => !blacklist.includes(i))
 }
 
 export async function getSnapshotMetadata(ids: string[]) {
@@ -65,6 +66,7 @@ export async function updateSnapshots() {
     const firstFetchIds: string[] = []
     const fetchOnlyProposals: string[] = []
     metadataAll.forEach((v: any) => {
+      v.domain = v.domain || `https://snapshot.org/#/${v.id}`
       idMap[v.id].metadata = v
       if (v.network) v.chainName = getChainNameFromId(v.network)
       idMap[v.id].id = v.id

@@ -12,6 +12,6 @@ export const KEYS_TO_STORE = {
 
 export { default as config } from "./config";
 
-export { default as aggregators_imports } from "../../../utils/imports/aggregators_adapters"
+export { default as imports } from "../../../utils/imports/aggregators_adapters"
 
  

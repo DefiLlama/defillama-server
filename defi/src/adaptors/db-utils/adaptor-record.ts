@@ -1,10 +1,10 @@
 import { DynamoDB } from "aws-sdk"
-import dynamodb from "../../utils/shared/dynamodb"
-import { formatChain, formatChainKey } from "../utils/getAllChainsFromAdaptors"
+import dynamodb, { getHistoricalValues } from "../../utils/shared/dynamodb"
+import { formatChainKey } from "../utils/getAllChainsFromAdaptors"
 import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
-import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
-import { IJSON } from "../data/types"
+import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
+import { IJSON, ProtocolAdaptor } from "../data/types"
 import dynamoReservedKeywords from "./dynamo-reserved-keywords"
 
 export enum AdaptorRecordType {
@@ -17,6 +17,11 @@ export enum AdaptorRecordType {
     tokenIncentives = "ti",
     // fees & revenue
     dailyFees = "df",
+    dailyBribesRevenue = "dbr",
+    dailyTokenTaxes = "dtt",
+    dailyShortOpenInterest = "dsoi",
+    dailyLongOpenInterest = "dloi",
+    dailyOpenInterest = "doi",
     dailyRevenue = "dr",
     dailyUserFees = "duf",
     dailySupplySideRevenue = "dssr",
@@ -82,6 +87,13 @@ export class AdaptorRecord extends Item {
         return new AdaptorRecord(recordType, dexId, timestamp, clean_body, protocolType)
     }
 
+    static fromJSON(json: any): AdaptorRecord | AdaptorRecord[] {
+        if (Array.isArray(json)) return json.map(i => AdaptorRecord.fromJSON(i)) as AdaptorRecord[]
+        let { type, adaptorId, timestamp, data, protocolType } = json
+        // data = JSON.parse(JSON.stringify(data)) // deep copy
+        return new AdaptorRecord(type, adaptorId, timestamp, data, protocolType)
+    }
+
     get pk(): string {
         if (this.type === AdaptorRecordType.dailyVolume || this.type === AdaptorRecordType.totalVolume)
             return `${this.type}#dex#${this.adaptorId}`
@@ -118,7 +130,7 @@ export class AdaptorRecord extends Item {
         }
         const newDataNoErr = removeErrors(data)
         if (AdaptorRecord.isDataEmpty(newDataNoErr)) return null
-        return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newDataNoErr)
+        return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newDataNoErr, this.protocolType)
     }
 
     static isDataEmpty(data: IRecordAdaptorRecordData) {
@@ -138,42 +150,27 @@ export class AdaptorRecord extends Item {
 
 export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTimestamp: number): Promise<AdaptorRecord> => {
     if (Object.entries(adaptorRecord.data).length === 0) throw new Error(`${adaptorRecord.type}: Can't store empty adaptor record`)
-    const currentRecord = await getAdaptorRecord(adaptorRecord.adaptorId, adaptorRecord.type, adaptorRecord.protocolType, "TIMESTAMP", adaptorRecord.timestamp).catch(() => console.info("No previous data found, writting new row..."))
-    let currentData: IRecordAdaptorRecordData = {}
-    if (currentRecord instanceof AdaptorRecord) currentData = currentRecord.data
 
     // Proceed to remove previous errors
-    delete currentData.error
-    currentData = Object.entries(currentData).reduce((acc, [key, chainData]) => {
-        if (typeof chainData !== 'number') delete chainData.error
-        acc[key] = chainData
-        return acc
-    }, {} as IRecordAdaptorRecordData)
     const obj2Store: IRecordAdaptorRecordData = {
         ...Object.entries(adaptorRecord.data).reduce((acc, [chain, data]) => {
             const currentChainValue = acc[chain]
             const clean_chain = replaceReservedKeyword(chain)
             if (typeof data === 'number' || typeof currentChainValue === 'number' || chain === 'error') return acc
             if (currentChainValue && Object.keys(currentChainValue).length === 0) return acc
-            acc[clean_chain] = {
-                ...currentChainValue,
-                ...data,
-            }
+            acc[clean_chain] = { ...currentChainValue, ...data, }
             return acc
-        }, (currentData ?? {}) as IRecordAdaptorRecordData),
-        eventTimestamp
+        }, {} as IRecordAdaptorRecordData), eventTimestamp
     }
-    try {
-        console.log("Storing", obj2Store, adaptorRecord.keys())
-        await dynamodb.update({
-            Key: adaptorRecord.keys(),
-            UpdateExpression: createUpdateExpressionFromObj(obj2Store),
-            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(obj2Store)
-        }) // Upsert like
-        return adaptorRecord
-    } catch (error) {
-        throw error
+
+    adaptorRecord.data = obj2Store
+    const record = adaptorRecord.getCleanAdaptorRecord()
+
+    if (record) {
+        const recordWithTimestamp = { ...record.toItem(), eventTimestamp };
+        await dynamodb.put(recordWithTimestamp)
     }
+    return adaptorRecord
 }
 
 const normalizeSuffix = "_key"
@@ -187,26 +184,22 @@ function revertReservedKeyword(key: string) {
     return key
 }
 
-function createUpdateExpressionFromObj(obj: IRecordAdaptorRecordData): string {
-    const removeExpression = `${Object.entries(obj)
-        .filter(([, obj]) => typeof obj === 'object' && Object.keys(obj).length === 0)
-        .map(([field]) => `${field}`).join(',')}`
-    return `set ${Object.entries(obj)
-        .filter(([, obj]) => typeof obj !== 'object' || typeof obj === 'object' && Object.keys(obj).length > 0)
-        .map(([field]) => `${field}=:${field}`).join(',')}${removeExpression ? ` remove ${removeExpression}` : ''}`
+export type GetAdaptorRecordOptions = {
+    adapter: ProtocolAdaptor,
+    type: AdaptorRecordType,
+    adaptorType?: AdapterType,
+    timestamp?: number,
+    lastKey?: number,
+    mode?: "ALL" | "LAST" | "TIMESTAMP"
 }
 
-function createExpressionAttributeValuesFromObj(obj: IRecordAdaptorRecordData): Record<string, unknown> {
-    return Object.entries(obj).reduce((acc, [key, value]) => {
-        if (typeof value === 'object' && Object.keys(value).length === 0) return acc
-        return {
-            ...acc,
-            [`:${key}`]: value
-        }
-    }, {} as Record<string, unknown>)
+export async function getAdaptorRecord2({ adapter, type, timestamp, mode = 'ALL', lastKey, }: GetAdaptorRecordOptions): Promise<AdaptorRecord[] | AdaptorRecord> {
+    const adaptorId = adapter.id
+    const protocolType = adapter.protocolType
+    return getAdaptorRecord(adaptorId, type, protocolType, mode, timestamp, lastKey)
 }
 
-export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType, protocolType?: ProtocolType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number): Promise<AdaptorRecord[] | AdaptorRecord> => {
+export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType, protocolType?: ProtocolType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number, lastKey?: number): Promise<AdaptorRecord[] | AdaptorRecord> => {
     // Creating dummy object to get the correct key
     const adaptorRecord = new AdaptorRecord(type, adaptorId, null!, null!, protocolType)
     let keyConditionExpression = "PK = :pk"
@@ -216,20 +209,31 @@ export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordTyp
     if (mode === 'TIMESTAMP') {
         expressionAttributeValues[":sk"] = timestamp
         keyConditionExpression = `${keyConditionExpression} and SK = :sk`
+    } else if (mode === 'ALL' && lastKey !== undefined) {
+        expressionAttributeValues[":sk"] = lastKey
+        keyConditionExpression = `${keyConditionExpression} and SK > :sk`
+    } else if (mode === 'ALL' && timestamp !== undefined) {
+        expressionAttributeValues[":sk"] = timestamp
+        keyConditionExpression = `${keyConditionExpression} and SK <= :sk`
     }
-    try {
-        const resp = await dynamodb.query({
+    let resp: any
+    let moreThanAWeekAway = !lastKey || lastKey < (Date.now() / 1e3) - 7 * 24 * 60 * 60
+    let getAllValues = mode === "ALL" && moreThanAWeekAway && !timestamp
+
+    if (getAllValues) {
+        resp = await getHistoricalValues(adaptorRecord.pk, lastKey)
+    } else {
+        resp = await dynamodb.query({
             // TODO: Change for upsert like
             KeyConditionExpression: keyConditionExpression,
             ExpressionAttributeValues: expressionAttributeValues,
             Limit: mode === "LAST" ? 1 : undefined,
             ScanIndexForward: mode === "LAST" ? false : true
         })
-        if (!resp.Items || resp.Items.length === 0) throw Error(`No items found for ${adaptorRecord.pk}${timestamp ? ` at ${timestamp}` : ''}`)
-        return mode === "LAST" || mode === 'TIMESTAMP' ? AdaptorRecord.fromItem(resp.Items[0]) : resp.Items.map(AdaptorRecord.fromItem)
-    } catch (error) {
-        throw error
+
     }
+    if (!resp || resp.length === 0) throw Error(`No items found for ${adaptorRecord.pk}${timestamp ? ` at ${timestamp}` : ''}`)
+    return mode === "LAST" || mode === 'TIMESTAMP' ? AdaptorRecord.fromItem(resp.Items[0]) : Object.keys(resp).includes('Items') ? resp.Items.map(AdaptorRecord.fromItem) : resp.map(AdaptorRecord.fromItem)
 }
 
 // REMOVES ALL VOLUMES, DO NOT USE!

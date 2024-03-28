@@ -1,3 +1,15 @@
+
+// catch unhandled errors
+process.on("uncaughtException", (err) => {
+  console.error('uncaught error', err);
+  process.exit(1);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.error('unhandled rejection', err);
+  process.exit(1);
+});
+
 import adapters from "./adapters/index";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { logTable } from '@defillama/sdk'
@@ -28,7 +40,7 @@ async function main() {
   }
 
   const results = await protocolWrapper[protocol](0);
-  const resultsWithoutDuplicates = filterWritesWithLowConfidence(
+  const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
     results.flat()
   );
 

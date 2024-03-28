@@ -1,4 +1,4 @@
-import { connection } from ".";
+import { getConnection } from ".";
 import { SwapEvent } from "./Models/SwapEvent";
 
 export const saveEvent = async ({
@@ -37,6 +37,6 @@ export const saveEvent = async ({
   event.realOutput = realOutput;
   event.reportedOutput = reportedOutput;
 
-  const res = await (await connection).manager.save(event);
+  const res = await (await getConnection()).manager.save(event);
   return res;
 };

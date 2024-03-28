@@ -1,0 +1,1 @@
+Do not modify `output/expenses.json` directly! Instead modify `daos.ts` and then run `npx ts-node src/operationalCosts/generateOutput.ts`

@@ -2,7 +2,6 @@ import { addToDBWritesList } from "../../utils/database";
 import { Write } from "../../utils/dbInterfaces";
 import { multiCall } from "@defillama/sdk/build/abi";
 import getBlock from "../../utils/block";
-import { utils } from "ethers";
 
 /*
  Jarvis network's jFIAT tokens are stablecoins pegged to non-usd fiat. They rely on Chainlink oracles to maintain
@@ -65,9 +64,8 @@ async function getPrices(
   const block = await getBlock(chain, timestamp)
   const targets = feeds.map((target: string) => ({ target }));
   const { output } = await multiCall({ calls: targets, chain, block, abi: CHAINLINK_FEED_ABI });
-  return output.map(({ output }) => output.answer)
-    .map((answer) => utils.formatUnits(answer, 8))
-    .map((answer) => parseFloat(answer))
+  return output.map(({ output }: any) => output.answer)
+    .map((answer: any) => answer / 10 ** 8)
 }
 
 const CHAINLINK_FEED_ABI = {

@@ -7,8 +7,10 @@ docker
 .DS_Store
 .esbuild
 src/utils/imports/adapters.ts
+src/utils/imports/tvlAdapterData.json
 src/utils/imports/adapters_volumes.ts
 src/utils/imports/adapters_fees.ts
+src/utils/imports/aggregator-derivatives_adapters.ts
 src/utils/imports/adapters_liquidations.ts
 src/utils/imports/fees_adapters.ts
 src/utils/imports/dexs_adapters.ts
@@ -21,3 +23,4 @@ src/emissions/utils/*.png
 .vscode
 src/dexVolumes/cli/backfillUtilities/output
 src/adaptors/cli/*/output
+src/api2/metadata.json

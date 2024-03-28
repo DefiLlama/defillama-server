@@ -78,6 +78,32 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       redirect: "coingecko#openleverage",
     },
   ],
+  polygon_zkevm: [
+    {
+      symbol: "wstETH",
+      address: "0x5D8cfF95D7A57c0BF50B30b43c7CC0D52825D4a9",
+      decimals: 18,
+      redirect: "coingecko#wrapped-steth",
+    },
+    {
+      symbol: "USDC",
+      address: "0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035",
+      decimals: 6,
+      redirect: "coingecko#usd-coin",
+    },
+    {
+      symbol: "USDT",
+      address: "0x1E4a5963aBFD975d8c9021ce480b42188849D41d",
+      decimals: 6,
+      redirect: "coingecko#tether",
+    },
+    {
+      symbol: "MATIC",
+      address: "0xa2036f0538221a77A3937F1379699f44945018d0",
+      decimals: 18,
+      redirect: "coingecko#matic-network",
+    },
+  ],
   polygon: [
     {
       symbol: "wstETH",
@@ -86,12 +112,52 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       redirect: "coingecko#wrapped-steth",
     },
   ],
+  wemix: [
+    {
+      symbol: "WEMIX$",
+      address: "0x8e81fcc2d4a3baa0ee9044e0d7e36f59c9bba9c1",
+      decimals: 18,
+      redirect: "coingecko#usd-coin",
+    },
+  ],
   kava: [
     {
       symbol: "DEXI",
       address: "0xd22a58f79e9481d1a88e00c343885a588b34b68b",
       decimals: 9,
       redirect: "coingecko#dexioprotocol-v2",
+    },
+    {
+      symbol: "ATOM",
+      address: "0x15932e26f5bd4923d46a2b205191c4b5d5f43fe3",
+      decimals: 6,
+      redirect: "coingecko#cosmos",
+    },
+    {
+      symbol: "WKAVA",
+      address: "0xc86c7c0efbd6a49b35e8714c5f59d99de09a225b",
+      decimals: 18,
+      redirect: "coingecko#kava",
+    },
+  ],
+  ethereum: [
+    {
+      symbol: "sdXAIFRAXBP3CRV-f-vault",
+      address: "0xd4ed44aa0ac185ad3024f5433442d9aef4b39ed8",
+      decimals: 18,
+      redirect: "asset#ethereum:0x326290a1b0004eee78fa6ed4f1d8f4b2523ab669",
+    },
+    {
+      symbol: "sdXAIFRAXBP3CRV-f-gauge",
+      address: "0x4b95f9f85857341cc2876c15c88091a04ee5cb31",
+      decimals: 18,
+      redirect: "asset#ethereum:0x326290a1b0004eee78fa6ed4f1d8f4b2523ab669",
+    },
+    {
+      symbol: "eETH",
+      address: "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
+      decimals: 18,
+      redirect: "coingecko#ethereum",
     },
   ],
 };
@@ -109,7 +175,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       a.symbol,
       timestamp,
       "manual input",
-      0.8,
+      1.01,
       a.redirect,
     );
   });

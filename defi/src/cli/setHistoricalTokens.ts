@@ -37,7 +37,7 @@ async function main() {
         usdTokens.Item.tvl[tokenToChange] = valueToSet * price
         usdTokens.Item[chainToChange][tokenToChange] = valueToSet * price
 
-        for(const f of [tokens.Item.tvl, tokens.Item[chainToChange], usdTokens.Item.tvl[tokenToChange], usdTokens.Item[chainToChange]]){
+        for(const f of [tokens.Item.tvl, tokens.Item[chainToChange], usdTokens.Item.tvl, usdTokens.Item[chainToChange]]){
             delete f.BNB
         }
 

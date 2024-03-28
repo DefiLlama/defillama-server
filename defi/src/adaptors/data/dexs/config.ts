@@ -35,6 +35,7 @@ export default {
         }
     },
     "champagneswap": {
+        disabled: true,
         "enabled": true,
         "id": "1643"
     },
@@ -117,6 +118,10 @@ export default {
             trident: {
                 enabled: true,
                 id: "2152"
+            },
+            v3: {
+                enabled: true,
+                id: "2776"
             }
         }
     },
@@ -144,9 +149,6 @@ export default {
     "serum": {
         disabled: true,
         "enabled": true,
-        "includedVolume": [
-            "raydium"
-        ],
         "id": "145"
     },
     "curve": {
@@ -162,11 +164,12 @@ export default {
         "id": "146"
     },
     "velodrome": {
+        parentId: "Velodrome",
         "enabled": true,
         "id": "1799"
     },
     "gmx": {
-        parentId: "337",
+        parentId: "GMX",
         "protocolsData": {
             "swap": {
                 "id": "337",
@@ -191,6 +194,10 @@ export default {
             v3: {
                 enabled: true,
                 id: "2239"
+            },
+            "liquidityHub": {
+                enabled: true,
+                id: "3743"
             }
         }
     },
@@ -245,6 +252,7 @@ export default {
         "id": "419"
     },
     "platypus": {
+        disabled: true,
         "enabled": true,
         "id": "944"
     },
@@ -253,6 +261,7 @@ export default {
         "id": "863"
     },
     "biswap": {
+        parentId: "BiSwap",
         "enabled": true,
         "id": "373"
     },
@@ -318,20 +327,34 @@ export default {
         "id": "238"
     },
     "klex-finance": {
+        disabled: true,
         "enabled": true,
         "id": "2049"
     },
     "koyo": {
+        disabled: true,
         "enabled": true,
         "id": "1766"
     },
     "pyeswap": {
+        disabled: true,
         "enabled": true,
         "id": "2109"
     },
     "smbswap": {
         "enabled": true,
-        "id": "1632"
+        parentId: "SMBSwap",
+        id: "1632",
+        protocolsData: {
+            v2: {
+                enabled: true,
+                "id": "1632"
+            },
+            v3: {
+                "enabled": true,
+                "id": "2895"
+            }
+        },
     },
     "sunswap": {
         parentId: "SUN.io",
@@ -340,6 +363,7 @@ export default {
     },
     "whaleswap": {
         "enabled": true,
+        disabled: true,
         "id": "1884"
     },
     "nomiswap": {
@@ -347,6 +371,7 @@ export default {
         "id": "1823"
     },
     "beethoven-x": {
+        parentId: "Beethoven X",
         "enabled": true,
         "id": "654"
     },
@@ -379,13 +404,23 @@ export default {
     "iziswap": {
         parentId: "iZUMI Finance",
         "enabled": true,
-        "id": "1883"
+        "id": "1883",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1700524800": true,
+                "1700611200": true,
+                "1700697600": true,
+                "1700784000": true,
+                "1700870400": true,
+            },
+        }
     },
     "tinyman": {
         "enabled": true,
         "id": "680"
     },
     "junoswap": {
+        disabled: true,
         "enabled": true,
         "id": "2052"
     },
@@ -424,6 +459,7 @@ export default {
         "id": "491"
     },
     "saros": {
+        disabled: true,
         "enabled": true,
         "id": "1262"
     },
@@ -500,6 +536,7 @@ export default {
         "id": "1274"
     },
     "wagyuswap": {
+        disabled: true,
         "enabled": true,
         "id": "1003"
     },
@@ -548,10 +585,12 @@ export default {
         "id": "1660"
     },
     "yodeswap": {
+        disabled: true,
         "enabled": true,
         "id": "1980"
     },
     "defi-kingdoms": {
+        disabled: true,
         "enabled": true,
         "id": "556"
     },
@@ -640,10 +679,12 @@ export default {
         "id": "2158"
     },
     "aldrin": {
+        disabled: true,
         "enabled": true,
         "id": "739"
     },
     "capricorn-finance": {
+        disabled: true,
         "enabled": true,
         "id": "2128"
     },
@@ -656,6 +697,7 @@ export default {
         "id": "2312"
     },
     "pegasys": {
+        parentId: "PegaSys",
         "enabled": true,
         "id": "1432"
     },
@@ -682,6 +724,7 @@ export default {
         "id": "2167"
     },
     "jswap": {
+        disabled: true,
         "enabled": true,
         "id": "678"
     },
@@ -738,7 +781,7 @@ export default {
         }
     },
     "bogged-finance": {
-        "enabled": true,
+        "enabled": false,
         "id": "617"
     },
     "jetswap": {
@@ -779,6 +822,7 @@ export default {
         "id": "646"
     },
     "wineryswap": {
+        disabled: true,
         "enabled": true,
         "id": "2118"
     },
@@ -825,6 +869,7 @@ export default {
     },
     "algofi": {
         parentId: "Algofi",
+        disabled: true,
         "enabled": true,
         "id": "2091"
     },
@@ -837,6 +882,7 @@ export default {
         "id": "707"
     },
     "unicly": {
+        disabled: true,
         "enabled": true,
         "id": "324"
     },
@@ -845,11 +891,12 @@ export default {
         "id": "1412"
     },
     "icecreamswap": {
+        disabled: true,
         "enabled": true,
         "id": "1990"
     },
     "arctic": {
-        "enabled": true,
+        "enabled": false,
         "id": "2176"
     },
     "swapsicle": {
@@ -887,7 +934,7 @@ export default {
         "id": "1575"
     },
     "vortex-protocol": {
-        "enabled": true,
+        "enabled": false,
         "id": "1706"
     },
     "dinosaur-eggs": {
@@ -899,6 +946,7 @@ export default {
         "id": "232"
     },
     "mistswap": {
+        disabled: true,
         "enabled": true,
         "id": "748"
     },
@@ -924,6 +972,7 @@ export default {
     },
     "4swap": {
         parentId: "Pando",
+        disabled: true,
         "enabled": true,
         "id": "951"
     },
@@ -967,15 +1016,11 @@ export default {
     },
     "thorswap": {
         "enabled": true,
-        "id": "2287"
+        "id": "412"
     },
     "metatdex": {
         "enabled": true,
         "id": "2253"
-    },
-    "goosefx": {
-        "enabled": true,
-        "id": "2175"
     },
     "3xcalibur": {
         "enabled": true,
@@ -1008,7 +1053,13 @@ export default {
     },
     "orderly-network": {
         "enabled": true,
-        "id": "2264"
+        "id": "2264",
+        protocolsData: {
+            "orderly-network": {
+                "id": "2264",
+                enabled: true,
+            }
+        }
     },
     "ghostmarket": {
         "enabled": false,
@@ -1032,7 +1083,17 @@ export default {
     },
     "vapordex": {
         "enabled": true,
-        "id": "2342"
+        "id": "2342",
+        protocolsData: {
+            v1: {
+                "id": "2342",
+                enabled: true,
+            },
+            v2: {
+                "id": "3654",
+                enabled: true,
+            }
+        }
     },
     "10kswap": {
         "enabled": true,
@@ -1043,11 +1104,11 @@ export default {
         "id": "1269"
     },
     "sundaeswap": {
-        "enabled": true,
+        "enabled": false,
         "id": "1302"
     },
     "wx.network": {
-        "enabled": true,
+        "enabled": false,
         "id": "614"
     },
     "myswap": {
@@ -1063,11 +1124,11 @@ export default {
         "id": "799"
     },
     "aux-exchange": {
-        disabled: true,
         "enabled": true,
         "id": "2213"
     },
     "wojak-finance": {
+        disabled: true,
         "enabled": true,
         "id": "2113"
     },
@@ -1084,6 +1145,7 @@ export default {
         "id": "976"
     },
     "zircon-gamma": {
+        disabled: true,
         "enabled": true,
         "id": "2143"
     },
@@ -1093,7 +1155,16 @@ export default {
     },
     "el-dorado-exchange": {
         "enabled": true,
-        "id": "2356"
+        "id": "2356",
+        parentId: "EDE",
+        "protocolsData": {
+            "swap": {
+                "id": "2356",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "El Dorado Exchange - SWAP"
+            }
+        },
     },
     "mummy-finance": {
         "enabled": true,
@@ -1101,7 +1172,13 @@ export default {
     },
     "level-finance": {
         "enabled": true,
-        "id": "2395"
+        "id": "2395",
+        protocolsData: {
+            "level-finance": {
+                "id": "2395",
+                enabled: true,
+            }
+        }
     },
     "hyperjump": {
         "enabled": true,
@@ -1113,7 +1190,13 @@ export default {
     },
     "demex": {
         "enabled": true,
-        "id": "2001"
+        "id": "2001",
+        "protocolsData": {
+            "demex": {
+                "id": "2001",
+                enabled: true,
+            }
+        }
     },
     "syrup-finance": {
         disabled: true,
@@ -1130,6 +1213,7 @@ export default {
         "id": "1179"
     },
     "darkness": {
+        disabled: true,
         "enabled": true,
         "id": "1555"
     },
@@ -1148,6 +1232,7 @@ export default {
         "id": "705"
     },
     "aequinox": {
+        disabled: true,
         "enabled": true,
         "id": "2090"
     },
@@ -1165,6 +1250,7 @@ export default {
         "id": "1732"
     },
     "equalizer-exchange": {
+        parentId: "Equalizer",
         "enabled": true,
         "id": "2332"
     },
@@ -1185,6 +1271,7 @@ export default {
         "id": "133"
     },
     "archly-finance": {
+        parentId: "Archly Finance",
         "enabled": true,
         "id": "2317"
     },
@@ -1212,6 +1299,7 @@ export default {
         "id": "1384"
     },
     "hiveswap": {
+        parentId: "HiveSwap",
         "enabled": true,
         "id": "2485"
     },
@@ -1220,7 +1308,8 @@ export default {
         "id": "490"
     },
     "jediswap": {
-        "enabled": true,
+        parentId: "JediSwap",
+        "enabled": false,
         "id": "2344"
     },
     "solidlizard": {
@@ -1228,6 +1317,7 @@ export default {
         "id": "2528"
     },
     "onepunch": {
+        disabled: true,
         "enabled": true,
         "id": "2534"
     },
@@ -1237,13 +1327,20 @@ export default {
     },
     "helix": {
         "enabled": true,
-        "id": "2259"
+        "id": "2259",
+        protocolsData: {
+            "helix": {
+                "id": "2259",
+                enabled: true,
+            }
+        }
     },
     "ashswap": {
         "enabled": true,
         "id": "2551"
     },
     "veniceswap": {
+        disabled: true,
         enabled: true,
         "id": "2550"
     },
@@ -1272,8 +1369,15 @@ export default {
         "id": "2589"
     },
     "metavault.trade": {
+        parentId: "MetaVault",
         "enabled": true,
-        "id": "1801"
+        "id": "1801",
+        protocolsData: {
+            "metavault.trade": {
+                "id": "1801",
+                enabled: true,
+            }
+        }
     },
     "1inch": {
         enabled: false,
@@ -1312,7 +1416,6 @@ export default {
         id: "291"
     },
     "archerswap": {
-        disabled: true,
         enabled: true,
         id: "2648"
     },
@@ -1330,6 +1433,7 @@ export default {
         id: "2674"
     },
     "ramses-exchange": {
+        parentId: "Ramses Exchange",
         enabled: true,
         id: "2675"
     },
@@ -1363,7 +1467,7 @@ export default {
         "id": "2760"
     },
     "morphex": {
-        parentId: "2662",
+        parentId: "Morphex",
         "protocolsData": {
             "swap": {
                 "id": "2662",
@@ -1411,6 +1515,7 @@ export default {
         "id": "2792"
     },
     "satoshiswap": {
+        disabled: true,
         "enabled": true,
         "id": "2827"
     },
@@ -1423,6 +1528,7 @@ export default {
         "id": "2773"
     },
     "covo-v2": {
+        disabled: true,
         "enabled": true,
         "id": "2730",
         parentId: "Covo Finance",
@@ -1430,8 +1536,12 @@ export default {
             "swap": {
                 "id": "2730",
                 "enabled": true,
+                disabled: true,
                 "category": "Dexes",
-                "displayName": "Covo V2 - SWAP"
+                "displayName": "Covo V2 - SWAP",
+                cleanRecordsConfig: {
+                    genuineSpikes: true
+                }
             }
         },
     },
@@ -1443,5 +1553,1053 @@ export default {
         parentId: "Thena",
         "enabled": true,
         "id": "2864"
+    },
+    "astroswap": {
+        disabled: true,
+        "enabled": true,
+        "id": "1368"
+    },
+    "merlin": {
+        "enabled": true,
+        "id": "2849"
+    },
+    "tealswap": {
+        "enabled": true,
+        "id": "2874"
+    },
+    "hydradex": {
+        "enabled": true,
+        "id": "1673",
+        protocolsData: {
+            v2: {
+                disabled: true,
+                "enabled": true,
+                "id": "1673",
+                displayName: "Hydradex V2"
+            },
+            v3: {
+                "enabled": true,
+                "id": "2910",
+                displayName: "Hydradex V3"
+            }
+        }
+    },
+    "pheasantswap": {
+        "enabled": true,
+        "id": "2896"
+    },
+    "velocimeter-v2": {
+        parentId: "Velocimeter",
+        "enabled": true,
+        "id": "2668"
+    },
+    "joe-v2.1": {
+        parentId: "Trader Joe",
+        "enabled": true,
+        "id": "2906",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1682899200": true,
+                "1682812800": true
+            },
+        }
+    },
+    "chronos": {
+        "enabled": true,
+        "id": "2907"
+    },
+    "stellaswap-v3": {
+        "enabled": true,
+        "id": "2934"
+    },
+    "e3": {
+        "enabled": true,
+        "id": "2926"
+    },
+    "clober": {
+        "enabled": true,
+        "id": "2541"
+    },
+    "airswap": {
+        "enabled": true,
+        "id": "2954"
+    },
+    "ArbitrumExchange": {
+        "enabled": true,
+        "id": "2685",
+        protocolsData: {
+            v2: {
+                "enabled": true,
+                "id": "2685",
+                displayName: "Arbitrum Exchange V2"
+            },
+            v3: {
+                "enabled": true,
+                "id": "2962",
+                displayName: "Arbitrum Exchange V3"
+            }
+        }
+    },
+    "vertex-protocol": {
+        "enabled": true,
+        "id": "2899",
+        "protocolsData": {
+            "swap": {
+                "id": "2899",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1689811200": true,
+            },
+        }
+    },
+    "lighter": {
+        parentId: "Lighter",
+        disabled: true,
+        "enabled": true,
+        "id": "2636"
+    },
+    "fulcrom-finance": {
+        "enabled": true,
+        "id": "2641",
+        "protocolsData": {
+            "swap": {
+                "id": "2641",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "Fulcrom - SWAP",
+            }
+        },
+    },
+    "veax": {
+        "enabled": true,
+        "id": "2928"
+    },
+    "dpex": {
+        "enabled": true,
+        "id": "2488"
+    },
+    "forge": {
+        "enabled": true,
+        "id": "2804"
+    },
+    "interest-protocol": {
+        "enabled": false,
+        "id": "3015"
+    },
+    "fxdx": {
+        "enabled": true,
+        "id": "3036"
+    },
+    "sunswap-v2": {
+        parentId: "SUN.io",
+        "enabled": true,
+        "id": "3005"
+    },
+    "pulsex-v1": {
+        parentId: "PulseX",
+        "enabled": true,
+        "id": "2995",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1686009600": true,
+            },
+        }
+    },
+    "pulsex-v2": {
+        parentId: "PulseX",
+        "enabled": true,
+        "id": "3060",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1686009600": true,
+            },
+        }
+    },
+    "fathom-dex": {
+        "enabled": true,
+        "id": "3077"
+    },
+    "heraswap": {
+        "enabled": true,
+        "id": "3089"
+    },
+    "miaswap": {
+        "enabled": true,
+        "id": "3090"
+    },
+    "hummus": {
+        disabled: true,
+        "enabled": true,
+        "id": "1715"
+    },
+    "tokenlon": {
+        "enabled": true,
+        "id": "405",
+        "protocolsData": {
+            "tokenlon": {
+                "id": "405",
+                enabled: true,
+            }
+        }
+    },
+    "ramses-exchange-v2": {
+        parentId: "Ramses Exchange",
+        enabled: true,
+        id: "3096"
+    },
+    "MantisSwap": {
+        enabled: true,
+        id: "2702"
+    },
+    "abcdefx": {
+        enabled: true,
+        id: "2376"
+    },
+    "thalaswap": {
+        parentId: "Thala Labs",
+        enabled: true,
+        id: "2795"
+    },
+    "pearlfi": {
+        enabled: true,
+        id: "3121"
+    },
+    "ambient": {
+        enabled: true,
+        id: "3104"
+    },
+    "doveswap": {
+        "enabled": true,
+        "id": "2763",
+        parentId: "Dove Swap",
+        "protocolsData": {
+            "v3": {
+                "id": "2809",
+                "enabled": true,
+            }
+        },
+    },
+    "litx": {
+        disabled: true,
+        enabled: true,
+        id: "3159"
+    },
+    "voodoo-trade": {
+        enabled: true,
+        id: "3792",
+        "protocolsData": {
+            "swap": {
+                "id": "3792",
+                "enabled": true,
+                "category": "Dexes",
+            }
+        },
+    },
+    "equity-spot": {
+        parentId: "Equalizer",
+        enabled: true,
+        id: "3173"
+    },
+    "flowx-finance": {
+        enabled: true,
+        id: "3196"
+    },
+    "zkSwap_Finance": {
+        enabled: true,
+        id: "3180"
+    },
+    "pinnako": {
+        enabled: true,
+        id: "3209",
+        "protocolsData": {
+            "swap": {
+                "id": "3209",
+                "enabled": true,
+                "category": "Dexes",
+            }
+        },
+    },
+    "croswap": {
+        disabled: true,
+        enabled: true,
+        id: "2942"
+    },
+    "fusionx-v2": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3238"
+    },
+    "fusionx-v3": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3239"
+    },
+    "DerpDEX": {
+        enabled: true,
+        id: "3234"
+    },
+    "concordex-io": {
+        "enabled": true,
+        "id": "3172"
+    },
+    "icpswap": {
+        "enabled": true,
+        "id": "3257"
+    },
+    "echodex": {
+        parentId: "EchoDEX",
+        "enabled": true,
+        "id": "3256"
+    },
+    "reax-one-dex": {
+        "enabled": true,
+        "id": "3260"
+    },
+    "deepbook-sui": {
+        "enabled": true,
+        "id": "3268"
+    },
+    "agni-fi": {
+        "enabled": true,
+        "id": "3265"
+    },
+    "horizondex": {
+        "enabled": true,
+        "id": "3255"
+    },
+    "drift-protocol": {
+        "enabled": true,
+        "id": "970",
+        "protocolsData": {
+            "swap": {
+                "id": "970",
+                "enabled": true,
+            }
+        },
+    },
+    "velodrome-v2": {
+        parentId: "Velodrome",
+        "enabled": true,
+        "id": "3302",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1690156800": true,
+                "1690243200": true,
+                "1690329600": true,
+                "1690416000": true,
+            },
+        }
+    },
+    "sobal": {
+        "enabled": true,
+        "id": "3246"
+    },
+    "grizzly-trade": {
+        disabled: true,
+        "enabled": true,
+        "id": "3301",
+        "protocolsData": {
+            "swap": {
+                disabled: true,
+                "id": "3301",
+                "enabled": true,
+            }
+        },
+    },
+    "crescent-swap": {
+        "enabled": true,
+        "id": "3315"
+    },
+    "brine": {
+        "enabled": true,
+        "id": "3316"
+    },
+    "ktx": {
+        "enabled": true,
+        "id": "3025",
+        "protocolsData": {
+            "swap": {
+                "id": "3025",
+                "enabled": true,
+            }
+        }
+    },
+    "velocore-v2": {
+        "enabled": true,
+        "id": "3330"
+    },
+    "syncswap": {
+        "enabled": true,
+        "id": "2728"
+    },
+    "echodex-v3": {
+        parentId: "EchoDEX",
+        "enabled": true,
+        "id": "3349"
+    },
+    "fcon-dex": {
+        disabled: true,
+        "enabled": true,
+        "id": "3299"
+    },
+    "throne-v3": {
+        "id": "3382",
+        "enabled": true,
+        parentId: "Throne"
+    },
+    "dackieswap": {
+        parentId: "DackieSwap",
+        "enabled": true,
+        "id": "3345",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1691971200": true,
+                "1691884800": true,
+                "1691798400": true,
+                "1691712000": true,
+            },
+        }
+    },
+    "lynex": {
+        "enabled": true,
+        "id": "3408"
+    },
+    "gmx-v2": {
+        parentId: "GMX",
+        "enabled": true,
+        "id": "3365",
+        protocolsData: {
+            "gmx-v2-swap": {
+                "id": "3365",
+                "enabled": true,
+            }
+        }
+    },
+    "meridian-trade": {
+        "enabled": false,
+        "id": "3386",
+        "protocolsData": {
+            "swap": {
+                "id": "3386",
+                "enabled": false,
+            }
+        }
+    },
+    "hydradx": {
+        "enabled": true,
+        "id": "3439"
+    },
+    "baseswap": {
+        "enabled": true,
+        "id": "3333",
+        parentId: "BaseSwap",
+        "protocolsData": {
+            "v2": {
+                "id": "3333",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "3507",
+                "enabled": true,
+            }
+        }
+    },
+    "yfx-v3": {
+        "enabled": true,
+        "id": "3429"
+    },
+    "swapbased": {
+        parentId: "SwapBased",
+        "enabled": true,
+        "id": "3328",
+        protocolsData: {
+            "v2": {
+                "id": "3328",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "3409",
+                "enabled": true,
+            }
+        }
+    },
+    "danogo": {
+        "enabled": true,
+        "id": "3454"
+    },
+    "aerodrome": {
+        "enabled": true,
+        "id": "3450"
+    },
+    "morphex-old": {
+        parentId: "Morphex",
+        "protocolsData": {
+            "swap": {
+                "id": "3483",
+                "enabled": true,
+                disabled: true,
+                "category": "Dexes"
+            }
+        },
+        "enabled": true,
+        disabled: true,
+        "id": "3483"
+    },
+    "spicyswap": {
+        "enabled": true,
+        "id": "1029"
+    },
+    "dackieswap-v2": {
+        parentId: "DackieSwap",
+        "enabled": true,
+        "id": "3515",
+    },
+    "sithswap": {
+        "enabled": true,
+        "id": "2719"
+    },
+    "nether-fi": {
+        "protocolsData": {
+            "swap": {
+                "id": "3509",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        },
+        "enabled": true,
+        "id": "3509"
+    },
+    "bmx": {
+        parentId: "Morphex",
+        "enabled": true,
+        "id": "3530",
+        "protocolsData": {
+            "swap": {
+                "id": "3530",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        }
+    },
+    "mango-v4": {
+        parentId: "Mango Markets",
+        "enabled": true,
+        "id": "3174",
+        protocolsData: {
+            "spot": {
+                "id": "3174",
+                "enabled": true,
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1695081600": true,
+            },
+        }
+    },
+    "ekubo": {
+        "enabled": true,
+        "id": "3499"
+    },
+    "chronos-v2": {
+        "enabled": true,
+        "id": "3341"
+    },
+    "solidly-v3": {
+        parentId: "Solidly Labs",
+        "enabled": true,
+        "id": "3481"
+    },
+    "tegro": {
+        "enabled": true,
+        "id": "3561"
+    },
+    "Scale": {
+        parentId: "Equalizer",
+        "enabled": true,
+        "id": "3575"
+    },
+    "fvm-exchange": {
+        parentId: "Velocimeter",
+        "enabled": true,
+        "id": "3291"
+    },
+    "blex": {
+        "enabled": true,
+        "id": "3605",
+        protocolsData: {
+            "volume": {
+                "id": "3605",
+                "enabled": true,
+            }
+        }
+    },
+    "xena-finance": {
+        "enabled": true,
+        "id": "3620"
+    },
+    "spectrum": {
+        "enabled": true,
+        "id": "1088"
+    },
+    "turbos": {
+        "enabled": true,
+        "id": "2940",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1697328000": true,
+            },
+        }
+    },
+    "tangleswap": {
+        "enabled": true,
+        "id": "3585"
+    },
+    "dx25": {
+        "enabled": true,
+        "id": "3650"
+    },
+    "shimmersea": {
+        "enabled": true,
+        "id": "3571"
+    },
+    "kriya-dex": {
+        "enabled": true,
+        "id": "2939"
+    },
+    "primex-finance": {
+        "enabled": true,
+        "id": "3664"
+    },
+    "candyswap": {
+        "enabled": true,
+        "id": "3682"
+    },
+    "luigiswap": {
+        "enabled": true,
+        "id": "3415"
+    },
+    "kinetix-v3": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3534",
+        protocolsData: {
+            "v3": {
+                "id": "3534",
+                "enabled": true,
+            }
+        }
+    },
+    "caviarnine": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3645",
+        protocolsData: {
+            "orderbook": {
+                "id": "3645",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        }
+    },
+    "kinetix-derivative": {
+        parentId: "Kinetix",
+        "enabled": true,
+        "id": "3465"
+    },
+    "retro": {
+        "enabled": true,
+        "id": "3311"
+    },
+    "metavault-v3": {
+        parentId: "Metavault",
+        "enabled": true,
+        "id": "3750",
+        protocolsData: {
+            "v3": {
+                "id": "3750",
+                "enabled": true,
+            }
+        }
+    },
+    "derivio": {
+        "enabled": false,
+        parentId: "Deri",
+        "id": "3759",
+        protocolsData: {
+            "swap": {
+                "id": "3759",
+                "enabled": true,
+            }
+        }
+    },
+    "elektrik": {
+        "enabled": true,
+        "id": "3773"
+    },
+    "caviarnine-lsu-pool": {
+        parentId: "CaviarNine",
+        "enabled": true,
+        "id": "3666"
+    },
+    "chimpexchange": {
+        "enabled": true,
+        "id": "3836"
+    },
+    "lighterv2": {
+        parentId: "Lighter",
+        "enabled": false,
+        "id": "3854"
+    },
+    "thick": {
+        "enabled": true,
+        "id": "3878"
+    },
+    "noah-swap": {
+        "enabled": true,
+        "id": "2855"
+    },
+    "ascent": {
+        "enabled": true,
+        "id": "3867",
+        parentId: "Ascent Exchange",
+        protocolsData: {
+            "v2": {
+                "id": "3867",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "3868",
+                "enabled": true,
+            }
+        }
+    },
+    "pegasys-v3": {
+        parentId: "PegaSys",
+        "enabled": true,
+        "id": "3178"
+    },
+    "canary": {
+        "enabled": true,
+        "id": "474"
+    },
+    "xfai": {
+        "enabled": true,
+        "id": "3816"
+    },
+    "zebra-v1": {
+        parentId: "Zebra",
+        "enabled": true,
+        "id": "3668"
+    },
+    "zebra-v2": {
+        parentId: "Zebra",
+        "enabled": true,
+        "id": "3901"
+    },
+    "astroport-v2": {
+        "enabled": true,
+        "id": "3117"
+    },
+    "kizuna": {
+        parentId: "KIM Exchange",
+        "enabled": true,
+        "id": "3913"
+    },
+    "butterxyz": {
+        "enabled": true,
+        "id": "3918"
+    },
+    "swaap": {
+        "enabled": true,
+        "id": "2104",
+        protocolsData: {
+            "v1": {
+                "id": "2104",
+                "enabled": true,
+            },
+            "v2": {
+                "id": "3218",
+                "enabled": true,
+            }
+        }
+    },
+    "phoenix": {
+        displayName: "Phoenix",
+        "enabled": true,
+        "id": "3170"
+    },
+    "ryze": {
+        "enabled": true,
+        "id": "3907"
+    },
+    "beamex": {
+        "enabled": true,
+        parentId: "BeamSwap",
+        "id": "3251",
+        protocolsData: {
+            "beamex-swap": {
+                "id": "3251",
+                "enabled": true,
+            }
+        }
+    },
+    "beamswap-v3": {
+        parentId: "BeamSwap",
+        "enabled": true,
+        "id": "3092",
+        protocolsData: {
+            "v3": {
+                "id": "3092",
+                "enabled": true,
+            }
+        }
+    },
+    "aftermath-fi-amm": {
+        parentId: "Aftermath Finance",
+        "enabled": true,
+        "id": "3259"
+    },
+    "sanctum": {
+        "enabled": true,
+        "id": "3388",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1704240000": true,
+            },
+        }
+    },
+    "jibswap": {
+        "enabled": true,
+        "id": "3928"
+    },
+    "zkswap": {
+        "enabled": true,
+        "id": "3280"
+    },
+    "trisolaris": {
+        "enabled": true,
+        "id": "784"
+    },
+    "nearpad": {
+        "enabled": true,
+        "id": "953"
+    },
+    "auroraswap": {
+        "enabled": true,
+        "id": "1174"
+    },
+    "wannaswap": {
+        "enabled": true,
+        "id": "980"
+    },
+    "allbridge-classic": {
+        "enabled": true,
+        "id": "577"
+    },
+    "monocerus": {
+        disabled: true,
+        "enabled": true,
+        "id": "3622"
+    },
+    "sunswap-v3": {
+        parentId: "SUN.io",
+        "enabled": true,
+        "id": "4031"
+    },
+    "squadswap-v2": {
+        parentId: "SquadSwap",
+        "enabled": true,
+        "id": "4009"
+    },
+    "squadswap-v3": {
+        parentId: "SquadSwap",
+        "enabled": true,
+        "id": "4010"
+    },
+    "ICDex": {
+        "enabled": true,
+        "id": "4040"
+    },
+    "horiza": {
+        "enabled": true,
+        "id": "4041"
+    },
+    "lexer": {
+        "enabled": true,
+        "id": "4087",
+        protocolsData: {
+            "swap": {
+                "id": "4087",
+                "enabled": true,
+            }
+        }
+    },
+    "starkdefi": {
+        "enabled": true,
+        "id": "3880",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1707177600": true,
+            },
+        }
+    },
+    "hiveswap-v3": {
+        parentId: "HiveSwap",
+        "enabled": true,
+        "id": "4113"
+    },
+    "supswap-v2": {
+        parentId: "SupSwap",
+        "enabled": true,
+        "id": "4117"
+    },
+    "supswap-v3": {
+        parentId: "SupSwap",
+        "enabled": true,
+        "id": "4118"
+    },
+    "econia": {
+        "enabled": true,
+        "id": "4128"
+    },
+    "symmetric": {
+        "enabled": true,
+        "id": "528",
+        protocolsData: {
+            "v2": {
+                "id": "528",
+                "enabled": true,
+            }
+        }
+    },
+    "Omnidrome": {
+        "enabled": true,
+        "id": "4119"
+    },
+    "jediswap-v2": {
+        parentId: "JediSwap",
+        "enabled": true,
+        "id": "4144"
+    },
+    "swapsicle-v2": {
+        parentId: "Swapsicle",
+        "enabled": true,
+        "id": "3716"
+    },
+    "dragonswap": {
+        "enabled": true,
+        parentId: "DragonSwap",
+        "id": "4138",
+        protocolsData: {
+            "v2": {
+                "id": "4138",
+                "enabled": true,
+            },
+            "v3": {
+                "id": "4139",
+                "enabled": true,
+            }
+        }
+    },
+    "merchant-moe": {
+        "enabled": true,
+        "id": "4006"
+    },
+    "deltaswap": {
+        parentId: "GammaSwap Protocol",
+        "enabled": true,
+        "id": "4062"
+    },
+    "lynex-v1": {
+        parentId: "Lynex",
+        "enabled": true,
+        "id": "3908"
+    },
+    "Scopuly": {
+        "enabled": true,
+        "id": "4181"
+    },
+    "standard-mode": {
+        "enabled": true,
+        "id": "4186"
+    },
+    "sushi-aptos": {
+        parentId: "Sushi",
+        "enabled": true,
+        "id": "3827"
+    },
+    "cellana-finance": {
+        "id": "4194",
+        "enabled": true,
+    },
+    "nile-exchange": {
+        parentId: "Nile Exchange",
+        "enabled": true,
+        "id": "4072"
+    },
+    "nile-exchange-v1": {
+        parentId: "Nile Exchange",
+        "enabled": true,
+        "id": "4285"
+    },
+    "archly-finance-v2": {
+        parentId: "Archly Finance",
+        "id": "3940",
+        enabled: true,
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1710288000": true
+            }
+        }
+    },
+    "cleopatra-exchange": {
+        parentId: "Cleopatra Exchange",
+        "enabled": true,
+        "id": "3985"
+    },
+    "pharaoh-exchange": {
+        parentId: "Pharaoh Exchange",
+        "enabled": true,
+        "id": "3921"
+    },
+    "kim-exchange-v3": {
+        parentId: "KIM Exchange",
+        "enabled": true,
+        "id": "4299"
+    },
+    "cauldron": {
+        id: "3993",
+        enabled: true,
+    },
+    "blitz": {
+        id: "4214",
+        enabled: true,
+        protocolsData: {
+            "swap": {
+                "id": "4214",
+                "enabled": true,
+            }
+        }
+    },
+    "warpgate": {
+        "id": "4342",
+        enabled: true,
+    },
+    "glyph-exchange": {
+        "id": "4347",
+        enabled: true,
+    },
+    "swop": {
+        enabled: true,
+        id: "613"
+    },
+    "javsphere": {
+        enabled: true,
+        id: "4366"
     }
 } as AdaptorsConfig

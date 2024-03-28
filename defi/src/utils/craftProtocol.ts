@@ -19,7 +19,7 @@ import { convertSymbols } from "./symbols/convert";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
 import { getR2, storeR2 } from "./r2";
 
-function normalizeEthereum(balances: { [symbol: string]: number }) {
+export function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (typeof balances === "object") {
     convertSymbols(balances);
   }
@@ -36,7 +36,7 @@ function normalizeEthereum(balances: { [symbol: string]: number }) {
   return balances && formattedBalances;
 }
 
-function selectChainFromItem(item: any, normalizedChain: string) {
+export function selectChainFromItem(item: any, normalizedChain: string) {
   let altChainName = undefined;
   if (normalizedChain.startsWith("avax")) {
     altChainName = normalizedChain.replace("avax", "avalanche");
@@ -48,9 +48,14 @@ function selectChainFromItem(item: any, normalizedChain: string) {
   return item[normalizedChain] ?? item[altChainName];
 }
 
-const raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json());
+let raisesPromise: Promise<any> | undefined = undefined;
 
-const protocolMcap = async (geckoId?: string | null) => {
+export async function getRaises() {
+  if (!raisesPromise) raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json());
+  return raisesPromise;
+}
+
+export const protocolMcap = async (geckoId?: string | null) => {
   if (!geckoId) return null;
 
   const mcap = await fetch("https://coins.llama.fi/mcaps", {
@@ -68,39 +73,6 @@ const protocolMcap = async (geckoId?: string | null) => {
   return mcap?.[`coingecko:${geckoId}`]?.mcap ?? null;
 };
 
-const getProtocolTokenPrice = async (geckoId?: string | null) => {
-  if (!geckoId) return null;
-
-  const price = await fetch("https://coins.llama.fi/prices", {
-    method: "POST",
-    body: JSON.stringify({
-      coins: [`coingecko:${geckoId}`],
-    }),
-  })
-    .then((r) => r.json())
-    .catch((err) => {
-      console.log(err);
-      return {};
-    });
-
-  return price?.coins?.[`coingecko:${geckoId}`]?.price ?? null;
-};
-
-const getProtocolTokenSupply = async (geckoId?: string | null) => {
-  if (!geckoId) return null;
-
-  const supply = await fetch(
-    `https://api.coingecko.com/api/v3/coins/${geckoId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false&x_cg_pro_api_key=${process.env.CG_KEY}`
-  )
-    .then((res) => res.json())
-    .catch((err) => {
-      console.log(err);
-      return {};
-    });
-
-  return supply?.["market_data"]?.["total_supply"] ?? null;
-};
-
 export async function buildCoreData({
   protocolData,
   useNewChainNames,
@@ -112,7 +84,7 @@ export async function buildCoreData({
 }) {
   const module = await importAdapter(protocolData);
   const misrepresentedTokens = module.misrepresentedTokens === true;
-  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, { raises }] = await Promise.all([
+  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
     getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
     misrepresentedTokens
       ? ([] as any[])
@@ -120,7 +92,6 @@ export async function buildCoreData({
     misrepresentedTokens
       ? ([] as any[])
       : getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
-    raisesPromise,
   ]);
 
   let response: Pick<IProtocolResponse, "chainTvls" | "tvl"> = {
@@ -197,23 +168,7 @@ export default async function craftProtocol({
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
 }) {
-  const cacheKey = `protocolCache/${protocolData.id}-${useNewChainNames}-${useHourlyData}`;
-  let previousRun: Awaited<ReturnType<typeof buildCoreData>>;
-  try {
-    const data = (await getR2(cacheKey)).body;
-    if (data === undefined) {
-      throw new Error("No previous run");
-    }
-    previousRun = JSON.parse(data);
-  } catch (e) {
-    previousRun = await buildCoreData({ protocolData, useNewChainNames, useHourlyData });
-    await storeR2(cacheKey, JSON.stringify(previousRun));
-  }
-  const lastTimestamp = previousRun.tvl[previousRun.tvl.length - 1]?.date ?? 0; // Consider the case when array is empty
-  /* TODO: Update cache
-  if ((getCurrentUnixTimestamp() - lastTimestamp) > 24 * 3600) {
-  }
-  */
+  const lastTimestamp = 0;
 
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
     fetchFrom((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id), lastTimestamp),
@@ -223,22 +178,12 @@ export default async function craftProtocol({
 
   const module = await importAdapter(protocolData);
   const misrepresentedTokens = module.misrepresentedTokens === true;
-  const [
-    lastUsdHourlyRecord,
-    lastUsdTokenHourlyRecord,
-    lastTokenHourlyRecord,
-    { raises },
-    mcap,
-    tokenPrice,
-    tokenSupply,
-  ] = await Promise.all([
+  const [lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord, { raises }, mcap] = await Promise.all([
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
     getLastRecord(hourlyTokensTvl(protocolData.id)),
-    raisesPromise,
+    getRaises(),
     protocolMcap(protocolData.gecko_id),
-    getProtocolTokenPrice(protocolData.gecko_id),
-    getProtocolTokenSupply(protocolData.gecko_id),
   ]);
 
   if (!useHourlyData) {
@@ -255,16 +200,16 @@ export default async function craftProtocol({
   }
 
   let response: IProtocolResponse = {
-    ...previousRun,
+    tvl: [],
+    chainTvls: {},
+    tokensInUsd: [],
+    tokens: [],
     ...protocolData,
     chains: [],
     currentChainTvls: {},
     raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
     metrics: getAvailableMetricsById(protocolData.id),
     mcap,
-    tokenMcap: mcap,
-    tokenPrice,
-    tokenSupply,
   };
 
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]) => {
@@ -319,13 +264,14 @@ export default async function craftProtocol({
   if (response.chainTvls[singleChain] === undefined && response.chains.length === 0) {
     response.chains.push(singleChain);
     response.chainTvls[singleChain] = {
-      tvl: response.tvl,
+      tvl: response.tvl ?? [],
       tokensInUsd: response.tokensInUsd,
       tokens: response.tokens,
     };
   }
 
   if (
+    response.tvl &&
     response.chainTvls[singleChain] !== undefined &&
     response.chainTvls[singleChain].tvl.length < response.tvl.length
   ) {

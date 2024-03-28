@@ -11,25 +11,27 @@ import {
 import { getLastRecord, hourlyTvl, dailyTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
 import getRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
-import { tvlsObject } from "../types";
+import { TokensValueLocked, tvlsObject } from "../types";
 import { util } from "@defillama/sdk";
 import { sendMessage } from "../utils/discord";
 import { extraSections } from "../utils/normalizeChain";
+import { saveProtocolItem } from "../api2/db";
+
 
 const { humanizeNumber: { humanizeNumber, } } = util
 
 async function getTVLOfRecordClosestToTimestamp(
   PK: string,
   timestamp: number,
-  searchWidth: number){
-    const record = await getRecordClosestToTimestamp(PK, timestamp, searchWidth)
-    if(record.SK === undefined){
-      return {
-        SK: undefined,
-        tvl: 0
-      }
+  searchWidth: number) {
+  const record = await getRecordClosestToTimestamp(PK, timestamp, searchWidth)
+  if (record.SK === undefined) {
+    return {
+      SK: undefined,
+      tvl: 0
     }
-    return record
+  }
+  return record
 }
 
 function calculateTVLWithAllExtraSections(tvl: tvlsObject<number>) {
@@ -40,7 +42,9 @@ export default async function (
   protocol: Protocol,
   unixTimestamp: number,
   tvl: tvlsObject<number>,
-  storePreviousData: boolean
+  storePreviousData: boolean,
+  usdTokenBalances: tvlsObject<TokensValueLocked>,
+  overwriteExistingData = false,
 ) {
   const hourlyPK = hourlyTvl(protocol.id);
   const lastHourlyTVLRecord = getLastRecord(hourlyPK).then(
@@ -88,8 +92,15 @@ export default async function (
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
     const currentTvl = calculateTVLWithAllExtraSections(tvl)
-    if(currentTvl > 100e9){
-      const errorMessage = `TVL of ${protocol.name} is over 100bn`
+    if (currentTvl > 150e9) {
+      let errorMessage = `TVL of ${protocol.name} is over 150bn`
+      Object.values(usdTokenBalances).forEach(tokenBalances => {
+        for (const [token, value] of Object.entries(tokenBalances))
+          if (value > 1e7) {
+            errorMessage += `\n${token} has ${humanizeNumber(value)}`
+          }
+      })
+
       await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
       throw new Error(errorMessage)
     }
@@ -114,9 +125,9 @@ export default async function (
         calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl &&
         currentTvl > 1e6
       ) {
-        const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed/HOUR).toFixed(2)} hours`
-        if(timeElapsed > (5 * HOUR)){
-          if(currentTvl > 100e6){
+        const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed / HOUR).toFixed(2)} hours`
+        if (timeElapsed > (5 * HOUR)) {
+          if (currentTvl > 100e6) {
             await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
           }
           await sendMessage(errorMessage, process.env.OUTDATED_WEBHOOK!)
@@ -136,41 +147,53 @@ export default async function (
     }
   }
 
-  let tvlPrev1Day =  (await lastDailyTVLRecord).tvl
+  let tvlPrev1Day = (await lastDailyTVLRecord).tvl
   let tvlPrev1Week = (await lastWeeklyTVLRecord).tvl
   const dayDailyTvl = (await dayDailyTvlRecord).tvl
   const weekDailyTvl = (await weekDailyTvlRecord).tvl
-  if(tvlPrev1Day !== 0 && dayDailyTvl !== 0 && tvlPrev1Day > (dayDailyTvl*2)){
+  if (tvlPrev1Day !== 0 && dayDailyTvl !== 0 && tvlPrev1Day > (dayDailyTvl * 2)) {
     tvlPrev1Day = 0;
   }
-  if(tvlPrev1Week !== 0 && weekDailyTvl !== 0 && tvlPrev1Week > (weekDailyTvl*2)){
+  if (tvlPrev1Week !== 0 && weekDailyTvl !== 0 && tvlPrev1Week > (weekDailyTvl * 2)) {
     tvlPrev1Week = 0;
   }
 
-  await dynamodb.put({
-    PK: hourlyPK,
-    SK: unixTimestamp,
+  const hourlyData = {
     ...tvl,
     ...(storePreviousData
       ? {
-          tvlPrev1Hour: lastHourlyTVLObject.tvl,
-          tvlPrev1Day,
-          tvlPrev1Week,
-        }
-      : {}),
+        tvlPrev1Hour: lastHourlyTVLObject.tvl,
+        tvlPrev1Day,
+        tvlPrev1Week,
+      }
+      : {})
+  }
+  await dynamodb.put({
+    PK: hourlyPK,
+    SK: unixTimestamp,
+    ...hourlyData,
   });
 
-  const closestDailyRecord = await getTVLOfRecordClosestToTimestamp(
+  const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
+
+  const closestDailyRecord = overwriteExistingData ? null : await getTVLOfRecordClosestToTimestamp(
     dailyPK,
     unixTimestamp,
-    secondsInDay*1.5
+    secondsInDay * 1.5
   );
-  if (getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp)) {
+  if (overwriteExistingData || getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp)) {
     // First write of the day
     await dynamodb.put({
       PK: dailyTvl(protocol.id),
-      SK: getTimestampAtStartOfDay(unixTimestamp),
+      SK: dayTimestamp,
       ...tvl,
     });
+
   }
+
+  const writeOptions = { overwriteExistingData };
+  await Promise.all([
+    saveProtocolItem(hourlyTvl, { id: protocol.id, timestamp: unixTimestamp, data: hourlyData, }, writeOptions),
+    saveProtocolItem(dailyTvl, { id: protocol.id, timestamp: dayTimestamp, data: tvl, }, writeOptions),
+  ])
 }

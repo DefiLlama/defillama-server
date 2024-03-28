@@ -263,6 +263,11 @@
       ]
     }
   },
+  "get_balances": {
+    "crypto": "function get_balances(address _pool) external view returns (uint256[8])",
+    "cryptoFactory": "function get_balances(address _pool) external view returns (uint256[4])",
+    "stableFactory": "function get_balances(address _pool) external view returns (uint256[4])"
+  },
   "get_id_info": {
     "name": "get_id_info",
     "outputs": [

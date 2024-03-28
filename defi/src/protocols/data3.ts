@@ -37691,7 +37691,7 @@ const data3: Protocol[] = [
     chains: ["Scroll"],
     oracles: [],
     forkedFrom: ["Solidly"],
-    module: "zoro/index.js",
+    module: "keller/index.js",
     twitter: "Equilibre_Labs",
     listedAt: 1711622933
   },
@@ -37711,11 +37711,33 @@ const data3: Protocol[] = [
     category: "Farm",
     chains: ["Ethereum"],
     oracles: [],
-    forkedFrom: ["Solidly"],
+    forkedFrom: [],
     module: "fomo3d/index.js",
     twitter: "FOMO_3D",
     listedAt: 1711623494
   },
+  {
+    id: "4390",
+    name: "Incognito",
+    address: null,
+    symbol: "-",
+    url: "https://incognito.financial/",
+    description: "Incognito is a one-stop-shop that allows users and Ecosystem to facilitate anonymous swap and private trade for all coins across many popular blockchains",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/incognito.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "incognito/index.js",
+    twitter: "incognito_dex",
+    listedAt: 1711623846
+  },
+
 ]
 
 export default data3

@@ -35179,10 +35179,10 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.suilend.fi",
     description:
-      "Lending and borrowing platform on Sui. Sister project to solendprotocol.",
+      "Suilend is a lending protocol on Sui, built by the team behind Solend.",
     chain: "Sui",
     logo: `${baseIconsUrl}/suilend.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -35190,8 +35190,9 @@ const data3: Protocol[] = [
     chains: ["Sui"],
     module: "suilend/index.js",
     twitter: "suilendprotocol",
-    oracles: [], 
+    oracles: ["Pyth"], 
     forkedFrom: [],
+    audit_links: ["https://docs.suilend.fi/security/audit"],
     listedAt: 1710198832
   },
   {

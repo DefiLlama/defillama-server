@@ -36122,7 +36122,7 @@ const data3: Protocol[] = [
     symbol: "NIFTSY",
     url: "https://envelop.is/",
     description: `Envelop is a collateralized derivatives protocol.`,
-    chain: "Ethereum",
+    chain: "Blast",
     logo: `${baseIconsUrl}/envelop.png`,
     audits: "0",
     audit_note: null,

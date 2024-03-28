@@ -45,7 +45,8 @@ export type IStoreAdaptorDataHandlerEvent = {
 }
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  const { timestamp, adapterType, protocolNames, maxConcurrency = 13 } = event
+  const defaultMaxConcurrency = event.adapterType === AdapterType.DEXS ? 8 : 31
+  let { timestamp, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency } = event
   console.info(`- timestamp: ${timestamp}`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
   const isTimestampProvided = timestamp !== undefined

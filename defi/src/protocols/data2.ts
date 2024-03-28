@@ -5343,7 +5343,7 @@ const data2: Protocol[] = [
     name: "Polynomial Earn",
     address: null,
     symbol: "-",
-    url: "https://earn.polynomial.fi/",
+    url: "https://trade.polynomial.fi",
     description: "Polynomial automates financial derivative strategies to create products that deliver passive yield on various assets",
     chain: "Optimism",
     logo: `${baseIconsUrl}/polynomial-earn.png`,
@@ -20666,6 +20666,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Avalanche"],
     module: "emdx/index.js",
+    oracles: ["Stork"], // https://twitter.com/emdx_io/status/1772968245407916052
     twitter: "emdx_io",
     audit_links: [
       "https://github.com/emdx-dex/perpetual-protocol/blob/emdx/main/audit/2021-12%20EMDX%20Protocol%20Audit.final.pdf"

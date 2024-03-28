@@ -685,12 +685,12 @@ export default {
         enabled: true,
         id: "2332"
     },
-    "camelot": {
+    "camelot-v2": {
         parentId: "Camelot",
         enabled: true,
         id: "2307"
     },
-    "thena": {
+    "thena-v1": {
         name: "Thena V1",
         displayName: "Thena V1",
         enabled: true,
@@ -705,7 +705,7 @@ export default {
             },
         }
     },
-    "ramses-exchange": {
+    "ramses-exchange-v1": {
         parentId: "Ramses Exchange",
         enabled: false,
         id: "2675"
@@ -1973,5 +1973,14 @@ export default {
     "javsphere": {
         enabled: true,
         id: "4366"
+    },
+    "frax-amo": {
+        parentId: "Frax Finance",
+        enabled: true,
+        id: "359"
+    },
+    "keller": {
+        enabled: true,
+        id: "4388"
     }
 } as AdaptorsConfig

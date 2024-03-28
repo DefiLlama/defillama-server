@@ -2601,5 +2601,9 @@ export default {
     "javsphere": {
         enabled: true,
         id: "4366"
+    },
+    "keller": {
+        enabled: true,
+        id: "4388"
     }
 } as AdaptorsConfig

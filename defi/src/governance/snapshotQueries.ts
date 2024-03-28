@@ -133,16 +133,6 @@ export const proposalQueryTally = `query Proposals($ids: [Address!], $chain: Cha
     id
     title
     description
-    start {
-      id
-      number
-      timestamp
-    }
-    end {
-      id
-      number
-      timestamp
-    }
     eta
     block {
       id

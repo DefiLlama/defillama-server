@@ -5343,7 +5343,7 @@ const data2: Protocol[] = [
     name: "Polynomial Earn",
     address: null,
     symbol: "-",
-    url: "https://earn.polynomial.fi/",
+    url: "https://trade.polynomial.fi",
     description: "Polynomial automates financial derivative strategies to create products that deliver passive yield on various assets",
     chain: "Optimism",
     logo: `${baseIconsUrl}/polynomial-earn.png`,

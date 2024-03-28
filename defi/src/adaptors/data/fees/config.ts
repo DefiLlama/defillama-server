@@ -1978,5 +1978,9 @@ export default {
         parentId: "Frax Finance",
         enabled: true,
         id: "359"
+    },
+    "keller": {
+        enabled: true,
+        id: "4388"
     }
 } as AdaptorsConfig

@@ -29,11 +29,11 @@ function compressTVL(obj: tvlsObject<TokensValueLocked>, hourlyPK: string) {
         obj[key][coinKey] = value
       }
 
-      if (isUSDValue) {
+      /* if (isUSDValue) {
         value = +value
         if (isNaN(value)) return;
         obj[key][coinKey] = Math.round(obj[key][coinKey]);
-      }
+      } */
     });
   });
 }

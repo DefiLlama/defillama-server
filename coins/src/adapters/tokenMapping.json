@@ -1794,6 +1794,16 @@
       "decimals": "18",
       "symbol": "UNO",
       "to": "coingecko#nostra-uno"
+    },
+    "0x05ffbcfeb50d200a0677c48a129a11245a3fc519d1d98d76882d1c9a1b19c6ed": {
+      "decimals": "18",
+      "symbol": "ZEND",
+      "to": "coingecko#zklend-2"
+    },
+    "0x5ffbcfeb50d200a0677c48a129a11245a3fc519d1d98d76882d1c9a1b19c6ed": {
+      "decimals": "18",
+      "symbol": "ZEND",
+      "to": "coingecko#zklend-2"
     }
   },
   "milkomeda": {

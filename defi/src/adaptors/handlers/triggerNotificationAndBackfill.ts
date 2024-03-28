@@ -45,8 +45,8 @@ async function notifyAdapterStatus({ adaptorType }: { adaptorType: AdapterType }
   for (const prot of protocolsList)
     if (!returnedProtocols.has(prot))
       notIncluded.push(prot)
-  const zeroValueProtocols = []
-  const notUpdatedProtocols = []
+  let zeroValueProtocols = []
+  let notUpdatedProtocols = []
   const currenntData = parsedBody.totalDataChartBreakdown?.slice(-1)[0][1] ?? {}
   const prevData = parsedBody.totalDataChartBreakdown?.slice(-2)[0][1] ?? {}
 
@@ -64,15 +64,15 @@ async function notifyAdapterStatus({ adaptorType }: { adaptorType: AdapterType }
   }
   else
     await sendDiscordAlert(`[${adaptorType}] All protocols have been ranked`, adaptorType, false)
+  zeroValueProtocols = [...new Set(zeroValueProtocols)]
+  notUpdatedProtocols = [...new Set(notUpdatedProtocols)]
   const hasZeroValues = zeroValueProtocols.length > 0
   const hasNotUpdatedValues = notUpdatedProtocols.length > 0
   if (hasZeroValues || hasNotUpdatedValues) {
     if (hasNotUpdatedValues)
-      await sendDiscordAlert(`${notUpdatedProtocols.length} adapters haven't been updated since the last check...`, adaptorType)
+      await sendDiscordAlert(`${notUpdatedProtocols.length} adapters haven't been updated since the last check... [${notUpdatedProtocols.join(', ')}]`, adaptorType)
     if (hasZeroValues)
-      await sendDiscordAlert(`${zeroValueProtocols.length} adapters report 0 value dimension...Will retry later...`, adaptorType)
-    const protocolNames: string[] = [...new Set([...zeroValueProtocols, ...notUpdatedProtocols])];
-    // await handler2({ adaptorType, adaptorNames: new Set(protocolNames), maxConcurrency: 3 }) // this is disabled as we are gonna run all the adapters hourly
+      await sendDiscordAlert(`${zeroValueProtocols.length} adapters report 0 value dimension...Will retry later...[${zeroValueProtocols.join(', ')}]`, adaptorType)
   }
   else
     await sendDiscordAlert(`[${adaptorType}] Looks like all good`, adaptorType)

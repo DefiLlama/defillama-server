@@ -2642,6 +2642,7 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
+    chainId: 81457,
     twitter: "Blast_L2",
     url: "https://blast.io",
   },
@@ -2653,6 +2654,7 @@ export const chainCoingeckoIds = {
     twitter: "BitRockChain",
     url: "https://www.bit-rock.io",
     github: ["BitrockChain"],
+    chainId: 7171
   },
   "Astar zkEVM": {
     geckoId: null,

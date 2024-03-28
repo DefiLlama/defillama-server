@@ -29859,26 +29859,5 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true
   },
-  {
-    id: "2869",
-    name: "SFT Protocol",
-    address: "filecoin:0xC5eA96Dd365983cfEc90E72b6A2daC9562f458Ba",
-    symbol: "SFT",
-    url: "https://www.sft.network/",
-    description: "SFT Chain, a 'Chain of Chains', bridges physical infrastructure with Web3, focusing on a DePIN platform that integrates storage, computing, edge CDN , and beyond.",
-    chain: "Filecoin",
-    logo: `${baseIconsUrl}/sft-protocol.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Liquid Staking, Staking Pool, DePIN",
-    chains: ["Filecoin"],
-    oracles: [],
-    forkedFrom: [],
-    module: "sft-protocol/index.js",
-    twitter: "SFT Protocol",
-    listedAt: 1682079773076
-  },
 ]
 export default data2;

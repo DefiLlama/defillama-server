@@ -705,7 +705,7 @@ export default {
             },
         }
     },
-    "ramses-exchange": {
+    "ramses-exchange-v1": {
         parentId: "Ramses Exchange",
         enabled: false,
         id: "2675"

@@ -44,10 +44,10 @@ export default async ({ protocol, unixTimestamp, tvl, hourlyTvl, dailyTvl, store
     return;
   }
   const isDDBFailOK = /tokens/i.test(hourlyPK)
-  compressTVL({ ...tvl }, hourlyPK);
+  compressTVL(tvl, hourlyPK);
 
   try {
-    await dynamodb.get({ PK: hourlyPK, SK: unixTimestamp, ...tvl, });
+    await dynamodb.put({ PK: hourlyPK, SK: unixTimestamp, ...tvl, });
   } catch (e) {
     if (!isDDBFailOK) {
       throw e;
@@ -72,7 +72,7 @@ export default async ({ protocol, unixTimestamp, tvl, hourlyTvl, dailyTvl, store
   if (overwriteExistingData || getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp) || storePreviousData === false) {
 
     try {
-      await dynamodb.get({ PK: dailyTvl(protocol.id), SK: dayTimestamp, ...tvl, });
+      await dynamodb.put({ PK: dailyTvl(protocol.id), SK: dayTimestamp, ...tvl, });
     } catch (e) {
       if (!isDDBFailOK) {
         throw e;

@@ -36,7 +36,7 @@ export default {
             }
         }
     },
-    "synfutures": {
+    "synfutures-v1": {
         parentId: "SynFutures",
         "enabled": false,
         "id": "2328"

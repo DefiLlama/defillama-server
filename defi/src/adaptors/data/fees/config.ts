@@ -685,12 +685,12 @@ export default {
         enabled: true,
         id: "2332"
     },
-    "camelot": {
+    "camelot-v2": {
         parentId: "Camelot",
         enabled: true,
         id: "2307"
     },
-    "thena": {
+    "thena-v1": {
         name: "Thena V1",
         displayName: "Thena V1",
         enabled: true,

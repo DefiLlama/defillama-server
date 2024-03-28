@@ -14262,12 +14262,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "781",
-    name: "Klima DAO",
+    name: "KlimaDAO",
     address: "polygon:0x4e78011ce80ee02d2c3e649fb657e45898257815",
     symbol: "KLIMA",
     url: "https://www.klimadao.finance",
     description:
-      "Klima DAO is a Decentralised Autonomous Organisation for change. Klima DAO develops infrastructure incentives that fulfill our manifesto, through primitives such as the KLIMA token. We will also solve the critical problems of the carbon markets: illiquidity, opacity and inefficiency.",
+      "KlimaDAO is a public good for the planet, fostering the adoption of a new category of real world assets (RWA) on the blockchain: environmental assets like carbon credits.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/klima-dao.jpg`,
     audits: "1",
@@ -14275,7 +14275,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "klima-dao",
     cmcId: "12873",
-    category: "Reserve Currency",
+    category: "RWA",
     chains: ["Polygon"],
     module: "klima-dao/index.js",
     treasury: "klima-dao.js",

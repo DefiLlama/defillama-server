@@ -14269,7 +14269,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "KlimaDAO is a public good for the planet, fostering the adoption of a new category of real world assets (RWA) on the blockchain: environmental assets like carbon credits.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/klima-dao.png`,
+    logo: `${baseIconsUrl}/klimadao.png`,
     audits: "1",
     audit_links: ["https://omniscia.io/klimadao-algorithmic-bonding-system/"],
     audit_note: null,

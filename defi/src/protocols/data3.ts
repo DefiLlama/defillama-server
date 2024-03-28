@@ -37870,6 +37870,29 @@ const data3: Protocol[] = [
     github: ["optionblitz"],
     listedAt: 1711644990
   },
+  {
+    id: "4397",
+    name: "Hatom TAO Liquid Staking",
+    address: "elrond:HTM-f51d55",
+    symbol: "HTM",
+    assetToken: "WTAO",
+    url: "https://app.hatom.com/liquid/tao",
+    description: "Liquid Staking is a module that allows users to stake their EGLD without locking up its value and receive a token called Staked EGLD (sEGLD)",
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/hatom-tao-liquid-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Elrond"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hatom-tao-liquid-staking/index.js",
+    twitter: "HatomProtocol",
+    parentProtocol: "parent#hatom-protocol",
+    listedAt: 1711646277
+  },
 ]
 
 export default data3

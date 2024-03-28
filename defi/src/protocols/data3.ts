@@ -28881,7 +28881,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "repl/index.js",
-    twitter: null,
+    twitter: "Repl_fi",
     audit_links: ["https://docs.repl.fi/safe/audit"],
     listedAt: 1704733578
   },

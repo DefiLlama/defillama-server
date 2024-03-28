@@ -7674,7 +7674,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://marginx.io",
     description:
-      "MarginX is the world's first community-based decentralized exchange built on the Function X network, and running via a multi-chain and on-chain infrastructure. It aims to bridge the traditional financial markets and cryptocurrency world by providing a platform where investors can buy, sell and create derivative products of any financial asset, and where every stakeholder has a say in the future of the platform.",
+      "MarginX is a decentralised exchange (DEX) that enables crypto projects, traders and DeFi enthusiasts the freedom to list, trade and provide liquidity.",
     chain: "FunctionX",
     logo: `${baseIconsUrl}/marginx.jpg`,
     audits: "0",

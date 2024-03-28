@@ -8493,8 +8493,8 @@ const data3: Protocol[] = [
   {
     id: "3079",
     name: "zkLend",
-    address: null,
-    symbol: "-",
+    address: "starknet:0x05ffbcfeb50d200a0677c48a129a11245a3fc519d1d98d76882d1c9a1b19c6ed",
+    symbol: "ZEND",
     url: "https://zklend.com/",
     description:
       "zkLend is an L2 money-market protocol built on StarkNet, combining zk-rollup scalability, superior transaction speed, and cost-savings with Ethereum's security. The protocol offers a dual solution: a permissioned and compliance-focused solution for institutional clients, and a permissionless service for DeFi users - all without sacrificing decentralisation",
@@ -8502,8 +8502,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/zklend.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "zklend-2",
+    cmcId: "18990",
     category: "Lending",
     chains: ["Starknet"],
     module: "zklend/index.js",

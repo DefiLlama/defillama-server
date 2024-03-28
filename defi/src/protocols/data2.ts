@@ -32300,9 +32300,9 @@ const data2: Protocol[] = [
   },
   {
     id: "2869",
-    name: "SFT",
+    name: "SFT Protocol",
     address: "filecoin:0xC5eA96Dd365983cfEc90E72b6A2daC9562f458Ba",
-    symbol: "SFT Protocol",
+    symbol: "SFT",
     url: "https://www.sft.network/",
     description: "SFT Chain, a 'Chain of Chains', bridges physical infrastructure with Web3, focusing on a DePIN platform that integrates storage, computing, edge CDN , and beyond.",
     chain: "Filecoin",

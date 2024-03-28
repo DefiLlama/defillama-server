@@ -9,7 +9,7 @@
       "pool": "0x38ea452219524bb87e18de1c24d3bb59510bd783"
     },
     "eth": {
-      "underlying": "0x72e2f4830b9e45d52f80ac08cb2bec0fef72ed9c",
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
       "pool": "0x101816545f6bd2b1076434b54383a1e633390a2e"
     },
     "sgeth": {
@@ -125,7 +125,7 @@
       "pool": "0xB6CfcF89a7B22988bfC96632aC2A9D6daB60d641"
     },
     "eth": {
-      "underlying": "0x82cbecf39bee528b5476fe6d1550af59a9db6fc0",
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
       "pool": "0x915A55e36A01285A14f05dE6e81ED9cE89772f8e"
     },
     "sgeth": {
@@ -151,7 +151,7 @@
       "pool": "0xDecC0c09c3B5f6e92EF4184125D5648a66E35298"
     },
     "eth": {
-      "underlying": "0xb69c8cbcd90a39d8d3d3ccf0a3e968511c3856a0",
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
       "pool": "0xd22363e3762cA7339569F3d33EADe20127D5F98C"
     },
     "sgeth": {
@@ -183,6 +183,26 @@
     "usdc": {
       "underlying": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
       "pool": "0x12edeA9cd262006cC3C4E77c90d2CD2DD4b1eb97"
+    }
+  },
+  "kava": {
+    "usdt": {
+      "underlying": "0x919C1c267BC06a7039e03fcc2eF738525769109c",
+      "pool": "0xAad094F6A75A14417d39f04E690fC216f080A41a"
+    }
+  },
+  "base": {
+    "eth": {
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "pool": "0x224D8Fd7aB6AD4c6eb4611Ce56EF35Dec2277F03"
+    },
+    "sgeth": {
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "pool": "0x28fc411f9e1c480ad312b3d9c60c22b965015c6b"
+    },
+    "usdc": {
+      "underlying": "0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca",
+      "pool": "0x4c80e24119cfb836cdf0a6b53dc23f04f7e652ca"
     }
   }
 }

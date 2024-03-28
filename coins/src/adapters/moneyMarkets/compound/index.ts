@@ -1,3 +1,4 @@
+import { compoundPrices } from "../../utils/compound-fork";
 import getTokenPrices from "./compound";
 
 export function compound(timestamp: number = 0) {
@@ -70,6 +71,21 @@ export function cream(timestamp: number = 0) {
     ),
   ]);
 }
+export function Ovix(timestamp: number = 0) {
+  console.log("starting 0vix");
+  return Promise.all([
+    getTokenPrices(
+      "polygon",
+      "0x8849f1a0cB6b5D6076aB150546EddEe193754F1C",
+      timestamp,
+    ),
+    getTokenPrices(
+      "polygon_zkevm",
+      "0x6EA32f626e3A5c41547235ebBdf861526e11f482",
+      timestamp,
+    ),
+  ]);
+}
 export function scream(timestamp: number = 0) {
   console.log("starting scream");
   return Promise.all([
@@ -115,6 +131,67 @@ export function tonpound(timestamp: number = 0) {
   return getTokenPrices(
     "ethereum",
     "0x79645effe4dc7df2ecf52e267d56c98d239fd838",
+    timestamp,
+  );
+}
+
+export function lodestar(timestamp: number = 0) {
+  console.log("starting lodestar");
+  return getTokenPrices(
+    "arbitrum",
+    "0x92a62f8c4750D7FbDf9ee1dB268D18169235117B",
+    timestamp,
+  );
+}
+export function marev2(timestamp: number = 0) {
+  console.log("starting marev2");
+  return getTokenPrices(
+    "kava",
+    "0xFcD7D41D5cfF03C7f6D573c9732B0506C72f5C72",
+    timestamp,
+  );
+}
+export function tenderfi(timestamp: number = 0) {
+  console.log("starting tenderfi");
+  return getTokenPrices(
+    "arbitrum",
+    "0xeed247Ba513A8D6f78BE9318399f5eD1a4808F8e",
+    timestamp,
+  );
+}
+
+export function cantoLending(timestamp: number = 0) {
+  console.log("starting canto-Lending");
+  return compoundPrices({
+    chain: "canto",
+    timestamp,
+    cether: "0xB65Ec550ff356EcA6150F733bA9B954b2e0Ca488",
+    comptroller: "0x5e23dc409fc2f832f83cec191e245a191a4bcc5c",
+    projectName: "canto-lending",
+  });
+}
+export function sumerian(timestamp: number = 0) {
+  console.log("starting sumerian");
+  return getTokenPrices(
+    "meter",
+    "0xcb4cdda50c1b6b0e33f544c98420722093b7aa88",
+    timestamp,
+  );
+}
+export function hover(timestamp: number = 0) {
+  console.log("starting hover");
+  return getTokenPrices(
+    "kava",
+    "0x3A4Ec955a18eF6eB33025599505E7d404a4d59eC",
+    timestamp,
+  );
+}
+
+export function moonwell(timestamp: number = 0) {
+  console.log("starting moonwell");
+  return getTokenPrices(
+    "base",
+    "0xfBb21d0380beE3312B33c4353c8936a0F13EF26C",
     timestamp,
   );
 }

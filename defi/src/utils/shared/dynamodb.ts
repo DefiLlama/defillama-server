@@ -38,13 +38,21 @@ const dynamodb = {
       })
       .promise(),
   scan: (params: Omit<AWS.DynamoDB.DocumentClient.ScanInput, "TableName">) =>
-    client.scan({ TableName, ...params }).promise()
+    client.scan({ TableName, ...params }).promise(),
+  getEnvSecrets: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
+  getExtensionTwitterConfig: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'twitter' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
+  putDimensionsData: (
+    item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
+    params?: Partial<AWS.DynamoDB.DocumentClient.PutItemInput>
+  ) => client.put({ TableName: 'fees-volume', ...params, Item: item }).promise(),
+  putDimensionsDataBulk: (
+    items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  ) => client.batchWrite({ RequestItems: { 'fees-volume': items.map((item) => ({ PutRequest: { Item: item } })) } }).promise(),
 };
 export default dynamodb;
 
-export async function getHistoricalValues(pk: string) {
+export async function getHistoricalValues(pk: string, lastKey = -1) {
   let items = [] as any[];
-  let lastKey = -1;
   do {
     const result = await dynamodb.query({
       ExpressionAttributeValues: {
@@ -126,7 +134,7 @@ export async function batchWrite(
 
 const batchGetStep = 100; // Max 100 items per batchGet
 export async function batchGet(keys: { PK: string; SK: number }[], retriesLeft = 3) {
-  if(retriesLeft === 0){
+  if (retriesLeft === 0) {
     console.log("Unprocessed batchGet reqs:", keys)
     throw new Error("Not all batchGet requests could be processed")
   }
@@ -138,10 +146,10 @@ export async function batchGet(keys: { PK: string; SK: number }[], retriesLeft =
     );
   }
   const responses = await Promise.all(requests)
-  let processedResponses = ([] as any[]).concat(...responses.map(r=>r.Responses![TableName]))
-  const unprocessed = responses.map(r=>r.UnprocessedKeys?.[TableName]?.Keys ?? []).flat()
-  if(unprocessed.length > 0){
-    const missingResponses = await batchGet(unprocessed as any[], retriesLeft-1)
+  let processedResponses = ([] as any[]).concat(...responses.map(r => r.Responses![TableName]))
+  const unprocessed = responses.map(r => r.UnprocessedKeys?.[TableName]?.Keys ?? []).flat()
+  if (unprocessed.length > 0) {
+    const missingResponses = await batchGet(unprocessed as any[], retriesLeft - 1)
     processedResponses = processedResponses.concat(missingResponses)
   }
   return processedResponses

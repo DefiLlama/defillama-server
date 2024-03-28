@@ -5,7 +5,7 @@ const handler = async (_event: any): Promise<IResponse> => {
   const allProtocols = await getR2(`emissionsProtocolsList`).then((res) =>
     JSON.parse(res.body!),
   );
-  return successResponse(allProtocols, 6 * 60 * 60); // 6 hour cache
+  return successResponse(allProtocols, 10 * 60); // 10 min cache
 };
 
 export default wrap(handler);

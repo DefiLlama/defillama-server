@@ -1,14 +1,62 @@
 import synthetixAdapter from "./synthetix";
-import glpAdapter from "./glp";
+import glp from "./glp";
 import abraAdapter from "./abracadabra";
 import unknownTokenAdapter from "./unknownToken";
 import podsAdapter from "./pods";
 import distressedAdapter from "./distressedAssets";
+import { contracts } from "./distressed";
 import manualInputAdapter from "./manualInput";
 import realtAdapter from "./realt";
 import metronomeAdapter from "./metronome";
+import { contracts as metronomeContracts } from "./metronome";
 import { wrappedGasTokens } from "../utils/gasTokens";
+import collateralizedAdapter from "./collateralizedAssets";
+import swethAdapter from "./sweth";
+import gmdAdapter from "./gmd";
+import stkaurabalAdapter from "./stkaurabal";
+import shlb_ from "./shlb";
+import axios from "axios";
+import { Write } from "../utils/dbInterfaces";
+import { addToDBWritesList } from "../utils/database";
+import mooBvmAdapter from "./mooBvmEth";
+import defiChainAdapter from "./defichain";
+import velgAdapter from "./velgd";
+import steadefiEth from "./steadefi_eth";
+import steadefiWbtc from "./steadefi_wbtc";
+import steadefiUsdArb from "./steadefi_usdc_arb";
+import steadefiUsdEth from "./steadefi_usdc_eth";
+import steadefiUsdLink from "./steadefi_usdc_link";
+import steadefiUsdWbtc from "./steadefi_usdc_wbtc";
+import opdxAdapter from "./odpxWethLP";
+import teahouseAdapter from "./teahouse";
 
+export { glp };
+
+export const shlb = shlb_;
+
+export function steadefi(timestamp: number = 0) {
+  console.log("starting steadefi");
+  return Promise.all([
+    steadefiEth(timestamp),
+    steadefiWbtc(timestamp),
+    steadefiUsdArb(timestamp),
+    steadefiUsdEth(timestamp),
+    steadefiUsdLink(timestamp),
+    steadefiUsdWbtc(timestamp),
+  ]);
+}
+export function teahouse(timestamp: number = 0) {
+  console.log("starting teahouse");
+  return teahouseAdapter(timestamp);
+}
+export function opdx(timestamp: number = 0) {
+  console.log("starting opdx");
+  return opdxAdapter(timestamp);
+}
+export function defiChain(timestamp: number = 0) {
+  console.log("starting defiChain");
+  return defiChainAdapter(timestamp);
+}
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
   return synthetixAdapter(timestamp);
@@ -16,17 +64,13 @@ export function synthetix(timestamp: number = 0) {
 
 export function metronome(timestamp: number = 0) {
   console.log("starting metronome");
-  return metronomeAdapter("ethereum", timestamp);
+  return Promise.all(
+    Object.keys(metronomeContracts).map((chain) =>
+      metronomeAdapter(chain, timestamp),
+    ),
+  );
 }
 
-export function glp(timestamp: number = 0) {
-  console.log("starting glp");
-  return Promise.all([
-    glpAdapter("arbitrum", timestamp),
-    glpAdapter("avax", timestamp),
-    glpAdapter("polygon", timestamp),
-  ]);
-}
 export function abracadabra(timestamp: number = 0) {
   console.log("starting abracadabra");
   return abraAdapter(timestamp);
@@ -36,11 +80,41 @@ export function unknownTokens(timestamp: number = 0) {
   return Promise.all([
     unknownTokenAdapter(
       timestamp,
+      "0xe510c67dd0a54d06f04fd5af9094fe64ed605eab",
+      "0xd51bfa777609213a653a2cd067c9a0132a2d316a",
+      "0x76bf5e7d2bcb06b1444c0a2742780051d8d0e304",
+      false,
+      "beam",
+      1.01,
+    ),
+  ]);
+}
+export function unknownTokens2(timestamp: number = 0) {
+  console.log("starting unknownTokens2");
+  return Promise.all([
+    unknownTokenAdapter(
+      timestamp,
+      "0xdd0d223384bB2FA880f6566baCDa599439457aa6",
+      "0x5F0b1a82749cb4E2278EC87F8BF6B618dC71a8bf",
+      "0x45334a5B0a01cE6C260f2B570EC941C680EA62c0",
+      false,
+      "zeta",
+    ),
+    unknownTokenAdapter(
+      timestamp,
       "0x09cabec1ead1c0ba254b09efb3ee13841712be14",
       "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
       wrappedGasTokens["ethereum"],
       true,
       "ethereum",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xcD15C231b8A0Bae40bD7938AE5eA8e43f1e9a15F",
+      "0x0D94e59332732D18CF3a3D457A8886A2AE29eA1B",
+      "0xC348F894d0E939FE72c467156E6d7DcbD6f16e21",
+      false,
+      "songbird",
     ),
     unknownTokenAdapter(
       timestamp,
@@ -82,6 +156,94 @@ export function unknownTokens(timestamp: number = 0) {
       false,
       "bsc",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x4b4237b385bd6eaf3ef6b20dbcaed4158a688af7",
+      "0xD86c0B9b686f78a7A5C3780f03e700dbbAd40e01",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      false,
+      "ethereum",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xC977492506E6516102a5687154394Ed747A617ff",
+      "0xEC13336bbd50790a00CDc0fEddF11287eaF92529", // gmUSD
+      "0x4945970EfeEc98D393b4b979b9bE265A3aE28A8B",
+      false,
+      "arbitrum",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x2071a39da7450d68e4f4902774203df208860da2",
+      "0x3712871408a829c5cd4e86da1f4ce727efcd28f6", // GLCR
+      "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+      false,
+      "avax",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x8a3EcB040d270ca92E122104e2d622b71c89E3cE",
+      "0x09EF821c35B4577f856cA416377Bd2ddDBD3d0C9", // MMTH
+      "0x152b9d0FdC40C096757F570A51E494bd4b943E50",
+      false,
+      "avax",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xd3aC0C63feF0506699d68d833a10477137254aFf",
+      "0x9A592B4539E22EeB8B2A3Df679d572C7712Ef999", //pxGMX
+      "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      false,
+      "arbitrum",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x0E8f117a563Be78Eb5A391A066d0d43Dd187a9E0",
+      "0x07bb65faac502d4996532f834a1b7ba5dc32ff96", //FVM
+      "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      false,
+      "fantom",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xf3C45b45223Df6071a478851B9C17e0630fDf535",
+      "0x1e925De1c68ef83bD98eE3E130eF14a50309C01B",
+      "0x4200000000000000000000000000000000000006",
+      false,
+      "optimism",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x53713F956A4DA3F08B55A390B20657eDF9E0897B",
+      "0xd386a121991E51Eab5e3433Bf5B1cF4C8884b47a",
+      "0x4200000000000000000000000000000000000006",
+      false,
+      "base",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x9f8a222fd0b75239b32aa8a97c30669e5981db05",
+      "0x999999999939ba65abb254339eec0b2a0dac80e9",
+      "0xff3e7cf0c007f919807b32b30a4a9e7bd7bc4121",
+      false,
+      "klaytn",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x280608DD7712a5675041b95d0000B9089903B569",
+      "0x24599b658b57f91E7643f4F154B16bcd2884f9ac",
+      "0xC4B7C87510675167643e3DE6EEeD4D2c06A9e747",
+      true,
+      "jbc",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xb5E331615FdbA7DF49e05CdEACEb14Acdd5091c3",
+      "0xCc7FF230365bD730eE4B352cC2492CEdAC49383e",
+      "0xCfA3Ef56d303AE4fAabA0592388F19d7C3399FB4",
+      false,
+      "base",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {
@@ -90,17 +252,11 @@ export function pods(timestamp: number = 0) {
 }
 export function distressed(timestamp: number = 0) {
   console.log("starting distressed");
-  return Promise.all([
-    distressedAdapter("harmony", timestamp),
-    distressedAdapter("klaytn", timestamp),
-    distressedAdapter("arbitrum", timestamp),
-    distressedAdapter("bsc", timestamp),
-    distressedAdapter("ethereum", timestamp),
-    distressedAdapter("avax", timestamp),
-    distressedAdapter("cronos", timestamp),
-    // distressedAdapter("solana", timestamp),
-    distressedAdapter("fantom", timestamp),
-  ]);
+  return Promise.all(
+    Object.keys(contracts).map((chain: string) =>
+      distressedAdapter(chain, timestamp),
+    ),
+  );
 }
 export function manualInput(timestamp: number = 0) {
   console.log("starting manualInputs");
@@ -109,6 +265,8 @@ export function manualInput(timestamp: number = 0) {
     manualInputAdapter("arbitrum", timestamp),
     manualInputAdapter("polygon", timestamp),
     manualInputAdapter("kava", timestamp),
+    manualInputAdapter("polygon_zkevm", timestamp),
+    manualInputAdapter("ethereum", timestamp),
   ]);
 }
 export function realt(timestamp: number = 0) {
@@ -117,4 +275,86 @@ export function realt(timestamp: number = 0) {
     realtAdapter("ethereum", timestamp),
     realtAdapter("xdai", timestamp),
   ]);
+}
+export function collateralizedAssets(timestamp: number = 0) {
+  console.log("starting collateralized assets");
+  return collateralizedAdapter("arbitrum", timestamp, [
+    {
+      token: "0x52c64b8998eb7c80b6f526e99e29abdcc86b841b", // DSU
+      vault: "0x0d49c416103cbd276d9c3cd96710db264e3a0c27",
+      collateral: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+    },
+  ]);
+}
+export function sweth(timestamp: number = 0) {
+  console.log("starting sweth");
+  return swethAdapter(timestamp);
+}
+export function gmd(timestamp: number = 0) {
+  console.log("starting gmd");
+  return gmdAdapter(timestamp);
+}
+export function stkaurabal(timestamp: number = 0) {
+  console.log("starting stkaurabal");
+  return stkaurabalAdapter(timestamp);
+}
+
+export async function buck(timestamp: number = 0) {
+  console.log("starting buck");
+  const THIRY_MINUTES = 1800;
+  if (+timestamp !== 0 && timestamp < +new Date() / 1e3 - THIRY_MINUTES)
+    throw new Error("Can't fetch historical data");
+  const writes: Write[] = [];
+  const {
+    data: {
+      result: {
+        data: {
+          content: {
+            fields: { type_names, normalized_balances, coin_decimals },
+          },
+        },
+      },
+    },
+  } = await axios.post("https://fullnode.mainnet.sui.io", {
+    jsonrpc: "2.0",
+    id: 1,
+    method: "sui_getObject",
+    params: [
+      "0xeec6b5fb1ddbbe2eb1bdcd185a75a8e67f52a5295704dd73f3e447394775402b",
+      {
+        showContent: true,
+      },
+    ],
+  });
+  const usdt =
+    "5d4b302506645c37ff133b98c4b50a5ae14841659738d6d733d59d0d217a93bf::coin::COIN";
+  const buck =
+    "ce7ff77a83ea0cb6fd39bd8748e2ec89a3f41e8efdc3f4eb123e0ca37b184db2::buck::BUCK";
+  const usdtBal = normalized_balances[type_names.indexOf(usdt)];
+  const buckBal = normalized_balances[type_names.indexOf(buck)];
+  const buckDecimals = coin_decimals[type_names.indexOf(buck)];
+  const usdtDecimals = coin_decimals[type_names.indexOf(usdt)];
+  addToDBWritesList(
+    writes,
+    "sui",
+    "0x" + buck,
+    (usdtBal * 10 ** (buckDecimals - usdtDecimals)) / buckBal,
+    buckDecimals,
+    "BUCK",
+    timestamp,
+    "buck",
+    0.9,
+  );
+
+  return writes;
+}
+
+export async function mooBvm(timestamp: number = 0) {
+  console.log("starting moo bvm eth");
+  return mooBvmAdapter(timestamp);
+}
+
+export async function velgd(timestamp: number = 0) {
+  console.log("starting velgd");
+  return velgAdapter(timestamp);
 }

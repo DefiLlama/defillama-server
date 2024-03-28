@@ -4,7 +4,6 @@ import { getProvider } from "@defillama/sdk/build/general"
 import fetch from "node-fetch"
 import { getCurrentUnixTimestamp } from "./utils/date";
 import genesisBlockTimes from './genesisBlockTimes';
-import * as zk from "zksync-web3";
 
 interface TimestampBlock {
   height: number;
@@ -23,15 +22,7 @@ function cosmosBlockProvider(chain: "terra" | "kava") {
   };
 }
 
-function zkSyncBlockProvider(chain: "era" | "lite") {
-  if (chain == "era")
-    return {
-      getBlock: async (height: number | "latest") => {
-        const provider = new zk.Provider("https://mainnet.era.zksync.io");
-        const block = await provider.getBlock(height);
-        return { number: block.number, timestamp: block.timestamp };
-      },
-    };
+function zkSyncBlockProvider() {
   return {
     getBlock: async (height: number | "latest") =>
       fetch(
@@ -75,7 +66,7 @@ function getExtraProvider(chain: string | undefined) {
   if (chain === "terra" || chain === "kava") {
     return cosmosBlockProvider(chain)
   }
-  if (["era", "lite"].includes(chain)) return zkSyncBlockProvider(chain);
+  if (["lite"].includes(chain as any)) return zkSyncBlockProvider();
   return getProvider(chain as any);
 }
 
@@ -130,7 +121,7 @@ const handler = async (
     getClosestBlock(blockPK(chain), timestamp, "low")
   ])
   if (top === undefined) {
-    top = await getBlock(provider, "latest", chain);
+    top = await getBlock(provider as any, "latest", chain);
     const currentTimestamp = getCurrentUnixTimestamp()
     if ((top.timestamp - currentTimestamp) < -30 * 60) {
       throw new Error(`Last block of chain "${chain}" is further than 30 minutes into the past`)
@@ -148,7 +139,7 @@ const handler = async (
   let block = top;
   while ((high - low) > 1) {
     const mid = Math.floor((high + low) / 2);
-    block = await getBlock(provider, mid, chain);
+    block = await getBlock(provider as any, mid, chain);
     if (block.timestamp < timestamp) {
       low = mid + 1;
     } else {

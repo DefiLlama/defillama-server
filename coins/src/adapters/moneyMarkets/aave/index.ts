@@ -4,6 +4,12 @@ export function aave(timestamp: number = 0) {
   console.log("starting aave");
   return Promise.all([
     getTokenPrices(
+      "base",
+      "0x2f6571d3Eb9a4e350C68C36bCD2afe39530078E2",
+      "v3",
+      timestamp
+    ),
+    getTokenPrices(
       "optimism",
       "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
       "v3",
@@ -29,12 +35,44 @@ export function aave(timestamp: number = 0) {
       "v2",
       timestamp
     ),
+    //polygon V3
+    getTokenPrices(
+      "polygon",
+      "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
+      "v3",
+      timestamp
+    ),
     getTokenPrices(
       "avax",
       "0x4235E22d9C3f28DCDA82b58276cb6370B01265C2",
       "v2",
       timestamp
-    )
+    ),
+    //avax V3
+    getTokenPrices(
+      "avax",
+      "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
+      "v3",
+      timestamp
+    ),
+    getTokenPrices(
+      "scroll",
+      "0xFBedc64AeE24921cb43004312B9eF367a4162b57",
+      "v3",
+      timestamp
+    ),
+    getTokenPrices(
+      "metis",
+      "0x9E7B73ffD9D2026F3ff4212c29E209E09C8A91F5",
+      "v3",
+      timestamp
+    ),
+    getTokenPrices(
+      "bsc",
+      "0x117684358D990E42Eb1649E7e8C4691951dc1E71",
+      "v3",
+      timestamp
+    ),
   ]);
 }
 export function geist(timestamp: number = 0) {
@@ -54,6 +92,12 @@ export function radiant(timestamp: number = 0) {
     getTokenPrices(
       "arbitrum",
       "0x7BB843f889e3a0B307299c3B65e089bFfe9c0bE0",
+      "v2",
+      timestamp
+    ),
+    getTokenPrices(
+      "arbitrum",
+      "0x9D36DCe6c66E3c206526f5D7B3308fFF16c1aa5E",
       "v2",
       timestamp
     )

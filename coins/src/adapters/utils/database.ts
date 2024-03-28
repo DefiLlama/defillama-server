@@ -1,19 +1,27 @@
 require("dotenv").config();
-import axios from "axios";
+import axios, { all } from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { batchGet } from "../../utils/shared/dynamodb";
+import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
 import {
   Write,
   DbEntry,
-  Redirect,
   DbQuery,
   Read,
   CoinData,
+  Metadata,
 } from "./dbInterfaces";
-import { contracts } from "../other/distressedAssets";
-
+import { sendMessage } from "./../../../../defi/src/utils/discord";
+import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
+import pLimit from "p-limit";
+import { sliceIntoChunks } from "@defillama/sdk/build/util";
+import * as sdk from "@defillama/sdk";
+
+const rateLimited = pLimit(10);
+
+let cache: any = {};
+let lastCacheClear: number;
 
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -21,17 +29,65 @@ export async function getTokenAndRedirectData(
   timestamp: number,
   hoursRange: number = 12,
 ): Promise<CoinData[]> {
+  if (tokens.length == 0) return [];
   tokens = [...new Set(tokens)];
-  if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
-    return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
+
+  if (tokens.length > 100) {
+    const chunks: any = sliceIntoChunks(tokens, 99);
+    const allData = [];
+    for (const chunk of chunks) {
+      allData.push(
+        await getTokenAndRedirectData(chunk, chain, timestamp, hoursRange),
+      );
+    }
+    return allData.flat();
   }
-  return await getTokenAndRedirectDataDB(
-    tokens,
-    chain,
-    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
-    hoursRange,
-  );
+
+  if (getCurrentUnixTimestamp() - timestamp < 30 * 60) timestamp = 0; // if timestamp is less than 30 minutes ago, use current timestamp
+
+  const response: CoinData[] = [];
+  await rateLimited(async () => {
+    if (!lastCacheClear) lastCacheClear = getCurrentUnixTimestamp();
+    if (getCurrentUnixTimestamp() - lastCacheClear > 60 * 15) cache = {}; // clear cache every 15 minutes
+
+    const cacheKey = `${chain}-${hoursRange}`;
+    if (!cache[cacheKey]) cache[cacheKey] = {};
+    const alreadyInCache: any[] = [];
+    tokens.forEach((token: string) => {
+      if (cache[cacheKey][token]) {
+        alreadyInCache.push(token);
+        response.push(cache[cacheKey][token]);
+      }
+    });
+
+    tokens = tokens.filter((t: string) => !alreadyInCache.includes(t));
+    if (tokens.length == 0) return response;
+
+    let apiRes;
+    if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
+      apiRes = await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
+    } else {
+      apiRes = await getTokenAndRedirectDataDB(
+        tokens,
+        chain,
+        timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
+        hoursRange,
+      );
+    }
+
+    apiRes.map((r: any) => {
+      if (r.address == null) return;
+      if (!(cacheKey in cache)) cache[cacheKey] = {};
+      cache[cacheKey][r.address] = r;
+      return;
+    });
+
+    response.push(...apiRes);
+  });
+
+  return response;
 }
+
 export function addToDBWritesList(
   writes: Write[],
   chain: string,
@@ -66,11 +122,7 @@ export function addToDBWritesList(
           symbol,
           decimals: Number(decimals),
           redirect,
-          ...(price !== undefined
-            ? {
-                timestamp: getCurrentUnixTimestamp(),
-              }
-            : {}),
+          timestamp: getCurrentUnixTimestamp(),
           adapter,
           confidence: Number(confidence),
         },
@@ -194,6 +246,7 @@ async function getTokenAndRedirectDataDB(
 
         if (dbEntry == null && redirect == null)
           return { dbEntry: ld, redirect: ["FALSE"] };
+        if (dbEntry && ld.redirect) dbEntry.redirect = ld.redirect;
         if (redirect == null) return { dbEntry, redirect: [] };
         return { dbEntry: ld, redirect: [redirect] };
       })
@@ -203,24 +256,21 @@ async function getTokenAndRedirectDataDB(
   }
   return aggregateTokenAndRedirectData(allReads);
 }
-export function filterWritesWithLowConfidence(allWrites: Write[]) {
+export async function filterWritesWithLowConfidence(
+  allWrites: Write[],
+  latencyHours: number = 3,
+) {
+  const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
+
   allWrites = allWrites.filter((w: Write) => w != undefined);
+  const allReads = (
+    await batchGet(allWrites.map((w: Write) => ({ PK: w.PK, SK: 0 })))
+  ).filter((w: Write) => (w.timestamp ?? 0) > recentTime);
+
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
 
   if (allWrites.length == 0) return [];
-
-  const chain = allWrites[0].PK.substring(
-    allWrites[0].PK.indexOf("#") + 1,
-    allWrites[0].PK.indexOf(":"),
-  );
-
-  const distressedAssets =
-    chain in contracts
-      ? Object.values(contracts[chain]).map((d: string) =>
-          chain == "solana" ? d : d.toLowerCase(),
-        )
-      : [];
 
   allWrites.map((w: Write) => {
     let checkedWritesOfThisKind = checkedWrites.filter(
@@ -244,7 +294,14 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
           (x.SK == 0 && w.SK == 0)),
     );
 
+    let allReadsOfThisKind = allReads.filter((x: any) => x.PK == w.PK);
+
     if (allWritesOfThisKind.length == 1) {
+      if (
+        allReadsOfThisKind.length == 1 &&
+        allWritesOfThisKind[0].confidence < allReadsOfThisKind[0].confidence
+      )
+        return;
       if (
         "confidence" in allWritesOfThisKind[0] &&
         allWritesOfThisKind[0].confidence > confidenceThreshold
@@ -255,7 +312,9 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     } else {
       const maxConfidence = Math.max.apply(
         null,
-        allWritesOfThisKind.map((x: Write) => x.confidence),
+        [...allWritesOfThisKind, ...allReadsOfThisKind].map(
+          (x: Write) => x.confidence,
+        ),
       );
       filteredWrites.push(
         allWritesOfThisKind.filter(
@@ -266,11 +325,7 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     }
   });
 
-  return filteredWrites.filter(
-    (f: Write) =>
-      f != undefined &&
-      !distressedAssets.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
-  );
+  return filteredWrites.filter((f: Write) => f != undefined);
 }
 function aggregateTokenAndRedirectData(reads: Read[]) {
   const coinData: CoinData[] = reads
@@ -303,13 +358,112 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
         price,
         timestamp: r.dbEntry.SK == 0 ? getCurrentUnixTimestamp() : r.dbEntry.SK,
         redirect:
-          r.redirect.length == 0 || r.redirect[0].PK == r.dbEntry.PK
-            ? undefined
-            : r.redirect[0].PK,
+          r.dbEntry.redirect ??
+          (r.redirect.length ? r.redirect[0].PK : undefined),
         confidence,
       };
     })
     .filter((d: CoinData) => d.price != -1);
 
   return coinData;
+}
+export async function batchWriteWithAlerts(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  failOnError: boolean,
+): Promise<void> {
+  const previousItems: DbEntry[] = await readPreviousValues(items);
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+    await checkMovement(items, previousItems);
+  await batchWrite(filteredItems, failOnError);
+}
+export async function batchWrite2WithAlerts(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+) {
+  const previousItems: DbEntry[] = await readPreviousValues(items);
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+    await checkMovement(items, previousItems);
+
+  await batchWrite2(
+    await translateItems(filteredItems),
+    undefined,
+    undefined,
+    "DB 390",
+  );
+}
+async function readPreviousValues(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  latencyHours: number = 6,
+): Promise<DbEntry[]> {
+  let queries: { PK: string; SK: number }[] = [];
+  items.map(
+    (t: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap, i: number) => {
+      if (i % 2) return;
+      queries.push({
+        PK: t.PK,
+        SK: 0,
+      });
+    },
+  );
+  const results = await batchGet(queries);
+  const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
+  return results.filter(
+    (r: any) => r.timestamp > recentTime || r.confidence > 1,
+  );
+}
+async function checkMovement(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  previousItems: DbEntry[],
+  margin: number = 0.5,
+): Promise<AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]> {
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+    [];
+  const obj: { [PK: string]: any } = {};
+  let errors: string = "";
+  previousItems.map((i: any) => (obj[i.PK] = i));
+
+  items.map((d: any, i: number) => {
+    if (i % 2 != 0) return;
+    const previousItem = obj[d.PK];
+    if (previousItem) {
+      const percentageChange: number =
+        (d.price - previousItem.price) / previousItem.price;
+
+      if (percentageChange > margin) {
+        errors += `${d.adapter} \t ${d.PK.substring(
+          d.PK.indexOf("#") + 1,
+        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${
+          previousItem.price
+        } to $${d.price}\n`;
+        return;
+      }
+    }
+    filteredItems.push(...[items[i], items[i + 1]]);
+  });
+
+  // if (errors != "" && !process.env.LLAMA_RUN_LOCAL)
+  // await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
+
+  return filteredItems.filter((v: any) => v != null);
+}
+export async function getDbMetadata(
+  assets: string[],
+  chain: string,
+): Promise<Metadata> {
+  const res: DbEntry[] = await batchGet(
+    assets.map((a: string) => ({
+      PK:
+        chain == "coingecko"
+          ? `coingecko#${a.toLowerCase()}`
+          : `asset#${chain}:${chain == "solana" ? a : a.toLowerCase()}`,
+      SK: 0,
+    })),
+  );
+  const metadata: Metadata = {};
+  res.map((r: DbEntry) => {
+    metadata[r.PK.substring(r.PK.indexOf(":") + 1)] = {
+      decimals: r.decimals,
+      symbol: r.symbol,
+    };
+  });
+  return metadata;
 }

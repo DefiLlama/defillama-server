@@ -1344,8 +1344,36 @@ export default {
             chain: "Ethereum",
             types: ["L2", "gas"]
         },
-        chainid: 324,
+        chainId: 324,
     },
+    "Base": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: [
+            "EVM"
+        ],
+        chainId: 8453
+    },
+    "Op_Bnb": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: ["EVM"],
+        chainId: 204,
+    },
+    "Manta": {
+        geckoId: "manta-network",
+        symbol: "MANTA",
+        cmcId: "13631",
+        categories: ["EVM", "Rollup"],
+        parent: {
+          chain: "Ethereum",
+          types: ["L2", "gas"]
+        },
+        github: ['manta-network'],
+        chainId: 169, //being used as id for volume/fees
+    }
 } as unknown as {
     [chain: string]: {
         geckoId: string | null,

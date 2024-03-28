@@ -10,7 +10,7 @@ const timeStep = 43200; // 12 HOURS
 // const end = 1670932800;
 const end = Math.floor(+new Date()/1e3);
 const fillRecentFirst = true;
-const adapterTorefill = "stargate"; // FROM adapters list at ./adapters/index.ts
+const adapterTorefill = "backed"; // FROM adapters list at ./adapters/index.ts
 
 function createTimestampArray() {
   const timestampArray = [];
@@ -28,7 +28,7 @@ async function handler(indexes: number[], timestamp: number) {
     indexes.map(async (i: any) => {
       try {
         const results: any[] = await a[i][1][a[i][0]](timestamp);
-        const resultsWithoutDuplicates = filterWritesWithLowConfidence(
+        const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat()
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += batchStep) {

@@ -7,7 +7,9 @@ import { importAdapter } from "../utils/imports/importAdapter";
 const maxDrift = (60 + 20) * 60;
 const maxOutdated = 5;
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+let _getLastHourlyRecord = (protocol: any) => getLastRecord(hourlyTvl(protocol.id))
+
+export async function getOutdated(getLastHourlyRecord = _getLastHourlyRecord) {
     const now = getCurrentUnixTimestamp();
     const outdated = [] as [string, number, boolean][];
     const outdatedByLength = {} as {[lengthOutdated:number]:number}
@@ -16,7 +18,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     }
 
     await Promise.all(protocols.map(async protocol => {
-        const item = await getLastRecord(hourlyTvl(protocol.id));
+        const item = await getLastHourlyRecord(protocol);
         if (item !== undefined && item.SK < (now - maxDrift)) {
             const module = importAdapter(protocol)
             const refillable = !(module.fetch || module.timetravel === false)
@@ -27,14 +29,18 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     }))
     const totalProtocols = protocols.length;
     const percentOutdated = (outdated.length/totalProtocols)*100
-    return successResponse({
+    return {
         outdated,
         totalProtocols,
         percentOutdated,
         outdatedByLength,
         outdatedByLengthArray: Object.entries(outdatedByLength),
         outdatedByLengthPercent: Object.fromEntries(Object.entries(outdatedByLength).map(([l, o])=>[l, o/totalProtocols]))
-    }, 10 * 60); // 10 mins cache
+    }
+}
+
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+    return successResponse(await getOutdated()); // 10 mins cache
 };
 
 export default wrap(handler);

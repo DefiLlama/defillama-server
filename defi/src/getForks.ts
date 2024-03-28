@@ -59,7 +59,7 @@ function sum(
   forkedProtocols[fork].add(protocol.name);
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+export async function getForksInternal({ ...options }: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
   const forkedProtocols = {} as ForkedProtocols;
 
@@ -78,15 +78,17 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
         console.log(protocol.name, error);
       }
     },
-    { includeBridge: false }
+    { includeBridge: false, ...options }
   );
 
-  return cache20MinResponse(
-    {
-      chart: sumDailyTvls,
-      forks: Object.fromEntries(Object.entries(forkedProtocols).map((c) => [c[0], Array.from(c[1])])),
-    }
-  );
+  return {
+    chart: sumDailyTvls,
+    forks: Object.fromEntries(Object.entries(forkedProtocols).map((c) => [c[0], Array.from(c[1])])),
+  }
+}
+
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  return cache20MinResponse(await getForksInternal());
 };
 
 export default wrap(handler);

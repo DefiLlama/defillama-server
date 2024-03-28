@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { deleteProtocolCache } from '../../utils/r2'
+import { deleteFromPGCache, getDailyTvlCacheId,  initializeTVLCacheDB } from '../../api2/db'
 
 export async function clearProtocolCache(protocolName: string) {
-  const { data: { protocols } } = await axios.get('https://defillama-datasets.llama.fi/lite/protocols2')
+  const { data: { protocols } } = await axios.get('https://api.llama.fi/lite/protocols2')
   protocolName = protocolName.toLowerCase().trim()
   const protocolId = protocols.find((p: any) => p.name.toLowerCase() === protocolName.toLowerCase())?.defillamaId
   if (protocolId === undefined) {
@@ -13,6 +14,13 @@ export async function clearProtocolCache(protocolName: string) {
 }
 
 export async function clearProtocolCacheById(protocolId: string) {
-  await deleteProtocolCache(protocolId)
+  // await initializeTVLCacheDB()
+  // await deleteProtocolCache(protocolId)
+  const { API2_SERVER_URL } = process.env
+  if (!API2_SERVER_URL) throw new Error('Missing required env var: API2_SERVER_URL')
+  const pgCaceId = getDailyTvlCacheId(protocolId)
+  await axios.delete(`${API2_SERVER_URL}/debug-pg/${pgCaceId}`)
+  // await deleteFromPGCache(pgCaceId) // clear postgres cache as well
+  // add command do it via discord bot
   return console.log("Protocol cache deleted id: ", protocolId)
 }

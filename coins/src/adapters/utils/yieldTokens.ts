@@ -15,9 +15,9 @@ export default async function getYieldWrites({ chain, timestamp, tokens, priceAb
   const writes: Write[] = [];
   const api = await getApi(chain, timestamp)
 
-  const prices = await api.multiCall({ abi: priceAbi, calls: tokens, })
-  const underlyingTokens = await api.multiCall({ abi: underlyingAbi, calls: tokens, } as any)
-  const decimals = await api.multiCall({ abi: 'uint8:decimals', calls: underlyingTokens, } as any)
+  const prices = await api.multiCall({ abi: priceAbi, calls: tokens,  permitFailure: true })
+  const underlyingTokens = await api.multiCall({ abi: underlyingAbi, calls: tokens,  permitFailure: true  } as any)
+  const decimals = await api.multiCall({ abi: 'uint8:decimals', calls: underlyingTokens,  permitFailure: true  } as any)
 
   const pricesObject: any = {}
   tokens.forEach((vault: any, i: any) => { 

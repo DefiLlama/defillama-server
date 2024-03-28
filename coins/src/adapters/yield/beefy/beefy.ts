@@ -57,10 +57,19 @@ export const config = {
       '0xa0FdCDDA62C4C6a0109A702a7Efe59B4E8807e3f', // mooMvxMVLP
     ],
   },
+  polygon_zkevm: {
+    wantVaults: [
+      '0x4Ebbf072288856dD7EBaE9CdEDd4f2Fd049523F7' // Yama QLP
+    ]
+  },
   arbitrum: {
     wantVaults: [
       '0x9dbbBaecACEDf53d5Caa295b8293c1def2055Adc', // mooGmxGLP
+      '0x5b904f19fb9ccf493b623e5c8ce91603665788b0', // mooGmxGMX
       '0x9e75f8298e458b76382870982788988a0799195b', // mooCurveWSTETH
+      '0xa64A8CAAd2c412baCf215A351FA60cDC2a08C0E8', // Yama PlvGLP
+      '0xAACB2FD100981d15cFdEc2BB54B06C5E6f1AdB35', // Yama snrLLP
+      '0xE48551b7a15e074810372B411e0526cdE45d4c02' // Yama staked JGLP
     ],
   },
   ethereum: {

@@ -1,5 +1,7 @@
 import { wrap, IResponse, cache20MinResponse } from "./utils/shared";
-import protocols, { Protocol, treasuries } from "./protocols/data";
+import protocols, { Protocol } from "./protocols/data";
+import treasuries from "./protocols/treasury";
+import entities from "./protocols/entities";
 import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import {
@@ -12,6 +14,7 @@ import {
 } from "./utils/normalizeChain";
 import { craftChainsResponse } from "./getChains";
 import type { IProtocol, IChain, ITvlsByChain } from "./types";
+import fetch from "node-fetch";
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -44,7 +47,8 @@ const majors = [
   "icETH",
   "BTCB",
   "BETH",
-];
+  "mETH"
+].map((t) => t.toUpperCase());
 const stablecoins = [
   "USDT",
   "USDC",
@@ -74,7 +78,22 @@ const stablecoins = [
   "BSC-USD",
   "USD+",
   "sUSD",
-];
+  "DOLA",
+  "aUSDT",
+  "amUSDC",
+  "amDAI",
+  "avUSDC",
+  "aUSDC",
+  "avDAI",
+  "aAvaUSDC",
+  "amUSDT",
+  "aAvaUSDT",
+  "aAvaDAI",
+  "avUSDT",
+  "aOptUSDC",
+  "sUSDe",
+  "USDY"
+].map((t) => t.toUpperCase());
 
 function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownTokens: { [token: string]: number } }) {
   const breakdown = {
@@ -93,7 +112,7 @@ function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownT
   for (const token in lastRecord.tvl) {
     if (majors.includes(token)) {
       breakdown.majors = breakdown.majors + lastRecord.tvl[token];
-    } else if (stablecoins.includes(token)) {
+    } else if (stablecoins.some((stable) => token.includes(stable))) {
       breakdown.stablecoins = breakdown.stablecoins + lastRecord.tvl[token];
     } else {
       breakdown.others = breakdown.others + lastRecord.tvl[token];
@@ -103,29 +122,41 @@ function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownT
   return breakdown;
 }
 
-async function craftProtocolsResponseInternal(
+const apiV1Functions = {
+  getCoinMarkets: async (protocols: Protocol[]) =>
+    fetch("https://coins.llama.fi/mcaps", {
+      method: "POST",
+      body: JSON.stringify({
+        coins: protocols
+          .filter((protocol) => typeof protocol.gecko_id === "string")
+          .map((protocol) => `coingecko:${protocol.gecko_id}`),
+      }),
+    }).then((r) => r.json()),
+  getLastHourlyRecord: async (protocol: Protocol) => getLastRecord(hourlyTvl(protocol.id)),
+  getLastHourlyTokensUsd: async (protocol: Protocol) => getLastRecord(hourlyUsdTokensTvl(protocol.id)),
+};
+
+export async function craftProtocolsResponseInternal(
   useNewChainNames: boolean,
   protocolList: Protocol[],
-  includeTokenBreakdowns?: boolean
+  includeTokenBreakdowns?: boolean,
+  {
+    getCoinMarkets = apiV1Functions.getCoinMarkets,
+    getLastHourlyRecord = apiV1Functions.getLastHourlyRecord,
+    getLastHourlyTokensUsd = apiV1Functions.getLastHourlyTokensUsd,
+  } = {}
 ) {
-  const coinMarkets = fetch("https://coins.llama.fi/mcaps", {
-    method: "POST",
-    body: JSON.stringify({
-      coins: protocolList
-        .filter((protocol) => typeof protocol.gecko_id === "string")
-        .map((protocol) => `coingecko:${protocol.gecko_id}`),
-    }),
-  }).then((r) => r.json());
+  const coinMarkets = await getCoinMarkets(protocolList);
 
   const response = (
     await Promise.all(
       protocolList.map(async (protocol) => {
-        const [lastHourlyRecord, lastHourlyTokensUsd] = await Promise.all([
-          getLastRecord(hourlyTvl(protocol.id)),
-          includeTokenBreakdowns ? getLastRecord(hourlyUsdTokensTvl(protocol.id)) : {},
+        let [lastHourlyRecord, lastHourlyTokensUsd] = await Promise.all([
+          getLastHourlyRecord(protocol),
+          includeTokenBreakdowns ? getLastHourlyTokensUsd(protocol) : {},
         ]);
 
-        if (!lastHourlyRecord) {
+        if (!lastHourlyRecord && protocol.module !== "dummy.js") {
           return null;
         }
 
@@ -133,55 +164,51 @@ async function craftProtocolsResponseInternal(
         delete returnedProtocol.module;
 
         const chainTvls: ITvlsByChain = {};
-
         const chains: string[] = [];
-        Object.entries(lastHourlyRecord).forEach(([chain, chainTvl]) => {
-          if (nonChains.includes(chain)) {
-            return;
-          }
-          const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
-          chainTvls[chainDisplayName] = chainTvl;
-          addToChains(chains, chainDisplayName);
-        });
-        if (chains.length === 0) {
-          const chain = useNewChainNames ? transformNewChainName(protocol.chain) : protocol.chain;
-          if (chainTvls[chain] === undefined) {
-            chainTvls[chain] = lastHourlyRecord.tvl;
-          }
-          extraSections.forEach((section) => {
-            const chainSectionName = `${chain}-${section}`;
-            if (chainTvls[section] !== undefined && chainTvls[chainSectionName] === undefined) {
-              chainTvls[chainSectionName] = chainTvls[section];
+
+        if (protocol.module !== "dummy.js" && lastHourlyRecord) {
+          Object.entries(lastHourlyRecord).forEach(([chain, chainTvl]) => {
+            if (nonChains.includes(chain)) {
+              return;
             }
+            const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
+            chainTvls[chainDisplayName] = chainTvl;
+            addToChains(chains, chainDisplayName);
           });
-          chains.push(getChainDisplayName(chain, useNewChainNames));
+          if (chains.length === 0) {
+            const chain = useNewChainNames ? transformNewChainName(protocol.chain) : protocol.chain;
+            if (chainTvls[chain] === undefined) {
+              chainTvls[chain] = lastHourlyRecord.tvl;
+            }
+            extraSections.forEach((section) => {
+              const chainSectionName = `${chain}-${section}`;
+              if (chainTvls[section] !== undefined && chainTvls[chainSectionName] === undefined) {
+                chainTvls[chainSectionName] = chainTvls[section];
+              }
+            });
+            chains.push(getChainDisplayName(chain, useNewChainNames));
+          }
         }
 
-        const dataToReturn: IProtocol = {
+        const dataToReturn: Omit<IProtocol, "raises"> = {
           ...protocol,
           slug: sluggify(protocol),
-          tvl: lastHourlyRecord.tvl,
+          tvl: lastHourlyRecord?.tvl ?? null,
           chainTvls,
           chains: chains.sort((a, b) => chainTvls[b] - chainTvls[a]),
           chain: getDisplayChain(chains),
-          change_1h: getPercentChange(lastHourlyRecord.tvlPrev1Hour, lastHourlyRecord.tvl),
-          change_1d: getPercentChange(lastHourlyRecord.tvlPrev1Day, lastHourlyRecord.tvl),
-          change_7d: getPercentChange(lastHourlyRecord.tvlPrev1Week, lastHourlyRecord.tvl),
-          tokenBreakdowns: includeTokenBreakdowns ? getTokenBreakdowns(lastHourlyTokensUsd) : {},
+          change_1h: lastHourlyRecord ? getPercentChange(lastHourlyRecord.tvlPrev1Hour, lastHourlyRecord.tvl) : null,
+          change_1d: lastHourlyRecord ? getPercentChange(lastHourlyRecord.tvlPrev1Day, lastHourlyRecord.tvl) : null,
+          change_7d: lastHourlyRecord ? getPercentChange(lastHourlyRecord.tvlPrev1Week, lastHourlyRecord.tvl) : null,
+          tokenBreakdowns: includeTokenBreakdowns && lastHourlyTokensUsd ? getTokenBreakdowns(lastHourlyTokensUsd as any) : {},
+          mcap: protocol.gecko_id ? coinMarkets?.[`coingecko:${protocol.gecko_id}`]?.mcap ?? null : null,
         };
 
         const extraData: ["staking", "pool2"] = ["staking", "pool2"];
 
         for (let type of extraData) {
-          if (lastHourlyRecord[type] !== undefined) {
+          if (lastHourlyRecord?.[type] !== undefined) {
             dataToReturn[type] = lastHourlyRecord[type];
-          }
-        }
-
-        if (typeof protocol.gecko_id === "string") {
-          const coingeckoData = (await coinMarkets)[`coingecko:${protocol.gecko_id}`];
-          if (coingeckoData !== undefined) {
-            dataToReturn.mcap = coingeckoData.mcap;
           }
         }
 
@@ -190,13 +217,17 @@ async function craftProtocolsResponseInternal(
     )
   )
     .filter((protocol) => protocol !== null)
-    .sort((a, b) => b!.tvl - a!.tvl) as IProtocol[];
+    .sort((a, b) => (b?.tvl ?? 0) - (a?.tvl ?? 0)) as IProtocol[];
 
   return response;
 }
 
-export async function craftProtocolsResponse(useNewChainNames: boolean) {
-  return craftProtocolsResponseInternal(useNewChainNames, protocols);
+export async function craftProtocolsResponse(
+  useNewChainNames: boolean,
+  includeTokenBreakdowns?: boolean,
+  options?: any
+) {
+  return craftProtocolsResponseInternal(useNewChainNames, protocols, includeTokenBreakdowns, options);
 }
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
@@ -212,5 +243,11 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
 export const treasuriesHandler = async (): Promise<IResponse> => {
   return cache20MinResponse(await craftProtocolsResponseInternal(true, treasuries, true));
 };
+
+export const entitiesHandler = async (): Promise<IResponse> => {
+  return cache20MinResponse(await craftProtocolsResponseInternal(true, entities, true));
+};
+
+// handler({ pathParameters: {} } as any).then(console.log);
 
 export default wrap(handler);

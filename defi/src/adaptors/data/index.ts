@@ -1,102 +1,120 @@
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import { AdaptorData, IJSON, ProtocolAdaptor } from "./types";
-import { KEYS_TO_STORE as dexs_KEYS_TO_STORE, config as dexs_config, dexs_imports } from "./dexs"
-import { KEYS_TO_STORE as derivatives_KEYS_TO_STORE, config as derivatives_config, dex_imports as derivatives_imports } from "./derivatives"
-import { KEYS_TO_STORE as fees_KEYS_TO_STORE, config as fees_config, rules as fees_DimensionRules, fees_imports } from "./fees"
-import { KEYS_TO_STORE as aggregators_KEYS_TO_STORE, config as aggregators_config, aggregators_imports } from "./aggregators"
-import { KEYS_TO_STORE as options_KEYS_TO_STORE, config as options_config, options_imports } from "./options"
-import { KEYS_TO_STORE as incentives_KEYS_TO_STORE, config as incentives_config, incentives_imports } from "./incentives"
-import { KEYS_TO_STORE as protocols_KEYS_TO_STORE, config as protocols_config, protocols_imports } from "./protocols"
-import { KEYS_TO_STORE as royalties_KEYS_TO_STORE, config as royalties_config, royalties_imports } from "./royalties"
-import generateProtocolAdaptorsList, { IImportsMap } from "./helpers/generateProtocolAdaptorsList"
+import * as dexData from "./dexs"
+import * as derivativesData from "./derivatives"
+import * as feesData from "./fees"
+import * as aggregatorsData from "./aggregators"
+import * as optionsData from "./options"
+import * as incentivesData from "./incentives"
+import * as protocolsData from "./protocols"
+import * as royaltiesData from "./royalties"
+import * as aggregatorDerivativesData from "./aggregator-derivatives";
+import generateProtocolAdaptorsList, { IImportsMap, generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
+import { ADAPTER_TYPES } from "../handlers/triggerStoreAdaptorData";
 
-// With dynamic imports loads less stuff into memory but becomes slower
-// w/ dynamic imports 1 dex -> 19sec
-// without 1 dex -> 1.6s (all dexs =200 aprox 4s)
-
-const importsMap = {
-    dexs_imports,
-    derivatives_imports,
-    royalties_imports,
-    fees_imports,
-    aggregators_imports,
-    options_imports,
-    incentives_imports,
-    protocols_imports,
-} as IJSON<typeof dexs_imports>
-
-const all = {
-    // list: {},
-    imports: {}
-} as {
-    // list: IJSON<IJSON<ProtocolAdaptor>>,
-    imports: IJSON<IImportsMap>
+const mapping = {
+  [AdapterType.DEXS]: dexData,
+  [AdapterType.DERIVATIVES]: derivativesData,
+  [AdapterType.FEES]: feesData,
+  [AdapterType.AGGREGATORS]: aggregatorsData,
+  [AdapterType.OPTIONS]: optionsData,
+  [AdapterType.INCENTIVES]: incentivesData,
+  [AdapterType.PROTOCOLS]: protocolsData,
+  [AdapterType.ROYALTIES]: royaltiesData,
+  [AdapterType.AGGREGATOR_DERIVATIVES]: aggregatorDerivativesData
 }
 
-export const importModule = (adaptorType: AdapterType) => (mod: string) => all.imports[adaptorType][mod].module
+export const importModule = (adaptorType: AdapterType) => (mod: string) => import(all.imports[adaptorType][mod].moduleFilePath)
 
-export default async (adaptorType: AdapterType): Promise<AdaptorData> => {
-    // Adapters can have all dimensions in one adapter or multiple adapters for different dimensions
-    // Thats why we create an object with all adapters using the spread operator which only references the objects (they load all of them into memory anyways)
-    if (!all.imports[adaptorType])
-        all.imports[adaptorType] = {
-            ...Object.entries(importsMap).filter(([key]) => ![`${adaptorType}_imports`, 'protocols_imports'].includes(key)).reduce((acc, [, list]) => ({ ...acc, ...list }), {}),
-            ...importsMap.protocols_imports,
-            ...importsMap[`${adaptorType}_imports`],
-        }
+const all = { imports: {} } as { imports: IJSON<IImportsMap> }
 
-    if (adaptorType === AdapterType.DEXS) return {
-        default: await generateProtocolAdaptorsList(all.imports[adaptorType], dexs_config, adaptorType),
-        KEYS_TO_STORE: dexs_KEYS_TO_STORE,
-        importModule: importModule(adaptorType),
-        config: dexs_config
-    }
-    if (adaptorType === AdapterType.FEES) return {
-        default: await generateProtocolAdaptorsList(all.imports[adaptorType], fees_config, adaptorType),
-        KEYS_TO_STORE: fees_KEYS_TO_STORE,
-        importModule: importModule(adaptorType),
-        config: fees_config,
-        dimensionRules: fees_DimensionRules
-    }
-    if (adaptorType === AdapterType.AGGREGATORS) return {
-        default: await generateProtocolAdaptorsList(all.imports[adaptorType], aggregators_config, adaptorType),
-        KEYS_TO_STORE: aggregators_KEYS_TO_STORE,
-        importModule: importModule(adaptorType),
-        config: aggregators_config
-    }
-    if (adaptorType === AdapterType.OPTIONS) return {
-        default: await generateProtocolAdaptorsList(all.imports[adaptorType], options_config, adaptorType),
-        KEYS_TO_STORE: options_KEYS_TO_STORE,
-        importModule: importModule(adaptorType),
-        config: options_config
-    }
-    if (adaptorType === AdapterType.INCENTIVES) return {
-        default: await generateProtocolAdaptorsList(all.imports[adaptorType], incentives_config, adaptorType),
-        KEYS_TO_STORE: incentives_KEYS_TO_STORE,
-        importModule: importModule(adaptorType),
-        config: incentives_config
-    }
-    if (adaptorType === AdapterType.PROTOCOLS) return {
-        default: await generateProtocolAdaptorsList(all.imports[adaptorType], protocols_config, adaptorType),
-        KEYS_TO_STORE: protocols_KEYS_TO_STORE,
-        importModule: importModule(adaptorType),
-        config: protocols_config
-    }
-    if (adaptorType === AdapterType.DERIVATIVES) return {
-        default: await generateProtocolAdaptorsList(all.imports[adaptorType], derivatives_config, adaptorType),
-        KEYS_TO_STORE: derivatives_KEYS_TO_STORE,
-        importModule: importModule(adaptorType),
-        config: derivatives_config
-    }
-    if (adaptorType === AdapterType.ROYALTIES) return {
-        default: await generateProtocolAdaptorsList(all.imports[adaptorType], royalties_config, adaptorType),
-        KEYS_TO_STORE: royalties_KEYS_TO_STORE,
-        importModule: importModule(adaptorType),
-        config: royalties_config
-    }
-    else throw new Error(`Couldn't find data for ${adaptorType} type`)
+const exportCache = {} as IJSON<AdaptorData>
+
+export default (adaptorType: AdapterType): AdaptorData => {
+  if (!exportCache[adaptorType]) exportCache[adaptorType] = _getAdapterData(adaptorType)
+  return exportCache[adaptorType]
 }
 
-export const DimensionRules = (adaptorType: AdapterType): AdaptorData['dimensionRules'] => {
-    if (adaptorType === AdapterType.FEES) return fees_DimensionRules
+const protocolImports = protocolsData.imports
+
+function getOtherAdaperTypeId2s(adapterType: AdapterType): Set<string> {
+  const otherAdapterIds = new Set<string>()
+
+  ADAPTER_TYPES.forEach((type) => {
+    if (type === adapterType) return;
+    if (!mapping[type]) return;
+    const imports = getImports(type)
+    const config = mapping[type].config
+    Object.entries(imports).forEach(([adapterKey, adapterObj]) => {
+      if (!config[adapterKey]?.enabled) return;
+      const isChain = adapterObj.module.default?.protocolType === ProtocolType.CHAIN
+      const id = isChain ? 'chain#' + config[adapterKey].id : config[adapterKey].id
+      otherAdapterIds.add(id)
+      Object.values(config[adapterKey].protocolsData ?? {}).forEach(config => {
+        if (config.enabled) otherAdapterIds.add(config.id)
+      })
+    })
+  })
+
+  return otherAdapterIds
+}
+
+const allImportsSqaushed = Object.values(mapping).reduce((acc, curr) => {
+  return { ...acc, ...curr.imports }
+}, {})
+
+function getImports(adapterType: AdapterType) {
+  if (!all.imports[adapterType])
+    all.imports[adapterType] = {
+      ...allImportsSqaushed,
+      ...protocolImports,
+      ...mapping[adapterType].imports,
+    }
+  return all.imports[adapterType]
+}
+
+const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
+
+  // Adapters can have all dimensions in one adapter or multiple adapters for different dimensions
+  // Thats why we create an object with all adapters using the spread operator which only references the objects (they load all of them into memory anyways)
+  if (!mapping[adapterType]) throw new Error(`Couldn't find data for ${adapterType} type`)
+  const { config, KEYS_TO_STORE, imports } = mapping[adapterType]
+  const isProtocolTypeDexsOrFees = [AdapterType.DEXS, AdapterType.FEES].includes(adapterType);
+  const protocolConfig = isProtocolTypeDexsOrFees ? mapping[AdapterType.PROTOCOLS].config : {};
+  const allImportsByAdaptertype = getImports(adapterType)
+  const allImportsTypeProtocols = isProtocolTypeDexsOrFees ? getImports(AdapterType.PROTOCOLS) : {}
+  const allImports = Object.entries(allImportsTypeProtocols).reduce((acc, [key, value]) => {
+    if (!acc.hasOwnProperty(key)) {
+        acc[key] = value;
+    }
+    return acc;
+  }, {...allImportsByAdaptertype});
+  const allConfig = Object.entries(protocolConfig).reduce((acc, [key, value]) => {
+    if (!acc.hasOwnProperty(key)) {
+        acc[key] = value;
+    }
+    return acc;
+  }, {...config});
+  const otherATId2s = getOtherAdaperTypeId2s(adapterType)
+  const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, otherATId2s })
+  const childProtocolAdaptors = protocolAdaptors.flatMap((protocolAdaptor: ProtocolAdaptor) => protocolAdaptor.childProtocols || [])
+  const protocolMap = protocolAdaptors.reduce((acc, curr) => {
+    acc[curr.id2] = curr
+    return acc
+  }, {} as IJSON<ProtocolAdaptor>)
+
+  return {
+    default: generateProtocolAdaptorsList(allImports, allConfig, adapterType),
+    KEYS_TO_STORE,
+    importModule: importModule(adapterType),
+    config: allConfig,
+    rules: getRules(adapterType),
+    protocolAdaptors,
+    childProtocolAdaptors,
+    protocolMap,
+  }
+}
+
+export const getRules = (adapterType: AdapterType): AdaptorData['rules'] => {
+  return (mapping[adapterType] as any).rules
 }

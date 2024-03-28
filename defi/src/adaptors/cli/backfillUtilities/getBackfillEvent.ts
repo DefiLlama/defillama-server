@@ -30,6 +30,7 @@ const KEYS_TO_CHECK: TKeysToCheck = {
     [AdapterType.OPTIONS]: 'dv',
     [AdapterType.PROTOCOLS]: 'dv',
     [AdapterType.ROYALTIES]: 'dv',
+    [AdapterType.AGGREGATOR_DERIVATIVES]: 'dv',
 }
 
 export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {
@@ -38,7 +39,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
 
     // load all adapters data
     const adapterName = adapter
-    const adaptorsData = await loadAdaptorsData(adaptorType)
+    const adaptorsData = loadAdaptorsData(adaptorType)
 
     // build event with all adapters with missing data for specified timestamp
     if (adapterName[0] === 'all') {
@@ -49,7 +50,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         console.info(`Checking missing ${type} at ${formatTimestampAsDate(timestamp)}`)
         const adapters2Backfill: string[] = []
         // Go through all adapters checking if data for today is available
-        for (const adapter of adaptorsData.default) {
+        for (const adapter of adaptorsData.default.filter(adapter => adapter.enabled).filter(ad => ad?.disabled !== true)) {
             // Query timestamp data from dynamo
             const volume = await getAdaptorRecord(adapter.id, type as AdaptorRecordType, adapter.protocolType, "TIMESTAMP", timestamp).catch(_e => { })
             // if data is missing add 2 backfill
@@ -66,7 +67,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
                     // or is missing a specific chain data
                     || Object.keys(cleanRecord.data).length < adapter.chains.length
                     // or one of the chains report 0 value
-                    || Object.entries(cleanRecord.data).some(([chainKey, chainRecord]) => sumAllVolumes({ [chainKey]: chainRecord }) === 0)
+                    // || Object.entries(cleanRecord.data).some(([chainKey, chainRecord]) => sumAllVolumes({ [chainKey]: chainRecord }) === 0)
                 )
                     // then 2 backfill
                     adapters2Backfill.push(adapter.module)
@@ -90,7 +91,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             type: adaptorType,
             backfill: [{
                 dexNames: adapterName,
-                timestamp: cliArguments.timestamp + ONE_DAY_IN_SECONDS,
+                timestamp: cliArguments.timestamp,
                 chain: cliArguments.chain as Chain,
                 adaptorRecordTypes: cliArguments.recordTypes,
                 protocolVersion: cliArguments.version,
@@ -105,21 +106,21 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         const nowSTimestamp = Math.trunc((Date.now()) / 1000)
         const adapterData = adaptorsData.default.find(adapter => adapter.module === (adapterName[0]))
         if (adapterData) {
-            const dexAdapter: Adapter = adaptorsData.importModule(adapterData.module).default
+            const dexAdapter: Adapter = (await adaptorsData.importModule(adapterData.module)).default
             if ("adapter" in dexAdapter) {
                 const st = await Object.values(dexAdapter.adapter)
                     .reduce(async (accP, { start, runAtCurrTime }) => {
-                        const acc = await accP
-                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : +(await start().catch(() => nowSTimestamp))
-                        return (currstart && currstart < acc && currstart !== 0) ? currstart : acc
-                    }, Promise.resolve(nowSTimestamp + 1))
-                startTimestamp = st
+                        const acc = await accP;
+                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (typeof start === 'function' ? await start().catch(() => nowSTimestamp) : start);
+                        return (currstart && currstart < acc && currstart !== 0) ? currstart : acc;
+                    }, Promise.resolve(nowSTimestamp + 1));
+                startTimestamp = st;
             } else {
                 const st = await Object.values(dexAdapter.breakdown).reduce(async (accP, dexAdapter) => {
                     const acc = await accP
                     const bst = await Object.values(dexAdapter).reduce(async (accP, { start, runAtCurrTime }) => {
                         const acc = await accP
-                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (await start().catch(() => nowSTimestamp))
+                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (typeof start === 'function' ? await start().catch(() => nowSTimestamp) : start)
                         return (typeof currstart === 'number' && currstart < acc && currstart !== 0) ? currstart : acc
                     }, Promise.resolve(nowSTimestamp + 1))
 

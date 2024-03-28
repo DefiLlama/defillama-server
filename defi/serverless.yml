@@ -33,6 +33,23 @@ provider:
         - dynamodb:BatchGetItem
       Resource:
         - "Fn::GetAtt": [DynamoTable, Arn]
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+      Resource:
+        - "arn:aws:dynamodb:eu-central-1:856461987125:table/secrets"
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:BatchGetItem
+      Resource:
+        - "arn:aws:dynamodb:eu-central-1:856461987125:table/prod-coins-table"
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:BatchGetItem
+      Resource:
+        - "arn:aws:dynamodb:eu-central-1:856461987125:table/auth"
     - Effect: Allow # Lambda logs on cloudwatch
       Action:
         - logs:CreateLogGroup
@@ -55,11 +72,6 @@ provider:
         - "s3:ListBucket"
         - "s3:*Object*"
       Resource: "*"
-    - Effect: "Allow"
-      Action:
-        - "secretsmanager:GetSecretValue"
-      Resource:
-        - "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     BSC_RPC: ${file(./env.js):BSC_RPC}
@@ -75,7 +87,6 @@ provider:
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
     #CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
-    INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
     DROPS_WEBHOOK: ${file(./env.js):DROPS_WEBHOOK}
     #EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
     #FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
@@ -92,6 +103,7 @@ provider:
     R2_ENDPOINT: ${file(./env.js):R2_ENDPOINT}
     INDEXA_DB: ${file(./env.js):INDEXA_DB}
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    APIKEY: ${file(./env.js):APIKEY}
 
 custom:
   stage: ${opt:stage, self:provider.stage}
@@ -101,6 +113,7 @@ custom:
     concurrency: 4
     exclude:
       - pg-native
+      - pg-hstore
     # for debugging
     #keepOutputDirectory: true
   prune:
@@ -119,9 +132,6 @@ custom:
   domain: ${self:custom.domainMap.${self:custom.stage}.domain}
   certificateArn: ${self:custom.domainMap.${self:custom.stage}.certificateArn}
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
-  datadog:
-    site: datadoghq.eu
-    apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   logRetentionInDays: 30
 
 functions:
@@ -153,22 +163,40 @@ functions:
       - http:
           path: /v2/historicalChainTvl/{chain}
           method: get
-  protocols:
-    handler: src/getProtocols.default
+  # protocols:
+  #   handler: src/getProtocols.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: protocols
+  #         method: get
+  # treasuries:
+  #   handler: src/getProtocols.treasuriesHandler
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: treasuries
+  #         method: get
+  # entities:
+  #   handler: src/getProtocols.entitiesHandler
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: entities
+  #         method: get
+  reportError:
+    handler: src/reportError.default
     timeout: 30
-    memorySize: 2000
     events:
       - http:
-          path: protocols
-          method: get
-  treasuries:
-    handler: src/getProtocols.treasuriesHandler
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: treasuries
-          method: get
+          path: reportError
+          method: post
+    environment:
+      ERROR_REPORTS_DB: ${env:ERROR_REPORTS_DB}
+      ERROR_REPORTS_WEBHOOK: ${env:ERROR_REPORTS_WEBHOOK}
   storeAggregatorEvent:
     handler: src/storeAggregatorEvent.default
     timeout: 30
@@ -176,12 +204,33 @@ functions:
       - http:
           path: storeAggregatorEvent
           method: post
+  getSwapDailyVolume:
+    handler: src/getSwapDailyVolume.default
+    timeout: 30
+    events:
+      - http:
+          path: getSwapDailyVolume
+          method: get
+  getSwapTotalVolume:
+    handler: src/getSwapTotalVolume.default
+    timeout: 30
+    events:
+      - http:
+          path: getSwapTotalVolume
+          method: get
   getSwapsHistory:
     handler: src/getSwapsHistory.default
     timeout: 30
     events:
       - http:
           path: getSwapsHistory
+          method: get
+  getLatestSwap:
+    handler: src/getLatestSwap.default
+    timeout: 30
+    events:
+      - http:
+          path: getLatestSwap
           method: get
   getBlackListedTokens:
     handler: src/getBlackListedTokens.default
@@ -197,6 +246,21 @@ functions:
       - http:
           path: storeBlacklistPermit
           method: post
+  historicalLiquidity:
+    handler: src/getHistoricalLiquidity.default
+    timeout: 30
+    events:
+      - http:
+          path: historicalLiquidity/{token}
+          method: get
+  protocolsLiquidity:
+    handler: src/storeProtocolsLiquidity.default
+    memorySize: 1000
+    timeout: 900
+    events:
+      - schedule: cron(18 * * * ? *)
+    environment:
+      CG_KEY: ${env:CG_KEY}
   contractName:
     handler: src/getContractName.default
     timeout: 30
@@ -204,60 +268,60 @@ functions:
       - http:
           path: contractName2/{chain}/{contract}
           method: get
-  protocol:
-    handler: src/getProtocol.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: protocol/{protocol}
-          method: get
-  tokenProtocols:
-    handler: src/getTokenInProtocols.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: tokenProtocols/{symbol}
-          method: get
-  treasury:
-    handler: src/getTreasury.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: treasury/{protocol}
-          method: get
-  updatedProtocol:
-    handler: src/getUpdatedProtocol.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: updatedProtocol/{protocol}
-          method: get
-  updatedProtocolDraft:
-    handler: src/getUpdatedProtocol.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: updatedProtocolDraft/{protocol}
-          method: get
-  debugProtocol:
-    handler: src/getUpdatedProtocol.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: debugProtocol/{protocol}
-          method: get
-  protocolTvl:
-    handler: src/getProtocolTvl.default
-    events:
-      - http:
-          path: tvl/{protocol}
-          method: get
+  # protocol:
+  #   handler: src/getProtocol.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: protocol/{protocol}
+  #         method: get
+  # tokenProtocols:
+  #   handler: src/getTokenInProtocols.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: tokenProtocols/{symbol}
+  #         method: get
+  # treasury:
+  #   handler: src/getTreasury.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: treasury/{protocol}
+  #         method: get
+  # updatedProtocol:
+  #   handler: src/getUpdatedProtocol.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: updatedProtocol/{protocol}
+  #         method: get
+  # updatedProtocolDraft:
+  #   handler: src/getUpdatedProtocol.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: updatedProtocolDraft/{protocol}
+  #         method: get
+  # debugProtocol:
+  #   handler: src/getUpdatedProtocol.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: debugProtocol/{protocol}
+  #         method: get
+  # protocolTvl:
+  #   handler: src/getProtocolTvl.default
+  #   events:
+  #     - http:
+  #         path: tvl/{protocol}
+  #         method: get
   smolConfig:
     handler: src/getSmolConfig.default
     events:
@@ -272,17 +336,17 @@ functions:
       - http:
           path: coins
           method: post
-  chains:
-    handler: src/getChains.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: chains
-          method: get
-      - http:
-          path: v2/chains
-          method: get
+  # chains:
+  #   handler: src/getChains.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: chains
+  #         method: get
+  #     - http:
+  #         path: v2/chains
+  #         method: get
   chains2:
     handler: src/getFormattedChains.default
     timeout: 30
@@ -297,14 +361,12 @@ functions:
       - http:
           path: inflows/{protocol}/{timestamp}
           method: get
-  langs:
-    handler: src/getLangs.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: langs
-          method: get
+  # langs:
+  #   handler: src/storeLangs.default
+  #   timeout: 60
+  #   memorySize: 2000
+  #   events:
+  #     - schedule: cron(30 0,12 * * ? *)
   raises:
     handler: src/getRaises.default
     timeout: 30
@@ -315,38 +377,40 @@ functions:
           method: get
     environment:
       AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
-  oracles:
-    handler: src/getOracles.default
+  hacks:
+    handler: src/getHacks.default
     timeout: 30
     memorySize: 2000
     events:
       - http:
-          path: oracles
+          path: hacks
           method: get
-  forks:
-    handler: src/getForks.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: forks
-          method: get
-  categories:
-    handler: src/getCategories.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: categories
-          method: get
-  testTvl:
-    handler: src/testTvl.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: testTvl
-          method: get
+    environment:
+      AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
+  # oracles:
+  #   handler: src/getOracles.default
+  #   timeout: 120
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: oracles
+  #         method: get
+  # forks:
+  #   handler: src/getForks.default
+  #   timeout: 120
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: forks
+  #         method: get
+  # categories:
+  #   handler: src/getCategories.default
+  #   timeout: 30
+  #   memorySize: 2000
+  #   events:
+  #     - http:
+  #         path: categories
+  #         method: get
   storeLiquidations:
     handler: src/storeLiquidations.default
     timeout: 900
@@ -362,30 +426,22 @@ functions:
   #   handler: src/triggerFetchLiquidations.default
   #   events:
   #     - schedule: cron(40 * * * ? *)
-  dataset:
-    handler: src/getDataset.default
-    timeout: 30
-    memorySize: 10240
-    events:
-      - http:
-          path: dataset/{protocol}
-          method: get
-  simpleDataset:
-    handler: src/getSimpleChainDataset.default
-    timeout: 30
-    memorySize: 3000
-    events:
-      - http:
-          path: simpleChainDataset/{chain}
-          method: get
-  totalChainDataset:
-    handler: src/getTotalChainDataset.default
-    timeout: 30
-    memorySize: 3000
-    events:
-      - http:
-          path: totalChainDataset/{chain}
-          method: get
+  # dataset:
+  #   handler: src/getDataset.default
+  #   timeout: 30
+  #   memorySize: 10240
+  #   events:
+  #     - http:
+  #         path: dataset/{protocol}
+  #         method: get
+  # simpleDataset:
+  #   handler: src/getSimpleChainDataset.default
+  #   timeout: 30
+  #   memorySize: 3000
+  #   events:
+  #     - http:
+  #         path: simpleChainDataset/{chain}
+  #         method: get
   config:
     handler: src/getConfig.default
     timeout: 10
@@ -400,6 +456,13 @@ functions:
       - schedule: cron(43 * * * ? *)
     environment:
       CG_KEY: ${env:CG_KEY}
+  storeFullTokenlist:
+    handler: src/storeFullTokenlist.default
+    timeout: 60
+    events:
+      - schedule: cron(30 0,12 * * ? *)
+    environment:
+      tableName: prod-coins-table
   yieldsConfig:
     handler: src/getYieldsConfig.default
     timeout: 30
@@ -415,8 +478,8 @@ functions:
       - schedule: cron(16 * * * ? *)
   storeCharts:
     handler: src/storeGetCharts.default
-    timeout: 60
-    memorySize: 2000
+    timeout: 300
+    memorySize: 6000
     events:
       - schedule: cron(16 * * * ? *)
   hourly:
@@ -433,34 +496,35 @@ functions:
       - http:
           path: /{params+}
           method: options
-  storeTvlInterval:
-    handler: src/storeTvlInterval.default
-    timeout: 900
-    memorySize: 512
-    environment:
-      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
-      COINS_DB: ${env:COINS_DB}
-      LOFTY_API: ${file(./env.js):LOFTY_API}
-      OLYMPUS_GRAPH_API_KEY: ${file(./env.js):OLYMPUS_GRAPH_API_KEY}
-      COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
-  storeTreasuryInterval:
-    handler: src/storeTreasuryInterval.default
-    timeout: 900
-    memorySize: 512
-    environment:
-      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
-      COINS_DB: ${env:COINS_DB}
-      COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
-  triggerStoreTvls:
-    handler: src/triggerStoreTvls.default
-    timeout: 900
-    events:
-      - schedule: cron(0 * * * ? *)
-  triggerStoreTreasuries:
-    handler: src/triggerStoreTreasuries.default
-    timeout: 900
-    events:
-      - schedule: cron(0 * * * ? *)
+  # storeTvlInterval2: # while enabling this check/ update how tvl adapter modules are imported (use adapters.ts for import instead of mock function & build)
+  #   handler: src/storeTvlInterval.default
+  #   timeout: 900
+  #   memorySize: 512
+  #   environment:
+  #     TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+  #     COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
+  #     INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
+  #     ERROR_DB: ${env:ERROR_DB}
+  # storeTreasuryInterval:
+  #   handler: src/storeTreasuryInterval.default
+  #   timeout: 900
+  #   memorySize: 512
+  #   environment:
+  #     TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+  #     COINS_DB: ${env:COINS_DB}
+  #     COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
+  #     INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
+  #     ERROR_DB: ${env:ERROR_DB}
+  # triggerStoreTvls: # while enabling this check/ update how tvl adapter modules are imported (use adapters.ts for import instead of mock function & build)
+  #   handler: src/triggerStoreTvls.default
+  #   timeout: 900
+  #  events:
+  #    - schedule: cron(0 * * * ? *)
+  # triggerStoreTreasuries:
+  #   handler: src/triggerStoreTreasuries.default
+  #   timeout: 900
+  #   events:
+  #     - schedule: cron(0 * * * ? *)
   getOverview:
     handler: src/adaptors/handlers/getOverview/index.default
     timeout: 30
@@ -509,49 +573,55 @@ functions:
       DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
       AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
       OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
-  storeAdaptorData:
-    handler: src/adaptors/handlers/storeAdaptorData/index.default
-    timeout: 900
-    memorySize: 2048
-    lambdaInsights: true
-    environment:
-      ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
-      BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
-  triggerStoreAdaptorData:
-    handler: src/adaptors/handlers/triggerStoreAdaptorData.default
-    timeout: 900
-    events:
-      - schedule: cron(01 0 * * ? *)
-  notifyStatus:
-    handler: src/adaptors/handlers/notifyStatus.default
-    timeout: 900
-    memorySize: 1024
-    environment:
-      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
-      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-      DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
-      AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
-      OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
-  triggerNotifyStatus:
-    handler: src/adaptors/handlers/triggerNotifyStatus.default
-    timeout: 900
-    events:
-      - schedule: cron(01 2,5,8,11 * * ? *)
-  triggerNotifyStatus2:
-    handler: src/adaptors/handlers/triggerNotifyStatus.default
-    timeout: 900
-    events:
-      - schedule: cron(30 0 * * ? *)
-  refreshDimensionOverviewCache:
-    handler: src/adaptors/handlers/refreshDimensionOverviewCache/index.default
-    timeout: 180
-    memorySize: 1024
-    events:
-      - schedule: rate(1 hour)
+  # storeAdaptorData:
+  #   handler: src/adaptors/handlers/storeAdaptorData/index.default
+  #   timeout: 900
+  #   memorySize: 2048
+  #   lambdaInsights: true
+  #   environment:
+  #     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
+  #     BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
+  #     ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
+  #     FLIPSIDE_API_KEY: ${env:FLIPSIDE_API_KEY}
+  #     SMARDEX_SUBGRAPH_API_KEY: ${env:SMARDEX_SUBGRAPH_API_KEY}
+  #     PERENNIAL_V2_SUBGRAPH_API_KEY: ${file(./env.js):PERENNIAL_V2_SUBGRAPH_API_KEY}
+  #     PANCAKESWAP_OPBNB_SUBGRAPH: ${file(./env.js):PANCAKESWAP_OPBNB_SUBGRAPH}
+  #     DUNE_API_KEYS: ${env:DUNE_API_KEYS}
+  # triggerStoreAdaptorData:
+  #   handler: src/adaptors/handlers/triggerStoreAdaptorData.default
+  #   timeout: 900
+  #   events:
+  #     - schedule: cron(01 0 * * ? *)
+  # notifyStatus:
+  #   handler: src/adaptors/handlers/notifyStatus.default
+  #   timeout: 900
+  #   memorySize: 1024
+  #   environment:
+  #     VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+  #     FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
+  #     DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
+  #     AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
+  #     OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
+  # triggerNotifyStatus:
+  #   handler: src/adaptors/handlers/triggerNotifyStatus.default
+  #   timeout: 900
+  #   events:
+  #     - schedule: cron(01 2,5,8,11 * * ? *)
+  # triggerNotifyStatus2:
+  #   handler: src/adaptors/handlers/triggerNotifyStatus.default
+  #   timeout: 900
+  #   events:
+  #     - schedule: cron(30 0 * * ? *)
+  # refreshDimensionOverviewCache:
+  #   handler: src/adaptors/handlers/refreshDimensionOverviewCache/index.default
+  #   timeout: 180
+  #   memorySize: 1024
+    #events:
+    #  - schedule: rate(1 hour)
   cacheExternalResponse:
     handler: src/externalEndpointsCache/index.cacheExternalResponseHandler
     timeout: 180
-  cachedExternalResponse:
+  cachedExternalResponse: # used in defillama-app repo for cex volume
     handler: src/externalEndpointsCache/index.default
     timeout: 30
     memorySize: 2000
@@ -565,14 +635,14 @@ functions:
     memorySize: 10240
     events:
       - schedule: rate(1 day)
-  notifyOutdated:
-    handler: src/notifyOutdated.default
-    timeout: 900
-    memorySize: 1024
-    events:
-      - schedule: rate(1 hour)
-    environment:
-      HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
+  # notifyOutdated:
+  #   handler: src/notifyOutdated.default
+  #   timeout: 900
+  #   memorySize: 1024
+  #   events:
+  #     - schedule: rate(1 hour)
+  #   environment:
+  #     HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
   notifyStaleCoins:
     handler: src/notifyStaleCoins.default
     timeout: 900
@@ -581,7 +651,6 @@ functions:
       - schedule: cron(15 * * * ? *)
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
-      COINS_DB: ${env:COINS_DB}
       STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
   sendDiscordMessage:
     handler: src/sendDiscordMessage.default
@@ -596,33 +665,33 @@ functions:
     memorySize: 512
     events:
       - schedule: cron(20 * * * ? *)
-  missedUpdates:
-    handler: src/stats/getMissedUpdates.default
-    timeout: 30
-    memorySize: 10240
-    events:
-      - http:
-          path: missedUpdates/{timestamp}
-          method: get
-  outdated:
-    handler: src/stats/getOutdated.default
-    timeout: 30
-    memorySize: 10240
-    events:
-      - http:
-          path: outdated
-          method: get
-  storeNpmData:
-    handler: src/storeNpmData.default
-    timeout: 900
-    events:
-      - schedule: cron(01 0 * * ? *)
-  npmData:
-    handler: src/getNpmData.default
-    events:
-      - http:
-          path: npm/{start}
-          method: get
+ # missedUpdates:
+  #   handler: src/stats/getMissedUpdates.default
+  #   timeout: 30
+  #   memorySize: 10240
+  #   events:
+  #     - http:
+  #         path: missedUpdates/{timestamp}
+  #         method: get
+  # outdated:
+  #   handler: src/stats/getOutdated.default
+  #   timeout: 30
+  #   memorySize: 10240
+  #   events:
+  #     - http:
+  #         path: outdated
+  #         method: get
+  # storeNpmData:
+  #   handler: src/storeNpmData.default
+  #   timeout: 900
+  #   events:
+  #     - schedule: cron(01 0 * * ? *)
+  # npmData:
+  #   handler: src/getNpmData.default
+  #   events:
+  #     - http:
+  #         path: npm/{start}
+  #         method: get
   emissions:
     handler: src/getEmissions.default
     timeout: 30
@@ -644,18 +713,19 @@ functions:
       - http:
           path: emissionsList
           method: get
-  storeEmissions:
-    handler: src/storeEmissions.default
-    timeout: 900
-    memorySize: 3000
+  emissionsBreakdown:
+    handler: src/getEmissionsBreakdown.default
+    timeout: 30
     events:
-      - schedule: cron(01 0 * * ? *)
-  storeGovernance:
-    handler: src/storeGovernance.default
-    timeout: 900
-    memorySize: 3000
-    events:
-      - schedule: cron(01 0 * * ? *)
+      - http:
+          path: emissionsBreakdown
+          method: get
+  # storeGovernance:
+  #   handler: src/storeGovernance.default
+  #   timeout: 900
+  #   memorySize: 3000
+  #   events:
+  #     - schedule: cron(01 0 * * ? *)
   storeActiveUsers:
     handler: src/storeActiveUsers.default
     timeout: 900
@@ -664,6 +734,16 @@ functions:
       - schedule: cron(0 * * * ? *)
     environment:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+      ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
+  storeActiveUsersRetrieve:
+    handler: src/storeActiveUsersRetrieve.default
+    timeout: 900
+    memorySize: 1000
+    events:
+      - schedule: cron(40 * * * ? *)
+    environment:
+      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+      ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
   activeUsers:
     handler: src/getActiveUsers.default
     timeout: 90
@@ -682,6 +762,24 @@ functions:
       - http:
           path: userData/{type}/{protocolId}
           method: get
+  totalProtocolUsers:
+    handler: src/getTotalProtocolUsersData.default
+    timeout: 90
+    environment:
+      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+    events:
+      - http:
+          path: totalProtocolUsers
+          method: get
+  storeChainNftVolume:
+    handler: src/storeChainNftVolume.default
+    timeout: 900
+    memorySize: 1000
+    events:
+      - schedule: cron(30 * * * ? *)
+    environment:
+      ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
+      FLIPSIDE_API_KEY: ${env:FLIPSIDE_API_KEY}
   newsArticles:
     handler: src/getNewsArticles.default
     timeout: 30
@@ -692,6 +790,27 @@ functions:
     environment:
       DL_NEWS_API: ${file(./env.js):DL_NEWS_API}
       DL_NEWS_ACCESS_TOKEN: ${file(./env.js):DL_NEWS_ACCESS_TOKEN}
+  chainAssets:
+    handler: src/getChainAssets.default
+    timeout: 30
+    events:
+      - http:
+          path: chain-assets/chains
+          method: get
+  chainAssetsChart: 
+    handler: src/getChainAssetsChart.default
+    timeout: 30
+    events:
+      - http:
+          path: chain-assets/chart/{chain}
+          method: get
+  chainAssetFlows: 
+    handler: src/getChainAssetFlows.default
+    timeout: 30
+    events:
+      - http:
+          path: chain-assets/flows/{period}
+          method: get
 
 resources:
   # CORS for api gateway errors
@@ -706,5 +825,4 @@ plugins:
   - serverless-offline
   - serverless-prune-plugin
   - serverless-plugin-log-retention
-  - serverless-plugin-datadog
   - serverless-plugin-lambda-insights

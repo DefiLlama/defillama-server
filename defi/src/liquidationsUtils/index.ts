@@ -44,7 +44,7 @@ export type Price = {
 };
 
 async function getPrices(collaterals: string[]) {
-  const res = await fetch("https://coins.llama.fi/prices", {
+  const res = await fetch("https://coins2.llama.fi/prices?source=internal", {
     method: "POST",
     body: JSON.stringify({
       coins: collaterals,
@@ -68,7 +68,7 @@ async function getPrices(collaterals: string[]) {
     let chain = _chain;
     if (_chain === "avax") {
       chain = "avalanche";
-    } else if (address === 'coingecko:tezos') {
+    } else if (address === "coingecko:tezos") {
       chain = "tezos";
     }
     return {
@@ -125,11 +125,10 @@ export async function aggregateAssetAdapterData(filteredAdapterOutput: { [protoc
     for (const liq of adapterData) {
       const price = prices.find((price) => price.address.toLowerCase() === liq.collateral.toLowerCase());
       if (!price) {
+        console.error(`No price for ${liq.collateral}`);
         continue;
       }
-
       const collateralAmountRaw = new BigNumber(liq.collateralAmount).div(10 ** price.decimals);
-
       const symbol = getNativeSymbol(price.symbol);
       aggregatedData.get(symbol)!.positions.push({
         owner: liq.owner,

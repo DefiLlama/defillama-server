@@ -4,16 +4,21 @@ import { getDay, getTimestampAtStartOfDay, secondsInDay } from "../utils/date";
 import { TokensValueLocked, tvlsObject } from "../types";
 import getTVLOfRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
 import { sendMessage } from "../utils/discord";
+import { saveProtocolItem } from "../api2/db";
 
 type PKconverted = (id: string) => string;
-
-export default async (
-  protocol: Protocol,
+type StoreTvlOptions = {
+  protocol: Protocol;
   unixTimestamp: number,
   tvl: tvlsObject<TokensValueLocked>,
   hourlyTvl: PKconverted,
   dailyTvl: PKconverted,
-) => {
+  storePreviousData: boolean,
+  overwriteExistingData?: boolean,
+}
+
+
+export default async ({ protocol, unixTimestamp, tvl, hourlyTvl, dailyTvl, storePreviousData, overwriteExistingData, }: StoreTvlOptions) => {
   const hourlyPK = hourlyTvl(protocol.id);
   if (Object.keys(tvl).length === 0) {
     return;
@@ -24,30 +29,40 @@ export default async (
     SK: unixTimestamp,
     ...tvl,
   });
+  const data = { id: protocol.id, timestamp: unixTimestamp, data: tvl }
+  const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
 
-  const closestDailyRecord = await getTVLOfRecordClosestToTimestamp(
+  const checkForOutliersCoins = hourlyPK.includes("hourlyUsdTokensTvl") && storePreviousData
+  const closestDailyRecord = (overwriteExistingData && !checkForOutliersCoins) ? null : await getTVLOfRecordClosestToTimestamp(
     dailyTvl(protocol.id),
     unixTimestamp,
     secondsInDay * 1.5,
   );
 
-  if (hourlyPK.includes("hourlyUsdTokensTvl"))
-    await checkForOutlierCoins(tvl, closestDailyRecord, protocol.name);
+  if (checkForOutliersCoins)
+    await checkForOutlierCoins(tvl, closestDailyRecord!, protocol.name);
 
-  if (getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp)) {
+  if (overwriteExistingData || getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp) || storePreviousData === false) {
     // First write of the day
     await dynamodb.put({
       PK: dailyTvl(protocol.id),
-      SK: getTimestampAtStartOfDay(unixTimestamp),
+      SK: dayTimestamp,
       ...tvl,
     });
   }
+
+  const writeOptions = { overwriteExistingData };
+  await Promise.all([
+    saveProtocolItem(hourlyTvl, data, writeOptions),
+    saveProtocolItem(dailyTvl, { ...data, timestamp: dayTimestamp }, writeOptions),
+  ])
 };
 async function checkForOutlierCoins(
   currentTvls: tvlsObject<TokensValueLocked>,
   previousTvls: tvlsObject<TokensValueLocked>,
   protocol: string,
 ) {
+  if (process.env.IGNORE_CHECK_OUTLIER_COINS === "true") return;
   const changeThresholdFactor = 4;
   const proportionThresholdFactor = 0.5;
   const outlierThreshold = 20_000_000_000;
@@ -88,10 +103,10 @@ async function checkForOutlierCoins(
     });
   });
 
-  if (alertString != headline)
-    await sendMessage(
-      alertString,
-      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-      true,
-    );
+  // if (alertString != headline)
+  //   await sendMessage(
+  //     alertString,
+  //     process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+  //     true,
+  //   );
 }

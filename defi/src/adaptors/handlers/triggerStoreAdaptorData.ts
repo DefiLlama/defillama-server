@@ -5,13 +5,7 @@ import { handler as storeAdaptorData } from "./storeAdaptorData";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import data from "../data";
 import { IJSON } from "../data/types";
-
-function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
+import { shuffleArray } from "../../utils/shared/shuffleArray";
 
 const STEP = 10;
 
@@ -26,7 +20,9 @@ export interface IHandlerEvent {
   }>
 }
 
-const quarantineList = {
+export const ADAPTER_TYPES = Object.values(AdapterType)
+
+export const quarantineList = {
   [AdapterType.FEES]: ["chainlink-vrf-v1", 'chainlink-vrf-v2', 'chainlink-keepers', "dodo"],
   [AdapterType.DEXS]: ["vanswap", "dodo"]
 } as IJSON<string[]>
@@ -47,7 +43,7 @@ export const handler = async (event: IHandlerEvent) => {
     }
   }
   else if (type) {
-    const adaptorsData = await data(type)
+    const adaptorsData = data(type)
     const protocolModules = adaptorsData.default.filter(m => !quarantinedModules.includes(m.module)).map(m => m.module)
     await invokeLambdas(protocolModules, type)
     const protocolModulesConfined = adaptorsData.default.filter(m => quarantinedModules.includes(m.module)).map(m => m.module)
@@ -55,15 +51,7 @@ export const handler = async (event: IHandlerEvent) => {
   }
   else {
     await Promise.all(
-      [
-        AdapterType.FEES,
-        AdapterType.OPTIONS,
-        AdapterType.INCENTIVES,
-        AdapterType.AGGREGATORS,
-        AdapterType.DERIVATIVES,
-        AdapterType.DEXS,
-        AdapterType.PROTOCOLS
-      ].map(type => invokeLambda(`defillama-prod-triggerStoreAdaptorData`, { type }))
+      ADAPTER_TYPES.map(type => invokeLambda(`defillama-prod-triggerStoreAdaptorData`, { type }))
     )
   }
 };

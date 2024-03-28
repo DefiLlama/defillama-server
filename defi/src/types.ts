@@ -65,7 +65,7 @@ export interface IRaise {
 }
 
 export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "module"> {
-  symbol?: string;
+  symbol?: string | null;
   chain?: string;
   module?: string;
   otherProtocols?: Array<string>;
@@ -74,7 +74,7 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   hallmarks?: [number, string][];
   chainTvls: IChainTvl;
   currentChainTvls: ICurrentChainTvls;
-  tvl: { date: number; totalLiquidityUSD: number }[];
+  tvl: { date: number; totalLiquidityUSD: number }[] | null;
   tokensInUsd?: ITokens;
   tokens?: ITokens;
   isParentProtocol?: boolean;
@@ -91,7 +91,7 @@ export interface IProtocol
   symbol: string;
   module: string;
   slug: string;
-  tvl: number;
+  tvl: number | null;
   chain: string;
   chainTvls: ITvlsByChain;
   change_1h: number | null;
@@ -118,7 +118,7 @@ export type LiteProtocol = Pick<
   | "url"
   | "parentProtocol"
 > &
-  ProtocolTvls;
+  ProtocolTvls & { defillamaId: string };
 
 export interface IChain {
   gecko_id?: string | null;

@@ -28,6 +28,6 @@ export async function sendMessage(message: string, webhookUrl:string|undefined, 
           content: formattedMessage
         })
       }
-    ).then(body => body.json())
-    console.log("discord", response)
+    ).then((body: any) => body.json())
+    // console.log("discord", response)
 }

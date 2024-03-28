@@ -32,6 +32,11 @@ provider:
         - dynamodb:BatchWriteItem
       Resource:
         - "Fn::GetAtt": [DynamoTable, Arn]
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+      Resource:
+        - "arn:aws:dynamodb:eu-central-1:856461987125:table/secrets"
     - Effect: Allow # Lambda logs on cloudwatch
       Action:
         - logs:CreateLogGroup
@@ -54,11 +59,6 @@ provider:
         - "s3:ListBucket"
         - "s3:*Object*"
       Resource: "*"
-    - Effect: "Allow"
-      Action:
-        - "secretsmanager:GetSecretValue"
-      Resource:
-        - "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     BSC_RPC: ${file(./env.js):BSC_RPC}
@@ -97,9 +97,6 @@ custom:
   domain: ${self:custom.domainMap.${self:custom.stage}.domain}
   certificateArn: ${self:custom.domainMap.${self:custom.stage}.certificateArn}
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
-  datadog:
-    site: datadoghq.eu
-    apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   logRetentionInDays: 30
 
 functions:
@@ -192,43 +189,49 @@ functions:
       - http:
           path: /{params+}
           method: options
-  fetchCoingeckoData:
-    handler: src/fetchCoingeckoData.fetchCoingeckoData
-    timeout: 900
-    environment:
-      CG_KEY: ${env:CG_KEY}
-  triggerFetchCoingeckoData:
-    handler: src/triggerFetchCoingeckoData.triggerNewFetches
-    events:
-      - schedule: rate(5 minutes)
-    environment:
-      CG_KEY: ${env:CG_KEY}
-  triggerHourlyFetchCoingeckoData:
-    handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
-    events:
-      - schedule: cron(0 0,12 * * ? *) # every 12 hours
-    environment:
-      CG_KEY: ${env:CG_KEY}
-  fetchHourlyCoingeckoData:
-    handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
-    timeout: 900
-    environment:
-      CG_KEY: ${env:CG_KEY}
-  storeDefiCoins:
-    handler: src/storeCoins.default
-    timeout: 900
-    memorySize: 1024
-  triggerStoreDefiCoins:
-    handler: src/triggerStoreCoins.default
-    timeout: 900
-    events:
-      - schedule: cron(45 * * * ? *) # Hourly
+  # fetchCoingeckoData2:
+  #     handler: src/fetchCoingeckoData.fetchCoingeckoData
+  #     timeout: 900
+  #     environment:
+  #       CG_KEY: ${env:CG_KEY}
+  # triggerFetchCoingeckoData:
+  #   handler: src/triggerFetchCoingeckoData.triggerNewFetches
+  #   events:
+  #     - schedule: rate(5 minutes)
+  #   environment:
+  #     CG_KEY: ${env:CG_KEY}
+  # triggerHourlyFetchCoingeckoData:
+  #   handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
+  #   events:
+  #     - schedule: cron(0 0,12 * * ? *) # every 12 hours
+  #   environment:
+  #     CG_KEY: ${env:CG_KEY}
+  # fetchHourlyCoingeckoData:
+  #   handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
+  #   timeout: 900
+  #   environment:
+  #     CG_KEY: ${env:CG_KEY}
+  # storeDefiCoins:
+  #   handler: src/storeCoins.default
+  #   timeout: 900
+  #   memorySize: 1024
+  #   environment: 
+  #     STALE_COINS_ADAPTERS_WEBHOOK: ${env:STALE_COINS_ADAPTERS_WEBHOOK}
+# triggerStoreDefiCoins:
+#   handler: src/triggerStoreCoins.default
+#   timeout: 900
+#   events:
+#     - schedule: cron(45 * * * ? *) # Hourly
   StoreBridgedCoins:
     handler: src/storeBridgedCoins.default
     timeout: 900
     memorySize: 1024
     events:
       - schedule: cron(45 * * * ? *) # Hourly
+    environment:
+      R2_ACCESS_KEY_ID: ${env:R2_ACCESS_KEY_ID}
+      R2_SECRET_ACCESS_KEY: ${env:R2_SECRET_ACCESS_KEY}
+      R2_ENDPOINT: ${env:R2_ENDPOINT}
 
 resources:
   # CORS for api gateway errors
@@ -243,4 +246,3 @@ plugins:
   - serverless-offline
   - serverless-prune-plugin
   - serverless-plugin-log-retention
-  - serverless-plugin-datadog

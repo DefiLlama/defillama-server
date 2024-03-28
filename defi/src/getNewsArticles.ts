@@ -66,7 +66,7 @@ function getDSLQuery() {
 	}
 }
 
-const fetchArticles = async () => {
+export const fetchArticles = async () => {
 	const params = {
 		body: JSON.stringify(getDSLQuery()),
 		from: '0',
@@ -90,7 +90,11 @@ const fetchArticles = async () => {
 	)
 		.then((res) => res.json())
     
-	return successResponse(articlesRes, 10*60)
+	return articlesRes
 }
 
-export default wrap(fetchArticles);
+const _fetchArticles = async () => {
+	return successResponse(await fetchArticles(), 5*3600)
+}
+
+export default wrap(_fetchArticles);

@@ -4,6 +4,7 @@ import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl } from "../utils/getLastRec
 import { formatTimestampAsDate, getClosestDayStartTimestamp } from "../utils/date";
 import { normalizeChain } from "../utils/normalizeChain";
 import { PassThrough } from "stream";
+import { getProtocolAllTvlData } from "../api2/utils/cachedFunctions";
 
 function normalizeChainTotal(chain: string) {
   return chain === "tvl" ? "Total" : chain;
@@ -69,7 +70,9 @@ type Grid = {
   };
 };
 
-export default async function (protocols: Protocol[], vertical = false, stream = false) {
+export default async function (protocols: Protocol[], vertical = false, stream = false, {
+  readFromPG = false,
+} = {}) {
   const timeToColumn = {} as Grid;
   const grid = {} as Grid;
   if (vertical === true) {
@@ -82,11 +85,19 @@ export default async function (protocols: Protocol[], vertical = false, stream =
   let nextRowNumber = 3;
   await Promise.all(
     protocols.map(async (protocol) => {
-      const [usd, usdTokens, tokens] = await Promise.all([
-        getHistoricalValues(dailyTvl(protocol.id)),
-        getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
-        getHistoricalValues(dailyTokensTvl(protocol.id)),
-      ]).then((results) => results.map((r) => addBasicChain(r, protocol.chain)));
+      let data;
+
+      if (readFromPG) {
+        data = await getProtocolAllTvlData(protocol, true)
+      } else {
+        data =  await Promise.all([
+          getHistoricalValues(dailyTvl(protocol.id)),
+          getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
+          getHistoricalValues(dailyTokensTvl(protocol.id)),
+        ])
+      }
+
+      const [usd, usdTokens, tokens] = data.map((r) => addBasicChain(r, protocol.chain))
 
       if (usd === undefined || usd.length === 0) {
         return;

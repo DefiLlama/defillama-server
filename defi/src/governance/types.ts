@@ -29,6 +29,7 @@ export interface Proposal {
   month?: string;
   strategies?: any;
   executed?: boolean;
+  link?:string;
 }
 export interface CompoundProposal extends Proposal {
   canceled: boolean;

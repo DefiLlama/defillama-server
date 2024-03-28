@@ -1,22 +1,21 @@
-import * as aws from 'aws-sdk'
 import * as sdk from '@defillama/sdk'
 import fetch from "node-fetch"
-
-const Bucket = "tvl-adapter-cache";
+import { storeR2JSONString, getR2JSONString } from '../utils/r2';
 
 function getKey(govType: string, project: string): string {
-  return `governance-cache/${govType}/${project}.json`
+  return `governance-cache/${govType}/${project.toLowerCase()}.json`.replace(/(:|'’)/g, '/')
 }
 
 function getLink(govType: string, project: string): string {
-  return `https://${Bucket}.s3.eu-central-1.amazonaws.com/${getKey(govType, project)}`
+  return `https://defillama-datasets.llama.fi/${getKey(govType, project)}`
 }
 
 export async function getCache(govType: string, project: string, { } = {}) {
   const Key = getKey(govType, project)
 
+  // sdk.log('[FETCHING] ', Key, getLink(govType, project))
   try {
-    const json = await (fetch(getLink(govType, project)).then(r => r.json()))
+    const json = await getR2JSONString(getKey(govType, project))
     return json
   } catch (e) {
     sdk.log('failed to fetch data from s3 bucket:', Key)
@@ -25,21 +24,12 @@ export async function getCache(govType: string, project: string, { } = {}) {
   }
 }
 
-export async function setCache(govType: string, project: string, cache: any, {
-  ContentType = 'application/json',
-  ACL = 'public-read'
-} = {}) {
-
+export async function setCache(govType: string, project: string, cache: any) {
   const Key = getKey(govType, project)
 
   try {
-    await new aws.S3()
-      .upload({
-        Bucket, Key,
-        Body: JSON.stringify(cache),
-        ACL, ContentType,
-      }).promise();
-
+    await storeR2JSONString(Key, JSON.stringify(cache))
+    // sdk.log('[SAVED] ', Key)
   } catch (e) {
     sdk.log('failed to write data to s3 bucket: ', Key)
     // sdk.log(e)
@@ -77,4 +67,21 @@ export async function getCompoundOverview() {
 
 export async function setCompoundOverview(cache: any) {
   return setCache('overview', 'compound', cache)
+}
+
+export async function getTally(project: string) {
+  return getCache('tally', project)
+}
+
+export async function setTally(project: string, cache: any) {
+  return setCache('tally', project, cache)
+}
+
+
+export async function getTallyOverview() {
+  return getCache('overview', 'tally')
+}
+
+export async function setTallyOverview(cache: any) {
+  return setCache('overview', 'tally', cache)
 }

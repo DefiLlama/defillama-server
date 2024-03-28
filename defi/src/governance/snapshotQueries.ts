@@ -1,5 +1,6 @@
 
 export const graphURL = 'https://hub.snapshot.org/graphql'
+export const graphURLTally = 'https://api.tally.xyz/query'
 
 export const metadataQuery = `query Spaces($ids: [String]!) {
   spaces(first: 1000, skip: 0, orderBy: "created", orderDirection: desc, where: {id_in: $ids}) {
@@ -85,5 +86,76 @@ export const proposalQuery = `query Proposals($ids: [String]!, $skip: Int!, $sta
     discussion
     # body
     votes
+  }
+}`
+
+
+export const metadataQueryTally = `query Governers($ids: [AccountID!]) {
+  governors(
+    ids: $ids
+    includeInactive: false
+    sort: {field: TOTAL_PROPOSALS, order: DESC}
+    pagination: {limit: 999}
+  ) {
+    id
+    type
+    tokens {
+      id
+      type
+      name
+      symbol
+      supply
+      decimals
+    }
+    proposalStats {
+      total
+      active
+      failed
+      passed
+    }
+    parameters {
+      __typename
+    }
+    quorum
+    name
+    slug
+    __typename
+  }
+}`
+
+export const proposalQueryTally = `query Proposals($ids: [Address!], $chain: ChainID!, $skip: Int, $limit: Int) {
+  proposals(
+    governors: $ids
+    sort: {field: END_BLOCK, order: DESC}
+    pagination: {limit: $limit, offset: $skip}
+    chainId: $chain
+  ) {
+    id
+    title
+    description
+    eta
+    block {
+      id
+      number
+      timestamp
+    }
+    governanceId
+    voteStats {
+      support
+      weight
+      votes
+      percent
+    }
+    statusChanges {
+      type
+      blockNumber
+      blockTimestamp
+      block {
+        id
+        number
+        timestamp
+      }
+      txHash
+    }
   }
 }`

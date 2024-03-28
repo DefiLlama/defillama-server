@@ -1,12 +1,71 @@
 import { getCompound, setCompound, getCompoundOverview, setCompoundOverview, } from './cache'
-import { CompoundCache, CompoundProposal, } from './types'
+import { CompoundProposal, } from './types'
 import { getLogs, } from './getLogs'
 import { updateStats, toHex, getGovernanceSources, getChainNameFromId } from './utils'
 import * as sdk from '@defillama/sdk'
 import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import { getProvider } from '@defillama/sdk/build/general'
+import { NNS_GOV_ID, addICPProposals } from './icp/nns'
+import { SNS_GOV_ID, addSNSProposals } from './icp/sns'
+import { addTaggrProposals } from './icp/taggr'
 
 const PROPOSAL_STATES = ['Pending', 'Active', 'Canceled', 'Defeated', 'Succeeded', 'Queued', 'Expired', 'Executed']
+
+// these are moved to tally
+const blacklisted = [
+  'icp',
+  'rrkah-fqaaa-aaaaa-aaaaq-cai',
+  'ethereum:0x6f3e6272a167e8accb32072d08e0957f9c79223d',
+  "ethereum:0x6853f8865ba8e9fbd9c8cce3155ce5023fb7eeb0",
+  "ethereum:0xda9c9ed96f6d42f7e74f3c7eea6772d64ed84bdf",
+  "ethereum:0x3d5fc645320be0a085a32885f078f7121e5e5375",
+  "ethereum:0x2256b25cfc8e35c3135664fd03e77595042fe31b",
+  "ethereum:0x7a6bbe7fdd793cc9ab7e0fc33605fcd2d19371e8",
+  "ethereum:0x91d9c2b5cf81d55a5f2ecc0fc84e62f9cd2cefd6",
+  "ethereum:0xc0da02939e1441f497fd74f78ce7decb17b66529",
+  "ethereum:0x5afedef1454cdd11d4705c06aa4d66aa396343f6",
+  "ethereum:0x6552c8fb228f7776fc0e4056aa217c139d4bada1",
+  "ethereum:0x2da253835967d6e721c6c077157f9c9742934aea",
+  "ethereum:0xdbd38f7e739709fe5bfae6cc8ef67c3820830e0c",
+  "ethereum:0x0c54629266d7fa40b4bfaf1640ebc2cd093866c3",
+  "ethereum:0x35d9f4953748b318f18c30634ba299b237eedfff",
+  "ethereum:0x3133b4f4dcffc083724435784fefad510fa659c6",
+  "ethereum:0xa89163f7b2d68a8fba6ca36beed32bd4f3eeaf61",
+  "ethereum:0x95129751769f99cc39824a0793ef4933dd8bb74b",
+  "ethereum:0xb3a87172f555ae2a2ab79be60b336d2f7d0187f0",
+  "ethereum:0x323a76393544d5ecca80cd6ef2a560c6a395b7e3",
+  "ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3",
+  "ethereum:0x0bef27feb58e857046d630b2c03dfb7bae567494",
+]
+
+const missing = [
+  'eip155:1:0x7e880d8bD9c9612D6A9759F96aCD23df4A4650E6',
+  'eip155:1:0xDA9C9eD96f6D42f7e74f3C7eEa6772d64eD84bdf',
+  'eip155:10:0xcDF27F107725988f2261Ce2256bDfCdE8B382B10',
+  'eip155:1:0x2BbEbFECA0fEbde8C70EF8501C991f3AB2095862',
+  'eip155:137:0x26217Ec5044AEB8D6495BC68eE91951cd7Bb02a0',
+  'eip155:1:0x6CC90C97a940b8A3BAA3055c809Ed16d609073EA',
+  'eip155:1:0x5d2C31ce16924C2a71D317e5BbFd5ce387854039',
+  'eip155:137:0xac1fdCA2Be645E3e06c7832613a78C72135DA945',
+  'eip155:1:0x6C7aF43Ce97686e0C8AcbBc03b2E4f313c0394C7',
+  'eip155:1:0xaBB55d166Bb028d0d73c9aA31e294c88cFE29579',
+  'eip155:1:0x80BAE65E9D56498c7651C34cFB37e2F417C4A703',
+  'eip155:137:0xd7f337d597E4A5d891b7882aBcB4C1d3f7D4Cb97',
+  'eip155:137:0x4Db7E521942BDA8b1fB1B310280135ba4B9c2bee',
+  'eip155:1:0x874C5D592AfC6803c3DD60d6442357879F196d5b',
+  'eip155:1:0xDBd38F7e739709fe5bFaE6cc8eF67C3820830E0C',
+  'eip155:1:0x8a994C6F55Be1fD2B4d0dc3B8f8F7D4E3a2dA8F1',
+  'eip155:1:0x690e775361AD66D1c4A25d89da9fCd639F5198eD',
+  'eip155:1:0x54F50d2f584F1DD05307aB5eB298Ba96C7d4E0ea',
+  'eip155:1:0xd101f2B25bCBF992BdF55dB67c104FE7646F5447',
+  'eip155:1:0xDbD27635A534A3d3169Ef0498beB56Fb9c937489',
+  'eip155:1:0xBEC3de5b14902C660Bd2C7EfD2F259998424cc24',
+  'eip155:1:0x7757f7f21F5Fa9b1fd168642B79416051cd0BB94',
+  'eip155:1:0x323A76393544d5ecca80cd6ef2A560C6a395b7E3',
+  'eip155:1:0x0BEF27FEB58e857046d630B2c03dFb7bae567494',
+]
+
+missing.forEach((i: any) => blacklisted.push('ethereum:' + i.split(':')[2].toLowerCase()))
 
 export function getCompoundIds(existingIds: string[]) {
   let compoundIds = new Set(existingIds.map(i => i.toLowerCase()))
@@ -17,18 +76,24 @@ export function getCompoundIds(existingIds: string[]) {
 
 export async function updateCompounds() {
   const overview: any = await getCompoundOverview()
+
+  blacklisted.forEach((i: any) => delete overview[i])
   const compoundIds = getCompoundIds(Object.keys(overview))
   // const compoundIds = ['ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3']
-  console.log('compound gov#', compoundIds.length)
   const idChunks = sliceIntoChunks(compoundIds, 8)
 
   for (const ids of idChunks) {
     await Promise.all(ids.map(updateCache))
   }
 
-  return setCompoundOverview(overview)
+  await addSNSProposals(overview)
+  await addICPProposals(overview)
+  await addTaggrProposals(overview)
+  await setCompoundOverview(overview)
 
   async function updateCache(id: string) {
+    if (id === NNS_GOV_ID) return;
+    if (id.startsWith(SNS_GOV_ID)) return;
 
     const [chain, address] = id.split(':')
     const cache = await getCompound(id)
@@ -135,8 +200,8 @@ export async function updateCompounds() {
 
       async function updateProposal(id: string, data: any) {
         const {
-          startBlock = +logMap[id].startBlock,
-          endBlock = +logMap[id].endBlock,
+          startBlock = Number(logMap[id].startBlock),
+          endBlock = Number(logMap[id].endBlock),
           proposer = logMap[id].proposer,
           forVotes,
           againstVotes,
@@ -187,6 +252,7 @@ export async function updateCompounds() {
       async function getProposalLogs() {
         const fromBlocks: any = {
           ethereum: 12006099, // the deployment block of compound
+          rsk: 3100000, // the deployment block of sovryn
         }
         const logs = await getLogs({
           api,

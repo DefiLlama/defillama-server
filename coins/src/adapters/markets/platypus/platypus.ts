@@ -25,6 +25,7 @@ function formWrites(
       const index = underlyingBalances.indexOf(underlyingBalance);
       const lpSupply = lpTokenInfo.supplies[index].output;
       const lpDecimals = lpTokenInfo.decimals[index].output;
+      if (c.price == 0) return;
       const price =
         ((c.price * underlyingBalance.output) / lpSupply) *
         10 ** (c.decimals - lpDecimals);

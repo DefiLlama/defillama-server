@@ -52,9 +52,9 @@ export async function getLogs(options: logOptions) {
   if (!eventAbi) return response
 
   return response.map((log: any) => {
-    const iface = new ethers.utils.Interface([eventAbi])
+    const iface = new ethers.Interface([eventAbi])
     const res = iface.parseLog(log)
-    if (onlyArgs) return res.args
+    if (onlyArgs) return res!.args
     // @ts-ignore
     res.topics = log.topics.map(i => `0x${i.slice(26)}`)
     return res
@@ -75,8 +75,8 @@ export async function getLogs(options: logOptions) {
 
     // remove possible duplicates
     cache.logs = cache.logs.filter((i: any) => {
-      let key = i.transactionHash + i.logIndex
-      if (!i.hasOwnProperty('logIndex') || !i.hasOwnProperty('transactionHash')) {
+      let key = i.transactionHash + (i.logIndex ?? i.index)
+      if ((!i.hasOwnProperty('logIndex') && !i.hasOwnProperty('index')) || !i.hasOwnProperty('transactionHash')) {
         sdk.log(i)
         throw new Error('Missing crucial field')
       }

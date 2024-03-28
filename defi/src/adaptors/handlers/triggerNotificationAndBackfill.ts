@@ -26,6 +26,7 @@ console.info("Hello from notifyAdapterStatus");
   } catch (e) {
     console.error("Error in notifyAdapterStatus", e)
   }
+  process.exit(0)
 })();
 
 const DISCORD_USER_0xgnek_ID = '<@!736594617918554182>'

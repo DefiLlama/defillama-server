@@ -32405,7 +32405,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/polter-finance.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "polter-finance",
     cmcId: null,
     category: "Lending",
     chains: ["Fantom"],

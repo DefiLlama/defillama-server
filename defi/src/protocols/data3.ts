@@ -37132,7 +37132,7 @@ const data3: Protocol[] = [
     name: "Yield Wars",
     address: "0xf4A81C18816C9B0AB98FAC51B36Dcb63b0E58Fde",
     symbol: "WAR",
-    url: "https://yieldwars.xyz",
+    url: "", // website does not work
     description: `DeFi Battle Royale. Humble Farmers, Rise Up & Fight!`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/yield-wars.jpg`,
@@ -37504,7 +37504,7 @@ const data3: Protocol[] = [
     name: "PoWH3D",
     address: null,
     symbol: "-",
-    url: "https://powh3d.com/",
+    url: "", // website does not work
     description: "PoWH3D is a blockchain farming DeFi app with game elements.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/powh3d.jpg`,
@@ -37700,7 +37700,7 @@ const data3: Protocol[] = [
     name: "Fomo3D",
     address: null,
     symbol: "-",
-    url: "https://fomo3d.finance",
+    url: "", // website does not work
     description: "Fomo3D is a decentralized application (Dapp) running on the Ethereum network with game components and the possibility of farming.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/fomo3d.jpg`,
@@ -37898,7 +37898,7 @@ const data3: Protocol[] = [
     name: "Meeds Finance",
     address: null,
     symbol: "-",
-    url: "",
+    url: "", // website does not work
     description: "Meeds Finance is building a decentralized engagement platform for the future of work.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/meeds-finance.jpg`,

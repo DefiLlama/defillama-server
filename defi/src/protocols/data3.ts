@@ -37893,6 +37893,49 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hatom-protocol",
     listedAt: 1711646277
   },
+  {
+    id: "4398",
+    name: "Meeds Finance",
+    address: null,
+    symbol: "-",
+    url: "https://meeds.finance",
+    description: "Meeds Finance is building a decentralized engagement platform for the future of work.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/meeds-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "meeds/index.js",
+    twitter: "meedsfinance",
+    listedAt: 1711709074
+  },
+  {
+    id: "4399",
+    name: "Bloom Trading",
+    address: null,
+    symbol: "-",
+    url: "https://www.bloom.trading",
+    description: "Bloom is a fully decentralized leverage trading and market-making platform utilizing Blast's native yield and offers up to 50x leverage on crypto assets, zero slippage trading (for top 10 cryptocurrencies), boosted yields for liquidity providers via USDB and locking, and much more",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/bloom-trading.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Blast"],
+    oracles: ["Pyth"], //https://docs.bloom.trading/bloom/trading/oracles
+    forkedFrom: [],
+    module: "bloom-trading/index.js",
+    twitter: "BloomOnBlast",
+    github: ["Bloom-Trading"],
+    listedAt: 1711709174
+  }, 
 ]
 
 export default data3

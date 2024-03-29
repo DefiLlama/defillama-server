@@ -37390,7 +37390,7 @@ const data3: Protocol[] = [
     twitter: "Openswap_", 
     listedAt: 1711409045
   },
-  /*{
+  {
     id: "4375",
     name: "BloctoSwap",
     address: null,
@@ -37410,7 +37410,7 @@ const data3: Protocol[] = [
     module: "bloctoswap/index.js",
     twitter: "BloctoApp", 
     listedAt: 1711467107
-  },*/
+  },
   {
     id: "4376",
     name: "POWERCITY Earn Protocol",
@@ -37898,7 +37898,7 @@ const data3: Protocol[] = [
     name: "Meeds Finance",
     address: null,
     symbol: "-",
-    url: "https://meeds.finance",
+    url: "",
     description: "Meeds Finance is building a decentralized engagement platform for the future of work.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/meeds-finance.jpg`,
@@ -37911,7 +37911,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "meeds/index.js",
-    twitter: "meedsfinance",
+    twitter: null,
     listedAt: 1711709074
   },
   {

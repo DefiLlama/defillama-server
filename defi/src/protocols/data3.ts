@@ -31957,7 +31957,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oracles: ["Pyth"], // https://ethena-labs.gitbook.io/ethena-labs/solution-design/hedging-system/managing-risk-from-dependencies
     forkedFrom: [],
-    module: "dummy.js",
+    module: "ethena/index.js",
     twitter: "ethena_labs",
     github: ["ethena-labs"],
     audit_links: ["https://ethena-labs.gitbook.io/ethena-labs/resources/audits#quantstamp-audit-on-v2-of-contracts"],

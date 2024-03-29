@@ -742,5 +742,9 @@ export default {
                 id: "3396",
             }
         }
+    },
+    "swych": {
+        enabled: true,
+        id: "4365",
     }
 } as AdaptorsConfig

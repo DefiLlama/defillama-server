@@ -37145,8 +37145,7 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
     module: "yieldwars/index.js",
-    twitter: "YieldWars", 
-    listedAt: 1711393450
+    twitter: "YieldWars"
   },
   {
     id: "4364",
@@ -37518,7 +37517,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "powh3d/index.js",
     twitter: "PoWH3D",
-    listedAt: 1711537990
   },
   {
     id: "4381",
@@ -37714,7 +37712,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "fomo3d/index.js",
     twitter: "FOMO_3D",
-    listedAt: 1711623494
   },
   {
     id: "4390",
@@ -37912,7 +37909,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "meeds/index.js",
     twitter: null,
-    listedAt: 1711709074
   },
   {
     id: "4399",
@@ -37957,6 +37953,26 @@ const data3: Protocol[] = [
     twitter: "VestExchange",
     audit_links: ["https://docs.vest.exchange/audits"],
     listedAt: 1711709964
+  },
+  {
+    id: "4401",
+    name: "Zethr",
+    address: null,
+    symbol: "-",
+    url: "",
+    description: "Zethr is a decentralized prediction market where you can be the house",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zethr.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "zethr/index.js",
+    twitter: null,
   },
 ]
 

@@ -16995,7 +16995,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2138",
-    name: "MarginX",
+    name: "MarginX DEX",
     address: null,
     symbol: "-",
     url: "https://swap.marginx.io/#/swap",

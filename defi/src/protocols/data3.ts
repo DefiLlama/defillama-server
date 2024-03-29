@@ -12719,7 +12719,7 @@ const data3: Protocol[] = [
     name: "DeepBook",
     address: null,
     symbol: "-",
-    url: "https://sui-deepbook.com",
+    url: "https://deepbook.tech/",
     description: "DeepBook is a decentralized central limit order book (CLOB) built for the Sui ecosystem. DeepBook provides a one-stop shop for trading digital assets, with a technical design built for Sui’s architecture. DeepBook leverages Sui’s performance and delivers a low latency and high throughput execution engine to spread liquidity across the DeFi ecosystem.",
     chain: "Sui",
     logo: `${baseIconsUrl}/deepbook.jpg`,

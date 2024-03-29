@@ -37942,7 +37942,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.vest.exchange",
-    description: "Vest is a robust, highly capital-efficient decentralized perpetual futures exchange built on zkSync. Users can trade a wide range of digital assets on Vest while liquidity providers can provide capital in the form of USDC to earn yield.",
+    description: "Vest Exchange is a next generation Perps DEX that ensures the most capital efficient liquidity, and fairest pricing for traders and LPs.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/vest-exchange.jpg`,
     audits: "2",

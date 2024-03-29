@@ -1033,6 +1033,11 @@
       "symbol": "qATOM",
       "to": "coingecko#qatom"
     },
+    "56D7C03B8F6A07AD322EEE1BEF3AE996E09D1C1E34C27CF37E0D4A0AC5972516": {
+      "decimals": "12",
+      "symbol": "PICA",
+      "to": "coingecko#picasso"
+    },
     "6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244": {
       "decimals": "10",
       "symbol": "DOT",

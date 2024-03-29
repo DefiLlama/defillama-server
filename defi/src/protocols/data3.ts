@@ -37936,6 +37936,28 @@ const data3: Protocol[] = [
     github: ["Bloom-Trading"],
     listedAt: 1711709174
   }, 
+  {
+    id: "4400",
+    name: "Vest Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://www.vest.exchange",
+    description: "Vest is a robust, highly capital-efficient decentralized perpetual futures exchange built on zkSync. Users can trade a wide range of digital assets on Vest while liquidity providers can provide capital in the form of USDC to earn yield.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/vest-exchange.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["zkSync Era"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "vest/index.js",
+    twitter: "VestExchange",
+    audit_links: ["https://docs.vest.exchange/audits"],
+    listedAt: 1711709964
+  },
 ]
 
 export default data3

@@ -37503,7 +37503,7 @@ const data3: Protocol[] = [
     name: "PoWH3D",
     address: null,
     symbol: "-",
-    url: "", // website does not work
+    url: "https://powh3d.com",
     description: "PoWH3D is a blockchain farming DeFi app with game elements.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/powh3d.jpg`,
@@ -37698,7 +37698,7 @@ const data3: Protocol[] = [
     name: "Fomo3D",
     address: null,
     symbol: "-",
-    url: "", // website does not work
+    url: "https://fomo3d.finance", 
     description: "Fomo3D is a decentralized application (Dapp) running on the Ethereum network with game components and the possibility of farming.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/fomo3d.jpg`,

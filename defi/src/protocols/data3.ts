@@ -627,13 +627,13 @@ const data3: Protocol[] = [
   },
   {
     id: "2727",
-    name: "Koi Finance",
+    name: "Koi Finance", // rebranded from Mute.io
     address: "era:0xa995ad25ce5eb76972ab356168f5e1d9257e4d05",
     symbol: "KOI",
     url: "https://dapp.koi.finance",
     description: "A lightning fast DEX, yield, and bond platform built on zkSync Era.",
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/koi_finance.png`,
+    logo: `${baseIconsUrl}/koi-finance.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "koi-3",

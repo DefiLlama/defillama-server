@@ -38106,6 +38106,50 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1711801555
   },
+  {
+    id: "4408",
+    name: "Frogswap",
+    address: null,
+    symbol: "-",
+    url: "https://frogswap.xyz",
+    description:
+      "Uniswap V2 fork on Degen Chain",
+    chain: "Degen",
+    logo: `${baseIconsUrl}/frogswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Degen"],
+    module: "frogswap/index.js",
+    twitter: "FrogSwapETH",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1711808701
+  },
+  {
+    id: "4409",
+    name: "DegenSwap",
+    address: null,
+    symbol: "-",
+    url: "https://dex.swapdegen.tips",
+    description:
+      "Uniswap V2 fork on Degen Chain",
+    chain: "Degen",
+    logo: `${baseIconsUrl}/degenswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Degen"],
+    module: "degenswap/index.js",
+    twitter: "swapdegen",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1711808801
+  },
 ]
 
 export default data3

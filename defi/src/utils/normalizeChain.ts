@@ -2788,6 +2788,19 @@ export const chainCoingeckoIds = {
     twitter: "opentensor",
     url: "https://bittensor.com/"
   },
+  "Degen": {
+    geckoId: "degen-base",
+    symbol: "DEGEN",
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L3"]
+    },
+    chainId: 666666666,
+    twitter: "degentokenbase",
+    url: "https://www.degen.tips"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3381,6 +3394,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "RSS3"
     case "bittensor":
       return "Bittensor"
+    case "degen":
+      return "Degen"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

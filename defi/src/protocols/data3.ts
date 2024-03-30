@@ -38040,6 +38040,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#trader-joe",
     listedAt: 1711767889
   },
+  {
+    id: "4405",
+    name: "DumpEX",
+    address: null,
+    symbol: "-",
+    url: "https://www.dumpex.xyz",
+    description:
+      "DumpEX is a DEX for tokens and NFTs. It guarantees a floor price for everything and allows you to purchase any asset from DumpEX in a modified Dutch-auction, the Dumpauction.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/dumpex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Avalanche", "Arbitrum", "Base", "Blast", "Binance", "Ethereum", "Optimism", "Polygon"],
+    module: "DumpEX/index.js",
+    twitter: "DumpEX_xyz",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1711799284
+  },
+  {
+    id: "4406",
+    name: "Jaypeggers",
+    address: null,
+    symbol: "-",
+    url: "https://jaypeggers.org",
+    description:
+      "NFT tax loss harvesting tool, thrift store and liquid staking DefiApp, powered by $JAY",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/jaypeggers.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "jaypeggers/index.js",
+    twitter: "jay_peggers",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1711799584
+  },
 ]
 
 export default data3

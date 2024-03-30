@@ -2781,6 +2781,13 @@ export const chainCoingeckoIds = {
     twitter: "rss3_",
     url: "https://rss3.io/"
   },
+  "Bittensor": {
+    geckoId: "bittensor",
+    symbol: "TAO",
+    cmcId: "22974",
+    twitter: "opentensor",
+    url: "https://bittensor.com/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3372,6 +3379,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "DeFiChain EVM"
     case "rss3_vsl":
       return "RSS3"
+    case "bittensor":
+      return "Bittensor"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

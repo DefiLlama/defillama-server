@@ -14968,6 +14968,7 @@ const data3: Protocol[] = [
     oracles: [],
     stablecoins: ["star"],
     audit_links: ["https://docs.preon.finance/information/security#audits"],
+    parentProtocol: "parent#sphere",
     listedAt: 1691686281
   },
   {

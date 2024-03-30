@@ -30203,7 +30203,7 @@ const data3: Protocol[] = [
     description: "Fyde Treasury Protocol enables the crypto ecosystem to diversify portfolios & treasuries, unlock token liquidity, and generate yield. The protocol introduces an innovation of the Liquid Vault that creates large multi-asset liquidity vaults directly accessible by the user's native governance token.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/fyde-protocol.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "fyde-treasury",
     cmcId: null,
@@ -30212,6 +30212,10 @@ const data3: Protocol[] = [
     oracles: ["Chainlink", "TWAP"],  // https://etherscan.io/address/0x9b122361e8708be33b785e44fce4d6ca86ab6c5a#code
     forkedFrom: [],
     module: "fyde/index.js",
+    audit_links: [
+      "https://2610459056-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbQllaeunfO4BPaZU1ABc%2Fuploads%2FDrOUIAG2nAdc0Lf0RxD8%2FFyde_Core_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf?alt=media&token=2c53c4fb-f125-4a91-abce-9c0dd3314c97",
+      "https://2610459056-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbQllaeunfO4BPaZU1ABc%2Fuploads%2FKXNIVvRuIB6ImuEIo7dt%2FFyde-security-review.pdf?alt=media&token=830f255a-d7f2-442c-a23e-2d5aed9c2b33"
+   ],
     twitter: "FydeTreasury",
     listedAt: 1706099158
   },

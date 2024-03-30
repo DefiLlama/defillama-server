@@ -38084,6 +38084,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1711799584
   },
+  {
+    id: "4407",
+    name: "Meow Miner",
+    address: null,
+    symbol: "-",
+    url: "https://meowminer.com",
+    description:
+      "Meow Miner is a yield-farming protocol built to support the MeowCat ecosystem on the Avalanche C-chain. Farm up to 8% daily rewards in $MEOW tokens.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/meowminer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Avalanche"],
+    module: "MeowMiner/index.js",
+    twitter: "MeowCatMiner",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1711801555
+  },
 ]
 
 export default data3

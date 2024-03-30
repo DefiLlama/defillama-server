@@ -1619,6 +1619,11 @@
       "decimals": "2",
       "symbol": "EURS",
       "to": "coingecko#stasis-eurs"
+    },
+    "0x3279dbefabf3c6ac29d7ff24a6c46645f3f4403c": {
+      "decimals": "18",
+      "symbol": "FTHM",
+      "to": "coingecko#fathom-protocol"
     }
   },
   "telos": {

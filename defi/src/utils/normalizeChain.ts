@@ -2794,7 +2794,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
     parent: {
-      chain: "Ethereum",
+      chain: "Base",
       types: ["L3"]
     },
     chainId: 666666666,

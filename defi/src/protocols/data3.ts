@@ -38032,7 +38032,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Farm",
-    chains: ["Avalanche", "Arbitrum"],
+    chains: ["Avalanche"],
     module: "trader-joe-stek/index.js",
     twitter: "traderjoe_xyz",
     forkedFrom: [],

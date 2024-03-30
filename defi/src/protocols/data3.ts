@@ -38003,7 +38003,7 @@ const data3: Protocol[] = [
     url: "https://app.hatom.com/bridge",
     description: "Bridge protocol for transferring TAO tokens from Finney to MultiversX",
     chain: "Bittensor",
-    logo: `${baseIconsUrl}/hatom-tao-liquid-staking.jpg`,
+    logo: `${baseIconsUrl}/hatom-protocol.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

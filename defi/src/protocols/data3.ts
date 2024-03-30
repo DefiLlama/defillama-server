@@ -38017,6 +38017,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hatom-protocol",
     listedAt: 1711761197
   },
+  {
+    id: "4404",
+    name: "Trader Joe Stek",
+    address: "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
+    symbol: "JOE",
+    url: "https://traderjoexyz.com/avalanche/stek",
+    description:
+      "Stake to earn points, the more you stake the more points you accrue. At the end of each weekly epoch, rewards are distributed based on final standings",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/trader-joe-stek.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Avalanche", "Arbitrum"],
+    module: "trader-joe-stek/index.js",
+    twitter: "traderjoe_xyz",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#trader-joe",
+    listedAt: 1711767889
+  },
 ]
 
 export default data3

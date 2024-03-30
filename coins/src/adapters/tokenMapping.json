@@ -1393,6 +1393,11 @@
       "decimals": "18",
       "symbol": "agEUR",
       "to": "coingecko#ageur"
+    },
+    "0x2416092f143378750bb29b79ed961ab195cceea5": {
+      "decimals": "18",
+      "symbol": "ezETH",
+      "to": "coingecko#renzo-restaked-eth"
     }
   },
   "wan": {

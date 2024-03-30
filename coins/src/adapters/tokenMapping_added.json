@@ -2089,6 +2089,16 @@
       "decimals": "18",
       "symbol": "WAVAX",
       "to": "coingecko#avalanche-2"
+    },
+    "0xEbB5d4959B2FbA6318FbDa7d03cd44aE771fc999": {
+      "decimals": "18",
+      "symbol": "KONG",
+      "to": "coingecko#kong"
+    },
+    "0x5ac04b69bde6f67c0bd5d6ba6fd5d816548b066a": {
+      "decimals": "18",
+      "symbol": "TECH",
+      "to": "coingecko#tech"
     }
   },
   "moonbeam": {
@@ -7881,6 +7891,21 @@
       "to": "coingecko#tether"
     },
     "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.token-abtc::bridged-btc": {
+      "decimals": "8",
+      "symbol": "aBTC",
+      "to": "coingecko#bitcoin"
+    },
+    "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token::wstx": {
+      "decimals": "6",
+      "symbol": "wSTX",
+      "to": "coingecko#blockstack"
+    },
+    "SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1.wstx": {
+      "decimals": "6",
+      "symbol": "WSTX",
+      "to": "coingecko#blockstack"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.token-abtc": {
       "decimals": "8",
       "symbol": "aBTC",
       "to": "coingecko#bitcoin"

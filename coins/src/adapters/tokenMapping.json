@@ -2166,6 +2166,11 @@
       "decimals": "18",
       "symbol": "VOYA",
       "to": "coingecko#merlin-chain-bridged-voya-merlin"
+    },
+    "0xB880fd278198bd590252621d4CD071b1842E9Bcd": {
+      "decimals": "18",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "naka": {
@@ -2264,6 +2269,11 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0x6665a6Cae3F52959f0f653E3D04270D54e6f13d8": {
+      "decimals": "18",
+      "symbol": "ROSY",
+      "to": "coingecko#rosy"
     }
   },
   "q": {
@@ -2293,6 +2303,56 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    }
+  },
+  "zklink": {
+    "0x8280a4e7D5B3B658ec4580d3Bc30f5e50454F169": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    }
+  },
+  "zora": {
+    "0x4200000000000000000000000000000000000006": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    }
+  },
+  "imx": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "IMX",
+      "to": "coingecko#immutable-x"
+    },
+    "0x3A0C2Ba54D6CBd3121F01b96dFd20e99D1696C9D": {
+      "decimals": "18",
+      "symbol": "IMX",
+      "to": "coingecko#immutable-x"
+    },
+    "0x52a6c53869ce09a731cd772f245b97a4401d3348": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x6de8acc0d406837030ce4dd28e7c08c5a96a30d2": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    }
+  },
+  "rss3_vsl": {
+    "0xe27d019909738d98ab7f850c05ee07806c30c71d": {
+      "decimals": "18",
+      "symbol": "RSS3",
+      "to": "coingecko#rss3"
+    }
+  },
+  "bevm": {
+    "0xb5136feba197f5ff4b765e5b50c74db717796dcd": {
+      "decimals": "18",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
     }
   }
 }

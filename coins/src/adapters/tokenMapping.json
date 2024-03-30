@@ -2364,5 +2364,12 @@
       "symbol": "BTC",
       "to": "coingecko#bitcoin"
     }
+  },
+  "degen": {
+    "0xeb54dacb4c2ccb64f8074eceea33b5ebb38e5387": {
+      "decimals": "18",
+      "symbol": "DEGEN",
+      "to": "coingecko#degen-base"
+    }
   }
 }

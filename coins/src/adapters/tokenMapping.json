@@ -325,6 +325,11 @@
       "decimals": "9",
       "symbol": "sVEC",
       "to": "coingecko#vector-reserve"
+    },
+    "0x18fa05ee5e478eed8925946abb41d09aec5d34d6": {
+      "decimals": "18",
+      "symbol": "PUFF",
+      "to": "coingecko#puff-the-dragon"
     }
   },
   "fantom": {
@@ -763,6 +768,11 @@
       "to": "mantle:0x92351C9Aed156Bc8Ec76D52cB1441b93f153e550",
       "decimals": "18",
       "symbol": "fKLP"
+    },
+    "0x26a6b0dcdcfb981362afa56d581e4a7dba3be140": {
+      "to": "coingecko#puff-the-dragon",
+      "decimals": "18",
+      "symbol": "PUFF"
     }
   },
   "manta": {

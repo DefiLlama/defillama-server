@@ -38223,6 +38223,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1711912383
   },
+  {
+    id: "4413",
+    name: "Blackwing",
+    address: null,
+    symbol: "-",
+    url: "https://blackwing.fi/",
+    description:
+      `The Modular Blockchain for Margin Trading`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/blackwing.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance", "Arbitrum", "Ethereum"],
+    module: "blackwing/index.js",
+    twitter: "blackwing_fi",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1711914469
+  },
 ]
 
 export default data3

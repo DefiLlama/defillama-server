@@ -166,6 +166,7 @@ export default {
   weETH: require("./yield/weETH"),
   pxeth: require("./liquidStaking/pxeth"),
   sthApt: require("./liquidStaking/sthapt"),
+  mod: require("./markets/thala"),
   ambitFinance: require("./yield/ambit-finance"),
   eigenpie: require("./yield/eigenpie"),
   steadefi: require("./other"),

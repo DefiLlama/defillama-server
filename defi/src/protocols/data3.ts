@@ -38160,7 +38160,7 @@ const data3: Protocol[] = [
     name: "Fren Pets",
     address: null,
     symbol: "-",
-    url: "https://frenpets.com",
+    url: "https://frenpet.xyz/",
     description:
       `Grow and battle fren pets with frens. A gaming "P2E" NFT project with staking and farm attributes`,
     chain: "Base",
@@ -38172,7 +38172,7 @@ const data3: Protocol[] = [
     category: "Gaming",
     chains: ["Base"],
     module: "frenpets/index.js",
-    twitter: "frenpets",
+    twitter: "frenpetonbase",
     forkedFrom: [],
     oracles: [],
     listedAt: 1711857357

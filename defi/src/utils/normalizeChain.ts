@@ -2617,7 +2617,7 @@ export const chainCoingeckoIds = {
     geckoId: "xai-blockchain",
     symbol: "XAI",
     cmcId: "28374",
-    categories: ["EVM"],
+    categories: ["EVM", "Arbitrum Orbit"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"]

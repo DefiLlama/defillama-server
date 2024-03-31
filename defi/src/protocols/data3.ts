@@ -38177,6 +38177,52 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1711857357
   },
+  {
+    id: "4411",
+    name: "Satoshi Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://satoshiprotocol.org/",
+    description:
+      `Satoshi Protocol is the first CDP built on BTC Layer 2, it allows investors to deposit BTC and borrow stablecoin $SAT, Unleash trillion dollars of BTCFi`,
+    chain: "BEVM",
+    logo: `${baseIconsUrl}/satoshi-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["BEVM"],
+    module: "satoshi-protocol /index.js",
+    twitter: "SatoshiBEVM",
+    forkedFrom: ["Liquity"],
+    oracles: ["DIA"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9632
+    github: ["Satoshi-Protocol"],
+    audit_links: ["https://github.com/Satoshi-Protocol/satoshi-audit-report"],
+    listedAt: 1711912377
+  },
+  {
+    id: "4412",
+    name: "Hero Blaze",
+    address: "bsc:0x5e7f472b9481c80101b22d0ba4ef4253aa61dabc",
+    symbol: "MUDOL2",
+    url: "https://heroblaze3kd.io/staking",
+    description:
+      `Hero Blaze is a BNB Chain based casual RPG mobile game integrated with Play and Earn`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/hero-blaze.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "hero-blaze-three-kingdoms",
+    cmcId: "21017",
+    category: "Gaming",
+    chains: ["Binance"],
+    module: "heroblaze/index.js",
+    twitter: "HeroBlaze3kd",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1711912383
+  },
 ]
 
 export default data3

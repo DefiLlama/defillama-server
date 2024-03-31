@@ -38193,7 +38193,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["BEVM"],
-    module: "satoshi-protocol /index.js",
+    module: "satoshi-protocol/index.js",
     twitter: "SatoshiBEVM",
     forkedFrom: ["Liquity"],
     oracles: ["DIA"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9632

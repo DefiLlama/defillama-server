@@ -38155,6 +38155,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1711808801
   },
+  {
+    id: "4410",
+    name: "Fren Pets",
+    address: null,
+    symbol: "-",
+    url: "https://frenpets.com",
+    description:
+      `Grow and battle fren pets with frens. A gaming "P2E" NFT project with staking and farm attributes`,
+    chain: "Base",
+    logo: `${baseIconsUrl}/fren-pets.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Base"],
+    module: "frenpets/index.js",
+    twitter: "frenpets",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1711857357
+  },
 ]
 
 export default data3

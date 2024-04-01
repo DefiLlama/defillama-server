@@ -4033,6 +4033,18 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["pxdc-stablecoin"],
     twitter: "POWERCITYio",
   },
+  {
+    id: "parent#frogswap",
+    name: "Frogswap",
+    url: "https://frogswap.xyz",
+    description:
+      "Swap, Trade & Earn on Degenchain",
+    logo: `${baseIconsUrl}/frogswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "FrogSwapETH",
+  },
 ];
 
 export default parentProtocols;

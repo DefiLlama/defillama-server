@@ -38115,7 +38115,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4408",
-    name: "Frogswap",
+    name: "Frogswap AMM",
     address: null,
     symbol: "-",
     url: "https://frogswap.xyz",
@@ -38133,6 +38133,7 @@ const data3: Protocol[] = [
     twitter: "FrogSwapETH",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
+    parentProtocol: "parent#frogswap",
     listedAt: 1711808701
   },
   {
@@ -38290,6 +38291,51 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1711977016
+  },
+  {
+    id: "4416",
+    name: "Frogswap Farm",
+    address: null,
+    symbol: "-",
+    url: "https://frogswap.xyz/farms",
+    description:
+      "Stake tokens and LP tokens to earn Frog",
+    chain: "Degen",
+    logo: `${baseIconsUrl}/frogswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Degen"],
+    module: "frogswap-farm/index.js",
+    twitter: "FrogSwapETH",
+    forkedFrom: ["Goose Finance"],
+    oracles: [],
+    parentProtocol: "parent#frogswap",
+    listedAt: 1712006251
+  },
+  {
+    id: "4417",
+    name: "Core Markets",
+    address: null,
+    symbol: "-",
+    url: "https://core.markets",
+    description:
+      "Core Markets is a perpetuals intent-based platform on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/core-markets.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Blast"],
+    module: "core-markets/index.js",
+    twitter: "Core_Markets",
+    forkedFrom: [],
+    oracles: ["Binance Oracle"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9368
+    listedAt: 1712006617
   },
 ]
 

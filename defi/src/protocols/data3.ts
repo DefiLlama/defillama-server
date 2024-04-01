@@ -37435,6 +37435,7 @@ const data3: Protocol[] = [
     module: "earn-powercity-io/index.js",
     twitter: "POWERCITYio", 
     parentProtocol: "parent#powercity",
+    stablecoins: ["pxdc-stablecoin"],
     audit_links: ["https://omniscia.io/reports/powercity-earn-implementation-646b3050e69c940014643ed6/"],
     listedAt: 1711467561
   },
@@ -37491,7 +37492,7 @@ const data3: Protocol[] = [
     url: "https://www.core.powercity.io/",
     description: "The CORE is the central staking platform for the $WATT Token through which revenue collected from all the DApps in the POWERCITY ecosystem can be shared with stakers.",
     chain: "Pulse",
-    logo: `${baseIconsUrl}/powercity-core-protocol.jpg`,
+    logo: `${baseIconsUrl}/powercity-core-protocol.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "powercity-watt",

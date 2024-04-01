@@ -72,6 +72,11 @@ export async function getProtocolDataHandler(protocolName?: string, adaptorType?
     if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
     if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 
+    const parentData = parentProtocols.find(pp => pp.name.toLowerCase() === standardizeProtocolName(protocolName))
+    if (parentData) {
+        return getProtocolSummaryParent(parentData, dataType, adaptorType, { isApi2RestServer })
+    }
+
     const dexData = await getProtocolData(protocolName, adaptorType)
     if (dexData) {
         const dexDataResponse = await getProtocolSummary(dexData, dataType, adaptorType, { isApi2RestServer })
@@ -79,10 +84,7 @@ export async function getProtocolDataHandler(protocolName?: string, adaptorType?
         return dexDataResponse
     }
 
-    const parentData = parentProtocols.find(pp => pp.name.toLowerCase() === standardizeProtocolName(protocolName))
-    if (parentData) {
-        return getProtocolSummaryParent(parentData, dataType, adaptorType, { isApi2RestServer })
-    }
+
 }
 
 const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRecordType, adaptorType: AdapterType, {

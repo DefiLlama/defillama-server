@@ -11018,10 +11018,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Farm",
     chains: ["Binance"],
     module: "bnbminer/index.js",
     twitter: "Da_Developer",
+    deadUrl: true
   },
   {
     id: "616",

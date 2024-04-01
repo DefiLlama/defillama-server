@@ -38269,6 +38269,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1711945853
   },
+  {
+    id: "4415",
+    name: "DengenDex",
+    address: "degen:0xc1fAE0B51D739175E614048C31fACa22149F234D",
+    symbol: "DDD",
+    url: "https://degendex.tips",
+    description:
+      `The Portal of Decentralized Trading Protocol on Degen Chain`,
+    chain: "Degen",
+    logo: `${baseIconsUrl}/dengendex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Degen"],
+    module: "degendex-fi/index.js",
+    twitter: "DegendexFi",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1711977016
+  },
 ]
 
 export default data3

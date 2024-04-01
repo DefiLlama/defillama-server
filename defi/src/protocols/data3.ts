@@ -38259,7 +38259,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "CDP",
     chains: ["Thorchain"],
     module: "thorchain-lending/index.js",
     twitter: "THORChain",

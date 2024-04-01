@@ -37434,6 +37434,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Liquity"],
     module: "earn-powercity-io/index.js",
     twitter: "POWERCITYio", 
+    parentProtocol: "parent#powercity",
     audit_links: ["https://omniscia.io/reports/powercity-earn-implementation-646b3050e69c940014643ed6/"],
     listedAt: 1711467561
   },
@@ -37501,6 +37502,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "core-powercity-io/index.js",
     twitter: "POWERCITYio",
+    parentProtocol: "parent#powercity",
     listedAt: 1711537950
   },
   {

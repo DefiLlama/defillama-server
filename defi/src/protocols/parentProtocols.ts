@@ -4020,6 +4020,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "A51_Fi",
     github: ["Unipilot","a51finance"]
   },
+  {
+    id: "parent#powercity",
+    name: "POWERCITY",
+    url: "https://powercity.io",
+    description:
+      "POWERCITY is an ecosystem of projects designed to improve PulseChain for the community. All connected through its central CORE.",
+    logo: `${baseIconsUrl}/powercity.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    stablecoins: ["pxdc-stablecoin"],
+    twitter: "POWERCITYio",
+  },
 ];
 
 export default parentProtocols;

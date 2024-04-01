@@ -34,4 +34,4 @@ process.on('uncaughtException', (error) => {
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 60 * 2) // 2 hours
+}, 1000 * 60 * 45) // 45 minutes

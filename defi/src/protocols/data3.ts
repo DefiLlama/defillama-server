@@ -38225,7 +38225,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4413",
-    name: "Blackwing",
+    name: "Blackwing BXP",
     address: null,
     symbol: "-",
     url: "https://blackwing.fi/",
@@ -38237,7 +38237,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Farm",
     chains: ["Binance", "Arbitrum", "Ethereum"],
     module: "blackwing/index.js",
     twitter: "blackwing_fi",

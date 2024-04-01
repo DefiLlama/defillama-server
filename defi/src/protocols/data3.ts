@@ -38245,6 +38245,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1711914469
   },
+  {
+    id: "4414",
+    name: "Thorchain Lending",
+    address: null,
+    symbol: "-",
+    url: "https://linktr.ee/thorchain",
+    description:
+      `THORChain Lending provides USD-denominated loans against native assets as collateral, with no interest or expiry`,
+    chain: "Thorchain",
+    logo: `${baseIconsUrl}/thorchain-lending.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Thorchain"],
+    module: "thorchain-lending/index.js",
+    twitter: "THORChain",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1711945853
+  },
 ]
 
 export default data3

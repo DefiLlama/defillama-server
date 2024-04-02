@@ -38367,6 +38367,30 @@ const data3: Protocol[] = [
                  ],
     listedAt: 1712057856
   },
+  {
+    id: "4419",
+    name: "C14",
+    address: null,
+    symbol: "-",
+    url: "https://c14.wtf",
+    description:
+      "Lend Borrow Earn Interest on Crypto Assets. Unlock the Power of Defi Lending with C14.",
+    chain: "Astar zkEVM",
+    logo: `${baseIconsUrl}/c14.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Astar zkEVM"],
+    module: "c14/index.js",
+    twitter: "c14_wtf",
+    forkedFrom: ["AAVE V3"],
+    oracles: [], 
+    audit_links: ["https://github.com/c14-wtf/audit/blob/main/PeckShield-Audit-Report-C14-v1.0.pdf"],
+    github: ["c14-wtf"],
+    listedAt: 1712057634
+  },
 ]
 
 export default data3

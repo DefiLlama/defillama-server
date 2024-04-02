@@ -8494,7 +8494,7 @@ const data3: Protocol[] = [
   {
     id: "3079",
     name: "zkLend",
-    address: "starknet:0x05ffbcfeb50d200a0677c48a129a11245a3fc519d1d98d76882d1c9a1b19c6ed",
+    address: "starknet:0x0585c32b625999e6e5e78645ff8df7a9001cf5cf3eb6b80ccdd16cb64bd3a34",
     symbol: "ZEND",
     url: "https://zklend.com/",
     description:

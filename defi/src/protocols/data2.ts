@@ -11606,6 +11606,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "sideshift/index.js",
     twitter: "sideshiftai",
+    treasury: "sideshift-ai.js",
     listedAt: 1657711223,
     github: ["sideshift"]
   },

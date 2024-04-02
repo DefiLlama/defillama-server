@@ -29098,7 +29098,7 @@ const data2: Protocol[] = [
     name: "Arrakis V2",
     address: null,
     symbol: "-",
-    url: "https://beta.arrakis.finance/vaults",
+    url: "https://app.arrakis.fi/v2-vaults",
     description: "Arrakis V2 is a next-generation market-making infrastructure built on top of Uniswap V3. Its unique functionalities allow the creation and automated execution of sophisticated market-making strategies on Uniswap V3 that previously were only feasible on CEXs.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/arrakis-v2.jpg`,

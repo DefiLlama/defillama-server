@@ -302,8 +302,8 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             return dynamoData ?? pgData;
           }
 
-          let decimals: number | undefined = ref.decimals;
-          let symbol: string | undefined = ref.symbol;
+          let decimals: number | undefined = ref?.decimals;
+          let symbol: string | undefined = ref?.symbol;
           if (!decimals || !symbol) {
             const data = await getSymbolAndDecimals(
               tokenAddress,

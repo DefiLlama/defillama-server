@@ -7903,7 +7903,7 @@ const data3: Protocol[] = [
     symbol: "PBX",
     url: "https://app.paribus.io",
     description:
-      "A cross-chain borrowing and lending protocol for NFTs, liquidity positions, and synthetic assets, powered by the Cardano blockchain.",
+      "A cross-chain borrowing & lending protocol for NFTs, liquidity positions & RWA",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/paribus.jpg`,
     audits: "0",

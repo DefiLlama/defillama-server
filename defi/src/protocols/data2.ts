@@ -16995,13 +16995,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2138",
-    name: "MarginX DEX",
+    name: "MarginX DEX", // previous FX Swap
     address: null,
     symbol: "-",
     url: "https://swap.marginx.io/#/swap",
     description: "MarginX is a decentralised exchange (DEX) that enables crypto projects, traders and DeFi enthusiasts the freedom to list, trade and provide liquidity.",
     chain: "FunctionX",
-    logo: `${baseIconsUrl}/marginx.jpg`,
+    logo: `${baseIconsUrl}/marginx-dex.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -17012,6 +17012,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "fxswap/index.js",
     twitter: "marginx_io",
+    parentProtocol: "parent#marginx",
     listedAt: 1664487928
   },
   {

@@ -4045,6 +4045,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FrogSwapETH",
   },
+  {
+    id: "parent#marginx",
+    name: "MarginX",
+    url: "https://marginx.io",
+    description:
+      "MarginX is a decentralised exchange (DEX) that enables crypto projects, traders and DeFi enthusiasts the freedom to list, trade and provide liquidity.",
+    logo: `${baseIconsUrl}/marginx.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "marginx_io",
+  },
 ];
 
 export default parentProtocols;

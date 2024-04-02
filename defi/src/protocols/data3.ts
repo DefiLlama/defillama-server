@@ -7669,14 +7669,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3044",
-    name: "MarginX",
+    name: "MarginX Perp",
     address: null,
     symbol: "-",
     url: "https://marginx.io",
     description:
       "MarginX is a decentralised exchange (DEX) that enables crypto projects, traders and DeFi enthusiasts the freedom to list, trade and provide liquidity.",
     chain: "FunctionX",
-    logo: `${baseIconsUrl}/marginx.jpg`,
+    logo: `${baseIconsUrl}/marginx-perp.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -7686,6 +7686,7 @@ const data3: Protocol[] = [
     module: "marginx/index.js",
     twitter: "marginx_io",
     forkedFrom: [],
+    parentProtocol: "parent#marginx",
     listedAt: 1685437944
   },
   {

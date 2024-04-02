@@ -31962,7 +31962,7 @@ const data3: Protocol[] = [
     cmcId: "30171",
     category: "RWA",
     chains: ["Ethereum"],
-    oracles: ["Pyth"], // https://ethena-labs.gitbook.io/ethena-labs/solution-design/hedging-system/managing-risk-from-dependencies
+    oracles: [],  // ethena uses different external and internal oracles, but the max amount that can be lost duo to a oracle is 500k$.
     forkedFrom: [],
     module: "ethena/index.js",
     twitter: "ethena_labs",

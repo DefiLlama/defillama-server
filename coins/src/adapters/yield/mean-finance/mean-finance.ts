@@ -1,6 +1,6 @@
 import { addToDBWritesList } from "../../utils/database";
 import { Write } from "../../utils/dbInterfaces";
-import { calculate4626Prices, Result4626 } from "../../utils/erc4626";
+import { calculate4626Prices } from "../../utils/erc4626";
 import { fetch } from "../../utils";
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
@@ -23,8 +23,7 @@ export async function unwrap4626(
   const writes: Write[] = [];
   if (tokens.length > 0) {
     const prices = await calculate4626Prices(chain, timestamp, tokens, hardCodedAssets);
-    const validPrices = prices.filter((priceData): priceData is Result4626 => !!priceData)
-    for (const { token, price, decimals, symbol } of validPrices) {
+    for (const { token, price, decimals, symbol } of prices) {
       addToDBWritesList(
         writes,
         chain,

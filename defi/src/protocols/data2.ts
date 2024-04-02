@@ -16995,13 +16995,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2138",
-    name: "FX Swap",
-    address: "functionx:0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
-    symbol: "WFX",
-    url: "https://fx-swap.io/#/swap",
-    description: "A scalable, open and decentralized ecosystem, enabling all to build entirely on and for the blockchain.",
+    name: "MarginX DEX",
+    address: null,
+    symbol: "-",
+    url: "https://swap.marginx.io/#/swap",
+    description: "MarginX is a decentralised exchange (DEX) that enables crypto projects, traders and DeFi enthusiasts the freedom to list, trade and provide liquidity.",
     chain: "FunctionX",
-    logo: `${baseIconsUrl}/fx-swap.jpg`,
+    logo: `${baseIconsUrl}/marginx.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -17011,7 +17011,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "fxswap/index.js",
-    twitter: "FUNCTIONX_IO",
+    twitter: "marginx_io",
     listedAt: 1664487928
   },
   {

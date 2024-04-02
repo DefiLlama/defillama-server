@@ -764,6 +764,11 @@
     }
   },
   "mantle": {
+    "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34": {
+      "to": "coingecko#ethena-usde",
+      "decimals": "18",
+      "symbol": "USDe"
+    },
     "0xb3a5eeBf23530165c3A6785400ff5d1700D5c0b3": {
       "to": "mantle:0x92351C9Aed156Bc8Ec76D52cB1441b93f153e550",
       "decimals": "18",

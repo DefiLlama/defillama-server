@@ -19642,7 +19642,7 @@ const data3: Protocol[] = [
     url: "https://www.bitmart.com",
     description: "Your Trusted Digital Asset Exchange.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bitmark.jpg`,
+    logo: `${baseIconsUrl}/bitmart.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

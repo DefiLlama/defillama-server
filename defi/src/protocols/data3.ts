@@ -38391,6 +38391,28 @@ const data3: Protocol[] = [
     github: ["c14-wtf"],
     listedAt: 1712057634
   },
+  {
+    id: "4420",
+    name: "Zest",
+    address: null,
+    symbol: "-",
+    url: "https://www.zestprotocol.com/",
+    description:
+      "Zest Protocol is an open-source, on-chain lending platform built for Bitcoin, allowing users to earn or borrow against their BTC",
+    chain: "Stacks",
+    logo: `${baseIconsUrl}/zest.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Stacks"],
+    module: "zest/index.js",
+    twitter: "ZestProtocol",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1712075269
+  },
 ]
 
 export default data3

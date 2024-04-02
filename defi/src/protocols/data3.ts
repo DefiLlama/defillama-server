@@ -38229,7 +38229,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4413",
-    name: "Blackwing BXP",
+    name: "Blackwing",
     address: null,
     symbol: "-",
     url: "https://blackwing.fi/",

@@ -38339,6 +38339,34 @@ const data3: Protocol[] = [
     oracles: ["Binance Oracle"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9368
     listedAt: 1712006617
   },
+  {
+    id: "4418",
+    name: "Ithaca Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.ithacaprotocol.io",
+    description:
+      "Ithaca is a Non-Custodial, Composable Option Protocol. Ithaca’s mission is to build permissionless cross-chain infrastructure enabling optimal risk sharing across time and event horizons. The protocol allows for instant deployment of ‘liquidity self-enhancing’ complete, composable option, structured product and lending markets on any underlying.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ithaca-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum"],
+    module: "ithaca/index.js",
+    twitter: "IthacaProtocol",
+    forkedFrom: [],
+    oracles: [], 
+    github: ["ithaca-protocol"],
+    audit_links: [
+                   "https://certificate.quantstamp.com/full/ithaca-finance/8cacdbf3-9f47-4135-854d-1d004abad065/index.html",
+                   "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/ithacaprotocol.io_EVM_Contracts_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf",
+                   "https://github.com/HalbornSecurity/PublicReports/blob/master/Web%20Pentest/Ithaca_Backend_WebApp_Pentest_%20Report_Halborn_Final.pdf"
+                 ],
+    listedAt: 1712057856
+  },
 ]
 
 export default data3

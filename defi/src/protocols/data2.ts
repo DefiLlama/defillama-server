@@ -13380,7 +13380,7 @@ const data2: Protocol[] = [
     name: "DogeSwapOrg",
     address: null,
     symbol: "-",
-    url: "https://dogeswap.org/#/swap",
+    url: "", // https://dogeswap.org/#/swap leads to an ad not a dapp
     description: "A clone of Uniswap V2 on Dogechain",
     chain: "Dogechain",
     logo: `${baseIconsUrl}/dogeswaporg.png`,

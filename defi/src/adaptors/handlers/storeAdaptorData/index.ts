@@ -1,14 +1,13 @@
 import { wrapScheduledLambda } from "../../../utils/shared/wrap";
-import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
-import { ChainBlocks, Adapter, AdapterType, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import { DAY, getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
+import { Adapter, AdapterType, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import canGetBlock from "../../utils/canGetBlock";
 import runAdapter from "@defillama/dimension-adapters/adapters/utils/runAdapter";
-import { getBlock } from "@defillama/dimension-adapters/helpers/getBlock";
 import { Chain } from "@defillama/sdk/build/general";
 import { AdaptorRecord, AdaptorRecordType, RawRecordMap, storeAdaptorRecord } from "../../db-utils/adaptor-record";
 import { processFulfilledPromises, } from "./helpers";
 import loadAdaptorsData from "../../data"
-import { IJSON, ProtocolAdaptor, } from "../../data/types";
+import { ProtocolAdaptor, } from "../../data/types";
 import { PromisePool } from '@supercharge/promise-pool'
 import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
 import { storeAdapterRecord } from "../../db-utils/db2";
@@ -24,8 +23,6 @@ export interface IHandlerEvent {
   adaptorRecordTypes?: string[]
   protocolVersion?: string
 }
-
-const LAMBDA_TIMESTAMP = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
 
 export const handler = async (event: IHandlerEvent) => {
   return handler2({
@@ -50,10 +47,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   console.info(`- timestamp: ${timestamp}`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
   const isTimestampProvided = timestamp !== undefined
+  const LAMBDA_TIMESTAMP = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
   const currentTimestamp = timestamp ?? LAMBDA_TIMESTAMP;
   // Get clean day
   const toTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
-  const fromTimestamp = getTimestampAtStartOfDayUTC(toTimestamp - 1)
 
   // Import data list to be used
   const dataModule = loadAdaptorsData(adapterType)
@@ -79,17 +76,6 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     acc.push(...chains as Chain[])
     return acc
   }, [] as Chain[]).filter(canGetBlock)
-  const chainBlocks: ChainBlocks = {};
-  await Promise.all(
-    allChains.map(async (chain) => {
-      try {
-        const latestBlock = await getBlock(toTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
-        if (latestBlock)
-          chainBlocks[chain] = latestBlock
-      } catch (e) { console.log(e) }
-    })
-  );
-
   // console.info(`*************Storing for the following indexs ${adaptorsList.map(a => a.module)} *************`)
   console.info(`- count: ${protocols.length}`)
 
@@ -119,7 +105,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   async function runAndStoreProtocol(protocol: ProtocolAdaptor, index: number) {
     console.info(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module}`)
     // Get adapter info
-    let { id, module, versionKey } = protocol;
+    let { id, module } = protocol;
     // console.info(`Adapter found ${id} ${module} ${versionKey}`)
 
     try {
@@ -136,9 +122,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       }
       const adapterVersion = adaptor.version
       const isVersion2 = adapterVersion === 2
-      const v1Timestamp = (timestamp !== undefined ? toTimestamp : fromTimestamp)
       const endTimestamp = (isVersion2 && !timestamp) ? LAMBDA_TIMESTAMP : toTimestamp // if version 2 and no timestamp, use current time as input for running the adapter
-      const recordTimestamp = isVersion2 ? toTimestamp : v1Timestamp // if version 2, store the record at with timestamp end of range, else store at start of range
+      const recordTimestamp = endTimestamp
       // Get list of adapters to run
       const adaptersToRun: [string, BaseAdapter][] = []
       if ("adapter" in adaptor) {
@@ -161,7 +146,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
         if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 3)
           throw new Error('This Adapter can be run only around current time') // allow run current time if within 3 hours
-        const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
+        const runAdapterRes = await runAdapter(adapter, endTimestamp, {}, module, version, { adapterVersion })
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }
 

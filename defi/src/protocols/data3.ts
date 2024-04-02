@@ -8464,6 +8464,7 @@ const data3: Protocol[] = [
     twitter: "Fathom_fi",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
+    stablecoins: ["fathom-dollar"],
     listedAt: 1686174878
   },
   {

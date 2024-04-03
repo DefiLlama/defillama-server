@@ -38528,6 +38528,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#fathom",
     listedAt: 1712156169
   },
+  {
+    id: "4426",
+    name: "AshPerp",
+    address: null,
+    symbol: "-",
+    url: "https://ashperp.trade/",
+    description:
+      "A Decentralized Perpetual Trading Protocol on MultiversX",
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/ashperp.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Elrond"],
+    module: "ash-perp/index.js",
+    forkedFrom: [],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9670
+    twitter: "ash_perp",
+    listedAt: 1712164669
+  },
 ]
 
 export default data3

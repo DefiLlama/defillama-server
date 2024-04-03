@@ -4069,6 +4069,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Fathom_fi",
     stablecoins: ["fathom-dollar"],
   },
+  {
+    id: "parent#merchant-moe",
+    name: "Merchant Moe",
+    url: "https://merchantmoe.com/",
+    description:
+      "Decentralized Trading powered by Mantle",
+    logo: `${baseIconsUrl}/merchant-moe.png`,
+    gecko_id: "moe-3",
+    cmcId: "28852",
+    chains: [],
+    twitter: "MerchantMoe_xyz",
+    github: ["merchant-moe"],
+  },
 ];
 
 export default parentProtocols;

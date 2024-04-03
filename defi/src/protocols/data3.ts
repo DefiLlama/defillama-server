@@ -29110,7 +29110,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4006",
-    name: "Merchant Moe",
+    name: "Merchant Moe DEX",
     address: "mantle:0x4515A45337F461A11Ff0FE8aBF3c606AE5dC00c9",
     symbol: "MOE",
     url: "https://merchantmoe.com/",
@@ -29119,16 +29119,16 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/merchant-moe.png`, 
     audits: "2",
     audit_note: null,
-    gecko_id: "moe-3",
-    cmcId: "28852",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Mantle"],
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "merchant-moe/index.js",
     twitter: "MerchantMoe_xyz",
-    github: ["merchant-moe"],
     audit_links: ["https://docs.merchantmoe.com/resources/audits"],
+    parentProtocol: "parent#merchant-moe",
     listedAt: 1704837211
   },
   {
@@ -38549,6 +38549,28 @@ const data3: Protocol[] = [
     oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9670
     twitter: "ash_perp",
     listedAt: 1712164669
+  },
+  {
+    id: "4427",
+    name: "Merchant Moe Liquidity Book",
+    address: "mantle:0x4515A45337F461A11Ff0FE8aBF3c606AE5dC00c9",
+    symbol: "MOE",
+    url: "https://merchantmoe.com/",
+    description: "Liquidity Book is an AMM on Merchant Moe offering low-cost trading, higher fee potential for providers, and requires less capital. It features zero slippage, surge pricing, and high efficiency",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/merchant-moe.png`, 
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    oracles: [],
+    forkedFrom: ["Joe V2.1"],
+    module: "merchant-moe/index.js",
+    twitter: "MerchantMoe_xyz",
+    parentProtocol: "parent#merchant-moe",
+    listedAt: 1712166957
   },
 ]
 

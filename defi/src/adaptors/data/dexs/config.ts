@@ -2605,5 +2605,9 @@ export default {
     "keller": {
         enabled: true,
         id: "4388"
+    },
+    "savmswap": {
+        enabled: true,
+        id: "4422"
     }
 } as AdaptorsConfig

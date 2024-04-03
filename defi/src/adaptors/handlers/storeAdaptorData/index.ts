@@ -161,6 +161,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
         if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 3)
           throw new Error('This Adapter can be run only around current time') // allow run current time if within 3 hours
+        const chainBlocks = {} // WARNING: reset chain blocks for each adapter, sharing this between v1 & v2 adapters that have different end timestamps have nasty side effects
         const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }

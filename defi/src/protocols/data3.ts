@@ -38414,6 +38414,51 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1712075269
   },
+  {
+    id: "4421",
+    name: "AINN Layer2",
+    address: null,
+    symbol: "-",
+    url: "https://anvm.io",
+    description:
+      "Staking tokens via AINN Layer2 Dataset counts as TVL.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/ainn-layer2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Bitcoin"],
+    module: "ainn-layer2/index.js",
+    twitter: "AINNLayer2",
+    forkedFrom: [],
+    oracles: [],
+    github: ["AINNLayer2"],
+    listedAt: 1712152463
+  },
+  {
+    id: "4422",
+    name: "savmSwap",
+    address: null,
+    symbol: "-",
+    url: "https://savmswap.io",
+    description:
+      "Uniswap V2 fork on CosVM chain",
+    chain: "CosVM",
+    logo: `${baseIconsUrl}/savmswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CosVM"],
+    module: "savmswap/index.js",
+    twitter: "savmswapio",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1712152863
+  },
 ]
 
 export default data3

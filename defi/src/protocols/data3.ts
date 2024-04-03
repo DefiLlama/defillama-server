@@ -38611,14 +38611,15 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Yield Aggregator",
     chains: ["Ethereum"],
     module: "etherfi-liquid/index.js",
     twitter: "ether_fi",
     oracles: [],
     forkedFrom: [],
     parentProtocol: "parent#ether-fi",
-    listedAt: 1712171943
+    listedAt: 1712171943,
+    tokensExcludedFromParent: ["EETH"]
   },
   {
     id: "4430",

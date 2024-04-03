@@ -2801,6 +2801,26 @@ export const chainCoingeckoIds = {
     twitter: "degentokenbase",
     url: "https://www.degen.tips"
   },
+  "HAQQ": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "The_HaqqNetwork",
+    url: "https://haqq.network/",
+    github: ["haqq-network"],
+    chainId: "11235"
+  },
+  "CosVM": {
+    geckoId: null,
+    symbol: "CVM",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "CosvmLabs",
+    url: "https://cosvm.network/en",
+    github: ["cosvmlabs"],
+    chainId: "323"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3396,6 +3416,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Bittensor"
     case "degen":
       return "Degen"
+    case "islm":
+      return "HAQQ"
+    case "svm":
+      return "CosVM"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

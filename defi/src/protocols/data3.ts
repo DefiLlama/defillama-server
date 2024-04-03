@@ -38521,7 +38521,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["XDC"],
-    module: "fathom-CDP/index.js",
+    module: "fathom-vault/index.js",
     forkedFrom: [],
     oracles: [],
     twitter: "Fathom_fi",  

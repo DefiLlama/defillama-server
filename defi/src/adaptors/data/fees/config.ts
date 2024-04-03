@@ -1977,7 +1977,7 @@ export default {
     "frax-amo": {
         parentId: "Frax Finance",
         enabled: true,
-        id: "359"
+        id: "4423"
     },
     "keller": {
         enabled: true,

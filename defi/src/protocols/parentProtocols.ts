@@ -4030,7 +4030,6 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    stablecoins: ["pxdc-stablecoin"],
     twitter: "POWERCITYio",
   },
   {

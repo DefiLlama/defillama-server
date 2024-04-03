@@ -38647,6 +38647,28 @@ const data3: Protocol[] = [
     ],
     listedAt: 1712172458
   },
+  {
+    id: "4431",
+    name: "DegenFund",
+    address: "degen:0x0B946D939bb93609Fcce42220180E5C81B642786",
+    symbol: "DFund",
+    url: "https://degenfund.tips/home",
+    description:
+      "Degen Fund is on a mission to amplify liquidity within the DEGEN chain while nurturing and expanding the local community. Our goal is to foster new opportunities throughout the ecosystem, injecting our unique twist into established mechanics and protocols to shake things up.",
+    chain: "Degen",
+    logo: `${baseIconsUrl}/degenfund.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Degen"],
+    module: "degenfund/index.js",
+    twitter: "degenfund_",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1712181113
+  },
 ]
 
 export default data3

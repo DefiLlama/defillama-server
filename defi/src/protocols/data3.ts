@@ -7691,7 +7691,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3045",
-    name: "Astaria",
+    name: "Astaria V1",
     address: null,
     symbol: "-",
     url: "https://astaria.xyz/",
@@ -7708,7 +7708,6 @@ const data3: Protocol[] = [
     module: "astaria/index.js",
     twitter: "AstariaXYZ",
     forkedFrom: [],
-    github: ["AstariaXYZ"],
     audit_links: [
       "https://docs.astaria.xyz/docs/smart-contracts/audits"
     ],
@@ -38571,6 +38570,30 @@ const data3: Protocol[] = [
     twitter: "MerchantMoe_xyz",
     parentProtocol: "parent#merchant-moe",
     listedAt: 1712166957
+  },
+  {
+    id: "4428",
+    name: "Astaria V2",
+    address: null,
+    symbol: "-",
+    url: "https://astaria.xyz/",
+    description:
+      "Astaria is an oracle-less, intent-based, fixed-rate lending protocol supporting unlimited loan durations for any asset",
+    chain: "Base",
+    logo: `${baseIconsUrl}/astaria.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    module: "astaria-v2/index.js",
+    twitter: "AstariaXYZ",
+    forkedFrom: [],
+    audit_links: [
+      "https://docs.astaria.xyz/docs/smart-contracts/audits"
+    ],
+    listedAt: 1685488754,
   },
 ]
 

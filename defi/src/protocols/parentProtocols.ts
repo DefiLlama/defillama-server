@@ -4082,6 +4082,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MerchantMoe_xyz",
     github: ["merchant-moe"],
   },
+  {
+    id: "parent#astaria",
+    name: "Astaria",
+    url: "https://astaria.xyz/",
+    description:
+      "Astaria is a lending protocol that supports any ERC-20, ERC-1155, and ERC721. It enables users to create fixed-rate loans with unlimited durations",
+    logo: `${baseIconsUrl}/astaria.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AstariaXYZ",
+    github: ["AstariaXYZ"],
+  },
 ];
 
 export default parentProtocols;

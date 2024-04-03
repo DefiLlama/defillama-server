@@ -79,13 +79,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     acc.push(...chains as Chain[])
     return acc
   }, [] as Chain[]).filter(canGetBlock)
-  const chainBlocks: ChainBlocks = {};
   await Promise.all(
     allChains.map(async (chain) => {
       try {
         const latestBlock = await getBlock(toTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
-        if (latestBlock)
-          chainBlocks[chain] = latestBlock
       } catch (e) { console.log(e) }
     })
   );

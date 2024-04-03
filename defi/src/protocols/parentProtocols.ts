@@ -4056,6 +4056,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "marginx_io",
   },
+  {
+    id: "parent#fathom",
+    name: "Fathom",
+    url: "https://fathom.fi/",
+    description:
+      "Fathom Protocol is a comprehensive DeFi platform providing liquidity solutions to both retail and institutional participants. Users can deposit XDC and staked XDC to mint FXD, USD stablecoin, which can be used to gain exposure to yield opportunities through our RWA Vaults and Trade Finance Pools. Crypto and RWA holders can also borrow FXD using their assets as collateral.",
+    logo: `${baseIconsUrl}/fathom.png`,
+    gecko_id: "fathom-protocol",
+    cmcId: "29056",
+    chains: [],
+    twitter: "Fathom_fi",
+    stablecoins: ["fathom-dollar"],
+  },
 ];
 
 export default parentProtocols;

@@ -2811,15 +2811,15 @@ export const chainCoingeckoIds = {
     github: ["haqq-network"],
     chainId: "11235"
   },
-  "CosVM": {
+  "SatoshiVM": {
     geckoId: null,
-    symbol: "CVM",
+    symbol: null,
     cmcId: null,
     categories: ["EVM"],
-    twitter: "CosvmLabs",
-    url: "https://cosvm.network/en",
-    github: ["cosvmlabs"],
-    chainId: "323"
+    twitter: "satoshivm",
+    url: "https://www.satoshivm.io/",
+    github: ["SatoshiVM"],
+    chainId: "3109"
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -3419,7 +3419,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "islm":
       return "HAQQ"
     case "svm":
-      return "CosVM"
+      return "SatoshiVM"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

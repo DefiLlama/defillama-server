@@ -4095,6 +4095,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AstariaXYZ",
     github: ["AstariaXYZ"],
   },
+  {
+    id: "parent#ether-fi",
+    name: "ether.fi",
+    url: "https://app.ether.fi/",
+    description:
+      "Decentralized and non-custodial Ethereum staking protocol",
+    logo: `${baseIconsUrl}/ether.fi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ether_fi",
+  },
 ];
 
 export default parentProtocols;

@@ -38597,6 +38597,55 @@ const data3: Protocol[] = [
     parentProtocol: "parent#astaria",
     listedAt: 1685488754,
   },
+  {
+    id: "4429",
+    name: "ether.fi Liquid",
+    address: null,
+    symbol: "-",
+    url: "https://app.ether.fi/liquid",
+    description:
+      "Liquid is an automated DeFi strategy vault that provides ether.fi users a simple access point to use their eETH in the DeFi ecosystem",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ether.fi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "etherfi-liquid/index.js",
+    twitter: "ether_fi",
+    oracles: [],
+    forkedFrom: [],
+    parentProtocol: "parent#ether-fi",
+    listedAt: 1712171943
+  },
+  {
+    id: "4430",
+    name: "Web3.world",
+    address: "venom:0:a53178ec8c6fe0c62413edd9eed25508f357cfba8bf8a7dbfad9290413b2e6be",
+    symbol: "W3W",
+    url: "https://web3.world",
+    description:
+      "Web3.World is an Automated Market Maker, Yield Farming, and Staking platform developed on the Venom blockchain. It currently stands as the most versatile Automated Market Maker launched on the Venom blockchain, enabling seamless trading facilitated by pooled liquidity from investors, with support for stablecoin pairs. Web3.World holds the distinction of being the pioneering decentralized exchange (DEX) established on the Venom blockchain",
+    chain: "Venom",
+    logo: `${baseIconsUrl}/web3.world.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Venom"],
+    module: "web3world/index.js",
+    twitter: "w3w_exchange",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [
+      "https://skynet.certik.com/projects/web3-world",
+      "https://hacken.io/audits/web3.world-%E2%80%94-vesting"
+    ],
+    listedAt: 1712172458
+  },
 ]
 
 export default data3

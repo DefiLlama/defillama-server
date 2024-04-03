@@ -28186,12 +28186,12 @@ const data2: Protocol[] = [
   },
   {
     id: "2626",
-    name: "ether.fi",
+    name: "ether.fi Stake",
     address: null,
     symbol: "-",
-    url: "https://app.ether.fi",
+    url: "https://app.ether.fi/eeth",
     description:
-      "Decentralized and non-custodial Ethereum staking protocol..",
+      "Decentralized and non-custodial Ethereum staking protocol.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ether.fi.jpg`,
     audits: "0",
@@ -28204,6 +28204,7 @@ const data2: Protocol[] = [
     twitter: "ether_fi",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "parent#ether-fi",
     listedAt: 1677778460
   },
   {

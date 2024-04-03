@@ -2821,6 +2821,14 @@ export const chainCoingeckoIds = {
     github: ["SatoshiVM"],
     chainId: "3109"
   },
+  "Venom": {
+    geckoId: "venom",
+    symbol: "VENOM",
+    cmcId: "22059",
+    twitter: "VenomFoundation",
+    url: "https://venom.foundation/",
+    github: ["venom-blockchain"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3420,6 +3428,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "HAQQ"
     case "svm":
       return "SatoshiVM"
+    case "venom":
+      return "Venom"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

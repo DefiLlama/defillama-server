@@ -38459,6 +38459,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1712152863
   },
+  {
+    id: "4423",
+    name: "Fraxlend AMO",
+    address: null,
+    symbol: "-",
+    url: "https://facts.frax.finance/fraxlend/amo",
+    description:
+      "“Algorithmic Market Operations” (AMO) contracts are autonomous contracts that enact pre-programmed monetary policy into a specific subprotocol (either internally built and owned by Frax Protocol such as Fraxlend and Fraxswap or external such as Curve).",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fraxlend-amo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "fraxfinance",
+    parentProtocol: "parent#frax-finance",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1712155143
+  },
 ]
 
 export default data3

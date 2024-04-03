@@ -7711,6 +7711,7 @@ const data3: Protocol[] = [
     audit_links: [
       "https://docs.astaria.xyz/docs/smart-contracts/audits"
     ],
+    parentProtocol: "parent#astaria",
     listedAt: 1685488754,
   },
   {
@@ -38593,6 +38594,7 @@ const data3: Protocol[] = [
     audit_links: [
       "https://docs.astaria.xyz/docs/smart-contracts/audits"
     ],
+    parentProtocol: "parent#astaria",
     listedAt: 1685488754,
   },
 ]

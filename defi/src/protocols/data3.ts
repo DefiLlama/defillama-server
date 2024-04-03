@@ -8446,14 +8446,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3077",
-    name: "Fathom", // previous Fathom Dex
+    name: "Fathom AMM", // previous Fathom Dex
     address: "xdc:0x35Ad816bC01C0Ed46eF3ce918f7b458d7b1CC18e",
     symbol: "FTHM",
     url: "https://fathom.fi/",
     description:
       "Fathom Protocol is a comprehensive DeFi platform providing liquidity solutions to both retail and institutional participants. Users can deposit XDC and staked XDC to mint FXD, USD stablecoin, which can be used to gain exposure to yield opportunities through our RWA Vaults and Trade Finance Pools. Crypto and RWA holders can also borrow FXD using their assets as collateral.",
     chain: "XDC",
-    logo: `${baseIconsUrl}/fathom.png`,
+    logo: `${baseIconsUrl}/fathom-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "fathom-protocol",
@@ -8464,7 +8464,7 @@ const data3: Protocol[] = [
     twitter: "Fathom_fi",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    stablecoins: ["fathom-dollar"],
+    parentProtocol: "parent#fathom",
     listedAt: 1686174878
   },
   {
@@ -38466,7 +38466,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://facts.frax.finance/fraxlend/amo",
     description:
-      "“Algorithmic Market Operations” (AMO) contracts are autonomous contracts that enact pre-programmed monetary policy into a specific subprotocol (either internally built and owned by Frax Protocol such as Fraxlend and Fraxswap or external such as Curve).",
+      "Algorithmic Market Operations” (AMO) contracts are autonomous contracts that enact pre-programmed monetary policy into a specific subprotocol (either internally built and owned by Frax Protocol such as Fraxlend and Fraxswap or external such as Curve).",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/frax-amo.jpg`,
     audits: "0",
@@ -38481,6 +38481,52 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1712155143
+  },
+  {
+    id: "4423",
+    name: "Fathom CDP",
+    address: "xdc:0x35Ad816bC01C0Ed46eF3ce918f7b458d7b1CC18e",
+    symbol: "FTHM",
+    url: "https://fathom.fi/",
+    description:
+      "Fathom Protocol is a comprehensive DeFi platform providing liquidity solutions to both retail and institutional participants. Users can deposit XDC and staked XDC to mint FXD, USD stablecoin, which can be used to gain exposure to yield opportunities through our RWA Vaults and Trade Finance Pools. Crypto and RWA holders can also borrow FXD using their assets as collateral.",
+    chain: "XDC",
+    logo: `${baseIconsUrl}/fathom-cdp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["XDC"],
+    module: "fathom-CDP/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Fathom_fi",
+    parentProtocol: "parent#fathom",
+    listedAt: 1712156169
+  },
+  {
+    id: "4424",
+    name: "Fathom Vault",
+    address: "xdc:0x35Ad816bC01C0Ed46eF3ce918f7b458d7b1CC18e",
+    symbol: "FTHM",
+    url: "https://fathom.fi/",
+    description:
+      "Fathom Protocol is a comprehensive DeFi platform providing liquidity solutions to both retail and institutional participants. Users can deposit XDC and staked XDC to mint FXD, USD stablecoin, which can be used to gain exposure to yield opportunities through our RWA Vaults and Trade Finance Pools. Crypto and RWA holders can also borrow FXD using their assets as collateral.",
+    chain: "XDC",
+    logo: `${baseIconsUrl}/fathom-vault.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["XDC"],
+    module: "fathom-CDP/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Fathom_fi",  
+    parentProtocol: "parent#fathom",
+    listedAt: 1712156169
   },
 ]
 

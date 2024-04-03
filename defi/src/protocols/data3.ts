@@ -38567,7 +38567,7 @@ const data3: Protocol[] = [
     chains: ["Mantle"],
     oracles: [],
     forkedFrom: ["Joe V2.1"],
-    module: "merchant-moe/index.js",
+    module: "merchant-moe-lb/index.js",
     twitter: "MerchantMoe_xyz",
     parentProtocol: "parent#merchant-moe",
     listedAt: 1712166957

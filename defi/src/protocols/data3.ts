@@ -38483,7 +38483,7 @@ const data3: Protocol[] = [
     listedAt: 1712155143
   },
   {
-    id: "4423",
+    id: "4424",
     name: "Fathom CDP",
     address: "xdc:0x35Ad816bC01C0Ed46eF3ce918f7b458d7b1CC18e",
     symbol: "FTHM",
@@ -38506,7 +38506,7 @@ const data3: Protocol[] = [
     listedAt: 1712156169
   },
   {
-    id: "4424",
+    id: "4425",
     name: "Fathom Vault",
     address: "xdc:0x35Ad816bC01C0Ed46eF3ce918f7b458d7b1CC18e",
     symbol: "FTHM",

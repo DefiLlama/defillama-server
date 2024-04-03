@@ -38387,7 +38387,7 @@ const data3: Protocol[] = [
     module: "c14/index.js",
     twitter: "c14_wtf",
     forkedFrom: ["AAVE V3"],
-    oracles: [], 
+    oracles: ["Supra"], 
     audit_links: ["https://github.com/c14-wtf/audit/blob/main/PeckShield-Audit-Report-C14-v1.0.pdf"],
     github: ["c14-wtf"],
     listedAt: 1712057634

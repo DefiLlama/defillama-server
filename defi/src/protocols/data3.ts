@@ -38444,7 +38444,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://savmswap.io",
     description:
-      "Uniswap V2 fork on CosVM chain",
+      "Uniswap V2 fork on SatoshiVM chain",
     chain: "SatoshiVM",
     logo: `${baseIconsUrl}/savmswap.jpg`,
     audits: "0",

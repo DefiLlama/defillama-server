@@ -1982,5 +1982,9 @@ export default {
     "keller": {
         enabled: true,
         id: "4388"
+    },
+    "koi-finance": {
+        enabled: true,
+        id: "2727"
     }
 } as AdaptorsConfig

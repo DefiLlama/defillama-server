@@ -146,7 +146,7 @@ export default {
     id: "1833",
   },
   "swapgpt": {
-    enabled: true,
+    enabled: false,
     id: "4008",
   },
   "kanalabs": {

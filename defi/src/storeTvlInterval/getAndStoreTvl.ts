@@ -70,7 +70,7 @@ async function getTvl(
             throw new Error('Cache data missing for '+ storedKey)
         } else {
           tvlBalances = await tvlFunction(api, ethBlock, chainBlocks, api);
-          if (!tvlBalances && Object.keys(api.getBalances()).length) tvlBalances = api.getBalances()
+          if (tvlBalances === undefined) tvlBalances = api.getBalances()
           chainDashPromise = storeAllTokens(Object.keys(tvlBalances));
         }
         Object.keys(tvlBalances).forEach((key) => {

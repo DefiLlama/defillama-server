@@ -6,7 +6,6 @@ import { closeConnection, getCoins2Connection } from "./getDBConnection";
 import { sendMessage } from "../defi/src/utils/discord";
 import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 import fetch from "node-fetch";
-import postgres from "postgres";
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));

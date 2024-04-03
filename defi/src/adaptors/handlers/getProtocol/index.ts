@@ -1,13 +1,13 @@
-import { successResponse, wrap, IResponse, notFoundResponse, dayCache } from "../../../utils/shared";
-import sluggify, { sluggifyString } from "../../../utils/sluggify";
-import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, IRecordAdapterRecordChainData } from "../../db-utils/adaptor-record";
+import { wrap, IResponse, notFoundResponse, dayCache } from "../../../utils/shared";
+import { sluggifyString } from "../../../utils/sluggify";
+import { AdaptorRecordType, AdaptorRecordTypeMap, IRecordAdapterRecordChainData } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import loadAdaptorsData from "../../data"
 import { AdaptorData, IJSON, ProtocolAdaptor } from "../../data/types";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
-import { formatNdChangeNumber, generateAggregatedVolumesChartData, generateAggregatedVolumesChartDataImprov, generateByDexVolumesChartData, generateByChainVolumesChartDataBreakdown, IChartData, IChartDataBreakdown, IChartDatav2, sumAllVolumes } from "../../utils/volumeCalcs";
-import { DEFAULT_CHART_BY_ADAPTOR_TYPE, IGetOverviewResponseBody, ProtocolAdaptorSummary } from "../getOverviewProcess";
+import { formatNdChangeNumber, generateAggregatedVolumesChartDataImprov, generateByChainVolumesChartDataBreakdown, IChartDataBreakdown, IChartDatav2, sumAllVolumes } from "../../utils/volumeCalcs";
+import { DEFAULT_CHART_BY_ADAPTOR_TYPE, ProtocolAdaptorSummary } from "../getOverviewProcess";
 import parentProtocols from "../../../protocols/parentProtocols";
 import standardizeProtocolName from "../../../utils/standardizeProtocolName";
 import { IParentProtocol } from "../../../protocols/types";
@@ -227,14 +227,6 @@ const getProtocolData = async (protocolName: string, adaptorType: AdapterType) =
         console.error(`Couldn't load adaptors with type ${adaptorType} :${JSON.stringify(error)}`)
     }
     return dexData
-}
-
-const formatChartHistory = (volumes: AdaptorRecord[] | null) => {
-    if (volumes === null) return []
-    return volumes.map<ChartItem>(v => ({
-        data: v.data,
-        timestamp: v.sk
-    }))
 }
 
 export default wrap(handler);

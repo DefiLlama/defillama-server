@@ -17,8 +17,16 @@ cache.clearTempFolders()
 const repoDir = cache.getTempFolder()
 const git = simpleGit(repoDir)
 const repoUrl = 'https://github.com/electric-capital/crypto-ecosystems.git'
+const orgSet = new Set()
 
 function consolidateOrgData(title) {
+  if (!orgSet.has(title)) 
+    orgSet.add(title)
+  else {
+    console.log('Duplicate org', title)
+    return;
+  }
+
   const data = ecosystemData[title]
   const { sub_ecosystems } = data
   if (!sub_ecosystems.length) return

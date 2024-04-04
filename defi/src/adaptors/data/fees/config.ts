@@ -1986,5 +1986,9 @@ export default {
     "koi-finance": {
         enabled: true,
         id: "2727"
+    },
+    "ash-perp": {
+        enabled: true,
+        id: "4426"
     }
 } as AdaptorsConfig

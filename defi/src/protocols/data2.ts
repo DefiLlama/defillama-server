@@ -13050,8 +13050,8 @@ const data2: Protocol[] = [
   {
     id: "1961",
     name: "Scallop Lend",
-    address: null,
-    symbol: "-",
+    address: "sui:0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA",
+    symbol: "SCA",
     url: "https://scallop.io",
     description: "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
     chain: "Solana",
@@ -13061,7 +13061,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Solana"],
+    chains: ["Sui"],
     module: "scallop/index.js",
     oracles: ['Supra', 'Switchboard', 'Pyth'], // https://github.com/DefiLlama/defillama-server/pull/5152/
     forkedFrom: [],

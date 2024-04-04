@@ -25958,7 +25958,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2528",
-    name: "SolidLizard",
+    name: "SolidLizard Dex",
     address: "arbitrum:0x463913D3a3D3D291667D53B8325c598Eb88D3B0e",
     symbol: "SLIZ",
     url: "https://solidlizard.finance/",
@@ -25968,7 +25968,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/solidlizard.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "solidlizard",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Arbitrum"],
@@ -25976,7 +25976,7 @@ const data2: Protocol[] = [
     twitter: "solidlizardfi",
     oracles: [],
     forkedFrom: ["Solidly"],
-    governanceID: ["snapshot:solidlizardfinance.eth"],
+    parentProtocol: "parent#solidlizard",
     listedAt: 1676230053
   },
   {

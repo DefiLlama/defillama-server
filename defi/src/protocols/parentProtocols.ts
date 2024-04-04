@@ -4120,6 +4120,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "KriyaDEX",
     github: ["efficacy-finance"]
   },
+  {
+    id: "parent#solidlizard",
+    name: "SolidLizard",
+    url: "https://solidlizard.finance/",
+    description:
+      "Ve(3,3) DEX and Lending, pioneering Defi on Arbitrum",
+    logo: `${baseIconsUrl}/solidlizard.png`,
+    gecko_id: "solidlizard",
+    cmcId: null,
+    chains: [],
+    twitter: "solidlizardfi",
+    governanceID: ["snapshot:solidlizardfinance.eth"],
+  },
 ];
 
 export default parentProtocols;

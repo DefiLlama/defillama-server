@@ -38716,6 +38716,73 @@ const data3: Protocol[] = [
     parentProtocol: "parent#kriyadex",
     listedAt: 1712244227
   },
+  {
+    id: "4434",
+    name: "Zenon Finance",
+    address: null,
+    symbol: "-",
+    url: "", // browser error: site not secure
+    description:
+      "A one-stop unified DEX for the Degens on Degen L3",
+    chain: "Degen",
+    logo: `${baseIconsUrl}/zenon-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Degen"],
+    module: "Zenonswap/index.js",
+    twitter: "zenonfi",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    github: ["Zenonfi"],
+    listedAt: 1712267984
+  },
+  {
+    id: "4435",
+    name: "SolidLizard Lending",
+    address: "arbitrum:0xe6AF844d5740B6B297B6Dd7Fb2ce299Ee9E3d16F",
+    symbol: "SCALES",
+    url: "https://lending.solidlizard.finance/",
+    description:
+      "SolidLizard Lending is a highly scalable decentralized lending protocol powered by Arbitrum",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/solidlizard-lending.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "solidlizard-lending/index.js",
+    twitter: "solidlizardfi",
+    oracles: ["Chainlink"], // https://solidlizard.gitbook.io/solidlizard-lending/lending-markets/oracle
+    forkedFrom: ["Compound V2"],
+    parentProtocol: "parent#solidlizard",
+    listedAt: 1712268565
+  },
+  {
+    id: "4436",
+    name: "Iskra Fi",
+    address: null,
+    symbol: "-",
+    url: "https://iskra.finance",
+    description:
+      "Iskra is a DeFi protocol that grows the value of its collection of DeFi fan coin assets and generates real yield for its users",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/iskra-fi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Klaytn"],
+    module: "iskra/index.js",
+    twitter: "iskra_defi",
+    forkedFrom: [],
+    listedAt: 1712268997
+  },
 ]
 
 export default data3

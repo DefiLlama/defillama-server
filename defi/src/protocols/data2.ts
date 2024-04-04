@@ -15784,6 +15784,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "pluto/index.js",
     twitter: "whenPluto",
+    treasury: "pluto.js",
     listedAt: 1662996198
   },
   {

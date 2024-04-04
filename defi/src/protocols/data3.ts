@@ -5338,12 +5338,12 @@ const data3: Protocol[] = [
   },
   {
     id: "2939",
-    name: "KriyaDEX",
+    name: "KriyaDEX Swap",
     address: null,
     symbol: "-",
-    url: "https://kriya.finance/",
+    url: "https://app.kriya.finance/spot/liquidity",
     description:
-      "Kriya is building institutional grade infra for on-chain trading. The current suite includes - an in-app bridge, an AMM swap and a fully on-chain orderbook for 20x perp trading. OTC-RFQ functionality coming soon",
+      "Kriya's native AMM. Supports both stable and constant product curves. One of deepest liquidity source in Kriya's cross-protocol router",
     chain: "Sui",
     logo: `${baseIconsUrl}/kriyadex.png`,
     audits: "2",
@@ -5355,8 +5355,9 @@ const data3: Protocol[] = [
     module: "kriya-dex/index.js",
     twitter: "KriyaDEX",
     forkedFrom: [],
-    audit_links: ["https://drive.google.com/file/d/1glrBMbUc0UHYAI0cILEtKM-z_CI24Gdr/view?usp=sharing"],
+    audit_links: ["https://docs.kriya.finance/sdk-smart-contracts-and-security/audit-reports"],
     oracles: [],
+    parentProtocol: "parent#kriyadex",
     listedAt: 1683484651
   },
   {
@@ -38485,7 +38486,7 @@ const data3: Protocol[] = [
   {
     id: "4424",
     name: "Fathom CDP",
-    address: "xdc:0x35Ad816bC01C0Ed46eF3ce918f7b458d7b1CC18e",
+    address: "xdc:xdc3279dBEfABF3C6ac29d7ff24A6c46645f3F4403c",
     symbol: "FTHM",
     url: "https://fathom.fi/",
     description:
@@ -38508,7 +38509,7 @@ const data3: Protocol[] = [
   {
     id: "4425",
     name: "Fathom Vault",
-    address: "xdc:0x35Ad816bC01C0Ed46eF3ce918f7b458d7b1CC18e",
+    address: "xdc:xdc3279dBEfABF3C6ac29d7ff24A6c46645f3F4403c",
     symbol: "FTHM",
     url: "https://fathom.fi/",
     description:
@@ -38668,6 +38669,52 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1712181113
+  },
+  {
+    id: "4432",
+    name: "Fathom Lending",
+    address: "xdc:xdc3279dBEfABF3C6ac29d7ff24A6c46645f3F4403c",
+    symbol: "FTHM",
+    url: "https://fathom.fi/",
+    description:
+      "Fathom Protocol is a comprehensive DeFi platform providing liquidity solutions to both retail and institutional participants. Users can deposit XDC and staked XDC to mint FXD, USD stablecoin, which can be used to gain exposure to yield opportunities through our RWA Vaults and Trade Finance Pools. Crypto and RWA holders can also borrow FXD using their assets as collateral.",
+    chain: "XDC",
+    logo: `${baseIconsUrl}/fathom-vault.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["XDC"],
+    module: "fathom-lending/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Fathom_fi",  
+    parentProtocol: "parent#fathom",
+    listedAt: 1712243605
+  },
+  {
+    id: "4433",
+    name: "KriyaDEX Earn",
+    address: null,
+    symbol: "-",
+    url: "https://app.kriya.finance/strategies",
+    description:
+      "Vaults that provide retail investors tokenized access to sophisticated DeFi strategies such as leverage lending, reward auto-compounding and CLMM LP management",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/kriyadex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Sui"],
+    module: "kriya-dex-earn/index.js",
+    twitter: "KriyaDEX",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#kriyadex",
+    listedAt: 1712244227
   },
 ]
 

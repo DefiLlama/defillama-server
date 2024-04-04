@@ -4107,6 +4107,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ether_fi",
   },
+  {
+    id: "parent#kriyadex",
+    name: "KriyaDEX",
+    url: "https://app.kriya.finance/",
+    description:
+      "One stop DeFi protocol on Sui. Offering Swaps, Limit Orders, 1-click leverage lending strategies, Yield Optimiser Vaults and 20x perpetuals",
+    logo: `${baseIconsUrl}/kriyadex.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "KriyaDEX",
+    github: ["efficacy-finance"]
+  },
 ];
 
 export default parentProtocols;

@@ -2538,8 +2538,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
     logo: `${baseIconsUrl}/scallop.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "scallop-2",
+    cmcId: "29679",
     chains: [],
     twitter: "Scallop_io",
     github: ["scallop-io"],

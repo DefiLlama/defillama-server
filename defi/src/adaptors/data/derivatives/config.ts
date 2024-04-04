@@ -746,5 +746,9 @@ export default {
     "swych": {
         enabled: true,
         id: "4365",
+    },
+    "ash-perp": {
+        enabled: true,
+        id: "4426"
     }
 } as AdaptorsConfig

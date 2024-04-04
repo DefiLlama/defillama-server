@@ -89,5 +89,9 @@ export default {
         parentId: "Lyra",
         "enabled": true,
         "id": "3923"
+    },
+    "optionBlitz": {
+        enabled: true,
+        id: "4396"
     }
 } as AdaptorsConfig

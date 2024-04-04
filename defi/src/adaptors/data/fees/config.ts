@@ -1990,5 +1990,9 @@ export default {
     "ash-perp": {
         enabled: true,
         id: "4426"
+    },
+    "optionBlitz": {
+        enabled: true,
+        id: "4396"
     }
 } as AdaptorsConfig

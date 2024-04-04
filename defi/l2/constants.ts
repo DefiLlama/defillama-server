@@ -15,6 +15,14 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "solana",
   // "sui",
   // "aptos",
+  "rootstock",
+  "stacks",
+  "bitcoin",
+  "fantom",
+  "thorchain",
+  "filecoin",
+  "near",
+  "aurora",
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -27,7 +35,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3785": "polygon_zkevm",
   "3786": "scroll",
   "3787": "starknet",
-  "3788": "zksync",
+  "3788": "era",
   "1501": "everscale",
   "349": "injecitve",
   // "801": "celo",
@@ -41,7 +49,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "240": "polygon",
   "3779": "avax",
   "3783": "metis",
-  "3866": "aurora",
+  // "3866": "aurora",
   "3861": "rsk",
   "3936": "zksync",
   "3935": "boba",
@@ -51,6 +59,10 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4335": "zklink",
   "4336": "kinto",
   "4384": "rss3_vsl",
+  "": "ronin",
+  // "3866": "near",
+  "": "pulsechain",
+  "": "degen",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -98,9 +110,28 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   rss3_vsl: { ticker: "RSS3", address: "0x0000000000000000000000000000000000000000" },
   // blast: { ticker: 'BLAST', address: ''}
   // mode: { ticker: 'MODE', address: ''}
+
+  ronin: { ticker: "RON", address: "0x0000000000000000000000000000000000000000" },
+  near: { ticker: "NEAR", address: "0x0000000000000000000000000000000000000000" },
+  pulsechain: { ticker: "PLS", address: "0x0000000000000000000000000000000000000000" },
+  // rootstock: { ticker: "", address: "" },
+  stacks: { ticker: "STX", address: "0x0000000000000000000000000000000000000000" },
+  fantom: { ticker: "FTM", address: "0x0000000000000000000000000000000000000000" },
+  thorchain: { ticker: "RUNE", address: "" },
+  filecoin: { ticker: "FIL", address: "0x0000000000000000000000000000000000000000" },
+  degen: { ticker: "DEGEN", address: "0x0000000000000000000000000000000000000000" },
 };
 
 export const gasTokens: { [chain: Chain]: string } = {
+  ronin: "RON",
+  near: "NEAR",
+  pulsechain: "PLS",
+  rootstock: "RBTC",
+  stacks: "STX",
+  fantom: "FTM",
+  thorchain: "RUNE",
+  filecoin: "FIL",
+  degen: "DEGEN",
   mantle: "ETH",
   arbitrum: "ETH",
   nova: "ETH",
@@ -110,6 +141,7 @@ export const gasTokens: { [chain: Chain]: string } = {
   scroll: "ETH",
   starknet: "ETH",
   zksync: "ETH",
+  era: "ETH",
   everscale: "EVER",
   injective: "INJ",
   celo: "CELO",

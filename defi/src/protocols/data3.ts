@@ -17950,8 +17950,9 @@ const data3: Protocol[] = [
     description:
       "A decentralized, non-custodial liquidity market that creates a more seamless experience for Suppliers and Borrowers.",
     chain: "Base",
-    logo: `${baseIconsUrl}/seamless-protocol.jpg`,
-    audits: "0",
+    logo: `${baseIconsUrl}/seamless-protocol.svg`,
+    audits: "1",
+    audit_links: ["https://github.com/seamless-protocol/audits"],
     audit_note: null,
     gecko_id: "seamless-protocol",
     cmcId: "28652",

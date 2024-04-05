@@ -93,5 +93,9 @@ export default {
     "optionBlitz": {
         enabled: true,
         id: "4396"
+    },
+    "smilee-finance": {
+        enabled: true,
+        id: "4350"
     }
 } as AdaptorsConfig

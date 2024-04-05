@@ -38767,7 +38767,7 @@ const data3: Protocol[] = [
     name: "Iskra Fi",
     address: null,
     symbol: "-",
-    url: "https://iskra.finance",
+    url: "https://iskra.world/stake-info",
     description:
       "Iskra is a DeFi protocol that grows the value of its collection of DeFi fan coin assets and generates real yield for its users",
     chain: "Klaytn",
@@ -38776,10 +38776,10 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Farm",
     chains: ["Klaytn"],
     module: "iskra/index.js",
-    twitter: "iskra_defi",
+    twitter: "iskra_world",
     forkedFrom: [],
     listedAt: 1712268997
   },

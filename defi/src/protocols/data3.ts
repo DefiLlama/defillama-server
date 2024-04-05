@@ -38952,6 +38952,51 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/pashov/audits/blob/master/solo/pdf/Lumin-security-review.pdf"],
     listedAt: 1712324027
   },
+  {
+    id: "4445",
+    name: "Bevmswap",
+    address: null,
+    symbol: "-",
+    url: "https://bevmswap.xyz/liquidity",
+    description:
+      "Bevmswap is an AMM DEX on BEVM Chain, EVM-compatible.",
+    chain: "BEVM",
+    logo: `${baseIconsUrl}/bevmswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["BEVM"],
+    module: "bevmswap-xyz/index.js",
+    twitter: "Bevmswap",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    github: ["Bevmswap"],
+    listedAt: 1712327109
+  },
+  {
+    id: "4446",
+    name: "Synthetix V3",
+    address: null,
+    symbol: "-",
+    url: "https://synthetix.io",
+    description:
+      "Synthetix provides liquidity for permissionless derivatives like perpetual futures, options, parimutuel markets, and more across EVM chains. Powering the next generation of permissionless protocols.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/synthetix-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "synthetix-v3/index.js",
+    twitter: "synthetix_io",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1712327109
+  },
 ]
 
 export default data3

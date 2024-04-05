@@ -38783,6 +38783,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1712268997
   },
+  {
+    id: "4437",
+    name: "Puff Penthouse",
+    address: null,
+    symbol: "-",
+    url: "https://www.methlab.xyz/puffpenthouse?page=stake",
+    description:
+      "Puff's Penthouse enables users to stake $Puff to accumulate Potion Strength 24 hours after staking. Higher Potion Strength increases $Puff rewards when Red Potions drop",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/puff-penthouse.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Mantle"],
+    module: "puff-penthouse/index.js",
+    twitter: "puff_drgn",
+    forkedFrom: [],
+    treasury: "puff.js",
+    listedAt: 1712282967
+  },
 ]
 
 export default data3

@@ -155,21 +155,21 @@ export async function fetchFlows(period: number) {
   });
   const end: any = result[result.length - 1];
 
-  const percs: any = {};
+  const res: any = {};
   const chains = Object.keys(end.data);
 
   chains.map((chain: string) => {
-    percs[chain] = {};
+    res[chain] = {};
     Object.keys(end.data[chain]).map((k: string) => {
       const a = start.data[chain][k];
       const b = end.data[chain][k];
-
-      if (a != "0" && b == "0") percs[chain][k] = -100;
-      else if (b == "0") percs[chain][k] = 0;
-      else if (a == "0") percs[chain][k] = 100;
-      else percs[chain][k] = ((100 * (b - a)) / a).toFixed(2);
+      const raw = (b - a).toFixed();
+      if (a != "0" && b == "0") res[chain][k] = { perc: "-100", raw };
+      else if (b == "0") res[chain][k] = { perc: "0", raw };
+      else if (a == "0") res[chain][k] = { perc: "100", raw };
+      else res[chain][k] = { perc: ((100 * (b - a)) / a).toFixed(2), raw };
     });
   });
 
-  return percs;
+  return res;
 }

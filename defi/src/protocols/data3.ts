@@ -38908,6 +38908,50 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1712318938
   },
+  {
+    id: "4443",
+    name: "eesee",
+    address: null,
+    symbol: "-",
+    url: "https://eesee.io",
+    description:
+      "Gamified liquidity solution and marketplace for digital assets, tokens and RWAs on Blast_L2",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/eesee.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Blast"],
+    module: "eesee/index.js",
+    twitter: "eesee_io",
+    forkedFrom: [],
+    listedAt: 1712323027
+  },
+  {
+    id: "4444",
+    name: "Lumin Finance",
+    address: "arbitrum:0x1FC01117E196800f416A577350CB1938d10501C2",
+    symbol: "LUMIN",
+    url: "https://lumin.finance",
+    description:
+      "Lumin is a decentralised peer-to-peer fixed rate lending and borrowing protocol. Launched on Arbitrum and powered by the $LUMIN token, for revenue sharing and DAO governance.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/lumin-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    module: "lumin-finance/index.js",
+    twitter: "LuminProtocol",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://github.com/pashov/audits/blob/master/solo/pdf/Lumin-security-review.pdf"],
+    listedAt: 1712324027
+  },
 ]
 
 export default data3

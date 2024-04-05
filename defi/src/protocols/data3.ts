@@ -38978,8 +38978,8 @@ const data3: Protocol[] = [
   {
     id: "4446",
     name: "Synthetix V3",
-    address: null,
-    symbol: "-",
+    address: "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
+    symbol: "SNX",
     url: "https://synthetix.io",
     description:
       "Synthetix provides liquidity for permissionless derivatives like perpetual futures, options, parimutuel markets, and more across EVM chains. Powering the next generation of permissionless protocols.",

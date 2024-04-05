@@ -20,5 +20,9 @@ export default {
               "enabled": true,
           }
       },
-},
+  },
+  "rage-trade": {
+    "id":"4447",
+    enabled: true,
+  }
 } as AdaptorsConfig;

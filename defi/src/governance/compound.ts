@@ -214,10 +214,10 @@ export async function updateCompounds() {
         let start = 0
         let end = 0
         if (startBlock !== 0)
-          start = (await provider.getBlock(toHex(startBlock)))?.timestamp
+          start = (await provider.getBlock(toHex(startBlock)))?.timestamp ?? 0
 
         if (endBlock !== 0)
-          end = (await provider.getBlock(toHex(endBlock)))?.timestamp
+          end = (await provider.getBlock(toHex(endBlock)))?.timestamp ?? 0
 
         const scores = [+forVotes, +againstVotes, +abstainVotes,]
         const scores_total = scores.reduce((acc, i) => acc + i, 0)

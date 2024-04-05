@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Proposal, GovCache } from '../types';
 import { updateStats } from '../utils';
-import { setCompound, getCompound } from '../cache';
+import { setCompound, getCompound, getCompoundOverview } from '../cache';
 
 export const TAGGR_URL: string = "https://6qfxa-ryaaa-aaaai-qbhsq-cai.raw.icp0.io/";
 export const TAGGR_ID: string = "6qfxa-ryaaa-aaaai-qbhsq-cai";
@@ -184,12 +184,13 @@ export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCac
     let cache : GovCache = await getCompound( TAGGR_ID );
     cache.metadata = {
         ...cache.metadata,
-        ...
-        metadata
+        ...metadata
     };
     cache.id = metadata.id;
 
-    const cached_proposals_count = Object.keys(cache.proposals).length;
+    if (!metadata.latestProposalId) return overview
+
+    const cached_proposals_count = Object.keys(cache.proposals ?? {}).length;
     let proposal_left_to_fetch = metadata.latestProposalId - cached_proposals_count;
     const MAX_PROPOSALS_PER_REQUEST : number = 100;
 
@@ -207,7 +208,28 @@ export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCac
     {
         Object.values( overview[ cache.id ].months ?? {} ).forEach( ( month : any ) => delete month.proposals )
     }
+    // fs.writeFileSync('compound-taggr.json', JSON.stringify(cache, null, 2))
     await setCompound( cache.id, cache )
 
     return overview
 }
+
+
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason)
+    })
+process.on('uncaughtException', (error) => {
+    console.error('Uncaught Exception thrown', error)
+})
+
+
+/*
+
+import * as fs from 'fs'
+getCompoundOverview().then(async i => {
+    await addTaggrProposals(i)
+    console.log('hello')
+    fs.writeFileSync('compound-overview.json', JSON.stringify(i, null, 2))
+  }).then(() => process.exit(0))
+ */

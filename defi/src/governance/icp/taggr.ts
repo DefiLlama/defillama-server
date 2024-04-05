@@ -88,7 +88,7 @@ export interface TaggrProposalReponse {
  */
 export async function get_metadata ()
 {
-    var { data, } = await axios.get(
+   var { data, } = await axios.get(
         TAGGR_URL + "/api/v1/metadata"
         ,
         {
@@ -96,8 +96,7 @@ export async function get_metadata ()
                 Accept: 'application/json',
             },
         },
-    );
-
+    ); 
     return {
         id: TAGGR_ID,
         type: "Taggr DAO",
@@ -130,6 +129,8 @@ function convert_proposal_format ( proposal : TaggrProposalReponse ) : Proposal
             sumFalse += bulletin[2]; // Add score for false
         }
     });
+
+    const timestamp = Math.floor(+proposal.timestamp.toString()/ 1e9) 
     
     return {
         id: proposal.id.toString(),
@@ -147,8 +148,8 @@ function convert_proposal_format ( proposal : TaggrProposalReponse ) : Proposal
         score_skew: 0,
         score_curve: 0,
         score_curve2: 0,
-        start: Number(proposal.timestamp),
-        end: Number(proposal.timestamp) + 1,
+        start: timestamp,
+        end: timestamp + 1,
         executed: proposal.status === 'Executed',
         link: "https://taggr.link/#/post/" + proposal.post_id
     };
@@ -175,7 +176,7 @@ export async function get_proposals_interval ( limit : number, offset : number )
         },
     );
 
-    return data.data;
+    return data;
 };
 
 export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCache[]>
@@ -189,6 +190,7 @@ export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCac
     cache.id = metadata.id;
 
     if (!metadata.latestProposalId) return overview
+    cache.proposals = cache.proposals ?? {};
 
     const cached_proposals_count = Object.keys(cache.proposals ?? {}).length;
     let proposal_left_to_fetch = metadata.latestProposalId - cached_proposals_count;
@@ -198,6 +200,7 @@ export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCac
     while (proposal_left_to_fetch > 0) {
         let limit = Math.min( MAX_PROPOSALS_PER_REQUEST, proposal_left_to_fetch );
         let offset = proposal_left_to_fetch - limit;
+
         ( await get_proposals_interval( limit, offset ) )
             .forEach( ( fetched_proposal : any ) => { cache.proposals[ fetched_proposal.id ] = convert_proposal_format(fetched_proposal); } );
         proposal_left_to_fetch -= limit;
@@ -224,8 +227,7 @@ process.on('uncaughtException', (error) => {
 })
 
 
-/*
-
+/* 
 import * as fs from 'fs'
 getCompoundOverview().then(async i => {
     await addTaggrProposals(i)

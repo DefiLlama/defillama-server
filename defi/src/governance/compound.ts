@@ -86,10 +86,15 @@ export async function updateCompounds() {
     await Promise.all(ids.map(updateCache))
   }
 
-  await addSNSProposals(overview)
-  await addICPProposals(overview)
-  await addTaggrProposals(overview)
-  await setCompoundOverview(overview)
+  const fns = [addICPProposals, addSNSProposals, addTaggrProposals, setCompoundOverview]
+
+  for (const fn of fns) {
+    try {
+      await fn(overview)
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   async function updateCache(id: string) {
     if (id === NNS_GOV_ID) return;

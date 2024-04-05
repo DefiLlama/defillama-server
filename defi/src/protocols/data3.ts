@@ -5338,14 +5338,14 @@ const data3: Protocol[] = [
   },
   {
     id: "2939",
-    name: "KriyaDEX Swap",
+    name: "Kriya Swap",
     address: null,
     symbol: "-",
     url: "https://app.kriya.finance/spot/liquidity",
     description:
       "Kriya's native AMM. Supports both stable and constant product curves. One of deepest liquidity source in Kriya's cross-protocol router",
     chain: "Sui",
-    logo: `${baseIconsUrl}/kriyadex.png`,
+    logo: `${baseIconsUrl}/kriya-swap.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -38695,14 +38695,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4433",
-    name: "KriyaDEX Earn",
+    name: "Kriya Earn",
     address: null,
     symbol: "-",
     url: "https://app.kriya.finance/strategies",
     description:
       "Vaults that provide retail investors tokenized access to sophisticated DeFi strategies such as leverage lending, reward auto-compounding and CLMM LP management",
     chain: "Sui",
-    logo: `${baseIconsUrl}/kriyadex.png`,
+    logo: `${baseIconsUrl}/kriya-earn.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

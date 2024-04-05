@@ -15,7 +15,6 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "solana",
   // "sui",
   // "aptos",
-  "rsk",
   "stacks",
   "bitcoin",
   "fantom",

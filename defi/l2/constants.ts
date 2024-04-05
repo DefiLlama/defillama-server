@@ -59,10 +59,10 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4335": "zklink",
   "4336": "kinto",
   "4384": "rss3_vsl",
-  "": "ronin",
+  "4440": "ronin",
   // "3866": "near",
-  "": "pulsechain",
-  "": "degen",
+  "4439": "pulsechain",
+  "4438": "degen",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

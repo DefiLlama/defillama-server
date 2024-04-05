@@ -37885,7 +37885,7 @@ const data3: Protocol[] = [
     symbol: "HTM",
     assetToken: "WTAO",
     url: "https://app.hatom.com/liquid/tao",
-    description: "Liquid Staking is a module that allows users to stake their EGLD without locking up its value and receive a token called Staked EGLD (sEGLD)",
+    description: "Liquid Staking is a module that allows users to stake their wTAO without locking up its value and receive a token called Staked wTAO (swTAO).",
     chain: "Elrond",
     logo: `${baseIconsUrl}/hatom-tao-liquid-staking.jpg`,
     audits: "0",

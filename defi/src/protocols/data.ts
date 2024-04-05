@@ -3596,7 +3596,6 @@ const data: Protocol[] = [
     twitter: null,
     audit_links: ["https://docs.acoconut.fi/security"],
     governanceID: ["snapshot:acoconutbsc.eth", "snapshot:acoconut.eth"],
-    github: ["nutsfinance"]
   },
   {
     id: "274",

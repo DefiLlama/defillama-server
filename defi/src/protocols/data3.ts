@@ -38865,6 +38865,49 @@ const data3: Protocol[] = [
     twitter: "Ronin_Network",
     forkedFrom: [],
   },
+  {
+    id: "4441",
+    name: "VenomBridge",
+    address: null,
+    symbol: "-",
+    url: "https://venombridge.com",
+    description:
+      "Venombridge.com is a pioneering decentralized cross-chain bridge connecting the Venom Blockchain with Ethereum Virtual Machine (EVM) compatible networks. As the first of its kind on the Venom ecosystem.",
+    chain: "Venom",
+    logo: `${baseIconsUrl}/venombridge.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Venom"],
+    module: "venombridge/index.js",
+    twitter: "VenomBridge",
+    forkedFrom: [],
+    audit_links: ["https://skynet.certik.com/projects/venom-bridge"],
+    listedAt: 1712318838
+  },
+  {
+    id: "4442",
+    name: "Fufuture",
+    address: null,
+    symbol: "-",
+    url: "https://www.fufuture.io",
+    description:
+      "Perpetual options, 0 slippage, never liquidate, dual pools.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/fufuture.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance", "Arbitrum"],
+    module: "fufuture/index.js",
+    twitter: "fufuture_io",
+    forkedFrom: [],
+    listedAt: 1712318938
+  },
 ]
 
 export default data3

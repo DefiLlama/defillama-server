@@ -38997,6 +38997,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1712327109
   },
+  {
+    id: "4447",
+    name: "Rage Trade",
+    address: null,
+    symbol: "-",
+    url: "https://www.rage.trade",
+    description:
+      "Best prices, aggregated liquidity, multichain. Perp Aggregator.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rage-trade.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum", "Optimism", "Arbitrum"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "rage_trade",
+    github: ["RageTrade"],
+    listedAt: 1712327109
+  },
 ]
 
 export default data3

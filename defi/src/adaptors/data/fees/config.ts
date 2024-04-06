@@ -1994,5 +1994,9 @@ export default {
     "optionBlitz": {
         enabled: true,
         id: "4396"
+    },
+    "pumpdotfun": {
+        enabled: true,
+        id: "4449"
     }
 } as AdaptorsConfig

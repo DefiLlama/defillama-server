@@ -39020,6 +39020,30 @@ const data3: Protocol[] = [
     github: ["RageTrade"],
     listedAt: 1712327109
   },
+  {
+    id: "4448",
+    name: "Superform",
+    address: null,
+    symbol: "-",
+    url: "https://www.superform.xyz/",
+    description:
+      "Superform is the Universal Yield Marketplace. For yield seekers, Superform abstracts away the swap, bridge, and deposit process, letting you access any vault on any chain in one transaction. For protocols, deploy once and get instant omnichain distribution",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/superform.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Polygon", "Ethereum", "Optimism", "Arbitrum", "Avalanche", "Binance", "Base"],
+    module: "superform/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "superformxyz",
+    audit_links: ["https://github.com/superform-xyz/superform-core/tree/main/security-review"],
+    github: ["superform-xyz"],
+    listedAt: 1712365922
+  },
 ]
 
 export default data3

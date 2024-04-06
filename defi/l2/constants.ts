@@ -49,7 +49,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3779": "avax",
   "3783": "metis",
   "3866": "aurora",
-  "3861": "rsk",
+  // "3861": "rsk",
   "3936": "zksync",
   "3935": "boba",
   "4032": "manta",

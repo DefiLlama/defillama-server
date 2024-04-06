@@ -124,8 +124,9 @@ function findDailyEntries(raw: ChartData[], period: number = secondsInADay): Cha
     clean.push({ data: raw[index].data, timestamp: timestamp.toString() });
     timestamp += period;
   }
-
-  clean.push(raw[raw.length - 1]);
+  if (raw.length > 0) {
+    clean.push(raw[raw.length - 1]);
+  }
 
   return clean;
 }

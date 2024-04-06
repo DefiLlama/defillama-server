@@ -39044,6 +39044,50 @@ const data3: Protocol[] = [
     github: ["superform-xyz"],
     listedAt: 1712365922
   },
+  {
+    id: "4449",
+    name: "Pump",
+    address: null,
+    symbol: "-",
+    url: "https://www.pump.fun/",
+    description:
+      "Launch a coin that is instantly tradeable without having to seed liquidity. Deploy a coin for under 2$ in one click",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/pump.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Solana"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "pumpdotfun",
+    listedAt: 1712427917
+  },
+  {
+    id: "4450",
+    name: "Oxbull",
+    address: "bsc:0x7536c00711e41df6aebcca650791107645b6bc52",
+    symbol: "OXB",
+    url: "https://oxbull.tech/app",
+    description:
+      "In Oxbull, staking is a method for users to qualify for IDOs or Private Sale whilst providing an APR of 10%",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/oxbull.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "oxbull-tech-2",
+    cmcId: "8649",
+    category: "Launchpad",
+    chains: ["Binance"],
+    module: "oxb/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "OxBull5",
+    listedAt: 1712428222
+  },
 ]
 
 export default data3

@@ -3286,7 +3286,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "world-mobile-token",
     cmcId: "13769",
-    category: "Services",
+    category: "RWA",
     chains: ["Cardano"],
     oracles: ["Blockfrost"],
     forkedFrom: [],

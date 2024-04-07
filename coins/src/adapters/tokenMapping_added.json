@@ -8178,6 +8178,11 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "ethereum:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    "0x703b52F2b28fEbcB60E1372858AF5b18849FE867": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
     }
   },
   "meta": {

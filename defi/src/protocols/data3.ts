@@ -19517,7 +19517,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["ShimmerEVM"],
     module: "shimmersea/index.js",
-    twitter: "ShimmerSeaDEX",
+    twitter: "MagicSeaDEX",
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1695923248

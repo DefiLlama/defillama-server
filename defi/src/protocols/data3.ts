@@ -17951,7 +17951,7 @@ const data3: Protocol[] = [
       "A decentralized, non-custodial liquidity market that creates a more seamless experience for Suppliers and Borrowers.",
     chain: "Base",
     logo: `${baseIconsUrl}/seamless-protocol.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "seamless-protocol",
     cmcId: "28652",
@@ -17962,6 +17962,7 @@ const data3: Protocol[] = [
     forkedFrom: ["AAVE V3"],
     twitter: "SeamlessFi",
     github: ["seamless-protocol"],
+    audit_links: ["https://github.com/seamless-protocol/audits"],
     listedAt: 1694174275
   },
   {

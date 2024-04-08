@@ -33710,7 +33710,7 @@ const data3: Protocol[] = [
     module: "juice-finance/index.js",
     twitter: "Juice_Finance",
     forkedFrom: [], 
-    oracles: ["RedStone"],  //https://juice-finance.gitbook.io/juice-finance/juice-protocol/borrowing/liquidations#oracles RedStone has ETH & USDB feeds
+    oracles: ["API3"],  //https://juice-finance.gitbook.io/juice-finance/juice-protocol/borrowing/liquidations#oracles API3 has ETH, USDB & ezETH feeds
     listedAt: 1709308594
   },
   {

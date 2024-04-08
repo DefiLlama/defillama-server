@@ -3921,7 +3921,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "sft-protocol/index.js",
-    twitter: "SFT Protocol",
+    twitter: "SFTProtocol",
     listedAt: 1682275040
   },
   {

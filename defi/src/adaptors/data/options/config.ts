@@ -91,7 +91,7 @@ export default {
         "id": "3923"
     },
     "optionBlitz": {
-        enabled: true,
+        enabled: false, //sus behavior
         id: "4396"
     },
     "smilee-finance": {

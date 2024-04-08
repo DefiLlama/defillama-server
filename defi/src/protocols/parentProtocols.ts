@@ -4133,6 +4133,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "solidlizardfi",
     governanceID: ["snapshot:solidlizardfinance.eth"],
   },
+  {
+    id: "parent#arcadia-finance",
+    name: "Arcadia Finance",
+    url: "https://arcadia.finance",
+    description:
+      "Arcadia is a non-custodial protocol enabling composable cross-margin accounts on-chain. Margin account users can collateralize entire portfolios, access up to 10x more capital than their initial collateral value, and use their deposited collateral and the borrowed capital to permissionless interact with any other protocol from a single cross-margin account. Lenders supply assets to Arcadia's lending pools, earning passive yields for providing liquidity to margin account users.",
+    logo: `${baseIconsUrl}/arcadia-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ArcadiaFi",
+    github: ["arcadia-finance"],
+  },
 ];
 
 export default parentProtocols;

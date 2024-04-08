@@ -39111,6 +39111,51 @@ const data3: Protocol[] = [
     twitter: "busta_gamefi",
     listedAt: 1712569867
   },
+  {
+    id: "4452",
+    name: "Moby Options",
+    address: null,
+    symbol: "-",
+    url: "https://app.moby.trade",
+    description:
+      "The Next Options Protocol with Maximized Liquidity.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/moby-options.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum"],
+    module: "moby/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Moby_trade",
+    listedAt: 1712583915
+  },
+  {
+    id: "4453",
+    name: "fMoney",
+    address: "fantom:0x1e2Ea3f3209D66647f959CF00627107e079B870d",
+    symbol: "fBUX",
+    url: "https://www.fmoney.market",
+    description:
+      "Your friendly neighborhood Money Market of the Fantom Opera chain.",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/fmoney.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Fantom"],
+    module: "fMoney/index.js",
+    forkedFrom: ["Compound V2"],
+    oracles: [],
+    twitter: "fMoneyMarkets",
+    github: ["Fantom-Money-Market"],
+    listedAt: 1712584115
+  },
 ]
 
 export default data3

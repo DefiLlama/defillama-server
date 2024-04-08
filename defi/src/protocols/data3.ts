@@ -11417,13 +11417,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3210",
-    name: "Arcadia Finance",
+    name: "Arcadia V1",
     address: null,
     symbol: "-",
     url: "https://arcadia.finance",
     description: `Arcadia is a non-custodial protocol enabling composable cross-margin accounts on-chain. Margin account users can collateralize entire portfolios, access up to 10x more capital than their initial collateral value, and use their deposited collateral and the borrowed capital to permissionless interact with any other protocol from a single cross-margin account. Lenders supply assets to Arcadia's lending pools, earning passive yields for providing liquidity to margin account users.`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/arcadia-finance.jpg`,
+    logo: `${baseIconsUrl}/arcadia-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -11434,11 +11434,11 @@ const data3: Protocol[] = [
     twitter: "ArcadiaFi",
     oracles: ["Chainlink"],
     forkedFrom: [],
-    github: ["arcadia-finance"],
     audit_links: [
                    "https://solidity.finance/audits/ArcadiaFinance",
                    "https://github.com/NethermindEth/PublicAuditReports/blob/main/NM0072-FINAL_ARCADIA.pdf"
                  ],
+    parentProtocol: "parent#arcadia-finance",
     listedAt: 1688728448
   },
   {
@@ -39179,6 +39179,29 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/leaperfinance/protocol-blast/tree/main/audit"],
     github: ["leaperfinance"],
     listedAt: 1712585675
+  },
+  {
+    id: "4455",
+    name: "Arcadia V2",
+    address: null,
+    symbol: "-",
+    url: "https://arcadia.finance",
+    description:
+      "Leverage farming protocol on base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/arcadia-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Base"],
+    module: "arcadia-finance-v2/index.js",
+    forkedFrom: [],
+    oracles: ["Chainlink"], //https://github.com/arcadia-finance/accounts-v2/tree/main/src/oracle-modules
+    twitter: "ArcadiaFi",
+    parentProtocol: "parent#arcadia-finance",
+    listedAt: 1712589897
   },
 ]
 

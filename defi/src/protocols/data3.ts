@@ -39089,6 +39089,28 @@ const data3: Protocol[] = [
     twitter: "OxBull5",
     listedAt: 1712428222
   },
+  {
+    id: "4451",
+    name: "Busta Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://busta.exchange",
+    description:
+      "BUSTA is a fully immersive iGaming, DeFi and DEX ecosystem built on BSC.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/busta-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance"],
+    module: "busta/index.js",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    twitter: "busta_gamefi",
+    listedAt: 1712569867
+  },
 ]
 
 export default data3

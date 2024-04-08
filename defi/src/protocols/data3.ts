@@ -39094,7 +39094,7 @@ const data3: Protocol[] = [
     name: "Busta Exchange",
     address: null,
     symbol: "-",
-    url: "https://busta.exchange",
+    url: "", // website isn't working
     description:
       "BUSTA is a fully immersive iGaming, DeFi and DEX ecosystem built on BSC.",
     chain: "Binance",
@@ -39108,8 +39108,7 @@ const data3: Protocol[] = [
     module: "busta/index.js",
     forkedFrom: ["Uniswap V3"],
     oracles: [],
-    twitter: "busta_gamefi",
-    listedAt: 1712569867
+    twitter: "", // twitter leads to broken website
   },
   {
     id: "4452",

@@ -2002,5 +2002,9 @@ export default {
     "synthetix-v3": {
         enabled: true,
         id: "4446"
+    },
+    "beefy": {
+        enabled: true,
+        id: "326"
     }
 } as AdaptorsConfig

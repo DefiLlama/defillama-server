@@ -330,6 +330,11 @@
       "decimals": "18",
       "symbol": "PUFF",
       "to": "coingecko#puff-the-dragon"
+    },
+    "0x4d831e22f062b5327dfdb15f0b6a5df20e2e3dd0": {
+      "decimals": "18",
+      "symbol": "cSTONE",
+      "to": "coingecko#stakestone-ether"
     }
   },
   "fantom": {

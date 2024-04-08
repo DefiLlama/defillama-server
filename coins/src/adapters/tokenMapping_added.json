@@ -8975,5 +8975,12 @@
       "symbol": "axlUSDT",
       "to": "coingecko#axelar-usdt"
     }
+  },
+  "svm": {
+    "0x5db252ead05C54B08A83414adCAbF46Eaa9E0337": {
+      "decimals": "18",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
+    }
   }
 }

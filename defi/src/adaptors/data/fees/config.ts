@@ -1998,5 +1998,9 @@ export default {
     "pumpdotfun": {
         enabled: true,
         id: "4449"
+    },
+    "synthetix-v3": {
+        enabled: true,
+        id: "4446"
     }
 } as AdaptorsConfig

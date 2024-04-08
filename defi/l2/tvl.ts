@@ -46,8 +46,8 @@ export default async function main(timestamp?: number) {
     ownTokens: {},
   });
 
-  // await verifyChanges(chains);
-  // flagChainErrors(chains);
+  await verifyChanges(chains);
+  flagChainErrors(chains);
 
   return chains;
 }

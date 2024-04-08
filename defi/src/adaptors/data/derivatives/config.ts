@@ -281,7 +281,13 @@ export default {
     },
     "unidex": {
         "enabled": true,
-        "id": "1833"
+        "id": "1833",
+        protocolsData: {
+            "unidex": {
+                "enabled": true,
+                "id": "1833"
+            }
+        }
     },
     "satori": {
         "enabled": true,

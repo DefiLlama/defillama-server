@@ -8062,14 +8062,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3061",
-    name: "SynFutures V2",
+    name: "SynFutures V2 (Deprecated)", // sunset
     address: null,
     symbol: "-",
     url: "https://trade.synfutures.com/#/trade",
     description:
       "SynFutures is a permissionless web3 infrastructure for derivatives",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/synfutures.svg`,
+    logo: `${baseIconsUrl}/synfutures-v2-(deprecated).jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

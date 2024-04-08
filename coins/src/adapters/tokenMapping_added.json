@@ -8943,5 +8943,37 @@
       "symbol": "FPIS",
       "to": "coingecko:frax-price-index-share"
     }
+  },
+  "islm": {
+    "0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd": {
+      "decimals": "6",
+      "symbol": "axlUSDC",
+      "to": "coingecko#axlusdc"
+    },
+    "0xecEEEfCEE421D8062EF8d6b4D814efe4dc898265": {
+      "decimals": "18",
+      "symbol": "axlWETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xeC8CC083787c6e5218D86f9FF5f28d4cC377Ac54": {
+      "decimals": "18",
+      "symbol": "WISLM",
+      "to": "coingecko#islamic-coin"
+    },
+    "0xc5e00d3b04563950941f7137b5afa3a534f0d6d6": {
+      "decimals": "18",
+      "symbol": "DAI",
+      "to": "coingecko#dai"
+    },
+    "0x5fd55a1b9fc24967c4db09c513c3ba0dfa7ff687": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0xd567b3d7b8fe3c79a1ad8da978812cfc4fa05e75": {
+      "decimals": "6",
+      "symbol": "axlUSDT",
+      "to": "coingecko#axelar-usdt"
+    }
   }
 }

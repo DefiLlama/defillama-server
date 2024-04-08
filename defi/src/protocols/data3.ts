@@ -39156,6 +39156,30 @@ const data3: Protocol[] = [
     github: ["Fantom-Money-Market"],
     listedAt: 1712584115
   },
+  {
+    id: "4454",
+    name: "Leaper Finance",
+    address: null,
+    symbol: "-",
+    url: "https://leaper.finance",
+    description:
+      "Leaper Finance is an EVM compatible lending/borrowing protocol that launched on Blast Layer 2 Network. Leaper Finance provides peer-to-peer lending solutions that are fully decentralized, transparent and non-custodial.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/leaper-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    module: "LeaperFinance/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Leaperfinance",
+    audit_links: ["https://github.com/leaperfinance/protocol-blast/tree/main/audit"],
+    github: ["leaperfinance"],
+    listedAt: 1712585675
+  },
 ]
 
 export default data3

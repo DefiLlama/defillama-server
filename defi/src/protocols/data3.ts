@@ -3908,7 +3908,7 @@ const data3: Protocol[] = [
     name: "SFT Protocol",
     address: "filecoin:0xC5eA96Dd365983cfEc90E72b6A2daC9562f458Ba",
     symbol: "SFT",
-    url: "https://www.sftproject.io",
+    url: "https://sft.network",
     description: "The SFT protocol solves the staking liquidity of the POS blockchain, and provides cloud node API and equipment services, to be the fastest and the most reliable Web3 infrastructure",
     chain: "Filecoin",
     logo: `${baseIconsUrl}/sft-protocol.jpg`,

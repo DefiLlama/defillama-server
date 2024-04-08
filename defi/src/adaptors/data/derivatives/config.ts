@@ -756,5 +756,9 @@ export default {
     "ash-perp": {
         enabled: true,
         id: "4426"
+    },
+    "synthetix-v3": {
+        enabled: true,
+        id: "4446"
     }
 } as AdaptorsConfig

@@ -24945,7 +24945,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dopex-clamm/index.js",
-    twitter: "dopex_io",
+    twitter: "stryke_xyz",
     parentProtocol: "parent#dopex",
     listedAt: 1700566507
   },
@@ -33705,7 +33705,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Leveraged Farming",
     chains: ["Blast"],
     module: "juice-finance/index.js",
     twitter: "Juice_Finance",

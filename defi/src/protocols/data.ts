@@ -1167,7 +1167,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "alpha-finance",
     cmcId: "7232",
-    category: "Yield",
+    category: "Leveraged Farming",
     chains: ["Ethereum", "Avalanche", "Fantom", "Optimism"],
     module: "alpha-homora/index.js",
     twitter: "Alpha_HomoraV2",

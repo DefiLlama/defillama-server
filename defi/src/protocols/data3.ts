@@ -39204,6 +39204,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#arcadia-finance",
     listedAt: 1712589897
   },
+  {
+    id: "4456",
+    name: "Particle Duo Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://duo.particle.trade",
+    description:
+      "Duo Exchange is an interest rate swapping protocol that allows LPs to access (1) fixed rate yield until maturity and (2) variable but potentially higher yield compared to the yield source.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/particle-duo-exchange.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Blast"],
+    module: "particle-trade-duo/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "particle_trade",
+    audit_links: ["https://particle-1.gitbook.io/duo/audits"],
+    listedAt: 1712660362
+  },
+  {
+    id: "4457",
+    name: "Magpie Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.magpiefi.xyz",
+    description:
+      "Trading any tokens between any chains - without the need to bridge, is what makes Magpie your efficient app to navigate DeFi.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/magpie-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Ethereum", "Arbitrum", "Base", "Avalanche", "Optimism", "Polygon"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "magpieprotocol",
+  },
 ]
 
 export default data3

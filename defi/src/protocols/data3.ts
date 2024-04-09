@@ -39293,6 +39293,28 @@ const data3: Protocol[] = [
     twitter: "Zebra_zeta",
     listedAt: 1712661948
   },
+    {
+    id: "4460",
+    name: "Karak",
+    address: null,
+    symbol: "-",
+    url: "https://karak.network",
+    description:
+      "The universal restaking layer powered by the entire cryptoeconomy.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/karak.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Ethereum", "Arbitrum", "Karak Network"],
+    module: "karak/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Karak_Network",
+    listedAt: 1712668302
+  },
 ]
 
 export default data3

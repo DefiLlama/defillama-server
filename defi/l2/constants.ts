@@ -65,11 +65,11 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
-  // "144": "dydx",
-  // "3139": "immutablex",
-  // "126": "loopring",
-  // "1878": "apex",
-  // "344": "zkswap",
+  "144": "dydx",
+  "3139": "immutablex",
+  "126": "loopring",
+  "1878": "apex",
+  "344": "zkswap",
 };
 
 export const allChainKeys: string[] = [

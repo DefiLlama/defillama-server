@@ -4147,7 +4147,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["arcadia-finance"],
   },
   {
-    id: "parent#subseaprotocol",
+    id: "parent#subseaprotocol", // its the same team, https://prnt.sc/6aWrFV4VhHoN risk harbor and karab 
     name: "SubseaProtocol",
     url: "https://subseaprotocol.com",
     description:
@@ -4156,6 +4156,8 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    governanceID: ["snapshot:riskharbor.eth"],
+    github: ["Risk-Harbor"],
     twitter: "SubseaProtocol",
   },
 ];

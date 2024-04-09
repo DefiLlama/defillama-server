@@ -3602,7 +3602,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1538",
-    name: "Risk Harbor",
+    name: "Risk Harbor", // https://prnt.sc/6aWrFV4VhHoN its the same team
     address: null,
     symbol: "-",
     url: "https://www.riskharbor.com/",
@@ -3623,7 +3623,7 @@ const data2: Protocol[] = [
     listedAt: 1647046245,
     governanceID: ["snapshot:riskharbor.eth"],
     github: ["Risk-Harbor"],
-    parentProtocol: "parent#subseaprotocol"
+    parentProtocol: "parent#subseaprotocol" // https://prnt.sc/6aWrFV4VhHoN its the same team
   },
   {
     id: "1539",

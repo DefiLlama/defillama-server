@@ -123,7 +123,10 @@ export const chainToCoingeckoId = {
   omax: "omax",
   nuls: "nuls",
   kujira: "kujira",
-  fraxtal: "fraxtal"
+  fraxtal: "fraxtal",
+  map: "map-protocol",
+  zora: "zora-network",
+  dydx: "dydx"
   
   // chz: "chiliz",
   // stellar: "stellar",

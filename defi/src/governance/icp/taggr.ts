@@ -189,6 +189,8 @@ export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCac
     };
     cache.id = metadata.id;
 
+    await setCompound( cache.id, cache )
+    updateStats( cache, overview, cache.id )
     if (!metadata.latestProposalId) return overview
     cache.proposals = cache.proposals ?? {};
 
@@ -234,4 +236,4 @@ getCompoundOverview().then(async i => {
     console.log('hello')
     fs.writeFileSync('compound-overview.json', JSON.stringify(i, null, 2))
   }).then(() => process.exit(0))
- */
+  */

@@ -68,7 +68,7 @@ function removeTokenBreakdown(data: FinalChainData): FinalChainData {
 
   return overviewData;
 }
-function parsePgData(timeseries: any[], chain: string) {
+export function parsePgData(timeseries: any[], chain: string) {
   const result: ChartData[] = [];
   timeseries.map((t: any) => {
     if (chain != "*") {

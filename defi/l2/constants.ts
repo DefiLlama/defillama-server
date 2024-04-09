@@ -15,16 +15,16 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "solana",
   // "sui",
   // "aptos",
-  "stacks",
+  // "stacks",
   "bitcoin",
-  "fantom",
-  "thorchain",
-  "filecoin",
-  "near",
-  "aurora",
+  // "fantom",
+  // "filecoin",
+  // "near",
+  // "aurora",
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
+  "412": "thorchain",
   "3782": "mantle",
   "3777": "arbitrum",
   "3778": "nova",
@@ -49,7 +49,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3779": "avax",
   "3783": "metis",
   "3866": "aurora",
-  // "3861": "rsk",
+  "3861": "rsk",
   "3936": "zksync",
   "3935": "boba",
   "4032": "manta",
@@ -65,11 +65,11 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
-  "144": "dydx",
-  "3139": "immutablex",
-  "126": "loopring",
-  "1878": "apex",
-  "344": "zkswap",
+  // "144": "dydx",
+  // "3139": "immutablex",
+  // "126": "loopring",
+  // "1878": "apex",
+  // "344": "zkswap",
 };
 
 export const allChainKeys: string[] = [
@@ -122,6 +122,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
 };
 
 export const gasTokens: { [chain: Chain]: string } = {
+  bitcoin: "BTC",
   ronin: "RON",
   near: "NEAR",
   pulsechain: "PLS",

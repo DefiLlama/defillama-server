@@ -29752,7 +29752,6 @@ const data3: Protocol[] = [
     github: ["Coin-Collect"],
     listedAt: 1705417788
   },
-  /*
   {
     id: "4035",
     name: "FirepotSwap",
@@ -29776,7 +29775,6 @@ const data3: Protocol[] = [
     github: ["Firepot-Finance"],
     listedAt: 1705418998
   },
-  */
   {
     id: "4036",
     name: "Bow Leverage",

@@ -33785,14 +33785,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4212",
-    name: "Particle",
+    name: "Particle LAMM", // previous particle
     address: null,
     symbol: "-",
     url: "https://app.particle.trade/",
     description:
       "Permissionless leverage trading protocol for any digital asset. Backed by Polychain built on Blast",
     chain: "Blast",
-    logo: `${baseIconsUrl}/particle.png`,
+    logo: `${baseIconsUrl}/particle-lamm.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -33804,6 +33804,7 @@ const data3: Protocol[] = [
     forkedFrom: [], 
     oracles: [], 
     audit_links: ["https://docs.particle.trade/contracts/audits"],
+    parentProtocol: "parent#particle",
     listedAt: 1709315727
   },
   {
@@ -39206,14 +39207,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4456",
-    name: "Particle Duo Exchange",
+    name: "Particle DUO",
     address: null,
     symbol: "-",
     url: "https://duo.particle.trade",
     description:
       "Duo Exchange is an interest rate swapping protocol that allows LPs to access (1) fixed rate yield until maturity and (2) variable but potentially higher yield compared to the yield source.",
     chain: "Blast",
-    logo: `${baseIconsUrl}/particle-duo-exchange.png`,
+    logo: `${baseIconsUrl}/particle-duo.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -39225,6 +39226,7 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "particle_trade",
     audit_links: ["https://particle-1.gitbook.io/duo/audits"],
+    parentProtocol: "parent#particle",
     listedAt: 1712660362
   },
   {

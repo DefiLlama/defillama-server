@@ -4160,6 +4160,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["Risk-Harbor"],
     twitter: "SubseaProtocol",
   },
+  {
+    id: "parent#particle",
+    name: "Particle",
+    url: "https://app.particle.trade",
+    description:
+      "Permissionless leverage trading protocol for any digital asset. Backed by Polychain built on Blast",
+    logo: `${baseIconsUrl}/particle.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "particle_trade",
+  },
 ];
 
 export default parentProtocols;

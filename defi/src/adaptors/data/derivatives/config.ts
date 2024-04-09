@@ -737,7 +737,13 @@ export default {
     },
     "myx-finance": {
         enabled: true,
-        "id": "4319"
+        "id": "4319",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1712620800": true,
+                "1711440000": true,
+            },
+        }
     },
     "logx": {
         enabled: true,

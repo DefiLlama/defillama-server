@@ -4156,6 +4156,8 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    governanceID: ["snapshot:riskharbor.eth"],
+    github: ["Risk-Harbor"],
     twitter: "SubseaProtocol",
   },
 ];

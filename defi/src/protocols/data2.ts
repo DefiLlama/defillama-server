@@ -3621,8 +3621,6 @@ const data2: Protocol[] = [
     twitter: "riskharbor",
     audit_links: ["https://docs.riskharbor.com/contracts/security-audits"],
     listedAt: 1647046245,
-    governanceID: ["snapshot:riskharbor.eth"],
-    github: ["Risk-Harbor"],
     parentProtocol: "parent#subseaprotocol" // https://prnt.sc/6aWrFV4VhHoN its the same team
   },
   {

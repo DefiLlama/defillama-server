@@ -3622,7 +3622,8 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.riskharbor.com/contracts/security-audits"],
     listedAt: 1647046245,
     governanceID: ["snapshot:riskharbor.eth"],
-    github: ["Risk-Harbor"]
+    github: ["Risk-Harbor"],
+    parentProtocol: "parent#subseaprotocol"
   },
   {
     id: "1539",
@@ -15857,7 +15858,6 @@ const data2: Protocol[] = [
       "https://docs.google.com/document/d/1joxRpf1D-KoACf7h1xnB72YkPYKxd27oDX-9axTbIQw/edit#heading=h.mnockoickb7e" //Insurance
     ],
     listedAt: 1663144131,
-    github: ["RageTrade"]
   },
   {
     id: "2087",

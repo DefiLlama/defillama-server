@@ -39313,6 +39313,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "Karak_Network",
+    parentProtocol: "parent#subseaprotocol",
     listedAt: 1712668302
   },
 ]

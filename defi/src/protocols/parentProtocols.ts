@@ -4146,6 +4146,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ArcadiaFi",
     github: ["arcadia-finance"],
   },
+  {
+    id: "parent#subseaprotocol",
+    name: "SubseaProtocol",
+    url: "https://subseaprotocol.com",
+    description:
+      "Risk management marketplace for digital assets.",
+    logo: `${baseIconsUrl}/subseaprotocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SubseaProtocol",
+  },
 ];
 
 export default parentProtocols;

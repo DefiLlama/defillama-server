@@ -35,19 +35,25 @@ export async function fetchMinted(params: {
         });
 
         if (chain == "cardano") storedTokens = await fetchAdaTokens();
+        if (chain == "bitcoin") storedTokens = ["coingecko:bitcoin"];
         // do these in order to lighten rpc, rest load
         const prices = await getPrices(
-          storedTokens.map((t: string) => `${chain}:${t}`),
+          storedTokens.map((t: string) => (chain == "bitcoin" ? t : `${chain}:${t}`)),
           timestamp
         );
-
-        const supplies = await fetchSupplies(
-          chain,
-          Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
-          params.timestamp
-        );
-
+        Object.keys(prices).map((p: string) => {
+          if (p.startsWith("coingecko:")) prices[p].decimals = 0;
+        });
         const mcaps = await getMcaps(Object.keys(prices), timestamp);
+
+        const supplies =
+          chain == "bitcoin"
+            ? { "coingecko:bitcoin": mcaps["coingecko:bitcoin"].mcap / prices["coingecko:bitcoin"].price }
+            : await fetchSupplies(
+                chain,
+                Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
+                params.timestamp
+              );
 
         function findDollarValues() {
           Object.keys(mcaps).map((t: string) => {
@@ -58,7 +64,7 @@ export async function fetchMinted(params: {
             if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
             const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
             const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-            if (usdValue.isGreaterThan(BigNumber(1e12))) {
+            if (t != "coingecko:bitcoin" && usdValue.isGreaterThan(BigNumber(1e12))) {
               console.log(`token ${t} on ${chain} has over a trillion usdValue LOL`);
               return;
             }

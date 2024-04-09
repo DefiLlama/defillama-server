@@ -1,7 +1,7 @@
-import { getCurrentUnixTimestamp, secondsInDay } from "../src/utils/date";
+import { getCurrentUnixTimestamp, secondsInDay } from "../../src/utils/date";
 import PromisePool from "@supercharge/promise-pool";
-import findTvls from "./tvl";
-import storeHistorical from "./storeToDb";
+import findTvls from "../tvl";
+import storeHistorical from "../storeToDb";
 
 const end = getCurrentUnixTimestamp();
 const start = getStart("2024-01-01");

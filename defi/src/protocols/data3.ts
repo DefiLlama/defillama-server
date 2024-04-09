@@ -33483,7 +33483,7 @@ const data3: Protocol[] = [
     module: "evaa/index.js",
     twitter: "evaaprotocol",
     forkedFrom: [], 
-    oracles: [],
+    oracles: ["RedStone"], //https://evaa.gitbook.io/intro/details-of-protocol/risks/protocol-risks#oracle-risk 
     github: ["evaafi"],
     listedAt: 1709220208
   },

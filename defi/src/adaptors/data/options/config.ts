@@ -97,5 +97,9 @@ export default {
     "smilee-finance": {
         enabled: true,
         id: "4350"
+    },
+    "moby": {
+        enabled: true,
+        id: "4452"
     }
 } as AdaptorsConfig

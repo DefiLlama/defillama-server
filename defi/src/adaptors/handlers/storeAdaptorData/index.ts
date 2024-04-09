@@ -95,7 +95,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     .for(protocols)
     .process(runAndStoreProtocol)
 
-  const shortenString = (str: string, length: number = 250) => str.length > length ? str.slice(0, length) + '...' : str
+  const shortenString = (str: string, length: number = 250) => {
+    if (typeof str !== 'string') str = JSON.stringify(str)
+    return str.length > length ? str.slice(0, length) + '...' : str
+  }
 
   const errorObjects = errors.map(({ raw, item, message }: any) => {
     return {

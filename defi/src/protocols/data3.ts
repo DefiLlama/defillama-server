@@ -39266,7 +39266,7 @@ const data3: Protocol[] = [
     chains: ["Base"],
     module: "bsx-exchange/index.js",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Stork"], // https://docs.bsx.exchange/bsx-docs/architectural-overview/oracle
     twitter: "bsx_labs",
     listedAt: 1712661648
   },

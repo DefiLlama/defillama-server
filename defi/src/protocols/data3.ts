@@ -29752,6 +29752,7 @@ const data3: Protocol[] = [
     github: ["Coin-Collect"],
     listedAt: 1705417788
   },
+  /*
   {
     id: "4035",
     name: "FirepotSwap",
@@ -29775,6 +29776,7 @@ const data3: Protocol[] = [
     github: ["Firepot-Finance"],
     listedAt: 1705418998
   },
+  */
   {
     id: "4036",
     name: "Bow Leverage",
@@ -33481,7 +33483,7 @@ const data3: Protocol[] = [
     module: "evaa/index.js",
     twitter: "evaaprotocol",
     forkedFrom: [], 
-    oracles: [],
+    oracles: ["RedStone"], //https://evaa.gitbook.io/intro/details-of-protocol/risks/protocol-risks#oracle-risk 
     github: ["evaafi"],
     listedAt: 1709220208
   },
@@ -39094,7 +39096,7 @@ const data3: Protocol[] = [
     name: "Busta Exchange",
     address: null,
     symbol: "-",
-    url: "https://busta.exchange",
+    url: "", // website isn't working
     description:
       "BUSTA is a fully immersive iGaming, DeFi and DEX ecosystem built on BSC.",
     chain: "Binance",
@@ -39108,8 +39110,7 @@ const data3: Protocol[] = [
     module: "busta/index.js",
     forkedFrom: ["Uniswap V3"],
     oracles: [],
-    twitter: "busta_gamefi",
-    listedAt: 1712569867
+    twitter: "", // twitter leads to broken website
   },
   {
     id: "4452",
@@ -39202,6 +39203,118 @@ const data3: Protocol[] = [
     twitter: "ArcadiaFi",
     parentProtocol: "parent#arcadia-finance",
     listedAt: 1712589897
+  },
+  {
+    id: "4456",
+    name: "Particle Duo Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://duo.particle.trade",
+    description:
+      "Duo Exchange is an interest rate swapping protocol that allows LPs to access (1) fixed rate yield until maturity and (2) variable but potentially higher yield compared to the yield source.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/particle-duo-exchange.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Blast"],
+    module: "particle-trade-duo/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "particle_trade",
+    audit_links: ["https://particle-1.gitbook.io/duo/audits"],
+    listedAt: 1712660362
+  },
+  {
+    id: "4457",
+    name: "Magpie Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.magpiefi.xyz",
+    description:
+      "Trading any tokens between any chains - without the need to bridge, is what makes Magpie your efficient app to navigate DeFi.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/magpie-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Ethereum", "Arbitrum", "Base", "Avalanche", "Optimism", "Polygon"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "magpieprotocol",
+  },
+  {
+    id: "4458",
+    name: "BSX Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://www.bsx.exchange",
+    description:
+      "Optimized trading engine built for traders and powered by next-generation decentralized blockchain infrastructure enabling low fees and deep liquidity - built by traders, for traders.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bsx-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "bsx-exchange/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "bsx_labs",
+    listedAt: 1712661648
+  },
+  {
+    id: "4459",
+    name: "Zebra Protocol",
+    address: null,
+    symbol: "-",
+    assetToken: "zbrUSD",
+    url: "https://0xzebra.xyz/hom",
+    description:
+      "Zebra is an LSD protocol that allows users to collateralize stZETA/ZETA/BTC to obtain zbrUSD, thereby unlocking the liquidity of ZETA, and users can also earn multiple profits within the protocol.",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/zebra-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["ZetaChain"],
+    module: "0xzebra/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Zebra_zeta",
+    listedAt: 1712661948
+  },
+    {
+    id: "4460",
+    name: "Karak",
+    address: null,
+    symbol: "-",
+    url: "https://karak.network",
+    description:
+      "The universal restaking layer powered by the entire cryptoeconomy.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/karak.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Ethereum", "Arbitrum"],
+    module: "karak/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Karak_Network",
+    parentProtocol: "parent#subseaprotocol",
+    listedAt: 1712668302
   },
 ]
 

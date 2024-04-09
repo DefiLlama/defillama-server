@@ -230,7 +230,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Frax Finance",
     url: "https://frax.finance/",
     description:
-      "Inventors of the fractional stablecoin. $FRAX is the 1st stablecoin with parts backed & parts algorithmic",
+      "FRAX is a dollar-pegged stablecoin that uses AMO smart contracts and permissionless, non-custodial subprotocols as stability mechanisms. The two internal subprotocols used as stability mechanisms are Fraxlend, a decentralized lending market and Fraxswap, an automated market maker (AMM) with special features. The external subprotocol used as a stability mechanism is Curve. Additional subprotocols and AMOs can be added with governance allowing FRAX to incorporate future stability mechanisms seamlessly as they are discovered",
     logo: `${baseIconsUrl}/frax finance.png`,
     gecko_id: "frax-share",
     cmcId: "6953",
@@ -4145,6 +4145,20 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ArcadiaFi",
     github: ["arcadia-finance"],
+  },
+  {
+    id: "parent#subseaprotocol", // its the same team, https://prnt.sc/6aWrFV4VhHoN risk harbor and karab 
+    name: "SubseaProtocol",
+    url: "https://subseaprotocol.com",
+    description:
+      "Risk management marketplace for digital assets.",
+    logo: `${baseIconsUrl}/subseaprotocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    governanceID: ["snapshot:riskharbor.eth"],
+    github: ["Risk-Harbor"],
+    twitter: "SubseaProtocol",
   },
 ];
 

@@ -19503,14 +19503,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3571",
-    name: "ShimmerSea",
+    name: "MagicSea", // rebrand from ShimmerSea
     address: null,
     symbol: "-",
-    url: "https://shimmersea.finance/",
+    url: "https://app.magicsea.finance/swap",
     description:
       "ShimmerSea is a leading decentralized exchange (DEX) on Shimmer focused on offering a premier trading experience",
     chain: "ShimmerEVM",
-    logo: `${baseIconsUrl}/shimmersea.png`,
+    logo: `${baseIconsUrl}/magicsea.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

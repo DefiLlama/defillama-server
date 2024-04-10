@@ -36041,8 +36041,7 @@ const data3: Protocol[] = [
     chains: ["ICP"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
-    treasury: "sns.js",
+    module: "sns/index.js",
     twitter: "dfinity",
   },
   {

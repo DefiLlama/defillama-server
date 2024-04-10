@@ -39316,6 +39316,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#subseaprotocol",
     listedAt: 1712668302
   },
+  {
+    id: "4461",
+    name: "Swell L2 Farm",
+    address: null,
+    symbol: "-",
+    url: "https://www.swellnetwork.io/",
+    description: "Pre-launch deposits for Swell L2, the L2 for Restaking",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/swell.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "swell-l2-farm/index.js",
+    twitter: "swellnetworkio",
+    parentProtocol: "parent#swell",
+    listedAt: 1712729172
+  },
 ]
 
 export default data3

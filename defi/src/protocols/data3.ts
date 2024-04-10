@@ -23657,7 +23657,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Manta"],
-    oracles: ["Pyth"],
+    oracles: ["RedStone"], //https://goku-money.gitbook.io/goku-money/faq/oracles
     forkedFrom: [],
     module: "goku-money/index.js",
     twitter: "goku_stable",
@@ -34401,7 +34401,7 @@ const data3: Protocol[] = [
     module: "blume-fm/index.js",
     twitter: "blumefm",
     forkedFrom: ["Compound V2"],
-    oracles: [],
+    oracles: ["RedStone"], //https://docs.blume.fm/oracles-redstone
     listedAt: 1709639594
   },
   {

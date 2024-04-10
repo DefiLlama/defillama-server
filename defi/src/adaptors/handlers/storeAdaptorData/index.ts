@@ -97,6 +97,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
   const shortenString = (str: string, length: number = 250) => {
     if (typeof str !== 'string') str = JSON.stringify(str)
+    if (str === undefined) return `undefined`
     return str.length > length ? str.slice(0, length) + '...' : str
   }
 

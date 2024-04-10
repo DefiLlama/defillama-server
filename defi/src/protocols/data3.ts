@@ -39408,6 +39408,48 @@ const data3: Protocol[] = [
     github: ["0xSpaceShard"],
     listedAt: 1712756356
   },
+  {
+    id: "4465",
+    name: "Zero1 Labs",
+    address: "0x1495bc9e44Af1F8BCB62278D2bEC4540cF0C05ea",
+    symbol: "DEAI",
+    url: "https://z1labs.ai",
+    description: "Zero1 is a DeAI ecosystem creating a new economic primitive.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zero1-labs.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "zero1-labs",
+    cmcId: "29734",
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "zero1-labs/index.js",
+    twitter: "zero1_labs",
+    listedAt: 1712757459
+  },
+  {
+    id: "4466",
+    name: "Neo Tokyo",
+    address: null,
+    symbol: "-",
+    url: "https://neobytes.xyz",
+    description: "The Crypto Gaming Illuminati - Builders, Developers, Founders, and Investors creating the metaverse from the heart of The Citadel",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/neo-tokyo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "neotokyo/index.js",
+    twitter: "NeoTokyoCode",
+    listedAt: 1712757859
+  },
 ]
 
 export default data3

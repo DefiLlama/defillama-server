@@ -1765,6 +1765,11 @@
       "decimals": "18",
       "symbol": "FIL",
       "to": "coingecko#filecoin"
+    },
+    "0xFFfffffF7D2B0B761Af01Ca8e25242976ac0aD7D": {
+      "decimals": "6",
+      "symbol": "xcUSDC",
+      "to": "coingecko#usd-coin"
     }
   },
   "metis": {

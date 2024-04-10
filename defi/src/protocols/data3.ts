@@ -39112,14 +39112,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4452",
-    name: "Moby Options",
+    name: "Moby", // previous moby options
     address: null,
     symbol: "-",
     url: "https://app.moby.trade",
     description:
       "The Next Options Protocol with Maximized Liquidity.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/moby-options.jpg`,
+    logo: `${baseIconsUrl}/moby.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

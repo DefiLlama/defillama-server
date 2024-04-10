@@ -39434,7 +39434,7 @@ const data3: Protocol[] = [
     name: "Neo Tokyo",
     address: null,
     symbol: "-",
-    url: "https://neobytes.xyz",
+    url: "https://neotokyo.codes/",
     description: "The Crypto Gaming Illuminati - Builders, Developers, Founders, and Investors creating the metaverse from the heart of The Citadel",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/neo-tokyo.jpg`,

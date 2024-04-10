@@ -766,5 +766,9 @@ export default {
     "synthetix-v3": {
         enabled: true,
         id: "4446"
+    },
+    "increment-protocol": {
+        enabled: true,
+        id: "4382",
     }
 } as AdaptorsConfig

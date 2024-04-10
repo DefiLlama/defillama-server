@@ -39338,6 +39338,32 @@ const data3: Protocol[] = [
     parentProtocol: "parent#swell",
     listedAt: 1712729172
   },
+  {
+    id: "4462",
+    name: "Zero-G Finance",
+    address: null,
+    symbol: "-",
+    assetToken: "zgETH",
+    url: "https://zerog.finance/",
+    description: "Zero-G Finance stands as an innovative Liquid Restaking Platform, carving a niche for itself by granting users seamless entry into the vast domain of EigenLayer",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zero-g-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "zero-g-fi/index.js",
+    twitter: "zerogfinance",
+    audit_links: [
+      " https://2429366836-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4w8NVgxoxCW85tWNVjPS%2Fuploads%2FEf21cG5o3bztzaZqrW7M%2FZero-G%20Finance%20-%20Security%20Review%20-%20SBSecurity.pdf?alt=media&token=8de32476-328f-4527-944b-e316815364e2"
+    ],
+    github: ["zero-g-fi"],
+    listedAt: 1712731845
+  },
 ]
 
 export default data3

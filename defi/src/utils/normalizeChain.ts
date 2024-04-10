@@ -32,7 +32,7 @@ export function normalizeChain(chain: string) {
 }
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted ?? (category === "Yield Aggregator" || category === "Yield");
+  return moduleDoubleCounted === true || (category === "Yield Aggregator" || category === "Yield");
 }
 
 export function isExcludedFromChainTvl(category?: string) {

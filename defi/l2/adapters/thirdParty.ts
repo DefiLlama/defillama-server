@@ -98,7 +98,6 @@ const celer = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
-celer();
 const adapters = [axelar(), wormhole(), celer()];
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
   await Promise.all(adapters);

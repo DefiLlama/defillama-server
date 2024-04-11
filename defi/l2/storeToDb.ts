@@ -1,6 +1,6 @@
 import postgres from "postgres";
 import { queryPostgresWithRetry } from "../l2/layer2pg";
-import { ChartData, FinalChainData, FinalData } from "./types";
+import { ChainTokens, ChartData, FinalChainData, FinalData } from "./types";
 import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 
@@ -38,6 +38,7 @@ export default async function storeHistoricalToDB(res: any) {
             sql
           )
         );
+        columns.push(k);
       }
     });
     await Promise.all(promises);
@@ -60,6 +61,56 @@ export default async function storeHistoricalToDB(res: any) {
 
   sql.end();
 }
+export async function storeHistoricalFlows(rawData: ChainTokens, timestamp: number) {
+  const sql = await iniDbConnection();
+
+  const read = await queryPostgresWithRetry(
+    sql`
+        select * from chainassetflows
+        limit 1
+        `,
+    sql
+  );
+  const columns = read.columns.map((c: any) => c.name);
+
+  try {
+    const promises: Promise<void>[] = [];
+    Object.keys(rawData).map(async (k: string) => {
+      if (!columns.includes(k)) {
+        promises.push(
+          queryPostgresWithRetry(
+            sql`
+                alter table chainassetflows
+                add ${sql(k)} text
+                `,
+            sql
+          )
+        );
+        columns.push(k);
+      }
+    });
+    await Promise.all(promises);
+  } catch {}
+
+  const insert: { [key: string]: string } = { timestamp: timestamp.toFixed() };
+  columns.map((k: string) => {
+    if (k == "timestamp") return;
+    insert[k] = k in rawData ? JSON.stringify(rawData[k]) : "{}";
+  });
+
+  await queryPostgresWithRetry(
+    sql`
+        insert into chainassetflows
+        ${sql([insert], ...columns)}
+        on conflict (timestamp)
+        do nothing
+        `,
+    sql
+  );
+
+  sql.end();
+}
+
 function removeTokenBreakdown(data: FinalChainData): FinalChainData {
   const overviewData: any = {};
   Object.entries(data).map(([key, value]) => {
@@ -68,13 +119,13 @@ function removeTokenBreakdown(data: FinalChainData): FinalChainData {
 
   return overviewData;
 }
-export function parsePgData(timeseries: any[], chain: string) {
+export function parsePgData(timeseries: any[], chain: string, removeBreakdown: boolean = true) {
   const result: ChartData[] = [];
   timeseries.map((t: any) => {
     if (chain != "*") {
       const rawData = JSON.parse(t[chain]);
       if (!rawData) return;
-      const data = removeTokenBreakdown(rawData);
+      const data = removeBreakdown ? removeTokenBreakdown(rawData) : rawData;
       result.push({ timestamp: t.timestamp, data });
       return;
     }
@@ -87,7 +138,7 @@ export function parsePgData(timeseries: any[], chain: string) {
       if (!rawData) return;
       // DEBUG:
       // data[c] = rawData
-      data[c] = removeTokenBreakdown(rawData);
+      data[c] = removeBreakdown ? removeTokenBreakdown(rawData) : rawData;
     });
 
     result.push({ timestamp: t.timestamp, data });
@@ -173,4 +224,11 @@ export async function fetchFlows(period: number) {
   });
 
   return res;
+}
+export async function fetchHistoricalFlows(period: number, chain: string) {
+  const sql = await iniDbConnection();
+  const timeseries = await queryPostgresWithRetry(sql`select ${sql(chain)}, timestamp from chainassetflows`, sql);
+  sql.end();
+  const result = parsePgData(timeseries, chain, false);
+  return findDailyEntries(result, period);
 }

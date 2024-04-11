@@ -22,3 +22,4 @@ export async function handler() {
     process.exit();
   }
 }
+handler();

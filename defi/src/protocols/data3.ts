@@ -39519,7 +39519,28 @@ const data3: Protocol[] = [
     github: ["Zeeprlabs"],
     listedAt: 1712833829
   },
-
+  {
+    id: "4470",
+    name: "SpiritSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://www.spiritswap.finance",
+    description: "The SpiritSwap protocol captures the essence of everything Defi 2.0 on the Fantom network, delivering a complete hub for trading, invest regularly, farming and reward sharing",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/spiritswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fantom"],
+    oracles: [],
+    forkedFrom: ["Algebra Integral"],
+    module: "spiritswap-v3/index.js",
+    twitter: "Spirit_Swap",
+    parentProtocol: "parent#spiritswap",
+    listedAt: 1712842327
+  },
 ]
 
 export default data3

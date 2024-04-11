@@ -149,7 +149,7 @@ async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{
     .process(async (token) => {
       try {
         const res = await fetch(
-          `https://aptos-mainnet.pontem.network/v1/accounts/${token.substring(
+          `${process.env.APTOS_RPC}/v1/accounts/${token.substring(
             0,
             token.indexOf("::")
           )}/resource/0x1::coin::CoinInfo%3C${token}%3E`

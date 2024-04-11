@@ -139,7 +139,31 @@ export async function getMcaps(
   });
   return aggregatedRes;
 }
+async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Aptos adapter!`);
+  const supplies: { [token: string]: number } = {};
+  const notTokens: string[] = [];
 
+  await PromisePool.withConcurrency(5)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        const res = await fetch(
+          `https://aptos-mainnet.pontem.network/v1/accounts/${token.substring(
+            0,
+            token.indexOf("::")
+          )}/resource/0x1::coin::CoinInfo%3C${token}%3E`
+        ).then((r) => r.json());
+        if (res && res.data && res.data.supply) supplies[`sui:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
+        else notTokens.push(`sui:${token}`);
+      } catch (e) {
+        console.log(token);
+      }
+    });
+
+  await storeNotTokens(notTokens);
+  return supplies;
+}
 async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Solana adapter!`);
 
@@ -269,6 +293,7 @@ export async function fetchSupplies(
   try {
     const notTokens: string[] = []; //await fetchNotTokens(chain);
     const tokens = filterForNotTokens(contracts, notTokens);
+    if (chain == "aptos") return await getAptosSupplies(tokens, timestamp);
     if (chain == "solana") return await getSolanaTokenSupply(tokens, timestamp);
     if (chain == "sui") return await getSuiSupplies(tokens, timestamp);
     return await getEVMSupplies(chain, tokens, timestamp);

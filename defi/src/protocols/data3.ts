@@ -39497,6 +39497,29 @@ const data3: Protocol[] = [
     github: ["Bidohub"],
     listedAt: 1712786583
   },
+  {
+    id: "4469",
+    name: "Zeepr",
+    address: null,
+    symbol: "-",
+    url: "https://www.zeepr.io",
+    description: "Zeepr is the world's first decentralized perpetual contract protocol that supports both Coin-margin and U-margin, amplifying traders' profits.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/zeepr.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "zeepr/index.js",
+    twitter: "Zeepr_labs",
+    github: ["Zeeprlabs"],
+    listedAt: 1712833829
+  },
+
 ]
 
 export default data3

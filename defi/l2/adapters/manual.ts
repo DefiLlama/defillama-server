@@ -84,6 +84,18 @@ export const additional: { [chain: string]: string[] } = {
     "0xEc901DA9c68E90798BbBb74c11406A32A70652C3", // STONE
     "0x6Fae4D9935E2fcb11fC79a64e917fb2BF14DaFaa", // TIA
   ],
+  filecoin: [
+    "0x60E1773636CF5E4A227d9AC24F20fEca034ee25A", // wFIL
+    "0xEB466342C4d449BC9f53A865D5Cb90586f405215", // axlUSDC
+    "0x7f5373AE26c3E8FfC4c77b7255DF7eC1A9aF52a6", // axlUSDT
+    "0x1a35EE4640b0A3B87705B0A4B45D227Ba60Ca2ad", // axlWBTC
+    "0xb829b68f57CC546dA7E5806A929e53bE32a4625D", // axlWETH
+
+    "0x2421db204968A367CC2C866CD057fA754Cb84EdF", // axlUSDC
+    "0x422849b355039bc58f2780cc4854919fc9cfaf94", // axlUSDT
+    "0x592786e04c47844aa3b343b19ef2f50a255a477f", // axlWBTC
+    "0x522b61755b5ff8176b2931da7bf1a5f9414eb710", // axlWETH
+  ],
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [

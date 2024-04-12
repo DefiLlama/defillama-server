@@ -37,7 +37,6 @@ export async function reservoir(timestamp: number = 0) {
       (res[collections[i].collectionId.toLowerCase()] =
         collections[i].floorAskPrice),
   );
-  log(res);
   collections.forEach((item: any, i: number) => {
     let symbol = symbols[i];
 

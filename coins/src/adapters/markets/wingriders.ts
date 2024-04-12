@@ -1,7 +1,8 @@
 import { log } from '@defillama/sdk'
 import { Write, } from "../utils/dbInterfaces";
 import { addToDBWritesList, getTokenAndRedirectData, } from "../utils/database";
-import axios from 'axios'
+import axios, { AxiosInstance } from 'axios'
+import { getCache, setCache } from '../../utils/cache';
 
 export function wingriders(timestamp: number) {
   console.log("starting wingriders");
@@ -10,6 +11,47 @@ export function wingriders(timestamp: number) {
   ])
 }
 const chain = 'cardano'
+
+const api: AxiosInstance = axios.create({
+  baseURL: "https://cardano-mainnet.blockfrost.io/api/v0",
+  headers: {
+    project_id: 'mai' + 'nnetcxT8VaeCgVMzMTSe' + 'zZijWlVkyh6XytpS',
+    "Content-Type": "application/json",
+  },
+  timeout: 300000,
+})
+
+
+async function getMetadata(tokens: string[]) {
+  const cache = await getCache('wingriders-metadata', 'cardano')
+  let cacheUpdated = false
+  for (const token of tokens) {
+    if (!cache[token]) {
+      try {
+        const { data } = await api.get(`assets/${token}`)
+        if (!data) continue;
+        const { metadata, asset, policy_id, onchain_metadata_standard, onchain_metadata } = data
+        let { name, ticker, decimals } = metadata ?? {}
+        if (!metadata) {
+          if (!onchain_metadata)
+            throw new Error('no metadata')
+          name = onchain_metadata.name
+          ticker = onchain_metadata.ticker ?? onchain_metadata.symbol ?? name
+          decimals = 0
+        }
+        cache[token] = { name, ticker, decimals, policy_id, metadataStandard: onchain_metadata_standard }
+        cacheUpdated = true
+      } catch (e) {
+        console.error('wingriders: error fetching token data', token, (e as any).toString())
+        continue
+      }
+    }
+
+  }
+  if (cacheUpdated) 
+    await setCache('wingriders-metadata', 'cardano', cache)
+  return cache
+}
 
 async function getPools() {
   const exchangeRates: any = {}
@@ -32,13 +74,10 @@ async function getPools() {
     if (baseAssetId !== '' || !whitelistedTokens[assetId]) return;
     exchangeRates[assetId] = exchangeRate
   })
-  log('pools', Object.keys(exchangeRates).length)
-  const { data } = await axios.post('https://explorer.mainnet.wingriders.com/api/tokens/metadata', { subjects: Object.keys(exchangeRates) })
-  data.Right.forEach(({ subject, name, ticker, decimals, }: any) => {
-    if (!name || !ticker || !decimals) return;
-    metadatas[subject] = { name: name.value, ticker: ticker.value, decimals: decimals.value, price: exchangeRates[subject], token: subject, }
+  const data: any = await getMetadata(Object.keys(exchangeRates))
+  Object.entries(data).forEach(([token, { name, ticker, decimals, }]: any) => {
+    metadatas[token] = { name, ticker, decimals, price: (exchangeRates as any)[token], token, }
   })
-  log('pool count', Object.keys(exchangeRates).length)
   return metadatas
 }
 
@@ -50,14 +89,11 @@ async function getTokenPrices(timestamp: number) {
   const cardanoPrice = basePrice[0].price
   addToDBWritesList(writes, chain, '0x0000000000000000000000000000000000000000', cardanoPrice, 6, 'ADA', timestamp, 'wingriders', 0.9)
   addToDBWritesList(writes, chain, 'lovelace', cardanoPrice, 6, 'ADA', timestamp, 'wingriders', 0.9)
-  const priceLog: any[] = []
   Object.values(pools).forEach(({ token, price, decimals, ticker, name, }: any) => {
     token = token.toLowerCase()
     const symbol = (ticker || name).replace(/ /g, '-').toUpperCase()
-    priceLog.push({ symbol, price, decimals, token })
     addToDBWritesList(writes, chain, token, cardanoPrice * price, decimals, symbol, timestamp, 'wingriders', 0.9)
   })
-  // console.table(priceLog)
 
   return writes
 }

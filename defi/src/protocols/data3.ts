@@ -39648,7 +39648,28 @@ const data3: Protocol[] = [
     github: ["EtaSwap"],
     twitter: "eta_swap",
   },
-
+  {
+    id: "4476",
+    name: "Gold DAO",
+    address: "icp:tyyy3-4aaaa-aaaaq-aab7a-cai",
+    symbol: "GLDGov",
+    url: "https://www.gold-dao.org/",
+    description: "Gold DAO is a decentralized autonomous organization (DAO) that combines the traditional value of gold with blockchain technology. It utilizes GLD NFTs to represent real, high-quality gold stored in Switzerland, ensuring ownership of physical gold is transparent, secure, and easily transferable. The NFTs can be swapped into GLDT gold token and to create a 100% physical gold backed stablecoins",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/gold-dao.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["ICP"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "gold-dao/index.js",
+    twitter: "gldrwa",
+    audit_links: ["https://yumi.io/gold/audit"],
+    listedAt: 1712956663
+  },
 ]
 
 export default data3

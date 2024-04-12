@@ -120,12 +120,13 @@ const handler = async (
     getClosestBlock(blockPK(chain), timestamp, "high"),
     getClosestBlock(blockPK(chain), timestamp, "low")
   ])
+  console.log(top, bottom)
   if (top === undefined) {
     top = await getBlock(provider as any, "latest", chain);
     const currentTimestamp = getCurrentUnixTimestamp()
     if ((top.timestamp - currentTimestamp) < -30 * 60) {
       throw new Error(`Last block of chain "${chain}" is further than 30 minutes into the past`)
-    }
+    } 
   }
   if (bottom == undefined) {
     bottom = {
@@ -140,6 +141,7 @@ const handler = async (
   while ((high - low) > 1) {
     const mid = Math.floor((high + low) / 2);
     block = await getBlock(provider as any, mid, chain);
+    console.log(block)
     if (block.timestamp < timestamp) {
       low = mid + 1;
     } else {

@@ -4,12 +4,15 @@ import { addToDBWritesList } from "../utils/database";
 
 const config: { [chain: string]: { [symbol: string]: string } } = {
   ethereum: {
-    USK: "0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92",
-    EGK: "0xf2b5C482358dBaA495d442b57c163dbEDBF7868E"
+    USK: "0x01bf66becdcfd6d59a5ca18869f494fea086cdfd",
+    EGK: "0xf2b5c482358dbaa495d442b57c163dbedbf7868e"
   },
   polygon: {
-    FRK: "0xbA11C5effA33c4D6F8f593CFA394241CfE925811",
+    FRK: "0x2cb7285733a30bb08303b917a7a519c88146c6eb",
   },
+  linea: {
+    USK: "0x7a6aa80b49017f3e091574ab5c6977d863ff3865"
+  }
 };
 
 const abi = "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)";

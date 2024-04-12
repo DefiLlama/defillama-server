@@ -3623,8 +3623,8 @@ const data3: Protocol[] = [
   {
     id: "2863",
     name: "SaitaSwap",
-    address: "0xce3f08e664693ca792cace4af1364d5e220827b2",
-    symbol: "SAITAMA",
+    address: "0x19ae49b9f38dd836317363839a5f6bfbfa7e319a",
+    symbol: "STC",
     url: "https://dex.saita.pro/home",
     description: "Official Dex of Saitama",
     chain: "Ethereum",
@@ -3638,7 +3638,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "saitaswap/index.js",
-    twitter: "WeAreSaitama",
+    twitter: "SaitaChainCoin",
     listedAt: 1681859571
   },
   {

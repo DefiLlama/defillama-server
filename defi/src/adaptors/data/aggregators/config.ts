@@ -185,5 +185,9 @@ export default {
   "magpie": {
     "enabled": true,
     "id": "4457"
+  },
+  "etaswap": {
+    "enabled": true,
+    "id": "4475"
   }
 } as AdaptorsConfig;

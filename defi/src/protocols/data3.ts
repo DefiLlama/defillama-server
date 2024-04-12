@@ -15207,6 +15207,7 @@ const data3: Protocol[] = [
     module: "yamato/index.js",
     twitter: "YamatoProtocol",
     forkedFrom: [],
+    stablecoins: ["cjpy"],
     oracles: ["Chainlink"],
     audit_links: ["https://blockapex.io/yamato-protocol-audit-report/"],
     github: ["DeFiGeek-Community"],

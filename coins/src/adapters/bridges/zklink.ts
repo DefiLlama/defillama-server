@@ -28,6 +28,8 @@ export default async function bridge(): Promise<Token[]> {
         case 'blast': sourceChain = 'blast'; break;
         case 'arbitrum': sourceChain = 'arbitrum'; break;
         case 'mantle': sourceChain = 'mantle'; break;
+        case 'base': sourceChain = 'base'; break;
+        case 'optimism': sourceChain = 'optimism'; break;
         case 'primary': sourceChain = 'linea'; break;
         default: console.log('zklink Unknown networkKey', token.networkKey)
       }

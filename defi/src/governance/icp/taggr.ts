@@ -89,7 +89,7 @@ export interface TaggrProposalReponse {
 export async function get_metadata ()
 {
    var { data, } = await axios.get(
-        TAGGR_URL + "/api/v1/metadata"
+        TAGGR_URL + "api/v1/metadata"
         ,
         {
             headers: {

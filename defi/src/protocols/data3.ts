@@ -39606,6 +39606,27 @@ const data3: Protocol[] = [
     github: ["avalonfinancexyz"],
     listedAt: 1712919585
   },
+  {
+    id: "4474",
+    name: "ShibaNova",
+    address: null,
+    symbol: "-",
+    url: "https://shibanova.xyz",
+    description: "Yield Farming, AMM, & DEX built on BSC, with daily dividends paid in BNB & BUSD from every block",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/shibanova.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "shibanova/index.js",
+    twitter: "shibanovadefi",
+    listedAt: 1712934494
+  },
 ]
 
 export default data3

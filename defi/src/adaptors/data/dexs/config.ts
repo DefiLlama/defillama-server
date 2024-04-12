@@ -2613,6 +2613,11 @@ export default {
     },
     "hbarsuite-dex": {
         enabled: true,
-        id: "4467"
+        id: "4467",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1712793600": true
+            }
+        }
     }
 } as AdaptorsConfig

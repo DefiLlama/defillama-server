@@ -27,7 +27,7 @@ export type Payload =
           ["Release"]: Release;
       }
     | {
-          ["Fund"]: [string, number];
+          ["Funding"]: [string, number];
       }
     | {
           ["ICPTransfer"]: [number[], ICP];
@@ -36,7 +36,7 @@ export type Payload =
           ["AddRealmController"]: [number, number];
       }
     | {
-          ["Reward"]: Reward;
+          ["Rewards"]: Reward;
       };
 
 function stringifyPayload(payload: Payload) {

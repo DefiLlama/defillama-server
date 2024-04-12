@@ -2507,6 +2507,7 @@ export default {
         }
     },
     "merchant-moe": {
+        parentId: "Merchant Moe",
         "enabled": true,
         "id": "4006"
     },

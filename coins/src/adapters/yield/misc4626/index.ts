@@ -5,7 +5,6 @@ import { getYieldWrites2 } from "../../utils/yieldTokens";
 import { unwrap4626 } from "../mean-finance/mean-finance";
 
 export function misc4626(timestamp: number = 0) {
-  console.log("starting misc 4626");
   const calls = Object.keys(tokens).map((c) => getTokenPrices(c, timestamp))
   const callsQiDAO = Object.keys(tokensQiDAO).map((c) => getQiDAOTokenPrices(c, timestamp))
   const callsHardcoded = hardCodedAssets4626(timestamp);

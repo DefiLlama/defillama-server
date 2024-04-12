@@ -10,7 +10,6 @@ const contracts: {
 };
 
 export function wombat(timestamp: number = 0) {
-  console.log("starting wombat");
   return Promise.all(
     Object.keys(contracts).map((c: string) =>
       getTokenPrices(timestamp, c, contracts[c]),

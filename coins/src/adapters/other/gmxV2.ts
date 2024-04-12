@@ -22,7 +22,6 @@ export function gmxV2(timestamp: number = 0) {
   if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
     throw new Error("Can't fetch historical data")
 
-  console.log("starting GMX V2");
   return Promise.all(chains.map(i => getTokenPrices(i, timestamp)))
 }
 

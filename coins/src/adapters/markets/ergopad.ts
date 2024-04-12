@@ -4,7 +4,6 @@ import { addToDBWritesList, getTokenAndRedirectData, } from "../utils/database";
 import axios from 'axios'
 
 export function ergopad(timestamp: number) {
-  console.log("starting ergo");
 
   const THIRY_MINUTES = 1800
   if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))

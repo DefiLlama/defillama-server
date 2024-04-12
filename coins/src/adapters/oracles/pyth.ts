@@ -24,7 +24,6 @@ async function fetchFeedIds(): Promise<Feed[]> {
 
 export async function pyth(timestamp: number = now) {
   // if (timestamp != now) return [];
-  console.log("starting pyth");
   const api = await getApi('arbitrum', timestamp);
   const THREE_DAYS = 3 * 24 * 60 * 60;
   const threeDaysAgo = (timestamp ? timestamp : now) - THREE_DAYS;

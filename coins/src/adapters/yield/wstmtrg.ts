@@ -35,6 +35,5 @@ async function getTokenPrices(timestamp: number) {
 }
 
 export function wstmtrg(timestamp: number = 0) {
-  console.log("starting wstMTRG");
   return getTokenPrices(timestamp);
 }

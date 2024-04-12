@@ -5,7 +5,6 @@ import axios, { AxiosInstance } from 'axios'
 import { getCache, setCache } from '../../utils/cache';
 
 export function wingriders(timestamp: number) {
-  console.log("starting wingriders");
   return Promise.all([
     getTokenPrices(timestamp),
   ])

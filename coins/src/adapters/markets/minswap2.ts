@@ -14,7 +14,6 @@ const api: AxiosInstance = axios.create({
 })
 
 export function minswap(timestamp: number) {
-  console.log("starting minswap");
   return Promise.all([
     getTokenPrices(timestamp),
   ])
@@ -86,6 +85,5 @@ async function getTokenPrices(timestamp: number) {
   })
   // console.table(priceLog)
 
-  console.log(writes.length)
   return writes
 }

@@ -33,6 +33,5 @@ async function getTokenPrices(chain: string, timestamp: number) {
 }
 
 export function dinari(timestamp: number = 0) {
-  console.log("starting dinari");
   return getTokenPrices("arbitrum", timestamp);
 }

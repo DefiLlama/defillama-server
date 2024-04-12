@@ -2,7 +2,6 @@ import getTokenPrices from "./uniswap";
 import getExtras from "./extraLp";
 
 export function uniswap(timestamp: number = 0) {
-  console.log("starting uniswap");
   return getTokenPrices(
     "ethereum",
     "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
@@ -13,7 +12,6 @@ export function uniswap(timestamp: number = 0) {
   );
 }
 export function sushiswap1(timestamp: number = 0) {
-  console.log("starting sushiswap1");
   return Promise.all([
     getTokenPrices(
       "ethereum",
@@ -25,7 +23,6 @@ export function sushiswap1(timestamp: number = 0) {
   ]);
 }
 export function sushiswap2(timestamp: number = 0) {
-  console.log("starting sushiswap2");
   const factoryAddress = "0xc35DADB65012eC5796536bD9864eD8773aBc74C4";
   return Promise.all([
     getTokenPrices("arbitrum", factoryAddress, undefined, undefined, timestamp),
@@ -33,7 +30,6 @@ export function sushiswap2(timestamp: number = 0) {
   ]);
 }
 export function sushiswap3(timestamp: number = 0) {
-  console.log("starting sushiswap3");
   const factoryAddress = "0xc35DADB65012eC5796536bD9864eD8773aBc74C4";
   return Promise.all([
     getTokenPrices("polygon", factoryAddress, undefined, undefined, timestamp),
@@ -52,7 +48,6 @@ export function sushiswap3(timestamp: number = 0) {
   ]);
 }
 export function pancakeswap(timestamp: number = 0) {
-  console.log("starting pancakeswap");
   return getTokenPrices(
     "bsc",
     "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
@@ -62,7 +57,6 @@ export function pancakeswap(timestamp: number = 0) {
   );
 }
 export function traderJoe(timestamp: number = 0) {
-  console.log("starting traderjoe");
   return getTokenPrices(
     "avax",
     "0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10",
@@ -72,7 +66,6 @@ export function traderJoe(timestamp: number = 0) {
   );
 }
 export function vvsFinance(timestamp: number = 0) {
-  console.log("starting vvs finance");
   return getTokenPrices(
     "cronos",
     "0x3b44b2a187a7b3824131f8db5a74194d0a42fc15",
@@ -82,7 +75,6 @@ export function vvsFinance(timestamp: number = 0) {
   );
 }
 export function quickswap(timestamp: number = 0) {
-  console.log("starting quickswap");
   return getTokenPrices(
     "polygon",
     "0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32",
@@ -92,7 +84,6 @@ export function quickswap(timestamp: number = 0) {
   );
 }
 export function biswap(timestamp: number = 0) {
-  console.log("starting biswap");
   return getTokenPrices(
     "bsc",
     "0x858e3312ed3a876947ea49d572a7c42de08af7ee",
@@ -102,7 +93,6 @@ export function biswap(timestamp: number = 0) {
   );
 }
 export function mmFinance(timestamp: number = 0) {
-  console.log("starting mm finance");
   return getTokenPrices(
     "cronos",
     "0xd590cC180601AEcD6eeADD9B7f2B7611519544f4",
@@ -112,7 +102,6 @@ export function mmFinance(timestamp: number = 0) {
   );
 }
 export function trisolaris(timestamp: number = 0) {
-  console.log("starting trisolaris");
   return getTokenPrices(
     "aurora",
     "0xc66F594268041dB60507F00703b152492fb176E7",
@@ -122,7 +111,6 @@ export function trisolaris(timestamp: number = 0) {
   );
 }
 export function pangolin(timestamp: number = 0) {
-  console.log("starting pangolin");
   return getTokenPrices(
     "avax",
     "0xefa94DE7a4656D787667C749f7E1223D71E9FD88",
@@ -132,7 +120,6 @@ export function pangolin(timestamp: number = 0) {
   );
 }
 export function spiritswap(timestamp: number = 0) {
-  console.log("starting spiritswap");
   return getTokenPrices(
     "fantom",
     "0xEF45d134b73241eDa7703fa787148D9C9F4950b0",
@@ -143,7 +130,6 @@ export function spiritswap(timestamp: number = 0) {
 }
 
 export function spookyswap(timestamp: number = 0) {
-  console.log("starting spookyswap");
   return getTokenPrices(
     "fantom",
     "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
@@ -153,7 +139,6 @@ export function spookyswap(timestamp: number = 0) {
   );
 }
 export function tombswap(timestamp: number = 0) {
-  console.log("starting tombswap");
   return getTokenPrices(
     "fantom",
     "0xE236f6890F1824fa0a7ffc39b1597A5A6077Cfe9",
@@ -163,7 +148,6 @@ export function tombswap(timestamp: number = 0) {
   );
 }
 export function wemix(timestamp: number = 0) {
-  console.log("starting wemix");
   return getTokenPrices(
     "wemix",
     "0xe1F36C7B919c9f893E2Cd30b471434Aa2494664A",
@@ -173,7 +157,6 @@ export function wemix(timestamp: number = 0) {
   );
 }
 export function solidly(timestamp: number = 0) {
-  console.log("starting solidly");
   return getTokenPrices(
     "fantom",
     "0x3fAaB499b519fdC5819e3D7ed0C26111904cbc28",
@@ -183,7 +166,6 @@ export function solidly(timestamp: number = 0) {
   );
 }
 export function diffusion(timestamp: number = 0) {
-  console.log("starting diffusion");
   return getTokenPrices(
     "evmos",
     "0x6abdda34fb225be4610a2d153845e09429523cd2",
@@ -193,7 +175,6 @@ export function diffusion(timestamp: number = 0) {
   );
 }
 export function equalizer(timestamp: number = 0) {
-  console.log("starting equalizer");
   return getTokenPrices(
     "fantom",
     "0xc6366efd0af1d09171fe0ebf32c7943bb310832a",
@@ -203,7 +184,6 @@ export function equalizer(timestamp: number = 0) {
   );
 }
 export function camelot(timestamp: number = 0) {
-  console.log("starting camelot");
   return getTokenPrices(
     "arbitrum",
     "0x6eccab422d763ac031210895c81787e87b43a652",
@@ -213,7 +193,6 @@ export function camelot(timestamp: number = 0) {
   );
 }
 export function velocore(timestamp: number = 0) {
-  console.log("starting velocore");
   return getTokenPrices(
     "era",
     "0xe140eac2bb748c8f456719a457f26636617bb0e9",
@@ -223,7 +202,6 @@ export function velocore(timestamp: number = 0) {
   );
 }
 export function mute(timestamp: number = 0) {
-  console.log("starting mute");
   return getTokenPrices(
     "era",
     "0x40be1cba6c5b47cdf9da7f963b6f761f4c60627d",
@@ -233,7 +211,6 @@ export function mute(timestamp: number = 0) {
   );
 }
 export function spacefi(timestamp: number = 0) {
-  console.log("starting spacefi");
   return getTokenPrices(
     "era",
     "0x0700fb51560cfc8f896b2c812499d17c5b0bf6a7",
@@ -243,7 +220,6 @@ export function spacefi(timestamp: number = 0) {
   );
 }
 export function gemswap(timestamp: number = 0) {
-  console.log("starting gemswap");
   return getTokenPrices(
     "era",
     "0x065c8703132F2A38Be3d2dbF7Be6BE455930560c",
@@ -253,7 +229,6 @@ export function gemswap(timestamp: number = 0) {
   );
 }
 export function glacier(timestamp: number = 0) {
-  console.log("starting glacier");
   return getTokenPrices(
     "avax",
     "0xac7b7eac8310170109301034b8fdb75eca4cc491",
@@ -263,7 +238,6 @@ export function glacier(timestamp: number = 0) {
   );
 }
 export function thena(timestamp: number = 0) {
-  console.log("starting thena");
   return getTokenPrices(
     "bsc",
     "0xAFD89d21BdB66d00817d4153E055830B1c2B3970",
@@ -273,7 +247,6 @@ export function thena(timestamp: number = 0) {
   );
 }
 export function extraUniV2Lps(timestamp: number = 0) {
-  console.log("starting extra uni v2 lps");
   return Promise.all([
     getExtras(
       timestamp,
@@ -308,7 +281,6 @@ export function extraUniV2Lps(timestamp: number = 0) {
   ]);
 }
 export function fvm(timestamp: number = 0) {
-  console.log("starting fvm");
   return getTokenPrices(
     "fantom",
     "0x472f3C3c9608fe0aE8d702f3f8A2d12c410C881A",
@@ -318,7 +290,6 @@ export function fvm(timestamp: number = 0) {
   );
 }
 export function velocimeter(timestamp: number = 0) {
-  console.log("starting velocimeter");
   return getTokenPrices(
     "base",
     "0xe21Aac7F113Bd5DC2389e4d8a8db854a87fD6951",
@@ -328,7 +299,6 @@ export function velocimeter(timestamp: number = 0) {
   );
 }
 export function pulsex(timestamp: number = 0) {
-  console.log("starting pulsex");
   return getTokenPrices(
     "pulse",
     "0x1715a3E4A142d8b698131108995174F37aEBA10D",
@@ -339,7 +309,6 @@ export function pulsex(timestamp: number = 0) {
 }
 
 export function zkSwap(timestamp: number = 0) {
-  console.log("starting zkSwap finance");
   return getTokenPrices(
     "era",
     "0x3a76e377ED58c8731F9DF3A36155942438744Ce3",
@@ -350,7 +319,6 @@ export function zkSwap(timestamp: number = 0) {
 }
 
 export function elysium(timestamp: number = 0) {
-  console.log("starting elysium unin v2");
   return getTokenPrices(
     "elsm",
     "0x5bec5d65fAba8E90e4a74f3da787362c60F22DaE",
@@ -361,7 +329,6 @@ export function elysium(timestamp: number = 0) {
 }
 
 export function zkswap(timestamp: number = 0) {
-  console.log("starting zkswap v2");
   return getTokenPrices(
     "polygon_zkevm",
     "0x51A0D4B81400581d8722627daFCd0c1Ff9357d1D",
@@ -372,7 +339,6 @@ export function zkswap(timestamp: number = 0) {
 }
 
 export function aerodrome(timestamp: number = 0) {
-  console.log("starting aerodrome");
   return getTokenPrices(
     "base",
     "0x420DD381b31aEf6683db6B902084cB0FFECe40Da",
@@ -384,7 +350,6 @@ export function aerodrome(timestamp: number = 0) {
 }
 
 export function jibswap(timestamp: number = 0) {
-  console.log("starting jibswap");
   return getTokenPrices(
     "jbc",
     "0x4BBdA880C5A0cDcEc6510f0450c6C8bC5773D499",

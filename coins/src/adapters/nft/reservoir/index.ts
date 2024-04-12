@@ -9,7 +9,6 @@ import { log } from "@defillama/sdk";
 
 const chain = "ethereum";
 export async function reservoir(timestamp: number = 0) {
-  console.log("starting reservoir Nft");
   const api = await getApi(chain, timestamp);
   const collections = await getCollections();
   const [{ price: ethPrice }] = await getTokenAndRedirectData(
@@ -72,7 +71,6 @@ async function getCollections({ limit = 5000 } = {}) {
     if (collections.length) url += `&offset=${collections.length}`;
     res = await axios.get(url);
     collections.push(...res.data.collections);
-    console.log("fetched: ", collections.length);
   } while (res.data.collections.length && collections.length < limit);
   return filterCollections(collections);
 }

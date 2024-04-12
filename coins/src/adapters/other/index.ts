@@ -35,7 +35,6 @@ export { glp };
 export const shlb = shlb_;
 
 export function steadefi(timestamp: number = 0) {
-  console.log("starting steadefi");
   return Promise.all([
     steadefiEth(timestamp),
     steadefiWbtc(timestamp),
@@ -46,24 +45,19 @@ export function steadefi(timestamp: number = 0) {
   ]);
 }
 export function teahouse(timestamp: number = 0) {
-  console.log("starting teahouse");
   return teahouseAdapter(timestamp);
 }
 export function opdx(timestamp: number = 0) {
-  console.log("starting opdx");
   return opdxAdapter(timestamp);
 }
 export function defiChain(timestamp: number = 0) {
-  console.log("starting defiChain");
   return defiChainAdapter(timestamp);
 }
 export function synthetix(timestamp: number = 0) {
-  console.log("starting synthetix");
   return synthetixAdapter(timestamp);
 }
 
 export function metronome(timestamp: number = 0) {
-  console.log("starting metronome");
   return Promise.all(
     Object.keys(metronomeContracts).map((chain) =>
       metronomeAdapter(chain, timestamp),
@@ -72,11 +66,9 @@ export function metronome(timestamp: number = 0) {
 }
 
 export function abracadabra(timestamp: number = 0) {
-  console.log("starting abracadabra");
   return abraAdapter(timestamp);
 }
 export function unknownTokens(timestamp: number = 0) {
-  console.log("starting unknownTokens");
   return Promise.all([
     unknownTokenAdapter(
       timestamp,
@@ -90,7 +82,6 @@ export function unknownTokens(timestamp: number = 0) {
   ]);
 }
 export function unknownTokens2(timestamp: number = 0) {
-  console.log("starting unknownTokens2");
   return Promise.all([
     unknownTokenAdapter(
       timestamp,
@@ -247,11 +238,9 @@ export function unknownTokens2(timestamp: number = 0) {
   ]);
 }
 export function pods(timestamp: number = 0) {
-  console.log("starting pods");
   return podsAdapter(timestamp);
 }
 export function distressed(timestamp: number = 0) {
-  console.log("starting distressed");
   return Promise.all(
     Object.keys(contracts).map((chain: string) =>
       distressedAdapter(chain, timestamp),
@@ -259,7 +248,6 @@ export function distressed(timestamp: number = 0) {
   );
 }
 export function manualInput(timestamp: number = 0) {
-  console.log("starting manualInputs");
   return Promise.all([
     manualInputAdapter("evmos", timestamp),
     manualInputAdapter("arbitrum", timestamp),
@@ -270,14 +258,12 @@ export function manualInput(timestamp: number = 0) {
   ]);
 }
 export function realt(timestamp: number = 0) {
-  console.log("starting realt");
   return Promise.all([
     realtAdapter("ethereum", timestamp),
     realtAdapter("xdai", timestamp),
   ]);
 }
 export function collateralizedAssets(timestamp: number = 0) {
-  console.log("starting collateralized assets");
   return collateralizedAdapter("arbitrum", timestamp, [
     {
       token: "0x52c64b8998eb7c80b6f526e99e29abdcc86b841b", // DSU
@@ -287,20 +273,16 @@ export function collateralizedAssets(timestamp: number = 0) {
   ]);
 }
 export function sweth(timestamp: number = 0) {
-  console.log("starting sweth");
   return swethAdapter(timestamp);
 }
 export function gmd(timestamp: number = 0) {
-  console.log("starting gmd");
   return gmdAdapter(timestamp);
 }
 export function stkaurabal(timestamp: number = 0) {
-  console.log("starting stkaurabal");
   return stkaurabalAdapter(timestamp);
 }
 
 export async function buck(timestamp: number = 0) {
-  console.log("starting buck");
   const THIRY_MINUTES = 1800;
   if (+timestamp !== 0 && timestamp < +new Date() / 1e3 - THIRY_MINUTES)
     throw new Error("Can't fetch historical data");
@@ -350,11 +332,9 @@ export async function buck(timestamp: number = 0) {
 }
 
 export async function mooBvm(timestamp: number = 0) {
-  console.log("starting moo bvm eth");
   return mooBvmAdapter(timestamp);
 }
 
 export async function velgd(timestamp: number = 0) {
-  console.log("starting velgd");
   return velgAdapter(timestamp);
 }

@@ -2609,5 +2609,9 @@ export default {
     "savmswap": {
         enabled: true,
         id: "4422"
+    },
+    "hbarsuite-dex": {
+        enabled: true,
+        id: "4467"
     }
 } as AdaptorsConfig

@@ -2006,5 +2006,9 @@ export default {
     "beefy": {
         enabled: true,
         id: "326"
+    },
+    "etaswap": {
+        "enabled": true,
+        "id": "4475"
     }
 } as AdaptorsConfig

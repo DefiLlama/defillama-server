@@ -36045,7 +36045,7 @@ const data3: Protocol[] = [
     module: "sns/index.js",
     twitter: "dfinity",
   },
-  {
+ /*  {
     id: "4313",
     name: "Neurons Fund",
     address: null,
@@ -36062,10 +36062,9 @@ const data3: Protocol[] = [
     chains: ["ICP"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
-    treasury: "nns.js",
+    module: "nns/index.js",
     twitter: "dfinity",
-  },
+  }, */
   {
     id: "4314",
     name: "BridgeM",

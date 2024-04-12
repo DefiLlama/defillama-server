@@ -1589,7 +1589,7 @@ export default {
         "enabled": true,
         "id": "3836"
     },
-    "dln": {
+    "deBridge": {
         "enabled": true,
         "id": "3846"
     },

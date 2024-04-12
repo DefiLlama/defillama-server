@@ -39627,6 +39627,28 @@ const data3: Protocol[] = [
     twitter: "shibanovadefi",
     listedAt: 1712934494
   },
+  {
+    id: "4475",
+    name: "EtaSwap",
+    address: null,
+    symbol: "-",
+    url: "https://etaswap.com",
+    description: "First DEX aggregator on Hedera. Seamless Swaps, Infinite Possibilities.",
+    chain: "Hedera",
+    logo: `${baseIconsUrl}/etaswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Hedera"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    github: ["EtaSwap"],
+    twitter: "eta_swap",
+  },
+
 ]
 
 export default data3

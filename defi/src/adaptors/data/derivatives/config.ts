@@ -737,7 +737,13 @@ export default {
     },
     "myx-finance": {
         enabled: true,
-        "id": "4319"
+        "id": "4319",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1712620800": true,
+                "1712534400": true,
+            },
+        }
     },
     "logx": {
         enabled: true,
@@ -760,5 +766,9 @@ export default {
     "synthetix-v3": {
         enabled: true,
         id: "4446"
+    },
+    "increment-protocol": {
+        enabled: true,
+        id: "4382",
     }
 } as AdaptorsConfig

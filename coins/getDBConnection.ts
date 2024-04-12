@@ -28,7 +28,7 @@ export async function getCoins2Connection() {
 
 export async function closeConnection() {
   if (coins2Connection) {
-    console.log("Closing Coins2 DB connection");
+    console.log("Closing Coins2 DB connection 2");
     await (await coins2Connection).end({ timeout: 2 });
     console.log("Coins2 DB connection closed");
   }

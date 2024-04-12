@@ -26,12 +26,12 @@ export async function kuma(timestamp: number): Promise<Write[]> {
       (await ethApi.call({
         abi,
         target: "0xdc888B8c76eF26852B6f6c0008D6E2f29A96Cb50",
-      })).answer / 1e18,
+      })).answer / 1e8,
     FRK: 
       (await polyApi.call({
         abi,
         target: "0x82C3e5Aa2B31a9bdCc9149FB8050464D2C77B4F0",
-      })).answer / 1e18,
+      })).answer / 1e8,
   };
   // KUMA tokens are redeemable for the bond NFT at any time, therefore their value can be assumed to be stable
   // the currently issued tokens in this list are all being held until the bond matures so there's no other way to price them

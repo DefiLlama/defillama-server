@@ -4146,6 +4146,32 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ArcadiaFi",
     github: ["arcadia-finance"],
   },
+  {
+    id: "parent#subseaprotocol", // its the same team, https://prnt.sc/6aWrFV4VhHoN risk harbor and karab 
+    name: "SubseaProtocol",
+    url: "https://subseaprotocol.com",
+    description:
+      "Risk management marketplace for digital assets.",
+    logo: `${baseIconsUrl}/subseaprotocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    governanceID: ["snapshot:riskharbor.eth"],
+    github: ["Risk-Harbor"],
+    twitter: "SubseaProtocol",
+  },
+  {
+    id: "parent#particle",
+    name: "Particle",
+    url: "https://app.particle.trade",
+    description:
+      "Permissionless leverage trading protocol for any digital asset. Backed by Polychain built on Blast",
+    logo: `${baseIconsUrl}/particle.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "particle_trade",
+  },
 ];
 
 export default parentProtocols;

@@ -148,30 +148,30 @@ export default {
         "enabled": true,
         "id": "383"
     },
-    "pancakeswap": {
-        parentId: "PancakeSwap",
-        protocolsData: {
-            v1: {
-                "disabled": true,
-                enabled: true,
-                "id": "2590"
-            },
-            v2: {
-                enabled: true,
-                "id": "194"
-            },
-            stableswap: {
-                "enabled": true,
-                "id": "2529"
-            },
-            v3: {
-                "enabled": true,
-                "id": "2769"
-            }
-        },
-        "enabled": true,
-        "id": "194"
-    },
+    // "pancakeswap": {
+    //     parentId: "PancakeSwap",
+    //     protocolsData: {
+    //         v1: {
+    //             "disabled": true,
+    //             enabled: true,
+    //             "id": "2590"
+    //         },
+    //         v2: {
+    //             enabled: true,
+    //             "id": "194"
+    //         },
+    //         stableswap: {
+    //             "enabled": true,
+    //             "id": "2529"
+    //         },
+    //         v3: {
+    //             "enabled": true,
+    //             "id": "2769"
+    //         }
+    //     },
+    //     "enabled": true,
+    //     "id": "194"
+    // },
     "pangolin": {
         "enabled": true,
         "id": "246"
@@ -242,25 +242,25 @@ export default {
             }
         }
     },
-    "uniswap": {
-        "enabled": true,
-        "id": "1",
-        parentId: "Uniswap",
-        "protocolsData": {
-            "v1": {
-                "enabled": true,
-                "id": "2196"
-            },
-            "v2": {
-                "enabled": true,
-                "id": "2197"
-            },
-            "v3": {
-                "enabled": true,
-                "id": "2198"
-            },
-        },
-    },
+    // "uniswap": {
+    //     "enabled": true,
+    //     "id": "1",
+    //     parentId: "Uniswap",
+    //     "protocolsData": {
+    //         "v1": {
+    //             "enabled": true,
+    //             "id": "2196"
+    //         },
+    //         "v2": {
+    //             "enabled": true,
+    //             "id": "2197"
+    //         },
+    //         "v3": {
+    //             "enabled": true,
+    //             "id": "2198"
+    //         },
+    //     },
+    // },
     "velodrome": {
         parentId: "Velodrome",
         "enabled": true,

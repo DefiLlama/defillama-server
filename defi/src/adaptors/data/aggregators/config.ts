@@ -181,5 +181,9 @@ export default {
     parentId: "Aperture Finance",
     "enabled": true,
     "id": "3554"
+  },
+  "magpie": {
+    "enabled": true,
+    "id": "4457"
   }
 } as AdaptorsConfig;

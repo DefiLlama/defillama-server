@@ -261,7 +261,7 @@ async function getAndStoreHourly(coin: Coin) {
     `/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`,
   );
   if (!Array.isArray(prices)) {
-    console.error(`Couldn't get data for ${coin.id}`);
+    console.error(`[coingecko2 - getAndStoreHourly] Couldn't get data for ${coin.id}`);
     return;
   }
   const PK = cgPK(coin.id);

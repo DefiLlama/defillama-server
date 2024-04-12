@@ -214,7 +214,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const returnedCoins = new Set(Object.keys(coinData));
   coins.forEach((coin) => {
     if (!returnedCoins.has(coin.id)) {
-      console.error(`Couldn't get data for ${coin.id}`);
+      console.error(`[scripts - getAndStoreCoins] Couldn't get data for ${coin.id}`);
       rejected.push(coin);
     }
     idToSymbol[coin.id] = coin.symbol;
@@ -317,6 +317,10 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             blacklist.push(PK);
             return;
           }
+          if (!pricesAndMcaps[cgPK(coin.id)]) {
+            console.error(`[scripts - getAndStoreCoins 2]Couldn't get data for ${coin.id}`);
+            return;
+          }
           writes2.push({
             key,
             timestamp,
@@ -371,7 +375,7 @@ async function getAndStoreHourly(
     3,
   );
   if (!Array.isArray(coinData.prices)) {
-    console.error(`Couldn't get data for ${coin.id}`);
+    console.error(`[scripts - getAndStoreHourly] Couldn't get data for ${coin.id}`);
     rejected.push(coin);
     return;
   }

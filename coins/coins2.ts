@@ -589,7 +589,7 @@ export async function writeCoins2(
   //   writeToPostgres(values),
   //writeToRedis(strings, source)
   // ]);
-  await closeConnection();
+  // await closeConnection();
 }
 export async function batchWrite2(
   values: Coin[],

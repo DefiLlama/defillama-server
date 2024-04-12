@@ -153,6 +153,7 @@ export default {
   vela: require("./yield/vela"),
   zkSwap: require("./markets/uniswap"),
   chai: require("./yield/chai"),
+  kuma: require("./rwa/kuma"),
   ondo: require("./rwa/ondo"),
   hashnote: require("./rwa/hashnote"),
   hiyield: require("./rwa/hiyield"),

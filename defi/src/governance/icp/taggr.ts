@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Proposal, GovCache } from '../types';
 import { updateStats } from '../utils';
-import { setCompound, getCompound } from '../cache';
+import { setCompound, getCompound, getCompoundOverview } from '../cache';
 
 export const TAGGR_URL: string = "https://6qfxa-ryaaa-aaaai-qbhsq-cai.raw.icp0.io/";
 export const TAGGR_ID: string = "6qfxa-ryaaa-aaaai-qbhsq-cai";
@@ -88,7 +88,7 @@ export interface TaggrProposalReponse {
  */
 export async function get_metadata ()
 {
-    var { data, } = await axios.get(
+   var { data, } = await axios.get(
         TAGGR_URL + "/api/v1/metadata"
         ,
         {
@@ -96,8 +96,7 @@ export async function get_metadata ()
                 Accept: 'application/json',
             },
         },
-    );
-
+    ); 
     return {
         id: TAGGR_ID,
         type: "Taggr DAO",
@@ -130,6 +129,8 @@ function convert_proposal_format ( proposal : TaggrProposalReponse ) : Proposal
             sumFalse += bulletin[2]; // Add score for false
         }
     });
+
+    const timestamp = Math.floor(+proposal.timestamp.toString()/ 1e9) 
     
     return {
         id: proposal.id.toString(),
@@ -147,8 +148,8 @@ function convert_proposal_format ( proposal : TaggrProposalReponse ) : Proposal
         score_skew: 0,
         score_curve: 0,
         score_curve2: 0,
-        start: Number(proposal.timestamp),
-        end: Number(proposal.timestamp) + 1,
+        start: timestamp,
+        end: timestamp + 1,
         executed: proposal.status === 'Executed',
         link: "https://taggr.link/#/post/" + proposal.post_id
     };
@@ -175,7 +176,7 @@ export async function get_proposals_interval ( limit : number, offset : number )
         },
     );
 
-    return data.data;
+    return data;
 };
 
 export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCache[]>
@@ -184,12 +185,16 @@ export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCac
     let cache : GovCache = await getCompound( TAGGR_ID );
     cache.metadata = {
         ...cache.metadata,
-        ...
-        metadata
+        ...metadata
     };
     cache.id = metadata.id;
 
-    const cached_proposals_count = Object.keys(cache.proposals).length;
+    await setCompound( cache.id, cache )
+    updateStats( cache, overview, cache.id )
+    if (!metadata.latestProposalId) return overview
+    cache.proposals = cache.proposals ?? {};
+
+    const cached_proposals_count = Object.keys(cache.proposals ?? {}).length;
     let proposal_left_to_fetch = metadata.latestProposalId - cached_proposals_count;
     const MAX_PROPOSALS_PER_REQUEST : number = 100;
 
@@ -197,6 +202,7 @@ export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCac
     while (proposal_left_to_fetch > 0) {
         let limit = Math.min( MAX_PROPOSALS_PER_REQUEST, proposal_left_to_fetch );
         let offset = proposal_left_to_fetch - limit;
+
         ( await get_proposals_interval( limit, offset ) )
             .forEach( ( fetched_proposal : any ) => { cache.proposals[ fetched_proposal.id ] = convert_proposal_format(fetched_proposal); } );
         proposal_left_to_fetch -= limit;
@@ -207,7 +213,27 @@ export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCac
     {
         Object.values( overview[ cache.id ].months ?? {} ).forEach( ( month : any ) => delete month.proposals )
     }
+    // fs.writeFileSync('compound-taggr.json', JSON.stringify(cache, null, 2))
     await setCompound( cache.id, cache )
 
     return overview
 }
+
+
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason)
+    })
+process.on('uncaughtException', (error) => {
+    console.error('Uncaught Exception thrown', error)
+})
+
+
+/* 
+import * as fs from 'fs'
+getCompoundOverview().then(async i => {
+    await addTaggrProposals(i)
+    console.log('hello')
+    fs.writeFileSync('compound-overview.json', JSON.stringify(i, null, 2))
+  }).then(() => process.exit(0))
+  */

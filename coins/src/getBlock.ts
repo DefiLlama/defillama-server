@@ -70,9 +70,14 @@ function getExtraProvider(chain: string | undefined) {
   return getProvider(chain as any);
 }
 
-async function isAValidBlockAtThisTimestamp(timestamp: number, chain: string) {
-  if (!(chain in Object.keys(genesisBlockTimes))) return true
-  return genesisBlockTimes[chain] < timestamp && timestamp < Date.now() / 1000;
+function isAValidBlockAtThisTimestamp(timestamp: number, chain: string) {
+  if(timestamp > Date.now() / 1000){
+    return false
+  }
+  if(genesisBlockTimes[chain]){
+    return genesisBlockTimes[chain] < timestamp
+  }
+  return true
 }
 
 function getClosestBlock(PK: string, timestamp: number, search: "high" | "low") {
@@ -111,10 +116,10 @@ const handler = async (
       message: "Timestamp needs to be a number"
     })
   }
-  const isValid = await isAValidBlockAtThisTimestamp(timestamp, chain);
+  const isValid = isAValidBlockAtThisTimestamp(timestamp, chain);
   if (!isValid)
-    return successResponse({
-      error: `requested timestamp is either before genesis or after now`,
+    return errorResponse({
+      message: `requested timestamp is either before genesis or after now`,
     });
   let [top, bottom] = await Promise.all([
     getClosestBlock(blockPK(chain), timestamp, "high"),

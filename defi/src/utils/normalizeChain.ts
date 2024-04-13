@@ -32,7 +32,7 @@ export function normalizeChain(chain: string) {
 }
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted ?? (category === "Yield Aggregator" || category === "Yield");
+  return moduleDoubleCounted === true || (category === "Yield Aggregator" || category === "Yield");
 }
 
 export function isExcludedFromChainTvl(category?: string) {
@@ -2617,7 +2617,7 @@ export const chainCoingeckoIds = {
     geckoId: "xai-blockchain",
     symbol: "XAI",
     cmcId: "28374",
-    categories: ["EVM"],
+    categories: ["EVM", "Arbitrum Orbit"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"]
@@ -2780,6 +2780,63 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "rss3_",
     url: "https://rss3.io/"
+  },
+  "Bittensor": {
+    geckoId: "bittensor",
+    symbol: "TAO",
+    cmcId: "22974",
+    twitter: "opentensor",
+    url: "https://bittensor.com/"
+  },
+  "Degen": {
+    geckoId: "degen-base",
+    symbol: "DEGEN",
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Base",
+      types: ["L3"]
+    },
+    chainId: 666666666,
+    twitter: "degentokenbase",
+    url: "https://www.degen.tips"
+  },
+  "HAQQ": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "The_HaqqNetwork",
+    url: "https://haqq.network/",
+    github: ["haqq-network"],
+    chainId: "11235"
+  },
+  "SatoshiVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "satoshivm",
+    url: "https://www.satoshivm.io/",
+    github: ["SatoshiVM"],
+    chainId: "3109"
+  },
+  "Venom": {
+    geckoId: "venom",
+    symbol: "VENOM",
+    cmcId: "22059",
+    twitter: "VenomFoundation",
+    url: "https://venom.foundation/",
+    github: ["venom-blockchain"],
+  },
+  "Karak Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "Karak_Network",
+    url: "https://karak.network/",
+    chainId: "2410"
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -3372,6 +3429,18 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "DeFiChain EVM"
     case "rss3_vsl":
       return "RSS3"
+    case "bittensor":
+      return "Bittensor"
+    case "degen":
+      return "Degen"
+    case "islm":
+      return "HAQQ"
+    case "svm":
+      return "SatoshiVM"
+    case "venom":
+      return "Venom"
+   case "karak":
+      return "Karak Network"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

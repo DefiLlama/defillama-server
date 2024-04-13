@@ -226,7 +226,8 @@ test("no surprise category", async () => {
     'Liquid Restaking',
     'Restaking',
     'Wallets',
-    'NftFi'
+    'NftFi',
+    'Telegram Bot'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

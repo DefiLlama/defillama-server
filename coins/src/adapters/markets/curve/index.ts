@@ -56,6 +56,7 @@ export function curve6(timestamp: number = 0) {
       "0x7b0eff0c991f0aa880481fdfa5624cb0bc9b10e1",
       "0x326290a1b0004eee78fa6ed4f1d8f4b2523ab669",
       "0x6685fcFCe05e7502bf9f0AA03B36025b09374726",
+      "0x8a8434A5952aC2CF4927bbEa3ace255c6dd165CD",
     ]),
     getTokenPrices2("arbitrum", [], timestamp, "eth-custom", [
       "0x2FE7AE43591E534C256A1594D326e5779E302Ff4",

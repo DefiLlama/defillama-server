@@ -146,7 +146,7 @@ export default {
     id: "1833",
   },
   "swapgpt": {
-    enabled: true,
+    enabled: false,
     id: "4008",
   },
   "kanalabs": {
@@ -181,5 +181,13 @@ export default {
     parentId: "Aperture Finance",
     "enabled": true,
     "id": "3554"
+  },
+  "magpie": {
+    "enabled": true,
+    "id": "4457"
+  },
+  "etaswap": {
+    "enabled": true,
+    "id": "4475"
   }
 } as AdaptorsConfig;

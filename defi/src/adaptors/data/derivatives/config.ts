@@ -281,7 +281,13 @@ export default {
     },
     "unidex": {
         "enabled": true,
-        "id": "1833"
+        "id": "1833",
+        protocolsData: {
+            "unidex": {
+                "enabled": true,
+                "id": "1833"
+            }
+        }
     },
     "satori": {
         "enabled": true,
@@ -730,8 +736,14 @@ export default {
         }
     },
     "myx-finance": {
-        enabled: false,
-        "id": "4319"
+        enabled: true,
+        "id": "4319",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1712620800": true,
+                "1712534400": true,
+            },
+        }
     },
     "logx": {
         enabled: true,
@@ -742,5 +754,21 @@ export default {
                 id: "3396",
             }
         }
+    },
+    "swych": {
+        enabled: true,
+        id: "4365",
+    },
+    "ash-perp": {
+        enabled: true,
+        id: "4426"
+    },
+    "synthetix-v3": {
+        enabled: true,
+        id: "4446"
+    },
+    "increment-protocol": {
+        enabled: true,
+        id: "4382",
     }
 } as AdaptorsConfig

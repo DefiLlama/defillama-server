@@ -112,4 +112,9 @@ export default {
         "id": "4299",
         parentId: "KIM Exchange",
     },
+    "merchant-moe-liquidity-book": {
+        parentId: "Merchant Moe",
+        "enabled": true,
+        "id": "4427",
+    },
 } as AdaptorsConfig

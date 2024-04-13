@@ -3602,7 +3602,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1538",
-    name: "Risk Harbor",
+    name: "Risk Harbor", // https://prnt.sc/6aWrFV4VhHoN its the same team
     address: null,
     symbol: "-",
     url: "https://www.riskharbor.com/",
@@ -3621,8 +3621,7 @@ const data2: Protocol[] = [
     twitter: "riskharbor",
     audit_links: ["https://docs.riskharbor.com/contracts/security-audits"],
     listedAt: 1647046245,
-    governanceID: ["snapshot:riskharbor.eth"],
-    github: ["Risk-Harbor"]
+    parentProtocol: "parent#subseaprotocol" // https://prnt.sc/6aWrFV4VhHoN its the same team
   },
   {
     id: "1539",
@@ -11606,6 +11605,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "sideshift/index.js",
     twitter: "sideshiftai",
+    treasury: "sideshift-ai.js",
     listedAt: 1657711223,
     github: ["sideshift"]
   },
@@ -13049,8 +13049,8 @@ const data2: Protocol[] = [
   {
     id: "1961",
     name: "Scallop Lend",
-    address: null,
-    symbol: "-",
+    address: "sui:0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA",
+    symbol: "SCA",
     url: "https://scallop.io",
     description: "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
     chain: "Solana",
@@ -13060,7 +13060,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Solana"],
+    chains: ["Sui"],
     module: "scallop/index.js",
     oracles: ['Supra', 'Switchboard', 'Pyth'], // https://github.com/DefiLlama/defillama-server/pull/5152/
     forkedFrom: [],
@@ -13380,7 +13380,7 @@ const data2: Protocol[] = [
     name: "DogeSwapOrg",
     address: null,
     symbol: "-",
-    url: "https://dogeswap.org/#/swap",
+    url: "", // https://dogeswap.org/#/swap leads to an ad not a dapp
     description: "A clone of Uniswap V2 on Dogechain",
     chain: "Dogechain",
     logo: `${baseIconsUrl}/dogeswaporg.png`,
@@ -15783,6 +15783,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "pluto/index.js",
     twitter: "whenPluto",
+    treasury: "pluto.js",
     listedAt: 1662996198
   },
   {
@@ -15855,7 +15856,6 @@ const data2: Protocol[] = [
       "https://docs.google.com/document/d/1joxRpf1D-KoACf7h1xnB72YkPYKxd27oDX-9axTbIQw/edit#heading=h.mnockoickb7e" //Insurance
     ],
     listedAt: 1663144131,
-    github: ["RageTrade"]
   },
   {
     id: "2087",
@@ -16995,13 +16995,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2138",
-    name: "FX Swap",
-    address: "functionx:0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
-    symbol: "WFX",
-    url: "https://fx-swap.io/#/swap",
-    description: "A scalable, open and decentralized ecosystem, enabling all to build entirely on and for the blockchain.",
+    name: "MarginX DEX", // previous FX Swap
+    address: null,
+    symbol: "-",
+    url: "https://swap.marginx.io/#/swap",
+    description: "MarginX is a decentralised exchange (DEX) that enables crypto projects, traders and DeFi enthusiasts the freedom to list, trade and provide liquidity.",
     chain: "FunctionX",
-    logo: `${baseIconsUrl}/fx-swap.jpg`,
+    logo: `${baseIconsUrl}/marginx-dex.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -17011,7 +17011,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "fxswap/index.js",
-    twitter: "FUNCTIONX_IO",
+    twitter: "marginx_io",
+    parentProtocol: "parent#marginx",
     listedAt: 1664487928
   },
   {
@@ -25956,7 +25957,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2528",
-    name: "SolidLizard",
+    name: "SolidLizard Dex",
     address: "arbitrum:0x463913D3a3D3D291667D53B8325c598Eb88D3B0e",
     symbol: "SLIZ",
     url: "https://solidlizard.finance/",
@@ -25966,7 +25967,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/solidlizard.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "solidlizard",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Arbitrum"],
@@ -25974,7 +25975,7 @@ const data2: Protocol[] = [
     twitter: "solidlizardfi",
     oracles: [],
     forkedFrom: ["Solidly"],
-    governanceID: ["snapshot:solidlizardfinance.eth"],
+    parentProtocol: "parent#solidlizard",
     listedAt: 1676230053
   },
   {
@@ -28184,12 +28185,12 @@ const data2: Protocol[] = [
   },
   {
     id: "2626",
-    name: "ether.fi",
+    name: "ether.fi Stake",
     address: null,
     symbol: "-",
-    url: "https://app.ether.fi",
+    url: "https://app.ether.fi/eeth",
     description:
-      "Decentralized and non-custodial Ethereum staking protocol..",
+      "Decentralized and non-custodial Ethereum staking protocol.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ether.fi.jpg`,
     audits: "0",
@@ -28202,6 +28203,7 @@ const data2: Protocol[] = [
     twitter: "ether_fi",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "parent#ether-fi",
     listedAt: 1677778460
   },
   {
@@ -29098,7 +29100,7 @@ const data2: Protocol[] = [
     name: "Arrakis V2",
     address: null,
     symbol: "-",
-    url: "https://beta.arrakis.finance/vaults",
+    url: "https://app.arrakis.fi/v2-vaults",
     description: "Arrakis V2 is a next-generation market-making infrastructure built on top of Uniswap V3. Its unique functionalities allow the creation and automated execution of sophisticated market-making strategies on Uniswap V3 that previously were only feasible on CEXs.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/arrakis-v2.jpg`,

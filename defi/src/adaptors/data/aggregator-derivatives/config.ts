@@ -20,5 +20,19 @@ export default {
               "enabled": true,
           }
       },
-},
+  },
+  "rage-trade": {
+    "id":"4447",
+    enabled: true,
+  },
+  "unidex": {
+    "enabled": true,
+    "id": "1833",
+    protocolsData: {
+        "unidex-agg-derivative": {
+            "enabled": true,
+            "id": "1833"
+        }
+    }
+  }
 } as AdaptorsConfig;

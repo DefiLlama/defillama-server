@@ -1167,7 +1167,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "alpha-finance",
     cmcId: "7232",
-    category: "Yield",
+    category: "Leveraged Farming",
     chains: ["Ethereum", "Avalanche", "Fantom", "Optimism"],
     module: "alpha-homora/index.js",
     twitter: "Alpha_HomoraV2",
@@ -3596,7 +3596,6 @@ const data: Protocol[] = [
     twitter: null,
     audit_links: ["https://docs.acoconut.fi/security"],
     governanceID: ["snapshot:acoconutbsc.eth", "snapshot:acoconut.eth"],
-    github: ["nutsfinance"]
   },
   {
     id: "274",
@@ -5453,7 +5452,7 @@ const data: Protocol[] = [
     symbol: "FXS",
     url: "https://frax.finance/",
     description:
-      "Inventors of the fractional stablecoin. $FRAX is the 1st stablecoin with parts backed & parts algorithmic",
+      "FRAX is a dollar-pegged stablecoin that uses AMO smart contracts and permissionless, non-custodial subprotocols as stability mechanisms. The two internal subprotocols used as stability mechanisms are Fraxlend, a decentralized lending market and Fraxswap, an automated market maker (AMM) with special features. The external subprotocol used as a stability mechanism is Curve. Additional subprotocols and AMOs can be added with governance allowing FRAX to incorporate future stability mechanisms seamlessly as they are discovered",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/frax.jpg`,
     audits: "2",
@@ -11018,10 +11017,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Farm",
     chains: ["Binance"],
     module: "bnbminer/index.js",
     twitter: "Da_Developer",
+    deadUrl: true
   },
   {
     id: "616",
@@ -11573,7 +11573,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Arrakis V1",
     address: null,
     symbol: "-",
-    url: "https://www.arrakis.finance",
+    url: "https://app.arrakis.fi/vaults",
     description:
       "Arrakis is a protocol that specializes in concentrated & active liquidity management. By creating a curated marketplace of novel tokenized LP strategies, Arrakis facilitates deep liquidity and optimizes LP earnings across its vaults.",
     chain: "Ethereum",

@@ -1,19 +1,17 @@
 import { storeTvl } from "./storeTvlInterval/getAndStoreTvl";
 import { getCurrentBlock } from "./storeTvlInterval/blocks";
-import protocols, { Protocol } from "./protocols/data";
+import protocols from "./protocols/data";
 import entities from "./protocols/entities";
 import treasuries from "./protocols/treasury";
 import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
 import { PromisePool } from '@supercharge/promise-pool'
-// import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import * as sdk from '@defillama/sdk'
 import { clearPriceCache } from "./storeTvlInterval/computeTVL";
-import { hourlyTvl, getLastRecord } from "./utils/getLastRecord";
+import { hourlyTvl, } from "./utils/getLastRecord";
 import { closeConnection, getLatestProtocolItem, initializeTVLCacheDB } from "./api2/db";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { importAdapterDynamic } from "./utils/imports/importAdapter";
 import setEnvSecrets from "./utils/shared/setEnvSecrets";
-import { sendMessage } from "./utils/discord";
 
 const maxRetries = 2;
 
@@ -42,7 +40,7 @@ async function main() {
   let timeTaken = 0
   const startTimeAll = Date.now() / 1e3
   sdk.log('tvl adapter count:', actions.length)
-  sdk.log('[test env] AVAX_RPC:', process.env.AVAX_RPC)
+  // sdk.log('[test env] AVAX_RPC:', process.env.AVAX_RPC)
   const alwaysRun = async (_adapterModule: any, _protocol: any) => true
 
   const runProcess = (filter = alwaysRun) => async (protocol: any) => {

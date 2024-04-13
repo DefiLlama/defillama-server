@@ -5,7 +5,7 @@ import { sendMessage } from "../src/utils/discord";
 import { allChainKeys } from "./constants";
 
 export async function verifyChanges(chains: FinalData) {
-  const res = await fetch(`https://api.llama.fi/chainAssets`).then((r) => r.json());
+  const res = await fetch(`https://api.llama.fi/chain-assets/chains?apikey=${process.env.COINS_KEY}`).then((r) => r.json());
   let message: string = ``;
   const hours = ((getCurrentUnixTimestamp() - res.timestamp) / (60 * 60)).toFixed(1);
 

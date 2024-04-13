@@ -1,4 +1,5 @@
 export default {
+  stobox: require("./rwa/stobox"),
   seamless: require("./other/seamless"),
   pyth: require("./oracles/pyth"),
   unknownTokensV3: require("./other/unknownTokensV3"),

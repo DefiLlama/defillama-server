@@ -104,7 +104,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   // kava: { ticker: "KAVA", address: "0x0000000000000000000000000000000000000000" },
   // bsc: { ticker: "BNB", address: "0x0000000000000000000000000000000000000000" },
   // tron: { ticker: "TRON", address: "0x0000000000000000000000000000000000000000" },
-  manta: { ticker: "MANTA", address: "0x95CeF13441Be50d20cA4558CC0a27B601aC544E5" },
+  manta: { ticker: "MANTA", address: "0x95cef13441be50d20ca4558cc0a27b601ac544e5" },
   // zklink: { ticker: "ZKLINK", address: "0x0000000000000000000000000000000000000000" },
   // rss3_vsl: { ticker: "RSS3", address: "0x0000000000000000000000000000000000000000" },
   // blast: { ticker: 'BLAST', address: ''}

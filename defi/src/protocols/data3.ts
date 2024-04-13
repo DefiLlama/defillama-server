@@ -32338,7 +32338,7 @@ const data3: Protocol[] = [
       "Aurelius is a combination of a CDP and money market platform (Ethos Reserve and Granary/Aave combined) on Mantle",
     chain: "Mantle",
     logo: `${baseIconsUrl}/aurelius.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -32348,7 +32348,7 @@ const data3: Protocol[] = [
     twitter: "AureliusFi",
     forkedFrom: ["Liquity", "AAVE V2"],
     oracles: ["API3"], // https://docs.aurelius.finance/security#oracles
-    audit_links: [],
+    audit_links: ["https://docs.aurelius.finance/security"],
     parentProtocol: "parent#oath-foundation",
     listedAt: 1708396298
   },

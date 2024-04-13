@@ -81,7 +81,7 @@ export const allChainKeys: string[] = [
 export const tokenFlowCategories: (keyof ChainData)[] = ["outgoing", "canonical", "incoming", "native"];
 
 export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } = {
-  mantle: { ticker: "mnt", address: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000" },
+  //mantle: { ticker: "mnt", address: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000" },
   arbitrum: { ticker: "arb", address: "0x912ce59144191c1204e64559fe8253a0e49e6548" },
   nova: { ticker: "ARB", address: "0xf823c3cd3cebe0a1fa952ba88dc9eef8e0bf46ad" },
   optimism: { ticker: "op", address: "0x4200000000000000000000000000000000000042" },

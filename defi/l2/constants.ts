@@ -86,7 +86,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   nova: { ticker: "ARB", address: "0xf823c3cd3cebe0a1fa952ba88dc9eef8e0bf46ad" },
   optimism: { ticker: "op", address: "0x4200000000000000000000000000000000000042" },
   polygon_zkevm: { ticker: "MATIC", address: "0xa2036f0538221a77a3937f1379699f44945018d0" },
-  // starknet: { ticker: 'STRK', address: ''},
+  starknet: { ticker: 'STRK', address: '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d'},
   everscale: { ticker: "EVER", address: "0x29d578cec46b50fa5c88a99c6a4b70184c062953" },
   celo: { ticker: "celo", address: "0x471ece3750da237f93b8e339c536989b8978a438" },
   iotex: { ticker: "IOTX", address: "0xa00744882684c3e4747faefd68d283ea44099d03" },

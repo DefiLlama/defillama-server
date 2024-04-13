@@ -44,7 +44,7 @@ export type Price = {
 };
 
 async function getPrices(collaterals: string[]) {
-  const res = await fetch("https://coins2.llama.fi/prices?source=internal", {
+  const res = await fetch("https://coins.llama.fi/prices?source=internal", {
     method: "POST",
     body: JSON.stringify({
       coins: collaterals,

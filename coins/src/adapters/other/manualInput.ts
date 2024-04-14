@@ -103,6 +103,12 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       decimals: 18,
       redirect: "coingecko#matic-network",
     },
+    {
+      symbol: "vASTR",
+      address: "0x7746ef546d562b443AE4B4145541a3b1a3D75717",
+      decimals: 18,
+      redirect: "coingecko#bifrost-voucher-astr",
+    },
   ],
   polygon: [
     {

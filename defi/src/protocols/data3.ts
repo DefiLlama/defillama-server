@@ -39737,6 +39737,27 @@ const data3: Protocol[] = [
     stablecoins: ["bread"],
     listedAt: 1713193791
   },
+  {
+    id: "4480",
+    name: "Mage Finance",
+    address: null,
+    symbol: "-", 
+    url: "https://www.mage.finance",
+    description: "Mage Protocol is the world's first money market built on Bitcoin's L2 scaling solution. Leveraging MerlinChain's ZK-rollup technology, Mage Protocol seamlessly enables users to lend, borrow, and earn, transforming idle Bitcoin assets into dynamic financial opportunities with unparalleled efficiency and security.",
+    chain: "Merlin",
+    logo: `${baseIconsUrl}/mage-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Merlin"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "mage/index.js",
+    twitter: "Mage_Finance",
+    listedAt: 1713205353
+  },
 ]
 
 export default data3

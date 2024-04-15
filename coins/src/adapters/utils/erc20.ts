@@ -44,6 +44,25 @@ export async function getTokenInfo(
     symbols,
   };
 }
+
+export async function getTokenInfoMap(chain: string = "ethereum", targets: string[]) {
+  const res = await getTokenInfo(chain, targets, undefined);
+  const map: {
+    [address: string]: {
+      symbol: string;
+      decimals: number;
+    };
+  } = {};
+  res.decimals.forEach((d, i) => {
+    if (!res.symbols[i].success || !d.success) return;
+    map[targets[i]] = {
+      symbol: res.symbols[i].output,
+      decimals: d.output,
+    };
+  });
+  return map;
+}
+
 interface Lp {
   address: string;
   primaryUnderlying: string;

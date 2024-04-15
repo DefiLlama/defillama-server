@@ -1,16 +1,11 @@
 import getTokenPrices from "./uniswap";
 import getExtras from "./extraLp";
+import { getUniV2Adapter } from "../../utils/uniV2";
 
-export function uniswap(timestamp: number = 0) {
-  return getTokenPrices(
-    "ethereum",
-    "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
-    "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-    //"https://api.thegraph.com/subgraphs/name/ianlapham/uniswapv2",
-    "https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev",
-    timestamp,
-  );
-}
+export const uniswap = getUniV2Adapter({ endpoint: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev', project: 'uniswap', chain: 'ethereum' })
+export const zkSwap = getUniV2Adapter({ factory: '0x3a76e377ED58c8731F9DF3A36155942438744Ce3', project: 'zkSwap', chain: 'era', uniqueLPNames: true, })
+export const eddyFi = getUniV2Adapter({ factory: '0x9fd96203f7b22bCF72d9DCb40ff98302376cE09c', project: 'eddy-fi', chain: 'zeta', getReservesAbi: 'function getReserves() view returns (uint112 _reserve0, uint112 _reserve1)', })
+
 export function sushiswap1(timestamp: number = 0) {
   return Promise.all([
     getTokenPrices(
@@ -308,15 +303,6 @@ export function pulsex(timestamp: number = 0) {
   );
 }
 
-export function zkSwap(timestamp: number = 0) {
-  return getTokenPrices(
-    "era",
-    "0x3a76e377ED58c8731F9DF3A36155942438744Ce3",
-    undefined,
-    undefined,
-    timestamp,
-  );
-}
 
 export function elysium(timestamp: number = 0) {
   return getTokenPrices(

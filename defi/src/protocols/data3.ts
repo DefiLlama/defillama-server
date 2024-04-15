@@ -12167,6 +12167,8 @@ const data3: Protocol[] = [
     module: "zerolend/index.js",
     twitter: "zerolendxyz",
     oraclesByChain: {
+      blast: ["Pyth"], //https://docs.zerolend.xyz/security/oracles/using-pyth-oracles
+      linea: ["Pyth"], //https://docs.zerolend.xyz/security/oracles/using-pyth-oracles
       manta: ["RedStone"], //https://docs.zerolend.xyz/security/oracles/using-redstone-oracles
       zkSync: ["Pyth"] //https://docs.zerolend.xyz/security/oracles/using-pyth-oracles
     },
@@ -15497,10 +15499,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sui", "Arbitrum", "Base", "Optimism", "Polygon"],
+    oraclesByChain: {
+      sui: ["Pyth"] // https://omnibtclabs.gitbook.io/omnibtc/omnibtc-features/omnilending/oracles
+    },
+    forkedFrom: [],
     module: "omnibtc/index.js",
     twitter: "OmniBTC",
     forkedFrom: [],
-    oracles: [],
     github: ["OmniBTC"],
     listedAt: 1692193286
   },
@@ -29989,7 +29994,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Synthetics",
     chains: ["Sui"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.sudo.finance/overview/sudo-features#trading-features 
     forkedFrom: [],
     module: "sudo-finance/index.js",
     twitter: "sudofinance",
@@ -30933,7 +30938,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink","Pyth"], // https://docs.lexer.markets/innovations-and-mechanism/price-oracle#lexer-v2
     forkedFrom: ["GMX V1"],
     module: "lexer-markets/index.js",
     twitter: "lexermarkets",
@@ -31676,7 +31681,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["ZetaChain"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.eddy.finance/eddy-product/oracles
     forkedFrom: ["Uniswap V2"],
     module: "eddyfinance/index.js",
     twitter: "eddy_protocol",
@@ -37873,7 +37878,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Options",
     chains: ["Arbitrum"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.optionblitz.co/advanced/price-feeds
     forkedFrom: [],
     module: "optionBlitz/index.js",
     twitter: "optionblitz_co",
@@ -39018,7 +39023,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Optimism", "Arbitrum"],
     module: "dummy.js",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.rage.trade/price-feeds
     twitter: "rage_trade",
     github: ["RageTrade"],
     listedAt: 1712327109

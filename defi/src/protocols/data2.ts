@@ -9582,7 +9582,7 @@ const data2: Protocol[] = [
     chains: ["Sui", "Aptos"],
     oraclesByChain: {
       sui: ["Supra"], // https://github.com/DefiLlama/defillama-server/pull/5169
-      aptos: [],
+      aptos: ["Pyth"] // https://doc-en.mole.fi/security/oracle
     },
     forkedFrom: [],
     module: "mole/index.js",
@@ -22100,7 +22100,7 @@ const data2: Protocol[] = [
     module: "mummy/index.js",
     twitter: "mummyftm",
     forkedFrom: ["GMX V1"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.mummy.finance/trade/trading-v2/platform-mechanics/pyth-price-feed
     governanceID: ["snapshot:mmyvote.eth"],
     listedAt: 1671034969,
   },

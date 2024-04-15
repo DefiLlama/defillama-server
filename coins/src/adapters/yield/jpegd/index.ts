@@ -76,5 +76,6 @@ async function main(timestamp: number) {
 }
 
 export function jpegd(timestamp: number = 0) {
+  console.log("starting jpegd");
   return main(timestamp);
 }

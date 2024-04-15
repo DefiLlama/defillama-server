@@ -35,6 +35,7 @@ async function fetchFromMuxAPI() {
 //////////////////////////////////////////////////////////////////////////////*/
 
 export function mux(timestamp: number = 0) {
+  console.log("starting mux");
   return Promise.all(
     Object.keys(MUXLP_ADDRESSES).map((c) => getTokenPrices(c, timestamp))
   );

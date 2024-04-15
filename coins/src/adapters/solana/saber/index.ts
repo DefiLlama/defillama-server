@@ -6,6 +6,7 @@ import { getTokenAccountBalances, getTokenSupplies, getConnection, getMultipleAc
 import { PublicKey, } from "@solana/web3.js"
 
 export function saber(timestamp: number) {
+  console.log("starting saber");
   return Promise.all([
     getTokenPrices(timestamp),
     priceMSOL(timestamp),

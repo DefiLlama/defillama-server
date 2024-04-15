@@ -176,3 +176,25 @@ export function moonwell(timestamp: number = 0) {
     timestamp,
   );
 }
+
+export const adapters = {
+  cantoLending,
+  moonwell,
+  hover,
+  sumerian,
+  compound,
+  venus,
+  ironbank,
+  benqi,
+  traderjoe,
+  rari,
+  aurigami,
+  cream,
+  scream,
+  tonpound,
+  lodestar,
+  marev2,
+  tenderfi,
+  Ovix,
+  mare,
+}

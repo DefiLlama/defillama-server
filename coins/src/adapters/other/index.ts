@@ -338,3 +338,29 @@ export async function mooBvm(timestamp: number = 0) {
 export async function velgd(timestamp: number = 0) {
   return velgAdapter(timestamp);
 }
+
+
+export const adapters = {
+  defiChain,
+  shlb,
+  metronome,
+  buck,
+  synthetix,
+  glp,
+  abracadabra,
+  unknownTokens,
+  unknownTokens2,
+  pods,
+  distressed,
+  manualInput,
+  realt,
+  collateralizedAssets,
+  sweth,
+  gmd,
+  stkaurabal,
+  mooBvm,
+  velgd,
+  steadefi,
+  teahouse,
+  opdx,
+}

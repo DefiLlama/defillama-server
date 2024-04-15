@@ -39,7 +39,8 @@ async function main() {
     );
   }
 
-  const results = await protocolWrapper[protocol](0);
+  const adapterFn = typeof protocolWrapper === 'function' ? protocolWrapper : protocolWrapper[protocol];
+  const results = await adapterFn(0);
   const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
     results.flat()
   );

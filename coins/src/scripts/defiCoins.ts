@@ -36,7 +36,8 @@ async function storeDefiCoins() {
       const timeKey = `                                                                                  --- Runtime ${adapterKey} `
       console.time(timeKey)
       try {
-        const results = await withTimeout(timeout, a[i][1][adapterKey](timestamp));
+        const adapterFn = typeof a[i][1] === 'function' ? a[i][1] : a[i][1][adapterKey];
+        const results = await withTimeout(timeout, adapterFn(timestamp));
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
         );

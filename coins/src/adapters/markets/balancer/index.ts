@@ -31,3 +31,15 @@ export function linearPools(timestamp: number = 0) {
     linearPrices("polygon", timestamp),
   ]);
 }
+
+
+export const adapters = {
+  balancer1,
+  balancer2,
+  balancer3,
+  balancer4,
+  balancer5,
+  balancer6,
+  balancer7,
+  linearPools,
+}

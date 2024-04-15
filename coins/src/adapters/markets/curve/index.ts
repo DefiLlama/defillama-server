@@ -91,3 +91,20 @@ export function curve13(timestamp: number = 0) {
     getGaugePrices("kava", timestamp),
   ]);
 }
+
+export const adapters = {
+  curve,
+  curve1,
+  curve2,
+  curve3,
+  curve4,
+  curve5,
+  curve6,
+  curve7,
+  curve8,
+  curve9,
+  curve10,
+  curve11,
+  curve12,
+  curve13,
+}

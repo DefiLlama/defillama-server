@@ -126,3 +126,12 @@ export function uwulend(timestamp: number = 0) {
     timestamp
   );
 }
+
+export const adapters = {
+  aave,
+  geist,
+  radiant,
+  uwulend,
+  //klap,
+  //valas,
+}

@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
 import { AllProtocols, CoinsApiData, McapsApiData, TokenTvlData } from "./types";
-import { canonicalBridgeIds, excludedTvlKeys, mixedCaseChains, zero } from "./constants";
+import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, mixedCaseChains, zero } from "./constants";
 import fetch from "node-fetch";
 import sleep from "../src/utils/shared/sleep";
 import { call, multiCall } from "@defillama/sdk/build/abi/abi2";
@@ -9,7 +9,7 @@ import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
-import { fetchNotTokens, storeNotTokens } from "./layer2pg";
+import { storeNotTokens } from "./layer2pg";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 
 export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
@@ -22,9 +22,10 @@ export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Tok
       if (excludedTvlKeys.includes(chain)) return;
 
       if (!(chain in chainUsdTokenTvls)) chainUsdTokenTvls[chain] = {};
-      Object.keys(bridge[chain]).map((asset: string) => {
-        if (!(asset in chainUsdTokenTvls[chain])) chainUsdTokenTvls[chain][asset] = zero;
-        chainUsdTokenTvls[chain][asset] = BigNumber(bridge[chain][asset]).plus(chainUsdTokenTvls[chain][asset]);
+      Object.keys(bridge[chain]).map((rawSymbol: string) => {
+        const symbol = geckoSymbols[rawSymbol.replace("coingecko:", "")] ?? rawSymbol.toUpperCase();
+        if (!(symbol in chainUsdTokenTvls[chain])) chainUsdTokenTvls[chain][symbol] = zero;
+        chainUsdTokenTvls[chain][symbol] = BigNumber(bridge[chain][symbol]).plus(chainUsdTokenTvls[chain][symbol]);
       });
     });
   });

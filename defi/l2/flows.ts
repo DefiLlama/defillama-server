@@ -1,12 +1,10 @@
 import BigNumber from "bignumber.js";
-import { excludedTvlKeys, zero } from "./constants";
+import { excludedTvlKeys, geckoSymbols, zero } from "./constants";
 import fetchStoredTvls from "./outgoing";
 import { AllProtocols, ChainTokens } from "./types";
-import cgSymbols from "../src/utils/symbols/symbols.json";
 
 const searchWidth = 10800; // 3hr
 const period = 86400; // 24hr
-const geckoSymbols = cgSymbols as { [key: string]: string };
 
 export default async function main(timestamp: number): Promise<ChainTokens> {
   const [nowRaw, prevRaw, nowUsd, prevUsd] = await Promise.all([
@@ -38,7 +36,7 @@ function tokenDiffs(
 
       Object.keys(nowRaw[bridgeId][chain]).map((rawSymbol: string) => {
         const current = BigNumber(nowRaw[bridgeId][chain][rawSymbol]);
-        const symbol = geckoSymbols[rawSymbol] ?? rawSymbol;
+        const symbol = geckoSymbols[rawSymbol.replace("coingecko:", "")] ?? rawSymbol.toUpperCase();
         if (!(symbol in tokenDiff[chain])) tokenDiff[chain][symbol] = zero;
         tokenDiff[chain][symbol] = tokenDiff[chain][symbol].plus(current);
         if (prices[chain][symbol]) return;
@@ -47,7 +45,7 @@ function tokenDiffs(
 
       Object.keys(prevRaw[bridgeId][chain]).map((rawSymbol: string) => {
         const prev = BigNumber(prevRaw[bridgeId][chain][rawSymbol]);
-        const symbol = geckoSymbols[rawSymbol] ?? rawSymbol;
+        const symbol = geckoSymbols[rawSymbol.replace("coingecko:", "")] ?? rawSymbol.toUpperCase();
         if (symbol in nowRaw[bridgeId][chain]) return;
         if (!(symbol in tokenDiff[chain])) tokenDiff[chain][symbol] = zero;
         tokenDiff[chain][symbol] = tokenDiff[chain][symbol].minus(BigNumber(prev));

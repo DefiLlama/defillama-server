@@ -1,9 +1,12 @@
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { ChainData } from "./types";
+import cgSymbols from "../src/utils/symbols/symbols.json";
 
 export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
+
+export const geckoSymbols = cgSymbols as { [key: string]: string };
 
 export const mixedCaseChains: string[] = ["solana", "tron", "sui", "aptos"];
 export const chainsWithoutCanonicalBridges: string[] = [
@@ -82,13 +85,13 @@ export const tokenFlowCategories: (keyof ChainData)[] = ["outgoing", "canonical"
 
 export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } = {
   //mantle: { ticker: "mnt", address: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000" },
-  arbitrum: { ticker: "arb", address: "0x912ce59144191c1204e64559fe8253a0e49e6548" },
+  arbitrum: { ticker: "ARB", address: "0x912ce59144191c1204e64559fe8253a0e49e6548" },
   nova: { ticker: "ARB", address: "0xf823c3cd3cebe0a1fa952ba88dc9eef8e0bf46ad" },
-  optimism: { ticker: "op", address: "0x4200000000000000000000000000000000000042" },
+  optimism: { ticker: "OP", address: "0x4200000000000000000000000000000000000042" },
   polygon_zkevm: { ticker: "MATIC", address: "0xa2036f0538221a77a3937f1379699f44945018d0" },
-  starknet: { ticker: 'STRK', address: '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d'},
+  starknet: { ticker: "STRK", address: "0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d" },
   everscale: { ticker: "EVER", address: "0x29d578cec46b50fa5c88a99c6a4b70184c062953" },
-  celo: { ticker: "celo", address: "0x471ece3750da237f93b8e339c536989b8978a438" },
+  celo: { ticker: "CELO", address: "0x471ece3750da237f93b8e339c536989b8978a438" },
   iotex: { ticker: "IOTX", address: "0xa00744882684c3e4747faefd68d283ea44099d03" },
   wanchain: { ticker: "WAN", address: "0xdabd997ae5e4799be47d6e69d9431615cba28f48" },
   xdai: { ticker: "GNO", address: "0x9c58bacc331c9aa871afd802db6379a98e80cedb" },

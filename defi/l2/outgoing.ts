@@ -2,7 +2,7 @@ import getTVLOfRecordClosestToTimestamp from "../src/utils/shared/getRecordClose
 import { getCurrentUnixTimestamp } from "../../high-usage/defiCode/utils/date";
 import { AllProtocols, DollarValues, McapData, TokenTvlData } from "./types";
 import { aggregateChainTokenBalances } from "./utils";
-import { canonicalBridgeIds, chainsWithoutCanonicalBridges, protocolBridgeIds, zero } from "./constants";
+import { canonicalBridgeIds, chainsWithoutCanonicalBridges, geckoSymbols, protocolBridgeIds, zero } from "./constants";
 import BigNumber from "bignumber.js";
 
 let allProtocols: AllProtocols = {};
@@ -65,11 +65,13 @@ function sortCanonicalBridgeBalances(isProtocol: boolean): { data: TokenTvlData;
 
     const bigNumberBalances: DollarValues = {};
     Object.keys(data.tvl).map((s: string) => {
-      bigNumberBalances[s] = BigNumber(data.tvl[s]);
+      const symbol = geckoSymbols[s.replace("coingecko:", "")] ?? s.toUpperCase();
+      bigNumberBalances[symbol] = BigNumber(data.tvl[s]);
     });
     if (data.staking) {
       Object.keys(data.staking).map((s: string) => {
-        bigNumberBalances[s] = BigNumber(data.staking[s]);
+        const symbol = geckoSymbols[s.replace("coingecko:", "")] ?? s.toUpperCase();
+        bigNumberBalances[symbol] = BigNumber(data.staking[s]);
       });
     }
 

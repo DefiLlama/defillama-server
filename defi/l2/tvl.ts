@@ -1,7 +1,6 @@
 import { fetchTvls } from "./outgoing";
 import { fetchIncoming } from "./incoming";
 import { fetchMinted } from "./native";
-import { fetchMetadata } from "./metadata";
 import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
 import { gasTokens, ownTokens, tokenFlowCategories, zero } from "./constants";
@@ -142,6 +141,7 @@ async function translateToChainData(
     if (key == "outgoing") return;
     const ownToken = ownTokens[chain];
     const total = data[key][chain][ownToken.ticker];
+    if (!total) return;
     if (!translatedData[chain].ownTokens)
       translatedData[chain].ownTokens = { total: zero, breakdown: { [ownToken.ticker]: zero } };
     const percOnThisChain = data[key][chain][ownToken.ticker].div(nativeTokenTotalValues[ownToken.ticker]);

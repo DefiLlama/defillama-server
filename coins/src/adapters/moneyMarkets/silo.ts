@@ -32,6 +32,7 @@ const config: any = {
 }
 
 export function silo(timestamp: number = 0) {
+  console.log("starting silo");
   return Promise.all(
     Object.keys(config).map((chain) => getTokenPrice(chain, timestamp)),
   );

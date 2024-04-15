@@ -4,6 +4,7 @@ import { call } from "../utils/starknet";
 import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
 
 export function nstSTRK(timestamp: number = 0) {
+  console.log("starting nstSTRK");
   return Promise.all([getTokenPrice(timestamp)])
 }
 

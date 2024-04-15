@@ -6,6 +6,7 @@ const config = {
 }
 
 export function dforce(timestamp: number) {
+  console.log("starting dforce");
   return Promise.all(Object.entries(config).map(([chain, comptroller]: any) => compoundPrices({
     chain, timestamp, comptroller, projectName: 'dforce', abis: {
       marketsAbi: 'address[]:getAlliTokens'

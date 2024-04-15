@@ -1,6 +1,7 @@
 import getTokenPrices from "./aktionariat";
 
 export function aktionariat(timestamp: number = 0) {
+  console.log("starting aktionariat");
   return Promise.all([
     getTokenPrices(
       "ethereum",

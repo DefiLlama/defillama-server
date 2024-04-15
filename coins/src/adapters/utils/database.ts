@@ -88,21 +88,6 @@ export async function getTokenAndRedirectData(
   return response;
 }
 
-export async function getTokenAndRedirectDataMap(
-  tokens: string[],
-  chain: string,
-  timestamp: number,
-  hoursRange: number = 12,) {
-  const res = await getTokenAndRedirectData(tokens, chain, timestamp, hoursRange);
-  const map: {
-    [address: string]: CoinData;
-  } = {};
-  res.forEach((r: CoinData) => {
-    map[r.address] = r;
-  });
-  return map;
-}
-
 export function addToDBWritesList(
   writes: Write[],
   chain: string,
@@ -356,8 +341,8 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
         "confidence" in r.dbEntry
           ? r.dbEntry.confidence
           : r.redirect.length != 0 && "confidence" in r.redirect[0]
-            ? r.redirect[0].confidence
-            : undefined;
+          ? r.redirect[0].confidence
+          : undefined;
 
       return {
         chain:
@@ -446,8 +431,9 @@ async function checkMovement(
       if (percentageChange > margin) {
         errors += `${d.adapter} \t ${d.PK.substring(
           d.PK.indexOf("#") + 1,
-        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${previousItem.price
-          } to $${d.price}\n`;
+        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${
+          previousItem.price
+        } to $${d.price}\n`;
         return;
       }
     }

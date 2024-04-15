@@ -14,6 +14,7 @@ const config: { [chain: string]: { [symbol: string]: string } } = {
 };
 
 export async function ondo(timestamp: number): Promise<Write[]> {
+  console.log("starting ondo");
   const ethApi = await getApi("ethereum", timestamp);
   const tokenPrices: { [address: string]: number } = {
     OUSG:

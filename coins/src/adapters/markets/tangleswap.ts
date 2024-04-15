@@ -37,6 +37,7 @@ const query = `{
 }`;
 
 export function tangleswap(timestamp: number) {
+  console.log("starting tangleswap");
 
   const THIRY_MINUTES = 1800;
   if (+timestamp !== 0 && timestamp < +new Date() / 1e3 - THIRY_MINUTES)

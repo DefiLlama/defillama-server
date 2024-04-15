@@ -3,6 +3,7 @@ import { getApi } from "../utils/sdk";
 import { addToDBWritesList } from "../utils/database";
 
 export async function hashnote(timestamp: number): Promise<Write[]> {
+    console.log("starting hashnote");
     const chain = "canto"
     const address = "0xfb8255f0de21acebf490f1df6f0bdd48cc1df03b"
     const symbol = 'USYC'

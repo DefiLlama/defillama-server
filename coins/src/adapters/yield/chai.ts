@@ -11,6 +11,7 @@ const decimals = 18;
 const symbol = "CHAI";
 
 export async function chai(timestamp = 0) {
+  console.log("starting chai");
 
   const [daiData] = await getTokenAndRedirectData([dai], chain, timestamp);
 

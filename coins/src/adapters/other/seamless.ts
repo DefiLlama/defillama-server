@@ -7,6 +7,7 @@ const config: any = {
 }
 
 export function seamless(timestamp: number = 0) {
+  console.log("starting " + projectName);
   return Promise.all(
     Object.keys(config).map((chain) => getTokenPrice(chain, timestamp)),
   );

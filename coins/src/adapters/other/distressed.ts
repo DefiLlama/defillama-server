@@ -135,7 +135,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     LIQR: "0x33333ee26a7d02e41c33828b42fb1e0889143477",
     GRAIN: "0x9df4ac62f9e435dbcd85e06c990a7f0ea32739a9",
     DDC: "0x38e853f7519d3db2d245ce0d21960f68a6448051",
-    MYD: "0xf3797a24dd0ced905e2d08b03cf364aac49caa6d"
+    MYD: "0xf3797a24dd0ced905e2d08b03cf364aac49caa6d",
+    JLP: "0xa56d382c5aa9774d4eb98f1500670d3049fede9b",
+    PARR: "0xf10b5a72f0abeb27a5ddba950082e4edff4c825d"
   },
   oasis: {
     USDT: "0x6Cb9750a92643382e020eA9a170AbB83Df05F30B",

@@ -2010,5 +2010,9 @@ export default {
     "etaswap": {
         "enabled": true,
         "id": "4475"
+    },
+    "swych": {
+        enabled: true,
+        id: "4365",
     }
 } as AdaptorsConfig

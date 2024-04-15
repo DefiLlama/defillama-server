@@ -46,15 +46,24 @@ async function main() {
   );
 
   const lTable: any = []
-  resultsWithoutDuplicates.forEach(i => { 
+  resultsWithoutDuplicates.forEach(i => {
     lTable[i.PK] = { symbol: i.symbol, price: i.price, decimals: i.decimals, PK: i.PK }
-   })
-  console.log(`==== Example results ====`);
+  })
+  /* console.log(`==== Example results ====`);
   const indexesToLog = selectRandom(resultsWithoutDuplicates.length);
   for (let i of indexesToLog) {
     console.log(resultsWithoutDuplicates[i]);
   }
-  console.log(`^^^^ Example results ^^^^`);
-  logTable(Object.values(lTable))
+  console.log(`^^^^ Example results ^^^^`); */
+  let items = Object.values(lTable)
+  const itemCount = items.length;
+  if (itemCount > 999) {
+    items.sort(() => Math.random() - 0.5);
+    items = items.slice(0, 999);
+  }
+  logTable(items)
+  if (itemCount > 999)
+    console.log(`Too many items to log: ${itemCount}, showing random 999`);
+
 }
 main();

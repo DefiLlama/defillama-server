@@ -45,12 +45,14 @@ function getLPSymbol(token0: string, token1: string, lp: string) {
   if (!token1) token1 = '-'
 
   const shorten = (str: string) => str.length > 10 ? str.slice(0, 10) : str
-  return `${shorten(token0)}-${shorten(token1)}-${lp}`
+  return `${shorten(token0)}/${shorten(token1)} ${lp}`
 }
 
 const defaultGetReservesAbi = 'function getReserves() view returns (uint112 _reserve0, uint112 _reserve1, uint32 _blockTimestampLast)'
 
-export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLiquidity, factory, uniqueLPNames = false, getReservesAbi = defaultGetReservesAbi }: { endpoint?: string, factory?: string, project: string, chain: string, minLiquidity?: number, uniqueLPNames?: boolean, getReservesAbi?: string }) {
+export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLiquidity, factory, uniqueLPNames = false, getReservesAbi = defaultGetReservesAbi,
+  hasStablePools = false,
+  stablePoolSymbol = 'sAMM', }: { endpoint?: string, factory?: string, project: string, chain: string, minLiquidity?: number, uniqueLPNames?: boolean, getReservesAbi?: string, stablePoolSymbol?: string, hasStablePools?: boolean, }) {
   const graphAdapter = async (timestamp: number = 0) => {
     const api = new ChainApi({ chain, timestamp })
     const block = (await api.getBlock()) - 100 // 100 blocks behind
@@ -87,7 +89,8 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
       }
       `
 
-      const response = await axios.post(endpoint!, { query })
+
+      const response = await axios.post(endpoint!, { query, })
       const pairs = response.data.data.pairs
       pairs.forEach((pair: any) => {
         pair.id = pair.id.toLowerCase()
@@ -128,12 +131,12 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
         if (!tokenData[token.id]) {
           tokenData[token.id] = {
             metadata: token,
-            supply,
-            liquidity,
+            supply: +supply,
+            liquidity: +liquidity,
           }
         } else {
-          tokenData[token.id].supply += supply
-          tokenData[token.id].liquidity += liquidity
+          tokenData[token.id].supply += +supply
+          tokenData[token.id].liquidity += +liquidity
         }
       }
     })
@@ -141,6 +144,10 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
     Object.values(tokenData).forEach(({ metadata: { id, symbol, decimals }, supply, liquidity }: any) => {
       const confidence = calculateConfidence(liquidity, minLiquidity / 2)
       const price = liquidity / supply
+      if (isNaN(price)) {
+        console.log('bug in uni v2 pricing', { id, symbol, supply, liquidity, price, decimals })
+        return;
+      }
       if (confidence > 0.8)
         addToDBWritesList(writes, chain, id, price, decimals, symbol, timestamp, project, confidence)
     })
@@ -165,7 +172,8 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
     factory = factory!.toLowerCase()
     const cacheKey = `tvl-adapter-cache/cache/uniswap-forks/${factory}-${chain}.json`
 
-    let { pairs, token0s, token1s } = await cache.readCache(cacheKey, { readFromR2Cache: true })
+    let res = await cache.readCache(cacheKey, { readFromR2Cache: true })
+    let { pairs, token0s, token1s, symbols } = res
     if (!pairs?.length) throw new Error('No pairs found, is there TVL adapter for this already?')
     if (pairs.length > 20 * 1000) throw new Error('Too many pairs found, try using the graph?')
 
@@ -187,6 +195,7 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
     const lpDecimals = await api.call({ abi: 'erc20:decimals', target: pairs[0] })
     const lpSymbol = await api.call({ abi: 'erc20:symbol', target: pairs[0] })
     let lpSymbols: any = {}
+    if (hasStablePools) uniqueLPNames = true
     if (uniqueLPNames)
       lpSymbols = await getTokenInfoMap(chain, pairs)
 
@@ -196,15 +205,32 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
     pairs.forEach((pair: any, idx: number) => {
       const totalSupply = lpSupplies[idx]
       if (!totalSupply) return;
+
       const [reserve0, reserve1] = reserves[idx]
       const token0 = token0s[idx]
       const token1 = token1s[idx]
+      const t1Data = coinsDataMap[token1]
+      const t0Data = coinsDataMap[token0]
+      if (!t1Data && !t0Data) return; // we dont know the price of underlying tokens
+
+
       const token0Symbol = tokenInfoMap[token0]?.symbol
       const token1Symbol = tokenInfoMap[token1]?.symbol
-      if (!coinsDataMap[token0] && !coinsDataMap[token1]) return; // we dont know the price of underlying tokens
-      let reserveUSD = 0
+      let symbol = getLPSymbol(token0Symbol, token1Symbol, lpSymbol)
+      if (uniqueLPNames)
+        symbol = lpSymbols[pair]?.symbol ?? symbol
 
-      if (coinsDataMap[token0]) { // if we know the price of token0
+      let reserveUSD = 0
+      const isStablePool = hasStablePools && symbol.includes(stablePoolSymbol)
+
+      if (isStablePool) {
+        if (!t1Data || !t0Data) return; // we dont know the price of underlying tokens
+        const { decimals: t0Decimals, price: t0Price } = t0Data
+        const { decimals: t1Decimals, price: t1Price } = t1Data
+        reserveUSD += t0Price * (reserve0 / 10 ** t0Decimals)
+        reserveUSD += t1Price * (reserve1 / 10 ** t1Decimals)
+
+      } else if (coinsDataMap[token0]) { // if we know the price of token0
         const { decimals, price } = coinsDataMap[token0]
         reserveUSD += price * 2 * (reserve0 / 10 ** decimals)
         if (coreTokenSet.has(token0) && !coreTokenSet.has(token1)) {
@@ -236,9 +262,6 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
 
       const confidence = calculateConfidence(reserveUSD)
       const price = reserveUSD * (10 ** lpDecimals) / totalSupply
-      let symbol = getLPSymbol(token0Symbol, token1Symbol, lpSymbol)
-      if (uniqueLPNames)
-        symbol = lpSymbols[pair]?.symbol ?? symbol
 
       if (confidence > 0.8)
         addToDBWritesList(writes, chain, pair, price, lpDecimals, symbol, timestamp, project, confidence)

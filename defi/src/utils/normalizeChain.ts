@@ -2838,6 +2838,29 @@ export const chainCoingeckoIds = {
     url: "https://karak.network/",
     chainId: "2410"
   },
+  "Bitkub": {
+    geckoId: "bitkub-coin",
+    symbol: "KUB",
+    cmcId: "16093",
+    categories: ["EVM"],
+    twitter: "bitkubchain",
+    url: "https://www.bitkubchain.com",
+    github: ["bitkub-chain"],
+    chainId: 96
+  },
+  "Ancient8": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Optimism",
+      types: ["L3"]
+    },
+    chainId: 888888888,
+    twitter: "Ancient8_gg",
+    url: "https://ancient8.gg/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3439,8 +3462,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "SatoshiVM"
     case "venom":
       return "Venom"
-   case "karak":
+    case "karak":
       return "Karak Network"
+    case "bitkub":
+      return "Bitkub"
+    case "ancient8":
+      return "Ancient8"   
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

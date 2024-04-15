@@ -9,14 +9,14 @@
     "test": "jest",
     "test-coin": "ts-node --transpile-only src/test.ts ",
     "test:watch": "jest --watch",
-    "refill": "tableName='prod-coins-table' AWS_REGION='eu-central-1' ts-node src/refill",
-    "storeBridgedCoins": "ts-node src/cli/storeBridgedCoins",
+    "refill": "tableName='prod-coins-table' AWS_REGION='eu-central-1' ts-node --transpile-only src/refill",
+    "storeBridgedCoins": "ts-node --transpile-only src/cli/storeBridgedCoins",
     "build": "sls package",
-    "runner-test": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/test.ts",
-    "fetch-cg-hourly": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/coingecko.ts true",
-    "fetch-cg-min": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/coingecko.ts false",
-    "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/defiCoins.ts",
-    "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node src/scripts/bridges.ts"
+    "runner-test": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/test.ts",
+    "fetch-cg-hourly": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/coingecko.ts true",
+    "fetch-cg-min": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/coingecko.ts false",
+    "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/defiCoins.ts",
+    "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/bridges.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.12",

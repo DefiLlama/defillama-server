@@ -7,7 +7,6 @@ const config: any = {
 }
 
 export function few(timestamp: number = 0) {
-  console.log("starting few");
   return Promise.all(
     Object.keys(config).map((chain) => getTokenPrice(chain, timestamp)),
   );

@@ -34,7 +34,6 @@ export const glpConfig: {
 
 
 export default function glp(timestamp: number = 0) {
-  console.log("starting glp");
   return Promise.all(Object.keys(glpConfig).map(chain => getTokenPrice(chain)));
 
 

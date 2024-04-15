@@ -123,6 +123,5 @@ async function getTokenPrices(chain: string, timestamp: number) {
 }
 
 export function backed(timestamp: number = 0) {
-  console.log("starting backed");
   return getTokenPrices("ethereum", timestamp);
 }

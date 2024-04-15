@@ -81,17 +81,17 @@ export const allChainKeys: string[] = [
 export const tokenFlowCategories: (keyof ChainData)[] = ["outgoing", "canonical", "incoming", "native"];
 
 export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } = {
-  // mantle: { ticker: "mnt", address: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000" },
+  //mantle: { ticker: "mnt", address: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000" },
   arbitrum: { ticker: "arb", address: "0x912ce59144191c1204e64559fe8253a0e49e6548" },
   nova: { ticker: "ARB", address: "0xf823c3cd3cebe0a1fa952ba88dc9eef8e0bf46ad" },
   optimism: { ticker: "op", address: "0x4200000000000000000000000000000000000042" },
   polygon_zkevm: { ticker: "MATIC", address: "0xa2036f0538221a77a3937f1379699f44945018d0" },
-  // starknet: { ticker: 'STRK', address: ''},
+  starknet: { ticker: 'STRK', address: '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d'},
   everscale: { ticker: "EVER", address: "0x29d578cec46b50fa5c88a99c6a4b70184c062953" },
   celo: { ticker: "celo", address: "0x471ece3750da237f93b8e339c536989b8978a438" },
   iotex: { ticker: "IOTX", address: "0xa00744882684c3e4747faefd68d283ea44099d03" },
   wanchain: { ticker: "WAN", address: "0xdabd997ae5e4799be47d6e69d9431615cba28f48" },
-  xdai: { ticker: "XDAI", address: "0xe91d153e0b41518a2ce8dd3d7944fa863463a97d" },
+  xdai: { ticker: "GNO", address: "0x9c58bacc331c9aa871afd802db6379a98e80cedb" },
   polygon: { ticker: "matic", address: "0x0000000000000000000000000000000000001010" },
   // avax: { ticker: "AVAX", address: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7" },
   aurora: { ticker: "AURORA", address: "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79" },
@@ -104,7 +104,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   // kava: { ticker: "KAVA", address: "0x0000000000000000000000000000000000000000" },
   // bsc: { ticker: "BNB", address: "0x0000000000000000000000000000000000000000" },
   // tron: { ticker: "TRON", address: "0x0000000000000000000000000000000000000000" },
-  manta: { ticker: "MANTA", address: "0x95CeF13441Be50d20cA4558CC0a27B601aC544E5" },
+  manta: { ticker: "MANTA", address: "0x95cef13441be50d20ca4558cc0a27b601ac544e5" },
   // zklink: { ticker: "ZKLINK", address: "0x0000000000000000000000000000000000000000" },
   // rss3_vsl: { ticker: "RSS3", address: "0x0000000000000000000000000000000000000000" },
   // blast: { ticker: 'BLAST', address: ''}

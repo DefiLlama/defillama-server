@@ -2507,6 +2507,7 @@ export default {
         }
     },
     "merchant-moe": {
+        parentId: "Merchant Moe",
         "enabled": true,
         "id": "4006"
     },
@@ -2609,5 +2610,14 @@ export default {
     "savmswap": {
         enabled: true,
         id: "4422"
+    },
+    "hbarsuite-dex": {
+        enabled: true,
+        id: "4467",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1712793600": true
+            }
+        }
     }
 } as AdaptorsConfig

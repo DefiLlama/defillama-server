@@ -8083,6 +8083,26 @@
       "decimals": "18",
       "symbol": "MMSS",
       "to": "coingecko#mmss"
+    },
+    "0x7eb8b1fe3ee3287fd5864e50f32322ce3285b39d": {
+      "decimals": "18",
+      "symbol": "SolvBTC",
+      "to": "coingecko#solv-btc"
+    },
+    "0xb877e3562a660c7861117c2f1361a26abaf19beb": {
+      "decimals": "18",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0x1d22c0ab633f393c84a98cf4f2fad10ba47bb7b3": {
+      "decimals": "18",
+      "symbol": "MBTC",
+      "to": "coingecko#merlin-chain-bridged-wrapped-btc-merlin"
+    },
+    "0x61899ce1396ff351e5fdb9c8ad36fee9411c73c2": {
+      "decimals": "18",
+      "symbol": "iUSD",
+      "to": "coingecko#izumi-bond-usd"
     }
   },
   "loop": {

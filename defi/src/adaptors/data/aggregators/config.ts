@@ -84,9 +84,15 @@ export default {
     enabled: true,
     id: "189",
   },
-  "zrx": {
+  "0x": {
     enabled: true,
     id: "2116",
+    protocolsData: {
+      "zrx": {
+        enabled: true,
+        id: "2116",
+      }
+    }
   },
   "cowswap": {
     enabled: true,
@@ -185,5 +191,9 @@ export default {
   "magpie": {
     "enabled": true,
     "id": "4457"
+  },
+  "etaswap": {
+    "enabled": true,
+    "id": "4475"
   }
 } as AdaptorsConfig;

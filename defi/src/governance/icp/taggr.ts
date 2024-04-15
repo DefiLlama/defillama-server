@@ -27,7 +27,7 @@ export type Payload =
           ["Release"]: Release;
       }
     | {
-          ["Fund"]: [string, number];
+          ["Funding"]: [string, number];
       }
     | {
           ["ICPTransfer"]: [number[], ICP];
@@ -36,7 +36,7 @@ export type Payload =
           ["AddRealmController"]: [number, number];
       }
     | {
-          ["Reward"]: Reward;
+          ["Rewards"]: Reward;
       };
 
 function stringifyPayload(payload: Payload) {
@@ -89,7 +89,7 @@ export interface TaggrProposalReponse {
 export async function get_metadata ()
 {
    var { data, } = await axios.get(
-        TAGGR_URL + "/api/v1/metadata"
+        TAGGR_URL + "api/v1/metadata"
         ,
         {
             headers: {

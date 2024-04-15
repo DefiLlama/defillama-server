@@ -4,7 +4,7 @@ import { McapData, TokenTvlData, DollarValues } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { Address } from "@defillama/sdk/build/types";
-import { zero } from "./constants";
+import { geckoSymbols, zero } from "./constants";
 import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { fetchAdaTokens } from "./adapters/ada";
@@ -61,18 +61,18 @@ export async function fetchMinted(params: {
             const mcapInfo = mcaps[t];
             const supply = supplies[t];
             if (!priceInfo || !supply || !mcapInfo) return;
-            if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
+            const symbol = geckoSymbols[priceInfo.symbol.replace("coingecko:", "")] ?? priceInfo.symbol.toUpperCase();
+            if (!(symbol in dollarValues)) dollarValues[symbol] = zero;
             const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
             const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
             if (t != "coingecko:bitcoin" && usdValue.isGreaterThan(BigNumber(1e12))) {
               console.log(`token ${t} on ${chain} has over a trillion usdValue LOL`);
               return;
             }
-            mcapData[chain][priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
-            if (priceInfo.symbol in mcapData.total)
-              mcapData.total[priceInfo.symbol].native = mcapData.total[priceInfo.symbol].native.plus(usdValue);
-            else mcapData.total[priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
-            dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
+            mcapData[chain][symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
+            if (symbol in mcapData.total) mcapData.total[symbol].native = mcapData.total[symbol].native.plus(usdValue);
+            else mcapData.total[symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
+            dollarValues[symbol] = BigNumber(usdValue).plus(dollarValues[symbol]);
           });
         }
 

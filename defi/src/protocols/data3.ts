@@ -39806,6 +39806,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hyperliquid",
     listedAt: 1713231343
   },
+  {
+    id: "4483",
+    name: "Volcano",
+    address: null,
+    symbol: "-",
+    url: "https://volcanofinance.io",
+    description: "Volcano is a staking protocol with safe principal, where you can earn lucky bonuses/invitation rewards/blast point/blast gold",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/volcano.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "volcano/index.js",
+    twitter: "volcano_big",
+    audit_links: ["https://volcanofinance.io/Volcano_preliminary-audit-report.pdf"],
+    listedAt: 1713279069
+  },
 ]
 
 export default data3

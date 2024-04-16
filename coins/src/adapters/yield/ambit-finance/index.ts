@@ -22,7 +22,6 @@ const ABI = {
 const USDT = "0x55d398326f99059fF775485246999027B3197955";
 
 export async function ambitFinance(timestamp: number) {
-  console.log("starting ambit finance", timestamp);
   const chain = "bsc";
 
   const api = await getApi(chain, timestamp, true);

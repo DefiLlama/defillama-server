@@ -5,7 +5,6 @@ import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
 import { multiCall } from "@defillama/sdk/build/abi";
 import dayjs from "dayjs";
-import { getCurrentUnixTimestamp } from "../../utils/date";
 const abi = require("./abi.json");
 
 async function getForexRates(

@@ -21,6 +21,7 @@ export async function getCache(project: string, chain: string) {
   } catch (e) {
     try {
       const json = await (fetch(getLink(project, chain)).then(r => r.json()))
+      await sdk.cache.writeCache(Key, json)
       return json
     } catch (e) {
       sdk.log('failed to fetch data from s3 bucket:', Key)

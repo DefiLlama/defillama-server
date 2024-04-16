@@ -27872,8 +27872,8 @@ const data3: Protocol[] = [
   {
     id: "3950",
     name: "Parcl V3",
-    address: null,
-    symbol: "-",
+    address: "solana:4LLbsb5ReP3yEtYzmXewyGjcir5uXtKFURtaEUVC2AHs",
+    symbol: "PRCL",
     url: "https://www.parcl.co",
     description: "Parcl v3 is a perpetuals dex that offers real estate index markets for speculating or hedging",
     chain: "Solana",

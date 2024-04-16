@@ -1,50 +1,28 @@
-const abi = require("./abi.json");
-import { call } from "@defillama/sdk/build/abi/index";
-import getBlock from "../utils/block";
-import { getTokenInfo } from "../utils/erc20";
 import { Write } from "../utils/dbInterfaces";
-import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
-import { wrappedGasTokens } from "../utils/gasTokens";
+import { getApi } from "../utils/sdk";
+import getWrites from "../utils/getWrites";
 
-const target: string = "0xf951E335afb289353dc249e82926178EaC7DEd78";
+const swETH: string = "0xf951E335afb289353dc249e82926178EaC7DEd78";
+const underlying = '0x0000000000000000000000000000000000000000'
 const chain: any = "ethereum";
 
 export default async function getTokenPrice(timestamp: number) {
-  const block: number | undefined = await getBlock(chain, timestamp);
+  const api = await getApi('ethereum', timestamp);
+  const pricesObject: any = {};
   const writes: Write[] = [];
-  await contractCalls(target, block, writes, timestamp);
+  const [
+    swETHToETHRate,
+    eETHPrice,
+    svETHPrice,
+  ] = await Promise.all([
+    api.call({ target: swETH, abi: 'uint256:swETHToETHRate' }),
+    api.call({ target: '0xb09cbB6Aa95A004F9aeE4349DF431aF5ad03ECe4', abi: 'uint256:answer' }),
+    api.call({ target: '0xaF33b6372354149c33893B6fA6959Be0607D53dE', abi: 'uint256:getVectorSharePrice' }),
+  ])
+  pricesObject[swETH] = { price: swETHToETHRate / 1e18, underlying }
+  pricesObject['0xeA1A6307D9b18F8d1cbf1c3Dd6aad8416C06a221'] = { price: eETHPrice / 1e18, underlying }
+  pricesObject['0x6733f0283711f225a447e759d859a70b0c0fd2bc'] = { price: svETHPrice / 1e18, underlying }
+
+  await getWrites({ chain, timestamp, writes, pricesObject, projectName: "swETH", })
   return writes;
-}
-
-async function contractCalls(
-  target: string,
-  block: number | undefined,
-  writes: Write[],
-  timestamp: number,
-) {
-  const [{ output: rate }, underlyingData, tokenInfos] = await Promise.all([
-    call({
-      target,
-      chain,
-      abi: abi.swETHToETHRate,
-      block,
-    }),
-    getTokenAndRedirectData([wrappedGasTokens[chain]], chain, timestamp),
-    getTokenInfo(chain, [target], block),
-  ]);
-
-  const price =
-    (rate * underlyingData[0].price) / 10 ** tokenInfos.decimals[0].output;
-
-  addToDBWritesList(
-    writes,
-    chain,
-    target,
-    price,
-    tokenInfos.decimals[0].output,
-    tokenInfos.symbols[0].output,
-    timestamp,
-    "sweth",
-    1,
-  );
 }

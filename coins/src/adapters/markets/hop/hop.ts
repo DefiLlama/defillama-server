@@ -79,7 +79,7 @@ export default async function getTokenPrices(timestamp: number, chain: any) {
     const l2Chains = addresses.bridges[coin as keyof typeof addresses.bridges];
     const contracts: { [contract: string]: string | number } =
       l2Chains[indexingChain as keyof typeof l2Chains];
-    if (contracts != undefined && contracts.l2SaddleSwap !== '0x0000000000000000000000000000000000000000')
+    if (contracts != undefined)
       correspondingContracts.push({
         target: contracts.l2SaddleSwap,
         lp: contracts.l2SaddleLpToken,

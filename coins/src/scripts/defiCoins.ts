@@ -29,15 +29,11 @@ async function storeDefiCoins() {
   shuffleArray(protocolIndexes);
   const a = Object.entries(adapters);
   const timestamp = 0;
-  await PromisePool.withConcurrency(5)
+  await PromisePool.withConcurrency(1)
     .for(protocolIndexes)
     .process(async (i) => {
-      const adapterKey = a[i][0];
-      const timeKey = `                                                                                  --- Runtime ${adapterKey} `
-      console.time(timeKey)
       try {
-        const adapterFn = typeof a[i][1] === 'function' ? a[i][1] : a[i][1][adapterKey];
-        const results = await withTimeout(timeout, adapterFn(timestamp));
+        const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
         );
@@ -52,14 +48,13 @@ async function storeDefiCoins() {
             resultsWithoutDuplicates.slice(i, i + step),
           );
         }
+        console.log(`${a[i][0]} done`);
       } catch (e) {
-        console.error(`ERROR: ${adapterKey} adapter failed ${e}`);
-        if ((e as any).stack) {
-          const lines = (e as any).stack.split('\n');
-          const firstThreeLines = lines.slice(0, 3).join('\n');
-          console.error(firstThreeLines);
-      }
-        // console.error(`${adapterKey} adapter failed ${process.env.LLAMA_RUN_LOCAL ? "" : `:${e}`}`);
+        console.error(
+          `${a[i][0]} adapter failed ${
+            process.env.LLAMA_RUN_LOCAL ? "" : `:${e}`
+          }`,
+        );
         // if (!process.env.LLAMA_RUN_LOCAL)
         //   await sendMessage(
         //     `${a[i][0]} adapter failed: ${e}`,
@@ -67,9 +62,7 @@ async function storeDefiCoins() {
         //     true,
         //   );
       }
-      console.timeEnd(timeKey)
     });
-  console.log("All done");
   process.exit();
 }
 storeDefiCoins();

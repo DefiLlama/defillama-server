@@ -43,6 +43,6 @@ export default async function getWrites(params: { chain: string, timestamp: numb
 
   const writesObject: any = {}
   writes.forEach((i: any) => writesObject[i.symbol] = i.price)
-  // sdk.log(chain, writesObject)
+  sdk.log(chain, writesObject)
   return writes
 }

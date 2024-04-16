@@ -55,7 +55,6 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
   stablePoolSymbol = 'sAMM', }: { endpoint?: string, factory?: string, project: string, chain: string, minLiquidity?: number, uniqueLPNames?: boolean, getReservesAbi?: string, stablePoolSymbol?: string, hasStablePools?: boolean, }) {
   const graphAdapter = async (timestamp: number = 0) => {
     const api = new ChainApi({ chain, timestamp })
-    const coreTokenSet = await getCoreTokenSet(chain)
     const block = (await api.getBlock()) - 100 // 100 blocks behind
     const allData = []
     let lastId = ''
@@ -90,6 +89,7 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
       }
       `
 
+
       const response = await axios.post(endpoint!, { query, })
       const pairs = response.data.data.pairs
       pairs.forEach((pair: any) => {
@@ -97,7 +97,7 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
         pair.token0.id = pair.token0.id.toLowerCase()
         pair.token1.id = pair.token1.id.toLowerCase()
       })
-      allData.push(...pairs.filter(({token0, token1}: any) => coreTokenSet.has(token0.id) || coreTokenSet.has(token1.id))) // only keep pairs with at least one core token
+      allData.push(...pairs)
       lastId = pairs[pairs.length - 1]?.id
 
       if (lastId) {
@@ -107,6 +107,7 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
 
     const decimals = await api.call({ abi: 'erc20:decimals', target: allData[0].id })
     const LP_SYMBOL = await api.call({ abi: 'erc20:symbol', target: allData[0].id })
+    const coreTokenSet = await getCoreTokenSet(chain)
     const writes: Write[] = []
 
     const tokenData: any = {}
@@ -153,7 +154,7 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
 
     return writes
 
-    function skipToken({ id, }: { id: string, name: string, symbol: string, }) {
+    function skipToken({ id, name, symbol }: { id: string, name: string, symbol: string, }) {
       return coreTokenSet.has(id)
       // return coreTokenSet.has(id) && (name.toLowerCase().startsWith('wrapped ') || ['USDC', 'USDT'].includes(symbol))
     }

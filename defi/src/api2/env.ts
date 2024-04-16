@@ -6,7 +6,7 @@ export function validateEnv() {
   const ENV = process.env
   const isCoolifyTask = ENV.IS_COOLIFY_TASK === 'true'
 
-  if (isCoolifyTask) requiredEnvVars.push('TVL_CACHE_DB_HOST_INTERNAL')
+  // if (isCoolifyTask) requiredEnvVars.push('TVL_CACHE_DB_HOST_INTERNAL')
 
   if (requiredEnvVars.some((envVar) => !ENV[envVar]))
     throw new Error(`Missing required environment variables: ${requiredEnvVars.join(', ')}`)

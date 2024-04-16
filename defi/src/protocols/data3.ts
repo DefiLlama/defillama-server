@@ -15505,7 +15505,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "omnibtc/index.js",
     twitter: "OmniBTC",
-    forkedFrom: [],
     github: ["OmniBTC"],
     listedAt: 1692193286
   },
@@ -30938,7 +30937,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink","Pyth"], // https://docs.lexer.markets/innovations-and-mechanism/price-oracle#lexer-v2
     forkedFrom: ["GMX V1"],
     module: "lexer-markets/index.js",
     twitter: "lexermarkets",

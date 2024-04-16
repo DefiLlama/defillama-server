@@ -84,7 +84,7 @@ export const allChainKeys: string[] = [
 export const tokenFlowCategories: (keyof ChainData)[] = ["outgoing", "canonical", "incoming", "native"];
 
 export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } = {
-  //mantle: { ticker: "mnt", address: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000" },
+  mantle: { ticker: "MNT", address: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000" },
   arbitrum: { ticker: "ARB", address: "0x912ce59144191c1204e64559fe8253a0e49e6548" },
   nova: { ticker: "ARB", address: "0xf823c3cd3cebe0a1fa952ba88dc9eef8e0bf46ad" },
   optimism: { ticker: "OP", address: "0x4200000000000000000000000000000000000042" },
@@ -119,7 +119,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   // rootstock: { ticker: "", address: "" },
   // stacks: { ticker: "STX", address: "0x0000000000000000000000000000000000000000" },
   // fantom: { ticker: "FTM", address: "0x0000000000000000000000000000000000000000" },
-  // thorchain: { ticker: "RUNE", address: "" },
+  thorchain: { ticker: "RUNE", address: "" },
   // filecoin: { ticker: "FIL", address: "0x0000000000000000000000000000000000000000" },
   // degen: { ticker: "DEGEN", address: "0x0000000000000000000000000000000000000000" },
 };
@@ -132,7 +132,7 @@ export const gasTokens: { [chain: Chain]: string } = {
   rootstock: "RBTC",
   stacks: "STX",
   fantom: "FTM",
-  thorchain: "RUNE",
+  // thorchain: "RUNE",
   filecoin: "FIL",
   degen: "DEGEN",
   mantle: "ETH",

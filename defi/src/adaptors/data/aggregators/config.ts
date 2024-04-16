@@ -37,7 +37,7 @@ export default {
     id: "3154",
   },
   "bitkeep": {
-    enabled: true,
+    enabled: false,
     id: "3207",
   },
   "jumper-exchange": {

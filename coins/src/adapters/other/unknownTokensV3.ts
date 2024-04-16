@@ -21,7 +21,6 @@ const config: any = {
 }
 
 export function unknownTokensV3(timestamp: number = 0) {
-  console.log("starting " + projectName);
   return Promise.all(
     Object.keys(config).map((chain) => getTokenPrice(chain, timestamp)),
   );

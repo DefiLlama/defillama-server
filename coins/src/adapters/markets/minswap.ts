@@ -43,7 +43,6 @@ const api: AxiosInstance = axios.create({
 });
 let calls: number = 0;
 export function minswap(timestamp: number) {
-  console.log("starting minswap");
   return getTokenPrices(timestamp);
 }
 function normalizeAssets(a: string, b: string): [string, string] {

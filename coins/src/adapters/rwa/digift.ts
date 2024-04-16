@@ -38,6 +38,5 @@ async function getTokenPrices(chain: string, timestamp: number) {
 }
 
 export function digift(timestamp: number = 0) {
-  console.log("starting digift");
   return getTokenPrices("ethereum", timestamp);
 }

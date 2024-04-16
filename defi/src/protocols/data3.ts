@@ -25560,7 +25560,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3846",
-    name: "deBridge",
+    name: "deBridge", // previous DLN rebrand here https://github.com/DefiLlama/defillama-server/pull/6590/files 
     address: null,
     symbol: "-",
     url: "https://debridge.finance",

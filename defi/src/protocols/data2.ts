@@ -26181,8 +26181,8 @@ const data2: Protocol[] = [
   {
     id: "2538",
     name: "Parcl V2",
-    address: null,
-    symbol: "-",
+    address: "solana:4LLbsb5ReP3yEtYzmXewyGjcir5uXtKFURtaEUVC2AHs",
+    symbol: "PRCL",
     url: "https://www.parcl.co",
     description: "Real estate synthetics built on Solana. Buy and short real estate markets around the world.",
     chain: "Solana",

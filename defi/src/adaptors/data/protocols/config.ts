@@ -117,4 +117,8 @@ export default {
         "enabled": true,
         "id": "4427",
     },
+    "web3world": {
+        "enabled": true,
+        "id": "4430",
+    }
 } as AdaptorsConfig

@@ -30936,7 +30936,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
-    oracles: ["Chainlink","Pyth"], // https://docs.lexer.markets/innovations-and-mechanism/price-oracle#lexer-v2
+    oracles: ["Chainlink"],
     forkedFrom: ["GMX V1"],
     module: "lexer-markets/index.js",
     twitter: "lexermarkets",

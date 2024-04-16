@@ -40,7 +40,7 @@ async function run() {
   }
 
   const promises: any = ADAPTER_TYPES.map(async (adapterType) => {
-    // if (adapterType !== AdapterType.AGGREGATOR_DERIVATIVES) return;
+    if (adapterType !== AdapterType.AGGREGATOR_DERIVATIVES) return;
 
     const timeKey1 = `data load ${adapterType}`
     const timeKey2 = `db call ${adapterType}`
@@ -251,7 +251,7 @@ async function run() {
                 result[chain][subModuleName] = value
               })
             })
-            protocolSummary.breakdown24h[recordType] = result
+            protocolSummary.breakdown24h = result
           })
         } else {
           protocolSummary.breakdown24h = null
@@ -367,6 +367,7 @@ type ProtocolSummary = RecordSummary & {
 }
 
 // run().catch(console.error).then(() => process.exit(0))
+process.exit(0)
 
 // fill all missing data with the last available data
 function getProtocolRecordMapWithMissingData(records: IJSON<any>) {
@@ -438,3 +439,4 @@ function _getDisplayChainName(chain: string) {
   if (!chainNameCache[chain]) chainNameCache[chain] = getDisplayChainName(chain) ?? chain
   return chainNameCache[chain]
 }
+

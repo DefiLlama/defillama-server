@@ -2861,6 +2861,14 @@ export const chainCoingeckoIds = {
     twitter: "Ancient8_gg",
     url: "https://ancient8.gg/"
   },
+  "Hyperliquid": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "HyperliquidX",
+    url: "https://hyperliquid.xyz/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3467,7 +3475,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bitkub":
       return "Bitkub"
     case "ancient8":
-      return "Ancient8"   
+      return "Ancient8"
+    case "hyperliquid":
+      return "Hyperliquid"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

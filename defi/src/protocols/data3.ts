@@ -3614,10 +3614,11 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Hyperliquid"],
-    oracles: [],
+    oracles: ["TWAP"], // https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-l1/oracle
     forkedFrom: [],
     module: "hyperliquid-perp/index.js",
     twitter: "HyperliquidX",
+    parentProtocol: "parent#hyperliquid",
     listedAt: 1681846146
   },
   {
@@ -39767,17 +39768,42 @@ const data3: Protocol[] = [
     description: "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/hyperliquid.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
     chains: ["Arbitrum"],
-    oracles: [],
+    oracles: [], 
     forkedFrom: [],
     module: "hyperliquid/index.js",
+    audit_links: [
+      "https://hyperliquid.gitbook.io/hyperliquid-docs/audits"
+    ],
     twitter: "HyperliquidX",
     listedAt: 1713225288
+  },
+  {
+    id: "4482",
+    name: "Hyperliquid Spot",
+    address: null,
+    symbol: "-",
+    url: "https://hyperliquid.xyz",
+    description: "The order book works in essentially the same way as all centralized exchanges but is fully on-chain",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/hyperliquid.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Hyperliquid"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hyperliquid-spot/index.js",
+    twitter: "HyperliquidX",
+    parentProtocol: "parent#hyperliquid",
+    listedAt: 1713231343
   },
 ]
 

@@ -4172,6 +4172,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "particle_trade",
   },
+  {
+    id: "parent#hyperliquid",
+    name: "Hyperliquid",
+    url: "https://hyperliquid.xyz",
+    description:
+      "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price",
+    logo: `${baseIconsUrl}/hyperliquid.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HyperliquidX",
+  },
 ];
 
 export default parentProtocols;

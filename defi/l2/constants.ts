@@ -101,6 +101,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   loopring: { ticker: "LRC", address: "0xbbbbca6a901c926f240b89eacb641d8aec7aeafd" },
   immutablex: { ticker: "IMX", address: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff" },
   metis: { ticker: "METIS", address: "0x0000000000000000000000000000000000001010" },
+  meter: { ticker: "MTRG", address: "0x228ebbee999c6a7ad74a6130e81b12f9fe237ba3" },
   // ethereum: { ticker: "ETH", address: "0x0000000000000000000000000000000000000000" },
   // solana: { ticker: "SOL", address: "" },
   // cronos: { ticker: "CRO", address: "0x0000000000000000000000000000000000000000" },

@@ -37458,7 +37458,7 @@ const data3: Protocol[] = [
     name: "A51 Finance V3",
     address: "polygon:0xe9E7c09e82328c3107d367f6c617cF9977e63ED0",
     symbol: "A51",
-    url: "https://unipilot.io",
+    url: "https://a51.finance",
     description: "A51 Finance is an Autonomous Liquidity Provisioning (ALP) protocol offering customizable tools for creating tailored liquidity strategies empowering LPs with dynamic adjustments based on their preferences",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/a51-finance.png`,

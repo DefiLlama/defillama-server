@@ -38577,7 +38577,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Mantle"],
-    oracles: [],
+    oracles: ["RedStone"],
     forkedFrom: ["Joe V2.1"],
     module: "merchant-moe-lb/index.js",
     twitter: "MerchantMoe_xyz",

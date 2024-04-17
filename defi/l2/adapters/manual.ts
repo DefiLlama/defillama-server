@@ -78,6 +78,9 @@ export const additional: { [chain: string]: string[] } = {
   ],
   mode: [
     "0x2416092f143378750bb29b79eD961ab195CcEea5", // ezETH
+    "0x028227c4dd1e5419d11Bb6fa6e661920c519D4F5", // weETH
+    "0xe7903B1F75C534Dd8159b313d92cDCfbC62cB3Cd", // rsETH
+    "0x59889b7021243dB5B1e065385F918316cD90D46c", // mBTC
   ],
   manta: [
     "0x3B95bC951EE0f553ba487327278cAc44f29715E5", // wUSDM

@@ -39838,6 +39838,48 @@ const data3: Protocol[] = [
     audit_links: ["https://volcanofinance.io/Volcano_preliminary-audit-report.pdf"],
     listedAt: 1713279069
   },
+  {
+    id: "4484",
+    name: "Plur",
+    address: null,
+    symbol: "-",
+    url: "https://plur.xyz/",
+    description: "Plur is a platform for backing creators with no loss. You can create pools to earn native yield from the ETH staked by your followers and gain extra PLUR & Blast points.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/plur.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "plur/index.js",
+    twitter: "plurxyz",
+    listedAt: 1713366948
+  },
+  {
+    id: "4485",
+    name: "Qrolli",
+    address: "0xccdb064a41afcd432bcea6f6d0d1e7c371d0b002",
+    symbol: "QR",
+    url: "https://qrolli.com",
+    description: "Connect, Create, and Own Your Experience",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/qrolli.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "qrolli/index.js",
+    twitter: "Qrollii",
+    listedAt: 1713367148
+  },
 ]
 
 export default data3

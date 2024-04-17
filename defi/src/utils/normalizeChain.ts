@@ -2876,6 +2876,14 @@ export const chainCoingeckoIds = {
     twitter: "NibiruChain",
     url: "https://nibiru.fi",
   },
+  "BSquared": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "BSquaredNetwork",
+    url: "https://www.bsquared.network/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3487,6 +3495,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Hyperliquid"
     case "nibiru":
       return "Nibiru"
+    case "bsquared":
+      return "BSquared"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

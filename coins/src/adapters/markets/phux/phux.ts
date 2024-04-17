@@ -20,7 +20,7 @@ const subgraphNames: {
   }
 } = {
   pulse: {
-    pool: "pools-v2",
+    pool: "pools-v3",
     gauge: "gauges"
   }
 };
@@ -44,11 +44,10 @@ export type TokenValues = {
   price: number;
   symbol: string;
 };
-async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
+async function getPoolIds(_chain: string, timestamp: number): Promise<string[]> {
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
-  const subgraph: string = `https://sub.phatty.io/subgraphs/name/phux/${subgraphNames[chain].pool || chain
-    }`;
+  const subgraph: string = `https://sub5.phatty.io/subgraphs/name/phux/pools-v3`;
   for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
     query {
@@ -71,10 +70,9 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
   }
   return addresses;
 }
-async function getGauges(chain: string): Promise<GqlGaugeResult[]> {
+async function getGauges(_chain: string): Promise<GqlGaugeResult[]> {
   let poolGauges: GqlGaugeResult[] = [];
-  const subgraph: string = `https://sub.phatty.io/subgraphs/name/phux/${subgraphNames[chain].gauge || chain
-    }`;
+  const subgraph: string = `https://sub5.phatty.io/subgraphs/name/phux/gauges`;
   let skip = 0;
   for (let i = 0; i < 20; i++) {
     const lpQuery = gql`

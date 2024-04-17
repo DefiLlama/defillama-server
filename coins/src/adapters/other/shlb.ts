@@ -55,6 +55,5 @@ export async function getTokenPrice(chain: string, timestamp: number) {
 
 
 export default function shlb(timestamp: number = 0) {
-  console.log("starting shlb");
   return Promise.all(Object.keys(contracts).map(chain => getTokenPrice(chain, timestamp)))
 }

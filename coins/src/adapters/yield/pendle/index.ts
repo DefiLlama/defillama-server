@@ -100,7 +100,6 @@ const config: { [chain: string]: any } = {
 };
 
 export function pendle(timestamp: number = 0) {
-  console.log("starting pendle");
   return Promise.all(
     Object.keys(config).map((chain: string) =>
       getTokenPrices(timestamp, chain, config[chain]),

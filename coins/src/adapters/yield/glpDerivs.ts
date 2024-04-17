@@ -11,7 +11,6 @@ type RateGetter = {
 };
 
 export async function glpDerivs(timestamp: number) {
-  console.log("starting glpDerivs");
   const writes: Write[] = [];
   const chain: any = "arbitrum";
   const GLP: string = "0x4277f8f2c384827b5273592ff7cebd9f2c1ac258";

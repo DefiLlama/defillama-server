@@ -101,5 +101,9 @@ export default {
     "moby": {
         enabled: true,
         id: "4452"
+    },
+    "ithaca": {
+        enabled: true,
+        id: "4418"
     }
 } as AdaptorsConfig

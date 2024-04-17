@@ -20,8 +20,5 @@
   },
   "ethereum": {
     "stETH": "0x9414e766E8B59473599b9968aAf52CDCd07f59a9"
-  },
-  "linea": {
-    "swDAI": "0x30C724216b890c034e0a1C299Ae641565f85355e"
   }
 }

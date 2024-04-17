@@ -125,6 +125,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     OVOL: "4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6",
   },
   pulse: {
+    GLOBO: "0x13568d812d30359756db5e617a7a8eb7eb3917f5",
     MMC: "0x387776e41b4688d79e1770dceba1f6d854911eb1",
     HUNT: "0xd854f7814b676f1c19ea22d4137d0176413c85b4",
   },

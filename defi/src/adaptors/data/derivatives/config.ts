@@ -279,16 +279,6 @@ export default {
         "enabled": false,
         "id": "1801"
     },
-    "unidex": {
-        "enabled": true,
-        "id": "1833",
-        protocolsData: {
-            "unidex": {
-                "enabled": true,
-                "id": "1833"
-            }
-        }
-    },
     "satori": {
         "enabled": true,
         "id": "2982",

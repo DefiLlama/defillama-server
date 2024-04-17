@@ -39701,6 +39701,7 @@ const data3: Protocol[] = [
     twitter: "_Loxodrome",
     listedAt: 1713193262
   },
+  /*
   {
     id: "4478",
     name: "Stobox",
@@ -39723,6 +39724,7 @@ const data3: Protocol[] = [
     github: ["StoboxTechnologies"],
     listedAt: 1713193462
   },
+  */
   {
     id: "4479",
     name: "Breadchain",

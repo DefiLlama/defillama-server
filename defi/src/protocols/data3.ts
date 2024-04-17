@@ -24518,7 +24518,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://amet.finance",
-    description: "Amet Finance is a decentralized finance platform for on-chain bonds, providing secure financial transactions and investment opportunities in the blockchain ecosystem",
+    description: "Amet Finance is a decentralized platform offering on-chain bond issuance and management services. It enables users to issue, trade, and manage bonds directly on the blockchain, providing a transparent, secure, and efficient environment for both issuers and investors. Amet Finance emphasizes user autonomy, allowing for customized bond terms and leveraging blockchain technology to democratize access to financial instruments.",
     chain: "Manta",
     logo: `${baseIconsUrl}/amet-finance.jpg`,
     audits: "2",
@@ -24526,13 +24526,17 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Services",
-    chains: ["Manta"],
+    chains: ["Base"],
     module: "amet-finance/index.js",
     forkedFrom: [],
     oracles: [],
     twitter: "amet_finance",
     github: ["Amet-Finance"],
-    audit_links: ["https://solidityscan.com/published-report/project/e3ec78102f482ae7"],
+    audit_links: [
+                  "https://github.com/Amet-Finance/contracts/blob/main/contracts/fixed-flex/audits/report_gt_gsec.md",
+                  "https://github.com/Amet-Finance/contracts/blob/main/contracts/fixed-flex/audits/report_%20nmirchev8.pdf",
+                  "https://solidityscan.com/published-report/project/e3ec78102f482ae7"
+                 ],
     listedAt: 1700145975
   },
   {

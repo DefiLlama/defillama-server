@@ -38577,7 +38577,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Mantle"],
-    oracles: ["RedStone"],
+    oracles: ["RedStone"], //https://docs.merchantmoe.com/liquidity-book/vaults#h_e0c60a9c6a
     forkedFrom: ["Joe V2.1"],
     module: "merchant-moe-lb/index.js",
     twitter: "MerchantMoe_xyz",

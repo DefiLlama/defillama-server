@@ -1,7 +1,7 @@
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
-    pETH: '0x836a808d4828586a69364065a1e064609f5078c7',
-    hBTC: '0x0316eb71485b0ab14103307bf65a021042c6d380',
+    pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
+    hBTC: "0x0316eb71485b0ab14103307bf65a021042c6d380",
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
     PSY_SCAM: "0xe5a2363904d91c6a311a378537b29c7c6d4f230d",
     GVR_OLD: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
@@ -43,7 +43,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     EULER_LP8: "0x4169Df1B7820702f566cc10938DA51F6F597d264",
     EULER_LP9: "0xbd1bd5c956684f7eb79da40f582cbe1373a1d593",
     // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab",
-    PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78"
+    PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78",
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -124,7 +124,12 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     GUAC: "AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR",
     OVOL: "4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6",
   },
+  pulse: {
+    MMC: "0x387776e41b4688d79e1770dceba1f6d854911eb1",
+    HUNT: "0xd854f7814b676f1c19ea22d4137d0176413c85b4",
+  },
   avax: {
+    BPAY: "0x8ccee641c3d937dc89d1d94fe4d8051624042fcf",
     DUEL: "0xc1a49c0b9c10f35850bd8e15eaef0346be63e002",
     ApeU: "0x6b0d2a3c37d551963275bB104F045F6a68AB6374",
     iBFR: "0xcaf870dad882b00f4b20d714bbf7fceada5e4195",
@@ -164,7 +169,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     DAI: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
     BASED: "0x8d7d3409881b51466b483b11ea1b8a03cded89ae",
     // BSHARE: '0x49C290Ff692149A4E16611c694fdED42C954ab7a'
-    plainu: "0x152fff048cdd5b22e2698e9effa1f061678359e5"
+    plainu: "0x152fff048cdd5b22e2698e9effa1f061678359e5",
   },
   heco: {
     BIFI: "0x765277eebeca2e31912c9946eae1021199b39c61",
@@ -180,7 +185,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     multiBTC: "0xf5b9b4a0534cf508ab9953c64c5310dfa0b303a1",
     MIM: "0x49a0400587a7f65072c87c4910449fdcc5c47242",
     JUSD: "0x0ba8a6ce46d369d779299dedade864318097b703",
-    SX: "0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79"
+    SX: "0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79",
   },
   moonriver: {
     MIM: "0x0cae51e1032e8461f4806e26332c030e34de3adb",
@@ -265,8 +270,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     WBTT: "0x8d193c6efa90bcff940a98785d1ce9d093d3dc8a",
   },
   callisto: {
-    SOY: "0x9fae2529863bd691b4a7171bdfcf33c7ebb10a65"
-  }
+    SOY: "0x9fae2529863bd691b4a7171bdfcf33c7ebb10a65",
+  },
 };
 
 export const distressedAssets = Object.fromEntries(

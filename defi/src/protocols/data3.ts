@@ -25301,7 +25301,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["LightLink"],
-    oracles: [],
+    oracles: ["Pyth"], // https://amped.gitbook.io/amped/price-feeds
     forkedFrom: ["GMX V1"],
     module: "amped/index.js",
     twitter: "ampedfinance",
@@ -39005,7 +39005,7 @@ const data3: Protocol[] = [
     module: "synthetix-v3/index.js",
     twitter: "synthetix_io",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Chainlink","Pyth"], // https://docs.synthetix.io/v/v3
     listedAt: 1712327109
   },
   {
@@ -39764,7 +39764,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Merlin"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.mage.finance/mage-protocol/protocol/price-oracle
     forkedFrom: [],
     module: "mage/index.js",
     twitter: "Mage_Finance",

@@ -39936,7 +39936,7 @@ const data3: Protocol[] = [
     url: "https://ethereum.org/en/",
     description: "Ethereum is the community-run technology powering the cryptocurrency ether (ETH) and thousands of decentralized applications.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ethereum.png`,
+    logo: `${baseIconsUrl}/ethereum-foundation.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

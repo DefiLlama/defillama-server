@@ -35,7 +35,8 @@ export interface Protocol {
   rugged?: boolean;
   deadUrl?: boolean;
   deadFrom?: number | string;
-  tokensExcludedFromParent?: string[]
+  tokensExcludedFromParent?: string[];
+  note?: string;
 }
 
 export interface IParentProtocol {

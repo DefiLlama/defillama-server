@@ -116,9 +116,15 @@ export default {
     enabled: true,
     id: "3927",
   },
-  "dodo-agg": {
+  "dodo": {
     enabled: true,
     id: "146",
+    protocolsData: {
+      "dodo-agg": {
+        enabled: true,
+        id: "146",
+      }
+    }
   },
   "paraswap": {
     enabled: true,

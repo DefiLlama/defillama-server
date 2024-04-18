@@ -2884,6 +2884,15 @@ export const chainCoingeckoIds = {
     twitter: "BSquaredNetwork",
     url: "https://www.bsquared.network/"
   },
+  "Lyra Chain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "lyrafinance",
+    url: "https://lyra.finance",
+    chainId: 957,
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3497,6 +3506,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Nibiru"
     case "bsquared":
       return "BSquared"
+    case "lyra":
+      return "Lyra Chain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

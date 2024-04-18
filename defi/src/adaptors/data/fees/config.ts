@@ -551,6 +551,7 @@ export default {
     },
     "el-dorado-exchange": {
         parentId: "EDE",
+        disabled: true,
         "enabled": true,
         "id": "2356"
     },
@@ -1329,6 +1330,7 @@ export default {
         "id": "2974"
     },
     "blazebot": {
+        disabled: true,
         "enabled": true,
         "id": "3527"
     },

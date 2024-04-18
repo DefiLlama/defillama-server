@@ -161,7 +161,13 @@ export default {
     },
     "dodo": {
         "enabled": true,
-        "id": "146"
+        "id": "146",
+        protocolsData: {
+            "dodo": {
+                "id": "146",
+                enabled: true,
+            }
+        }
     },
     "velodrome": {
         parentId: "Velodrome",

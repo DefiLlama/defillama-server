@@ -39902,6 +39902,32 @@ const data3: Protocol[] = [
     audit_links: ["https://2227259712-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FdiKpPMQRzcvmKZPuBfGZ%2Fuploads%2Fxfzaty6B6Gtxx18McMTQ%2FOlive%20Audit%20Report.pdf?alt=media&token=0a360c6d-cf15-4c7b-b0e5-4762590078d9"],
     listedAt: 1713438820
   },
+  {
+    id: "4487",
+    name: "Hinkal Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://hinkal.pro",
+    description: "Hinkal is an institutional-grade protocol enabling confidential on-chain transactions. It is a category-defining solution, that allows liquid funds and retail users to create shielded addresses and transact on major dApps in complete confidentiality (the origin and destination of transaction, value).",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hinkal-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Privacy",
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Binance", "Avalanche"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hinkal/index.js",
+    twitter: "hinkal_protocol",
+    audit_links: [ 
+                   "https://github.com/zokyo-sec/audit-reports/blob/main/Hinkal/Hinkal_Zokyo_Feb20th_2024.pdf",
+                   "https://certificate.quantstamp.com/full/hinkal-protocol/66b9b783-8b42-4a4e-89ed-3ef2a2df5958/index.html",
+                   "https://github.com/Secure3Audit/Secure3Academy/blob/main/audit_reports/Hinkal/Hinkal_final_Secure3_Audit_Report.pdf"
+                 ],
+    listedAt: 1713448328
+  },
 ]
 
 export default data3

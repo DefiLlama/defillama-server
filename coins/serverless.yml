@@ -73,7 +73,6 @@ provider:
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
-    LLAMA_PROVIDER_RPC_GET_BLOCKNUMBER_TIMEOUT: 2000
 
 custom:
   stage: ${opt:stage, self:provider.stage}

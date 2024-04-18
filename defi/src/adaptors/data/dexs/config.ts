@@ -672,7 +672,7 @@ export default {
         "id": "261"
     },
     "xexchange": {
-        "enabled": true,
+        "enabled": false,
         "id": "854"
     },
     "defichain-dex": {

@@ -39880,6 +39880,28 @@ const data3: Protocol[] = [
     twitter: "Qrollii",
     listedAt: 1713367148
   },
+  {
+    id: "4486",
+    name: "Olive Network",
+    address: null,
+    symbol: "-",
+    url: "https://www.olivenetwork.xyz",
+    description: "Olive Network is a universal aggregated liquidity layer across all L1s & L2s with gasless transactions for onboarding next billion users.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/olive-network.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "olive-network/index.js",
+    twitter: "0xOlive",
+    audit_links: ["https://2227259712-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FdiKpPMQRzcvmKZPuBfGZ%2Fuploads%2Fxfzaty6B6Gtxx18McMTQ%2FOlive%20Audit%20Report.pdf?alt=media&token=0a360c6d-cf15-4c7b-b0e5-4762590078d9"],
+    listedAt: 1713438820
+  },
 ]
 
 export default data3

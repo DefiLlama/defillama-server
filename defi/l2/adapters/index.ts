@@ -170,3 +170,31 @@ export const mode = async (): Promise<Address[]> => {
   );
   return addresses.mode;
 };
+export const zklink = async (): Promise<Address[]> => {
+  if (addresses.zklink) return addresses.zklink;
+  const allTokens = [];
+  let page = 1;
+  do {
+    const { items, meta } = await fetch(`https://explorer-api.zklink.io/tokens?limit=200&page=${page}&key=`).then((r) =>
+      r.json()
+    );
+    allTokens.push(...items);
+    page++;
+    if (page >= meta.totalPages) break;
+  } while (page < 100);
+  addresses.zklink = allTokens.map((d: any) => d.l2Address.toLowerCase());
+  return addresses.zklink;
+};
+export const manta = async (): Promise<Address[]> => {
+  if (addresses.manta) return addresses.manta;
+  const bridge = (
+    await fetch(
+      "https://raw.githubusercontent.com/Manta-Network/manta-pacific-token-list/main/json/manta-pacific-mainnet-token-list.json"
+    ).then((r) => r.json())
+  ).tokens as any[];
+
+  addresses.manta = bridge
+    .filter((token) => token.chainId === 169 && token.tokenType.includes("canonical-bridge"))
+    .map((optToken) => optToken.address.toLowerCase());
+  return addresses.manta;
+};

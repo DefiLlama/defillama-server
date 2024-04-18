@@ -39005,7 +39005,7 @@ const data3: Protocol[] = [
     module: "synthetix-v3/index.js",
     twitter: "synthetix_io",
     forkedFrom: [],
-    oracles: ["Chainlink","Pyth"], // https://docs.synthetix.io/v/v3
+    oracles: ["Pyth"], // https://docs.synthetix.io/v/v3
     listedAt: 1712327109
   },
   {

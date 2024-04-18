@@ -128,6 +128,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     GLOBO: "0x13568d812d30359756db5e617a7a8eb7eb3917f5",
     MMC: "0x387776e41b4688d79e1770dceba1f6d854911eb1",
     HUNT: "0xd854f7814b676f1c19ea22d4137d0176413c85b4",
+    Wildfire: "0x4db9112fe1c3670a7adb5e206ef6ce26707a2767"
   },
   avax: {
     BPAY: "0x8ccee641c3d937dc89d1d94fe4d8051624042fcf",

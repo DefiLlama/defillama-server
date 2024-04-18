@@ -9,17 +9,18 @@ const coreAssetsCache: {
   [chain: string]: Set<string>
 } = {}
 
-const MinLiquidity = 12000
+const MinLiquidity = 50000
+const MinVolume = 1000000
 
 function calculateConfidence(value: number, _minLiquidity = MinLiquidity) {
   value = +value
-  if (value <= _minLiquidity)
+  if (value <= _minLiquidity || value > 1e11)
     return 0
   else if (value > _minLiquidity && value <= 100000) {
-    const slope = (0.99 - 0.90) / (100000 - _minLiquidity);
-    return 0.90 + slope * (value - _minLiquidity);
+    const slope = (0.98 - 0.80) / (100000 - _minLiquidity);
+    return 0.80 + slope * (value - _minLiquidity);
   } else
-    return 0.99;
+    return 0.98;
 }
 
 
@@ -50,9 +51,9 @@ function getLPSymbol(token0: string, token1: string, lp: string) {
 
 const defaultGetReservesAbi = 'function getReserves() view returns (uint112 _reserve0, uint112 _reserve1, uint32 _blockTimestampLast)'
 
-export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLiquidity, factory, uniqueLPNames = false, getReservesAbi = defaultGetReservesAbi,
+export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLiquidity, minVolume = MinVolume, factory, uniqueLPNames = false, getReservesAbi = defaultGetReservesAbi,
   hasStablePools = false,
-  stablePoolSymbol = 'sAMM', }: { endpoint?: string, factory?: string, project: string, chain: string, minLiquidity?: number, uniqueLPNames?: boolean, getReservesAbi?: string, stablePoolSymbol?: string, hasStablePools?: boolean, }) {
+  stablePoolSymbol = 'sAMM', }: { endpoint?: string, factory?: string, project: string, chain: string, minLiquidity?: number, minVolume?: number, uniqueLPNames?: boolean, getReservesAbi?: string, stablePoolSymbol?: string, hasStablePools?: boolean, }) {
   const graphAdapter = async (timestamp: number = 0) => {
     const api = new ChainApi({ chain, timestamp })
     const coreTokenSet = await getCoreTokenSet(chain)
@@ -67,6 +68,7 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
             reserveUSD_gt: ${minLiquidity}
             id_gt: "${lastId}" 
             ${timestamp == 0 ? `` : `createdAtTimestamp_gt: ${(timestamp * 1000).toString()}`}
+            volumeUSD_gt: ${minVolume}
           } 
         block: { number: ${block} } 
         first: 1000
@@ -89,7 +91,7 @@ export function getUniV2Adapter({ endpoint, project, chain, minLiquidity = MinLi
         }
       }
       `
-
+      
       const response = await axios.post(endpoint!, { query, })
       const pairs = response.data.data.pairs
       pairs.forEach((pair: any) => {

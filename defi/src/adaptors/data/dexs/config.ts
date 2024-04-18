@@ -1161,6 +1161,7 @@ export default {
     },
     "el-dorado-exchange": {
         "enabled": true,
+        disabled: true,
         "id": "2356",
         parentId: "EDE",
         "protocolsData": {

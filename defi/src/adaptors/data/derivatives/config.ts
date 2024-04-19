@@ -760,5 +760,9 @@ export default {
     "increment-protocol": {
         enabled: true,
         id: "4382",
+    },
+    "lyra": {
+        enabled: true,
+        id: "3923",
     }
 } as AdaptorsConfig

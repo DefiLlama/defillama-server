@@ -3,6 +3,7 @@ import * as aave from "./moneyMarkets/aave";
 import * as uniswap from "./markets/uniswap";
 import * as curve from "./markets/curve";
 import * as balancer from "./markets/balancer";
+import * as others from "./other/index";
 
 export default {
   ...compound.adapters,
@@ -10,6 +11,7 @@ export default {
   ...uniswap.adapters,
   ...curve.adapters,
   ...balancer.adapters,
+  ...others.adapters,
   stobox: require("./rwa/stobox"),
   seamless: require("./other/seamless"),
   pyth: require("./oracles/pyth"),

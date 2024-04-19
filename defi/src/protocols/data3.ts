@@ -28021,6 +28021,7 @@ const data3: Protocol[] = [
     name: "Balanced Dollar",
     address: "icon:cxf61cd5a45dc9f91c15aa65831a30a90d59a09619",
     symbol: "BALN",
+    assetToken: "bnUSD",
     url: "https://balanced.network",
     description: "The Balanced Dollar (bnUSD) is a decentralised stablecoin that tracks the price of 1 USD. It uses cryptocurrency as collateral to guarantee its value, with support for assets from a variety of blockchains. bnUSD is not experimental or algorithmic: it’s over-collateralised, so the total supply cannot exceed the value that backs it.",
     chain: "Icon",

@@ -2893,6 +2893,16 @@ export const chainCoingeckoIds = {
     url: "https://lyra.finance",
     chainId: 957,
   },
+  "Planq": {
+    geckoId: "planq",
+    symbol: "PLQ",
+    cmcId: "28804",
+    categories: ["EVM"],
+    twitter: "PlanqFoundation",
+    url: "https://planq.network",
+    github: ["planq-network"],
+    chainId: 7070,
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3508,6 +3518,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "BSquared"
     case "lyra":
       return "Lyra Chain"
+    case "planq":
+      return "Planq"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

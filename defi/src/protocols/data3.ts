@@ -17688,7 +17688,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3491",
-    name: "Wise Lending",
+    name: "Wise Lending V1",
     address: "0x66a0f676479cee1d7373f3dc2e2952778bff5bd6",
     symbol: "WISE",
     url: "https://wiselending.com/",
@@ -17698,14 +17698,15 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/wise-lending.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "wise-token11",
-    cmcId: "8167",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
     module: "wise-lending/index.js",
     oracles: ["Chainlink"],
     forkedFrom: [],
     twitter: "Wise_Token",
+    parentProtocol: "parent#wise-lending",
     listedAt: 1694020053
   },
   {
@@ -40056,6 +40057,29 @@ const data3: Protocol[] = [
     module: "LamaMiner/index.js",
     twitter: "AvaxLama",
     listedAt: 1713549808
+  },
+  {
+    id: "4494",
+    name: "Wise Lending V2",
+    address: "0x66a0f676479cee1d7373f3dc2e2952778bff5bd6",
+    symbol: "WISE",
+    url: "https://wiselending.com/",
+    description:
+      "Wise Lending is both a crypto lending platform and a yield-farm aggregator. This combination allows capital from lenders to be leveraged towards other yield-farming dApps",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/wise-lending.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "wise-lending-v2/index.js",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    twitter: "Wise_Token",
+    parentProtocol: "parent#wise-lending",
+    listedAt: 1694020053
   },
 ]
 

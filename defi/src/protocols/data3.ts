@@ -39980,7 +39980,7 @@ const data3: Protocol[] = [
     url: "https://portal.dymension.xyz/",
     description: "Dymension is a home for easily deployable and lightning fast app-chains, called RollApps.",
     chain: "Dymension",
-    logo: `${baseIconsUrl}/dymension.jpg`,
+    logo: `${baseIconsUrl}/dymension.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "dymension",

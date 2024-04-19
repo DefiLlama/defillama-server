@@ -19622,7 +19622,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3576",
-    name: "GammaSwap",
+    name: "GammaSwap Classic",
     address: null,
     symbol: "-",
     url: "https://app.gammaswap.com/",
@@ -39948,6 +39948,29 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "ethereum",
     listedAt: 1713453599
+  },
+  {
+    id: "4489",
+    name: "GammaSwap",
+    address: null,
+    symbol: "-",
+    url: "https://app.gammaswap.com/",
+    description: "GammaSwap is a novel DeFi primitive built to scale liquidity in Automated Market Makers (AMMs) by creating permissionless and oracle free risk markets",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/gammaswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "gammaswap-v2/index.js",
+    twitter: "gammaswaplabs",
+    audit_links: ["https://docs.gammaswap.com/more-info/audits"],
+    parentProtocol: "parent#gammaswaplabs",
+    listedAt: 1713502627,
   },
 ]
 

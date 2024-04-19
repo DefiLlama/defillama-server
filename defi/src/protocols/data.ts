@@ -11017,7 +11017,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Ponzi",
     chains: ["Binance"],
     module: "bnbminer/index.js",
     twitter: "Da_Developer",
@@ -12111,11 +12111,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Ponzi",
     chains: ["Binance", "Fantom", "Avalanche", "Polygon"],
     module: "multichainMiner.js",
     twitter: "multichainminer",
     listedAt: 1634038934,
+    deadUrl: true
   },
   {
     id: "666",

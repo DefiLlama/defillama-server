@@ -40015,6 +40015,27 @@ const data3: Protocol[] = [
     twitter: "TonsOfFriends",
     listedAt: 1713528197
   },
+  {
+    id: "4492",
+    name: "Ciento Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://ciento.exchange",
+    description: "Ciento Exchange is EVM based multichain DEX on Cosmos EcoSystem. Our DEX is a secure and reliable platform for trading digital assets.",
+    chain: "Planq",
+    logo: `${baseIconsUrl}/ciento-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Planq"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "ciento/index.js",
+    twitter: "CientoExchange",
+    listedAt: 1713534801
+  },
 ]
 
 export default data3

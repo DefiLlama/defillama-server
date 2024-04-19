@@ -39972,6 +39972,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#gammaswaplabs",
     listedAt: 1713502627,
   },
+  {
+    id: "4490",
+    name: "Dymension",
+    address: null,
+    symbol: "-",
+    url: "https://portal.dymension.xyz/",
+    description: "Dymension is a home for easily deployable and lightning fast app-chains, called RollApps.",
+    chain: "Dymension",
+    logo: `${baseIconsUrl}/dymension.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "dymension",
+    cmcId: "28932",
+    category: "Services",
+    chains: ["Dymension"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "dymension",
+    listedAt: 1713516607
+  },
 ]
 
 export default data3

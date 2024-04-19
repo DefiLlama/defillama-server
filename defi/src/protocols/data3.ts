@@ -39994,6 +39994,27 @@ const data3: Protocol[] = [
     twitter: "dymension",
     listedAt: 1713516607
   },
+  {
+    id: "4491",
+    name: "TonsOfFriends",
+    address: null,
+    symbol: "-",
+    url: "https://twitter.com/TonsOfFriends",
+    description: "An ecosystem first on the TON blockchain, we offer a seamless SocialFi experience, easily providing groups and channels the means to list their platforms and allows users to buy and sell keys for access, all without ever needing to leave the Telegram app!",
+    chain: "TON",
+    logo: `${baseIconsUrl}/tonsoffriends.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["TON"],
+    oracles: [],
+    forkedFrom: [],
+    module: "tonsoffriends/index.js",
+    twitter: "TonsOfFriends",
+    listedAt: 1713528197
+  },
 ]
 
 export default data3

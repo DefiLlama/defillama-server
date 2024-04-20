@@ -40124,6 +40124,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     twitter: "EbisusBay",
+    treasury: "ebisusbay.js",
     listedAt: 1713637596
   },
   {

@@ -4427,7 +4427,6 @@ const data3: Protocol[] = [
     module: "vertex/index.js",
     twitter: "vertex_protocol",
     listedAt: 1682519828,
-    github: ["vertex-protocol"],
     parentProtocol: "parent#Edge"
   },
   {

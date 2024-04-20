@@ -4427,7 +4427,8 @@ const data3: Protocol[] = [
     module: "vertex/index.js",
     twitter: "vertex_protocol",
     listedAt: 1682519828,
-    github: ["vertex-protocol"]
+    github: ["vertex-protocol"],
+    parentProtocol: "parent#Edge"
   },
   {
     id: "2900",
@@ -33862,6 +33863,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Vertex"], // it uses edges product from vertex https://edge.vertexprotocol.com/ "Vertex Edge’s composable orderbook solves the problems of liquidity fragmentation and creates economic alliances across chains."
     oracles: [],
     audit_links: [],
+    parentProtocol: "parent#Edge",
     listedAt: 1709318288
   },
   {

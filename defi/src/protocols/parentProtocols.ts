@@ -4196,6 +4196,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Wise_Token",
   },
+  {
+    id: "parent#Edge",
+    name: "Edge",
+    url: "https://edge.vertexprotocol.com/",
+    description:
+      "The Synchronous Orderbook Liquidity Layer unifying cross-chain liquidity in DeFi",
+    logo: `${baseIconsUrl}/edge.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "EdgeLayer",
+  },
 ];
 
 export default parentProtocols;

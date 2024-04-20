@@ -40149,6 +40149,28 @@ const data3: Protocol[] = [
     github: ["volt-protocol"],
     listedAt: 1713637603
   },
+  {
+    id: "4498",
+    name: "SwapBlast V3",
+    address: "blast:0xd07379a755A8f11B57610154861D694b2A0f615a",
+    symbol: "SBF",
+    url: "https://swapblast.finance/#/swap",
+    description: "CLMM on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/swapblast.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "swapblast-v3/index.js",
+    twitter: "SwapBlast",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    parentProtocol: "parent#swapbased",
+    listedAt: 1713640781
+  },
 ]
 
 export default data3

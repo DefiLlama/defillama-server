@@ -40083,6 +40083,73 @@ const data3: Protocol[] = [
     parentProtocol: "parent#wise-lending",
     listedAt: 1694020053
   },
+  {
+    id: "4495",
+    name: "YOLO Games",
+    address: null,
+    symbol: "-",
+    url: "https://yologames.io/",
+    description:
+      "The only venue for serious degens seeking serious rewards. Built by a veteran team with a track record of delivering provably fair, fun on-chain games",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/yolo-games.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Blast"],
+    module: "dummy.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "YOLO_Blast",
+    listedAt: 1713637247
+  },
+  {
+    id: "4496",
+    name: "Ebisus Bay",
+    address: "cronos:0xaF02D78F39C0002D14b95A3bE272DA02379AfF21",
+    symbol: "FRTN",
+    url: "https://app.ebisusbay.com/",
+    description:
+      "Ebisu's Bay is a dynamic platform that combines NFT and DEX trading with GameFi, enabling users to join factions for market dominance. It transforms NFTs into engaging game elements, adding an interactive dimension to trading and gaming",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/ebisus-bay.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "ebisusbay-fortune",
+    cmcId: "27073",
+    category: "Dexes",
+    chains: ["Cronos"],
+    module: "ebisus-bay/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "EbisusBay",
+    listedAt: 1713637596
+  },
+  {
+    id: "4497",
+    name: "Credit Guild",
+    address: null,
+    symbol: "-",
+    url: "https://app.creditguild.org/",
+    description:
+      "The Credit Guild is a protocol for trust minimized pooled lending",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/credit-guild.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    module: "creditguild/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "CreditGuild",
+    github: ["volt-protocol"],
+    listedAt: 1713637603
+  },
 ]
 
 export default data3

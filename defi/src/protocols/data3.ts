@@ -35849,6 +35849,7 @@ const data3: Protocol[] = [
     name: "BTCFi",
     address: null,
     symbol: "-",
+    assetToken: "BtcUSD",
     url: "https://btcfi.one",
     description: `BTCFi is a decentralized crosschain Bitcoin asset management platform offering native Bitcoin collateralization to mint a Bitcoin-backed stablecoin, BtcUSD.`,
     chain: "Bifrost Network",
@@ -35863,6 +35864,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "btcfi/index.js",
     twitter: "Bifrost_Network",
+    stablecoins: ["bitcoin-usd"],
     listedAt: 1710509784
   },
   {

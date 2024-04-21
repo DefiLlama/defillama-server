@@ -32344,7 +32344,7 @@ const data3: Protocol[] = [
     id: "4149",
     name: "Aurelius",
     address: "mantle:-",
-    symbol: "AU",
+    symbol: "-",
     url: "https://www.aurelius.finance/",
     description:
       "Aurelius is a combination of a CDP and money market platform (Ethos Reserve and Granary/Aave combined) on Mantle",

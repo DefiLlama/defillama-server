@@ -32349,7 +32349,7 @@ const data3: Protocol[] = [
     description:
       "Aurelius is a combination of a CDP and money market platform (Ethos Reserve and Granary/Aave combined) on Mantle",
     chain: "Mantle",
-    logo: `${baseIconsUrl}/aurelius.png`,
+    logo: `${baseIconsUrl}/aurelius.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

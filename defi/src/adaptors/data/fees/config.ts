@@ -2016,5 +2016,9 @@ export default {
     "swych": {
         enabled: true,
         id: "4365",
-    }
+    },
+    "wbtc": {
+        "enabled": true,
+        "id": "2"
+    },
 } as AdaptorsConfig

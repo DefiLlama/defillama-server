@@ -2021,4 +2021,8 @@ export default {
         "enabled": true,
         "id": "2"
     },
+    "yologames": {
+        enabled: true,
+        id: "4495"
+    }
 } as AdaptorsConfig

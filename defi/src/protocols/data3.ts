@@ -40194,6 +40194,30 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "4500",
+    name: "Firefly",
+    address: null,
+    symbol: "-",
+    url: "https://fireflydex.io/",
+    description:
+      "With CEX features on a DEX and ultra-fast transactions, firefly is the Premier Modular DEX.",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/firefly.jpg`,
+    audits: "3", 
+    audit_links: ["https://docs.fireflydex.io/audits-transparency", 
+    "https://3574364452-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhcCwYWiw1t9QdK7cp37u%2Fuploads%2FbNfbMUl1UCiuMIQ5u9Ns%2FOfficial-Firefly%20Audit%20-%20Mykyta%20Mesentsev%20-%20Blockchain%20Auditor.pdf?alt=media&token=f03bedc7-6c1c-4445-b53f-421fbe6624fb",
+    "https://3574364452-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhcCwYWiw1t9QdK7cp37u%2Fuploads%2FxzNN0bjx1FyRCbCpg98e%2FOfficial%20Firefly%20Audit%20Report-%20Ahmed%20Dalhoum.pdf?alt=media&token=44866712-032e-4262-904e-b1ef4d71f59a"],
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Manta"], 
+    module: "Firefly/index.js",
+    twitter: "FireFlydexZK", 
+    forkedFrom: ["Uniswap V3"], 
+    github: ["firefly-dex"],
+  },
 ]
 
 export default data3

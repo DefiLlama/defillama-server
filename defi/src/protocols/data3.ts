@@ -40172,6 +40172,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#swapbased",
     listedAt: 1713640781
   },
+  {
+    id: "4499",
+    name: "Litecoin",
+    address: null,
+    symbol: "LTC",
+    url: "https://litecoin.org",
+    description: "Designing the Future of Global Payments, The Litecoin Foundation is a community-run non-profit organization committed to the development & adoption of Litecoin",
+    chain: "Litecoin",
+    logo: `${baseIconsUrl}/litecoin.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Litecoin"],
+    module: "dummy.js",
+    twitter: "LTCFoundation",
+    forkedFrom: [],
+    oracles: [],
+  },
 ]
 
 export default data3

@@ -4208,6 +4208,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "EdgeLayer",
   },
+  {
+    id: "parent#btcfi",
+    name: "BTCFi",
+    url: "https://btcfi.one",
+    description:
+      "BTCFi is a decentralized crosschain Bitcoin asset management platform offering native Bitcoin collateralization to mint a Bitcoin-backed stablecoin, BtcUSD.",
+    logo: `${baseIconsUrl}/btcfi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Bifrost_Network",
+    stablecoins: ["bitcoin-usd"],
+  },
 ];
 
 export default parentProtocols;

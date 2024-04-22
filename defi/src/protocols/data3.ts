@@ -40239,6 +40239,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#btcfi",
     listedAt: 1713779453
   },
+  {
+    id: "4502",
+    name: "MIM Swap", // from abracadabra team
+    address: null,
+    symbol: "-",
+    url: "https://app.abracadabra.money/#/mim-swap",
+    description: "MIM_Spell in house stableswap AMM built on Blast_L2. Enjoy the best LP yield, while optimising Abracadabra's efficiency",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/mim-swap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "mimswap/index.js",
+    twitter: "MIMSwap",
+    forkedFrom: [],
+    oracles: [],
+    tokensExcludedFromParent: ["MIM"],
+    listedAt: 1713789617
+  },
 ]
 
 export default data3

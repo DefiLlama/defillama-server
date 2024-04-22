@@ -40281,6 +40281,7 @@ const data3: Protocol[] = [
     twitter: "0xflatmoney",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#dhedge",
     listedAt: 1713802587
   },
   {

@@ -11361,6 +11361,7 @@ const data2: Protocol[] = [
     twitter: "WhaleLoans",
     listedAt: 1657105361
   },
+  /*
   {
     id: "1885",
     name: "XY Finance",
@@ -11383,6 +11384,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.xy.finance/getting-started/security"],
     listedAt: 1657208486
   },
+  */
   {
     id: "1886",
     name: "Kintsugi",

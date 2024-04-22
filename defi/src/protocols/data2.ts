@@ -22150,12 +22150,12 @@ const data2: Protocol[] = [
   },
   {
     id: "2364",
-    name: "Butter Swap", //previous Butter Network
+    name: "Butter Network", //previous Butter Network
     address: null,
     symbol: "-",
     url: "https://www.butterswap.io/swap",
     description:
-      "Built upon the Bitcoin L2 MAP Protocol, ButterSwap is the first ZK light-client cross-chain aggregator swap that minimized ZK verification time and optimized gas fees. Exchange between popular chains & BTC ecosystem in one click!",
+      "Butter is an Omnichain Interoperability Hub integrated with ZK technology that enables users with global DAPP accessibility and data availability, building an infrastructure that makes transactions transverse across chain to chain freely and securely.",
     chain: "Binance",
     logo: `${baseIconsUrl}/butter-swap.png`,
     audits: "0",
@@ -22165,7 +22165,7 @@ const data2: Protocol[] = [
     category: "Cross Chain",
     chains: ["Polygon", "Near", "Binance", "Map"],
     module: "butternetwork/index.js",
-    twitter: "ButterSwapio",
+    twitter: "ButterNetworkio",
     forkedFrom: [],
     oracles: [],
     listedAt: 1671145989,

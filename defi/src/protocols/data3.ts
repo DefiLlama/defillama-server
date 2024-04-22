@@ -32955,25 +32955,25 @@ const data3: Protocol[] = [
   },
   {
     id: "4175",
-    name: "IMONSwap",
+    name: "KEWL EXCHANGE", // previous IMONSwap kewl-exchange.jpg
     address: null,
     symbol: "-",
-    url: "https://www.imon.ai",
+    url: "https://www.kewl.exchange",
     description:
-      "Fully community-driven revolution of decentralized finance on the blockchain with the power of revolutionary technology",
+      "Join the fully community-driven revolution of decentralized finance on the blockchain with the power of revolutionary technology.",
     chain: "Chiliz",
-    logo: `${baseIconsUrl}/imonswap.jpg`,
+    logo: `${baseIconsUrl}/kewl-exchange.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Chiliz"],
-    module: "imonswap/index.js",
-    twitter: "imondotai",
+    module: "kewl/index.js",
+    twitter: "kewlswap",
     forkedFrom: [],
     oracles: [],
-    github: ["imonai"],
+    github: ["kewlexchange"],
     listedAt: 1708960580
   },
   {

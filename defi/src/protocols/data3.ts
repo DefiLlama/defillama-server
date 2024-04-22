@@ -14486,11 +14486,13 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CDP",
-    chains: ["Base"],
+    chains: ["Base","Meter"],
     module: "meridian/index.js",
     twitter: "MeridianFi",
     forkedFrom: ["Liquity"],
-    oracles: ["DIA"],
+    oraclesByChain: {
+      meter: ["Pyth"] // https://docs.meridianfinance.net/resources/technical-and-security/oracles/pyth
+    },
     parentProtocol: "parent#meridian",
     listedAt: 1691326424,
   },
@@ -28985,7 +28987,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Options",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["Pyth"], //  https://docs.cega.fi/cega/products/overview/fcn/price-feeds#id-72c2
     forkedFrom: [],
     module: "cega-v2/index.js",
     twitter: "cega_fi",

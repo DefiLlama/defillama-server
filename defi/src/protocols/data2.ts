@@ -3792,7 +3792,7 @@ const data2: Protocol[] = [
     cmcId: "20604",
     category: "Lending",
     chains: ["Near"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.burrow.finance/product-docs/how-burrow-works/oracle
     forkedFrom: [],
     module: "burrow.cash/index.js",
     twitter: "burrow_finance",

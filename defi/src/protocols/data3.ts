@@ -35846,14 +35846,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4303",
-    name: "BTCFi",
+    name: "BTCFi Farm",
     address: null,
     symbol: "-",
     assetToken: "BtcUSD",
     url: "https://btcfi.one",
     description: `BTCFi is a decentralized crosschain Bitcoin asset management platform offering native Bitcoin collateralization to mint a Bitcoin-backed stablecoin, BtcUSD.`,
     chain: "Bifrost Network",
-    logo: `${baseIconsUrl}/btcfi.jpg`,
+    logo: `${baseIconsUrl}/btcfi-farm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -35864,7 +35864,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "btcfi/index.js",
     twitter: "Bifrost_Network",
-    stablecoins: ["bitcoin-usd"],
+    parentProtocol: "parent#btcfi",
     listedAt: 1710509784
   },
   {
@@ -39915,7 +39915,7 @@ const data3: Protocol[] = [
     url: "https://hinkal.pro",
     description: "Hinkal is an institutional-grade protocol enabling confidential on-chain transactions. It is a category-defining solution, that allows liquid funds and retail users to create shielded addresses and transact on major dApps in complete confidentiality (the origin and destination of transaction, value).",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/hinkal-protocol.jpg`,
+    logo: `${baseIconsUrl}/hinkal.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -40216,6 +40216,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.fireflydex.io/audits-transparency"],
     github: ["firefly-dex"],
     listedAt: 1713778233
+  },
+  {
+    id: "4501",
+    name: "BTCFi CDP",
+    address: null,
+    symbol: "-",
+    url: "https://btcfi.one",
+    description: "BTCFi is a decentralized crosschain Bitcoin asset management platform offering native Bitcoin collateralization to mint a Bitcoin-backed stablecoin, BtcUSD.",
+    chain: "Bifrost Network",
+    logo: `${baseIconsUrl}/btcfi-cdp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Bifrost Network"],
+    module: "btcfi-cdp/index.js",
+    twitter: "Bifrost_Network",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#btcfi",
+    listedAt: 1713779453
   },
 ]
 

@@ -106,7 +106,7 @@ export default {
     },
     "litecoin": {
         "enabled": true,
-        "id": "2"
+        "id": "4499"
     },
     "looksrare": {
         "enabled": true,
@@ -551,6 +551,7 @@ export default {
     },
     "el-dorado-exchange": {
         parentId: "EDE",
+        disabled: true,
         "enabled": true,
         "id": "2356"
     },
@@ -1329,6 +1330,7 @@ export default {
         "id": "2974"
     },
     "blazebot": {
+        disabled: true,
         "enabled": true,
         "id": "3527"
     },
@@ -2014,5 +2016,13 @@ export default {
     "swych": {
         enabled: true,
         id: "4365",
+    },
+    "wbtc": {
+        "enabled": true,
+        "id": "2"
+    },
+    "yologames": {
+        enabled: true,
+        id: "4495"
     }
 } as AdaptorsConfig

@@ -4184,6 +4184,30 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HyperliquidX",
   },
+  {
+    id: "parent#wise-lending",
+    name: "Wise Lending",
+    url: "https://wiselending.com/",
+    description:
+      "Wise Lending is both a crypto lending platform and a yield-farm aggregator. This combination allows capital from lenders to be leveraged towards other yield-farming dApps",
+    logo: `${baseIconsUrl}/wise-lending.png`,
+    gecko_id: "wise-token11",
+    cmcId: "8167",
+    chains: [],
+    twitter: "Wise_Token",
+  },
+  {
+    id: "parent#Edge",
+    name: "Edge",
+    url: "https://edge.vertexprotocol.com/",
+    description:
+      "The Synchronous Orderbook Liquidity Layer unifying cross-chain liquidity in DeFi",
+    logo: `${baseIconsUrl}/edge.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "EdgeLayer",
+  },
 ];
 
 export default parentProtocols;

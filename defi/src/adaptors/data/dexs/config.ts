@@ -161,7 +161,13 @@ export default {
     },
     "dodo": {
         "enabled": true,
-        "id": "146"
+        "id": "146",
+        protocolsData: {
+            "dodo": {
+                "id": "146",
+                enabled: true,
+            }
+        }
     },
     "velodrome": {
         parentId: "Velodrome",
@@ -666,7 +672,7 @@ export default {
         "id": "261"
     },
     "xexchange": {
-        "enabled": true,
+        "enabled": false,
         "id": "854"
     },
     "defichain-dex": {
@@ -1155,6 +1161,7 @@ export default {
     },
     "el-dorado-exchange": {
         "enabled": true,
+        disabled: true,
         "id": "2356",
         parentId: "EDE",
         "protocolsData": {

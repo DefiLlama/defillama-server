@@ -40274,7 +40274,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Decentralized Stablecoin",
     chains: ["Base"],
     module: "flat-money/index.js",
     twitter: "0xflatmoney",

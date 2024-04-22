@@ -4232,6 +4232,22 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "StationDEX_",
+    github: ["station-dex"]
+  },
+  {
+    id: "parent#abracadabra",
+    name: "Abracadabra",
+    url: "https://abracadabra.money",
+    description:
+      "Abracadabra.money is a spell book that allows users to produce magic internet money ($MIM) which is a stable coin that you can swap for any other traditional stable coin.",
+    logo: `${baseIconsUrl}/abracadabra.jpg`,
+    gecko_id: "spell-token",
+    cmcId: "11289",
+    chains: [],
+    twitter: "MIM_Spell",
+    governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"],
+    stablecoins: ["magic-internet-money"],
+    github: ["Abracadabra-money"]
   },
 ];
 

@@ -40259,6 +40259,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     tokensExcludedFromParent: ["MIM"],
+    parentProtocol: "parent#abracadabra",
     listedAt: 1713789617
   },
   {

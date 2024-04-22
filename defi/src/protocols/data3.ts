@@ -39909,7 +39909,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4487",
-    name: "Hinkal Protocol",
+    name: "Hinkal",
     address: null,
     symbol: "-",
     url: "https://hinkal.pro",

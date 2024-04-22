@@ -40345,6 +40345,48 @@ const data3: Protocol[] = [
     parentProtocol: "parent#grizzlyfi",
     listedAt: 1713802887
   },
+  {
+    id: "4507",
+    name: "StationDEX V2",
+    address: null,
+    symbol: "-",
+    url: "https://stationdex.com/",
+    description: "StationDEX is a multi-chain decentralized exchange.",
+    chain: "X Layer",
+    logo: `${baseIconsUrl}/stationdex-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["X Layer"],
+    module: "stationdex-v2/index.js",
+    twitter: "StationDEX_",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1713809947
+  },
+  {
+    id: "4508",
+    name: "StationDEX V3",
+    address: null,
+    symbol: "-",
+    url: "https://stationdex.com/",
+    description: "StationDEX is a multi-chain decentralized exchange.",
+    chain: "X Layer",
+    logo: `${baseIconsUrl}/stationdex-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["X Layer"],
+    module: "stationdex-v3/index.js",
+    twitter: "StationDEX_",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    listedAt: 1713809947
+  },
 ]
 
 export default data3

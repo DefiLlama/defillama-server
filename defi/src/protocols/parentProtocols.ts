@@ -4221,6 +4221,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Bifrost_Network",
     stablecoins: ["bitcoin-usd"],
   },
+  {
+    id: "parent#stationdex",
+    name: "StationDEX",
+    url: "https://stationdex.com/",
+    description:
+      "StationDEX is a multi-chain decentralized exchange.",
+    logo: `${baseIconsUrl}/stationdex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "StationDEX_",
+  },
 ];
 
 export default parentProtocols;

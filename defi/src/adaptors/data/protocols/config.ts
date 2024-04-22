@@ -120,5 +120,15 @@ export default {
     "web3world": {
         "enabled": true,
         "id": "4430",
+    },
+    "glyph-exchange": {
+        "id": "4347",
+        enabled: true,
+        protocolsData: {
+            "classic": {
+                "id": "4347",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

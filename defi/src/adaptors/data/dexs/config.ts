@@ -2598,10 +2598,6 @@ export default {
         "id": "4342",
         enabled: true,
     },
-    "glyph-exchange": {
-        "id": "4347",
-        enabled: true,
-    },
     "swop": {
         enabled: true,
         id: "613"

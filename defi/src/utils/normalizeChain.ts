@@ -2903,6 +2903,18 @@ export const chainCoingeckoIds = {
     github: ["planq-network"],
     chainId: 7070,
   },
+  "X Layer": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "OKTChain",
+      types: ["L2","gas"]
+    },
+    twitter: "okx",
+    url: "https://www.okx.com/xlayer"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3520,6 +3532,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Lyra Chain"
     case "planq":
       return "Planq"
+    case "xlayer":
+      return "X Layer"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

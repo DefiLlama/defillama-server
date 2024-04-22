@@ -2632,5 +2632,15 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "fjord-foundry": {
+        enabled: true,
+        id: "4505",
+        protocolsData: {
+            "v2": {
+                enabled: true,
+                id: "4505"
+            }
+        }
     }
 } as AdaptorsConfig

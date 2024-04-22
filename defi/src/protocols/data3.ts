@@ -40261,6 +40261,48 @@ const data3: Protocol[] = [
     tokensExcludedFromParent: ["MIM"],
     listedAt: 1713789617
   },
+  {
+    id: "4503",
+    name: "Flat Money",
+    address: null,
+    symbol: "-",
+    url: "https://flat.money",
+    description: "New money with Flatcoin — 100% capital efficient, amplified purchasing power, backed by staked $rETH.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/flat-money.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "flat-money/index.js",
+    twitter: "0xflatmoney",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1713802587
+  },
+  {
+    id: "4504",
+    name: "Rebalance Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.rebalance.finance",
+    description: "An automated liquidity rebalance protocol. The most efficient tool for investing in DeFi lending pools. Zero risk. APR 25-30% higher than market average.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/rebalance-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    module: "rebalance/index.js",
+    twitter: "rebalancefin",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1713802887
+  },
 ]
 
 export default data3

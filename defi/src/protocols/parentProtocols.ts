@@ -4240,7 +4240,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://abracadabra.money",
     description:
       "Abracadabra.money is a spell book that allows users to produce magic internet money ($MIM) which is a stable coin that you can swap for any other traditional stable coin.",
-    logo: `${baseIconsUrl}/stationdex.jpg`,
+    logo: `${baseIconsUrl}/abracadabra.jpg`,
     gecko_id: "spell-token",
     cmcId: "11289",
     chains: [],

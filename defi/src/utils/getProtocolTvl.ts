@@ -1,6 +1,6 @@
 import { Protocol } from "../protocols/data";
 import type { ITvlsWithChangesByChain, ProtocolTvls } from "../types";
-import { secondsInDay, secondsInWeek } from "./date";
+import { secondsInDay, secondsInMonth, secondsInWeek } from "./date";
 import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./getLastRecord";
 import { importAdapter } from "./imports/importAdapter";
 import {
@@ -13,9 +13,12 @@ import getTVLOfRecordClosestToTimestamp from "./shared/getRecordClosestToTimesta
 
 const _getLastHourlyRecord = (protocol: Protocol) => getLastRecord(hourlyTvl(protocol.id))
 const _getLastHourlyTokensUsd = (protocol: Protocol) => getLastRecord(hourlyUsdTokensTvl(protocol.id))
+const _getYesterdayTokensUsd = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyUsdTokensTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInDay, secondsInDay)
+const _getLastWeekTokensUsd = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyUsdTokensTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInWeek, secondsInDay)
+const _getLastMonthTokensUsd = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyUsdTokensTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInMonth, secondsInDay)
 const _getYesterdayTvl = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInDay, secondsInDay)
 const _getLastWeekTvl = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInWeek, secondsInDay)
-const _getLastMonthTvl = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInWeek * 4, secondsInDay)
+const _getLastMonthTvl = (protocol: Protocol) => getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), Math.round(Date.now() / 1000) - secondsInMonth, secondsInDay)
 
 const includeSection = (chainDisplayName:string)=> !extraSections.includes(chainDisplayName) && !chainDisplayName.includes("-")
 
@@ -24,6 +27,9 @@ export async function getProtocolTvl(
   useNewChainNames: boolean, {
     getLastHourlyRecord = _getLastHourlyRecord,
     getLastHourlyTokensUsd = _getLastHourlyTokensUsd,
+    getYesterdayTokensUsd = _getYesterdayTokensUsd,
+    getLastWeekTokensUsd = _getLastWeekTokensUsd,
+    getLastMonthTokensUsd = _getLastMonthTokensUsd,
     getYesterdayTvl = _getYesterdayTvl,
     getLastWeekTvl = _getLastWeekTvl,
     getLastMonthTvl = _getLastMonthTvl,
@@ -48,7 +54,9 @@ export async function getProtocolTvl(
       getLastWeekTvl(protocol),
       getLastMonthTvl(protocol),
       importAdapter(protocol),
-      protocol.tokensExcludedFromParent !== undefined ? getLastHourlyTokensUsd(protocol):null
+      protocol.tokensExcludedFromParent !== undefined ? Promise.all(
+        [getLastHourlyTokensUsd(protocol),getYesterdayTokensUsd(protocol),getLastWeekTokensUsd(protocol),getLastMonthTokensUsd(protocol)]
+        ) :null
     ]);
 
     const isDoubleCount = isDoubleCounted(module.doublecounted, protocol.category);
@@ -141,19 +149,22 @@ export async function getProtocolTvl(
           }
         }
 
-        if (usdTokens !== null && usdTokens !== undefined) {
+        if (usdTokens !== null && usdTokens[0] !== undefined) {
           const chainDisplayName = getChainDisplayName(chain, useNewChainNames)
           if (chain === "tvl" || includeSection(chainDisplayName)) {
-            chainTvls[chain === "tvl" ? "excludeParent" : `${chainDisplayName}-excludeParent`] = {
-              tvl: Object.entries(usdTokens[chain]).reduce((sum, token) => {
+            function getExcludedTvl(usdTokensSection:any){
+              return Object.entries(usdTokensSection).reduce((sum, token) => {
                 if (protocol.tokensExcludedFromParent?.includes(token[0].toUpperCase())) {
                   sum += token[1] as number
                 }
                 return sum
-              }, 0),
-              tvlPrevDay: null,
-              tvlPrevWeek: null,
-              tvlPrevMonth: null,
+              }, 0)
+            }
+            chainTvls[chain === "tvl" ? "excludeParent" : `${chainDisplayName}-excludeParent`] = {
+              tvl: getExcludedTvl(usdTokens[0][chain]),
+              tvlPrevDay: getExcludedTvl(usdTokens[1][chain]),
+              tvlPrevWeek: getExcludedTvl(usdTokens[2][chain]),
+              tvlPrevMonth: getExcludedTvl(usdTokens[3][chain]),
             }
           }
         }

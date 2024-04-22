@@ -4250,6 +4250,20 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "abracadabra.js",
     github: ["Abracadabra-money"]
   },
+  {
+    id: "parent#dhedge",
+    name: "dHEDGE",
+    url: "https://www.dhedge.org/",
+    description:
+      "Explore the universe of top-tier tokenized vaults.",
+    logo: `${baseIconsUrl}/dhedge.png`,
+    gecko_id: "dhedge-dao",
+    cmcId: "7094",
+    chains: [],
+    twitter: "dHedgeOrg",
+    governanceID: ["snapshot:gov.dhedge.eth"],
+    github: ["dhedge"]
+  },
 ];
 
 export default parentProtocols;

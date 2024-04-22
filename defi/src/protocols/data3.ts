@@ -40364,6 +40364,7 @@ const data3: Protocol[] = [
     twitter: "StationDEX_",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
+    parentProtocol: "parent#stationdex",
     listedAt: 1713809947
   },
   {
@@ -40385,6 +40386,7 @@ const data3: Protocol[] = [
     twitter: "StationDEX_",
     forkedFrom: ["Uniswap V3"],
     oracles: [],
+    parentProtocol: "parent#stationdex",
     listedAt: 1713809947
   },
 ]

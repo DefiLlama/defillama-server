@@ -2034,5 +2034,9 @@ export default {
                 id: "4505"
             }
         }
+    },
+    "grizzly-trade-derivatives-v2": {
+        enabled: true,
+        id: "4506",
     }
 } as AdaptorsConfig

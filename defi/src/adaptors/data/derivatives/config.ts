@@ -764,5 +764,9 @@ export default {
     "lyra": {
         enabled: true,
         id: "3923",
+    },
+    "grizzly-trade-derivatives-v2": {
+        enabled: true,
+        id: "4506",
     }
 } as AdaptorsConfig

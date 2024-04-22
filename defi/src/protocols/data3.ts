@@ -40194,6 +40194,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "4500",
+    name: "Firefly Dex",
+    address: null,
+    symbol: "-",
+    url: "https://fireflydex.io",
+    description: "With CEX features on a DEX and ultra-fast transactions, firefly is the Premier Modular DEX.",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/firefly-dex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Manta"],
+    module: "firefly/index.js",
+    twitter: "FireFlydexZK",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    audit_links: ["https://docs.fireflydex.io/audits-transparency"],
+    github: ["firefly-dex"],
+    listedAt: 1713778233
+  },
 ]
 
 export default data3

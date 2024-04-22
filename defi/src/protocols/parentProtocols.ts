@@ -4227,11 +4227,12 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://stationdex.com/",
     description:
       "StationDEX is a multi-chain decentralized exchange.",
-    logo: `${baseIconsUrl}/stationdex.jpg`,
+    logo: `${baseIconsUrl}/abracadabra.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "StationDEX_",
+    github: ["station-dex"]
   },
 ];
 

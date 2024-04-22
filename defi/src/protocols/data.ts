@@ -5183,7 +5183,6 @@ const data: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CDP",
-    treasury: "abracadabra.js",
     chains: ["Arbitrum", "Avalanche", "Binance", "Blast", "Ethereum", "Fantom", "Kava", "Optimism"],
     module: "abracadabra/index.js",
     twitter: "MIM_Spell",

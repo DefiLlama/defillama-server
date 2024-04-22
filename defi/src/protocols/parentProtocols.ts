@@ -4247,6 +4247,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MIM_Spell",
     governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"],
     stablecoins: ["magic-internet-money"],
+    treasury: "abracadabra.js",
     github: ["Abracadabra-money"]
   },
 ];

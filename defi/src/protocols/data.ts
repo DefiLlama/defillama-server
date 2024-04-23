@@ -18457,6 +18457,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1638580947,
     github: ["nftbmarket"]
   },
+  /*
   {
     id: "972",
     name: "StellarX",
@@ -18477,6 +18478,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "stellarxhq",
     listedAt: 1638583658,
   },
+  */
   {
     id: "973",
     name: "XEUS",

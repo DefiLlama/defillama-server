@@ -2915,6 +2915,15 @@ export const chainCoingeckoIds = {
     twitter: "okx",
     url: "https://www.okx.com/xlayer"
   },
+  "LaChain Network": {
+    geckoId: "la-coin",
+    symbol: "LAC",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 274,
+    twitter: "LaChain_Network",
+    url: "https://www.lachain.network"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3534,6 +3543,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Planq"
     case "xlayer":
       return "X Layer"
+    case "lac":
+      return "LaChain Network"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

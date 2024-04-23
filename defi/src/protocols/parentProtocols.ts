@@ -4198,7 +4198,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#Edge",
-    name: "Edge",
+    name: "Vertex Edge",
     url: "https://edge.vertexprotocol.com/",
     description:
       "The Synchronous Orderbook Liquidity Layer unifying cross-chain liquidity in DeFi",
@@ -4207,6 +4207,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "EdgeLayer",
+    github: ["vertex-protocol"],
   },
   {
     id: "parent#btcfi",

@@ -40421,6 +40421,50 @@ const data3: Protocol[] = [
     github: ["ENKIXYZ"],
     listedAt: 1713834186
   },
+  {
+    id: "4510",
+    name: "Revoswap",
+    address: null,
+    symbol: "-",
+    url: "https://revoswap.com",
+    description: 
+      "Revoswap is X Layer chain's first and preferred automated market maker (AMM) decentralized exchange (DEX), committed to creating a smooth and friendly user experience",
+    chain: "X Layer",
+    logo: `${baseIconsUrl}/revoswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["X Layer"],
+    module: "revoswap/index.js",
+    twitter: "Revoswap_",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1713865669
+  },
+  {
+    id: "4511",
+    name: "Pay Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://payprotocol.network",
+    description: 
+      "Pay Protocol is the first and only non-custodial decentralized crypto payment system. Our mission is to create and offer a secure, efficient, and true sense of decentralized payment infrastructure that empowers businesses and individuals in the Web3 industry.",
+    chain: "Tron",
+    logo: `${baseIconsUrl}/pay-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Tron"],
+    module: "payprotocol/index.js",
+    twitter: "pay_protocol",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1713865869
+  },
 ]
 
 export default data3

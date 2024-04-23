@@ -40197,13 +40197,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4500",
-    name: "Firefly Dex",
+    name: "firefly", // previous Firefly dex
     address: null,
     symbol: "-",
     url: "https://fireflydex.io",
     description: "With CEX features on a DEX and ultra-fast transactions, firefly is the Premier Modular DEX.",
     chain: "Manta",
-    logo: `${baseIconsUrl}/firefly-dex.jpg`,
+    logo: `${baseIconsUrl}/firefly.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

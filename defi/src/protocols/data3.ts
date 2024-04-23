@@ -14486,7 +14486,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CDP",
-    chains: ["Base","Meter"],
+    chains: ["Base"],
     module: "meridian/index.js",
     twitter: "MeridianFi",
     forkedFrom: ["Liquity"],

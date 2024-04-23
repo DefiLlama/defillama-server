@@ -130,5 +130,15 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "firefly": {
+        enabled: true,
+        id: "4500",
+        protocolsData: {
+            "v3": {
+                "id": "4500",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

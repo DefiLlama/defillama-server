@@ -2623,16 +2623,6 @@ export default {
             }
         }
     },
-    "firefly": {
-        enabled: true,
-        id: "4500",
-        protocolsData: {
-            "v3": {
-                "id": "4500",
-                "enabled": true,
-            }
-        }
-    },
     "fjord-foundry": {
         enabled: true,
         id: "4505",

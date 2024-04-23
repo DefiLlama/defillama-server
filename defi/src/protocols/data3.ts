@@ -16144,7 +16144,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.orangefinance.io",
     description:
-      "Orange Finance is an Automatic Liquidity-Management protocol for concentrated liquidity-type DEX such as Uni v3, maximizing the capital efficiency of LP by maintaining an efficient price range through statistical modeling and delta hedging strategies.",
+      "Orange Finance is the leading Automated Liquidity Management protocol designed specifically for LPDfi, which are derivative protocols that utilize liquidity on AMMs. We simplify liquidity provision and enhance profitability in LPDfi.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/orange-finance.jpg`,
     audits: "2",

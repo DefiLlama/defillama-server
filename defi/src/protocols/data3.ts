@@ -40509,6 +40509,50 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1713867508
   },
+  {
+    id: "4514",
+    name: "Snail Finance",
+    address: "base:0xC2D64E2622900aD537d8C0bEe2B06F18eDe93659",
+    symbol: "Snail",
+    url: "https://www.snail.finance",
+    description: 
+      "Snail Finance is a revolutionary lending protocol built on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/snail-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    module: "snai-finance/index.js",
+    twitter: "snail_finance",
+    forkedFrom: ["Compound V2"],
+    oracles: [],
+    listedAt: 1713867669
+  },
+  {
+    id: "4515",
+    name: "GlowSwap",
+    address: null,
+    symbol: "-",
+    url: "https://glowswap.io",
+    description: 
+      "A pioneer decentralized exchange built on B² network",
+    chain: "BSquared",
+    logo: `${baseIconsUrl}/glowswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["BSquared"],
+    module: "glowswap-io/index.js",
+    twitter: "glow_swap",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    listedAt: 1713869669
+  },
 ]
 
 export default data3

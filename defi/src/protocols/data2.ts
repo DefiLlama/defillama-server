@@ -22150,20 +22150,20 @@ const data2: Protocol[] = [
   },
   {
     id: "2364",
-    name: "Butter Network", //previous Butter Network
+    name: "Butter Network", //previous Butter Swap
     address: null,
     symbol: "-",
     url: "https://www.butterswap.io/swap",
     description:
         "Butter is an Omnichain Interoperability Hub integrated with ZK technology that enables users with global DAPP accessibility and data availability, building an infrastructure that makes transactions transverse across chain to chain freely and securely.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/butter-swap.png`,
+    logo: `${baseIconsUrl}/butter-network.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
-    chains: ["Polygon", "Near", "Binance", "Map", "Ethereum", "Binance", "Klaytn", "Base", "Conflux", "BEVM", "Merlin", "Blast"],
+    category: "Cross Chain",
+    chains: ["Polygon", "Near", "Binance", "Map", "Ethereum", "Merlin"],
     module: "butternetwork/index.js",
     twitter: "ButterNetworkio",
     forkedFrom: [],

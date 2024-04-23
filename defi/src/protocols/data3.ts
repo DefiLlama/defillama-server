@@ -40556,6 +40556,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1713869669
   },
+  {
+    id: "4516",
+    name: "Bountive",
+    address: null,
+    symbol: "-",
+    url: "https://www.bountive.fi/",
+    description: 
+      "Bountive is the first decentralized prize savings protocol on Starknet, empowering users with no-risk prize games",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/bountive.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Starknet"],
+    module: "bountive/index.js",
+    twitter: "Bountive",
+    forkedFrom: [],
+    oracles: ["Pragma"], // https://medium.com/@bountive/discover-degressive-fees-mechanism-with-pragma-oracle-57bf71c31fed
+    listedAt: 1713895965
+  },
 ]
 
 export default data3

@@ -140,5 +140,10 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "velodrome-slipstream": {
+        parentId: "Velodrome",
+        enabled: true,
+        id: "4249",
     }
 } as AdaptorsConfig

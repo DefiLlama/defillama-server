@@ -2044,5 +2044,9 @@ export default {
     "grizzly-trade-derivatives-v2": {
         enabled: true,
         id: "4506",
+    },
+    "merchant-moe-dex": {
+        enabled: true,
+        id: "4006"
     }
 } as AdaptorsConfig

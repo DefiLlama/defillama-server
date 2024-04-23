@@ -14490,9 +14490,7 @@ const data3: Protocol[] = [
     module: "meridian/index.js",
     twitter: "MeridianFi",
     forkedFrom: ["Liquity"],
-    oraclesByChain: {
-      meter: ["Pyth"] // https://docs.meridianfinance.net/resources/technical-and-security/oracles/pyth
-    },
+    oracles: ["DIA"], // https://docs.meridianfinance.net/resources/technical-and-security/oracles/dia
     parentProtocol: "parent#meridian",
     listedAt: 1691326424,
   },
@@ -30365,7 +30363,9 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Telos"],
-    oracles: [],
+    oraclesByChain: {
+      meter: ["Pyth"] // https://docs.meridianfinance.net/resources/technical-and-security/oracles/pyth
+    },
     forkedFrom: ["AAVE V2"],
     module: "meridian-lend/index.js",
     twitter: "MeridianFi",

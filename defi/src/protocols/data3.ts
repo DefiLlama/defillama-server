@@ -33093,6 +33093,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#fixes-inscription",
     listedAt: 1709032689
   },
+  /*
   {
     id: "4181",
     name: "Scopuly",
@@ -33116,6 +33117,7 @@ const data3: Protocol[] = [
     github: ["Scopuly"],
     listedAt: 1709034413
   },
+  */
   {
     id: "4182",
     name: "BakerFi",

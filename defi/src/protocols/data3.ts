@@ -40393,6 +40393,34 @@ const data3: Protocol[] = [
     parentProtocol: "parent#stationdex",
     listedAt: 1713809947
   },
+  {
+    id: "4509",
+    name: "ENKI Protocol",
+    address: "metis:0x096a84536ab84e68ee210561ffd3a038e79736f1",
+    symbol: "ENKI",
+    assetToken: "eMetis",
+    url: "https://www.enkixyz.com/mint",
+    description: 
+      "ENKI Protocol is the leading liquid staking solution built on top of Metis decentralized sequencer, providing a simplified approach to get rewards from sequencer node. By staking with ENKI your Metis tokens remain liquid and can be used across a range of DeFi applications on Metis, maximize your returns",
+    chain: "Metis",
+    logo: `${baseIconsUrl}/enki-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "enki-protocol",
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Metis"],
+    module: "enki/index.js",
+    twitter: "ENKIProtocol",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [
+      "https://hacken.io/audits/enki/",
+      "http://odex.vip/?sign=9c65ba809188969ca834a3499bca3464"
+    ],
+    github: ["ENKIXYZ"],
+    listedAt: 1713834186
+  },
 ]
 
 export default data3

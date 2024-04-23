@@ -40465,6 +40465,50 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1713865869
   },
+  {
+    id: "4512",
+    name: "PotatoSwap",
+    address: null,
+    symbol: "-",
+    url: "https://potatoswap.finance",
+    description: 
+      "Discover Liquidity. Or Potatoes. Or a DEX + Launchpad natively built for the XLayerOfficial ecosystem.",
+    chain: "X Layer",
+    logo: `${baseIconsUrl}/potatoswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["X Layer"],
+    module: "potatoswap/index.js",
+    twitter: "PotatoSwap_Fi",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1713867184
+  },
+  {
+    id: "4513",
+    name: "MateSwap",
+    address: null,
+    symbol: "-",
+    url: "https://mateswap.xyz",
+    description: 
+      "Uniswap V2 on LaChain Network",
+    chain: "LaChain Network",
+    logo: `${baseIconsUrl}/mateswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["LaChain Network"],
+    module: "mateswap-xyz/index.js",
+    twitter: "MateSwapXYZ",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1713867508
+  },
 ]
 
 export default data3

@@ -2033,6 +2033,12 @@ export default {
                 enabled: true,
                 id: "4505"
             }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1713744000": true,
+                "1713657600": true
+            },
         }
     },
     "grizzly-trade-derivatives-v2": {

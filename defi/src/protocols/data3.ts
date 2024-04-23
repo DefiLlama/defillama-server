@@ -28326,6 +28326,7 @@ const data3: Protocol[] = [
     module: "magma/index.js",
     twitter: "MagmaProtocol",
     github: ["magma-fi"],
+    stablecoins: ["magma-wen"],
     listedAt: 1703778439
   },
   {

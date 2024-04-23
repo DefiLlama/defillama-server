@@ -5515,7 +5515,7 @@ const data: Protocol[] = [
     url: "https://app.perp.com",
     referralUrl: "https://app.perp.com?code=defillama",
     description: "Decentralized Perpetual Contracts for Every Asset.",
-    chain: "Optimism",
+    chain: "xDai",
     logo: `${baseIconsUrl}/perpetual-protocol.png`,
     audits: "2",
     audit_note: null,

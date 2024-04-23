@@ -2924,7 +2924,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#maker",
     name: "Maker",
-    url: "https://makerdao.com/en",
+    url: "https://makerdao.com/en/",
     description: "Builders of Dai, a digital currency that can be used by anyone, anywhere, anytime.",
     logo: `${baseIconsUrl}/maker.jpg`,
     gecko_id: "maker",

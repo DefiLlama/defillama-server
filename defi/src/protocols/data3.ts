@@ -34009,13 +34009,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4221",
-    name: "BFX Finance", // previous Blast Futures
+    name: "BFX (Blast Futures)", // previous Blast Futures
     address: null,
     symbol: "-",
     url: "https://bfx.trade/",
     description: "Blast Futures Exchange (BFX) is a fully integrated perpetual futures exchange with native yield. BFX offers the best rewards and liquidity",
     chain: "Blast",
-    logo: `${baseIconsUrl}/bfx-finance.jpg`,
+    logo: `${baseIconsUrl}/bfx-(blast-futures).jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

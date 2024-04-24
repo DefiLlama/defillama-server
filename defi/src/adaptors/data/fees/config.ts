@@ -2046,6 +2046,7 @@ export default {
         id: "4506",
     },
     "merchant-moe-dex": {
+        parentId: "Merchant Moe",
         enabled: true,
         id: "4006"
     }

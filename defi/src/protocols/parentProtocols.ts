@@ -4251,6 +4251,7 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "abracadabra.js",
     github: ["Abracadabra-money"]
   },
+  /*
   {
     id: "parent#dhedge",
     name: "dHEDGE",
@@ -4265,6 +4266,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:gov.dhedge.eth"],
     github: ["dhedge"]
   },
+  */
 ];
 
 export default parentProtocols;

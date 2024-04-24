@@ -24,6 +24,7 @@ async function getTokenPrice(chain: string, timestamp: number) {
   const tokenSupplies = await api.multiCall({ abi: 'erc20:totalSupply', calls: rTokens })
   const bals = await api.multiCall({ abi: 'erc20:balanceOf', calls: tokens.map((target: string, idx: number) => ({ target, params: rTokens[idx] })) })
   rTokens.forEach((v: any, i: number) => {
+    if (+tokenSupplies[i] === 0) return;
     pricesObject[v] = { underlying: tokens[i], price: bals[i] / tokenSupplies[i] }
   })
   return getWrites({ chain, timestamp, writes, pricesObject, projectName })

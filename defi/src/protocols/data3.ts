@@ -40581,9 +40581,9 @@ const data3: Protocol[] = [
   {
     id: "4517",
     name: "1INTRO",
-    address: null,
+    address: "solana:inTCqHJaLAETUxvRZ2kC45G2sThq9BFWVimfaQw7t6w",
     symbol: "INTRO",
-    url: "https://www.1intro.com/",
+    url: "https://www.1intro.com",
     description: "1INTRO redefines the finance ecosystem on Solana with a smart platform that uses AI to improve Liquidity Bootstrapping Pool (LBP), DEX, and token deployment, elevating both the user experience and operational efficiency",
     chain: "Solana",
     logo: `${baseIconsUrl}/1intro.png`,

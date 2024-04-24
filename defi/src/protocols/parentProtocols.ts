@@ -4202,7 +4202,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://edge.vertexprotocol.com/",
     description:
       "The Synchronous Orderbook Liquidity Layer unifying cross-chain liquidity in DeFi",
-    logo: `${baseIconsUrl}/edge.png`,
+    logo: `${baseIconsUrl}/vertex-edge.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

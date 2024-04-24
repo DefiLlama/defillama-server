@@ -40578,6 +40578,28 @@ const data3: Protocol[] = [
     oracles: ["Pragma"], // https://medium.com/@bountive/discover-degressive-fees-mechanism-with-pragma-oracle-57bf71c31fed
     listedAt: 1713895965
   },
+  {
+    id: "4517",
+    name: "1INTRO",
+    address: null,
+    symbol: "INTRO",
+    url: "https://www.1intro.com/",
+    description: "1INTRO redefines the finance ecosystem on Solana with a smart platform that uses AI to improve Liquidity Bootstrapping Pool (LBP), DEX, and token deployment, elevating both the user experience and operational efficiency",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/1intro.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "1intro",
+    cmcId: "30742",
+    category: "Dexes",
+    chains: ["Solana"],
+    module: "1intro/index.js",
+    twitter: "1intro",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://files.1intro.com/public/SecurityCodeReview.pdf", "https://files.1intro.com/public/SecurityCodeReview1DEX.pdf"],
+    listedAt: 1713929546
+  },
 ]
 
 export default data3

@@ -6779,7 +6779,7 @@ const data3: Protocol[] = [
     url: "https://www.bfx.finance",
     description: "Trade spot and futures BTC, ETH, BNB, XRP, and LINK with low fees, deep liquidity, and up to 100x more buying power.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/bfx-finance.jpg`,
+    logo: `${baseIconsUrl}/bfxfi.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

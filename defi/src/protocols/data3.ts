@@ -40599,6 +40599,28 @@ const data3: Protocol[] = [
     audit_links: ["https://files.1intro.com/public/SecurityCodeReview.pdf", "https://files.1intro.com/public/SecurityCodeReview1DEX.pdf"],
     listedAt: 1713929546
   },
+  {
+    id: "4518",
+    name: "Colend Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.colend.xyz",
+    description: "Colend is a decentralized protocol that enables individuals to lend and borrow directly on the Core blockchain. It aims to advance the concept of Bitcoin-Fi.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/colend-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["CORE"],
+    module: "colend/index.js",
+    twitter: "colend_xyz",
+    oracles: ["Pyth"], //https://scan.coredao.org/address/0xc0AF4FC83EF00340293368cc3ABE089D2D85308f#code
+    forkedFrom: ["AAVE V3"],
+    github: ["Colend-Protocol"],
+    listedAt: 1713962936
+  },
 ]
 
 export default data3

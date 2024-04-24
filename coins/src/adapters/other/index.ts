@@ -29,6 +29,7 @@ import steadefiUsdLink from "./steadefi_usdc_link";
 import steadefiUsdWbtc from "./steadefi_usdc_wbtc";
 import opdxAdapter from "./odpxWethLP";
 import teahouseAdapter from "./teahouse";
+import gmdV2 from "./gmdV2";
 
 export { glp };
 
@@ -363,4 +364,5 @@ export const adapters = {
   steadefi,
   teahouse,
   opdx,
+  gmdV2,
 }

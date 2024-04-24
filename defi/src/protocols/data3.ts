@@ -4415,7 +4415,7 @@ const data3: Protocol[] = [
     url: "https://vertexprotocol.com",
     description: "A vertically-integrated DEX on Arbitrum featuring spot, perpetual, and integrated money markets. Universal cross-margin with lightning-fast performance. Take back control.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/vertex-protocol.jpg`,
+    logo: `${baseIconsUrl}/vertex.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "vertex-protocol",

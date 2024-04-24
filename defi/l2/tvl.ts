@@ -3,7 +3,7 @@ import { fetchIncoming } from "./incoming";
 import { fetchMinted } from "./native";
 import { ChainData, DollarValues, FinalData } from "./types";
 import BigNumber from "bignumber.js";
-import { gasTokens, ownTokens, tokenFlowCategories, zero } from "./constants";
+import { ownTokens, tokenFlowCategories, zero } from "./constants";
 import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
@@ -55,7 +55,11 @@ async function translateToChainData(
   data: ChainData,
   timestamp: number = getCurrentUnixTimestamp()
 ): Promise<FinalData> {
-  const nativeTokenKeys = Object.keys(ownTokens).map((chain: string) => `${chain}:${ownTokens[chain].address}`);
+  const nativeTokenKeys = Object.keys(ownTokens).map((chain: string) =>
+    ownTokens[chain].address.startsWith("coingecko:")
+      ? ownTokens[chain].address
+      : `${chain}:${ownTokens[chain].address}`
+  );
   const nativeTokenSymbols = Object.keys(ownTokens).map((chain: string) => ownTokens[chain].ticker);
   const mcapsPromise = getMcaps(nativeTokenKeys, timestamp);
   const nativeTokenTotalValues: any = {};
@@ -74,9 +78,10 @@ async function translateToChainData(
       selectedChains.map((chain: Chain) => {
         if (!(chain in data[key])) return;
         Object.keys(data[key][chain]).map((symbol: string) => {
-          if (!nativeTokenSymbols.includes(symbol)) return;
-          if (!(symbol in nativeTokenTotalValues)) nativeTokenTotalValues[symbol] = zero;
-          nativeTokenTotalValues[symbol] = nativeTokenTotalValues[symbol].plus(data[key][chain][symbol]);
+          const unwrappedGas =
+            symbol.startsWith("W") && nativeTokenSymbols.includes(symbol.substring(1)) ? symbol.substring(1) : symbol;
+          if (!(unwrappedGas in nativeTokenTotalValues)) nativeTokenTotalValues[unwrappedGas] = zero;
+          nativeTokenTotalValues[unwrappedGas] = nativeTokenTotalValues[unwrappedGas].plus(data[key][chain][symbol]);
         });
       });
     });
@@ -117,15 +122,9 @@ async function translateToChainData(
       const breakdown: { [symbol: string]: BigNumber } = {};
       if (!("incoming" in translatedData[chain])) return;
       Object.keys(translatedData[chain].incoming.breakdown).map((symbol: string) => {
-        if (gasTokens[chain] && [gasTokens[chain], `W${gasTokens[chain]}`].includes(symbol)) {
-          return;
-        }
         breakdown[symbol] = translatedData[chain].incoming.breakdown[symbol];
       });
       Object.keys(translatedData[chain].outgoing.breakdown).map((symbol: string) => {
-        if (gasTokens[chain] && [gasTokens[chain], `W${gasTokens[chain]}`].includes(symbol)) {
-          return;
-        }
         if (!(symbol in breakdown)) return;
         breakdown[symbol] = breakdown[symbol].minus(translatedData[chain].incoming.breakdown[symbol]);
         // else breakdown[symbol] = BigNumber(-1).times(translatedData[chain].outgoing.breakdown[symbol]);
@@ -144,7 +143,7 @@ async function translateToChainData(
     if (!total) return;
     if (!translatedData[chain].ownTokens)
       translatedData[chain].ownTokens = { total: zero, breakdown: { [ownToken.ticker]: zero } };
-    const percOnThisChain = data[key][chain][ownToken.ticker].div(nativeTokenTotalValues[ownToken.ticker]);
+    const percOnThisChain = total.div(nativeTokenTotalValues[ownToken.ticker]);
     const mcaps = await mcapsPromise;
     const address = Object.keys(mcaps).find((k: string) => k.startsWith(chain));
     const mcap = address ? mcaps[address].mcap : total;

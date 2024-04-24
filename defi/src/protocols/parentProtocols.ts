@@ -1027,7 +1027,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Timeswap",
     url: "https://timeswap.io",
     description:
-      "Timeswap is a fixed time preference protocol for users to manage their ERC20 tokens over discrete time. It works as a zero liquidation money market and options market in one.",
+      "Timeswap is the first oracleless lending/borrowing protocol. Timeswap enables the creation of money markets for ANY ERC-20 tokens",
     logo: `${baseIconsUrl}/timeswap.png`,
     gecko_id: null,
     cmcId: null,

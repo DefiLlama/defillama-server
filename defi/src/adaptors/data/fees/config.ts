@@ -2049,5 +2049,15 @@ export default {
         parentId: "Merchant Moe",
         enabled: true,
         id: "4006"
+    },
+    "hercules-v2": {
+        parentId: "Hercules",
+        id: "4372",
+        enabled: true,
+    },
+    "hercules-v3": {
+        parentId: "Hercules",
+        id: "4373",
+        enabled: true
     }
 } as AdaptorsConfig

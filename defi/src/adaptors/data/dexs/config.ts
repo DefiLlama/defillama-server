@@ -2648,5 +2648,9 @@ export default {
         parentId: "Hercules",
         id: "4373",
         enabled: true
+    },
+    "zklite": {
+        enabled: true,
+        id: "4519"
     }
 } as AdaptorsConfig

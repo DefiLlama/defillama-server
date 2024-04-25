@@ -4,7 +4,7 @@ import { McapData, TokenTvlData, DollarValues } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { Address } from "@defillama/sdk/build/types";
-import { geckoSymbols, zero } from "./constants";
+import { geckoSymbols, ownTokens, zero } from "./constants";
 import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { fetchAdaTokens } from "./adapters/ada";
@@ -35,10 +35,15 @@ export async function fetchMinted(params: {
         });
 
         if (chain == "cardano") storedTokens = await fetchAdaTokens();
-        if (chain == "bitcoin") storedTokens = ["coingecko:bitcoin"];
+
+        const ownTokenCgid: string | undefined = ownTokens[chain]?.address.startsWith("coingecko:")
+          ? ownTokens[chain].address
+          : undefined;
+        if (ownTokenCgid) storedTokens.push(ownTokenCgid);
+
         // do these in order to lighten rpc, rest load
         const prices = await getPrices(
-          storedTokens.map((t: string) => (chain == "bitcoin" ? t : `${chain}:${t}`)),
+          storedTokens.map((t: string) => (t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
           timestamp
         );
         Object.keys(prices).map((p: string) => {
@@ -46,14 +51,14 @@ export async function fetchMinted(params: {
         });
         const mcaps = await getMcaps(Object.keys(prices), timestamp);
 
-        const supplies =
-          chain == "bitcoin"
-            ? { "coingecko:bitcoin": mcaps["coingecko:bitcoin"].mcap / prices["coingecko:bitcoin"].price }
-            : await fetchSupplies(
-                chain,
-                Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
-                params.timestamp
-              );
+        const supplies = await fetchSupplies(
+          chain,
+          Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
+          params.timestamp
+        );
+
+        if (ownTokenCgid && ownTokenCgid in mcaps)
+          supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
 
         function findDollarValues() {
           Object.keys(mcaps).map((t: string) => {

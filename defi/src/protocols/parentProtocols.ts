@@ -4267,6 +4267,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["dhedge"]
   },
   */
+  {
+    id: "parent#aerodrome",
+    name: "Aerodrome",
+    url: "https://aerodrome.finance/",
+    description: "A central trading and liquidity marketplace on Base",
+    logo: `${baseIconsUrl}/aerodrome.png`,
+    gecko_id: "aerodrome-finance",
+    cmcId: null,
+    chains: [],
+    twitter: "aerodromefi",
+    github: ["aerodrome-finance"]
+  },
 ];
 
 export default parentProtocols;

@@ -16769,7 +16769,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3450",
-    name: "Aerodrome",
+    name: "Aerodrome V2",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
     url: "https://aerodrome.finance/",
@@ -16778,7 +16778,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/aerodrome.png`,
     audits: "3",
     audit_note: null,
-    gecko_id: "aerodrome-finance",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Base"],
@@ -16786,8 +16786,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "aerodrome/index.js",
     twitter: "aerodromefi",
+    parentProtocol: "parent#aerodrome",
     listedAt: 1693274059,
-    github: ["aerodrome-finance"]
   },
   {
     id: "3451",
@@ -40725,6 +40725,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     github: ["open-dollar"],
     listedAt: 1714066738
+  },
+  {
+    id: "4523",
+    name: "Aerodrome V3",
+    address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+    symbol: "AERO",
+    url: "https://aerodrome.finance/",
+    description: "A central trading and liquidity marketplace on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/aerodrome.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "aerodrome-CL/index.js",
+    twitter: "aerodromefi",
+    parentProtocol: "parent#aerodrome",
+    listedAt: 1714088562,
   },
 ]
 

@@ -3999,10 +3999,9 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#hercules",
     name: "Hercules",
     url: "https://app.hercules.exchange",
-    description:
-      "Bringing composability and custom liquidity to Metis.",
-    logo: `${baseIconsUrl}/hercules.jpg`,
-    gecko_id: null,
+    description:"Modeled after the highly successful Camelot DEX project on Arbitrum, Hercules is a community-first, capital-efficient and flexible DEX developed with multiple tools to support the next generation of builders who look for sustainable liquidity in the Metis network.",
+    logo: `${baseIconsUrl}/hercules.png`,
+    gecko_id: "hercules-token",
     cmcId: null,
     chains: [],
     twitter: "TheHerculesDEX",

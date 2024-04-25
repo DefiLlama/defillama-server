@@ -2740,7 +2740,7 @@ const data3: Protocol[] = [
     chains: ["Secret"],
     oracles: [],
     forkedFrom: [],
-    module: "shadeprotocol-swap/index.js",
+    module: "shadeswap/index.js",
     twitter: "Shade_Protocol",
     audit_links: ["https://docs.shadeprotocol.io/shade-protocol/research/audit-log"],
     parentProtocol: "parent#shade-protocol",

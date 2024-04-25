@@ -2652,5 +2652,9 @@ export default {
     "zklite": {
         enabled: true,
         id: "4519"
+    },
+    "helix-markets": {
+        enabled: true,
+        id: "4521"
     }
 } as AdaptorsConfig

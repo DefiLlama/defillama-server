@@ -25,7 +25,7 @@ export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Tok
       Object.keys(bridge[chain]).map((rawSymbol: string) => {
         const symbol = geckoSymbols[rawSymbol.replace("coingecko:", "")] ?? rawSymbol.toUpperCase();
         if (!(symbol in chainUsdTokenTvls[chain])) chainUsdTokenTvls[chain][symbol] = zero;
-        chainUsdTokenTvls[chain][symbol] = BigNumber(bridge[chain][symbol]).plus(chainUsdTokenTvls[chain][symbol]);
+        chainUsdTokenTvls[chain][symbol] = BigNumber(bridge[chain][rawSymbol]).plus(chainUsdTokenTvls[chain][symbol]);
       });
     });
   });

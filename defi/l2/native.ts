@@ -36,7 +36,7 @@ export async function fetchMinted(params: {
 
         if (chain == "cardano") storedTokens = await fetchAdaTokens();
 
-        const ownTokenCgid: string | undefined = ownTokens[chain].address.startsWith("coingecko:")
+        const ownTokenCgid: string | undefined = ownTokens[chain]?.address.startsWith("coingecko:")
           ? ownTokens[chain].address
           : undefined;
         if (ownTokenCgid) storedTokens.push(ownTokenCgid);
@@ -57,7 +57,9 @@ export async function fetchMinted(params: {
           params.timestamp
         );
 
-        if (ownTokenCgid) supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
+        if (ownTokenCgid && ownTokenCgid in mcaps)
+          supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
+
         function findDollarValues() {
           Object.keys(mcaps).map((t: string) => {
             const priceInfo = prices[t];

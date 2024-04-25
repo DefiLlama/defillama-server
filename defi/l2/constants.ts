@@ -103,7 +103,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   loopring: { ticker: "LRC", address: "0xbbbbca6a901c926f240b89eacb641d8aec7aeafd" },
   immutablex: { ticker: "IMX", address: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff" },
   metis: { ticker: "METIS", address: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000" },
-  meter: { ticker: "MTR", address: "coingecko:meter" },
+  meter: { ticker: "MTRG", address: "coingecko:meter" },
   boba: { ticker: "BOBA", address: "0xa18bf3994c0cc6e3b63ac420308e5383f53120d7" },
   solana: { ticker: "SOL", address: "coingecko:solana" },
   manta: { ticker: "MANTA", address: "0x95cef13441be50d20ca4558cc0a27b601ac544e5" },

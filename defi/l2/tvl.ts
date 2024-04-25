@@ -55,6 +55,10 @@ async function translateToChainData(
   data: ChainData,
   timestamp: number = getCurrentUnixTimestamp()
 ): Promise<FinalData> {
+  // facilitate debug
+  let a = JSON.stringify(data);
+  let b = JSON.parse(a);
+
   const nativeTokenKeys = Object.keys(ownTokens).map((chain: string) =>
     ownTokens[chain].address.startsWith("coingecko:")
       ? ownTokens[chain].address

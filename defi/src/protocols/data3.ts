@@ -40727,7 +40727,7 @@ const data3: Protocol[] = [
     listedAt: 1714066738
   },
   {
-    id: "4523",
+    id: "4524",
     name: "Aerodrome V3",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",

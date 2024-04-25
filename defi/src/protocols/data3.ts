@@ -40664,6 +40664,26 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1714041978
   },
+    {
+    id: "4521",
+    name: "Helix Markets",
+    address: null,
+    symbol: "-",
+    url: "https://www.helixmarkets.io/",
+    description: "Start Trading Smarter, Faster, Safer. Today with Helix Markets",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/helix-markets.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ICP"],
+    module: "dummy.js",
+    twitter: "HelixMarkets",
+    oracles: [], 
+    forkedFrom: [],
+  },
 ]
 
 export default data3

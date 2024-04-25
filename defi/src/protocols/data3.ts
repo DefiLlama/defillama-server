@@ -40664,7 +40664,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1714041978
   },
-    {
+  {
     id: "4521",
     name: "Helix Markets",
     address: null,
@@ -40684,7 +40684,6 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
   },
-
   {
     id: "4522",
     name: "Beam",
@@ -40704,6 +40703,28 @@ const data3: Protocol[] = [
     twitter: "BuildOnBeam",
     oracles: [], 
     forkedFrom: [],
+  },
+  {
+    id: "4523",
+    name: "Open Dollar",
+    address: null,
+    symbol: "-",
+    url: "https://www.opendollar.com/",
+    description: "Borrow against Liquid Staking Tokens & Arbitrum native assets with our flexible and transparently over-collateralized stablecoin",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/open-dollar.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Arbitrum"],
+    module: "opendollar/index.js",
+    twitter: "open_dollar",
+    oracles: [], 
+    forkedFrom: [],
+    github: ["open-dollar"],
+    listedAt: 1714066738
   },
 ]
 

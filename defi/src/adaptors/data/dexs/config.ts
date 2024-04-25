@@ -2638,5 +2638,15 @@ export default {
                 "1713657600": true
             },
         }
+    },
+    "hercules": {
+        parentId: "Hercules",
+        id: "4372",
+        enabled: true,
+    },
+    "hercules-v3": {
+        parentId: "Hercules",
+        id: "4373",
+        enabled: true
     }
 } as AdaptorsConfig

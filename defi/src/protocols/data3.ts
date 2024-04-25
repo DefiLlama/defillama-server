@@ -40684,6 +40684,27 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
   },
+
+  {
+    id: "4522",
+    name: "Beam",
+    address: null,
+    symbol: "BEAM",
+    url: "https://onbeam.com/",
+    description: "Beam is a sovereign network focused on gaming brought to you by MeritCircle",
+    chain: "Beam",
+    logo: `${baseIconsUrl}/beam.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Beam"],
+    module: "dummy.js",
+    twitter: "BuildOnBeam",
+    oracles: [], 
+    forkedFrom: [],
+  },
 ]
 
 export default data3

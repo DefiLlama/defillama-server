@@ -4004,6 +4004,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "hercules-token",
     cmcId: null,
     chains: [],
+    treasury: "hercules.js",
     twitter: "TheHerculesDEX",
   },
   {

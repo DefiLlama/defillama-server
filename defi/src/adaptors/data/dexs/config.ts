@@ -857,10 +857,10 @@ export default {
         "enabled": true,
         "id": "2102"
     },
-    "stellarx": {
-        "enabled": true,
-        "id": "972"
-    },
+    // "stellarx": {
+    //     "enabled": true,
+    //     "id": "972"
+    // },
     "ultronswap": {
         "enabled": true,
         "id": "2032"
@@ -2528,10 +2528,10 @@ export default {
         "enabled": true,
         "id": "3908"
     },
-    "Scopuly": {
-        "enabled": true,
-        "id": "4181"
-    },
+    // "Scopuly": {
+    //     "enabled": true,
+    //     "id": "4181"
+    // },
     "standard-mode": {
         "enabled": true,
         "id": "4186"

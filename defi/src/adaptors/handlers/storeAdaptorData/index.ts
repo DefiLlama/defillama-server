@@ -82,7 +82,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   await Promise.all(
     allChains.map(async (chain) => {
       try {
-        const latestBlock = await getBlock(toTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
+        const latestBlock = await getBlock(toTimestamp, chain, {}).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
       } catch (e) { console.log(e) }
     })
   );

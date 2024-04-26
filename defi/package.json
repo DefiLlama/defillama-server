@@ -96,7 +96,6 @@
     "@types/promise.allsettled": "^1.0.6",
     "axios": "^1.6.5",
     "bignumber.js": "^9.0.1",
-    "csv-parser": "^3.0.0",
     "dotenv": "^16.0.1",
     "ethers": "^6.0.0",
     "hyper-express": "^6.8.7",

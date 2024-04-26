@@ -449,6 +449,11 @@
       "decimals": "18",
       "symbol": "GOA",
       "to": "coingecko#goat-protocol"
+    },
+    "0x050C24dBf1eEc17babE5fc585F06116A259CC77A": {
+      "decimals": "8",
+      "symbol": "dlcBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "tezos": {

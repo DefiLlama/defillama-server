@@ -40777,7 +40777,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://defiway.com",
-    description: "All-in-one crypto wallet (iOS/Android apps are LIVE)",
+    description: "All-in-one crypto wallet (iOS/Android). Fast cross-chain bridge and all-in-one crypto wallet",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/defiway.jpg`,
     audits: "0",

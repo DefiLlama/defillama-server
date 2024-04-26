@@ -40792,6 +40792,28 @@ const data3: Protocol[] = [
     treasury: "defiway.js",
     twitter: "Defiwayapp",
   },
+  {
+    id: "4527",
+    name: "Neptunex",
+    address: "blast:0x75483179a38d21f3608e71bbede5ec1314f0067d",
+    symbol: "NPTX",
+    url: "https://neptunex.io",
+    description: "Blast Native DEX and DEX Aggregator for Optimal Order Routing",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/neptunex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "neptunex/index.js",
+    twitter: "NeptuneX_io_",
+    github: ["NeptuneX-Aggregator"],
+    listedAt: 1714142183
+  },
 ]
 
 export default data3

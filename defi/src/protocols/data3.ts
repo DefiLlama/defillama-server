@@ -40771,6 +40771,27 @@ const data3: Protocol[] = [
     github: ["ebtc-protocol"],
     listedAt: 1714126633
   },
+  {
+    id: "4526",
+    name: "Defiway",
+    address: null,
+    symbol: "-",
+    url: "https://defiway.com",
+    description: "All-in-one crypto wallet (iOS/Android apps are LIVE)",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/defiway.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum", "Tron", "Arbitrum", "Polygon", "Optimism"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    treasury: "defiway.js",
+    twitter: "Defiwayapp",
+  },
 ]
 
 export default data3

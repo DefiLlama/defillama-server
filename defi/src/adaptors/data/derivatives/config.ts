@@ -768,5 +768,15 @@ export default {
     "grizzly-trade-derivatives-v2": {
         enabled: true,
         id: "4506",
+    },
+    "unidex": {
+        "enabled": true,
+        "id": "1833",
+        protocolsData: {
+            "unidex": {
+                "enabled": true,
+                "id": "1833"
+            }
+        }
     }
 } as AdaptorsConfig

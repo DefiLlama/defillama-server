@@ -154,8 +154,14 @@ export default {
     id: "3980",
   },
   "unidex": {
-    enabled: false,
-    id: "1833",
+    "enabled": true,
+    "id": "1833",
+    protocolsData: {
+        "unidex-dexs-agg": {
+            "enabled": true,
+            "id": "1833"
+        }
+    }
   },
   "swapgpt": {
     enabled: false,
@@ -202,4 +208,5 @@ export default {
     "enabled": true,
     "id": "4475"
   }
+
 } as AdaptorsConfig;

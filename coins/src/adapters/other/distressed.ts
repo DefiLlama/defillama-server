@@ -278,6 +278,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   callisto: {
     SOY: "0x9fae2529863bd691b4a7171bdfcf33c7ebb10a65",
   },
+  blast:{
+    SSS: "0xdfdcdbc789b56f99b0d0692d14dbc61906d9deed",
+  },
 };
 
 export const distressedAssets = Object.fromEntries(

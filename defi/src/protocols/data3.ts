@@ -16769,7 +16769,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3450",
-    name: "Aerodrome V2",
+    name: "Aerodrome V1",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
     url: "https://aerodrome.finance/",
@@ -40728,7 +40728,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4524",
-    name: "Aerodrome V3",
+    name: "Aerodrome Slipstream",
     address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
     symbol: "AERO",
     url: "https://aerodrome.finance/",

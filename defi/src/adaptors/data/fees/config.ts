@@ -106,7 +106,7 @@ export default {
     },
     "litecoin": {
         "enabled": true,
-        "id": "4499"
+        "id": "2"
     },
     "looksrare": {
         "enabled": true,

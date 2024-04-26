@@ -40748,6 +40748,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#aerodrome",
     listedAt: 1714088562,
   },
+  {
+    id: "4525",
+    name: "eBTC Protocol",
+    address: null,
+    symbol: "-",
+    assetToken: "EBTC",
+    url: "https://www.ebtc.finance/",
+    description: "eBTC is a collateralized crypto asset soft pegged to the price of Bitcoin and built on the Ethereum network. It is backed exclusively by Lido's stETH and powered by immutable smart contracts with minimized counterparty reliance. It is designed to be the most decentralized synthetic Bitcoin in DeFi and offers the ability for anyone in the world to borrow BTC at no cost.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ebtc-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    oracles: ["Chainlink"], //https://docs.ebtc.finance/ebtc/protocol-mechanics/oracles
+    forkedFrom: [],
+    module: "ebtc/index.js",
+    twitter: "eBTCprotocol",
+    github: ["ebtc-protocol"],
+    listedAt: 1714126633
+  },
 ]
 
 export default data3

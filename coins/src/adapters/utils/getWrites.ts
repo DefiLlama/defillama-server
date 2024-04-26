@@ -6,8 +6,8 @@ import { getTokenInfo } from "./erc20";
 import { Write, CoinData } from "./dbInterfaces";
 import * as sdk from '@defillama/sdk'
 
-export default async function getWrites(params: { chain: string, timestamp: number, pricesObject: Object, writes?: Write[], projectName: string}) {
-  let { chain, timestamp, pricesObject, writes = [] } = params
+export default async function getWrites(params: { chain: string, timestamp: number, pricesObject: Object, writes?: Write[], projectName: string, underlyingChain?: string}) {
+  let { chain, timestamp, pricesObject, writes = [], underlyingChain } = params
   const entries = Object.entries(pricesObject).map(([token, obj]) => {
     return {
       token: token.toLowerCase(),
@@ -22,8 +22,8 @@ export default async function getWrites(params: { chain: string, timestamp: numb
     tokenInfos,
     coinsData
   ] = await Promise.all([
-    getTokenInfo(chain, entries.map(i => i.token), undefined),
-    getTokenAndRedirectData(entries.map(i => i.underlying).filter(i => i), chain, timestamp)
+    getTokenInfo(underlyingChain ?? chain, entries.map(i => i.token), undefined),
+    getTokenAndRedirectData(entries.map(i => i.underlying).filter(i => i), underlyingChain ?? chain, timestamp)
   ])
 
   entries.map(({token, price, underlying, symbol, decimals }, i) => {

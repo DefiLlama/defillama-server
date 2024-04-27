@@ -40857,7 +40857,7 @@ const data3: Protocol[] = [
     github: ["openex-network"],
     listedAt: 1714228724
   },
-    {
+  {
     id: "4530",
     name: "FeeFree",
     address: null,
@@ -40878,6 +40878,82 @@ const data3: Protocol[] = [
     twitter: "FeeFreeFi",
     github: ["FeeFreeFi"],
     listedAt: 1714239642
+  },
+  {
+    id: "4531",
+    name: "International Stable Currency",
+    address: null,
+    symbol: "-",
+    url: "https://www.isc.money",
+    description: "International Stable Currency (ISC) is yield-bearing stablecoin pegged to a basket of real world assets",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/international-stable-currency.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "international-stable-currency/index.js",
+    twitter: "ISC_money",
+    github: ["TheISCTeam"],
+    listedAt: 1714244597
+  },
+  {
+    id: "4532",
+    name: "Ion Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://ionprotocol.io/",
+    description: "Ion Protocol is a price-agnostic lending platform built to support staked and restaked assets. It allows users to participate in lending markets of all kinds, ranging from leveraged staking yields to points multiplier pools and more. Ion focuses on bringing staking-based mechanisms to DeFi, creating an enhanced lending and borrowing experience for users to earn more while risking less",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ion-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    oracles: ["RedStone"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9998
+    forkedFrom: [],
+    module: "ion-protocol/index.js",
+    twitter: "ionprotocol",
+    github: ["Ion-Protocol"],
+    audit_links: [
+      "https://blog.openzeppelin.com/ion-protocol-audit",
+      "https://app.hats.finance/audit-competitions/ion-protocol-0x20c44e7b618d58f9982e28de66d8d6ee176eb481/leaderboard"
+    ],
+    listedAt: 1714244605
+  },
+  {
+    id: "4533",
+    name: "Salty.IO",
+    address: "0x0110B0c3391584Ba24Dbf8017Bf462e9f78A6d9F",
+    symbol: "SALT",
+    url: "https://salty.io",
+    description: "Decentralized Ethereum exchange with Zero Fees and Native Swap Protection on all swaps",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/salty.io.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "saltyio/index.js",
+    twitter: "salty_io",
+    github: ["othernet-global"],
+    treasury: "saltyio.js",
+    audit_links: [
+      "https://github.com/trailofbits/publications/blob/master/reviews/2023-10-saltyio-securityreview.pdf",
+      "https://github.com/abdk-consulting/audits/blob/main/othernet_global_pte_ltd/ABDK_OthernetGlobalPTELTD_SaltyIO_v_2_0.pdf",
+      "https://code4rena.com/reports/2024-01-salty"
+    ],
+    listedAt: 1714244611
   },
 ]
 

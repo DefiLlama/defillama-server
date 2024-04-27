@@ -40835,6 +40835,28 @@ const data3: Protocol[] = [
     twitter: "seismicfinance",
     listedAt: 1714228394
   },
+  {
+    id: "4529",
+    name: "OpenEX",
+    address: "core:0xfd843e2eb0e5f7e652fb864477d57510a469b332",
+    symbol: "OEX",
+    url: "https://swap.openex.network/",
+    description: "OpenEX provides users with a better trading experience by providing apps, trading protocols and more efficient public chains",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/openex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "openex-network-token",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "openex/index.js",
+    twitter: "openex_network",
+    github: ["openex-network"],
+    listedAt: 1714228724
+  },
 ]
 
 export default data3

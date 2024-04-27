@@ -40814,6 +40814,27 @@ const data3: Protocol[] = [
     github: ["NeptuneX-Aggregator"],
     listedAt: 1714142183
   },
+  {
+    id: "4528",
+    name: "Seismic",
+    address: null,
+    symbol: "-",
+    url: "https://app.seismic.finance/",
+    description: "Seismic is a Blast-native lending market",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/seismic.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: ["AAVE V2"],
+    module: "seismic/index.js",
+    twitter: "seismicfinance",
+    listedAt: 1714228394
+  },
 ]
 
 export default data3

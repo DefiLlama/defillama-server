@@ -40857,6 +40857,28 @@ const data3: Protocol[] = [
     github: ["openex-network"],
     listedAt: 1714228724
   },
+    {
+    id: "4530",
+    name: "FeeFree",
+    address: null,
+    symbol: "-",
+    url: "https://app.feefree.fi",
+    description: "FeeFree aims to build a RobinHood-Style DEX in blockchain industry, enable every individual in the world to participate in DeFi!",
+    chain: "Zora",
+    logo: `${baseIconsUrl}/feefree.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Zora"],
+    oracles: [],
+    forkedFrom: ["Uniswap V4"],
+    module: "FeeFree/index.js",
+    twitter: "FeeFreeFi",
+    github: ["FeeFreeFi"],
+    listedAt: 1714239642
+  },
 ]
 
 export default data3

@@ -2656,5 +2656,9 @@ export default {
     "helix-markets": {
         enabled: true,
         id: "4521"
+    },
+    "revoswap": {
+        enabled: true,
+        id: "4510"
     }
 } as AdaptorsConfig

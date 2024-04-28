@@ -344,10 +344,17 @@ export async function velgd(timestamp: number = 0) {
 
 
 export async function salt(timestamp: number = 0) {
-  const api = await getApi('ethereum', timestamp)
+  const chain = 'ethereum'
+  const api = await getApi(chain, timestamp)
   const price = await api.call({ abi: 'uint256:priceSALT', target: '0x22096408044Db49A4eB871640b351Ccacb675ED6' })
+  const egETH = '0x18f313Fc6Afc9b5FD6f0908c1b3D476E3feA1DD9'
+  const egETHPrice = await api.call({ abi: 'uint256:exchangeRateToNative', target: egETH })
+  const pricesObject = {
+    [egETH]: { price: egETHPrice / 1e18, underlying: '0x0000000000000000000000000000000000000000', },
+  }
   const writes: Write[] = []
-  addToDBWritesList(writes, 'ethereum', '0x0110B0c3391584Ba24Dbf8017Bf462e9f78A6d9F', price / 1e18, 18, 'SALT', timestamp, "salty", 0.95,)
+  await getWrites({ chain, timestamp, writes, pricesObject, projectName: "egETH", })
+  addToDBWritesList(writes, chain, '0x0110B0c3391584Ba24Dbf8017Bf462e9f78A6d9F', price / 1e18, 18, 'SALT', timestamp, "salty", 0.95,)
   return writes;
 }
 

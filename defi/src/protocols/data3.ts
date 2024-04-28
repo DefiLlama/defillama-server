@@ -40899,6 +40899,7 @@ const data3: Protocol[] = [
     module: "international-stable-currency/index.js",
     twitter: "ISC_money",
     github: ["TheISCTeam"],
+    stablecoins: ["international-stable-currency"],
     listedAt: 1714244597
   },
   {

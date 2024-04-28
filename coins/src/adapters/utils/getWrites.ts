@@ -4,7 +4,6 @@ import {
 } from "./database";
 import { getTokenInfo } from "./erc20";
 import { Write, CoinData } from "./dbInterfaces";
-import * as sdk from '@defillama/sdk'
 
 export default async function getWrites(params: { chain: string, timestamp: number, pricesObject: Object, writes?: Write[], projectName: string, underlyingChain?: string}) {
   let { chain, timestamp, pricesObject, writes = [], underlyingChain } = params

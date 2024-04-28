@@ -30,6 +30,8 @@ import steadefiUsdWbtc from "./steadefi_usdc_wbtc";
 import opdxAdapter from "./odpxWethLP";
 import teahouseAdapter from "./teahouse";
 import gmdV2 from "./gmdV2";
+import { getApi } from "../utils/sdk";
+import getWrites from "../utils/getWrites";
 
 export { glp };
 
@@ -341,6 +343,14 @@ export async function velgd(timestamp: number = 0) {
 }
 
 
+export async function salt(timestamp: number = 0) {
+  const api = await getApi('ethereum', timestamp)
+  const price = await api.call({ abi: 'uint256:priceSALT', target: '0x22096408044Db49A4eB871640b351Ccacb675ED6' })
+  const writes: Write[] = []
+  addToDBWritesList(writes, 'ethereum', '0x0110B0c3391584Ba24Dbf8017Bf462e9f78A6d9F', price / 1e18, 18, 'SALT', timestamp, "salty", 0.95,)
+  return writes;
+}
+
 export const adapters = {
   defiChain,
   shlb,
@@ -365,4 +375,5 @@ export const adapters = {
   teahouse,
   opdx,
   gmdV2,
+  salt,
 }

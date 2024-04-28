@@ -454,6 +454,11 @@
       "decimals": "8",
       "symbol": "dlcBTC",
       "to": "coingecko#bitcoin"
+    },
+    "0x35751007a407ca6feffe80b3cb397736d2cf4dbe": {
+      "decimals": "18",
+      "symbol": "weETH",
+      "to": "coingecko#wrapped-eeth"
     }
   },
   "tezos": {

@@ -13126,7 +13126,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Liquidity manager",
-    chains: ["Ethereum", "Arbitrum", "Optimism"],
+    chains: ["Arbitrum", "Optimism"],
     module: "teahouse-v3/index.js",
     twitter: "TeahouseFinance",
     forkedFrom: [],

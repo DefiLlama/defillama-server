@@ -14393,11 +14393,15 @@ const data3: Protocol[] = [
     gecko_id: "zkera-finance",
     cmcId: null,
     category: "Derivatives",
-    chains: ["zkSync Era"],
+    chains: ["zkSync Era", "Metis", "Telos"],
     module: "zkdx-finance/index.js",
     twitter: "zkera_fi",
     forkedFrom: ["GMX V1"],
-    oracles: ["Pyth"],
+    oraclesByChain: {
+      era: ["Pyth"], 
+      metis: ["Supra"], // https://docs.zkera.fi/zkera-finance-overview#oracles
+      telos: ["DIA"]
+    },
     listedAt: 1691144368
   },
   {

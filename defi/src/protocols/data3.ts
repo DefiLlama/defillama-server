@@ -40960,6 +40960,53 @@ const data3: Protocol[] = [
     ],
     listedAt: 1714244611
   },
+  {
+    id: "4534",
+    name: "Bitlen Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitlen.io",
+    description: "BitLen is dedicated to constructing a professional Liquidity Hook Lending Market.",
+    chain: "BSquared",
+    logo: `${baseIconsUrl}/bitlen-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["BSquared"],
+    oracles: ["Supra"], //https://supra.com/docs/data-feeds/pull-model/networks/
+    forkedFrom: ["INIT Capital"],
+    module: "bitlen/index.js",
+    twitter: "BitLen_Finance",
+    github: ["bitlen-Protocol"],
+    listedAt: 1714384548
+  },
+  {
+    id: "4535",
+    name: "LISA",
+    address: null,
+    symbol: "-", 
+    assetToken: "LiSTX",
+    url: "https://www.lisalab.io",
+    description: "The Goddess of Liquid Stacking, Brought to you by ALEX, Ryders Fast Pool, and Xverse Pool.",
+    chain: "Stacks",
+    logo: `${baseIconsUrl}/lisa.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Stacks"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "lisa/index.js",
+    twitter: "LisaLab_BTC",
+    github: ["lisalab-io"],
+    audit_links: ["https://cdn.alexlab.co/pdf/LISA_Audit_2024-04.pdf"],
+    listedAt: 1714385243
+  },
+
 ]
 
 export default data3

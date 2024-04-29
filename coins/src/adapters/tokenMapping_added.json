@@ -3627,8 +3627,8 @@
     },
     "factory:inj14ejqjyq8um4p3xfqj74yld5waqljf88f9eneuk:inj18luqttqyckgpddndh8hvaq25d5nfwjc78m56lc": {
       "decimals": "18",
-      "symbol": "iINJ",
-      "to": "coingecko#injective-protocol"
+      "symbol": "HINJ",
+      "to": "coingecko#hydro-staked-inj"
     }
   },
   "umee": {

@@ -41028,6 +41028,52 @@ const data3: Protocol[] = [
     github: ["MesonFi"],
     listedAt: 1714402395
   },
+  {
+    id: "4537",
+    name: "VenomStake",
+    address: null,
+    symbol: "-", 
+    assetToken: "stVENOM",
+    url: "https://venomstake.com",
+    description: "VenomStake is a liquid staking platform on the Venom Blockchain that simplifies the process for users. It enables users to delegate their digital assets to a validator, who uses these to enhance and secure the network. By staking their assets, users gain rewards based on their contribution's amount and duration. VenomStake is dedicated to providing a secure and intuitive environment for managing staking activities and monitoring rewards.",
+    chain: "Venom",
+    logo: `${baseIconsUrl}/venomstake.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Venom"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "venomstake/index.js",
+    twitter: null,
+    audit_links: ["https://hacken.io/audits/venomstake.com"],
+    listedAt: 1714411721
+  },
+  {
+    id: "4538",
+    name: "Pod Finance",
+    address: "base:0xbeF5D404548Fab05820e64F92Cf043b6a06F9c72",
+    symbol: "POD", 
+    url: "https://pod.finance",
+    description: "Pod is a fully permissionless protocol that enables users to create tokenized vaults by following the ERC4626 standard with any ERC20-like token as underlying. When underlying is deposited, a proportional share to vaults' ratio is minted and can be staked to earn tokens from fixed reward pools according to their time-weighted contribution to the vault.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/pod-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "pod-finance/index.js",
+    twitter: "PodFinance",
+    github: ["podfinance"],
+    listedAt: 1714411721
+  },
+
 ]
 
 export default data3

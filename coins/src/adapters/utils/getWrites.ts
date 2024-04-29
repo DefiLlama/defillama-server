@@ -33,11 +33,11 @@ export default async function getWrites(params: { chain: string, timestamp: numb
     );
     if (!underlying) coinData = {
       price: 1,
-      confidence: 1,
+      confidence: 0.98,
     } as CoinData;
     if (!coinData) return;
 
-    addToDBWritesList(writes, chain, token, coinData.price * price, finalDecimals, finalSymbol, timestamp, params.projectName, coinData.confidence as number)
+    addToDBWritesList(writes, chain, token, coinData.price * price, finalDecimals, finalSymbol, timestamp, params.projectName, Math.min(0.98, coinData.confidence as number))
   })
 
   const writesObject: any = {}

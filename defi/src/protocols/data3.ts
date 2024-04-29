@@ -41006,7 +41006,28 @@ const data3: Protocol[] = [
     audit_links: ["https://cdn.alexlab.co/pdf/LISA_Audit_2024-04.pdf"],
     listedAt: 1714385243
   },
-
+  {
+    id: "4536",
+    name: "Meson",
+    address: null,
+    symbol: "-", 
+    url: "https://meson.fi/home",
+    description: "Meson is the faster and safer way to execute low-cost, zero-slippage cross chain swap.",
+    chain: "Tron",
+    logo: `${baseIconsUrl}/meson.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Tron", "X Layer"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "meson/index.js ",
+    twitter: "mesonfi",
+    github: ["MesonFi"],
+    listedAt: 1714402395
+  },
 ]
 
 export default data3

@@ -11249,7 +11249,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "reserveprotocol",
     audit_links: ["https://reserve.org/protocol/security/?search=audit#s-result"],
     stablecoins: ["electronic-usd", "reserve"],
-    github: ["reserve-protocol"]
+    github: ["reserve-protocol"],
+    governanceID: ["tally:electronic-dollar"]
   },
   {
     id: "627",

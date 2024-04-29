@@ -2660,5 +2660,9 @@ export default {
     "revoswap": {
         enabled: true,
         id: "4510"
+    },
+    "glowswap": {
+        enabled: true,
+        id: "4515"
     }
 } as AdaptorsConfig

@@ -41132,7 +41132,7 @@ const data3: Protocol[] = [
     chains: ["Pulse"],
     oracles: [], 
     forkedFrom: ["Uniswap V2"],
-    module: "PulseGun-farm/index.js",
+    module: "PulseGun/index.js",
     twitter: "PulseGunXyz",
     listedAt: 1714427757
   },

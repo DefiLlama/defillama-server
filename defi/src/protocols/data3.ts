@@ -41023,7 +41023,7 @@ const data3: Protocol[] = [
     chains: ["Tron", "X Layer"],
     oracles: [], 
     forkedFrom: [],
-    module: "meson/index.js ",
+    module: "meson/index.js",
     twitter: "mesonfi",
     github: ["MesonFi"],
     listedAt: 1714402395

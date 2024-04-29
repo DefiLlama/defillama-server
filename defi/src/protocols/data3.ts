@@ -41020,7 +41020,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Cross Chain",
-    chains: ["Tron", "X Layer"],
+    chains: ["Tron"],
     oracles: [], 
     forkedFrom: [],
     module: "meson/index.js",

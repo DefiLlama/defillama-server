@@ -1377,6 +1377,11 @@
       "decimals": "18",
       "symbol": "cSTONE",
       "to": "coingecko#stakestone-ether"
+    },
+    "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A": {
+      "decimals": "18",
+      "symbol": "weETH",
+      "to": "coingecko#wrapped-eeth"
     }
   },
   "fsc": {

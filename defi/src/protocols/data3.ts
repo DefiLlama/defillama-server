@@ -2299,6 +2299,7 @@ const data3: Protocol[] = [
     chains: ["Binance", "Ethereum"],
     oraclesByChain: {
       zklink: ["RedStone"], //https://docs.native.org/aqua/smart-contracts/smart-contract-addresses
+    },
     forkedFrom: [],
     module: "native/index.js",
     twitter: "native_fi",

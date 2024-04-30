@@ -352,6 +352,11 @@
       "decimals": "18",
       "symbol": "LQRD",
       "to": "coingecko#liquiddriver"
+    },
+    "0x0921799cb1d702148131024d18fcde022129dc73": {
+      "decimals": "18",
+      "symbol": "LL",
+      "to": "coingecko#lightlink"
     }
   },
   "meter": {
@@ -1421,6 +1426,11 @@
       "decimals": "18",
       "symbol": "CSIX.b",
       "to": "coingecko#carbon-browser"
+    },
+    "0xd9d7123552fa2bedb2348bb562576d67f6e8e96e": {
+      "decimals": "18",
+      "symbol": "LL",
+      "to": "coingecko#lightlink"
     }
   },
   "linea": {

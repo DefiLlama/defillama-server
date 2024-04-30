@@ -100,7 +100,7 @@ const parentProtocols: IParentProtocol[] = [
     logo: `${baseIconsUrl}/apebond.png`,
     gecko_id: "abond",
     cmcId: "29157",
-    chains: [], 
+    chains: [],
     twitter: "ApeBond",
     governanceID: ["snapshot:apeswap-finance.eth"],
     github: ["ApeSwapFinance"],
@@ -3560,7 +3560,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "dYdX",
     treasury: "dydx.js",
     governanceID: ["snapshot:dydxgov.eth"],
-    github: ["dydxfoundation", "dydxprotocol"] 
+    github: ["dydxfoundation", "dydxprotocol"]
   },
   {
     id: "parent#fringe-finance",
@@ -3601,7 +3601,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#tenderize",
     name: "Tenderize",
     url: "https://tenderize.me",
-    description: `Liquid Staking 2.0 - Stake to the validator of your choice and earn staking rewards. Use your validator specific LSTs in DeFi.`,
+    description: `Tenderize - Unified liquidity for all stake`,
     logo: `${baseIconsUrl}/tenderize.png`,
     gecko_id: null,
     cmcId: null,
@@ -3740,7 +3740,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PrismaFi",
     github: ["prisma-fi"],
-   // stablecoins: ["mkusd","prismalrt-ultra"], since its not possible to show both/more than 1 stablecoins under the parentProtocol. Will add each stablecoin under their respective listing
+    // stablecoins: ["mkusd","prismalrt-ultra"], since its not possible to show both/more than 1 stablecoins under the parentProtocol. Will add each stablecoin under their respective listing
   },
   {
     id: "parent#secta-finance",
@@ -3819,7 +3819,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#crunchy-network",
     name: "Crunchy Network",
     url: "https://crunchy.network",
-    description:"Crunchy provides DeFi services and solutions on Tezos to projects, developers, and end users. We like to think of ourselves as a DeFi-as-a-Service (DaaS) platform. Crunchy is maintained by independent developers and is governed by CrDAO holders.",
+    description: "Crunchy provides DeFi services and solutions on Tezos to projects, developers, and end users. We like to think of ourselves as a DeFi-as-a-Service (DaaS) platform. Crunchy is maintained by independent developers and is governed by CrDAO holders.",
     logo: `${baseIconsUrl}/crunchy-network.png`,
     gecko_id: "crunchy-dao",
     cmcId: "13438",
@@ -3831,7 +3831,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#cyberblast",
     name: "Cyberblast",
     url: "https://cyberblast.io",
-    description:"Cyberblast, the pioneering native DEX on the Blast L2",
+    description: "Cyberblast, the pioneering native DEX on the Blast L2",
     logo: `${baseIconsUrl}/cyberblast.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -3842,7 +3842,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#thruster",
     name: "Thruster",
     url: "https://app.thruster.finance",
-    description:"To Blast off, we need Thrust Blast_l2s core liquidity and fair launch DEX layer, backed by DeFi's best.",
+    description: "To Blast off, we need Thrust Blast_l2s core liquidity and fair launch DEX layer, backed by DeFi's best.",
     logo: `${baseIconsUrl}/thruster.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -3853,7 +3853,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#monoswap",
     name: "MonoSwap",
     url: "https://www.monoswap.io",
-    description:"Native yield reimagined. Home of the impossibles on Blast_L2.",
+    description: "Native yield reimagined. Home of the impossibles on Blast_L2.",
     logo: `${baseIconsUrl}/monoswap.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -3864,7 +3864,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#ring-protocol",
     name: "Ring Protocol",
     url: "https://ring.exchange/",
-    description:"Ring is a new era in Decentralized Exchange revolutionizing asset utilization",
+    description: "Ring is a new era in Decentralized Exchange revolutionizing asset utilization",
     logo: `${baseIconsUrl}/ring-protocol.png`,
     gecko_id: null,
     cmcId: null,
@@ -3876,7 +3876,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#moraswap",
     name: "Moraswap",
     url: "https://moraswap.com/exchange/swap#",
-    description:"Moraswap is a decentralized exchange (DEX) built on Solana's Neon EVM",
+    description: "Moraswap is a decentralized exchange (DEX) built on Solana's Neon EVM",
     logo: `${baseIconsUrl}/moraswap.png`,
     gecko_id: null,
     cmcId: null,
@@ -3999,7 +3999,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#hercules",
     name: "Hercules",
     url: "https://app.hercules.exchange",
-    description:"Modeled after the highly successful Camelot DEX project on Arbitrum, Hercules is a community-first, capital-efficient and flexible DEX developed with multiple tools to support the next generation of builders who look for sustainable liquidity in the Metis network.",
+    description: "Modeled after the highly successful Camelot DEX project on Arbitrum, Hercules is a community-first, capital-efficient and flexible DEX developed with multiple tools to support the next generation of builders who look for sustainable liquidity in the Metis network.",
     logo: `${baseIconsUrl}/hercules.png`,
     gecko_id: "hercules-token",
     cmcId: null,
@@ -4018,7 +4018,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "A51_Fi",
-    github: ["Unipilot","a51finance"]
+    github: ["Unipilot", "a51finance"]
   },
   {
     id: "parent#powercity",

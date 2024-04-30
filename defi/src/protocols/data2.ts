@@ -25173,9 +25173,9 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://rehold.io",
     description:
-      "ReHold is an innovative protocol that offers the first Dual investments in DeFi. High APRs are accessible due to DEXs' Liquidity Pools with an effective price range for concentrated liquidity.",
+      "AI-powered financial ecosystem on Bitcoin to buy, swap, earn, or trade your crypto with up to 100x leverage",
     chain: "Binance",
-    logo: `${baseIconsUrl}/rehold-v1.png`,
+    logo: `${baseIconsUrl}/rehold-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

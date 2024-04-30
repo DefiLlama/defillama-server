@@ -41249,6 +41249,26 @@ const data3: Protocol[] = [
     github: ["DLC-link"],
     listedAt: 1714484369
   },
+  {
+    id: "4547",
+    name: "Bittensor",
+    address: null,
+    symbol: "TAO", 
+    url: "https://bittensor.com/",
+    description: "Facilitating a market-driven ecosystem for machine intelligence, where peers evaluate and incentivize valuable work.",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/bittensor.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chains",
+    chains: [""],
+    oracles: [], 
+    module: "dummy.js",
+    twitter: "bittensorcom",
+    listedAt: 1714485453
+  },
 ]
 
 export default data3

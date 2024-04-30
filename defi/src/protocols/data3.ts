@@ -41182,6 +41182,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/blaize-security/blaize-security-audits/blob/main/f/fortifi/FortiFi-audit-report-%5B26-Oct-2023%5D.pdf"],
     listedAt: 1714472871
   },
+  {
+    id: "4544",
+    name: "PenPad",
+    address: null,
+    symbol: "PDD", 
+    url: "https://penpad.io",
+    description: "PenPad is the next-gen launch platform on Scroll that provides fair, flexible and interactive Web3 project investment opportunities to all.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/penpad.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "penpad-token",
+    cmcId: null,
+    category: "Farm",
+    chains: ["Scroll"],
+    oracles: [],  
+    forkedFrom: [],
+    module: "penpad/index.js",
+    twitter: "pen_pad",
+    listedAt: 1714481042
+  },
 ]
 
 export default data3

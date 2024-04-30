@@ -41262,12 +41262,11 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chains",
-    chains: [""],
+    category: "Chain",
+    chains: ["Pulse"],
     oracles: [], 
     module: "dummy.js",
     twitter: "bittensorcom",
-    listedAt: 1714485453
   },
 ]
 

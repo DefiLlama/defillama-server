@@ -778,5 +778,9 @@ export default {
                 "id": "1833"
             }
         }
+    },
+    "bsx-exchange": {
+        enabled: true,
+        id: "4458",
     }
 } as AdaptorsConfig

@@ -1,5 +1,5 @@
 import BigNumber from "bignumber.js";
-import { excludedTvlKeys, geckoSymbols, zero } from "./constants";
+import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, zero } from "./constants";
 import fetchStoredTvls from "./outgoing";
 import { AllProtocols, ChainTokens } from "./types";
 
@@ -34,11 +34,28 @@ function tokenDiffs(
       if (!(chain in tokenDiff)) tokenDiff[chain] = {};
       if (!(chain in prices)) prices[chain] = {};
 
+      if (bridgeId in canonicalBridgeIds) {
+        const destinationChain = canonicalBridgeIds[bridgeId];
+        if (!(destinationChain in tokenDiff)) tokenDiff[destinationChain] = {};
+        if (!(destinationChain in prices)) prices[destinationChain] = {};
+      }
+
+      function add(symbol: string, chain: string, value: BigNumber, plus: boolean) {
+        if (!(symbol in tokenDiff[chain])) tokenDiff[chain][symbol] = zero;
+        tokenDiff[chain][symbol] = plus ? tokenDiff[chain][symbol].plus(value) : tokenDiff[chain][symbol].minus(value);
+      }
+
       Object.keys(nowRaw[bridgeId][chain]).map((rawSymbol: string) => {
         const current = BigNumber(nowRaw[bridgeId][chain][rawSymbol]);
         const symbol = geckoSymbols[rawSymbol.replace("coingecko:", "")] ?? rawSymbol.toUpperCase();
-        if (!(symbol in tokenDiff[chain])) tokenDiff[chain][symbol] = zero;
-        tokenDiff[chain][symbol] = tokenDiff[chain][symbol].plus(current);
+        add(symbol, chain, current, false); // less on bridge = increase on base chain, decrease on canon
+        if (bridgeId in canonicalBridgeIds) {
+          const destinationChain = canonicalBridgeIds[bridgeId];
+          add(symbol, destinationChain, current, true);
+          if (!prices[destinationChain][symbol])
+            prices[destinationChain][symbol] = BigNumber(nowUsd[bridgeId][chain][rawSymbol]).div(current);
+        }
+
         if (prices[chain][symbol]) return;
         prices[chain][symbol] = BigNumber(nowUsd[bridgeId][chain][rawSymbol]).div(current);
       });
@@ -46,19 +63,26 @@ function tokenDiffs(
       Object.keys(prevRaw[bridgeId][chain]).map((rawSymbol: string) => {
         const prev = BigNumber(prevRaw[bridgeId][chain][rawSymbol]);
         const symbol = geckoSymbols[rawSymbol.replace("coingecko:", "")] ?? rawSymbol.toUpperCase();
-        if (!(symbol in tokenDiff[chain])) tokenDiff[chain][symbol] = zero;
-        tokenDiff[chain][symbol] = tokenDiff[chain][symbol].minus(BigNumber(prev));
+        add(symbol, chain, prev, true);
+        if (bridgeId in canonicalBridgeIds) {
+          const destinationChain = canonicalBridgeIds[bridgeId];
+          add(symbol, canonicalBridgeIds[bridgeId], prev, false);
+          if (!prices[destinationChain][symbol])
+            prices[destinationChain][symbol] = BigNumber(nowUsd[bridgeId][chain][rawSymbol]).div(prev);
+        }
+
         if (prices[chain][symbol]) return;
         prices[chain][symbol] = BigNumber(prevUsd[bridgeId][chain][rawSymbol]).div(prev);
-      });
-
-      Object.keys(tokenDiff[chain]).map((symbol: string) => {
-        if (!tokenDiff[chain][symbol].isEqualTo(zero)) return;
-        delete tokenDiff[chain][symbol];
       });
     });
   });
 
+  Object.keys(tokenDiff).map((chain: string) =>
+    Object.keys(tokenDiff[chain]).map((symbol: string) => {
+      if (!tokenDiff[chain][symbol].isEqualTo(zero)) return;
+      delete tokenDiff[chain][symbol];
+    })
+  );
   return { tokenDiff, prices };
 }
 function tokenUsds(qtys: ChainTokens, prices: ChainTokens) {

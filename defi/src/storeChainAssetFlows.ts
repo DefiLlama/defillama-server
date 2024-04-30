@@ -5,6 +5,7 @@ import setEnvSecrets from "./utils/shared/setEnvSecrets";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { storeHistoricalFlows } from "../l2/storeToDb";
 import { ChainTokens } from "../l2/types";
+import PromisePool from "@supercharge/promise-pool";
 
 async function getChainAssetFlows() {
   const timestamp = getCurrentUnixTimestamp();
@@ -35,9 +36,15 @@ async function main() {
   const timestamps = [];
   while (start < end) {
     timestamps.push(start);
-    start += 10800; // 3hr
+    start += 3600; // 1hr
   }
-  await Promise.all(timestamps.map((t) => backfill(t)));
+  await PromisePool.withConcurrency(5)
+    .for(timestamps)
+    .process((t) => backfill(t))
+    .catch((e) => {
+      e;
+    });
   console.log("done");
 }
 // main();
+// ts-node defi/src/storeChainAssetFlows.ts

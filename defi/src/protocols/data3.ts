@@ -41313,6 +41313,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#tenderize",
     listedAt: 1714517311
   },
+  {
+    id: "4550",
+    name: "Merchant Finance",
+    address: null,
+    symbol: "",
+    url: "https://merchantfi.org",
+    description: "Merchant Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless, open source protocol serving users on MerlinChain. Users can deposit their assets, use them as collateral and borrow against them.",
+    chain: "Merlin",
+    logo: `${baseIconsUrl}/merchant-finance.jpg`,
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Merlin"],
+    oracles: [],
+    forkedFrom: ["Compound V2"],
+    module: "merchant/index.js",
+    twitter: "Merchant_Fi",
+    listedAt: 1714517168
+  }
 ]
 
 export default data3

@@ -1367,6 +1367,11 @@
       "decimals": "18",
       "symbol": "mBTC",
       "to": "coingecko#merlin-s-seal-btc"
+    },
+    "0xF419234b27D0EFb71D93D522804dF370A4107Be1": {
+      "decimals": "18",
+      "symbol": "cSTONE",
+      "to": "coingecko#stakestone-ether"
     }
   },
   "fsc": {

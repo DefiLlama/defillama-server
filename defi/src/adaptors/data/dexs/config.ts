@@ -2664,5 +2664,9 @@ export default {
     "glowswap": {
         enabled: true,
         id: "4515"
+    },
+    "merlinswap": {
+        enabled: true,
+        id: "4191"
     }
 } as AdaptorsConfig

@@ -23,3 +23,21 @@ export async function handler() {
   }
 }
 handler();
+
+async function backfill(timestamp: number) {
+  const res: ChainTokens = await chainAssetFlows(timestamp);
+  await storeHistoricalFlows(res, timestamp);
+  console.log(`${timestamp} stored`);
+}
+async function main() {
+  let start = 1711926000; // 1 Apr
+  const end = getCurrentUnixTimestamp();
+  const timestamps = [];
+  while (start < end) {
+    timestamps.push(start);
+    start += 10800; // 3hr
+  }
+  await Promise.all(timestamps.map((t) => backfill(t)));
+  console.log("done");
+}
+// main();

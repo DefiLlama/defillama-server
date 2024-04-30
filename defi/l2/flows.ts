@@ -26,7 +26,7 @@ function tokenDiffs(
   nowUsd: AllProtocols,
   prevUsd: AllProtocols
 ): { tokenDiff: ChainTokens; prices: ChainTokens } {
-  const tokenDiff: ChainTokens = {};
+  let tokenDiff: ChainTokens = {};
   const prices: ChainTokens = {};
   Object.keys(nowRaw).map((bridgeId: string) => {
     Object.keys(nowRaw[bridgeId]).map((chain: string) => {
@@ -46,11 +46,15 @@ function tokenDiffs(
       Object.keys(prevRaw[bridgeId][chain]).map((rawSymbol: string) => {
         const prev = BigNumber(prevRaw[bridgeId][chain][rawSymbol]);
         const symbol = geckoSymbols[rawSymbol.replace("coingecko:", "")] ?? rawSymbol.toUpperCase();
-        if (symbol in nowRaw[bridgeId][chain]) return;
         if (!(symbol in tokenDiff[chain])) tokenDiff[chain][symbol] = zero;
         tokenDiff[chain][symbol] = tokenDiff[chain][symbol].minus(BigNumber(prev));
         if (prices[chain][symbol]) return;
         prices[chain][symbol] = BigNumber(prevUsd[bridgeId][chain][rawSymbol]).div(prev);
+      });
+
+      Object.keys(tokenDiff[chain]).map((symbol: string) => {
+        if (!tokenDiff[chain][symbol].isEqualTo(zero)) return;
+        delete tokenDiff[chain][symbol];
       });
     });
   });

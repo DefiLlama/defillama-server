@@ -41136,6 +41136,52 @@ const data3: Protocol[] = [
     twitter: "PulseGunXyz",
     listedAt: 1714427757
   },
+  {
+    id: "4542",
+    name: "NXD Protocol",
+    address: "0x70536D44820fE3ddd4A2e3eEdbC937b8B9D566C7",
+    symbol: "NXD", 
+    url: "https://dxn-hyperstructure.com/",
+    description: "The NXD Protocol introduces the NXD token, a hyper-deflationary cryptocurrency designed to act as a deflationary derivative of the DXN Protocol.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/nxd-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "nxd-protocol/index.js",
+    twitter: "NXD_Protocol",
+    github: ["DXN-Hyperstructure"],
+    audit_links: ["https://github.com/TheArcadiaGroup/publications/blob/main/audits/NXDFinal.pdf"],
+    listedAt: 1714472654
+  },
+  {
+    id: "4543",
+    name: "FortiFi",
+    address: null,
+    symbol: "-", 
+    url: "https://www.fortifi.pro",
+    description: "FortiFi MultiYields offer composable, single-sided staking for your favorite cryptocurrencies. Each FortiFi MultiYield provides one-click access to diversified and yield-bearing strategies.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/fortifi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Avalanche"],
+    oracles: ["Chainlink", "DIA"],  //https://github.com/0xFortiFi/FortiFi-Vaults 
+    forkedFrom: [],
+    module: "fortifi/index.js",
+    twitter: "FortiFi_",
+    github: ["0xFortiFi"],
+    audit_links: ["https://github.com/blaize-security/blaize-security-audits/blob/main/f/fortifi/FortiFi-audit-report-%5B26-Oct-2023%5D.pdf"],
+    listedAt: 1714472871
+  },
 ]
 
 export default data3

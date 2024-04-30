@@ -6047,6 +6047,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "luchadores/index.js",
+    treasury: "luchadores.js",
     twitter: "LuchadoresNFT",
     listedAt: 1649793203,
     github: ["luchadores-community"]

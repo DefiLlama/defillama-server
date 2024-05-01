@@ -4302,6 +4302,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AtlendisLabs",
     github: ["Atlendis"]
   },
+  {
+    id: "parent#fjord-foundry",
+    name: "Fjord Foundry",
+    url: "https://www.fjordfoundry.com",
+    description: "Connecting innovative projects and engaged backers through a community-focused platform, offering fair and transparent LBPs and token sale events.",
+    logo: `${baseIconsUrl}/fjord-foundry.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "FjordFoundry",
+  },
 ];
 
 export default parentProtocols;

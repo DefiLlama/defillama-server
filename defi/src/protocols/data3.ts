@@ -41488,6 +41488,26 @@ const data3: Protocol[] = [
     twitter: "FjordFoundry",
     parentProtocol: "parent#fjord-foundry",
   },
+  {
+    id: "4558",
+    name: "BOB Bridge",
+    address: null,
+    symbol: "-", 
+    url: "https://www.gobob.xyz",
+    description: "BOB is a new Bitcoin EVM L2, secured by Bitcoin PoW and connected to ETH as a rollup.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bob-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    oracles: [], 
+    module: "bob/index.js",
+    twitter: "build_on_bob",
+    listedAt: 1714595188
+  },
 ]
 
 export default data3

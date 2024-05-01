@@ -2924,6 +2924,20 @@ export const chainCoingeckoIds = {
     twitter: "LaChain_Network",
     url: "https://www.lachain.network"
   },
+  "BOB": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    github: ["bob-collective"],
+    chainId: 60808,
+    twitter: "build_on_bob",
+    url: "https://www.gobob.xyz",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3545,6 +3559,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "X Layer"
     case "lac":
       return "LaChain Network"
+    case "bob":
+      return "BOB"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -2028,10 +2028,15 @@ export default {
     "fjord-foundry": {
         enabled: true,
         id: "4505",
+        parentId: "Fjord Foundry",
         protocolsData: {
             "v2": {
                 enabled: true,
                 id: "4505"
+            },
+            "v1": {
+                enabled: true,
+                id: "4557"
             }
         },
         cleanRecordsConfig: {

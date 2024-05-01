@@ -9539,27 +9539,27 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "548",
-    name: "DeFis Network",
-    address: "eos:DFS",
+    name: "DFS Network",
+    address: "dfs:DFS",
     symbol: "DFS",
-    url: "https://defis.network",
+    url: "https://dfs.land",
     description:
-      "DeFis Network is the most decentralized finance network built on EOSIO that aggregates all valuable DeFi-protocols.",
-    chain: "EOS",
+      "DFS Network is a blockchain built for mass adoption Web3 products and services.  Fast, free, user-friendly, composable, green, and globally distributed.",
+    chain: "DFS",
     logo: `${baseIconsUrl}/defis-network.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "defis-network",
     cmcId: "6610",
     category: "Dexes",
-    chains: ["EOS"],
+    chains: ["EOS","DFS"],
     module: "dfs/index.js",
-    twitter: "DFSnetworks",
+    twitter: "dfsdeveloper",
     audit_links: [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=ca2c97083e94d0958e9376b770b16a7f8ddd53fb1e5f1b9cbabc0ccf8d157d40",
       "https://github.com/peckshield/publications/blob/master/audit_reports/DeFis-Network_Swap_audit_report_2020_20_cn_1_0.pdf",
     ],
-    github: ["defis-net"]
+    github: ["DFSNetwork"]
   },
   {
     id: "549",

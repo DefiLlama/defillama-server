@@ -23834,6 +23834,7 @@ const data2: Protocol[] = [
     category: "NFT Lending",
     chains: ["Ethereum"],
     module: "arcade-xyz/index.js",
+    treasury: "arcade-xyz.js",
     twitter: "Arcade_xyz",
     oracles: [],
     forkedFrom: [],

@@ -37314,13 +37314,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4370",
-    name: "Aloe Capital",
+    name: "Aloe", // previous Aloe Capital
     address: null,
     symbol: "-",
     url: "https://aloe.capital",
     description: `Aloe is a permissionless lending protocol built on Uniswap, featuring risk-isolated pools, dynamic LTVs, and ultra-efficient liquidations.`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/aloe-capital.jpg`,
+    logo: `${baseIconsUrl}/aloe.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -60,7 +60,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         return;
       }
       const maxSupply = res.metadata.total ?? formattedData[formattedData.length - 1][1];
-      const rawNextEvent = res.metadata.events.find((e: any) => e.timestamp > now);
+      const rawNextEvent = res.metadata.events?.find((e: any) => e.timestamp > now);
 
       let nextEvent;
       if (!rawNextEvent) {
@@ -111,8 +111,10 @@ const fetchCoinsApiData = async (protocols: ProtocolData[]): Promise<void> => {
       .map((p: ProtocolData) => `coingecko:${p.gecko_id}`);
 
     const [tokenPrices, mcapRes] = await Promise.all([
-      fetch(`https://coins.llama.fi/prices/current/${tokens}?searchWidth=4h`).then((res) => res.json()),
-      fetch("https://coins.llama.fi/mcaps", {
+      fetch(`https://coins.llama.fi/prices/current/${tokens}?searchWidth=4h?apikey=${process.env.COINS_KEY}`).then(
+        (res) => res.json()
+      ),
+      fetch(`https://coins.llama.fi/mcaps?apikey=${process.env.COINS_KEY}`, {
         method: "POST",
         body: JSON.stringify({
           coins,

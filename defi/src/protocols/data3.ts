@@ -41354,6 +41354,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "atlendis-v2/index.js",
     twitter: "AtlendisLabs",
+    parentProtocol: "parent#atlendis",
     listedAt: 1714563532
   },
   {
@@ -41459,7 +41460,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chains",
+    category: "Chain",
     chains: ["ZetaChain"],
     oracles: [], 
     module: "dummy.js",

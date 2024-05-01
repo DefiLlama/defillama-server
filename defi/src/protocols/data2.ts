@@ -11129,13 +11129,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1875",
-    name: "Atlendis",
+    name: "Atlendis V1",
     address: null,
     symbol: "-",
     url: "https://app.atlendis.io",
     description: "Atlendis is a capital-efficient DeFi lending protocol that enables crypto loans without collateral.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/atlendis.png`,
+    logo: `${baseIconsUrl}/atlendis-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -11146,9 +11146,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "atlendis/index.js",
     twitter: "AtlendisLabs",
+    parentProtocol: "parent#atlendis",
     audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/atlendis-audit-report.pdf"],
     listedAt: 1656855449,
-    github: ["Atlendis"]
   },
   {
     id: "1876",

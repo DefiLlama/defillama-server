@@ -4290,6 +4290,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "rabbitx_io",
   },
+  {
+    id: "parent#atlendis",
+    name: "Atlendis",
+    url: "https://www.atlendis.io/",
+    description: "Atlendis Labs is redefining private credit in the digital age.",
+    logo: `${baseIconsUrl}/atlendis.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AtlendisLabs",
+    github: ["Atlendis"]
+  },
 ];
 
 export default parentProtocols;

@@ -508,6 +508,7 @@ export default {
     "rabbitx": {
         "enabled": true,
         "id": "2886",
+        parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1700524800": true,
@@ -679,6 +680,7 @@ export default {
     "blastfutures": {
         "enabled": true,
         "id": "4221",
+        parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1709337600": true,

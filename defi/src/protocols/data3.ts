@@ -36106,7 +36106,7 @@ const data3: Protocol[] = [
     chains: ["Manta"],
     oracles: [],
     forkedFrom: [],
-    module: "MantaTimeLockContract/index.js",
+    module: "bridgem/index.js",
     twitter: "BridgeM_io",
     listedAt: 1710776810
   },

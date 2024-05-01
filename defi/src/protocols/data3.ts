@@ -41445,7 +41445,27 @@ const data3: Protocol[] = [
     github: ["TLX-Protocol"],
     audit_links: ["https://tlx.fi/tlx-audit.pdf"],
     listedAt: 1714565442
-  }
+  },
+  {
+    id: "4556",
+    name: "ZetaChain",
+    address: null,
+    symbol: "ZETA", 
+    url: "https://www.zetachain.com/",
+    description: "With ZetaChain’s Omnichain Smart Contracts, build truly interoperable dApps that span multiple chains from Ethereum to Bitcoin and beyond. Access all of crypto from one chain.",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/zetachain.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chains",
+    chains: ["ZetaChain"],
+    oracles: [], 
+    module: "dummy.js",
+    twitter: "zetablockchain",
+    listedAt: 1714492490
+  },
 ]
 
 export default data3

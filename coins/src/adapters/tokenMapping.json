@@ -340,6 +340,11 @@
       "decimals": "18",
       "symbol": "cSTONE",
       "to": "coingecko#stakestone-ether"
+    },
+    "0x9ba021b0a9b958b5e75ce9f6dff97c7ee52cb3e6": {
+      "decimals": "18",
+      "symbol": "apxETH",
+      "to": "coingecko#dinero-apxeth"
     }
   },
   "fantom": {

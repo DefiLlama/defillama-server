@@ -41354,6 +41354,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "atlendis-v2/index.js",
     twitter: "AtlendisLabs",
+    parentProtocol: "parent#atlendis",
     listedAt: 1714563532
   },
   {

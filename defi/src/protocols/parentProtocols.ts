@@ -4279,6 +4279,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "aerodromefi",
     github: ["aerodrome-finance"]
   },
+  {
+    id: "parent#rabbitx-fusion",
+    name: "RabbitX Fusion",
+    url: "https://rabbitx.io/",
+    description: "RabbitX is a global permissionless perpetuals and derivatives exchange built for traders. RabbitX is building the most secure and liquid global derivatives network, giving you 24/7 access to global markets anywhere in the world.",
+    logo: `${baseIconsUrl}/rabbitx-fusion.jpg`,
+    gecko_id: "rabbitx",
+    cmcId: "24792",
+    chains: [],
+    twitter: "rabbitx_io",
+  },
 ];
 
 export default parentProtocols;

@@ -4130,8 +4130,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/rabbitx.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "rabbitx",
-    cmcId: "24792",
+    gecko_id: null,
+    cmcId: null,
     category: "Derivatives",
     chains: ["Ethereum"],
     oracles: [],
@@ -4139,6 +4139,7 @@ const data3: Protocol[] = [
     module: "rabbitx/index.js",
     twitter: "rabbitx_io",
     audit_links: [],
+    parentProtocol: "parent#rabbitx-fusion",
     listedAt: 1682370221
   },
   {
@@ -34030,8 +34031,8 @@ const data3: Protocol[] = [
     twitter: "BlastFutures",
     forkedFrom: [],
     audit_links: ["https://github.com/BlastFutures/Blast-Futures-Exchange/blob/main/bfx_audit_report_hats.pdf"],
-    github: ["BlastFutures"],
     oracles: ["Pyth"],  //github.com/DefiLlama/defillama-server/pull/6111
+    parentProtocol: "parent#rabbitx-fusion",
     listedAt: 1709403349
   },
   {

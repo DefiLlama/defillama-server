@@ -1,5 +1,5 @@
 import getTVLOfRecordClosestToTimestamp from "../src/utils/shared/getRecordClosestToTimestamp";
-import { getCurrentUnixTimestamp } from "../../high-usage/defiCode/utils/date";
+import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { AllProtocols, DollarValues, McapData, TokenTvlData } from "./types";
 import { aggregateChainTokenBalances } from "./utils";
 import { canonicalBridgeIds, chainsWithoutCanonicalBridges, geckoSymbols, protocolBridgeIds, zero } from "./constants";

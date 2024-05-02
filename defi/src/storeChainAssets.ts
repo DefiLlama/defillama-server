@@ -18,8 +18,6 @@ async function getChainAssets() {
   Object.keys(chainMaps).map((key: string) => {
     if (key in res) res[chainMaps[key]] = res[key];
   });
-  let a = JSON.stringify(res);
-  let b = JSON.parse(a);
   await storeR2JSONString("chainAssets", JSON.stringify(res));
   await storeHistorical(res);
   console.log("chain assets stored");

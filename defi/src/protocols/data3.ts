@@ -300,7 +300,7 @@ const data3: Protocol[] = [
     name: "prePO",
     address: null,
     symbol: "-",
-    url: "https://app.prepo.io/trade",
+    url: "https://app.prepo.io/",
     description: "Go long or short on pre-IPO stocks & pre-IDO tokens.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/prepo.jpg`,
@@ -315,7 +315,6 @@ const data3: Protocol[] = [
     module: "prePo/index.js",
     twitter: "prepo_io",
     listedAt: 1679504121,
-    github: ["prepo-io"]
   },
   {
     id: "2713",

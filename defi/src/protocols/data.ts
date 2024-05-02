@@ -11231,7 +11231,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "626",
-    name: "Reserve",
+    name: "Reserve Protocol",
     address: "0x320623b8e4ff03373931769a31fc52a4e78b5d70",
     symbol: "RSR",
     url: "https://reserve.org",

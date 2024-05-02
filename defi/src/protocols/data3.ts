@@ -7520,14 +7520,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3037",
-    name: "Range Protocol",
+    name: "Skate Fi", // previous Range Protocol 
     address: null,
     symbol: "-",
     url: "https://www.rangeprotocol.com",
     description:
-      "Permissionless Infrastructure for Smart Money Management.",
+      "Skate Fi (formerly known as Range Protocol): Liquidity Layer of Skate Chain",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/range-protocol.jpg`,
+    logo: `${baseIconsUrl}/skate-fi.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

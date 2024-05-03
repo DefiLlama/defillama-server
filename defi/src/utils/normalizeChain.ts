@@ -2955,7 +2955,7 @@ chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
-chainCoingeckoIds["zkLink Nova"] = chainCoingeckoIds["zkLink"]
+chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3009,7 +3009,7 @@ export function transformNewChainName(chain: string) {
       return "Oasis Sapphire"
     case "Oasis":
       return "Oasis Emerald"
-    case "zkLink":
+    case "zklink":
       return "zkLink Nova"
     default:
       return chain

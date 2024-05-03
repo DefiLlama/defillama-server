@@ -75,6 +75,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     GRAIN: "0x80bb30d62a16e1f2084deae84dc293531c3ac3a1",
   },
   bsc: {
+    BGEO: '0xc342774492b54ce5f8ac662113ed702fc1b34972',
     aBNBb: "0xbb1aa6e59e5163d8722a122cd66eba614b59df0d",
     aBNBc: "0xe85afccdafbe7f2b096f268e31cce3da8da2990a",
     DOGECOLA: "0xe320df552e78d57e95cf1182b6960746d5016561",

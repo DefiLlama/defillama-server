@@ -3619,7 +3619,19 @@
       "symbol": "INJ",
       "to": "coingecko#injective-protocol"
     },
+    "0xd83a4f747fe80ed98839e05079b1b7fe037b1638": {
+      "name": "injective-protocol",
+      "decimals": "18",
+      "symbol": "INJ",
+      "to": "coingecko#injective-protocol"
+    },    
     "factory:inj14ejqjyq8um4p3xfqj74yld5waqljf88f9eneuk:inj1q6zlut7gtkzknkk773jecujwsdkgq882akqksk": {
+      "name": "USDT",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x97423a68bae94b5de52d767a17abcc54c157c0e5": {
       "name": "USDT",
       "decimals": "6",
       "symbol": "USDT",
@@ -3629,6 +3641,24 @@
       "decimals": "18",
       "symbol": "HINJ",
       "to": "coingecko#hydro-staked-inj"
+    },
+    "0x4c3a213bd5e8c4bd70a8396d6f3c8302571598cd": {
+      "name": "Wrapped INJ",
+      "decimals": "18",
+      "symbol": "WINJ",
+      "to": "coingecko#injective-protocol"
+    },
+    "0x69011706b3f6c6eaed7d2bc13801558b4fd94cbf": {
+      "name": "Wrapped INJ",
+      "decimals": "18",
+      "symbol": "WINJ",
+      "to": "coingecko#injective-protocol"
+    },
+    "0x8358d8291e3bedb04804975eea0fe9fe0fafb147": {
+      "name": "USDC",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
     }
   },
   "umee": {

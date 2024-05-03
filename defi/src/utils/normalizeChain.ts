@@ -20,7 +20,7 @@ export const normalizedChainReplacements = {
   "viction": "tomochain",
   "bevm": "chainx",
   "bitnet": "btn",
-  "defichain evm": "defichain_evm"
+  "defichain evm": "defichain_evm",
 
 } as {
   [chain: string]: string
@@ -2722,7 +2722,7 @@ export const chainCoingeckoIds = {
     url: "https://q.org/",
     chainId: 35441
   },
-  "zkLink": {
+  "zkLink Nova": {
     geckoId: "zklink",
     symbol: "ZKL",
     cmcId: null,
@@ -2955,6 +2955,7 @@ chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
+chainCoingeckoIds["zkLink Nova"] = chainCoingeckoIds["zkLink"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3517,8 +3518,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Dymension"
     case "q":
       return "Q Protocol"
-    case "zklink":
-      return "zkLink"
+      case "zklink":
+        return useNewChainNames ? "zkLink Nova" : "zklink"
     case "kinto":
       return "Kinto"
     case "imx":

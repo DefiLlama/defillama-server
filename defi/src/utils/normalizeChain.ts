@@ -3521,7 +3521,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "q":
       return "Q Protocol"
       case "zklink":
-        return useNewChainNames ? "zkLink Nova" : "zklink"
+        return useNewChainNames ? "zkLink Nova" : "zkLink"
     case "kinto":
       return "Kinto"
     case "imx":

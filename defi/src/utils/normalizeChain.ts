@@ -3009,6 +3009,8 @@ export function transformNewChainName(chain: string) {
       return "Oasis Sapphire"
     case "Oasis":
       return "Oasis Emerald"
+    case "zkLink":
+      return "zkLink Nova"
     default:
       return chain
   }

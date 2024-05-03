@@ -384,7 +384,7 @@ const data: Protocol[] = [
     address: "0x431ad2ff6a9c365805ebad47ee021148d6f7dbe0",
     symbol: "DF",
     url: "https://dforce.network/",
-    description: "dForce network is an ecosystem of protocols aiming to be a full stack solution for DeFi.",
+    description: "Permissionless liquidity network built for Web3. dForce has developed a comprehensive suite of web3 infrastructure protocols, including standardized decentralized stablecoins, general money markets, yield tokens, RWA tokens, and more. We are also committed to developing protocols that can significantly enhance liquidity in the Bitcoin L2, DePIN, and decentralized AI ecosystems",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/DF.svg`,
     audits: "2",

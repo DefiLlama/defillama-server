@@ -2904,7 +2904,7 @@ export const chainCoingeckoIds = {
     chainId: 7070,
   },
   "X Layer": {
-    geckoId: null,
+    geckoId: "x-layer",
     symbol: null,
     cmcId: null,
     categories: ["EVM"],

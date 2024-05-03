@@ -41508,6 +41508,49 @@ const data3: Protocol[] = [
     twitter: "build_on_bob",
     listedAt: 1714595188
   },
+  {
+    id: "4559",
+    name: "Hive Protocol",
+    address: null,
+    symbol: "-", 
+    url: "https://hive.bsquared.network/",
+    description: "Stake BTC, safeguard B², and receive $B2 Tokens",
+    chain: "BSquared",
+    logo: `${baseIconsUrl}/hive-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["BSquared"],
+    oracles: [], 
+    module: "hive-protocol/index.js",
+    twitter: "BsquaredNetwork",
+    listedAt: 1714741977
+  },
+  {
+    id: "4560",
+    name: "Sparkling Finance",
+    address: null,
+    symbol: "-", 
+    url: "https://sparkling-frontend-v1.vercel.app/",
+    description: "Sparkling Finance ensures the safety of sBUCK and BUCK for Bucket Protocol on SuiNetwork",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/sparkling-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Sui"],
+    oracles: [], 
+    module: "sparkling/index.js",
+    twitter: "SparklingF92798",
+    audit_links: [
+      "https://github.com/Sparkling-Finance/contract/blob/main/audit/Sparkling%20Finance%20Audit%20Report.pdf"
+    ],
+    listedAt: 1714741982
+  },
 ]
 
 export default data3

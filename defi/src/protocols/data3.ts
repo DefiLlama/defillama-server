@@ -41533,7 +41533,7 @@ const data3: Protocol[] = [
     name: "Sparkling Finance",
     address: null,
     symbol: "-", 
-    url: "https://sparkling-frontend-v1.vercel.app/",
+    url: "https://sparkling.finance/",
     description: "Sparkling Finance ensures the safety of sBUCK and BUCK for Bucket Protocol on SuiNetwork",
     chain: "Sui",
     logo: `${baseIconsUrl}/sparkling-finance.png`,
@@ -41545,7 +41545,7 @@ const data3: Protocol[] = [
     chains: ["Sui"],
     oracles: [], 
     module: "sparkling/index.js",
-    twitter: "SparklingF92798",
+    twitter: "sparkling_sui",
     audit_links: [
       "https://github.com/Sparkling-Finance/contract/blob/main/audit/Sparkling%20Finance%20Audit%20Report.pdf"
     ],

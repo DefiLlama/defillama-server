@@ -211,7 +211,7 @@ async function processProtocolList() {
 
   await handlerErrors(protocolErrors);
 
-  await storeR2JSONString("emissionsProtocolsList", JSON.stringify(protocolsArray));
+  await storeR2JSONString("emissionsProtocolsList", JSON.stringify([...new Set(protocolsArray)]));
 
   await storeR2JSONString("emissionsBreakdown", JSON.stringify(emissionsBrakedown));
 }
@@ -233,4 +233,4 @@ async function handlerErrors(errors: string[]) {
 }
 
 // export default wrapScheduledLambda(handler);
-handler(); // ts-node src/triggerStoreEmissions.ts
+handler(); // ts-node defi/src/storeEmissions.ts

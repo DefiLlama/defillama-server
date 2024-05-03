@@ -192,7 +192,7 @@ async function processProtocolList() {
 
   await setEnvSecrets();
   const protocolAdapters = Object.entries(adapters);
-  await PromisePool.withConcurrency(2)
+  await PromisePool.withConcurrency(5)
     .for(shuffleArray(protocolAdapters))
     .process(async ([protocolName, rawAdapter]) => {
       let adapters = typeof rawAdapter.default === "function" ? await rawAdapter.default() : rawAdapter.default;

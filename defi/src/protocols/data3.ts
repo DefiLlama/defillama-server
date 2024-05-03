@@ -300,7 +300,7 @@ const data3: Protocol[] = [
     name: "prePO",
     address: null,
     symbol: "-",
-    url: "https://app.prepo.io/",
+    url: "https://app.prepo.io/trade",
     description: "Go long or short on pre-IPO stocks & pre-IDO tokens.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/prepo.jpg`,
@@ -315,6 +315,7 @@ const data3: Protocol[] = [
     module: "prePo/index.js",
     twitter: "prepo_io",
     listedAt: 1679504121,
+    github: ["prepo-io"]
   },
   {
     id: "2713",
@@ -7519,7 +7520,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3037",
-    name: "Skate Fi", // previous Range Protocol 
+    name: "nor", // previous Range Protocol 
     address: null,
     symbol: "-",
     url: "https://www.rangeprotocol.com",
@@ -40051,15 +40052,15 @@ const data3: Protocol[] = [
   {
     id: "4493",
     name: "Lama Miner",
-    address: "0x89a8633bcad3af0951acc5137811ea21a17c37dc",
-    symbol: "LAMA",
+    address: null,
+    symbol: "-",
     url: "https://miner.avaxlama.com",
     description: "The Lama Miner protocol is crafted for yield farming to bolster the Lama ecosystem on the Avalanche C-chain. You can harvest up to 8% in daily rewards with $LAMA tokens",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/lama-miner.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "lama",
+    gecko_id: null,
     cmcId: null,
     category: "Ponzi",
     chains: ["Avalanche"],
@@ -40675,7 +40676,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.helixmarkets.io/",
-    description: "Start Trading Smarter, Faster, Safer. Today with Helix Markets",
+    description: "Bridging Web2 speed and Web3 security with a hybrid multi-chain orderbook exchange for seamless, secure trading.",
     chain: "ICP",
     logo: `${baseIconsUrl}/helix-markets.jpg`,
     audits: "0",
@@ -40684,7 +40685,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["ICP"],
-    module: "dummy.js",
+    module: "helix-markets/index.js",
     twitter: "HelixMarkets",
     oracles: [], 
     forkedFrom: [],

@@ -7520,7 +7520,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3037",
-    name: "nor", // previous Range Protocol 
+    name: "Skate Fi", // previous Range Protocol 
     address: null,
     symbol: "-",
     url: "https://www.rangeprotocol.com",
@@ -40052,15 +40052,15 @@ const data3: Protocol[] = [
   {
     id: "4493",
     name: "Lama Miner",
-    address: null,
-    symbol: "-",
+    address: "0x89a8633bcad3af0951acc5137811ea21a17c37dc",
+    symbol: "LAMA",
     url: "https://miner.avaxlama.com",
     description: "The Lama Miner protocol is crafted for yield farming to bolster the Lama ecosystem on the Avalanche C-chain. You can harvest up to 8% in daily rewards with $LAMA tokens",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/lama-miner.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "lama",
     cmcId: null,
     category: "Ponzi",
     chains: ["Avalanche"],

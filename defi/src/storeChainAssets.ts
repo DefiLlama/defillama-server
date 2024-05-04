@@ -5,12 +5,16 @@ import setEnvSecrets from "./utils/shared/setEnvSecrets";
 import { storeR2JSONString } from "./utils/r2";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import storeHistorical from "../l2/storeToDb";
+import { zklink } from "../l2/adapters";
 
 const chainMaps: { [chain: string]: string } = {
   avax: "avalanche",
   xdai: "gnosis",
   era: "zkSync Era",
   rsk: "rootstock",
+  nova: "Arbitrum Nova",
+  polygon_zkevm: "Polygon zkEVM",
+  zklink: "zkLink Nova"
 };
 async function getChainAssets() {
   const res: any = await chainAssets();

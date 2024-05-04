@@ -41541,7 +41541,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Restaking",
+    category: "Liquid Staking",
     chains: ["Sui"],
     oracles: [], 
     module: "sparkling/index.js",

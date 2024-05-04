@@ -2160,6 +2160,11 @@
       "decimals": "18",
       "symbol": "MIM",
       "to": "coingecko#magic-internet-money"
+    },
+    "0x0a3bb08b3a15a19b4de82f8acfc862606fb69a2d": {
+      "decimals": "18",
+      "symbol": "iUSD",
+      "to": "coingecko#izumi-bond-usd"
     }
   },
   "bitcoin": {
@@ -2336,6 +2341,11 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0xb5d8b1e73c79483d7750c5b8df8db45a0d24e2cf": {
+      "decimals": "18",
+      "symbol": "M-STONE",
+      "to": "coingecko#stakestone-ether"
     }
   },
   "naka": {
@@ -2606,6 +2616,26 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0x7537c1f80c9e157ed7afd93a494be3e1f04f1462": {
+      "decimals": "18",
+      "symbol": "BSTONE",
+      "to": "coingecko#stakestone-ether"
+    },
+    "0xc2fe4f673455ef92299770a09cdb5e8756a525d5": {
+      "decimals": "18",
+      "symbol": "FDUSD",
+      "to": "coingecko#first-digital-usd"
+    },
+    "0xd48d3a551757ac47655fce25bde1b0b6b1cb2a5a": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#weth"
+    },
+    "0xc3ee2df14b1bc526c24ed802f1873d49664a0d5c": {
+      "decimals": "18",
+      "symbol": "MATIC",
+      "to": "coingecko#matic-network"
     }
   },
   "planq": {

@@ -11,6 +11,9 @@ const chainMaps: { [chain: string]: string } = {
   xdai: "gnosis",
   era: "zkSync Era",
   rsk: "rootstock",
+  nova: "Arbitrum Nova",
+  polygon_zkevm: "Polygon zkEVM",
+  zklink: "zkLink Nova"
 };
 async function getChainAssets() {
   const res: any = await chainAssets();

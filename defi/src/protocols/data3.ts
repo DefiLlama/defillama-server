@@ -41551,6 +41551,31 @@ const data3: Protocol[] = [
     ],
     listedAt: 1714741982
   },
+  {
+    id: "4561",
+    name: "Ebisu Finance",
+    address: null,
+    symbol: "-", 
+    url: "https://ebisu.finance/",
+    description: "Ebisu allows users to draw dollar-denominated credit against LRTs via a decentralized stablecoin. ebUSD gives users access to a stable store of value while enabling yield generation through AVS rewards and Ethereum staking rewards. User can set and adjust their interest rate any time throughout the lifecycle of the loan",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ebisu-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum", "Mode"],
+    oracles: [], 
+    forkedFrom: ["Liquity"],
+    module: "ebisu-finance/index.js",
+    twitter: "Ebisu_Finance",
+    audit_links: [
+      "https://github.com/pashov/audits/blob/master/team/pdf/Ebisu-security-review.pdf",
+      "https://ebisu.finance/PeckShield-Audit-Report-EbisuVault-v1.0.pdf"
+    ],
+    listedAt: 1714835461
+  },
 ]
 
 export default data3

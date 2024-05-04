@@ -5,7 +5,6 @@ import setEnvSecrets from "./utils/shared/setEnvSecrets";
 import { storeR2JSONString } from "./utils/r2";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import storeHistorical from "../l2/storeToDb";
-import { zklink } from "../l2/adapters";
 
 const chainMaps: { [chain: string]: string } = {
   avax: "avalanche",

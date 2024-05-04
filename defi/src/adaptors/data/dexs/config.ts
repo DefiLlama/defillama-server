@@ -1118,6 +1118,7 @@ export default {
         "id": "614"
     },
     "myswap": {
+        parentId: "mySwap",
         "enabled": true,
         "id": "2367"
     },
@@ -2673,5 +2674,10 @@ export default {
     "merlinswap": {
         enabled: true,
         id: "4191"
+    },
+    "myswap-cl": {
+        parentId: "mySwap",
+        enabled: true,
+        id: "3887"
     }
 } as AdaptorsConfig

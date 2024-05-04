@@ -75,7 +75,7 @@ export async function initCache({ cacheType = 'cron' } = { cacheType: 'none' }) 
     Object.entries(_cache).forEach(([k, v]: any) => (cache as any)[k] = v)
 
     await setHistoricalTvlForAllProtocols()
-    await loadDimensionsCache()
+    // await loadDimensionsCache()
 
 
     // dont run it for local dev env

@@ -20,6 +20,8 @@ export const normalizedChainReplacements = {
   "viction": "tomochain",
   "bevm": "chainx",
   "bitnet": "btn",
+  "defichain evm": "defichain_evm",
+
 } as {
   [chain: string]: string
 }
@@ -30,7 +32,7 @@ export function normalizeChain(chain: string) {
 }
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted ?? (category === "Yield Aggregator" || category === "Yield");
+  return moduleDoubleCounted === true || (category === "Yield Aggregator" || category === "Yield");
 }
 
 export function isExcludedFromChainTvl(category?: string) {
@@ -2615,7 +2617,7 @@ export const chainCoingeckoIds = {
     geckoId: "xai-blockchain",
     symbol: "XAI",
     cmcId: "28374",
-    categories: ["EVM"],
+    categories: ["EVM", "Arbitrum Orbit"],
     parent: {
       chain: "Arbitrum",
       types: ["L3"]
@@ -2640,6 +2642,7 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
+    chainId: 81457,
     twitter: "Blast_L2",
     url: "https://blast.io",
   },
@@ -2651,6 +2654,7 @@ export const chainCoingeckoIds = {
     twitter: "BitRockChain",
     url: "https://www.bit-rock.io",
     github: ["BitrockChain"],
+    chainId: 7171
   },
   "Astar zkEVM": {
     geckoId: null,
@@ -2718,7 +2722,7 @@ export const chainCoingeckoIds = {
     url: "https://q.org/",
     chainId: 35441
   },
-  "zkLink": {
+  "zkLink Nova": {
     geckoId: "zklink",
     symbol: "ZKL",
     cmcId: null,
@@ -2751,6 +2755,189 @@ export const chainCoingeckoIds = {
     url: "https://www.immutable.com",
     chainId: 13371
   },
+  "Zora": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 7777777,
+    twitter: "ourZORA",
+    url: "https://zora.co"
+  },
+  "DeFiChain EVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 1130,
+    twitter: "defichain",
+    url: "https://defichain.com/"
+  },
+  "RSS3": {
+    geckoId: "rss3",
+    symbol: "RSS3",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "rss3_",
+    url: "https://rss3.io/"
+  },
+  "Bittensor": {
+    geckoId: "bittensor",
+    symbol: "TAO",
+    cmcId: "22974",
+    twitter: "opentensor",
+    url: "https://bittensor.com/"
+  },
+  "Degen": {
+    geckoId: "degen-base",
+    symbol: "DEGEN",
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Base",
+      types: ["L3"]
+    },
+    chainId: 666666666,
+    twitter: "degentokenbase",
+    url: "https://www.degen.tips"
+  },
+  "HAQQ": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "The_HaqqNetwork",
+    url: "https://haqq.network/",
+    github: ["haqq-network"],
+    chainId: "11235"
+  },
+  "SatoshiVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "satoshivm",
+    url: "https://www.satoshivm.io/",
+    github: ["SatoshiVM"],
+    chainId: "3109"
+  },
+  "Venom": {
+    geckoId: "venom",
+    symbol: "VENOM",
+    cmcId: "22059",
+    twitter: "VenomFoundation",
+    url: "https://venom.foundation/",
+    github: ["venom-blockchain"],
+  },
+  "Karak Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "Karak_Network",
+    url: "https://karak.network/",
+    chainId: "2410"
+  },
+  "Bitkub": {
+    geckoId: "bitkub-coin",
+    symbol: "KUB",
+    cmcId: "16093",
+    categories: ["EVM"],
+    twitter: "bitkubchain",
+    url: "https://www.bitkubchain.com",
+    github: ["bitkub-chain"],
+    chainId: 96
+  },
+  "Ancient8": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Optimism",
+      types: ["L3"]
+    },
+    chainId: 888888888,
+    twitter: "Ancient8_gg",
+    url: "https://ancient8.gg/"
+  },
+  "Hyperliquid": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "HyperliquidX",
+    url: "https://hyperliquid.xyz/"
+  },
+  "Nibiru": {
+    geckoId: "nibiru",
+    symbol: "NIBI",
+    cmcId: "28508",
+    twitter: "NibiruChain",
+    url: "https://nibiru.fi",
+  },
+  "BSquared": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "BSquaredNetwork",
+    url: "https://www.bsquared.network/"
+  },
+  "Lyra Chain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "lyrafinance",
+    url: "https://lyra.finance",
+    chainId: 957,
+  },
+  "Planq": {
+    geckoId: "planq",
+    symbol: "PLQ",
+    cmcId: "28804",
+    categories: ["EVM"],
+    twitter: "PlanqFoundation",
+    url: "https://planq.network",
+    github: ["planq-network"],
+    chainId: 7070,
+  },
+  "X Layer": {
+    geckoId: "x-layer",
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "OKTChain",
+      types: ["L2","gas"]
+    },
+    twitter: "okx",
+    url: "https://www.okx.com/xlayer"
+  },
+  "LaChain Network": {
+    geckoId: "la-coin",
+    symbol: "LAC",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 274,
+    twitter: "LaChain_Network",
+    url: "https://www.lachain.network"
+  },
+  "BOB": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    github: ["bob-collective"],
+    chainId: 60808,
+    twitter: "build_on_bob",
+    url: "https://www.gobob.xyz",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -2768,6 +2955,7 @@ chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
+chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -2821,6 +3009,8 @@ export function transformNewChainName(chain: string) {
       return "Oasis Sapphire"
     case "Oasis":
       return "Oasis Emerald"
+    case "zklink":
+      return "zkLink Nova"
     default:
       return chain
   }
@@ -3330,12 +3520,50 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Dymension"
     case "q":
       return "Q Protocol"
-    case "zklink":
-      return "zkLink"
+      case "zklink":
+        return useNewChainNames ? "zkLink Nova" : "zkLink"
     case "kinto":
       return "Kinto"
     case "imx":
       return "Immutable zkEVM"
+    case "zora":
+      return "Zora"
+    case "defichain_evm":
+      return "DeFiChain EVM"
+    case "rss3_vsl":
+      return "RSS3"
+    case "bittensor":
+      return "Bittensor"
+    case "degen":
+      return "Degen"
+    case "islm":
+      return "HAQQ"
+    case "svm":
+      return "SatoshiVM"
+    case "venom":
+      return "Venom"
+    case "karak":
+      return "Karak Network"
+    case "bitkub":
+      return "Bitkub"
+    case "ancient8":
+      return "Ancient8"
+    case "hyperliquid":
+      return "Hyperliquid"
+    case "nibiru":
+      return "Nibiru"
+    case "bsquared":
+      return "BSquared"
+    case "lyra":
+      return "Lyra Chain"
+    case "planq":
+      return "Planq"
+    case "xlayer":
+      return "X Layer"
+    case "lac":
+      return "LaChain Network"
+    case "bob":
+      return "BOB"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

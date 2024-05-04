@@ -4,9 +4,10 @@ import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
 import { call } from "@defillama/sdk/build/abi/index";
 const chain = "arbitrum";
-const steadefi_lv = "0xabbe8a66bad38982b27f1410dfa0de329ae2a5da"; // WBTC lv
-const copra_staedefi_wbtc = "0xEBEF5e91fDD3fc713Ce1E1e30F87C9a12cd0FA3a";
-const wad = 1e18;
+
+const name = "WBTC Lend WBTC-USDC GMX";
+const steadefi_lv = "0xabbe8a66bad38982b27f1410dfa0de329ae2a5da"; //WBTC  lv
+const wad = 1e8;
 
 export default async function getTokenPrice(timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
@@ -20,14 +21,7 @@ async function contractCalls(
   writes: Write[],
   timestamp: number,
 ) {
-  const [balanceOfCopra, lvTokenValue, tokenInfos] = await Promise.all([
-    call({
-      target: copra_staedefi_wbtc, // steadefi_lv,
-      params: steadefi_lv, // copra_staedefi_wbtc,
-      chain,
-      abi: "erc20:balanceOf",
-      block,
-    }),
+  const [lvTokenValue, tokenInfos] = await Promise.all([
     call({
       target: steadefi_lv,
       chain,
@@ -36,8 +30,12 @@ async function contractCalls(
     }),
     getTokenInfo(chain, [steadefi_lv], block),
   ]);
-
-  const price = (lvTokenValue.output * balanceOfCopra.output) / wad;
+  const [{ price: priceWBTC }] = await getTokenAndRedirectData(
+    ["0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f"],
+    "arbitrum",
+    timestamp,
+  );
+  const price = (lvTokenValue.output * priceWBTC) / wad;
 
   addToDBWritesList(
     writes,
@@ -47,7 +45,7 @@ async function contractCalls(
     tokenInfos.decimals[0].output,
     tokenInfos.symbols[0].output,
     timestamp,
-    "1L-WBTCUSDC-GMX",
+    name,
     1,
   );
 }

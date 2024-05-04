@@ -1,24 +1,35 @@
 import getTVLOfRecordClosestToTimestamp from "../src/utils/shared/getRecordClosestToTimestamp";
-import { getCurrentUnixTimestamp } from "../../high-usage/defiCode/utils/date";
+import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { AllProtocols, DollarValues, McapData, TokenTvlData } from "./types";
 import { aggregateChainTokenBalances } from "./utils";
-import { canonicalBridgeIds, chainsWithoutCanonicalBridges, protocolBridgeIds, zero } from "./constants";
+import { canonicalBridgeIds, chainsWithoutCanonicalBridges, geckoSymbols, protocolBridgeIds, zero } from "./constants";
 import BigNumber from "bignumber.js";
 
 let allProtocols: AllProtocols = {};
 
-export default async function fetchBridgeUsdTokenTvls(timestamp: number, searchWidth: number): Promise<void> {
-  if (Object.keys(allProtocols).length) return;
+export default async function fetchBridgeUsdTokenTvls(
+  timestamp: number,
+  searchWidth: number,
+  persist: boolean = true,
+  usd: boolean = true
+): Promise<AllProtocols | void> {
+  const allProtocolsTemp: AllProtocols = persist ? allProtocols : {};
+  if (Object.keys(allProtocolsTemp).length) return;
   const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds)];
-  const usdTokenBalances: any[] = await Promise.all(
-    ids.map((i: string) => getTVLOfRecordClosestToTimestamp(`hourlyUsdTokensTvl#${i}`, timestamp, searchWidth))
+  const tokenBalances: any[] = await Promise.all(
+    ids.map((i: string) =>
+      getTVLOfRecordClosestToTimestamp(`hourly${usd ? "Usd" : ""}TokensTvl#${i}`, timestamp, searchWidth)
+    )
   );
 
   ids.map((id: string, i: number) => {
-    if (usdTokenBalances[i].SK == null) {
-      console.error(`missing hourlyUsdTokensTvl for id ${id}`);
-    } else allProtocols[id] = usdTokenBalances[i];
+    if (tokenBalances[i].SK == null) {
+      console.error(`missing hourly${usd ? "Usd" : ""}TokensTvl for id ${id}`);
+    } else allProtocolsTemp[id] = tokenBalances[i];
   });
+
+  if (persist) allProtocols = allProtocolsTemp;
+  return allProtocolsTemp;
 }
 
 export async function fetchTvls(
@@ -54,11 +65,13 @@ function sortCanonicalBridgeBalances(isProtocol: boolean): { data: TokenTvlData;
 
     const bigNumberBalances: DollarValues = {};
     Object.keys(data.tvl).map((s: string) => {
-      bigNumberBalances[s] = BigNumber(data.tvl[s]);
+      const symbol = geckoSymbols[s.replace("coingecko:", "")] ?? s.toUpperCase();
+      bigNumberBalances[symbol] = BigNumber(data.tvl[s]);
     });
     if (data.staking) {
       Object.keys(data.staking).map((s: string) => {
-        bigNumberBalances[s] = BigNumber(data.staking[s]);
+        const symbol = geckoSymbols[s.replace("coingecko:", "")] ?? s.toUpperCase();
+        bigNumberBalances[symbol] = BigNumber(data.staking[s]);
       });
     }
 

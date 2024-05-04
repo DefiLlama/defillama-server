@@ -17,6 +17,12 @@ export async function getTokenInfo(
 ): Promise<DbTokenInfos> {
   const { withSupply = false, timestamp } = params;
   targets = targets.map((i) => i.toLowerCase());
+  if (chain === 'solana') {
+    console.error('Solana not supported')
+    const decimals = targets.map(() => ({ output: 0, success: true }))
+    const symbols = targets.map(() => ({ output: '-', success: true }))
+    return { decimals, symbols, } as any
+  }
 
   const api = new sdk.ChainApi({ chain, block, timestamp });
   const [decimals, symbols] = await Promise.all([
@@ -38,6 +44,25 @@ export async function getTokenInfo(
     symbols,
   };
 }
+
+export async function getTokenInfoMap(chain: string = "ethereum", targets: string[]) {
+  const res = await getTokenInfo(chain, targets, undefined);
+  const map: {
+    [address: string]: {
+      symbol: string;
+      decimals: number;
+    };
+  } = {};
+  res.decimals.forEach((d, i) => {
+    if (!res.symbols[i].success || !d.success) return;
+    map[targets[i]] = {
+      symbol: res.symbols[i].output,
+      decimals: d.output,
+    };
+  });
+  return map;
+}
+
 interface Lp {
   address: string;
   primaryUnderlying: string;

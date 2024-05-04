@@ -43,54 +43,54 @@ export default {
         "enabled": true,
         "id": "797"
     },
-    "pancakeswap": {
-        "enabled": true,
-        "id": "194",
-        parentId: "PancakeSwap",
-        protocolsData: {
-            v1: {
-                "disabled": true,
-                enabled: true,
-                "id": "2590"
-            },
-            v2: {
-                enabled: true,
-                "id": "194"
-            },
-            stableswap: {
-                "enabled": true,
-                "id": "2529",
-                startFrom: 1663718400
-            },
-            v3: {
-                "enabled": true,
-                "id": "2769"
-            }
-        },
-    },
+    // "pancakeswap": {
+    //     "enabled": true,
+    //     "id": "194",
+    //     parentId: "PancakeSwap",
+    //     protocolsData: {
+    //         v1: {
+    //             "disabled": true,
+    //             enabled: true,
+    //             "id": "2590"
+    //         },
+    //         v2: {
+    //             enabled: true,
+    //             "id": "194"
+    //         },
+    //         stableswap: {
+    //             "enabled": true,
+    //             "id": "2529",
+    //             startFrom: 1663718400
+    //         },
+    //         v3: {
+    //             "enabled": true,
+    //             "id": "2769"
+    //         }
+    //     },
+    // },
     "raydium": {
         "enabled": true,
         "id": "214"
     },
-    "uniswap": {
-        "enabled": true,
-        "id": "1",
-        parentId: "Uniswap",
-        "protocolsData": {
-            "v1": {
-                "enabled": true,
-                "id": "2196"
-            },
-            "v2": {
-                "enabled": true,
-                "id": "2197"
-            },
-            "v3": {
-                "enabled": true,
-                "id": "2198"
-            },
-        },
-    },
+    // "uniswap": {
+    //     "enabled": true,
+    //     "id": "1",
+    //     parentId: "Uniswap",
+    //     "protocolsData": {
+    //         "v1": {
+    //             "enabled": true,
+    //             "id": "2196"
+    //         },
+    //         "v2": {
+    //             "enabled": true,
+    //             "id": "2197"
+    //         },
+    //         "v3": {
+    //             "enabled": true,
+    //             "id": "2198"
+    //         },
+    //     },
+    // },
     "traderjoe": {
         "enabled": true,
         "id": "468",
@@ -161,7 +161,13 @@ export default {
     },
     "dodo": {
         "enabled": true,
-        "id": "146"
+        "id": "146",
+        protocolsData: {
+            "dodo": {
+                "id": "146",
+                enabled: true,
+            }
+        }
     },
     "velodrome": {
         parentId: "Velodrome",
@@ -666,7 +672,7 @@ export default {
         "id": "261"
     },
     "xexchange": {
-        "enabled": true,
+        "enabled": false,
         "id": "854"
     },
     "defichain-dex": {
@@ -851,10 +857,10 @@ export default {
         "enabled": true,
         "id": "2102"
     },
-    "stellarx": {
-        "enabled": true,
-        "id": "972"
-    },
+    // "stellarx": {
+    //     "enabled": true,
+    //     "id": "972"
+    // },
     "ultronswap": {
         "enabled": true,
         "id": "2032"
@@ -1155,6 +1161,7 @@ export default {
     },
     "el-dorado-exchange": {
         "enabled": true,
+        disabled: true,
         "id": "2356",
         parentId: "EDE",
         "protocolsData": {
@@ -2507,6 +2514,7 @@ export default {
         }
     },
     "merchant-moe": {
+        parentId: "Merchant Moe",
         "enabled": true,
         "id": "4006"
     },
@@ -2520,10 +2528,10 @@ export default {
         "enabled": true,
         "id": "3908"
     },
-    "Scopuly": {
-        "enabled": true,
-        "id": "4181"
-    },
+    // "Scopuly": {
+    //     "enabled": true,
+    //     "id": "4181"
+    // },
     "standard-mode": {
         "enabled": true,
         "id": "4186"
@@ -2590,8 +2598,80 @@ export default {
         "id": "4342",
         enabled: true,
     },
-    "glyph-exchange": {
-        "id": "4347",
+    "swop": {
         enabled: true,
+        id: "613"
+    },
+    "javsphere": {
+        enabled: true,
+        id: "4366"
+    },
+    "keller": {
+        enabled: true,
+        id: "4388"
+    },
+    "savmswap": {
+        enabled: true,
+        id: "4422"
+    },
+    "hbarsuite-dex": {
+        enabled: true,
+        id: "4467",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1712793600": true
+            }
+        }
+    },
+    "fjord-foundry": {
+        enabled: true,
+        id: "4505",
+        parentId: "Fjord Foundry",
+        protocolsData: {
+            "v2": {
+                enabled: true,
+                id: "4505"
+            },
+            "v1": {
+                enabled: true,
+                id: "4557"
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1713744000": true,
+                "1713657600": true
+            },
+        }
+    },
+    "hercules": {
+        parentId: "Hercules",
+        id: "4372",
+        enabled: true,
+    },
+    "hercules-v3": {
+        parentId: "Hercules",
+        id: "4373",
+        enabled: true
+    },
+    "zklite": {
+        enabled: true,
+        id: "4519"
+    },
+    "helix-markets": {
+        enabled: true,
+        id: "4521"
+    },
+    "revoswap": {
+        enabled: true,
+        id: "4510"
+    },
+    "glowswap": {
+        enabled: true,
+        id: "4515"
+    },
+    "merlinswap": {
+        enabled: true,
+        id: "4191"
     }
 } as AdaptorsConfig

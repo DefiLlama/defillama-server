@@ -1,20 +1,26 @@
 import { Chain } from "@defillama/sdk/build/general";
+import providers from "@defillama/sdk/build/providers.json";
 import { Address } from "@defillama/sdk/build/types";
-import { canonicalBridgeIds, mixedCaseChains } from "../constants";
+import { allChainKeys, mixedCaseChains } from "../constants";
 import fetch from "node-fetch";
 import { additional, excluded } from "./manual";
 import axios from "axios";
 
 let bridgePromises: { [bridge: string]: Promise<any> } = {};
-const chains = Object.values(canonicalBridgeIds);
 const addresses: { [chain: Chain]: Address[] } = {};
-chains.map((c: string) => (addresses[c] = []));
+allChainKeys.map((c: string) => (addresses[c] = []));
 let doneAdapters: string[] = [];
 let mappingDone: boolean = false;
+
 const chainMap: { [chain: string]: string } = {
   binance: "bsc",
   avalanche: "avax",
 };
+
+const chainIdMap: { [id: number]: string } = {};
+Object.keys(providers).map((c: string) => {
+  chainIdMap[providers[c as keyof typeof providers].chainId] = c;
+});
 
 const axelar = async (): Promise<void> => {
   const bridge = "axelar";
@@ -27,7 +33,7 @@ const axelar = async (): Promise<void> => {
     Object.keys(token.addresses).map((chain: string) => {
       let normalizedChain: string = chain;
       if (chain in chainMap) normalizedChain = chainMap[chain];
-      if (!chains.includes(normalizedChain)) return;
+      if (!allChainKeys.includes(normalizedChain)) return;
       if (!("address" in token.addresses[chain])) return;
       addresses[normalizedChain].push(token.addresses[chain].address.toLowerCase());
     });
@@ -76,7 +82,23 @@ const wormhole = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
-const adapters = [axelar(), wormhole()];
+const celer = async (): Promise<void> => {
+  const bridge = "celer";
+  if (!(bridge in bridgePromises))
+    bridgePromises[bridge] = fetch("https://cbridge-prod2.celer.app/v2/getTransferConfigsForAll").then((r) => r.json());
+  const data = await bridgePromises[bridge];
+  if (doneAdapters.includes(bridge)) return;
+  data.pegged_pair_configs.map((pp: any) => {
+    const chain = chainIdMap[pp.org_chain_id];
+    let normalizedChain: string = chain;
+    if (chain in chainMap) normalizedChain = chainMap[chain];
+    if (!allChainKeys.includes(normalizedChain)) return;
+    addresses[normalizedChain].push(pp.pegged_token.token.address.toLowerCase());
+  });
+  doneAdapters.push(bridge);
+};
+
+const adapters = [axelar(), wormhole(), celer()];
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
   await Promise.all(adapters);
   const filteredAddresses: { [chain: Chain]: Address[] } = {};

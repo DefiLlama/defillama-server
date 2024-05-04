@@ -45,7 +45,8 @@ export type IStoreAdaptorDataHandlerEvent = {
 }
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  const { timestamp, adapterType, protocolNames, maxConcurrency = 13 } = event
+  const defaultMaxConcurrency = event.adapterType === AdapterType.DEXS ? 8 : 31
+  let { timestamp, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency } = event
   console.info(`- timestamp: ${timestamp}`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
   const isTimestampProvided = timestamp !== undefined
@@ -78,13 +79,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     acc.push(...chains as Chain[])
     return acc
   }, [] as Chain[]).filter(canGetBlock)
-  const chainBlocks: ChainBlocks = {};
   await Promise.all(
     allChains.map(async (chain) => {
       try {
-        const latestBlock = await getBlock(toTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
-        if (latestBlock)
-          chainBlocks[chain] = latestBlock
+        const latestBlock = await getBlock(toTimestamp, chain, {}).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
       } catch (e) { console.log(e) }
     })
   );
@@ -97,7 +95,11 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     .for(protocols)
     .process(runAndStoreProtocol)
 
-  const shortenString = (str: string, length: number = 250) => str.length > length ? str.slice(0, length) + '...' : str
+  const shortenString = (str: string, length: number = 250) => {
+    if (typeof str !== 'string') str = JSON.stringify(str)
+    if (str === undefined) return `undefined`
+    return str.length > length ? str.slice(0, length) + '...' : str
+  }
 
   const errorObjects = errors.map(({ raw, item, message }: any) => {
     return {
@@ -160,6 +162,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
         if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 3)
           throw new Error('This Adapter can be run only around current time') // allow run current time if within 3 hours
+        const chainBlocks = {} // WARNING: reset chain blocks for each adapter, sharing this between v1 & v2 adapters that have different end timestamps have nasty side effects
         const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }

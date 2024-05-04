@@ -6,7 +6,7 @@ export function validateEnv() {
   const ENV = process.env
   const isCoolifyTask = ENV.IS_COOLIFY_TASK === 'true'
 
-  if (isCoolifyTask) requiredEnvVars.push('TVL_CACHE_DB_HOST_INTERNAL')
+  // if (isCoolifyTask) requiredEnvVars.push('TVL_CACHE_DB_HOST_INTERNAL')
 
   if (requiredEnvVars.some((envVar) => !ENV[envVar]))
     throw new Error(`Missing required environment variables: ${requiredEnvVars.join(', ')}`)
@@ -17,7 +17,7 @@ export default function getTvlCacheEnv() {
 
   if (!process.env.tableName) process.env.tableName = 'prod-table'
   if (!process.env.AWS_REGION) process.env.AWS_REGION = 'eu-central-1'
-  if (!process.env.API2_CACHE_DIR) process.env.API2_CACHE_DIR = '/api2-cache'
+  if (!process.env.API2_CACHE_DIR) process.env.API2_CACHE_DIR = __dirname + '/.api2-cache'
 
   const isCoolifyTask = ENV.IS_COOLIFY_TASK === 'true'
 

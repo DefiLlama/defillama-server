@@ -183,6 +183,8 @@ functions:
       - http:
           path: block/{chain}/{timestamp}
           method: get
+    environment:
+      LLAMA_PROVIDER_RPC_GET_BLOCKNUMBER_TIMEOUT: 3000
   corsPreflight:
     handler: src/corsPreflight.default
     events:

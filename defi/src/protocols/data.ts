@@ -384,7 +384,7 @@ const data: Protocol[] = [
     address: "0x431ad2ff6a9c365805ebad47ee021148d6f7dbe0",
     symbol: "DF",
     url: "https://dforce.network/",
-    description: "dForce network is an ecosystem of protocols aiming to be a full stack solution for DeFi.",
+    description: "Permissionless liquidity network built for Web3. dForce has developed a comprehensive suite of web3 infrastructure protocols, including standardized decentralized stablecoins, general money markets, yield tokens, RWA tokens, and more. We are also committed to developing protocols that can significantly enhance liquidity in the Bitcoin L2, DePIN, and decentralized AI ecosystems",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/DF.svg`,
     audits: "2",
@@ -1167,7 +1167,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "alpha-finance",
     cmcId: "7232",
-    category: "Yield",
+    category: "Leveraged Farming",
     chains: ["Ethereum", "Avalanche", "Fantom", "Optimism"],
     module: "alpha-homora/index.js",
     twitter: "Alpha_HomoraV2",
@@ -1819,9 +1819,9 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon", "Optimism", "Arbitrum"],
     module: "dhedge.js",
     twitter: "dHedgeOrg",
-    audit_links: ["https://iosiro.com/audits/dhedge-platform-smart-contract-audit", "https://www.certik.com/projects/dhedge"],
     governanceID: ["snapshot:gov.dhedge.eth"],
-    github: ["dhedge"]
+    github: ["dhedge"],
+    audit_links: ["https://iosiro.com/audits/dhedge-platform-smart-contract-audit", "https://www.certik.com/projects/dhedge"],
   },
   {
     id: "191",
@@ -3596,7 +3596,6 @@ const data: Protocol[] = [
     twitter: null,
     audit_links: ["https://docs.acoconut.fi/security"],
     governanceID: ["snapshot:acoconutbsc.eth", "snapshot:acoconut.eth"],
-    github: ["nutsfinance"]
   },
   {
     id: "274",
@@ -5171,20 +5170,19 @@ const data: Protocol[] = [
   },
   {
     id: "347",
-    name: "Abracadabra",
+    name: "Abracadabra Spell",
     address: "0x090185f2135308bad17527004364ebcc2d37e5f6",
     symbol: "SPELL",
     url: "https://abracadabra.money/",
     description:
       "Abracadabra.money is a spell book that allows users to produce magic internet money ($MIM) which is a stable coin that you can swap for any other traditional stable coin.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/abracadabra.svg`,
+    logo: `${baseIconsUrl}/abracadabra-spell.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "spell-token",
-    cmcId: "11289",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
-    treasury: "abracadabra.js",
     chains: ["Arbitrum", "Avalanche", "Binance", "Blast", "Ethereum", "Fantom", "Kava", "Optimism"],
     module: "abracadabra/index.js",
     twitter: "MIM_Spell",
@@ -5198,10 +5196,8 @@ const data: Protocol[] = [
       kava: ["RedStone"],
       optimism: ["Chainlink"],
     },
+    parentProtocol: "parent#abracadabra",
     audit_links: ["https://abracadabramoney.gitbook.io/learn/our-ecosystem/our-contracts"],
-    governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"],
-    stablecoins: ["magic-internet-money"],
-    github: ["Abracadabra-money"]
   },
   {
     id: "348",
@@ -5453,7 +5449,7 @@ const data: Protocol[] = [
     symbol: "FXS",
     url: "https://frax.finance/",
     description:
-      "Inventors of the fractional stablecoin. $FRAX is the 1st stablecoin with parts backed & parts algorithmic",
+      "FRAX is a dollar-pegged stablecoin that uses AMO smart contracts and permissionless, non-custodial subprotocols as stability mechanisms. The two internal subprotocols used as stability mechanisms are Fraxlend, a decentralized lending market and Fraxswap, an automated market maker (AMM) with special features. The external subprotocol used as a stability mechanism is Curve. Additional subprotocols and AMOs can be added with governance allowing FRAX to incorporate future stability mechanisms seamlessly as they are discovered",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/frax.jpg`,
     audits: "2",
@@ -5527,12 +5523,12 @@ const data: Protocol[] = [
     gecko_id: "perpetual-protocol",
     cmcId: "1301",
     category: "Derivatives",
-    chains: ["xDai"],
+    chains: ["Optimism"],
     module: "perp/index.js",
     treasury: "perpetual-protocol.js",
     twitter: "perpprotocol",
     audit_links: ["https://docs.perp.fi/library/audit-report"],
-    oracles: ["Chainlink"],
+    oracles: ["Pyth"], // https://v3docs.perp.com/perp-v3/docs-for-users/how-perp-v3-works/pyth-oracles
     governanceID: ["snapshot:vote-perp.eth", "snapshot:perp-temp-check.eth"],
     github: ["perpetual-protocol"]
   },
@@ -7418,7 +7414,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Dexes", // tvl also counts lending/cdp product
-    chains: ["Icon", "Archway"],
+    chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective"],
     module: "balanced/index.js",
     twitter: "BalancedDAO",
     audit_links: ["https://docs.balanced.network/security#smart-contract-audits"],
@@ -8521,7 +8517,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "StakeSteak",
     address: "fantom:0x05848B832E872d9eDd84AC5718D58f21fD9c9649",
     symbol: "STEAK",
-    url: "https://stakesteak.app/",
+    url: "",
     description: "The first Fantom-native, interest-bearing Stable Coin: iFUSD",
     chain: "Fantom",
     logo: `${baseIconsUrl}/stakesteak.png`,
@@ -10648,7 +10644,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "shapeshift/index.js",
     treasury: "shapeshift.js",
-    twitter: "ShapeShift_io",
+    twitter: "ShapeShift",
     governanceID: ["snapshot:shapeshiftdao.eth"],
     github: ["shapeshift"]
   },
@@ -10739,6 +10735,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     oracles: [],
   },
+  /*
   {
     id: "603",
     name: "Socean",
@@ -10765,6 +10762,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     github: ["igneous-labs"],
     openSource: false,
   },
+  */
   {
     id: "604",
     name: "Sherlock",
@@ -11016,10 +11014,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Ponzi",
     chains: ["Binance"],
     module: "bnbminer/index.js",
     twitter: "Da_Developer",
+    deadUrl: true
   },
   {
     id: "616",
@@ -11232,7 +11231,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "626",
-    name: "Reserve",
+    name: "Reserve Protocol",
     address: "0x320623b8e4ff03373931769a31fc52a4e78b5d70",
     symbol: "RSR",
     url: "https://reserve.org",
@@ -11250,7 +11249,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "reserveprotocol",
     audit_links: ["https://reserve.org/protocol/security/?search=audit#s-result"],
     stablecoins: ["electronic-usd", "reserve"],
-    github: ["reserve-protocol"]
+    github: ["reserve-protocol"],
+    governanceID: [
+      "eip155:1:0x7e880d8bD9c9612D6A9759F96aCD23df4A4650E6",
+    ],
   },
   {
     id: "627",
@@ -11571,7 +11573,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Arrakis V1",
     address: null,
     symbol: "-",
-    url: "https://www.arrakis.finance",
+    url: "https://app.arrakis.fi/vaults",
     description:
       "Arrakis is a protocol that specializes in concentrated & active liquidity management. By creating a curated marketplace of novel tokenized LP strategies, Arrakis facilitates deep liquidity and optimizes LP earnings across its vaults.",
     chain: "Ethereum",
@@ -12109,11 +12111,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Ponzi",
     chains: ["Binance", "Fantom", "Avalanche", "Polygon"],
     module: "multichainMiner.js",
     twitter: "multichainminer",
     listedAt: 1634038934,
+    deadUrl: true
   },
   {
     id: "666",
@@ -13086,7 +13089,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "PSTAKE",
     url: "https://pstake.finance",
     description:
-      "pSTAKE is a liquid staking protocol unlocking the liquidity of staked assets. Stakers of PoS tokens can now stake their assets while maintaining the liquidity of these assets. On staking with pSTAKE, users earn staking rewards and also receive 1:1 pegged staked representative tokens (stkTOKENs) which can be used in DeFi to generate additional yield (yield on top of staking rewards).",
+      "pSTAKE Finance is a multichain liquid staking protocol for BNB Chain, Solana, Cosmos, and beyond, backed by Binance Labs. Users can securely stake the biggest crypto assets and receive liquid staked tokens (LSTs) called stkTokens that can be used in DeFi to generate additional yield. stkTokens offers one of the highest DeFi yields, thanks to low fees and partnerships with the biggest DeFi ecosystems. pSTAKE Finance helps decentralize networks with its unique stake delegation strategy, powered by an intelligent algorithm based on on-chain decentralization parameters.",
     chain: "Persistence",
     logo: `${baseIconsUrl}/pstake-finance.png`,
     audits: "2",
@@ -14162,7 +14165,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink", "TWAP", "RedStone","Pyth"],
     listedAt: 1635962344,
     governanceID: ["snapshot:anglegovernance.eth", "compound:ethereum:0x59153e939c5b4721543251ff3049ea04c755373b"],
-    stablecoins: ["ageur"],
+    stablecoins: ["eura"],
     github: ["AngleProtocol"]
   },
   {
@@ -14260,20 +14263,20 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "781",
-    name: "Klima DAO",
+    name: "KlimaDAO",
     address: "polygon:0x4e78011ce80ee02d2c3e649fb657e45898257815",
     symbol: "KLIMA",
     url: "https://www.klimadao.finance",
     description:
-      "Klima DAO is a Decentralised Autonomous Organisation for change. Klima DAO develops infrastructure incentives that fulfill our manifesto, through primitives such as the KLIMA token. We will also solve the critical problems of the carbon markets: illiquidity, opacity and inefficiency.",
+      "KlimaDAO is a public good for the planet, fostering the adoption of a new category of real world assets (RWA) on the blockchain: environmental assets like carbon credits.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/klima-dao.jpg`,
+    logo: `${baseIconsUrl}/klimadao.png`,
     audits: "1",
     audit_links: ["https://omniscia.io/klimadao-algorithmic-bonding-system/"],
     audit_note: null,
     gecko_id: "klima-dao",
     cmcId: "12873",
-    category: "Reserve Currency",
+    category: "Services",
     chains: ["Polygon"],
     module: "klima-dao/index.js",
     treasury: "klima-dao.js",
@@ -18458,6 +18461,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1638580947,
     github: ["nftbmarket"]
   },
+  /*
   {
     id: "972",
     name: "StellarX",
@@ -18478,6 +18482,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "stellarxhq",
     listedAt: 1638583658,
   },
+  */
   {
     id: "973",
     name: "XEUS",
@@ -21416,14 +21421,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1109",
-    name: "APWine",
+    name: "Spectra", // previous APWine 
     address: "0x4104b135dbc9609fc1a9490e61369036497660c8",
     symbol: "APW",
-    url: "https://apwine.fi",
+    url: "https://www.spectra.finance/",
     description:
       "Speculate on the evolution of the yield generated by different DeFi protocols. Hedge your risk on your passive revenue, converting it into futures. Tokenise the yield generated by your interest-bearing tokens. APWine splits your interest-bearing assets into Principal Tokens and Future Yield Tokens. Sell your APYs ahead of time. Claim your yield at maturity.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/apwine.jpg`,
+    logo: `${baseIconsUrl}/spectra.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "apwine",
@@ -21431,7 +21436,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield Aggregator",
     chains: ["Ethereum", "Polygon"],
     module: "apwine/index.js",
-    twitter: "APWineFinance",
+    twitter: "spectra_finance",
     governanceID: ["snapshot:apwine.eth"],
     listedAt: 1640630028,
     github: ["APWine"]

@@ -86,10 +86,15 @@ export async function updateCompounds() {
     await Promise.all(ids.map(updateCache))
   }
 
-  await addSNSProposals(overview)
-  await addICPProposals(overview)
-  await addTaggrProposals(overview)
-  await setCompoundOverview(overview)
+  const fns = [addICPProposals, addSNSProposals, addTaggrProposals, setCompoundOverview]
+
+  for (const fn of fns) {
+    try {
+      await fn(overview)
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   async function updateCache(id: string) {
     if (id === NNS_GOV_ID) return;
@@ -214,10 +219,10 @@ export async function updateCompounds() {
         let start = 0
         let end = 0
         if (startBlock !== 0)
-          start = (await provider.getBlock(toHex(startBlock)))?.timestamp
+          start = (await provider.getBlock(toHex(startBlock)))?.timestamp ?? 0
 
         if (endBlock !== 0)
-          end = (await provider.getBlock(toHex(endBlock)))?.timestamp
+          end = (await provider.getBlock(toHex(endBlock)))?.timestamp ?? 0
 
         const scores = [+forVotes, +againstVotes, +abstainVotes,]
         const scores_total = scores.reduce((acc, i) => acc + i, 0)

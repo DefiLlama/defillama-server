@@ -4,7 +4,7 @@ import { McapData, TokenTvlData, DollarValues } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { Address } from "@defillama/sdk/build/types";
-import { zero } from "./constants";
+import { geckoSymbols, ownTokens, zero } from "./constants";
 import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { fetchAdaTokens } from "./adapters/ada";
@@ -35,11 +35,21 @@ export async function fetchMinted(params: {
         });
 
         if (chain == "cardano") storedTokens = await fetchAdaTokens();
+
+        const ownTokenCgid: string | undefined = ownTokens[chain]?.address.startsWith("coingecko:")
+          ? ownTokens[chain].address
+          : undefined;
+        if (ownTokenCgid) storedTokens.push(ownTokenCgid);
+
         // do these in order to lighten rpc, rest load
         const prices = await getPrices(
-          storedTokens.map((t: string) => `${chain}:${t}`),
+          storedTokens.map((t: string) => (t.startsWith("coingecko:") ? t : `${chain}:${t}`)),
           timestamp
         );
+        Object.keys(prices).map((p: string) => {
+          if (p.startsWith("coingecko:")) prices[p].decimals = 0;
+        });
+        const mcaps = await getMcaps(Object.keys(prices), timestamp);
 
         const supplies = await fetchSupplies(
           chain,
@@ -47,7 +57,8 @@ export async function fetchMinted(params: {
           params.timestamp
         );
 
-        const mcaps = await getMcaps(Object.keys(prices), timestamp);
+        if (ownTokenCgid && ownTokenCgid in mcaps)
+          supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
 
         function findDollarValues() {
           Object.keys(mcaps).map((t: string) => {
@@ -55,18 +66,18 @@ export async function fetchMinted(params: {
             const mcapInfo = mcaps[t];
             const supply = supplies[t];
             if (!priceInfo || !supply || !mcapInfo) return;
-            if (!(priceInfo.symbol in dollarValues)) dollarValues[priceInfo.symbol] = zero;
+            const symbol = geckoSymbols[priceInfo.symbol.replace("coingecko:", "")] ?? priceInfo.symbol.toUpperCase();
+            if (!(symbol in dollarValues)) dollarValues[symbol] = zero;
             const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
             const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);
-            if (usdValue.isGreaterThan(BigNumber(1e12))) {
+            if (t != "coingecko:bitcoin" && usdValue.isGreaterThan(BigNumber(1e12))) {
               console.log(`token ${t} on ${chain} has over a trillion usdValue LOL`);
               return;
             }
-            mcapData[chain][priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
-            if (priceInfo.symbol in mcapData.total)
-              mcapData.total[priceInfo.symbol].native = mcapData.total[priceInfo.symbol].native.plus(usdValue);
-            else mcapData.total[priceInfo.symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
-            dollarValues[priceInfo.symbol] = BigNumber(usdValue).plus(dollarValues[priceInfo.symbol]);
+            mcapData[chain][symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
+            if (symbol in mcapData.total) mcapData.total[symbol].native = mcapData.total[symbol].native.plus(usdValue);
+            else mcapData.total[symbol] = { native: usdValue, total: BigNumber(mcapInfo.mcap) };
+            dollarValues[symbol] = BigNumber(usdValue).plus(dollarValues[symbol]);
           });
         }
 

@@ -17,19 +17,46 @@ type StoreTvlOptions = {
   overwriteExistingData?: boolean,
 }
 
+function compressTVL(obj: tvlsObject<TokensValueLocked>, hourlyPK: string) {
+  const isUSDValue = /usd/i.test(hourlyPK);
+  Object.keys(obj).forEach((key) => {
+    Object.keys(obj[key]).forEach((coinKey) => {
+      let value = obj[key][coinKey]
+
+      if (coinKey === '') {
+        delete obj[key][coinKey]
+        coinKey = '()'
+        obj[key][coinKey] = value
+      }
+
+      /* if (isUSDValue) {
+        value = +value
+        if (isNaN(value)) return;
+        obj[key][coinKey] = Math.round(obj[key][coinKey]);
+      } */
+    });
+  });
+}
 
 export default async ({ protocol, unixTimestamp, tvl, hourlyTvl, dailyTvl, storePreviousData, overwriteExistingData, }: StoreTvlOptions) => {
   const hourlyPK = hourlyTvl(protocol.id);
   if (Object.keys(tvl).length === 0) {
     return;
   }
+  const isDDBFailOK = /tokens/i.test(hourlyPK)
+  compressTVL(tvl, hourlyPK);
 
-  await dynamodb.put({
-    PK: hourlyPK,
-    SK: unixTimestamp,
-    ...tvl,
-  });
-  const data = { id: protocol.id, timestamp: unixTimestamp, data: tvl }
+  try {
+    await dynamodb.put({ PK: hourlyPK, SK: unixTimestamp, ...tvl, });
+  } catch (e) {
+    if (!isDDBFailOK) {
+      throw e;
+    } else {
+      console.error(`Failed to write ${hourlyPK} ${unixTimestamp}`, (e as any).toString());
+      // console.error(`Failed to write ${hourlyPK} ${unixTimestamp}`, (e as any).toString(), JSON.stringify(tvl));
+    }
+  }
+
   const dayTimestamp = getTimestampAtStartOfDay(unixTimestamp);
 
   const checkForOutliersCoins = hourlyPK.includes("hourlyUsdTokensTvl") && storePreviousData
@@ -43,14 +70,19 @@ export default async ({ protocol, unixTimestamp, tvl, hourlyTvl, dailyTvl, store
     await checkForOutlierCoins(tvl, closestDailyRecord!, protocol.name);
 
   if (overwriteExistingData || getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp) || storePreviousData === false) {
-    // First write of the day
-    await dynamodb.put({
-      PK: dailyTvl(protocol.id),
-      SK: dayTimestamp,
-      ...tvl,
-    });
+
+    try {
+      await dynamodb.put({ PK: dailyTvl(protocol.id), SK: dayTimestamp, ...tvl, });
+    } catch (e) {
+      if (!isDDBFailOK) {
+        throw e;
+      } else {
+        console.error(`Failed to write ${dailyTvl(protocol.id)} ${unixTimestamp}`, (e as any).toString());
+      }
+    }
   }
 
+  const data = { id: protocol.id, timestamp: unixTimestamp, data: tvl }
   const writeOptions = { overwriteExistingData };
   await Promise.all([
     saveProtocolItem(hourlyTvl, data, writeOptions),

@@ -106,7 +106,7 @@ export default {
     },
     "litecoin": {
         "enabled": true,
-        "id": "2"
+        "id": "4499"
     },
     "looksrare": {
         "enabled": true,
@@ -148,30 +148,30 @@ export default {
         "enabled": true,
         "id": "383"
     },
-    "pancakeswap": {
-        parentId: "PancakeSwap",
-        protocolsData: {
-            v1: {
-                "disabled": true,
-                enabled: true,
-                "id": "2590"
-            },
-            v2: {
-                enabled: true,
-                "id": "194"
-            },
-            stableswap: {
-                "enabled": true,
-                "id": "2529"
-            },
-            v3: {
-                "enabled": true,
-                "id": "2769"
-            }
-        },
-        "enabled": true,
-        "id": "194"
-    },
+    // "pancakeswap": {
+    //     parentId: "PancakeSwap",
+    //     protocolsData: {
+    //         v1: {
+    //             "disabled": true,
+    //             enabled: true,
+    //             "id": "2590"
+    //         },
+    //         v2: {
+    //             enabled: true,
+    //             "id": "194"
+    //         },
+    //         stableswap: {
+    //             "enabled": true,
+    //             "id": "2529"
+    //         },
+    //         v3: {
+    //             "enabled": true,
+    //             "id": "2769"
+    //         }
+    //     },
+    //     "enabled": true,
+    //     "id": "194"
+    // },
     "pangolin": {
         "enabled": true,
         "id": "246"
@@ -242,25 +242,25 @@ export default {
             }
         }
     },
-    "uniswap": {
-        "enabled": true,
-        "id": "1",
-        parentId: "Uniswap",
-        "protocolsData": {
-            "v1": {
-                "enabled": true,
-                "id": "2196"
-            },
-            "v2": {
-                "enabled": true,
-                "id": "2197"
-            },
-            "v3": {
-                "enabled": true,
-                "id": "2198"
-            },
-        },
-    },
+    // "uniswap": {
+    //     "enabled": true,
+    //     "id": "1",
+    //     parentId: "Uniswap",
+    //     "protocolsData": {
+    //         "v1": {
+    //             "enabled": true,
+    //             "id": "2196"
+    //         },
+    //         "v2": {
+    //             "enabled": true,
+    //             "id": "2197"
+    //         },
+    //         "v3": {
+    //             "enabled": true,
+    //             "id": "2198"
+    //         },
+    //     },
+    // },
     "velodrome": {
         parentId: "Velodrome",
         "enabled": true,
@@ -551,6 +551,7 @@ export default {
     },
     "el-dorado-exchange": {
         parentId: "EDE",
+        disabled: true,
         "enabled": true,
         "id": "2356"
     },
@@ -685,12 +686,12 @@ export default {
         enabled: true,
         id: "2332"
     },
-    "camelot": {
+    "camelot-v2": {
         parentId: "Camelot",
         enabled: true,
         id: "2307"
     },
-    "thena": {
+    "thena-v1": {
         name: "Thena V1",
         displayName: "Thena V1",
         enabled: true,
@@ -705,7 +706,7 @@ export default {
             },
         }
     },
-    "ramses-exchange": {
+    "ramses-exchange-v1": {
         parentId: "Ramses Exchange",
         enabled: false,
         id: "2675"
@@ -1329,6 +1330,7 @@ export default {
         "id": "2974"
     },
     "blazebot": {
+        disabled: true,
         "enabled": true,
         "id": "3527"
     },
@@ -1965,5 +1967,102 @@ export default {
     "fx-protocol": {
         enabled: true,
         id: "3344"
+    },
+    "swop": {
+        enabled: true,
+        id: "613"
+    },
+    "javsphere": {
+        enabled: true,
+        id: "4366"
+    },
+    "frax-amo": {
+        parentId: "Frax Finance",
+        enabled: true,
+        id: "359"
+    },
+    "keller": {
+        enabled: true,
+        id: "4388"
+    },
+    "koi-finance": {
+        enabled: true,
+        id: "2727"
+    },
+    "ash-perp": {
+        enabled: true,
+        id: "4426"
+    },
+    "optionBlitz": {
+        enabled: true,
+        id: "4396"
+    },
+    "pumpdotfun": {
+        enabled: true,
+        id: "4449"
+    },
+    "synthetix-v3": {
+        enabled: true,
+        id: "4446"
+    },
+    "beefy": {
+        enabled: true,
+        id: "326"
+    },
+    "etaswap": {
+        "enabled": true,
+        "id": "4475"
+    },
+    "swych": {
+        enabled: true,
+        id: "4365",
+    },
+    "wbtc": {
+        "enabled": true,
+        "id": "2"
+    },
+    "yologames": {
+        enabled: true,
+        id: "4495"
+    },
+    "fjord-foundry": {
+        enabled: true,
+        id: "4505",
+        parentId: "Fjord Foundry",
+        protocolsData: {
+            "v2": {
+                enabled: true,
+                id: "4505"
+            },
+            "v1": {
+                enabled: true,
+                id: "4557"
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1713744000": true,
+                "1713657600": true
+            },
+        }
+    },
+    "grizzly-trade-derivatives-v2": {
+        enabled: true,
+        id: "4506",
+    },
+    "merchant-moe-dex": {
+        parentId: "Merchant Moe",
+        enabled: true,
+        id: "4006"
+    },
+    "hercules-v2": {
+        parentId: "Hercules",
+        id: "4372",
+        enabled: true,
+    },
+    "hercules-v3": {
+        parentId: "Hercules",
+        id: "4373",
+        enabled: true
     }
 } as AdaptorsConfig

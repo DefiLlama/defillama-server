@@ -36,7 +36,6 @@ function extractDefaultTokens(content: any) {
 
   // Removing leading comma if any
   const formattedJson = formattedJsonStr.replace(/,\s*]/g, ']').replace(/,\s*}/g, '}');
-  console.log(formattedJson.slice(750, 805))
 
   try {
     const defaultTokens = JSON.parse(formattedJson);
@@ -46,5 +45,3 @@ function extractDefaultTokens(content: any) {
     return null;
   }
 }
-
-bridge().then(console.log).catch(console.error)

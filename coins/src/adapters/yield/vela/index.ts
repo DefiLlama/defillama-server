@@ -7,7 +7,6 @@ import { addToDBWritesList } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 
 export function vela(timestamp: number = 0) {
-  console.log("starting vela");
   return Promise.all(
     Object.keys(allContracts).map((c) => getTokenPrices(c, timestamp)),
   );

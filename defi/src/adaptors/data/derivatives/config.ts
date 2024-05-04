@@ -36,7 +36,7 @@ export default {
             }
         }
     },
-    "synfutures": {
+    "synfutures-v1": {
         parentId: "SynFutures",
         "enabled": false,
         "id": "2328"
@@ -279,10 +279,6 @@ export default {
         "enabled": false,
         "id": "1801"
     },
-    "unidex": {
-        "enabled": true,
-        "id": "1833"
-    },
     "satori": {
         "enabled": true,
         "id": "2982",
@@ -512,6 +508,7 @@ export default {
     "rabbitx": {
         "enabled": true,
         "id": "2886",
+        parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1700524800": true,
@@ -681,8 +678,9 @@ export default {
         "id": "4045"
     },
     "blastfutures": {
-        "enabled": false,
+        "enabled": true,
         "id": "4221",
+        parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1709337600": true,
@@ -731,6 +729,60 @@ export default {
     },
     "myx-finance": {
         enabled: true,
-        "id": "4319"
+        "id": "4319",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1712620800": true,
+                "1712534400": true,
+            },
+        }
+    },
+    "logx": {
+        enabled: true,
+        id: "3396",
+        protocolsData: {
+            "derivative": {
+                enabled: true,
+                id: "3396",
+            }
+        }
+    },
+    "swych": {
+        enabled: true,
+        id: "4365",
+    },
+    "ash-perp": {
+        enabled: true,
+        id: "4426"
+    },
+    "synthetix-v3": {
+        enabled: true,
+        id: "4446"
+    },
+    "increment-protocol": {
+        enabled: true,
+        id: "4382",
+    },
+    "lyra": {
+        enabled: true,
+        id: "3923",
+    },
+    "grizzly-trade-derivatives-v2": {
+        enabled: true,
+        id: "4506",
+    },
+    "unidex": {
+        "enabled": true,
+        "id": "1833",
+        protocolsData: {
+            "unidex": {
+                "enabled": true,
+                "id": "1833"
+            }
+        }
+    },
+    "bsx": {
+        enabled: true,
+        id: "4458",
     }
 } as AdaptorsConfig

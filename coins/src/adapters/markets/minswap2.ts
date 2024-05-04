@@ -14,7 +14,6 @@ const api: AxiosInstance = axios.create({
 })
 
 export function minswap(timestamp: number) {
-  console.log("starting minswap");
   return Promise.all([
     getTokenPrices(timestamp),
   ])
@@ -37,11 +36,20 @@ async function getPools() {
     if (!cache[token]) {
       try {
         const { data } = await api.get(`assets/${token}`)
-        const { metadata: { name, ticker, decimals }, asset, policy_id } = data
-        cache[token] = { name, ticker, decimals, policy_id }
+        if (!data) continue;
+        const { metadata, asset, policy_id, onchain_metadata_standard, onchain_metadata } = data
+        let { name, ticker, decimals } = metadata ?? {}
+        if (!metadata) {
+          if (!onchain_metadata)
+            throw new Error('no metadata')
+          name = onchain_metadata.name
+          ticker = onchain_metadata.ticker ?? onchain_metadata.symbol ?? name
+          decimals = 0
+        }
+        cache[token] = { name, ticker, decimals, policy_id, metadataStandard: onchain_metadata_standard }
         cacheUpdated = true
       } catch (e) {
-        console.error('error fetching token data', token, e)
+        console.error('minswap: error fetching token data', token, (e as any).toString())
         pool.token = token
         pool.ticker = 'unknown'
         pool.decimals = 0
@@ -50,7 +58,7 @@ async function getPools() {
       }
     }
 
-    response.push({  ...pool, ...cache[token], token, decimals: cache[token].decimals ?? 0})
+    response.push({ ...pool, ...cache[token], token, decimals: cache[token].decimals ?? 0 })
   }
   if (cacheUpdated) {
     await setCache('minswap-metadata', 'cardano', cache)
@@ -77,6 +85,5 @@ async function getTokenPrices(timestamp: number) {
   })
   // console.table(priceLog)
 
-  console.log(writes.length)
   return writes
 }

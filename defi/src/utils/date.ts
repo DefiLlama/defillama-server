@@ -2,6 +2,7 @@ export const secondsBetweenCalls = 60 * 60;
 export const secondsBetweenCallsExtra = secondsBetweenCalls * 1.5; // 1.5 to add some wiggle room
 export const secondsInDay = 60 * 60 * 24;
 export const secondsInWeek = secondsInDay * 7;
+export const secondsInMonth = secondsInDay*30;
 export const secondsInHour = 60 * 60;
 export const HOUR = 3600;
 export const DAY = HOUR * 24;

@@ -37,12 +37,8 @@ export default {
     id: "3154",
   },
   "bitkeep": {
-    enabled: true,
-    id: "3207",
-  },
-  "logx": {
     enabled: false,
-    id: "3396",
+    id: "3207",
   },
   "jumper-exchange": {
     enabled: true,
@@ -88,9 +84,15 @@ export default {
     enabled: true,
     id: "189",
   },
-  "zrx": {
+  "0x": {
     enabled: true,
     id: "2116",
+    protocolsData: {
+      "zrx": {
+        enabled: true,
+        id: "2116",
+      }
+    }
   },
   "cowswap": {
     enabled: true,
@@ -114,9 +116,15 @@ export default {
     enabled: true,
     id: "3927",
   },
-  "dodo-agg": {
+  "dodo": {
     enabled: true,
     id: "146",
+    protocolsData: {
+      "dodo-agg": {
+        enabled: true,
+        id: "146",
+      }
+    }
   },
   "paraswap": {
     enabled: true,
@@ -145,12 +153,18 @@ export default {
     enabled: true,
     id: "3980",
   },
-  "unidex": {
-    enabled: false,
-    id: "1833",
-  },
+  // "unidex": {
+  //   "enabled": true,
+  //   "id": "1833",
+  //   protocolsData: {
+  //       "unidex-dexs-agg": {
+  //           "enabled": true,
+  //           "id": "1833"
+  //       }
+  //   }
+  // },
   "swapgpt": {
-    enabled: true,
+    enabled: false,
     id: "4008",
   },
   "kanalabs": {
@@ -180,5 +194,19 @@ export default {
   "fibrous-finance": {
     "enabled": true,
     "id": "4278"
+  },
+  "aperture-swap": {
+    parentId: "Aperture Finance",
+    "enabled": true,
+    "id": "3554"
+  },
+  "magpie": {
+    "enabled": true,
+    "id": "4457"
+  },
+  "etaswap": {
+    "enabled": true,
+    "id": "4475"
   }
+
 } as AdaptorsConfig;

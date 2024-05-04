@@ -426,7 +426,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
           const token = await api.call({ target: pool, abi: 'function coins(uint256) view returns (address)', params: [i] })
           tokens.push(token)
         } catch (e) {
-          console.log('failed to get token', e)
+          // console.log('failed to get token', e)
           i = 1000;
         }
       } while (i++ < 10)

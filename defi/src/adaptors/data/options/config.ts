@@ -89,5 +89,21 @@ export default {
         parentId: "Lyra",
         "enabled": true,
         "id": "3923"
+    },
+    "optionBlitz": {
+        enabled: false, //sus behavior
+        id: "4396"
+    },
+    "smilee-finance": {
+        enabled: true,
+        id: "4350"
+    },
+    "moby": {
+        enabled: true,
+        id: "4452"
+    },
+    "ithaca": {
+        enabled: true,
+        id: "4418"
     }
 } as AdaptorsConfig

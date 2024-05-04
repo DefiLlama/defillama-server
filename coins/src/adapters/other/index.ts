@@ -23,36 +23,44 @@ import defiChainAdapter from "./defichain";
 import velgAdapter from "./velgd";
 import steadefiEth from "./steadefi_eth";
 import steadefiWbtc from "./steadefi_wbtc";
+import steadefiUsdArb from "./steadefi_usdc_arb";
+import steadefiUsdEth from "./steadefi_usdc_eth";
+import steadefiUsdLink from "./steadefi_usdc_link";
+import steadefiUsdWbtc from "./steadefi_usdc_wbtc";
 import opdxAdapter from "./odpxWethLP";
 import teahouseAdapter from "./teahouse";
+import gmdV2 from "./gmdV2";
+import { getApi } from "../utils/sdk";
+import getWrites from "../utils/getWrites";
 
 export { glp };
 
 export const shlb = shlb_;
 
 export function steadefi(timestamp: number = 0) {
-  console.log("starting steadefi");
-  return Promise.all([steadefiEth(timestamp), steadefiWbtc(timestamp)]);
+  return Promise.all([
+    steadefiEth(timestamp),
+    steadefiWbtc(timestamp),
+    steadefiUsdArb(timestamp),
+    steadefiUsdEth(timestamp),
+    steadefiUsdLink(timestamp),
+    steadefiUsdWbtc(timestamp),
+  ]);
 }
 export function teahouse(timestamp: number = 0) {
-  console.log("starting teahouse");
   return teahouseAdapter(timestamp);
 }
 export function opdx(timestamp: number = 0) {
-  console.log("starting opdx");
   return opdxAdapter(timestamp);
 }
 export function defiChain(timestamp: number = 0) {
-  console.log("starting defiChain");
   return defiChainAdapter(timestamp);
 }
 export function synthetix(timestamp: number = 0) {
-  console.log("starting synthetix");
   return synthetixAdapter(timestamp);
 }
 
 export function metronome(timestamp: number = 0) {
-  console.log("starting metronome");
   return Promise.all(
     Object.keys(metronomeContracts).map((chain) =>
       metronomeAdapter(chain, timestamp),
@@ -61,11 +69,9 @@ export function metronome(timestamp: number = 0) {
 }
 
 export function abracadabra(timestamp: number = 0) {
-  console.log("starting abracadabra");
   return abraAdapter(timestamp);
 }
 export function unknownTokens(timestamp: number = 0) {
-  console.log("starting unknownTokens");
   return Promise.all([
     unknownTokenAdapter(
       timestamp,
@@ -79,7 +85,6 @@ export function unknownTokens(timestamp: number = 0) {
   ]);
 }
 export function unknownTokens2(timestamp: number = 0) {
-  console.log("starting unknownTokens2");
   return Promise.all([
     unknownTokenAdapter(
       timestamp,
@@ -236,11 +241,9 @@ export function unknownTokens2(timestamp: number = 0) {
   ]);
 }
 export function pods(timestamp: number = 0) {
-  console.log("starting pods");
   return podsAdapter(timestamp);
 }
 export function distressed(timestamp: number = 0) {
-  console.log("starting distressed");
   return Promise.all(
     Object.keys(contracts).map((chain: string) =>
       distressedAdapter(chain, timestamp),
@@ -248,7 +251,6 @@ export function distressed(timestamp: number = 0) {
   );
 }
 export function manualInput(timestamp: number = 0) {
-  console.log("starting manualInputs");
   return Promise.all([
     manualInputAdapter("evmos", timestamp),
     manualInputAdapter("arbitrum", timestamp),
@@ -259,14 +261,12 @@ export function manualInput(timestamp: number = 0) {
   ]);
 }
 export function realt(timestamp: number = 0) {
-  console.log("starting realt");
   return Promise.all([
     realtAdapter("ethereum", timestamp),
     realtAdapter("xdai", timestamp),
   ]);
 }
 export function collateralizedAssets(timestamp: number = 0) {
-  console.log("starting collateralized assets");
   return collateralizedAdapter("arbitrum", timestamp, [
     {
       token: "0x52c64b8998eb7c80b6f526e99e29abdcc86b841b", // DSU
@@ -276,20 +276,16 @@ export function collateralizedAssets(timestamp: number = 0) {
   ]);
 }
 export function sweth(timestamp: number = 0) {
-  console.log("starting sweth");
   return swethAdapter(timestamp);
 }
 export function gmd(timestamp: number = 0) {
-  console.log("starting gmd");
   return gmdAdapter(timestamp);
 }
 export function stkaurabal(timestamp: number = 0) {
-  console.log("starting stkaurabal");
   return stkaurabalAdapter(timestamp);
 }
 
 export async function buck(timestamp: number = 0) {
-  console.log("starting buck");
   const THIRY_MINUTES = 1800;
   if (+timestamp !== 0 && timestamp < +new Date() / 1e3 - THIRY_MINUTES)
     throw new Error("Can't fetch historical data");
@@ -339,11 +335,52 @@ export async function buck(timestamp: number = 0) {
 }
 
 export async function mooBvm(timestamp: number = 0) {
-  console.log("starting moo bvm eth");
   return mooBvmAdapter(timestamp);
 }
 
 export async function velgd(timestamp: number = 0) {
-  console.log("starting velgd");
   return velgAdapter(timestamp);
+}
+
+
+export async function salt(timestamp: number = 0) {
+  const chain = 'ethereum'
+  const api = await getApi(chain, timestamp)
+  const price = await api.call({ abi: 'uint256:priceSALT', target: '0x22096408044Db49A4eB871640b351Ccacb675ED6' })
+  const egETH = '0x18f313Fc6Afc9b5FD6f0908c1b3D476E3feA1DD9'
+  const egETHPrice = await api.call({ abi: 'uint256:exchangeRateToNative', target: egETH })
+  const pricesObject = {
+    [egETH]: { price: egETHPrice / 1e18, underlying: '0x0000000000000000000000000000000000000000', },
+  }
+  const writes: Write[] = []
+  await getWrites({ chain, timestamp, writes, pricesObject, projectName: "egETH", })
+  addToDBWritesList(writes, chain, '0x0110B0c3391584Ba24Dbf8017Bf462e9f78A6d9F', price / 1e18, 18, 'SALT', timestamp, "salty", 0.95,)
+  return writes;
+}
+
+export const adapters = {
+  defiChain,
+  shlb,
+  metronome,
+  buck,
+  synthetix,
+  glp,
+  abracadabra,
+  unknownTokens,
+  unknownTokens2,
+  pods,
+  distressed,
+  manualInput,
+  realt,
+  collateralizedAssets,
+  sweth,
+  gmd,
+  stkaurabal,
+  mooBvm,
+  velgd,
+  steadefi,
+  teahouse,
+  opdx,
+  gmdV2,
+  salt,
 }

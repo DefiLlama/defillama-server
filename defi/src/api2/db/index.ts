@@ -98,9 +98,11 @@ async function initializeTVLCacheDB({
     }
 
     if (ENV.isCoolifyTask) {
-      dbOptions.host = ENV.internalHost
+      if (ENV.internalHost) {
+        dbOptions.host = ENV.internalHost
+        delete dbOptions.port
+      }
       // metricsDbOptions.host = ENV.metrics_internalHost
-      delete dbOptions.port
       // delete metricsDbOptions.port
     }
 

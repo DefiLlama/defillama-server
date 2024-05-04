@@ -3602,7 +3602,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1538",
-    name: "Risk Harbor",
+    name: "Risk Harbor", // https://prnt.sc/6aWrFV4VhHoN its the same team
     address: null,
     symbol: "-",
     url: "https://www.riskharbor.com/",
@@ -3621,8 +3621,7 @@ const data2: Protocol[] = [
     twitter: "riskharbor",
     audit_links: ["https://docs.riskharbor.com/contracts/security-audits"],
     listedAt: 1647046245,
-    governanceID: ["snapshot:riskharbor.eth"],
-    github: ["Risk-Harbor"]
+    parentProtocol: "parent#subseaprotocol" // https://prnt.sc/6aWrFV4VhHoN its the same team
   },
   {
     id: "1539",
@@ -3793,7 +3792,7 @@ const data2: Protocol[] = [
     cmcId: "20604",
     category: "Lending",
     chains: ["Near"],
-    oracles: [],
+    oracles: [], 
     forkedFrom: [],
     module: "burrow.cash/index.js",
     twitter: "burrow_finance",
@@ -4480,8 +4479,8 @@ const data2: Protocol[] = [
   {
     id: "1577",
     name: "Sturdy V1",
-    address: null,
-    symbol: "-",
+    address: "0xaeb3607ec434454ceb308f5cd540875efb54309a",
+    symbol: "STRDY",
     url: "https://app.sturdy.finance",
     description: "Sturdy is a first of its kind DeFi protocol for interest-free borrowing and high yield lending. Rather than charging borrowers interest, Sturdy stakes their collateral and passes the yield to lenders. This model changes the relationship between borrowers and lenders to make Sturdy the first positive-sum lending protocol.",
     chain: "Fantom",
@@ -5343,7 +5342,7 @@ const data2: Protocol[] = [
     name: "Polynomial Earn",
     address: null,
     symbol: "-",
-    url: "https://earn.polynomial.fi/",
+    url: "https://trade.polynomial.fi",
     description: "Polynomial automates financial derivative strategies to create products that deliver passive yield on various assets",
     chain: "Optimism",
     logo: `${baseIconsUrl}/polynomial-earn.png`,
@@ -6048,6 +6047,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "luchadores/index.js",
+    treasury: "luchadores.js",
     twitter: "LuchadoresNFT",
     listedAt: 1649793203,
     github: ["luchadores-community"]
@@ -9583,7 +9583,7 @@ const data2: Protocol[] = [
     chains: ["Sui", "Aptos"],
     oraclesByChain: {
       sui: ["Supra"], // https://github.com/DefiLlama/defillama-server/pull/5169
-      aptos: [],
+      aptos: ["Pyth"] // https://doc-en.mole.fi/security/oracle
     },
     forkedFrom: [],
     module: "mole/index.js",
@@ -9900,26 +9900,26 @@ const data2: Protocol[] = [
   },
   {
     id: "1820",
-    name: "Unipilot",
-    address: "0x37c997b35c619c21323f3518b9357914e8b99525",
-    symbol: "PILOT",
-    url: "https://unipilot.io",
-    description: "Unipilot optimizes your Uniswap v3 liquidity, keeping it concentrated around the current trading price to maximize returns and minimize gas costs.",
+    name: "A51 Finance V2", // rebrand from Unipilot
+    address: "polygon:0xe9E7c09e82328c3107d367f6c617cF9977e63ED0",
+    symbol: "A51",
+    url: "https://a51.finance",
+    description: "A51 Finance is an Autonomous Liquidity Provisioning (ALP) protocol offering customizable tools for creating tailored liquidity strategies empowering LPs with dynamic adjustments based on their preferences",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/unipilot.png`,
+    logo: `${baseIconsUrl}/a51-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "unipilot",
-    cmcId: "11113",
+    gecko_id: null,
+    cmcId: null,
     category: "Liquidity manager",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
     module: "unipilot/index.js",
-    twitter: "unipilot_io",
+    twitter: "A51_Fi",
     audit_links: ["https://github.com/Unipilot/unipilot-audits"],
     listedAt: 1655152786,
-    github: ["Unipilot"]
+    parentProtocol: "parent#a51-finance",
   },
   {
     id: "1821",
@@ -11129,13 +11129,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1875",
-    name: "Atlendis",
+    name: "Atlendis V1",
     address: null,
     symbol: "-",
     url: "https://app.atlendis.io",
     description: "Atlendis is a capital-efficient DeFi lending protocol that enables crypto loans without collateral.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/atlendis.png`,
+    logo: `${baseIconsUrl}/atlendis-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -11146,9 +11146,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "atlendis/index.js",
     twitter: "AtlendisLabs",
+    parentProtocol: "parent#atlendis",
     audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/atlendis-audit-report.pdf"],
     listedAt: 1656855449,
-    github: ["Atlendis"]
   },
   {
     id: "1876",
@@ -11606,6 +11606,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "sideshift/index.js",
     twitter: "sideshiftai",
+    treasury: "sideshift-ai.js",
     listedAt: 1657711223,
     github: ["sideshift"]
   },
@@ -13049,8 +13050,8 @@ const data2: Protocol[] = [
   {
     id: "1961",
     name: "Scallop Lend",
-    address: null,
-    symbol: "-",
+    address: "sui:0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA",
+    symbol: "SCA",
     url: "https://scallop.io",
     description: "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
     chain: "Solana",
@@ -13060,7 +13061,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Solana"],
+    chains: ["Sui"],
     module: "scallop/index.js",
     oracles: ['Supra', 'Switchboard', 'Pyth'], // https://github.com/DefiLlama/defillama-server/pull/5152/
     forkedFrom: [],
@@ -13380,7 +13381,7 @@ const data2: Protocol[] = [
     name: "DogeSwapOrg",
     address: null,
     symbol: "-",
-    url: "https://dogeswap.org/#/swap",
+    url: "", // https://dogeswap.org/#/swap leads to an ad not a dapp
     description: "A clone of Uniswap V2 on Dogechain",
     chain: "Dogechain",
     logo: `${baseIconsUrl}/dogeswaporg.png`,
@@ -15783,6 +15784,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "pluto/index.js",
     twitter: "whenPluto",
+    treasury: "pluto.js",
     listedAt: 1662996198
   },
   {
@@ -15855,7 +15857,6 @@ const data2: Protocol[] = [
       "https://docs.google.com/document/d/1joxRpf1D-KoACf7h1xnB72YkPYKxd27oDX-9axTbIQw/edit#heading=h.mnockoickb7e" //Insurance
     ],
     listedAt: 1663144131,
-    github: ["RageTrade"]
   },
   {
     id: "2087",
@@ -16995,13 +16996,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2138",
-    name: "FX Swap",
-    address: "functionx:0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
-    symbol: "WFX",
-    url: "https://fx-swap.io/#/swap",
-    description: "A scalable, open and decentralized ecosystem, enabling all to build entirely on and for the blockchain.",
+    name: "MarginX DEX", // previous FX Swap
+    address: null,
+    symbol: "-",
+    url: "https://swap.marginx.io/#/swap",
+    description: "MarginX is a decentralised exchange (DEX) that enables crypto projects, traders and DeFi enthusiasts the freedom to list, trade and provide liquidity.",
     chain: "FunctionX",
-    logo: `${baseIconsUrl}/fx-swap.jpg`,
+    logo: `${baseIconsUrl}/marginx-dex.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -17011,7 +17012,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "fxswap/index.js",
-    twitter: "FUNCTIONX_IO",
+    twitter: "marginx_io",
+    parentProtocol: "parent#marginx",
     listedAt: 1664487928
   },
   {
@@ -20666,6 +20668,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Avalanche"],
     module: "emdx/index.js",
+    oracles: ["Stork"], // https://twitter.com/emdx_io/status/1772968245407916052
     twitter: "emdx_io",
     audit_links: [
       "https://github.com/emdx-dex/perpetual-protocol/blob/emdx/main/audit/2021-12%20EMDX%20Protocol%20Audit.final.pdf"
@@ -22098,7 +22101,7 @@ const data2: Protocol[] = [
     module: "mummy/index.js",
     twitter: "mummyftm",
     forkedFrom: ["GMX V1"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.mummy.finance/trade/trading-v2/platform-mechanics/pyth-price-feed
     governanceID: ["snapshot:mmyvote.eth"],
     listedAt: 1671034969,
   },
@@ -22148,22 +22151,22 @@ const data2: Protocol[] = [
   },
   {
     id: "2364",
-    name: "Butter Swap", //previous Butter Network
+    name: "Butter Network", //previous Butter Swap
     address: null,
     symbol: "-",
     url: "https://www.butterswap.io/swap",
     description:
-      "Built upon the Bitcoin L2 MAP Protocol, ButterSwap is the first ZK light-client cross-chain aggregator swap that minimized ZK verification time and optimized gas fees. Exchange between popular chains & BTC ecosystem in one click!",
+        "Butter is an Omnichain Interoperability Hub integrated with ZK technology that enables users with global DAPP accessibility and data availability, building an infrastructure that makes transactions transverse across chain to chain freely and securely.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/butter-swap.png`,
+    logo: `${baseIconsUrl}/butter-network.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Cross Chain",
-    chains: ["Polygon", "Near", "Binance", "Map"],
+    chains: ["Polygon", "Near", "Binance", "Map", "Ethereum", "Merlin"],
     module: "butternetwork/index.js",
-    twitter: "ButterSwapio",
+    twitter: "ButterNetworkio",
     forkedFrom: [],
     oracles: [],
     listedAt: 1671145989,
@@ -23831,6 +23834,7 @@ const data2: Protocol[] = [
     category: "NFT Lending",
     chains: ["Ethereum"],
     module: "arcade-xyz/index.js",
+    treasury: "arcade-xyz.js",
     twitter: "Arcade_xyz",
     oracles: [],
     forkedFrom: [],
@@ -25170,9 +25174,9 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://rehold.io",
     description:
-      "ReHold is an innovative protocol that offers the first Dual investments in DeFi. High APRs are accessible due to DEXs' Liquidity Pools with an effective price range for concentrated liquidity.",
+      "AI-powered financial ecosystem on Bitcoin to buy, swap, earn, or trade your crypto with up to 100x leverage",
     chain: "Binance",
-    logo: `${baseIconsUrl}/rehold-v1.png`,
+    logo: `${baseIconsUrl}/rehold-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -25955,7 +25959,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2528",
-    name: "SolidLizard",
+    name: "SolidLizard Dex",
     address: "arbitrum:0x463913D3a3D3D291667D53B8325c598Eb88D3B0e",
     symbol: "SLIZ",
     url: "https://solidlizard.finance/",
@@ -25965,7 +25969,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/solidlizard.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "solidlizard",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Arbitrum"],
@@ -25973,7 +25977,7 @@ const data2: Protocol[] = [
     twitter: "solidlizardfi",
     oracles: [],
     forkedFrom: ["Solidly"],
-    governanceID: ["snapshot:solidlizardfinance.eth"],
+    parentProtocol: "parent#solidlizard",
     listedAt: 1676230053
   },
   {
@@ -26179,8 +26183,8 @@ const data2: Protocol[] = [
   {
     id: "2538",
     name: "Parcl V2",
-    address: null,
-    symbol: "-",
+    address: "solana:4LLbsb5ReP3yEtYzmXewyGjcir5uXtKFURtaEUVC2AHs",
+    symbol: "PRCL",
     url: "https://www.parcl.co",
     description: "Real estate synthetics built on Solana. Buy and short real estate markets around the world.",
     chain: "Solana",
@@ -28183,12 +28187,12 @@ const data2: Protocol[] = [
   },
   {
     id: "2626",
-    name: "ether.fi",
+    name: "ether.fi Stake",
     address: null,
     symbol: "-",
-    url: "https://app.ether.fi",
+    url: "https://app.ether.fi/eeth",
     description:
-      "Decentralized and non-custodial Ethereum staking protocol..",
+      "Decentralized and non-custodial Ethereum staking protocol.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ether.fi.jpg`,
     audits: "0",
@@ -28201,6 +28205,7 @@ const data2: Protocol[] = [
     twitter: "ether_fi",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "parent#ether-fi",
     listedAt: 1677778460
   },
   {
@@ -29097,7 +29102,7 @@ const data2: Protocol[] = [
     name: "Arrakis V2",
     address: null,
     symbol: "-",
-    url: "https://beta.arrakis.finance/vaults",
+    url: "https://app.arrakis.fi/v2-vaults",
     description: "Arrakis V2 is a next-generation market-making infrastructure built on top of Uniswap V3. Its unique functionalities allow the creation and automated execution of sophisticated market-making strategies on Uniswap V3 that previously were only feasible on CEXs.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/arrakis-v2.jpg`,

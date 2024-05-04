@@ -5,11 +5,11 @@ export default async function bridge(): Promise<Token[]> {
   const allTokens = []
   let page = 1
   do {
-    const { items, meta } = await fetch("https://explorer-api.zklink.io/tokens?limit=100&page="+page)
+    const { items, meta } = await fetch(`https://explorer-api.zklink.io/tokens?limit=200&page=${page}&key=`)
     allTokens.push(...items)
     page++
     if (page >= meta.totalPages) break;
-  } while (page < 25)
+  } while (page < 100)
 
   const tokens: Token[] = [{
     from: 'zklink:0x000000000000000000000000000000000000800A',
@@ -28,6 +28,8 @@ export default async function bridge(): Promise<Token[]> {
         case 'blast': sourceChain = 'blast'; break;
         case 'arbitrum': sourceChain = 'arbitrum'; break;
         case 'mantle': sourceChain = 'mantle'; break;
+        case 'base': sourceChain = 'base'; break;
+        case 'optimism': sourceChain = 'optimism'; break;
         case 'primary': sourceChain = 'linea'; break;
         default: console.log('zklink Unknown networkKey', token.networkKey)
       }

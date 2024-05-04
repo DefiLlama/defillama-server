@@ -5,7 +5,6 @@ import axios from 'axios'
 
 
 export function sundaeswap(timestamp: number) {
-  console.log("starting sundaeswap");
   
   const THIRY_MINUTES = 1800
   if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))

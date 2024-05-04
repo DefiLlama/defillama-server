@@ -112,4 +112,38 @@ export default {
         "id": "4299",
         parentId: "KIM Exchange",
     },
+    "merchant-moe-liquidity-book": {
+        parentId: "Merchant Moe",
+        "enabled": true,
+        "id": "4427",
+    },
+    "web3world": {
+        "enabled": true,
+        "id": "4430",
+    },
+    "glyph-exchange": {
+        "id": "4347",
+        enabled: true,
+        protocolsData: {
+            "classic": {
+                "id": "4347",
+                "enabled": true,
+            }
+        }
+    },
+    "firefly": {
+        enabled: true,
+        id: "4500",
+        protocolsData: {
+            "v3": {
+                "id": "4500",
+                "enabled": true,
+            }
+        }
+    },
+    "velodrome-slipstream": {
+        parentId: "Velodrome",
+        enabled: true,
+        id: "4249",
+    }
 } as AdaptorsConfig

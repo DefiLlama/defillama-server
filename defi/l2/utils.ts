@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
 import { AllProtocols, CoinsApiData, McapsApiData, TokenTvlData } from "./types";
-import { canonicalBridgeIds, excludedTvlKeys, mixedCaseChains, zero } from "./constants";
+import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, mixedCaseChains, zero } from "./constants";
 import fetch from "node-fetch";
 import sleep from "../src/utils/shared/sleep";
 import { call, multiCall } from "@defillama/sdk/build/abi/abi2";
@@ -9,7 +9,7 @@ import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
-import { fetchNotTokens, storeNotTokens } from "./layer2pg";
+import { storeNotTokens } from "./layer2pg";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 
 export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
@@ -22,9 +22,10 @@ export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Tok
       if (excludedTvlKeys.includes(chain)) return;
 
       if (!(chain in chainUsdTokenTvls)) chainUsdTokenTvls[chain] = {};
-      Object.keys(bridge[chain]).map((asset: string) => {
-        if (!(asset in chainUsdTokenTvls[chain])) chainUsdTokenTvls[chain][asset] = zero;
-        chainUsdTokenTvls[chain][asset] = BigNumber(bridge[chain][asset]).plus(chainUsdTokenTvls[chain][asset]);
+      Object.keys(bridge[chain]).map((rawSymbol: string) => {
+        const symbol = geckoSymbols[rawSymbol.replace("coingecko:", "")] ?? rawSymbol.toUpperCase();
+        if (!(symbol in chainUsdTokenTvls[chain])) chainUsdTokenTvls[chain][symbol] = zero;
+        chainUsdTokenTvls[chain][symbol] = BigNumber(bridge[chain][rawSymbol]).plus(chainUsdTokenTvls[chain][symbol]);
       });
     });
   });
@@ -139,7 +140,31 @@ export async function getMcaps(
   });
   return aggregatedRes;
 }
+async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Aptos adapter!`);
+  const supplies: { [token: string]: number } = {};
+  const notTokens: string[] = [];
 
+  await PromisePool.withConcurrency(5)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        const res = await fetch(
+          `${process.env.APTOS_RPC}/v1/accounts/${token.substring(
+            0,
+            token.indexOf("::")
+          )}/resource/0x1::coin::CoinInfo%3C${token}%3E`
+        ).then((r) => r.json());
+        if (res && res.data && res.data.supply) supplies[`sui:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
+        else notTokens.push(`sui:${token}`);
+      } catch (e) {
+        console.log(token);
+      }
+    });
+
+  await storeNotTokens(notTokens);
+  return supplies;
+}
 async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Solana adapter!`);
 
@@ -269,6 +294,7 @@ export async function fetchSupplies(
   try {
     const notTokens: string[] = []; //await fetchNotTokens(chain);
     const tokens = filterForNotTokens(contracts, notTokens);
+    if (chain == "aptos") return await getAptosSupplies(tokens, timestamp);
     if (chain == "solana") return await getSolanaTokenSupply(tokens, timestamp);
     if (chain == "sui") return await getSuiSupplies(tokens, timestamp);
     return await getEVMSupplies(chain, tokens, timestamp);

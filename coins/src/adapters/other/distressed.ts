@@ -1,6 +1,7 @@
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
-    hBTC: '0x0316eb71485b0ab14103307bf65a021042c6d380',
+    pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
+    hBTC: "0x0316eb71485b0ab14103307bf65a021042c6d380",
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
     PSY_SCAM: "0xe5a2363904d91c6a311a378537b29c7c6d4f230d",
     GVR_OLD: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
@@ -42,7 +43,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     EULER_LP8: "0x4169Df1B7820702f566cc10938DA51F6F597d264",
     EULER_LP9: "0xbd1bd5c956684f7eb79da40f582cbe1373a1d593",
     // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab",
-    PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78"
+    PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78",
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -74,6 +75,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     GRAIN: "0x80bb30d62a16e1f2084deae84dc293531c3ac3a1",
   },
   bsc: {
+    BGEO: '0xc342774492b54ce5f8ac662113ed702fc1b34972',
     aBNBb: "0xbb1aa6e59e5163d8722a122cd66eba614b59df0d",
     aBNBc: "0xe85afccdafbe7f2b096f268e31cce3da8da2990a",
     DOGECOLA: "0xe320df552e78d57e95cf1182b6960746d5016561",
@@ -110,6 +112,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     FITFI: "0x7588df009c3d82378be6ab81f2108fa963c10fc8",
     JEFE: "0x80fa6d5384bdde296a28a321f73ab70977575129",
     LORT: "0xd24616870ca41bc01074446988faeb0085a71190",
+    BCCOIN: "0x2940566Eb50F15129238f4Dc599ADC4F742D7d8E"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
@@ -123,7 +126,14 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     GUAC: "AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR",
     OVOL: "4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6",
   },
+  pulse: {
+    GLOBO: "0x13568d812d30359756db5e617a7a8eb7eb3917f5",
+    MMC: "0x387776e41b4688d79e1770dceba1f6d854911eb1",
+    HUNT: "0xd854f7814b676f1c19ea22d4137d0176413c85b4",
+    Wildfire: "0x4db9112fe1c3670a7adb5e206ef6ce26707a2767"
+  },
   avax: {
+    BPAY: "0x8ccee641c3d937dc89d1d94fe4d8051624042fcf",
     DUEL: "0xc1a49c0b9c10f35850bd8e15eaef0346be63e002",
     ApeU: "0x6b0d2a3c37d551963275bB104F045F6a68AB6374",
     iBFR: "0xcaf870dad882b00f4b20d714bbf7fceada5e4195",
@@ -133,6 +143,10 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     DEP: "0xd4d026322c88c2d49942a75dff920fcfbc5614c1",
     LIQR: "0x33333ee26a7d02e41c33828b42fb1e0889143477",
     GRAIN: "0x9df4ac62f9e435dbcd85e06c990a7f0ea32739a9",
+    DDC: "0x38e853f7519d3db2d245ce0d21960f68a6448051",
+    MYD: "0xf3797a24dd0ced905e2d08b03cf364aac49caa6d",
+    JLP: "0xa56d382c5aa9774d4eb98f1500670d3049fede9b",
+    PARR: "0xf10b5a72f0abeb27a5ddba950082e4edff4c825d"
   },
   oasis: {
     USDT: "0x6Cb9750a92643382e020eA9a170AbB83Df05F30B",
@@ -163,7 +177,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     DAI: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
     BASED: "0x8d7d3409881b51466b483b11ea1b8a03cded89ae",
     // BSHARE: '0x49C290Ff692149A4E16611c694fdED42C954ab7a'
-    plainu: "0x152fff048cdd5b22e2698e9effa1f061678359e5"
+    plainu: "0x152fff048cdd5b22e2698e9effa1f061678359e5",
   },
   heco: {
     BIFI: "0x765277eebeca2e31912c9946eae1021199b39c61",
@@ -179,7 +193,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     multiBTC: "0xf5b9b4a0534cf508ab9953c64c5310dfa0b303a1",
     MIM: "0x49a0400587a7f65072c87c4910449fdcc5c47242",
     JUSD: "0x0ba8a6ce46d369d779299dedade864318097b703",
-    SX: "0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79"
+    SX: "0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79",
   },
   moonriver: {
     MIM: "0x0cae51e1032e8461f4806e26332c030e34de3adb",
@@ -264,8 +278,11 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     WBTT: "0x8d193c6efa90bcff940a98785d1ce9d093d3dc8a",
   },
   callisto: {
-    SOY: "0x9fae2529863bd691b4a7171bdfcf33c7ebb10a65"
-  }
+    SOY: "0x9fae2529863bd691b4a7171bdfcf33c7ebb10a65",
+  },
+  blast:{
+    SSS: "0xdfdcdbc789b56f99b0d0692d14dbc61906d9deed",
+  },
 };
 
 export const distressedAssets = Object.fromEntries(

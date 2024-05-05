@@ -41576,6 +41576,28 @@ const data3: Protocol[] = [
     ],
     listedAt: 1714835461
   },
+  {
+    id: "4562",
+    name: "BunnySwap",
+    address: null,
+    symbol: "-", 
+    url: "https://www.friend.tech/",
+    description: "FT native DEX",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bunnyswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "bunnyswap/index.js",
+    twitter: "friendtech",
+    audit_links: [],
+    listedAt: 1714882141
+  },
 ]
 
 export default data3

@@ -6756,9 +6756,9 @@ const data: Protocol[] = [
     name: "Saber",
     address: "solana:Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1",
     symbol: "SBR",
-    url: "https://saber.so",
+    url: "https://saberdao.io/",
     description:
-      "Saber is the first automated market maker optimized for trading pegged assets on Solana. Our protocol enables Solana users and applications to efficiently trade between stable pairs of assets, as well as earn yields by providing liquidity to the platform.",
+      "The Saber AMM offers advanced automated market-making pools on Solana, enabling efficient trading between pegged assets such as USDC, USDT, SOL, mSOL and bSOL.",
     chain: "Solana",
     logo: `${baseIconsUrl}/saber.jpg`,
     audits: "0",
@@ -6768,8 +6768,8 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Solana"],
     module: "saber.js",
-    twitter: "Saber_HQ",
-    github: ["saber-hq"]
+    twitter: "The_Saber_DAO",
+    github: ["saberdao"]
   },
   {
     id: "420",

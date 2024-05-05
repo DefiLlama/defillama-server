@@ -2679,5 +2679,10 @@ export default {
         parentId: "mySwap",
         enabled: true,
         id: "3887"
+    },
+    "meteora": {
+        parentId: "Meteora",
+        enabled: true,
+        id: "385"
     }
 } as AdaptorsConfig

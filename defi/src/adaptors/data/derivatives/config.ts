@@ -784,5 +784,15 @@ export default {
     "bsx": {
         enabled: true,
         id: "4458",
+    },
+    "nlx": {
+        enabled: true,
+        id: "4568",
+        protocolsData: {
+            "nlx-trade": {
+                "id": "4568",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

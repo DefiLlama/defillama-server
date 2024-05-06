@@ -2690,5 +2690,15 @@ export default {
                 "1714953600": true,
             }
         }
+    },
+    "nlx": {
+        enabled: true,
+        id: "4568",
+        protocolsData: {
+            "nlx-swap": {
+                "id": "4568",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

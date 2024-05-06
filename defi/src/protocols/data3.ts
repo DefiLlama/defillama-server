@@ -41732,6 +41732,29 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715002506
   },
+  {
+    id: "4569",
+    name: "OreSwap",
+    address: "core:0xF3CABeb4A292996a451f8094E14F4806d22604d4",
+    symbol: "OST", 
+    url: "https://oreswap.xyz/",
+    description: "OreSwap DEX - A decentralized exchange platform aimed at providing users worldwide with a secure, transparent, and efficient trading experience",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/oreswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "oreswap-2",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "OreSwap/index.js",
+    twitter: "oreswap",
+    audit_links: [],
+    github: ["oreswap"],
+    listedAt: 1715016813
+  },
 ]
 
 export default data3

@@ -11247,7 +11247,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     treasury: "reserve.js",
     module: "reserve/index.js",
-    treasury: "reserve.js",
     twitter: "reserveprotocol",
     audit_links: ["https://reserve.org/protocol/security/?search=audit#s-result"],
     stablecoins: ["electronic-usd", "reserve"],

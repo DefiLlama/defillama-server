@@ -6,21 +6,9 @@ import { storeR2JSONString } from "./utils/r2";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import storeHistorical from "../l2/storeToDb";
 
-const chainMaps: { [chain: string]: string } = {
-  avax: "avalanche",
-  xdai: "gnosis",
-  era: "zkSync Era",
-  rsk: "rootstock",
-  nova: "Arbitrum Nova",
-  polygon_zkevm: "Polygon zkEVM",
-  zklink: "zkLink Nova"
-};
 async function getChainAssets() {
   const res: any = await chainAssets();
   res.timestamp = getCurrentUnixTimestamp();
-  Object.keys(chainMaps).map((key: string) => {
-    if (key in res) res[chainMaps[key]] = res[key];
-  });
   await storeR2JSONString("chainAssets", JSON.stringify(res));
   await storeHistorical(res);
   console.log("chain assets stored");

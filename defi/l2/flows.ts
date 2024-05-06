@@ -2,6 +2,7 @@ import BigNumber from "bignumber.js";
 import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, zero } from "./constants";
 import fetchStoredTvls from "./outgoing";
 import { AllProtocols, ChainTokens } from "./types";
+import { getChainDisplayName } from "../src/utils/normalizeChain";
 
 const searchWidth = 10800; // 3hr
 const period = 86400; // 24hr
@@ -89,7 +90,8 @@ function tokenUsds(qtys: ChainTokens, prices: ChainTokens) {
   const tokenDiff: ChainTokens = {};
 
   Object.keys(qtys).map((chain: string) => {
-    if (!(chain in tokenDiff)) tokenDiff[chain] = {};
+    const diaplayChain = getChainDisplayName(chain, true);
+    if (!(diaplayChain in tokenDiff)) tokenDiff[diaplayChain] = {};
     let sortable: [string, BigNumber][] = [];
 
     for (const symbol in qtys[chain]) {
@@ -101,7 +103,7 @@ function tokenUsds(qtys: ChainTokens, prices: ChainTokens) {
 
     for (let i = 0; i < Math.min(sortable.length, 50); i++) {
       const [symbol, value] = sortable[i];
-      tokenDiff[chain][symbol] = value.decimalPlaces(2);
+      tokenDiff[diaplayChain][symbol] = value.decimalPlaces(2);
     }
   });
 

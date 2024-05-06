@@ -32,6 +32,8 @@ function tokenDiffs(
   Object.keys(nowRaw).map((bridgeId: string) => {
     Object.keys(nowRaw[bridgeId]).map((chain: string) => {
       if (excludedTvlKeys.includes(chain) || chain.includes("staking") || chain.includes("pool2")) return;
+      if (!prevRaw[bridgeId] || !prevRaw[bridgeId][chain]) return;
+
       if (!(chain in tokenDiff)) tokenDiff[chain] = {};
       if (!(chain in prices)) prices[chain] = {};
 
@@ -69,7 +71,7 @@ function tokenDiffs(
           const destinationChain = canonicalBridgeIds[bridgeId];
           add(symbol, canonicalBridgeIds[bridgeId], prev, false);
           if (!prices[destinationChain][symbol])
-            prices[destinationChain][symbol] = BigNumber(nowUsd[bridgeId][chain][rawSymbol]).div(prev);
+            prices[destinationChain][symbol] = BigNumber(prevUsd[bridgeId][chain][rawSymbol]).div(prev);
         }
 
         if (prices[chain][symbol]) return;

@@ -19004,7 +19004,9 @@ const data3: Protocol[] = [
     oraclesByChain: {
       wemix: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5434#issuecomment-1889510580
       manta: ["RedStone"], //https://twitter.com/redstone_defi/status/1763580020751245496 , https://github.com/DefiLlama/defillama-server/pull/6353#discussion_r1550765182
-      Klaytn: ["Witnet"]
+      bsquared: ["RedStone"],
+      Klaytn: ["Witnet"],
+      metis: ['Chainlink']
     },
     forkedFrom: ["Compound V2"],
     twitter: "ShoebillFinance",

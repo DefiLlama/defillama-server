@@ -2683,6 +2683,12 @@ export default {
     "meteora": {
         parentId: "Meteora",
         enabled: true,
-        id: "385"
+        id: "385",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1714867200": true,
+                "1714953600": true,
+            }
+        }
     }
 } as AdaptorsConfig

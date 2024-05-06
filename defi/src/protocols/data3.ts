@@ -41660,7 +41660,7 @@ const data3: Protocol[] = [
     chains: ["Scroll"],
     oracles: [], 
     forkedFrom: ["Uniswap V3"],
-    module: "nuri-exchange-v1/index.js",
+    module: "nuri-exchange/index.js",
     twitter: "NuriExchange",
     audit_links: [],
     parentProtocol: "parent#nuri-exchange",

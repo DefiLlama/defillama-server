@@ -4313,6 +4313,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FjordFoundry",
   },
+  {
+    id: "parent#nuri-exchange",
+    name: "Nuri Exchange",
+    url: "https://www.nuri.exchange",
+    description: "NURI is a next-generation AMM designed to serve as Scroll's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
+    logo: `${baseIconsUrl}/nuri-exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "NuriExchange",
+  },
 ];
 
 export default parentProtocols;

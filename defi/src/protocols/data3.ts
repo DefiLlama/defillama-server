@@ -34818,14 +34818,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4257",
-    name: "Definitive.fi",
+    name: "Definitive",
     address: null,
     symbol: "-",
     url: "https://www.definitive.fi",
     description:
       "Definitive is the premier non-custodial platform for advanced DeFi yield and on-chain trade execution.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/definitive.fi.png`,
+    logo: `${baseIconsUrl}/definitive.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

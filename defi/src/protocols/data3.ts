@@ -41710,6 +41710,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1714989537
   },
+  {
+    id: "4568",
+    name: "NLX Protocol",
+    address: null,
+    symbol: "-", 
+    url: "https://nlx.trade/",
+    description: "On-chain Perps backed by Bitcoin, built on CORE chain",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/nlx-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["CORE"],
+    oracles: [], 
+    forkedFrom: ["GMX V2"],
+    module: "nlx/index.js",
+    twitter: "nlx_trade",
+    audit_links: [],
+    listedAt: 1715002506
+  },
 ]
 
 export default data3

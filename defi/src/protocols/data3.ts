@@ -41688,6 +41688,7 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1714989137
   },
+  /*
   {
     id: "4567",
     name: "TG Casino",
@@ -41710,6 +41711,7 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1714989537
   },
+  */
   {
     id: "4568",
     name: "NLX Protocol",

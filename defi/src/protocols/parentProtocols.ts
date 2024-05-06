@@ -2573,9 +2573,9 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#alien-base",
     name: "Alien Base",
-    url: "https://app.alienbase.xyz",
+    url: "https://alienbase.xyz/",
     description:
-      "Trade confidently on Alien Base - A DEX on the base chain. Farm and stake tokens.",
+      "AlienBase is the Base-native DEX for degen earthlings",
     logo: `${baseIconsUrl}/alien-base.png`,
     gecko_id: "alienbase",
     cmcId: null,

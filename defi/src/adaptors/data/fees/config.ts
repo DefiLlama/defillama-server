@@ -2064,5 +2064,9 @@ export default {
         parentId: "Hercules",
         id: "4373",
         enabled: true
+    },
+    "orby-network": {
+        enabled: true,
+        id: "4154"
     }
 } as AdaptorsConfig

@@ -2700,5 +2700,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "fenix-finance": {
+        enabled: true,
+        id: "4563"
     }
 } as AdaptorsConfig

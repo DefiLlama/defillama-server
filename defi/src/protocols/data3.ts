@@ -40352,8 +40352,8 @@ const data3: Protocol[] = [
     chains: ["Binance"],
     module: "grizzly-trade-derivatives-v2/index.js",
     twitter: "GrizzlyFi",
-    forkedFrom: [],
-    oracles: [],
+    forkedFrom: ["Metavault.Trade"],
+    oracles: ["Pyth"], // https://docs.metavault.trade/more/oracles
     parentProtocol: "parent#grizzlyfi",
     listedAt: 1713802887
   },

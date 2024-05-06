@@ -11245,13 +11245,19 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "3964",
     category: "Indexes",
     chains: ["Ethereum"],
+    treasury: "reserve.js",
     module: "reserve/index.js",
     twitter: "reserveprotocol",
     audit_links: ["https://reserve.org/protocol/security/?search=audit#s-result"],
     stablecoins: ["electronic-usd", "reserve"],
     github: ["reserve-protocol"],
     governanceID: [
-      "eip155:1:0x7e880d8bD9c9612D6A9759F96aCD23df4A4650E6",
+      "eip155:1:0x7e880d8bD9c9612D6A9759F96aCD23df4A4650E6", //eUSD
+      "eip155:1:0x239cDcBE174B4728c870A24F77540dAB3dC5F981", //ETH+
+      "eip155:1:0x22d7937438b4bBf02f6cA55E3831ABB94Bd0b6f1", //hyUSD
+      "eip155:1:0xc837C557071D604bCb1058c8c4891ddBe8FDD630", //USDC+
+      "eip155:1:0x020CB71181008369C388CaAEE98b0E69f8F4C471", //USD3
+      "eip155:1:0x409bAc94c4207C6627EA5f4E4FFB7128e8F654Fc", //rgUSD   
     ],
   },
   {

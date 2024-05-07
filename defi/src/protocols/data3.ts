@@ -41802,7 +41802,31 @@ const data3: Protocol[] = [
     twitter: "friendtech",
     audit_links: [],
     listedAt: 1715084599
-  },  
+  },
+  {
+    id: "4572",
+    name: "GuacSwap",
+    address: "solana:AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR",
+    symbol: "GUAC",
+    url: "https://guacamole.gg",
+    description: "Unlock the Power of Guacamole's Growing Ecosystem: Dive into Our Seamless Solana-based AMM for a User-Centric Experience",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/guacswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    treasury: "guacswap.js",
+    module: "guacswap/index.js",
+    twitter: "guac_gg",
+    audit_links: [],
+    github: ["Guacgg"],
+    listedAt: 1715089507
+  },
 ]
 
 export default data3

@@ -2381,7 +2381,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "connext",
     cmcId: "27976",
-    category: "Cross Chain",
+    category: "Bridge",
     chains: ["Ethereum", "Polygon", "xDai"],
     module: "connext/index.js",
     twitter: "ConnextNetwork",

@@ -15892,7 +15892,7 @@ const data3: Protocol[] = [
     chains: ["Base"],
     module: "swapbased-cl/index.js",
     twitter: "swap_based",
-    forkedFrom: ["Algebra DEX"],
+    forkedFrom: ["Uniswap V3"], // they replace the contract from algebra dex to uni fork
     oracles: [],
     parentProtocol: "parent#swapbased",
     listedAt: 1692315621

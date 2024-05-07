@@ -2072,5 +2072,9 @@ export default {
     "fantasy-top": {
         enabled: true,
         id: "4570"
+    },
+    "fluid": {
+        enabled: true,
+        id: "4167"
     }
 } as AdaptorsConfig

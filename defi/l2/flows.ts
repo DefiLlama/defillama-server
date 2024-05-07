@@ -92,7 +92,7 @@ function tokenUsds(qtys: ChainTokens, prices: ChainTokens) {
   const tokenDiff: ChainTokens = {};
 
   Object.keys(qtys).map((chain: string) => {
-    const diaplayChain = getChainDisplayName(chain, true);
+    const diaplayChain = getChainDisplayName(chain, true).toLowerCase().replace(" ", "-");
     if (!(diaplayChain in tokenDiff)) tokenDiff[diaplayChain] = {};
     let sortable: [string, BigNumber][] = [];
 

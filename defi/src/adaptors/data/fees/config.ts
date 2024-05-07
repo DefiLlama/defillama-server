@@ -2068,5 +2068,9 @@ export default {
     "orby-network": {
         enabled: true,
         id: "4154"
+    },
+    "fantasy-top": {
+        enabled: true,
+        id: "4570"
     }
 } as AdaptorsConfig

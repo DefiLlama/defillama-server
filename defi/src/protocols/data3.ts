@@ -41781,6 +41781,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715054418
   },
+  {
+    id: "4571",
+    name: "friend.tech v2",
+    address: "base:0x0bd4887f7d41b35cd75dff9ffee2856106f86670",
+    symbol: "FRIEND",
+    url: "https://www.friend.tech",
+    description: "Your network is your net worth.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/friend.tech-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "friendtech",
+    audit_links: [],
+    listedAt: 1715084599
+  },  
 ]
 
 export default data3

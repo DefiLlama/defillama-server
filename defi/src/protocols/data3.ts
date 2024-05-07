@@ -41759,6 +41759,28 @@ const data3: Protocol[] = [
     github: ["oreswap"],
     listedAt: 1715016813
   },
+  {
+    id: "4570",
+    name: "fantasy.top",
+    address: null,
+    symbol: "-", 
+    url: "https://www.fantasy.top/",
+    description: "trading card game based on twitter",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/fantasy.top.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Blast"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "fantasy_top_",
+    audit_links: [],
+    listedAt: 1715054418
+  },
 ]
 
 export default data3

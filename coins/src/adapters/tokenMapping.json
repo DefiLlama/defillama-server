@@ -2346,6 +2346,11 @@
       "decimals": "18",
       "symbol": "M-STONE",
       "to": "coingecko#stakestone-ether"
+    },
+    "0xad6ca80fe4d3c54f6433ff725d744772aae87711": {
+      "decimals": "18",
+      "symbol": "WOO",
+      "to": "coingecko#woo-network"
     }
   },
   "naka": {

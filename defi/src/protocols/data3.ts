@@ -41858,6 +41858,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bitgenie",
     listedAt: 1715161477
   },
+  {
+    id: "4574",
+    name: "Rivus DAO",
+    address: null,
+    symbol: "-",
+    url: "https://stake.rivusdao.xyz",
+    description: "Bringing you liquid staking & unlocking DeFi on AI L1 networks",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rivus-dao.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "rivusdao/index.js",
+    twitter: "RivusDAO",
+    audit_links: [],
+    listedAt: 1715178454
+  },
 ]
 
 export default data3

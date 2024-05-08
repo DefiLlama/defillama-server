@@ -41881,7 +41881,7 @@ const data3: Protocol[] = [
     listedAt: 1715178454
   },
   {
-    id: "4575",
+    id: "4576",
     name: "NonKYC",
     address: null,
     symbol: "-",

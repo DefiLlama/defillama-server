@@ -41902,6 +41902,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715185739
   },
+  {
+    id: "4576",
+    name: "NonKYC",
+    address: null,
+    symbol: "-",
+    url: "https://nonkyc.io",
+    description: "NonKYC Exchange. Trade with privacy at NonKYC. Exchanging Crypto. Protecting Identity",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/nonkyc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Tron"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "nonkyc/index.js",
+    twitter: "nonkyc_exchange",
+    audit_links: [],
+    listedAt: 1715184775
+  },
 ]
 
 export default data3

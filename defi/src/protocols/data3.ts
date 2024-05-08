@@ -40661,13 +40661,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4520",
-    name: "BitGenie",
+    name: "BitGenie Farm",
     address: null,
     symbol: "-",
     url: "https://www.bitgenie.io",
     description: "BitGenie is a one-stop shop for Ordinals, Runes, and other Bitcoin DeFi tools.",
     chain: "Merlin",
-    logo: `${baseIconsUrl}/bitgenie.jpg`,
+    logo: `${baseIconsUrl}/bitgenie-farm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -40678,6 +40678,7 @@ const data3: Protocol[] = [
     twitter: "BitGenie_io",
     oracles: [], 
     forkedFrom: [],
+    parentProtocol: "parent#bitgenie",
     listedAt: 1714041978
   },
   {
@@ -41832,6 +41833,29 @@ const data3: Protocol[] = [
     audit_links: [],
     github: ["Guacgg"],
     listedAt: 1715089507
+  },
+  {
+    id: "4573",
+    name: "BitGenie AMM",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitgenie.io/swap",
+    description: "Uniswap V2 fork on Merlin Chain",
+    chain: "Merlin",
+    logo: `${baseIconsUrl}/bitgenie-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Merlin"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "bitgenie-dex/index.js",
+    twitter: "BitGenie_io",
+    audit_links: [],
+    parentProtocol: "parent#bitgenie",
+    listedAt: 1715161477
   },
 ]
 

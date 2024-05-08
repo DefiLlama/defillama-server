@@ -1,7 +1,7 @@
 import { getCurrentUnixTimestamp, secondsInDay } from "../../src/utils/date";
 import PromisePool from "@supercharge/promise-pool";
 import findTvls from "../tvl";
-import storeHistorical from "../storeToDb";
+import { overwrite } from "../storeToDb";
 import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
 
 const end = getCurrentUnixTimestamp();
@@ -25,7 +25,7 @@ const timestampArray: number[] = getTimestampArray(start, end);
 async function proc(timestamp: number) {
   const res: any = await findTvls(timestamp);
   res.timestamp = timestamp;
-  await storeHistorical(res);
+  await overwrite(res);
 }
 async function backfill() {
   await setEnvSecrets();

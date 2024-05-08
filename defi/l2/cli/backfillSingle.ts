@@ -1,7 +1,7 @@
-import { secondsInDay } from "../../src/utils/date";
+import { getCurrentUnixTimestamp, secondsInDay } from "../../src/utils/date";
 import PromisePool from "@supercharge/promise-pool";
 import findTvls from "../tvl";
-import storeHistorical, { parsePgData } from "../storeToDb";
+import { overwrite, parsePgData } from "../storeToDb";
 import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
 import postgres from "postgres";
 import { queryPostgresWithRetry } from "../layer2pg";
@@ -9,8 +9,8 @@ import { ChartData } from "../types";
 
 // any mappings for chains in proc() needed??
 /// select your chains in constants first!!!
-const start: number = 0;
-const end: number = 0;
+const start: number = 1708214400;
+const end: number = getCurrentUnixTimestamp();
 
 let auth: string[] = [];
 async function iniDbConnection() {
@@ -45,14 +45,15 @@ async function getTimestampArray(): Promise<number[]> {
 
 async function proc(timestamp: number) {
   const res: any = await findTvls(timestamp);
-  await storeHistorical(res);
+  const write: any = { starknet: res.starknet, timestamp };
+  await overwrite(write);
 }
 
 async function backfill() {
   const errors: number[] = [];
   let successCount: number = 0;
   const timestampArray = await getTimestampArray();
-  await PromisePool.withConcurrency(1)
+  await PromisePool.withConcurrency(5)
     .for(timestampArray)
     .process(async (timestamp) =>
       proc(timestamp)
@@ -69,4 +70,4 @@ async function backfill() {
   console.log(errors.toString());
 }
 
-backfill(); // ts-node defi/l2/backfillSingle.ts
+backfill(); // ts-node defi/l2/cli/backfillSingle.ts

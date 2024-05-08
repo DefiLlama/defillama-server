@@ -2064,5 +2064,17 @@ export default {
         parentId: "Hercules",
         id: "4373",
         enabled: true
+    },
+    "orby-network": {
+        enabled: true,
+        id: "4154"
+    },
+    "fantasy-top": {
+        enabled: true,
+        id: "4570"
+    },
+    "fluid": {
+        enabled: true,
+        id: "4167"
     }
 } as AdaptorsConfig

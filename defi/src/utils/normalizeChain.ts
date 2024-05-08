@@ -2443,8 +2443,8 @@ export const chainCoingeckoIds = {
     github: ["alephium"]
   },
   "Mode": {
-    geckoId: null,
-    symbol: null,
+    geckoId: "mode",
+    symbol: "MODE",
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {

@@ -153,6 +153,9 @@ export async function getProtocolTvl(
           const chainDisplayName = getChainDisplayName(chain, useNewChainNames)
           if (chain === "tvl" || includeSection(chainDisplayName)) {
             function getExcludedTvl(usdTokensSection:any){
+              if(typeof usdTokensSection !== "object"){
+                return 0
+              }
               return Object.entries(usdTokensSection).reduce((sum, token) => {
                 if (protocol.tokensExcludedFromParent?.includes(token[0].toUpperCase())) {
                   sum += token[1] as number
@@ -161,10 +164,10 @@ export async function getProtocolTvl(
               }, 0)
             }
             chainTvls[chain === "tvl" ? "excludeParent" : `${chainDisplayName}-excludeParent`] = {
-              tvl: getExcludedTvl(usdTokens[0][chain]),
-              tvlPrevDay: getExcludedTvl(usdTokens[1][chain]),
-              tvlPrevWeek: getExcludedTvl(usdTokens[2][chain]),
-              tvlPrevMonth: getExcludedTvl(usdTokens[3][chain]),
+              tvl: getExcludedTvl(usdTokens[0]?.[chain]),
+              tvlPrevDay: getExcludedTvl(usdTokens[1]?.[chain]),
+              tvlPrevWeek: getExcludedTvl(usdTokens[2]?.[chain]),
+              tvlPrevMonth: getExcludedTvl(usdTokens[3]?.[chain]),
             }
           }
         }

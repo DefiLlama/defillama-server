@@ -1118,6 +1118,7 @@ export default {
         "id": "614"
     },
     "myswap": {
+        parentId: "mySwap",
         "enabled": true,
         "id": "2367"
     },
@@ -2673,5 +2674,35 @@ export default {
     "merlinswap": {
         enabled: true,
         id: "4191"
+    },
+    "myswap-cl": {
+        parentId: "mySwap",
+        enabled: true,
+        id: "3887"
+    },
+    "meteora": {
+        parentId: "Meteora",
+        enabled: true,
+        id: "385",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1714867200": true,
+                "1714953600": true,
+            }
+        }
+    },
+    "nlx": {
+        enabled: true,
+        id: "4568",
+        protocolsData: {
+            "nlx-swap": {
+                "id": "4568",
+                "enabled": true,
+            }
+        }
+    },
+    "fenix-finance": {
+        enabled: true,
+        id: "4563"
     }
 } as AdaptorsConfig

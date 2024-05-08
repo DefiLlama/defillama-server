@@ -9494,7 +9494,7 @@ const data2: Protocol[] = [
     cmcId: "19973",
     category: "Derivatives",
     chains: ["Polygon"],
-    oracles: ["Chainlink", "Pyth"],
+    oracles: ["Pyth"], // https://docs.metavault.trade/more/oracles
     forkedFrom: ["GMX V1"],
     module: "metavault.trade/index.js",
     twitter: "MetavaultTRADE",

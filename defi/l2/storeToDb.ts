@@ -53,12 +53,31 @@ export default async function storeHistoricalToDB(res: any) {
     sql`
         insert into chainassets
         ${sql([insert], ...columns)}
-        on conflict (timestamp)
-        do nothing
         `,
     sql
   );
 
+  sql.end();
+}
+export async function overwrite(res: { [key: string]: string }) {
+  const sql = await iniDbConnection();
+  const columns = Object.keys(res);
+  const insert: { [key: string]: string } = {};
+  columns.map((k: string) => {
+    insert[k] = k in res ? JSON.stringify(res[k]) : "{}";
+  });
+  try {
+    await queryPostgresWithRetry(
+      sql`
+        update chainassets
+        set ${sql(insert, ...columns)}
+        where timestamp = ${insert.timestamp}
+        `,
+      sql
+    );
+  } catch (e) {
+    e;
+  }
   sql.end();
 }
 export async function storeHistoricalFlows(rawData: ChainTokens, timestamp: number) {
@@ -102,8 +121,6 @@ export async function storeHistoricalFlows(rawData: ChainTokens, timestamp: numb
     sql`
         insert into chainassetflows
         ${sql([insert], ...columns)}
-        on conflict (timestamp)
-        do nothing
         `,
     sql
   );

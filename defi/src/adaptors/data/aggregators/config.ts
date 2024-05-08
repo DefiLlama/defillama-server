@@ -207,6 +207,9 @@ export default {
   "etaswap": {
     "enabled": true,
     "id": "4475"
+  },
+  "bountive": {
+    "enabled": true,
+    "id": "4516"
   }
-
 } as AdaptorsConfig;

@@ -2709,6 +2709,11 @@
       "decimals": "18",
       "symbol": "RETH",
       "to": "coingecko#rocket-pool-eth"
+    },
+    "0xCFBF083A7749C23391296C65ADBdd8A4118b861f": {
+      "decimals": "18",
+      "symbol": "BLUES",
+      "to": "coingecko#blueshift"
     }
   },
   "xlayer": {

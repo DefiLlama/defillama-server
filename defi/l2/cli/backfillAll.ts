@@ -25,7 +25,6 @@ const timestampArray: number[] = getTimestampArray(start, end);
 async function proc(timestamp: number) {
   const res: any = await findTvls(timestamp);
   res.timestamp = timestamp;
-  res.avalanche = res.avax;
   await storeHistorical(res);
 }
 async function backfill() {
@@ -49,4 +48,4 @@ async function backfill() {
   console.log(errors.toString());
 }
 
-backfill(); // ts-node defi/l2/backfill.ts
+backfill(); // ts-node defi/l2/cli/backfillAll.ts

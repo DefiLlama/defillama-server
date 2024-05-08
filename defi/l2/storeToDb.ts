@@ -53,8 +53,6 @@ export default async function storeHistoricalToDB(res: any) {
     sql`
         insert into chainassets
         ${sql([insert], ...columns)}
-        on conflict (timestamp)
-        do nothing
         `,
     sql
   );
@@ -102,8 +100,6 @@ export async function storeHistoricalFlows(rawData: ChainTokens, timestamp: numb
     sql`
         insert into chainassetflows
         ${sql([insert], ...columns)}
-        on conflict (timestamp)
-        do nothing
         `,
     sql
   );

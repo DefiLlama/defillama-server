@@ -21258,7 +21258,7 @@ const data3: Protocol[] = [
     url: "https://www.paradex.trade",
     description: "Trade perpetuals on a high-performance DEX with deep liquidity, capital efficiency and low fees",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/paradex.png`,
+    logo: `${baseIconsUrl}/paradex.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

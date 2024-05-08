@@ -29682,6 +29682,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "genesis-lrt/index.js",
     twitter: "Genesis_LRT",
+    parentProtocol: "parent#inception",
     audit_links: ["https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2024/01/VAR-GenesisLRT-231221-first-draft.pdf"],
     listedAt: 1705319900
   },
@@ -30830,6 +30831,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "inception-lrt/index.js",
     twitter: "InceptionLRT",
+    parentProtocol: "parent#inception",
     listedAt: 1706654457
   },
   {

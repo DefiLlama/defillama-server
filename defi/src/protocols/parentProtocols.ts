@@ -4324,6 +4324,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "NuriExchange",
   },
+  {
+    id: "parent#inception",
+    name: "Inception",
+    url: "https://www.inceptionlrt.com/",
+    description: "Restake your Liquid Staked ETH for Layer 2 rewards while keeping it liquid",
+    logo: `${baseIconsUrl}/inceptionlrt.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "InceptionLRT",
+  },
 ];
 
 export default parentProtocols;

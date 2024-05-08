@@ -41880,6 +41880,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715178454
   },
+  {
+    id: "4575",
+    name: "ChilizSwap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.chilizswap.com/#/",
+    description: "Swap and trade crypto instantly on ChilizSwap, the First Automated Market Maker DEX on Chiliz Ecosystem",
+    chain: "Chiliz",
+    logo: `${baseIconsUrl}/chilizswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Chiliz"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "chilizswap/index.js",
+    twitter: "chilizswap",
+    audit_links: [],
+    listedAt: 1715185739
+  },
 ]
 
 export default data3

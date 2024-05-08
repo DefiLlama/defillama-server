@@ -2938,6 +2938,19 @@ export const chainCoingeckoIds = {
     twitter: "build_on_bob",
     url: "https://www.gobob.xyz",
   },
+  "DeGate": {
+    geckoId: "degate",
+    github: ['degatedev'],
+    symbol: "DG",
+    cmcId: "8833",
+    categories: ["Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "DeGateDex",
+    url: "https://www.degate.com/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3564,6 +3577,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "LaChain Network"
     case "bob":
       return "BOB"
+    case "degate":
+        return "DeGate"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -4335,6 +4335,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "InceptionLRT",
   },
+  {
+    id: "parent#bitgenie",
+    name: "BitGenie",
+    url: "https://www.bitgenie.io/swap",
+    description: "BitGenie is a one-stop shop for Ordinals, Runes, and other Bitcoin DeFi tools.",
+    logo: `${baseIconsUrl}/bitgenie.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BitGenie_io",
+  },
 ];
 
 export default parentProtocols;

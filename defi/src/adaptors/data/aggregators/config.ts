@@ -211,5 +211,9 @@ export default {
   "bountive": {
     "enabled": true,
     "id": "4516"
+  },
+  "rubic": {
+    "enabled": true,
+    "id": "1282"
   }
 } as AdaptorsConfig;

@@ -41924,6 +41924,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715184775
   },
+  {
+    id: "4577",
+    name: "Tesseract World",
+    address: null,
+    symbol: "-",
+    url: "https://www.tesseract.world/",
+    description: "TesseractWorld is the first decentralized exchange (DEX) and non-fungible token (NFT) marketplace on the Endurance blockchain, serving as a one-stop shop for trading and accessing unique digital assets.",
+    chain: "Endurance",
+    logo: `${baseIconsUrl}/tesseract-world.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Endurance"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "tesseractworld/index.js",
+    twitter: "tesseractworld",
+    audit_links: [],
+    listedAt: 1715268202
+  },
 ]
 
 export default data3

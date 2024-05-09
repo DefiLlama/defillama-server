@@ -2949,6 +2949,15 @@ export const chainCoingeckoIds = {
     chainId: 200901,
     url: "https://www.bitlayer.org"
   },
+  "Endurance": {
+    geckoId: "endurance",
+    symbol: "ACE",
+    cmcId: "28674",
+    categories: ["EVM"],
+    twitter: "fusionistio",
+    chainId: 648,
+    url: "https://ace.fusionist.io/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3577,6 +3586,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "BOB"
     case "bitlayer":
       return "Bitlayer"
+    case "ace":
+      return "Endurance"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

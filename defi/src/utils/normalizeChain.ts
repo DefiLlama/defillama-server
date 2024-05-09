@@ -2939,8 +2939,8 @@ export const chainCoingeckoIds = {
     url: "https://www.gobob.xyz",
   },
   "Bitlayer": {
-    geckoId: "la-coin",
-    symbol: "LAC",
+    geckoId: null,
+    symbol: null,
     cmcId: null,
     twitter: "BitlayerLabs",
     github: ["bitlayer-org"],

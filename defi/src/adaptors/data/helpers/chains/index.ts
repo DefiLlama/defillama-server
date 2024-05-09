@@ -1373,6 +1373,15 @@ export default {
         },
         github: ['manta-network'],
         chainId: 169, //being used as id for volume/fees
+    },
+    "Bitlayer": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        twitter: "BitlayerLabs",
+        github: ["bitlayer-org"],
+        chainId: 200901,
+        url: "https://www.bitlayer.org"
     }
 } as unknown as {
     [chain: string]: {

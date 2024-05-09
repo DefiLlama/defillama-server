@@ -1,3 +1,5 @@
+import { chain } from "lodash";
+
 export const normalizedChainReplacements = {
   // keys should be full lowercase
   "binance": "bsc",
@@ -78,7 +80,7 @@ export const chainCoingeckoIds = {
     github: [
       // Execution clients
       'ethereum', 'NethermindEth', 'ConsenSys', 'openethereum', 'hyperledger', 'ledgerwatch',
-      // Consensus clients 
+      // Consensus clients
       'sigp', 'chainsafe', 'status-im', 'prysmaticlabs',
     ],
     twitter: "ethereum",
@@ -2097,7 +2099,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     github: ["SYS-Labs"],
     categories: ["EVM", "Rollup", "Bitcoin Sidechains"],
-    chainid: 570, 
+    chainid: 570,
     parent: {
       chain: "Syscoin",
       types: ["L2", "gas"]
@@ -2944,6 +2946,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     twitter: "BitlayerLabs",
     github: ["bitlayer-org"],
+    chainId: 200901,
     url: "https://www.bitlayer.org"
   },
 } as unknown as ChainCoinGekcoIds
@@ -3137,7 +3140,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bevm":
       return "BEVM"
     case "horizen eon":
-      return "Horizen EON"    
+      return "Horizen EON"
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -3433,19 +3436,19 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "pg":
       return "Pego"
     case "kroma":
-      return "Kroma" 
+      return "Kroma"
     case "manta":
       return "Manta"
     case "shimmer_evm":
-      return "ShimmerEVM"       
+      return "ShimmerEVM"
     case "beam":
       return "Beam"
     case "nos":
-      return "NOS"  
+      return "NOS"
     case "scroll":
       return "Scroll"
     case "renec":
-      return "RENEC" 
+      return "RENEC"
     case "radixdlt":
       return "Radix"
     case "nolus":
@@ -3469,9 +3472,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "dash":
       return "Dash"
     case "bostrom":
-      return "Bostrom"  
+      return "Bostrom"
     case "alephium":
-      return "Alephium" 
+      return "Alephium"
     case "mode":
       return "Mode"
     case "fsc":

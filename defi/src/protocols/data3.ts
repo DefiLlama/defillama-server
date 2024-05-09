@@ -41916,7 +41916,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CEX",
-    chains: ["Ethereum", "Bitcoin", "Tron"],
+    chains: ["Ethereum", "Tron"],
     oracles: [], 
     forkedFrom: [],
     module: "nonkyc/index.js",

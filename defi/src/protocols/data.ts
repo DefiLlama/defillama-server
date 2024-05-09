@@ -11262,14 +11262,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "627",
-    name: "Mean Finance",
+    name: "Balmy", // previous Mean Finance
     address: null,
     symbol: "-",
-    url: "https://mean.finance",
+    url: "https://balmy.xyz",
     description:
-      "Mean Finance is an open protocol that enables users (or protocols) to Dollar Cost Average (DCA) any ERC20 into any ERC20 with their preferred period frequency, without sacrificing decentralization or giving up personal information to any centralized parties.",
+      "Balmy is your home for accessing the world of decentralized finance as it was meant to be: safe, open, and intuitive. Swap your assets at the best price, make recurring investments into your favorite tokens, or transfer money easily — all in one place that meets your immediate financial needs and sets you up for long-term success.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/mean-finance.jpg`,
+    logo: `${baseIconsUrl}/balmy.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -11277,16 +11277,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Services",
     chains: ["Ethereum", "Arbitrum", "Polygon", "Optimism", "BSC"],
     module: "meanfinance/index.js",
-    twitter: "mean_fi",
-    audit_links: ["https://github.com/Mean-Finance/dca-v2-core/tree/main/audits"],
+    twitter: "balmy_xyz",
+    audit_links: [
+           "https://github.com/Mean-Finance/dca-v2-core/tree/main/audits",
+           "https://github.com/balmy-protocol/dca-v2-core/tree/main/audits",
+           "https://omniscia.io/reports/mean-finance-swappers-module",
+           "https://omniscia.io/reports/mean-finance-oracle-module",
+           "https://omniscia.io/reports/mean-finance-transformers-module",
+           "https://omniscia.io/reports/mean-finance-permit2-adapter-64ad40c224448c00148ee2f9",
+           "https://omniscia.io/reports/mean-finance-nft-permission-system-65536361239be600181362f3"
+          ],
     oraclesByChain: {
       arbitrum: ["Chainlink", "TWAP"],
-      polygon: ["API3", "TWAP"],
+      polygon: ["Chainlink","API3", "TWAP"],
       optimism: ["Chainlink", "TWAP"],
       ethereum: ["Chainlink", "TWAP"],
       bsc: ["Chainlink", "TWAP"]
     },
-    github: ["Mean-Finance"]
+    github: ["balmy-protocol"]
   },
   {
     id: "628",

@@ -40846,7 +40846,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Blast"],
-    oracles: [],
+    oracles: ["RedStone"], //https://docs.seismic.finance/accepted-collateral-types#oracles-utilized
     forkedFrom: ["AAVE V2"],
     module: "seismic/index.js",
     twitter: "seismicfinance",

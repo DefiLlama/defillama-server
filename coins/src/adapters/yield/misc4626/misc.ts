@@ -1,4 +1,4 @@
-import { unwrap4626 } from "../mean-finance/mean-finance";
+import { unwrap4626 } from "../balmy/balmy";
 import tokens from "./tokens.json";
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

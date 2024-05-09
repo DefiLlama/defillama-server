@@ -39,7 +39,7 @@ export default {
   yearn: require("./yield/yearn"),
   convex: require("./yield/convex"),
   alchemix: require("./yield/alchemix"),
-  meanFinance: require("./yield/mean-finance"),
+  balmy: require("./yield/balmy"),
   misc4626: require("./yield/misc4626"),
   vesper: require("./yield/vesper"),
   yieldProtocol: require("./yield/yield-protocol"),

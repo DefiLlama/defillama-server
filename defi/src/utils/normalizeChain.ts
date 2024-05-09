@@ -2938,6 +2938,14 @@ export const chainCoingeckoIds = {
     twitter: "build_on_bob",
     url: "https://www.gobob.xyz",
   },
+  "Bitlayer": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "BitlayerLabs",
+    github: ["bitlayer-org"],
+    url: "https://www.bitlayer.org"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3564,6 +3572,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "LaChain Network"
     case "bob":
       return "BOB"
+    case "bitlayer":
+      return "Bitlayer"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

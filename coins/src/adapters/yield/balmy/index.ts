@@ -1,7 +1,6 @@
 import getTokenPrices from "./balmy";
 
 export function balmy(timestamp: number = 0) {
-  console.log("starting Balmy");
   return Promise.all([
     getTokenPrices("optimism", timestamp),
     getTokenPrices("polygon", timestamp),

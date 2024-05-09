@@ -5,7 +5,7 @@ import { fetch } from "../../utils";
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const { transforms }: { transforms: { type: string; dependent: string }[] } = await fetch(
-    `https://api.mean.finance/v1/transforms/networks/${chain}/transforms`,
+    `https://api.balmy.xyz/v1/transforms/networks/${chain}/transforms`,
   );
   const tokens4626 = transforms
     .filter((t) => t.type === "ERC4626")

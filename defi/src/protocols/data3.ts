@@ -41960,7 +41960,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Base"],
+    chains: ["Base", "Arbitrum", "Linea"],
     oracles: [], 
     forkedFrom: [],
     module: "limitless/index.js",

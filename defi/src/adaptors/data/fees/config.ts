@@ -2076,5 +2076,9 @@ export default {
     "fluid": {
         enabled: true,
         id: "4167"
+    },
+    "bitlayer": {
+        enabled: true,
+        id: "200901"
     }
 } as AdaptorsConfig

@@ -145,5 +145,9 @@ export default {
         parentId: "Velodrome",
         enabled: true,
         id: "4249",
+    },
+    "FeeFree": {
+        enabled: true,
+        id: "4530",
     }
 } as AdaptorsConfig

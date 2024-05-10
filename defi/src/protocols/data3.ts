@@ -32642,9 +32642,9 @@ const data3: Protocol[] = [
   {
     id: "4161",
     name: "SHUI",
-    address: null,
-    symbol: "-",
-    assetToken: "WCFX",
+    address: "conflux:0xf1f6e3aa98bac6c13230051e452065df299a78a7",
+    symbol: "SHUI",
+    assetToken: "SCFX",
     url: "https://app.shui.finance",
     description:
       "SHUI is a Liquid Staking Protocol on Conflux. Earn rewards securely and smoothly on your CFX without locking them up.",
@@ -32652,7 +32652,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/shui.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "shui",
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Conflux"],

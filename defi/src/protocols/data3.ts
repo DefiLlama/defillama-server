@@ -41968,6 +41968,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715269057
   },
+  {
+    id: "4579",
+    name: "Flipster",
+    address: null,
+    symbol: "-",
+    url: "https://flipster.io",
+    description: "Flipster has a wide selection of over 200 perpetual futures listings, including Bitcoin (BTC) and Ethereum (ETH), that can be traded with leverage of up to 100x.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/flipster.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Tron", "Binance", "Solana", "Bitcoin", "Arbitrum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "flipster/index.js",
+    twitter: "flipster_io",
+    audit_links: [],
+    listedAt: 1715335662
+  },
 ]
 
 export default data3

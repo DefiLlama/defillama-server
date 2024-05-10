@@ -4338,7 +4338,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#bitgenie",
     name: "BitGenie",
-    url: "https://www.bitgenie.io/swap",
+    url: "https://www.bitgenie.io/swap/",
     description: "BitGenie is a one-stop shop for Ordinals, Runes, and other Bitcoin DeFi tools.",
     logo: `${baseIconsUrl}/bitgenie.jpg`,
     gecko_id: null,
@@ -4349,7 +4349,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#sundaeswap",
     name: "SundaeSwap",
-    url: "https://www.sundaeswap.finance",
+    url: "https://www.sundaeswap.finance/",
     description: "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
     logo: `${baseIconsUrl}/sundaeswap.jpg`,
     gecko_id: "sundaeswap",
@@ -4361,13 +4361,24 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#flowx-finance",
     name: "FlowX Finance",
-    url: "https://flowx.finance",
+    url: "https://flowx.finance/",
     description: "FlowX Finance is the ecosystem-focused decentralized exchange built on the Sui Blockchain",
     logo: `${baseIconsUrl}/flowx-finance.png`,
     gecko_id: "flowx-finance",
     cmcId: null,
     chains: [],
     twitter: "FlowX_finance",
+  },
+  {
+    id: "parent#keller-finance",
+    name: "Keller Finance",
+    url: "https://kellerfinance.app/",
+    description: "A DEX launched on Scroll",
+    logo: `${baseIconsUrl}/keller-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Equilibre_Labs",
   },
 ];
 

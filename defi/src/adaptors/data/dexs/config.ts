@@ -2704,5 +2704,15 @@ export default {
     "fenix-finance": {
         enabled: true,
         id: "4563"
+    },
+    "nuri-exchange-v1": {
+        parentId: "Nuri Exchange",
+        enabled: true,
+        id: "4564"
+    },
+    "nuri-exchange-v2": {
+        parentId: "Nuri Exchange",
+        enabled: true,
+        id: "4565"
     }
 } as AdaptorsConfig

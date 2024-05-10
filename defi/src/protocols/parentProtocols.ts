@@ -4346,6 +4346,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BitGenie_io",
   },
+  {
+    id: "parent#sundaeswap",
+    name: "SundaeSwap",
+    url: "https://www.sundaeswap.finance",
+    description: "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
+    logo: `${baseIconsUrl}/sundaeswap.jpg`,
+    gecko_id: "sundaeswap",
+    cmcId: "11986",
+    chains: [],
+    twitter: "SundaeSwap",
+    github: ["SundaeSwap-finance"]
+  },
 ];
 
 export default parentProtocols;

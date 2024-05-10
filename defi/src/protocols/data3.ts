@@ -41990,6 +41990,29 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715335662
   },
+  {
+    id: "4580",
+    name: "SundaeSwap V3",
+    address: null,
+    symbol: "SUNDAE",
+    url: "https://www.sundaeswap.finance",
+    description: "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/sundaeswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Cardano"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "sundaeswap-v3/index.js",
+    twitter: "SundaeSwap",
+    audit_links: [],
+    parentProtocol: "parent#sundaeswap",
+    listedAt: 1715336744
+  },
 ]
 
 export default data3

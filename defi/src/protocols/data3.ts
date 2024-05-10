@@ -42018,7 +42018,7 @@ const data3: Protocol[] = [
     name: "Tokan Exchange",
     address: "scroll:0x1a2fCB585b327fAdec91f55D45829472B15f17a4",
     symbol: "TKN",
-    url: "https://www.sundaeswap.finance",
+    url: "https://tokan.exchange/",
     description: "Tokan serves as a vital liquidity and exchange layer for the Scroll L2, addressing liquidity challenges at the protocol level.",
     chain: "Scroll",
     logo: `${baseIconsUrl}/tokan-exchange.png`,

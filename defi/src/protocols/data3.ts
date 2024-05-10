@@ -37721,7 +37721,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4388",
-    name: "Keller Finance",
+    name: "Keller Finance V2",
     address: "scroll:0xCF4706120623c527e32493057A4DC0cae5FC8201",
     symbol: "KELL",
     url: "https://kellerfinance.app",
@@ -37738,6 +37738,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "keller/index.js",
     twitter: "Equilibre_Labs",
+    parentProtocol: "parent#keller-finance",
     listedAt: 1711622933
   },
   {
@@ -42058,6 +42059,28 @@ const data3: Protocol[] = [
     twitter: "FlowX_finance",
     parentProtocol: "parent#flowx-finance",
     listedAt: 1688474865
+  },
+  {
+    id: "4583",
+    name: "Keller Finance V3",
+    address: "scroll:0xCF4706120623c527e32493057A4DC0cae5FC8201",
+    symbol: "KELL",
+    url: "https://kellerfinance.app",
+    description: "Concentrated Liquidity DEX launched on Scroll.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/keller-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "keller-v3/index.js",
+    twitter: "Equilibre_Labs",
+    parentProtocol: "parent#keller-finance",
+    listedAt: 1711622933
   },
 ]
 

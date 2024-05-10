@@ -42038,7 +42038,7 @@ const data3: Protocol[] = [
     listedAt: 1715337230
   },
   {
-    id: "3196",
+    id: "4582",
     name: "FlowX Finance CLMM",
     address: "sui:0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX",
     symbol: "FLX",

@@ -26,6 +26,12 @@ export function aave(timestamp: number = 0) {
       "v2",
       timestamp
     ),
+    getTokenPrices(
+      "ethereum",
+      "0xbaA999AC55EAce41CcAE355c77809e68Bb345170",
+      "v3",
+      timestamp
+    ),
     // AMM market has no registry
     //getTokenPrices("ethereum", "0x7937d4799803fbbe595ed57278bc4ca21f3bffcb");
     getTokenPrices(

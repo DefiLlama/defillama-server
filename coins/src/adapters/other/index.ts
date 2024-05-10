@@ -88,6 +88,14 @@ export function unknownTokens2(timestamp: number = 0) {
   return Promise.all([
     unknownTokenAdapter(
       timestamp,
+      "0x908b3CB9F8E6441B2b1844A6D4f1AC4707bd1483",
+      "0x6906Ccda405926FC3f04240187dd4fAd5DF6d555",
+      "0x1c1b06405058AbE02e4748753aeD1458BEFEE3B9",
+      false,
+      "bfc",
+    ),
+    unknownTokenAdapter(
+      timestamp,
       "0xdd0d223384bB2FA880f6566baCDa599439457aa6",
       "0x5F0b1a82749cb4E2278EC87F8BF6B618dC71a8bf",
       "0x45334a5B0a01cE6C260f2B570EC941C680EA62c0",

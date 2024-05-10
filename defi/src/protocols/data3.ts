@@ -42013,6 +42013,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#sundaeswap",
     listedAt: 1715336744
   },
+  {
+    id: "4581",
+    name: "Tokan Exchange",
+    address: "scroll:0x1a2fCB585b327fAdec91f55D45829472B15f17a4",
+    symbol: "TKN",
+    url: "https://www.sundaeswap.finance",
+    description: "Tokan serves as a vital liquidity and exchange layer for the Scroll L2, addressing liquidity challenges at the protocol level.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/tokan-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    oracles: [], 
+    forkedFrom: ["Solidly"],
+    module: "tokan-exchange/index.js",
+    twitter: "tokanexchange",
+    audit_links: [],
+    github: ["TokanExchange"],
+    listedAt: 1715337230
+  },
 ]
 
 export default data3

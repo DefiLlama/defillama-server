@@ -2119,6 +2119,11 @@
       "symbol": "WKLAY",
       "to": "coingecko#klay-token"
     },
+    "0xab4fba02a2905a03ada8bd3d493fb289dcf84024": {
+      "decimals": "18",
+      "symbol": "WKLAY",
+      "to": "coingecko#klay-token"
+    },
     "0x15d9f3ab1982b0e5a415451259994ff40369f584": {
       "decimals": "18",
       "symbol": "BTCB",

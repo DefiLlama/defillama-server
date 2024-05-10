@@ -4358,6 +4358,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SundaeSwap",
     github: ["SundaeSwap-finance"]
   },
+  {
+    id: "parent#flowx-finance",
+    name: "FlowX Finance",
+    url: "https://flowx.finance",
+    description: "FlowX Finance is the ecosystem-focused decentralized exchange built on the Sui Blockchain",
+    logo: `${baseIconsUrl}/flowx-finance.png`,
+    gecko_id: "flowx-finance",
+    cmcId: null,
+    chains: [],
+    twitter: "FlowX_finance",
+  },
 ];
 
 export default parentProtocols;

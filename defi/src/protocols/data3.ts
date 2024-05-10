@@ -11111,7 +11111,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3196",
-    name: "FlowX Finance",
+    name: "FlowX Finance AMM",
     address: "sui:0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX",
     symbol: "FLX",
     url: "https://flowx.finance",
@@ -11120,7 +11120,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/flowx-finance.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "flowx-finance",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Sui"],
@@ -11128,6 +11128,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "flowx-finance/index.js",
     twitter: "FlowX_finance",
+    parentProtocol: "parent#flowx-finance",
     listedAt: 1688474865
   },
   {
@@ -42035,6 +42036,28 @@ const data3: Protocol[] = [
     audit_links: [],
     github: ["TokanExchange"],
     listedAt: 1715337230
+  },
+  {
+    id: "3196",
+    name: "FlowX Finance CLMM",
+    address: "sui:0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX",
+    symbol: "FLX",
+    url: "https://flowx.finance",
+    description: "FlowX Finance is the ecosystem-focused decentralized exchange built on the Sui Blockchain.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/flowx-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sui"],
+    oracles: [],
+    forkedFrom: [],
+    module: "flowx-finance-clmm/index.js",
+    twitter: "FlowX_finance",
+    parentProtocol: "parent#flowx-finance",
+    listedAt: 1688474865
   },
 ]
 

@@ -331,9 +331,15 @@ export default {
         "enabled": false,
         "id": "4256"
     },
-    "dodo": {
+    "dodo-fees": {
         "enabled": true,
-        "id": "146"
+        "id": "146",
+        protocolsData: {
+            "dodo": {
+                "id": "146",
+                "enabled": true,
+            }
+        }
     },
     "fantom": {
         "enabled": true,

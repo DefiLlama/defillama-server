@@ -2714,5 +2714,9 @@ export default {
         parentId: "Nuri Exchange",
         enabled: true,
         id: "4565"
+    },
+    "apestore": {
+        enabled: true,
+        id: "4584"
     }
 } as AdaptorsConfig

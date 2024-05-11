@@ -42082,6 +42082,48 @@ const data3: Protocol[] = [
     parentProtocol: "parent#keller-finance",
     listedAt: 1711622933
   },
+  {
+    id: "4584",
+    name: "Ape.Store",
+    address: null,
+    symbol: "-",
+    url: "https://ape.store/",
+    description: "Launch and Trade Your Tokens with Ease and Low Fees",
+    chain: "Base",
+    logo: `${baseIconsUrl}/ape.store.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "apestore/index.js",
+    twitter: "apedotstore",
+    listedAt: 1715439963
+  },
+  {
+    id: "4585",
+    name: "Endurance Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://endurance-bridge.fusionist.io/",
+    description: "Bridge between Endurance and BSC for ACE",
+    chain: "Endurance",
+    logo: `${baseIconsUrl}/endurance-bridge.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Endurance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "endurance-bridge/index.js",
+    twitter: "fusionistio",
+    listedAt: 1715440177
+  },
 ]
 
 export default data3

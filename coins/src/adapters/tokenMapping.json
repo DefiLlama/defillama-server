@@ -2515,6 +2515,11 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0xbeaf16cfd8efe0fc97c2a07e349b9411f5dc272c": {
+      "decimals": "18",
+      "symbol": "SolvBTC.m",
+      "to": "coingecko#solv-btc"
     }
   },
   "zora": {

@@ -45,9 +45,10 @@ export default async function main(timestamp?: number) {
 
   // const displayChains: FinalData = {};
   Object.keys(chains).map((c: string) => {
-    const displayName = getChainDisplayName(c, true).toLowerCase().replace(" ", "-");
+    const displayName = getChainDisplayName(c, true)
     if (displayName in chains) return;
     chains[displayName] = chains[c];
+    delete chains[c];
   });
 
   // // await verifyChanges(chains);

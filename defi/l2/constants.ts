@@ -39,7 +39,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3787": "starknet",
   "3788": "era",
   "1501": "everscale",
-  "349": "injecitve",
+  "349": "injective",
   // "801": "celo",
   "1272": "iotex",
   "2081": "wanchain",

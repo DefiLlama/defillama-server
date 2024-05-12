@@ -2314,7 +2314,7 @@
     },
     "0xB880fd278198bd590252621d4CD071b1842E9Bcd": {
       "decimals": "18",
-      "symbol": "BTC",
+      "symbol": "M-BTC",
       "to": "coingecko#bitcoin"
     },
     "0x4dcb91cc19aadfe5a6672781eb09abad00c19e4c": {

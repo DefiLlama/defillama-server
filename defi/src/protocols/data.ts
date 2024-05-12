@@ -5111,7 +5111,7 @@ const data: Protocol[] = [
     name: "ZKSwap",
     address: "0xe4815ae53b124e7263f08dcdbbb757d41ed658c6",
     symbol: "ZKS",
-    url: "https://zks.org/en",
+    url: "https://zkbase.org/",
     description: "ZKSwap is a ZK-Rollups based layer-2 DEX with AMM model.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/zkswap.jpg`,

@@ -19555,7 +19555,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Uncollateralized Lending",
+    category: "Farm",
     chains: ["Arbitrum", "Mantle"],
     oracles: [],
     forkedFrom: [],

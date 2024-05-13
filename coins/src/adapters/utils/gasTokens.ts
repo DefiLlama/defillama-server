@@ -10,7 +10,7 @@ export const wrappedGasTokens: { [key: string]: any } = {
   bsc: "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
   aurora: "0xc9bdeed33cd01541e1eed10f90519d2c06fe3feb",
   polygon: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-  kava: "0xc86c7C0eFbd6A49B35E8714C5f59D99De09A225b",
+  kava: "0xc86c7c0efbd6a49b35e8714c5f59d99de09a225b",
 };
 export async function getGasTokenBalance(
   chain: string,

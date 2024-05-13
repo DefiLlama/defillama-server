@@ -42299,7 +42299,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Ethereum", "Merlin", "Arbitrum", "Manta", "Base"],
+    chains: ["Ethereum", "Merlin", "Arbitrum", "Manta"],
     oracles: [],
     forkedFrom: [],
     module: "free-protocol/index.js",

@@ -42190,8 +42190,9 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "bitsmiley-io/index.js",
     twitter: "bitsmiley_labs",
-    parentProtocol: "parent#bit",
-    tokensExcludedFromParent: ["bitUSD"],
+   // parentProtocol: "parent#bit",
+   // tokensExcludedFromParent: ["bitUSD"],
+    stablecoins: ["bitsmiley-usd"],
     listedAt: 1715597300
   },
   {
@@ -42213,8 +42214,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "bitcow/index.js",
     twitter: "bitCow_AMM",
-    parentProtocol: "parent#bit",
-    tokensExcludedFromParent: ["bitUSD"],
+  //  parentProtocol: "parent#bit",
+  //  tokensExcludedFromParent: ["bitUSD"],
     listedAt: 1715597519
   },
   {

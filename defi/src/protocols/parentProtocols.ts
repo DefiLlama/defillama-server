@@ -4380,6 +4380,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Equilibre_Labs",
   },
+  /*
   {
     id: "parent#bit",
     name: "BIT",
@@ -4392,6 +4393,7 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["bitsmiley-usd"],
     twitter: "bitsmiley_labs",
   },
+  */
 ];
 
 export default parentProtocols;

@@ -42213,6 +42213,28 @@ const data3: Protocol[] = [
     twitter: "bitCow_AMM",
     listedAt: 1715597519
   },
+  {
+    id: "4590",
+    name: "Macaron",
+    address: null,
+    symbol: "-",
+    url: "https://www.macaron.xyz",
+    description: "The First & Native DEX on bitlayerlabs, Yields & Liquidity for Users.",
+    chain: "Bitlayer",
+    logo: `${baseIconsUrl}/macaron.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Bitlayer"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "macaron-xyz/index.js",
+    twitter: "macarondex",
+    github: ["Macaromswap"],
+    listedAt: 1715597840
+  },
 ]
 
 export default data3

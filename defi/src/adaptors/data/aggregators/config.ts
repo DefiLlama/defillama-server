@@ -84,15 +84,9 @@ export default {
     enabled: true,
     id: "189",
   },
-  "0x": {
+  "zrx": {
     enabled: true,
     id: "2116",
-    protocolsData: {
-      "zrx": {
-        enabled: true,
-        id: "2116",
-      }
-    }
   },
   "cowswap": {
     enabled: true,

@@ -2965,6 +2965,16 @@ export const chainCoingeckoIds = {
     twitter: "dfsdeveloper",
     url: "https://twitter.com/dfsdeveloper"
   },
+  "CyberConnect": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "CyberConnectHQ",
+    url: "https://cyber.co/",
+    github: ["cyberconnecthq"],
+    chainId: 7560,
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3597,6 +3607,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Endurance"
     case "dfs":
       return "DFS Network"
+    case "cyeth":
+      return "CyberConnect"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -33,8 +33,7 @@ function sum(
   }
   const data = total[time][category] || {};
 
-  for (const i in item) {
-    const section: string = i.includes("-") ? i.split("-")[1] : i;
+  for (const section in item) {
     if (section === "tvl" || extraSections.includes(section)) {
       data[section] = (data[section] || 0) + item[section];
     }

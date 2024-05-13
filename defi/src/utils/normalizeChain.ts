@@ -3584,7 +3584,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "LaChain Network"
     case "bob":
       return "BOB"
-    case "bitlayer":
+    case "btr":
       return "Bitlayer"
     case "ace":
       return "Endurance"

@@ -42327,6 +42327,28 @@ const data3: Protocol[] = [
     twitter: "COREx_Official",
     listedAt: 1715625938
   },
+  {
+    id: "4595",
+    name: "Untangled",
+    address: null,
+    symbol: "-",
+    url: "https://untangled.finance/",
+    description: "Untangled is an institutional-grade RWA credit protocol for fintechs around the world. The protocol has pioneered the first RWA credit oracle infrastructure, enabling dynamic pricing of RWAs with AI-driven risk models and zero-knowledge proof",
+    chain: "Celo",
+    logo: `${baseIconsUrl}/untangled.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Celo"],
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://github.com/Verilog-Solutions/.github/blob/main/Audit/Untangle_Protocol_Audit/Untangled_FInance_Audit_Report.pdf"],
+    module: "untangled/index.js",
+    twitter: "untangledfin",
+    listedAt: 1715628381
+  },
 ]
 
 export default data3

@@ -221,6 +221,7 @@ export async function handler() {
   } catch (e) {
     process.env.UNLOCKS_WEBHOOK ? await sendMessage(`${e}`, process.env.UNLOCKS_WEBHOOK!) : console.log(e);
   }
+  process.exit();
 }
 async function handlerErrors(errors: string[]) {
   if (errors.length > 0) {

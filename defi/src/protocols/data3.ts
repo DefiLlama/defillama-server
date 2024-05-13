@@ -42284,6 +42284,48 @@ const data3: Protocol[] = [
     parentProtocol: "parent#temple-dao",
     listedAt: 1715612691
   },
+  {
+    id: "4593",
+    name: "Free.tech",
+    address: null,
+    symbol: "-",
+    url: "https://free.tech/",
+    description: "Free your assets early with http://free.tech. Instantly liquify your staked assets and unlock extra yield potential.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/free.tech.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Merlin", "Arbitrum", "Manta", "Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "free-protocol/index.js",
+    twitter: "FreeLayer2",
+    listedAt: 1715625738
+  },
+  {
+    id: "4594",
+    name: "COREx Network",
+    address: null,
+    symbol: "-",
+    url: "https://corex.network/",
+    description: "COREx, built on the CoreDao Ecosystem, is distinguished by its user-friendly design requiring minimal learning curve, robust community features, along with advanced transaction monitoring and the convenience of one-click smart money copy-trading.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/corex-network.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "corexswap/index.js",
+    twitter: "COREx_Official",
+    listedAt: 1715625938
+  },
 ]
 
 export default data3

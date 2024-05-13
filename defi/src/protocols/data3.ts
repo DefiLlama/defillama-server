@@ -7614,7 +7614,7 @@ const data3: Protocol[] = [
     symbol: "LOCK",
     url: "https://houdiniswap.com/",
     description:
-      "Houdini Swap is an aggregator of non-custodial exchanges. It uses the Monero blockchain to anonymize your transactions, automatically swaping from your desired input currency to Monero on one exchange, then sends the Monero to a different exchange and swaps the Monero to your desired receiving currency",
+      "Houdini Swap is a cross-chain liquidity aggregator with a unique set of privacy tools",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/houdini-swap.png`,
     audits: "0",

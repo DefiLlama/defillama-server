@@ -4380,6 +4380,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Equilibre_Labs",
   },
+  {
+    id: "parent#bit",
+    name: "BIT",
+    url: "https://www.bitsmiley.io",
+    description: "BTC-Native stablecoin protocol, Initially funded by OKX_Ventures & ABCDELabs.",
+    logo: `${baseIconsUrl}/bit.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "bitsmiley_labs",
+  },
 ];
 
 export default parentProtocols;

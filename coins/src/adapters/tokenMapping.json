@@ -2752,5 +2752,12 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     }
+  },
+  "btr": {
+    "0x07373d112edc4570b46996ad1187bc4ac9fb5ed0": {
+      "decimals": "18",
+      "symbol": "BitUSD",
+      "to": "coingecko#tether"
+    }
   }
 }

@@ -2096,5 +2096,10 @@ export default {
         parentId: "Nuri Exchange",
         enabled: true,
         id: "4565"
+    },
+    "synfutures-v3": {
+        parentId: "SynFutures",
+        enabled: true,
+        id: "4215"
     }
 } as AdaptorsConfig

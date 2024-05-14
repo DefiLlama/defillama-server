@@ -729,7 +729,7 @@ const data2: Protocol[] = [
   // },
   {
     id: "1410",
-    name: "Cropper",
+    name: "Cropper AMM",
     address: "solana:DubwWZNWiNGMMeeQHPnMATNj77YZPZSAz2WVR5WjLJqz",
     symbol: "CRP",
     url: "https://cropper.finance",
@@ -751,6 +751,7 @@ const data2: Protocol[] = [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solana%20Program%20Audit/Cropper_Finance_AMM_Program_Security_Audit_Report_Halborn_Final.pdf",
     ],
     listedAt: 1644868660,
+    parentProtocol: "parent#cropper",
     openSource: false
   },
   {

@@ -149,7 +149,16 @@ export default async function getTokenPrices(
   }
 
   async function ptWrites() {
-    const [exchangeRates, decimals, symbols] = await Promise.all([
+    const exchangeRates: { [address: string]: any } = {};
+    const [decimals, symbols] = await Promise.all([
+      api.multiCall({
+        abi: "uint8:decimals",
+        calls: PTs,
+      }),
+      api.multiCall({
+        abi: "string:symbol",
+        calls: PTs,
+      }),
       Promise.all(
         // PromisePool error when multicalled on mainnet
         markets.map((params: string) =>
@@ -159,17 +168,10 @@ export default async function getTokenPrices(
               params,
               abi: "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
             })
-            .catch(() => null),
+            .then((r) => (exchangeRates[params] = r))
+            .catch(() => (exchangeRates[params] = null)),
         ),
       ),
-      api.multiCall({
-        abi: "uint8:decimals",
-        calls: PTs,
-      }),
-      api.multiCall({
-        abi: "string:symbol",
-        calls: PTs,
-      }),
     ]);
 
     PTs.map((PT: string, i: number) => {
@@ -177,10 +179,15 @@ export default async function getTokenPrices(
         (u: CoinData) => u.address == underlyingTokens[i],
       );
 
-      if (!underlying || !exchangeRates[i] || !decimals[i] || !symbols[i])
+      if (
+        !underlying ||
+        !exchangeRates[markets[i]] ||
+        !decimals[i] ||
+        !symbols[i]
+      )
         return;
 
-      const price = (underlying.price * exchangeRates[i]) / 10 ** 18;
+      const price = (underlying.price * exchangeRates[markets[i]]) / 10 ** 18;
 
       addToDBWritesList(
         writes,

@@ -4394,6 +4394,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "bitsmiley_labs",
   },
   */
+  {
+    id: "parent#vanillaswap",
+    name: "VanillaSwap",
+    url: "https://vanillalabs.org",
+    description: "We contribute to VanillaSwap - a protocol for trading and automated liquidity.",
+    logo: `${baseIconsUrl}/vanillaswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "VanillaSwap1",
+  },
 ];
 
 export default parentProtocols;

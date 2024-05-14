@@ -42435,7 +42435,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "silkswap/index.js",
-    twitter: "Aso_Finance",
+    twitter: "BlockstarsTech",
     listedAt: 1715688654
   },
   {

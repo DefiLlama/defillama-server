@@ -23903,7 +23903,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Services",
-    chains: ["Kujira"],
+    chains: ["Kujira", "Osmosis", "Neutron", "Archway"],
     module: "calculated-finance/index.js",
     twitter: "CALC_Finance",
     oracles: [],

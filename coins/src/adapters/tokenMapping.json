@@ -517,6 +517,11 @@
     }
   },
   "base": {
+    "0x02f92800F57BCD74066F5709F1Daa1A4302Df875": {
+      "decimals": "18",
+      "symbol": "PEAS",
+      "to": "coingecko#peapods-finance"
+    },
     "0x9483ab65847a447e36d21af1cab8c87e9712ff93": {
       "decimals": "9",
       "symbol": "wUSDR",
@@ -1348,6 +1353,11 @@
     }
   },
   "mode": {
+    "0x02f92800F57BCD74066F5709F1Daa1A4302Df875": {
+      "decimals": "18",
+      "symbol": "PEAS",
+      "to": "coingecko#peapods-finance"
+    },
     "0x4200000000000000000000000000000000000006": {
       "decimals": "18",
       "symbol": "WETH",

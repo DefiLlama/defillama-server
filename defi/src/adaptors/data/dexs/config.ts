@@ -2040,6 +2040,7 @@ export default {
         "id": "3454"
     },
     "aerodrome": {
+        parentId: "Aerodrome",
         "enabled": true,
         "id": "3450"
     },
@@ -2718,5 +2719,10 @@ export default {
     "apestore": {
         enabled: true,
         id: "4584"
+    },
+    "aerodrome-slipstream": {
+        parentId: "Aerodrome",
+        enabled: true,
+        id: "4524"
     }
 } as AdaptorsConfig

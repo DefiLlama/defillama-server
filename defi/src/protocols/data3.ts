@@ -42396,6 +42396,48 @@ const data3: Protocol[] = [
     tokensExcludedFromParent: ["STHAPT", "THAPT", "veTHL"],
     listedAt: 1715679178
   },
+  {
+    id: "4598",
+    name: "Aso Finance",
+    address: "blast:0x54E7780089AeE73EF98B8238B0866a517914254e",
+    symbol: "ASO",
+    url: "https://aso.finance",
+    description: "The lending protocol on Blast_L2. Earn high yields from bribe-reward tokenomics & share 100% protocol profits by staking $ASO.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/aso-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: ["Compound V2"],
+    module: "asofinance/index.js",
+    twitter: "Aso_Finance",
+    listedAt: 1715688654
+  },
+  {
+    id: "4599",
+    name: "SilkSwap",
+    address: null,
+    symbol: "-",
+    url: "https://silkswap.me",
+    description: "SilkSwap - first DEX on Bahamut! Enjoy silk smooth swapping with us, explore diverse assets, trade peer-to-peer, and retain control over your funds securely. Enjoy fast, low-cost transactions, access real-time data, and make informed trades. Join Silk Swap for seamless, secure, permissionless and efficient trading.",
+    chain: "Bahamut",
+    logo: `${baseIconsUrl}/silkswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Bahamut"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "silkswap/index.js",
+    twitter: "Aso_Finance",
+    listedAt: 1715688654
+  },
 ]
 
 export default data3

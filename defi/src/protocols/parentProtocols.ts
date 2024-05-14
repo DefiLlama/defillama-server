@@ -4405,6 +4405,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "VanillaSwap1",
   },
+  {
+    id: "parent#cropper",
+    name: "Cropper",
+    url: "https://cropper.finance/",
+    description: "Cropper is an decentralized exchange built on the Solana blockchain.",
+    logo: `${baseIconsUrl}/cropper.png`,
+    gecko_id: "cropperfinance",
+    cmcId: "11387",
+    chains: [],
+    twitter: "CropperFinance",
+  },
 ];
 
 export default parentProtocols;

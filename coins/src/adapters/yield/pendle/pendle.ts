@@ -15,6 +15,7 @@ const customMapping: { [chain: string]: { [key: string]: string } } = {
       "0x35751007a407ca6feffe80b3cb397736d2cf4dbe",
   },
 };
+const blacklist = ["0x1d83fdf6f019d0a6b2babc3c6c208224952e42fc"];
 
 export default async function getTokenPrices(
   timestamp: number,
@@ -46,7 +47,9 @@ export default async function getTokenPrices(
     }),
   );
 
-  const markets: string[] = logs.map((l: any) => l.market);
+  const markets: string[] = logs
+    .map((l: any) => l.market)
+    .filter((m: string) => !blacklist.includes(m.toLowerCase()));
 
   if (chain == "arbitrum")
     markets.push(

@@ -1997,7 +1997,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
     parentProtocol: "parent#thala-labs",
     listedAt: 1680889424,
-    tokensExcludedFromParent: ["STHAPT", "THAPT"]
+    tokensExcludedFromParent: ["STHAPT", "THAPT", "veTHL"]
   },
   {
     id: "2790",
@@ -2127,7 +2127,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
     parentProtocol: "parent#thala-labs",
     listedAt: 1680980221,
-    tokensExcludedFromParent: ["STHAPT", "THAPT"]
+    tokensExcludedFromParent: ["STHAPT", "THAPT", "veTHL"]
   },
   {
     id: "2796",
@@ -42348,6 +42348,53 @@ const data3: Protocol[] = [
     module: "untangled/index.js",
     twitter: "untangledfin",
     listedAt: 1715628381
+  },
+  {
+    id: "4596",
+    name: "Mitosis",
+    address: null,
+    symbol: "-",
+    url: "https://mitosis.org",
+    description: "Ecosystem-Owned Liquidity with L1 Chain that empowers LPs to make informed decisions on multi-chain yield while enabling protocols to bootstrap stable liquidity.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mitosis.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum", "Arbitrum", "Optimism"],
+    oracles: [],
+    forkedFrom: [],
+    module: "mitosis/index.js",
+    twitter: "MitosisOrg",
+    audit_links: ["https://omniscia.io/reports/mitosis-core-protocol-65d72c4f31a85a00186cf5f8"],
+    github: ["mitosis-org"],
+    listedAt: 1715679045
+  },
+  {
+    id: "4597",
+    name: "Thala veETH",
+    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
+    symbol: "THL",
+    assetToken: "veTHL",
+    url: "https://app.thala.fi/ve",
+    description: "Deposited THL and get veTHL",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/thala-veeth.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "thala-vethl/index.js",
+    twitter: "ThalaLabs",
+    parentProtocol: "parent#thala-labs",
+    tokensExcludedFromParent: ["STHAPT", "THAPT", "veTHL"],
+    listedAt: 1715679178
   },
 ]
 

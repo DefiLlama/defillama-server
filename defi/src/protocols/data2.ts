@@ -23898,7 +23898,7 @@ const data2: Protocol[] = [
       "Suite of financial tools that gives you access to set-and-forget investment strategies.",
     chain: "Kujira",
     logo: `${baseIconsUrl}/calc.jpg`,
-    audits: "3",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

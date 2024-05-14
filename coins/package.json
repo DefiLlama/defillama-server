@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.354.0",
-    "@defillama/sdk": "^5.0.19",
+    "@defillama/sdk": "^5.0.54",
     "@ethersproject/bignumber": "^5.5.0",
     "@sentry/serverless": "^6.19.7",
     "@sentry/tracing": "^6.19.7",

@@ -42553,6 +42553,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#cropper",
     openSource: false
   },
+  {
+    id: "4605",
+    name: "Whales Market",
+    address: "solana:GTH3wG3NErjwcf7VGCoXEXkgXSHvYhx5gtATeeM5JAS1",
+    symbol: "WHALES",
+    url: "https://whales.market/",
+    description: "Trade like a pro with advanced tools and features at your fingertips",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/whales-market.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Solana", "Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "whales-market/index.js",
+    twitter: "WhalesMarket",
+    listedAt: 1715696873
+  },
 ]
 
 export default data3

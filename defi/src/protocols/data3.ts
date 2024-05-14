@@ -42374,7 +42374,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4597",
-    name: "Thala veETH",
+    name: "Thala veTHL",
     address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
     symbol: "THL",
     assetToken: "veTHL",

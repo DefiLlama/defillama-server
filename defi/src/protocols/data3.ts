@@ -42659,7 +42659,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Chain",
-    chains: ["Omni"],
+    chains: ["Ethereum"], // we dont track omni chain, if we add omni here it will break the server
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",

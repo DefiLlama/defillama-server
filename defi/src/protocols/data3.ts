@@ -42603,6 +42603,15 @@ const data3: Protocol[] = [
   },
   {
     id: "4607",
+<<<<<<< HEAD
+    name: "Mangrove",
+    address: null,
+    symbol: "-",
+    url: "https://www.mangrove.exchange",
+    description: "Restaking liquidity enables you to use funds already held on other DEXes or money markets and earn more from spread, yields and points.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/mangrove.jpg`,
+=======
     name: "Cheelee",
     address: 'bcs:0x1f1c90aeb2fd13ea972f0a71e35c0753848e3db0',
     symbol: "CHEEL",
@@ -42610,10 +42619,20 @@ const data3: Protocol[] = [
     description: "Cheelee is a new social network where you get real money for content watching.",
     chain: "Binance",
     logo: `${baseIconsUrl}/cheelee.jpg`,
+>>>>>>> 95f04f9a71a2f632d29205de6a9a357db3fe2ae9
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
+<<<<<<< HEAD
+    category: "Dexes",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    github: ["mangrovedao"],
+    twitter: "MangroveDAO",
+=======
     category: "Farm",
     chains: ["Binance"],
     oracles: [],
@@ -42666,6 +42685,7 @@ const data3: Protocol[] = [
     twitter: "OmniFDN",
     audit_links: [],
     listedAt: 1715748037,
+>>>>>>> 95f04f9a71a2f632d29205de6a9a357db3fe2ae9
   },
 ]
 

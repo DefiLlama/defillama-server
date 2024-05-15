@@ -1,4 +1,5 @@
 import getTokenPrices from "./pendle";
+import { getPenpiePrices } from "./penpie";
 
 const config: { [chain: string]: any } = {
   ethereum: {
@@ -103,6 +104,29 @@ export function pendle(timestamp: number = 0) {
   return Promise.all(
     Object.keys(config).map((chain: string) =>
       getTokenPrices(timestamp, chain, config[chain]),
+    ),
+  );
+}
+
+const masters: { [chain: string]: { target: string; fromBlock: number } } = {
+  arbitrum: {
+    target: "0x0776C06907CE6Ff3d9Dbf84bA9B3422d7225942D",
+    fromBlock: 97640252,
+  },
+  ethereum: {
+    target: "0x16296859C15289731521F199F0a5f762dF6347d0",
+    fromBlock: 17406748,
+  },
+  bsc: {
+    target: "0xb35b3d118c0394e750b4b59d2a2f9307393cd5db",
+    fromBlock: 29693582,
+  },
+};
+
+export async function penpie(timestamp: number = 0) {
+  return Promise.all(
+    Object.keys(masters).map((chain: string) =>
+      getPenpiePrices(timestamp, chain, masters[chain]),
     ),
   );
 }

@@ -63,6 +63,7 @@ export default {
   jpegd: require("./yield/jpegd"),
   glpDerivs: require("./yield/glpDerivs"),
   pendle: require("./yield/pendle"),
+  penpie: require("./yield/pendle"),
   phux: require("./markets/phux"),
   wombat: require("./markets/wombat"),
   backed: require("./rwa/backed"),

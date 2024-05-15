@@ -1,5 +1,5 @@
-import type { Protocol } from './types'
 import { baseIconsUrl } from "../constants";
+import type { Protocol } from './types';
 
 /*
 {
@@ -28913,7 +28913,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "repl/index.js",
     twitter: "parasailnetwork",
-    audit_links: ["https://docs.repl.fi/safe/audit"],
+    audit_links: ["https://docs.parasail.network/safe/audit"],
     listedAt: 1704733578
   },
   {

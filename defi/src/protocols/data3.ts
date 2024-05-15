@@ -42645,6 +42645,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715748037,
   },
+  {
+    id: "4609",
+    name: "Omni Network",
+    address: null,
+    symbol: "OMNI",
+    url: "https://omni.network/",
+    description: "Omni is a blockchain purpose-built to connect all rollups securely through the use of restaking.",
+    chain: "Omni",
+    logo: `${baseIconsUrl}/omni.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Omni"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "OmniFDN",
+    audit_links: [],
+    listedAt: 1715748037,
+  },
 ]
 
 export default data3

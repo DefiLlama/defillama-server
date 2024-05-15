@@ -2729,5 +2729,9 @@ export default {
         parentId: "Cropper",
         enabled: true,
         id: "4604"
+    },
+    "mangrove": {
+        enabled: true,
+        id: "4607"
     }
 } as AdaptorsConfig

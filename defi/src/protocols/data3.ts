@@ -42574,6 +42574,33 @@ const data3: Protocol[] = [
     twitter: "WhalesMarket",
     listedAt: 1715696873
   },
+  {
+    id: "4606",
+    name: "YieldNest",
+    address: null,
+    symbol: "-",
+    assetToken: "ynETH",
+    url: "https://yieldnest.finance/",
+    description: "YieldNest is a next-generation liquid restaking protocol that provides simple-to-understand, risk-adjusted restaking strategies",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yieldnest.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "yieldnest/index.js",
+    twitter: "yieldnestFi",
+    audit_links: [
+      "https://github.com/yieldnest/yieldnest-protocol-public/blob/master/audits/2024-04-10-chainsecurity_yieldnest_protocol_audit.pdf",
+      "https://github.com/yieldnest/yieldnest-protocol-public/blob/master/audits/2024-05-07-zokyo-yieldnest_protocol_audit.pdf"
+    ],
+    github: ["yieldnest"],
+    listedAt: 1715748037
+  },
 ]
 
 export default data3

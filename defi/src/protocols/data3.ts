@@ -42684,7 +42684,7 @@ const data3: Protocol[] = [
     chains: ["Blast"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "mangrove/index.js",
     github: ["mangrovedao"],
     twitter: "MangroveDAO",
   },

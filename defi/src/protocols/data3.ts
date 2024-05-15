@@ -28895,14 +28895,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3995",
-    name: "Repl",
+    name: "Parasail", // rebrand from Repl
     address: null,
     symbol: "-",
     assetToken: "pFIL",
-    url: "https://repl.fi/",
-    description: "Repl is the first restaking protocol for DePINs, enabling natively pledged DePIN tokens and DePIN liquid staking tokens to be reused to secure new DePIN initiatives and applications. It also creates a simple way for BTC and ETH staking and restaking projects to access DePIN protocol rewards.",
+    url: "https://www.parasail.network/",
+    description: "Parasail is an incentive interface focused on creating seamless DePIN experiences. By aggregating capital, hardware resources, and DePIN users, Parasail breaks down silos and fosters strong synergies among various DePIN networks.",
     chain: "Filecoin",
-    logo: `${baseIconsUrl}/repl.png`,
+    logo: `${baseIconsUrl}/parasail.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -28912,8 +28912,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "repl/index.js",
-    twitter: "Repl_fi",
-    audit_links: ["https://docs.repl.fi/safe/audit"],
+    twitter: "parasailnetwork",
+    audit_links: ["https://docs.parasail.network/safe/audit"],
     listedAt: 1704733578
   },
   {

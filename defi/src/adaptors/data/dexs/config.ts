@@ -2724,5 +2724,10 @@ export default {
         parentId: "Aerodrome",
         enabled: true,
         id: "4524"
+    },
+    "cropper-clmm": {
+        parentId: "Cropper",
+        enabled: true,
+        id: "4604"
     }
 } as AdaptorsConfig

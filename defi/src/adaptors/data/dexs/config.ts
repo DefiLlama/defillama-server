@@ -2732,6 +2732,6 @@ export default {
     },
     "mangrove": {
         enabled: true,
-        id: "4607"
+        id: "4610"
     }
 } as AdaptorsConfig

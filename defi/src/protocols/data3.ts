@@ -42601,6 +42601,27 @@ const data3: Protocol[] = [
     github: ["yieldnest"],
     listedAt: 1715748037
   },
+  {
+    id: "4607",
+    name: "Mangrove",
+    address: null,
+    symbol: "-",
+    url: "https://www.mangrove.exchange",
+    description: "Restaking liquidity enables you to use funds already held on other DEXes or money markets and earn more from spread, yields and points.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/mangrove.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    github: ["mangrovedao"],
+    twitter: "MangroveDAO",
+  },
 ]
 
 export default data3

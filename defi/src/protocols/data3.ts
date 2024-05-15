@@ -42623,6 +42623,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715748037
   },
+  {
+    id: "4608",
+    name: "Metars GO",
+    address: "bcs:0x238d02ee3f80fbf5e381f049616025c186889b68",
+    symbol: "MRS",
+    url: "https://metars.io/",
+    description: "METARS utilizes AI deep learning to provide you with a more seamless, engaging and personalized user experience.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/metars.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "MetarsGenesis",
+    audit_links: [],
+    listedAt: 1715748037,
+  },
 ]
 
 export default data3

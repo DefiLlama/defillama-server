@@ -42601,6 +42601,28 @@ const data3: Protocol[] = [
     github: ["yieldnest"],
     listedAt: 1715748037
   },
+  {
+    id: "4607",
+    name: "Cheelee",
+    address: 'bcs:0x1f1c90aeb2fd13ea972f0a71e35c0753848e3db0',
+    symbol: "CHEEL",
+    url: "https://cheelee.io/",
+    description: "Cheelee is a new social network where you get real money for content watching.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/cheelee.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "Cheelee_Tweet",
+    audit_links: [],
+    listedAt: 1715748037
+  },
 ]
 
 export default data3

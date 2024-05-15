@@ -2101,5 +2101,9 @@ export default {
         parentId: "SynFutures",
         enabled: true,
         id: "4215"
+    },
+    "jito": {
+        enabled: true,
+        id: "2308"
     }
 } as AdaptorsConfig

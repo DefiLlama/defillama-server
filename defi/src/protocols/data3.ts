@@ -42652,7 +42652,7 @@ const data3: Protocol[] = [
     symbol: "OMNI",
     url: "https://omni.network/",
     description: "Omni is a blockchain purpose-built to connect all rollups securely through the use of restaking.",
-    chain: "Omni",
+    chain: "Ethereum", // we dont track omni chain, if we add omni here it will break the server
     logo: `${baseIconsUrl}/omni.png`,
     audits: "0",
     audit_note: null,

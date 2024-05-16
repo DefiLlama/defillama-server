@@ -10063,7 +10063,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/stella.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: 'alpha-finance', // alpha-finance same as Alpha Homora
+    gecko_id: null, // alpha-finance same as Alpha Homora
     cmcId: null,
     category: "Leveraged Farming",
     chains: ["Arbitrum"],

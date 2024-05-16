@@ -42739,14 +42739,14 @@ const data3: Protocol[] = [
     symbol: "SOL",
     url: "https://myria.com/",
     description: "Explore the Myria ecosystem where simplicity meets scale. Develop your game with unparalleled speed and adaptability, placing players at the core of the gaming universe.",
-    chain: "Myria",
+    chain: "Ethereum", // we dont track Myria chain, if we add omni here it will break the server
     logo: `${baseIconsUrl}/myria.png`,
     audits: "0",
     audit_note: null,
     gecko_id: 'myria',
     cmcId: null,
     category: "Chain",
-    chains: ["Myria"],
+    chains: ["Ethereum"], // we dont track Myria chain, if we add omni here it will break the server
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",

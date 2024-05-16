@@ -2105,5 +2105,9 @@ export default {
     "jito": {
         enabled: true,
         id: "2308"
+    },
+    "vfat": {
+        enabled: true,
+        id: "4602"
     }
 } as AdaptorsConfig

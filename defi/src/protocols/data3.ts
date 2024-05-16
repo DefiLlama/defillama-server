@@ -42717,14 +42717,14 @@ const data3: Protocol[] = [
     symbol: "SOL",
     url: "https://worldcoin.org/",
     description: "For every human Privacy-first. Owned by everyone.",
-    chain: "Worldcoin",
+    chain: "Ethereum", // we dont track worldcoin chain, if we add omni here it will break the server
     logo: `${baseIconsUrl}/worldcoin.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: 'worldcoin-wld',
     cmcId: null,
     category: "Chain",
-    chains: ["Worldcoin"],
+    chains: ["Ethereum"], // we dont track worldcoin chain, if we add omni here it will break the server
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",

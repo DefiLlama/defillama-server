@@ -11111,13 +11111,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3196",
-    name: "FlowX Finance AMM",
+    name: "FlowX V2", // previous FlowX Finance AMM
     address: "sui:0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX",
     symbol: "FLX",
     url: "https://flowx.finance",
     description: "FlowX Finance is the ecosystem-focused decentralized exchange built on the Sui Blockchain.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/flowx-finance.png`,
+    logo: `${baseIconsUrl}/flowx-v2.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -42043,13 +42043,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4582",
-    name: "FlowX Finance CLMM",
+    name: "FlowX V3", // previous FlowX Finance CLMM
     address: "sui:0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX",
     symbol: "FLX",
     url: "https://flowx.finance",
     description: "FlowX Finance is the ecosystem-focused decentralized exchange built on the Sui Blockchain.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/flowx-finance.png`,
+    logo: `${baseIconsUrl}/flowx-v3.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

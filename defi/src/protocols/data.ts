@@ -1335,7 +1335,7 @@ const data: Protocol[] = [
     name: "Dev Protocol",
     address: "0x5caf454ba92e6f2c929df14667ee360ed9fd5b26",
     symbol: "DEV",
-    url: "https://devprtcl.com/",
+    url: "https://www.devprotocol.xyz",
     description: "Making open activities sustainable with staking\r\n\r\n",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dev-protocol.jpg`,
@@ -1346,7 +1346,7 @@ const data: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum"],
     module: "dev.js",
-    twitter: "devprtcl",
+    twitter: "poweredbyClubs",
     audit_links: ["https://github.com/dev-protocol/protocol/blob/main/docs/audit-report__quantstamp--sept-15-2020.pdf"],
     github: ["dev-protocol"]
   },

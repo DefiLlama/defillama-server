@@ -2768,6 +2768,31 @@
       "decimals": "18",
       "symbol": "BitUSD",
       "to": "coingecko#tether"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
+    },
+    "0xff204e2681a6fa0e2c3fade68a1b28fb90e4fc5f": {
+      "decimals": "18",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0xfe9f969faf8ad72a83b761138bf25de87eff9dd2": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xef63d4e178b3180beec9b0e143e0f37f4c93f4c2": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x9827431e8b77e87c9894bd50b055d6be56be0030": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
     }
   }
 }

@@ -2975,6 +2975,15 @@ export const chainCoingeckoIds = {
     github: ["cyberconnecthq"],
     chainId: 7560,
   },
+  "BounceBit": {
+    geckoId: "BB",
+    symbol: "bouncebit",
+    cmcId: "30746",
+    categories: ["EVM"],
+    twitter: "bounce_bit",
+    url: "https://bouncebit.io/",
+    chainId: 6001,
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3609,6 +3618,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "DFS Network"
     case "cyeth":
       return "CyberConnect"
+    case "bouncebit":
+        return "BounceBit"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

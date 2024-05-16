@@ -45,8 +45,11 @@ async function aggregateMetadata(
     throw new Error(`no metadata for raw token ${rawData.metadata.token}`);
 
   let name = id;
+  let gecko_id = pData?.gecko_id;
+
   if (pData?.parentProtocol) {
     name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;
+    gecko_id = parentProtocols.find((p) => p.id === pData.parentProtocol)?.gecko_id ?? pData?.gecko_id;
   }
 
   const realTimeTokenAllocation = createCategoryData(realTimeChart, rawData.categories);
@@ -78,7 +81,7 @@ async function aggregateMetadata(
       documentedData,
       metadata: rawData.metadata,
       name,
-      gecko_id: pData?.gecko_id,
+      gecko_id,
       futures,
       categories: rawData.categories,
     },

@@ -25365,7 +25365,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/mantle-treasury.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "mantle",
+    gecko_id: null,
     cmcId: "27075",
     category: "Services",
     chains: ["Ethereum"],

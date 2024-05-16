@@ -42754,6 +42754,27 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715748037,
   },
+  {
+    id: "4614",
+    name: "Internet Computer",
+    address: null,
+    symbol: "ICP",
+    url: "https://internetcomputer.org/",
+    description: "Compute on blockchain.",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/icp.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'internet-computer',
+    cmcId: null,
+    category: "Chain",
+    chains: ["ICP"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "dfinity",
+    audit_links: [],
+  },
 ]
 
 export default data3

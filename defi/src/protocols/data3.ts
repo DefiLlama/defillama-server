@@ -42800,6 +42800,52 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bitswap-bb",
     listedAt: 1715853154
   },
+  {
+    id: "4616",
+    name: "Lumen Money",
+    address: null,
+    symbol: "-",
+    url: "https://lumen.money",
+    description: "Lumen Money is a decentralized lending and borrowing platform built on Neon EVM chain.",
+    chain: "Neon", 
+    logo: `${baseIconsUrl}/lumen-money.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Neon"],
+    oracles: ["Chainlink"], // https://github.com/Lumen-Money/lumen-protocol/blob/main/oracle/contracts/ResilientOracle.sol#L39
+    forkedFrom: ["Compound V2"],
+    module: "lumen-money/index.js",
+    twitter: "Lumen_Money",
+    audit_links: [],
+    github: ["Lumen-Money"],
+    listedAt: 1715854305
+  },
+  {
+    id: "4617",
+    name: "Chi Protocol",
+    address: "0x3b21418081528845a6df4e970bd2185545b712ba",
+    symbol: "CHI",
+    url: "https://chiprotocol.io",
+    description: "Chi Protocol is the scalable LST-backed stablecoin protocol powered by USC and CHI. Users can mint USC 1:1 vs. ETH/stETH, and LSTs are used to payout real yield to the governance token CHI. Smart contracts and arbitrage incentives automatically maintain the protocol's stability and solvency.",
+    chain: "Ethereum", 
+    logo: `${baseIconsUrl}/chi-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "chi-protocol",
+    cmcId: null,
+    category: "Decentralized Stablecoin",
+    chains: ["Ethereum"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "chi-protocol/index.js",
+    twitter: "ProtocolChi",
+    github: ["Chi-Protocol"],
+    audit_links: ["https://github.com/abdk-consulting/audits/blob/main/chi/ABDK_Chi_ChiProtocol_v_1_0.pdf"],
+    listedAt: 1715854705
+  },
 ]
 
 export default data3

@@ -5233,7 +5233,7 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/injective.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "injective-protocol",
+    gecko_id: null,
     cmcId: "7226",
     category: "Bridge",
     chains: ["Ethereum"],

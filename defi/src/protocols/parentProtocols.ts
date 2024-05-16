@@ -4416,6 +4416,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CropperFinance",
   },
+  {
+    id: "parent#bitswap-bb",
+    name: "BitSwap BB",
+    url: "https://app.bouncebit.io/club/1",
+    description: "The Native BounceBit Swap for BTC L2 assets, built on bounce_bit",
+    logo: `${baseIconsUrl}/bitswap-bb.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BitSwap_xyz",
+  },
 ];
 
 export default parentProtocols;

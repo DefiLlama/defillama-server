@@ -1930,7 +1930,6 @@ const data: Protocol[] = [
     oracles: ["Chainlink"],
     deadUrl: true
   },
-  /*
   {
     id: "196",
     name: "Fantom",
@@ -1947,10 +1946,9 @@ const data: Protocol[] = [
     cmcId: null, //"3513",
     category: "Chain",
     chains: ["Fantom"],
-    module: "fantom.js",
+    module: "dummy.js",
     twitter: "FantomFDN",
   },
-  */
   {
     id: "197",
     name: "Ooki",

@@ -42846,6 +42846,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/abdk-consulting/audits/blob/main/chi/ABDK_Chi_ChiProtocol_v_1_0.pdf"],
     listedAt: 1715854705
   },
+  {
+    id: "4618",
+    name: "Internet Computer",
+    address: null,
+    symbol: "ICP",
+    url: "https://internetcomputer.org/",
+    description: "Compute on blockchain.",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/icp.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'internet-computer',
+    cmcId: null,
+    category: "Chain",
+    chains: ["ICP"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "dfinity",
+    audit_links: [],
+  }
 ]
 
 export default data3

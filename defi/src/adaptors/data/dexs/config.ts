@@ -2728,7 +2728,12 @@ export default {
     "cropper-clmm": {
         parentId: "Cropper",
         enabled: true,
-        id: "4604"
+        id: "4604",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1715731200": true,
+            }
+        }
     },
     "mangrove": {
         enabled: true,

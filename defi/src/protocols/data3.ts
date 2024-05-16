@@ -32811,14 +32811,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4168",
-    name: "BounceBit",
+    name: "BounceBit pre-launch Farm", // previous bouncebit 
     address: null,
     symbol: "-",
     url: "https://bouncebit.io",
     description:
       "BounceBit is building a BTC restaking infrastructure that provides a foundational layer for different restaking products, secured by the regulated custody of Mainnet Digital and Ceffu. The BounceBit chain, designed as a showcase of a restaking product within the BounceBit ecosystem, is a PoS Layer 1 secured by validators staking both BTC and BounceBit’s native token – A dual-token system leveraging native Bitcoin’s security with full EVM compatibility. Critical ecosystem infrastructure like bridges and oracles are secured by restaked BTC.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bouncebit.jpg`,
+    logo: `${baseIconsUrl}/bouncebit-pre-launch-farm.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

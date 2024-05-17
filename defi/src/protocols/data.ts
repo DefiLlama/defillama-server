@@ -25170,7 +25170,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1282",
     name: "Rubic",
-    address: "0xa4eed63db85311e22df4473f87ccfc3dadcfa3e3",
+    address: "0x3330bfb7332ca23cd071631837dc289b09c33333",
     symbol: "RBC",
     url: "https://app.rubic.exchange/",
     description:

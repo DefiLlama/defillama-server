@@ -43109,6 +43109,29 @@ const data3: Protocol[] = [
     twitter: "ociswap",
     parentProtocol: "parent#ociswap",
     listedAt: 1715954045
+  },
+  {
+    id: "4630",
+    name: "Jasper Vault",
+    address: null,
+    symbol: "-",
+    url: "https://www.jaspervault.io/",
+    description:
+      "Jasper Vault is a peer-to-peer interoperable options protocol. Jasper Vault's mission is to revolutionize the decentralised finance (DeFi) options space by making it simpler, safer, and more efficient than ever before",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/jasper-vault.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum"],
+    module: "jaspervault/index.js", 
+    forkedFrom: [],
+    oracles: ["Pyth"],  // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10271
+    twitter: "jaspervault",
+    audit_links: ["https://docs.jaspervault.io/security/audit-reports"],
+    listedAt: 1715980453
   }
 ]
 

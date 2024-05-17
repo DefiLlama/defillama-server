@@ -86,7 +86,7 @@ export default {
   },
   "zrx": {
     enabled: true,
-    id: "2116",
+    id: "4628",
   },
   "cowswap": {
     enabled: true,

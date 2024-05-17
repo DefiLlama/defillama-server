@@ -43062,6 +43062,29 @@ const data3: Protocol[] = [
     twitter: "TrustIn_Finance",
     listedAt: 1715946353
   },
+  {
+    id: "4628",
+    name: "0x — Aggregator",
+    address: "0xe41d2489571d322189246dafa5ebde1f4699f498",
+    symbol: "ZRX",
+    url: "https://www.0x.org/",
+    description:
+      "Open-source, decentralized exchange infrastructure that enables the exchange of tokenized assets on multiple blockchains.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/0x.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum", "Polygon"],
+    module: "dummy.js", 
+    forkedFrom: [],
+    twitter: "0xProject",
+    audit_links: ["https://docs.0x.org/developer-resources/audits"],
+    governanceID: ["snapshot:0xgov.eth"],
+    github: ["0xProject"]
+  }
 ]
 
 export default data3

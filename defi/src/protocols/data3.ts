@@ -43028,7 +43028,7 @@ const data3: Protocol[] = [
     url: "https://mainnet.goat.tech",
     description: "Onchain Reputation Infrastructure on EigenLayer to bring yields and broadcast your reputation across chains.",
     chain: "Arbitrum", 
-    logo: `${baseIconsUrl}/goat-tech.jpg`,
+    logo: `${baseIconsUrl}/goatxtech.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -43040,6 +43040,27 @@ const data3: Protocol[] = [
     module: "goat-tech/index.js",
     twitter: "goatxtech",
     listedAt: 1715944633
+  },
+  {
+    id: "4627",
+    name: "Trustin Finance",
+    address: null,
+    symbol: "-",
+    url: "https://trustin.com",
+    description: "Bitcoin security-equivalent Layer 2 based on BitVM, Permissionless lending protocol ",
+    chain: "Bitlayer", 
+    logo: `${baseIconsUrl}/trustin-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Bitlayer"],
+    oracles: [],
+    forkedFrom: ["Compound V2"],
+    module: "trustin/index.js",
+    twitter: "TrustIn_Finance",
+    listedAt: 1715946353
   },
 ]
 

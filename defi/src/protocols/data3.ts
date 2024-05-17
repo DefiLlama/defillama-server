@@ -24800,7 +24800,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "aggreio",
   },
-  {
+  /*{
     id: "3810",
     name: "Dap Dap",
     address: null,
@@ -24820,7 +24820,7 @@ const data3: Protocol[] = [
     module: "dapdap-uniswap/index.js",
     twitter: "DapDapMeUp",
     listedAt: 1700488010
-  },
+  },*/
   {
     id: "3811",
     name: "Stellaris Finance",

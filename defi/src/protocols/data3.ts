@@ -42910,7 +42910,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "solvbtc/index.js",
     twitter: "SolvProtocol",
-    parentProtocol: "parent#swaap",
+    parentProtocol: "parent#solv-protocol",
     listedAt: 1715899545
   },
 ]

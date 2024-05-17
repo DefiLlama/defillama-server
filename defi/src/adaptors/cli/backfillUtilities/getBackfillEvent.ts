@@ -134,7 +134,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             if (startTimestamp > 0) startTimestamp *= 1000
             else startTimestamp = new Date(Date.UTC(2018, 0, 1)).getTime()
         } else {
-            throw new Error(`No adapter found with name ${adapterName} of type ${adaptorType}`)
+            throw new Error(`No adapter found with name ${adapterName} of type ${adaptorType}. Try to run "cd dimension-adapters && git pull && cd .. &&npm run prebuild"`)
         }
         // For specific ranges (remember months starts with 0)
         // const startDate = new Date(Date.UTC(2022, 8, 1))

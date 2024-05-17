@@ -1,6 +1,10 @@
-import "../setup.ts"
+import "../setup"
 import { autoBackfill } from "./backfillFunction"
 
 (async () => {
-    await autoBackfill(process.argv)
+    try{
+        await autoBackfill(process.argv)
+    } catch(e){
+        console.log(e)
+    }
 })()

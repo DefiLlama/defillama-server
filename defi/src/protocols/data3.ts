@@ -21213,23 +21213,24 @@ const data3: Protocol[] = [
   },
   {
     id: "3646",
-    name: "Ociswap",
+    name: "Ociswap Basic", //previous Ociswap
     address: "radixdlt:resource_rdx1t52pvtk5wfhltchwh3rkzls2x0r98fw9cjhpyrf3vsykhkuwrf7jg8",
     symbol: "OCI",
     url: "https://ociswap.com/",
     description: "Ociswap is a modular and highly configurable decentralized exchange (DEX) developed on the Radix Network",
     chain: "Radix",
-    logo: `${baseIconsUrl}/ociswap.png`,
+    logo: `${baseIconsUrl}/ociswap-basic.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "ociswap",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Radix"],
     oracles: [],
     forkedFrom: [],
-    module: "ociswap/index.js",
+    module: "ociswap-basic/index.js",
     twitter: "ociswap",
+    parentProtocol: "parent#ociswap",
     listedAt: 1697592311
   },
   {
@@ -43086,6 +43087,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.0x.org/developer-resources/audits"],
     governanceID: ["snapshot:0xgov.eth"],
     github: ["0xProject"]
+  },
+  {
+    id: "4629",
+    name: "Ociswap Precision",
+    address: "radixdlt:resource_rdx1t52pvtk5wfhltchwh3rkzls2x0r98fw9cjhpyrf3vsykhkuwrf7jg8",
+    symbol: "OCI",
+    url: "https://ociswap.com/",
+    description:
+      "Ociswap is a modular and highly configurable decentralized exchange (DEX) developed on the Radix Network",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/ociswap-precision.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Radix"],
+    module: "ociswap-precision/index.js", 
+    forkedFrom: [],
+    twitter: "ociswap",
+    parentProtocol: "parent#ociswap",
+    listedAt: 1715954045
   }
 ]
 

@@ -43020,6 +43020,27 @@ const data3: Protocol[] = [
     twitter: "pumpmarkets",
     listedAt: 1715948028
   },
+  {
+    id: "4626",
+    name: "GoatxTech",
+    address: null,
+    symbol: "-",
+    url: "https://mainnet.goat.tech",
+    description: "Onchain Reputation Infrastructure on EigenLayer to bring yields and broadcast your reputation across chains.",
+    chain: "Arbitrum", 
+    logo: `${baseIconsUrl}/goat-tech.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "goat-tech/index.js",
+    twitter: "goatxtech",
+    listedAt: 1715944633
+  },
 ]
 
 export default data3

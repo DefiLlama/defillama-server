@@ -4439,6 +4439,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "VeryLong_Swap",
     github: ["verylongswap"],
   },
+  {
+    id: "parent#ociswap",
+    name: "Ociswap",
+    url: "https://ociswap.com",
+    description: "Ociswap is a modular and highly configurable decentralized exchange (DEX) developed on the Radix Network.",
+    logo: `${baseIconsUrl}/ociswap.png`,
+    gecko_id: "ociswap",
+    cmcId: null,
+    chains: [],
+    twitter: "ociswap",
+  },
 ];
 
 export default parentProtocols;

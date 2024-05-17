@@ -6361,13 +6361,13 @@ const data3: Protocol[] = [
   {
     id: "2986",
     name: "Asymmetry Finance",
-    address: "0x6732efaf6f39926346bef8b821a04b6361c4f3e5",
-    symbol: "safETH",
+    address: null,
+    symbol: "-",
     url: "https://www.asymmetry.finance",
-    description: "The Asymmetry Finance protocol has been developed as a comprehensive solution to address the issue of centralization within the staked Ether market.",
+    description: "Asymmetry Finance is a protocol that creates hybrid liquid staking products with real yield.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/asymmetry-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -6377,6 +6377,8 @@ const data3: Protocol[] = [
     twitter: "asymmetryfin",
     forkedFrom: [],
     oracles: [],
+    audit_links: ["https://docs.asymmetry.finance/security/audits-bug-bounties",],
+    github: ["asymmetryfinance"],
     listedAt: 1684247028
   },
   {

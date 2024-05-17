@@ -38459,12 +38459,12 @@ const data3: Protocol[] = [
   },
   {
     id: "4421",
-    name: "AINN Layer2",
+    name: "AILayer", // rebrand from AINN Layer2
     address: null,
     symbol: "-",
-    url: "https://anvm.io",
+    url: "https://ailayer.xyz/",
     description:
-      "Staking tokens via AINN Layer2 Dataset counts as TVL.",
+      "Staking tokens via AILayer Dataset counts as TVL.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/ainn-layer2.jpg`,
     audits: "0",
@@ -38474,7 +38474,7 @@ const data3: Protocol[] = [
     category: "Farm",
     chains: ["Bitcoin"],
     module: "ainn-layer2/index.js",
-    twitter: "AINNLayer2",
+    twitter: "AILayerXYZ",
     forkedFrom: [],
     oracles: [],
     github: ["AINNLayer2"],

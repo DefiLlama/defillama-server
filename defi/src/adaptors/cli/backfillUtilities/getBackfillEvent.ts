@@ -128,6 +128,9 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
                 }, Promise.resolve(nowSTimestamp + 1))
                 startTimestamp = st
             }
+            if(startTimestamp === nowSTimestamp+1){
+                throw new Error("You need to export a start parameter in adapter!")
+            }
             if (startTimestamp > 0) startTimestamp *= 1000
             else startTimestamp = new Date(Date.UTC(2018, 0, 1)).getTime()
         } else {

@@ -7,4 +7,5 @@ import { autoBackfill } from "./backfillFunction"
     } catch(e){
         console.log(e)
     }
+    process.exit(0)
 })()

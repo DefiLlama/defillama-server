@@ -42911,6 +42911,48 @@ const data3: Protocol[] = [
     parentProtocol: "parent#solv-protocol",
     listedAt: 1715899545
   },
+  {
+    id: "4621",
+    name: "Vibrant Finance",
+    address: null,
+    symbol: "-",
+    url: "https://vibr.finance/home",
+    description: "The Vibrant Liquidity Nexus for Neon EVM",
+    chain: "Neon", 
+    logo: `${baseIconsUrl}/vibrant-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Neon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "vibrswap/index.js",
+    twitter: "Vibrant_xyz",
+    listedAt: 1715942587
+  },
+  {
+    id: "4622",
+    name: "Bit Reserve",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitreserve.xyz",
+    description: "Our protocol harnesses the true decentralized power of BTCFI by combining the Proof-of-Work (PoW) and Proof-of-Stake (PoS) mechanisms of Core BTC enabled by CoreDAO. This hybrid approach unlocks the immense potential of BTCfi with Trillion BtcFi",
+    chain: "CORE", 
+    logo: `${baseIconsUrl}/bit-reserve.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bit-reserve/index.js",
+    twitter: "BitReserveFi",
+    listedAt: 1715942987
+  },
 ]
 
 export default data3

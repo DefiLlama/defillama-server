@@ -21187,7 +21187,6 @@ const data3: Protocol[] = [
     twitter: "flooringproto_",
     listedAt: 1697566485
   },
-  /*
   {
     id: "3645",
     name: "CaviarNine Shape Liquidity",
@@ -21210,7 +21209,6 @@ const data3: Protocol[] = [
     parentProtocol: "parent#caviarnine",
     listedAt: 1697590874
   },
-  */
   {
     id: "3646",
     name: "Ociswap",

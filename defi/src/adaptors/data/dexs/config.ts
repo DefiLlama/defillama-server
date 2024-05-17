@@ -2738,5 +2738,20 @@ export default {
     "mangrove": {
         enabled: true,
         id: "4610"
+    },
+    "ociswap": {
+        enabled: true,
+        id: "3646",
+        parentId: "Ociswap",
+        protocolsData: {
+            "basic": {
+                "id": "3646",
+                "enabled": true,
+            },
+            "precision": {
+                "id": "4629",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

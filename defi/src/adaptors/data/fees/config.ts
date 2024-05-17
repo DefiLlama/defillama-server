@@ -2109,5 +2109,20 @@ export default {
     "vfat": {
         enabled: true,
         id: "4602"
+    },
+    "ociswap": {
+        enabled: true,
+        id: "3646",
+        parentId: "Ociswap",
+        protocolsData: {
+            "basic": {
+                "id": "3646",
+                "enabled": true,
+            },
+            "precision": {
+                "id": "4629",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

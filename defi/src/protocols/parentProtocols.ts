@@ -3482,7 +3482,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://kim.exchange",
     description: `Native DEX for the Mode Network with staking modules to incentivize LPs`,
     logo: `${baseIconsUrl}/kim-exchange.jpg`,
-    gecko_id: null,
+    gecko_id: "kim-token",
     cmcId: null,
     chains: [],
     twitter: "kimprotocol",

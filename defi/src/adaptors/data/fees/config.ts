@@ -2123,6 +2123,11 @@ export default {
                 "id": "4629",
                 "enabled": true,
             }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1715817600": true,
+            }
         }
     }
 } as AdaptorsConfig

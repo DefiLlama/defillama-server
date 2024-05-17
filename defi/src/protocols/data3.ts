@@ -35824,13 +35824,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4301",
-    name: "VeryLongSwap",
+    name: "VeryLongSwap AMM",
     address: null,
     symbol: "-",
     url: "https://verylongswap.xyz",
     description: `Permissionless AMM-based exchange that supercharges spot trades with concentrated liquidity within preferred price ranges.`,
     chain: "Astar zkEVM",
-    logo: `${baseIconsUrl}/verylongswap.jpg`,
+    logo: `${baseIconsUrl}/verylongswap-amm.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -35842,6 +35842,7 @@ const data3: Protocol[] = [
     module: "VeryLongSwap/index.js",
     twitter: "VeryLong_Swap",
     audit_links: ["https://github.com/VeryLongSwap/contracts/blob/main/audit/VeryLongSwap.pdf"],
+    parentProtocol: "parent#verylongswap",
     listedAt: 1710508948
   },
   {
@@ -42952,6 +42953,28 @@ const data3: Protocol[] = [
     module: "bit-reserve/index.js",
     twitter: "BitReserveFi",
     listedAt: 1715942987
+  },
+  {
+    id: "4623",
+    name: "VeryLongSwap Farm",
+    address: null,
+    symbol: "-",
+    url: "https://verylongswap.xyz/simple-staking",
+    description: "Farm on Astar zkEVM chain",
+    chain: "Astar zkEVM", 
+    logo: `${baseIconsUrl}/verylongswap-farm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Astar zkEVM"],
+    oracles: [],
+    forkedFrom: [],
+    module: "veryLongSwap-masterchef/index.js",
+    twitter: "VeryLong_Swap",
+    parentProtocol: "parent#verylongswap",
+    listedAt: 1715943532
   },
 ]
 

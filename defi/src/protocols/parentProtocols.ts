@@ -4427,6 +4427,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BitSwap_xyz",
   },
+  {
+    id: "parent#verylongswap",
+    name: "VeryLongSwap",
+    url: "https://verylongswap.xyz",
+    description: "Permissionless AMM-based exchange that supercharges spot trades with concentrated liquidity within preferred price ranges.",
+    logo: `${baseIconsUrl}/verylongswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "VeryLong_Swap",
+    github: ["verylongswap"],
+  },
 ];
 
 export default parentProtocols;

@@ -6,6 +6,6 @@ import { autoBackfill } from "./backfillFunction"
         await autoBackfill(process.argv)
     } catch(e){
         console.log(e)
+        process.exit(0)
     }
-    process.exit(0)
 })()

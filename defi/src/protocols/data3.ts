@@ -43067,7 +43067,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4628",
-    name: "0x — Aggregator",
+    name: "0x Aggregator",
     address: "0xe41d2489571d322189246dafa5ebde1f4699f498",
     symbol: "ZRX",
     url: "https://www.0x.org/",

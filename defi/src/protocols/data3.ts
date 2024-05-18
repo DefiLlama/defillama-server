@@ -32651,7 +32651,7 @@ const data3: Protocol[] = [
     assetToken: "SCFX",
     url: "https://app.shui.finance",
     description:
-      "SHUI is a Liquid Staking Protocol on Conflux. Earn rewards securely and smoothly on your CFX without locking them up.",
+      "SHUI is a decentralized non-custodial liquid staking protocol on Conflux. SHUI allows users to earn rewards securely and smoothly on their assets without locking the assets up",
     chain: "Conflux",
     logo: `${baseIconsUrl}/shui.jpg`,
     audits: "2",

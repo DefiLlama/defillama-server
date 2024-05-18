@@ -8919,13 +8919,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "519",
-    name: "Tezos Liquidity Baking",
+    name: "Sirius", // rebrand of Tezos Liquidity Baking
     address: "tezos:KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5",
-    symbol: "-",
-    url: "https://liquidity-baking.com",
+    symbol: "SIRS",
+    url: "https://siriustoken.io/",
     description: "A new Decentralized Exchange contract added to the Tezos protocol between XTZ and tzBTC.",
     chain: "Tezos",
-    logo: `${baseIconsUrl}/tezos-liquidity-baking.png`,
+    logo: `${baseIconsUrl}/sirius.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -8933,8 +8933,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Tezos"],
     module: "tezos-baking/index.js",
-    twitter: "tezos",
-    deadUrl: true
+    twitter: "Sirius_Coin", // previously tezos
   },
   {
     id: "520",

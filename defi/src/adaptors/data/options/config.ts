@@ -105,5 +105,9 @@ export default {
     "ithaca": {
         enabled: true,
         id: "4418"
+    },
+    "jaspervault": {
+        enabled: true,
+        id: "4630"
     }
 } as AdaptorsConfig

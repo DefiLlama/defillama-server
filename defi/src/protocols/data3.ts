@@ -43132,7 +43132,29 @@ const data3: Protocol[] = [
     twitter: "jaspervault",
     audit_links: ["https://docs.jaspervault.io/security/audit-reports"],
     listedAt: 1715980453
-  }
+  },
+  {
+    id: "4631",
+    name: "Viridian Exchange",
+    address: "core:0x189d2849AF2031e20c670E755Fa3F0121f2be409",
+    symbol: "VIRI",
+    url: "https://viridian.exchange/swap",
+    description:
+      "Viridian Exchange is an AMM that rewards both users and partners with 100% of the trading fees generated on the platform, as well as Incentives rewards through flywheel effect produced by the Lock & GovEarn mechanics",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/viridian-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    module: "Viridian/index.js", 
+    forkedFrom: ["Solidly"],
+    oracles: [], 
+    twitter: "ViridianDex",
+    listedAt: 1716141533
+  },
 ]
 
 export default data3

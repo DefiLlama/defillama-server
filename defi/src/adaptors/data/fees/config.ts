@@ -1582,6 +1582,7 @@ export default {
         "id": "3643"
     },
     "dydx": {
+        parentId: "dYdX",
         "id": "144",
         "enabled": true
     },
@@ -2129,5 +2130,10 @@ export default {
                 "1715817600": true,
             }
         }
+    },
+    "dydx-v4": {
+        parentId: "dYdX",
+        enabled: true,
+        id: "4067"
     }
 } as AdaptorsConfig

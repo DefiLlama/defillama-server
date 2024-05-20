@@ -43242,6 +43242,28 @@ const data3: Protocol[] = [
     twitter: "9inch_io",
     listedAt: 1716203123
   },
+  {
+    id: "4636",
+    name: "Rollie Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.rollie.finance",
+    description: "Rollie Finance is the first native perpetual decentralized exchange (perp dex) on Scroll Mainnet, one of the most secure, cheapest transaction fees, showcasing the fastest finality of any zkEVM Ethereum scaling Layer 2 live in the market. Because of these characteristics of Scroll, Rollie Finance can offer unmatched low gas fees, hyper capital efficiency, transparency, security, and, most importantly, a user-centric interface.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/rollie-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Scroll"],
+    module: "rollie-finance/index.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "rolliefinance",
+    audit_links: ["https://github.com/zokyo-sec/audit-reports/blob/main/Rollie/Rollie_Zokyo_audit_report_April16th_2024.pdf"],
+    listedAt: 1716203652
+  },
 ]
 
 export default data3

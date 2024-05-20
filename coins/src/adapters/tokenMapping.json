@@ -2794,5 +2794,22 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     }
+  },
+  "bouncebit": {
+    "0xa9b1eb5908cfc3cdf91f9b8b3a74108598009096": {
+      "decimals": "18",
+      "symbol": "AUCTION",
+      "to": "coingecko#auction"
+    },
+    "0xf4c20e5004c6fdcdda920bdd491ba8c98a9c5863": {
+      "decimals": "18",
+      "symbol": "BB",
+      "to": "coingecko#bouncebit"
+    },
+    "0x77776b40c3d75cb07ce54dea4b2fd1d07f865222": {
+      "decimals": "18",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    }
   }
 }

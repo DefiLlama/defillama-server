@@ -4194,7 +4194,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "wise-token11",
     cmcId: "8167",
     chains: [],
-    twitter: "Wise_Token",
+    twitter: "Wise_Lending",
   },
   {
     id: "parent#Edge",

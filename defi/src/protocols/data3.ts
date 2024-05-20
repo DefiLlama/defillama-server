@@ -40098,7 +40098,7 @@ const data3: Protocol[] = [
       "Wise Lending is both a crypto lending platform and a yield-farm aggregator. This combination allows capital from lenders to be leveraged towards other yield-farming dApps",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/wise-lending.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -40107,8 +40107,13 @@ const data3: Protocol[] = [
     module: "wise-lending-v2/index.js",
     oracles: ["Chainlink"],
     forkedFrom: [],
-    twitter: "Wise_Token",
+    twitter: "Wise_Lending",
     parentProtocol: "parent#wise-lending",
+    audit_links: [
+      "https://code4rena.com/audits/2024-02-wise-lending",
+      "https://github.com/hats-finance/Wise-Lending-0xa2ca45d6e249641e595d50d1d9c69c9e3cd22573/blob/master/report.md",
+      "https://app.wiselending.com/omni-audit-v1.pdf"
+    ],
     listedAt: 1694020053
   },
   {

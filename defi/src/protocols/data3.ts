@@ -43320,7 +43320,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/saga.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: 'saga-2',
     cmcId: null,
     category: "Chain",
     chains: ["Ethereum"],

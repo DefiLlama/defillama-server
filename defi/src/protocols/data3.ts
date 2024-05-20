@@ -43309,6 +43309,26 @@ const data3: Protocol[] = [
     twitter: "bounce_bit",
     listedAt: 1716205258
   },
+  {
+    id: "4639",
+    name: "Saga",
+    address: null,
+    symbol: "SAGA",
+    url: "https://www.saga.xyz/",
+    description: "The complete web3 platform, made for developers.",
+    chain: "Ethereum", // not tracking saga
+    logo: `${baseIconsUrl}/saga.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    module: "dummy.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "Sagaxyz__",
+  },
 ]
 
 export default data3

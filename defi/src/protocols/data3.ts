@@ -43155,6 +43155,50 @@ const data3: Protocol[] = [
     twitter: "ViridianDex",
     listedAt: 1716141533
   },
+  {
+    id: "4632",
+    name: "CyberSwap",
+    address: null,
+    symbol: "-",
+    url: "https://cyberswap.cc/trade/swap",
+    description:
+      "Seamless, Transparent & Secure DEX for Trading and Mining on the Cyber Social Network.",
+    chain: "CyberConnect",
+    logo: `${baseIconsUrl}/cyberswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CyberConnect"],
+    module: "cyberswap/index.js", 
+    forkedFrom: ["iZiSwap"],
+    oracles: [], 
+    twitter: "CyberSwap_DEX",
+    listedAt: 1716201127
+  },
+  {
+    id: "4633",
+    name: "KaiaSwap",
+    address: null,
+    symbol: "-",
+    url: "https://kaiaswap.org/home",
+    description:
+      "The Transparency, Security & Most Effcient Dex on the Sustainable & Verifiable Kaia Chain",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/kaiaswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Klaytn"],
+    module: "kaiaswap/index.js", 
+    forkedFrom: ["iZiSwap"],
+    oracles: [], 
+    twitter: "KaiaSwap",
+    listedAt: 1716201360
+  },
 ]
 
 export default data3

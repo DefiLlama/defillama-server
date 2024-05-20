@@ -6524,13 +6524,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1667",
-    name: "Solv V2",
+    name: "Solv Vesting", // previous Solv V2
     address: "0x256f2d67e52fe834726d2ddcd8413654f5eb8b53",
     symbol: "SOLV",
     url: "https://solv.finance/",
     description: "Solv V2 enables crypto institutions to raise capital by issuing a custom bond and repay it on the maturity date.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/solv-v2.png`,
+    logo: `${baseIconsUrl}/solv-vesting.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -7022,6 +7022,11 @@
       "symbol": "jUSDT",
       "to": "coingecko#tether"
     },
+    "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
     "EQB-MPwrd1G6WKNkLz_VnV6WqBDd142KMQv-g1O-8QUA3728": {
       "decimals": "6",
       "symbol": "jUSDC",

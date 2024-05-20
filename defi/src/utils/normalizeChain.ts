@@ -2945,6 +2945,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     twitter: "BitlayerLabs",
+    categories: ["Bitcoin Sidechains","EVM"],
     github: ["bitlayer-org"],
     chainId: 200901,
     url: "https://www.bitlayer.org"
@@ -2969,7 +2970,11 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
     twitter: "BuildOnCyber",
     url: "https://cyber.co/",
     github: ["cyberconnecthq"],

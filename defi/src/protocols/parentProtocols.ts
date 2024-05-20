@@ -4191,8 +4191,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Wise Lending is both a crypto lending platform and a yield-farm aggregator. This combination allows capital from lenders to be leveraged towards other yield-farming dApps",
     logo: `${baseIconsUrl}/wise-lending.png`,
-    gecko_id: "wise-token11",
-    cmcId: "8167",
+    gecko_id: null,
+    cmcId: null,
     chains: [],
     twitter: "Wise_Lending",
   },

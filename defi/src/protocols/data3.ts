@@ -17699,8 +17699,8 @@ const data3: Protocol[] = [
   {
     id: "3491",
     name: "Wise Lending V1",
-    address: "0x66a0f676479cee1d7373f3dc2e2952778bff5bd6",
-    symbol: "WISE",
+    address: null, 
+    symbol: "-",
     url: "https://wiselending.com/",
     description:
       "Wise Lending is both a crypto lending platform and a yield-farm aggregator. This combination allows capital from lenders to be leveraged towards other yield-farming dApps",
@@ -40091,8 +40091,8 @@ const data3: Protocol[] = [
   {
     id: "4494",
     name: "Wise Lending V2",
-    address: "0x66a0f676479cee1d7373f3dc2e2952778bff5bd6",
-    symbol: "WISE",
+    address: null, // wise lending will have it's own token separate from $WISE
+    symbol: "-",
     url: "https://wiselending.com/",
     description:
       "Wise Lending is both a crypto lending platform and a yield-farm aggregator. This combination allows capital from lenders to be leveraged towards other yield-farming dApps",

@@ -209,9 +209,5 @@ export default {
   "rubic": {
     "enabled": true,
     "id": "1282"
-  },
-  "vooi": {
-    "enabled": true,
-    "id": "3432"
   }
 } as AdaptorsConfig;

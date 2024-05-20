@@ -34,5 +34,9 @@ export default {
             "id": "1833"
         }
     }
+  },
+  "vooi": {
+    "enabled": true,
+    "id": "3432"
   }
 } as AdaptorsConfig;

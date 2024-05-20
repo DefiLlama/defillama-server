@@ -42982,13 +42982,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4624",
-    name: "ENZO Protocol",
+    name: "ENZO Finance", // previous ENZO Protocol
     address: null,
     symbol: "-",
     url: "https://enzo.finance",
     description: "ENZO Protocol - algorithmic, decentralized lending and borrowing protocol on bitlayer.",
     chain: "Bitlayer", 
-    logo: `${baseIconsUrl}/enzo-protocol.jpg`,
+    logo: `${baseIconsUrl}/enzo-finance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

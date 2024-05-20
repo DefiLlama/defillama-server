@@ -2810,6 +2810,11 @@
       "decimals": "18",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    },
+    "0xf5e11df1ebcf78b6b6d26e04ff19cd786a1e81dc": {
+      "decimals": "18",
+      "symbol": "BBTC",
+      "to": "coingecko#wrapped-bitcoin"
     }
   }
 }

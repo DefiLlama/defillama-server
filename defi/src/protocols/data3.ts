@@ -43199,6 +43199,49 @@ const data3: Protocol[] = [
     twitter: "KaiaSwap",
     listedAt: 1716201360
   },
+  {
+    id: "4634",
+    name: "Miner ERCX",
+    address: "0x23CbB9F0de3258DE03baaD2BCeA4FCCC55233af0",
+    symbol: "MINER",
+    url: "https://miner.build",
+    description:
+      "MINER has pioneered the first decentralized, permissionless, and trustless omnichain hybrid token volatility farming protocol, powered by ERC-X. The MINER protocol will create necessary secondary markets, enabling arbitrage opportunities thanks to hybrid token pools.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/miner-ercx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "miner",
+    cmcId: "29512",
+    category: "Farm",
+    chains: ["Ethereum", "Base"],
+    module: "miner/index.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "minerercx",
+    listedAt: 1716202923
+  },
+  {
+    id: "4635",
+    name: "9inch V3",
+    address: "pulse:0x3ca80d83277e721171284667829c686527B8b3c5",
+    symbol: "9INCH",
+    url: "https://app.9inch.io/?chain=pulsechain",
+    description: "The full-suite DEX and yield-farm where memcoins and PulseChain-related tokens enjoy the limelight on both Ethereum and PulseChain.",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/9inch-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Pulse"],
+    module: "9inch-io-v3/index.js", 
+    forkedFrom: ["Uniswap V3"],
+    oracles: [], 
+    twitter: "9inch_io",
+    listedAt: 1716203123
+  },
 ]
 
 export default data3

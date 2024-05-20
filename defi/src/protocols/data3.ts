@@ -24441,16 +24441,16 @@ const data3: Protocol[] = [
   },
   {
     id: "3794",
-    name: "9inch",
+    name: "9inch V2",
     address: "pulse:0x3ca80d83277e721171284667829c686527B8b3c5",
     symbol: "9INCH",
     url: "https://app.9inch.io/?chain=pulsechain",
     description: "The full-suite DEX and yield-farm where memcoins and PulseChain-related tokens enjoy the limelight on both Ethereum and PulseChain.",
     chain: "Pulse",
-    logo: `${baseIconsUrl}/9inch.jpg`,
+    logo: `${baseIconsUrl}/9inch-v2.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "9inch",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Pulse"],
@@ -24458,6 +24458,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     twitter: "9inch_io",
+    parentProtocol: "parent#9inch",
     listedAt: 1699980736
   },
   {
@@ -43226,7 +43227,7 @@ const data3: Protocol[] = [
     name: "9inch V3",
     address: "pulse:0x3ca80d83277e721171284667829c686527B8b3c5",
     symbol: "9INCH",
-    url: "https://app.9inch.io/?chain=pulsechain",
+    url: "https://v3.9inch.io/?chain=pulse",
     description: "The full-suite DEX and yield-farm where memcoins and PulseChain-related tokens enjoy the limelight on both Ethereum and PulseChain.",
     chain: "Pulse",
     logo: `${baseIconsUrl}/9inch-v3.jpg`,
@@ -43240,6 +43241,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     oracles: [], 
     twitter: "9inch_io",
+    parentProtocol: "parent#9inch",
     listedAt: 1716203123
   },
   {

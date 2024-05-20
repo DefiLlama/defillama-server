@@ -4450,6 +4450,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ociswap",
   },
+  {
+    id: "parent#9inch",
+    name: "9inch",
+    url: "https://www.9inch.io/",
+    description: "Staking and yield-farming for PulseChain & Ethereum",
+    logo: `${baseIconsUrl}/9inch.jpg`,
+    gecko_id: "9inch",
+    cmcId: null,
+    chains: [],
+    twitter: "9inch_io",
+  },
 ];
 
 export default parentProtocols;

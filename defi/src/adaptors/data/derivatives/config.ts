@@ -794,5 +794,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "rollie-finance": {
+        enabled: true,
+        id: "4636",
     }
 } as AdaptorsConfig

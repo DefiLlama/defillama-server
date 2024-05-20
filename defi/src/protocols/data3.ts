@@ -43264,6 +43264,49 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/zokyo-sec/audit-reports/blob/main/Rollie/Rollie_Zokyo_audit_report_April16th_2024.pdf"],
     listedAt: 1716203652
   },
+  {
+    id: "4637",
+    name: "BBScan",
+    address: null,
+    symbol: "-",
+    assetToken: "stBBTC", // also BB
+    url: "https://portal.bouncebit.io/stake",
+    description: "BounceBit natively provides a Liquid Staking smart contract. If you stake your BTC or BB, you will receive a Liquid Staking Derivative (LSD). This LSD is like a voucher that testifies that you are delegating your assets to a validator.",
+    chain: "BounceBit",
+    logo: `${baseIconsUrl}/bbscan.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["BounceBit"],
+    module: "bouncebit-lsd/index.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "bounce_bit",
+    listedAt: 1716205027
+  },
+  {
+    id: "4638",
+    name: "BounceBit Premium",
+    address: null,
+    symbol: "-",
+    url: "https://portal.bouncebit.io/premium",
+    description: "BounceBit introduces a distinctive feature - the parallel generation of yield from both CeFi and DeFi. Users can earn original CeFi yield while utilizing LSD for BTC staking and on-chain farming, a process known as restaking in Bitcoin. This ecosystem offers three types of yield for Bitcoin holders: Original Cefi yield, node operation rewards from staking BTC on the BounceBit chain, and opportunity yield from participating in on-chain applications and the Bounce Launchpad.",
+    chain: "BounceBit",
+    logo: `${baseIconsUrl}/bouncebit-premium.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["BounceBit"],
+    module: "bouncebit-premium/index.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "bounce_bit",
+    listedAt: 1716205258
+  },
 ]
 
 export default data3

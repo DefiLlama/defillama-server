@@ -2366,6 +2366,11 @@
       "decimals": "18",
       "symbol": "WOO",
       "to": "coingecko#woo-network"
+    },
+    "0xc39e757dcb2b17b79a411ea1c2810735dc9032f8": {
+      "decimals": "18",
+      "symbol": "aMerSOLVBTC",
+      "to": "coingecko#solv-btc"
     }
   },
   "naka": {

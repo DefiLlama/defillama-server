@@ -4329,7 +4329,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Inception",
     url: "https://www.inceptionlrt.com/",
     description: "Restake your Liquid Staked ETH for Layer 2 rewards while keeping it liquid",
-    logo: `${baseIconsUrl}/inceptionlrt.png`,
+    logo: `${baseIconsUrl}/inception.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

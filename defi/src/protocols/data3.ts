@@ -43144,7 +43144,7 @@ const data3: Protocol[] = [
       "Viridian Exchange is an AMM that rewards both users and partners with 100% of the trading fees generated on the platform, as well as Incentives rewards through flywheel effect produced by the Lock & GovEarn mechanics",
     chain: "CORE",
     logo: `${baseIconsUrl}/viridian-exchange.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -43153,6 +43153,7 @@ const data3: Protocol[] = [
     module: "Viridian/index.js", 
     forkedFrom: ["Solidly"],
     oracles: [], 
+    audit_links: ["https://www.verichains.io/?search=viridian"],
     twitter: "ViridianDex",
     listedAt: 1716141533
   },

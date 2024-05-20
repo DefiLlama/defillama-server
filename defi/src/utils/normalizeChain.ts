@@ -2970,7 +2970,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
-    twitter: "CyberConnectHQ",
+    twitter: "BuildOnCyber",
     url: "https://cyber.co/",
     github: ["cyberconnecthq"],
     chainId: 7560,

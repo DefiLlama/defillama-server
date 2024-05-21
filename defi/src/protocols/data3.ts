@@ -43335,6 +43335,26 @@ const data3: Protocol[] = [
     oracles: [], 
     twitter: "Sagaxyz__",
   },
+  {
+    id: "4640",
+    name: "Tensor",
+    address: null,
+    symbol: "TENSOR",
+    url: "https://www.tensor.trade/",
+    description: "Stewarding critical infrastructure for NFT trading. Growing a community of Solana NFT creators & builders.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/tensor.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'tensor',
+    cmcId: null,
+    category: "Chain",
+    chains: ["Solana"],
+    module: "dummy.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "TensorFdn",
+  },
 ]
 
 export default data3

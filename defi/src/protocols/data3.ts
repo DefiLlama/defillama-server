@@ -43458,7 +43458,7 @@ const data3: Protocol[] = [
     module: "novaswap/index.js", 
     forkedFrom: ["Uniswap V3"],
     oracles: [], 
-    twitter: "NovaSwap_Real",
+    twitter: "@NovaSwap_fi",
     listedAt: 1716305964
   },
 ]

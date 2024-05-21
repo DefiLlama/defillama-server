@@ -19169,7 +19169,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Colonylab",
     listedAt: 1639173502,
     audit_links: ["https://omniscia.io/colony-lab-staking-v2/manual-review", "https://hacken.io/audits/#colony_lab"],
-    github: ["JoinColony"]
+    github: ["JoinColony"],
+    treasury: "colony.js"
   },
   /*
   {

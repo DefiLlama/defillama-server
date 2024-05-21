@@ -43003,7 +43003,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Compound V2"],
     module: "enzo/index.js",
-    twitter: "ENZO_Finance_",
+    twitter: "enzoFinance_",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Enzo-v1.0.pdf"],
     github: ["EnzoFinance"],
     listedAt: 1715944028

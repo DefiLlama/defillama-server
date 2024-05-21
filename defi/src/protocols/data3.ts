@@ -41969,7 +41969,7 @@ const data3: Protocol[] = [
     description: "Next-gen leverage. Liquidation free, oracle free, and counterparty risk free. Long or short anything without liquidations",
     chain: "Base",
     logo: `${baseIconsUrl}/limitless.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -41979,7 +41979,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "limitless/index.js",
     twitter: "LimitlessFi_",
-    audit_links: [],
+    audit_links: ["https://limitless.gitbook.io/limitless/intro/audits-and-security"],
     listedAt: 1715269057
   },
   {

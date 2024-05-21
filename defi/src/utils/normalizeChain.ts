@@ -2966,7 +2966,7 @@ export const chainCoingeckoIds = {
     twitter: "dfsdeveloper",
     url: "https://twitter.com/dfsdeveloper"
   },
-  "CyberConnect": {
+  "Cyber": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -3622,7 +3622,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "dfs":
       return "DFS Network"
     case "cyeth":
-      return "CyberConnect"
+      return "Cyber"
     case "bouncebit":
         return "BounceBit"
     default:

@@ -2820,6 +2820,11 @@
       "decimals": "18",
       "symbol": "BBTC",
       "to": "coingecko#wrapped-bitcoin"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "BB",
+      "to": "coingecko#bouncebit"
     }
   }
 }

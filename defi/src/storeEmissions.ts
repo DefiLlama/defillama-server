@@ -22,9 +22,9 @@ function getCgId(token: string) {
   if (idStart == -1) return null;
   return token.substring(idStart + prefix.length);
 }
-function findPId(cgId: string | null) {
-  if (!cgId) return;
-  const parent = parentProtocols.find((p) => p.gecko_id == cgId);
+function findPId(cgId?: string | null, parentId?: string) {
+  if (!cgId && !parentId) return;
+  const parent = parentProtocols.find((p) => (parentId ? p.id == parentId : p.gecko_id == cgId));
   if (parent) return { parentProtocol: parent.id, name: parent.name, gecko_id: parent.gecko_id };
   return protocols.find((p) => p.gecko_id == cgId);
 }
@@ -36,9 +36,10 @@ async function aggregateMetadata(
   rawData: SectionData
 ) {
   const pId = rawData.metadata.protocolIds?.[0] ?? null;
-  const cgId = getCgId(rawData.metadata.token);
-  const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : findPId(cgId);
-  const id = pData ? pData.parentProtocol || pData.name : cgId ? cgId : protocolName;
+  const pData0 = protocols.find((p) => p.id == pId);
+  const cgId = getCgId(rawData.metadata.token) ?? pData0?.gecko_id;
+  const pData = findPId(cgId, pId.startsWith("parent#") ? pId : pData0?.parentProtocol) ?? pData0;
+  const id = pData ? pData.name : cgId ? cgId : protocolName;
 
   const factories: string[] = ["daomaker"];
   if (factories.includes(protocolName) && !(pData || cgId))

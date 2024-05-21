@@ -43440,6 +43440,27 @@ const data3: Protocol[] = [
     oracles: [], 
     twitter: "playbigtime",
   },
+  {
+    id: "4645",
+    name: "NovaSwap",
+    address: null,
+    symbol: "-",
+    url: "https://novaswap.fi/",
+    description: "NovaSwap is an innovative multi-chain-assets aggregated AMM DEX built on zkLink Nova, offering ultimate security multi-layer yields and fair distribution.",
+    chain: "zkLink Nova",
+    logo: `${baseIconsUrl}/novaswap.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkLink Nova"],
+    module: "novaswap/index.js", 
+    forkedFrom: ["Uniswap V3"],
+    oracles: [], 
+    twitter: "NovaSwap_Real",
+    listedAt: 1716305964
+  },
 ]
 
 export default data3

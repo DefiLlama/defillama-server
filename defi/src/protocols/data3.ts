@@ -43420,6 +43420,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#tealswap",
     listedAt: 1716295586
   },
+  {
+    id: "4644",
+    name: "Big Time",
+    address: null,
+    symbol: "BIGTIME",
+    url: "https://bigtime.gg/",
+    description: "Onchain gaming.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bigtime.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'big-time',
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Ethereum"],
+    module: "dummy.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "playbigtime",
+  },
 ]
 
 export default data3

@@ -4461,6 +4461,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "9inch_io",
   },
+  {
+    id: "parent#tealswap",
+    name: "Tealswap",
+    url: "https://tealswap.com",
+    description: "Tealswap is a decentralized exchange with automated market maker on Oasys hub-layer.",
+    logo: `${baseIconsUrl}/tealswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "tealswap",
+  },
 ];
 
 export default parentProtocols;

@@ -43349,6 +43349,26 @@ const data3: Protocol[] = [
     oracles: [], 
     twitter: "TensorFdn",
   },
+  {
+    id: "4641",
+    name: "AltLayer",
+    address: null,
+    symbol: "ALT",
+    url: "https://www.altlayer.io/",
+    description: "AltLayer is a decentralized protocol that facilitates the launch of native and restaked rollups with both optimistic and zk rollup stacks.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/altlayer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'altlayer',
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "alt_layer",
+  },
 ]
 
 export default data3

@@ -1923,11 +1923,11 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#ramses-exchange",
     name: "Ramses Exchange",
-    url: "https://www.ramses.exchange/",
+    url: "https://app.ramses.exchange/",
     description: "Ramses is a next-generation AMM designed to serve as Arbitrum's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience",
     logo: `${baseIconsUrl}/ramses-exchange.jpg`,
     gecko_id: "ramses-exchange",
-    cmcId: null,
+    cmcId: "23858",
     chains: [],
     twitter: "RamsesExchange",
     github: ["RamsesExchange"]
@@ -3902,9 +3902,9 @@ const parentProtocols: IParentProtocol[] = [
     name: "Nile Exchange",
     url: "https://www.thenile.exchange",
     description:
-      "Dex on linea",
+      "Nile is a next-generation AMM designed to serve as Linea's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
     logo: `${baseIconsUrl}/nile-exchange.png`,
-    gecko_id: null,
+    gecko_id: "nile",
     cmcId: null,
     chains: [],
     twitter: "NileExchange",
@@ -3914,7 +3914,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Cleopatra Exchange",
     url: "https://cleo.exchange",
     description:
-      "Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity",
+      "Cleopatra is a next-generation AMM designed to serve as Mantle's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
     logo: `${baseIconsUrl}/cleopatra-exchange.png`,
     gecko_id: "cleopatra",
     cmcId: null,
@@ -3926,7 +3926,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Pharaoh Exchange",
     url: "https://pharaoh.exchange",
     description:
-      "Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity",
+      "Pharaoh is a next-generation AMM designed to serve as Avalanche's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
     logo: `${baseIconsUrl}/pharaoh-exchange.png`,
     gecko_id: "pharaoh",
     cmcId: null,
@@ -4317,7 +4317,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#nuri-exchange",
     name: "Nuri Exchange",
     url: "https://www.nuri.exchange",
-    description: "NURI is a next-generation AMM designed to serve as Scroll's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
+    description: "Nuri is a next-generation AMM designed to serve as Scroll's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
     logo: `${baseIconsUrl}/nuri-exchange.jpg`,
     gecko_id: null,
     cmcId: null,

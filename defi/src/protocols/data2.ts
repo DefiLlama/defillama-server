@@ -29286,12 +29286,12 @@ const data2: Protocol[] = [
   },
   {
     id: "2675",
-    name: "Ramses V1",
+    name: "Ramses Legacy",
     address: "arbitrum:0xaaa6c1e32c55a7bfa8066a6fae9b42650f262418",
     symbol: "RAM",
-    url: "https://app.ramses.exchange/swap",
+    url: "https://app.ramses.exchange/dashboard",
     description:
-      "RAMSES is a ve(3,3) DEX that masterfully adapts Andre Cronje's initial vision of Solidly. The original Solidly fundamentals have been long forgotten, and RAMSES aims to revitalize three core tenets: Community, Decentralization, and Functionality.",
+      "Ramses is a next-generation AMM designed to serve as Arbitrum's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/ramses-v1.jpg`,
     audits: "0",

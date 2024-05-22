@@ -43622,7 +43622,7 @@ const data3: Protocol[] = [
     url: "https://yyex.io",
     description: "Native to BitlayerLabs, delivering the best on-chain leveraged trading experience by the performance of BTC Layer2.",
     chain: "Bitlayer",
-    logo: `${baseIconsUrl}/yvex.jpg`,
+    logo: `${baseIconsUrl}/yyex.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

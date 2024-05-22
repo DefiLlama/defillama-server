@@ -247,9 +247,10 @@ export const getFormattedChains = async (category: string) => {
 };
 
 const handler = async (event: AWSLambda.APIGatewayEvent) => {
-  const data = await getFormattedChains(event.pathParameters?.category ?? "");
+  const category = event.pathParameters?.category ?? ""
+  const data = await getFormattedChains(category);
 
-  return wrapResponseOrRedirect(data, "chains/");
+  return wrapResponseOrRedirect(data, `chains/${category}/`);
 };
 
 export default wrap(handler);

@@ -33863,7 +33863,7 @@ const data3: Protocol[] = [
     module: "orbitlending-io/index.js",
     twitter: "OrbitLending",
     forkedFrom: ["Compound V2"],
-    oracles: ["Pyth"], // https://book.orbitlending.io/protocol-design/price-oracle
+    oracles: ["API3","Redstone","Pyth"], // https://book.orbitlending.io/protocol-design/price-oracle
     audit_links: [],
     listedAt: 1709316471
   },

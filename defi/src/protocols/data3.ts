@@ -43549,7 +43549,7 @@ const data3: Protocol[] = [
     oracles: [], 
     twitter: "oasys_games",
   },
-  {
+  /*{
     id: "4650",
     name: "Huma Finance",
     address: null,
@@ -43571,7 +43571,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/00labs/huma-contracts-v2/blob/develop/audit/spearbit.pdf"],
     github: ["00labs"],
     listedAt: 1716371212
-  },
+  },*/
   {
     id: "4651",
     name: "Superposition",

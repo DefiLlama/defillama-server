@@ -2135,5 +2135,9 @@ export default {
         parentId: "dYdX",
         enabled: true,
         id: "4067"
+    },
+    "polter": {
+        enabled: true,
+        id: "4152"
     }
 } as AdaptorsConfig

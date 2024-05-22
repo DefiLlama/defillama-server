@@ -43679,6 +43679,26 @@ const data3: Protocol[] = [
     twitter: "GullNetwork",
     listedAt: 1716372620
   },
+  {
+    id: '4656',
+    name: "BounceBit",
+    address: null,
+    symbol: "BB",
+    url: "https://bouncebit.io/",
+    description: "Earn yield from your idle btc with bouncebit btc restaking.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bouncebit.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'bouncebit',
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "dummy.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "bounce_bit",
+  }
 ]
 
 export default data3

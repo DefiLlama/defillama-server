@@ -4484,6 +4484,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Nimbora_",
     github: ["0xSpaceShard"],
   },
+  {
+    id: "parent#gullnetwork",
+    name: "GullNetwork",
+    url: "https://www.gullnetwork.com",
+    description: "GullNetwork, The trailblazing Layer 3 solution on Manta Network, transforming Defi with intuitive, codeless innovation and secure, equitable trading.",
+    logo: `${baseIconsUrl}/gullnetwork.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "GullNetwork",
+  },
 ];
 
 export default parentProtocols;

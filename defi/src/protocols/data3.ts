@@ -16382,14 +16382,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3432",
-    name: "Vooi",
+    name: "Vooi V1 (Deprecated)", //previous Vooi, deprecated product 
     address: null,
     symbol: "-",
     url: "https://vooi.io",
     description:
       "Experience seamless stablecoin swaps on your favorite L2 networks. Discover better yields with single-token staking.",
     chain: "Linea",
-    logo: `${baseIconsUrl}/vooi.jpg`,
+    logo: `${baseIconsUrl}/vooi-v1-(deprecated).jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -43655,6 +43655,28 @@ const data3: Protocol[] = [
     oracles: [], 
     twitter: "GullNetwork",
     parentProtocol: "parent#gullnetwork",
+    listedAt: 1716372620
+  },
+  {
+    id: "4655",
+    name: "Vooi",
+    address: null,
+    symbol: "-",
+    url: "https://vooi.io",
+    description:
+      "Enjoy a CEX-like experience while trading across various perp DEXs and blockchain networks",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/vooi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "dummy.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "GullNetwork",
     listedAt: 1716372620
   },
 ]

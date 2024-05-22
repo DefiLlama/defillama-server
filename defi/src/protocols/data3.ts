@@ -43528,6 +43528,26 @@ const data3: Protocol[] = [
     twitter: "AllsparkFinance",
     listedAt: 1716342699
   },
+  {
+    id: "4649",
+    name: "Oasys",
+    address: null,
+    symbol: "OAS",
+    url: "https://www.oasys.games/",
+    description: "Oasys combines the best of public and private blockchain technologies to deliver a seamless, speedy, and zero-gas-fee blockchain gaming experience. Discover how Oasys is building a community of gamers and developers to pioneer the future of fun.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/oasys.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'oasys',
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Ethereum"],
+    module: "dummy.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "oasys_games",
+  },
 ]
 
 export default data3

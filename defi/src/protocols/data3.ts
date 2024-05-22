@@ -42037,7 +42037,7 @@ const data3: Protocol[] = [
     description: "Tokan serves as a vital liquidity and exchange layer for the Scroll L2, addressing liquidity challenges at the protocol level.",
     chain: "Scroll",
     logo: `${baseIconsUrl}/tokan-exchange.png`,
-    audits: "0",
+    audits: "3",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

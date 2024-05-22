@@ -38,7 +38,7 @@ async function aggregateMetadata(
   const pId = rawData.metadata.protocolIds?.[0] ?? null;
   const pData0 = protocols.find((p) => p.id == pId);
   const cgId = getCgId(rawData.metadata.token) ?? pData0?.gecko_id;
-  const pData = findPId(cgId, pId.startsWith("parent#") ? pId : pData0?.parentProtocol) ?? pData0;
+  const pData = findPId(cgId, pId?.startsWith("parent#") ? pId : pData0?.parentProtocol) ?? pData0;
   const id = pData ? pData.name : cgId ? cgId : protocolName;
 
   const factories: string[] = ["daomaker"];
@@ -215,9 +215,9 @@ async function processProtocolList() {
 
   await handlerErrors(protocolErrors);
 
-  await storeR2JSONString("emissionsProtocolsList", JSON.stringify([...new Set(protocolsArray)]));
+  // await storeR2JSONString("emissionsProtocolsList", JSON.stringify([...new Set(protocolsArray)]));
 
-  await storeR2JSONString("emissionsBreakdown", JSON.stringify(emissionsBrakedown));
+  // await storeR2JSONString("emissionsBreakdown", JSON.stringify(emissionsBrakedown));
 }
 export async function handler() {
   try {

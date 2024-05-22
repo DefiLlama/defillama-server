@@ -16144,7 +16144,7 @@ const data3: Protocol[] = [
     module: "mendi-finance/index.js",
     twitter: "MendiFinance",
     forkedFrom: ["Compound V2"],
-    oracles: ["API3","Chainlink"],
+    oracles: ["API3","Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/7002
     github: ["mendi-finance"],
     listedAt: 1692625594
   },

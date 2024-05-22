@@ -11,7 +11,7 @@ import { craftProtocolsResponseInternal as craftAllProtocolResponse } from "../.
 import { craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { getRaisesInternal } from "../../getRaises";
 import { getHacksInternal } from "../../getHacks";
-import { hourlyTvl } from "../../utils/getLastRecord";
+import { hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { log } from '@defillama/sdk'
 import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from "../../storeGetCharts";
 import { getOraclesInternal } from "../../getOracles";
@@ -26,6 +26,7 @@ import { getOutdated } from "../../stats/getOutdated";
 const protocolDataMap: { [key: string]: any } = {}
 
 let getYesterdayTvl: Function, getLastWeekTvl: Function, getLastMonthTvl: Function
+let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMonthTokensUsd: Function
 
 async function run() {
   await initializeTVLCacheDB()
@@ -44,7 +45,6 @@ async function run() {
       doublecounted: checkModuleDoubleCounted(protocol),
     })
   }
-
 
   // await writeProtocolTvlData()  // to be served from rest api instead
   await writeProtocols()
@@ -98,10 +98,32 @@ async function run() {
     latestProtocolItemsMonthAgo.forEach((data: any) => latestProtocolItemsMonthAgoMap[data.id] = data.data)
     console.timeEnd('getLatestProtocolItems filterAMonthAgo')
 
+    console.time('getLatestProtocolTokensUSD filterADayAgo')
+    const latestProtocolTokensUSD = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterADayAgo: true,  })
+    const latestProtocolTokensUSDMap: any = {}
+    latestProtocolTokensUSD.forEach((data: any) => latestProtocolTokensUSDMap[data.id] = data.data)
+    console.timeEnd('getLatestProtocolTokensUSD filterADayAgo')
+
+    console.time('getLatestProtocolTokensUSD filterAWeekAgo')
+    const latestProtocolTokensUSDWeekAgo = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterAWeekAgo: true })
+    const latestProtocolTokensUSDWeekAgoMap: any = {}
+    latestProtocolTokensUSDWeekAgo.forEach((data: any) => latestProtocolTokensUSDWeekAgoMap[data.id] = data.data)
+    console.timeEnd('getLatestProtocolTokensUSD filterAWeekAgo')
+
+    console.time('getLatestProtocolTokensUSD filterAMonthAgo')
+    const latestProtocolTokensUSDMonthAgo = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterAMonthAgo: true })
+    const latestProtocolTokensUSDMonthAgoMap: any = {}
+    latestProtocolTokensUSDMonthAgo.forEach((data: any) => latestProtocolTokensUSDMonthAgoMap[data.id] = data.data)
+    console.timeEnd('getLatestProtocolTokensUSD filterAMonthAgo')
+
+
     console.time('getAllProtocolItems')
     getYesterdayTvl = (protocol: any) => latestProtocolItemsDayAgoMap[protocol.id] ?? {}
     getLastWeekTvl = (protocol: any) => latestProtocolItemsWeekAgoMap[protocol.id] ?? {}
     getLastMonthTvl = (protocol: any) => latestProtocolItemsMonthAgoMap[protocol.id] ?? {}
+    getYesterdayTokensUsd = (protocol: any) => latestProtocolTokensUSDMap[protocol.id] ?? {}
+    getLastWeekTokensUsd = (protocol: any) => latestProtocolTokensUSDWeekAgoMap[protocol.id] ?? {}
+    getLastMonthTokensUsd = (protocol: any) => latestProtocolTokensUSDMonthAgoMap[protocol.id] ?? {}
 
     await PromisePool.withConcurrency(20)
       .for(cache.metadata.protocols)
@@ -326,7 +348,7 @@ async function run() {
   async function writeProtocolsChart() {
     const debugString = 'write /lite/protocols2'
     console.time(debugString)
-    const { protocols2Data, v2ProtocolData } = await storeGetProtocols({ getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, getYesterdayTvl, getLastWeekTvl, getLastMonthTvl, })
+    const { protocols2Data, v2ProtocolData } = await storeGetProtocols({ getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, getYesterdayTvl, getLastWeekTvl, getLastMonthTvl, getYesterdayTokensUsd, getLastWeekTokensUsd, getLastMonthTokensUsd, })
     await storeRouteData('lite/protocols2', protocols2Data)
     await storeRouteData('lite/v2/protocols', v2ProtocolData)
     console.timeEnd(debugString)

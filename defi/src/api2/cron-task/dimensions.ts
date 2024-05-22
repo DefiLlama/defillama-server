@@ -11,16 +11,28 @@ import { getDisplayChainName } from "../../adaptors/utils/getAllChainsFromAdapto
 
 
 const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
-const lastTimeString = getTimeSDaysAgo(0)
-const dayBeforeLastTimeString = getTimeSDaysAgo(1)
-const weekAgoTimeString = getTimeSDaysAgo(7)
-const monthAgoTimeString = getTimeSDaysAgo(30)
-const lastWeekTimeStrings = new Set(Array.from({ length: 7 }, (_, i) => getTimeSDaysAgo(i)))
-const lastTwoWeektoLastWeekTimeStrings = new Set(Array.from({ length: 7 }, (_, i) => getTimeSDaysAgo(i + 7)))
-const lastTwoWeekTimeStrings = new Set(Array.from({ length: 14 }, (_, i) => getTimeSDaysAgo(i)))
-const last30DaysTimeStrings = new Set(Array.from({ length: 30 }, (_, i) => getTimeSDaysAgo(i)))
-const last60to30DaysTimeStrings = new Set(Array.from({ length: 30 }, (_, i) => getTimeSDaysAgo(i + 30)))
-const lastOneYearTimeStrings = new Set(Array.from({ length: 365 }, (_, i) => getTimeSDaysAgo(i)))
+
+function getTimeData(moveADayBack = false) {
+
+  const lastTimeString = getTimeSDaysAgo(0, moveADayBack)
+  const dayBeforeLastTimeString = getTimeSDaysAgo(1, moveADayBack)
+  const weekAgoTimeString = getTimeSDaysAgo(7, moveADayBack)
+  const monthAgoTimeString = getTimeSDaysAgo(30, moveADayBack)
+  const lastWeekTimeStrings = new Set(Array.from({ length: 7 }, (_, i) => getTimeSDaysAgo(i, moveADayBack)))
+  const lastTwoWeektoLastWeekTimeStrings = new Set(Array.from({ length: 7 }, (_, i) => getTimeSDaysAgo(i + 7, moveADayBack)))
+  const lastTwoWeekTimeStrings = new Set(Array.from({ length: 14 }, (_, i) => getTimeSDaysAgo(i, moveADayBack)))
+  const last30DaysTimeStrings = new Set(Array.from({ length: 30 }, (_, i) => getTimeSDaysAgo(i, moveADayBack)))
+  const last60to30DaysTimeStrings = new Set(Array.from({ length: 30 }, (_, i) => getTimeSDaysAgo(i + 30, moveADayBack)))
+  const lastOneYearTimeStrings = new Set(Array.from({ length: 365 }, (_, i) => getTimeSDaysAgo(i, moveADayBack)))
+  return { lastTimeString, dayBeforeLastTimeString, weekAgoTimeString, monthAgoTimeString, lastWeekTimeStrings, lastTwoWeektoLastWeekTimeStrings, lastTwoWeekTimeStrings, last30DaysTimeStrings, last60to30DaysTimeStrings, lastOneYearTimeStrings }
+}
+
+const todayTimestring = getTimeSDaysAgo(0)
+
+const timeData = {
+  today: getTimeData(),
+  yesterday: getTimeData(true),
+}
 
 async function run() {
 
@@ -40,7 +52,7 @@ async function run() {
   }
 
   const promises: any = ADAPTER_TYPES.map(async (adapterType) => {
-    if (adapterType !== AdapterType.AGGREGATOR_DERIVATIVES) return;
+    // if (adapterType !== AdapterType.OPTIONS) return;
 
     const timeKey1 = `data load ${adapterType}`
     const timeKey2 = `db call ${adapterType}`
@@ -87,19 +99,28 @@ async function run() {
       protocol.misc = {
         versionKey: info.versionKey,
       };
+      const infoKeys = ['name', 'defillamaId', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey' ]
 
-      ['name', 'defillamaId', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links'].forEach(key => protocol.info[key] = (info as any)[key])
+      infoKeys.forEach(key => protocol.info[key] = (info as any)[key])
+      if (info.childProtocols?.length) protocol.info.childProtocols = info.childProtocols.map((child: any) => {
+        const res: any = {}
+        infoKeys.forEach(key => res[key] = (child as any)[key])
+        return res
+      })
       if (info.parentProtocol) protocol.info.parentProtocol = info.parentProtocol
       protocol.info.latestFetchIsOk = true
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = info.chains.map(_getDisplayChainName)
       protocol.info.chains.forEach((chain: string) => chainSet.add(chain))
       const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData(protocol.records)
+      const hasTodayData = !!protocol.records[todayTimestring]
+      const timeDataKey = hasTodayData ? 'today' : 'yesterday'
+      const { lastTimeString, dayBeforeLastTimeString, weekAgoTimeString, monthAgoTimeString, lastWeekTimeStrings, lastTwoWeektoLastWeekTimeStrings, lastTwoWeekTimeStrings, last30DaysTimeStrings, last60to30DaysTimeStrings, lastOneYearTimeStrings } = timeData[timeDataKey]
 
       Object.entries(protocolRecordMapWithMissingData).forEach(([timeS, record]: any) => {
         let { aggregated, timestamp } = record
 
-        if (timestamp > startOfDayTimestamp) return; // skip today's data
+        // if (timestamp > startOfDayTimestamp) return; // skip today's data
 
         if (!summaries.earliestTimestamp || timestamp < summaries.earliestTimestamp) summaries.earliestTimestamp = timestamp
 
@@ -213,27 +234,27 @@ async function run() {
         // change_1d
         protocolSummaryAction(protocolSummary, (summary: any) => {
           if (typeof summary.total24h === 'number' && typeof summary.total48hto24h === 'number' && summary.total48hto24h !== 0)
-            summary.change_1d = (summary.total24h - summary.total48hto24h) / summary.total48hto24h
+            summary.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
         })
         // change_7d
         protocolSummaryAction(protocolSummary, (summary: any) => {
           if (typeof summary.total24h === 'number' && typeof summary.total7DaysAgo === 'number' && summary.total7DaysAgo !== 0)
-            summary.change_7d = (summary.total24h - summary.total7DaysAgo) / summary.total7DaysAgo
+            summary.change_7d = getPercentage(summary.total24h, summary.total7DaysAgo)
         })
-        // change_30d
+        // change_1m
         protocolSummaryAction(protocolSummary, (summary: any) => {
           if (typeof summary.total24h === 'number' && typeof summary.total30DaysAgo === 'number' && summary.total30DaysAgo !== 0)
-            summary.change_7d = (summary.total24h - summary.total30DaysAgo) / summary.total30DaysAgo
+            summary.change_1m = getPercentage(summary.total24h, summary.total30DaysAgo)
         })
         // change_7dover7d
         protocolSummaryAction(protocolSummary, (summary: any) => {
           if (typeof summary.total7d === 'number' && typeof summary.total14dto7d === 'number' && summary.total14dto7d !== 0)
-            summary.change_7dover7d = (summary.total7d - summary.total14dto7d) / summary.total14dto7d
+            summary.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
         })
         // change_30dover30d
         protocolSummaryAction(protocolSummary, (summary: any) => {
           if (typeof summary.total30d === 'number' && typeof summary.total60dto30d === 'number' && summary.total60dto30d !== 0)
-            summary.change_30dover30d = (summary.total30d - summary.total60dto30d) / summary.total60dto30d
+            summary.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
         })
 
         // breakdown24h
@@ -366,8 +387,8 @@ type ProtocolSummary = RecordSummary & {
   breakdown24h?: any
 }
 
-// run().catch(console.error).then(() => process.exit(0))
-process.exit(0)
+run().catch(console.error).then(() => process.exit(0))
+// process.exit(0)
 
 // fill all missing data with the last available data
 function getProtocolRecordMapWithMissingData(records: IJSON<any>) {
@@ -375,7 +396,8 @@ function getProtocolRecordMapWithMissingData(records: IJSON<any>) {
   let firstTimeS: string
   let lastTimeSWithData: string
   let nextTimeS: string
-  let currentTime = getStartOfTodayTime()
+  // let currentTime = getStartOfTodayTime()
+  let currentTime = getUnixTimeNow()
   let prevRecord: any
   const response: IJSON<any> = { ...records }
 
@@ -440,3 +462,7 @@ function _getDisplayChainName(chain: string) {
   return chainNameCache[chain]
 }
 
+
+function getPercentage(a: number, b: number) {
+  return +Number(((a - b) / b) * 100).toFixed(2)
+}

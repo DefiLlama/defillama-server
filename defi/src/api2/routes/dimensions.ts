@@ -10,6 +10,7 @@ import { errorResponse, successResponse } from "./utils";
 import { getAdapterTypeCache } from "../utils/dimensionsUtils";
 import { timeSToUnix, timeSToUnixString } from "../utils/time";
 import * as fs from 'fs'
+import axios from "axios";
 
 let lastCacheUpdate = new Date().getTime()
 const reqCache: any = {}
@@ -17,7 +18,7 @@ const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimension
 
 function clearCache() {
   const now = new Date().getTime()
-  if (now - lastCacheUpdate > 3 * 60 * 1000) { // clear cache if it is older than three minutes
+  if (now - lastCacheUpdate > 30 * 1000) { // clear cache if it is older than 30 seconds
     Object.keys(reqCache).forEach(key => {
       delete reqCache[key]
     })
@@ -78,7 +79,7 @@ async function getOverviewProcess(eventParameters: any) {
 
   response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
   response.change_7d = getPercentage(summary.total24h, summary.total7DaysAgo)
-  response.change_30d = getPercentage(summary.total24h, summary.total30DaysAgo)
+  response.change_1m = getPercentage(summary.total24h, summary.total30DaysAgo)
   response.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
   response.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
 
@@ -95,7 +96,7 @@ async function getOverviewProcess(eventParameters: any) {
       protocolDataKeys.forEach(key => res[key] = summary[key])
 
 
-    protocolInfoKeys.forEach(key => res[key] = info[key])
+    protocolInfoKeys.forEach(key => res[key] = info?.[key])
     return res
   }).filter((i: any) => i)
 
@@ -105,7 +106,7 @@ async function getOverviewProcess(eventParameters: any) {
 }
 
 function formatChartData(data: any) {
-  return Object.entries(data).map(([key, value]: any) => [timeSToUnix(key), value]).sort(([a]: any, [b]: any) => a - b)
+  return Object.entries(data).filter(([_key, val]: any) => val).map(([key, value]: any) => [timeSToUnix(key), value]).sort(([a]: any, [b]: any) => a - b)
 }
 
 function getPercentage(a: number, b: number) {
@@ -131,18 +132,24 @@ async function getProtocolDataHandler(eventParameters: any) {
     childProtocolVersionKey = cacheData.childProtocolVersionKeyMap[pName]
   }
 
-  const { records, summaries, info, misc = {} } = protocolData
+  const { records, summaries, info } = protocolData
   const summary = summaries[recordType]
   if (!summary) throw new Error("Missing protocol summary")
   const versionKeyNameMap: IJSON<string> = {}
 
-  const response: any = { ...info, childProtocols: null, }
+  let responseInfo = info
+  if (isChildProtocol)
+    responseInfo = info.childProtocols.find((i: any) => i.versionKey === childProtocolVersionKey)
+  const response: any = { ...responseInfo, childProtocols: null, }
   if (info.childProtocols?.length > 1) {
     response.childProtocols = info.childProtocols.map((child: any) => {
       versionKeyNameMap[child.versionKey] = child.displayName ?? child.name
       return child.displayName ?? child.name
     })
   }
+
+  
+  const getBreakdownLabel = (version: string) => versionKeyNameMap[version] ?? version
 
   const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime',]
   if (!isChildProtocol)
@@ -167,15 +174,9 @@ async function getProtocolDataHandler(eventParameters: any) {
 
   if (!eventParameters.excludeTotalDataChartBreakdown) {
     const chartBreakdown = {} as any
-    let defaultLabel = misc.versionKey ? misc.versionKey : response.module 
     Object.entries(records).forEach(([date, value]: any) => {
-      let breakdown = value.breakdown?.[recordType]?.chains
-      if (!breakdown) {
-        if (!value.aggregated[recordType]) return;
-        const chains = value.aggregated[recordType].chains
-        // breakdown = { [protocolName]: chains }
-        breakdown = { [defaultLabel]: chains }
-      }
+      let breakdown = value.breakdown?.[recordType]
+      if (!breakdown) return;
       chartBreakdown[date] = formatBreakDownData(breakdown)
     })
     response.totalDataChartBreakdown = formatChartData(chartBreakdown)
@@ -190,14 +191,16 @@ async function getProtocolDataHandler(eventParameters: any) {
 
   function formatBreakDownData(data: any) {
     const res = {} as any
-    Object.entries(data).forEach(([label, chains]: any) => {
-      if (isChildProtocol && label !== childProtocolVersionKey) return;
-      Object.entries(chains).forEach(([chain, value]: any) => {
+    Object.entries(data).forEach(([version, { chains }]: any) => {
+      if (!chains) return;
+      if (isChildProtocol && version !== childProtocolVersionKey) return;
+      const label = getBreakdownLabel(version)
+      Object.entries(chains).forEach(([chain, value]: any) => { 
         if (!res[chain]) res[chain] = {}
-        // res[chain][getBreakdownName(label)] = value
         res[chain][label] = value
       })
     })
+    if (!Object.keys(res).length) return null
     return res
   }
 }
@@ -253,24 +256,3 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
     chainFilter,
   }
 }
-
-async function run() {
-  const a = await getOverviewProcess({
-    adaptorType: AdapterType.AGGREGATOR_DERIVATIVES,
-    dataType: AdaptorRecordType.dailyVolume,
-    excludeTotalDataChart: false,
-    excludeTotalDataChartBreakdown: false,
-  }).catch(e => console.error(e))
-  const b = await getProtocolDataHandler({
-    adaptorType: AdapterType.AGGREGATOR_DERIVATIVES,
-    dataType: 'dv',
-    excludeTotalDataChart: false,
-    excludeTotalDataChartBreakdown: false,
-    protocolName: 'MUX Protocol'
-  }).catch(e => console.error(e))
-  // console.log(a)
-  fs.writeFileSync('overview.json', JSON.stringify(a, null, 2))
-  fs.writeFileSync('summary.json', JSON.stringify(b, null, 2))
-}
-
-// run().then(_i => process.exit(0))

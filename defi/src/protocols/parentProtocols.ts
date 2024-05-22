@@ -4472,6 +4472,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "tealswap",
   },
+  {
+    id: "parent#nimbora",
+    name: "Nimbora",
+    url: "https://www.nimbora.io/",
+    description: "Smooth sailing to 1-click DeFi. The best place to earn and borrow.",
+    logo: `${baseIconsUrl}/nimbora.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Nimbora_",
+    github: ["0xSpaceShard"],
+  },
 ];
 
 export default parentProtocols;

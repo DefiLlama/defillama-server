@@ -41979,7 +41979,7 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
     module: "limitless/index.js",
-    twitter: "LimitlessFi_",
+    twitter: "limitlessdefi",
     audit_links: ["https://limitless.gitbook.io/limitless/intro/audits-and-security"],
     listedAt: 1715269057
   },

@@ -43592,6 +43592,48 @@ const data3: Protocol[] = [
     twitter: "superp_fi",
     listedAt: 1716371512
   },
+  {
+    id: "4652",
+    name: "ponzi.market",
+    address: null,
+    symbol: "-",
+    url: "https://ponzi.market",
+    description: "Our platform offers a game based on a Ponzi scheme with deposits in the Arbitrum network. Users create games by setting minimum and maximum bets, fees, and ROI (return on investment) percentages. New participants' deposits are distributed among previous players. When the ROI is reached, players can withdraw their funds with interest. If no deposits are made within 10 hours, the game ends, and the last participant receives the jackpot, consisting of all remaining deposits.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ponzi.market.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Ponzi",
+    chains: ["Arbitrum"],
+    module: "ponzi-market/index.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "ponzidev",
+    listedAt: 1716371823
+  },
+  {
+    id: "4653",
+    name: "YYEX",
+    address: null,
+    symbol: "-",
+    url: "https://yyex.io",
+    description: "Native to BitlayerLabs, delivering the best on-chain leveraged trading experience by the performance of BTC Layer2.",
+    chain: "Bitlayer",
+    logo: `${baseIconsUrl}/yvex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Bitlayer"],
+    module: "yyex/index.js", 
+    forkedFrom: ["GMX V2"],
+    oracles: [], 
+    twitter: "btcyyexio",
+    listedAt: 1716372223
+  },
 ]
 
 export default data3

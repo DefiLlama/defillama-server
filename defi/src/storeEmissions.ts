@@ -215,9 +215,9 @@ async function processProtocolList() {
 
   await handlerErrors(protocolErrors);
 
-  // await storeR2JSONString("emissionsProtocolsList", JSON.stringify([...new Set(protocolsArray)]));
+  await storeR2JSONString("emissionsProtocolsList", JSON.stringify([...new Set(protocolsArray)]));
 
-  // await storeR2JSONString("emissionsBreakdown", JSON.stringify(emissionsBrakedown));
+  await storeR2JSONString("emissionsBreakdown", JSON.stringify(emissionsBrakedown));
 }
 export async function handler() {
   try {

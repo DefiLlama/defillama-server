@@ -43721,6 +43721,28 @@ const data3: Protocol[] = [
     twitter: "nxfi_protocol",
     listedAt: 1716386976
   },
+  {
+    id: "4658",
+    name: "lendOS",
+    address: null,
+    symbol: "-",
+    url: "https://lendos.org/",
+    description:
+      "Fastest lending, liquidity & leverage end-point for NeonEVM & Solana ecosystem",
+    chain: "Neon",
+    logo: `${baseIconsUrl}/lendos.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Neon"],
+    module: "lendOS/index.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "lendOSorg",
+    listedAt: 1716396261
+  },
 ]
 
 export default data3

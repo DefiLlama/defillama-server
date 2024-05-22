@@ -20,8 +20,8 @@ function compress(data: string) {
 function replaceChainNames(
   oraclesByChain?:
     | {
-        [chain: string]: string[];
-      }
+      [chain: string]: string[];
+    }
     | undefined
 ) {
   if (!oraclesByChain) return oraclesByChain;
@@ -37,6 +37,9 @@ export async function storeGetProtocols({
   getYesterdayTvl,
   getLastWeekTvl,
   getLastMonthTvl,
+  getYesterdayTokensUsd,
+  getLastWeekTokensUsd,
+  getLastMonthTokensUsd,
 }: any = {}) {
   const response = await craftProtocolsResponse(true, undefined, {
     getCoinMarkets,
@@ -53,6 +56,9 @@ export async function storeGetProtocols({
           getYesterdayTvl,
           getLastWeekTvl,
           getLastMonthTvl,
+          getYesterdayTokensUsd,
+          getLastWeekTokensUsd,
+          getLastMonthTokensUsd,
         });
         return {
           category: protocol.category,

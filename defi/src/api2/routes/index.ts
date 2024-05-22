@@ -90,9 +90,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/historicalChainTvl", ew(getHistoricalChainTvlData))
   router.get("/v2/historicalChainTvl/:name", ew(getHistoricalChainTvlData))
 
-  // router.get("/overview/:type", ew(getOverviewHandler))
-  // router.get("/overview/:type/:chain", ew(getOverviewHandler))
-  // router.get("/summary/:type/:name", ew(getDimensionProtocolHandler))
+  router.get("/overview/:type", ew(getOverviewHandler))
+  router.get("/overview/:type/:chain", ew(getOverviewHandler))
+  router.get("/summary/:type/:name", ew(getDimensionProtocolHandler))
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
   

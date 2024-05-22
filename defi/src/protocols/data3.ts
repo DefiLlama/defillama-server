@@ -43698,7 +43698,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [], 
     twitter: "bounce_bit",
-  }
+  },
+  {
+    id: "4657",
+    name: "NxFi Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://nxfi.io/",
+    description:
+      "Committed to enabling users to invest in global on-chain and off-chain earning opportunities",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/nxfi-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Solana"],
+    module: "nxfi/index.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "nxfi_protocol",
+    listedAt: 1716386976
+  },
 ]
 
 export default data3

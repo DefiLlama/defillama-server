@@ -38,7 +38,7 @@ export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string
 }
 
 export function isExcludedFromChainTvl(category?: string) {
-  return category === "RWA";
+  return category === "RWA" || category === "Basis Trading";
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']

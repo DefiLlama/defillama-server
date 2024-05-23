@@ -43812,6 +43812,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#linehub",
     listedAt: 1716426597
   },
+  {
+    id: "4662",
+    name: "Manta CeDeFi",
+    address: null,
+    symbol: "-",
+    url: "https://cedefi.manta.network",
+    description:
+      "Manta CeDeFi: offering more opportunities for Manta users through a diversified approach to earning yield through CeFi and DeFi.",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/manta-cedefi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Manta"],
+    module: "manta-cedefi/index.js",
+    twitter: "MantaNetwork",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1716458267
+  },
 ]
 
 export default data3

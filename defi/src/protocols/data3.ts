@@ -43919,6 +43919,48 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     listedAt: 1716473850
   },
+  {
+    id: "4667",
+    name: "Arcana Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.arcana.finance",
+    description: "Tokenized delta-neutral trade strategies on re.al.",
+    chain: "re.al",
+    logo: `${baseIconsUrl}/arcana-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["re.al"],
+    module: "arcana/index.js",
+    twitter: "Arcana_Finance",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1716474949
+  },
+  {
+    id: "4668",
+    name: "Pearl V2",
+    address: "polygon:0x7238390d5f6f64e67c3211c343a410e2a3dec142",
+    symbol: "PEARL",
+    url: "https://www.pearl.exchange",
+    description: "Polygon's premiere ve(3,3) exchange with deep liquidity for tokenized RWAs and premium digital assets.",
+    chain: "re.al",
+    logo: `${baseIconsUrl}/pearl-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["re.al"],
+    module: "pearl-v2/index.js",
+    twitter: "PearlFi_",
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    listedAt: 1716474999
+  },
 ]
 
 export default data3

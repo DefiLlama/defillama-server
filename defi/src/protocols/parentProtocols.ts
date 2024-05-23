@@ -1365,7 +1365,6 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HadoukenFinance"
   },
-  /*
   {
     id: "parent#synthetix",
     name: "Synthetix",
@@ -1376,9 +1375,11 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "2586",
     chains: [],
     twitter: "synthetix_io",
-    governanceID: ["snapshot:synthetix-stakers-poll.eth"]
+    governanceID: ["snapshot:synthetix-stakers-poll.eth"],
+    stablecoins: ["susd", "seur"],
+    github: ["Synthetixio"],
+    treasury: "synthetix.js",
   },
-  */
   {
     id: "parent#starfish",
     name: "Starfish",

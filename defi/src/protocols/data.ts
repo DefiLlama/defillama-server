@@ -192,21 +192,18 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/synthetix.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "havven",
-    cmcId: "2586",
+    gecko_id: null,
+    cmcId: null,
     category: "Synthetics",
     chains: ["Ethereum", "Optimism"],
     module: "synthetix/index.js",
-    treasury: "synthetix.js",
     twitter: "synthetix_io",
     audit_links: ["https://docs.synthetix.io/v/v3/for-developers/smart-contract-audits/"],
     oraclesByChain: {
       ethereum: ["Chainlink"],
       optimism: ["Chainlink", "Pyth"],
     },
-    governanceID: ["snapshot:synthetix-stakers-poll.eth"],
-    stablecoins: ["susd", "seur"],
-    github: ["Synthetixio"] //check
+    parentProtocol: "parent#synthetix"
   },
   {
     id: "116",

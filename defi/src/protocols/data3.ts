@@ -39042,6 +39042,7 @@ const data3: Protocol[] = [
     twitter: "synthetix_io",
     forkedFrom: [],
     oracles: ["Pyth"], // https://docs.synthetix.io/v/v3
+    parentProtocol: "parent#synthetix",
     listedAt: 1712327109
   },
   {

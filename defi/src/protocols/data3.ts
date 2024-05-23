@@ -43849,7 +43849,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Arbitrum", "zkLink Nova"],
+    chains: ["Arbitrum"],
     module: "native-lend/index.js",
     twitter: "native_fi",
     oracles: [],

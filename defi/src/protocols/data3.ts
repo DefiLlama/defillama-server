@@ -39235,6 +39235,7 @@ const data3: Protocol[] = [
     chain: "Base",
     logo: `${baseIconsUrl}/arcadia-v2.jpg`,
     audits: "2",
+    audit_links: ["https://github.com/arcadia-finance/arcadia-finance-audits/tree/main/audits-v2"],
     audit_note: null,
     gecko_id: null,
     cmcId: null,

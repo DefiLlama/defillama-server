@@ -4518,6 +4518,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "LineDefiHub",
     github: ["linedefi"]
   },
+  {
+    id: "parent#native",
+    name: "Native",
+    url: "https://native.org",
+    description: "Native is crypto's invisible DEX layer. Each DEX is owned by an individual project and embedded into that project's UI, with access to liquidity across the entire network.",
+    logo: `${baseIconsUrl}/native.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "native_fi",
+  },
 ];
 
 export default parentProtocols;

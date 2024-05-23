@@ -2284,25 +2284,26 @@ const data3: Protocol[] = [
   },
   {
     id: "2803",
-    name: "Native",
+    name: "Native Swap", // previous Native
     address: null,
     symbol: "-",
     url: "https://native.org",
     description: "Native is crypto's invisible DEX layer. Each DEX is owned by an individual project and embedded into that project's UI, with access to liquidity across the entire network.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/native.jpg`,
+    logo: `${baseIconsUrl}/native-swap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Binance", "Ethereum"],
+    chains: ["Binance", "Ethereum", "Mantle"],
     oraclesByChain: {
       zklink: ["RedStone"], //https://docs.native.org/aqua/smart-contracts/smart-contract-addresses
     },
     forkedFrom: [],
     module: "native/index.js",
     twitter: "native_fi",
+    parentProtocol: "parent#native",
     listedAt: 1681448411
   },
   {
@@ -43833,6 +43834,28 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1716458267
+  },
+  {
+    id: "4663",
+    name: "Native Lend",
+    address: null,
+    symbol: "-",
+    url: "https://native.org",
+    description: "Native is crypto's invisible DEX layer. Each DEX is owned by an individual project and embedded into that project's UI, with access to liquidity across the entire network.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/native-lend.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum", "zkLink Nova"],
+    module: "native-lend/index.js",
+    twitter: "native_fi",
+    oracles: [],
+    forkedFrom: [],
+    parentProtocol: "parent#native",
+    listedAt: 1716459034
   },
 ]
 

@@ -43921,13 +43921,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4667",
-    name: "Arcana Finance",
+    name: "Tangible Arcana", // previous arcana finance
     address: null,
     symbol: "-",
     url: "https://www.arcana.finance",
     description: "Tokenized delta-neutral trade strategies on re.al.",
     chain: "re.al",
-    logo: `${baseIconsUrl}/arcana-finance.jpg`,
+    logo: `${baseIconsUrl}/tangible-arcana.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -43938,6 +43938,7 @@ const data3: Protocol[] = [
     twitter: "Arcana_Finance",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "parent#tangible",
     listedAt: 1716474949
   },
   {

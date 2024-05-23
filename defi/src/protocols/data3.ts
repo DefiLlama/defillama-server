@@ -43898,6 +43898,27 @@ const data3: Protocol[] = [
     oracles: [], 
     twitter: "FlareNetworks",
   },
+  {
+    id: "4666",
+    name: "Gast",
+    address: null,
+    symbol: "-",
+    url: "https://app.gasturbo.io",
+    description: "GAST is a pioneering decentralized finance (DeFi) platform known for its innovative approach to multi-chain yield aggregation. ",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/gast.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "gasturbo-io-dex/index.js",
+    twitter: "gast_btc",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    listedAt: 1716473850
+  },
 ]
 
 export default data3

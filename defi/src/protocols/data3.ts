@@ -12345,6 +12345,8 @@ const data3: Protocol[] = [
       scroll: ["Pyth"],
       linea: ["Pyth"],
       mode: ["RedStone"]     // https://docs.layerbank.finance/protocol/lending/oracles
+      BSquared: ["RedStone"]     // https://docs.layerbank.finance/protocol/lending/oracles
+      BOB: ["RedStone"]     // https://docs.layerbank.finance/protocol/lending/oracles
     },
     listedAt: 1689773129,
     audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-LineaBank-v1.0.pdf"],
@@ -27501,7 +27503,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "RWA Lending",
     chains: ["Canto"],
-    oracles: [],
+    oracles: ["RedStone"], //https://docs.vivacity.finance/reference/architecture#price-oracles
     forkedFrom: [],
     module: "vivacity/index.js",
     twitter: "vivacityfinance",

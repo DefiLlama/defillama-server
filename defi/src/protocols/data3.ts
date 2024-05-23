@@ -43858,6 +43858,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#native",
     listedAt: 1716459034
   },
+  {
+    id: '4664',
+    name: "Sei",
+    address: null,
+    symbol: "SEI",
+    url: "https://www.sei.io/",
+    description: "Pushing the boundaries of blockchain technology through open source development, Sei stands to unlock a brand new design space for consumer facing applications.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/sei.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'sei-network',
+    cmcId: null,
+    category: "Chain",
+    chains: ["Sei"],
+    module: "dummy.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "SeiNetwork",
+  },
 ]
 
 export default data3

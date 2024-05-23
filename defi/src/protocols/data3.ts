@@ -43878,6 +43878,26 @@ const data3: Protocol[] = [
     oracles: [], 
     twitter: "SeiNetwork",
   },
+  {
+    id: '4665',
+    name: "Flare",
+    address: null,
+    symbol: "FLR",
+    url: "https://flare.network/",
+    description: "Flare is the blockchain for data, providing developers with secure decentralized access to high-integrity data from other chains and the internet.",
+    chain: "Flare",
+    logo: `${baseIconsUrl}/flare.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'flare-networks',
+    cmcId: null,
+    category: "Chain",
+    chains: ["Flare"],
+    module: "dummy.js", 
+    forkedFrom: [],
+    oracles: [], 
+    twitter: "FlareNetworks",
+  },
 ]
 
 export default data3

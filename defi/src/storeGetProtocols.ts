@@ -88,7 +88,7 @@ export async function storeGetProtocols({
     if (!p.category) return;
 
     protocolCategoriesSet.add(p.category);
-    if (p.category !== "Bridge" && p.category !== "RWA") {
+    if (p.category !== "Bridge" && p.category !== "RWA" && p.category !== "Basis Trading") {
       p.chains.forEach((c: string) => {
         chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
 

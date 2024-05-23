@@ -2840,7 +2840,7 @@ export const chainCoingeckoIds = {
     url: "https://karak.network/",
     chainId: "2410"
   },
-  "Bitkub": {
+  "Bitkub Chain": {
     geckoId: "bitkub-coin",
     symbol: "KUB",
     cmcId: "16093",
@@ -3062,6 +3062,8 @@ export function transformNewChainName(chain: string) {
       return "Oasis Emerald"
     case "zklink":
       return "zkLink Nova"
+    case "Bitkub":
+      return "Bitkub Chain"
     default:
       return chain
   }
@@ -3596,7 +3598,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "karak":
       return "Karak Network"
     case "bitkub":
-      return "Bitkub"
+      return useNewChainNames ? "Bitkub Chain" : "Bitkub"
     case "ancient8":
       return "Ancient8"
     case "hyperliquid":

@@ -2996,6 +2996,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "real_rwa",
     url: "https://www.re.al",
+    github: ["re-al-Foundation"],
     chainId: 111188
   },
 } as unknown as ChainCoinGekcoIds

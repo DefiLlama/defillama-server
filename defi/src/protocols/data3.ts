@@ -43284,7 +43284,7 @@ const data3: Protocol[] = [
     url: "https://portal.bouncebit.io/stake",
     description: "BounceBit natively provides a Liquid Staking smart contract. If you stake your BTC or BB, you will receive a Liquid Staking Derivative (LSD). This LSD is like a voucher that testifies that you are delegating your assets to a validator.",
     chain: "BounceBit",
-    logo: `${baseIconsUrl}/bbscan.jpg`, // bouncebit-lsd
+    logo: `${baseIconsUrl}/bouncebit-lsd.jpg`, // bouncebit-lsd
     audits: "0",
     audit_note: null,
     gecko_id: null,

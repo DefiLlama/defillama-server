@@ -42352,7 +42352,7 @@ const data3: Protocol[] = [
     description: "Untangled is an institutional-grade RWA credit protocol for fintechs around the world. The protocol has pioneered the first RWA credit oracle infrastructure, enabling dynamic pricing of RWAs with AI-driven risk models and zero-knowledge proof",
     chain: "Celo",
     logo: `${baseIconsUrl}/untangled.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

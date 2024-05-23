@@ -1947,14 +1947,14 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#pawnfi",
-    name: "Pawnfi",
-    url: "https://pawnfi.com/",
-    description: "Pawnfi, offers an All-In-One platform for trading, lending, and earning within the NFT community",
+    name: "Polarise", // rebrand from Pawnfi
+    url: "https://www.polarise.org/",
+    description: "Polarise Protocol aims to be the innovative, multi-chain, multi-form crypto asset financial infrastructure platform",
     logo: `${baseIconsUrl}/pawnfi.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "PawnfiOfficial",
+    twitter: "Polariseorg",
     governanceID: ["snapshot:pawnfiprotocol.eth"],
     github: ["PawnFi"]
   },

@@ -2989,6 +2989,15 @@ export const chainCoingeckoIds = {
     url: "https://bouncebit.io/",
     chainId: 6001,
   },
+  "re.al": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "real_rwa",
+    url: "https://www.re.al",
+    chainId: 111188
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3627,6 +3636,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Cyber"
     case "bouncebit":
         return "BounceBit"
+    case "real":
+        return "re.al"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

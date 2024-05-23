@@ -12175,9 +12175,10 @@ const data3: Protocol[] = [
     module: "zerolend/index.js",
     twitter: "zerolendxyz",
     oraclesByChain: {
-      blast: ["Pyth"], //https://docs.zerolend.xyz/security/oracles/using-pyth-oracles
-      linea: ["Pyth"], //https://docs.zerolend.xyz/security/oracles/using-pyth-oracles
+      blast: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
+      linea: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
       manta: ["RedStone"], //https://docs.zerolend.xyz/security/oracles/using-redstone-oracles
+      ethereum: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
       zkSync: ["Pyth"] //https://docs.zerolend.xyz/security/oracles/using-pyth-oracles
     },
     forkedFrom: ["AAVE V3"],
@@ -43284,7 +43285,7 @@ const data3: Protocol[] = [
     url: "https://portal.bouncebit.io/stake",
     description: "BounceBit natively provides a Liquid Staking smart contract. If you stake your BTC or BB, you will receive a Liquid Staking Derivative (LSD). This LSD is like a voucher that testifies that you are delegating your assets to a validator.",
     chain: "BounceBit",
-    logo: `${baseIconsUrl}/bouncebit-lsd.jpg`, // bouncebit-lsd
+    logo: `${baseIconsUrl}/bbscan.jpg`, // bouncebit-lsd
     audits: "0",
     audit_note: null,
     gecko_id: null,

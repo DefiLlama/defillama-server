@@ -4529,6 +4529,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "native_fi",
   },
+  {
+    id: "parent#pearlfi",
+    name: "PearlFi",
+    url: "https://www.pearl.exchange",
+    description: "Polygon's premiere ve(3,3) exchange with deep liquidity for tokenized RWAs and premium digital assets.",
+    logo: `${baseIconsUrl}/pearlfi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "PearlFi_",
+  },
 ];
 
 export default parentProtocols;

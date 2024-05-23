@@ -9460,13 +9460,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3121",
-    name: "PearlFi",
+    name: "Pearl V1", // previous PearlFi
     address: "polygon:0x7238390d5f6f64e67c3211c343a410e2a3dec142",
     symbol: "PEARL",
     url: "https://www.pearl.exchange",
     description: "Polygon's premiere ve(3,3) exchange with deep liquidity for tokenized RWAs and premium digital assets.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/pearlfi.jpg`,
+    logo: `${baseIconsUrl}/pearl-v1.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: "pearl",
@@ -9477,6 +9477,7 @@ const data3: Protocol[] = [
     twitter: "PearlFi_",
     oracles: [],
     forkedFrom: ["Solidly"],
+    parentProtocol: "parent#pearlfi",
     listedAt: 1686992230
   },
   {
@@ -43960,6 +43961,7 @@ const data3: Protocol[] = [
     twitter: "PearlFi_",
     oracles: [],
     forkedFrom: ["Uniswap V3"],
+    parentProtocol: "parent#pearlfi",
     listedAt: 1716474999
   },
 ]

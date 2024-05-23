@@ -24336,7 +24336,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2458",
-    name: "Unlockd",
+    name: "Unlockd V1",
     address: null,
     symbol: "-",
     url: "https://unlockd.finance",
@@ -24354,6 +24354,7 @@ const data2: Protocol[] = [
     twitter: "Unlockd_Finance",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "parent#unlockd",
     listedAt: 1674183431
   },
   {

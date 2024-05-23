@@ -4495,6 +4495,29 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GullNetwork",
   },
+  {
+    id: "parent#unlockd",
+    name: "Unlockd",
+    url: "https://unlockd.finance",
+    description: "Earn yield and borrow against your NFTs with the safest loans on the market.",
+    logo: `${baseIconsUrl}/unlockd.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Unlockd_Finance",
+  },
+  {
+    id: "parent#linehub",
+    name: "LineHub",
+    url: "https://linehub.io/",
+    description: "A one-stop DeFi Hub built exclusively on Linea chain.",
+    logo: `${baseIconsUrl}/linehub.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "LineDefiHub",
+    github: ["linedefi"]
+  },
 ];
 
 export default parentProtocols;

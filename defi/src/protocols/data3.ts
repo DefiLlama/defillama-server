@@ -44005,11 +44005,11 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Cross Chain",
     chains: ["Ethereum", "Arbitrum", "Algorand", "Avalanche", "Bitcoin", "Solana"],
     module: "c3/index.js",
     twitter: "C3protocol",
-    oracles: [],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10355
     forkedFrom: [],
     audit_links: ["https://github.com/c3exchange/c3-smartcontracts-v1/tree/main/audits"],
     github: ["c3exchange"],

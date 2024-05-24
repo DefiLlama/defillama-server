@@ -2758,5 +2758,10 @@ export default {
                 "1715817600": true,
             }
         }
+    },
+    "equation-v3": {
+        parentId: "Equation",
+        enabled: true,
+        id: "4586"
     }
 } as AdaptorsConfig

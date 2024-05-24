@@ -2139,5 +2139,10 @@ export default {
     "polter": {
         enabled: true,
         id: "4152"
+    },
+    "equation-v3": {
+        parentId: "Equation",
+        enabled: true,
+        id: "4586"
     }
 } as AdaptorsConfig

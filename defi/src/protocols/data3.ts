@@ -31295,7 +31295,7 @@ const data3: Protocol[] = [
   {
     id: "4102",
     name: "Pingu Exchange",
-    address: "arbitrum:0x4615fa30fFA5716984d4372030ce28D99fCB702f",
+    address: "arbitrum:0x83E60B9F7f4DB5cDb0877659b1740E73c662c55B",
     symbol: "PINGU",
     url: "https://pingu.exchange",
     description: "Pingu Exchange is a community driven decentralized perpetual protocol live on Arbitrum.",
@@ -44079,6 +44079,50 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Pendle"],
     listedAt: 1716545909
+  },
+  {
+    id: "4674",
+    name: "YFX V4",
+    address: "arbitrum:0x569deb225441FD18BdE18aED53E2EC7Eb4e10D93",
+    symbol: "YFX",
+    url: "https://www.yfx.com",
+    description:
+      "World-leading decentralized perpetual exchange with up to 100x leverage, high liquidity, low fees, and no slippage.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/yfx-v4.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "yfx-v4/index.js",
+    twitter: "YFX_COM",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1716556456
+  },
+  {
+    id: "4675",
+    name: "Rollspace",
+    address: null,
+    symbol: "-",
+    url: "https://rollspace.com",
+    description:
+      "Rollspace is crypto gamefi project, where you can play and earn with games, sports. Just by connecting your web3 wallet and you can start playing games and try your luck and get rewards.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/rollspace.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Binance"],
+    module: "rollspace/index.js",
+    twitter: "rollspacecom",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1716556956
   },
 ]
 

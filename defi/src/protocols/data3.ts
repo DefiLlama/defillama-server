@@ -12344,9 +12344,9 @@ const data3: Protocol[] = [
       manta: ["RedStone"],    // https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0
       scroll: ["Pyth"],
       linea: ["Pyth"],
-      mode: ["RedStone"]     // https://docs.layerbank.finance/protocol/lending/oracles
-      BSquared: ["RedStone"]     // https://docs.layerbank.finance/protocol/lending/oracles
-      BOB: ["RedStone"]     // https://docs.layerbank.finance/protocol/lending/oracles
+      mode: ["RedStone"],     // https://docs.layerbank.finance/protocol/lending/oracles
+      bsquared: ["RedStone"],     // https://docs.layerbank.finance/protocol/lending/oracles
+      bob: ["RedStone"]     // https://docs.layerbank.finance/protocol/lending/oracles
     },
     listedAt: 1689773129,
     audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-LineaBank-v1.0.pdf"],

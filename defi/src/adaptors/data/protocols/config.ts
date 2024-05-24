@@ -149,5 +149,16 @@ export default {
     "FeeFree": {
         enabled: true,
         id: "4530",
+    },
+    "linehub-v3": {
+        parentId: "LineHub",
+        enabled: true,
+        id: "4661",
+        protocolsData: {
+            "v3": {
+                enabled: true,
+                id: "4661",
+            }
+        }
     }
 } as AdaptorsConfig

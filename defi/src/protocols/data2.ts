@@ -19473,7 +19473,7 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://github.com/LimeChain/HeliSwap-contracts/blob/main/audits/Halborn-august-2022.pdf"],
     listedAt: 1667390065,
-    github: ["LimeChain"]
+    github: ["HeliSwap"]
   },
   {
     id: "2245",

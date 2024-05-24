@@ -6,7 +6,6 @@ const PG_CACHE_KEYS = {
   CATEGORIES_DATA: 'categories-data',
   FORKS_DATA: 'forks-data',
   HISTORICAL_TVL_DATA_META: 'getHistoricalTvlForAllProtocols-meta',
-  LANG_DATA: 'lang-data',
 }
 
 export {

@@ -44059,6 +44059,27 @@ const data3: Protocol[] = [
     github: ["UniRouter"],
     listedAt: 1716545697
   },
+  {
+    id: "4673",
+    name: "Splice Finance",
+    address: null,
+    symbol: "-", 
+    url: "https://app.splice.fi/",
+    description: "Splice Finance - Fixed APR or Boosted Points; you choose",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/splice-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Mode"],
+    module: "splice-fi/index.js",
+    twitter: "splice_fi",
+    oracles: [],
+    forkedFrom: ["Pendle"],
+    listedAt: 1716545909
+  },
 ]
 
 export default data3

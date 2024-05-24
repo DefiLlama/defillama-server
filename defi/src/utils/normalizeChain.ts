@@ -2999,6 +2999,20 @@ export const chainCoingeckoIds = {
     github: ["re-al-Foundation"],
     chainId: 111188
   },
+  "Mint": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    github: ["Mint-Blockchain"],
+    chainId: 185,
+    twitter: "Mint_Blockchain",
+    url: "https://www.mintchain.io",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3639,6 +3653,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
         return "BounceBit"
     case "real":
         return "re.al"
+    case "mint":
+        return "Mint"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

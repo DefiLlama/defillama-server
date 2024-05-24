@@ -44078,6 +44078,7 @@ const data3: Protocol[] = [
     twitter: "splice_fi",
     oracles: [],
     forkedFrom: ["Pendle"],
+    github: ["splice-finance"],
     listedAt: 1716545909
   },
   {

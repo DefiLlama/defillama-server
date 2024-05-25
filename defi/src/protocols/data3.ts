@@ -44125,6 +44125,52 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1716556956
   },
+  {
+    id: "4676",
+    name: "Glyph",
+    address: null,
+    symbol: "-",
+    url: "https://app.glyph.fi/",
+    description:
+      "Fraxtal's Native Credit Layer",
+    chain: "Fraxtal",
+    logo: `${baseIconsUrl}/glyph.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Fraxtal"],
+    module: "glyph-fi/index.js",
+    twitter: "GlyphFinance",
+    oracles: ["RedStone"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10370
+    forkedFrom: ["AAVE V3"],
+    audit_links: ["https://conclave.gitbook.io/glyph/resources/audits"],
+    listedAt: 1716652465
+  },
+  {
+    id: "4677",
+    name: "Kalax",
+    address: "blast:0x2F67F59b3629Bf24962290DB9edE0CD4127e606D",
+    symbol: "KALA",
+    url: "https://www.kalax.io/",
+    description:
+      "Kalax is a smart and non-custodial yield aggregator on Blast. We integrate a variety of DEXes and lending protocols with our battle-tested auto-compounding solutions, elevating assets performance to a new height",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/kalax.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Blast"],
+    module: "kalax/index.js",
+    twitter: "Kalax_io",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://beosin.com/audits/Kalax_202405211051.pdf"],
+    listedAt: 1716652747
+  },
 ]
 
 export default data3

@@ -3901,7 +3901,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#nile-exchange",
     name: "Nile Exchange",
-    url: "https://www.thenile.exchange",
+    url: "https://nile.build",
     description:
       "Nile is a next-generation AMM designed to serve as Linea's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
     logo: `${baseIconsUrl}/nile-exchange.png`,

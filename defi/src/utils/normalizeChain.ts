@@ -38,7 +38,7 @@ export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string
 }
 
 export function isExcludedFromChainTvl(category?: string) {
-  return category === "RWA";
+  return category === "RWA" || category === "Basis Trading";
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -2840,7 +2840,7 @@ export const chainCoingeckoIds = {
     url: "https://karak.network/",
     chainId: "2410"
   },
-  "Bitkub": {
+  "Bitkub Chain": {
     geckoId: "bitkub-coin",
     symbol: "KUB",
     cmcId: "16093",
@@ -2989,6 +2989,16 @@ export const chainCoingeckoIds = {
     url: "https://bouncebit.io/",
     chainId: 6001,
   },
+  "re.al": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "real_rwa",
+    url: "https://www.re.al",
+    github: ["re-al-Foundation"],
+    chainId: 111188
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3062,6 +3072,8 @@ export function transformNewChainName(chain: string) {
       return "Oasis Emerald"
     case "zklink":
       return "zkLink Nova"
+    case "Bitkub":
+      return "Bitkub Chain"
     default:
       return chain
   }
@@ -3596,7 +3608,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "karak":
       return "Karak Network"
     case "bitkub":
-      return "Bitkub"
+      return useNewChainNames ? "Bitkub Chain" : "Bitkub"
     case "ancient8":
       return "Ancient8"
     case "hyperliquid":
@@ -3625,6 +3637,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Cyber"
     case "bouncebit":
         return "BounceBit"
+    case "real":
+        return "re.al"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -5430,16 +5430,16 @@ const data2: Protocol[] = [
   {
     id: "1619",
     name: "JPEG'd",
-    address: "0xe80c0cd204d654cebe8dd64a4857cab6be8345a3",
-    symbol: "JPEG",
+    address: "0xCE722f60F35C37aB295adc4E6bA45bCC7ca89Dd6",
+    symbol: "JPGD",
     url: "https://jpegd.io",
     description: "JPEG'd is a decentralized lending protocol on the Ethereum blockchain that enables NFT holders to open collateralized debt positions (CDPs) using their NFTs as collateral. Users mint pETH or pUSD, native tokens of the protocol that are pegged to ETH and USD respectively via Curve pools, enabling users to effectively obtain leverage on their NFTs.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/jpeg'd.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "jpeg-d",
-    cmcId: "18439",
+    gecko_id: "jpeg-d-2",
+    cmcId: null,
     category: "NFT Lending",
     chains: ["Ethereum"],
     oracles: ["Chainlink"],
@@ -19473,7 +19473,7 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://github.com/LimeChain/HeliSwap-contracts/blob/main/audits/Halborn-august-2022.pdf"],
     listedAt: 1667390065,
-    github: ["LimeChain"]
+    github: ["HeliSwap"]
   },
   {
     id: "2245",
@@ -24336,7 +24336,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2458",
-    name: "Unlockd",
+    name: "Unlockd V1",
     address: null,
     symbol: "-",
     url: "https://unlockd.finance",
@@ -24354,6 +24354,7 @@ const data2: Protocol[] = [
     twitter: "Unlockd_Finance",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "parent#unlockd",
     listedAt: 1674183431
   },
   {

@@ -1518,6 +1518,16 @@
       "decimals": "18",
       "symbol": "SDAI",
       "to": "coingecko#savings-dai"
+    },
+    "0x5ffce65a40f6d3de5332766fff6a28bf491c868c": {
+      "decimals": "18",
+      "symbol": "SolvBTC.m",
+      "to": "coingecko#solv-btc"
+    },
+    "0xe4d584ae9b753e549cae66200a6475d2f00705f7": {
+      "decimals": "18",
+      "symbol": "M-BTC",
+      "to": "coingecko#merlin-s-seal-btc"
     }
   },
   "wan": {
@@ -2820,6 +2830,11 @@
       "decimals": "18",
       "symbol": "BBTC",
       "to": "coingecko#wrapped-bitcoin"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "BB",
+      "to": "coingecko#bouncebit"
     }
   }
 }

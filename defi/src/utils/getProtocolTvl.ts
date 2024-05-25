@@ -73,7 +73,7 @@ export async function getProtocolTvl(
           tvlPrevWeek = previousWeekRecord[chain] || null;
           tvlPrevMonth = previousMonthRecord[chain] || null;
 
-          if (protocol.category !== "Bridge" && protocol.category !== "RWA") {
+          if (protocol.category !== "Bridge" && protocol.category !== "RWA" && protocol.category !== "Basis Trading" ) {
             if (isDoubleCount) {
               chainTvls["doublecounted"] = {
                 tvl,

@@ -2135,5 +2135,14 @@ export default {
         parentId: "dYdX",
         enabled: true,
         id: "4067"
+    },
+    "polter": {
+        enabled: true,
+        id: "4152"
+    },
+    "equation-v3": {
+        parentId: "Equation",
+        enabled: true,
+        id: "4586"
     }
 } as AdaptorsConfig

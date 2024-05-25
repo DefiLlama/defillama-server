@@ -45,7 +45,7 @@ export type IStoreAdaptorDataHandlerEvent = {
 }
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  const defaultMaxConcurrency = event.adapterType === AdapterType.DEXS ? 8 : 31
+  const defaultMaxConcurrency = 32
   let { timestamp, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency } = event
   console.info(`- timestamp: ${timestamp}`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
@@ -93,6 +93,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const { errors, results } = await PromisePool
     .withConcurrency(maxConcurrency)
     .for(protocols)
+    .onTaskFinished((item: any, _: any) => {
+      console.info(`[${adapterType}] - ${item.module} done!`)
+    })
     .process(runAndStoreProtocol)
 
   const shortenString = (str: string, length: number = 250) => {

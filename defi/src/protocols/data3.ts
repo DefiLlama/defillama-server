@@ -627,7 +627,7 @@ const data3: Protocol[] = [
   },
   {
     id: "2727",
-    name: "Koi Finance", // rebranded from Mute.io
+    name: "Koi Finance AMM", // rebranded from Mute.io
     address: "era:0xa995ad25ce5eb76972ab356168f5e1d9257e4d05",
     symbol: "KOI",
     url: "https://dapp.koi.finance",
@@ -636,8 +636,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/koi-finance.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "koi-3",
-    cmcId: "null",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["zkSync Era"],
     oracles: [],
@@ -645,8 +645,7 @@ const data3: Protocol[] = [
     module: "mute/index.js",
     twitter: "koi_finance",
     listedAt: 1679676617,
-    wrongLiquidity: true, // We haven't integrated mute dex on yields-server and most of the MUTE liquidity is there
-    governanceID: ["snapshot:mutegov.eth"]
+    parentProtocol: "parent#koi-finance",
   },
   {
     id: "2728",
@@ -44170,6 +44169,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://beosin.com/audits/Kalax_202405211051.pdf"],
     listedAt: 1716652747
+  },
+  {
+    id: "4678",
+    name: "Koi Finance CL", // rebranded from Mute.io
+    address: "era:0xa995ad25ce5eb76972ab356168f5e1d9257e4d05",
+    symbol: "KOI",
+    url: "https://dapp.koi.finance",
+    description: "A lightning fast DEX, yield, and bond platform built on zkSync Era.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/koi-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "mute-cl/index.js",
+    twitter: "koi_finance",
+    listedAt: 1716742431,
+    parentProtocol: "parent#koi-finance",
   },
 ]
 

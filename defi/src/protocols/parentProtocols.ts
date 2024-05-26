@@ -4541,6 +4541,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PearlFi_",
   },
+  {
+    id: "parent#koi-finance",
+    name: "Koi Finance",
+    url: "https://dapp.koi.finance",
+    description: "A lightning fast DEX, yield, and bond platform built on zkSync Era",
+    logo: `${baseIconsUrl}/koi-finance.png`,
+    gecko_id: "koi-3",
+    cmcId: "null",
+    chains: [],
+    twitter: "koi_finance",
+    governanceID: ["snapshot:mutegov.eth"]
+  },
 ];
 
 export default parentProtocols;

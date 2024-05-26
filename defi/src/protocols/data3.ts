@@ -38805,7 +38805,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Lending",
     chains: ["Arbitrum"],
     module: "solidlizard-lending/index.js",
     twitter: "solidlizardfi",

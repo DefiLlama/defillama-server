@@ -44236,6 +44236,26 @@ const data3: Protocol[] = [
     github: ["iSwap-dex"],
     listedAt: 1716803957
   },
+  {
+    id: "4681",
+    name: "TNA Protocol", //used for fees dashboard
+    address: null,
+    symbol: "-",
+    url: "https://tna-btc.com",
+    description: "The naming protocol for Bitcoin designed to improve its usability and broaden its array of assets and primitives.",
+    chain: "Bitlayer",
+    logo: `${baseIconsUrl}/tna-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Bitlayer"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "TNA_Protocol",
+  },
 ]
 
 export default data3

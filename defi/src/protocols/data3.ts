@@ -31205,14 +31205,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4098",
-    name: "ZetaEarn",
+    name: "Zearn Protocol", // previous ZetaEarn
     address: null,
     symbol: "-",
     assetToken: "stZETA",
-    url: "https://zetaearn.com",
-    description: "ZetaEarn is the first and largest liquid staking platform on ZetaChain. We aim to become a one-stop staking protocol for omnichain liquidity and value capture. Seamless Staking, Boundless Earning.",
+    url: "https://zearn.xyz/",
+    description: "Zearn serves as a liquid staking protocol for the ZetaChain PoS (Proof of Stake) blockchain. It provides users with the ability to stake their ERC20 ZETA tokens on the ZetaChain mainnet and instantly receive a representation of their stake in the form of stZETA tokens, eliminating the need to maintain staking infrastructure. Users will earn staking rewards and retain control over their stZETA tokens.",
     chain: "ZetaChain",
-    logo: `${baseIconsUrl}/zetaearn.jpg`,
+    logo: `${baseIconsUrl}/zearn-protocol.jpg`, 
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -31222,8 +31222,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "zetaEarn/index.js",
-    twitter: "ZetaEarn",
-    github: ["zetaearn"],
+    twitter: "Zearn_Protocol",
+    github: ["ZearnLabs"],
     listedAt: 1706905531
   },
   {

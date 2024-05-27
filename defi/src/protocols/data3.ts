@@ -17893,16 +17893,16 @@ const data3: Protocol[] = [
   {
     id: "3499",
     name: "Ekubo",
-    address: null,
-    symbol: "-",
+    address: "starknet:0x75afe6402ad5a5c20dd25e10ec3b3986acaa647b77e4ae24b0cbc9a54a27a87",
+    symbol: "EKUBO",
     url: "https://ekubo.org/",
     description:
       "Ekubo Protocol is a dex built for Starknet, that features concentrated liquidity, a singleton architecture, and extensions",
     chain: "Starknet",
     logo: `${baseIconsUrl}/ekubo.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "ekubo-protocol",
     cmcId: null,
     category: "Dexes",
     chains: ["Starknet"],
@@ -17910,6 +17910,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "EkuboProtocol",
+    audit_links: ["https://docs.ekubo.org/integration-guides/reference/audits"],
     listedAt: 1694136553
   },
   {

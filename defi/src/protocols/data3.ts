@@ -44020,7 +44020,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-", 
     url: "https://sailingprotocol.org/",
-    description: "Sailing Portfolios enable depositing assets into a bots that ensure your assets track your specified investment strategy according to your rules and target prices.",
+    description: "Sailing Portfolios enable depositing assets into bots that ensure your assets track your specified investment strategy according to your rules and target prices.",
     chain: "Kava",
     logo: `${baseIconsUrl}/sailing-portfolios.jpg`,
     audits: "0",

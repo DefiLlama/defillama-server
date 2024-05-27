@@ -44350,7 +44350,7 @@ const data3: Protocol[] = [
     description:
       "Wake Up. Chad Harder. Repeat.",
     chain: "Base",
-    logo: `${baseIconsUrl}/based-chad.png`,
+    logo: `${baseIconsUrl}/based-chad.jpg`,
     audits: "3",
     audit_links: ["https://github.com/basechad/bc/blob/main/open_zeppelin_2018-10_audit.pdf"],
     audit_note: null,

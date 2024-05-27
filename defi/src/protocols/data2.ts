@@ -29865,6 +29865,26 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true
   },
-  
+   {
+    id: "2701",
+    name: "Bitparty",
+    address: null,
+    symbol: "-",
+    url: "https://bitlayer.bitparty.tech/",
+    description: "BitParty is the first 'Asset Gamified Community Network' in the #BTC ecosystem.",
+    chain: "Bitlayer",
+    logo: `${baseIconsUrl}/bitparty.jpeg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Bitlayer"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bitparty/index.js",
+    twitter: "BitPartyTech",
+    listedAt: 1716806817
+  }, 
 ]
 export default data2;

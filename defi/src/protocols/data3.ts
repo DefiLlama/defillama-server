@@ -44278,6 +44278,27 @@ const data3: Protocol[] = [
     audit_links: ["https://1014032567-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqWZZySI6X2fuVa7sc0Jn%2Fuploads%2FR1EKQQ3sseKzTPurwQot%2FSlowMist%20Audit%20Report%20-%20NX%20Finance.pdf?alt=media&token=7b7de8b2-65ee-4cda-89f8-d22b75556d5e"],
     listedAt: 1716816483
   },
+  {
+    id: "4682",
+    name: "DaikoDEX", 
+    address: null,
+    symbol: "-",
+    url: "https://daikodex.io/swap",
+    description: "Explore New Horizons of Trading with DaikoDEX ",
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/daikodex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Taiko"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "daiko-dex/index.js",
+    twitter: "DaikoDex",
+    listedAt: 1716818551
+  },
 ]
 
 export default data3

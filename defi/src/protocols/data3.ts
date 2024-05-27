@@ -44279,7 +44279,7 @@ const data3: Protocol[] = [
     listedAt: 1716816483
   },
   {
-    id: "4682",
+    id: "4683",
     name: "DaikoDEX", 
     address: null,
     symbol: "-",

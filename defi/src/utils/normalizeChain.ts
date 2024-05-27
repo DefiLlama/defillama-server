@@ -3003,9 +3003,14 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
     twitter: "taikoxyz",
     url: "https://taiko.xyz",
+    chainId: 167000
   },
 } as unknown as ChainCoinGekcoIds
 

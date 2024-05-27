@@ -2999,6 +2999,19 @@ export const chainCoingeckoIds = {
     github: ["re-al-Foundation"],
     chainId: 111188
   },
+  "Taiko": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "taikoxyz",
+    url: "https://taiko.xyz",
+    chainId: 167000
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3639,6 +3652,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
         return "BounceBit"
     case "real":
         return "re.al"
+    case "taiko":
+        return "Taiko"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

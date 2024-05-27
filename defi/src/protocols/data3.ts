@@ -44341,6 +44341,30 @@ const data3: Protocol[] = [
     twitter: "BitPartyTech",
     listedAt: 1716824854
   },
+  {
+    id: "4686",
+    name: "Based Chad",
+    address: "0xecaf81eb42cd30014eb44130b89bcd6d4ad98b92",
+    symbol: "CHAD",
+    url: "https://basedchad.io",
+    description:
+      "Wake Up. Chad Harder. Repeat.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/based-chad.png`,
+    audits: "3",
+    audit_links: ["https://github.com/basechad/bc/blob/main/open_zeppelin_2018-10_audit.pdf"],
+    audit_note: null,
+    gecko_id: "based-chad",
+    cmcId: null,
+    category: "Memes",
+    chains: ["Base"],
+    oracles: [],
+    module: "based-chad/index.js",
+    twitter: "BasedChad6969",
+    language: "Solidity",
+    listedAt: 1644446314,
+    github: ["basechad"]
+  },
 ]
 
 export default data3

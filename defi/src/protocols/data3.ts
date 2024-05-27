@@ -44256,6 +44256,28 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "TNA_Protocol",
   },
+  {
+    id: "4682",
+    name: "NX Finance", 
+    address: null,
+    symbol: "-",
+    url: "https://nxfinance.io",
+    description: "NX Finance is the first Solana composable leverage protocol that integrates PointFI & yield aggregator.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/nx-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "nxfinance/index.js",
+    twitter: "NX_Finance",
+    audit_links: ["https://1014032567-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqWZZySI6X2fuVa7sc0Jn%2Fuploads%2FR1EKQQ3sseKzTPurwQot%2FSlowMist%20Audit%20Report%20-%20NX%20Finance.pdf?alt=media&token=7b7de8b2-65ee-4cda-89f8-d22b75556d5e"],
+    listedAt: 1716816483
+  },
 ]
 
 export default data3

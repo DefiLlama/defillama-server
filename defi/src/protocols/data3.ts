@@ -41474,7 +41474,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Synthetics",
     chains: ["Optimism"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.tlx.fi/basics/how-leveraged-tokens-work/synthetix-perps-engine
     forkedFrom: [],
     module: "tlx/index.js",
     twitter: "TLX_FI",
@@ -43277,7 +43277,7 @@ const data3: Protocol[] = [
     chains: ["Scroll"],
     module: "rollie-finance/index.js", 
     forkedFrom: [],
-    oracles: [], 
+    oracles: ["Pyth"], // https://docs.rollie.finance/oracle
     twitter: "rolliefinance",
     audit_links: ["https://github.com/zokyo-sec/audit-reports/blob/main/Rollie/Rollie_Zokyo_audit_report_April16th_2024.pdf"],
     listedAt: 1716203652
@@ -44098,7 +44098,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "yfx-v4/index.js",
     twitter: "YFX_COM",
-    oracles: [],
+    oracles: ["Pyth","Chainlink"], // https://docs.yfx.com/yfx-v4/trading/pricing-mechanism
     forkedFrom: [],
     listedAt: 1716556456
   },

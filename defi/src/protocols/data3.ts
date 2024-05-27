@@ -44299,6 +44299,27 @@ const data3: Protocol[] = [
     twitter: "DaikoDex",
     listedAt: 1716818551
   },
+  {
+    id: "4684",
+    name: "TaikoSwap", 
+    address: null,
+    symbol: "-",
+    url: "https://tkoswap.xyz",
+    description: "The go-to DEX for degens built on taikoxyz.",
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/taikoswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Taiko"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "taikoswap/index.js",
+    twitter: "TaikoSwap_",
+    listedAt: 1716819156
+  },
 ]
 
 export default data3

@@ -44320,6 +44320,27 @@ const data3: Protocol[] = [
     twitter: "TaikoSwap_",
     listedAt: 1716819156
   },
+  {
+    id: "4685",
+    name: "Bitparty", 
+    address: null,
+    symbol: "-",
+    url: "https://bitlayer.bitparty.tech",
+    description: "BitParty is the first Asset Gamified Community Network in the BTC ecosystem.",
+    chain: "Bitlayer",
+    logo: `${baseIconsUrl}/bitparty.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Bitlayer"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bitparty/index.js",
+    twitter: "BitPartyTech",
+    listedAt: 1716824854
+  },
 ]
 
 export default data3

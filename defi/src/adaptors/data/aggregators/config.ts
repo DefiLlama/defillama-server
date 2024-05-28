@@ -209,5 +209,9 @@ export default {
   "rubic": {
     "enabled": true,
     "id": "1282"
+  },
+  "eisen": {
+    "enabled": true,
+    "id": "4691"
   }
 } as AdaptorsConfig;

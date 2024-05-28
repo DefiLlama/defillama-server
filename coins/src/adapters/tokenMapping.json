@@ -654,6 +654,11 @@
     }
   },
   "scroll": {
+    "0xc4d46E8402F476F269c379677C99F18E22Ea030e": {
+      "decimals": "18",
+      "symbol": "PufETH",
+      "to": "coingecko#pufeth"
+    },
     "0xca77eb3fefe3725dc33bccb54edefc3d9f764f97": {
       "decimals": "18",
       "symbol": "DAI",

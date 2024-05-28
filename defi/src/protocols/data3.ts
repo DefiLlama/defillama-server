@@ -44365,6 +44365,27 @@ const data3: Protocol[] = [
     listedAt: 1716858329,
     github: ["HenjinDEX"]
   },
+  {
+    id: "4687",
+    name: "Hibt", 
+    address: null,
+    symbol: "-",
+    url: "https://hibt.com",
+    description: "Formerly HotsCoin. Hibt is a digital asset trading service platform registered in Canada in 2021. With a team of 200+ seasoned professionals in the field of digital assets and a deep understanding of core financial technologies, HIBT offers trading and investment services to over 3 million users worldwide. The platform supports both spot and derivative trading services, dedicated to discovering the brightest crypto gems for investors.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hibt.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Tron"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hibt/index.js",
+    twitter: "HIBTGlobal",
+    listedAt: 1716887492
+  },
 ]
 
 export default data3

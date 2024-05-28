@@ -2151,6 +2151,16 @@
     }
   },
   "blast": {
+    "0x1Da40C742F32bBEe81694051c0eE07485fC630f6": {
+      "decimals": "18",
+      "symbol": "DETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x1A3D9B2fa5c6522c8c071dC07125cE55dF90b253": {
+      "decimals": "18",
+      "symbol": "DUSD",
+      "to": "coingecko#usdb"
+    },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "ETH",

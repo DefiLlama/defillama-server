@@ -36,7 +36,7 @@ export async function kuma(timestamp: number): Promise<Write[]> {
   // KUMA tokens are redeemable for the bond NFT at any time, therefore their value can be assumed to be stable
   // the currently issued tokens in this list are all being held until the bond matures so there's no other way to price them
   const redirects: { [symbol: string]: string } = {
-    EGK: 'coingecko#eurc'
+    EGK: 'coingecko#euro-coin'
   }
 
   const writes: Write[] = [];

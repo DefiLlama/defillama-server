@@ -44465,7 +44465,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dex Aggregator",
+    category: "DEX Aggregator",
     chains: ["Blast","Mode","Scroll","Mantle"],
     oracles: [],
     forkedFrom: [],

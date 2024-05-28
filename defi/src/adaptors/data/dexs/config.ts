@@ -2771,5 +2771,9 @@ export default {
     "yfx-v4": {
         enabled: true,
         id: "4674"
+    },
+    "macaron-xyz": {
+        enabled: true,
+        id: "4590"
     }
 } as AdaptorsConfig

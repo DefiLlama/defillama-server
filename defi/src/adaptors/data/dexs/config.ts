@@ -2763,5 +2763,9 @@ export default {
         parentId: "Equation",
         enabled: true,
         id: "4586"
+    },
+    "Viridian": {
+        enabled: true,
+        id: "4631"
     }
 } as AdaptorsConfig

@@ -2775,5 +2775,9 @@ export default {
     "macaron-xyz": {
         enabled: true,
         id: "4590"
+    },
+    "ston": {
+        enabled: true,
+        id: "2337"
     }
 } as AdaptorsConfig

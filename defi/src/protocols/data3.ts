@@ -44475,6 +44475,27 @@ const data3: Protocol[] = [
     audit_links: ["https://books.eisenfinance.com/eisen-finance/developer-guide/security-and-audits"],
     listedAt: 1716911029
   },
+  {
+    id: "4692",
+    name: "Taiko", 
+    address: null,
+    symbol: "TKO",
+    url: "https://app.eisenfinance.com",
+    description: "A Based Contestable Rollup, Ethereum-equivalent ZK-EVM",
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/taiko.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Taiko"],
+    oracles: [],
+    forkedFrom: [],
+    module: "taiko-bridge/index.js",
+    twitter: "taikoxyz",
+    listedAt: 1716911519
+  },
 ]
 
 export default data3

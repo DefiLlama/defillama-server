@@ -44452,6 +44452,29 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Lorenzo-Protocol/lorenzo/blob/main/audit/Lorenzo%20Protocol%20-%20Zellic%20Audit%20Report.pdf"],
     listedAt: 1716889595
   },
+  {
+    id: "4691",
+    name: "EISEN Finance", 
+    address: null,
+    symbol: "-",
+    url: "https://app.eisenfinance.com",
+    description: "A Multichain DEX & CEX aggregator for Traders and Liquidity Providers",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/eisen-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dex Aggregator",
+    chains: ["Blast","Mode","Scroll","Mantle"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "EisenLabs",
+    github: ["EisenLabs"],
+    audit_links: ["https://books.eisenfinance.com/eisen-finance/developer-guide/security-and-audits"],
+    listedAt: 1716911029
+  },
 ]
 
 export default data3

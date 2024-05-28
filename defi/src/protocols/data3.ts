@@ -39269,7 +39269,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "CDP",
     chains: ["Blast"],
     module: "particle-trade-duo/index.js",
     forkedFrom: [],

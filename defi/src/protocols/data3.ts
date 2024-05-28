@@ -44429,6 +44429,7 @@ const data3: Protocol[] = [
     twitter: "RitsuProtocol",
     listedAt: 1716887968
   },
+  /*
   {
     id: "4690",
     name: "Lorenzo Protocol", 
@@ -44452,6 +44453,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Lorenzo-Protocol/lorenzo/blob/main/audit/Lorenzo%20Protocol%20-%20Zellic%20Audit%20Report.pdf"],
     listedAt: 1716889595
   },
+  */
 ]
 
 export default data3

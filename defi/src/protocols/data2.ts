@@ -28001,7 +28001,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["TON"],
     module: "dedust/index.js",
-    twitter: "ScaletonCo",
+    twitter: "dedust_io",
     oracles: [],
     listedAt: 1677700865
   },

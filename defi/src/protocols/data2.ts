@@ -14758,14 +14758,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2038",
-    name: "Helio Protocol",
+    name: "lisUSD", // rebrand from Helio Protocol (lisUSD) 
     address: "bsc:0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
-    symbol: "lisUSD",
+    symbol: "-",
     url: "https://helio.money/",
     description:
-      "Helio Protocol is an open-source liquidity protocol for borrowing and earning yield on HAY —a new BNB backed over-collateralized destablecoin. The protocol aims to position HAY as the leading decentralized destablecoin protocol in the BNB Chain ecosystem, by leveraging Proof-of- Stake (PoS) rewards, liquid staking and yield-bearing assets. Helio Protocol will operate as a DAO, where the community will govern the protocol’s treasury, revenue pool and future direction.",
+      "Lista DAO functions as a open-source liquidity protocol for earning yields on collateralized Crypto assets (BNB, ETH, Stablecoins, and other cryptocurrencies) and borrowing of our decentralized stablecoin, lisUSD. It uses and expands the proven MakerDAO model for a decentralized, unbiased, collateral-backed destablecoin",
     chain: "Binance",
-    logo: `${baseIconsUrl}/helio-protocol.png`,
+    logo: `${baseIconsUrl}/lisusd.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "helio-protocol-hay",

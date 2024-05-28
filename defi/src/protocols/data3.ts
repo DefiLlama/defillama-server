@@ -44429,6 +44429,29 @@ const data3: Protocol[] = [
     twitter: "RitsuProtocol",
     listedAt: 1716887968
   },
+  {
+    id: "4690",
+    name: "Lorenzo Protocol", 
+    address: null,
+    symbol: "-",
+    url: "https://www.lorenzo-protocol.xyz",
+    description: "Lorenzo is the Bitcoin Liquidity Finance Layer, creates an efficient market in which Bitcoin holders can easily find the best opportunities to invest their unused Bitcoin liquidity and serves as the premier DeFi ecosystem in which to finance Bitcoin restaking tokens.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/lorenzo-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "lorenzo/index.js",
+    twitter: "LorenzoProtocol",
+    github: ["Lorenzo-Protocol"],
+    audit_links: ["https://github.com/Lorenzo-Protocol/lorenzo/blob/main/audit/Lorenzo%20Protocol%20-%20Zellic%20Audit%20Report.pdf"],
+    listedAt: 1716889595
+  },
 ]
 
 export default data3

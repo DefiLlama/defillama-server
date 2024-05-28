@@ -2148,5 +2148,9 @@ export default {
     "Viridian": {
         enabled: true,
         id: "4631"
+    },
+    "yfx-v4": {
+        enabled: true,
+        id: "4674"
     }
 } as AdaptorsConfig

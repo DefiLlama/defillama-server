@@ -44342,6 +44342,29 @@ const data3: Protocol[] = [
     twitter: "BitPartyTech",
     listedAt: 1716824854
   },
+  {
+    id: "4686",
+    name: "Henjin DEX", 
+    address: null,
+    symbol: "-",
+    url: "https://henjin.xyz/",
+    description: "An innovative and highly flexible v4 DEX built to support the Taiko ecosystem. Community driven plugins (hooks) and capital efficient automatic liquidity management (ALM).",
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/henjin-dex.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Taiko"],
+    oracles: [],
+    forkedFrom: ["Algebra DEX"],
+    module: "henjin/index.js",
+    twitter: "henjinDEX",
+    audit_links: ["https://github.com/bailsec/BailSec/blob/main/Bailsec%20-%20Algebra%20Integral%20-%20Update%20Audit%20(differential)%20Final%20Report%20Github%20(%2BResolution).pdf"],
+    listedAt: 1716858329,
+    github: ["HenjinDEX"]
+  },
 ]
 
 export default data3

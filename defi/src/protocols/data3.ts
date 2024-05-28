@@ -31369,6 +31369,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/anzen-finance.jpg`,
     audits: "3",
     audit_note: null,
+    audit_links: ["https://docs.blueberry.garden/security/audits"],
     gecko_id: null,
     cmcId: null,
     category: "RWA",

@@ -2156,5 +2156,9 @@ export default {
     "basecamp": {
         enabled: true,
         id: "4693"
+    },
+    "blocxroute": {
+        enabled: true,
+        id: "4695"
     }
 } as AdaptorsConfig

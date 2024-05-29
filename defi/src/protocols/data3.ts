@@ -44538,6 +44538,28 @@ const data3: Protocol[] = [
     twitter: "BlueLotusGSYS",
     listedAt: 1717003489
   },
+  {
+    id: "4695",
+    name: "bloXroute", 
+    address: null,
+    symbol: "-",
+    url: "https://bloxroute.com/",
+    description: "DeFi trading strategies platform",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/bloxroute.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "bloXrouteLabs",
+    github: ["bloXroute-Labs"],
+    listedAt: 1717005067
+  },
 ]
 
 export default data3

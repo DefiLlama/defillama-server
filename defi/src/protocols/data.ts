@@ -11232,7 +11232,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "The Reserve Protocol is a platform which enables anyone to create yield-bearing, decentralized, and asset-backed currencies (RTokens). RTokens provide an alternative to inflation-prone currencies, empowering people to maintain their purchasing power over time and across borders",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/reserve.jpg`,
+    logo: `${baseIconsUrl}/reserve.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "reserve-rights-token",

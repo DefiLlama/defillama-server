@@ -44517,6 +44517,27 @@ const data3: Protocol[] = [
     twitter: "basecampwtf",
     listedAt: 1716990287
   },
+  {
+    id: "4694",
+    name: "BlueLotusDao DEX", 
+    address: "0xb4A3F9D3cEce2c298e9b73113f7B6C2B9f9d61fF",
+    symbol: "BLDT",
+    url: "https://bluelotusdao.org/?chain=gsys",
+    description: "BlueLotusDao part of Genesys Network Ecosystem, earn BLDT through farming, staking or lottery, swap your tokens with security and confidence",
+    chain: "Genesys",
+    logo: `${baseIconsUrl}/bluelotusdao-dex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Genesys"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bluelotusdao/index.js",
+    twitter: "BlueLotusGSYS",
+    listedAt: 1717003489
+  },
 ]
 
 export default data3

@@ -3012,6 +3012,16 @@ export const chainCoingeckoIds = {
     url: "https://taiko.xyz",
     chainId: 167000
   },
+  "Genesys": {
+    geckoId: "genesys",
+    symbol: "GSYS",
+    cmcId: "27940",
+    categories: ["EVM"],
+    twitter: "GenesysChain",
+    url: "https://genesys.network/",
+    github: ["GENESYSBLOCKCHAIN"],
+    chainId: 16507
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3654,6 +3664,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
         return "re.al"
     case "taiko":
         return "Taiko"
+    case "genesys":
+      return "Genesys"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

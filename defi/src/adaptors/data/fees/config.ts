@@ -2152,5 +2152,9 @@ export default {
     "yfx-v4": {
         enabled: true,
         id: "4674"
+    },
+    "basecamp": {
+        enabled: true,
+        id: "4693"
     }
 } as AdaptorsConfig

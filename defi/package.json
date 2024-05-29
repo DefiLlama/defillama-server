@@ -85,6 +85,7 @@
     "@defillama/dimension-adapters": "file:./dimension-adapters",
     "@defillama/emissions-adapters": "file:./emissions-adapters",
     "@defillama/sdk": "^5.0.50",
+    "@elastic/elasticsearch": "^8.13.1",
     "@supercharge/promise-pool": "^2.3.2",
     "@types/async-retry": "^1.4.8",
     "@types/aws-lambda": "^8.10.97",

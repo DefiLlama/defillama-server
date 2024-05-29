@@ -12,6 +12,8 @@ import { IJSON, ProtocolAdaptor, } from "../../data/types";
 import { PromisePool } from '@supercharge/promise-pool'
 import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
 import { storeAdapterRecord } from "../../db-utils/db2";
+import { addRuntimeLog, addErrorLog } from '../../../utils/elasticsearch';
+import { getUnixTimeNow } from "../../../api2/utils/time";
 
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
@@ -82,8 +84,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   await Promise.all(
     allChains.map(async (chain) => {
       try {
-        const latestBlock = await getBlock(toTimestamp, chain, {}).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
-      } catch (e) { console.log(e) }
+        await getBlock(toTimestamp, chain, {}).catch((e: any) => console.error(`${e.message}; ${toTimestamp}, ${chain}`))
+      } catch (e) { console.log('error fetching block, chain:', chain, (e as any)?.message) }
     })
   );
 
@@ -122,8 +124,18 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
   async function runAndStoreProtocol(protocol: ProtocolAdaptor, index: number) {
     console.info(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module}`)
+    const startTime = getUnixTimeNow()
+    const metadata = {
+      application: "dimensions",
+      isProtocol: true,
+      protocol: protocol.module,
+      category: adapterType,
+    }
+
+    let success = true
+    let errorObject: any
     // Get adapter info
-    let { id, module, versionKey } = protocol;
+    let { id, module, } = protocol;
     // console.info(`Adapter found ${id} ${module} ${versionKey}`)
 
     try {
@@ -183,7 +195,16 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     }
     catch (error) {
       try { (error as any).module = module } catch (e) { }
-      throw error
+      success = false
+      errorObject = error
+    }
+
+    const endTime = getUnixTimeNow()
+    await addRuntimeLog({ runtime: endTime - startTime, success, metadata, })
+
+    if (errorObject) {
+      await addErrorLog({ error: errorObject, metadata })
+      throw errorObject
     }
   }
 };

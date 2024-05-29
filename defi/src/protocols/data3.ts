@@ -44574,7 +44574,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Restaking",
-    chains: ["Merlin","Binance","Bitlayer","BounceBit"],
+    chains: ["Merlin"],
     oracles: [],
     forkedFrom: [],
     module: "pell/index.js",

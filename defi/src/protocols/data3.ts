@@ -44560,6 +44560,27 @@ const data3: Protocol[] = [
     github: ["bloXroute-Labs"],
     listedAt: 1717005067
   },
+  {
+    id: "4696",
+    name: "Pell Network", 
+    address: null,
+    symbol: "-",
+    url: "https://pell.network/",
+    description: "Pell uses BTC and its LSD to provide actively validated services (AVS) to BTC ecosystem projects, plug the gap in ecosystem security, reduce cost to develop ecosystem applications and optimise yield avenue for BTC holders. Pell aims to become the largest shared liquidity and cryptonomic security layer in the BTC ecosystem across market cycles",
+    chain: "Merlin",
+    logo: `${baseIconsUrl}/pell-network.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Merlin","Binance","Bitlayer","BounceBit"],
+    oracles: [],
+    forkedFrom: [],
+    module: "pell/index.js",
+    twitter: "Pell_Network",
+    listedAt: 1717010539
+  },
 ]
 
 export default data3

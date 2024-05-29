@@ -39111,7 +39111,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Launchpad",
     chains: ["Solana"],
     module: "dummy.js",
     forkedFrom: [],
@@ -44495,6 +44495,27 @@ const data3: Protocol[] = [
     module: "taiko-bridge/index.js",
     twitter: "taikoxyz",
     listedAt: 1716911519
+  },
+  {
+    id: "4693",
+    name: "Basecamp", 
+    address: null,
+    symbol: "-",
+    url: "https://basecamp.wtf/",
+    description: "Launch a coin on Base for under 10$ and earn trading fees",
+    chain: "Base",
+    logo: `${baseIconsUrl}/basecamp.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "basecampwtf",
+    listedAt: 1716990287
   },
 ]
 

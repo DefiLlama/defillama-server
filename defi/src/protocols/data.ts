@@ -17848,30 +17848,28 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "944",
-    name: "Platypus Finance",
-    address: "avax:0x22d4002028f537599be9f666d1c4fa138522f9c8",
-    symbol: "PTP",
-    url: "https://platypus.finance",
+    name: "Stable Jack", // previous Platypus Finance adquire https://x.com/Platypusdefi/status/1795141448393756679
+    address: null,
+    symbol: "-",
+    url: "https://www.stablejack.xyz",
     description:
-      "Platypus combined stableswap and stablecoin, masterfully utilizing its underlying assets to bring next-level capital efficiency.",
+      "(Previous Platypus) now Stable Jack is a stablecoin hub on Avalanche that offers a new yield-bearing stablecoin built on LST collateral, a volatile AVAX token, and a stableswap that allows single-sided LP’ing and eliminates IL. ",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/platypus.png`,
+    logo: `${baseIconsUrl}/stable-jack.jpg`, //stable-jack.jpg
     audits: "2",
     audit_note: null,
-    gecko_id: "platypus-finance",
-    cmcId: "16231",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Avalanche"],
     module: "platypus-finance/index.js",
-    twitter: "Platypusdefi",
+    twitter: "StableJack_xyz",
     audit_links: [
-      "https://omniscia.io/platypus-finance-core-implementation/",
-      "https://hacken.io/audits/#platypus_finance",
-      "https://omniscia.io/platypus-finance-governance-staking/",
+      "https://github.com/SupremacyTeam/publications/blob/main/Supremacy-Audit-Report-PlatypusFinance-v1.0.pdf",
     ],
     listedAt: 1638299790,
-    stablecoins: ["usp-stablecoin"],
-    github: ["platypus-finance"]
+ // stablecoins: ["usp-stablecoin"],
+    github: ["stable-jack"]
   },
   {
     id: "945",

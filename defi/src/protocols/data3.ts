@@ -44478,7 +44478,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4692",
-    name: "Taiko", 
+    name: "Taiko Bridge", 
     address: null,
     symbol: "TKO",
     url: "https://app.eisenfinance.com",

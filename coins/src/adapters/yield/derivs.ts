@@ -8,6 +8,8 @@ type Config = {
   address: string;
   underlying: string;
   underlyingChain?: string;
+  symbol?: string;
+  decimals?: string;
 };
 
 const configs: { [adapter: string]: Config } = {
@@ -51,6 +53,8 @@ const configs: { [adapter: string]: Config } = {
     address: "0x35751007a407ca6feffe80b3cb397736d2cf4dbe",
     underlying: "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
     underlyingChain: "ethereum",
+    symbol: 'weETH', 
+    decimals: '18'
   },
   wstmtrg: {
     rate: async ({ api }) => {
@@ -70,6 +74,8 @@ const configs: { [adapter: string]: Config } = {
     address: "0xe2de616fbd8cb9180b26fcfb1b761a232fe56717",
     underlying: "0xbd2949f67dcdc549c6ebe98696449fa79d988a9f",
     underlyingChain: "bsc",
+    symbol: 'wstMTRG', 
+    decimals: '18'
   },
   neth: {
     rate: async ({ api }) => {
@@ -118,12 +124,14 @@ export async function derivs(timestamp: number) {
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {
-  const { chain, underlying, address, underlyingChain } = config;
+  const { chain, underlying, address, underlyingChain, symbol, decimals } = config;
   const api = await getApi(chain, timestamp, true);
   const pricesObject: any = {
     [address]: {
       underlying,
       price: await config.rate({ api, timestamp }),
+      symbol, 
+      decimals
     },
   };
 

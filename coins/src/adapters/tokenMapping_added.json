@@ -2451,6 +2451,11 @@
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    },
+    "0x57E3BB9F790185Cfe70Cc2C15Ed5d6B84dCf4aDb": {
+      "decimals": "18",
+      "symbol": "wpFIL",
+      "to": "coingecko#filecoin"
     }
   },
   "arbitrum": {

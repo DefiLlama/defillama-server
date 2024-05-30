@@ -44111,7 +44111,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://rollspace.com",
     description:
-      "Rollspace is crypto gamefi project, where you can play and earn with games, sports. Just by connecting your web3 wallet and you can start playing games and try your luck and get rewards.",
+      "Rollspace is crypto gamefi project, where you can  play against other players in PvP mode. Beat them and earn their crypto stash.",
     chain: "Binance",
     logo: `${baseIconsUrl}/rollspace.jpg`,
     audits: "0",

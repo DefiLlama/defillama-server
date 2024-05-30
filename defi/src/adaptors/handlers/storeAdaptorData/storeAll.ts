@@ -12,7 +12,7 @@ async function run() {
 
   await Promise.all(ADAPTER_TYPES.map(async (adapterType) => {
     const startTimeCategory = getUnixTimeNow()
-    if (adapterType !== AdapterType.OPTIONS) return;
+    // if (adapterType !== AdapterType.OPTIONS) return;
     const key = "**** Run Adaptor type: " + adapterType
     console.time(key)
     let success = false
@@ -40,8 +40,8 @@ async function run() {
       success,
       metadata: {
         application: "dimensions",
-        type: 'category',
-        name: adapterType,
+        isCategory: true,
+        category: adapterType,
       }
     })
 

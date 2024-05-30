@@ -44545,7 +44545,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://bloxroute.com/",
-    description: "DeFi trading strategies platform",
+    description: "MEV layer",
     chain: "Solana",
     logo: `${baseIconsUrl}/bloxroute.png`,
     audits: "0",

@@ -12,7 +12,7 @@ import { IJSON, ProtocolAdaptor, } from "../../data/types";
 import { PromisePool } from '@supercharge/promise-pool'
 import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
 import { storeAdapterRecord } from "../../db-utils/db2";
-import { addRuntimeLog, addErrorLog } from '../../../utils/elasticsearch';
+import { elastic } from '@defillama/sdk';
 import { getUnixTimeNow } from "../../../api2/utils/time";
 
 
@@ -127,9 +127,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     const startTime = getUnixTimeNow()
     const metadata = {
       application: "dimensions",
-      isProtocol: true,
-      protocol: protocol.module,
-      category: adapterType,
+      type: 'protocol',
+      name: protocol.module,
+      subType: adapterType,
     }
 
     let success = true
@@ -200,10 +200,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     }
 
     const endTime = getUnixTimeNow()
-    await addRuntimeLog({ runtime: endTime - startTime, success, metadata, })
+    await elastic.addRuntimeLog({ runtime: endTime - startTime, success, metadata, })
 
     if (errorObject) {
-      await addErrorLog({ error: errorObject, metadata })
+      await elastic.addErrorLog({ error: errorObject, metadata })
       throw errorObject
     }
   }

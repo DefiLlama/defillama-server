@@ -2,8 +2,9 @@ import '../../../api2/utils/failOnError'
 
 import { handler2 } from ".";
 import { ADAPTER_TYPES } from "../triggerStoreAdaptorData";
+import { AdapterType } from '@defillama/dimension-adapters/adapters/types';
 import { getUnixTimeNow } from '../../../api2/utils/time';
-import { addRuntimeLog, addErrorLog } from '../../../utils/elasticsearch';
+import { elastic } from '@defillama/sdk';
 
 async function run() {
   const startTimeAll = getUnixTimeNow()
@@ -11,6 +12,7 @@ async function run() {
 
   await Promise.all(ADAPTER_TYPES.map(async (adapterType) => {
     const startTimeCategory = getUnixTimeNow()
+    if (adapterType !== AdapterType.OPTIONS) return;
     const key = "**** Run Adaptor type: " + adapterType
     console.time(key)
     let success = false
@@ -21,25 +23,25 @@ async function run() {
 
     } catch (e) {
       console.error("error", e)
-      await addErrorLog({
+      await elastic.addErrorLog({
         error: e as any,
         metadata: {
           application: "dimensions",
-          isCategory: true,
-          category: adapterType,
+          type: 'category',
+          name: adapterType,
         }
       })
     }
 
     console.timeEnd(key)
     const endTimeCategory = getUnixTimeNow()
-    await addRuntimeLog({
+    await elastic.addRuntimeLog({
       runtime: endTimeCategory - startTimeCategory,
       success,
       metadata: {
         application: "dimensions",
-        isCategory: true,
-        category: adapterType,
+        type: 'category',
+        name: adapterType,
       }
     })
 
@@ -47,12 +49,13 @@ async function run() {
 
   console.timeEnd("**** Run All Adaptor types")
   const endTimeAll = getUnixTimeNow()
-  await addRuntimeLog({
+  await elastic.addRuntimeLog({
     runtime: endTimeAll - startTimeAll,
     success: true,
     metadata: {
       application: "dimensions",
-      isApplication: true,
+      type: 'all',
+      name: 'all',
     }
   })
 }

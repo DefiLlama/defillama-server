@@ -33068,7 +33068,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Chain",
     chains: ["Manta Atlantic"],
     module: "manta-atlantic-stake/index.js",
     twitter: "MantaNetwork",

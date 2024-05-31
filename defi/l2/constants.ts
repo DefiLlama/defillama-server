@@ -30,11 +30,11 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "412": "thorchain",
   "3782": "mantle",
   "3777": "arbitrum",
-  "3778": "nova", 
+  "3778": "nova",
   "3780": "base",
   "3781": "linea",
   "3784": "optimism",
-  "3785": "polygon_zkevm", 
+  "3785": "polygon_zkevm",
   "3786": "scroll",
   "3787": "starknet",
   "3788": "era",
@@ -65,6 +65,8 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   // "3866": "near",
   "4439": "pulsechain",
   "4438": "degen",
+  "4690": "lorenzo",
+  "4692": "taiko",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

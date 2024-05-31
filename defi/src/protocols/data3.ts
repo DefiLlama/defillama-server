@@ -44628,7 +44628,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4699",
-    name: "Polkadex Trade", 
+    name: "Polkadex",
     address: null,
     symbol: "-",
     url: "https://polkadex.trade",
@@ -44639,7 +44639,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Dexes",
     chains: ["Polkadex"],
     oracles: [],
     forkedFrom: [],

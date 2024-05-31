@@ -24341,7 +24341,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://unlockd.finance",
     description:
-      "Unlockd is the only permissionless protocol for Real World Assets liquidity that provides fair and secure instant loans powered by AI, requiring only a wallet.",
+      "Earn yield and borrow against your NFTs with the safest loans on the market",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/unlockd.png`,
     audits: "0",
@@ -24351,7 +24351,7 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     module: "unlockd/index.js",
-    twitter: "Unlockd_Finance",
+    twitter: "Unlockd_Finance", 
     oracles: [],
     forkedFrom: [],
     parentProtocol: "parent#unlockd",

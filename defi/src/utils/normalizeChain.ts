@@ -3027,7 +3027,7 @@ export const chainCoingeckoIds = {
     github: ['Polkadex-Substrate'],
     symbol: "PDEX",
     cmcId: "9017",
-    categories: ["EVM", "Parachain"],
+    categories: ["Parachain"],
     parent: {
       chain: "Polkadot",
       types: ["parachain"]

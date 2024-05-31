@@ -3022,6 +3022,17 @@ export const chainCoingeckoIds = {
     github: ["GENESYSBLOCKCHAIN"],
     chainId: 16507
   },
+  "Polkadex": {
+    geckoId: "polkadex",
+    github: ['Polkadex-Substrate'],
+    symbol: "PDEX",
+    cmcId: "9017",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3668,6 +3679,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Genesys"
     case "kava":
       return "Kava"
+    case "polkadex":
+      return "Polkadex"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

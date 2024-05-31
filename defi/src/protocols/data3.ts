@@ -44626,6 +44626,28 @@ const data3: Protocol[] = [
     twitter: "asksensay",
     listedAt: 1717098912
   },
+  {
+    id: "4699",
+    name: "Polkadex Trade", 
+    address: null,
+    symbol: "-",
+    url: "https://polkadex.trade",
+    description: "Polkadex is a fully non-custodial peer-to-peer orderbook-based cryptocurrency exchange for the DeFi ecosystem built on Substrate.",
+    chain: "Polkadex",
+    logo: `${baseIconsUrl}/polkadex-trade.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Polkadex"],
+    oracles: [],
+    forkedFrom: [],
+    module: "polkadex/index.js",
+    twitter: "polkadex",
+    listedAt: 1717152505
+  },
+
 ]
 
 export default data3

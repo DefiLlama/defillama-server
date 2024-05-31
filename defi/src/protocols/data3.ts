@@ -28408,7 +28408,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/agus.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "agus",
     cmcId: null,
     category: "Dexes",
     chains: ["CORE", "Binance"],

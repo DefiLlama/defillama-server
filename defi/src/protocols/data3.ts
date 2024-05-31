@@ -44647,7 +44647,27 @@ const data3: Protocol[] = [
     twitter: "polkadex",
     listedAt: 1717152505
   },
-
+  {
+    id: "4700",
+    name: "HashKey Exchange", 
+    address: null,
+    symbol: "-",
+    url: "https://www.hashkey.com",
+    description: "We are committed to providing users with a high quality and safe trading experience coupled with efficient customer service.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hashkey-exchange.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum", "Polygon", "Optimism", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hashkey/index.js",
+    twitter: "HashKeyExchange",
+    listedAt: 1717154429
+  },
 ]
 
 export default data3

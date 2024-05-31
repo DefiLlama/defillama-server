@@ -44634,7 +44634,7 @@ const data3: Protocol[] = [
     url: "https://polkadex.trade",
     description: "Polkadex is a fully non-custodial peer-to-peer orderbook-based cryptocurrency exchange for the DeFi ecosystem built on Substrate.",
     chain: "Polkadex",
-    logo: `${baseIconsUrl}/polkadex-trade.jpg`,
+    logo: `${baseIconsUrl}/polkadex.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

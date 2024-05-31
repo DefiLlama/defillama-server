@@ -2654,6 +2654,11 @@
       "decimals": "8",
       "symbol": "BTC.b",
       "to": "coingecko#bitcoin"
+    },
+    "0xe6e5f3d264117e030c21920356641dbd5b3d660c": { 
+      "decimals": "6",
+      "symbol": "syUSDC",
+      "to": "coingecko#usd-coin"
     }
   },
   "solana": {

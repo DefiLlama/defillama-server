@@ -44668,6 +44668,28 @@ const data3: Protocol[] = [
     twitter: "HashKeyExchange",
     listedAt: 1717154429
   },
+  {
+    id: "4701",
+    name: "Awaken Swap", 
+    address: null,
+    symbol: "-",
+    url: "https://www.awaken.finance",
+    description: "AwakenSwap is a decentralized exchange (DEX) based on the Automated Market Maker (AMM) algorithm. Thriving on aelf chain, AwakenSwap supports swapping between two arbitrary tokens.",
+    chain: "aelf",
+    logo: `${baseIconsUrl}/awaken-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["aelf"],
+    oracles: [],
+    forkedFrom: [],
+    module: "awaken/index.js",
+    twitter: null,
+    github: ["Awaken-Finance"],
+    listedAt: 1717168417
+  },
 ]
 
 export default data3

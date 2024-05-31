@@ -8745,6 +8745,11 @@
       "decimals": "8",
       "symbol": "WBTC",
       "to": "coingecko#wrapped-bitcoin"
+    },
+    "0x3894085ef7ff0f0aedf52e2a2704928d1ec074f1": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
     }
   },
   "archway": {

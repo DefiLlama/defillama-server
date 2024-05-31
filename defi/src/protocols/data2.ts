@@ -24341,7 +24341,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://unlockd.finance",
     description:
-      "Earn yield and borrow against your NFTs with the safest loans on the market",
+      "Unlockd is the only permissionless protocol for Real World Assets liquidity that provides fair and secure instant loans powered by AI, requiring only a wallet.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/unlockd.png`,
     audits: "0",

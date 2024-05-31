@@ -3033,6 +3033,14 @@ export const chainCoingeckoIds = {
       types: ["parachain"]
     },
   },
+  "aelf": {
+    geckoId: "aelf",
+    symbol: "ELF",
+    cmcId: "2299",
+    twitter: "aelfblockchain",
+    url: "https://aelf.com/",
+    github: ["aelfProject"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3681,6 +3689,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Kava"
     case "polkadex":
       return "Polkadex"
+    case "aelf":
+      return "aelf"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

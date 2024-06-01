@@ -44690,6 +44690,27 @@ const data3: Protocol[] = [
     github: ["Awaken-Finance"],
     listedAt: 1717168417
   },
+  {
+    id: "4702",
+    name: "Immutable zkEVM",
+    address: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
+    symbol: "IMX",
+    url: "https://www.immutable.com/products/immutable-zkevm/",
+    description: "Immutable zkEVM is a chain for games that offers EVM compatibility, low cost, massive scale, and Ethereum security. Cutting-edge technology in gaming with a largest ecosystem in web3",
+    chain: "Immutable zkEVM",
+    logo: `${baseIconsUrl}/immutable-zkevm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Immutable zkEVM"],
+    module: "immutable-zkevm/index.js",
+    twitter: "Immutable",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717202177
+  },
 ]
 
 export default data3

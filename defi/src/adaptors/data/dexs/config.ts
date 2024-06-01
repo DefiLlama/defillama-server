@@ -2609,6 +2609,7 @@ export default {
         id: "4366"
     },
     "keller": {
+        parentId: "Keller Finance",
         enabled: true,
         id: "4388"
     },
@@ -2779,5 +2780,10 @@ export default {
     "ston": {
         enabled: true,
         id: "2337"
+    },
+    "keller-cl": {
+        parentId: "Keller Finance",
+        enabled: true,
+        id: "4583"
     }
 } as AdaptorsConfig

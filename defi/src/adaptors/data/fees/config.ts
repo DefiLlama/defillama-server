@@ -2160,5 +2160,15 @@ export default {
     "blocxroute": {
         enabled: true,
         id: "4695"
+    },
+    "drift-protocol": {
+        "enabled": true,
+        "id": "970",
+        "protocolsData": {
+            "derivatives": {
+                "id": "970",
+                "enabled": true,
+            }
+        },
     }
 } as AdaptorsConfig

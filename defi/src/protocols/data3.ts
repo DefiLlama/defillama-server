@@ -44686,7 +44686,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "awaken/index.js",
-    twitter: null,
+    twitter: "AwakenSwap",
     github: ["Awaken-Finance"],
     listedAt: 1717168417
   },

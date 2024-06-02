@@ -44711,6 +44711,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1717202177
   },
+  {
+    id: "4703",
+    name: "Basin Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://basin.exchange",
+    description: "A Composable EVM-Native Decentralized Exchange Protocol.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/basin-exchange.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    module: "basin/index.js",
+    twitter: "basinexchange",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://basin.exchange/halborn-basin-audit.pdf, https://basin.exchange/cyfrin-basin-audit.pdf"],
+    listedAt: 1717320411
+  },
 ]
 
 export default data3

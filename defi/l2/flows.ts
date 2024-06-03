@@ -1,5 +1,5 @@
 import BigNumber from "bignumber.js";
-import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, zero } from "./constants";
+import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, zero, protocolBridgeIds } from "./constants";
 import fetchStoredTvls from "./outgoing";
 import { AllProtocols, ChainTokens } from "./types";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
@@ -37,8 +37,8 @@ function tokenDiffs(
       if (!(chain in tokenDiff)) tokenDiff[chain] = {};
       if (!(chain in prices)) prices[chain] = {};
 
-      if (bridgeId in canonicalBridgeIds) {
-        const destinationChain = canonicalBridgeIds[bridgeId];
+      if (bridgeId in canonicalBridgeIds || bridgeId in protocolBridgeIds) {
+        const destinationChain = canonicalBridgeIds[bridgeId] ?? protocolBridgeIds[bridgeId];
         if (!(destinationChain in tokenDiff)) tokenDiff[destinationChain] = {};
         if (!(destinationChain in prices)) prices[destinationChain] = {};
       }

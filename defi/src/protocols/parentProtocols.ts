@@ -2243,10 +2243,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#rehold",
-    name: "ReHold Multichain Trading",
+    name: "ReHold",
     url: "https://rehold.io",
-    description: "Trade, Earn, Swap across Bitcoin and EVM.",
-    logo: `${baseIconsUrl}/rehold-multichain-trading.jpg`, //rehold-multichain-trading
+    description: "Multichain Trading Protocol. Trade, Earn, Swap across Bitcoin and EVM.",
+    logo: `${baseIconsUrl}/rehold.jpg`, //rehold-multichain-trading
     gecko_id: null,
     cmcId: null,
     chains: [],

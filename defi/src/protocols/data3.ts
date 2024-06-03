@@ -12382,7 +12382,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://rehold.io",
-    description: "AI-powered financial ecosystem on Bitcoin to buy, swap, earn, or trade your crypto with up to 100x leverage",
+    description: "Multichain Trading Protocol. Trade, Earn, Swap across Bitcoin and EVM.",
     chain: "Binance",
     logo: `${baseIconsUrl}/rehold-v2.jpg`,
     audits: "2",

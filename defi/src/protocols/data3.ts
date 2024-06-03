@@ -44733,6 +44733,27 @@ const data3: Protocol[] = [
     audit_links: ["https://basin.exchange/halborn-basin-audit.pdf, https://basin.exchange/cyfrin-basin-audit.pdf"],
     listedAt: 1717320411
   },
+  {
+    id: "4704",
+    name: "uDEX",
+    address: null,
+    symbol: "-",
+    url: "https://udex.one/home",
+    description: "One Dex to Rule Them All: uDEX - Fast, Fluid, & Foolproof. Tailored for the modern trader, uDEX offers a seamless, intuitive, and reliable trading experience.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/udex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum", "Binance", "Polygon"],
+    module: "dummy.js",
+    twitter: "uDEX_one",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717406301
+  },
 ]
 
 export default data3

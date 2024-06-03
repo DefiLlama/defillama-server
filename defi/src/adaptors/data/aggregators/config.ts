@@ -213,5 +213,9 @@ export default {
   "eisen": {
     "enabled": true,
     "id": "4691"
+  },
+  "udex-agg": {
+    "enabled": true,
+    "id": "4704"
   }
 } as AdaptorsConfig;

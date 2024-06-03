@@ -44649,13 +44649,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4700",
-    name: "HashKey Exchange", 
+    name: "HashKey Global", // previous HashKey Exchange
     address: null,
     symbol: "-",
     url: "https://www.hashkey.com",
     description: "We are committed to providing users with a high quality and safe trading experience coupled with efficient customer service.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/hashkey-exchange.jpg`,
+    logo: `${baseIconsUrl}/hashkey-global.jpg`,  //hashkey-global.jpg
     audits: "2",
     audit_note: null,
     gecko_id: null,

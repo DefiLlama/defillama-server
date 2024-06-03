@@ -44754,6 +44754,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1717406301
   },
+  {
+    id: "4705",
+    name: "Cellula",
+    address: null,
+    symbol: "-",
+    url: "https://www.cellula.life",
+    description: "Cellula, a fully on-chain AI game that offers users the ability to create, compose and evolve their digital life. Its unique Virtual Proof of Work (vPOW) asset distribution method provides an innovative incentive layer for games within the Cellula ecosystem.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/cellula.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Binance"],
+    module: "dummy.js",
+    twitter: "cellulalifegame",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717422622
+  },
 ]
 
 export default data3

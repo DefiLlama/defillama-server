@@ -2180,5 +2180,9 @@ export default {
     "colony": {
         enabled: true,
         id: "1004"
+    },
+    "cellula": {
+        enabled: true,
+        id: "4705"
     }
 } as AdaptorsConfig

@@ -44775,6 +44775,49 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1717422622
   },
+  {
+    id: "4706",
+    name: "Dunes",
+    address: null,
+    symbol: "-",
+    url: "https://dunes.fi/",
+    description: "dETH is a Liquid Restaking Token (LRT) issued by Dunes.fi designed to provide liquidity for otherwise illiquid assets deposited into restaking platforms, such as Karak Network. It aims to maximize capital efficiency and mitigate the risks and challenges inherent in the restaking ecosystem",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/dunes.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum"],
+    module: "dunes/index.js",
+    twitter: "DunesFi",
+    forkedFrom: [],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10466
+    listedAt: 1717427407
+  },
+  {
+    id: "4707",
+    name: "TYMIO",
+    address: null,
+    symbol: "-",
+    url: "https://tymio.com/",
+    description: "Earn passive income on your ETH, WBTC or USDC by setting time-limit orders with yield",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tymio.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum","Arbitrum"],
+    module: "tymio/index.js",
+    twitter: "TYMIOapp",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/pessimistic-io/audits/blob/f2c817cecb35ecd831f5cc73aa99c58b484c0d13/TYMIO%20Security%20Analysis%20by%20Pessimistic.pdf"],
+    listedAt: 1717427581
+  },
 ]
 
 export default data3

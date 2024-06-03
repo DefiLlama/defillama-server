@@ -105,7 +105,7 @@ const handler = async (
 ): Promise<IResponse> => {
   const { chain, timestamp: timestampRaw } = event.pathParameters!
   const provider = getExtraProvider(chain)
-  if (provider === undefined || chain === undefined) {
+  if (provider === undefined || chain === undefined  || provider == null) {
     return errorResponse({
       message: "We don't support the blockchain we provided, make sure to spell it correctly"
     })

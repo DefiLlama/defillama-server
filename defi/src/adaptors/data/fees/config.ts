@@ -2176,5 +2176,9 @@ export default {
         parentId: "Keller Finance",
         enabled: true,
         id: "4583"
+    },
+    "colony": {
+        enabled: true,
+        id: "1004"
     }
 } as AdaptorsConfig

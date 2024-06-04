@@ -13954,8 +13954,8 @@ const data3: Protocol[] = [
   {
     id: "3323",
     name: "NAVI Lending",
-    address: null,
-    symbol: "-",
+    address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
+    symbol: "NAVX",
     url: "https://www.naviprotocol.io/",
     description: "NAVI offers over collateralized lending/borrowing for SUI, USDC, USDT, wETH and wBTC and supports features like isolated pool, flash loan and soon to come crosschain lending/borrowing.",
     chain: "Sui",
@@ -22649,8 +22649,8 @@ const data3: Protocol[] = [
   {
     id: "3711",
     name: "Volo",
-    address: null,
-    symbol: "-",
+    address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
+    symbol: "NAVX", // parentProtocol governance token
     assetToken: "vSUI",
     url: "https://www.volo.fi/",
     description: "Volo is a decentralized liquid staking platform dedicated to offering vSUI as a fully decentralized LST for SUI and supporting the ecosystem's growth with LSDFi yield strategies",

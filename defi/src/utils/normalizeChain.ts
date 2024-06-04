@@ -3051,6 +3051,15 @@ export const chainCoingeckoIds = {
     github: ["lukso-network"],
     chainId: 42
   },
+  "Joltify": {
+    geckoId: "joltify",
+    symbol: "JOLT",
+    cmcId: "19855",
+    categories: ["EVM","Cosmos"],
+    twitter: "joltify_finance",
+    url: "https://joltify.io/",
+    github: ["joltify-finance"]
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3703,6 +3712,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "aelf"
     case "lukso":
       return "Lukso"
+    case "joltify":
+      return "Joltify"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

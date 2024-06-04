@@ -2814,6 +2814,11 @@
       "decimals": "18",
       "symbol": "BLUES",
       "to": "coingecko#blueshift"
+    },
+    "0xba20a5e63eeefffa6fd365e7e540628f8fc61474": {
+      "decimals": "18",
+      "symbol": "SOV",
+      "to": "coingecko#sovryn"
     }
   },
   "xlayer": {

@@ -3041,6 +3041,16 @@ export const chainCoingeckoIds = {
     url: "https://aelf.com/",
     github: ["aelfProject"],
   },
+  "Lukso": {
+    geckoId: "lukso-token-2",
+    symbol: "LYX",
+    cmcId: "27622",
+    categories: ["EVM"],
+    twitter: "lukso_io",
+    url: "https://www.lukso.network",
+    github: ["lukso-network"],
+    chainId: 42
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3691,6 +3701,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Polkadex"
     case "aelf":
       return "aelf"
+    case "lukso":
+      return "Lukso"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

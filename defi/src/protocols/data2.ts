@@ -15620,8 +15620,12 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum"],
-    oracles: ["Chainlink"],
+    chains: ["Ethereum", "Fraxtal", "Arbitrum"],
+    oraclesByChain: {
+      ethereum: ["Chainlink"],
+      fraxtal: ["Redstone"],
+      arbitrum: ["Chainlink"]
+    },
     forkedFrom: [],
     module: "fraxlend/index.js",
     twitter: "fraxfinance",

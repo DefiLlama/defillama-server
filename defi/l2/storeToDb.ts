@@ -230,6 +230,10 @@ export async function fetchFlows(period: number) {
   chains.map((chain: string) => {
     res[chain] = {};
     Object.keys(end.data[chain]).map((k: string) => {
+      if (!start.data[chain] || !(k in start.data[chain])) {
+        res[chain][k] = { perc: "0", raw: "0" };
+        return;
+      }
       const a = start.data[chain][k];
       const b = end.data[chain][k];
       const raw = (b - a).toFixed();

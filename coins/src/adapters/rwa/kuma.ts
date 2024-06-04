@@ -12,6 +12,9 @@ const config: { [chain: string]: { [symbol: string]: string } } = {
   },
   linea: {
     USK: "0x7a6aa80b49017f3e091574ab5c6977d863ff3865"
+  },
+  telos: {
+    USK: "0x09B88f74Fb9E243c4A3F4D2FfE3d1BA4287a476c"
   }
 };
 

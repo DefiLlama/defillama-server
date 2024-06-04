@@ -2180,5 +2180,9 @@ export default {
     "colony": {
         enabled: true,
         id: "1004"
+    },
+    "flashtrade": {
+        enabled: true,
+        "id": "4107",
     }
 } as AdaptorsConfig

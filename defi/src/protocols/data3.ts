@@ -44840,6 +44840,27 @@ const data3: Protocol[] = [
     github: ["ICPExchange"],
     listedAt: 1717463493
   },
+  {
+    id: "4709",
+    name: "Vesta Equity",
+    address: null,
+    symbol: "-",
+    url: "https://vestaequity.net",
+    description: "Build wealth with a portfolio of tokenized, regulatory-compliant, and verified fractionalized home equity investments in top residential properties.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/vesta-equity.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Algorand"],
+    module: "vestaequity/index.js",
+    twitter: "vestaequityvpm",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717507322
+  },
 ]
 
 export default data3

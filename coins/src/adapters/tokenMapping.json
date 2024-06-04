@@ -2957,5 +2957,12 @@
       "symbol": "ETH",
       "to": "coingecko#ethereum"
     }
+  },
+  "lukso": {
+    "0x2db41674f2b882889e5e1bd09a3f3613952bc472": {
+      "decimals": "18",
+      "symbol": "WLYX",
+      "to": "coingecko#wrapped-lyx-universalswaps-2"
+    }
   }
 }

@@ -1113,6 +1113,16 @@
     }
   },
   "ibc": {
+    "65D0BEC6DAD96C7F5043D1E54E54B6BB5D5B3AEC3FF6CEBB75B9E059F3580EA3": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "9117A26BA81E29FA4F78F57DC2BD90CD3D26848101BA880445F119B22A1E254E": {
+      "decimals": "6",
+      "symbol": "ATOM",
+      "to": "coingecko#cosmos"
+    },
     "698350B8A61D575025F3ED13E9AC9C0F45C89DEFE92F76D5838F1D3C1A7FF7C9": {
       "decimals": "6",
       "symbol": "stTIA",
@@ -2963,6 +2973,13 @@
       "decimals": "18",
       "symbol": "WLYX",
       "to": "coingecko#wrapped-lyx-universalswaps-2"
+    }
+  },
+  "joltify": {
+    "ujolt": {
+      "decimals": "18",
+      "symbol": "JOLT",
+      "to": "coingecko#joltify"
     }
   }
 }

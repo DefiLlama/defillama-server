@@ -58,7 +58,7 @@ export async function kuma(timestamp: number): Promise<Write[]> {
         symbol,
         timestamp,
         "kuma-protocol",
-        0.8,
+        1,
         redirect
       );
     }),

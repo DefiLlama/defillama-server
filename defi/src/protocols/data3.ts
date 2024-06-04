@@ -44892,7 +44892,7 @@ const data3: Protocol[] = [
     description: "ETC Swap is a decentralized cryptocurrency exchange where users acquire digital assets without an intermediary",
     chain: "EthereumClassic",
     logo: `${baseIconsUrl}/etcswap-v3.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -44902,6 +44902,7 @@ const data3: Protocol[] = [
     twitter: "EthClassicDAO",
     forkedFrom: ["Uniswap V3"],
     oracles: [],
+    audit_links: ["https://github.com/etcswap/public-audits/tree/main/v3-audits/uniswapv3-audits"],
     listedAt: 1717507922
   },
 ]

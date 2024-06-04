@@ -44905,6 +44905,48 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/etcswap/public-audits/tree/main/v3-audits/uniswapv3-audits"],
     listedAt: 1717507922
   },
+  {
+    id: "4712",
+    name: "Splash Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.splash.trade",
+    description: "Splash is a decentralized open-source protocol for efficient market-making and trading on Cardano.",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/splash-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Cardano"],
+    module: "splash.js",
+    twitter: "splashprotocol",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717510175
+  },
+  {
+    id: "4713",
+    name: "Earlyfans",
+    address: null,
+    symbol: "-",
+    url: "https://earlyfans.xyz",
+    description: "SoFi on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/earlyfans.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Blast"],
+    module: "earlyfans/index.js",
+    twitter: "earlyfans_xyz",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717510975
+  },
 ]
 
 export default data3

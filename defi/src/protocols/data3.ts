@@ -44809,7 +44809,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Options",
     chains: ["Ethereum","Arbitrum"],
     module: "tymio/index.js",
     twitter: "TYMIOapp",

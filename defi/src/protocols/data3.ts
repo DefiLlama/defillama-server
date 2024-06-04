@@ -44818,6 +44818,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/pessimistic-io/audits/blob/f2c817cecb35ecd831f5cc73aa99c58b484c0d13/TYMIO%20Security%20Analysis%20by%20Pessimistic.pdf"],
     listedAt: 1717427581
   },
+  {
+    id: "4708",
+    name: "ICPEx",
+    address: null,
+    symbol: "-",
+    url: "https://icpex.org/exchange",
+    description: "Dex on ICP",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/icpex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ICP"],
+    module: "icpex/index.js",
+    twitter: "ICPExchange",
+    forkedFrom: [],
+    oracles: [],
+    github: ["ICPExchange"],
+    listedAt: 1717463493
+  },
 ]
 
 export default data3

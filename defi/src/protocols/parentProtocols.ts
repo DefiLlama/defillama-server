@@ -3543,8 +3543,8 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://www.naviprotocol.io",
     description: `NAVI offers over collateralized lending/borrowing for SUI, USDC, USDT, wETH and wBTC and supports features like isolated pool, flash loan and soon to come crosschain lending/borrowing.`,
     logo: `${baseIconsUrl}/navi-protocol.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "navi",
+    cmcId: "29296",
     chains: [],
     twitter: "navi_protocol",
     github: ["naviprotocol"]

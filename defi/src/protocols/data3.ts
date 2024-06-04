@@ -44840,28 +44840,6 @@ const data3: Protocol[] = [
     github: ["ICPExchange"],
     listedAt: 1717463493
   },
-  {
-    id: "4709",
-    name: "Physica Finance",
-    address: null,
-    symbol: "-",
-    url: "https://physica.finance",
-    description: "Trade, earn, and bridge your assets with ease on the Planq’s native one-stop DeFI hub.",
-    chain: "Planq",
-    logo: `${baseIconsUrl}/physica-finance.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexes",
-    chains: ["Planq"],
-    oracles: [],
-    forkedFrom: ["Uniswap V3"],
-    module: "physica-finance/index.js",
-    twitter: "CientoExchange",
-    github: ["Physica-Finance"],
-    listedAt: 1717515448
-  },
 ]
 
 export default data3

@@ -12466,7 +12466,7 @@ const data2: Protocol[] = [
     name: "ETCswap",
     address: null,
     symbol: "-",
-    url: "https://ethereumclassic.com/",
+    url: "https://www.etcswap.org/",
     description: "ETC Swap is a decentralized cryptocurrency exchange where users acquire digital assets without an intermediary",
     chain: "EthereumClassic",
     logo: `${baseIconsUrl}/etcswap.png`,

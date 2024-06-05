@@ -45188,6 +45188,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1717589999
   },
+  {
+    id: "4725",
+    name: "Spectra V2",
+    address: null,
+    symbol: "-",
+    url: "https://app.spectra.finance/fixed-rate",
+    description: "Secure your future yield at a fixed rate.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/spectra-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "spectra/index.js",
+    twitter: "spectra_finance",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717597182
+  },
 ]
 
 export default data3

@@ -44903,6 +44903,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     oracles: [],
     audit_links: ["https://github.com/etcswap/public-audits/tree/main/v3-audits/uniswapv3-audits"],
+    parentProtocol: "parent#etcswap",
     listedAt: 1717507922
   },
   {

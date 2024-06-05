@@ -4548,10 +4548,22 @@ const parentProtocols: IParentProtocol[] = [
     description: "A lightning fast DEX, yield, and bond platform built on zkSync Era",
     logo: `${baseIconsUrl}/koi-finance.png`,
     gecko_id: "koi-3",
-    cmcId: "null",
+    cmcId: null,
     chains: [],
     twitter: "koi_finance",
     governanceID: ["snapshot:mutegov.eth"]
+  },
+  {
+    id: "parent#dtx",
+    name: "DTX",
+    url: "https://dtx.trade/",
+    description: "Unlike order book systems, DTX's unique synthetic architecture guarantees a seamless trading experience for traders by eliminating slippage and ensuring guaranteed order execution. Additionally, it offers flexibility in collateral usage and market-making while simultaneously maximizing capital efficiency for LPs.",
+    logo: `${baseIconsUrl}/dtx.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "0xDTX",
+    github: ["dtx-trade"],
   },
 ];
 

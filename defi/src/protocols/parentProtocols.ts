@@ -4589,6 +4589,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "https://www.blend.capital",
     github: ["blend-capital"]
   },
+  {
+    id: "parent#spectra",
+    name: "Spectra",
+    url: "https://www.spectra.finance",
+    description: "Powered by open Interest Rates Derivatives Protocol",
+    logo: `${baseIconsUrl}/spectra.jpg`,
+    gecko_id: "apwine",
+    cmcId: "10364",
+    chains: [],
+    twitter: "spectra_finance",
+    governanceID: ["snapshot:apwine.eth"],
+    github: ["perspectivefi"]
+  },
 ];
 
 export default parentProtocols;

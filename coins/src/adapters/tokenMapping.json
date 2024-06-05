@@ -615,6 +615,12 @@
       "decimals": "8",
       "symbol": "CAKE",
       "to": "coingecko#pancakeswap-token"
+    },
+    "0x63be1898a424616367e19bbd881f456a78470e123e2770b5b5dcdceb61279c54::movegpt_token::MovegptCoin": {
+      "name": "movegpt",
+      "decimals": "8",
+      "symbol": "MGPT",
+      "to": "coingecko#movegpt"
     }
   },
   "velas": {

@@ -45122,6 +45122,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1717532780
   },
+  {
+    id: "4721",
+    name: "MoveGPT Launchpad",
+    address: "aptos:0x63be1898a424616367e19bbd881f456a78470e123e2770b5b5dcdceb61279c54::movegpt_token::MovegptCoin",
+    symbol: "MGPT",
+    url: "https://movegpt.io/",
+    description:
+      "THE MOST TRUSTED.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/movegpt.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "movegpt",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aptos"],
+    module: "movegpt/index.js",
+    twitter: "MoveGPT",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://scalebit.xyz/reports/MoveGPT-Final-Audit-Report.pdf"],
+    listedAt: 1717578652
+  },
 ]
 
 export default data3

@@ -2751,6 +2751,11 @@
       "decimals": "18",
       "symbol": "MATIC",
       "to": "coingecko#matic-network"
+    },
+    "0x796e4d53067ff374b89b2ac101ce0c1f72ccaac2": {
+      "decimals": "18",
+      "symbol": "uBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "planq": {

@@ -18117,7 +18117,7 @@ const data2: Protocol[] = [
     module: "dolomite/index.js",
     twitter: "Dolomite_io",
     forkedFrom: [],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Chronicle"],
     audit_links: [
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20Cyfrin%20-%202023-08-23.pdf",
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20SECBIT%20-%202021-08-02.pdf",
@@ -20606,7 +20606,7 @@ const data2: Protocol[] = [
     module: "perp88/index.js",
     twitter: "HMXorg",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Chronicle"],
     github: ["HMXOrg"],
     listedAt: 1668805259
   },

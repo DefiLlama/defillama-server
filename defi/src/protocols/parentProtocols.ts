@@ -4577,6 +4577,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "EthClassicDAO",
     github: ["ethereumclassic"]
   },
+  {
+    id: "parent#blend",
+    name: "Blend",
+    url: "https://www.blend.capital",
+    description: "Secure your future yield at a fixed rate.",
+    logo: `${baseIconsUrl}/blend.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "https://www.blend.capital",
+    github: ["blend-capital"]
+  },
 ];
 
 export default parentProtocols;

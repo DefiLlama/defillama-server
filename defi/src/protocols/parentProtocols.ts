@@ -4565,6 +4565,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "0xDTX",
     github: ["dtx-trade"],
   },
+  {
+    id: "parent#etcswap",
+    name: "ETCswap",
+    url: "https://www.etcswap.org",
+    description: "ETC Swap is a decentralized cryptocurrency exchange where users acquire digital assets without an intermediary",
+    logo: `${baseIconsUrl}/etcswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "EthClassicDAO",
+    github: ["ethereumclassic"]
+  },
 ];
 
 export default parentProtocols;

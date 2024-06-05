@@ -45191,8 +45191,8 @@ const data3: Protocol[] = [
   {
     id: "4725",
     name: "Spectra V2",
-    address: null,
-    symbol: "-",
+    address: "0x4104b135dbc9609fc1a9490e61369036497660c8",
+    symbol: "APW",
     url: "https://app.spectra.finance/fixed-rate",
     description: "Secure your future yield at a fixed rate.",
     chain: "Ethereum",
@@ -45207,6 +45207,7 @@ const data3: Protocol[] = [
     twitter: "spectra_finance",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#spectra",
     listedAt: 1717597182
   },
   {

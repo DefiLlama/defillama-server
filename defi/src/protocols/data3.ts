@@ -40325,7 +40325,7 @@ const data3: Protocol[] = [
     module: "flat-money/index.js",
     twitter: "0xflatmoney",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.flat.money/pyth-network-price-oracle 
     listedAt: 1713802587
   },
   {
@@ -43599,7 +43599,7 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     module: "superposition/index.js", 
     forkedFrom: [],
-    oracles: [], 
+    oracles: ["Pyth"], // https://docs.concordia.systems/platform-spec/pricing-engine 
     twitter: "superp_fi",
     listedAt: 1716371512
   },

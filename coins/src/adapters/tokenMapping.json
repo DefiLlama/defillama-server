@@ -2977,7 +2977,7 @@
   },
   "joltify": {
     "ujolt": {
-      "decimals": "18",
+      "decimals": "6",
       "symbol": "JOLT",
       "to": "coingecko#joltify"
     }

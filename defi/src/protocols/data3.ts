@@ -44273,7 +44273,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Solana"],
-    oracles: [],
+    oracles: ["Pyth"], // https://nx-finance.gitbook.io/nx-finance-whitepaper/protocol-mechanism/risks#oracle-risks
     forkedFrom: [],
     module: "nxfinance/index.js",
     twitter: "NX_Finance",

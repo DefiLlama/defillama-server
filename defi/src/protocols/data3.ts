@@ -45119,7 +45119,7 @@ const data3: Protocol[] = [
     chains: ["Sei"],
     module: "yei-fi/index.js",
     twitter: "YeiFinance",
-    forkedFrom: ["AAVE V2"],
+    forkedFrom: ["AAVE V3"],
     oracles: [],
     listedAt: 1717532780
   },

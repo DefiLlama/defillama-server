@@ -14284,7 +14284,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "klima-dao",
     cmcId: "12873",
-    category: "Services",
+    category: "RWA",
     chains: ["Polygon"],
     module: "klima-dao/index.js",
     treasury: "klima-dao.js",

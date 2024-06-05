@@ -35723,13 +35723,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4296",
-    name: "Blasterswap",
+    name: "Blasterswap V2",
     address: null,
     symbol: "-",
     url: "https://blasterswap.com/",
     description: "Uni v2 fork on blast",
     chain: "Blast",
-    logo: `${baseIconsUrl}/blasterswap.jpg`,
+    logo: `${baseIconsUrl}/blasterswap-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -35741,6 +35741,7 @@ const data3: Protocol[] = [
     module: "blasterswap-v2/index.js",
     twitter: "BlasterSwap",
     audit_links: ["https://github.com/blasterswap/blasterswap-core-v2/blob/main/AstraSec-AuditReport-BlasterSwap.pdf"],
+    parentProtocol: "parent#blasterswap",
     listedAt: 1710427551
   },
   {
@@ -45255,6 +45256,29 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/blend-capital/blend-contracts/blob/main/audits/BlendCertoraReport.pdf", "https://github.com/blend-capital/blend-contracts/blob/main/audits/blend_capital_final.pdf"],
     listedAt: 1717598971
   },
+  {
+    id: "4728",
+    name: "Blasterswap V3",
+    address: null,
+    symbol: "-",
+    url: "https://blasterswap.com",
+    description: "Uni v3 fork on blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/blasterswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    module: "blasterswap-v3/index.js",
+    twitter: "BlasterSwap",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    parentProtocol: "parent#blasterswap",
+    listedAt: 1717608097
+  },
+
 ]
 
 export default data3

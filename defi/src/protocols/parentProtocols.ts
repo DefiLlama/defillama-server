@@ -4602,6 +4602,17 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:apwine.eth"],
     github: ["perspectivefi"]
   },
+  {
+    id: "parent#blasterswap",
+    name: "Blasterswap",
+    url: "https://blasterswap.com/",
+    description: "Uni v2 and v3 fork on blast",
+    logo: `${baseIconsUrl}/blasterswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BlasterSwap",
+  },
 ];
 
 export default parentProtocols;

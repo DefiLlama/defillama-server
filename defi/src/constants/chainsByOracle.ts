@@ -329,6 +329,18 @@ const chainsByOracle = {
   "Harbinger": ["Tezos"],
   "SEDA": ["Aurora", "Evmos", "Optimism"],
   "Nest": ["Ethereum", "BSC", "Aurora", "KCC", "CLV", "Polygon"],
+  ],
+  "Chronicle": [
+    "Ethereum",
+    "Polygon",
+    "Optimism",
+    "Arbitrum",
+    "zkSync Era",
+    "Gnosis",
+    "Base",
+    "Polygon zkEVM",
+    "Mantle"
+  ],
 };
 
 export { chainsByOracle };

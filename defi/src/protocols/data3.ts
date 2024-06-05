@@ -45278,7 +45278,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#blasterswap",
     listedAt: 1717608097
   },
-
+  {
+    id: "4729",
+    name: "Lynx",
+    address: null,
+    symbol: "-",
+    url: "https://app.lynx.finance/",
+    description: "Perpetuals DEX offering high-leverage trading using any token as collateral. Supporting gasless trading from any blockchain",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/lynx.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum","Polygon","Mantle","Fuse","Binance","Optimism","Linea"],
+    module: "lynx/index.js",
+    twitter: "Lynx_Protocol",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717630515
+  },
 ]
 
 export default data3

@@ -4581,12 +4581,12 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#blend",
     name: "Blend",
     url: "https://www.blend.capital",
-    description: "Secure your future yield at a fixed rate.",
+    description: "Blend is a modular liquidity protocol, allowing anyone to create flexible lending markets.",
     logo: `${baseIconsUrl}/blend.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "https://www.blend.capital",
+    twitter: null,
     github: ["blend-capital"]
   },
   {

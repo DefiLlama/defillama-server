@@ -29865,6 +29865,24 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true
   },
-  
+  {
+    id: "2701",
+    name: "stabble",
+    address: "solana:STBuyENwJ1GP4yNZCjwavn92wYLEY3t5S1kVS5kwyS1",
+    symbol: "STB",
+    url: "https://stabble.org/",
+    description: "Solana’s first frictionless liquidity and trading layer.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/stabble.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Solana"],
+    module: "stabble/index.js",
+    twitter: "stabbleorg",
+    openSource: false
+  },
 ]
 export default data2;

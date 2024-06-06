@@ -2977,6 +2977,11 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0xa9d23408b9ba935c230493c40c73824df71a0975": {
+      "decimals": "18",
+      "symbol": "TAIKO",
+      "to": "coingecko#taiko"
     }
   },
   "real": {

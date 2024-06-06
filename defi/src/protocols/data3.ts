@@ -19537,7 +19537,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://app.magicsea.finance/swap",
     description:
-      "ShimmerSea is a leading decentralized exchange (DEX) on Shimmer focused on offering a premier trading experience",
+      "MagicSea is the leading Decentralized Exchange (DEX) and NFT Marketplace on IOTA and Shimmer EVM offering a premier Trading and Market Making experience",
     chain: "ShimmerEVM",
     logo: `${baseIconsUrl}/magicsea.png`,
     audits: "0",

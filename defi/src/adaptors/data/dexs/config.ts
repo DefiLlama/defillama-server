@@ -2721,11 +2721,6 @@ export default {
         enabled: true,
         id: "4584"
     },
-    "aerodrome-slipstream": {
-        parentId: "Aerodrome",
-        enabled: true,
-        id: "4524"
-    },
     "cropper-clmm": {
         parentId: "Cropper",
         enabled: true,

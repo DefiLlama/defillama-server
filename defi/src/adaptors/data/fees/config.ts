@@ -1281,6 +1281,7 @@ export default {
         "id": "3129"
     },
     "aerodrome": {
+        parentId: "Aerodrome",
         "enabled": true,
         "id": "3450"
     },

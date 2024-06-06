@@ -2210,8 +2210,8 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     github: ["archway-network"]
   },
-  "HydraDX": {
-    geckoId: "hydradx",
+  "Hydration": {
+    geckoId: "hydration",
     github: ['galacticcouncil'],
     symbol: "HDX",
     cmcId: "6753",
@@ -2220,8 +2220,8 @@ export const chainCoingeckoIds = {
       chain: "Polkadot",
       types: ["parachain"]
     },
-    twitter: "hydra_dx",
-    url: "https://hydradx.io/",
+    twitter: "hydra_net",
+    url: "https://hydration.net/",
   },
   "Shibarium": {
     geckoId: null,
@@ -3547,8 +3547,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "opBNB" : "op_bnb"
     case "archway":
       return "Archway"
-    case "hydradx":
-      return "HydraDX"
+    case "hydration":
+      return "Hydration"
     case "shibarium":
       return "Shibarium"
     case "mvc":

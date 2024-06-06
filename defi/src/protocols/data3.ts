@@ -12179,7 +12179,7 @@ const data3: Protocol[] = [
       linea: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
       manta: ["RedStone"], //https://docs.zerolend.xyz/security/oracles/using-redstone-oracles
       ethereum: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
-      zkSync: ["Pyth"], //https://docs.zerolend.xyz/security/oracles/using-pyth-oracles
+      zkSync: ["Pyth"], //https://docs.zerolend.xyz/security/oracles#using-pyth-oracles
       xlayer: ["API3"] // https://docs.zerolend.xyz/security/oracles#oracles-operated-by-api3
     },
     forkedFrom: ["AAVE V3"],
@@ -40326,7 +40326,7 @@ const data3: Protocol[] = [
     module: "flat-money/index.js",
     twitter: "0xflatmoney",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.flat.money/pyth-network-price-oracle 
     listedAt: 1713802587
   },
   {
@@ -43600,7 +43600,7 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     module: "superposition/index.js", 
     forkedFrom: [],
-    oracles: [], 
+    oracles: [],
     twitter: "superp_fi",
     listedAt: 1716371512
   },

@@ -45299,6 +45299,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1717630515
   },
+  {
+    id: "4730",
+    name: "Linkswap",
+    address: null,
+    symbol: "-",
+    url: "https://linkswap.finance",
+    description: "Linkswap is native DEX built on ZkLink Nova as a convergence point for liquidity across all L2 Rollups.",
+    chain: "zkLink Nova",
+    logo: `${baseIconsUrl}/linkswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkLink Nova"],
+    module: "linkswap/index.js",
+    twitter: "LinkswapFinance",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1717667533
+  },
 ]
 
 export default data3

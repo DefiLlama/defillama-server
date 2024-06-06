@@ -45363,6 +45363,27 @@ const data3: Protocol[] = [
     github: ["DivvyBet"],
     listedAt: 1717683159
   },
+  {
+    id: "4733",
+    name: "wen markets",
+    address: null,
+    symbol: "-",
+    url: "https://wen.markets",
+    description: "A token launchpad bulletin board where anyone can create and bootstrap ERC20 token liquidity free from rugpulls, and post comments for discussion, inspired by 4chan and the Internet culture",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/wen-markets.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Polygon"],
+    module: "wenmarkets/index.js",
+    twitter: "wenmarkets",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717688140
+  },
 ]
 
 export default data3

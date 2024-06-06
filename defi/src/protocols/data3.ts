@@ -45016,13 +45016,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4717",
-    name: "Joltify Finance",
+    name: "Joltify Lend", // previous Joltify Finance
     address: null,
     symbol: "-",
     url: "https://app.joltify.io/",
     description: "The First EVM compatible game-changing L1 Public Chain built on the Cosmos SDK for Real-World Assets (RWA) and Beyond",
     chain: "Joltify",
-    logo: `${baseIconsUrl}/joltify-finance.png`,
+    logo: `${baseIconsUrl}/joltify-lend.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

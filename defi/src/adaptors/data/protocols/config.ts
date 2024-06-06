@@ -164,5 +164,15 @@ export default {
     "physica-finance": {
         enabled: true,
         id: "4719",
+        protocolsData: {
+            "v3": {
+                enabled: true,
+                id: "4719",
+            }
+        }
+    },
+    "bitgenie-amm": {
+        enabled: true,
+        id: "4573",
     }
 } as AdaptorsConfig

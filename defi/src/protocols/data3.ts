@@ -43599,7 +43599,7 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     module: "superposition/index.js", 
     forkedFrom: [],
-    oracles: ["Pyth"], // https://docs.concordia.systems/platform-spec/pricing-engine 
+    oracles: [],
     twitter: "superp_fi",
     listedAt: 1716371512
   },

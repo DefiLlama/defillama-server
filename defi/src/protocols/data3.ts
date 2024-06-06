@@ -45384,6 +45384,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1717688140
   },
+  {
+    id: "4734",
+    name: "stabble",
+    address: "solana:STBuyENwJ1GP4yNZCjwavn92wYLEY3t5S1kVS5kwyS1",
+    symbol: "STB",
+    url: "https://stabble.org",
+    description: "Solana's first frictionless liquidity and trading layer",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/stabble.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Solana"],
+    module: "stabble/index.js",
+    twitter: "stabbleorg",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/stabbleorg/audit-reports"],
+    github: ["stabbleorg"],
+    listedAt: 1717693423
+  },
 ]
 
 export default data3

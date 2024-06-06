@@ -45320,6 +45320,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1717667533
   },
+  {
+    id: "4731",
+    name: "Rosen Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://rosen.tech",
+    description: "Rosen Bridge, an open-source protocol for cross-chain asset transfers.",
+    chain: "Ergo",
+    logo: `${baseIconsUrl}/rosen-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Ergo", "Cardano"],
+    module: "rosen-bridge/index.js",
+    twitter: "RosenBridge_erg",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717680872
+  },
 ]
 
 export default data3

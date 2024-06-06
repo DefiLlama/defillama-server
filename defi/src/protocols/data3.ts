@@ -12179,7 +12179,7 @@ const data3: Protocol[] = [
       linea: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
       manta: ["RedStone"], //https://docs.zerolend.xyz/security/oracles/using-redstone-oracles
       ethereum: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
-      zkSync: ["Pyth"], //https://docs.zerolend.xyz/security/oracles/using-pyth-oracles (Please check)
+      zkSync: ["Pyth"], //https://docs.zerolend.xyz/security/oracles#using-pyth-oracles
       xlayer: ["API3"] // https://docs.zerolend.xyz/security/oracles#oracles-operated-by-api3
     },
     forkedFrom: ["AAVE V3"],

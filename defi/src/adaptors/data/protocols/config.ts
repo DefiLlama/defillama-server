@@ -174,5 +174,10 @@ export default {
     "bitgenie-amm": {
         enabled: true,
         id: "4573",
-    }
+    },
+    "aerodrome-slipstream": {
+        parentId: "Aerodrome",
+        enabled: true,
+        id: "4524"
+    },
 } as AdaptorsConfig

@@ -12463,13 +12463,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1934",
-    name: "ETCswap",
+    name: "ETCswap V1",
     address: null,
     symbol: "-",
     url: "https://www.etcswap.org/",
     description: "ETC Swap is a decentralized cryptocurrency exchange where users acquire digital assets without an intermediary",
     chain: "EthereumClassic",
-    logo: `${baseIconsUrl}/etcswap.png`,
+    logo: `${baseIconsUrl}/etcswap-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -12482,7 +12482,7 @@ const data2: Protocol[] = [
     twitter: "EthClassicDAO",
     audit_links: ["https://github.com/etcswap/public-audits"],
     listedAt: 1658953401,
-    github: ["ethereumclassic"]
+    parentProtocol: "parent#etcswap",
   },
   {
     id: "1935",
@@ -15620,8 +15620,12 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum"],
-    oracles: ["Chainlink"],
+    chains: ["Ethereum", "Fraxtal", "Arbitrum"],
+    oraclesByChain: {
+      ethereum: ["Chainlink"],
+      fraxtal: ["RedStone"],
+      arbitrum: ["Chainlink"]
+    },
     forkedFrom: [],
     module: "fraxlend/index.js",
     twitter: "fraxfinance",

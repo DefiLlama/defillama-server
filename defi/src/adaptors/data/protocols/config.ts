@@ -160,5 +160,24 @@ export default {
                 id: "4661",
             }
         }
-    }
+    },
+    "physica-finance": {
+        enabled: true,
+        id: "4719",
+        protocolsData: {
+            "v3": {
+                enabled: true,
+                id: "4719",
+            }
+        }
+    },
+    "bitgenie-amm": {
+        enabled: true,
+        id: "4573",
+    },
+    "aerodrome-slipstream": {
+        parentId: "Aerodrome",
+        enabled: true,
+        id: "4524"
+    },
 } as AdaptorsConfig

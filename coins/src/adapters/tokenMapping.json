@@ -2757,6 +2757,11 @@
       "decimals": "18",
       "symbol": "MATIC",
       "to": "coingecko#matic-network"
+    },
+    "0x796e4d53067ff374b89b2ac101ce0c1f72ccaac2": {
+      "decimals": "18",
+      "symbol": "uBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "planq": {
@@ -2764,6 +2769,41 @@
       "decimals": "18",
       "symbol": "PLQ",
       "to": "coingecko#planq"
+    },
+    "0xecEEEfCEE421D8062EF8d6b4D814efe4dc898265": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x75E20C5d4aade76143b8b74d1C5E2865347f9d3B": {
+      "decimals": "18",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x091F9A57A3F58d758b6572E9d41675918EAC7F09": {
+      "decimals": "9",
+      "symbol": "SRCX",
+      "to": "coingecko#source-protocol"
+    },
+    "0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd": {
+      "decimals": "6",
+      "symbol": "SOURCE",
+      "to": "coingecko#source"
+    },
+    "0xd567B3d7B8FE3C79a1AD8dA978812cfC4Fa05e75": {
+      "decimals": "6",
+      "symbol": "KUJI",
+      "to": "coingecko#kujira"
+    },
+    "0x5FD55A1B9FC24967C4dB09C513C3BA0DFa7FF687": {
+      "decimals": "18",
+      "symbol": "ARCH",
+      "to": "coingecko#archway"
+    },
+    "0x3C28a6Edc11746bf45c7fe0A2bCF95e27abc7bBa": {
+      "decimals": "18",
+      "symbol": "CNTO",
+      "to": "coingecko#ciento-exchange"
     }
   },
   "lac": {
@@ -2943,6 +2983,11 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0xa9d23408b9ba935c230493c40c73824df71a0975": {
+      "decimals": "18",
+      "symbol": "TAIKO",
+      "to": "coingecko#taiko"
     }
   },
   "real": {
@@ -2983,7 +3028,7 @@
   },
   "joltify": {
     "ujolt": {
-      "decimals": "18",
+      "decimals": "6",
       "symbol": "JOLT",
       "to": "coingecko#joltify"
     }

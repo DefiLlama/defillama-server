@@ -1281,6 +1281,7 @@ export default {
         "id": "3129"
     },
     "aerodrome": {
+        parentId: "Aerodrome",
         "enabled": true,
         "id": "3450"
     },
@@ -2184,5 +2185,13 @@ export default {
     "flashtrade": {
         enabled: true,
         "id": "4107",
-    }
+    },
+    "pumpup": {
+        enabled: true,
+        "id": "4736"
+    },
+    "coinbase-commerce": {
+        enabled: true,
+        "id": "4737"
+    },
 } as AdaptorsConfig

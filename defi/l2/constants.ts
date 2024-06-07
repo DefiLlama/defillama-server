@@ -68,6 +68,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4690": "lorenzo",
   "4692": "taiko",
   "4702": "immutable zkevm",
+  "4141": "BSquared"
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

@@ -4565,6 +4565,54 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "0xDTX",
     github: ["dtx-trade"],
   },
+  {
+    id: "parent#etcswap",
+    name: "ETCswap",
+    url: "https://www.etcswap.org",
+    description: "ETC Swap is a decentralized cryptocurrency exchange where users acquire digital assets without an intermediary",
+    logo: `${baseIconsUrl}/etcswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "EthClassicDAO",
+    github: ["ethereumclassic"]
+  },
+  {
+    id: "parent#blend",
+    name: "Blend",
+    url: "https://www.blend.capital",
+    description: "Blend is a modular liquidity protocol, allowing anyone to create flexible lending markets.",
+    logo: `${baseIconsUrl}/blend.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: null,
+    github: ["blend-capital"]
+  },
+  {
+    id: "parent#spectra",
+    name: "Spectra",
+    url: "https://www.spectra.finance",
+    description: "Powered by open Interest Rates Derivatives Protocol",
+    logo: `${baseIconsUrl}/spectra.jpg`,
+    gecko_id: "apwine",
+    cmcId: "10364",
+    chains: [],
+    twitter: "spectra_finance",
+    governanceID: ["snapshot:apwine.eth"],
+    github: ["perspectivefi"]
+  },
+  {
+    id: "parent#blasterswap",
+    name: "Blasterswap",
+    url: "https://blasterswap.com/",
+    description: "Uni v2 and v3 fork on blast",
+    logo: `${baseIconsUrl}/blasterswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BlasterSwap",
+  },
 ];
 
 export default parentProtocols;

@@ -2189,5 +2189,9 @@ export default {
     "pumpup": {
         enabled: true,
         "id": "4736"
-    }
+    },
+    "coinbase-commerce": {
+        enabled: true,
+        "id": "4737"
+    },
 } as AdaptorsConfig

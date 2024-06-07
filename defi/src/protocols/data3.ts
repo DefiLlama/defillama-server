@@ -45448,8 +45448,28 @@ const data3: Protocol[] = [
     twitter: "doubleup_app",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "parent#maple-finance",
     listedAt: 1717724531
+  },
+  {
+    id: "4737",
+    name: "Coinbase Commerce",
+    address: null,
+    symbol: "-",
+    url: "https://www.coinbase.com/commerce",
+    description: "Coinbase Commerce lets merchants accept cryptocurrency for their goods and services by API or UI",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/coinbase-commerce.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "CommerceCB",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1717725054
   },
 ]
 

@@ -307,6 +307,8 @@ const data: Protocol[] = [
     oracles: [], // chainlink for lending?
     parentProtocol: "parent#sushi",
   },
+  /*
+  Instadapp wallets
   {
     id: "120",
     name: "Instadapp",
@@ -330,6 +332,7 @@ const data: Protocol[] = [
     governanceID: ["snapshot:instadapp-gov.eth"],
     github: ["InstaDApp"] //check
   },
+  */
   {
     id: "121",
     name: "CREAM Lending",

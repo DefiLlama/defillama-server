@@ -13079,6 +13079,8 @@ const data3: Protocol[] = [
     github: ["ethereum"],
     listedAt: 1690209075
   },
+  /*
+  Old summer.fi, data included positions only managed through UI
   {
     id: "3284",
     name: "Summer.fi",
@@ -13101,6 +13103,7 @@ const data3: Protocol[] = [
     github: ["OasisDEX"],
     listedAt: 1690209925
   },
+  */
   {
     id: "3285",
     name: "Teahouse Managed",
@@ -45537,6 +45540,50 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.agentfi.io/information/audits"],
     github: ["AgentFi"],
     listedAt: 1717772219
+  },
+  {
+    id: "4741",
+    name: "Summer.fi",
+    address: null,
+    symbol: "-",
+    url: "https://summer.fi",
+    description: "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX. Discord: https://discord.gg/summerfi",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/summer.fi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "summer-fi/index.js",
+    twitter: "summerfinance_",
+    forkedFrom: [],
+    oracles: [],
+    github: ["OasisDEX"],
+    listedAt: 1690209925
+  },
+  {
+    id: "4742",
+    name: "Instadapp Lite",
+    address: "0x6f40d4a6237c257fff2db00fa0510deeecd303eb",
+    symbol: "INST",
+    url: "https://instadapp.io/",
+    description:
+      "Automated vaults",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/instadapp.jpg`,
+    audits: null,
+    audit_note: null,
+    gecko_id: "instadapp",
+    cmcId: "10508",
+    category: "Yield Aggregator",
+    chains: ["Ethereum"],
+    module: "instadapp-lite/index.js",
+    twitter: "Instadapp",
+    treasury: "instadapp.js",
+    governanceID: ["snapshot:instadapp-gov.eth"],
+    github: ["InstaDApp"] //check
   },
 ]
 

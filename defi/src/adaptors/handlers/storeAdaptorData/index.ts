@@ -49,7 +49,7 @@ export type IStoreAdaptorDataHandlerEvent = {
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const defaultMaxConcurrency = 32
   let { timestamp, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency } = event
-  console.info(`- timestamp: ${timestamp}`)
+  console.info(`- Date: ${new Date(timestamp!*1e3).toDateString()} (timestamp ${timestamp})`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
   const isTimestampProvided = timestamp !== undefined
   const currentTimestamp = timestamp ?? LAMBDA_TIMESTAMP;
@@ -74,7 +74,6 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   protocols = protocols.filter(p => !protocolNames || protocolNames.has(p.displayName) || protocolNames.has(p.module))
   // randomize the order of execution
   protocols = protocols.sort(() => Math.random() - 0.5)
-  if (protocolNames) console.log('refilling for', protocols.map(a => a.module), protocols.length)
 
   // Get closest block to clean day. Only for EVM compatible ones.
   const allChains = protocols.reduce((acc, { chains }) => {
@@ -88,9 +87,6 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       } catch (e) { console.log('error fetching block, chain:', chain, (e as any)?.message) }
     })
   );
-
-  // console.info(`*************Storing for the following indexs ${adaptorsList.map(a => a.module)} *************`)
-  console.info(`- count: ${protocols.length}`)
 
   const { errors, results } = await PromisePool
     .withConcurrency(maxConcurrency)
@@ -114,9 +110,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       // stack: raw.stack?.split('\n').slice(1, 2).join('\n')
     }
   })
-  console.info(`adapterType: ${adapterType}`)
-  console.info(`Success: ${results.length}`)
-  console.info(`Errors: ${errors.length}`)
+  console.info(`Success: ${results.length} Errors: ${errors.length}`)
   if (errorObjects.length) console.table(errorObjects)
   // console.log(JSON.stringify(errorObjects, null, 2))
 

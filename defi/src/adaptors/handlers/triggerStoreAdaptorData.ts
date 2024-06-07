@@ -28,7 +28,6 @@ export const quarantineList = {
 } as IJSON<string[]>
 
 export const handler = async (event: IHandlerEvent) => {
-  console.log("event", event)
   const type = event.type
   // TODO separate those that need to be called on the hour and those using graphs with timestamp
   const quarantinedModules = quarantineList[type] ?? []
@@ -74,7 +73,6 @@ const invokeLambdas = async (
       adaptorRecordTypes,
       protocolVersion
     };
-    console.info(`Storing adaptor data: ${i} ${i + STEP} ${timestamp} ${adaptorType}`)
     const storeFunction = process.env.runLocal === 'true' ? storeAdaptorData : runStoreAdaptorData
     // if (process.env.runLocal === 'true') await delay(1000)
     await storeFunction(event);

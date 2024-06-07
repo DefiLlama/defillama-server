@@ -2185,5 +2185,9 @@ export default {
     "flashtrade": {
         enabled: true,
         "id": "4107",
+    },
+    "pumpup": {
+        enabled: true,
+        "id": "4736"
     }
 } as AdaptorsConfig

@@ -45429,6 +45429,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#maple-finance",
     listedAt: 1717722577
   },
+  {
+    id: "4736",
+    name: "DoubleUp Pumpup",
+    address: null,
+    symbol: "-",
+    url: "https://www.doubleup.fun/pumpup",
+    description: "Token creation platform on Sui Network",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/doubleup-pumpup.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Sui"],
+    module: "dummy.js",
+    twitter: "doubleup_app",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#maple-finance",
+    listedAt: 1717724531
+  },
 ]
 
 export default data3

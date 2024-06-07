@@ -2780,5 +2780,9 @@ export default {
         parentId: "Keller Finance",
         enabled: true,
         id: "4583"
+    },
+    "dragonswap-sei": {
+        enabled: true,
+        id: "4720"
     }
 } as AdaptorsConfig

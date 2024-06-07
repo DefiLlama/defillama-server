@@ -45471,6 +45471,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1717725054
   },
+  {
+    id: "4738",
+    name: "Tradoor",
+    address: null,
+    symbol: "-",
+    url: "https://tradoor.io",
+    description: "Tradoor is the industry’s first NDMM exchange - using smart math and safety measures to allow people to trade with confidence - protecting traders, LPs, and the protocol from unexpected market changes.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/tradoor.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["TON"],
+    module: "tradoor/index.js",
+    twitter: "tradoor_io",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.tradoor.io/audits"],
+    github: ["TonTradoor"],
+    listedAt: 1717758106
+  },
 ]
 
 export default data3

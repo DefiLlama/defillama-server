@@ -35490,7 +35490,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Linea"],
     oracles: [],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["Solidly"],
     module: "nile-exchange-v1/index.js",
     twitter: "NileExchange",
     parentProtocol: "parent#nile-exchange",

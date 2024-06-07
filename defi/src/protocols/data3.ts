@@ -45407,6 +45407,28 @@ const data3: Protocol[] = [
     github: ["stabbleorg"],
     listedAt: 1717693423
   },
+  {
+    id: "4735",
+    name: "Syrup.fi",
+    address: null,
+    symbol: "-",
+    url: "https://syrup.fi/",
+    description: "Institutional Yield, with DeFi access; powered by Maple finance",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/syrup.fi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "maple-syrup/index.js",
+    twitter: "syrupfi",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#maple-finance",
+    listedAt: 1717722577
+  },
 ]
 
 export default data3

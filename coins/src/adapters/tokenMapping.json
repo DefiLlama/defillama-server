@@ -2975,7 +2975,7 @@
     },
     "0xb750f79cf4768597f4d05d8009fcc7cee2704824": {
       "decimals": "18",
-      "symbol": "bcLP-stBTC-WBTC",
+      "symbol": "Stable-LP",
       "to": "coingecko#wrapped-bitcoin"
     }
   },

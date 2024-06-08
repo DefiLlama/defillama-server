@@ -10,9 +10,14 @@ async function run() {
   const startTimeAll = getUnixTimeNow()
   console.time("**** Run All Adaptor types")
 
-  await Promise.all(ADAPTER_TYPES.map(async (adapterType) => {
+  const randomizedAdapterTypes = [...ADAPTER_TYPES].sort(() => Math.random() - 0.5)
+  for (const adapterType of randomizedAdapterTypes) {
+    await runAdapterType(adapterType)
+  }
+
+  async function runAdapterType(adapterType: AdapterType) {
     const startTimeCategory = getUnixTimeNow()
-    if (adapterType !== AdapterType.OPTIONS) return;
+    // if (adapterType !== AdapterType.OPTIONS) return;
     const key = "**** Run Adaptor type: " + adapterType
     console.time(key)
     let success = false
@@ -45,7 +50,7 @@ async function run() {
       }
     })
 
-  }))
+  }
 
   console.timeEnd("**** Run All Adaptor types")
   const endTimeAll = getUnixTimeNow()
@@ -76,4 +81,4 @@ process.on('uncaughtException', (error) => {
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 45) // 45 minutes
+}, 1000 * 60 * 90) // 45 minutes

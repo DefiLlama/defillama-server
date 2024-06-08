@@ -8,12 +8,13 @@ import { Chain } from "@defillama/sdk/build/general";
 import { AdaptorRecord, AdaptorRecordType, RawRecordMap, storeAdaptorRecord } from "../../db-utils/adaptor-record";
 import { processFulfilledPromises, } from "./helpers";
 import loadAdaptorsData from "../../data"
-import { IJSON, ProtocolAdaptor, } from "../../data/types";
+import { ProtocolAdaptor, } from "../../data/types";
 import { PromisePool } from '@supercharge/promise-pool'
 import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
 import { storeAdapterRecord } from "../../db-utils/db2";
 import { elastic } from '@defillama/sdk';
 import { getUnixTimeNow } from "../../../api2/utils/time";
+import { fork } from 'child_process'
 
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
@@ -47,7 +48,7 @@ export type IStoreAdaptorDataHandlerEvent = {
 }
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  const defaultMaxConcurrency = 32
+  const defaultMaxConcurrency = 9
   let { timestamp, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency } = event
   console.info(`- Date: ${new Date(timestamp!*1e3).toDateString()} (timestamp ${timestamp})`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
@@ -157,7 +158,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const dexBreakDownAdapter = adaptor.breakdown
         const breakdownAdapters = Object.entries(dexBreakDownAdapter)
         for (const [version, adapter] of breakdownAdapters) {
-          adaptersToRun.push([version, adapter])
+          adaptersToRun.push([version, adapter]) // the version is the key for the record (like uni v2) not the version of the adapter
         }
       } else
         throw new Error("Invalid adapter")
@@ -167,12 +168,14 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const adaptorRecords: {
         [key: string]: AdaptorRecord
       } = {}
-      for (const [version, adapter] of adaptersToRun) {
+      for (const [version, adapter] of adaptersToRun) { // the version is the key for the record (like uni v2) not the version of the adapter
         const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
         if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - toTimestamp) > 60 * 60 * 3)
           throw new Error('This Adapter can be run only around current time') // allow run current time if within 3 hours
         const chainBlocks = {} // WARNING: reset chain blocks for each adapter, sharing this between v1 & v2 adapters that have different end timestamps have nasty side effects
         const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
+        // const runAdapterRes = await runAdapterInSubprocess({ adapter, endTimestamp, chainBlocks, module, version, adapterVersion })
+
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }
 
@@ -202,3 +205,25 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     }
   }
 };
+
+
+/* const runAdapterInSubprocess = ({ adapter, endTimestamp, chainBlocks, module, version, adapterVersion }: any) => {
+  return new Promise((resolve, reject) => {
+
+    const child = fork(require.resolve('ts-node/dist/bin'), ['--transpile-only', __dirname + '../../../../dimension-adapters/adapters/utils/runAdapterSubProcess.ts'], { stdio: 'inherit' });
+
+    console.log('sending message', { adapter, endTimestamp, chainBlocks, module, version, adapterVersion })
+    child.send({ adapter, endTimestamp, chainBlocks, module, version, adapterVersion })
+    child.on('message', (message) => {
+      console.log('received message', message)
+    });
+
+    child.on('error', (error) => {
+      console.error('error', error)
+    });
+
+    child.on('exit', (code, signal) => {
+      console.log('exit', code, signal)
+    });
+  })
+}; */

@@ -106,7 +106,8 @@ export default {
     },
     "litecoin": {
         "enabled": true,
-        "id": "4499"
+        "id": "2",
+        "isChain": true
     },
     "looksrare": {
         "enabled": true,

@@ -12183,6 +12183,7 @@ const data3: Protocol[] = [
       xlayer: ["API3"] // https://docs.zerolend.xyz/security/oracles#oracles-operated-by-api3
     },
     forkedFrom: ["AAVE V3"],
+    treasury: "zerolend.js",
     audit_links: ["https://github.com/zerolend/audits/blob/main/mundus/zerolend_report_depcheck_final.pdf"],
     github: ["zerolend"],
     listedAt: 1689662621,

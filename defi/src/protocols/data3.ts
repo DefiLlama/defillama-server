@@ -31364,7 +31364,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4105",
-    name: "Anzen Finance",
+    name: "Anzen V1",
     address: null,
     symbol: "-",
     url: "https://anzen.finance",
@@ -31382,6 +31382,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "anzen/index.js",
     twitter: "AnzenFinance",
+    parentProtocol: "parent#anzen-finance",
     listedAt: 1707227904
   },
   {
@@ -45585,6 +45586,50 @@ const data3: Protocol[] = [
     treasury: "instadapp.js",
     governanceID: ["snapshot:instadapp-gov.eth"],
     github: ["InstaDApp"] //check
+  },
+  {
+    id: "4743",
+    name: "Binlayer",
+    address: null,
+    symbol: "-",
+    url: "https://binlayer.xyz/",
+    description:
+      "BinLayer is a staking platform for BNB and its LSD. Through authorising BinLayer's smart contracts to impose additional slashing conditions on BNB and it's LSD, stakers contribute to enhanced cryptonomic security of the BNB ecosystem",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/binlayer.png`,
+    audits: null,
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Binance"],
+    module: "binlayer/index.js",
+    twitter: "binlayer_xyz",
+    audit_links: ["https://github.com/BinLayer/binlayer-contracts/blob/main/audits/PeckShield-Audit-Report-BinLayer-v1.0.pdf"],
+    listedAt: 1717861641
+  },
+  {
+    id: "4744",
+    name: "Anzen V2",
+    address: null,
+    symbol: "-",
+    url: "https://anzen.finance",
+    description: "USDz is a digital dollar backed by institutional grade real world assets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/anzen-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum","Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "anzen-v2/index.js",
+    twitter: "AnzenFinance",
+    audit_links: ["https://github.com/Anzen-Finance/audits"],
+    parentProtocol: "parent#anzen-finance",
+    listedAt: 1717862013
   },
 ]
 

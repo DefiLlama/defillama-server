@@ -4613,6 +4613,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BlasterSwap",
   },
+  {
+    id: "parent#anzen-finance",
+    name: "Anzen Finance",
+    url: "https://anzen.finance/",
+    description: "USDz is a digital dollar backed by institutional grade real world assets",
+    logo: `${baseIconsUrl}/anzen-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AnzenFinance",
+  },
 ];
 
 export default parentProtocols;

@@ -2194,4 +2194,8 @@ export default {
         enabled: true,
         "id": "4737"
     },
+    "dragonswap-sei": {
+        enabled: true,
+        id: "4720"
+    }
 } as AdaptorsConfig

@@ -2441,6 +2441,30 @@
       "decimals": "18",
       "symbol": "aMerSOLVBTC",
       "to": "coingecko#solv-btc"
+    },
+    "0x7dcb50b2180bc896da1200d2726a88af5d2cbb5a": {
+      "decimals": "18",
+      "symbol": "ordi",
+      "to": "coingecko#ordi"
+    },
+    "0x7126bd63713a7212792b08fa2c39d39190a4cf5b": {
+      "decimals": "18",
+      "symbol": "esMP",
+      "to": "coingecko#merlinswap"
+    },
+    "0x4920fb03f3ea1c189dd216751f8d073dd680a136" : {
+      "decimals": "18",
+      "symbol": "SolvBTCSLP",
+      "to": "coingecko#solv-btc"
+    },
+    "0xb00db5faae7682d80ca3ce5019e710ca08bfbd66": {
+      "decimals": "18",
+      "symbol": "WBTCSLP",
+      "to": "coingecko#solv-btc"
+    }, "0xa41a8c64a324cd00cb70c2448697e248ea0b1ff2": {
+      "decimals": "18",
+      "symbol": "MBTCSLP",
+      "to": "coingecko#merlin-chain-bridged-wrapped-btc-merlin"
     }
   },
   "naka": {
@@ -2937,6 +2961,21 @@
     "0xd53E6f1d37f430d84eFad8060F9Fec558B36F6fa": {
       "decimals": "18",
       "symbol": "ZBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0xe04d21d999faedf1e72ade6629e20a11a1ed14fa": {
+      "decimals": "18",
+      "symbol": "SolvBTC.m",
+      "to": "coingecko#solv-btc"
+    },
+    "0xb88a54ebbda8edbc1c2816ace1dc2b7c6715972d": {
+      "decimals": "18",
+      "symbol": "bcLP-stBTC-WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0xb750f79cf4768597f4d05d8009fcc7cee2704824": {
+      "decimals": "18",
+      "symbol": "bcLP-stBTC-WBTC",
       "to": "coingecko#wrapped-bitcoin"
     }
   },

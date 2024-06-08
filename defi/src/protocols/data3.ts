@@ -12171,6 +12171,7 @@ const data3: Protocol[] = [
     gecko_id: 'zerolend',
     cmcId: 'zerolend',
     category: "Lending",
+    treasury: 'zerolend.js',
     chains: ["zkSync Era"],
     module: "zerolend/index.js",
     twitter: "zerolendxyz",

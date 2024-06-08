@@ -106,7 +106,7 @@ export default {
     },
     "litecoin": {
         "enabled": true,
-        "id": "4499"
+        "id": "2"
     },
     "looksrare": {
         "enabled": true,
@@ -1907,11 +1907,11 @@ export default {
     },
     "instadapp": {
         "enabled": true,
-        "id": "120"
+        "id": "4742" // old id: 120
     },
     "summer.fi": {
         "enabled": true,
-        "id": "3284"
+        "id": "4741"  // old id: 3284
     },
     "integral": {
         "enabled": true,

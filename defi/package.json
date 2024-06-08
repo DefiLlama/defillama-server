@@ -51,7 +51,7 @@
     "cron-dimensions": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --transpile-only src/api2/cron-task/dimensions.ts",
     "extension-updateExtensionTwitterConfig": "export AWS_REGION='eu-central-1' && npx ts-node --transpile-only src/api2/scripts/updateExtensionTwitterConfig.ts",
     "dimensions-store-all": "npx  --node-options='--max-old-space-size=20144' ts-node --transpile-only src/adaptors/handlers/storeAdaptorData/storeAll.ts",
-    "dimensions-notify-backfill": "npx ts-node --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill.ts",
+    "dimensions-notify-backfill": "npx ts-node --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill.ts; npx ts-node --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill.ts",
     "notify-outdated": "npx ts-node --transpile-only src/server-scripts/notifyOutdated.ts"
   },
   "devDependencies": {

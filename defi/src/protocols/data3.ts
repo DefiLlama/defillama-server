@@ -45631,6 +45631,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#anzen-finance",
     listedAt: 1717862013
   },
+  {
+    id: "4745",
+    name: "BounceBit Ethena",
+    address: null,
+    symbol: "-",
+    url: "https://portal.bouncebit.io/ethena",
+    description: "Users can now stake BBUSD to earn sUSDE yield, BB rewards, and 5x sats per day towards Ethena’s ongoing sats campaign",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bouncebit-ethena.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bouncebit-ethena/index.js",
+    twitter: "bounce_bit",
+    listedAt: 1717964602
+  },
 ]
 
 export default data3

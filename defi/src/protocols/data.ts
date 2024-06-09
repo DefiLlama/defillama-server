@@ -4713,7 +4713,7 @@ const data: Protocol[] = [
     cmcId: "7311",
     category: "Yield Aggregator",
     chains: [
-      "Binance",
+//    "Binance",
       "Polygon",
       "Avalanche",
       "Heco",

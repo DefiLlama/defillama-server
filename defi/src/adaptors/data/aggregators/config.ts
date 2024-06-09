@@ -191,7 +191,7 @@ export default {
   },
   "aperture-swap": {
     parentId: "Aperture Finance",
-    "enabled": true,
+    "enabled": false,
     "id": "3554"
   },
   "magpie": {

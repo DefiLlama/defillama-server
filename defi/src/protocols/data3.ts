@@ -14248,7 +14248,7 @@ const data3: Protocol[] = [
     url: "https://bananagun.io",
     description: "The ETH bot that will make your life easier.For degens, by degens. We know what you need.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/banana-gun.jpg`,
+    logo: `${baseIconsUrl}/banana-gun.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "banana-gun",

@@ -19078,8 +19078,8 @@ const data3: Protocol[] = [
   {
     id: "3551",
     name: "Tholgar",
-    address: "0x188cA46Aa2c7ae10C14A931512B62991D5901453",
-    symbol: "tWAR",
+    address: "0x2fc1e74bc8a6d15fe768c10c2ede7d6d95ec27e9",
+    symbol: "thWAR",
     url: "https://tholgar.xyz",
     description: "The governance tokens yielder. Pioneering Synergy with Paladin_vote",
     chain: "Ethereum",

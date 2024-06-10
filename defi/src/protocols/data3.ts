@@ -45652,6 +45652,27 @@ const data3: Protocol[] = [
     twitter: "bounce_bit",
     listedAt: 1717964602
   },
+  {
+    id: "4746",
+    name: "BladeSwap CL",
+    address: "blast:0xD1FedD031b92f50a50c05E2C45aF1aDb4CEa82f4",
+    symbol: "BLADE",
+    url: "https://bladeswap.xyz",
+    description: "Algebra Integral fork on Blast",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/bladeswap-cl.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: ["Algebra Integral"],
+    module: "bladeswap-CL/index.js",
+    twitter: "Bladeswapxyz",
+    listedAt: 1718018350
+  },
 ]
 
 export default data3

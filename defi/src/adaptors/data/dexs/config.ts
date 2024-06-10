@@ -2784,5 +2784,15 @@ export default {
     "dragonswap-sei": {
         enabled: true,
         id: "4720"
+    },
+    "basin": {
+        id: "4703",
+        enabled: true,
+        protocolsData: {
+            "spot": {
+                "id": "4703",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

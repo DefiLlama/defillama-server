@@ -45694,6 +45694,29 @@ const data3: Protocol[] = [
     twitter: "CapybaraDEX",
     listedAt: 1718026081
   },
+  {
+    id: "4748",
+    name: "ZKX",
+    address: null,
+    symbol: "-",
+    url: "https://zkx.fi/",
+    description: "The 1st Social Perp Trading DEX where the world comes to trade",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/zkx.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Starknet"],
+    oracles: [],
+    forkedFrom: [],
+    module: "zkx/index.js",
+    twitter: "zkxprotocol",
+    audit_links: ["https://media.zkx.fi/audit.pdf"],
+    github: ["zkxprotocol"],
+    listedAt: 1718050520
+  },
 ]
 
 export default data3

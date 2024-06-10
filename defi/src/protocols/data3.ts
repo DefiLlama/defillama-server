@@ -45673,6 +45673,27 @@ const data3: Protocol[] = [
     twitter: "Bladeswapxyz",
     listedAt: 1718018350
   },
+  {
+    id: "4747",
+    name: "Capybara Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://www.capybara.exchange",
+    description: "The 1st Launchpad & Decentralized Exchange on kaia chain. Hyper-capital-efficient, transparent, & community-first.",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/capybara-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Klaytn"],
+    oracles: [],
+    forkedFrom: [],
+    module: "capybara-exchange/index.js",
+    twitter: "CapybaraDEX",
+    listedAt: 1718026081
+  },
 ]
 
 export default data3

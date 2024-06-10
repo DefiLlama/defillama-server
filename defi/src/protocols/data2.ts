@@ -27003,7 +27003,7 @@ const data2: Protocol[] = [
   {
     id: "2574",
     name: "HXRO Network",
-    address: "solana:0x4bd70556ae3f8a6ec6c4080a0c327b24325438f3",
+    address: "solana:HxhWkVpk5NS4Ltg5nij2G671CKXFRKPK8vy271Ub4uEK",
     symbol: "HXRO",
     url: "https://hxro.com",
     description:

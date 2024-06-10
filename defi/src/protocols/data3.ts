@@ -20338,6 +20338,7 @@ const data3: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/blex-io"],
     listedAt: 1696846653
   },
+/*
   {
     id: "3606",
     name: "diva",
@@ -20360,6 +20361,7 @@ const data3: Protocol[] = [
     github: ["staking-foundation"],
     listedAt: 1696868095
   },
+*/
   {
     id: "3607",
     name: "Beam Swap",

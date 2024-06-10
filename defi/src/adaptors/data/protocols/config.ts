@@ -180,4 +180,8 @@ export default {
         enabled: true,
         id: "4524"
     },
+    "capybara-exchange": {
+        enabled: true,
+        id: "4747",
+    }
 } as AdaptorsConfig

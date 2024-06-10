@@ -2794,5 +2794,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "polkadex": {
+        enabled: true,
+        id: "4699"
     }
 } as AdaptorsConfig

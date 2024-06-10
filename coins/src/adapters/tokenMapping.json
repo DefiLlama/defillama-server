@@ -394,6 +394,13 @@
       "to": "ethereum:0xa663b02cf0a4b149d2ad41910cb81e23e1c41c32"
     }
   },
+  "stacks": {
+    "sp2c2yfp12ajzb4mabjbaj55xecvs7e4pmmz89yzr.arkadiko-token::diko": {
+      "decimals": "6",
+      "symbol": "DIKO",
+      "to": "coingecko#arkadiko-protocol"
+    }
+  },
   "arbitrum": {
     "0x993614e1c8c9c5abe49462ce5702431978fd767f": {
       "decimals": "18",

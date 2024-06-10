@@ -2198,5 +2198,9 @@ export default {
     "dragonswap-sei": {
         enabled: true,
         id: "4720"
+    },
+    "wen-markets": {
+        enabled: true,
+        id: "4733"
     }
 } as AdaptorsConfig

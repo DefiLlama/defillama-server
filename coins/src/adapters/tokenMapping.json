@@ -395,6 +395,21 @@
     }
   },
   "arbitrum": {
+    "0x993614e1c8c9c5abe49462ce5702431978fd767f": {
+      "decimals": "18",
+      "symbol": "S*ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x8d66ff1845b1bacc6e87d867ca4680d05a349ca8": {
+      "decimals": "6",
+      "symbol": "S*USDT",
+      "to": "coingecko#tether"
+    },
+    "0x6ea313859a5d9f6ff2a68f529e6361174bfd2225": {
+      "decimals": "6",
+      "symbol": "S*USDC",
+      "to": "coingecko#usd-coin"
+    },
     "0x0eda601e814cf942a17c0ae3f97dbbeb855c03e9": {
       "decimals": "18",
       "symbol": "wstjUSDC",

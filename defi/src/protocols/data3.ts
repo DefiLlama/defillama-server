@@ -45095,7 +45095,7 @@ const data3: Protocol[] = [
     description: "The DragonSwap Protocol is a publicly accessible, open-source framework designed for facilitating liquidity and enabling the trade of ERC20 tokens on the SEI EVM network. It bypasses the need for trusted middlemen and removes superfluous rent-seeking behavior, promoting secure, user-friendly, and efficient trading activities. This protocol is constructed to be permanent and non-upgradeable, ensuring it remains impervious to censorship.",
     chain: "Sei",
     logo: `${baseIconsUrl}/dragon-swap.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -45106,6 +45106,10 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     github: ["dragonswap-app"],
+    audit_links: [
+      "https://github.com/dragonswap-app/dragonswap-core/blob/master/audits/20240209_Paladin_DragonSwap_Final_Report.pdf",
+      "https://github.com/dragonswap-app/dragonswap-farming/blob/main/audits/20240418_Paladin_DragonSwapStaker_Final_Report.pdf"
+    ],
     listedAt: 1717532780
   },
   {

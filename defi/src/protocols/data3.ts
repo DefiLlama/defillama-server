@@ -45945,6 +45945,29 @@ const data3: Protocol[] = [
     audit_links: ["https://scalebit.xyz/reports/MoveGPT-Final-Audit-Report.pdf"],
     listedAt: 1718109892
   },
+  {
+    id: "4759",
+    name: "Chad Finance",
+    address: "scroll:0x0DF45d6e3BC41fd8e50d9e227215413053c003Ad",
+    symbol: "CHAD",
+    url: "https://chadfinance.xyz/",
+    description:
+      "Decentralized exchange (DEX) protocol based on the Uniswap V3 framework. ChadFinance leverages the innovative features of Uniswap V3 and brings them to the Scroll mainnet.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/chadfinance.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "chadfinance/index.js",
+    twitter: "chadfinancexyz",
+    audit_links: ["https://github.com/ch4dfinance/Chad-Finance/blob/main/ChadFinanceAudit.pdf"],
+    listedAt: 1718124635
+  },
 ]
 
 export default data3

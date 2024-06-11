@@ -45948,7 +45948,7 @@ const data3: Protocol[] = [
   {
     id: "4759",
     name: "Chad Finance",
-    address: "scroll:0x0DF45d6e3BC41fd8e50d9e227215413053c003Ad",
+    address: null,
     symbol: "CHAD",
     url: "https://chadfinance.xyz/",
     description:
@@ -45962,7 +45962,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Scroll"],
     oracles: [],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V3"],
     module: "chadfinance/index.js",
     twitter: "chadfinancexyz",
     audit_links: ["https://github.com/ch4dfinance/Chad-Finance/blob/main/ChadFinanceAudit.pdf"],

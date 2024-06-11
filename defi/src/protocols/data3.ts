@@ -45744,6 +45744,27 @@ const data3: Protocol[] = [
     twitter: "jigsawdefi",
     listedAt: 1718069543
   },
+  {
+    id: "4750",
+    name: "BBQSwap",
+    address: "ham:0x492AdEF6630991845df5d684E31c648cA70Da9F3",
+    symbol: "BBQ",
+    url: "https://bbqswap.xyz/#/swap",
+    description: "Stake, farm, and grill your way to juicy rewards with BBQswap",
+    chain: "Ham",
+    logo: `${baseIconsUrl}/bbqswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ham"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "BBQSwap/index.js",
+    twitter: "BBQswap",
+    listedAt: 1718095079
+  },
 ]
 
 export default data3

@@ -27901,13 +27901,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2613",
-    name: "Mellow Protocol",
+    name: "Mellow Yield",
     address: null,
     symbol: "-",
     url: "https://mellow.finance",
     description: "Mellow Protocol is a permissionless system for active liquidity management and building trustless automatic DeFi strategies",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/genius.jpg`,
+    logo: `${baseIconsUrl}/mellow-yield.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -27919,8 +27919,8 @@ const data2: Protocol[] = [
     module: "MellowProtocol/index.js",
     twitter: "mellowprotocol",
     audit_links: ["https://github.com/mellow-finance/mellow-audits"],
+    parentProtocol: "parent#mellow-protocol",
     listedAt: 1677607439,
-    github: ["mellow-finance"]
   },
   {
     id: "2614",

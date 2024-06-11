@@ -45878,24 +45878,25 @@ const data3: Protocol[] = [
   },
   {
     id: "4756",
-    name: "Mellow V2",
+    name: "Mellow LRT",
     address: null,
     symbol: "-",
     url: "https://mellow.finance/",
     description:
       "Mellow Protocol is a permissionless system for active liquidity management and building trustless automatic DeFi strategies",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/mellow-v2.jpg`,
+    logo: `${baseIconsUrl}/mellow-lrt.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield Aggregator",
+    category: "Liquid Restaking",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
     module: "mellow-protocol-v2/index.js",
     twitter: "mellowprotocol",
+    parentProtocol: "parent#mellow-protocol",
     listedAt: 1718106253
   },
   {

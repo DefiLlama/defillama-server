@@ -4648,6 +4648,18 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:mavxyz.eth"],
     twitter: "mavprotocol",
   },
+  {
+    id: "parent#mellow-protocol",
+    name: "Mellow Protocol",
+    url: "https://mellow.finance",
+    description: "Mellow Protocol is a permissionless system for active liquidity management and building trustless automatic DeFi strategies",
+    logo: `${baseIconsUrl}/mellow-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "mellowprotocol",
+    github: ["mellow-finance"]
+  },
 ];
 
 export default parentProtocols;

@@ -4638,12 +4638,6 @@
       "decimals": "8",
       "symbol": "AMAPT",
       "to": "coingecko#amnis-aptos"
-    },
-    "0x2ebb2ccac5e027a87fa0e2e5f656a3a4238d6a48d93ec9b610d570fc0aa0df12": {
-      "name": "CELLANA",
-      "decimals": "8",
-      "symbol": "CELL",
-      "to": "coingecko#cellana-finance"
     }
   },
   "dogechain": {

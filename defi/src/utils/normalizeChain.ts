@@ -3073,6 +3073,20 @@ export const chainCoingeckoIds = {
     url: "https://blog.iota.org/iotas-evm-mainnet-launch/",
     chainId: 8822
   },
+  "Ham": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "HamOnWarpcast",
+    url: "https://ham.fun",
+    chainId: 5112,
+  },
+
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3729,6 +3743,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Joltify"
     case "iotaevm":
       return "IOTA EVM"
+    case "ham":
+      return "Ham"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

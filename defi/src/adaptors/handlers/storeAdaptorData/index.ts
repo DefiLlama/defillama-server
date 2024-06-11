@@ -15,6 +15,7 @@ import { storeAdapterRecord } from "../../db-utils/db2";
 import { elastic } from '@defillama/sdk';
 import { getUnixTimeNow } from "../../../api2/utils/time";
 import { fork } from 'child_process'
+import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
 
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
@@ -178,9 +179,11 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }
-
+      const storedData: any = {}
+      const adaptorRecordTypeByValue: any  = Object.fromEntries(Object.entries(AdaptorRecordType).map(([key, value]) => [value, key]))
       for (const [recordType, record] of Object.entries(rawRecords)) {
         // console.info("STORING -> ", module, adapterType, recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType, protocol.defillamaId, protocol.versionKey)
+        storedData[adaptorRecordTypeByValue[recordType]] = record
         adaptorRecords[recordType] = new AdaptorRecord(recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType)
         const promise = storeAdaptorRecord(adaptorRecords[recordType], LAMBDA_TIMESTAMP)
         promises.push(promise)
@@ -189,6 +192,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       if (adapterRecord)
         await storeAdapterRecord(adapterRecord)
       await Promise.all(promises)
+      if (process.env.runLocal === 'true')
+        printData(storedData, recordTimestamp, protocol.module)
     }
     catch (error) {
       try { (error as any).module = module } catch (e) { }
@@ -206,6 +211,56 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   }
 };
 
+type chainObjet = {
+  [chain: string]: {
+    [key: string]: any
+  }
+}
+
+function printData(data: any, timestamp?: number, protocolName?: string ) {
+  const chains: chainObjet = {};
+  console.info(`\nrecord timestamp: ${timestamp}`)
+
+  // Collect data from all chains and keys
+  for (const [mainKey, chainData] of Object.entries(data)) {
+    for (const [chain, values] of Object.entries(chainData as any)) {
+      if (!chains[chain]) {
+        chains[chain] = { protocols: {}, versions: {} };
+      }
+      for (const [subKey, value] of Object.entries(values as any)) {
+        if (subKey === protocolName) {
+          chains[chain].protocols[mainKey] = value;
+        } else {
+          if (!chains[chain].versions[subKey]) {
+            chains[chain].versions[subKey] = {};
+          }
+          chains[chain].versions[subKey][mainKey] = value;
+        }
+      }
+    }
+  }
+
+  // Print data, prioritizing protocol matches and handling versions otherwise
+  for (const [chain, values] of Object.entries(chains)) {
+    if (Object.keys(values.protocols).length > 0) {
+      console.info('')
+      console.log(`chain: ${chain}`);
+      for (const [key, value] of Object.entries(values.protocols)) {
+        console.log(`${key}: ${humanizeNumber(Number(value))}`);
+      }
+    } else {
+      for (const [version, versionData] of Object.entries(values.versions)) {
+        console.info('')
+        console.log(`chain: ${chain}`);
+        console.log(`version: ${version}`);
+        for (const [key, value] of Object.entries(versionData as any)) {
+          console.log(`${key}: ${humanizeNumber(Number(value))}`);
+        }
+      }
+    }
+  }
+  console.info('\n')
+}
 
 /* const runAdapterInSubprocess = ({ adapter, endTimestamp, chainBlocks, module, version, adapterVersion }: any) => {
   return new Promise((resolve, reject) => {

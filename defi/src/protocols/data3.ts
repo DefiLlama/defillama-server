@@ -42161,7 +42161,7 @@ const data3: Protocol[] = [
     address: "arbitrum:0x87AAfFdF26c6885f6010219208D5B161ec7609c0",
     symbol: "EQU",
     url: "https://equation.org",
-    description: "Equation is a decentralized perpetual contract built on Arbitrum. With its innovative BRMM model, Equation provides both traders and Liquidity Providers (LPs) with up to 200x leverage, enabling traders to establish larger and unrestricted positions while enhancing capital efficiency for LPs.",
+    description: "Equation V3 is the first zero trading fee Perpetual DEX built on Arbitrum, audited by third-party auditor http://ABDK.As one of the DeFi protocols advocating for Fair Launch, Equation is showing the world in action how the power of community-driven innovation can shape the future of decentralized finance. It prioritizes security and transparency and aims to provide traders with a reliable and secure environment for trading perpetual contracts.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/equation-v3.jpg`,
     audits: "0",

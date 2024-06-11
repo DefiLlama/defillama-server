@@ -45896,6 +45896,52 @@ const data3: Protocol[] = [
     twitter: "mellowprotocol",
     listedAt: 1718106253
   },
+  {
+    id: "4757",
+    name: "Symbiotic",
+    address: null,
+    symbol: "-",
+    url: "https://symbiotic.fi",
+    description: "Symbiotic is a generalized shared security system enabling decentralized networks to bootstrap powerful, fully sovereign ecosystems.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/symbiotic.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "symbiotic/index.js",
+    twitter: "symbioticfi",
+    audit_links: ["https://github.com/symbioticfi/collateral/tree/main/audits"],
+    github: ["symbioticfi"],
+    listedAt: 1718109849
+  },
+  {
+    id: "4758",
+    name: "MoveGPT",
+    address: "0x63be1898a424616367e19bbd881f456a78470e123e2770b5b5dcdceb61279c54::movegpt_token::MovegptCoin",
+    symbol: "MGPT",
+    url: "https://movegpt.io",
+    description:
+      "Start your project on MoveGPT Launchpad",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/movegpt.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "movegpt/index.js",
+    twitter: "MoveGPT",
+    audit_links: ["https://scalebit.xyz/reports/MoveGPT-Final-Audit-Report.pdf"],
+    listedAt: 1718109892
+  },
 ]
 
 export default data3

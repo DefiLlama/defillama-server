@@ -685,6 +685,7 @@ export default {
         id: "2643"
     },
     "maverick": {
+        parentId: "Maverick Protocol",
         enabled: true,
         id: "2644"
     },
@@ -2206,5 +2207,10 @@ export default {
     "cellula": {
         enabled: true,
         id: "4705"
+    },
+    "maverick-v2": {
+        parentId: "Maverick Protocol",
+        enabled: true,
+        id: "4752"
     }
 } as AdaptorsConfig

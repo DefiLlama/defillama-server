@@ -45989,6 +45989,29 @@ const data3: Protocol[] = [
     twitter: "ethosx_finance",
     listedAt: 1718129908
   },
+  {
+    id: "4761",
+    name: "ChadFinance",
+    address: null,
+    symbol: "CHAD",
+    url: "https://chadfinance.xyz",
+    description:
+      "Decentralized exchange (DEX) protocol based on the Uniswap V3 framework. ChadFinance leverages the innovative features of Uniswap V3 and brings them to the Scroll mainnet.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/chadfinance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "chadfinance/index.js",
+    twitter: "chadfinancexyz",
+    audit_links: ["https://github.com/ch4dfinance/Chad-Finance/blob/main/ChadFinanceAudit.pdf"],
+    listedAt: 1718129430
+  },
 ]
 
 export default data3

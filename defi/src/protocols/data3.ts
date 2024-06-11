@@ -45945,6 +45945,50 @@ const data3: Protocol[] = [
     audit_links: ["https://scalebit.xyz/reports/MoveGPT-Final-Audit-Report.pdf"],
     listedAt: 1718109892
   },
+  {
+    id: "4759",
+    name: "Credbull",
+    address: null,
+    symbol: "-",
+    url: "https://credbull.io",
+    description:
+      "High Fixed Yield Structured Products",
+    chain: "Bitlayer",
+    logo: `${baseIconsUrl}/credbull.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Bitlayer"],
+    oracles: [],
+    forkedFrom: [],
+    module: "credbull/index.js",
+    twitter: "credbullDeFi",
+    listedAt: 1718129108
+  },
+  {
+    id: "4760",
+    name: "EthosX",
+    address: null,
+    symbol: "-",
+    url: "https://www.ethosx.finance",
+    description:
+      "Derivatives on arbitrum and bsc chain.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ethosx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum", "Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ethosx/index.js",
+    twitter: "ethosx_finance",
+    listedAt: 1718129908
+  },
 ]
 
 export default data3

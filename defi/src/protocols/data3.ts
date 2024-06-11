@@ -33701,14 +33701,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4206",
-    name: "BladeSwap",
+    name: "BladeSwap AMM",
     address: "blast:0xD1FedD031b92f50a50c05E2C45aF1aDb4CEa82f4",
     symbol: "BLADE",
     url: "https://bladeswap.xyz",
     description:
       "Velocore V2 fork on Blast",
     chain: "Blast",
-    logo: `${baseIconsUrl}/bladeswap.jpg`,
+    logo: `${baseIconsUrl}/bladeswap-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -33719,7 +33719,7 @@ const data3: Protocol[] = [
     twitter: "Bladeswapxyz",
     forkedFrom: ["Velocore V2"],
     oracles: [],
-    github: ["Bladeswap"],
+    parentProtocol: "parent#bladeswap",
     listedAt: 1709294950
   },
   {
@@ -45677,6 +45677,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Algebra Integral"],
     module: "bladeswap-CL/index.js",
     twitter: "Bladeswapxyz",
+    parentProtocol: "parent#bladeswap",
     listedAt: 1718018350
   },
   {

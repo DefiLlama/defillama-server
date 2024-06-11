@@ -45876,7 +45876,6 @@ const data3: Protocol[] = [
     twitter: "MagicSeaDEX",
     listedAt: 1718106100
   },
-  /*
   {
     id: "4756",
     name: "Mellow V2",
@@ -45899,7 +45898,6 @@ const data3: Protocol[] = [
     twitter: "mellowprotocol",
     listedAt: 1718106253
   },
-  */
   {
     id: "4757",
     name: "Symbiotic",

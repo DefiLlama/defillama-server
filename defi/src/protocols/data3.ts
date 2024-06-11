@@ -45834,6 +45834,7 @@ const data3: Protocol[] = [
     name: "Catalist",
     address: null,
     symbol: "-",
+    assetToken: "bACE",
     url: "https://catalist.app",
     description: "Building on the foundation of gaming and social ecosystem, introducing staking feature to explore the endless possibilities of Fusionist and lead the way to the future.",
     chain: "Endurance",
@@ -45850,6 +45851,50 @@ const data3: Protocol[] = [
     twitter: "CatalistFinance",
     github: ["catalist-ace"],
     listedAt: 1718102947
+  },
+  {
+    id: "4755",
+    name: "MagicSea LB",
+    address: null,
+    symbol: "-",
+    url: "https://app.magicsea.finance/swap",
+    description:
+      "MagicSea is the leading Decentralized Exchange (DEX) and NFT Marketplace on IOTA and Shimmer EVM offering a premier Trading and Market Making experience",
+    chain: "ShimmerEVM",
+    logo: `${baseIconsUrl}/magicsea-lb.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ShimmerEVM"],
+    oracles: [],
+    forkedFrom: [],
+    module: "magicsea-lb-v2/index.js",
+    twitter: "MagicSeaDEX",
+    listedAt: 1718106100
+  },
+  {
+    id: "4756",
+    name: "Mellow V2",
+    address: null,
+    symbol: "-",
+    url: "https://mellow.finance/",
+    description:
+      "Mellow Protocol is a permissionless system for active liquidity management and building trustless automatic DeFi strategies",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mellow-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "mellow-protocol-v2/index.js",
+    twitter: "mellowprotocol",
+    listedAt: 1718106253
   },
 ]
 

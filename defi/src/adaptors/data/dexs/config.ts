@@ -2370,7 +2370,7 @@ export default {
     },
     "aftermath-fi-amm": {
         parentId: "Aftermath Finance",
-        "enabled": true,
+        "enabled": false,
         "id": "3259"
     },
     "sanctum": {
@@ -2780,5 +2780,23 @@ export default {
         parentId: "Keller Finance",
         enabled: true,
         id: "4583"
+    },
+    "dragonswap-sei": {
+        enabled: true,
+        id: "4720"
+    },
+    "basin": {
+        id: "4703",
+        enabled: true,
+        protocolsData: {
+            "spot": {
+                "id": "4703",
+                "enabled": true,
+            }
+        }
+    },
+    "polkadex": {
+        enabled: true,
+        id: "4699"
     }
 } as AdaptorsConfig

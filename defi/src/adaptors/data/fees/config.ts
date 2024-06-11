@@ -106,7 +106,8 @@ export default {
     },
     "litecoin": {
         "enabled": true,
-        "id": "4499"
+        "id": "2",
+        "isChain": true
     },
     "looksrare": {
         "enabled": true,
@@ -1907,11 +1908,11 @@ export default {
     },
     "instadapp": {
         "enabled": true,
-        "id": "120"
+        "id": "4742" // old id: 120
     },
     "summer.fi": {
         "enabled": true,
-        "id": "3284"
+        "id": "4741"  // old id: 3284
     },
     "integral": {
         "enabled": true,
@@ -2194,4 +2195,16 @@ export default {
         enabled: true,
         "id": "4737"
     },
+    "dragonswap-sei": {
+        enabled: true,
+        id: "4720"
+    },
+    "wen-markets": {
+        enabled: true,
+        id: "4733"
+    },
+    "cellula": {
+        enabled: true,
+        id: "4705"
+    }
 } as AdaptorsConfig

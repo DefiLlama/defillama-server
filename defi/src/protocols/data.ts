@@ -307,6 +307,8 @@ const data: Protocol[] = [
     oracles: [], // chainlink for lending?
     parentProtocol: "parent#sushi",
   },
+  /*
+  Instadapp wallets
   {
     id: "120",
     name: "Instadapp",
@@ -330,6 +332,7 @@ const data: Protocol[] = [
     governanceID: ["snapshot:instadapp-gov.eth"],
     github: ["InstaDApp"] //check
   },
+  */
   {
     id: "121",
     name: "CREAM Lending",
@@ -2308,7 +2311,7 @@ const data: Protocol[] = [
   {
     id: "214",
     name: "Raydium",
-    address: "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+    address: "solana:4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
     symbol: "RAY",
     url: "https://raydium.io",
     description: "An on-chain order book AMM powering the evolution of DeFi.",
@@ -3718,7 +3721,7 @@ const data: Protocol[] = [
   {
     id: "280",
     name: "Oxygen",
-    address: "z3dn17yLaGMKffVogeFHQ9zWVcXgqgf3PQnDsNs2g6M",
+    address: "solana:z3dn17yLaGMKffVogeFHQ9zWVcXgqgf3PQnDsNs2g6M",
     symbol: "OXY",
     url: "https://www.oxygen.org/",
     description: "Money market on Solana",
@@ -4463,7 +4466,7 @@ const data: Protocol[] = [
   {
     id: "315",
     name: "Tulip Protocol",
-    address: "TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs",
+    address: "solana:TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs",
     symbol: "TULIP",
     url: "https://tulip.garden/",
     description: "The Efficient Solana Yield Aggregator",
@@ -4710,7 +4713,7 @@ const data: Protocol[] = [
     cmcId: "7311",
     category: "Yield Aggregator",
     chains: [
-      "Binance",
+//    "Binance",
       "Polygon",
       "Avalanche",
       "Heco",

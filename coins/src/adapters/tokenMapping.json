@@ -394,7 +394,29 @@
       "to": "ethereum:0xa663b02cf0a4b149d2ad41910cb81e23e1c41c32"
     }
   },
+  "stacks": {
+    "sp2c2yfp12ajzb4mabjbaj55xecvs7e4pmmz89yzr.arkadiko-token::diko": {
+      "decimals": "6",
+      "symbol": "DIKO",
+      "to": "coingecko#arkadiko-protocol"
+    }
+  },
   "arbitrum": {
+    "0x993614e1c8c9c5abe49462ce5702431978fd767f": {
+      "decimals": "18",
+      "symbol": "S*ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x8d66ff1845b1bacc6e87d867ca4680d05a349ca8": {
+      "decimals": "6",
+      "symbol": "S*USDT",
+      "to": "coingecko#tether"
+    },
+    "0x6ea313859a5d9f6ff2a68f529e6361174bfd2225": {
+      "decimals": "6",
+      "symbol": "S*USDC",
+      "to": "coingecko#usd-coin"
+    },
     "0x0eda601e814cf942a17c0ae3f97dbbeb855c03e9": {
       "decimals": "18",
       "symbol": "wstjUSDC",
@@ -616,12 +638,18 @@
       "symbol": "CAKE",
       "to": "coingecko#pancakeswap-token"
     },
-    "0x63be1898a424616367e19bbd881f456a78470e123e2770b5b5dcdceb61279c54::movegpt_token::MovegptCoin": {
-      "name": "movegpt",
+    "0x2ebb2ccac5e027a87fa0e2e5f656a3a4238d6a48d93ec9b610d570fc0aa0df12": {
+      "name": "CELLANA",
       "decimals": "8",
-      "symbol": "MGPT",
-      "to": "coingecko#movegpt"
-    }
+      "symbol": "CELL",
+      "to": "coingecko#cellana-finance"
+    },
+      "0x63be1898a424616367e19bbd881f456a78470e123e2770b5b5dcdceb61279c54::movegpt_token::MovegptCoin": {
+        "name": "MOVEGPT",
+        "decimals": "8",
+        "symbol": "MGPT",
+        "to": "coingecko#movegpt"
+      }
   },
   "velas": {
     "0x0000000000000000000000000000000000000000": {

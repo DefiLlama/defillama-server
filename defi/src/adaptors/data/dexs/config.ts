@@ -2370,7 +2370,7 @@ export default {
     },
     "aftermath-fi-amm": {
         parentId: "Aftermath Finance",
-        "enabled": true,
+        "enabled": false,
         "id": "3259"
     },
     "sanctum": {

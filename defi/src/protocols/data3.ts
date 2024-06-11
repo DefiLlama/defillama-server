@@ -45723,6 +45723,27 @@ const data3: Protocol[] = [
     github: ["zkxprotocol"],
     listedAt: 1718050520
   },
+  {
+    id: "4749",
+    name: "Jigsaw",
+    address: null,
+    symbol: "-",
+    url: "https://app.jigsaw.finance/",
+    description: "Jigsaw is a CDP-based stablecoin protocol that offers dynamic collateral management, allowing users to move collateral between whitelisted protocols and assets and borrow the overcollateralized stablecoin jUSD",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/jigsaw.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "jigsaw/index.js",
+    twitter: "jigsawdefi",
+    listedAt: 1718069543
+  },
 ]
 
 export default data3

@@ -2202,5 +2202,9 @@ export default {
     "wen-markets": {
         enabled: true,
         id: "4733"
+    },
+    "cellula": {
+        enabled: true,
+        id: "4705"
     }
 } as AdaptorsConfig

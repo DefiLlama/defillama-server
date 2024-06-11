@@ -29869,6 +29869,29 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true
   },
-  
+  {
+    id: "2701",
+    name: "ASA.Gold",
+    address: null,
+    symbol: "-",
+    url: "https://asa.gold/",
+    description: "Tokenized gold token with publicly auditable gold reserves. We publish the full composition of our reserves and provide you with the onchain eshop.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/images/logo.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Algorand"],
+    oracles: [],
+    forkedFrom: [],
+    module: "asa-gold/index.js",
+    twitter: "BiatecGroup",
+    audit_links: [
+      "https://www.asa.gold/proof-of-reserve",
+    ],
+    listedAt: 1718122700
+  },
 ]
 export default data2;

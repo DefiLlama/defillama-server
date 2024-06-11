@@ -3978,6 +3978,11 @@
       "decimals": "18",
       "symbol": "WETC",
       "to": "coingecko#ethereum-classic"
+    },
+    "0xDE093684c796204224BC081f937aa059D903c52a": {
+      "decimals": "6",
+      "symbol": "USC",
+      "to": "coingecko#usd-coin"
     }
   },
   "hoo": {

@@ -4624,6 +4624,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AnzenFinance",
   },
+  {
+    id: "parent#bladeswap",
+    name: "BladeSwap",
+    url: "https://bladeswap.xyz",
+    description: "Blast native Dex with real-time vote reward & native multi-call",
+    logo: `${baseIconsUrl}/bladeswap.jpg`,
+    gecko_id: "bladeswap",
+    cmcId: null,
+    chains: [],
+    github: ["Bladeswap"],
+    twitter: "Bladeswapxyz",
+  },
 ];
 
 export default parentProtocols;

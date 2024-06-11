@@ -45998,7 +45998,7 @@ const data3: Protocol[] = [
     description:
       "Decentralized exchange (DEX) protocol based on the Uniswap V3 framework. ChadFinance leverages the innovative features of Uniswap V3 and brings them to the Scroll mainnet.",
     chain: "Scroll",
-    logo: `${baseIconsUrl}/chadfinance.png`,
+    logo: `${baseIconsUrl}/chadfinance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

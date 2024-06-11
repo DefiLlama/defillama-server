@@ -45807,6 +45807,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "maverick-v2/index.js",
     twitter: "mavprotocol",
+    parentProtocol: "parent#maverick-protocol",
     listedAt: 1718102971
   },
   {

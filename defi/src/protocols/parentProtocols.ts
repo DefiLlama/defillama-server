@@ -4636,6 +4636,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["Bladeswap"],
     twitter: "Bladeswapxyz",
   },
+  {
+    id: "parent#maverick-protocol",
+    name: "Maverick Protocol",
+    url: "https://www.mav.xyz",
+    description: "The DeFi infrastructure built to bring higher capital efficiency + greater capital control to the liquidity market, powered by Maverick AMM.",
+    logo: `${baseIconsUrl}/maverick-protocol.jpg`,
+    gecko_id: "maverick-protocol",
+    cmcId: "18037",
+    chains: [],
+    governanceID: ["snapshot:mavxyz.eth"],
+    twitter: "mavprotocol",
+  },
 ];
 
 export default parentProtocols;

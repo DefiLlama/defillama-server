@@ -83,4 +83,5 @@ export default {
   ambitFinance: require("./yield/ambit-finance"),
   eigenpie: require("./yield/eigenpie"),
   bitcow: require("./markets/bitcow"),
+  pythAgg: require("./oracles/pythAggregatorV3"),
 };

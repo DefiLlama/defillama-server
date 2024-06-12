@@ -10,7 +10,7 @@ export const supportedChains = [
   {
     name: "Polygon",
     subgraphEndpoint:
-      'https://gateway-arbitrum.network.thegraph.com/api/[api-key]/subgraphs/id/uQxLz6EarmJcr2ymRRmTnrRPi8cCqas4XcPQb71HBvw',
+      `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_PROTOCOL}/subgraphs/id/uQxLz6EarmJcr2ymRRmTnrRPi8cCqas4XcPQb71HBvw`,
     chainId: 137,
     merkl: true,
     identifier: "polygon",
@@ -18,7 +18,7 @@ export const supportedChains = [
   {
     name: "Arbitrum",
     subgraphEndpoint:
-      'https://gateway-arbitrum.network.thegraph.com/api/[api-key]/subgraphs/id/HVC4Br5yprs3iK6wF8YVJXy4QZWBNXTCFp8LPe3UpcD4',
+      `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_PROTOCOL}/subgraphs/id/HVC4Br5yprs3iK6wF8YVJXy4QZWBNXTCFp8LPe3UpcD4`,
     chainId: 42161,
     merkl: true,
     identifier: "arbitrum",

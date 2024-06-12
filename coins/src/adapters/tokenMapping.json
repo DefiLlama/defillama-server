@@ -2871,6 +2871,16 @@
     }
   },
   "btr": {
+    "0x7dcb50b2180bc896da1200d2726a88af5d2cbb5a": {
+      "decimals": "18",
+      "symbol": "ordi",
+      "to": "coingecko#ordi"
+    },
+    "0xe04d21d999faedf1e72ade6629e20a11a1ed14fa": {
+      "decimals": "18",
+      "symbol": "SolvBTC.m",
+      "to": "coingecko#solv-btc"
+    },
     "0x07373d112edc4570b46996ad1187bc4ac9fb5ed0": {
       "decimals": "18",
       "symbol": "BitUSD",

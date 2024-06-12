@@ -46124,6 +46124,50 @@ const data3: Protocol[] = [
     github: ["kodo-exchange"],
     listedAt: 1718187597
   },
+  {
+    id: "4767",
+    name: "XLink",
+    address: null,
+    symbol: "-",
+    url: "https://www.xlink.network",
+    description:
+      "Bitcoin Bridge aggregates liquidity across Bitcoin L2s, with an aim to bringing native-like DeFi experience to Bitcoin.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/xlink.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin", "Binance", "Stacks", "Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "xlink/index.js",
+    twitter: "XLinkbtc",
+    listedAt: 1718188954
+  },
+  {
+    id: "4768",
+    name: "Joltify RWA",
+    address: null,
+    symbol: "-",
+    url: "https://joltify.io",
+    description:
+      "The First EVM compatible game-changing L1 Public Chain built on the Cosmos SDK for Real-World Assets (RWA) and Beyond.",
+    chain: "Joltify",
+    logo: `${baseIconsUrl}/joltify-rwa.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA Lending",
+    chains: ["Joltify"],
+    oracles: [],
+    forkedFrom: [],
+    module: "joltify-rwa/index.js",
+    twitter: "joltify_finance",
+    listedAt: 1718189554
+  },
 ]
 
 export default data3

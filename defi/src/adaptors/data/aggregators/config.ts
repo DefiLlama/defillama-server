@@ -217,5 +217,9 @@ export default {
   "udex-agg": {
     "enabled": true,
     "id": "4704"
+  },
+  "injex": {
+    "enabled": true,
+    "id": "4762"
   }
 } as AdaptorsConfig;

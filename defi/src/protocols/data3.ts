@@ -45934,7 +45934,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/movegpt.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "movegpt",
     cmcId: null,
     category: "Launchpad",
     chains: ["Aptos"],

@@ -9732,8 +9732,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "557",
     name: "Meta Pool Near",
-    address: "near:0xc21ff01229e982d7c8b8691163b0a3cb8f357453",
-    symbol: "META",
+    address: "near:mpdao-token.near",
+    symbol: "MPDAO",
     url: "https://metapool.app",
     description: "Meta Pool is a liquid staking protocol built on the NEAR blockchain.",
     chain: "Near",

@@ -15799,8 +15799,8 @@ const data3: Protocol[] = [
   {
     id: "3405",
     name: "Meta Pool ETH",
-    address: "near:0xc21ff01229e982d7c8b8691163b0a3cb8f357453",
-    symbol: "META",
+    address: "near:mpdao-token.near",
+    symbol: "MPDAO",
     url: "https://metapool.app",
     description:
       "Meta Pool is a liquid staking protocol built on the NEAR and Ethereum blockchain.",

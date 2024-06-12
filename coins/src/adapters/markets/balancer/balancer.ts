@@ -24,7 +24,7 @@ const subgraphNames: { [chain: string]: string } = {
   avax:
     "https://gateway-arbitrum.network.thegraph.com/api/[api-key]/subgraphs/id/7asfmtQA1KYu6CP7YVm5kv4bGxVyfAHEiptt2HMFgkHu",
   xdai:
-    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-gnosis-chain-v2",
+    'https://gateway-arbitrum.network.thegraph.com/api/[api-key]/subgraphs/id/EJezH1Cp31QkKPaBDerhVPRWsKVZLrDfzjrLqpmv6cGg',
   polygon_zkevm:
     "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
   base:

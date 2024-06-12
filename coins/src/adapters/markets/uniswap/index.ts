@@ -18,7 +18,7 @@ const config = {
   zkSwap: { factory: '0x3a76e377ED58c8731F9DF3A36155942438744Ce3', chain: 'era', uniqueLPNames: true, },
   'eddy-fi': { factory: '0x9fd96203f7b22bCF72d9DCb40ff98302376cE09c', chain: 'zeta', getReservesAbi: alternateGetReservesAbi, },
   // pancakeswap: { endpoint: 'https://info-gateway.pancakeswap.com/subgraphs/v2/bsc/graphql', chain: 'bsc', factory: '0xca143ce32fe78f1f7019d7d551a6402fc5350c73', },
-  traderJoe: { chain: 'avax', factory: '0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10', endpoint: 'https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange' },
+  traderJoe: { chain: 'avax', factory: '0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10', endpoint: 'https://gateway-arbitrum.network.thegraph.com/api/[api-key]/subgraphs/id/9ZjERoA7jGANYNz1YNuFMBt11fK44krveEhzssJTWokM' },
   vvsFinance: { chain: 'cronos', factory: '0x3b44b2a187a7b3824131f8db5a74194d0a42fc15', },
   quickswap: { chain: 'polygon', factory: '0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32', endpoint: 'https://gateway-arbitrum.network.thegraph.com/api/[api-key]/subgraphs/id/FUWdkXWpi8JyhAnhKL5pZcVshpxuaUQG8JHMDqNCxjPd' },
   biswap: { chain: 'bsc', factory: '0x858e3312ed3a876947ea49d572a7c42de08af7ee', },

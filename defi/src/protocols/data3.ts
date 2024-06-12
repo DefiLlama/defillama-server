@@ -46034,6 +46034,51 @@ const data3: Protocol[] = [
     twitter: "Injex_fi",
     listedAt: 1718150642
   },
+  {
+    id: "4763",
+    name: "RIZE",
+    address: null,
+    symbol: "-",
+    url: "https://www.rizefi.com",
+    description:
+      "Earn more, worry less.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rize.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "rize/index.js",
+    twitter: "RIZE_Fi",
+    listedAt: 1718186742
+  },
+  {
+    id: "4764",
+    name: "Clober V2",
+    address: null,
+    symbol: "-",
+    url: "https://app.clober.io/",
+    description:
+      "Clober is a fully on-chain orderbook DEX protocol that offers CEX-equivalent trading experience, powered by Limit Order Book with Segment Tree for Efficient Order-matching (LOBSTER) algorithm.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/clober-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base", "zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "clober-v2/index.js",
+    twitter: "CloberDEX",
+    audit_links: ["https://github.com/clober-dex/v2-core/blob/master/audits/Clober_V2.pdf"],
+    listedAt: 1718186942
+  },
 ]
 
 export default data3

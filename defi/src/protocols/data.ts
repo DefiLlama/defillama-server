@@ -9549,7 +9549,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "defis-network",
     cmcId: "6610",
     category: "Dexes",
-    chains: ["EOS","DFS Network"],
+    chains: ["EOS"],
     module: "dfs/index.js",
     twitter: "dfsdeveloper",
     audit_links: [

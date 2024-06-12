@@ -9542,14 +9542,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://dfs.land",
     description:
       "DFS Network is a blockchain built for mass adoption Web3 products and services.  Fast, free, user-friendly, composable, green, and globally distributed.",
-    chain: "DFS",
+    chain: "DFS Network",
     logo: `${baseIconsUrl}/dfs-network.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "defis-network",
     cmcId: "6610",
     category: "Dexes",
-    chains: ["EOS"],
+    chains: ["EOS","DFS Network"],
     module: "dfs/index.js",
     twitter: "dfsdeveloper",
     audit_links: [

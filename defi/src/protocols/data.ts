@@ -7412,7 +7412,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Dexes", // tvl also counts lending/cdp product
-    chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective"],
+    chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective", "Arbitrum", "Base"],
     module: "balanced/index.js",
     twitter: "BalancedDAO",
     audit_links: ["https://docs.balanced.network/security#smart-contract-audits"],
@@ -9536,14 +9536,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "548",
-    name: "DeFis Network",
-    address: "eos:DFS",
+    name: "DFS Network",
+    address: "dfs:DFS",
     symbol: "DFS",
-    url: "https://defis.network",
+    url: "https://dfs.land",
     description:
-      "DeFis Network is the most decentralized finance network built on EOSIO that aggregates all valuable DeFi-protocols.",
+      "DFS Network is a blockchain built for mass adoption Web3 products and services.  Fast, free, user-friendly, composable, green, and globally distributed.",
     chain: "EOS",
-    logo: `${baseIconsUrl}/defis-network.png`,
+    logo: `${baseIconsUrl}/dfs-network.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "defis-network",
@@ -9551,12 +9551,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["EOS"],
     module: "dfs/index.js",
-    twitter: "DFSnetworks",
+    twitter: "dfsdeveloper",
     audit_links: [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=ca2c97083e94d0958e9376b770b16a7f8ddd53fb1e5f1b9cbabc0ccf8d157d40",
       "https://github.com/peckshield/publications/blob/master/audit_reports/DeFis-Network_Swap_audit_report_2020_20_cn_1_0.pdf",
     ],
-    github: ["defis-net"]
+    github: ["DFSNetwork"]
   },
   {
     id: "549",

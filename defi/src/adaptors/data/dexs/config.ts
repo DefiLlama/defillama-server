@@ -1416,6 +1416,7 @@ export default {
         id: "1778"
     },
     "maverick": {
+        parentId: "Maverick Protocol",
         enabled: true,
         id: "2644"
     },
@@ -2798,5 +2799,10 @@ export default {
     "polkadex": {
         enabled: true,
         id: "4699"
+    },
+    "maverick-v2": {
+        parentId: "Maverick Protocol",
+        enabled: true,
+        id: "4752"
     }
 } as AdaptorsConfig

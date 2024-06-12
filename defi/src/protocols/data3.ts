@@ -46012,6 +46012,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/ch4dfinance/Chad-Finance/blob/main/ChadFinanceAudit.pdf"],
     listedAt: 1718129430
   },
+  {
+    id: "4762",
+    name: "Injex Finance",
+    address: null,
+    symbol: "-",
+    url: "https://injex.fi/",
+    description:
+      "Swap Aggregator & Infrastructure Built on Injective.",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/injex-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Injective"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "Injex_fi",
+    listedAt: 1718150642
+  },
 ]
 
 export default data3

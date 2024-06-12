@@ -1,8 +1,9 @@
 import getExtras from "./extraLp";
 import { getUniV2Adapter } from "../../utils/uniV2";
 
-const sushiFactory = '0xc35DADB65012eC5796536bD9864eD8773aBc74C4'
-const alternateGetReservesAbi = 'function getReserves() view returns (uint112 _reserve0, uint112 _reserve1)'
+const sushiFactory = "0xc35DADB65012eC5796536bD9864eD8773aBc74C4";
+const alternateGetReservesAbi =
+  "function getReserves() view returns (uint112 _reserve0, uint112 _reserve1)";
 
 const config = {
   uniswap: { endpoint: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev', chain: 'ethereum' },
@@ -46,6 +47,7 @@ const config = {
   // zkswap: { chain: 'polygon_zkevm', factory: '0x51A0D4B81400581d8722627daFCd0c1Ff9357d1D', getReservesAbi: alternateGetReservesAbi, },
   aerodrome: { chain: 'base', factory: '0x420DD381b31aEf6683db6B902084cB0FFECe40Da', hasStablePools: true, },
   jibswap: { chain: 'jbc', factory: '0x4BBdA880C5A0cDcEc6510f0450c6C8bC5773D499', },
+  macaron: { chain: "btr", factory: "0x1037e9078df7ab09b9af78b15d5e7aad7c1afdd0", },
 }
 
 export function extraUniV2Lps(timestamp: number = 0) {
@@ -87,19 +89,18 @@ export const adapters: {
   [key: string]: Function;
 } = {
   extraUniV2Lps,
-}
+};
 
 Object.entries(config).forEach(([project, value]: any) => {
   if (Array.isArray(value)) {
     value.forEach((v) => {
-      if (!v.project) v.project = project
-      adapters[`${project}-${v.chain}`] = getUniV2Adapter(v)
-    })
+      if (!v.project) v.project = project;
+      adapters[`${project}-${v.chain}`] = getUniV2Adapter(v);
+    });
     return;
   }
 
-  if (!value.project)
-    value.project = project
+  if (!value.project) value.project = project;
 
-  adapters[project] = getUniV2Adapter(value)
-})
+  adapters[project] = getUniV2Adapter(value);
+});

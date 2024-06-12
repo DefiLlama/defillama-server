@@ -46079,6 +46079,51 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/clober-dex/v2-core/blob/master/audits/Clober_V2.pdf"],
     listedAt: 1718186942
   },
+  {
+    id: "4765",
+    name: "ASA.Gold",
+    address: null,
+    symbol: "-",
+    url: "https://www.asa.gold",
+    description:
+      "Tokenized gold token with publicly auditable gold reserves. We publish the full composition of our reserves and provide you with the onchain eshop.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/asa.gold.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Algorand"],
+    oracles: [],
+    forkedFrom: [],
+    module: "asa-gold/index.js",
+    twitter: "BiatecGroup",
+    listedAt: 1718187369
+  },
+  {
+    id: "4766",
+    name: "Kodo Exchange",
+    address: "taiko:0x7e91F29F8a213c8311712A8FC8c61219fb9477CB",
+    symbol: "KODO",
+    url: "https://www.kodo.exchange",
+    description:
+      "Kodo is the heartbeat of Taiko's liquidity. It is a native decentralized exchange on Taiko, supercharging capital efficiency with the ve33 flywheel.",
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/kodo-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Taiko"],
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    module: "kodo-exchange/index.js",
+    twitter: "kodohq",
+    github: ["kodo-exchange"],
+    listedAt: 1718187597
+  },
 ]
 
 export default data3

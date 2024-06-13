@@ -27,6 +27,7 @@ import steadefiUsdArb from "./steadefi_usdc_arb";
 import steadefiUsdEth from "./steadefi_usdc_eth";
 import steadefiUsdLink from "./steadefi_usdc_link";
 import steadefiUsdWbtc from "./steadefi_usdc_wbtc";
+import warlordAdapter from "./warlord";
 import opdxAdapter from "./odpxWethLP";
 import teahouseAdapter from "./teahouse";
 import gmdV2 from "./gmdV2";
@@ -358,6 +359,9 @@ export async function velgd(timestamp: number = 0) {
   return velgAdapter(timestamp);
 }
 
+export async function warlord(timestamp: number = 0) {
+  return warlordAdapter(timestamp);
+}
 
 export async function salt(timestamp: number = 0) {
   const writes: Write[] = []
@@ -411,4 +415,5 @@ export const adapters = {
   opdx,
   gmdV2,
   salt,
+  warlord,
 }

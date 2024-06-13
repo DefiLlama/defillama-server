@@ -57,7 +57,7 @@ let unknownTokens: string[] = [];
 export default async function getTokenPrices(
   chain: string,
   registry: string,
-  stataRegistry: string,
+  stataRegistry: string | null,
   version: string,
   timestamp: number
 ) {
@@ -113,17 +113,25 @@ export default async function getTokenPrices(
 
   if (stataRegistry) {
     const stata = await getStataAssetPrices(chain, stataRegistry, block);
-    const info = await getTokenInfo(
-      chain,
-      stata.map((r) => r.address),
-      block
-    );
+    const [info, redirectData] = await Promise.all([
+      getTokenInfo(
+        chain,
+        stata.map((r) => r.address),
+        block
+      ),
+      getTokenAndRedirectData(
+        stata.map((r) => r.underlying),
+        chain,
+        timestamp
+      ),
+    ]);
     stata.map((cfg, ix) => {
       addToDBWritesList(
         writes,
         chain,
         cfg.address,
-        undefined,
+        Number((BigInt(redirectData[ix].price) * cfg.rate) / BigInt(1e27)) /
+          1e8,
         info.decimals[ix].output,
         info.symbols[ix].output,
         timestamp,

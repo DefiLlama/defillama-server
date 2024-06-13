@@ -19,7 +19,7 @@ export function aave(timestamp: number = 0) {
     getTokenPrices(
       "arbitrum",
       "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
-      "0xD61BF98649EA8F8D09e184184777b1867F00E5CB",
+      "0x411D79b8cC43384FDE66CaBf9b6a17180c842511",
       "v3",
       timestamp
     ),

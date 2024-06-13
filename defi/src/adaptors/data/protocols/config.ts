@@ -193,5 +193,10 @@ export default {
         parentId: "VanillaSwap",
         enabled: true,
         id: "4601",
+    },
+    "maverick-v2": {
+        parentId: "Maverick Protocol",
+        enabled: true,
+        id: "4752"
     }
 } as AdaptorsConfig

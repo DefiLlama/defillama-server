@@ -613,6 +613,11 @@
       "symbol": "thAPT",
       "to": "coingecko#thala-apt"
     },
+    "0x63be1898a424616367e19bbd881f456a78470e123e2770b5b5dcdceb61279c54::movegpt_token::MovegptCoin": {
+      "decimals": "8",
+      "symbol": "MGPT",
+      "to": "coingecko#movegpt"
+    },
     "0xfaf4e633ae9eb31366c9ca24214231760926576c7b625313b3688b5e900731f6::staking::StakedThalaAPT": {
       "decimals": "8",
       "symbol": "sthAPT",

@@ -46168,6 +46168,28 @@ const data3: Protocol[] = [
     twitter: "joltify_finance",
     listedAt: 1718189554
   },
+  {
+    id: "4769",
+    name: "Kickspad",
+    address: "bsc:0xfEB4e9B932eF708c498Cc997ABe51D0EE39300cf",
+    symbol: "KICKS",
+    url: "https://kickspad.io/",
+    description:
+      "KicksPad is an IDO Launchpad, focusing on bringing the most outstanding projects in the web3 market and directly connecting them with people willing to invest. Our vision is to create transparent, rewarding, and riskless IDO investment opportunities for investors and a successful fundraise model for new web3 projects. The investment process will be conducted without any staking or KYC barriers and will have an additional staking reward system and a possibility of refunding the IDO investments",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/kickspad.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "kicks/index.js",
+    twitter: "KicksPad_io",
+    listedAt: 1718295707
+  },
 ]
 
 export default data3

@@ -46190,6 +46190,29 @@ const data3: Protocol[] = [
     twitter: "KicksPad_io",
     listedAt: 1718295707
   },
+  {
+    id: "4770",
+    name: "3Jane",
+    address: null,
+    symbol: "-",
+    url: "https://www.3jane.xyz/",
+    description:
+      "3Jane is a crypto-native derivatives protocol leveraging restaking and cash-and-carry to offer novel derivatives yields, enabling collateralization of exotic ETH and BTC yield variants in options contracts",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/3jane.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options Vault",
+    chains: ["Ethereum"],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10626
+    forkedFrom: ["Ribbon"],
+    module: "3jane/index.js",
+    twitter: "3janexyz",
+    audit_links: ["https://github.com/3jane-protocol/audit"],
+    listedAt: 1718296117
+  },
 ]
 
 export default data3

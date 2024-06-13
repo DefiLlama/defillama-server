@@ -70,17 +70,6 @@ export default async function getTokenPrice(timestamp: number) {
       })
       .reduce((sum, current) => sum + current, 0) / totalSupply;
 
-  console.log(
-    writes,
-    chain,
-    WAR,
-    price,
-    decimals,
-    symbol,
-    timestamp,
-    projectName,
-    0.99,
-  );
   addToDBWritesList(
     writes,
     chain,

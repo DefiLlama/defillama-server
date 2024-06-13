@@ -130,8 +130,9 @@ export default async function getTokenPrices(
         writes,
         chain,
         cfg.address,
-        Number((BigInt(redirectData[ix].price) * cfg.rate) / BigInt(1e27)) /
-          1e8,
+        Number(
+          (BigInt(redirectData[ix].price * 1e8) * cfg.rate) / BigInt(1e27)
+        ) / 1e8,
         info.decimals[ix].output,
         info.symbols[ix].output,
         timestamp,

@@ -46040,11 +46040,10 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.rizefi.com",
-    description:
-      "Earn more, worry less.",
+    description: "RIZE is Web3's first Liquidity Diffusion Network (LDN), offering users competitive, low-risk returns on stablecoins and $ETH from the Ethereum mainnet by simplifying interactions with emerging blockchains",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/rize.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -46054,6 +46053,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "rize/index.js",
     twitter: "RIZE_Fi",
+    audit_links: ["https://rizefi.gitbook.io/rize/auditing-reports"],
     listedAt: 1718186742
   },
   {

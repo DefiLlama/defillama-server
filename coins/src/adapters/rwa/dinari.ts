@@ -36,6 +36,8 @@ const config: any = {
 
 async function getTokenPrices(chain: string, timestamp: number) {
   const api = await getApi(chain, timestamp);
+
+  // dShares prices
   const tokens = (
     await api.call({
       chain: chain,
@@ -52,12 +54,20 @@ async function getTokenPrices(chain: string, timestamp: number) {
       })),
     })
   ).map((p: any) => p.price);
+
+  // USD+
+  const usdplus = config[chain].usdplus;
+  if (usdplus) {
+    tokens.push(usdplus);
+    prices.push(1);
+  }
+
+  // convert to writes
   const pricesObject: any = {};
-  const writes: Write[] = [];
   tokens.forEach((contract: any, idx: number) => {
     pricesObject[contract] = { price: prices[idx] };
   });
-
+  const writes: Write[] = [];
   writes.push(
     ...(await getWrites({
       chain,

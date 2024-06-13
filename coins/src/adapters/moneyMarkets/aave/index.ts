@@ -1,80 +1,120 @@
+import {
+  AaveV2Polygon,
+  AaveV2Ethereum,
+  AaveV2EthereumAMM,
+  AaveV2Avalanche,
+  AaveV3Base,
+  AaveV3Optimism,
+  AaveV3Arbitrum,
+  AaveV3Ethereum,
+  AaveV3Polygon,
+  AaveV3Avalanche,
+  AaveV3Scroll,
+  AaveV3BNB,
+  AaveV3Metis,
+  AaveV3Gnosis,
+} from "@bgd-labs/aave-address-book";
 import getTokenPrices from "./aave";
 
 export function aave(timestamp: number = 0) {
   return Promise.all([
     getTokenPrices(
       "base",
-      "0x2f6571d3Eb9a4e350C68C36bCD2afe39530078E2",
+      AaveV3Base.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      AaveV3Base.STATIC_A_TOKEN_FACTORY,
       "v3",
       timestamp
     ),
     getTokenPrices(
       "optimism",
-      "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
+      AaveV3Optimism.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      AaveV3Optimism.STATIC_A_TOKEN_FACTORY,
       "v3",
       timestamp
     ),
     getTokenPrices(
       "arbitrum",
-      "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
+      AaveV3Arbitrum.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      AaveV3Arbitrum.STATIC_A_TOKEN_FACTORY,
       "v3",
       timestamp
     ),
     getTokenPrices(
       "ethereum",
-      "0x52D306e36E3B6B02c153d0266ff0f85d18BCD413",
+      AaveV2Ethereum.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      null,
       "v2",
       timestamp
     ),
     getTokenPrices(
       "ethereum",
-      "0xbaA999AC55EAce41CcAE355c77809e68Bb345170",
+      AaveV3Ethereum.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      AaveV3Ethereum.STATIC_A_TOKEN_FACTORY,
       "v3",
       timestamp
     ),
-    // AMM market has no registry
-    //getTokenPrices("ethereum", "0x7937d4799803fbbe595ed57278bc4ca21f3bffcb");
+    getTokenPrices(
+      "ethereum",
+      AaveV2EthereumAMM.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      null,
+      "v2",
+      timestamp
+    ),
     getTokenPrices(
       "polygon",
-      "0x3ac4e9aa29940770aeC38fe853a4bbabb2dA9C19",
+      AaveV2Polygon.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      null,
       "v2",
       timestamp
     ),
     //polygon V3
     getTokenPrices(
       "polygon",
-      "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
+      AaveV3Polygon.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      AaveV3Polygon.STATIC_A_TOKEN_FACTORY,
       "v3",
       timestamp
     ),
     getTokenPrices(
       "avax",
-      "0x4235E22d9C3f28DCDA82b58276cb6370B01265C2",
+      AaveV2Avalanche.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      null,
       "v2",
       timestamp
     ),
     //avax V3
     getTokenPrices(
       "avax",
-      "0x770ef9f4fe897e59daCc474EF11238303F9552b6",
+      AaveV3Avalanche.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      AaveV3Avalanche.STATIC_A_TOKEN_FACTORY,
       "v3",
       timestamp
     ),
     getTokenPrices(
       "scroll",
-      "0xFBedc64AeE24921cb43004312B9eF367a4162b57",
+      AaveV3Scroll.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      AaveV3Scroll.STATIC_A_TOKEN_FACTORY,
       "v3",
       timestamp
     ),
     getTokenPrices(
       "metis",
-      "0x9E7B73ffD9D2026F3ff4212c29E209E09C8A91F5",
+      AaveV3Metis.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      AaveV3Metis.STATIC_A_TOKEN_FACTORY,
       "v3",
       timestamp
     ),
     getTokenPrices(
       "bsc",
-      "0x117684358D990E42Eb1649E7e8C4691951dc1E71",
+      AaveV3BNB.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      AaveV3BNB.STATIC_A_TOKEN_FACTORY,
+      "v3",
+      timestamp
+    ),
+    getTokenPrices(
+      "gnosis",
+      AaveV3Gnosis.POOL_ADDRESSES_PROVIDER_REGISTRY,
+      AaveV3Gnosis.STATIC_A_TOKEN_FACTORY,
       "v3",
       timestamp
     ),
@@ -85,9 +125,10 @@ export function geist(timestamp: number = 0) {
     getTokenPrices(
       "fantom",
       "0x4CF8E50A5ac16731FA2D8D9591E195A285eCaA82",
+      null,
       "v2",
       timestamp
-    )
+    ),
   ]);
 }
 export function radiant(timestamp: number = 0) {
@@ -95,15 +136,17 @@ export function radiant(timestamp: number = 0) {
     getTokenPrices(
       "arbitrum",
       "0x7BB843f889e3a0B307299c3B65e089bFfe9c0bE0",
+      null,
       "v2",
       timestamp
     ),
     getTokenPrices(
       "arbitrum",
       "0x9D36DCe6c66E3c206526f5D7B3308fFF16c1aa5E",
+      null,
       "v2",
       timestamp
-    )
+    ),
   ]);
 }
 export function klap(timestamp: number = 0) {
@@ -111,15 +154,17 @@ export function klap(timestamp: number = 0) {
     getTokenPrices(
       "klaytn",
       "0x969E4A05c2F3F3029048e7943274eC2E762497AB",
+      null,
       "v2",
       timestamp
-    )
+    ),
   ]);
 }
 export function valas(timestamp: number = 0) {
   return getTokenPrices(
     "bsc",
     "0x99E41A7F2Dd197187C8637D1D151Dc396261Bc14",
+    null,
     "v2",
     timestamp
   );
@@ -128,6 +173,7 @@ export function uwulend(timestamp: number = 0) {
   return getTokenPrices(
     "ethereum",
     "0xaC538416BA7438c773F29cF58afdc542fDcABEd4",
+    null,
     "v2",
     timestamp
   );
@@ -140,4 +186,4 @@ export const adapters = {
   uwulend,
   //klap,
   //valas,
-}
+};

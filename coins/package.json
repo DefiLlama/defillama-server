@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.354.0",
+    "@bgd-labs/aave-address-book": "^2.29.0",
     "@defillama/sdk": "^5.0.54",
     "@ethersproject/bignumber": "^5.5.0",
     "@sentry/serverless": "^6.19.7",

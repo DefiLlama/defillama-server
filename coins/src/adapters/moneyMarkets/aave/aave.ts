@@ -2,7 +2,7 @@ const abi = require("./abi.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectData,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { CoinData, Write } from "../../utils/dbInterfaces";
@@ -21,7 +21,7 @@ async function getReserveData(
       target: registry,
       chain: chain as any,
       abi: abi.getAddressesProviderList,
-      block
+      block,
     })
   ).output;
   const lendingPool = (
@@ -29,7 +29,7 @@ async function getReserveData(
       target: addressProvider[0],
       chain: chain as any,
       abi: abi.getPool[version.toLowerCase()],
-      block
+      block,
     })
   ).output;
   const reservesList = (
@@ -37,18 +37,18 @@ async function getReserveData(
       target: lendingPool,
       chain: chain as any,
       abi: abi.getReservesList,
-      block
+      block,
     })
   ).output;
   return (
     await multiCall({
       calls: reservesList.map((r: string) => ({
         target: lendingPool,
-        params: [r]
+        params: [r],
       })),
       abi: abi.getReserveData[version.toLowerCase()],
       chain: chain as any,
-      block
+      block,
     })
   ).output;
 }
@@ -57,6 +57,7 @@ let unknownTokens: string[] = [];
 export default async function getTokenPrices(
   chain: string,
   registry: string,
+  stataRegistry: string,
   version: string,
   timestamp: number
 ) {
@@ -80,7 +81,7 @@ export default async function getTokenPrices(
       chain,
       reserveData.map((r: Result) => r.output.aTokenAddress),
       block
-    )
+    ),
   ]);
 
   let writes: Write[] = [];
@@ -110,6 +111,72 @@ export default async function getTokenPrices(
     );
   });
 
+  if (stataRegistry) {
+    const stata = await getStataAssetPrices(chain, stataRegistry, block);
+    const info = await getTokenInfo(
+      chain,
+      stata.map((r) => r.address),
+      block
+    );
+    stata.map((cfg, ix) => {
+      addToDBWritesList(
+        writes,
+        chain,
+        cfg.address,
+        undefined,
+        info.decimals[ix].output,
+        info.symbols[ix].output,
+        timestamp,
+        "aave",
+        1,
+        undefined
+      );
+    });
+  }
+
   await listUnknownTokens(chain, unknownTokens, block);
   return writes;
+}
+
+export async function getStataAssetPrices(
+  chain: string,
+  stataRegistry: string,
+  block: number | undefined
+) {
+  const stataTokens: string[] = (
+    await call({
+      target: stataRegistry,
+      chain: chain as any,
+      abi: abi.getStaticATokens,
+      block,
+    })
+  ).output;
+
+  const underlyings: string[] = (
+    await multiCall({
+      calls: stataTokens.map((token: string) => ({
+        target: token,
+        params: [],
+      })),
+      abi: abi.getStaticATokenUnderlying,
+      chain: chain as any,
+      block,
+    })
+  ).output;
+
+  const rates: bigint[] = (
+    await multiCall({
+      calls: stataTokens.map((token: string) => ({
+        target: token,
+        params: [],
+      })),
+      abi: abi.getStaticATokenRate,
+      chain: chain as any,
+      block,
+    })
+  ).output;
+
+  return stataTokens.map((token: string, ix) => {
+    return { address: token, underlying: underlyings[ix], rate: rates[ix] };
+  });
 }

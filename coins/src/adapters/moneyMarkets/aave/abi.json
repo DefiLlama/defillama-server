@@ -15,6 +15,29 @@
       "type": "function"
     }
   },
+  "getStaticATokens": {
+    "inputs": [],
+    "name": "getStaticATokens",
+    "outputs": [
+      { "internalType": "address[]", "name": "", "type": "address[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "getStaticATokenUnderlying": {
+    "inputs": [],
+    "name": "asset",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "getStaticATokenRate": {
+    "inputs": [],
+    "name": "rate",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
   "getAddressesProviderList": {
     "inputs": [],
     "name": "getAddressesProvidersList",

@@ -2800,11 +2800,6 @@ export default {
         enabled: true,
         id: "4699"
     },
-    "maverick-v2": {
-        parentId: "Maverick Protocol",
-        enabled: true,
-        id: "4752"
-    },
     "nostra-pools": {
         parentId: "Nostra",
         enabled: true,

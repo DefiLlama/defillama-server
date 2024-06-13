@@ -46233,7 +46233,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "capy-finance/index.js",
     twitter: "CapyFinance_",
-    listedAt: 1718301991
+    listedAt: 1718301992
   },
 ]
 

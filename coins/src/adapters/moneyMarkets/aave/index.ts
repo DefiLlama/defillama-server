@@ -53,13 +53,14 @@ export function aave(timestamp: number = 0) {
       "v3",
       timestamp
     ),
-    getTokenPrices(
-      "ethereum",
-      AaveV2EthereumAMM.POOL_ADDRESSES_PROVIDER_REGISTRY,
-      null,
-      "v2",
-      timestamp
-    ),
+    // this still doesn't work though as in aave.ts just the first provider is taken(which is wrong)
+    // getTokenPrices(
+    //   "ethereum",
+    //   AaveV2EthereumAMM.POOL_ADDRESSES_PROVIDER_REGISTRY,
+    //   null,
+    //   "v2",
+    //   timestamp
+    // ),
     getTokenPrices(
       "polygon",
       AaveV2Polygon.POOL_ADDRESSES_PROVIDER_REGISTRY,

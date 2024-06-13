@@ -22390,6 +22390,7 @@ const data2: Protocol[] = [
       listedAt: 1671554817
     },
   */
+ /*
   {
     id: "2374",
     name: "Contango V1",
@@ -22413,6 +22414,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#contango",
     listedAt: 1671577485
   },
+  */
   {
     id: "2375",
     name: "Y2K V1",

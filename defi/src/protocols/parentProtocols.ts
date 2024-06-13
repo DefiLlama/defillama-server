@@ -2829,6 +2829,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["nutsfinance"],
     stablecoins: ["3usd"],
   },
+  /*
   {
     id: "parent#contango",
     name: "Contango",
@@ -2841,6 +2842,7 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "contango.js",
     twitter: "Contango_xyz",
   },
+  */
   {
     id: "parent#levvy-finance",
     name: "Levvy Finance",

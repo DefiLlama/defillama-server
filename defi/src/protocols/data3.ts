@@ -46213,6 +46213,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/3jane-protocol/audit"],
     listedAt: 1718296117
   },
+  {
+    id: "4771",
+    name: "Capy Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.capyfinance.com/stake",
+    description:
+      "Stake and Restake tokens on BSquared Network and earn points",
+    chain: "BSquared",
+    logo: `${baseIconsUrl}/capy-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["BSquared"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "capy-finance/index.js",
+    twitter: "CapyFinance_",
+    listedAt: 1718301991
+  },
 ]
 
 export default data3

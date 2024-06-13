@@ -25319,7 +25319,7 @@ const data3: Protocol[] = [
   {
     id: "3833",
     name: "Amped Finance",
-    address: "lightlink:0x24CAE6D1738522551371ca6536F227c727184eD8",
+    address: "lightlink:0xca7F14F14d975bEFfEe190Cd3cD232a3a988Ab9C",
     symbol: "AMP",
     url: "https://amped.finance/",
     description: "Amped Finance is a decentralized perpetual exchange on LightLink that allows users to trade leveraged positions with low fees and zero price impact, whilst having the peace of mind that all trades and collateral are stored transparently on-chain.",

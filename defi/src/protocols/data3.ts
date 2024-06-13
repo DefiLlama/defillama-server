@@ -46040,8 +46040,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.rizefi.com",
-    description:
-      "Earn more, worry less.",
+    description: "RIZE is Web3's first Liquidity Diffusion Network (LDN), offering users competitive, low-risk returns on stablecoins and $ETH from the Ethereum mainnet by simplifying interactions with emerging blockchains",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/rize.png`,
     audits: "0",

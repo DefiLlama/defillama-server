@@ -82,7 +82,7 @@ export const additional: { [chain: string]: string[] } = {
     "0xe7903B1F75C534Dd8159b313d92cDCfbC62cB3Cd", // rsETH
     "0x59889b7021243dB5B1e065385F918316cD90D46c", // mBTC
     "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A", // weETH.m
-    "0xF419234b27D0EFb71D93D522804dF370A4107Be1" // cSTONE
+    "0xF419234b27D0EFb71D93D522804dF370A4107Be1", // cSTONE
   ],
   manta: [
     "0x3B95bC951EE0f553ba487327278cAc44f29715E5", // wUSDM
@@ -108,5 +108,33 @@ export const excluded: { [chain: string]: string[] } = {
   ],
   base: [
     "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USDC
+  ],
+};
+export const nativeWhitelist: { [chain: string]: string[] } = {
+  metis: ["0xa5b55ab1daf0f8e1efc0eb1931a957fd89b918f4", "0x4651b38e7ec14bb3db731369bfe5b08f2466bd0a"],
+  polygon_zkevm: ["0x744c5860ba161b5316f7e80d9ec415e2727e5bd5"],
+  manta: ["0x0dc808adce2099a9f62aa87d9670745aba741746"],
+  era: ["0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4", "0x5bf39bde21b95d77fb18f27bbcb07f3648720a2e"],
+  optimism: ["0x0b2c639c533813f4aa9d7837caf62653d097ff85", "0x121ab82b49b2bc4c7901ca46b8277962b4350204"],
+  avax: ["0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e", "0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7"],
+  arbitrum: [
+    "0x894134a25a5fac1c2c26f1d8fbf05111a3cb9487",
+    "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+    "0x25d887ce7a35172c62febfd67a1856f20faebb00",
+    "0x6f5401c53e2769c858665621d22ddbf53d8d27c5",
+    "0xda0a57b710768ae17941a9fa33f8b720c8bd9ddd",
+    "0x35ca1e5a9b1c09fa542fa18d1ba4d61c8edff852",
+  ],
+  base: ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", "0xd85eff20288ca72ea9eecffb428f89ee5066ca5c"],
+  polygon: [
+    "0xb5c064f955d8e7f38fe0460c556a72987494ee17",
+    "0xbbba073c31bf03b8acf7c28ef0738decf3695683",
+    "0x831753dd7087cac61ab5644b308642cc1c33dc13",
+    "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+    "0x45c32fa6df82ead1e2ef74d17b76547eddfaff89",
+    "0x16eccfdbb4ee1a85a33f3a9b21175cd7ae753db4",
+    "0x1a3acf6d19267e2d3e7f898f42803e90c9219062",
+    "0x111111517e4929d3dcbdfa7cce55d30d4b6bc4d6",
+    "0x27f485b62c4a7e635f561a87560adf5090239e93",
   ],
 };

@@ -183,5 +183,15 @@ export default {
     "capybara-exchange": {
         enabled: true,
         id: "4747",
+    },
+    "vanillaswap-v2": {
+        parentId: "VanillaSwap",
+        enabled: true,
+        id: "4600",
+    },
+    "vanillaswap-v3": {
+        parentId: "VanillaSwap",
+        enabled: true,
+        id: "4601",
     }
 } as AdaptorsConfig

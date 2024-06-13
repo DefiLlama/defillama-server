@@ -2804,5 +2804,10 @@ export default {
         parentId: "Maverick Protocol",
         enabled: true,
         id: "4752"
+    },
+    "nostra-pools": {
+        parentId: "Nostra",
+        enabled: true,
+        id: "4053"
     }
 } as AdaptorsConfig

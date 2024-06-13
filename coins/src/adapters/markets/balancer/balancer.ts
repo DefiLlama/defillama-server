@@ -1,3 +1,4 @@
+import * as sdk from "@defillama/sdk";
 import { multiCall } from "@defillama/sdk/build/abi/index";
 import { request, gql } from "graphql-request";
 import {
@@ -14,17 +15,17 @@ import { DbTokenInfos } from "../../utils/dbInterfaces";
 const vault: string = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
 const nullAddress: string = "0x0000000000000000000000000000000000000000";
 const subgraphNames: { [chain: string]: string } = {
-  ethereum: `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_PROTOCOL}/subgraphs/id/C4ayEZP2yTXRAB8vSaTrgN4m9anTe9Mdm2ViyiAuV9TV`,
+  ethereum: sdk.graph.modifyEndpoint('C4ayEZP2yTXRAB8vSaTrgN4m9anTe9Mdm2ViyiAuV9TV'),
   arbitrum:
-    `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_PROTOCOL}/subgraphs/id/itkjv6Vdh22HtNEPQuk5c9M3T7VeGLQtXxcH8rFi1vc`,
+    sdk.graph.modifyEndpoint('itkjv6Vdh22HtNEPQuk5c9M3T7VeGLQtXxcH8rFi1vc'),
   polygon:
-    `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_PROTOCOL}/subgraphs/id/78nZMyM9yD77KG6pFaYap31kJvj8eUWLEntbiVzh8ZKN`,
+    sdk.graph.modifyEndpoint('78nZMyM9yD77KG6pFaYap31kJvj8eUWLEntbiVzh8ZKN'),
   optimism:
-    `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_PROTOCOL}/subgraphs/id/FsmdxmvBJLGjUQPxKMRtcWKzuCNpomKuMTbSbtRtggZ7`,
+    sdk.graph.modifyEndpoint('FsmdxmvBJLGjUQPxKMRtcWKzuCNpomKuMTbSbtRtggZ7'),
   avax:
-    `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_PROTOCOL}/subgraphs/id/7asfmtQA1KYu6CP7YVm5kv4bGxVyfAHEiptt2HMFgkHu`,
+    sdk.graph.modifyEndpoint('7asfmtQA1KYu6CP7YVm5kv4bGxVyfAHEiptt2HMFgkHu'),
   xdai:
-    `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_PROTOCOL}/subgraphs/id/EJezH1Cp31QkKPaBDerhVPRWsKVZLrDfzjrLqpmv6cGg`,
+    sdk.graph.modifyEndpoint('EJezH1Cp31QkKPaBDerhVPRWsKVZLrDfzjrLqpmv6cGg'),
   polygon_zkevm:
     "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
   base:

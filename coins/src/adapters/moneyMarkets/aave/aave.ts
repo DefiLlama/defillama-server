@@ -188,6 +188,10 @@ export async function getStataAssetPrices(
   ).output.map((r: any) => r.output);
 
   return stataTokens.map((token: string, ix) => {
-    return { address: token, underlying: underlyings[ix], rate: rates[ix] };
+    return {
+      address: token.toLowerCase(),
+      underlying: underlyings[ix].toLowerCase(),
+      rate: rates[ix],
+    };
   });
 }

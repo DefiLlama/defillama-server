@@ -10,8 +10,28 @@ const config: any = {
     processor: "0xFA922457873F750244D93679df0d810881E4131D",
     latestPriceAbi:
       "function latestFillPrice(address assetToken, address paymentToken) view returns (tuple(uint256 price, uint64 blocktime))",
+    quoteToken: "0xfc90518D5136585ba45e34ED5E1D108BD3950CFa",
     usdplus: "0xfc90518D5136585ba45e34ED5E1D108BD3950CFa",
   },
+  ethereum: {
+    factory: "0x60B5E7eEcb2AEE0382db86491b8cFfA39347c747",
+    getTokensAbi:
+      "function getDShares() external view returns (address[] memory, address[] memory)",
+    processor: "0xA8a48C202AF4E73ad19513D37158A872A4ac79Cb",
+    latestPriceAbi:
+      "function latestFillPrice(address assetToken, address paymentToken) view returns (tuple(uint256 price, uint64 blocktime))",
+    quoteToken: "0x98C6616F1CC0D3E938A16200830DD55663dd7DD3",
+    usdplus: "0x98C6616F1CC0D3E938A16200830DD55663dd7DD3",
+  },
+  blast: {
+    factory: "0x6Aa1BDa7e764BC62589E64F371A4022B80B3c72a",
+    getTokensAbi:
+      "function getDShares() external view returns (address[] memory, address[] memory)",
+    processor: "0xA8a48C202AF4E73ad19513D37158A872A4ac79Cb",
+    latestPriceAbi:
+      "function latestFillPrice(address assetToken, address paymentToken) view returns (tuple(uint256 price, uint64 blocktime))",
+      quoteToken: "0x4300000000000000000000000000000000000003",
+    },
 };
 
 async function getTokenPrices(chain: string, timestamp: number) {
@@ -28,7 +48,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
       abi: config[chain].latestPriceAbi,
       calls: tokens.map((token: any) => ({
         target: config[chain].processor,
-        params: [token, config[chain].usdplus],
+        params: [token, config[chain].quoteToken],
       })),
     })
   ).map((p: any) => p.price);
@@ -51,6 +71,13 @@ async function getTokenPrices(chain: string, timestamp: number) {
   return writes;
 }
 
-export function dinari(timestamp: number = 0) {
-  return getTokenPrices("arbitrum", timestamp);
+export async function dinari(timestamp: number = 0): Promise<Write[]> {
+  const writes: Write[] = [];
+  const arbWrites = await getTokenPrices("arbitrum", timestamp);
+  const ethWrites = await getTokenPrices("ethereum", timestamp);
+  const blastWrites = await getTokenPrices("blast", timestamp);
+  writes.push(...arbWrites);
+  writes.push(...ethWrites);
+  writes.push(...blastWrites);
+  return writes;
 }

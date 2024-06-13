@@ -14,7 +14,7 @@ async function getReserveData(
   chain: string,
   block: number | undefined,
   registry: string,
-  version: string
+  version: string,
 ) {
   const addressProvider = (
     await call({
@@ -59,14 +59,14 @@ export default async function getTokenPrices(
   registry: string,
   stataRegistry: string | null,
   version: string,
-  timestamp: number
+  timestamp: number,
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const reserveData: Result[] = await getReserveData(
     chain,
     block,
     registry,
-    version
+    version,
   );
 
   const [underlyingRedirects, tokenInfo] = await Promise.all([
@@ -75,19 +75,19 @@ export default async function getTokenPrices(
         return r.input.params[0].toLowerCase();
       }),
       chain,
-      timestamp
+      timestamp,
     ),
     getTokenInfo(
       chain,
       reserveData.map((r: Result) => r.output.aTokenAddress),
-      block
+      block,
     ),
   ]);
 
   let writes: Write[] = [];
   reserveData.map((r, i) => {
     const underlying: CoinData = underlyingRedirects.filter(
-      (u) => u.address == r.input.params[0].toLowerCase()
+      (u) => u.address == r.input.params[0].toLowerCase(),
     )[0];
 
     if (underlying == null) return;
@@ -107,40 +107,42 @@ export default async function getTokenPrices(
       timestamp,
       "aave",
       1,
-      redirect
+      redirect,
     );
   });
 
   if (stataRegistry) {
     const stata = await getStataAssetPrices(chain, stataRegistry, block);
+    const a = stata.map((r) => r.address);
+    const b = stata.map((r) => r.underlying);
     const [info, redirectData] = await Promise.all([
       getTokenInfo(
         chain,
         stata.map((r) => r.address),
-        block
+        block,
       ),
       getTokenAndRedirectData(
         stata.map((r) => r.underlying),
         chain,
-        timestamp
+        timestamp,
       ),
     ]);
-    stata.map((cfg, ix) => {
-      addToDBWritesList(
-        writes,
-        chain,
-        cfg.address,
-        Number(
-          (BigInt(redirectData[ix].price * 1e8) * cfg.rate) / BigInt(1e27)
-        ) / 1e8,
-        info.decimals[ix].output,
-        info.symbols[ix].output,
-        timestamp,
-        "aave",
-        1,
-        undefined
-      );
-    });
+
+    // stata.map((cfg, ix) => {
+    //   const price = (redirectData[ix].price * cfg.rate) / 1e27;
+    //   addToDBWritesList(
+    //     writes,
+    //     chain,
+    //     cfg.address,
+    //     price,
+    //     info.decimals[ix].output,
+    //     info.symbols[ix].output,
+    //     timestamp,
+    //     "aave",
+    //     1,
+    //     undefined,
+    //   );
+    // });
   }
 
   await listUnknownTokens(chain, unknownTokens, block);
@@ -150,7 +152,7 @@ export default async function getTokenPrices(
 export async function getStataAssetPrices(
   chain: string,
   stataRegistry: string,
-  block: number | undefined
+  block: number | undefined,
 ) {
   const stataTokens: string[] = (
     await call({
@@ -171,9 +173,9 @@ export async function getStataAssetPrices(
       chain: chain as any,
       block,
     })
-  ).output;
+  ).output.map((r: any) => r.output);
 
-  const rates: bigint[] = (
+  const rates: number[] = (
     await multiCall({
       calls: stataTokens.map((token: string) => ({
         target: token,
@@ -183,7 +185,7 @@ export async function getStataAssetPrices(
       chain: chain as any,
       block,
     })
-  ).output;
+  ).output.map((r: any) => r.output);
 
   return stataTokens.map((token: string, ix) => {
     return { address: token, underlying: underlyings[ix], rate: rates[ix] };

@@ -11065,7 +11065,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "stUSDT/index.js",
-    twitter: "stusdt",
+    twitter: "stusdtio",
     listedAt: 1688472910
   },
   {

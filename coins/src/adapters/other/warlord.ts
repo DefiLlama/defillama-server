@@ -68,7 +68,8 @@ export default async function getTokenPrice(timestamp: number) {
           tokenPrice
         );
       })
-      .reduce((sum, current) => sum + current, 0) / totalSupply;
+      .reduce((sum, current) => sum + current, 0) /
+    (totalSupply / 10 ** decimals);
 
   addToDBWritesList(
     writes,

@@ -46274,7 +46274,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Bitlayer"],
     oracles: [],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     module: "macaron-xyz-stable/index.js",
     twitter: "macarondex",
     github: ["Macaromswap"],

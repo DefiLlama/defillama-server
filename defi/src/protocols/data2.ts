@@ -21540,8 +21540,8 @@ const data2: Protocol[] = [
   {
     id: "2337",
     name: "STON.fi",
-    address: null,
-    symbol: "-",
+    address: "ton:EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO",
+    symbol: "STON",
     url: "https://app.ston.fi/",
     description:
       "Decentralized automated market maker (AMM) built on the TON blockchain",
@@ -21549,8 +21549,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/ston.fi.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "ston",
+    cmcId: "27311",
     category: "Dexes",
     chains: ["TON"],
     module: "ston/index.js",

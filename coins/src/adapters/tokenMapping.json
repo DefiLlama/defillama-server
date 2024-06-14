@@ -392,6 +392,11 @@
       "decimals": "18",
       "symbol": "sFRAX",
       "to": "ethereum:0xa663b02cf0a4b149d2ad41910cb81e23e1c41c32"
+    },
+    "0x53e63a31fd1077f949204b94f431bcab98f72bce" :{
+      "decimals": "18",
+      "symbol": "SolvBTC.ENA ",
+      "to": "coingecko#solv-btc"
     }
   },
   "stacks": {

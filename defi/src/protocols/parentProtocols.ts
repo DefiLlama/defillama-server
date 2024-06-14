@@ -4661,6 +4661,30 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "mellowprotocol",
     github: ["mellow-finance"]
   },
+  {
+    id: "parent#clober",
+    name: "Clober",
+    url: "https://clober.io",
+    description: "Clober is a fully decentralized on-chain order book DEX infrastructure based on its unique algorithm LOBSTER.",
+    logo: `${baseIconsUrl}/clober.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "CloberDEX",
+  },
+  {
+    id: "parent#joltify-finance",
+    name: "Joltify Finance",
+    url: "https://joltify.io",
+    description:
+      "The First EVM compatible game-changing L1 Public Chain built on the Cosmos SDK for Real-World Assets (RWA) and Beyond.",
+    logo: `${baseIconsUrl}/joltify-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["joltify-finance"],
+    twitter: "joltify_finance",
+  },
 ];
 
 export default parentProtocols;

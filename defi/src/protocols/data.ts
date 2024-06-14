@@ -912,7 +912,7 @@ const data: Protocol[] = [
     name: "Tornado Cash",
     address: "0x77777feddddffc19ff86db637967013e6c6a116c",
     symbol: "TORN",
-    url: "https://tornado.cash/",
+    url: "https://tornado.ws/",
     description: "Non-custodial anonymous transactions on Ethereum.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tornado-cash.jpg`,

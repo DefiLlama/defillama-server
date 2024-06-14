@@ -29869,6 +29869,26 @@ const data2: Protocol[] = [
     listedAt: 1679396445,
     rugged: true
   },
-  
+  {
+    id: "2701",
+    name: "Capy Finance",
+    address: "bsquared:0x12178d2B86031dD293274A0E25c8908521F3d27C",
+    symbol: "",
+    url: "https://app.capyfinance.com",
+    description: "A decentralized Liquid Restaking on Bsquared Chain.",
+    chain: "Bsquared",
+    logo: null,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Bsquared"],
+    oracles: [],
+    forkedFrom: [],
+    module: "capy-finane/index.js",
+    twitter: null,
+    listedAt: 1718218800,
+  }, 
 ]
 export default data2;

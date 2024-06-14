@@ -46281,6 +46281,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#macaron",
     listedAt: 1718370672
   },
+  {
+    id: "4774",
+    name: "Kim Vaults",
+    address: null,
+    symbol: "-",
+    url: "https://app.kim.exchange",
+    description: "Native DEX for the Mode Network with staking modules to incentivize LPs",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/kim-vaults.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Mode"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "kim-vaults/index.js",
+    twitter: "kimprotocol",
+    parentProtocol: "parent#kim-exchange",
+    listedAt: 1718370672
+  },
 ]
 
 export default data3

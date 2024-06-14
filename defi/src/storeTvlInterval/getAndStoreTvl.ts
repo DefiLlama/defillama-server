@@ -19,7 +19,6 @@ import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
 import { storeAllTokens } from "../../l2/layer2pg";
 import { elastic } from '@defillama/sdk';
-import { Any } from "typeorm";
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;

@@ -45040,8 +45040,8 @@ const data3: Protocol[] = [
     twitter: "joltify_finance",
     forkedFrom: [],
     oracles: [],
-    github: ["joltify-finance"],
     audit_links: ["https://skynet.certik.com/projects/joltify"],
+    parentProtocol: "parent#joltify-finance",
     listedAt: 1717517815
   },
   {
@@ -46077,6 +46077,7 @@ const data3: Protocol[] = [
     module: "clober-v2/index.js",
     twitter: "CloberDEX",
     audit_links: ["https://github.com/clober-dex/v2-core/blob/master/audits/Clober_V2.pdf"],
+    parentProtocol: "parent#clober",
     listedAt: 1718186942
   },
   {
@@ -46166,6 +46167,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "joltify-rwa/index.js",
     twitter: "joltify_finance",
+    parentProtocol: "parent#joltify-finance",
     listedAt: 1718189554
   },
   {

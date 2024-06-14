@@ -26254,13 +26254,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2541",
-    name: "Clober",
+    name: "Clober V1",
     address: null,
     symbol: "-",
     url: "https://clober.io",
     description: "Clober is a fully decentralized on-chain order book DEX infrastructure based on its unique algorithm LOBSTER.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/clober.jpg`,
+    logo: `${baseIconsUrl}/clober-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -26271,6 +26271,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "clober/index.js",
     twitter: "CloberDEX",
+    parentProtocol: "parent#clober",
     listedAt: 1676572192
   },
   {

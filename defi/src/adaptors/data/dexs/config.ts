@@ -1626,6 +1626,7 @@ export default {
         "id": "2926"
     },
     "clober": {
+        parentId: "Clober",
         "enabled": true,
         "id": "2541"
     },
@@ -2804,5 +2805,10 @@ export default {
         parentId: "Nostra",
         enabled: true,
         id: "4053"
+    },
+    "clober-v2": {
+        parentId: "Clober",
+        enabled: true,
+        id: "4764"
     }
 } as AdaptorsConfig

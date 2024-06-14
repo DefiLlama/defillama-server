@@ -46235,6 +46235,28 @@ const data3: Protocol[] = [
     twitter: "CapyFinance_",
     listedAt: 1718301992
   },
+  {
+    id: "4772",
+    name: "jellyverse",
+    address: null,
+    symbol: "-",
+    url: "https://jellyverse.org/",
+    description:
+      "Jellyverse is a DeFi 3.0 ecosystem governed by Jellyverse DAO, featuring JellySwap, a Balancer V2 fork offering dynamic portfolio management and diverse token exchanges",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/jellyverse.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sei"],
+    oracles: [], 
+    forkedFrom: ["Balancer V2"],
+    module: "jellyverse/index.js",
+    twitter: "jlyvrs",
+    listedAt: 1718327685
+  },
 ]
 
 export default data3

@@ -42250,14 +42250,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4590",
-    name: "Macaron",
+    name: "Macaron AMM",
     address: null,
     symbol: "-",
     url: "https://www.macaron.xyz",
     description: "The First & Native DEX on bitlayerlabs, Yields & Liquidity for Users.",
     chain: "Bitlayer",
     logo: `${baseIconsUrl}/macaron.png`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -42268,6 +42268,7 @@ const data3: Protocol[] = [
     module: "macaron-xyz/index.js",
     twitter: "macarondex",
     github: ["Macaromswap"],
+    parentProtocol: "parent#Macaronswap",
     listedAt: 1715597840
   },
   {
@@ -46256,6 +46257,29 @@ const data3: Protocol[] = [
     module: "jellyverse/index.js",
     twitter: "jlyvrs",
     listedAt: 1718327685
+  },
+  {
+    id: "4773",
+    name: "Macaron Stable",
+    address: null,
+    symbol: "-",
+    url: "https://www.macaron.xyz",
+    description: "The First & Native DEX on bitlayerlabs, Yields & Liquidity for Users.",
+    chain: "Bitlayer",
+    logo: `${baseIconsUrl}/macaron.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Bitlayer"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "macaron-xyz-stable/index.js",
+    twitter: "macarondex",
+    github: ["Macaromswap"],
+    parentProtocol: "parent#Macaronswap",
+    listedAt: 1718354885
   },
 ]
 

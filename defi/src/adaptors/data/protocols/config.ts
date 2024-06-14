@@ -5,7 +5,7 @@ import { AdaptorsConfig } from "../types"
 export default {
     "uniswap": {
         "enabled": true,
-        "id": "1",
+        "id": "uniswap",
         parentId: "Uniswap",
         "protocolsData": {
             "v1": {
@@ -24,7 +24,7 @@ export default {
     },
     "pancakeswap": {
         "enabled": true,
-        "id": "194",
+        "id": "pancakeswap",
         parentId: "PancakeSwap",
         protocolsData: {
             v1: {
@@ -49,7 +49,7 @@ export default {
     "smbswap": {
         "enabled": true,
         parentId: "SMBSwap",
-        id: "1632",
+        id: "smbswap",
         protocolsData: {
             v2: {
                 enabled: true,

@@ -4685,6 +4685,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["joltify-finance"],
     twitter: "joltify_finance",
   },
+  {
+    id: "parent#macaron",
+    name: "Macaron",
+    url: "https://www.macaron.xyz",
+    description: "The First & Native DEX on bitlayerlabs, Yields & Liquidity for Users.",
+    logo: `${baseIconsUrl}/macaron.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "macarondex",
+    github: ["Macaromswap"],
+  },
 ];
 
 export default parentProtocols;

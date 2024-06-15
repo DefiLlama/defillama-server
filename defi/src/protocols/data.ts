@@ -20925,7 +20925,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1085",
     name: "Thetanuts Finance",
-    address: null,
+    address: "eth:0x23f3D4625AEF6f0b84d50dB1d53516e6015c0c9B",
     symbol: "NUTS",
     url: "https://thetanuts.finance",
     description:
@@ -20936,7 +20936,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "thetanuts-finance",
     cmcId: null,
-    category: "Options",
+    category: "Yield",
     chains: ["Ethereum", "Binance", "Avalanche", "Fantom", "Polygon", "Aurora", "Arbitrum", "Cronos", "Boba"],
     module: "thetanuts/index.js",
     twitter: "ThetanutsFi",

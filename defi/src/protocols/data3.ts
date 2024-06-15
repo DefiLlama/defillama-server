@@ -41645,7 +41645,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4563",
-    name: "Fenix Finance",
+    name: "Fenix Concentrated Liquidity",
     address: null,
     symbol: "-", 
     url: "https://www.fenixfinance.io",
@@ -41663,6 +41663,7 @@ const data3: Protocol[] = [
     module: "fenix-finance/index.js",
     twitter: "FenixFinance",
     audit_links: [],
+    parentProtocol: "parent#fenix-finance",
     listedAt: 1714987410
   },
   {
@@ -46304,6 +46305,29 @@ const data3: Protocol[] = [
     twitter: "kimprotocol",
     parentProtocol: "parent#kim-exchange",
     listedAt: 1718370672
+  },
+  {
+    id: "4563",
+    name: "Fenix Standard Pools",
+    address: null,
+    symbol: "-", 
+    url: "https://www.fenixfinance.io",
+    description: "Fenix introduces a cutting-edge modular AMM architecture designed to revolutionize liquidity pool deployment, capital efficiency, price execution, and fee generation for exchanged assets.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/fenix-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Blast"],
+    oracles: [], 
+    forkedFrom: ["Solidly"],
+    module: "fenix-v2/index.js",
+    twitter: "FenixFinance",
+    audit_links: [],
+    parentProtocol: "parent#fenix-finance",
+    listedAt: 1718471984
   },
 ]
 

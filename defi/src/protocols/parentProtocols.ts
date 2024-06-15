@@ -4708,6 +4708,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MagicSeaDEX",
   },
+  {
+    id: "parent#fenix-finance",
+    name: "Fenix Finance",
+    url: "https://www.fenixfinance.io",
+    description: "Fenix is an advanced decentralised exchange built for Blast",
+    logo: `${baseIconsUrl}/fenix-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "FenixFinance",
+  },
 ];
 
 export default parentProtocols;

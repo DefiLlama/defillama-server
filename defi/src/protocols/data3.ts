@@ -46307,7 +46307,7 @@ const data3: Protocol[] = [
     listedAt: 1718370672
   },
   {
-    id: "4563",
+    id: "4775",
     name: "Fenix Standard Pools",
     address: null,
     symbol: "-", 

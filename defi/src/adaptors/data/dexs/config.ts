@@ -2175,6 +2175,7 @@ export default {
         "id": "3650"
     },
     "shimmersea": {
+        parentId: "MagicSea",
         "enabled": true,
         "id": "3571"
     },

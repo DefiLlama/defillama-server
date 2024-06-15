@@ -20925,7 +20925,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1085",
     name: "Thetanuts Finance",
-    address: "eth:0x23f3D4625AEF6f0b84d50dB1d53516e6015c0c9B",
+    address: "0x23f3D4625AEF6f0b84d50dB1d53516e6015c0c9B",
     symbol: "NUTS",
     url: "https://thetanuts.finance",
     description:

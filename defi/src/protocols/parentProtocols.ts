@@ -4697,6 +4697,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "macarondex",
     github: ["Macaromswap"],
   },
+  {
+    id: "parent#magicsea",
+    name: "MagicSea",
+    url: "https://magicsea.finance",
+    description: "Trade, Earn and Boost with the Power of IOTA",
+    logo: `${baseIconsUrl}/magicsea.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MagicSeaDEX",
+  },
 ];
 
 export default parentProtocols;

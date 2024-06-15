@@ -19536,14 +19536,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3571",
-    name: "MagicSea", // rebrand from ShimmerSea
+    name: "MagicSea AMM", // rebrand from ShimmerSea
     address: null,
     symbol: "-",
     url: "https://app.magicsea.finance/swap",
     description:
       "MagicSea is the leading Decentralized Exchange (DEX) and NFT Marketplace on IOTA and Shimmer EVM offering a premier Trading and Market Making experience",
     chain: "ShimmerEVM",
-    logo: `${baseIconsUrl}/magicsea.png`,
+    logo: `${baseIconsUrl}/magicsea-amm.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -19554,6 +19554,7 @@ const data3: Protocol[] = [
     twitter: "MagicSeaDEX",
     oracles: [],
     forkedFrom: ["Uniswap V2"],
+    parentProtocol: "parent#magicsea",
     listedAt: 1695923248
   },
   {
@@ -45874,6 +45875,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "magicsea-lb-v2/index.js",
     twitter: "MagicSeaDEX",
+    parentProtocol: "parent#magicsea",
     listedAt: 1718106100
   },
   {

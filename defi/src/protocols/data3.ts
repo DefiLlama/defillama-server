@@ -24905,8 +24905,8 @@ const data3: Protocol[] = [
   {
     id: "3814",
     name: "Sumer.money",
-    address: "meter:0x553d713e0fb958932b6c40abaf0b5a1ffae73da2",
-    symbol: "SUMER",
+    address: null,
+    symbol: "-",
     url: "https://sumer.money",
     description: "Sumer is a cross-chain synthetic assets protocol with a lending and borrowing market, deployed simultaneously on a network of supported chains. Sumer enables the creation of SuTokens (Synthetic Assets of USD, ETH and BTC) to provide a credit card-like experience to users. SuTokens break cross-chain liquidity & smart contract communication barriers while enabling non-custodial, highly decentralized & secure cross-chain transfers",
     chain: "Meter",

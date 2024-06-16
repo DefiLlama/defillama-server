@@ -198,5 +198,10 @@ export default {
         parentId: "Maverick Protocol",
         enabled: true,
         id: "4752"
-    }
+    },
+    "thruster-v3": {
+        parentId: "Thruster",
+        enabled: true,
+        id: "4199",
+    },
 } as AdaptorsConfig

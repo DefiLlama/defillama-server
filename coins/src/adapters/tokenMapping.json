@@ -746,6 +746,11 @@
       "to": "coingecko#kelp-dao-restaked-eth",
       "decimals": "18",
       "symbol": "RSETH"
+    },
+    "0x80137510979822322193fc997d400d5a6c747bf7": {
+      "to": "coingecko#stakestone-ether",
+      "decimals": "18",
+      "symbol": "STONE"
     }
   },
   "radixdlt": {
@@ -2611,6 +2616,21 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "FTN",
+      "to": "coingecko#fasttoken"
+    },
+    "0x4084ab20f8ffca76c19aaf854fb5fe9de6217fbb": {
+      "decimals": "18",
+      "symbol": "FTN",
+      "to": "coingecko#fasttoken"
+    },
+    "0x498d1cf9ad2d66144c98057a5880ee16e801e2f7": {
+      "decimals": "18",
+      "symbol": "FTN",
+      "to": "coingecko#fasttoken"
     }
   },
   "zklink": {

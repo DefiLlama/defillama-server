@@ -13,6 +13,7 @@ const pools: string[] = [
   "0xc117238434fe8AD8a8302C19A10d0470E0Dd3A09",
   "0x6c85A831a945BA9b565d500a3a9e107A0AAd868E",
   "0xD736A3947860F2d7ac316a12085755001F360775",
+  "0xcc2daecb9a96eedd2d48259d664d5d48791a7f79"
 ];
 
 export async function bitcow(timestamp: number) {

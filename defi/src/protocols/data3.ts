@@ -45309,7 +45309,7 @@ const data3: Protocol[] = [
     module: "lynx/index.js",
     twitter: "Lynx_Protocol",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://lynx-finance.gitbook.io/lynx-finance/for-users/traders#pricing
     listedAt: 1717630515
   },
   {

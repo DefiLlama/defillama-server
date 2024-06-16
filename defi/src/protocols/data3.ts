@@ -46373,6 +46373,55 @@ const data3: Protocol[] = [
     github: ["clustersxyz"],
     listedAt: 1718535759
   },
+  {
+    id: "4778",
+    name: "Infinity Hedge Fund",
+    address: "base:0x3B9728bD65Ca2c11a817ce39A6e91808CceeF6FD",
+    symbol: "IHF", 
+    url: "https://app.infinityhedgefund.com/#/dashboard",
+    description: "Infinity Hedge Fund is at the forefront of the next generation of DeFi, offering innovative solutions to the challenges faced by earlier DeFi protocols, and at the same time, fulfilling the role of a hedge fund, while also looking to incubate new groundbreaking tech/projects.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/infinity-hedge-fund.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "ihf-smart-debase-token",
+    cmcId: "31796",
+    category: "Farm",
+    chains: ["Base"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "infinity-hedge-fund/index.js",
+    twitter: "IHFund",
+    audit_links: ["https://paladinsec.co/projects/infinity-hedge-fund"],
+    listedAt: 1718565420
+  },
+  {
+    id: "4779",
+    name: "SOFA.org",
+    address: "0x57b96d4af698605563a4653d882635da59bf11af",
+    symbol: "RCH", 
+    url: "https://www.sofa.org",
+    description: "Creating a decentralized, trustless, atomic settlement foundation for handling all financial assets on-chain.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/sofa.org.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "rch-token",
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum", "Ethereum"],
+    oracles: ["Chainlink"], 
+    forkedFrom: [],
+    module: "sofa-org/index.js",
+    twitter: "SOFAorgDAO",
+    audit_links: [
+                   "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Sofa-v1.0.pdf",
+                   "https://code4rena.com/reports/2024-05-sofa-pro-league",
+                   "https://github.com/sigp/public-audits/blob/master/reports/sofa/review.pdf"
+                 ],
+    github: ["sofa-org"],
+    listedAt: 1718565920
+  },
 ]
 
 export default data3

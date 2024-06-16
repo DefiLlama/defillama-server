@@ -2208,5 +2208,9 @@ export default {
     "cellula": {
         enabled: true,
         id: "4705"
-    }
+    },
+    "clusters": {
+        enabled: true,
+        id: "4777"
+    },
 } as AdaptorsConfig

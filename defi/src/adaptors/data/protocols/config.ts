@@ -204,4 +204,9 @@ export default {
         enabled: true,
         id: "4199",
     },
+    "thruster-v2": {
+        parentId: "Thruster",
+        enabled: true,
+        id: "4207",
+    },
 } as AdaptorsConfig

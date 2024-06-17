@@ -661,6 +661,11 @@
       "decimals": "8",
       "symbol": "CELL",
       "to": "coingecko#cellena-finance"
+    },
+    "0xada35ada7e43e2ee1c39633ffccec38b76ce702b4efc2e60b50f63fbe4f710d8::apetos_token::ApetosCoin": {
+      "decimals": "8",
+      "symbol": "APETOS",
+      "to": "coingecko#apetos"
     }
   },
   "velas": {

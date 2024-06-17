@@ -3099,6 +3099,19 @@ export const chainCoingeckoIds = {
     url: "https://sanko.xyz/",
     chainId: 1996,
   },
+  "Rari": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "RariChain",
+    url: "https://rarichain.org/",
+    chainId: 1380012617,
+  },
 
 } as unknown as ChainCoinGekcoIds
 
@@ -3760,6 +3773,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Ham"
     case "sanko":
       return "Sanko"
+    case "rari":
+      return "Rari"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

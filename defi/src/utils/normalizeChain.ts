@@ -3086,6 +3086,19 @@ export const chainCoingeckoIds = {
     url: "https://ham.fun",
     chainId: 5112,
   },
+  "Sanko": {
+    geckoId: "dream-machine-token",
+    symbol: "DMT",
+    cmcId: "25653",
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "SankoGameCorp",
+    url: "https://sanko.xyz/",
+    chainId: 1996,
+  },
 
 } as unknown as ChainCoinGekcoIds
 
@@ -3745,6 +3758,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "IOTA EVM"
     case "ham":
       return "Ham"
+    case "sanko":
+      return "Sanko"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

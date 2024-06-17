@@ -1925,10 +1925,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
   },
   "zkSync Era": {
-    geckoId: null,
+    geckoId: "zksync",
     github: ['matter-labs'],
-    symbol: null,
-    cmcId: null,
+    symbol: "ZK",
+    cmcId: "24091",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",

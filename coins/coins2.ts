@@ -2,9 +2,8 @@ import { CoinRead } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
-import { closeConnection, getCoins2Connection } from "./getDBConnection";
+import { getCoins2Connection } from "./getDBConnection";
 import { sendMessage } from "../defi/src/utils/discord";
-import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 import fetch from "node-fetch";
 
 function sleep(ms: number): Promise<void> {
@@ -488,7 +487,6 @@ export async function writeToRedis(
   const query = "price";
   try {
     if (debug) {
-      await setEnvSecrets();
       let ob = JSON.parse(debug);
       const real = await fetch(
         `https://coins.llama.fi/prices/current/${key}`,

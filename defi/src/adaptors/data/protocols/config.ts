@@ -209,4 +209,9 @@ export default {
         enabled: true,
         id: "4207",
     },
+    "balanced": {
+        parentId: "BalancedDAO",
+        enabled: true,
+        id: "448",
+    }
 } as AdaptorsConfig

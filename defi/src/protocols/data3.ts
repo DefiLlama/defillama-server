@@ -13153,7 +13153,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3287",
-    name: "TruStake MATIC",
+    name: "TruStake",
     address: null,
     symbol: "-",
     url: "https://app.trufin.io/vaults/trustake",

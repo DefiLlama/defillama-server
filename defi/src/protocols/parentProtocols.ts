@@ -2903,10 +2903,11 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#nostra",
     name: "Nostra",
+    symbol: "NSTR",
     url: "https://nostra.finance/",
     description: "Nostra is the crypto Super App, powered by Starknet, where users can lend, borrow, swap, and bridge cryptocurrencies.",
     logo: `${baseIconsUrl}/nostra.jpg`,
-    gecko_id: null,
+    gecko_id: "nostra",
     cmcId: "22743",
     chains: [],
     twitter: "nostrafinance"

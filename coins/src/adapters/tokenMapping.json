@@ -2027,6 +2027,16 @@
       "decimals": "18",
       "symbol": "ZEND",
       "to": "coingecko#zklend-2"
+    },
+    "0x00c530f2c0aa4c16a0806365b0898499fba372e5df7a7172dc6fe9ba777e8007": {
+      "decimals": "18",
+      "symbol": "NSTR",
+      "to": "coingecko#nostra"
+    },
+    "0xc530f2c0aa4c16a0806365b0898499fba372e5df7a7172dc6fe9ba777e8007": {
+      "decimals": "18",
+      "symbol": "NSTR",
+      "to": "coingecko#nostra"
     }
   },
   "milkomeda": {

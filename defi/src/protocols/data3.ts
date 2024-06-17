@@ -846,14 +846,14 @@ const data3: Protocol[] = [
   },
   {
     id: "2737",
-    name: "Dexter",
+    name: "Persistence DEX", // previous Dexter https://blog.persistence.one/2024/06/11/rebranding-dexter-introducing-persistence-dex-and-enhancing-ecosystem-alignment/
     address: null,
     symbol: "-",
-    url: "https://dexter.zone",
+    url: "https://app.persistence.one",
     description:
-      "DEXTER is an Interchain DEX built on Persistence for yield-generating and liquid-staked assets. Dexter supports the tried and tested AMM mechanisms inspired by the best innovations in all of DeFi, and would offer an optimized experience for all the users.",
+      "(Previous DEXTER), Persistence DEX is an Interchain DEX built on Persistence for yield-generating and liquid-staked assets. Persistence DEX supports the tried and tested AMM mechanisms inspired by the best innovations in all of DeFi, and would offer an optimized experience for all the users.",
     chain: "Persistence",
-    logo: `${baseIconsUrl}/dexter.jpg`,
+    logo: `${baseIconsUrl}/persistence-dex.jpg`, // persistence-dex
     audits: "2",
     audit_note: null,
     gecko_id: null,

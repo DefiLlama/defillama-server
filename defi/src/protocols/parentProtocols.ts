@@ -4600,7 +4600,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "10364",
     chains: [],
     twitter: "spectra_finance",
-    governanceID: ["snapshot:apwine.eth"],
+    governanceID: ["snapshot:apwine.eth", "snapshot:spectradao.eth"],
     github: ["perspectivefi"]
   },
   {

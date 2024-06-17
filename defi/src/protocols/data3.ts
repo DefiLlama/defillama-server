@@ -20254,10 +20254,10 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://contango.xyz",
     description:
-      "Contango offers perps built via looping on money markets.",
+      "Contango lets you loop anything on-chain. You can create leverage (re)staking positions, arb rates differentials, farm points, or simply go long or short like a perp at low funding",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/contango-v2.jpg`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -20268,6 +20268,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     parentProtocol: "parent#contango",
+    audit_links: ["https://github.com/contango-xyz/core-v2/tree/main/audit"],
     listedAt: 1696590696
   },
   {

@@ -2213,4 +2213,9 @@ export default {
         enabled: true,
         id: "4777"
     },
+    "magpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "2271"
+    },
 } as AdaptorsConfig

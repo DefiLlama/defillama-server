@@ -68,7 +68,9 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4690": "lorenzo",
   "4692": "taiko",
   "4702": "immutable zkevm",
-  "4141": "BSquared"
+  "4141": "BSquared",
+  "295": "Stacks",
+  "4558": "BOB",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -135,4 +137,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   bsc: { ticker: "BNB", address: "coingecko:binancecoin" },
   tron: { ticker: "TRON", address: "coingecko:tron" },
   kinto: { ticker: "KINTO", address: "" },
+  taiko: { ticker: "TAIKO", address: "0xa9d23408b9ba935c230493c40c73824df71a0975" },
 };

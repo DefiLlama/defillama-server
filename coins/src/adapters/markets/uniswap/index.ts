@@ -1,32 +1,34 @@
+import * as sdk from "@defillama/sdk";
 import getExtras from "./extraLp";
 import { getUniV2Adapter } from "../../utils/uniV2";
 
-const sushiFactory = '0xc35DADB65012eC5796536bD9864eD8773aBc74C4'
-const alternateGetReservesAbi = 'function getReserves() view returns (uint112 _reserve0, uint112 _reserve1)'
+const sushiFactory = "0xc35DADB65012eC5796536bD9864eD8773aBc74C4";
+const alternateGetReservesAbi =
+  "function getReserves() view returns (uint112 _reserve0, uint112 _reserve1)";
 
 const config = {
-  uniswap: { endpoint: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev', chain: 'ethereum' },
+  uniswap: { endpoint: sdk.graph.modifyEndpoint('A3Np3RQbaBA6oKJgiwDJeo5T3zrYfGHPWFYayMwtNDum'), chain: 'ethereum' },
   sushiswap: [
-    { endpoint: 'https://api.thegraph.com/subgraphs/name/sushiswap/exchange', chain: 'ethereum', factory: '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac', },
-    { endpoint: 'https://api.thegraph.com/subgraphs/name/sushiswap/arbitrum-exchange', chain: 'arbitrum', factory: sushiFactory, },
-    { endpoint: 'https://api.thegraph.com/subgraphs/name/sushiswap/matic-exchange', chain: 'polygon', factory: sushiFactory, },
-    { endpoint: 'https://api.thegraph.com/subgraphs/name/sushiswap/avalanche-exchange', chain: 'avax', factory: sushiFactory, },
-    { endpoint: 'https://api.thegraph.com/subgraphs/name/sushiswap/xdai-exchange', chain: 'xdai', factory: sushiFactory, },
+    { endpoint: sdk.graph.modifyEndpoint('6NUtT5mGjZ1tSshKLf5Q3uEEJtjBZJo1TpL5MXsUBqrT'), chain: 'ethereum', factory: '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac', },
+    { endpoint: sdk.graph.modifyEndpoint('8nFDCAhdnJQEhQF3ZRnfWkJ6FkRsfAiiVabVn4eGoAZH'), chain: 'arbitrum', factory: sushiFactory, },
+    { endpoint: sdk.graph.modifyEndpoint('8NiXkxLRT3R22vpwLB4DXttpEf3X1LrKhe4T1tQ3jjbP'), chain: 'polygon', factory: sushiFactory, },
+    { endpoint: sdk.graph.modifyEndpoint('6VAhbtW5u2sPYkJKAcMsxgqTBu4a1rqmbiVQWgtNjrvT'), chain: 'avax', factory: sushiFactory, },
+    { endpoint: sdk.graph.modifyEndpoint('4a8hcsttqsmycmmeFcpffGMZhBDU4NhHfyHH6YNcnu7b'), chain: 'xdai', factory: sushiFactory, },
     { chain: 'moonriver', factory: sushiFactory, },
-    { endpoint: 'https://api.thegraph.com/subgraphs/name/sushiswap/bsc-exchange', chain: 'bsc', factory: sushiFactory, },
+    { endpoint: sdk.graph.modifyEndpoint('GPRigpbNuPkxkwpSbDuYXbikodNJfurc1LCENLzboWer'), chain: 'bsc', factory: sushiFactory, },
   ],
   zkSwap: { factory: '0x3a76e377ED58c8731F9DF3A36155942438744Ce3', chain: 'era', uniqueLPNames: true, },
   'eddy-fi': { factory: '0x9fd96203f7b22bCF72d9DCb40ff98302376cE09c', chain: 'zeta', getReservesAbi: alternateGetReservesAbi, },
   // pancakeswap: { endpoint: 'https://info-gateway.pancakeswap.com/subgraphs/v2/bsc/graphql', chain: 'bsc', factory: '0xca143ce32fe78f1f7019d7d551a6402fc5350c73', },
-  traderJoe: { chain: 'avax', factory: '0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10', endpoint: 'https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange' },
+  traderJoe: { chain: 'avax', factory: '0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10', endpoint: sdk.graph.modifyEndpoint('9ZjERoA7jGANYNz1YNuFMBt11fK44krveEhzssJTWokM') },
   vvsFinance: { chain: 'cronos', factory: '0x3b44b2a187a7b3824131f8db5a74194d0a42fc15', },
-  quickswap: { chain: 'polygon', factory: '0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32', endpoint: 'https://api.thegraph.com/subgraphs/name/sameepsi/quickswap06' },
+  quickswap: { chain: 'polygon', factory: '0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32', endpoint: sdk.graph.modifyEndpoint('FUWdkXWpi8JyhAnhKL5pZcVshpxuaUQG8JHMDqNCxjPd') },
   biswap: { chain: 'bsc', factory: '0x858e3312ed3a876947ea49d572a7c42de08af7ee', },
   // mmFinance: { chain: 'cronos', factory: '0xd590cC180601AEcD6eeADD9B7f2B7611519544f4', },
   trisolaris: { chain: 'aurora', factory: '0xc66F594268041dB60507F00703b152492fb176E7', },
   pangolin: { chain: 'avax', factory: '0xefa94DE7a4656D787667C749f7E1223D71E9FD88', },
   spiritswap: { chain: 'fantom', factory: '0xEF45d134b73241eDa7703fa787148D9C9F4950b0', },
-  spookyswap: { chain: 'fantom', factory: '0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3', endpoint: "https://api.thegraph.com/subgraphs/name/eerieeight/spookyswap" },
+  spookyswap: { chain: 'fantom', factory: '0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3', endpoint: sdk.graph.modifyEndpoint('HyhMfT7gehNHMBmFiExqeg3pDtop9UikjvBPfAXT3b21') },
   tombswap: { chain: 'fantom', factory: '0xE236f6890F1824fa0a7ffc39b1597A5A6077Cfe9', },
   wemix: { chain: 'wemix', factory: '0xe1F36C7B919c9f893E2Cd30b471434Aa2494664A', },
   // solidly: { chain: 'fantom', factory: '0x3fAaB499b519fdC5819e3D7ed0C26111904cbc28', },
@@ -46,6 +48,7 @@ const config = {
   // zkswap: { chain: 'polygon_zkevm', factory: '0x51A0D4B81400581d8722627daFCd0c1Ff9357d1D', getReservesAbi: alternateGetReservesAbi, },
   aerodrome: { chain: 'base', factory: '0x420DD381b31aEf6683db6B902084cB0FFECe40Da', hasStablePools: true, },
   jibswap: { chain: 'jbc', factory: '0x4BBdA880C5A0cDcEc6510f0450c6C8bC5773D499', },
+  macaron: { chain: "btr", factory: "0x1037e9078df7ab09b9af78b15d5e7aad7c1afdd0", },
 }
 
 export function extraUniV2Lps(timestamp: number = 0) {
@@ -87,19 +90,18 @@ export const adapters: {
   [key: string]: Function;
 } = {
   extraUniV2Lps,
-}
+};
 
 Object.entries(config).forEach(([project, value]: any) => {
   if (Array.isArray(value)) {
     value.forEach((v) => {
-      if (!v.project) v.project = project
-      adapters[`${project}-${v.chain}`] = getUniV2Adapter(v)
-    })
+      if (!v.project) v.project = project;
+      adapters[`${project}-${v.chain}`] = getUniV2Adapter(v);
+    });
     return;
   }
 
-  if (!value.project)
-    value.project = project
+  if (!value.project) value.project = project;
 
-  adapters[project] = getUniV2Adapter(value)
-})
+  adapters[project] = getUniV2Adapter(value);
+});

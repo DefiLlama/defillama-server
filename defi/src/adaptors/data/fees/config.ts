@@ -685,6 +685,7 @@ export default {
         id: "2643"
     },
     "maverick": {
+        parentId: "Maverick Protocol",
         enabled: true,
         id: "2644"
     },
@@ -1444,6 +1445,7 @@ export default {
         "id": "3657"
     },
     "shimmersea": {
+        parentId: "MagicSea",
         "enabled": true,
         "id": "3571"
     },
@@ -2198,5 +2200,22 @@ export default {
     "dragonswap-sei": {
         enabled: true,
         id: "4720"
-    }
+    },
+    "wen-markets": {
+        enabled: true,
+        id: "4733"
+    },
+    "cellula": {
+        enabled: true,
+        id: "4705"
+    },
+    "clusters": {
+        enabled: true,
+        id: "4777"
+    },
+    "magpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "2271"
+    },
 } as AdaptorsConfig

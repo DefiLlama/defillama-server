@@ -912,7 +912,7 @@ const data: Protocol[] = [
     name: "Tornado Cash",
     address: "0x77777feddddffc19ff86db637967013e6c6a116c",
     symbol: "TORN",
-    url: "https://tornado.cash/",
+    url: "https://tornado.ws/",
     description: "Non-custodial anonymous transactions on Ethereum.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tornado-cash.jpg`,
@@ -2311,7 +2311,7 @@ const data: Protocol[] = [
   {
     id: "214",
     name: "Raydium",
-    address: "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+    address: "solana:4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
     symbol: "RAY",
     url: "https://raydium.io",
     description: "An on-chain order book AMM powering the evolution of DeFi.",
@@ -3721,7 +3721,7 @@ const data: Protocol[] = [
   {
     id: "280",
     name: "Oxygen",
-    address: "z3dn17yLaGMKffVogeFHQ9zWVcXgqgf3PQnDsNs2g6M",
+    address: "solana:z3dn17yLaGMKffVogeFHQ9zWVcXgqgf3PQnDsNs2g6M",
     symbol: "OXY",
     url: "https://www.oxygen.org/",
     description: "Money market on Solana",
@@ -4466,7 +4466,7 @@ const data: Protocol[] = [
   {
     id: "315",
     name: "Tulip Protocol",
-    address: "TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs",
+    address: "solana:TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs",
     symbol: "TULIP",
     url: "https://tulip.garden/",
     description: "The Efficient Solana Yield Aggregator",
@@ -7412,7 +7412,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Dexes", // tvl also counts lending/cdp product
-    chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective"],
+    chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective", "Arbitrum", "Base"],
     module: "balanced/index.js",
     twitter: "BalancedDAO",
     audit_links: ["https://docs.balanced.network/security#smart-contract-audits"],
@@ -9536,14 +9536,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "548",
-    name: "DeFis Network",
-    address: "eos:DFS",
+    name: "DFS Network",
+    address: "dfs:DFS",
     symbol: "DFS",
-    url: "https://defis.network",
+    url: "https://dfs.land",
     description:
-      "DeFis Network is the most decentralized finance network built on EOSIO that aggregates all valuable DeFi-protocols.",
+      "DFS Network is a blockchain built for mass adoption Web3 products and services.  Fast, free, user-friendly, composable, green, and globally distributed.",
     chain: "EOS",
-    logo: `${baseIconsUrl}/defis-network.png`,
+    logo: `${baseIconsUrl}/dfs-network.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "defis-network",
@@ -9551,12 +9551,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["EOS"],
     module: "dfs/index.js",
-    twitter: "DFSnetworks",
+    twitter: "dfsdeveloper",
     audit_links: [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=ca2c97083e94d0958e9376b770b16a7f8ddd53fb1e5f1b9cbabc0ccf8d157d40",
       "https://github.com/peckshield/publications/blob/master/audit_reports/DeFis-Network_Swap_audit_report_2020_20_cn_1_0.pdf",
     ],
-    github: ["defis-net"]
+    github: ["DFSNetwork"]
   },
   {
     id: "549",
@@ -9732,8 +9732,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "557",
     name: "Meta Pool Near",
-    address: "near:0xc21ff01229e982d7c8b8691163b0a3cb8f357453",
-    symbol: "META",
+    address: "near:mpdao-token.near",
+    symbol: "MPDAO",
     url: "https://metapool.app",
     description: "Meta Pool is a liquid staking protocol built on the NEAR blockchain.",
     chain: "Near",
@@ -20925,7 +20925,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1085",
     name: "Thetanuts Finance",
-    address: null,
+    address: "0x23f3D4625AEF6f0b84d50dB1d53516e6015c0c9B",
     symbol: "NUTS",
     url: "https://thetanuts.finance",
     description:
@@ -20936,7 +20936,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "thetanuts-finance",
     cmcId: null,
-    category: "Options",
+    category: "Yield",
     chains: ["Ethereum", "Binance", "Avalanche", "Fantom", "Polygon", "Aurora", "Arbitrum", "Cronos", "Boba"],
     module: "thetanuts/index.js",
     twitter: "ThetanutsFi",

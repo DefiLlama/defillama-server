@@ -21540,8 +21540,8 @@ const data2: Protocol[] = [
   {
     id: "2337",
     name: "STON.fi",
-    address: null,
-    symbol: "-",
+    address: "ton:EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO",
+    symbol: "STON",
     url: "https://app.ston.fi/",
     description:
       "Decentralized automated market maker (AMM) built on the TON blockchain",
@@ -21549,8 +21549,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/ston.fi.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "ston",
+    cmcId: "27311",
     category: "Dexes",
     chains: ["TON"],
     module: "ston/index.js",
@@ -26254,13 +26254,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2541",
-    name: "Clober",
+    name: "Clober V1",
     address: null,
     symbol: "-",
     url: "https://clober.io",
     description: "Clober is a fully decentralized on-chain order book DEX infrastructure based on its unique algorithm LOBSTER.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/clober.jpg`,
+    logo: `${baseIconsUrl}/clober-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -26271,6 +26271,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "clober/index.js",
     twitter: "CloberDEX",
+    parentProtocol: "parent#clober",
     listedAt: 1676572192
   },
   {
@@ -27003,7 +27004,7 @@ const data2: Protocol[] = [
   {
     id: "2574",
     name: "HXRO Network",
-    address: "solana:0x4bd70556ae3f8a6ec6c4080a0c327b24325438f3",
+    address: "solana:HxhWkVpk5NS4Ltg5nij2G671CKXFRKPK8vy271Ub4uEK",
     symbol: "HXRO",
     url: "https://hxro.com",
     description:
@@ -27901,13 +27902,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2613",
-    name: "Mellow Protocol",
+    name: "Mellow Yield",
     address: null,
     symbol: "-",
     url: "https://mellow.finance",
     description: "Mellow Protocol is a permissionless system for active liquidity management and building trustless automatic DeFi strategies",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/genius.jpg`,
+    logo: `${baseIconsUrl}/mellow-yield.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -27919,8 +27920,8 @@ const data2: Protocol[] = [
     module: "MellowProtocol/index.js",
     twitter: "mellowprotocol",
     audit_links: ["https://github.com/mellow-finance/mellow-audits"],
+    parentProtocol: "parent#mellow-protocol",
     listedAt: 1677607439,
-    github: ["mellow-finance"]
   },
   {
     id: "2614",
@@ -28600,17 +28601,17 @@ const data2: Protocol[] = [
   },
   {
     id: "2644",
-    name: "Maverick Protocol",
+    name: "Maverick V1",
     address: "0x7448c7456a97769f6cd04f1e83a4a23ccdc46abd",
     symbol: "MAV",
     url: "https://www.mav.xyz",
     description: "The DeFi infrastructure built to bring higher capital efficiency + greater capital control to the liquidity market, powered by Maverick AMM.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/maverick-protocol.jpg`,
+    logo: `${baseIconsUrl}/maverick-v1.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "maverick-protocol",
-    cmcId: "18037",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
     module: "maverick/index.js",
@@ -28618,8 +28619,8 @@ const data2: Protocol[] = [
     oracles: [],
     twitter: "mavprotocol",
     audit_links: ["https://github.com/maverickprotocol/audits"],
+    parentProtocol: "parent#maverick-protocol",
     listedAt: 1678282138,
-    governanceID: ["snapshot:mavxyz.eth"]
   },
   {
     id: "2645",

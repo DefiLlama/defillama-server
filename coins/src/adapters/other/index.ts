@@ -27,6 +27,7 @@ import steadefiUsdArb from "./steadefi_usdc_arb";
 import steadefiUsdEth from "./steadefi_usdc_eth";
 import steadefiUsdLink from "./steadefi_usdc_link";
 import steadefiUsdWbtc from "./steadefi_usdc_wbtc";
+import warlordAdapter from "./warlord";
 import opdxAdapter from "./odpxWethLP";
 import teahouseAdapter from "./teahouse";
 import gmdV2 from "./gmdV2";
@@ -86,6 +87,14 @@ export function unknownTokens(timestamp: number = 0) {
 }
 export function unknownTokens2(timestamp: number = 0) {
   return Promise.all([
+    unknownTokenAdapter(
+      timestamp,
+      "0x501ca56E4b6Af84CBAAaaf2731D7C87Bed32ee65",
+      "0x7b0400231Cddf8a7ACa78D8c0483890cd0c6fFD6",
+      "0x5c46bFF4B38dc1EAE09C5BAc65872a1D8bc87378",
+      false,
+      "merlin",
+    ),
     unknownTokenAdapter(
       timestamp,
       "0x908b3CB9F8E6441B2b1844A6D4f1AC4707bd1483",
@@ -350,6 +359,9 @@ export async function velgd(timestamp: number = 0) {
   return velgAdapter(timestamp);
 }
 
+export async function warlord(timestamp: number = 0) {
+  return warlordAdapter(timestamp);
+}
 
 export async function salt(timestamp: number = 0) {
   const writes: Write[] = []
@@ -403,4 +415,5 @@ export const adapters = {
   opdx,
   gmdV2,
   salt,
+  warlord,
 }

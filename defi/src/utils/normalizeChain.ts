@@ -1925,10 +1925,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
   },
   "zkSync Era": {
-    geckoId: null,
+    geckoId: "zksync",
     github: ['matter-labs'],
-    symbol: null,
-    cmcId: null,
+    symbol: "ZK",
+    cmcId: "24091",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
@@ -2930,7 +2930,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Bitcoin Sidechains"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -3073,6 +3073,33 @@ export const chainCoingeckoIds = {
     url: "https://blog.iota.org/iotas-evm-mainnet-launch/",
     chainId: 8822
   },
+  "Ham": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "HamOnWarpcast",
+    url: "https://ham.fun",
+    chainId: 5112,
+  },
+  "Sanko": {
+    geckoId: "dream-machine-token",
+    symbol: "DMT",
+    cmcId: "25653",
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "SankoGameCorp",
+    url: "https://sanko.xyz/",
+    chainId: 1996,
+  },
+
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3729,6 +3756,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Joltify"
     case "iotaevm":
       return "IOTA EVM"
+    case "ham":
+      return "Ham"
+    case "sanko":
+      return "Sanko"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -46436,7 +46436,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Options",
     chains: ["zkSync Era"],
     oracles: ["Chainlink"], 
     forkedFrom: [],

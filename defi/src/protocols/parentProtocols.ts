@@ -2834,7 +2834,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#contango",
     name: "Contango",
     url: "https://contango.xyz",
-    description: "Contango is a unique decentralized market offering expirables, contracts to buy or sell an asset at a set price and date in the future.",
+    description: "Contango lets you loop anything on-chain. You can create leverage (re)staking positions, arb rates differentials, farm points, or simply go long or short like a perp at low funding.",
     logo: `${baseIconsUrl}/contango.png`,
     gecko_id: null,
     cmcId: null,
@@ -4718,6 +4718,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "FenixFinance",
+  },
+  {
+    id: "parent#netweave-finance",
+    name: "NetWeave Finance",
+    url: "https://www.netweave.finance",
+    description: "Focus on DeFi and strive to create convenient and secure lending protocols on Mode Network.",
+    logo: `${baseIconsUrl}/netweave-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "NetWeave_Fi",
   },
 ];
 

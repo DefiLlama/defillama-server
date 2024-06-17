@@ -8,9 +8,10 @@ import { geckoSymbols, ownTokens, zero } from "./constants";
 import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { fetchAdaTokens } from "./adapters/ada";
+import { nativeWhitelist } from "./adapters/manual";
 
 export async function fetchMinted(params: {
-  chains: Chain[];
+  chains: TokenTvlData;
   timestamp?: number;
   searchWidth?: number;
 }): Promise<{ tvlData: TokenTvlData; mcapData: McapData }> {
@@ -19,7 +20,7 @@ export async function fetchMinted(params: {
   const mcapData: McapData = { total: {} };
 
   await Promise.all(
-    params.chains.map(async (chain: Chain) => {
+    Object.keys(params.chains).map(async (chain: Chain) => {
       try {
         const canonicalTokens: Address[] = await fetchBridgeTokenList(chain);
         const thirdPartyTokens: Address[] = (await fetchThirdPartyTokenList())[chain] ?? [];
@@ -66,7 +67,15 @@ export async function fetchMinted(params: {
             const mcapInfo = mcaps[t];
             const supply = supplies[t];
             if (!priceInfo || !supply || !mcapInfo) return;
+
             const symbol = geckoSymbols[priceInfo.symbol.replace("coingecko:", "")] ?? priceInfo.symbol.toUpperCase();
+            const canonicalSymbols = Object.keys(params.chains[chain]);
+            if (
+              canonicalSymbols.includes(symbol) &&
+              !(chain in nativeWhitelist && nativeWhitelist[chain].includes(t.substring(t.indexOf(":") + 1)))
+            )
+              return;
+
             if (!(symbol in dollarValues)) dollarValues[symbol] = zero;
             const decimalShift: BigNumber = BigNumber(10).pow(BigNumber(priceInfo.decimals));
             const usdValue: BigNumber = BigNumber(priceInfo.price).times(BigNumber(supply)).div(decimalShift);

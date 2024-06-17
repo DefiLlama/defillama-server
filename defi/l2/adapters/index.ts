@@ -124,8 +124,8 @@ export const starknet = async (): Promise<Address[]> => {
   addresses.starknet = data.map((t: any) => t.l2_token_address?.toLowerCase()).filter((t: any) => t != null);
   return addresses.starknet;
 };
-export const zksync = async (): Promise<Address[]> => {
-  if (addresses.zksync) return addresses.zksync;
+export const era = async (): Promise<Address[]> => {
+  if (addresses.era) return addresses.era;
   const {
     data: { result: data },
   } = await axios.post("https://mainnet.era.zksync.io", {
@@ -134,8 +134,8 @@ export const zksync = async (): Promise<Address[]> => {
     id: 1,
     jsonrpc: "2.0",
   });
-  addresses.zksync = data.map((d: any) => d.l2Address.toLowerCase());
-  return addresses.zksync;
+  addresses.era = data.map((d: any) => d.l2Address.toLowerCase());
+  return addresses.era;
 };
 export const tron = async (): Promise<Address[]> => {
   if (!("tron" in addresses)) addresses.tron = [];

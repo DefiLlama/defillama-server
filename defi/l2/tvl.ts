@@ -13,7 +13,7 @@ export default async function main(timestamp?: number) {
   const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp });
   let [{ tvlData: native, mcapData }, incoming, { data: protocols }] = await Promise.all([
     fetchMinted({
-      chains: Object.keys(canonical),
+      chains: canonical,
       timestamp,
     }),
     fetchIncoming({ canonical, timestamp }),
@@ -45,7 +45,7 @@ export default async function main(timestamp?: number) {
 
   // const displayChains: FinalData = {};
   Object.keys(chains).map((c: string) => {
-    const displayName = getChainDisplayName(c, true)
+    const displayName = getChainDisplayName(c, true);
     if (displayName in chains) return;
     chains[displayName] = chains[c];
     delete chains[c];

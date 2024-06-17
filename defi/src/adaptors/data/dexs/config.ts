@@ -1416,6 +1416,7 @@ export default {
         id: "1778"
     },
     "maverick": {
+        parentId: "Maverick Protocol",
         enabled: true,
         id: "2644"
     },
@@ -1625,6 +1626,7 @@ export default {
         "id": "2926"
     },
     "clober": {
+        parentId: "Clober",
         "enabled": true,
         "id": "2541"
     },
@@ -2173,6 +2175,7 @@ export default {
         "id": "3650"
     },
     "shimmersea": {
+        parentId: "MagicSea",
         "enabled": true,
         "id": "3571"
     },
@@ -2370,7 +2373,7 @@ export default {
     },
     "aftermath-fi-amm": {
         parentId: "Aftermath Finance",
-        "enabled": true,
+        "enabled": false,
         "id": "3259"
     },
     "sanctum": {
@@ -2784,5 +2787,29 @@ export default {
     "dragonswap-sei": {
         enabled: true,
         id: "4720"
+    },
+    "basin": {
+        id: "4703",
+        enabled: true,
+        protocolsData: {
+            "spot": {
+                "id": "4703",
+                "enabled": true,
+            }
+        }
+    },
+    "polkadex": {
+        enabled: true,
+        id: "4699"
+    },
+    "nostra-pools": {
+        parentId: "Nostra",
+        enabled: true,
+        id: "4053"
+    },
+    "clober-v2": {
+        parentId: "Clober",
+        enabled: true,
+        id: "4764"
     }
 } as AdaptorsConfig

@@ -82,4 +82,7 @@ export default {
   mod: require("./markets/thala"),
   ambitFinance: require("./yield/ambit-finance"),
   eigenpie: require("./yield/eigenpie"),
+  bitcow: require("./markets/bitcow"),
+  pythAgg: require("./oracles/pythAggregatorV3"),
+  warlord: require("./other"),
 };

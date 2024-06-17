@@ -46379,7 +46379,7 @@ const data3: Protocol[] = [
     address: "base:0x3B9728bD65Ca2c11a817ce39A6e91808CceeF6FD",
     symbol: "IHF", 
     url: "https://app.infinityhedgefund.com/#/dashboard",
-    description: "Infinity Hedge Fund is at the forefront of the next generation of DeFi, offering innovative solutions to the challenges faced by earlier DeFi protocols, and at the same time, fulfilling the role of a hedge fund, while also looking to incubate new groundbreaking tech/projects.",
+    description: "First Echo Deflation token: a game theory token with ultra deflationary design and unique debase mechanism",
     chain: "Base",
     logo: `${baseIconsUrl}/infinity-hedge-fund.jpg`,
     audits: "2",

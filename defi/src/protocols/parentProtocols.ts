@@ -4719,6 +4719,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FenixFinance",
   },
+  {
+    id: "parent#netweave-finance",
+    name: "NetWeave Finance",
+    url: "https://www.netweave.finance",
+    description: "Focus on DeFi and strive to create convenient and secure lending protocols on Mode Network.",
+    logo: `${baseIconsUrl}/netweave-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "NetWeave_Fi",
+  },
 ];
 
 export default parentProtocols;

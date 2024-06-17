@@ -851,7 +851,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://app.persistence.one",
     description:
-      "(Previous DEXTER), Persistence DEX is an Interchain DEX built on Persistence for yield-generating and liquid-staked assets. Persistence DEX supports the tried and tested AMM mechanisms inspired by the best innovations in all of DeFi, and would offer an optimized experience for all the users.",
+      "(Previous DEXTER), Persistence DEX is an Interchain DEX built on Persistence Core-1 Chain for yield-generating. Persistence DEX supports the tried and tested AMM mechanisms inspired by the best innovations in all of DeFi, and would offer an optimized experience for all the users.",
     chain: "Persistence",
     logo: `${baseIconsUrl}/persistence-dex.jpg`, // persistence-dex
     audits: "2",

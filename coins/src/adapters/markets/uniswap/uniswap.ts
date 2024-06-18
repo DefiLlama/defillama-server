@@ -9,7 +9,7 @@ import { Write, Read, CoinData } from "../../utils/dbInterfaces";
 import { MultiCallResults, TokenInfos } from "../../utils/sdkInterfaces";
 import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
-import * as sdk from "@defillama/sdk"
+import * as sdk from "@defillama/sdk";
 
 const sleep = (delay: number) =>
   new Promise((resolve) => setTimeout(resolve, delay));
@@ -61,7 +61,7 @@ async function fetchUniV2MarketsFromSubgraph(
           ${
             timestamp == 0
               ? ``
-              : `createdAtTimestamp_gt: ${(timestamp * 1000).toString()}`
+              : `createdAtTimestamp_gt: ${timestamp.toString()}`
           }
         }) {
           id
@@ -279,10 +279,9 @@ export function translateQty(
   tokenValue: number,
 ) {
   const bigInt = sdk.util.convertToBigInt(
-    Number((usdSwapSize * 10 ** decimals) /
-    tokenValue).toFixed(0)
-  )
-  return bigInt.toString()
+    Number((usdSwapSize * 10 ** decimals) / tokenValue).toFixed(0),
+  );
+  return bigInt.toString();
 }
 async function getConfidenceScores(
   lpsWithUnknown: any[],
@@ -320,7 +319,12 @@ async function getConfidenceScores(
         },
         {
           target,
-          params: [sdk.util.convertToBigInt(Number(+qty/ratio).toFixed(0)).toString(), route],
+          params: [
+            sdk.util
+              .convertToBigInt(Number(+qty / ratio).toFixed(0))
+              .toString(),
+            route,
+          ],
         },
       ];
     })

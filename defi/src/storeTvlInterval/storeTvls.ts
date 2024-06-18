@@ -6,6 +6,7 @@ import { initializeTVLCacheDB, TABLES } from "../api2/db/index";
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { storeStaleCoins, StaleCoins } from "./staleCoins";
 import { PromisePool } from '@supercharge/promise-pool'
+import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
 const maxRetries = 4;
 const millisecondsBeforeLambdaEnd = 30e3; // 30s
@@ -15,6 +16,7 @@ export default async (protocolIndexes: number[], getRemainingTimeInMillis: () =>
   () => TABLES.TvlMetricsTimeouts.upsert({ timestamp: getCurrentUnixTimestamp(), protocol: 'blocks' }),
     getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
   clearTimeout(blocksTimeout)
+  await setEnvSecrets()
 
   const staleCoins: StaleCoins = {};
   const actions = protocolIndexes.map(idx => protocols[idx])

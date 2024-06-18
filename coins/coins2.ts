@@ -5,6 +5,7 @@ import { Redis } from "ioredis";
 import { getCoins2Connection } from "./getDBConnection";
 import { sendMessage } from "../defi/src/utils/discord";
 import fetch from "node-fetch";
+import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -487,6 +488,7 @@ export async function writeToRedis(
   const query = "price";
   try {
     if (debug) {
+      await setEnvSecrets()
       let ob = JSON.parse(debug);
       const real = await fetch(
         `https://coins.llama.fi/prices/current/${key}`,

@@ -46562,6 +46562,28 @@ const data3: Protocol[] = [
     github: ["lovelyswap-v1"],
     listedAt: 1718718663
   },
+  {
+    id: "4786",
+    name: "time.fun",
+    address: null,
+    symbol: "-", 
+    url: "https://time.fun/",
+    description: "Tokenize your time, in minutes, and let fans trade & redeem time with you. Exclusively on Base. Earn ETH from trading fees & redemptions whenever people trade your time",
+    chain: "Base",
+    logo: `${baseIconsUrl}/time.fun.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    oracles: [], 
+    forkedFrom: ["friend.tech"],
+    module: "time-fun/index.js",
+    twitter: "timedotfun",
+    audit_links: [],
+    listedAt: 1718733138
+  },
 ]
 
 export default data3

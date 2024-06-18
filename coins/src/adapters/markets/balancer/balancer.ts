@@ -15,21 +15,27 @@ import { DbTokenInfos } from "../../utils/dbInterfaces";
 const vault: string = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
 const nullAddress: string = "0x0000000000000000000000000000000000000000";
 const subgraphNames: { [chain: string]: string } = {
-  ethereum: sdk.graph.modifyEndpoint('C4ayEZP2yTXRAB8vSaTrgN4m9anTe9Mdm2ViyiAuV9TV'),
-  arbitrum:
-    sdk.graph.modifyEndpoint('itkjv6Vdh22HtNEPQuk5c9M3T7VeGLQtXxcH8rFi1vc'),
-  polygon:
-    sdk.graph.modifyEndpoint('78nZMyM9yD77KG6pFaYap31kJvj8eUWLEntbiVzh8ZKN'),
-  optimism:
-    sdk.graph.modifyEndpoint('FsmdxmvBJLGjUQPxKMRtcWKzuCNpomKuMTbSbtRtggZ7'),
-  avax:
-    sdk.graph.modifyEndpoint('7asfmtQA1KYu6CP7YVm5kv4bGxVyfAHEiptt2HMFgkHu'),
-  xdai:
-    sdk.graph.modifyEndpoint('EJezH1Cp31QkKPaBDerhVPRWsKVZLrDfzjrLqpmv6cGg'),
+  ethereum: sdk.graph.modifyEndpoint(
+    "C4ayEZP2yTXRAB8vSaTrgN4m9anTe9Mdm2ViyiAuV9TV",
+  ),
+  arbitrum: sdk.graph.modifyEndpoint(
+    "itkjv6Vdh22HtNEPQuk5c9M3T7VeGLQtXxcH8rFi1vc",
+  ),
+  polygon: sdk.graph.modifyEndpoint(
+    "78nZMyM9yD77KG6pFaYap31kJvj8eUWLEntbiVzh8ZKN",
+  ),
+  optimism: sdk.graph.modifyEndpoint(
+    "FsmdxmvBJLGjUQPxKMRtcWKzuCNpomKuMTbSbtRtggZ7",
+  ),
+  avax: sdk.graph.modifyEndpoint(
+    "7asfmtQA1KYu6CP7YVm5kv4bGxVyfAHEiptt2HMFgkHu",
+  ),
+  xdai: sdk.graph.modifyEndpoint(
+    "EJezH1Cp31QkKPaBDerhVPRWsKVZLrDfzjrLqpmv6cGg",
+  ),
   polygon_zkevm:
     "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
-  base:
-    "https://api.studio.thegraph.com/query/24660/balancer-base-v2/version/latest",
+  base: "https://api.studio.thegraph.com/query/24660/balancer-base-v2/version/latest",
 };
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
@@ -65,14 +71,16 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
           where: {${
             i == 0 ? `` : `totalLiquidity_lt: ${reservereThreshold.toFixed(4)}`
           } ${
-      timestamp == 0 ? `` : `createTime_gt: ${(timestamp * 1000).toString()}`
+      timestamp == 0 ? `` : `createTime_lt: ${timestamp.toString()}`
     }}) {
         id
         totalLiquidity
       }
     }`;
+
     const res: any = await request(subgraph, lpQuery);
     const result: GqlResult[] = res.pools;
+
     if (result.length < 1000) i = 20;
     if (result.length == 0) return addresses;
     reservereThreshold = Number(

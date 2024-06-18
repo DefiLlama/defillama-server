@@ -13,7 +13,6 @@ import parentProtocols from "./protocols/parentProtocols";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
 import { withTimeout } from "./utils/shared/withTimeout";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const prefix = "coingecko:";
 
@@ -194,7 +193,6 @@ async function processProtocolList() {
   let protocolErrors: string[] = [];
   let emissionsBrakedown: EmissionBreakdown = {};
 
-  await setEnvSecrets();
   const protocolAdapters = Object.entries(adapters);
   await PromisePool.withConcurrency(5)
     .for(shuffleArray(protocolAdapters))

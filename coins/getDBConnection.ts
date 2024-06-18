@@ -1,5 +1,4 @@
 import postgres from "postgres";
-import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 
 let coins2Connection: Promise<ReturnType<typeof postgres>>;
 
@@ -8,7 +7,6 @@ export async function getCoins2Connection() {
     coins2Connection = new Promise(async (resolve) => {
       // @ts-ignore
       let auth: any = process.env.COINS2_AUTH;
-      if (!auth) await setEnvSecrets();
       // @ts-ignore
       auth = process.env.COINS2_AUTH?.split(",") ?? [];
       if (!auth || auth.length != 3)

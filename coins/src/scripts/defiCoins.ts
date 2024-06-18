@@ -6,7 +6,6 @@ import {
 import { filterWritesWithLowConfidence } from "../adapters/utils/database";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
-import setEnvSecrets from "../../../defi/src/utils/shared/setEnvSecrets";
 import adapters from "../adapters/index";
 import { PromisePool } from "@supercharge/promise-pool";
 
@@ -21,7 +20,6 @@ const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 1740000; //29mins
 
 async function storeDefiCoins() {
-  await setEnvSecrets();
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
     Array(adaptersArray.length).keys(),
@@ -58,7 +56,7 @@ async function storeDefiCoins() {
           const lines = (e as any).stack.split('\n');
           const firstThreeLines = lines.slice(0, 3).join('\n');
           console.error(firstThreeLines);
-      }
+        }
         // console.error(`${adapterKey} adapter failed ${process.env.LLAMA_RUN_LOCAL ? "" : `:${e}`}`);
         // if (!process.env.LLAMA_RUN_LOCAL)
         //   await sendMessage(

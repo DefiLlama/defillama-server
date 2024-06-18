@@ -2826,5 +2826,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "stabble": {
+        enabled: true,
+        id: "4734"
     }
 } as AdaptorsConfig

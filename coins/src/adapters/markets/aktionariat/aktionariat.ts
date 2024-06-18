@@ -21,7 +21,7 @@ async function fetchTokensFromSubgraph(subgraph: string, timestamp: number) {
           ${
             timestamp == 0
               ? ``
-              : `firstTradeTimestamp_gt: ${(timestamp * 1000).toString()}`
+              : `firstTradeTimestamp_lt: ${timestamp.toString()}`
           }
         }) {
           id

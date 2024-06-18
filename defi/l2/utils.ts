@@ -11,7 +11,10 @@ import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
 import { storeNotTokens } from "./layer2pg";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
+import { readFromPGCache, writeToPGCache } from "../src/api2/db";
+import { unixTimestampNow } from "../emissions-adapters/utils/time";
 
+type CachedSupplies = { timestamp: number; data: { [token: string]: number } };
 export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
   const chainUsdTokenTvls: TokenTvlData = {};
 
@@ -168,6 +171,12 @@ async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{
 async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Solana adapter!`);
 
+  const now = unixTimestampNow();
+  const margin = 12 * 60 * 60; // 12hrs
+  const cachedSupplies: CachedSupplies = await readFromPGCache("L2-solanaTokenSupplies");
+
+  if (now - cachedSupplies.timestamp < margin) return cachedSupplies.data;
+
   const supplies: { [token: string]: number } = {};
   let i = 0;
   let j = 0;
@@ -202,7 +211,9 @@ async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promi
     });
 
   let a = Object.keys(supplies).length;
-  await storeNotTokens(notTokens);
+  const cacheData: CachedSupplies = { data: supplies, timestamp: now };
+  await Promise.all([storeNotTokens(notTokens), writeToPGCache("L2-solanaTokenSupplies", cacheData)]);
+
   return supplies;
 }
 async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {

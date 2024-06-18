@@ -52,7 +52,7 @@ async function initPGTables() {
 
 async function initOnlyES() {
   if (!esClient)
-    esClient = await elastic.getClient()
+    esClient = elastic.getClient()
 }
 
 
@@ -204,7 +204,6 @@ export async function getTweetStats(handle: string) {
       }
     }
   })
-  console.log(esClient, response)
   const buckets = response?.aggregations?.tweets_per_day?.buckets ?? []
   const res: {
     [date: number]: number

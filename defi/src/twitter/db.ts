@@ -204,7 +204,8 @@ export async function getTweetStats(handle: string) {
       }
     }
   })
-  const buckets = response.aggregations.tweets_per_day.buckets
+  console.log(esClient, response)
+  const buckets = response?.aggregations?.tweets_per_day?.buckets ?? []
   const res: {
     [date: number]: number
   } = {}

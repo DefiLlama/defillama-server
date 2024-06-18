@@ -12,7 +12,7 @@ export async function queryPostgresWithRetry(query: any, sql: any, counter: numb
     return res;
   } catch (e) {
     if (counter > 2) throw e;
-    await sleep(5000 + 2e4 * Math.random());
+    await sleep(1000 + 1e4 * Math.random());
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
 }

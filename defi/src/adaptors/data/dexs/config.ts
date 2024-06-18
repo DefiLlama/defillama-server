@@ -2811,5 +2811,20 @@ export default {
         parentId: "Clober",
         enabled: true,
         id: "4764"
+    },
+    "bladeswap": {
+        parentId: "BladeSwap",
+        enabled: true,
+        id: "4206",
+        protocolsData: {
+            "v2": {
+                "id": "4206",
+                "enabled": true,
+            },
+            "CL": {
+                "id": "4746",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

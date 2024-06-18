@@ -1491,8 +1491,8 @@ export const chainCoingeckoIds = {
     github: ['onflow'],
     symbol: "FLOW",
     cmcId: "4558",
-    twitter: "https://flow.com/",
-    url: "flow_blockchain",
+    twitter: "flow_blockchain",
+    url: "https://flow.com/",
   },
   "Kujira": {
     geckoId: "kujira",

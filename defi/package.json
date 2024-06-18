@@ -52,7 +52,8 @@
     "extension-updateExtensionTwitterConfig": "export AWS_REGION='eu-central-1' && npx ts-node --transpile-only src/api2/scripts/updateExtensionTwitterConfig.ts",
     "dimensions-store-all": "npx  --node-options='--max-old-space-size=20144' ts-node --transpile-only src/adaptors/handlers/storeAdaptorData/storeAll.ts",
     "dimensions-notify-backfill": "npx ts-node --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill.ts; npx ts-node --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill2.ts",
-    "notify-outdated": "npx ts-node --transpile-only src/server-scripts/notifyOutdated.ts"
+    "notify-outdated": "npx ts-node --transpile-only src/server-scripts/notifyOutdated.ts",
+    "twitter-update": "npx ts-node --transpile-only src/twitter/updateTwitterData.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",

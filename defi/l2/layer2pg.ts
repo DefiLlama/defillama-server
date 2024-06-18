@@ -6,13 +6,12 @@ import { getCoins2Connection } from "../src/getDBConnection";
 
 export async function queryPostgresWithRetry(query: any, sql: any, counter: number = 0): Promise<any> {
   try {
-    // console.log("created a new pg instance");
     const res = await sql`
         ${query}
         `;
     return res;
   } catch (e) {
-    if (counter > 5) throw e;
+    if (counter > 2) throw e;
     await sleep(5000 + 2e4 * Math.random());
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }

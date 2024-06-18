@@ -61,7 +61,7 @@ async function run() {
       if (userData.errorV2) continue; // probably user not found, no point in contiuining
 
       if (skipTweetPull(userData)) {
-        console.log('skipping tweets for: ', handle)
+        // console.log('skipping tweets for: ', handle)
         continue
       }
       userMap[handle] = userData

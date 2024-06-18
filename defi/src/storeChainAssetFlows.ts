@@ -5,6 +5,7 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 import { storeHistoricalFlows } from "../l2/storeToDb";
 import { ChainTokens } from "../l2/types";
 import PromisePool from "@supercharge/promise-pool";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 async function getChainAssetFlows() {
   const timestamp = getCurrentUnixTimestamp();
@@ -15,6 +16,7 @@ async function getChainAssetFlows() {
 }
 export async function handler() {
   try {
+    await setEnvSecrets()
     await withTimeout(8400000, getChainAssetFlows()); // 140 mins
   } catch (e) {
     process.env.CHAIN_ASSET_WEBHOOK ? await sendMessage(`${e}`, process.env.CHAIN_ASSET_WEBHOOK!) : console.log(e);

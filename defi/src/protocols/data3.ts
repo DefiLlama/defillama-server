@@ -46069,7 +46069,7 @@ const data3: Protocol[] = [
     description:
       "Clober is a fully on-chain orderbook DEX protocol that offers CEX-equivalent trading experience, powered by Limit Order Book with Segment Tree for Efficient Order-matching (LOBSTER) algorithm.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/clober-v2.jpg`,
+    logo: `${baseIconsUrl}/clober-v2.jpg`, // modify clober v2 logo
     audits: "2",
     audit_note: null,
     gecko_id: null,

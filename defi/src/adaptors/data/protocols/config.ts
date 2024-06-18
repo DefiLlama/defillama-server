@@ -213,5 +213,10 @@ export default {
         parentId: "BalancedDAO",
         enabled: true,
         id: "448",
+    },
+    "voltage-v3": {
+        parentId: "Voltage",
+        enabled: true,
+        id: "4188",
     }
 } as AdaptorsConfig

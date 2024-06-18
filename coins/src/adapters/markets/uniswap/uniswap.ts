@@ -61,7 +61,7 @@ async function fetchUniV2MarketsFromSubgraph(
           ${
             timestamp == 0
               ? ``
-              : `createdAtTimestamp_gt: ${timestamp.toString()}`
+              : `createdAtTimestamp_gt: ${Number(timestamp * 1000).toString()}`
           }
         }) {
           id

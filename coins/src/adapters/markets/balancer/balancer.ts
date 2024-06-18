@@ -77,13 +77,9 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
         totalLiquidity
       }
     }`;
-    let result: GqlResult[] = []
-    try {
-      const res: any = await request(subgraph, lpQuery);
-      result = res.pools;
-    } catch (e) {
-      e;
-    }
+
+    const res: any = await request(subgraph, lpQuery);
+    const result: GqlResult[] = res.pools;
 
     if (result.length < 1000) i = 20;
     if (result.length == 0) return addresses;

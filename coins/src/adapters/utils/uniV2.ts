@@ -93,7 +93,9 @@ export function getUniV2Adapter({
             ${
               timestamp == 0
                 ? ``
-                : `createdAtTimestamp_lt: ${timestamp.toString()}`
+                : `createdAtTimestamp_lt: ${Number(
+                    timestamp * 1000,
+                  ).toString()}`
             }
             volumeUSD_gt: ${minVolume}
           } 

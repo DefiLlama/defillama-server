@@ -1110,7 +1110,7 @@ export default {
         "id": "1269"
     },
     "sundaeswap": {
-        "enabled": false,
+        "enabled": true,
         "id": "1302"
     },
     "wx.network": {

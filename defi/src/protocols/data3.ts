@@ -11603,13 +11603,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3218",
-    name: "Swaap V2",
+    name: "Swaap Maker V2", // previous Swaap V2
     address: null,
     symbol: "-",
     url: "https://www.swaap.finance",
     description: `Swaap enables you to earn real yield thanks to algorithmic market making.`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/swaap-v2.jpg`,
+    logo: `${baseIconsUrl}/swaap-maker-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

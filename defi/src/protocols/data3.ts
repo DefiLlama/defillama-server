@@ -30962,7 +30962,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Bitcoin", "Arbitrum"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "garden/index.js",
     twitter: "garden_finance",
     audit_links: ["https://github.com/catalogfi/swapper/blob/main/audits/audit-01-ottersec.pdf"],
   },

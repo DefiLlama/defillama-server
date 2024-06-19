@@ -16249,13 +16249,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2104",
-    name: "Swaap V1",
+    name: "Swaap Maker V1", //previous Swaap V1
     address: null,
     symbol: "-",
     url: "https://www.swaap.finance",
     description: "Swaap is a market neutral AMM.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/swaap-v1.jpg`,
+    logo: `${baseIconsUrl}/swaap-maker-v1.jpg`, // swaap-maker-v1.
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -46693,6 +46693,27 @@ const data3: Protocol[] = [
     github: ["hopaggregator"],
     listedAt: 1718821117
   },
+  {
+    id: "4792",
+    name: "ScorePlay",
+    address: null,
+    symbol: "-", 
+    url: "https://www.scoreplay.xyz/",
+    description: "ScorePlay is a SportsFi platform, offering multiple ways for players to play and earn. Users can invest in team tokens, utilising their sports knowledge to forecast match outcomes and earn rewards. The unique liquidity transfer mechanism ensures that winning teams gain liquidity from losing teams, enhancing the value of your tokens",
+    chain: "Base",
+    logo: `${baseIconsUrl}/scoreplay.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Base"],
+    oracles: [], 
+    module: "scoreplay/index.js",
+    twitter: "ScorePlay_xyz",
+    forkedFrom: [],
+    listedAt: 1718822663
+  },
 ]
 
 export default data3

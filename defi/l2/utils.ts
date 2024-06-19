@@ -175,7 +175,8 @@ async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promi
   const margin = 12 * 60 * 60; // 12hrs
   const cachedSupplies: CachedSupplies = await readFromPGCache("L2-solanaTokenSupplies");
 
-  if (now - cachedSupplies.timestamp < margin) return cachedSupplies.data;
+  if (cachedSupplies && "timestamp" in cachedSupplies && now - cachedSupplies.timestamp < margin)
+    return cachedSupplies.data;
 
   const supplies: { [token: string]: number } = {};
   let i = 0;

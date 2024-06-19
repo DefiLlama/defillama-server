@@ -20724,7 +20724,7 @@ const data3: Protocol[] = [
   {
     id: "3623",
     name: "Voltage Liquid Staking",
-    address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
+    address: "fuse:0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
     symbol: "VOLT",
     url: "https://app.voltage.finance/#/stake",
     description:
@@ -20746,7 +20746,7 @@ const data3: Protocol[] = [
   {
     id: "3624",
     name: "Voltage StableSwap",
-    address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
+    address: "fuse:0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
     symbol: "VOLT",
     url: "https://app.voltage.finance/#/home",
     description:
@@ -33295,7 +33295,7 @@ const data3: Protocol[] = [
   {
     id: "4188",
     name: "Voltage V3",
-    address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
+    address: "fuse:0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
     symbol: "VOLT",
     url: "https://app.voltage.finance/",
     description:
@@ -34599,8 +34599,8 @@ const data3: Protocol[] = [
   {
     id: "4246",
     name: "Blastoff",
-    address: null,
-    symbol: "-",
+    address: "blast:0xD55eDfc79c0d14084260D16f38BdA75e28AbFb6A",
+    symbol: "OFF",
     url: "https://blastoff.zone",
     description:
       "A Native Yield Based - LaunchPad and Yield Aggregator. Unlocking a new world of idle earnings.",

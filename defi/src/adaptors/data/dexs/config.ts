@@ -2834,5 +2834,9 @@ export default {
     "aktionariat": {
         enabled: true,
         id: "2782"
+    },
+    "dusa": {
+        enabled: true,
+        id: "4788"
     }
 } as AdaptorsConfig

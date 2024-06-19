@@ -2218,4 +2218,8 @@ export default {
         enabled: true,
         id: "2271"
     },
+    "time-fun": {
+        enabled: true,
+        id: "4786"
+    }
 } as AdaptorsConfig

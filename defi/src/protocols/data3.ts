@@ -46714,6 +46714,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1718822663
   },
+  {
+    id: "4793",
+    name: "Loop",
+    address: null,
+    symbol: "-", 
+    url: "https://www.loopfi.xyz/",
+    description: "Loop is a dedicated lending market for Ethereum carry trades. Users can supply a long tail of Liquid Restaking derivatives (e.g., Pendle LP tokens) as collateral to borrow ETH for increased yield and points exposure",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/loop.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Ethereum"],
+    oracles: [], 
+    module: "loopfi/index.js",
+    twitter: "loopfixyz",
+    audit_links: ["https://code4rena.com/reports/2024-05-loop"],
+    forkedFrom: [],
+    github: ["LoopFi"],
+    listedAt: 1718823789
+  },
 ]
 
 export default data3

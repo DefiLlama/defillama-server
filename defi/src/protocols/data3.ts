@@ -46578,7 +46578,6 @@ const data3: Protocol[] = [
     category: "SoFi",
     chains: ["Base"],
     oracles: [], 
-    forkedFrom: ["friend.tech"],
     module: "time-fun/index.js",
     twitter: "timedotfun",
     audit_links: [],

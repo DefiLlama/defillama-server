@@ -46454,7 +46454,7 @@ const data3: Protocol[] = [
     description: "Focus on DeFi and strive to create convenient and secure lending protocols on Mode Network.",
     chain: "Mode",
     logo: `${baseIconsUrl}/netweave-lending.png`,
-    audits: "20",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

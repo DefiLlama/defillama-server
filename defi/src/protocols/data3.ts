@@ -46583,6 +46583,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1718733138
   },
+  {
+    id: "4787",
+    name: "Jax Finance",
+    address: null,
+    symbol: "-", 
+    url: "https://www.jax.finance",
+    description: "JAX is a decentralized, non-custodial lending protocol initially operating on the Taiko Blockchain, designed to facilitate the interaction between liquidity suppliers and borrowers. Through JAX, liquidity suppliers have the opportunity to contribute to the liquidity pool, earning passive income in return, while borrowers can secure loans in an over-collateralized manner.",
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/jax-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Taiko"],
+    oracles: [], 
+    module: "jax-protocol/index.js",
+    twitter: "Jax_Finance",
+    audit_links: [],
+    forkedFrom: ["Compound V2"],
+    listedAt: 1718798677
+  },
 ]
 
 export default data3

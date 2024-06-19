@@ -3112,7 +3112,14 @@ export const chainCoingeckoIds = {
     url: "https://rarichain.org/",
     chainId: 1380012617,
   },
-
+  "Massa": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "massalabs",
+    url: "https://massa.net",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3775,6 +3782,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Sanko"
     case "rari":
       return "Rari"
+    case "massa":
+      return "Massa"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

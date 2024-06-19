@@ -46454,7 +46454,7 @@ const data3: Protocol[] = [
     description: "Focus on DeFi and strive to create convenient and secure lending protocols on Mode Network.",
     chain: "Mode",
     logo: `${baseIconsUrl}/netweave-lending.png`,
-    audits: "0",
+    audits: "20",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -46465,6 +46465,7 @@ const data3: Protocol[] = [
     module: "netweave-lending/index.js",
     twitter: "NetWeave_Fi",
     parentProtocol: "parent#netweave-finance",
+    audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/NetWeave%20Smart%20Contracts%20Audit%20Report%20-%20QuillAudits.pdf"],
     listedAt: 1718616928
   },
   {

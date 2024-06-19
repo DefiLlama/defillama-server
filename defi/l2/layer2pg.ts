@@ -3,7 +3,9 @@ import { TokenInsert } from "./types";
 import sleep from "../src/utils/shared/sleep";
 import { mixedCaseChains } from "./constants";
 import { getCoins2Connection } from "../src/getDBConnection";
+import { sliceIntoChunks } from "@defillama/sdk/build/util";
 
+const maxParams = 10000;
 export async function queryPostgresWithRetry(query: any, sql: any, counter: number = 0): Promise<any> {
   try {
     const res = await sql`
@@ -16,7 +18,6 @@ export async function queryPostgresWithRetry(query: any, sql: any, counter: numb
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
 }
-
 
 function splitKey(inserts: TokenInsert[], key: string) {
   const index = key.indexOf(":");
@@ -38,16 +39,20 @@ export async function storeAllTokens(tokens: string[]) {
   tokens.map((t: string) => splitKey(inserts, t));
 
   if (!inserts.length) return;
-  const sql = await getCoins2Connection()
-  await queryPostgresWithRetry(
-    sql`
-    insert into alltokens
-    ${sql(inserts, "chain", "token")}
-    on conflict (chain, token)
-    do nothing
-  `,
-    sql
-  );
+  const sql = await getCoins2Connection();
+
+  const chunks: any = sliceIntoChunks(inserts, maxParams);
+  for (const chunk of chunks) {
+    await queryPostgresWithRetry(
+      sql`
+      insert into alltokens
+      ${sql(chunk, "chain", "token")}
+      on conflict (chain, token)
+      do nothing
+    `,
+      sql
+    );
+  }
 }
 
 export async function storeNotTokens(tokens: string[]) {
@@ -57,20 +62,24 @@ export async function storeNotTokens(tokens: string[]) {
   tokens.map((t: string) => splitKey(inserts, t));
 
   if (!inserts.length) return;
-  const sql = await getCoins2Connection()
-  await queryPostgresWithRetry(
-    sql`
-    insert into nottokens
-    ${sql(inserts, "chain", "token")}
-    on conflict (chain, token)
-    do nothing
-  `,
-    sql
-  );
+  const sql = await getCoins2Connection();
+
+  const chunks: any = sliceIntoChunks(inserts, maxParams);
+  for (const chunk of chunks) {
+    await queryPostgresWithRetry(
+      sql`
+        insert into nottokens
+        ${sql(chunk, "chain", "token")}
+        on conflict (chain, token)
+        do nothing
+      `,
+      sql
+    );
+  }
 }
 
 export async function fetchAllTokens(chain: Chain): Promise<string[]> {
-  const sql = await getCoins2Connection()
+  const sql = await getCoins2Connection();
   const res = await queryPostgresWithRetry(
     sql`
       select token from alltokens
@@ -83,7 +92,7 @@ export async function fetchAllTokens(chain: Chain): Promise<string[]> {
 }
 
 export async function fetchNotTokens(chain: Chain): Promise<string[]> {
-  const sql = await getCoins2Connection()
+  const sql = await getCoins2Connection();
   const res = await queryPostgresWithRetry(
     sql`
       select token from nottokens

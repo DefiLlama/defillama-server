@@ -2830,5 +2830,9 @@ export default {
     "stabble": {
         enabled: true,
         id: "4734"
+    },
+    "aktionariat": {
+        enabled: true,
+        id: "2782"
     }
 } as AdaptorsConfig

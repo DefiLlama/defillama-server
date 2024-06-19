@@ -34599,8 +34599,8 @@ const data3: Protocol[] = [
   {
     id: "4246",
     name: "Blastoff",
-    address: null,
-    symbol: "-",
+    address: "0xD55eDfc79c0d14084260D16f38BdA75e28AbFb6A",
+    symbol: "OFF",
     url: "https://blastoff.zone",
     description:
       "A Native Yield Based - LaunchPad and Yield Aggregator. Unlocking a new world of idle earnings.",

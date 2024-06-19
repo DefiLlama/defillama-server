@@ -46663,7 +46663,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Ethereum","Tron","Binance","Arbitrum","Optimism","Base","Avalanche","Polygon","zkSync Era","Heco","Linea","Fantom"],
+    chains: ["Ethereum","Tron","Binance","Arbitrum","Optimism","Base","Avalanche","Polygon","zkSync Era","Linea","Fantom"],
     oracles: [], 
     module: "bridgers-ai/index.js",
     twitter: "Bridgersxyz",

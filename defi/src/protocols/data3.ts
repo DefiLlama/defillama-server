@@ -46784,6 +46784,50 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1718877100
   },
+  {
+    id: "4796",
+    name: "Sanko Bridge",
+    address: null,
+    symbol: "DMT",
+    url: "https://sanko.xyz/bridge",
+    description:
+      "The Sanko Bridge is a blockchain-based platform that enables secure asset transfers between different blockchain networks.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/sanko.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Arbitrum"],
+    module: "sanko-bridge/index.js",
+    twitter: "SankoGameCorp",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1718894768
+  },
+  {
+    id: "4797",
+    name: "XAI Bridge",
+    address: null,
+    symbol: "XAI",
+    url: "https://xai.games/",
+    description:
+      "The Xai L3 Bridge is a bridge between the Xai mainnet and other networks, such as Arbitrum One, allowing for the transfer of XAI tokens cross-chain",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/xai.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Arbitrum"],
+    module: "xai-bridge/index.js",
+    twitter: "XAI_GAMES",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1718894785
+  },
 
 ]
 

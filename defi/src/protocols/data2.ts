@@ -21549,7 +21549,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/ston.fi.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "ston",
+    gecko_id: "ston-2",
     cmcId: "27311",
     category: "Dexes",
     chains: ["TON"],

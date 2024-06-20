@@ -14653,8 +14653,8 @@ const data3: Protocol[] = [
   {
     id: "3354",
     name: "slisBNB", // rebrand from Synclub Staked BNB
-    address: null,
-    symbol: "-",
+    address: "bsc:0xFceB31A79F71AC9CBDCF853519c1b12D379EdC46",
+    symbol: "LISTA",
     assetToken: "slisBNB",
     url: "https://www.synclub.io/",
     description:

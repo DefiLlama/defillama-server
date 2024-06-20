@@ -18571,8 +18571,8 @@ const data3: Protocol[] = [
   {
     id: "3528",
     name: "Caviar Tangible",
-    address: null,
-    symbol: "-",
+    address: "polygon:0x49e6a20f1bbdfeec2a8222e052000bbb14ee6007",
+    symbol: "TNGBL",
     url: "https://www.tangible.store/caviar",
     description:
       "Remove the complexity and commitment of ve(3,3) economics with Caviar, a simple token anyone can use. Stake, claim USDR rewards daily, exit at any time. Caviar helps you get more by doing less.",
@@ -46899,7 +46899,30 @@ const data3: Protocol[] = [
     github: ["allstake"],
     listedAt: 1718906608
   },
-
+  {
+    id: "4801",
+    name: "Tangible USTB",
+    address: "polygon:0x49e6a20f1bbdfeec2a8222e052000bbb14ee6007",
+    symbol: "TNGBL",
+    url: "https://www.tangible.store",
+    description:
+      "Tangible is a tokenization protocol that brings valuable, real world assets on chain. Tangible issues the stablecoin USTB (backed by T-bills via Mountain Protocol) as well as Baskets i.e. UKRE, ERC-20's backed by a basket of tokenized (NFTs) yield-generating properties.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tangible-ustb.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "tangible-ustb/index.js",
+    twitter: "tangibleDAO",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#tangible",
+    audit_links: ["https://omniscia.io/reports/tangible-ustb-contract-655fb224a7ddc0001831f72e"],
+    listedAt: 1718915196
+  },
 ]
 
 export default data3

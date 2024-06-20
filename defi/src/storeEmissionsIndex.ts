@@ -79,7 +79,20 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         };
       }
       const nextUnlockIndex = formattedData.findIndex(([date]) => Number(date) > now);
-      const circSupply = nextUnlockIndex != -1 ? formattedData[nextUnlockIndex - 1]?.[1] ?? [] : maxSupply;
+
+      function getCircSupply(): number {
+        if (nextUnlockIndex == -1) return maxSupply;
+        let circSupply: number = 0;
+        (res.documentedData?.data ?? res.data).forEach(
+          (item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
+            if (item.data == null) return;
+            circSupply += item.data[nextUnlockIndex].unlocked;
+          }
+        );
+        return circSupply;
+      }
+
+      const circSupply = getCircSupply();
       const unlocksPerDay = formattedData[nextUnlockIndex]?.[1] - formattedData[nextUnlockIndex - 1]?.[1];
 
       protocolsData.push({

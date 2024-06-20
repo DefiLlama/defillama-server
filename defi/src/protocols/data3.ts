@@ -30330,7 +30330,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "brickken",
     cmcId: "21822",
-    category: "Services",
+    category: "RWA",
     chains: ["Ethereum"],
     oracles: ["Chainlink", "TWAP"],
     forkedFrom: [],
@@ -46761,6 +46761,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#trader-joe",
     listedAt: 1718854067
   },
+  // there is another listing for haskey. Its like coinbase and coinbase US. And binance and binance US
+  {
+    id: "4795",
+    name: "HashKey Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://www.hashkey.com",
+    description:
+      "HashKey Exchange is a centralized cryptocurrency exchange established in 2018 and is registered in Hong Kong.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hashkey-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Avalanche", "Polygon"],
+    module: "hashkey-exchange/index.js",
+    twitter: "HashKeyExchange",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1718877100
+  },
+
 ]
 
 export default data3

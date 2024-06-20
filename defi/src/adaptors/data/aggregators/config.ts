@@ -221,5 +221,9 @@ export default {
   "injex": {
     "enabled": true,
     "id": "4762"
+  },
+  "hop-aggregator": {
+    enabled: true,
+    id: "4791",
   }
 } as AdaptorsConfig;

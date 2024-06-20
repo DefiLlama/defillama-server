@@ -46737,6 +46737,30 @@ const data3: Protocol[] = [
     github: ["LoopFi"],
     listedAt: 1718823789
   },
+  {
+    id: "4794",
+    name: "Joe V2.2",
+    address: "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
+    symbol: "JOE",
+    url: "https://traderjoexyz.com/arbitrum/trade",
+    description:
+      "Trader Joe Liquidity Book V2.2 gives Liquidity Providers control over liquidity ranges, offers real-time onchain incentives with reward ranges, and phases out offchain programs for enhanced onchain incentivization",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/joe-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche", "Arbitrum"],
+    module: "traderjoe-lb-v2-2/index.js",
+    twitter: "traderjoe_xyz",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.traderjoexyz.com/audits"],
+    parentProtocol: "parent#trader-joe",
+    listedAt: 1718854067
+  },
 ]
 
 export default data3

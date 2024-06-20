@@ -84,4 +84,5 @@ export default {
   bitcow: require("./markets/bitcow"),
   pythAgg: require("./oracles/pythAggregatorV3"),
   warlord: require("./other"),
+  ifil: require("./liquidStaking/ifil"),
 };

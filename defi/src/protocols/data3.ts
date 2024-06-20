@@ -46828,6 +46828,77 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1718894785
   },
+  {
+    id: "4798",
+    name: "zkFinance",
+    address: "era:0x9BDd9140c95c4bFAa1FF21fF54802412452a330e",
+    symbol: "ZGT",
+    url: "http://www.zkfinance.org/",
+    description:
+      "zkFinance is an all-in one DEFI solution for zkSync. Offering lending & borrowing, bridge, cross-chain swaps and a concentrated liquidity DEX. Staking vault to share +50% of protocol revenue (real yield).Zero knowledge proof rollups are considered the holy grail in respect to L2 scaling solution.Early mover advantage in a fast growing and hot ecosystem.Integration with THORWallet's ecosystem giving the protocol immediate traction with +65k downloads", 
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/zkfinance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["zkSync Era"],
+    module: "zkfinance/index.js",
+    twitter: "zkFinance_ZGT",
+    forkedFrom: ["Compound V2"],
+    oracles: [],
+    audit_links: ["https://drive.google.com/file/d/1DlENWIHZmpgrhNFY-csmFUO3Pn74GQO7/view"],
+    github: ["zkFinance"],
+    listedAt: 1718906598
+  },
+  {
+    id: "4799",
+    name: "Term Structure",
+    address: null,
+    symbol: "-",
+    url: "https://ts.finance/",
+    description:
+      "Term Structure is a non-custodial, fixed rate and maturity lending/borrowing protocol backed by customized Zk-Rollup with orders matched via auction",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/term-structure.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "term-structure/index.js",
+    twitter: "TermStructLabs",
+    forkedFrom: [],
+    oracles: ["Chainlink"], // https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation
+    audit_links: ["https://github.com/term-structure/audits"],
+    github: ["term-structure"],
+    listedAt: 1718906602
+  },
+  {
+    id: "4800",
+    name: "Allstake",
+    address: null,
+    symbol: "-",
+    url: "https://allstake.org/",
+    description:
+      "The first Omnichain Meshed Restaking protocol that brings trustless scaling to ALL chains",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/allstake.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Solana","Near"],
+    module: "allstake/index.js",
+    twitter: "allstake_fi",
+    forkedFrom: [],
+    oracles: [],
+    github: ["allstake"],
+    listedAt: 1718906608
+  },
 
 ]
 

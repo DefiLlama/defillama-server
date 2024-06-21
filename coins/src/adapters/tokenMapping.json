@@ -506,6 +506,11 @@
       "decimals": "18",
       "symbol": "ZEEP",
       "to": "coingecko#zeepr"
+    },
+    "0x57f5e098cad7a3d1eed53991d4d66c45c9af7812": {
+      "decimals": "18",
+      "symbol": "wUSDM",
+      "to": "coingecko#mountain-protocol-usdm"
     }
   },
   "tezos": {

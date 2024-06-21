@@ -35,7 +35,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   // "801": "celo",
   "1272": "iotex",
   "1501": "everscale",
-  "1996": "sanko",
+  "4796": "sanko",
   "2081": "wanchain",
   // "2214": "kekchain",
   "2316": "meter",
@@ -55,7 +55,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3813": "alephium",
   "3861": "rsk",
   // "3866": "near",
-  // "3866": "aurora", 
+  // "3866": "aurora",
   "3935": "boba",
   "3936": "zksync",
   "4032": "manta",
@@ -72,7 +72,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4692": "taiko",
   "4558": "BOB",
   "4702": "immutable zkevm",
-  "660279": "xai"
+  "4797": "xai",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -140,6 +140,6 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   tron: { ticker: "TRON", address: "coingecko:tron" },
   kinto: { ticker: "KINTO", address: "" },
   taiko: { ticker: "TAIKO", address: "0xa9d23408b9ba935c230493c40c73824df71a0975" },
-  sanko: { ticker: "DMT", address: "0x8B0E6f19Ee57089F7649A455D89D7bC6314D04e8"},
-  xai: { ticker: "XAI", address: "0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66"},
+  sanko: { ticker: "DMT", address: "0x8B0E6f19Ee57089F7649A455D89D7bC6314D04e8" },
+  xai: { ticker: "XAI", address: "0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66" },
 };

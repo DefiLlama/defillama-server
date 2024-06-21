@@ -35,7 +35,6 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   // "801": "celo",
   "1272": "iotex",
   "1501": "everscale",
-  "4796": "sanko",
   "2081": "wanchain",
   // "2214": "kekchain",
   "2316": "meter",
@@ -72,6 +71,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4692": "taiko",
   "4558": "BOB",
   "4702": "immutable zkevm",
+  "4796": "sanko",
   "4797": "xai",
 };
 

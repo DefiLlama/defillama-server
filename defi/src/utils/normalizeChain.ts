@@ -3138,6 +3138,7 @@ chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
 chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
+chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3519,7 +3520,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "goerli":
       return "Goerli"
     case "europa":
-      return "Europa"
+      return "SKALE Europa"
     case "core":
       return "CORE"
     case "rpg":

@@ -16548,7 +16548,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/hydration.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "hydration",
+    gecko_id: "hydradx",
     cmcId: "6753",
     category: "Dexes",
     chains: ["Hydration"],

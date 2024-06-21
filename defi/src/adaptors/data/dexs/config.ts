@@ -897,6 +897,7 @@ export default {
         "id": "1412"
     },
     "icecreamswap": {
+        parentId: "IcecreamSwap",
         disabled: true,
         "enabled": true,
         "id": "1990"

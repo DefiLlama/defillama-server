@@ -13686,16 +13686,16 @@ const data2: Protocol[] = [
   },
   {
     id: "1990",
-    name: "IcecreamSwap",
+    name: "IcecreamSwap V2",
     address: "bitgert:0xB999Ea90607a826A3E6E6646B404c3C7d11fa39D",
     symbol: "ICE",
     url: "https://icecreamswap.com/",
     description: "The first Swap on the Bitgert (Brise) Blockchain",
     chain: "Bitgert",
-    logo: `${baseIconsUrl}/icecreamswap.png`,
+    logo: `${baseIconsUrl}/icecreamswap-v2.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "icecream",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Bitgert"],
@@ -13703,6 +13703,7 @@ const data2: Protocol[] = [
     twitter: "icecream_swap",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
+    parentProtocol: "parent#icecreamswap",
     listedAt: 1660878513
   },
   {

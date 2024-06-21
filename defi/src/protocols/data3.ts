@@ -46923,6 +46923,52 @@ const data3: Protocol[] = [
     audit_links: ["https://omniscia.io/reports/tangible-ustb-contract-655fb224a7ddc0001831f72e"],
     listedAt: 1718915196
   },
+  {
+    id: "4802",
+    name: "Solayer",
+    address: null,
+    symbol: "-",
+    url: "https://solayer.org",
+    description:
+      "Solayer is the restaking protocol on Solana, securing both endogenous AVS (dApps) through stake-weighted quality of service and exogenous AVS via Solana-based POS primitives.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/solayer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Solana"],
+    module: "solayer/index.js",
+    twitter: "solayer_labs",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#icecreamswap",
+    listedAt: 1718964090
+  },
+  {
+    id: "4803",
+    name: "IcecreamSwap V3",
+    address: "bitgert:0xB999Ea90607a826A3E6E6646B404c3C7d11fa39D",
+    symbol: "ICE",
+    url: "https://icecreamswap.com",
+    description:
+      "Uniswap V3 fork on CORE Chain",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/icecreamswap-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    module: "icecreamswap-v3/index.js",
+    twitter: "icecream_swap",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    parentProtocol: "parent#icecreamswap",
+    listedAt: 1718964127
+  },
 ]
 
 export default data3

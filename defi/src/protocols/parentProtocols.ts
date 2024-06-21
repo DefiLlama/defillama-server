@@ -4731,6 +4731,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "NetWeave_Fi",
   },
+  {
+    id: "parent#icecreamswap",
+    name: "IcecreamSwap",
+    url: "https://icecreamswap.com",
+    description: "Uniswap v2 and v3 fork on CORE chain",
+    logo: `${baseIconsUrl}/icecreamswap.png`,
+    gecko_id: "icecream",
+    cmcId: null,
+    chains: [],
+    twitter: "icecream_swap",
+  },
 ];
 
 export default parentProtocols;

@@ -393,7 +393,7 @@
       "symbol": "sFRAX",
       "to": "ethereum:0xa663b02cf0a4b149d2ad41910cb81e23e1c41c32"
     },
-    "0x53e63a31fd1077f949204b94f431bcab98f72bce" :{
+    "0x53e63a31fd1077f949204b94f431bcab98f72bce": {
       "decimals": "18",
       "symbol": "SolvBTC.ENA ",
       "to": "coingecko#solv-btc"
@@ -1419,6 +1419,21 @@
       "decimals": "18",
       "symbol": "NEON",
       "to": "coingecko#neon"
+    },
+    "0x2043191e10a2a4b4601f5123d6c94e000b5d915f": {
+      "decimals": "18",
+      "symbol": "MORA",
+      "to": "coingecko#mora"
+    },
+    "0xea6b04272f9f62f997f666f07d3a974134f7ffb9": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x5f0155d08ef4aae2b500aefb64a3419da8bb611a": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   },
   "xdai": {

@@ -2211,7 +2211,7 @@ export const chainCoingeckoIds = {
     github: ["archway-network"]
   },
   "Hydration": {
-    geckoId: "hydration",
+    geckoId: "hydradx",
     github: ['galacticcouncil'],
     symbol: "HDX",
     cmcId: "6753",

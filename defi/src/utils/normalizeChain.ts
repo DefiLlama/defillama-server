@@ -1882,7 +1882,7 @@ export const chainCoingeckoIds = {
     cmcId: "23669",
     categories: ["EVM"],
   },
-  "Europa": {
+  "SKALE Europa": {
     geckoId: null,
     github: ['patractlabs'],
     symbol: null,

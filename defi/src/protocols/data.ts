@@ -10630,7 +10630,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "FOX",
     url: "https://shapeshift.com",
     description:
-      "ShapeShift is the only cryptocurrency trading platform offering zero-commission crypto trading and self-custody.",
+      "ShapeShift is the CEXiest DEX. Open Source, Non-Custodial, Decentralized. Buy, trade, earn, borrow and more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/shapeshift.jpg`,
     audits: "0",

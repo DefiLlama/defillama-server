@@ -247,6 +247,7 @@ export default {
     },
     "solidly": {
         "enabled": true,
+         parentId: "Solidly Labs",
         "id": "1407"
     },
     "orca": {
@@ -1269,6 +1270,7 @@ export default {
     },
     "solidlydex": {
         "enabled": true,
+        parentId: "Solidly Labs",
         "id": "2400"
     },
     "defibox": {

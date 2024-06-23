@@ -46549,7 +46549,7 @@ const data3: Protocol[] = [
     description: "Decentralized exchange on BSC, Base & Polygon",
     chain: "Binance",
     logo: `${baseIconsUrl}/lovely-swap.png`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -46559,7 +46559,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "lovelyswap-v2/index.js",
     twitter: "lovely_swap",
-    audit_links: [],
+    audit_links: ["https://skynet.certik.com/projects/lovelyinu"],
     github: ["lovelyswap-v1"],
     listedAt: 1718718663
   },

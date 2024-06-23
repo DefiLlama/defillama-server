@@ -46969,6 +46969,51 @@ const data3: Protocol[] = [
     parentProtocol: "parent#icecreamswap",
     listedAt: 1718964127
   },
+  {
+    id: "4804",
+    name: "Soroswap",
+    address: null,
+    symbol: "-",
+    url: "https://soroswap.finance/",
+    description:
+      "Soroswap is an automated market maker comprising smart contracts that enable the creation of liquidity pools, provision of liquidity, and asset swaps",
+    chain: "Stellar",
+    logo: `${baseIconsUrl}/soroswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Stellar"],
+    module: "soroswap/index.js",
+    twitter: "SoroswapFinance",
+    forkedFrom: [],
+    oracles: [],
+    github: ["soroswap"],
+    listedAt: 1719170717
+  },
+  {
+    id: "4805",
+    name: "TaiDog",
+    address: "taiko:0x1Fd2f219B59b88bDda7dacd50c6e0667aA2d3Ee7",
+    symbol: "TAIDOG",
+    url: "https://taidog.xyz",
+    description:
+      "TaiDog is a protocol offering yield, innovative strategies, and boosting services within the Taiko blockchain",
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/taidog.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Taiko"],
+    module: "taidog/index.js",
+    twitter: "taidogcoin",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1719170722
+  },
 ]
 
 export default data3

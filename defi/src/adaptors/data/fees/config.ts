@@ -2221,5 +2221,10 @@ export default {
     "time-fun": {
         enabled: true,
         id: "4786"
+    },
+    "cakepie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "4007"
     }
 } as AdaptorsConfig

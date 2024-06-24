@@ -2981,8 +2981,8 @@ export const chainCoingeckoIds = {
     chainId: 7560,
   },
   "BounceBit": {
-    geckoId: "BB",
-    symbol: "bouncebit",
+    geckoId: "bouncebit",
+    symbol: "BB",
     cmcId: "30746",
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "bounce_bit",
@@ -3119,6 +3119,15 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "massalabs",
     url: "https://massa.net",
+  },
+  "AILayer": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "AILayerXYZ",
+    url: "https://anvm.io/",
+    chainId: 2649
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -3785,6 +3794,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Rari"
     case "massa":
       return "Massa"
+    case "ailayer":
+      return "AILayer"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

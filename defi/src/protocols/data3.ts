@@ -47083,6 +47083,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1719231983
   },
+  {
+    id: "4809",
+    name: "AINN Swap",
+    address: null,
+    symbol: "-",
+    url: "https://ainnswap.xyz/home",
+    description:
+      "Decentralized exchange on AILayer",
+    chain: "AILayer",
+    logo: `${baseIconsUrl}/ainn-swap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["AILayer"],
+    module: "ainnswap/index.js",
+    twitter: "AINNSwap",
+    forkedFrom: ["iZiSwap"],
+    oracles: [],
+    listedAt: 1719260482
+  },
 ]
 
 export default data3

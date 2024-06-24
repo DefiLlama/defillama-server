@@ -17878,7 +17878,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Aurora"],
     oracles: [],
-    forkedFrom: ["iziSwap"],
+    forkedFrom: ["iZiSwap"],
     module: "arctic/index.js",
     twitter: "Arctic_trade",
     audit_links: ["https://docsend.com/view/42a2ixu3ey6zu3nx"],

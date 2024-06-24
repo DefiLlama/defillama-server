@@ -2226,5 +2226,9 @@ export default {
         parentId: "Magpie Ecosystem",
         enabled: true,
         id: "4007"
+    },
+    "milkyway": {
+        enabled: true,
+        id: "3953"
     }
 } as AdaptorsConfig

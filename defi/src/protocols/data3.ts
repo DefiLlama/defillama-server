@@ -47038,6 +47038,51 @@ const data3: Protocol[] = [
     github: ["stable-jack"],
     listedAt: 1719226532
   },
+  {
+    id: "4807",
+    name: "Nyke Finance",
+    address: null,
+    symbol: "-",
+    url: "https://nyke.finance",
+    description:
+      "Nyke Finance is a decentralized, non-custodial, algorithmic-based money market protocol that allows users to participate as liquidity suppliers or borrowers. Suppliers provide liquidity to the market to earn a passive income, while borrowers are able to borrow liquidity in an over-collateralized fashion. Nyke's protocol design and architecture references Compound, a proven and audited protocol.",
+    chain: "EthereumClassic",
+    logo: `${baseIconsUrl}/nyke-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["EthereumClassic"],
+    module: "nyke/index.js",
+    twitter: null,
+    forkedFrom: [],
+    oracles: [],
+    github: ["Jabr0nie"],
+    listedAt: 1719231083
+  },
+  {
+    id: "4808",
+    name: "Rho Markets",
+    address: null,
+    symbol: "-",
+    url: "https://www.rhomarkets.xyz",
+    description:
+      "Liquidity Layer on Scroll_ZKP. Lending & Yielding",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/rho-markets.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Scroll"],
+    module: "rho-markets/index.js",
+    twitter: "RhoMarketsHQ",
+    forkedFrom: ["Compound V2"],
+    oracles: [],
+    listedAt: 1719231983
+  },
 ]
 
 export default data3

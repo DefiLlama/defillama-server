@@ -1,5 +1,5 @@
 require("dotenv").config();
-import axios, { all } from "axios";
+import axios from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
@@ -16,9 +16,9 @@ import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 import pLimit from "p-limit";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
-import * as sdk from "@defillama/sdk";
 
 const rateLimited = pLimit(10);
+process.env.tableName = "prod-coins-table";
 
 let cache: any = {};
 let lastCacheClear: number;
@@ -92,8 +92,14 @@ export async function getTokenAndRedirectDataMap(
   tokens: string[],
   chain: string,
   timestamp: number,
-  hoursRange: number = 12,) {
-  const res = await getTokenAndRedirectData(tokens, chain, timestamp, hoursRange);
+  hoursRange: number = 12,
+) {
+  const res = await getTokenAndRedirectData(
+    tokens,
+    chain,
+    timestamp,
+    hoursRange,
+  );
   const map: {
     [address: string]: CoinData;
   } = {};
@@ -356,8 +362,8 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
         "confidence" in r.dbEntry
           ? r.dbEntry.confidence
           : r.redirect.length != 0 && "confidence" in r.redirect[0]
-            ? r.redirect[0].confidence
-            : undefined;
+          ? r.redirect[0].confidence
+          : undefined;
 
       return {
         chain:
@@ -446,8 +452,9 @@ async function checkMovement(
       if (percentageChange > margin) {
         errors += `${d.adapter} \t ${d.PK.substring(
           d.PK.indexOf("#") + 1,
-        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${previousItem.price
-          } to $${d.price}\n`;
+        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${
+          previousItem.price
+        } to $${d.price}\n`;
         return;
       }
     }

@@ -6,7 +6,7 @@ export async function ifil(timestamp: number) {
   const api = await getApi(chain, timestamp);
 
   const rate = await api.call({
-    abi: "function convertToShares(uint256 assets) external view returns (uint256)",
+    abi: "function convertToAssets(uint256 assets) external view returns (uint256)",
     target: "0x43dAe5624445e7679D16a63211c5ff368681500c",
     params: 1e12,
   });

@@ -42935,7 +42935,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Bridge", // move to bridge, since there is solv BTC on any l2 btc already, so double counted
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

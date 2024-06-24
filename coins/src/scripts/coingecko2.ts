@@ -367,6 +367,7 @@ async function fetchCoingeckoData(
 }
 
 async function triggerFetchCoingeckoData(runType: string) {
+  process.env.tableName = "prod-coins-table";
   const cgCache = await getCache("coingecko", runType);
   const coins = (await getCGData(
     `/api/v3/coins/list?include_platform=true`,

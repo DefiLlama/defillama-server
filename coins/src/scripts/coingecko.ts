@@ -531,6 +531,7 @@ if (process.argv.length < 3) {
     Eg: ts-node coins/src/scripts/coingecko.ts true`);
   process.exit(1);
 } else {
+  process.env.tableName = "prod-coins-table";
   if (process.argv[2] == "true") triggerFetchCoingeckoData(true);
   triggerFetchCoingeckoData(false);
 }

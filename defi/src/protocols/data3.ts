@@ -46549,7 +46549,7 @@ const data3: Protocol[] = [
     description: "Decentralized exchange on BSC, Base & Polygon",
     chain: "Binance",
     logo: `${baseIconsUrl}/lovely-swap.png`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

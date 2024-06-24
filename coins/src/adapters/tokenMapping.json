@@ -1625,7 +1625,7 @@
       "symbol": "SDAI",
       "to": "coingecko#savings-dai"
     },
-    "0x5ffce65a40f6d3de5332766fff6a28bf491c868c": {
+    "0x2365649f604377ba6472579e8c19facfed13c9dc": {
       "decimals": "18",
       "symbol": "SolvBTC.m",
       "to": "coingecko#solv-btc"
@@ -2721,6 +2721,11 @@
       "decimals": "18",
       "symbol": "M-BTC",
       "to": "coingecko#merlin-s-seal-btc"
+    },
+    "0x3ba89d490ab1c0c9cc2313385b30710e838370a4": {
+      "decimals": "18",
+      "symbol": "SolvBTC.b",
+      "to": "coingecko#solv-btc"
     }
   },
   "zora": {

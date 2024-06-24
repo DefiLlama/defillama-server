@@ -47014,6 +47014,30 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1719170722
   },
+  {
+    id: "4806",
+    name: "Stable Jack",
+    address: null,
+    symbol: "-",
+    url: "https://www.stablejack.xyz",
+    description:
+      "Stable Jack is a yield, volatility, and points trading protocol for any asset.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/stable-jack.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Avalanche"],
+    module: "stablejack/index.js",
+    twitter: "StableJack_xyz",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/Credshields/audit-reports/blob/master/aUSD_SC_Final_Audit_Report.pdf"],
+    github: ["stable-jack"],
+    listedAt: 1719226532
+  },
 ]
 
 export default data3

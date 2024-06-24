@@ -4725,7 +4725,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "NetWeave Finance",
     url: "https://www.netweave.finance",
     description: "Focus on DeFi and strive to create convenient and secure lending protocols on Mode Network.",
-    logo: `${baseIconsUrl}/netweave-finance.jpg`,
+    logo: `${baseIconsUrl}/netweave-finance.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

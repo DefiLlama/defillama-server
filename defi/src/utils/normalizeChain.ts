@@ -3595,7 +3595,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "opBNB" : "op_bnb"
     case "archway":
       return "Archway"
-    case "hydration":
+    case "hydradx":
       return "Hydration"
     case "shibarium":
       return "Shibarium"

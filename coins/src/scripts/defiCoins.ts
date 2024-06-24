@@ -60,12 +60,12 @@ async function storeDefiCoins() {
           console.error(firstThreeLines);
         }
         // console.error(`${adapterKey} adapter failed ${process.env.LLAMA_RUN_LOCAL ? "" : `:${e}`}`);
-        if (!process.env.LLAMA_RUN_LOCAL)
-          await sendMessage(
-            `${a[i][0]} adapter failed: ${e}`,
-            process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-            true,
-          );
+        // if (!process.env.LLAMA_RUN_LOCAL)
+        //   await sendMessage(
+        //     `${a[i][0]} adapter failed: ${e}`,
+        //     process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        //     true,
+        //   );
       }
       console.timeEnd(timeKey);
     });

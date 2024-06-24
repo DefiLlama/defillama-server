@@ -2002,7 +2002,7 @@ export default {
             }
         }
     },
-    "hydradx": {
+    "hydration": {
         "enabled": true,
         "id": "3439"
     },

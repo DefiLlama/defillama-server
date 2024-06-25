@@ -3141,7 +3141,20 @@ export const chainCoingeckoIds = {
     twitter: "Mint_Blockchain",
     url: "https://www.mintchain.io/",
     chainId: 185
-  }
+  },
+  "OXFUN": {
+    geckoId: "ox-fun",
+    symbol: "OX",
+    cmcId: "29530",
+    categories: ["EVM"],
+    parent: {
+      chain: "Base",
+      types: ["L3"]
+    },
+    twitter: "OXFUNHQ",
+    url: "https://ox.fun/en",
+    chainId: 6699
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3811,6 +3824,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "AILayer"
     case "mint":
       return "Mint"
+    case "ox_chain":
+      return "OXFUN"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

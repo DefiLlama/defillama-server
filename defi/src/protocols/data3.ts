@@ -47104,6 +47104,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1719260482
   },
+  {
+    id: "4810",
+    name: "Chiliz Governance Staking",
+    address: null,
+    symbol: "-",
+    url: "https://governance.chilizchain.com",
+    description:
+      "CHZ locked for the governance of Chiliz Chain, Validators and delegators stake their CHZ to take part in the governance of the PoSA chain in order to create and validate new blocks as well as to vote on any changes which require governance consensus.",
+    chain: "Chiliz",
+    logo: `${baseIconsUrl}/chiliz-governance-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Chiliz"],
+    module: "chiliz-governance-staking/index.js",
+    twitter: "Chiliz",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1719322171
+  },
 ]
 
 export default data3

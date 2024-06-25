@@ -2244,5 +2244,9 @@ export default {
     "sideshift": {
         enabled: true,
         id: "1895"
+    },
+    "tlx-finance": {
+        enabled: true,
+        id: "4555"
     }
 } as AdaptorsConfig

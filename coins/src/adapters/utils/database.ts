@@ -64,7 +64,7 @@ export async function getTokenAndRedirectData(
     if (tokens.length == 0) return response;
 
     let apiRes;
-    if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
+    if (process.env.LOCAL_TEST === "true") {
       apiRes = await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
     } else {
       apiRes = await getTokenAndRedirectDataDB(

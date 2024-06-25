@@ -46943,7 +46943,6 @@ const data3: Protocol[] = [
     twitter: "solayer_labs",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "parent#icecreamswap",
     listedAt: 1718964090
   },
   {

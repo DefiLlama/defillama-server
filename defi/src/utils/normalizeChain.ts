@@ -1491,8 +1491,8 @@ export const chainCoingeckoIds = {
     github: ['onflow'],
     symbol: "FLOW",
     cmcId: "4558",
-    twitter: "https://flow.com/",
-    url: "flow_blockchain",
+    twitter: "flow_blockchain",
+    url: "https://flow.com/",
   },
   "Kujira": {
     geckoId: "kujira",
@@ -1882,7 +1882,7 @@ export const chainCoingeckoIds = {
     cmcId: "23669",
     categories: ["EVM"],
   },
-  "Europa": {
+  "SKALE Europa": {
     geckoId: null,
     github: ['patractlabs'],
     symbol: null,
@@ -1925,10 +1925,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
   },
   "zkSync Era": {
-    geckoId: null,
+    geckoId: "zksync",
     github: ['matter-labs'],
-    symbol: null,
-    cmcId: null,
+    symbol: "ZK",
+    cmcId: "24091",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
@@ -2817,7 +2817,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "satoshivm",
     url: "https://www.satoshivm.io/",
     github: ["SatoshiVM"],
@@ -2930,7 +2930,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Bitcoin Sidechains"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -2981,10 +2981,10 @@ export const chainCoingeckoIds = {
     chainId: 7560,
   },
   "BounceBit": {
-    geckoId: "BB",
-    symbol: "bouncebit",
+    geckoId: "bouncebit",
+    symbol: "BB",
     cmcId: "30746",
-    categories: ["EVM"],
+    categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "bounce_bit",
     url: "https://bouncebit.io/",
     chainId: 6001,
@@ -2999,20 +2999,149 @@ export const chainCoingeckoIds = {
     github: ["re-al-Foundation"],
     chainId: 111188
   },
+  "Taiko": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "taikoxyz",
+    url: "https://taiko.xyz",
+    chainId: 167000
+  },
+  "Genesys": {
+    geckoId: "genesys",
+    symbol: "GSYS",
+    cmcId: "27940",
+    categories: ["EVM"],
+    twitter: "GenesysChain",
+    url: "https://genesys.network/",
+    github: ["GENESYSBLOCKCHAIN"],
+    chainId: 16507
+  },
+  "Polkadex": {
+    geckoId: "polkadex",
+    github: ['Polkadex-Substrate'],
+    symbol: "PDEX",
+    cmcId: "9017",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+  },
+  "aelf": {
+    geckoId: "aelf",
+    symbol: "ELF",
+    cmcId: "2299",
+    twitter: "aelfblockchain",
+    url: "https://aelf.com/",
+    github: ["aelfProject"],
+  },
+  "Lukso": {
+    geckoId: "lukso-token-2",
+    symbol: "LYX",
+    cmcId: "27622",
+    categories: ["EVM"],
+    twitter: "lukso_io",
+    url: "https://www.lukso.network",
+    github: ["lukso-network"],
+    chainId: 42
+  },
+  "Joltify": {
+    geckoId: "joltify",
+    symbol: "JOLT",
+    cmcId: "19855",
+    categories: ["EVM","Cosmos"],
+    twitter: "joltify_finance",
+    url: "https://joltify.io/",
+    github: ["joltify-finance"]
+  },
+  "IOTA EVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "iota",
+    url: "https://blog.iota.org/iotas-evm-mainnet-launch/",
+    chainId: 8822
+  },
+  "Ham": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "HamOnWarpcast",
+    url: "https://ham.fun",
+    chainId: 5112,
+  },
+  "Sanko": {
+    geckoId: "dream-machine-token",
+    symbol: "DMT",
+    cmcId: "25653",
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "SankoGameCorp",
+    url: "https://sanko.xyz/",
+    chainId: 1996,
+  },
+  "Rari": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "RariChain",
+    url: "https://rarichain.org/",
+    chainId: 1380012617,
+  },
+  "Massa": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "massalabs",
+    url: "https://massa.net",
+  },
+  "AILayer": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "AILayerXYZ",
+    url: "https://anvm.io/",
+    chainId: 2649
+  },
   "Mint": {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM","Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2"]
     },
-    github: ["Mint-Blockchain"],
-    chainId: 185,
     twitter: "Mint_Blockchain",
-    url: "https://www.mintchain.io",
-  },
+    url: "https://www.mintchain.io/",
+    chainId: 185
+  }
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3031,6 +3160,7 @@ chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
 chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
+chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3412,7 +3542,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "goerli":
       return "Goerli"
     case "europa":
-      return "Europa"
+      return "SKALE Europa"
     case "core":
       return "CORE"
     case "rpg":
@@ -3653,8 +3783,32 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
         return "BounceBit"
     case "real":
         return "re.al"
-    case "mint":
-        return "Mint"
+    case "taiko":
+        return "Taiko"
+    case "genesys":
+      return "Genesys"
+    case "kava":
+      return "Kava"
+    case "polkadex":
+      return "Polkadex"
+    case "aelf":
+      return "aelf"
+    case "lukso":
+      return "Lukso"
+    case "joltify":
+      return "Joltify"
+    case "iotaevm":
+      return "IOTA EVM"
+    case "ham":
+      return "Ham"
+    case "sanko":
+      return "Sanko"
+    case "rari":
+      return "Rari"
+    case "massa":
+      return "Massa"
+    case "ailayer":
+      return "AILayer"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

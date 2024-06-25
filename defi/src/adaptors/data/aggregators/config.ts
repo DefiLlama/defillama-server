@@ -191,7 +191,7 @@ export default {
   },
   "aperture-swap": {
     parentId: "Aperture Finance",
-    "enabled": true,
+    "enabled": false,
     "id": "3554"
   },
   "magpie": {
@@ -209,5 +209,21 @@ export default {
   "rubic": {
     "enabled": true,
     "id": "1282"
+  },
+  "eisen": {
+    "enabled": true,
+    "id": "4691"
+  },
+  "udex-agg": {
+    "enabled": true,
+    "id": "4704"
+  },
+  "injex": {
+    "enabled": true,
+    "id": "4762"
+  },
+  "hop-aggregator": {
+    enabled: true,
+    id: "4791",
   }
 } as AdaptorsConfig;

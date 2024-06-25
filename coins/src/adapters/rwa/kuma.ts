@@ -12,6 +12,9 @@ const config: { [chain: string]: { [symbol: string]: string } } = {
   },
   linea: {
     USK: "0x7a6aa80b49017f3e091574ab5c6977d863ff3865"
+  },
+  telos: {
+    USK: "0x09B88f74Fb9E243c4A3F4D2FfE3d1BA4287a476c"
   }
 };
 
@@ -36,7 +39,7 @@ export async function kuma(timestamp: number): Promise<Write[]> {
   // KUMA tokens are redeemable for the bond NFT at any time, therefore their value can be assumed to be stable
   // the currently issued tokens in this list are all being held until the bond matures so there's no other way to price them
   const redirects: { [symbol: string]: string } = {
-    EGK: 'coingecko#eurc'
+    EGK: 'coingecko#euro-coin'
   }
 
   const writes: Write[] = [];
@@ -55,7 +58,7 @@ export async function kuma(timestamp: number): Promise<Write[]> {
         symbol,
         timestamp,
         "kuma-protocol",
-        0.8,
+        1,
         redirect
       );
     }),

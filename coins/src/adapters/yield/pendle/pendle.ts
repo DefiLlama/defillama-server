@@ -164,15 +164,24 @@ export default async function getTokenPrices(
       }),
       Promise.all(
         // PromisePool error when multicalled on mainnet
-        markets.map((params: string) =>
+        markets.map((m: string) =>
           api
             .call({
               target: toAsset,
-              params,
-              abi: "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
+              params: [m, 1800],
+              abi: "function getPtToAssetRate(address, uint32) public view returns (uint256 ptToAssetRate)",
             })
-            .then((r) => (exchangeRates[params] = r))
-            .catch(() => (exchangeRates[params] = null)),
+            .then((r) => (exchangeRates[m] = r))
+            .catch(() =>
+              api
+                .call({
+                  target: toAsset,
+                  params: [m, 900],
+                  abi: "function getPtToAssetRate(address, uint32) public view returns (uint256 ptToAssetRate)",
+                })
+                .then((r) => (exchangeRates[m] = r))
+                .catch(() => (exchangeRates[m] = null)),
+            ),
         ),
       ),
     ]);

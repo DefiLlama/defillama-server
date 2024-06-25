@@ -24,7 +24,7 @@ export async function getCoins2Connection() {
     coins2Connection = new Promise(async (resolve) => {
       // @ts-ignore
       let auth: any = process.env.COINS2_AUTH;
-      if (!auth) await setEnvSecrets();
+      if (!auth) await setEnvSecrets()
       // @ts-ignore
       auth = process.env.COINS2_AUTH?.split(",") ?? [];
       if (!auth || auth.length != 3)

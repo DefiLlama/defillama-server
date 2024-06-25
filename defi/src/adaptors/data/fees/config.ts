@@ -106,7 +106,8 @@ export default {
     },
     "litecoin": {
         "enabled": true,
-        "id": "4499"
+        "id": "2",
+        "isChain": true
     },
     "looksrare": {
         "enabled": true,
@@ -684,6 +685,7 @@ export default {
         id: "2643"
     },
     "maverick": {
+        parentId: "Maverick Protocol",
         enabled: true,
         id: "2644"
     },
@@ -1281,6 +1283,7 @@ export default {
         "id": "3129"
     },
     "aerodrome": {
+        parentId: "Aerodrome",
         "enabled": true,
         "id": "3450"
     },
@@ -1442,6 +1445,7 @@ export default {
         "id": "3657"
     },
     "shimmersea": {
+        parentId: "MagicSea",
         "enabled": true,
         "id": "3571"
     },
@@ -1906,11 +1910,11 @@ export default {
     },
     "instadapp": {
         "enabled": true,
-        "id": "120"
+        "id": "4742" // old id: 120
     },
     "summer.fi": {
         "enabled": true,
-        "id": "3284"
+        "id": "4741"  // old id: 3284
     },
     "integral": {
         "enabled": true,
@@ -1989,6 +1993,7 @@ export default {
         id: "359"
     },
     "keller": {
+        parentId: "Keller Finance",
         enabled: true,
         id: "4388"
     },
@@ -2139,5 +2144,101 @@ export default {
     "polter": {
         enabled: true,
         id: "4152"
+    },
+    "equation-v3": {
+        parentId: "Equation",
+        enabled: true,
+        id: "4586"
+    },
+    "Viridian": {
+        enabled: true,
+        id: "4631"
+    },
+    "yfx-v4": {
+        enabled: true,
+        id: "4674"
+    },
+    "basecamp": {
+        enabled: true,
+        id: "4693"
+    },
+    "blocxroute": {
+        enabled: true,
+        id: "4695"
+    },
+    "drift-protocol": {
+        "enabled": true,
+        "id": "970",
+        "protocolsData": {
+            "derivatives": {
+                "id": "970",
+                "enabled": true,
+            }
+        },
+    },
+    "keller-cl": {
+        parentId: "Keller Finance",
+        enabled: true,
+        id: "4583"
+    },
+    "colony": {
+        enabled: true,
+        id: "1004"
+    },
+    "flashtrade": {
+        enabled: true,
+        "id": "4107",
+    },
+    "pumpup": {
+        enabled: true,
+        "id": "4736"
+    },
+    "coinbase-commerce": {
+        enabled: true,
+        "id": "4737"
+    },
+    "dragonswap-sei": {
+        enabled: true,
+        id: "4720"
+    },
+    "wen-markets": {
+        enabled: true,
+        id: "4733"
+    },
+    "cellula": {
+        enabled: true,
+        id: "4705"
+    },
+    "clusters": {
+        enabled: true,
+        id: "4777"
+    },
+    "magpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "2271"
+    },
+    "time-fun": {
+        enabled: true,
+        id: "4786"
+    },
+    "cakepie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "4007"
+    },
+    "milkyway": {
+        enabled: true,
+        id: "3953"
+    },
+    "penpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "3083"
+    },
+    "radpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "3555"
     }
 } as AdaptorsConfig

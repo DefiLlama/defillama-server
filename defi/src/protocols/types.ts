@@ -50,7 +50,7 @@ export interface IParentProtocol {
   gecko_id: string | null;
   cmcId: string | null;
   categories?: Array<string>;
-  twitter: string;
+  twitter: string | null;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
   governanceID?: Array<string>;

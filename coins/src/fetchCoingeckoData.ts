@@ -9,11 +9,10 @@ import invokeLambda from "./utils/shared/invokeLambda";
 import sleep from "./utils/shared/sleep";
 import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
-import { Connection, PublicKey, Keypair } from "@solana/web3.js";
+import { Connection, PublicKey } from "@solana/web3.js";
 import { Write } from "./adapters/utils/dbInterfaces";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { batchWrite2 } from "../coins2";
-import setEnvSecrets from "../../defi/src/utils/shared/setEnvSecrets";
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
@@ -328,7 +327,7 @@ const handler = (hourly: boolean) => async (
   const rejected = [] as Coin[];
   const timer = setTimer();
   const requests = [];
-  await setEnvSecrets();
+  process.env.tableName = "prod-coins-table";
   if (hourly) {
     const hourlyCoins = [];
     for (let i = 0; i < coins.length; i += step) {

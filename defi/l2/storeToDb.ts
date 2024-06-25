@@ -1,13 +1,13 @@
 import postgres from "postgres";
 import { queryPostgresWithRetry } from "../l2/layer2pg";
 import { ChainTokens, ChartData, FinalChainData, FinalData } from "./types";
-import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
+import setEnvSecrets from "../src/utils/shared/setEnvSecrets";
 
 let auth: string[] = [];
 const secondsInADay = 86400;
 async function iniDbConnection() {
-  await setEnvSecrets();
+  await setEnvSecrets()
   auth = process.env.COINS2_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 
@@ -230,6 +230,10 @@ export async function fetchFlows(period: number) {
   chains.map((chain: string) => {
     res[chain] = {};
     Object.keys(end.data[chain]).map((k: string) => {
+      if (!start.data[chain] || !(k in start.data[chain])) {
+        res[chain][k] = { perc: "0", raw: "0" };
+        return;
+      }
       const a = start.data[chain][k];
       const b = end.data[chain][k];
       const raw = (b - a).toFixed();

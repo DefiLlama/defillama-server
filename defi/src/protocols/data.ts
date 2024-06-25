@@ -307,6 +307,8 @@ const data: Protocol[] = [
     oracles: [], // chainlink for lending?
     parentProtocol: "parent#sushi",
   },
+  /*
+  Instadapp wallets
   {
     id: "120",
     name: "Instadapp",
@@ -330,6 +332,7 @@ const data: Protocol[] = [
     governanceID: ["snapshot:instadapp-gov.eth"],
     github: ["InstaDApp"] //check
   },
+  */
   {
     id: "121",
     name: "CREAM Lending",
@@ -909,7 +912,7 @@ const data: Protocol[] = [
     name: "Tornado Cash",
     address: "0x77777feddddffc19ff86db637967013e6c6a116c",
     symbol: "TORN",
-    url: "https://tornado.cash/",
+    url: "https://tornado.ws/",
     description: "Non-custodial anonymous transactions on Ethereum.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tornado-cash.jpg`,
@@ -2308,7 +2311,7 @@ const data: Protocol[] = [
   {
     id: "214",
     name: "Raydium",
-    address: "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+    address: "solana:4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
     symbol: "RAY",
     url: "https://raydium.io",
     description: "An on-chain order book AMM powering the evolution of DeFi.",
@@ -3718,7 +3721,7 @@ const data: Protocol[] = [
   {
     id: "280",
     name: "Oxygen",
-    address: "z3dn17yLaGMKffVogeFHQ9zWVcXgqgf3PQnDsNs2g6M",
+    address: "solana:z3dn17yLaGMKffVogeFHQ9zWVcXgqgf3PQnDsNs2g6M",
     symbol: "OXY",
     url: "https://www.oxygen.org/",
     description: "Money market on Solana",
@@ -4463,7 +4466,7 @@ const data: Protocol[] = [
   {
     id: "315",
     name: "Tulip Protocol",
-    address: "TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs",
+    address: "solana:TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs",
     symbol: "TULIP",
     url: "https://tulip.garden/",
     description: "The Efficient Solana Yield Aggregator",
@@ -4710,7 +4713,7 @@ const data: Protocol[] = [
     cmcId: "7311",
     category: "Yield Aggregator",
     chains: [
-      "Binance",
+//    "Binance",
       "Polygon",
       "Avalanche",
       "Heco",
@@ -7409,7 +7412,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Dexes", // tvl also counts lending/cdp product
-    chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective"],
+    chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective", "Arbitrum", "Base"],
     module: "balanced/index.js",
     twitter: "BalancedDAO",
     audit_links: ["https://docs.balanced.network/security#smart-contract-audits"],
@@ -9533,14 +9536,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "548",
-    name: "DeFis Network",
-    address: "eos:DFS",
+    name: "DFS Network",
+    address: "dfs:DFS",
     symbol: "DFS",
-    url: "https://defis.network",
+    url: "https://dfs.land",
     description:
-      "DeFis Network is the most decentralized finance network built on EOSIO that aggregates all valuable DeFi-protocols.",
+      "DFS Network is a blockchain built for mass adoption Web3 products and services.  Fast, free, user-friendly, composable, green, and globally distributed.",
     chain: "EOS",
-    logo: `${baseIconsUrl}/defis-network.png`,
+    logo: `${baseIconsUrl}/dfs-network.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "defis-network",
@@ -9548,12 +9551,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["EOS"],
     module: "dfs/index.js",
-    twitter: "DFSnetworks",
+    twitter: "dfsdeveloper",
     audit_links: [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=ca2c97083e94d0958e9376b770b16a7f8ddd53fb1e5f1b9cbabc0ccf8d157d40",
       "https://github.com/peckshield/publications/blob/master/audit_reports/DeFis-Network_Swap_audit_report_2020_20_cn_1_0.pdf",
     ],
-    github: ["defis-net"]
+    github: ["DFSNetwork"]
   },
   {
     id: "549",
@@ -9729,8 +9732,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "557",
     name: "Meta Pool Near",
-    address: "near:0xc21ff01229e982d7c8b8691163b0a3cb8f357453",
-    symbol: "META",
+    address: "near:mpdao-token.near",
+    symbol: "MPDAO",
     url: "https://metapool.app",
     description: "Meta Pool is a liquid staking protocol built on the NEAR blockchain.",
     chain: "Near",
@@ -10627,7 +10630,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "FOX",
     url: "https://shapeshift.com",
     description:
-      "ShapeShift is the only cryptocurrency trading platform offering zero-commission crypto trading and self-custody.",
+      "ShapeShift is the CEXiest DEX. Open Source, Non-Custodial, Decentralized. Buy, trade, earn, borrow and more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/shapeshift.jpg`,
     audits: "0",
@@ -11153,7 +11156,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "2",
     audit_note: null,
     gecko_id: "sail-2",
-    cmcId: null,
+    cmcId: "29690",
     category: "Dexes",
     chains: ["Ethereum"],
     module: "clipper/index.js",
@@ -11227,12 +11230,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "626",
     name: "Reserve Protocol",
     address: "0x320623b8e4ff03373931769a31fc52a4e78b5d70",
-    symbol: "RSR",
+    symbol: "-",
     url: "https://reserve.org",
     description:
       "The Reserve Protocol is a platform which enables anyone to create yield-bearing, decentralized, and asset-backed currencies (RTokens). RTokens provide an alternative to inflation-prone currencies, empowering people to maintain their purchasing power over time and across borders",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/reserve.jpg`,
+    logo: `${baseIconsUrl}/reserve.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "reserve-rights-token",
@@ -11380,7 +11383,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://2adxrezjguhnrdzzvzwmcc52v4kdhtpw3vjk4737dbsobmwo6c6q.arweave.net/0Ad4kyk1DtiPOa5swQu6rxQzzfbdUq5_fxhk4LLO8L0",
     ],
     oracles: ["TWAP"],
-    treasury: "beanstalk.js",
+    // treasury: "beanstalk.js", // treasury is owned by Beanstalk farms, the entity not the dao
     github: ["BeanstalkFarms"],
     governanceID: ["snapshot:beanstalkdao.eth", "snapshot:beanstalkfarms.eth"] //Add sub-spaces?
   },
@@ -12806,14 +12809,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "696",
-    name: "Agave",
+    name: "Agave (Deprecated)",
     address: "xdai:0x3a97704a1b25f08aa230ae53b352e2e72ef52843",
     symbol: "AGVE",
     url: "https://agave.finance",
     description:
       "Agave rewards depositors with passive income and lets them use their deposits as collateral to borrow and lend digital assets. Forked from Aave.",
     chain: "xDai",
-    logo: `${baseIconsUrl}/agave.jpg`,
+    logo: `${baseIconsUrl}/agave-(deprecated).jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "agave-token",
@@ -13200,7 +13203,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "714",
     name: "Voltage AMM",
-    address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
+    address: "fuse:0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
     symbol: "VOLT",
     url: "https://app.voltage.finance/",
     description:
@@ -14284,7 +14287,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "klima-dao",
     cmcId: "12873",
-    category: "Services",
+    category: "RWA",
     chains: ["Polygon"],
     module: "klima-dao/index.js",
     treasury: "klima-dao.js",
@@ -20922,7 +20925,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1085",
     name: "Thetanuts Finance",
-    address: null,
+    address: "0x23f3D4625AEF6f0b84d50dB1d53516e6015c0c9B",
     symbol: "NUTS",
     url: "https://thetanuts.finance",
     description:
@@ -20933,7 +20936,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "thetanuts-finance",
     cmcId: null,
-    category: "Options",
+    category: "Yield",
     chains: ["Ethereum", "Binance", "Avalanche", "Fantom", "Polygon", "Aurora", "Arbitrum", "Cronos", "Boba"],
     module: "thetanuts/index.js",
     twitter: "ThetanutsFi",
@@ -20985,16 +20988,16 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1088",
-    name: "Spectrum Finance",
+    name: "ErgoDEX", // previous Spectrum Finance
     address: null,
-    symbol: "SPF",
-    url: "https://spectrum.fi/",
-    description: "Spectrum Finance is an open-source cross-chain DEX",
+    symbol: "-",
+    url: "https://app.ergodex.io/",
+    description: "Dex on Ergo Chain",
     chain: "Ergo",
-    logo: `${baseIconsUrl}/spectrum-finance.png`,
+    logo: `${baseIconsUrl}/ergodex.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "spectrum-finance",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Ergo"],
@@ -21430,25 +21433,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1109",
-    name: "Spectra", // previous APWine 
+    name: "Spectra V1", // previous APWine 
     address: "0x4104b135dbc9609fc1a9490e61369036497660c8",
     symbol: "APW",
     url: "https://www.spectra.finance/",
     description:
       "Speculate on the evolution of the yield generated by different DeFi protocols. Hedge your risk on your passive revenue, converting it into futures. Tokenise the yield generated by your interest-bearing tokens. APWine splits your interest-bearing assets into Principal Tokens and Future Yield Tokens. Sell your APYs ahead of time. Claim your yield at maturity.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/spectra.jpg`,
+    logo: `${baseIconsUrl}/spectra-v1.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "apwine",
-    cmcId: "10364",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum", "Polygon"],
     module: "apwine/index.js",
     twitter: "spectra_finance",
-    governanceID: ["snapshot:apwine.eth"],
+    parentProtocol: "parent#spectra",
+  //  governanceID: ["snapshot:apwine.eth"],
     listedAt: 1640630028,
-    github: ["APWine"]
+ //   github: ["APWine"]
   },
   {
     id: "1110",
@@ -24938,7 +24942,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "2",
     audit_note: null,
     gecko_id: "immortaldao",
-    cmcId: null,
+    cmcId: "17377",
     category: "Reserve Currency",
     chains: ["Celo"],
     module: "immortal/api.js",
@@ -26106,26 +26110,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Tomb Finance"],
     listedAt: 1643475195,
   },
-  // {
-  //   id: "1327",
-  //   name: "Astar dApps Staking",
-  //   address: "astar:-",
-  //   symbol: "ASTR",
-  //   url: "https://astar.network",
-  //   description: "Astar Network is a multi-chain decentralized application layer on Kusama Network. dApp staking is a mechanism that incentives developers who built in the Astar ecosystem. Users can stake on those dApps to earn staking rewards and at the same time support the project by giving them a daily income.",
-  //   chain: "Astar",
-  //   logo: `${baseIconsUrl}/astar-dapps-staking.png`,
-  //   audits: "2",
-  //   audit_note: null,
-  //   gecko_id: "astar",
-  //   cmcId: "12885",
-  //   category: "Chain",
-  //   chains: ["Astar"],
-  //   module: "astar-dapps-staking/index.js",
-  //   twitter: "AstarNetwork",
-  //   audit_links: ["https://certificate.quantstamp.com/view/a-star-network-staking"],
-  //   listedAt: 1643478301,
-  // },
+  {
+    id: "1327",
+    name: "Astar dApps Staking",
+    address: "astar:-",
+    symbol: "ASTR",
+    url: "https://astar.network",
+    description: "Astar Network is a multi-chain decentralized application layer on Kusama Network. dApp staking is a mechanism that incentives developers who built in the Astar ecosystem. Users can stake on those dApps to earn staking rewards and at the same time support the project by giving them a daily income.",
+    chain: "Astar",
+    logo: `${baseIconsUrl}/astar-dapps-staking.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "astar",
+    cmcId: "12885",
+    category: "Chain",
+    chains: ["Astar"],
+    module: "astar-dapps-staking/index.js",
+    twitter: "AstarNetwork",
+    audit_links: ["https://certificate.quantstamp.com/view/a-star-network-staking"],
+    listedAt: 1643478301,
+  },
   {
     id: "1328",
     name: "Astral Farm",

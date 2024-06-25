@@ -48,8 +48,8 @@ export default {
     },
     "smbswap": {
         "enabled": true,
-        parentId: "SMBSwap",
-        id: "1632",
+        parentId: "1632",
+        id: "smbswap",
         protocolsData: {
             v2: {
                 enabled: true,
@@ -149,5 +149,74 @@ export default {
     "FeeFree": {
         enabled: true,
         id: "4530",
+    },
+    "linehub-v3": {
+        parentId: "LineHub",
+        enabled: true,
+        id: "4661",
+        protocolsData: {
+            "v3": {
+                enabled: true,
+                id: "4661",
+            }
+        }
+    },
+    "physica-finance": {
+        enabled: true,
+        id: "4719",
+        protocolsData: {
+            "v3": {
+                enabled: true,
+                id: "4719",
+            }
+        }
+    },
+    "bitgenie-amm": {
+        enabled: true,
+        id: "4573",
+    },
+    "aerodrome-slipstream": {
+        parentId: "Aerodrome",
+        enabled: true,
+        id: "4524"
+    },
+    "capybara-exchange": {
+        enabled: true,
+        id: "4747",
+    },
+    "vanillaswap-v2": {
+        parentId: "VanillaSwap",
+        enabled: true,
+        id: "4600",
+    },
+    "vanillaswap-v3": {
+        parentId: "VanillaSwap",
+        enabled: true,
+        id: "4601",
+    },
+    "maverick-v2": {
+        parentId: "Maverick Protocol",
+        enabled: true,
+        id: "4752"
+    },
+    "thruster-v3": {
+        parentId: "Thruster",
+        enabled: true,
+        id: "4199",
+    },
+    "thruster-v2": {
+        parentId: "Thruster",
+        enabled: true,
+        id: "4207",
+    },
+    "balanced": {
+        parentId: "BalancedDAO",
+        enabled: true,
+        id: "448",
+    },
+    "voltage-v3": {
+        parentId: "Voltage",
+        enabled: true,
+        id: "4188",
     }
 } as AdaptorsConfig

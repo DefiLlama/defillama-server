@@ -2765,6 +2765,16 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0xeb466342c4d449bc9f53a865d5cb90586f405215": {
+      "decimals": "6",
+      "symbol": "axlUSDC",
+      "to": "coingecko#axlusdc"
+    },
+    "0x68bcc7f1190af20e7b572bcfb431c3ac10a936ab": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   },
   "rss3_vsl": {

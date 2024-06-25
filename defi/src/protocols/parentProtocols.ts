@@ -4741,6 +4741,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "icecream_swap",
   },
+    {
+    id: "parent#threshold-network",
+    name: "Threshold Network",
+    url: "https://threshold.network/",
+    description: "A decentralized threshold cryptography network",
+    logo: `${baseIconsUrl}/threshold-network.jpg`,
+    gecko_id: "threshold-network-token",
+    cmcId: "17751",
+    chains: [],
+    twitter: "TheTNetwork",
+    github: ["threshold-network"],
+  },
 ];
 
 export default parentProtocols;

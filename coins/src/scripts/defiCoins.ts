@@ -8,6 +8,7 @@ import { sendMessage } from "../../../defi/src/utils/discord";
 import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
 import adapters from "../adapters/index";
 import { PromisePool } from "@supercharge/promise-pool";
+import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
 function shuffleArray(array: number[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -20,7 +21,9 @@ const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 1740000; //29mins
 
 async function storeDefiCoins() {
-  process.env.tableName = "prod-coins-table";
+  await setEnvSecrets();
+  // process.env.tableName = "prod-coins-table";
+  // process.env.DEFILLAMA_SDK_MUTED = 'false'
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
     Array(adaptersArray.length).keys(),
@@ -32,11 +35,11 @@ async function storeDefiCoins() {
     .for(protocolIndexes)
     .process(async (i) => {
       const adapterKey = a[i][0];
+      const b: any = a[i][1];
       const timeKey = `                                                                                  --- Runtime ${adapterKey} `;
       console.time(timeKey);
       try {
-        const adapterFn =
-          typeof a[i][1] === "function" ? a[i][1] : a[i][1][adapterKey];
+        const adapterFn = typeof b === "function" ? b : b[adapterKey];
         const results = await withTimeout(timeout, adapterFn(timestamp));
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat().filter((c: any) => c.symbol != null || c.SK != 0),

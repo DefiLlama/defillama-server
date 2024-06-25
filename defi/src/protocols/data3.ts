@@ -47175,6 +47175,27 @@ const data3: Protocol[] = [
     tokensExcludedFromParent: ["tBTC"],
     listedAt: 1719351634
   },
+  {
+    id: "4813",
+    name: "Moonshot",
+    address: null,
+    symbol: "-",
+    url: "https://dexscreener.com/moonshot",
+    description:
+      "Launchpad on Solana made by DexScreener Team",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/moonshot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "dexscreener",
+    forkedFrom: [],
+    oracles: [],
+  },
 ]
 
 export default data3

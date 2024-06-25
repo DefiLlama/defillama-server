@@ -8,7 +8,6 @@ import { sendMessage } from "../../../defi/src/utils/discord";
 import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
 import adapters from "../adapters/index";
 import { PromisePool } from "@supercharge/promise-pool";
-import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
 function shuffleArray(array: number[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -21,9 +20,7 @@ const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 1740000; //29mins
 
 async function storeDefiCoins() {
-  await setEnvSecrets();
-  // process.env.tableName = "prod-coins-table";
-  // process.env.DEFILLAMA_SDK_MUTED = 'false'
+  process.env.tableName = "prod-coins-table";
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
     Array(adaptersArray.length).keys(),

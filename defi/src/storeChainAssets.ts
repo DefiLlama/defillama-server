@@ -4,7 +4,6 @@ import { withTimeout } from "./utils/shared/withTimeout";
 import { storeR2JSONString } from "./utils/r2";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import storeHistorical from "../l2/storeToDb";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 async function getChainAssets() {
   const res: any = await chainAssets();
@@ -16,7 +15,6 @@ async function getChainAssets() {
 }
 export async function handler() {
   try {
-    await setEnvSecrets()
     await withTimeout(8400000, getChainAssets()); // 140 mins
   } catch (e) {
     process.env.CHAIN_ASSET_WEBHOOK ? await sendMessage(`${e}`, process.env.CHAIN_ASSET_WEBHOOK!) : console.log(e);

@@ -13,7 +13,6 @@ import parentProtocols from "./protocols/parentProtocols";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
 import { withTimeout } from "./utils/shared/withTimeout";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const prefix = "coingecko:";
 
@@ -190,7 +189,6 @@ async function processSingleProtocol(
   return sluggifiedId;
 }
 async function processProtocolList() {
-  await setEnvSecrets()
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
   let emissionsBrakedown: EmissionBreakdown = {};

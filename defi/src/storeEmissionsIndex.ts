@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
 import { getR2, storeR2JSONString } from "./utils/r2";
 import { sendMessage } from "./utils/discord";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 type ProtocolData = {
   token: string;
@@ -156,7 +155,6 @@ const fetchProtocolEmissionData = async (protocol: ProtocolData) => {
 };
 export default async function handler(): Promise<void> {
   try {
-    await setEnvSecrets();
     const allProtocols = (await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!))) as string[];
     const data: ProtocolData[] = await fetchProtocolData(allProtocols);
     await fetchCoinsApiData(data);

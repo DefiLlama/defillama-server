@@ -4,6 +4,12 @@ import { sluggifyString } from "../../utils/sluggify";
 import { cache } from "../cache";
 import { readFromPGCache, writeToPGCache } from "../db";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import parentProtocols from "../../protocols/parentProtocols";
+
+const parentProtocolMap: any = {}
+parentProtocols.forEach(protocol => {
+  parentProtocolMap[protocol.id] = protocol
+})
 
 export function getAdapterCacheKey(adaptor: ProtocolAdaptor, type: AdaptorRecordType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL") {
   return `${adaptor.protocolType ?? 'protocol'}-${adaptor.id}-${type}-${mode}`
@@ -30,6 +36,14 @@ export async function getDimensionsCacheV2() {
     const childProtocolNameMap: any = {}
     const childProtocolVersionKeyMap: any = {}
     for (const protocolData of Object.values(adapterData.protocols) as any) {
+      const parentId = protocolData?.info?.parentProtocol
+      if (parentId)  { // TODO: this is a hack, we should fix the config file instead to return only parent protocols else parent protocol will show only latest child data
+        if (!parentProtocolMap[parentId]) {
+          console.error(`Parent protocol not found for ${parentId}`, protocolData.info.name)
+          continue
+        }
+        protocolNameMap[sluggifyString(parentProtocolMap[parentId].name)] = protocolData
+      }
       if (protocolData?.info?.name)
         protocolNameMap[sluggifyString(protocolData?.info?.name)] = protocolData
       if (protocolData?.info?.displayName)

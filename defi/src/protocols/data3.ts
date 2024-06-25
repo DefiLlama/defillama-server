@@ -47126,6 +47126,30 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1719322171
   },
+  {
+    id: "4811",
+    name: "MintSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://governance.chilizchain.com",
+    description:
+      "MintSwap is the DEX & NFT marketplace on Mint Blockchain, providing token DEX, NFT trading, and NFTFi functions for Web3 users.",
+    chain: "Mint",
+    logo: `${baseIconsUrl}/mintswap-v3.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mint"],
+    module: "mintswap-finance-v3/index.js",
+    twitter: "MintSwap_HQ",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    github: ["MintSwapFinance"],
+    audit_links: ["https://github.com/MintSwapFinance/mintswap-v3-core/tree/main/audits/abdk"],
+    listedAt: 1719322717
+  },
 ]
 
 export default data3

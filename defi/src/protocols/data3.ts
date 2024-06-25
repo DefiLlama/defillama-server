@@ -6355,7 +6355,7 @@ const data3: Protocol[] = [
     module: "vega-protocol/index.js",
     twitter: "vegaprotocol",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.vega.xyz/mainnet/tutorials/using-data-sources#using-a-pyth-price-feed
     listedAt: 1684246282,
     github: ["vegaprotocol"]
   },

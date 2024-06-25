@@ -13686,16 +13686,16 @@ const data2: Protocol[] = [
   },
   {
     id: "1990",
-    name: "IcecreamSwap",
+    name: "IcecreamSwap V2",
     address: "bitgert:0xB999Ea90607a826A3E6E6646B404c3C7d11fa39D",
     symbol: "ICE",
     url: "https://icecreamswap.com/",
     description: "The first Swap on the Bitgert (Brise) Blockchain",
     chain: "Bitgert",
-    logo: `${baseIconsUrl}/icecreamswap.png`,
+    logo: `${baseIconsUrl}/icecreamswap-v2.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "icecream",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Bitgert"],
@@ -13703,6 +13703,7 @@ const data2: Protocol[] = [
     twitter: "icecream_swap",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
+    parentProtocol: "parent#icecreamswap",
     listedAt: 1660878513
   },
   {
@@ -14759,8 +14760,8 @@ const data2: Protocol[] = [
   {
     id: "2038",
     name: "lisUSD", // rebrand from Helio Protocol (lisUSD) 
-    address: "bsc:0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
-    symbol: "-",
+    address: "bsc:0xFceB31A79F71AC9CBDCF853519c1b12D379EdC46",
+    symbol: "LISTA",
     url: "https://helio.money/",
     description:
       "Lista DAO functions as a open-source liquidity protocol for earning yields on collateralized Crypto assets (BNB, ETH, Stablecoins, and other cryptocurrencies) and borrowing of our decentralized stablecoin, lisUSD. It uses and expands the proven MakerDAO model for a decentralized, unbiased, collateral-backed destablecoin",
@@ -14768,8 +14769,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/lisusd.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "helio-protocol-hay",
-    cmcId: "21330",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Binance"],
     oracles: ["Binance Oracle"],
@@ -16249,13 +16250,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2104",
-    name: "Swaap V1",
+    name: "Swaap Maker V1", //previous Swaap V1
     address: null,
     symbol: "-",
     url: "https://www.swaap.finance",
     description: "Swaap is a market neutral AMM.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/swaap-v1.jpg`,
+    logo: `${baseIconsUrl}/swaap-maker-v1.jpg`, // swaap-maker-v1.
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -17877,7 +17878,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Aurora"],
     oracles: [],
-    forkedFrom: ["iziSwap"],
+    forkedFrom: ["iZiSwap"],
     module: "arctic/index.js",
     twitter: "Arctic_trade",
     audit_links: ["https://docsend.com/view/42a2ixu3ey6zu3nx"],
@@ -21540,8 +21541,8 @@ const data2: Protocol[] = [
   {
     id: "2337",
     name: "STON.fi",
-    address: null,
-    symbol: "-",
+    address: "ton:EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO",
+    symbol: "STON",
     url: "https://app.ston.fi/",
     description:
       "Decentralized automated market maker (AMM) built on the TON blockchain",
@@ -21549,8 +21550,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/ston.fi.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "ston-2",
+    cmcId: "27311",
     category: "Dexes",
     chains: ["TON"],
     module: "ston/index.js",
@@ -26254,13 +26255,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2541",
-    name: "Clober",
+    name: "Clober V1",
     address: null,
     symbol: "-",
     url: "https://clober.io",
     description: "Clober is a fully decentralized on-chain order book DEX infrastructure based on its unique algorithm LOBSTER.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/clober.jpg`,
+    logo: `${baseIconsUrl}/clober-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -26271,6 +26272,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "clober/index.js",
     twitter: "CloberDEX",
+    parentProtocol: "parent#clober",
     listedAt: 1676572192
   },
   {

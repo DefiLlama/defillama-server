@@ -190,11 +190,11 @@ async function processSingleProtocol(
   return sluggifiedId;
 }
 async function processProtocolList() {
+  await setEnvSecrets()
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
   let emissionsBrakedown: EmissionBreakdown = {};
 
-  await setEnvSecrets();
   const protocolAdapters = Object.entries(adapters);
   await PromisePool.withConcurrency(5)
     .for(shuffleArray(protocolAdapters))

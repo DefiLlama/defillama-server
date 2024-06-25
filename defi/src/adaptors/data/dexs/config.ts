@@ -247,6 +247,7 @@ export default {
     },
     "solidly": {
         "enabled": true,
+         parentId: "Solidly Labs",
         "id": "1407"
     },
     "orca": {
@@ -897,6 +898,7 @@ export default {
         "id": "1412"
     },
     "icecreamswap": {
+        parentId: "IcecreamSwap",
         disabled: true,
         "enabled": true,
         "id": "1990"
@@ -1110,7 +1112,7 @@ export default {
         "id": "1269"
     },
     "sundaeswap": {
-        "enabled": false,
+        "enabled": true,
         "id": "1302"
     },
     "wx.network": {
@@ -1268,6 +1270,7 @@ export default {
     },
     "solidlydex": {
         "enabled": true,
+        parentId: "Solidly Labs",
         "id": "2400"
     },
     "defibox": {
@@ -1626,6 +1629,7 @@ export default {
         "id": "2926"
     },
     "clober": {
+        parentId: "Clober",
         "enabled": true,
         "id": "2541"
     },
@@ -2174,6 +2178,7 @@ export default {
         "id": "3650"
     },
     "shimmersea": {
+        parentId: "MagicSea",
         "enabled": true,
         "id": "3571"
     },
@@ -2800,9 +2805,47 @@ export default {
         enabled: true,
         id: "4699"
     },
-    "maverick-v2": {
-        parentId: "Maverick Protocol",
+    "nostra-pools": {
+        parentId: "Nostra",
         enabled: true,
-        id: "4752"
+        id: "4053"
+    },
+    "clober-v2": {
+        parentId: "Clober",
+        enabled: true,
+        id: "4764"
+    },
+    "bladeswap": {
+        parentId: "BladeSwap",
+        enabled: true,
+        id: "4206",
+        protocolsData: {
+            "v2": {
+                "id": "4206",
+                "enabled": true,
+            },
+            "CL": {
+                "id": "4746",
+                "enabled": true,
+            }
+        }
+    },
+    "stabble": {
+        enabled: true,
+        id: "4734"
+    },
+    "aktionariat": {
+        enabled: true,
+        id: "2782"
+    },
+    "dusa": {
+        enabled: true,
+        id: "4788",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1718841600": true,
+                "1718755200": true,
+            }
+        }
     }
 } as AdaptorsConfig

@@ -24,7 +24,7 @@ export default async function fetchBridgeUsdTokenTvls(
 
   ids.map((id: string, i: number) => {
     if (tokenBalances[i].SK == null) {
-      console.error(`missing hourly${usd ? "Usd" : ""}TokensTvl for id ${id}`);
+      throw new Error(`missing hourly${usd ? "Usd" : ""}TokensTvl for id ${id}`);
     } else allProtocolsTemp[id] = tokenBalances[i];
   });
 

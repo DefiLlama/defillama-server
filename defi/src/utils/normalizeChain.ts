@@ -1491,8 +1491,8 @@ export const chainCoingeckoIds = {
     github: ['onflow'],
     symbol: "FLOW",
     cmcId: "4558",
-    twitter: "https://flow.com/",
-    url: "flow_blockchain",
+    twitter: "flow_blockchain",
+    url: "https://flow.com/",
   },
   "Kujira": {
     geckoId: "kujira",
@@ -1882,7 +1882,7 @@ export const chainCoingeckoIds = {
     cmcId: "23669",
     categories: ["EVM"],
   },
-  "Europa": {
+  "SKALE Europa": {
     geckoId: null,
     github: ['patractlabs'],
     symbol: null,
@@ -1925,10 +1925,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
   },
   "zkSync Era": {
-    geckoId: null,
+    geckoId: "zksync",
     github: ['matter-labs'],
-    symbol: null,
-    cmcId: null,
+    symbol: "ZK",
+    cmcId: "24091",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
@@ -2981,8 +2981,8 @@ export const chainCoingeckoIds = {
     chainId: 7560,
   },
   "BounceBit": {
-    geckoId: "BB",
-    symbol: "bouncebit",
+    geckoId: "bouncebit",
+    symbol: "BB",
     cmcId: "30746",
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "bounce_bit",
@@ -3086,7 +3086,49 @@ export const chainCoingeckoIds = {
     url: "https://ham.fun",
     chainId: 5112,
   },
-
+  "Sanko": {
+    geckoId: "dream-machine-token",
+    symbol: "DMT",
+    cmcId: "25653",
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "SankoGameCorp",
+    url: "https://sanko.xyz/",
+    chainId: 1996,
+  },
+  "Rari": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "RariChain",
+    url: "https://rarichain.org/",
+    chainId: 1380012617,
+  },
+  "Massa": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "massalabs",
+    url: "https://massa.net",
+  },
+  "AILayer": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "AILayerXYZ",
+    url: "https://anvm.io/",
+    chainId: 2649
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3105,6 +3147,7 @@ chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
 chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
+chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3486,7 +3529,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "goerli":
       return "Goerli"
     case "europa":
-      return "Europa"
+      return "SKALE Europa"
     case "core":
       return "CORE"
     case "rpg":
@@ -3745,6 +3788,14 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "IOTA EVM"
     case "ham":
       return "Ham"
+    case "sanko":
+      return "Sanko"
+    case "rari":
+      return "Rari"
+    case "massa":
+      return "Massa"
+    case "ailayer":
+      return "AILayer"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

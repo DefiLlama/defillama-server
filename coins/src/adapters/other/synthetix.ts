@@ -4,8 +4,16 @@ import axios from "axios";
 import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
 import { multiCall } from "@defillama/sdk/build/abi";
+import {
+  readFromPGCache,
+  writeToPGCache,
+} from "../../../../defi/src/api2/cache/file-cache";
 import dayjs from "dayjs";
+import { getCurrentUnixTimestamp } from "../../utils/date";
+
 const abi = require("./abi.json");
+const now = getCurrentUnixTimestamp();
+const margin = 12 * 3600; // 12hrs
 
 async function getForexRates(
   uniqueTickers: string[],
@@ -19,11 +27,22 @@ async function getForexRates(
     .reduce((p: string, c: string) => `${p},${c}`, "")
     .substring(1);
 
-  const rates = (
-    await axios.get(
-      `http://data.fixer.io/api/${date}?access_key=${process.env.FIXER_IO_KEY}&symbols=${symbols}`,
-    )
-  ).data.rates;
+  const cachedRates = await readFromPGCache("coins-forexRates");
+  let rates: any;
+  if (
+    cachedRates &&
+    "timestamp" in cachedRates &&
+    now - cachedRates.timestamp < margin
+  ) {
+    rates = cachedRates.data;
+  } else {
+    rates = (
+      await axios.get(
+        `http://data.fixer.io/api/${date}?access_key=${process.env.FIXER_IO_KEY}&symbols=${symbols}`,
+      )
+    ).data.rates;
+    await writeToPGCache("coins-forexRates", { data: rates, timestamp: now });
+  }
 
   const forexPrices: { [string: string]: number } = {};
   Object.keys(rates).map(

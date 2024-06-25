@@ -6,8 +6,8 @@ import { initializeTVLCacheDB, TABLES } from "./api2/db/index";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
 import { PromisePool } from "@supercharge/promise-pool";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 import { treasuriesAndEntities } from "./protocols/entities";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const maxRetries = 4;
 const millisecondsBeforeLambdaEnd = 30e3; // 30s

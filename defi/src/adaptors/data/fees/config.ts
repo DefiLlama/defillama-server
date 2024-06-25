@@ -1445,6 +1445,7 @@ export default {
         "id": "3657"
     },
     "shimmersea": {
+        parentId: "MagicSea",
         "enabled": true,
         "id": "3571"
     },
@@ -2208,9 +2209,36 @@ export default {
         enabled: true,
         id: "4705"
     },
-    "maverick-v2": {
-        parentId: "Maverick Protocol",
+    "clusters": {
         enabled: true,
-        id: "4752"
+        id: "4777"
+    },
+    "magpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "2271"
+    },
+    "time-fun": {
+        enabled: true,
+        id: "4786"
+    },
+    "cakepie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "4007"
+    },
+    "milkyway": {
+        enabled: true,
+        id: "3953"
+    },
+    "penpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "3083"
+    },
+    "radpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "3555"
     }
 } as AdaptorsConfig

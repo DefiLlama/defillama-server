@@ -60,7 +60,7 @@ const esQuery = {
 export const handler = async () => {
   try {
     console.info("Starting notifyAdapterStatus2 ...")
-    const esClient = await sdk.elastic.getClient()
+    const esClient = sdk.elastic.getClient()
     const data = await esClient!.search({
       index: 'debug-runtime-logs-*',
       body: esQuery

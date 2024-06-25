@@ -6,9 +6,9 @@ import {
 import { filterWritesWithLowConfidence } from "../adapters/utils/database";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
-import setEnvSecrets from "../../../defi/src/utils/shared/setEnvSecrets";
 import adapters from "../adapters/index";
 import { PromisePool } from "@supercharge/promise-pool";
+import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
 function shuffleArray(array: number[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -22,6 +22,8 @@ const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 1740000; //29mins
 
 async function storeDefiCoins() {
   await setEnvSecrets();
+  // process.env.tableName = "prod-coins-table";
+  // process.env.DEFILLAMA_SDK_MUTED = 'false'
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
     Array(adaptersArray.length).keys(),
@@ -33,10 +35,11 @@ async function storeDefiCoins() {
     .for(protocolIndexes)
     .process(async (i) => {
       const adapterKey = a[i][0];
-      const timeKey = `                                                                                  --- Runtime ${adapterKey} `
-      console.time(timeKey)
+      const b: any = a[i][1];
+      const timeKey = `                                                                                  --- Runtime ${adapterKey} `;
+      console.time(timeKey);
       try {
-        const adapterFn = typeof a[i][1] === 'function' ? a[i][1] : a[i][1][adapterKey];
+        const adapterFn = typeof b === "function" ? b : b[adapterKey];
         const results = await withTimeout(timeout, adapterFn(timestamp));
         const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat().filter((c: any) => c.symbol != null || c.SK != 0),
@@ -55,10 +58,10 @@ async function storeDefiCoins() {
       } catch (e) {
         console.error(`ERROR: ${adapterKey} adapter failed ${e}`);
         if ((e as any).stack) {
-          const lines = (e as any).stack.split('\n');
-          const firstThreeLines = lines.slice(0, 3).join('\n');
+          const lines = (e as any).stack.split("\n");
+          const firstThreeLines = lines.slice(0, 3).join("\n");
           console.error(firstThreeLines);
-      }
+        }
         // console.error(`${adapterKey} adapter failed ${process.env.LLAMA_RUN_LOCAL ? "" : `:${e}`}`);
         // if (!process.env.LLAMA_RUN_LOCAL)
         //   await sendMessage(
@@ -67,7 +70,7 @@ async function storeDefiCoins() {
         //     true,
         //   );
       }
-      console.timeEnd(timeKey)
+      console.timeEnd(timeKey);
     });
   console.log("All done");
   process.exit();

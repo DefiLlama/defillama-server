@@ -48,8 +48,8 @@ export default {
     },
     "smbswap": {
         "enabled": true,
-        parentId: "SMBSwap",
-        id: "1632",
+        parentId: "1632",
+        id: "smbswap",
         protocolsData: {
             v2: {
                 enabled: true,
@@ -183,5 +183,40 @@ export default {
     "capybara-exchange": {
         enabled: true,
         id: "4747",
+    },
+    "vanillaswap-v2": {
+        parentId: "VanillaSwap",
+        enabled: true,
+        id: "4600",
+    },
+    "vanillaswap-v3": {
+        parentId: "VanillaSwap",
+        enabled: true,
+        id: "4601",
+    },
+    "maverick-v2": {
+        parentId: "Maverick Protocol",
+        enabled: true,
+        id: "4752"
+    },
+    "thruster-v3": {
+        parentId: "Thruster",
+        enabled: true,
+        id: "4199",
+    },
+    "thruster-v2": {
+        parentId: "Thruster",
+        enabled: true,
+        id: "4207",
+    },
+    "balanced": {
+        parentId: "BalancedDAO",
+        enabled: true,
+        id: "448",
+    },
+    "voltage-v3": {
+        parentId: "Voltage",
+        enabled: true,
+        id: "4188",
     }
 } as AdaptorsConfig

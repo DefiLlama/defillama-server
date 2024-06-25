@@ -793,6 +793,7 @@ functions:
   chainAssets:
     handler: src/getChainAssets.default
     timeout: 30
+    memorySize: 1000
     events:
       - http:
           path: chain-assets/chains
@@ -800,6 +801,7 @@ functions:
   chainAssetsChart: 
     handler: src/getChainAssetsChart.default
     timeout: 30
+    memorySize: 1000
     events:
       - http:
           path: chain-assets/chart/{chain}
@@ -807,6 +809,7 @@ functions:
   chainAssetFlows: 
     handler: src/getChainAssetFlows.default
     timeout: 30
+    memorySize: 1000
     events:
       - http:
           path: chain-assets/flows/{period}
@@ -814,6 +817,7 @@ functions:
   chainAssetHistoricalFlows: 
     handler: src/getChainAssetHistoricalFlows.default
     timeout: 30
+    memorySize: 1000
     events:
       - http:
           path: chain-assets/historical-flows/{chain}/{period}

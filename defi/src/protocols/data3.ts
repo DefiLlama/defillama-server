@@ -47150,6 +47150,31 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/MintSwapFinance/mintswap-v3-core/tree/main/audits/abdk"],
     listedAt: 1719322717
   },
+  {
+    id: "4812",
+    name: "Threshold thUSD",
+    address: "0xcdf7028ceab81fa0c6971208e83fa7872994bee5",
+    symbol: "T",
+    assetToken: "thUSD",
+    url: "https://app.thresholdusd.org",
+    description:
+      "Real money, ₿acked by Bitcoin & ETH",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/threshold-thusd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "thUSD/index.js",
+    twitter: "ThresholdUSD",
+    forkedFrom: ["Liquity"],
+    oracles: [],
+    parentProtocol: "parent#threshold-network",
+    tokensExcludedFromParent: ["thUSD"],
+    listedAt: 1719351634
+  },
 ]
 
 export default data3

@@ -26132,8 +26132,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/tbtc.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "threshold-network-token",
-    cmcId: "17751",
+    gecko_id: null,
+    cmcId: null,
     category: "Bridge",
     chains: ["Ethereum"],
     module: "tbtc/index.js",
@@ -26141,6 +26141,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://threshold.network/about/#audits"],
+    parentProtocol: "parent#threshold-network",
     listedAt: 1676411129
   },
   {

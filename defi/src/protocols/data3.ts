@@ -41484,7 +41484,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "tlx",
     cmcId: null,
-    category: "Synthetics",
+    category: "Derivatives",
     chains: ["Optimism"],
     oracles: ["Pyth"], // https://docs.tlx.fi/basics/how-leveraged-tokens-work/synthetix-perps-engine
     forkedFrom: [],

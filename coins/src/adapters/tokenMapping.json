@@ -1425,6 +1425,11 @@
     }
   },
   "neon_evm": {
+    "0x202c35e517fa803b537565c40f0a6965d7204609": {
+      "decimals": "18",
+      "symbol": "WNEON",
+      "to": "coingecko#neon"
+    },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "NEON",

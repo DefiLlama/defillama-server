@@ -2837,15 +2837,5 @@ export default {
     "aktionariat": {
         enabled: true,
         id: "2782"
-    },
-    "dusa": {
-        enabled: true,
-        id: "4788",
-        cleanRecordsConfig: {
-            genuineSpikes: {
-                "1718841600": true,
-                "1718755200": true,
-            }
-        }
     }
 } as AdaptorsConfig

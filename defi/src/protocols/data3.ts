@@ -47128,14 +47128,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4811",
-    name: "MintSwap V3",
+    name: "MintSwap Finance",
     address: null,
     symbol: "-",
-    url: "https://governance.chilizchain.com",
+    url: "https://www.mintswap.finance/",
     description:
       "MintSwap is the DEX & NFT marketplace on Mint Blockchain, providing token DEX, NFT trading, and NFTFi functions for Web3 users.",
     chain: "Mint",
-    logo: `${baseIconsUrl}/mintswap-v3.jpg`,
+    logo: `${baseIconsUrl}/mintswap-finance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

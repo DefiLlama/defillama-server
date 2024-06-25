@@ -194,7 +194,6 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "1727",
     chains: [],
     twitter: "Bancor",
-    treasury: "bancor.js",
     governanceID: ["snapshot:bancornetwork.eth"],
     github: ["bancorprotocol"],
   },

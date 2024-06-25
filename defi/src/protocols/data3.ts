@@ -38480,7 +38480,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4421",
-    name: "AILayer", // rebrand from AINN Layer2
+    name: "AILayer farm", // rebrand from AINN Layer2
     address: null,
     symbol: "-",
     url: "https://ailayer.xyz/",

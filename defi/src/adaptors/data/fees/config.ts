@@ -2248,5 +2248,9 @@ export default {
     "tlx-finance": {
         enabled: true,
         id: "4555"
+    },
+    "moonshot": {
+        enabled: true,
+        id: "4813"
     }
 } as AdaptorsConfig

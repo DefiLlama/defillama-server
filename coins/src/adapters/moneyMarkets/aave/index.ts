@@ -160,9 +160,9 @@ export function uwulend(timestamp: number = 0) {
 
 export const adapters = {
   aave,
-  // geist,
-  // radiant,
-  // uwulend,
-  // //klap,
-  // //valas,
+  geist,
+  radiant,
+  uwulend,
+  //klap,
+  //valas,
 };

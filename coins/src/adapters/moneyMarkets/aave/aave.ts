@@ -113,8 +113,6 @@ export default async function getTokenPrices(
 
   if (stataRegistry) {
     const stata = await getStataAssetPrices(chain, stataRegistry, block);
-    const a = stata.map((r) => r.address);
-    const b = stata.map((r) => r.underlying);
     const [info, redirectData] = await Promise.all([
       getTokenInfo(
         chain,

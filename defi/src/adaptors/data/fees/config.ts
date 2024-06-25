@@ -2240,5 +2240,9 @@ export default {
         parentId: "Magpie Ecosystem",
         enabled: true,
         id: "3555"
+    },
+    "sideshift": {
+        enabled: true,
+        id: "1895"
     }
 } as AdaptorsConfig

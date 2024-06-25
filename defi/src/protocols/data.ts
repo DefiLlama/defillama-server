@@ -10630,7 +10630,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "FOX",
     url: "https://shapeshift.com",
     description:
-      "ShapeShift is the only cryptocurrency trading platform offering zero-commission crypto trading and self-custody.",
+      "ShapeShift is the CEXiest DEX. Open Source, Non-Custodial, Decentralized. Buy, trade, earn, borrow and more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/shapeshift.jpg`,
     audits: "0",
@@ -13203,7 +13203,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "714",
     name: "Voltage AMM",
-    address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
+    address: "fuse:0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
     symbol: "VOLT",
     url: "https://app.voltage.finance/",
     description:

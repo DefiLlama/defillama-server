@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
 import { getR2, storeR2JSONString } from "./utils/r2";
 import { sendMessage } from "./utils/discord";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 type ProtocolData = {
   token: string;
@@ -40,12 +39,14 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
       if ((res.documentedData?.data ?? res.data) == null) return;
 
       const data: { [date: number]: number } = {};
+      let previous: number = 0;
       try {
         (res.documentedData?.data ?? res.data).forEach(
           (item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
             if (item.data == null) return;
-            item.data.forEach((value) => {
-              data[value.timestamp] = (data[value.timestamp] || 0) + value.unlocked;
+            item.data.forEach((value, i) => {
+              previous = Math.max(i > 0 ? item.data[i - 1].unlocked : 0, previous);
+              data[value.timestamp] = (data[value.timestamp] || 0) + Math.max(value.unlocked, previous);
             });
           }
         );
@@ -77,7 +78,20 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         };
       }
       const nextUnlockIndex = formattedData.findIndex(([date]) => Number(date) > now);
-      const circSupply = nextUnlockIndex != -1 ? formattedData[nextUnlockIndex - 1]?.[1] ?? [] : maxSupply;
+
+      function getCircSupply(): number {
+        if (nextUnlockIndex == -1) return maxSupply;
+        let circSupply: number = 0;
+        (res.documentedData?.data ?? res.data).forEach(
+          (item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
+            if (item.data == null) return;
+            circSupply += item.data[nextUnlockIndex].unlocked;
+          }
+        );
+        return circSupply;
+      }
+
+      const circSupply = getCircSupply();
       const unlocksPerDay = formattedData[nextUnlockIndex]?.[1] - formattedData[nextUnlockIndex - 1]?.[1];
 
       protocolsData.push({
@@ -141,12 +155,12 @@ const fetchProtocolEmissionData = async (protocol: ProtocolData) => {
 };
 export default async function handler(): Promise<void> {
   try {
-    await setEnvSecrets();
     const allProtocols = (await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!))) as string[];
     const data: ProtocolData[] = await fetchProtocolData(allProtocols);
     await fetchCoinsApiData(data);
     await Promise.all(data.map((d: ProtocolData) => fetchProtocolEmissionData(d)));
     await storeR2JSONString("emissionsIndex", JSON.stringify({ data: data.sort((a, b) => b.mcap - a.mcap) }));
+    console.log("done");
   } catch (e) {
     await sendMessage(`Store index error: ${e}`, process.env.UNLOCKS_WEBHOOK!);
   }

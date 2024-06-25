@@ -18,7 +18,6 @@ export default {
   unknownTokensV3: require("./other/unknownTokensV3"),
   dinari: require("./rwa/dinari"),
   few: require("./other/few"),
-  nstSTRK: require("./other/nstSTRK"),
   ociswap: require("./markets/ociswap"),
   optimBonds: require("./other/optimBonds"),
   tangleswap: require("./markets/tangleswap"),
@@ -85,4 +84,5 @@ export default {
   bitcow: require("./markets/bitcow"),
   pythAgg: require("./oracles/pythAggregatorV3"),
   warlord: require("./other"),
+  ifil: require("./liquidStaking/ifil"),
 };

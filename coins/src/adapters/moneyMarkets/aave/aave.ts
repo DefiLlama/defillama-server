@@ -113,8 +113,6 @@ export default async function getTokenPrices(
 
   if (stataRegistry) {
     const stata = await getStataAssetPrices(chain, stataRegistry, block);
-    const a = stata.map((r) => r.address);
-    const b = stata.map((r) => r.underlying);
     const [info, redirectData] = await Promise.all([
       getTokenInfo(
         chain,
@@ -128,21 +126,25 @@ export default async function getTokenPrices(
       ),
     ]);
 
-    // stata.map((cfg, ix) => {
-    //   const price = (redirectData[ix].price * cfg.rate) / 1e27;
-    //   addToDBWritesList(
-    //     writes,
-    //     chain,
-    //     cfg.address,
-    //     price,
-    //     info.decimals[ix].output,
-    //     info.symbols[ix].output,
-    //     timestamp,
-    //     "aave",
-    //     1,
-    //     undefined,
-    //   );
-    // });
+    stata.map((cfg, ix) => {
+      const underlying = redirectData.find(
+        (v: CoinData) => v.address == cfg.underlying,
+      );
+      if (!underlying) return;
+      const price = (underlying.price * cfg.rate) / 1e27;
+      addToDBWritesList(
+        writes,
+        chain,
+        cfg.address,
+        price,
+        info.decimals[ix].output,
+        info.symbols[ix].output,
+        timestamp,
+        "aave",
+        1,
+        undefined,
+      );
+    });
   }
 
   await listUnknownTokens(chain, unknownTokens, block);

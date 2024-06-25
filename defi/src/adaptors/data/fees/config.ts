@@ -2213,4 +2213,36 @@ export default {
         enabled: true,
         id: "4777"
     },
+    "magpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "2271"
+    },
+    "time-fun": {
+        enabled: true,
+        id: "4786"
+    },
+    "cakepie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "4007"
+    },
+    "milkyway": {
+        enabled: true,
+        id: "3953"
+    },
+    "penpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "3083"
+    },
+    "radpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "3555"
+    },
+    "sideshift": {
+        enabled: true,
+        id: "1895"
+    }
 } as AdaptorsConfig

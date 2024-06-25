@@ -2,9 +2,7 @@
 
 ## Setup
 
-```bash
-aws configure
-```
+Make sure to have the env variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` set.
 
 ## Development
 

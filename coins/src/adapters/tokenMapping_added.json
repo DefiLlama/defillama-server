@@ -4897,16 +4897,16 @@
       "to": "coingecko#wrapped-steth"
     },
     "0x04619e9ce4109590219c5263787050726be63382148538f3f936c22aa87d2fc2": {
-      "name": "Nostra Staked STRKr",
+      "name": "Nostra Staked STRK",
       "decimals": "18",
       "symbol": "nstSTRK",
-      "to": "coingecko#starknet"
+      "to": "coingecko#staked-strk"
     },
     "0x4619e9ce4109590219c5263787050726be63382148538f3f936c22aa87d2fc2": {
-      "name": "Nostra Staked STRKr",
+      "name": "Nostra Staked STRK",
       "decimals": "18",
       "symbol": "nstSTRK",
-      "to": "coingecko#starknet"
+      "to": "coingecko#staked-strk"
     }
   },
   "ontology_evm": {
@@ -8775,6 +8775,16 @@
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    },
+    "0xe30fedd158a2e3b13e9badaeabafc5516e95e8c7": {
+      "decimals": "18",
+      "symbol": "wSEI",
+      "to": "coingecko#sei-network"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "SEI",
+      "to": "coingecko#sei-network"
     }
   },
   "archway": {
@@ -9040,6 +9050,11 @@
       "decimals": "18",
       "symbol": "BTC.BTC",
       "to": "coingecko#bitcoin"
+    },
+    "0x1e4bF3CaBD7707089138dD5a545B077413FA83Fc": {
+      "decimals": "18",
+      "symbol": "PUFETH",
+      "to": "coingecko#pufeth"
     }
   },
   "fraxtal": {
@@ -9126,6 +9141,13 @@
       "decimals": "18",
       "symbol": "BTC",
       "to": "coingecko#bitcoin"
+    }
+  },
+  "iotaevm": {
+    "0x6e47f8d48a01b44DF3fFF35d258A10A3AEdC114c": {
+      "decimals": "18",
+      "symbol": "IOTA",
+      "to": "coingecko#iota"
     }
   }
 }

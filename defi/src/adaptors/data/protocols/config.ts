@@ -198,5 +198,25 @@ export default {
         parentId: "Maverick Protocol",
         enabled: true,
         id: "4752"
+    },
+    "thruster-v3": {
+        parentId: "Thruster",
+        enabled: true,
+        id: "4199",
+    },
+    "thruster-v2": {
+        parentId: "Thruster",
+        enabled: true,
+        id: "4207",
+    },
+    "balanced": {
+        parentId: "BalancedDAO",
+        enabled: true,
+        id: "448",
+    },
+    "voltage-v3": {
+        parentId: "Voltage",
+        enabled: true,
+        id: "4188",
     }
 } as AdaptorsConfig

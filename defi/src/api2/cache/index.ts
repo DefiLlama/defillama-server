@@ -13,6 +13,7 @@ import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { getProtocolAllTvlData } from "../utils/cachedFunctions";
 import { loadDimensionsCache } from "../utils/dimensionsUtils";
+import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 
 export const cache: {
   metadata: {
@@ -38,6 +39,7 @@ export const cache: {
   allTvlData: any,
   historicalTvlForAllProtocolsMeta: any,
   feesAdapterCache: any,
+  twitterOverview: any,
 } = {
   metadata: {
     protocols: [],
@@ -62,6 +64,7 @@ export const cache: {
   allTvlData: {},
   historicalTvlForAllProtocolsMeta: {},
   feesAdapterCache: {},
+  twitterOverview: {},
 }
 
 const MINUTES = 60 * 1000
@@ -95,6 +98,8 @@ export async function initCache({ cacheType = 'cron' } = { cacheType: 'none' }) 
       updateAllTvlData(cacheType),
     ])
   }
+
+  cache.twitterOverview = await getTwitterOverviewFileV2()
 
   console.timeEnd('Cache initialized: ' + cacheType)
 }

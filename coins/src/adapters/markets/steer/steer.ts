@@ -10,16 +10,18 @@ import { request } from "graphql-request";
 export const supportedChains = [
   {
     name: "Polygon",
-    subgraphEndpoint:
-      sdk.graph.modifyEndpoint('uQxLz6EarmJcr2ymRRmTnrRPi8cCqas4XcPQb71HBvw'),
+    subgraphEndpoint: sdk.graph.modifyEndpoint(
+      "uQxLz6EarmJcr2ymRRmTnrRPi8cCqas4XcPQb71HBvw",
+    ),
     chainId: 137,
     merkl: true,
     identifier: "polygon",
   },
   {
     name: "Arbitrum",
-    subgraphEndpoint:
-      sdk.graph.modifyEndpoint('HVC4Br5yprs3iK6wF8YVJXy4QZWBNXTCFp8LPe3UpcD4'),
+    subgraphEndpoint: sdk.graph.modifyEndpoint(
+      "HVC4Br5yprs3iK6wF8YVJXy4QZWBNXTCFp8LPe3UpcD4",
+    ),
     chainId: 42161,
     merkl: true,
     identifier: "arbitrum",
@@ -113,9 +115,13 @@ export const supportedChains = [
 export default async function getTokenPrices(chain: any, timestamp: number) {
   const api = await getApi(chain.identifier, timestamp);
 
-  const query = `{vaults(first: 1000, where: {totalLPTokensIssued_not: "0", lastSnapshot_not: "0"}) {id}}`;
-  const data: any = await request(chain.subgraphEndpoint, query);
+  const query = `{vaults(
+  first: 1000, 
+  where: {totalLPTokensIssued_not: "0", lastSnapshot_not: "0", createdAt_lt: ${
+    timestamp * 1000
+  }}) {id}}`;
 
+  const data: any = await request(chain.subgraphEndpoint, query);
   const vaults = data.vaults.map((vault: any) => vault.id);
 
   const writes: Write[] = [];

@@ -194,7 +194,9 @@ const chainsByOracle = {
     "Polkadot",
     "Beam",
     "Milkomeda C1",
-    "Dogechain"],
+    "Dogechain",
+    "Sei"
+  ],
   "UMA": ["Ethereum", "Polygon", "Boba", "Optimism", "Arbitrum", "Gnosis", "Avalanche"],
   "API3": [
     "Arbitrum",
@@ -213,6 +215,7 @@ const chainsByOracle = {
     "Polygon",
     "Polygon zkEVM",
     "Rootstock",
+    "Sei"
   ],
   "Band": [
     "CLV",

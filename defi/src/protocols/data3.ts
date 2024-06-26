@@ -47196,6 +47196,50 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "4814",
+    name: "ElectroWizy",
+    address: null,
+    symbol: "-",
+    url: "https://www.electrowizy.com",
+    description:
+      "ElectroWizy introduces Real-World Assets to a broader audience of crypto investors through gamification and simplifying access to the RWA market.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/electrowizy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Polygon"],
+    module: "electrowizy/index.js",
+    twitter: "Electro_Wizy",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1719395965
+  },
+  {
+    id: "4815",
+    name: "WBROCK Staking",
+    address: null,
+    symbol: "-",
+    url: "https://www.bit-rock.io/",
+    description:
+      "Staking of WBROCK",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/wbrock-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum", "Bitrock"],
+    module: "wbrockstaking/index.js",
+    twitter: "BitRockChain",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1719396168
+  }, 
 ]
 
 export default data3

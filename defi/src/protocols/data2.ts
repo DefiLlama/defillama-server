@@ -18484,7 +18484,7 @@ const data2: Protocol[] = [
     module: "prdt/index.js",
     twitter: "PRDT_Finance",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://prdt-finance.gitbook.io/prdt-finance-gitbook
     audit_links: ["https://www.certik.com/projects/prdt-finance"],
     listedAt: 1666274834
   },

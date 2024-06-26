@@ -43546,7 +43546,7 @@ const data3: Protocol[] = [
     chains: ["zkLink Nova"],
     module: "allspark/index.js", 
     forkedFrom: [],
-    oracles: [], 
+    oracles: [],
     twitter: "AllsparkFinance",
     listedAt: 1716342699
   },
@@ -45306,11 +45306,11 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum","Polygon","Mantle","Fuse","Binance","Optimism","Linea"],
+    chains: ["Arbitrum","Polygon","Mantle","Fantom","Fuse","Binance","Optimism","Linea"],
     module: "lynx/index.js",
     twitter: "Lynx_Protocol",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],// https://lynx-finance.gitbook.io/lynx-finance/for-users/traders#pricing / https://github.com/DefiLlama/defillama-server/pull/7359
     listedAt: 1717630515
   },
   {
@@ -46599,7 +46599,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Taiko"],
-    oracles: [], 
+    oracles: ["Pyth"], // https://docs.jax.finance/risk-management/mitigation-measures 
     module: "jax-protocol/index.js",
     twitter: "Jax_Finance",
     audit_links: [],

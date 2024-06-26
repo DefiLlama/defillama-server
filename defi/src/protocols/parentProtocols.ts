@@ -2307,7 +2307,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "dexshare",
     cmcId: "20282",
     chains: [],
-    treasury: "dex.js",
+    treasury: "dexfinance.js",
     github: ["dexIRA"],
     twitter: "DexFinance",
   },

@@ -43536,14 +43536,14 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://allspark.finance/",
     description: "Allspark is an omnichain liquidity protocol with native yields for derivatives dex.",
-    chain: "Blast",
+    chain: "zkLink Nova",
     logo: `${baseIconsUrl}/allspark.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Blast"],
+    chains: ["zkLink Nova"],
     module: "allspark/index.js", 
     forkedFrom: [],
     oracles: ["Pyth"], // https://guide.allspark.finance/omniyield-perpetual-dex/margin-system/oracles 
@@ -45299,7 +45299,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://app.lynx.finance/",
     description: "Perpetuals DEX offering high-leverage trading using any token as collateral. Supporting gasless trading from any blockchain",
-    chain: "Fantom",
+    chain: "Arbitrum",
     logo: `${baseIconsUrl}/lynx.png`,
     audits: "0",
     audit_note: null,
@@ -45310,7 +45310,9 @@ const data3: Protocol[] = [
     module: "lynx/index.js",
     twitter: "Lynx_Protocol",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://lynx-finance.gitbook.io/lynx-finance/for-users/traders#pricing
+    oraclesByChain: {
+      fantom: ["Pyth"], // https://lynx-finance.gitbook.io/lynx-finance/for-users/traders#pricing
+    },
     listedAt: 1717630515
   },
   {

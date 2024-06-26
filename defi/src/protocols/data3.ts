@@ -47240,6 +47240,50 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1719396168
   }, 
+  {
+    id: "4816",
+    name: "WoodSwap",
+    address: null,
+    symbol: "-",
+    url: "https://woodswap.org",
+    description:
+      "A fast, secure, and seamless DEX rooted in Rootstock BTC L2",
+    chain: "RSK",
+    logo: `${baseIconsUrl}/woodswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["RSK"],
+    module: "woodswap/index.js",
+    twitter: "woodswap_org",
+    forkedFrom: ["iZiSwap"],
+    oracles: [],
+    listedAt: 1719401505
+  }, 
+  {
+    id: "4817",
+    name: "Perpie",
+    address: null,
+    symbol: "-",
+    url: "https://www.perpie.io",
+    description:
+      "Perpie is a Telegram-based bot that allows you to trade on Perpetual DEXs",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/perpie.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Arbitrum"],
+    module: "dummy.js",
+    twitter: "perpieio",
+    forkedFrom: [],
+    oracles: [],
+  },
+
 ]
 
 export default data3

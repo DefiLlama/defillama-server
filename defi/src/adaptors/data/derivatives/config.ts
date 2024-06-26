@@ -798,5 +798,9 @@ export default {
     "rollie-finance": {
         enabled: true,
         id: "4636",
-    }
+    },
+    "tlx-finance": {
+        enabled: true,
+        id: "4555"
+    },
 } as AdaptorsConfig

@@ -1,20 +1,39 @@
 import adapters from "../adapters/index";
-import { batchWrite } from "../utils/shared/dynamodb";
+import {
+  batchGet,
+  batchWrite,
+  DELETE,
+  getHistoricalValues,
+} from "../utils/shared/dynamodb";
 import { filterWritesWithLowConfidence } from "../adapters/utils/database";
 import { withTimeout } from "../utils/shared/withTimeout";
 import setEnvSecrets from "../utils/shared/setEnvSecrets";
 import PromisePool from "@supercharge/promise-pool";
+import { getCurrentUnixTimestamp } from "../utils/date";
 
 // CHOOSE YOUR TIMESTAMPS AND PROTOCOLS HERE
 const batchStep = 2000; // USUALLY NO NEED TO CHANGE
-// const start = 1718301600;
-const start = Math.floor(+new Date("2022-12-12") / 1e3);
-const timeStep = 43200; // 12 HOURS
-// const end = 1718561086;
-const end = Math.floor(+new Date() / 1e3);
-const fillRecentFirst = true;
+const start = 1719241398;
+// const start = Math.floor(+new Date("2022-12-12") / 1e3);
+const timeStep = 60 * 60; // 1 HOUR
+const end = getCurrentUnixTimestamp();
+// const end = Math.floor(+new Date() / 1e3);
+const fillRecentFirst = false;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 1740000; //29mins
-const adaptersTorefill: string[] = ["uniswap"]; // FROM adapters list at ./adapters/index.ts
+const adaptersTorefill: string[] = [
+  "curve",
+  "curve1",
+  "curve2",
+  "curve3",
+  "curve4",
+  "curve5",
+  "curve7",
+  "curve9",
+  "curve12",
+  "curve13",
+  "aave",
+  "pendle",
+]; // FROM adapters list at ./adapters/index.ts
 
 function createTimestampArray() {
   const timestampArray = [];
@@ -37,6 +56,19 @@ async function handler(adapterTorefill: string, timestamp: number) {
     const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
       results.flat(),
     );
+
+    // USE THIS IF INCORRECT DATA HAS BEEN WRITTEN
+    // END TIMESTAMP MUST BE NOW
+    // for (let i = 0; i < resultsWithoutDuplicates.length; i += batchStep) {
+    //   let current = await Promise.all(
+    //     resultsWithoutDuplicates
+    //       .slice(i, i + batchStep)
+    //       .map((t) => getHistoricalValues(t.PK, start)),
+    //   );
+
+    //   await DELETE(current.flat());
+    // }
+
     for (let i = 0; i < resultsWithoutDuplicates.length; i += batchStep) {
       await batchWrite(resultsWithoutDuplicates.slice(i, i + batchStep), true);
     }

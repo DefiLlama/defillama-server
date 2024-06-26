@@ -47284,7 +47284,30 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
-
+  {
+    id: "4818",
+    name: "BitU Protocol",
+    address: null,
+    symbol: "-",
+    assetToken: "Bitu",
+    url: "https://www.bitu.io",
+    description:
+      "BitU Protocol offers a USD-pegged stablecoin primitive that provides stability and embedded yield. Through our Active Liquidity Management Module, we leverage on-chain transparency and off-chain capital efficiency to deliver resilient yield to support accessible ecosystem growth.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/bitu-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Binance"],
+    module: "bitu/index.js",
+    twitter: "BitU_Protocol",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://docs.bitu.io/bitu/resources/audits"],
+    listedAt: 1719415493
+  }, 
 ]
 
 export default data3

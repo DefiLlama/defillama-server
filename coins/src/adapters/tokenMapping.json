@@ -2277,6 +2277,11 @@
     }
   },
   "blast": {
+    "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A": {
+      "decimals": "18",
+      "symbol": "weETH",
+      "to": "coingecko#wrapped-eeth"
+    },
     "0x1Da40C742F32bBEe81694051c0eE07485fC630f6": {
       "decimals": "18",
       "symbol": "DETH",

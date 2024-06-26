@@ -60,7 +60,13 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
         console.error(`${protocol} failed with 0 length data section`);
         return;
       }
-      const maxSupply = res.metadata.total ?? formattedData[formattedData.length - 1][1];
+
+      const maxSupply =
+        res.metadata.total ??
+        (res.documentedData?.data ?? res.data).reduce(
+          (a: number, b: any) => (a += b.data[b.data.length - 1].unlocked),
+          0
+        );
       const rawNextEvent = res.metadata.events?.find((e: any) => e.timestamp > now);
 
       let nextEvent;

@@ -46871,7 +46871,7 @@ const data3: Protocol[] = [
     module: "term-structure/index.js",
     twitter: "TermStructLabs",
     forkedFrom: [],
-    oracles: ["Chainlink"], // https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation
+    oracles: ["Chainlink", "RedStone"], // https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation
     audit_links: ["https://github.com/term-structure/audits"],
     github: ["term-structure"],
     listedAt: 1718906602

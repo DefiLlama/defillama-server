@@ -45310,9 +45310,7 @@ const data3: Protocol[] = [
     module: "lynx/index.js",
     twitter: "Lynx_Protocol",
     forkedFrom: [],
-    oraclesByChain: {
-      fantom: ["Pyth"], // https://lynx-finance.gitbook.io/lynx-finance/for-users/traders#pricing
-    },
+    oracles: ["Pyth"],// https://lynx-finance.gitbook.io/lynx-finance/for-users/traders#pricing / https://github.com/DefiLlama/defillama-server/pull/7359
     listedAt: 1717630515
   },
   {

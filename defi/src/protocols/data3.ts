@@ -43546,7 +43546,7 @@ const data3: Protocol[] = [
     chains: ["zkLink Nova"],
     module: "allspark/index.js", 
     forkedFrom: [],
-    oracles: ["Pyth"], // https://guide.allspark.finance/omniyield-perpetual-dex/margin-system/oracles 
+    oracles: [],
     twitter: "AllsparkFinance",
     listedAt: 1716342699
   },

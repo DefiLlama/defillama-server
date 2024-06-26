@@ -47035,6 +47035,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://github.com/Credshields/audit-reports/blob/master/aUSD_SC_Final_Audit_Report.pdf"],
     github: ["stable-jack"],
+    stablecoins: ["stable-jack-ausd"],
     listedAt: 1719226532
   },
   {

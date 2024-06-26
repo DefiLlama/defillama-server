@@ -32,7 +32,17 @@ const config: any = {
       "function latestFillPrice(address assetToken, address paymentToken) view returns (tuple(uint256 price, uint64 blocktime))",
       quoteToken: "0x4300000000000000000000000000000000000003",
     },
-};
+    kinto: {
+      factory: "0xE4Daa69e99F48AD0C4D4843deF4447253248A906",
+      getTokensAbi:
+        "function getDShares() external view returns (address[] memory, address[] memory)",
+      processor: "0xa089dC07A4baFd941a4323a9078D2c24be8A747C",
+      latestPriceAbi:
+        "function latestFillPrice(address assetToken, address paymentToken) view returns (tuple(uint256 price, uint64 blocktime))",
+      quoteToken: "0x6F086dB0f6A621a915bC90295175065c9e5d9b8c",
+      usdplus: "0x6F086dB0f6A621a915bC90295175065c9e5d9b8c",
+    },
+  };
 
 async function getTokenPrices(chain: string, timestamp: number) {
   const api = await getApi(chain, timestamp);

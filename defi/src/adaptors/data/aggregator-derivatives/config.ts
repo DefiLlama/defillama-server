@@ -38,5 +38,9 @@ export default {
   "vooi": {
     "enabled": true,
     "id": "4655"
+  },
+  "perpie": {
+    "enabled": true,
+    "id": "4817"
   }
 } as AdaptorsConfig;

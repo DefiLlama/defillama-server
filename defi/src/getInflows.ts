@@ -7,10 +7,12 @@ import cgSymbols from "./utils/symbols/symbols.json";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { IProtocol } from "./types";
 import { normalizeCgIds } from "./utils/symbols/convert";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const geckoSymbols = cgSymbols as { [key: string]: string };
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  await setEnvSecrets()
   const protocolName = event.pathParameters?.protocol?.toLowerCase();
   const tokensToExclude = event.queryStringParameters?.tokensToExclude?.split(",") ?? [];
   const timestamp = Number(event.pathParameters?.timestamp);

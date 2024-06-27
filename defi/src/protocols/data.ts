@@ -7399,14 +7399,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "448",
-    name: "Balanced",
+    name: "Balanced Exchange", // previous Balanced
     address: "icon:cxf61cd5a45dc9f91c15aa65831a30a90d59a09619",
     symbol: "BALN",
-    url: "https://balanced.network",
+    url: "https://app.balanced.network/trade",
     description:
-      "Balanced is a decentralized finance platform designed for ease of use. Swap assets on the ICON blockchain, and get paid Balance Tokens (BALN) to borrow assets or supply liquidity. BALN holders have the power to vote on platform changes and earn network fees.",
+      "Balanced includes a decentralised cross-chain exchange. Use it to swap assets, supply liquidity, and transfer crypto between supported blockchains. Its unified approach to cross-chain assets removes the need for wrapped tokens and fragmented liquidity, so you can enjoy a simpler trading experience.",
     chain: "Icon",
-    logo: `${baseIconsUrl}/balanced.png`,
+    logo: `${baseIconsUrl}/balanced-exchange.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -7415,7 +7415,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective", "Arbitrum", "Base"],
     module: "balanced/index.js",
     twitter: "BalancedDAO",
-    audit_links: ["https://docs.balanced.network/security#smart-contract-audits"],
+    audit_links: ["https://docs.balanced.network/assets/files/balanced-audit-fyeo-2023-0079603b4be9e31d58cb5da7c1dd6823.pdf", "https://docs.balanced.network/assets/files/balanced-audit-slowmist-2021-b1aa5c5048546151a3c22fee5ab5c62c.pdf"],
     parentProtocol: "parent#balanceddao",
     oracles: ["Band"],
   },

@@ -41,6 +41,12 @@ export default {
   },
   "perpie": {
     "enabled": true,
-    "id": "4817"
+    "id": "4817",
+    protocolsData: {
+        "derivatives": {
+            "enabled": true,
+            "id": "4817"
+        }
+    }
   }
 } as AdaptorsConfig;

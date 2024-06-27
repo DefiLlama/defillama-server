@@ -5,6 +5,7 @@ import { cache } from "../cache";
 import { readFromPGCache, writeToPGCache } from "../db";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import parentProtocols from "../../protocols/parentProtocols";
+import { RUN_TYPE } from ".";
 
 const parentProtocolMap: any = {}
 parentProtocols.forEach(protocol => {
@@ -24,26 +25,46 @@ export function getFileCacheKeyV2() {
   return `dimensions-data-v2-v0.0`
 }
 
-let dimensionsCache: any
+let _cacheData: any
 
-export async function getDimensionsCacheV2() {
+// to ensure that we pull the cache data only once
+export async function getDimensionsCacheV2(cacheType: RUN_TYPE) {
+  if (!_cacheData) _cacheData = _getDimensionsCacheV2(cacheType)
+  return _cacheData
+}
+
+async function _getDimensionsCacheV2(cacheType = RUN_TYPE.API_SERVER) {
+  const timeKey = 'dimensions cache init'
+  if (_cacheData) return _cacheData
+
+  console.time(timeKey)
+
   const fileKey = getFileCacheKeyV2()
-  if (!dimensionsCache)
-    dimensionsCache = readFromPGCache(fileKey).then(data => data ?? {})
-  const data = await dimensionsCache
-  for (const adapterData of Object.values(data) as any) {
+  const adapterTypesMap = await readFromPGCache(fileKey).then(data => data ?? {})
+
+  // we create a map of protocol names to protocol data only for rest server
+  if (cacheType !== RUN_TYPE.API_SERVER) {
+    for (const adapterData of Object.values(adapterTypesMap) as any) {
+      adapterData.protocolNameMap = {}
+      adapterData.childProtocolNameMap = {}
+      adapterData.childProtocolVersionKeyMap = {}
+    }
+    console.timeEnd(timeKey)
+    return adapterTypesMap
+  }
+
+  for (const adapterData of Object.values(adapterTypesMap) as any) {
     const protocolNameMap: any = {}
     const childProtocolNameMap: any = {}
     const childProtocolVersionKeyMap: any = {}
+
+    // create a map of parent protocol names to protocol data
+    for (const protocolData of Object.values(adapterData.parentProtocols) as any) {
+      const sluggifiedName = sluggifyString(protocolData.info.name)
+      protocolNameMap[sluggifiedName] = protocolData
+    }
+
     for (const protocolData of Object.values(adapterData.protocols) as any) {
-      const parentId = protocolData?.info?.parentProtocol
-      if (parentId)  { // TODO: this is a hack, we should fix the config file instead to return only parent protocols else parent protocol will show only latest child data
-        if (!parentProtocolMap[parentId]) {
-          console.error(`Parent protocol not found for ${parentId}`, protocolData.info.name)
-          continue
-        }
-        protocolNameMap[sluggifyString(parentProtocolMap[parentId].name)] = protocolData
-      }
       if (protocolData?.info?.name)
         protocolNameMap[sluggifyString(protocolData?.info?.name)] = protocolData
       if (protocolData?.info?.displayName)
@@ -65,15 +86,35 @@ export async function getDimensionsCacheV2() {
     adapterData.childProtocolNameMap = childProtocolNameMap
     adapterData.childProtocolVersionKeyMap = childProtocolVersionKeyMap
   }
-  return dimensionsCache
+
+  // copy common data to all adapter types
+  const commonData = adapterTypesMap[AdapterType.PROTOCOLS]
+
+  for (const [adapterType, _data] of Object.entries(adapterTypesMap)) {
+    const data = _data as any
+    if (adapterType === AdapterType.PROTOCOLS) continue
+    data.protocolNameMap = { ...commonData.protocolNameMap, ...data.protocolNameMap }
+    data.childProtocolNameMap = { ...commonData.childProtocolNameMap, ...data.childProtocolNameMap }
+    data.childProtocolVersionKeyMap = { ...commonData.childProtocolVersionKeyMap, ...data.childProtocolVersionKeyMap }
+  }
+
+  console.timeEnd(timeKey)
+
+  return adapterTypesMap
 }
 
-export async function getAdapterTypeCache(adapterType: AdapterType) {
-  return (await getDimensionsCacheV2())[adapterType] ?? { summaries: {}, protocols: {} }
+export async function getAdapterTypeCache(adapterType: AdapterType, cacheType = RUN_TYPE.API_SERVER) {
+  return (await getDimensionsCacheV2(cacheType))[adapterType] ?? { summaries: {}, protocols: {} }
 }
 
 export async function storeDimensionsCacheV2(data: any) {
   const fileKey = getFileCacheKeyV2()
+  // remove redundant data. Theoretically this is not needed, since we only store data in cron script and it does not have these fields
+  for (const adapterData of Object.values(data) as any) {
+    delete adapterData.protocolNameMap
+    delete adapterData.childProtocolNameMap
+    delete adapterData.childProtocolVersionKeyMap
+  }
   return writeToPGCache(fileKey, data)
 }
 

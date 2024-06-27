@@ -133,8 +133,8 @@ async function getProtocolDataHandler(eventParameters: any) {
   }
 
   const { records, summaries, info } = protocolData
-  const summary = summaries[recordType]
-  if (!summary) throw new Error("Missing protocol summary")
+  const summary = summaries[recordType] ?? {}
+  // if (!summary) throw new Error("Missing protocol summary")
   const versionKeyNameMap: IJSON<string> = {}
 
   let responseInfo = info
@@ -218,6 +218,7 @@ export async function getDimensionProtocolHandler(req: HyperExpress.Request, res
     console.timeEnd('getProtocolDataHandler: ' + dataKey)
   }
   const data = await reqCache[dataKey]
+  // const data = await getProtocolDataHandler(eventParameters)
   if (data) return successResponse(res, data, 2 * 60);
 
   return errorResponse(res, `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`)

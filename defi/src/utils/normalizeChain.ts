@@ -3155,6 +3155,15 @@ export const chainCoingeckoIds = {
     url: "https://ox.fun/en",
     chainId: 6699
   },
+  "Etherlink": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "etherlink",
+    url: "https://www.etherlink.com",
+    chainId: 42793
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3826,6 +3835,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Mint"
     case "ox_chain":
       return "OXFUN"
+    case "etlk":
+      return "Etherlink"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

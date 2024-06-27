@@ -228,5 +228,10 @@ export default {
                 "1718755200": true,
             }
         }
+    },
+    "traderjoe-lb-v2-2": {
+        parentId: "Trader Joe",
+        enabled: true,
+        id: "4794",
     }
 } as AdaptorsConfig

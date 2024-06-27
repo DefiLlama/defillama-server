@@ -47353,6 +47353,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://docs.resolv.im/resources/security"],
     github: ["resolv-im"],
+    stablecoins: ["resolv-usd"],
     listedAt: 1719485918
   }, 
   {

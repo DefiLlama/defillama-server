@@ -225,5 +225,9 @@ export default {
   "hop-aggregator": {
     enabled: true,
     id: "4791",
+  },
+  "hallswap": {
+    enabled: true,
+    id: "4824",
   }
 } as AdaptorsConfig;

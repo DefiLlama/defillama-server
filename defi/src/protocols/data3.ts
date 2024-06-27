@@ -47308,6 +47308,53 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.bitu.io/bitu/resources/audits"],
     listedAt: 1719415493
   }, 
+  {
+    id: "4819",
+    name: "Dorian",
+    address: null,
+    symbol: "-",
+    url: "https://app.dorianfi.com/markets",
+    description:
+      "Lending and borrowing market on Core Blockchain Network. Participate in DeFi with our decentralized, non-custodial liquidity market.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/dorian.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["CORE"],
+    module: "dorian/index.js",
+    twitter: "0xDorianFi",
+    forkedFrom: [],
+    oracles: [],
+    github: ["DorianFi"],
+    listedAt: 1719485418
+  },
+  {
+    id: "4820",
+    name: "Resolv",
+    address: null,
+    symbol: "-",
+    url: "https://www.resolv.im",
+    description:
+      "Resolv is a protocol that maintains USR, a stablecoin fully backed by ETH and pegged to the US Dollar. The stablecoin’s delta-neutral design ensures price stability, and is backed by an innovative insurance pool (RLP) to provide additional security and overcollateralization.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/resolv.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "resolv/index.js",
+    twitter: "ResolvLabs",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.resolv.im/resources/security"],
+    github: ["resolv-im"],
+    listedAt: 1719485918
+  }, 
 ]
 
 export default data3

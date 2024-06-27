@@ -17116,8 +17116,8 @@ const data3: Protocol[] = [
   {
     id: "3465",
     name: "Kinetix Derivatives",
-    address: null,
-    symbol: "-",
+    address: "kava:0x52369B1539EA8F4e1eadEEF18D85462Dcf9a3658",
+    symbol: "KAI",
     url: "https://kinetix.finance/",
     description: "A DeFi Hub for Kava",
     chain: "Kava",
@@ -18686,8 +18686,8 @@ const data3: Protocol[] = [
   {
     id: "3533",
     name: "Kinetix AMM V2",
-    address: null,
-    symbol: "-",
+    address: "kava:0x52369B1539EA8F4e1eadEEF18D85462Dcf9a3658",
+    symbol: "KAI",
     url: "https://kinetix.finance/",
     description: "Fork of Uniswap V2",
     chain: "Kava",
@@ -18708,8 +18708,8 @@ const data3: Protocol[] = [
   {
     id: "3534",
     name: "Kinetix AMM V3",
-    address: null,
-    symbol: "-",
+    address: "kava:0x52369B1539EA8F4e1eadEEF18D85462Dcf9a3658",
+    symbol: "KAI",
     url: "https://kinetix.finance/",
     description: "Fork of Uniswap V3",
     chain: "Kava",
@@ -31485,8 +31485,8 @@ const data3: Protocol[] = [
   {
     id: "4110",
     name: "Kinetix Derivatives V2",
-    address: null,
-    symbol: "-",
+    address: "kava:0x52369B1539EA8F4e1eadEEF18D85462Dcf9a3658",
+    symbol: "KAI",
     url: "https://kinetix.finance/home",
     description: "A DeFi Hub for Kava",
     chain: "Kava",

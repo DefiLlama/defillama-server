@@ -47423,6 +47423,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1719499801
   },
+  {
+    id: "4824",
+    name: "Hallswap",
+    address: null,
+    symbol: "-",
+    url: "https://coinhall.org/swap",
+    description:
+      "Swap tokens on hallswap.",
+    chain: "Kujira",
+    logo: `${baseIconsUrl}/hallswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Kujira"],
+    module: "dummy.js",
+    twitter: "coinhall_org",
+    forkedFrom: [],
+    github: ["coinhall"],
+    oracles: [],
+  },
 ]
 
 export default data3

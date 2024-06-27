@@ -36406,7 +36406,7 @@ const data3: Protocol[] = [
     cmcId: "29258",
     category: "Derivatives",
     chains: ["Canto"],
-    oracles: ["Pyth", "RedStone"],
+    oracles: ["Pyth", "RedStone"], // Pyth for price-feeds, Redstone for keeper: https://cadenceprotocol.gitbook.io/cadence-protocol/trading-on-cadence-protocol/decentralized-keepers
     forkedFrom: ["GMX V1"],
     module: "cadence-protocol/index.js",
     twitter: "CadenceProtocol",

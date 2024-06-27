@@ -47355,6 +47355,51 @@ const data3: Protocol[] = [
     github: ["resolv-im"],
     listedAt: 1719485918
   }, 
+  {
+    id: "4821",
+    name: "Kayen Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.kayen.org/",
+    description:
+      "Community-Driven Decentralized SportFi Ecosystem, Powered by Chiliz.",
+    chain: "Chiliz",
+    logo: `${baseIconsUrl}/kayen-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Chiliz"],
+    module: "kayen/index.js",
+    twitter: "KAYEN_Protocol",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    github: ["Kayen-Protocol"],
+    listedAt: 1719488031
+  },
+  {
+    id: "4822",
+    name: "Apex Omni",
+    address: null,
+    symbol: "-",
+    url: "https://omni.apex.exchange",
+    description:
+      "Engineered for high-performing precision trades in a decentralized ecosystem.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/apex-omni.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum", "Arbitrum", "Binance"],
+    module: "apex-omni/index.js",
+    twitter: "OfficialApeXdex",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1719488031
+  },
 ]
 
 export default data3

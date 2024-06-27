@@ -3373,10 +3373,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#balanceddao",
-    name: "BalancedDAO",
+    name: "Balanced",
     url: "https://balanced.network/",
     description: `Balanced is DeFi designed for adoption: it’s fast, affordable, and easy to use. 99% of crypto investors struggled to use decentralised finance in 2021, so Balanced was built from first principles to simplify the experience.`,
-    logo: `${baseIconsUrl}/balanceddao.png`,
+    logo: `${baseIconsUrl}/balanced.png`,
     gecko_id: "balance-tokens",
     cmcId: null,
     chains: [],

@@ -47401,6 +47401,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1719488031
   },
+  {
+    id: "4823",
+    name: "TachySwap",
+    address: null,
+    symbol: "-",
+    url: "https://app.dorianfi.com/markets",
+    description:
+      "TachySwap is an AMM based decentralized exchange on Etherlink. Swap tokens with minimal cost, minimal time and maximal convenience.",
+    chain: "Etherlink",
+    logo: `${baseIconsUrl}/tachyswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Etherlink"],
+    module: "tachyswap/index.js",
+    twitter: "TachySwap",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1719499801
+  },
 ]
 
 export default data3

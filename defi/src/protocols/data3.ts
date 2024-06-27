@@ -47406,7 +47406,7 @@ const data3: Protocol[] = [
     name: "TachySwap",
     address: null,
     symbol: "-",
-    url: "https://app.dorianfi.com/markets",
+    url: "https://tachyswap.org",
     description:
       "TachySwap is an AMM based decentralized exchange on Etherlink. Swap tokens with minimal cost, minimal time and maximal convenience.",
     chain: "Etherlink",

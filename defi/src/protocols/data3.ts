@@ -47345,7 +47345,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "Basis Trading",
     chains: ["Ethereum"],
     module: "resolv/index.js",
     twitter: "ResolvLabs",

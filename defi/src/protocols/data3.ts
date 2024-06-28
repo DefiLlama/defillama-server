@@ -48168,6 +48168,27 @@ const data3: Protocol[] = [
     github: ["coinhall"],
     oracles: [],
   },
+  {
+    id: "4825",
+    name: "FlowX Aggregator",
+    address: "sui:0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX",
+    symbol: "FLX",
+    url: "https://flowx.finance",
+    description: "FlowX Finance is the ecosystem-focused decentralized exchange built on the Sui Blockchain.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/flowx-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Sui"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "FlowX_finance",
+    parentProtocol: "parent#flowx-finance",
+  },
 ];
 
 export default data3;

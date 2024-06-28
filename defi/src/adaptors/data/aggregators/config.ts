@@ -231,6 +231,7 @@ export default {
     id: "4824",
   },
   "flowx-aggregator": {
+    parentId: "FlowX Finance",
     enabled: true,
     id: "4825",
   }

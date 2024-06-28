@@ -48120,6 +48120,7 @@ const data3: Protocol[] = [
     twitter: "OfficialApeXdex",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#apex-protocol",
     listedAt: 1719488031,
   },
   {

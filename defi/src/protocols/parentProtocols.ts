@@ -4817,6 +4817,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TheTNetwork",
     github: ["threshold-network"],
   },
+  {
+    id: "parent#apex-protocol",
+    name: "ApeX Protocol",
+    url: "https://www.apex.exchange//",
+    description:
+      "ApeX, an innovative derivatives protocol to provide Web3 users with a supreme derivatives trading experience",
+    logo: `${baseIconsUrl}/apex-protocol.png`,
+    gecko_id: "apex-token-2",
+    cmcId: "19843",
+    chains: [],
+    twitter: "OfficialApeXdex",
+    github: ["ApeX-Protocol"],
+  },
 ];
 
 export default parentProtocols;

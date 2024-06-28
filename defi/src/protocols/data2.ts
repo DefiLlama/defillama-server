@@ -11583,7 +11583,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1878",
-    name: "ApeX Protocol",
+    name: "ApeX Pro",
     address: "0x52a8845df664d76c69d2eea607cd793565af42b8",
     symbol: "APEX",
     url: "https://www.apex.exchange/",
@@ -11593,8 +11593,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/apex-protocol.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "apex-token-2",
-    cmcId: "19843",
+    gecko_id: null,
+    cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
     oracles: ["Stork"],
@@ -11603,7 +11603,7 @@ const data2: Protocol[] = [
     treasury: "apex-protocol.js",
     twitter: "OfficialApeXdex",
     audit_links: ["https://github.com/ApeX-Protocol/core/blob/master/docs/audit_report.pdf"],
-    github: ["ApeX-Protocol"],
+    parentProtocol: "parent#apex-protocol",
     listedAt: 1656934904,
   },
   {

@@ -1,5 +1,3 @@
-import { addToDBWritesList } from "../../utils/database";
-import { Write } from "../../utils/dbInterfaces";
 import { calculate4626Prices } from "../../utils/erc4626";
 import { fetch } from "../../utils";
 
@@ -18,24 +16,6 @@ export async function unwrap4626(
   tokens: string[],
   timestamp: number,
   adapter: string,
-  hardCodedAssets?: string[]
 ) {
-  const writes: Write[] = [];
-  if (tokens.length > 0) {
-    const prices = await calculate4626Prices(chain, timestamp, tokens, hardCodedAssets);
-    for (const { token, price, decimals, symbol } of prices) {
-      addToDBWritesList(
-        writes,
-        chain,
-        token,
-        price,
-        decimals,
-        symbol,
-        timestamp,
-        adapter,
-        1,
-      );
-    }
-  }
-  return writes;
+  return calculate4626Prices(chain, timestamp, tokens, adapter)
 }

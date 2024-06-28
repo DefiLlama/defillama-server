@@ -2321,7 +2321,7 @@ const data: Protocol[] = [
     cmcId: "8526",
     category: "Dexes",
     chains: ["Solana"],
-    module: "raydium.js",
+    module: "raydium/api.js",
     twitter: "RaydiumProtocol",
     openSource: false,
   },

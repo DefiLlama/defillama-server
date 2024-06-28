@@ -36379,7 +36379,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Mode"],
     oracles: [],
-    forkedFrom: ["Algebra DEX"],
+    forkedFrom: ["Algebra Integral"],
     audit_links: ["https://github.com/kim-protocol/public-reports/tree/main/audits"],
     module: "kim-v4/index.js",
     twitter: "kimprotocol",

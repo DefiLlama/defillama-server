@@ -15,15 +15,18 @@ export async function calculate4626Prices(
   projectName: string,
 ): Promise<Write[]> {
   const api = await getApi(chain, timestamp)
-  const uTokens = await api.multiCall({  abi: 'address:asset', calls: tokens,  permitFailure: true  } as any)
-  const supply = await api.multiCall({  abi: 'uint256:totalSupply', calls: tokens,  permitFailure: true  } as any)
-  const tokenBals = await api.multiCall({  abi: 'uint256:totalAssets', calls: tokens,  permitFailure: true  } as any)
+  const uTokens = await api.multiCall({ abi: 'address:asset', calls: tokens, permitFailure: true } as any)
+  const uTokensDecimal = await api.multiCall({ abi: 'uint256:decimals', calls: uTokens, permitFailure: true } as any)
+  const supply = await api.multiCall({ abi: 'uint256:totalSupply', calls: tokens, permitFailure: true } as any)
+  const tokenBals = await api.multiCall({ abi: 'uint256:totalAssets', calls: tokens, permitFailure: true } as any)
+  const tokenDecimals = await api.multiCall({ abi: 'uint256:decimals', calls: tokens, permitFailure: true } as any)
+
   const pricesObject: any = {}
   tokens.forEach((token, i) => {
-    if (!uTokens[i] || !supply[i] || !tokenBals[i]) return; // Skip if any of the values are null/call failed
-    const price = tokenBals[i] / supply[i] 
+    if (!uTokens[i] || !supply[i] || !tokenBals[i] || !tokenDecimals[i] || !uTokensDecimal[i]) return; // Skip if any of the values are null/call failed
+    const price = tokenBals[i] * 10 ** (tokenDecimals[i] - (uTokensDecimal[i])) / supply[i]
     if (isNaN(price)) return; // Skip if price is not a number
-    pricesObject[token] = { underlying: uTokens[i], price}
+    pricesObject[token] = { underlying: uTokens[i], price }
   })
   return getWrites({ chain, timestamp, pricesObject, projectName, })
 }

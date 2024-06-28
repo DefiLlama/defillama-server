@@ -48121,7 +48121,7 @@ const data3: Protocol[] = [
     module: "apex-omni/index.js",
     twitter: "OfficialApeXdex",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Stork"],
     parentProtocol: "parent#apex-protocol",
     listedAt: 1719488031,
   },

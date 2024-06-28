@@ -4820,7 +4820,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#apex-protocol",
     name: "ApeX Protocol",
-    url: "https://www.apex.exchange//",
+    url: "https://www.apex.exchange/",
     description:
       "ApeX, an innovative derivatives protocol to provide Web3 users with a supreme derivatives trading experience",
     logo: `${baseIconsUrl}/apex-protocol.png`,
@@ -4830,6 +4830,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "OfficialApeXdex",
     github: ["ApeX-Protocol"],
     treasury: "apex-protocol.js",
+  },
+  {
+    id: "parent#affine-defi",
+    name: "Affine DeFi",
+    url: "https://app.affinedefi.com/",
+    description: "Risk research-backed Liquid Restaking and Earn products for maximizing yield",
+    logo: `${baseIconsUrl}/affine-defi.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AffineDeFi",
+    github: ["AffineLabs"],
   },
 ];
 

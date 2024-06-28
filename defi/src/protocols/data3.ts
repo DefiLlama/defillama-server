@@ -5867,7 +5867,7 @@ const data3: Protocol[] = [
   */
   {
     id: "2956",
-    name: "Affine DeFi",
+    name: "Affine DeFi Earn",
     address: null,
     symbol: "-",
     url: "https://app.affinedefi.com",
@@ -5886,6 +5886,7 @@ const data3: Protocol[] = [
     module: "affine-defi/index.js",
     audit_links: ["https://affinedefi.com/security/audit-1"],
     twitter: "AffineDeFi",
+    parentProtocol: "parent#affine-defi",
     listedAt: 1683664556,
   },
   {
@@ -40580,8 +40581,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.gammaswap.com/",
-    description:
-      "The first oracle free perpetual options Options platform",
+    description: "The first oracle free perpetual options Options platform",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/gammaswap.png`,
     audits: "2",
@@ -48188,6 +48188,28 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "FlowX_finance",
     parentProtocol: "parent#flowx-finance",
+  },
+  {
+    id: "4826",
+    name: "Affine Defi Liquid",
+    address: null,
+    symbol: "-",
+    url: "https://app.affinedefi.com/restake",
+    description: "stETH Focused Liquid Restaking with Instant Entry and Fastest Withdrawal",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/affine-defi.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "affine-defi-liquid/index.js",
+    twitter: "AffineDeFi",
+    audit_links: ["https://affinedefi.gitbook.io/affine-restaking/security/audit-reports"],
+    listedAt: 1719612215,
   },
 ];
 

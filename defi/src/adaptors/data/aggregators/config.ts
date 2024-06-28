@@ -229,5 +229,9 @@ export default {
   "hallswap": {
     enabled: true,
     id: "4824",
+  },
+  "flowx-aggregator": {
+    enabled: true,
+    id: "4825",
   }
 } as AdaptorsConfig;

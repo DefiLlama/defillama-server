@@ -4829,6 +4829,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "OfficialApeXdex",
     github: ["ApeX-Protocol"],
+    treasury: "apex-protocol.js",
   },
 ];
 

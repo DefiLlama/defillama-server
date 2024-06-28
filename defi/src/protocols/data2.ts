@@ -11600,7 +11600,6 @@ const data2: Protocol[] = [
     oracles: ["Stork"],
     forkedFrom: [],
     module: "apex/index.js",
-    treasury: "apex-protocol.js",
     twitter: "OfficialApeXdex",
     audit_links: ["https://github.com/ApeX-Protocol/core/blob/master/docs/audit_report.pdf"],
     parentProtocol: "parent#apex-protocol",

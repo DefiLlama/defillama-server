@@ -9149,5 +9149,12 @@
       "symbol": "IOTA",
       "to": "coingecko#iota"
     }
+  },
+  "kinto": {
+    "0x6f086db0f6a621a915bc90295175065c9e5d9b8c": {
+      "decimals": "6",
+      "symbol": "USD+",
+      "to": "coingecko#dinari-usd"
+    }
   }
 }

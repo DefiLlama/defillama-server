@@ -48257,6 +48257,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dexfinance",
     listedAt: 1719617129,
   },
+  {
+    id: "4829",
+    name: "Rock Staking",
+    address: null,
+    symbol: "-",
+    url: "https://stake.rock-swap.io/",
+    description:
+      "Stake $ROCK and $WROCK to earn",
+    chain: "Bitrock",
+    logo: `${baseIconsUrl}/rock-staking.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Bitrock"],
+    oracles: [],
+    forkedFrom: [],
+    module: "rockswap-staking/index.js",
+    twitter: "RockswapBROCK",
+    listedAt: 1719699827,
+  },
 ];
 
 export default data3;

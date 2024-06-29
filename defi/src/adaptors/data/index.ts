@@ -96,7 +96,7 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
     return acc;
   }, {...config});
   const otherATId2s = getOtherAdaperTypeId2s(adapterType)
-  const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config, adapterType, otherATId2s })
+  const protocolAdaptors = generateProtocolAdaptorsList2({ allImports, config: allConfig, adapterType, otherATId2s })
   const childProtocolAdaptors = protocolAdaptors.flatMap((protocolAdaptor: ProtocolAdaptor) => protocolAdaptor.childProtocols || [])
   const protocolMap = protocolAdaptors.reduce((acc, curr) => {
     acc[curr.id2] = curr

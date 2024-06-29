@@ -46,3 +46,8 @@ export function mergeSortAndRemoveDups(arr: any[] | undefined, arr2: any[] | und
   }
   return deduped
 }
+
+export enum RUN_TYPE {
+  CRON = 'cron',
+  API_SERVER = 'api-server',
+}

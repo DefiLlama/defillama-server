@@ -39657,7 +39657,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Yield Aggregator",
     chains: ["Polygon", "Ethereum", "Optimism", "Arbitrum", "Avalanche", "Binance", "Base"],
     module: "superform/index.js",
     forkedFrom: [],

@@ -30936,7 +30936,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Options", // even thought the code is a uniswap v2 fork. it works with gammaswap, and the liquidity for AMM and a lending market
     chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: ["Uniswap V2"],

@@ -48191,13 +48191,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4826",
-    name: "Affine Defi Liquid",
+    name: "Affine Restaking", // previous Affine Defi Liquid
     address: null,
     symbol: "-",
     url: "https://app.affinedefi.com/restake",
     description: "stETH Focused Liquid Restaking with Instant Entry and Fastest Withdrawal",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/affine-defi.png`,
+    logo: `${baseIconsUrl}/affine-restaking.jpg`, //Affine restaking
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -48209,6 +48209,7 @@ const data3: Protocol[] = [
     module: "affine-defi-liquid/index.js",
     twitter: "AffineDeFi",
     audit_links: ["https://affinedefi.gitbook.io/affine-restaking/security/audit-reports"],
+    parentProtocol: "parent#affine-defi",
     listedAt: 1719612215,
   },
   {

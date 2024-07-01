@@ -42044,7 +42044,7 @@ const data3: Protocol[] = [
     gecko_id: morpheusai,
     cmcId: 31656,
     category: "Services",
-    chains: ["Ethereum", "Arbitrum", "Base"],
+    chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
     module: "MorpheusAI/index.js",

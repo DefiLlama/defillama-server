@@ -395,8 +395,18 @@
     },
     "0x53e63a31fd1077f949204b94f431bcab98f72bce": {
       "decimals": "18",
-      "symbol": "SolvBTC.ENA ",
+      "symbol": "SolvBTC.ENA",
       "to": "coingecko#solv-btc"
+    },
+    "0x04c0599ae5a44757c0af6f9ec3b93da8976c150a": {
+      "decimals": "18",
+      "symbol": "weETH",
+      "to": "coingecko#wrapped-eeth"
+    },
+    "0x80137510979822322193fc997d400d5a6c747bf7": {
+      "decimals": "18",
+      "symbol": "STONE",
+      "to": "coingecko#stakestone-ether"
     }
   },
   "stacks": {

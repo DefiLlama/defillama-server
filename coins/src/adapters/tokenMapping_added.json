@@ -1534,6 +1534,11 @@
       "decimals": "8",
       "symbol": "UwU",
       "to": "coingecko#flux-usdc"
+    },
+    "0x65d72aa8da931f047169112fcf34f52dbaae7d18": {
+      "decimals": "18",
+      "symbol": "rUSD",
+      "to": "coingecko#fx-rusd"
     }
   },
   "klaytn": {

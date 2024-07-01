@@ -48279,6 +48279,29 @@ const data3: Protocol[] = [
     twitter: "RockswapBROCK",
     listedAt: 1719699827,
   },
+  {
+    id: "4830",
+    name: "Kayak",
+    address: null,
+    symbol: "-",
+    url: "https://kayakfinance.io/",
+    description:
+      "Kayak Finance is a cross-chain stable market, enabling users from different chains to access aggregated liquidity, low-slippage swap, and premium pegged asset utility",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/kayak.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche"],
+    oracles: [],
+    forkedFrom: [],
+    module: "kayak/index.js",
+    twitter: "Kayak_Finance",
+    audit_links: ["https://docs.kayakfinance.io/resource/audit-report"],
+    listedAt: 1719811561,
+  },
 ];
 
 export default data3;

@@ -13119,13 +13119,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3277",
-    name: "DexFinance Arbitrum",
+    name: "dexSWAP", // previous DexFinance Arbitrum
     address: null,
     symbol: "-",
     url: "https://app.dexfinance.com/swap",
     description: "Bringing the world tools to optimize and simplify DeFi investing.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/dexfinance-arbitrum.png`,
+    logo: `${baseIconsUrl}/dexswap.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

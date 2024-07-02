@@ -4889,6 +4889,12 @@
       "symbol": "DAI",
       "to": "coingecko#dai"
     },
+    "0x05574eb6b8789a91466f902c380d978e472db68170ff82a5b650b95a58ddf4ad": {
+      "name": "DAI",
+      "decimals": "18",
+      "symbol": "DAI",
+      "to": "coingecko#dai"
+    },
     "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7": {
       "name": "ethereum",
       "decimals": "18",

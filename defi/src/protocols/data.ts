@@ -154,7 +154,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Fantom"],
     module: "yearn/index.js", // TODO: Fix latest
     twitter: "yearnfi",
-    audit_links: ["https://github.com/yearn/yearn-audits"],
+    audit_links: ["https://github.com/yearn/yearn-security/tree/master/audits"],
     parentProtocol: "parent#yearn",
     language: "Vyper",
   },

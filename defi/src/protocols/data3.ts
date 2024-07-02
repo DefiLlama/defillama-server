@@ -28272,7 +28272,7 @@ const data3: Protocol[] = [
     description:
       "DeSyn Protocol is an innovative decentralized asset management infrastructure on Web 3, empowering users to securely and transparently create and manage customized pool-based portfolios with various on-chain assets (tokens, NFTs, derivatives, etc.) via smart contract",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/desyn-restaking.png`,
+    logo: `${baseIconsUrl}/desyn-restaking.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

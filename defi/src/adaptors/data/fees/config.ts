@@ -2252,5 +2252,9 @@ export default {
     "moonshot": {
         enabled: true,
         id: "4813"
+    },
+    "jojo": {
+        "enabled": true,
+        "id": "2320"
     }
 } as AdaptorsConfig

@@ -48395,6 +48395,51 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/sherlock-audit/2024-05-napier-update"],
     listedAt: 1719925946
   },
+  {
+    id: "4835",
+    name: "Stip Flip",
+    address: null,
+    symbol: "-",
+    url: "https://sf.exchange",
+    description:
+      "Open and decentralized synthetic trading protocol. Trade anything, short and long, on leverage, with no liquidation risk.",
+    chain: "EthereumClassic",
+    logo: `${baseIconsUrl}/stip-flip.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics", 
+    chains: ["EthereumClassic"],
+    oracles: ["Internal"], //https://docs.sf.exchange/docs/protocol-rules/data-provider
+    forkedFrom: [],
+    module: "stipflip/index.js",
+    twitter: "StipFlip",
+    github: ["stip-flip"],
+    listedAt: 1719950938
+  },
+  {
+    id: "4836",
+    name: "Xei Finance",
+    address: null,
+    symbol: "-",
+    url: "https://xei.finance",
+    description:
+      "Upgrade to the next level of decentralized trading on the Sei Network and experience the pulse of the market through XEI’s integration with dynamic meme communities, driving unprecedented trading excitement and opportunities. Launch with XEI Launchpad, where fairness meets innovation for explosive growth in crypto assets.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/xei-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives", 
+    chains: ["Sei"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "xei/index.js",
+    twitter: "XeiFinance",
+    listedAt: 1719951938
+  },
 ];
 
 export default data3;

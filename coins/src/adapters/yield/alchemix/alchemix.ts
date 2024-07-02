@@ -28,6 +28,16 @@ const tokensByChain = {
     '0xe7839ea8ea8543c7f5d9c9d7269c661904729fe7',
     '0x759a2e28d4c3ad394d3125d5ab75a6a5d6782fd9',
     '0xa291ae608d8854cdbf9838e28e9badcf10181669'
+  ],
+  ethereum: [
+    '0xce4a49d7ed99c7c8746b713ee2f0c9aa631688d8',
+    '0xf591d878608e2e5c7d4f1e499330f4ab9bbae37a',
+    '0xbc11de1f20e83f0a6889b8c7a7868e722694e315',
+    '0x318334a6dd21d16a8442ab0b7204e81aa3fb416e',
+    '0x61134511187a9a2df38d10dbe07ba2e8e5563967'
+  ],
+  arbitrum: [
+    '0x248a431116c6f6fcd5fe1097d16d0597e24100f5'
   ]
 } as {
   [chain:string]:string[]

@@ -4208,10 +4208,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#subseaprotocol", // its the same team, https://prnt.sc/6aWrFV4VhHoN risk harbor and karab
-    name: "SubseaProtocol",
-    url: "https://subseaprotocol.com",
+    name: "Karak Protocol", // previous SubseaProtocol
+    url: "https://karak.network",
     description: "Risk management marketplace for digital assets.",
-    logo: `${baseIconsUrl}/subseaprotocol.jpg`,
+    logo: `${baseIconsUrl}/karak-protocol.jpg`,   //karak-protocol.jpg
     gecko_id: null,
     cmcId: null,
     chains: [],

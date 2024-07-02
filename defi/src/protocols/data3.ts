@@ -39232,8 +39232,8 @@ const data3: Protocol[] = [
   {
     id: "4429",
     name: "ether.fi Liquid",
-    address: null,
-    symbol: "-",
+    address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
+    symbol: "ETHFI",
     url: "https://app.ether.fi/liquid",
     description:
       "Liquid is an automated DeFi strategy vault that provides ether.fi users a simple access point to use their eETH in the DeFi ecosystem",

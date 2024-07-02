@@ -48349,6 +48349,52 @@ const data3: Protocol[] = [
     parentProtocol: "parent#desyn-protocol",
     listedAt: 1719915986
   },
+  {
+    id: "4833",
+    name: "Influpia",
+    address: "merlin:0x07884346a65F95276C2b0E56b17165b191ab2C49",
+    symbol: "ING",
+    url: "https://infdex.io",
+    description:
+      "A leading DEX in Merlin empowered by Influpia.",
+    chain: "Merlin",
+    logo: `${baseIconsUrl}/influpia.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Merlin"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "infdex/index.js",
+    twitter: "influpia",
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Influpia-v1.0.pdf"],
+    listedAt: 1719925746
+  },
+  {
+    id: "4834",
+    name: "Napier Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.napier.finance/",
+    description:
+      "The end game for Curve ecosystem. A liquidity hub for yield/point trading powered by Curve ecosystem.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/napier-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "napier/index.js",
+    twitter: "NapierFinance",
+    audit_links: ["https://github.com/sherlock-audit/2024-05-napier-update"],
+    listedAt: 1719925946
+  },
 ];
 
 export default data3;

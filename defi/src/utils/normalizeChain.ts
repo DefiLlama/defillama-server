@@ -2831,7 +2831,7 @@ export const chainCoingeckoIds = {
     url: "https://venom.foundation/",
     github: ["venom-blockchain"],
   },
-  "Karak Network": {
+  "K2": {
     geckoId: null,
     symbol: null,
     cmcId: null,

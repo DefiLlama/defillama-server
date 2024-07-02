@@ -48301,6 +48301,30 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.kayakfinance.io/resource/audit-report"],
     listedAt: 1719811561,
   },
+  {
+    id: "4831",
+    name: "Stargate V2",
+    address: "0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6",
+    symbol: "STG",
+    url: "https://stargate.finance/",
+    description:
+      "Stargate V2 offers reduced bridging costs, expands chain connectivity, and improves capital efficiency using transaction batching, Hydra, and an AI-driven Planning Module (AIPM).",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/stargate.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Arbitrum", "Optimism", "Metis", "Linea", "Mantle", "Base", "Kava", "Scroll", "Aurora"],
+    oracles: [],
+    forkedFrom: [],
+    module: "stargatefinance-v2/index.js",
+    twitter: "StargateFinance",
+    audit_links: [],
+    parentProtocol: "parent#stargate-finance",
+    listedAt: 1719902937,
+  },
 ];
 
 export default data3;

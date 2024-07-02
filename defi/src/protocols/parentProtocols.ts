@@ -4844,6 +4844,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AffineDeFi",
     github: ["AffineLabs"],
   },
+  {
+    id: "parent#stargate-finance",
+    name: "Stargate Finance",
+    url: "https://stargate.finance/",
+    description: "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi. With Stargate, users & dApps can transfer native assets cross-chain while accessing the protocol’s unified liquidity pools with instant guaranteed finality.",
+    logo: `${baseIconsUrl}/affine-defi.png`,
+    gecko_id: "stargate-finance",
+    cmcId: "18934",
+    chains: [],
+    twitter: "StargateFinance",
+    treasury: "stargate.js",
+    github: ["stargate-protocol"],
+  },
 ];
 
 export default parentProtocols;

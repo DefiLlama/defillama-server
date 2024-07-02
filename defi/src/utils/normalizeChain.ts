@@ -3772,7 +3772,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "venom":
       return "Venom"
     case "karak":
-      return "Karak Network"
+      return "K2"
     case "bitkub":
       return useNewChainNames ? "Bitkub Chain" : "Bitkub"
     case "ancient8":

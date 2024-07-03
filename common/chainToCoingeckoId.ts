@@ -126,7 +126,8 @@ export const chainToCoingeckoId = {
   fraxtal: "fraxtal",
   map: "map-protocol",
   zora: "zora-network",
-  dydx: "dydx"
+  dydx: "dydx",
+  manta: "manta-pacific"
   
   // chz: "chiliz",
   // stellar: "stellar",

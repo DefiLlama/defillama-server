@@ -2837,5 +2837,9 @@ export default {
     "aktionariat": {
         enabled: true,
         id: "2782"
+    },
+    "xei": {
+        enabled: true,
+        id: "4836"
     }
 } as AdaptorsConfig

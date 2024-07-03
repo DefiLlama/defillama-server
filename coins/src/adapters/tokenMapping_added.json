@@ -3778,6 +3778,36 @@
     }
   },
   "celo": {
+    "0xcebA9300f2b948710d2653dD7B07f33A8B32118C": {
+      "name": "USD Coin",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e": {
+      "name": "Tether USD",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x765DE816845861e75A25fCA122bb6898B8B1282a": {
+      "name": "Celo Dollar",
+      "decimals": "18",
+      "symbol": "cUSD",
+      "to": "coingecko#celo-dollar"
+    },
+    "0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73": {
+      "name": "Celo Euro",
+      "decimals": "18",
+      "symbol": "cEUR",
+      "to": "coingecko#celo-euro"
+    },
+    "0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787": {
+      "name": "Celo Real",
+      "decimals": "18",
+      "symbol": "cREAL",
+      "to": "coingecko#celo-real-creal"
+    },
     "0x7d00cd74ff385c955ea3d79e47bf06bd7386387d": {
       "name": "Moola interest bearing CELO",
       "decimals": "18",
@@ -3797,7 +3827,7 @@
       "to": "coingecko#moola-celo-dollars"
     },
     "0x37f750b7cc259a2f741af45294f6a16572cf5cad": {
-      "name": "USD Coin",
+      "name": "USD Coin (Wormhole)",
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
@@ -3833,7 +3863,7 @@
       "to": "coingecko#tether"
     },
     "0x617f3112bf5397d0467d315cc709ef968d9ba546": {
-      "name": "Tether USD",
+      "name": "Tether USD (Wormhole)",
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"

@@ -48552,6 +48552,28 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "Bitoro_HQ",
   },
+  {
+    id: "4842",
+    name: "LineHub Perps",
+    address: null,
+    symbol: "-",
+    url: "https://linehub.io/",
+    description: "Derivatives platform on Linea",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/linehub-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives", 
+    chains: ["Linea"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "linehub-perps/index.js",
+    twitter: "LineDefiHub",
+    parentProtocol: "parent#linehub",
+    listedAt: 1720041593
+  },
 ];
 
 export default data3;

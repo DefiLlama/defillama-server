@@ -48531,6 +48531,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#ether-fi",
     listedAt: 1720019023
   },
+  {
+    id: "4841",
+    name: "Bitoro",
+    address: null,
+    symbol: "-",
+    url: "https://bitoro.network",
+    description:
+      "The ultimate hub for trading perps onchain. Optimized with the deepest liquidity in DeFi.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/bitoro.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "Bitoro_HQ",
+  },
 ];
 
 export default data3;

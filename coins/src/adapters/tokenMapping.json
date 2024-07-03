@@ -521,6 +521,11 @@
       "decimals": "18",
       "symbol": "wUSDM",
       "to": "coingecko#mountain-protocol-usdm"
+    },
+    "0x2c093f7d7db41057a2ddd3cb1ad8b4e9c3dffbec": {
+      "decimals": "18",
+      "symbol": "USDEX+",
+      "to": "coingecko#usd-coin"
     }
   },
   "tezos": {

@@ -48493,7 +48493,7 @@ const data3: Protocol[] = [
     url: "https://joincommonwealth.xyz/",
     description:
       "Early-stage VC access for the 99%. Fully decentralised. Fully on-chain. The way it was meant to be.",
-    chain: "base",
+    chain: "Base",
     logo: `${baseIconsUrl}/commonwealth.jpg`,
     audits: "0",
     audit_note: null,

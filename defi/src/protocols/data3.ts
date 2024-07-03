@@ -48328,19 +48328,19 @@ const data3: Protocol[] = [
   },
   {
     id: "4832",
-    name: "DeSyn Farm",
+    name: "DeSyn Yield", // previous DeSyn Farm
     address: null,
     symbol: "-",
     url: "https://www.desyn.io",
     description:
       "DeSyn Protocol is an innovative decentralized asset management infrastructure on Web 3, empowering users to securely and transparently create and manage customized pool-based portfolios with various on-chain assets (tokens, NFTs, derivatives, etc.) via smart contract.",
     chain: "Merlin",
-    logo: `${baseIconsUrl}/desyn-farm.jpg`,
+    logo: `${baseIconsUrl}/desyn-yield.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Yield Aggregator",
     chains: ["Merlin"],
     oracles: [],
     forkedFrom: [],

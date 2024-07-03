@@ -48445,7 +48445,7 @@ const data3: Protocol[] = [
     name: "Step Finance",
     address: "solana:StepAscQoEioFxxWGnh2sLBDFp9d8rvKz2Yp39iDpyT",
     symbol: "STEP",
-    url: "https://step.finance",
+    url: "https://step.finance/",
     description:
       "STEP tokens staked in Step Finance, which tracks wallet positions and enables on-chain actions like staking, sending, swapping, and compounding",
     chain: "Solana",
@@ -48461,6 +48461,29 @@ const data3: Protocol[] = [
     module: "step-finance/index.js",
     twitter: "StepFinance_",
     listedAt: 1719987997
+  },
+  {
+    id: "4838",
+    name: "Stack",
+    address: null,
+    symbol: "-",
+    url: "https://www.stackmore.xyz/",
+    description:
+      "Stack Finance is a borrowing and leverage platform that uses a variety of crypto native and real world asset tokens as collateral to borrow the stablecoin $MORE",
+    chain: "re.al",
+    logo: `${baseIconsUrl}/stack.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP", 
+    chains: ["re.al"],
+    oracles: ["DIA"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10850
+    forkedFrom: [],
+    audit_links: ["https://docs.stackmore.xyz/using-stack/security-and-audits"],
+    module: "stack/index.js",
+    twitter: "stackmorexyz",
+    listedAt: 1719989645
   },
 ];
 

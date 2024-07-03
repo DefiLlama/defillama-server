@@ -48440,6 +48440,28 @@ const data3: Protocol[] = [
     twitter: "XeiFinance",
     listedAt: 1719951938
   },
+  {
+    id: "4837",
+    name: "Step Finance",
+    address: "solana:StepAscQoEioFxxWGnh2sLBDFp9d8rvKz2Yp39iDpyT",
+    symbol: "STEP",
+    url: "https://step.finance",
+    description:
+      "STEP tokens staked in Step Finance, which tracks wallet positions and enables on-chain actions like staking, sending, swapping, and compounding",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/step-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "step-finance",
+    cmcId: "9443",
+    category: "Services", 
+    chains: ["Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "step-finance/index.js",
+    twitter: "StepFinance_",
+    listedAt: 1719987997
+  },
 ];
 
 export default data3;

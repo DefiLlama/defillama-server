@@ -48485,6 +48485,27 @@ const data3: Protocol[] = [
     twitter: "stackmorexyz",
     listedAt: 1719989645
   },
+  {
+    id: "4839",
+    name: "Commonwealth",
+    address: "base:0x99b2B1A2aDB02B38222ADcD057783D7e5D1FCC7D",
+    symbol: "WLTH",
+    url: "https://joincommonwealth.xyz/",
+    description:
+      "Early-stage VC access for the 99%. Fully decentralised. Fully on-chain. The way it was meant to be.",
+    chain: "base",
+    logo: `${baseIconsUrl}/commonwealth.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "common-wealth",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "joincommonwlth",
+  }
 ];
 
 export default data3;

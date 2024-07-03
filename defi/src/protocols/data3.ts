@@ -48505,7 +48505,32 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "joincommonwlth",
-  }
+  },
+  {
+    id: "4840",
+    name: "ether.fi Symbiotic",
+    address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
+    symbol: "ETHFI",
+    assetToken: "weETHs",
+    url: "https://app.ether.fi/liquid/symbiotic",
+    description:
+      "An automated vault that earns you Symbiotic, Veda and ether.fi points on your liquid staking assets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ether.fi-symbiotic.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP", 
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "etherfi-lrt/index.js",
+    twitter: "ether_fi",
+    tokensExcludedFromParent: ["EETH"],
+    parentProtocol: "parent#ether-fi",
+    listedAt: 1720019023
+  },
 ];
 
 export default data3;

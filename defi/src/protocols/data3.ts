@@ -13120,8 +13120,8 @@ const data3: Protocol[] = [
   {
     id: "3277",
     name: "dexSWAP", // previous DexFinance Arbitrum
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x92a212d9f5eef0b262ac7d84aea64a0d0758b94f",
+    symbol: "GDEX",
     url: "https://app.dexfinance.com/swap",
     description: "Bringing the world tools to optimize and simplify DeFi investing.",
     chain: "Arbitrum",
@@ -48237,8 +48237,8 @@ const data3: Protocol[] = [
   {
     id: "4828",
     name: "DexFinance ETF",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x92a212d9f5eef0b262ac7d84aea64a0d0758b94f",
+    symbol: "GDEX",
     url: "https://www.dexfinance.com/dexETF",
     description:
       "DexFinance ETF auto-balances portfolios with every mint or burn, optimizing gains by buying dips and selling highs. It offers diversified crypto exposure and reduces single-token risk",

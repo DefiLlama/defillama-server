@@ -803,4 +803,9 @@ export default {
         enabled: true,
         id: "4555"
     },
+    "linehub-perps": {
+        parentId: "LineHub",
+        enabled: true,
+        id: "4842"
+    }
 } as AdaptorsConfig

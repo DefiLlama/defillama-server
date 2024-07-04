@@ -23,7 +23,7 @@ export const normalizedChainReplacements = {
   "bevm": "chainx",
   "bitnet": "btn",
   "defichain evm": "defichain_evm",
-
+  "hydration": "hydradx",
 } as {
   [chain: string]: string
 }
@@ -2210,7 +2210,7 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     github: ["archway-network"]
   },
-  "HydraDX": {
+  "Hydration": {
     geckoId: "hydradx",
     github: ['galacticcouncil'],
     symbol: "HDX",
@@ -3192,6 +3192,7 @@ chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
 chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
 chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
+chainCoingeckoIds["HydraDX"] = chainCoingeckoIds["Hydration"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3249,6 +3250,8 @@ export function transformNewChainName(chain: string) {
       return "zkLink Nova"
     case "Bitkub":
       return "Bitkub Chain"
+    case "HydraDX":
+      return "Hydration"
     default:
       return chain
   }
@@ -3649,7 +3652,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "archway":
       return "Archway"
     case "hydradx":
-      return "HydraDX"
+      return useNewChainNames ? "Hydration" : "HydraDX"
     case "shibarium":
       return "Shibarium"
     case "mvc":

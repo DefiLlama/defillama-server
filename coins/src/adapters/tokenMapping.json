@@ -546,6 +546,11 @@
     }
   },
   "optimism": {
+    "0x7e7d4467112689329f7E06571eD0E8CbAd4910eE": {
+      "decimals": "18",
+      "symbol": "COMP",
+      "to": "coingecko#compound-governance-token"
+    },
     "0x3f56e0c36d275367b8c502090edf38289b3dea0d": {
       "decimals": "18",
       "symbol": "QI",
@@ -755,6 +760,11 @@
     }
   },
   "scroll": {
+    "0x643e160a3C3E2B7eae198f0beB1BfD2441450e86": {
+      "decimals": "18",
+      "symbol": "COMP",
+      "to": "coingecko#compound-governance-token"
+    },
     "0xc4d46E8402F476F269c379677C99F18E22Ea030e": {
       "decimals": "18",
       "symbol": "PufETH",

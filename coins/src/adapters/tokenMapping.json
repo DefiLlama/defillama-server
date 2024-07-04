@@ -824,6 +824,11 @@
       "to": "coingecko#wrapped-eeth",
       "decimals": "18",
       "symbol": "weETH"
+    },
+    "0x643e160a3C3E2B7eae198f0beB1BfD2441450e86": {
+      "to": "coingecko#compound-governance-token",
+      "decimals": "18",
+      "symbol": "COMP"
     }
   },
   "radixdlt": {

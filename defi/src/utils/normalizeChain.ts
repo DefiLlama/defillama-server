@@ -3164,6 +3164,15 @@ export const chainCoingeckoIds = {
     url: "https://www.etherlink.com",
     chainId: 42793
   },
+  "Noble": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    github: ["noble-assets"],
+    categories: ["Cosmos"],
+    twitter: "noble_xyz",
+    url: "https://x.com/noble_xyz"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3837,6 +3846,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "OXFUN"
     case "etlk":
       return "Etherlink"
+    case "noble":
+      return "Noble"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

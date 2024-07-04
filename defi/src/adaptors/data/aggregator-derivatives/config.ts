@@ -48,5 +48,9 @@ export default {
             "id": "4817"
         }
     }
+  },
+  "bitoro": {
+    "enabled": true,
+    "id": "4841"
   }
 } as AdaptorsConfig;

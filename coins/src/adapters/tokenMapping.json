@@ -533,9 +533,9 @@
       "to": "coingecko#usd-coin"
     },
     "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34": {
-      "to": "coingecko#ethena-usde",
-      "decimals": 0,
-      "symbol": "USDe"
+      "decimals": "18",
+      "symbol": "USDe",
+      "to": "ethereum:0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
     }
   },
   "tezos": {

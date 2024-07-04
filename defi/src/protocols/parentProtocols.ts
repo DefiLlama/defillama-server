@@ -4863,7 +4863,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#desyn-protocol",
     name: "DeSyn Protocol",
     url: "https://www.desyn.io/#/",
-    description: "DeSyn Protocol is an innovative decentralized asset management infrastructure on Web 3, empowering users to securely and transparently create and manage customized pool-based portfolios with various on-chain assets (tokens, NFTs, derivatives, etc.) via smart contract.",
+    description: "DeSyn Protocol is an innovative decentralized asset management infrastructure on Web 3, empowering users to securely and transparently create and manage customized pool-based portfolios with various on-chain assets (tokens, NFTs, derivatives, etc.) via smart contract. Its current main product is a new type of farming launchpad for every project, featuring various structured products. (one stone catches more birds)",
     logo: `${baseIconsUrl}/desyn-protocol.png`,
     gecko_id: null,
     cmcId: null,

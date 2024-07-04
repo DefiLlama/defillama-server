@@ -48311,7 +48311,7 @@ const data3: Protocol[] = [
     description:
       "Stargate V2 offers reduced bridging costs, expands chain connectivity, and improves capital efficiency using transaction batching, Hydra, and an AI-driven Planning Module (AIPM).",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/stargate.png`,
+    logo: `${baseIconsUrl}/stargate-v2.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

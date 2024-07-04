@@ -2261,5 +2261,10 @@ export default {
         parentId: "Lynex",
         enabled: true,
         id: "3908"
+    },
+    "linehub-perps": {
+        parentId: "LineHub",
+        enabled: true,
+        id: "4842"
     }
 } as AdaptorsConfig

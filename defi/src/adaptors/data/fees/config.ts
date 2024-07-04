@@ -2256,5 +2256,10 @@ export default {
     "jojo": {
         "enabled": true,
         "id": "2320"
+    },
+    "lynex-v1": {
+        parentId: "Lynex",
+        enabled: true,
+        id: "3908"
     }
 } as AdaptorsConfig

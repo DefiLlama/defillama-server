@@ -48574,6 +48574,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#linehub",
     listedAt: 1720041593
   },
+  {
+    id: "4843",
+    name: "Organic Growth",
+    address: null,
+    symbol: "-",
+    url: "https://www.organicgrowth.wtf/",
+    description: "Launch a coin that is instantly tradeable without having to seed liquidity. Deploy a coin for 2 XTZ in one click.",
+    chain: "Etherlink",
+    logo: `${baseIconsUrl}/organic-growth.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad", 
+    chains: ["Etherlink"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "organic-growth/index.js",
+    twitter: "OrganicGrowth__",
+    listedAt: 1720100169
+  },
 ];
 
 export default data3;

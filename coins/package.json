@@ -16,7 +16,8 @@
     "fetch-cg-hourly": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/coingecko.ts true",
     "fetch-cg-min": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/coingecko.ts false",
     "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/defiCoins.ts",
-    "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/bridges.ts"
+    "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/bridges.ts",
+    "update-token-mapping": "node src/adapters/utils/updateTokenMapping.js"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.12",

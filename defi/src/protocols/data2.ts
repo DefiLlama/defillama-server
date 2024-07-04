@@ -4462,14 +4462,14 @@ const data2: Protocol[] = [
   },
   {
     id: "1571",
-    name: "Stargate",
+    name: "Stargate V1", // previous Stargate
     address: "0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6",
     symbol: "STG",
     url: "https://stargate.finance/",
     description:
       "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi. With Stargate, users & dApps can transfer native assets cross-chain while accessing the protocol’s unified liquidity pools with instant guaranteed finality.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/stargate.png`,
+    logo: `${baseIconsUrl}/stargate-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

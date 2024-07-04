@@ -48505,7 +48505,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "joincommonwlth",
-  }
+  },
+  {
+    id: "",
+    name: "zkSync Era",
+    address: "era:0x5a7d6b2f92c77fad6ccabd7ee0624e64907eaf3e",
+    symbol: "ZK",
+    url: "https://zksync.io/",
+    description:
+      "ZKsync is an ever expanding verifiable blockchain network, secured by math.",
+    chain: "era",
+    logo: `${baseIconsUrl}/zk.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "zksync",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "zksync",
+  },
 ];
 
 export default data3;

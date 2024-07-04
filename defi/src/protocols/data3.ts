@@ -48615,6 +48615,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "zksync",
+  },
+  {
+    id: "4845",
+    name: "Danzo Arena",
+    address: "cardano:bf3e19192da77dfadc7c9065944e50ca7e1a439d90833e3ae58b720a",
+    symbol: "DANZO",
+    url: "https://cardanzoada.com/arena",
+    description:
+      "DANZO ARENA is a gamified DeFi platform where users can deposit tokens, borrow against holdings, and share in trading and withdrawal fees.",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/danzo-arena.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "danzo",
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Cardano"],
+    oracles: [],
+    forkedFrom: [],
+    module: "danzo-arena/index.js",
+    twitter: "DanzoADA",
+    listedAt: 1720126575
   }
 ];
 

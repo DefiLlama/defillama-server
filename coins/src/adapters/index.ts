@@ -22,6 +22,7 @@ export default {
   optimBonds: require("./other/optimBonds"),
   tangleswap: require("./markets/tangleswap"),
   xexchange: require("./markets/xexchange"),
+  cetus: require("./markets/cetus"),
   balanced: require("./markets/balanced"),
   tinyman: require("./markets/tinyman"),
   silo: require("./moneyMarkets/silo"),

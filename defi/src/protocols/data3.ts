@@ -48683,6 +48683,53 @@ const data3: Protocol[] = [
     twitter: "AstherusHub",
     listedAt: 1720175975
   },
+  {
+    id: "4848",
+    name: "AlphaFi",
+    address: "sui:0xfe3afec26c59e874f3c1d60b8203cb3852d2bb2aa415df9548b8d688e6683f93::alpha::ALPHA",
+    symbol: "ALPHA",
+    url: "https://alphafi.xyz",
+    description:
+      "Premier Yield Optimizer on the SUI Blockchain. Earn Safe, Real Yields with AlphaFi.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/alphafi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Sui"],
+    oracles: [],
+    forkedFrom: [],
+    module: "alphafi/index.js",
+    twitter: "AlphaFiSUI",
+    audit_links: ["https://github.com/AlphaFiTech/Audit/blob/main/AlphaFi_Smart_Contract_Preliminary_Audit_Report.pdf"],
+    github: ["AlphaFiTech"],
+    listedAt: 1720176267
+  },
+  {
+    id: "4849",
+    name: "Catalyst",
+    address: null,
+    symbol: "-",
+    url: "https://catalyst.exchange",
+    description:
+      "Any asset, any chain powered by native cross-chain swaps.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/catalyst.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Optimism", "Blast", "Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "catalyst/index.js",
+    twitter: "CatalystAMM",
+    github: ["catalystdao"],
+    listedAt: 1720176967
+  },
 ];
 
 export default data3;

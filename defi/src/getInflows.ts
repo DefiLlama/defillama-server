@@ -6,6 +6,7 @@ import { hourlyTokensTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import cgSymbols from "./utils/symbols/symbols.json";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { IProtocol } from "./types";
+import { normalizeCgIds } from "./utils/symbols/convert";
 
 const geckoSymbols = cgSymbols as { [key: string]: string };
 
@@ -64,7 +65,7 @@ export function computeInflowsData(protocolData: IProtocol, currentTokens: any, 
   let outflows = 0;
 
   for (const token in tokenDiff) {
-    const formattedToken = geckoSymbols[token] || tokenMapping[token] || token;
+    const formattedToken = normalizeCgIds(token) || tokenMapping[token] || token;
     if (!tokensToExclude.includes(formattedToken)) {
       const currentAmount = currentTokens!.tvl[token];
 

@@ -247,6 +247,7 @@ export default {
     },
     "solidly": {
         "enabled": true,
+         parentId: "Solidly Labs",
         "id": "1407"
     },
     "orca": {
@@ -672,7 +673,7 @@ export default {
         "id": "261"
     },
     "xexchange": {
-        "enabled": false,
+        "enabled": true,
         "id": "854"
     },
     "defichain-dex": {
@@ -897,6 +898,7 @@ export default {
         "id": "1412"
     },
     "icecreamswap": {
+        parentId: "IcecreamSwap",
         disabled: true,
         "enabled": true,
         "id": "1990"
@@ -1110,7 +1112,7 @@ export default {
         "id": "1269"
     },
     "sundaeswap": {
-        "enabled": false,
+        "enabled": true,
         "id": "1302"
     },
     "wx.network": {
@@ -1268,6 +1270,7 @@ export default {
     },
     "solidlydex": {
         "enabled": true,
+        parentId: "Solidly Labs",
         "id": "2400"
     },
     "defibox": {
@@ -1416,6 +1419,7 @@ export default {
         id: "1778"
     },
     "maverick": {
+        parentId: "Maverick Protocol",
         enabled: true,
         id: "2644"
     },
@@ -1625,6 +1629,7 @@ export default {
         "id": "2926"
     },
     "clober": {
+        parentId: "Clober",
         "enabled": true,
         "id": "2541"
     },
@@ -2040,6 +2045,7 @@ export default {
         "id": "3454"
     },
     "aerodrome": {
+        parentId: "Aerodrome",
         "enabled": true,
         "id": "3450"
     },
@@ -2172,6 +2178,7 @@ export default {
         "id": "3650"
     },
     "shimmersea": {
+        parentId: "MagicSea",
         "enabled": true,
         "id": "3571"
     },
@@ -2369,7 +2376,7 @@ export default {
     },
     "aftermath-fi-amm": {
         parentId: "Aftermath Finance",
-        "enabled": true,
+        "enabled": false,
         "id": "3259"
     },
     "sanctum": {
@@ -2608,6 +2615,7 @@ export default {
         id: "4366"
     },
     "keller": {
+        parentId: "Keller Finance",
         enabled: true,
         id: "4388"
     },
@@ -2704,5 +2712,134 @@ export default {
     "fenix-finance": {
         enabled: true,
         id: "4563"
+    },
+    "nuri-exchange-v1": {
+        parentId: "Nuri Exchange",
+        enabled: true,
+        id: "4564"
+    },
+    "nuri-exchange-v2": {
+        parentId: "Nuri Exchange",
+        enabled: true,
+        id: "4565"
+    },
+    "apestore": {
+        enabled: true,
+        id: "4584"
+    },
+    "cropper-clmm": {
+        parentId: "Cropper",
+        enabled: true,
+        id: "4604",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1715731200": true,
+            }
+        }
+    },
+    "mangrove": {
+        enabled: true,
+        id: "4610"
+    },
+    "ociswap": {
+        enabled: true,
+        id: "3646",
+        parentId: "Ociswap",
+        protocolsData: {
+            "basic": {
+                "id": "3646",
+                "enabled": true,
+            },
+            "precision": {
+                "id": "4629",
+                "enabled": true,
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1715817600": true,
+            }
+        }
+    },
+    "equation-v3": {
+        parentId: "Equation",
+        enabled: true,
+        id: "4586"
+    },
+    "Viridian": {
+        enabled: true,
+        id: "4631"
+    },
+    "yfx-v4": {
+        enabled: true,
+        id: "4674"
+    },
+    "macaron-xyz": {
+        enabled: true,
+        id: "4590"
+    },
+    "ston": {
+        enabled: true,
+        id: "2337"
+    },
+    "keller-cl": {
+        parentId: "Keller Finance",
+        enabled: true,
+        id: "4583"
+    },
+    "dragonswap-sei": {
+        enabled: true,
+        id: "4720"
+    },
+    "basin": {
+        id: "4703",
+        enabled: true,
+        protocolsData: {
+            "spot": {
+                "id": "4703",
+                "enabled": true,
+            }
+        }
+    },
+    "polkadex": {
+        enabled: true,
+        id: "4699"
+    },
+    "nostra-pools": {
+        parentId: "Nostra",
+        enabled: true,
+        id: "4053"
+    },
+    "clober-v2": {
+        parentId: "Clober",
+        enabled: true,
+        id: "4764"
+    },
+    "bladeswap": {
+        parentId: "BladeSwap",
+        enabled: true,
+        id: "4206",
+        protocolsData: {
+            "v2": {
+                "id": "4206",
+                "enabled": true,
+            },
+            "CL": {
+                "id": "4746",
+                "enabled": true,
+            }
+        }
+    },
+    "stabble": {
+        enabled: true,
+        id: "4734"
+    },
+    "aktionariat": {
+        enabled: true,
+        id: "2782"
+    },
+    "xei": {
+        enabled: true,
+        id: "4836"
     }
 } as AdaptorsConfig

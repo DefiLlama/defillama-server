@@ -34,5 +34,23 @@ export default {
             "id": "1833"
         }
     }
+  },
+  "vooi": {
+    "enabled": true,
+    "id": "4655"
+  },
+  "perpie": {
+    "enabled": true,
+    "id": "4817",
+    protocolsData: {
+        "derivatives": {
+            "enabled": true,
+            "id": "4817"
+        }
+    }
+  },
+  "bitoro": {
+    "enabled": true,
+    "id": "4841"
   }
 } as AdaptorsConfig;

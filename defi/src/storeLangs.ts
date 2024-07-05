@@ -3,8 +3,7 @@ import { processProtocols, TvlItem } from "./storeGetCharts";
 import type { Protocol } from "./protocols/data";
 import { storeR2JSONString } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { writeToPGCache } from "./api2/db";
-import { PG_CACHE_KEYS } from "./api2/constants";
+import { storeRouteData } from "./api2/cache/file-cache";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -119,7 +118,7 @@ export async function storeLangs({ ...options }: any = {}) {
   }
 
   if (options.isApi2CronProcess) {
-    await writeToPGCache(PG_CACHE_KEYS.LANG_DATA, data) // TODO: verify how/where this is read and update it to use the api
+    await storeRouteData('langs', data)
     return;
   } else {
     await storeR2JSONString("temp/langs.json", JSON.stringify(data), 10 * 60);

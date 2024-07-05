@@ -46,6 +46,22 @@ export async function storeR2(
   return await R2.send(command);
 }
 
+export async function deleteR2(
+  filename: string,
+) {
+  const command = new DeleteObjectsCommand({
+    Bucket: datasetBucket,
+    Delete: {
+      Objects: [
+        {
+          Key: filename
+        }
+      ]
+    } 
+  })
+  return await R2.send(command)
+}
+
 export async function storeR2JSONString(filename: string, body: string | Readable, cache?: number) {
   const command = new PutObjectCommand({
     Bucket: datasetBucket,

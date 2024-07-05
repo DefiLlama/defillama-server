@@ -201,7 +201,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
           childProtocols.push({
             ...childProtocol,
             ...childConfig,
-            id: isNaN(+versionConfig.id) ? versionConfig.id : config[adapterKey].id,
+            id: !isNaN(+versionConfig.id) ? versionConfig.id : config[adapterKey].id,
             id2,
             defillamaId: versionConfig.id,
             module: adapterKey,

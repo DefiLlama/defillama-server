@@ -794,5 +794,18 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "rollie-finance": {
+        enabled: true,
+        id: "4636",
+    },
+    "tlx-finance": {
+        enabled: true,
+        id: "4555"
+    },
+    "linehub-perps": {
+        parentId: "LineHub",
+        enabled: true,
+        id: "4842"
     }
 } as AdaptorsConfig

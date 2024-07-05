@@ -3,9 +3,9 @@ import { deleteProtocolCache } from '../../utils/r2'
 import { deleteFromPGCache, getDailyTvlCacheId,  initializeTVLCacheDB } from '../../api2/db'
 
 export async function clearProtocolCache(protocolName: string) {
-  const { data: { protocols } } = await axios.get('https://api.llama.fi/lite/protocols2')
+  const { data: protocols } = await axios.get('https://api.llama.fi/protocols')
   protocolName = protocolName.toLowerCase().trim()
-  const protocolId = protocols.find((p: any) => p.name.toLowerCase() === protocolName.toLowerCase())?.defillamaId
+  const protocolId = protocols.find((p: any) => p.name.toLowerCase() === protocolName.toLowerCase())?.id
   if (protocolId === undefined) {
     return console.log("No protocol with that name!")
   }

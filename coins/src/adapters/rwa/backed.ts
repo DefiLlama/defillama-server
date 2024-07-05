@@ -64,6 +64,12 @@ const oracles: any = [
     chain: "arbitrum",
     ethToken: "0xAde6057FcAfa57d6d51FFa341C64ce4814995995",
   },
+  {
+    key: "bNVDA",
+    oracle: "0xab16e8dc52b5fc2dbb0b28afdd119d696e580618",
+    chain: "ethereum",
+    ethToken: "0xA34C5e0AbE843E10461E2C9586Ea03E55Dbcc495",
+  },
 ];
 
 async function getTokenPrices(chain: string, timestamp: number) {

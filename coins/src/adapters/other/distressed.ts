@@ -112,7 +112,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     FITFI: "0x7588df009c3d82378be6ab81f2108fa963c10fc8",
     JEFE: "0x80fa6d5384bdde296a28a321f73ab70977575129",
     LORT: "0xd24616870ca41bc01074446988faeb0085a71190",
-    BCCOIN: "0x2940566Eb50F15129238f4Dc599ADC4F742D7d8E"
+    BCCOIN: "0x2940566Eb50F15129238f4Dc599ADC4F742D7d8E",
+    PNIC: "0x76d36d44dc4595e8d2eb3ad745f175eda134284f"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

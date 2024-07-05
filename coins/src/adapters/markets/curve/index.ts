@@ -57,6 +57,17 @@ export function curve6(timestamp: number = 0) {
       "0x73aF1150F265419Ef8a5DB41908B700C32D49135",
       "0x3aDf984c937FA6846E5a24E0A68521Bdaf767cE1",
     ]),
+    getTokenPrices2("polygon", [], timestamp, "eth-custom", [
+      "0xa691d34abf93c0a77998e53b564becfaf46dae27",
+    ]),
+    getTokenPrices2("base", [], timestamp, "eth-custom", [
+      "0xf6c5f01c7f3148891ad0e19df78743d31e390d1f",
+      "0x6e53131f68a034873b6bfa15502af094ef0c5854",
+      "0x6dfe79cece4f64c1a34f48cf5802492ab595257e",
+      "0x3b9860321f03afe02d3ff9e4fdd4017dc6f4d7ca",
+      "0x1f0dbecda414f401db46464864273cad19368706",
+      "0x3e07f263c1ce5ec2a3f1ca87af56b80b27674d96",
+    ]),
   ]);
 }
 export function curve7(timestamp: number = 0) {

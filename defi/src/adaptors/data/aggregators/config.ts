@@ -84,15 +84,9 @@ export default {
     enabled: true,
     id: "189",
   },
-  "0x": {
+  "zrx": {
     enabled: true,
-    id: "2116",
-    protocolsData: {
-      "zrx": {
-        enabled: true,
-        id: "2116",
-      }
-    }
+    id: "4628",
   },
   "cowswap": {
     enabled: true,
@@ -197,7 +191,7 @@ export default {
   },
   "aperture-swap": {
     parentId: "Aperture Finance",
-    "enabled": true,
+    "enabled": false,
     "id": "3554"
   },
   "magpie": {
@@ -215,5 +209,30 @@ export default {
   "rubic": {
     "enabled": true,
     "id": "1282"
+  },
+  "eisen": {
+    "enabled": true,
+    "id": "4691"
+  },
+  "udex-agg": {
+    "enabled": true,
+    "id": "4704"
+  },
+  "injex": {
+    "enabled": true,
+    "id": "4762"
+  },
+  "hop-aggregator": {
+    enabled: true,
+    id: "4791",
+  },
+  "hallswap": {
+    enabled: true,
+    id: "4824",
+  },
+  "flowx-aggregator": {
+    parentId: "FlowX Finance",
+    enabled: true,
+    id: "4825",
   }
 } as AdaptorsConfig;

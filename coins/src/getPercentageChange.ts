@@ -17,25 +17,25 @@ type PriceChangeResponse = {
 function formParamsObject(event: any): QueryParams {
   const coins = (event.pathParameters?.coins ?? "").split(",");
   const period = quantisePeriod(
-    event.queryStringParameters?.period?.toLowerCase() ?? "d"
+    event.queryStringParameters?.period?.toLowerCase() ?? "d",
   );
   const lookForward = event.queryStringParameters?.lookForward ?? false;
   const timestamp = quantisePeriod(
     (
       event.queryStringParameters?.timestamp ?? getCurrentUnixTimestamp()
-    ).toString()
+    ).toString(),
   );
   return {
     coins,
     period,
     lookForward,
-    timestamp
+    timestamp,
   };
 }
 async function fetchDBData(
   timestamps: number[],
   coins: any[],
-  PKTransforms: any
+  PKTransforms: any,
 ) {
   let response = {} as any;
   const promises: any[] = [];
@@ -46,7 +46,7 @@ async function fetchDBData(
         const finalCoin = await getRecordClosestToTimestamp(
           coin.redirect ?? coin.PK,
           timestamp,
-          900
+          900,
         );
         if (finalCoin.SK === undefined) {
           return;
@@ -55,15 +55,15 @@ async function fetchDBData(
           response[PKTransforms[coin.PK]] = {
             symbol: coin.symbol,
             confidence: coin.confidence,
-            prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }]
+            prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }],
           };
         } else {
           response[PKTransforms[coin.PK]].prices.push({
             timestamp: finalCoin.SK,
-            price: finalCoin.price
+            price: finalCoin.price,
           });
         }
-      })
+      }),
     );
   });
 
@@ -77,39 +77,46 @@ function calcPercentages(response: any, timestamps: number[]) {
     const data = response[c].prices;
     if (data.length != 2) return new Error(`unavailable for this time period`);
     data.sort((a: any, b: any) => a.timestamp < b.timestamp);
-    const priceChange = data[1].price - data[0].price;
-    const timeChangeActual = data[1].timestamp - data[0].timestamp;
-    const timeChangeRequested = Math.abs(timestamps[0] - timestamps[1]);
-    const startPrice = data[0].price;
+    const [{ price: p0, timestamp: t0 }, { price: p1, timestamp: t1 }] = data;
+    const priceChange = p1 - p0;
+    const timeChangeActual = t1 - t0;
+    const timeChangeRequested = timestamps[1] - timestamps[0];
 
-    results[c] =
+    const requestedActualRatio = Math.abs(
+      timeChangeActual - timeChangeRequested / timeChangeRequested,
+    );
+
+    const percentageChange =
       (100 * timeChangeRequested * priceChange) /
-      (startPrice * timeChangeActual);
+      (data[0].price * timeChangeActual);
+
+    if (requestedActualRatio < 1.2 || Math.abs(percentageChange) > 100)
+      throw new Error(`price data resolution insufficient`);
+
+    results[c] = percentageChange;
   });
 
   return results;
 }
-const handler = async (
-  event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
+const handler = async (event: any): Promise<IResponse> => {
   const params = formParamsObject(event);
   const timestamps = getTimestampsArray(
     params.timestamp,
     params.lookForward == "true",
     params.period,
-    2
+    2,
   );
   const { PKTransforms, coins } = await getBasicCoins(params.coins);
   const response: PriceChangeResponse = await fetchDBData(
     timestamps,
     coins,
-    PKTransforms
+    PKTransforms,
   );
   return successResponse(
     {
-      coins: calcPercentages(response, timestamps)
+      coins: calcPercentages(response, timestamps),
     },
-    3600
+    3600,
   ); // 1 hour cache
 };
 

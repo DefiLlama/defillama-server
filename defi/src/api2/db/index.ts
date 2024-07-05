@@ -285,6 +285,10 @@ const getAllProtocolItems = callWrapper(_getAllProtocolItems)
 const getClosestProtocolItem = callWrapper(_getClosestProtocolItem)
 const saveProtocolItem = callWrapper(_saveProtocolItem)
 
+function getPGConnection() {
+  return sequelize
+}
+
 export {
   TABLES,
   sequelize,
@@ -292,6 +296,7 @@ export {
   getAllProtocolItems,
   getClosestProtocolItem,
   saveProtocolItem,
+  getPGConnection,
   initializeTVLCacheDB,
   closeConnection,
   deleteProtocolItems,

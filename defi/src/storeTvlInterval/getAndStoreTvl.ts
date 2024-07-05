@@ -18,6 +18,7 @@ import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
 import { storeAllTokens } from "../../l2/layer2pg";
+import { elastic } from '@defillama/sdk';
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -53,9 +54,10 @@ async function getTvl(
   options: StoreTvlOptions = {} as StoreTvlOptions
 ) {
   let chainDashPromise
+  let chain
   for (let i = 0; i < maxRetries; i++) {
     try {
-      const chain = storedKey.split('-')[0]
+      chain = storedKey.split('-')[0]
       const block = chainBlocks[chain]
       const params: any = { chain, block, timestamp: unixTimestamp, storedKey }
       const api: any = new sdk.ChainApi(params)
@@ -112,7 +114,24 @@ async function getTvl(
         );
       }
       return
-    } catch (e) {
+    } catch (e: any) {
+
+      let errorString = e?.message
+      try {
+        errorString = JSON.stringify(e)
+      } catch (e) { }
+      await elastic.addErrorLog({
+        error: e as any,
+        errorString,
+        metadata: {
+          application: 'tvl',
+          type: 'getTvl',
+          name: protocol.name,
+          id: protocol.id,
+          storedKey,
+          chain,
+        },
+      } as any)
       if (i >= maxRetries - 1) {
         throw e
       } else {

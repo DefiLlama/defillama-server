@@ -21,6 +21,7 @@ import { storeLangs } from "../../storeLangs";
 import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
 import { getOutdated } from "../../stats/getOutdated";
+// import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 
 const protocolDataMap: { [key: string]: any } = {}
 
@@ -62,6 +63,7 @@ async function run() {
   await writeProtocolsChart()
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
+  // await storeRouteData('twitter/overview', await getTwitterOverviewFileV2())
 
   // await writeRaises() // moved to different cron task
   // await writeHacks()  // moved to different cron task

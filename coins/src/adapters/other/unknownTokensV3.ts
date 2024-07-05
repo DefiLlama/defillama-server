@@ -18,6 +18,9 @@ const config: any = {
   ethereum: {
     '0xBEF26Bd568e421D6708CCA55Ad6e35f8bfA0C406': '0x26FA8b07DcE29Fb1F0fb3C889E01b59dEbADeFdA' // BCUT
   },
+  kroma: {
+    '0x61e0D34b5206Fa8005EC1De8000df9B9dDee23Db': '0x62330719f844dB255EF135f977176D72497dc881' // spETH
+  },
 }
 
 export function unknownTokensV3(timestamp: number = 0) {

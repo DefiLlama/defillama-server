@@ -15,6 +15,7 @@ const customMapping: { [chain: string]: { [key: string]: string } } = {
       "0x35751007a407ca6feffe80b3cb397736d2cf4dbe",
   },
 };
+const blacklist = ["0x1d83fdf6f019d0a6b2babc3c6c208224952e42fc"];
 
 export default async function getTokenPrices(
   timestamp: number,
@@ -46,7 +47,9 @@ export default async function getTokenPrices(
     }),
   );
 
-  const markets: string[] = logs.map((l: any) => l.market);
+  const markets: string[] = logs
+    .map((l: any) => l.market)
+    .filter((m: string) => !blacklist.includes(m.toLowerCase()));
 
   if (chain == "arbitrum")
     markets.push(
@@ -149,23 +152,8 @@ export default async function getTokenPrices(
   }
 
   async function ptWrites() {
-    const [exchangeRates, decimals, symbols] = await Promise.all([
-      Promise.all(
-        // PromisePool error when multicalled on mainnet
-        markets.map((params: string) =>
-          api.call({
-            target: toAsset,
-            params,
-            abi: "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
-          }),
-        ),
-      ),
-      // api.multiCall({
-      //   calls: markets.map((params: string) => ({ target: toAsset, params })),
-      //   abi:
-      //     "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
-      //   requery: true,
-      // }),
+    const exchangeRates: { [address: string]: any } = {};
+    const [decimals, symbols] = await Promise.all([
       api.multiCall({
         abi: "uint8:decimals",
         calls: PTs,
@@ -174,6 +162,28 @@ export default async function getTokenPrices(
         abi: "string:symbol",
         calls: PTs,
       }),
+      Promise.all(
+        // PromisePool error when multicalled on mainnet
+        markets.map((m: string) =>
+          api
+            .call({
+              target: toAsset,
+              params: [m, 1800],
+              abi: "function getPtToAssetRate(address, uint32) public view returns (uint256 ptToAssetRate)",
+            })
+            .then((r) => (exchangeRates[m] = r))
+            .catch(() =>
+              api
+                .call({
+                  target: toAsset,
+                  params: [m, 900],
+                  abi: "function getPtToAssetRate(address, uint32) public view returns (uint256 ptToAssetRate)",
+                })
+                .then((r) => (exchangeRates[m] = r))
+                .catch(() => (exchangeRates[m] = null)),
+            ),
+        ),
+      ),
     ]);
 
     PTs.map((PT: string, i: number) => {
@@ -181,10 +191,15 @@ export default async function getTokenPrices(
         (u: CoinData) => u.address == underlyingTokens[i],
       );
 
-      if (!underlying || !exchangeRates[i] || !decimals[i] || !symbols[i])
+      if (
+        !underlying ||
+        !exchangeRates[markets[i]] ||
+        !decimals[i] ||
+        !symbols[i]
+      )
         return;
 
-      const price = (underlying.price * exchangeRates[i]) / 10 ** 18;
+      const price = (underlying.price * exchangeRates[markets[i]]) / 10 ** 18;
 
       addToDBWritesList(
         writes,

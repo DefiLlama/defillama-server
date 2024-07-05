@@ -13,7 +13,6 @@ import parentProtocols from "./protocols/parentProtocols";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
 import { withTimeout } from "./utils/shared/withTimeout";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const prefix = "coingecko:";
 
@@ -22,9 +21,9 @@ function getCgId(token: string) {
   if (idStart == -1) return null;
   return token.substring(idStart + prefix.length);
 }
-function findPId(cgId: string | null) {
-  if (!cgId) return;
-  const parent = parentProtocols.find((p) => p.gecko_id == cgId);
+function findPId(cgId?: string | null, parentId?: string) {
+  if (!cgId && !parentId) return;
+  const parent = parentProtocols.find((p) => (parentId ? p.id == parentId : p.gecko_id == cgId));
   if (parent) return { parentProtocol: parent.id, name: parent.name, gecko_id: parent.gecko_id };
   return protocols.find((p) => p.gecko_id == cgId);
 }
@@ -36,17 +35,21 @@ async function aggregateMetadata(
   rawData: SectionData
 ) {
   const pId = rawData.metadata.protocolIds?.[0] ?? null;
-  const cgId = getCgId(rawData.metadata.token);
-  const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : findPId(cgId);
-  const id = pData ? pData.parentProtocol || pData.name : cgId ? cgId : protocolName;
+  const pData0 = protocols.find((p) => p.id == pId);
+  const cgId = getCgId(rawData.metadata.token) ?? pData0?.gecko_id;
+  const pData = findPId(cgId, pId?.startsWith("parent#") ? pId : pData0?.parentProtocol) ?? pData0;
+  const id = pData ? pData.name : cgId ? cgId : protocolName;
 
   const factories: string[] = ["daomaker"];
   if (factories.includes(protocolName) && !(pData || cgId))
     throw new Error(`no metadata for raw token ${rawData.metadata.token}`);
 
   let name = id;
+  let gecko_id = pData?.gecko_id;
+
   if (pData?.parentProtocol) {
     name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;
+    gecko_id = parentProtocols.find((p) => p.id === pData.parentProtocol)?.gecko_id ?? pData?.gecko_id;
   }
 
   const realTimeTokenAllocation = createCategoryData(realTimeChart, rawData.categories);
@@ -78,7 +81,7 @@ async function aggregateMetadata(
       documentedData,
       metadata: rawData.metadata,
       name,
-      gecko_id: pData?.gecko_id,
+      gecko_id,
       futures,
       categories: rawData.categories,
     },
@@ -190,7 +193,6 @@ async function processProtocolList() {
   let protocolErrors: string[] = [];
   let emissionsBrakedown: EmissionBreakdown = {};
 
-  await setEnvSecrets();
   const protocolAdapters = Object.entries(adapters);
   await PromisePool.withConcurrency(5)
     .for(shuffleArray(protocolAdapters))
@@ -221,6 +223,7 @@ export async function handler() {
   } catch (e) {
     process.env.UNLOCKS_WEBHOOK ? await sendMessage(`${e}`, process.env.UNLOCKS_WEBHOOK!) : console.log(e);
   }
+  process.exit();
 }
 async function handlerErrors(errors: string[]) {
   if (errors.length > 0) {

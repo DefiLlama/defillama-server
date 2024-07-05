@@ -12,7 +12,7 @@ export default async function getTokenPrices(
   knownToken: string,
   knownTokenIsGas: boolean,
   chain: any,
-  confidence: number = 0.51
+  confidence: number = 0.51,
 ) {
   const writes: Write[] = [];
   const block: number | undefined = await getBlock(chain, timestamp);
@@ -60,6 +60,9 @@ export default async function getTokenPrices(
     getTokenAndRedirectData([knownToken], chain, timestamp),
     getTokenInfo(chain, [unknownToken], block),
   ]);
+
+  if (!knownInfo.length) return [];
+
   const price: number =
     ((parseInt(knownTokenIsGas ? gasBalance.output : knownBalance.output) *
       10 ** (unknownDecimals.output - knownDecimals.output)) /
@@ -79,7 +82,7 @@ export default async function getTokenPrices(
     symbol,
     timestamp,
     "unknownTokenRequested",
-    confidence
+    confidence,
   );
 
   return writes;

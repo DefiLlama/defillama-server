@@ -48637,7 +48637,52 @@ const data3: Protocol[] = [
     module: "danzo-arena/index.js",
     twitter: "DanzoADA",
     listedAt: 1720126575
-  }
+  },
+  {
+    id: "4846",
+    name: "D2 Finance",
+    address: "arbitrum:0xed7f000eE335B8199b004cCA1c6f36d188CF6cb8",
+    symbol: "D2",
+    url: "https://d2.finance/strategies",
+    description:
+      "Tokenized Derivatives Strategies, dynamically managing risk and reward efficiently. Offering a robust suite of institutional-grade managed strategies within innovative, non-custodial single-click vault architecture.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/d2-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "d2-token",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "d2finance/index.js",
+    twitter: "D2_Finance",
+    audit_links: ["https://paladinsec.co/projects/d2"],
+    listedAt: 1720175575
+  },
+  {
+    id: "4847",
+    name: "Astherus",
+    address: null,
+    symbol: "-",
+    url: "https://www.astherus.finance",
+    description:
+      "Astherus is a liquidity hub for staked assets such as LSTs (liquid staking tokens) and LRTs (liquid restaking tokens), aiming to scale their utilization and boost user profitability.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/astherus.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum", "Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "astherus/index.js",
+    twitter: "AstherusHub",
+    listedAt: 1720175975
+  },
 ];
 
 export default data3;

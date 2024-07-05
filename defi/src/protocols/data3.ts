@@ -16797,14 +16797,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3439",
-    name: "HydraDX",
+    name: "Hydration", // previous HydraDX
     address: null,
     symbol: "HDX",
     url: "https://hydradx.io/",
     description:
-      "HydraDX is an innovative AMM which unlocks unparalleled efficiencies by combining all assets in a single trading pool.",
+      "Hydration unites swaps, lending and the Hollar stablecoin under the roof of a scalable appchain.",
     chain: "Hydration",
-    logo: `${baseIconsUrl}/hydradx.png`,
+    logo: `${baseIconsUrl}/hydration.jpg`, // hydration.jpg
     audits: "0",
     audit_note: null,
     gecko_id: "hydradx",
@@ -16813,7 +16813,7 @@ const data3: Protocol[] = [
     chains: ["Hydration"],
     oracles: [],
     module: "hydradx/index.js",
-    twitter: "hydra_dx",
+    twitter: "hydration_net",
     forkedFrom: [],
     github: ["galacticcouncil"],
     listedAt: 1692805979,

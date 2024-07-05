@@ -6,6 +6,7 @@ import { readFromPGCache, writeToPGCache } from "../db";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import parentProtocols from "../../protocols/parentProtocols";
 import { RUN_TYPE } from ".";
+import { getTimeSDaysAgo } from "./time";
 
 const parentProtocolMap: any = {}
 parentProtocols.forEach(protocol => {
@@ -59,7 +60,7 @@ async function _getDimensionsCacheV2(cacheType = RUN_TYPE.API_SERVER) {
     const childProtocolVersionKeyMap: any = {}
 
     // create a map of parent protocol names to protocol data
-    for (const protocolData of Object.values(adapterData.parentProtocols) as any) {
+    for (const protocolData of Object.values(adapterData.parentProtocols ?? {}) as any) {
       const sluggifiedName = sluggifyString(protocolData.info.name)
       protocolNameMap[sluggifiedName] = protocolData
     }
@@ -141,4 +142,39 @@ export async function getAdaptorRecord2({ adapter, type, mode = 'ALL', adaptorTy
 
   const cacheKey = getAdapterCacheKey(adapter, type, mode)
   return cache.feesAdapterCache[fileKey][cacheKey]
+}
+
+export function computeSummary({ records, versionKey, chain, recordType, }: {
+  records: any, 
+  versionKey?: string,
+  recordType: string,
+  chain?: string,
+}) {
+  const summary: any = {}
+  let todayStr = getTimeSDaysAgo(0)
+  let moveADayBack = false
+  if (!records[todayStr]) {
+    moveADayBack = true
+    todayStr = getTimeSDaysAgo(0, moveADayBack)
+  }
+  let yesterdayStr = getTimeSDaysAgo(1, moveADayBack)
+  const lastWeekTimeStrings = Array.from({ length: 7 }, (_, i) => getTimeSDaysAgo(i, moveADayBack))
+
+  summary.total24h = getValue(records[todayStr])
+  summary.total48hto24h = getValue(records[yesterdayStr])
+  summary.total7d = lastWeekTimeStrings.map((dateStr: string) => getValue(records[dateStr] ?? 0)).reduce((acc: number, i: any) => acc + i, 0)
+  summary.totalAllTime = Object.values(records).map((r: any) => getValue(r ?? 0)).reduce((acc: number, i: any) => acc + i, 0)
+
+  function getValue(record: any) {
+    if (!record) return null
+    let data
+    if (!versionKey) {
+      data = record.aggregated?.[recordType]
+    } else {
+      data = record.breakdown?.[recordType]?.[versionKey]
+    }
+    if (!data) return null
+    return chain ? data.chains?.[chain] : data.value
+  }
+  return summary
 }

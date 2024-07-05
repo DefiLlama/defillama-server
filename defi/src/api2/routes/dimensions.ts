@@ -7,7 +7,7 @@ import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/handlers/getOvervi
 import { getDisplayChainName, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
-import { getAdapterTypeCache } from "../utils/dimensionsUtils";
+import { computeSummary, getAdapterTypeCache } from "../utils/dimensionsUtils";
 import { timeSToUnix, timeSToUnixString } from "../utils/time";
 import * as fs from 'fs'
 import axios from "axios";
@@ -83,10 +83,10 @@ async function getOverviewProcess(eventParameters: any) {
   response.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
   response.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
 
-  const protocolInfoKeys = ['defillamaId', 'name', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'latestFetchIsOk',]
+  const protocolInfoKeys = ['defillamaId', 'name', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'latestFetchIsOk', 'childProtocols']
   const protocolDataKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'totalAllTime', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'breakdown24h',]  // TODO: missing breakdown24h/fix it?
 
-  response.protocols = Object.values(protocols).map(({ summaries, info }: any) => {
+  response.protocols = Object.entries(protocols).map(([_id, { summaries, info }]: any) => {
     const res: any = {}
 
     let summary = summaries?.[recordType]
@@ -94,6 +94,12 @@ async function getOverviewProcess(eventParameters: any) {
 
     if (summary)
       protocolDataKeys.forEach(key => res[key] = summary[key])
+
+    // sometimes a protocol is diabled or id is changed, we should disregard these data 
+    if (!summary && !info) {
+      // console.log('no data found', _id, info)
+      return null
+    }
 
 
     protocolInfoKeys.forEach(key => res[key] = info?.[key])
@@ -133,13 +139,15 @@ async function getProtocolDataHandler(eventParameters: any) {
   }
 
   const { records, summaries, info } = protocolData
-  const summary = summaries[recordType] ?? {}
+  let summary = summaries[recordType] ?? {}
   // if (!summary) throw new Error("Missing protocol summary")
   const versionKeyNameMap: IJSON<string> = {}
 
   let responseInfo = info
-  if (isChildProtocol)
+  if (isChildProtocol) {
     responseInfo = info.childProtocols.find((i: any) => i.versionKey === childProtocolVersionKey)
+    if (info.childProtocols?.length > 1) responseInfo.parentProtocol = info.displayName ?? info.name
+  }
   const response: any = { ...responseInfo, childProtocols: null, }
   if (info.childProtocols?.length > 1) {
     response.childProtocols = info.childProtocols.map((child: any) => {
@@ -148,16 +156,29 @@ async function getProtocolDataHandler(eventParameters: any) {
     })
   }
 
-  
+
   const getBreakdownLabel = (version: string) => versionKeyNameMap[version] ?? version
 
-  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime',]
-  if (!isChildProtocol)
-    responseKeys.forEach(key => response[key] = summary[key])
+  let allRecords = { ...records }
+
+  // we need all the records either to show chart or compute summary for child protocol
+  if (eventParameters.excludeTotalDataChart  || eventParameters.excludeTotalDataChartBreakdown  || isChildProtocol) {
+    const commonData = await getAdapterTypeCache(AdapterType.PROTOCOLS)
+    const genericRecords = commonData.protocolNameMap[pName]?.records ?? commonData.childProtocolNameMap[pName]?.records ?? {}
+    allRecords = { ...genericRecords, ...records }
+  }
+
+  if (isChildProtocol) {
+    summary = computeSummary({ records: allRecords, versionKey: childProtocolVersionKey!, recordType, })
+  }
+
+  const summaryKeys = ['total24h', 'total48hto24h', 'total7d', 'totalAllTime',]
+  summaryKeys.forEach(key => response[key] = summary[key])
 
   if (!eventParameters.excludeTotalDataChart) {
     const chart = {} as any
-    Object.entries(records).forEach(([date, value]: any) => {
+
+    Object.entries(allRecords).forEach(([date, value]: any) => {
       if (!value.aggregated[recordType]) return;
 
       if (!isChildProtocol)
@@ -174,7 +195,7 @@ async function getProtocolDataHandler(eventParameters: any) {
 
   if (!eventParameters.excludeTotalDataChartBreakdown) {
     const chartBreakdown = {} as any
-    Object.entries(records).forEach(([date, value]: any) => {
+    Object.entries(allRecords).forEach(([date, value]: any) => {
       let breakdown = value.breakdown?.[recordType]
       if (!breakdown) return;
       chartBreakdown[date] = formatBreakDownData(breakdown)
@@ -195,7 +216,7 @@ async function getProtocolDataHandler(eventParameters: any) {
       if (!chains) return;
       if (isChildProtocol && version !== childProtocolVersionKey) return;
       const label = getBreakdownLabel(version)
-      Object.entries(chains).forEach(([chain, value]: any) => { 
+      Object.entries(chains).forEach(([chain, value]: any) => {
         if (!res[chain]) res[chain] = {}
         res[chain][label] = value
       })

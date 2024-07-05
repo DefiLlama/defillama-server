@@ -1,5 +1,5 @@
 import { ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, } from "../../adaptors/handlers/getOverviewProcess";
-import { ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data"
 import { IJSON, } from "../../adaptors/data/types";
 import { getDimensionsCacheV2, storeDimensionsCacheV2, } from "../utils/dimensionsUtils";
@@ -58,7 +58,7 @@ async function run() {
     return obj
   }
 
-  const promises: any = ADAPTER_TYPES.map(async (adapterType) => {
+  async function updateAdapterData(adapterType: AdapterType) {
     // if (adapterType !== AdapterType.OPTIONS) return;
 
     const timeKey1 = `data load ${adapterType}`
@@ -102,7 +102,7 @@ async function run() {
 
 
     for (const [id, protocol] of Object.entries(adapterData.protocols) as any) {
-      addProtocolData(id, protocol, false)
+      addProtocolData(id, protocol, { isParentProtocol: false, adapterType })
     }
 
     for (const [id, childProtocolData] of Object.entries(parentProtocolsData) as any) {
@@ -116,13 +116,13 @@ async function run() {
       }
 
       mergeChildRecords(parentProtocol, childProtocolData)
-      addProtocolData(id, parentProtocol, true) // compute summary data
+      addProtocolData(id, parentProtocol, { isParentProtocol: true, adapterType }) // compute summary data
       parentProtocols[id] = parentProtocol
     }
 
     adapterData.parentProtocols = parentProtocols
 
-    function addProtocolData(id: any, protocol: any, isParentProtocol = false) {
+    function addProtocolData(id: any, protocol: any, { isParentProtocol = false, adapterType }: { isParentProtocol: boolean, adapterType: AdapterType }) {
       if (!isParentProtocol && !protocolMetadataMap[id]) return; // skip if protocol is not enabled
       // console.log('Processing', protocolMap[id].displayName, Object.values(adapterData.protocols[id].records).length, 'records')
 
@@ -150,12 +150,15 @@ async function run() {
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = info.chains.map(_getDisplayChainName)
       protocol.info.chains.forEach((chain: string) => chainSet.add(chain))
-      const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData(protocol.records)
+      const protocolTypeRecords = data[AdapterType.PROTOCOLS].protocols[id]?.records ?? {}
+      const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData({ ...protocolTypeRecords, ...protocol.records })  // if there are duplicate records between protocol and specific adaptertype, the adaptertype record overwrites generic record
       const hasTodayData = !!protocol.records[todayTimestring]
       const timeDataKey = hasTodayData ? 'today' : 'yesterday'
       const { lastTimeString, dayBeforeLastTimeString, weekAgoTimeString, monthAgoTimeString, lastWeekTimeStrings, lastTwoWeektoLastWeekTimeStrings, lastTwoWeekTimeStrings, last30DaysTimeStrings, last60to30DaysTimeStrings, lastOneYearTimeStrings } = timeData[timeDataKey]
 
       Object.entries(protocolRecordMapWithMissingData).forEach(([timeS, record]: any) => {
+        // we dont create summary for items in protocols instead use the fetched records for others
+        if (adapterType === AdapterType.PROTOCOLS) return;
         let { aggregated, timestamp } = record
 
         // if (timestamp > startOfDayTimestamp) return; // skip today's data
@@ -233,6 +236,8 @@ async function run() {
       })
 
       for (const recordType of recordTypes) {
+        if (adapterType === AdapterType.PROTOCOLS) return;
+        
         let _protocolData = protocolData[recordType]
         if (!_protocolData) continue
         const todayRecord = _protocolData.today || _protocolData.latest
@@ -379,7 +384,12 @@ async function run() {
       })
     }
 
-  })
+  }
+
+  // For an app, the volume/fee/... other data can be present either in the respective adapter type or the generic 'protocols' type, so we first pull all
+  // records on protocol field and use it in other adapters
+  await updateAdapterData(AdapterType.PROTOCOLS)
+  const promises: any = ADAPTER_TYPES.filter(i => i !== AdapterType.PROTOCOLS).map(updateAdapterData)
   await Promise.all(promises)
   await storeDimensionsCacheV2(data)
 }

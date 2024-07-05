@@ -48739,7 +48739,7 @@ const data3: Protocol[] = [
     url: "https://novaswap.fi",
     description:
       "NovaSwap is an innovative multi-chain-assets aggregated AMM DEX built on zkLink Nova, offering ultimate security multi-layer yields and fair distribution.",
-    chain: "Optimism",
+    chain: "zkLink Nova",
     logo: `${baseIconsUrl}/novaswap-v2.png`,
     audits: "0",
     audit_note: null,
@@ -48753,6 +48753,52 @@ const data3: Protocol[] = [
     twitter: "NovaSwap_fi",
     parentProtocol: "parent#novaswap",
     listedAt: 1720184331
+  },
+  {
+    id: "4851",
+    name: "Gudchain",
+    address: null,
+    symbol: "-",
+    url: "https://gudchain.com/",
+    description:
+      "Gud brings native blockchain support to every game",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/gudchain.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "gudchain/index.js",
+    audit_links: ["https://cdn.gudchain.com/documents/Gudchain%20-%20Smart%20Contract%20Audit%20Report.pdf"],
+    twitter: "gudchain",
+    listedAt: 1720210088
+  },
+  {
+    id: "4852",
+    name: "Sturgeon",
+    address: null,
+    symbol: "-",
+    url: "https://sturgeon.finance",
+    description:
+      "Sturgeon is an LP optimiser built ontop of Pearl Finance",
+    chain: "re.al",
+    logo: `${baseIconsUrl}/sturgeon.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["re.al"],
+    oracles: [],
+    forkedFrom: [],
+    module: "sturgeon/index.js",
+    twitter: "Sturgeon_fi",
+    github: ["sturgeon-protocol"],
+    listedAt: 1720210095
   },
 ];
 

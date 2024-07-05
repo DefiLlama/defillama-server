@@ -1537,14 +1537,14 @@ const data: Protocol[] = [
   },
   {
     id: "177",
-    name: "DefiSaver",
+    name: "Defi Saver",
     address: null,
     symbol: "-",
     url: "https://defisaver.com/",
     description:
       "DeFi Saver is a one-stop management solution for decentralized finance with advanced leverage management tools and unique automated management features.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/defisaver.jpg`,
+    logo: `${baseIconsUrl}/defi-saver.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

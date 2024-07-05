@@ -4871,6 +4871,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DesynLab",
     github: ["Meta-DesynLab"]
   },
+  {
+    id: "parent#novaswap",
+    name: "NovaSwap",
+    url: "https://novaswap.fi",
+    description: "NovaSwap is an innovative multi-chain-assets aggregated AMM DEX built on zkLink Nova, offering ultimate security multi-layer yields and fair distribution.",
+    logo: `${baseIconsUrl}/novaswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "NovaSwap_fi",
+  },
 ];
 
 export default parentProtocols;

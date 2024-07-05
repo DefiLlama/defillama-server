@@ -44114,14 +44114,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4645",
-    name: "NovaSwap",
+    name: "NovaSwap V1",
     address: null,
     symbol: "-",
-    url: "https://novaswap.fi/",
+    url: "https://legacy.novaswap.fi/#/pool",
     description:
       "NovaSwap is an innovative multi-chain-assets aggregated AMM DEX built on zkLink Nova, offering ultimate security multi-layer yields and fair distribution.",
     chain: "zkLink Nova",
-    logo: `${baseIconsUrl}/novaswap.png`,
+    logo: `${baseIconsUrl}/novaswap-v1.png`,
     audits: "3",
     audit_note: null,
     gecko_id: null,
@@ -44132,6 +44132,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     oracles: [],
     twitter: "NovaSwap_fi",
+    parentProtocol: "parent#novaswap",
     listedAt: 1716305964,
   },
   {
@@ -48729,6 +48730,29 @@ const data3: Protocol[] = [
     twitter: "CatalystAMM",
     github: ["catalystdao"],
     listedAt: 1720176967
+  },
+  {
+    id: "4850",
+    name: "NovaSwap V2",
+    address: null,
+    symbol: "-",
+    url: "https://novaswap.fi",
+    description:
+      "NovaSwap is an innovative multi-chain-assets aggregated AMM DEX built on zkLink Nova, offering ultimate security multi-layer yields and fair distribution.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/novaswap-v2.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkLink Nova"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "novaswap-v2/index.js",
+    twitter: "NovaSwap_fi",
+    parentProtocol: "parent#novaswap",
+    listedAt: 1720184331
   },
 ];
 

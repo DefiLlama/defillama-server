@@ -48800,6 +48800,50 @@ const data3: Protocol[] = [
     github: ["sturgeon-protocol"],
     listedAt: 1720210095
   },
+  {
+    id: "4853",
+    name: "BlackRock USD",
+    address: "0x7712c34205737192402172409a8f7ccef8aa2aec",
+    symbol: "BUIDL",
+    url: "https://securitize.io/",
+    description:
+      "BlackRock USD Institutional Digital Liquidity Fund",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/blackrock-usd.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "securitize/index.js",
+    twitter: "Securitize",
+    listedAt: 1720292439
+  },
+  {
+    id: "4854",
+    name: "Arca Labs ArCoin",
+    address: "0x252739487c1fa66eaeae7ced41d6358ab2a6bca9",
+    symbol: "RCOIN",
+    url: "https://www.arcalabs.com/",
+    description:
+      "Arca Labs ArCoin is a tokenized version of the Arca U.S. Treasury Fund",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/arca-labs-arcoin.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "arca-labs/index.js",
+    twitter: "arcalabs",
+    listedAt: 1720292689
+  },
 ];
 
 export default data3;

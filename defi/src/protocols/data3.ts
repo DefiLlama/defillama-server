@@ -33727,7 +33727,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",
-    chains: ["Base"],
+    chains: ["Arbitrum", "Base"],
     module: "bakerfi/index.js",
     twitter: "bakerfi_",
     forkedFrom: [],

@@ -48802,14 +48802,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4853",
-    name: "BlackRock USD",
+    name: "BlackRock BUIDL",
     address: "0x7712c34205737192402172409a8f7ccef8aa2aec",
     symbol: "BUIDL",
     url: "https://securitize.io/",
     description:
       "BlackRock USD Institutional Digital Liquidity Fund",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/blackrock-usd.png`,
+    logo: `${baseIconsUrl}/blackrock-buidl.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -48819,7 +48819,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "securitize/index.js",
-    twitter: "Securitize",
+    twitter: "BlackRock",
     listedAt: 1720292439
   },
   {

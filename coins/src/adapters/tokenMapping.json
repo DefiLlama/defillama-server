@@ -834,11 +834,6 @@
       "to": "coingecko#wrapped-eeth",
       "decimals": "18",
       "symbol": "weETH"
-    },
-    "0x643e160a3C3E2B7eae198f0beB1BfD2441450e86": {
-      "to": "coingecko#compound-governance-token",
-      "decimals": "18",
-      "symbol": "COMP"
     }
   },
   "radixdlt": {
@@ -3509,6 +3504,13 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 18,
       "symbol": "WBTC"
+    }
+  },
+  "flare": {
+    "0x4a771cc1a39fdd8aa08b8ea51f7fd412e73b3d2b": {
+      "to": "coingecko#hex-trust-usdx",
+      "decimals": 18,
+      "symbol": "USDX"
     }
   }
 }

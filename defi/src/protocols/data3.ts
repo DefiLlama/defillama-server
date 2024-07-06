@@ -27942,8 +27942,8 @@ const data3: Protocol[] = [
   {
     id: "3933",
     name: "Renzo",
-    address: null,
-    symbol: "-",
+    address: "0x3b50805453023a91a8bf641e279401a0b23fa6f9",
+    symbol: "REZ",
     assetToken: "ezETH",
     url: "https://app.renzoprotocol.com/restake",
     description:
@@ -27953,7 +27953,7 @@ const data3: Protocol[] = [
     audits: "2",
     audit_note: null,
     gecko_id: "renzo",
-    cmcId: null,
+    cmcId: "30843",
     category: "Liquid Restaking",
     chains: ["Ethereum"],
     oracles: [],

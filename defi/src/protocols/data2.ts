@@ -12901,14 +12901,14 @@ const data2: Protocol[] = [
   },
   {
     id: "1934",
-    name: "ETCswap V1",
+    name: "ETCswap V2",
     address: null,
     symbol: "-",
     url: "https://www.etcswap.org/",
     description:
       "ETC Swap is a decentralized cryptocurrency exchange where users acquire digital assets without an intermediary",
     chain: "EthereumClassic",
-    logo: `${baseIconsUrl}/etcswap-v1.png`,
+    logo: `${baseIconsUrl}/etcswap-v2.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

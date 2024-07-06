@@ -2266,5 +2266,9 @@ export default {
         parentId: "LineHub",
         enabled: true,
         id: "4842"
+    },
+    "scoop": {
+        enabled: true,
+        id: "4827"
     }
 } as AdaptorsConfig

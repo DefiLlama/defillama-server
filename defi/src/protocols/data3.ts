@@ -45262,7 +45262,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield", // there is no restaking on BTC ..... proof of work not staking
+    category: "Restaking", 
     chains: ["Merlin"],
     oracles: [],
     forkedFrom: [],
@@ -46316,7 +46316,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield", // no restaking
+    category: "Restaking", 
     chains: ["Binance"],
     module: "binlayer/index.js",
     twitter: "binlayer_xyz",

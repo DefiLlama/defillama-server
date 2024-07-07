@@ -33717,7 +33717,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "brETH",
-    url: "https://bakerfi.xyz/",
+    url: "https://bakerfi.xyz",
     description:
       "BakerFi is an innovative DeFi protocol designed to optimize asset growth through efficient staking, re-staking, and recursive strategies, all aimed at enhancing the APY for users. Our platform automates these strategies, streamlining capital allocation, and offers a user-friendly interface accessible to all levels of expertise. Whether you're a novice or seasoned investor, BakerFi provides a seamless experience to maximize your returns.",
     chain: "Arbitrum",

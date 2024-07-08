@@ -44156,7 +44156,7 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "Nimbora_",
     audit_links: [
-      "https://github.com/0xSpaceShard/nimbora_audit_report_yield_dex/blob/main/Nimbora_Audit_Report_Yield_Dex.pdf",
+      "https://github.com/0xSpaceShard/nimbora_audit_report_yield_dex/blob/main/Nimbora%20Audit%20Report.pdf",
     ],
     listedAt: 1716342684,
     parentProtocol: "parent#nimbora",

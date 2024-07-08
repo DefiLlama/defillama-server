@@ -10,7 +10,7 @@ RUN git clone https://github.com/DefiLlama/defillama-server /app/repo
 # Change to the directory of your repo
 WORKDIR /app/repo/defi
 
-RUN git checkout api-v2-dimensions
+# RUN git checkout api-v2-dimensions
 
 # Make port 5001 available to the world outside this container
 EXPOSE 5001

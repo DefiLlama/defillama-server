@@ -26,20 +26,20 @@ export const supportedChains = [
     merkl: true,
     identifier: "arbitrum",
   },
-  // {
-  //     name: 'Optimism',
-  //     subgraphEndpoint: sdk.graph.modifyEndpoint('GgW1EwNARL3dyo3acQ3VhraQQ66MHT7QnYuGcQc5geDG'),
-  //     chainId: 10,
-  //     merkl: true,
-  //     identifier: 'optimism'
-  // },
-  // {
-  //     name: 'Binance',
-  //     subgraphEndpoint: sdk.graph.modifyEndpoint('GLDP56fPGDz3MtmhtfTkz5CxWiqiNLACVrsJ9RqQeL4U'),
-  //     chainId: 56,
-  //     merkl: false,
-  //     identifier: 'bsc'
-  // },
+  {
+      name: 'Optimism',
+      subgraphEndpoint: sdk.graph.modifyEndpoint('GgW1EwNARL3dyo3acQ3VhraQQ66MHT7QnYuGcQc5geDG'),
+      chainId: 10,
+      merkl: true,
+      identifier: 'optimism'
+  },
+  {
+      name: 'Binance',
+      subgraphEndpoint: sdk.graph.modifyEndpoint('GLDP56fPGDz3MtmhtfTkz5CxWiqiNLACVrsJ9RqQeL4U'),
+      chainId: 56,
+      merkl: false,
+      identifier: 'bsc'
+  },
   // {
   //     name: 'Evmos',
   //     subgraphEndpoint: 'https://subgraph.satsuma-prod.com/769a117cc018/steer/steer-protocol-evmos/api',

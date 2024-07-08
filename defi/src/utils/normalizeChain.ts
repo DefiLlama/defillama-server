@@ -2220,8 +2220,8 @@ export const chainCoingeckoIds = {
       chain: "Polkadot",
       types: ["parachain"]
     },
-    twitter: "hydra_dx",
-    url: "https://hydradx.io/",
+    twitter: "hydration_net",
+    url: "https://hydration.net/",
   },
   "Shibarium": {
     geckoId: null,

@@ -48938,6 +48938,29 @@ const data3: Protocol[] = [
     github: ["mind-network"],
     listedAt: 1720434911
   },
+  {
+    id: "4859",
+    name: "BingX",
+    address: null,
+    symbol: "-",
+    url: "https://bingx.com",
+    description:
+      "Empowering Traders. Elevate your crypto trading game at BingX. ",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bingx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Binance", "Arbitrum", "Tron"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bing-cex/index.js",
+    twitter: "BingXOfficial",
+    listedAt: 1720449775
+  },
+
 ];
 
 export default data3;

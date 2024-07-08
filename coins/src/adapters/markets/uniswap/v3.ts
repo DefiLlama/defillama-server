@@ -14,37 +14,36 @@ type Data = {
     priceEstimate: number;
     largeRate: number;
     smallRate: number;
+    out: string;
   };
 };
 type Call = {
   target?: string;
   params?: any;
 };
-
-const chain: any = "ethereum";
+type Tokens = { in: string; out: string };
 const fees: string[] = ["10000", "3000", "500", "100"];
 const sqrtPriceLimitX96 = "0";
 const dollarAmt = 10 ** 5;
-const contracts: any = {
-  ethereum: {
-    quoter: "0x61fFE014bA17989E743c5F6cB21bF9697530B21e",
-    tokenOut: "0xdac17f958d2ee523a2206206994597c13d831ec7",
-  },
+
+const quoters: { [chain: string]: string } = {
+  ethereum: "0x61fFE014bA17989E743c5F6cB21bF9697530B21e",
 };
 
 async function estimateValuesAndFetchMetadata(
-  tokensIn: string[],
+  chain: any,
+  tokens: Tokens[],
   block: number | undefined,
 ): Promise<Data> {
   // first, estimate the value of the token by swapping 1 USDC for x tokens
-  const estimateCalls = tokensIn
-    .map((t: string) =>
+  const estimateCalls = tokens
+    .map((t: Tokens) =>
       fees.map((f: string) => ({
-        target: contracts[chain].quoter,
+        target: quoters[chain],
         params: [
           [
-            contracts[chain].tokenOut,
-            t,
+            t.out.toLowerCase(),
+            t.in.toLowerCase(),
             sdk.util.convertToBigInt(1e6).toString(),
             f,
             sqrtPriceLimitX96,
@@ -55,7 +54,16 @@ async function estimateValuesAndFetchMetadata(
     .flat();
 
   let data: Data = {};
-  [...tokensIn, contracts[chain].tokenOut].map((t: string) => {
+  const tokensMap: { [input: string]: string } = {};
+  tokens.map((t: Tokens) => {
+    tokensMap[t.in.toLowerCase()] = t.out.toLowerCase();
+  });
+  const allTokens: string[] = [
+    ...new Set(tokens.map((t: Tokens) => t.in.toLowerCase())),
+    ...new Set(tokens.map((t: Tokens) => t.out.toLowerCase())),
+  ];
+
+  allTokens.map((t: string) => {
     data[t] = {
       rawQty: -1,
       decimals: -1,
@@ -63,6 +71,7 @@ async function estimateValuesAndFetchMetadata(
       priceEstimate: -1,
       largeRate: -1,
       smallRate: -1,
+      out: tokensMap[t] ?? "",
     };
   });
 
@@ -85,7 +94,7 @@ async function estimateValuesAndFetchMetadata(
       }),
     ),
     multiCall({
-      calls: [...tokensIn, contracts[chain].tokenOut].map((target: string) => ({
+      calls: allTokens.map((target: string) => ({
         target,
       })),
       abi: "erc20:decimals",
@@ -97,7 +106,9 @@ async function estimateValuesAndFetchMetadata(
       }),
     ),
     multiCall({
-      calls: tokensIn.map((target: string) => ({ target })),
+      calls: tokens.map((tokens: Tokens) => ({
+        target: tokens.in.toLowerCase(),
+      })),
       abi: "erc20:symbol",
       chain,
       block,
@@ -110,9 +121,9 @@ async function estimateValuesAndFetchMetadata(
 
   return data;
 }
-function createMainQuoterCalls(data: Data): Call[] {
+function createMainQuoterCalls(chain: any, data: Data): Call[] {
   const calls: Call[] = [];
-  Object.keys(data).map((t: string) => {
+  Object.keys(data).map((t: any) => {
     if (data[t].priceEstimate < 0) return;
     const largeQty = translateQty(
       dollarAmt,
@@ -125,11 +136,11 @@ function createMainQuoterCalls(data: Data): Call[] {
       calls.push(
         ...[
           {
-            target: contracts[chain].quoter,
+            target: quoters[chain],
             params: [
               [
                 t,
-                contracts[chain].tokenOut,
+                data[t].out,
                 sdk.util.convertToBigInt(largeQty).toString(),
                 sdk.util.convertToBigInt(f).toString(),
                 sqrtPriceLimitX96,
@@ -137,12 +148,14 @@ function createMainQuoterCalls(data: Data): Call[] {
             ],
           },
           {
-            target: contracts[chain].quoter,
+            target: quoters[chain],
             params: [
               [
                 t,
-                contracts[chain].tokenOut,
-                sdk.util.convertToBigInt(Number(+largeQty /dollarAmt).toFixed(0)).toString(),
+                data[t].out,
+                sdk.util
+                  .convertToBigInt(Number(+largeQty / dollarAmt).toFixed(0))
+                  .toString(),
                 f,
                 sqrtPriceLimitX96,
               ],
@@ -156,6 +169,7 @@ function createMainQuoterCalls(data: Data): Call[] {
   return calls;
 }
 async function fetchSwapQuotes(
+  chain: any,
   calls: Call[],
   data: Data,
   block: number | undefined,
@@ -171,12 +185,12 @@ async function fetchSwapQuotes(
   }).then((res: any) =>
     res.output.map((r: any, i: number) => {
       const token = r.input.params[0][0];
+      let a = data[token];
       if (!r.output) return;
       const rate =
         r.input.params[0][2].toString() /
         (r.output.amountOut *
-          10 **
-            (data[token].decimals - data[contracts[chain].tokenOut].decimals));
+          10 ** (data[token].decimals - data[data[token].out].decimals));
       if (i % 2 == 0) {
         if (i % 2 == 0 && r.output.amountOut > data[token].largeRate)
           data[token].largeRate = rate;
@@ -185,20 +199,21 @@ async function fetchSwapQuotes(
     }),
   );
 }
-export async function findPricesThroughV3(
-  tokensIn: string[],
-  timestamp: number = 0,
+async function findPricesThroughV3(
+  chain: any,
+  tokens: Tokens[],
+  timestamp: number,
 ) {
   const block = await getBlock(chain, timestamp);
 
-  const data = await estimateValuesAndFetchMetadata(tokensIn, block);
+  const data = await estimateValuesAndFetchMetadata(chain, tokens, block);
   Object.keys(data).map((a: string) => {
     data[a].priceEstimate = 10 ** data[a].decimals / data[a].rawQty;
   });
 
-  const calls: Call[] = createMainQuoterCalls(data);
+  const calls: Call[] = createMainQuoterCalls(chain, data);
 
-  await fetchSwapQuotes(calls, data, block);
+  await fetchSwapQuotes(chain, calls, data, block);
   const writes: Write[] = [];
 
   Object.keys(data).map((t: string) => {
@@ -228,4 +243,18 @@ export async function findPricesThroughV3(
   });
 
   return writes;
+}
+export function uniV3(timestamp: number = 0) {
+  return Promise.all([
+    findPricesThroughV3(
+      "ethereum",
+      [
+        {
+          in: "0x7a486f809c952a6f8dec8cb0ff68173f2b8ed56c",
+          out: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        },
+      ],
+      timestamp,
+    ),
+  ]);
 }

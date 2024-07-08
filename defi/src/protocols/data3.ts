@@ -47960,7 +47960,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Staking Pool",
     chains: ["Ethereum", "Bitrock"],
     module: "wbrockstaking/index.js",
     twitter: "BitRockChain",

@@ -2271,7 +2271,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM","Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2", "gas"]
     },
     chainId: 255,
     github: ["kroma-network"],
@@ -2590,7 +2590,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM","Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2", "gas"]
     },
     chainId: 252,
     twitter: "fraxfinance",
@@ -2987,7 +2987,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM","Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2", "gas"]
     },
     twitter: "BuildOnCyber",
     url: "https://cyber.co/",

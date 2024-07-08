@@ -48891,6 +48891,53 @@ const data3: Protocol[] = [
     github: ["harmonixfi"],
     listedAt: 1720402237
   },
+  {
+    id: "4857",
+    name: "Listapie",
+    address: null,
+    symbol: "-",
+    url: "https://www.lista.magpiexyz.io/stake",
+    description:
+      "Listapie is an advanced SubDAO developed by magpiexyz_io to enhance the enduring viability of lista_daos veLISTA design.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/listapie.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "listapie/index.js",
+    twitter: "Listapiexyz_io",
+    parentProtocol: "parent#magpie-ecosystem",
+    listedAt: 1720434611
+  },
+  {
+    id: "4858",
+    name: "Mind Network",
+    address: null,
+    symbol: "-",
+    url: "https://www.mindnetwork.xyz",
+    description:
+      "An FHE Restaking Layer for PoS and AI Networks.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mind-network.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Ethereum", "Scroll"],
+    oracles: [],
+    forkedFrom: [],
+    module: "mind-restake/index.js",
+    twitter: "mindnetwork_xyz",
+    audit_links: ["https://github.com/mind-network/mind-restaking-contracts/tree/main/audit"],
+    github: ["mind-network"],
+    listedAt: 1720434911
+  },
 ];
 
 export default data3;

@@ -48534,14 +48534,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4841",
-    name: "Bitoro",
+    name: "Bitoro Network", // previous Bitoro
     address: null,
     symbol: "-",
     url: "https://bitoro.network",
     description:
       "The ultimate hub for trading perps onchain. Optimized with the deepest liquidity in DeFi.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/bitoro.jpg`,
+    logo: `${baseIconsUrl}/bitoro-network.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

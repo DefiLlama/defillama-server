@@ -3093,7 +3093,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Superchain"],
     parent: {
-      chain: "Optimism",
+      chain: "Base",
       types: ["L3"]
     },
     twitter: "HamOnWarpcast",

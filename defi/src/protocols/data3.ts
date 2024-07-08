@@ -16800,7 +16800,7 @@ const data3: Protocol[] = [
     name: "Hydration", // previous HydraDX
     address: null,
     symbol: "HDX",
-    url: "https://hydradx.io/",
+    url: "https://hydration.net",
     description:
       "Hydration unites swaps, lending and the Hollar stablecoin under the roof of a scalable appchain.",
     chain: "Hydration",

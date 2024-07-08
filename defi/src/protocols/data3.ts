@@ -48844,6 +48844,53 @@ const data3: Protocol[] = [
     twitter: "arcalabs",
     listedAt: 1720292689
   },
+  {
+    id: "4855",
+    name: "Doubler",
+    address: null,
+    symbol: "-",
+    url: "https://doubler.pro/#/home",
+    description:
+      "Doubler is the industry's first asset profit rights separation protocol. Utilizing a generalized Martingale strategy, it captures external profits and distributes the protocol's gains and losses through the tokenization of profit rights. Doubler aims to provide risk hedging and return optimization for assets through innovative solutions, while offering yield-based alternative trading assets for secondary market traders",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/doubler.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "doubler/index.js",
+    twitter: "doubler_pro",
+    audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SlowMist%20Audit%20Report%20-%20Doubler%20Lite.pdf"],
+    listedAt: 1720402231
+  },
+  {
+    id: "4856",
+    name: "Harmonix Finance",
+    address: null,
+    symbol: "-",
+    url: "https://harmonix.fi/",
+    description:
+      "Harmonix Finance is where TradFi meets DeFi: automated vaults, smart strategies, and max gains with min risk. We are building efficient hedge fund on-chain derivatives pools using hedge fund strategies (like options wheel & delta neutral) where users deposit fund and receive high yield & multiple tokens airdrop",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/harmonix-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Arbitrum", "Base"],
+    oracles: ["Chainlink"], // https://github.com/harmonixfi/core-smart-contract/blob/main/contracts/extensions/Chainlink/PriceConsumer.sol
+    forkedFrom: [],
+    module: "harmonix/index.js",
+    twitter: "harmonixfi",
+    audit_links: ["https://github.com/harmonixfi/core-smart-contract/tree/main/audits"],
+    github: ["harmonixfi"],
+    listedAt: 1720402237
+  },
 ];
 
 export default data3;

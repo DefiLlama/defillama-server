@@ -19288,6 +19288,7 @@ const data3: Protocol[] = [
       Klaytn: ["Witnet"],
       metis: ["Chainlink"],
       mode: ["RedStone"],
+      kroma: ["API3"],
     },
     forkedFrom: ["Compound V2"],
     twitter: "ShoebillFinance",
@@ -31120,7 +31121,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Mode"],
     oraclesByChain: {
-      mode: ["RedStone", "Pyth"], //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
+      mode: ["API3","RedStone", "Pyth"], //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
     },
     forkedFrom: ["Compound V2"],
     module: "ionic/index.js",
@@ -32558,7 +32559,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     oraclesByChain: {
-      mode: ["RedStone"], //https://docs.sturdy.finance/overview/security-and-audits
+      mode: ["API3","RedStone"], //https://docs.sturdy.finance/overview/security-and-audits
     },
     forkedFrom: ["AAVE V2"],
     module: "sturdy-v2/index.js",
@@ -46542,7 +46543,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Taiko"],
-    oracles: [],
+    oracles: ["API3"],
     forkedFrom: [],
     module: "hana-finance/index.js",
     twitter: "Hana_Finance",

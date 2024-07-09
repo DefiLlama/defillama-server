@@ -9931,7 +9931,7 @@ const data2: Protocol[] = [
     cmcId: "9423",
     category: "Indexes",
     chains: ["Ethereum", "Avalanche"],
-    oracles: ["Chainlink", "TWAP"],
+    oracles: ["API3","Chainlink", "TWAP"],
     forkedFrom: [],
     module: "phuture/index.js",
     twitter: "phuture_finance",

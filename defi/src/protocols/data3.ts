@@ -46543,7 +46543,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Taiko"],
-    oracles: [],
+    oracles: ["API3"],
     forkedFrom: [],
     module: "hana-finance/index.js",
     twitter: "Hana_Finance",

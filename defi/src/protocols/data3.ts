@@ -49049,6 +49049,29 @@ const data3: Protocol[] = [
     twitter: "tethergold",
     listedAt: 1720549029
   },
+  {
+    id: "4864",
+    name: "Blasterswap Vaults",
+    address: null,
+    symbol: "-",
+    url: "https://blasterswap.com/",
+    description:
+      "Blasterswap Vaults",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/blasterswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "blasterswap-vaults/index.js",
+    twitter: "BlasterSwap",
+    parentProtocol: "parent#blasterswap",
+    listedAt: 1720550011
+  },
 
 ];
 

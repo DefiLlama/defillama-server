@@ -86,4 +86,5 @@ export default {
   pythAgg: require("./oracles/pythAggregatorV3"),
   warlord: require("./other"),
   ifil: require("./liquidStaking/ifil"),
+  uniV3: require("./markets/uniswap/v3"),
 };

@@ -112,7 +112,7 @@ export const chainCoingeckoIds = {
     geckoId: "optimism",
     symbol: "OP",
     cmcId: "11840",
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -2145,7 +2145,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     github: ["base-org"],
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -2220,8 +2220,8 @@ export const chainCoingeckoIds = {
       chain: "Polkadot",
       types: ["parachain"]
     },
-    twitter: "hydra_dx",
-    url: "https://hydradx.io/",
+    twitter: "hydration_net",
+    url: "https://hydration.net/",
   },
   "Shibarium": {
     geckoId: null,
@@ -2268,7 +2268,12 @@ export const chainCoingeckoIds = {
     geckoId: "kroma",
     symbol: "KRO",
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM","Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 255,
     github: ["kroma-network"],
   },
   "Manta": {
@@ -2448,7 +2453,7 @@ export const chainCoingeckoIds = {
     geckoId: "mode",
     symbol: "MODE",
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -2582,7 +2587,12 @@ export const chainCoingeckoIds = {
     geckoId: "fraxtal",
     symbol: "FXTL",
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM","Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 252,
     twitter: "fraxfinance",
     url: "https://frax.finance",
   },
@@ -2761,9 +2771,13 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
     chainId: 7777777,
-    twitter: "ourZORA",
+    twitter: "zora",
     url: "https://zora.co"
   },
   "DeFiChain EVM": {
@@ -2970,10 +2984,10 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM","Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2", "gas"]
     },
     twitter: "BuildOnCyber",
     url: "https://cyber.co/",
@@ -3077,9 +3091,9 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Arbitrum Orbit"],
+    categories: ["EVM", "Superchain"],
     parent: {
-      chain: "Arbitrum",
+      chain: "Base",
       types: ["L3"]
     },
     twitter: "HamOnWarpcast",
@@ -3133,7 +3147,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM","Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]

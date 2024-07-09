@@ -2270,5 +2270,10 @@ export default {
     "scoop": {
         enabled: true,
         id: "4827"
+    },
+    "ether-fi": {
+        parentId: "ether.fi",
+        enabled: true,
+        id: "4429"
     }
 } as AdaptorsConfig

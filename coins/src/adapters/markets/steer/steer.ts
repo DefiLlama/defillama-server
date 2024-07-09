@@ -6,6 +6,7 @@ import {
   getTokenAndRedirectData,
 } from "../../utils/database";
 import { request } from "graphql-request";
+import { getCurrentUnixTimestamp } from "../../../utils/date";
 
 export const supportedChains = [
   {
@@ -26,20 +27,24 @@ export const supportedChains = [
     merkl: true,
     identifier: "arbitrum",
   },
-  // {
-  //     name: 'Optimism',
-  //     subgraphEndpoint: sdk.graph.modifyEndpoint('GgW1EwNARL3dyo3acQ3VhraQQ66MHT7QnYuGcQc5geDG'),
-  //     chainId: 10,
-  //     merkl: true,
-  //     identifier: 'optimism'
-  // },
-  // {
-  //     name: 'Binance',
-  //     subgraphEndpoint: sdk.graph.modifyEndpoint('GLDP56fPGDz3MtmhtfTkz5CxWiqiNLACVrsJ9RqQeL4U'),
-  //     chainId: 56,
-  //     merkl: false,
-  //     identifier: 'bsc'
-  // },
+  {
+    name: "Optimism",
+    subgraphEndpoint: sdk.graph.modifyEndpoint(
+      "GgW1EwNARL3dyo3acQ3VhraQQ66MHT7QnYuGcQc5geDG",
+    ),
+    chainId: 10,
+    merkl: true,
+    identifier: "optimism",
+  },
+  {
+    name: "Binance",
+    subgraphEndpoint: sdk.graph.modifyEndpoint(
+      "GLDP56fPGDz3MtmhtfTkz5CxWiqiNLACVrsJ9RqQeL4U",
+    ),
+    chainId: 56,
+    merkl: false,
+    identifier: "bsc",
+  },
   // {
   //     name: 'Evmos',
   //     subgraphEndpoint: 'https://subgraph.satsuma-prod.com/769a117cc018/steer/steer-protocol-evmos/api',
@@ -118,7 +123,7 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
   const query = `{vaults(
   first: 1000, 
   where: {totalLPTokensIssued_not: "0", lastSnapshot_not: "0", createdAt_lt: ${
-    timestamp * 1000
+    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp
   }}) {id}}`;
 
   const data: any = await request(chain.subgraphEndpoint, query);

@@ -48960,6 +48960,28 @@ const data3: Protocol[] = [
     twitter: "BingXOfficial",
     listedAt: 1720449775
   },
+  {
+    id: "4860",
+    name: "Ape Jupiter",
+    address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    symbol: "JUP",
+    url: "https://ape.jup.ag",
+    description:
+      "Ape is built around a secure vault that only your wallet can access. Simply deposit SOL and start to trade.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ape-jupiter.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    parentProtocol: "parent#jupiter",
+    twitter: "JupiterExchange",
+  },
 
 ];
 

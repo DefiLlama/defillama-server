@@ -234,5 +234,16 @@ export default {
     parentId: "FlowX Finance",
     enabled: true,
     id: "4825",
+  },
+  "sushiswap": {
+    "enabled": true,
+    "id": "119",
+    parentId: "Sushi",
+    protocolsData: {
+        "agg-dex": {
+            enabled: true,
+            id: "119"
+        }
+    }
   }
 } as AdaptorsConfig;

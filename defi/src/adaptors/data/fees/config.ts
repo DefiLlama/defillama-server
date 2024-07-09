@@ -2275,5 +2275,10 @@ export default {
         parentId: "ether.fi",
         enabled: true,
         id: "4429"
+    },
+    "jup-ape": {
+        parentId: "Jupiter",
+        enabled: true,
+        id: "4860"
     }
 } as AdaptorsConfig

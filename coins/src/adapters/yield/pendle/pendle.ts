@@ -15,7 +15,10 @@ const customMapping: { [chain: string]: { [key: string]: string } } = {
       "0x35751007a407ca6feffe80b3cb397736d2cf4dbe",
   },
 };
-const blacklist = ["0x1d83fdf6f019d0a6b2babc3c6c208224952e42fc"];
+const blacklist = [
+  "0x1d83fdf6f019d0a6b2babc3c6c208224952e42fc",
+  "0xcb71c2a73fd7588e1599df90b88de2316585a860",
+];
 
 export default async function getTokenPrices(
   timestamp: number,

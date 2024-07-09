@@ -27943,8 +27943,8 @@ const data3: Protocol[] = [
   {
     id: "3933",
     name: "Renzo",
-    address: null,
-    symbol: "-",
+    address: "0x3b50805453023a91a8bf641e279401a0b23fa6f9",
+    symbol: "REZ",
     assetToken: "ezETH",
     url: "https://app.renzoprotocol.com/restake",
     description:
@@ -27954,7 +27954,7 @@ const data3: Protocol[] = [
     audits: "2",
     audit_note: null,
     gecko_id: "renzo",
-    cmcId: null,
+    cmcId: "30843",
     category: "Liquid Restaking",
     chains: ["Ethereum"],
     oracles: [],
@@ -48800,6 +48800,50 @@ const data3: Protocol[] = [
     twitter: "Sturgeon_fi",
     github: ["sturgeon-protocol"],
     listedAt: 1720210095
+  },
+  {
+    id: "4853",
+    name: "BlackRock BUIDL",
+    address: "0x7712c34205737192402172409a8f7ccef8aa2aec",
+    symbol: "BUIDL",
+    url: "https://securitize.io/",
+    description:
+      "BlackRock USD Institutional Digital Liquidity Fund",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/blackrock-buidl.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "securitize/index.js",
+    twitter: "BlackRock",
+    listedAt: 1720292439
+  },
+  {
+    id: "4854",
+    name: "Arca Labs ArCoin",
+    address: "0x252739487c1fa66eaeae7ced41d6358ab2a6bca9",
+    symbol: "RCOIN",
+    url: "https://www.arcalabs.com/",
+    description:
+      "Arca Labs ArCoin is a tokenized version of the Arca U.S. Treasury Fund",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/arca-labs-arcoin.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "arca-labs/index.js",
+    twitter: "arcalabs",
+    listedAt: 1720292689
   },
 ];
 

@@ -16500,7 +16500,7 @@ const data3: Protocol[] = [
     twitter: "Scallop_io",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "parent#scallop",
+  //  parentProtocol: "parent#scallop", they are moving it to a new independent project called Paper Finance. Once that project is live we can change scallop pool name
     listedAt: 1692631527,
   },
   {

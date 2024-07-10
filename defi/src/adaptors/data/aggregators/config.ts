@@ -245,5 +245,9 @@ export default {
             id: "119"
         }
     }
+  },
+  "7k-aggregator": {
+    enabled: true,
+    id: "4868",
   }
 } as AdaptorsConfig;

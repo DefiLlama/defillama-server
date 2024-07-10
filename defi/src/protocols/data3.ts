@@ -49098,7 +49098,28 @@ const data3: Protocol[] = [
     github: ["ls-jordan"],
     stablecoins: ["real-usd"]
   },
-
+  {
+    id: "4866",
+    name: "VNX",
+    address: null,
+    symbol: "-",
+    url: "https://vnx.li",
+    description:
+      "VNX Commodities AG complies with the regulations and leading standards of investor protections. Rest assured, your investments are always safe with us. We believe that you should be able to make transactions with precious metals from anywhere in the world, with complete confidence and protection",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/vnx.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum", "Binance", "Avalanche", "Solana"],
+    module: "vnx-rwa/index.js",
+    twitter: "VNX_Platform",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1720618480
+  },
 ];
 
 export default data3;

@@ -1711,7 +1711,7 @@ export default {
         "id": "1320"
     },
     "surfone": {
-        "enabled": true,
+        "enabled": false,
         "id": "3954"
     },
     "squa-defi": {

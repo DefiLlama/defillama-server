@@ -49113,7 +49113,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "RWA",
-    chains: ["Ethereum", "Binance", "Avalanche", "Solana"],
+    chains: ["Ethereum", "Avalanche", "Solana"],
     module: "vnx-rwa/index.js",
     twitter: "VNX_Platform",
     oracles: [], 

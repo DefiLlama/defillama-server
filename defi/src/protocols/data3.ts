@@ -49120,6 +49120,24 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1720618480
   },
+  {
+    id: "4867",
+    name: "LayerZero",
+    address: "ethereum:0x6985884c4392d348587b19cb9eaaf157f13271cd",
+    symbol: "ZRO",
+    url: "https://layerzero.network/",
+    description:
+      "LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/layerzero.jpg`,
+    audit_note: null,
+    gecko_id: "layerzero",
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "LayerZero_Labs",
+  },
 ];
 
 export default data3;

@@ -4883,6 +4883,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "NovaSwap_fi",
   },
+  {
+    id: "parent#friend-tech",
+    name: "friend.tech",
+    url: "https://www.friend.tech",
+    description: "Your network is your net worth.",
+    logo: `${baseIconsUrl}/friend.tech.jpg`,
+    gecko_id: "friend-tech",
+    cmcId: "31056",
+    chains: [],
+    twitter: "friendtech",
+  },
 ];
 
 export default parentProtocols;

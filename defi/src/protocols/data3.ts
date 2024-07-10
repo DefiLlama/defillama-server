@@ -49073,6 +49073,31 @@ const data3: Protocol[] = [
     parentProtocol: "parent#blasterswap",
     listedAt: 1720550011
   },
+  {
+    id: "4865",
+    name: "Landshare",
+    address: "bsc:0xA73164DB271931CF952cBaEfF9E8F5817b42fA5C",
+    symbol: "LAND",
+    url: "https://landshare.io",
+    description:
+      "Landshare is a tokenized real estate ecosystem that leverages the power of blockchain technology to provide a new way to invest in real estate. With minimum investments of just over $1, Landshare strives to make real estate investment accessible to everyone",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/landshare.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "landshare",
+    cmcId: "11245",
+    category: "RWA",
+    chains: ["Binance"],
+    module: "landshare/index.js",
+    twitter: "Landshareio",
+    oracles: ["Chainlink"], // https://www.chainlinkecosystem.com/ecosystem/landshare
+    forkedFrom: [],
+    audit_links: ["https://landshare.io/wp-content/uploads/2022/06/Audit.pdf"],
+    listedAt: 1720574321,
+    github: ["ls-jordan"],
+    stablecoins: ["real-usd"]
+  },
 
 ];
 

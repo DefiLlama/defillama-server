@@ -49096,7 +49096,6 @@ const data3: Protocol[] = [
     audit_links: ["https://landshare.io/wp-content/uploads/2022/06/Audit.pdf"],
     listedAt: 1720574321,
     github: ["ls-jordan"],
-    stablecoins: ["real-usd"]
   },
   {
     id: "4866",

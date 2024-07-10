@@ -49137,6 +49137,27 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "LayerZero_Labs",
   },
+  {
+    id: "4868",
+    name: "7K Aggregator",
+    address: null,
+    symbol: "-",
+    url: "https://7k.ag",
+    description:
+      "The Leading Liquidity Hub for Smart Traders on Sui Network",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/7k-aggregator.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Sui"],
+    module: "dummy.js",
+    twitter: "7k_ag_",
+    oracles: [], 
+    forkedFrom: [],
+  },
 ];
 
 export default data3;

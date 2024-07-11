@@ -9,6 +9,7 @@ import getTVLOfRecordClosestToTimestamp from "../utils/shared/getRecordClosestTo
 
 const secondsInDay = 24 * 3600;
 
+const isDryRun = process.env.DRY_RUN === "true"
 async function main() {
   const protocol = getProtocol(protocolName)
   const now = Math.round(Date.now() / 1000);
@@ -18,22 +19,32 @@ async function main() {
       const dailyPK = tvlFunc(protocol.id)
       const hourlyPK = dailyPK.replace('daily', 'hourly')
       if(deleteHourlyAtDaily){
-        await dynamodb.delete({
-          Key: {
-            PK: hourlyPK,
-            SK: timestamp,
-          },
-        });
+        const Key = {
+          PK: hourlyPK,
+          SK: timestamp,
+        }
+        if(isDryRun){
+          console.log(`Delete`, Key)
+        } else {
+          await dynamodb.delete({
+            Key,
+          });
+        }
       }
       const hourlyData = await getTVLOfRecordClosestToTimestamp(hourlyPK, timestamp, 3*3600)
       if(hourlyData.SK === undefined){
         throw new Error(`No hourly data for ${hourlyPK} @ ${timestamp}`)
       }
-      await dynamodb.put({
+      const item = {
         ...hourlyData,
         PK:dailyPK,
         SK:timestamp
-      })
+      }
+      if(isDryRun){
+        console.log("write", item)
+      } else {
+        await dynamodb.put(item)
+      }
     }
     console.log(timestamp, new Date(timestamp * 1000).toDateString());
     timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);

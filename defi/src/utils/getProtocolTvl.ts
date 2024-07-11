@@ -156,6 +156,9 @@ export async function getProtocolTvl(
               if(typeof usdTokensSection !== "object"){
                 return 0
               }
+              if(chainDisplayName === "Fraxtal" && protocol.parentProtocol === "parent#frax-finance"){
+                return 0 // FRAX on fraxtal is not backed there nor POL minted
+              }
               return Object.entries(usdTokensSection).reduce((sum, token) => {
                 if (protocol.tokensExcludedFromParent?.includes(token[0].toUpperCase())) {
                   sum += token[1] as number

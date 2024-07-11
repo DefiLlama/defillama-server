@@ -2841,9 +2841,5 @@ export default {
     "xei": {
         enabled: true,
         id: "4836"
-    },
-    "carbon-defi": {
-        enabled: true,
-        id: "2890"
     }
 } as AdaptorsConfig

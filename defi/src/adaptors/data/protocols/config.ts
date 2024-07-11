@@ -233,5 +233,9 @@ export default {
         parentId: "Trader Joe",
         enabled: true,
         id: "4794",
+    },
+    "carbondefi": {
+        enabled: true,
+        id: "2890"
     }
 } as AdaptorsConfig

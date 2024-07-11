@@ -3828,10 +3828,9 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#fixes-inscription",
-    name: "Fixes Inscription",
+    name: "Fixes World",
     url: "https://fixes.world",
-    description:
-      "FIXeS is an executable inscription protocol on Flow blockchain. It allows users to inscribe anything on the blockchain and also provides the 𝔉rc20 fungible tokens.",
+    description: "Fixes World provides multiple fungible token issuance, trading, staking, and governance services. It is driven by the inscription mechanism to enable underlying programmable features.",
     logo: `${baseIconsUrl}/fixes-inscription.jpg`,
     gecko_id: null,
     cmcId: null,

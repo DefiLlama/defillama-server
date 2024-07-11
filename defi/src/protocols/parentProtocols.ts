@@ -4632,14 +4632,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#etcswap",
     name: "ETCswap",
-    url: "https://www.etcswap.org",
+    url: "https://etcswap.org",
     description:
-      "ETC Swap is a decentralized cryptocurrency exchange where users acquire digital assets without an intermediary",
+      "Swap, earn, and build on Ethereum Classic's leading decentralized crypto trading protocol.",
     logo: `${baseIconsUrl}/etcswap.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "ethereum-classic",
+    cmcId: "1321",
     chains: [],
-    twitter: "EthClassicDAO",
+    twitter: "ETCswap_org",
     github: ["ethereumclassic"],
   },
   {

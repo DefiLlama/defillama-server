@@ -834,6 +834,11 @@
       "to": "coingecko#wrapped-eeth",
       "decimals": "18",
       "symbol": "weETH"
+    },
+    "0x78ab77f7d590fb101aa18affc238cbfea31ead5b": {
+      "to": "coingecko#impermax-2",
+      "decimals": "18",
+      "symbol": "IBEX"
     }
   },
   "radixdlt": {

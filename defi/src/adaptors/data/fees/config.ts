@@ -2280,5 +2280,9 @@ export default {
         parentId: "Jupiter",
         enabled: true,
         id: "4860"
+    },
+    "carbon-defi": {
+        enabled: true,
+        id: "2890"
     }
 } as AdaptorsConfig

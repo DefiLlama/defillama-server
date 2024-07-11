@@ -3828,10 +3828,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#fixes-inscription",
-    name: "Fixes World",
+    name: "Fixes World", // previous Fixes Inscription
     url: "https://fixes.world",
     description: "Fixes World provides multiple fungible token issuance, trading, staking, and governance services. It is driven by the inscription mechanism to enable underlying programmable features.",
-    logo: `${baseIconsUrl}/fixes-inscription.jpg`,
+    logo: `${baseIconsUrl}/fixes-world.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

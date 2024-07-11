@@ -49160,6 +49160,50 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
   },
+  {
+    id: "4869",
+    name: "Buzz Farming",
+    address: null,
+    symbol: "-",
+    url: "https://buzz.bsquared.network/farming",
+    description:
+      "Buzz Farming collaborates with well-known BTCFi projects such as Babylon, Lombard, and Bedrock, as well as prominent blockchains, offering users a variety of multifaceted profit strategies. Users can conveniently select and operate investment strategies through Buzz Farming",
+    chain: "BSquared",
+    logo: `${baseIconsUrl}/buzz-farming.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["BSquared"],
+    module: "buzz-farming/index.js",
+    twitter: "BSquaredNetwork",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1720691164
+  },
+  {
+    id: "4870",
+    name: "Satoshi DEX",
+    address: null,
+    symbol: "-",
+    url: "https://satoshidex.ai",
+    description:
+      "SatoshiDEX is a decentralized exchange (DEX) built on the Stacks blockchain, a layer-2 blockchain connected to Bitcoin through Proof-of-Transfer (PoX) consensus",
+    chain: "Stacks",
+    logo: `${baseIconsUrl}/satoshi-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Stacks"],
+    module: "satoshi-dex/index.js",
+    twitter: "satoshiDEX_ai",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1720691964
+  },
 ];
 
 export default data3;

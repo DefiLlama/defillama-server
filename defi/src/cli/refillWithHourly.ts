@@ -1,4 +1,5 @@
 const protocolName = "anchor"
+const deleteHourlyAtDaily = false // enable this if you refilled daily, thus overwriting hourly
 
 import dynamodb from "../utils/shared/dynamodb";
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
@@ -16,12 +17,14 @@ async function main() {
     for (const tvlFunc of [dailyTokensTvl, dailyTvl, dailyUsdTokensTvl]) {
       const dailyPK = tvlFunc(protocol.id)
       const hourlyPK = dailyPK.replace('daily', 'hourly')
-      await dynamodb.delete({
-        Key: {
-          PK: hourlyPK,
-          SK: timestamp,
-        },
-      });
+      if(deleteHourlyAtDaily){
+        await dynamodb.delete({
+          Key: {
+            PK: hourlyPK,
+            SK: timestamp,
+          },
+        });
+      }
       const hourlyData = await getTVLOfRecordClosestToTimestamp(hourlyPK, timestamp, 3*3600)
       if(hourlyData.SK === undefined){
         throw new Error(`No hourly data for ${hourlyPK} @ ${timestamp}`)

@@ -38,6 +38,10 @@ export async function storeRouteData(subPath: string, data: any) {
   return storeData(subPath, data)
 }
 
+export function getRouteDataPath(subPath: string) {
+  return path.join(ROUTES_DATA_DIR, subPath)
+}
+
 export async function readRouteData(subPath: string) {
   subPath = `build/${subPath}`
   return readFileData(subPath)

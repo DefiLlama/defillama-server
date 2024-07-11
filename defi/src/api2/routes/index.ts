@@ -1,7 +1,8 @@
 import fetch from "node-fetch";
 import * as HyperExpress from "hyper-express";
 import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
-import { readRouteData, readFromPGCache, deleteFromPGCache, } from "../cache/file-cache";
+import { readRouteData, readFromPGCache, deleteFromPGCache, getRouteDataPath, } from "../cache/file-cache";
+import { createReadStream } from 'fs'
 import sluggify from "../../utils/sluggify";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
@@ -163,7 +164,10 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   async function fileResponse(filePath: string, res: HyperExpress.Response) {
     try {
       res.set('Cache-Control', 'public, max-age=600'); // Set caching to 10 minutes
-      res.json(await readRouteData(filePath))
+
+      // res.json(await readRouteData(filePath))
+      const fileStream = createReadStream(getRouteDataPath(filePath))
+      fileStream.pipe(res)
     } catch (e) {
       console.error(e);
       return errorResponse(res, 'Internal server error', { statusCode: 500 })

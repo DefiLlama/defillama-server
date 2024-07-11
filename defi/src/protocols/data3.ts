@@ -25991,7 +25991,7 @@ const data3: Protocol[] = [
     url: "https://debridge.finance",
     description: "The bridge that moves at lightspeed. Because DeFi doesn't wait.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/debridge.png`,
+    logo: `${baseIconsUrl}/debridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

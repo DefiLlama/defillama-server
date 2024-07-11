@@ -1945,7 +1945,7 @@ const data2: Protocol[] = [
     description:
       "deBridge is a cross-chain interoperability and liquidity transfer protocol that allows the decentralized transfer of arbitrary data and assets between various blockchains",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/debridge.png`,
+    logo: `${baseIconsUrl}/debridge.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -49328,7 +49328,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/fixes-launchpad.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "re-al",
+    gecko_id: null,
     cmcId: null,
     category: "Launchpad",
     chains: ["Flow"],

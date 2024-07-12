@@ -49388,8 +49388,8 @@ const data3: Protocol[] = [
   {
     id: "4879",
     name: "Clearpool TPOOL",
-    address: null,
-    symbol: "-",
+    address: "0x66761fa41377003622aee3c7675fc7b5c1c2fac5",
+    symbol: "CPOOL",
     url: "https://clearpool.finance/tpool/",
     description:
       "This USDX pool is dedicated to investing in or purchasing treasuries and distribute the resulting yield to liquidity providers",
@@ -49405,6 +49405,7 @@ const data3: Protocol[] = [
     twitter: "ClearpoolFin",
     oracles: [], 
     forkedFrom: [],
+    parentProtocol: "parent#clearpool",
     listedAt: 1720786477
   },
   {

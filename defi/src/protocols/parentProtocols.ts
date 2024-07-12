@@ -4903,6 +4903,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "glyph_exchange",
   },
+  {
+    id: "parent#clearpool",
+    name: "Clearpool",
+    url: "https://clearpool.finance",
+    description: "Clearpool is a decentralized marketplace for unsecured institutional capital. It allows institutions to borrow funds from a decentralized network of lenders without the need for collateral.",
+    logo: `${baseIconsUrl}/clearpool.png`,
+    gecko_id: "clearpool",
+    cmcId: "12573",
+    chains: [],
+    twitter: "ClearpoolFin",
+    github: ["clearpool-finance"],
+  },
 ];
 
 export default parentProtocols;

@@ -5959,18 +5959,18 @@ const data2: Protocol[] = [
   },
   {
     id: "1635",
-    name: "Clearpool",
+    name: "Clearpool Lending", // previous Clearpool
     address: "0x66761fa41377003622aee3c7675fc7b5c1c2fac5",
     symbol: "CPOOL",
     url: "https://clearpool.finance",
     description:
-      "Clearpool is a decentralized marketplace for unsecured institutional capital. It allows institutions to borrow funds from a decentralized network of lenders without the need for collateral. ",
+      "Clearpool is a decentralized marketplace for unsecured institutional capital. It allows institutions to borrow funds from a decentralized network of lenders without the need for collateral.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/clearpool.png`,
+    logo: `${baseIconsUrl}/clearpool-lending.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "clearpool",
-    cmcId: "12573",
+    gecko_id: null,
+    cmcId: null,
     category: "Uncollateralized Lending",
     chains: ["Ethereum"],
     oracles: [],
@@ -5981,8 +5981,8 @@ const data2: Protocol[] = [
       "https://www.certik.com/projects/clearpool",
       "https://3929482601-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhkiSI8bK3ThlypJ3jdEC%2Fuploads%2FOFonx1OQS6ni5lUsyiPx%2FClearpool%20Security%20Analysis%20by%20Pessimistic.pdf?alt=media&token=d584e7c3-993c-4ce4-8adf-6a2c77727ec2",
     ],
+    parentProtocol: "parent#clearpool",
     listedAt: 1649674184,
-    github: ["clearpool-finance"],
   },
   {
     id: "1636",

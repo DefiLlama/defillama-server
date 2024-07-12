@@ -237,5 +237,16 @@ export default {
     "carbondefi": {
         enabled: true,
         id: "2890"
+    },
+    "glyph-exchange-v4": {
+        parentId: "Glyph Exchange",
+        enabled: true,
+        id: "4880",
+        protocolsData: {
+            "classic": {
+                enabled: true,
+                id: "4880",
+            }
+        }
     }
 } as AdaptorsConfig

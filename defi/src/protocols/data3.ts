@@ -45586,8 +45586,8 @@ const data3: Protocol[] = [
   {
     id: "4711",
     name: "ETCswap V3",
-    address: "0x1953cab0E5bFa6D4a9BaD6E05fD46C1CC6527a5a",
-    symbol: "WETC",
+    address: null,
+    symbol: "-",
     url: "https://v3.etcswap.org/",
     description:
       "ETCswap V3 is a decentralized exchange protocol providing capital efficient markets on Ethereum Classic. Earn up to 1% Liquidity Provider fees.",

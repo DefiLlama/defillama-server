@@ -12902,8 +12902,8 @@ const data2: Protocol[] = [
   {
     id: "1934",
     name: "ETCswap V2",
-    address: "0x1953cab0E5bFa6D4a9BaD6E05fD46C1CC6527a5a",
-    symbol: "WETC",
+    address: null,
+    symbol: "-",
     url: "https://v2.etcswap.org/",
     description:
       "ETCswap V2 is a fully decentralized protocol for automated liquidity provision on Ethereum Classic.",

@@ -4636,8 +4636,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Swap, earn, and build on Ethereum Classic's leading decentralized crypto trading protocol.",
     logo: `${baseIconsUrl}/etcswap.png`,
-    gecko_id: "ethereum-classic",
-    cmcId: "1321",
+    gecko_id: null,
+    cmcId: null,
     chains: [],
     twitter: "ETCswap_org",
     github: ["ethereumclassic"],

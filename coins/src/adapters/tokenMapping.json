@@ -345,6 +345,11 @@
       "decimals": "18",
       "symbol": "apxETH",
       "to": "coingecko#dinero-apxeth"
+    },
+    "0x6c9815826fdf8c7a45ccfed2064dbab33a078712": {
+      "decimals": "18",
+      "symbol": "CVX1",
+      "to": "coingecko#convex-finance"
     }
   },
   "fantom": {

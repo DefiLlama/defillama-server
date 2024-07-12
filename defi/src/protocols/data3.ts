@@ -49202,6 +49202,53 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1720691964
   },
+  {
+    id: "4871",
+    name: "Yaka Finance",
+    address: null,
+    symbol: "-",
+    url: "https://yaka.finance",
+    description:
+      "Yaka Finance is Sei's native liquidity engine, a ve(3,3)-styled DEX and launchpad to drive robust Sei ecosystem growth.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/yaka-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sei"],
+    module: "yakafinance/index.js",
+    twitter: "YakaFinance",
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    audit_links: ["https://www.beosin.com/audits/YAKA_202405231200.pdf"],
+    listedAt: 1720774333
+  },
+  {
+    id: "4872",
+    name: "Palmy Finance",
+    address: null,
+    symbol: "-",
+    url: "https://yaka.finance",
+    description:
+      "Palmy Finance is the first lending protocol backed by Oasys Network.",
+    chain: "Oasys",
+    logo: `${baseIconsUrl}/palmy-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Oasys"],
+    module: "palmy/index.js",
+    twitter: "palmyfi",
+    oracles: ["Chainsight"], // https://explorer.oasys.games/address/0x180930A5bE82b213411d6Bf3D3F7100F5bFD17BF?tab=contract 
+    forkedFrom: ["AAVE V2"],
+    audit_links: ["https://github.com/palmy-finance/palmy-protocol/blob/main/audits/Palmy%20Finance%20-%20Zellic%20Audit%20Report.pdf"],
+    github: ["palmy-finance"],
+    listedAt: 1720774933
+  },
 ];
 
 export default data3;

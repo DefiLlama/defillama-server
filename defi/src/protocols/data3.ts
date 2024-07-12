@@ -49339,6 +49339,51 @@ const data3: Protocol[] = [
     parentProtocol: "parent#fixes-inscription",
     listedAt: 1720777915
   },
+  {
+    id: "4877",
+    name: "Vesu",
+    address: null,
+    symbol: "-",
+    url: "https://www.vesu.xyz",
+    description:
+      "The Future of Lending on Starknet - Vesu is a modular and permissionless lending protocol allowing anyone to earn, borrow and create markets.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/vesu.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Starknet"],
+    module: "vesu/index.js",
+    twitter: "vesuxyz",
+    oracles: [], 
+    forkedFrom: [],
+    github: ["vesuxyz"],
+    listedAt: 1720781277
+  },
+  {
+    id: "4878",
+    name: "Franklin Templeton",
+    address: null,
+    symbol: "-",
+    url: "https://www.franklintempleton.com/investments/options/money-market-funds/products/29386/SINGLCLASS/franklin-on-chain-u-s-government-money-fund/FOBXX",
+    description:
+      "The fund invests at least 99.5% of its total assets in U.S. government securities, cash and repurchase agreements collateralized fully by U.S. government securities or cash.",
+    chain: "Stellar",
+    logo: `${baseIconsUrl}/franklin-templeton.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Stellar", "Polygon"],
+    module: "franklinTempleton-finance/index.js",
+    twitter: "FTI_US",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1720781977
+  },
 ];
 
 export default data3;

@@ -49294,6 +49294,51 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1720775930
   },
+  {
+    id: "4875",
+    name: "Kernel Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://kernelprotocol.com",
+    description:
+      "Deposit LSTs, LRTs & USD-denominated assets into Kernel Protocol to mint ksETH, krETH and kUSD respectively. Earn Kernel Points on top of your Karak XP and receive an LRT that can be deployed in further yield-bearing DeFi activities.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/kernel-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "re-al",
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum"],
+    module: "kernel/index.js",
+    twitter: "KernelProtocol",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1720777115
+  },
+  {
+    id: "4876",
+    name: "Fixes Launchpad",
+    address: null,
+    symbol: "-",
+    url: "https://fixes.world",
+    description:
+      "Fixes World provides multiple fungible token issuance, trading, staking, and governance services. It is driven by the inscription mechanism to enable underlying programmable features.",
+    chain: "Flow",
+    logo: `${baseIconsUrl}/fixes-launchpad.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "re-al",
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Flow"],
+    module: "fixes-coins/index.js",
+    twitter: "fixesWorld",
+    oracles: [], 
+    forkedFrom: [],
+    parentProtocol: "parent#fixes-inscription",
+    listedAt: 1720777915
+  },
 ];
 
 export default data3;

@@ -49249,6 +49249,51 @@ const data3: Protocol[] = [
     github: ["palmy-finance"],
     listedAt: 1720774933
   },
+  {
+    id: "4873",
+    name: "Midas RWA",
+    address: null,
+    symbol: "-",
+    url: "https://midas.app",
+    description:
+      "Midas US Treasury Bills Token (mTBILL) is a permissionless yield-bearing token tracking short-dated US Treasury Bills.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/midas-rwa.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "midas/index.js",
+    twitter: "MidasRWA",
+    oracles: [], 
+    forkedFrom: [],
+    audit_links: ["https://2732961456-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FsPjk0ggBxEJCCnVFFkDR%2Fuploads%2F1wxK6TgqaRsSgt3ixVMx%2FMidas_SC%20Audit%20Report_25092023_%5BSA-1833%5D%20-%20POST%20REMEDIATION.pdf?alt=media&token=cdcf6533-7366-42db-9d3b-224efac85b9a"],
+    listedAt: 1720775830
+  },
+  {
+    id: "4874",
+    name: "re.al protocol",
+    address: "0x4644066f535ead0cde82d209df78d94572fcbf14",
+    symbol: "RWA",
+    url: "https://www.re.al",
+    description:
+      "The DeFi-native L2 for tokenized RWAs, using off-chain yields to build deep onchain liquidity.",
+    chain: "re.al",
+    logo: `${baseIconsUrl}/re.al-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "re-al",
+    cmcId: null,
+    category: "RWA",
+    chains: ["re.al"],
+    module: "real-veRWA/index.js",
+    twitter: "real_rwa",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1720775930
+  },
 ];
 
 export default data3;

@@ -4892,6 +4892,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "friendtech",
   },
+  {
+    id: "parent#glyph-exchange",
+    name: "Glyph Exchange",
+    url: "https://glyph.exchange",
+    description: "Glyph Exchange is a DEX for Bitcoin DeFi on the Core blockchain. The platform drives EVM liquidity to amplify Bitcoin-Powered crypto asset trading, connecting EVMs to Bitcoin Building Bitcoin-Fi on CoreDAO",
+    logo: `${baseIconsUrl}/glyph-exchange.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "glyph_exchange",
+  },
 ];
 
 export default parentProtocols;

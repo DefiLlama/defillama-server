@@ -37418,13 +37418,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4347",
-    name: "Glyph Exchange",
+    name: "Glyph V2", // previous Glyph Exchange
     address: null,
     symbol: "-",
     url: "https://glyph.exchange",
     description: `Glyph Exchange is a DEX for Bitcoin DeFi on the Core blockchain. The platform drives EVM liquidity to amplify Bitcoin-Powered crypto asset trading, connecting EVMs to Bitcoin Building Bitcoin-Fi on CoreDAO`,
     chain: "CORE",
-    logo: `${baseIconsUrl}/glyph-exchange.png`,
+    logo: `${baseIconsUrl}/glyph-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -37435,6 +37435,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "GlyphExchange/index.js",
     twitter: "glyph_exchange",
+    parentProtocol: "parent#glyph-exchange",
     listedAt: 1711126267,
   },
   {
@@ -49426,6 +49427,7 @@ const data3: Protocol[] = [
     twitter: "glyph_exchange",
     oracles: [], 
     forkedFrom: ["Algebra Integral"],
+    parentProtocol: "parent#glyph-exchange",
     listedAt: 1720786977
   },
 ];

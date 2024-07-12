@@ -3433,7 +3433,6 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BalancedDAO",
     github: ["balancednetwork"],
-    stablecoins: ["usd-balance"]
   },
   {
     id: "parent#baptswap",

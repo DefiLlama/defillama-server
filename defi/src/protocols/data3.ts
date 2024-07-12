@@ -49384,6 +49384,50 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1720781977
   },
+  {
+    id: "4879",
+    name: "Clearpool TPOOL",
+    address: null,
+    symbol: "-",
+    url: "https://clearpool.finance/tpool/",
+    description:
+      "This USDX pool is dedicated to investing in or purchasing treasuries and distribute the resulting yield to liquidity providers",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/clearpool-tpool.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum", "Flare"],
+    module: "clearpool-rwa/index.js",
+    twitter: "ClearpoolFin",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1720786477
+  },
+  {
+    id: "4880",
+    name: "Glyph V4",
+    address: null,
+    symbol: "-",
+    url: "https://app-v4.glyph.exchange/swap",
+    description:
+      "Algebra Integral fork on CORE chain",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/glyph-v4.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    module: "glyph-v4/index.js",
+    twitter: "glyph_exchange",
+    oracles: [], 
+    forkedFrom: ["Algebra Integral"],
+    listedAt: 1720786977
+  },
 ];
 
 export default data3;

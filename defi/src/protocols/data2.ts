@@ -2702,8 +2702,12 @@ const data2: Protocol[] = [
       "Minswap aims to be the best liquidity provider on the market by integrating the best asset pool models from across the DEX ecosystem into one protocol.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/minswap.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
+    audit_links: [
+      "https://github.com/minswap/minswap-stableswap/tree/main/audit-report",
+      "https://github.com/minswap/minswap-dex-v2/tree/main/audit-report",
+    ],
     gecko_id: "minswap",
     cmcId: "12787",
     category: "Dexes",

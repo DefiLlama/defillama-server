@@ -30880,7 +30880,7 @@ const data3: Protocol[] = [
     name: "PRINT3R",
     address: null,
     symbol: "-",
-    url: "https://aptoslaunch.io",
+    url: "https://print3r.xyz/#/home",
     description:
       "PRINT3R is a gamified decentralized derivatives platform that focuses on ease of use and encouraging user loyalty through engaging user interactions, and sharing revenue.",
     chain: "Base",

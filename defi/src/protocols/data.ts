@@ -87,7 +87,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon", "Fantom", "xDai", "Arbitrum", "Avalanche", "Harmony"],
     module: "curve/index.js",
     twitter: "CurveFinance",
-    audit_links: ["https://curve.fi/audits"],
+    audit_links: ["https://docs.curve.fi/references/audits/"],
     oracles: [],
     language: "Vyper",
     parentProtocol: "parent#curve-finance",

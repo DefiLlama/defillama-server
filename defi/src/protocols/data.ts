@@ -26825,7 +26825,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Lending",
     chains: ["Cardano"],
     module: "meld/index.js",
-    twitter: "MELD_labs",
+    twitter: "onMELD",
     listedAt: 1644087933,
     github: ["MELD-labs"],
   },

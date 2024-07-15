@@ -49435,8 +49435,8 @@ const data3: Protocol[] = [
   {
     id: "4881",
     name: "Powercity Flex Protocol",
-    address: null,
-    symbol: "-",
+    address: "pulse:0x9c6fA17D92898B684676993828143596894AA2A6",
+    symbol: "FLEX",
     url: "https://www.flex.powercity.io",
     description:
       "FLEX Protocol is a decentralized borrowing protocol on PulseChain that allows you to draw interest-free loans against $HEX used as collateral. Loans are paid out in HEXDC (a USD pegged stablecoin) and need to maintain a minimum collateral ratio of 110%.",
@@ -49450,8 +49450,9 @@ const data3: Protocol[] = [
     chains: ["Pulse"],
     module: "flex-powercity-io/index.js",
     twitter: "POWERCITYio",
-    oracles: [], 
+    oracles: ["TWAP"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9551 
     forkedFrom: ["Liquity"],
+    parentProtocol: "parent#powercity",
     listedAt: 1721045783
   },
   {

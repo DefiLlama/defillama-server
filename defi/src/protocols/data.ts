@@ -12599,7 +12599,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Binance", "Polygon", "Fantom", "Blast"],
     module: "yel/index.js",
     twitter: "yel_finance",
-    listedAt: 2312802,
+    listedAt: 1634674060,
     github: ["YieldEnhancementLabs"],
     governanceID: ["snapshot:yelfinance.eth"],
   },

@@ -32099,7 +32099,7 @@ const data3: Protocol[] = [
     gecko_id: "synonym-finance",
     cmcId: null,
     category: "Lending",
-    chains: ["Arbitrum"],
+    chains: ["Arbitrum", "Scroll", "Base", "Optimism", "Ethereum"],
     oracles: ["Pyth", "Chainlink"], // https://synonym-finance.gitbook.io/synonym-finance/documentation/risk-management#oracles
     forkedFrom: [],
     module: "synonym-finance/index.js",

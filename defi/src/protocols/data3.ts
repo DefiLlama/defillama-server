@@ -49453,6 +49453,7 @@ const data3: Protocol[] = [
     oracles: ["TWAP"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9551 
     forkedFrom: ["Liquity"],
     parentProtocol: "parent#powercity",
+    stablecoins: ["hex-dollar-coin"],
     listedAt: 1721045783
   },
   {

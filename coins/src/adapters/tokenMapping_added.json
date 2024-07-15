@@ -8861,6 +8861,11 @@
       "decimals": "6",
       "symbol": "ISEI",
       "to": "coingecko#silo-staked-sei"
+    },
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
+      "decimals": "18",
+      "symbol": "SEI",
+      "to": "coingecko#sei-network"
     }
   },
   "archway": {

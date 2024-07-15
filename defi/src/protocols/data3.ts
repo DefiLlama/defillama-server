@@ -49476,6 +49476,51 @@ const data3: Protocol[] = [
     stablecoins: ["usual-usd"],
     listedAt: 1721046229
   },
+  {
+    id: "4883",
+    name: "Kawa Finance",
+    address: null,
+    symbol: "-",
+    url: "https://kawa.finance",
+    description:
+      "Kawa is a permissionless borrowing and lending protocol, streaming liquidity through the Sei Network.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/kawa-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Sei"],
+    module: "kawa/index.js",
+    twitter: "Kawafinance",
+    oracles: [], 
+    forkedFrom: [],
+    github: ["kawafinance"],
+    listedAt: 1721046521
+  },
+  {
+    id: "4884",
+    name: "Kosmos",
+    address: "airdao:0xC15891E4dE2793726c20F53EcA6FB6319968E5F3",
+    symbol: "KOS",
+    url: "https://star-fleet.io/kosmos/marketplace",
+    description:
+      "Kosmos is a bond marketplace that allows users to create and sell bonds as well as earn rewards for using it. Kosmos establishes a liquid marketplace of bonds for supported tokens and rewards users with $KOS for platform participation.",
+    chain: "AirDAO",
+    logo: `${baseIconsUrl}/kosmos.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["AirDAO"],
+    module: "kosmos/index.js",
+    twitter: "AirDAOStarFleet",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1721046921
+  },
 ];
 
 export default data3;

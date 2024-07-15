@@ -12596,7 +12596,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "yel-finance",
     cmcId: "11301",
     category: "Yield",
-    chains: ["Ethereum", "Binance", "Polygon", "Fantom", "Base", "Blast", "Avalanche", "Arbitrum", "Optimism"],
+    chains: ["Ethereum", "Binance", "Polygon", "Fantom", "Blast"],
     module: "yel/index.js",
     twitter: "yel_finance",
     listedAt: 2312802,

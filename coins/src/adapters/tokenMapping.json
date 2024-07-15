@@ -3522,5 +3522,12 @@
       "decimals": 18,
       "symbol": "WBTC"
     }
+  },
+  "ethereumclassic": {
+    "0x6c3b413c461c42a88160ed1b1b31d6f7b02a1c83": {
+      "to": "coingecko#etcpow",
+      "decimals": 18,
+      "symbol": "ETCPOW"
+    }
   }
 }

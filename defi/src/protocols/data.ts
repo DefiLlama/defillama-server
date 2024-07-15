@@ -12589,7 +12589,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://yel.finance",
     description:
       "Yel Finance is a DeFi R&D laboratory that focuses on generation of smart and real yield.",
-    chain: "Blast",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/yel-finance.png`,
     audits: "0",
     audit_note: null,

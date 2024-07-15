@@ -120,6 +120,7 @@ export const normalizeDimensionChainsMap = {
     'wemix3.0': CHAIN.WEMIX,
     'radix': CHAIN.RADIXDLT,
     'neon': CHAIN.NEON,
+    'zetachain': CHAIN.ZETA,
 } as IJSON<CHAIN>
 
 export const formatChainKey = (chain: string) => {

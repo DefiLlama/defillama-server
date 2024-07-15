@@ -32029,6 +32029,7 @@ const data3: Protocol[] = [
     chains: ["Binance"],
     oraclesByChain: {
       bsc: ["Chainlink"],
+      bob: ["RedStone"], //https://docs.segment.finance/protocol/price-feeds
       //  op_bnb: ["Binance Oracle"]
     },
     forkedFrom: ["Compound V2"],
@@ -45832,7 +45833,7 @@ const data3: Protocol[] = [
     module: "yei-fi/index.js",
     twitter: "YeiFinance",
     forkedFrom: ["AAVE V3"],
-    oracles: [],
+    oracles: ["RedStone"], //https://docs.yei.finance/welcome-to-yei/security-and-risk/oracles-and-data-feeds
     listedAt: 1717532780,
   },
   {

@@ -7164,7 +7164,7 @@ const data3: Protocol[] = [
     description:
       "Morpho's AaveV3-ETH Optimizer allows WETH-only transactions in ETH efficiency mode. It offers high-leverage WETH borrowing using stETH, USDC, WBTC, and DAI as collateral",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho.png`,
+    logo: `${baseIconsUrl}/morpho-aavev3.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

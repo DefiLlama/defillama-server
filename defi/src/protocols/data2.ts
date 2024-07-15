@@ -18284,7 +18284,7 @@ const data2: Protocol[] = [
     description:
       "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho.png`,
+    logo: `${baseIconsUrl}/morpho-aave.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -49524,6 +49524,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1721046921
   },
+  {
+    id: "4885",
+    name: "BounceBit Easy",
+    address: null,
+    symbol: "-",
+    url: "https://easy.bouncebit.io",
+    description:
+      "Easy leverages BounceBit’s innovative CeDeFi infrastructure to offer users a secure, efficient, and user-friendly way to grow their holdings.",
+    chain: "BounceBit",
+    logo: `${baseIconsUrl}/bouncebit-easy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["BounceBit"],
+    module: "bouncebit-EasyBTC/index.js",
+    twitter: "bounce_bit",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1721072868
+  },
 ];
 
 export default data3;

@@ -49431,6 +49431,51 @@ const data3: Protocol[] = [
     parentProtocol: "parent#glyph-exchange",
     listedAt: 1720786977
   },
+  {
+    id: "4881",
+    name: "Powercity Flex Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.flex.powercity.io",
+    description:
+      "FLEX Protocol is a decentralized borrowing protocol on PulseChain that allows you to draw interest-free loans against $HEX used as collateral. Loans are paid out in HEXDC (a USD pegged stablecoin) and need to maintain a minimum collateral ratio of 110%.",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/powercity-flex-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Pulse"],
+    module: "flex-powercity-io/index.js",
+    twitter: "POWERCITYio",
+    oracles: [], 
+    forkedFrom: ["Liquity"],
+    listedAt: 1721045783
+  },
+  {
+    id: "4882",
+    name: "Usual Money",
+    address: null,
+    symbol: "-",
+    url: "https://usual.money",
+    description:
+      "The decentralized RWA stablecoin protocol redistributing value and power back in your hands.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/usual-money.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "usual/index.js",
+    twitter: "usualmoney",
+    oracles: [], 
+    forkedFrom: [],
+    stablecoins: ["usual-usd"],
+    listedAt: 1721046229
+  },
 ];
 
 export default data3;

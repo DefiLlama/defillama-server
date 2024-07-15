@@ -8730,6 +8730,11 @@
       "decimals": "18",
       "symbol": "DAI+",
       "to": "coingecko#overnight-dai"
+    },
+    "0xd95ca61ce9aaf2143e81ef5462c0c2325172e028": {
+      "decimals": "6",
+      "symbol": "wUSD+",
+      "to": "coingecko#usd"
     }
   },
   "aura": {

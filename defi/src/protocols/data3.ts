@@ -49629,7 +49629,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Restaking",
+    category: "Farm",
     chains: ["Bitlayer"],
     module: "desyn-farm1/index.js",
     twitter: "DesynLab",

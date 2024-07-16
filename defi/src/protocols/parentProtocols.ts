@@ -4915,6 +4915,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ClearpoolFin",
     github: ["clearpool-finance"],
   },
+  {
+    id: "parent#sparkdex",
+    name: "SparkDEX",
+    url: "https://sparkdex.ai/home",
+    description: "First AI-driven DeFi ecosystem on Flare Network.",
+    logo: `${baseIconsUrl}/sparkdex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SparkDexAI",
+    github: ["sparkdex"],
+  },
 ];
 
 export default parentProtocols;

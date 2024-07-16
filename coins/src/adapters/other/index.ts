@@ -30,6 +30,7 @@ import steadefiUsdWbtc from "./steadefi_usdc_wbtc";
 import warlordAdapter from "./warlord";
 import opdxAdapter from "./odpxWethLP";
 import teahouseAdapter from "./teahouse";
+import opal from "./opal";
 import gmdV2 from "./gmdV2";
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
@@ -416,4 +417,5 @@ export const adapters = {
   gmdV2,
   salt,
   warlord,
+  opal,
 }

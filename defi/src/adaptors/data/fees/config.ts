@@ -2280,5 +2280,10 @@ export default {
         parentId: "Jupiter",
         enabled: true,
         id: "4860"
+    },
+    "scallop": {
+        parentId: "Scallop",
+        enabled: true,
+        id: "1961"
     }
 } as AdaptorsConfig

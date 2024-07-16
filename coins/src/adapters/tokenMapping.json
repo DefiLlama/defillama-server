@@ -696,6 +696,11 @@
       "symbol": "sthAPT",
       "to": "coingecko#staked-thala-apt"
     },
+    "0xcfea864b32833f157f042618bd845145256b1bf4c0da34a7013b76e42daa53cc::usdy::USDY": {
+      "decimals": "6",
+      "symbol": "USDY",
+      "to": "ethereum:0x96F6eF951840721AdBF46Ac996b59E0235CB985C"
+    },
     "0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::T": {
       "decimals": "6",
       "symbol": "USDCET",

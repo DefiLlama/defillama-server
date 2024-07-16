@@ -49546,6 +49546,75 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1721072868
   },
+  {
+    id: "4886",
+    name: "Opal DeFi",
+    address: "0x0447d3454b25935eed47f65b4bd22b9b23be326a",
+    symbol: "GEM",
+    url: "https://opaldefi.xyz",
+    description:
+      "Opal is an Omnipool based decentralized liquidity manager. In the concept it’s the bridge between educated DeFi users and retail ETH/stable holders, the game theory equilibrium that broadens access to sophisticated on-chain farming strategies.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/opal-defi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum"],
+    module: "opal/index.js",
+    twitter: "OpalDeFi",
+    oracles: ["Chainlink", "RedStone"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10996
+    forkedFrom: [],
+    audit_links: ["https://jumpshare.com/s/WnQOF42DwpkItgn7NIB8", "https://jumpshare.com/s/0IQAiRfFU1g523SeqUUA"],
+    listedAt: 1721123991
+  },
+  {
+    id: "4887",
+    name: "SparkDEX V2",
+    address: null,
+    symbol: "-",
+    url: "https://sparkdex.ai/home",
+    description:
+      "First AI-driven DeFi ecosystem on Flare Network.",
+    chain: "Flare",
+    logo: `${baseIconsUrl}/sparkdex-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Flare"],
+    module: "sparkdex-v2/index.js",
+    twitter: "SparkDexAI",
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    parentProtocol: "parent#sparkdex",
+    listedAt: 1721124191
+  },
+  {
+    id: "4888",
+    name: "SparkDEX V2",
+    address: null,
+    symbol: "-",
+    url: "https://sparkdex.ai/home",
+    description:
+      "First AI-driven DeFi ecosystem on Flare Network.",
+    chain: "Flare",
+    logo: `${baseIconsUrl}/sparkdex-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Flare"],
+    module: "sparkdex-v3/index.js",
+    twitter: "SparkDexAI",
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    parentProtocol: "parent#sparkdex",
+    listedAt: 1721124591
+  },
 ];
 
 export default data3;

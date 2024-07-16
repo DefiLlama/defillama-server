@@ -49594,7 +49594,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4888",
-    name: "SparkDEX V2",
+    name: "SparkDEX V3",
     address: null,
     symbol: "-",
     url: "https://sparkdex.ai/home",

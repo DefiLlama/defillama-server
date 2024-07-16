@@ -10,6 +10,10 @@ import { Write } from "../adapters/utils/dbInterfaces";
 import { batchReadPostgres, batchWrite2, readCoins2 } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 
+const blacklist: string[] = [
+  'web-3-dollar'
+] 
+
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
 );
@@ -201,7 +205,6 @@ async function getPlatformData(coins: Coin[]) {
   );
   return keyMap;
 }
-const blacklist = [];
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinIds = coins.map((c) => c.id);
   const coinData = await retryCoingeckoRequest(
@@ -517,10 +520,11 @@ async function triggerFetchCoingeckoData(hourly: boolean) {
   const coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
-  shuffleArray(coins);
+  const filteredCoins = coins.filter((v: Coin) => !(blacklist.includes(v.id)))
+  shuffleArray(filteredCoins);
   let promises: Promise<void>[] = [];
-  for (let i = 0; i < coins.length; i += step) {
-    promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
+  for (let i = 0; i < filteredCoins.length; i += step) {
+    promises.push(fetchCoingeckoData(filteredCoins.slice(i, i + step), hourly, 0));
   }
   await Promise.all(promises);
   process.exit(0);

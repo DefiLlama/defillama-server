@@ -49615,6 +49615,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#sparkdex",
     listedAt: 1721124591
   },
+  {
+    id: "4889",
+    name: "DeSyn Liquid Strategy",
+    address: null,
+    symbol: "-",
+    url: "https://www.desyn.io/#/",
+    description:
+      "DeSyn Protocol is an innovative decentralized asset management infrastructure on Web 3, empowering users to securely and transparently create and manage customized pool-based portfolios with various on-chain assets (tokens, NFTs, derivatives, etc.) via smart contract. Its current main product is a new type of farming launchpad for every project, featuring various structured products.",
+    chain: "Bitlayer",
+    logo: `${baseIconsUrl}/desyn-liquid-strategy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Bitlayer"],
+    module: "desyn-farm1/index.js",
+    twitter: "DesynLab",
+    oracles: [], 
+    forkedFrom: [],
+    parentProtocol: "parent#desyn-protocol",
+    listedAt: 1721135854
+  },
 ];
 
 export default data3;

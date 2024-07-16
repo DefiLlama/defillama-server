@@ -49663,30 +49663,6 @@ const data3: Protocol[] = [
     listedAt: 1721145892
   },
   {
-    id: "4890",
-    name: "SigmaSwap",
-    address: null,
-    symbol: "-",
-    url: "https://sigmaswap.io",
-    description:
-      "Bridging LUKSO, Ethereum and EVM Blockchains",
-    chain: "Lukso",
-    logo: `${baseIconsUrl}/sigmaswap.png`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Bridge",
-    chains: ["Lukso"],
-    module: "sigmaswap/index.js",
-    twitter: "sigmaswap_io",
-    oracles: [], 
-    forkedFrom: [],
-    audit_links: ["https://docs.sigmaswap.io/docs/audits/"],
-    github: ["SigmaSwap-io"],
-    listedAt: 1721145892
-  },
-  {
     id: "4891",
     name: "Nimbora Yield Aggregator",
     address: null,

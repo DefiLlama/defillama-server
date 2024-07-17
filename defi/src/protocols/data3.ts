@@ -12810,14 +12810,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3263",
-    name: "Crust Finance",
+    name: "Crust V1", // previous Crust Finance
     address: null,
     symbol: "-",
     url: "https://www.crust.finance/",
     description:
       "Crust Finance is a decentralized exchange and automated market marker built on mantle blockchain focusing on providing efficient token swaps and deep liquidity for stablecoins and other assets",
     chain: "Mantle",
-    logo: `${baseIconsUrl}/crust-finance.png`,
+    logo: `${baseIconsUrl}/crust-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -12828,6 +12828,7 @@ const data3: Protocol[] = [
     twitter: "CrustFinance",
     forkedFrom: ["Solidly"],
     oracles: [],
+    parentProtocol: "parent#crust-finance",
     listedAt: 1689895631,
   },
   {
@@ -49730,6 +49731,29 @@ const data3: Protocol[] = [
     twitter: "intlmemefund",
     github: ["International-Meme-Fund"],
     listedAt: 1721214362
+  },
+  {
+    id: "4894",
+    name: "Crust V2",
+    address: null,
+    symbol: "-",
+    url: "https://www.crust.finance",
+    description:
+      "Crust Finance is a decentralized exchange and automated market marker built on mantle blockchain focusing on providing efficient token swaps and deep liquidity for stablecoins and other assets",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/crust-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    module: "crust-finance-v2/index.js",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    twitter: "CrustFinance",
+    parentProtocol: "parent#crust-finance",
+    listedAt: 1721218135
   },
 ];
 

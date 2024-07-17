@@ -49821,9 +49821,31 @@ const data3: Protocol[] = [
     module: "superhero-dex/index.js",
     forkedFrom: [],
     oracles: [],
-    twitter: null,
+    twitter: "aeternity",
     audit_links: ["https://github.com/aeternity/dex-contracts-v2/blob/master/Dex2_Audit_20220419.pdf"],
     listedAt: 1721229743
+  },
+  {
+    id: "4898",
+    name: "Manta CeDeFi Stake",
+    address: null,
+    symbol: "-",
+    url: "https://cedefi.manta.network/",
+    description:
+      "Earn more with your mETH, mBTC, and mUSD. Discover the Manta Pacific ecosystem with mETH, mBTC, and mUSD to unlock DeFi yields",
+    chain: "Manta",
+    logo: `${baseIconsUrl}/manta-cedefi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Manta"],
+    module: "manta-cedefi-stake/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "MantaNetwork",
+    listedAt: 1721232484
   },
 ];
 

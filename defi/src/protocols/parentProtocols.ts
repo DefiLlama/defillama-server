@@ -4927,6 +4927,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SparkDexAI",
     github: ["sparkdex"],
   },
+  {
+    id: "parent#crust-finance",
+    name: "Crust Finance",
+    url: "https://www.crust.finance",
+    description: "Crust Finance is a decentralized exchange and automated market marker built on mantle blockchain focusing on providing efficient token swaps and deep liquidity for stablecoins and other assets",
+    logo: `${baseIconsUrl}/crust-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "CrustFinance",
+  },
 ];
 
 export default parentProtocols;

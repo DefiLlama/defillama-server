@@ -54,7 +54,7 @@ const configs: { [adapter: string]: Config } = {
     address: "linear-protocol",
     underlying: "0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4",
     symbol: "LINEAR",
-    confidence: 1,
+    confidence: 1.01,
   },
 };
 

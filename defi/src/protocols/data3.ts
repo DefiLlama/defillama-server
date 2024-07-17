@@ -49823,6 +49823,7 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "aeternity",
     audit_links: ["https://github.com/aeternity/dex-contracts-v2/blob/master/Dex2_Audit_20220419.pdf"],
+    language: "Sophia",
     listedAt: 1721229743
   },
   {

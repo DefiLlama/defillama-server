@@ -12,7 +12,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "AAVE",
     url: "https://aave.com\r\n",
     description: "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",
-    logo: `${baseIconsUrl}/aave-v2.png`,
+    logo: `${baseIconsUrl}/aave.png`,
     chains: [],
     gecko_id: "aave",
     cmcId: "7278",

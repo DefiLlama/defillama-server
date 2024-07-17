@@ -11,7 +11,7 @@ import { batchReadPostgres, batchWrite2, readCoins2 } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 
 const blacklist: string[] = [
-  'web-3-dollar'
+  'web-3-dollar', 'linear-protocol'
 ] 
 
 let solanaConnection = new Connection(

@@ -77,6 +77,7 @@ export default {
   maverick: require("./markets/maverick"),
   steer: require("./markets/steer"),
   derivs: require("./yield/derivs"),
+  apiDerivs: require("./yield/apiDerivs"),
   pxeth: require("./liquidStaking/pxeth"),
   // sthApt: require("./liquidStaking/sthapt"),
   mod: require("./markets/thala"),

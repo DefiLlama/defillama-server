@@ -4172,7 +4172,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Kriya",
     url: "https://app.kriya.finance/",
     description:
-      "One stop DeFi protocol on Sui. Offering Swaps, Limit Orders, 1-click leverage lending strategies, Yield Optimiser Vaults and 20x perpetuals",
+      "1-stop DeFi protocol on Sui. Offering Swaps, Limit Orders, 1-click leverage lending strategies, Yield Optimiser Vaults and 20x perpetuals",
     logo: `${baseIconsUrl}/kriya.png`,
     gecko_id: null,
     cmcId: null,

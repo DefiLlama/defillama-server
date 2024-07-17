@@ -30193,7 +30193,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4030",
-    name: "Genesis LRT",
+    name: "GenesisLRT (Native Restaking)", // previous Genesis LRT
     address: null,
     symbol: "-",
     assetToken: "genETH",
@@ -30201,7 +30201,7 @@ const data3: Protocol[] = [
     description:
       "Unveil a new era of staking with Genesis protocol. The restaking flow is as simple as 1,2,3: Deposit amount of ETH you want to restake. Receive genETH, the liquid restaking token. Journey into DeFi with your assets working for you.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/genesis-lrt.png`,
+    logo: `${baseIconsUrl}/genesislrt-(native-restaking).png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -31371,13 +31371,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4081",
-    name: "InceptionLRT",
+    name: "InceptionLRT (Isolated Restaking)", // previous InceptionLRT
     address: null,
     symbol: "-",
     url: "https://www.inceptionlrt.com/",
     description: "Restake ETH LSTs on Inception, built on Eigenlayer to earn 2 layers of rewards",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/inceptionlrt.png`,
+    logo: `${baseIconsUrl}/inceptionlrt-(isolated-restaking).png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

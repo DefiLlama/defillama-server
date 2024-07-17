@@ -162,12 +162,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
     address: "0x7a4effd87c2f3c55ca251080b1343b605f327e3a",
   },
-  // weETHk: {
-  //   rate: async ({ api }) => {},
-  //   chain: "ethereum",
-  //   underlying: "",
-  //   address: "0x7223442cad8e9ca474fc40109ab981608f8c4273",
-  // },
+  weETHk: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getRate() external view returns (uint256)",
+        target: "0x126af21dc55C300B7D0bBfC4F3898F558aE8156b",
+      });
+      return rate / 1e10;
+    },
+    chain: "ethereum",
+    underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    address: "0x7223442cad8e9ca474fc40109ab981608f8c4273",
+  },
 };
 
 export async function derivs(timestamp: number) {

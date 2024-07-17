@@ -2690,7 +2690,7 @@ export default {
     },
     "meteora": {
         parentId: "Meteora",
-        enabled: false,
+        enabled: true,
         id: "385",
         cleanRecordsConfig: {
             genuineSpikes: {

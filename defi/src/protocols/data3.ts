@@ -49685,6 +49685,52 @@ const data3: Protocol[] = [
     listedAt: 1721146062,
     parentProtocol: "parent#nimbora",
   },
+  {
+    id: "4892",
+    name: "Sorta Finance",
+    address: "arbitrum:0x73c36aE64842Eaf4D9209dE10fdA21017b5f0709",
+    symbol: "STA",
+    url: "https://www.sorta.finance",
+    description:
+      "Earn Interest and Borrow Assets Seamlessly Across Multiple Blockchains.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/sorta-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    module: "sorta-fi/index.js",
+    forkedFrom: ["Compound V2"],
+    oracles: [],
+    twitter: "Sorta_Finance",
+    audit_links: ["https://github.com/DeHacker-io/audits_public/blob/main/Sorta%20Finance.pdf"],
+    listedAt: 1721214305
+  },
+  {
+    id: "4893",
+    name: "International Meme Fund",
+    address: null,
+    symbol: "-",
+    url: "https://internationalmeme.fund",
+    description:
+      "International Meme Fund",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/international-meme-fund.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    module: "imf-money/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "intlmemefund",
+    github: ["International-Meme-Fund"],
+    listedAt: 1721214362
+  },
 ];
 
 export default data3;

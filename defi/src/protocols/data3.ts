@@ -30119,7 +30119,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Avalanche"],
-    oracles: [], // need docs to add chainlink
+    oracles: ["Pyth"], // https://fwx-gitbook.gitbook.io/fwx/development/security-and-audits#audit-reports
     forkedFrom: [],
     module: "fwx/index.js",
     twitter: "fwxfinance",
@@ -43078,7 +43078,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Blast"],
-    oracles: [],
+    oracles: ["Pyth"], // https://aso-finance.gitbook.io/aso-finance/protocol/oracles
     forkedFrom: ["Compound V2"],
     module: "asofinance/index.js",
     twitter: "Aso_Finance",
@@ -43491,7 +43491,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Neon"],
-    oracles: ["Chainlink"], // https://github.com/Lumen-Money/lumen-protocol/blob/main/oracle/contracts/ResilientOracle.sol#L39
+    oracles: ["Chainlink","Pyth"], // https://github.com/Lumen-Money/lumen-protocol/blob/main/oracle/contracts/ResilientOracle.sol#L39 , https://docs.lumen.money/protocol/security
     forkedFrom: ["Compound V2"],
     module: "lumen-money/index.js",
     twitter: "Lumen_Money",
@@ -45835,7 +45835,7 @@ const data3: Protocol[] = [
     module: "yei-fi/index.js",
     twitter: "YeiFinance",
     forkedFrom: ["AAVE V3"],
-    oracles: ["RedStone"], //https://docs.yei.finance/welcome-to-yei/security-and-risk/oracles-and-data-feeds
+    oracles: ["RedStone","Pyth", "API3"], //https://docs.yei.finance/welcome-to-yei/security-and-risk/oracles-and-data-feeds
     listedAt: 1717532780,
   },
   {
@@ -46547,7 +46547,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Taiko"],
-    oracles: ["API3"],
+    oracles: ["API3","Pyth"], // https://docs.hana.finance/contracts-and-security/price-oracle
     forkedFrom: [],
     module: "hana-finance/index.js",
     twitter: "Hana_Finance",
@@ -48573,7 +48573,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives", 
     chains: ["Linea"],
-    oracles: [], 
+    oracles: ["Pyth","Chainlink,"API3"], 
     forkedFrom: [],
     module: "linehub-perps/index.js",
     twitter: "LineDefiHub",

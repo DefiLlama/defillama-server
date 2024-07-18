@@ -49361,7 +49361,7 @@ const data3: Protocol[] = [
     chains: ["Starknet"],
     module: "vesu/index.js",
     twitter: "vesuxyz",
-    oracles: [], 
+    oracles: ["Pragma"], // https://docs.vesu.xyz/blog/2024-04-03-vesu-lending-hooks 
     forkedFrom: [],
     github: ["vesuxyz"],
     listedAt: 1720781277

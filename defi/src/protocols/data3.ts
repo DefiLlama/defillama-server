@@ -43491,7 +43491,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Neon"],
-    oracles: ["Chainlink","Pyth"], // https://github.com/Lumen-Money/lumen-protocol/blob/main/oracle/contracts/ResilientOracle.sol#L39 , https://docs.lumen.money/protocol/security
+    oracles: ["Chainlink"], // https://github.com/Lumen-Money/lumen-protocol/blob/main/oracle/contracts/ResilientOracle.sol#L39, https://neonscan.org/address/0x26473e42ead2bcc2ed6679a48a670a71c1b6ce4a#contract
     forkedFrom: ["Compound V2"],
     module: "lumen-money/index.js",
     twitter: "Lumen_Money",

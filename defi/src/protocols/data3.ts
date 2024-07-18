@@ -48573,7 +48573,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives", 
     chains: ["Linea"],
-    oracles: ["Pyth","Chainlink,"API3"], 
+    oracles: ["Pyth","Chainlink,"API3"], // https://docs.linehub.io/linehub-products/more#enhanced-security 
     forkedFrom: [],
     module: "linehub-perps/index.js",
     twitter: "LineDefiHub",

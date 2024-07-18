@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
-import ddb, { batchWrite } from "../utils/shared/dynamodb";
+import ddb, { batchWrite, DELETE } from "../utils/shared/dynamodb";
 import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
@@ -10,9 +10,7 @@ import { Write } from "../adapters/utils/dbInterfaces";
 import { batchReadPostgres, batchWrite2, readCoins2 } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 
-const blacklist: string[] = [
-  'web-3-dollar', 'linear-protocol'
-] 
+const staleMargin = 6 * 60 * 60;
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
@@ -213,17 +211,42 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true`,
     10,
   );
+
+  const timestamp = getCurrentUnixTimestamp();
+  const stalePlatforms: string[] = [];
+  const staleIds: string[] = [];
+  coins.map((c) => {
+    if (!(c.id in coinData)) return;
+    if (timestamp - coinData[c.id].last_updated_at < staleMargin) return;
+    Object.entries(c.platforms).map(([chain, address]) => {
+      const i = Object.values(chainToCoingeckoId).indexOf(chain);
+      stalePlatforms.push(`${Object.keys(chainToCoingeckoId)[i]}:${address}`);
+    });
+    staleIds.push(c.id);
+  });
+  const staleEntries = [
+    ...staleIds.map((c) => `coingecko#${c}`),
+    ...stalePlatforms,
+  ].map((PK) => ({
+    PK,
+    SK: 0,
+  }));
+  const deleteStaleKeysPromise = DELETE(staleEntries);
+
   const idToSymbol = {} as IdToSymbol;
   const returnedCoins = new Set(Object.keys(coinData));
   coins.forEach((coin) => {
     if (!returnedCoins.has(coin.id)) {
-      console.error(`[scripts - getAndStoreCoins] Couldn't get data for ${coin.id}`);
+      console.error(
+        `[scripts - getAndStoreCoins] Couldn't get data for ${coin.id}`,
+      );
       rejected.push(coin);
     }
     idToSymbol[coin.id] = coin.symbol;
   });
   const writes = Object.entries(coinData)
     .filter((c) => c[1]?.usd !== undefined)
+    .filter((c) => !staleIds.includes(c[0]))
     .map(([cgId, data]) => ({
       PK: cgPK(cgId),
       SK: data.last_updated_at,
@@ -237,7 +260,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const prevWrites = await readCoins2(
     writes.map((w: any) => ({
       key: w.PK.replace("asset#", "").replace("#", ":"),
-      timestamp: getCurrentUnixTimestamp(),
+      timestamp,
     })),
     true,
     86400,
@@ -255,7 +278,8 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   await storeCoinData(confidentCoins);
   await storeHistoricalCoinData(confidentCoins);
   const filteredCoins = coins.filter(
-    (coin) => coinData[coin.id]?.usd !== undefined,
+    (coin) =>
+      coinData[coin.id]?.usd !== undefined && !staleIds.includes(coin.id),
   );
   const platformQueries = filteredCoins
     .map((f: Coin) =>
@@ -263,7 +287,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         const i = Object.values(chainToCoingeckoId).indexOf(p[0]);
         return {
           key: `${Object.keys(chainToCoingeckoId)[i]}:${p[1]}`,
-          timestamp: getCurrentUnixTimestamp(),
+          timestamp,
         };
       }),
     )
@@ -316,12 +340,12 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             decimals = decimals ?? data?.decimals;
             symbol = symbol ?? data?.symbol ?? coin.symbol;
           }
-          if (decimals == undefined || decimals == 0) {
-            blacklist.push(PK);
-            return;
-          }
+          if (decimals == undefined || decimals == 0) return;
+
           if (!pricesAndMcaps[cgPK(coin.id)]) {
-            console.error(`[scripts - getAndStoreCoins 2]Couldn't get data for ${coin.id}`);
+            console.error(
+              `[scripts - getAndStoreCoins 2]Couldn't get data for ${coin.id}`,
+            );
             return;
           }
           writes2.push({
@@ -363,6 +387,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   } catch (e) {
     console.error(e);
   }
+  await deleteStaleKeysPromise;
 }
 
 const HOUR = 3600;
@@ -378,7 +403,9 @@ async function getAndStoreHourly(
     3,
   );
   if (!Array.isArray(coinData.prices)) {
-    console.error(`[scripts - getAndStoreHourly] Couldn't get data for ${coin.id}`);
+    console.error(
+      `[scripts - getAndStoreHourly] Couldn't get data for ${coin.id}`,
+    );
     rejected.push(coin);
     return;
   }
@@ -520,11 +547,10 @@ async function triggerFetchCoingeckoData(hourly: boolean) {
   const coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
-  const filteredCoins = coins.filter((v: Coin) => !(blacklist.includes(v.id)))
-  shuffleArray(filteredCoins);
+  shuffleArray(coins);
   let promises: Promise<void>[] = [];
-  for (let i = 0; i < filteredCoins.length; i += step) {
-    promises.push(fetchCoingeckoData(filteredCoins.slice(i, i + step), hourly, 0));
+  for (let i = 0; i < coins.length; i += step) {
+    promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
   }
   await Promise.all(promises);
   process.exit(0);

@@ -18,9 +18,18 @@ main().then(() => {
 })
 
 async function main() {
-  await Promise.all([
-    updateTallys(),
-    updateSnapshots(),
-    updateCompounds(),
-  ])
+  const funcs = [
+    updateTallys,
+    updateSnapshots,
+    updateCompounds,
+  ]
+
+  const promises = funcs.map(async (fun) => {
+    try {
+      await fun()
+    } catch (e) {
+      console.error(e)
+    }
+  })
+  await Promise.all(promises)
 }

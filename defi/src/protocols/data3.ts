@@ -46547,7 +46547,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Taiko"],
-    oracles: ["API3","Pyth"], // https://docs.hana.finance/contracts-and-security/price-oracle
+    oracles: ["API3"], // confirmed by team https://docs.hana.finance/contracts-and-security/price-oracle WETH-API3OracleWrapper-Taiko 0x987c740ecedC426c7b08a8cf041511446b1cDd55, USDC-API3OracleWrapper-Taiko 0x311A245b0119983fd015d60950C0c4AD9e0D16A1
     forkedFrom: [],
     module: "hana-finance/index.js",
     twitter: "Hana_Finance",

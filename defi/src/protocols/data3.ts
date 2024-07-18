@@ -49848,6 +49848,25 @@ const data3: Protocol[] = [
     twitter: "MantaNetwork",
     listedAt: 1721232484
   },
+  {
+    id: "4899",
+    name: "4Cast",
+    address: null,
+    symbol: "-",
+    url: "https://www.4cast.win",
+    description:
+      "4CAST is a Fully On-chain, Self-custody, and Permissionless Prediction Market on Solana where users forecast token moves to win big and create markets to earn within an open, transparent, and unbiased environment.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/4cast.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "4castdotwin",
+  },
 ];
 
 export default data3;

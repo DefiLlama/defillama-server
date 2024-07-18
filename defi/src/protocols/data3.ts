@@ -49848,6 +49848,52 @@ const data3: Protocol[] = [
     twitter: "MantaNetwork",
     listedAt: 1721232484
   },
+  {
+    id: "4899",
+    name: "AirDAO Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://airdao.io/bridge",
+    description:
+      "Transfer your crypto tokens between AirDAO`s AMB-NET blockchain, the Ethereum network, and BNB Smart Chain (BSC). The AirDAO Bridge empowers cheaper, faster, and more secure transfers of Ethereum and BNB assets to and from the Ambrosus layer 1 blockchain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/airdao-bridge.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    module: "airdao-bridge/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "airdao_io",
+    audit_links: ["https://wp.hacken.io/wp-content/uploads/2024/07/Hacken_AirDAO_SCA_AirDAO_Bridge_May2024_P_2024_307_1_20240531_08.pdf"],
+    github: ["ambrosus"],
+    listedAt: 1721294482
+  },
+  {
+    id: "4900",
+    name: "Wonton",
+    address: null,
+    symbol: "-",
+    url: "https://wonton.fun",
+    description:
+      "Launch a coin in one click for 0.08 TON (only 0.5$) Instantly tradable, Fair-launch.",
+    chain: "Ton",
+    logo: `${baseIconsUrl}/wonton.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Ton"],
+    module: "wonton/index.js",
+    forkedFrom: ["Pump"],
+    oracles: [],
+    twitter: "wonton", // account is suspended
+    listedAt: 1721294982
+  },
 ];
 
 export default data3;

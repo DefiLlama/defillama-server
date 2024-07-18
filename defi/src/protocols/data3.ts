@@ -49891,7 +49891,7 @@ const data3: Protocol[] = [
     module: "wonton/index.js",
     forkedFrom: ["Pump"],
     oracles: [],
-    twitter: "wonton", // account is suspended
+    twitter: "wontondotfun", 
     listedAt: 1721294982
   },
 ];

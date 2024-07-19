@@ -2289,5 +2289,9 @@ export default {
     "d2finance": {
         enabled: true,
         id: "4846"
+    },
+    "eddyfinance-v2": {
+        enabled: true,
+        id: "4120"
     }
 } as AdaptorsConfig

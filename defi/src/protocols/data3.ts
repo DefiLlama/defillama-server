@@ -42602,7 +42602,7 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1715268202,
   },
-/*   {
+  {
     id: "4578",
     name: "Limitless",
     address: null,
@@ -42624,7 +42624,7 @@ const data3: Protocol[] = [
     twitter: "limitlessdefi",
     audit_links: ["https://limitless.gitbook.io/limitless/intro/audits-and-security"],
     listedAt: 1715269057,
-  }, */
+  },
   {
     id: "4579",
     name: "Flipster",

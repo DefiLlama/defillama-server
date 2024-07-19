@@ -2841,5 +2841,9 @@ export default {
     "xei": {
         enabled: true,
         id: "4836"
+    },
+    "eddyfinance-v2": {
+        enabled: true,
+        id: "4120"
     }
 } as AdaptorsConfig

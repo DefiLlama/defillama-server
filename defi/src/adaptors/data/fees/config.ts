@@ -2285,5 +2285,9 @@ export default {
         parentId: "Scallop",
         enabled: true,
         id: "1961"
+    },
+    "d2finance": {
+        enabled: true,
+        id: "4846"
     }
 } as AdaptorsConfig

@@ -49940,6 +49940,53 @@ const data3: Protocol[] = [
     github: ["EveryFinance"],
     listedAt: 1721335482,
   },
+  {
+    id: "4903",
+    name: "Freestyle",
+    address: null,
+    symbol: "-",
+    url: "https://www.bmx.trade",
+    description:
+      "Freestyle is a SYMMIO (intent-based) frontend for derivatives trading that we operate alongside our Classic GMX spot and margin markets",
+    chain: "Base",
+    logo: `${baseIconsUrl}/freestyle.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "freestyle/index.js",
+    twitter: "MorphexBMX",
+    parentProtocol: "parent#morphex",
+    listedAt: 1721383332
+  },
+  {
+    id: "4904",
+    name: "Size Credit",
+    address: null,
+    symbol: "-",
+    url: "https://www.bmx.trade",
+    description:
+      "Size is a credit marketplace with unified liquidity across maturities.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/size-credit.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "size-credit/index.js",
+    twitter: "SizeCredit",
+    audit_links: ["https://github.com/spearbit/portfolio/blob/master/pdfs/Size-Spearbit-Security-Review.pdf", "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Size%20Lending.pdf"],
+    github: ["SizeCredit"],
+    listedAt: 1721383932
+  },
 ];
 
 export default data3;

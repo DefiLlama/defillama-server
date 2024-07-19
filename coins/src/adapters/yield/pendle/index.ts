@@ -24,6 +24,15 @@ const config: { [chain: string]: any } = {
           "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
         ],
       },
+      {
+        factory: "0x3d75Bd20C983edb5fD218A1b7e0024F1056c7A2F",
+        fromBlock: 20323253,
+        eventAbi:
+          "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
+      },
     ],
   },
   arbitrum: {
@@ -42,6 +51,15 @@ const config: { [chain: string]: any } = {
       {
         factory: "0x2FCb47B58350cD377f94d3821e7373Df60bD9Ced",
         fromBlock: 156987300,
+        eventAbi:
+          "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
+      },
+      {
+        factory: "0xd9f5e9589016da862D2aBcE980A5A5B99A94f3E8",
+        fromBlock: 233004891,
         eventAbi:
           "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
         topics: [
@@ -72,6 +90,15 @@ const config: { [chain: string]: any } = {
           "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
         ],
       },
+      {
+        factory: "0x7D20e644D2A9e149e5be9bE9aD2aB243a7835d37",
+        fromBlock: 40539593,
+        eventAbi:
+          "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
+      },
     ],
   },
   optimism: {
@@ -96,6 +123,15 @@ const config: { [chain: string]: any } = {
           "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
         ],
       },
+      {
+        factory: "0x73Be47237F12F36203823BAc9A4d80dC798B7015",
+        fromBlock: 122792017,
+        eventAbi:
+          "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
+      },
     ],
   },
   mantle: {
@@ -104,6 +140,15 @@ const config: { [chain: string]: any } = {
       {
         factory: "0xD228EC1f7D4313fe321fab511A872475D07F5bA6",
         fromBlock: 61902860,
+        eventAbi:
+          "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
+      },
+      {
+        factory: "0xCa274A44a52241c1a8EFb9f84Bf492D8363929FC",
+        fromBlock: 66526601,
         eventAbi:
           "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
         topics: [

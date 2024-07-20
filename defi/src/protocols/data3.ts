@@ -49260,10 +49260,10 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://midas.app",
     description:
-      "Midas US Treasury Bills Token (mTBILL) is a permissionless yield-bearing token tracking short-dated US Treasury Bills.",
+      "Midas is an asset tokenization protocol bringing regulatory-compliant exposure to institutional-grade assets onchain, unlocking DeFi composability for real-world assets (RWA).",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/midas-rwa.jpg`,
-    audits: "2",
+    audits: "3",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -49273,7 +49273,7 @@ const data3: Protocol[] = [
     twitter: "MidasRWA",
     oracles: [], 
     forkedFrom: [],
-    audit_links: ["https://2732961456-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FsPjk0ggBxEJCCnVFFkDR%2Fuploads%2F1wxK6TgqaRsSgt3ixVMx%2FMidas_SC%20Audit%20Report_25092023_%5BSA-1833%5D%20-%20POST%20REMEDIATION.pdf?alt=media&token=cdcf6533-7366-42db-9d3b-224efac85b9a"],
+    audit_links: ["https://docs.midas.app/resources/audits"],
     listedAt: 1720775830
   },
   {

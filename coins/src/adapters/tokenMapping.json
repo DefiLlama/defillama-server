@@ -859,6 +859,11 @@
       "to": "coingecko#impermax-2",
       "decimals": "18",
       "symbol": "IBEX"
+    },
+    "0xCDf95E1F720caade4b1DC83ABfE15400D2a458AD": {
+      "to": "coingecko#solana",
+      "decimals": "9",
+      "symbol": "wSOL"
     }
   },
   "radixdlt": {

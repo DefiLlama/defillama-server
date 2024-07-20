@@ -49989,6 +49989,52 @@ const data3: Protocol[] = [
     github: ["SizeCredit"],
     listedAt: 1721383932
   },
+  {
+    id: "4905",
+    name: "Shezmu",
+    address: "0x5fE72ed557d8a02FFf49B3B826792c765d5cE162",
+    symbol: "SHEZMU",
+    url: "https://shezmu.io/",
+    description:
+      "Liquidation-less Leveraged CDP",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/shezmu.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "shezmu",
+    cmcId: "28140",
+    category: "CDP",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "shezmu/index.js",
+    twitter: "ShezmuTech",
+    audit_links: ["https://drive.google.com/file/d/1GmeMR4WXA4RmsyeipGhdqWfCLVDkikil/view?usp=sharing"],
+    listedAt: 1721444409
+  },
+  {
+    id: "4906",
+    name: "Phoenix DeFi Hub",
+    address: "stellar:GAX5TXB5RYJNLBUR477PEXM4X75APK2PGMTN6KEFQSESGWFXEAKFSXJO",
+    symbol: "PHO",
+    url: "https://www.phoenix-hub.io/",
+    description:
+      "Empowered by Soroban's technology, Phoenix is pioneering the ultimate DeFi Hub within Stellar's vibrant ecosystem. We're forging synergistic protocols, starting with a cutting-edge DEX, to deliver the tastiest DeFi experience imaginable",
+    chain: "Stellar",
+    logo: `${baseIconsUrl}/phoenix-defi-hub.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Stellar"],
+    oracles: [],
+    forkedFrom: [],
+    module: "phoenix-hub/index.js",
+    twitter: "PhoenixDeFiHub",
+    audit_links: ["https://github.com/Phoenix-Protocol-Group/phoenix-contracts/blob/main/docs/VAR_MoonBite_240103_OfficialR.pdf"],
+    listedAt: 1721445275
+  },
 ];
 
 export default data3;

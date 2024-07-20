@@ -50035,6 +50035,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Phoenix-Protocol-Group/phoenix-contracts/blob/main/docs/VAR_MoonBite_240103_OfficialR.pdf"],
     listedAt: 1721445275
   },
+  {
+    id: "4907",
+    name: "ProBit",
+    address: "0xfb559ce67ff522ec0b9ba7f5dc9dc7ef6c139803",
+    symbol: "PROB",
+    url: "https://www.probit.com",
+    description:
+      "ProBit Global is a centralized cryptocurrency exchange established in 2017 and is registered in Seychelles.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/probit.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "probit/index.js",
+    twitter: "probit_exchange",
+    listedAt: 1721445275
+  },
 ];
 
 export default data3;

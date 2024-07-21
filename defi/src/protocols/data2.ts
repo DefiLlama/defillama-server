@@ -25402,8 +25402,8 @@ const data2: Protocol[] = [
   {
     id: "2479",
     name: "DeltaPrime",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x3de81ce90f5a27c5e6a5adb04b54aba488a6d14e",
+    symbol: "PRIME",
     url: "https://deltaprime.io",
     description:
       "DeltaPrime aggregates the best projects from your chain within one DeFi ecosystem. Within this ecosystem you can borrow extra capital trustless and anonymous. This way, you multiply your returns with a balanced portfolio, whether through trading, LPing or farming",
@@ -25411,7 +25411,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/deltaprime.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "prime-2",
     cmcId: null,
     category: "Leveraged Farming",
     chains: ["Avalanche"],

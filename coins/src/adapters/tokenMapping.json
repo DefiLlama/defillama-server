@@ -350,6 +350,11 @@
       "decimals": "18",
       "symbol": "CVX1",
       "to": "coingecko#convex-finance"
+    },
+    "0xC96dE26018A54D51c097160568752c4E3BD6C364":{
+      "decimals": "8",
+      "symbol": "FBTC",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "fantom": {
@@ -1004,6 +1009,11 @@
       "to": "coingecko#puff-the-dragon",
       "decimals": "18",
       "symbol": "PUFF"
+    },
+    "0xC96dE26018A54D51c097160568752c4E3BD6C364":{
+      "symbol": "FBTC",
+      "decimals": "8",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "manta": {

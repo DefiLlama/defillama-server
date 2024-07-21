@@ -49262,8 +49262,8 @@ const data3: Protocol[] = [
     description:
       "Midas is an asset tokenization protocol bringing regulatory-compliant exposure to institutional-grade assets onchain, unlocking DeFi composability for real-world assets (RWA).",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/midas-rwa.jpg`,
-    audits: "3",
+    logo: `${baseIconsUrl}/midas-rwa.png`,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

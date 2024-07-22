@@ -1,0 +1,3 @@
+{
+  "nav":{"inputs":[],"name":"nav","outputs":[{"internalType":"uint256","name":"_nav","type":"uint256"}],"stateMutability":"view","type":"function"}
+}

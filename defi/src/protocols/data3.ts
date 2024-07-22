@@ -44401,7 +44401,7 @@ const data3: Protocol[] = [
     chains: ["Solana"],
     module: "nxfi/index.js",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     twitter: "nxfi_protocol",
     listedAt: 1716386976,
   },

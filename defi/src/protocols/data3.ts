@@ -50169,6 +50169,28 @@ const data3: Protocol[] = [
     audit_links: ["https://follows.gitbook.io/follows/security-and-audits"],
     listedAt: 1721662001
   },
+  {
+    id: "4913",
+    name: "Taffy Finance",
+    address: null,
+    symbol: "-",
+    url: "https://taffy.finance/",
+    description:
+      "A decentralized exchange on the Saakuru ecosystem",
+    chain: "Saakuru",
+    logo: `${baseIconsUrl}/taffy-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Saakuru"],
+    oracles: [],
+    forkedFrom: ["Uniswap-V2"],
+    module: "taffy/index.js",
+    twitter: "taffy_finance",
+    listedAt: 1721670777
+  },
 ];
 
 export default data3;

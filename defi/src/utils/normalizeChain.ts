@@ -3194,6 +3194,17 @@ export const chainCoingeckoIds = {
     twitter: "aeternity",
     url: "https://aeternity.com/",
   },
+  "Saakuru": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "saakuru_labs",
+    url: "https://saakuru.com/",
+    parent: {
+      chain: "Oasys",
+      types: ["L2"]
+    },
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3874,6 +3885,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Noble"
     case "aeternity":
       return "Aeternity"
+    case "saakuru":
+      return "Saakuru"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

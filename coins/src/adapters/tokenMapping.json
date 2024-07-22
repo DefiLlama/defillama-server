@@ -104,6 +104,13 @@
       "to": "coingecko#htx-dao"
     }
   },
+  "polygon_zkevm": {
+    "0x8C7D118B5c47a5BCBD47cc51789558B98dAD17c5": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    }
+  },
   "polygon": {
     "0x2297aebd383787a160dd0d9f71508148769342e3": {
       "decimals": "8",
@@ -561,6 +568,16 @@
     }
   },
   "optimism": {
+    "0x87eEE96D50Fb761AD85B1c982d28A042169d61b1": {
+      "decimals": "18",
+      "symbol": "wrsETH",
+      "to": "coingecko#wrapped-rseth"
+    },
+    "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
+      "decimals": "18",
+      "symbol": "wrsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
     "0x7e7d4467112689329f7E06571eD0E8CbAd4910eE": {
       "decimals": "18",
       "symbol": "COMP",
@@ -594,6 +611,11 @@
     }
   },
   "base": {
+    "0x1Bc71130A0e39942a7658878169764Bbd8A45993": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
     "0x02f92800F57BCD74066F5709F1Daa1A4302Df875": {
       "decimals": "18",
       "symbol": "PEAS",
@@ -836,9 +858,14 @@
       "symbol": "USDC"
     },
     "0xa25b25548B4C98B0c7d3d27dcA5D5ca743d68b7F": {
+      "to": "coingecko#wrapped-rseth",
+      "decimals": "18",
+      "symbol": "wrsETH"
+    },
+    "0x65421ba909200b81640d98B979d07487C9781B66": {
       "to": "coingecko#kelp-dao-restaked-eth",
       "decimals": "18",
-      "symbol": "RSETH"
+      "symbol": "rsETH"
     },
     "0x80137510979822322193fc997d400d5a6c747bf7": {
       "to": "coingecko#stakestone-ether",
@@ -1554,6 +1581,11 @@
     }
   },
   "mode": {
+    "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
     "0x02f92800F57BCD74066F5709F1Daa1A4302Df875": {
       "decimals": "18",
       "symbol": "PEAS",
@@ -1680,6 +1712,11 @@
     }
   },
   "linea": {
+    "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
     "0x0000000000000000000000000000000000000001": {
       "decimals": "18",
       "symbol": "WETH",
@@ -2387,6 +2424,16 @@
     }
   },
   "blast": {
+    "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
+    "0xe7903B1F75C534Dd8159b313d92cDCfbC62cB3Cd": {
+      "decimals": "18",
+      "symbol": "wrsETH",
+      "to": "coingecko#wrapped-rseth"
+    },
     "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A": {
       "decimals": "18",
       "symbol": "weETH",

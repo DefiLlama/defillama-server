@@ -25399,7 +25399,6 @@ const data2: Protocol[] = [
     listedAt: 1675076609,
     deadUrl: true,
   },
-  /*
   {
     id: "2479",
     name: "DeltaPrime",
@@ -25430,7 +25429,6 @@ const data2: Protocol[] = [
     ],
     listedAt: 1675090708,
   },
-  */
   {
     id: "2480",
     name: "AlgoBlocks",

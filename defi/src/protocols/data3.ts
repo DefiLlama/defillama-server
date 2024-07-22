@@ -41613,7 +41613,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["BSquared"],
-    oracles: ["Supra"], //https://supra.com/docs/data-feeds/pull-model/networks/
+    oracles: ["RedStone"], //https://docs.bitlen.io/borrowing/oracle
     forkedFrom: ["INIT Capital"],
     module: "bitlen/index.js",
     twitter: "BitLen_Finance",
@@ -45835,7 +45835,7 @@ const data3: Protocol[] = [
     module: "yei-fi/index.js",
     twitter: "YeiFinance",
     forkedFrom: ["AAVE V3"],
-    oracles: ["Pyth"], //https://docs.yei.finance/welcome-to-yei/security-and-risk/oracles-and-data-feeds Pyth used for USDC, USDT & SEI price https://seitrace.com/address/0xEAb459AD7611D5223A408A2e73b69173F61bb808
+    oracles: ["RedStone"], //https://docs.yei.finance/welcome-to-yei/security-and-risk/oracles-and-data-feeds
     listedAt: 1717532780,
   },
   {

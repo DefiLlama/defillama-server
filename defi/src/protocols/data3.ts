@@ -50191,6 +50191,28 @@ const data3: Protocol[] = [
     twitter: "taffy_finance",
     listedAt: 1721670777
   },
+  {
+    id: "4914",
+    name: "Valoro",
+    address: null,
+    symbol: "-",
+    url: "https://valoro.fund",
+    description:
+      "Valoro is a fund management and investment protocol on MultiversX",
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/valoro.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Elrond"],
+    oracles: [],
+    forkedFrom: [],
+    module: "valoro/index.js",
+    twitter: "ValoroFund",
+    listedAt: 1721672749
+  },
 ];
 
 export default data3;

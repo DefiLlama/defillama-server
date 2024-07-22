@@ -50055,6 +50055,51 @@ const data3: Protocol[] = [
     twitter: "probit_exchange",
     listedAt: 1721445275
   },
+  {
+    id: "4908",
+    name: "GoldlLink",
+    address: null,
+    symbol: "-",
+    url: "https://app.goldlink.io",
+    description:
+      "GoldLink Protocol is an institutional-grade prime brokerage protocol on Arbitrum. The protocol provides undercollateralized and non-custodial on-chain lending, offering new levels of sophistication, transparency, and security for institutional borrowers and lenders.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/goldlink.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Uncollateralized Lending",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "goldlink/index.js",
+    twitter: "goldlinkfinance",
+    audit_links: ["https://github.com/GoldLink-Protocol/goldlink-contracts-v1/tree/main/audits"],
+    github: ["GoldLink-Protocol"],
+    listedAt: 1721639959
+  },
+  {
+    id: "4909",
+    name: "SolTradingBot",
+    address: null,
+    symbol: "-",
+    url: "https://soltradingbot.com",
+    description:
+      "Get on a journey of precision trading with SolTradingBot! Integrating with Jupiter, Orca, and Radium on the Solana network, SolTradingBot is your go-to companion for decentralized exchange transactions.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/soltradingbot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "SolTradingBot",
+  },
 ];
 
 export default data3;

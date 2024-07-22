@@ -3200,6 +3200,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     twitter: "saakuru_labs",
     url: "https://saakuru.com/",
+    chainId: 7225878,
     parent: {
       chain: "Oasys",
       types: ["L2"]

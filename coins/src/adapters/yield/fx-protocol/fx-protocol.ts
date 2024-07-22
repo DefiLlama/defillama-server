@@ -32,8 +32,6 @@ async function getPoolInfos(
     }),
     getTokenInfo(chain, [target], block),
   ]);
-
-  console.log(nav, tokenInfos);
   return { nav, tokenAddress: target, tokenInfos };
 }
 export default async function getTokenPrices(timestamp: number, chain: string) {
@@ -62,5 +60,3 @@ export default async function getTokenPrices(timestamp: number, chain: string) {
 
   return writes;
 }
-const _time = Math.ceil(+new Date() / 1000);
-getTokenPrices(_time, chain);

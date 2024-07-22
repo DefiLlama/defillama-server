@@ -2297,5 +2297,9 @@ export default {
     "size-credit": {
         enabled: true,
         id: "4904"
+    },
+    "stbot": {
+        enabled: true,
+        id: "4909"
     }
 } as AdaptorsConfig

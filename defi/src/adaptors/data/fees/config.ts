@@ -2293,5 +2293,9 @@ export default {
     "eddyfinance-v2": {
         enabled: true,
         id: "4120"
+    },
+    "size-credit": {
+        enabled: true,
+        id: "4904"
     }
 } as AdaptorsConfig

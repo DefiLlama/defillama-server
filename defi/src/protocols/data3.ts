@@ -50100,6 +50100,29 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "SolTradingBot",
   },
+  {
+    id: "4910",
+    name: "eLOCKS",
+    address: "fantom:0x2f20A659601d1c161A108E0725FEF31256a907ad",
+    symbol: "eLOCKS",
+    url: "https://eliteness.network/elocks/",
+    description:
+      "eLOCKS are Yield-Bearing Financial NFTs that tokenize liquidity positions staked in various DeFi instruments. They separate yield (multiple tokens) from the principal (LP tokens), allowing independent trading of rights to future yields and the underlying locked collateral. This ensures locked liquidity for trading the underlying tokens",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/elocks.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Fantom"],
+    oracles: [],
+    forkedFrom: [],
+    module: "elocks/index.js",
+    twitter: "ftm1337",
+    parentProtocol: "parent#guru-network-dao",
+    listedAt: 1721657027
+  },
 ];
 
 export default data3;

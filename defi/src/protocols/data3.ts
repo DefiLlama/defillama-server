@@ -50123,6 +50123,52 @@ const data3: Protocol[] = [
     parentProtocol: "parent#guru-network-dao",
     listedAt: 1721657027
   },
+  {
+    id: "4911",
+    name: "Akronswap",
+    address: null,
+    symbol: "-",
+    url: "https://akronswap.com/",
+    description:
+      "Akronswap is a decentralized exchange that captures arbitrage profits from arbitrageurs and gives them back to LPs through dynamic swap fees, thereby protecting LPs from loss-versus-rebalancing",
+    chain: "Base",
+    logo: `${baseIconsUrl}/akronswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum", "Arbitrum", "Base", "BSC"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "akronswap/index.js",
+    twitter: "AkronFinance",
+    github: ["akron-finance"],
+    listedAt: 1721661739
+  },
+  {
+    id: "4912",
+    name: "Follows",
+    address: null,
+    symbol: "-",
+    url: "https://follows.app",
+    description:
+      "Follows is a new form of creator-fan relation leveraging the web3 platform",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/follows.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "follows/index.js",
+    twitter: "follows_app",
+    audit_links: ["https://follows.gitbook.io/follows/security-and-audits"],
+    listedAt: 1721662001
+  },
 ];
 
 export default data3;

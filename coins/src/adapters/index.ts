@@ -66,6 +66,7 @@ export default {
   penpie: require("./yield/pendle"),
   phux: require("./markets/phux"),
   wombat: require("./markets/wombat"),
+  wombatWrapped: require("./markets/wombat"),
   backed: require("./rwa/backed"),
   vela: require("./yield/vela"),
   chai: require("./yield/chai"),

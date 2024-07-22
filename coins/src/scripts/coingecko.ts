@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
-import ddb, { batchWrite, DELETE } from "../utils/shared/dynamodb";
+import ddb, { batchGet, batchWrite, DELETE } from "../utils/shared/dynamodb";
 import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
@@ -220,18 +220,33 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     if (timestamp - coinData[c.id].last_updated_at < staleMargin) return;
     Object.entries(c.platforms).map(([chain, address]) => {
       const i = Object.values(chainToCoingeckoId).indexOf(chain);
-      stalePlatforms.push(`${Object.keys(chainToCoingeckoId)[i]}:${address}`);
+      stalePlatforms.push(
+        `asset#${Object.keys(chainToCoingeckoId)[i]}:${address}`,
+      );
     });
     staleIds.push(c.id);
   });
-  const staleEntries = [
+
+  const staleKeys = [
     ...staleIds.map((c) => `coingecko#${c}`),
     ...stalePlatforms,
-  ].map((PK) => ({
-    PK,
-    SK: 0,
-  }));
-  const deleteStaleKeysPromise = DELETE(staleEntries);
+  ];
+
+  const staleEntries = (
+    await batchGet(
+      staleKeys.map((PK: string) => ({
+        PK,
+        SK: 0,
+      })),
+    )
+  ).filter((c) => !c.adapter);
+
+  const deleteStaleKeysPromise = DELETE(
+    staleEntries.map((e) => ({
+      PK: e.PK,
+      SK: 0,
+    })),
+  );
 
   const idToSymbol = {} as IdToSymbol;
   const returnedCoins = new Set(Object.keys(coinData));

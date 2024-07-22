@@ -35,7 +35,7 @@
     "backfill": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError --transpile-only src/adaptors/cli/backfillUtilities/auto.ts",
     "backfill-local": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node --logError  --transpile-only src/adaptors/cli/backfillUtilities/auto.ts",
     "get-overview-local": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node --logError --transpile-only src/adaptors/cli/runGetOverview.ts",
-    "interactive": "npx ts-node src/cli/interactive.ts",
+    "interactive": "npx ts-node --transpile-only src/cli/interactive.ts",
     "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx --node-arg=--max-old-space-size=6144 ts-node --logError --transpile-only src/storeTvlTask.ts",
     "store-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeChainAssets.ts",
     "store-chain-asset-historical-flows": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeChainAssetFlows.ts",

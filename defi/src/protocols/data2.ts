@@ -25508,7 +25508,7 @@ const data2: Protocol[] = [
     description:
       "Perennial is a decentralized derivatives protocol built from first-principles to be a powerful, flexible, and composable primitive that can scale to meet the needs of DeFi traders, liquidity providers, and developers.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/perennial.jpg`,
+    logo: `${baseIconsUrl}/perennial-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

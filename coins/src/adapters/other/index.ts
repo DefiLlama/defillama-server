@@ -289,7 +289,7 @@ export function collateralizedAssets(timestamp: number = 0) {
     {
       token: "0x52c64b8998eb7c80b6f526e99e29abdcc86b841b", // DSU
       vault: "0x0d49c416103cbd276d9c3cd96710db264e3a0c27",
-      collateral: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+      collateral: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
     },
   ]);
 }

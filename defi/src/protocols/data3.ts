@@ -50057,7 +50057,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4908",
-    name: "GoldlLink",
+    name: "GoldLink",
     address: null,
     symbol: "-",
     url: "https://app.goldlink.io",

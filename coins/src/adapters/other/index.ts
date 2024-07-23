@@ -367,6 +367,7 @@ export async function warlord(timestamp: number = 0) {
 export async function salt(timestamp: number = 0) {
   const writes: Write[] = []
   await wNLXCore(timestamp, writes)
+  await dsu(timestamp, writes)
   const chain = 'ethereum'
   const api = await getApi(chain, timestamp)
   const price = await api.call({ abi: 'uint256:priceSALT', target: '0x22096408044Db49A4eB871640b351Ccacb675ED6' })
@@ -379,14 +380,29 @@ export async function salt(timestamp: number = 0) {
   addToDBWritesList(writes, chain, '0x0110B0c3391584Ba24Dbf8017Bf462e9f78A6d9F', price / 1e18, 18, 'SALT', timestamp, "salty", 0.95,)
   return writes;
 }
-export async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
+
+async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
   const chain = 'core'
   const api = await getApi(chain, timestamp)
   const wNLXCore = '0x2c6bcf5990cc115984f0031d613af1a645089ad6'
   const supply = await api.call({ abi: 'uint256:totalSupply', target: wNLXCore })
   const balance = await api.call({ abi: 'function getEthBalance(address) view returns (uint256)', target: '0xca11bde05977b3631167028862be2a173976ca11', params: wNLXCore })
   const pricesObject = {
-    [wNLXCore]: { price: balance / supply, underlying: '0x0000000000000000000000000000000000000000', },
+    [wNLXCore]: { price: balance * 1e12 / supply, underlying: '0x0000000000000000000000000000000000000000', },
+  }
+  await getWrites({ chain, timestamp, writes, pricesObject, projectName: "salt", })
+}
+
+async function dsu(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'arbitrum'
+  const api = await getApi(chain, timestamp)
+  const dsu = '0x52c64b8998eb7c80b6f526e99e29abdcc86b841b'
+  const usdc = '0xaf88d065e77c8cc2239327c5edb3a432268e5831'
+  const treasury = '0x0d49c416103Cbd276d9c3cd96710dB264e3A0c27'
+  const supply = await api.call({ abi: 'uint256:totalSupply', target: dsu })
+  const balance = await api.call({ abi: 'erc20:balanceOf', target: usdc, params: treasury })
+  const pricesObject = {
+    [dsu]: { price: balance / supply, underlying: usdc, },
   }
   await getWrites({ chain, timestamp, writes, pricesObject, projectName: "salt", })
 }

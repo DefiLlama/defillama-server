@@ -36,12 +36,12 @@ function _getDisplayChainName(chain: string) {
 export async function getOverviewHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
   clearCache()
   const eventParameters = getEventParameters(req)
-  const key = JSON.stringify(eventParameters)
+  const key = JSON.stringify(eventParameters) + 'overview' + Math.random()
+  
   if (!reqCache[key]) {
-    console.time('getOverviewProcess: ' + key)
+    console.time(key)
     reqCache[key] = getOverviewProcess(eventParameters)
-    await reqCache[key]
-    console.timeEnd('getOverviewProcess: ' + key)
+    console.timeEnd(key)
   }
 
   return successResponse(res, await reqCache[key], 60);
@@ -51,12 +51,11 @@ async function getOverviewProcess(eventParameters: any) {
   const adapterType = eventParameters.adaptorType
   const recordType = eventParameters.dataType
   const cacheData = await getAdapterTypeCache(adapterType)
-  console.time('getAdapterTypeCache: ' + eventParameters.adaptorType)
   const { summaries, protocols, allChains } = cacheData
   const chain = eventParameters.chainFilter
-  const summary = chain ? summaries[recordType].chainSummary[chain] : summaries[recordType]
+  let summary = chain ? summaries[recordType].chainSummary[chain] : summaries[recordType]
   const response: any = {}
-  if (!summary) throw new Error("Summary not found")
+  if (!summary) summary = {}
 
   if (!eventParameters.excludeTotalDataChart) {
     response.totalDataChart = formatChartData(summary.chart)
@@ -107,15 +106,15 @@ async function getOverviewProcess(eventParameters: any) {
   }).filter((i: any) => i)
 
 
-  console.timeEnd('getAdapterTypeCache: ' + eventParameters.adaptorType)
   return response
 }
 
-function formatChartData(data: any) {
+function formatChartData(data: any = {}) {
   return Object.entries(data).filter(([_key, val]: any) => val).map(([key, value]: any) => [timeSToUnix(key), value]).sort(([a]: any, [b]: any) => a - b)
 }
 
 function getPercentage(a: number, b: number) {
+  if (!a || !b) return undefined
   return +Number(((a - b) / b) * 100).toFixed(2)
 }
 

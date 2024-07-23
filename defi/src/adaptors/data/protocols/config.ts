@@ -248,5 +248,9 @@ export default {
                 id: "4880",
             }
         }
+    },
+    "dexswap": {
+        enabled: true,
+        id: "3277",
     }
 } as AdaptorsConfig

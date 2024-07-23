@@ -2845,5 +2845,9 @@ export default {
     "eddyfinance-v2": {
         enabled: true,
         id: "4120"
+    },
+    "dedust": {
+        enabled: true,
+        id: "2617"
     }
 } as AdaptorsConfig

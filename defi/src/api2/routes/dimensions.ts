@@ -162,7 +162,7 @@ async function getProtocolDataHandler(eventParameters: any) {
   let allRecords = { ...records }
 
   // we need all the records either to show chart or compute summary for child protocol
-  if (eventParameters.excludeTotalDataChart  || eventParameters.excludeTotalDataChartBreakdown  || isChildProtocol) {
+  if (eventParameters.excludeTotalDataChart || eventParameters.excludeTotalDataChartBreakdown || isChildProtocol) {
     const commonData = await getAdapterTypeCache(AdapterType.PROTOCOLS)
     const genericRecords = commonData.protocolNameMap[pName]?.records ?? commonData.childProtocolNameMap[pName]?.records ?? {}
     allRecords = { ...genericRecords, ...records }
@@ -197,7 +197,11 @@ async function getProtocolDataHandler(eventParameters: any) {
     const chartBreakdown = {} as any
     Object.entries(allRecords).forEach(([date, value]: any) => {
       let breakdown = value.breakdown?.[recordType]
-      if (!breakdown) return;
+      if (!breakdown) {
+        breakdown = value.aggregated[recordType]
+        if (!breakdown) return;
+        breakdown = { [info.name]: breakdown }
+      }
       chartBreakdown[date] = formatBreakDownData(breakdown)
     })
     response.totalDataChartBreakdown = formatChartData(chartBreakdown)

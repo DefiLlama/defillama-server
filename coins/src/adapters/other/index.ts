@@ -388,7 +388,7 @@ async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
   const supply = await api.call({ abi: 'uint256:totalSupply', target: wNLXCore })
   const balance = await api.call({ abi: 'function getEthBalance(address) view returns (uint256)', target: '0xca11bde05977b3631167028862be2a173976ca11', params: wNLXCore })
   const pricesObject = {
-    [wNLXCore]: { price: balance * 1e12 / supply, underlying: '0x0000000000000000000000000000000000000000', },
+    [wNLXCore]: { price: balance / supply, underlying: '0x0000000000000000000000000000000000000000', },
   }
   await getWrites({ chain, timestamp, writes, pricesObject, projectName: "salt", })
 }
@@ -402,7 +402,7 @@ async function dsu(timestamp: number = 0, writes: Write[] = []) {
   const supply = await api.call({ abi: 'uint256:totalSupply', target: dsu })
   const balance = await api.call({ abi: 'erc20:balanceOf', target: usdc, params: treasury })
   const pricesObject = {
-    [dsu]: { price: balance / supply, underlying: usdc, },
+    [dsu]: { price: balance * 1e12 / supply, underlying: usdc, },
   }
   await getWrites({ chain, timestamp, writes, pricesObject, projectName: "salt", })
 }

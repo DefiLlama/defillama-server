@@ -50213,6 +50213,30 @@ const data3: Protocol[] = [
     twitter: "ValoroFund",
     listedAt: 1721672749
   },
+  {
+    id: "4915",
+    name: "Kinetic",
+    address: "flare:0xE6505f92583103AF7ed9974DEC451A7Af4e3A3bE",
+    symbol: "JOULE",
+    url: "https://kinetic.market",
+    description:
+      "Kinetic is an ecosystem-tailored money market enhanced with an optional work-to-earn element.",
+    chain: "Flare",
+    logo: `${baseIconsUrl}/kinetic.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Flare"],
+    oracles: [],
+    forkedFrom: ["Compound V2"],
+    module: "kinetic/index.js",
+    twitter: "Kinetic_Markets",
+    audit_links: ["https://kinetic.market/assets/Kinetic-audit-reports.pdf"],
+    github: ["kinetic-market"],
+    listedAt: 1721723353
+  },
 ];
 
 export default data3;

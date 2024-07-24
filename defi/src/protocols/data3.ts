@@ -50241,6 +50241,51 @@ const data3: Protocol[] = [
     github: ["kinetic-market"],
     listedAt: 1721723353
   },
+  {
+    id: "4916",
+    name: "Boson Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.bosonprotocol.io",
+    description:
+      "Sell physical products as NFTs, everywhere using branded $BOSON tokens",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/boson-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "boson/index.js",
+    twitter: "BosonProtocol",
+    github: ["bosonprotocol"],
+    listedAt: 1721821003
+  },
+  {
+    id: "4917",
+    name: "BitFi",
+    address: null,
+    symbol: "-",
+    url: "https://bitfi.org",
+    description:
+      "BitFi is a revolutionary CeDeFi platform that combines secure staking mechanisms with innovative synthetic assets to create a robust and dynamic ecosystem.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/bitfi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bitfi/index.js",
+    twitter: "Bitfi_Org",
+    listedAt: 1721821903
+  },
 ];
 
 export default data3;

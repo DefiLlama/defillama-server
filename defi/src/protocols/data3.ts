@@ -50349,6 +50349,31 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.znsconnect.io/legal/znsconnect-audit-solidproof"],
     github: ["ZNS-Connect"]
   },
+  {
+    id: "4921",
+    name: "WaterNeuron",
+    address: null,
+    symbol: "-",
+    assetToken: "nICP",
+    url: "https://waterneuron.fi/",
+    description:
+      "Liquid staking protocol",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/waterneuron.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["ICP"],
+    oracles: [],
+    forkedFrom: [],
+    module: "waterneuron/index.js",
+    twitter: "WaterNeuron",
+    audit_links: ["https://k4ohy-eiaaa-aaaam-acreq-cai.icp0.io/water-neuron/def-report.pdf"],
+    github: ["WaterNeuron"],
+    listedAt: 1721837891
+  },
 
 ];
 

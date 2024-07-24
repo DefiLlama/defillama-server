@@ -50308,6 +50308,24 @@ const data3: Protocol[] = [
     twitter: "Convergence_fi",
     listedAt: 1721828538
   },
+  {
+    id: "4919",
+    name: "Memecoin",
+    address: "0xb131f4A55907B10d1F0A50d8ab8FA09EC342cd74",
+    symbol: "MEME",
+    url: "https://www.memecoin.org/",
+    description: "One $MEME to rule them all",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/memcoin.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'memecoin-2',
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "memecoin",
+  },
 ];
 
 export default data3;

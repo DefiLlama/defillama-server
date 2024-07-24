@@ -2848,6 +2848,11 @@ export default {
     },
     "dedust": {
         enabled: true,
-        id: "2617"
+        id: "2617",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1721606400": true,
+            }
+        }
     }
 } as AdaptorsConfig

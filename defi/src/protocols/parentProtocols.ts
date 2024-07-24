@@ -4368,6 +4368,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "FjordFoundry",
+    treasury: "fjord-foundry.js"
   },
   {
     id: "parent#nuri-exchange",

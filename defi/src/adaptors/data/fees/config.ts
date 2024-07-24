@@ -2301,5 +2301,9 @@ export default {
     "stbot": {
         enabled: true,
         id: "4909"
+    },
+    "zns": {
+        enabled: true,
+        id: "4920"
     }
 } as AdaptorsConfig

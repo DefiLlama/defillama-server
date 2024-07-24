@@ -50286,6 +50286,28 @@ const data3: Protocol[] = [
     twitter: "Bitfi_Org",
     listedAt: 1721821903
   },
+  {
+    id: "4918",
+    name: "Convergence Fi",
+    address: null,
+    symbol: "-",
+    url: "https://app.cvg.finance",
+    description:
+      "Boosting yields across the CurveFinance ecosystem.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/convergence-fi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "convergence-fi/index.js",
+    twitter: "Convergence_fi",
+    listedAt: 1721828538
+  },
 ];
 
 export default data3;

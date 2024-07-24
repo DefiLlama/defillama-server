@@ -40416,7 +40416,6 @@ const data3: Protocol[] = [
     twitter: "HyperliquidX",
     listedAt: 1713225288,
   },
-  /*
   {
     id: "4482",
     name: "Hyperliquid Spot",
@@ -40439,7 +40438,6 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hyperliquid",
     listedAt: 1713231343,
   },
-  */
   {
     id: "4483",
     name: "Volcano",

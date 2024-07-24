@@ -49826,6 +49826,7 @@ const data3: Protocol[] = [
     language: "Sophia",
     listedAt: 1721229743
   },
+  /* we track it under 4662 id
   {
     id: "4898",
     name: "Manta CeDeFi Stake",
@@ -49848,6 +49849,7 @@ const data3: Protocol[] = [
     twitter: "MantaNetwork",
     listedAt: 1721232484
   },
+  */
   {
     id: "4899",
     name: "AirDAO Bridge",

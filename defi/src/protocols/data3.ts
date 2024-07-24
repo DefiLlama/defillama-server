@@ -50326,6 +50326,30 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "memecoin",
   },
+  {
+    id: "4920",
+    name: "ZNS Connect",
+    address: null,
+    symbol: "-",
+    url: "https://znsconnect.io/",
+    description:
+      "ZNSConnect decentralized ID platform powered by decentralized addresses",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/zns-connect.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "ZNSConnect",
+    audit_links: ["https://docs.znsconnect.io/legal/znsconnect-audit-solidproof"],
+    github: ["ZNS-Connect"]
+  },
+
 ];
 
 export default data3;

@@ -7610,14 +7610,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "458",
-    name: "Solend",
+    name: "Save", // previous Solend
     address: "solana:SLNDpmoWTVADgEdndyvWzroNL7zSi1dF9PC3xHGtPwp",
     symbol: "SLND",
-    url: "https://solend.fi",
+    url: "https://www.save.finance/",
     description:
-      "Solend is an algorithmic, decentralized protocol for lending and borrowing on Solana. Lending and borrowing has proven itself as being key in a DeFi ecosystem. However, current products are slow and expensive. On Solana, Solend can scale to being 100x faster and 100x cheaper. Solend aims to be the easiest to use and most secure solution on Solana.",
+      "Save (formerly Solend) is an algorithmic, decentralized protocol for lending and borrowing on Solana. Lending and borrowing has proven itself as being key in a DeFi ecosystem. However, current products are slow and expensive. On Solana, Solend can scale to being 100x faster and 100x cheaper. Solend aims to be the easiest to use and most secure solution on Solana.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/solend.png`,
+    logo: `${baseIconsUrl}/save.jpg`, 
     audits: "2",
     audit_note: null,
     gecko_id: "solend",

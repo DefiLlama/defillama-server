@@ -23806,7 +23806,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Leveraged Farming",
+    category: "Derivatives",
     chains: ["Arbitrum", "Ethereum", "Blast"],
     module: "marginly/index.js",
     forkedFrom: [],

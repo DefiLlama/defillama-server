@@ -1036,6 +1036,11 @@
       "to": "coingecko#puff-the-dragon",
       "decimals": "18",
       "symbol": "PUFF"
+    },
+    "0x7f4dB37D7bEb31F445307782Bc3Da0F18dF13696": {
+      "to": "coingecko#yield-yak",
+      "decimals": "18",
+      "symbol": "YAK"
     }
   },
   "manta": {

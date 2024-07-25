@@ -50455,7 +50455,24 @@ const data3: Protocol[] = [
     twitter: "RippleXDev",
     listedAt: 1721917627
   },
-
+  {
+    id: "4925",
+    name: "Echelon Prime",
+    address: "0xb23d80f5FefcDDaa212212F028021B41DEd428CF",
+    symbol: "PRIME",
+    url: "https://echelon.io/",
+    description: "Powering parallel TCG and beyond with prime.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/echelon-prime.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "echelon-prime",
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "EchelonFND",
+  }
 ];
 
 export default data3;

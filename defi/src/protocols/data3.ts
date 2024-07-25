@@ -50472,7 +50472,26 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "EchelonFND",
-  }
+  },
+  {
+    id: "4926",
+    name: "AKKA",
+    address: null,
+    symbol: "-",
+    url: "https://app.akka.finance/",
+    description: "Akka is a cross-chain solution enabling liquidity access and service aggregation across multiple blockchains",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/akka.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "akka_finance",
+  },
+  
 ];
 
 export default data3;

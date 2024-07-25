@@ -50374,6 +50374,31 @@ const data3: Protocol[] = [
     github: ["WaterNeuron"],
     listedAt: 1721837891
   },
+  {
+    id: "4922",
+    name: "PumpBTC",
+    address: null,
+    symbol: "-",
+    assetToken: "PumpBTC",
+    url: "https://pumpbtc.xyz/",
+    description:
+      "PumpBTC serves as a Liquid Restaking Solution for Babylon. PumpBTC aims to help BTC holders maximize yields through Babylon's liquid staking - essentially rebuilding WBTC with native yield",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/pumpbtc.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "pumpbtc",
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum", "Binance", "Mantle"],
+    oracles: [],
+    forkedFrom: [],
+    module: "pumpbtc/index.js",
+    twitter: "Pumpbtcxyz",
+    audit_links: ["https://drive.google.com/file/d/1kUmOPM8J63JmzM20H1Cg38oAfPRBJwLy/view?pli=1"],
+    github: ["pumpbtc"],
+    listedAt: 1721914007
+  },
 
 ];
 

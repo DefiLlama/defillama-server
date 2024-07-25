@@ -50499,7 +50499,7 @@ const data3: Protocol[] = [
     url: "https://www.betmode.io/",
     description: "BetMode is a decentralized gaming platform that brings classic games such as Blackjack, Slots, and Plinko on chain",
     chain: "Mode",
-    logo: `${baseIconsUrl}/akka.png`,
+    logo: `${baseIconsUrl}/betmode.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

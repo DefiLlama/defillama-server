@@ -2313,5 +2313,9 @@ export default {
     "juice-finance": {
         enabled: true,
         id: "4208"
+    },
+    "origin-dollar": {
+        enabled: true,
+        id: "427"
     }
 } as AdaptorsConfig

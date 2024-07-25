@@ -2305,5 +2305,9 @@ export default {
     "zns": {
         enabled: true,
         id: "4920"
+    },
+    "liquid-collective": {
+        enabled: true,
+        id: "3391"
     }
 } as AdaptorsConfig

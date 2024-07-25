@@ -50316,7 +50316,7 @@ const data3: Protocol[] = [
     url: "https://www.memecoin.org/",
     description: "One $MEME to rule them all",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/memcoin.jpg`,
+    logo: `${baseIconsUrl}/memecoin.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: 'memecoin-2',

@@ -50491,6 +50491,24 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "akka_finance",
   },
+  {
+    id: "4927",
+    name: "BetMode",
+    address: null,
+    symbol: "-",
+    url: "https://www.betmode.io/",
+    description: "BetMode is a decentralized gaming platform that brings classic games such as Blackjack, Slots, and Plinko on chain",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/akka.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Mode"],
+    module: "dummy.js",
+    twitter: "BetMode_io",
+  },
   
 ];
 

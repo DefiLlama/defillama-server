@@ -50399,6 +50399,24 @@ const data3: Protocol[] = [
     github: ["pumpbtc"],
     listedAt: 1721914007
   },
+  {
+    id: "4923",
+    name: "Fast token",
+    address: "0xaeDf386B755465871fF874E3E37Af5976E247064",
+    symbol: "FTN",
+    url: "https://fasttoken.com/",
+    description: "The token that constructs possibilities",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fasttoken.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "fasttoken",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "fasttoken_com",
+  }
 
 ];
 

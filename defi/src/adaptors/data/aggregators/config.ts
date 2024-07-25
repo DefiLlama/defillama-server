@@ -249,5 +249,9 @@ export default {
   "7k-aggregator": {
     enabled: true,
     id: "4868",
+  },
+  "akka": {
+    enabled: true,
+    id: "4926",
   }
 } as AdaptorsConfig;

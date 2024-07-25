@@ -50453,7 +50453,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "xrpl-dex/index.js",
     twitter: "RippleXDev",
-    github: ["XRPLF"],
     listedAt: 1721917627
   },
 

@@ -2317,5 +2317,9 @@ export default {
     "origin-dollar": {
         enabled: true,
         id: "427"
+    },
+    "betmode": {
+        enabled: true,
+        id: "4927"
     }
 } as AdaptorsConfig

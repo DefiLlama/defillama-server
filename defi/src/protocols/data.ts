@@ -91,7 +91,9 @@ const data: Protocol[] = [
     oracles: [],
     language: "Vyper",
     parentProtocol: "parent#curve-finance",
-    tokensExcludedFromParent: ["CRVUSD"],
+    tokensExcludedFromParent: {
+      Ethereum: ["CRVUSD"],
+    }
   },
   {
     id: "111",
@@ -7824,7 +7826,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     forkedFrom: ["Compound V2"],
     parentProtocol: "parent#benqi",
-    tokensExcludedFromParent: ["SAVAX"],
+    tokensExcludedFromParent: {
+      Avalanche: ["SAVAX"],
+    }
   },
   {
     id: "468",

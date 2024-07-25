@@ -15297,7 +15297,9 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/lista-dao/lista-dao-contracts/tree/master/audits"],
     listedAt: 1661888773,
     parentProtocol: "parent#lista-dao",
-    tokensExcludedFromParent: ["SNBNB"],
+    tokensExcludedFromParent: {
+      BSC: ["SNBNB"],
+    }
   },
   {
     id: "2039",
@@ -16175,7 +16177,9 @@ const data2: Protocol[] = [
     twitter: "fraxfinance",
     parentProtocol: "parent#frax-finance",
     listedAt: 1662603346,
-    tokensExcludedFromParent: ["FRAX", "FRXETH"],
+    tokensExcludedFromParent: {
+      Ethereum: ["FRAX", "FRXETH"],
+    }
   },
   {
     id: "2077",
@@ -17220,7 +17224,9 @@ const data2: Protocol[] = [
     twitter: "fraxfinance",
     parentProtocol: "parent#frax-finance",
     listedAt: 1663946542,
-    tokensExcludedFromParent: ["FRAX", "FRXETH"],
+    tokensExcludedFromParent: {
+      Ethereum: ["FRAX", "FRXETH"],
+    }
   },
   {
     id: "2122",
@@ -27492,7 +27498,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#marginfi",
     listedAt: 1677103747,
-    tokensExcludedFromParent: ["LST"],
+    tokensExcludedFromParent: {
+      Solana: ["LST"],
+    }
   },
   {
     id: "2571",

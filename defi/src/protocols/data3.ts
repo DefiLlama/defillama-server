@@ -2044,7 +2044,9 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
     parentProtocol: "parent#thala-labs",
     listedAt: 1680889424,
-    tokensExcludedFromParent: ["STHAPT", "THAPT", "veTHL"],
+    tokensExcludedFromParent: {
+      Aptos: ["STHAPT", "THAPT", "veTHL"],
+    }
   },
   {
     id: "2790",
@@ -2177,7 +2179,9 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
     parentProtocol: "parent#thala-labs",
     listedAt: 1680980221,
-    tokensExcludedFromParent: ["STHAPT", "THAPT", "veTHL"],
+    tokensExcludedFromParent: {
+      Aptos: ["STHAPT", "THAPT", "veTHL"],
+    },
   },
   {
     id: "2796",
@@ -12445,7 +12449,9 @@ const data3: Protocol[] = [
     listedAt: 1689760675,
     audit_links: ["https://docs.hatom.com/getting-started/security/security-reports"],
     parentProtocol: "parent#hatom-protocol",
-    tokensExcludedFromParent: ["SEGLD"],
+    tokensExcludedFromParent: {
+      Elrond: ["SEGLD"],
+    }
   },
   {
     id: "3248",
@@ -39256,7 +39262,9 @@ const data3: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#ether-fi",
     listedAt: 1712171943,
-    tokensExcludedFromParent: ["EETH"],
+    tokensExcludedFromParent: {
+      Ethereum: ["EETH"],
+    }
   },
   {
     id: "4430",
@@ -40895,7 +40903,9 @@ const data3: Protocol[] = [
     twitter: "MIMSwap",
     forkedFrom: [],
     oracles: [],
-    tokensExcludedFromParent: ["MIM"],
+    tokensExcludedFromParent: {
+      Blast: ["MIM"],
+    },
     parentProtocol: "parent#abracadabra",
     listedAt: 1713789617,
   },
@@ -43061,7 +43071,9 @@ const data3: Protocol[] = [
     module: "thala-vethl/index.js",
     twitter: "ThalaLabs",
     parentProtocol: "parent#thala-labs",
-    tokensExcludedFromParent: ["STHAPT", "THAPT", "veTHL"],
+    tokensExcludedFromParent: {
+      Aptos: ["STHAPT", "THAPT", "veTHL"],
+    },
     listedAt: 1715679178,
   },
   {
@@ -47909,7 +47921,9 @@ const data3: Protocol[] = [
     forkedFrom: ["Liquity"],
     oracles: [],
     parentProtocol: "parent#threshold-network",
-    tokensExcludedFromParent: ["tBTC"],
+    tokensExcludedFromParent: {
+      Ethereum: ["tBTC"],
+    },
     listedAt: 1719351634,
   },
   {
@@ -48535,7 +48549,9 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "etherfi-lrt/index.js",
     twitter: "ether_fi",
-    tokensExcludedFromParent: ["EETH"],
+    tokensExcludedFromParent: {
+      Ethereum: ["EETH"],
+    },
     parentProtocol: "parent#ether-fi",
     listedAt: 1720019023
   },

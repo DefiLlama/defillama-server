@@ -149,28 +149,33 @@ export async function getProtocolTvl(
           }
         }
 
-        if (usdTokens !== null && usdTokens[0] !== undefined) {
+        if (protocol.tokensExcludedFromParent !== undefined && usdTokens !== null && usdTokens[0] !== undefined) {
           const chainDisplayName = getChainDisplayName(chain, useNewChainNames)
           if (chain === "tvl" || includeSection(chainDisplayName)) {
             function getExcludedTvl(usdTokensSection:any){
               if(typeof usdTokensSection !== "object"){
                 return 0
               }
-              if(chainDisplayName === "Fraxtal" && protocol.name === "Frax Swap"){
-                return 0 // FRAX on fraxtal is not backed there nor POL minted
+              let tokensToExclude:string[] = []
+              if(chain === "tvl"){
+                tokensToExclude = Array.from(new Set(Object.values(protocol.tokensExcludedFromParent!).flat()))
+              } else {
+                tokensToExclude = protocol.tokensExcludedFromParent![chainDisplayName]
               }
               return Object.entries(usdTokensSection).reduce((sum, token) => {
-                if (protocol.tokensExcludedFromParent?.includes(token[0].toUpperCase())) {
+                if (tokensToExclude?.includes(token[0].toUpperCase())) {
                   sum += token[1] as number
                 }
                 return sum
               }, 0)
             }
-            chainTvls[chain === "tvl" ? "excludeParent" : `${chainDisplayName}-excludeParent`] = {
-              tvl: getExcludedTvl(usdTokens[0]?.[chain]),
-              tvlPrevDay: getExcludedTvl(usdTokens[1]?.[chain]),
-              tvlPrevWeek: getExcludedTvl(usdTokens[2]?.[chain]),
-              tvlPrevMonth: getExcludedTvl(usdTokens[3]?.[chain]),
+            if(chain === "tvl" || protocol.tokensExcludedFromParent[chainDisplayName]){
+              chainTvls[chain === "tvl" ? "excludeParent" : `${chainDisplayName}-excludeParent`] = {
+                tvl: getExcludedTvl(usdTokens[0]?.[chain]),
+                tvlPrevDay: getExcludedTvl(usdTokens[1]?.[chain]),
+                tvlPrevWeek: getExcludedTvl(usdTokens[2]?.[chain]),
+                tvlPrevMonth: getExcludedTvl(usdTokens[3]?.[chain]),
+              }
             }
           }
         }

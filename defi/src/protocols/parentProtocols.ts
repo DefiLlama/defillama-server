@@ -268,17 +268,17 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#redacted",
-    name: "Redacted",
-    url: "https://redacted.finance",
+    name: "Dinero", // prev Redacted
+    url: "https://dinero.xyz/",
     description:
-      "The Redacted ecosystem is a product suite of smart contracts empowering on-chain liquidity, governance, and cash flow for DeFi protocols.",
-    logo: `${baseIconsUrl}/redacted.png`,
-    gecko_id: "redacted",
-    cmcId: "21324",
+      "Dinero is a suite of DeFi products that scale yield for protocols and users",
+    logo: `${baseIconsUrl}/dinero.jpg`,
+    gecko_id: "dinero-2",
+    cmcId: null,
     chains: [],
-    twitter: "redactedcartel",
+    twitter: "dinero_xyz",
     governanceID: ["snapshot:redactedcartel.eth"],
-    github: ["redacted-cartel"],
+    github: ["redacted-cartel", "dinero-protocol"],
     treasury: "redacted.js",
   },
   {

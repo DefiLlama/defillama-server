@@ -24,6 +24,7 @@ export const normalizedChainReplacements = {
   "bitnet": "btn",
   "defichain evm": "defichain_evm",
   "hydration": "hydradx",
+  "xrpl": "ripple"
 } as {
   [chain: string]: string
 }
@@ -1534,13 +1535,13 @@ export const chainCoingeckoIds = {
     twitter: "CantoPublic",
     url: "https://canto.io/",
   },
-  "Ripple": {
+  "XRPL": {
     geckoId: "ripple",
-    github: ['ripple'],
+    github: ['XRPLF'],
     symbol: "XRP",
     cmcId: "52",
-    twitter: "Ripple",
-    url: "https://ripple.com/",
+    twitter: "RippleXDev",
+    url: "https://xrpl.org/",
   },
   "GodwokenV1": {
     geckoId: null,
@@ -3529,7 +3530,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "canto":
       return "Canto"
     case "ripple":
-      return "Ripple"
+      return useNewChainNames ? "XRPL" : "Ripple"
     case "godwokenv1":
       return "GodwokenV1"
     case "arbitrum_nova":

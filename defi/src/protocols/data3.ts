@@ -50432,7 +50432,30 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "fasttoken_com",
-  }
+  },
+  {
+    id: "4924",
+    name: "XRPL DEX",
+    address: null,
+    symbol: "-",
+    url: "https://xrpl.org/",
+    description:
+      "AMM pools for the XRP Ledger Blockchain",
+    chain: "Ripple",
+    logo: `${baseIconsUrl}/xrpl-dex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ripple"],
+    oracles: [],
+    forkedFrom: [],
+    module: "xrpl-dex/index.js",
+    twitter: "RippleXDev",
+    github: ["XRPLF"],
+    listedAt: 1721917627
+  },
 
 ];
 

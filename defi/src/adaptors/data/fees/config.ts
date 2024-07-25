@@ -2309,5 +2309,9 @@ export default {
     "liquid-collective": {
         enabled: true,
         id: "3391"
+    },
+    "juice-finance": {
+        enabled: true,
+        id: "4208"
     }
 } as AdaptorsConfig

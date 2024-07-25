@@ -3227,6 +3227,7 @@ chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
 chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
 chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
 chainCoingeckoIds["HydraDX"] = chainCoingeckoIds["Hydration"]
+chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3286,6 +3287,8 @@ export function transformNewChainName(chain: string) {
       return "Bitkub Chain"
     case "HydraDX":
       return "Hydration"
+    case "Ripple":
+      return "XRPL"
     default:
       return chain
   }

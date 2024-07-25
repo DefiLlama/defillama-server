@@ -2854,5 +2854,10 @@ export default {
                 "1721606400": true,
             }
         }
+    },
+    "kriya-clmm": {
+        parentId: "Kriya",
+        enabled: true,
+        id: "4895"
     }
 } as AdaptorsConfig

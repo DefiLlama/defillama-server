@@ -6,10 +6,11 @@ import { getDimensionsCacheV2, storeDimensionsCacheV2, } from "../utils/dimensio
 import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 // import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
-import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow, timeSToUnix, getStartOfTodayTime } from "../utils/time";
+import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow, timeSToUnix, getStartOfTodayTime, unixTimeToTimeS, } from "../utils/time";
 import { getDisplayChainName } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import parentProtocols from "../../protocols/parentProtocols";
 import { RUN_TYPE } from "../utils";
+import * as sdk from '@defillama/sdk'
 
 const parentProtocolMetadataMap: any = {}
 parentProtocols.forEach(protocol => {
@@ -59,10 +60,9 @@ async function run() {
   }
 
   async function updateAdapterData(adapterType: AdapterType) {
-    // if (adapterType !== AdapterType.OPTIONS) return;
+    // if (adapterType !== AdapterType.AGGREGATORS) return;
 
     const timeKey1 = `data load ${adapterType}`
-    const timeKey2 = `db call ${adapterType}`
     const timeKey3 = `summary ${adapterType}`
 
     console.time(timeKey1)
@@ -123,11 +123,18 @@ async function run() {
     adapterData.parentProtocols = parentProtocols
 
     function addProtocolData(id: any, protocol: any, { isParentProtocol = false, adapterType }: { isParentProtocol: boolean, adapterType: AdapterType }) {
-      if (!isParentProtocol && !protocolMetadataMap[id]) return; // skip if protocol is not enabled
+      if (!isParentProtocol && !protocolMetadataMap[id]) { // skip if protocol is not enabled
+        sdk.log('Skipping disabled protocol', id, adapterType)
+        return;
+      }
       // console.log('Processing', protocolMap[id].displayName, Object.values(adapterData.protocols[id].records).length, 'records')
 
-
       let protocolMetadata = protocolMetadataMap[id]
+
+      if (protocolMetadata?.enabled === false) { // we skip protocols that are disabled
+        sdk.log('Skipping not enabled protocol', protocolMetadata.name)
+        return;
+      }
       if (isParentProtocol) protocolMetadata = protocol.info
       const protocolName = protocolMetadata.displayName ?? protocolMetadata.name
       const protocolData: any = {}
@@ -151,7 +158,7 @@ async function run() {
       protocol.info.chains = info.chains.map(_getDisplayChainName)
       protocol.info.chains.forEach((chain: string) => chainSet.add(chain))
       const protocolTypeRecords = data[AdapterType.PROTOCOLS].protocols[id]?.records ?? {}
-      const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData({ ...protocolTypeRecords, ...protocol.records })  // if there are duplicate records between protocol and specific adaptertype, the adaptertype record overwrites generic record
+      const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData({ ...protocolTypeRecords, ...protocol.records }, protocol.info, adapterType, protocolMetadataMap[id])  // if there are duplicate records between protocol and specific adaptertype, the adaptertype record overwrites generic record
       const hasTodayData = !!protocol.records[todayTimestring]
       const timeDataKey = hasTodayData ? 'today' : 'yesterday'
       const { lastTimeString, dayBeforeLastTimeString, weekAgoTimeString, monthAgoTimeString, lastWeekTimeStrings, lastTwoWeektoLastWeekTimeStrings, lastTwoWeekTimeStrings, last30DaysTimeStrings, last60to30DaysTimeStrings, lastOneYearTimeStrings } = timeData[timeDataKey]
@@ -237,7 +244,7 @@ async function run() {
 
       for (const recordType of recordTypes) {
         if (adapterType === AdapterType.PROTOCOLS) return;
-        
+
         let _protocolData = protocolData[recordType]
         if (!_protocolData) continue
         const todayRecord = _protocolData.today || _protocolData.latest
@@ -260,18 +267,29 @@ async function run() {
         addToSummary({ records: _protocolData.lastOneYearData, summaryKey: 'total1y', recordType, protocolSummary, isParentProtocol, })
 
         // totalAllTime
-        Object.values(protocol.records).forEach(({ aggregated }: any) => {
-          if (!aggregated[recordType]) return;
-          const { value, chains } = aggregated[recordType]
-          if (!protocolSummary.totalAllTime) protocolSummary.totalAllTime = 0
-          protocolSummary.totalAllTime += value
-          Object.entries(chains).forEach(([chain, value]: any) => {
-            if (!protocolSummary.chainSummary![chain]) protocolSummary.chainSummary![chain] = initSummaryItem(true)
-            const chainSummary = protocolSummary.chainSummary![chain] as ProtocolSummary
-            if (!chainSummary.totalAllTime) chainSummary.totalAllTime = 0
-            chainSummary.totalAllTime += value
+        const acumulativeRecordType = ACCOMULATIVE_ADAPTOR_TYPE[recordType]
+        if (acumulativeRecordType) {
+          const allKeys = Object.keys(protocol.records)
+          allKeys.sort() // this is to ensure that we are processing the records in order
+          allKeys.forEach((timeS: string) => {
+            const { aggregated } = protocol.records[timeS]
+            if (!aggregated[recordType]) return;
+            const { value, chains } = aggregated[recordType]
+            const { value: totalValue, chains: chainsTotal } = aggregated[acumulativeRecordType] ?? { value: 0, chains: {} }
+            if (!protocolSummary.totalAllTime) protocolSummary.totalAllTime = 0
+            protocolSummary.totalAllTime += value
+            if (totalValue)
+              protocolSummary.totalAllTime = totalValue
+            Object.entries(chains).forEach(([chain, value]: any) => {
+              if (!protocolSummary.chainSummary![chain]) protocolSummary.chainSummary![chain] = initSummaryItem(true)
+              const chainSummary = protocolSummary.chainSummary![chain] as ProtocolSummary
+              if (!chainSummary.totalAllTime) chainSummary.totalAllTime = 0
+              chainSummary.totalAllTime += value
+              if (chainsTotal[chain])
+                chainSummary.totalAllTime = chainsTotal[chain]
+            })
           })
-        })
+        }
 
         // average1y
         protocolSummaryAction(protocolSummary, (summary: any) => {
@@ -335,11 +353,6 @@ async function run() {
       }
     }
 
-    // delete (summaries.dv as any).chart
-    // delete (summaries.dv as any).chartBreakdown
-    // delete (summaries as any).earliestTimestamp
-
-    // adapterData.protocols = {}
     adapterData.summaries = summaries
     adapterData.allChains = Array.from(chainSet)
     adapterData.lastUpdated = getUnixTimeNow()
@@ -489,8 +502,61 @@ type ProtocolSummary = RecordSummary & {
 run().catch(console.error).then(() => process.exit(0))
 // process.exit(0)
 
+const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYPE))
 // fill all missing data with the last available data
-function getProtocolRecordMapWithMissingData(records: IJSON<any>) {
+function getProtocolRecordMapWithMissingData(records: IJSON<any>, info: any = {}, adapterType: any, metadata: any) {
+  const { allSpikesAreGenuine, whitelistedSpikeSet = new Set() } = getSpikeConfig(metadata)
+  const allKeys = Object.keys(records)
+
+  // there is no point in maintaining accumulative data for protocols on all the records
+  // we retain only the first and last record and compute the rest
+  const accumRecordFirsts: IJSON<any> = {}
+  const accumRecordLasts: IJSON<any> = {}
+  allKeys.sort()
+  allKeys.forEach((timeS: any, idx: number) => {
+    const record = records[timeS]
+    if (!record) {
+      delete records[timeS]
+      return;
+    }
+    const dataKeys = Object.keys(record.aggregated ?? {}).filter(key => ACCOMULATIVE_ADAPTOR_TYPE[key]) // we care about only base keys
+    const values = dataKeys.map(key => record.aggregated?.[key]?.value ?? 0)
+    const improbableValue = 5e10 // 50 billion
+    if (values.some((i: any) => i > improbableValue)) {
+      sdk.log('Invalid value found (ignoring it)', adapterType, metadata?.id, info?.name, timeS, values.find((i: any) => i > improbableValue))
+      // sdk.log('Invalid value found (ignoring it)', info?.name, timeS, JSON.stringify(record, null, 2))
+      delete records[timeS]
+      return;
+    }
+
+    dataKeys.forEach((key: any) => {
+
+      // code for logging spikes
+      const currentValue = record.aggregated?.[key]?.value
+      // we check if we have at least 7 days of data & value is higher than a million before checking if it is a spike
+      if (idx > 7 && currentValue > 1e7 && !allSpikesAreGenuine && !whitelistedSpikeSet.has(timeS)) {
+        const surroundingKeys = getSurroundingKeysExcludingCurrent(allKeys, idx)
+        const highestCloseValue = surroundingKeys.map(i => records[i].aggregated?.[key]?.value ?? 0).filter(i => i).reduce((a, b) => Math.max(a, b), 0)
+        if (highestCloseValue > 0 && currentValue > 10 * highestCloseValue) {
+          sdk.log('Spike detected', adapterType, metadata?.id, info?.name, timeS, key, currentValue, highestCloseValue, Math.round(currentValue * 100 / highestCloseValue)/100+'x')
+          // sdk.log('Spike detected', info?.name, timeS, JSON.stringify(record, null, 2))
+        }
+      }
+
+      // code for removing redundant cummulative data
+      if (!accumulativeRecordTypeSet.has(key)) return;
+      if (!accumRecordFirsts[key]) {
+        accumRecordFirsts[key] = timeS
+      } else if (!accumRecordLasts[key]) {
+        accumRecordLasts[key] = timeS
+      } else {
+        const prevRecordWithVaule = records[accumRecordLasts[key]]
+        delete prevRecordWithVaule.aggregated?.[key]
+        delete prevRecordWithVaule.breakdown?.[key]
+        accumRecordLasts[key] = timeS
+      }
+    })
+  })
   let firstTimestamp: number
   let firstTimeS: string
   let lastTimeSWithData: string
@@ -511,7 +577,7 @@ function getProtocolRecordMapWithMissingData(records: IJSON<any>) {
   if (!firstTimeS!) return {}
 
   nextTimeS = firstTimeS
-  addTotalValueDataTypesToRecord(records[firstTimeS])
+  // addTotalValueDataTypesToRecord(records[firstTimeS])
 
   while (timeSToUnix(nextTimeS) < currentTime) {
     if (records[nextTimeS])
@@ -520,7 +586,7 @@ function getProtocolRecordMapWithMissingData(records: IJSON<any>) {
       response[nextTimeS] = records[lastTimeSWithData!]
 
     const currentRecord = response[nextTimeS]
-    addTotalValueDataTypesToRecord(currentRecord, prevRecord)
+    // addTotalValueDataTypesToRecord(currentRecord, prevRecord)
 
     nextTimeS = getNextTimeS(nextTimeS)
     prevRecord = currentRecord
@@ -565,3 +631,38 @@ function _getDisplayChainName(chain: string) {
 function getPercentage(a: number, b: number) {
   return +Number(((a - b) / b) * 100).toFixed(2)
 }
+
+type SpikeConfig = {
+  allSpikesAreGenuine?: boolean
+  whitelistedSpikeSet?: Set<string>
+}
+
+function getSpikeConfig(protocol: any): SpikeConfig {
+  let info = (protocol as any)?.cleanRecordsConfig?.genuineSpikes ?? {}
+  if (info === true) return { allSpikesAreGenuine: true, }
+  const whitelistedSpikeSet = new Set() as Set<string>
+  Object.entries(info).forEach(([key, value]: any) => {
+    if (!value) return;
+    const timeS = unixTimeToTimeS(key)
+    whitelistedSpikeSet.add(timeS)
+  })
+  return { whitelistedSpikeSet }
+}
+
+function getSurroundingKeysExcludingCurrent<T>(array: T[], currentIndex: number, range = 7): T[] {
+  const startIndex = Math.max(currentIndex - range, 0);
+  const endIndex = Math.min(currentIndex + range, array.length);
+  const beforeCurrent = array.slice(startIndex, currentIndex);
+  const afterCurrent = array.slice(currentIndex + 1, endIndex + 1);
+  return beforeCurrent.concat(afterCurrent);
+}
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason)
+  // process.exit(1)
+})
+
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception thrown', error)
+  // process.exit(1)
+})

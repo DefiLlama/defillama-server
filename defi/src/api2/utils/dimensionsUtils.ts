@@ -7,6 +7,7 @@ import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import parentProtocols from "../../protocols/parentProtocols";
 import { RUN_TYPE } from ".";
 import { getTimeSDaysAgo } from "./time";
+import { ACCOMULATIVE_ADAPTOR_TYPE } from "../../adaptors/handlers/getOverviewProcess";
 
 const parentProtocolMap: any = {}
 parentProtocols.forEach(protocol => {
@@ -23,7 +24,7 @@ export function getFileCacheKey(adaptorRecordType: AdapterType) {
 
 
 export function getFileCacheKeyV2() {
-  return `dimensions-data-v2-v0.0`
+  return `dimensions-data-v2-v0.2`
 }
 
 let _cacheData: any
@@ -145,11 +146,13 @@ export async function getAdaptorRecord2({ adapter, type, mode = 'ALL', adaptorTy
 }
 
 export function computeSummary({ records, versionKey, chain, recordType, }: {
-  records: any, 
+  records: any,
   versionKey?: string,
   recordType: string,
   chain?: string,
 }) {
+  const allKeys = Object.keys(records)
+  allKeys.sort()
   const summary: any = {}
   let todayStr = getTimeSDaysAgo(0)
   let moveADayBack = false
@@ -160,21 +163,35 @@ export function computeSummary({ records, versionKey, chain, recordType, }: {
   let yesterdayStr = getTimeSDaysAgo(1, moveADayBack)
   const lastWeekTimeStrings = Array.from({ length: 7 }, (_, i) => getTimeSDaysAgo(i, moveADayBack))
 
-  summary.total24h = getValue(records[todayStr])
-  summary.total48hto24h = getValue(records[yesterdayStr])
-  summary.total7d = lastWeekTimeStrings.map((dateStr: string) => getValue(records[dateStr] ?? 0)).reduce((acc: number, i: any) => acc + i, 0)
-  summary.totalAllTime = Object.values(records).map((r: any) => getValue(r ?? 0)).reduce((acc: number, i: any) => acc + i, 0)
+  const accumulativeRecordType = ACCOMULATIVE_ADAPTOR_TYPE[recordType]
+  if (accumulativeRecordType) { // this means current recordType is not accumulative
+    summary.total24h = getValue(records[todayStr])
+    summary.total48hto24h = getValue(records[yesterdayStr])
+    summary.total7d = lastWeekTimeStrings.map((dateStr: string) => getValue(records[dateStr])).reduce((acc: number, i: any) => acc + i, 0)
+    summary.totalAllTime = 0
+    
+    for (const key in allKeys) {
+      const record = records[key]
+      const totalValue = getValue(record, accumulativeRecordType)
+      if (totalValue) {
+        summary.totalAllTime = totalValue
 
-  function getValue(record: any) {
-    if (!record) return null
+      } else {
+        summary.totalAllTime += getValue(record)
+      }
+    }
+  }
+
+  function getValue(record: any, rType = recordType) {
+    if (!record) return 0
     let data
     if (!versionKey) {
-      data = record.aggregated?.[recordType]
+      data = record.aggregated?.[rType]
     } else {
-      data = record.breakdown?.[recordType]?.[versionKey]
+      data = record.breakdown?.[rType]?.[versionKey]
     }
-    if (!data) return null
-    return chain ? data.chains?.[chain] : data.value
+    if (!data) return 0
+    return (chain ? data.chains?.[chain] : data.value) ?? 0
   }
   return summary
 }

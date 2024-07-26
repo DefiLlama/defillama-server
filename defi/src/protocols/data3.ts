@@ -49431,6 +49431,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#glyph-exchange",
     listedAt: 1720786977
   },
+  {
+    id: "4881",
+    name: "WaterNeuron",
+    address: "icp:-",
+    symbol: "WTN",
+    url: "https://waterneuron.fi/",
+    description:
+      "WaterNeuron is a liquid staking protocol for ICP.",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/waterneuron.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "LiquidStaking",
+    chains: ["ICP"],
+    module: "icpswap/index.js",
+    twitter: "WaterNeuron",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1720962484,
+    github: ["WaterNeuron"],
+  },
 ];
 
 export default data3;

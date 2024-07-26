@@ -50572,6 +50572,28 @@ const data3: Protocol[] = [
     github: ["SpaceWhaleDex"],
     listedAt: 1721982511
   },
+  {
+    id: "4931",
+    name: "DuckGang",
+    address: null,
+    symbol: "-",
+    url: "https://www.duckgang.com",
+    description:
+      "Farming project on SEI network",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/duckgang.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Sei"],
+    oracles: [],
+    forkedFrom: [],
+    module: "duckgang/index.js",
+    twitter: "duckgang_com",
+    listedAt: 1721998190
+  },
 ];
 
 export default data3;

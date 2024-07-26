@@ -635,6 +635,11 @@
       "decimals": "18",
       "symbol": "rcbETH",
       "to": "coingecko#ethereum"
+    },
+    "0xe4b20925D9E9a62F1E492e15a81dC0de62804dd4": {
+      "decimals": "18",
+      "symbol": "BTCUSD",
+      "to": "coingecko#bitcoin-usd-btcfi"
     }
   },
   "jbc": {

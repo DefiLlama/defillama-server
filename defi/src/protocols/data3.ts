@@ -50527,6 +50527,51 @@ const data3: Protocol[] = [
     module: "bigone/index.js",
     twitter: "BigONEexchange",
   },
+  {
+    id: "4929",
+    name: "OPEN Ticketing Ecosystem",
+    address: "0xc28eb2250d1ae32c7e74cfb6d6b86afc9beb6509",
+    symbol: "OPN",
+    url: "https://onopen.xyz",
+    description:
+      "The home of onchain ticketing. Bringing accessible onchain benefits to millions of event attendees, organizers and artists around the world.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/open-ticketing-ecosystem.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "open-ticketing-ecosystem",
+    cmcId: "32165",
+    category: "Farm",
+    chains: ["Ethereum", "Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "open-ticketing-ecosystem/index.js",
+    twitter: "onopenxyz",
+    listedAt: 1721982011
+  },
+  {
+    id: "4930",
+    name: "SpaceWhale",
+    address: null,
+    symbol: "-",
+    url: "https://spacewhale.ai",
+    description:
+      "SpaceWhale has Perps for Meme, GameFi, AI tokens not offered on any other DEX. Get 50x leverage on Solana, Base, Ethereum assets without having to switch wallets",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/spacewhale.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "spacewhale/index.js",
+    twitter: "SpaceWhaleDex",
+    github: ["SpaceWhaleDex"],
+    listedAt: 1721982511
+  },
 ];
 
 export default data3;

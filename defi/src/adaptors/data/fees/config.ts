@@ -2321,5 +2321,9 @@ export default {
     "betmode": {
         enabled: true,
         id: "4927"
+    },
+    "silo-finance": {
+        enabled: true,
+        id: "2020"
     }
 } as AdaptorsConfig

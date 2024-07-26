@@ -50509,7 +50509,24 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "BetMode_io",
   },
-  
+  {
+    id: "4928",
+    name: "BigONE",
+    address: null,
+    symbol: "-",
+    url: "https://big.one",
+    description: "BigONE is a global cryptocurrency exchange that provides a platform for trading various cryptocurrencies. It was founded in 2017 and registered in the Seychelles. The group operates in Russia, Brazil, Vietnam, Seychelles, Singapore, Japan, and Indonesia, providing marketing, investment, and blockchain technology research & development.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bigone.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Tron"],
+    module: "bigone/index.js",
+    twitter: "BigONEexchange",
+  },
 ];
 
 export default data3;

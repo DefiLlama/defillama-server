@@ -4,6 +4,7 @@ import { initializeTVLCacheDB } from "./db";
 import setTvlRoutes from "./routes";
 import process from "process";
 import fs from 'fs'
+import { RUN_TYPE } from "./utils";
 
 const webserver = new HyperExpress.Server()
 
@@ -21,7 +22,7 @@ async function main() {
 
   await Promise.all([
     initializeTVLCacheDB({ isApi2Server: true }),
-    initCache({ cacheType: 'api-server' }),
+    initCache({ cacheType: RUN_TYPE.API_SERVER }),
   ])
 
   const router = new HyperExpress.Router()

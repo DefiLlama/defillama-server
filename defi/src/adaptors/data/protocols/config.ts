@@ -72,6 +72,7 @@ export default {
         "id": "3361",
     },
     "blasterswap": {
+        parentId: "Blasterswap",
         "enabled": true,
         "id": "4296",
     },
@@ -248,5 +249,15 @@ export default {
                 id: "4880",
             }
         }
+    },
+    "dexswap": {
+        parentId: "DexFinance",
+        enabled: true,
+        id: "3277",
+    },
+    "blasterswap-v3": {
+        parentId: "Blasterswap",
+        enabled: true,
+        id: "4728",
     }
 } as AdaptorsConfig

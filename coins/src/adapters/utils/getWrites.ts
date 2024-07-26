@@ -5,8 +5,8 @@ import {
 import { getTokenInfo } from "./erc20";
 import { Write, CoinData } from "./dbInterfaces";
 
-export default async function getWrites(params: { chain: string, timestamp: number, pricesObject: Object, writes?: Write[], projectName: string, underlyingChain?: string}) {
-  let { chain, timestamp, pricesObject, writes = [], underlyingChain } = params
+export default async function getWrites(params: { chain: string, timestamp: number, pricesObject: Object, writes?: Write[], projectName: string, underlyingChain?: string, confidence?: number}) {
+  let { chain, timestamp, pricesObject, writes = [], underlyingChain, confidence } = params
   const entries = Object.entries(pricesObject).map(([token, obj]) => {
     return {
       token: token.toLowerCase(),
@@ -37,7 +37,7 @@ export default async function getWrites(params: { chain: string, timestamp: numb
     } as CoinData;
     if (!coinData) return;
 
-    addToDBWritesList(writes, chain, token, coinData.price * price, finalDecimals, finalSymbol, timestamp, params.projectName, Math.min(0.98, coinData.confidence as number))
+    addToDBWritesList(writes, chain, token, coinData.price * price, finalDecimals, finalSymbol, timestamp, params.projectName, confidence ?? Math.min(0.98, coinData.confidence as number))
   })
 
   const writesObject: any = {}

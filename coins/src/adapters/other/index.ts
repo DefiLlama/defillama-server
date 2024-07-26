@@ -30,6 +30,7 @@ import steadefiUsdWbtc from "./steadefi_usdc_wbtc";
 import warlordAdapter from "./warlord";
 import opdxAdapter from "./odpxWethLP";
 import teahouseAdapter from "./teahouse";
+import opal from "./opal";
 import gmdV2 from "./gmdV2";
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
@@ -288,7 +289,7 @@ export function collateralizedAssets(timestamp: number = 0) {
     {
       token: "0x52c64b8998eb7c80b6f526e99e29abdcc86b841b", // DSU
       vault: "0x0d49c416103cbd276d9c3cd96710db264e3a0c27",
-      collateral: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+      collateral: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
     },
   ]);
 }
@@ -366,6 +367,7 @@ export async function warlord(timestamp: number = 0) {
 export async function salt(timestamp: number = 0) {
   const writes: Write[] = []
   await wNLXCore(timestamp, writes)
+  await dsu(timestamp, writes)
   const chain = 'ethereum'
   const api = await getApi(chain, timestamp)
   const price = await api.call({ abi: 'uint256:priceSALT', target: '0x22096408044Db49A4eB871640b351Ccacb675ED6' })
@@ -378,7 +380,8 @@ export async function salt(timestamp: number = 0) {
   addToDBWritesList(writes, chain, '0x0110B0c3391584Ba24Dbf8017Bf462e9f78A6d9F', price / 1e18, 18, 'SALT', timestamp, "salty", 0.95,)
   return writes;
 }
-export async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
+
+async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
   const chain = 'core'
   const api = await getApi(chain, timestamp)
   const wNLXCore = '0x2c6bcf5990cc115984f0031d613af1a645089ad6'
@@ -386,6 +389,20 @@ export async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
   const balance = await api.call({ abi: 'function getEthBalance(address) view returns (uint256)', target: '0xca11bde05977b3631167028862be2a173976ca11', params: wNLXCore })
   const pricesObject = {
     [wNLXCore]: { price: balance / supply, underlying: '0x0000000000000000000000000000000000000000', },
+  }
+  await getWrites({ chain, timestamp, writes, pricesObject, projectName: "salt", })
+}
+
+async function dsu(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'arbitrum'
+  const api = await getApi(chain, timestamp)
+  const dsu = '0x52c64b8998eb7c80b6f526e99e29abdcc86b841b'
+  const usdc = '0xaf88d065e77c8cc2239327c5edb3a432268e5831'
+  const treasury = '0x0d49c416103Cbd276d9c3cd96710dB264e3A0c27'
+  const supply = await api.call({ abi: 'uint256:totalSupply', target: dsu })
+  const balance = await api.call({ abi: 'erc20:balanceOf', target: usdc, params: treasury })
+  const pricesObject = {
+    [dsu]: { price: balance * 1e12 / supply, underlying: usdc, },
   }
   await getWrites({ chain, timestamp, writes, pricesObject, projectName: "salt", })
 }
@@ -416,4 +433,5 @@ export const adapters = {
   gmdV2,
   salt,
   warlord,
+  opal,
 }

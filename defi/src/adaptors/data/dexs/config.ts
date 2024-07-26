@@ -2841,5 +2841,23 @@ export default {
     "xei": {
         enabled: true,
         id: "4836"
+    },
+    "eddyfinance-v2": {
+        enabled: true,
+        id: "4120"
+    },
+    "dedust": {
+        enabled: true,
+        id: "2617",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1721606400": true,
+            }
+        }
+    },
+    "kriya-clmm": {
+        parentId: "Kriya",
+        enabled: true,
+        id: "4895"
     }
 } as AdaptorsConfig

@@ -10,6 +10,7 @@ type QueryParams = {
   period: number;
   lookForward: string;
   timestamp: number;
+  searchWidth: number;
 };
 type PriceChangeResponse = {
   [coin: string]: number;
@@ -25,17 +26,21 @@ function formParamsObject(event: any): QueryParams {
       event.queryStringParameters?.timestamp ?? getCurrentUnixTimestamp()
     ).toString(),
   );
+  const searchWidth = event.queryStringParameters?.searchWidth ?? period / 4;
+
   return {
     coins,
     period,
     lookForward,
     timestamp,
+    searchWidth,
   };
 }
 async function fetchDBData(
   timestamps: number[],
   coins: any[],
   PKTransforms: any,
+  searchWidth: number,
 ) {
   let response = {} as any;
   const promises: any[] = [];
@@ -46,7 +51,7 @@ async function fetchDBData(
         const finalCoin = await getRecordClosestToTimestamp(
           coin.redirect ?? coin.PK,
           timestamp,
-          900,
+          searchWidth,
         );
         if (finalCoin.SK === undefined) {
           return;
@@ -111,6 +116,7 @@ const handler = async (event: any): Promise<IResponse> => {
     timestamps,
     coins,
     PKTransforms,
+    params.searchWidth,
   );
   return successResponse(
     {

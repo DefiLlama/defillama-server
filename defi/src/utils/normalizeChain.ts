@@ -24,6 +24,7 @@ export const normalizedChainReplacements = {
   "bitnet": "btn",
   "defichain evm": "defichain_evm",
   "hydration": "hydradx",
+  "xrpl": "ripple"
 } as {
   [chain: string]: string
 }
@@ -1534,13 +1535,13 @@ export const chainCoingeckoIds = {
     twitter: "CantoPublic",
     url: "https://canto.io/",
   },
-  "Ripple": {
+  "XRPL": {
     geckoId: "ripple",
-    github: ['ripple'],
+    github: ['XRPLF'],
     symbol: "XRP",
     cmcId: "52",
-    twitter: "Ripple",
-    url: "https://ripple.com/",
+    twitter: "RippleXDev",
+    url: "https://xrpl.org/",
   },
   "GodwokenV1": {
     geckoId: null,
@@ -3187,6 +3188,25 @@ export const chainCoingeckoIds = {
     twitter: "noble_xyz",
     url: "https://x.com/noble_xyz"
   },
+  "Aeternity": {
+    geckoId: "aeternity",
+    symbol: "AE",
+    cmcId: "1700",
+    twitter: "aeternity",
+    url: "https://aeternity.com/",
+  },
+  "Saakuru": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "saakuru_labs",
+    url: "https://saakuru.com/",
+    chainId: 7225878,
+    parent: {
+      chain: "Oasys",
+      types: ["L2"]
+    },
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3207,6 +3227,7 @@ chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
 chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
 chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
 chainCoingeckoIds["HydraDX"] = chainCoingeckoIds["Hydration"]
+chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3266,6 +3287,8 @@ export function transformNewChainName(chain: string) {
       return "Bitkub Chain"
     case "HydraDX":
       return "Hydration"
+    case "Ripple":
+      return "XRPL"
     default:
       return chain
   }
@@ -3510,7 +3533,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "canto":
       return "Canto"
     case "ripple":
-      return "Ripple"
+      return useNewChainNames ? "XRPL" : "Ripple"
     case "godwokenv1":
       return "GodwokenV1"
     case "arbitrum_nova":
@@ -3865,6 +3888,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Etherlink"
     case "noble":
       return "Noble"
+    case "aeternity":
+      return "Aeternity"
+    case "saakuru":
+      return "Saakuru"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

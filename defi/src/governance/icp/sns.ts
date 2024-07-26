@@ -79,6 +79,8 @@ interface SnsMetadata
  */
 async function get_sns_metadata () : Promise<SnsMetadata[]>
 {
+    try {
+        
     var { data, status } = await axios.get(
         ICRC1_LEDGER_API_BASE_URL + "?offset=0&limit=100"
         ,
@@ -89,6 +91,10 @@ async function get_sns_metadata () : Promise<SnsMetadata[]>
         },
     );
     return data.data;
+    } catch (e) {
+        console.error('failed to fetch sns config', (e as any)?.message)
+        return []
+    }
 }
 
 /**

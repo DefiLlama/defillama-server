@@ -12,7 +12,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "AAVE",
     url: "https://aave.com\r\n",
     description: "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",
-    logo: `${baseIconsUrl}/aave-v2.png`,
+    logo: `${baseIconsUrl}/aave.png`,
     chains: [],
     gecko_id: "aave",
     cmcId: "7278",
@@ -268,17 +268,17 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#redacted",
-    name: "Redacted",
-    url: "https://redacted.finance",
+    name: "Dinero", // prev Redacted
+    url: "https://dinero.xyz/",
     description:
-      "The Redacted ecosystem is a product suite of smart contracts empowering on-chain liquidity, governance, and cash flow for DeFi protocols.",
-    logo: `${baseIconsUrl}/redacted.png`,
-    gecko_id: "redacted",
-    cmcId: "21324",
+      "Dinero is a suite of DeFi products that scale yield for protocols and users",
+    logo: `${baseIconsUrl}/dinero.jpg`,
+    gecko_id: "dinero-2",
+    cmcId: null,
     chains: [],
-    twitter: "redactedcartel",
+    twitter: "dinero_xyz",
     governanceID: ["snapshot:redactedcartel.eth"],
-    github: ["redacted-cartel"],
+    github: ["redacted-cartel", "dinero-protocol"],
     treasury: "redacted.js",
   },
   {
@@ -4172,7 +4172,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Kriya",
     url: "https://app.kriya.finance/",
     description:
-      "One stop DeFi protocol on Sui. Offering Swaps, Limit Orders, 1-click leverage lending strategies, Yield Optimiser Vaults and 20x perpetuals",
+      "1-stop DeFi protocol on Sui. Offering Swaps, Limit Orders, 1-click leverage lending strategies, Yield Optimiser Vaults and 20x perpetuals",
     logo: `${baseIconsUrl}/kriya.png`,
     gecko_id: null,
     cmcId: null,
@@ -4368,6 +4368,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "FjordFoundry",
+    treasury: "fjord-foundry.js"
   },
   {
     id: "parent#nuri-exchange",
@@ -4914,6 +4915,29 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ClearpoolFin",
     github: ["clearpool-finance"],
+  },
+  {
+    id: "parent#sparkdex",
+    name: "SparkDEX",
+    url: "https://sparkdex.ai/home",
+    description: "First AI-driven DeFi ecosystem on Flare Network.",
+    logo: `${baseIconsUrl}/sparkdex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SparkDexAI",
+    github: ["sparkdex"],
+  },
+  {
+    id: "parent#crust-finance",
+    name: "Crust Finance",
+    url: "https://www.crust.finance",
+    description: "Crust Finance is a decentralized exchange and automated market marker built on mantle blockchain focusing on providing efficient token swaps and deep liquidity for stablecoins and other assets",
+    logo: `${baseIconsUrl}/crust-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "CrustFinance",
   },
 ];
 

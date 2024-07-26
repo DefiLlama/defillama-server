@@ -23,6 +23,7 @@ const latency: number = 1 * 60 * 60; // 1hr
 const margin: number = 6 * 60 * 60; // 12hr
 const confidenceThreshold: number = 0.3;
 const zeroDecimalAdapters: string[] = [
+  'LiNEAR',
   "coingecko",
   "chainlink-nft",
   "defichain",

@@ -15297,7 +15297,9 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/lista-dao/lista-dao-contracts/tree/master/audits"],
     listedAt: 1661888773,
     parentProtocol: "parent#lista-dao",
-    tokensExcludedFromParent: ["SNBNB"],
+    tokensExcludedFromParent: {
+      BSC: ["SNBNB"],
+    }
   },
   {
     id: "2039",
@@ -16175,7 +16177,9 @@ const data2: Protocol[] = [
     twitter: "fraxfinance",
     parentProtocol: "parent#frax-finance",
     listedAt: 1662603346,
-    tokensExcludedFromParent: ["FRAX", "FRXETH"],
+    tokensExcludedFromParent: {
+      Ethereum: ["FRAX", "FRXETH"],
+    }
   },
   {
     id: "2077",
@@ -17220,7 +17224,9 @@ const data2: Protocol[] = [
     twitter: "fraxfinance",
     parentProtocol: "parent#frax-finance",
     listedAt: 1663946542,
-    tokensExcludedFromParent: ["FRAX", "FRXETH"],
+    tokensExcludedFromParent: {
+      Ethereum: ["FRAX", "FRXETH"],
+    }
   },
   {
     id: "2122",
@@ -18284,7 +18290,7 @@ const data2: Protocol[] = [
     description:
       "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho.png`,
+    logo: `${baseIconsUrl}/morpho-aave.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -21123,22 +21129,22 @@ const data2: Protocol[] = [
   },
   {
     id: "2292",
-    name: "Cake DeFi",
+    name: "Bake.io", // previous Cake DeFi
     address: null,
     symbol: "-",
-    url: "https://www.cakedefi.com",
+    url: "https://www.bake.io",
     description:
-      "Cake DeFi is a Singapore-based fintech platform which provides easy access to Web3 and DeFi services for users and businesses all around the world in the most user-friendly and transparent manner. As Southeast Asia's fastest growing fintech platform and global CeDeFi leader, Cake DeFi has attained all-time high growth in terms of customers, deposits and payouts due to its rigorous business model of recurring revenue.",
+      "Bake.io (formerly Cake DeFi) is a Singapore-based crypto platform providing easy access to decentralized finance (DeFi) services and applications. Bake empowers customers to generate returns on their digital assets in a secure and transparent way. Bake combines the customer support and ease-of-use of centralized finance (CeFi) and the transparency and traceability of DeFi, shaping a superior CeDeFi experience for retail customers.  For more information, please visit bake.io",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/cake-defi.jpg`,
+    logo: `${baseIconsUrl}/bake.io.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "CEX",
-    chains: ["Ethereum", "Bitcoin"],
+    chains: ["Ethereum", "Bitcoin", "Polygon"],
     module: "cake-defi/index.js",
-    twitter: "cakedefi",
+    twitter: "bake_io",
     forkedFrom: [],
     listedAt: 1668702402,
   },
@@ -25402,8 +25408,8 @@ const data2: Protocol[] = [
   {
     id: "2479",
     name: "DeltaPrime",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x3de81ce90f5a27c5e6a5adb04b54aba488a6d14e",
+    symbol: "PRIME",
     url: "https://deltaprime.io",
     description:
       "DeltaPrime aggregates the best projects from your chain within one DeFi ecosystem. Within this ecosystem you can borrow extra capital trustless and anonymous. This way, you multiply your returns with a balanced portfolio, whether through trading, LPing or farming",
@@ -25411,7 +25417,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/deltaprime.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "prime-2",
     cmcId: null,
     category: "Leveraged Farming",
     chains: ["Avalanche"],
@@ -25508,7 +25514,7 @@ const data2: Protocol[] = [
     description:
       "Perennial is a decentralized derivatives protocol built from first-principles to be a powerful, flexible, and composable primitive that can scale to meet the needs of DeFi traders, liquidity providers, and developers.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/perennial.jpg`,
+    logo: `${baseIconsUrl}/perennial-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -27492,7 +27498,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#marginfi",
     listedAt: 1677103747,
-    tokensExcludedFromParent: ["LST"],
+    tokensExcludedFromParent: {
+      Solana: ["LST"],
+    }
   },
   {
     id: "2571",

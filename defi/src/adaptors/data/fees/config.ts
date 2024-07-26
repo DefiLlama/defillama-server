@@ -832,7 +832,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": false,
+        "enabled": true,
         "id": "2864"
     },
     "merlin": {
@@ -1711,7 +1711,7 @@ export default {
         "id": "1320"
     },
     "surfone": {
-        "enabled": false,
+        "enabled": true,
         "id": "3954"
     },
     "squa-defi": {
@@ -2280,5 +2280,50 @@ export default {
         parentId: "Jupiter",
         enabled: true,
         id: "4860"
+    },
+    "scallop": {
+        parentId: "Scallop",
+        enabled: true,
+        id: "1961"
+    },
+    "d2finance": {
+        enabled: true,
+        id: "4846"
+    },
+    "eddyfinance-v2": {
+        enabled: true,
+        id: "4120"
+    },
+    "size-credit": {
+        enabled: true,
+        id: "4904"
+    },
+    "stbot": {
+        enabled: true,
+        id: "4909"
+    },
+    "zns": {
+        enabled: true,
+        id: "4920"
+    },
+    "liquid-collective": {
+        enabled: true,
+        id: "3391"
+    },
+    "juice-finance": {
+        enabled: true,
+        id: "4208"
+    },
+    "origin-dollar": {
+        enabled: true,
+        id: "427"
+    },
+    "betmode": {
+        enabled: true,
+        id: "4927"
+    },
+    "silo-finance": {
+        enabled: true,
+        id: "2020"
     }
 } as AdaptorsConfig

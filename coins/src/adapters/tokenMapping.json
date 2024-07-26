@@ -357,6 +357,11 @@
       "decimals": "18",
       "symbol": "CVX1",
       "to": "coingecko#convex-finance"
+    },
+    "0x7a56e1c57c7475ccf742a1832b028f0456652f97":{
+      "decimals": "18",
+      "symbol": "SolvBTC",
+      "to": "coingecko#solv-btc"
     }
   },
   "fantom": {
@@ -3606,7 +3611,7 @@
     }
   },
   "coredao": {
-    "0x346c574C56e1A4aAa8dc88Cda8F7EB12b39947aB": {
+    "0xe04d21d999faedf1e72ade6629e20a11a1ed14fa": {
       "decimals": "18",
       "symbol": "SolvBTC.m",
       "to": "coingecko#solv-btc"

@@ -50506,8 +50506,9 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Gaming",
     chains: ["Mode"],
-    module: "dummy.js",
+    module: "betmode/index.js",
     twitter: "BetMode_io",
+    listedAt: 1722097707
   },
   {
     id: "4928",

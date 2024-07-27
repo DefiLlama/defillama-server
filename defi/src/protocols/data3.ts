@@ -50594,6 +50594,30 @@ const data3: Protocol[] = [
     twitter: "duckgang_com",
     listedAt: 1721998190
   },
+  {
+    id: "4932",
+    name: "Ostium",
+    address: null,
+    symbol: "-",
+    url: "https://www.ostium.io/",
+    description:
+      "Trade FX, metals, energy, & RWAs from your wallet",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ostium.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: ["Stork", "Chainlink"],//https://ostium-labs.gitbook.io/ostium-docs/supporting-infrastructure/oracle
+    forkedFrom: [],
+    module: "ostium/index.js",
+    twitter: "OstiumLabs",
+    audit_links: ["https://ostium-labs.gitbook.io/ostium-docs/security/smart-contract-audits"],
+    github: ["0xOstium"],
+    listedAt: 1722042021
+  },
 ];
 
 export default data3;

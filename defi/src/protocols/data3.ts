@@ -50349,7 +50349,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://znsconnect.io/",
     description:
-      "ZNSConnect decentralized ID platform powered by decentralized addresses",
+      "ZNS Connect is a decentralized ID platform that simplifies Web3 by providing user-friendly and memorable domain names through its decentralized naming system",
     chain: "Binance",
     logo: `${baseIconsUrl}/zns-connect.png`,
     audits: "2",

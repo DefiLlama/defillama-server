@@ -50504,7 +50504,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Gaming",
+    category: "Prediction Market",
     chains: ["Mode"],
     module: "betmode/index.js",
     twitter: "BetMode_io",

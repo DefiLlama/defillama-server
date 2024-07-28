@@ -30091,8 +30091,8 @@ const data3: Protocol[] = [
   {
     id: "4025",
     name: "Morpho Blue",
-    address: null,
-    symbol: "-",
+    address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
+    symbol: "MORPHO",
     url: "https://app.morpho.org",
     description: "Morpho Blue is a trustless and efficient lending primitive with permissionless market creation",
     chain: "Ethereum",

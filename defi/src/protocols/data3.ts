@@ -50349,7 +50349,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://znsconnect.io/",
     description:
-      "ZNSConnect decentralized ID platform powered by decentralized addresses",
+      "ZNS Connect is a decentralized ID platform that simplifies Web3 by providing user-friendly and memorable domain names through its decentralized naming system",
     chain: "Binance",
     logo: `${baseIconsUrl}/zns-connect.png`,
     audits: "2",
@@ -50508,6 +50508,7 @@ const data3: Protocol[] = [
     chains: ["Mode"],
     module: "betmode/index.js",
     twitter: "BetMode_io",
+    listedAt: 1722097707
   },
   {
     id: "4928",
@@ -50593,6 +50594,30 @@ const data3: Protocol[] = [
     module: "duckgang/index.js",
     twitter: "duckgang_com",
     listedAt: 1721998190
+  },
+  {
+    id: "4932",
+    name: "Ostium",
+    address: null,
+    symbol: "-",
+    url: "https://www.ostium.io/",
+    description:
+      "Trade FX, metals, energy, & RWAs from your wallet",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ostium.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: ["Stork", "Chainlink"],//https://ostium-labs.gitbook.io/ostium-docs/supporting-infrastructure/oracle
+    forkedFrom: [],
+    module: "ostium/index.js",
+    twitter: "OstiumLabs",
+    audit_links: ["https://ostium-labs.gitbook.io/ostium-docs/security/smart-contract-audits"],
+    github: ["0xOstium"],
+    listedAt: 1722042021
   },
 ];
 

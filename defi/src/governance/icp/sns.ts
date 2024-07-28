@@ -9,7 +9,7 @@ const getGovId = (id: string) => SNS_GOV_ID+'-'+id
 // URLs for fetching SNS data
 const SNS_API_BASE_URL : string = "https://sns-api.internetcomputer.org/api/v1/snses/";
 const DASHBOARD_BASE_URL : string = "https://dashboard.internetcomputer.org/sns/";
-const ICRC1_LEDGER_API_BASE_URL : string = "https://icrc-api.internetcomputer.org/api/v1/ledgers/";
+const ICRC1_LEDGER_API_BASE_URL : string = "https://icrc-api.internetcomputer.org/api/v1/ledgers";
 
 // Proposal response object from the SNS data API
 interface ServiceNervousSystemProposalResponse

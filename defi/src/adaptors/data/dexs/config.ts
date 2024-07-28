@@ -2859,5 +2859,9 @@ export default {
         parentId: "Kriya",
         enabled: true,
         id: "4895"
+    },
+    "yakafinance": {
+        enabled: true,
+        id: "4871"
     }
 } as AdaptorsConfig

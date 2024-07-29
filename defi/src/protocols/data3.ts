@@ -50055,12 +50055,12 @@ const data3: Protocol[] = [
   },
   {
     id: "4907",
-    name: "ProBit",
+    name: "ProBit Global",
     address: "0xfb559ce67ff522ec0b9ba7f5dc9dc7ef6c139803",
     symbol: "PROB",
     url: "https://www.probit.com",
     description:
-      "ProBit Global is a centralized cryptocurrency exchange established in 2017 and is registered in Seychelles.",
+      "ProBit Global is a centralized cryptocurrency exchange established in 2017 and based in Lithuania.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/probit.png`,
     audits: "0",

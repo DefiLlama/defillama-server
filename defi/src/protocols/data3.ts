@@ -41625,7 +41625,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["BSquared"],
-    oracles: ["Supra"], //https://supra.com/docs/data-feeds/pull-model/networks/
+    oracles: ["RedStone"], //https://docs.bitlen.io/borrowing/oracle
     forkedFrom: ["INIT Capital"],
     module: "bitlen/index.js",
     twitter: "BitLen_Finance",

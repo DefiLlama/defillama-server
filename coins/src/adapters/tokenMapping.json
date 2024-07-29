@@ -558,6 +558,11 @@
       "decimals": "18",
       "symbol": "SolvBTC.BBN",
       "to": "coingecko#solv-btc"
+    },
+    "0x7189fb5b6504bbff6a852b13b7b82a3c118fdc27":{
+      "decimals": "18",
+      "symbol": "ETHFI",
+      "to": "coingecko#ether-fi"
     }
   },
   "tezos": {

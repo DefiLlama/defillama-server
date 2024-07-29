@@ -2329,5 +2329,10 @@ export default {
     "cetus": {
         enabled: true,
         id: "2289"
+    },
+    "arrakis-v2": {
+        parentId: "Arrakis Finance",
+        enabled: true,
+        id: "2667"
     }
 } as AdaptorsConfig

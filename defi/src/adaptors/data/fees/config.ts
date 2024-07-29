@@ -448,6 +448,7 @@ export default {
         "id": "2169"
     },
     "stargate": {
+        parentId: "Stargate Finance",
         "enabled": true,
         "id": "1571"
     },
@@ -2334,5 +2335,10 @@ export default {
         parentId: "Arrakis Finance",
         enabled: true,
         id: "2667"
+    },
+    "stargate-finance-v2": {
+        parentId: "Stargate Finance",
+        enabled: true,
+        id: "4831"
     }
 } as AdaptorsConfig

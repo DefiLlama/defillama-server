@@ -2325,5 +2325,9 @@ export default {
     "silo-finance": {
         enabled: true,
         id: "2020"
+    },
+    "cetus": {
+        enabled: true,
+        id: "2289"
     }
 } as AdaptorsConfig

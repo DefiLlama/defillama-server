@@ -174,6 +174,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     address: "0x7223442cad8e9ca474fc40109ab981608f8c4273",
   },
+  USTB: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestAnswer() external view returns (uint256)",
+        target: "0x289B5036cd942e619E1Ee48670F98d214E745AAC",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0x43415eB6ff9DB7E26A15b704e7A3eDCe97d31C4e",
+  },
 };
 
 export async function derivs(timestamp: number) {

@@ -199,10 +199,6 @@ export default {
             }
         }
     },
-    "kwenta": {
-        "enabled": false,
-        "id": "2981"
-    },
     "synthetix": {
         "enabled": true,
         "id": "115",

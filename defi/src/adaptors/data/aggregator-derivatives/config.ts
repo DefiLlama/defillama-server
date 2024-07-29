@@ -52,5 +52,9 @@ export default {
   "bitoro": {
     "enabled": true,
     "id": "4841"
+  },
+  "kwenta": {
+    "enabled": false,
+    "id": "2981"
   }
 } as AdaptorsConfig;

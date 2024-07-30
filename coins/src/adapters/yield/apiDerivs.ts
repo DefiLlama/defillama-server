@@ -14,7 +14,7 @@ type Config = {
   underlyingChain?: string;
   symbol?: string;
   decimals?: string;
-  confidence?: number
+  confidence?: number;
 };
 const margin = 3 * 60 * 60; // 3hrs
 
@@ -56,6 +56,25 @@ const configs: { [adapter: string]: Config } = {
     symbol: "LINEAR",
     confidence: 1.01,
   },
+  USCC: {
+    rate: async ({ t }) => {
+      const res = await fetch(
+        "https://api.superstate.co/v1/funds/2/nav-daily",
+      ).then((r) => r.json());
+      const { net_asset_value, net_asset_value_date } = res[0];
+
+      const [month, day, year] = net_asset_value_date.split("/");
+      const date = new Date(`${year}-${month}-${day}T00:00:00.000Z`);
+      const timestamp = Math.floor(date.getTime() / 1000);
+
+      const margin = 7 * 24 * 60 * 60; // use this margin since no data over weekends
+      if (t - timestamp > margin) throw new Error(`USCC stale rate`);
+      return net_asset_value;
+    },
+    chain: "ethereum",
+    address: "0x14d60e7fdc0d71d8611742720e4c50e7a974020c",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  },
 };
 
 export async function apiDerivs(timestamp: number) {
@@ -65,8 +84,15 @@ export async function apiDerivs(timestamp: number) {
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {
-  const { chain, underlying, address, underlyingChain, symbol, decimals, confidence } =
-    config;
+  const {
+    chain,
+    underlying,
+    address,
+    underlyingChain,
+    symbol,
+    decimals,
+    confidence,
+  } = config;
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const pricesObject: any = {
     [address]: {
@@ -74,7 +100,7 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
       price: await config.rate({ t }),
       symbol,
       decimals,
-      confidence
+      confidence,
     },
   };
 
@@ -86,6 +112,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
     pricesObject,
     projectName,
     writes,
-    confidence
+    confidence,
   });
 }

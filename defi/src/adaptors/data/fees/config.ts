@@ -328,7 +328,7 @@ export default {
         "enabled": true,
         "id": "3635"
     },
-    "klaytn": {
+    "kaia": {
         "enabled": false,
         "id": "4256"
     },

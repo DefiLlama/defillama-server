@@ -20,7 +20,7 @@ const botUsers = new Set([
   'upptime bot',
   'mergify[bot]',
   'github actions',
-  'klaytndocs',
+  'kaiadocs',
 ])
 
 async function main() {

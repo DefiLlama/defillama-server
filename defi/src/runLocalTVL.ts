@@ -62,7 +62,7 @@ async function main() {
 
 async function cacheCurrentBlocks() {
   try {
-    await getCurrentBlocks(['ethereum', "avax", "bsc", "polygon", "xdai", "fantom", "arbitrum", 'optimism', 'kava', 'era', 'base', 'harmony', 'moonriver', 'moonbeam', 'celo', 'heco', 'klaytn', 'metis', 'polygon_zkevm', 'linea', 'dogechain'])
+    await getCurrentBlocks(['ethereum', "avax", "bsc", "polygon", "xdai", "fantom", "arbitrum", 'optimism', 'kava', 'era', 'base', 'harmony', 'moonriver', 'moonbeam', 'celo', 'heco', 'kaia', 'metis', 'polygon_zkevm', 'linea', 'dogechain'])
     sdk.log('Cached current blocks ')
   } catch (e) { }
 }

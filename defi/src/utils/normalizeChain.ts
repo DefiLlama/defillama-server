@@ -485,15 +485,15 @@ export const chainCoingeckoIds = {
     twitter: "wavesprotocol",
     url: "https://waves.tech/"
   },
-  "Klaytn": {
+  "Kaia": {
     geckoId: "klay-token",
-    github: ['klaytn'],
-    symbol: "KLAY",
+    github: ['kaiachain'],
+    symbol: "KAIA",
     cmcId: "4256",
     categories: ["EVM"],
     chainId: 8217,
-    twitter: "klaytn_official",
-    url: "https://klaytn.foundation/"
+    twitter: "kaiachain",
+    url: "https://kaia.io/"
   },
   "IoTeX": {
     geckoId: "iotex",

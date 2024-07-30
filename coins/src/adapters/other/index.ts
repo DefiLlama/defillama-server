@@ -238,7 +238,7 @@ export function unknownTokens2(timestamp: number = 0) {
       "0x999999999939ba65abb254339eec0b2a0dac80e9",
       "0xff3e7cf0c007f919807b32b30a4a9e7bd7bc4121",
       false,
-      "klaytn",
+      "kaia",
     ),
     unknownTokenAdapter(
       timestamp,

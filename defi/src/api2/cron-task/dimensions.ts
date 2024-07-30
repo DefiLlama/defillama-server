@@ -78,7 +78,7 @@ async function run() {
 
     const adapterData = data[adapterType]
 
-    let lastUpdated = data[adapterType].lastUpdated ? data[adapterType].lastUpdated - 10 * 60 : 0 // 10 minutes ago
+    let lastUpdated = data[adapterType].lastUpdated ? data[adapterType].lastUpdated - 5 * 24 * 60 * 60 : 0 // 5 days ago
 
     const results = await getAllItemsUpdatedAfter({ adapterType, timestamp: lastUpdated })
 
@@ -124,7 +124,7 @@ async function run() {
 
     function addProtocolData(id: any, protocol: any, { isParentProtocol = false, adapterType }: { isParentProtocol: boolean, adapterType: AdapterType }) {
       if (!isParentProtocol && !protocolMetadataMap[id]) { // skip if protocol is not enabled
-        sdk.log('Skipping disabled protocol', id, adapterType)
+        // sdk.log('Skipping disabled protocol', id, adapterType)
         return;
       }
       // console.log('Processing', protocolMap[id].displayName, Object.values(adapterData.protocols[id].records).length, 'records')
@@ -538,7 +538,7 @@ function getProtocolRecordMapWithMissingData(records: IJSON<any>, info: any = {}
         const surroundingKeys = getSurroundingKeysExcludingCurrent(allKeys, idx)
         const highestCloseValue = surroundingKeys.map(i => records[i].aggregated?.[key]?.value ?? 0).filter(i => i).reduce((a, b) => Math.max(a, b), 0)
         if (highestCloseValue > 0 && currentValue > 10 * highestCloseValue) {
-          sdk.log('Spike detected', adapterType, metadata?.id, info?.name, timeS, key, currentValue, highestCloseValue, Math.round(currentValue * 100 / highestCloseValue)/100+'x')
+          sdk.log('Spike detected', adapterType, metadata?.id, info?.name, timeS, key, Number(currentValue/1e6).toFixed(2)+'m', Number(highestCloseValue/1e6).toFixed(2)+'m', Math.round(currentValue * 100 / highestCloseValue)/100+'x')
           // sdk.log('Spike detected', info?.name, timeS, JSON.stringify(record, null, 2))
         }
       }

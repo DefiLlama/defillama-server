@@ -7,13 +7,12 @@ const tokenListAbi = "function getAllTokenRecords() view returns (tuple(uint256 
 const tokenPriceAbi = "function getTokenPrice(uint256, address) view returns (uint128)"
 
 
-async function getTokenPrices(chain: string, timestamp: number) {
+async function getTokenPrices(chain: string, timestamp: number, writes: Write[]) {
   const api = await getApi(chain, timestamp)
   const tokenAPI = await getApi('polygon', timestamp)
   const tokens = await getTokenList()
   const prices = await getTokenPrice(tokens)
   const pricesObject: any = {}
-  const writes: Write[] = [];
   tokens.forEach((token: any, index: number) => {
     pricesObject[token] = { price: prices[index] / 1e18 }
   })
@@ -37,6 +36,10 @@ async function getTokenPrices(chain: string, timestamp: number) {
   }
 }
 
-export function digift(timestamp: number = 0) {
-  return getTokenPrices("ethereum", timestamp);
+export async function digift(timestamp: number = 0) {
+
+  const writes: Write[] = [];
+  await getTokenPrices("ethereum", timestamp ,writes);
+  await getTokenPrices("arbitrum", timestamp, writes);
+  return writes;
 }

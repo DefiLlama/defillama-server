@@ -254,6 +254,11 @@ export default {
         parentId: "DexFinance",
         enabled: true,
         id: "3277",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722211200": true
+            }
+        }
     },
     "blasterswap-v3": {
         parentId: "Blasterswap",

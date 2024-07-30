@@ -2340,5 +2340,9 @@ export default {
         parentId: "Stargate Finance",
         enabled: true,
         id: "4831"
+    },
+    "superstate": {
+        enabled: true,
+        id: "4265"
     }
 } as AdaptorsConfig

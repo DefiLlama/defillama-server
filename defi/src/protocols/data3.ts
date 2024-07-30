@@ -50621,6 +50621,53 @@ const data3: Protocol[] = [
     github: ["0xOstium"],
     listedAt: 1722042021
   },
+  {
+    id: "4933",
+    name: "ethfi stake",
+    address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
+    symbol: "ETHFI",
+    url: "https://www.ether.fi",
+    description:
+      "ETHFI stake",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ethfi-stake.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ethfi-stake/index.js",
+    twitter: "ether_fi",
+    parentProtocol: "parent#ether-fi",
+    listedAt: 1722352030
+  },
+  {
+    id: "4934",
+    name: "FILLiquid",
+    address: null,
+    symbol: "-",
+    assetToken: "FIT",
+    url: "https://dapp.filliquid.io",
+    description:
+      "FIT (Filecoin Trust) token, FIT is the proof of equity for user coin storage. When users deposit FIL, the smart contract will mint FIT for users based on the real-time exchange rate. The proof of equity is evidence of users depositing FIL, used for profit distribution and FIL redemption.",
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/filliquid.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Filecoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "filliquid/index.js",
+    twitter: "FILLiquid",
+    github: ["FILL-Lab"],
+    listedAt: 1722355030
+  },
 ];
 
 export default data3;

@@ -50668,6 +50668,31 @@ const data3: Protocol[] = [
     github: ["FILL-Lab"],
     listedAt: 1722355030
   },
+  {
+    id: "4935",
+    name: "Deq Liquid Staking",
+    address: null,
+    symbol: "-",
+    assetToken: "stAVAIL",
+    url: "https://app.deq.fi",
+    description:
+      "Native liquid staking for Avail on Ethereum.\r\n",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/deq.jpg`,
+    audits: "2",
+    audit_note: null,
+    audit_links: ["https://docs.deq.fi/addresses#audits"],
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "deq/index.js",
+    twitter: "deq_fi",
+    github: ["refresh-labs"],
+    listedAt: 1721684639
+  },
 ];
 
 export default data3;

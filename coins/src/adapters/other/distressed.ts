@@ -274,6 +274,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   coingecko: {
     PREMIO: "premio",
     TFBX: "truefeedbackchain",
+    solvBTCBBN: "solv-protocol-solvbtc-bbn",
   },
   bittorrent: {
     WBTT: "0x8d193c6efa90bcff940a98785d1ce9d093d3dc8a",

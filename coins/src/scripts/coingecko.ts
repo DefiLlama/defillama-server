@@ -558,6 +558,7 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
       return metadata.coinType === coinType;
     })
   }
+  console.log(`Fetching prices for ${coins.length} coins`, 'running hourly:', hourly, 'coinType:', coinType);
   shuffleArray(coins);
   let promises: Promise<void>[] = [];
   for (let i = 0; i < coins.length; i += step) {

@@ -50668,6 +50668,52 @@ const data3: Protocol[] = [
     github: ["FILL-Lab"],
     listedAt: 1722355030
   },
+  {
+    id: "4935",
+    name: "Toobit",
+    address: null,
+    symbol: "-",
+    url: "https://www.toobit.com",
+    description:
+      "Toobit supports futures contract trading, spot trading, OTC and other modes. From the very beginning of the platform design, we have focused on ensuring the fairness and transparency of transactions, while providing sufficient market depth and liquidity.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/toobit.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "toobit/index.js",
+    twitter: "Toobit_official",
+    listedAt: 1722425635
+  },
+  {
+    id: "4936",
+    name: "Deq",
+    address: null,
+    symbol: "-",
+    assetToken: "stAVAIL",
+    url: "https://deq.fi",
+    description:
+      "Native liquid staking for Avail Chain",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/deq.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "deq/index.js",
+    twitter: "deq_fi",
+    github: ["refresh-labs"],
+    listedAt: 1722425935
+  },
 ];
 
 export default data3;

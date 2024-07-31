@@ -121,7 +121,7 @@ export const normalizeDimensionChainsMap = {
     'radix': CHAIN.RADIXDLT,
     'neon': CHAIN.NEON,
     'zetachain': CHAIN.ZETA,
-    'zkLink Nova': CHAIN.ZKLINK,
+    'zklink nova': CHAIN.ZKLINK,
 } as IJSON<CHAIN>
 
 export const formatChainKey = (chain: string) => {

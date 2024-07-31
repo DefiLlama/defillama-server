@@ -18002,7 +18002,7 @@ const data3: Protocol[] = [
     module: "wise-lending/index.js",
     oracles: ["Chainlink"],
     forkedFrom: [],
-    twitter: "Wise_Token",
+    twitter: "WiseLending",
     parentProtocol: "parent#wise-lending",
     listedAt: 1694020053,
   },
@@ -40719,7 +40719,7 @@ const data3: Protocol[] = [
     module: "wise-lending-v2/index.js",
     oracles: ["Chainlink"],
     forkedFrom: [],
-    twitter: "Wise_Lending",
+    twitter: "WiseLending",
     parentProtocol: "parent#wise-lending",
     audit_links: [
       "https://code4rena.com/audits/2024-02-wise-lending",

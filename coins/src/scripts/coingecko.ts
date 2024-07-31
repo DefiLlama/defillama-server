@@ -3,11 +3,11 @@ import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
 import ddb, { batchGet, batchWrite, DELETE } from "../utils/shared/dynamodb";
-import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
+import { Coin, CoinMetadata, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { Write } from "../adapters/utils/dbInterfaces";
-import { batchReadPostgres, batchWrite2, readCoins2 } from "../../coins2";
+import { batchReadPostgres, batchWrite2, readCoins2, getRedisConnection, } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 
 const staleMargin = 6 * 60 * 60;
@@ -208,9 +208,10 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinData = await retryCoingeckoRequest(
     `simple/price?ids=${coinIds.join(
       ",",
-    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true`,
+    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true&include_24hr_vol=true`,
     10,
   );
+  await storeCGCoinMetadatas(coinData)
 
   const timestamp = getCurrentUnixTimestamp();
   const stalePlatforms: string[] = [];
@@ -461,7 +462,7 @@ async function getAndStoreHourly(
       const ts = toUNIXTimestamp(price[0]);
       return !writtenTimestamps[ts];
     })
-    .map((price) =>
+    .map((price) => // TODO: why are we doing this instead of redirecting it to use cg record for price?
       [cgPK(coin.id), ...platformData[coin.id]].map((PK: string) => ({
         timestamp: toUNIXTimestamp(price[0]),
         key: PK.replace("#", ":"),
@@ -480,23 +481,6 @@ async function getAndStoreHourly(
   }
 }
 
-async function filterCoins(coins: Coin[]): Promise<Coin[]> {
-  const str = coins.map((i) => i.id).join(",");
-  const coinsData = await retryCoingeckoRequest(
-    `simple/price?ids=${str}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true`,
-    3,
-  );
-
-  return coins.filter((coin) => {
-    const coinData = coinsData[coin.id];
-    if (!coinData) return false;
-    // we fetch chart information only for coins with:
-    //   at least 10M marketcap
-    //   at least 10M trading volume in last 24 hours
-    return coinData.usd_market_cap > 1e7 && coinData.usd_24h_vol > 1e7;
-  });
-}
-
 async function fetchCoingeckoData(
   coins: Coin[],
   hourly: boolean,
@@ -506,13 +490,8 @@ async function fetchCoingeckoData(
   const rejected = [] as Coin[];
   const timer = setTimer();
   const requests: Promise<void>[] = [];
+
   if (hourly) {
-    const hourlyCoins: Coin[] = [];
-    for (let i = 0; i < coins.length; i += step) {
-      let currentCoins = coins.slice(i, i + step);
-      currentCoins = await filterCoins(currentCoins);
-      hourlyCoins.push(...currentCoins);
-    }
 
     // COMMENTS HERE ARE USEFUL FOR BACKFILLING CG DATA!!!!
     // let start = 1696786585;
@@ -522,19 +501,24 @@ async function fetchCoingeckoData(
     //   start += 3600;
     // }
     // timestamps.push(start + 3600);
-    const platformData = await getPlatformData(hourlyCoins);
+    const platformData = await getPlatformData(coins);
     // for (let i = 0; i < timestamps.length; i++) {
     await Promise.all(
-      hourlyCoins.map(
+      coins.map(
         (coin) => getAndStoreHourly(coin, rejected, platformData), //, timestamps[i]),
       ),
     );
     // }
+
+
+
   } else {
+
     for (let i = 0; i < coins.length; i += step) {
       requests.push(getAndStoreCoins(coins.slice(i, i + step), rejected));
     }
     await Promise.all(requests);
+
   }
   clearInterval(timer);
   if (rejected.length > 0) {
@@ -556,19 +540,30 @@ function shuffleArray(array: any[]) {
   return array;
 }
 
-async function triggerFetchCoingeckoData(hourly: boolean) {
+async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   await cacheSolanaTokens();
   const step = 500;
-  const coins = (await fetch(
+  let coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
+
+  if (coinType || hourly) {
+    const metadatas = await getCGCoinMetadatas(coins.map((coin) => coin.id));
+    coins = coins.filter((coin) => {
+      const metadata = metadatas[coin.id];
+      if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
+      if (hourly) {
+        return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
+      }
+      return metadata.coinType === coinType;
+    })
+  }
   shuffleArray(coins);
   let promises: Promise<void>[] = [];
   for (let i = 0; i < coins.length; i += step) {
     promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
   }
   await Promise.all(promises);
-  process.exit(0);
 }
 
 if (process.argv.length < 3) {
@@ -577,7 +572,64 @@ if (process.argv.length < 3) {
   process.exit(1);
 } else {
   process.env.tableName = "prod-coins-table";
-  if (process.argv[2] == "true") triggerFetchCoingeckoData(true);
-  triggerFetchCoingeckoData(false);
+  const isHourlyRun = process.argv[2] == "true";
+  const coinType = process.argv[3] ?? undefined;
+  if (coinType && !['over100m', 'over10m', 'over1m', 'rest'].includes(coinType)) {
+    console.error(`Invalid coin type: ${coinType}`);
+    process.exit(1);
+  }
+  triggerFetchCoingeckoData(isHourlyRun, coinType)
+    .catch((e) => {
+      console.error('Error in coingecko script');
+      console.error(e);
+    }).then(() => {
+      console.log("Exiting now...");
+      process.exit(0)
+    })
 }
 // ts-node coins/src/scripts/coingecko.ts false
+
+async function getCGCoinMetadatas(coinIds: string[]) {
+  const idResponse = {} as {
+    [id: string]: CoinMetadata
+  }
+
+  try {
+    const redis = await getRedisConnection();
+    const res = await redis.mget(coinIds.map((id) => `cgMetadata:${id}`))
+    const jsonData = res.map((i: any) => JSON.parse(i))
+    jsonData.map((data: any) => {
+      idResponse[data.id] = data
+    })
+  } catch (e) {
+    console.error('Error reading CG metadata to redis')
+    console.error(e);
+  }
+  return idResponse
+}
+
+async function storeCGCoinMetadatas(coinMetadatas: any) {
+  try {
+    const metadatas = Object.entries(coinMetadatas).map(([id, data]: any) => {
+      data.id = id;
+      let coinType = 'rest'
+      if (data.usd_market_cap > 1e8 && data.usd_24h_vol > 1e8)
+        coinType = 'over100m'
+      else if (data.usd_market_cap > 1e7 && data.usd_24h_vol > 1e7)
+        coinType = 'over10m'
+      else if (data.usd_market_cap > 1e6 && data.usd_24h_vol > 1e6)
+        coinType = 'over1m'
+      data.coinType = coinType
+      return data;
+    })
+    const redis = await getRedisConnection();
+    const writes = metadatas.map((metadata) => [
+      `cgMetadata:${metadata.id}`,
+      JSON.stringify(metadata),
+    ]);
+    await redis.mset(writes.flat());
+  } catch (e) {
+    console.error('Error writing to CG metadata to redis')
+    console.error(e);
+  }
+}

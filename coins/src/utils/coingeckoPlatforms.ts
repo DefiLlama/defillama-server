@@ -20,6 +20,14 @@ export interface Coin {
     [network: string]: string;
   };
 }
+export interface CoinMetadata {
+  id: string;
+  coinType: string;
+  usd: number;
+  usd_market_cap: number;
+  usd_24h_vol: number;
+  last_updated_at: number;
+}
 
 function lowercase(address: string, chain: string) {
   return chain === "solana" ? address : address.toLowerCase();

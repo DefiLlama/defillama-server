@@ -49744,7 +49744,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "CDP",
     chains: ["Ethereum"],
     module: "imf-money/index.js",
     forkedFrom: [],

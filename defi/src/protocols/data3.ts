@@ -50621,6 +50621,7 @@ const data3: Protocol[] = [
     github: ["0xOstium"],
     listedAt: 1722042021
   },
+  /*
   {
     id: "4933",
     name: "ethfi stake",
@@ -50644,6 +50645,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#ether-fi",
     listedAt: 1722352030
   },
+  */
   {
     id: "4934",
     name: "FILLiquid",

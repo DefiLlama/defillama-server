@@ -50717,6 +50717,28 @@ const data3: Protocol[] = [
     github: ["refresh-labs"],
     listedAt: 1722425935
   },
+  {
+    id: "4937",
+    name: "Reya Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://reya.network",
+    description:
+      "The only trading-optimised modular L2. Giving you instant liquidity, lightning fast transactions, superior APYs and the smartest margining.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/reya-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum", "Base", "Polygon", "Arbitrum", "Optimism"],
+    oracles: [],
+    forkedFrom: [],
+    module: "reya-bridge/index.js",
+    twitter: "reya_xyz",
+    listedAt: 1722510263
+  },
 ];
 
 export default data3;

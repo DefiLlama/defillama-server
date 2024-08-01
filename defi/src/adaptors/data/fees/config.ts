@@ -2350,5 +2350,9 @@ export default {
         parentId: "ApeX Protocol",
         enabled: true,
         id: "4822"
+    },
+    "dedust": {
+        enabled: true,
+        id: "2617"
     }
 } as AdaptorsConfig

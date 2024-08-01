@@ -9229,6 +9229,16 @@
       "decimals": "18",
       "symbol": "IOTA",
       "to": "coingecko#iota"
+    },
+    "0xC1B8045A6ef2934Cf0f78B0dbD489969Fa9Be7E4": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x160345fC359604fC6e70E3c5fAcbdE5F7A9342d8": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#weth"
     }
   },
   "kinto": {

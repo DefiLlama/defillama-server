@@ -439,6 +439,11 @@
     }
   },
   "arbitrum": {
+    "0xf42Ae1D54fd613C9bb14810b0588FaAa09a426cA": {
+      "decimals": "18",
+      "symbol": "esGMX",
+      "to": "coingecko#gmx"
+    },
     "0x993614e1c8c9c5abe49462ce5702431978fd767f": {
       "decimals": "18",
       "symbol": "S*ETH",
@@ -616,6 +621,11 @@
     }
   },
   "base": {
+    "0x46e6b214b524310239732D51387075E0e70970bf": {
+      "decimals": "18",
+      "symbol": "cWETHv3",
+      "to": "coingecko#weth"
+    },
     "0x1Bc71130A0e39942a7658878169764Bbd8A45993": {
       "decimals": "18",
       "symbol": "rsETH",
@@ -2439,6 +2449,11 @@
     }
   },
   "blast": {
+    "0x6301795aa55B90427CF74C18C8636E0443F2100b": {
+      "decimals": "18",
+      "symbol": "jcvWETH",
+      "to": "coingecko#weth"
+    },
     "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
       "decimals": "18",
       "symbol": "rsETH",

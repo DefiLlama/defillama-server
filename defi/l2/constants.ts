@@ -74,7 +74,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4796": "sanko",
   "4797": "xai",
   "4124": "merlin",
-  "4937": "reya",
+  // "4937": "reya",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

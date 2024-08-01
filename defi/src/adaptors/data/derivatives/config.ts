@@ -295,6 +295,7 @@ export default {
         }
     },
     "apex": {
+        parentId: "ApeX Protocol",
         "enabled": true,
         "id": "1878",
         cleanRecordsConfig: {
@@ -803,5 +804,10 @@ export default {
         parentId: "LineHub",
         enabled: true,
         id: "4842"
+    },
+    "apex-omni": {
+        parentId: "ApeX Protocol",
+        enabled: true,
+        id: "4822"
     }
 } as AdaptorsConfig

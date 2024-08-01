@@ -1289,6 +1289,7 @@ export default {
         "id": "3450"
     },
     "apex": {
+        parentId: "ApeX Protocol",
         "enabled": true,
         "id": "1878"
     },
@@ -2344,5 +2345,10 @@ export default {
     "superstate": {
         enabled: true,
         id: "4265"
+    },
+    "apex-omni": {
+        parentId: "ApeX Protocol",
+        enabled: true,
+        id: "4822"
     }
 } as AdaptorsConfig

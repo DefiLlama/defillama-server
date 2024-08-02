@@ -50784,7 +50784,6 @@ const data3: Protocol[] = [
     twitter: "mahaxyz_",
     github: ["mahaxyz"],
     treasury: "mahaxyz.js",
-    parentProtocol: "parent#mahadao",
     listedAt: 1722616997
   },
   {

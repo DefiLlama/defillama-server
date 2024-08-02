@@ -2354,5 +2354,9 @@ export default {
     "dedust": {
         enabled: true,
         id: "2617"
+    },
+    "orderly": {
+        "enabled": true,
+        "id": "2264"
     }
 } as AdaptorsConfig

@@ -50739,6 +50739,51 @@ const data3: Protocol[] = [
     twitter: "reya_xyz",
     listedAt: 1722510263
   },
+  {
+    id: "4938",
+    name: "Meso Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.meso.finance/dashboard",
+    description:
+      "The capital-efficient Money Market, empowering credit expansion on Aptos",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/meso-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "meso-finance/index.js",
+    twitter: "Meso_Finance",
+    listedAt: 1722616523
+  },
+  {
+    id: "4939",
+    name: "MAHA.xyz",
+    address: null,
+    symbol: "-",
+    url: "https://maha.xyz/",
+    description:
+      "MAHA (previously known as MahaDAO) is a community-powered decentralized organization. Our mission is to create a stablecoin that is deeply rooted into the Ether-sphere. With integrations towards LRTs, Lending Protocols and DeFi for growth",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/maha.xyz.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "mahaxyz/index.js",
+    twitter: "mahaxyz_",
+    github: ["mahaxyz"],
+    listedAt: 1722616997
+  },
 ];
 
 export default data3;

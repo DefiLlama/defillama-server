@@ -11515,14 +11515,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "638",
-    name: "Meso Finance",
+    name: "Meso Finance Fantom Farm",
     address: "fantom:0x4D9361A86D038C8adA3db2457608e2275B3E08d4",
     symbol: "fMESO",
     url: "https://www.meso.finance",
     description:
       "Meso Finance, is building up on becoming a multi-chain project that can provide a multitude of products and services. We strive to provide awesome experiences for our users and as profitable returns on their investments. Initially, we will be launching as a yield farm in Fantom to distribute our fMESO token that will be used in the services we are building on. We help investors to protect their funds as we provide a transparent environment so that users can use our services worry-free.",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/meso-finance.png`,
+    logo: `${baseIconsUrl}/meso-finance-fantom-farm.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

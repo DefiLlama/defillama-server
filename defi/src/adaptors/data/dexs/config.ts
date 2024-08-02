@@ -1044,7 +1044,13 @@ export default {
     },
     "cetus": {
         "enabled": true,
-        "id": "2289"
+        "id": "2289",
+        protocolsData: {
+            "cetus": {
+                "id": "2289",
+                enabled: true,
+            }
+        }
     },
     "opx-finance": {
         "enabled": true,

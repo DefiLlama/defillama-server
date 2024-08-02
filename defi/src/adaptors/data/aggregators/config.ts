@@ -253,5 +253,15 @@ export default {
   "akka": {
     enabled: true,
     id: "4926",
+  },
+  "cetus": {
+      "enabled": true,
+      "id": "2289",
+      protocolsData: {
+          "cetus-aggregator": {
+              "id": "2289",
+              enabled: true,
+          }
+      }
   }
 } as AdaptorsConfig;

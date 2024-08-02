@@ -2321,7 +2321,7 @@ export default {
         id: "427"
     },
     "betmode": {
-        enabled: true,
+        enabled: false,
         id: "4927"
     },
     "silo-finance": {

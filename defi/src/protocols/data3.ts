@@ -50788,7 +50788,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4940",
-    name: "Bracket",
+    name: "Bracket Escrow Staking",
     address: null,
     symbol: "-",
     url: "https://www.bracket.fi/",
@@ -50799,7 +50799,7 @@ const data3: Protocol[] = [
     audit_note: "https://bracket-labs.gitbook.io/bracket/security/audits",
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: "Farm",
     oracles: [], 
     forkedFrom: [],
     chains: ["Ethereum", "Arbitrum"],

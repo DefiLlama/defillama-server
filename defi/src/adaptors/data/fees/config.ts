@@ -2358,5 +2358,9 @@ export default {
     "orderly": {
         "enabled": true,
         "id": "2264"
+    },
+    "spacewhale": {
+        enabled: true,
+        id: "4930"
     }
 } as AdaptorsConfig

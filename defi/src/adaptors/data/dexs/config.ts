@@ -2869,5 +2869,9 @@ export default {
     "yakafinance": {
         enabled: true,
         id: "4871"
+    },
+    "spacewhale": {
+        enabled: true,
+        id: "4930"
     }
 } as AdaptorsConfig

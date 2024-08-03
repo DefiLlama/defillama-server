@@ -50805,6 +50805,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Arbitrum"],
     module: "bracket-fi/index.js",
     twitter: "bracket_fi",
+    parentProtocol: "parent#bracket-protocol",
     listedAt: 1722618473,
   },
 ];

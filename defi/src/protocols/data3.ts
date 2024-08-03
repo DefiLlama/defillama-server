@@ -7585,7 +7585,7 @@ const data3: Protocol[] = [
     twitter: "WINRProtocol",
     forkedFrom: [],
     oracles: ["Pyth"],
-    audit_links: ["https://docs.winr.games/developers/audits"],
+    audit_links: ["https://docs.winr.games/extra/audits"],
     listedAt: 1685097004,
   },
   {

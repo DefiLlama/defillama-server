@@ -3005,8 +3005,8 @@ export const chainCoingeckoIds = {
     chainId: 6001,
   },
   "re.al": {
-    geckoId: null,
-    symbol: null,
+    geckoId: "re-al",
+    symbol: "RWA",
     cmcId: null,
     categories: ["EVM"],
     twitter: "real_rwa",

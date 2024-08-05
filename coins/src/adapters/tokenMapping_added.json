@@ -7985,6 +7985,11 @@
       "decimals": "18",
       "symbol": "solvVBTC",
       "to": "coingecko#solv-btc"
+    },
+    "0x7a6888c85edba8e38f6c7e0485212da602761c08": {
+      "decimals": "18",
+      "symbol": "BTCB",
+      "to": "coingecko#binance-bitcoin"
     }
   },
   "rpg": {

@@ -2362,5 +2362,9 @@ export default {
     "spacewhale": {
         enabled: true,
         id: "4930"
+    },
+    "mevx": {
+        enabled: true,
+        id: "4945"
     }
 } as AdaptorsConfig

@@ -50939,6 +50939,27 @@ const data3: Protocol[] = [
     github: ["Orion-Crypto"],
     listedAt: 1722870499
   },
+  {
+    id: "4947",
+    name: "Ignition FBTC",
+    address: null,
+    symbol: "-",
+    url: "https://fbtc.com",
+    description: "Ignition introduces $FBTC, an omnichain Bitcoin asset pegged 1:1 to BTC, aimed at elevating Bitcoin’s accessibility and utility, paving the way for a low-friction and interoperable future.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/ignition-fbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    oracles: [], 
+    forkedFrom: [],
+    chains: ["Bitcoin"],
+    module: "fbtc/index.js",
+    twitter: "FBTC_official",
+    listedAt: 1722881052
+  },
 ];
 
 export default data3;

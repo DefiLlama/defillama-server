@@ -50961,6 +50961,48 @@ const data3: Protocol[] = [
     twitter: "FBTC_official",
     listedAt: 1722881052
   },
+  {
+    id: "4948",
+    name: "Gluon Gold",
+    address: null,
+    symbol: "-",
+    url: "https://www.gluon.gold",
+    description: "Gluon is a novel stabilization protocol inspired by nuclear physics, offering reliable stability or exposure to volatility based on your needs. Have digital Gold on-chain, backed by ERG, without the risks and inconveniences of physical gold.",
+    chain: "Ergo",
+    logo: `${baseIconsUrl}/gluon-gold.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    oracles: [], 
+    forkedFrom: [],
+    chains: ["Ergo"],
+    module: "gluon-gold/index.js",
+    twitter: "DjedAlliance",
+    listedAt: 1722886746
+  },
+  {
+    id: "4949",
+    name: "PredX Ai",
+    address: null,
+    symbol: "-",
+    url: "https://predx.ai",
+    description: "Multichain prediction market, powered by AI.",
+    chain: "zkLink Nova",
+    logo: `${baseIconsUrl}/predx-ai.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    oracles: [], 
+    forkedFrom: [],
+    chains: ["zkLink Nova", "Base", "Sei", "Linea", "Binance", "Mantle", "Bitlayer"],
+    module: "predx/index.js",
+    twitter: "PredX_AI",
+    listedAt: 1722886946
+  },
 ];
 
 export default data3;

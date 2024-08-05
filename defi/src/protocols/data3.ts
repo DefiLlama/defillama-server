@@ -50853,6 +50853,48 @@ const data3: Protocol[] = [
     github: ["Blend-Blend"],
     listedAt: 1722858892
   },
+  {
+    id: "4943",
+    name: "Scribe V4",
+    address: null,
+    symbol: "-",
+    url: "https://scribe.exchange",
+    description: "Scribe is an innovative, community-driven decentralized exchange (DEX) built on the Scroll Network. Our mission is to provide a highly efficient and customizable trading platform that supports sustainable liquidity and growth for new and existing protocols. Leveraging the advanced capabilities of Scroll, Scribe aims to deliver a seamless and secure trading experience.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/scribe-v4.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    oracles: [], 
+    forkedFrom: ["Algebra Integral"],
+    chains: ["Scroll"],
+    module: "scribe-v4/index.js",
+    twitter: "ScribeDEX",
+    listedAt: 1722861556
+  },
+  {
+    id: "4944",
+    name: "BOB Gateway",
+    address: null,
+    symbol: "-",
+    url: "https://gateway.gobob.xyz",
+    description: "BOB Gateway is a unified interface that allows you to swap your BTC into wBTC and tBTC on the BOB platform. With a single, streamlined experience, you can now earn yield on your BTC and unlock different use cases for your BTC in the BOB ecosystem faster than ever before.",
+    chain: "BOB",
+    logo: `${baseIconsUrl}/bob-gateway.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    oracles: [], 
+    forkedFrom: [],
+    chains: ["BOB"],
+    module: "bob-gateway/index.js",
+    twitter: "build_on_bob",
+    listedAt: 1722861821
+  },
 ];
 
 export default data3;

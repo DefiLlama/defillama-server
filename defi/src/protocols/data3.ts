@@ -21919,8 +21919,8 @@ const data3: Protocol[] = [
     gecko_id: null, // primex-finance preview only stage
     cmcId: null,
     category: "Dexes",
-    chains: ["Polygon"],
-    oracles: [], // https://docs.primex.finance/guides/what-is-primex/economic-security/oracles uses chainlink on rinkeby testnet
+    chains: ["Polygon", "Arbitrum", "Ethereum"],
+    oracles: ["Chainlink", "Umbrella Network", "Pyth"],
     forkedFrom: [],
     module: "primex-finance/index.js",
     twitter: "primex_official",

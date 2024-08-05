@@ -28518,6 +28518,7 @@ const data3: Protocol[] = [
     module: "balanced-bnUSD/index.js",
     twitter: "BalancedDAO",
     parentProtocol: "parent#balanceddao",
+    stablecoins: ["balanced-dollars"],
     listedAt: 1703416030,
   },
   {

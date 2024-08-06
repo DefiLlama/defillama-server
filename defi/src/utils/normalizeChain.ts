@@ -24,7 +24,10 @@ export const normalizedChainReplacements = {
   "bitnet": "btn",
   "defichain evm": "defichain_evm",
   "hydration": "hydradx",
-  "xrpl": "ripple"
+  "xrpl": "ripple",
+  "zklink nova": "zklink",
+  "bitlayer": "btr",
+  "cronos zkevm": "zkcro" 
 } as {
   [chain: string]: string
 }
@@ -3005,8 +3008,8 @@ export const chainCoingeckoIds = {
     chainId: 6001,
   },
   "re.al": {
-    geckoId: null,
-    symbol: null,
+    geckoId: "re-al",
+    symbol: "RWA",
     cmcId: null,
     categories: ["EVM"],
     twitter: "real_rwa",
@@ -3218,6 +3221,19 @@ export const chainCoingeckoIds = {
     },
     url: "https://reya.network",
     chainId: 1729
+  },
+  "Cronos zkEVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    url: "https://cronos.org/zkevm",
+    twitter: "cronos_chain",
+    chainId: 388
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -3906,6 +3922,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Saakuru"
     case "reya":
       return "Reya Network"
+    case "zkcro":
+      return "Cronos zkEVM"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

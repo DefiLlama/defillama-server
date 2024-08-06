@@ -4939,6 +4939,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CrustFinance",
   },
+  {
+    id: "parent#bracket-protocol",
+    name: "Bracket Protocol",
+    url: "https://www.bracket.fi/",
+    description: "Bracket Is Liquid Staked DeFi. Backed By Binance Labs",
+    logo: `${baseIconsUrl}/bracket.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "bracket_fi",
+  },
 ];
 
 export default parentProtocols;

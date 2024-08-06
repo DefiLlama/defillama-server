@@ -1044,7 +1044,13 @@ export default {
     },
     "cetus": {
         "enabled": true,
-        "id": "2289"
+        "id": "2289",
+        protocolsData: {
+            "cetus": {
+                "id": "2289",
+                enabled: true,
+            }
+        }
     },
     "opx-finance": {
         "enabled": true,
@@ -1563,7 +1569,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": true,
+        "enabled": false,
         "id": "2864"
     },
     "astroswap": {
@@ -2232,7 +2238,7 @@ export default {
     },
     "metavault-v3": {
         parentId: "Metavault",
-        "enabled": true,
+        "enabled": false,
         "id": "3750",
         protocolsData: {
             "v3": {
@@ -2710,7 +2716,7 @@ export default {
         }
     },
     "fenix-finance": {
-        enabled: true,
+        enabled: false,
         id: "4563"
     },
     "nuri-exchange-v1": {
@@ -2863,5 +2869,9 @@ export default {
     "yakafinance": {
         enabled: true,
         id: "4871"
+    },
+    "spacewhale": {
+        enabled: true,
+        id: "4930"
     }
 } as AdaptorsConfig

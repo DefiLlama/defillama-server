@@ -833,7 +833,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": true,
+        "enabled": false,
         "id": "2864"
     },
     "merlin": {
@@ -1553,7 +1553,7 @@ export default {
     },
     "metavault-v3": {
         parentId: "Metavault",
-        "enabled": true,
+        "enabled": false,
         "id": "3750",
         protocolsData: {
             "v3": {
@@ -2321,7 +2321,7 @@ export default {
         id: "427"
     },
     "betmode": {
-        enabled: true,
+        enabled: false,
         id: "4927"
     },
     "silo-finance": {
@@ -2354,5 +2354,17 @@ export default {
     "dedust": {
         enabled: true,
         id: "2617"
+    },
+    "orderly": {
+        "enabled": true,
+        "id": "2264"
+    },
+    "spacewhale": {
+        enabled: true,
+        id: "4930"
+    },
+    "mevx": {
+        enabled: true,
+        id: "4945"
     }
 } as AdaptorsConfig

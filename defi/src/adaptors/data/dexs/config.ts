@@ -2873,5 +2873,9 @@ export default {
     "spacewhale": {
         enabled: true,
         id: "4930"
+    },
+    "saturnswap": {
+        enabled: true,
+        id: "4946"
     }
 } as AdaptorsConfig

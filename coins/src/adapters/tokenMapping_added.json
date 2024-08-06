@@ -9297,6 +9297,11 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#wrapped-ether-massa"
+    },
+    "AS12LKs9txoSSy8JgFJgV96m8k5z9pgzjYMYSshwN67mFVuj3bdUV": {
+      "decimals": "18",
+      "symbol": "usdt.b",
+      "to": "coingecko#massa-bridged-usdt-massa"
     }
   },
   "ham": {

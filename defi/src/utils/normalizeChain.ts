@@ -1,5 +1,3 @@
-import { chain } from "lodash";
-
 export const normalizedChainReplacements = {
   // keys should be full lowercase
   "binance": "bsc",
@@ -36,10 +34,6 @@ export function normalizeChain(chain: string) {
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
   return moduleDoubleCounted === true || (category === "Yield Aggregator" || category === "Yield");
-}
-
-export function isExcludedFromChainTvl(category?: string) {
-  return category === "RWA" || category === "Basis Trading";
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']

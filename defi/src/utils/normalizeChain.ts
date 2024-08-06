@@ -24,7 +24,8 @@ export const normalizedChainReplacements = {
   "bitnet": "btn",
   "defichain evm": "defichain_evm",
   "hydration": "hydradx",
-  "xrpl": "ripple"
+  "xrpl": "ripple",
+  "zklink nova": "zklink"
 } as {
   [chain: string]: string
 }

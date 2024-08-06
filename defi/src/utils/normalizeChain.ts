@@ -27,7 +27,7 @@ export const normalizedChainReplacements = {
   "xrpl": "ripple",
   "zklink nova": "zklink",
   "bitlayer": "btr",
-  "cronos-zkevm": "zkcro" 
+  "cronos zkevm": "zkcro" 
 } as {
   [chain: string]: string
 }

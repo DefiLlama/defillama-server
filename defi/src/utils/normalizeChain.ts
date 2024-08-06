@@ -8,7 +8,7 @@ export const normalizedChainReplacements = {
   "terra classic": "terra",
   "nova network": "nova",
   "godwokenv1": "godwoken_v1",
-  "arbitrum_nova": "arbitrum nova",
+  "arbitrum nova": "arbitrum_nova",
   "zksync era": "era",
   "polygon zkevm": "polygon_zkevm",
   "eos evm": "eos_evm",
@@ -25,9 +25,9 @@ export const normalizedChainReplacements = {
   "defichain evm": "defichain_evm",
   "hydration": "hydradx",
   "xrpl": "ripple",
-  "zklink": "zklink nova",
+  "zklink nova": "zklink",
   "bitlayer": "btr",
-  "zkcro": "cronos-zkevm"
+  "cronos-zkevm": "zkcro" 
 } as {
   [chain: string]: string
 }

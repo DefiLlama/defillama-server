@@ -13,21 +13,18 @@ export const normalizedChainReplacements = {
   "polygon zkevm": "polygon_zkevm",
   "eos evm": "eos_evm",
   "oasys": "oas",
-  "map relay chain": "map",
+  "map protocol": "map",
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
   "bifrost network": "bfc",
   "horizen eon": "eon",
   "bahamut": "ftn",
-  "viction": "tomochain",
   "bevm": "chainx",
   "bitnet": "btn",
   "defichain evm": "defichain_evm",
   "hydration": "hydradx",
-  "xrpl": "ripple",
   "zklink nova": "zklink",
   "bitlayer": "btr",
-  "cronos zkevm": "zkcro" 
 } as {
   [chain: string]: string
 }

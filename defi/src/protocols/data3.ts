@@ -51040,7 +51040,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     oracles: [], 
     forkedFrom: [],
-    chains: ["Ethereum", "Gnosis"],
+    chains: ["Ethereum", "xDai"],
     module: "balancer-cow-amm/index.js",
     twitter: "Balancer",
     parentProtocol: "parent#balancer",

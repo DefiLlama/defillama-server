@@ -51027,8 +51027,8 @@ const data3: Protocol[] = [
   {
     id: "4951",
     name: "Balancer Cow AMM",
-    address: null,
-    symbol: "-",
+    address: "0xba100000625a3754423978a60c9317c58a424e3d",
+    symbol: "BAL",
     url: "https://balancer.fi",
     description: "DeFi’s ever-expanding AMM product suite and Yield-Bearing Hub. Find your inner balance(r) today",
     chain: "Ethereum",
@@ -51043,7 +51043,30 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Gnosis"],
     module: "balancer-cow-amm/index.js",
     twitter: "Balancer",
+    parentProtocol: "parent#balancer",
     listedAt: 1722961548
+  },
+  {
+    id: "4952",
+    name: "STRKFarm",
+    address: null,
+    symbol: "-",
+    url: "https://www.strkfarm.xyz",
+    description: "STRKFarm is a DeFi yield aggregator on Starknet that automatically invests your assets across various DeFi protocols within a given strategy to maximise your returns",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/strkfarm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    oracles: ["Pragma"], // https://docs.strkfarm.xyz/p/strategies/sensei-delta-neutral-lending
+    forkedFrom: [],
+    chains: ["Starknet"],
+    module: "strkfarm/index.js",
+    twitter: "strkfarm",
+    github: ["strkfarm"],
+    listedAt: 1722961657
   },
 ];
 

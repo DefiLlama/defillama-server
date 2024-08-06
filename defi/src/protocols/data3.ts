@@ -51003,6 +51003,48 @@ const data3: Protocol[] = [
     twitter: "PredX_AI",
     listedAt: 1722886946
   },
+  {
+    id: "4950",
+    name: "TON Hedge",
+    address: null,
+    symbol: "-",
+    url: "https://x.com/tonhedge",
+    description: "Options trading protocol on ton_blockchain",
+    chain: "TON",
+    logo: `${baseIconsUrl}/ton-hedge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    oracles: [], 
+    forkedFrom: [],
+    chains: ["TON"],
+    module: "tonhedge/index.js",
+    twitter: "tonhedge",
+    listedAt: 1722961048
+  },
+  {
+    id: "4951",
+    name: "Balancer Cow AMM",
+    address: null,
+    symbol: "-",
+    url: "https://balancer.fi",
+    description: "DeFi’s ever-expanding AMM product suite and Yield-Bearing Hub. Find your inner balance(r) today",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/balancer-cow-amm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    oracles: [], 
+    forkedFrom: [],
+    chains: ["Ethereum", "Gnosis"],
+    module: "balancer-cow-amm/index.js",
+    twitter: "Balancer",
+    listedAt: 1722961548
+  },
 ];
 
 export default data3;

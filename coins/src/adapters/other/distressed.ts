@@ -65,7 +65,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     bscBUSD: "0x0aB43550A6915F9f67d0c454C2E90385E6497EaA",
     BIFI: "0x6ab6d61428fde76768d7b45d8bfeec19c6ef91a8",
   },
-  klaytn: {
+  kaia: {
     USDK: "0xd2137fdf10bd9e4e850c17539eb24cfe28777753",
   },
   arbitrum: {

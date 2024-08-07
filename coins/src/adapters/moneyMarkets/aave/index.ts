@@ -131,7 +131,7 @@ export function radiant(timestamp: number = 0) {
 export function klap(timestamp: number = 0) {
   return Promise.all([
     getTokenPrices(
-      "klaytn",
+      "kaia",
       "0x969E4A05c2F3F3029048e7943274eC2E762497AB",
       null,
       "v2",

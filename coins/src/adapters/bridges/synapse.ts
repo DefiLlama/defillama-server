@@ -28,7 +28,7 @@ const tokenAddresses: { [symbol: string]: { [chain: string]: string } } = {
     moonbeam: "0x3192Ae73315c3634Ffa217f71CF6CBc30FeE349A",
     dogechain: "0x9F4614E4Ea4A0D7c4B1F946057eC030beE416cbB",
     canto: "0x09fEC30669d63A13c666d2129230dD5588E2e240",
-    klaytn: "0xCD6f29dC9Ca217d0973d3D21bF58eDd3CA871a86",
+    kaia: "0xCD6f29dC9Ca217d0973d3D21bF58eDd3CA871a86",
     arbitrum: "0x3ea9B0ab55F34Fb188824Ee288CeaEfC63cf908e",
     avax: "0x19E1ae0eE35c0404f835521146206595d37981ae",
     harmony: "0x0b5740c6b4a97f90eF2F0220651Cca420B868FfB",

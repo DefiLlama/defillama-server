@@ -1988,16 +1988,16 @@ Array [
     "url": "https://www.cherryswap.net",
   },
   Object {
-    "address": "klaytn:0xcf87f94fd8f6b6f0b479771f10df672f99eada63",
+    "address": "kaia:0xcf87f94fd8f6b6f0b479771f10df672f99eada63",
     "audit_links": Array [
       "https://github.com/claimswap/claimswap-audit",
     ],
     "audit_note": null,
     "audits": "0",
     "category": "Dexes",
-    "chain": "Klaytn",
+    "chain": "Kaia",
     "chains": Array [
-      "klaytn",
+      "kaia",
     ],
     "cmcId": "18371",
     "config": Object {
@@ -4866,9 +4866,9 @@ Array [
     "audit_note": null,
     "audits": "2",
     "category": "Dexes",
-    "chain": "Klaytn",
+    "chain": "Kaia",
     "chains": Array [
-      "klaytn",
+      "kaia",
     ],
     "cmcId": "8296",
     "config": Object {
@@ -4906,9 +4906,9 @@ Array [
     "audit_note": null,
     "audits": "2",
     "category": "Dexes",
-    "chain": "Klaytn",
+    "chain": "Kaia",
     "chains": Array [
-      "klaytn",
+      "kaia",
     ],
     "cmcId": null,
     "config": Object {
@@ -4989,16 +4989,16 @@ Array [
     "url": "https://knightswap.financial",
   },
   Object {
-    "address": "klaytn:0xcd670d77f3dcab82d43dff9bd2c4b87339fb3560",
+    "address": "kaia:0xcd670d77f3dcab82d43dff9bd2c4b87339fb3560",
     "audit_links": Array [
       "https://drive.google.com/file/d/1I0HnU8Rs88HHqBC6Y3aUcEKTPZfVTAZD/view",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Dexes",
-    "chain": "Klaytn",
+    "chain": "Kaia",
     "chains": Array [
-      "klaytn",
+      "kaia",
     ],
     "cmcId": null,
     "config": Object {
@@ -7321,23 +7321,23 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "url": "https://pandoraswapxyz.org/",
   },
   Object {
-    "address": "klaytn:0xB49E754228bc716129E63b1a7b0b6cf27299979e",
+    "address": "kaia:0xB49E754228bc716129E63b1a7b0b6cf27299979e",
     "audit_links": Array [
       "https://github.com/pangea-protocol/pangea-core/blob/main/audits/%5BHAECHI%20AUDIT%5D%20Smart%20Contract%20Audit%20Reports%20for%20Pangea.pdf",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Dexes",
-    "chain": "Klaytn",
+    "chain": "Kaia",
     "chains": Array [
-      "klaytn",
+      "kaia",
     ],
     "cmcId": null,
     "config": Object {
       "enabled": true,
       "id": "1987",
     },
-    "description": "The First Concentrated Liquidity DEX on Klaytn.",
+    "description": "The First Concentrated Liquidity DEX on Kaia.",
     "disabled": false,
     "displayName": "Pangea Swap",
     "enabled": true,

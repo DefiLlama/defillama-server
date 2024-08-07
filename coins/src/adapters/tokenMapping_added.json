@@ -1546,7 +1546,7 @@
       "to": "coingecko#fx-rusd"
     }
   },
-  "klaytn": {
+  "kaia": {
     "0x67cb285790bb9f5dce728f80a3104a2297df2bb2": {
       "decimals": "18",
       "symbol": "oWEMIX",
@@ -1591,7 +1591,7 @@
     "0x0000000000000000000000000000000000000000": {
       "name": "klay-token",
       "decimals": "18",
-      "symbol": "KLAY",
+      "symbol": "KAIA",
       "to": "coingecko#klay-token"
     },
     "0xd7a4d10070a4f7bc2a015e78244ea137398c3b74": {
@@ -3101,9 +3101,9 @@
       "to": "coingecko#staked-wemix"
     },
     "0x461d52769884ca6235b685ef2040f47d30c94eb5": {
-      "name": "Klaytn",
+      "name": "Kaia",
       "decimals": "18",
-      "symbol": "KLAY",
+      "symbol": "KAIA",
       "to": "coingecko#klay-token"
     },
     "0x765277eebeca2e31912c9946eae1021199b39c61": {

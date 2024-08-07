@@ -18,7 +18,7 @@ export const chainToCoingeckoId = {
   terra: "terra",
   tron: "tron",
   waves: "waves",
-  klaytn: "klay-token",
+  kaia: "klay-token",
   osmosis: "osmosis",
   kava: "kava",
   icon: "icon",

@@ -103,7 +103,7 @@ const adaptersRepoChainsJson: string[] = [
   "kcc",
   "kekchain",
   "kintsugi",
-  "klaytn",
+  "kaia",
   "kujira",
   "kusama",
   "lachain",

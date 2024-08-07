@@ -282,9 +282,9 @@ export default {
         symbol: "WAVES",
         cmcId: "1274",
     },
-    "Klaytn": {
+    "Kaia": {
         geckoId: "klay-token",
-        symbol: "KLAY",
+        symbol: "KAIA",
         cmcId: "4256",
         categories: ["EVM"],
         chainId: 8217,

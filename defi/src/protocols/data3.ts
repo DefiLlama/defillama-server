@@ -13336,7 +13336,6 @@ const data3: Protocol[] = [
     parentProtocol: "parent#teahouse-finance",
     listedAt: 1690211924,
   },
-  /*
   {
     id: "3286",
     name: "Teahouse Permissionless",
@@ -13363,7 +13362,6 @@ const data3: Protocol[] = [
     parentProtocol: "parent#teahouse-finance",
     listedAt: 1690211928,
   },
-  */
   {
     id: "3287",
     name: "TruStake",

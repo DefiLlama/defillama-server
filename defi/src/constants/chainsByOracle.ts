@@ -89,7 +89,7 @@ const chainsByOracle = {
     "IOTA EVM",
     "Kava",
     "KCC",
-    "Klatyn"
+    "Klatyn",
     "LightLink",
     "Linea",
     "Manta",

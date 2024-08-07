@@ -51132,6 +51132,48 @@ const data3: Protocol[] = [
     twitter: "waxfusion_io",
     listedAt: 1723024910
   },
+  {
+    id: "4956",
+    name: "Echo Bridge", 
+    address: null,
+    symbol: "-",
+    url: "https://www.echo-protocol.xyz",
+    description: "Bridge BTC assets, restaking, earn interest & borrow on Move",
+    chain: "BSquared",
+    logo: `${baseIconsUrl}/echo-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    oracles: [],
+    forkedFrom: [],
+    chains: ["BSquared"],
+    module: "echo-bridge/index.js",
+    twitter: "EchoProtocol_",
+    listedAt: 1723036283
+  },
+  {
+    id: "4957",
+    name: "Arrow Markets", 
+    address: "avax:0x5c5e384Bd4e36724B2562cCAA582aFd125277C9B",
+    symbol: "ARROW",
+    url: "https://arrow.markets",
+    description: "Arrow Markets is a cutting-edge options platform that revolutionizes trading by seamlessly integrating an innovative RFQ system",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/arrow-markets.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    oracles: [],
+    forkedFrom: [],
+    chains: ["Avalanche"],
+    module: "arrow-markets/index.js",
+    twitter: "ArrowMarkets",
+    listedAt: 1723036583
+  },
 ];
 
 export default data3;

@@ -16,6 +16,13 @@ let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
 );
 
+enum COIN_TYPES {
+  over100m = 'over100m',
+  over10m = 'over10m',
+  over1m = 'over1m',
+  rest = 'rest'
+}
+
 function cgPK(cgId: string) {
   return `coingecko#${cgId}`;
 }
@@ -548,14 +555,14 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   ).then((r) => r.json())) as Coin[];
 
   if (coinType || hourly) {
-    const metadatas = await getCGCoinMetadatas(coins.map((coin) => coin.id));
+    const metadatas = await getCGCoinMetadatas(coins.map((coin) => coin.id), coinType);
     coins = coins.filter((coin) => {
       const metadata = metadatas[coin.id];
       if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
       if (hourly) {
         return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
       }
-      return metadata.coinType === coinType;
+      return metadata.coinType === coinType || metadata.coinType === COIN_TYPES.over100m; // always include over100m coins
     })
   }
   console.log(`Fetching prices for ${coins.length} coins`, 'running hourly:', hourly, 'coinType:', coinType);
@@ -575,7 +582,7 @@ if (process.argv.length < 3) {
   process.env.tableName = "prod-coins-table";
   const isHourlyRun = process.argv[2] == "true";
   const coinType = process.argv[3] ?? undefined;
-  if (coinType && !['over100m', 'over10m', 'over1m', 'rest'].includes(coinType)) {
+  if (coinType && ![COIN_TYPES.over100m, COIN_TYPES.over10m, COIN_TYPES.over1m, COIN_TYPES.rest].includes(coinType as any)) {
     console.error(`Invalid coin type: ${coinType}`);
     process.exit(1);
   }
@@ -590,7 +597,7 @@ if (process.argv.length < 3) {
 }
 // ts-node coins/src/scripts/coingecko.ts false
 
-async function getCGCoinMetadatas(coinIds: string[]) {
+async function getCGCoinMetadatas(coinIds: string[], coinType?: string) {
   const idResponse = {} as {
     [id: string]: CoinMetadata
   }
@@ -605,6 +612,8 @@ async function getCGCoinMetadatas(coinIds: string[]) {
   } catch (e) {
     console.error('Error reading CG metadata to redis')
     console.error(e);
+    if (coinType === COIN_TYPES.over100m) // if we can't read from redis, we can't filter by coinType and since over100m runs too frequently, we should throw an error and not proceed
+      throw e;
   }
   return idResponse
 }
@@ -613,13 +622,13 @@ async function storeCGCoinMetadatas(coinMetadatas: any) {
   try {
     const metadatas = Object.entries(coinMetadatas).map(([id, data]: any) => {
       data.id = id;
-      let coinType = 'rest'
+      let coinType = COIN_TYPES.rest
       if (data.usd_market_cap > 1e8 && data.usd_24h_vol > 1e8)
-        coinType = 'over100m'
+        coinType = COIN_TYPES.over100m
       else if (data.usd_market_cap > 1e7 && data.usd_24h_vol > 1e7)
-        coinType = 'over10m'
+        coinType = COIN_TYPES.over10m
       else if (data.usd_market_cap > 1e6 && data.usd_24h_vol > 1e6)
-        coinType = 'over1m'
+        coinType = COIN_TYPES.over1m
       data.coinType = coinType
       return data;
     })

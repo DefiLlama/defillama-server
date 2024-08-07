@@ -2804,6 +2804,11 @@
       "decimals": "5",
       "symbol": "Bonk",
       "to": "coingecko#bonk"
+    },
+    "DEkqHyPN7GMRJ5cArtQFAWefqbZb33Hyf6s5iCwjEonT": {
+      "decimals": "9",
+      "symbol": "USDe",
+      "to": "coingecko#ethena-usde"
     }
   },
   "astar": {

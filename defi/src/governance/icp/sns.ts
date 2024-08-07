@@ -150,7 +150,7 @@ export async function get_metadata(sns_metadata: SnsMetadata, retiresLeft = 3): 
  */
 async function _get_metadata(sns_metadata: SnsMetadata) {
     var { data, status } = await axios.get(
-        SNS_API_BASE_URL + `${sns_metadata.sns_root_canister_id}/proposals/?offset=0&limit=1`
+        SNS_API_BASE_URL + `${sns_metadata.sns_root_canister_id}/proposals?offset=0&limit=1`
         ,
         {
             headers: {

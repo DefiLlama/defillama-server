@@ -51174,6 +51174,27 @@ const data3: Protocol[] = [
     twitter: "ArrowMarkets",
     listedAt: 1723036583
   },
+  {
+    id: "4958",
+    name: "Cetus Aggregator", 
+    address: "sui:0x6864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS",
+    symbol: "CETUS",
+    url: "https://www.cetus.zone",
+    description: "Cetus is a pioneer DEX and concentrated liquidity protocol focusing on Move-based ecosystems like Aptos and Sui. It works as a crucial part of the ecosystem infrastructure to satisfy the comprehensive needs of traders, LPs, upper applications and an increasing DeFi population.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/cetus-aggregator.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    oracles: [],
+    forkedFrom: [],
+    chains: ["Aptos"],
+    module: "dummy.js",
+    twitter: "CetusProtocol",
+    parentProtocol: "parent#cetus",
+  },
 ];
 
 export default data3;

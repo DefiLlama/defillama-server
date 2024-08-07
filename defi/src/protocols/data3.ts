@@ -50974,7 +50974,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Algo-Stables",
     oracles: [], 
     forkedFrom: [],
     chains: ["Ergo"],
@@ -51067,6 +51067,26 @@ const data3: Protocol[] = [
     twitter: "strkfarm",
     github: ["strkfarm"],
     listedAt: 1722961657
+  },
+  {
+    id: "4953",
+    name: "LINE Token Rewards", // its for yields dashboard only
+    address: null,
+    symbol: "-",
+    url: "https://kava.obyte.org",
+    description: "Get a share of Kava Rise rewards by simply holding tokens imported from Kava in your Obyte wallet. Kava Rise program rewards us for the TVL that our dapps Counterstake and LINE create on the Kava network. We share 50% of these rewards with you if you actually contribute to this TVL and hold the tokens imported through Counterstake bridge in your Obyte wallet.",
+    chain: "Obyte",
+    logo: `${baseIconsUrl}/line-token-rewards.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    oracles: [], 
+    forkedFrom: [],
+    chains: ["Obyte"],
+    module: "dummy.js",
+    twitter: "ObyteOrg",
   },
 ];
 

@@ -607,6 +607,7 @@ async function getCGCoinMetadatas(coinIds: string[], coinType?: string) {
     const res = await redis.mget(coinIds.map((id) => `cgMetadata:${id}`))
     const jsonData = res.map((i: any) => JSON.parse(i))
     jsonData.map((data: any) => {
+      if (!data) return;
       idResponse[data.id] = data
     })
   } catch (e) {
@@ -637,6 +638,7 @@ async function storeCGCoinMetadatas(coinMetadatas: any) {
       `cgMetadata:${metadata.id}`,
       JSON.stringify(metadata),
     ]);
+    if (!writes.length) return;
     await redis.mset(writes.flat());
   } catch (e) {
     console.error('Error writing to CG metadata to redis')

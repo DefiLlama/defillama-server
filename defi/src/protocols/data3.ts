@@ -38452,7 +38452,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://burve.io",
-    description: "Explore the consensus-driven AMM protocol.",
+    description: "The consensus-driven Bonding Curve DeFi protocol for innovative liquidity and fair token launch solutions.",
     chain: "Binance",
     logo: `${baseIconsUrl}/burve-protocol.jpg`,
     audits: "2",

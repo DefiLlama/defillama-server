@@ -38283,6 +38283,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "poolznetwork/index.js",
     twitter: "Poolz__",
+    parentProtocol: "parent#poolz-finance",
     listedAt: 1711556896,
   },
   {
@@ -51320,6 +51321,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "poolz-vesting/index.js",
     twitter: "Poolz__",
+    parentProtocol: "parent#poolz-finance",
     listedAt: 1723136835,
   },
   {

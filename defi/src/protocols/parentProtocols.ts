@@ -3426,7 +3426,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#balanceddao",
     name: "Balanced",
     url: "https://balanced.network/",
-    description: `Balanced is DeFi designed for adoption: it’s fast, affordable, and easy to use. 99% of crypto investors struggled to use decentralised finance in 2021, so Balanced was built from first principles to simplify the experience.`,
+    description: `Balanced is DeFi designed for adoption: it’s fast, affordable, and easy to use. Home to the Balanced Dollar stablecoin (bnUSD) and a decentralised exchange, it uses ICON’s cross-chain technology to connect to other blockchains. You can use Balanced to borrow bnUSD, swap assets, supply liquidity, and transfer cross-chain. The best part is, your crypto stays wrapper-free.`,
     logo: `${baseIconsUrl}/balanced.png`,
     gecko_id: "balance-tokens",
     cmcId: null,

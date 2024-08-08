@@ -1043,6 +1043,7 @@ export default {
         "id": "2299"
     },
     "cetus": {
+        parentId: "Cetus",
         "enabled": true,
         "id": "2289",
         protocolsData: {

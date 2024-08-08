@@ -30132,7 +30132,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "fwx/index.js",
     twitter: "fwxfinance",
-    treasury: "fwx.js",
     audit_links: ["https://github.com/forward-x/audit-report"],
     parentProtocol: "parent#fwx",
     listedAt: 1705261389,

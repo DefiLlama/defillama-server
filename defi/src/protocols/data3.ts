@@ -51302,7 +51302,7 @@ const data3: Protocol[] = [
     listedAt: 1723135677,
   },
   {
-    id: "4385",
+    id: "4964",
     name: "Poolz Vesting",
     address: "bsc:0xbaea9aba1454df334943951d51116ae342eab255",
     symbol: "POOLX",

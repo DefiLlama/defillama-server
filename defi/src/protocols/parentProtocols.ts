@@ -4974,6 +4974,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "fwxfinance",
     treasury: "fwx.js",
   },
+  {
+    id: "parent#poolz-finance",
+    name: "Poolz Finance",
+    url: "https://www.poolz.finance/",
+    description: "Poolz Finance is a decentralized open-source cross-chain launchpad platform built on top of Web 3.0 infrastructure to enable crypto projects to raise funds before listing",
+    logo: `${baseIconsUrl}/poolz-finance.png`,
+    gecko_id: "poolz-finance-2",
+    cmcId: "8271",
+    chains: [],
+    twitter: "Poolz__",
+    github: ["The-Poolz"],
+  },
 
 ];
 

@@ -51280,6 +51280,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#fwx",
     listedAt: 1723131315,
   },
+  {
+    id: "4963",
+    name: "Umoja Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://umoja.xyz/",
+    description:
+      "Umoja is an asset management protocol that uses 'smartcoins' to automate money, enabling money itself to autonomously minimize risk & optimize returns",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/umoja-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CeDeFi",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "umoja/index.js",
+    twitter: "UmojaProtocol",
+    audit_links: [],
+    listedAt: 1723135677,
+  },
 ];
 
 export default data3;

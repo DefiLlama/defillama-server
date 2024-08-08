@@ -51322,6 +51322,28 @@ const data3: Protocol[] = [
     twitter: "Poolz__",
     listedAt: 1723136835,
   },
+  {
+    id: "4965",
+    name: "Ethereum Classic Stable Dollar",
+    address: null,
+    symbol: "-",
+    url: "https://etc.djed.one/",
+    description: "Ethereum Classic Stable Dollar is a crypto-backed stablecoin backed by ETC and pegged to USD. It is fully autonomous, immutable and zero governance. It is based on the Djed stablecoin protocol, a peer-reviewed, formally verified and battle-tested protocol since 2020. ECSD belongs to the Djed Alliance, along with various other Djed-based stablecoins",
+    chain: "EthereumClassic",
+    logo: `${baseIconsUrl}/ethereum-classic-stable-dollar.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Decentralized Stablecoin",
+    chains: ["EthereumClassic"],
+    oracles: ["HebeSwap"],
+    forkedFrom: [],
+    module: "ethereum-classic-stable-dollar/index.js",
+    audit_links: ["https://github.com/DjedAlliance/Djed-Solidity/tree/main/audits"],
+    twitter: "DjedAlliance",
+    listedAt: 1723145012,
+  },
 ];
 
 export default data3;

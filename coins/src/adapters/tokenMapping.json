@@ -655,6 +655,11 @@
       "decimals": "18",
       "symbol": "BTCUSD",
       "to": "coingecko#bitcoin-usd-btcfi"
+    },
+    "0xc43f3ae305a92043bd9b62ebd2fe14f7547ee485": {
+      "decimals": "18",
+      "symbol": "CHEX",
+      "to": "coingecko#chex-token"
     }
   },
   "jbc": {

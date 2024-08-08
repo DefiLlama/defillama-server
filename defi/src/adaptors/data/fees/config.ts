@@ -2366,5 +2366,9 @@ export default {
     "mevx": {
         enabled: true,
         id: "4945"
+    },
+    "metaplex": {
+        enabled: true,
+        id: "4959"
     }
 } as AdaptorsConfig

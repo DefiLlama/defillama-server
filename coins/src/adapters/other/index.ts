@@ -407,6 +407,23 @@ async function dsu(timestamp: number = 0, writes: Write[] = []) {
   await getWrites({ chain, timestamp, writes, pricesObject, projectName: "salt", })
 }
 
+async function kernel(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'ethereum'
+  const ETH = '0x0000000000000000000000000000000000000000'
+  const api = await getApi(chain, timestamp)
+  const tokens = [
+    { address: '0x0bB9aB78aAF7179b7515e6753d89822b91e670C4', oracle: '0xde903b83dd8b11abbc28ab195d45fe60145c6e9b', abi: 'uint256:kUSDPerToken', underlying: '0x4c9edd5852cd905f086c759e8383e09bff1e68b3', },
+    { address: '0xf02C96DbbB92DC0325AD52B3f9F2b951f972bf00', oracle: '0x8fDDab48DD17dDCeD87730020F4213528042dba3', },
+    { address: '0x513D27c94C0D81eeD9DC2a88b4531a69993187cF', oracle: '0x1A9fA10CA260387314185B9D7763164FD3D51226', },
+  ]
+  const pricesObject: any = {}
+  for (const { address, oracle, abi = 'uint256:getRate', underlying = ETH } of tokens) {
+    const rate = await api.call({ abi, target: oracle })
+    pricesObject[address] = { price: rate / 1e18, underlying, }
+  }
+  return getWrites({ chain, timestamp, pricesObject, projectName: "kelp", writes, })
+}
+
 export const adapters = {
   defiChain,
   shlb,
@@ -434,4 +451,5 @@ export const adapters = {
   salt,
   warlord,
   opal,
+  // kernel,   // price taken from unknownTokensV3 instead
 }

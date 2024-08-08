@@ -1569,7 +1569,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": true,
+        "enabled": false,
         "id": "2864"
     },
     "astroswap": {
@@ -2238,7 +2238,7 @@ export default {
     },
     "metavault-v3": {
         parentId: "Metavault",
-        "enabled": true,
+        "enabled": false,
         "id": "3750",
         protocolsData: {
             "v3": {
@@ -2716,7 +2716,7 @@ export default {
         }
     },
     "fenix-finance": {
-        enabled: true,
+        enabled: false,
         id: "4563"
     },
     "nuri-exchange-v1": {
@@ -2873,5 +2873,9 @@ export default {
     "spacewhale": {
         enabled: true,
         id: "4930"
+    },
+    "saturnswap": {
+        enabled: true,
+        id: "4946"
     }
 } as AdaptorsConfig

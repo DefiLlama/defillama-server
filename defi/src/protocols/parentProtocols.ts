@@ -3433,6 +3433,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BalancedDAO",
     github: ["balancednetwork"],
+    stablecoins: ["balanced-dollars"]
   },
   {
     id: "parent#baptswap",
@@ -4950,6 +4951,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "bracket_fi",
   },
+  {
+    id: "parent#cetus",
+    name: "Cetus",
+    url: "https://www.cetus.zone",
+    description: "Cetus is a pioneer DEX and concentrated liquidity protocol focusing on Move-based ecosystems like Aptos and Sui. It works as a crucial part of the ecosystem infrastructure to satisfy the comprehensive needs of traders, LPs, upper applications and an increasing DeFi population.",
+    logo: `${baseIconsUrl}/cetus.png`,
+    gecko_id: "cetus-protocol",
+    cmcId: "25114",
+    chains: [],
+    twitter: "CetusProtocol",
+  },
+
 ];
 
 export default parentProtocols;

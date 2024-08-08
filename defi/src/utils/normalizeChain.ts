@@ -1,5 +1,3 @@
-import { chain } from "lodash";
-
 export const normalizedChainReplacements = {
   // keys should be full lowercase
   "binance": "bsc",
@@ -13,18 +11,18 @@ export const normalizedChainReplacements = {
   "polygon zkevm": "polygon_zkevm",
   "eos evm": "eos_evm",
   "oasys": "oas",
-  "map relay chain": "map",
+  "map protocol": "map",
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
   "bifrost network": "bfc",
   "horizen eon": "eon",
   "bahamut": "ftn",
-  "viction": "tomochain",
   "bevm": "chainx",
   "bitnet": "btn",
   "defichain evm": "defichain_evm",
   "hydration": "hydradx",
-  "xrpl": "ripple"
+  "zklink nova": "zklink",
+  "bitlayer": "btr",
 } as {
   [chain: string]: string
 }
@@ -36,10 +34,6 @@ export function normalizeChain(chain: string) {
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
   return moduleDoubleCounted === true || (category === "Yield Aggregator" || category === "Yield");
-}
-
-export function isExcludedFromChainTvl(category?: string) {
-  return category === "RWA" || category === "Basis Trading";
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -3219,6 +3213,19 @@ export const chainCoingeckoIds = {
     url: "https://reya.network",
     chainId: 1729
   },
+  "Cronos zkEVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    url: "https://cronos.org/zkevm",
+    twitter: "cronos_chain",
+    chainId: 388
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3906,6 +3913,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Saakuru"
     case "reya":
       return "Reya Network"
+    case "zkcro":
+      return "Cronos zkEVM"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

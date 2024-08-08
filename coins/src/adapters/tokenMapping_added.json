@@ -2804,6 +2804,11 @@
       "decimals": "5",
       "symbol": "Bonk",
       "to": "coingecko#bonk"
+    },
+    "DEkqHyPN7GMRJ5cArtQFAWefqbZb33Hyf6s5iCwjEonT": {
+      "decimals": "9",
+      "symbol": "USDe",
+      "to": "coingecko#ethena-usde"
     }
   },
   "astar": {
@@ -7985,6 +7990,11 @@
       "decimals": "18",
       "symbol": "solvVBTC",
       "to": "coingecko#solv-btc"
+    },
+    "0x7a6888c85edba8e38f6c7e0485212da602761c08": {
+      "decimals": "18",
+      "symbol": "BTCB",
+      "to": "coingecko#binance-bitcoin"
     }
   },
   "rpg": {
@@ -9292,6 +9302,11 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#wrapped-ether-massa"
+    },
+    "AS12LKs9txoSSy8JgFJgV96m8k5z9pgzjYMYSshwN67mFVuj3bdUV": {
+      "decimals": "18",
+      "symbol": "usdt.b",
+      "to": "coingecko#massa-bridged-usdt-massa"
     }
   },
   "ham": {

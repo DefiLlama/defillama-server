@@ -833,7 +833,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": true,
+        "enabled": false,
         "id": "2864"
     },
     "merlin": {
@@ -1553,7 +1553,7 @@ export default {
     },
     "metavault-v3": {
         parentId: "Metavault",
-        "enabled": true,
+        "enabled": false,
         "id": "3750",
         protocolsData: {
             "v3": {
@@ -2366,5 +2366,9 @@ export default {
     "mevx": {
         enabled: true,
         id: "4945"
+    },
+    "metaplex": {
+        enabled: true,
+        id: "4959"
     }
 } as AdaptorsConfig

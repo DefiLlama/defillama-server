@@ -4962,6 +4962,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CetusProtocol",
   },
+  {
+    id: "parent#fwx",
+    name: "FWX",
+    url: "https://fwx.finance/",
+    description: "FWX is an AMM-based leveraged swap platform that enables anyone to list tokens from the first days they are minted by simply providing liquidity.",
+    logo: `${baseIconsUrl}/fwx.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "fwxfinance",
+    treasury: "fwx.js",
+  },
 
 ];
 

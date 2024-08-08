@@ -30114,7 +30114,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4026",
-    name: "FWX",
+    name: "FWX Derivatives",
     address: null,
     symbol: "-",
     url: "https://fwx.finance/",
@@ -30134,6 +30134,7 @@ const data3: Protocol[] = [
     twitter: "fwxfinance",
     treasury: "fwx.js",
     audit_links: ["https://github.com/forward-x/audit-report"],
+    parentProtocol: "parent#fwx",
     listedAt: 1705261389,
   },
   {
@@ -51254,6 +51255,30 @@ const data3: Protocol[] = [
     module: "bitdrome/index.js",
     twitter: "BitdromeFi",
     listedAt: 1723118912
+  },
+  {
+    id: "4962",
+    name: "FWX DEX",
+    address: null,
+    symbol: "-",
+    url: "https://swap.fwx.finance/pool",
+    description:
+      "FWX is a permissionless leveraged AMM DEX with permissionless creation of lending markets and futures trading for any token",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/fwx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "fwx-dex/index.js",
+    twitter: "fwxfinance",
+    audit_links: [],
+    parentProtocol: "parent#fwx",
+    listedAt: 1723131315,
   },
 ];
 

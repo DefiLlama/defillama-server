@@ -81,9 +81,7 @@ async function get_sns_metadata(retiresLeft = 3): Promise<SnsMetadata[]> {
     try {
 
         var { data, status } = await axios.get(
-            // ICRC1_LEDGER_API_BASE_URL + "?offset=0&limit=100"
-            ICRC1_LEDGER_API_BASE_URL
-            ,
+            ICRC1_LEDGER_API_BASE_URL + "?offset=0&limit=100",
             {
                 headers: {
                     Accept: 'application/json',

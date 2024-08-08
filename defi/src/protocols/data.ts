@@ -2187,7 +2187,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "acryptos",
     cmcId: "7844",
-    category: "Liquidity Manager",
+    category: "Liquidity manager",
     chains: ["Binance", "Arbitrum", "Optimism", "Base", "Polygon", "Linea", "Avalanche", "Fantom", "Moonriver", "Moonbeam", "Kava"],
     module: "acryptos/index.js",
     twitter: "acryptosdao",

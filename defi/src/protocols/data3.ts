@@ -51192,6 +51192,26 @@ const data3: Protocol[] = [
     twitter: "CetusProtocol",
     parentProtocol: "parent#cetus",
   },
+  {
+    id: "4959",
+    name: "Metaplex", 
+    address: null,
+    symbol: "-",
+    url: "https://www.metaplex.com/",
+    description: "Metaplex is a decentralized platform on Solana for creating, selling, and managing digital assets, including NFTs, fungible tokens, RWAs, gaming assets, DePIN assets, and more, offering tools for developers, creators, and businesses",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/metaplex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    oracles: [],
+    forkedFrom: [],
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "metaplex",
+  },
 ];
 
 export default data3;

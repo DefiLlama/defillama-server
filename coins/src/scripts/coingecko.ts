@@ -12,9 +12,7 @@ import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 
 const staleMargin = 6 * 60 * 60;
 
-let solanaConnection = new Connection(
-  process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
-);
+let solanaConnection: any
 
 enum COIN_TYPES {
   over100m = 'over100m',
@@ -150,9 +148,8 @@ async function getSymbolAndDecimals(
       (t) => t.address === tokenAddress,
     );
     if (token === undefined) {
-      const decimalsQuery = await solanaConnection.getParsedAccountInfo(
-        new PublicKey(tokenAddress),
-      );
+      if (!solanaConnection) solanaConnection = new Connection(process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",)
+      const decimalsQuery = await solanaConnection.getParsedAccountInfo(new PublicKey(tokenAddress),);
       const decimals = (decimalsQuery.value?.data as any)?.parsed?.info
         ?.decimals;
       if (typeof decimals !== "number") {

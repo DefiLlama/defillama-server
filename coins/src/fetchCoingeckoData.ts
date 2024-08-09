@@ -374,5 +374,6 @@ function getMetadataPDA(mint: PublicKey) {
 }
 */
 
+// NOTE: this is old script we no longer use this.
 export const fetchCoingeckoData = wrapScheduledLambda(handler(false));
 export const fetchHourlyCoingeckoData = wrapScheduledLambda(handler(true));

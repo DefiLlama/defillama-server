@@ -812,6 +812,12 @@ export default {
     },
     "edgeX": {
         enabled: true,
-        id: "4954"
+        id: "4954",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1723075200": true,
+                "1722988800": true,
+            },
+        }
     }
 } as AdaptorsConfig

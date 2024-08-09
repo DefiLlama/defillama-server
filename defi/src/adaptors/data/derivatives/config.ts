@@ -809,5 +809,9 @@ export default {
         parentId: "ApeX Protocol",
         enabled: true,
         id: "4822"
+    },
+    "edgeX": {
+        enabled: true,
+        id: "4954"
     }
 } as AdaptorsConfig

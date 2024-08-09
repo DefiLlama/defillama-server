@@ -20,6 +20,7 @@ const gaugeFactories: { [chain: string]: string } = {
   optimism: "0x2E96068b3D5B5BAE3D7515da4A1D2E52d08A2647",
   avax: "0xb08E16cFc07C684dAA2f93C70323BAdb2A6CBFd2",
   xdai: "0x809B79b53F18E9bc08A961ED4678B901aC93213a",
+  fraxtal: "0xc3ccacE87f6d3A81724075ADcb5ddd85a8A1bB68",
 };
 
 type PoolInfo = {
@@ -63,6 +64,12 @@ async function getPoolIdsFromLogs(api: sdk.ChainApi, options: BalancerOptions) {
   return poolIds.filter((id: any) => id)
 }
 
+const chainPoolGauges: {
+  [chain: string]: {
+    [pool: string]: string
+  }
+} = {}
+
 async function getPoolIds2(api: sdk.ChainApi, options?: BalancerOptions): Promise<string[]> {
   if (options) return getPoolIdsFromLogs(api, options)
   let addresses: string[] = [];
@@ -72,18 +79,26 @@ async function getPoolIds2(api: sdk.ChainApi, options?: BalancerOptions): Promis
   let size = 1000
   const chainEnum = chainToEnum[api.chain]
   if (!chainEnum) throw new Error(`Chain ${api.chain} not supported`)
+  if (!chainPoolGauges[api.chain]) chainPoolGauges[api.chain] = {}
+  const gaugeMapping = chainPoolGauges[api.chain]
 
   do {
     const lpQuery = `
     query {
       poolGetPools (first: ${size} skip: ${skip} orderBy: totalLiquidity, orderDirection: desc,
           where: { chainIn:[${chainEnum}] minTvl: 10000 }) {
-        id
+        id address
+        staking { address }
       }
     }`;
 
     const { poolGetPools }: any = await request(subgraph, lpQuery);
     addresses.push(...poolGetPools.map((p: any) => p.id))
+    poolGetPools.forEach((p: any) => {
+      const pool = p.address.toLowerCase()
+      const gauge = p.staking?.address
+      if (pool && gauge) gaugeMapping[pool] = gauge
+    })
     hasMore = poolGetPools.length === size
   } while (hasMore)
   return addresses.filter((a: string) => {
@@ -144,8 +159,14 @@ export async function getTokenPrices2(
   const gaugeFactory = gaugeFactories[api.chain]
 
   if (gaugeFactory) {
+    const poolGuageMapping = chainPoolGauges[api.chain] ?? {}
     const whitelistedPools = Object.keys(pricesObject)
     const gauges = await api.multiCall({ abi: abi.getPoolGauge, calls: whitelistedPools, target: gaugeFactory, permitFailure: true })
+    gauges.forEach((g: string, i: number) => {
+      if (g) return;
+      const pool = whitelistedPools[i].toLowerCase()
+      gauges[i] = poolGuageMapping[pool] ?? null
+    })
     const decimals = await api.multiCall({ abi: 'erc20:decimals', calls: whitelistedPools, permitFailure: true })
     const symbols = await api.multiCall({ abi: 'erc20:symbol', calls: whitelistedPools, permitFailure: true })
 

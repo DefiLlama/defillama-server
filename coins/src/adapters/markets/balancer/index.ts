@@ -35,7 +35,7 @@ export function balancer7(timestamp: number = 0) {
     getTokenPrices2("base", timestamp),
     getTokenPrices2("polygon_zkevm", timestamp),
     getTokenPrices2("mode", timestamp),
-    // getTokenPrices2("fraxtal", timestamp),
+    getTokenPrices2("fraxtal", timestamp),
   ]);
 }
 export function linearPools(timestamp: number = 0) {

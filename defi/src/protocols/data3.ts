@@ -51392,6 +51392,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#pancakeswap",
     listedAt: 1723199137
   },
+  {
+    id: "4968",
+    name: "Astra",
+    address: null,
+    symbol: "-",
+    url: "https://star-fleet.io/astra/swap",
+    description: "Astra DEX is a decentralized AMM and P2P Marketplace for users of the AirDAO ecosystem to trade via liquidity pools and direct sale. Astra is designed around a lock-and-reward model to create liquidity for users. Unlike other DEX's, Astra pioneers single-sided liquidity pools where users provide only one currency to a capped LP. Double-sided liquidity pools are also available and are not capped, but offer lower rewards. In return, Astra will reward users with ecosystem tokens like $AMB, $BOND, $KOS, and more. Alongside the first DEX on AirDAO, Astra also launches the $AST token",
+    chain: "AirDAO",
+    logo: `${baseIconsUrl}/astra.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["AirDAO"],
+    oracles: [],
+    forkedFrom: [],
+    module: "Astra/index.js",
+    audit_links: [],
+    twitter: "airdaostarfleet",
+    listedAt: 1723210017
+  },
 ];
 
 export default data3;

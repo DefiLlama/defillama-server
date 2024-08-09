@@ -51369,6 +51369,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bedrock",
     listedAt: 1723145633,
   },
+  {
+    id: "4967",
+    name: "PancakeSwap Options",
+    address: "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+    symbol: "CAKE",
+    url: "https://pancakeswap.stryke.xyz",
+    description: "Options protocol on arbitrum chain",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/pancakeswap-options.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "pancake-stryke/index.js",
+    audit_links: [],
+    twitter: "PancakeSwap",
+    parentProtocol: "parent#pancakeswap",
+    listedAt: 1723199137
+  },
 ];
 
 export default data3;

@@ -51375,7 +51375,7 @@ const data3: Protocol[] = [
     address: "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
     symbol: "CAKE",
     url: "https://pancakeswap.stryke.xyz",
-    description: "Options protocol on arbitrum chain",
+    description: "PancakeSwap CLAMM Options is a novel solution for on-chain options trading. It offers liquidity providers a platform to utilize CLAMM liquidity on PancakeSwap for selling options, enabling them to earn standard trading fees, options premiums, and additional rewards. Traders can leverage this liquidity to trade American-style options on a variety of tokens.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/pancakeswap-options.jpg`,
     audits: "0",

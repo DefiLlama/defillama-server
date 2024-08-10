@@ -897,11 +897,6 @@
       "decimals": "18",
       "symbol": "STONE"
     },
-    "0x3ba89d490ab1c0c9cc2313385b30710e838370a4": {
-      "to": "coingecko#solv-btc",
-      "decimals": "18",
-      "symbol": "SolvBTC"
-    },
     "0x01f0a31698c4d065659b9bdc21b3610292a1c506": {
       "to": "coingecko#wrapped-eeth",
       "decimals": "18",
@@ -1791,11 +1786,6 @@
       "decimals": "18",
       "symbol": "SDAI",
       "to": "coingecko#savings-dai"
-    },
-    "0x2365649f604377ba6472579e8c19facfed13c9dc": {
-      "decimals": "18",
-      "symbol": "SolvBTC.m",
-      "to": "coingecko#solv-btc"
     },
     "0xe4d584ae9b753e549cae66200a6475d2f00705f7": {
       "decimals": "18",
@@ -3648,13 +3638,6 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 18,
       "symbol": "WBTC"
-    }
-  },
-  "core": {
-    "0x346c574C56e1A4aAa8dc88Cda8F7EB12b39947aB": {
-      "decimals": "18",
-      "symbol": "SolvBTC.m",
-      "to": "coingecko#solv-btc"
     }
   },
   "ethereumclassic": {

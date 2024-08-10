@@ -51414,6 +51414,29 @@ const data3: Protocol[] = [
     twitter: "airdaostarfleet",
     listedAt: 1723210017
   },
+  {
+    id: "4969",
+    name: "pSTAKE BTC",
+    address: null,
+    symbol: "-",
+    url: "https://pstake.finance",
+    description: "pSTAKE Finance is a multichain liquid staking protocol for BNB Chain, Solana, Cosmos, and beyond, backed by Binance Labs. Users can securely stake the biggest crypto assets and receive liquid staked tokens (LSTs) called stkTokens that can be used in DeFi to generate additional yield. stkTokens offers one of the highest DeFi yields, thanks to low fees and partnerships with the biggest DeFi ecosystems. pSTAKE Finance helps decentralize networks with its unique stake delegation strategy, powered by an intelligent algorithm based on on-chain decentralization parameters.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/pstake-btc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "pstake-btc/index.js",
+    audit_links: [],
+    twitter: "pStakeFinance",
+    parentProtocol: "parent#pstake-finance",
+    listedAt: 1723210017
+  },
 ];
 
 export default data3;

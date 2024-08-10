@@ -2370,5 +2370,9 @@ export default {
     "metaplex": {
         enabled: true,
         id: "4959"
+    },
+    "umoja": {
+        enabled: true,
+        id: "4963"
     }
 } as AdaptorsConfig

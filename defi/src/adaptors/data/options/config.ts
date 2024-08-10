@@ -109,5 +109,9 @@ export default {
     "jaspervault": {
         enabled: true,
         id: "4630"
+    },
+    "umoja": {
+        enabled: true,
+        id: "4963"
     }
 } as AdaptorsConfig

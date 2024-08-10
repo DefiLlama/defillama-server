@@ -51481,6 +51481,29 @@ const data3: Protocol[] = [
     twitter: "tacowax",
     listedAt: 1723297703
   },
+  {
+    id: "4972",
+    name: "Core Bitcoin Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://core.app/bridge",
+    description: "The Avalanche Bridge™ protocol can be used to transfer BTC or ERC-20s from the Bitcoin or Ethereum networks to the Avalanche® C-Chain and vice versa",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/core-bitcoin-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "avalance-btc/index.js",
+    audit_links: [],
+    twitter: "@avax",
+    listedAt: 1723313207
+  },
+
 ];
 
 export default data3;

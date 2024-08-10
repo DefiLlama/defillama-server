@@ -51489,7 +51489,7 @@ const data3: Protocol[] = [
     url: "https://core.app/bridge",
     description: "The Avalanche Bridge™ protocol can be used to transfer BTC or ERC-20s from the Bitcoin or Ethereum networks to the Avalanche® C-Chain and vice versa",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/core-bitcoin-bridge.jpg`,
+    logo: `${baseIconsUrl}/core-bitcoin-bridge.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

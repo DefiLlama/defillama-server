@@ -13093,18 +13093,18 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   */
   {
     id: "709",
-    name: "pSTAKE Finance",
+    name: "pSTAKE LSD", // previous pSTAKE Finance
     address: "0xfB5c6815cA3AC72Ce9F5006869AE67f18bF77006",
     symbol: "PSTAKE",
     url: "https://pstake.finance",
     description:
       "pSTAKE Finance is a multichain liquid staking protocol for BNB Chain, Solana, Cosmos, and beyond, backed by Binance Labs. Users can securely stake the biggest crypto assets and receive liquid staked tokens (LSTs) called stkTokens that can be used in DeFi to generate additional yield. stkTokens offers one of the highest DeFi yields, thanks to low fees and partnerships with the biggest DeFi ecosystems. pSTAKE Finance helps decentralize networks with its unique stake delegation strategy, powered by an intelligent algorithm based on on-chain decentralization parameters.",
     chain: "Persistence",
-    logo: `${baseIconsUrl}/pstake-finance.png`,
+    logo: `${baseIconsUrl}/pstake-lsd.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "pstake-finance",
-    cmcId: "15996",
+    gecko_id: null,
+    cmcId: null,
     category: "Liquid Staking",
     chains: ["Binance", "Persistence"],
     module: "pstake/index.js",
@@ -13113,8 +13113,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://consensys.net/diligence/audits/private/61fqr5mouh4oq8/",
       "https://github.com/persistenceOne/pStake-auditReports",
     ],
+    parentProtocol: "parent#pstake-finance",
     listedAt: 1635248310,
-    governanceID: ["snapshot:pstakefinance.eth"],
   },
   {
     id: "710",

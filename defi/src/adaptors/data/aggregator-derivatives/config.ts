@@ -2,11 +2,11 @@ import { AdaptorsConfig } from "../types";
 
 export default {
   "logx": {
-    enabled: true,
+    enabled: false,
     id: "3396",
     protocolsData: {
       "logx-aggregator": {
-        enabled: true,
+        enabled: false,
         id: "3396",
       }
     }

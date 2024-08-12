@@ -51588,6 +51588,29 @@ const data3: Protocol[] = [
     github: ["AlphaX-Protocol"],
     listedAt: 1723456160
   },
+  {
+    id: "4976",
+    name: "Firoza Finance",
+    address: null,
+    symbol: "-",
+    url: "https://firoza.finance",
+    description:
+      "Liberty finance and HAQQ network have jointly created Firoza Finance, to enable investment in pools to generate a range of returns with varying risk.",
+    chain: "HAQQ",
+    logo: `${baseIconsUrl}/firoza-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["HAQQ"],
+    oracles: [],
+    forkedFrom: [],
+    module: "firoza-finance/index.js",
+    twitter: "LibFi_io",
+    audit_links: [],
+    listedAt: 1723489129
+  },
 ];
 
 export default data3;

@@ -51564,6 +51564,30 @@ const data3: Protocol[] = [
     github: ["Alien-Worlds"],
     listedAt: 1723454955
   },
+  {
+    id: "4975",
+    name: "AlphaX",
+    address: null,
+    symbol: "-",
+    url: "https://alphax.com/dex",
+    description:
+      "AlphaX DEX provides 100% on-chain trading with decentralized security, self-custody wallet integration, and a permanent NO-KYC policy, ensuring complete privacy. With ultra-fast transaction speeds and access to high-potential assets, AlphaX is a versatile platform for traders looking for flexibility and reliability in their trading journey.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/alphax.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "alphaX-protocol/index.js",
+    twitter: "AlphaX_Finance",
+    audit_links: ["https://github.com/AlphaX-Protocol/AlphaX-Protocol-Contract/blob/master/Audit-Report/AlphaX%20Audit%20final.pdf"],
+    github: ["AlphaX-Protocol"],
+    listedAt: 1723456160
+  },
 ];
 
 export default data3;

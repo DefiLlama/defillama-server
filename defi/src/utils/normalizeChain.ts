@@ -481,13 +481,13 @@ export const chainCoingeckoIds = {
   },
   "Klaytn": {
     geckoId: "klay-token",
-    github: ['klaytn'],
+    github: ['kaiachain'],
     symbol: "KLAY",
     cmcId: "4256",
     categories: ["EVM"],
     chainId: 8217,
-    twitter: "klaytn_official",
-    url: "https://klaytn.foundation/"
+    twitter: "kaiachain",
+    url: "https://kaia.io/"
   },
   "IoTeX": {
     geckoId: "iotex",

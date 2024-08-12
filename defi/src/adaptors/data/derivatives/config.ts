@@ -735,11 +735,11 @@ export default {
         }
     },
     "logx": {
-        enabled: true,
+        enabled: false,
         id: "3396",
         protocolsData: {
             "derivative": {
-                enabled: true,
+                enabled: false,
                 id: "3396",
             }
         }

@@ -434,7 +434,6 @@ async function reyaUSD(timestamp: number = 0, writes: Write[] = []) {
   const usdBal = await api.call({  abi: 'erc20:balanceOf', target: usdc, params: rUSD})
   const supply = await api.call({  abi: 'erc20:totalSupply', target:  rUSD})
   pricesObject[rUSD] = { price: usdBal / supply, underlying: usdc, }
-  console.log(pricesObject)
   return getWrites({ chain, timestamp, pricesObject, projectName: "reya-usd", writes, })
 }
 

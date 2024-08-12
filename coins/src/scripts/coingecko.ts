@@ -625,7 +625,7 @@ async function storeCGCoinMetadatas(coinMetadatas: any) {
         coinType = COIN_TYPES.over100m
       else if (data.usd_market_cap > 1e7 && data.usd_24h_vol > 1e7)
         coinType = COIN_TYPES.over10m
-      else if (data.usd_market_cap > 1e6 && data.usd_24h_vol > 1e6)
+      else if (data.usd_market_cap > 1e6 || data.usd_24h_vol > 1e6)
         coinType = COIN_TYPES.over1m
       data.coinType = coinType
       return data;

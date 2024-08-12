@@ -89,4 +89,5 @@ export default {
   warlord: require("./other"),
   ifil: require("./liquidStaking/ifil"),
   uniV3: require("./markets/uniswap/v3"),
+  meteora: require("./solana/meteora"),
 };

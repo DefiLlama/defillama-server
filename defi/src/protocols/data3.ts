@@ -49989,7 +49989,7 @@ const data3: Protocol[] = [
     name: "Size Credit",
     address: null,
     symbol: "-",
-    url: "https://www.bmx.trade",
+    url: "https://size.credit/",
     description: "Size is a credit marketplace with unified liquidity across maturities.",
     chain: "Base",
     logo: `${baseIconsUrl}/size-credit.jpg`,

@@ -186,6 +186,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     address: "0x43415eB6ff9DB7E26A15b704e7A3eDCe97d31C4e",
   },
+  ETHRDNTUNIV3: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getLpTokenPrice() external view returns (uint256)",
+        target: "0x8096240D997a25f3d11a2354659A16eA3886fcFF",
+      });
+      return rate / 1e8;
+    },
+    chain: "base",
+    underlying: "0x4200000000000000000000000000000000000006",
+    address: "0x8A76639FE8e390Ed16eA88f87BEB46d6A5328254",
+  },
 };
 
 export async function derivs(timestamp: number) {

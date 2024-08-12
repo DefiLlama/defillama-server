@@ -424,6 +424,20 @@ async function kernel(timestamp: number = 0, writes: Write[] = []) {
   return getWrites({ chain, timestamp, pricesObject, projectName: "kelp", writes, })
 }
 
+
+async function reyaUSD(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'reya'
+  const api = await getApi(chain, timestamp)
+  const pricesObject: any = {}
+  const usdc = '0x3B860c0b53f2e8bd5264AA7c3451d41263C933F2'
+  const rUSD = '0xa9f32a851b1800742e47725da54a09a7ef2556a3'
+  const usdBal = await api.call({  abi: 'erc20:balanceOf', target: usdc, params: rUSD})
+  const supply = await api.call({  abi: 'erc20:totalSupply', target:  rUSD})
+  pricesObject[rUSD] = { price: usdBal / supply, underlying: usdc, }
+  console.log(pricesObject)
+  return getWrites({ chain, timestamp, pricesObject, projectName: "reya-usd", writes, })
+}
+
 export const adapters = {
   defiChain,
   shlb,
@@ -452,4 +466,5 @@ export const adapters = {
   warlord,
   opal,
   // kernel,   // price taken from unknownTokensV3 instead
+  reyaUSD,
 }

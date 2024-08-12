@@ -1844,7 +1844,7 @@ export const chainCoingeckoIds = {
     twitter: "WemixNetwork",
     url: "https://www.wemix.com/",
   },
-  "Persistence": {
+  "Persistence One": {
     geckoId: "persistence",
     github: ['persistenceOne'],
     symbol: "XPRT",
@@ -3247,6 +3247,7 @@ chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
 chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
 chainCoingeckoIds["HydraDX"] = chainCoingeckoIds["Hydration"]
 chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
+chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3308,6 +3309,8 @@ export function transformNewChainName(chain: string) {
       return "Hydration"
     case "Ripple":
       return "XRPL"
+    case "Persistence":
+      return "Persistence One"
     default:
       return chain
   }
@@ -3624,7 +3627,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "wemix":
       return useNewChainNames ? "WEMIX3.0" : "WEMIX"
     case "persistence":
-      return "Persistence"
+      return useNewChainNames ? "Persistence One" : "Persistence"
     case "enuls":
       return "ENULS"
     case "orai":

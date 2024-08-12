@@ -1844,7 +1844,7 @@ export const chainCoingeckoIds = {
     twitter: "WemixNetwork",
     url: "https://www.wemix.com/",
   },
-  "Persistence": {
+  "Persistence One": {
     geckoId: "persistence",
     github: ['persistenceOne'],
     symbol: "XPRT",

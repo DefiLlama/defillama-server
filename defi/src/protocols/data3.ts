@@ -50756,8 +50756,8 @@ const data3: Protocol[] = [
   {
     id: "4939",
     name: "MAHA.xyz",
-    address: null,
-    symbol: "-",
+    address: '0x745407c86df8db893011912d3ab28e68b62e49b0',
+    symbol: "MAHA",
     url: "https://maha.xyz/",
     description:
       "MAHA (previously known as MahaDAO) is a community-powered decentralized organization. Our mission is to create a stablecoin that is deeply rooted into the Ether-sphere. With integrations towards LRTs, Lending Protocols and DeFi for growth",
@@ -50765,8 +50765,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/maha.xyz.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "mahadao",
+    cmcId: "8043",
     category: "CDP",
     chains: ["Ethereum"],
     oracles: [],

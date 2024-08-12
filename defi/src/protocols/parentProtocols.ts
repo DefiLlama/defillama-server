@@ -825,8 +825,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "MahaDAO is a community focused DAO focused on building ARTH, a decentralized valuecoin that maintains the purchasing power of it's token. It is designed to appreciate against the US dollar (after accounting for inflation) in the long run whilst remaining relatively stable in the short run.",
     logo: `${baseIconsUrl}/mahadao.png`,
-    gecko_id: "mahadao",
-    cmcId: "8043",
+    gecko_id: null,
+    cmcId: null,
     chains: [],
     twitter: "TheMahaDAO",
     treasury: "mahadao.js",

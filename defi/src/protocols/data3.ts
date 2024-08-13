@@ -24319,7 +24319,7 @@ const data3: Protocol[] = [
   {
     id: "3771",
     name: "PattieSwap",
-    address: "bsc:0x0eE4024E8d5ae9afFCe26f692028407dD2050B7D",
+    address: "bsc:-", // there were issues with the original deployment, better to wait for cg listing
     symbol: "PATTIE",
     url: "https://pattieswap.finance/",
     description:

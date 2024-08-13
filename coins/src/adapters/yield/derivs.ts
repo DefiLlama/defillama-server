@@ -198,6 +198,30 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x4200000000000000000000000000000000000006",
     address: "0x8A76639FE8e390Ed16eA88f87BEB46d6A5328254",
   },
+  USTBL: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getLatestPrice() external view returns (uint256)",
+        target: "0x021289588cd81dC1AC87ea91e91607eEF68303F5",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0xe4880249745eAc5F1eD9d8F7DF844792D560e750",
+  },
+  EUTBL: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getLatestPrice() external view returns (uint256)",
+        target: "0x29503f31B73F0734455942Eb888E13acA1588a4e",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0xa0769f7A8fC65e47dE93797b4e21C073c117Fc80",
+  },
 };
 
 export async function derivs(timestamp: number) {

@@ -8127,7 +8127,7 @@ const data3: Protocol[] = [
     category: "RWA",
     chains: ["Ethereum"],
     module: "openeden-tbill/index.js",
-    twitter: "OpenEden_HQ",
+    twitter: "OpenEden_Labs",
     forkedFrom: [],
     oracles: [],
     audit_links: [

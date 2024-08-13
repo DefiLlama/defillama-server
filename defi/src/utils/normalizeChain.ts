@@ -479,7 +479,7 @@ export const chainCoingeckoIds = {
     twitter: "wavesprotocol",
     url: "https://waves.tech/"
   },
-  "Klaytn": {
+  "Kaia": { // previously Klaytn
     geckoId: "klay-token",
     github: ['kaiachain'],
     symbol: "KLAY",
@@ -3248,6 +3248,7 @@ chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
 chainCoingeckoIds["HydraDX"] = chainCoingeckoIds["Hydration"]
 chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
 chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
+chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3311,6 +3312,8 @@ export function transformNewChainName(chain: string) {
       return "XRPL"
     case "Persistence":
       return "Persistence One"
+    case "Klaytn":
+      return "Kaia"
     default:
       return chain
   }
@@ -3352,6 +3355,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Oasis Sapphire" : "Sapphire"
     case "oasis":
       return useNewChainNames ? "Oasis Emerald" : "Oasis"
+    case "klaytn":
+      return useNewChainNames ? "Kaia" : "Klaytn"
     case "avax":
       return "Avalanche"
     case "xdaiarb":

@@ -26900,7 +26900,7 @@ const data3: Protocol[] = [
     module: "fortunafi/index.js",
     twitter: "_Fortunafi",
     audit_links: ["https://fortunafi.gitbook.io/fortunafi/audits"],
-   // parentProtocol: "parent#fortunafi",
+    // parentProtocol: "parent#fortunafi",
     listedAt: 1701812512,
   },
   {
@@ -50760,7 +50760,7 @@ const data3: Protocol[] = [
   {
     id: "4939",
     name: "MAHA.xyz",
-    address: '0x745407c86df8db893011912d3ab28e68b62e49b0',
+    address: "0x745407c86df8db893011912d3ab28e68b62e49b0",
     symbol: "MAHA",
     url: "https://maha.xyz/",
     description:
@@ -51542,7 +51542,7 @@ const data3: Protocol[] = [
     module: "lore/index.js",
     audit_links: [],
     twitter: "LoreFinance", // this seems super sus, complety empty. Its the same link in their website
-    listedAt: 1723454655
+    listedAt: 1723454655,
   },
   {
     id: "4974",
@@ -51566,7 +51566,7 @@ const data3: Protocol[] = [
     twitter: "AlienWorlds",
     audit_links: ["https://github.com/Alien-Worlds/Security-Audits"],
     github: ["Alien-Worlds"],
-    listedAt: 1723454955
+    listedAt: 1723454955,
   },
   {
     id: "4975",
@@ -51588,9 +51588,11 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "alphaX-protocol/index.js",
     twitter: "AlphaX_Finance",
-    audit_links: ["https://github.com/AlphaX-Protocol/AlphaX-Protocol-Contract/blob/master/Audit-Report/AlphaX%20Audit%20final.pdf"],
+    audit_links: [
+      "https://github.com/AlphaX-Protocol/AlphaX-Protocol-Contract/blob/master/Audit-Report/AlphaX%20Audit%20final.pdf",
+    ],
     github: ["AlphaX-Protocol"],
-    listedAt: 1723456160
+    listedAt: 1723456160,
   },
   {
     id: "4976",
@@ -51613,7 +51615,7 @@ const data3: Protocol[] = [
     module: "firoza-finance/index.js",
     twitter: "LibFi_io",
     audit_links: [],
-    listedAt: 1723489129
+    listedAt: 1723489129,
   },
   {
     id: "4977",
@@ -51636,6 +51638,51 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "GoPlusSecurity",
     audit_links: [],
+  },
+  {
+    id: "4978",
+    name: "Reya Perps DEX",
+    address: null,
+    symbol: "-",
+    url: "https://app.reya.xyz/",
+    description: "Reya Perps DEX is a perpetual futures exchange on the Reya Network",
+    chain: "Reya Network",
+    logo: `${baseIconsUrl}/reya-perps-dex.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Reya Network"],
+    oracles: [],
+    forkedFrom: [],
+    module: "reya-perp/index.js",
+    twitter: "reya_xyz",
+    audit_links: ["https://docs.reya.network/more-resources/technical-resources"],
+    listedAt: 1723560145,
+  },
+  {
+    id: "4979",
+    name: "SunPump",
+    address: null,
+    symbol: "-",
+    url: "https://sunpump.meme/",
+    description: "The First Meme Fair Launch Platform on Tron",
+    chain: "Tron",
+    logo: `${baseIconsUrl}/sunpump.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Tron"],
+    oracles: [],
+    forkedFrom: [],
+    module: "sunpump/index.js",
+    twitter: "defi_sunio",
+    audit_links: [],
+    parentProtocol: "parent#sun",
+    listedAt: 1723560357,
   },
 ];
 

@@ -51707,6 +51707,26 @@ const data3: Protocol[] = [
     github: ["spiko-tech"],
     listedAt: 1723568412,
   },
+  {
+    id: "4981",
+    name: "Photon",
+    address: null,
+    symbol: "-",
+    url: "https://photon-sol.tinyastro.io",
+    description: "Snipe and sell tokens at lightning speed",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/photon.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "tradewithPhoton",
+  },
 ];
 
 export default data3;

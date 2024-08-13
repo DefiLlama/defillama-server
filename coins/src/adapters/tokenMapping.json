@@ -1123,6 +1123,11 @@
       "to": "coingecko#manta-network",
       "decimals": "18",
       "symbol": "MANTA"
+    },
+    "0x73d23f3778a90be8846e172354a115543df2a7e4": {
+      "to": "coingecko#anzen-usdz",
+      "decimals": "18",
+      "symbol": "USDz"
     }
   },
   "beam": {

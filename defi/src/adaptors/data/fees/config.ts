@@ -2378,5 +2378,9 @@ export default {
     "goplus": {
         enabled: true,
         id: "4977"
+    },
+    "photon": {
+        enabled: true,
+        id: "4981"
     }
 } as AdaptorsConfig

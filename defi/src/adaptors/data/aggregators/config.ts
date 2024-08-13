@@ -254,14 +254,9 @@ export default {
     enabled: true,
     id: "4926",
   },
-  "cetus": {
+  "cetus-aggregator": {
+      parentId: "Cetus",
       "enabled": true,
-      "id": "2289",
-      protocolsData: {
-          "cetus-aggregator": {
-              "id": "2289",
-              enabled: true,
-          }
-      }
+      "id": "4958"
   }
 } as AdaptorsConfig;

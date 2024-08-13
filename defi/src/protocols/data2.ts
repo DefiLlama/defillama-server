@@ -25547,8 +25547,7 @@ const data2: Protocol[] = [
     category: "Decentralized Stablecoin",
     chains: ["Cardano"],
     oraclesByChain: {
-      cardano: ["COTI's Oracle"],
-      milkomeda: ["Aggr3Oracle"],
+      cardano: ["COTI's Oracle"]
     },
     forkedFrom: [],
     module: "djed-alliance/index.js",

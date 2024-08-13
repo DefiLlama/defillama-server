@@ -13,6 +13,7 @@ export default {
   ...balancer.adapters,
   ...others.adapters,
   stobox: require("./rwa/stobox"),
+  alex: require("./markets/alex"),
   seamless: require("./other/seamless"),
   pyth: require("./oracles/pyth"),
   unknownTokensV3: require("./other/unknownTokensV3"),
@@ -89,4 +90,5 @@ export default {
   warlord: require("./other"),
   ifil: require("./liquidStaking/ifil"),
   uniV3: require("./markets/uniswap/v3"),
+  meteora: require("./solana/meteora"),
 };

@@ -13,7 +13,7 @@ process.on("unhandledRejection", (err) => {
 import arbitrum from "./arbitrum";
 import avax from "./avax";
 // import bsc from "./bsc";
-import brc20 from "./brc20";
+// import brc20 from "./brc20";
 import fantom from "./fantom";
 import era from "./era";
 import gasTokens from "./gasTokens";
@@ -79,7 +79,7 @@ export const bridges = [
   // anyswap,
   arbitrum,
   avax,
-  brc20,
+  // brc20,
   //bsc,
   fantom,
   era,

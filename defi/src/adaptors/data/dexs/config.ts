@@ -1043,6 +1043,7 @@ export default {
         "id": "2299"
     },
     "cetus": {
+        parentId: "Cetus",
         "enabled": true,
         "id": "2289",
         protocolsData: {
@@ -1996,6 +1997,13 @@ export default {
                 "id": "3365",
                 "enabled": true,
             }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1723075200": true,
+                "1722988800": true,
+                "1722902400": true,
+            },
         }
     },
     "meridian-trade": {

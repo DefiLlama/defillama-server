@@ -2370,5 +2370,17 @@ export default {
     "metaplex": {
         enabled: true,
         id: "4959"
+    },
+    "umoja": {
+        enabled: true,
+        id: "4963"
+    },
+    "goplus": {
+        enabled: true,
+        id: "4977"
+    },
+    "photon": {
+        enabled: true,
+        id: "4981"
     }
 } as AdaptorsConfig

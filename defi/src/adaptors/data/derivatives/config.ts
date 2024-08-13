@@ -735,11 +735,11 @@ export default {
         }
     },
     "logx": {
-        enabled: true,
+        enabled: false,
         id: "3396",
         protocolsData: {
             "derivative": {
-                enabled: true,
+                enabled: false,
                 id: "3396",
             }
         }
@@ -809,5 +809,15 @@ export default {
         parentId: "ApeX Protocol",
         enabled: true,
         id: "4822"
+    },
+    "edgeX": {
+        enabled: true,
+        id: "4954",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1723075200": true,
+                "1722988800": true,
+            },
+        }
     }
 } as AdaptorsConfig

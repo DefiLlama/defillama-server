@@ -26882,7 +26882,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3886",
-    name: "Fortunafi fBill",
+    name: "Fortunafi", // previous Fortunafi fBill
     address: null,
     symbol: "-",
     url: "https://fortunafi.com/",
@@ -26897,10 +26897,10 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     chains: ["Canto"],
-    module: "fortunafi-fbill/index.js",
+    module: "fortunafi/index.js",
     twitter: "_Fortunafi",
     audit_links: ["https://fortunafi.gitbook.io/fortunafi/audits"],
-    parentProtocol: "parent#fortunafi",
+   // parentProtocol: "parent#fortunafi",
     listedAt: 1701812512,
   },
   {
@@ -27040,6 +27040,7 @@ const data3: Protocol[] = [
     rugged: true,
     deadUrl: true,
   },
+  /*
   {
     id: "3893",
     name: "Fortunafi ifBill",
@@ -27063,6 +27064,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#fortunafi",
     listedAt: 1701993423,
   },
+  */
   {
     id: "3894",
     name: "dVOL",

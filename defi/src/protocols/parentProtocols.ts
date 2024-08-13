@@ -3340,6 +3340,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "mySwapxyz",
   },
+  /*
   {
     id: "parent#fortunafi",
     name: "Fortunafi",
@@ -3351,6 +3352,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "_Fortunafi",
   },
+  */
   {
     id: "parent#zebra",
     name: "Zebra",

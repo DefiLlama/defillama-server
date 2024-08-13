@@ -117,6 +117,16 @@
     }
   },
   "polygon": {
+    "0xe4880249745eac5f1ed9d8f7df844792d560e750": {
+      "decimals": "5",
+      "symbol": "USTBL",
+      "to": "asset#ethereum:0xe4880249745eac5f1ed9d8f7df844792d560e750"
+    },
+    "0xa0769f7A8fC65e47dE93797b4e21C073c117Fc80": {
+      "decimals": "5",
+      "symbol": "EUTBL",
+      "to": "asset#ethereum:0xa0769f7a8fc65e47de93797b4e21c073c117fc80"
+    },
     "0x2297aebd383787a160dd0d9f71508148769342e3": {
       "decimals": "8",
       "symbol": "BTC.b",

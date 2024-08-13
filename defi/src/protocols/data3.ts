@@ -39269,7 +39269,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#ether-fi",
     listedAt: 1712171943,
     tokensExcludedFromParent: {
-      Ethereum: ["EETH"],
+      Ethereum: ["EETH", "weETH"],
     },
   },
   {

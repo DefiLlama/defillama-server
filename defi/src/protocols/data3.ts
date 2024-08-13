@@ -15870,7 +15870,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.logx.trade",
-    description: "Aggregator of Perp DEXes, for Best Execution of Perps.",
+    description: "Layer 2 Consumer Super App",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/logx.jpg`,
     audits: "0",
@@ -43172,6 +43172,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#vanillaswap",
     listedAt: 1715689629,
   },
+  /*
   {
     id: "4602",
     name: "vfat.io",
@@ -43200,6 +43201,7 @@ const data3: Protocol[] = [
     github: ["vfat-io"],
     listedAt: 1715694889,
   },
+  */
   {
     id: "4603",
     name: "Ceto Swap",

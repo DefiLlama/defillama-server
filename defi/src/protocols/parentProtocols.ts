@@ -1524,7 +1524,7 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "maia-dao.js",
     governanceID: ["snapshot:maiadao.eth"],
     twitter: "MaiaDAOEco",
-    github: ["MaiaDAO"],
+    github: ["MaiaDAO", "Maia-DAO"],
   },
   {
     id: "parent#thena",

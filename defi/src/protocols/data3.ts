@@ -15870,7 +15870,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.logx.trade",
-    description: "Aggregator of Perp DEXes, for Best Execution of Perps.",
+    description: "Layer 2 Consumer Super App",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/logx.jpg`,
     audits: "0",

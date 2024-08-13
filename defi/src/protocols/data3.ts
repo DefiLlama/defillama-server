@@ -51613,6 +51613,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1723489129
   },
+  {
+    id: "4977",
+    name: "GoPlus Security",
+    address: null,
+    symbol: "-",
+    url: "https://gopluslabs.io",
+    description:
+      "GoPlus Network is an open, permissionless and user-driven Modular User Security Layer for Web3. Adaptable and designed to seamlessly integrate with any blockchain, it makes chains easy to enhance user safety to protect their users.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/goplus-security.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "GoPlusSecurity",
+    audit_links: [],
+  },
 ];
 
 export default data3;

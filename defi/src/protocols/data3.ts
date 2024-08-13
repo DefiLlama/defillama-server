@@ -51684,6 +51684,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#sun",
     listedAt: 1723560357,
   },
+  {
+    id: "4980",
+    name: "Spiko",
+    address: null,
+    symbol: "-",
+    url: "https://www.spiko.xyz/",
+    description: "Spiko USTBL / EUTBL are Tokenized Money Market Funds regulated by the French Financial Markets Authority that invest in US T-Bills / Eurozone T-Bills",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/spiko.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Polygon", "Ethereum"],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/11182
+    forkedFrom: [],
+    module: "spiko/index.js",
+    twitter: "Spiko_finance",
+    audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/2023-10-spiko-securityreview.pdf"],
+    github: ["spiko-tech"],
+    listedAt: 1723568412,
+  },
 ];
 
 export default data3;

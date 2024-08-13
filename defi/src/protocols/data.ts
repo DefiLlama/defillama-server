@@ -7048,7 +7048,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Tron"],
     module: "sun/index.js",
-    twitter: "defi_sunio",
+    twitter: "sunpumpmeme",
     audit_links: ["https://sun.io/docs/audit-report-sun_en.pdf"],
     parentProtocol: "parent#sun",
   },

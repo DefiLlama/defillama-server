@@ -51679,7 +51679,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "sunpump/index.js",
-    twitter: "defi_sunio",
+    twitter: "sunpumpmeme",
     audit_links: [],
     parentProtocol: "parent#sun",
     listedAt: 1723560357,

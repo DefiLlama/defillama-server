@@ -432,6 +432,16 @@
     }
   },
   "stacks": {
+    "SP102V8P0F7JX67ARQ77WEA3D3CFB5XW39REDT0AM.token-wstx": {
+      "decimals": "6",
+      "symbol": "WSTX",
+      "to": "coingecko#blockstack"
+    },
+    "SP102V8P0F7JX67ARQ77WEA3D3CFB5XW39REDT0AM.token-wstx-v2": {
+      "decimals": "8",
+      "symbol": "WSTX",
+      "to": "coingecko#blockstack"
+    },
     "sp2c2yfp12ajzb4mabjbaj55xecvs7e4pmmz89yzr.arkadiko-token::diko": {
       "decimals": "6",
       "symbol": "DIKO",

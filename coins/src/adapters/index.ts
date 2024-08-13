@@ -13,6 +13,7 @@ export default {
   ...balancer.adapters,
   ...others.adapters,
   stobox: require("./rwa/stobox"),
+  alex: require("./markets/alex"),
   seamless: require("./other/seamless"),
   pyth: require("./oracles/pyth"),
   unknownTokensV3: require("./other/unknownTokensV3"),

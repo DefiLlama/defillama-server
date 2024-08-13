@@ -75,7 +75,11 @@ async function fetchDBData(
   await Promise.all(promises);
   return response;
 }
-function calcPercentages(response: any, timestamps: number[]) {
+function calcPercentages(
+  response: any,
+  timestamps: number[],
+  lookForward: boolean,
+) {
   let results = {} as PriceChangeResponse;
 
   Object.keys(response).map((c) => {
@@ -84,7 +88,7 @@ function calcPercentages(response: any, timestamps: number[]) {
     data.sort((a: any, b: any) => a.timestamp < b.timestamp);
     const [{ price: p0, timestamp: t0 }, { price: p1, timestamp: t1 }] = data;
     const priceChange = p1 - p0;
-    const timeChangeActual = t1 - t0;
+    const timeChangeActual = lookForward ? t1 - t0 : t0 - t1;
     const timeChangeRequested = timestamps[1] - timestamps[0];
 
     const requestedActualRatio = Math.abs(
@@ -120,7 +124,11 @@ const handler = async (event: any): Promise<IResponse> => {
   );
   return successResponse(
     {
-      coins: calcPercentages(response, timestamps),
+      coins: calcPercentages(
+        response,
+        timestamps,
+        params.lookForward == "true",
+      ),
     },
     3600,
   ); // 1 hour cache

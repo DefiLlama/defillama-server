@@ -2374,5 +2374,9 @@ export default {
     "umoja": {
         enabled: true,
         id: "4963"
+    },
+    "goplus": {
+        enabled: true,
+        id: "4977"
     }
 } as AdaptorsConfig

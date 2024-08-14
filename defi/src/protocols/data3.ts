@@ -51793,6 +51793,27 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1723573917
   },
+  {
+    id: "4986",
+    name: "BunnyFi",
+    address: null,
+    symbol: "-",
+    url: "https://bunnyfi.network/#",
+    description: "BunnyFi is a cross-chain interoperability protocol, providing high-performance support for high-frequency bridging.",
+    chain: "zkLink Nova",
+    logo: `${baseIconsUrl}/bunnyfi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["zkLink Nova"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "BunnyfiLabs",
+    audit_links: [],
+  },
 ];
 
 export default data3;

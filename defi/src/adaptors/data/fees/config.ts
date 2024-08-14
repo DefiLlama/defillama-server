@@ -2387,5 +2387,9 @@ export default {
         parentId: "Factor",
         enabled: true,
         id: "3298"
+    },
+    "dexscreener": {
+        enabled: true,
+        id: "4990"
     }
 } as AdaptorsConfig

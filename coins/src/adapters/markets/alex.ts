@@ -26,7 +26,7 @@ async function getTokenPrices(timestamp: number) {
     if (!price) return;
     if (baseToken) {
       addToDBWritesList(writes, chain, baseToken, price, baseDecimals, baseSymbol, timestamp, 'alex', 0.9)
-      addToDBWritesList(writes, chain, token, undefined, decimals, symbol, timestamp, 'alex', 0.9, 'stacks:' + baseToken)
+      addToDBWritesList(writes, chain, token, undefined, decimals, symbol, timestamp, 'alex', 0.9, 'asset#stacks:' + baseToken)
     } else
       addToDBWritesList(writes, chain, token, price, decimals, symbol, timestamp, 'alex', 0.9)
   })

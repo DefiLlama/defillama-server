@@ -47,7 +47,7 @@ async function main() {
 
   const lTable: any = []
   resultsWithoutDuplicates.forEach(i => {
-    lTable[i.PK] = { symbol: i.symbol, price: i.price, decimals: i.decimals, PK: i.PK }
+    lTable[i.PK] = { symbol: i.symbol, price: i.price ?? i.redirect, decimals: i.decimals, PK: i.PK }
   })
   /* console.log(`==== Example results ====`);
   const indexesToLog = selectRandom(resultsWithoutDuplicates.length);

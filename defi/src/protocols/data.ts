@@ -8714,7 +8714,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/centrifuge.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "wrapped-centrifuge",
+    gecko_id: "centrifuge",
     cmcId: "6748",
     category: "RWA Lending",
     chains: ["Ethereum"],

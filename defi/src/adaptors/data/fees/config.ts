@@ -2391,5 +2391,10 @@ export default {
     "dexscreener": {
         enabled: true,
         id: "4990"
+    },
+    "kamino-lending": {
+        parentId: "Kamino",
+        enabled: true,
+        id: "3770"
     }
 } as AdaptorsConfig

@@ -2382,5 +2382,10 @@ export default {
     "photon": {
         enabled: true,
         id: "4981"
+    },
+    "factor": {
+        parentId: "Factor",
+        enabled: true,
+        id: "3298"
     }
 } as AdaptorsConfig

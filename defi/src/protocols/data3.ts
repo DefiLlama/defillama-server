@@ -51641,11 +51641,11 @@ const data3: Protocol[] = [
   },
   {
     id: "4978",
-    name: "Reya Perps DEX",
+    name: "Reya DEX",
     address: null,
     symbol: "-",
     url: "https://app.reya.xyz/",
-    description: "Reya Perps DEX is a perpetual futures exchange on the Reya Network",
+    description: "Reya DEX is a perpetual futures exchange on the Reya Network",
     chain: "Reya Network",
     logo: `${baseIconsUrl}/reya-perps-dex.png`,
     audits: "2",

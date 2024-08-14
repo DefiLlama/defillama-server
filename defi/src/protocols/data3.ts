@@ -11380,7 +11380,7 @@ const data3: Protocol[] = [
     url: "https://v2.metastreet.xyz/borrow",
     description: `MetaStreet v2, or the "Automatic Tranche Maker" (ATM) is a new way of lending and borrowing money using NFTs`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/metastreet.png`,
+    logo: `${baseIconsUrl}/metastreet-v2.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

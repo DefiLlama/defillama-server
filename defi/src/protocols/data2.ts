@@ -25705,7 +25705,7 @@ const data2: Protocol[] = [
     description: "Decentralized interest rate curves for lending and borrowing on Cardano",
     chain: "Cardano",
     logo: `${baseIconsUrl}/liqwid.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "liqwid-finance",
     cmcId: "18774",
@@ -25715,6 +25715,7 @@ const data2: Protocol[] = [
     twitter: "liqwidfinance",
     oracles: [],
     forkedFrom: [],
+    audit_links: ["https://github.com/vacuumlabs/audits/blob/master/reports/liqwid-app-v1.0.pdf"],
     listedAt: 1675383083,
   },
   {

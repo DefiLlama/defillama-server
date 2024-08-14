@@ -51904,6 +51904,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1723643829
   },
+  {
+    id: "4990",
+    name: "DEX Screener",
+    address: null,
+    symbol: "-",
+    url: "https://dexscreener.com",
+    description: "Realtime price charts and trading history on DEXes across Ethereum, BSC, Polygon, Avalanche, Fantom, Harmony, Cronos, Arbitrum, Optimism and more.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/dex-screener.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum", "Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "dexscreener",
+    audit_links: [],
+  },
+
 ];
 
 export default data3;

@@ -14918,7 +14918,7 @@ const data2: Protocol[] = [
     description:
       "MetaStreet is a liquidity scaling protocol for NFT credit markets. MetaStreet's primary product is a capital vault that enables secondary market liquidity for NFT-backed notes. Participants can deposit capital in order to earn yield from diversified portfolios of NFT-backed notes",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/metastreet.png`,
+    logo: `${baseIconsUrl}/metastreet-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

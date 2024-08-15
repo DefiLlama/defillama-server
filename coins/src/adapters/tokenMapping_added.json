@@ -7988,7 +7988,7 @@
     },
     "0x5B1Fb849f1F76217246B8AAAC053b5C7b15b7dc3": {
       "decimals": "18",
-      "symbol": "solvVBTC",
+      "symbol": "SolvBTC.b",
       "to": "coingecko#solv-btc"
     },
     "0x7a6888c85edba8e38f6c7e0485212da602761c08": {

@@ -431,13 +431,29 @@ async function reyaUSD(timestamp: number = 0, writes: Write[] = []) {
   const pricesObject: any = {}
   const usdc = '0x3B860c0b53f2e8bd5264AA7c3451d41263C933F2'
   const rUSD = '0xa9f32a851b1800742e47725da54a09a7ef2556a3'
-  const usdBal = await api.call({  abi: 'erc20:balanceOf', target: usdc, params: rUSD})
-  const supply = await api.call({  abi: 'erc20:totalSupply', target:  rUSD})
+  const usdBal = await api.call({ abi: 'erc20:balanceOf', target: usdc, params: rUSD })
+  const supply = await api.call({ abi: 'erc20:totalSupply', target: rUSD })
   pricesObject[rUSD] = { price: usdBal / supply, underlying: usdc, }
   return getWrites({ chain, timestamp, pricesObject, projectName: "reya-usd", writes, })
 }
 
+async function dcWBTC(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'ethereum'
+  const api = await getApi(chain, timestamp)
+  const dcWBTC = '0x971e5b5D4baa5607863f3748FeBf287C7bf82618'
+  const underlying = await api.call({ abi: 'address:asset', target: dcWBTC })
+  const supply = await api.call({ abi: 'erc20:totalSupply', target: dcWBTC })
+  const bal = await api.call({ abi: 'erc20:balanceOf', target: underlying, params: dcWBTC })
+  const [decimals, uDecimals] = await api.multiCall({ abi: 'erc20:decimals', calls: [dcWBTC, underlying] })
+  const pricesObject = {
+    [dcWBTC]: { price: bal * 10 ** (uDecimals - decimals) / supply, underlying, },
+  }
+  return getWrites({ chain, timestamp, pricesObject, projectName: "dc-wbtc", writes, })
+}
+
+
 export const adapters = {
+  dcWBTC,
   defiChain,
   shlb,
   metronome,

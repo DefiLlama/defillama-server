@@ -9113,12 +9113,12 @@
       "to": "coingecko#usd-coin"
     },
     "0x0cbe0dF132a6c6B4a2974Fa1b7Fb953CF0Cc798a": {
-      "decimals": "18",
+      "decimals": "6",
       "symbol": "USDC.ETH",
       "to": "coingecko#usd-coin"
     },
     "0x7c8dDa80bbBE1254a7aACf3219EBe1481c6E01d7": {
-      "decimals": "18",
+      "decimals": "6",
       "symbol": "USDT.ETH",
       "to": "coingecko#tether"
     },
@@ -9143,7 +9143,7 @@
       "to": "coingecko#zetaearn-staked-zeta"
     },
     "0x13A0c5930C028511Dc02665E7285134B6d11A5f4": {
-      "decimals": "18",
+      "decimals": "8",
       "symbol": "BTC.BTC",
       "to": "coingecko#bitcoin"
     },
@@ -9163,12 +9163,12 @@
       "to": "coingecko#dai"
     },
     "0xdbfF6471a79E5374d771922F2194eccc42210B9F": {
-      "decimals": "8",
+      "decimals": "6",
       "symbol": "USDT.POL",
       "to": "coingecko#tether"
     },
     "0xfC9201f4116aE6b054722E10b98D904829b469c3": {
-      "decimals": "8",
+      "decimals": "6",
       "symbol": "USDC.POL",
       "to": "coingecko#usd-coin"
     },

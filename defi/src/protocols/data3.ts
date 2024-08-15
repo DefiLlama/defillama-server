@@ -51971,6 +51971,30 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1723720581
   },
+  {
+    id: "4993",
+    name: "Drop",
+    address: null,
+    symbol: "-",
+    assetToken: "dATOM",
+    url: "https://drop.money/",
+    description: "Drop is a liquid staking protocol for Interchain assets and a member of the Lido Alliance. Drop is on a mission to strengthen the economic viability of sovereign blockchain economies by transforming stagnant, frozen capital into flowing streams of opportunity",
+    chain: "Neutron",
+    logo: `${baseIconsUrl}/drop.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Neutron"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "drop/index.js",
+    twitter: "Dropdotmoney",
+    audit_links: ["https://github.com/oak-security/audit-reports/tree/main/Drop"],
+    github: ["hadronlabs-org"],
+    listedAt: 1723741021
+  },
 ];
 
 export default data3;

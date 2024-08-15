@@ -474,6 +474,11 @@
     }
   },
   "arbitrum": {
+    "0xAed882F117b78034829E2cfFA11206706837B1b1": {
+      "decimals": "18",
+      "symbol": "WQ",
+      "to": "coingecko#q-protocol"
+    },
     "0xf42Ae1D54fd613C9bb14810b0588FaAa09a426cA": {
       "decimals": "18",
       "symbol": "esGMX",
@@ -613,6 +618,11 @@
     }
   },
   "optimism": {
+    "0xAed882F117b78034829E2cfFA11206706837B1b1": {
+      "decimals": "18",
+      "symbol": "WQ",
+      "to": "coingecko#q-protocol"
+    },
     "0x87eEE96D50Fb761AD85B1c982d28A042169d61b1": {
       "decimals": "18",
       "symbol": "wrsETH",
@@ -2935,6 +2945,16 @@
     }
   },
   "q": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "Q",
+      "to": "coingecko#q-protocol"
+    },
+    "0xd07178e3eCbC78De110Df84fe1A979D5f349784a": {
+      "decimals": "18",
+      "symbol": "WQ",
+      "to": "coingecko#q-protocol"
+    },
     "0xde397e6C442A3E697367DecBF0d50733dc916b79": {
       "decimals": "8",
       "symbol": "WBTC",

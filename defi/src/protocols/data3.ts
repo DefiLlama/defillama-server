@@ -51971,6 +51971,30 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1723720581
   },
+  {
+    id: "4993",
+    name: "Lulo",
+    address: "solana:FL3X2pRsQ9zHENpZSKDRREtccwJuei8yg9fwDu9UN69Q",
+    symbol: "Lulo",
+    url: "https://lulo.fi",
+    description: "Lulo is a decentralized lending aggregator, which automatically optimizes users deposits by migrating their deposits to the lending pool with the best yields, while allowing for personalized risk settings",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/lulo.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "lulo/index.js",
+    twitter: "uselulo",
+    audit_links: [
+      "https://docs.lulo.fi/audits"
+    ],
+    listedAt: 1723728266
+  },
 ];
 
 export default data3;

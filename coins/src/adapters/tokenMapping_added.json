@@ -9163,12 +9163,12 @@
       "to": "coingecko#dai"
     },
     "0xdbfF6471a79E5374d771922F2194eccc42210B9F": {
-      "decimals": "18",
+      "decimals": "8",
       "symbol": "USDT.POL",
       "to": "coingecko#tether"
     },
     "0xfC9201f4116aE6b054722E10b98D904829b469c3": {
-      "decimals": "18",
+      "decimals": "8",
       "symbol": "USDC.POL",
       "to": "coingecko#usd-coin"
     }

@@ -9171,6 +9171,16 @@
       "decimals": "8",
       "symbol": "USDC.POL",
       "to": "coingecko#usd-coin"
+    },
+    "0x236b0de675cc8f46ae186897fccefe3370c9eded": {
+      "decimals": "18",
+      "symbol": "PEPE.ETH",
+      "to": "coingecko#pepe"
+    },
+    "0x777915d031d1e8144c90d025c594b3b8bf07a08d": {
+      "decimals": "18",
+      "symbol": "SHIB.ETH",
+      "to": "coingecko#shiba-inu"
     }
   },
   "fraxtal": {

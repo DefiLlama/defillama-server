@@ -3921,7 +3921,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Saakuru"
     case "reya":
       return "Reya Network"
-    case "zkcro":
+    case "cronos_zkevm":
       return "Cronos zkEVM"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

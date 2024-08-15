@@ -9151,6 +9151,26 @@
       "decimals": "18",
       "symbol": "PUFETH",
       "to": "coingecko#pufeth"
+    },
+    "0xADF73ebA3Ebaa7254E859549A44c74eF7cff7501": {
+      "decimals": "18",
+      "symbol": "POL",
+      "to": "coingecko#polygon-ecosystem-token"
+    },
+    "0xcC683A782f4B30c138787CB5576a86AF66fdc31d": {
+      "decimals": "18",
+      "symbol": "DAI.ETH",
+      "to": "coingecko#dai"
+    },
+    "0xdbfF6471a79E5374d771922F2194eccc42210B9F": {
+      "decimals": "18",
+      "symbol": "USDT.POL",
+      "to": "coingecko#tether"
+    },
+    "0xfC9201f4116aE6b054722E10b98D904829b469c3": {
+      "decimals": "18",
+      "symbol": "USDC.POL",
+      "to": "coingecko#usd-coin"
     }
   },
   "fraxtal": {

@@ -16888,7 +16888,7 @@ const data3: Protocol[] = [
   {
     id: "3456",
     name: "MARSWAP",
-    address: "cronos_zkevm:0x4bE2b2C45b432BA362f198c08094017b61E3BDc6",
+    address: "cronos_zkevm:0x6855D4D4631EaAB995785F4D863813047c24A519",
     symbol: "MSWAP",
     url: "https://zk.marswap.exchange/",
     description: "MultiChain Dex & DeFi Platform",

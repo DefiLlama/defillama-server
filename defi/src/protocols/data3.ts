@@ -51949,7 +51949,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#swell",
     listedAt: 1723673885
   },
-
+  {
+    id: "4992",
+    name: "Paxe Protocol",
+    address: "bsc:0xd2a3eec06719d5ac66248003b5488e02165dd2fa",
+    symbol: "PAXE",
+    url: "https://www.paxe.io",
+    description: "PAXE is a cutting-edge, multi-chain Native Yield portal designed to revolutionize the way users earn yields in the decentralized finance (DeFi) space. By seamlessly integrating with various blockchain networks, PAXE offers a unified platform for depositing and staking tokens across multiple farms, maximizing yield generation and providing unparalleled investment opportunities.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/paxe-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Binance"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "paxe/index.js",
+    twitter: "Paxe_fi",
+    audit_links: [],
+    listedAt: 1723720581
+  },
 ];
 
 export default data3;

@@ -51935,17 +51935,20 @@ const data3: Protocol[] = [
     description: "An automated vault that restakes WBTC into restaking protocols like Symbiotic (Karak and Eigenlayer coming soon) to generate yield and secure BTCFi",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/swell-btc-lrt.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Liquid Restaking",
     chains: ["Ethereum"],
     oracles: [], 
     forkedFrom: [],
     module: "swell-swbtc/index.js",
     twitter: "swellnetworkio",
-    audit_links: [],
+    audit_links: [
+      "https://github.com/SwellNetwork/v3-core-public/blob/9765443eedc0f32f3b8ca6e11979a77e84509f25/Audit%20Reports/BTC%20LRT/ChainSecurity_Swell_swBTC_audit.pdf",
+      "https://github.com/SwellNetwork/v3-core-public/blob/9765443eedc0f32f3b8ca6e11979a77e84509f25/Audit%20Reports/BTC%20LRT/NM_0273_SWELL_BTC_LRT.pdf"
+    ],
     parentProtocol: "parent#swell",
     listedAt: 1723673885
   },

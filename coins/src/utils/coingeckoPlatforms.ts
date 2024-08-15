@@ -35,7 +35,7 @@ function lowercase(address: string, chain: string) {
 
 export async function iterateOverPlatforms(
   coin: Coin,
-  iterator: (PK: string, tokenAddress: string, chain: string) => Promise<void>,
+  iterator: (PK: string) => Promise<void>,
   coinPlatformData: any,
 ) {
   const platforms = coin.platforms as StringObject;
@@ -50,7 +50,7 @@ export async function iterateOverPlatforms(
           chain + ":" + lowercase(platforms[platform]!, chain).trim();
         const PK = `asset#${address}`;
         if (!coinPlatformData[PK]) {
-          await iterator(PK, platforms[platform]!, chain);
+          await iterator(PK);
         }
       } catch (e) {
         console.error(coin, platform, e);

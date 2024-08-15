@@ -2885,5 +2885,9 @@ export default {
     "saturnswap": {
         enabled: true,
         id: "4946"
+    },
+    "astrolescent": {
+        enabled: true,
+        id: "3897"
     }
 } as AdaptorsConfig

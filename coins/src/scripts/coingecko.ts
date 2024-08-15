@@ -11,6 +11,8 @@ import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
 import { batchReadPostgres, getRedisConnection } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
+import { decimals, symbol } from "@defillama/sdk/build/erc20";
+import { Connection, PublicKey } from "@solana/web3.js";
 
 const staleMargin = 6 * 60 * 60;
 
@@ -101,6 +103,61 @@ async function cacheSolanaTokens() {
     solanaTokens = _solanaTokens.then((r) => r.json());
   }
   return solanaTokens;
+}
+
+let solanaConnection: any;
+async function getSymbolAndDecimals(
+  tokenAddress: string,
+  chain: string,
+  coingeckoSymbol: string,
+): Promise<{ symbol: string; decimals: number } | undefined> {
+  if (chain === "solana") {
+    const token = ((await solanaTokens).tokens as any[]).find(
+      (t) => t.address === tokenAddress,
+    );
+    if (token === undefined) {
+      if (!solanaConnection)
+        solanaConnection = new Connection(
+          process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
+        );
+      const decimalsQuery = await solanaConnection.getParsedAccountInfo(
+        new PublicKey(tokenAddress),
+      );
+      const decimals = (decimalsQuery.value?.data as any)?.parsed?.info
+        ?.decimals;
+      if (typeof decimals !== "number") {
+        // return;
+        throw new Error(
+          `Token ${chain}:${tokenAddress} not found in solana token list`,
+        );
+      }
+      return {
+        symbol: coingeckoSymbol.toUpperCase(),
+        decimals: decimals,
+      };
+    }
+    return {
+      symbol: token.symbol,
+      decimals: Number(token.decimals),
+    };
+  } else if (!tokenAddress.startsWith(`0x`)) {
+    return;
+    // throw new Error(
+    //   `Token ${chain}:${tokenAddress} is not on solana or EVM so we cant get token data yet`,
+    // );
+  } else {
+    try {
+      return {
+        symbol: (await symbol(tokenAddress, chain as any)).output,
+        decimals: Number((await decimals(tokenAddress, chain as any)).output),
+      };
+    } catch (e) {
+      return;
+      // throw new Error(
+      //   `ERC20 methods aren't working for token ${chain}:${tokenAddress}`,
+      // );
+    }
+  }
 }
 
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
@@ -227,10 +284,17 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       iterateOverPlatforms(
         coin,
         async (PK) => {
-          if (coinPlatformData[PK]?.confidence > 0.99) return;
+          const platformData = coinPlatformData[PK];
+          if (platformData?.confidence > 0.99) return;
 
           const created = getCurrentUnixTimestamp();
-          const { decimals, symbol } = coinPlatformData[PK] as any;
+          const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
+          const address = PK.substring(PK.indexOf(":") + 1);
+          const { decimals, symbol } =
+            "decimals" in platformData && "symbol" in platformData
+              ? (coinPlatformData[PK] as any)
+              : getSymbolAndDecimals(chain, address, coin.symbol);
+
           if (decimals == undefined) return;
 
           if (!pricesAndMcaps[cgPK(coin.id)]) {

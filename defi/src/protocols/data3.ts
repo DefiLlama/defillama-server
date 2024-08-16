@@ -51582,7 +51582,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Ethereum", "Arbitrum"],
     oracles: [],
     forkedFrom: [],
@@ -52092,7 +52092,7 @@ const data3: Protocol[] = [
     listedAt: 1723825615
   },
   {
-    id: "4997",
+    id: "4998",
     name: "Dexalot Bridge",
     address: "avax:0x093783055f9047c2bff99c4e414501f8a147bc69",
     symbol: "ALOT",

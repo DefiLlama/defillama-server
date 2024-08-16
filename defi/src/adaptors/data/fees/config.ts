@@ -2396,5 +2396,9 @@ export default {
         parentId: "Kamino",
         enabled: true,
         id: "3770"
+    },
+    "ston": {
+        enabled: true,
+        id: "2337"
     }
 } as AdaptorsConfig

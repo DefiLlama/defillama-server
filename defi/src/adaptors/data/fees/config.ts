@@ -2400,5 +2400,9 @@ export default {
     "ston": {
         enabled: true,
         id: "2337"
+    },
+    "moonwell": {
+        enabled: true,
+        id: "1853"
     }
 } as AdaptorsConfig

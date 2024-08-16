@@ -52068,6 +52068,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#jupiter",
     listedAt: 1723799951
   },
+  {
+    id: "4997",
+    name: "Arrland",
+    address: "polygon:0x14E5386f47466A463f85D151653E1736c0c50Fc3",
+    symbol: "RUM",
+    url: "https://arrland.com/",
+    description: "Pirates of the Arrland is a Play2Earn competetive 3D game project combining DeFi and on-chain farming.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/arrland.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Polygon"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "arrland/index.js",
+    twitter: "ArrlandGame",
+    audit_links: [],
+    github: ["arrland"],
+    listedAt: 1723825615
+  },
 ];
 
 export default data3;

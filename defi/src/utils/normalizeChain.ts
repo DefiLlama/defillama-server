@@ -3227,6 +3227,20 @@ export const chainCoingeckoIds = {
     twitter: "cronos_chain",
     chainId: 388
   },
+  "Dexalot": {
+    geckoId: "dexalot",
+    symbol: "ALOT",
+    cmcId: "18732",
+    categories: ["EVM"],
+    parent: {
+      chain: "Avalanche",
+      types: ["subnet"]
+    },
+    chainId: 432204,
+    twitter: "dexalot",
+    github: ["dexalot"],
+    url: "https://dexalot.com"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3924,6 +3938,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Reya Network"
     case "cronos_zkevm":
       return "Cronos zkEVM"
+    case "dexalot":
+      return "Dexalot"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

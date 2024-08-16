@@ -51297,7 +51297,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://umoja.xyz/",
     description:
-      "Umoja is an asset management protocol that uses 'smartcoins' to automate money, enabling money itself to autonomously minimize risk & optimize returns",
+      "Umoja is DeFi's structured product and trade execution layer, offering seamless access to low-risk, high-yield crypto assets through 'smartcoins. These innovative, crypto-collateralized digital assets are designed to protect principal while generating sustainable yields, making wealth creation effortless and accessible to everyone",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/umoja-protocol.png`,
     audits: "0",

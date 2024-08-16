@@ -3776,6 +3776,54 @@
       "decimals": "6",
       "symbol": "scorai",
       "to": "coingecko#scorai"
+    },
+    "orai10g6frpysmdgw5tdqke47als6f97aqmr8s3cljsvjce4n5enjftcqtamzsd": {
+      "name": "bitcoin",
+      "decimals": "6",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
+    },
+    "orai15un8msx3n5zf9ahlxmfeqd2kwa5wm0nrpxer304m9nd5q6qq0g6sku5pdd": {
+      "name": "USD Coin",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "orai19rtmkk6sn4tppvjmp5d5zj6gfsdykrl5rw2euu5gwur3luheuuusesqn49": {
+      "name": "injective-protocol",
+      "decimals": "6",
+      "symbol": "INJ",
+      "to": "coingecko#injective-protocol"
+    },
+    "orai1c7tpjenafvgjtgm9aqwm7afnke6c56hpdms8jc6md40xs3ugd0es5encn0": {
+      "name": "wTRX",
+      "decimals": "6",
+      "symbol": "TRX",
+      "to": "coingecko#tron"
+    },
+    "orai1dqa52a7hxxuv8ghe7q5v0s36ra0cthea960q2cukznleqhk0wpnshfegez": {
+     "name": "WETH",
+      "decimals": "6",
+      "symbol": "WETH",
+      "to": "coingecko#weth"
+    },
+    "orai1hn8w33cqvysun2aujk5sv33tku4pgcxhhnsxmvnkfvdxagcx0p8qa4l98q": {
+      "name": "OCH",
+      "decimals": "6",
+      "symbol": "OCH",
+      "to": "coingecko#och"
+    },
+    "orai19q4qak2g3cj2xc2y3060t0quzn3gfhzx08rjlrdd3vqxhjtat0cq668phq": {
+      "name": "SCATOM",
+      "decimals": "6",
+      "symbol": "SCATOM",
+      "to": "coingecko#orchai-protocol-staked-compound-atom"
+    },
+    "factory:orai1wuvhex9xqs3r539mvc6mtm7n20fcj3qr2m0y9khx6n5vtlngfzes3k0rq9:ton": {
+      "name": "TON",
+      "decimals": "9",
+      "symbol": "TON",
+      "to": "coingecko#the-open-network"
     }
   },
   "comdex": {
@@ -7855,6 +7903,12 @@
       "decimals": 8,
       "symbol": "whSOL",
       "to": "coingecko#solana"
+    },
+    "576B1D63E401B6A9A071C78A1D1316D016EC9333D2FEB14AD503FAC4B8731CD1": {
+      "name": "NTMPI",
+      "decimals": 6,
+      "symbol": "NTMPI",
+      "to": "coingecko#neutaro"
     }
   },
   "bitindi": {

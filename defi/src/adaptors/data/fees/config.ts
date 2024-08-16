@@ -2404,5 +2404,9 @@ export default {
     "moonwell": {
         enabled: true,
         id: "1853"
+    },
+    "spiko": {
+        enabled: true,
+        id: "4980"
     }
 } as AdaptorsConfig

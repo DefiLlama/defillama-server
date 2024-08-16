@@ -52159,6 +52159,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1723835179
   },
+  {
+    id: "5001",
+    name: "Capyfi",
+    address: null,
+    symbol: "-",
+    url: "https://capyfi.com/",
+    description: "Capify is an algorithmic decentralized finance protocol built on the LAchain network that allows users to lend and borrow cryptocurrency assets. Suppliers provide liquidity to the market to earn interest, while borrowers are able to borrow liquidity in an over-collateralized fashion. Capyfi's protocol design and architecture references Compound v2, a proven and audited protocol",
+    chain: "LaChain Network",
+    logo: `${baseIconsUrl}/capyfi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["LaChain Network"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "capyfi/index.js",
+    twitter: null,
+    audit_links: [],
+    listedAt: 1723836209
+  },
 ];
 
 export default data3;

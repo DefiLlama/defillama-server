@@ -5010,6 +5010,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "pStakeFinance",
     governanceID: ["snapshot:pstakefinance.eth"],
   },
+  {
+    id: "parent#dexalot",
+    name: "Dexalot",
+    url: "https://dexalot.com",
+    description:
+      "Dexalot is an omni-chain order book DEX with zero slippage, near zero gas fees, and is on its own app-specific chain, allowing users to deposit from and withdraw to multiple chains. Dexalot is also fully on-chain and non-custodial.",
+    logo: `${baseIconsUrl}/dexalot.png`,
+    gecko_id: "dexalot",
+    cmcId: "18732",
+    chains: [],
+    twitter: "dexalot",
+  },
 ];
 
 export default parentProtocols;

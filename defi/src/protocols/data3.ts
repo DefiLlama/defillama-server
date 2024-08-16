@@ -52175,7 +52175,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["LaChain Network"],
     oracles: [], 
-    forkedFrom: [],
+    forkedFrom: ["Compound V2"],
     module: "capyfi/index.js",
     twitter: null,
     audit_links: [],

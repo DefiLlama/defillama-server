@@ -113,5 +113,10 @@ export default {
     "umoja": {
         enabled: true,
         id: "4963"
+    },
+    "pancakeswap-options": {
+        parentId: "PancakeSwap",
+        enabled: true,
+        id: "4967"
     }
 } as AdaptorsConfig

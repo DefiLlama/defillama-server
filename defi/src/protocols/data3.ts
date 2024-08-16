@@ -51999,7 +51999,7 @@ const data3: Protocol[] = [
     listedAt: 1723741021
   },
   {
-    id: "4993",
+    id: "4994",
     name: "Bonk Staked SOL",
     address: null,
     symbol: "-",
@@ -52022,7 +52022,7 @@ const data3: Protocol[] = [
     listedAt: 1723798801
   },
   {
-    id: "4994",
+    id: "4995",
     name: "Helius Staked SOL",
     address: null,
     symbol: "-",
@@ -52045,7 +52045,7 @@ const data3: Protocol[] = [
     listedAt: 1723799416
   },
   {
-    id: "4995",
+    id: "4996",
     name: "Jupiter Staked SOL",
     address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
     symbol: "JUP",

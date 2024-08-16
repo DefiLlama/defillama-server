@@ -52091,6 +52091,29 @@ const data3: Protocol[] = [
     github: ["arrland"],
     listedAt: 1723825615
   },
+  {
+    id: "4997",
+    name: "Dexalot Bridge",
+    address: "avax:0x093783055f9047c2bff99c4e414501f8a147bc69",
+    symbol: "ALOT",
+    url: "https://dexalot.com",
+    description: "Dexalot is an omni-chain order book DEX with zero slippage, near zero gas fees, and is on its own app-specific chain, allowing users to deposit from and withdraw to multiple chains. Dexalot is also fully on-chain and non-custodial.",
+    chain: "Dexalot",
+    logo: `${baseIconsUrl}/dexalot-bridge.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Dexalot"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dexalot-bridge/index.js",
+    twitter: "dexalot",
+    audit_links: [],
+    parentProtocol: "parent#dexalot",
+    listedAt: 1723829290
+  },
 ];
 
 export default data3;

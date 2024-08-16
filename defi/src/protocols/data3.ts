@@ -52044,6 +52044,30 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1723799416
   },
+  {
+    id: "4995",
+    name: "Jupiter Staked SOL",
+    address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    symbol: "JUP",
+    assetToken: "JUPSOL",
+    url: "https://jup.ag/swap/SOL-JupSOL",
+    description: "Liquid staking on Solana",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jupiter-staked-sol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "jupSOL/index.js",
+    twitter: "JupiterExchange",
+    audit_links: [],
+    parentProtocol: "parent#jupiter",
+    listedAt: 1723799951
+  },
 ];
 
 export default data3;

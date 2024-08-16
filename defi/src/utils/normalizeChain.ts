@@ -23,6 +23,7 @@ export const normalizedChainReplacements = {
   "hydration": "hydradx",
   "zklink nova": "zklink",
   "bitlayer": "btr",
+  "cronos zkevm": "cronos_zkevm"
 } as {
   [chain: string]: string
 }

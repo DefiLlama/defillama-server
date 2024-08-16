@@ -26023,6 +26023,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "alligator_defi",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1643391258,
+    deadUrl: true,
   },
   {
     id: "1323",

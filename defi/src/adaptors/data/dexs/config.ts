@@ -374,7 +374,7 @@ export default {
         "id": "1884"
     },
     "nomiswap": {
-        "enabled": true,
+        "enabled": false,
         "id": "1823"
     },
     "beethoven-x": {

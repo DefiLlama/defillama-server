@@ -12,6 +12,7 @@ export default {
   ...curve.adapters,
   ...balancer.adapters,
   ...others.adapters,
+  fortunafi: require("./rwa/fortunafi"),
   stobox: require("./rwa/stobox"),
   alex: require("./markets/alex"),
   seamless: require("./other/seamless"),

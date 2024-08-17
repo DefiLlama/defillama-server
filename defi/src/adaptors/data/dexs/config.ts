@@ -2690,7 +2690,7 @@ export default {
         id: "4510"
     },
     "glowswap": {
-        enabled: true,
+        enabled: false,
         id: "4515"
     },
     "merlinswap": {

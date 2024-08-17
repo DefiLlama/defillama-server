@@ -159,8 +159,9 @@ async function run() {
       protocol.info.chains.forEach((chain: string) => chainSet.add(chain))
       const protocolTypeRecords = data[AdapterType.PROTOCOLS].protocols[id]?.records ?? {}
       const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData({ ...protocolTypeRecords, ...protocol.records }, protocol.info, adapterType, protocolMetadataMap[id])  // if there are duplicate records between protocol and specific adaptertype, the adaptertype record overwrites generic record
-      const hasTodayData = !!protocol.records[todayTimestring]
-      const timeDataKey = hasTodayData ? 'today' : 'yesterday'
+      // const hasTodayData = !!protocol.records[todayTimestring]
+      // const timeDataKey = hasTodayData ? 'today' : 'yesterday'
+      const timeDataKey = 'yesterday' // we always use yesterday data for now, reason being we dont have have real time data for a lot of protocols
       const { lastTimeString, dayBeforeLastTimeString, weekAgoTimeString, monthAgoTimeString, lastWeekTimeStrings, lastTwoWeektoLastWeekTimeStrings, lastTwoWeekTimeStrings, last30DaysTimeStrings, last60to30DaysTimeStrings, lastOneYearTimeStrings } = timeData[timeDataKey]
 
       Object.entries(protocolRecordMapWithMissingData).forEach(([timeS, record]: any) => {

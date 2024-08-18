@@ -2408,5 +2408,33 @@ export default {
     "spiko": {
         enabled: true,
         id: "4980"
+    },
+    "helio": {
+        enabled: true,
+        id: "5007"
+    },
+    "sunpump": {
+        enabled: true,
+        id: "4979"
+    },
+    "dextools": {
+        enabled: true,
+        id: "5006"
+    },
+    "manifold": {
+        enabled: true,
+        id: "5005"
+    },
+    "circle": {
+        enabled: true,
+        id: "5008"
+    },
+    "tether": {
+        enabled: true,
+        id: "5009"
+    },
+    "thegraph": {
+        enabled: true,
+        id: "5010"
     }
 } as AdaptorsConfig

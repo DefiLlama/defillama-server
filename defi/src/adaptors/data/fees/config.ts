@@ -411,7 +411,7 @@ export default {
         "id": "398"
     },
     "nomiswap": {
-        "enabled": true,
+        "enabled": false,
         "id": "1823"
     },
     "stellaswap": {

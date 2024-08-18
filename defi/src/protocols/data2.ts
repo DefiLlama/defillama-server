@@ -21229,7 +21229,7 @@ const data2: Protocol[] = [
     module: "perp88/index.js",
     twitter: "HMXorg",
     forkedFrom: [],
-    oracles: ["Pyth", "Chronicle"],
+    oracles: ["Pyth"],
     github: ["HMXOrg"],
     listedAt: 1668805259,
   },

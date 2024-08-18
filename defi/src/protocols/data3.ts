@@ -52248,6 +52248,28 @@ const data3: Protocol[] = [
     github: ["mdcryptonfts"],
     listedAt: 1723917469
   },
+  {
+    id: "5005",
+    name: "manifold.xyz",
+    address: null,
+    symbol: "-",
+    url: "https://www.manifold.xyz/",
+    description: "Create, share, and sell your work with the best creator tools for Ethereum, Base and Farcaster",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/manifold.xyz.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "manifoldxyz",
+    audit_links: [],
+    github: ["manifoldxyz"],
+  },
 ];
 
 export default data3;

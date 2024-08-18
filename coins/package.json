@@ -7,7 +7,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "serve": "node --max-old-space-size=8192 node_modules/serverless/bin/serverless offline start",
     "test": "jest",
-    "test-coin": "ts-node --transpile-only src/test.ts ",
+    "test-coin": "LOCAL_TEST=true ts-node --transpile-only src/test.ts ",
     "test:watch": "jest --watch",
     "refill": "tableName='prod-coins-table' AWS_REGION='eu-central-1' ts-node --transpile-only src/refill",
     "storeBridgedCoins": "ts-node --transpile-only src/cli/storeBridgedCoins",
@@ -16,7 +16,8 @@
     "fetch-cg-hourly": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/coingecko.ts true",
     "fetch-cg-min": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/coingecko.ts false",
     "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/defiCoins.ts",
-    "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/bridges.ts"
+    "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/bridges.ts",
+    "update-token-mapping": "node src/adapters/utils/updateTokenMapping.js"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.12",

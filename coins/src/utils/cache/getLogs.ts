@@ -37,6 +37,17 @@ export async function getLogs(options: logOptions) {
   if (!fromBlock) throw new Error('Missing fromBlock!')
   if (!toBlock) throw new Error('Missing fromBlock!')
 
+  let iface
+
+  if (eventAbi) {
+    iface = new ethers.Interface([eventAbi])
+    if (!topics?.length) {
+      const fragment = iface.fragments[0]
+      topics = undefined
+      topic = `${(fragment as any).name}(${fragment.inputs.map(i => i.type).join(',')})`
+    }
+  }
+
   target = target.toLowerCase()
   const key = `${chain}/${target}`
 

@@ -199,10 +199,6 @@ export default {
             }
         }
     },
-    "kwenta": {
-        "enabled": false,
-        "id": "2981"
-    },
     "synthetix": {
         "enabled": true,
         "id": "115",
@@ -299,6 +295,7 @@ export default {
         }
     },
     "apex": {
+        parentId: "ApeX Protocol",
         "enabled": true,
         "id": "1878",
         cleanRecordsConfig: {
@@ -738,11 +735,11 @@ export default {
         }
     },
     "logx": {
-        enabled: true,
+        enabled: false,
         id: "3396",
         protocolsData: {
             "derivative": {
-                enabled: true,
+                enabled: false,
                 id: "3396",
             }
         }
@@ -798,5 +795,29 @@ export default {
     "rollie-finance": {
         enabled: true,
         id: "4636",
+    },
+    "tlx-finance": {
+        enabled: true,
+        id: "4555"
+    },
+    "linehub-perps": {
+        parentId: "LineHub",
+        enabled: true,
+        id: "4842"
+    },
+    "apex-omni": {
+        parentId: "ApeX Protocol",
+        enabled: true,
+        id: "4822"
+    },
+    "edgeX": {
+        enabled: true,
+        id: "4954",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1723075200": true,
+                "1722988800": true,
+            },
+        }
     }
 } as AdaptorsConfig

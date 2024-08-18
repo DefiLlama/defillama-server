@@ -1,8 +1,19 @@
+// catch unhandled errors
+process.on("uncaughtException", (err) => {
+  console.error('uncaught error', err);
+  process.exit(1);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.error('unhandled rejection', err);
+  process.exit(1);
+});
+
 // import anyswap from "./anyswap";
 import arbitrum from "./arbitrum";
 import avax from "./avax";
 // import bsc from "./bsc";
-import brc20 from "./brc20";
+// import brc20 from "./brc20";
 import fantom from "./fantom";
 import era from "./era";
 import gasTokens from "./gasTokens";
@@ -23,24 +34,27 @@ import manta from "./manta";
 import astrzk from "./astrzk";
 import zklink from "./zklink";
 import celer from "./celer";
+import fraxtal from "./fraxtal";
+
+
 
 export type Token =
   | {
+    from: string;
+    to: string;
+    decimals: number;
+    symbol: string;
+  }
+  | {
+    from: string;
+    to: string;
+    getAllInfo: () => Promise<{
       from: string;
       to: string;
       decimals: number;
-      symbol: string;
-    }
-  | {
-      from: string;
-      to: string;
-      getAllInfo: () => Promise<{
-        from: string;
-        to: string;
-        decimals: number;
-        symbol: any;
-      }>;
-    };
+      symbol: any;
+    }>;
+  };
 type Bridge = () => Promise<Token[]>;
 
 export const chainsThatShouldNotBeLowerCased = ["solana", "bitcoin"];
@@ -65,7 +79,7 @@ export const bridges = [
   // anyswap,
   arbitrum,
   avax,
-  brc20,
+  // brc20,
   //bsc,
   fantom,
   era,
@@ -86,6 +100,7 @@ export const bridges = [
   astrzk,
   zklink,
   celer,
+  fraxtal,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
@@ -95,6 +110,15 @@ import { Coin, batchWrite2, readCoins2, translateItems } from "../../../coins2";
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
 async function storeTokensOfBridge(bridge: Bridge, i: number) {
+  try {
+    const res = await _storeTokensOfBridge(bridge, i);
+    return res
+  } catch (e) {
+    console.error("Failed to store tokens of bridge", i, e);
+  }
+}
+
+async function _storeTokensOfBridge(bridge: Bridge, i: number) {
   const tokens = await bridge();
 
   const alreadyLinked = (

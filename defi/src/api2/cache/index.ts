@@ -12,7 +12,9 @@ import { Protocol } from "../../protocols/types";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { getProtocolAllTvlData } from "../utils/cachedFunctions";
-import { loadDimensionsCache } from "../utils/dimensionsUtils";
+import { getDimensionsCacheV2, } from "../utils/dimensionsUtils";
+import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
+import { RUN_TYPE } from "../utils";
 
 export const cache: {
   metadata: {
@@ -38,6 +40,7 @@ export const cache: {
   allTvlData: any,
   historicalTvlForAllProtocolsMeta: any,
   feesAdapterCache: any,
+  twitterOverview: any,
 } = {
   metadata: {
     protocols: [],
@@ -62,17 +65,20 @@ export const cache: {
   allTvlData: {},
   historicalTvlForAllProtocolsMeta: {},
   feesAdapterCache: {},
+  twitterOverview: {},
 }
 
 const MINUTES = 60 * 1000
 const HOUR = 60 * MINUTES
 
-export async function initCache({ cacheType = 'cron' } = { cacheType: 'none' }) {
+export async function initCache({ cacheType = RUN_TYPE.CRON } = { cacheType: RUN_TYPE.API_SERVER }) {
   console.time('Cache initialized: ' + cacheType)
   await updateMetadata()
-  if (cacheType === 'api-server') {
+  if (cacheType === RUN_TYPE.API_SERVER) {
     const _cache = (await readFromPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL)) ?? {}
     Object.entries(_cache).forEach(([k, v]: any) => (cache as any)[k] = v)
+
+    await getDimensionsCacheV2(cacheType) // initialize dimensions cache
 
     await setHistoricalTvlForAllProtocols()
     // await loadDimensionsCache()
@@ -87,7 +93,7 @@ export async function initCache({ cacheType = 'cron' } = { cacheType: 'none' }) 
     }
 
 
-  } else if (cacheType === 'cron') {
+  } else if (cacheType === RUN_TYPE.CRON) {
     await Promise.all([
       updateRaises(),
       updateMCaps(),
@@ -95,6 +101,8 @@ export async function initCache({ cacheType = 'cron' } = { cacheType: 'none' }) 
       updateAllTvlData(cacheType),
     ])
   }
+
+  cache.twitterOverview = await getTwitterOverviewFileV2()
 
   console.timeEnd('Cache initialized: ' + cacheType)
 }

@@ -4,13 +4,14 @@ const getNextTimeSCache: { [timeS: string]: string } = {}
 const getTimeSToUnix: { [timeS: string]: number } = {}
 const getTimeSToUnixString: { [timeS: string]: string } = {}
 
-export function getTimeSDaysAgo(days: number) {
+export function getTimeSDaysAgo(days: number, moveADayBack = false) { 
+  if (moveADayBack) days++
   if (!timeSDaysAgoCache[days]) timeSDaysAgoCache[days] = _getTimeSDaysAgo()
   return timeSDaysAgoCache[days]
 
   function _getTimeSDaysAgo() {
     const date = new Date();
-    date.setDate(date.getDate() - days - 1) // move a day back
+    date.setDate(date.getDate() - days)
     return dateToTimeS(date);
   }
 }
@@ -51,4 +52,8 @@ let startOfTodayTime: number
 export function getStartOfTodayTime() {
   if (!startOfTodayTime) startOfTodayTime = timeSToUnix(dateToTimeS(new Date()))
   return startOfTodayTime
+}
+
+export function unixTimeToTimeS(unixTime: number): string {
+  return dateToTimeS(new Date(unixTime * 1000))
 }

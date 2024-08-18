@@ -154,3 +154,14 @@ export async function batchGet(keys: { PK: string; SK: number }[], retriesLeft =
   }
   return processedResponses
 }
+
+
+export async function DELETE(keys: { PK: string; SK: number }[]): Promise<void> {
+  const requests = [];
+  for (const item of keys) {
+    // console.log('deleting', item.PK, item.SK)
+    if (item.PK && (item.SK == 0 || item.SK)) requests.push(dynamodb.delete({ Key: { PK: item.PK, SK: item.SK } }));
+  }
+  const a = await Promise.all(requests);
+  return;
+}

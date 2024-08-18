@@ -126,7 +126,27 @@ export const chainToCoingeckoId = {
   fraxtal: "fraxtal",
   map: "map-protocol",
   zora: "zora-network",
-  dydx: "dydx"
+  dydx: "dydx",
+  manta: "manta-pacific",
+  bouncebit: "bouncebit",
+  taiko: "taiko",
+  genesys: "genesys-network",
+  lukso: "lukso",
+  sanko: "sanko",
+  massa: "massa",
+  etherlink: "etherlink",
+  endurance: "endurance",
+  bitlayer: "bitlayer",
+  bob: "bob-network",
+  xlayer: "x-layer",
+  planq: "planq-network",
+  bsquared: "bsquared-network",
+  nibiru: "nibiru",
+  hyperliquid: "hyperliquid",
+  ancient8: "ancient8",
+  degen: "degen"
+
+
   
   // chz: "chiliz",
   // stellar: "stellar",

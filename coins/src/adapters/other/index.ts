@@ -27,8 +27,10 @@ import steadefiUsdArb from "./steadefi_usdc_arb";
 import steadefiUsdEth from "./steadefi_usdc_eth";
 import steadefiUsdLink from "./steadefi_usdc_link";
 import steadefiUsdWbtc from "./steadefi_usdc_wbtc";
+import warlordAdapter from "./warlord";
 import opdxAdapter from "./odpxWethLP";
 import teahouseAdapter from "./teahouse";
+import opal from "./opal";
 import gmdV2 from "./gmdV2";
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
@@ -86,6 +88,14 @@ export function unknownTokens(timestamp: number = 0) {
 }
 export function unknownTokens2(timestamp: number = 0) {
   return Promise.all([
+    unknownTokenAdapter(
+      timestamp,
+      "0x501ca56E4b6Af84CBAAaaf2731D7C87Bed32ee65",
+      "0x7b0400231Cddf8a7ACa78D8c0483890cd0c6fFD6",
+      "0x5c46bFF4B38dc1EAE09C5BAc65872a1D8bc87378",
+      false,
+      "merlin",
+    ),
     unknownTokenAdapter(
       timestamp,
       "0x908b3CB9F8E6441B2b1844A6D4f1AC4707bd1483",
@@ -279,7 +289,7 @@ export function collateralizedAssets(timestamp: number = 0) {
     {
       token: "0x52c64b8998eb7c80b6f526e99e29abdcc86b841b", // DSU
       vault: "0x0d49c416103cbd276d9c3cd96710db264e3a0c27",
-      collateral: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+      collateral: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
     },
   ]);
 }
@@ -350,10 +360,14 @@ export async function velgd(timestamp: number = 0) {
   return velgAdapter(timestamp);
 }
 
+export async function warlord(timestamp: number = 0) {
+  return warlordAdapter(timestamp);
+}
 
 export async function salt(timestamp: number = 0) {
   const writes: Write[] = []
   await wNLXCore(timestamp, writes)
+  await dsu(timestamp, writes)
   const chain = 'ethereum'
   const api = await getApi(chain, timestamp)
   const price = await api.call({ abi: 'uint256:priceSALT', target: '0x22096408044Db49A4eB871640b351Ccacb675ED6' })
@@ -366,7 +380,8 @@ export async function salt(timestamp: number = 0) {
   addToDBWritesList(writes, chain, '0x0110B0c3391584Ba24Dbf8017Bf462e9f78A6d9F', price / 1e18, 18, 'SALT', timestamp, "salty", 0.95,)
   return writes;
 }
-export async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
+
+async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
   const chain = 'core'
   const api = await getApi(chain, timestamp)
   const wNLXCore = '0x2c6bcf5990cc115984f0031d613af1a645089ad6'
@@ -378,7 +393,67 @@ export async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
   await getWrites({ chain, timestamp, writes, pricesObject, projectName: "salt", })
 }
 
+async function dsu(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'arbitrum'
+  const api = await getApi(chain, timestamp)
+  const dsu = '0x52c64b8998eb7c80b6f526e99e29abdcc86b841b'
+  const usdc = '0xaf88d065e77c8cc2239327c5edb3a432268e5831'
+  const treasury = '0x0d49c416103Cbd276d9c3cd96710dB264e3A0c27'
+  const supply = await api.call({ abi: 'uint256:totalSupply', target: dsu })
+  const balance = await api.call({ abi: 'erc20:balanceOf', target: usdc, params: treasury })
+  const pricesObject = {
+    [dsu]: { price: balance * 1e12 / supply, underlying: usdc, },
+  }
+  await getWrites({ chain, timestamp, writes, pricesObject, projectName: "salt", })
+}
+
+async function kernel(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'ethereum'
+  const ETH = '0x0000000000000000000000000000000000000000'
+  const api = await getApi(chain, timestamp)
+  const tokens = [
+    { address: '0x0bB9aB78aAF7179b7515e6753d89822b91e670C4', oracle: '0xde903b83dd8b11abbc28ab195d45fe60145c6e9b', abi: 'uint256:kUSDPerToken', underlying: '0x4c9edd5852cd905f086c759e8383e09bff1e68b3', },
+    { address: '0xf02C96DbbB92DC0325AD52B3f9F2b951f972bf00', oracle: '0x8fDDab48DD17dDCeD87730020F4213528042dba3', },
+    { address: '0x513D27c94C0D81eeD9DC2a88b4531a69993187cF', oracle: '0x1A9fA10CA260387314185B9D7763164FD3D51226', },
+  ]
+  const pricesObject: any = {}
+  for (const { address, oracle, abi = 'uint256:getRate', underlying = ETH } of tokens) {
+    const rate = await api.call({ abi, target: oracle })
+    pricesObject[address] = { price: rate / 1e18, underlying, }
+  }
+  return getWrites({ chain, timestamp, pricesObject, projectName: "kelp", writes, })
+}
+
+
+async function reyaUSD(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'reya'
+  const api = await getApi(chain, timestamp)
+  const pricesObject: any = {}
+  const usdc = '0x3B860c0b53f2e8bd5264AA7c3451d41263C933F2'
+  const rUSD = '0xa9f32a851b1800742e47725da54a09a7ef2556a3'
+  const usdBal = await api.call({ abi: 'erc20:balanceOf', target: usdc, params: rUSD })
+  const supply = await api.call({ abi: 'erc20:totalSupply', target: rUSD })
+  pricesObject[rUSD] = { price: usdBal / supply, underlying: usdc, }
+  return getWrites({ chain, timestamp, pricesObject, projectName: "reya-usd", writes, })
+}
+
+async function dcWBTC(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'ethereum'
+  const api = await getApi(chain, timestamp)
+  const dcWBTC = '0x971e5b5D4baa5607863f3748FeBf287C7bf82618'
+  const underlying = await api.call({ abi: 'address:asset', target: dcWBTC })
+  const supply = await api.call({ abi: 'erc20:totalSupply', target: dcWBTC })
+  const bal = await api.call({ abi: 'erc20:balanceOf', target: underlying, params: dcWBTC })
+  const [decimals, uDecimals] = await api.multiCall({ abi: 'erc20:decimals', calls: [dcWBTC, underlying] })
+  const pricesObject = {
+    [dcWBTC]: { price: bal * 10 ** (uDecimals - decimals) / supply, underlying, },
+  }
+  return getWrites({ chain, timestamp, pricesObject, projectName: "dc-wbtc", writes, })
+}
+
+
 export const adapters = {
+  dcWBTC,
   defiChain,
   shlb,
   metronome,
@@ -403,4 +478,8 @@ export const adapters = {
   opdx,
   gmdV2,
   salt,
+  warlord,
+  opal,
+  // kernel,   // price taken from unknownTokensV3 instead
+  reyaUSD,
 }

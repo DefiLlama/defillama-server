@@ -106,7 +106,8 @@ export default {
     },
     "litecoin": {
         "enabled": true,
-        "id": "4499"
+        "id": "2",
+        "isChain": true
     },
     "looksrare": {
         "enabled": true,
@@ -410,7 +411,7 @@ export default {
         "id": "398"
     },
     "nomiswap": {
-        "enabled": true,
+        "enabled": false,
         "id": "1823"
     },
     "stellaswap": {
@@ -447,6 +448,7 @@ export default {
         "id": "2169"
     },
     "stargate": {
+        parentId: "Stargate Finance",
         "enabled": true,
         "id": "1571"
     },
@@ -684,6 +686,7 @@ export default {
         id: "2643"
     },
     "maverick": {
+        parentId: "Maverick Protocol",
         enabled: true,
         id: "2644"
     },
@@ -830,7 +833,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": true,
+        "enabled": false,
         "id": "2864"
     },
     "merlin": {
@@ -1281,10 +1284,12 @@ export default {
         "id": "3129"
     },
     "aerodrome": {
+        parentId: "Aerodrome",
         "enabled": true,
         "id": "3450"
     },
     "apex": {
+        parentId: "ApeX Protocol",
         "enabled": true,
         "id": "1878"
     },
@@ -1442,6 +1447,7 @@ export default {
         "id": "3657"
     },
     "shimmersea": {
+        parentId: "MagicSea",
         "enabled": true,
         "id": "3571"
     },
@@ -1547,7 +1553,7 @@ export default {
     },
     "metavault-v3": {
         parentId: "Metavault",
-        "enabled": true,
+        "enabled": false,
         "id": "3750",
         protocolsData: {
             "v3": {
@@ -1906,11 +1912,11 @@ export default {
     },
     "instadapp": {
         "enabled": true,
-        "id": "120"
+        "id": "4742" // old id: 120
     },
     "summer.fi": {
         "enabled": true,
-        "id": "3284"
+        "id": "4741"  // old id: 3284
     },
     "integral": {
         "enabled": true,
@@ -2184,5 +2190,252 @@ export default {
     "flashtrade": {
         enabled: true,
         "id": "4107",
+    },
+    "pumpup": {
+        enabled: true,
+        "id": "4736"
+    },
+    "coinbase-commerce": {
+        enabled: true,
+        "id": "4737"
+    },
+    "dragonswap-sei": {
+        enabled: true,
+        id: "4720"
+    },
+    "wen-markets": {
+        enabled: true,
+        id: "4733"
+    },
+    "cellula": {
+        enabled: true,
+        id: "4705"
+    },
+    "clusters": {
+        enabled: true,
+        id: "4777"
+    },
+    "magpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "2271"
+    },
+    "time-fun": {
+        enabled: true,
+        id: "4786"
+    },
+    "cakepie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "4007"
+    },
+    "milkyway": {
+        enabled: true,
+        id: "3953"
+    },
+    "penpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "3083"
+    },
+    "radpie": {
+        parentId: "Magpie Ecosystem",
+        enabled: true,
+        id: "3555"
+    },
+    "sideshift": {
+        enabled: true,
+        id: "1895"
+    },
+    "tlx-finance": {
+        enabled: true,
+        id: "4555"
+    },
+    "moonshot": {
+        enabled: true,
+        id: "4813"
+    },
+    "jojo": {
+        "enabled": true,
+        "id": "2320"
+    },
+    "lynex-v1": {
+        parentId: "Lynex",
+        enabled: true,
+        id: "3908"
+    },
+    "linehub-perps": {
+        parentId: "LineHub",
+        enabled: true,
+        id: "4842"
+    },
+    "scoop": {
+        enabled: true,
+        id: "4827"
+    },
+    "ether-fi": {
+        parentId: "ether.fi",
+        enabled: true,
+        id: "4429"
+    },
+    "jup-ape": {
+        parentId: "Jupiter",
+        enabled: true,
+        id: "4860"
+    },
+    "scallop": {
+        parentId: "Scallop",
+        enabled: true,
+        id: "1961"
+    },
+    "d2finance": {
+        enabled: true,
+        id: "4846"
+    },
+    "eddyfinance-v2": {
+        enabled: true,
+        id: "4120"
+    },
+    "size-credit": {
+        enabled: true,
+        id: "4904"
+    },
+    "stbot": {
+        enabled: true,
+        id: "4909"
+    },
+    "zns": {
+        enabled: true,
+        id: "4920"
+    },
+    "liquid-collective": {
+        enabled: true,
+        id: "3391"
+    },
+    "juice-finance": {
+        enabled: true,
+        id: "4208"
+    },
+    "origin-dollar": {
+        enabled: true,
+        id: "427"
+    },
+    "betmode": {
+        enabled: false,
+        id: "4927"
+    },
+    "silo-finance": {
+        enabled: true,
+        id: "2020"
+    },
+    "cetus": {
+        enabled: true,
+        id: "2289"
+    },
+    "arrakis-v2": {
+        parentId: "Arrakis Finance",
+        enabled: true,
+        id: "2667"
+    },
+    "stargate-finance-v2": {
+        parentId: "Stargate Finance",
+        enabled: true,
+        id: "4831"
+    },
+    "superstate": {
+        enabled: true,
+        id: "4265"
+    },
+    "apex-omni": {
+        parentId: "ApeX Protocol",
+        enabled: true,
+        id: "4822"
+    },
+    "dedust": {
+        enabled: true,
+        id: "2617"
+    },
+    "orderly": {
+        "enabled": true,
+        "id": "2264"
+    },
+    "spacewhale": {
+        enabled: true,
+        id: "4930"
+    },
+    "mevx": {
+        enabled: true,
+        id: "4945"
+    },
+    "metaplex": {
+        enabled: true,
+        id: "4959"
+    },
+    "umoja": {
+        enabled: true,
+        id: "4963"
+    },
+    "goplus": {
+        enabled: true,
+        id: "4977"
+    },
+    "photon": {
+        enabled: true,
+        id: "4981"
+    },
+    "factor": {
+        parentId: "Factor",
+        enabled: true,
+        id: "3298"
+    },
+    "dexscreener": {
+        enabled: true,
+        id: "4990"
+    },
+    "kamino-lending": {
+        parentId: "Kamino",
+        enabled: true,
+        id: "3770"
+    },
+    "ston": {
+        enabled: true,
+        id: "2337"
+    },
+    "moonwell": {
+        enabled: true,
+        id: "1853"
+    },
+    "spiko": {
+        enabled: true,
+        id: "4980"
+    },
+    "helio": {
+        enabled: true,
+        id: "5007"
+    },
+    "sunpump": {
+        parentId: "SUN.io",
+        enabled: true,
+        id: "4979"
+    },
+    "dextools": {
+        enabled: true,
+        id: "5006"
+    },
+    "manifold": {
+        enabled: true,
+        id: "5005"
+    },
+    "circle": {
+        enabled: true,
+        id: "5008"
+    },
+    "tether": {
+        enabled: true,
+        id: "5009"
+    },
+    "thegraph": {
+        enabled: true,
+        id: "5010"
     }
 } as AdaptorsConfig

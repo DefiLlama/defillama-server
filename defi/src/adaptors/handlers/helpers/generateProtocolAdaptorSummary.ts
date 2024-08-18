@@ -179,6 +179,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
         return {
             defillamaId: adapter.defillamaId,
             name: adapter.name,
+            slug: adapter.name.split(" ").join("-").toLowerCase(),
             disabled: adapter.disabled,
             displayName: adapter.displayName,
             module: adapter.module,
@@ -228,6 +229,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
         return {
             defillamaId: adapter.id,
             name: adapter.name,
+            slug: adapter.name.split(" ").join("-").toLowerCase(),
             module: adapter.module,
             disabled: adapter.disabled,
             displayName: adapter.displayName,

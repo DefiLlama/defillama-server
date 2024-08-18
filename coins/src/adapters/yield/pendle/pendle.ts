@@ -164,15 +164,24 @@ export default async function getTokenPrices(
       }),
       Promise.all(
         // PromisePool error when multicalled on mainnet
-        markets.map((params: string) =>
+        markets.map((m: string) =>
           api
             .call({
               target: toAsset,
-              params,
-              abi: "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
+              params: [m, 1800],
+              abi: "function getPtToAssetRate(address, uint32) public view returns (uint256 ptToAssetRate)",
             })
-            .then((r) => (exchangeRates[params] = r))
-            .catch(() => (exchangeRates[params] = null)),
+            .then((r) => (exchangeRates[m] = r))
+            .catch(() =>
+              api
+                .call({
+                  target: toAsset,
+                  params: [m, 900],
+                  abi: "function getPtToAssetRate(address, uint32) public view returns (uint256 ptToAssetRate)",
+                })
+                .then((r) => (exchangeRates[m] = r))
+                .catch(() => (exchangeRates[m] = null)),
+            ),
         ),
       ),
     ]);
@@ -248,35 +257,39 @@ export default async function getTokenPrices(
   }
 
   async function lpWrites() {
-    const [ptBalances, syBalances, supplies, decimals, symbols] =
-      await Promise.all([
-        api.multiCall({
-          abi: "erc20:balanceOf",
-          calls: markets.map((m: string, i: number) => ({
-            target: PTs[i],
-            params: m,
-          })),
-        }),
-        api.multiCall({
-          abi: "erc20:balanceOf",
-          calls: markets.map((m: string, i: number) => ({
-            target: SYs[i],
-            params: m,
-          })),
-        }),
-        api.multiCall({
-          abi: "erc20:totalSupply",
-          calls: markets,
-        }),
-        api.multiCall({
-          abi: "erc20:decimals",
-          calls: markets,
-        }),
-        api.multiCall({
-          abi: "erc20:symbol",
-          calls: markets,
-        }),
-      ]);
+    const exchangeRates: { [address: string]: any } = {};
+    const [decimals, symbols] = await Promise.all([
+      api.multiCall({
+        abi: "erc20:decimals",
+        calls: markets,
+      }),
+      api.multiCall({
+        abi: "erc20:symbol",
+        calls: markets,
+      }),
+      Promise.all(
+        // PromisePool error when multicalled on mainnet
+        markets.map((m: string) =>
+          api
+            .call({
+              target: toAsset,
+              params: [m, 1800],
+              abi: "function getLpToAssetRate(address, uint32) public view returns (uint256 ptToAssetRate)",
+            })
+            .then((r) => (exchangeRates[m] = r))
+            .catch(() =>
+              api
+                .call({
+                  target: toAsset,
+                  params: [m, 900],
+                  abi: "function getLpToAssetRate(address, uint32) public view returns (uint256 ptToAssetRate)",
+                })
+                .then((r) => (exchangeRates[m] = r))
+                .catch(() => (exchangeRates[m] = null)),
+            ),
+        ),
+      ),
+    ]);
 
     markets.map((m: string, i: number) => {
       if (!m || !PTs[i] || !SYs[i]) return;
@@ -284,18 +297,17 @@ export default async function getTokenPrices(
         (u: CoinData) =>
           u.address == yieldTokens[i] || u.address == underlyingTokens[i],
       );
-      const PT: Write | undefined = writes.find(
-        (u: Write) => u.PK.includes(PTs[i]) && u.SK == 0,
-      );
+      if (
+        !underlying ||
+        !exchangeRates[markets[i]] ||
+        !decimals[i] ||
+        !symbols[i]
+      )
+        return;
 
-      if (!PT || !underlying || !PT.price || !PT.decimals) return;
-
-      const price: number =
-        ((ptBalances[i] * PT.price) / 10 ** PT.decimals +
-          (syBalances[i] * underlying.price) / 10 ** underlying.decimals) /
-        (supplies[i] / 10 ** decimals[i]);
-
-      if (isNaN(price)) return;
+      const price =
+        (underlying.price * exchangeRates[markets[i]]) /
+        10 ** underlying.decimals;
 
       addToDBWritesList(
         writes,
@@ -311,8 +323,8 @@ export default async function getTokenPrices(
     });
   }
 
-  await Promise.all([syWrites(), ptWrites()]);
-  await Promise.all([ytWrites(), lpWrites()]);
+  await Promise.all([syWrites(), ptWrites(), lpWrites()]);
+  await ytWrites();
 
   return writes;
 }

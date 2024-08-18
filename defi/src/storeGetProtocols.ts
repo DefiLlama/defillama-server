@@ -9,6 +9,7 @@ import { storeR2 } from "./utils/r2";
 import { getChainDisplayName } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
+import { includeCategoryIntoChainTvl } from "./utils/excludeProtocols";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -20,8 +21,8 @@ function compress(data: string) {
 function replaceChainNames(
   oraclesByChain?:
     | {
-        [chain: string]: string[];
-      }
+      [chain: string]: string[];
+    }
     | undefined
 ) {
   if (!oraclesByChain) return oraclesByChain;
@@ -37,6 +38,9 @@ export async function storeGetProtocols({
   getYesterdayTvl,
   getLastWeekTvl,
   getLastMonthTvl,
+  getYesterdayTokensUsd,
+  getLastWeekTokensUsd,
+  getLastMonthTokensUsd,
 }: any = {}) {
   const response = await craftProtocolsResponse(true, undefined, {
     getCoinMarkets,
@@ -53,6 +57,9 @@ export async function storeGetProtocols({
           getYesterdayTvl,
           getLastWeekTvl,
           getLastMonthTvl,
+          getYesterdayTokensUsd,
+          getLastWeekTokensUsd,
+          getLastMonthTokensUsd,
         });
         return {
           category: protocol.category,
@@ -88,7 +95,7 @@ export async function storeGetProtocols({
     if (!p.category) return;
 
     protocolCategoriesSet.add(p.category);
-    if (p.category !== "Bridge" && p.category !== "RWA" && p.category !== "Basis Trading") {
+    if (includeCategoryIntoChainTvl(p.category)) {
       p.chains.forEach((c: string) => {
         chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
 

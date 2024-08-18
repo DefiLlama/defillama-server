@@ -11,7 +11,8 @@ import { hourlyTvl, } from "./utils/getLastRecord";
 import { closeConnection, getLatestProtocolItem, initializeTVLCacheDB } from "./api2/db";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { importAdapterDynamic } from "./utils/imports/importAdapter";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
+import { elastic } from '@defillama/sdk';
+import { getUnixTimeNow } from "./api2/utils/time";
 
 const maxRetries = 2;
 
@@ -19,7 +20,6 @@ const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 
 async function main() {
 
-  await setEnvSecrets()
   const staleCoinWrites: Promise<void>[] = []
   let actions = [protocols, entities, treasuries].flat()
   // const actions = [entities, treasuries].flat()
@@ -44,7 +44,14 @@ async function main() {
   const alwaysRun = async (_adapterModule: any, _protocol: any) => true
 
   const runProcess = (filter = alwaysRun) => async (protocol: any) => {
-    const startTime = +Date.now()
+    const metadata = {
+      application: 'tvl',
+      type: protocol.isEntity ? 'entity' : protocol.isTreasury ? 'treasury' : 'protocol',
+      name: protocol.name,
+      id: protocol.id,
+    } as any
+    let success = true
+    const startTime = getUnixTimeNow()
     try {
       const staleCoins: StaleCoins = {};
       const adapterModule = importAdapterDynamic(protocol)
@@ -65,8 +72,28 @@ async function main() {
     } catch (e: any) {
       console.log('FAILED: ', protocol?.name, e?.message)
       failed++
+
+      success = false
+      let errorString = e?.message
+      try {
+        errorString = JSON.stringify(e)
+      } catch (e) { }
+      await elastic.addErrorLog({
+        error: e as any,
+        errorString,
+        metadata,
+      } as any)
     }
-    const timeTakenI = (+Date.now() - startTime) / 1e3
+
+
+    const timeTakenI = (getUnixTimeNow() - startTime) / 1e3
+
+    await elastic.addRuntimeLog({
+      runtime: timeTakenI,
+      success,
+      metadata,
+    } as any)
+
     timeTaken += timeTakenI
     const avgTimeTaken = timeTaken / ++i
     console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
@@ -147,11 +174,11 @@ async function saveSdkInternalCache() {
   await sdk.cache.writeCache(INTERNAL_CACHE_FILE, sdk.sdkCache.retriveCache())
 }
 
+
 async function filterProtocol(adapterModule: any, protocol: any) {
   // skip running protocols that are dead/rugged or dont have tvl
   if (protocol.module === 'dummy.js' || protocol.rugged || adapterModule.deadFrom)
     return false;
-
 
   let tvlHistkeys = ['tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
   // let tvlNowKeys = ['tvl', 'staking', 'pool2']
@@ -173,9 +200,11 @@ async function filterProtocol(adapterModule: any, protocol: any) {
   // always fetch tvl for recent protocols
   if (protocol.isRecent) return true
 
-  const runLessFrequently = protocol.isEntity || protocol.isTreasury || highestRecentTvl < 200_000
 
-  if (runLessFrequently && timeDiff < 3 * HOUR)
+  const isHeavyProtocol = adapterModule.isHeavyProtocol ?? false
+  const runLessFrequently = protocol.isEntity || protocol.isTreasury || highestRecentTvl < 200_000 || isHeavyProtocol
+
+  if (runLessFrequently && timeDiff < 4 * HOUR)
     return false
 
   return true

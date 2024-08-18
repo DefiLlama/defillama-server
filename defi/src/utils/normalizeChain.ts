@@ -1,5 +1,3 @@
-import { chain } from "lodash";
-
 export const normalizedChainReplacements = {
   // keys should be full lowercase
   "binance": "bsc",
@@ -13,17 +11,19 @@ export const normalizedChainReplacements = {
   "polygon zkevm": "polygon_zkevm",
   "eos evm": "eos_evm",
   "oasys": "oas",
-  "map relay chain": "map",
+  "map protocol": "map",
   "pulsechain": "pulse",
   "opbnb": "op_bnb",
   "bifrost network": "bfc",
   "horizen eon": "eon",
   "bahamut": "ftn",
-  "viction": "tomochain",
   "bevm": "chainx",
   "bitnet": "btn",
   "defichain evm": "defichain_evm",
-
+  "hydration": "hydradx",
+  "zklink nova": "zklink",
+  "bitlayer": "btr",
+  "cronos zkevm": "cronos_zkevm"
 } as {
   [chain: string]: string
 }
@@ -35,10 +35,6 @@ export function normalizeChain(chain: string) {
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
   return moduleDoubleCounted === true || (category === "Yield Aggregator" || category === "Yield");
-}
-
-export function isExcludedFromChainTvl(category?: string) {
-  return category === "RWA" || category === "Basis Trading";
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -112,7 +108,7 @@ export const chainCoingeckoIds = {
     geckoId: "optimism",
     symbol: "OP",
     cmcId: "11840",
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -484,15 +480,15 @@ export const chainCoingeckoIds = {
     twitter: "wavesprotocol",
     url: "https://waves.tech/"
   },
-  "Klaytn": {
+  "Kaia": { // previously Klaytn
     geckoId: "klay-token",
-    github: ['klaytn'],
+    github: ['kaiachain'],
     symbol: "KLAY",
     cmcId: "4256",
     categories: ["EVM"],
     chainId: 8217,
-    twitter: "klaytn_official",
-    url: "https://klaytn.foundation/"
+    twitter: "kaiachain",
+    url: "https://kaia.io/"
   },
   "IoTeX": {
     geckoId: "iotex",
@@ -1491,8 +1487,8 @@ export const chainCoingeckoIds = {
     github: ['onflow'],
     symbol: "FLOW",
     cmcId: "4558",
-    twitter: "https://flow.com/",
-    url: "flow_blockchain",
+    twitter: "flow_blockchain",
+    url: "https://flow.com/",
   },
   "Kujira": {
     geckoId: "kujira",
@@ -1534,13 +1530,13 @@ export const chainCoingeckoIds = {
     twitter: "CantoPublic",
     url: "https://canto.io/",
   },
-  "Ripple": {
+  "XRPL": {
     geckoId: "ripple",
-    github: ['ripple'],
+    github: ['XRPLF'],
     symbol: "XRP",
     cmcId: "52",
-    twitter: "Ripple",
-    url: "https://ripple.com/",
+    twitter: "RippleXDev",
+    url: "https://xrpl.org/",
   },
   "GodwokenV1": {
     geckoId: null,
@@ -1849,7 +1845,7 @@ export const chainCoingeckoIds = {
     twitter: "WemixNetwork",
     url: "https://www.wemix.com/",
   },
-  "Persistence": {
+  "Persistence One": {
     geckoId: "persistence",
     github: ['persistenceOne'],
     symbol: "XPRT",
@@ -1882,7 +1878,7 @@ export const chainCoingeckoIds = {
     cmcId: "23669",
     categories: ["EVM"],
   },
-  "Europa": {
+  "SKALE Europa": {
     geckoId: null,
     github: ['patractlabs'],
     symbol: null,
@@ -1925,10 +1921,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
   },
   "zkSync Era": {
-    geckoId: null,
+    geckoId: "zksync",
     github: ['matter-labs'],
-    symbol: null,
-    cmcId: null,
+    symbol: "ZK",
+    cmcId: "24091",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
@@ -2145,7 +2141,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     github: ["base-org"],
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -2210,7 +2206,7 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     github: ["archway-network"]
   },
-  "HydraDX": {
+  "Hydration": {
     geckoId: "hydradx",
     github: ['galacticcouncil'],
     symbol: "HDX",
@@ -2220,8 +2216,8 @@ export const chainCoingeckoIds = {
       chain: "Polkadot",
       types: ["parachain"]
     },
-    twitter: "hydra_dx",
-    url: "https://hydradx.io/",
+    twitter: "hydration_net",
+    url: "https://hydration.net/",
   },
   "Shibarium": {
     geckoId: null,
@@ -2268,7 +2264,12 @@ export const chainCoingeckoIds = {
     geckoId: "kroma",
     symbol: "KRO",
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM","Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 255,
     github: ["kroma-network"],
   },
   "Manta": {
@@ -2448,7 +2449,7 @@ export const chainCoingeckoIds = {
     geckoId: "mode",
     symbol: "MODE",
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -2582,7 +2583,12 @@ export const chainCoingeckoIds = {
     geckoId: "fraxtal",
     symbol: "FXTL",
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM","Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 252,
     twitter: "fraxfinance",
     url: "https://frax.finance",
   },
@@ -2761,9 +2767,13 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
     chainId: 7777777,
-    twitter: "ourZORA",
+    twitter: "zora",
     url: "https://zora.co"
   },
   "DeFiChain EVM": {
@@ -2831,7 +2841,7 @@ export const chainCoingeckoIds = {
     url: "https://venom.foundation/",
     github: ["venom-blockchain"],
   },
-  "Karak Network": {
+  "K2": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -2930,7 +2940,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Bitcoin Sidechains"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -2970,10 +2980,10 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM","Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2", "gas"]
     },
     twitter: "BuildOnCyber",
     url: "https://cyber.co/",
@@ -2981,8 +2991,8 @@ export const chainCoingeckoIds = {
     chainId: 7560,
   },
   "BounceBit": {
-    geckoId: "BB",
-    symbol: "bouncebit",
+    geckoId: "bouncebit",
+    symbol: "BB",
     cmcId: "30746",
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "bounce_bit",
@@ -2990,8 +3000,8 @@ export const chainCoingeckoIds = {
     chainId: 6001,
   },
   "re.al": {
-    geckoId: null,
-    symbol: null,
+    geckoId: "re-al",
+    symbol: "RWA",
     cmcId: null,
     categories: ["EVM"],
     twitter: "real_rwa",
@@ -3073,6 +3083,164 @@ export const chainCoingeckoIds = {
     url: "https://blog.iota.org/iotas-evm-mainnet-launch/",
     chainId: 8822
   },
+  "Ham": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Superchain"],
+    parent: {
+      chain: "Base",
+      types: ["L3"]
+    },
+    twitter: "HamOnWarpcast",
+    url: "https://ham.fun",
+    chainId: 5112,
+  },
+  "Sanko": {
+    geckoId: "dream-machine-token",
+    symbol: "DMT",
+    cmcId: "25653",
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "SankoGameCorp",
+    url: "https://sanko.xyz/",
+    chainId: 1996,
+  },
+  "Rari": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "RariChain",
+    url: "https://rarichain.org/",
+    chainId: 1380012617,
+  },
+  "Massa": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "massalabs",
+    url: "https://massa.net",
+  },
+  "AILayer": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "AILayerXYZ",
+    url: "https://anvm.io/",
+    chainId: 2649
+  },
+  "Mint": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "Mint_Blockchain",
+    url: "https://www.mintchain.io/",
+    chainId: 185
+  },
+  "OXFUN": {
+    geckoId: "ox-fun",
+    symbol: "OX",
+    cmcId: "29530",
+    categories: ["EVM"],
+    parent: {
+      chain: "Base",
+      types: ["L3"]
+    },
+    twitter: "OXFUNHQ",
+    url: "https://ox.fun/en",
+    chainId: 6699
+  },
+  "Etherlink": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "etherlink",
+    url: "https://www.etherlink.com",
+    chainId: 42793
+  },
+  "Noble": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    github: ["noble-assets"],
+    categories: ["Cosmos"],
+    twitter: "noble_xyz",
+    url: "https://x.com/noble_xyz"
+  },
+  "Aeternity": {
+    geckoId: "aeternity",
+    symbol: "AE",
+    cmcId: "1700",
+    twitter: "aeternity",
+    url: "https://aeternity.com/",
+  },
+  "Saakuru": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "saakuru_labs",
+    url: "https://saakuru.com/",
+    chainId: 7225878,
+    parent: {
+      chain: "Oasys",
+      types: ["L2"]
+    },
+  },
+  "Reya Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    url: "https://reya.network",
+    chainId: 1729
+  },
+  "Cronos zkEVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    url: "https://cronos.org/zkevm",
+    twitter: "cronos_chain",
+    chainId: 388
+  },
+  "Dexalot": {
+    geckoId: "dexalot",
+    symbol: "ALOT",
+    cmcId: "18732",
+    categories: ["EVM"],
+    parent: {
+      chain: "Avalanche",
+      types: ["subnet"]
+    },
+    chainId: 432204,
+    twitter: "dexalot",
+    github: ["dexalot"],
+    url: "https://dexalot.com"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3091,6 +3259,11 @@ chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
 chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
 chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
 chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
+chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
+chainCoingeckoIds["HydraDX"] = chainCoingeckoIds["Hydration"]
+chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
+chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
+chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3148,6 +3321,14 @@ export function transformNewChainName(chain: string) {
       return "zkLink Nova"
     case "Bitkub":
       return "Bitkub Chain"
+    case "HydraDX":
+      return "Hydration"
+    case "Ripple":
+      return "XRPL"
+    case "Persistence":
+      return "Persistence One"
+    case "Klaytn":
+      return "Kaia"
     default:
       return chain
   }
@@ -3189,6 +3370,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Oasis Sapphire" : "Sapphire"
     case "oasis":
       return useNewChainNames ? "Oasis Emerald" : "Oasis"
+    case "klaytn":
+      return useNewChainNames ? "Kaia" : "Klaytn"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -3392,7 +3575,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "canto":
       return "Canto"
     case "ripple":
-      return "Ripple"
+      return useNewChainNames ? "XRPL" : "Ripple"
     case "godwokenv1":
       return "GodwokenV1"
     case "arbitrum_nova":
@@ -3464,7 +3647,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "wemix":
       return useNewChainNames ? "WEMIX3.0" : "WEMIX"
     case "persistence":
-      return "Persistence"
+      return useNewChainNames ? "Persistence One" : "Persistence"
     case "enuls":
       return "ENULS"
     case "orai":
@@ -3472,7 +3655,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "goerli":
       return "Goerli"
     case "europa":
-      return "Europa"
+      return "SKALE Europa"
     case "core":
       return "CORE"
     case "rpg":
@@ -3548,7 +3731,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "archway":
       return "Archway"
     case "hydradx":
-      return "HydraDX"
+      return useNewChainNames ? "Hydration" : "HydraDX"
     case "shibarium":
       return "Shibarium"
     case "mvc":
@@ -3680,7 +3863,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "venom":
       return "Venom"
     case "karak":
-      return "Karak Network"
+      return "K2"
     case "bitkub":
       return useNewChainNames ? "Bitkub Chain" : "Bitkub"
     case "ancient8":
@@ -3729,6 +3912,34 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Joltify"
     case "iotaevm":
       return "IOTA EVM"
+    case "ham":
+      return "Ham"
+    case "sanko":
+      return "Sanko"
+    case "rari":
+      return "Rari"
+    case "massa":
+      return "Massa"
+    case "ailayer":
+      return "AILayer"
+    case "mint":
+      return "Mint"
+    case "ox_chain":
+      return "OXFUN"
+    case "etlk":
+      return "Etherlink"
+    case "noble":
+      return "Noble"
+    case "aeternity":
+      return "Aeternity"
+    case "saakuru":
+      return "Saakuru"
+    case "reya":
+      return "Reya Network"
+    case "cronos_zkevm":
+      return "Cronos zkEVM"
+    case "dexalot":
+      return "Dexalot"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

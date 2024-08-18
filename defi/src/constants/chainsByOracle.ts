@@ -79,14 +79,17 @@ const chainsByOracle = {
     "EOS",
     "Evmos",
     "Ethereum",
+    "Etherlink",
     "Fantom",
     "Filecoin",
     "Gnosis",
     "Hedera",
     "Horizen EON",
     "inEVM",
-    "KCC",
+    "IOTA EVM",
     "Kava",
+    "KCC",
+    "Klatyn",
     "LightLink",
     "Linea",
     "Manta",
@@ -95,12 +98,15 @@ const chainsByOracle = {
     "Meter",
     "Mode",
     "Neon",
+    "opBNB",
     "Optimism",
+    "Parallel",
     "Polygon",
     "Polygon zkEVM",
     "Ronin",
     "Scroll",
     "ShimmerEVM",
+    "Taiko",
     "Viction",
     "WEMIX3.0",
     "Zkfair",
@@ -194,7 +200,9 @@ const chainsByOracle = {
     "Polkadot",
     "Beam",
     "Milkomeda C1",
-    "Dogechain"],
+    "Dogechain",
+    "Sei"
+  ],
   "UMA": ["Ethereum", "Polygon", "Boba", "Optimism", "Arbitrum", "Gnosis", "Avalanche"],
   "API3": [
     "Arbitrum",
@@ -213,6 +221,7 @@ const chainsByOracle = {
     "Polygon",
     "Polygon zkEVM",
     "Rootstock",
+    "Sei"
   ],
   "Band": [
     "CLV",
@@ -329,6 +338,17 @@ const chainsByOracle = {
   "Harbinger": ["Tezos"],
   "SEDA": ["Aurora", "Evmos", "Optimism"],
   "Nest": ["Ethereum", "BSC", "Aurora", "KCC", "CLV", "Polygon"],
+  "Chronicle": [
+    "Ethereum",
+    "Polygon",
+    "Optimism",
+    "Arbitrum",
+    "zkSync Era",
+    "Gnosis",
+    "Base",
+    "Polygon zkEVM",
+    "Mantle"
+  ],
 };
 
 export { chainsByOracle };

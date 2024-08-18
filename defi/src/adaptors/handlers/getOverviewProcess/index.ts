@@ -51,6 +51,7 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'parentProtocol'
     | 'versionKey'
 > & {
+    slug: string
     records: AdaptorRecord[] | null
     recordsMap: IJSON<AdaptorRecord> | null
     totalAllTime: number | null

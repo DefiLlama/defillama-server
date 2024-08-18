@@ -2,11 +2,11 @@ import { AdaptorsConfig } from "../types";
 
 export default {
   "logx": {
-    enabled: true,
+    enabled: false,
     id: "3396",
     protocolsData: {
       "logx-aggregator": {
-        enabled: true,
+        enabled: false,
         id: "3396",
       }
     }
@@ -38,5 +38,23 @@ export default {
   "vooi": {
     "enabled": true,
     "id": "4655"
+  },
+  "perpie": {
+    "enabled": true,
+    "id": "4817",
+    protocolsData: {
+        "derivatives": {
+            "enabled": true,
+            "id": "4817"
+        }
+    }
+  },
+  "bitoro": {
+    "enabled": true,
+    "id": "4841"
+  },
+  "kwenta": {
+    "enabled": true,
+    "id": "2981"
   }
 } as AdaptorsConfig;

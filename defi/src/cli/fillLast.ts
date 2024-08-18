@@ -40,4 +40,4 @@ main().then(async () => {
   console.log('Done!!!')
   await closeConnection()
   process.exit(0)
-})
+}).catch(e=>console.log("error", e))

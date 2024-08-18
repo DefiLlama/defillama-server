@@ -21,6 +21,11 @@
       "decimals": "18",
       "symbol": "cBNB",
       "to": "coingecko#binancecoin"
+    },
+    "0xb4d8a602fff7790eec3f2c0c1a51a475ee399b2d": {
+      "to": "coingecko#polkamarkets",
+      "decimals": 18,
+      "symbol": "POLK"
     }
   },
   "sui": {
@@ -104,7 +109,24 @@
       "to": "coingecko#htx-dao"
     }
   },
+  "polygon_zkevm": {
+    "0x8C7D118B5c47a5BCBD47cc51789558B98dAD17c5": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    }
+  },
   "polygon": {
+    "0xe4880249745eac5f1ed9d8f7df844792d560e750": {
+      "decimals": "5",
+      "symbol": "USTBL",
+      "to": "asset#ethereum:0xe4880249745eac5f1ed9d8f7df844792d560e750"
+    },
+    "0xa0769f7A8fC65e47dE93797b4e21C073c117Fc80": {
+      "decimals": "5",
+      "symbol": "EUTBL",
+      "to": "asset#ethereum:0xa0769f7a8fc65e47de93797b4e21c073c117fc80"
+    },
     "0x2297aebd383787a160dd0d9f71508148769342e3": {
       "decimals": "8",
       "symbol": "BTC.b",
@@ -345,6 +367,11 @@
       "decimals": "18",
       "symbol": "apxETH",
       "to": "coingecko#dinero-apxeth"
+    },
+    "0x6c9815826fdf8c7a45ccfed2064dbab33a078712": {
+      "decimals": "18",
+      "symbol": "CVX1",
+      "to": "coingecko#convex-finance"
     }
   },
   "fantom": {
@@ -392,9 +419,86 @@
       "decimals": "18",
       "symbol": "sFRAX",
       "to": "ethereum:0xa663b02cf0a4b149d2ad41910cb81e23e1c41c32"
+    },
+    "0x53e63a31fd1077f949204b94f431bcab98f72bce": {
+      "decimals": "18",
+      "symbol": "SolvBTC.ENA",
+      "to": "coingecko#solv-btc"
+    },
+    "0x04c0599ae5a44757c0af6f9ec3b93da8976c150a": {
+      "decimals": "18",
+      "symbol": "weETH",
+      "to": "coingecko#wrapped-eeth"
+    },
+    "0x80137510979822322193fc997d400d5a6c747bf7": {
+      "decimals": "18",
+      "symbol": "STONE",
+      "to": "coingecko#stakestone-ether"
+    },
+    "0x346c574C56e1A4aAa8dc88Cda8F7EB12b39947aB": {
+      "decimals": "18",
+      "symbol": "SolvBTC.BBN",
+      "to": "coingecko#solv-btc"
+    }
+  },
+  "stacks": {
+    "SP102V8P0F7JX67ARQ77WEA3D3CFB5XW39REDT0AM.token-wstx": {
+      "decimals": "6",
+      "symbol": "WSTX",
+      "to": "coingecko#blockstack"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.token-wstx": {
+      "decimals": "8",
+      "symbol": "WSTX",
+      "to": "coingecko#blockstack"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.token-wbtc": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#bitcoin"
+    },
+    "SP102V8P0F7JX67ARQ77WEA3D3CFB5XW39REDT0AM.token-wstx-v2": {
+      "decimals": "8",
+      "symbol": "WSTX",
+      "to": "coingecko#blockstack"
+    },
+    "sp2c2yfp12ajzb4mabjbaj55xecvs7e4pmmz89yzr.arkadiko-token::diko": {
+      "decimals": "6",
+      "symbol": "DIKO",
+      "to": "coingecko#arkadiko-protocol"
+    },
+    "SM26NBC8SFHNW4P1Y4DFH27974P56WN86C92HPEHH.token-vlqstx::vlqstx": {
+      "to": "coingecko#blockstack",
+      "decimals": 6,
+      "symbol": "vlqSTX"
     }
   },
   "arbitrum": {
+    "0xAed882F117b78034829E2cfFA11206706837B1b1": {
+      "decimals": "18",
+      "symbol": "WQ",
+      "to": "coingecko#q-protocol"
+    },
+    "0xf42Ae1D54fd613C9bb14810b0588FaAa09a426cA": {
+      "decimals": "18",
+      "symbol": "esGMX",
+      "to": "coingecko#gmx"
+    },
+    "0x993614e1c8c9c5abe49462ce5702431978fd767f": {
+      "decimals": "18",
+      "symbol": "S*ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x8d66ff1845b1bacc6e87d867ca4680d05a349ca8": {
+      "decimals": "6",
+      "symbol": "S*USDT",
+      "to": "coingecko#tether"
+    },
+    "0x6ea313859a5d9f6ff2a68f529e6361174bfd2225": {
+      "decimals": "6",
+      "symbol": "S*USDC",
+      "to": "coingecko#usd-coin"
+    },
     "0x0eda601e814cf942a17c0ae3f97dbbeb855c03e9": {
       "decimals": "18",
       "symbol": "wstjUSDC",
@@ -479,6 +583,31 @@
       "decimals": "18",
       "symbol": "ZEEP",
       "to": "coingecko#zeepr"
+    },
+    "0x57f5e098cad7a3d1eed53991d4d66c45c9af7812": {
+      "decimals": "18",
+      "symbol": "wUSDM",
+      "to": "coingecko#mountain-protocol-usdm"
+    },
+    "0x2c093f7d7db41057a2ddd3cb1ad8b4e9c3dffbec": {
+      "decimals": "18",
+      "symbol": "USDEX+",
+      "to": "coingecko#usd-coin"
+    },
+    "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34": {
+      "decimals": "18",
+      "symbol": "USDe",
+      "to": "ethereum:0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+    },
+    "0x346c574C56e1A4aAa8dc88Cda8F7EB12b39947aB": {
+      "decimals": "18",
+      "symbol": "SolvBTC.BBN",
+      "to": "coingecko#solv-btc"
+    },
+    "0x7189fb5b6504bbff6a852b13b7b82a3c118fdc27": {
+      "decimals": "18",
+      "symbol": "ETHFI",
+      "to": "coingecko#ether-fi"
     }
   },
   "tezos": {
@@ -489,6 +618,26 @@
     }
   },
   "optimism": {
+    "0xAed882F117b78034829E2cfFA11206706837B1b1": {
+      "decimals": "18",
+      "symbol": "WQ",
+      "to": "coingecko#q-protocol"
+    },
+    "0x87eEE96D50Fb761AD85B1c982d28A042169d61b1": {
+      "decimals": "18",
+      "symbol": "wrsETH",
+      "to": "coingecko#wrapped-rseth"
+    },
+    "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
+      "decimals": "18",
+      "symbol": "wrsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
+    "0x7e7d4467112689329f7E06571eD0E8CbAd4910eE": {
+      "decimals": "18",
+      "symbol": "COMP",
+      "to": "coingecko#compound-governance-token"
+    },
     "0x3f56e0c36d275367b8c502090edf38289b3dea0d": {
       "decimals": "18",
       "symbol": "QI",
@@ -517,6 +666,16 @@
     }
   },
   "base": {
+    "0x46e6b214b524310239732D51387075E0e70970bf": {
+      "decimals": "18",
+      "symbol": "cWETHv3",
+      "to": "coingecko#weth"
+    },
+    "0x1Bc71130A0e39942a7658878169764Bbd8A45993": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
     "0x02f92800F57BCD74066F5709F1Daa1A4302Df875": {
       "decimals": "18",
       "symbol": "PEAS",
@@ -536,6 +695,21 @@
       "decimals": "18",
       "symbol": "rcbETH",
       "to": "coingecko#ethereum"
+    },
+    "0xe4b20925D9E9a62F1E492e15a81dC0de62804dd4": {
+      "decimals": "18",
+      "symbol": "BTCUSD",
+      "to": "coingecko#bitcoin-usd-btcfi"
+    },
+    "0xc43f3ae305a92043bd9b62ebd2fe14f7547ee485": {
+      "decimals": "18",
+      "symbol": "CHEX",
+      "to": "coingecko#chex-token"
+    },
+    "0xfde4C96c8593536E31F229EA8f37b2ADa2699bb2": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
     }
   },
   "jbc": {
@@ -580,6 +754,34 @@
       "to": "coingecko#bitkub-coin"
     }
   },
+  "sanko": {
+    "0x0000000000000000000000000000000000000000": {
+      "name": "Dream Machine Token",
+      "decimals": "18",
+      "symbol": "DMT",
+      "to": "coingecko#dream-machine-token"
+    },
+    "0x754cdad6f5821077d6915004be2ce05f93d176f8": {
+      "decimals": "18",
+      "symbol": "DMT",
+      "to": "coingecko#wrapped-dmt"
+    },
+    "0xe01e3b20c5819cf919f7f1a2b4c18bbfd222f376": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#sanko-bridged-weth-sanko"
+    },
+    "0x13d675bc5e659b11cfa331594cf35a20815dcf02": {
+      "decimals": "18",
+      "symbol": "USDC",
+      "to": "coingecko#sanko-bridged-usdc-sanko"
+    },
+    "0x3c84f959f4b8ca0c39847d02f936e13fa8fc4eb9": {
+      "decimals": "18",
+      "symbol": "BEAT",
+      "to": "coingecko#beat-the-allegations"
+    }
+  },
   "aptos": {
     "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::WBTC": {
       "decimals": "6",
@@ -591,10 +793,20 @@
       "symbol": "thAPT",
       "to": "coingecko#thala-apt"
     },
+    "0x63be1898a424616367e19bbd881f456a78470e123e2770b5b5dcdceb61279c54::movegpt_token::MovegptCoin": {
+      "decimals": "8",
+      "symbol": "MGPT",
+      "to": "coingecko#movegpt"
+    },
     "0xfaf4e633ae9eb31366c9ca24214231760926576c7b625313b3688b5e900731f6::staking::StakedThalaAPT": {
       "decimals": "8",
       "symbol": "sthAPT",
       "to": "coingecko#staked-thala-apt"
+    },
+    "0xcfea864b32833f157f042618bd845145256b1bf4c0da34a7013b76e42daa53cc::usdy::USDY": {
+      "decimals": "6",
+      "symbol": "USDY",
+      "to": "ethereum:0x96F6eF951840721AdBF46Ac996b59E0235CB985C"
     },
     "0x5e156f1207d0ebfa19a9eeff00d62a282278fb8719f4fab3a586a0a2c0fffbea::coin::T": {
       "decimals": "6",
@@ -615,6 +827,17 @@
       "decimals": "8",
       "symbol": "CAKE",
       "to": "coingecko#pancakeswap-token"
+    },
+    "0x2ebb2ccac5e027a87fa0e2e5f656a3a4238d6a48d93ec9b610d570fc0aa0df12": {
+      "name": "CELLANA",
+      "decimals": "8",
+      "symbol": "CELL",
+      "to": "coingecko#cellena-finance"
+    },
+    "0xada35ada7e43e2ee1c39633ffccec38b76ce702b4efc2e60b50f63fbe4f710d8::apetos_token::ApetosCoin": {
+      "decimals": "8",
+      "symbol": "APETOS",
+      "to": "coingecko#apetos"
     }
   },
   "velas": {
@@ -654,6 +877,11 @@
     }
   },
   "scroll": {
+    "0x643e160a3C3E2B7eae198f0beB1BfD2441450e86": {
+      "decimals": "18",
+      "symbol": "COMP",
+      "to": "coingecko#compound-governance-token"
+    },
     "0xc4d46E8402F476F269c379677C99F18E22Ea030e": {
       "decimals": "18",
       "symbol": "PufETH",
@@ -705,9 +933,34 @@
       "symbol": "USDC"
     },
     "0xa25b25548B4C98B0c7d3d27dcA5D5ca743d68b7F": {
+      "to": "coingecko#wrapped-rseth",
+      "decimals": "18",
+      "symbol": "wrsETH"
+    },
+    "0x65421ba909200b81640d98B979d07487C9781B66": {
       "to": "coingecko#kelp-dao-restaked-eth",
       "decimals": "18",
-      "symbol": "RSETH"
+      "symbol": "rsETH"
+    },
+    "0x80137510979822322193fc997d400d5a6c747bf7": {
+      "to": "coingecko#stakestone-ether",
+      "decimals": "18",
+      "symbol": "STONE"
+    },
+    "0x01f0a31698c4d065659b9bdc21b3610292a1c506": {
+      "to": "coingecko#wrapped-eeth",
+      "decimals": "18",
+      "symbol": "weETH"
+    },
+    "0x78ab77f7d590fb101aa18affc238cbfea31ead5b": {
+      "to": "coingecko#impermax-2",
+      "decimals": "18",
+      "symbol": "IBEX"
+    },
+    "0xCDf95E1F720caade4b1DC83ABfE15400D2a458AD": {
+      "to": "coingecko#solana",
+      "decimals": "9",
+      "symbol": "wSOL"
     }
   },
   "radixdlt": {
@@ -853,6 +1106,11 @@
       "to": "coingecko#puff-the-dragon",
       "decimals": "18",
       "symbol": "PUFF"
+    },
+    "0x7f4dB37D7bEb31F445307782Bc3Da0F18dF13696": {
+      "to": "coingecko#yield-yak",
+      "decimals": "18",
+      "symbol": "YAK"
     }
   },
   "manta": {
@@ -895,6 +1153,11 @@
       "to": "coingecko#manta-network",
       "decimals": "18",
       "symbol": "MANTA"
+    },
+    "0x73d23f3778a90be8846e172354a115543df2a7e4": {
+      "to": "coingecko#anzen-usdz",
+      "decimals": "18",
+      "symbol": "USDz"
     }
   },
   "beam": {
@@ -1076,6 +1339,11 @@
       "decimals": "18",
       "symbol": "BTC.b",
       "to": "coingecko#bitcoin-avalanche-bridged-btc-b"
+    },
+    "0x6906Ccda405926FC3f04240187dd4fAd5DF6d555": {
+      "to": "coingecko#bitcoin-usd-btcfi",
+      "decimals": 18,
+      "symbol": "BtcUSD"
     }
   },
   "elysium": {
@@ -1364,10 +1632,30 @@
     }
   },
   "neon_evm": {
+    "0x202c35e517fa803b537565c40f0a6965d7204609": {
+      "decimals": "18",
+      "symbol": "WNEON",
+      "to": "coingecko#neon"
+    },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "NEON",
       "to": "coingecko#neon"
+    },
+    "0x2043191e10a2a4b4601f5123d6c94e000b5d915f": {
+      "decimals": "18",
+      "symbol": "MORA",
+      "to": "coingecko#mora"
+    },
+    "0xea6b04272f9f62f997f666f07d3a974134f7ffb9": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x5f0155d08ef4aae2b500aefb64a3419da8bb611a": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   },
   "xdai": {
@@ -1375,9 +1663,19 @@
       "decimals": "18",
       "symbol": "wxHOPR",
       "to": "xdai:0xD057604A14982FE8D88c5fC25Aac3267eA142a08"
+    },
+    "0x9a2a80c38abb1fdc3cb0fbf94fefe88bef828e00": {
+      "to": "coingecko#polkamarkets",
+      "decimals": 18,
+      "symbol": "POLK"
     }
   },
   "mode": {
+    "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
     "0x02f92800F57BCD74066F5709F1Daa1A4302Df875": {
       "decimals": "18",
       "symbol": "PEAS",
@@ -1496,9 +1794,19 @@
       "decimals": "18",
       "symbol": "LL",
       "to": "coingecko#lightlink"
+    },
+    "0xca7F14F14d975bEFfEe190Cd3cD232a3a988Ab9C": {
+      "decimals": "18",
+      "symbol": "AMP",
+      "to": "coingecko#amped-finance"
     }
   },
   "linea": {
+    "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
     "0x0000000000000000000000000000000000000001": {
       "decimals": "18",
       "symbol": "WETH",
@@ -1543,11 +1851,6 @@
       "decimals": "18",
       "symbol": "SDAI",
       "to": "coingecko#savings-dai"
-    },
-    "0x5ffce65a40f6d3de5332766fff6a28bf491c868c": {
-      "decimals": "18",
-      "symbol": "SolvBTC.m",
-      "to": "coingecko#solv-btc"
     },
     "0xe4d584ae9b753e549cae66200a6475d2f00705f7": {
       "decimals": "18",
@@ -1789,6 +2092,11 @@
       "decimals": "18",
       "symbol": "FTHM",
       "to": "coingecko#fathom-protocol"
+    },
+    "0x8f9920283470f52128bf11b0c14e798be704fd15": {
+      "to": "coingecko#comtech-gold",
+      "decimals": 18,
+      "symbol": "CGO"
     }
   },
   "telos": {
@@ -1838,6 +2146,11 @@
       "decimals": "12",
       "symbol": "KSM",
       "to": "coingecko#kusama"
+    },
+    "0x8b29344f368b5fa35595325903fe0eaab70c8e1f": {
+      "to": "coingecko#polkamarkets",
+      "decimals": 18,
+      "symbol": "POLK"
     }
   },
   "moonbeam": {
@@ -1905,6 +2218,11 @@
       "decimals": "6",
       "symbol": "xcUSDC",
       "to": "coingecko#usd-coin"
+    },
+    "0x8b29344f368b5fa35595325903fe0eaab70c8e1f": {
+      "to": "coingecko#polkamarkets",
+      "decimals": 18,
+      "symbol": "POLK"
     }
   },
   "metis": {
@@ -1979,6 +2297,16 @@
       "decimals": "18",
       "symbol": "ZEND",
       "to": "coingecko#zklend-2"
+    },
+    "0x00c530f2c0aa4c16a0806365b0898499fba372e5df7a7172dc6fe9ba777e8007": {
+      "decimals": "18",
+      "symbol": "NSTR",
+      "to": "coingecko#nostra"
+    },
+    "0xc530f2c0aa4c16a0806365b0898499fba372e5df7a7172dc6fe9ba777e8007": {
+      "decimals": "18",
+      "symbol": "NSTR",
+      "to": "coingecko#nostra"
     }
   },
   "milkomeda": {
@@ -2022,6 +2350,21 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "ACA": {
+      "to": "coingecko#acala",
+      "decimals": 12,
+      "symbol": "ACA"
+    },
+    "LDOT": {
+      "to": "coingecko#liquid-staking-dot",
+      "decimals": 10,
+      "symbol": "LDOT"
+    },
+    "DOT": {
+      "to": "coingecko#polkadot",
+      "decimals": 10,
+      "symbol": "DOT"
     }
   },
   "conflux": {
@@ -2053,6 +2396,16 @@
       "decimals": "18",
       "symbol": "BUSD",
       "to": "coingecko#binance-usd"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#amber",
+      "decimals": 18,
+      "symbol": "AMB"
+    },
+    "0xFF9F502976E7bD2b4901aD7Dd1131Bb81E5567de": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "USDC"
     }
   },
   "zkfair": {
@@ -2181,6 +2534,26 @@
     }
   },
   "blast": {
+    "0x6301795aa55B90427CF74C18C8636E0443F2100b": {
+      "decimals": "18",
+      "symbol": "jcvWETH",
+      "to": "coingecko#weth"
+    },
+    "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
+    "0xe7903B1F75C534Dd8159b313d92cDCfbC62cB3Cd": {
+      "decimals": "18",
+      "symbol": "wrsETH",
+      "to": "coingecko#wrapped-rseth"
+    },
+    "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A": {
+      "decimals": "18",
+      "symbol": "weETH",
+      "to": "coingecko#wrapped-eeth"
+    },
     "0x1Da40C742F32bBEe81694051c0eE07485fC630f6": {
       "decimals": "18",
       "symbol": "DETH",
@@ -2250,6 +2623,11 @@
       "decimals": "18",
       "symbol": "USDE",
       "to": "coingecko#ethena-usde"
+    },
+    "0x0000000000000000000000000000000000000001": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
     }
   },
   "bitcoin": {
@@ -2374,6 +2752,21 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0x3fb787101dc6be47cfe18aeee15404dcc842e6af": {
+      "to": "coingecko#xai-blockchain",
+      "decimals": 18,
+      "symbol": "WXAI"
+    },
+    "0xbee82cfdaff4a6aa4e4793cb81eb1c2e79ac463c": {
+      "to": "coingecko#weth",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0x1e3769bd5fb2e9e9e7d4ed8667c947661f9a82e3": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
     }
   },
   "merlin": {
@@ -2440,6 +2833,11 @@
     "0xc39e757dcb2b17b79a411ea1c2810735dc9032f8": {
       "decimals": "18",
       "symbol": "aMerSOLVBTC",
+      "to": "coingecko#solv-btc"
+    },
+    "0x1760900aCA15B90Fa2ECa70CE4b4EC441c2CF6c5": {
+      "decimals": "18",
+      "symbol": "SolvBTC.BBN",
       "to": "coingecko#solv-btc"
     }
   },
@@ -2547,6 +2945,16 @@
     }
   },
   "q": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "Q",
+      "to": "coingecko#q-protocol"
+    },
+    "0xd07178e3eCbC78De110Df84fe1A979D5f349784a": {
+      "decimals": "18",
+      "symbol": "WQ",
+      "to": "coingecko#q-protocol"
+    },
     "0xde397e6C442A3E697367DecBF0d50733dc916b79": {
       "decimals": "8",
       "symbol": "WBTC",
@@ -2561,6 +2969,16 @@
       "decimals": "6",
       "symbol": "WUSDC",
       "to": "coingecko#usd-coin"
+    },
+    "0xeEeEEb57642040bE42185f49C52F7E9B38f8eeeE": {
+      "decimals": "18",
+      "symbol": "ELK",
+      "to": "coingecko#elk-finance"
+    },
+    "0xd56F9ffF3fe3BD0C7B52afF9A42eb70E05A287Cc": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
     }
   },
   "ftn": {
@@ -2573,6 +2991,21 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "FTN",
+      "to": "coingecko#fasttoken"
+    },
+    "0x4084ab20f8ffca76c19aaf854fb5fe9de6217fbb": {
+      "decimals": "18",
+      "symbol": "FTN",
+      "to": "coingecko#fasttoken"
+    },
+    "0x498d1cf9ad2d66144c98057a5880ee16e801e2f7": {
+      "decimals": "18",
+      "symbol": "FTN",
+      "to": "coingecko#fasttoken"
     }
   },
   "zklink": {
@@ -2615,6 +3048,11 @@
       "decimals": "18",
       "symbol": "M-BTC",
       "to": "coingecko#merlin-s-seal-btc"
+    },
+    "0x3ba89d490ab1c0c9cc2313385b30710e838370a4": {
+      "decimals": "18",
+      "symbol": "SolvBTC.b",
+      "to": "coingecko#solv-btc"
     }
   },
   "zora": {
@@ -2654,6 +3092,16 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0xeb466342c4d449bc9f53a865d5cb90586f405215": {
+      "decimals": "6",
+      "symbol": "axlUSDC",
+      "to": "coingecko#axlusdc"
+    },
+    "0x68bcc7f1190af20e7b572bcfb431c3ac10a936ab": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   },
   "rss3_vsl": {
@@ -2673,6 +3121,11 @@
       "decimals": "18",
       "symbol": "wstBTC",
       "to": "coingecko#wrapped-stbtc"
+    },
+    "0xa67ED736649F2958A35fd249a584151056b4b745": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   },
   "degen": {
@@ -2680,6 +3133,11 @@
       "decimals": "18",
       "symbol": "DEGEN",
       "to": "coingecko#degen-base"
+    },
+    "0xf058eb3c946f0eaeca3e6662300cb01165c64ede": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
     }
   },
   "ancient8": {
@@ -2899,6 +3357,16 @@
     }
   },
   "btr": {
+    "0x7dcb50b2180bc896da1200d2726a88af5d2cbb5a": {
+      "decimals": "18",
+      "symbol": "ordi",
+      "to": "coingecko#ordi"
+    },
+    "0xe04d21d999faedf1e72ade6629e20a11a1ed14fa": {
+      "decimals": "18",
+      "symbol": "SolvBTC.m",
+      "to": "coingecko#solv-btc"
+    },
     "0x07373d112edc4570b46996ad1187bc4ac9fb5ed0": {
       "decimals": "18",
       "symbol": "BitUSD",
@@ -2965,6 +3433,11 @@
       "decimals": "18",
       "symbol": "BB",
       "to": "coingecko#bouncebit"
+    },
+    "0x8f083eafcbba2e126ad9757639c3a1e25a061a08": {
+      "to": "coingecko#bouncebit-btc",
+      "decimals": 18,
+      "symbol": "wstBBTC"
     }
   },
   "taiko": {
@@ -2977,6 +3450,26 @@
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
+    },
+    "0xa9d23408b9ba935c230493c40c73824df71a0975": {
+      "decimals": "18",
+      "symbol": "TAIKO",
+      "to": "coingecko#taiko"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x19e26b0638bf63aa9fa4d14c6baf8d52ebe86c5c": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
+    },
+    "0x2def195713cf4a606b49d07e520e22c17899a736": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   },
   "real": {
@@ -2999,6 +3492,31 @@
       "decimals": "18",
       "symbol": "USDM",
       "to": "coingecko#mountain-protocol-usdm"
+    },
+    "0xAEC9e50e3397f9ddC635C6c429C8C7eca418a143": {
+      "decimals": "18",
+      "symbol": "arcUSD",
+      "to": "coingecko#arcana-2"
+    },
+    "0xeAcFaA73D34343FcD57a1B3eB5B0D949df727712": {
+      "decimals": "18",
+      "symbol": "arcUSD",
+      "to": "coingecko#arcana-2"
+    },
+    "0x25ea98ac87A38142561eA70143fd44c4772A16b6": {
+      "decimals": "18",
+      "symbol": "MORE",
+      "to": "coingecko#stack-2"
+    },
+    "0x4644066f535ead0cde82d209df78d94572fcbf14": {
+      "to": "coingecko#re-al",
+      "decimals": 18,
+      "symbol": "RWA"
+    },
+    "0xce1581d7b4ba40176f0e219b2cac30088ad50c7a": {
+      "to": "coingecko#pearl",
+      "decimals": 18,
+      "symbol": "PEARL"
     }
   },
   "cyeth": {
@@ -3013,6 +3531,11 @@
       "decimals": "18",
       "symbol": "WLYX",
       "to": "coingecko#wrapped-lyx-universalswaps-2"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#lukso-token-2",
+      "decimals": 18,
+      "symbol": "LYX"
     }
   },
   "joltify": {
@@ -3020,6 +3543,266 @@
       "decimals": "6",
       "symbol": "JOLT",
       "to": "coingecko#joltify"
+    }
+  },
+  "defichain_evm": {
+    "0x49febbf9626b2d39aba11c01d83ef59b3d56d2a4": {
+      "to": "coingecko#defichain",
+      "decimals": 18,
+      "symbol": "DFI"
+    },
+    "0xff0000000000000000000000000000000000000d": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "USDC"
+    },
+    "0xff00000000000000000000000000000000000003": {
+      "to": "coingecko#tether",
+      "decimals": 18,
+      "symbol": "USDT"
+    },
+    "0xff00000000000000000000000000000000000001": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0xff0000000000000000000000000000000000000f": {
+      "to": "coingecko#decentralized-usd",
+      "decimals": 18,
+      "symbol": "DUSD"
+    },
+    "0x66F3Cf265D2D146A0348F6fC67E3Da0835e0968E": {
+      "to": "coingecko#javsphere",
+      "decimals": 18,
+      "symbol": "JAV"
+    }
+  },
+  "map": {
+    "0x9bd1e0a3a727d0d4f4e9a6d59022e071ddc79924": {
+      "to": "coingecko#marcopolo",
+      "decimals": 18,
+      "symbol": "stMAPO"
+    },
+    "0x9bd1e0a3a727d0d4f4e9a6d59022e071ddc79924 ": {
+      "to": "coingecko#marcopolo",
+      "decimals": 18,
+      "symbol": "0x9bd1e0a3a727d0d4f4e9a6d59022e071ddc79924 "
+    }
+  },
+  "karura": {
+    "KSM": {
+      "to": "coingecko#kusama",
+      "decimals": 12,
+      "symbol": "KSM"
+    },
+    "LKSM": {
+      "to": "coingecko#liquid-ksm",
+      "decimals": 12,
+      "symbol": "LKSM"
+    },
+    "KAR": {
+      "to": "coingecko#karura",
+      "decimals": 12,
+      "symbol": "KAR"
+    },
+    "BNC": {
+      "to": "coingecko#bifrost-native-coin",
+      "decimals": 12,
+      "symbol": "BNC"
+    },
+    "PHA": {
+      "to": "coingecko#pha",
+      "decimals": 12,
+      "symbol": "PHA"
+    },
+    "KINT": {
+      "to": "coingecko#kintsugi",
+      "decimals": 12,
+      "symbol": "KINT"
+    },
+    "KBTC": {
+      "to": "coingecko#kintsugi-btc",
+      "decimals": 8,
+      "symbol": "KBTC"
+    }
+  },
+  "etlk": {
+    "0x3571aed54ccea5b69b00516d5a149a6baea77118": {
+      "to": "coingecko#tezos",
+      "decimals": 18,
+      "symbol": "OGV1WXTZ"
+    }
+  },
+  "mint": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0x4200000000000000000000000000000000000006": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0x05D032ac25d322df992303dCa074EE7392C117b9": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0xb62F35B9546A908d11c5803ecBBA735AbC3E3eaE": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0x03C7054BCB39f7b2e5B2c7AcB37583e32D70Cfa3": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
+    }
+  },
+  "rari": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0xf037540e51d71b2d2b1120e8432ba49f29edfbd0": {
+      "to": "coingecko#weth",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0xfbda5f676cb37624f28265a144a48b0d6e87d3b6": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    }
+  },
+  "ailayer": {
+    "0x1470a4831F76954686BfB4dE8180F7469EA8dE6F": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 18,
+      "symbol": "WBTC"
+    },
+    "0xEAa3C2fa77c306592750C9220a8f52DA8A849Ede": {
+      "to": "coingecko#bouncebit-btc",
+      "decimals": 18,
+      "symbol": "BBTC"
+    },
+    "0xc5ed6c946cdc82f4599f0f2f012e1822502e70e3": {
+      "to": "coingecko#artificial-neural-network-ordinals",
+      "decimals": 18,
+      "symbol": "ORDI"
+    },
+    "0x0a3bb08b3a15a19b4de82f8acfc862606fb69a2d": {
+      "to": "coingecko#izumi-bond-usd",
+      "decimals": 18,
+      "symbol": "iUSD"
+    }
+  },
+  "fraxtal": {
+    "0xA8a59D73388D0c4344a7b0Ba287ddb654227c38a": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2": {
+      "to": "coingecko#ethena-staked-usde",
+      "decimals": 18,
+      "symbol": "sUSDe"
+    },
+    "0xfc00000000000000000000000000000000000008": {
+      "to": "coingecko#staked-frax",
+      "decimals": 18,
+      "symbol": "sFRAX"
+    },
+    "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34": {
+      "to": "coingecko#ethena-usde",
+      "decimals": 18,
+      "symbol": "USDe"
+    }
+  },
+  "flare": {
+    "0x4a771cc1a39fdd8aa08b8ea51f7fd412e73b3d2b": {
+      "to": "asset#ethereum:0x7a486f809c952a6f8dec8cb0ff68173f2b8ed56c",
+      "decimals": 6,
+      "symbol": "USDX"
+    }
+  },
+  "aeternity": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#aeternity",
+      "decimals": 18,
+      "symbol": "AE"
+    },
+    "ct_J3zBY8xxjsRr3QojETNw48Eb38fjvEuJKkQ6KzECvubvEcvCa": {
+      "to": "coingecko#aeternity",
+      "decimals": 18,
+      "symbol": "WAE"
+    },
+    "ct_WVqAvLQpvZCgBg4faZLXA1YBj43Fxj91D33Z8K7pFsY8YCofv": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "ct_U1i8dzJTVWdnU2cv59TZQfLFpLfjqf7MQQC5ygSMKphn8Yew2": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "USDC"
+    },
+    "ct_2AiMceYFXnUdA6A9Lu2ZQ2tr2TpfbGVfkxLfBnceoWgHTKZYvc": {
+      "to": "coingecko#tether",
+      "decimals": 18,
+      "symbol": "USDT"
+    },
+    "ct_26Q5MYFKE4z4GaYLmhZiZ9AHsSVqVNZiiyzySSHTorWyr4od4K": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 18,
+      "symbol": "WBTC"
+    }
+  },
+  "ethereumclassic": {
+    "0x6c3b413c461c42a88160ed1b1b31d6f7b02a1c83": {
+      "to": "coingecko#etcpow",
+      "decimals": 18,
+      "symbol": "ETCPOW"
+    }
+  },
+  "pulse": {
+    "0x30fcb23a906493371b1721c8feb8815804808d74": {
+      "to": "coingecko#savings-dai",
+      "decimals": 18,
+      "symbol": "sDAI"
+    }
+  },
+  "saakuru": {
+    "0x557a526472372f1F222EcC6af8818C1e6e78A85f": {
+      "to": "coingecko#oasys",
+      "decimals": 18,
+      "symbol": "WOAS"
+    },
+    "0x739222D8A9179fE05129C77a8fa354049c088CaA": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    }
+  },
+  "ripple": {
+    "XRP": {
+      "to": "coingecko#ripple",
+      "decimals": 6,
+      "symbol": "XRP"
+    }
+  },
+  "reya": {
+    "0x6b48c2e6a32077ec17e8ba0d98ffc676dfab1a30": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0x3B860c0b53f2e8bd5264AA7c3451d41263C933F2": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
     }
   }
 }

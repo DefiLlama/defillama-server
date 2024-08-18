@@ -158,7 +158,7 @@ export default {
   //   }
   // },
   "swapgpt": {
-    enabled: false,
+    enabled: true,
     id: "4008",
   },
   "kanalabs": {
@@ -191,7 +191,7 @@ export default {
   },
   "aperture-swap": {
     parentId: "Aperture Finance",
-    "enabled": true,
+    "enabled": false,
     "id": "3554"
   },
   "magpie": {
@@ -217,5 +217,46 @@ export default {
   "udex-agg": {
     "enabled": true,
     "id": "4704"
+  },
+  "injex": {
+    "enabled": true,
+    "id": "4762"
+  },
+  "hop-aggregator": {
+    enabled: true,
+    id: "4791",
+  },
+  "hallswap": {
+    enabled: true,
+    id: "4824",
+  },
+  "flowx-aggregator": {
+    parentId: "FlowX Finance",
+    enabled: true,
+    id: "4825",
+  },
+  "sushiswap": {
+    "enabled": true,
+    "id": "119",
+    parentId: "Sushi",
+    protocolsData: {
+        "agg-dex": {
+            enabled: true,
+            id: "119"
+        }
+    }
+  },
+  "7k-aggregator": {
+    enabled: true,
+    id: "4868",
+  },
+  "akka": {
+    enabled: true,
+    id: "4926",
+  },
+  "cetus-aggregator": {
+      parentId: "Cetus",
+      "enabled": true,
+      "id": "4958"
   }
 } as AdaptorsConfig;

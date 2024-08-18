@@ -7,7 +7,7 @@ import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import { getProvider } from '@defillama/sdk/build/general'
 import { NNS_GOV_ID, addICPProposals } from './icp/nns'
 import { SNS_GOV_ID, addSNSProposals } from './icp/sns'
-import { addTaggrProposals } from './icp/taggr'
+import { addTaggrProposals, TAGGR_ID } from './icp/taggr'
 
 const PROPOSAL_STATES = ['Pending', 'Active', 'Canceled', 'Defeated', 'Succeeded', 'Queued', 'Expired', 'Executed']
 
@@ -97,7 +97,7 @@ export async function updateCompounds() {
   }
 
   async function updateCache(id: string) {
-    if (id === NNS_GOV_ID) return;
+    if (id === NNS_GOV_ID || id === TAGGR_ID) return;
     if (id.startsWith(SNS_GOV_ID)) return;
 
     const [chain, address] = id.split(':')
@@ -106,6 +106,12 @@ export async function updateCompounds() {
     if (!cache.proposals) cache.proposals = {}
     const timestamp = Math.floor(Date.now() / 1e3)
     const api = new sdk.ChainApi({ chain, timestamp, })
+    let currentBlock = 0
+    try {
+      currentBlock = await api.getBlock()
+    } catch (e) {
+      console.error('failed to get current block', e, chain)
+    }
     cache.id = id
     const provider = getProvider(chain)
 
@@ -216,13 +222,18 @@ export async function updateCompounds() {
           eta = 0,
           state,
         } = data
-        let start = 0
-        let end = 0
-        if (startBlock !== 0)
-          start = (await provider.getBlock(toHex(startBlock)))?.timestamp ?? 0
+        let start = data.start ?? 0
+        let end = data.end ?? 0
 
-        if (endBlock !== 0)
-          end = (await provider.getBlock(toHex(endBlock)))?.timestamp ?? 0
+        try {
+          if (!start && startBlock !== 0 && !isNaN(startBlock) && api.chain !== 'rsk')
+            start = (await provider.getBlock(startBlock))?.timestamp ?? 0
+
+          if (!end && endBlock !== 0 && !isNaN(endBlock) && (currentBlock > 0 && endBlock < currentBlock) && api.chain !== 'rsk')
+            end = (await provider.getBlock(endBlock))?.timestamp ?? 0
+        } catch (e) {
+          console.error('error while fetching timestamp info', startBlock, endBlock, api.chain, e)
+        }
 
         const scores = [+forVotes, +againstVotes, +abstainVotes,]
         const scores_total = scores.reduce((acc, i) => acc + i, 0)

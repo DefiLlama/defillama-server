@@ -48,8 +48,8 @@ export default {
     },
     "smbswap": {
         "enabled": true,
-        parentId: "SMBSwap",
-        id: "1632",
+        parentId: "1632",
+        id: "smbswap",
         protocolsData: {
             v2: {
                 enabled: true,
@@ -72,6 +72,7 @@ export default {
         "id": "3361",
     },
     "blasterswap": {
+        parentId: "Blasterswap",
         "enabled": true,
         "id": "4296",
     },
@@ -164,5 +165,104 @@ export default {
     "physica-finance": {
         enabled: true,
         id: "4719",
+        protocolsData: {
+            "v3": {
+                enabled: true,
+                id: "4719",
+            }
+        }
+    },
+    "bitgenie-amm": {
+        enabled: true,
+        id: "4573",
+    },
+    "aerodrome-slipstream": {
+        parentId: "Aerodrome",
+        enabled: true,
+        id: "4524"
+    },
+    "capybara-exchange": {
+        enabled: true,
+        id: "4747",
+    },
+    "vanillaswap-v2": {
+        parentId: "VanillaSwap",
+        enabled: true,
+        id: "4600",
+    },
+    "vanillaswap-v3": {
+        parentId: "VanillaSwap",
+        enabled: true,
+        id: "4601",
+    },
+    "maverick-v2": {
+        parentId: "Maverick Protocol",
+        enabled: true,
+        id: "4752"
+    },
+    "thruster-v3": {
+        parentId: "Thruster",
+        enabled: true,
+        id: "4199",
+    },
+    "thruster-v2": {
+        parentId: "Thruster",
+        enabled: true,
+        id: "4207",
+    },
+    "balanced": {
+        parentId: "BalancedDAO",
+        enabled: true,
+        id: "448",
+    },
+    "voltage-v3": {
+        parentId: "Voltage",
+        enabled: true,
+        id: "4188",
+    },
+    "dusa": {
+        enabled: true,
+        id: "4788",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1718841600": true,
+                "1718755200": true,
+            }
+        }
+    },
+    "traderjoe-lb-v2-2": {
+        parentId: "Trader Joe",
+        enabled: true,
+        id: "4794",
+    },
+    "carbondefi": {
+        enabled: true,
+        id: "2890"
+    },
+    "glyph-exchange-v4": {
+        parentId: "Glyph Exchange",
+        enabled: true,
+        id: "4880",
+        protocolsData: {
+            "classic": {
+                enabled: true,
+                id: "4880",
+            }
+        }
+    },
+    "dexswap": {
+        parentId: "DexFinance",
+        enabled: true,
+        id: "3277",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722211200": true
+            }
+        }
+    },
+    "blasterswap-v3": {
+        parentId: "Blasterswap",
+        enabled: true,
+        id: "4728",
     }
 } as AdaptorsConfig

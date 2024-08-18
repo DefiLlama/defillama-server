@@ -4,6 +4,7 @@ import { initializeTVLCacheDB } from "./db";
 import setTvlRoutes from "./routes";
 import process from "process";
 import fs from 'fs'
+import { RUN_TYPE } from "./utils";
 
 const webserver = new HyperExpress.Server()
 
@@ -21,7 +22,7 @@ async function main() {
 
   await Promise.all([
     initializeTVLCacheDB({ isApi2Server: true }),
-    initCache({ cacheType: 'api-server' }),
+    initCache({ cacheType: RUN_TYPE.API_SERVER }),
   ])
 
   const router = new HyperExpress.Router()
@@ -59,3 +60,13 @@ function shutdown() {
 }
 
 main()
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  // process.exit(1);
+})
+
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception thrown', error);
+  process.exit(1);
+})

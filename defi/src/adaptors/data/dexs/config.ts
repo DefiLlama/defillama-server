@@ -242,11 +242,12 @@ export default {
         }
     },
     "ref-finance": {
-        "enabled": true,
+        "enabled": false,
         "id": "541"
     },
     "solidly": {
         "enabled": true,
+         parentId: "Solidly Labs",
         "id": "1407"
     },
     "orca": {
@@ -373,7 +374,7 @@ export default {
         "id": "1884"
     },
     "nomiswap": {
-        "enabled": true,
+        "enabled": false,
         "id": "1823"
     },
     "beethoven-x": {
@@ -672,7 +673,7 @@ export default {
         "id": "261"
     },
     "xexchange": {
-        "enabled": false,
+        "enabled": true,
         "id": "854"
     },
     "defichain-dex": {
@@ -897,6 +898,7 @@ export default {
         "id": "1412"
     },
     "icecreamswap": {
+        parentId: "IcecreamSwap",
         disabled: true,
         "enabled": true,
         "id": "1990"
@@ -1041,8 +1043,15 @@ export default {
         "id": "2299"
     },
     "cetus": {
+        parentId: "Cetus",
         "enabled": true,
-        "id": "2289"
+        "id": "2289",
+        protocolsData: {
+            "cetus": {
+                "id": "2289",
+                enabled: true,
+            }
+        }
     },
     "opx-finance": {
         "enabled": true,
@@ -1110,7 +1119,7 @@ export default {
         "id": "1269"
     },
     "sundaeswap": {
-        "enabled": false,
+        "enabled": true,
         "id": "1302"
     },
     "wx.network": {
@@ -1268,6 +1277,7 @@ export default {
     },
     "solidlydex": {
         "enabled": true,
+        parentId: "Solidly Labs",
         "id": "2400"
     },
     "defibox": {
@@ -1416,6 +1426,7 @@ export default {
         id: "1778"
     },
     "maverick": {
+        parentId: "Maverick Protocol",
         enabled: true,
         id: "2644"
     },
@@ -1559,7 +1570,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": true,
+        "enabled": false,
         "id": "2864"
     },
     "astroswap": {
@@ -1625,6 +1636,7 @@ export default {
         "id": "2926"
     },
     "clober": {
+        parentId: "Clober",
         "enabled": true,
         "id": "2541"
     },
@@ -1985,6 +1997,13 @@ export default {
                 "id": "3365",
                 "enabled": true,
             }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1723075200": true,
+                "1722988800": true,
+                "1722902400": true,
+            },
         }
     },
     "meridian-trade": {
@@ -2173,6 +2192,7 @@ export default {
         "id": "3650"
     },
     "shimmersea": {
+        parentId: "MagicSea",
         "enabled": true,
         "id": "3571"
     },
@@ -2226,7 +2246,7 @@ export default {
     },
     "metavault-v3": {
         parentId: "Metavault",
-        "enabled": true,
+        "enabled": false,
         "id": "3750",
         protocolsData: {
             "v3": {
@@ -2370,7 +2390,7 @@ export default {
     },
     "aftermath-fi-amm": {
         parentId: "Aftermath Finance",
-        "enabled": true,
+        "enabled": false,
         "id": "3259"
     },
     "sanctum": {
@@ -2670,7 +2690,7 @@ export default {
         id: "4510"
     },
     "glowswap": {
-        enabled: true,
+        enabled: false,
         id: "4515"
     },
     "merlinswap": {
@@ -2704,7 +2724,7 @@ export default {
         }
     },
     "fenix-finance": {
-        enabled: true,
+        enabled: false,
         id: "4563"
     },
     "nuri-exchange-v1": {
@@ -2720,11 +2740,6 @@ export default {
     "apestore": {
         enabled: true,
         id: "4584"
-    },
-    "aerodrome-slipstream": {
-        parentId: "Aerodrome",
-        enabled: true,
-        id: "4524"
     },
     "cropper-clmm": {
         parentId: "Cropper",
@@ -2785,5 +2800,94 @@ export default {
         parentId: "Keller Finance",
         enabled: true,
         id: "4583"
+    },
+    "dragonswap-sei": {
+        enabled: true,
+        id: "4720"
+    },
+    "basin": {
+        id: "4703",
+        enabled: true,
+        protocolsData: {
+            "spot": {
+                "id": "4703",
+                "enabled": true,
+            }
+        }
+    },
+    "polkadex": {
+        enabled: true,
+        id: "4699"
+    },
+    "nostra-pools": {
+        parentId: "Nostra",
+        enabled: true,
+        id: "4053"
+    },
+    "clober-v2": {
+        parentId: "Clober",
+        enabled: true,
+        id: "4764"
+    },
+    "bladeswap": {
+        parentId: "BladeSwap",
+        enabled: true,
+        id: "4206",
+        protocolsData: {
+            "v2": {
+                "id": "4206",
+                "enabled": true,
+            },
+            "CL": {
+                "id": "4746",
+                "enabled": true,
+            }
+        }
+    },
+    "stabble": {
+        enabled: true,
+        id: "4734"
+    },
+    "aktionariat": {
+        enabled: true,
+        id: "2782"
+    },
+    "xei": {
+        enabled: true,
+        id: "4836"
+    },
+    "eddyfinance-v2": {
+        enabled: true,
+        id: "4120"
+    },
+    "dedust": {
+        enabled: true,
+        id: "2617",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1721606400": true,
+            }
+        }
+    },
+    "kriya-clmm": {
+        parentId: "Kriya",
+        enabled: true,
+        id: "4895"
+    },
+    "yakafinance": {
+        enabled: true,
+        id: "4871"
+    },
+    "spacewhale": {
+        enabled: true,
+        id: "4930"
+    },
+    "saturnswap": {
+        enabled: true,
+        id: "4946"
+    },
+    "astrolescent": {
+        enabled: true,
+        id: "3897"
     }
 } as AdaptorsConfig

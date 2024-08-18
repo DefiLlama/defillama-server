@@ -73,6 +73,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     BIFI: "0x99c409e5f62e4bd2ac142f17cafb6810b8f0baae",
     MINTME: "0x7d05d38e6109a3aeeebf0a570eb8f6856cb4b55e",
     GRAIN: "0x80bb30d62a16e1f2084deae84dc293531c3ac3a1",
+    //'SolvBTC.BBN': "0x346c574c56e1a4aaa8dc88cda8f7eb12b39947ab"
   },
   bsc: {
     BGEO: '0xc342774492b54ce5f8ac662113ed702fc1b34972',
@@ -274,6 +275,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   coingecko: {
     PREMIO: "premio",
     TFBX: "truefeedbackchain",
+    //solvBTCBBN: "solv-protocol-solvbtc-bbn",
   },
   bittorrent: {
     WBTT: "0x8d193c6efa90bcff940a98785d1ce9d093d3dc8a",
@@ -284,6 +286,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   blast:{
     SSS: "0xdfdcdbc789b56f99b0d0692d14dbc61906d9deed",
   },
+ // merlin: {
+ //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"
+ // }
 };
 
 export const distressedAssets = Object.fromEntries(

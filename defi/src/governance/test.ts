@@ -18,9 +18,22 @@ main().then(() => {
 })
 
 async function main() {
-  await Promise.all([
-    updateTallys(),
-    updateSnapshots(),
-    updateCompounds(),
-  ])
+  const funcs = {
+    updateTallys,
+    updateSnapshots,
+    updateCompounds,
+  }
+
+  const promises = Object.entries(funcs).map(async ([key, fun]) => {
+    const timeKey = 'Runtime_type_' + key
+    console.time(timeKey)
+    try {
+      await fun()
+    } catch (e) {
+      console.error('Error fetching data for', key)
+      console.error((e as any)?.message ?? e)
+    }
+    console.timeEnd(timeKey)
+  })
+  await Promise.all(promises)
 }

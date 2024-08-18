@@ -11,6 +11,7 @@ import { successResponse, errorResponse, errorWrapper as ew } from "./utils";
 import { getSimpleChainDatasetInternal } from "../../getSimpleChainDataset";
 import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
 import { getCurrentUnixTimestamp } from "../../utils/date";
+import { getTweetStats } from "../../twitter/db";
 import { getClosestProtocolItem } from "../db";
 import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { computeInflowsData } from "../../getInflows";
@@ -81,30 +82,33 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/emission/:name", emissionProtocolHandler)
   router.get("/chainAssets", r2Wrapper({ endpoint: 'chainAssets' }))
 
+  router.get("/twitter/overview", ew(getTwitterOverview))
+  router.get("/twitter/user/:handle", ew(getTwitterData))
+
   router.get("/charts", ew(getChartsData))
   router.get("/charts/:name", ew(getChartsData))
   router.get("/v2/historicalChainTvl", ew(getHistoricalChainTvlData))
   router.get("/v2/historicalChainTvl/:name", ew(getHistoricalChainTvlData))
 
-  // router.get("/overview/:type", ew(getOverviewHandler))
-  // router.get("/overview/:type/:chain", ew(getOverviewHandler))
-  // router.get("/summary/:type/:name", ew(getDimensionProtocolHandler))
-/* 
-  router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
-
-  router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set
-  router.get("/activeUsers", ew(getActiveUsersHandler)) // TODO: ensure that env vars are set
-
-  router.post("/reportError", ew(reportErrorHandler)) // TODO: ensure that env vars are set
-  router.post("/storeAggregatorEvent", ew(storeAggregatorEventHandler)) // TODO: ensure that env vars are set
-  router.get("/getSwapDailyVolume", ew(getSwapDailyVolumeHandler)) // TODO: ensure that env vars are set
-  router.get("/getSwapTotalVolume", ew(getSwapTotalVolumeHandler)) // TODO: ensure that env vars are set
-  router.get("/getSwapsHistory", ew(getSwapsHistoryHandler)) // TODO: ensure that env vars are set
-  router.get("/getLatestSwap", ew(getLatestSwapHandler)) // TODO: ensure that env vars are set
-  router.get("/getBlackListedTokens", ew(getBlackListedTokensHandler)) // TODO: ensure that env vars are set
-  router.post("/storeBlacklistPermit", ew(storeBlacklistPermitHandler)) // TODO: ensure that env vars are set
-  router.post("/historicalLiquidity/:token", ew(getHistoricalLiquidityHandler)) // TODO: ensure that env vars are set
- */
+  router.get("/overview/:type", ew(getOverviewHandler))
+  router.get("/overview/:type/:chain", ew(getOverviewHandler))
+  router.get("/summary/:type/:name", ew(getDimensionProtocolHandler))
+  /* 
+    router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
+  
+    router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set
+    router.get("/activeUsers", ew(getActiveUsersHandler)) // TODO: ensure that env vars are set
+  
+    router.post("/reportError", ew(reportErrorHandler)) // TODO: ensure that env vars are set
+    router.post("/storeAggregatorEvent", ew(storeAggregatorEventHandler)) // TODO: ensure that env vars are set
+    router.get("/getSwapDailyVolume", ew(getSwapDailyVolumeHandler)) // TODO: ensure that env vars are set
+    router.get("/getSwapTotalVolume", ew(getSwapTotalVolumeHandler)) // TODO: ensure that env vars are set
+    router.get("/getSwapsHistory", ew(getSwapsHistoryHandler)) // TODO: ensure that env vars are set
+    router.get("/getLatestSwap", ew(getLatestSwapHandler)) // TODO: ensure that env vars are set
+    router.get("/getBlackListedTokens", ew(getBlackListedTokensHandler)) // TODO: ensure that env vars are set
+    router.post("/storeBlacklistPermit", ew(storeBlacklistPermitHandler)) // TODO: ensure that env vars are set
+    router.post("/historicalLiquidity/:token", ew(getHistoricalLiquidityHandler)) // TODO: ensure that env vars are set
+   */
 
 
   function defaultFileHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -164,6 +168,20 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
       console.error(e);
       return errorResponse(res, 'Internal server error', { statusCode: 500 })
     }
+  }
+
+
+  function getTwitterOverview(_req: HyperExpress.Request, res: HyperExpress.Response) {
+    return successResponse(res, cache.twitterOverview, 4 * 60 * 60);
+  }
+
+  async function getTwitterData(req: HyperExpress.Request, res: HyperExpress.Response) {
+    const tweetHandle = req.path_parameters.handle
+    let data = cache.twitterOverview[tweetHandle]
+    if (!data) return successResponse(res, {}, 4 * 60 * 60)
+    data = { ...data }
+    data.tweetStats = await getTweetStats(tweetHandle)
+    return successResponse(res, data, 24 * 60 * 60);
   }
 
   router.get('/debug-pg/*', debugHandler)

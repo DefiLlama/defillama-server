@@ -1,3 +1,4 @@
+import * as sdk from "@defillama/sdk";
 import { Write } from "../../utils/dbInterfaces";
 import { getApi } from "../../utils/sdk";
 import {
@@ -5,38 +6,45 @@ import {
   getTokenAndRedirectData,
 } from "../../utils/database";
 import { request } from "graphql-request";
+import { getCurrentUnixTimestamp } from "../../../utils/date";
 
 export const supportedChains = [
   {
     name: "Polygon",
-    subgraphEndpoint:
-      "https://api.thegraph.com/subgraphs/name/steerprotocol/steer-protocol-polygon",
+    subgraphEndpoint: sdk.graph.modifyEndpoint(
+      "uQxLz6EarmJcr2ymRRmTnrRPi8cCqas4XcPQb71HBvw",
+    ),
     chainId: 137,
     merkl: true,
     identifier: "polygon",
   },
   {
     name: "Arbitrum",
-    subgraphEndpoint:
-      "https://api.thegraph.com/subgraphs/name/steerprotocol/steer-protocol-arbitrum",
+    subgraphEndpoint: sdk.graph.modifyEndpoint(
+      "HVC4Br5yprs3iK6wF8YVJXy4QZWBNXTCFp8LPe3UpcD4",
+    ),
     chainId: 42161,
     merkl: true,
     identifier: "arbitrum",
   },
-  // {
-  //     name: 'Optimism',
-  //     subgraphEndpoint: 'https://api.thegraph.com/subgraphs/name/steerprotocol/steer-protocol-optimism',
-  //     chainId: 10,
-  //     merkl: true,
-  //     identifier: 'optimism'
-  // },
-  // {
-  //     name: 'Binance',
-  //     subgraphEndpoint: 'https://api.thegraph.com/subgraphs/name/steerprotocol/steer-protocol-bsc',
-  //     chainId: 56,
-  //     merkl: false,
-  //     identifier: 'bsc'
-  // },
+  {
+    name: "Optimism",
+    subgraphEndpoint: sdk.graph.modifyEndpoint(
+      "GgW1EwNARL3dyo3acQ3VhraQQ66MHT7QnYuGcQc5geDG",
+    ),
+    chainId: 10,
+    merkl: true,
+    identifier: "optimism",
+  },
+  {
+    name: "Binance",
+    subgraphEndpoint: sdk.graph.modifyEndpoint(
+      "GLDP56fPGDz3MtmhtfTkz5CxWiqiNLACVrsJ9RqQeL4U",
+    ),
+    chainId: 56,
+    merkl: false,
+    identifier: "bsc",
+  },
   // {
   //     name: 'Evmos',
   //     subgraphEndpoint: 'https://subgraph.satsuma-prod.com/769a117cc018/steer/steer-protocol-evmos/api',
@@ -46,7 +54,7 @@ export const supportedChains = [
   // },
   // {
   //     name: 'Avalanche',
-  //     subgraphEndpoint: 'https://api.thegraph.com/subgraphs/name/steerprotocol/steer-protocol-avalanche',
+  //     subgraphEndpoint: sdk.graph.modifyEndpoint('GZotTj3rQJ8ZqVyodtK8TcnKcUxMgeF7mCJHGPYbu8dA'),
   //     chainId: 43114,
   //     merkl: false,
   //     identifier: 'avax'
@@ -102,7 +110,7 @@ export const supportedChains = [
   // },
   // {
   //   name: 'Celo',
-  //   subgraphEndpoint: 'https://api.thegraph.com/subgraphs/name/rakeshbhatt10/steer-test-celo',
+  //   subgraphEndpoint: sdk.graph.modifyEndpoint('DDwt4z55qLHPNmasiQXFH3nRjgCBrBhsiz3uEqKRJoa'),
   //   chainId: 42220,
   //   merkle: false,
   //   identifier: 'celo'
@@ -112,9 +120,13 @@ export const supportedChains = [
 export default async function getTokenPrices(chain: any, timestamp: number) {
   const api = await getApi(chain.identifier, timestamp);
 
-  const query = `{vaults(first: 1000, where: {totalLPTokensIssued_not: "0", lastSnapshot_not: "0"}) {id}}`;
-  const data: any = await request(chain.subgraphEndpoint, query);
+  const query = `{vaults(
+  first: 1000, 
+  where: {totalLPTokensIssued_not: "0", lastSnapshot_not: "0", createdAt_lt: ${
+    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp
+  }}) {id}}`;
 
+  const data: any = await request(chain.subgraphEndpoint, query);
   const vaults = data.vaults.map((vault: any) => vault.id);
 
   const writes: Write[] = [];

@@ -2414,6 +2414,7 @@ export default {
         id: "5007"
     },
     "sunpump": {
+        parentId: "SUN.io",
         enabled: true,
         id: "4979"
     },

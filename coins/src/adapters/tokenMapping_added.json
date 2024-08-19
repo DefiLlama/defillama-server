@@ -3049,7 +3049,7 @@
   "cardano": {
     "ADA": {
       "name": "cardano",
-      "decimals": "0",
+      "decimals": "6",
       "symbol": "ADA",
       "to": "coingecko#cardano"
     }

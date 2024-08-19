@@ -2814,10 +2814,10 @@ export const chainCoingeckoIds = {
     url: "https://www.degen.tips"
   },
   "HAQQ": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
-    categories: ["EVM"],
+    geckoId: "islamic-coin",
+    symbol: "ISLM",
+    cmcId: "26220",
+    categories: ["EVM", "Cosmos"],
     twitter: "The_HaqqNetwork",
     url: "https://haqq.network/",
     github: ["haqq-network"],

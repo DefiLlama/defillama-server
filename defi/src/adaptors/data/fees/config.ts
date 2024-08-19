@@ -2442,5 +2442,9 @@ export default {
     "thegraph": {
         enabled: true,
         id: "5010"
+    },
+    "demented-games": {
+        enabled: true,
+        id: "5013"
     }
 } as AdaptorsConfig

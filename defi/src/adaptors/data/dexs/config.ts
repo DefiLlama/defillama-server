@@ -2893,5 +2893,9 @@ export default {
     "oraidex-v3": {
         enabled: true,
         id: "5000"
+    },
+    "c3-exchange": {
+        enabled: true,
+        id: "4670"
     }
 } as AdaptorsConfig

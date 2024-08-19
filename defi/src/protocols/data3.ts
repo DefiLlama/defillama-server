@@ -52443,6 +52443,27 @@ const data3: Protocol[] = [
     twitter: "Playdemented",
     audit_links: [],
   },
+  {
+    id: "5014",
+    name: "Random Reward",
+    address: null,
+    symbol: "-",
+    url: "https://www.randomreward.xyz",
+    description: "Random Rewarder accepts incoming ETH transfers, signing up any address who sends a sufficient amount of ETH for a random reward at the end of a period.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/random-reward.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "RandomReward/index.js",
+    twitter: null,
+    listedAt: 1724075073
+  },
 ];
 
 export default data3;

@@ -25,15 +25,9 @@ export default {
     "id":"4447",
     enabled: true,
   },
-  "unidex": {
+  "unidex-agg-perp": {
     "enabled": true,
-    "id": "5012",
-    protocolsData: {
-        "unidex-agg-derivative": {
-            "enabled": true,
-            "id": "5012"
-        }
-    }
+    "id": "5012"
   },
   "vooi": {
     "enabled": true,

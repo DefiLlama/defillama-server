@@ -533,6 +533,11 @@ export default {
                 id: "2615",
                 enabled: true,
                 displayName: "KyberSwap - Elastic"
+            },
+            "kyberswap-aggregator": {
+                id: "3982",
+                enabled: true,
+                displayName: "KyberSwap Aggregator"
             }
         }
     },

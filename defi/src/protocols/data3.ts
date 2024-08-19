@@ -52386,7 +52386,7 @@ const data3: Protocol[] = [
     url: "https://lisk.com",
     description: "We offer Web3 founders in Emerging Markets the ultimate ecosystem to bring their real-world applications to life.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}lisk-bridge.jpg`,
+    logo: `${baseIconsUrl}/lisk-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "lisk",

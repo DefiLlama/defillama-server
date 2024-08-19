@@ -52378,6 +52378,24 @@ const data3: Protocol[] = [
     audit_links: [],
     github: ["graphprotocol"]
   },
+  {
+    id: "5011",
+    name: "4Cast",
+    address: null,
+    symbol: "-",
+    url: "https://4cast.win",
+    description: "4CAST is the Home of Degen Mini Games on Solana. Dive into diverse mini-games to earn juicy rewards whether you win or lose. Rack up 4Cast Gold with every move, and get showered with rewards at the end of each season.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/4cast.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "4castdotwin",
+  },
 ];
 
 export default data3;

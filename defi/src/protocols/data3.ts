@@ -52422,6 +52422,27 @@ const data3: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#unidex",
   },
+  {
+    id: "5013",
+    name: "Demented Games",
+    address: null,
+    symbol: "-",
+    url: "https://demented.games/",
+    description: "Demented team has vast experience at building complex infrastructure and well known protocols focused on DeFi, but now its time to level up and bring the crypto community a fun to play game.",
+    chain: "Fuse",
+    logo: `${baseIconsUrl}/demented-games.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Fuse"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "Playdemented",
+    audit_links: [],
+  },
 ];
 
 export default data3;

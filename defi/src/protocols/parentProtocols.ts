@@ -5034,6 +5034,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MorphexFTM",
   },
+  {
+    id: "parent#unidex",
+    name: "UniDex",
+    url: "https://unidex.exchange",
+    description:
+      "UniDex is a DeFi aggregation layer making interesting trading products such as leverage trading aggregation, derivatives, and other trading products.",
+    logo: `${baseIconsUrl}/unidex.jpg`,
+    gecko_id: "unidex",
+    cmcId: "1058",
+    chains: [],
+    twitter: "UniDexFinance",
+    governanceID: ["snapshot:unidexapp.eth"],
+  },
 ];
 
 export default parentProtocols;

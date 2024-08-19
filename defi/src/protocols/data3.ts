@@ -52378,6 +52378,28 @@ const data3: Protocol[] = [
     audit_links: [],
     github: ["graphprotocol"]
   },
+  {
+    id: "5011",
+    name: "Lisk Bridge",
+    address: "0x6033f7f88332b8db6ad452b7c6d5bb643990ae3f",
+    symbol: "LISK",
+    url: "https://lisk.com",
+    description: "We offer Web3 founders in Emerging Markets the ultimate ecosystem to bring their real-world applications to life.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}lisk-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "lisk",
+    cmcId: "1214",
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "LiskHQ",
+    audit_links: [],
+    github: ["LiskHQ"]
+  },
 ];
 
 export default data3;

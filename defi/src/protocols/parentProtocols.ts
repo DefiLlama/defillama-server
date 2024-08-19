@@ -5013,7 +5013,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#dexalot",
     name: "Dexalot",
-    url: "https://dexalot.com",
+    url: "https://app.dexalot.com/",
     description:
       "Dexalot is an omni-chain order book DEX with zero slippage, near zero gas fees, and is on its own app-specific chain, allowing users to deposit from and withdraw to multiple chains. Dexalot is also fully on-chain and non-custodial.",
     logo: `${baseIconsUrl}/dexalot.png`,

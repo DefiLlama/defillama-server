@@ -63,7 +63,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
         params: [token, config[chain].quoteToken],
       })),
     })
-  ).map((p: any) => p.price);
+  ).map((p: any) => p.price / 1e18);
 
   // USD+
   const usdplus = config[chain].usdplus;

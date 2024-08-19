@@ -533,11 +533,6 @@ export default {
                 id: "2615",
                 enabled: true,
                 displayName: "KyberSwap - Elastic"
-            },
-            "kyberswap-aggregator": {
-                id: "3982",
-                enabled: true,
-                displayName: "KyberSwap Aggregator"
             }
         }
     },
@@ -2446,5 +2441,10 @@ export default {
     "demented-games": {
         enabled: true,
         id: "5013"
+    },
+    "kyberswap-aggregator": {
+        parentId: "KyberSwap",
+        id: "3982",
+        enabled: true
     }
 } as AdaptorsConfig

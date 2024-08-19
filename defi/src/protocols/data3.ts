@@ -52400,6 +52400,28 @@ const data3: Protocol[] = [
     audit_links: [],
     github: ["LiskHQ"]
   },
+  {
+    id: "5012",
+    name: "Unidex Agg Perp",
+    address: "fantom:0x2130d2a1e51112d349ccf78d2a1ee65843ba36e0",
+    symbol: "UNIDX",
+    url: "https://unidex.exchange",
+    description: "UniDex is a DeFi aggregation layer making interesting trading products such as leverage trading aggregation, derivatives, and other trading products.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/unidex-agg-perp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum", "Optimism"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "UniDexFinance",
+    audit_links: [],
+    parentProtocol: "parent#unidex",
+  },
 ];
 
 export default data3;

@@ -71,6 +71,7 @@ export const autoBackfill = async (argv: string[]) => {
     if (argv[0] !== '')
         rl.question('Do you wish to continue? y/n\n', async function (yn) {
             if (yn.toLowerCase() === 'y') {
+                backfillEvent.backfill = backfillEvent.backfill ? backfillEvent.backfill?.reverse() as any[] : []
                 await executeAsyncBackfill(backfillEvent)
                 /* for (let i = 70; i < backfillEvent.backfill.length; i += 50) {
                     const smallbackfillEvent = {

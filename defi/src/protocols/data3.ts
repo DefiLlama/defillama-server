@@ -18879,14 +18879,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3530",
-    name: "BMX",
+    name: "BMX Classic", //previous BMX 
     address: "base:0x548f93779fbc992010c07467cbaf329dd5f059b7",
     symbol: "BMX",
     url: "https://bmx.morphex.trade",
     description:
       "BMX by Morphex is a decentralized perpetual exchange focused on bringing the highest capital efficiency to liquidity providers.",
     chain: "Base",
-    logo: `${baseIconsUrl}/bmx.jpg`,
+    logo: `${baseIconsUrl}/bmx-classic.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -18897,7 +18897,7 @@ const data3: Protocol[] = [
     oracles: ["Chainlink", "Pyth"],
     forkedFrom: ["GMX V1"],
     twitter: "MorphexFTM",
-    parentProtocol: "parent#morphex",
+    parentProtocol: "parent#bmx",
     listedAt: 1695037950,
   },
   {
@@ -49967,14 +49967,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4903",
-    name: "Freestyle",
+    name: "BMX Freestyle",
     address: null,
     symbol: "-",
     url: "https://www.bmx.trade",
     description:
       "Freestyle is a SYMMIO (intent-based) frontend for derivatives trading that we operate alongside our Classic GMX spot and margin markets",
     chain: "Base",
-    logo: `${baseIconsUrl}/freestyle.jpg`,
+    logo: `${baseIconsUrl}/bmx-freestyle.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -49985,7 +49985,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "freestyle/index.js",
     twitter: "MorphexBMX",
-    parentProtocol: "parent#morphex",
+    parentProtocol: "parent#bmx",
     listedAt: 1721383332,
   },
   {

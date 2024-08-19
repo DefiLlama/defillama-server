@@ -5022,6 +5022,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dexalot",
   },
+  {
+    id: "parent#bmx",
+    name: "BMX",
+    url: "https://bmx.morphex.trade",
+    description:
+      "BMX by Morphex is a decentralized perpetual exchange focused on bringing the highest capital efficiency to liquidity providers.",
+    logo: `${baseIconsUrl}/bmx.jpg`,
+    gecko_id: "bmx",
+    cmcId: null,
+    chains: [],
+    twitter: "MorphexFTM",
+  },
 ];
 
 export default parentProtocols;

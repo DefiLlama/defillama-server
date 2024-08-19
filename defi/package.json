@@ -23,7 +23,6 @@
     "delete-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/deleteTvl.ts",
     "displayData": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/displayData.ts",
     "customFill": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/customFill.ts",
-    "deleteAtDate": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/deleteAtDate.ts",
     "backfill-dex-script": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts",
     "backfill-dex-local-script": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts",
     "backfill-dex": "npm run update-submodules && npm run backfill-dex-script",

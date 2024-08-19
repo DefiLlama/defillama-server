@@ -2889,5 +2889,9 @@ export default {
     "astrolescent": {
         enabled: true,
         id: "3897"
+    },
+    "oraidex-v3": {
+        enabled: true,
+        id: "5000"
     }
 } as AdaptorsConfig

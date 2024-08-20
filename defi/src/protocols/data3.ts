@@ -52587,6 +52587,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "genesis-dao/index.js",
     twitter: "0xGenesisDAO", 
+    github: ["0xGenesisDAO"],
     listedAt: 1724177568
   },
 ];

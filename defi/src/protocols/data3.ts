@@ -43172,7 +43172,6 @@ const data3: Protocol[] = [
     parentProtocol: "parent#vanillaswap",
     listedAt: 1715689629,
   },
-  /*
   {
     id: "4602",
     name: "vfat.io",
@@ -43201,7 +43200,6 @@ const data3: Protocol[] = [
     github: ["vfat-io"],
     listedAt: 1715694889,
   },
-  */
   {
     id: "4603",
     name: "Ceto Swap",

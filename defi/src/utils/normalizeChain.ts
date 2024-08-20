@@ -3295,7 +3295,7 @@ export function transformNewChainName(chain: string) {
       return "Rootstock"
     case "Orai":
       return "Oraichain"
-    case "ZKsync":
+    case "zkSync":
       return "ZKsync Lite"
     case "polygon_zkevm":
       return "Polygon zkEVM"
@@ -3329,6 +3329,8 @@ export function transformNewChainName(chain: string) {
       return "Persistence One"
     case "Klaytn":
       return "Kaia"
+    case "zkSync Era":
+      return "ZKsync Era"
     default:
       return chain
   }
@@ -3441,9 +3443,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "ethereumclassic":
       return "EthereumClassic"
     case "zksync":
-      return useNewChainNames ? "ZKsync Lite" : "ZKsync"
+      return useNewChainNames ? "ZKsync Lite" : "zkSync"
     case "zksync era":
-      return "ZKsync Era"
+      return useNewChainNames ? "ZKsync Era" : "zkSync Era"
     case "bifrost network":
       return "Bifrost Network"
     case "bevm":

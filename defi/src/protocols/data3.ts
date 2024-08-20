@@ -52568,6 +52568,27 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "seiyandotfun",
   },
+  {
+    id: "5020",
+    name: "Genesis DAO",
+    address: "0x99999999999997fceB5549c58aB66dF52385ca4d",
+    symbol: "GEN",
+    url: "https://www.genesisdao.io",
+    description: "Genesis is a treasury-backed DeFi protocol with variable on-chain APY rewards",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/genesis-dao.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "genesis-dao/index.js",
+    twitter: "0xGenesisDAO", 
+    listedAt: 1724177568
+  },
 ];
 
 export default data3;

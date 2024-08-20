@@ -1,8 +1,9 @@
 import BigNumber from "bignumber.js";
-import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, zero, protocolBridgeIds } from "./constants";
+import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, zero, protocolBridgeIds, allChainKeys } from "./constants";
 import fetchStoredTvls from "./outgoing";
 import { AllProtocols, ChainTokens } from "./types";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
+import fetch from "node-fetch";
 
 const searchWidth = 10800; // 3hr
 const period = 86400; // 24hr
@@ -10,15 +11,30 @@ const period = 86400; // 24hr
 export default async function main(timestamp: number): Promise<ChainTokens> {
   const [nowRaw, prevRaw, nowUsd, prevUsd] = await Promise.all([
     fetchStoredTvls(timestamp, searchWidth, false, false),
-    fetchStoredTvls(timestamp - period, searchWidth, false, false),
+    fetchStoredTvls(timestamp - period, searchWidth, false, false).catch((e: any) =>
+      retryWithoutNewIds(e, timestamp, false)
+    ),
     fetchStoredTvls(timestamp, searchWidth, false),
-    fetchStoredTvls(timestamp - period, searchWidth, false),
+    fetchStoredTvls(timestamp - period, searchWidth, false).catch((e: any) => retryWithoutNewIds(e, timestamp, true)),
   ]);
 
   if (nowRaw == null || prevRaw == null || nowUsd == null || prevUsd == null)
     throw new Error(`TVL data missing for flows at ${timestamp}`);
   const { tokenDiff, prices } = tokenDiffs(nowRaw, prevRaw, nowUsd, prevUsd);
   return tokenUsds(tokenDiff, prices);
+}
+
+const oldFlowsPromise = fetch(`https://api.llama.fi/chain-assets/flows/24h`).then((r) => r.json());
+
+async function retryWithoutNewIds(e: any, timestamp: number, usd: boolean) {
+  const failString: string = e.message.substring(e.message.indexOf("ids ") + 4);
+  const idsFailed: string[] = failString.split(" ");
+  const oldFlows = await oldFlowsPromise;
+  idsFailed.map((idFailed) => {
+    const chainFailed = canonicalBridgeIds[idFailed] ?? protocolBridgeIds[idFailed];
+    if (chainFailed in oldFlows) throw new Error(`Bridge id ${idFailed} (${chainFailed}) is failing flows`);
+  });
+  return fetchStoredTvls(timestamp - period, searchWidth, false, usd, idsFailed);
 }
 
 function tokenDiffs(

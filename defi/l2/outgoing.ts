@@ -11,23 +11,30 @@ export default async function fetchBridgeUsdTokenTvls(
   timestamp: number,
   searchWidth: number,
   persist: boolean = true,
-  usd: boolean = true
+  usd: boolean = true,
+  excludedIds: string[] = []
 ): Promise<AllProtocols | void> {
   const allProtocolsTemp: AllProtocols = persist ? allProtocols : {};
   if (Object.keys(allProtocolsTemp).length) return;
   const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds)];
+  const filteredIds: string[] = [];
+  ids.map((i: string) => (excludedIds.includes(i) ? [] : filteredIds.push(i)));
   const tokenBalances: any[] = await Promise.all(
-    ids.map((i: string) =>
+    filteredIds.map((i: string) =>
       getTVLOfRecordClosestToTimestamp(`hourly${usd ? "Usd" : ""}TokensTvl#${i}`, timestamp, searchWidth)
     )
   );
 
-  ids.map((id: string, i: number) => {
+  let errorString = `missing hourly${usd ? "Usd" : ""}TokensTvl for ids`;
+  let throwError = false;
+  filteredIds.map((id: string, i: number) => {
     if (tokenBalances[i].SK == null) {
-      throw new Error(`missing hourly${usd ? "Usd" : ""}TokensTvl for id ${id}`);
+      errorString = `${errorString} ${id}`;
+      throwError = true;
     } else allProtocolsTemp[id] = tokenBalances[i];
   });
 
+  if (throwError) throw new Error(errorString);
   if (persist) allProtocols = allProtocolsTemp;
   return allProtocolsTemp;
 }

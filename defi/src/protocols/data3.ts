@@ -52548,6 +52548,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#h2-finance",
     listedAt: 1724157643
   },
+  {
+    id: "5019",
+    name: "seiyan fun",
+    address: null,
+    symbol: "-",
+    url: "https://seiyan.fun",
+    description: "the memecoin launchpad on sei",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/seiyan-fun.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Sei"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "seiyandotfun",
+  },
 ];
 
 export default data3;

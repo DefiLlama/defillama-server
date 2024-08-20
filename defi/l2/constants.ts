@@ -76,7 +76,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4124": "merlin",
   "4937": "reya",
   "4947": "ignition FBTC",
-  "5011": "lisk l2"
+  // "5011": "lisk l2"
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

@@ -106,14 +106,6 @@ export function unknownTokens2(timestamp: number = 0) {
     ),
     unknownTokenAdapter(
       timestamp,
-      "0xdd0d223384bB2FA880f6566baCDa599439457aa6",
-      "0x5F0b1a82749cb4E2278EC87F8BF6B618dC71a8bf",
-      "0x45334a5B0a01cE6C260f2B570EC941C680EA62c0",
-      false,
-      "zeta",
-    ),
-    unknownTokenAdapter(
-      timestamp,
       "0x09cabec1ead1c0ba254b09efb3ee13841712be14",
       "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
       wrappedGasTokens["ethereum"],

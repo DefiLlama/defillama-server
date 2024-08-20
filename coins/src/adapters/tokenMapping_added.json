@@ -8877,6 +8877,31 @@
       "symbol": "ISEI",
       "to": "coingecko#silo-staked-sei"
     },
+    "0x80Eede496655FB9047dd39d9f418d5483ED600df": {
+      "decimals": "18",
+      "symbol": "FRAX",
+      "to": "coingecko#frax"
+    },
+    "0x43eDD7f3831b08FE70B7555ddD373C8bF65a9050": {
+      "decimals": "18",
+      "symbol": "frxETH",
+      "to": "coingecko#frax-ether"
+    },
+    "0x3Ec3849C33291a9eF4c5dB86De593EB4A37fDe45": {
+      "decimals": "18",
+      "symbol": "sfrxETH",
+      "to": "coingecko#staked-frax-ether"
+    },
+    "0x5Bff88cA1442c2496f7E475E9e7786383Bc070c0": {
+      "decimals": "18",
+      "symbol": "sFRAX",
+      "to": "coingecko#staked-frax"
+    },
+    "0xDD7d5e4Ea2125d43C16eEd8f1FFeFffa2F4b4aF6": {
+      "decimals": "18",
+      "symbol": "JLY",
+      "to": "coingecko#jellyverse"
+    },
     "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
       "decimals": "18",
       "symbol": "SEI",

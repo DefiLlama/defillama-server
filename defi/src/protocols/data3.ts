@@ -12106,8 +12106,8 @@ const data3: Protocol[] = [
   {
     id: "3233",
     name: "Ajna V1",
-    address: null,
-    symbol: "-",
+    address: "0x9a96ec9b57fb64fbc60b423d1f4da7691bd35079",
+    symbol: "AJNA",
     url: "https://www.ajna.finance/",
     description: `Ajna is a peer to peer, oracleless, permissionless lending protocol with no governance, accepting both fungible and non fungible tokens as collateral`,
     chain: "Ethereum",
@@ -29961,8 +29961,8 @@ const data3: Protocol[] = [
   {
     id: "4019",
     name: "Ajna V2",
-    address: null,
-    symbol: "-",
+    address: "0x9a96ec9b57fb64fbc60b423d1f4da7691bd35079",
+    symbol: "AJNA",
     url: "https://www.ajna.finance/",
     description: `Ajna is a peer to peer, oracleless, permissionless lending protocol with no governance, accepting both fungible and non fungible tokens as collateral`,
     chain: "Ethereum",

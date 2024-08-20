@@ -5047,6 +5047,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "UniDexFinance",
     governanceID: ["snapshot:unidexapp.eth"],
   },
+  {
+    id: "parent#h2-finance",
+    name: "H2 Finance",
+    url: "https://unidex.exchange",
+    description:
+      "Uniswap v2 and v3fork on Cronos zkEVM",
+    logo: `${baseIconsUrl}/h2-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "H2_Finance",
+  },
 ];
 
 export default parentProtocols;

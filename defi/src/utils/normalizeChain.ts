@@ -3331,6 +3331,8 @@ export function transformNewChainName(chain: string) {
       return "Kaia"
     case "zkSync Era":
       return "ZKsync Era"
+    case "zkSync Lite":
+      return "ZKsync Lite"
     default:
       return chain
   }

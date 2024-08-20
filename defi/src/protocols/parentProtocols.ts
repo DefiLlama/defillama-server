@@ -5096,6 +5096,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8296",
     chains: [],
     twitter: "KLAYswap",
+    github: ["KlaySwap"],
   },
 ];
 

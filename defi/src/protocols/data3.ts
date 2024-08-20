@@ -52464,6 +52464,48 @@ const data3: Protocol[] = [
     twitter: null,
     listedAt: 1724075073
   },
+  {
+    id: "5015",
+    name: "Lobster Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.lobster-protocol.com",
+    description: "Lobster aggregates the most trusted DeFi protocols to create top-level, automated strategies.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/lobster-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Arbitrum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "lobster-protocol/index.js",
+    twitter: "LobsterProtocol",
+    listedAt: 1724156957
+  },
+  {
+    id: "5016",
+    name: "cyberPerp",
+    address: null,
+    symbol: "-",
+    url: "https://cyberperp.io",
+    description: "The First Decentralized Perpetual Exchange on Iota EVM",
+    chain: "IOTA EVM",
+    logo: `${baseIconsUrl}/cyberperp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["IOTA EVM"],
+    oracles: ["Pyth"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11351
+    forkedFrom: [],
+    module: "cyberperp/index.js",
+    twitter: "cyberperp",
+    listedAt: 1724156997
+  },
 ];
 
 export default data3;

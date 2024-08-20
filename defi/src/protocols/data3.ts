@@ -43982,7 +43982,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: "Bridge",
     chains: ["BounceBit"],
     module: "bouncebit-lsd/index.js",
     forkedFrom: [],

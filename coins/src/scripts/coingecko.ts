@@ -285,15 +285,17 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         coin,
         async (PK) => {
           const platformData = coinPlatformData[PK];
-          if (platformData?.confidence > 0.99) return;
+          if (platformData && platformData?.confidence > 0.99) return;
 
           const created = getCurrentUnixTimestamp();
           const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
           const address = PK.substring(PK.indexOf(":") + 1);
           const { decimals, symbol } =
-            "decimals" in platformData && "symbol" in platformData
+            platformData &&
+            "decimals" in platformData &&
+            "symbol" in platformData
               ? (coinPlatformData[PK] as any)
-              : getSymbolAndDecimals(chain, address, coin.symbol);
+              : await getSymbolAndDecimals(address, chain, coin.symbol);
 
           if (decimals == undefined) return;
 

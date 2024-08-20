@@ -3242,6 +3242,15 @@ export const chainCoingeckoIds = {
     github: ["dexalot"],
     url: "https://dexalot.com"
   },
+  "BandChain": {
+    geckoId: "band-protocol",
+    symbol: "BAND",
+    cmcId: "4679",
+    categories: ["Cosmos"],
+    twitter: "BandProtocol",
+    github: ["bandprotocol"],
+    url: "https://www.bandprotocol.com/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3945,6 +3954,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Cronos zkEVM"
     case "dexalot":
       return "Dexalot"
+    case "band":
+      return "BandChain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

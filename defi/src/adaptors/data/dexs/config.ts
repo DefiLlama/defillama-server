@@ -2897,5 +2897,9 @@ export default {
     "c3-exchange": {
         enabled: true,
         id: "4670"
+    },
+    "pendle": {
+        enabled: true,
+        id: "382"
     }
 } as AdaptorsConfig

@@ -2901,5 +2901,9 @@ export default {
     "pendle": {
         enabled: true,
         id: "382"
+    },
+    "seiyan-fun": {
+        enabled: true,
+        id: "5019"
     }
 } as AdaptorsConfig

@@ -48,7 +48,11 @@ export async function getPoolValues({ api, pools }: {
   }
   await allBalances.getUSDValue() //this will pull all token prices
   for (const poolId of Object.keys(pools)) {
-    poolValues[poolId] = await pools[poolId].getUSDValue()
+    const usdData = await pools[poolId].getUSDJSONs()
+    if (
+      Object.keys(usdData.rawTokenBalances).length > 
+      Object.keys(usdData.usdTokenBalances).length) continue
+    poolValues[poolId] = usdData.usdTvl
   }
   return poolValues
 }

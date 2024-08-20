@@ -1507,6 +1507,13 @@
       "to": "coingecko#stride-staked-tia"
     }
   },
+  "zeta": {
+    "0x5F0b1a82749cb4E2278EC87F8BF6B618dC71a8bf": {
+      "decimals": "18",
+      "symbol": "wzeta",
+      "to": "coingecko#zetachain"
+    }
+  },
   "eon": {
     "0x2c2E0B0c643aB9ad03adBe9140627A645E99E054": {
       "decimals": "18",

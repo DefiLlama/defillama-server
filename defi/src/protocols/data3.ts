@@ -10239,7 +10239,6 @@ const data3: Protocol[] = [
     chains: ["Klaytn"],
     module: "klayswap-v3/index.js",
     twitter: "KLAYswap",
-    github: ["KlaySwap"],
     forkedFrom: [],
     oracles: [],
     parentProtocol: "parent#klayswap",

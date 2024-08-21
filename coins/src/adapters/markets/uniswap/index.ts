@@ -28,7 +28,7 @@ const config = {
   trisolaris: { chain: 'aurora', factory: '0xc66F594268041dB60507F00703b152492fb176E7', },
   pangolin: { chain: 'avax', factory: '0xefa94DE7a4656D787667C749f7E1223D71E9FD88', },
   spiritswap: { chain: 'fantom', factory: '0xEF45d134b73241eDa7703fa787148D9C9F4950b0', },
-  spookyswap: { chain: 'fantom', factory: '0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3', endpoint: sdk.graph.modifyEndpoint('HyhMfT7gehNHMBmFiExqeg3pDtop9UikjvBPfAXT3b21') },
+  // spookyswap: { chain: 'fantom', factory: '0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3', endpoint: sdk.graph.modifyEndpoint('HyhMfT7gehNHMBmFiExqeg3pDtop9UikjvBPfAXT3b21') },
   tombswap: { chain: 'fantom', factory: '0xE236f6890F1824fa0a7ffc39b1597A5A6077Cfe9', },
   wemix: { chain: 'wemix', factory: '0xe1F36C7B919c9f893E2Cd30b471434Aa2494664A', },
   // solidly: { chain: 'fantom', factory: '0x3fAaB499b519fdC5819e3D7ed0C26111904cbc28', },

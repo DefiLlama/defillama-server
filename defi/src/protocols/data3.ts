@@ -52588,7 +52588,7 @@ const data3: Protocol[] = [
     module: "genesis-dao/index.js",
     twitter: "0xGenesisDAO", 
     github: ["0xGenesisDAO"],
-    treasury: "genesis-dao",
+    treasury: "genesis-dao.js",
     listedAt: 1724177568
   },
   {

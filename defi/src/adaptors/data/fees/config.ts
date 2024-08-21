@@ -2446,5 +2446,9 @@ export default {
         parentId: "KyberSwap",
         id: "3982",
         enabled: true
+    },
+    "raybot": {
+        enabled: true,
+        id: "5022"
     }
 } as AdaptorsConfig

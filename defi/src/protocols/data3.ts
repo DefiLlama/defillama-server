@@ -52591,6 +52591,29 @@ const data3: Protocol[] = [
     treasury: "genesis-dao",
     listedAt: 1724177568
   },
+  {
+    id: "5021",
+    name: "Velvet V3",
+    address: null,
+    symbol: "-",
+    url: "https://www.velvet.capital/",
+    description: "Velvet.Capital is a DeFi platform that allows users to create, manage, and launch on-chain funds and portfolios, with tools for automated trading and earning yield",
+    chain: "Base",
+    logo: `${baseIconsUrl}/velvet.capital.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Base"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "velvet-capital-v3/index.js",
+    twitter: "Velvet_Capital",
+    audit_links: ["https://github.com/Velvet-Capital/audits"],
+    parentProtocol: "parent#velvet.capital",
+    listedAt: 1724202345
+  },
 ];
 
 export default data3;

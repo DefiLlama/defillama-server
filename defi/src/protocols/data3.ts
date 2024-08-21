@@ -52614,6 +52614,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#velvet.capital",
     listedAt: 1724202345
   },
+  {
+    id: "5022",
+    name: "RayBot",
+    address: null,
+    symbol: "-",
+    url: "https://x.com/RayBot_sol",
+    description: "Solana & EVM Wallet Tracker on Telegram",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/raybot.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "velvet-capital-v3/index.js",
+    twitter: "RayBot_sol",
+    listedAt: 1724205301
+  },
 ];
 
 export default data3;

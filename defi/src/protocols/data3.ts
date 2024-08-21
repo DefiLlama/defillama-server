@@ -7690,6 +7690,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Binance", "Polygon", "Arbitrum"],
     module: "range/index.js",
     twitter: "Range_Protocol",
+    oracles: ["RedStone"], //https://docs.skatechain.org/skate-fi/vertex#oracles
     forkedFrom: [],
     audit_links: [
       "https://github.com/Range-Protocol/contracts/blob/master/audits/Certik-Audit.pdf",
@@ -44554,7 +44555,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "native-lend/index.js",
     twitter: "native_fi",
-    oracles: [],
+    oracles: ["RedStone"], //https://docs.native.org/native-dev/getting-started/lend
     forkedFrom: [],
     parentProtocol: "parent#native",
     listedAt: 1716459034,

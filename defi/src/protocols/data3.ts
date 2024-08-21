@@ -46982,7 +46982,7 @@ const data3: Protocol[] = [
   {
     id: "4772",
     name: "Jellyverse",
-    address: null,
+    address: "sei:0xdd7d5e4ea2125d43c16eed8f1ffefffa2f4b4af6",
     symbol: "JLY",
     url: "https://jellyverse.org/",
     description:

@@ -25,7 +25,7 @@ export const normalizedChainReplacements = {
   "bitlayer": "btr",
   "cronos zkevm": "cronos_zkevm",
   "kaia": "klaytn",
-  "tomochain": "viction"
+  "viction": "tomochain"
 } as {
   [chain: string]: string
 }

@@ -3860,7 +3860,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "kinto":
       return "Kinto"
     case "imx":
-      return "Immutable zkEVM"
+      return "Immutable X"
     case "zora":
       return "Zora"
     case "defichain_evm":

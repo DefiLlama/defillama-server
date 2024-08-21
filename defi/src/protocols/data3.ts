@@ -52631,9 +52631,8 @@ const data3: Protocol[] = [
     chains: ["Solana"],
     oracles: [], 
     forkedFrom: [],
-    module: "velvet-capital-v3/index.js",
+    module: "dummy.js",
     twitter: "RayBot_sol",
-    listedAt: 1724205301
   },
 ];
 

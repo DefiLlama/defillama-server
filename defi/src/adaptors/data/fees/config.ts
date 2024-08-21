@@ -2450,5 +2450,9 @@ export default {
     "raybot": {
         enabled: true,
         id: "5022"
+    },
+    "illuvium": {
+        enabled: true,
+        id: "447"
     }
 } as AdaptorsConfig

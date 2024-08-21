@@ -21917,7 +21917,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Polygon"],
-    oracles: [], // https://docs.primex.finance/guides/what-is-primex/economic-security/oracles uses chainlink on rinkeby testnet
+    oracles: ["Chainlink"], // https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/chainlink https://github.com/DefiLlama/defillama-server/pull/7658
     forkedFrom: [],
     module: "primex-finance/index.js",
     twitter: "primex_official",

@@ -20864,6 +20864,7 @@ const data2: Protocol[] = [
       "https://twitter.com/ZOKYO_io/status/1584544823062630400?s=20&t=SHVRNHNN_w49Q1bbDsI9uQ",
     ],
     listedAt: 1668436086,
+    wrongLiquidity: true
   },
   {
     id: "2281",

@@ -268,5 +268,9 @@ export default {
     "splash": {
         enabled: true,
         id: "4712",
+    },
+    "jellyverse": {
+        enabled: true,
+        id: "4772",
     }
 } as AdaptorsConfig

@@ -372,6 +372,11 @@
       "decimals": "18",
       "symbol": "CVX1",
       "to": "coingecko#convex-finance"
+    },
+    "0xd681c5574b7f4e387b608ed9af5f5fc88662b37c": {
+      "decimals": "8",
+      "symbol": "lfbtc-bedrock-eth",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "fantom": {

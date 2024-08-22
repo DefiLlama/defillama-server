@@ -52843,7 +52843,8 @@ const data3: Protocol[] = [
     module: "stakewise-v3/index.js",
     twitter: "stakewise_io",
     audit_links: ["https://github.com/stakewise/contracts/tree/master/audits"],
-    parentProtocol: "parent#stakewise"
+    parentProtocol: "parent#stakewise",
+    listedAt: 1724313508
   },
   {
     id: "5033",

@@ -2467,5 +2467,13 @@ export default {
         parentId: "Ribbon Finance",
         enabled: true,
         id: "281"
+    },
+    "velo": {
+        enabled: true,
+        id: "4989"
+    },
+    "openeden-t-bills": {
+        enabled: true,
+        id: "3057"
     }
 } as AdaptorsConfig

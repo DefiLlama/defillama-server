@@ -2905,5 +2905,9 @@ export default {
     "seiyan-fun": {
         enabled: true,
         id: "5019"
+    },
+    "aqua-network": {
+        enabled: true,
+        id: "5035"
     }
 } as AdaptorsConfig

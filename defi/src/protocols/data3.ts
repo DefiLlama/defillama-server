@@ -52825,6 +52825,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#metastreet",
     listedAt: 1724263681
   },
+  {
+    id: "5032",
+    name: "StakeWise V3",
+    address: "0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2",
+    symbol: "SWISE",
+    url: "https://stakewise.io/",
+    description: "Liquid staking for DeFi natives, solo stakers, and institutions on Ethereum and Gnosis Chain.",
+    chain: "Gnosis",
+    logo: `${baseIconsUrl}/stakewise-v3.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Gnosis"],
+    module: "stakewise-v3/index.js",
+    twitter: "stakewise_io",
+    audit_links: ["https://github.com/stakewise/contracts/tree/master/audits"],
+    parentProtocol: "parent#stakewise"
+  },
 ];
 
 export default data3;

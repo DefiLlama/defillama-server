@@ -3252,6 +3252,13 @@ export const chainCoingeckoIds = {
     github: ["bandprotocol"],
     url: "https://www.bandprotocol.com/"
   },
+  "Immutable X": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "Immutable",
+    url: "https://www.immutable.com/products/immutable-x",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3957,6 +3964,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Dexalot"
     case "band":
       return "BandChain"
+    case "immutablex":
+      return "Immutable X"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

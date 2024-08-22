@@ -3660,7 +3660,7 @@ const data: Protocol[] = [
   },
   {
     id: "277",
-    name: "StakeWise",
+    name: "StakeWise V2",
     address: "0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2",
     symbol: "SWISE",
     url: "https://stakewise.io/",
@@ -3669,15 +3669,14 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/stakewise.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "stakewise",
-    cmcId: "10439",
+    gecko_id: null,
+    cmcId: null,
     category: "Liquid Staking",
     chains: ["Ethereum"],
     module: "stakewise/index.js",
     twitter: "stakewise_io",
     audit_links: ["https://github.com/stakewise/contracts/tree/master/audits"],
-    governanceID: ["snapshot:stakewise.eth"],
-    github: ["stakewise"],
+    parentProtocol: "parent#stakewise"
   },
   {
     id: "278",

@@ -52884,6 +52884,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#openworld",
     listedAt: 1724315252
   },
+  {
+    id: "5035",
+    name: "Aquarius Stellar",
+    address: "stellar:AQUA-GBNZILSTVQZ4R7IKQDGHYGY2QXL5QOFJYQMXPKWRRM5PAV7Y4M67AQUA",
+    symbol: "AQUA",
+    url: "https://aqua.network",
+    description: "Aquarius is a novel AMM protocol and a liquidity management layer to Stellar. It offers stable and volatile pools with multihop swaps on top, and a community governance tool to distribute rewards between pool liquidity providers based on voting and bribing.",
+    chain: "Stellar",
+    logo: `${baseIconsUrl}/aquarius-stellar.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Stellar"],
+    module: "aqua-network/index.js",
+    twitter: "aqua_token",
+    audit_links: ["https://www.coinfabrik.com/blog/aquarius-audit-report"],
+    listedAt: 1724320620
+  },
 ];
 
 export default data3;

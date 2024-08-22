@@ -52845,6 +52845,25 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/stakewise/contracts/tree/master/audits"],
     parentProtocol: "parent#stakewise"
   },
+  {
+    id: "5033",
+    name: "Binance Bitcoin",
+    address: null,
+    symbol: "-",
+    url: "https://www.binance.com/en/collateral-btokens",
+    description: "Binance Bridge pegged BTC token",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/binance-bitcoin.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    module: "binance-btc/index.js",
+    twitter: "binance",
+    listedAt: 1724313608
+  },
 ];
 
 export default data3;

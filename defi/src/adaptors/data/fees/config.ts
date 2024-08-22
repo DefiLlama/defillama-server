@@ -833,7 +833,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": false,
+        "enabled": true,
         "id": "2864"
     },
     "merlin": {
@@ -2446,5 +2446,13 @@ export default {
         parentId: "KyberSwap",
         id: "3982",
         enabled: true
+    },
+    "raybot": {
+        enabled: true,
+        id: "5022"
+    },
+    "illuvium": {
+        enabled: true,
+        id: "447"
     }
 } as AdaptorsConfig

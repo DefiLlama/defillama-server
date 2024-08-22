@@ -264,5 +264,13 @@ export default {
         parentId: "Blasterswap",
         enabled: true,
         id: "4728",
+    },
+    "splash": {
+        enabled: true,
+        id: "4712",
+    },
+    "jellyverse": {
+        enabled: true,
+        id: "4772",
     }
 } as AdaptorsConfig

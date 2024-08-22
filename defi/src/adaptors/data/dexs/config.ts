@@ -1570,7 +1570,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": false,
+        "enabled": true,
         "id": "2864"
     },
     "astroswap": {
@@ -2897,5 +2897,13 @@ export default {
     "c3-exchange": {
         enabled: true,
         id: "4670"
+    },
+    "pendle": {
+        enabled: true,
+        id: "382"
+    },
+    "seiyan-fun": {
+        enabled: true,
+        id: "5019"
     }
 } as AdaptorsConfig

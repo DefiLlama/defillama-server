@@ -819,5 +819,9 @@ export default {
                 "1722988800": true,
             },
         }
+    },
+    "cyberperp": {
+        enabled: true,
+        id: "5016",
     }
 } as AdaptorsConfig

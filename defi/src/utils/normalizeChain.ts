@@ -23,7 +23,9 @@ export const normalizedChainReplacements = {
   "hydration": "hydradx",
   "zklink nova": "zklink",
   "bitlayer": "btr",
-  "cronos zkevm": "cronos_zkevm"
+  "cronos zkevm": "cronos_zkevm",
+  "kaia": "klaytn",
+  "viction": "tomochain"
 } as {
   [chain: string]: string
 }
@@ -878,7 +880,7 @@ export const chainCoingeckoIds = {
     twitter: "SmartBCH",
     url: "https://smartbch.org/"
   },
-  "zkSync Lite": {
+  "ZKsync Lite": {
     geckoId: null,
     github: ['matter-labs'],
     symbol: null,
@@ -1920,7 +1922,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
-  "zkSync Era": {
+  "ZKsync Era": {
     geckoId: "zksync",
     github: ['matter-labs'],
     symbol: "ZK",
@@ -2814,10 +2816,10 @@ export const chainCoingeckoIds = {
     url: "https://www.degen.tips"
   },
   "HAQQ": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
-    categories: ["EVM"],
+    geckoId: "islamic-coin",
+    symbol: "ISLM",
+    cmcId: "26220",
+    categories: ["EVM", "Cosmos"],
     twitter: "The_HaqqNetwork",
     url: "https://haqq.network/",
     github: ["haqq-network"],
@@ -3241,6 +3243,22 @@ export const chainCoingeckoIds = {
     github: ["dexalot"],
     url: "https://dexalot.com"
   },
+  "BandChain": {
+    geckoId: "band-protocol",
+    symbol: "BAND",
+    cmcId: "4679",
+    categories: ["Cosmos"],
+    twitter: "BandProtocol",
+    github: ["bandprotocol"],
+    url: "https://www.bandprotocol.com/"
+  },
+  "Immutable X": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "Immutable",
+    url: "https://www.immutable.com/products/immutable-x",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3296,7 +3314,7 @@ export function transformNewChainName(chain: string) {
     case "Orai":
       return "Oraichain"
     case "zkSync":
-      return "zkSync Lite"
+      return "ZKsync Lite"
     case "polygon_zkevm":
       return "Polygon zkEVM"
     case "eos_evm":
@@ -3329,6 +3347,10 @@ export function transformNewChainName(chain: string) {
       return "Persistence One"
     case "Klaytn":
       return "Kaia"
+    case "zkSync Era":
+      return "ZKsync Era"
+    case "zkSync Lite":
+      return "ZKsync Lite"
     default:
       return chain
   }
@@ -3441,9 +3463,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "ethereumclassic":
       return "EthereumClassic"
     case "zksync":
-      return useNewChainNames ? "zkSync Lite" : "zkSync"
+      return useNewChainNames ? "ZKsync Lite" : "zkSync"
     case "zksync era":
-      return "zkSync Era"
+      return useNewChainNames ? "ZKsync Era" : "zkSync Era"
     case "bifrost network":
       return "Bifrost Network"
     case "bevm":
@@ -3667,7 +3689,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bone":
       return "Bone"
     case "era":
-      return "zkSync Era"
+      return "ZKsync Era"
     case "bfc":
       return "Bifrost Network"
     case "chainx":
@@ -3940,6 +3962,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Cronos zkEVM"
     case "dexalot":
       return "Dexalot"
+    case "band":
+      return "BandChain"
+    case "immutablex":
+      return "Immutable X"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

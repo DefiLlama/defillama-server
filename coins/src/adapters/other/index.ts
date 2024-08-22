@@ -106,14 +106,6 @@ export function unknownTokens2(timestamp: number = 0) {
     ),
     unknownTokenAdapter(
       timestamp,
-      "0xdd0d223384bB2FA880f6566baCDa599439457aa6",
-      "0x5F0b1a82749cb4E2278EC87F8BF6B618dC71a8bf",
-      "0x45334a5B0a01cE6C260f2B570EC941C680EA62c0",
-      false,
-      "zeta",
-    ),
-    unknownTokenAdapter(
-      timestamp,
       "0x09cabec1ead1c0ba254b09efb3ee13841712be14",
       "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
       wrappedGasTokens["ethereum"],
@@ -623,38 +615,32 @@ async function reyaUSD(timestamp: number = 0, writes: Write[] = []) {
   });
 }
 
-async function dcWBTC(timestamp: number = 0, writes: Write[] = []) {
-  const chain = "ethereum";
-  const api = await getApi(chain, timestamp);
-  const dcWBTC = "0x971e5b5D4baa5607863f3748FeBf287C7bf82618";
-  const underlying = await api.call({ abi: "address:asset", target: dcWBTC });
-  const supply = await api.call({ abi: "erc20:totalSupply", target: dcWBTC });
-  const bal = await api.call({
-    abi: "erc20:balanceOf",
-    target: underlying,
-    params: dcWBTC,
-  });
-  const [decimals, uDecimals] = await api.multiCall({
-    abi: "erc20:decimals",
-    calls: [dcWBTC, underlying],
-  });
-  const pricesObject = {
-    [dcWBTC]: {
-      price: (bal * 10 ** (uDecimals - decimals)) / supply,
-      underlying,
-    },
-  };
-  return getWrites({
-    chain,
-    timestamp,
-    pricesObject,
-    projectName: "dc-wbtc",
-    writes,
-  });
+async function symboitic(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'ethereum'
+  const api = await getApi(chain, timestamp)
+  const factory = '0x1BC8FCFbE6Aa17e4A7610F51B888f34583D202Ec'
+  const entities = await api.fetchList({ lengthAbi: 'totalEntities', itemAbi: 'entity', target: factory })
+  const underlyings = await api.multiCall({ abi: 'address:asset', calls: entities })
+  const supplies = await api.multiCall({ abi: 'erc20:totalSupply', calls: entities })
+  const bals = await api.multiCall({ abi: 'erc20:balanceOf', calls: underlyings.map((underlying: any, i: any) => ({ target: underlying, params: entities[i] })) })
+  const decimalsAll = await api.multiCall({ abi: 'erc20:decimals', calls: entities })
+  const uDecimalsAll = await api.multiCall({ abi: 'erc20:decimals', calls: underlyings })
+  const pricesObject = {  } as any
+  entities.forEach((entity: any, i: any) => {
+    const underlying = underlyings[i]
+    const bal = bals[i]
+    const supply = supplies[i]
+    const decimals = decimalsAll[i]
+    const uDecimals = uDecimalsAll[i]
+    const price = bal * 10 ** (uDecimals - decimals) / supply
+    if (isNaN(price)) return;
+    pricesObject[entity] = { price, underlying, }
+  })
+  return getWrites({ chain, timestamp, pricesObject, projectName: "dc-wbtc", writes, })
 }
 
 export const adapters = {
-  dcWBTC,
+  symboitic,
   defiChain,
   shlb,
   metronome,

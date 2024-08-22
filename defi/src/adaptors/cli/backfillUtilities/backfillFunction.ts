@@ -17,6 +17,7 @@ export interface ICliArgs {
     chain?: string,
     version?: string,
     timestamp?: number,
+    endTimestamp?: number,
     recordTypes?: string[]
 }
 
@@ -44,6 +45,10 @@ export const autoBackfill = async (argv: string[]) => {
         else if (rawArgumentName === 'timestamp') {
             if (!isNaN(+value)) acc.timestamp = +value
             else throw new Error("Please provide a proper value for timestamp=[timestamp]")
+        }
+        else if (rawArgumentName === 'endTimestamp') {
+            if (!isNaN(+value)) acc.endTimestamp = +value
+            else throw new Error("Please provide a proper value for endTimestamp=[timestamp]")
         }
         else if (rawArgumentName === 'recordTypes') {
             const recordTypes = value?.split(",")

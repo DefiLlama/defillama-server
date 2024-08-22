@@ -272,5 +272,11 @@ export default {
     "jellyverse": {
         enabled: true,
         id: "4772",
+        protocolsData: {
+            "v2": {
+                enabled: true,
+                id: "4772",
+            }
+        }
     }
 } as AdaptorsConfig

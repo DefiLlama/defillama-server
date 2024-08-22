@@ -2462,5 +2462,10 @@ export default {
     "bellumexchange": {
         enabled: true,
         id: "5029"
+    },
+    "ribbon": {
+        parentId: "Ribbon Finance",
+        enabled: true,
+        id: "281"
     }
 } as AdaptorsConfig

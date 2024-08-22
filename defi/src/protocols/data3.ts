@@ -27342,7 +27342,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3906",
-    name: "Rangers Bridge",
+    name: "Island3",
     address: null,
     symbol: "-",
     url: "https://rangersprotocol.com",

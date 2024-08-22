@@ -13957,13 +13957,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3313",
-    name: "Openworld",
+    name: "Openworld Perps",
     address: "arbitrum:0x58cb98a966f62aa6f2190eb3aa03132a0c3de3d5",
     symbol: "OPEN",
     url: "https://app.openworld.vision/",
     description: "Decentralized Derivative Exchange. Trade assets with up to 30x leverage",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/openworld.png`,
+    logo: `${baseIconsUrl}/openworld-perps.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -13976,7 +13976,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://wiki.openworld.vision/audit"],
     listedAt: 1690749957,
-    github: ["OpenWorldVision"],
+    parentProtocol: "parent#openworld",
   },
   {
     id: "3314",
@@ -52863,6 +52863,26 @@ const data3: Protocol[] = [
     module: "binance-btc/index.js",
     twitter: "binance",
     listedAt: 1724313608
+  },
+  {
+    id: "5034",
+    name: "OpenWorld Farm",
+    address: "arbitrum:0x58cb98a966f62aa6f2190eb3aa03132a0c3de3d5",
+    symbol: "OPEN",
+    url: "https://ow.finance",
+    description: "OpenWorld Portfolio: Build a portfolio of high yielding, low risk liquidity pools with one click.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/openworld-farm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Arbitrum"],
+    module: "openworld-lev-farm/index.js",
+    twitter: "OpenWorldFi",
+    parentProtocol: "parent#openworld",
+    listedAt: 1724315252
   },
 ];
 

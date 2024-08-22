@@ -5112,6 +5112,19 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:stakewise.eth"],
     github: ["stakewise"],
   },
+  {
+    id: "parent#openworld",
+    name: "OpenWorld",
+    url: "https://ow.finance",
+    description:
+      "OpenWorld Portfolio: Build a portfolio of high yielding, low risk liquidity pools with one click.",
+    logo: `${baseIconsUrl}/openworld.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "OpenWorldFi",
+    github: ["OpenWorldVision"],
+  },
 ];
 
 export default parentProtocols;

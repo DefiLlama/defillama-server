@@ -98,6 +98,14 @@ export function unknownTokens2(timestamp: number = 0) {
     ),
     unknownTokenAdapter(
       timestamp,
+      "0x2A36b45be4C04900A5946A1B6bf991aDec93ADdE",
+      "0xE31DD093A2A0aDc80053bF2b929E56aBFE1B1632",
+      "0x79Cb92a2806BF4f82B614A84b6805963b8b1D8BB",
+      false,
+      "q",
+    ),
+    unknownTokenAdapter(
+      timestamp,
       "0x908b3CB9F8E6441B2b1844A6D4f1AC4707bd1483",
       "0x6906Ccda405926FC3f04240187dd4fAd5DF6d555",
       "0x1c1b06405058AbE02e4748753aeD1458BEFEE3B9",

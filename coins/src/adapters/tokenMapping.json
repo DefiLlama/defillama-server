@@ -3524,6 +3524,11 @@
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    },
+    "0x9c2dc7377717603eB92b2655c5f2E7997a4945BD": {
+      "decimals": "6",
+      "symbol": "USDT.e",
+      "to": "coingecko#tether"
     }
   },
   "real": {

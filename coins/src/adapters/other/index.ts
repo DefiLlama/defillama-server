@@ -84,6 +84,14 @@ export function unknownTokens(timestamp: number = 0) {
       "beam",
       1.01,
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x59b51516032241b796de4e495A90030C2d48BD1e",
+      "0x9B377bd7Db130E8bD2f3641E0E161cB613DA93De", //stWEMIX
+      "0x7D72b22a74A216Af4a002a1095C8C707d6eC1C5f",
+      false,
+      "wemix",
+    ),
   ]);
 }
 export function unknownTokens2(timestamp: number = 0) {
@@ -143,14 +151,6 @@ export function unknownTokens2(timestamp: number = 0) {
       "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
       false,
       "bsc",
-    ),
-    unknownTokenAdapter(
-      timestamp,
-      "0x59b51516032241b796de4e495A90030C2d48BD1e",
-      "0x9B377bd7Db130E8bD2f3641E0E161cB613DA93De", //stWEMIX
-      "0x7D72b22a74A216Af4a002a1095C8C707d6eC1C5f",
-      false,
-      "wemix",
     ),
     unknownTokenAdapter(
       timestamp,

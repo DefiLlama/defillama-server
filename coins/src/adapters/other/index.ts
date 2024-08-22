@@ -352,6 +352,22 @@ export function unknownTokens2(timestamp: number = 0) {
       false,
       "fantom",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x0b9589A2C1379138D4cC5043cE551F466193c8dE",
+      "0x5c4fdfc5233f935f20d2adba572f770c2e377ab0",
+      "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+      false,
+      "fantom",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x15aFDbDb27767d58A58459ae159814b6bBe6f506",
+      "0x9fb9a33956351cf4fa040f65a13b835a3c8764e3",
+      "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      false,
+      "fantom",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {

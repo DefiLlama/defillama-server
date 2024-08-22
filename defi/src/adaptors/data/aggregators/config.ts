@@ -258,5 +258,9 @@ export default {
       parentId: "Cetus",
       "enabled": true,
       "id": "4958"
+  },
+  "chainspot": {
+    enabled: true,
+    id: "5028",
   }
 } as AdaptorsConfig;

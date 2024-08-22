@@ -2454,5 +2454,13 @@ export default {
     "illuvium": {
         enabled: true,
         id: "447"
+    },
+    "4cast": {
+        enabled: true,
+        id: "5027"
+    },
+    "bellumexchange": {
+        enabled: true,
+        id: "5029"
     }
 } as AdaptorsConfig

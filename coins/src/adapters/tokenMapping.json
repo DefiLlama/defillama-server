@@ -2054,7 +2054,7 @@
       "to": "coingecko#usd-coin"
     },
     "0x382bb369d343125bfb2117af9c149795c6c65c50": {
-      "decimals": "6",
+      "decimals": "18",
       "symbol": "USDT",
       "to": "coingecko#tether"
     },

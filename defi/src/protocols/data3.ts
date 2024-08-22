@@ -51371,7 +51371,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Restaking",
+    category: "Bridge",
     chains: ["BSquared", "Optimism", "Ethereum", "Mantle", "Merlin", "Bitlayer"],
     oracles: [],
     forkedFrom: [],

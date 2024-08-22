@@ -5064,7 +5064,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Allbridge",
     url: "https://app.allbridge.io",
     description:
-      "Uniswap v2 and v3fork on Cronos zkEVM",
+      "Allbridge Core enables the transfer of value between blockchains by offering cross-chain swaps of native stablecoins",
     logo: `${baseIconsUrl}/allbridge-classic.png`,
     gecko_id: "allbridge",
     cmcId: "12212",
@@ -5077,7 +5077,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Brewlabs",
     url: "https://brewlabs.info/",
     description:
-      "Uniswap v2 and v3fork on Cronos zkEVM",
+      "Decentralized exchange on Polygon",
     logo: `${baseIconsUrl}/brewlabs.png`,
     gecko_id: "brewlabs",
     cmcId: "16405",
@@ -5088,15 +5088,29 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#klayswap",
     name: "KlaySwap",
-    url: "https://brewlabs.info/",
+    url: "https://klayswap.com/dashboard",
     description:
-      "Uniswap v2 and v3fork on Cronos zkEVM",
+      "KLAYswap is an AMM-based Instant Swap Protocol",
     logo: `${baseIconsUrl}/klayswap.jpg`,
     gecko_id: "klayswap-protocol",
     cmcId: "8296",
     chains: [],
     twitter: "KLAYswap",
     github: ["KlaySwap"],
+  },
+  {
+    id: "parent#stakewise",
+    name: "StakeWise",
+    url: "https://stakewise.io/",
+    description:
+      "Liquid staking for DeFi natives, solo stakers, and institutions on Ethereum and Gnosis Chain. Stake from any node & stay liquid with osETH & osGNO tokens",
+    logo: `${baseIconsUrl}/stakewise-v3.png`,
+    gecko_id: "stakewise",
+    cmcId: "10439",
+    chains: [],
+    twitter: "stakewise_io",
+    governanceID: ["snapshot:stakewise.eth"],
+    github: ["stakewise"],
   },
 ];
 

@@ -3826,7 +3826,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SatoriFinance",
-    github: ["satori-hq"],
+    github: ["satori-hq", "satoridao"],
   },
   {
     id: "parent#fixes-inscription",

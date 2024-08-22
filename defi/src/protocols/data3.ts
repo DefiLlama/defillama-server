@@ -52902,6 +52902,7 @@ const data3: Protocol[] = [
     module: "aqua-network/index.js",
     twitter: "aqua_token",
     audit_links: ["https://www.coinfabrik.com/blog/aquarius-audit-report"],
+    github: ["AquaToken"],
     listedAt: 1724320620
   },
 ];

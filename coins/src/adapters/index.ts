@@ -61,6 +61,7 @@ export default {
   tezos: require("./tezos"),
   aaveDebt: require("./moneyMarkets/aave-debt"),
   saber: require("./solana/saber"),
+  solend: require("./solana/solend"),
   reservoir: require("./nft/reservoir"),
   jpegd: require("./yield/jpegd"),
   glpDerivs: require("./yield/glpDerivs"),

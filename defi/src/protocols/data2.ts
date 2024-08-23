@@ -1,6 +1,7 @@
 import type { Protocol } from "./types";
 import { baseIconsUrl } from "../constants";
 import { getTimestamp } from "@defillama/sdk/build/util";
+import { arbitrum } from "../../l2/adapters";
 
 /*
 {
@@ -18736,7 +18737,12 @@ const data2: Protocol[] = [
     module: "dolomite/index.js",
     twitter: "Dolomite_io",
     forkedFrom: [],
-    oracles: ["Chainlink"],
+    oraclesByChain: {
+      arbitrum: ["Chainlink"],
+      polygon_zkevm: ["Chainlink"],
+      xlayer: ["Chainlink"],
+      mantle: ["Chronicle"], // https://github.com/DefiLlama/defillama-server/pull/7767
+    },
     audit_links: [
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20Cyfrin%20-%202023-08-23.pdf",
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20SECBIT%20-%202021-08-02.pdf",

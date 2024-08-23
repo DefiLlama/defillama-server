@@ -40245,7 +40245,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Merlin", "Ethereum", "Bitlayer", "Binance", "Arbitrum", "CoreDao", "Scroll"],
+    chains: ["Merlin", "Ethereum", "Bitlayer", "Binance", "Arbitrum", "CORE", "Scroll"],
     oracles: ["Apro"], //https://github.com/avalonfinancexyz/ORACLE https://github.com/DefiLlama/defillama-server/pull/7838
     forkedFrom: ["AAVE V3"],
     module: "avalon-finance/index.js",

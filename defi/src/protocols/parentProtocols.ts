@@ -91,7 +91,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "ApeBond", //rebrand from apeswap
     url: "https://ape.bond/",
     description:
-      "ApeSwap has rebranded to ApeBond. ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
+      "ApeSwap has rebranded to ApeBond. ApeBond is an On-Chain OTC Marketplace, offering the best way for projects to raise funds with their native token. It stands out as the #1 bonding protocol in DeFi, known for its proven track record and continuous growth across multiple chains.",
     logo: `${baseIconsUrl}/apebond.png`,
     gecko_id: "abond",
     cmcId: "29157",

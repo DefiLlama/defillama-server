@@ -51655,7 +51655,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Reya Network"],
-    oracles: [],
+    oracles: ["Stork"], // https://x.com/reya_xyz/status/1825486954613379098
     forkedFrom: [],
     module: "reya-perp/index.js",
     twitter: "reya_xyz",

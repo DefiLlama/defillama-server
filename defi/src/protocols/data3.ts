@@ -52811,7 +52811,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5030",
-    name: "Delegate",
+    name: "Delegate Marketplace",
     address: null,
     symbol: "-",
     url: "https://delegate.xyz/",

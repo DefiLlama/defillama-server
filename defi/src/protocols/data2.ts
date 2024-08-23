@@ -18741,7 +18741,7 @@ const data2: Protocol[] = [
       arbitrum: ["Chainlink"],
       polygon_zkevm: ["Chainlink"],
       xlayer: ["Chainlink"],
-      mantle: ["Chronicle"],
+      mantle: ["Chronicle"], // https://github.com/DefiLlama/defillama-server/pull/7767
     },
     audit_links: [
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20Cyfrin%20-%202023-08-23.pdf",

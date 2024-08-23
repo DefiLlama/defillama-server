@@ -3511,14 +3511,14 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#oath-foundation",
-    name: "OATH Foundation",
-    url: "https://www.oath.eco/",
-    description: `The OATH ecosystem is focused on providing sustainable and positive-sum infrastructure for DeFi markets, developing protocols that aim to increase yield for users, reduce costs for developers, and minimize risk overall`,
-    logo: `${baseIconsUrl}/oath-foundation.png`,
-    gecko_id: "oath",
-    cmcId: "24370",
+    name: "Cod3x", // rebrand from OATH Foundation
+    url: "https://www.cod3x.org/",
+    description: `The Cod3x ecosystem is designed to provide users of all skill levels access to the best DeFi yields and opportunities through its powerful agentic interface`,
+    logo: `${baseIconsUrl}/cod3x.jpg`,
+    gecko_id: null,
+    cmcId: null,
     chains: [],
-    twitter: "squad_swap",
+    twitter: "Cod3xOrg",
   },
   {
     id: "parent#ajna",

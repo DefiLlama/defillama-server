@@ -360,14 +360,14 @@ export default {
         "id": "3509"
     },
     "bmx": {
-        parentId: "Morphex",
+        parentId: "BMX",
         "enabled": true,
         "id": "3530",
         "protocolsData": {
             "derivatives": {
                 "id": "3530",
                 "enabled": true,
-            }
+            },
         }
     },
     "mango-v4": {
@@ -823,5 +823,10 @@ export default {
     "cyberperp": {
         enabled: true,
         id: "5016",
+    },
+    "bmx-freestyle": {
+        parentId: "BMX",
+        "enabled": true,
+        "id": "4903"
     }
 } as AdaptorsConfig

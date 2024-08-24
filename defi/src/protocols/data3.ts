@@ -27488,7 +27488,7 @@ const data3: Protocol[] = [
     description:
       "Dinero is a suite of products that scale yield for protocols and users. Dinero consists of a high yield staking solution (pxETH), a collateral-backed stablecoin (pxUSD), and a transaction relayer.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/dinero-(pirex-eth).jpg`,
+    logo: `${baseIconsUrl}/dinero-(pxeth).jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

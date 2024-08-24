@@ -154,6 +154,7 @@ async function run() {
       })
       if (info.parentProtocol) protocol.info.parentProtocol = info.parentProtocol
       protocol.info.latestFetchIsOk = true
+      protocol.info.slug = info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = info.chains.map(_getDisplayChainName)
       protocol.info.chains.forEach((chain: string) => chainSet.add(chain))

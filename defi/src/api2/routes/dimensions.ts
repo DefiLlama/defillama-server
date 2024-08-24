@@ -82,8 +82,8 @@ async function getOverviewProcess(eventParameters: any) {
   response.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
   response.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
 
-  const protocolInfoKeys = ['defillamaId', 'name', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'latestFetchIsOk', 'childProtocols']
-  const protocolDataKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'totalAllTime', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'breakdown24h',]  // TODO: missing breakdown24h/fix it?
+  const protocolInfoKeys = ['defillamaId', 'name', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'latestFetchIsOk', 'childProtocols', 'parentProtocol', 'slug',]
+  const protocolDataKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'totalAllTime', 'average1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'breakdown24h', 'total14dto7d',]  // TODO: missing breakdown24h/fix it?
 
   response.protocols = Object.entries(protocols).map(([_id, { summaries, info }]: any) => {
     const res: any = {}
@@ -101,7 +101,7 @@ async function getOverviewProcess(eventParameters: any) {
     }
 
 
-    protocolInfoKeys.forEach(key => res[key] = info?.[key])
+    protocolInfoKeys.filter(key => info?.[key]).forEach(key => res[key] = info?.[key])
     return res
   }).filter((i: any) => i)
 

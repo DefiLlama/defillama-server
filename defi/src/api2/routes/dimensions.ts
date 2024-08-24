@@ -4,7 +4,7 @@ import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../adaptors/db-utils/adaptor-record";
 import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/handlers/getOverviewProcess";
-import { getDisplayChainName, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { computeSummary, getAdapterTypeCache } from "../utils/dimensionsUtils";
@@ -24,13 +24,6 @@ function clearCache() {
     })
     lastCacheUpdate = now
   }
-}
-
-const chainNameCache: IJSON<string> = {}
-
-function _getDisplayChainName(chain: string) {
-  if (!chainNameCache[chain]) chainNameCache[chain] = getDisplayChainName(chain) ?? chain
-  return chainNameCache[chain]
 }
 
 export async function getOverviewHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -53,6 +46,7 @@ async function getOverviewProcess(eventParameters: any) {
   const cacheData = await getAdapterTypeCache(adapterType)
   const { summaries, protocols, allChains } = cacheData
   const chain = eventParameters.chainFilter
+  const chainDisplayName = chain ? getDisplayChainNameCached(chain) : null
   let summary = chain ? summaries[recordType].chainSummary[chain] : summaries[recordType]
   const response: any = {}
   if (!summary) summary = {}
@@ -89,7 +83,11 @@ async function getOverviewProcess(eventParameters: any) {
     const res: any = {}
 
     let summary = summaries?.[recordType]
-    if (chain) summary = summary?.chainSummary[chain]
+    if (chain) {
+      if (!info?.chains.includes(chainDisplayName)) return null
+      summary = summary?.chainSummary[chain]
+    }
+
 
     if (summary)
       protocolDataKeys.forEach(key => res[key] = summary[key])
@@ -208,7 +206,7 @@ async function getProtocolDataHandler(eventParameters: any) {
     response.totalDataChartBreakdown = formatChartData(chartBreakdown)
   }
 
-  response.chains = response.chains?.map((chain: string) => _getDisplayChainName(chain))
+  response.chains = response.chains?.map((chain: string) => getDisplayChainNameCached(chain))
   response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
 
   console.timeEnd('getProtocolDataHandler: ' + eventParameters.adaptorType)

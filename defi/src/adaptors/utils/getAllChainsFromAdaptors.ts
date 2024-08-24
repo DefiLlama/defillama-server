@@ -10,6 +10,13 @@ export const getStringArrUnique = (arr: string[]) => {
     })
 }
 
+const chainNameCache: IJSON<string> = {}
+
+export function getDisplayChainNameCached(chain: string) {
+  if (!chainNameCache[chain]) chainNameCache[chain] = getDisplayChainName(chain) ?? chain
+  return chainNameCache[chain]
+}
+
 const getAllChainsFromAdaptors = (dexs2Filter: string[], moduleAdapter: Adapter, filter: boolean = true) => {
     return getStringArrUnique(dexs2Filter.reduce((acc, adapterName) => {
         const adaptor = moduleAdapter

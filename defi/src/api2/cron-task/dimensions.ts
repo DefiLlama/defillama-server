@@ -7,7 +7,7 @@ import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 // import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
 import { getTimeSDaysAgo, getNextTimeS, getUnixTimeNow, timeSToUnix, getStartOfTodayTime, unixTimeToTimeS, } from "../utils/time";
-import { getDisplayChainName } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { getDisplayChainNameCached } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import parentProtocols from "../../protocols/parentProtocols";
 import { RUN_TYPE } from "../utils";
 import * as sdk from '@defillama/sdk'
@@ -156,7 +156,7 @@ async function run() {
       protocol.info.latestFetchIsOk = true
       protocol.info.slug = info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
-      protocol.info.chains = info.chains.map(_getDisplayChainName)
+      protocol.info.chains = info.chains.map(getDisplayChainNameCached)
       protocol.info.chains.forEach((chain: string) => chainSet.add(chain))
       protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name
@@ -624,12 +624,6 @@ function addTotalValueDataTypesToRecord(record: IJSON<any>, previousRecord?: IJS
 }
 
 
-const chainNameCache: IJSON<string> = {}
-
-function _getDisplayChainName(chain: string) {
-  if (!chainNameCache[chain]) chainNameCache[chain] = getDisplayChainName(chain) ?? chain
-  return chainNameCache[chain]
-}
 
 
 function getPercentage(a: number, b: number) {

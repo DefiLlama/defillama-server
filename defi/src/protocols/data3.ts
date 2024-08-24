@@ -27480,13 +27480,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3912",
-    name: "Dinero (Pirex ETH)", //previous Dinero-PirexETH
+    name: "Dinero (pxETH)", //previous Dinero-PirexETH
     address: null,
     symbol: "-",
     assetToken: "pxETH",
-    url: "https://dineroismoney.com",
+    url: "https://dinero.xyz",
     description:
-      "Dinero is a protocol designed to bring together ETH staking, block creation, an RPC, and other features into a single, synergistic protocol. Dinero is composed of Pirex ETH, the Redacted Relayer RPC, and the DINERO stablecoin.",
+      "Dinero is a suite of products that scale yield for protocols and users. Dinero consists of a high yield staking solution (pxETH), a collateral-backed stablecoin (pxUSD), and a transaction relayer.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dinero-(pirex-eth).jpg`,
     audits: "2",
@@ -27498,8 +27498,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dinero/index.js",
-    twitter: "redactedcartel",
-    audit_links: ["https://github.com/redacted-cartel/audits/tree/master/dinero-pirex-eth/pirex-eth"],
+    twitter: "dinero_xyz",
+    audit_links: ["https://github.com/dinero-protocol/audits/tree/master/dinero-pirex-eth/pirex-eth"],
     parentProtocol: "parent#redacted",
     listedAt: 1702470940,
   },

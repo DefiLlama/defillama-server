@@ -53003,6 +53003,29 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1724412837
   },
+  {
+    id: "5039",
+    name: "TAOlie",
+    address: "2zE5rJ2ctXMz9hVbk1AvJa78X7mh3kuR728SNzGXTEeu",
+    symbol: "TAOlie",
+    url: "https://taolie.ai/",
+    description:
+      "TAOlie is a leading DePIN player on the Solana ecosystem, offering One-Click Bittensor Mining and a Decentralized Compute Marketplace Utility. Committed to democratizing access to decentralized compute power, TAOlie enables incentivized machine learning for everyone through effortless 1-click deployment from our platform",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/taolie.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "taolie-coin",
+    cmcId: null,
+    category: "Services",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "taoline/index.js",
+    twitter: "TAOlie_SOL",
+    audit_links: ["https://www.cyberscope.io/audits/taoliedepin"],
+    listedAt: 1724519313
+  },
 ];
 
 export default data3;

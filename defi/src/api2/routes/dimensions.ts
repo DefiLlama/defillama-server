@@ -37,7 +37,7 @@ export async function getOverviewHandler(req: HyperExpress.Request, res: HyperEx
   clearCache()
   const eventParameters = getEventParameters(req)
   const key = JSON.stringify(eventParameters) + 'overview' + Math.random()
-  
+
   if (!reqCache[key]) {
     console.time(key)
     reqCache[key] = getOverviewProcess(eventParameters)
@@ -110,7 +110,9 @@ async function getOverviewProcess(eventParameters: any) {
 }
 
 function formatChartData(data: any = {}) {
-  return Object.entries(data).filter(([_key, val]: any) => val).map(([key, value]: any) => [timeSToUnix(key), value]).sort(([a]: any, [b]: any) => a - b)
+  return Object.entries(data)
+    // .filter(([_key, val]: any) => val) // we want to keep 0 values
+    .map(([key, value]: any) => [timeSToUnix(key), value]).sort(([a]: any, [b]: any) => a - b)
 }
 
 function getPercentage(a: number, b: number) {

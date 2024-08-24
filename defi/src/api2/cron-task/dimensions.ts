@@ -144,7 +144,7 @@ async function run() {
       protocol.misc = {
         versionKey: info.versionKey,  // TODO: check, this is not stored in cache correctly and as workaround we are storing it in info object
       };
-      const infoKeys = ['name', 'defillamaId', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey']
+      const infoKeys = ['name', 'defillamaId', 'disabled', 'displayName', 'module', 'category', 'logo', 'chains', 'methodologyURL', 'methodology', 'gecko_id', 'forkedFrom', 'twitter', 'audits', 'description', 'address', 'url', 'audit_links', 'versionKey', 'cmcId', 'id', 'github', 'governanceID', 'treasury']
 
       infoKeys.forEach(key => protocol.info[key] = (info as any)[key])
       if (info.childProtocols?.length) protocol.info.childProtocols = info.childProtocols.map((child: any) => {
@@ -158,6 +158,8 @@ async function run() {
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = info.chains.map(_getDisplayChainName)
       protocol.info.chains.forEach((chain: string) => chainSet.add(chain))
+      protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
+      protocol.info.displayName = protocol.info.displayName ?? info.name
       const protocolTypeRecords = data[AdapterType.PROTOCOLS].protocols[id]?.records ?? {}
       const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData({ ...protocolTypeRecords, ...protocol.records }, protocol.info, adapterType, protocolMetadataMap[id])  // if there are duplicate records between protocol and specific adaptertype, the adaptertype record overwrites generic record
       // const hasTodayData = !!protocol.records[todayTimestring]

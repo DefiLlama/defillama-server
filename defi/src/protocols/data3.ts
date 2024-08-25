@@ -53026,6 +53026,29 @@ const data3: Protocol[] = [
     audit_links: ["https://www.cyberscope.io/audits/taoliedepin"],
     listedAt: 1724519313
   },
+  {
+    id: "5040",
+    name: "XTrade",
+    address: null,
+    symbol: "-",
+    url: "https://www.xtrade.exchange/",
+    description:
+      "The decentralized exchange for X Layer",
+    chain: "X Layer",
+    logo: `${baseIconsUrl}/xtrade.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["X Layer"],
+    oracles: [],
+    forkedFrom: ["Algebra DEX"],
+    module: "taoline/index.js",
+    twitter: "XTradeExchange",
+    github: ["XTradeExchange"],
+    listedAt: 1724616197
+  },
 ];
 
 export default data3;

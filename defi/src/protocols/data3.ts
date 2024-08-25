@@ -53044,7 +53044,7 @@ const data3: Protocol[] = [
     chains: ["X Layer"],
     oracles: [],
     forkedFrom: ["Algebra DEX"],
-    module: "taoline/index.js",
+    module: "xtrade/index.js",
     twitter: "XTradeExchange",
     github: ["XTradeExchange"],
     listedAt: 1724616197

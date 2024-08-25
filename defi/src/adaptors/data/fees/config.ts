@@ -2479,5 +2479,9 @@ export default {
     "bcraft": {
         enabled: true,
         id: "5036"
+    },
+    "paxos-gold": {
+        enabled: true,
+        id: "4862"
     }
 } as AdaptorsConfig

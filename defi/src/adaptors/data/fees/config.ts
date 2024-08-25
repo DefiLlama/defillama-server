@@ -2483,5 +2483,9 @@ export default {
     "paxos-gold": {
         enabled: true,
         id: "4862"
+    },
+    "chainflip": {
+        enabled: true,
+        id: "3853"
     }
 } as AdaptorsConfig

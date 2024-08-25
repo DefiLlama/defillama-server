@@ -2909,5 +2909,9 @@ export default {
     "aqua-network": {
         enabled: true,
         id: "5035"
+    },
+    "chainflip": {
+        enabled: true,
+        id: "3853"
     }
 } as AdaptorsConfig

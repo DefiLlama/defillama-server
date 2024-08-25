@@ -118,5 +118,9 @@ export default {
         parentId: "PancakeSwap",
         enabled: true,
         id: "4967"
+    },
+    "arrow-markets": {
+        enabled: true,
+        id: "4957"
     }
 } as AdaptorsConfig

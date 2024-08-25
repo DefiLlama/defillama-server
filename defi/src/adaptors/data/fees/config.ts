@@ -2475,5 +2475,9 @@ export default {
     "openeden-t-bills": {
         enabled: true,
         id: "3057"
+    },
+    "bcraft": {
+        enabled: true,
+        id: "5036"
     }
 } as AdaptorsConfig

@@ -5153,6 +5153,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DriftProtocol",
     github: ["drift-labs"],
   },
+  {
+    id: "parent#kayak",
+    name: "Kayak",
+    url: "https://kayakfinance.io",
+    description:
+      "Enable traders to access aggregated liquidity, low-slippage swap with premium utility and yield",
+    logo: `${baseIconsUrl}/kayak.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Kayak_Finance",
+  },
 ];
 
 export default parentProtocols;

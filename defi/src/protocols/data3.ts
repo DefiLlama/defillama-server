@@ -48312,14 +48312,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4830",
-    name: "Kayak",
+    name: "Kayak V2",
     address: null,
     symbol: "-",
     url: "https://kayakfinance.io/",
     description:
       "Kayak Finance is a cross-chain stable market, enabling users from different chains to access aggregated liquidity, low-slippage swap, and premium pegged asset utility",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/kayak.png`,
+    logo: `${baseIconsUrl}/kayak-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -48331,6 +48331,7 @@ const data3: Protocol[] = [
     module: "kayak/index.js",
     twitter: "Kayak_Finance",
     audit_links: ["https://docs.kayakfinance.io/resource/audit-report"],
+    parentProtocol: "parent#kayak",
     listedAt: 1719811561,
   },
   {
@@ -53188,6 +53189,29 @@ const data3: Protocol[] = [
     twitter: "DriftProtocol",
     parentProtocol: "parent#drift",
     listedAt: 1724680364
+  },
+  {
+    id: "5047",
+    name: "Kayak V3",
+    address: null,
+    symbol: "-",
+    url: "https://kayakfinance.io",
+    description:
+      "Enable traders to access aggregated liquidity, low-slippage swap with premium utility and yield",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/kayak-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll"],
+    oracles: [],
+    forkedFrom: [],
+    module: "kayak-uni-v3/index.js",
+    twitter: "Kayak_Finance",
+    parentProtocol: "parent#kayak",
+    listedAt: 1724684898
   },
 ];
 

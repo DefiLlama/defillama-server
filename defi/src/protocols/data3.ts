@@ -53143,6 +53143,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#euler",
     listedAt: 1724665226
   },
+  {
+    id: "5045",
+    name: "BloFin",
+    address: null,
+    symbol: "-",
+    url: "https://blofin.com",
+    description:
+      "Trade with Next-gen Experience, Profit from Functioning Strategies, and Keep Your Crypto Safe.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/blofin.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Arbitrum", "Optimism"],
+    oracles: [],
+    forkedFrom: [],
+    module: "blofin-cex/index.js",
+    twitter: "BloFin_Official",
+    listedAt: 1724672849
+  },
 ];
 
 export default data3;

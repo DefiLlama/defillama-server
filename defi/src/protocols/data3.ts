@@ -53165,6 +53165,29 @@ const data3: Protocol[] = [
     twitter: "BloFin_Official",
     listedAt: 1724672849
   },
+  {
+    id: "5046",
+    name: "Drift Staked SOL",
+    address: "solana:DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
+    symbol: "DRIFT",
+    assetToken: "dSOL",
+    url: "https://app.drift.trade/overview",
+    description:
+      "Liquid Staking token on Solana",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/drift-staked-sol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dSOL/index.js",
+    twitter: "DriftProtocol",
+    listedAt: 1724680364
+  },
 ];
 
 export default data3;

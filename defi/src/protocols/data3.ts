@@ -53119,6 +53119,30 @@ const data3: Protocol[] = [
     twitter: "AbacusFi",
     listedAt: 1724664979
   },
+  {
+    id: "5044",
+    name: "Euler V2",
+    address: "0xd9fcd98c322942075a5c3860693e9f4f03aae07b",
+    symbol: "EUL",
+    url: "https://www.euler.finance",
+    description:
+      "Permissionless crypto lending markets are almost here. Euler is a non-custodial protocol on Ethereum that allows users to lend and borrow almost any crypto asset",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/euler-v2.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "euler-v2/index.js",
+    twitter: "eulerfinance",
+    audit_links: ["https://www.euler.finance/#security"],
+    parentProtocol: "parent#euler",
+    listedAt: 1724665226
+  },
 ];
 
 export default data3;

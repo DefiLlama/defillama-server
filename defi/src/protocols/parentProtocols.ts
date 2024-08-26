@@ -5125,6 +5125,21 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "OpenWorldFi",
     github: ["OpenWorldVision"],
   },
+  {
+    id: "parent#euler",
+    name: "Euler",
+    url: "https://www.euler.finance",
+    description:
+      "Permissionless crypto lending markets are almost here. Euler is a non-custodial protocol on Ethereum that allows users to lend and borrow almost any crypto asset",
+    logo: `${baseIconsUrl}/euler.svg`,
+    gecko_id: "euler",
+    cmcId: "14280",
+    chains: [],
+    twitter: "eulerfinance",
+    github: ["euler-xyz"],
+    treasury: "euler.js",
+    governanceID: ["snapshot:eulerdao.eth"],
+  },
 ];
 
 export default parentProtocols;

@@ -53213,6 +53213,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#kayak",
     listedAt: 1724684898
   },
+  {
+    id: "5048",
+    name: "IOLEND",
+    address: null,
+    symbol: "-",
+    url: "https://www.iolend.fi/",
+    description:
+      "Native lending market on IOTA EVM",
+    chain: "IOTA EVM",
+    logo: `${baseIconsUrl}/iolend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["IOTA EVM"],
+    oracles: ["Pyth"], // https://x.com/PythNetwork/status/1828115264287973872
+    forkedFrom: ["AAVE V2"],
+    module: "iolend/index.js",
+    twitter: "iolendfi",
+    listedAt: 1724694512
+  },
 ];
 
 export default data3;

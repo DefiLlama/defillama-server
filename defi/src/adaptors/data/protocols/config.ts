@@ -278,5 +278,9 @@ export default {
                 id: "4772",
             }
         }
+    },
+    "xtrade": {
+        enabled: true,
+        id: "5040"
     }
 } as AdaptorsConfig

@@ -53235,6 +53235,28 @@ const data3: Protocol[] = [
     twitter: "iolendfi",
     listedAt: 1724694512
   },
+  {
+    id: "5049",
+    name: "Farcaster",
+    address: null,
+    symbol: "-",
+    url: "https://www.farcaster.xyz/",
+    description:
+      "A sufficiently decentralized social network",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/farcaster.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Optimism", "Base"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "farcaster_xyz",
+    listedAt: 1724701123
+  },
 ];
 
 export default data3;

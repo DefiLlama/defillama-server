@@ -5050,7 +5050,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#h2-finance",
     name: "H2 Finance",
-    url: "https://unidex.exchange",
+    url: "https://h2.finance",
     description:
       "Uniswap v2 and v3fork on Cronos zkEVM",
     logo: `${baseIconsUrl}/h2-finance.png`,

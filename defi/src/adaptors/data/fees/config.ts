@@ -2487,5 +2487,13 @@ export default {
     "chainflip": {
         enabled: true,
         id: "3853"
+    },
+    "franklin-templeton": {
+        enabled: true,
+        id: "4878"
+    },
+    "hashnote-usyc": {
+        enabled: true,
+        id: "3698"
     }
 } as AdaptorsConfig

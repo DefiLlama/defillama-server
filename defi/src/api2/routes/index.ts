@@ -261,7 +261,7 @@ async function getSimpleChainDataset(req: HyperExpress.Request, res: HyperExpres
   let param = req.path_parameters.chain ?? ''
   if (param.endsWith('.csv')) param = param.slice(0, -4)
 
-  const chain = param.replace('%20', ' ')
+  const chain = param.replace('%20', ' ').replace('_', ' ')
   const params = req.query_parameters
   const options = {
     ...params,

@@ -49265,7 +49265,7 @@ const data3: Protocol[] = [
     name: "Palmy Finance",
     address: null,
     symbol: "-",
-    url: "https://yaka.finance",
+    url: "https://app.palmy.finance/",
     description: "Palmy Finance is the first lending protocol backed by Oasys Network.",
     chain: "Oasys",
     logo: `${baseIconsUrl}/palmy-finance.jpg`,

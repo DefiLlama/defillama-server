@@ -5140,6 +5140,19 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "euler.js",
     governanceID: ["snapshot:eulerdao.eth"],
   },
+  {
+    id: "parent#drift",
+    name: "Drift",
+    url: "https://www.drift.trade/",
+    description:
+      "Drift brings on-chain, cross-margined perpetual futures to Solana. Making futures DEXs the best way to trade.",
+    logo: `${baseIconsUrl}/drift-trade.jpg`,
+    gecko_id: "drift-protocol",
+    cmcId: "31278",
+    chains: [],
+    twitter: "DriftProtocol",
+    github: ["drift-labs"],
+  },
 ];
 
 export default parentProtocols;

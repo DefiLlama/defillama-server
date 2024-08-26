@@ -18440,6 +18440,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DriftProtocol",
     oracles: ["Pyth"],
     audit_links: ["https://github.com/Zellic/publications/blob/master/Drift%20Protocol%20Audit%20Report.pdf"],
+    parentProtocol: "parent#drift",
     listedAt: 1638568951,
   },
   {

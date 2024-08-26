@@ -53186,6 +53186,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dSOL/index.js",
     twitter: "DriftProtocol",
+    parentProtocol: "parent#drift",
     listedAt: 1724680364
   },
 ];

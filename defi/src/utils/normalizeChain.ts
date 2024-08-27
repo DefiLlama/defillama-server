@@ -3259,6 +3259,15 @@ export const chainCoingeckoIds = {
     twitter: "Immutable",
     url: "https://www.immutable.com/products/immutable-x",
   },
+  "Neo X Mainnet": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 47763,
+    twitter: "Neo_Blockchain",
+    url: "https://x.neo.org/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3966,6 +3975,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "BandChain"
     case "immutablex":
       return "Immutable X"
+    case "neox":
+      return "Neo X Mainnet"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

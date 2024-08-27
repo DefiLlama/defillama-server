@@ -1086,7 +1086,7 @@ export default {
         "id": "1772"
     },
     "concordex-io": {
-        "enabled": false,
+        "enabled": false, // file doesn't exist
         "id": "3172"
     },
     "vvs-finance": {
@@ -1233,7 +1233,7 @@ export default {
         "id": "324"
     },
     "meridian-trade": {
-        "enabled": false,
+        "enabled": false, // request to https://subgraph.meridianfinance.net/subgraphs/name/perpetuals-stats failed, reason: connect ECONNREFUSED 137.184.25.57:443
         "id": "3386"
     },
     "baseswap": {
@@ -1276,11 +1276,11 @@ export default {
         "id": "3454"
     },
     "sharesgram": {
-        "enabled": false,
+        "enabled": false, // only returns 0 for fees everytime
         "id": "3464"
     },
     "tigris": {
-        "enabled": false,
+        "enabled": false, // has several dates with { "error" : { "S" : "Request failed with status code 500" } }
         "id": "3129"
     },
     "aerodrome": {
@@ -1481,7 +1481,7 @@ export default {
     },
     "morpho-compound": {
         parentId: "Morpho",
-        "enabled": false,
+        "enabled": false, // https://discord.com/channels/823822164956151810/1022274454451142800/1166542892999913583
         "id": "1997"
     },
     "benqi-staked-avax": {
@@ -2321,7 +2321,7 @@ export default {
         id: "427"
     },
     "betmode": {
-        enabled: false,
+        enabled: false, // has negative fees for many dates
         id: "4927"
     },
     "silo-finance": {

@@ -5202,6 +5202,8 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "bonsai_dao",
     github: ["UmamiDAO"],
+    treasury: "umamifinance.js",
+    governanceID: ["snapshot:arbis.eth", "snapshot:umamidao.eth"],
   },
 ];
 

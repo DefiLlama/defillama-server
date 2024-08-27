@@ -15,8 +15,8 @@ export default {
       "enabled": true,
       "id": "2254",
       "protocolsData": {
-          "mux-protocol-agge": {
-              "id": "2254",
+          "mux-deri-agg": {
+              "id": "5054",
               "enabled": true,
           }
       },

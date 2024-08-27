@@ -144,10 +144,11 @@ export const chainToCoingeckoId = {
   nibiru: "nibiru",
   hyperliquid: "hyperliquid",
   ancient8: "ancient8",
-  degen: "degen"
+  degen: "degen",
+  cronos_zkevm: "cronos-zkevm"
 
 
-  
+
   // chz: "chiliz",
   // stellar: "stellar",
   // stacks: "stacks",
@@ -158,3 +159,21 @@ export const chainToCoingeckoId = {
 };
 
 export default chainToCoingeckoId;
+
+// const fetch = require("node-fetch");
+// async function generateNewObject() {
+//   const res: { id: string }[] = await fetch(
+//     "https://api.coingecko.com/api/v3/asset_platforms",
+//   ).then((r: any) => r.json());
+
+//   const currentChains = Object.values(chainToCoingeckoId);
+//   let missing: string = ``;
+//   res.map((r) => {
+//     if (currentChains.includes(r.id)) return;
+//     missing = `${missing} ${r.id},`;
+//   });
+
+//   console.log(missing);
+// }
+// generateNewObject();
+// ts-node common/chainToCoingeckoId.ts

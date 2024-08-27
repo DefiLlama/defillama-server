@@ -53370,6 +53370,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#mux-protocol",
     listedAt: 1724762254
   },
+  {
+    id: "5055",
+    name: "IBC",
+    address: null,
+    symbol: "-",
+    url: "https://www.ibcprotocol.dev",
+    description:
+      "IBC is a blockchain interoperability protocol used by 110+ chains. It enables secure, permissionless, feature-rich cross-chain interactions.",
+    chain: "Cosmos",
+    logo: `${baseIconsUrl}/ibc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Cosmos"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "osmosis-ibc/index.js",
+    twitter: "IBCProtocol",
+    listedAt: 1724778968
+  },
 ];
 
 export default data3;

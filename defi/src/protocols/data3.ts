@@ -53325,7 +53325,28 @@ const data3: Protocol[] = [
     twitter: "Asteroneo",
     listedAt: 1724749819
   },
-
+  {
+    id: "5053",
+    name: "Bitunix",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitunix.com",
+    description:
+      "Global Crypto Derivatives Exchange. Better Liquidity, Better Trading",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/bitunix.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum", "Tron"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "bitunix-cex/index.js",
+    twitter: "BitunixOfficial",
+    listedAt: 1724758911
+  },
 ];
 
 export default data3;

@@ -53303,6 +53303,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#echo-protocol",
     listedAt: 1724748233
   },
+  {
+    id: "5052",
+    name: "Asteroneo",
+    address: null,
+    symbol: "-",
+    url: "https://asteroneo.com",
+    description:
+      "Trade Cryptocurrency at Lightning fast speeds on a truly decentralized Blockchain Network. Join the revolution and bring power back to the users’ hands.",
+    chain: "Neo X Mainnet",
+    logo: `${baseIconsUrl}/asteroneo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Neo X Mainnet"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "asteroneo/index.js",
+    twitter: "Asteroneo",
+    listedAt: 1724749819
+  },
+
 ];
 
 export default data3;

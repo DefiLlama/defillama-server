@@ -7160,6 +7160,36 @@
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    },
+    "EQAvlWFDxGF2lXm67y4yzC17wYKD9A0guwPkMs1gOsM__NOT": {
+      "decimals": "9",
+      "symbol": "NOT",
+      "to": "coingecko#notcoin"
+    },
+    "EQBlqsm144Dq6SjbPI4jjZvA1hqTIP3CvHovbIfW_t-SCALE": {
+      "decimals": "9",
+      "symbol": "SCALE",
+      "to": "coingecko#scaleton"
+    },
+    "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO": {
+      "decimals": "9",
+      "symbol": "STON",
+      "to": "coingecko#ston-2"
+    },
+    "EQCvxJy4eG8hyHBFsZ7eePxrRsUQSFE_jpptRAYBmcG_DOGS": {
+      "decimals": "9",
+      "symbol": "DOGS",
+      "to": "coingecko#dogs-2"
+    },
+    "EQBZ_cafPyDr5KUTs0aNxh0ZTDhkpEZONmLJA2SNGlLm4Cko": {
+      "decimals": "9",
+      "symbol": "REDO",
+      "to": "coingecko#resistance-dog"
+    },
+    "EQAQXlWJvGbbFfE8F3oS8s87lIgdovS455IsWFaRdmJetTon": {
+      "decimals": "9",
+      "symbol": "JETTON",
+      "to": "coingecko#jetton"
     }
   },
   "dexit": {

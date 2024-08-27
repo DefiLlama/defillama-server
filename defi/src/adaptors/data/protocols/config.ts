@@ -1,3 +1,4 @@
+import { findLastIndex } from "lodash"
 import { AdaptorsConfig } from "../types"
 
 
@@ -270,11 +271,11 @@ export default {
         id: "4712",
     },
     "jellyverse": {
-        enabled: true,
+        enabled: false,
         id: "4772",
         protocolsData: {
             "v2": {
-                enabled: true,
+                enabled: false,
                 id: "4772",
             }
         }

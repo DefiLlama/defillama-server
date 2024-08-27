@@ -11225,7 +11225,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Arbitrum"],
     module: "arbis.js",
     twitter: "arbis_finance",
-    github: ["UmamiDAO"],
   },
   {
     id: "626",
@@ -14061,7 +14060,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://2316168122-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMxcGyx5kIW5oBPBlyRqM%2Fuploads%2FmmWuHBOPwbdZAMEZaULv%2FUmami_Final_Report.pdf?alt=media&token=6c80872c-0976-4f9d-82e0-ae10b4750235",
     ],
     listedAt: 1635877329,
-    github: ["UmamiDAO"],
+    parentProtocol: "parent#bonsaidao-ecosystem"
   },
   {
     id: "752",

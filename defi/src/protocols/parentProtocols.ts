@@ -1681,7 +1681,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "cozyfinance",
     github: ["Cozy-Finance"],
   },
-  {
+  /*{
     id: "parent#vendor-finance",
     name: "Vendor Finance",
     url: "https://vendor.finance",
@@ -1693,7 +1693,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "VendorFi",
     github: ["VendorFinance"],
-  },
+  },*/
   {
     id: "parent#vyfinance",
     name: "VyFinance",
@@ -5189,6 +5189,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "muxprotocol",
     governanceID: ["snapshot:muxvote.eth"],
+  },
+  {
+    id: "parent#bonsaidao-ecosystem",
+    name: "BonsaiDAO Ecosystem",
+    url: "https://bonsaidao.xyz/",
+    description:
+      "Bonsai DAO operates as a DeFi Studio inspired by the venture studio model, creating a scalable and adaptable ecosystem of interconnected products, known as Leaves",
+    logo: `${baseIconsUrl}/bonsaidao-ecosystem.png`,
+    gecko_id: "bonsai",
+    cmcId: null,
+    chains: [],
+    twitter: "bonsai_dao",
+    github: ["UmamiDAO"],
   },
 ];
 

@@ -6568,7 +6568,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Chainlink"],
     audit_links: ["https://omniscia.io/reports/vendor-finance-specialized-upgradeability-implementation"],
-    parentProtocol: "parent#vendor-finance",
+    parentProtocol: "parent#bonsaidao-ecosystem",
     listedAt: 1684288451,
   },
   {

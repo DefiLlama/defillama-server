@@ -53392,6 +53392,28 @@ const data3: Protocol[] = [
     twitter: "IBCProtocol",
     listedAt: 1724778968
   },
+  {
+    id: "5056",
+    name: "Carrot Swap",
+    address: null,
+    symbol: "-",
+    url: "https://carrot-fi.xyz",
+    description:
+      "High-Capital Efficiency AMM-based DEX & Launchpad. empowers users with seamless trading experiences and efficient token launches.",
+    chain: "Neo X Mainnet",
+    logo: `${baseIconsUrl}/carrot-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Neo X Mainnet"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "carrotswap/index.js",
+    twitter: "carrot_fi",
+    listedAt: 1724778998
+  },
 ];
 
 export default data3;

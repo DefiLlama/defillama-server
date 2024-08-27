@@ -2495,5 +2495,9 @@ export default {
     "hashnote-usyc": {
         enabled: true,
         id: "3698"
+    },
+    "farcaster": {
+        enabled: true,
+        id: "5049"
     }
 } as AdaptorsConfig

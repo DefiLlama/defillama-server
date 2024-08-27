@@ -5177,6 +5177,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "EchoProtocol_",
   },
+  {
+    id: "parent#mux-protocol",
+    name: "MUX Protocol",
+    url: "https://mux.network",
+    description:
+      "MUX Protocol Suite contains the MUX Leveraged Trading Protocol and MUX Aggregator. MUX offers optimized trading cost, deep aggregated liquidity, diverse market options and a wide range of leverage options for traders.",
+    logo: `${baseIconsUrl}/mux-protocol.png`,
+    gecko_id: "mcdex",
+    cmcId: "5956",
+    chains: [],
+    twitter: "muxprotocol",
+    governanceID: ["snapshot:muxvote.eth"],
+  },
 ];
 
 export default parentProtocols;

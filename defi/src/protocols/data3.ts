@@ -53347,6 +53347,29 @@ const data3: Protocol[] = [
     twitter: "BitunixOfficial",
     listedAt: 1724758911
   },
+  {
+    id: "5054",
+    name: "MUX Deri Agg",
+    address: "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42",
+    symbol: "MCB",
+    url: "https://mux.network",
+    description:
+      "MUX Protocol Suite contains the MUX Leveraged Trading Protocol and MUX Aggregator. MUX offers optimized trading cost, deep aggregated liquidity, diverse market options and a wide range of leverage options for traders.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/mux-deri-agg.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "muxprotocol",
+    parentProtocol: "parent#mux-protocol",
+    listedAt: 1724762254
+  },
 ];
 
 export default data3;

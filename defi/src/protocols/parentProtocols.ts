@@ -5165,6 +5165,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Kayak_Finance",
   },
+  {
+    id: "parent#echo-protocol",
+    name: "Echo Protocol",
+    url: "https://www.echo-protocol.xyz",
+    description:
+      "Bridge, Restake and Earn Yield from BTC assets on Move",
+    logo: `${baseIconsUrl}/echo-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "EchoProtocol_",
+  },
 ];
 
 export default parentProtocols;

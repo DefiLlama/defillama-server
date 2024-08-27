@@ -51156,6 +51156,7 @@ const data3: Protocol[] = [
     chains: ["BSquared"],
     module: "echo-bridge/index.js",
     twitter: "EchoProtocol_",
+    parentProtocol: "parent#echo-protocol",
     listedAt: 1723036283,
   },
   {
@@ -53256,6 +53257,51 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "farcaster_xyz",
     listedAt: 1724701123
+  },
+  {
+    id: "5050",
+    name: "Delta Trade",
+    address: null,
+    symbol: "-",
+    url: "https://www.deltatrade.ai",
+    description:
+      "3 trading modes: Grid, Swing and DCA",
+    chain: "Near",
+    logo: `${baseIconsUrl}/delta-trade.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Near"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "deltatrade.js",
+    twitter: "DeltaBotTeam",
+    listedAt: 1724748009
+  },
+  {
+    id: "5051",
+    name: "Echo Lending",
+    address: null,
+    symbol: "-",
+    url: "https://www.echo-protocol.xyz",
+    description:
+      "Bridge, Restake and Earn Yield from BTC assets on Move",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/echo-lending.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Aptos"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "echo-lending/index.js",
+    twitter: "EchoProtocol_",
+    parentProtocol: "parent#echo-protocol",
+    listedAt: 1724748233
   },
 ];
 

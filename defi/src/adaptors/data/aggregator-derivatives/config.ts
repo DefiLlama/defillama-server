@@ -45,7 +45,17 @@ export default {
   },
   "bitoro": {
     "enabled": true,
-    "id": "4841"
+    "id": "4841",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+          "1724198400": true,
+          "1724284800": true,
+          "1724371200": true,
+          "1724457600": true,
+          "1724544000": true,
+          "1724630400": true,
+      }
+    }
   },
   "kwenta": {
     "enabled": true,

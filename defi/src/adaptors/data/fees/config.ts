@@ -322,7 +322,7 @@ export default {
     },
     "cardano": {
         "enabled": false,
-        "id": "2010"
+        "id": "2010" // wrong id, not related to klaytn
     },
     "cronos": {
         "enabled": true,
@@ -330,7 +330,7 @@ export default {
     },
     "klaytn": {
         "enabled": false,
-        "id": "4256"
+        "id": "4256" // wrong id, not related to klaytn
     },
     "dodo-fees": {
         "enabled": true,
@@ -348,7 +348,7 @@ export default {
     },
     "mixin": {
         "enabled": false,
-        "id": "2349"
+        "id": "2349" // wrond id, not linked to mixin
     },
     "polygon": {
         "enabled": true,
@@ -376,8 +376,8 @@ export default {
         "id": "643"
     },
     "boba": {
-        "enabled": false,
-        "id": "14556"
+        "enabled": false, // Error: INDEXA_DB not set
+        "id": "14556" // Boba bridge id should be 3935
     },
     "mojitoswap": {
         "enabled": true,
@@ -492,7 +492,7 @@ export default {
         "id": "2290"
     },
     "moonwell-artemis": {
-        "enabled": false,
+        "enabled": false, // ClientError: auth error: payment required for subsequent requests for this API key:
         "id": "1853"
     },
     "moonwell-apollo": {
@@ -633,7 +633,7 @@ export default {
     },
     "covo-finance": {
         parentId: "Covo Finance",
-        "enabled": false,
+        "enabled": false, // ClientError: auth error: payment required for subsequent requests for this API key:
         "id": "2525"
     },
     "nftearth": {
@@ -717,7 +717,7 @@ export default {
     },
     "ramses-exchange-v1": {
         parentId: "Ramses Exchange",
-        enabled: false,
+        enabled: false, // ClientError: auth error: payment required for subsequent requests for this API key:
         id: "2675"
     },
     "blastapi": {
@@ -937,7 +937,7 @@ export default {
         "id": "2641"
     },
     "veax": {
-        "enabled": false,
+        "enabled": false, // no file for veax in fees folder
         "id": "2928"
     },
     "maestro": {

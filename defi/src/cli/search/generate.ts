@@ -1,6 +1,9 @@
 import { writeFile as writeFileRaw } from "fs"
 import { promisify } from "util"
+import {sluggifyString} from "../../utils/sluggify"
 const writeFile = promisify(writeFileRaw)
+
+const normalize = (str:string) => sluggifyString(str).replace(/[^a-zA-Z0-9_-]/, "").replace(/[^a-zA-Z0-9_-]/, "").replace(/[^a-zA-Z0-9_-]/, "")
 
 async function main() {
     const protocols:{
@@ -30,22 +33,22 @@ async function main() {
         }
     })
     let results = protocols.protocols.map(p=>({
-        id: `protocol#${p.name}`,
+        id: `protocol_${normalize(p.name)}`,
         name: p.name,
         symbol: p.symbol,
         tvl: p.tvl,
         logo: p.logo
     }) as any).concat(protocols.parentProtocols.map(parent=>({
-        id: parent.id,
+        id: normalize(parent.id.replace("#", "_")),
         name: parent.name,
         tvl: parentTvl[parent.id] ?? 0,
         logo: parent.logo
     }))).concat(protocols.chains.map(chain=>({
-        id: `chain#${chain}`,
+        id: `chain_${normalize(chain)}`,
         name: chain,
         tvl: chainTvl[chain]
     }))).concat(protocols.protocolCategories.map(category=>({
-        id: `category#${category}`,
+        id: `category_${normalize(category)}`,
         name: `All protocols in ${category}`,
         tvl: categoryTvl[category]
     })))

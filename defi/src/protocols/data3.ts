@@ -53414,6 +53414,52 @@ const data3: Protocol[] = [
     twitter: "carrot_fi",
     listedAt: 1724778998
   },
+  {
+    id: "5057",
+    name: "ModeMax AMM",
+    address: null,
+    symbol: "-",
+    url: "https://modemax.io",
+    description:
+      "Trade spot or perpetual BTC, ETH, MODE, USDT, USDC and other top cryptocurrencies with up to 50x leverage directly on ModeMax",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/modemax-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mode"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "modemax-dex/index.js",
+    twitter: "ModeMax_",
+    parentProtocol: "parent#modemax",
+    listedAt: 1724789344
+  },
+  {
+    id: "5058",
+    name: "ModeMax Perp",
+    address: null,
+    symbol: "-",
+    url: "https://modemax.io",
+    description:
+      "Trade spot or perpetual BTC, ETH, MODE, USDT, USDC and other top cryptocurrencies with up to 50x leverage directly on ModeMax",
+    chain: "Mode",
+    logo: `${baseIconsUrl}/modemax-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mode"],
+    oracles: [], 
+    forkedFrom: ["GMX V2"],
+    module: "modemax-perp/index.js",
+    twitter: "ModeMax_",
+    parentProtocol: "parent#modemax",
+    listedAt: 1724789844
+  },
 ];
 
 export default data3;

@@ -5205,6 +5205,19 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "umamifinance.js",
     governanceID: ["snapshot:arbis.eth", "snapshot:umamidao.eth"],
   },
+  {
+    id: "parent#modemax",
+    name: "ModeMax",
+    url: "https://modemax.io",
+    description:
+      "Trade spot or perpetual BTC, ETH, MODE, USDT, USDC and other top cryptocurrencies with up to 50x leverage directly on ModeMax",
+    logo: `${baseIconsUrl}/modemax.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ModeMax_",
+    github: ["ModeMaxIO"],
+  },
 ];
 
 export default parentProtocols;

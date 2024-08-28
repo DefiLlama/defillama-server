@@ -53439,7 +53439,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5058",
-    name: "ModeMax Perp",
+    name: "ModeMax Perps",
     address: null,
     symbol: "-",
     url: "https://modemax.io",

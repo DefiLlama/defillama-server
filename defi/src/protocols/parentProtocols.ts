@@ -5251,7 +5251,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Tokenlon",
     url: "https://tokenlon.im",
     description:
-      "okenlon is a decentralized exchange and payment settlement protocol based on blockchain technology",
+      "Tokenlon is a decentralized exchange and payment settlement protocol based on blockchain technology",
     logo: `${baseIconsUrl}/tokenlon.jpg`,
     gecko_id: "tokenlon",
     cmcId: "856",
@@ -5259,6 +5259,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "tokenlon",
     governanceID: ["snapshot:tokenlon.eth"],
     github: ["consenlabs"],
+  },
+  {
+    id: "parent#dragon-swap",
+    name: "Dragon Swap",
+    url: "https://dragonswap.app",
+    description:
+      "The DragonSwap Protocol is a publicly accessible, open-source framework designed for facilitating liquidity and enabling the trade of ERC20 tokens on the SEI EVM network. It bypasses the need for trusted middlemen and removes superfluous rent-seeking behavior, promoting secure, user-friendly, and efficient trading activities. This protocol is constructed to be permanent and non-upgradeable, ensuring it remains impervious to censorship.",
+    logo: `${baseIconsUrl}/dragon-swap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "dragonswap_dex",
+    github: ["dragonswap-app"],
   },
 ];
 

@@ -45816,14 +45816,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4720",
-    name: "Dragon Swap",
+    name: "Dragon Swap V2",
     address: null,
     symbol: "-",
     url: "https://dragonswap.app",
     description:
       "The DragonSwap Protocol is a publicly accessible, open-source framework designed for facilitating liquidity and enabling the trade of ERC20 tokens on the SEI EVM network. It bypasses the need for trusted middlemen and removes superfluous rent-seeking behavior, promoting secure, user-friendly, and efficient trading activities. This protocol is constructed to be permanent and non-upgradeable, ensuring it remains impervious to censorship.",
     chain: "Sei",
-    logo: `${baseIconsUrl}/dragon-swap.jpg`,
+    logo: `${baseIconsUrl}/dragon-swap-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -45834,7 +45834,7 @@ const data3: Protocol[] = [
     twitter: "dragonswap_dex",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    github: ["dragonswap-app"],
+    parentProtocol: "parent#dragon-swap",
     audit_links: [
       "https://github.com/dragonswap-app/dragonswap-core/blob/master/audits/20240209_Paladin_DragonSwap_Final_Report.pdf",
       "https://github.com/dragonswap-app/dragonswap-farming/blob/main/audits/20240418_Paladin_DragonSwapStaker_Final_Report.pdf",
@@ -53624,7 +53624,29 @@ const data3: Protocol[] = [
     github: ["DJHellscream"],
     listedAt: 1724853850
   },
-
+  {
+    id: "5066",
+    name: "Dragon Swap V3",
+    address: null,
+    symbol: "-",
+    url: "https://dragonswap.app",
+    description:
+      "The DragonSwap Protocol is a publicly accessible, open-source framework designed for facilitating liquidity and enabling the trade of ERC20 tokens on the SEI EVM network. It bypasses the need for trusted middlemen and removes superfluous rent-seeking behavior, promoting secure, user-friendly, and efficient trading activities. This protocol is constructed to be permanent and non-upgradeable, ensuring it remains impervious to censorship.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/dragon-swap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sei"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    module: "dragonswap-sei-v3/index.js",
+    twitter: "dragonswap_dex",
+    parentProtocol: "parent#dragon-swap",
+    listedAt: 1724854633
+  },
 ];
 
 export default data3;

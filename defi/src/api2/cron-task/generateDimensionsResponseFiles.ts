@@ -14,8 +14,7 @@ export default async function generateDimensionsResponseFiles(cache: any) {
   for (const adapterType of ADAPTER_TYPES) {
     if (adapterType === AdapterType.PROTOCOLS) continue
     const cacheData = cache[adapterType]
-    const { protocolSummaries, parentProtocolSummaries, protocols, ...rest } = cacheData
-    console.log('adapterType23ew23r', adapterType, rest)
+    const { protocolSummaries, parentProtocolSummaries, } = cacheData
 
     const timeKey = `dimensions-gen-files ${adapterType}`
     console.time(timeKey)

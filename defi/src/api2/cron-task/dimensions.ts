@@ -140,7 +140,6 @@ async function run() {
     adapterData.summaries = summaries
     adapterData.allChains = Array.from(chainSet)
     adapterData.lastUpdated = getUnixTimeNow()
-    console.log('suide8uuuvgfv', summaries, chainSet, 'chains', adapterType)
     console.timeEnd(timeKey3)
 
     function addProtocolData({ protocolId, dimensionProtocolInfo = {}, isParentProtocol = false, adapterType, skipChainSummary = false, records }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: any }) {
@@ -432,7 +431,6 @@ async function run() {
 
         parentProtocolsData[parentId].childProtocols.push(protocol)
       } else {
-        console.log('got parent protocl', protocol.info.name)
         parentProtocolSummaries[protocol.info.id] = protocol
       }
     }

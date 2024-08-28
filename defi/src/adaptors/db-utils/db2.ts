@@ -93,7 +93,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
   console.time(label)
 
   const result: any = await Tables.DIMENSIONS_DATA.findAll({
-    where: { type: adapterType, updatedat: { [Op.gte]: timestamp  } },
+    where: { type: adapterType, updatedat: { [Op.gte]: timestamp*1000  } },
     attributes: ['data', 'timestamp', 'id', 'timeS'],
     raw: true,
     order: [['timestamp', 'ASC']],

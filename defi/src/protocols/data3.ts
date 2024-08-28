@@ -53670,6 +53670,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#halotrade",
     listedAt: 1724856678,
   },
+  {
+    id: "5068",
+    name: "Dymension DEX",
+    address: null,
+    symbol: "-",
+    url: "https://portal.dymension.xyz/amm/swap",
+    description: "Decentralized exchange on Dymension",
+    chain: "Dymension",
+    logo: `${baseIconsUrl}/dymension-dex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Dymension"],
+    module: "dymension-dex.js",
+    twitter: "dymension",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1724868439,
+  },
 ];
 
 export default data3;

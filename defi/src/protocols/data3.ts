@@ -15111,7 +15111,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3363",
-    name: "HaloTrade",
+    name: "HaloTrade Cosmos",
     address: null,
     symbol: "-",
     url: "https://halotrade.zone/swap",
@@ -15129,7 +15129,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/halotrade-zone/audit-report"],
-    github: ["halotrade-zone"],
+    parentProtocol: "parent#halotrade",
     listedAt: 1691604795,
   },
   {
@@ -53646,6 +53646,29 @@ const data3: Protocol[] = [
     twitter: "dragonswap_dex",
     parentProtocol: "parent#dragon-swap",
     listedAt: 1724854633
+  },
+  {
+    id: "3363",
+    name: "HaloTrade EVM",
+    address: null,
+    symbol: "-",
+    url: "https://halotrade.zone/swap",
+    description: "The DEX on Aura Network",
+    chain: "Aura Network",
+    logo: `${baseIconsUrl}/halotrade.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aura Network"],
+    module: "halotrade-v3/index.js",
+    twitter: "Halotradezone",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/halotrade-zone/audit-report"],
+    parentProtocol: "parent#halotrade",
+    listedAt: 1724856678,
   },
 ];
 

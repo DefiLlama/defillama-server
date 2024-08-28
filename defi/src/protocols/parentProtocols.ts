@@ -5273,6 +5273,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "dragonswap_dex",
     github: ["dragonswap-app"],
   },
+  {
+    id: "parent#halotrade",
+    name: "HaloTrade",
+    url: "https://halotrade.zone/swap",
+    description:
+      "The DEX on Aura Network",
+    logo: `${baseIconsUrl}/halotrade.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Halotradezone",
+    github: ["halotrade-zone"],
+  },
 ];
 
 export default parentProtocols;

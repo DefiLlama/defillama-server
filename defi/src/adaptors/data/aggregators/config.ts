@@ -242,7 +242,7 @@ export default {
     protocolsData: {
         "agg-dex": {
             enabled: true,
-            id: "119"
+            id: "5061"
         }
     }
   },

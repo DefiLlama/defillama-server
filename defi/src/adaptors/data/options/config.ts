@@ -7,7 +7,7 @@ export default {
         parentId: "Lyra",
         "enabled": true,
         "startFrom": 1656460800,
-        "id": "503"
+        "id": "5060"
     },
     "premia": {
         "enabled": true,
@@ -45,7 +45,7 @@ export default {
     },
     "aevo": {
         "enabled": true,
-        "id": "2797"
+        "id": "5059"
     },
     "typus": {
         "enabled": true,

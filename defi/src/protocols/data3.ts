@@ -51865,6 +51865,7 @@ const data3: Protocol[] = [
     twitter: "OpusMoney",
     audit_links: ["https://github.com/lindy-labs/opus_contracts/tree/main/audits"],
     github: ["lindy-labs"],
+    stablecoins: ["opus-cash"],
     listedAt: 1723632546,
   },
   {

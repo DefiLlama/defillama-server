@@ -1,3 +1,4 @@
+import fetch from "node-fetch"
 import {sluggifyString} from "./utils/sluggify"
 
 const normalize = (str:string) => sluggifyString(str).replace(/[^a-zA-Z0-9_-]/, "").replace(/[^a-zA-Z0-9_-]/, "").replace(/[^a-zA-Z0-9_-]/, "")

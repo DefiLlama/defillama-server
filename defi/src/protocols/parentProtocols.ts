@@ -5246,6 +5246,20 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:dodobird.eth"],
     treasury: "dodo.js",
   },
+  {
+    id: "parent#tokenlon",
+    name: "Tokenlon",
+    url: "https://tokenlon.im",
+    description:
+      "okenlon is a decentralized exchange and payment settlement protocol based on blockchain technology",
+    logo: `${baseIconsUrl}/tokenlon.jpg`,
+    gecko_id: "tokenlon",
+    cmcId: "856",
+    chains: [],
+    twitter: "tokenlon",
+    governanceID: ["snapshot:tokenlon.eth"],
+    github: ["consenlabs"],
+  },
 ];
 
 export default parentProtocols;

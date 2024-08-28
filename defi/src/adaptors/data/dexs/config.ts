@@ -1,4 +1,3 @@
-import { CATEGORIES } from "../helpers/categories"
 import { AdaptorsConfig } from "../types"
 
 export default {

@@ -1,4 +1,3 @@
-import { nullFinder } from "../../emissions-adapters/utils/convertToChartData";
 import { baseIconsUrl } from "../constants";
 import type { IParentProtocol } from "./types";
 
@@ -5289,3 +5288,8 @@ const parentProtocols: IParentProtocol[] = [
 ];
 
 export default parentProtocols;
+
+export const parentProtocolsById = parentProtocols.reduce((accum, protocol) => {
+  accum[protocol.id] = protocol;
+  return accum;
+}, {} as Record<string, IParentProtocol>);

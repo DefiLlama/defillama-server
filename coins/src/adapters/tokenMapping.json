@@ -489,6 +489,11 @@
     }
   },
   "arbitrum": {
+    "0x35e050d3C0eC2d29D269a8EcEa763a183bDF9A9D": {
+      "decimals": "18",
+      "symbol": "USDY ",
+      "to": "ethereum:0x96F6eF951840721AdBF46Ac996b59E0235CB985C"
+    },
     "0xAed882F117b78034829E2cfFA11206706837B1b1": {
       "decimals": "18",
       "symbol": "WQ",

@@ -283,5 +283,10 @@ export default {
     "xtrade": {
         enabled: true,
         id: "5040"
+    },
+    "magicsea-lb": {
+        parentId: "MagicSea",
+        enabled: true,
+        id: "4755",
     }
 } as AdaptorsConfig

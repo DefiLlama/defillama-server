@@ -53554,6 +53554,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dodo",
     listedAt: 1724844800
   },
+  {
+    id: "5063",
+    name: "Tokenlon Agg",
+    address: "0x0000000000095413afc295d19edeb1ad7b71c952",
+    symbol: "LON",
+    url: "https://tokenlon.im",
+    description:
+      "Tokenlon is a decentralized exchange and payment settlement protocol based on blockchain technology",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tokenlon-agg.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "tokenlon",
+    parentProtocol: "parent#tokenlon",
+    listedAt: 1724845349
+  },
 ];
 
 export default data3;

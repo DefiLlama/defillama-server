@@ -53577,6 +53577,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#tokenlon",
     listedAt: 1724845349
   },
+  {
+    id: "5064",
+    name: "CaviarNine Agg",
+    address: "radixdlt:resource_rdx1t5pyvlaas0ljxy0wytm5gvyamyv896m69njqdmm2stukr3xexc2up9",
+    symbol: "FLOOP",
+    url: "https://www.caviarnine.com/trade",
+    description:
+      "An AMM smart contract, much like Uniswap, SushiSwap and PancakeSwap, allowing users to manage token liquidity and execute swaps at algorithmically set prices",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/caviarnine-agg.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Radix"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "CaviarNine",
+    parentProtocol: "parent#caviarnine",
+    listedAt: 1724846039
+  },
 ];
 
 export default data3;

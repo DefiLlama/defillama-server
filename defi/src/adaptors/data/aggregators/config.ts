@@ -59,7 +59,7 @@ export default {
     id: "3645",
     protocolsData: {
       aggregator: {
-        id: "3645",
+        id: "5064",
         enabled: true,
       },
     },

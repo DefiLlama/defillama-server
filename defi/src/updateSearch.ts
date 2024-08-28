@@ -60,12 +60,13 @@ async function generateSearchList() {
     return results
 }
 
-export default async ()=>{
+const main = async ()=>{
     const searchResults = await generateSearchList()
     const submit = await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
         method: "POST",
         headers: {
-            "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`
+            "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(searchResults)
     }).then(r=>r.json())
@@ -78,4 +79,7 @@ export default async ()=>{
     if(errorMessage){
         console.log(errorMessage)
     }
+    console.log(status)
 }
+
+export default main

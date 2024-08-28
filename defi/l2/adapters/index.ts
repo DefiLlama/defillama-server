@@ -198,3 +198,19 @@ export const manta = async (): Promise<Address[]> => {
     .map((optToken) => optToken.address.toLowerCase());
   return addresses.manta;
 };
+export const osmosis = async (): Promise<Address[]> => {
+  if (addresses.osmosis) return addresses.osmosis;
+  const res = await fetch(
+    `https://raw.githubusercontent.com/osmosis-labs/assetlists/main/osmosis-1/generated/chain_registry/assetlist.json`
+  ).then((r) => r.json());
+
+  addresses.osmosis = [];
+  res.assets.map((c: any) => {
+    const { base: address } = c;
+    if (!address.startsWith("ibc/")) return;
+    // const decimals = c.denom_units.find((d: any) => d.denom == display)?.exponent;
+    addresses.osmosis.push(address);
+  });
+
+  return addresses.osmosis;
+};

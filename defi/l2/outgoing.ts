@@ -132,7 +132,7 @@ function addOutgoingToMcapData(
     if (!(chain in adjustedNative)) adjustedNative[chain] = {};
     Object.keys(allMcapData[chain]).map((symbol: string) => {
       const { native, outgoing } = allMcapData[chain][symbol];
-      adjustedNative[chain][symbol] = native;
+      if (!native.isNaN()) adjustedNative[chain][symbol] = native 
       if (outgoing && outgoing != zero) adjustedOutgoing[chain][symbol] = outgoing;
     });
   });

@@ -53600,6 +53600,31 @@ const data3: Protocol[] = [
     parentProtocol: "parent#caviarnine",
     listedAt: 1724846039
   },
+  {
+    id: "5065",
+    name: "Apex DeFi",
+    address: "avax:0x98B172A09102869adD73116FC92A0A60BFF4778F",
+    symbol: "APEX",
+    url: "https://apexdefi.xyz",
+    description:
+      "Apex DeFi is the first and only all-in-one platform for ERC314 tokens, revolutionizing trading and DeFi with seamless integration.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/apex-defi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche", "Base", "Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "apexdefi/index.js",
+    twitter: "apex314_defi",
+    audit_links: ["https://www.cyberscope.io/audits/9-apex"],
+    github: ["DJHellscream"],
+    listedAt: 1724853850
+  },
+
 ];
 
 export default data3;

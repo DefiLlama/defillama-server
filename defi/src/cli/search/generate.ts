@@ -4,6 +4,8 @@ import {sluggifyString} from "../../utils/sluggify"
 const writeFile = promisify(writeFileRaw)
 
 const normalize = (str:string) => sluggifyString(str).replace(/[^a-zA-Z0-9_-]/, "").replace(/[^a-zA-Z0-9_-]/, "").replace(/[^a-zA-Z0-9_-]/, "")
+const standardizeProtocolName = (tokenName = '') =>
+	tokenName?.toLowerCase().split(' ').join('-').split("'").join('')
 
 async function main() {
     const protocols:{
@@ -37,20 +39,25 @@ async function main() {
         name: p.name,
         symbol: p.symbol,
         tvl: p.tvl,
-        logo: p.logo
+        logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(parent.name)}?w=48&h=48`,
+        url: `/protocol/${standardizeProtocolName(p.name)}`
     }) as any).concat(protocols.parentProtocols.map(parent=>({
         id: normalize(parent.id.replace("#", "_")),
         name: parent.name,
         tvl: parentTvl[parent.id] ?? 0,
-        logo: parent.logo
+        logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(parent.name)}?w=48&h=48`,
+        url: `/protocol/${standardizeProtocolName(parent.name)}`
     }))).concat(protocols.chains.map(chain=>({
         id: `chain_${normalize(chain)}`,
         name: chain,
-        tvl: chainTvl[chain]
+        logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
+        tvl: chainTvl[chain],
+        url: `/chain/${chain}`
     }))).concat(protocols.protocolCategories.map(category=>({
         id: `category_${normalize(category)}`,
         name: `All protocols in ${category}`,
-        tvl: categoryTvl[category]
+        tvl: categoryTvl[category],
+        url: `/protocols/${category}`
     })))
     await writeFile("./searchProtocols.json", JSON.stringify(results))
 }

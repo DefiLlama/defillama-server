@@ -92,4 +92,5 @@ export default {
   warlord: require("./other"),
   ifil: require("./liquidStaking/ifil"),
   uniV3: require("./markets/uniswap/v3"),
+  liquity: require("./other/liquity"),
 };

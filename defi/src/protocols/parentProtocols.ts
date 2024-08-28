@@ -5218,6 +5218,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ModeMax_",
     github: ["ModeMaxIO"],
   },
+  {
+    id: "parent#aevo",
+    name: "Aevo",
+    url: "https://www.aevo.xyz",
+    description:
+      "Trade crypto options on the world's first high-performance decentralized options exchange.",
+    logo: `${baseIconsUrl}/aevo.jpg`,
+    gecko_id: "aevo-exchange",
+    cmcId: "29676",
+    chains: [],
+    twitter: "aevoxyz",
+    github: ["aevoxyz"],
+  },
 ];
 
 export default parentProtocols;

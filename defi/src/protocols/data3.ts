@@ -53508,6 +53508,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#lyra",
     listedAt: 1724835641
   },
+  {
+    id: "5061",
+    name: "SushiSwap Agg",
+    address: "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
+    symbol: "SUSHI",
+    url: "https://sushi.com",
+    description:
+      "A fully decentralized protocol for automated liquidity provision on Ethereum.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sushiswap-agg.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "SushiSwap",
+    parentProtocol: "parent#sushi",
+    listedAt: 1724844008
+  },
 ];
 
 export default data3;

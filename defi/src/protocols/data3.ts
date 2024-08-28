@@ -53648,7 +53648,7 @@ const data3: Protocol[] = [
     listedAt: 1724854633
   },
   {
-    id: "3363",
+    id: "506",
     name: "HaloTrade EVM",
     address: null,
     symbol: "-",

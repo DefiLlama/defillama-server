@@ -1,3 +1,4 @@
+import './utils/failOnError'
 import * as HyperExpress from "hyper-express";
 import { initCache } from "./cache/index";
 import { initializeTVLCacheDB } from "./db";
@@ -60,13 +61,3 @@ function shutdown() {
 }
 
 main()
-
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-  // process.exit(1);
-})
-
-process.on('uncaughtException', (error) => {
-  console.error('Uncaught Exception thrown', error);
-  process.exit(1);
-})

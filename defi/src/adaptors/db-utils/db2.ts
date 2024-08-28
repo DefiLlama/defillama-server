@@ -1,11 +1,10 @@
-
+import * as sdk from "@defillama/sdk"
 import { Tables } from "../../api2/db/tables"
 import dynamodb from "../../utils/shared/dynamodb"
 import { initializeTVLCacheDB } from "../../api2/db"
 import { AdapterRecord2 } from "./AdapterRecord2"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
-import configs from "../data/configs"
-import { Op, QueryTypes } from "sequelize"
+import { Op, } from "sequelize"
 import { sliceIntoChunks } from "@defillama/sdk/build/util"
 import { IJSON } from "../data/types"
 
@@ -100,6 +99,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
     order: [['timestamp', 'ASC']],
   })
 
+  sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${result.length} items updated after ${new Date(timestamp * 1000)}`)
   console.timeEnd(label)
   return result
 }

@@ -27273,3 +27273,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 const protocols = data.concat(data2, data3);
 
 export default protocols;
+
+export const protocolsById =  protocols.reduce((accum, protocol) => {
+  accum[protocol.id] = protocol;
+  return accum;
+}, {} as Record<string, Protocol>);

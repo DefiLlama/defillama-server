@@ -19,7 +19,7 @@ import { getFormattedChains } from "../../getFormattedChains";
 import { getR2 } from "../../utils/r2";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
-import { getDimensionProtocolHandler, getOverviewHandler } from "./dimensions";
+import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
@@ -90,9 +90,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/historicalChainTvl", ew(getHistoricalChainTvlData))
   router.get("/v2/historicalChainTvl/:name", ew(getHistoricalChainTvlData))
 
-  router.get("/overview/:type", ew(getOverviewHandler))
-  router.get("/overview/:type/:chain", ew(getOverviewHandler))
-  router.get("/summary/:type/:name", ew(getDimensionProtocolHandler))
+  router.get("/overview/:type", ew(getOverviewFileRoute))
+  router.get("/overview/:type/:chain", ew(getOverviewFileRoute))
+  router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
   

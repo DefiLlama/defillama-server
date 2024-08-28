@@ -271,11 +271,11 @@ export default {
         id: "4712",
     },
     "jellyverse": {
-        enabled: false,
+        enabled: true,
         id: "4772",
         protocolsData: {
             "v2": {
-                enabled: false,
+                enabled: true,
                 id: "4772",
             }
         }

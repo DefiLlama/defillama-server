@@ -53531,6 +53531,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#sushi",
     listedAt: 1724844008
   },
+  {
+    id: "5062",
+    name: "DODO Agg",
+    address: "0x43Dfc4159D86F3A37A5A4B3D4580b888ad7d4DDd",
+    symbol: "DODO",
+    url: "https://dodoex.io",
+    description:
+      "Trade crypto assets with market-leading liquidity",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/dodo-agg.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "BreederDodo",
+    parentProtocol: "parent#dodo",
+    listedAt: 1724844800
+  },
 ];
 
 export default data3;

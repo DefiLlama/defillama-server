@@ -5231,6 +5231,21 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "aevoxyz",
     github: ["aevoxyz"],
   },
+  {
+    id: "parent#dodo",
+    name: "DODO",
+    url: "https://dodoex.io",
+    description:
+      "Trade crypto assets with market-leading liquidity",
+    logo: `${baseIconsUrl}/dodo.png`,
+    gecko_id: "dodo",
+    cmcId: "7224",
+    chains: [],
+    twitter: "BreederDodo",
+    github: ["DODOEX"],
+    governanceID: ["snapshot:dodobird.eth"],
+    treasury: "dodo.js",
+  },
 ];
 
 export default parentProtocols;

@@ -53267,17 +53267,21 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.deltatrade.ai",
     description:
-      "3 trading modes: Grid, Swing and DCA",
+      "Delta Trade is a multi-chain decentralized trading protocol that enhances user capabilities with sophisticated on-chain trading strategies such as Grid Trading, DCA, Rebalancing Grid, MultiChain Support, OrderBook, Full Platform Market Making and AI Powered Strategy.It is designed to deliver a straightforward and intuitive user experience, making it exceptionally accessible for retail traders",
     chain: "Near",
     logo: `${baseIconsUrl}/delta-trade.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Yield",
     chains: ["Near"],
-    oracles: [], 
+    oracles: ["Pyth"], // https://docs.deltatrade.ai/technical-information/security/oracle#pyth-oracle
     forkedFrom: [],
+    audit_links: [
+      "https://github.com/blocksecteam/audit-reports/blob/main/rust/blocksec_deltatrade_v2.0_signed.pdf",
+      "https://github.com/blocksecteam/audit-reports/blob/main/rust/blocksec_deltatrade_DCA_v1.0-signed.pdf",
+    ],
     module: "deltatrade.js",
     twitter: "DeltaBotTeam",
     listedAt: 1724748009

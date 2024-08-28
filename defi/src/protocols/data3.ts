@@ -53460,6 +53460,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#modemax",
     listedAt: 1724789844
   },
+  {
+    id: "5058",
+    name: "Delta Trade",
+    address: null,
+    symbol: '-',
+    url: "https://www.deltatrade.ai",
+    description:
+      "Delta Trade is a multi-chain decentralized trading protocol that enhances user capabilities with sophisticated on-chain trading strategies such as Grid Trading,  DCA, Rebalancing Grid, MultiChain Support, OrderBook, Full Platform Market Making and AI Powered Strategy.It is designed to deliver a straightforward and intuitive user experience, making it exceptionally accessible for retail traders.",
+    chain: "Near",
+    logo: `${baseIconsUrl}/delta-trade.png`,
+    audits: "2",
+    audit_note: null,
+    audit_links: [
+      "https://github.com/blocksecteam/audit-reports/blob/main/rust/blocksec_deltatrade_v2.0_signed.pdf",
+      "https://github.com/blocksecteam/audit-reports/blob/main/rust/blocksec_deltatrade_DCA_v1.0-signed.pdf",
+    ],
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Near"],
+    module: "deltatrade.js",
+    twitter: "DeltaBotTeam",
+    oracles: ["Pyth"],
+  },
 ];
 
 export default data3;

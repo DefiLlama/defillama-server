@@ -1,13 +1,10 @@
-import { writeFile as writeFileRaw } from "fs"
-import { promisify } from "util"
-import {sluggifyString} from "../../utils/sluggify"
-const writeFile = promisify(writeFileRaw)
+import {sluggifyString} from "./utils/sluggify"
 
 const normalize = (str:string) => sluggifyString(str).replace(/[^a-zA-Z0-9_-]/, "").replace(/[^a-zA-Z0-9_-]/, "").replace(/[^a-zA-Z0-9_-]/, "")
 const standardizeProtocolName = (tokenName = '') =>
 	tokenName?.toLowerCase().split(' ').join('-').split("'").join('')
 
-async function main() {
+async function generateSearchList() {
     const protocols:{
         chains: string[],
         parentProtocols: any[],
@@ -59,6 +56,25 @@ async function main() {
         tvl: categoryTvl[category],
         url: `/protocols/${category}`
     })))
-    await writeFile("./searchProtocols.json", JSON.stringify(results))
+    return results
 }
-main()
+
+export default async ()=>{
+    const searchResults = await generateSearchList()
+    const submit = await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`
+        },
+        body: JSON.stringify(searchResults)
+    }).then(r=>r.json())
+    const status = await fetch(`https://search.defillama.com/tasks/${submit.taskUid}`, {
+        headers: {
+            "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`
+        },
+    }).then(r=>r.json())
+    const errorMessage = status?.details?.error?.message
+    if(errorMessage){
+        console.log(errorMessage)
+    }
+}

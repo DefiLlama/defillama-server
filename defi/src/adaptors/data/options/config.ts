@@ -4,7 +4,7 @@ import { AdaptorsConfig } from "../types"
 
 export default {
     "lyra": {
-        parentId: "Lyra",
+        parentId: "Derive",
         "enabled": true,
         "startFrom": 1656460800,
         "id": "5060"
@@ -86,7 +86,7 @@ export default {
         }
     },
     "lyra-v2": {
-        parentId: "Lyra",
+        parentId: "Derive",
         "enabled": true,
         "id": "3923"
     },

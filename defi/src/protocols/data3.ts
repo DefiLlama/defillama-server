@@ -27730,13 +27730,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3923",
-    name: "Lyra V2",
+    name: "Derive V2", // rebrand from Lyra V2
     address: "optimism:0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
     symbol: "LYRA",
-    url: "https://www.lyra.finance/",
+    url: "https://derive.xyz",
     description: `Trade options, perps and spot on the most powerful self-custodial exchange.`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/lyra-v2.jpg`,
+    logo: `${baseIconsUrl}/derive.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -27746,7 +27746,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "lyra-v2/index.js",
-    twitter: "lyrafinance",
+    twitter: "derivexyz",
     parentProtocol: "parent#lyra",
     listedAt: 1702643004,
   },
@@ -53491,14 +53491,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5060",
-    name: "Lyra Options",
+    name: "Derive Options", // rebrand from Lyra Options
     address: "optimism:0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
     symbol: "LYRA",
-    url: "https://www.lyra.finance",
+    url: "https://derive.xyz",
     description:
       "Trade options, perps and spot on the most powerful self-custodial exchange.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/lyra-options.jpg`,
+    logo: `${baseIconsUrl}/derive.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -53508,7 +53508,7 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "lyrafinance",
+    twitter: "derivexyz",
     parentProtocol: "parent#lyra",
     listedAt: 1724835641
   },

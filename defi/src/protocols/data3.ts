@@ -40900,7 +40900,7 @@ const data3: Protocol[] = [
     url: "https://app.abracadabra.money/#/mim-swap",
     description:
       "Abracadabra's in house stableswap AMM! Enjoy the best LP yield, while optimising Abracadabra's efficiency.",
-    chain: "Arbitrum",
+    chain: "Blast",
     logo: `${baseIconsUrl}/mim-swap.png`,
     audits: "0",
     audit_note: null,

@@ -3274,7 +3274,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
     chainId: 1625,
-    twitter: "Neo_Blockchain",
+    twitter: "GravityChain",
     url: "https://gravity.xyz/"
   },
 } as unknown as ChainCoinGekcoIds

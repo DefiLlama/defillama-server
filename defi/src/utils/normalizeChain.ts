@@ -2898,13 +2898,13 @@ export const chainCoingeckoIds = {
     twitter: "BSquaredNetwork",
     url: "https://www.bsquared.network/"
   },
-  "Lyra Chain": {
+  "Derive Chain": { // rebrand from Lyra
     geckoId: null,
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
-    twitter: "lyrafinance",
-    url: "https://lyra.finance",
+    twitter: "derivexyz",
+    url: "https://www.derive.xyz/",
     chainId: 957,
   },
   "Planq": {
@@ -3308,6 +3308,7 @@ chainCoingeckoIds["HydraDX"] = chainCoingeckoIds["Hydration"]
 chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
 chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
 chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
+chainCoingeckoIds["Lyra Chain"] = chainCoingeckoIds["Derive Chain"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3377,6 +3378,8 @@ export function transformNewChainName(chain: string) {
       return "ZKsync Era"
     case "zkSync Lite":
       return "ZKsync Lite"
+    case "Lyra Chain":
+      return "Derive Chain"
     default:
       return chain
   }
@@ -3923,7 +3926,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bsquared":
       return "BSquared"
     case "lyra":
-      return "Lyra Chain"
+      return useNewChainNames ? "Derive Chain" : "Lyra Chain"
     case "planq":
       return "Planq"
     case "xlayer":

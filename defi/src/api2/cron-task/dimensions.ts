@@ -1,9 +1,8 @@
 import '../utils/failOnError'
 
 import { ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, } from "../../adaptors/handlers/getOverviewProcess";
-import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
+import { IJSON, AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data"
-import { IJSON, } from "../../adaptors/data/types";
 import { getDimensionsCacheV2, storeDimensionsCacheV2, } from "../utils/dimensionsUtils";
 import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
@@ -13,11 +12,13 @@ import { getDisplayChainNameCached } from "../../adaptors/utils/getAllChainsFrom
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { protocolsById } from "../../protocols/data";
 
-import generateDimensionsResponseFiles from "./generateDimensionsResponseFiles";
 import { RUN_TYPE, roundVaules, } from "../utils";
 import * as sdk from '@defillama/sdk'
 
-let counter = 0
+import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensions"
+import { storeRouteData } from "../cache/file-cache"
+import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors"
+import { sluggifyString } from "../../utils/sluggify"
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -316,8 +317,8 @@ async function run() {
         if (!_protocolData) continue
         let todayRecord = _protocolData.today
         let yesterdayRecord = _protocolData.yesterday
-        if (!todayRecord && !protocol.info.disabled) todayRecord = _protocolData.latest
-        if (!yesterdayRecord && !protocol.info.disabled) yesterdayRecord = _protocolData.latest
+        // if (!todayRecord && !protocol.info.disabled) todayRecord = _protocolData.latest
+        // if (!yesterdayRecord && !protocol.info.disabled) yesterdayRecord = _protocolData.latest
         const protocolSummary = initSummaryItem() as ProtocolSummary
         protocol.summaries[recordType] = protocolSummary
 
@@ -579,9 +580,6 @@ const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYP
 function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, metadata, }: { records: IJSON<any>, info?: any, adapterType: any, metadata: any, versionKey?: string }) {
   const { allSpikesAreGenuine, whitelistedSpikeSet = new Set() } = getSpikeConfig(metadata)
   const allKeys = Object.keys(records)
-  function timeSToUnix(timeS: string) {
-    return Math.floor(new Date(timeS).getTime() / 1000)
-  }
 
   // there is no point in maintaining accumulative data for protocols on all the records
   // we retain only the first and last record and compute the rest
@@ -655,7 +653,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
   nextTimeS = firstTimeS
   // addTotalValueDataTypesToRecord(records[firstTimeS])
 
-  while (timeSToUnix(nextTimeS) < currentTime) {
+ /*  while (timeSToUnix(nextTimeS) < currentTime) {
     if (isDisabled) break; // we dont fill in data for disabled protocols
     if (records[nextTimeS])
       lastTimeSWithData = nextTimeS
@@ -667,7 +665,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
 
     nextTimeS = getNextTimeS(nextTimeS)
     prevRecord = currentRecord
-  }
+  } */
 
   return response
 }
@@ -722,4 +720,71 @@ function extractChildRecords({ records, versionKey }: { records: IJSON<any>, ver
     }
   })
   return response
+}
+
+
+const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
+
+async function generateDimensionsResponseFiles(cache: any) {
+  for (const adapterType of ADAPTER_TYPES) {
+    if (adapterType === AdapterType.PROTOCOLS) continue
+    const cacheData = cache[adapterType]
+    const { protocolSummaries, parentProtocolSummaries, } = cacheData
+
+    const timeKey = `dimensions-gen-files ${adapterType}`
+    console.time(timeKey)
+
+    let recordTypes = getAdapterRecordTypes(adapterType)
+
+    for (const recordType of recordTypes) {
+      const timeKey = `dimensions-gen-files ${adapterType} ${recordType}`
+      console.time(timeKey)
+
+      // fetch and store overview of each record type
+      const allData = await getOverviewProcess2({ recordType, cacheData, })
+      await storeRouteData(`dimensions/${adapterType}/${recordType}-all`, allData)
+      allData.totalDataChart = []
+      allData.totalDataChartBreakdown = []
+      await storeRouteData(`dimensions/${adapterType}/${recordType}-lite`, allData)
+
+      // store per chain overview
+      const chains = allData.allChains ?? []
+
+      for (const chainLabel of chains) {
+        let chain = chainLabel.toLowerCase()
+        chain = sluggifiedNormalizedChains[chain] ?? chain
+        const data = await getOverviewProcess2({ recordType, cacheData, chain })
+        await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-all`, data)
+        data.totalDataChart = []
+        data.totalDataChartBreakdown = []
+        await storeRouteData(`dimensions/${adapterType}/${recordType}-chain/${chain}-lite`, data)
+      }
+
+      // store protocol summary for each record type
+      const allProtocols: any = { ...protocolSummaries, ...parentProtocolSummaries }
+      for (let [id, protocol] of Object.entries(allProtocols) as any) {
+        if (!protocol.info) {
+          console.log('no info for protocol', id)
+          continue
+        }
+
+        id = protocol.info.defillamaId ?? protocol.info.id ?? id
+
+        const data = await getProtocolDataHandler2({ recordType, protocolData: protocol })
+        const protocolSlug = sluggifyString(data.name)
+        const protocolSlugDN = data.displayName ? sluggifyString(data.displayName) : null
+        const differentDisplayName = protocolSlugDN && protocolSlug !== protocolSlugDN
+        await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${protocolSlug}-all`, data)
+        if (differentDisplayName)
+          await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${protocolSlugDN}-all`, data)
+        data.totalDataChart = []
+        data.totalDataChartBreakdown = []
+        await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${protocolSlug}-lite`, data)
+        if (differentDisplayName)
+          await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${protocolSlugDN}-lite`, data)
+      }
+    }
+
+    console.timeEnd(timeKey)
+  }
 }

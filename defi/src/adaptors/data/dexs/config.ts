@@ -1391,7 +1391,7 @@ export default {
         "id": "1801",
         protocolsData: {
             "metavault.trade": {
-                "id": "1801",
+                "id": "5072",
                 enabled: true,
             }
         }
@@ -1895,7 +1895,7 @@ export default {
         "id": "970",
         "protocolsData": {
             "swap": {
-                "id": "970",
+                "id": "5071",
                 "enabled": true,
             }
         },

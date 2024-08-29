@@ -219,7 +219,7 @@ const configs: { [adapter: string]: Config } = {
       return rate / 1e6;
     },
     chain: "ethereum",
-    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    underlying: "0x1abaea1f7c830bd89acc67ec4af516284b1bc33c",
     address: "0xa0769f7A8fC65e47dE93797b4e21C073c117Fc80",
   },
 };

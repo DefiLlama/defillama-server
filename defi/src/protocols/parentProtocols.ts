@@ -5309,6 +5309,30 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HelixApp_",
   },
+  {
+    id: "parent#iguanadex",
+    name: "IguanaDEX",
+    url: "https://iguanadex.com",
+    description:
+      "One-stop decentralized trading on Etherlink",
+    logo: `${baseIconsUrl}/iguanadex.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "iguanadex",
+  },
+  {
+    id: "parent#z-protocol",
+    name: "Z Protocol",
+    url: "https://iguanadex.com",
+    description:
+      "One-stop decentralized trading on Etherlink",
+    logo: `${baseIconsUrl}/z-protocol.png`,
+    gecko_id: "z-protocol",
+    cmcId: null,
+    chains: [],
+    twitter: "zprotocolxyz",
+  },
 ];
 
 export default parentProtocols;

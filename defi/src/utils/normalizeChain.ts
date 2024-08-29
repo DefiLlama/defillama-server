@@ -3285,6 +3285,18 @@ export const chainCoingeckoIds = {
     twitter: "Chainflip",
     url: "https://chainflip.io/"
   },
+  "IDEX": {
+    geckoId: "aurora-dao",
+    symbol: "IDEX",
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "idexio",
+    url: "https://idex.io/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4001,6 +4013,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Gravity"
     case "chainflip":
       return "Chainflip"
+    case "idex":
+      return "IDEX"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

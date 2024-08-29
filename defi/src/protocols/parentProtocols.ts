@@ -5285,6 +5285,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Halotradezone",
     github: ["halotrade-zone"],
   },
+  {
+    id: "parent#demex",
+    name: "Demex",
+    url: "https://app.dem.exchange",
+    description:
+      "The first fully decentralized DEX that supports any type of financial market.",
+    logo: `${baseIconsUrl}/demex.png`,
+    gecko_id: null,
+    cmcId: "1240",
+    chains: [],
+    twitter: "demexchange",
+  },
 ];
 
 export default parentProtocols;

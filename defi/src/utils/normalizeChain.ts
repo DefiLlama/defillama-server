@@ -3277,6 +3277,14 @@ export const chainCoingeckoIds = {
     twitter: "GravityChain",
     url: "https://gravity.xyz/"
   },
+  "Chainflip": {
+    geckoId: "chainflip",
+    symbol: "FLIP",
+    cmcId: "13268",
+    categories: ["EVM"],
+    twitter: "Chainflip",
+    url: "https://chainflip.io/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3988,6 +3996,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Neo X Mainnet"
     case "gravity":
       return "Gravity"
+    case "chainflip":
+      return "Chainflip"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

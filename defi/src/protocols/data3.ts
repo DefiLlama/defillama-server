@@ -53050,7 +53050,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["X Layer"],
     oracles: [],
-    forkedFrom: ["Algebra DEX"],
+    forkedFrom: ["Algebra Integral"],
     module: "xtrade/index.js",
     twitter: "XTradeExchange",
     github: ["XTradeExchange"],

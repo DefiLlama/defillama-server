@@ -53920,8 +53920,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#z-protocol",
     listedAt: 1724939421
   },
-  
-
+  {
+    id: "5079",
+    name: "IDEX V2",
+    address: "0xb705268213d593b8fd88d3fdeff93aff5cbdcfae",
+    symbol: "IDEX",
+    url: "https://idex.io/",
+    description: "The fastest, most secure decentralized exchange.",
+    chain: "IDEX",
+    logo: `${baseIconsUrl}/idex-v4.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["IDEX"],
+    module: "idex-v4/index.js",
+    twitter: "idexio",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#idex",
+    listedAt: 1724962213
+  },
 ];
 
 export default data3;

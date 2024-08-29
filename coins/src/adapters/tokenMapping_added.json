@@ -827,6 +827,12 @@
       "decimals": "18",
       "symbol": "ELON",
       "to": "coingecko#dogelon-mars"
+    },
+    "0xafe470ae215e48c144c7158eae3ccf0c451cb0cb": {
+      "name": "NEAR",
+      "decimals": "24",
+      "symbol": "NEAR",
+      "to": "coingecko#near"
     }
   },
   "kcc": {

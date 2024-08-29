@@ -177,7 +177,7 @@ export default {
         parentId: "GMX",
         "protocolsData": {
             "swap": {
-                "id": "337",
+                "id": "5069",
                 "enabled": true,
                 "category": "Dexes",
                 "displayName": "GMX - SWAP"
@@ -1993,7 +1993,7 @@ export default {
         "id": "3365",
         protocolsData: {
             "gmx-v2-swap": {
-                "id": "3365",
+                "id": "5070",
                 "enabled": true,
             }
         },

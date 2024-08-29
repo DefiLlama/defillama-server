@@ -595,7 +595,7 @@ export default {
         "id": "2259",
         protocolsData: {
             "helix-perp": {
-                "id": "2259",
+                "id": "5074",
                 "enabled": true,
             }
         }

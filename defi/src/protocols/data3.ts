@@ -13407,7 +13407,7 @@ const data3: Protocol[] = [
     module: "jewelswap-lev-farming/api.js",
     twitter: "JewelSwapX",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://docs.jewelswap.io/multiversx/money-markets/jewelswap-money-markets-an-introduction
+    oracles: [],
     parentProtocol: "parent#jewelswap",
     listedAt: 1690305247,
   },

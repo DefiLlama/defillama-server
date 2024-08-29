@@ -3268,6 +3268,15 @@ export const chainCoingeckoIds = {
     twitter: "Neo_Blockchain",
     url: "https://x.neo.org/"
   },
+  "Gravity": {
+    geckoId: "g-token",
+    symbol: "G",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 1625,
+    twitter: "Neo_Blockchain",
+    url: "https://gravity.xyz/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3977,6 +3986,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Immutable X"
     case "neox":
       return "Neo X Mainnet"
+    case "gravity":
+      return "Gravity"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

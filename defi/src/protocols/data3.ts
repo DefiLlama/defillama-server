@@ -53785,6 +53785,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#metavault",
     listedAt: 1724922927
   },
+  {
+    id: "5073",
+    name: "Demex AMM",
+    address: null,
+    symbol: "-",
+    url: "https://app.dem.exchange",
+    description: "The first fully decentralized DEX that supports any type of financial market.",
+    chain: "Carbon",
+    logo: `${baseIconsUrl}/demex-amm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Carbon"],
+    module: "dummy.js",
+    twitter: "demexchange",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#demex",
+    listedAt: 1724923585
+  },
+
 ];
 
 export default data3;

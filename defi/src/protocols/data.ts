@@ -2079,6 +2079,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon"],
     module: "siren/index.js",
     twitter: "sirenprotocol",
+    oracles: ["Pyth"], // https://docs.siren.xyz/faq/pyth-integration
     audit_links: ["https://docs.sirenmarkets.com/faq-general/for-users#is-the-siren-protocol-safe"],
     governanceID: ["snapshot:sirenmarkets.eth"],
     github: ["sirenmarkets"],

@@ -20694,13 +20694,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2271",
-    name: "Magpie",
+    name: "Wompie", // rebrand from Magpie
     address: "bsc:0xD06716E1Ff2E492Cc5034c2E81805562dd3b45fa",
     symbol: "MGP",
     url: "https://www.magpiexyz.io",
     description: "Magpie is a Multi-chain DeFi platform providing Yield & veTokenomics boosting services.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/magpie.png`,
+    logo: `${baseIconsUrl}/wompie.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "magpie",

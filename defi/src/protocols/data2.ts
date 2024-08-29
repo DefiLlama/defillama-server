@@ -6147,7 +6147,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Algorand"],
-    oracles: ["Internal"],
+    oracles: ["Internal", "Pyth", "Chainlink"], // https://github.com/Folks-Finance/folks-finance-xchain-contracts/tree/main/contracts/oracle
     forkedFrom: [],
     module: "folks-finance/index.js",
     twitter: "FolksFinance",

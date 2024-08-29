@@ -13407,7 +13407,7 @@ const data3: Protocol[] = [
     module: "jewelswap-lev-farming/api.js",
     twitter: "JewelSwapX",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.jewelswap.io/multiversx/money-markets/jewelswap-money-markets-an-introduction
     parentProtocol: "parent#jewelswap",
     listedAt: 1690305247,
   },
@@ -44297,7 +44297,7 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     module: "superposition/index.js",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], //  https://docs.superposition.finance/asset-pricing
     twitter: "superp_fi",
     listedAt: 1716371512,
   },
@@ -48614,7 +48614,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Linea"],
-    oracles: ["API3"], // https://docs.linehub.io/linehub-products/more#enhanced-security , https://lineascan.build/address/0xcea91eaa9f4d968c082efe8e48a107e6a74fef21#code
+    oracles: ["Pyth"], // https://docs.linehub.io/linehub-products/more#enhanced-security , https://lineascan.build/address/0x09b573a41d389fef53cb3abeaebfdebf9a32dbaa
     forkedFrom: [],
     module: "linehub-perps/index.js",
     twitter: "LineDefiHub",

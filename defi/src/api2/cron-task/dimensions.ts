@@ -579,6 +579,9 @@ const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYP
 function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, metadata, }: { records: IJSON<any>, info?: any, adapterType: any, metadata: any, versionKey?: string }) {
   const { allSpikesAreGenuine, whitelistedSpikeSet = new Set() } = getSpikeConfig(metadata)
   const allKeys = Object.keys(records)
+  function timeSToUnix(timeS: string) {
+    return Math.floor(new Date(timeS).getTime() / 1000)
+  }
 
   // there is no point in maintaining accumulative data for protocols on all the records
   // we retain only the first and last record and compute the rest
@@ -610,7 +613,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
         const surroundingKeys = getSurroundingKeysExcludingCurrent(allKeys, idx)
         const highestCloseValue = surroundingKeys.map(i => records[i].aggregated?.[key]?.value ?? 0).filter(i => i).reduce((a, b) => Math.max(a, b), 0)
         if (highestCloseValue > 0 && currentValue > 10 * highestCloseValue) {
-          sdk.log('Spike detected', adapterType, metadata?.id, info?.name, timeS, key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')
+          sdk.log('Spike detected', adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')
           // sdk.log('Spike detected', info?.name, timeS, JSON.stringify(record, null, 2))
         }
       }

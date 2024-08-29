@@ -128,7 +128,7 @@ export async function getOverviewProcess2({
 }
 
 export async function getProtocolDataHandler2({
-  protocolData, recordType,  excludeTotalDataChart, excludeTotalDataChartBreakdown,
+  protocolData, recordType, excludeTotalDataChart, excludeTotalDataChartBreakdown,
 }: {
   protocolData?: any,
   recordType: AdaptorRecordType,
@@ -138,11 +138,11 @@ export async function getProtocolDataHandler2({
 
   if (!protocolData)
     throw new Error("missing protocol data")
-  
-  
+
+
   const { records, summaries, info } = protocolData
   if (!summaries) {
-    console.log('missing summaries',  info.name)
+    console.log('missing summaries', info.name)
     return {}
   }
   let summary = summaries[recordType] ?? {}
@@ -198,18 +198,26 @@ export async function getProtocolDataHandler2({
   }
 }
 
+function genRandomString() {
+  return Math.random().toString(36).substring(7)
+}
+
 export async function getOverviewFileRoute(req: HyperExpress.Request, res: HyperExpress.Response) {
   const {
-    adaptorType, dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown,chainFilter,
+    adaptorType, dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown, chainFilter,
   } = getEventParameters(req, true)
   const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-all'
-  const chainStr = chainFilter ? `-chain/${chainFilter}` : ''
+  const chainStr = chainFilter && chainFilter !== 'All' ? `-chain/${chainFilter.toLowerCase()}` : ''
   const routeFile = `dimensions/${adaptorType}/${dataType}${chainStr}${isLiteStr}`
-  
+  // const timeKey = Math.random() + routeFile + '-overview'
+  // console.time(timeKey)
+
   const data = await readRouteData(routeFile)
+  // console.timeEnd(timeKey)
+
   if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
-  
-    if (excludeTotalDataChart) data.totalDataChart = []
+
+  if (excludeTotalDataChart) data.totalDataChart = []
   if (excludeTotalDataChartBreakdown) data.totalDataChartBreakdown = []
   return successResponse(res, data)
 }
@@ -223,11 +231,14 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
   } = getEventParameters(req, false)
   const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-all'
   const routeFile = `dimensions/${adaptorType}/${dataType}-protocol/${protocolSlug}${isLiteStr}`
-  
+  // const timeKey = Math.random() + routeFile + '-summary'
+  // console.time(timeKey)
+
   const data = await readRouteData(routeFile)
-  if (data) 
+  // console.timeEnd(timeKey)
+  if (!data)
     return errorResponse(res, `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`)
-  
+
   if (excludeTotalDataChart) data.totalDataChart = []
   if (excludeTotalDataChartBreakdown) data.totalDataChartBreakdown = []
   return successResponse(res, data)

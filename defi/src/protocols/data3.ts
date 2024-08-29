@@ -53807,6 +53807,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#demex",
     listedAt: 1724923585
   },
+  {
+    id: "5074",
+    name: "Helix Perp",
+    address: null,
+    symbol: "-",
+    url: "https://helixapp.com",
+    description: "The premier decentralized crypto exchange. Trade unlimited cross-chain spot and futures markets.",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/helix-perp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Injective"],
+    module: "dummy.js",
+    twitter: "HelixApp_",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#demex",
+    listedAt: 1724923885
+  },
 
 ];
 

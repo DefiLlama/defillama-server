@@ -5297,6 +5297,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "demexchange",
   },
+  {
+    id: "parent#helix",
+    name: "Helix",
+    url: "https://helixapp.com",
+    description:
+      "The premier decentralized crypto exchange. Trade unlimited cross-chain spot and futures markets.",
+    logo: `${baseIconsUrl}/helix.jpg`,
+    gecko_id: null,
+    cmcId: "1551",
+    chains: [],
+    twitter: "HelixApp_",
+  },
 ];
 
 export default parentProtocols;

@@ -50770,8 +50770,8 @@ const data3: Protocol[] = [
       "MAHA (previously known as MahaDAO) is a community-powered decentralized organization. Our mission is to create a stablecoin that is deeply rooted into the Ether-sphere. With integrations towards LRTs, Lending Protocols and DeFi for growth",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/maha.xyz.png`,
-    audits: "0",
-    audit_note: null,
+    audits: "2",
+    audit_note: "https://github.com/mahaxyz/contracts/blob/master/audits/2024-08-halborn-core.pdf",
     gecko_id: null,
     cmcId: null,
     category: "CDP",
@@ -50783,6 +50783,7 @@ const data3: Protocol[] = [
     github: ["mahaxyz"],
     treasury: "mahaxyz.js",
     listedAt: 1722616997,
+    governanceID: ["snapshot:maha.eth"],
   },
   {
     id: "4940",

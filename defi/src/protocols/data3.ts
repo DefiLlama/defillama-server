@@ -40247,7 +40247,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Merlin", "Ethereum", "Bitlayer", "Binance", "Arbitrum", "CORE", "Scroll"],
-    oracles: ["Apro"], //https://github.com/avalonfinancexyz/ORACLE https://github.com/DefiLlama/defillama-server/pull/7838
+    oracles: [], //https://github.com/avalonfinancexyz/ORACLE https://github.com/DefiLlama/defillama-server/pull/7838 removed apro on apro team request
     forkedFrom: ["AAVE V3"],
     module: "avalon-finance/index.js",
     twitter: "avalonfinance_",

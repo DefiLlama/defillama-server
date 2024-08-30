@@ -53922,7 +53922,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5079",
-    name: "IDEX V2",
+    name: "IDEX V4",
     address: "0xb705268213d593b8fd88d3fdeff93aff5cbdcfae",
     symbol: "IDEX",
     url: "https://idex.io/",

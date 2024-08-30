@@ -4,7 +4,7 @@ import * as HyperExpress from "hyper-express";
 import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../adaptors/db-utils/adaptor-record";
 import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../../adaptors/handlers/getOverviewProcess";
-import { getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors";
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { timeSToUnix, } from "../utils/time";
@@ -67,6 +67,10 @@ export async function getOverviewProcess2({
   excludeTotalDataChartBreakdown?: boolean,
 }) {
   const { summaries, allChains, protocolSummaries = {} } = cacheData
+  if (chain) {
+    if (chain.includes('-')) chain = chain.replace(/-/g, ' ')
+      chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
+  }
   const chainDisplayName = chain ? getDisplayChainNameCached(chain) : null
   let summary = chain ? summaries[recordType]?.chainSummary[chain] : summaries[recordType]
   const response: any = {}

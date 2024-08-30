@@ -653,7 +653,9 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
   nextTimeS = firstTimeS
   // addTotalValueDataTypesToRecord(records[firstTimeS])
 
-  /*  while (timeSToUnix(nextTimeS) < currentTime) {
+  /*  
+  // Code for filling in missing data with the last available data
+  while (timeSToUnix(nextTimeS) < currentTime) {
      if (isDisabled) break; // we dont fill in data for disabled protocols
      if (records[nextTimeS])
        lastTimeSWithData = nextTimeS

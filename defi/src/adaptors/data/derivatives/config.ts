@@ -475,7 +475,12 @@ export default {
     "equation": {
         parentId: "Equation",
         "enabled": true,
-        "id": "3726"
+        "id": "3726",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1707782400: false
+            }
+        }
     },
     "derivio": {
         "enabled": false,
@@ -658,7 +663,12 @@ export default {
     },
     "pingu": {
         "enabled": true,
-        "id": "4102"
+        "id": "4102",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1716422400: true 
+            }
+        }
     },
     "ipor": {
         "enabled": true,
@@ -667,6 +677,15 @@ export default {
             "derivatives": {
                 "id": "2147",
                 "enabled": true,
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1715126400: true,
+                1716336000: true,
+                1717718400: true,
+                1722297600: true,
+                1724457600: true
             }
         }
     },

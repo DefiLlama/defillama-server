@@ -16,6 +16,12 @@ export default {
                 displayName: "Balancer V2",
                 enabled: true,
             }
+        }, 
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1718755200: true,
+                1722297600: true
+            }
         }
     },
     "bancor": {
@@ -42,54 +48,70 @@ export default {
         "enabled": true,
         "id": "797"
     },
-    // "pancakeswap": {
-    //     "enabled": true,
-    //     "id": "194",
-    //     parentId: "PancakeSwap",
-    //     protocolsData: {
-    //         v1: {
-    //             "disabled": true,
-    //             enabled: true,
-    //             "id": "2590"
-    //         },
-    //         v2: {
-    //             enabled: true,
-    //             "id": "194"
-    //         },
-    //         stableswap: {
-    //             "enabled": true,
-    //             "id": "2529",
-    //             startFrom: 1663718400
-    //         },
-    //         v3: {
-    //             "enabled": true,
-    //             "id": "2769"
-    //         }
-    //     },
-    // },
+    "pancakeswap": {
+        "enabled": true,
+        "id": "194",
+        parentId: "PancakeSwap",
+        protocolsData: {
+            v1: {
+                "disabled": true,
+                enabled: true,
+                "id": "2590"
+            },
+            v2: {
+                enabled: true,
+                "id": "194"
+            },
+            stableswap: {
+                "enabled": true,
+                "id": "2529",
+                startFrom: 1663718400
+            },
+            v3: {
+                "enabled": true,
+                "id": "2769"
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1660176000: false,
+                1665014400: false
+            }
+        }
+    },
     "raydium": {
         "enabled": true,
-        "id": "214"
+        "id": "214",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1685318400: false
+            }
+        }
     },
-    // "uniswap": {
-    //     "enabled": true,
-    //     "id": "1",
-    //     parentId: "Uniswap",
-    //     "protocolsData": {
-    //         "v1": {
-    //             "enabled": true,
-    //             "id": "2196"
-    //         },
-    //         "v2": {
-    //             "enabled": true,
-    //             "id": "2197"
-    //         },
-    //         "v3": {
-    //             "enabled": true,
-    //             "id": "2198"
-    //         },
-    //     },
-    // },
+    "uniswap": {
+        "enabled": true,
+        "id": "1",
+        parentId: "Uniswap",
+        "protocolsData": {
+            "v1": {
+                "enabled": true,
+                "id": "2196"
+            },
+            "v2": {
+                "enabled": true,
+                "id": "2197"
+            },
+            "v3": {
+                "enabled": true,
+                "id": "2198"
+            },
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1665446400: true
+            }
+        }
+    },
     "traderjoe": {
         "enabled": true,
         "id": "468",
@@ -121,6 +143,11 @@ export default {
             v3: {
                 enabled: true,
                 id: "2776"
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1712793600: false
             }
         }
     },
@@ -260,7 +287,12 @@ export default {
     "platypus": {
         disabled: true,
         "enabled": true,
-        "id": "944"
+        "id": "944",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1697068800: false
+            }
+        }
     },
     "yoshi-exchange": {
         "enabled": true,
@@ -365,7 +397,12 @@ export default {
     "sunswap": {
         parentId: "SUN.io",
         "enabled": true,
-        "id": "690"
+        "id": "690",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1689984000: false
+            }
+        }
     },
     "whaleswap": {
         "enabled": true,
@@ -383,7 +420,13 @@ export default {
     },
     "defi-swap": {
         "enabled": true,
-        "id": "221"
+        "id": "221",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1683676800: false,
+                1700524800: true
+            }
+        }
     },
     "wanswap-dex": {
         "enabled": true,
@@ -523,7 +566,12 @@ export default {
     },
     "ubeswap": {
         "enabled": true,
-        "id": "488"
+        "id": "488",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1675555200: true 
+            }
+        }
     },
     "mobius-money": {
         "enabled": true,
@@ -598,7 +646,12 @@ export default {
     "defi-kingdoms": {
         disabled: true,
         "enabled": true,
-        "id": "556"
+        "id": "556",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1656028800: false
+            }
+        }
     },
     "defiplaza": {
         "enabled": true,
@@ -714,7 +767,13 @@ export default {
     },
     "babyswap": {
         "enabled": true,
-        "id": "597"
+        "id": "597",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1705881600: false,
+                1712880000: false
+            }
+        }
     },
     "lifinity": {
         "enabled": true,
@@ -736,7 +795,13 @@ export default {
     },
     "babydogeswap": {
         "enabled": true,
-        "id": "2169"
+        "id": "2169",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1685232000: false,
+                1687305600: false
+            }
+        }
     },
     "wigoswap": {
         "enabled": true,
@@ -1072,6 +1137,11 @@ export default {
             "orderly-network": {
                 "id": "2264",
                 enabled: true,
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1712188800: false
             }
         }
     },
@@ -1880,7 +1950,12 @@ export default {
     },
     "deepbook-sui": {
         "enabled": true,
-        "id": "3268"
+        "id": "3268",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1706659200: false
+            }
+        }
     },
     "agni-fi": {
         "enabled": true,
@@ -2407,7 +2482,13 @@ export default {
     },
     "zkswap": {
         "enabled": true,
-        "id": "3280"
+        "id": "3280",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1703203200: false,
+                1704672000: false
+            }
+        }
     },
     "trisolaris": {
         "enabled": true,
@@ -2793,7 +2874,12 @@ export default {
     },
     "ston": {
         enabled: true,
-        id: "2337"
+        id: "2337",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1704931200: false
+            }
+        }
     },
     "keller-cl": {
         parentId: "Keller Finance",

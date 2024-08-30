@@ -45861,7 +45861,7 @@ const data3: Protocol[] = [
     module: "yei-fi/index.js",
     twitter: "YeiFinance",
     forkedFrom: ["AAVE V3"],
-    oracles: ["Pyth"], //https://docs.yei.finance/welcome-to-yei/security-and-risk/oracles-and-data-feeds Pyth used for USDC, USDT & SEI price https://seitrace.com/address/0xEAb459AD7611D5223A408A2e73b69173F61bb808
+    oracles: ["RedStone"], //https://github.com/DefiLlama/defillama-server/pull/7905
     listedAt: 1717532780,
   },
   {

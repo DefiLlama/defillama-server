@@ -45861,7 +45861,7 @@ const data3: Protocol[] = [
     module: "yei-fi/index.js",
     twitter: "YeiFinance",
     forkedFrom: ["AAVE V3"],
-    oracles: ["RedStone"], //https://docs.yei.finance/welcome-to-yei/security-and-risk/oracles-and-data-feeds#redstone
+    oracles: ["RedStone"], //https://github.com/DefiLlama/defillama-server/pull/7905
     listedAt: 1717532780,
   },
   {

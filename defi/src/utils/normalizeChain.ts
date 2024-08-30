@@ -2499,6 +2499,7 @@ export const chainCoingeckoIds = {
     symbol: "FTN",
     cmcId: "22615",
     categories: ["EVM"],
+    twitter: "bahamut_chain",
     github: ["fastexlabs"]
   },
   "Zkfair": {

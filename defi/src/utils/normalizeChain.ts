@@ -2607,9 +2607,13 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
     twitter: "DeFiVerse_org",
     url: "https://defi-verse.org",
+    chainId: 16116,
+    parent: {
+      chain: "Oasys",
+      types: ["L2"]
+    },
   },
   "Manta Atlantic": {
     geckoId: null,

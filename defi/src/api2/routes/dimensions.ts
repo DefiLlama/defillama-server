@@ -209,11 +209,11 @@ export async function getOverviewFileRoute(req: HyperExpress.Request, res: Hyper
   const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-all'
   const chainStr = chainFilter && chainFilter !== 'All' ? `-chain/${chainFilter.toLowerCase()}` : ''
   const routeFile = `dimensions/${adaptorType}/${dataType}${chainStr}${isLiteStr}`
-  // const timeKey = Math.random() + routeFile + '-overview'
-  // console.time(timeKey)
+  const timeKey = Math.random() + routeFile + '-overview'
+  console.time(timeKey)
 
   const data = await readRouteData(routeFile)
-  // console.timeEnd(timeKey)
+  console.timeEnd(timeKey)
 
   if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
 
@@ -231,11 +231,11 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
   } = getEventParameters(req, false)
   const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-all'
   const routeFile = `dimensions/${adaptorType}/${dataType}-protocol/${protocolSlug}${isLiteStr}`
-  // const timeKey = Math.random() + routeFile + '-summary'
-  // console.time(timeKey)
+  const timeKey = Math.random() + routeFile + '-summary'
+  console.time(timeKey)
 
   const data = await readRouteData(routeFile)
-  // console.timeEnd(timeKey)
+  console.timeEnd(timeKey)
   if (!data)
     return errorResponse(res, `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`)
 

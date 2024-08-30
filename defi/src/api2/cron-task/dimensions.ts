@@ -127,7 +127,7 @@ async function run() {
 
     for (const entry of Object.entries(parentProtocolsData)) {
       const [parentId, item = {}] = entry as any
-      const { info, childProtocols }= item as any
+      const { info, childProtocols } = item as any
       if (!parentId || !info || !childProtocols) {
         console.log('parentId or info or childProtocols is missing', parentId, info, childProtocols)
         continue;
@@ -162,7 +162,7 @@ async function run() {
       // console.log('Processing', protocolMap[id].displayName, Object.values(adapterData.protocols[id].records).length, 'records')
 
       const protocol = {} as any
-      const protocolName = info.displayName ?? info.name
+      const protocolName = tvlProtocolInfo?.name ?? info.name ?? info.displayName
       const protocolData: any = {}
       protocol.summaries = {} as any
       protocol.info = { ...(tvlProtocolInfo ?? {}), };
@@ -393,13 +393,11 @@ async function run() {
         })
 
         // breakdown24h
-        const todayData = protocol.records[lastTimeString]
-        if (todayData) {
-          const { aggregated, breakdown = {} } = todayData
-          protocolSummary.breakdown24h = {}
-          Object.entries(breakdown).forEach(([recordType, breakdown]: any) => {
-            if (!aggregated[recordType]) return;
-            let breakdownData = breakdown ?? { [protocolName]: aggregated[recordType].chains }
+        protocolSummary.breakdown24h = null
+        if (todayRecord) {
+          const { aggregated, breakdown = {} } = todayRecord
+          if (aggregated[recordType]) {
+            let breakdownData = Object.keys(breakdown[recordType] ?? {}).length ? breakdown[recordType] : { [protocolName]: aggregated[recordType] }
             const result: any = {}
             Object.entries(breakdownData).forEach(([subModuleName, { chains }]: any) => {
               Object.entries(chains).forEach(([chain, value]: any) => {
@@ -408,10 +406,10 @@ async function run() {
               })
             })
             protocolSummary.breakdown24h = result
-          })
-        } else {
-          protocolSummary.breakdown24h = null
+          }
         }
+
+
       }
 
       if (!isParentProtocol) {
@@ -653,19 +651,19 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
   nextTimeS = firstTimeS
   // addTotalValueDataTypesToRecord(records[firstTimeS])
 
- /*  while (timeSToUnix(nextTimeS) < currentTime) {
-    if (isDisabled) break; // we dont fill in data for disabled protocols
-    if (records[nextTimeS])
-      lastTimeSWithData = nextTimeS
-    else
-      response[nextTimeS] = records[lastTimeSWithData!]
-
-    const currentRecord = response[nextTimeS]
-    // addTotalValueDataTypesToRecord(currentRecord, prevRecord)
-
-    nextTimeS = getNextTimeS(nextTimeS)
-    prevRecord = currentRecord
-  } */
+  /*  while (timeSToUnix(nextTimeS) < currentTime) {
+     if (isDisabled) break; // we dont fill in data for disabled protocols
+     if (records[nextTimeS])
+       lastTimeSWithData = nextTimeS
+     else
+       response[nextTimeS] = records[lastTimeSWithData!]
+ 
+     const currentRecord = response[nextTimeS]
+     // addTotalValueDataTypesToRecord(currentRecord, prevRecord)
+ 
+     nextTimeS = getNextTimeS(nextTimeS)
+     prevRecord = currentRecord
+   } */
 
   return response
 }

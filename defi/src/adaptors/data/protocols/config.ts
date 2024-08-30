@@ -288,5 +288,9 @@ export default {
         parentId: "MagicSea",
         enabled: true,
         id: "4755",
+    },
+    "apexdefi": {
+        enabled: true,
+        id: "5065"
     }
 } as AdaptorsConfig

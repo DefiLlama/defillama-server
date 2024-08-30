@@ -151,10 +151,12 @@ async function run() {
         console.log('protocolId is missing', dimensionProtocolInfo)
         return;
       }
-      const dimensionProtocolId = dimensionProtocolInfo.id // this need not match the protocolId, like in the case of child protocol in breakdown adapter
+      // in the case of chains (like chain fees/revenue), we store records in with id2 field instead of id, maybe for all cases?
+      const dimensionProtocolId = dimensionProtocolInfo.protocolType === ProtocolType.CHAIN ? protocolId : dimensionProtocolInfo.id // this need not match the protocolId, like in the case of child protocol in breakdown adapter
       if (dimensionProtocolInfo.enabled === false) return; // we skip protocols that are disabled
       const tvlProtocolInfo = protocolsById[protocolId] ?? parentProtocolsById[protocolId]
-      if (!tvlProtocolInfo) {
+      const knownBadIds = new Set(['1', 'smbswap'])
+      if (!tvlProtocolInfo && !knownBadIds.has(protocolId) && !protocolId?.startsWith('chain#')) {
         console.log('Unable to find protocol in data.ts', protocolId, dimensionProtocolInfo?.name, isParentProtocol, adapterType)
       }
       const info = { ...dimensionProtocolInfo }

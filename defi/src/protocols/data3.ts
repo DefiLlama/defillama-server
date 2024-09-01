@@ -54093,6 +54093,29 @@ const data3: Protocol[] = [
     github: ["0xIntuition"],
     listedAt: 1725096917
   },
+  {
+    id: "5087",
+    name: "Scallop Aggregator",
+    address: "sui:0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA",
+    symbol: "SCA",
+    url: "https://app.scallop.io/swap",
+    description:
+      "DEX aggregator from Scallop on Sui Network",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/scallop-aggregator.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Sui"],
+    module: "dummy.js",
+    oracles: [], 
+    forkedFrom: [],
+    twitter: "Scallop_io",
+    parentProtocol: "parent#scallop",
+    listedAt: 1725211147,
+  },
 ];
 
 export default data3;

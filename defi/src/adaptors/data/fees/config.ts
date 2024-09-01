@@ -2499,5 +2499,10 @@ export default {
     "farcaster": {
         enabled: true,
         id: "5049"
+    },
+    "lista-dao": {
+        parentId: "Lista DAO",
+        enabled: true,
+        id: "3354"
     }
 } as AdaptorsConfig

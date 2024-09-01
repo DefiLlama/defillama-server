@@ -264,6 +264,7 @@ export default {
     id: "5028",
   },
   "scallop": {
+    parentId: "Scallop",
     enabled: true,
     id: "5087",
   }

@@ -262,5 +262,9 @@ export default {
   "chainspot": {
     enabled: true,
     id: "5028",
+  },
+  "scallop": {
+    enabled: true,
+    id: "5087",
   }
 } as AdaptorsConfig;

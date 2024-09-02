@@ -54232,6 +54232,52 @@ const data3: Protocol[] = [
     twitter: "LairFinance",
     listedAt: 1725274551
   },
+  {
+    id: "5093",
+    name: "Papparico Finance",
+    address: null,
+    symbol: "-",
+    url: "https://papparico.finance/home",
+    description:
+      "Papparico is a decentralised finance which combines crypto assets investments and gaming finance, bringing an innovative user experience.",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/papparico-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Cronos"],
+    module: "papparico-finance/index.js",
+    oracles: [], 
+    forkedFrom: [],
+    twitter: "PappFinance",
+    github: ["PapparicoFinance"],
+    listedAt: 1725280965
+  },
+  {
+    id: "5094",
+    name: "GasPump",
+    address: null,
+    symbol: "-",
+    url: "https://gaspump.tg/#/onboarding",
+    description:
+      "Telegram native launchpad which allows to launch a coin that is instantly tradable for under $2 in one click (like pump fun, but on TON).",
+    chain: "TON",
+    logo: `${baseIconsUrl}/gaspump.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["TON"],
+    module: "gaspump/index.js",
+    oracles: [], 
+    forkedFrom: [],
+    twitter: "gaspump_tv",
+    github: ["gas111-bot"],
+    listedAt: 1725281965
+  },
 ];
 
 export default data3;

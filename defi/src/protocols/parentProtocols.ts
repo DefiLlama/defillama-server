@@ -5333,6 +5333,34 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "zprotocolxyz",
   },
+  {
+    id: "parent#orderly-network",
+    name: "Orderly Network",
+    url: "https://orderly.network",
+    description:
+      "Orderly is an omnichain CLOB infrastructure.It’s the ultimate trading lego for seamless integration by any builder on any blockchain. Give your app the transparency and composability of DEXs, with the speed and performance of CEXs.",
+    logo: `${baseIconsUrl}/orderly-network.jpg`,
+    gecko_id: "orderly-network",
+    cmcId: "32809",
+    chains: [],
+    twitter: "OrderlyNetwork",
+    github: ["OrderlyNetwork"],
+  },
+  {
+    id: "parent#level-finance",
+    name: "Level Finance",
+    url: "https://app.level.finance",
+    description:
+      "Level Finance - Decentralized Perpetual Exchange.",
+    logo: `${baseIconsUrl}/level-finance.png`,
+    gecko_id: "level",
+    cmcId: "23119",
+    chains: [],
+    twitter: "Level__Finance",
+    github: ["level-fi"],
+    treasury: "level.js",
+    governanceID: ["snapshot:level-finance.eth"],
+  },
 ];
 
 export default parentProtocols;

@@ -53829,7 +53829,7 @@ const data3: Protocol[] = [
     twitter: "HelixApp_",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "parent#demex",
+    parentProtocol: "parent#helix",
     listedAt: 1724923885
   },
   {

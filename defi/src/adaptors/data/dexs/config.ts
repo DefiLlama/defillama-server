@@ -1,4 +1,3 @@
-import { CATEGORIES } from "../helpers/categories"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -178,7 +177,7 @@ export default {
         parentId: "GMX",
         "protocolsData": {
             "swap": {
-                "id": "337",
+                "id": "5069",
                 "enabled": true,
                 "category": "Dexes",
                 "displayName": "GMX - SWAP"
@@ -242,7 +241,7 @@ export default {
         }
     },
     "ref-finance": {
-        "enabled": false,
+        "enabled": true,
         "id": "541"
     },
     "solidly": {
@@ -1210,7 +1209,7 @@ export default {
         "id": "2001",
         "protocolsData": {
             "demex": {
-                "id": "2001",
+                "id": "5073",
                 enabled: true,
             }
         }
@@ -1392,7 +1391,7 @@ export default {
         "id": "1801",
         protocolsData: {
             "metavault.trade": {
-                "id": "1801",
+                "id": "5072",
                 enabled: true,
             }
         }
@@ -1570,7 +1569,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": false,
+        "enabled": true,
         "id": "2864"
     },
     "astroswap": {
@@ -1896,7 +1895,7 @@ export default {
         "id": "970",
         "protocolsData": {
             "swap": {
-                "id": "970",
+                "id": "5071",
                 "enabled": true,
             }
         },
@@ -1994,7 +1993,7 @@ export default {
         "id": "3365",
         protocolsData: {
             "gmx-v2-swap": {
-                "id": "3365",
+                "id": "5070",
                 "enabled": true,
             }
         },
@@ -2897,5 +2896,21 @@ export default {
     "c3-exchange": {
         enabled: true,
         id: "4670"
+    },
+    "pendle": {
+        enabled: true,
+        id: "382"
+    },
+    "seiyan-fun": {
+        enabled: true,
+        id: "5019"
+    },
+    "aqua-network": {
+        enabled: true,
+        id: "5035"
+    },
+    "chainflip": {
+        enabled: true,
+        id: "3853"
     }
 } as AdaptorsConfig

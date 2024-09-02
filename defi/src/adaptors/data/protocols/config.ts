@@ -1,3 +1,4 @@
+import { findLastIndex } from "lodash"
 import { AdaptorsConfig } from "../types"
 
 
@@ -264,5 +265,32 @@ export default {
         parentId: "Blasterswap",
         enabled: true,
         id: "4728",
+    },
+    "splash": {
+        enabled: true,
+        id: "4712",
+    },
+    "jellyverse": {
+        enabled: true,
+        id: "4772",
+        protocolsData: {
+            "v2": {
+                enabled: true,
+                id: "4772",
+            }
+        }
+    },
+    "xtrade": {
+        enabled: true,
+        id: "5040"
+    },
+    "magicsea-lb": {
+        parentId: "MagicSea",
+        enabled: true,
+        id: "4755",
+    },
+    "apexdefi": {
+        enabled: true,
+        id: "5065"
     }
 } as AdaptorsConfig

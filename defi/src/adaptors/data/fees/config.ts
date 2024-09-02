@@ -322,7 +322,7 @@ export default {
     },
     "cardano": {
         "enabled": false,
-        "id": "2010"
+        "id": "2010" // wrong id, not related to klaytn
     },
     "cronos": {
         "enabled": true,
@@ -330,7 +330,7 @@ export default {
     },
     "klaytn": {
         "enabled": false,
-        "id": "4256"
+        "id": "4256" // wrong id, not related to klaytn
     },
     "dodo-fees": {
         "enabled": true,
@@ -348,7 +348,7 @@ export default {
     },
     "mixin": {
         "enabled": false,
-        "id": "2349"
+        "id": "2349" // wrond id, not linked to mixin
     },
     "polygon": {
         "enabled": true,
@@ -376,8 +376,8 @@ export default {
         "id": "643"
     },
     "boba": {
-        "enabled": false,
-        "id": "14556"
+        "enabled": false, // Error: INDEXA_DB not set
+        "id": "14556" // Boba bridge id should be 3935
     },
     "mojitoswap": {
         "enabled": true,
@@ -492,7 +492,7 @@ export default {
         "id": "2290"
     },
     "moonwell-artemis": {
-        "enabled": false,
+        "enabled": false, // ClientError: auth error: payment required for subsequent requests for this API key:
         "id": "1853"
     },
     "moonwell-apollo": {
@@ -633,7 +633,7 @@ export default {
     },
     "covo-finance": {
         parentId: "Covo Finance",
-        "enabled": false,
+        "enabled": false, // ClientError: auth error: payment required for subsequent requests for this API key:
         "id": "2525"
     },
     "nftearth": {
@@ -717,7 +717,7 @@ export default {
     },
     "ramses-exchange-v1": {
         parentId: "Ramses Exchange",
-        enabled: false,
+        enabled: false, // ClientError: auth error: payment required for subsequent requests for this API key:
         id: "2675"
     },
     "blastapi": {
@@ -833,7 +833,7 @@ export default {
     },
     "thena-v3": {
         parentId: "Thena",
-        "enabled": false,
+        "enabled": true,
         "id": "2864"
     },
     "merlin": {
@@ -937,7 +937,7 @@ export default {
         "id": "2641"
     },
     "veax": {
-        "enabled": false,
+        "enabled": false, // no file for veax in fees folder
         "id": "2928"
     },
     "maestro": {
@@ -1086,7 +1086,7 @@ export default {
         "id": "1772"
     },
     "concordex-io": {
-        "enabled": false,
+        "enabled": false, // file doesn't exist
         "id": "3172"
     },
     "vvs-finance": {
@@ -1233,7 +1233,7 @@ export default {
         "id": "324"
     },
     "meridian-trade": {
-        "enabled": false,
+        "enabled": false, // request to https://subgraph.meridianfinance.net/subgraphs/name/perpetuals-stats failed, reason: connect ECONNREFUSED 137.184.25.57:443
         "id": "3386"
     },
     "baseswap": {
@@ -1276,11 +1276,11 @@ export default {
         "id": "3454"
     },
     "sharesgram": {
-        "enabled": false,
+        "enabled": false, // only returns 0 for fees everytime
         "id": "3464"
     },
     "tigris": {
-        "enabled": false,
+        "enabled": false, // has several dates with { "error" : { "S" : "Request failed with status code 500" } }
         "id": "3129"
     },
     "aerodrome": {
@@ -1481,7 +1481,7 @@ export default {
     },
     "morpho-compound": {
         parentId: "Morpho",
-        "enabled": false,
+        "enabled": false, // https://discord.com/channels/823822164956151810/1022274454451142800/1166542892999913583
         "id": "1997"
     },
     "benqi-staked-avax": {
@@ -2321,7 +2321,7 @@ export default {
         id: "427"
     },
     "betmode": {
-        enabled: false,
+        enabled: false, // has negative fees for many dates
         id: "4927"
     },
     "silo-finance": {
@@ -2446,5 +2446,63 @@ export default {
         parentId: "KyberSwap",
         id: "3982",
         enabled: true
+    },
+    "raybot": {
+        enabled: true,
+        id: "5022"
+    },
+    "illuvium": {
+        enabled: true,
+        id: "447"
+    },
+    "4cast": {
+        enabled: true,
+        id: "5027"
+    },
+    "bellumexchange": {
+        enabled: true,
+        id: "5029"
+    },
+    "ribbon": {
+        parentId: "Ribbon Finance",
+        enabled: true,
+        id: "281"
+    },
+    "velo": {
+        enabled: true,
+        id: "4989"
+    },
+    "openeden-t-bills": {
+        enabled: true,
+        id: "3057"
+    },
+    "bcraft": {
+        enabled: true,
+        id: "5036"
+    },
+    "paxos-gold": {
+        enabled: true,
+        id: "4862"
+    },
+    "chainflip": {
+        enabled: true,
+        id: "3853"
+    },
+    "franklin-templeton": {
+        enabled: true,
+        id: "4878"
+    },
+    "hashnote-usyc": {
+        enabled: true,
+        id: "3698"
+    },
+    "farcaster": {
+        enabled: true,
+        id: "5049"
+    },
+    "lista-dao": {
+        parentId: "Lista DAO",
+        enabled: true,
+        id: "3354"
     }
 } as AdaptorsConfig

@@ -143,7 +143,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         const startDate = new Date(getUniqStartOfTodayTimestamp(new Date(startTimestamp)) * 1000)
         console.info("Starting timestamp", startTimestamp, "->", startDate)
         const endDate = new Date(nowSTimestamp * 1000)
-        const dates: Date[] = []
+        let dates: Date[] = []
         if (cliArguments.onlyMissing) {
             let volTimestamps = {} as IJSON<boolean>
             for (const type of [KEYS_TO_CHECK[adaptorType]]) {
@@ -177,6 +177,10 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
                     dates.push(new Date(dayInMilis))
                     dayInMilis += DAY_IN_MILISECONDS
                 }
+        }
+        if(cliArguments.endTimestamp){
+            const end = new Date(cliArguments.endTimestamp*1e3)
+            dates = dates.filter(d=>d<end)
         }
         event = {
             type: adaptorType,

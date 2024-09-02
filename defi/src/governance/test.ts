@@ -1,12 +1,5 @@
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at:', p, 'reason:', reason)
-  process.exit(1)
-})
+import '../api2/utils/failOnError'
 
-process.on('uncaughtException', (err) => {
-  console.log('Uncaught Exception:', err)
-  process.exit(1)
-})
 
 import { updateSnapshots, } from './snapshot'
 import { updateTallys, } from './tally'

@@ -360,14 +360,14 @@ export default {
         "id": "3509"
     },
     "bmx": {
-        parentId: "Morphex",
+        parentId: "BMX",
         "enabled": true,
         "id": "3530",
         "protocolsData": {
             "derivatives": {
                 "id": "3530",
                 "enabled": true,
-            }
+            },
         }
     },
     "mango-v4": {
@@ -595,7 +595,7 @@ export default {
         "id": "2259",
         protocolsData: {
             "helix-perp": {
-                "id": "2259",
+                "id": "5074",
                 "enabled": true,
             }
         }
@@ -819,5 +819,14 @@ export default {
                 "1722988800": true,
             },
         }
+    },
+    "cyberperp": {
+        enabled: true,
+        id: "5016",
+    },
+    "bmx-freestyle": {
+        parentId: "BMX",
+        "enabled": true,
+        "id": "4903"
     }
 } as AdaptorsConfig

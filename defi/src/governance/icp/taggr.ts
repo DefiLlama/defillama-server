@@ -1,3 +1,5 @@
+import '../../api2/utils/failOnError'
+
 import axios from 'axios'
 import { Proposal, GovCache } from '../types';
 import { updateStats } from '../utils';
@@ -218,16 +220,6 @@ export async function addTaggrProposals ( overview : any = {} ) : Promise<GovCac
 
     return overview
 }
-
-
-
-process.on('unhandledRejection', (reason, promise) => {
-    console.error('Unhandled Rejection at:', promise, 'reason:', reason)
-    })
-process.on('uncaughtException', (error) => {
-    console.error('Uncaught Exception thrown', error)
-})
-
 
 /* 
 import * as fs from 'fs'

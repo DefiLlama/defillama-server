@@ -1,11 +1,11 @@
 // catch unhandled errors
 process.on("uncaughtException", (err) => {
-  console.error('uncaught error', err);
+  console.error("uncaught error", err);
   process.exit(1);
 });
 
 process.on("unhandledRejection", (err) => {
-  console.error('unhandled rejection', err);
+  console.error("unhandled rejection", err);
   process.exit(1);
 });
 
@@ -36,25 +36,23 @@ import zklink from "./zklink";
 import celer from "./celer";
 import fraxtal from "./fraxtal";
 
-
-
 export type Token =
   | {
-    from: string;
-    to: string;
-    decimals: number;
-    symbol: string;
-  }
-  | {
-    from: string;
-    to: string;
-    getAllInfo: () => Promise<{
       from: string;
       to: string;
       decimals: number;
-      symbol: any;
-    }>;
-  };
+      symbol: string;
+    }
+  | {
+      from: string;
+      to: string;
+      getAllInfo: () => Promise<{
+        from: string;
+        to: string;
+        decimals: number;
+        symbol: any;
+      }>;
+    };
 type Bridge = () => Promise<Token[]>;
 
 export const chainsThatShouldNotBeLowerCased = ["solana", "bitcoin"];
@@ -111,14 +109,14 @@ const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
 async function storeTokensOfBridge(bridge: Bridge, i: number) {
   try {
-    const res = await _storeTokensOfBridge(bridge, i);
+    const res = await _storeTokensOfBridge(bridge);
     return res
   } catch (e) {
     console.error("Failed to store tokens of bridge", i, e);
   }
 }
 
-async function _storeTokensOfBridge(bridge: Bridge, i: number) {
+async function _storeTokensOfBridge(bridge: Bridge) {
   const tokens = await bridge();
 
   const alreadyLinked = (
@@ -193,6 +191,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
         decimals,
         symbol,
         redirect: finalPK,
+        confidence: 0.97,
       });
     }),
   );
@@ -240,7 +239,7 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
   });
 
   await batchWrite(writes, true);
-  await batchWrite2(writes2, true, undefined, `bridge index ${i}`);
+  // await batchWrite2(writes2, true, undefined, `bridge index ${i}`);
   return tokens;
 }
 export async function storeTokens() {

@@ -665,6 +665,12 @@ functions:
     memorySize: 512
     events:
       - schedule: cron(20 * * * ? *)
+  updateSearch:
+    handler: src/updateSearch.default
+    timeout: 900
+    memorySize: 512
+    events:
+      - schedule: cron(30 * * * ? *)
  # missedUpdates:
   #   handler: src/stats/getMissedUpdates.default
   #   timeout: 30

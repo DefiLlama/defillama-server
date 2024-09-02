@@ -59,7 +59,7 @@ export default {
     id: "3645",
     protocolsData: {
       aggregator: {
-        id: "3645",
+        id: "5064",
         enabled: true,
       },
     },
@@ -116,7 +116,7 @@ export default {
     protocolsData: {
       "dodo-agg": {
         enabled: true,
-        id: "146",
+        id: "5062",
       }
     }
   },
@@ -129,7 +129,7 @@ export default {
     id: "405",
     "protocolsData": {
       "tokenlon-agg": {
-        id: "405",
+        id: "5063",
         enabled: true,
       }
     }
@@ -242,7 +242,7 @@ export default {
     protocolsData: {
         "agg-dex": {
             enabled: true,
-            id: "119"
+            id: "5061"
         }
     }
   },
@@ -258,5 +258,14 @@ export default {
       parentId: "Cetus",
       "enabled": true,
       "id": "4958"
+  },
+  "chainspot": {
+    enabled: true,
+    id: "5028",
+  },
+  "scallop": {
+    parentId: "Scallop",
+    enabled: true,
+    id: "5087",
   }
 } as AdaptorsConfig;

@@ -54164,6 +54164,28 @@ const data3: Protocol[] = [
     listedAt: 1725269363
   },
 
+  {
+    id: "5090",
+    name: "Level Money",
+    address: null,
+    symbol: "-",
+    url: "https://www.level.money",
+    description:
+      "Level is a stablecoin protocol powered by restaked dollar tokens like USDT and USDC.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/level-money.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "level-money/index.js",
+    oracles: [], 
+    forkedFrom: [],
+    twitter: "levelusd",
+    listedAt: 1725272779
+  },
 ];
 
 export default data3;

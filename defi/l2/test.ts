@@ -1,8 +1,7 @@
 import fetch from "node-fetch";
 import { FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { sendMessage } from "../src/utils/discord";
-import { allChainKeys, zero } from "./constants";
+import { allChainKeys } from "./constants";
 
 export async function verifyChanges(chains: FinalData) {
   const res = await fetch(`https://api.llama.fi/chain-assets/chains?apikey=${process.env.COINS_KEY}`).then((r) =>

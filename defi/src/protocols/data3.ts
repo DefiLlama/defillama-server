@@ -31348,7 +31348,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: "Liquid Restaking", // all of the eth is restaked into eigen or symbiot
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
@@ -53829,7 +53829,7 @@ const data3: Protocol[] = [
     twitter: "HelixApp_",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "parent#demex",
+    parentProtocol: "parent#helix",
     listedAt: 1724923885
   },
   {

@@ -47,7 +47,7 @@ async function getTokenPrices(chain: string, timestamp: number, writes: Write[] 
     abi: latestPriceAbi,
     target: processor,
     calls: tokens.map((token: any) => ({ params: [token, quoteToken], })),
-  })).map((p: any) => p.price);
+  })).map((p: any) => p.price / 1e18);
 
   // USD+
   if (usdplus) {

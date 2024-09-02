@@ -26619,6 +26619,7 @@ const data3: Protocol[] = [
     chains: ["Polygon"],
     module: "brewswap/index.js",
     twitter: "teambrewlabs",
+    parentProtocol: "parent#brewlabs",
     listedAt: 1701450936,
   },
   {

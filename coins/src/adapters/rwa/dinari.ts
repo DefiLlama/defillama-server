@@ -40,7 +40,9 @@ async function getTokenPrices(chain: string, timestamp: number, writes: Write[] 
   const api = await getApi(chain, timestamp);
   const { getTokensAbi = _getTokensAbi, latestPriceAbi = _latestPriceAbi, factory, processor, quoteToken, usdplus } = config[chain];
   // dShares prices
-  const [tokens] = await api.call({ target: factory, abi: getTokensAbi, })
+  let [tokens] = await api.call({ target: factory, abi: getTokensAbi, })
+  const supplies = await api.multiCall({  abi: 'erc20:totalSupply', calls: tokens})
+  tokens = tokens.filter((_: any, idx: number) => +supplies[idx] > 0)
   const prices = (await api.multiCall({
     abi: latestPriceAbi,
     target: processor,

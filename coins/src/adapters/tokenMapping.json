@@ -896,6 +896,14 @@
       "to": "coingecko#mixmarvel"
     }
   },
+  "cronos": {
+    "0xafe470ae215e48c144c7158eae3ccf0c451cb0cb": {
+      "name": "NEAR",
+      "decimals": "24",
+      "symbol": "NEAR",
+      "to": "coingecko#near"
+    }
+  },
   "scroll": {
     "0x643e160a3C3E2B7eae198f0beB1BfD2441450e86": {
       "decimals": "18",

@@ -2,6 +2,7 @@ import postgres from "postgres";
 import { queryPostgresWithRetry } from "../l2/layer2pg";
 import { ChainTokens, ChartData, FinalChainData, FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
+import { getR2JSONString, storeR2JSONString } from "../src/utils/r2";
 
 let auth: string[] = [];
 const secondsInADay = 86400;
@@ -165,36 +166,65 @@ export function parsePgData(timeseries: any[], chain: string, removeBreakdown: b
 export async function fetchHistoricalFromDB(chain: string = "*") {
   const sql = await iniDbConnection();
 
-  const timeseries = await queryPostgresWithRetry(
-    chain == "*" ? sql`select * from chainassets` : sql`select ${sql(chain)}, timestamp from chainassets`,
+  let latestOldTimestamp: string = "0";
+  let oldTimeseries: any[] = [];
+
+  try {
+    const oldTimestampsObj = await getR2JSONString(`chain-assets-chart-timestamps-${chain}`);
+    const oldTimestamps: string[] = oldTimestampsObj.timestamps;
+
+    if (oldTimestamps.length) {
+      latestOldTimestamp = oldTimestamps[oldTimestamps.length - 1];
+      oldTimeseries = await queryPostgresWithRetry(
+        chain == "*"
+          ? sql`select * from chainassets where timestamp in ${sql(oldTimestamps)}`
+          : sql`select ${sql(chain)}, timestamp from chainassets where timestamp in ${sql(oldTimestamps)}`,
+        sql
+      );
+    }
+  } catch {}
+
+  const newTimeseries = await queryPostgresWithRetry(
+    chain == "*"
+      ? sql`select * from chainassets where timestamp > ${latestOldTimestamp}`
+      : sql`select ${sql(chain)}, timestamp from chainassets where timestamp > ${latestOldTimestamp}`,
     sql
   );
   sql.end();
 
+  const timeseries = [...oldTimeseries, ...newTimeseries];
   const result = parsePgData(timeseries, chain);
-  // DEBUG:
-  // return result
-  return findDailyEntries(result);
+
+  const { data, timestamps } = findDailyEntries(result);
+
+  await storeR2JSONString(`chain-assets-chart-timestamps-${chain}`, JSON.stringify({ timestamps }));
+
+  return data;
 }
-function findDailyEntries(raw: ChartData[], period: number = secondsInADay): ChartData[] {
+function findDailyEntries(
+  raw: ChartData[],
+  period: number = secondsInADay
+): { data: ChartData[]; timestamps: string[] } {
   const clean: ChartData[] = [];
   const timestamps = raw.map((r: ChartData) => Number(r.timestamp));
 
   let timestamp = Math.floor(timestamps[0] / period) * period;
   const cleanEnd = Math.floor(timestamps[timestamps.length - 1] / period) * period;
 
+  const filtered: string[] = [];
   while (timestamp < cleanEnd) {
     const index = timestamps.indexOf(
       timestamps.reduce((p, c) => (Math.abs(c - timestamp) < Math.abs(p - timestamp) ? c : p))
     );
     clean.push({ data: raw[index].data, timestamp: timestamp.toString() });
+    filtered.push(raw[index].timestamp);
     timestamp += period;
   }
   if (raw.length > 0) {
     clean.push(raw[raw.length - 1]);
   }
 
-  return clean;
+  return { data: clean, timestamps: filtered };
 }
 export async function fetchFlows(period: number) {
   const sql = await iniDbConnection();

@@ -31,6 +31,11 @@ export default {
   "plexus": {
     enabled: true,
     id: "2740",
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1706313600: false
+        }
+    }
   },
   "avnu": {
     enabled: true,
@@ -87,6 +92,12 @@ export default {
   "zrx": {
     enabled: true,
     id: "4628",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        1674172800: true,
+        1680739200: true 
+      }
+  }
   },
   "cowswap": {
     enabled: true,
@@ -118,6 +129,11 @@ export default {
         enabled: true,
         id: "5062",
       }
+    },
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1719360000: false
+        }
     }
   },
   "paraswap": {
@@ -146,6 +162,11 @@ export default {
   "conveyor": {
     enabled: true,
     id: "3980",
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1722729600: false
+        }
+    }
   },
   // "unidex": {
   //   "enabled": true,
@@ -229,6 +250,11 @@ export default {
   "hallswap": {
     enabled: true,
     id: "4824",
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1724457600: true 
+        }
+    }
   },
   "flowx-aggregator": {
     parentId: "FlowX Finance",
@@ -257,7 +283,12 @@ export default {
   "cetus-aggregator": {
       parentId: "Cetus",
       "enabled": true,
-      "id": "4958"
+      "id": "4958",
+      cleanRecordsConfig: {
+          genuineSpikes: {
+            1724803200: true
+          }
+      }
   },
   "chainspot": {
     enabled: true,

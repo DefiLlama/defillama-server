@@ -636,7 +636,6 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
   let nextTimeS: string
   // let currentTime = getStartOfTodayTime()
   let currentTime = getUnixTimeNow()
-  let prevRecord: any
   const response: IJSON<any> = { ...records }
   const isDisabled = info?.disabled
 
@@ -651,23 +650,25 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
   if (!firstTimeS!) return {}
 
   nextTimeS = firstTimeS
-  // addTotalValueDataTypesToRecord(records[firstTimeS])
 
-  /*  
   // Code for filling in missing data with the last available data
+  const fillUptoDays = 3 // we fill in data for upto 3 days
+  let missingDataCounter = 0
   while (timeSToUnix(nextTimeS) < currentTime) {
-     if (isDisabled) break; // we dont fill in data for disabled protocols
-     if (records[nextTimeS])
-       lastTimeSWithData = nextTimeS
-     else
-       response[nextTimeS] = records[lastTimeSWithData!]
- 
-     const currentRecord = response[nextTimeS]
-     // addTotalValueDataTypesToRecord(currentRecord, prevRecord)
- 
-     nextTimeS = getNextTimeS(nextTimeS)
-     prevRecord = currentRecord
-   } */
+    if (isDisabled) break; // we dont fill in data for disabled protocols
+    if (records[nextTimeS]) {
+      missingDataCounter = 0
+      lastTimeSWithData = nextTimeS
+
+    } else {
+      missingDataCounter++
+      if (missingDataCounter < fillUptoDays) {
+        response[nextTimeS] = records[lastTimeSWithData!]
+      }
+    }
+
+    nextTimeS = getNextTimeS(nextTimeS)
+  }
 
   return response
 }

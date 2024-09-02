@@ -54186,6 +54186,52 @@ const data3: Protocol[] = [
     twitter: "levelusd",
     listedAt: 1725272779
   },
+  {
+    id: "5091",
+    name: "Lair Finance",
+    address: null,
+    symbol: "-",
+    assetToken: "stKAIA",
+    url: "https://lair.fi",
+    description:
+      "Lair is a liquid staking derivative service that allows users to stake their KAIA to accrue staking rewards without locking their assets.",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/lair-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Klaytn"],
+    module: "LairFinance/index.js",
+    oracles: [], 
+    forkedFrom: [],
+    twitter: "LairFinance",
+    audit_links: ["https://github.com/bug4city/lair-lsd/tree/master/audit"],
+    listedAt: 1725274251
+  },
+  {
+    id: "5092",
+    name: "Ethervista",
+    address: null,
+    symbol: "-",
+    url: "https://ethervista.app",
+    description:
+      "A new standard for Decentralized Exchanges",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ethervista.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    module: "ethervista/index.js",
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    twitter: "LairFinance",
+    listedAt: 1725274551
+  },
 ];
 
 export default data3;

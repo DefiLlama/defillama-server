@@ -25767,6 +25767,7 @@ const data2: Protocol[] = [
     twitter: "TeamBrewlabs",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "parent#brewlabs",
     audit_links: ["https://www.certik.com/projects/brewlabs"],
     listedAt: 1675453646,
   },

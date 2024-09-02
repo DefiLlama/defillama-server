@@ -1070,7 +1070,7 @@ export default {
         "id": "2264",
         protocolsData: {
             "orderly-network": {
-                "id": "2264",
+                "id": "5088",
                 enabled: true,
             }
         }
@@ -1191,7 +1191,7 @@ export default {
         "id": "2395",
         protocolsData: {
             "level-finance": {
-                "id": "2395",
+                "id": "5089",
                 enabled: true,
             }
         }

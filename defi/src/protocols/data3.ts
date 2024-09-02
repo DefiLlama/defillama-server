@@ -54117,6 +54117,53 @@ const data3: Protocol[] = [
     parentProtocol: "parent#scallop",
     listedAt: 1725211147,
   },
+  {
+    id: "5088",
+    name: "Orderly AMM",
+    address: "0xabd4c63d2616a5201454168269031355f4764337",
+    symbol: "ORDER",
+    url: "https://orderly.network",
+    description:
+      "Orderly is an omnichain CLOB infrastructure.It’s the ultimate trading lego for seamless integration by any builder on any blockchain. Give your app the transparency and composability of DEXs, with the speed and performance of CEXs.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/orderly-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "dummy.js",
+    oracles: [], 
+    forkedFrom: [],
+    twitter: "OrderlyNetwork",
+    parentProtocol: "parent#orderly-network",
+    listedAt: 1725269363
+  },
+  {
+    id: "5089",
+    name: "Level AMM",
+    address: "bsc:0xB64E280e9D1B5DbEc4AcceDb2257A87b400DB149",
+    symbol: "LVL",
+    url: "https://app.level.finance",
+    description:
+      "Level Finance - Decentralized Perpetual Exchange.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/level-amm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance"],
+    module: "dummy.js",
+    oracles: [], 
+    forkedFrom: [],
+    twitter: "Level__Finance",
+    parentProtocol: "parent#level-finance",
+    listedAt: 1725269363
+  },
+
 ];
 
 export default data3;

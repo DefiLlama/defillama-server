@@ -13,6 +13,16 @@ const config: any = {
     quoteToken: "0xfc90518D5136585ba45e34ED5E1D108BD3950CFa",
     usdplus: "0xfc90518D5136585ba45e34ED5E1D108BD3950CFa",
   },
+  base: {
+    factory: "0xBCE6410A175a1C9B1a25D38d7e1A900F8393BC4D",
+    getTokensAbi:
+      "function getDShares() external view returns (address[] memory, address[] memory)",
+    processor: "0x63FF43009f9ba3584aF2Ddfc3D5FE2cb8AE539c0",
+    latestPriceAbi:
+      "function latestFillPrice(address assetToken, address paymentToken) view returns (tuple(uint256 price, uint64 blocktime))",
+    quoteToken: "0x98C6616F1CC0D3E938A16200830DD55663dd7DD3",
+    usdplus: "0x98C6616F1CC0D3E938A16200830DD55663dd7DD3",
+  },
   ethereum: {
     factory: "0x60B5E7eEcb2AEE0382db86491b8cFfA39347c747",
     getTokensAbi:
@@ -30,19 +40,19 @@ const config: any = {
     processor: "0xA8a48C202AF4E73ad19513D37158A872A4ac79Cb",
     latestPriceAbi:
       "function latestFillPrice(address assetToken, address paymentToken) view returns (tuple(uint256 price, uint64 blocktime))",
-      quoteToken: "0x4300000000000000000000000000000000000003",
-    },
-    kinto: {
-      factory: "0xE4Daa69e99F48AD0C4D4843deF4447253248A906",
-      getTokensAbi:
-        "function getDShares() external view returns (address[] memory, address[] memory)",
-      processor: "0xa089dC07A4baFd941a4323a9078D2c24be8A747C",
-      latestPriceAbi:
-        "function latestFillPrice(address assetToken, address paymentToken) view returns (tuple(uint256 price, uint64 blocktime))",
-      quoteToken: "0x6F086dB0f6A621a915bC90295175065c9e5d9b8c",
-      usdplus: "0x6F086dB0f6A621a915bC90295175065c9e5d9b8c",
-    },
-  };
+    quoteToken: "0x4300000000000000000000000000000000000003",
+  },
+  kinto: {
+    factory: "0xE4Daa69e99F48AD0C4D4843deF4447253248A906",
+    getTokensAbi:
+      "function getDShares() external view returns (address[] memory, address[] memory)",
+    processor: "0xa089dC07A4baFd941a4323a9078D2c24be8A747C",
+    latestPriceAbi:
+      "function latestFillPrice(address assetToken, address paymentToken) view returns (tuple(uint256 price, uint64 blocktime))",
+    quoteToken: "0x6F086dB0f6A621a915bC90295175065c9e5d9b8c",
+    usdplus: "0x6F086dB0f6A621a915bC90295175065c9e5d9b8c",
+  },
+};
 
 async function getTokenPrices(chain: string, timestamp: number) {
   const api = await getApi(chain, timestamp);
@@ -94,10 +104,14 @@ async function getTokenPrices(chain: string, timestamp: number) {
 export async function dinari(timestamp: number = 0): Promise<Write[]> {
   const writes: Write[] = [];
   const arbWrites = await getTokenPrices("arbitrum", timestamp);
+  const baseWrites = await getTokenPrices("base", timestamp);
   const ethWrites = await getTokenPrices("ethereum", timestamp);
   const blastWrites = await getTokenPrices("blast", timestamp);
+  const kintoWrites = await getTokenPrices("kinto", timestamp);
   writes.push(...arbWrites);
+  writes.push(...baseWrites);
   writes.push(...ethWrites);
   writes.push(...blastWrites);
+  writes.push(...kintoWrites);
   return writes;
 }

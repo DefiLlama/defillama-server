@@ -20445,6 +20445,7 @@ const data2: Protocol[] = [
     twitter: "HelixApp_",
     forkedFrom: [],
     oracles: ["Pyth", "Band"], // band oracle was confirmed by helix team
+    parentProtocol: "parent#helix",
     listedAt: 1668004664,
   },
   {

@@ -169,20 +169,19 @@ export async function fetchHistoricalFromDB(chain: string = "*") {
   let latestOldTimestamp: string = "0";
   let oldTimeseries: any[] = [];
 
-  try {
-    const oldTimestampsObj = await getR2JSONString(`chain-assets-chart-timestamps-${chain}`);
-    const oldTimestamps: string[] = oldTimestampsObj.timestamps;
-
-    if (oldTimestamps.length) {
-      latestOldTimestamp = oldTimestamps[oldTimestamps.length - 1];
-      oldTimeseries = await queryPostgresWithRetry(
-        chain == "*"
-          ? sql`select * from chainassets where timestamp in ${sql(oldTimestamps)}`
-          : sql`select ${sql(chain)}, timestamp from chainassets where timestamp in ${sql(oldTimestamps)}`,
-        sql
-      );
-    }
-  } catch {}
+  // try {
+  //   const oldTimestampsObj = await getR2JSONString(`chain-assets-chart-timestamps-${chain}`);
+  //   const oldTimestamps: string[] = oldTimestampsObj.timestamps;
+  //   if (oldTimestamps.length) {
+  //     latestOldTimestamp = oldTimestamps[oldTimestamps.length - 1];
+  //     oldTimeseries = await queryPostgresWithRetry(
+  //       chain == "*"
+  //         ? sql`select * from chainassets where timestamp in ${sql(oldTimestamps)}`
+  //         : sql`select ${sql(chain)}, timestamp from chainassets where timestamp in ${sql(oldTimestamps)}`,
+  //       sql
+  //     );
+  //   }
+  // } catch {}
 
   const newTimeseries = await queryPostgresWithRetry(
     chain == "*"
@@ -205,8 +204,9 @@ function findDailyEntries(
   raw: ChartData[],
   period: number = secondsInADay
 ): { data: ChartData[]; timestamps: string[] } {
+  const nullsFiltered = raw.filter((d: ChartData) => JSON.stringify(d.data) != "{}");
   const clean: ChartData[] = [];
-  const timestamps = raw.map((r: ChartData) => Number(r.timestamp));
+  const timestamps = nullsFiltered.map((r: ChartData) => Number(r.timestamp));
 
   let timestamp = Math.floor(timestamps[0] / period) * period;
   const cleanEnd = Math.floor(timestamps[timestamps.length - 1] / period) * period;
@@ -216,13 +216,11 @@ function findDailyEntries(
     const index = timestamps.indexOf(
       timestamps.reduce((p, c) => (Math.abs(c - timestamp) < Math.abs(p - timestamp) ? c : p))
     );
-    clean.push({ data: raw[index].data, timestamp: timestamp.toString() });
-    filtered.push(raw[index].timestamp);
+    clean.push({ data: nullsFiltered[index].data, timestamp: timestamp.toString() });
+    filtered.push(nullsFiltered[index].timestamp);
     timestamp += period;
   }
-  if (raw.length > 0) {
-    clean.push(raw[raw.length - 1]);
-  }
+  if (nullsFiltered.length) clean.push(nullsFiltered[nullsFiltered.length - 1]);
 
   return { data: clean, timestamps: filtered };
 }

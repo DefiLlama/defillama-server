@@ -22,6 +22,11 @@ export default {
                 "id": "2198"
             },
         },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1665446400: true
+            }
+        },
     },
     "pancakeswap": {
         "enabled": true,
@@ -44,6 +49,12 @@ export default {
             v3: {
                 "enabled": true,
                 "id": "2769"
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1660176000: false,
+                1665014400: false
             }
         },
     },

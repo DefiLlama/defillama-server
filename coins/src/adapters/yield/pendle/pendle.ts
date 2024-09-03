@@ -71,6 +71,7 @@ export default async function getTokenPrices(
         "0x17be998a578fd97687b24e83954fec86dc20c979",
         "0xb4460e76d99ecad95030204d3c25fb33c4833997",
         "0x8f7627bd46b30e296aa3aabe1df9bfac10920b6e",
+        "0x6010676bc2534652ad1ef5fa8073dcf9ad7ebfbe",
       ],
     );
   const tokens: string[][] = await api.multiCall({

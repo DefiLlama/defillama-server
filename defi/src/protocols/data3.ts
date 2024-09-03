@@ -48558,14 +48558,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4840",
-    name: "ether.fi Symbiotic",
+    name: "ether.fi Vaults", // previous ether.fi Symbiotic
     address: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
     symbol: "ETHFI",
     assetToken: "weETHs",
     url: "https://app.ether.fi/liquid/symbiotic",
     description: "An automated vault that earns you Symbiotic, Veda and ether.fi points on your liquid staking assets.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ether.fi-symbiotic.jpg`,
+    logo: `${baseIconsUrl}/ether.fi-vaults.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

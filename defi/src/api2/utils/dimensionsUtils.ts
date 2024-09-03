@@ -1,13 +1,10 @@
 import { ProtocolAdaptor } from "../../adaptors/data/types";
 import { AdaptorRecord, AdaptorRecordType, GetAdaptorRecordOptions } from "../../adaptors/db-utils/adaptor-record";
-import { sluggifyString } from "../../utils/sluggify";
 import { cache } from "../cache";
 import { readFromPGCache, writeToPGCache } from "../db";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import parentProtocols from "../../protocols/parentProtocols";
 import { RUN_TYPE } from ".";
-import { getTimeSDaysAgo } from "./time";
-import { ACCOMULATIVE_ADAPTOR_TYPE } from "../../adaptors/handlers/getOverviewProcess";
 
 const parentProtocolMap: any = {}
 parentProtocols.forEach(protocol => {
@@ -24,7 +21,7 @@ export function getFileCacheKey(adaptorRecordType: AdapterType) {
 
 
 export function getFileCacheKeyV2() {
-  return `dimensions-data-v2-v1.0.1`
+  return `dimensions-data-v2-v1.0.2`
 }
 
 // to ensure that we pull the cache data only once

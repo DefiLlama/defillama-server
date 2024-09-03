@@ -596,8 +596,7 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
     const values = dataKeys.map(key => record.aggregated?.[key]?.value ?? 0)
     const improbableValue = 5e10 // 50 billion
     if (values.some((i: any) => i > improbableValue)) {
-      sdk.log('Invalid value found (ignoring it)', adapterType, metadata?.id, info?.name, timeS, values.find((i: any) => i > improbableValue))
-      // sdk.log('Invalid value found (ignoring it)', info?.name, timeS, JSON.stringify(record, null, 2))
+      sdk.log('Invalid value found (removing it)', adapterType, metadata?.id, info?.name, timeS, values.find((i: any) => i > improbableValue))
       delete records[timeS]
       return;
     }
@@ -609,9 +608,11 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
       // we check if we have at least 7 days of data & value is higher than a million before checking if it is a spike
       if (idx > 7 && currentValue > 1e7 && !allSpikesAreGenuine && !whitelistedSpikeSet.has(timeS)) {
         const surroundingKeys = getSurroundingKeysExcludingCurrent(allKeys, idx)
-        const highestCloseValue = surroundingKeys.map(i => records[i].aggregated?.[key]?.value ?? 0).filter(i => i).reduce((a, b) => Math.max(a, b), 0)
+        const highestCloseValue = surroundingKeys.map(i => records[i]?.aggregated?.[key]?.value ?? 0).filter(i => i).reduce((a, b) => Math.max(a, b), 0)
         if (highestCloseValue > 0 && currentValue > 10 * highestCloseValue) {
-          sdk.log('Spike detected', adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')
+          sdk.log('Spike detected (removing it)', adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')
+          delete records[timeS]
+          return;
           // sdk.log('Spike detected', info?.name, timeS, JSON.stringify(record, null, 2))
         }
       }

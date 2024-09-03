@@ -75,7 +75,12 @@ export default {
     },
     "ethereum": {
         "enabled": true,
-        "id": "1027"
+        "id": "1027",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1651449600": true
+            },
+        }
     },
     "frax-swap": {
         parentId: "Frax Finance",

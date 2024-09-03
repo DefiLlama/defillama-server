@@ -666,7 +666,7 @@ export default {
         "id": "4102",
         cleanRecordsConfig: {
             genuineSpikes: {
-                1716422400: true 
+                1716422400: true
             }
         }
     },
@@ -744,7 +744,7 @@ export default {
         }
     },
     "myx-finance": {
-        enabled: true,
+        enabled: false,
         "id": "4319",
         cleanRecordsConfig: {
             genuineSpikes: {

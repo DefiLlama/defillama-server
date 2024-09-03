@@ -2499,9 +2499,14 @@ export default {
         enabled: true,
         id: "5049"
     },
-    "lista-dao": {
+    "lista-slisbnb": {
         parentId: "Lista DAO",
         enabled: true,
         id: "3354"
+    },
+    "lista-lisusd": {
+        parentId: "Lista DAO",
+        enabled: true,
+        id: "2038"
     }
 } as AdaptorsConfig

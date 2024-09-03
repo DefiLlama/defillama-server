@@ -86,6 +86,8 @@ export async function getOverviewProcess2({
 
   response.breakdown24h = null
   response.chain = chain ?? null
+  if (response.chain)
+    response.chain = getDisplayChainNameCached(response.chain)
   response.allChains = allChains
 
   // TODO: missing average1y

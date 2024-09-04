@@ -54342,7 +54342,7 @@ const data3: Protocol[] = [
     category: "Bridge",
     chains: ["Bitcoin"],
     module: "lombard/index.js",
-    oracles: ["Redstone"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11458
+    oracles: ["RedStone"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11458
     forkedFrom: [],
     twitter: "Lombard_Finance",
     audit_links: ["https://www.halborn.com/audits/lombard/lbtc", "https://veridise.com/wp-content/uploads/2024/08/VAR_Lombard_240506.pdf"],
@@ -54365,7 +54365,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["Ethereum", "Binance", "Polygon", "Arbitrum"],
-    module: "lombard/index.js",
+    module: "dummy.js",
     oracles: [],
     forkedFrom: [],
     twitter: "TradeOnOrion",

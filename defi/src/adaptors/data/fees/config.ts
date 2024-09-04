@@ -2513,5 +2513,9 @@ export default {
         parentId: "Lista DAO",
         enabled: true,
         id: "2038"
+    },
+    "ethervista": {
+        enabled: true,
+        id: "5092"
     }
 } as AdaptorsConfig

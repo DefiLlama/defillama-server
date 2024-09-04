@@ -48563,7 +48563,7 @@ const data3: Protocol[] = [
     symbol: "ETHFI",
     assetToken: "weETHs",
     url: "https://app.ether.fi/liquid/symbiotic",
-    description: "An automated vault that earns you Symbiotic, Veda and ether.fi points on your liquid staking assets.",
+    description: "An automated vault that earns you Symbiotic, Veda or ether.fi points on your liquid staking assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ether.fi-vaults.jpg`,
     audits: "0",

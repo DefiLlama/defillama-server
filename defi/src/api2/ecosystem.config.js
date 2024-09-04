@@ -10,7 +10,7 @@ module.exports = {
       listen_timeout: 120_000, // Wait 120 seconds for the app to start
       kill_timeout: 10_000, // Wait 10 seconds for the app to start
       wait_ready: true, // Wait for the 'ready' signal
-      instances: 2,
+      instances: 3,
       exec_mode: 'cluster', // Start in cluster mode
       env: {
         TS_NODE_TRANSPILE_ONLY: 'true', // Enable ts-node's transpile-only mode, setting it via args is not working for some reason

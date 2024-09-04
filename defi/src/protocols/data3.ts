@@ -54278,6 +54278,76 @@ const data3: Protocol[] = [
     github: ["gas111-bot"],
     listedAt: 1725281965
   },
+  {
+    id: "5095",
+    name: "Perfect Pool",
+    address: null,
+    symbol: "-",
+    url: "https://perfectpool.io",
+    description:
+      "Perfect Pool is a blockchain-powered protocol for conducting bracket-style prediction games. It is designed with a focus on entertainment, communal participation, and skillful play. The platform seeks to overcome the common challenges associated with traditional bracket games, such as organizational complexity, trust issues, and opaque processes for tracking results and distributing winnings. The project gets games update data from external APIs, using an Oracle.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/perfect-pool.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Base"],
+    module: "perfect-pool/index.js",
+    treasury: "perfect-pool.js",
+    oracles: ["Chainlink"],  //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11517
+    forkedFrom: [],
+    twitter: "perfectpoolplay",
+    github: ["Perfect-Pool"],
+    listedAt: 1725449104
+  },
+  {
+    id: "5096",
+    name: "Torch Finance",
+    address: null,
+    symbol: "-",
+    url: "https://torch.finance",
+    description:
+      "All in one DEX on TON blockchain. Supporting ultra-slow slippage StableSwap and multi-token Weighted Pool all with in one DEX. The Open League Hackathon Top 3.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/torch-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["TON"],
+    module: "torch/index.js",
+    oracles: [], 
+    forkedFrom: [],
+    twitter: "TorchTon",
+    github: ["torch-core"],
+    listedAt: 1725449904
+  },
+  {
+    id: "5097",
+    name: "Lombard Liquid Bitcoin",
+    address: null,
+    symbol: "-",
+    url: "https://www.lombard.finance",
+    description:
+      "LBTC is liquid, yield-bearing, natively cross-chain, and 1:1 backed by bitcoin.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/lombard-liquid-bitcoin.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    module: "lombard/index.js",
+    oracles: ["Redstone"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11458
+    forkedFrom: [],
+    twitter: "Lombard_Finance",
+    audit_links: ["https://www.halborn.com/audits/lombard/lbtc", "https://veridise.com/wp-content/uploads/2024/08/VAR_Lombard_240506.pdf"],
+    listedAt: 1725449393
+  },
 ];
 
 export default data3;

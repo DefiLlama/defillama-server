@@ -847,5 +847,9 @@ export default {
         parentId: "BMX",
         "enabled": true,
         "id": "4903"
+    },
+    "tradoor": {
+        enabled: true,
+        id: "4738",
     }
 } as AdaptorsConfig

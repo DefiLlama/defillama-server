@@ -730,14 +730,14 @@ const data3: Protocol[] = [
   },
   {
     id: "2731",
-    name: "Swapline",
+    name: "Swapline V1",
     address: null,
     symbol: "-",
     url: "https://swapline.com",
     description:
       "Swapline is a multichain DEX bringing the power of Liquidity Book AMM to new ecosystems. Experience trading with zero slippage!",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/swapline.png`,
+    logo: `${baseIconsUrl}/swapline-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -748,6 +748,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Trader Joe DEX"],
     module: "swapline/index.js",
     twitter: "SwaplineDEX",
+    parentProtocol: "parent#swapline",
     listedAt: 1679923802,
   },
   {
@@ -54370,6 +54371,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     twitter: "TradeOnOrion",
     parentProtocol: "parent#orion-protocol",
+  },
+  {
+    id: "5099",
+    name: "Swapline V2",
+    address: null,
+    symbol: "-",
+    url: "https://swapline.com",
+    description:
+      "Swapline is a multichain DEX bringing the power of Liquidity Book AMM to new ecosystems. Experience trading with zero slippage.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/swapline-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "swapline-lb-v2/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "SwaplineDEX",
+    parentProtocol: "parent#swapline",
+    listedAt: 1725456838
   },
 ];
 

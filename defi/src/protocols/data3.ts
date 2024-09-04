@@ -54348,6 +54348,29 @@ const data3: Protocol[] = [
     audit_links: ["https://www.halborn.com/audits/lombard/lbtc", "https://veridise.com/wp-content/uploads/2024/08/VAR_Lombard_240506.pdf"],
     listedAt: 1725449393
   },
+  
+  {
+    id: "5098",
+    name: "Orion Aggregator",
+    address: "0x0258f474786ddfd37abce6df6bbb1dd5dfc4434a",
+    symbol: "ORN",
+    url: "https://orion.xyz",
+    description:
+      "Liquidity Nodes are the building blocks on which the Delta Neutral Liquidity Provisioning (DNLP) system is built. The Liquidity Nodes make their liquidity available to users by providing 1:1 quotes with those of the CEXs in a completely decentralized manner, while earning a delta neutral yield.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/orion-aggregator.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum", "Binance", "Polygon", "Arbitrum"],
+    module: "lombard/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "TradeOnOrion",
+    parentProtocol: "parent#orion-protocol",
+  },
 ];
 
 export default data3;

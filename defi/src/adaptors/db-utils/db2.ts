@@ -103,3 +103,18 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
   console.timeEnd(label)
   return result
 }
+
+
+export async function getAllItemsAfter({ adapterType, timestamp }: { adapterType: AdapterType, timestamp: number}) {
+  await init()
+  if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where: { type: adapterType, timestamp: { [Op.gte]: timestamp  } },
+    attributes: ['data', 'timestamp', 'id', 'timeS'],
+    raw: true,
+    order: [['timestamp', 'ASC']],
+  })
+
+  return result
+}

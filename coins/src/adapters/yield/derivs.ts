@@ -235,6 +235,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     address: "0xFC87753Df5Ef5C368b5FBA8D4C5043b77e8C5b39",
   },
+  iwstETH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function exchangeRateStored() external view returns (uint256)",
+        target: "0x4B3488123649E8A671097071A02DA8537fE09A16",
+      });
+      return rate / 1e18;
+    },
+    chain: "optimism",
+    underlying: "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb",
+    address: "0x4B3488123649E8A671097071A02DA8537fE09A16",
+  },
 };
 
 export async function derivs(timestamp: number) {

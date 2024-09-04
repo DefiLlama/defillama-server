@@ -54395,6 +54395,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#swapline",
     listedAt: 1725456838
   },
+  {
+    id: "5100",
+    name: "LemonX",
+    address: null,
+    symbol: "-",
+    url: "https://www.lemonx.trade/",
+    description:
+      "LemonX combines the essentials of perpetual trading, offering upto 50x leverage, deep liquidity, and the lowest fees, all wrapped up in a platform that operates at lightning speed.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/lemonx.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["CORE"],
+    module: "lemonX/index.js",
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/11522
+    forkedFrom: ["GMX V1"],
+    twitter: "lemonX_world",
+    audit_links: ["https://github.com/solidproof/Projects/tree/main/2024/LemonX%20Trade"],
+    listedAt: 1725468643
+  },
 ];
 
 export default data3;

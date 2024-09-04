@@ -5361,6 +5361,18 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "level.js",
     governanceID: ["snapshot:level-finance.eth"],
   },
+  {
+    id: "parent#swapline",
+    name: "Swapline",
+    url: "https://swapline.com",
+    description:
+      "Swapline is a multichain DEX bringing the power of Liquidity Book AMM to new ecosystems. Experience trading with zero slippage.",
+    logo: `${baseIconsUrl}/swapline.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SwaplineDEX",
+  },
 ];
 
 export default parentProtocols;

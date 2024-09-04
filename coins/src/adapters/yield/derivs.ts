@@ -222,6 +222,19 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x1abaea1f7c830bd89acc67ec4af516284b1bc33c",
     address: "0xa0769f7A8fC65e47dE93797b4e21C073c117Fc80",
   },
+  aETH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAETH(uint256) external view returns (uint256)",
+        target: "0x25a01dBde45cc5Bb7071EB3c3b2F983ea923bec5",
+        params: "1000000",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    address: "0xFC87753Df5Ef5C368b5FBA8D4C5043b77e8C5b39",
+  },
 };
 
 export async function derivs(timestamp: number) {

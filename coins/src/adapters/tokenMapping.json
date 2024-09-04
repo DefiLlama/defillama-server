@@ -489,10 +489,15 @@
     }
   },
   "arbitrum": {
+    "0xf1617882a71467534d14eee865922de1395c9e89": {
+      "decimals": "18",
+      "symbol": "saETH ",
+      "to": "asset#ethereum:0xf1617882a71467534d14eee865922de1395c9e89"
+    },
     "0x35e050d3C0eC2d29D269a8EcEa763a183bDF9A9D": {
       "decimals": "18",
       "symbol": "USDY ",
-      "to": "ethereum:0x96F6eF951840721AdBF46Ac996b59E0235CB985C"
+      "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c"
     },
     "0xAed882F117b78034829E2cfFA11206706837B1b1": {
       "decimals": "18",

@@ -95,7 +95,7 @@ export default {
     cleanRecordsConfig: {
       genuineSpikes: {
         1674172800: true,
-        1680739200: true 
+        1680739200: true
       }
   }
   },
@@ -252,7 +252,7 @@ export default {
     id: "4824",
     cleanRecordsConfig: {
         genuineSpikes: {
-          1724457600: true 
+          1724457600: true
         }
     }
   },
@@ -298,5 +298,9 @@ export default {
     parentId: "Scallop",
     enabled: true,
     id: "5087",
+  },
+  "lumia": {
+    enabled: true,
+    id: "5098",
   }
 } as AdaptorsConfig;

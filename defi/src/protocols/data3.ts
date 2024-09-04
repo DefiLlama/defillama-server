@@ -40253,7 +40253,7 @@ const data3: Protocol[] = [
     module: "avalon-finance/index.js",
     twitter: "avalonfinance_",
     github: ["avalonfinancexyz"],
-    audit_links: ["https://drive.google.com/file/d/1NQKM8C9rVHuplDqiDMdwKykLA4cUQbUj"],
+    audit_links: ["https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/2024/Avalon-AVAF_audit_report_2024-06-11.pdf",'https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/2024/Avalon_Finance-ORACLE_audit_report_2024-04-09.pdf'],
     listedAt: 1712919585,
   },
   {

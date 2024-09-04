@@ -197,7 +197,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         SK: 0,
       })),
     )
-  ).filter((c) => !c.adapter);
+  ).filter((c) => !c.adapter && c.confidence == 0.99);
 
   const deleteStaleKeysPromise = DELETE(
     staleEntries.map((e) => ({

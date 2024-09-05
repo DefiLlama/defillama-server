@@ -70,7 +70,6 @@ export async function getOverviewProcess2({
   if (chain) {
     if (chain.includes('-')) chain = chain.replace(/-/g, ' ')
       chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
-    if (chain?.toLowerCase() === 'all') chain = undefined
   }
   const chainDisplayName = chain ? getDisplayChainNameCached(chain) : null
   let summary = chain ? summaries[recordType]?.chainSummary[chain] : summaries[recordType]
@@ -214,7 +213,7 @@ export async function getOverviewFileRoute(req: HyperExpress.Request, res: Hyper
     adaptorType, dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown, chainFilter,
   } = getEventParameters(req, true)
   const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-all'
-  const chainStr = chainFilter && chainFilter !== 'All' ? `-chain/${chainFilter.toLowerCase()}` : ''
+  const chainStr = chainFilter && chainFilter?.toLowerCase() !== 'all' ? `-chain/${chainFilter.toLowerCase()}` : ''
   const routeFile = `dimensions/${adaptorType}/${dataType}${chainStr}${isLiteStr}`
   const timeKey = Math.random() + routeFile + '-overview'
   console.time(timeKey)

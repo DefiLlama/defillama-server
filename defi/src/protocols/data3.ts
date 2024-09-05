@@ -54508,7 +54508,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "TonStable/index.js",
-    twitter: "TonStable_fi",
+    twitter: "TonStable",
     listedAt: 1725543948
   },
   {

@@ -43974,7 +43974,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4637",
-    name: "BounceBit LSD", // previous BBScan
+    name: "BounceBit Staking", // previous BBScan than previous BounceBit LSD
     address: null,
     symbol: "-",
     assetToken: "stBBTC", // also BB
@@ -43982,7 +43982,7 @@ const data3: Protocol[] = [
     description:
       "BounceBit natively provides a Liquid Staking smart contract. If you stake your BTC or BB, you will receive a Liquid Staking Derivative (LSD). This LSD is like a voucher that testifies that you are delegating your assets to a validator.",
     chain: "BounceBit",
-    logo: `${baseIconsUrl}/bouncebit-lsd.jpg`, // bouncebit-lsd
+    logo: `${baseIconsUrl}/bouncebit-staking.jpg`, 
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -44015,6 +44015,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "bounce_bit",
+    parentProtocol: "parent#bouncebit-cedefi",
     listedAt: 1716205258,
   },
   {
@@ -49581,6 +49582,7 @@ const data3: Protocol[] = [
     twitter: "bounce_bit",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "parent#bouncebit-cedefi",
     listedAt: 1721072868,
   },
   {

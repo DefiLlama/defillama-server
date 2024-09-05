@@ -40236,7 +40236,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4473",
-    name: "Avalon Labs Lending",
+    name: "Avalon Finance",
     address: null,
     symbol: "-",
     url: "https://www.avalonfinance.xyz",
@@ -54423,7 +54423,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5101",
-    name: "Avalon Labs CeDeFi",
+    name: "Avalon CeDeFi",
     address: null,
     symbol: "-",
     url: "https://www.avalonfinance.xyz",

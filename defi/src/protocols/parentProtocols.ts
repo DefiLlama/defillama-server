@@ -5386,6 +5386,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["avalonfinancexyz"],
     twitter: "avalonfinance_",
   },
+  {
+    id: "parent#bouncebit-cedefi",
+    name: "BounceBit CeDeFi",
+    url: "https://portal.bouncebit.io/premium",
+    description:
+      "BounceBit introduces a distinctive feature - the parallel generation of yield from both CeFi and DeFi. Users can earn original CeFi yield while utilizing LSD for BTC staking and on-chain farming, a process known as restaking in Bitcoin. This ecosystem offers three types of yield for Bitcoin holders: Original Cefi yield, node operation rewards from staking BTC on the BounceBit chain, and opportunity yield from participating in on-chain applications and the Bounce Launchpad.",
+    logo: `${baseIconsUrl}/bouncebit-cedefi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "bounce_bit",
+  },
 ];
 
 export default parentProtocols;

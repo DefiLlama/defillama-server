@@ -70,6 +70,7 @@ export async function getOverviewProcess2({
   if (chain) {
     if (chain.includes('-')) chain = chain.replace(/-/g, ' ')
       chain = formatChainKey(chain) // normalize chain name like 'zksync-era' -> 'era' 
+    if (chain?.toLowerCase() === 'all') chain = undefined
   }
   const chainDisplayName = chain ? getDisplayChainNameCached(chain) : null
   let summary = chain ? summaries[recordType]?.chainSummary[chain] : summaries[recordType]

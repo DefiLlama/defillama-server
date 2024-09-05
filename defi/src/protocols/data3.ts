@@ -51313,7 +51313,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CeDeFi",
+    category: "Options",
     chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: [],

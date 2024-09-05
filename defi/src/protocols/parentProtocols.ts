@@ -5373,6 +5373,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SwaplineDEX",
   },
+  {
+    id: "parent#avalon-labs",
+    name: "Avalon Labs",
+    url: "https://www.avalonfinance.xyz",
+    description:
+      "The Liquidity Hub For BTC LSDFi and CeDeFi Lending",
+    logo: `${baseIconsUrl}/avalon-labs.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["avalonfinancexyz"],
+    twitter: "avalonfinance_",
+  },
 ];
 
 export default parentProtocols;

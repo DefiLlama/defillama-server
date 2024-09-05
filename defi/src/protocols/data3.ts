@@ -40236,7 +40236,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4473",
-    name: "Avalon Labs",
+    name: "Avalon Labs Lending",
     address: null,
     symbol: "-",
     url: "https://www.avalonfinance.xyz",
@@ -40253,7 +40253,7 @@ const data3: Protocol[] = [
     forkedFrom: ["AAVE V3"],
     module: "avalon-finance/index.js",
     twitter: "avalonfinance_",
-    github: ["avalonfinancexyz"],
+    parentProtocol: "parent#avalon-labs",
     audit_links: ["https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/2024/Avalon-AVAF_audit_report_2024-06-11.pdf",'https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/2024/Avalon_Finance-ORACLE_audit_report_2024-04-09.pdf'],
     listedAt: 1712919585,
   },
@@ -54419,6 +54419,30 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/solidproof/Projects/tree/main/2024/LemonX%20Trade"],
     listedAt: 1725468643
   },
+  {
+    id: "5101",
+    name: "Avalon Labs CeDeFi",
+    address: null,
+    symbol: "-",
+    url: "https://www.avalonfinance.xyz",
+    description: "The Liquidity Hub For BTC LSDFi and CeDeFi Lending",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/avalon-labs.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CeDeFi",
+    chains: ["Ethereum", "Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "avalon-finance-cedefi/index.js",
+    twitter: "avalonfinance_",
+    parentProtocol: "parent#avalon-labs",
+    audit_links: [],
+    listedAt: 1725498632,
+  }
+
 ];
 
 export default data3;

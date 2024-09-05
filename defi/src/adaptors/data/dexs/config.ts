@@ -2997,5 +2997,9 @@ export default {
     "chainflip": {
         enabled: true,
         id: "3853"
+    },
+    "torch": {
+        enabled: true,
+        id: "5096"
     }
 } as AdaptorsConfig

@@ -2521,5 +2521,9 @@ export default {
     "echelon": {
         enabled: true,
         id: "4367"
+    },
+    "torch": {
+        enabled: true,
+        id: "5096"
     }
 } as AdaptorsConfig

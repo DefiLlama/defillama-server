@@ -54441,8 +54441,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#avalon-labs",
     audit_links: [],
     listedAt: 1725498632,
+  },
+  {
+    id: "5102",
+    name: "MuggleLink",
+    address: null,
+    symbol: "-",
+    url: "https://www.muggle.link",
+    description: "MuggleLink is a Web3 Freelance Service Marketplace. Our mission is to link Muggles and make the world work together by crypto",
+    chain: "TON",
+    logo: `${baseIconsUrl}/mugglelink.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CeDeFi",
+    chains: ["TON"],
+    oracles: [],
+    forkedFrom: [],
+    module: "mugglelink/index.js",
+    twitter: "MuggleLink",
+    audit_links: [],
+    github: ["mugglelink"],
+    listedAt: 1725525424
   }
-
 ];
 
 export default data3;

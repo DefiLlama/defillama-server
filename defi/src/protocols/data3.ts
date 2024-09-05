@@ -54462,6 +54462,7 @@ const data3: Protocol[] = [
     module: "mugglelink/index.js",
     twitter: "MuggleLink",
     audit_links: [],
+    github: ["mugglelink"],
     listedAt: 1725525424
   }
 ];

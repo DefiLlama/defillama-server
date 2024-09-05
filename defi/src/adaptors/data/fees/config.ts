@@ -2517,5 +2517,9 @@ export default {
     "ethervista": {
         enabled: true,
         id: "5092"
+    },
+    "echelon": {
+        enabled: true,
+        id: "4367"
     }
 } as AdaptorsConfig

@@ -54510,7 +54510,29 @@ const data3: Protocol[] = [
     module: "TonStable/index.js",
     twitter: "TonStable_fi",
     listedAt: 1725543948
-  }
+  },
+  {
+    id: "5105",
+    name: "Adrastea",
+    address: null,
+    symbol: "-",
+    url: "https://adrastea.fi",
+    description: "Adrastea is a composable leverage protocol that facilitates isolated boosting, with a primary mission to simplify the process and amplify the yield.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/adrastea.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "adrastea/index.js",
+    twitter: "AdrasteaFinance",
+    audit_links: ["https://github.com/OffsideLabs/reports/blob/public/audits/Adrastea-Aug-2024-OffsideLabs.pdf"],
+    listedAt: 1725543364
+  },
 ];
 
 export default data3;

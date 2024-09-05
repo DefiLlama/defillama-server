@@ -9181,6 +9181,16 @@
       "decimals": "18",
       "symbol": "SHIB.ETH",
       "to": "coingecko#shiba-inu"
+    },
+    "0xD10932EB3616a937bd4a2652c87E9FeBbAce53e5": {
+      "decimals": "18",
+      "symbol": "ULTI.BSC",
+      "to": "coingecko#ultiverse"
+    },
+    "0xe573a6e11f8506620F123DBF930222163D46BCB6": {
+      "decimals": "18",
+      "symbol": "ULTI.ETH",
+      "to": "coingecko#ultiverse"
     }
   },
   "fraxtal": {

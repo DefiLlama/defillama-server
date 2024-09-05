@@ -8,6 +8,7 @@ import { getAllItemsAfter, } from "../../adaptors/db-utils/db2";
 import { getTimeSDaysAgo, } from "../utils/time";
 import { roundVaules, } from "../utils";
 import * as sdk from "@defillama/sdk";
+import { sendMessage } from '../../utils/discord';
 
 let esClient: any
 async function initES() {
@@ -17,6 +18,10 @@ async function initES() {
 
 
 async function run() {
+  // record time taken to run
+  const start = Date.now()
+
+
   await initES()
   const allCache = {} as any
   const dateStringArray = [] as string[]
@@ -35,6 +40,11 @@ async function run() {
   // generate summaries for all types
   await Promise.all(ADAPTER_TYPES.map(generateSummaries))
 
+  const timeTaken = Number((Date.now() - start) / 1e3).toFixed(2)
+  const timeTakensString = `Ran check in ${timeTaken}s`
+  console.log(timeTakensString)
+
+  await sendMessage(timeTakensString, process.env.VOLUMES_WEBHOOK)
 
   await esClient?.close()
 
@@ -188,14 +198,75 @@ async function run() {
     if (summaries.length) {
       setSignificance(summaries, 'average')
       console.log(`saving ${adapterType} summaries count: ${summaries.length}`)
-      const body = summaries.flatMap((doc: any) => {
-        return [{ index: { _index: 'dim_metrics_1', _id: `dm_${adapterType}_${doc.id2}` } }, doc]
-      })
+      const body = summaries.flatMap((doc: any) => [{ index: { _index: 'dim_metrics_1', _id: `dm_${adapterType}_${doc.id2}` } }, doc])
       await esClient.bulk({ refresh: true, body })
+
+      // write to discord
+      const lines = [] as string[]
+
+      // print missing last day data
+      const missingLastDayData = summaries.filter((summary: any) => summary.missingDaysSinceLastData > 0 && summary.isSignificant)
+      if (missingLastDayData.length) {
+        const field = 'average'
+        missingLastDayData.sort((a: any, b: any) => (b[field] ?? 0) - (a[field] ?? 0))
+        lines.push('\n')
+        lines.push('Missing data for significant protocols in ' + adapterType)
+        lines.push(`\nProtocol - ${field} - Days since last data (missing count last 30d)`)
+        missingLastDayData.forEach((item: any) => {
+          lines.push(`${item.name} - ${hn(item[field])}m - ${item.missingDaysSinceLastData} (${item.missingCount}) days`)
+        })
+        lines.push('\n')
+      }
+
+      // print big spikes
+      const bigSpikes = summaries.filter((summary: any) => {
+        if (summary.recordCount < 7) return false // ignore small record count
+        if (summary.todayValue === undefined || summary.todayValue < 5e5) return false // ignore small values
+        if (summary.increaseAgainstAverage4 > 400) return true // 400% increase
+        return false
+      })
+
+      if (bigSpikes.length) {
+        const field = 'increaseAgainstAverage4'
+        bigSpikes.sort((a: any, b: any) => (b[field] ?? 0) - (a[field] ?? 0))
+        lines.push('Big spikes in ' + adapterType)
+        lines.push('\n')
+        lines.push(`\nProtocol - ${field} - Today - Yesterday - Avg2 (30d average excluding last 4 days) - recordCount`)
+        bigSpikes.forEach((item: any) => {
+          lines.push(`${item.name} - ${item[field]}% - ${hn(item.todayValue)} - ${hn(item.yesterdayValue)} - ${hn(item.average2)} - ${item.recordCount}`)
+        })
+        lines.push('\n')
+      }
+
+
+      // print big drops
+      const bigDrops = summaries.filter((summary: any) => {
+        if (summary.recordCount < 7) return false // ignore small record count
+        if (!summary.average2 || summary.average2 < 1e4) return false // ignore small values
+        if (summary.increaseAgainstAverage4 < -65) return true // 400% decrease
+        return false
+      })
+
+      if (bigDrops.length) {
+        const field = 'increaseAgainstAverage4'
+        bigDrops.sort((a: any, b: any) => (a[field] ?? 0) - (b[field] ?? 0))
+        lines.push('\n')
+        lines.push('Big drops in ' + adapterType)
+        lines.push(`Protocol - ${field} - Today - Yesterday - Avg2 (30d average excluding last 4 days) - recordCount\n`)
+        bigDrops.forEach((item: any) => {
+          lines.push(`${item.name} - ${item[field] * -1}% - ${hn(item.todayValue)} - ${hn(item.yesterdayValue)} - ${hn(item.average2)} - ${item.recordCount}`)
+        })
+        lines.push('\n')
+      }
+
+      await sendMessage(lines.join('\n'), process.env.VOLUMES_WEBHOOK)
+
     }
 
   }
 }
+
+const hn = (n: number) => n ? sdk.humanizeNumber(n) : '-'
 
 run().catch(console.error).then(() => process.exit(0))
 

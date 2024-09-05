@@ -54331,9 +54331,10 @@ const data3: Protocol[] = [
     name: "Lombard",
     address: null,
     symbol: "-",
+    assetToken: "LBTC",
     url: "https://www.lombard.finance",
     description:
-      "LBTC is liquid, yield-bearing, natively cross-chain, and 1:1 backed by bitcoin.",
+      "Lombard is transforming Bitcoin's utility from a store of value into a productive financial tool through a security-first liquid Bitcoin primitive—LBTC. LBTC is a liquid, yield-bearing, natively cross-chain, and 1:1 backed by bitcoin.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/lombard.jpg`,
     audits: "2",

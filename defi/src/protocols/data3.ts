@@ -54533,6 +54533,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/OffsideLabs/reports/blob/public/audits/Adrastea-Aug-2024-OffsideLabs.pdf"],
     listedAt: 1725543364
   },
+  {
+    id: "5106",
+    name: "Octopus Finance",
+    address: "arbitrum:0x057153eb8ad87BD483Ff9EC4E411B8C3BcE90FF0",
+    symbol: "OC",
+    url: "https://octopusdao.finance/",
+    description: "Octopus Finance is a fully decentralized yield aggregator on Arbitrum that maximizes investment returns through interactive strategies with several DeFi platforms",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/octopus-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "octopus-finance/index.js",
+    twitter: "Octopus_Arb",
+    listedAt: 1725553551
+  },
 ];
 
 export default data3;

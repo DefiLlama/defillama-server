@@ -2525,5 +2525,20 @@ export default {
     "torch": {
         enabled: true,
         id: "5096"
+    },
+    "sunswap-v1": {
+        parentId: "SUN.io",
+        enabled: true,
+        id: "690"
+    },
+    "sunswap-v2": {
+        parentId: "SUN.io",
+        enabled: true,
+        id: "3005"
+    },
+    "sunswap-v3": {
+        parentId: "SUN.io",
+        enabled: true,
+        id: "4031"
     }
 } as AdaptorsConfig

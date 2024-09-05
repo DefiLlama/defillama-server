@@ -122,5 +122,9 @@ export default {
     "arrow-markets": {
         enabled: true,
         id: "4957"
+    },
+    "ton-hedge": {
+        enabled: true,
+        id: "4950"
     }
 } as AdaptorsConfig

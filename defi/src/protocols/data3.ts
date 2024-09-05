@@ -54328,14 +54328,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5097",
-    name: "Lombard Liquid Bitcoin",
+    name: "Lombard",
     address: null,
     symbol: "-",
     url: "https://www.lombard.finance",
     description:
       "LBTC is liquid, yield-bearing, natively cross-chain, and 1:1 backed by bitcoin.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/lombard-liquid-bitcoin.jpg`,
+    logo: `${baseIconsUrl}/lombard.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

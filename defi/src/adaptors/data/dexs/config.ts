@@ -16,7 +16,7 @@ export default {
                 displayName: "Balancer V2",
                 enabled: true,
             }
-        }, 
+        },
         cleanRecordsConfig: {
             genuineSpikes: {
                 1718755200: true,
@@ -569,7 +569,7 @@ export default {
         "id": "488",
         cleanRecordsConfig: {
             genuineSpikes: {
-                1675555200: true 
+                1675555200: true
             }
         }
     },
@@ -3001,5 +3001,9 @@ export default {
     "torch": {
         enabled: true,
         id: "5096"
+    },
+    "delta-trade": {
+        enabled: true,
+        id: "5050"
     }
 } as AdaptorsConfig

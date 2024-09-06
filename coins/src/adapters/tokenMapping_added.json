@@ -5940,6 +5940,11 @@
       "decimals": "18",
       "symbol": "WFLR",
       "to": "coingecko#flare-networks"
+    },
+    "0xfbda5f676cb37624f28265a144a48b0d6e87d3b6": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
     }
   },
   "nahmii": {

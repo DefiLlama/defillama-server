@@ -8,9 +8,10 @@ import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap 
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { timeSToUnix, } from "../utils/time";
-import { readRouteData } from "../cache/file-cache";
+import { getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
+const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
 
 function formatChartData(data: any = {}) {
   return Object.entries(data)
@@ -204,22 +205,19 @@ export async function getProtocolDataHandler2({
   }
 }
 
-function genRandomString() {
-  return Math.random().toString(36).substring(7)
-}
-
 export async function getOverviewFileRoute(req: HyperExpress.Request, res: HyperExpress.Response) {
   const {
     adaptorType, dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown, chainFilter,
   } = getEventParameters(req, true)
   const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-all'
   const chainStr = chainFilter && chainFilter?.toLowerCase() !== 'all' ? `-chain/${chainFilter.toLowerCase()}` : ''
-  const routeFile = `dimensions/${adaptorType}/${dataType}${chainStr}${isLiteStr}`
-  const timeKey = Math.random() + routeFile + '-overview'
-  console.time(timeKey)
+  const routeSubPath = `${adaptorType}/${dataType}${chainStr}${isLiteStr}`
+  const routeFile = `dimensions/${routeSubPath}`
 
+  if (!dimensionsFileSet.has(routeSubPath)) {
+    return errorResponse(res, 'Data not found', { statusCode: 404 })
+  }
   const data = await readRouteData(routeFile)
-  console.timeEnd(timeKey)
 
   if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
 
@@ -236,14 +234,16 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
     dataType, excludeTotalDataChart, excludeTotalDataChartBreakdown,
   } = getEventParameters(req, false)
   const isLiteStr = excludeTotalDataChart && excludeTotalDataChartBreakdown ? '-lite' : '-all'
-  const routeFile = `dimensions/${adaptorType}/${dataType}-protocol/${protocolSlug}${isLiteStr}`
-  const timeKey = Math.random() + routeFile + '-summary'
-  console.time(timeKey)
+  const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}${isLiteStr}`
+  const routeFile = `dimensions/${routeSubPath}`
+  const errorMessage = `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
 
+  if (!dimensionsFileSet.has(routeSubPath)) {
+    return errorResponse(res, errorMessage, { statusCode: 404 })
+  }
   const data = await readRouteData(routeFile)
-  console.timeEnd(timeKey)
   if (!data)
-    return errorResponse(res, `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`)
+    return errorResponse(res, errorMessage)
 
   if (excludeTotalDataChart) data.totalDataChart = []
   if (excludeTotalDataChartBreakdown) data.totalDataChartBreakdown = []

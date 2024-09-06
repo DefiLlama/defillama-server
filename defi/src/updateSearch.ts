@@ -62,6 +62,12 @@ async function generateSearchList() {
 
 const main = async ()=>{
     const searchResults = await generateSearchList()
+    await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+        },
+    }).then(r=>r.json())
     const submit = await fetch(`https://search.defillama.com/indexes/protocols/documents`, {
         method: "POST",
         headers: {

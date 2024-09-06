@@ -54554,6 +54554,27 @@ const data3: Protocol[] = [
     twitter: "Octopus_Arb",
     listedAt: 1725553551
   },
+  {
+    id: "5107",
+    name: "Ton Pools",
+    address: "null",
+    symbol: "-",
+    url: "https://www.tonpools.com/",
+    description: "Ton Pools is a no-loss, audited savings game powered by blockchain technology",
+    chain: "TON",
+    logo: `${baseIconsUrl}/tonpoolsIcon.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["TON"],
+    module: "tonpools/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "TonPools_Com",
+    listedAt: 1725610099
+  },
 ];
 
 export default data3;

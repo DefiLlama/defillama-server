@@ -3471,7 +3471,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "orion-protocol",
     cmcId: "5631",
     chains: [],
-    twitter: "TradeOnOrion",
+    twitter: "BuildOnLumia",
     github: ["orionprotocol"],
   },
   {

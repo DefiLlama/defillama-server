@@ -28983,7 +28983,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "orion-rfq/index.js",
-    twitter: "TradeOnOrion",
+    twitter: "BuildOnLumia",
     parentProtocol: "parent#orion-protocol",
     listedAt: 1703860590,
   },
@@ -54372,7 +54372,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     oracles: [],
     forkedFrom: [],
-    twitter: "TradeOnOrion",
+    twitter: "BuildOnLumia",
     parentProtocol: "parent#orion-protocol",
   },
   {

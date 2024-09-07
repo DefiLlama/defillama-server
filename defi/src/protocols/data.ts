@@ -8441,7 +8441,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Ethereum", "Binance"],
     module: "orionprotocol/index.js",
-    twitter: "TradeOnOrion",
+    twitter: "BuildOnLumia",
     parentProtocol: "parent#orion-protocol",
     audit_links: ["https://www.certik.org/projects/orionprotocol"],
     forkedFrom: ["Uniswap V2"],

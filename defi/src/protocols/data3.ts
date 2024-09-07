@@ -54618,6 +54618,26 @@ const data3: Protocol[] = [
     twitter: "DoughFina",
     listedAt: 1725674147
   },
+  {
+    id: "5110",
+    name: "Rainbow Swap",
+    address: null,
+    symbol: "-",
+    url: "https://rainbow.ag",
+    description: "Swap Aggregator on TON",
+    chain: "TON",
+    logo: `${baseIconsUrl}/rainbow-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["TON"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "rainbow_swap",
+  },
 ];
 
 export default data3;

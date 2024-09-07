@@ -54597,6 +54597,27 @@ const data3: Protocol[] = [
     twitter: "BiconomyCom",
     listedAt: 1725626993
   },
+  {
+    id: "5109",
+    name: "Dough Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.dough.finance/",
+    description: "Dough Finance is an open-source protocol that enables non-custodial liquidity markets, allowing users to earn interest by supplying and borrowing assets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/dough-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dough-finance/index.js",
+    twitter: "DoughFina",
+    listedAt: 1725674147
+  },
 ];
 
 export default data3;

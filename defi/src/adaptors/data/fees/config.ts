@@ -2540,5 +2540,10 @@ export default {
         parentId: "SUN.io",
         enabled: true,
         id: "4031"
+    },
+    "fwx-dex": {
+        parentId: "FWX",
+        enabled: true,
+        id: "4962"
     }
 } as AdaptorsConfig

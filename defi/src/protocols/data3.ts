@@ -54614,7 +54614,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "dough-finance/index.js",
+    module: "dough-finance.js",
     twitter: "DoughFina",
     listedAt: 1725674147
   },

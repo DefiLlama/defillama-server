@@ -302,5 +302,9 @@ export default {
   "lumia": {
     enabled: true,
     id: "5098",
+  },
+  "rainbow-swap": {
+    enabled: true,
+    id: "5110",
   }
 } as AdaptorsConfig;

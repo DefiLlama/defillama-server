@@ -3005,5 +3005,10 @@ export default {
     "delta-trade": {
         enabled: true,
         id: "5050"
+    },
+    "fwx-dex": {
+        parentId: "FWX",
+        enabled: true,
+        id: "4962"
     }
 } as AdaptorsConfig

@@ -2545,5 +2545,10 @@ export default {
         parentId: "FWX",
         enabled: true,
         id: "4962"
+    },
+    "koi-finance-cl": {
+        parentId: "Koi Finance",
+        enabled: true,
+        id: "4678"
     }
 } as AdaptorsConfig

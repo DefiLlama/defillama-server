@@ -2550,5 +2550,9 @@ export default {
         parentId: "Koi Finance",
         enabled: true,
         id: "4678"
+    },
+    "superchain": {
+        enabled: true,
+        id: "5111"
     }
 } as AdaptorsConfig

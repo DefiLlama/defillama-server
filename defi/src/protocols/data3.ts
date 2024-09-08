@@ -54638,6 +54638,26 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "rainbow_swap",
   },
+  {
+    id: "5111",
+    name: "Superchain",
+    address: null,
+    symbol: "-",
+    url: "https://www.superchain.eco/",
+    description: "Collective HQ for everything OP Stack and the Superchain Ecosystem",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/superchain.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum", "Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "SuperchainEco",
+  },
 ];
 
 export default data3;

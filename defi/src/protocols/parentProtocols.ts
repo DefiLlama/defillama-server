@@ -5398,6 +5398,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "bounce_bit",
   },
+  {
+    id: "parent#fulcrom",
+    name: "Fulcrom",
+    url: "https://fulcrom.finance",
+    description:
+      "Fulcrom is a decentralised perpetual exchange that allows users to trade leveraged positions with low fees and zero price impact, whilst having the peace of mind that all trades and collateral are stored transparently on-chain.",
+    logo: `${baseIconsUrl}/fulcrom.jpg`,
+    gecko_id: "fulcrom",
+    cmcId: "24190",
+    chains: [],
+    twitter: "FulcromFinance",
+  },
 ];
 
 export default parentProtocols;

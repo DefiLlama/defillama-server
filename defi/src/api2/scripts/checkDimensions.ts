@@ -16,6 +16,7 @@ async function initES() {
     esClient = sdk.elastic.getClient()
 }
 
+const lines = [] as string[]
 
 async function run() {
   // record time taken to run
@@ -41,10 +42,11 @@ async function run() {
   await Promise.all(ADAPTER_TYPES.map(generateSummaries))
 
   const timeTaken = Number((Date.now() - start) / 1e3).toFixed(2)
-  const timeTakensString = `Ran check in ${timeTaken}s`
-  console.log(timeTakensString)
-
-  await sendMessage(timeTakensString, process.env.VOLUMES_WEBHOOK)
+  const timeTakensString = `\nRan check in ${timeTaken}s`
+  
+  lines.push(timeTakensString)
+  console.log(lines.join('\n'))
+  await sendMessage(lines.join('\n'), process.env.VOLUMES_WEBHOOK)
 
   await esClient?.close()
 
@@ -202,7 +204,6 @@ async function run() {
       await esClient.bulk({ refresh: true, body })
 
       // write to discord
-      const lines = [] as string[]
 
       // print missing last day data
       const missingLastDayData = summaries.filter((summary: any) => summary.missingDaysSinceLastData > 0 && summary.isSignificant)
@@ -258,9 +259,6 @@ async function run() {
         })
         lines.push('\n')
       }
-
-      await sendMessage(lines.join('\n'), process.env.VOLUMES_WEBHOOK)
-
     }
 
   }

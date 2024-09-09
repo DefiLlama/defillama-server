@@ -54477,7 +54477,7 @@ const data3: Protocol[] = [
     description: "Crypto's first on-chain dark pool. Live on Arbitrum One",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/renegade.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -54487,7 +54487,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "renegade-fi/index.js",
     twitter: "renegade_fi",
-    audit_links: [],
+    audit_links: ["https://github.com/renegade-fi/renegade/tree/main/audits"],
     github: ["renegade-fi"],
     listedAt: 1725543048
   },

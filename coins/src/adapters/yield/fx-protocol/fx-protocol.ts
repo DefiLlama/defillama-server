@@ -1,15 +1,9 @@
 const abi = require("./abi.json");
-import { multiCall, call } from "@defillama/sdk/build/abi/index";
+import { call } from "@defillama/sdk/build/abi/index";
 import getBlock from "../../utils/block";
-import { Result } from "../../utils/sdkInterfaces";
 import { getTokenInfo } from "../../utils/erc20";
-import { Write, CoinData } from "../../utils/dbInterfaces";
-import {
-  addToDBWritesList,
-  getTokenAndRedirectData,
-} from "../../utils/database";
-
-const chain: any = "ethereum";
+import { Write } from "../../utils/dbInterfaces";
+import { addToDBWritesList } from "../../utils/database";
 
 const tokenList = [
   "0x085780639CC2cACd35E474e71f4d000e2405d8f6",
@@ -20,7 +14,7 @@ const tokenList = [
 async function getPoolInfos(
   block: number | undefined,
   chain: any,
-  target: string
+  target: string,
 ) {
   const [{ output: nav }, tokenInfos] = await Promise.all([
     call({
@@ -39,11 +33,11 @@ export default async function getTokenPrices(timestamp: number, chain: string) {
   const datas = await Promise.all(
     tokenList.map((token) => {
       return getPoolInfos(block, chain, token);
-    })
+    }),
   );
   const writes: Write[] = [];
   datas.map(({ nav, tokenAddress, tokenInfos }) => {
-    const price = nav;
+    const price = nav / 10 ** tokenInfos.decimals[0].output;
     addToDBWritesList(
       writes,
       chain,
@@ -54,7 +48,6 @@ export default async function getTokenPrices(timestamp: number, chain: string) {
       timestamp,
       "fx-protocol",
       1,
-      `asset#${chain}:${tokenAddress}`
     );
   });
 

@@ -1559,7 +1559,7 @@ export default {
         parentId: "Morphex",
         "protocolsData": {
             "swap": {
-                "id": "2662",
+                "id": "5116",
                 "enabled": true,
                 "category": "Dexes",
                 "displayName": "Morphex - SWAP"
@@ -1757,7 +1757,7 @@ export default {
         "id": "2641",
         "protocolsData": {
             "swap": {
-                "id": "2641",
+                "id": "5115",
                 "enabled": true,
                 "category": "Dexes",
                 "displayName": "Fulcrom - SWAP",

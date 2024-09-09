@@ -5410,6 +5410,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FulcromFinance",
   },
+  {
+    id: "parent#superstate",
+    name: "Superstate",
+    url: "https://superstate.co",
+    description:
+      "The Superstate Crypto Carry Fund (the “Fund”) offers Qualified Purchasers access to crypto basis (differential between the spot and future price) strategies. The Fund optimizes the yield and risk of crypto cash-and-carry trades across the Bitcoin basis, Ether basis (including staking Ether), and U.S. Treasury securities. ",
+    logo: `${baseIconsUrl}/superstate.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "superstatefunds",
+    github: ["superstateinc"],
+  },
 ];
 
 export default parentProtocols;

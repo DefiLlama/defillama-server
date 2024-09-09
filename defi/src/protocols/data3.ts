@@ -35604,14 +35604,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4265",
-    name: "Superstate",
+    name: "Superstate USTB",
     address: null,
     symbol: "-",
     url: "https://superstate.co",
     description:
       "The Superstate Short Duration U.S. Government Securities Fund (USTB) is a private fund tokenized on the Ethereum blockchain (ERC-20), offered exclusively to Qualified Purchasers. USTB invests in short-duration U.S. Treasury Bills and U.S. Government Agency securities (“Government Securities”) and provides yield targeting returns in line with the federal funds rate.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/superstate.jpg`,
+    logo: `${baseIconsUrl}/superstate-ustb.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -35622,7 +35622,7 @@ const data3: Protocol[] = [
     twitter: "superstatefunds",
     oracles: [],
     forkedFrom: [],
-    github: ["superstateinc"],
+    parentProtocol: "parent#superstate",
     listedAt: 1709914041,
   },
   {
@@ -54827,6 +54827,28 @@ const data3: Protocol[] = [
     module: "pixel-swap/index.js",
     twitter: "pixelswap_io",
     listedAt: 1725887067
+  },
+  {
+    id: "5120",
+    name: "Superstate USCC",
+    address: null,
+    symbol: "-",
+    url: "https://superstate.co",
+    description: "The Superstate Crypto Carry Fund (the “Fund”) offers Qualified Purchasers access to crypto basis (differential between the spot and future price) strategies. The Fund optimizes the yield and risk of crypto cash-and-carry trades across the Bitcoin basis, Ether basis (including staking Ether), and U.S. Treasury securities. ",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/superstate-uscc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "superstate-uscc/index.js",
+    twitter: "superstatefunds",
+    parentProtocol: "parent#superstate",
+    listedAt: 1725888273
   },
 ];
 

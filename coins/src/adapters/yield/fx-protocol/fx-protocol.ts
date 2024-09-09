@@ -48,7 +48,6 @@ export default async function getTokenPrices(timestamp: number, chain: string) {
       timestamp,
       "fx-protocol",
       1,
-      `asset#${chain}:${tokenAddress}`,
     );
   });
 

@@ -2182,7 +2182,7 @@ export default {
         "id": "3530",
         "protocolsData": {
             "swap": {
-                "id": "3530",
+                "id": "5126",
                 "enabled": true,
                 "category": "Dexes"
             }
@@ -2691,7 +2691,7 @@ export default {
         enabled: true,
         protocolsData: {
             "swap": {
-                "id": "4214",
+                "id": "5127",
                 "enabled": true,
             }
         }

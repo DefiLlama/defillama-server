@@ -32558,6 +32558,7 @@ const data3: Protocol[] = [
     forkedFrom: ["AAVE V2"],
     module: "harbor/index.js",
     twitter: "0xHarborMarket",
+    parentProtocol: "parent#oath-foundation",
     listedAt: 1707950813,
   },
   {
@@ -33167,6 +33168,7 @@ const data3: Protocol[] = [
     twitter: "Yuzu_Market",
     forkedFrom: ["AAVE V2"],
     oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9032
+    parentProtocol: "parent#oath-foundation",
     listedAt: 1708559017,
   },
   {
@@ -35283,6 +35285,7 @@ const data3: Protocol[] = [
     twitter: "IroncladFinance",
     oracles: ["RedStone"], // https://docs.ironclad.finance/resources/protocol-security#base-oracle-provider
     forkedFrom: ["AAVE V2"],
+    parentProtocol: "parent#oath-foundation",
     listedAt: 1709767737,
   },
   {
@@ -51552,7 +51555,8 @@ const data3: Protocol[] = [
     forkedFrom: ["AAVE V2"],
     module: "lore/index.js",
     audit_links: [],
-    twitter: "LoreFinance", // this seems super sus, complety empty. Its the same link in their website
+    twitter: "LoreFinance",
+    parentProtocol: "parent#oath-foundation",
     listedAt: 1723454655,
   },
   {

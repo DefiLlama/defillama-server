@@ -3016,5 +3016,9 @@ export default {
         parentId: "Koi Finance",
         enabled: true,
         id: "4678"
+    },
+    "gaspump": {
+        enabled: true,
+        id: "5094"
     }
 } as AdaptorsConfig

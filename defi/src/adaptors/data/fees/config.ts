@@ -2554,5 +2554,9 @@ export default {
     "superchain": {
         enabled: true,
         id: "5111"
+    },
+    "gaspump": {
+        enabled: true,
+        id: "5094"
     }
 } as AdaptorsConfig

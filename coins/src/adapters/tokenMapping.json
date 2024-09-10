@@ -3921,6 +3921,16 @@
     }
   },
   "flare": {
+    "0x1502fa4be69d526124d453619276faccab275d3d": {
+      "to": "coingecko#weth",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0xfbda5f676cb37624f28265a144a48b0d6e87d3b6": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    },
     "0x4a771cc1a39fdd8aa08b8ea51f7fd412e73b3d2b": {
       "to": "asset#ethereum:0x7a486f809c952a6f8dec8cb0ff68173f2b8ed56c",
       "decimals": 6,

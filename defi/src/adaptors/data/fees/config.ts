@@ -2558,5 +2558,9 @@ export default {
     "gaspump": {
         enabled: true,
         id: "5094"
+    },
+    "zeno": {
+        enabled: true,
+        id: "4642"
     }
 } as AdaptorsConfig

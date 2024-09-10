@@ -5094,7 +5094,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "impermax-2",
     cmcId: null,
-    category: "Yield",
+    category: "Lending",
     chains: ["Ethereum", "Polygon", "Arbitrum"],
     module: "impermax/index.js",
     treasury: "impermax.js",

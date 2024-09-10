@@ -54804,7 +54804,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Prediction Market",
+    category: "Staking Pool",
     chains: ["TON"],
     oracles: [],
     forkedFrom: [],

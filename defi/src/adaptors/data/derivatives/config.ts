@@ -744,7 +744,7 @@ export default {
         }
     },
     "myx-finance": {
-        enabled: false,
+        enabled: true,
         "id": "4319",
         cleanRecordsConfig: {
             genuineSpikes: {

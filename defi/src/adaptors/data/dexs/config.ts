@@ -2142,7 +2142,7 @@ export default {
         parentId: "Morphex",
         "protocolsData": {
             "swap": {
-                "id": "3483",
+                "id": "5125",
                 "enabled": true,
                 disabled: true,
                 "category": "Dexes"
@@ -2150,7 +2150,7 @@ export default {
         },
         "enabled": true,
         disabled: true,
-        "id": "3483"
+        "id": "5125"
     },
     "spicyswap": {
         "enabled": true,

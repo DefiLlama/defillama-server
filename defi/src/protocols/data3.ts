@@ -45165,7 +45165,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Bridge",
     chains: ["Bitcoin"],
     oracles: [],
     forkedFrom: [],

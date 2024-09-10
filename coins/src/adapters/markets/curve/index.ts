@@ -98,7 +98,12 @@ export function curve9(timestamp: number = 0) {
   ]);
 }
 export function curve10(timestamp: number = 0) {
-  return Promise.all([getTokenPrices2("bsc", defaultRegistries, timestamp)]);
+  return Promise.all([
+    getTokenPrices2("bsc", defaultRegistries, timestamp),
+    getTokenPrices2("bsc", [], timestamp, "eth-custom", [
+      "0xa5e0e46462970c9ee8c2ecadcde254c483748ec4",
+    ]),
+  ]);
 }
 export function curve11(timestamp: number = 0) {
   return Promise.all([getTokenPrices2("bsc", ["pcs"], timestamp, "pcs")]);

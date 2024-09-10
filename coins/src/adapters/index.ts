@@ -94,4 +94,5 @@ export default {
   uniV3: require("./markets/uniswap/v3"),
   liquity: require("./other/liquity"),
   fxProtocol: require("./yield/fx-protocol"),
+  crosscurve: require("./markets/crosscurve"),
 };

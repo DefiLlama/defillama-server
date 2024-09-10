@@ -55029,7 +55029,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://predict.fun",
-    description: "𝚃𝚑𝚎 𝚢𝚒𝚎𝚕𝚍-𝚋𝚎𝚊𝚛𝚒𝚗𝚐 𝚙𝚛𝚎𝚍𝚒𝚌𝚝𝚒𝚘𝚗 𝚖𝚊𝚛𝚔𝚎𝚝 𝚋𝚞𝚒𝚕𝚝 𝚘𝚗 𝙱𝚕𝚊𝚜𝚝.",
+    description: "The yield-bearing prediction market built on Blast",
     chain: "Blast",
     logo: `${baseIconsUrl}/predict-fun.jpg`,
     audits: "0",

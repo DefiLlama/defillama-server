@@ -2000,7 +2000,7 @@ export default {
         "protocolsData": {
             "swap": {
                 disabled: true,
-                "id": "3301",
+                "id": "5124",
                 "enabled": true,
             }
         },
@@ -2447,7 +2447,7 @@ export default {
         "id": "3251",
         protocolsData: {
             "beamex-swap": {
-                "id": "3251",
+                "id": "5123",
                 "enabled": true,
             }
         }

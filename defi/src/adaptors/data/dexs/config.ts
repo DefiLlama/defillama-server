@@ -2018,7 +2018,7 @@ export default {
         "id": "3025",
         "protocolsData": {
             "swap": {
-                "id": "3025",
+                "id": "5121",
                 "enabled": true,
             }
         }
@@ -2194,7 +2194,7 @@ export default {
         "id": "3174",
         protocolsData: {
             "spot": {
-                "id": "3174",
+                "id": "5122",
                 "enabled": true,
             }
         },

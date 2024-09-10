@@ -5423,6 +5423,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "superstatefunds",
     github: ["superstateinc"],
   },
+  {
+    id: "parent#ktx.finance",
+    name: "KTX.Finance",
+    url: "https://www.ktx.finance",
+    description:
+      "Trade and earn cryptocurrencies with lowest fees, depthless liquidity, and up to 50x leverage. Generate yield in a bull, bear, or sideways market.",
+    logo: `${baseIconsUrl}/ktx.finance.jpg`,
+    gecko_id: "ktx-finance",
+    cmcId: "26493",
+    chains: [],
+    twitter: "KTX_finance",
+  },
 ];
 
 export default parentProtocols;

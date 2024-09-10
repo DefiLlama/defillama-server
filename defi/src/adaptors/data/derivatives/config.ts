@@ -851,5 +851,9 @@ export default {
     "tradoor": {
         enabled: true,
         id: "4738",
+    },
+    "zeno": {
+        enabled: true,
+        id: "4642"
     }
 } as AdaptorsConfig

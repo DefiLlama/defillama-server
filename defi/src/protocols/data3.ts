@@ -55002,6 +55002,48 @@ const data3: Protocol[] = [
     twitter: "tradeonblitz",
     parentProtocol: "parent#Edge"
   },
+  {
+    id: "5128",
+    name: "Joule Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.joule.finance",
+    description: "Joule Finance serves as a liquidity hub on the Aptos platform, providing a range of innovative DeFi features such as the LRT bridge, money market, and liquidity anchors.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/joule-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "joule/index.js",
+    twitter: "JouleFinance",
+    listedAt: 1725956794
+  },
+  {
+    id: "5129",
+    name: "Predict Fun",
+    address: null,
+    symbol: "-",
+    url: "https://predict.fun",
+    description: "𝚃𝚑𝚎 𝚢𝚒𝚎𝚕𝚍-𝚋𝚎𝚊𝚛𝚒𝚗𝚐 𝚙𝚛𝚎𝚍𝚒𝚌𝚝𝚒𝚘𝚗 𝚖𝚊𝚛𝚔𝚎𝚝 𝚋𝚞𝚒𝚕𝚝 𝚘𝚗 𝙱𝚕𝚊𝚜𝚝.",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/predict-fun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "predict-fun/index.js",
+    twitter: "predictdotfun",
+    listedAt: 1725957058
+  },
 ];
 
 export default data3;

@@ -19929,8 +19929,8 @@ const data3: Protocol[] = [
   {
     id: "3576",
     name: "GammaSwap Classic",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xb08d8becab1bf76a9ce3d2d5fa946f65ec1d3e83",
+    symbol: "GS",
     url: "https://app.gammaswap.com/",
     description:
       "GammaSwap is a novel DeFi primitive built to scale liquidity in Automated Market Makers (AMMs) by creating permissionless and oracle free risk markets",
@@ -30946,8 +30946,8 @@ const data3: Protocol[] = [
   {
     id: "4062",
     name: "DeltaSwap",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xb08d8becab1bf76a9ce3d2d5fa946f65ec1d3e83",
+    symbol: "GS",
     url: "https://gammaswap.com",
     description: "DeltaSwap, a commission free decentralized exchange for spot token trading",
     chain: "Arbitrum",
@@ -40606,8 +40606,8 @@ const data3: Protocol[] = [
   {
     id: "4489",
     name: "GammaSwap",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xb08d8becab1bf76a9ce3d2d5fa946f65ec1d3e83",
+    symbol: "GS",
     url: "https://app.gammaswap.com/",
     description: "The first oracle free perpetual options Options platform",
     chain: "Arbitrum",

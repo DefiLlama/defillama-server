@@ -3921,6 +3921,11 @@
     }
   },
   "flare": {
+    "0xFE2907DFa8DB6e320cDbF45f0aa888F6135ec4f8": {
+      "to": "coingecko#hex-trust-usdx",
+      "decimals": 6,
+      "symbol": "cUSDX"
+    },
     "0x1502fa4be69d526124d453619276faccab275d3d": {
       "to": "coingecko#weth",
       "decimals": 18,

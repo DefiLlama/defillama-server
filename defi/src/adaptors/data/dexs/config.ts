@@ -3020,5 +3020,9 @@ export default {
     "gaspump": {
         enabled: true,
         id: "5094"
+    },
+    "predict-fun": {
+        enabled: true,
+        id: "5129"
     }
 } as AdaptorsConfig

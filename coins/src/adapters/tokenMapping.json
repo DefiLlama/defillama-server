@@ -1826,6 +1826,11 @@
     }
   },
   "xdai": {
+    "0x6c76971f98945ae98dd7d4dfca8711ebea946ea6": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
+    },
     "0xD4fdec44DB9D44B8f2b6d529620f9C0C7066A2c1": {
       "decimals": "18",
       "symbol": "wxHOPR",

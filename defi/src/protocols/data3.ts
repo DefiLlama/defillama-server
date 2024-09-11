@@ -55109,6 +55109,27 @@ const data3: Protocol[] = [
     github: ["Pumpxy"],
     listedAt: 1726044458
   },
+  {
+    id: "5133",
+    name: "Forge Game",
+    address: null,
+    symbol: "-",
+    url: "https://x.com/forge_game_bot",
+    description: "Mini RPG game in Telegram.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/forge-game.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["TON"],
+    oracles: [],
+    forkedFrom: [],
+    module: "forge-game/index.js",
+    twitter: "forge_game_bot",
+    listedAt: 1726054078
+  },
 ];
 
 export default data3;

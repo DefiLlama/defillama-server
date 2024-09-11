@@ -12523,7 +12523,7 @@ const data3: Protocol[] = [
     twitter: "LayerBankFi",
     forkedFrom: ["Compound V2"],
     oraclesByChain: {
-      zkLink Nova: ["RedStone"], //https://docs.layerbank.finance/protocol/lending/oracles
+      zklink: ["RedStone"], //https://docs.layerbank.finance/protocol/lending/oracles
       manta: ["RedStone"], // https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0
       scroll: ["Pyth"],
       linea: ["Pyth"],
@@ -25296,7 +25296,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Meter"],
-    oracles: ["Pyth", "Chainlink", "Witnet", "RedStone"], //https://docs.sumer.money/developers/price-feeds/redstone-price-feeds-on-zklink-nova
+    oraclesByChain: {
+      zklink: ["RedStone"], //https://docs.sumer.money/developers/price-feeds/redstone-price-feeds-on-zklink-nova
+      meter: ["Pyth"], //https://docs.sumer.money/developers/price-feeds/pyth-price-feeds-on-meter
+      ethereum: ["Chainlink"],
+      arbitrum: ["Chainlink"], // https://docs.sumer.money/developers/price-feeds/chainlink-price-feeds-on-arbitrum
+      base: ["Chainlink"], // https://docs.sumer.money/developers/price-feeds/chainlink-price-feeds-on-base
+    },
     forkedFrom: ["Compound V2"],
     module: "sumer/index.js",
     twitter: "SumerMoney",

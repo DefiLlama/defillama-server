@@ -55087,6 +55087,28 @@ const data3: Protocol[] = [
     twitter: "TreehouseFi",
     listedAt: 1725968902
   },
+  {
+    id: "5132",
+    name: "PumpXY",
+    address: null,
+    symbol: "-",
+    url: "https://www.pumpxy.com",
+    description: "PumpXY allows anyone to create a new, instantly tradeable memecoin in just one click. Each coin is launched fairly with no presale or team allocation, ensuring a secure and rug-pull-free environment for all users.",
+    chain: "Zircuit",
+    logo: `${baseIconsUrl}/pumpxy.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Zircuit"],
+    oracles: [],
+    forkedFrom: [],
+    module: "pumpxy/index.js",
+    twitter: "PumpXy",
+    github: ["Pumpxy"],
+    listedAt: 1726044458
+  },
 ];
 
 export default data3;

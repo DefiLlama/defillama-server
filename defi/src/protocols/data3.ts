@@ -55130,6 +55130,27 @@ const data3: Protocol[] = [
     twitter: "forge_game_bot",
     listedAt: 1726054078
   },
+  {
+    id: "5134",
+    name: "VaultWin",
+    address: null,
+    symbol: "-",
+    url: "https://vaultWin.com",
+    description: "VaultWin is a non-custodial lottery game where participants have the opportunity to win a prize without any risk. Regardless of the lottery outcome, your funds are always safely returned to you",
+    chain: "Bahamut",
+    logo: `${baseIconsUrl}/vaultwin.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Bahamut"],
+    oracles: [],
+    forkedFrom: [],
+    module: "vaultWin/index.js",
+    twitter: "-",
+    listedAt: 1726068418
+  },
 ];
 
 export default data3;

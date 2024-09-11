@@ -3302,6 +3302,19 @@ export const chainCoingeckoIds = {
     twitter: "idexio",
     url: "https://idex.io/"
   },
+  "Zircuit": {
+    geckoId: "zircuit",
+    symbol: "ZRC",
+    cmcId: "29711",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 48900,
+    twitter: "ZircuitL2",
+    url: "https://www.zircuit.com/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4020,6 +4033,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Chainflip"
     case "idex":
       return "IDEX"
+    case "zircuit":
+      return "Zircuit"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -12523,6 +12523,7 @@ const data3: Protocol[] = [
     twitter: "LayerBankFi",
     forkedFrom: ["Compound V2"],
     oraclesByChain: {
+      zkLink Nova: ["RedStone"], //https://docs.layerbank.finance/protocol/lending/oracles
       manta: ["RedStone"], // https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0
       scroll: ["Pyth"],
       linea: ["Pyth"],
@@ -25295,7 +25296,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Meter"],
-    oracles: ["Pyth", "Chainlink", "Witnet"],
+    oracles: ["Pyth", "Chainlink", "Witnet", "RedStone"], //https://docs.sumer.money/developers/price-feeds/redstone-price-feeds-on-zklink-nova
     forkedFrom: ["Compound V2"],
     module: "sumer/index.js",
     twitter: "SumerMoney",

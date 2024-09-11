@@ -907,6 +907,24 @@
       "decimals": "24",
       "symbol": "NEAR",
       "to": "coingecko#near"
+    },
+    "0x25e8c72d267b96e757875d8b565a42c0e3b8f12f": {
+      "name": "WIF",
+      "decimals": "6",
+      "symbol": "WIF",
+      "to": "coingecko#dogwifcoin"
+    },
+    "0x1a8e39ae59e5556b56b76fcba98d22c9ae557396": {
+      "name": "DOGE",
+      "decimals": "8",
+      "symbol": "DOGE",
+      "to": "coingecko#dogecoin"
+    },
+    "0xf868c454784048af4f857991583e34243c92ff48": {
+      "name": "PEPE",
+      "decimals": "18",
+      "symbol": "PEPE",
+      "to": "coingecko#pepe"
     }
   },
   "scroll": {

@@ -5299,7 +5299,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#helix",
-    name: "Helix",
+    name: "Helix.",
     url: "https://helixapp.com",
     description:
       "The premier decentralized crypto exchange. Trade unlimited cross-chain spot and futures markets.",

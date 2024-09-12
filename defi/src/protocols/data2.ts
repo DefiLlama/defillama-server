@@ -20428,7 +20428,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2259",
-    name: "Helix Spot",
+    name: "Helix",
     address: null,
     symbol: "-",
     url: "https://helixapp.com",

@@ -306,5 +306,9 @@ export default {
   "rainbow-swap": {
     enabled: true,
     id: "5110",
+  },
+  "wolfswap": {
+    enabled: true,
+    id: "5138",
   }
 } as AdaptorsConfig;

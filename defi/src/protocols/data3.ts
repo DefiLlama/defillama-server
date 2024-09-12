@@ -55291,6 +55291,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.elixir.xyz/audit"],
     listedAt: 1726153138
   },
+  {
+    id: "5141",
+    name: "DTX Dex V3",
+    address: null,
+    symbol: "-",
+    url: "https://dtx.trade",
+    description: `Decentralized exchange on Taiko`,
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/dtx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Taiko"],
+    oracles: [],
+    module: "dtx-v3/index.js",
+    twitter: "0xDTX",
+    forkedFrom: ["Uniswap V3"],
+    parentProtocol: "parent#dtx",
+    listedAt: 1726180753,
+  },
 ];
 
 export default data3;

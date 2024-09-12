@@ -2566,5 +2566,9 @@ export default {
     "dhedge": {
         enabled: true,
         id: "190"
+    },
+    "ref-finance": {
+        "enabled": true,
+        "id": "541"
     }
 } as AdaptorsConfig

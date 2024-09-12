@@ -55271,7 +55271,7 @@ const data3: Protocol[] = [
     listedAt: 1726148577
   },
   {
-    id: "5139",
+    id: "5140",
     name: "Elixir",
     address: null,
     symbol: "-",

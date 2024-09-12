@@ -2562,5 +2562,9 @@ export default {
     "zeno": {
         enabled: true,
         id: "4642"
+    },
+    "dhedge": {
+        enabled: true,
+        id: "190"
     }
 } as AdaptorsConfig

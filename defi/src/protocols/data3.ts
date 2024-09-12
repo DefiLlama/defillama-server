@@ -15871,13 +15871,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3396",
-    name: "LogX",
+    name: "LogX V1",
     address: null,
     symbol: "-",
     url: "https://www.logx.trade",
     description: "Layer 2 Consumer Super App",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/logx.jpg`,
+    logo: `${baseIconsUrl}/logx-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -15886,6 +15886,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "logx/index.js",
     twitter: "LogX_trade",
+    parentProtocol: "parent#logx",
     forkedFrom: [],
     oracles: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/5205
     listedAt: 1702086727,
@@ -55204,6 +55205,28 @@ const data3: Protocol[] = [
     module: "microswap/index.js",
     twitter: "microswaporg",
     listedAt: 1726130843
+  },
+  {
+    id: "5137",
+    name: "LogX V2",
+    address: null,
+    symbol: "-",
+    url: "https://www.logx.trade",
+    description: "Layer 2 Consumer Super App",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/logx-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "logx-v2/index.js",
+    twitter: "LogX_trade",
+    parentProtocol: "parent#logx",
+    listedAt: 1726139764
   },
 ];
 

@@ -55161,7 +55161,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5135",
-    name: "Binance staked SOL",
+    name: "Binance Staked SOL",
     address: null,
     symbol: "-",
     assetToken: "BNSOL",

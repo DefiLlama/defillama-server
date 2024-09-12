@@ -55228,6 +55228,48 @@ const data3: Protocol[] = [
     parentProtocol: "parent#logx",
     listedAt: 1726139764
   },
+  {
+    id: "5138",
+    name: "Wolfswap",
+    address: null,
+    symbol: "-",
+    url: "https://wolfswap.app/swap",
+    description: "GameFi Aggregator DEX! Trade ANY token and get rewarded.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/wolfswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregators",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "wolfswapdotapp",
+    listedAt: 1726148577
+  },
+  {
+    id: "5139",
+    name: "Cybro",
+    address: null,
+    symbol: "-",
+    url: "https://app.cybro.io",
+    description: "CYBRO is an AI-based yield aggregator platform on the Blast blockchain",
+    chain: "Blast",
+    logo: `${baseIconsUrl}/cybro.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "cybro/index.js",
+    twitter: "Cybro_io",
+    listedAt: 1726148577
+  },
 ];
 
 export default data3;

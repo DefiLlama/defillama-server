@@ -54822,7 +54822,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5119",
-    name: "PixelSwap(PIX)",
+    name: "PixelSwap (PIX)",
     address: null,
     symbol: "-",
     url: "https://pixelswap.io/",

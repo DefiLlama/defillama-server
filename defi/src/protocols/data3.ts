@@ -55270,6 +55270,28 @@ const data3: Protocol[] = [
     twitter: "Cybro_io",
     listedAt: 1726148577
   },
+  {
+    id: "5139",
+    name: "Elixir",
+    address: null,
+    symbol: "-",
+    url: "https://www.elixir.xyz",
+    description: "Elixir is a high-throughput DPoS consensus network that enables anyone to supply liquidity directly to orderbooks. The protocol is fully composable: enabling orderbook-based DEXs to natively integrate Elixir into their core infrastructure to unlock retail liquidity for algorithmic market making.​",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/elixir.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "elixir/index.js",
+    twitter: "elixir",
+    audit_links: ["https://docs.elixir.xyz/audit"],
+    listedAt: 1726153138
+  },
 ];
 
 export default data3;

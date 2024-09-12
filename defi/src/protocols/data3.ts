@@ -32567,7 +32567,6 @@ const data3: Protocol[] = [
     forkedFrom: ["AAVE V2"],
     module: "harbor/index.js",
     twitter: "0xHarborMarket",
-    parentProtocol: "parent#oath-foundation",
     listedAt: 1707950813,
   },
   {

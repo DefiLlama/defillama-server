@@ -303,5 +303,10 @@ export default {
     "apexdefi": {
         enabled: true,
         id: "5065"
-    }
+    },
+    "dtx-v3": {
+        parentId: "DTX",
+        enabled: true,
+        id: "5141",
+    },
 } as AdaptorsConfig

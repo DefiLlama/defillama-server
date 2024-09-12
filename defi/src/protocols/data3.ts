@@ -55158,6 +55158,32 @@ const data3: Protocol[] = [
     twitter: "-",
     listedAt: 1726068418
   },
+  {
+    id: "5135",
+    name: "Binance staked SOL",
+    address: null,
+    symbol: "-",
+    assetToken: "BNSOL",
+    url: "https://www.binance.com/en/solana-staking",
+    description: "Stake SOL and get BNSOL as the tokenized representation on your staked SOL",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/binance-staked-sol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [
+      "https://github.com/solana-labs/security-audits/blob/master/spl/NeodymeStakePoolAudit-2023-11-14.pdf",
+      "https://github.com/solana-labs/security-audits/blob/master/spl/HalbornStakePoolAudit-2023-12-31.pdf"
+    ],
+    module: "bnsol/index.js",
+    twitter: "binance",
+    listedAt: 1726110072
+  },
 ];
 
 export default data3;

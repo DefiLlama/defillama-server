@@ -375,7 +375,7 @@ async function emissionProtocolHandler(req: HyperExpress.Request, res: HyperExpr
 }
 
 async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const name = req.path_parameters?.name ?? ''
+  const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
     const data = await getChainChartData(name.toLowerCase())
     return successResponse(res, data, 10 * 60);
@@ -385,7 +385,7 @@ async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Respon
 }
 
 async function getHistoricalChainTvlData(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const name = req.path_parameters?.name ?? ''
+  const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
     const data = await getChainDefaultChartData(name.toLowerCase())
     return successResponse(res, data, 10 * 60);

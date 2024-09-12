@@ -55184,6 +55184,27 @@ const data3: Protocol[] = [
     twitter: "binance",
     listedAt: 1726110072
   },
+  {
+    id: "5136",
+    name: "MicroSwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.microswap.org",
+    description: "Optimize Your Trade with Precision and Efficiency",
+    chain: "Cronos zkEVM",
+    logo: `${baseIconsUrl}/microswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Cronos zkEVM"],
+    oracles: [],
+    forkedFrom: [],
+    module: "microswap/index.js",
+    twitter: "microswaporg",
+    listedAt: 1726130843
+  },
 ];
 
 export default data3;

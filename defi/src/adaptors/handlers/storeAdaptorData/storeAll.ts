@@ -70,4 +70,4 @@ run().catch(console.error).then(() => process.exit(0))
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 90) // 45 minutes
+}, 1000 * 60 * 150) // 2h 30 minutes

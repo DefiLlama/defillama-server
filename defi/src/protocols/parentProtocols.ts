@@ -3585,7 +3585,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://gammaswap.com/",
     description: `A novel primitive for scaling DeFi liquidity through permissionless risk markets`,
     logo: `${baseIconsUrl}/gammaswaplabs.jpg`,
-    gecko_id: null,
+    gecko_id: "gammaswap",
     cmcId: null,
     chains: [],
     twitter: "GammaSwapLabs",
@@ -5434,6 +5434,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "26493",
     chains: [],
     twitter: "KTX_finance",
+  },
+  {
+    id: "parent#logx",
+    name: "LogX",
+    url: "https://www.logx.trade",
+    description: "Layer 2 Consumer Super App",
+    logo: `${baseIconsUrl}/logx.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "LogX_trade",
   },
 ];
 

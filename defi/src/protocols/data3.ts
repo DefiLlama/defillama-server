@@ -55361,6 +55361,27 @@ const data3: Protocol[] = [
     },
     listedAt: 1726215518
   },
+  {
+    id: "5144",
+    name: "Kadena Cabinet",
+    address: null,
+    symbol: "-",
+    url: "https://www.kadena.io/cabinet",
+    description: `Kadena Cabinet is a community advisory board where users can lock their $KDA to gain the ability to vote in polls on ecosystem-based proposals. Through their participation in polls, users can earn $KDA rewards.`,
+    chain: "Kadena",
+    logo: `${baseIconsUrl}/kadena-cabinet.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Kadena"],
+    oracles: [],
+    module: "cabinet/index.js",
+    twitter: "kadena_io",
+    forkedFrom: [],
+    listedAt: 1726227417
+  },
 ];
 
 export default data3;

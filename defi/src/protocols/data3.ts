@@ -34269,7 +34269,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "Yield",
     chains: ["Base","TON"],
     module: "cygnus-finance/index.js",
     twitter: "CygnusFi",

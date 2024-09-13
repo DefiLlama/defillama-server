@@ -54354,9 +54354,9 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/lombard.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "lombard-staked-btc",
     cmcId: null,
-    category: "Bridge",
+    category: "Liquid Staking",
     chains: ["Bitcoin"],
     module: "lombard/index.js",
     oracles: ["RedStone"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11458

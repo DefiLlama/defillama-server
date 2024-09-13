@@ -55406,6 +55406,30 @@ const data3: Protocol[] = [
     listedAt: 1726236262,
     parentProtocol: "parent#ipor"
   },
+  {
+    id: "5146",
+    name: "CrossCurve",
+    address: null,
+    symbol: "-",
+    url: "https://crosscurve.fi",
+    description:
+      "CrossCurve is a cross-chain trading and yield protocol built on Curve, creating a unified cross-chain liquidity market by aggregating existing Curve pools",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/crosscurve.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Fantom"],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/11616
+    forkedFrom: [],
+    module: "crosscurve/index.js",
+    twitter: "eywaprotocol",
+    audit_links: ["https://smartstate.tech/clients/eywa.html","https://hexens.io/audits#eywa"],
+    github: ["eywa-protocol"],
+    listedAt: 1726238901,
+  },
 ];
 
 export default data3;

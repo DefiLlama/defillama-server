@@ -286,6 +286,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   blast:{
     SSS: "0xdfdcdbc789b56f99b0d0692d14dbc61906d9deed",
   },
+  base: {
+    WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E"
+  }
  // merlin: {
  //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"
  // }

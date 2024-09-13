@@ -3607,6 +3607,13 @@
       "to": "coingecko#wrapped-bitcoin"
     }
   },
+  "iotaevm": {
+    "0xfbda5f676cb37624f28265a144a48b0d6e87d3b6": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
+    }
+  },
   "bouncebit": {
     "0xa9b1eb5908cfc3cdf91f9b8b3a74108598009096": {
       "decimals": "18",

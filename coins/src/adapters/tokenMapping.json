@@ -117,6 +117,11 @@
     }
   },
   "polygon": {
+    "0x172370d5cd63279efa6d502dab29171933a610af": {
+      "decimals": "18",
+      "symbol": "CRV",
+      "to": "coingecko#curve-dao-token"
+    },
     "0xe4880249745eac5f1ed9d8f7df844792d560e750": {
       "decimals": "5",
       "symbol": "USTBL",

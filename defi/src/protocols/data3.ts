@@ -5265,7 +5265,7 @@ const data3: Protocol[] = [
     module: "spark-fi/index.js",
     twitter: "sparkdotfi",
     forkedFrom: ["AAVE V3"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Chronicle"],
     audit_links: ["https://devs.spark.fi/security/security-and-audits"],
     github: ["marsfoundation"],
     listedAt: 1683144119,

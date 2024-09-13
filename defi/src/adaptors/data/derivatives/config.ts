@@ -199,10 +199,6 @@ export default {
             }
         }
     },
-    "kwenta": {
-        "enabled": false,
-        "id": "2981"
-    },
     "synthetix": {
         "enabled": true,
         "id": "115",
@@ -299,6 +295,7 @@ export default {
         }
     },
     "apex": {
+        parentId: "ApeX Protocol",
         "enabled": true,
         "id": "1878",
         cleanRecordsConfig: {
@@ -363,14 +360,14 @@ export default {
         "id": "3509"
     },
     "bmx": {
-        parentId: "Morphex",
+        parentId: "BMX",
         "enabled": true,
         "id": "3530",
         "protocolsData": {
             "derivatives": {
                 "id": "3530",
                 "enabled": true,
-            }
+            },
         }
     },
     "mango-v4": {
@@ -478,7 +475,12 @@ export default {
     "equation": {
         parentId: "Equation",
         "enabled": true,
-        "id": "3726"
+        "id": "3726",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1707782400: false
+            }
+        }
     },
     "derivio": {
         "enabled": false,
@@ -598,7 +600,7 @@ export default {
         "id": "2259",
         protocolsData: {
             "helix-perp": {
-                "id": "2259",
+                "id": "5074",
                 "enabled": true,
             }
         }
@@ -661,7 +663,12 @@ export default {
     },
     "pingu": {
         "enabled": true,
-        "id": "4102"
+        "id": "4102",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1716422400: true
+            }
+        }
     },
     "ipor": {
         "enabled": true,
@@ -670,6 +677,15 @@ export default {
             "derivatives": {
                 "id": "2147",
                 "enabled": true,
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1715126400: true,
+                1716336000: true,
+                1717718400: true,
+                1722297600: true,
+                1724457600: true
             }
         }
     },
@@ -738,11 +754,11 @@ export default {
         }
     },
     "logx": {
-        enabled: true,
+        enabled: false,
         id: "3396",
         protocolsData: {
             "derivative": {
-                enabled: true,
+                enabled: false,
                 id: "3396",
             }
         }
@@ -807,5 +823,37 @@ export default {
         parentId: "LineHub",
         enabled: true,
         id: "4842"
+    },
+    "apex-omni": {
+        parentId: "ApeX Protocol",
+        enabled: true,
+        id: "4822"
+    },
+    "edgeX": {
+        enabled: true,
+        id: "4954",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1723075200": true,
+                "1722988800": true,
+            },
+        }
+    },
+    "cyberperp": {
+        enabled: true,
+        id: "5016",
+    },
+    "bmx-freestyle": {
+        parentId: "BMX",
+        "enabled": true,
+        "id": "4903"
+    },
+    "tradoor": {
+        enabled: true,
+        id: "4738",
+    },
+    "zeno": {
+        enabled: true,
+        id: "4642"
     }
 } as AdaptorsConfig

@@ -67,18 +67,7 @@ async function run() {
 
 run().catch(console.error).then(() => process.exit(0))
 
-// catch unhandled rejections
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Dimensions runner: Unhandled Rejection at:', reason, 'promise:', promise);
-  process.exit(1)
-});
-
-process.on('uncaughtException', (error) => {
-  console.error('Dimensions runner: Uncaught Exception thrown', error);
-  process.exit(1)
-})
-
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 90) // 45 minutes
+}, 1000 * 60 * 150) // 2h 30 minutes

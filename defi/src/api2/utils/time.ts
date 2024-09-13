@@ -53,3 +53,7 @@ export function getStartOfTodayTime() {
   if (!startOfTodayTime) startOfTodayTime = timeSToUnix(dateToTimeS(new Date()))
   return startOfTodayTime
 }
+
+export function unixTimeToTimeS(unixTime: number): string {
+  return dateToTimeS(new Date(unixTime * 1000))
+}

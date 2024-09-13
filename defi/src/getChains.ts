@@ -1,10 +1,10 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
-import { getChainDisplayName, chainCoingeckoIds, isDoubleCounted, isExcludedFromChainTvl } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, isDoubleCounted } from "./utils/normalizeChain";
 import { IChain, } from "./types";
 import { importAdapter } from "./utils/imports/importAdapter";
-import { excludeProtocolInCharts } from "./utils/excludeProtocols";
+import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
 
 async function _checkModuleDoubleCounted(protocol: Protocol){
   const module = await importAdapter(protocol);

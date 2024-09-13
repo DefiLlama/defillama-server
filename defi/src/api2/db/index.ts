@@ -71,7 +71,7 @@ async function initializeTVLCacheDB({
         max: 5,
         min: 0,
         idle: 5000,
-        acquire: 30000, // increase this if your queries take a long time to run
+        acquire: 300000, // increase this if your queries take a long time to run
         evict: 1000, // how often to run eviction checks
       }
     else 

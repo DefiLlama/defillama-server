@@ -174,11 +174,11 @@ async function saveSdkInternalCache() {
   await sdk.cache.writeCache(INTERNAL_CACHE_FILE, sdk.sdkCache.retriveCache())
 }
 
+
 async function filterProtocol(adapterModule: any, protocol: any) {
   // skip running protocols that are dead/rugged or dont have tvl
   if (protocol.module === 'dummy.js' || protocol.rugged || adapterModule.deadFrom)
     return false;
-
 
   let tvlHistkeys = ['tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
   // let tvlNowKeys = ['tvl', 'staking', 'pool2']
@@ -200,9 +200,11 @@ async function filterProtocol(adapterModule: any, protocol: any) {
   // always fetch tvl for recent protocols
   if (protocol.isRecent) return true
 
-  const runLessFrequently = protocol.isEntity || protocol.isTreasury || highestRecentTvl < 200_000
 
-  if (runLessFrequently && timeDiff < 3 * HOUR)
+  const isHeavyProtocol = adapterModule.isHeavyProtocol ?? false
+  const runLessFrequently = protocol.isEntity || protocol.isTreasury || highestRecentTvl < 200_000 || isHeavyProtocol
+
+  if (runLessFrequently && timeDiff < 4 * HOUR)
     return false
 
   return true

@@ -1,3 +1,4 @@
+import { findLastIndex } from "lodash"
 import { AdaptorsConfig } from "../types"
 
 
@@ -21,6 +22,11 @@ export default {
                 "id": "2198"
             },
         },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1665446400: true
+            }
+        },
     },
     "pancakeswap": {
         "enabled": true,
@@ -43,6 +49,12 @@ export default {
             v3: {
                 "enabled": true,
                 "id": "2769"
+            }
+        },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                1660176000: false,
+                1665014400: false
             }
         },
     },
@@ -72,6 +84,7 @@ export default {
         "id": "3361",
     },
     "blasterswap": {
+        parentId: "Blasterswap",
         "enabled": true,
         "id": "4296",
     },
@@ -248,5 +261,52 @@ export default {
                 id: "4880",
             }
         }
-    }
+    },
+    "dexswap": {
+        parentId: "DexFinance",
+        enabled: true,
+        id: "3277",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722211200": true
+            }
+        }
+    },
+    "blasterswap-v3": {
+        parentId: "Blasterswap",
+        enabled: true,
+        id: "4728",
+    },
+    "splash": {
+        enabled: true,
+        id: "4712",
+    },
+    "jellyverse": {
+        enabled: true,
+        id: "4772",
+        protocolsData: {
+            "v2": {
+                enabled: true,
+                id: "4772",
+            }
+        }
+    },
+    "xtrade": {
+        enabled: true,
+        id: "5040"
+    },
+    "magicsea-lb": {
+        parentId: "MagicSea",
+        enabled: true,
+        id: "4755",
+    },
+    "apexdefi": {
+        enabled: true,
+        id: "5065"
+    },
+    "dtx-v3": {
+        parentId: "DTX",
+        enabled: true,
+        id: "5141",
+    },
 } as AdaptorsConfig

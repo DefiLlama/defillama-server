@@ -136,7 +136,7 @@ export async function craftParentProtocolInternal({
     .sort((a, b) => (b.tvl ?? []).length - (a.tvl ?? []).length)
     .reduce<ICombinedTvls>(
       (acc, curr) => {
-        const tokensExcludedFromParent = curr.tokensExcludedFromParent ?? [];
+        const tokensExcludedFromParent = curr.tokensExcludedFromParent ?? {};
         const isTvlDataHourly = isHourlyTvl(curr.tvl);
 
         // store tvl to exclude by chain
@@ -177,7 +177,7 @@ export async function craftParentProtocolInternal({
                     (acc.chainTvls[chain].tokensInUsd[prevDate][token] || 0) +
                     ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
 
-                  if (tokensExcludedFromParent.includes(token)) {
+                  if (tokensExcludedFromParent[chain]?.includes(token)) {
                     // store tvl to exclude by date
                     tvlToExcludeByDate[prevDate] =
                       (tvlToExcludeByDate[prevDate] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
@@ -194,7 +194,7 @@ export async function craftParentProtocolInternal({
               acc.chainTvls[chain].tokensInUsd[nearestDate][token] =
                 (acc.chainTvls[chain].tokensInUsd[nearestDate][token] || 0) + tokens[token];
 
-              if (tokensExcludedFromParent.includes(token)) {
+              if (tokensExcludedFromParent[chain]?.includes(token)) {
                 // store tvl to exclude by date
                 tvlToExcludeByDate[nearestDate] = (tvlToExcludeByDate[nearestDate] || 0) + tokens[token];
               }
@@ -323,7 +323,7 @@ export async function craftParentProtocolInternal({
                     acc.tokens[prevDate][token] =
                       (acc.tokens[prevDate][token] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
 
-                    if (tokensExcludedFromParent.includes(token)) {
+                    if (Object.values(tokensExcludedFromParent).flat().includes(token)) {
                       // store tvl to exclude by date
                       tvlToExcludeByDate[prevDate] =
                         (tvlToExcludeByDate[prevDate] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
@@ -339,7 +339,7 @@ export async function craftParentProtocolInternal({
 
                 acc.tokensInUsd[nearestDate][token] = (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
 
-                if (tokensExcludedFromParent.includes(token)) {
+                if (Object.values(tokensExcludedFromParent).flat().includes(token)) {
                   tvlToExcludeByDate[nearestDate] =
                     (tvlToExcludeByDate[nearestDate] || 0) + (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
                 }

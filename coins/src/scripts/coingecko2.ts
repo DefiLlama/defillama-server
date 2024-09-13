@@ -1,6 +1,5 @@
 import fetch from "node-fetch";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
-import { Connection, PublicKey } from "@solana/web3.js";
 import ddb, { batchWrite, batchGet } from "../utils/shared/dynamodb";
 import { getCoinPlatformData } from "../utils/coingeckoPlatforms";
 import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
@@ -11,9 +10,6 @@ import { batchWrite2 } from "../../coins2";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { getCache, setCache } from "../utils/cache";
 
-let solanaConnection = new Connection(
-  process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
-);
 
 function cgPK(cgId: string) {
   return `coingecko#${cgId}`;
@@ -105,7 +101,7 @@ let solanaTokens: Promise<any>;
 async function getSymbolAndDecimals(
   tokenAddress: string,
   chain: string,
-  coingeckoSymbol: string,
+  _coingeckoSymbol: string,
   cgCache: any = {},
 ) {
   if (!cgCache.symbols) cgCache.symbols = {};
@@ -125,23 +121,7 @@ async function getSymbolAndDecimals(
       (t) => t.address === tokenAddress,
     );
     if (token === undefined) {
-      const decimalsQuery = await solanaConnection.getParsedAccountInfo(
-        new PublicKey(tokenAddress),
-      );
-      const decimals = (decimalsQuery.value?.data as any)?.parsed?.info
-        ?.decimals;
-      if (typeof decimals !== "number") {
         return;
-        // throw new Error(
-        //   `Token ${chain}:${tokenAddress} not found in solana token list`,
-        // );
-      }
-
-      chainCache[tokenAddress] = {
-        symbol: coingeckoSymbol.toUpperCase(),
-        decimals: decimals,
-      };
-      return chainCache[tokenAddress];
     }
     chainCache[tokenAddress] = {
       symbol: token.symbol,

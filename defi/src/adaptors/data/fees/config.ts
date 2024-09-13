@@ -75,7 +75,12 @@ export default {
     },
     "ethereum": {
         "enabled": true,
-        "id": "1027"
+        "id": "1027",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1651449600": true
+            },
+        }
     },
     "frax-swap": {
         parentId: "Frax Finance",
@@ -322,7 +327,7 @@ export default {
     },
     "cardano": {
         "enabled": false,
-        "id": "2010"
+        "id": "2010" // wrong id, not related to klaytn
     },
     "cronos": {
         "enabled": true,
@@ -330,7 +335,7 @@ export default {
     },
     "klaytn": {
         "enabled": false,
-        "id": "4256"
+        "id": "4256" // wrong id, not related to klaytn
     },
     "dodo-fees": {
         "enabled": true,
@@ -348,7 +353,7 @@ export default {
     },
     "mixin": {
         "enabled": false,
-        "id": "2349"
+        "id": "2349" // wrond id, not linked to mixin
     },
     "polygon": {
         "enabled": true,
@@ -376,8 +381,8 @@ export default {
         "id": "643"
     },
     "boba": {
-        "enabled": false,
-        "id": "14556"
+        "enabled": false, // Error: INDEXA_DB not set
+        "id": "14556" // Boba bridge id should be 3935
     },
     "mojitoswap": {
         "enabled": true,
@@ -411,7 +416,7 @@ export default {
         "id": "398"
     },
     "nomiswap": {
-        "enabled": true,
+        "enabled": false,
         "id": "1823"
     },
     "stellaswap": {
@@ -448,6 +453,7 @@ export default {
         "id": "2169"
     },
     "stargate": {
+        parentId: "Stargate Finance",
         "enabled": true,
         "id": "1571"
     },
@@ -491,7 +497,7 @@ export default {
         "id": "2290"
     },
     "moonwell-artemis": {
-        "enabled": false,
+        "enabled": false, // ClientError: auth error: payment required for subsequent requests for this API key:
         "id": "1853"
     },
     "moonwell-apollo": {
@@ -632,7 +638,7 @@ export default {
     },
     "covo-finance": {
         parentId: "Covo Finance",
-        "enabled": false,
+        "enabled": false, // ClientError: auth error: payment required for subsequent requests for this API key:
         "id": "2525"
     },
     "nftearth": {
@@ -716,7 +722,7 @@ export default {
     },
     "ramses-exchange-v1": {
         parentId: "Ramses Exchange",
-        enabled: false,
+        enabled: false, // ClientError: auth error: payment required for subsequent requests for this API key:
         id: "2675"
     },
     "blastapi": {
@@ -936,7 +942,7 @@ export default {
         "id": "2641"
     },
     "veax": {
-        "enabled": false,
+        "enabled": false, // no file for veax in fees folder
         "id": "2928"
     },
     "maestro": {
@@ -1085,7 +1091,7 @@ export default {
         "id": "1772"
     },
     "concordex-io": {
-        "enabled": false,
+        "enabled": false, // file doesn't exist
         "id": "3172"
     },
     "vvs-finance": {
@@ -1232,7 +1238,7 @@ export default {
         "id": "324"
     },
     "meridian-trade": {
-        "enabled": false,
+        "enabled": false, // request to https://subgraph.meridianfinance.net/subgraphs/name/perpetuals-stats failed, reason: connect ECONNREFUSED 137.184.25.57:443
         "id": "3386"
     },
     "baseswap": {
@@ -1275,11 +1281,11 @@ export default {
         "id": "3454"
     },
     "sharesgram": {
-        "enabled": false,
+        "enabled": false, // only returns 0 for fees everytime
         "id": "3464"
     },
     "tigris": {
-        "enabled": false,
+        "enabled": false, // has several dates with { "error" : { "S" : "Request failed with status code 500" } }
         "id": "3129"
     },
     "aerodrome": {
@@ -1288,6 +1294,7 @@ export default {
         "id": "3450"
     },
     "apex": {
+        parentId: "ApeX Protocol",
         "enabled": true,
         "id": "1878"
     },
@@ -1479,7 +1486,7 @@ export default {
     },
     "morpho-compound": {
         parentId: "Morpho",
-        "enabled": false,
+        "enabled": false, // https://discord.com/channels/823822164956151810/1022274454451142800/1166542892999913583
         "id": "1997"
     },
     "benqi-staked-avax": {
@@ -1551,7 +1558,7 @@ export default {
     },
     "metavault-v3": {
         parentId: "Metavault",
-        "enabled": true,
+        "enabled": false,
         "id": "3750",
         protocolsData: {
             "v3": {
@@ -1775,7 +1782,6 @@ export default {
         "id": "577"
     },
     "monocerus": {
-        disabled: true,
         "enabled": true,
         "id": "3622"
     },
@@ -2297,5 +2303,272 @@ export default {
     "size-credit": {
         enabled: true,
         id: "4904"
+    },
+    "stbot": {
+        enabled: true,
+        id: "4909"
+    },
+    "zns": {
+        enabled: true,
+        id: "4920"
+    },
+    "liquid-collective": {
+        enabled: true,
+        id: "3391"
+    },
+    "juice-finance": {
+        enabled: true,
+        id: "4208"
+    },
+    "origin-dollar": {
+        enabled: true,
+        id: "427"
+    },
+    "betmode": {
+        enabled: false, // has negative fees for many dates
+        id: "4927"
+    },
+    "silo-finance": {
+        enabled: true,
+        id: "2020"
+    },
+    "cetus": {
+        enabled: true,
+        id: "2289"
+    },
+    "arrakis-v2": {
+        parentId: "Arrakis Finance",
+        enabled: true,
+        id: "2667"
+    },
+    "stargate-finance-v2": {
+        parentId: "Stargate Finance",
+        enabled: true,
+        id: "4831"
+    },
+    "superstate": {
+        enabled: true,
+        id: "4265"
+    },
+    "apex-omni": {
+        parentId: "ApeX Protocol",
+        enabled: true,
+        id: "4822"
+    },
+    "dedust": {
+        enabled: true,
+        id: "2617"
+    },
+    "orderly": {
+        "enabled": true,
+        "id": "2264"
+    },
+    "spacewhale": {
+        enabled: true,
+        id: "4930"
+    },
+    "mevx": {
+        enabled: true,
+        id: "4945"
+    },
+    "metaplex": {
+        enabled: true,
+        id: "4959"
+    },
+    "umoja": {
+        enabled: true,
+        id: "4963"
+    },
+    "goplus": {
+        enabled: true,
+        id: "4977"
+    },
+    "photon": {
+        enabled: true,
+        id: "4981"
+    },
+    "factor": {
+        parentId: "Factor",
+        enabled: true,
+        id: "3298"
+    },
+    "dexscreener": {
+        enabled: true,
+        id: "4990"
+    },
+    "kamino-lending": {
+        parentId: "Kamino",
+        enabled: true,
+        id: "3770"
+    },
+    "ston": {
+        enabled: true,
+        id: "2337"
+    },
+    "moonwell": {
+        enabled: true,
+        id: "1853"
+    },
+    "spiko": {
+        enabled: true,
+        id: "4980"
+    },
+    "helio": {
+        enabled: true,
+        id: "5007"
+    },
+    "sunpump": {
+        parentId: "SUN.io",
+        enabled: true,
+        id: "4979"
+    },
+    "dextools": {
+        enabled: true,
+        id: "5006"
+    },
+    "manifold": {
+        enabled: true,
+        id: "5005"
+    },
+    "circle": {
+        enabled: true,
+        id: "5008"
+    },
+    "tether": {
+        enabled: true,
+        id: "5009"
+    },
+    "thegraph": {
+        enabled: true,
+        id: "5010"
+    },
+    "demented-games": {
+        enabled: true,
+        id: "5013"
+    },
+    "kyberswap-aggregator": {
+        parentId: "KyberSwap",
+        id: "3982",
+        enabled: true
+    },
+    "raybot": {
+        enabled: true,
+        id: "5022"
+    },
+    "illuvium": {
+        enabled: true,
+        id: "447"
+    },
+    "4cast": {
+        enabled: true,
+        id: "5027"
+    },
+    "bellumexchange": {
+        enabled: true,
+        id: "5029"
+    },
+    "ribbon": {
+        parentId: "Ribbon Finance",
+        enabled: true,
+        id: "281"
+    },
+    "velo": {
+        enabled: true,
+        id: "4989"
+    },
+    "openeden-t-bills": {
+        enabled: true,
+        id: "3057"
+    },
+    "bcraft": {
+        enabled: true,
+        id: "5036"
+    },
+    "paxos-gold": {
+        enabled: true,
+        id: "4862"
+    },
+    "chainflip": {
+        enabled: true,
+        id: "3853"
+    },
+    "franklin-templeton": {
+        enabled: true,
+        id: "4878"
+    },
+    "hashnote-usyc": {
+        enabled: true,
+        id: "3698"
+    },
+    "farcaster": {
+        enabled: true,
+        id: "5049"
+    },
+    "lista-slisbnb": {
+        parentId: "Lista DAO",
+        enabled: true,
+        id: "3354"
+    },
+    "lista-lisusd": {
+        parentId: "Lista DAO",
+        enabled: true,
+        id: "2038"
+    },
+    "ethervista": {
+        enabled: true,
+        id: "5092"
+    },
+    "echelon": {
+        enabled: true,
+        id: "4367"
+    },
+    "torch": {
+        enabled: true,
+        id: "5096"
+    },
+    "sunswap-v1": {
+        parentId: "SUN.io",
+        enabled: true,
+        id: "690"
+    },
+    "sunswap-v2": {
+        parentId: "SUN.io",
+        enabled: true,
+        id: "3005"
+    },
+    "sunswap-v3": {
+        parentId: "SUN.io",
+        enabled: true,
+        id: "4031"
+    },
+    "fwx-dex": {
+        parentId: "FWX",
+        enabled: true,
+        id: "4962"
+    },
+    "koi-finance-cl": {
+        parentId: "Koi Finance",
+        enabled: true,
+        id: "4678"
+    },
+    "superchain": {
+        enabled: true,
+        id: "5111"
+    },
+    "gaspump": {
+        enabled: true,
+        id: "5094"
+    },
+    "zeno": {
+        enabled: true,
+        id: "4642"
+    },
+    "dhedge": {
+        enabled: true,
+        id: "190"
+    },
+    "ref-finance": {
+        "enabled": true,
+        "id": "541"
     }
 } as AdaptorsConfig

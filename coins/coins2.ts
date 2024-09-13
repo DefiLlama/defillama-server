@@ -157,24 +157,46 @@ export async function translateItems(
 
   return remapped;
 }
+let _redis: Redis;
+
+export async function getRedisConnection() {
+  if (_redis) return _redis;
+  // _redis is a promise that resolves to a redis connection because we want to wait for the auth to be generated
+  (_redis as any) = new Promise(async (resolve, reject) => {
+    try {
+      if (!auth) await generateAuth();
+      _redis = new Redis({
+        port: 6379,
+        host: auth[1],
+        password: auth[2],
+        connectTimeout: 10000,
+      });
+      resolve(_redis);
+    } catch (e) {
+      reject(e);
+    }
+  })
+  return _redis;
+}
+
+process.on("exit", async () => {
+  if (_redis) {
+    const redis = await _redis;
+    redis.quit();
+  }
+})
+
 export async function queryRedis(
   values: CoinRead[],
   error: number = margin,
 ): Promise<CoinDict> {
   if (values.length == 0) return {};
-  if (!auth) await generateAuth();
   const keys: string[] = values.map((v: CoinRead) => v.key);
   // console.log(`${values.length} queried`);
 
-  const redis = new Redis({
-    port: 6379,
-    host: auth[1],
-    password: auth[2],
-    connectTimeout: 10000,
-  });
+  const redis = await getRedisConnection()
   let res = await redis.mget(keys);
   // console.log("mget finished");
-  redis.quit();
   const jsonValues: { [key: string]: Coin } = {};
   const now = getCurrentUnixTimestamp();
 
@@ -507,15 +529,8 @@ export async function writeToRedis(
     );
   }
   try {
-    if (!auth) await generateAuth();
-    const redis = new Redis({
-      port: 6379,
-      host: auth[1],
-      password: auth[2],
-      connectTimeout: 10000,
-    });
+    const redis = await getRedisConnection()
     await redis.mset(strings);
-    redis.quit();
   } catch (e) {
     await sendMessage(
       `write to coins redis is fugged with ${e}`,

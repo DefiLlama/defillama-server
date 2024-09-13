@@ -174,6 +174,79 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     address: "0x7223442cad8e9ca474fc40109ab981608f8c4273",
   },
+  USTB: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestAnswer() external view returns (uint256)",
+        target: "0x289B5036cd942e619E1Ee48670F98d214E745AAC",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0x43415eB6ff9DB7E26A15b704e7A3eDCe97d31C4e",
+  },
+  ETHRDNTUNIV3: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getLpTokenPrice() external view returns (uint256)",
+        target: "0x8096240D997a25f3d11a2354659A16eA3886fcFF",
+      });
+      return rate / 1e8;
+    },
+    chain: "base",
+    underlying: "0x4200000000000000000000000000000000000006",
+    address: "0x8A76639FE8e390Ed16eA88f87BEB46d6A5328254",
+  },
+  USTBL: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getLatestPrice() external view returns (uint256)",
+        target: "0x021289588cd81dC1AC87ea91e91607eEF68303F5",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0xe4880249745eAc5F1eD9d8F7DF844792D560e750",
+  },
+  EUTBL: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getLatestPrice() external view returns (uint256)",
+        target: "0x29503f31B73F0734455942Eb888E13acA1588a4e",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0x1abaea1f7c830bd89acc67ec4af516284b1bc33c",
+    address: "0xa0769f7A8fC65e47dE93797b4e21C073c117Fc80",
+  },
+  aETH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAETH(uint256) external view returns (uint256)",
+        target: "0x25a01dBde45cc5Bb7071EB3c3b2F983ea923bec5",
+        params: "1000000",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    address: "0xFC87753Df5Ef5C368b5FBA8D4C5043b77e8C5b39",
+  },
+  iwstETH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function exchangeRateStored() external view returns (uint256)",
+        target: "0x4B3488123649E8A671097071A02DA8537fE09A16",
+      });
+      return rate / 1e18;
+    },
+    chain: "optimism",
+    underlying: "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb",
+    address: "0x4B3488123649E8A671097071A02DA8537fE09A16",
+  },
 };
 
 export async function derivs(timestamp: number) {

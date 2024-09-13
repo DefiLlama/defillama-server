@@ -4,10 +4,10 @@ import { AdaptorsConfig } from "../types"
 
 export default {
     "lyra": {
-        parentId: "Lyra",
+        parentId: "Derive",
         "enabled": true,
         "startFrom": 1656460800,
-        "id": "503"
+        "id": "5060"
     },
     "premia": {
         "enabled": true,
@@ -45,7 +45,7 @@ export default {
     },
     "aevo": {
         "enabled": true,
-        "id": "2797"
+        "id": "5059"
     },
     "typus": {
         "enabled": true,
@@ -86,7 +86,7 @@ export default {
         }
     },
     "lyra-v2": {
-        parentId: "Lyra",
+        parentId: "Derive",
         "enabled": true,
         "id": "3923"
     },
@@ -109,5 +109,22 @@ export default {
     "jaspervault": {
         enabled: true,
         id: "4630"
+    },
+    "umoja": {
+        enabled: true,
+        id: "4963"
+    },
+    "pancakeswap-options": {
+        parentId: "PancakeSwap",
+        enabled: true,
+        id: "4967"
+    },
+    "arrow-markets": {
+        enabled: true,
+        id: "4957"
+    },
+    "ton-hedge": {
+        enabled: true,
+        id: "4950"
     }
 } as AdaptorsConfig

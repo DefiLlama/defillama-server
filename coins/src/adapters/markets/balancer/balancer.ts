@@ -15,27 +15,15 @@ import { DbTokenInfos } from "../../utils/dbInterfaces";
 const vault: string = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
 const nullAddress: string = "0x0000000000000000000000000000000000000000";
 const subgraphNames: { [chain: string]: string } = {
-  ethereum: sdk.graph.modifyEndpoint(
-    "C4ayEZP2yTXRAB8vSaTrgN4m9anTe9Mdm2ViyiAuV9TV",
-  ),
-  arbitrum: sdk.graph.modifyEndpoint(
-    "itkjv6Vdh22HtNEPQuk5c9M3T7VeGLQtXxcH8rFi1vc",
-  ),
-  polygon: sdk.graph.modifyEndpoint(
-    "78nZMyM9yD77KG6pFaYap31kJvj8eUWLEntbiVzh8ZKN",
-  ),
-  optimism: sdk.graph.modifyEndpoint(
-    "FsmdxmvBJLGjUQPxKMRtcWKzuCNpomKuMTbSbtRtggZ7",
-  ),
-  avax: sdk.graph.modifyEndpoint(
-    "7asfmtQA1KYu6CP7YVm5kv4bGxVyfAHEiptt2HMFgkHu",
-  ),
-  xdai: sdk.graph.modifyEndpoint(
-    "EJezH1Cp31QkKPaBDerhVPRWsKVZLrDfzjrLqpmv6cGg",
-  ),
-  polygon_zkevm:
-    "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
-  base: "https://api.studio.thegraph.com/query/24660/balancer-base-v2/version/latest",
+  ethereum: sdk.graph.modifyEndpoint("C4ayEZP2yTXRAB8vSaTrgN4m9anTe9Mdm2ViyiAuV9TV",),
+  xdai: sdk.graph.modifyEndpoint("EJezH1Cp31QkKPaBDerhVPRWsKVZLrDfzjrLqpmv6cGg",),
+  arbitrum: sdk.graph.modifyEndpoint("itkjv6Vdh22HtNEPQuk5c9M3T7VeGLQtXxcH8rFi1vc",),
+  polygon: sdk.graph.modifyEndpoint("78nZMyM9yD77KG6pFaYap31kJvj8eUWLEntbiVzh8ZKN",),
+  optimism: sdk.graph.modifyEndpoint("FsmdxmvBJLGjUQPxKMRtcWKzuCNpomKuMTbSbtRtggZ7",),
+  avax: sdk.graph.modifyEndpoint("7asfmtQA1KYu6CP7YVm5kv4bGxVyfAHEiptt2HMFgkHu",),
+  base: sdk.graph.modifyEndpoint("98cQDy6tufTJtshDCuhh9z2kWXsQWBHVh2bqnLHsGAeS",),
+  polygon_zkevm: "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
+  fraxtal: 'https://api.goldsky.com/api/public/project_clwhu1vopoigi01wmbn514m1z/subgraphs/balancer-fraxtal-v2/1.0.0/gn',
 };
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
@@ -65,14 +53,14 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
   const subgraph: string = subgraphNames[chain] || chain;
 
   for (let i = 0; i < 20; i++) {
-    const lpQuery = gql`
+    const lpQuery = `
     query {
       pools (first: 1000, orderBy: totalLiquidity, orderDirection: desc,
-          where: {${
-            i == 0 ? `` : `totalLiquidity_lt: ${reservereThreshold.toFixed(4)}`
-          } ${
-      timestamp == 0 ? `` : `createTime_lt: ${timestamp.toString()}`
-    }}) {
+          where: {
+          ${i == 0 ? `` : `totalLiquidity_lt: ${reservereThreshold.toFixed(4)}`} 
+          totalLiquidity_gt: 10000
+          ${timestamp == 0 ? `` : `createTime_lt: ${timestamp.toString()}`}
+          }) {
         id
         totalLiquidity
       }
@@ -80,13 +68,10 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
 
     const res: any = await request(subgraph, lpQuery);
     const result: GqlResult[] = res.pools;
-
-    if (result.length < 1000) i = 20;
-    if (result.length == 0) return addresses;
-    reservereThreshold = Number(
-      result[Math.max(result.length - 1, 0)].totalLiquidity,
-    );
     addresses.push(...result.map((p: any) => p.id));
+
+    if (result.length < 1000) return addresses;
+    reservereThreshold = Number(result[Math.max(result.length - 1, 0)].totalLiquidity);
   }
   return addresses;
 }

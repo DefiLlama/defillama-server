@@ -7,8 +7,7 @@ import {
   chainCoingeckoIds,
   transformNewChainName,
   extraSections,
-  isDoubleCounted,
-  isExcludedFromChainTvl,
+  isDoubleCounted
 } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { constants, brotliCompress } from "zlib";
@@ -16,7 +15,7 @@ import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";
 import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
 import { writeToPGCache, PG_CACHE_KEYS, storeRouteData } from "./api2/cache/file-cache";
-import { excludeProtocolInCharts } from "./utils/excludeProtocols";
+import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
   const timestamp = getClosestDayStartTimestamp(timestampRaw)

@@ -2,11 +2,11 @@ import { AdaptorsConfig } from "../types";
 
 export default {
   "logx": {
-    enabled: true,
+    enabled: false,
     id: "3396",
     protocolsData: {
       "logx-aggregator": {
-        enabled: true,
+        enabled: false,
         id: "3396",
       }
     }
@@ -16,7 +16,7 @@ export default {
       "id": "2254",
       "protocolsData": {
           "mux-protocol-agge": {
-              "id": "2254",
+              "id": "5054",
               "enabled": true,
           }
       },
@@ -25,15 +25,9 @@ export default {
     "id":"4447",
     enabled: true,
   },
-  "unidex": {
+  "unidex-agg-perp": {
     "enabled": true,
-    "id": "1833",
-    protocolsData: {
-        "unidex-agg-derivative": {
-            "enabled": true,
-            "id": "1833"
-        }
-    }
+    "id": "5012"
   },
   "vooi": {
     "enabled": true,
@@ -51,6 +45,20 @@ export default {
   },
   "bitoro": {
     "enabled": true,
-    "id": "4841"
+    "id": "4841",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+          "1724198400": true,
+          "1724284800": true,
+          "1724371200": true,
+          "1724457600": true,
+          "1724544000": true,
+          "1724630400": true,
+      }
+    }
+  },
+  "kwenta": {
+    "enabled": true,
+    "id": "2981"
   }
 } as AdaptorsConfig;

@@ -31,6 +31,11 @@ export default {
   "plexus": {
     enabled: true,
     id: "2740",
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1706313600: false
+        }
+    }
   },
   "avnu": {
     enabled: true,
@@ -59,7 +64,7 @@ export default {
     id: "3645",
     protocolsData: {
       aggregator: {
-        id: "3645",
+        id: "5064",
         enabled: true,
       },
     },
@@ -87,6 +92,12 @@ export default {
   "zrx": {
     enabled: true,
     id: "4628",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        1674172800: true,
+        1680739200: true
+      }
+  }
   },
   "cowswap": {
     enabled: true,
@@ -116,8 +127,13 @@ export default {
     protocolsData: {
       "dodo-agg": {
         enabled: true,
-        id: "146",
+        id: "5062",
       }
+    },
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1719360000: false
+        }
     }
   },
   "paraswap": {
@@ -129,7 +145,7 @@ export default {
     id: "405",
     "protocolsData": {
       "tokenlon-agg": {
-        id: "405",
+        id: "5063",
         enabled: true,
       }
     }
@@ -146,6 +162,11 @@ export default {
   "conveyor": {
     enabled: true,
     id: "3980",
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1722729600: false
+        }
+    }
   },
   // "unidex": {
   //   "enabled": true,
@@ -229,6 +250,11 @@ export default {
   "hallswap": {
     enabled: true,
     id: "4824",
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1724457600: true
+        }
+    }
   },
   "flowx-aggregator": {
     parentId: "FlowX Finance",
@@ -242,12 +268,47 @@ export default {
     protocolsData: {
         "agg-dex": {
             enabled: true,
-            id: "119"
+            id: "5061"
         }
     }
   },
   "7k-aggregator": {
     enabled: true,
     id: "4868",
+  },
+  "akka": {
+    enabled: true,
+    id: "4926",
+  },
+  "cetus-aggregator": {
+      parentId: "Cetus",
+      "enabled": true,
+      "id": "4958",
+      cleanRecordsConfig: {
+          genuineSpikes: {
+            1724803200: true
+          }
+      }
+  },
+  "chainspot": {
+    enabled: true,
+    id: "5028",
+  },
+  "scallop": {
+    parentId: "Scallop",
+    enabled: true,
+    id: "5087",
+  },
+  "lumia": {
+    enabled: true,
+    id: "5098",
+  },
+  "rainbow-swap": {
+    enabled: true,
+    id: "5110",
+  },
+  "wolfswap": {
+    enabled: true,
+    id: "5138",
   }
 } as AdaptorsConfig;

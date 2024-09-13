@@ -3323,6 +3323,15 @@ export const chainCoingeckoIds = {
     twitter: "PolynomialFi",
     url: "https://www.polynomial.fi/"
   },
+  "Electroneum": {
+    geckoId: "electroneum",
+    symbol: "ETN",
+    cmcId: "2137",
+    categories: ["EVM"],
+    chainId: 52014,
+    twitter: "electroneum",
+    url: "https://electroneum.com/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4045,6 +4054,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Zircuit"
     case "polynomial":
       return "Polynomial"
+    case "etn":
+      return "Electroneum"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

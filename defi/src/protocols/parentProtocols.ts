@@ -5470,6 +5470,17 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "ipor.js",
     github: ["IPOR-Labs"],
   },
+  {
+    id: "parent#electroswap",
+    name: "ElectroSwap",
+    url: "https://electroswap.io/",
+    description: "Decentralized Trading On The Electroneum Network",
+    logo: `${baseIconsUrl}/electroswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ElectroSwap_Dex",
+  },
 ];
 
 export default parentProtocols;

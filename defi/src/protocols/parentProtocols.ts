@@ -5457,6 +5457,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Lombard_Finance",
   },
+  {
+    id: "parent#ipor",
+    name: "IPOR Labs",
+    url: "https://www.ipor.io",
+    description: "IPOR refers to a set of protocols, smart contracts, and software that forms a set of DApps for DeFi focused on interest rate derivatives",
+    logo: `${baseIconsUrl}/ipor.jpg`,
+    gecko_id: "ipor",
+    cmcId: "22880",
+    chains: [],
+    twitter: "ipor_io",
+    treasury: "ipor.js",
+    github: ["IPOR-Labs"],
+  },
 ];
 
 export default parentProtocols;

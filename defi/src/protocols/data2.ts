@@ -17813,7 +17813,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/ipor.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "ipor",
+    gecko_id: null,
     cmcId: null,
     category: "Derivatives",
     chains: ["Ethereum"],
@@ -17821,10 +17821,9 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "ipor/index.js",
     twitter: "ipor_io",
-    treasury: "ipor.js",
-    audit_links: ["https://drive.google.com/file/d/1t5oRH8Cxux19Trl75qTEF3kxIpX717H7/view?usp=sharing"],
+    audit_links: ["https://docs.ipor.io/audits"],
     listedAt: 1664876804,
-    github: ["IPOR-Labs"],
+    parentProtocol: "parent#ipor"
   },
   {
     id: "2148",

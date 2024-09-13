@@ -55382,6 +55382,30 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1726227417
   },
+  {
+    id: "5145",
+    name: "IPOR Fusion",
+    address: "0x1e4746dc744503b53b4a082cb3607b169a289090",
+    symbol: "IPOR",
+    url: "https://www.ipor.io",
+    description:
+      "IPOR Fusion is a meta DeFi aggregation, execution & intelligence engine that introduces a unified liquidity framework for on-chain asset management. Fusion combines various aggregation and routing protocols into a single smart contract layer, automating asset management and maximizing returns across yield sources. Imagine intelligence-driven execution for looping, carry trades, arbitrage, leveraged farming, and passive lending at your fingertips",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ipor-fusion.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Arbitrum"],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/11616
+    forkedFrom: [],
+    module: "ipor-fusion/index.js",
+    twitter: "ipor_io",
+    audit_links: ["https://docs.ipor.io/audits"],
+    listedAt: 1726236262,
+    parentProtocol: "parent#ipor"
+  },
 ];
 
 export default data3;

@@ -1571,6 +1571,16 @@
     }
   },
   "zeta": {
+    "0xd10932eb3616a937bd4a2652c87e9febbace53e5": {
+      "decimals": "18",
+      "symbol": "UTIL.BSC",
+      "to": "coingecko#ultiverse"
+    },
+    "0xe573a6e11f8506620f123dbf930222163d46bcb6": {
+      "decimals": "18",
+      "symbol": "ULTI.ETH",
+      "to": "coingecko#ultiverse"
+    },
     "0x5F0b1a82749cb4E2278EC87F8BF6B618dC71a8bf": {
       "decimals": "18",
       "symbol": "wzeta",

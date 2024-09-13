@@ -5446,6 +5446,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LogX_trade",
   },
+  {
+    id: "parent#lombard-finance",
+    name: "Lombard Finance",
+    url: "https://www.lombard.finance",
+    description: "Lombard is transforming Bitcoin's utility from a store of value into a productive financial tool through a security-first liquid Bitcoin primitive—LBTC. LBTC is a liquid, yield-bearing, natively cross-chain, and 1:1 backed by bitcoin.",
+    logo: `${baseIconsUrl}/lombard-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Lombard_Finance",
+  },
 ];
 
 export default parentProtocols;

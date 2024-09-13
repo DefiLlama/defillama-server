@@ -55356,6 +55356,9 @@ const data3: Protocol[] = [
     twitter: "Lombard_Finance",
     forkedFrom: [],
     parentProtocol: "parent#lombard-finance",
+    tokensExcludedFromParent: {
+      Ethereum: ["LBTC"],
+    },
     listedAt: 1726215518
   },
 ];

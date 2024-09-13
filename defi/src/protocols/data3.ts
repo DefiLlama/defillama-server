@@ -55439,7 +55439,7 @@ const data3: Protocol[] = [
     description:
       "The first DEX on the ETN-SC with built-in liquidity locking. Home of the $BOLT token",
     chain: "Electroneum",
-    logo: `${baseIconsUrl}/electroneum-v2.png`,
+    logo: `${baseIconsUrl}/electroswap-v2.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -55462,7 +55462,7 @@ const data3: Protocol[] = [
     description:
       "The first DEX on the ETN-SC with built-in liquidity locking. Home of the $BOLT token",
     chain: "Electroneum",
-    logo: `${baseIconsUrl}/electroneum-v3.png`,
+    logo: `${baseIconsUrl}/electroswap-v3.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

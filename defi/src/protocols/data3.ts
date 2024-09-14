@@ -55435,7 +55435,7 @@ const data3: Protocol[] = [
     name: "ElectroSwap V2",
     address: "etn:0x043faa1b5c5fc9a7dc35171f290c29ecde0ccff1",
     symbol: "BOLT",
-    url: "https://electroswap.io/",
+    url: "https://app.electroswap.io/swap",
     description:
       "The first DEX on the ETN-SC with built-in liquidity locking. Home of the $BOLT token",
     chain: "Electroneum",
@@ -55458,7 +55458,7 @@ const data3: Protocol[] = [
     name: "ElectroSwap V3",
     address: "etn:0x043faa1b5c5fc9a7dc35171f290c29ecde0ccff1",
     symbol: "BOLT",
-    url: "https://electroswap.io/",
+    url: "https://app.electroswap.io/swap",
     description:
       "The first DEX on the ETN-SC with built-in liquidity locking. Home of the $BOLT token",
     chain: "Electroneum",

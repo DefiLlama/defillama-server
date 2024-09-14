@@ -17803,7 +17803,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2147",
-    name: "IPOR",
+    name: "IPOR Derivatives",
     address: "0x1e4746dc744503b53b4a082cb3607b169a289090",
     symbol: "IPOR",
     url: "https://www.ipor.io",

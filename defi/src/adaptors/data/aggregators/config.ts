@@ -310,5 +310,9 @@ export default {
   "wolfswap": {
     enabled: true,
     id: "5138",
+  },
+  "swap-coffee": {
+    enabled: true,
+    id: "5150",
   }
 } as AdaptorsConfig;

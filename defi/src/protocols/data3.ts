@@ -55499,6 +55499,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1726335675,
   },
+  {
+    id: "5150",
+    name: "swap.coffee",
+    address: null,
+    symbol: "-",
+    url: "https://swap.coffee/dex",
+    description:
+      "DEX aggregator in the TON ecosystem",
+    chain: "TON",
+    logo: `${baseIconsUrl}/swap.coffee.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["TON"],
+    module: "dummy.js",
+    twitter: "swap_coffee_ton",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: [],
+    listedAt: 1726337017
+  },
 ];
 
 export default data3;

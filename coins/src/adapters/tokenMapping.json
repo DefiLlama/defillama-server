@@ -1098,7 +1098,7 @@
     }
   },
   "ton": {
-    "EQCvaf0JMrv6BOvPpAgee08uQMuRpUd__fhA7Nm8twzvbE": {
+    "EQCvaf0JMrv6BOvPpAgee08uQM_uRpUd__fhA7Nm8twzvbE_": {
       "decimals": "9",
       "symbol": "UP",
       "to": "coingecko#up"

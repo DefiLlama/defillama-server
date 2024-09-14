@@ -5481,6 +5481,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ElectroSwap_Dex",
   },
+  {
+    id: "parent#cygnus-finance",
+    name: "Cygnus",
+    url: "https://cygnus.finance/",
+    description: "The First Modular Real Yield Layer.Provides services for any system that requires its own distributed validation, combining non-EVM systems with EVM ecosystem",
+    logo: `${baseIconsUrl}/cygnus-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["arks-labs"],
+    stablecoins: ["cygnus-finance-global-usd"],
+    twitter: "CygnusFi",
+  },
 ];
 
 export default parentProtocols;

@@ -34278,8 +34278,7 @@ const data3: Protocol[] = [
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Cygnus-v1.0.pdf",
     ],
-    github: ["arks-labs"],
-    stablecoins: ["cygnus-finance-global-usd"],
+    parentProtocol: "parent#cygnus-finance",
     listedAt: 1709294898,
   },
   {
@@ -55475,6 +55474,30 @@ const data3: Protocol[] = [
     twitter: "ElectroSwap_Dex",
     parentProtocol: "parent#electroswap",
     listedAt: 1726266687,
+  },
+  {
+    id: "5149",
+    name: "Cygnus clTON",
+    address: null,
+    symbol: "-",
+    url: "https://cygnus.finance",
+    description:
+      "TON staking service on TON",
+    chain: "TON",
+    logo: `${baseIconsUrl}/cygnus-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["TON"],
+    module: "cygnus-fi-ton/index.js",
+    twitter: "CygnusFi",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: [],
+    parentProtocol: "parent#cygnus-finance",
+    listedAt: 1726335675,
   },
 ];
 

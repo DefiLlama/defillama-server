@@ -1,16 +1,16 @@
 import { AdaptorsConfig } from "../types";
 
 export default {
-  "logx": {
-    enabled: false,
-    id: "3396",
-    protocolsData: {
-      "logx-aggregator": {
-        enabled: false,
-        id: "3396",
-      }
-    }
-  },
+  // "logx": {
+  //   enabled: false,
+  //   id: "3396",
+  //   protocolsData: {
+  //     "logx-aggregator": {
+  //       enabled: false,
+  //       id: "3396",
+  //     }
+  //   }
+  // },
   "mux-protocol": {
       "enabled": true,
       "id": "2254",

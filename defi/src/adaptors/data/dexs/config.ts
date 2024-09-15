@@ -3026,7 +3026,7 @@ export default {
         id: "5129"
     },
     "pear-protocol": {
-        enabled: true,
+        enabled: false,
         id: "5151"
     }
 } as AdaptorsConfig

@@ -3024,5 +3024,9 @@ export default {
     "predict-fun": {
         enabled: true,
         id: "5129"
+    },
+    "pear-protocol": {
+        enabled: true,
+        id: "5151"
     }
 } as AdaptorsConfig

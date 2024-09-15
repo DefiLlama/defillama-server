@@ -2575,5 +2575,9 @@ export default {
         parentId: "BMX",
         "enabled": true,
         "id": "4903"
+    },
+    "pear-protocol": {
+        enabled: true,
+        id: "5151"
     }
 } as AdaptorsConfig

@@ -2570,5 +2570,10 @@ export default {
     "ref-finance": {
         "enabled": true,
         "id": "541"
+    },
+    "bmx-freestyle": {
+        parentId: "BMX",
+        "enabled": true,
+        "id": "4903"
     }
 } as AdaptorsConfig

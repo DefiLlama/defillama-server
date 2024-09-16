@@ -2041,5 +2041,9 @@ export default {
     },
     "pear-protocol": {
         id: "5151"
+    },
+    "solv-finance": {
+        parentId: "Solv Protocol",
+        id: "4620"
     }
 } as AdaptorsConfig

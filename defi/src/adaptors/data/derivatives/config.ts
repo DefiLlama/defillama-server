@@ -711,5 +711,9 @@ export default {
     },
     "zeno": {
         id: "4642"
+    },
+    "pear-protocol": {
+        enabled: true,
+        id: "5151"
     }
 } as AdaptorsConfig

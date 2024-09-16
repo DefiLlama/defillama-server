@@ -55416,7 +55416,7 @@ const data3: Protocol[] = [
     description:
       "CrossCurve is a cross-chain trading and yield protocol built on Curve, creating a unified cross-chain liquidity market by aggregating existing Curve pools",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/crosscurve.png`,
+    logo: `${baseIconsUrl}/crosscurve-(by-eywa).png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

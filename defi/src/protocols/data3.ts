@@ -55591,6 +55591,29 @@ const data3: Protocol[] = [
     github: ["Typus-Lab"],
     listedAt: 1726474986
   },
+  {
+    id: "5154",
+    name: "Sperax Demeter V2",
+    address: "arbitrum:0x5575552988a3a80504bbaeb1311674fcfd40ad4b",
+    symbol: "SPA",
+    url: "https://demeter.sperax.io",
+    description:
+      "Farming-as-a-service infrastructure on UniswapV3. Demeter protocol is a new protocol for DAOs to launch and manage decentralized exchange liquidity - without needing to know how to code",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/sperax-demeter-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Arbitrum"],
+    module: "sperax-demeter-v2/index.js",
+    twitter: "SperaxUSD",
+    forkedFrom: [],
+    oracles: [], 
+    parentProtocol: "parent#sperax",
+    listedAt: 1726486266
+  },
 ];
 
 export default data3;

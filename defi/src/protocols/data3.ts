@@ -55409,7 +55409,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5146",
-    name: "CrossCurve",
+    name: "CrossCurve (by EYWA)",
     address: null,
     symbol: "-",
     url: "https://crosscurve.fi",

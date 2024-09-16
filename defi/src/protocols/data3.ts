@@ -55585,10 +55585,9 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Taiko"],
     module: "takoTako/index.js",
-    twitter: "TypusFinance",
+    twitter: null,
     forkedFrom: [],
-    oracles: [], 
-    github: ["Typus-Lab"],
+    oracles: ["API3"], // https://www.takotako.xyz/markets
     listedAt: 1726474986
   },
   {

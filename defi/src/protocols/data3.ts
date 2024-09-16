@@ -52708,7 +52708,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5024",
-    name: "Double 2 Win",
+    name: "Double",
     address: null,
     symbol: "-",
     url: "https://www.double2win.xyz",
@@ -52720,7 +52720,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquidity manager",
+    category: "Services",
     chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: [],

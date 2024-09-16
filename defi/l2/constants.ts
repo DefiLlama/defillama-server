@@ -86,6 +86,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "126": "loopring",
   "1878": "apex",
   "344": "zkswap",
+  "5130": "polynomial"
 };
 
 export const allChainKeys: string[] = [

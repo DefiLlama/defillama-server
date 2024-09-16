@@ -494,6 +494,11 @@
     }
   },
   "arbitrum": {
+    "0x0C4681e6C0235179ec3D4F4fc4DF3d14FDD96017": {
+      "decimals": "18",
+      "symbol": "RDNT ",
+      "to": "coingecko#radiant-capital"
+    },
     "0xf1617882a71467534d14eee865922de1395c9e89": {
       "decimals": "18",
       "symbol": "saETH ",

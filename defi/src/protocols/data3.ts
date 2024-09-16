@@ -55543,6 +55543,52 @@ const data3: Protocol[] = [
     oracles: [], 
     audit_links: ["https://docs.pearprotocol.io/smart-contracts/audits-and-security"],
   },
+  {
+    id: "5152",
+    name: "Typus Safu",
+    address: null,
+    symbol: "-",
+    url: "https://typus.finance/safu",
+    description:
+      "Typus SAFU is the first principal-protected structured product on the Sui Blockchain. It offers safe yields with 99.99% principal protection, zero fees for both bull and bear strategies, and potential upside through options. This product is designed to securely maximize your crypto returns.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/typus-safu.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Sui"],
+    module: "typus-safu/index.js",
+    twitter: "TypusFinance",
+    forkedFrom: [],
+    oracles: [], 
+    github: ["Typus-Lab"],
+    listedAt: 1726474786
+  },
+  {
+    id: "5153",
+    name: "Tako Tako",
+    address: null,
+    symbol: "-",
+    url: "https://www.takotako.xyz",
+    description:
+      "Lending project on Taiko",
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/tako-tako.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Taiko"],
+    module: "takoTako/index.js",
+    twitter: "TypusFinance",
+    forkedFrom: [],
+    oracles: [], 
+    github: ["Typus-Lab"],
+    listedAt: 1726474986
+  },
 ];
 
 export default data3;

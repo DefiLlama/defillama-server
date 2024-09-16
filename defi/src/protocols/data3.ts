@@ -15874,8 +15874,8 @@ const data3: Protocol[] = [
     name: "LogX V1",
     address: null,
     symbol: "-",
-    url: "https://www.logx.trade",
-    description: "Layer 2 Consumer Super App",
+    url: "https://logx.network/",
+    description: "DeFi Superapp. Trade exotic perps, leveraged prediction markets and memecoins.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/logx-v1.jpg`,
     audits: "0",
@@ -28339,6 +28339,7 @@ const data3: Protocol[] = [
     ],
     listedAt: 1703183604,
   },
+  /*
   {
     id: "3949",
     name: "ckETH",
@@ -28362,6 +28363,7 @@ const data3: Protocol[] = [
     twitter: "dfinity",
     listedAt: 1703183625,
   },
+  */
   {
     id: "3950",
     name: "Parcl V3",
@@ -55210,8 +55212,8 @@ const data3: Protocol[] = [
     name: "LogX V2",
     address: null,
     symbol: "-",
-    url: "https://www.logx.trade",
-    description: "Layer 2 Consumer Super App",
+    url: "https://logx.network/",
+    description: "DeFi Superapp. Trade exotic perps, leveraged prediction markets and memecoins.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/logx-v2.jpg`,
     audits: "0",

@@ -754,14 +754,9 @@ export default {
         }
     },
     "logx": {
-        enabled: false,
-        id: "3396",
-        protocolsData: {
-            "derivative": {
-                enabled: true,
-                id: "5137",
-            }
-        }
+        parentId: "LogX",
+        enabled: true,
+        id: "5137"
     },
     "swych": {
         enabled: true,

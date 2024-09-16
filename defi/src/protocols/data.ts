@@ -23252,7 +23252,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "sperax-usd",
     cmcId: null,
-    category: "Algo-Stables",
+    category: "CDP",
     chains: ["Arbitrum"],
     module: "sperax/index.js",
     twitter: "SperaxUSD",

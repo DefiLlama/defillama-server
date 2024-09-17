@@ -18107,7 +18107,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Yield Aggregator",
     chains: ["Binance"],
     module: "superbots/index.js",
     twitter: "SuperBots_Fi",

@@ -51,5 +51,8 @@ export default {
   },
   "kwenta": {
     "id": "2981"
+  },
+  "flat-money": {
+    "id": "4503"
   }
 } as AdaptorsConfig;

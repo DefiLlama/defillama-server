@@ -2049,5 +2049,8 @@ export default {
     "sparkdex-v3": {
         parentId: "SparkDEX",
         id: "4888"
+    },
+    "toros": {
+        id: "1881"
     }
 } as AdaptorsConfig

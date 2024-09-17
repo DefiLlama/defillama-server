@@ -36192,7 +36192,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://return.finance",
     description:
-      "Return Finance is a user-friendly, decentralized finance (DeFi) platform that lets you earn high Annual Percentage Yield (APY) on your Euro and U.S. Dollars from DeFi markets. With a focus on security, transparency, and user-centric design, Return-Finance aims to empower users to access and participate in the rapidly evolving world of decentralized finance",
+      "Return Finance is a regulated, user-friendly decentralized finance (DeFi) platform that lets you earn high Annual Percentage Yield (APY) on your Euro and U.S. Dollars from DeFi markets. With a focus on security, transparency, and user-centric design, Return-Finance aims to empower users to access and participate in the rapidly evolving world of decentralized finance",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/return-finance.png`,
     audits: "2",

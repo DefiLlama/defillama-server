@@ -2045,5 +2045,9 @@ export default {
     "solv-finance": {
         parentId: "Solv Protocol",
         id: "4620"
+    },
+    "sparkdex-v3": {
+        parentId: "SparkDEX",
+        id: "4888"
     }
 } as AdaptorsConfig

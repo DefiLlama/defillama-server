@@ -2444,5 +2444,14 @@ export default {
     "pear-protocol": {
         enabled: false,
         id: "5151"
+    },
+    "sparkdex-v3": {
+        parentId: "SparkDEX",
+        id: "4888",
+        protocolsData: {
+            "v3": {
+                "id": "4888",
+            }
+        }
     }
 } as AdaptorsConfig

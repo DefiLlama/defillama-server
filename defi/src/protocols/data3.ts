@@ -46208,7 +46208,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Launchpad",
     chains: ["Sui"],
-    module: "dummy.js",
+    module: "doubleup/index.js", // previous dummy.js
     twitter: "doubleup_app",
     forkedFrom: [],
     oracles: [],
@@ -55613,6 +55613,52 @@ const data3: Protocol[] = [
     oracles: [], 
     parentProtocol: "parent#sperax",
     listedAt: 1726486266
+  },
+  {
+    id: "5155",
+    name: "OracleFreeDollar",
+    address: null,
+    symbol: "-",
+    url: "https://oraclefreedollar.org",
+    description:
+      "Oracle Free Dollar is a collateralized, oracle-free stablecoin that tracks the value of the Dollar. Its strengths are its decentralization and its versatility.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/oraclefreedollar.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Binance"],
+    module: "oraclefreedollar/index.js",
+    twitter: "OFD_BNB",
+    forkedFrom: [],
+    oracles: [], 
+    github: ["oraclefreedollar"],
+    listedAt: 1726581912
+  },
+  {
+    id: "5156",
+    name: "Cygnus Restake",
+    address: null,
+    symbol: "-",
+    url: "https://pool.cygnus.finance/restake",
+    description:
+      "Decentralized and non-custodial cross chain(EVM and non-EVM) restaking protocol. Part of Cygnus--the first modular real yield layer.",
+    chain: "BSquared",
+    logo: `${baseIconsUrl}/cygnus-restake.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["BSquared"],
+    module: "cygnus-fi-restake/index.js",
+    twitter: "CygnusFi",
+    forkedFrom: [],
+    oracles: [], 
+    parentProtocol: "parent#cygnus-finance",
+    listedAt: 1726581992
   },
 ];
 

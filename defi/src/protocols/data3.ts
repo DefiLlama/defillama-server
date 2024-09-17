@@ -8498,6 +8498,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     listedAt: 1686076139,
+    deadUrl:true
   },
   {
     id: "3073",
@@ -11969,7 +11970,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Governance Incentives",
     chains: ["Ethereum", "Arbitrum"],
     module: "hidden-hand/index.js",
     twitter: "redactedcartel",
@@ -30800,7 +30801,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "fyde-treasury",
     cmcId: null,
-    category: "Services",
+    category: "Yield Aggregator",
     chains: ["Ethereum"],
     oracles: ["Chainlink", "TWAP"], // https://etherscan.io/address/0x9b122361e8708be33b785e44fce4d6ca86ab6c5a#code
     forkedFrom: [],
@@ -34797,7 +34798,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Gaming",
     chains: ["Blast"],
     module: "spacebar/index.js",
     twitter: "spacebarxyz",
@@ -53136,7 +53137,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Governance Incentives",
     chains: ["Arbitrum", "Avalanche", "Binance", "Polygon"],
     oracles: [],
     forkedFrom: [],

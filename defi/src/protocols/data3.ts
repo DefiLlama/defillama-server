@@ -55660,6 +55660,52 @@ const data3: Protocol[] = [
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1726581992
   },
+  {
+    id: "5157",
+    name: "Yellow",
+    address: null,
+    symbol: "-",
+    url: "https://www.yellow.org",
+    description:
+      "Yellow Clearing Network is a Layer-3 P2P protocol that uses state channels to facilitate trading and settlement through smart clearing.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yellow.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum", "Linea", "Polygon"],
+    module: "yellow/index.js",
+    twitter: "Yellow",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://audits.hacken.io/openware-yellow-network"],
+    listedAt: 1726584238
+  },
+  {
+    id: "5158",
+    name: "Enosys AMM V3",
+    address: "songbird:0x72D932019AE098A6368E6676E16169D112E7720A",
+    symbol: "EXFI",
+    url: "https://xfx.flr.finance/",
+    description:
+      "Uniswap v3 fork on Songbird",
+    chain: "Songbird",
+    logo: `${baseIconsUrl}/enosys-amm-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Songbird"],
+    module: "enosys-dex-v3/index.js",
+    twitter: "enosys_global",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [], 
+    parentProtocol: "parent#enosys",
+    listedAt: 1726584426
+  },
 ];
 
 export default data3;

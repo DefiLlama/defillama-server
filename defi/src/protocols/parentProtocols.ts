@@ -1207,8 +1207,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Formerly FLR Finance. Building a Multi-Chain DeFi Economy. From the creators of @FlareScan and @DeFiOracles",
     logo: `${baseIconsUrl}/enosys.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "flare-finance",
+    cmcId: "16929",
     chains: [],
     twitter: "enosys_global",
     github: ["flrfinance"],

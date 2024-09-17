@@ -10,10 +10,12 @@ async function run() {
   const startTimeAll = getUnixTimeNow()
   console.time("**** Run All Adaptor types")
 
-  const randomizedAdapterTypes = [...ADAPTER_TYPES].sort(() => Math.random() - 0.5)
-  for (const adapterType of randomizedAdapterTypes) {
-    await runAdapterType(adapterType)
-  }
+  await Promise.all(ADAPTER_TYPES.map(runAdapterType))
+
+  // const randomizedAdapterTypes = [...ADAPTER_TYPES].sort(() => Math.random() - 0.5)
+  // for (const adapterType of randomizedAdapterTypes) {
+  //   await runAdapterType(adapterType)
+  // }
 
   async function runAdapterType(adapterType: AdapterType) {
     const startTimeCategory = getUnixTimeNow()

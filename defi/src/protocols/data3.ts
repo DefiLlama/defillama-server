@@ -52708,7 +52708,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5024",
-    name: "Double 2 Win",
+    name: "Double",
     address: null,
     symbol: "-",
     url: "https://www.double2win.xyz",

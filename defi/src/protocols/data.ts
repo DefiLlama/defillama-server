@@ -16540,18 +16540,18 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "885",
-    name: "FLRX",
+    name: "Enosys AMM V2", // previous FLRX
     address: "songbird:0x72D932019AE098A6368E6676E16169D112E7720A",
     symbol: "EXFI",
     url: "https://xfx.flr.finance",
     description:
       "Flare Networks has launched Songbird, a full-value experimental development network.Flare Finance has decided to follow in the footsteps of the main network, and deployed an experimental playground of our own. The Experimental Finance (or 'ExFi') platform on the Songbird Network",
     chain: "Songbird",
-    logo: `${baseIconsUrl}/flarex.jpg`,
+    logo: `${baseIconsUrl}/enosys-amm-v2.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "flare-finance",
-    cmcId: "16929",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Songbird"],
     module: "flarex/index.js",

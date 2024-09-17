@@ -1549,7 +1549,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "CDP Manager",
     chains: ["Ethereum"],
     module: "defisaver.js",
     twitter: "DefiSaver",

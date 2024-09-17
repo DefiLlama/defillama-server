@@ -231,7 +231,8 @@ test("no surprise category", async () => {
     'Ponzi',
     'Basis Trading',
     'MEV',
-    'CeDeFi'
+    'CeDeFi',
+    'CDP Manager'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

@@ -12077,7 +12077,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "xwin-finance",
     cmcId: "9870",
-    category: "Services",
+    category: "Indexes",
     chains: ["Binance"],
     module: "xWinFinance/index.js",
     twitter: "xwinfinance",

@@ -172,16 +172,16 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
 
   function getTwitterOverview(_req: HyperExpress.Request, res: HyperExpress.Response) {
-    return successResponse(res, cache.twitterOverview, 4 * 60 * 60);
+    return successResponse(res, cache.twitterOverview, 4 * 60);
   }
 
   async function getTwitterData(req: HyperExpress.Request, res: HyperExpress.Response) {
     const tweetHandle = req.path_parameters.handle
     let data = cache.twitterOverview[tweetHandle]
-    if (!data) return successResponse(res, {}, 4 * 60 * 60)
+    if (!data) return successResponse(res, {}, 4 * 60)
     data = { ...data }
     data.tweetStats = await getTweetStats(tweetHandle)
-    return successResponse(res, data, 24 * 60 * 60);
+    return successResponse(res, data, 4 * 60);
   }
 
   router.get('/debug-pg/*', debugHandler)

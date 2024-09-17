@@ -13,7 +13,7 @@ export function successResponse(res: HyperExpress.Response, data: any, cacheMinu
   isPost = false,
 } = {}) {
   res.setHeaders({
-    "Expires": getTimeInFutureMinutes(cacheMinutes) // cache for 5 minutes
+    "Expires": getTimeInFutureMinutes(cacheMinutes)
   })
   if (isPost)
     res.removeHeader("Expires")

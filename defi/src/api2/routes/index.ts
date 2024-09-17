@@ -135,7 +135,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     let name = sluggify({ name: req.path_parameters.name } as any)
 
     let protocolData = cache.protocolSlugMap[name]
-    if (protocolData) return successResponse(res, getLastHourlyRecord(protocolData)?.tvl, 10 * 60);
+    if (protocolData) return successResponse(res, getLastHourlyRecord(protocolData)?.tvl, 60);
 
     const parentData = cache.parentProtocolSlugMap[name]
     if (parentData) {
@@ -145,7 +145,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
       const tvl = childProtocols.map(getLastHourlyRecord).reduce((acc: number, cur: any) => acc + cur?.tvl, 0);
       if (isNaN(tvl)) return errorResponse(res, 'Error fetching tvl')
-      return successResponse(res, tvl, 10 * 60);
+      return successResponse(res, tvl, 60);
     }
 
     return errorResponse(res, 'Protocol not found')
@@ -154,9 +154,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   function smolConfigHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
     let name = sluggify({ name: req.path_parameters.name } as any)
     let protocolData = cache.protocolSlugMap[name]
-    if (protocolData) return successResponse(res, protocolData, 10 * 60);
+    if (protocolData) return successResponse(res, protocolData, 60);
     protocolData = cache.parentProtocolSlugMap[name]
-    if (protocolData) return successResponse(res, protocolData, 10 * 60);
+    if (protocolData) return successResponse(res, protocolData, 60);
     return errorResponse(res, 'Protocol not found')
   }
 
@@ -172,16 +172,16 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
 
   function getTwitterOverview(_req: HyperExpress.Request, res: HyperExpress.Response) {
-    return successResponse(res, cache.twitterOverview, 4 * 60);
+    return successResponse(res, cache.twitterOverview, 60);
   }
 
   async function getTwitterData(req: HyperExpress.Request, res: HyperExpress.Response) {
     const tweetHandle = req.path_parameters.handle
     let data = cache.twitterOverview[tweetHandle]
-    if (!data) return successResponse(res, {}, 4 * 60)
+    if (!data) return successResponse(res, {}, 60)
     data = { ...data }
     data.tweetStats = await getTweetStats(tweetHandle)
-    return successResponse(res, data, 4 * 60);
+    return successResponse(res, data, 60);
   }
 
   router.get('/debug-pg/*', debugHandler)
@@ -378,7 +378,7 @@ async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Respon
   const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
     const data = await getChainChartData(name.toLowerCase())
-    return successResponse(res, data, 10 * 60);
+    return successResponse(res, data, 60);
   } catch (e) {
     return errorResponse(res, 'There is no chain with that name')
   }
@@ -388,7 +388,7 @@ async function getHistoricalChainTvlData(req: HyperExpress.Request, res: HyperEx
   const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
     const data = await getChainDefaultChartData(name.toLowerCase())
-    return successResponse(res, data, 10 * 60);
+    return successResponse(res, data, 60);
   } catch (e) {
     return errorResponse(res, 'There is no chain with that name')
   }

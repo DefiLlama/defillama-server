@@ -5660,7 +5660,7 @@ const data3: Protocol[] = [
     module: "typus-finance/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: ["Pyth", "Supra"], // https://docs.typus.finance/options-oracle
+    oracles: ["Pyth"], // https://docs.typus.finance/options-oracle
     parentProtocol: "parent#typus-finance",
     audit_links: ["https://docs.typus.finance/audit"],
     listedAt: 1683552946
@@ -55566,7 +55566,7 @@ const data3: Protocol[] = [
     module: "typus-safu/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: ["Pyth", "Supra"], // https://docs.typus.finance/options-oracle
+    oracles: [], 
     parentProtocol: "parent#typus-finance",
     listedAt: 1726474786
   },

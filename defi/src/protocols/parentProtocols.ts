@@ -5499,7 +5499,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Typus Finance",
     url: "https://typus.finance",
     description:
-      "Typus Finance is a real yield infrastructure on Sui Blockchain (Sui) that enables users to obtain superior risk-to-reward returns, all in one click. ",
+      "Typus Finance is a DeFi derivatives protocol on Sui Blockchain (Sui) that enables users to obtain superior risk-to-reward returns, all in one click.",
     logo: `${baseIconsUrl}/typus-finance.jpg`,
     gecko_id: null,
     cmcId: null,

@@ -5643,12 +5643,12 @@ const data3: Protocol[] = [
   },
   {
     id: "2946",
-    name: "Typus Finance",
+    name: "Typus DOV",
     address: null,
     symbol: "-",
     url: "https://typus.finance",
     description:
-      "Typus Finance is a real yield infrastructure on Sui Blockchain (Sui) that enables users to obtain superior risk-to-reward returns, all in one click. ",
+      "Typus DeFi Options Vaults (DOVs) brings crypto options market to Degens, making it easy and fun to earn real yields. Traders can access up to 1000x leverage without liquidation risk by buying options that range from 10-minute, hourly, daily, weekly, to monthly. Users can also deposit their assets to provide liquidity for options strategies, potentially rewarded with triple-digit APRs.",
     chain: "Sui",
     logo: `${baseIconsUrl}/typus-finance.jpg`,
     audits: "2",
@@ -5660,9 +5660,11 @@ const data3: Protocol[] = [
     module: "typus-finance/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://docs.typus.finance/options-specifications
+    oracles: ["Pyth", "Supra"], // https://docs.typus.finance/options-oracle
+    parentProtocol: "parent#typus-finance",
+    github: ["Typus-Lab"],
     audit_links: ["https://docs.typus.finance/audit"],
-    listedAt: 1683552946,
+    listedAt: 1683552946
   },
   {
     id: "2947",
@@ -55553,7 +55555,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://typus.finance/safu",
     description:
-      "Typus SAFU is the first principal-protected structured product on the Sui Blockchain. It offers safe yields with 99.99% principal protection, zero fees for both bull and bear strategies, and potential upside through options. This product is designed to securely maximize your crypto returns.",
+      "Typus SAFU is the first principal-protected structured product on Sui Blockchain (Sui). It offers safe yields with 99.99% principal protection, zero fees for both bull and bear strategies, and potential upside through options. This product is designed to securely maximize your crypto returns.",
     chain: "Sui",
     logo: `${baseIconsUrl}/typus-safu.jpg`,
     audits: "0",
@@ -55565,7 +55567,8 @@ const data3: Protocol[] = [
     module: "typus-safu/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: [], 
+    oracles: ["Pyth", "Supra"], // https://docs.typus.finance/options-oracle
+    parentProtocol: "parent#typus-finance",
     github: ["Typus-Lab"],
     listedAt: 1726474786
   },

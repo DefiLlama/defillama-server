@@ -2442,7 +2442,6 @@ export default {
         id: "5129"
     },
     "pear-protocol": {
-        enabled: false,
         id: "5151"
     },
     "sparkdex-v3": {

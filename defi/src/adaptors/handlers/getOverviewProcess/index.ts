@@ -196,7 +196,7 @@ export async function getOverviewProcess({
     try {
         loadedAdaptors.default.forEach(va => {
             if (protocolsList.includes(va.module))
-                if (loadedAdaptors.config[va.module]?.enabled && (!category || va.category?.toLowerCase() === category))
+                if ((loadedAdaptors.config[va.module]?.enabled || loadedAdaptors.config[va.module]?.enabled === undefined) && (!category || va.category?.toLowerCase() === category))
                     adaptersList.push(va)
             return
         })

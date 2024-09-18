@@ -49,9 +49,9 @@ export type IStoreAdaptorDataHandlerEvent = {
 }
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  const defaultMaxConcurrency = 9
+  const defaultMaxConcurrency = 21
   let { timestamp, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency } = event
-  console.info(`- Date: ${new Date(timestamp!*1e3).toDateString()} (timestamp ${timestamp})`)
+  console.info(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
   const isTimestampProvided = timestamp !== undefined
   const currentTimestamp = timestamp ?? LAMBDA_TIMESTAMP;
@@ -141,7 +141,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       if (adaptor.isExpensiveAdapter && !isTimestampProvided) {
         const date = new Date(currentTimestamp * 1000)
         const hours = date.getUTCHours()
-        if (hours > 2) {
+        if (hours > 5) {
           console.info(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module} - skipping because it's an expensive adapter and it's not the right time`)
           return
         }
@@ -180,7 +180,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }
       const storedData: any = {}
-      const adaptorRecordTypeByValue: any  = Object.fromEntries(Object.entries(AdaptorRecordType).map(([key, value]) => [value, key]))
+      const adaptorRecordTypeByValue: any = Object.fromEntries(Object.entries(AdaptorRecordType).map(([key, value]) => [value, key]))
       for (const [recordType, record] of Object.entries(rawRecords)) {
         // console.info("STORING -> ", module, adapterType, recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType, protocol.defillamaId, protocol.versionKey)
         storedData[adaptorRecordTypeByValue[recordType]] = record
@@ -217,7 +217,7 @@ type chainObjet = {
   }
 }
 
-function printData(data: any, timestamp?: number, protocolName?: string ) {
+function printData(data: any, timestamp?: number, protocolName?: string) {
   const chains: chainObjet = {};
   console.info(`\nrecord timestamp: ${timestamp}`)
 

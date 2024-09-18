@@ -789,6 +789,13 @@
       "to": "coingecko#bitkub-coin"
     }
   },
+  "bitkub": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "KUB",
+      "to": "coingecko#bitkub-coin"
+    }
+  },
   "sanko": {
     "0x0000000000000000000000000000000000000000": {
       "name": "Dream Machine Token",

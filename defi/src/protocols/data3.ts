@@ -5643,7 +5643,7 @@ const data3: Protocol[] = [
   },
   {
     id: "2946",
-    name: "Typus Finance",
+    name: "Typus DOV",
     address: null,
     symbol: "-",
     url: "https://typus.finance",
@@ -5660,9 +5660,11 @@ const data3: Protocol[] = [
     module: "typus-finance/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://docs.typus.finance/options-specifications
+    oracles: ["Pyth", "Supra"], // https://docs.typus.finance/options-oracle
+    parentProtocol: "parent#typus-finance",
+    github: ["Typus-Lab"],
     audit_links: ["https://docs.typus.finance/audit"],
-    listedAt: 1683552946,
+    listedAt: 1683552946
   },
   {
     id: "2947",
@@ -55565,7 +55567,8 @@ const data3: Protocol[] = [
     module: "typus-safu/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: [], 
+    oracles: ["Pyth", "Supra"], // https://docs.typus.finance/options-oracle
+    parentProtocol: "parent#typus-finance",
     github: ["Typus-Lab"],
     listedAt: 1726474786
   },

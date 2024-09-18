@@ -5662,7 +5662,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Pyth", "Supra"], // https://docs.typus.finance/options-oracle
     parentProtocol: "parent#typus-finance",
-    github: ["Typus-Lab"],
     audit_links: ["https://docs.typus.finance/audit"],
     listedAt: 1683552946
   },
@@ -55569,7 +55568,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Pyth", "Supra"], // https://docs.typus.finance/options-oracle
     parentProtocol: "parent#typus-finance",
-    github: ["Typus-Lab"],
     listedAt: 1726474786
   },
   {

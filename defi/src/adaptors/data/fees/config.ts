@@ -2052,5 +2052,8 @@ export default {
     },
     "toros": {
         id: "1881"
+    },
+    "myx-finance": {
+        "id": "4319"
     }
 } as AdaptorsConfig

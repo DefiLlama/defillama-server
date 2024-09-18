@@ -3585,7 +3585,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://gammaswap.com/",
     description: `A novel primitive for scaling DeFi liquidity through permissionless risk markets`,
     logo: `${baseIconsUrl}/gammaswaplabs.jpg`,
-    gecko_id: null,
+    gecko_id: "gammaswap",
     cmcId: null,
     chains: [],
     twitter: "GammaSwapLabs",

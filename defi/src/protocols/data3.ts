@@ -31315,7 +31315,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Solana"],
-    oracles: ["Edge"], // https://station.jup.ag/guides/perpetual-exchange/how-it-works#oracle
+    oracles: ["Edge", "Pyth"], // https://station.jup.ag/guides/perpetual-exchange/how-it-works#oracle
     forkedFrom: [],
     module: "jupiter-perpetual.js",
     twitter: "JupiterExchange",

@@ -55707,6 +55707,32 @@ const data3: Protocol[] = [
     parentProtocol: "parent#enosys",
     listedAt: 1726584426
   },
+  {
+    id: "5159",
+    name: "Aqua Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://aquaprotocol.xyz/",
+    description:
+      "Over-collateralized stablecoin",
+    chain: "TON",
+    logo: `${baseIconsUrl}/aqua-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["TON"],
+    module: "aquaprotocol/index.js",
+    twitter: "aquaprotocolxyz",
+    forkedFrom: [],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/11672
+    audit_links: [
+      "https://www.beosin.com/audits/Aqua_Protocol_202407221416.pdf", 
+      "https://github.com/BugBlow/audits/blob/main/AquaProtocol/Aqua_Security_Audit_BugBlow.md"
+    ],
+    listedAt: 1726675917
+  },
 ];
 
 export default data3;

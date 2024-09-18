@@ -60,6 +60,8 @@ export function curve4(timestamp: number = 0) {
     getTokenPrices2("polygon", defaultRegistries, timestamp),
     getTokenPrices2("polygon", [], timestamp, "eth-custom", [
       "0xa691d34abf93c0a77998e53b564becfaf46dae27",
+      "0xA73EdCf18421B56D9AF1cE08A34E102E23b2C4B6",
+      "0xc7c939A474CB10EB837894D1ed1a77C61B268Fa7",
     ]),
     getGaugePrices("polygon", timestamp),
   ]);
@@ -122,18 +124,18 @@ export function curve13(timestamp: number = 0) {
 }
 
 export const adapters = {
-  curve,
-  curve1,
-  curve2,
-  curve3,
+  // curve,
+  // curve1,
+  // curve2,
+  // curve3,
   curve4,
-  curve5,
-  curve6,
-  curve7,
-  curve8,
-  curve9,
-  curve10,
-  curve11,
-  curve12,
-  curve13,
+  // curve5,
+  // curve6,
+  // curve7,
+  // curve8,
+  // curve9,
+  // curve10,
+  // curve11,
+  // curve12,
+  // curve13,
 };

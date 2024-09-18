@@ -5494,6 +5494,19 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["cygnus-finance-global-usd"],
     twitter: "CygnusFi",
   },
+  {
+    id: "parent#typus-finance",
+    name: "Typus Finance",
+    url: "https://typus.finance",
+    description:
+      "Typus Finance is a real yield infrastructure on Sui Blockchain (Sui) that enables users to obtain superior risk-to-reward returns, all in one click. ",
+    logo: `${baseIconsUrl}/typus-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: ["Sui"],
+    github: ["Typus-Lab"],
+    twitter: "TypusFinance",
+  },
 ];
 
 export default parentProtocols;

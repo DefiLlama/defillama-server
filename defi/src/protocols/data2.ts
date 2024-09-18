@@ -23298,7 +23298,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Yield",
     chains: ["Ethereum"],
     module: "sandclock/index.js",
     twitter: "SandclockOrg",

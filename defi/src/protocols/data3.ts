@@ -18679,7 +18679,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Payments",
     chains: ["Kava"],
     module: "monarchpay/index.js",
     oracles: [],

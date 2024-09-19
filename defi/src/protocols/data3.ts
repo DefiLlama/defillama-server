@@ -55756,6 +55756,28 @@ const data3: Protocol[] = [
     audit_links: ["https://www.elfi.xyz/Sherlock_Elfi_Audit_Report.pdf"],
     listedAt: 1726752333
   },
+  {
+    id: "5161",
+    name: "TON Diamonds",
+    address: null,
+    symbol: "-",
+    url: "https://ton.diamonds",
+    description:
+      "TON Diamonds is a DEX aggregator on TON",
+    chain: "TON",
+    logo: `${baseIconsUrl}/ton-diamonds.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["TON"],
+    module: "dummy.js",
+    twitter: "TonDiamonds",
+    forkedFrom: [],
+    oracles: [], 
+  },
+
 ];
 
 export default data3;

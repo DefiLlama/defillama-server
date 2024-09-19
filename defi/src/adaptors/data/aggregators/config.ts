@@ -258,5 +258,8 @@ export default {
   },
   "swap-coffee": {
     id: "5150",
+  },
+  "tondiamonds": {
+    id: "5161",
   }
 } as AdaptorsConfig;

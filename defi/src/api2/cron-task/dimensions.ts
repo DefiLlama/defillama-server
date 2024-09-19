@@ -279,19 +279,18 @@ async function run() {
             protocolRecord.thirtyDaysAgo = record
           }
 
-          if (lastWeekTimeStrings.has(timeS)) {
+          if (lastWeekTimeStrings.has(timeS))
             protocolRecord.lastWeekData.push(aggData)
-          } else if (lastTwoWeektoLastWeekTimeStrings.has(timeS)) {
+          if (lastTwoWeektoLastWeekTimeStrings.has(timeS))
             protocolRecord.lastTwoWeekToOneWeekData.push(aggData)
-          } else if (lastTwoWeekTimeStrings.has(timeS)) {
+          if (lastTwoWeekTimeStrings.has(timeS))
             protocolRecord.lastTwoWeekData.push(aggData)
-          } else if (last30DaysTimeStrings.has(timeS)) {
+          if (last30DaysTimeStrings.has(timeS))
             protocolRecord.last30DaysData.push(aggData)
-          } else if (last60to30DaysTimeStrings.has(timeS)) {
+          if (last60to30DaysTimeStrings.has(timeS))
             protocolRecord.last60to30DaysData.push(aggData)
-          } else if (lastOneYearTimeStrings.has(timeS)) {
+          if (lastOneYearTimeStrings.has(timeS))
             protocolRecord.lastOneYearData.push(aggData)
-          }
 
           Object.entries(chains).forEach(([chain, value]: any) => {
             if (skipChainSummary) return;

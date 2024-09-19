@@ -55733,6 +55733,29 @@ const data3: Protocol[] = [
     ],
     listedAt: 1726675917
   },
+  {
+    id: "5160",
+    name: "ELFi Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.elfi.xyz",
+    description:
+      "ELFi Protocol stands out in the DeFi space with its innovative ELP liquidity architecture, offering stablecoin yield products with highly competitive rates and high-yield products linked to non-stablecoins. As the first platform to integrate portfolio margining and pooled trading, ELFi enables zero-slippage trading and advanced risk management at the account level.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/elfi-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "elfi/index.js",
+    twitter: "ELFiProtocol",
+    forkedFrom: [],
+    oracles: ["Chainlink"], 
+    audit_links: ["https://www.elfi.xyz/Sherlock_Elfi_Audit_Report.pdf"],
+    listedAt: 1726752333
+  },
 ];
 
 export default data3;

@@ -28317,7 +28317,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3948",
-    name: "ckBTC",
+    name: "Chain Key Tokens", // previous ckBTC
     address: null,
     symbol: "-",
     assetToken: "ckBTC",
@@ -28325,7 +28325,7 @@ const data3: Protocol[] = [
     description:
       "Chain-key Bitcoin (ckBTC) is a token on the Internet Computer (ICP) that is backed 1:1 by bitcoin (BTC). Conversion and redemption is fully automated via canister smart contracts using threshold cryptography - no trusted intermediaries required.ckBTC transactions have a 1-2 second finality and incur negligible fees, making it a viable option for everyday economic activities such as buying groceries or getting a coffee.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/ckbtc.jpg`,
+    logo: `${baseIconsUrl}/ckbtc.jpg`, //chain-key-tokens
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -28334,7 +28334,7 @@ const data3: Protocol[] = [
     chains: ["Bitcoin"],
     oracles: [],
     forkedFrom: [],
-    module: "ckbtc/index.js",
+    module: "chain-fusion/index.js",
     twitter: "dfinity",
     audit_links: [
       "https://github.com/trailofbits/publications/blob/master/reviews/2023-06-dfinity-ckBTC-securityreview.pdf",

@@ -208,6 +208,11 @@
     }
   },
   "ethereum": {
+    "0x9813037ee2218799597d83D4a5B6F3b6778218d9": {
+      "decimals": "18",
+      "symbol": "BONE",
+      "to": "coingecko#bone-shibaswap"
+    },
     "0xeFEfeFEfeFeFEFEFEfefeFeFefEfEfEfeFEFEFEf": {
       "decimals": "18",
       "symbol": "ETH",

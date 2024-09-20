@@ -55801,6 +55801,59 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1726836983
   },
+  {
+    id: "5163",
+    name: "Ulysses",
+    address: null,
+    symbol: "-",
+    url: "https://app.maiadao.io/",
+    description:
+      "Ulysses Protocol is a decentralized and permissionless 'Omnichain Liquidity Protocol' owned by the community. It's innovative solution is designed to tackle the challenges presented by an increasingly fragmented liquidity landscape in DeFi, ensuring seamless interoperability and capital efficient cross-chain asset deployment",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ulysses.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Arbitrum", "Ethereum", "Optimism", "Base", "Polygon", "Binance", "Avalanche", "Metis"],
+    module: "ulysses/index.js",
+    twitter: "MaiaDAOEco",
+    parentProtocol: "parent#maia-dao-ecosystem",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: [
+      "https://github.com/Zellic/publications/blob/master/Maia%20DAO%20Ulysses%20Protocol%20May%202023%20-%20Zellic%20Audit%20Report.pdf",  
+      "https://code4rena.com/audits/2023-05-maia-dao-ecosystem",
+      "https://code4rena.com/audits/2023-09-maia-dao-ulysses",
+      "https://github.com/Zellic/publications/blob/master/Maia%20DAO%20Ulysses%20Protocol%20-%20Zellic%20Audit%20Report.pdf"
+    ],
+    listedAt: 1726861385
+  },
+  {
+    id: "5164",
+    name: "Tonstakers Token Staking",
+    address: null,
+    symbol: "-",
+    url: "https://tonstakers.com/",
+    description:
+      "Token Staking by Tonstakers lets users stake their favorite tokens on TON with high APR, no impermanent loss, and maximum convenience",
+    chain: "TON",
+    logo: `${baseIconsUrl}/tonstakers-token-staking.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["TON"],
+    module: "tonstakers-token-staking/index.js",
+    twitter: "tonstakers",
+    parentProtocol: "parent#polynomial-protocol",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://skynet.certik.com/projects/tonstakers"], 
+    listedAt: 1726861391
+  },
 ];
 
 export default data3;

@@ -13378,7 +13378,7 @@ const data3: Protocol[] = [
     description:
       "The TruStake vaults provide access to institutional liquid staking on a variety of proof-of-stake networks.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/trustake.png`,
+    logo: `${baseIconsUrl}/trustake.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

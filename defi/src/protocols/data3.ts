@@ -55777,7 +55777,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [], 
   },
-
+  {
+    id: "5162",
+    name: "Polynomial Liquidity",
+    address: null,
+    symbol: "-",
+    url: "https://polynomial.fi/",
+    description:
+      "Leveraging decentralised finance derivatives to their fullest potential",
+    chain: "Polynomial",
+    logo: `${baseIconsUrl}/polynomial-liquidity.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polynomial"],
+    module: "polynomial-liquidity-layer/index.js",
+    twitter: "PolynomialFi",
+    parentProtocol: "parent#polynomial-protocol",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1726836983
+  },
 ];
 
 export default data3;

@@ -5913,6 +5913,21 @@
       "decimals": "18",
       "symbol": "CAND",
       "to": "coingecko#canary-dollar"
+    },
+    "0x1a7b46656b2b8b29b1694229e122d066020503d0": {
+      "decimals": "6",
+      "symbol": "exUSDT",
+      "to": "coingecko#tether"
+    },
+    "0x36b84a93820175c02f57e5c87a7ea33df58e5c94": {
+      "decimals": "18",
+      "symbol": "exETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xc54de96302981f87a6f80e4607593681b44d670c": {
+      "decimals": "18",
+      "symbol": "exXDC",
+      "to": "coingecko#xdce-crowd-sale"
     }
   },
   "energi": {

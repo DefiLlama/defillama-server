@@ -2330,7 +2330,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://www.trufin.io/",
     description:
       "TruFin provides institutional-grade Web3 primitives, such as liquid staking, that can be used as the foundational building blocks for digital asset strategies to reduce risk, generate rewards, securely on-chain.",
-    logo: `${baseIconsUrl}/trufin-protocol.jpg`,
+    logo: `${baseIconsUrl}/trufin-protocol.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

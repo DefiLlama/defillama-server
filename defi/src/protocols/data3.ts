@@ -28325,7 +28325,7 @@ const data3: Protocol[] = [
     description:
       "Chain-key Bitcoin (ckBTC) is a token on the Internet Computer (ICP) that is backed 1:1 by bitcoin (BTC). Conversion and redemption is fully automated via canister smart contracts using threshold cryptography - no trusted intermediaries required.ckBTC transactions have a 1-2 second finality and incur negligible fees, making it a viable option for everyday economic activities such as buying groceries or getting a coffee.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/ckbtc.jpg`, //chain-key-tokens
+    logo: `${baseIconsUrl}/chain-key-tokens.jpg`, //chain-key-tokens
     audits: "2",
     audit_note: null,
     gecko_id: null,

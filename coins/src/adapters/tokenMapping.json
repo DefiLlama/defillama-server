@@ -885,6 +885,11 @@
       "decimals": "8",
       "symbol": "APETOS",
       "to": "coingecko#apetos"
+    },
+    "0x6f986d146e4a90b828d8c12c14b6f4e003fdff11a8eecceceb63744363eaac01::mod_coin::MOD": {
+      "decimals": "8",
+      "symbol": "MOD",
+      "to": "coingecko#move-dollar"
     }
   },
   "velas": {

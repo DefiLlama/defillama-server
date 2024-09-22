@@ -55854,6 +55854,28 @@ const data3: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/tonstakers"], 
     listedAt: 1726861391
   },
+  {
+    id: "5165",
+    name: "Sharpe Perp Aggregator",
+    address: null,
+    symbol: "SHARPE",
+    url: "https://www.sharpe.ai",
+    description:
+      "Sharpe is an AI-powered DeFi automation and execution environment designed for pro-traders and institutions. Our unified platform streamlines DeFi asset management, execution, and custody and provides traders with a comprehensive environment for earning yields, building strategies, advanced DEX trading, lending automation and so much more.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sharpe-perp-aggregator.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    parentProtocol: "parent#sharpe-ai",
+    twitter: "SharpeLabs", // previous sharpe_ai
+  },
 ];
 
 export default data3;

@@ -16511,7 +16511,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Yield",
     chains: ["Solana"],
     module: "scallop-pool/index.js",
     twitter: "Scallop_io",
@@ -55861,7 +55861,7 @@ const data3: Protocol[] = [
     symbol: "SHARPE",
     url: "https://www.sharpe.ai",
     description:
-      "Sharpe is an AI-powered DeFi automation and execution environment designed for pro-traders and institutions. Our unified platform streamlines DeFi asset management, execution, and custody and provides traders with a comprehensive environment for earning yields, building strategies, advanced DEX trading, lending automation and so much more.",
+      "Sharpe Perp is an omnichain decentralized orderbook perpetual DEX built on Orderly that aims to provide a high-performance, low-latency trading app for traders looking to trade perpetual futures. Sharpe Perp is a hybrid orderbook model that combines the best features of centralized and decentralized exchanges, allowing Sharpe Perp to offer centralized exchange performance with low latency and concentrated liquidity while providing full transparency of decentralized exchanges and full self-custody of funds",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sharpe-perp-aggregator.png`,
     audits: "0",

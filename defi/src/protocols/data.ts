@@ -16254,7 +16254,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "mintswap",
     cmcId: "14049",
-    category: "Services",
+    category: "Farm",
     chains: ["Avalanche"],
     module: "mintswap/index.js",
     twitter: "SwapMint",

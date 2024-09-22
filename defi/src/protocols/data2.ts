@@ -13845,7 +13845,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "dogeswap",
     cmcId: "7377",
-    category: "Services",
+    category: "Farm",
     chains: ["Ethereum"],
     module: "dogeswap/index.js",
     twitter: "Dogeswap_",

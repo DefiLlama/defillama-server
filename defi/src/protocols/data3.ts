@@ -4173,7 +4173,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "token-pocket",
     cmcId: "5947",
-    category: "Services",
+    category: "Staking Pool",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

@@ -550,7 +550,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Bridge",
     chains: ["Ethereum"],
     module: "imbtc.js",
     treasury: "tokenIon.js",

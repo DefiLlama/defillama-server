@@ -44,7 +44,7 @@ function zkSyncBlockProvider() {
   };
 }
 
-const blockPK = (chain: string) => `block#${chain}`
+export const blockPK = (chain: string) => `block#${chain}`
 
 async function getBlock(provider: ReturnType<typeof cosmosBlockProvider>, height: number | "latest", chain: string): Promise<TimestampBlock> {
   const block = await provider.getBlock(height)

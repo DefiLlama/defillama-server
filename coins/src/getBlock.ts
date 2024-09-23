@@ -172,5 +172,5 @@ const handler = async (
 
 export default wrap(handler);
 
-handler({ pathParameters: { chain: 'ethereum', timestamp: getCurrentUnixTimestamp() } })
+// handler({ pathParameters: { chain: 'ethereum', timestamp: getCurrentUnixTimestamp() } })
 // ts-node coins/src/getBlock.ts

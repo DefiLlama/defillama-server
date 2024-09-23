@@ -1,9 +1,10 @@
 import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared";
-import ddb from "./utils/shared/dynamodb";
+import ddb, { getHistoricalValues } from "./utils/shared/dynamodb";
 import { getProvider } from "@defillama/sdk/build/general"
 import fetch from "node-fetch"
 import { getCurrentUnixTimestamp } from "./utils/date";
 import genesisBlockTimes from './genesisBlockTimes';
+import { sendMessage } from "../../defi/src/utils/discord";
 
 interface TimestampBlock {
   height: number;
@@ -50,6 +51,18 @@ async function getBlock(provider: ReturnType<typeof cosmosBlockProvider>, height
   const block = await provider.getBlock(height)
   if (block === null) {
     throw new Error(`Can't get block of chain ${chain} at height "${height}"`)
+  }
+  const historical = await getHistoricalValues(blockPK(chain), block.timestamp)
+  if (historical.length) {
+    const highestBlock = Math.max(...historical.map((e: any) => e.height))
+    const highestTimestamp = Math.max(...historical.map((e: any) => e.height))
+    if (block.number < highestBlock && block.timestamp > highestTimestamp)
+      await sendMessage(
+        `${chain} block ${block.number} failed with timestamp ${block.timestamp}`,
+        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        true,
+      );
+      throw new Error(`failed to getBlock`)
   }
   await ddb.put({
     PK: blockPK(chain),

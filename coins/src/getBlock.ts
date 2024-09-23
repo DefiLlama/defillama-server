@@ -47,7 +47,7 @@ function zkSyncBlockProvider() {
 
 export const blockPK = (chain: string) => `block#${chain}`
 
-async function getBlock(provider: ReturnType<typeof cosmosBlockProvider>, height: number | "latest", chain: string): Promise<TimestampBlock> {
+async function getBlock(provider: any, height: number | "latest", chain: string): Promise<TimestampBlock> {
   const block = await provider.getBlock(height)
   if (block === null) {
     throw new Error(`Can't get block of chain ${chain} at height "${height}"`)
@@ -58,7 +58,7 @@ async function getBlock(provider: ReturnType<typeof cosmosBlockProvider>, height
     const highestTimestamp = Math.max(...historical.map((e: any) => e.height))
     if (block.number < highestBlock && block.timestamp > highestTimestamp)
       await sendMessage(
-        `${chain} block ${block.number} failed with timestamp ${block.timestamp}`,
+        `${chain} block ${block.number} failed with timestamp ${block.timestamp}: id: ${provider.chainId}, string: ${provider.getBlock.toString()}`,
         process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
         true,
       );
@@ -114,7 +114,7 @@ function getClosestBlock(PK: string, timestamp: number, search: "high" | "low") 
 }
 
 const handler = async (
-  event: AWSLambda.APIGatewayEvent
+  event: any
 ): Promise<IResponse> => {
   const { chain, timestamp: timestampRaw } = event.pathParameters!
   const provider = getExtraProvider(chain)
@@ -171,3 +171,6 @@ const handler = async (
 }
 
 export default wrap(handler);
+
+handler({ pathParameters: { chain: 'ethereum', timestamp: getCurrentUnixTimestamp() } })
+// ts-node coins/src/getBlock.ts

@@ -22718,7 +22718,7 @@ const data3: Protocol[] = [
   {
     id: "3700",
     name: "CSWAP DEX",
-    address: "cardano:bf524874448cbf52be3a26133b0a0edf5eb65c09ffed383b881ad3274353574150",
+    address: "cardano:asset1vg9t6spzheltksjpsj7e7pe6pqq368askuw29y",
     symbol: "CSWAP",
     url: "https://cswap.fi",
     description: "The first DEX for NFTs on Cardano. Instant Liquidity. Powered by an orderbook/AMM hybrid.",
@@ -26746,7 +26746,7 @@ const data3: Protocol[] = [
   {
     id: "3879",
     name: "CherryLend",
-    address: "cardano:75fcc276057db5fc48eae0e11453c773c8a54604c3086bf9d95ac1b743485259",
+    address: "cardano:asset1en83rjhxn03a2wawpd5tytr9ptyqtfdzqpccr3",
     symbol: "CHRY",
     url: "https://cherrylend.org",
     description: `Multiple Cardano SPO's host an Oracle code`,
@@ -29049,7 +29049,7 @@ const data3: Protocol[] = [
   {
     id: "3979",
     name: "DexHunter",
-    address: "cardano:95a427e384527065f2f8946f5e86320d0117839a5e98ea2c0b55fb00",
+    address: "cardano:95a427e384527065f2f8946f5e86320d0117839a5e98ea2c0b55fb0048554e54",
     symbol: "HUNT",
     url: "https://app.dexhunter.io",
     description: "Biggest Cardano DEX Aggregator for Optimal DeFi Trading",
@@ -48687,7 +48687,7 @@ const data3: Protocol[] = [
   {
     id: "4845",
     name: "Danzo App", // Danzo Arena 
-    address: "cardano:bf3e19192da77dfadc7c9065944e50ca7e1a439d90833e3ae58b720a",
+    address: "cardano:bf3e19192da77dfadc7c9065944e50ca7e1a439d90833e3ae58b720a44414e5a4f",
     symbol: "DANZO",
     url: "https://cardanzoada.com/app/",
     description:

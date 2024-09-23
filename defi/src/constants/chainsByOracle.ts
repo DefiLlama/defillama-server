@@ -347,7 +347,7 @@ const chainsByOracle = {
     "Gnosis",
     "Base",
     "Polygon zkEVM",
-    "Mantle"
+    "Mantle",
     "Scroll"
   ],
 };

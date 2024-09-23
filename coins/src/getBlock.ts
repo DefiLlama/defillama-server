@@ -52,18 +52,18 @@ async function getBlock(provider: any, height: number | "latest", chain: string)
   if (block === null) {
     throw new Error(`Can't get block of chain ${chain} at height "${height}"`)
   }
-  const historical = await getHistoricalValues(blockPK(chain), block.timestamp)
-  if (historical.length) {
-    const highestBlock = Math.max(...historical.map((e: any) => e.height))
-    const highestTimestamp = Math.max(...historical.map((e: any) => e.height))
-    if (block.number < highestBlock && block.timestamp > highestTimestamp)
-      await sendMessage(
-        `${chain} block ${block.number} failed with timestamp ${block.timestamp}: id: ${provider.chainId}, string: ${provider.getBlock.toString()}`,
-        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-        true,
-      );
-      throw new Error(`failed to getBlock`)
-  }
+  // const historical = await getHistoricalValues(blockPK(chain), block.timestamp)
+  // if (historical.length) {
+  //   const highestBlock = Math.max(...historical.map((e: any) => e.height))
+  //   const highestTimestamp = Math.max(...historical.map((e: any) => e.height))
+  //   if (block.number < highestBlock && block.timestamp > highestTimestamp)
+  //     await sendMessage(
+  //       `${chain} block ${block.number} failed with timestamp ${block.timestamp}: id: ${provider.chainId}, string: ${provider.getBlock.toString()}`,
+  //       process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+  //       true,
+  //     );
+  //     throw new Error(`failed to getBlock`)
+  // }
   await ddb.put({
     PK: blockPK(chain),
     SK: block.timestamp,
@@ -172,5 +172,5 @@ const handler = async (
 
 export default wrap(handler);
 
-// handler({ pathParameters: { chain: 'ethereum', timestamp: getCurrentUnixTimestamp() } })
+handler({ pathParameters: { chain: 'ethereum', timestamp: '1727096400' } })
 // ts-node coins/src/getBlock.ts

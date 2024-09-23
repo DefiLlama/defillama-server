@@ -52,7 +52,7 @@ async function getBlock(provider: any, height: number | "latest", chain: string)
   if (block === null) {
     return errorResponse({ message: `Can't get block of chain ${chain} at height "${height}"`})
   }
-  const previous = await getClosestBlock(blockPK(chain), block.timestamp - 100, 'low')
+  const previous = await getClosestBlock(blockPK(chain), block.timestamp - 1, 'low')
   if (previous && block.number < previous.height && block.timestamp > previous.timestamp) {
     await sendMessage(
       `${chain} block ${block.number} failed with timestamp ${block.timestamp}: id: ${provider.chainId}, string: ${provider.getBlock.toString()}`,

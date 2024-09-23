@@ -56062,7 +56062,7 @@ const data3: Protocol[] = [
     oracles: [],
     github: ["K9-Finance-DAO"],
     audit_links: ["https://www.k9finance.com/audit"],
-    listedAt: 1727088112
+    listedAt: 1727115021
   },
 ];
 

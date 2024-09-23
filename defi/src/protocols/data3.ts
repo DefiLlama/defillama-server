@@ -56089,6 +56089,29 @@ const data3: Protocol[] = [
     audit_links: ["https://easy-fight-6a5.notion.site/Salus-Audit-Report-294ce2c0b4e442cb81e090b0232ae243"],
     listedAt: 1727119135
   },
+  {
+    id: "5175",
+    name: "Hedgehog Markets",
+    address: null,
+    symbol: "-",
+    url: "https://hedgehog.markets/",
+    description:
+      "Hedgehog Markets is the first Prediction Market market platform on Solana. They offer various markets types and markets that cover any and all topics",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/hedgehog-markets.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Solana"],
+    module: "hedgehog-markets/index.js",
+    twitter: "HedgehogMarket",
+    forkedFrom: [],
+    oracles: [],
+    github: ["Hedgehog-Markets"],
+    listedAt: 1727135183
+  },
 ];
 
 export default data3;

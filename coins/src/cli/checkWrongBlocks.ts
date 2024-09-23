@@ -6,7 +6,7 @@ const DRY_RUN:boolean = true
 
 async function main() {
     await Promise.all(chains.map(async chain=>{
-        const entries = await getHistoricalValues(blockPK(chain), 1726701200)
+        const entries = await getHistoricalValues(blockPK(chain))
         let lastHeight = 0
         entries.forEach(entry=>{
             if(entry.height < lastHeight){

@@ -55961,7 +55961,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "Derivatives",
     chains: ["BounceBit"],
     module: "bb-club-quanto/index.js",
     twitter: "BounceBitClub",

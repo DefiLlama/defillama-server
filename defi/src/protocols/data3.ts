@@ -55992,6 +55992,52 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bounceclub",
     listedAt: 1727084861
   },
+  {
+    id: "5171",
+    name: "Solbank Finance",
+    address: "solana:8twuNzMszqWeFbDErwtf4gw13E6MUS4Hsdx5mi3aqXAM",
+    symbol: "SB",
+    url: "https://solbank.finance",
+    description:
+      "First mover DeFi hedge fund on Solana enabling high-APY staking, meme farming and more",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/solbank-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Solana"],
+    module: "solbank-finance/index.js",
+    twitter: "Solbankfi",
+    forkedFrom: [],
+    oracles: [],
+    github: ["SolbankFinance"],
+    listedAt: 1727088061
+  },
+  {
+    id: "5172",
+    name: "StakeStone SBTC",
+    address: null,
+    symbol: "-",
+    url: "https://stakestone.io/#/home",
+    description:
+      "SBTC is designed to act as a liquid, index BTC, addressing the issue of illiquid native BTC assets by providing robust omnichain liquidity. This innovative solution will facilitate BTC asset trading and enhance the utility of native BTC within EVM ecosystems as well as other Layer 1 and Layer 2 networks. SBTC will be composed of a diversified basket of ERC20 tokens, primarily BTCB, ensuring a solid foundation of liquidity.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/stakestone-sbtc.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Binance"],
+    module: "stakestone-btc/index.js",
+    twitter: "Stake_Stone",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/STONE%20BTC%20-%20SlowMist%20Audit%20Report_en-us.pdf"],
+    listedAt: 1727088112
+  },
 ];
 
 export default data3;

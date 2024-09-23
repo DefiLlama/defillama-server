@@ -28319,15 +28319,15 @@ const data3: Protocol[] = [
   },
   {
     id: "3948",
-    name: "Chain Key Tokens", // previous ckBTC
+    name: "Chain Fusion", // previous ckBTC , than Chain Key Tokens
     address: null,
     symbol: "-",
     assetToken: "ckBTC",
-    url: "https://dashboard.internetcomputer.org/bitcoin",
+    url: "https://internetcomputer.org/docs/current/developer-docs/multi-chain/overview",
     description:
-      "Chain-key Bitcoin (ckBTC) is a token on the Internet Computer (ICP) that is backed 1:1 by bitcoin (BTC). Conversion and redemption is fully automated via canister smart contracts using threshold cryptography - no trusted intermediaries required.ckBTC transactions have a 1-2 second finality and incur negligible fees, making it a viable option for everyday economic activities such as buying groceries or getting a coffee.",
+      "Chain Fusion allows the Internet Computer Protocol (ICP) to interconnect with multiple blockchains in a decentralized manner, eliminating the need for a single trusted intermediary such as a bridge. The ability of ICP smart contracts to utilise threshold signature schemes to sign and submit transactions directly to other chains enables Chain-key tokens. Each Chain-key token on ICP is backed 1:1 by the native asset and is redeemable at any time. The native wallets are managed by a smart contracts on ICP, there are no intermediaries or centralized bridges. Chain-key tokens begin with ck (e.g. ckBTC, ckETH, etc.). They transact quickly (1 second finality) and transaction fees are negligible.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/chain-key-tokens.jpg`, //chain-key-tokens
+    logo: `${baseIconsUrl}/chain-fusion.jpg`, //chain-key-tokens
     audits: "2",
     audit_note: null,
     gecko_id: null,

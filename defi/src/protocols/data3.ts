@@ -56040,6 +56040,30 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/STONE%20BTC%20-%20SlowMist%20Audit%20Report_en-us.pdf"],
     listedAt: 1727088112
   },
+  {
+    id: "5173",
+    name: "K9 Finance DAO",
+    address: "0x91fbB2503AC69702061f1AC6885759Fc853e6EaE",
+    symbol: "KNINE",
+    url: "https://www.k9finance.com",
+    description:
+      "K9 Finance DAO is the official liquid staking protocol for Shibarium and BONE",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/k9-finance-dao.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "k9-finance-dao",
+    cmcId: "29665",
+    category: "Liquid Staking",
+    chains: ["Ethereum", "Shibarium"],
+    module: "k9-finance/index.js",
+    twitter: "k9finance",
+    forkedFrom: [],
+    oracles: [],
+    github: ["K9-Finance-DAO"],
+    audit_links: ["https://www.k9finance.com/audit"],
+    listedAt: 1727088112
+  },
 ];
 
 export default data3;

@@ -48686,7 +48686,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4845",
-    name: "Danzo App",
+    name: "Danzo App", // Danzo Arena 
     address: "cardano:bf3e19192da77dfadc7c9065944e50ca7e1a439d90833e3ae58b720a",
     symbol: "DANZO",
     url: "https://cardanzoada.com/app/",

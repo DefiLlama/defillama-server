@@ -56066,6 +56066,29 @@ const data3: Protocol[] = [
     treasury: "k9finance.js",
     listedAt: 1727115021
   },
+  {
+    id: "5174",
+    name: "four.meme",
+    address: null,
+    symbol: "-",
+    url: "https://four.meme/",
+    description:
+      "Four.meme is a premier fair launch platform for meme coins on the BSC chain. Our platform is dedicated to empowering creators and communities to launch successful meme coin projects with ease.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/four.meme.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Binance"],
+    module: "four-meme/index.js",
+    twitter: "four_meme_",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://easy-fight-6a5.notion.site/Salus-Audit-Report-294ce2c0b4e442cb81e090b0232ae243"],
+    listedAt: 1727119135
+  },
 ];
 
 export default data3;

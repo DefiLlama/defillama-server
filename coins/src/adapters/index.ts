@@ -13,6 +13,7 @@ export default {
   ...balancer.adapters,
   ...others.adapters,
   fortunafi: require("./rwa/fortunafi"),
+  midas: require("./rwa/midas"),
   stobox: require("./rwa/stobox"),
   alex: require("./markets/alex"),
   seamless: require("./other/seamless"),

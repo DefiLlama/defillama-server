@@ -56030,7 +56030,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
+    category: "Indexes",
     chains: ["Binance"],
     module: "stakestone-btc/index.js",
     twitter: "Stake_Stone",

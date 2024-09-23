@@ -153,12 +153,7 @@ export default {
         "id": "1053"
     },
     "dodo": {
-        "id": "146",
-        protocolsData: {
-            "dodo": {
-                "id": "146",
-            }
-        }
+        "id": "146"
     },
     "velodrome": {
         parentId: "Velodrome",

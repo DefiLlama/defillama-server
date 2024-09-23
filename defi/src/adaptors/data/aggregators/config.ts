@@ -102,18 +102,8 @@ export default {
   "bebop": {
     id: "3927",
   },
-  "dodo": {
-    id: "146",
-    protocolsData: {
-      "dodo-agg": {
-        id: "5062",
-      }
-    },
-    cleanRecordsConfig: {
-        genuineSpikes: {
-          1719360000: false
-        }
-    }
+  "dodo-agg": {
+    id: "5062",
   },
   "paraswap": {
     id: "894",

@@ -103,7 +103,6 @@ export const bridges = [
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { Coin, batchWrite2, readCoins2, translateItems } from "../../../coins2";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 

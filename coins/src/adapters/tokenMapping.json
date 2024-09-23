@@ -682,6 +682,16 @@
       "decimals": "18",
       "symbol": "QI",
       "to": "coingecko#qi-dao"
+    },
+    "0x5a7facb970d094b6c7ff1df0ea68d99e6e73cbff": {
+      "to": "coingecko#wrapped-eeth",
+      "decimals": 18,
+      "symbol": "weETH"
+    },
+    "0x2416092f143378750bb29b79ed961ab195cceea5": {
+      "to": "coingecko#renzo-restaked-eth",
+      "decimals": 18,
+      "symbol": "ezETH"
     }
   },
   "rsk": {
@@ -750,6 +760,11 @@
       "to": "coingecko#tether",
       "decimals": 6,
       "symbol": "USDT"
+    },
+    "0xb6fe221fe9eef5aba221c348ba20a1bf5e73624c": {
+      "to": "coingecko#rocket-pool-eth",
+      "decimals": 18,
+      "symbol": "rETH"
     }
   },
   "jbc": {
@@ -1095,6 +1110,16 @@
       "to": "coingecko#bitcoin-bep2",
       "decimals": "18",
       "symbol": "BTCB"
+    },
+    "0xe7798f023fc62146e8aa1b36da45fb70855a77ea": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0x50c5725949a6f0c72e6c4a641f24049a917db0cb": {
+      "to": "coingecko#first-digital-usd",
+      "decimals": 18,
+      "symbol": "FDUSD"
     }
   },
   "solana": {
@@ -1848,7 +1873,7 @@
       "to": "coingecko#tron"
     },
     "orai1dqa52a7hxxuv8ghe7q5v0s36ra0cthea960q2cukznleqhk0wpnshfegez": {
-     "name": "WETH",
+      "name": "WETH",
       "decimals": "6",
       "symbol": "WETH",
       "to": "coingecko#weth"
@@ -1887,6 +1912,11 @@
       "to": "coingecko#polkamarkets",
       "decimals": 18,
       "symbol": "POLK"
+    },
+    "0xaf204776c7245bf4147c2612bf6e5972ee483701": {
+      "to": "coingecko#savings-dai",
+      "decimals": 18,
+      "symbol": "sDAI"
     }
   },
   "mode": {
@@ -2370,6 +2400,11 @@
       "to": "coingecko#polkamarkets",
       "decimals": 18,
       "symbol": "POLK"
+    },
+    "0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
     }
   },
   "moonbeam": {
@@ -2847,6 +2882,11 @@
       "decimals": "18",
       "symbol": "ETH",
       "to": "coingecko#ethereum"
+    },
+    "0xf8a5d147a3a3416ab151758d969eff15c27ab743": {
+      "to": "blast:0x59c159e5a4f4d1c86f7abdc94b7907b7473477f6",
+      "decimals": 18,
+      "symbol": "LockedBLASTUP"
     }
   },
   "bitcoin": {
@@ -3225,6 +3265,21 @@
       "decimals": "18",
       "symbol": "FTN",
       "to": "coingecko#fasttoken"
+    },
+    "0x780fb5aca83f2e3f57ee18cc3094988ef49d8c3d": {
+      "to": "coingecko#lolik-staked-ftn",
+      "decimals": 18,
+      "symbol": "stFTN"
+    },
+    "0x4b7708ee3ccbd3f9af68208e69ad31f611e1befe": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "mUSDC"
+    },
+    "0xb7dc5eca6de5cb9b46ac405d3d4596333714f3f7": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "mUSDT"
     }
   },
   "zklink": {
@@ -3509,6 +3564,21 @@
       "decimals": "18",
       "symbol": "LAC",
       "to": "coingecko#la-coin"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#la-coin",
+      "decimals": 18,
+      "symbol": "LAC"
+    },
+    "0x42c8c9c0f0a98720dacdaeac0c319cb272b00d7e": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0xf54b8cb8eeee3823a55dddf5540ceaddf9724626": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
     }
   },
   "genesys": {
@@ -3643,6 +3713,11 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     },
+    "0xf8c374ce88a3be3d374e8888349c7768b607c755": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
     "0xf6718b2701d4a6498ef77d7c152b2137ab28b8a3": {
       "decimals": "18",
       "symbol": "stBTC",
@@ -3728,6 +3803,11 @@
       "decimals": "6",
       "symbol": "USDT.e",
       "to": "coingecko#tether"
+    },
+    "0x7d02A3E0180451B17e5D7f29eF78d06F8117106C": {
+      "to": "coingecko#dai",
+      "decimals": 18,
+      "symbol": "DAI"
     }
   },
   "real": {
@@ -3844,7 +3924,7 @@
     "0x9bd1e0a3a727d0d4f4e9a6d59022e071ddc79924 ": {
       "to": "coingecko#marcopolo",
       "decimals": 18,
-      "symbol": "0x9bd1e0a3a727d0d4f4e9a6d59022e071ddc79924 "
+      "symbol": "MAPO "
     }
   },
   "karura": {
@@ -4076,6 +4156,194 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC"
+    }
+  },
+  "chainflip": {
+    "Dot": {
+      "to": "coingecko#polkadot",
+      "decimals": 10,
+      "symbol": "Dot"
+    },
+    "Usdc": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "Usdc"
+    },
+    "Flip": {
+      "to": "coingecko#chainflip",
+      "decimals": 18,
+      "symbol": "Flip"
+    },
+    "Btc": {
+      "to": "coingecko#bitcoin",
+      "decimals": 8,
+      "symbol": "Btc"
+    },
+    "Eth": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "Eth"
+    },
+    "Usdt": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "Usdt"
+    },
+    "ArbEth": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ArbEth"
+    },
+    "ArbUsdc": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "ArbUsdc"
+    }
+  },
+  "thundercore": {
+    "0xc3c857a9e5be042c8acf4f2827aa053e93b5d039": {
+      "to": "coingecko#thunder-token",
+      "decimals": 18,
+      "symbol": "veTT"
+    }
+  },
+  "oasis": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#oasis-network",
+      "decimals": 18,
+      "symbol": "OAS"
+    }
+  },
+  "heco": {
+    "0x5545153ccfca01fbd7dd11c0b23ba694d9509a6f": {
+      "to": "coingecko#huobi-token",
+      "decimals": 18,
+      "symbol": "WHT"
+    }
+  },
+  "zircuit": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    }
+  },
+  "islm": {
+    "0x0ce35b0d42608ca54eb7bcc8044f7087c18e7717": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    }
+  },
+  "cronos_zkevm": {
+    "0xc1bf55ee54e16229d9b369a5502bfe5fc9f20b6d": {
+      "to": "coingecko#crypto-com-chain",
+      "decimals": 18,
+      "symbol": "wzkCRO"
+    },
+    "0x898b3560affd6d955b1574d87ee09e46669c60ea": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    }
+  },
+  "noble": {
+    "uusdc": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "uusdc"
+    },
+    "ausdy": {
+      "to": "coingecko#ondo-us-dollar-yield",
+      "decimals": 18,
+      "symbol": "ausdy"
+    }
+  },
+  "neox": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#gas",
+      "decimals": 18,
+      "symbol": "GAS"
+    },
+    "0x008cd7f573998cb841a5d82a857ed1f0ce03a653": {
+      "to": "coingecko#gas",
+      "decimals": 18,
+      "symbol": "WGAS"
+    },
+    "0xde41591ed1f8ed1484ac2cd8ca0876428de60eff": {
+      "to": "coingecko#gas",
+      "decimals": 18,
+      "symbol": "WGAS"
+    }
+  },
+  "aura": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#aura-network",
+      "decimals": 18,
+      "symbol": "AURA"
+    },
+    "0xDE47A655a5d9904BD3F7e1A536D8323fBD99993A": {
+      "to": "coingecko#aura-network",
+      "decimals": 18,
+      "symbol": "WAURA"
+    },
+    "0x80b5a32e4f032b2a058b4f29ec95eefeeb87adcd": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    }
+  },
+  "gravity": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#g-token",
+      "decimals": 18,
+      "symbol": "G"
+    },
+    "0xbb859e225ac8fb6be1c7e38d87b767e95fef0ebd": {
+      "to": "coingecko#g-token",
+      "decimals": 18,
+      "symbol": "wG"
+    },
+    "0xf6f832466Cd6C21967E0D954109403f36Bc8ceaA": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0xfbda5f676cb37624f28265a144a48b0d6e87d3b6": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    }
+  },
+  "idex": {
+    "0xfbda5f676cb37624f28265a144a48b0d6e87d3b6": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    }
+  },
+  "etn": {
+    "0x138dafbda0ccb3d8e39c19edb0510fc31b7c1c77": {
+      "to": "coingecko#electroneum",
+      "decimals": 18,
+      "symbol": "ETN"
+    }
+  },
+  "polynomial": {
+    "0x17C9D8Cef7Ef072844EEaEdE1F9f54C7E3fa8743": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0x615172e47c0C5A6dA8ea959632Ac0166f7a59eDc": {
+      "to": "coingecko#savings-dai",
+      "decimals": 18,
+      "symbol": "SDAI"
+    },
+    "0x2A06DEAc3E863c23DD6a89Eeacd80aBA9E08B77B": {
+      "to": "coingecko#ethena-staked-usde",
+      "decimals": 18,
+      "symbol": "sUSDe"
     }
   }
 }

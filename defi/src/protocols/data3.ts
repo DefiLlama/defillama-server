@@ -56045,6 +56045,7 @@ const data3: Protocol[] = [
     name: "K9 Finance DAO",
     address: "0x91fbB2503AC69702061f1AC6885759Fc853e6EaE",
     symbol: "KNINE",
+    assetToken: "knBONE",
     url: "https://www.k9finance.com",
     description:
       "K9 Finance DAO is the official liquid staking protocol for Shibarium and BONE",
@@ -56062,6 +56063,7 @@ const data3: Protocol[] = [
     oracles: [],
     github: ["K9-Finance-DAO"],
     audit_links: ["https://www.k9finance.com/audit"],
+    treasury: "k9finance.js",
     listedAt: 1727115021
   },
 ];

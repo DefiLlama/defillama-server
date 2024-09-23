@@ -5519,6 +5519,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BounceBitClub",
   },
+  {
+    id: "parent#stakestone",
+    name: "StakeStone",
+    url: "https://stakestone.io",
+    description:
+      "One-Stop Staking Protocol For Omnichain LST Liquidity.",
+    logo: `${baseIconsUrl}/stakestone.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Stake_Stone",
+  },
 ];
 
 export default parentProtocols;

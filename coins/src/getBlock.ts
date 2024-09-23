@@ -47,23 +47,20 @@ function zkSyncBlockProvider() {
 
 export const blockPK = (chain: string) => `block#${chain}`
 
-async function getBlock(provider: any, height: number | "latest", chain: string): Promise<TimestampBlock> {
+async function getBlock(provider: any, height: number | "latest", chain: string): Promise<TimestampBlock | IResponse> {
   const block = await provider.getBlock(height)
   if (block === null) {
-    throw new Error(`Can't get block of chain ${chain} at height "${height}"`)
+    return errorResponse({ message: `Can't get block of chain ${chain} at height "${height}"`})
   }
-  // const historical = await getHistoricalValues(blockPK(chain), block.timestamp)
-  // if (historical.length) {
-  //   const highestBlock = Math.max(...historical.map((e: any) => e.height))
-  //   const highestTimestamp = Math.max(...historical.map((e: any) => e.height))
-  //   if (block.number < highestBlock && block.timestamp > highestTimestamp)
-  //     await sendMessage(
-  //       `${chain} block ${block.number} failed with timestamp ${block.timestamp}: id: ${provider.chainId}, string: ${provider.getBlock.toString()}`,
-  //       process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-  //       true,
-  //     );
-  //     throw new Error(`failed to getBlock`)
-  // }
+  const previous = await getClosestBlock(blockPK(chain), block.timestamp - 100, 'low')
+  if (previous && block.number < previous.height && block.timestamp > previous.timestamp) {
+    await sendMessage(
+      `${chain} block ${block.number} failed with timestamp ${block.timestamp}: id: ${provider.chainId}, string: ${provider.getBlock.toString()}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+      true,
+    );
+    return errorResponse({ message: `failed to getBlock`})
+  }
   await ddb.put({
     PK: blockPK(chain),
     SK: block.timestamp,
@@ -139,7 +136,9 @@ const handler = async (
     getClosestBlock(blockPK(chain), timestamp, "low")
   ])
   if (top === undefined) {
-    top = await getBlock(provider as any, "latest", chain);
+    const topOrError = await getBlock(provider as any, "latest", chain);
+    if ('body' in topOrError) return topOrError as IResponse
+    else top = topOrError as TimestampBlock
     const currentTimestamp = getCurrentUnixTimestamp()
     if ((top.timestamp - currentTimestamp) < -30 * 60) {
       throw new Error(`Last block of chain "${chain}" is further than 30 minutes into the past`)
@@ -157,7 +156,9 @@ const handler = async (
   let block = top;
   while ((high - low) > 1) {
     const mid = Math.floor((high + low) / 2);
-    block = await getBlock(provider as any, mid, chain);
+    const blockOrError = await getBlock(provider as any, mid, chain);
+    if ('body' in block) return blockOrError as IResponse
+    else block = blockOrError as TimestampBlock
     if (block.timestamp < timestamp) {
       low = mid + 1;
     } else {
@@ -171,6 +172,3 @@ const handler = async (
 }
 
 export default wrap(handler);
-
-// handler({ pathParameters: { chain: 'ethereum', timestamp: '1727096400' } })
-// ts-node coins/src/getBlock.ts

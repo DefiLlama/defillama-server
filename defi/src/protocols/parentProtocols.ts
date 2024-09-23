@@ -5507,6 +5507,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["Typus-Lab"],
     twitter: "TypusFinance",
   },
+  {
+    id: "parent#bounceclub",
+    name: "BounceClub",
+    url: "https://club.bouncebit.io",
+    description:
+      "BounceBit Club V2 is an holistic blockchain ecosystem on BounceBit Chain. It features Bitcoin integration, AI-powered trading tools, comprehensive DeFi primitives, meme token creation, and GameFi elements. Built on a secure foundation, it offers users a versatile platform to explore, create, and manage diverse blockchain applications through a user-friendly interface, catering to both novice and experienced crypto enthusiasts.",
+    logo: `${baseIconsUrl}/bounceclub.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BounceBitClub",
+  },
 ];
 
 export default parentProtocols;

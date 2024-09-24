@@ -56136,7 +56136,29 @@ const data3: Protocol[] = [
     github: ["sense-finance"],
     listedAt: 1727183782
   },
-
+  {
+    id: "5177",
+    name: "Filament Finance",
+    address: null,
+    symbol: "-",
+    url: "https://filament.finance",
+    description:
+      "Filament is a super app for on-chain derivatives, built on Sei’s Parallelised EVM. It ensures high trading and capital efficiency, even in low liquidity situations, by using a hybrid model that combines a Central Limit Order Book (CLOB) and a Compartment-based Pool for order matching.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/filament-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Sei"],
+    module: "filament/index.js",
+    twitter: "FilamentFinance",
+    forkedFrom: [],
+    oracles: [],
+    github: ["FilamentFinance"],
+    listedAt: 1727184099
+  },
 ];
 
 export default data3;

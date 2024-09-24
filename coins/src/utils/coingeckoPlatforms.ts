@@ -1,5 +1,8 @@
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
+import { getCurrentUnixTimestamp } from "./date";
 import ddb from "./shared/dynamodb";
+
+export const staleMargin = 6 * 60 * 60;
 
 interface StringObject {
   [id: string]: string | undefined;
@@ -49,7 +52,8 @@ export async function iterateOverPlatforms(
         const address =
           chain + ":" + lowercase(platforms[platform]!, chain).trim();
         const PK = `asset#${address}`;
-        if (!coinPlatformData[PK]) {
+        const margin = getCurrentUnixTimestamp() - staleMargin
+        if (!coinPlatformData[PK] || coinPlatformData[PK].timestamp < margin) {
           await iterator(PK);
         }
       } catch (e) {

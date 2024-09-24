@@ -413,7 +413,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#trader-joe",
-    name: "LF Joe",
+    name: "LFJ",
     url: "https://lfj.gg/",
     description: "Let's F***ing Joe is your one-stop decentralized trading platform",
     logo: `${baseIconsUrl}/trader-joe.png`,

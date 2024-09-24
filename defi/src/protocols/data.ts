@@ -7186,7 +7186,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "TOKE",
     url: "https://www.tokemak.xyz",
     description:
-      "Tokemak creates sustainable DeFi liquidity and capital efficient markets through a convenient decentralized market making protocol.",
+      "Tokemak Autopilot offers a new way to provide liquidity. Autopools autonomously rebalance your LP positions across a set of DEXs and correlated-assets, while keeping you composable within DeFi.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tokemak.jpg`,
     audits: "2",
@@ -7196,11 +7196,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Ethereum"],
     module: "tokemak/index.js",
-    twitter: "TokenReactor",
-    audit_links: ["https://omniscia.io/tokemak-capital-management-protocol/"],
+    twitter: "TokemakXYZ",
+    audit_links: ["https://docs.tokemak.xyz/developer-docs/security-and-audits"],
     treasury: "tokemak.js",
     governanceID: ["snapshot:tokemak.eth"],
     github: ["Tokemak"],
+    oracles: ["RedStone", "Chainlink"]
   },
   {
     id: "439",

@@ -4344,6 +4344,13 @@
       "to": "coingecko#ethena-staked-usde",
       "decimals": 18,
       "symbol": "sUSDe"
-    }
+    },
+  },
+  "darwinia": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#darwinia-network-native-token",
+      "decimals": 18,
+      "symbol": "RING"
+    },
   }
 }

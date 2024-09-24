@@ -5,6 +5,7 @@ import {
   Coin,
   CoinMetadata,
   iterateOverPlatforms,
+  staleMargin
 } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
@@ -13,8 +14,6 @@ import { batchReadPostgres, getRedisConnection } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import { Connection, PublicKey } from "@solana/web3.js";
-
-const staleMargin = 6 * 60 * 60;
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -428,7 +427,7 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   let coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
-
+  
   if (coinType || hourly) {
     const metadatas = await getCGCoinMetadatas(
       coins.map((coin) => coin.id),

@@ -1,5 +1,6 @@
 // https://api.coingecko.com/api/v3/asset_platforms
 export const chainToCoingeckoId = {
+  shibarium: 'shibarium',
   bsc: "binance-smart-chain",
   ethereum: "ethereum",
   polygon: "polygon-pos",

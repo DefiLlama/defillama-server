@@ -56159,6 +56159,28 @@ const data3: Protocol[] = [
     github: ["FilamentFinance"],
     listedAt: 1727184099
   },
+  {
+    id: "5178",
+    name: "moonthat",
+    address: null,
+    symbol: "-",
+    url: "https://moonthat.gg/",
+    description:
+      "A way to launch/buy memecoins",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/moonthat.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Ethereum"],
+    module: "moonthat-gg/index.js",
+    twitter: "moonthatgg",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727204397
+  },
 ];
 
 export default data3;

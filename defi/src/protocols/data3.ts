@@ -56112,6 +56112,31 @@ const data3: Protocol[] = [
     github: ["Hedgehog-Markets"],
     listedAt: 1727135183
   },
+  {
+    id: "5176",
+    name: "Rumpel Labs",
+    address: null,
+    symbol: "-",
+    url: "https://www.rumpel.xyz",
+    description:
+      "Rumpel is a point tokenization protocol. It enables secondary market liquidity and price discovery for offchain loyalty points, unlocking new opportunities for point holders, traders, airdrop hunters, and point issuers.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rumpel-labs.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "rumpel/index.js",
+    twitter: "RumpelLabs",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/sense-finance/point-tokenization-vault/blob/main/audits/2024.04.25%20FPS%20Points%20Tokenization.pdf"],
+    github: ["sense-finance"],
+    listedAt: 1727183782
+  },
+
 ];
 
 export default data3;

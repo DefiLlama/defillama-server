@@ -1,7 +1,7 @@
 import { multiCall } from "@defillama/sdk/build/abi/index";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
@@ -14,7 +14,7 @@ const gasTokenDummyAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
 async function processDbData(
   pools: { [pool: string]: { [address: string]: string } },
-  coinsData: CoinData[],
+  coinsData: { [key: string]: CoinData},
   chain: string,
 ) {
   return Object.keys(pools)
@@ -23,9 +23,7 @@ async function processDbData(
         pools[b].underlying.toLowerCase() === gasTokenDummyAddress
           ? wrappedGasTokens[chain]
           : pools[b].underlying.toLowerCase();
-      const coinData: CoinData = coinsData.filter(
-        (c: CoinData) => c.address.toLowerCase() === token,
-      )[0];
+      const coinData: CoinData = coinsData[token]
 
       if (coinData == undefined) {
         console.log(
@@ -119,7 +117,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     ),
   ]);
 
-  let coinsData: CoinData[] = await getTokenAndRedirectData(
+  let coinsData = await getTokenAndRedirectDataMap(
     Object.entries(pools).map((p: any) =>
       p[1].underlying.toLowerCase() === gasTokenDummyAddress
         ? wrappedGasTokens[chain]

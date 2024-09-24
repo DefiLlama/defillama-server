@@ -1,9 +1,9 @@
 const abi = require("./abi.json");
 const contracts = require("./contracts.json");
-import { Write, CoinData } from "../../utils/dbInterfaces";
+import { Write } from "../../utils/dbInterfaces";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
 import { getApi, } from "../../utils/sdk";
 import { ChainApi } from "@defillama/sdk";
@@ -292,9 +292,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     // get pool tokens prices/info
     let allPoolTokens = filteredData.map((p: any) => p.tokens).flat()
     allPoolTokens = [...new Set(allPoolTokens)]
-    const coinsData = await getTokenAndRedirectData(allPoolTokens, api.chain, api.timestamp!, 4);
-    const coinDataMap: { [key: string]: CoinData } = {}
-    coinsData.forEach((c: CoinData) => coinDataMap[c.address] = c)
+    const coinDataMap = await getTokenAndRedirectDataMap(allPoolTokens, api.chain, api.timestamp!, 4);
     unknownTokensList.push(...allPoolTokens.filter((t: string) => !coinDataMap[t]))
 
     // add pools to write list

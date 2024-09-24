@@ -3,7 +3,7 @@ import { Write } from "../../utils/dbInterfaces";
 import { getApi } from "../../utils/sdk";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
 import { request } from "graphql-request";
 import { getCurrentUnixTimestamp } from "../../../utils/date";
@@ -147,7 +147,7 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
         calls: vaults,
       }),
     ]);
-    const coinData = await getTokenAndRedirectData(
+    const coinData = await getTokenAndRedirectDataMap(
       [...token0s, ...token1s],
       chain.identifier,
       timestamp,
@@ -155,8 +155,8 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
 
     uBalances.forEach(
       ({ total0: token0Bal, total1: token1Bal }: any, i: number) => {
-        const t0Data = getTokenInfo(token0s[i]);
-        const t1Data = getTokenInfo(token1s[i]);
+        const t0Data = coinData[token0s[i].toLowerCase()]
+        const t1Data = coinData[token1s[i].toLowerCase()]
 
         if (!t0Data || !t1Data) return;
 
@@ -182,10 +182,5 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
         );
       },
     );
-
-    function getTokenInfo(token: string) {
-      token = token.toLowerCase();
-      return coinData.find((i) => i.address.toLowerCase() === token);
-    }
   }
 }

@@ -2447,5 +2447,8 @@ export default {
                 "id": "4888",
             }
         }
+    },
+    "sharpe-dex": {
+        id: "2756"
     }
 } as AdaptorsConfig

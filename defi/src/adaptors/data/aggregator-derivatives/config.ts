@@ -54,5 +54,8 @@ export default {
   },
   "flat-money": {
     "id": "4503"
+  },
+  "sharpe-perp": {
+    "id": "5165"
   }
 } as AdaptorsConfig;

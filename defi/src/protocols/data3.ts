@@ -50430,7 +50430,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "pumpbtc",
     cmcId: null,
-    category: "Liquid Restaking",
+    category: "Bridge",
     chains: ["Ethereum", "Binance", "Mantle"],
     oracles: [],
     forkedFrom: [],

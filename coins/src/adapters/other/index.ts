@@ -520,7 +520,7 @@ export async function salt(timestamp: number = 0) {
     18,
     "SALT",
     timestamp,
-    "salty",
+    "other",
     0.95,
   );
   return writes;
@@ -550,7 +550,7 @@ async function wNLXCore(timestamp: number = 0, writes: Write[] = []) {
     timestamp,
     writes,
     pricesObject,
-    projectName: "salt",
+    projectName: "other",
   });
 }
 
@@ -574,10 +574,11 @@ async function dsu(timestamp: number = 0, writes: Write[] = []) {
     timestamp,
     writes,
     pricesObject,
-    projectName: "salt",
+    projectName: "other",
   });
 }
 
+   // price taken from unknownTokensV3 instead
 async function kernel(timestamp: number = 0, writes: Write[] = []) {
   const chain = "ethereum";
   const ETH = "0x0000000000000000000000000000000000000000";
@@ -612,7 +613,7 @@ async function kernel(timestamp: number = 0, writes: Write[] = []) {
     chain,
     timestamp,
     pricesObject,
-    projectName: "kelp",
+    projectName: "other",
     writes,
   });
 }
@@ -634,7 +635,7 @@ async function reyaUSD(timestamp: number = 0, writes: Write[] = []) {
     chain,
     timestamp,
     pricesObject,
-    projectName: "reya-usd",
+    projectName: "other",
     writes,
   });
 }
@@ -660,7 +661,36 @@ async function symboitic(timestamp: number = 0, writes: Write[] = []) {
     if (isNaN(price)) return;
     pricesObject[entity] = { price, underlying, }
   })
-  return getWrites({ chain, timestamp, pricesObject, projectName: "dc-wbtc", writes, })
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other", writes, })
+}
+
+
+async function karakWrapped(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'ethereum'
+  const api = await getApi(chain, timestamp)
+  const wrappedTokens = {
+    '0x2dabcea55a12d73191aece59f508b191fb68adac':  '0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee',
+    '0xbe3ca34d0e877a1fc889bd5231d65477779aff4e':  '0x4c9EDD5852cd905f086C759E8383e09bff1E68B3',
+    '0x82f5104b23FF2FA54C2345F821dAc9369e9E0B26':  '0x19d0D8e6294B7a04a2733FE433444704B791939A',
+  }
+  const tokens = Object.keys(wrappedTokens)
+  const uTokens = Object.values(wrappedTokens)
+  const supplies = await api.multiCall({  abi: 'erc20:totalSupply', calls: tokens})
+  const bals = await api.multiCall({ abi: 'erc20:balanceOf', calls: uTokens.map((v, i) => ({ target: v, params: tokens[i]}))})
+  const decimalsAll = await api.multiCall({ abi: 'erc20:decimals', calls: tokens })
+  const uDecimalsAll = await api.multiCall({ abi: 'erc20:decimals', calls: uTokens })
+  const pricesObject = {  } as any
+  tokens.forEach((entity: any, i: any) => {
+    const underlying = uTokens[i]
+    const bal = bals[i]
+    const supply = supplies[i]
+    const decimals = decimalsAll[i]
+    const uDecimals = uDecimalsAll[i]
+    const price = bal * 10 ** (uDecimals - decimals) / supply
+    if (isNaN(price)) return;
+    pricesObject[entity] = { price, underlying, }
+  })
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other", writes, })
 }
 
 export const adapters = {
@@ -693,4 +723,5 @@ export const adapters = {
   opal,
   // kernel,   // price taken from unknownTokensV3 instead
   reyaUSD,
+  karakWrapped,
 };

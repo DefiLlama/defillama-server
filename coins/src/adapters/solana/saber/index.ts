@@ -1,6 +1,6 @@
 
 import { Write, CoinData, } from "../../utils/dbInterfaces";
-import { addToDBWritesList, getTokenAndRedirectData, } from "../../utils/database";
+import { addToDBWritesList, getTokenAndRedirectDataMap, } from "../../utils/database";
 import { getConfig, } from "../../../utils/cache";
 import { getTokenAccountBalances, getTokenSupplies, getConnection, getMultipleAccountBuffers, } from "../utils";
 import { PublicKey, } from "@solana/web3.js"
@@ -36,7 +36,7 @@ async function getTokenPrices(timestamp: number) {
     getTokenSupplies(tokens),
     getTokenAccountBalances(reservesA, { individual: true, }),
     getTokenAccountBalances(reservesB, { individual: true, }),
-    getTokenAndRedirectData(underlyings, chain, timestamp),
+    getTokenAndRedirectDataMap(underlyings, chain, timestamp),
   ])
 
   const blacklisted = new Set([
@@ -47,8 +47,8 @@ async function getTokenPrices(timestamp: number) {
     tokenInfo[i].decimals = decimals
     if (blacklisted.has(tokensA[i]) || blacklisted.has(tokensB[i])) return;
 
-    const dataA: (CoinData | undefined) = coinsData.find((c: CoinData) => c.address === tokensA[i])
-    const dataB: (CoinData | undefined) = coinsData.find((c: CoinData) => c.address === tokensB[i])
+    const dataA: (CoinData | undefined) = coinsData[tokensA[i]]
+    const dataB: (CoinData | undefined) = coinsData[tokensB[i]]
     if (!dataA || !dataB) return;
     const symbol = `${dataA.symbol}-${dataB.symbol}-saber-lp`
     const confidence = (dataA.confidence ?? 0) > (dataB.confidence ?? 0) ? (dataA.confidence ?? 0) : (dataB.confidence ?? 0)
@@ -78,11 +78,11 @@ async function priceMSOL(timestamp: number) {
   const solAmount = ((await connection.getAccountInfo(MSOL_LP_SOL)) as any).lamports / 10 ** 9;
   const msolAmount = Number(accountData.msolTokens.readBigUInt64LE(64)) / 10 ** 9;
   const lpSupply = Number(accountData.poolMint.readBigUInt64LE(4 + 32)) / 10 ** 9;
-  const tokenData = await getTokenAndRedirectData([SOL, MSOL], chain, timestamp)
+  const tokenData = await getTokenAndRedirectDataMap([SOL, MSOL], chain, timestamp)
   const writes: Write[] = [];
 
-  const solPrice: (CoinData | undefined) = tokenData.find((c: CoinData) => c.address === SOL)
-  const msolPrice: (CoinData | undefined) = tokenData.find((c: CoinData) => c.address === MSOL)
+  const solPrice: (CoinData | undefined) = tokenData[SOL]
+  const msolPrice: (CoinData | undefined) = tokenData[MSOL]
   if (!solPrice || !msolPrice) return writes;
 
   const price = (msolAmount * msolPrice.price + solAmount * solPrice.price) / lpSupply

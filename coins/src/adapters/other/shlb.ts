@@ -1,7 +1,7 @@
 import { getApi } from "../utils/sdk";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectDataMap
 } from "../utils/database";
 import { getTokenInfo } from "../utils/erc20";
 import { Write, CoinData } from "../utils/dbInterfaces";
@@ -34,7 +34,7 @@ export async function getTokenPrice(chain: string, timestamp: number) {
     coinsData
   ] = await Promise.all([
     getTokenInfo(chain, vaults, undefined),
-    getTokenAndRedirectData(underlyings, chain, timestamp)
+    getTokenAndRedirectDataMap(underlyings, chain, timestamp)
   ])
 
   vaults.map((token: string, i: number) => {
@@ -42,8 +42,8 @@ export async function getTokenPrice(chain: string, timestamp: number) {
     const [tokenAAmount, tokenBAmount] = totalAmounts[i]
     const totalSupply = totalSupplies[i]
 
-    const tokenAData: (CoinData | undefined) = coinsData.find((c: CoinData) => c.address.toLowerCase() === tokenA.toLowerCase());
-    const tokenBData: (CoinData | undefined) = coinsData.find((c: CoinData) => c.address.toLowerCase() === tokenB.toLowerCase());
+    const tokenAData: (CoinData | undefined) = coinsData[tokenA.toLowerCase()]
+    const tokenBData: (CoinData | undefined) = coinsData[tokenB.toLowerCase()]
     if (!tokenAData || !tokenBData) return;
 
     const price = ((tokenAAmount * tokenAData.price) / (10 ** tokenAData.decimals) + (tokenBAmount * tokenBData.price) / (10 ** tokenBData.decimals)) * (10 ** tokenInfos.decimals[i].output) / totalSupply

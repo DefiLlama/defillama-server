@@ -1,5 +1,5 @@
 import { getLogs } from "../../utils/cache/getLogs";
-import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
+import { addToDBWritesList, getTokenAndRedirectData, getTokenAndRedirectDataMap } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
 import * as ethers from 'ethers'
@@ -56,8 +56,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
       const [_, index, long, short] = i[4].addressItems.items.map((i: any) => i.value)
       return [index, long, short].map((i: any) => i.toLowerCase())
     }).flat()
-    const coinData = await getTokenAndRedirectData(underlyingTokens, chain, timestamp)
-    const coinDataObj = Object.fromEntries(coinData.map((i: any) => [i.address.toLowerCase(), i]))
+    const coinData = await getTokenAndRedirectDataMap(underlyingTokens, chain, timestamp)
     const symbols: string[] = []
     const marketTokens: string[] = []
 
@@ -66,7 +65,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
       if (address === '0x0000000000000000000000000000000000000000') return { min: 0, max: 0 }
       let i = tickerDataObj[address]
       if (i) return { min: i.minPrice, max: i.maxPrice }
-      i = coinDataObj[address]
+      i = coinData[address]
       if (!i) return null
       const price = Math.floor(i.price * 1e12).toString()
       return { min: price, max: price }
@@ -84,8 +83,8 @@ async function getTokenPrices(chain: string, timestamp: number) {
 
       // if (index === '0x0000000000000000000000000000000000000000') return; // skip for now, until non USDC base is handled correctly
       // if (market === '0xe2fedb9e6139a182b98e7c2688ccfa3e9a53c665') return; // skip for now, until DAI - USDC base is handled correctly
-      if (!coinDataObj[long] || !coinDataObj[short]) return 
-      symbols.push(`${coinDataObj[long].symbol}-${coinDataObj[short].symbol}-GMX-V2`)
+      if (!coinData[long] || !coinData[short]) return 
+      symbols.push(`${coinData[long].symbol}-${coinData[short].symbol}-GMX-V2`)
       marketTokens.push(market)
 
       return {

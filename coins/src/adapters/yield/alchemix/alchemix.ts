@@ -2,7 +2,7 @@ import { multiCall } from "@defillama/sdk/build/abi/index";
 import abi from "./abi.json";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectDataMap
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
@@ -69,10 +69,10 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
     })
   ]);
 
-  let underlyingInfos: CoinData[];
+  let underlyingInfos: { [key: string]: CoinData };
   let tokenInfos: any;
   [underlyingInfos, tokenInfos] = await Promise.all([
-    getTokenAndRedirectData(
+    getTokenAndRedirectDataMap(
       aTokens.map((t: Result) => t.output.toLowerCase()),
       chain,
       timestamp
@@ -86,9 +86,7 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
 
   const writes: Write[] = [];
   aTokens.map((a: Result, i: number) => {
-    const underlyingInfo: CoinData | undefined = underlyingInfos.find(
-      (i: CoinData) => i.address == a.output.toLowerCase()
-    );
+    const underlyingInfo: CoinData | undefined = underlyingInfos[a.output.toLowerCase()]
     if (underlyingInfo == null) return;
 
     const price: number = (ratios[i].output * underlyingInfo.price) / 10 ** 18;

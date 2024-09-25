@@ -1,6 +1,6 @@
 import { Write, } from "../../utils/dbInterfaces";
 import { getApi } from "../../utils/sdk";
-import { addToDBWritesList, getTokenAndRedirectData } from "../../utils/database";
+import { addToDBWritesList, getTokenAndRedirectData, getTokenAndRedirectDataMap } from "../../utils/database";
 
 export const config: { [chain: string]: any } = {
   arbitrum: {
@@ -39,11 +39,11 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       api.multiCall({ abi: "string:name", calls: pools }),
       api.multiCall({ abi: 'function getBalances() view returns (uint256 token0Bal, uint256 token1Bal)', calls: pools }),
     ])
-    const coinData = await getTokenAndRedirectData([...token0s, ...token1s], chain, timestamp)
+    const coinData = await getTokenAndRedirectDataMap([...token0s, ...token1s], chain, timestamp)
 
     uBalances.forEach(({ token0Bal, token1Bal }: any, i: number) => {
-      const t0Data = getTokenInfo(token0s[i])
-      const t1Data = getTokenInfo(token1s[i])
+      const t0Data = coinData[token0s[i].toLowerCase()]
+      const t1Data = coinData[token1s[i].toLowerCase()]
 
       if (!t0Data || !t1Data) return;
 
@@ -56,10 +56,5 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
       addToDBWritesList(writes, chain, pools[i], price, decimals[i], symbols[i].replace(/Automated Pool Token( -)?/, 'APT').replace(/ (#)?/g, '_'), timestamp, 'timeswap', confidence)
     })
-
-    function getTokenInfo(token: string) {
-      token = token.toLowerCase()
-      return coinData.find(i => i.address.toLowerCase() === token)
-    }
   }
 }

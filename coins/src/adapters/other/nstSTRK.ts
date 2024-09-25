@@ -4,10 +4,11 @@ import { call } from "../utils/starknet";
 import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
 
 export function nstSTRK(timestamp: number = 0) {
-  return Promise.all([getTokenPrice(timestamp)])
+  return Promise.all([getTokenPrice(timestamp)]);
 }
 
-const STAKED_STRK = "0x04619e9ce4109590219c5263787050726be63382148538f3f936c22aa87d2fc2";
+const STAKED_STRK =
+  "0x04619e9ce4109590219c5263787050726be63382148538f3f936c22aa87d2fc2";
 
 async function getTokenPrice(timestamp: number) {
   const abis = [
@@ -33,13 +34,27 @@ async function getTokenPrice(timestamp: number) {
       ],
       state_mutability: "view",
     },
-  ]
-  const totalAssets = await call({ target: STAKED_STRK, abi: abis[0], })
-  const totalSupply = await call({ target: STAKED_STRK, abi: abis[1], })
-  const basePrice = await getTokenAndRedirectData(['starknet'], 'coingecko', timestamp)
-  const price = Number(totalAssets / totalSupply) * basePrice[0].price
+  ];
+  const totalAssets = await call({ target: STAKED_STRK, abi: abis[0] });
+  const totalSupply = await call({ target: STAKED_STRK, abi: abis[1] });
+  const [{ price: basePrice }] = await getTokenAndRedirectData(
+    ["starknet"],
+    "coingecko",
+    timestamp,
+  );
+  const price = Number(totalAssets / totalSupply) * basePrice;
   const writes: Write[] = [];
-  addToDBWritesList(writes, 'starknet', '0x04619e9ce4109590219c5263787050726be63382148538f3f936c22aa87d2fc2',  price, 18, 'nstSTRK', timestamp, 'nstSTRK', 0.9)
+  addToDBWritesList(
+    writes,
+    "starknet",
+    "0x04619e9ce4109590219c5263787050726be63382148538f3f936c22aa87d2fc2",
+    price,
+    18,
+    "nstSTRK",
+    timestamp,
+    "nstSTRK",
+    0.9,
+  );
 
-  return writes
+  return writes;
 }

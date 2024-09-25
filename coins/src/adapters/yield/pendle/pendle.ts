@@ -104,14 +104,14 @@ export default async function getTokenPrices(
     })
   ).map((i: any) => i.assetAddress.toLowerCase());
 
-  let underlyingTokenData: CoinData[] = await getTokenAndRedirectData(
+  let underlyingTokenDataArray: CoinData[] = await getTokenAndRedirectData(
     [...new Set([...yieldTokens, ...underlyingTokens])],
     chain,
     timestamp,
   );
 
   if (chain == "arbitrum")
-    underlyingTokenData.push(
+    underlyingTokenDataArray.push(
       ...(await getTokenAndRedirectData(
         [
           "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
@@ -126,10 +126,15 @@ export default async function getTokenPrices(
     underlyingTokens = underlyingTokens.map((t: string) =>
       t in customMapping[chain] ? customMapping[chain][t] : t,
     );
-    underlyingTokenData = underlyingTokenData.filter(
+    underlyingTokenDataArray = underlyingTokenDataArray.filter(
       (u: CoinData) => !(u.address in customMapping[chain]),
     );
   }
+
+  const underlyingTokenData: { [key: string]: CoinData } = {};
+  underlyingTokenDataArray.map((u: CoinData) => {
+    underlyingTokenData[u.address] = u;
+  });
 
   async function syWrites() {
     const [decimals, symbols] = await Promise.all([
@@ -138,9 +143,8 @@ export default async function getTokenPrices(
     ]);
 
     SYs.map((SY: string, i: number) => {
-      const underlying: CoinData | undefined = underlyingTokenData.find(
-        (u: CoinData) => u.address == yieldTokens[i],
-      );
+      const underlying: CoinData | undefined =
+        underlyingTokenData[yieldTokens[i]];
 
       const redirect: string =
         underlying && underlying.redirect
@@ -198,9 +202,8 @@ export default async function getTokenPrices(
     ]);
 
     PTs.map((PT: string, i: number) => {
-      const underlying: CoinData | undefined = underlyingTokenData.find(
-        (u: CoinData) => u.address == underlyingTokens[i],
-      );
+      const underlying: CoinData | undefined =
+        underlyingTokenData[underlyingTokens[i]];
 
       if (
         !underlying ||
@@ -241,9 +244,8 @@ export default async function getTokenPrices(
     ]);
 
     YTs.map((YT: string, i: number) => {
-      const underlying: CoinData | undefined = underlyingTokenData.find(
-        (u: CoinData) => u.address == underlyingTokens[i],
-      );
+      const underlying: CoinData | undefined =
+        underlyingTokenData[underlyingTokens[i]];
       const PT: Write | undefined = writes.find((u: Write) =>
         u.PK.includes(PTs[i]),
       );
@@ -304,10 +306,10 @@ export default async function getTokenPrices(
 
     markets.map((m: string, i: number) => {
       if (!m || !PTs[i] || !SYs[i]) return;
-      const underlying: CoinData | undefined = underlyingTokenData.find(
-        (u: CoinData) =>
-          u.address == yieldTokens[i] || u.address == underlyingTokens[i],
-      );
+      const underlying: CoinData | undefined =
+        underlyingTokenData[yieldTokens[i]] ??
+        underlyingTokenData[underlyingTokens[i]];
+
       if (
         !underlying ||
         !exchangeRates[markets[i]] ||

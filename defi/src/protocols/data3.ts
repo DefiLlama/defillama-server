@@ -56181,6 +56181,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1727204397
   },
+  {
+    id: "5179",
+    name: "Bybit Staked SOL",
+    address: null,
+    symbol: "-",
+    assetToken: "BBSOL",
+    url: "https://www.bybit.com/en/web3/staking/BybitSOL",
+    description:
+      "Liquid Staking SOL",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/bybit-staked-sol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "bybitSOL/index.js",
+    twitter: "Bybit_Web3",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727265656
+  },
 ];
 
 export default data3;

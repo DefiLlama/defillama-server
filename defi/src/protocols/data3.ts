@@ -5655,7 +5655,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Options Vault",
+    category: "Options",
     chains: ["Sui"],
     module: "typus-finance/index.js",
     twitter: "TypusFinance",

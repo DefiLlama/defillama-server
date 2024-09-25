@@ -56053,7 +56053,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/k9-finance-dao.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "k9-finance-dao",
+    gecko_id: null, //"k9-finance-dao" test removing
     cmcId: "29665",
     category: "Liquid Staking",
     chains: ["Ethereum", "Shibarium"],

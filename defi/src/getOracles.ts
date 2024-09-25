@@ -86,7 +86,8 @@ export async function getOraclesInternal({ ...options }: any = {}) {
         if (protocol.oraclesByChain) {
           Object.entries(protocol.oraclesByChain).forEach(([chain, oracles]) => {
             oracles.forEach((oracle) => {
-              sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, chain);
+              sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, null);
+              sum(sumDailyTvlsByChain, oracle, timestamp, item, oracleProtocols, protocol, chain, true);
             });
           });
         } else if (protocol.oracles) {

@@ -247,6 +247,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb",
     address: "0x4B3488123649E8A671097071A02DA8537fE09A16",
   },
+  FIUSD: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestAnswer() external view returns (uint256)",
+        target: "0xC406104c42211abd1A2cD411DDd071511515bDdd",
+      });
+      return rate / 1e18;
+    },
+    chain: "era",
+    underlying: "0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4",
+    address: "0x2AB105A3eAd22731082B790CA9A00D9A3A7627F9",
+  },
 };
 
 export async function derivs(timestamp: number) {

@@ -82,7 +82,7 @@ function sum(
     chainsByOracle[oracle] = new Set();
   }
   if (chain) {
-    chainsByOracle[oracle].add(chain);
+    chainsByOracle[oracle].add(getChainDisplayName(chain, true));
   }
 }
 

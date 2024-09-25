@@ -41,22 +41,36 @@ function sum(
   const sectionToAdd = chain ?? "tvl";
 
   for (let section in item) {
-    if (!["SK", "TvlPrev1Hour", "TvlPrev1Day", "TvlPrev1Week"].includes(section)) {
-      if (chain !== null) {
-        if (!section.startsWith(chain) && !includeChains) {
-          continue;
-        } else if (section.includes("-") && !includeChains) {
-          section = section.split("-")[1];
-        }
+    if (chain !== null) {
+      if (!section.startsWith(chain) && !includeChains) {
+        continue;
+      } else if (section.includes("-") && !includeChains) {
+        section = section.split("-")[1];
       }
-      if (section === chain) {
-        data.tvl = (data.tvl || 0) + item[section];
-      } else if (section === sectionToAdd || extraSections.includes(section)) {
-        data[section] = (data[section] || 0) + item[section];
-      } else if (includeChains) {
-        const sectionItem = section.split("-")[1];
-        const sectionKey = `${getChainDisplayName(section.split("-")[0], true)}${sectionItem ? `-${sectionItem}` : ""}`;
+    }
+    if (section === chain) {
+      data.tvl = (data.tvl || 0) + item[section];
+    } else if (section === sectionToAdd || extraSections.includes(section)) {
+      data[section] = (data[section] || 0) + item[section];
+    } else if (includeChains) {
+      const sectionSplit = section.split("-");
+      if (sectionSplit[0]) {
+        const sectionKey = `${getChainDisplayName(sectionSplit[0], true)}${
+          sectionSplit[1] ? `-${sectionSplit[1]}` : ""
+        }`;
         data[sectionKey] = (data[sectionKey] || 0) + item[section];
+
+        if (
+          !sectionSplit[1] &&
+          !["SK", "TvlPrev1Hour", "TvlPrev1Day", "TvlPrev1Week", "tvl"].includes(sectionSplit[0])
+        ) {
+          if (!chainsByOracle[oracle]) {
+            chainsByOracle[oracle] = new Set();
+          }
+          if (chain) {
+            chainsByOracle[oracle].add(getChainDisplayName(sectionSplit[0], true));
+          }
+        }
       }
     }
   }
@@ -79,14 +93,6 @@ function sum(
     oracleProtocols[oracle] = new Set();
   }
   oracleProtocols[oracle].add(protocol.name);
-
-  if (!chainsByOracle[oracle]) {
-    chainsByOracle[oracle] = new Set();
-  }
-
-  if (chain) {
-    chainsByOracle[oracle].add(getChainDisplayName(chain, true));
-  }
 }
 
 export async function getOraclesInternal({ ...options }: any = {}) {

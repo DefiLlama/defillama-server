@@ -55574,14 +55574,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5153",
-    name: "Tako Tako",
+    name: "TakoTako", //previous Tako Tako
     address: null,
     symbol: "-",
     url: "https://www.takotako.xyz",
     description:
       "Lending project on Taiko",
     chain: "Taiko",
-    logo: `${baseIconsUrl}/tako-tako.jpg`,
+    logo: `${baseIconsUrl}/takotako.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -9135,9 +9135,7 @@ const data2: Protocol[] = [
     cmcId: "16334",
     category: "Derivatives",
     chains: ["Binance"],
-    oraclesByChain: {
-      bsc: ["Binance Oracle"],
-    },
+    oracles: ["Pyth", "Binance Oracle"],
     forkedFrom: [],
     module: "apollox/index.js",
     twitter: "APX_Finance",

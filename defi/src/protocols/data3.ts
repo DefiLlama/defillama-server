@@ -56264,7 +56264,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Prediction Market",
     chains: ["Base"],
-    module: "sygnum-bank/index.js",
+    module: "limitless-exchange/index.js",
     twitter: "trylimitless",
     forkedFrom: [],
     oracles: [],

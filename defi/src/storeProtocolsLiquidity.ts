@@ -51,7 +51,7 @@ function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[
     })
     const tokenPools = dexPools.filter(pool =>{
         if(pool.underlyingTokens){
-            return pool.underlyingTokens?.map((t:any)=>t.toLowerCase()).some((addy:string)=>(addresses[pool.chain] ?? []).includes(addy))
+            return pool.underlyingTokens?.map((t:any)=>t?.toLowerCase()).some((addy:string)=>(addresses[pool.chain] ?? []).includes(addy))
         } else if(symbol!.length > 2) {
             return pool.symbol.toUpperCase().split("-").includes(symbol?.toUpperCase())
         }

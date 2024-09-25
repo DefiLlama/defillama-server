@@ -29,7 +29,8 @@ export interface IHandlerEvent {
   protocolVersion?: string
 }
 
-const LAMBDA_TIMESTAMP = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
+// we fetch timestamp two hours ago so indexer is caught up
+const LAMBDA_TIMESTAMP = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000)) - 2 *  60 * 60 
 
 export const handler = async (event: IHandlerEvent) => {
   return handler2({
@@ -119,6 +120,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   console.info(`**************************`)
 
   async function runAndStoreProtocol(protocol: ProtocolAdaptor, index: number) {
+    // if (protocol.module !== 'mux-protocol') return;
     console.info(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module}`)
     const startTime = getUnixTimeNow()
     const metadata = {

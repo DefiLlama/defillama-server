@@ -1,7 +1,6 @@
 import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections, getChainDisplayName } from "./utils/normalizeChain";
-import { chainsByOracle } from "./constants/chainsByOracle";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -19,6 +18,10 @@ interface Item {
   [key: string]: number;
 }
 
+interface IChainsByOracle {
+  [oracle: string]: Set<string>;
+}
+
 function sum(
   total: SumDailyTvls,
   oracle: string,
@@ -27,7 +30,8 @@ function sum(
   oracleProtocols: OracleProtocols,
   protocol: IProtocol,
   chain: string | null,
-  includeChains = false
+  includeChains = false,
+  chainsByOracle: IChainsByOracle
 ) {
   if (total[time] === undefined) {
     total[time] = {};
@@ -37,6 +41,7 @@ function sum(
   const sectionToAdd = chain ?? "tvl";
 
   for (let section in item) {
+    if (["SK", "TvlPrev1Hour", "TvlPrev1Day", "TvlPrev1Week"].includes(section)) return;
     if (chain !== null) {
       if (!section.startsWith(chain) && !includeChains) {
         continue;
@@ -73,12 +78,19 @@ function sum(
     oracleProtocols[oracle] = new Set();
   }
   oracleProtocols[oracle].add(protocol.name);
+  if (chainsByOracle[oracle] == undefined) {
+    chainsByOracle[oracle] = new Set();
+  }
+  if (chain) {
+    chainsByOracle[oracle].add(chain);
+  }
 }
 
 export async function getOraclesInternal({ ...options }: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
   const sumDailyTvlsByChain = {} as SumDailyTvls;
   const oracleProtocols = {} as OracleProtocols;
+  const chainsByOracle = {} as IChainsByOracle;
 
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
@@ -86,15 +98,15 @@ export async function getOraclesInternal({ ...options }: any = {}) {
         if (protocol.oraclesByChain) {
           Object.entries(protocol.oraclesByChain).forEach(([chain, oracles]) => {
             oracles.forEach((oracle) => {
-              sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, null);
-              sum(sumDailyTvlsByChain, oracle, timestamp, item, oracleProtocols, protocol, chain, true);
+              sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, null, false, chainsByOracle);
+              sum(sumDailyTvlsByChain, oracle, timestamp, item, oracleProtocols, protocol, chain, true, chainsByOracle);
             });
           });
         } else if (protocol.oracles) {
           protocol.oracles.forEach((oracle) => {
-            sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, null);
+            sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, null, false, chainsByOracle);
             protocol.chains?.forEach((chain) => {
-              sum(sumDailyTvlsByChain, oracle, timestamp, item, oracleProtocols, protocol, chain, true);
+              sum(sumDailyTvlsByChain, oracle, timestamp, item, oracleProtocols, protocol, chain, true, chainsByOracle);
             });
           });
         }
@@ -108,7 +120,7 @@ export async function getOraclesInternal({ ...options }: any = {}) {
     chart: sumDailyTvls,
     chainChart: sumDailyTvlsByChain,
     oracles: Object.fromEntries(Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])),
-    chainsByOracle,
+    chainsByOracle: Object.fromEntries(Object.entries(chainsByOracle).map((c) => [c[0], Array.from(c[1])])),
   };
 }
 

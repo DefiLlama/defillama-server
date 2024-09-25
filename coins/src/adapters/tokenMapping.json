@@ -207,6 +207,13 @@
       "to": "coingecko#wrapped-steth"
     }
   },
+  "shibarium": {
+    "0xe13824Fb7b206E585c775B30431600528572C3E7": {
+      "decimals": "18",
+      "symbol": "sKNINE",
+      "to": "coingecko#k9-finance-dao"
+    }
+  },
   "ethereum": {
     "0x9813037ee2218799597d83D4a5B6F3b6778218d9": {
       "decimals": "18",

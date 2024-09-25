@@ -56226,6 +56226,72 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1727266076
   },
+  {
+    id: "5181",
+    name: "Limitless Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://limitless.exchange/",
+    description:
+      "Prediction market on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/limitless-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Base"],
+    module: "limitless-exchange/index.js",
+    twitter: "trylimitless",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727294687
+  },
+  {
+    id: "5182",
+    name: "Limitless Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://limitless.exchange/",
+    description:
+      "Prediction market on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/limitless-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Base"],
+    module: "sygnum-bank/index.js",
+    twitter: "trylimitless",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727294687
+  },
+  {
+    id: "5183",
+    name: "Sygnum Bank",
+    address: null,
+    symbol: "-",
+    url: "https://www.sygnum.com/",
+    description:
+      "Sygnum is the world's first digital asset bank",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/sygnum-bank.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["zkSync Era"],
+    module: "sygnum-bank/index.js",
+    twitter: "sygnumofficial",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727294988
+  },
 ];
 
 export default data3;

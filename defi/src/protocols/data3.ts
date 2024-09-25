@@ -56204,6 +56204,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1727265656
   },
+  {
+    id: "5180",
+    name: "Onyx V2",
+    address: null,
+    symbol: "-",
+    url: "https://app.onyx.org",
+    description:
+      "Onyx is the Backbone of Decentralised Web3 Protocols",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/onyx-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "onyx-v2/index.js",
+    twitter: "OnyxDAO",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727266076
+  },
 ];
 
 export default data3;

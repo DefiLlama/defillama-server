@@ -59,19 +59,15 @@ function sum(
           sectionSplit[1] ? `-${sectionSplit[1]}` : ""
         }`;
         data[sectionKey] = (data[sectionKey] || 0) + item[section];
-
-        if (
-          !sectionSplit[1] &&
-          !["SK", "TvlPrev1Hour", "TvlPrev1Day", "TvlPrev1Week", "tvl"].includes(sectionSplit[0])
-        ) {
-          if (!chainsByOracle[oracle]) {
-            chainsByOracle[oracle] = new Set();
-          }
-          if (chain) {
-            chainsByOracle[oracle].add(getChainDisplayName(sectionSplit[0], true));
-          }
-        }
       }
+    }
+
+    if (!section.includes("-") && !["SK", "TvlPrev1Hour", "TvlPrev1Day", "TvlPrev1Week", "tvl"].includes(section)) {
+      if (!chainsByOracle[oracle]) {
+        chainsByOracle[oracle] = new Set();
+      }
+
+      chainsByOracle[oracle].add(getChainDisplayName(section, true));
     }
   }
 

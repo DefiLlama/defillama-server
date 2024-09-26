@@ -56250,28 +56250,6 @@ const data3: Protocol[] = [
   },
   {
     id: "5182",
-    name: "Limitless Exchange",
-    address: null,
-    symbol: "-",
-    url: "https://limitless.exchange/",
-    description:
-      "Prediction market on Base",
-    chain: "Base",
-    logo: `${baseIconsUrl}/limitless-exchange.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Prediction Market",
-    chains: ["Base"],
-    module: "limitless-exchange/index.js",
-    twitter: "trylimitless",
-    forkedFrom: [],
-    oracles: [],
-    listedAt: 1727294687
-  },
-  {
-    id: "5183",
     name: "Sygnum Bank",
     address: null,
     symbol: "-",

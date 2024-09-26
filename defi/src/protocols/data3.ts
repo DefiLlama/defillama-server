@@ -28323,7 +28323,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "ckBTC",
-    url: "https://internetcomputer.org/docs/current/developer-docs/multi-chain/overview",
+    url: "https://dashboard.internetcomputer.org/chain-fusion",
     description:
       "Chain Fusion allows the Internet Computer Protocol (ICP) to interconnect with multiple blockchains in a decentralized manner, eliminating the need for a single trusted intermediary such as a bridge. The ability of ICP smart contracts to utilise threshold signature schemes to sign and submit transactions directly to other chains enables Chain-key tokens. Each Chain-key token on ICP is backed 1:1 by the native asset and is redeemable at any time. The native wallets are managed by a smart contracts on ICP, there are no intermediaries or centralized bridges. Chain-key tokens begin with ck (e.g. ckBTC, ckETH, etc.). They transact quickly (1 second finality) and transaction fees are negligible.",
     chain: "Bitcoin",

@@ -47953,6 +47953,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Liquity"],
     oracles: [],
     parentProtocol: "parent#threshold-network",
+    stablecoins: ["threshold-usd"],
     tokensExcludedFromParent: {
       Ethereum: ["tBTC"],
     },

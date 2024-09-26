@@ -6,6 +6,7 @@ fs.writeFileSync(outputFile, '') // reset file before appending to it
 printBlockLogStats()
 printIndexerLogs()
 printRPCLogs()
+printAdapterStats()
 
 function printIndexerLogs() {
   log('[Indexer getLogs stats] ')
@@ -140,7 +141,7 @@ function printRPCLogs() {
   cStatsArray.sort((a, b) => b.queryCount - a.queryCount)
 
   table(eStatsArray.filter(filterOutSmallStats), ['hash', 'chains', 'queryCount', 'timeTaken'], 'Breakdown by event hash')
-  table(cStatsArray.filter(filterOutSmallStats), ['chain', 'queryCount','timeTaken'], 'Breakdown by chain')
+  table(cStatsArray.filter(filterOutSmallStats), ['chain', 'queryCount', 'timeTaken'], 'Breakdown by chain')
 
 
   eStatsArray.filter(i => i.queryCount > 70 & i.timeTaken > 300).forEach(eStats => {
@@ -164,7 +165,6 @@ function printRPCLogs() {
   }
 
 }
-
 
 function printBlockLogStats() {
   log('[Block call stats] ')
@@ -210,6 +210,60 @@ function printBlockLogStats() {
         imprecision: parseFloat(imprecision),
         timeTaken: parseFloat(timeTaken)
       };
+    }
+    return null;
+  }
+}
+
+function printAdapterStats() {
+  log('[Adapter type stats] ')
+  const startLogs = allLogs.filter(i => i.startsWith('[')).map(parseStartLog).filter(i => i)
+  const endLogs = allLogs.filter(i => i.startsWith('[')).map(parseEndLog).filter(i => i)
+
+  const stats = {}
+
+  startLogs.forEach(({ adapterType, name, }) => {
+    if (!stats[adapterType])
+      stats[adapterType] = { adapterType, startCount: 0, endCount: 0, notFinished: new Set(), }
+    const i = stats[adapterType]
+    i.startCount += 1
+    i.notFinished.add(name)
+  })
+
+  endLogs.forEach(({ adapterType, name, }) => {
+    if (!stats[adapterType])
+      stats[adapterType] = { adapterType, startCount: 0, endCount: 0, notFinished: new Set(), }
+    const i = stats[adapterType]
+    i.endCount += 1
+    i.notFinished.delete(name)
+  })
+
+  const statsArray = Object.values(stats)
+  statsArray.sort((a, b) => b.startCount - a.startCount)
+  statsArray.forEach(i => {
+    i.notFinished = Array.from(i.notFinished)
+    i.notFinishedCount = i.notFinished.length
+  })
+
+
+
+  table(statsArray, ['adapterType', 'startCount', 'notFinishedCount', 'notFinished'], 'Breakdown by adapter type')
+
+  function parseEndLog(statsString) {
+    const regex = /\[(.+)\] - (.+) done!$/;
+    const match = statsString.match(regex);
+    if (match) {
+      const [, adapterType, name] = match;
+      return { adapterType, name, };
+    }
+    return null;
+  }
+  function parseStartLog(statsString) {
+    const regex = /\[(.+)\] - \d+\/\d+ - (.*)/;
+    const match = statsString.match(regex);
+    if (match) {
+      const [, adapterType, name] = match;
+      return { adapterType, name, };
     }
     return null;
   }

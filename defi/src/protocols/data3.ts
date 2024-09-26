@@ -53165,7 +53165,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["Chronicle"], // https://github.com/DefiLlama/defillama-server/pull/8110
     forkedFrom: [],
     module: "euler-v2/index.js",
     twitter: "eulerfinance",

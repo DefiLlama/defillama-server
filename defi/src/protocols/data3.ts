@@ -6269,7 +6269,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "extra-finance",
     cmcId: "27603",
-    category: "Leveraged Farming",
+    category: "Lending",
     chains: ["Optimism"],
     module: "extra/index.js",
     twitter: "extrafi_io",

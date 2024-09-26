@@ -25776,7 +25776,7 @@ const data2: Protocol[] = [
     name: "ReHold V1",
     address: null,
     symbol: "-",
-    url: "https://rehold.io",
+    url: "https://reholdio.com", // change of website link duo to: https://medium.com/@bifotofficial/700-000-unauthorized-withdrawal-from-rehold-protocol-full-disclosure-and-next-steps-097119d545cd (from 1 side of the story)  - and the other side of the story https://prnt.sc/HspPo_049Lzk on https://rehold.io/, Made on 26/09/2024
     description:
       "AI-powered financial ecosystem on Bitcoin to buy, swap, earn, or trade your crypto with up to 100x leverage",
     chain: "Binance",

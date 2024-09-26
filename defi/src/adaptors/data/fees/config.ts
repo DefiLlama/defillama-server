@@ -2055,5 +2055,8 @@ export default {
     },
     "myx-finance": {
         "id": "4319"
+    },
+    "erinaceus": {
+        id: "5183"
     }
 } as AdaptorsConfig

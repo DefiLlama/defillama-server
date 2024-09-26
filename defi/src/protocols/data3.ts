@@ -56270,6 +56270,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1727294988
   },
+  {
+    id: "5183",
+    name: "Erinaceus",
+    address: null,
+    symbol: "-",
+    url: "https://erinaceus.io",
+    description:
+      "Erinaceus VRF Oracle is a product of an Erinaceus decentralized oracle platform, providing verifiable random functions (VRF) for secure and tamper-proof randomness.",
+    chain: "Bahamut",
+    logo: `${baseIconsUrl}/erinaceus.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Oracle",
+    chains: ["Bahamut"],
+    module: "dummy.js",
+    twitter: "ErinaceusOracle",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 
 export default data3;

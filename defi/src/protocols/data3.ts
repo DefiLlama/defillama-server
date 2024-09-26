@@ -47953,6 +47953,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Liquity"],
     oracles: [],
     parentProtocol: "parent#threshold-network",
+    stablecoins: ["threshold-usd"],
     tokensExcludedFromParent: {
       Ethereum: ["tBTC"],
     },
@@ -56255,7 +56256,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.sygnum.com/",
     description:
-      "Sygnum is the world's first digital asset bank",
+      "Sygnum is the world's first digital asset bank. Funds are invested in: Fidelity Institutional Liquidity Fund - The United States Dollar Fund G-ACC-USD- ISIN: IE00BNKLND78 Fund Category: Cash Funds. The Fund’s investment objective is to invest in a diversified range of short-term instruments with the aim of maintaining capital value and liquidity whilst producing a return to the investor in line with money market rates. The weighted average maturity is expected not to exceed 60 days.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/sygnum-bank.png`,
     audits: "0",

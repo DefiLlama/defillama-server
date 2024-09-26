@@ -5531,6 +5531,20 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Stake_Stone",
   },
+  {
+    id: "parent#onyx",
+    name: "Onyx",
+    url: "https://app.onyx.org/",
+    description:
+      "Earn, borrow, and build with OnyxProtocol (prev. Chain) , a fully decentralized cross-token liquidity market powered by Onyxcoin (XCN) that supports NFTs and crypto.",
+    logo: `${baseIconsUrl}/onyx-protocol.jpg`,
+    gecko_id: "Chain-2",
+    cmcId: "18679",
+    chains: [],
+    twitter: "OnyxDAO",
+    governanceID: ["snapshot:onyx.eth"],
+    github: ["Onyx-Protocol"],
+  },
 ];
 
 export default parentProtocols;

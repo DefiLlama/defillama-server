@@ -56208,8 +56208,8 @@ const data3: Protocol[] = [
   {
     id: "5180",
     name: "Onyx V2",
-    address: null,
-    symbol: "-",
+    address: "0xA2cd3D43c775978A96BdBf12d733D5A1ED94fb18",
+    symbol: "XCN",
     url: "https://app.onyx.org",
     description:
       "Onyx is the Backbone of Decentralised Web3 Protocols",
@@ -56225,6 +56225,7 @@ const data3: Protocol[] = [
     twitter: "OnyxDAO",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#onyx",
     listedAt: 1727266076
   },
   {

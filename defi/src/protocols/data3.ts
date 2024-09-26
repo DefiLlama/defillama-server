@@ -33498,7 +33498,6 @@ const data3: Protocol[] = [
     audit_links: ["https://skynet.certik.com/ko/projects/deltafixyz"],
     listedAt: 1708948249,
   },
-  /* delist while checking tvl 3.91 k to 6.38 B
   {
     id: "4171",
     name: "Poseidollar",
@@ -33520,7 +33519,6 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1708949792,
   },
-  */
   {
     id: "4172",
     name: "Satori Spots", // prevous Satori AMM

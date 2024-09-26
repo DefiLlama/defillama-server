@@ -41872,7 +41872,7 @@ const data3: Protocol[] = [
     id: "4544",
     name: "Pencils Protocol", // previous PenPad pencils-protocol.jpg
     address: null,
-    symbol: "PDD",
+    symbol: "DAPP",
     url: "https://pencilsprotocol.io",
     description:
       "Pencils Protocol is the next-gen decentralized platform that offers auction services for blockchain native assets and RWAs, along with unified and leveraged yield aggregation services for users to maximize asset utilization.",
@@ -41881,7 +41881,7 @@ const data3: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: "penpad-token",
-    cmcId: "30100",
+    cmcId: null,
     category: "Farm",
     chains: ["Scroll"],
     oracles: [],

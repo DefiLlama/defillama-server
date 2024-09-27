@@ -56293,6 +56293,53 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "5184",
+    name: "Rootstock Collective",
+    address: null,
+    symbol: "-",
+    url: "https://rootstockcollective.xyz",
+    description:
+      "RootstockCollective is a DAO (Decentralized Autonomous Organization) designed to develop the Rootstock ecosystem by empowering and rewarding builders and users of Rootstock, and RIF token holders",
+    chain: "RSK",
+    logo: `${baseIconsUrl}/rootstock-collective.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Governance Incentives",
+    chains: ["RSK"],
+    module: "rootstock-collective/index.js",
+    treasury: "rootstock-collective.js",
+    twitter: "RootstockColl",
+    forkedFrom: [],
+    oracles: [],
+    github: ["RootstockCollective"],
+    listedAt: 1727431336
+  },
+  {
+    id: "5185",
+    name: "Meme Cooking",
+    address: null,
+    symbol: "-",
+    url: "https://testnet.meme.cooking/board",
+    description:
+      "The first truly fair meme token launchpad on Near",
+    chain: "Near",
+    logo: `${baseIconsUrl}/meme-cooking.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Near"],
+    module: "memecooking/index.js",
+    twitter: "memedotcooking",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/Shitzu-Apes/audits"],
+    listedAt: 1727431986
+  },
 ];
 
 export default data3;

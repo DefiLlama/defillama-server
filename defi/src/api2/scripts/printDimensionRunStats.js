@@ -259,6 +259,7 @@ function printAdapterStats() {
     return null;
   }
   function parseStartLog(statsString) {
+    if (statsString.includes('expensive adapter')) return null
     const regex = /\[(.+)\] - \d+\/\d+ - (.*)/;
     const match = statsString.match(regex);
     if (match) {

@@ -52,15 +52,6 @@ async function getBlock(provider: any, height: number | "latest", chain: string)
   if (block === null) {
     return errorResponse({ message: `Can't get block of chain ${chain} at height "${height}"`})
   }
-  const previous = await getClosestBlock(blockPK(chain), block.timestamp - 1, 'low')
-  if (previous && block.number < previous.height && block.timestamp > previous.timestamp) {
-    await sendMessage(
-      `${chain} block ${block.number} failed with timestamp ${block.timestamp}: id: ${provider.chainId}, string: ${provider.getBlock.toString()}`,
-      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-      true,
-    );
-    return errorResponse({ message: `failed to getBlock`})
-  }
   await ddb.put({
     PK: blockPK(chain),
     SK: block.timestamp,
@@ -137,8 +128,8 @@ const handler = async (
   ])
   if (top === undefined) {
     const topOrError = await getBlock(provider as any, "latest", chain);
-    if ('body' in topOrError) return topOrError as IResponse
-    else top = topOrError as TimestampBlock
+    if ('body' in topOrError) return topOrError
+    else top = topOrError
     const currentTimestamp = getCurrentUnixTimestamp()
     if ((top.timestamp - currentTimestamp) < -30 * 60) {
       throw new Error(`Last block of chain "${chain}" is further than 30 minutes into the past`)
@@ -157,8 +148,8 @@ const handler = async (
   while ((high - low) > 1) {
     const mid = Math.floor((high + low) / 2);
     const blockOrError = await getBlock(provider as any, mid, chain);
-    if ('body' in block) return blockOrError as IResponse
-    else block = blockOrError as TimestampBlock
+    if ('body' in blockOrError) return blockOrError
+    else block = blockOrError
     if (block.timestamp < timestamp) {
       low = mid + 1;
     } else {

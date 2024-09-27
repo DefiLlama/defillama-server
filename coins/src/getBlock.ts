@@ -1,10 +1,11 @@
 import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared";
-import ddb, { getHistoricalValues } from "./utils/shared/dynamodb";
+import ddb from "./utils/shared/dynamodb";
 import { getProvider } from "@defillama/sdk/build/general"
 import fetch from "node-fetch"
 import { getCurrentUnixTimestamp } from "./utils/date";
 import genesisBlockTimes from './genesisBlockTimes';
 import { sendMessage } from "../../defi/src/utils/discord";
+import { DAY } from "./utils/processCoin";
 
 interface TimestampBlock {
   height: number;
@@ -47,11 +48,46 @@ function zkSyncBlockProvider() {
 
 export const blockPK = (chain: string) => `block#${chain}`
 
-async function getBlock(provider: any, height: number | "latest", chain: string): Promise<TimestampBlock | IResponse> {
-  const block = await provider.getBlock(height)
-  if (block === null) {
-    return errorResponse({ message: `Can't get block of chain ${chain} at height "${height}"`})
+async function isFaultyBlock(block: any, chain: string) {
+  if (block === null) return true;
+  const previous = await getClosestBlock(
+    blockPK(chain),
+    block.timestamp - 1,
+    "low",
+  );
+  if (!previous) return false;
+  if (block.number < previous.height) return true; // ensure timestamp and height are both uptrending
+
+  const ratio = (block.number - previous.height) / block.number;
+  if (block.timestamp - previous.timestamp < DAY && ratio > 0.25) return true; // ensure jump in height isnt ridiculous
+
+  const next = await getClosestBlock(
+    blockPK(chain),
+    block.timestamp + 1,
+    "high",
+  );
+  if (next && block.number > next.height) return true; // ensure timestamp and height are both uptrending
+
+  return false;
+}
+
+async function getBlock(
+  provider: any,
+  height: number | "latest",
+  chain: string,
+): Promise<TimestampBlock | IResponse> {
+  let block = await provider.getBlock(height);
+
+  if (await isFaultyBlock(block, chain)) {
+    provider.rpcs = provider.rpcs.slice(Math.max(provider.rpcs.length - 3, 1));
+    let block = await provider.getBlock(height);
+    if (await isFaultyBlock(block, chain))
+      await sendMessage(`Can't get block of chain ${chain} at height "${height}`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
+      return errorResponse({
+        message: `Can't get block of chain ${chain} at height "${height}"`,
+      });
   }
+
   await ddb.put({
     PK: blockPK(chain),
     SK: block.timestamp,

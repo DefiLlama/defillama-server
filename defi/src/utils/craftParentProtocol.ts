@@ -139,9 +139,6 @@ export async function craftParentProtocolInternal({
         const tokensExcludedFromParent = curr.tokensExcludedFromParent ?? {};
         const isTvlDataHourly = isHourlyTvl(curr.tvl);
 
-        // store tvl to exclude by chain
-        const tvlToExcludeByChain: { [chain: string]: number } = {};
-
         // TVL, NO.OF TOKENS, TOKENS IN USD OF EACH CHAIN BY DATE
         for (const chain in curr.chainTvls) {
           // store tvl to exclude by date
@@ -200,7 +197,6 @@ export async function craftParentProtocolInternal({
               }
             }
           });
-          tvlToExcludeByChain[chain] = Object.values(tvlToExcludeByDate).slice(-1)?.[0] ?? 0;
 
           // TVLS OF EACH CHAIN BY DATE
           curr.chainTvls[chain].tvl.forEach(({ date, totalLiquidityUSD }, index) => {
@@ -293,7 +289,9 @@ export async function craftParentProtocolInternal({
         for (const name in curr.currentChainTvls) {
           acc.currentChainTvls = {
             ...acc.currentChainTvls,
-            [name]: (acc.currentChainTvls[name] || 0) + curr.currentChainTvls[name] - (tvlToExcludeByChain[name] ?? 0),
+            [name]:
+              (acc.currentChainTvls[name] || 0) +
+              (curr.chainTvls[name].tvl[curr.chainTvls[name].tvl.length - 1].totalLiquidityUSD ?? 0),
           };
         }
 

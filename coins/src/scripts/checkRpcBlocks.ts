@@ -59,11 +59,16 @@ async function logErrors(results: Results) {
 }
 
 async function main() {
-  await setEnvSecrets();
+  await sendMessage(
+    "entering RPC block check",
+    process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+  );
+  // await setEnvSecrets();
   const results: { [chain: string]: Rpc[] } = {};
   await collectHeights(results);
   const errors = await logErrors(results);
-  await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
+  if (errors.length)
+    await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
 }
 
 main(); // ts-node coins/src/cli/checkRpcBlocks.ts

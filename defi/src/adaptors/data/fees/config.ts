@@ -2058,5 +2058,8 @@ export default {
     },
     "erinaceus": {
         id: "5183"
+    },
+    "filament": {
+        id: "5177"
     }
 } as AdaptorsConfig

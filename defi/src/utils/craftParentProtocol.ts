@@ -291,7 +291,7 @@ export async function craftParentProtocolInternal({
             ...acc.currentChainTvls,
             [name]:
               (acc.currentChainTvls[name] || 0) +
-              (curr.chainTvls[name].tvl[curr.chainTvls[name].tvl.length - 1].totalLiquidityUSD ?? 0),
+              (curr.chainTvls[name].tvl[curr.chainTvls[name].tvl.length - 1]?.totalLiquidityUSD ?? 0),
           };
         }
 

@@ -56340,6 +56340,52 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Shitzu-Apes/audits"],
     listedAt: 1727431986
   },
+  {
+    id: "5186",
+    name: "Metavault AMM V2",
+    address: "polygon:0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7",
+    symbol: "MVX",
+    url: "https://metavault.trade",
+    description:
+      "Metavault.Trade is a new kind of Decentralised Exchange, designed to provide a large range of trading features and very deep liquidity on many large cap crypto assets. Traders can use it in two ways: Spot trading, with swaps and limit orders. Perpetual futures trading with up to 50x leverage on short and long positions. Metavault.Trade aims to become the go-to solution for traders who want to stay in control of their funds at all times without sharing their personal data.",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/metavault-amm-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Scroll", "Linea"],
+    module: "metavault-amm-v2/index.js",
+    twitter: "MetavaultTRADE",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#metavault",
+    listedAt: 1727432416
+  },
+  {
+    id: "5187",
+    name: "Quickswap Hydra",
+    address: "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
+    symbol: "QUICK",
+    url: "https://quickswap.exchange",
+    description:
+      "AMM exchange on Polygon zkEVM",
+    chain: "Polygon zkEVM",
+    logo: `${baseIconsUrl}/quickswap-hydra.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon zkEVM", "Manta"],
+    module: "quickswap-hydra/index.js",
+    twitter: "QuickswapDEX",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#quickswap",
+    listedAt: 1727432995
+  },
 ];
 
 export default data3;

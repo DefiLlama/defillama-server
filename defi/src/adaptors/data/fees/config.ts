@@ -2064,5 +2064,8 @@ export default {
     },
     "filament": {
         id: "5177",
+    },
+    "bifrost-liquid-staking": {
+        id: "1738"
     }
 } as AdaptorsConfig

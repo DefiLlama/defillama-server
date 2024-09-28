@@ -2450,5 +2450,9 @@ export default {
     },
     "sharpe-dex": {
         id: "2756"
+    },
+    "bluemove": {
+        parentId: "BlueMove",
+        id: "2941"
     }
 } as AdaptorsConfig

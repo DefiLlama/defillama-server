@@ -56408,6 +56408,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1727485605
   },
+  {
+    id: "5189",
+    name: "Pocket Universe",
+    address: null,
+    symbol: "-",
+    url: "https://www.pocketuniverse.app/",
+    description:
+      "A browser extension that protects users from scams and wallet drainers",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/pocket-universe.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Service",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "PocketUniverseZ",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727543902
+  },
 ];
 
 export default data3;

@@ -2058,5 +2058,8 @@ export default {
     },
     "erinaceus": {
         id: "5183"
+    },
+    "moonshot-money": {
+        id: "5188"
     }
 } as AdaptorsConfig

@@ -56386,6 +56386,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#quickswap",
     listedAt: 1727432995
   },
+  {
+    id: "5188",
+    name: "moonshot.money",
+    address: null,
+    symbol: "-",
+    url: "https://moonshot.money/",
+    description:
+      "Buy & Sell Memes with Apple Pay. Live on App Store and Google Play in 130+ countries",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/moonshot.money.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Service",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "usemoonshot",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727485605
+  },
 ];
 
 export default data3;

@@ -2061,5 +2061,8 @@ export default {
     },
     "moonshot-money": {
         id: "5188"
+    },
+    "filament": {
+        id: "5177",
     }
 } as AdaptorsConfig

@@ -10,7 +10,6 @@ import { protocolMcap, getRaises } from "./craftProtocol";
 import { getClosestDayStartTimestamp } from "./date";
 
 export interface ICombinedTvls {
-  currentChainTvls: ICurrentChainTvls;
   chainTvls: {
     [chain: string]: {
       tvl: {
@@ -131,7 +130,7 @@ export async function craftParentProtocolInternal({
 
   const currentTime = Math.floor(Date.now() / 1000);
 
-  const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls
+  const { chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls
     .filter((prot: any) => (prot.message ? false : true))
     .sort((a, b) => (b.tvl ?? []).length - (a.tvl ?? []).length)
     .reduce<ICombinedTvls>(
@@ -285,16 +284,6 @@ export async function craftParentProtocolInternal({
           });
         }
 
-        // TOTAL TVL OF EACH CHAIN
-        for (const name in curr.currentChainTvls) {
-          acc.currentChainTvls = {
-            ...acc.currentChainTvls,
-            [name]:
-              (acc.currentChainTvls[name] || 0) +
-              (curr.chainTvls[name].tvl[curr.chainTvls[name].tvl.length - 1]?.totalLiquidityUSD ?? 0),
-          };
-        }
-
         if (!skipAggregatedTvl) {
           // store tvl to exclude by date
           const tvlToExcludeByDate: { [date: number]: number } = {};
@@ -409,7 +398,6 @@ export async function craftParentProtocolInternal({
         return acc;
       },
       {
-        currentChainTvls: {},
         chainTvls: {},
         tokens: {},
         tokensInUsd: {},
@@ -446,6 +434,12 @@ export async function craftParentProtocolInternal({
       tokens,
       tokensInUsd,
     };
+  }
+
+  // TOTAL TVL OF EACH CHAIN
+  const currentChainTvls: ICurrentChainTvls = {};
+  for (const name in formattedChainTvls) {
+    currentChainTvls[name] = formattedChainTvls[name].tvl[formattedChainTvls[name].tvl.length - 1].totalLiquidityUSD;
   }
 
   //  FORMAT NO.OF TOKENS BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE

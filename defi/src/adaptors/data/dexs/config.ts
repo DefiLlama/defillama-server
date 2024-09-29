@@ -2454,5 +2454,8 @@ export default {
     "bluemove": {
         parentId: "BlueMove",
         id: "2941"
+    },
+    "hinkal": {
+        id: "4487"
     }
 } as AdaptorsConfig

@@ -52261,7 +52261,7 @@ const data3: Protocol[] = [
       "defi.money is a cross-chain protocol for minting the $MONEY stablecoin, using Automated Loan Protection to manage collateral across multiple EVM chains and Layer 2s",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/defi.money.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -52271,7 +52271,7 @@ const data3: Protocol[] = [
     forkedFrom: ["crvUSD"],
     module: "defi-money/index.js",
     twitter: "defidotmoney",
-    audit_links: [],
+    audit_links: ["https://github.com/defidotmoney/audits/tree/main/audits"],
     listedAt: 1723917463,
   },
   {

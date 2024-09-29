@@ -2067,5 +2067,8 @@ export default {
     },
     "bifrost-liquid-staking": {
         id: "1738"
+    },
+    "pocket-universe": {
+        id: "5189"
     }
 } as AdaptorsConfig

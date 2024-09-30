@@ -56476,7 +56476,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5192",
-    name: "Club Fram",
+    name: "Club Farm",
     address: null,
     symbol: "-",
     url: "https://club.bouncebit.io/farm",

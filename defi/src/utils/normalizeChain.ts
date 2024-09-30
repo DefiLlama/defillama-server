@@ -2572,6 +2572,7 @@ export const chainCoingeckoIds = {
     github: ["zeta-chain"],
     twitter: "zetablockchain",
     url: "https://www.zetachain.com",
+    chainId: 7000
   },
   "Celestia": {
     geckoId: "celestia",

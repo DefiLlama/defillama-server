@@ -2569,6 +2569,11 @@
       "symbol": "NSTR",
       "to": "coingecko#nostra"
     },
+    "0x75afe6402ad5a5c20dd25e10ec3b3986acaa647b77e4ae24b0cbc9a54a27a87": {
+      "decimals": "18",
+      "symbol": "EKUBO",
+      "to": "coingecko#ekubo-protocol"
+    },
     "0xc530f2c0aa4c16a0806365b0898499fba372e5df7a7172dc6fe9ba777e8007": {
       "decimals": "18",
       "symbol": "NSTR",

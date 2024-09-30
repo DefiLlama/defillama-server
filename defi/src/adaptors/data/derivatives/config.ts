@@ -714,5 +714,8 @@ export default {
     },
     "pear-protocol": {
         id: "5151"
+    },
+    "filament": {
+        id: "5177",
     }
 } as AdaptorsConfig

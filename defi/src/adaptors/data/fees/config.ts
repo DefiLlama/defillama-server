@@ -2058,5 +2058,17 @@ export default {
     },
     "erinaceus": {
         id: "5183"
+    },
+    "moonshot-money": {
+        id: "5188"
+    },
+    "filament": {
+        id: "5177",
+    },
+    "bifrost-liquid-staking": {
+        id: "1738"
+    },
+    "pocket-universe": {
+        id: "5189"
     }
 } as AdaptorsConfig

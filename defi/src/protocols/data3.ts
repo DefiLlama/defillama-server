@@ -56497,6 +56497,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bounceclub",
     listedAt: 1727689809
   },
+  {
+    id: "5193",
+    name: "Suzaku",
+    address: null,
+    symbol: "-",
+    url: "https://www.suzaku.network/",
+    description:
+      "Suzaku is the (re)staking protocol for sovereign networks. Stakers can help secure networks by providing them with cryptoeconomic security, either by (liquid) staking L1 native tokens or by restaking blue-chip tokens",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/suzaku.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Avalanche"],
+    module: "suzaku/index.js",
+    twitter: "SuzakuNetwork",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/symbioticfi/collateral/tree/main/audits"],
+    github: ["suzaku-network"],
+    listedAt: 1727721604
+  },
 ];
 
 export default data3;

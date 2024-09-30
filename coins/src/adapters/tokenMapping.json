@@ -4362,5 +4362,39 @@
       "decimals": 18,
       "symbol": "sUSDe"
     }
-  }
-}
+  },
+  "songbird": {
+    "0x02f0826ef6ad107cfc861152b32b52fd11bab9ed": {
+      "name": "Wrapped Songbird",
+      "decimals": "18",
+      "symbol": "WSGB",
+      "to": "coingecko#songbird"
+    },
+    "0xc348f894d0e939fe72c467156e6d7dcbd6f16e21": {
+      "name": "Experimental Finance Token",
+      "decimals": "18",
+      "symbol": "EXFI",
+      "to": "coingecko#flare-finance"
+    },
+    "0x70ad7172ef0b131a1428d0c1f66457eb041f2176": {
+      "name": "Canary Dollar",
+      "decimals": "18",
+      "symbol": "CAND",
+      "to": "coingecko#canary-dollar"
+    },
+    "0x1a7b46656b2b8b29b1694229e122d066020503d0": {
+      "decimals": "6",
+      "symbol": "exUSDT",
+      "to": "coingecko#tether"
+    },
+    "0x36b84a93820175c02f57e5c87a7ea33df58e5c94": {
+      "decimals": "18",
+      "symbol": "exETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xc54de96302981f87a6f80e4607593681b44d670c": {
+      "decimals": "18",
+      "symbol": "exXDC",
+      "to": "coingecko#xdce-crowd-sale"
+    }
+}}

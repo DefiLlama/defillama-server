@@ -56430,6 +56430,73 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1727543902
   },
+  {
+    id: "5190",
+    name: "Ancient8 Swap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.dojo.game/swap",
+    description:
+      "Ancient8 Chain is a gaming-focused community-driven Ethereum Layer 2 built using OP Stack.",
+    chain: "Ancient8",
+    logo: `${baseIconsUrl}/ancient8-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ancient8"],
+    module: "dojoswap-ancient8/index.js",
+    twitter: "Ancient8_gg",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727689122
+  },
+  {
+    id: "5191",
+    name: "KaiaFun",
+    address: null,
+    symbol: "-",
+    url: "https://kaiafun.io",
+    description:
+      "KaiaFun is a memecoin launchpad platform on the Kaia blockchain, which uses the trading liquidity from memecoin transactions to fuel a sustainable growth engine flywheel across Kaia's entire DeFi ecosystem.",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/kaiafun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Klaytn"],
+    module: "kaiafun/index.js",
+    twitter: "kaiafunio",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727689922
+  },
+  {
+    id: "5192",
+    name: "Club Fram",
+    address: null,
+    symbol: "-",
+    url: "https://club.bouncebit.io/farm",
+    description:
+      "BounceBit Club V2 is an holistic blockchain ecosystem on BounceBit Chain. It features Bitcoin integration, AI-powered trading tools, comprehensive DeFi primitives, meme token creation, and GameFi elements. Built on a secure foundation, it offers users a versatile platform to explore, create, and manage diverse blockchain applications through a user-friendly interface, catering to both novice and experienced crypto enthusiasts.",
+    chain: "BounceBit",
+    logo: `${baseIconsUrl}/club-farm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["BounceBit"],
+    module: "bb-club-farm/index.js",
+    twitter: "BounceBitClub",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#bounceclub",
+    listedAt: 1727689809
+  },
 ];
 
 export default data3;

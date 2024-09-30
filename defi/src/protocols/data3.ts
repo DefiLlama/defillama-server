@@ -29935,7 +29935,7 @@ const data3: Protocol[] = [
   {
     id: "4017",
     name: "Bank AI", //previous F1rst Crypto Bank
-    address: "0xf19693068120185664E211F619c4F0530cE07088",
+    address: "0xe18ab3568fa19e0ed38bc1d974eddd501e61e12d",
     symbol: "BANK",
     url: "https://bankai.app",
     description:

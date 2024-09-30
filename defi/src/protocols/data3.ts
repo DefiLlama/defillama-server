@@ -43624,7 +43624,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Bridge", // move to bridge, since there is solv BTC on any l2 btc already, so double counted
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["RedStone"],
     forkedFrom: [],
     module: "solvbtc/index.js",
     twitter: "SolvProtocol",

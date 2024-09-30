@@ -25008,7 +25008,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     parentProtocol: "parent#stellaswap",
     listedAt: 1642405794,
   },
-  {
+  /* {
     id: "1275",
     name: "PERI Finance",
     address: "0x5d30ad9c6374bf925d0a75454fa327aacf778492",
@@ -25029,7 +25029,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     listedAt: 1642450048,
     github: ["perifinance"],
-  },
+  }, */
   // {
   //   id: "1276",
   //   name: "KCCguru",

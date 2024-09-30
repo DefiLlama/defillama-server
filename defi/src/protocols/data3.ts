@@ -54326,12 +54326,12 @@ const data3: Protocol[] = [
   },
   {
     id: "5096",
-    name: "Torch Finance",
+    name: "Torch Stable Swap",
     address: null,
     symbol: "-",
     url: "https://torch.finance",
     description:
-      "All in one DEX on TON blockchain. Supporting ultra-slow slippage StableSwap and multi-token Weighted Pool all with in one DEX. The Open League Hackathon Top 3.",
+      "Stable Swap on TON blockchain. Supporting ultra-slow slippage StableSwap and deepend liquidity Weighted Pool all with in one DEX. The Open League Hackathon Top 3.",
     chain: "TON",
     logo: `${baseIconsUrl}/torch-finance.jpg`,
     audits: "0",

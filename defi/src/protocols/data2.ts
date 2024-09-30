@@ -26633,7 +26633,7 @@ const data2: Protocol[] = [
     module: "vaultka/index.js",
     twitter: "Vaultkaofficial",
     forkedFrom: [],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Pyth"], // "https://docs.vaultka.com/products/vaultka-junior/supplementary-information#oracle",
     audit_links: [
       "https://github.com/Vaultka/vaultka-contracts/blob/main/Audits/Fortitude-Vaultka-Audit-Report.pdf",
       "https://admin.zokyo.io/uploads/Vaultka_Zokyo_audit_report_July25th_2023_1aed462dc9.pdf",

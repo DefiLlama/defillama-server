@@ -2070,5 +2070,8 @@ export default {
     },
     "pocket-universe": {
         id: "5189"
+    },
+    "memecooking": {
+        id: "5185"
     }
 } as AdaptorsConfig

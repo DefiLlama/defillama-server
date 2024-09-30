@@ -3337,6 +3337,20 @@ export const chainCoingeckoIds = {
     twitter: "electroneum",
     url: "https://electroneum.com/",
   },
+  "Lisk": {
+    geckoId: "lisk",
+    symbol: "LSK",
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    url: "https://lisk.com/",
+    twitter: "LiskHQ",
+    github: ["LiskHQ"],
+    chainId: 1135
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4061,6 +4075,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Polynomial"
     case "etn":
       return "Electroneum"
+    case "lisk":
+      return "Lisk"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

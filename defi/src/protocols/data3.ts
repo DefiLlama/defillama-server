@@ -56524,6 +56524,29 @@ const data3: Protocol[] = [
     github: ["suzaku-network"],
     listedAt: 1727721604
   },
+  {
+    id: "5194",
+    name: "Corn Kernels",
+    address: null,
+    symbol: "-",
+    url: "https://www.suzaku.network/",
+    description:
+      "Kernels are off-chain points that represent your share of the initial $CORN Community Airdrop",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/corn-kernels.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    module: "corn-l2/index.js",
+    twitter: "use_corn",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.usecorn.com/security"],
+    listedAt: 1727797675
+  },
 ];
 
 export default data3;

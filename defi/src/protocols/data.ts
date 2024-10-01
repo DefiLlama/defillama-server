@@ -123,7 +123,7 @@ const data: Protocol[] = [
     address: "0xa0246c9032bC3A600820415aE600c6388619A14D",
     symbol: "FARM",
     url: "https://harvest.finance/",
-    description: "Harvest automatically farms the highest yields in DeFi",
+    description: "Harvest - grows your crypto with automated yield strategies",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/harvest-finance.png`,
     audits: "1",

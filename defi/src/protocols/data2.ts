@@ -8354,7 +8354,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "bifrost-staking/index.js",
-    twitter: "BifrostFinance",
+    twitter: "Bifrost",
     audit_links: [
       "https://github.com/bifrost-finance/bifrost-wiki/tree/master",
       "https://tokeninsight.com/zh/report/2558",

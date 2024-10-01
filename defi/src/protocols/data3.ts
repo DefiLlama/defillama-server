@@ -46212,7 +46212,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Launchpad",
+    category: "Yield Aggregator",
     chains: ["Sui"],
     module: "doubleup/index.js", // previous dummy.js
     twitter: "doubleup_app",

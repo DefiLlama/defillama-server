@@ -913,9 +913,9 @@
       "symbol": "MOD",
       "to": "coingecko#move-dollar"
     },
-    "0x6f8ca77dd0a4c65362f475adb1c26ae921b1d75aa6b70e53d0e340efd7d8bc80::truAPT": {
+    "0xaef6a8c3182e076db72d64324617114cacf9a52f28325edc10b483f7f05da0e7": {
       "decimals": "8",
-      "symbol": "TRUAPT",
+      "symbol": "TruAPT",
       "to": "coingecko#trufin-staked-apt"
     }
   },

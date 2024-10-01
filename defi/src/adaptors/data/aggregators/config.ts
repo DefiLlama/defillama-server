@@ -251,5 +251,11 @@ export default {
   },
   "tondiamonds": {
     id: "5161",
-  }
+  },
+  "xy-finance": {
+    id: "1885",
+    config: {
+      displayName: "yBridge by xSync Network",
+    }
+  },
 } as AdaptorsConfig;

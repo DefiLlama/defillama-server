@@ -56547,6 +56547,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.usecorn.com/security"],
     listedAt: 1727797675
   },
+  {
+    id: "5195",
+    name: "GraFun",
+    address: null,
+    symbol: "-",
+    url: "https://gra.fun/",
+    description:
+      "GraFun is revolutionizing meme coins by introducing unique and actual fair launch mechanics. Meme pads usually rely on a standard exponential Bonding Curve model (x*y=k). This simple model opens the door to market manipulation, rug pulls, and other exploitative practices. Gra Fun has refined this approach, developing its distinct style of meme token launches that address these issues head-on",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/grafun.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Binance"],
+    module: "grafun/index.js",
+    twitter: "grafunmeme",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727821959
+  },
 ];
 
 export default data3;

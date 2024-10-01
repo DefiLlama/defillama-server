@@ -52,6 +52,7 @@ const importPaths = [
     "incentives",
     "protocols",
     "aggregator-derivatives",
+    "bridge-aggregators"
 ]
 
 for (const folderPath of importPaths) {

@@ -19,6 +19,15 @@ const contracts: string[] = [
   "0xab72e7f7bcfe09a9105f24ffe45038f50f45ca5c", // sb3pool_b
   "0x904603366bc8acf881a35cd4c7e0d514f0477ffc", // s4pool_ba
   "0x795b38c85d6f1524b434f14aa37c1c808c2bbd6b", // sx3crv_g
+
+  "0x0c935328a69155dd43aa57f23288d868bae440fe", // sWETH_e
+  "0x77e1886bf34d7dc0dcf8d5407ed6a239b66ae2ee", // sWETH_ar
+  "0x66917b3b128760295bf48a5382951bc63bb1768e", // sWETH_o
+  "0xc6cd50e6085a5f037b638813483dd244e3e4bcaa", // sWETH_ba
+  "0x389b72effa551ddec93cbb9259b27780f9f7a043", // sWETH_bl
+  "0xf91eb98d5ff86718234ac0e400175a05df6cfcf1", // sWETH_m
+  "0x62c8359b2734e5dd6adb528ad2c78159a3f2607e", // sWETH_l
+  "0x8fd195b2ff1506c1c26091422768cc2a40285ce7", // sWETH_t
 ];
 
 const portal: string = "0xAc8f44ceCa92b2a4b30360E5bd3043850a0FFcbE";

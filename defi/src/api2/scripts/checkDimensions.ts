@@ -16,7 +16,8 @@ async function initES() {
     esClient = sdk.elastic.getClient()
 }
 
-const lines = [] as string[]
+const missingLines = [] as string[]
+const dropLines = [] as string[]
 
 async function run() {
   // record time taken to run
@@ -44,9 +45,11 @@ async function run() {
   const timeTaken = Number((Date.now() - start) / 1e3).toFixed(2)
   const timeTakensString = `\nRan check in ${timeTaken}s`
   
-  lines.push(timeTakensString)
-  console.log(lines.join('\n'))
-  await sendMessage(lines.join('\n'), process.env.VOLUMES_WEBHOOK)
+  missingLines.push(timeTakensString)
+  console.log(dropLines.join('\n'))
+  console.log(missingLines.join('\n'))
+  await sendMessage(missingLines.join('\n'), process.env.VOLUMES_WEBHOOK)
+  await sendMessage(dropLines.join('\n'), process.env.DROPS_WEBHOOK)
 
   await esClient?.close()
 
@@ -210,13 +213,13 @@ async function run() {
       if (missingLastDayData.length) {
         const field = 'average'
         missingLastDayData.sort((a: any, b: any) => (b[field] ?? 0) - (a[field] ?? 0))
-        lines.push('\n')
-        lines.push('Missing data for significant protocols in ' + adapterType)
-        lines.push(`\nProtocol - ${field} - Days since last data (missing count last 30d)`)
+        missingLines.push('\n')
+        missingLines.push('Missing data for significant protocols in ' + adapterType)
+        missingLines.push(`\nProtocol - ${field} - Days since last data (missing count last 30d)`)
         missingLastDayData.forEach((item: any) => {
-          lines.push(`${item.name} - ${hn(item[field])}m - ${item.missingDaysSinceLastData} (${item.missingCount}) days`)
+          missingLines.push(`${item.name} - ${hn(item[field])}m - ${item.missingDaysSinceLastData} (${item.missingCount}) days`)
         })
-        lines.push('\n')
+        missingLines.push('\n')
       }
 
       // print big spikes
@@ -230,13 +233,13 @@ async function run() {
       if (bigSpikes.length) {
         const field = 'increaseAgainstAverage4'
         bigSpikes.sort((a: any, b: any) => (b[field] ?? 0) - (a[field] ?? 0))
-        lines.push('Big spikes in ' + adapterType)
-        lines.push('\n')
-        lines.push(`\nProtocol - ${field} - Today - Yesterday - Avg2 (30d average excluding last 4 days) - recordCount`)
+        dropLines.push('Big spikes in ' + adapterType)
+        dropLines.push('\n')
+        dropLines.push(`\nProtocol - ${field} - Today - Yesterday - Avg2 (30d average excluding last 4 days) - recordCount`)
         bigSpikes.forEach((item: any) => {
-          lines.push(`${item.name} - ${item[field]}% - ${hn(item.todayValue)} - ${hn(item.yesterdayValue)} - ${hn(item.average2)} - ${item.recordCount}`)
+          dropLines.push(`${item.name} - ${item[field]}% - ${hn(item.todayValue)} - ${hn(item.yesterdayValue)} - ${hn(item.average2)} - ${item.recordCount}`)
         })
-        lines.push('\n')
+        dropLines.push('\n')
       }
 
 
@@ -251,13 +254,13 @@ async function run() {
       if (bigDrops.length) {
         const field = 'increaseAgainstAverage4'
         bigDrops.sort((a: any, b: any) => (a[field] ?? 0) - (b[field] ?? 0))
-        lines.push('\n')
-        lines.push('Big drops in ' + adapterType)
-        lines.push(`Protocol - ${field} - Today - Yesterday - Avg2 (30d average excluding last 4 days) - recordCount\n`)
+        dropLines.push('\n')
+        dropLines.push('Big drops in ' + adapterType)
+        dropLines.push(`Protocol - ${field} - Today - Yesterday - Avg2 (30d average excluding last 4 days) - recordCount\n`)
         bigDrops.forEach((item: any) => {
-          lines.push(`${item.name} - ${item[field] * -1}% - ${hn(item.todayValue)} - ${hn(item.yesterdayValue)} - ${hn(item.average2)} - ${item.recordCount}`)
+          dropLines.push(`${item.name} - ${item[field] * -1}% - ${hn(item.todayValue)} - ${hn(item.yesterdayValue)} - ${hn(item.average2)} - ${item.recordCount}`)
         })
-        lines.push('\n')
+        dropLines.push('\n')
       }
     }
 

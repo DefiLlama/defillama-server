@@ -43626,7 +43626,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oraclesByChain: {
       ethereum: ["RedStone"], // https://docs.solv.finance/solv-documentation/getting-started-3/price-oracles , https://prnt.sc/uR2ablagNhD0
-      bsc: ["RedStone"],
+      bsc: ["RedStone"], //
     },
     forkedFrom: [],
     module: "solvbtc/index.js",

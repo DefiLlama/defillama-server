@@ -56529,7 +56529,7 @@ const data3: Protocol[] = [
     name: "Corn Kernels",
     address: null,
     symbol: "-",
-    url: "https://www.suzaku.network/",
+    url: "https://usecorn.com/",
     description:
       "Kernels are off-chain points that represent your share of the initial $CORN Community Airdrop",
     chain: "Ethereum",

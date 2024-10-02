@@ -56569,6 +56569,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1727821959
   },
+  {
+    id: "5196",
+    name: "prerich",
+    address: null,
+    symbol: "-",
+    url: "https://www.prerich.com",
+    description:
+      "Simplifying onchain for the masses. Buy memecoins with ease",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/prerich.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "prerich_app",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 
 export default data3;

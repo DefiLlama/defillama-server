@@ -2073,5 +2073,8 @@ export default {
     },
     "memecooking": {
         id: "5185"
+    },
+    "prerich-app": {
+        id: "5196"
     }
 } as AdaptorsConfig

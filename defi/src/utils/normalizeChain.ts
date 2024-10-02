@@ -1491,6 +1491,7 @@ export const chainCoingeckoIds = {
     cmcId: "4558",
     twitter: "flow_blockchain",
     url: "https://flow.com/",
+    chainId: 747,
   },
   "Kujira": {
     geckoId: "kujira",

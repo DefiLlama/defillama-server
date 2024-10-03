@@ -56730,6 +56730,29 @@ const data3: Protocol[] = [
     github: ["InfiniteTradingProtocol"],
     listedAt: 1727970587
   },
+  {
+    id: "5203",
+    name: "KittyPunch",
+    address: "0x0a7B751FcDBBAA8BB988B9217ad5Fb5cfe7bf7A0",
+    symbol: "ITP",
+    url: "https://swap.kittypunch.xyz/",
+    description:
+      "KittyPunch, a DeFi platform designed for consumer adoption",
+    chain: "Flow",
+    logo: `${baseIconsUrl}/kittypunch.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Flow"],
+    module: "kittypunch/index.js",
+    twitter: "KittyPunchXYZ",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    github: ["Kitty-Punch"],
+    listedAt: 1727971555
+  },
 ];
 
 export default data3;

@@ -19535,7 +19535,7 @@ const data3: Protocol[] = [
     module: "stakestone/index.js",
     twitter: "Stake_Stone",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Chainsight"],
     parentProtocol: "parent#stakestone",
     audit_links: [
       "https://github.com/Secure3Audit/Secure3Academy/blob/main/audit_reports/StakeStone/StakeStone_final_Secure3_Audit_Report.pdf",
@@ -56039,7 +56039,7 @@ const data3: Protocol[] = [
     module: "stakestone-btc/index.js",
     twitter: "Stake_Stone",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Chainsight"],
     parentProtocol: "parent#stakestone",
     audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/STONE%20BTC%20-%20SlowMist%20Audit%20Report_en-us.pdf"],
     listedAt: 1727088112

@@ -253,6 +253,6 @@ export default {
     id: "5161",
   },
   "okx": {
-    id: "2272",
+    id: "5201",
   }
 } as AdaptorsConfig;

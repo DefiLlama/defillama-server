@@ -2465,5 +2465,8 @@ export default {
     "h2-finance-v3": {
         parentId: "H2 Finance",
         id: "5018"
+    },
+    "harmony-swap": {
+        id: "5198"
     }
 } as AdaptorsConfig

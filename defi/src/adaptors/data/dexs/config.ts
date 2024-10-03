@@ -2457,5 +2457,13 @@ export default {
     },
     "hinkal": {
         id: "4487"
+    },
+    "h2-finance": {
+        parentId: "H2 Finance",
+        id: "5017"
+    },
+    "h2-finance-v3": {
+        parentId: "H2 Finance",
+        id: "5018"
     }
 } as AdaptorsConfig

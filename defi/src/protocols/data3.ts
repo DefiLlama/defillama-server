@@ -56685,6 +56685,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1727952215
   },
+  {
+    id: "5201",
+    name: "OKX DEX Aggregator",
+    address: null,
+    symbol: "-",
+    url: "https://www.okx.com/web3/dex-swap",
+    description:
+      "Freely choose trading routes from all major DEX aggregators, while X Routing continues to find the best quotes across 400+ DEXs and 30+ networks.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/okx-dex-aggregator.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "okx",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 
 export default data3;

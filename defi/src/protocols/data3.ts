@@ -56635,6 +56635,56 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1727951893
   },
+  {
+    id: "5199",
+    name: "Folks Finance xChain",
+    address: null,
+    symbol: "-",
+    url: "https://xapp.folks.finance",
+    description:
+      "Hub and spoke cross chain lending protocol.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/folks-finance-xchain.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Avalanche", "Ethereum", "Base"],
+    module: "folks-xchain/index.js",
+    twitter: "FolksFinance",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+     audit_links: [
+      "https://github.com/Folks-Finance/audits/blob/main/OtterSec%20-%20Audit%20of%20XChain%20Lending%20-%20May%202024.pdf",
+      "https://github.com/immunefi-team/Bounty_Boosts/tree/main/Folks%20Finance",
+      "https://github.com/immunefi-team/Bounty_Boosts/tree/main/Mitigation%20Audit%20%7C%20Folks%20Finance"
+    ],
+    parentProtocol: "parent#folks-finance",
+    listedAt: 1727951793
+  },
+  {
+    id: "5200",
+    name: "Amulet Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.amulet.finance",
+    description:
+      "Amulet is a set of smart contracts enabling users to obtain synthetics by way of self-repaying loans, called Advances, against their future yield on staking assets via Proof of Stake or LSTs. No Advances are ever liquidated as the synthetics are treated 1:1 with the native asset by the smart contracts. As yield is earned by a vault, it automatically pays down debt for all open positions against that vault.",
+    chain: "Neutron",
+    logo: `${baseIconsUrl}/amulet-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["Neutron"],
+    module: "amulet-finance/index.js",
+    twitter: "AmuletFinance",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727952215
+  },
 ];
 
 export default data3;

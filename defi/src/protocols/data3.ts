@@ -56706,6 +56706,30 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "5202",
+    name: "Infinite Trading Protocol",
+    address: "0x0a7B751FcDBBAA8BB988B9217ad5Fb5cfe7bf7A0",
+    symbol: "ITP",
+    url: "https://www.infinitetrading.io/",
+    description:
+      "Infinite Trading is a groundbreaking marketplace and protocol that enables you to invest in fully automated trading strategies within the Ethereum DeFi ecosystem. Our platform leverages AI and automated trading to provide you with exceptional investment opportunities while removing the reliance on centralized exchanges",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/infinite-trading-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Optimism"],
+    module: "infinite/index.js",
+    twitter: "InfiniteTradePr",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Infinite%20Trading%20Protocol/Infinite%20Trading%20Protocol.pdf"],
+    github: ["InfiniteTradingProtocol"],
+    listedAt: 1727970587
+  },
 ];
 
 export default data3;

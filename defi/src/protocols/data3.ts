@@ -56753,6 +56753,28 @@ const data3: Protocol[] = [
     github: ["Kitty-Punch"],
     listedAt: 1727971555
   },
+  {
+    id: "5204",
+    name: "Coffin.Meme",
+    address: null,
+    symbol: "-",
+    url: "https://coffin.meme/",
+    description:
+      "Coffin.Meme is a DeFi Platform powered by EVAA Lending Smart contracts to short-sell memecoins and earn money",
+    chain: "TON",
+    logo: `${baseIconsUrl}/coffin.meme.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["TON"],
+    module: "coffin-meme/index.js",
+    twitter: null,
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1727982509
+  },
 ];
 
 export default data3;

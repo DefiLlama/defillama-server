@@ -15,7 +15,8 @@ import { storeAdapterRecord } from "../../db-utils/db2";
 import { elastic } from '@defillama/sdk';
 import { getUnixTimeNow } from "../../../api2/utils/time";
 import { fork } from 'child_process'
-import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+import { humanizeNumber, } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+import { sendDiscordAlert } from "../../utils/notify";
 
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
@@ -30,7 +31,7 @@ export interface IHandlerEvent {
 }
 
 // we fetch timestamp two hours ago so indexer is caught up
-const LAMBDA_TIMESTAMP = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000)) - 2 *  60 * 60 
+const LAMBDA_TIMESTAMP = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000)) - 2 * 60 * 60
 
 export const handler = async (event: IHandlerEvent) => {
   return handler2({
@@ -59,6 +60,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   // Get clean day
   const toTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
   const fromTimestamp = getTimestampAtStartOfDayUTC(toTimestamp - 1)
+  const _debugTimeStart = Date.now()
 
   // Import data list to be used
   const dataModule = loadAdaptorsData(adapterType)
@@ -113,8 +115,19 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       // stack: raw.stack?.split('\n').slice(1, 2).join('\n')
     }
   })
-  console.info(`Success: ${results.length} Errors: ${errors.length}`)
-  if (errorObjects.length) console.table(errorObjects)
+  const debugTimeEnd = Date.now()
+  const notificationType = 'dimensionLogs'
+  const timeTakenSeconds = Math.floor((debugTimeEnd - _debugTimeStart) / 1000)
+  console.info(`Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
+  await sendDiscordAlert(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}`, notificationType)
+  if (errorObjects.length) {
+    const logs = errorObjects.map(({ adapter, message, chain }, i) => `${i} ${adapter} - ${message} - ${chain}`)
+    const headers = ['Adapter', 'Error Message', 'Chain'].join(' - ')
+    logs.unshift(headers)
+
+    await sendDiscordAlert(logs.join('\n'), notificationType, true)
+    console.table(errorObjects)
+  }
   // console.log(JSON.stringify(errorObjects, null, 2))
 
   console.info(`**************************`)

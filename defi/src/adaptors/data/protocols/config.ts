@@ -249,4 +249,7 @@ export default {
         parentId: "DTX",
         id: "5141",
     },
+    "scribe-exchange-v4": {
+        id: "4943",
+    }
 } as AdaptorsConfig

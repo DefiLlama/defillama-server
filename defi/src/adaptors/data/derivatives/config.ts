@@ -588,6 +588,7 @@ export default {
         "id": "4045"
     },
     "blastfutures": {
+        disabled: true,
         "id": "4221",
         parentId: "RabbitX Fusion",
         cleanRecordsConfig: {

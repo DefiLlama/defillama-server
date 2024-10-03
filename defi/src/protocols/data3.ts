@@ -56733,8 +56733,8 @@ const data3: Protocol[] = [
   {
     id: "5203",
     name: "KittyPunch",
-    address: "0x0a7B751FcDBBAA8BB988B9217ad5Fb5cfe7bf7A0",
-    symbol: "ITP",
+    address: null,
+    symbol: "-",
     url: "https://swap.kittypunch.xyz/",
     description:
       "KittyPunch, a DeFi platform designed for consumer adoption",

@@ -56590,6 +56590,51 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "5197",
+    name: "MovePump",
+    address: "sui:0xd9f9b0b4f35276eecd1eea6985bfabe2a2bbd5575f9adb9162ccbdb4ddebde7f",
+    symbol: "SMOVE",
+    url: "https://movepump.com/create-token",
+    description:
+      "Launch your token on Move Pump",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/movepump.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Aptos"],
+    module: "movepump/index.js",
+    twitter: "BlueMove_OA",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#bluemove",
+    listedAt: 1727951393
+  },
+  {
+    id: "5198",
+    name: "Swap Country",
+    address: null,
+    symbol: "-",
+    url: "https://swap.country",
+    description:
+      "Uniswap V3 fork on harmony",
+    chain: "Harmony",
+    logo: `${baseIconsUrl}/swap-country.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Harmony"],
+    module: "harmony-swap/index.js",
+    twitter: "harmonyprotocol",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    listedAt: 1727951893
+  },
 ];
 
 export default data3;

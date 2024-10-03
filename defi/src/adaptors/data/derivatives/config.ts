@@ -431,6 +431,7 @@ export default {
         }
     },
     "rabbitx": {
+        disabled: true,
         "id": "2886",
         parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
@@ -454,6 +455,7 @@ export default {
         "id": "2175"
     },
     "synfutures-v2": {
+        disabled: true,
         parentId: "SynFutures",
         "id": "3061"
     },
@@ -586,6 +588,7 @@ export default {
         "id": "4045"
     },
     "blastfutures": {
+        disabled: true,
         "id": "4221",
         parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
@@ -598,6 +601,7 @@ export default {
         }
     },
     "synfutures-v3": {
+        disabled: true,
         parentId: "SynFutures",
         "id": "4215"
     },

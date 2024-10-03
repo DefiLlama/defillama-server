@@ -251,5 +251,8 @@ export default {
   },
   "tondiamonds": {
     id: "5161",
+  },
+  "okx": {
+    id: "2272",
   }
 } as AdaptorsConfig;

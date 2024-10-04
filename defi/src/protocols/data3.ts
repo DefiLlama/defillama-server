@@ -56775,6 +56775,51 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1727982509
   },
+  {
+    id: "5205",
+    name: "cytoswap",
+    address: null,
+    symbol: "-",
+    url: "https://cytoswap.com/",
+    description:
+      "Protocols where you can swap/trade cryptocurrency on helachain",
+    chain: "HeLa",
+    logo: `${baseIconsUrl}/cytoswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["HeLa"],
+    module: "cytoswap/index.js",
+    twitter: null,
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    listedAt: 1728048405
+  },
+  {
+    id: "5206",
+    name: "Yay Staking",
+    address: null,
+    symbol: "-",
+    url: "https://portal.yay.space/stake",
+    description:
+      "The Yay! Staking Campaign allows participants to earn various rewards, including protocol points, yields, Yay! Gold, and ???? points, based on their staking amount and duration. The protocol points earned, besides Yay! Gold and ???? points, will vary depending on the selected vault",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yay-staking.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Ethereum"],
+    module: "yay-staking/index.js",
+    twitter: "Yay_Global",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://yay.gitbook.io/yay-staking/audits"],
+    listedAt: 1728048424
+  },
 ];
 
 export default data3;

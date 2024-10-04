@@ -3352,6 +3352,15 @@ export const chainCoingeckoIds = {
     github: ["LiskHQ"],
     chainId: 1135
   },
+  "HeLa": {
+    geckoId: "hela",
+    symbol: "HELA",
+    cmcId: "2137",
+    categories: ["EVM"],
+    chainId: 8668,
+    twitter: "Hela_Network",
+    url: "https://helalabs.com/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4078,6 +4087,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Electroneum"
     case "lisk":
       return "Lisk"
+    case "hela":
+      return "HeLa"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

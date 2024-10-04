@@ -3479,7 +3479,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "IDEX",
     url: "https://idex.io/",
     description: `The fastest, most secure decentralized exchange`,
-    logo: `${baseIconsUrl}/orion.png`,
+    logo: `${baseIconsUrl}/idex.png`,
     gecko_id: "aurora-dao",
     cmcId: "310",
     chains: [],

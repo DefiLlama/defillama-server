@@ -143,6 +143,4 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
   return successResponse(await getOraclesInternal(), 10 * 60); // 10 mins cache
 };
 
-handler({} as any).catch(console.log);
-
 export default wrap(handler);

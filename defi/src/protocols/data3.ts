@@ -39960,7 +39960,7 @@ const data3: Protocol[] = [
     url: "https://karak.network",
     description: "The universal restaking layer powered by the entire cryptoeconomy.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/karak.jpg`,
+    logo: `${baseIconsUrl}/karak.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

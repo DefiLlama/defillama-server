@@ -4213,7 +4213,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Karak Protocol", // previous SubseaProtocol
     url: "https://karak.network",
     description: "Risk management marketplace for digital assets.",
-    logo: `${baseIconsUrl}/karak-protocol.jpg`, //karak-protocol.jpg
+    logo: `${baseIconsUrl}/karak-protocol.png`, //karak-protocol.jpg
     gecko_id: null,
     cmcId: null,
     chains: [],

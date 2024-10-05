@@ -30087,7 +30087,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "dogewhale",
     cmcId: "16589",
-    category: "Yield",
+    category: "Reserve Currency",
     chains: ["Binance"],
     oracles: [],
     forkedFrom: [],

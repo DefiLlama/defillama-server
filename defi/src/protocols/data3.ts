@@ -25067,7 +25067,7 @@ const data3: Protocol[] = [
     description:
       "Thala's APT liquid staking primitive, designed to enable APT holders to achieve higher yields while leveraging DeFi and fueling the next wave of the DeFi boom on Aptos.",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/thala-lsd.jpg`,
+    logo: `${baseIconsUrl}/thala-lsd.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -43088,7 +43088,7 @@ const data3: Protocol[] = [
     url: "https://app.thala.fi/ve",
     description: "Deposited THL and get veTHL",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/thala-veeth.jpg`,
+    logo: `${baseIconsUrl}/thala-vethl.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

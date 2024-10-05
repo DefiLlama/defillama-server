@@ -1411,7 +1411,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://www.thala.fi/",
     description:
       "Thala is a decentralized finance protocol powered by the Move language, enabling seamless borrowing of a decentralized, over-collateralized stablecoin in Move Dollar and capital-efficient liquidity provisioning via a rebalancing AMM on the Aptos blockchain",
-    logo: `${baseIconsUrl}/thala-labs.png`,
+    logo: `${baseIconsUrl}/thala.png`,
     gecko_id: "thala",
     cmcId: "24268",
     chains: [],

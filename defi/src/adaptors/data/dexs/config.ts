@@ -2468,8 +2468,5 @@ export default {
     },
     "harmony-swap": {
         id: "5198"
-    },
-    "idex-v4": {
-        id: "5079"
     }
 } as AdaptorsConfig

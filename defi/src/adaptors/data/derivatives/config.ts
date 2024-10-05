@@ -721,5 +721,8 @@ export default {
     },
     "filament": {
         id: "5177",
+    },
+    "idex-v4": {
+        id: "5079"
     }
 } as AdaptorsConfig

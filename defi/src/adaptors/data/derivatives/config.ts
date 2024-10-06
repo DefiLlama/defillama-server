@@ -32,7 +32,7 @@ export default {
     },
     "synfutures-v1": {
         parentId: "SynFutures",
-        "enabled": false,
+        disabled: true,
         "id": "2328"
     },
     "vela": {

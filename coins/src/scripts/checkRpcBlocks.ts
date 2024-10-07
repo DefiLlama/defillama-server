@@ -13,6 +13,8 @@ type Results = { [chain: string]: Rpc[] };
 
 const margin = 0.1; // 10% error
 
+const user = "<@577529505871167498>" // wayne
+
 const whitelist = [
   "https://api.metadium.com/dev",
   "https://api.metadium.com/prod",
@@ -62,7 +64,7 @@ async function logErrors(results: Results) {
     });
   });
 
-  return errors;
+  return `${errors} ${user}`;
 }
 
 async function main() {

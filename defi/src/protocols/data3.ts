@@ -56933,6 +56933,28 @@ const data3: Protocol[] = [
     github: ["fxDAO"],
     listedAt: 1728304815
   },
+  {
+    id: "5212",
+    name: "NTM.ai",
+    address: null,
+    symbol: "-",
+    url: "https://ntm.ai/",
+    description:
+      "NTM.ai is a platform that operates across multiple chains in the De-Fi space, providing services as a Coin & Token index and voting platform",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/ntm.ai.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Binance", "Avalanche", "Tron", "TON", "Solana"],
+    module: "dummy.js",
+    twitter: "newtokenmarket",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1728317574
+  },
 ];
 
 export default data3;

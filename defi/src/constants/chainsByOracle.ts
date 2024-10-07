@@ -147,6 +147,7 @@ const chainsByOracle = {
     "Polygon zkEVM",
     "Starknet",
     "Solana",
+    "Soneium",
   ],
   "Switchboard": ["Solana", "Ethereum", "CORE", "Arbitrum", "Optimism", "Base", "Aurora", "Aptos", "Sui"],
   "RedStone": [

@@ -3361,6 +3361,19 @@ export const chainCoingeckoIds = {
     twitter: "Hela_Network",
     url: "https://helalabs.com/",
   },
+  "Matchain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "BSC",
+      types: ["L2", "gas"]
+    },
+    url: "https://www.matchain.io/",
+    twitter: "matchain_io",
+    chainId: 698
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4089,6 +4102,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Lisk"
     case "hela":
       return "HeLa"
+    case "matchain":
+      return "Matchain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

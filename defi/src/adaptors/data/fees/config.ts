@@ -2076,5 +2076,11 @@ export default {
     },
     "prerich-app": {
         id: "5196"
+    },
+    "trado": {
+        id: "5208",
+    },
+    "ntm": {
+        id: "5212",
     }
 } as AdaptorsConfig

@@ -10631,7 +10631,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "ShapeShift is the CEXiest DEX. Open Source, Non-Custodial, Decentralized. Buy, trade, earn, borrow and more.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/shapeshift.jpg`,
+    logo: `${baseIconsUrl}/shapeshift.svg`,
     audits: "0",
     audit_note: null,
     gecko_id: "shapeshift-fox-token",

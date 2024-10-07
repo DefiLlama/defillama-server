@@ -83,11 +83,6 @@
       "decimals": "9",
       "symbol": "NAVX",
       "to": "coingecko#navi"
-    },
-    "0xe4ccb6d39136469f376242c31b34d10515c8eaaa38092f804db8e08a8f53c5b2::assets_v1::EchoCoin002": {
-      "decimals": "6",
-      "symbol": "GUI",
-      "to": "coingecko#gui-inu"
     }
   },
   "neutron": {
@@ -872,6 +867,11 @@
     }
   },
   "aptos": {
+    "0xe4ccb6d39136469f376242c31b34d10515c8eaaa38092f804db8e08a8f53c5b2::assets_v1::EchoCoin002": {
+      "decimals": "6",
+      "symbol": "GUI",
+      "to": "coingecko#gui-inu"
+    },
     "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::WBTC": {
       "decimals": "6",
       "symbol": "WBTC",
@@ -937,6 +937,11 @@
       "decimals": "8",
       "symbol": "TruAPT",
       "to": "coingecko#trufin-staked-apt"
+    },
+    "0x53a30a6e5936c0a4c5140daed34de39d17ca7fcae08f947c02e979cef98a3719::coin::LSD": {
+      "decimals": "8",
+      "symbol": "LSD",
+      "to": "coingecko#pontem-liquidswap"
     }
   },
   "velas": {
@@ -1068,6 +1073,16 @@
       "to": "coingecko#solana",
       "decimals": "9",
       "symbol": "wSOL"
+    },
+    "0x25ea98ac87a38142561ea70143fd44c4772a16b6": {
+      "to": "coingecko#stack-2",
+      "decimals": "18",
+      "symbol": "MORE"
+    },
+    "0x74ccbe53F77b08632ce0CB91D3A545bF6B8E0979": {
+      "to": "coingecko#fbomb",
+      "decimals": "18",
+      "symbol": "fBOMB"
     }
   },
   "radixdlt": {

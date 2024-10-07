@@ -287,9 +287,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   blast:{
     SSS: "0xdfdcdbc789b56f99b0d0692d14dbc61906d9deed",
   },
-  mantle:{
-    WBTC: "0xCAbAE6f6Ea1ecaB08Ad02fE02ce9A44F09aebfA2"
-  },
   base: {
     WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E"
   }

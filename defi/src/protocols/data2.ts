@@ -26162,8 +26162,8 @@ const data2: Protocol[] = [
   {
     id: "2511",
     name: "HawkFi", // previous Hawksight
-    address: "solana:BKipkearSqAUdNKa1WDstvcMjoPsSKBuNyvKDQDDu9WE",
-    symbol: "HAWK",
+    address: null,
+    symbol: "-",
     url: "https://hawksight.co",
     description:
       "HawkFi is the leading analytics & automation platform for on-chain market makers to get the smartest yield on Solana memecoins and ecosystem tokens. HawkFi currently automates market making for Meteora DLMM (Dynamic Liquidity Market Making) and Orca CLMM (Concentrated Liquidity Market Making).",
@@ -26171,8 +26171,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/hawkfi.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "hawksight",
-    cmcId: "19677",
+    gecko_id: null,
+    cmcId: null,
     category: "Liquidity manager",
     chains: ["Solana"],
     module: "hawksight/index.js",
@@ -30078,9 +30078,9 @@ const data2: Protocol[] = [
     name: "Dogewhale",
     address: "bsc:0x43adc41cf63666ebb1938b11256f0ea3f16e6932",
     symbol: "DOGEWHALE",
-    url: "https://www.dogewhale.lol",
+    url: "https://www.dogewhale.com",
     description:
-      "Dogewhale is a time-based deflationary token backed by a self-filling reserve of Doge, SHIB, and Floki. Reserves only go up, supply only goes down",
+      "Dogewhale is a time-based deflationary token backed by an ever increasing multi-Doge reserve. Reserve assets are Doge, SHIB, Floki. Reserves yield 10% of TVL at every checkpoint. Checkpoints 2X each time starting at $12,500 TVL. Checkpoint 19 is worth $3,276,800,000 when all reserves are released to holders. Reserves Up 📈 + Supply Down 📉 = Price Up 📈",
     chain: "Binance",
     logo: `${baseIconsUrl}/dogewhale.png`,
     audits: "0",
@@ -30092,7 +30092,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dogewhale/index.js",
-    twitter: "d0gewhale",
+    twitter: "dogewhaleX",
     audit_links: [],
     listedAt: 1678984549,
   },

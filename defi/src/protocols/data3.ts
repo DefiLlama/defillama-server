@@ -56817,7 +56817,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://yay.gitbook.io/yay-staking/audits"],
-    listedAt: 1728048424
+    listedAt: 1722470400
   },
   {
     id: "5207",

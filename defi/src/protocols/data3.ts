@@ -56277,14 +56277,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5183",
-    name: "Erinaceus",
+    name: "Erinaceus VRF", // previous Erinaceus
     address: null,
     symbol: "-",
     url: "https://erinaceus.io",
     description:
       "Erinaceus VRF Oracle is a product of an Erinaceus decentralized oracle platform, providing verifiable random functions (VRF) for secure and tamper-proof randomness.",
     chain: "Bahamut",
-    logo: `${baseIconsUrl}/erinaceus.jpg`,
+    logo: `${baseIconsUrl}/erinaceus-vrf.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

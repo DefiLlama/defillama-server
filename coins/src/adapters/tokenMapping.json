@@ -83,11 +83,6 @@
       "decimals": "9",
       "symbol": "NAVX",
       "to": "coingecko#navi"
-    },
-    "0xe4ccb6d39136469f376242c31b34d10515c8eaaa38092f804db8e08a8f53c5b2::assets_v1::EchoCoin002": {
-      "decimals": "6",
-      "symbol": "GUI",
-      "to": "coingecko#gui-inu"
     }
   },
   "neutron": {
@@ -872,6 +867,11 @@
     }
   },
   "aptos": {
+    "0xe4ccb6d39136469f376242c31b34d10515c8eaaa38092f804db8e08a8f53c5b2::assets_v1::EchoCoin002": {
+      "decimals": "6",
+      "symbol": "GUI",
+      "to": "coingecko#gui-inu"
+    },
     "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::WBTC": {
       "decimals": "6",
       "symbol": "WBTC",

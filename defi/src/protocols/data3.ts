@@ -54874,7 +54874,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5121",
-    name: "KTX AMM",
+    name: "KTX spot",
     address: "bsc:0x545356d4d69d8cD1213Ee7e339867574738751CA",
     symbol: "KTC",
     url: "https://www.ktx.finance",

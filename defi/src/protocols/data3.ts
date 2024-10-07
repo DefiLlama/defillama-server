@@ -52448,7 +52448,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "lisk-l2/index.js",
     twitter: "LiskHQ",
     audit_links: [],
     github: ["LiskHQ"],

@@ -4,6 +4,8 @@ import { getProvider } from "@defillama/sdk/build/general"
 import fetch from "node-fetch"
 import { getCurrentUnixTimestamp } from "./utils/date";
 import genesisBlockTimes from './genesisBlockTimes';
+import { sendMessage } from "../../defi/src/utils/discord";
+import { DAY } from "./utils/processCoin";
 
 interface TimestampBlock {
   height: number;
@@ -44,13 +46,48 @@ function zkSyncBlockProvider() {
   };
 }
 
-const blockPK = (chain: string) => `block#${chain}`
+export const blockPK = (chain: string) => `block#${chain}`
 
-async function getBlock(provider: ReturnType<typeof cosmosBlockProvider>, height: number | "latest", chain: string): Promise<TimestampBlock> {
-  const block = await provider.getBlock(height)
-  if (block === null) {
-    throw new Error(`Can't get block of chain ${chain} at height "${height}"`)
+async function isFaultyBlock(block: any, chain: string) {
+  if (block === null) return true;
+  const previous = await getClosestBlock(
+    blockPK(chain),
+    block.timestamp - 1,
+    "low",
+  );
+  if (!previous) return false;
+  if (block.number < previous.height) return true; // ensure timestamp and height are both uptrending
+
+  const ratio = (block.number - previous.height) / block.number;
+  if (block.timestamp - previous.timestamp < DAY && ratio > 0.25) return true; // ensure jump in height isnt ridiculous
+
+  const next = await getClosestBlock(
+    blockPK(chain),
+    block.timestamp + 1,
+    "high",
+  );
+  if (next && block.number > next.height) return true; // ensure timestamp and height are both uptrending
+
+  return false;
+}
+
+async function getBlock(
+  provider: any,
+  height: number | "latest",
+  chain: string,
+): Promise<TimestampBlock | IResponse> {
+  let block = await provider.getBlock(height);
+
+  if (await isFaultyBlock(block, chain)) {
+    provider.rpcs = provider.rpcs.slice(Math.max(provider.rpcs.length - 3, 1));
+    let block = await provider.getBlock(height);
+    if (await isFaultyBlock(block, chain))
+      await sendMessage(`Can't get block of chain ${chain} at height "${height}`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
+      return errorResponse({
+        message: `Can't get block of chain ${chain} at height "${height}"`,
+      });
   }
+
   await ddb.put({
     PK: blockPK(chain),
     SK: block.timestamp,
@@ -101,7 +138,7 @@ function getClosestBlock(PK: string, timestamp: number, search: "high" | "low") 
 }
 
 const handler = async (
-  event: AWSLambda.APIGatewayEvent
+  event: any
 ): Promise<IResponse> => {
   const { chain, timestamp: timestampRaw } = event.pathParameters!
   const provider = getExtraProvider(chain)
@@ -126,7 +163,9 @@ const handler = async (
     getClosestBlock(blockPK(chain), timestamp, "low")
   ])
   if (top === undefined) {
-    top = await getBlock(provider as any, "latest", chain);
+    const topOrError = await getBlock(provider as any, "latest", chain);
+    if ('body' in topOrError) return topOrError
+    else top = topOrError
     const currentTimestamp = getCurrentUnixTimestamp()
     if ((top.timestamp - currentTimestamp) < -30 * 60) {
       throw new Error(`Last block of chain "${chain}" is further than 30 minutes into the past`)
@@ -144,7 +183,9 @@ const handler = async (
   let block = top;
   while ((high - low) > 1) {
     const mid = Math.floor((high + low) / 2);
-    block = await getBlock(provider as any, mid, chain);
+    const blockOrError = await getBlock(provider as any, mid, chain);
+    if ('body' in blockOrError) return blockOrError
+    else block = blockOrError
     if (block.timestamp < timestamp) {
       low = mid + 1;
     } else {

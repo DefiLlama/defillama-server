@@ -2,7 +2,7 @@ const abi = require("./abi.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { CoinData, Write } from "../../utils/dbInterfaces";
@@ -70,7 +70,7 @@ export default async function getTokenPrices(
   );
 
   const [underlyingRedirects, tokenInfo] = await Promise.all([
-    getTokenAndRedirectData(
+    getTokenAndRedirectDataMap(
       reserveData.map((r: Result) => {
         return r.input.params[0].toLowerCase();
       }),
@@ -86,10 +86,7 @@ export default async function getTokenPrices(
 
   let writes: Write[] = [];
   reserveData.map((r, i) => {
-    const underlying: CoinData = underlyingRedirects.filter(
-      (u) => u.address == r.input.params[0].toLowerCase(),
-    )[0];
-
+    const underlying: CoinData = underlyingRedirects[r.input.params[0].toLowerCase()]
     if (underlying == null) return;
 
     const redirect =
@@ -119,7 +116,7 @@ export default async function getTokenPrices(
         stata.map((r) => r.address),
         block,
       ),
-      getTokenAndRedirectData(
+      getTokenAndRedirectDataMap(
         stata.map((r) => r.underlying),
         chain,
         timestamp,
@@ -127,9 +124,7 @@ export default async function getTokenPrices(
     ]);
 
     stata.map((cfg, ix) => {
-      const underlying = redirectData.find(
-        (v: CoinData) => v.address == cfg.underlying,
-      );
+      const underlying = redirectData[cfg.underlying.toLowerCase()]
       if (!underlying) return;
       const price = (underlying.price * cfg.rate) / 1e27;
       addToDBWritesList(

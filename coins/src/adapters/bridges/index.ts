@@ -1,11 +1,11 @@
 // catch unhandled errors
 process.on("uncaughtException", (err) => {
-  console.error('uncaught error', err);
+  console.error("uncaught error", err);
   process.exit(1);
 });
 
 process.on("unhandledRejection", (err) => {
-  console.error('unhandled rejection', err);
+  console.error("unhandled rejection", err);
   process.exit(1);
 });
 
@@ -36,25 +36,23 @@ import zklink from "./zklink";
 import celer from "./celer";
 import fraxtal from "./fraxtal";
 
-
-
 export type Token =
   | {
-    from: string;
-    to: string;
-    decimals: number;
-    symbol: string;
-  }
-  | {
-    from: string;
-    to: string;
-    getAllInfo: () => Promise<{
       from: string;
       to: string;
       decimals: number;
-      symbol: any;
-    }>;
-  };
+      symbol: string;
+    }
+  | {
+      from: string;
+      to: string;
+      getAllInfo: () => Promise<{
+        from: string;
+        to: string;
+        decimals: number;
+        symbol: any;
+      }>;
+    };
 type Bridge = () => Promise<Token[]>;
 
 export const chainsThatShouldNotBeLowerCased = ["solana", "bitcoin"];
@@ -105,20 +103,19 @@ export const bridges = [
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { Coin, batchWrite2, readCoins2, translateItems } from "../../../coins2";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
 async function storeTokensOfBridge(bridge: Bridge, i: number) {
   try {
-    const res = await _storeTokensOfBridge(bridge, i);
-    return res
+    const res = await _storeTokensOfBridge(bridge);
+    return res;
   } catch (e) {
     console.error("Failed to store tokens of bridge", i, e);
   }
 }
 
-async function _storeTokensOfBridge(bridge: Bridge, i: number) {
+async function _storeTokensOfBridge(bridge: Bridge) {
   const tokens = await bridge();
 
   const alreadyLinked = (
@@ -193,54 +190,56 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
         decimals,
         symbol,
         redirect: finalPK,
+        confidence: 0.97,
+        adapter: 'bridges'
       });
     }),
   );
 
-  const writes2: Coin[] = [];
-  const data = await readCoins2(
-    tokens.map((t: Token) => ({
-      key: t.to.includes("coingecko#") ? t.to.replace("#", ":") : t.to,
-      timestamp: getCurrentUnixTimestamp(),
-    })),
-  );
-  tokens.map(async (token) => {
-    const to = token.to.includes("coingecko#")
-      ? token.to.replace("#", ":")
-      : token.to;
-    if (!(to in data)) return;
-    let PK: string = token.from.includes("coingecko#")
-      ? token.from.replace("#", ":")
-      : token.from.substring(token.from.indexOf("#") + 1);
-    const chain = PK.split(":")[0];
-    let decimals: number, symbol: string;
-    if ("getAllInfo" in token) {
-      try {
-        const newToken = await token.getAllInfo();
-        decimals = newToken.decimals;
-        symbol = newToken.symbol;
-      } catch (e) {
-        console.log("Skipping token", PK, e);
-        return;
-      }
-    } else {
-      decimals = token.decimals;
-      symbol = token.symbol;
-    }
-    writes2.push({
-      timestamp: getCurrentUnixTimestamp(),
-      price: data[to].price,
-      confidence: Math.min(data[to].confidence, 0.9),
-      key: PK,
-      chain,
-      adapter: "bridges",
-      symbol,
-      decimals,
-    });
-  });
+  // const writes2: Coin[] = [];
+  // const data = await readCoins2(
+  //   tokens.map((t: Token) => ({
+  //     key: t.to.includes("coingecko#") ? t.to.replace("#", ":") : t.to,
+  //     timestamp: getCurrentUnixTimestamp(),
+  //   })),
+  // );
+  // tokens.map(async (token) => {
+  //   const to = token.to.includes("coingecko#")
+  //     ? token.to.replace("#", ":")
+  //     : token.to;
+  //   if (!(to in data)) return;
+  //   let PK: string = token.from.includes("coingecko#")
+  //     ? token.from.replace("#", ":")
+  //     : token.from.substring(token.from.indexOf("#") + 1);
+  //   const chain = PK.split(":")[0];
+  //   let decimals: number, symbol: string;
+  //   if ("getAllInfo" in token) {
+  //     try {
+  //       const newToken = await token.getAllInfo();
+  //       decimals = newToken.decimals;
+  //       symbol = newToken.symbol;
+  //     } catch (e) {
+  //       console.log("Skipping token", PK, e);
+  //       return;
+  //     }
+  //   } else {
+  //     decimals = token.decimals;
+  //     symbol = token.symbol;
+  //   }
+  //   writes2.push({
+  //     timestamp: getCurrentUnixTimestamp(),
+  //     price: data[to].price,
+  //     confidence: Math.min(data[to].confidence, 0.9),
+  //     key: PK,
+  //     chain,
+  //     adapter: "bridges",
+  //     symbol,
+  //     decimals,
+  //   });
+  // });
 
   await batchWrite(writes, true);
-  await batchWrite2(writes2, true, undefined, `bridge index ${i}`);
+  // await batchWrite2(writes2, true, undefined, `bridge index ${i}`);
   return tokens;
 }
 export async function storeTokens() {

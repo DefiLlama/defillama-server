@@ -35,7 +35,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   // "801": "celo",
   "1272": "iotex",
   // "1501": "everscale",
-  "2081": "wanchain",
+  // "2081": "wanchain",
   // "2214": "kekchain",
   "2316": "meter",
   "3699": "elysium",
@@ -75,7 +75,9 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4797": "xai",
   "4124": "merlin",
   "4937": "reya",
-  "4947": "ignition FBTC"
+  "4947": "ignition FBTC",
+  // "5011": "lisk l2",
+  "5055": "osmosis",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -84,6 +86,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "126": "loopring",
   "1878": "apex",
   "344": "zkswap",
+  "5130": "polynomial"
 };
 
 export const allChainKeys: string[] = [
@@ -145,4 +148,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   taiko: { ticker: "TAIKO", address: "0xa9d23408b9ba935c230493c40c73824df71a0975" },
   sanko: { ticker: "DMT", address: "0x8B0E6f19Ee57089F7649A455D89D7bC6314D04e8" },
   xai: { ticker: "XAI", address: "0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66" },
+  osmosis: { ticker: "OSMO", address: "uosmo" },
 };

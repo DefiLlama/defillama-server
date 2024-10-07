@@ -4,32 +4,26 @@ import { AdaptorsConfig } from "../types"
 
 export default {
     "lyra": {
-        parentId: "Lyra",
-        "enabled": true,
+        parentId: "Derive",
         "startFrom": 1656460800,
-        "id": "503"
+        "id": "5060"
     },
     "premia": {
-        "enabled": true,
         "id": "381",
         parentId: "Premia",
         protocolsData: {
             v2: {
                 id: "381",
-                enabled: true,
             },
             v3: {
                 id: "3497",
-                enabled: true,
             }
         }
     },
     "thales": {
-        "enabled": true,
         "id": "534"
     },
     "hegic": {
-        "enabled": true,
         "id": "128"
     },
     "opyn": {
@@ -44,15 +38,12 @@ export default {
         }
     },
     "aevo": {
-        "enabled": true,
-        "id": "2797"
+        "id": "5059"
     },
     "typus": {
-        "enabled": true,
         "id": "2946"
     },
     "rysk-finance": {
-        "enabled": true,
         "id": "2605"
     },
     "tigris": {
@@ -60,7 +51,6 @@ export default {
         "id": "3129"
     },
     "valorem": {
-        "enabled": true,
         "id": "3501"
     },
     "derivio": {
@@ -70,24 +60,20 @@ export default {
         protocolsData: {
             "derivatives": {
                 "id": "3759",
-                "enabled": true,
             }
         }
     },
     "dopex": {
         parentId: "Dopex",
-        "enabled": true,
         "id": "3817",
         protocolsData: {
             "clamm": {
                 "id": "3817",
-                "enabled": true,
             }
         }
     },
     "lyra-v2": {
-        parentId: "Lyra",
-        "enabled": true,
+        parentId: "Derive",
         "id": "3923"
     },
     "optionBlitz": {
@@ -95,23 +81,28 @@ export default {
         id: "4396"
     },
     "smilee-finance": {
-        enabled: true,
         id: "4350"
     },
     "moby": {
-        enabled: true,
         id: "4452"
     },
     "ithaca": {
-        enabled: true,
         id: "4418"
     },
     "jaspervault": {
-        enabled: true,
         id: "4630"
     },
     "umoja": {
-        enabled: true,
         id: "4963"
+    },
+    "pancakeswap-options": {
+        parentId: "PancakeSwap",
+        id: "4967"
+    },
+    "arrow-markets": {
+        id: "4957"
+    },
+    "ton-hedge": {
+        id: "4950"
     }
 } as AdaptorsConfig

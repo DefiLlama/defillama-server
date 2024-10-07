@@ -34,7 +34,10 @@ export enum AdaptorRecordType {
     totalSupplySideRevenue = "tssr",
     totalProtocolRevenue = "tpr",
     totalHoldersRevenue = "thr",
-    totalCreatorRevenue = "tcr"
+    totalCreatorRevenue = "tcr",
+
+    dailyBridgeVolume = "dbv",
+    totalBridgeVolume = "tbv"
 }
 
 export const AdaptorRecordTypeMap = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {} as IJSON<AdaptorRecordType>)

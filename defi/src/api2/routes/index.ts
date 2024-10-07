@@ -19,7 +19,7 @@ import { getFormattedChains } from "../../getFormattedChains";
 import { getR2 } from "../../utils/r2";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
-import { getDimensionProtocolHandler, getOverviewHandler } from "./dimensions";
+import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
@@ -90,9 +90,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/historicalChainTvl", ew(getHistoricalChainTvlData))
   router.get("/v2/historicalChainTvl/:name", ew(getHistoricalChainTvlData))
 
-  router.get("/overview/:type", ew(getOverviewHandler))
-  router.get("/overview/:type/:chain", ew(getOverviewHandler))
-  router.get("/summary/:type/:name", ew(getDimensionProtocolHandler))
+  router.get("/overview/:type", ew(getOverviewFileRoute))
+  router.get("/overview/:type/:chain", ew(getOverviewFileRoute))
+  router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
   
@@ -135,7 +135,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     let name = sluggify({ name: req.path_parameters.name } as any)
 
     let protocolData = cache.protocolSlugMap[name]
-    if (protocolData) return successResponse(res, getLastHourlyRecord(protocolData)?.tvl, 10 * 60);
+    if (protocolData) return successResponse(res, getLastHourlyRecord(protocolData)?.tvl, 60);
 
     const parentData = cache.parentProtocolSlugMap[name]
     if (parentData) {
@@ -145,7 +145,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
       const tvl = childProtocols.map(getLastHourlyRecord).reduce((acc: number, cur: any) => acc + cur?.tvl, 0);
       if (isNaN(tvl)) return errorResponse(res, 'Error fetching tvl')
-      return successResponse(res, tvl, 10 * 60);
+      return successResponse(res, tvl, 60);
     }
 
     return errorResponse(res, 'Protocol not found')
@@ -154,9 +154,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   function smolConfigHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
     let name = sluggify({ name: req.path_parameters.name } as any)
     let protocolData = cache.protocolSlugMap[name]
-    if (protocolData) return successResponse(res, protocolData, 10 * 60);
+    if (protocolData) return successResponse(res, protocolData, 60);
     protocolData = cache.parentProtocolSlugMap[name]
-    if (protocolData) return successResponse(res, protocolData, 10 * 60);
+    if (protocolData) return successResponse(res, protocolData, 60);
     return errorResponse(res, 'Protocol not found')
   }
 
@@ -172,16 +172,16 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
 
   function getTwitterOverview(_req: HyperExpress.Request, res: HyperExpress.Response) {
-    return successResponse(res, cache.twitterOverview, 4 * 60 * 60);
+    return successResponse(res, cache.twitterOverview, 60);
   }
 
   async function getTwitterData(req: HyperExpress.Request, res: HyperExpress.Response) {
     const tweetHandle = req.path_parameters.handle
     let data = cache.twitterOverview[tweetHandle]
-    if (!data) return successResponse(res, {}, 4 * 60 * 60)
+    if (!data) return successResponse(res, {}, 60)
     data = { ...data }
     data.tweetStats = await getTweetStats(tweetHandle)
-    return successResponse(res, data, 24 * 60 * 60);
+    return successResponse(res, data, 60);
   }
 
   router.get('/debug-pg/*', debugHandler)
@@ -261,7 +261,7 @@ async function getSimpleChainDataset(req: HyperExpress.Request, res: HyperExpres
   let param = req.path_parameters.chain ?? ''
   if (param.endsWith('.csv')) param = param.slice(0, -4)
 
-  const chain = param.replace('%20', ' ')
+  const chain = param.replace('%20', ' ').replace('_', ' ')
   const params = req.query_parameters
   const options = {
     ...params,
@@ -375,20 +375,20 @@ async function emissionProtocolHandler(req: HyperExpress.Request, res: HyperExpr
 }
 
 async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const name = req.path_parameters?.name ?? ''
+  const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
     const data = await getChainChartData(name.toLowerCase())
-    return successResponse(res, data, 10 * 60);
+    return successResponse(res, data, 60);
   } catch (e) {
     return errorResponse(res, 'There is no chain with that name')
   }
 }
 
 async function getHistoricalChainTvlData(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const name = req.path_parameters?.name ?? ''
+  const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
     const data = await getChainDefaultChartData(name.toLowerCase())
-    return successResponse(res, data, 10 * 60);
+    return successResponse(res, data, 60);
   } catch (e) {
     return errorResponse(res, 'There is no chain with that name')
   }

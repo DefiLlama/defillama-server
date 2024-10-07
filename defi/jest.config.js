@@ -21,6 +21,7 @@ module.exports = {
   testEnvironment: "node",
   globals: {
     "ts-jest": {
+      transpileOnly: true,
       isolatedModules: true,
       diagnostics: false,
     }

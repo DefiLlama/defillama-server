@@ -23,7 +23,7 @@ export default async function getTokenPrices(
     knownBalance,
     unknownDecimals,
     knownDecimals,
-    knownInfo,
+    [{ price: knownPrice }],
     unknownInfo,
   ] = await Promise.all([
     getBalance({
@@ -61,13 +61,13 @@ export default async function getTokenPrices(
     getTokenInfo(chain, [unknownToken], block),
   ]);
 
-  if (!knownInfo.length) return [];
+  if (!knownPrice) return [];
 
   const price: number =
     ((parseInt(knownTokenIsGas ? gasBalance.output : knownBalance.output) *
       10 ** (unknownDecimals.output - knownDecimals.output)) /
       unknownBalance.output) *
-    knownInfo[0].price;
+    knownPrice;
   const symbol =
     unknownToken == "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359"
       ? "SAI"

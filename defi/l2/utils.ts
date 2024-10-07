@@ -143,6 +143,28 @@ export async function getMcaps(
   });
   return aggregatedRes;
 }
+async function getOsmosisSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Osmosis adapter!`);
+  const supplies: { [token: string]: number } = {};
+  const notTokens: string[] = [];
+
+  await PromisePool.withConcurrency(3)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        const res = await fetch(`https://lcd.osmosis.zone/cosmos/bank/v1beta1/supply/by_denom?denom=${token}`).then(
+          (r) => r.json()
+        );
+        if (res && res.amount) supplies[`osmosis:${token}`] = res.amount.amount;
+        else notTokens.push(token);
+      } catch (e) {
+        console.log(token);
+      }
+    });
+
+  await storeNotTokens(notTokens);
+  return supplies;
+}
 async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Aptos adapter!`);
   const supplies: { [token: string]: number } = {};
@@ -306,6 +328,7 @@ export async function fetchSupplies(
   try {
     const notTokens: string[] = []; //await fetchNotTokens(chain);
     const tokens = filterForNotTokens(contracts, notTokens);
+    if (chain == "osmosis") return await getOsmosisSupplies(tokens, timestamp);
     if (chain == "aptos") return await getAptosSupplies(tokens, timestamp);
     if (chain == "solana") return await getSolanaTokenSupply(tokens, timestamp);
     if (chain == "sui") return await getSuiSupplies(tokens, timestamp);

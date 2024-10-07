@@ -1,6 +1,6 @@
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectDataMap
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
@@ -65,7 +65,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const tokenInfos = await getTokenInfo(chain, fyTokens, block)
 
   const params = tokenInfos.decimals.map(i => 10 ** i.output)
-  let coinsData: CoinData[] = await getTokenAndRedirectData(underlyingTokens, chain, timestamp);
+  let coinsData = await getTokenAndRedirectDataMap(underlyingTokens, chain, timestamp);
 
   let maturites = await api.multiCall({
     calls: pools,
@@ -94,9 +94,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
 
   pricesRes.map((output: any, i: number) => {
-    const coinData: (CoinData | undefined) = coinsData.find(
-      (c: CoinData) => c.address.toLowerCase() === underlyingTokens[i].toLowerCase()
-    );
+    const coinData: (CoinData | undefined) = coinsData[underlyingTokens[i].toLowerCase()]
     if (!coinData || !output) return;
     const price = coinData.price * output / params[i]
 
@@ -111,13 +109,13 @@ async function getKLPsPrice({ api, writes, timestamp }: any) {
   const WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'.toLowerCase();
   const KP3R = '0x1ceb5cb57c4d4e2b2433641b95dd330a33185a44'.toLowerCase();
   const addresses = [KP3R, WETH];
-  let coinsData: CoinData[] = await getTokenAndRedirectData(addresses, api.chain, api.timestamp);
-  const wethPrice: any = coinsData.find((c: CoinData) => c.address.toLowerCase() === WETH)?.price
-  const kp3rPrice: any = coinsData.find((c: CoinData) => c.address.toLowerCase() === KP3R)?.price
+  let coinsData = await getTokenAndRedirectDataMap(addresses, api.chain, api.timestamp);
+  const wethPrice: any = coinsData[WETH]?.price
+  const kp3rPrice: any = coinsData[KP3R]?.price
   const klpPrice = 2 * Math.sqrt(kp3rPrice / wethPrice) * wethPrice;
 
   const tokenInfos = await getTokenInfo(api.chain, [token], api.block)
-  addToDBWritesList(writes, api.chain, token, klpPrice, tokenInfos.decimals[0].output, tokenInfos.symbols[0].output, timestamp, 'yield-protocol', coinsData.find((c: CoinData) => c.address.toLowerCase() === KP3R)?.confidence as number)
+  addToDBWritesList(writes, api.chain, token, klpPrice, tokenInfos.decimals[0].output, tokenInfos.symbols[0].output, timestamp, 'yield-protocol', coinsData[KP3R]?.confidence as number)
   return writes
 }
 
@@ -132,15 +130,15 @@ async function getCrabV2Price({ api, writes, timestamp }: any) {
     abi: 'function getVaultDetails() view returns (address, uint256, uint256, uint256)'
   })
 
-  let coinsData: CoinData[] = await getTokenAndRedirectData(addresses, api.chain, api.timestamp);
-  const wethPrice: any = coinsData.find((c: CoinData) => c.address.toLowerCase() === WETH)?.price
-  const sqeethPrice: any = coinsData.find((c: CoinData) => c.address.toLowerCase() === sqeeth)?.price
+  let coinsData = await getTokenAndRedirectDataMap(addresses, api.chain, api.timestamp);
+  const wethPrice: any = coinsData[WETH]?.price
+  const sqeethPrice: any = coinsData[sqeeth]?.price
   const tokenInfos = await getTokenInfo(api.chain, [token], api.block)
   const decimals = tokenInfos.decimals[0].output
   const ethInVaultUSD = (ethInCrab * wethPrice - (squeethInCrab * (sqeethPrice )))
   const price =  ethInVaultUSD * (10 ** decimals) / (tokenSupply * 1e18);
 
-  addToDBWritesList(writes, api.chain, token, price, decimals, tokenInfos.symbols[0].output, timestamp, 'yield-protocol', coinsData.find((c: CoinData) => c.address.toLowerCase() === sqeeth)?.confidence as number)
+  addToDBWritesList(writes, api.chain, token, price, decimals, tokenInfos.symbols[0].output, timestamp, 'yield-protocol', coinsData[sqeeth]?.confidence as number)
   return writes
 }
 

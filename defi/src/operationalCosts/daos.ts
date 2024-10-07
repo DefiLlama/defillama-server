@@ -123,16 +123,25 @@ export default [
     },
     {
         protocolId: "parent#aave",
-        sources: ["https://aave.tokenlogic.com.au/aave-runway"],
+        sources: ["https://aave.tokenlogic.xyz/runway"],
         annualUsdCost: {
-            all: (2.1+4.2+2.2*4+0.9+0.2+0.166*6)*365*1e3,
+            all: (16600000+1300000+169700),// gho, aEthUSDC , aUSDT
         },
         annualTokenCosts: {
             "coingecko:aave": {
-                salaries: (13.3+0.7+27.6)*365
+                "Technical Spend": (4800)
+            },
+            "coingecko:aave-polygon-wmatic": {
+                "Other Spend": (280000)
+            },
+            "coingecko:chainlink": {
+                "Operations Spend": (4000)
+            },
+            "coingecko:ethereum": {
+                "Growth Spend": (678)
             }
         },
-        lastUpdate: "2023-12-12"
+        lastUpdate: "2024-09-24" //year-month-day
     },
     {
         protocolId: "587", // Maple

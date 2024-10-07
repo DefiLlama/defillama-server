@@ -554,7 +554,7 @@ export default {
         categories: ["EVM"],
         chainId: 2020,
     },
-    "zkSync Lite": {
+    "ZKsync Lite": {
         geckoId: null,
         symbol: null,
         cmcId: null,
@@ -1335,7 +1335,7 @@ export default {
         cmcId: null,
         categories: ["EVM"],
     },
-    "zkSync Era": {
+    "ZKsync Era": {
         geckoId: null,
         symbol: null,
         cmcId: null,

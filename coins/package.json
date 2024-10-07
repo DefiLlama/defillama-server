@@ -17,7 +17,8 @@
     "fetch-cg-min": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/coingecko.ts false",
     "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/defiCoins.ts",
     "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/bridges.ts",
-    "update-token-mapping": "node src/adapters/utils/updateTokenMapping.js"
+    "update-token-mapping": "node src/adapters/utils/updateTokenMapping.js",
+    "check-rpc-blocks": "ts-node src/scripts/checkRpcBlocks.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.12",
@@ -46,10 +47,8 @@
     "@aws-sdk/client-s3": "^3.354.0",
     "@defillama/sdk": "^5.0.54",
     "@ethersproject/bignumber": "^5.5.0",
-    "@mercurial-finance/dynamic-amm-sdk": "0.4.29",
     "@sentry/serverless": "^6.19.7",
     "@sentry/tracing": "^6.19.7",
-    "@solana/spl-token-registry": "^0.2.4574",
     "@solana/web3.js": "^1.73.3",
     "@supercharge/promise-pool": "^2.1.0",
     "axios": "^1.6.7",

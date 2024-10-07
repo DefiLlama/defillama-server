@@ -146,7 +146,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       // Check if the module is enabled
       let configObj = config[adapterKey]
-      if (!configObj?.enabled) return;
+      if (!configObj || configObj?.enabled === false) return;
       const protocolId = config?.[adapterKey].id
       let moduleObject = allImports[adapterKey].module.default
       if (!moduleObject) throw new Error(`No module found for ${adapterKey}`)
@@ -176,7 +176,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         const parentIds: Array<string> = []
 
         Object.entries(protocolsData as any).forEach(([versionKey, versionConfig]: any) => {
-          if (!versionConfig.enabled) return;
+          if (!versionConfig || versionConfig.enabled === false) return;
 
           const childConfig = { ...configObj, ...versionConfig }
           delete childConfig.protocolsData
@@ -243,7 +243,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       let singleVersionKey: string
 
       if (parentConfig.protocolsData) {
-        const keys = Object.entries(parentConfig.protocolsData).filter(([_key, value]: any) => value.enabled).map(([key]: any) => key)
+        const keys = Object.entries(parentConfig.protocolsData).filter(([_key, value]: any) => value && value.enabled !== false).map(([key]: any) => key)
         if (keys.length === 1) singleVersionKey = keys[0]
       }
       delete parentConfig.protocolsData

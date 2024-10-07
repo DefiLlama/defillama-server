@@ -1,5 +1,5 @@
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
+import { addToDBWritesList, getTokenAndRedirectDataMap } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
 import { getTokenInfo } from "../utils/erc20";
 import { getApi } from "../utils/sdk";
@@ -53,7 +53,7 @@ export async function bitcow(timestamp: number) {
       })),
     }),
     getTokenInfo(chain, tokens, undefined, { withSupply: true }),
-    getTokenAndRedirectData(
+    getTokenAndRedirectDataMap(
       [...new Set([...xTokens, ...yTokens])],
       chain,
       timestamp,
@@ -65,9 +65,7 @@ export async function bitcow(timestamp: number) {
     isXToken: boolean,
   ): number | undefined {
     const tokens: string[] = isXToken ? xTokens : yTokens;
-    const info = underlyingInfo.find(
-      (t: any) => t.address == tokens[i].toLowerCase(),
-    );
+    const info = underlyingInfo[tokens[i].toLowerCase()]
     if (!info) return undefined;
     const balances = isXToken ? xBalance : yBalance;
     return (info.price * balances[i]) / 10 ** info.decimals;

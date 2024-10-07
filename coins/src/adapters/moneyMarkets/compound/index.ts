@@ -65,6 +65,25 @@ export function cream(timestamp: number = 0) {
     ),
   ]);
 }
+export function ironBank(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices(
+      "optimism",
+      "0xE0B57FEEd45e7D908f2d0DaCd26F113Cf26715BF",
+      timestamp,
+    ),
+    getTokenPrices(
+      "fantom",
+      "0x4250a6d3bd57455d7c6821eecb6206f507576cd2",
+      timestamp,
+    ),
+    getTokenPrices(
+      "avax",
+      "0x2eE80614Ccbc5e28654324a66A396458Fa5cD7Cc",
+      timestamp,
+    ),
+  ]);
+}
 export function Ovix(timestamp: number = 0) {
   return Promise.all([
     getTokenPrices(
@@ -206,4 +225,5 @@ export const adapters = {
   Ovix,
   mare,
   orbitv2,
+  ironBank,
 }

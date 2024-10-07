@@ -1,11 +1,11 @@
 import * as sdk from "@defillama/sdk";
 import { multiCall } from "@defillama/sdk/build/abi/index";
-import { request, gql } from "graphql-request";
+import { request } from "graphql-request";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
-import { Write, CoinData } from "../../utils/dbInterfaces";
+import { Write } from "../../utils/dbInterfaces";
 import getBlock from "../../utils/block";
 import abi from "./abi.json";
 import { getTokenInfo } from "../../utils/erc20";
@@ -112,7 +112,7 @@ async function getPoolValues(
   poolIds: string[],
 ): Promise<{ [poolId: string]: number }> {
   const uniqueTokens: string[] = findAllUniqueTokens(poolTokens);
-  const coinsData: CoinData[] = await getTokenAndRedirectData(
+  const coinsData = await getTokenAndRedirectDataMap(
     uniqueTokens,
     chain,
     timestamp,
@@ -126,9 +126,7 @@ async function getPoolValues(
         return;
       }
 
-      const tData = coinsData.find(
-        (d: CoinData) => d.address == t.toLowerCase(),
-      );
+      const tData = coinsData[t.toLowerCase()]
       if (tData == undefined) {
         poolTokenValues[i].push(-1);
         return;

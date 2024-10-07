@@ -53964,7 +53964,7 @@ const data3: Protocol[] = [
     module: "idex-v4/index.js",
     twitter: "idexio",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.idex.io/index-price-oracle-and-weights
     parentProtocol: "parent#idex",
     listedAt: 1724962213
   },

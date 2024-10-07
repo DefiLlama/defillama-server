@@ -725,5 +725,8 @@ export default {
     },
     "idex-v4": {
         id: "5079"
+    },
+    "trado": {
+        id: "5208",
     }
 } as AdaptorsConfig

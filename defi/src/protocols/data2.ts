@@ -26162,8 +26162,8 @@ const data2: Protocol[] = [
   {
     id: "2511",
     name: "HawkFi", // previous Hawksight
-    address: "solana:BKipkearSqAUdNKa1WDstvcMjoPsSKBuNyvKDQDDu9WE",
-    symbol: "HAWK",
+    address: null,
+    symbol: "-",
     url: "https://hawksight.co",
     description:
       "HawkFi is the leading analytics & automation platform for on-chain market makers to get the smartest yield on Solana memecoins and ecosystem tokens. HawkFi currently automates market making for Meteora DLMM (Dynamic Liquidity Market Making) and Orca CLMM (Concentrated Liquidity Market Making).",
@@ -26171,8 +26171,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/hawkfi.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "hawksight",
-    cmcId: "19677",
+    gecko_id: null,
+    cmcId: null,
     category: "Liquidity manager",
     chains: ["Solana"],
     module: "hawksight/index.js",

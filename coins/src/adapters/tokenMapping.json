@@ -937,6 +937,11 @@
       "decimals": "8",
       "symbol": "TruAPT",
       "to": "coingecko#trufin-staked-apt"
+    },
+    "0x53a30a6e5936c0a4c5140daed34de39d17ca7fcae08f947c02e979cef98a3719::coin::LSD": {
+      "decimals": "8",
+      "symbol": "LSD",
+      "to": "coingecko#pontem-liquidswap"
     }
   },
   "velas": {

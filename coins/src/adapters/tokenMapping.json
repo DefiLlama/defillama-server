@@ -942,6 +942,11 @@
       "decimals": "8",
       "symbol": "LSD",
       "to": "coingecko#pontem-liquidswap"
+    },
+    "0xd6a49762f6e4f7401ee79be6f5d4111e70db1408966ba1aa204e6e10c9d437ca::bubbles::BubblesCoin": {
+      "decimals": "8",
+      "symbol": "BUBBLES",
+      "to": "coingecko#bubbles-2"
     }
   },
   "velas": {

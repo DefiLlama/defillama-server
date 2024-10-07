@@ -2079,5 +2079,8 @@ export default {
     },
     "trado": {
         id: "5208",
+    },
+    "ntm": {
+        id: "5212",
     }
 } as AdaptorsConfig

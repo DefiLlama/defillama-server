@@ -56799,12 +56799,11 @@ const data3: Protocol[] = [
   },
   {
     id: "5206",
-    name: "Yay Staking",
+    name: "Yay!",
     address: null,
     symbol: "-",
     url: "https://portal.yay.space/stake",
-    description:
-      "The Yay! Staking Campaign allows participants to earn various rewards, including protocol points, yields, Yay! Gold, and ???? points, based on their staking amount and duration. The protocol points earned, besides Yay! Gold and ???? points, will vary depending on the selected vault",
+    description:"The SocialFi “Yay!” provides a place where web2 and web3 meet, where users and investors co-exist, and where everyone can connect, create a community and earn rewards. Since January 2020, Yay! offers over 9 million users a place where users find their interests, get connected, create community, casually make group calls, and more. Now, we are building our tokenomics which require the participation of Web3 investors worldwide. Therefore, Yay! Staking Campaign is launched as part of our long-term vision.\nThe Yay! Staking Campaign is designed to strengthen the Yay! ecosystem liquidity by allowing users to earn various rewards through participation. The campaign primarily targets Yay! supporters, encouraging them to stake their assets with protocol partners such as StakeStone, Kelp, and others via Yay! Dashboard. In return, participants can earn not only various points from these partners but also Yay! Gold and additional points along with future planned airdrop by Yay!",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/yay-staking.png`,
     audits: "2",

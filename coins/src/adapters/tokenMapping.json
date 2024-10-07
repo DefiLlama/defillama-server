@@ -1073,6 +1073,16 @@
       "to": "coingecko#solana",
       "decimals": "9",
       "symbol": "wSOL"
+    },
+    "0x25ea98ac87a38142561ea70143fd44c4772a16b6": {
+      "to": "coingecko#stack-2",
+      "decimals": "18",
+      "symbol": "MORE"
+    },
+    "0x74ccbe53F77b08632ce0CB91D3A545bF6B8E0979": {
+      "to": "coingecko#fbomb",
+      "decimals": "18",
+      "symbol": "fBOMB"
     }
   },
   "radixdlt": {

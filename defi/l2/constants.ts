@@ -78,6 +78,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4947": "ignition FBTC",
   // "5011": "lisk l2",
   "5055": "osmosis",
+  "5011": "lisk",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -86,7 +87,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "126": "loopring",
   "1878": "apex",
   "344": "zkswap",
-  "5130": "polynomial"
+  "5130": "polynomial",
 };
 
 export const allChainKeys: string[] = [
@@ -149,4 +150,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   sanko: { ticker: "DMT", address: "0x8B0E6f19Ee57089F7649A455D89D7bC6314D04e8" },
   xai: { ticker: "XAI", address: "0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66" },
   osmosis: { ticker: "OSMO", address: "uosmo" },
+  lisk: { ticker: "LSK", address: "0x6033f7f88332b8db6ad452b7c6d5bb643990ae3f" },
 };

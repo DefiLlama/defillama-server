@@ -57069,6 +57069,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1728378829
   },
+  {
+    id: "5218",
+    name: "Mint Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://bridge.mintchain.io/",
+    description:
+      "The Mint Mainnet native bridge contracts are deployed as part of the Mint Mainnet rollup. They control the flow of funds to and from Ethereum and Mint Mainnet.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mint-bridge.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    module: "mint-chain/index.js",
+    twitter: "superbridgeapp",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 
 export default data3;

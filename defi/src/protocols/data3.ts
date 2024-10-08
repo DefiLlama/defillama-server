@@ -56974,7 +56974,7 @@ const data3: Protocol[] = [
     twitter: "Jeton_Protocol",
     forkedFrom: [],
     oracles: [],
-    github: ["HEchooo/jeton_demo"],
+    github: ["jeton_demo"],
     listedAt: 1728351822
   },
   {

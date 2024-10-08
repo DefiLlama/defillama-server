@@ -56977,6 +56977,52 @@ const data3: Protocol[] = [
     github: ["HEchooo/jeton_demo"],
     listedAt: 1728351822
   },
+  {
+    id: "5214",
+    name: "Metrom",
+    address: null,
+    symbol: "-",
+    url: "https://www.metrom.xyz",
+    description:
+      "Metrom is an efficient liquidity mining platform that AMMs, especially those based on concentrated liquidity AMMs, can use to incentivize liquidity providers (LPs) to ensure efficient distribution of incentives.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/metrom.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Base", "Mantle", "Mode"],
+    module: "dummy.js",
+    twitter: "metromxyz",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/metrom-xyz/contracts/tree/main/audits"],
+    github: ["metrom-xyz"],
+    listedAt: 1728378198
+  },
+  {
+    id: "5215",
+    name: "Bitcointry",
+    address: "bsc:0x2024b9be6b03f2a57d3533ae33c7e1d0b0b4be47",
+    symbol: "BTTY",
+    url: "https://bitcointry.com/en",
+    description:
+      "Metrom is an efficient liquidity mining platform that AMMs, especially those based on concentrated liquidity AMMs, can use to incentivize liquidity providers (LPs) to ensure efficient distribution of incentives.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/bitcointry.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Binance"],
+    module: "bitcointry/index.js",
+    twitter: "Bitcointrycom",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1728378235
+  },
 ];
 
 export default data3;

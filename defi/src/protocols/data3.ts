@@ -56968,7 +56968,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
+    category: "DEX Aggregator",
     chains: ["Ethereum","Binance", "Avalanche", "Polygon", "Base", "Scroll", "zkSync Era","Arbitrum", "Optimism"],
     module: "dummy.js",
     twitter: "Jeton_Protocol",

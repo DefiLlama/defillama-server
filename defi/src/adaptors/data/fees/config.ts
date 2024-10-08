@@ -2082,5 +2082,8 @@ export default {
     },
     "ntm": {
         id: "5212",
+    },
+    "jeton": {
+      id: "5213",
     }
 } as AdaptorsConfig

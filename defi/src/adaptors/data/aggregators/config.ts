@@ -254,5 +254,8 @@ export default {
   },
   "okx": {
     id: "5201",
+  },
+  "jeton": {
+    id: "5213",
   }
 } as AdaptorsConfig;

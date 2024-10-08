@@ -2,7 +2,7 @@ import { fetch } from "../utils";
 import { Token } from "./index";
 import providers from "@defillama/sdk/build/providers.json";
 
-const chainIdMap: { [id: number]: string } = {};
+export const chainIdMap: { [id: number]: string } = {};
 Object.keys(providers).map((c: string) => {
   chainIdMap[providers[c as keyof typeof providers].chainId] = c;
 });

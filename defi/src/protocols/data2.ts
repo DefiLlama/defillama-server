@@ -3431,7 +3431,7 @@ const data2: Protocol[] = [
     name: "Metavault DAO",
     address: "0x788B6D2B37Aa51D916F2837Ae25b05f0e61339d1",
     symbol: "MVD",
-    url: "https://metavault.org",
+    url: "https://metavault.trade",
     description:
       "Metavault is a blockchain-based community controlled investment platform and decentralised venture capital vehicle that allows anyone to invest in the latest and most profitable blockchain, DeFi and metaverse projects and strategies.",
     chain: "Ethereum",

@@ -563,7 +563,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#metavault",
     name: "Metavault",
-    url: "https://metavault.org/",
+    url: "https://metavault.trade/",
     description:
       "Metavault is a blockchain-based, community governed investment platform and decentralized venture capital fund. It allows anyone to participate in the latest and most profitable DeFi projects and strategies and deploys a in-house development team for project incubation.",
     logo: `${baseIconsUrl}/metavault.jpg`,

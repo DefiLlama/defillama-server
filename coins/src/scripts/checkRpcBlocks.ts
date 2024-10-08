@@ -13,7 +13,7 @@ type Results = { [chain: string]: Rpc[] };
 
 const margin = 0.1; // 10% error
 
-const user = "<@577529505871167498>" // wayne
+const user = "<@!577529505871167498>"; // wayne
 
 const whitelist = [
   "https://api.metadium.com/dev",
@@ -64,7 +64,7 @@ async function logErrors(results: Results) {
     });
   });
 
-  return `${errors} ${user}`;
+  return errors;
 }
 
 async function main() {
@@ -73,7 +73,10 @@ async function main() {
   await collectHeights(results);
   const errors = await logErrors(results);
   if (errors.length)
-    await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
+    await sendMessage(
+      `${errors} ${user}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    );
 }
 
 main(); // ts-node coins/src/cli/checkRpcBlocks.ts

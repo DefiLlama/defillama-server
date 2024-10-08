@@ -29,7 +29,9 @@ async function main() {
 
   if (skipSubPath) {
     setTvlRoutes(webserver, '/')
-  } else {
+  } 
+  
+  if (process.env.API2_SUBPATH) {
     const router = new HyperExpress.Router()
     const subPath = '/' + process.env.API2_SUBPATH
     webserver.use(subPath, router)

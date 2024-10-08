@@ -56977,6 +56977,29 @@ const data3: Protocol[] = [
     github: ["HEchooo/jeton_demo"],
     listedAt: 1728351822
   },
+  {
+    id: "",
+    name: "Iolend Finance",
+    address: "0xF5755e48B6F2F06F8ea904bdA26177CB3ca06Ff0",
+    symbol: "IOL",
+    url: "https://www.iolend.fi/",
+    description:
+      "IoLend is the first lending and borrowing protocol on the IOTA EVM. It is designed to aggregate the most attractive yield opportunities on the network.",
+    chain: "IOTA EVM",
+    logo: `${baseIconsUrl}/iolend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "iolend",
+    cmcId: null,
+    category: "Lending",
+    chains: ["IOTA EVM"],
+    oracles: [],
+    forkedFrom: [],
+    module: "",
+    twitter: "iolendfi",
+    audit_links: [],
+    listedAt: 1728374506,
+  }
 ];
 
 export default data3;

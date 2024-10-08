@@ -51889,7 +51889,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Starknet"],
-    oracles: [],
+    oracles: ["Pragma"], // https://docs.opus.money/current/technical-documentation/smart-contracts/seer-module#supported-oracles
     forkedFrom: [],
     module: "opus/index.js",
     twitter: "OpusMoney",

@@ -56954,6 +56954,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1728317574
   },
+  {
+    id: "5213",
+    name: "Jeton",
+    address: null,
+    symbol: "-",
+    url: "https://www.jetonai.com/",
+    description:
+      "JetonBridge is a next-generation cross-chain bridge aggregator designed to outperform. It offers unparalleled speed, compatibility, and user-friendly features, making it the preferred choice for seamless asset transfers across various blockchain networks. JetonBridge currently supports 22 mainstream blockchains, including major Layer 2 networks such as Ethereum, Binance Smart Chain (BSC), zkSync, Polygon, and Arbitrum. This wide network support enables users to easily transfer assets between many popular blockchain ecosystems. In addition, JetonBridge has the ability to quickly support new chains, providing users with more choices and opportunities",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/jeton.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum","Binance", "Avalanche", "Polygon", "Base", "Scroll", "zkSync Era","Arbitrum", "Optimism"],
+    module: "dummy.js",
+    twitter: "Jeton_Protocol",
+    forkedFrom: [],
+    oracles: [],
+    github: ["HEchooo/jeton_demo"],
+    listedAt: 1728351822
+  },
 ];
 
 export default data3;

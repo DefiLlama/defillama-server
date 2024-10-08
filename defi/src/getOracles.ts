@@ -109,24 +109,6 @@ export async function getOraclesInternal({ ...options }: any = {}) {
         if (protocol.oraclesByChain) {
           for (const chain in protocol.oraclesByChain) {
             for (const oracle of protocol.oraclesByChain[chain]) {
-              if (oracle === "Chainlink") {
-                sum(
-                  sumDailyTvlsByChain,
-                  sumDailyTvls,
-                  oracle,
-                  timestamp,
-                  item,
-                  oracleProtocols,
-                  protocol,
-                  chain,
-                  oracleTvlByChain
-                );
-              }
-            }
-          }
-        } else if (protocol.oracles) {
-          for (const oracle of protocol.oracles) {
-            if (oracle === "Chainlink") {
               sum(
                 sumDailyTvlsByChain,
                 sumDailyTvls,
@@ -135,10 +117,24 @@ export async function getOraclesInternal({ ...options }: any = {}) {
                 item,
                 oracleProtocols,
                 protocol,
-                null,
+                chain,
                 oracleTvlByChain
               );
             }
+          }
+        } else if (protocol.oracles) {
+          for (const oracle of protocol.oracles) {
+            sum(
+              sumDailyTvlsByChain,
+              sumDailyTvls,
+              oracle,
+              timestamp,
+              item,
+              oracleProtocols,
+              protocol,
+              null,
+              oracleTvlByChain
+            );
           }
         }
       } catch (error) {
@@ -168,7 +164,5 @@ export async function getOraclesInternal({ ...options }: any = {}) {
 const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   return successResponse(await getOraclesInternal(), 10 * 60); // 10 mins cache
 };
-
-handler({} as any);
 
 export default wrap(handler);

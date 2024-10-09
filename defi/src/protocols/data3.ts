@@ -57183,6 +57183,52 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1728468992
   },
+  {
+    id: "5223",
+    name: "SparkDEX V3.1",
+    address: null,
+    symbol: "-",
+    url: "https://sparkdex.ai/home",
+    description:
+      "First AI-driven DeFi ecosystem on Flare Network.",
+    chain: "Flare",
+    logo: `${baseIconsUrl}/sparkdex-v3-1.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Flare"],
+    module: "sparkdex-v3-1/index.js",
+    twitter: "SparkDexAI",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    parentProtocol: "parent#sparkdex",
+    listedAt: 1728469132
+  },
+  {
+    id: "5224",
+    name: "Crouton Finance",
+    address: null,
+    symbol: "-",
+    url: "https://crouton.finance/swap",
+    description:
+      "Crouton is a decentralized exchange (DEX) and automated market maker (AMM) on TON, designed for the efficient trading of stablecoins and pegged assets.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/crouton-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["TON"],
+    module: "crouton/index.js",
+    twitter: "croutonfi",
+    forkedFrom: [],
+    oracles: [],
+    github: ["croutonfi"],
+    listedAt: 1728469932
+  },
 ];
 
 export default data3;

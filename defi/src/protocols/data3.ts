@@ -57320,6 +57320,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "5229",
+    name: "SolvBTC LSTs",
+    address: null,
+    symbol: "-",
+    url: "https://solv.finance",
+    description:
+      "SolvBTC staking at Babylon and Core Chain.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/solv-btc-lsts.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaked BTC",
+    chains: ["Bitcoin"],
+    module: "solv-btc-lst/index.js",
+    twitter: "SolvProtocol",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#solv-protocol",
+    listedAt: 1728477201
+  },
 ];
 
 export default data3;

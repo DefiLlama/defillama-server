@@ -46,17 +46,18 @@ function sum(
   const dataByChain = totalByChain[time][oracle] ?? {};
   const data = total[time][oracle] ?? {};
 
+  const isOldTvlRecord = Object.keys(item).filter((item) => !["PK", "SK", "tvl"].includes(item)).length === 0;
   for (const section in item) {
-    const sectionSplit = section.split("-");
+    const sectionSplit = (isOldTvlRecord && section === "tvl" ? protocol.chain : section).split("-");
 
     if (
       ![
         "SK",
         "PK",
+        "tvl",
         "tvlPrev1Week",
         "tvlPrev1Day",
         "tvlPrev1Hour",
-        "tvl",
         "Stake",
         "oec",
         "treasury_bsc",
@@ -80,8 +81,7 @@ function sum(
         if (extraSections.includes(section)) {
           data[section] = (data[section] ?? 0) + item[section];
         } else {
-          oracleTvlByChain[oracle][getChainDisplayName(section, true)] =
-            (oracleTvlByChain[oracle][getChainDisplayName(section, true)] ?? 0) + item[section];
+          oracleTvlByChain[oracle][sectionKey] = (oracleTvlByChain[oracle][sectionKey] ?? 0) + item[section];
           data.tvl = (data.tvl ?? 0) + item[section];
         }
       }
@@ -150,8 +150,6 @@ export async function getOraclesInternal({ ...options }: any = {}) {
       .sort((a, b) => b[1] - a[1])
       .map((item) => item[0]);
   }
-
-  console.log({ chainsByOracle });
 
   return {
     chart: sumDailyTvls,

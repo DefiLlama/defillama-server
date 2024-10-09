@@ -57178,7 +57178,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Sei"],
-    module: "raindex/index.js",
+    module: "donkeswap/index.js",
     twitter: "donkeswap",
     forkedFrom: ["Uniswap V2"],
     oracles: [],

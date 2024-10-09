@@ -41681,7 +41681,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "lisa/index.js",
     twitter: "LisaLab_BTC",
-    github: ["lisalab-io"],
+    parentProtocol: "parent#lisa-finance",
     audit_links: ["https://cdn.alexlab.co/pdf/LISA_Audit_2024-04.pdf"],
     listedAt: 1714385243,
   },
@@ -57275,6 +57275,29 @@ const data3: Protocol[] = [
     oracles: [],
     github: ["Estate-Protocol-Home"],
     listedAt: 1728469824
+  },
+  {
+    id: "5227",
+    name: "LISA BTC LST", //Actually, XLink is staking at Babylon on behalf of LISA (https://defillama.com/protocol/lisa#information), which is launching LiaBTC on back of it.
+    address: null,
+    symbol: "-",
+    url: "https://www.lisalab.io",
+    description:
+      "XLink is staking at Babylon on behalf of LISA",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/lisa-btc-lst.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaked BTC",
+    chains: ["Bitcoin"],
+    module: "xlink-btc-lst/index.js",
+    twitter: "LisaLab_BTC",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#lisa-finance",
+    listedAt: 1728471858
   },
 ];
 

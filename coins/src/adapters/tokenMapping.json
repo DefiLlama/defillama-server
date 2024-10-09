@@ -6,6 +6,13 @@
       "to": "coingecko#kava"
     }
   },
+  "taraxa": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "TARA",
+      "to": "coingecko#taraxa"
+    }
+  },
   "celo": {
     "0xd71ffd0940c920786ec4dbb5a12306669b5b81ef": {
       "decimals": "8",
@@ -4552,4 +4559,5 @@
       "symbol": "exXDC",
       "to": "coingecko#xdce-crowd-sale"
     }
-}}
+  }
+}

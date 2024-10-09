@@ -29163,7 +29163,7 @@ const data3: Protocol[] = [
     url: "https://app.kryptonite.finance/home",
     description: "The Essential Engine for Liquid Staking, Leverage & Lending on Sei",
     chain: "Sei",
-    logo: `${baseIconsUrl}/kryptonite.png`,
+    logo: `${baseIconsUrl}/kryptonite.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "kryptonite",

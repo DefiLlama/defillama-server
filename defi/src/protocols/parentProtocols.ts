@@ -5570,6 +5570,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "trado_one",
   },
+  {
+    id: "parent#lisa-finance",
+    name: "LISA Finance",
+    url: "https://www.lisalab.io",
+    description:
+      "The Goddess of Liquid Stacking, Brought to you by ALEX, Ryders Fast Pool, and Xverse Pool.",
+    logo: `${baseIconsUrl}/lisa-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["lisalab-io"],
+    twitter: "LisaLab_BTC",
+  },
 ];
 
 export default parentProtocols;

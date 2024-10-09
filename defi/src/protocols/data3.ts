@@ -57106,13 +57106,36 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Ethereum"],
-    module: "supr-staking/index.js",
+    module: "hyperdrive/index.js",
     twitter: "delv_tech",
     forkedFrom: [],
     oracles: [],
     parentProtocol: "parent#delv",
     audit_links: ["https://github.com/delvtech/hyperdrive/tree/main/audits"],
     listedAt: 1728467936
+  },
+  {
+    id: "5220",
+    name: "MetaHub Finance",
+    address: "polygon:0x94b959c93761835f634b8d6e655070c58e2caa12",
+    symbol: "MEN",
+    url: "https://metahub.finance",
+    description:
+      "The World’s First Decentralized Affiliate Consuming",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/metahub-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Polygon"],
+    module: "Metahub-Finance/index.js",
+    twitter: "MetaHubFinance",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://skynet.certik.com/projects/metahub-finance"],
+    listedAt: 1728468309
   },
 ];
 

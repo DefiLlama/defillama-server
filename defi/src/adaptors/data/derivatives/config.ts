@@ -33,7 +33,6 @@ export default {
     },
     "synfutures-v1": {
         parentId: "SynFutures",
-        "enabled": false,
         "id": "2328"
     },
     "vela": {
@@ -456,7 +455,6 @@ export default {
         "id": "2175"
     },
     "synfutures-v2": {
-        enabled: false,
         parentId: "SynFutures",
         "id": "3061"
     },
@@ -602,7 +600,6 @@ export default {
         }
     },
     "synfutures-v3": {
-        enabled: false,
         parentId: "SynFutures",
         "id": "4215"
     },

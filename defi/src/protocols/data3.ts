@@ -57090,6 +57090,30 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "5219",
+    name: "Hyperdrive",
+    address: null,
+    symbol: "-",
+    url: "https://hyperdrive.box",
+    description:
+      "Hyperdrive is a novel AMM for traders to obtain fixed rates or boosted variable yields.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hyperdrive.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "supr-staking/index.js",
+    twitter: "delv_tech",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#delv",
+    audit_links: ["https://github.com/delvtech/hyperdrive/tree/main/audits"],
+    listedAt: 1728467936
+  },
 ];
 
 export default data3;

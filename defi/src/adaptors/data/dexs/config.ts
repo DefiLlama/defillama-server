@@ -2476,5 +2476,8 @@ export default {
     "sparkdex-v2": {
         parentId: "SparkDEX",
         id: "4887",
+    },
+    "mitte": {
+        id: "5228"
     }
 } as AdaptorsConfig

@@ -96,4 +96,5 @@ export default {
   liquity: require("./other/liquity"),
   fxProtocol: require("./yield/fx-protocol"),
   crosscurve: require("./markets/crosscurve"),
+  samm: require("./markets/samm"),
 };

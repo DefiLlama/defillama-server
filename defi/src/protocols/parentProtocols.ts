@@ -5558,6 +5558,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "delv_tech",
     github: ["delvtech"],
   },
+  {
+    id: "parent#trado-finance",
+    name: "Trado Finance",
+    url: "https://perp.trado.one/",
+    description:
+      "Trado Perpetual provides both order book and spot against pool trading models",
+    logo: `${baseIconsUrl}/trado-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "trado_one",
+  },
 ];
 
 export default parentProtocols;

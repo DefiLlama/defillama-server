@@ -2468,5 +2468,13 @@ export default {
     },
     "harmony-swap": {
         id: "5198"
+    },
+    "sparkdex-v3-1": {
+        parentId: "SparkDEX",
+        id: "5223",
+    },
+    "sparkdex-v2": {
+        parentId: "SparkDEX",
+        id: "4887",
     }
 } as AdaptorsConfig

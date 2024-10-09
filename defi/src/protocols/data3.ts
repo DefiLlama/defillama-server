@@ -56861,6 +56861,7 @@ const data3: Protocol[] = [
     twitter: "trado_one",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#trado-finance",
     listedAt: 1728144545
   },
   {
@@ -57228,6 +57229,52 @@ const data3: Protocol[] = [
     oracles: [],
     github: ["croutonfi"],
     listedAt: 1728469932
+  },
+  {
+    id: "5225",
+    name: "Trado Spot",
+    address: null,
+    symbol: "-",
+    url: "https://spot.trado.one/trade/swap",
+    description:
+      "One-Stop Trading Platform with Spot and Perp on Flow",
+    chain: "Flow",
+    logo: `${baseIconsUrl}/trado-spot.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Flow"],
+    module: "trado-spot/index.js",
+    twitter: "trado_one",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#trado-finance",
+    listedAt: 1728469582
+  },
+  {
+    id: "5226",
+    name: "Estate Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.estateprotocol.com",
+    description:
+      "Estate protocol offers investors access to fractional ownership of real estate in the most sought-after markets in the world with secure, globally recognized asset protection. Estate Protocol enables cross-border investments with minimal barriers, allowing anyone to invest in high-quality real estate with as little as $50.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/estate-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Arbitrum"],
+    module: "estate-protocol/index.js",
+    twitter: "EstateProtocol",
+    forkedFrom: [],
+    oracles: [],
+    github: ["Estate-Protocol-Home"],
+    listedAt: 1728469824
   },
 ];
 

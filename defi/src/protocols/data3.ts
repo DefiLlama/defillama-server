@@ -57299,6 +57299,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#lisa-finance",
     listedAt: 1728471858
   },
+  {
+    id: "5228",
+    name: "MITTE",
+    address: null,
+    symbol: "-",
+    url: "https://beta.mitte.gg",
+    description:
+      "NFT projects can leverage traders abundant liquidity through MITTE’s order book-based bulk trading system, fostering attraction and active trading. This will significantly enhance the projects’ value and recognition.",
+    chain: "Near",
+    logo: `${baseIconsUrl}/mitte.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NftFi",
+    chains: ["Near"],
+    module: "dummy.js",
+    twitter: "MITTE_gg",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 
 export default data3;

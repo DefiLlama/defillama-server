@@ -5545,6 +5545,19 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:onyx.eth"],
     github: ["Onyx-Protocol"],
   },
+  {
+    id: "parent#delv",
+    name: "DELV",
+    url: "https://www.delv.tech",
+    description:
+      "DELV (formerly Element Finance) is developing the complete suite of decentralized finance. Our protocols work together to help create the new financial system.",
+    logo: `${baseIconsUrl}/delv.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "delv_tech",
+    github: ["delvtech"],
+  },
 ];
 
 export default parentProtocols;

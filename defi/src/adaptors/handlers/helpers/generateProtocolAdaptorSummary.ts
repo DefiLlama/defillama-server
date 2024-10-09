@@ -44,7 +44,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             ? await getAdaptorRecord({ adaptorType, adapter, type: ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType], mode: "LAST" }).catch(_e => { }) as AdaptorRecord | undefined
             : undefined
         let protocolsKeys = [adapter.module]
-        if (adapter?.enabled && adapter.versionKey) {
+        if ((adapter?.enabled || adapter.enabled === undefined) && adapter.versionKey) {
             protocolsKeys = [adapter.versionKey]
         }
         const chainFilterArray = chainFilter ? [chainFilter] : undefined

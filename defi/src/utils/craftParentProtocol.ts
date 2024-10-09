@@ -10,7 +10,6 @@ import { protocolMcap, getRaises } from "./craftProtocol";
 import { getClosestDayStartTimestamp } from "./date";
 
 export interface ICombinedTvls {
-  currentChainTvls: ICurrentChainTvls;
   chainTvls: {
     [chain: string]: {
       tvl: {
@@ -131,16 +130,13 @@ export async function craftParentProtocolInternal({
 
   const currentTime = Math.floor(Date.now() / 1000);
 
-  const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls
+  const { chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls
     .filter((prot: any) => (prot.message ? false : true))
     .sort((a, b) => (b.tvl ?? []).length - (a.tvl ?? []).length)
     .reduce<ICombinedTvls>(
       (acc, curr) => {
         const tokensExcludedFromParent = curr.tokensExcludedFromParent ?? {};
         const isTvlDataHourly = isHourlyTvl(curr.tvl);
-
-        // store tvl to exclude by chain
-        const tvlToExcludeByChain: { [chain: string]: number } = {};
 
         // TVL, NO.OF TOKENS, TOKENS IN USD OF EACH CHAIN BY DATE
         for (const chain in curr.chainTvls) {
@@ -200,7 +196,6 @@ export async function craftParentProtocolInternal({
               }
             }
           });
-          tvlToExcludeByChain[chain] = Object.values(tvlToExcludeByDate).slice(-1)?.[0] ?? 0;
 
           // TVLS OF EACH CHAIN BY DATE
           curr.chainTvls[chain].tvl.forEach(({ date, totalLiquidityUSD }, index) => {
@@ -287,14 +282,6 @@ export async function craftParentProtocolInternal({
                 (acc.chainTvls[chain].tokens[nearestDate][token] || 0) + tokens[token];
             }
           });
-        }
-
-        // TOTAL TVL OF EACH CHAIN
-        for (const name in curr.currentChainTvls) {
-          acc.currentChainTvls = {
-            ...acc.currentChainTvls,
-            [name]: (acc.currentChainTvls[name] || 0) + curr.currentChainTvls[name] - (tvlToExcludeByChain[name] ?? 0),
-          };
         }
 
         if (!skipAggregatedTvl) {
@@ -411,7 +398,6 @@ export async function craftParentProtocolInternal({
         return acc;
       },
       {
-        currentChainTvls: {},
         chainTvls: {},
         tokens: {},
         tokensInUsd: {},
@@ -448,6 +434,12 @@ export async function craftParentProtocolInternal({
       tokens,
       tokensInUsd,
     };
+  }
+
+  // TOTAL TVL OF EACH CHAIN
+  const currentChainTvls: ICurrentChainTvls = {};
+  for (const name in formattedChainTvls) {
+    currentChainTvls[name] = formattedChainTvls[name].tvl[formattedChainTvls[name].tvl.length - 1].totalLiquidityUSD;
   }
 
   //  FORMAT NO.OF TOKENS BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE

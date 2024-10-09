@@ -1,11 +1,14 @@
-import { multiCall } from "@defillama/sdk/build/abi/index";
+import { call, multiCall } from "@defillama/sdk/build/abi/index";
 import abi from "./abi.json";
 import axios from "axios";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
-import { MultiCallResults } from "../../utils/sdkInterfaces";
+import {
+  MultiCallResults,
+  Result as CallResult,
+} from "../../utils/sdkInterfaces";
 import { CoinData, Write } from "../../utils/dbInterfaces";
 import { requery } from "../../utils/sdk";
 import getBlock from "../../utils/block";
@@ -84,7 +87,7 @@ async function getPricePerShare(
 async function getUsdValues(
   pricePerShares: MultiCallResults,
   vaults: VaultKeys[],
-  coinsData: CoinData[],
+  coinsData: { [key: string]: CoinData },
   decimals: any,
 ) {
   const failObject = {
@@ -99,9 +102,7 @@ async function getUsdValues(
     );
     if (selectedVault == null) return failObject;
     const underlying = selectedVault.token.address;
-    const coinData: CoinData | undefined = coinsData.find(
-      (c: CoinData) => c.address == underlying.toLowerCase(),
-    );
+    const coinData: CoinData | undefined = coinsData[underlying.toLowerCase()];
     if (!coinData) return failObject;
     const decimal = decimals.find(
       (c: any) =>
@@ -129,7 +130,7 @@ async function pushMoreVaults(
 ) {
   if (manualVaults[chain as keyof typeof manualVaults].length == 0)
     return vaults;
-  const [{ output: tokens }, { output: symbols }]: MultiCallResults[] =
+  let [{ output: tokens }, { output: symbols }]: MultiCallResults[] =
     await Promise.all([
       multiCall({
         abi: abi.token,
@@ -140,6 +141,7 @@ async function pushMoreVaults(
           }),
         ),
         block,
+        permitFailure: true,
       }),
       multiCall({
         abi: "erc20:symbol",
@@ -152,6 +154,18 @@ async function pushMoreVaults(
         block,
       }),
     ]);
+
+  await Promise.all(
+    tokens.map(async (t: CallResult, i: number) => {
+      if (t.success == true) return;
+      tokens[i] = await call({
+        abi: abi.asset,
+        target: t.input.target,
+        chain,
+        block,
+      });
+    }),
+  );
 
   const vaultInfo: VaultKeys[] = manualVaults[
     chain as keyof typeof manualVaults
@@ -184,7 +198,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   // 135
   await pushMoreVaults(chain, vaults, block);
 
-  const coinsData: CoinData[] = await getTokenAndRedirectData(
+  const coinsData = await getTokenAndRedirectDataMap(
     vaults.map((v: VaultKeys) => v.token.address.toLowerCase()),
     chain,
     timestamp,

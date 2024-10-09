@@ -1,7 +1,7 @@
 import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
 import { ChainApi } from "@defillama/sdk";
-import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
+import { addToDBWritesList, getTokenAndRedirectData, getTokenAndRedirectDataMap } from "../utils/database";
 
 const chain = "ethereum";
 const projectName = "warlord";
@@ -53,12 +53,12 @@ export default async function getTokenPrice(timestamp: number) {
     await api.call({ target: WAR, abi: "erc20:symbol" }),
   ]);
 
-  const coinData = await getTokenAndRedirectData(tokens, chain, timestamp);
+  const coinData = await getTokenAndRedirectDataMap(tokens, chain, timestamp);
 
   const price: number =
     tokens
       .map((token, i) => {
-        const tokenInfo = getTokenInfo(token);
+        const tokenInfo = coinData[token.toLowerCase()];
         const tokenPrice = tokenInfo!.price;
         const tokenDecimals = tokenInfo!.decimals;
         const tokenBal = bals[i];
@@ -83,9 +83,5 @@ export default async function getTokenPrice(timestamp: number) {
     0.99,
   );
 
-  function getTokenInfo(token: string) {
-    token = token.toLowerCase();
-    return coinData.find((i) => i.address.toLowerCase() === token);
-  }
   return writes;
 }

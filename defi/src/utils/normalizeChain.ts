@@ -23,7 +23,9 @@ export const normalizedChainReplacements = {
   "hydration": "hydradx",
   "zklink nova": "zklink",
   "bitlayer": "btr",
-  "cronos zkevm": "cronos_zkevm"
+  "cronos zkevm": "cronos_zkevm",
+  "kaia": "klaytn",
+  "viction": "tomochain"
 } as {
   [chain: string]: string
 }
@@ -878,7 +880,7 @@ export const chainCoingeckoIds = {
     twitter: "SmartBCH",
     url: "https://smartbch.org/"
   },
-  "zkSync Lite": {
+  "ZKsync Lite": {
     geckoId: null,
     github: ['matter-labs'],
     symbol: null,
@@ -1489,6 +1491,7 @@ export const chainCoingeckoIds = {
     cmcId: "4558",
     twitter: "flow_blockchain",
     url: "https://flow.com/",
+    chainId: 747,
   },
   "Kujira": {
     geckoId: "kujira",
@@ -1920,7 +1923,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
-  "zkSync Era": {
+  "ZKsync Era": {
     geckoId: "zksync",
     github: ['matter-labs'],
     symbol: "ZK",
@@ -2497,6 +2500,7 @@ export const chainCoingeckoIds = {
     symbol: "FTN",
     cmcId: "22615",
     categories: ["EVM"],
+    twitter: "bahamut_chain",
     github: ["fastexlabs"]
   },
   "Zkfair": {
@@ -2569,6 +2573,7 @@ export const chainCoingeckoIds = {
     github: ["zeta-chain"],
     twitter: "zetablockchain",
     url: "https://www.zetachain.com",
+    chainId: 7000
   },
   "Celestia": {
     geckoId: "celestia",
@@ -2605,9 +2610,13 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
     twitter: "DeFiVerse_org",
     url: "https://defi-verse.org",
+    chainId: 16116,
+    parent: {
+      chain: "Oasys",
+      types: ["L2"]
+    },
   },
   "Manta Atlantic": {
     geckoId: null,
@@ -2814,10 +2823,10 @@ export const chainCoingeckoIds = {
     url: "https://www.degen.tips"
   },
   "HAQQ": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
-    categories: ["EVM"],
+    geckoId: "islamic-coin",
+    symbol: "ISLM",
+    cmcId: "26220",
+    categories: ["EVM", "Cosmos"],
     twitter: "The_HaqqNetwork",
     url: "https://haqq.network/",
     github: ["haqq-network"],
@@ -2896,13 +2905,13 @@ export const chainCoingeckoIds = {
     twitter: "BSquaredNetwork",
     url: "https://www.bsquared.network/"
   },
-  "Lyra Chain": {
+  "Derive Chain": { // rebrand from Lyra
     geckoId: null,
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
-    twitter: "lyrafinance",
-    url: "https://lyra.finance",
+    twitter: "derivexyz",
+    url: "https://www.derive.xyz/",
     chainId: 957,
   },
   "Planq": {
@@ -2940,7 +2949,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup", "Bitcoin Sidechains"],
+    categories: ["EVM", "Rollup", "Bitcoin Sidechains", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -3241,6 +3250,130 @@ export const chainCoingeckoIds = {
     github: ["dexalot"],
     url: "https://dexalot.com"
   },
+  "BandChain": {
+    geckoId: "band-protocol",
+    symbol: "BAND",
+    cmcId: "4679",
+    categories: ["Cosmos"],
+    twitter: "BandProtocol",
+    github: ["bandprotocol"],
+    url: "https://www.bandprotocol.com/"
+  },
+  "Immutable X": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "Immutable",
+    url: "https://www.immutable.com/products/immutable-x",
+  },
+  "Neo X Mainnet": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 47763,
+    twitter: "Neo_Blockchain",
+    url: "https://x.neo.org/"
+  },
+  "Gravity": {
+    geckoId: "g-token",
+    symbol: "G",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 1625,
+    twitter: "GravityChain",
+    url: "https://gravity.xyz/"
+  },
+  "Chainflip": {
+    geckoId: "chainflip",
+    symbol: "FLIP",
+    cmcId: "13268",
+    categories: ["EVM"],
+    twitter: "Chainflip",
+    url: "https://chainflip.io/"
+  },
+  "IDEX": {
+    geckoId: "aurora-dao",
+    symbol: "IDEX",
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "idexio",
+    url: "https://idex.io/"
+  },
+  "Zircuit": {
+    geckoId: "zircuit",
+    symbol: "ZRC",
+    cmcId: "29711",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 48900,
+    twitter: "ZircuitL2",
+    url: "https://www.zircuit.com/"
+  },
+  "Polynomial": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    twitter: "PolynomialFi",
+    url: "https://www.polynomial.fi/"
+  },
+  "Electroneum": {
+    geckoId: "electroneum",
+    symbol: "ETN",
+    cmcId: "2137",
+    categories: ["EVM"],
+    chainId: 52014,
+    twitter: "electroneum",
+    url: "https://electroneum.com/",
+  },
+  "Lisk": {
+    geckoId: "lisk",
+    symbol: "LSK",
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    url: "https://lisk.com/",
+    twitter: "LiskHQ",
+    github: ["LiskHQ"],
+    chainId: 1135
+  },
+  "HeLa": {
+    geckoId: "hela",
+    symbol: "HELA",
+    cmcId: "2137",
+    categories: ["EVM"],
+    chainId: 8668,
+    twitter: "Hela_Network",
+    url: "https://helalabs.com/",
+  },
+  "Matchain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "BSC",
+      types: ["L2", "gas"]
+    },
+    url: "https://www.matchain.io/",
+    twitter: "matchain_io",
+    chainId: 698
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3264,6 +3397,7 @@ chainCoingeckoIds["HydraDX"] = chainCoingeckoIds["Hydration"]
 chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
 chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
 chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
+chainCoingeckoIds["Lyra Chain"] = chainCoingeckoIds["Derive Chain"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3296,7 +3430,7 @@ export function transformNewChainName(chain: string) {
     case "Orai":
       return "Oraichain"
     case "zkSync":
-      return "zkSync Lite"
+      return "ZKsync Lite"
     case "polygon_zkevm":
       return "Polygon zkEVM"
     case "eos_evm":
@@ -3329,6 +3463,12 @@ export function transformNewChainName(chain: string) {
       return "Persistence One"
     case "Klaytn":
       return "Kaia"
+    case "zkSync Era":
+      return "ZKsync Era"
+    case "zkSync Lite":
+      return "ZKsync Lite"
+    case "Lyra Chain":
+      return "Derive Chain"
     default:
       return chain
   }
@@ -3441,9 +3581,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "ethereumclassic":
       return "EthereumClassic"
     case "zksync":
-      return useNewChainNames ? "zkSync Lite" : "zkSync"
+      return useNewChainNames ? "ZKsync Lite" : "zkSync"
     case "zksync era":
-      return "zkSync Era"
+      return useNewChainNames ? "ZKsync Era" : "zkSync Era"
     case "bifrost network":
       return "Bifrost Network"
     case "bevm":
@@ -3667,7 +3807,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bone":
       return "Bone"
     case "era":
-      return "zkSync Era"
+      return "ZKsync Era"
     case "bfc":
       return "Bifrost Network"
     case "chainx":
@@ -3875,7 +4015,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bsquared":
       return "BSquared"
     case "lyra":
-      return "Lyra Chain"
+      return useNewChainNames ? "Derive Chain" : "Lyra Chain"
     case "planq":
       return "Planq"
     case "xlayer":
@@ -3940,6 +4080,30 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Cronos zkEVM"
     case "dexalot":
       return "Dexalot"
+    case "band":
+      return "BandChain"
+    case "immutablex":
+      return "Immutable X"
+    case "neox":
+      return "Neo X Mainnet"
+    case "gravity":
+      return "Gravity"
+    case "chainflip":
+      return "Chainflip"
+    case "idex":
+      return "IDEX"
+    case "zircuit":
+      return "Zircuit"
+    case "polynomial":
+      return "Polynomial"
+    case "etn":
+      return "Electroneum"
+    case "lisk":
+      return "Lisk"
+    case "hela":
+      return "HeLa"
+    case "matchain":
+      return "Matchain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

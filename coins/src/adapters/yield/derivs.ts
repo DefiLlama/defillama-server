@@ -2,36 +2,29 @@ import { getCurrentUnixTimestamp } from "../../utils/date";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
+import * as sdk from "@defillama/sdk";
 
 type Config = {
   chain: string;
   rate: (params: any) => Promise<number>;
   address: string;
-  underlying: string;
+  underlying?: string;
   underlyingChain?: string;
   symbol?: string;
-  decimals?: string;
+  decimals?: number;
 };
 
 const lrts = (target: string) => {
   return async ({ api }: any) => {
-    const [assets, supply] = await Promise.all([
-      api.call({
-        abi: {
-          inputs: [],
-          name: "underlyingTvl",
-          outputs: [
-            { internalType: "address[]", name: "tokens", type: "address[]" },
-            { internalType: "uint256[]", name: "amounts", type: "uint256[]" },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        target,
-      }),
+    const balances = new sdk.Balances({ chain: api.chain, timestamp: api.timestamp });
+    const [assets, supply, decimals,] = await Promise.all([
+      api.call({ abi: "function underlyingTvl() view returns (address[] tokens, uint256[] amounts)", target, }),
       api.call({ abi: "erc20:totalSupply", target }),
+      api.call({ abi: "erc20:decimals", target }),
     ]);
-    return assets.amounts[0] / supply;
+    balances.add(assets.tokens, assets.amounts)
+    const usdValue = await balances.getUSDValue()
+    return usdValue / (supply / 10 ** decimals);
   };
 };
 
@@ -142,24 +135,25 @@ const configs: { [adapter: string]: Config } = {
     rate: lrts("0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc"),
     chain: "ethereum",
     address: "0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc",
-    underlying: "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
   },
   Re7LRT: {
     rate: lrts("0x84631c0d0081fde56deb72f6de77abbbf6a9f93a"),
     chain: "ethereum",
-    underlying: "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
     address: "0x84631c0d0081fde56deb72f6de77abbbf6a9f93a",
+  },
+  Re7BTC: {
+    rate: lrts("0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444"),
+    chain: "ethereum",
+    address: "0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444",
   },
   amphrETH: {
     rate: lrts("0x5fd13359ba15a84b76f7f87568309040176167cd"),
     chain: "ethereum",
-    underlying: "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
     address: "0x5fd13359ba15a84b76f7f87568309040176167cd",
   },
   rstETH: {
     rate: lrts("0x7a4effd87c2f3c55ca251080b1343b605f327e3a"),
     chain: "ethereum",
-    underlying: "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
     address: "0x7a4effd87c2f3c55ca251080b1343b605f327e3a",
   },
   weETHk: {
@@ -219,8 +213,45 @@ const configs: { [adapter: string]: Config } = {
       return rate / 1e6;
     },
     chain: "ethereum",
-    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    underlying: "0x1abaea1f7c830bd89acc67ec4af516284b1bc33c",
     address: "0xa0769f7A8fC65e47dE93797b4e21C073c117Fc80",
+  },
+  aETH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAETH(uint256) external view returns (uint256)",
+        target: "0x25a01dBde45cc5Bb7071EB3c3b2F983ea923bec5",
+        params: "1000000",
+      });
+      return rate / 1e6;
+    },
+    chain: "ethereum",
+    underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    address: "0xFC87753Df5Ef5C368b5FBA8D4C5043b77e8C5b39",
+  },
+  iwstETH: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function exchangeRateStored() external view returns (uint256)",
+        target: "0x4B3488123649E8A671097071A02DA8537fE09A16",
+      });
+      return rate / 1e18;
+    },
+    chain: "optimism",
+    underlying: "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb",
+    address: "0x4B3488123649E8A671097071A02DA8537fE09A16",
+  },
+  FIUSD: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestAnswer() external view returns (uint256)",
+        target: "0xC406104c42211abd1A2cD411DDd071511515bDdd",
+      });
+      return rate / 1e18;
+    },
+    chain: "era",
+    underlying: "0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4",
+    address: "0x2AB105A3eAd22731082B790CA9A00D9A3A7627F9",
   },
 };
 
@@ -231,16 +262,14 @@ export async function derivs(timestamp: number) {
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {
-  const { chain, underlying, address, underlyingChain, symbol, decimals } =
+  const { chain, underlying, address, underlyingChain, symbol, decimals, } =
     config;
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const api = await getApi(chain, t, true);
   const pricesObject: any = {
     [address]: {
-      underlying,
+      underlying, symbol, decimals,
       price: await config.rate({ api, timestamp }),
-      symbol,
-      decimals,
     },
   };
 

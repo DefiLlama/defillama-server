@@ -1,11 +1,12 @@
 import fetch from "node-fetch";
 import { FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { sendMessage } from "../src/utils/discord";
 import { allChainKeys } from "./constants";
 
 export async function verifyChanges(chains: FinalData) {
-  const res = await fetch(`https://api.llama.fi/chain-assets/chains?apikey=${process.env.COINS_KEY}`).then((r) => r.json());
+  const res = await fetch(`https://api.llama.fi/chain-assets/chains?apikey=${process.env.COINS_KEY}`).then((r) =>
+    r.json()
+  );
   let message: string = ``;
   const hours = ((getCurrentUnixTimestamp() - res.timestamp) / (60 * 60)).toFixed(1);
 
@@ -16,10 +17,11 @@ export async function verifyChanges(chains: FinalData) {
 
     const totalNew = allNew.total.total;
     const totalOld = allOld.total.total;
-    const change = (100 * Math.abs(totalNew - totalOld)) / totalOld;
-    if (!(change > 20)) return;
+    const forwardChange = totalOld != "0" ? (100 * Math.abs(totalNew - totalOld)) / totalOld : 0;
+    const backwardChange = totalNew != 0 ? (100 * Math.abs(totalNew - totalOld)) / totalNew : 0;
+    if (forwardChange < 100 || backwardChange < 100) return;
 
-    message += `\n${chain} has had a ${totalNew > totalOld ? "increase" : "decrease"} of ${change.toFixed(
+    message += `\n${chain} has had a ${totalNew > totalOld ? "increase" : "decrease"} of ${forwardChange.toFixed(
       0
     )}% in ${hours}`;
   });

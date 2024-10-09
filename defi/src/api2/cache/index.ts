@@ -12,7 +12,7 @@ import { Protocol } from "../../protocols/types";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { getProtocolAllTvlData } from "../utils/cachedFunctions";
-import { getDimensionsCacheV2, } from "../utils/dimensionsUtils";
+// import { getDimensionsCacheV2, } from "../utils/dimensionsUtils";
 import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 import { RUN_TYPE } from "../utils";
 
@@ -78,7 +78,7 @@ export async function initCache({ cacheType = RUN_TYPE.CRON } = { cacheType: RUN
     const _cache = (await readFromPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL)) ?? {}
     Object.entries(_cache).forEach(([k, v]: any) => (cache as any)[k] = v)
 
-    await getDimensionsCacheV2(cacheType) // initialize dimensions cache
+    // await getDimensionsCacheV2(cacheType) // initialize dimensions cache // no longer needed since we pre-generate the files
 
     await setHistoricalTvlForAllProtocols()
     // await loadDimensionsCache()

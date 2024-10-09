@@ -1,6 +1,6 @@
 import chainToCoingeckoId from "../../common/chainToCoingeckoId";
 import { successResponse, wrap, IResponse } from "./utils/shared";
-const adaptersRepoChainsJson: string[] = [
+export const adaptersRepoChainsJson: string[] = [
   "acala",
   "algorand",
   "aptos",

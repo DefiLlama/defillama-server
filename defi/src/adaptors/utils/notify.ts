@@ -7,6 +7,7 @@ const webhooks = {
     derivatives: process.env.DERIVATIVES_WEBHOOK,
     aggregators: process.env.AGGREGATORS_WEBHOOK,
     options: process.env.OPTIONS_WEBHOOK,
+    dimensionLogs: process.env.DIMENSION_LOGS_WEBHOOK,
 } as IJSON<string>
 
 export const sendDiscordAlert = async (message: string, type: string, formatted?: boolean) => sendMessage(message, webhooks[type] ?? webhooks.fees, formatted)

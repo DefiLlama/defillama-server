@@ -1,6 +1,6 @@
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectDataMap
 } from "./database";
 import { getTokenInfo } from "./erc20";
 import { Write, CoinData } from "./dbInterfaces";
@@ -22,15 +22,13 @@ export default async function getWrites(params: { chain: string, timestamp: numb
     coinsData
   ] = await Promise.all([
     getTokenInfo(underlyingChain ?? chain, entries.map(i => i.token), undefined),
-    getTokenAndRedirectData(entries.map(i => i.underlying).filter(i => i), underlyingChain ?? chain, timestamp)
+    getTokenAndRedirectDataMap(entries.map(i => i.underlying).filter(i => i), underlyingChain ?? chain, timestamp)
   ])
 
   entries.map(({token, price, underlying, symbol, decimals }, i) => {
     const finalSymbol = symbol ?? tokenInfos.symbols[i].output
     const finalDecimals = decimals ?? tokenInfos.decimals[i].output
-    let coinData: (CoinData | undefined) = coinsData.find(
-      (c: CoinData) => c.address.toLowerCase() === underlying
-    );
+    let coinData: (CoinData | undefined) = coinsData[underlying]
     if (!underlying) coinData = {
       price: 1,
       confidence: 0.98,

@@ -23,7 +23,6 @@
     "delete-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/deleteTvl.ts",
     "displayData": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/displayData.ts",
     "customFill": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/customFill.ts",
-    "deleteAtDate": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/deleteAtDate.ts",
     "backfill-dex-script": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts",
     "backfill-dex-local-script": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts",
     "backfill-dex": "npm run update-submodules && npm run backfill-dex-script",
@@ -50,7 +49,7 @@
     "run-governance": "npx ts-node --logError --transpile-only src/governance/test.ts",
     "cron-dimensions": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx  --node-options='--max-old-space-size=20144' ts-node --logError --transpile-only src/api2/cron-task/dimensions.ts",
     "extension-updateExtensionTwitterConfig": "export AWS_REGION='eu-central-1' && npx ts-node --logError --transpile-only src/api2/scripts/updateExtensionTwitterConfig.ts",
-    "dimensions-store-all": "npx  --node-options='--max-old-space-size=20144' ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/storeAll.ts",
+    "dimensions-store-all": "npx  --node-options='--max-old-space-size=20144' ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/storeAll.ts  2>&1 | tee dimensionsRun.log; node src/api2/scripts/printDimensionRunStats.js  2>&1 | tee dimensionsRunStats2.log",
     "dimensions-notify-backfill": "npx ts-node --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill.ts; npx ts-node --logError --transpile-only src/adaptors/handlers/triggerNotificationAndBackfill2.ts",
     "notify-outdated": "npx ts-node --logError --transpile-only src/server-scripts/notifyOutdated.ts",
     "twitter-update": "npx ts-node --logError --transpile-only src/twitter/updateTwitterData.ts"

@@ -23,7 +23,7 @@ async function main(){
     }
     const tvl = await calculateTvl()
     if(Object.keys(tvl[chainToFetch]).length === 0){
-        console.log(`Chain with name "${chainToFetch}" doesn't exist, make sure that youre using the correct chain name and cross-check against "defi/l2/constants.ts"`)
+        console.log(`Chain with name "${chainToFetch}" doesn't exist, make sure that you are using the correct chain name and cross-check against "defi/l2/constants.ts"`)
     }
     console.log(JSON.stringify(tvl[chainToFetch], null, 2))
     process.exit(0)

@@ -10,14 +10,16 @@ async function run() {
   const startTimeAll = getUnixTimeNow()
   console.time("**** Run All Adaptor types")
 
-  const randomizedAdapterTypes = [...ADAPTER_TYPES].sort(() => Math.random() - 0.5)
-  for (const adapterType of randomizedAdapterTypes) {
-    await runAdapterType(adapterType)
-  }
+  await Promise.all(ADAPTER_TYPES.map(runAdapterType))
+
+  // const randomizedAdapterTypes = [...ADAPTER_TYPES].sort(() => Math.random() - 0.5)
+  // for (const adapterType of randomizedAdapterTypes) {
+  //   await runAdapterType(adapterType)
+  // }
 
   async function runAdapterType(adapterType: AdapterType) {
     const startTimeCategory = getUnixTimeNow()
-    // if (adapterType !== AdapterType.OPTIONS) return;
+    // if (adapterType !== AdapterType.AGGREGATORS) return;
     const key = "**** Run Adaptor type: " + adapterType
     console.time(key)
     let success = false
@@ -67,18 +69,7 @@ async function run() {
 
 run().catch(console.error).then(() => process.exit(0))
 
-// catch unhandled rejections
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Dimensions runner: Unhandled Rejection at:', reason, 'promise:', promise);
-  process.exit(1)
-});
-
-process.on('uncaughtException', (error) => {
-  console.error('Dimensions runner: Uncaught Exception thrown', error);
-  process.exit(1)
-})
-
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 90) // 45 minutes
+}, 1000 * 60 * 55) // 55 minutes

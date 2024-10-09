@@ -84,8 +84,8 @@ async function getTokenPrices(timestamp: number) {
 
   const writes: Write[] = [];
   let pools = await getPools()
-  const basePrice = await getTokenAndRedirectData(['cardano'], 'coingecko', timestamp)
-  const cardanoPrice = basePrice[0].price
+  const [basePrice] = await getTokenAndRedirectData(['cardano'], 'coingecko', timestamp)
+  const cardanoPrice = basePrice.price
   addToDBWritesList(writes, chain, '0x0000000000000000000000000000000000000000', cardanoPrice, 6, 'ADA', timestamp, 'wingriders', 0.9)
   addToDBWritesList(writes, chain, 'lovelace', cardanoPrice, 6, 'ADA', timestamp, 'wingriders', 0.9)
   Object.values(pools).forEach(({ token, price, decimals, ticker, name, }: any) => {

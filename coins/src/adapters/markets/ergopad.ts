@@ -26,8 +26,8 @@ async function getTokenPrices(timestamp: number) {
 
   const writes: Write[] = [];
   let pools = await getPools()
-  const baseTokenInfo = await getTokenAndRedirectData(['ergo'], 'coingecko', timestamp)
-  const basePrice = baseTokenInfo[0].price
+  const [baseTokenInfo] = await getTokenAndRedirectData(['ergo'], 'coingecko', timestamp)
+  const basePrice = baseTokenInfo.price
   addToDBWritesList(writes, chain, '0x0000000000000000000000000000000000000000', basePrice, 9, 'ERG', timestamp, 'ergo', 0.9)
   const priceLog: any[] = []
   pools.forEach(({ value: quantityA, assets: [_, _1, { amount: quantityB, tokenId, decimals, name }] }: any) => {

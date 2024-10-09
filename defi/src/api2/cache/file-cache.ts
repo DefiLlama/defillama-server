@@ -10,6 +10,32 @@ export const ROUTES_DATA_DIR = path.join(CACHE_DIR!, 'build')
 
 const pathExistsMap: any = {}
 
+export function getAllFileSubpathsSync(folder: string, isAbsolutePath = false): Set<string> {
+  try {
+
+    const subpaths: Set<string> = new Set();
+    if (!isAbsolutePath)
+      folder = path.join(ROUTES_DATA_DIR!, folder)
+
+    const files = fs.readdirSync(folder, { withFileTypes: true });
+    for (const file of files) {
+      const filePath = path.join(folder, file.name);
+      if (file.isDirectory()) {
+        const subfolderSubpaths = getAllFileSubpathsSync(filePath, true);
+        for (const subpath of subfolderSubpaths) {
+          subpaths.add(path.join(file.name, subpath));
+        }
+      } else {
+        subpaths.add(file.name);
+      }
+    }
+    return subpaths
+  } catch (e) {
+    console.error('Error reading folder:', folder, (e as any)?.message)
+    return new Set()
+  }
+}
+
 async function ensureDirExists(folder: string) {
 
   if (!pathExistsMap[folder]) pathExistsMap[folder] = createPathIfMissing()
@@ -79,7 +105,7 @@ export async function readFromPGCache(key: string, { withTimestamp = false } = {
 
 export async function writeToPGCache(key: string, data: any) {
   const id = getCacheFile(key)
-  return storeData(id, {id, timestamp: Math.floor(Date.now() / 1e3), data})
+  return storeData(id, { id, timestamp: Math.floor(Date.now() / 1e3), data })
 }
 
 export function getDailyTvlCacheId(id: string) {

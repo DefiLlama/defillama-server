@@ -2,11 +2,9 @@ import { AdaptorsConfig } from "../types";
 
 export default {
   "jupiter-aggregator": {
-    enabled: true,
     id: "2141",
   },
   "dexible": {
-    enabled: true,
     disabled: true,
     startFrom: 1630022400,
     id: "2249",
@@ -15,25 +13,25 @@ export default {
       Dexible_v2: {
         disabled: true,
         id: "2249",
-        enabled: true,
         displayName: "Dexible V2",
       },
     },
   },
   "deflex": {
-    enabled: true,
     id: "2420",
   },
   // "dforce": {
-  //   enabled: true,
   //   id: "123",
   // },
   "plexus": {
-    enabled: true,
     id: "2740",
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1706313600: false
+        }
+    }
   },
   "avnu": {
-    enabled: true,
     id: "3154",
   },
   "bitkeep": {
@@ -41,7 +39,6 @@ export default {
     id: "3207",
   },
   "jumper-exchange": {
-    enabled: true,
     id: "3524",
     cleanRecordsConfig: {
       genuineSpikes: {
@@ -50,22 +47,18 @@ export default {
     },
   },
   "slingshot": {
-    enabled: true,
     id: "3681",
   },
   "caviarnine": {
     parentId: "CaviarNine",
-    enabled: true,
     id: "3645",
     protocolsData: {
       aggregator: {
-        id: "3645",
-        enabled: true,
+        id: "5064",
       },
     },
   },
   "aggre": {
-    enabled: true,
     id: "3809",
   },
   "llamaswap": {
@@ -77,23 +70,24 @@ export default {
   //   id: "533",
   // },
   "arcane-dex": {
-    enabled: true,
     id: "3885",
   },
   "1inch-agg": {
-    enabled: true,
     id: "189",
   },
   "zrx": {
-    enabled: true,
     id: "4628",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        1674172800: true,
+        1680739200: true
+      }
+  }
   },
   "cowswap": {
-    enabled: true,
     id: "2643",
   },
   "kyberswap": {
-    enabled: true,
     id: "3982",
     cleanRecordsConfig: {
       genuineSpikes: {
@@ -103,70 +97,55 @@ export default {
     },
   },
   "yield-yak": {
-    enabled: true,
     id: "475",
   },
   "bebop": {
-    enabled: true,
     id: "3927",
   },
-  "dodo": {
-    enabled: true,
-    id: "146",
-    protocolsData: {
-      "dodo-agg": {
-        enabled: true,
-        id: "146",
-      }
-    }
+  "dodo-agg": {
+    id: "5062",
   },
   "paraswap": {
-    enabled: true,
     id: "894",
   },
   "tokenlon": {
-    enabled: true,
     id: "405",
     "protocolsData": {
       "tokenlon-agg": {
-        id: "405",
-        enabled: true,
+        id: "5063",
       }
     }
   },
   "aftermath-aggregator": {
     parentId: "Aftermath Finance",
-    enabled: true,
     id: "3981",
   },
   "dexhunter": {
-    enabled: true,
     id: "3979",
   },
   "conveyor": {
-    enabled: true,
     id: "3980",
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1722729600: false
+        }
+    }
   },
   // "unidex": {
-  //   "enabled": true,
   //   "id": "1833",
   //   protocolsData: {
   //       "unidex-dexs-agg": {
-  //           "enabled": true,
   //           "id": "1833"
   //       }
   //   }
   // },
   "swapgpt": {
-    enabled: true,
     id: "4008",
   },
   "kanalabs": {
-    enabled: true,
     id: "4016",
   },
   "odos": {
-    "enabled": true,
     "id": "3951",
     "cleanRecordsConfig": {
       "genuineSpikes": {
@@ -178,15 +157,12 @@ export default {
     }
   },
   "wowmax": {
-    "enabled": true,
     "id": "4192"
   },
   "opt-agg": {
-    "enabled": true,
     "id": "4277"
   },
   "fibrous-finance": {
-    "enabled": true,
     "id": "4278"
   },
   "aperture-swap": {
@@ -195,68 +171,91 @@ export default {
     "id": "3554"
   },
   "magpie": {
-    "enabled": true,
     "id": "4457"
   },
   "etaswap": {
-    "enabled": true,
     "id": "4475"
   },
   "bountive": {
-    "enabled": true,
     "id": "4516"
   },
   "rubic": {
-    "enabled": true,
     "id": "1282"
   },
   "eisen": {
-    "enabled": true,
     "id": "4691"
   },
   "udex-agg": {
-    "enabled": true,
     "id": "4704"
   },
   "injex": {
-    "enabled": true,
     "id": "4762"
   },
   "hop-aggregator": {
-    enabled: true,
     id: "4791",
   },
   "hallswap": {
-    enabled: true,
     id: "4824",
+    cleanRecordsConfig: {
+        genuineSpikes: {
+          1724457600: true
+        }
+    }
   },
   "flowx-aggregator": {
     parentId: "FlowX Finance",
-    enabled: true,
     id: "4825",
   },
   "sushiswap": {
-    "enabled": true,
     "id": "119",
     parentId: "Sushi",
     protocolsData: {
         "agg-dex": {
-            enabled: true,
-            id: "119"
+            id: "5061"
         }
     }
   },
   "7k-aggregator": {
-    enabled: true,
     id: "4868",
   },
   "akka": {
-    enabled: true,
     id: "4926",
   },
   "cetus-aggregator": {
       parentId: "Cetus",
-      "enabled": true,
-      "id": "4958"
+      "id": "4958",
+      cleanRecordsConfig: {
+          genuineSpikes: {
+            1724803200: true
+          }
+      }
+  },
+  "chainspot": {
+    id: "5028",
+  },
+  "scallop": {
+    parentId: "Scallop",
+    id: "5087",
+  },
+  "lumia": {
+    id: "5098",
+  },
+  "rainbow-swap": {
+    id: "5110",
+  },
+  "wolfswap": {
+    id: "5138",
+  },
+  "swap-coffee": {
+    id: "5150",
+  },
+  "tondiamonds": {
+    id: "5161",
+  },
+  "okx": {
+    id: "5201",
+  },
+  "jeton": {
+    id: "5213",
   }
 } as AdaptorsConfig;

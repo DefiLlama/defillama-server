@@ -1,4 +1,3 @@
-import { get } from 'lodash'
 import protocols from '../protocols/data'
 import parentProtocols from '../protocols/parentProtocols'
 import { chainCoingeckoIds } from '../utils/normalizeChain'
@@ -6,24 +5,44 @@ import { init, close, getAllUsers, updateUser, addTweets, } from './db'
 import { getAllTweets, getUserData, transformHandleV2 } from './utils'
 import sleep from '../utils/shared/sleep'
 import { setTwitterOverviewFileV2 } from '../../dev-metrics/utils/r2'
+import axios from 'axios'
 
 let twitterSet = new Set<string>()
+const protocolDataMap: any = {}
+const handlesOver1MTvl = new Set<string>()
+const handlesOver50kTvl = new Set<string>()
 
-const addTwitter = (i: any) => i.map((j: any) => {
-  if (!j.twitter) return;
-  if (Array.isArray(j.twitter)) j.twitter.forEach((k: any) => twitterSet.add(k))
-  else twitterSet.add(j.twitter)
-})
+function addTwitter(i: any) {
+  i.map((j: any) => {
+    const { tvl, deadFrom } = protocolDataMap[j.id] ?? {}
+    if (!j.twitter || deadFrom) return;
+    const handles = Array.isArray(j.twitter) ? j.twitter : [j.twitter]
+    if (tvl && tvl > 5e4) {
+      if (tvl > 1e6) handles.forEach((k: any) => handlesOver1MTvl.add(k))
+      else handles.forEach((k: any) => handlesOver50kTvl.add(k))
+    }
 
-addTwitter(protocols)
-addTwitter(parentProtocols)
-addTwitter(Object.values(chainCoingeckoIds))
+    handles.forEach((k: any) => twitterSet.add(k))
+  })
 
-const twitterAccounts = Array.from(twitterSet)
-
-console.log('twitterAccounts: ', twitterAccounts.length)
+}
 
 async function run() {
+
+  const { data: protocolData } = await axios.get('https://api.llama.fi/protocols')
+  protocolData.forEach((i: any) => protocolDataMap[i.id] = i)
+
+
+  addTwitter(protocols)
+  addTwitter(parentProtocols)
+  addTwitter(Object.values(chainCoingeckoIds))
+
+  const twitterAccounts = Array.from(twitterSet)
+
+  console.log('twitterAccounts: ', twitterAccounts.length)
+  console.log('handlesOver1MTvl: ', handlesOver1MTvl.size)
+  console.log('handlesOver50kTvl: ', handlesOver50kTvl.size)
+
   await init()
   const users = await getAllUsers()
   console.log('users: ', users.length)
@@ -32,7 +51,6 @@ async function run() {
   let i = 0
 
   for (const handle of twitterAccounts) {
-    // for (const handle of ['DraculaProtocol', 'WrappedBTC', 'PhoenixTrade']) {
     i++
     try {
       let userData = userMap[handle]
@@ -85,7 +103,7 @@ async function run() {
       await updateUser(userData)
 
       // avoid hitting rate limit
-      await sleep(1000)
+      await sleep(100)
 
     } catch (e) {
       console.log('error while updating tweets: ', handle)
@@ -109,10 +127,13 @@ function skipTweetPull(userData: any) {
   const oneDay = 24 * 60 * 60 * 1000
   const timeDiff = +new Date() - +lastPull
   const monthAgo = +new Date(+new Date() - 30 * oneDay)
+  let waitTimeBetweenChecks = 8 * oneDay
+  if (handlesOver1MTvl.has(userData.handle)) waitTimeBetweenChecks = 2 * oneDay
+  else if (handlesOver50kTvl.has(userData.handle)) waitTimeBetweenChecks = 4 * oneDay
 
-  // check if last pull was less than 48 hours ago
-  if (timeDiff < 2 * oneDay)
+  if (timeDiff < waitTimeBetweenChecks)
     return true
+  return false // the below logic does not work for some reason
 
   if (!userData?.lastTweet?.time)  // no tweets found, then we check once a month
     return timeDiff < monthAgo

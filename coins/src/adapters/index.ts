@@ -13,6 +13,7 @@ export default {
   ...balancer.adapters,
   ...others.adapters,
   fortunafi: require("./rwa/fortunafi"),
+  midas: require("./rwa/midas"),
   stobox: require("./rwa/stobox"),
   alex: require("./markets/alex"),
   seamless: require("./other/seamless"),
@@ -61,6 +62,7 @@ export default {
   tezos: require("./tezos"),
   aaveDebt: require("./moneyMarkets/aave-debt"),
   saber: require("./solana/saber"),
+  solend: require("./solana/solend"),
   reservoir: require("./nft/reservoir"),
   jpegd: require("./yield/jpegd"),
   glpDerivs: require("./yield/glpDerivs"),
@@ -91,4 +93,7 @@ export default {
   warlord: require("./other"),
   ifil: require("./liquidStaking/ifil"),
   uniV3: require("./markets/uniswap/v3"),
+  liquity: require("./other/liquity"),
+  fxProtocol: require("./yield/fx-protocol"),
+  crosscurve: require("./markets/crosscurve"),
 };

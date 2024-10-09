@@ -8,6 +8,7 @@ import { Chain } from "@defillama/sdk/build/general";
 import { getMcaps } from "./utils";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
+import { verifyChanges } from "./test";
 
 export default async function main(timestamp?: number) {
   const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp });
@@ -51,8 +52,7 @@ export default async function main(timestamp?: number) {
     delete chains[c];
   });
 
-  // // await verifyChanges(chains);
-  // // flagChainErrors(chains);
+  await verifyChanges(chains);
 
   return chains;
 }

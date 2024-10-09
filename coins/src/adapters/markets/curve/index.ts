@@ -60,6 +60,8 @@ export function curve4(timestamp: number = 0) {
     getTokenPrices2("polygon", defaultRegistries, timestamp),
     getTokenPrices2("polygon", [], timestamp, "eth-custom", [
       "0xa691d34abf93c0a77998e53b564becfaf46dae27",
+      "0xA73EdCf18421B56D9AF1cE08A34E102E23b2C4B6",
+      "0xc7c939A474CB10EB837894D1ed1a77C61B268Fa7",
     ]),
     getGaugePrices("polygon", timestamp),
   ]);
@@ -98,7 +100,12 @@ export function curve9(timestamp: number = 0) {
   ]);
 }
 export function curve10(timestamp: number = 0) {
-  return Promise.all([getTokenPrices2("bsc", defaultRegistries, timestamp)]);
+  return Promise.all([
+    getTokenPrices2("bsc", defaultRegistries, timestamp),
+    getTokenPrices2("bsc", [], timestamp, "eth-custom", [
+      "0xa5e0e46462970c9ee8c2ecadcde254c483748ec4",
+    ]),
+  ]);
 }
 export function curve11(timestamp: number = 0) {
   return Promise.all([getTokenPrices2("bsc", ["pcs"], timestamp, "pcs")]);

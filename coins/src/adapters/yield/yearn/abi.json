@@ -31,7 +31,13 @@
     "constant": true,
     "inputs": [],
     "name": "getPricePerFullShare",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
@@ -40,8 +46,27 @@
     "constant": true,
     "inputs": [],
     "name": "token",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "asset": {
+    "inputs": [],
+    "name": "ASSET",
+    "outputs": [
+      {
+        "internalType": "contract IERC20",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   }

@@ -28,6 +28,15 @@ const contracts: string[] = [
   "0xf91eb98d5ff86718234ac0e400175a05df6cfcf1", // sWETH_m
   "0x62c8359b2734e5dd6adb528ad2c78159a3f2607e", // sWETH_l
   "0x8fd195b2ff1506c1c26091422768cc2a40285ce7", // sWETH_t
+
+  "0x2daDf589F616876E21c8BA63f59Af764479A422d", // s2BTC_e
+  "0x186cf879186986a20aadfb7ead50e3c20cb26cec", // s2BTC_ar
+  "0x1dc5c0f8668a9f54ed922171d578011850ca0341", // s2BTC_o
+  "0x152b9d0FdC40C096757F570A51E494bd4b943E50", // sBTC.b_av
+  "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6", // sWBTC_p
+  "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c", // sBTCB_b
+  "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf", // scbBTC_ba
+  "0x3aab2285ddcddad8edf438c1bab47e1a9d05a9b4", // sWBTC_l
 ];
 
 const portal: string = "0xAc8f44ceCa92b2a4b30360E5bd3043850a0FFcbE";

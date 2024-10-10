@@ -15071,7 +15071,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3361",
-    name: "Alien Base AMM",
+    name: "Alien Base V2",
     address: "base:0x1dd2d631c92b1acdfcdd51a0f7145a50130050c4",
     symbol: "ALB",
     url: "https://alienbase.xyz/",

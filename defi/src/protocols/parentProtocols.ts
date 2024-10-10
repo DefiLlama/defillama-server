@@ -2603,6 +2603,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AlienBaseDEX",
     github: ["alienbase-xyz"],
+    treasury: "alienbase.js"
   },
   {
     id: "parent#lybra-finance",

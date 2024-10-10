@@ -409,6 +409,11 @@
       "decimals": "8",
       "symbol": "lfbtc-bedrock-eth",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0x5F7827FDeb7c20b443265Fc2F40845B715385Ff2": {
+      "decimals": "18",
+      "symbol": "EURCV", 
+      "to": "coingecko#societe-generale-forge-eurcv"
     }
   },
   "fantom": {

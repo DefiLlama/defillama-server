@@ -4557,4 +4557,12 @@
       "symbol": "exXDC",
       "to": "coingecko#xdce-crowd-sale"
     }
-}}
+  },
+  "core": {
+    "0x9410e8052bc661041e5cb27fdf7d9e9e842af2aa": {
+      "to": "coingecko#free-bridged-solvbtcb-core",
+      "decimals": 18,
+      "symbol": "SolvBTC.CORE"
+    }
+  }
+}

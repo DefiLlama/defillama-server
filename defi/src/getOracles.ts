@@ -152,6 +152,8 @@ export async function getOraclesInternal({ ...options }: any = {}) {
     finalChainsByOracle[oracle] = Object.entries(oracleTvlByChain[oracle])
       .sort((a, b) => b[1] - a[1])
       .map((item) => item[0]);
+
+    finalChainsByOracle[oracle] = [...new Set([...finalChainsByOracle[oracle], ...(chainsByOracle[oracle] ?? [])])];
   }
 
   return {

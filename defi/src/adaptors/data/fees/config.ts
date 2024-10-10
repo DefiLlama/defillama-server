@@ -2098,5 +2098,8 @@ export default {
     "sparkdex-v2": {
         parentId: "SparkDEX",
         id: "4887",
+    },
+    "arbitrum-nova": {
+        id: "42170",
     }
 } as AdaptorsConfig

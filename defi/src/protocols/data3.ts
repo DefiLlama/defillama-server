@@ -55081,7 +55081,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "polynomial-bridge/index.js",
     twitter: "PolynomialFi",
-    parentProtocol: "parent#polynomial-protocol",
     listedAt: 1725968702
   },
   {

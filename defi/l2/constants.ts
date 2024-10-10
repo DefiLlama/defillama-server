@@ -79,6 +79,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   // "5011": "lisk l2",
   "5055": "osmosis",
   "5011": "lisk",
+  "5232": "sui"
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

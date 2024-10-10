@@ -34281,7 +34281,7 @@ const data3: Protocol[] = [
     module: "cygnus-finance/index.js",
     twitter: "CygnusFi",
     forkedFrom: [],
-    oracles: ["Chainlink"], // https://twitter.com/chainlink/status/1707711868570140778
+    oracles: ["RedStone"], // https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work#:~:text=Cygnus%20uses%20RedStone%20Oracles
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Cygnus-v1.0.pdf",
     ],
@@ -36323,7 +36323,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Optimism"],
-    oracles: [],
+    oracles: ["RedStone"], // https://docs.letsgethai.com/detailed/intro/hai.html#redstone-oracles:~:text=friendly%20stablecoin%20system.-,RedStone%20Oracles,-HAI%20uses%20RedStone
     forkedFrom: [],
     module: "hai/index.js",
     twitter: "letsgethai",

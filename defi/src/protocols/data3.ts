@@ -57365,6 +57365,51 @@ const data3: Protocol[] = [
     oracles: ["Pyth"],
     listedAt: 1728536649
   },
+  {
+    id: "5231",
+    name: "AscentYield",
+    address: null,
+    symbol: "-",
+    url: "https://www.ascentyield.io",
+    description:
+      "AscentYield is a CeDeFi project built on the EVM blockchain. We offer yield markets such as Hedge Plus where users can participate in the project by staking USDC on-chain to earn yields of up to 200% APY. The earn will pay by USDC.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ascentyield.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Solana", "Ethereum", "Hyperliquid"],
+    module: "ascentyield/index.js",
+    twitter: null,
+    forkedFrom: [],
+    oracles: [],
+    github: ["AscentYield"],
+    listedAt: 1728552916
+  },
+  {
+    id: "5232",
+    name: "SuiBridge",
+    address: null,
+    symbol: "-",
+    url: "https://bridge.sui.io",
+    description:
+      "Sui Bridge is a cutting-edge native bridge on Sui, designed to enhance interoperability between Sui and Ethereum. It enables users to securely and efficiently transfer native and wrapped ETH to and from Sui. The bridge leverages the unique capabilities of the Sui network to offer fast transaction speeds, lower transaction costs, and a decentralized architecture.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/suibridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    module: "suibridge/index.js",
+    twitter: "SuiNetwork",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1728552916
+  },
 ];
 
 export default data3;

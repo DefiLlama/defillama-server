@@ -1,4 +1,4 @@
-const chainsByOracle = {
+const chainsByOracle: Record<string, Array<string>> = {
   "Supra": [
     "Aptos",
     "Aurora",
@@ -151,7 +151,7 @@ const chainsByOracle = {
   ],
   "Switchboard": ["Solana", "Ethereum", "CORE", "Arbitrum", "Optimism", "Base", "Aurora", "Aptos", "Sui"],
   "RedStone": [
-    "Ethereum", 
+    "Ethereum",
     "Arbitrum",
     "Optimism",
     "Blast",
@@ -206,7 +206,7 @@ const chainsByOracle = {
     "Beam",
     "Milkomeda C1",
     "Dogechain",
-    "Sei"
+    "Sei",
   ],
   "UMA": ["Ethereum", "Polygon", "Boba", "Optimism", "Arbitrum", "Gnosis", "Avalanche"],
   "API3": [
@@ -226,7 +226,7 @@ const chainsByOracle = {
     "Polygon",
     "Polygon zkEVM",
     "Rootstock",
-    "Sei"
+    "Sei",
   ],
   "Band": [
     "CLV",
@@ -353,7 +353,7 @@ const chainsByOracle = {
     "Base",
     "Polygon zkEVM",
     "Mantle",
-    "Scroll"
+    "Scroll",
   ],
 };
 

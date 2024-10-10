@@ -1,6 +1,7 @@
 import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { extraSections, getChainDisplayName } from "./utils/normalizeChain";
+import { chainsByOracle } from "./constants/chainsByOracle";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -51,26 +52,28 @@ function sum(
     const sectionSplit = (isOldTvlRecord && section === "tvl" ? protocol.chain : section).split("-");
 
     if (
-      ![
-        "SK",
-        "PK",
-        "tvl",
-        "tvlPrev1Week",
-        "tvlPrev1Day",
-        "tvlPrev1Hour",
-        "Stake",
-        "oec",
-        "treasury_bsc",
-        "Earn",
-        "eth",
-        "WooPP",
-        "bscStaking",
-        "avaxStaking",
-        "pool3",
-        "masterchef",
-        "staking_eth",
-        "staking_bsc",
-      ].includes(sectionSplit[0]) &&
+      (chainsByOracle[oracle]
+        ? chainsByOracle[oracle].includes(getChainDisplayName(sectionSplit[0], true))
+        : ![
+            "SK",
+            "PK",
+            "tvl",
+            "tvlPrev1Week",
+            "tvlPrev1Day",
+            "tvlPrev1Hour",
+            "Stake",
+            "oec",
+            "treasury_bsc",
+            "Earn",
+            "eth",
+            "WooPP",
+            "bscStaking",
+            "avaxStaking",
+            "pool3",
+            "masterchef",
+            "staking_eth",
+            "staking_bsc",
+          ].includes(sectionSplit[0])) &&
       (chain ? sectionSplit[0] === chain : true)
     ) {
       const sectionKey = `${getChainDisplayName(sectionSplit[0], true)}${sectionSplit[1] ? `-${sectionSplit[1]}` : ""}`;
@@ -144,9 +147,9 @@ export async function getOraclesInternal({ ...options }: any = {}) {
     { includeBridge: false, ...options }
   );
 
-  const chainsByOracle: Record<string, Array<string>> = {};
+  const finalChainsByOracle: Record<string, Array<string>> = {};
   for (const oracle in oracleTvlByChain) {
-    chainsByOracle[oracle] = Object.entries(oracleTvlByChain[oracle])
+    finalChainsByOracle[oracle] = Object.entries(oracleTvlByChain[oracle])
       .sort((a, b) => b[1] - a[1])
       .map((item) => item[0]);
   }
@@ -155,7 +158,7 @@ export async function getOraclesInternal({ ...options }: any = {}) {
     chart: sumDailyTvls,
     chainChart: sumDailyTvlsByChain,
     oracles: Object.fromEntries(Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])),
-    chainsByOracle,
+    chainsByOracle: finalChainsByOracle,
   };
 }
 

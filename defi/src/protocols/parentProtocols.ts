@@ -5584,6 +5584,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["lisalab-io"],
     twitter: "LisaLab_BTC",
   },
+  {
+    id: "parent#tonstakers",
+    name: "Tonstakers",
+    url: "https://tonstakers.com",
+    description:
+      "The Open Network Liquid Staking protocol empowering TON DeFi ecosystem.",
+    logo: `${baseIconsUrl}/tonstakers.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "tonstakers",
+  },
 ];
 
 export default parentProtocols;

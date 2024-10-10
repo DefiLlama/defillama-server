@@ -2479,5 +2479,8 @@ export default {
     },
     "mitte": {
         id: "5228"
+    },
+    "raindex": {
+        id: "5221"
     }
 } as AdaptorsConfig

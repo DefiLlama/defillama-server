@@ -57410,6 +57410,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1728552916
   },
+  {
+    id: "5233",
+    name: "Kerberus",
+    address: null,
+    symbol: "-",
+    url: "https://www.kerberus.com/",
+    description:
+      "Web3 security extension",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/kerberus.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum", "Base", "Polygon", "Avalanche", "Arbitrum", "Binance", "Optimism", "zkSync Era"],
+    module: "dummy.js",
+    twitter: "Kerberus",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 
 export default data3;

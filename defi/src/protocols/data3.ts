@@ -3732,7 +3732,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Hyperliquid"],
-    oracles: ["TWAP"], // https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-l1/oracle
+    oracles: ["Internal"], // https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-l1/oracle
     forkedFrom: [],
     module: "hyperliquid-perp/index.js",
     twitter: "HyperliquidX",

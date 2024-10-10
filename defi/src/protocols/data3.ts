@@ -57343,6 +57343,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#solv-protocol",
     listedAt: 1728477201
   },
+  {
+    id: "5230",
+    name: "Superlend",
+    address: null,
+    symbol: "-",
+    url: "https://www.superlend.xyz/",
+    description:
+      "Superlend money markets facilitates the efficient exchange of capital between lenders and borrowers in a decentralized, transparent, and permissionless environment. These are essentially lending and borrowing protocols deployed on different chains and maintained by Superlend. Our first money market is deployed on Etherlink, which is a fork of battle tested Aave V3 protocol. Superlend Etherlink market is officially being recognized by Aave community as well.",
+    chain: "Etherlink",
+    logo: `${baseIconsUrl}/superlend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Etherlink"],
+    module: "superlend/index.js",
+    twitter: "SuperlendHQ",
+    forkedFrom: ["AAVE V3"],
+    oracles: ["Pyth"],
+    listedAt: 1728536649
+  },
 ];
 
 export default data3;

@@ -6433,7 +6433,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "Kwenta_io",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://docs.joule.finance/docs/money-market/oracle
+    oracles: ["Pyth"], // https://docs.kwenta.io/using-kwenta/perennial-isolated-margin/perennial-intro/oracles
     github: ["Kwenta"],
   },
   {
@@ -47023,7 +47023,7 @@ const data3: Protocol[] = [
     cmcId: "28010",
     category: "Dexes",
     chains: ["Sei"],
-    oracles: ["Pyth"], // https://docs.jellyverse.org/protocol-library/jassets-by-blkswn/pricefeed-and-oracle
+    oracles: [], 
     forkedFrom: ["Balancer V2"],
     audit_links: ["https://docs.jellyverse.org/audit"],
     module: "jellyverse/index.js",

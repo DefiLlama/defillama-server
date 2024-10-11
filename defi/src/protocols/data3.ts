@@ -57499,6 +57499,26 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1728668069
   },
+  {
+    id: "5237",
+    name: "Falcon",
+    address: null,
+    symbol: "-",
+    url: "https://www.falcon.bot/",
+    description: "Falcon is a Telegram bot for trading tokens on Solana",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/falcon.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "TradeOnFalcon",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 
 export default data3;

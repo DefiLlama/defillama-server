@@ -2104,5 +2104,8 @@ export default {
     },
     "kerberos": {
         id: "5233",
+    },
+    "safe": {
+        id: "3320"
     }
 } as AdaptorsConfig

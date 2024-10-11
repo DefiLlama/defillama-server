@@ -2487,5 +2487,8 @@ export default {
     },
     "raindex": {
         id: "5221"
+    },
+    "pixelswap": {
+        id: "5119"
     }
 } as AdaptorsConfig

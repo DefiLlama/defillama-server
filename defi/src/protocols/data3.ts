@@ -34281,7 +34281,7 @@ const data3: Protocol[] = [
     module: "cygnus-finance/index.js",
     twitter: "CygnusFi",
     forkedFrom: [],
-    oracles: ["RedStone"], // https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work#:~:text=Cygnus%20uses%20RedStone%20Oracles
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/8247
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Cygnus-v1.0.pdf",
     ],

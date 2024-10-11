@@ -2101,5 +2101,8 @@ export default {
     },
     "arbitrum-nova": {
         id: "42170",
+    },
+    "kerberos": {
+        id: "5233",
     }
 } as AdaptorsConfig

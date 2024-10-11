@@ -57273,7 +57273,7 @@ const data3: Protocol[] = [
     twitter: "EstateProtocol",
     forkedFrom: [],
     oracles: [],
-    github: ["Estate-Protocol-Home"],
+    //github: ["Estate-Protocol-Home"], // removed because team asked for it saying "We are building on a forked code from the Poly Math team. The GitHub history in its current form represents mainly the work that Poly Math did, not ours, so we believe this is the only way to avoid creating a wrong impression on the investors and users."
     listedAt: 1728469824
   },
   {

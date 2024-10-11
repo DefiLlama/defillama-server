@@ -21926,7 +21926,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null, // primex-finance preview only stage
     cmcId: null,
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Polygon"],
     oracles: ["Pyth"], //  https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/pyth-network-oracle
     forkedFrom: [],
@@ -45923,7 +45923,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "CDP",
     chains: ["Injective"],
     module: "injera/index.js",
     twitter: "InjeraOfficial",
@@ -53489,7 +53489,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Mode"],
     oracles: ["Pyth"], //  https://docs.modemax.io/overview/terminology#oracle-pricing
     forkedFrom: ["GMX V2"],

@@ -57431,6 +57431,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "5234",
+    name: "USDX Money",
+    address: null,
+    symbol: "-",
+    url: "https://usdx.money",
+    description:
+      "USDX is a synthetic USD stablecoin built for the crypto ecosystem. It offers a crypto-native stablecoin solution that does not rely on traditional banking infrastructure which is censorship-resistant, scalable, and highly stable. Furthermore, it provides a multiple-layer savings tool including funding rate and crypto ecosystem yield accessible worldwide in USD denomination.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/usdx-money.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Binance", "Arbitrum"],
+    module: "usdx/index.js",
+    twitter: "usdx_money",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1728645744
+  },
 ];
 
 export default data3;

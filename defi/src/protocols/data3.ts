@@ -6433,7 +6433,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "Kwenta_io",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.joule.finance/docs/money-market/oracle
     github: ["Kwenta"],
   },
   {
@@ -21928,7 +21928,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Polygon"],
-    oracles: ["Chainlink"], // https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/chainlink https://github.com/DefiLlama/defillama-server/pull/7658
+    oracles: ["Pyth"], //  https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/pyth-network-oracle
     forkedFrom: [],
     module: "primex-finance/index.js",
     twitter: "primex_official",
@@ -26309,7 +26309,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum", "Polygon zkEVM"],
-    oracles: [],
+    oracles: ["Pyth","Chainlink"], // https://docs.amulet.org/documentation/product/yield-with-built-in-protection/oracle-integration#functionality
     forkedFrom: [],
     module: "amulet-v2/index.js",
     twitter: "AmuletProtocol",
@@ -43535,7 +43535,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Neon"],
-    oracles: ["Chainlink"], // https://github.com/Lumen-Money/lumen-protocol/blob/main/oracle/contracts/ResilientOracle.sol#L39, https://neonscan.org/address/0x26473e42ead2bcc2ed6679a48a670a71c1b6ce4a#contract
+    oracles: ["Pyth"], // https://docs.lumen.money/protocol/security
     forkedFrom: ["Compound V2"],
     module: "lumen-money/index.js",
     twitter: "Lumen_Money",
@@ -45928,7 +45928,7 @@ const data3: Protocol[] = [
     module: "injera/index.js",
     twitter: "InjeraOfficial",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], //  https://docs.injera.io/injera-money-market/oracles
     listedAt: 1717589987,
   },
   {
@@ -47023,7 +47023,7 @@ const data3: Protocol[] = [
     cmcId: "28010",
     category: "Dexes",
     chains: ["Sei"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.jellyverse.org/protocol-library/jassets-by-blkswn/pricefeed-and-oracle
     forkedFrom: ["Balancer V2"],
     audit_links: ["https://docs.jellyverse.org/audit"],
     module: "jellyverse/index.js",
@@ -53489,7 +53489,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Mode"],
-    oracles: [],
+    oracles: ["Pyth"], //  https://docs.modemax.io/overview/terminology#oracle-pricing
     forkedFrom: ["GMX V2"],
     module: "modemax-perp/index.js",
     twitter: "ModeMax_",
@@ -55035,7 +55035,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oracles: [],
+    oracles: ["Pyth"], //  https://docs.joule.finance/docs/money-market/oracle
     forkedFrom: [],
     module: "joule/index.js",
     twitter: "JouleFinance",

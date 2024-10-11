@@ -2103,7 +2103,7 @@ export default {
         id: "42170",
     },
     "kerberos": {
-        id: "5233"
+        id: "5233",
     },
     "safe": {
         id: "3320"

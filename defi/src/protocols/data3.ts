@@ -54459,7 +54459,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CeDeFi",
-    chains: ["Ethereum", "Bitcoin"],
+    chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
     module: "avalon-finance-cedefi/index.js",

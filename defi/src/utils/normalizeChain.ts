@@ -3374,6 +3374,19 @@ export const chainCoingeckoIds = {
     twitter: "matchain_io",
     chainId: 698
   },
+  "Shape": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup","Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    url: "https://shape.network/",
+    twitter: "Shape_L2",
+    chainId: 360
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4104,6 +4117,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "HeLa"
     case "matchain":
       return "Matchain"
+    case "shape":
+      return "Shape"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

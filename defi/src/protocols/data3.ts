@@ -57455,6 +57455,50 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1728645744
   },
+  {
+    id: "5235",
+    name: "MultEX",
+    address: "shape:0x874D98E8c6B172A4944554ECa42194ad09836919",
+    symbol: "MULTEX",
+    url: "https://multex.network/swap?chain=SHAPE",
+    description:
+      "Decentralized exchange on Shape L2",
+    chain: "Shape",
+    logo: `${baseIconsUrl}/multex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shape"],
+    module: "multex/index.js",
+    twitter: "Multex_Network",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1728668062
+  },
+  {
+    id: "5236",
+    name: "SwanSwap",
+    address: null,
+    symbol: "SWAN",
+    url: "https://swanswap.pro/#/home",
+    description:
+      "Decentralized exchange on Shape L2",
+    chain: "Shape",
+    logo: `${baseIconsUrl}/swanswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shape"],
+    module: "swanswap/index.js",
+    twitter: null,
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1728668069
+  },
 ];
 
 export default data3;

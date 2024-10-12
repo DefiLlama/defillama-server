@@ -2107,5 +2107,8 @@ export default {
     },
     "safe": {
         id: "3320"
+    },
+    "botfalcon": {
+        id: "5237"
     }
 } as AdaptorsConfig

@@ -1382,6 +1382,19 @@ export default {
         github: ["bitlayer-org"],
         chainId: 200901,
         url: "https://www.bitlayer.org"
+    },
+    "Mint": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: ["EVM","Rollup", "Superchain"],
+        parent: {
+        chain: "Ethereum",
+        types: ["L2"]
+        },
+        twitter: "Mint_Blockchain",
+        url: "https://www.mintchain.io/",
+        chainId: 185
     }
 } as unknown as {
     [chain: string]: {

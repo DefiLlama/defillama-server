@@ -15875,8 +15875,8 @@ const data3: Protocol[] = [
   {
     id: "3396",
     name: "LogX V1",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x59062301fb510f4ea2417b67404cb16d31e604ba",
+    symbol: "LOGX",
     url: "https://logx.network/",
     description: "DeFi Superapp. Trade exotic perps, leveraged prediction markets and memecoins.",
     chain: "Arbitrum",
@@ -55220,8 +55220,8 @@ const data3: Protocol[] = [
   {
     id: "5137",
     name: "LogX V2",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x59062301fb510f4ea2417b67404cb16d31e604ba",
+    symbol: "LOGX",
     url: "https://logx.network/",
     description: "DeFi Superapp. Trade exotic perps, leveraged prediction markets and memecoins.",
     chain: "Arbitrum",

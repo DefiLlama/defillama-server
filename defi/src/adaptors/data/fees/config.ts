@@ -2110,5 +2110,8 @@ export default {
     },
     "botfalcon": {
         id: "5237"
+    },
+    "mint": {
+        id: "185"
     }
 } as AdaptorsConfig

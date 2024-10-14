@@ -57369,14 +57369,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5231",
-    name: "AscentYield",
+    name: "Ascent Yield", // previous ascent-yield
     address: null,
     symbol: "-",
     url: "https://www.ascentyield.io",
     description:
       "AscentYield is a CeDeFi project built on the EVM blockchain. We offer yield markets such as Hedge Plus where users can participate in the project by staking USDC on-chain to earn yields of up to 200% APY. The earn will pay by USDC.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/ascentyield.jpg`,
+    logo: `${baseIconsUrl}/ascent-yield.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -57384,7 +57384,7 @@ const data3: Protocol[] = [
     category: "Yield",
     chains: ["Solana", "Hyperliquid", "Arbitrum"],
     module: "ascentyield/index.js",
-    twitter: null,
+    twitter: "ascent_yield",
     forkedFrom: [],
     oracles: [],
     github: ["AscentYield"],

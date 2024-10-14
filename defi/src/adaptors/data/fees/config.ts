@@ -2113,5 +2113,8 @@ export default {
     },
     "mint": {
         id: "185"
+    },
+    "grafun": {
+        id: "5195"
     }
 } as AdaptorsConfig

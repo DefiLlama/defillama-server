@@ -2490,5 +2490,8 @@ export default {
     },
     "pixelswap": {
         id: "5119"
+    },
+    "grafun": {
+        id: "5195"
     }
 } as AdaptorsConfig

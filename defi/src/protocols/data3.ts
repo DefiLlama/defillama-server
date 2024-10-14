@@ -57524,7 +57524,7 @@ const data3: Protocol[] = [
     name: "alloBTC", // previous ALLO
     address: null,
     symbol: "-",
-    url: "https://allo.xyz",
+    url: "https://btc.allo.xyz/",
     description:
       "Protocol for Real World Assets and Bitcoin",
     chain: "Bitcoin",

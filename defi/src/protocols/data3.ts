@@ -57195,7 +57195,7 @@ const data3: Protocol[] = [
     description:
       "First AI-driven DeFi ecosystem on Flare Network.",
     chain: "Flare",
-    logo: `${baseIconsUrl}/sparkdex-v3-1.jpg`,
+    logo: `${baseIconsUrl}/sparkdex-v3.1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

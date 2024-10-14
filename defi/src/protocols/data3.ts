@@ -57521,19 +57521,19 @@ const data3: Protocol[] = [
   },
   {
     id: "5238",
-    name: "ALLO",
+    name: "alloBTC", // previous ALLO
     address: null,
     symbol: "-",
-    url: "https://allo.xyz",
+    url: "https://btc.allo.xyz/",
     description:
       "Protocol for Real World Assets and Bitcoin",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/allo.jpg`,
+    logo: `${baseIconsUrl}/allobtc.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "RWA",
+    category: "Restaked BTC",
     chains: ["Bitcoin"],
     module: "allo/index.js",
     twitter: "allo_xyz",

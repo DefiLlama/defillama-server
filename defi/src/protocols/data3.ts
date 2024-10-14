@@ -7775,7 +7775,7 @@ const data3: Protocol[] = [
     url: "https://houdiniswap.com/",
     description: "Houdini Swap is a cross-chain liquidity aggregator with a unique set of privacy tools",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/houdini-swap.png`,
+    logo: `${baseIconsUrl}/houdini-swap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "houdini-swap",

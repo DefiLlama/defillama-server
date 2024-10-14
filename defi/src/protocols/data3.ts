@@ -57519,6 +57519,51 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "5238",
+    name: "ALLO",
+    address: null,
+    symbol: "-",
+    url: "https://allo.xyz",
+    description:
+      "Protocol for Real World Assets and Bitcoin",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/allo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Bitcoin"],
+    module: "allo/index.js",
+    twitter: "allo_xyz",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1728896668
+  },
+  {
+    id: "5239",
+    name: "Taiko Drips",
+    address: null,
+    symbol: "-",
+    url: "https://taikodrips.xyz",
+    description:
+      "Taiko Drips is a lock-to-earn platform for loyal $TAIKO holders to earn rewards from the based Taiko ecosystem",
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/taiko-drips.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Taiko"],
+    module: "taikodrips/index.js",
+    twitter: "taikodrips",
+    forkedFrom: [],
+    oracles: [],
+    github: ["TaikoDrips"],
+    listedAt: 1728897079
+  },
 ];
 
 export default data3;

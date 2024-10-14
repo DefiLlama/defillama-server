@@ -57564,6 +57564,28 @@ const data3: Protocol[] = [
     github: ["TaikoDrips"],
     listedAt: 1728897079
   },
+  {
+    id: "5240",
+    name: "Micro Credit Project",
+    address: null,
+    symbol: "-",
+    url: "https://www.microcredittoken.com/",
+    description:
+      "The MicroCreditToken (MCT) Platform aims to integrate blockchain technology into microfinance operations based on a pure social purpose, allowing social investors to contribute to a social cause of their choice. In doing so, it seeks to alleviate all forms of poverty while spreading Happytalism practices worldwide. The MCT (MicroCreditToken) Blockchain Project is conducted by MCT Crypto Asset and Technology GmbH, a Switzerland-licensed entity in which TISVA (Turkey's Waste Prevention Foundation) is a shareholder",
+    chain: "HAQQ",
+    logo: `${baseIconsUrl}/micro-credit-project.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Uncollateralized Lending",
+    chains: ["HAQQ"],
+    module: "microcreditproject/index.js",
+    twitter: "microcredittoken",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1728924133
+  },
 ];
 
 export default data3;

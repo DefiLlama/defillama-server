@@ -21495,7 +21495,7 @@ const data2: Protocol[] = [
     name: "Jito",
     address: "solana:jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
     symbol: "JTO",
-    assetToken: "JitoSOL",
+    //assetToken: "JitoSOL", // gives JTO price to jitoSOL
     url: "https://jito.network",
     description: "MEV-Boosted Staking Rewards",
     chain: "Solana",

@@ -57369,7 +57369,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5231",
-    name: "AscentYield",
+    name: "Ascent Yield",
     address: null,
     symbol: "-",
     url: "https://www.ascentyield.io",
@@ -57384,7 +57384,7 @@ const data3: Protocol[] = [
     category: "Yield",
     chains: ["Solana", "Hyperliquid", "Arbitrum"],
     module: "ascentyield/index.js",
-    twitter: null,
+    twitter: "ascent_yield",
     forkedFrom: [],
     oracles: [],
     github: ["AscentYield"],

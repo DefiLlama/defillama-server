@@ -1593,7 +1593,7 @@ const data2: Protocol[] = [
     address: "0xb3999f658c0391d94a37f7ff328f3fec942bcadc",
     symbol: "HFT",
     url: "https://www.hashflow.com",
-    description: "The most powerful DeFi trading experience. Tight spreads. Zero slippage. MEV-resistant",
+    description: "Hashflow Exchange OS (or xOS for short) is an engine that can turn any exchange into what we call a provable exchange. We believe that provable exchanges are the endgame for crypto trading — they retain the seamless UX and performance of a central limit order book (CLOB), which forms the backbone of every centralized exchange, while augmenting them with the new provable property.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hashflow.png`,
     audits: "0",

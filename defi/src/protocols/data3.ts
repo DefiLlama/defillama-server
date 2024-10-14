@@ -56656,7 +56656,7 @@ const data3: Protocol[] = [
     module: "folks-xchain/index.js",
     twitter: "FolksFinance",
     forkedFrom: [],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink","Pyth"], // https://docs.xapp.folks.finance/technical-details/oracle
      audit_links: [
       "https://github.com/Folks-Finance/audits/blob/main/OtterSec%20-%20Audit%20of%20XChain%20Lending%20-%20May%202024.pdf",
       "https://github.com/immunefi-team/Bounty_Boosts/tree/main/Folks%20Finance",

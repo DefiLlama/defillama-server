@@ -57588,7 +57588,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5241",
-    name: "M0", // this breaked probablty the ^ , preivous name M^0
+    name: "M0",
     address: "0x5983B89FA184f14917013B9C3062afD9434C5b03",
     symbol: "POWER",
     url: "https://www.m0.org/",

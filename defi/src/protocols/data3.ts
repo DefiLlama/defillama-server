@@ -57588,14 +57588,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5241",
-    name: "m0",
+    name: "M^0",
     address: "0x5983B89FA184f14917013B9C3062afD9434C5b03",
     symbol: "POWER",
     url: "https://www.m0.org/",
     description:
       "M^0 is decentralized money middleware that allows institutions to issue cryptodollars",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/m0.png`,
+    logo: `${baseIconsUrl}/m^0.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

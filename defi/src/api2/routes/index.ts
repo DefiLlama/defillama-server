@@ -210,7 +210,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 }
 
 async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true }: GetProtocolishOptions) {
-  let name = sluggify({ name: req.path_parameters.name } as any)
+  let name = decodeURIComponent(req.path_parameters.name);
+  name = sluggify({ name } as any);
   const protocolData = (cache as any)[dataType + 'SlugMap'][name];
   res.setHeaders({
     "Expires": get20MinDate()

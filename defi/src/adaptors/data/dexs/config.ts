@@ -2493,5 +2493,8 @@ export default {
     },
     "grafun": {
         id: "5195"
+    },
+    "cytoswap": {
+        id: "5205"
     }
 } as AdaptorsConfig

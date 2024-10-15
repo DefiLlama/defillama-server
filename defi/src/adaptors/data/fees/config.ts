@@ -2116,5 +2116,9 @@ export default {
     },
     "grafun": {
         id: "5195"
+    },
+    "wise-lending-v2": {
+        parentId: "Wise Lending",
+        id: "4494"
     }
 } as AdaptorsConfig

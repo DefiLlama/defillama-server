@@ -251,5 +251,8 @@ export default {
     },
     "scribe-exchange-v4": {
         id: "4943",
+    },
+    "mintswap": {
+        id: "871",
     }
 } as AdaptorsConfig

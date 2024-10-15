@@ -1180,6 +1180,31 @@
     }
   },
   "solana": {
+    "CiKu4eHsVrc1eueVQeHn7qhXTcVu95gSQmBpX4utjL9z": {
+      "decimals": "8",
+      "symbol": "SHIB",
+      "to": "coingecko#shiba-inu"
+    },
+    "25rXTx9zDZcHyTav5sRqM6YBvTGu9pPH9yv83uAEqbgG": {
+      "decimals": "8",
+      "symbol": "tBTC",
+      "to": "coingecko#tbtc"
+    },
+    "9dzSzFvPsKDoY2gdWErsuz2H1o4tbzvgBhrNZ9cvkD2j": {
+      "decimals": "8",
+      "symbol": "SDEX",
+      "to": "coingecko#smardex"
+    },
+    "HAxCJjnmgkdXhwZYeJiUvBgm4NdQvqhGJCS3KxCnCxWs": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "9vMJfxuKxXBoEa7rM12mYLMwTacLMLDJqHozw96WQL8i": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#terrausd-wormhole"
+    },
     "i7u4r16TcsJTgq1kAG8opmVZyVnAKBwLKu6ZPMwzxNc": {
       "decimals": "6",
       "symbol": "OUSG",

@@ -100,7 +100,7 @@ export async function crosscurve(timestamp: number = 0) {
         params: portal,
         chain: chains[i],
         abi: "erc20:balanceOf",
-      }),
+      }).catch(_r => undefined)
     ),
   );
 
@@ -112,7 +112,7 @@ export async function crosscurve(timestamp: number = 0) {
 
   const writes: Write[] = [];
   contracts.map((c: string, i: number) => {
-    if (!underlyingPrices[i].length) return;
+    if (!underlyingPrices[i].length || !balances[i]) return;
     const price = (underlyingPrices[i][0].price * balances[i]) / supplies[i];
     addToDBWritesList(
       writes,

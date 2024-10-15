@@ -5002,7 +5002,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "pSTAKE Finance",
     url: "https://pstake.finance",
     description:
-      "pSTAKE Finance is a multichain liquid staking protocol for BNB Chain, Solana, Cosmos, and beyond, backed by Binance Labs. Users can securely stake the biggest crypto assets and receive liquid staked tokens (LSTs) called stkTokens that can be used in DeFi to generate additional yield. stkTokens offers one of the highest DeFi yields, thanks to low fees and partnerships with the biggest DeFi ecosystems. pSTAKE Finance helps decentralize networks with its unique stake delegation strategy, powered by an intelligent algorithm based on on-chain decentralization parameters.",
+      "pSTAKE Finance is a Bitcoin yield protocol, backed by Binance Labs. YBTC is a yield-optimized LST on top of Babylon’s BTC staking and can be used to get additional yields through Restaking and Liqudity Farming across the DeFi ecosystem.",
     logo: `${baseIconsUrl}/pstake-finance.png`,
     gecko_id: "pstake-finance",
     cmcId: "15996",

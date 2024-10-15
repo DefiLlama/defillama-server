@@ -56718,7 +56718,7 @@ const data3: Protocol[] = [
       "Infinite Trading is a groundbreaking marketplace and protocol that enables you to invest in fully automated trading strategies within the Ethereum DeFi ecosystem. Our platform leverages AI and automated trading to provide you with exceptional investment opportunities while removing the reliance on centralized exchanges",
     chain: "Optimism",
     logo: `${baseIconsUrl}/infinite-trading-protocol.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

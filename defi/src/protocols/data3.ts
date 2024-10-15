@@ -57586,6 +57586,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1728924133
   },
+  {
+    id: "5241",
+    name: "m0",
+    address: "0x5983B89FA184f14917013B9C3062afD9434C5b03",
+    symbol: "POWER",
+    url: "https://www.m0.org/",
+    description:
+      "M^0 is decentralized money middleware that allows institutions to issue cryptodollars",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/m0.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "m0/index.js",
+    twitter: "m0foundation",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.m0.org/portal/technical/audits"],
+    listedAt: 1728953339
+  },
 ];
 
 export default data3;

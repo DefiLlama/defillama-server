@@ -253,6 +253,6 @@ export default {
         id: "4943",
     },
     "mintswap": {
-        id: "871",
+        id: "4811",
     }
 } as AdaptorsConfig

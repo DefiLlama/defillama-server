@@ -4212,6 +4212,11 @@
       "to": "coingecko#izumi-bond-usd",
       "decimals": 18,
       "symbol": "iUSD"
+    },
+    "0xC2236204768456B21eAfEf0d232Ba1FccCe59823": {
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "BFBTC"
     }
   },
   "fraxtal": {

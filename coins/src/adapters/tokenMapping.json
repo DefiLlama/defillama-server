@@ -1185,6 +1185,26 @@
     }
   },
   "solana": {
+    "A9mUU4qviSctJVPJdBJWkb28deg915LYJKrzQ19ji3FM": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "J3NKxxXZcnNiMjKw9hYb2K4LUxgwB6t1FtPtQVsv3KFr": {
+      "decimals": "8",
+      "symbol": "SPX",
+      "to": "coingecko#spx6900"
+    },
+    "FjK6rqU6QzUeNtmK6QQ78cCuS5AHAhcm4HgJkdsvXaep": {
+      "decimals": "8",
+      "symbol": "YOURAI",
+      "to": "coingecko#your-ai"
+    },
+    "Dn4noZ5jgGfkntzcQSUZ8czkreiZ1ForXYoV2H8Dm7S1": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
     "CiKu4eHsVrc1eueVQeHn7qhXTcVu95gSQmBpX4utjL9z": {
       "decimals": "8",
       "symbol": "SHIB",

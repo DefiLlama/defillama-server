@@ -3342,7 +3342,7 @@ export const chainCoingeckoIds = {
     geckoId: "lisk",
     symbol: "LSK",
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM","Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]

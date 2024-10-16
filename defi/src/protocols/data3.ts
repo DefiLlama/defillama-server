@@ -57609,6 +57609,29 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.m0.org/portal/technical/audits"],
     listedAt: 1728953339
   },
+  {
+    id: "5242",
+    name: "SynStation",
+    address: null,
+    symbol: "-",
+    url: "https://www.synstation.org/",
+    description:
+      "Trusted Staking On Soneium",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/synstation.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    module: "synstation/index.js",
+    twitter: "SynStation",
+    forkedFrom: [],
+    oracles: [],
+    github: ["WASD3Rplay"],
+    listedAt: 1729092409
+  },
 ];
 
 export default data3;

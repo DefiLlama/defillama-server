@@ -1,9 +1,10 @@
-import { addressList } from "../../../dimension-adapters/users/list";
-import { getAccountsDBConnection } from "../../getDBConnection";
-import { storeChainGas } from "./queries/gas";
-import { storeAllNewUsers } from "./queries/newUsers";
-import { storeChainTxs } from "./queries/txs";
-import { storeAllUsers, storeChainUsers } from "./queries/users";
+import { addressList } from "../../../../dimension-adapters/users/list";
+import { getAccountsDBConnection } from "../../../getDBConnection";
+import { storeChainGas } from "../queries/gas";
+import { storeAllNewUsers } from "../queries/newUsers";
+import { storeChainTxs } from "../queries/txs";
+import { storeAllUsers, storeChainUsers } from "../queries/users";
+import { deleteUserDataForProtocol } from "./utils/deleteUserData";
 
 async function main() {
     const sql = getAccountsDBConnection()
@@ -17,16 +18,7 @@ async function main() {
         protocol.addresses = await protocol.getAddresses()
     }
     console.log(`Deleting data for protocol with id ${protocol.id}`)
-    await Promise.all([
-        sql`DELETE FROM dailyUsers WHERE protocolId = ${protocol.id};`,
-        sql`DELETE FROM hourlyUsers WHERE protocolId = ${protocol.id};`,
-        sql`DELETE FROM dailyTxs WHERE protocolId = ${protocol.id};`,
-        sql`DELETE FROM hourlyTxs WHERE protocolId = ${protocol.id};`,
-        sql`DELETE FROM dailyGas WHERE protocolId = ${protocol.id};`,
-        sql`DELETE FROM hourlyGas WHERE protocolId = ${protocol.id};`,
-        sql`DELETE FROM dailyNewUsers WHERE protocolId = ${protocol.id};`,
-        sql`DELETE FROM hourlyNewUsers WHERE protocolId = ${protocol.id};`,
-    ])
+    await deleteUserDataForProtocol(protocol.id)
     console.log(`Refilling data`)
     await Promise.all([
         storeAllUsers(protocol).then(()=>console.log("all users refilled")),

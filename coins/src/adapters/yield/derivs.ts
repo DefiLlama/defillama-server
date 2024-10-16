@@ -16,14 +16,20 @@ type Config = {
 
 const lrts = (target: string) => {
   return async ({ api }: any) => {
-    const balances = new sdk.Balances({ chain: api.chain, timestamp: api.timestamp });
-    const [assets, supply, decimals,] = await Promise.all([
-      api.call({ abi: "function underlyingTvl() view returns (address[] tokens, uint256[] amounts)", target, }),
+    const balances = new sdk.Balances({
+      chain: api.chain,
+      timestamp: api.timestamp,
+    });
+    const [assets, supply, decimals] = await Promise.all([
+      api.call({
+        abi: "function underlyingTvl() view returns (address[] tokens, uint256[] amounts)",
+        target,
+      }),
       api.call({ abi: "erc20:totalSupply", target }),
       api.call({ abi: "erc20:decimals", target }),
     ]);
-    balances.add(assets.tokens, assets.amounts)
-    const usdValue = await balances.getUSDValue()
+    balances.add(assets.tokens, assets.amounts);
+    const usdValue = await balances.getUSDValue();
     return usdValue / (supply / 10 ** decimals);
   };
 };
@@ -70,7 +76,7 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
     underlyingChain: "ethereum",
     symbol: "weETH",
-    decimals: "18",
+    decimals: 18,
   },
   wstmtrg: {
     rate: async ({ api }) => {
@@ -91,7 +97,7 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xbd2949f67dcdc549c6ebe98696449fa79d988a9f",
     underlyingChain: "bsc",
     symbol: "wstMTRG",
-    decimals: "18",
+    decimals: 18,
   },
   neth: {
     rate: async ({ api }) => {
@@ -253,6 +259,25 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4",
     address: "0x2AB105A3eAd22731082B790CA9A00D9A3A7627F9",
   },
+  stALT: {
+    rate: async ({ api }) => {
+      const [supply, balance] = await Promise.all([
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0xb6D149C8DdA37aAAa2F8AD0934f2e5682C35890B",
+        }),
+        api.call({
+          abi: "erc20:balanceOf",
+          target: "0x8457ca5040ad67fdebbcc8edce889a335bc0fbfb",
+          params: "0xb6D149C8DdA37aAAa2F8AD0934f2e5682C35890B",
+        }),
+      ]);
+      return balance / supply;
+    },
+    chain: "ethereum",
+    underlying: "0x8457ca5040ad67fdebbcc8edce889a335bc0fbfb",
+    address: "0xb6D149C8DdA37aAAa2F8AD0934f2e5682C35890B",
+  },
 };
 
 export async function derivs(timestamp: number) {
@@ -262,13 +287,15 @@ export async function derivs(timestamp: number) {
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {
-  const { chain, underlying, address, underlyingChain, symbol, decimals, } =
+  const { chain, underlying, address, underlyingChain, symbol, decimals } =
     config;
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const api = await getApi(chain, t, true);
   const pricesObject: any = {
     [address]: {
-      underlying, symbol, decimals,
+      underlying,
+      symbol,
+      decimals,
       price: await config.rate({ api, timestamp }),
     },
   };

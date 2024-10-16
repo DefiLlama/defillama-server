@@ -57605,7 +57605,7 @@ const data3: Protocol[] = [
     module: "m0/index.js",
     twitter: "m0foundation",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Chronicle"],
     audit_links: ["https://docs.m0.org/portal/technical/audits"],
     listedAt: 1728953339
   },

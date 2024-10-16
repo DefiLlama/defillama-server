@@ -57632,6 +57632,30 @@ const data3: Protocol[] = [
     github: ["WASD3Rplay"],
     listedAt: 1729092409
   },
+  {
+    id: "5243",
+    name: "Velocimeter V4",
+    address: null,
+    symbol: "-",
+    url: "https://v4.velocimeter.xyz/liquidity",
+    description:
+      "Velocimeter v4 introduces LP-backed veNFTs (veLPs), lump-sum option fees for veLP holders, emission scaling based on gauge count, and permissionless gauges for whitelisted token pairs voted on by users",
+    chain: "IOTA EVM",
+    logo: `${baseIconsUrl}/velocimeter.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["IOTA EVM"],
+    module: "velocimeter-v4/index.js",
+    twitter: "VelocimeterDEX",
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    audit_links: [],
+    parentProtocol: "parent#velocimeter",
+    listedAt: 1729109551,
+  },
 ];
 
 export default data3;

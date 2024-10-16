@@ -409,6 +409,11 @@
       "decimals": "8",
       "symbol": "lfbtc-bedrock-eth",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0x3119a1ad5b63a000ab9ca3f2470611eb997b93b9": {
+      "decimals": "8",
+      "symbol": "lfbtc-Avalon-eth",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "fantom": {

@@ -2455,9 +2455,6 @@ export default {
         parentId: "BlueMove",
         id: "2941"
     },
-    "hinkal": {
-        id: "4487"
-    },
     "h2-finance": {
         parentId: "H2 Finance",
         id: "5017"

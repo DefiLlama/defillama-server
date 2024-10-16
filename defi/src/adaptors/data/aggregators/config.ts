@@ -257,5 +257,8 @@ export default {
   },
   "jeton": {
     id: "5213",
+  },
+  "hinkal": {
+      id: "4487"
   }
 } as AdaptorsConfig;

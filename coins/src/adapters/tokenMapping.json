@@ -1190,6 +1190,71 @@
       "symbol": "SPX",
       "to": "coingecko#spx6900"
     },
+    "EfqRM8ZGWhDTKJ7BHmFvNagKVu3AxQRDQs8WMMaoBCu6": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "4XN2eji3jLjaoqef4XDT3xj1q9uHK9qHidtag81JmJQp": {
+      "decimals": "6",
+      "symbol": "WETH",
+      "to": "coingecko#weth"
+    },
+    "3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "wzbcJyhGhQDLTV1S99apZiiBdE4jmYfbw99saMMdP59": {
+      "decimals": "9",
+      "symbol": "ZBC",
+      "to": "coingecko#zebec-network"
+    },
+    "8qJSyQprMC57TWKaYEmetUR3UUiTP2M3hXdcvFhkZdmv": {
+      "decimals": "8",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs": {
+      "decimals": "6",
+      "symbol": "WETH",
+      "to": "coingecko#weth"
+    },
+    "G7iK3prSzAA4vzcJWvsLUEsdCqzR7PnMzJV61vSdFSNW": {
+      "decimals": "8",
+      "symbol": "NST",
+      "to": "coingecko#ninja-squad"
+    },
+    "AwRErBEFGTnohzfLeRSBH9HddQEy2oeRxnWLrbvFFh95": {
+      "decimals": "6",
+      "symbol": "TRUMP",
+      "to": "coingecko#maga"
+    },
+    "BeGY8KqKxboEwRbJd1q9H2K829jS4Rc5dEyNMYXCbV5p": {
+      "decimals": "8",
+      "symbol": "NPC",
+      "to": "coingecko#non-playable-coin"
+    },
+    "HaP8r3ksG76PhQLTqR8FYBeNiQpejcFbQmiHbg787Ut1": {
+      "decimals": "8",
+      "symbol": "TRUMP",
+      "to": "coingecko#maga"
+    },
+    "6LNeTYMqtNm1pBFN8PfhQaoLyegAH8GD32WmHU9erXKN": {
+      "decimals": "8",
+      "symbol": "APTOS",
+      "to": "coingecko#aptos"
+    },
+    "6FVyLVhQsShWVUsCq2FJRr1MrECGShc3QxBwWtgiVFwK": {
+      "decimals": "8",
+      "symbol": "BWB",
+      "to": "coingecko#bitget-wallet-token"
+    },
+    "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd": {
+      "decimals": "9",
+      "symbol": "SNS",
+      "to": "coingecko#synesis-one"
+    },
     "FjK6rqU6QzUeNtmK6QQ78cCuS5AHAhcm4HgJkdsvXaep": {
       "decimals": "8",
       "symbol": "YOURAI",

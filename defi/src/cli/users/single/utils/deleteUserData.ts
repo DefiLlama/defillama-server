@@ -1,6 +1,6 @@
 import { getAccountsDBConnection } from "../../../../getDBConnection"
 
-export async function deleteProtocol(protocolId:string){
+export async function deleteUserDataForProtocol(protocolId:string){
     const sql = getAccountsDBConnection()
     await Promise.all([
         sql`DELETE FROM dailyUsers WHERE protocolId = ${protocolId};`,

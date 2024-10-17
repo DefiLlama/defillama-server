@@ -80,7 +80,8 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5055": "osmosis",
   "5011": "lisk",
   "5232": "sui", 
-  "5218": "mint"
+  "5218": "mint",
+  "5248": "fuel",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -153,4 +154,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   xai: { ticker: "XAI", address: "0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66" },
   osmosis: { ticker: "OSMO", address: "uosmo" },
   lisk: { ticker: "LSK", address: "0x6033f7f88332b8db6ad452b7c6d5bb643990ae3f" },
+  sui: { ticker: "SUI", address: "" },
 };

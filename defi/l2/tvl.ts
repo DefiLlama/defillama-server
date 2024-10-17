@@ -103,7 +103,10 @@ async function translateToChainData(
         if (!(chain in data[key])) return;
         if (!(chain in translatedData)) translatedData[chain] = {};
         if (!data[key] || !data[key][chain]) translatedData[chain][key] = { total: zero, breakdown: {} };
-        if (chain in ownTokens && ownTokens[chain].ticker in data[key][chain]) await processOwnTokens(data, key, chain);
+        if (chain in ownTokens && ownTokens[chain].ticker in data[key][chain])
+          await processOwnTokens(data, key, chain, false);
+        if (chain in ownTokens && `W${ownTokens[chain].ticker}` in data[key][chain])
+          await processOwnTokens(data, key, chain, true);
         const total = Object.values(data[key][chain]).reduce((p: any, c: any) => c.plus(p), zero);
         translatedData[chain][key] = { total, breakdown: data[key][chain] };
       })
@@ -146,10 +149,12 @@ async function translateToChainData(
     });
   }
 
-  async function processOwnTokens(data: ChainData, key: keyof ChainData, chain: Chain) {
+  async function processOwnTokens(data: ChainData, key: keyof ChainData, chain: Chain, wrapped: boolean) {
     if (key == "outgoing") return;
     const ownToken = ownTokens[chain];
-    const total = data[key][chain][ownToken.ticker];
+    const isWrappedTicker = wrapped ? `W${ownToken.ticker}` : ownToken.ticker;
+
+    const total = data[key][chain][isWrappedTicker];
     if (!total) return;
     if (!translatedData[chain].ownTokens)
       translatedData[chain].ownTokens = { total: zero, breakdown: { [ownToken.ticker]: zero } };
@@ -161,7 +166,7 @@ async function translateToChainData(
     translatedData[chain].ownTokens.total = translatedData[chain].ownTokens.total.plus(thisAssetMcap);
     translatedData[chain].ownTokens.breakdown[ownToken.ticker] =
       translatedData[chain].ownTokens.breakdown[ownToken.ticker].plus(thisAssetMcap);
-    delete data[key][chain][ownToken.ticker];
+    delete data[key][chain][isWrappedTicker];
   }
 
   return translatedData;

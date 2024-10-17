@@ -56868,14 +56868,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5209",
-    name: "ObeliskBTC",
+    name: "ObeliskBTC", // Previous Obelisk BTC
     address: null,
     symbol: "-",
     url: "https://obelisk.nodedao.com",
     description:
       "Obelisk is a Bitcoin asset management protocol enhancing value and liquidity through restaking and diverse yield strategies.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/obelisk-btc.jpg`,
+    logo: `${baseIconsUrl}/obeliskbtc.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

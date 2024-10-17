@@ -2120,5 +2120,8 @@ export default {
     "wise-lending-v2": {
         parentId: "Wise Lending",
         id: "4494"
+    },
+    "makenow-meme": {
+        id: "5246"
     }
 } as AdaptorsConfig

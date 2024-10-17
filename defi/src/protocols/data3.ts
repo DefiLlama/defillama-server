@@ -57729,6 +57729,29 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1729134549,
   },
+  {
+    id: "5247",
+    name: "Kraken Bitcoin",
+    address: null,
+    symbol: "-",
+    url: "https://www.kraken.com/kbtc",
+    description:
+      "The kBTC token lets you leverage the power of Bitcoin while interacting with Ethereum, OP Mainnet, and other growing DeFi ecosystems. Fully-backed. Fully exchangeable anytime.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/kraken-bitcoin.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    module: "kraken-btc/index.js",
+    twitter: "krakenfx",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [],
+    listedAt: 1729172125
+  },
 ];
 
 export default data3;

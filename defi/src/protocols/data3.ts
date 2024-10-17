@@ -56711,7 +56711,7 @@ const data3: Protocol[] = [
   {
     id: "5202",
     name: "Infinite Trading Protocol",
-    address: "0x0a7B751FcDBBAA8BB988B9217ad5Fb5cfe7bf7A0",
+    address: "optimism:0x0a7B751FcDBBAA8BB988B9217ad5Fb5cfe7bf7A0",
     symbol: "ITP",
     url: "https://www.infinitetrading.io/",
     description:

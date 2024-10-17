@@ -725,5 +725,9 @@ export default {
     },
     "trado": {
         id: "5208",
+    },
+    "quickswap-perps": {
+        parentId: "QuickSwap",
+        id: "2980",
     }
 } as AdaptorsConfig

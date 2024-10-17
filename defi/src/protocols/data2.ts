@@ -15289,7 +15289,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Binance"],
-    oracles: ["Binance Oracle"],
+    oracles: ["RedStone", "Chainlink", "Binance Oracle", "Pyth"],
     forkedFrom: ["MakerDAO"],
     module: "helio-money/index.js",
     twitter: "LISTA_DAO",

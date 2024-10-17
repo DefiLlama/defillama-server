@@ -56868,7 +56868,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5209",
-    name: "Oblisk BTC",
+    name: "ObeliskBTC",
     address: null,
     symbol: "-",
     url: "https://obelisk.nodedao.com",

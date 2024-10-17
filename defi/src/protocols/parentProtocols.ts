@@ -5609,6 +5609,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "KelpDAO",
     github: ["Kelp-DAO"],
   },
+  {
+    id: "parent#eddyfinance",
+    name: "EddyFinance",
+    url: "https://www.eddy.finance/",
+    description:
+      "EddyFinance is a dex built on top of ZetaChain",
+    logo: `${baseIconsUrl}/eddyfinance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "eddy_protocol",
+  },
 ];
 
 export default parentProtocols;

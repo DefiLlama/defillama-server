@@ -32307,7 +32307,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4120",
-    name: "EddyFinance",
+    name: "EddyFinance AMM",
     address: null,
     symbol: "-",
     url: "https://www.eddy.finance/",
@@ -32320,11 +32320,12 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["ZetaChain"],
-    oracles: ["Pyth"], // https://docs.eddy.finance/eddy-product/oracles
+    oracles: [], // https://docs.eddy.finance/eddy-product/oracles remove oracle from dexes, not securing tvl
     forkedFrom: ["Uniswap V2"],
     module: "eddyfinance/index.js",
     twitter: "eddy_protocol",
     audit_links: [],
+    parentProtocol: "parent#eddyfinance",
     listedAt: 1707443045,
   },
   {
@@ -57773,6 +57774,28 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: [],
+  },
+  {
+    id: "4120",
+    name: "EddyFinance StableSwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.eddy.finance/",
+    description: "EddyFinance is a dex built on top of ZetaChain",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/eddyfinance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ZetaChain"],
+    oracles: [], // https://docs.eddy.finance/eddy-product/oracles remove oracle from dexes
+    forkedFrom: [],
+    module: "eddyfinance/index.js",
+    twitter: "eddy_protocol",
+    audit_links: [],
+    parentProtocol: "parent#eddyfinance",
   },
 ];
 

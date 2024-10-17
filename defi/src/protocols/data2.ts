@@ -1593,7 +1593,8 @@ const data2: Protocol[] = [
     address: "0xb3999f658c0391d94a37f7ff328f3fec942bcadc",
     symbol: "HFT",
     url: "https://www.hashflow.com",
-    description: "Hashflow Exchange OS (or xOS for short) is an engine that can turn any exchange into what we call a provable exchange. We believe that provable exchanges are the endgame for crypto trading — they retain the seamless UX and performance of a central limit order book (CLOB), which forms the backbone of every centralized exchange, while augmenting them with the new provable property.",
+    description:
+      "Hashflow Exchange OS (or xOS for short) is an engine that can turn any exchange into what we call a provable exchange. We believe that provable exchanges are the endgame for crypto trading — they retain the seamless UX and performance of a central limit order book (CLOB), which forms the backbone of every centralized exchange, while augmenting them with the new provable property.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hashflow.png`,
     audits: "0",
@@ -12907,8 +12908,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://v2.etcswap.org/",
-    description:
-      "ETCswap V2 is a fully decentralized protocol for automated liquidity provision on Ethereum Classic.",
+    description: "ETCswap V2 is a fully decentralized protocol for automated liquidity provision on Ethereum Classic.",
     chain: "EthereumClassic",
     logo: `${baseIconsUrl}/etcswap-v2.png`,
     audits: "2",
@@ -15289,7 +15289,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Binance"],
-    oracles: ["Binance Oracle"],
+    oracles: ["RedStone", "Chainlink", "Binance Oracle", "Pyth"],
     forkedFrom: ["MakerDAO"],
     module: "helio-money/index.js",
     twitter: "LISTA_DAO",
@@ -15298,7 +15298,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#lista-dao",
     tokensExcludedFromParent: {
       BSC: ["SNBNB"],
-    }
+    },
   },
   {
     id: "2039",
@@ -16178,7 +16178,7 @@ const data2: Protocol[] = [
     listedAt: 1662603346,
     tokensExcludedFromParent: {
       Ethereum: ["FRAX", "FRXETH"],
-    }
+    },
   },
   {
     id: "2077",
@@ -17225,7 +17225,7 @@ const data2: Protocol[] = [
     listedAt: 1663946542,
     tokensExcludedFromParent: {
       Ethereum: ["FRAX", "FRXETH"],
-    }
+    },
   },
   {
     id: "2122",
@@ -17820,7 +17820,7 @@ const data2: Protocol[] = [
     twitter: "ipor_io",
     audit_links: ["https://docs.ipor.io/audits"],
     listedAt: 1664876804,
-    parentProtocol: "parent#ipor"
+    parentProtocol: "parent#ipor",
   },
   {
     id: "2148",
@@ -20869,7 +20869,7 @@ const data2: Protocol[] = [
       "https://twitter.com/ZOKYO_io/status/1584544823062630400?s=20&t=SHVRNHNN_w49Q1bbDsI9uQ",
     ],
     listedAt: 1668436086,
-    wrongLiquidity: true
+    wrongLiquidity: true,
   },
   {
     id: "2281",
@@ -23513,7 +23513,6 @@ const data2: Protocol[] = [
       "https://obeliskauditing.com/audits/level-finance-trading",
     ],
     listedAt: 1672230595,
-    
   },
   {
     id: "2396",
@@ -25552,7 +25551,7 @@ const data2: Protocol[] = [
     category: "Decentralized Stablecoin",
     chains: ["Cardano"],
     oraclesByChain: {
-      cardano: ["COTI's Oracle"]
+      cardano: ["COTI's Oracle"],
     },
     forkedFrom: [],
     module: "djed-alliance/index.js",
@@ -26632,7 +26631,7 @@ const data2: Protocol[] = [
     twitter: "Vaultkaofficial",
     forkedFrom: [],
     oraclesByChain: {
-      solana: ["Pyth"],// "https://docs.vaultka.com/products/vaultka-junior/supplementary-information#oracle",
+      solana: ["Pyth"], // "https://docs.vaultka.com/products/vaultka-junior/supplementary-information#oracle",
     },
     audit_links: [
       "https://github.com/Vaultka/vaultka-contracts/blob/main/Audits/Fortitude-Vaultka-Audit-Report.pdf",
@@ -27508,7 +27507,7 @@ const data2: Protocol[] = [
     listedAt: 1677103747,
     tokensExcludedFromParent: {
       Solana: ["LST"],
-    }
+    },
   },
   {
     id: "2571",

@@ -68,8 +68,7 @@ function sum(
         "staking_eth",
         "staking_bsc",
       ].includes(sectionSplit[0]) &&
-      (chain ? sectionSplit[0] === chain : true) &&
-      (chainsByOracle[oracle] ? chainsByOracle[oracle].includes(getChainDisplayName(sectionSplit[0], true)) : true)
+      (chain ? sectionSplit[0] === chain : true)
     ) {
       const sectionKey = `${getChainDisplayName(sectionSplit[0], true)}${sectionSplit[1] ? `-${sectionSplit[1]}` : ""}`;
 

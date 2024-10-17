@@ -2493,5 +2493,8 @@ export default {
     },
     "cytoswap": {
         id: "5205"
+    },
+    "polymarket": {
+        id: "711"
     }
 } as AdaptorsConfig

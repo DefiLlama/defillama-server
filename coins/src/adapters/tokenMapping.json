@@ -1850,6 +1850,16 @@
     }
   },
   "zeta": {
+    "0x96152e6180e085fa57c7708e18af8f05e37b479d": {
+      "decimals": "18",
+      "symbol": "BASE.USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x1de70f3e971b62a0707da18100392af14f7fb677": {
+      "decimals": "18",
+      "symbol": "BASE.ETH",
+      "to": "coingecko#ethereum"
+    },
     "0x1e4bF3CaBD7707089138dD5a545B077413FA83Fc": {
       "decimals": "18",
       "symbol": "pufETH",

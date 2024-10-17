@@ -31,17 +31,13 @@ function sum(
   item: Item = {},
   oracleProtocols: OracleProtocols,
   protocol: IProtocol,
-  chain: string | null,
-  oracleTvlByChain: IChainByOracle
+  chain: string | null
 ) {
   if (!totalByChain[time]) {
     totalByChain[time] = {};
   }
   if (!total[time]) {
     total[time] = {};
-  }
-  if (!oracleTvlByChain[oracle]) {
-    oracleTvlByChain[oracle] = {};
   }
 
   const dataByChain = totalByChain[time][oracle] ?? {};
@@ -52,29 +48,28 @@ function sum(
     const sectionSplit = (isOldTvlRecord && section === "tvl" ? protocol.chain : section).split("-");
 
     if (
-      (chainsByOracle[oracle]
-        ? chainsByOracle[oracle].includes(getChainDisplayName(sectionSplit[0], true))
-        : ![
-            "SK",
-            "PK",
-            "tvl",
-            "tvlPrev1Week",
-            "tvlPrev1Day",
-            "tvlPrev1Hour",
-            "Stake",
-            "oec",
-            "treasury_bsc",
-            "Earn",
-            "eth",
-            "WooPP",
-            "bscStaking",
-            "avaxStaking",
-            "pool3",
-            "masterchef",
-            "staking_eth",
-            "staking_bsc",
-          ].includes(sectionSplit[0])) &&
-      (chain ? sectionSplit[0] === chain : true)
+      ![
+        "SK",
+        "PK",
+        "tvl",
+        "tvlPrev1Week",
+        "tvlPrev1Day",
+        "tvlPrev1Hour",
+        "Stake",
+        "oec",
+        "treasury_bsc",
+        "Earn",
+        "eth",
+        "WooPP",
+        "bscStaking",
+        "avaxStaking",
+        "pool3",
+        "masterchef",
+        "staking_eth",
+        "staking_bsc",
+      ].includes(sectionSplit[0]) &&
+      (chain ? sectionSplit[0] === chain : true) &&
+      (chainsByOracle[oracle] ? chainsByOracle[oracle].includes(getChainDisplayName(sectionSplit[0], true)) : true)
     ) {
       const sectionKey = `${getChainDisplayName(sectionSplit[0], true)}${sectionSplit[1] ? `-${sectionSplit[1]}` : ""}`;
 
@@ -84,7 +79,6 @@ function sum(
         if (extraSections.includes(section)) {
           data[section] = (data[section] ?? 0) + item[section];
         } else {
-          oracleTvlByChain[oracle][sectionKey] = (oracleTvlByChain[oracle][sectionKey] ?? 0) + item[section];
           data.tvl = (data.tvl ?? 0) + item[section];
         }
       }
@@ -104,7 +98,6 @@ export async function getOraclesInternal({ ...options }: any = {}) {
   const sumDailyTvls = {} as SumDailyTvls;
   const sumDailyTvlsByChain = {} as SumDailyTvls;
   const oracleProtocols = {} as OracleProtocols;
-  const oracleTvlByChain = {} as IChainByOracle;
 
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
@@ -112,32 +105,12 @@ export async function getOraclesInternal({ ...options }: any = {}) {
         if (protocol.oraclesByChain) {
           for (const chain in protocol.oraclesByChain) {
             for (const oracle of protocol.oraclesByChain[chain]) {
-              sum(
-                sumDailyTvlsByChain,
-                sumDailyTvls,
-                oracle,
-                timestamp,
-                item,
-                oracleProtocols,
-                protocol,
-                chain,
-                oracleTvlByChain
-              );
+              sum(sumDailyTvlsByChain, sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, chain);
             }
           }
         } else if (protocol.oracles) {
           for (const oracle of protocol.oracles) {
-            sum(
-              sumDailyTvlsByChain,
-              sumDailyTvls,
-              oracle,
-              timestamp,
-              item,
-              oracleProtocols,
-              protocol,
-              null,
-              oracleTvlByChain
-            );
+            sum(sumDailyTvlsByChain, sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol, null);
           }
         }
       } catch (error) {
@@ -147,13 +120,29 @@ export async function getOraclesInternal({ ...options }: any = {}) {
     { includeBridge: false, ...options }
   );
 
+  const oracleTvlByChain = {} as IChainByOracle;
+  const latestTvlByChainByOracle = Object.entries(sumDailyTvlsByChain).slice(-1)[0][1];
+  for (const oracle in latestTvlByChainByOracle) {
+    const chains = Object.fromEntries(
+      Object.entries(latestTvlByChainByOracle[oracle] as [string, number])
+        .filter((c) => !c[0].includes("-") && !extraSections.includes(c[0]))
+        .sort((a, b) => (b[1] as number) - (a[1] as number))
+    );
+
+    oracleTvlByChain[oracle] = chains as Record<string, number>;
+  }
+
   const finalChainsByOracle: Record<string, Array<string>> = {};
   for (const oracle in oracleTvlByChain) {
-    finalChainsByOracle[oracle] = Object.entries(oracleTvlByChain[oracle])
+    const documentedChainsTvl = (chainsByOracle[oracle] ?? []).sort(
+      (a, b) => (oracleTvlByChain[oracle][b] ?? 0) - (oracleTvlByChain[oracle][a] ?? 0)
+    );
+
+    const allChainsWithTvl = Object.entries(oracleTvlByChain[oracle])
       .sort((a, b) => b[1] - a[1])
       .map((item) => item[0]);
 
-    finalChainsByOracle[oracle] = [...new Set([...finalChainsByOracle[oracle], ...(chainsByOracle[oracle] ?? [])])];
+    finalChainsByOracle[oracle] = [...new Set(documentedChainsTvl.length > 0 ? documentedChainsTvl : allChainsWithTvl)];
   }
 
   return {

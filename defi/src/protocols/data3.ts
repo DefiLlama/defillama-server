@@ -57737,7 +57737,7 @@ const data3: Protocol[] = [
     url: "https://www.kraken.com/kbtc",
     description:
       "The kBTC token lets you leverage the power of Bitcoin while interacting with Ethereum, OP Mainnet, and other growing DeFi ecosystems. Fully-backed. Fully exchangeable anytime.",
-    chain: "Ethereum",
+    chain: "Bitcoin",
     logo: `${baseIconsUrl}/kraken-bitcoin.jpg`,
     audits: "0",
     audit_note: null,
@@ -57751,6 +57751,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     listedAt: 1729172125
+  },
+  {
+    id: "5248",
+    name: "Fuel",
+    address: null,
+    symbol: "-",
+    url: "https://app.fuel.network/bridge",
+    description:
+      "Bridge between Fuel Ignition and Ethereum",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fuel.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    module: "fuel/index.js",
+    twitter: "fuel_network",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [],
   },
 ];
 

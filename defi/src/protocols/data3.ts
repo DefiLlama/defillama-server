@@ -57792,7 +57792,7 @@ const data3: Protocol[] = [
     chains: ["ZetaChain"],
     oracles: [], // https://docs.eddy.finance/eddy-product/oracles remove oracle from dexes
     forkedFrom: [],
-    module: "eddyfinance/index.js",
+    module: "eddyfinance-stableswap/index.js",
     twitter: "eddy_protocol",
     audit_links: [],
     parentProtocol: "parent#eddyfinance",

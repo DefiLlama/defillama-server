@@ -57729,6 +57729,26 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1729134549,
   },
+  {
+    id: "5247",
+    name: "Fuel",
+    address: null,
+    symbol: "-",
+    url: "https://fuel.network/",
+    description: "A high-performance Ethereum layer-2 powered by the FuelVM; built for home verification and scalable for all.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fuel.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    oracles: [],
+    module: "fuel/index.js",
+    twitter: "fuel_network",
+    forkedFrom: [],
+  },
 ];
 
 export default data3;

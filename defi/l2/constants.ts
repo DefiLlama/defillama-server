@@ -80,7 +80,8 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5055": "osmosis",
   "5011": "lisk",
   "5232": "sui", 
-  "5218": "mint"
+  "5218": "mint",
+  "5247": "fuel"
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

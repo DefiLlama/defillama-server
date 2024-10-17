@@ -12585,7 +12585,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "686",
-    name: "YELToken",
+    name: "Yel Finance", // previous YELToken
     address: "0x949185D3BE66775Ea648F4a306740EA9eFF9C567",
     symbol: "YEL",
     url: "https://yel.finance",

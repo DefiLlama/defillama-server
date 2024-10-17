@@ -2496,5 +2496,13 @@ export default {
     },
     "polymarket": {
         id: "711"
+    },
+    "linehub-v2": {
+        parentId: "LineHub",
+        id: "4660"
+    },
+    "quickswap-hydra": {
+        parentId: "QuickSwap",
+        id: "5187"
     }
 } as AdaptorsConfig

@@ -2123,5 +2123,21 @@ export default {
     },
     "makenow-meme": {
         id: "5246"
+    },
+    "linehub-v3": {
+        parentId: "LineHub",
+        id: "4661"
+    },
+    "linehub-v2": {
+        parentId: "LineHub",
+        id: "4660"
+    },
+    "quickswap-hydra": {
+        parentId: "QuickSwap",
+        id: "5187"
+    },
+    "quickswap-perps": {
+        parentId: "QuickSwap",
+        id: "2980",
     }
 } as AdaptorsConfig

@@ -57776,7 +57776,7 @@ const data3: Protocol[] = [
     audit_links: [],
   },
   {
-    id: "4120",
+    id: "5249",
     name: "EddyFinance StableSwap",
     address: null,
     symbol: "-",

@@ -2507,5 +2507,8 @@ export default {
     },
     "meridian-swap": {
         id: "5025"
+    },
+    "mira-ly": {
+        id: "5252"
     }
 } as AdaptorsConfig

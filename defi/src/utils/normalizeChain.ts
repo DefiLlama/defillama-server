@@ -3387,6 +3387,13 @@ export const chainCoingeckoIds = {
     twitter: "Shape_L2",
     chainId: 360
   },
+  "Fuel": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "fuel_network",
+    url: "https://fuel.network/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4119,6 +4126,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Matchain"
     case "shape":
       return "Shape"
+    case "fuel":
+      return "Fuel"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

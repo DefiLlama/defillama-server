@@ -57797,6 +57797,28 @@ const data3: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#eddyfinance",
   },
+  {
+    id: "5250",
+    name: "Moneta",
+    address: null,
+    symbol: "-",
+    url: "https://moneta.global/",
+    description: "Fiat backed stablecoin native to the Cardano blockchain",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/moneta.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Decentralized Stablecoin",
+    chains: ["Cardano"],
+    oracles: ["Charli3"], 
+    forkedFrom: [],
+    module: "moneta/index.js",
+    twitter: "usdmofficial",
+    audit_links: ["https://cdn.sundaeswap.finance/audits/mehen.pdf"],
+    listedAt: 1729225639
+  },
 ];
 
 export default data3;

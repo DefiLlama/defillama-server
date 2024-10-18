@@ -872,6 +872,11 @@
     }
   },
   "aptos": {
+    "0x4e1854f6d332c9525e258fb6e66f84b6af8aba687bbcb832a24768c4e175feec::abtc::ABTC": {
+      "decimals": "10",
+      "symbol": "aBTC",
+      "to": "coingecko#abtc"
+    },
     "0xe4ccb6d39136469f376242c31b34d10515c8eaaa38092f804db8e08a8f53c5b2::assets_v1::EchoCoin002": {
       "decimals": "6",
       "symbol": "GUI",

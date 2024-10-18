@@ -57840,6 +57840,28 @@ const data3: Protocol[] = [
     twitter: "Truemarketsorg",
     listedAt: 1729254083
   },
+  {
+    id: "5252",
+    name: "Mira Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://mira.ly",
+    description: "MIRA is an open-source, decentralized platform designed to seamlessly match traders, liquidity providers (LPs), and protocols. Launching initially as a basic Automated Market Maker (AMM), MIRA will evolve into a ve(3,3) model to maximize capital efficiency and user incentives.",
+    chain: "Fuel",
+    logo: `${baseIconsUrl}/mira-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fuel"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "mira-ly/index.js",
+    twitter: "MiraProtocol",
+    github: ["mira-amm"],
+    listedAt: 1729254583
+  },
 ];
 
 export default data3;

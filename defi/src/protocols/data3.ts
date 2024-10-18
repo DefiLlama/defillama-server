@@ -54369,7 +54369,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
+    category: "Restaked BTC",
     chains: ["Bitcoin"],
     module: "lombard/index.js",
     oracles: ["RedStone"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11458

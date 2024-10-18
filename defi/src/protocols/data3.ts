@@ -57755,7 +57755,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5248",
-    name: "Fuel",
+    name: "Fuel Bridge",
     address: null,
     symbol: "-",
     url: "https://app.fuel.network/bridge",

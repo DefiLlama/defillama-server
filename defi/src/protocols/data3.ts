@@ -57806,7 +57806,7 @@ const data3: Protocol[] = [
     description: "Fiat backed stablecoin native to the Cardano blockchain",
     chain: "Cardano",
     logo: `${baseIconsUrl}/moneta.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -57818,6 +57818,27 @@ const data3: Protocol[] = [
     twitter: "usdmofficial",
     audit_links: ["https://cdn.sundaeswap.finance/audits/mehen.pdf"],
     listedAt: 1729225639
+  },
+  {
+    id: "5251",
+    name: "Truemarkets",
+    address: null,
+    symbol: "-",
+    url: "https://truemarkets.org",
+    description: "News through markets. Bounties on truth.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/truemarkets.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Base"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "truemarkets/index.js",
+    twitter: "Truemarketsorg",
+    listedAt: 1729254083
   },
 ];
 

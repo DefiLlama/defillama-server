@@ -10674,6 +10674,7 @@ const data2: Protocol[] = [
     module: "aave-v1/index.js",
     twitter: "aave",
     audit_links: ["https://aave.com/security"],
+    
     listedAt: 1655586107,
     parentProtocol: "parent#aave",
     wrongLiquidity: true,
@@ -20424,7 +20425,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2259",
-    name: "Helix",
+    name: "Helix Spot",
     address: null,
     symbol: "-",
     url: "https://helixapp.com",

@@ -2504,5 +2504,8 @@ export default {
     "quickswap-hydra": {
         parentId: "QuickSwap",
         id: "5187"
+    },
+    "meridian-swap": {
+        id: "5025"
     }
 } as AdaptorsConfig

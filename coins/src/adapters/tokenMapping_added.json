@@ -5398,7 +5398,7 @@
       "symbol": "BUSD",
       "to": "coingecko#binance-usd"
     },
-    "KT1XnTn74bUtxHfDtBmm2bGZAQfhPbvKWR8o-0": {
+    "KT1XnTn74bUtxHfDtBmm2bGZAQfhPbvKWR8o": {
       "name": "tether",
       "decimals": "6",
       "symbol": "USDT",

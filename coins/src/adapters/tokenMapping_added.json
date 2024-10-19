@@ -5397,6 +5397,12 @@
       "decimals": "18",
       "symbol": "BUSD",
       "to": "coingecko#binance-usd"
+    },
+    "KT1XnTn74bUtxHfDtBmm2bGZAQfhPbvKWR8o-0": {
+      "name": "tether",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   },
   "hpb": {

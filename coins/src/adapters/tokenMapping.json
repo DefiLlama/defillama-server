@@ -952,6 +952,11 @@
       "decimals": "8",
       "symbol": "BUBBLES",
       "to": "coingecko#bubbles-2"
+    },
+    "0x4e1854f6d332c9525e258fb6e66f84b6af8aba687bbcb832a24768c4e175feec::abtc::ABTC": {
+      "decimals": "10",
+      "symbol": "ABTC",
+      "to": "coingecko#abtc"
     }
   },
   "velas": {

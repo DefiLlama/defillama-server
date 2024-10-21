@@ -3388,7 +3388,7 @@ export const chainCoingeckoIds = {
     twitter: "Shape_L2",
     chainId: 360
   },
-  "Fuel": {
+  "Fuel Ignition": {
     geckoId: null,
     symbol: null,
     cmcId: null,

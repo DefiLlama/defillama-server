@@ -3502,6 +3502,8 @@ export function transformNewChainName(chain: string) {
       return "ZKsync Lite"
     case "Lyra Chain":
       return "Derive Chain"
+    case "Fuel":
+      return "Fuel Ignition"
     default:
       return chain
   }
@@ -4140,7 +4142,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "shape":
       return "Shape"
     case "fuel":
-      return "Fuel"
+      return useNewChainNames ? "Fuel Ignition" : "Fuel"
     case "wc":
       return "World Chain"
     default:

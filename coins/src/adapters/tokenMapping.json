@@ -3311,6 +3311,11 @@
       "decimals": "18",
       "symbol": "ETH",
       "to": "coingecko#ethereum"
+    },
+    "0x7275B8DBAF919FDDa6eE6B36F12Fd25C0F193502": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
     }
   },
   "xai": {

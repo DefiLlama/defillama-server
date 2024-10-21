@@ -100,7 +100,7 @@ async function getPrices(timestamp: number, chain: string): Promise<Write[]> {
     addToDBWritesList(
       writes,
       chain,
-      deploy.args[0],
+      deploy.args[4],
       price,
       decimals[i],
       "Stable-LP",

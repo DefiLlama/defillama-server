@@ -24901,6 +24901,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     listedAt: 1642210209,
   },
+  /* delist while fixing, spike to big
   {
     id: "1270",
     name: "VyFinance Vaults",
@@ -24922,6 +24923,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     parentProtocol: "parent#vyfinance",
     listedAt: 1642235543,
   },
+  */
   {
     id: "1271",
     name: "Immortal",

@@ -98,4 +98,6 @@ export default {
   fxProtocol: require("./yield/fx-protocol"),
   crosscurve: require("./markets/crosscurve"),
   samm: require("./markets/samm"),
+  gamma: require("./yield/gamma"),
+  thena: require("./markets/thena"),
 };

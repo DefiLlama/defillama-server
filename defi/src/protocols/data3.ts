@@ -48695,7 +48695,7 @@ const data3: Protocol[] = [
     name: "Danzo App", // Danzo Arena 
     address: "cardano:bf3e19192da77dfadc7c9065944e50ca7e1a439d90833e3ae58b720a44414e5a4f",
     symbol: "DANZO",
-    url: "https://cardanzoada.com/app/",
+    url: "https://danzo.gg/#/arena",
     description:
       "Danzo App is a gamified DeFi platform which includes the Danzo Arena where users can deposit tokens, borrow against holdings, and share in trading and withdrawal fees and the Danzo Casino, a one-of-a-kind degen’s paradise built on Cardano.",
     chain: "Cardano",

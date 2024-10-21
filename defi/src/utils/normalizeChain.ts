@@ -3394,6 +3394,19 @@ export const chainCoingeckoIds = {
     twitter: "fuel_network",
     url: "https://fuel.network/",
   },
+  "World Chain": {
+    geckoId: "worldcoin-wld",
+    symbol: "WLD",
+    cmcId: null,
+    categories: ["EVM","Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "worldcoin",
+    url: "https://world.org/",
+    chainId: 480
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4128,6 +4141,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Shape"
     case "fuel":
       return "Fuel"
+    case "wc":
+      return "World Chain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

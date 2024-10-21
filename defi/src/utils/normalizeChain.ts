@@ -3432,6 +3432,7 @@ chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
 chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
 chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
 chainCoingeckoIds["Lyra Chain"] = chainCoingeckoIds["Derive Chain"]
+chainCoingeckoIds["Fuel"] = chainCoingeckoIds["Fuel Ignition"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 

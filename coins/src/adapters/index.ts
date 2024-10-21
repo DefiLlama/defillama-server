@@ -12,6 +12,7 @@ export default {
   ...curve.adapters,
   ...balancer.adapters,
   ...others.adapters,
+  reservoirprotocol: require("./rwa/reservoir-protocol"),
   fortunafi: require("./rwa/fortunafi"),
   midas: require("./rwa/midas"),
   stobox: require("./rwa/stobox"),

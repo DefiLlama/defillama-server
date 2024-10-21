@@ -100,4 +100,5 @@ export default {
   samm: require("./markets/samm"),
   gamma: require("./yield/gamma"),
   thena: require("./markets/thena"),
+  pancakeStable: require("./markets/pancakeStable"),
 };

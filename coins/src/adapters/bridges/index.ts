@@ -36,6 +36,7 @@ import zklink from "./zklink";
 import celer from "./celer";
 import fraxtal from "./fraxtal";
 import symbiosis from "./symbiosis";
+import fuel from "./fuel";
 
 export type Token =
   | {
@@ -101,6 +102,7 @@ export const bridges = [
   celer,
   fraxtal,
   symbiosis,
+  fuel,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

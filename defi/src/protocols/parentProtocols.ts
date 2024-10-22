@@ -5634,6 +5634,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["Lorenzo-Protocol"],
     twitter: "LorenzoProtocol",
   },
+  {
+    id: "parent#capybara-exchange",
+    name: "Capybara Exchange",
+    url: "https://www.capybara.exchange",
+    description:
+      "The 1st Launchpad & Decentralized Exchange on kaia chain. Hyper-capital-efficient, transparent, & community-first.",
+    logo: `${baseIconsUrl}/capybara-exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "CapybaraDEX",
+  },
 ];
 
 export default parentProtocols;

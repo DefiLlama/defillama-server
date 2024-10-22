@@ -45171,14 +45171,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4690",
-    name: "Lorenzo Protocol",
+    name: "Lorenzo", // previous lorenzo-protocol
     address: null,
     symbol: "-",
     url: "https://www.lorenzo-protocol.xyz",
     description:
       "Lorenzo is the Bitcoin Liquidity Finance Layer, creates an efficient market in which Bitcoin holders can easily find the best opportunities to invest their unused Bitcoin liquidity and serves as the premier DeFi ecosystem in which to finance Bitcoin restaking tokens.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/lorenzo-protocol.jpg`,
+    logo: `${baseIconsUrl}/lorenzo.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -45188,8 +45188,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "lorenzo/index.js",
+    parentProtocol: "parent#lorenzo-protocol",
     twitter: "LorenzoProtocol",
-    github: ["Lorenzo-Protocol"],
     audit_links: [
       "https://github.com/Lorenzo-Protocol/lorenzo/blob/main/audit/Lorenzo%20Protocol%20-%20Zellic%20Audit%20Report.pdf",
     ],
@@ -57862,6 +57862,28 @@ const data3: Protocol[] = [
     twitter: "MiraProtocol",
     github: ["mira-amm"],
     listedAt: 1729254583
+  },
+  {
+    id: "5253",
+    name: "Lorenzo stBTC",
+    address: null,
+    symbol: "-",
+    url: "https://www.lorenzo-protocol.xyz",
+    description: "All yield-bearing tokens can be used to stake BTC or equivalent assets to generate yield. In return, users receive stBTC and the respective YAT tokens.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/lorenzo-stbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Anchor BTC",
+    chains: ["Binance"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "lorenzo-bsc-lst/index.js",
+    twitter: "LorenzoProtocol",
+    parentProtocol: "parent#lorenzo-protocol",
+    listedAt: 1729589412
   },
 ];
 

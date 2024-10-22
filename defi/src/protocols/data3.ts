@@ -46450,14 +46450,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4747",
-    name: "Capybara Exchange",
+    name: "Capybara Dexs",
     address: null,
     symbol: "-",
     url: "https://www.capybara.exchange",
     description:
       "The 1st Launchpad & Decentralized Exchange on kaia chain. Hyper-capital-efficient, transparent, & community-first.",
     chain: "Klaytn",
-    logo: `${baseIconsUrl}/capybara-exchange.jpg`,
+    logo: `${baseIconsUrl}/capybara-dexs.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -46468,6 +46468,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "capybara-exchange/index.js",
     twitter: "CapybaraDEX",
+    parentProtocol: "parent#capybara-exchange",
     listedAt: 1718026081,
   },
   {
@@ -57951,7 +57952,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/oxiswap/oxiswap-crypto-contract/blob/main/oxiswap-audit-report.pdf"],
     listedAt: 1729597013
   },
-
+  {
+    id: "5257",
+    name: "Capybara Perps",
+    address: null,
+    symbol: "-",
+    url: "https://app.oxiswap.com",
+    description: "The 1st Launchpad & Decentralized Exchange on kaia chain. Hyper-capital-efficient, transparent, & community-first.",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/capybara-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Klaytn"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "CapybaraDEX",
+    parentProtocol: "parent#capybara-exchange",
+    listedAt: 1729608442
+  },
 ];
 
 export default data3;

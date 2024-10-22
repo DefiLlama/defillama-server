@@ -5621,6 +5621,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "eddy_protocol",
   },
+  {
+    id: "parent#lorenzo-protocol",
+    name: "Lorenzo Protocol",
+    url: "https://www.lorenzo-protocol.xyz",
+    description:
+      "Lorenzo is the Bitcoin Liquidity Finance Layer, creates an efficient market in which Bitcoin holders can easily find the best opportunities to invest their unused Bitcoin liquidity and serves as the premier DeFi ecosystem in which to finance Bitcoin restaking tokens.",
+    logo: `${baseIconsUrl}/lorenzo-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    github: ["Lorenzo-Protocol"],
+    twitter: "LorenzoProtocol",
+  },
 ];
 
 export default parentProtocols;

@@ -57974,6 +57974,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#capybara-exchange",
     listedAt: 1729608442
   },
+  {
+    id: "5258",
+    name: "Babylon",
+    address: null,
+    symbol: "-",
+    url: "https://babylonlabs.io",
+    description: "Bitcoin holders can earn yields from their idle bitcoins in a secure way: no third-party trust, no bitcoin bridging to any other chain. Bitcoin holders simply lock their bitcoins in a self-custodial way to gain the rights to validate PoS chains and earn yields as a return. Powered by the fast unbonding and scalable restaking features of the protocol, bitcoin stakers can also enjoy maximal liquidity and yields.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/babylon.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Bitcoin"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "babylon/index.js",
+    twitter: "babylonlabs_io",
+    github: ["babylonlabs-io"],
+    listedAt: 1729611444
+  },
 ];
 
 export default data3;

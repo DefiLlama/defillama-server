@@ -57928,6 +57928,30 @@ const data3: Protocol[] = [
     audit_links: ["https://app.secure3.io/98df04ae81"],
     listedAt: 1729592987
   },
+  {
+    id: "5256",
+    name: "OxiSwap",
+    address: null,
+    symbol: "-",
+    url: "https://app.oxiswap.com",
+    description: "OxiSwap is an innovative DeFi project built on the Fuel Network, featuring two advanced trading algorithms—StableSwap and CryptoSwap—that together create a highly efficient and versatile trading platform. This dual-algorithm structure not only enhances trading efficiency but also reduces trading costs for users, making Oxiswap a multifunctional and high-performance trading hub.",
+    chain: "Fuel",
+    logo: `${baseIconsUrl}/oxiswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fuel"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "oxiswap/index.js",
+    twitter: "oxiswap",
+    github: ["oxiswap"],
+    audit_links: ["https://github.com/oxiswap/oxiswap-crypto-contract/blob/main/oxiswap-audit-report.pdf"],
+    listedAt: 1729597013
+  },
+
 ];
 
 export default data3;

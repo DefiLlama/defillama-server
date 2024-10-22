@@ -53173,7 +53173,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oracles: ["Chronicle", "Redstone", "Pyth", "Chainlink"], // https://oracles.euler.finance/1
+    oracles: ["Chronicle", "RedStone", "Pyth", "Chainlink"], // https://oracles.euler.finance/1
     forkedFrom: [],
     module: "euler-v2/index.js",
     twitter: "eulerfinance",

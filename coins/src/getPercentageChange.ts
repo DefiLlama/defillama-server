@@ -26,7 +26,12 @@ function formParamsObject(event: any): QueryParams {
       event.queryStringParameters?.timestamp ?? getCurrentUnixTimestamp()
     ).toString(),
   );
-  const searchWidth = event.queryStringParameters?.searchWidth ?? period / 4;
+
+  const searchWidthString: string =
+    event.queryStringParameters?.searchWidth?.toLowerCase();
+  const searchWidth: number = searchWidthString
+    ? quantisePeriod(searchWidthString)
+    : period / 4;
 
   return {
     coins,

@@ -4703,6 +4703,11 @@
       "to": "coingecko#free-bridged-solvbtcb-core",
       "decimals": 18,
       "symbol": "SolvBTC.CORE"
+    },
+    "0x000734cf9e469bad78c8ec1b0deed83d0a03c1f8": {
+      "to": "coingecko#bitcoin",
+      "decimals": 8,
+      "symbol": "oBTC"
     }
   }
 }

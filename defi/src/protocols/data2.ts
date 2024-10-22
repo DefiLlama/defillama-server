@@ -15290,7 +15290,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Binance"],
-    oracles: ["Binance Oracle"],
+    oracles: ["RedStone"], // https://github.com/DefiLlama/defillama-server/pull/8309
     forkedFrom: ["MakerDAO"],
     module: "helio-money/index.js",
     twitter: "LISTA_DAO",

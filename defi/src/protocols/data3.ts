@@ -34511,7 +34511,7 @@ const data3: Protocol[] = [
     oraclesByChain: {
       // arbitrum: ["Chainlink"],  //github.com/DefiLlama/defillama-server/pull/6111
       blast: ["Pyth"], //github.com/DefiLlama/defillama-server/pull/6111
-      base: ["Chainlink"]
+      base: ["Chainlink"] // https://docs.synfutures.com/oyster-amm/protocol-parameters/base-network
     },
     audit_links: ["https://www.synfutures.com/Quantstamp-Audit-Report-SynFuturesV3.pdf"],
     parentProtocol: "parent#synfutures",

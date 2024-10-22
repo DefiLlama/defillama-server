@@ -3408,6 +3408,18 @@ export const chainCoingeckoIds = {
     url: "https://world.org/",
     chainId: 480
   },
+  "ApeChain": {
+    geckoId: "apecoin",
+    symbol: "APE",
+    cmcId: "18876",
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "apecoin",
+    url: "https://apechain.com/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4147,6 +4159,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Fuel Ignition" : "Fuel"
     case "wc":
       return "World Chain"
+    case "apechain":
+      return "ApeChain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

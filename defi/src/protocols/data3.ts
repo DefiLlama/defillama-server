@@ -2106,7 +2106,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Arbitrum"],
+    chains: ["Arbitrum", "ApeChain"],
     module: "camelot-v2/index.js",
     twitter: "CamelotDEX",
     forkedFrom: ["Algebra DEX"],

@@ -57996,6 +57996,28 @@ const data3: Protocol[] = [
     github: ["babylonlabs-io"],
     listedAt: 1729611444
   },
+  {
+    id: "5259",
+    name: "GOLDSTATION",
+    address: null,
+    symbol: "-",
+    url: "https://goldstation.io",
+    description: "GOLDSTATION is a comprehensive financial ecosystem designed to merge the real world of assets with the decentralized finance (DeFi) space, empowering users to seamlessly trade, invest, and manage a wide range of tokenized real assets.",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/goldstation.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Klaytn"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "goldstation/index.js",
+    twitter: "goldstation_io",
+    github: ["CrederLabs"],
+    listedAt: 1729647600
+  },
 ];
 
 export default data3;

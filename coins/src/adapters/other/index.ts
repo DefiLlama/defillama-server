@@ -376,6 +376,14 @@ export function unknownTokens2(timestamp: number = 0) {
       false,
       "fantom",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xcd13cd31fb61345abe7b7376a4664784622817ee",
+      "0x27397bfbefd58a437f2636f80a8e70cfc363d4ff",
+      "0x19aac5f612f524b754ca7e7c41cbfa2e981a4432",
+      false,
+      "klaytn",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {

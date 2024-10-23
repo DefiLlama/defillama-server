@@ -2809,6 +2809,11 @@
       "decimals": "9",
       "symbol": "USDe",
       "to": "coingecko#ethena-usde"
+    },
+    "4MmJVdwYN8LwvbGeCowYjSx7KoEi6BJWg8XXnW4fDDp6": {
+      "decimals": "6",
+      "symbol": "TBILL",
+      "to": "coingecko#openeden-tbill"
     }
   },
   "astar": {

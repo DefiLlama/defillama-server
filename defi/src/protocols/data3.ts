@@ -46333,7 +46333,7 @@ const data3: Protocol[] = [
     module: "summer-fi/index.js",
     twitter: "summerfinance_",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Chronicle"],
     github: ["OasisDEX"],
     listedAt: 1690209925,
   },

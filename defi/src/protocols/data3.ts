@@ -58398,7 +58398,7 @@ const data3: Protocol[] = [
     chains: ["Injective"],
     oracles: [],
     forkedFrom: [],
-    module: "hydro-protocol/index.js",
+    module: "hydro-farm/index.js",
     twitter: "hydro_fi",
     parentProtocol: "parent#hydro-protocol",
     listedAt: 1729719699,

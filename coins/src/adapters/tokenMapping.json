@@ -1190,6 +1190,11 @@
     }
   },
   "solana": {
+    "4MmJVdwYN8LwvbGeCowYjSx7KoEi6BJWg8XXnW4fDDp6": {
+      "decimals": "6",
+      "symbol": "TBILL",
+      "to": "coingecko#openeden-tbill"
+    },
     "A9mUU4qviSctJVPJdBJWkb28deg915LYJKrzQ19ji3FM": {
       "decimals": "6",
       "symbol": "USDC",

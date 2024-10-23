@@ -3720,6 +3720,31 @@
       "decimals": "18",
       "symbol": "JLY",
       "to": "coingecko#jellyverse"
+    },
+    "0x37a4dD9CED2b19Cfe8FAC251cd727b5787E45269": {
+      "decimals": "18",
+      "symbol": "fastUSD",
+      "to": "coingecko#sei-fastusd"
+    },
+    "0xA8A3A5013104e093245164eA56588DBE10a3Eb48": {
+      "decimals": "18",
+      "symbol": "ssETH",
+      "to": "coingecko#super-seyian-eth"
+    },
+    "0x09D9420332bff75522a45FcFf4855F82a0a3ff50": {
+      "decimals": "18",
+      "symbol": "dinero",
+      "to": "coingecko#dinero-2"
+    },
+    "0xbB5850008495B4D7e4C242e30fFC5B6A0f7E916E": {
+      "decimals": "18",
+      "symbol": "syUSD",
+      "to": "coingecko#syusd"
+    },
+    "0x5f0E07dFeE5832Faa00c63F2D33A0D79150E8598": {
+      "decimals": "6",
+      "symbol": "seiyan",
+      "to": "coingecko#seiyan"
     }
   },
   "rss3_vsl": {

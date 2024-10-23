@@ -26305,7 +26305,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "unizen",
     cmcId: "9263",
-    category: "Services",
+    category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "unizen/index.js",
     twitter: "unizen_io",

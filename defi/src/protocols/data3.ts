@@ -58114,6 +58114,28 @@ const data3: Protocol[] = [
     github: ["Zeno-Finance"],
     listedAt: 1729664952
   },
+  {
+    id: "5264",
+    name: "Harbor Liquid Staking",
+    address: null,
+    symbol: "-",
+    assetToken: "stAMB",
+    url: "https://star-fleet.io/harbor/liquid-staking/",
+    description: "Stake AMB and receive stAMB",
+    chain: "AirDAO",
+    logo: `${baseIconsUrl}/harbor-liquid-staking.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["AirDAO"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "airdao-harbor/index.js",
+    twitter: null,
+    listedAt: 1729665505
+  },
 ];
 
 export default data3;

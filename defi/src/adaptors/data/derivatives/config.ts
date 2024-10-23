@@ -729,5 +729,9 @@ export default {
     "quickswap-perps": {
         parentId: "QuickSwap",
         id: "2980",
+    },
+    "capybara-perp": {
+        parentId: "Capybara Exchange",
+        id: "5257",
     }
 } as AdaptorsConfig

@@ -1,6 +1,7 @@
 import { getCache } from "../../utils/cache";
-import { storeMissingCoins, storeOkxTokens } from "../../utils/missingCoins";
+import { storeMissingCoins } from "../../utils/missingCoins";
 import { addToDBWritesList, batchWriteWithAlerts } from "../utils/database";
+import { storeOkxTokens } from "./postgres";
 import { Write } from "../utils/dbInterfaces";
 import {
   MetadataResults,

@@ -5130,7 +5130,7 @@ const data2: Protocol[] = [
     chains: ["Optimism"],
     oracles: ["Chainlink"],
     forkedFrom: [],
-    module: "aave/v3.js",
+    module: "aave-v3/index.js",
     twitter: "aave",
     audit_links: ["https://aave.com/security"],
     listedAt: 1648776877,

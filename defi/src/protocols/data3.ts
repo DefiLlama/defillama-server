@@ -46333,7 +46333,7 @@ const data3: Protocol[] = [
     module: "summer-fi/index.js",
     twitter: "summerfinance_",
     forkedFrom: [],
-    oracles: [],
+    oracles: [], // denied adding chronicle based on info provided here: https://github.com/DefiLlama/defillama-server/pull/8148
     github: ["OasisDEX"],
     listedAt: 1690209925,
   },

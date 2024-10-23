@@ -5674,7 +5674,18 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:spookyswap.eth"],
     github: ["SpookySwap"],
   },
-
+  {
+    id: "parent#hydro-protocol",
+    name: "HYDRO",
+    url: "https://app.hydroprotocol.finance",
+    description:
+      "Ultimate LSD & LSDFi Infrastructure Platform on Injective",
+    logo: `${baseIconsUrl}/hydro-protocol.jpg`,
+    gecko_id: "hydro-protocol-2",
+    cmcId: null,
+    chains: [],
+    twitter: "hydro_fi",
+  },
 ];
 
 export default parentProtocols;

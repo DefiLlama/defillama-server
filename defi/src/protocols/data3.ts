@@ -58062,6 +58062,36 @@ const data3: Protocol[] = [
     listedAt: 1729647603,
     parentProtocol: "parent#goldstation",
   },
+  {
+    id: "5262",
+    name: "Swell ETH Earn Vault",
+    address: null,
+    symbol: "-",
+    url: "https://app.swellnetwork.io/earn/vaults",
+    description: "earnETH is an ETH denominated vault that allows users to deposit their ETH assets to get automated risk adjusted yields and points",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/swell-eth-earn-vault.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator Pool",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "swell-earn-eth/index.js",
+    twitter: "swellnetworkio",
+    listedAt: 1729664438,
+    audit_links: [
+      "https://github.com/Ion-Protocol/nucleus-boring-vault/blob/master/audit/0xmacro-boring-vault-arctic-0.pdf",
+      "https://github.com/Ion-Protocol/nucleus-boring-vault/blob/master/audit/pashov-boring-vault.pdf",
+      "https://github.com/Ion-Protocol/nucleus-boring-vault/blob/master/audit/spearbit-boring-vault-arctic-0.pdf"
+    ],
+    parentProtocol: "parent#swell",
+    tokensExcludedFromParent: {
+      Ethereum: ["rswETH","swETH"],
+    },
+  },
 ];
 
 export default data3;

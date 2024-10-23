@@ -33610,7 +33610,7 @@ const data3: Protocol[] = [
     github: ["kewlexchange"],
     listedAt: 1708960580,
   },
-  {
+  /* {  // delist defiverse, it is a duplicate listing of "Gaming DEX"
     id: "4176",
     name: "DeFiVerse",
     address: null,
@@ -33632,7 +33632,7 @@ const data3: Protocol[] = [
     oracles: [],
     github: ["Defiverse-GamingDEX"],
     listedAt: 1708966623,
-  },
+  }, */
   {
     id: "4177",
     name: "MantaDEX",

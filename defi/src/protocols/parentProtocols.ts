@@ -5659,6 +5659,22 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "goldstation_io",
     github: ["CrederLabs"],
   },
+  {
+    id: "parent#spookyswap",
+    name: "SpookySwap",
+    url: "https://spooky.fi",
+    description:
+      "Community-driven, trader-focused DEX and DeFi Hub powered by $FTM with governance by $BOO.",
+    logo: `${baseIconsUrl}/spookyswap.jpg`,
+    gecko_id: "spookyswap",
+    cmcId: "9608",
+    chains: [],
+    twitter: "SpookySwap",
+    treasury: "spookyswap.js",
+    governanceID: ["snapshot:spookyswap.eth"],
+    github: ["SpookySwap"],
+  },
+
 ];
 
 export default parentProtocols;

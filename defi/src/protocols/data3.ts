@@ -57969,7 +57969,7 @@ const data3: Protocol[] = [
     chains: ["Klaytn"],
     oracles: [], 
     forkedFrom: [],
-    module: "dummy.js",
+    module: "capybara-perp/index.js",
     twitter: "CapybaraDEX",
     parentProtocol: "parent#capybara-exchange",
     listedAt: 1729608442

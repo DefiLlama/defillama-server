@@ -1,6 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { CoinsResponse, batchGetLatest, getBasicCoins } from "./utils/getCoinsUtils";
 import { quantisePeriod } from "./utils/timestampUtils";
+import { fetchOkxCurrentPrices } from "./adapters/okx";
 
 const isFresh = (timestamp:number, searchWidth: number) => {
   if (!timestamp) return true;
@@ -53,6 +54,8 @@ const handler = async (
         })
     })
   }
+
+  await fetchOkxCurrentPrices(requestedCoins, response)
 
   // Coingecko price refreshes happen each 5 minutes, set expiration at the :00; :05, :10, :15... mark, with 20 seconds extra
   const date = new Date()

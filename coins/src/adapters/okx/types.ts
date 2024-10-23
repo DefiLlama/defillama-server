@@ -21,3 +21,9 @@ export type OkxTokenResponse = {
 };
 
 export type OkxTokenQuery = { chainIndex: string; tokenAddress: string };
+
+export type MetadataResults = {
+  [chain: string]: { [token: string]: { decimals: number; symbol: string } };
+};
+
+export type TokenPK = { chain: string; address: string };

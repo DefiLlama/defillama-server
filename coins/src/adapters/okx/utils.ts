@@ -1,26 +1,9 @@
 import fetch, { BodyInit, HeadersInit, Response } from "node-fetch";
 import { secrets } from "./secrets";
 import { HmacSHA256, enc } from "crypto-js";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
-import {
-  Endpoint,
-  Method,
-  OkxResponse,
-  OkxTokenQuery,
-  OkxTokenResponse,
-} from "./types";
-import {
-  burl,
-  chainGasTokens,
-  chainIdMap,
-  endpoints,
-  gasAddress,
-} from "./constants";
+import { Endpoint, Method, OkxResponse, OkxTokenQuery, TokenPK } from "./types";
+import { burl, chainIdMap, endpoints, gasAddress } from "./constants";
 
-export async function logMissingTokens() {
-  // WIP
-  return;
-}
 export function buildHeaders(
   method: Method,
   path: string,
@@ -82,84 +65,21 @@ export async function fetchWithAuth(
   return await res.json();
 }
 
-export function convertQueriesToOkxForm(tokens: string[]): {
+export function convertQueriesToOkxForm(tokens: TokenPK[]): {
   queries: OkxTokenQuery[];
   queryMap: { [queryKey: string]: string };
 } {
   const queries: OkxTokenQuery[] = [];
   const queryMap: { [queryKey: string]: string } = {};
 
-  tokens.map((t: string) => {
-    const [chain, address] = t.split(":");
+  tokens.map(({ chain, address }) => {
     if (!(chain in chainIdMap)) return;
     // could deal with FBRC, BRC, Runes, SRC here
     const chainIndex = `${chainIdMap[chain]}`;
     const tokenAddress = address == gasAddress ? "" : address;
     queries.push({ chainIndex, tokenAddress });
-    queryMap[`${chainIndex}:${tokenAddress}`] = t;
+    queryMap[`${chainIndex}:${tokenAddress}`] = `${chain}:${address}`;
   });
 
   return { queries, queryMap };
-}
-
-export async function fetchDecimalsAndSymbols(tokensWithOkxData: {
-  [token: string]: OkxTokenResponse;
-}): Promise<{ [chain: string]: { [token: string]: any } }> {
-  // create a results object for decimals and symbol results to fall into
-  let metadataResults: { [chain: string]: { [token: string]: any } } = {};
-  Object.keys(tokensWithOkxData).map((t) => {
-    const [chain, address] = t.split(":");
-    if (!(chain in metadataResults)) metadataResults[chain] = {};
-    if (address != gasAddress)
-      metadataResults[chain][address] = {
-        decimals: undefined,
-        symbol: undefined,
-      };
-    else if (chain in chainGasTokens)
-      metadataResults[chain][address] = {
-        decimals: chainGasTokens[chain].decimals,
-        symbol: chainGasTokens[chain].symbol,
-      };
-  });
-
-  const calls: { [chain: string]: any[] } = {};
-  Object.keys(metadataResults).map((chain) => {
-    calls[chain] = Object.keys(metadataResults[chain])
-      .map((target) => ({
-        target,
-      }))
-      .filter((c) => c.target != gasAddress);
-  });
-
-  // multicall across chains for decimal and symbol data
-  await Promise.all([
-    ...Object.keys(metadataResults).map((chain) =>
-      multiCall({
-        chain,
-        abi: "erc20:decimals",
-        calls: calls[chain],
-        permitFailure: true,
-        withMetadata: true,
-      }).then((rs) => {
-        rs.map((r) => {
-          metadataResults[chain][r.input.target].decimals = r.output;
-        });
-      }),
-    ),
-    ...Object.keys(metadataResults).map((chain) =>
-      multiCall({
-        chain,
-        abi: "erc20:symbol",
-        calls: calls[chain],
-        permitFailure: true,
-        withMetadata: true,
-      }).then((rs) => {
-        rs.map((r) => {
-          metadataResults[chain][r.input.target].symbol = r.output;
-        });
-      }),
-    ),
-  ]);
-
-  return metadataResults;
 }

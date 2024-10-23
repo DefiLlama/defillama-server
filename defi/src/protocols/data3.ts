@@ -22497,7 +22497,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3690",
-    name: "Swell Vault",
+    name: "SuperSweth Vault", // previously Swell Vault
     address: null,
     symbol: "-",
     url: "https://www.swellnetwork.io/vault",

@@ -733,5 +733,8 @@ export default {
     "capybara-perp": {
         parentId: "Capybara Exchange",
         id: "5257",
+    },
+    "defx": {
+        id: "5273",
     }
 } as AdaptorsConfig

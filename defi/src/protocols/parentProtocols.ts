@@ -5646,6 +5646,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CapybaraDEX",
   },
+  {
+    id: "parent#goldstation",
+    name: "GOLDSTATION",
+    url: "https://goldstation.io",
+    description:
+      "GOLDSTATION is a comprehensive financial ecosystem designed to merge the real world of assets with the decentralized finance (DeFi) space, empowering users to seamlessly trade, invest, and manage a wide range of tokenized real assets.",
+    logo: `${baseIconsUrl}/goldstation.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "goldstation_io",
+    github: ["CrederLabs"],
+  },
 ];
 
 export default parentProtocols;

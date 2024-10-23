@@ -101,4 +101,5 @@ export default {
   gamma: require("./yield/gamma"),
   thena: require("./markets/thena"),
   pancakeStable: require("./markets/pancakeStable"),
+  etherfi: require("./yield/etherfi"),
 };

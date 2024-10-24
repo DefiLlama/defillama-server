@@ -792,6 +792,16 @@
       "to": "coingecko#rocket-pool-eth",
       "decimals": 18,
       "symbol": "rETH"
+    },
+    "0x3b86ad95859b6ab773f55f8d94b4b9d443ee931f": {
+      "decimals": "18",
+      "symbol": "SolvBTC",
+      "to": "coingecko#solv-btc"
+    },
+    "0xf469fbd2abcd6b9de8e169d128226c0fc90a012e": {
+      "decimals": "8",
+      "symbol": "pumpBTC",
+      "to": "coingecko#pumpbtc"
     }
   },
   "jbc": {

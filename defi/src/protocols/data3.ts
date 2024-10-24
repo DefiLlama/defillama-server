@@ -58449,6 +58449,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#modemax",
     listedAt: 1729739507,
   },
+  {
+    id: "5279",
+    name: "Morkie",
+    address: "polygon:0xAFb755c5f2ea2aadBaE693d3BF2Dc2C35158dC04",
+    symbol: "MORK",
+    url: "https://morkie.finance",
+    description:
+      "Morkie is an NFT-FI platform designed to make NFTs accessible to everyone.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/morkie.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "morkie/index.js",
+    twitter: "_morkie",
+    listedAt: 1729760472
+  },
+
 ];
 
 export default data3;

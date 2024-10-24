@@ -94,6 +94,7 @@ export async function fetchOkxCurrentPrices(
     return;
   }
 
+  if (!process.env.OKX_SECRET) return;
   const { queries, queryMap } = convertQueriesToOkxForm(tokens);
   let okxRes: OkxResponse = await fetchWithAuth("current-price", {
     body: queries,

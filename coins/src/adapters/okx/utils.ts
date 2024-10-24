@@ -1,5 +1,4 @@
 import fetch, { BodyInit, HeadersInit, Response } from "node-fetch";
-import { secrets } from "./secrets";
 import { HmacSHA256, enc } from "crypto-js";
 import { Endpoint, Method, OkxResponse, OkxTokenQuery, TokenPK } from "./types";
 import { burl, chainIdMap, endpoints, gasAddress } from "./constants";
@@ -12,14 +11,17 @@ export function buildHeaders(
   const now: Date = new Date();
   const iso: string = now.toISOString();
   const sign: string = enc.Base64.stringify(
-    HmacSHA256(`${iso}${method}${path}${bodyString}`, secrets.secret),
+    HmacSHA256(
+      `${iso}${method}${path}${bodyString}`,
+      process.env.OKX_SECRET ?? "",
+    ),
   );
 
   return {
-    "OK-ACCESS-KEY": secrets.key,
+    "OK-ACCESS-KEY": process.env.OKX_KEY ?? "",
     "OK-ACCESS-SIGN": sign,
     "OK-ACCESS-TIMESTAMP": iso,
-    "OK-ACCESS-PASSPHRASE": secrets.pass,
+    "OK-ACCESS-PASSPHRASE": process.env.OKX_PASSPHRASE ?? "",
     Accept: "application/json",
     "Content-Type": "application/json",
   };

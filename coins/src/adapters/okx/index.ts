@@ -31,14 +31,18 @@ function sortResults(
   metadataResults: MetadataResults,
   tokensWithOkxData: { [token: string]: OkxTokenResponse },
   response: any,
-): { writes: Write[]; missingTokens: TokenPK[]; okxTokens: TokenPK[] } {
+  missingTokens: TokenPK[],
+): { writes: Write[]; okxTokens: TokenPK[] } {
   const writes: Write[] = [];
-  const missingTokens: TokenPK[] = [];
   const okxTokens: TokenPK[] = [];
   Object.values(queryMap).map((k: string) => {
     const [chain, address] = k.split(":");
 
-    if (!(chain in metadataResults) || !(address in metadataResults[chain])) {
+    if (
+      !(chain in metadataResults) ||
+      !(address in metadataResults[chain]) ||
+      !(k in tokensWithOkxData)
+    ) {
       missingTokens.push({ chain, address });
       return;
     }
@@ -67,7 +71,7 @@ function sortResults(
     };
   });
 
-  return { writes, missingTokens, okxTokens };
+  return { writes, okxTokens };
 }
 
 export async function fetchOkxCurrentPrices(
@@ -82,9 +86,15 @@ export async function fetchOkxCurrentPrices(
     "all",
   );
   const metadataResults: MetadataResults = {};
+  const missingTokens: TokenPK[] = [];
   tokens.map(({ chain, address }) => {
-    if (!(chain in unfilteredMetadataResults)) return;
-    if (!(address in unfilteredMetadataResults[chain])) return;
+    if (
+      !(chain in unfilteredMetadataResults) ||
+      !(address in unfilteredMetadataResults[chain])
+    ) {
+      missingTokens.push({ chain, address });
+      return;
+    }
     if (!(chain in metadataResults)) metadataResults[chain] = {};
     metadataResults[chain][address] = unfilteredMetadataResults[chain][address];
   });
@@ -100,6 +110,7 @@ export async function fetchOkxCurrentPrices(
     body: queries,
   });
 
+  if (!okxRes.data) throw new Error(`no data prop in okx response`);
   if (!okxRes.data.length) return;
 
   const tokensWithOkxData: { [token: string]: OkxTokenResponse } = {};
@@ -109,11 +120,12 @@ export async function fetchOkxCurrentPrices(
     tokensWithOkxData[queryMap[key]] = o;
   });
 
-  const { missingTokens, writes, okxTokens } = sortResults(
+  const { writes, okxTokens } = sortResults(
     queryMap,
     metadataResults,
     tokensWithOkxData,
     response,
+    missingTokens,
   );
 
   await Promise.all([

@@ -98,15 +98,12 @@ export async function fetchMissingCoinMetadataForOkx() {
   const cache = await getCache("okx", "all");
   Object.keys(metadataResults).map((chain) =>
     Object.keys(metadataResults[chain]).map((token) => {
-      if (!(chain in cache)) cache[chain] = {};
       const { decimals, symbol } = metadataResults[chain][token];
       if (!decimals || !symbol) return;
+      if (!(chain in cache)) cache[chain] = {};
       cache[chain][token] = { decimals, symbol };
     }),
   );
 
   await setCache("okx", "all", cache);
-
-  // on next faulty coins query, send it to okx
-  return;
 }

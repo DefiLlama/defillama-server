@@ -279,7 +279,7 @@ const data: Protocol[] = [
     address: "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
     symbol: "SUSHI",
     url: "https://sushi.com/",
-    description: "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
+    description: "SushiSwap is the most multi-chain DEX, powered by its industry's most advanced swap and aggregation stack across 40+ chains.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sushiswap.png`,
     audits: "3",

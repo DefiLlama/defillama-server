@@ -2139,5 +2139,8 @@ export default {
     "quickswap-perps": {
         parentId: "QuickSwap",
         id: "2980",
+    },
+    "step-finance": {
+        id: "4837"
     }
 } as AdaptorsConfig

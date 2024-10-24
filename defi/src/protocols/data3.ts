@@ -38874,7 +38874,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://satoshiprotocol.org/",
-    description: `Satoshi Protocol is the first CDP built on BTC Layer 2, it allows investors to deposit BTC and borrow stablecoin $satUSD, Unleash trillion dollars of BTCFi`,
+    description: `Satoshi Protocol is the 1st universal stablecoin protocol backed by Bitcoin, using BTC as collateral to mint the native stablecoin satUSD across Bitcoin Mainnet, Layer 2s, and the EVM ecosystem.`,
     chain: "BEVM",
     logo: `${baseIconsUrl}/satoshi-protocol.png`,
     audits: "2",

@@ -58164,7 +58164,7 @@ const data3: Protocol[] = [
     name: "Arrakis Modular",
     address: null,
     symbol: "-",
-    url: "https://rate-x.io",
+    url: "https://app.arrakis.fi/modular",
     description: "Arrakis Modular represents the next evolution of the Arrakis liquidity management smart contract framework, aiming to overcome the limitations of previous versions (V1 and V2). Arrakis Modular introduces a universal Meta Vault standard. This modular framework allows Arrakis to create entirely different two-sided LP Vault integrations, which all reuse the same Meta Vault infrastructure and interfaces.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/arrakis-modular.jpg`,

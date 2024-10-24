@@ -56266,7 +56266,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.sygnum.com/",
     description:
-      "Sygnum is the world's first digital asset bank. Funds are invested in: Fidelity Institutional Liquidity Fund - The United States Dollar Fund G-ACC-USD- ISIN: IE00BNKLND78 Fund Category: Cash Funds. The Fund’s investment objective is to invest in a diversified range of short-term instruments with the aim of maintaining capital value and liquidity whilst producing a return to the investor in line with money market rates. The weighted average maturity is expected not to exceed 60 days.",
+      "This project focuses on the tokenization of Fidelity International's Money Market Fund by Sygnum Bank, specifically the Fidelity Institutional Liquidity Fund (ILF) USD Fund Class G Acc. Sygnum Bank is the token issuer of the above mentioned.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/sygnum-fiusd-liquidity-fund.jpg`,
     audits: "0",

@@ -260,5 +260,8 @@ export default {
   },
   "hinkal": {
       id: "4487"
+  },
+  "unizen": {
+    id: "1336",
   }
 } as AdaptorsConfig;

@@ -26298,7 +26298,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "ZCX",
     url: "https://www.unizen.io",
     description:
-      "Unizen provides a simple interface that caters to all trading personas to acquire any asset, for the best fees across a multitude of liquidity pools",
+      "Unizen trade engine enable the best swap returns, quickest quotes, best liquidity, and lower gas Fees",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/unizen.jpg`,
     audits: "0",

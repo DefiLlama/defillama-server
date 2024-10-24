@@ -58275,7 +58275,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5271",
-    name: "SwayLend",
+    name: "Swaylend",
     address: null,
     symbol: "-",
     url: "https://app.swaylend.com",

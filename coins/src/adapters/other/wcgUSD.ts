@@ -1,5 +1,4 @@
 import { getTokenAndRedirectData } from "../utils/database";
-import BigNumber from "bignumber.js";
 import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
 
@@ -27,11 +26,9 @@ async function getTokenPrice(timestamp: number) {
       getTokenAndRedirectData([target], "base", timestamp),
     ]);
 
-  const ratio = new BigNumber(totalSupply.toString()).div(
-    totalShares.toString(),
-  );
+  const ratio = totalSupply / totalShares;
 
-  const price = ratio.toNumber() * priceOfcgUSD;
+  const price = ratio * priceOfcgUSD;
 
   const pricesObject: { [key: string]: any } = {};
   pricesObject[wcgUSDToken.address] = {

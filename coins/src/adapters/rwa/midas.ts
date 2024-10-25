@@ -3,7 +3,7 @@ import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
 
 const abi = 'function latestRoundData() external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)'
-const contracts = {
+const contracts: {[chain: string]: { token: string, oracle: string }[] } = {
   ethereum: [
     {
       token: "0xDD629E5241CbC5919847783e6C96B2De4754e438", // mTBILL contract

@@ -2,9 +2,6 @@ import fetch from "node-fetch";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
-import { getApi } from "../utils/sdk";
-import * as sdk from "@defillama/sdk";
-import { request, gql } from "graphql-request";
 
 type Config = {
   chain: string;
@@ -74,6 +71,19 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     address: "0x14d60e7fdc0d71d8611742720e4c50e7a974020c",
     underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  },
+  stSTX: {
+    rate: async () => {
+      const res = await fetch(
+        "https://app.stackingdao.com/.netlify/functions/stats",
+      ).then((r) => r.json());
+      return res.ratio;
+    },
+    chain: "stacks",
+    address: "sp4sze494vc2yc5jyg7ayfq44f5q4pyv7dvmdpbg.ststx-token::ststx",
+    underlying: "sp102v8p0f7jx67arq77wea3d3cfb5xw39redt0am.token-wstx",
+    decimals: "6",
+    symbol: "stSTX",
   },
 };
 

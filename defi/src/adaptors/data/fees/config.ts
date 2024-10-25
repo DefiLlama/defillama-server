@@ -2088,12 +2088,7 @@ export default {
     },
     "sparkdex-v3-1": {
         parentId: "SparkDEX",
-        id: "5223",
-        protocolsData: {
-            "v3": {
-                "id": "5223",
-            }
-        }
+        id: "5223"
     },
     "sparkdex-v2": {
         parentId: "SparkDEX",

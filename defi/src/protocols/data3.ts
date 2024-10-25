@@ -54556,7 +54556,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Solana"],
-    oracles: [],
+    oracles: ["Switchboard"],
     forkedFrom: [],
     module: "adrastea/index.js",
     twitter: "AdrasteaFinance",

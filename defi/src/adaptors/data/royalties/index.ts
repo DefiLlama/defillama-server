@@ -9,5 +9,5 @@ export const KEYS_TO_STORE = KEYS_TO_STORE_fees
 
 export { default as config } from "./config";
 
-export { default as royalties_imports } from "../../../utils/imports/fees_adapters"
+export { default as imports } from "../../../utils/imports/fees_adapters"
 

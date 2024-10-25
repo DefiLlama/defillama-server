@@ -5,8 +5,6 @@ import {
 } from "../utils/database";
 import { multiCall } from "@defillama/sdk/build/abi";
 import { Chain } from "@defillama/sdk/build/general";
-import { ethers } from "ethers"
-import { formatUnits } from "ethers/lib/utils";
 import { Write } from "../utils/dbInterfaces";
 
 const HOP_BRIDGES_TOKEN_LIST =
@@ -375,10 +373,6 @@ const addPriceToData = (
         L2Price: priceDataforL2[tokenData.l2CanonicalToken]
     }))
 }
-const strToBigNumber = (str: string) => {
-    return ethers.BigNumber.from(str)
-}
-
 /**
  * Hop LPs are saddleswap LPs between L2 token and a representation of L1 token on L2(hToken).
  * Hence, the price is determined by determining the underlying value of L2 token, and the hToken
@@ -411,20 +405,20 @@ const calculateLPTokenPrice = (
     for (let i = 0; i < tokenDetails.length; i++) {
         let token = tokenDetails[i]
         let balance = token.balanceToken!
-        let totalSupply = token.totalSupply != null ? strToBigNumber(`${token.totalSupply}`) : strToBigNumber("0");
+        let totalSupply = token.totalSupply != null ? token.totalSupply : 0;
         let totalSupplyDecimal = token.totalSupplyDecimal
-        let balanceAt0Index = JSON.parse(balance["0"]) != null ? strToBigNumber(balance["0"]) : strToBigNumber("0")
+        let balanceAt0Index = JSON.parse(balance["0"]) != null ? balance["0"] : 0
         let balanceAt0IndexDecimals = token.L1Price?.decimals
-        let balanceAt1Index = JSON.parse(balance["1"]) != null ? strToBigNumber(balance["1"]) : strToBigNumber("0")
+        let balanceAt1Index = JSON.parse(balance["1"]) != null ? balance["1"] : 0
         let balanceAt1IndexDecimals = token.L2Price?.decimals
         let L1Price = token.L1Price!["price"] != undefined ? token.L1Price!["price"] : 0
         let L2Price = token.L2Price!["price"] != undefined ? token.L2Price!["price"] : 0
 
-        if (totalSupply.gt(0)) {
-            let L1Total = +formatUnits(balanceAt0Index, balanceAt0IndexDecimals) * (L1Price)
-            let L2Total = +formatUnits(balanceAt1Index, balanceAt1IndexDecimals) * (L2Price)
+        if (+totalSupply > 0) {
+            let L1Total = (+balanceAt0Index / 10 ** +balanceAt0IndexDecimals!) * (L1Price)
+            let L2Total = (+balanceAt1Index / 10 ** +balanceAt1IndexDecimals!) * (L2Price)
             let L1L2Total = L1Total + L2Total
-            let lpTokenPrice = L1L2Total / (+formatUnits(totalSupply, totalSupplyDecimal))
+            let lpTokenPrice = L1L2Total / (+totalSupply / 10 ** +totalSupplyDecimal!)
             token.lpPrice = lpTokenPrice
         } else {
             tokenDetails[i]["lpPrice"] = 0

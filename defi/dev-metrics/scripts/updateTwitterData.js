@@ -10,6 +10,7 @@ const {
 } = require('../utils/r2')
 
 async function main() {
+  throw new Error('This script is outdated, code is migrated to src/twitter')
   const handles = [...new Set(Object.values(TWITTER_MAPPING))].reverse()
   let checked = 0
   let i = 0

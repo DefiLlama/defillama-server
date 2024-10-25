@@ -35,6 +35,10 @@ export interface Protocol {
   rugged?: boolean;
   deadUrl?: boolean;
   deadFrom?: number | string;
+  tokensExcludedFromParent?: {
+    [chain:string]: string[];
+  },
+  note?: string;
 }
 
 export interface IParentProtocol {
@@ -48,7 +52,7 @@ export interface IParentProtocol {
   gecko_id: string | null;
   cmcId: string | null;
   categories?: Array<string>;
-  twitter: string;
+  twitter: string | null;
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
   governanceID?: Array<string>;

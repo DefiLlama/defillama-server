@@ -15,7 +15,8 @@
     "MaticX": "0x2acd702f7d35d3d2915663d7f7cbdf2863ec6e79"
   },
   "base": {
-    "cbETH": "0xc765d6b7ea9d4b9ccd8cbadbb0e4726d68e195e4"
+    "cbETH": "0xc765d6b7ea9d4b9ccd8cbadbb0e4726d68e195e4",
+    "wsETH": "0x96c8f7d6ea190df5c5ef2ebab6ecd2a86262b810"
   },
   "ethereum": {
     "stETH": "0x9414e766E8B59473599b9968aAf52CDCd07f59a9"

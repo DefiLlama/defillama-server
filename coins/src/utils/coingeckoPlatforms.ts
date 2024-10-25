@@ -1,5 +1,8 @@
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
+import { getCurrentUnixTimestamp } from "./date";
 import ddb from "./shared/dynamodb";
+
+export const staleMargin = 6 * 60 * 60;
 
 interface StringObject {
   [id: string]: string | undefined;
@@ -20,6 +23,14 @@ export interface Coin {
     [network: string]: string;
   };
 }
+export interface CoinMetadata {
+  id: string;
+  coinType: string;
+  usd: number;
+  usd_market_cap: number;
+  usd_24h_vol: number;
+  last_updated_at: number;
+}
 
 function lowercase(address: string, chain: string) {
   return chain === "solana" ? address : address.toLowerCase();
@@ -27,7 +38,7 @@ function lowercase(address: string, chain: string) {
 
 export async function iterateOverPlatforms(
   coin: Coin,
-  iterator: (PK: string, tokenAddress: string, chain: string) => Promise<void>,
+  iterator: (PK: string) => Promise<void>,
   coinPlatformData: any,
 ) {
   const platforms = coin.platforms as StringObject;
@@ -41,8 +52,9 @@ export async function iterateOverPlatforms(
         const address =
           chain + ":" + lowercase(platforms[platform]!, chain).trim();
         const PK = `asset#${address}`;
-        if (!coinPlatformData[PK]) {
-          await iterator(PK, platforms[platform]!, chain);
+        const margin = getCurrentUnixTimestamp() - staleMargin
+        if (!coinPlatformData[PK] || coinPlatformData[PK].timestamp < margin) {
+          await iterator(PK);
         }
       } catch (e) {
         console.error(coin, platform, e);

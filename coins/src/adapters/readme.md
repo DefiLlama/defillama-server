@@ -58,4 +58,4 @@ getTokenPrices() uses a variety of functions and libraries to find token prices:
 
 The last part of the adapter code to run is formWrites(). This function is used to create the array returned by the adapter. At this stage of the adapter it is crucial to handle any errors effectively so that faulty data doesnt enter the database. Notice on lines 57 and 64 where unexpected data is excluded from the writes list by returning from the map function. 
 
-To test the Euler adapter, we can run 'ts-node coins/src/test.ts euler'. If the command successfully logs an array of database writes containing expected data, we're ready to make a PR!
+To test the Euler adapter, we can run 'LOCAL_TEST=true ts-node coins/src/test.ts euler'. If the command successfully logs an array of database writes containing expected data, we're ready to make a PR!

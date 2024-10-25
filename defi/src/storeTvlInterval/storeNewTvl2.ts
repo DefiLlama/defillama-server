@@ -66,8 +66,8 @@ export default async function (
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
     const currentTvl = calculateTVLWithAllExtraSections(tvl)
-    if (currentTvl > 100e9) {
-      let errorMessage = `TVL of ${protocol.name} is over 100bn`
+    if (currentTvl > 150e9) {
+      let errorMessage = `TVL of ${protocol.name} is over 150bn`
       Object.values(usdTokenBalances).forEach(tokenBalances => {
         for (const [token, value] of Object.entries(tokenBalances))
           if (value > 1e7) {
@@ -122,6 +122,7 @@ export default async function (
     if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
       let tvlFromMissingTokens = 0;
       [...extraSections, "tvl"].forEach(section => {
+        if (!lastHourlyUsdTVLObject || !lastHourlyUsdTVLObject[section]) return;
         Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
           if (usdTokenBalances[section]?.[coin] === undefined) {
             tvlFromMissingTokens += Number(tvl)

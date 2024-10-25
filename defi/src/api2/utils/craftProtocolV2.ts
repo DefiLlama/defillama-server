@@ -139,7 +139,7 @@ export async function craftProtocolV2({
   if (response.chainTvls[singleChain] === undefined && response.chains.length === 0) {
     response.chains.push(singleChain);
     response.chainTvls[singleChain] = {
-      tvl: response.tvl,
+      tvl: response.tvl ?? [],
       tokensInUsd: response.tokensInUsd,
       tokens: response.tokens,
     };
@@ -147,11 +147,11 @@ export async function craftProtocolV2({
 
   if (
     response.chainTvls[singleChain] !== undefined &&
-    response.chainTvls[singleChain].tvl.length < response.tvl.length
+    response.chainTvls[singleChain].tvl.length < (response.tvl ?? []).length
   ) {
     const singleChainTvls = response.chainTvls[singleChain].tvl;
     const first = singleChainTvls[0].date;
-    response.chainTvls[singleChain].tvl = response.tvl.filter((t: any) => t.date < first).concat(singleChainTvls);
+    response.chainTvls[singleChain].tvl = (response.tvl ?? []).filter((t: any) => t.date < first).concat(singleChainTvls);
   }
 
   if (skipAggregatedTvl) {

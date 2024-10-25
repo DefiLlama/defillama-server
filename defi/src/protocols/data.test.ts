@@ -4,8 +4,22 @@ import { baseIconsUrl } from "../constants";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
 import parentProtocols from "./parentProtocols";
 import emissionsAdapters from "../utils/imports/emissions_adapters";
-import { importAdapter } from "../utils/imports/importAdapter";
+import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
+import dimensionConfigs from "../adaptors/data/configs";
 const fs = require("fs");
+
+test("Dimensions: no repeated ids", async () => {
+  for (const [metric, map] of Object.entries(dimensionConfigs)) {
+    const ids = new Set();
+    for (const value of Object.values(map)) {
+      if (!value.enabled) continue;
+      const id = value.isChain ? 'chain#'+value.id : value.id
+      if (ids.has(id)) console.log(`Dimensions: Repeated id ${id} in ${metric}`)
+      expect(ids).not.toContain(id);
+      ids.add(id);
+    }
+  }
+})
 
 test("all the dynamic imports work", async () => {
   await Promise.all(protocols.map(importAdapter))
@@ -109,7 +123,7 @@ test("Github: track only orgs", async () => {
 test("projects have a single chain or each chain has an adapter", async () => {
   for (const protocol of protocols) {
     if (protocol.module === 'dummy.js') continue;
-    const module = await importAdapter(protocol)
+    const module = await importAdapterDynamic(protocol)
     const chains = protocol.module.includes("volumes/") ? Object.keys(module) : protocol.chains.map((chain) => normalizeChain(chain));
     if (chains.length > 1) {
       chains.forEach((chain) => {
@@ -206,9 +220,23 @@ test("no surprise category", async () => {
     'Options Vault',
     'Liquidity manager',
     'Staking Pool',
-    'Infrastructure',
     'Decentralized Stablecoin',
-    'SoFi'
+    'SoFi',
+    'DEX Aggregator',
+    'Liquid Restaking',
+    'Restaking',
+    'Wallets',
+    'NftFi',
+    'Telegram Bot',
+    'Ponzi',
+    'Basis Trading',
+    'MEV',
+    'CeDeFi',
+    'CDP Manager',
+    'Governance Incentives',
+    'Restaked BTC',
+    'Security Extension',
+    'Anchor BTC'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

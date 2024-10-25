@@ -1,5 +1,4 @@
 import * as sdk from '@defillama/sdk'
-import fetch from "node-fetch"
 import { storeR2JSONString, getR2JSONString } from '../utils/r2';
 
 function getKey(govType: string, project: string): string {

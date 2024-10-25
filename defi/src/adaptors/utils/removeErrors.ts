@@ -16,3 +16,17 @@ export default (data: IRecordAdaptorRecordData) => Object.entries(data).reduce((
         acc[chain] = cleanChainData
     return acc
 }, {} as IRecordAdaptorRecordData)
+
+export const getErrorData = (data: IRecordAdaptorRecordData) => {
+    let errorObject: any = {}
+    try {
+        errorObject = Object.entries(data).reduce((acc, [chain, volume]) => {
+            if (typeof volume !== 'object') return acc
+            if (volume.error) acc[chain] = volume.error
+            return acc
+        }, {} as any)
+    } catch (e) {
+        console.error(e)
+    }
+    return Object.keys(errorObject).length > 0 ? errorObject : null
+}

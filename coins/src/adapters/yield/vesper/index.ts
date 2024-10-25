@@ -9,7 +9,6 @@ type Res = {
 };
 
 export async function vesper(timestamp: number = 0) {
-  console.log("starting vesper");
   const res: Res[] = await fetch(
     `https://api.vesper.finance/pools?stages=prod`,
   ).then((r) => r.json());

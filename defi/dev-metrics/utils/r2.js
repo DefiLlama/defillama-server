@@ -95,6 +95,15 @@ async function setTwitterOverviewFile(cache) {
   return setCache('config', 'twitter-files-overview', cache)
 }
 
+
+async function getTwitterOverviewFileV2() {
+  return getCache('config', 'twitter-files-overview-v2')
+}
+
+async function setTwitterOverviewFileV2(cache) {
+  return setCache('config', 'twitter-files-overview-v2', cache)
+}
+
 async function saveChartData(id, data) {
   return setCache('chart-data', id, data)
 }
@@ -139,4 +148,6 @@ module.exports = {
   testFetchWithoutCache,
   saveGithubData,
   saveGithubOverview,
+  setTwitterOverviewFileV2,
+  getTwitterOverviewFileV2,
 }

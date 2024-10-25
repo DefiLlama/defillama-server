@@ -6,7 +6,7 @@ export default async function getTokenPrice(timestamp: number) {
   if (timestamp != 0) return [];
   const writes: Write[] = [];
 
-  const [rate, underlyingData] = await Promise.all([
+  const [rate, [{ price: underlyingPrice }]] = await Promise.all([
     (await fetch("https://vestadex.com/api/price?pair=VEGLD,EGLD")).json(),
     getTokenAndRedirectData(["WEGLD-bd4d79"], "elrond", timestamp),
   ]);
@@ -15,7 +15,7 @@ export default async function getTokenPrice(timestamp: number) {
     writes,
     "VEGLD-2b9319",
     "elrond",
-    rate.price * underlyingData[0].price,
+    rate.price * underlyingPrice,
     18,
     "VEGLD",
     timestamp,

@@ -3,7 +3,7 @@ import { fetch, formatExtraTokens } from "../utils";
 const chain = 'linea'
 export default async function bridge() {
   const bridge = (
-    await fetch("https://raw.githubusercontent.com/Consensys/linea-token-list/main/json/linea-mainnet-token-shortlist.json")
+    await fetch("https://raw.githubusercontent.com/Consensys/linea-token-list/main/json/linea-mainnet-token-fulllist.json")
   ).tokens as any[];
 
   return bridge

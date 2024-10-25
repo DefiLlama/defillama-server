@@ -554,7 +554,7 @@ export default {
         categories: ["EVM"],
         chainId: 2020,
     },
-    "zkSync Lite": {
+    "ZKsync Lite": {
         geckoId: null,
         symbol: null,
         cmcId: null,
@@ -1335,7 +1335,7 @@ export default {
         cmcId: null,
         categories: ["EVM"],
     },
-    "zkSync Era": {
+    "ZKsync Era": {
         geckoId: null,
         symbol: null,
         cmcId: null,
@@ -1362,6 +1362,40 @@ export default {
         categories: ["EVM"],
         chainId: 204,
     },
+    "Manta": {
+        geckoId: "manta-network",
+        symbol: "MANTA",
+        cmcId: "13631",
+        categories: ["EVM", "Rollup"],
+        parent: {
+          chain: "Ethereum",
+          types: ["L2", "gas"]
+        },
+        github: ['manta-network'],
+        chainId: 169, //being used as id for volume/fees
+    },
+    "Bitlayer": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        twitter: "BitlayerLabs",
+        github: ["bitlayer-org"],
+        chainId: 200901,
+        url: "https://www.bitlayer.org"
+    },
+    "Mint": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: ["EVM","Rollup", "Superchain"],
+        parent: {
+        chain: "Ethereum",
+        types: ["L2"]
+        },
+        twitter: "Mint_Blockchain",
+        url: "https://www.mintchain.io/",
+        chainId: 185
+    }
 } as unknown as {
     [chain: string]: {
         geckoId: string | null,

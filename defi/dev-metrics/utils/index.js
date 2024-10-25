@@ -1,7 +1,7 @@
 const moment = require('moment')
 let ORG_MAPPING = {}
 let TWITTER_MAPPING = {}
-let tomlData = { orgData: [], repos: {}, ecosystemData: {}}  // Default values
+let tomlData = { orgData: [], repos: {}, ecosystemData: {} }  // Default values
 
 const ORGS_MISSING_FROM_TOML = []
 
@@ -15,11 +15,15 @@ try {
 
 const orgSet = new Set(tomlData.orgData?.map(i => i.replace(/\/$/, '')))
 const repoSet = new Set(Object.keys(tomlData.repos || {}))
-Object.values(ORG_MAPPING).forEach(org => org.github.map(i => i.replace('user:', i).replace(/\/$/, '')).forEach(i => {
-  if (orgSet.has(i)) return;
-  ORGS_MISSING_FROM_TOML.push(i)
-  orgSet.add(i)
-}))
+Object.values(ORG_MAPPING).forEach(org => {
+  let github = org.github
+  if (typeof github === 'string') github = [github]
+  github.map(i => i.replace('user:', i).replace(/\/$/, '')).forEach(i => {
+    if (orgSet.has(i)) return;
+    ORGS_MISSING_FROM_TOML.push(i)
+    orgSet.add(i)
+  })
+})
 // Object.keys(tomlData.repos).forEach(org => orgSet.add(org.split('/')[1]))  // Add orgs from repos in tomlData.json
 
 function toUnixTime(dateStr) {

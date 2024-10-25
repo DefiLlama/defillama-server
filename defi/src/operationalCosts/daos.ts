@@ -123,16 +123,25 @@ export default [
     },
     {
         protocolId: "parent#aave",
-        sources: ["https://aave.tokenlogic.com.au/aave-runway"],
+        sources: ["https://aave.tokenlogic.xyz/runway"],
         annualUsdCost: {
-            all: (2.1+4.2+2.2*4+0.9+0.2+0.166*6)*365*1e3,
+            all: (16600000+1300000+169700),// gho, aEthUSDC , aUSDT
         },
         annualTokenCosts: {
             "coingecko:aave": {
-                salaries: (13.3+0.7+27.6)*365
+                "Technical Spend": (4800)
+            },
+            "coingecko:aave-polygon-wmatic": {
+                "Other Spend": (280000)
+            },
+            "coingecko:chainlink": {
+                "Operations Spend": (4000)
+            },
+            "coingecko:ethereum": {
+                "Growth Spend": (678)
             }
         },
-        lastUpdate: "2023-12-12"
+        lastUpdate: "2024-09-24" //year-month-day
     },
     {
         protocolId: "587", // Maple
@@ -165,5 +174,30 @@ export default [
             gasCosts: 50e3
         },
         lastUpdate: "2023-05-06"
+    },
+    {
+        protocolId: "parent#sphere", // 
+        sources: ["https://www.sphere.finance/treasury-report"],
+        //headcount: 12, not sure, confirm this
+        annualUsdCost: {
+            staffPayroll: 319610,
+            operationalCosts: 43000,
+            subscriptionsServices: 600,
+            additionalMarketing: 49795,
+            ylSPHEREDispersments: 134331
+        },
+        notes: ["Using data from Q3 2023"],
+        lastUpdate: "2023-12-19"
+    },
+    {
+        protocolId: "parent#marinade-finance", // 
+        sources: null,
+        headcount: 8,
+        annualUsdCost: {
+            salaries: 820000,
+            operationalCosts: 14000,
+        },
+        notes: ["Using data from Q1 2024"],
+        lastUpdate: "2024-2-16"
     },
 ]

@@ -20,13 +20,14 @@ export interface IHandlerEvent {
   }>
 }
 
-const quarantineList = {
+export const ADAPTER_TYPES = Object.values(AdapterType)
+
+export const quarantineList = {
   [AdapterType.FEES]: ["chainlink-vrf-v1", 'chainlink-vrf-v2', 'chainlink-keepers', "dodo"],
   [AdapterType.DEXS]: ["vanswap", "dodo"]
 } as IJSON<string[]>
 
 export const handler = async (event: IHandlerEvent) => {
-  console.log("event", event)
   const type = event.type
   // TODO separate those that need to be called on the hour and those using graphs with timestamp
   const quarantinedModules = quarantineList[type] ?? []
@@ -41,7 +42,7 @@ export const handler = async (event: IHandlerEvent) => {
     }
   }
   else if (type) {
-    const adaptorsData = await data(type)
+    const adaptorsData = data(type)
     const protocolModules = adaptorsData.default.filter(m => !quarantinedModules.includes(m.module)).map(m => m.module)
     await invokeLambdas(protocolModules, type)
     const protocolModulesConfined = adaptorsData.default.filter(m => quarantinedModules.includes(m.module)).map(m => m.module)
@@ -49,15 +50,7 @@ export const handler = async (event: IHandlerEvent) => {
   }
   else {
     await Promise.all(
-      [
-        AdapterType.FEES,
-        AdapterType.OPTIONS,
-        AdapterType.INCENTIVES,
-        AdapterType.AGGREGATORS,
-        AdapterType.DERIVATIVES,
-        AdapterType.DEXS,
-        AdapterType.PROTOCOLS
-      ].map(type => invokeLambda(`defillama-prod-triggerStoreAdaptorData`, { type }))
+      ADAPTER_TYPES.map(type => invokeLambda(`defillama-prod-triggerStoreAdaptorData`, { type }))
     )
   }
 };
@@ -80,7 +73,6 @@ const invokeLambdas = async (
       adaptorRecordTypes,
       protocolVersion
     };
-    console.info(`Storing adaptor data: ${i} ${i + STEP} ${timestamp} ${adaptorType}`)
     const storeFunction = process.env.runLocal === 'true' ? storeAdaptorData : runStoreAdaptorData
     // if (process.env.runLocal === 'true') await delay(1000)
     await storeFunction(event);

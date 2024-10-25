@@ -1,5 +1,4 @@
 import axios from "axios";
-import sleep from "./shared/sleep";
 
 export async function getAllAirtableRecords(sheet: string) {
   let offset;
@@ -14,11 +13,12 @@ export async function getAllAirtableRecords(sheet: string) {
         },
       }
     )
-    if (!data.records)
-      console.log('error fetching data from Airtable', data)
+    if (!data.records){
+      console.log("airtable error", data)
+      throw new Error('error fetching data from Airtable')
+    }
     offset = data.offset;
     allRecords = allRecords.concat(data.records);
-    if (offset) await sleep(420)
   } while (offset !== undefined);
   return allRecords
 }

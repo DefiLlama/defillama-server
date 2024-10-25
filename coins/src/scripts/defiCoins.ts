@@ -9,6 +9,8 @@ import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
 import adapters from "../adapters/index";
 import { PromisePool } from "@supercharge/promise-pool";
 
+console.log('imports successful')
+
 function shuffleArray(array: number[]) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

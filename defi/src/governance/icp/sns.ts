@@ -3,6 +3,7 @@ import { GovCache, Proposal } from '../types';
 import { updateStats } from '../utils';
 import { setCompound, getCompound } from '../cache';
 import { update_nervous_system_cache, NervousSystemConfig } from './icp';
+
 export const SNS_GOV_ID = 'icp-sns'
 const getGovId = (id: string) => SNS_GOV_ID+'-'+id
 
@@ -78,7 +79,7 @@ interface SnsMetadata
  * @returns {Promise<SnsMetadata[]>}
  */
 async function get_sns_metadata () : Promise<SnsMetadata[]>
-{
+{   
     var { data, status } = await axios.get(
         ICRC1_LEDGER_API_BASE_URL + "?offset=0&limit=100"
         ,
@@ -98,10 +99,18 @@ async function get_sns_metadata () : Promise<SnsMetadata[]>
  */
 function convert_proposal_format ( proposal : ServiceNervousSystemProposalResponse, config : NervousSystemConfig ) : Proposal
 {
+    const statusMap = {
+        'EXECUTED': "Executed",
+        'REJECTED': "Defeated",
+        'ADOPTED': "Succeeded",
+        'FAILED': "Canceled",
+        'OPEN': "Active",
+    };
+
     return {
         id: proposal.id.toString(),
         title: proposal.proposal_title ? proposal.proposal_title : proposal.proposal_action_type,
-        state: proposal.status,
+        state: statusMap[proposal.status as keyof typeof statusMap] || proposal.status,
         app: config.app,
         description: proposal.summary,
         space: { canister_id: config.governance_canister_id },
@@ -127,7 +136,7 @@ function convert_proposal_format ( proposal : ServiceNervousSystemProposalRespon
 export async function get_metadata ( sns_metadata : SnsMetadata )
 {
     var { data, status } = await axios.get(
-        SNS_API_BASE_URL + `${ sns_metadata.sns_root_canister_id }/proposals/?offset=0&limit=1`
+        SNS_API_BASE_URL + `${ sns_metadata.sns_root_canister_id }/proposals?offset=0&limit=1`
         ,
         {
             headers: {
@@ -190,7 +199,8 @@ export async function addSNSProposals ( overview : any = {} ) : Promise<GovCache
                 proposal_filter: () => true,
                 excluded_topics: []
             };
-            let cache : GovCache = await getCompound( metadata.id );
+            //let cache : GovCache = await getCompound( metadata.id );
+            let cache : GovCache = { metadata: metadata, id: metadata.id, proposals: {} };
             cache.metadata = {
                 ...cache.metadata,
                 ...
@@ -204,7 +214,7 @@ export async function addSNSProposals ( overview : any = {} ) : Promise<GovCache
             {
                 Object.values( overview[ cache.id ].months ?? {} ).forEach( ( month : any ) => delete month.proposals )
             }
-            await setCompound( cache.id, cache )
+            //await setCompound( cache.id, cache )
         }
     }
 

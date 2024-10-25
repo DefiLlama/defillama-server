@@ -28391,7 +28391,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Payments",
     chains: ["Solana"],
-    oracles: [],
+    oracles: ["Switchboard"],
     forkedFrom: [],
     module: "streamflow/index.js",
     twitter: "streamflow_fi",

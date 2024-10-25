@@ -3,7 +3,6 @@ import { GovCache, Proposal } from '../types';
 import { updateStats } from '../utils';
 import { setCompound, getCompound } from '../cache';
 import { update_nervous_system_cache, NervousSystemConfig } from './icp';
-const fs = require('fs');
 
 // Number of decimals that are supported by the governance canister
 export const DECIMALS : number = 1e8;

@@ -54561,6 +54561,7 @@ const data3: Protocol[] = [
     module: "adrastea/index.js",
     twitter: "AdrasteaFinance",
     audit_links: ["https://github.com/OffsideLabs/reports/blob/public/audits/Adrastea-Aug-2024-OffsideLabs.pdf"],
+    parentProtocol: "parent#adrastea",
     listedAt: 1725543364
   },
   {
@@ -58517,6 +58518,54 @@ const data3: Protocol[] = [
     twitter: "xendfinance",
     github: ["xendfinance"],
     listedAt: 1729848136
+  },
+  {
+    id: "5282",
+    name: "Adrastea LRT",
+    address: null,
+    symbol: "-",
+    url: "https://app.adrastea.fi/liquid-restaking",
+    description: "Restake on Solayer, users funds are locked in an AVS, making their position non-liquid. Adrastea changes that by giving users a liquid token (lrtsSOL), allowing the benefits of restaking—like rewards and yields—while gaining liquidity.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/adrastea.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "adrastea/index.js",
+    twitter: "AdrasteaFinance",
+    parentProtocol: "parent#adrastea",
+    listedAt: 1729889024
+  },
+  {
+    id: "5283",
+    name: "Hourglass",
+    address: null,
+    symbol: "-",
+    url: "https://hourglass.com/",
+    description: "Restake on Solayer, users funds are locked in an AVS, making their position non-liquid. Adrastea changes that by giving users a liquid token (lrtsSOL), allowing the benefits of restaking—like rewards and yields—while gaining liquidity.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hourglass.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Mantle"],
+    oracles: [],
+    forkedFrom: [],
+    module: "adrastea/index.js",
+    twitter: "hourglasshq",
+    audit_links: [
+      "https://github.com/SublimeGroupSecurity/security_audits/tree/main/Hourglass",
+      "https://github.com/TheArcadiaGroup/publications/blob/main/audits/HourglassAudit3.pdf"
+    ],
+    github: ["pitch-foundation"],
+    listedAt: 1729889024
   },
 ];
 

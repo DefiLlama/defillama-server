@@ -5686,6 +5686,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "hydro_fi",
   },
+  {
+    id: "parent#adrastea",
+    name: "Adrastea Finance",
+    url: "https://adrastea.fi",
+    description:
+      "Adrastea is a composable leverage protocol that facilitates isolated boosting, with a primary mission to simplify the process and amplify the yield",
+    logo: `${baseIconsUrl}/adrastea.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AdrasteaFinance",
+  },
 ];
 
 export default parentProtocols;

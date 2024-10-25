@@ -5,7 +5,7 @@ import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } fro
 import { buildRedirectR2, getR2, storeDatasetR2 } from "./utils/r2";
 
 export async function getSimpleChainDatasetInternal(rawChain: string, params: any = {}) {
-  const categorySelected = params.category === undefined ? undefined : decodeURI(params.category);
+  const categorySelected = params.category === undefined ? undefined : decodeURI(params.category).replace("_", " ");
   const globalChain = rawChain === "All" ? null : getChainDisplayName(rawChain.toLowerCase(), true);
 
   const sumDailyTvls = {} as {

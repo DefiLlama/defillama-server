@@ -39,13 +39,20 @@ const dynamodb = {
       .promise(),
   scan: (params: Omit<AWS.DynamoDB.DocumentClient.ScanInput, "TableName">) =>
     client.scan({ TableName, ...params }).promise(),
-  getEnvSecrets: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }).promise()
+  getEnvSecrets: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
+  getExtensionTwitterConfig: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'twitter' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
+  putDimensionsData: (
+    item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
+    params?: Partial<AWS.DynamoDB.DocumentClient.PutItemInput>
+  ) => client.put({ TableName: 'fees-volume', ...params, Item: item }).promise(),
+  putDimensionsDataBulk: (
+    items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  ) => client.batchWrite({ RequestItems: { 'fees-volume': items.map((item) => ({ PutRequest: { Item: item } })) } }).promise(),
 };
 export default dynamodb;
 
-export async function getHistoricalValues(pk: string) {
+export async function getHistoricalValues(pk: string, lastKey = -1) {
   let items = [] as any[];
-  let lastKey = -1;
   do {
     const result = await dynamodb.query({
       ExpressionAttributeValues: {
@@ -146,4 +153,15 @@ export async function batchGet(keys: { PK: string; SK: number }[], retriesLeft =
     processedResponses = processedResponses.concat(missingResponses)
   }
   return processedResponses
+}
+
+
+export async function DELETE(keys: { PK: string; SK: number }[]): Promise<void> {
+  const requests = [];
+  for (const item of keys) {
+    // console.log('deleting', item.PK, item.SK)
+    if (item.PK && (item.SK == 0 || item.SK)) requests.push(dynamodb.delete({ Key: { PK: item.PK, SK: item.SK } }));
+  }
+  const a = await Promise.all(requests);
+  return;
 }

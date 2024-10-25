@@ -47,6 +47,12 @@ let failed = 0
 
 const IS_DRY_RUN = !!process.env.DRY_RUN
 
+process.on('SIGINT', async () => {
+  console.log('Received SIGINT. Cleaning up and exiting...');
+  process.exit(0);
+});
+
+
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
@@ -63,24 +69,29 @@ async function getAndStore(
     chainBlocks = res.chainBlocks
   }
 
-  const tvl: any = await storeTvl(
-    timestamp,
-    ethereumBlock as unknown as number,
-    chainBlocks,
-    protocol,
-    adapterModule,
-    {},
-    4,
-    false,
-    false,
-    true,
-    // () => deleteItemsOnSameDay(dailyItems, timestamp),
-    undefined,
-    {
-      returnCompleteTvlObject: true,
-      overwriteExistingData: true,
-    }
-  );
+  let tvl: any = undefined
+  try {
+    tvl = await storeTvl(
+      timestamp,
+      ethereumBlock as unknown as number,
+      chainBlocks,
+      protocol,
+      adapterModule,
+      {},
+      4,
+      false,
+      false,
+      true,
+      // () => deleteItemsOnSameDay(dailyItems, timestamp),
+      undefined,
+      {
+        returnCompleteTvlObject: true,
+        overwriteExistingData: true,
+      }
+    );
+  } catch (e) {
+    console.error(e)
+  }
 
   //  sdk.log(tvl);
   if (typeof tvl === 'object') {
@@ -143,6 +154,12 @@ const main = async () => {
     return clearProtocolCacheById(protocol.id)
 
 };
+
+// catch unhandled errors
+process.on('uncaughtException', function (err) {
+  console.error('Caught exception: ', err);
+  process.exit(1);
+});
 
 main().then(async () => {
   console.log('Done!!!')

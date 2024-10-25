@@ -25,11 +25,11 @@ const json2CSV = (headers: any[], map: IJSON<AdaptorRecord>, name: string) => {
 
 (async () => {
     const adapters2load: string[] = ["dexs", "protocols"]
-    const protocolsList = Object.keys((await loadAdaptorsData("dexs" as AdapterType)).config)
+    const protocolsList = Object.keys((loadAdaptorsData("dexs" as AdapterType)).config)
     const adaptersList: ProtocolAdaptor[] = []
     for (const type2load of adapters2load) {
         try {
-            const adaptorsData = await loadAdaptorsData(type2load as AdapterType)
+            const adaptorsData = loadAdaptorsData(type2load as AdapterType)
             adaptorsData.default.forEach(va => {
                 if (va.config?.enabled)
                     if (protocolsList.includes(va.module)) adaptersList.push(va)
@@ -46,7 +46,7 @@ const json2CSV = (headers: any[], map: IJSON<AdaptorRecord>, name: string) => {
     for (const adaptor of adaptersList) {
         const rawData = await getAdaptorRecord(adaptor.id, AdaptorRecordType.dailyVolume, adaptor.protocolType, "ALL").catch(console.error)
         if (!(rawData instanceof Array)) continue
-        const data = await generateCleanRecords(
+        const data = generateCleanRecords(
             rawData,
             adaptor.chains,
             adaptor.versionKey ? [adaptor.versionKey]: [adaptor.module]

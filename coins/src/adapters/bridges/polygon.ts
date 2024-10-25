@@ -6,7 +6,6 @@ export default async function bridge() {
     await fetch("https://raw.githubusercontent.com/maticnetwork/polygon-token-list/dev/src/tokens/polygon.json")
   ) as any[];
 
-  console.log(Array.isArray(tokens), tokens.length)
   const polygonTokens = tokens
     .filter((token) => token.chainId === 137 && token.extensions?.originTokenAddress && token.extensions.originTokenAddress !== '0x0000000000000000000000000000000000000000' && token.extensions?.originTokenNetwork === 0)
     .map((token) => {

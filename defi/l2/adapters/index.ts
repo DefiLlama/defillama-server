@@ -1,8 +1,8 @@
 import { call } from "@defillama/sdk/build/abi/abi2";
 import { Chain } from "@defillama/sdk/build/general";
 import { Address } from "@defillama/sdk/build/types";
+import axios from "axios";
 import fetch from "node-fetch";
-import * as zk from "zksync-web3";
 
 let addresses: { [chain: Chain]: Address[] } = {};
 export const arbitrum = async (): Promise<Address[]> => {
@@ -55,7 +55,24 @@ export const linea = async (): Promise<Address[]> => {
   addresses.linea = data.tokens.map((t: any) => t.address.toLowerCase());
   return addresses.linea;
 };
-// export const metis = (): Promise<Address[]> => {};
+export const metis = async (): Promise<Address[]> => {
+  return [
+    "0x0000000000000000000000000000000000000000", // METIS
+    "0x420000000000000000000000000000000000000A", // ETH
+    "0x433E43047B95cB83517abd7c9978Bdf7005E9938", // WBTC
+    "0xEA32A96608495e54156Ae48931A7c20f0dcc1a21", // USDC
+    "0xbb06dca3ae6887fabf931640f67cab3e3a16f4dc", // USDT
+    "0x0x4c078361FC9BbB78DF910800A991C7c3DD2F6ce0", // DAI
+    "0xb809cda0c2f79f43248C32b5DcB09d5cD26BbF10", // BUSD
+    "0xd1F0A4E5444EEd0fbcd6624DCef7Ef33043E6168", // AAVE
+    "0xf5F66d5daa89c090A7afa10E6C1553B2887a9A33", // LINK
+    "0x17Ee7E4dA37B01FC1bcc908fA63DF343F23B4B7C", // SUSHI
+    "0x54acd90360cD3915773f2328c653587db79a4323", // SUSHI
+    "0xC5cDb08E75595D8c55091cBA9B02960b5782B96E", // UNI
+    "0x029a43Aa51D5924D4c18A42EFbC0e0A84ECc355C", // CRV
+    "0x5CE34d9abe4bF239cbc08B89287c87f4CD6d80B7", // WOW
+  ];
+};
 export const optimism = async (): Promise<Address[]> => {
   if (addresses.optimism) return addresses.optimism;
   const data = await fetch("https://static.optimism.io/optimism.tokenlist.json").then((r) => r.json());
@@ -104,13 +121,96 @@ export const starknet = async (): Promise<Address[]> => {
   const data = await fetch(
     "https://raw.githubusercontent.com/starknet-io/starknet-addresses/master/bridged_tokens/mainnet.json"
   ).then((r) => r.json());
-  addresses.starknet = data.map((t: any) => t.l2_token_address.toLowerCase());
+  addresses.starknet = data.map((t: any) => t.l2_token_address?.toLowerCase()).filter((t: any) => t != null);
   return addresses.starknet;
 };
-export const zksync = async (): Promise<Address[]> => {
-  if (addresses.zksync) return addresses.zksync;
-  const provider = new zk.Provider("https://mainnet.era.zksync.io");
-  const data = await provider.getConfirmedTokens();
-  addresses.zksync = data.map((d: any) => d.l2Address.toLowerCase());
-  return addresses.zksync;
+export const era = async (): Promise<Address[]> => {
+  if (addresses.era) return addresses.era;
+  const {
+    data: { result: data },
+  } = await axios.post("https://mainnet.era.zksync.io", {
+    method: "zks_getConfirmedTokens",
+    params: [0, 255],
+    id: 1,
+    jsonrpc: "2.0",
+  });
+  addresses.era = data.map((d: any) => d.l2Address.toLowerCase());
+  return addresses.era;
+};
+export const tron = async (): Promise<Address[]> => {
+  if (!("tron" in addresses)) addresses.tron = [];
+  addresses.tron.push(
+    ...[
+      "TN3W4H6rK2ce4vX9YnFQHwKENnHjoxb3m9", // BTC
+      "THb4CqiFdwNHsWsQCs4JhzwjMWys4aqCbF", // ETHold
+      "TR3DLthpnDdCGabhVDbD3VMsiJoCXY3bZd", // LTC
+      "THbVQp8kMjStKNnf2iCY6NEzThKMK5aBHg", // DOGE
+    ]
+  );
+  return addresses.tron;
+};
+export const blast = async (): Promise<Address[]> => {
+  if (!("blast" in addresses)) addresses.blast = [];
+  addresses.blast.push(
+    ...[
+      "0x4300000000000000000000000000000000000004", // WETH
+    ]
+  );
+  return addresses.blast;
+};
+export const mode = async (): Promise<Address[]> => {
+  if (!("mode" in addresses)) addresses.mode = [];
+  addresses.mode.push(
+    ...[
+      "0x4300000000000000000000000000000000000004", // WETH
+      "0xcDd475325D6F564d27247D1DddBb0DAc6fA0a5CF", // WBTC
+      "0xd988097fb8612cc24eeC14542bC03424c656005f", // USDC
+      "0xf0F161fDA2712DB8b566946122a5af183995e2eD", // USDT
+    ]
+  );
+  return addresses.mode;
+};
+export const zklink = async (): Promise<Address[]> => {
+  if (addresses.zklink) return addresses.zklink;
+  const allTokens = [];
+  let page = 1;
+  do {
+    const { items, meta } = await fetch(`https://explorer-api.zklink.io/tokens?limit=200&page=${page}&key=`).then((r) =>
+      r.json()
+    );
+    allTokens.push(...items);
+    page++;
+    if (page >= meta.totalPages) break;
+  } while (page < 100);
+  addresses.zklink = allTokens.map((d: any) => d.l2Address.toLowerCase());
+  return addresses.zklink;
+};
+export const manta = async (): Promise<Address[]> => {
+  if (addresses.manta) return addresses.manta;
+  const bridge = (
+    await fetch(
+      "https://raw.githubusercontent.com/Manta-Network/manta-pacific-token-list/main/json/manta-pacific-mainnet-token-list.json"
+    ).then((r) => r.json())
+  ).tokens as any[];
+
+  addresses.manta = bridge
+    .filter((token) => token.chainId === 169 && token.tokenType.includes("canonical-bridge"))
+    .map((optToken) => optToken.address.toLowerCase());
+  return addresses.manta;
+};
+export const osmosis = async (): Promise<Address[]> => {
+  if (addresses.osmosis) return addresses.osmosis;
+  const res = await fetch(
+    `https://raw.githubusercontent.com/osmosis-labs/assetlists/main/osmosis-1/generated/chain_registry/assetlist.json`
+  ).then((r) => r.json());
+
+  addresses.osmosis = [];
+  res.assets.map((c: any) => {
+    const { base: address } = c;
+    if (!address.startsWith("ibc/")) return;
+    // const decimals = c.denom_units.find((d: any) => d.denom == display)?.exponent;
+    addresses.osmosis.push(address);
+  });
+
+  return addresses.osmosis;
 };

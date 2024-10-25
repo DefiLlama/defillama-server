@@ -31,6 +31,13 @@ export interface DbEntry {
   symbol: string;
   confidence: number;
 }
+export interface CgEntry {
+  PK: string;
+  SK: number;
+  price: number;
+  symbol: string;
+  confidence: number;
+}
 export interface Read {
   dbEntry: DbEntry;
   redirect: any;

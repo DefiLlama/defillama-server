@@ -1,8 +1,10 @@
 import dynamodb from './dynamodb'
+let envSecretsRes: any
 
 async function setEnvSecrets() {
   try {
-    const { Item } = await dynamodb.getEnvSecrets()
+    if (!envSecretsRes) envSecretsRes = dynamodb.getEnvSecrets()
+    const { Item } = await envSecretsRes
     Object.entries((Item as any)).forEach(([key, value]: any) => {
       if (key !== 'PK' && key !== 'SK') process.env[key] = value
     })

@@ -2,9 +2,10 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 import ddb, { batchGet } from "./utils/shared/dynamodb";
 import parseRequestBody from "./utils/shared/parseRequestBody";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
-import { coinToPK, DAY, PKToCoin } from "./utils/processCoin";
+import { coinToPK, PKToCoin } from "./utils/processCoin";
 import { CoinsResponse } from "./utils/getCoinsUtils";
 import { getCurrentUnixTimestamp } from "./utils/date";
+import { searchWidth } from "./utils/shared/constants";
 
 const handler = async (
   event: any
@@ -42,14 +43,14 @@ const handler = async (
       const finalCoin = await getRecordClosestToTimestamp(
         coin.redirect ?? coin.PK,
         Number(timestampRequested),
-        DAY * 2,
+        searchWidth,
       )
       if (finalCoin.SK === undefined) return;
       formattedCoin.price = finalCoin.price;
       formattedCoin.timestamp = finalCoin.SK;
       formattedCoin.symbol = formattedCoin.symbol ?? finalCoin.Item.symbol
     }
-    if (Math.abs((timestampRequested ?? getCurrentUnixTimestamp()) - formattedCoin.timestamp) < DAY * 2)
+    if (Math.abs((timestampRequested ?? getCurrentUnixTimestamp()) - formattedCoin.timestamp) < searchWidth)
       response[coinName] = formattedCoin;
   }))
   return successResponse({

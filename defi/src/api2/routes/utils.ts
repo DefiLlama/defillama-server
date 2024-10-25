@@ -8,13 +8,16 @@ function getTimeInFutureMinutes(minutes: number) {
   return date.toUTCString()
 }
 
-export function successResponse(res: HyperExpress.Response, data: any, cacheMinutes: number, {
+export function successResponse(res: HyperExpress.Response, data: any, cacheMinutes: number = 30, {
   isJson = true,
+  isPost = false,
 } = {}) {
   res.setHeaders({
-    "Access-Control-Allow-Origin": "*",
-    "Expires": getTimeInFutureMinutes(cacheMinutes) // cache for 5 minutes
+    "Expires": getTimeInFutureMinutes(cacheMinutes)
   })
+  if (isPost)
+    res.removeHeader("Expires")
+  
   isJson ? res.json(data) : res.send(data)
 }
 

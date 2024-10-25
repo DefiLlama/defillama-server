@@ -4,7 +4,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import fetch from "node-fetch";
 
 async function buildCGCoinsList(){
-  const list = (await fetch(`https://api.coingecko.com/api/v3/coins/list?include_platform=true`).then(r=>r.json())) as any[]
+  const list = (await fetch(`https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`).then(r=>r.json())) as any[]
   const coins = await batchGet(list.map((coin: any) => ({
     PK: `coingecko#${coin.id}`,
     SK: 0,
@@ -25,11 +25,8 @@ const handler = async () => {
 
 async function getNfts() {
   const raw = await fetch(`https://nft.llama.fi/collections`).then((res) => res.json());
-  const ethCoin = await ddb.get({
-    PK: `coingecko#ethereum`,
-    SK: 0,
-  })
-  const ethPrice = ethCoin.Item!.price
+  const ethCoin = await fetch(`https://coins.llama.fi/prices/current/ethereum:0x0000000000000000000000000000000000000000`).then((res) => res.json());
+  const ethPrice = ethCoin.coins["ethereum:0x0000000000000000000000000000000000000000"].price
   const nfts = raw.map((x:any)=>({
     collectionId: x.collectionId,
     name: x.name,
@@ -48,12 +45,13 @@ async function getProtocols() {
       parent.tvl += p.tvl
     }
   })
-  const protocols = raw["protocols"].concat(parentProtocols).filter((protocol:any)=>protocol.tvl > 10e3 && !protocol.parentProtocol).map((x: any) => ({
+  const protocols = raw["protocols"].concat(parentProtocols).filter((protocol:any)=> (protocol.tvl > 10e3 || protocol.mcap > 100e3) && !protocol.parentProtocol).map((x: any) => ({
     name: x.name,
     url: x.url,
     logo: x.logo,
     category: x.category,
     tvl: x.tvl,
+    mcap: x.mcap
   }));
   return protocols.sort((a:any, b:any)=>(b.tvl ?? 0) - (a.tvl ?? 0))
 }

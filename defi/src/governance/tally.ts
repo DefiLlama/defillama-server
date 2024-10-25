@@ -62,13 +62,13 @@ export async function getMetadata(ids: string[]) {
 export async function getProposals(ids: string[], chain: string, recent?: boolean) {
   if (!ids.length) return []
   const ONE_WEEK = 7 * 24 * 3600 * 1000
-  const cutOfTime = +Date.now() - 12 * ONE_WEEK
+  const cutOfTime = +Date.now() - 12 * ONE_WEEK * 3
   const allProposals: Proposal[] = []
   let fetchAgain = false
   const variables: any = { ids, skip: 0, chain, length: 200, }
   if (recent) variables.length = 100
   do {
-    const { data: { data: { proposals, } } } = await axios.post(graphURLTally, {
+    const { data: { data } }  = await axios.post(graphURLTally, {
       query: proposalQueryTally,
       operationName: 'Proposals',
       variables,
@@ -78,8 +78,9 @@ export async function getProposals(ids: string[], chain: string, recent?: boolea
         "Api-Key": TALLY_API_KEY
       }
     })
+    const { proposals = [], } = data ?? {}
     allProposals.push(...proposals)
-    fetchAgain = proposals?.length === variables.length
+    fetchAgain = proposals?.length && proposals?.length === variables.length
     if (fetchAgain) {
       variables.skip += length
       if (recent) {
@@ -163,8 +164,8 @@ function chainAndAddrFromId(id: string) {
 
 async function updateProposal(data: any, cache: any) {
   let {
-    start,
-    end,
+    // start,
+    // end,
     voteStats,
     startBlock,
     endBlock,
@@ -172,15 +173,15 @@ async function updateProposal(data: any, cache: any) {
     eta,
     governanceId,
   } = data
-  if (typeof start === 'object' && start.timestamp) {
-    if (!startBlock) startBlock = start.number
-    start = Math.floor(+new Date(start.timestamp) / 1e3)
-  }
+  // if (typeof start === 'object' && start.timestamp) {
+  //   if (!startBlock) startBlock = start.number
+  //   start = Math.floor(+new Date(start.timestamp) / 1e3)
+  // }
 
-  if (typeof end === 'object' && end.timestamp) {
-    if (!endBlock) endBlock = end.number
-    end = Math.floor(+new Date(end.timestamp) / 1e3)
-  }
+  // if (typeof end === 'object' && end.timestamp) {
+  //   if (!endBlock) endBlock = end.number
+  //   end = Math.floor(+new Date(end.timestamp) / 1e3)
+  // }
 
   statusChanges.sort((a: any, b: any) => +new Date(a.blockTimestamp) - +new Date(b.blockTimestamp))
   const lastStatus = statusChanges.pop()
@@ -200,7 +201,8 @@ async function updateProposal(data: any, cache: any) {
 
   let proposal = {
     ...data,
-    start, end, startBlock, endBlock, canceled, executed, eta,
+    // start, end,
+    startBlock, endBlock, canceled, executed, eta,
     state, scores, scores_total,
     choices: ['For', 'Against', 'Abstain'],
     network: governanceId.split(':')[1],

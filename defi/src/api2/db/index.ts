@@ -68,7 +68,15 @@ async function initializeTVLCacheDB({
     }
     if (isApi2Server)
       dbOptions.pool = {
-        max: 10,
+        max: 5,
+        min: 0,
+        idle: 5000,
+        acquire: 300000, // increase this if your queries take a long time to run
+        evict: 1000, // how often to run eviction checks
+      }
+    else 
+      dbOptions.pool = {
+        max: 5,
         min: 0,
         idle: 5000,
         acquire: 30000, // increase this if your queries take a long time to run
@@ -90,9 +98,11 @@ async function initializeTVLCacheDB({
     }
 
     if (ENV.isCoolifyTask) {
-      dbOptions.host = ENV.internalHost
+      if (ENV.internalHost) {
+        dbOptions.host = ENV.internalHost
+        delete dbOptions.port
+      }
       // metricsDbOptions.host = ENV.metrics_internalHost
-      delete dbOptions.port
       // delete metricsDbOptions.port
     }
 
@@ -275,6 +285,10 @@ const getAllProtocolItems = callWrapper(_getAllProtocolItems)
 const getClosestProtocolItem = callWrapper(_getClosestProtocolItem)
 const saveProtocolItem = callWrapper(_saveProtocolItem)
 
+function getPGConnection() {
+  return sequelize
+}
+
 export {
   TABLES,
   sequelize,
@@ -282,6 +296,7 @@ export {
   getAllProtocolItems,
   getClosestProtocolItem,
   saveProtocolItem,
+  getPGConnection,
   initializeTVLCacheDB,
   closeConnection,
   deleteProtocolItems,

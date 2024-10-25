@@ -11,9 +11,12 @@ function getLink(project: string, chain: string): string {
   return `https://${Bucket}.s3.eu-central-1.amazonaws.com/${getKey(project, chain)}`
 }
 
-export async function getCache(project: string, chain: string) {
-  const Key = getKey(project, chain)
+export async function getCache(project: string, chain: string, { useTvlCache = false } = {}) {
+  let Key = getKey(project, chain)
+  if (useTvlCache)
+    Key = Key.replace('coins-cache', 'tvl-adapter-cache/cache')
 
+  console.log(Key, 'kye')
   try {
     const json = await sdk.cache.readCache(Key)
     if (!json || Object.keys(json).length === 0) throw new Error('Invalid data')
@@ -21,6 +24,7 @@ export async function getCache(project: string, chain: string) {
   } catch (e) {
     try {
       const json = await (fetch(getLink(project, chain)).then(r => r.json()))
+      await sdk.cache.writeCache(Key, json)
       return json
     } catch (e) {
       sdk.log('failed to fetch data from s3 bucket:', Key)

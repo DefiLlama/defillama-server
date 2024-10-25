@@ -9,11 +9,10 @@ import invokeLambda from "./utils/shared/invokeLambda";
 import sleep from "./utils/shared/sleep";
 import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
-import { Connection, PublicKey, Keypair } from "@solana/web3.js";
+import { Connection, PublicKey } from "@solana/web3.js";
 import { Write } from "./adapters/utils/dbInterfaces";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { batchWrite2 } from "../coins2";
-import setEnvSecrets from "../../defi/src/utils/shared/setEnvSecrets";
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
@@ -72,7 +71,7 @@ async function storeCoinData(coinData: any[]) {
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60);
+    await batchWrite2(writes2, false, 5 * 60, 'fetchCGD 75');
   } catch (e) {
     console.error(e);
   }
@@ -102,7 +101,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     });
   });
   try {
-    await batchWrite2(writes2, false, 5 * 60);
+    await batchWrite2(writes2, false, 5 * 60, 'fetchCGD 105');
   } catch (e) {
     console.error(e);
   }
@@ -182,7 +181,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const returnedCoins = new Set(Object.keys(coinData));
   coins.forEach((coin) => {
     if (!returnedCoins.has(coin.id)) {
-      console.error(`Couldn't get data for ${coin.id}`);
+      console.error(`[getAndStoreCoins] Couldn't get data for ${coin.id}`);
       rejected.push(coin);
     }
     idToSymbol[coin.id] = coin.symbol;
@@ -195,7 +194,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       SK: data.last_updated_at,
       price: data.usd,
       mcap: data.usd_market_cap,
-      timestamp,
+      timestamp: data.last_updated_at,
       symbol: idToSymbol[cgId].toUpperCase(),
       confidence: 0.99,
     }));
@@ -253,7 +252,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 
   if (writes2.length == 0) return;
   try {
-    await batchWrite2(writes2);
+    await batchWrite2(writes2, undefined, undefined, 'fetchCGD 256');
   } catch (e) {
     console.error(e);
   }
@@ -268,7 +267,7 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
     3,
   );
   if (!Array.isArray(coinData.prices)) {
-    console.error(`Couldn't get data for ${coin.id}`);
+    console.error(`[getAndStoreHourly] Couldn't get data for ${coin.id}`);
     rejected.push(coin);
     return;
   }
@@ -328,7 +327,7 @@ const handler = (hourly: boolean) => async (
   const rejected = [] as Coin[];
   const timer = setTimer();
   const requests = [];
-  await setEnvSecrets();
+  process.env.tableName = "prod-coins-table";
   if (hourly) {
     const hourlyCoins = [];
     for (let i = 0; i < coins.length; i += step) {
@@ -375,5 +374,6 @@ function getMetadataPDA(mint: PublicKey) {
 }
 */
 
+// NOTE: this is old script we no longer use this.
 export const fetchCoingeckoData = wrapScheduledLambda(handler(false));
 export const fetchHourlyCoingeckoData = wrapScheduledLambda(handler(true));

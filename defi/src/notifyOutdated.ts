@@ -18,7 +18,7 @@ const handler = async (_event: any) => {
   const outdated = await getOutdated(maxDrift);
   const message = buildOutdatedMessage(outdated)
   if (message !== null) {
-    if (message.length >= 16000) {
+    if (hourlyOutdated.length >= 320) {
       await sendMessage(`${llamaRole} everything is broken REEEE`, webhookUrl, false)
     }
     await sendMessage(message, webhookUrl)

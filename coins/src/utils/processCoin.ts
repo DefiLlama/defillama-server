@@ -1,3 +1,5 @@
+import { distressedAssets } from "../adapters/other/distressed"
+
 export function lowercaseAddress(coin: string) {
     if (coin.startsWith("solana:")) {
         return coin
@@ -12,7 +14,11 @@ export function cutStartWord(text: string, startWord: string) {
 }
 
 export function coinToPK(coin: string) {
-    return coin.startsWith("coingecko:") ? `coingecko#${cutStartWord(coin, "coingecko:")}` : `asset#${lowercaseAddress(coin)}`
+    const normalized = lowercaseAddress(coin)
+    if(distressedAssets[normalized] === true){
+        return "distressed#invalid"
+    }
+    return coin.startsWith("coingecko:") ? `coingecko#${cutStartWord(coin, "coingecko:")}` : `asset#${normalized}`
 }
 
 export function PKToCoin(PK:string){

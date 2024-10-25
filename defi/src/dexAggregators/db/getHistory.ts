@@ -1,8 +1,8 @@
 import { SwapEvent } from "./Models/SwapEvent";
-import { connection } from ".";
+import { getConnection } from ".";
 
 export async function getHistory(userId: string, chain: string): Promise<SwapEvent[]> {
-  const swapEventRepository = (await connection).getRepository(SwapEvent);
+  const swapEventRepository = (await getConnection()).getRepository(SwapEvent);
   const transactionHistory = await swapEventRepository
     .createQueryBuilder("swapEvent")
     .select([

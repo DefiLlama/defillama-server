@@ -7,14 +7,13 @@ import {
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
 import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
-import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
 import PromisePool from "@supercharge/promise-pool";
 
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
 
 export default async function handler() {
-  await setEnvSecrets();
+  process.env.tableName = "prod-coins-table";
   const a = Object.entries(adapters);
   const indexes = Array.from(Array(a.length).keys());
   const timestamp = 0;
@@ -24,11 +23,12 @@ export default async function handler() {
       try {
         if (
           ![
-            "uniswap",
-            "curve",
-            "curve12",
-            "sushiswap1",
-            "unknownTokens",
+            "",
+            // "uniswap",
+            // "curve",
+            // "curve12",
+            // "sushiswap1",
+            // "unknownTokens",
           ].includes(a[i][0]) &&
           !process.env.LLAMA_RUN_LOCAL
         )

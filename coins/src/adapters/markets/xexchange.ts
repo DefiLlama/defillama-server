@@ -4,7 +4,6 @@ import { addToDBWritesList, } from "../utils/database";
 import axios from 'axios'
 
 export function xexchange(timestamp: number) {
-  console.log("starting xexchange");
 
   const THIRY_MINUTES = 1800
   if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
@@ -54,7 +53,7 @@ async function getAshPools() {
   poolsV2.forEach((pool: any) => pricesTemp[pool.lpToken.id] = pool.lpToken.price)
   tokens.forEach((pool: any) => pricesTemp[pool.id] = pool.price)
   const tokenIds = Object.keys(pricesTemp)
-  const lpInfo : any  = await getTokenData(tokenIds)
+  const lpInfo: any = await getTokenData(tokenIds)
 
   for (const token of tokenIds) {
     const info = lpInfo[token]
@@ -68,9 +67,9 @@ async function getAshPools() {
 
 async function getTokenData(tokens: any[]) {
   tokens = [...new Set(tokens)]
-  const { data: lpData } =await axios.get(`https://api.multiversx.com/tokens?identifiers=${tokens.join(',')}`)
-  const lpInfo : any  = {}
-  lpData.forEach((i: any) => lpInfo[i.identifier] = i) 
+  const { data: lpData } = await axios.get(`https://api.multiversx.com/tokens?identifiers=${tokens.join(',')}`)
+  const lpInfo: any = {}
+  lpData.forEach((i: any) => lpInfo[i.identifier] = i)
   return lpInfo
 }
 
@@ -91,8 +90,8 @@ async function getPools(prices: any) {
   })
   const filteredPools = pairs.filter((i: any) => +i.lockedValueUSD > 2000) // ignore pools with less than 2000$ in liquidity
   log('pools', filteredPools.length, pairs.length)
-  const poolIds = filteredPools.map(({liquidityPoolToken: { identifier}}: any) => identifier)
-  const lpInfo : any  = await getTokenData(poolIds)
+  const poolIds = filteredPools.map(({ liquidityPoolToken: { identifier } }: any) => identifier)
+  const lpInfo: any = await getTokenData(poolIds)
   filteredPools.forEach(({ firstToken, secondToken, liquidityPoolToken, lockedValueUSD, }: any) => {
     prices[firstToken.identifier] = firstToken
     prices[secondToken.identifier] = secondToken
@@ -104,10 +103,26 @@ async function getPools(prices: any) {
   })
 }
 
+async function addswTAO(timestamp: any, writes: Write[]) {
+  const { data } = await axios.post('https://api.multiversx.com/query', {
+    scAddress: 'erd1qqqqqqqqqqqqqpgqhykmg59ny8tem37m0gng3ygwtphmefyz78ssfecn6q',
+    funcName: 'getExchangeRate',
+    args: []
+  })
+  const base = 'elrond:WTAO-4f5363'
+  const { data: { coins }} = await axios.get('https://coins.llama.fi/prices/current/'+base)
+  if (!coins[base]) return;
+
+  const exchangeRate = parseNumber(data.returnData[0]) / 1e18
+  const price = coins[base].price * exchangeRate
+  addToDBWritesList(writes, chain, 'SWTAO-356a25', price, 9, 'SWTAO', timestamp, 'xexchange', 0.9)
+}
+
 async function getTokenPrices(timestamp: number) {
+  const writes: Write[] = [];
+  await addswTAO(timestamp, writes)
 
   const prices: any = await getAshPools()
-  const writes: Write[] = [];
   await getPools(prices)
   const priceLog: any[] = []
   Object.values(prices).forEach((i: any) => addToken(i))
@@ -118,4 +133,19 @@ async function getTokenPrices(timestamp: number) {
     priceLog.push({ name, symbol: ticker, price, decimals, token: identifier })
   }
   return writes
+}
+
+
+function parseNumber(buffer: any): any {
+  buffer = Buffer.from(buffer || "", "base64")
+  // https://github.com/juanelas/bigint-conversion/blob/master/src/ts/index.ts#L63
+  buffer = new Uint8Array(buffer)
+  let bits = BigInt(8)
+
+  let ret = BigInt(0)
+  for (const i of buffer.values()) {
+    const bi = BigInt(i)
+    ret = (ret << bits) + bi
+  }
+  return ret.toString()
 }

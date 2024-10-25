@@ -1,5 +1,6 @@
 // https://api.coingecko.com/api/v3/asset_platforms
 export const chainToCoingeckoId = {
+  shibarium: 'shibarium',
   bsc: "binance-smart-chain",
   ethereum: "ethereum",
   polygon: "polygon-pos",
@@ -97,6 +98,58 @@ export const chainToCoingeckoId = {
   shiden: "shiden network",
   flare: "flare-network",
   functionx: "function-x",
+  beam: "beam",
+  blast: "blast",
+  mode: "mode",
+  scroll: "scroll",
+  bitrock: "bitrock",
+  polkadot: "polkadot",
+  juno: "juno",
+  injective: "injective",
+  immutable: "immutable",
+  xai: "xai",
+  merlin: "merlin-chain",
+  sei: "sei-network",
+  radix: "radix",
+  filecoin: "filecoin",
+  zeta: "zetachain",
+  libre: "libre",
+  zkfair: "zkfair",
+  starknet: "starknet",
+  icp: "internet-computer",
+  archway: "archway",
+  migaloo: "migaloo",
+  dogechain: "dogechain",
+  acala: "acala",
+  omax: "omax",
+  nuls: "nuls",
+  kujira: "kujira",
+  fraxtal: "fraxtal",
+  map: "map-protocol",
+  zora: "zora-network",
+  dydx: "dydx",
+  manta: "manta-pacific",
+  bouncebit: "bouncebit",
+  taiko: "taiko",
+  genesys: "genesys-network",
+  lukso: "lukso",
+  sanko: "sanko",
+  massa: "massa",
+  etherlink: "etherlink",
+  endurance: "endurance",
+  bitlayer: "bitlayer",
+  bob: "bob-network",
+  xlayer: "x-layer",
+  planq: "planq-network",
+  bsquared: "bsquared-network",
+  nibiru: "nibiru",
+  hyperliquid: "hyperliquid",
+  ancient8: "ancient8",
+  degen: "degen",
+  cronos_zkevm: "cronos-zkevm"
+
+
+
   // chz: "chiliz",
   // stellar: "stellar",
   // stacks: "stacks",
@@ -107,3 +160,21 @@ export const chainToCoingeckoId = {
 };
 
 export default chainToCoingeckoId;
+
+// const fetch = require("node-fetch");
+// async function generateNewObject() {
+//   const res: { id: string }[] = await fetch(
+//     "https://api.coingecko.com/api/v3/asset_platforms",
+//   ).then((r: any) => r.json());
+
+//   const currentChains = Object.values(chainToCoingeckoId);
+//   let missing: string = ``;
+//   res.map((r) => {
+//     if (currentChains.includes(r.id)) return;
+//     missing = `${missing} ${r.id},`;
+//   });
+
+//   console.log(missing);
+// }
+// generateNewObject();
+// ts-node common/chainToCoingeckoId.ts

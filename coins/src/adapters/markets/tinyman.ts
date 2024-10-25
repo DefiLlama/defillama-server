@@ -3,7 +3,6 @@ import { addToDBWritesList, } from "../utils/database";
 import axios from 'axios'
 
 export function tinyman(timestamp: number) {
-  console.log("starting tinyman");
 
   const THIRY_MINUTES = 1800
   if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
@@ -73,7 +72,6 @@ async function getPoolData() {
     const { data: { results: results2 } } = await axios.get(next)
     results = results.concat(results2)
   }
-  console.log('tinyman pools', results.length)
 
   return results.filter((pool: any) => {
     const { asset_1, asset_2, current_asset_1_reserves_in_usd, current_asset_2_reserves_in_usd, liquidity_in_usd, current_asset_1_reserves, current_asset_2_reserves, liquidity_asset } = pool

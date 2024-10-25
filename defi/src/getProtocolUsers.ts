@@ -21,13 +21,12 @@ const typeInfo = {
     },
 } as {[type:string]: {query:typeof getProtocolUsers, column:string}}
 
-const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-    const protocolId = event.pathParameters?.protocolId?.toLowerCase().replace("$", "#") ?? "none";
-    const type = event.pathParameters?.type?.toLowerCase();
+export async function getProtocolUsersHandler(protocolId?: string, type?: string) {
+    protocolId = protocolId?.toLowerCase().replace("$", "#") ?? "none";
     const selectedTypeInfo = typeInfo[type ?? '']
-    if(selectedTypeInfo === undefined){
-        return errorResponse({message: `Wrong type`})
-    }
+    if(selectedTypeInfo === undefined)
+        throw new Error('Wrong type')
+    
     const records = await selectedTypeInfo.query(protocolId)
     const latestRecords = (await getLatestProtocolUsersData(type as any, getCurrentUnixTimestamp()-8*3600, protocolId))
     if (latestRecords.length > 0) {
@@ -40,7 +39,17 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
             })
         }
     }
-    return cache20MinResponse(records.map((d)=>([d.start, d[selectedTypeInfo.column]])).sort((a,b)=>a[0]-b[0]))
+    return records.map((d)=>([d.start, d[selectedTypeInfo.column]])).sort((a,b)=>a[0]-b[0])
+}
+
+const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+    const protocolId = event.pathParameters?.protocolId?.toLowerCase()
+    const type = event.pathParameters?.type?.toLowerCase();
+    const selectedTypeInfo = typeInfo[type ?? '']
+    if(selectedTypeInfo === undefined){
+        return errorResponse({message: `Wrong type`})
+    }
+    return cache20MinResponse(await getProtocolUsersHandler(protocolId, type))
 }
 
 export default wrap(handler);

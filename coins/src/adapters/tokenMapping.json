@@ -743,6 +743,11 @@
     }
   },
   "base": {
+    "0x69420f9e38a4e60a62224c489be4bf7a94402496": {
+      "decimals": "18",
+      "symbol": "MONEY",
+      "to": "coingecko#defi-money"
+    },
     "0x46e6b214b524310239732D51387075E0e70970bf": {
       "decimals": "18",
       "symbol": "cWETHv3",
@@ -4451,6 +4456,28 @@
       "to": "asset#ethereum:0x7a486f809c952a6f8dec8cb0ff68173f2b8ed56c",
       "decimals": 6,
       "symbol": "USDX"
+    }
+  },
+  "assetchain": {
+    "0x2B7C1342Cc64add10B2a79C8f9767d2667DE64B2": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0xDBDc8c7B96286899aB624F6a59dd0250DD4Ce9bC": {
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "BTC"
+    },
+    "0x26E490d30e73c36800788DC6d6315946C4BbEa24": {
+      "to": "coingecko#tether",
+      "decimals": 18,
+      "symbol": "USDT"
+    },
+    "0xEc6943BB984AED25eC96986898721a7f8aB6212E": {
+      "to": "coingecko#wicrypt",
+      "decimals": 18,
+      "symbol": "WNT"
     }
   },
   "aeternity": {

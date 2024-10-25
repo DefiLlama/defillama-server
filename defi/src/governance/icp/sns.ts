@@ -199,7 +199,7 @@ export async function addSNSProposals ( overview : any = {} ) : Promise<GovCache
                 proposal_filter: () => true,
                 excluded_topics: []
             };
-            //let cache : GovCache = await getCompound( metadata.id );
+            let cache : GovCache = await getCompound( metadata.id );
             let cache : GovCache = { metadata: metadata, id: metadata.id, proposals: {} };
             cache.metadata = {
                 ...cache.metadata,
@@ -214,7 +214,7 @@ export async function addSNSProposals ( overview : any = {} ) : Promise<GovCache
             {
                 Object.values( overview[ cache.id ].months ?? {} ).forEach( ( month : any ) => delete month.proposals )
             }
-            //await setCompound( cache.id, cache )
+            await setCompound( cache.id, cache )
         }
     }
 

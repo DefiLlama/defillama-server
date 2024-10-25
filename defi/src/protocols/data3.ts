@@ -27303,7 +27303,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
-    oracles: ["TWAP", "Pyth"],
+    oracles: ["TWAP", "Pyth", "Switchboard"],
     forkedFrom: [],
     module: "rain/index.js",
     twitter: "RainFi_",

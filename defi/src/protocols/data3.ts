@@ -51610,7 +51610,7 @@ const data3: Protocol[] = [
     name: "AlphaX",
     address: null,
     symbol: "-",
-    url: "https://alphax.com/dex",
+    url: "https://alphax.com/",
     description:
       "AlphaX DEX provides 100% on-chain trading with decentralized security, self-custody wallet integration, and a permanent NO-KYC policy, ensuring complete privacy. With ultra-fast transaction speeds and access to high-potential assets, AlphaX is a versatile platform for traders looking for flexibility and reliability in their trading journey.",
     chain: "Ethereum",
@@ -51625,7 +51625,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "alphaX-protocol/index.js",
     treasury: "alphaX-protocol.js",
-    twitter: "AlphaX_Finance",
+    twitter: "AlphaX_Exchange",
     audit_links: [
       "https://github.com/AlphaX-Protocol/AlphaX-Protocol-Contract/blob/master/Audit-Report/AlphaX%20Audit%20final.pdf",
     ],

@@ -57766,7 +57766,7 @@ const data3: Protocol[] = [
       "Bridge between Fuel Ignition and Ethereum",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/fuel.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -57776,7 +57776,7 @@ const data3: Protocol[] = [
     twitter: "fuel_network",
     oracles: [],
     forkedFrom: [],
-    audit_links: [],
+    audit_links: ["https://github.com/FuelLabs/audits/blob/master/fuel-audit-september-2024(Diffs%20on%20the%20Bridge%20and%20State%20Contracts)(Public).pdf"],
   },
   {
     id: "5249",

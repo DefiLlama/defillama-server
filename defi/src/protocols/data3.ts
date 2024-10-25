@@ -38877,7 +38877,7 @@ const data3: Protocol[] = [
     description: `Satoshi Protocol is the 1st universal stablecoin protocol backed by Bitcoin, using BTC as collateral to mint the native stablecoin satUSD across Bitcoin Mainnet, Layer 2s, and the EVM ecosystem.`,
     chain: "BEVM",
     logo: `${baseIconsUrl}/satoshi-protocol.png`,
-    audits: "4",
+    audits: "3",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

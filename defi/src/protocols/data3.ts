@@ -58536,7 +58536,7 @@ const data3: Protocol[] = [
     chains: ["Solana"],
     oracles: [],
     forkedFrom: [],
-    module: "adrastea/index.js",
+    module: "adrastea-lrt/index.js",
     twitter: "AdrasteaFinance",
     parentProtocol: "parent#adrastea",
     listedAt: 1729889024
@@ -58558,7 +58558,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Mantle"],
     oracles: [],
     forkedFrom: [],
-    module: "adrastea/index.js",
+    module: "hourglass/index.js",
     twitter: "hourglasshq",
     audit_links: [
       "https://github.com/SublimeGroupSecurity/security_audits/tree/main/Hourglass",

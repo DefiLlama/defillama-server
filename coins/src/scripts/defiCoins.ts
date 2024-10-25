@@ -4,9 +4,8 @@ import {
   batchWrite2WithAlerts,
   filterWritesWithLowConfidence,
 } from "../adapters/utils/database";
-console.log("db imports done");
 import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
-console.log("importing adapters");
+console.log(process.version);
 import adapters from "../adapters/index";
 console.log("adapters imported");
 import { PromisePool } from "@supercharge/promise-pool";

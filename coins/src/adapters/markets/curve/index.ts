@@ -81,6 +81,9 @@ export function curve6(timestamp: number = 0) {
       "0x3b9860321f03afe02d3ff9e4fdd4017dc6f4d7ca",
       "0x1f0dbecda414f401db46464864273cad19368706",
       "0x3e07f263c1ce5ec2a3f1ca87af56b80b27674d96",
+      "0x68446d5f287c5dfaabff932efbecda2dd7e7861b",
+      "0x70d410b739da81303a76169cdd406a746bde8b34",
+      "0x5ecfa6940a33a2dad5c473896452f018c6c04577",
     ]),
   ]);
 }
@@ -124,18 +127,18 @@ export function curve13(timestamp: number = 0) {
 }
 
 export const adapters = {
-  curve,
-  curve1,
-  curve2,
-  curve3,
-  curve4,
-  curve5,
+  // curve,
+  // curve1,
+  // curve2,
+  // curve3,
+  // curve4,
+  // curve5,
   curve6,
-  curve7,
-  curve8,
-  curve9,
-  curve10,
-  curve11,
-  curve12,
-  curve13,
+  // curve7,
+  // curve8,
+  // curve9,
+  // curve10,
+  // curve11,
+  // curve12,
+  // curve13,
 };

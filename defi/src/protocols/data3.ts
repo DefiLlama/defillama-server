@@ -38888,7 +38888,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["DIA", "APRO", "API3"],
     github: ["Satoshi-Protocol"],
-    audit_links: ["https://github.com/Satoshi-Protocol/satoshi-audit-report"],
+    audit_links: ["https://docs.satoshiprotocol.org/outro/audit-reports"],
     listedAt: 1711912377,
   },
   {

@@ -743,6 +743,11 @@
     }
   },
   "base": {
+    "0x5e40f26E89213660514c51Fb61b2d357DBf63C85": {
+      "decimals": "18",
+      "symbol": "nARS",
+      "to": "coingecko#num-ars"
+    },
     "0x69420f9e38a4e60a62224c489be4bf7a94402496": {
       "decimals": "18",
       "symbol": "MONEY",

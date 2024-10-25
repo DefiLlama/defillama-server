@@ -102,5 +102,5 @@ export default {
   thena: require("./markets/thena"),
   pancakeStable: require("./markets/pancakeStable"),
   etherfi: require("./yield/etherfi"),
-  // wcgUSD: require("./other/wcgUSD"),
+  wcgUSD: require("./other/wcgUSD"),
 };

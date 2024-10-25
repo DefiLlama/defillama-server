@@ -55531,7 +55531,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["TON"],
-    module: "dummy.js",
+    module: "swap-coffee/index.js",
     twitter: "swap_coffee_ton",
     forkedFrom: [],
     oracles: [], 
@@ -58471,7 +58471,53 @@ const data3: Protocol[] = [
     twitter: "_morkie",
     listedAt: 1729760472
   },
-
+  {
+    id: "5280",
+    name: "Origin ARM",
+    address: null,
+    symbol: "-",
+    url: "https://www.originprotocol.com/arm",
+    description:
+      "The Origin ARM vault allows users to deposit ETH and earn passive yield. The ARM earns yield by using ETH to buy stETH from the market at a discount and redeeming it 1:1 through Lido’s stETH redemption queue.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/origin-arm.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "originarm/index.js",
+    twitter: "OriginProtocol",
+    audit_links: ["https://docs.originprotocol.com/security-and-risk/audits"],
+    parentProtocol: "parent#origin-defi",
+    listedAt: 1729847936
+  },
+  {
+    id: "5281",
+    name: "Xend Finance",
+    address: null,
+    symbol: "-",
+    url: "https://xend.finance",
+    description:
+      "Xend Finance, the first DeFi project out of Africa that’s backed by Binance and Google, is now evolving into a platform where any asset, tangible or intangible, can be legally tokenized and accessed by anyone, anywhere.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/xend-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "xendfinance",
+    github: ["xendfinance"],
+    listedAt: 1729848136
+  },
 ];
 
 export default data3;

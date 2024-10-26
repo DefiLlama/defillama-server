@@ -58567,6 +58567,31 @@ const data3: Protocol[] = [
     github: ["pitch-foundation"],
     listedAt: 1729889024
   },
+  {
+    id: "5284",
+    name: "Nest Staking",
+    address: null,
+    symbol: "-",
+    url: "https://nest.credit/",
+    description: "Nest Staking provides native yield from tokenized RWAs on Plume Network",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/nest-staking.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "nest-staking/index.js",
+    twitter: "NestStaking",
+    audit_links: [
+      "https://github.com/plumenetwork/contracts/blob/main/staking/audit/slowmist.pdf",
+      "https://github.com/plumenetwork/contracts/blob/main/staking/audit/slowmist2.pdf"
+    ],
+    listedAt: 1729962607
+  },
 ];
 
 export default data3;

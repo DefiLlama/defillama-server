@@ -3887,9 +3887,9 @@ const data2: Protocol[] = [
     name: "Burrow",
     address: "near:-",
     symbol: "BRRR",
-    url: "https://burrow.finance/",
+    url: "https://app.burrow.finance/",
     description:
-      "Burrow is a decentralized, non-custodial pool-based interest rates platform that enables users to supply assets to earn interest, and to borrow against them to unlock liquidity. Burrow is similar in nature to Aave, Compound, and other pool-based protocols. Burrow runs natively on the NEAR blockchain, a layer 1, proof-of-stake, sharded blockchain with a WebAssembly runtime. The Burrow protocol's smart contracts are written in Rust.",
+      "Burrow is a decentralized, non-custodial, pool-based interest rates platform that enables users to supply assets to earn interest, and to borrow against them to unlock liquidity. Burrow is similar in nature to Aave, Compound, and other pool-based protocols.",
     chain: "Near",
     logo: `${baseIconsUrl}/burrow.png`,
     audits: "2",
@@ -3898,7 +3898,7 @@ const data2: Protocol[] = [
     cmcId: "20604",
     category: "Lending",
     chains: ["Near"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth"], // https://docs.burrow.finance/product-docs/how-burrow-works/oracle#pyth-oracle
     forkedFrom: [],
     audit_links: [
       "https://github.com/NearDeFi/burrowland/blob/main/blocksec-audit-signed-1.pdf",

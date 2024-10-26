@@ -2137,5 +2137,8 @@ export default {
     },
     "step-finance": {
         id: "4837"
+    },
+    "assetchain": {
+        id: "42420"
     }
 } as AdaptorsConfig

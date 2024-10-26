@@ -1221,10 +1221,6 @@ export default {
     "paal-ai": {
         "id": "3723"
     },
-    "kinetix": {
-        parentId: "Kinetix",
-        "id": "3534"
-    },
     "retro": {
         "id": "3311"
     },

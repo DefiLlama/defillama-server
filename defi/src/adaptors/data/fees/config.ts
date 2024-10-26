@@ -2140,5 +2140,17 @@ export default {
     },
     "assetchain": {
         id: "8519"
+    },
+    "kinetix-v2": {
+        parentId: "Kinetix",
+        id: "3533"
+    },
+    "kinetix-v3": {
+        parentId: "Kinetix",
+        id: "3534"
+    },
+    "metavault-amm-v2": {
+        parentId: "MetaVault",
+        id: "5186"
     }
 } as AdaptorsConfig

@@ -2260,6 +2260,7 @@ export default {
         }
     },
     "fenix-finance": {
+        parentId: "Fenix Finance",
         enabled: false,
         id: "4563"
     },
@@ -2510,5 +2511,17 @@ export default {
     },
     "mira-ly": {
         id: "5252"
+    },
+    "fenix-finance-v3": {
+        parentId: "Fenix Finance",
+        id: "4775"
+    },
+    "kinetix-v2": {
+        parentId: "Kinetix",
+        id: "3533"
+    },
+    "metavault-amm-v2": {
+        parentId: "MetaVault",
+        id: "5186"
     }
 } as AdaptorsConfig

@@ -2139,6 +2139,6 @@ export default {
         id: "4837"
     },
     "assetchain": {
-        id: "42420"
+        id: "8519"
     }
 } as AdaptorsConfig

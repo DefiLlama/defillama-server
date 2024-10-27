@@ -116,7 +116,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     JEFE: "0x80fa6d5384bdde296a28a321f73ab70977575129",
     LORT: "0xd24616870ca41bc01074446988faeb0085a71190",
     BCCOIN: "0x2940566Eb50F15129238f4Dc599ADC4F742D7d8E",
-    PNIC: "0x76d36d44dc4595e8d2eb3ad745f175eda134284f"
+    PNIC: "0x76d36d44dc4595e8d2eb3ad745f175eda134284f",
+    PENDLE_LPT: "0x0921ccc98956b1599003fd9739d5e66bf319a161"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
@@ -129,7 +130,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     //WIF: "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
     GUAC: "AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR",
     OVOL: "4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6",
-    TRUMP: "AwRErBEFGTnohzfLeRSBH9HddQEy2oeRxnWLrbvFFh95"
+    TRUMP: "AwRErBEFGTnohzfLeRSBH9HddQEy2oeRxnWLrbvFFh95",
+    SONICSSOL: "sSo14endRuUbvQaJS3dq36Q829a3A6BEfoeeRGJywEh",
   },
   pulse: {
     GLOBO: "0x13568d812d30359756db5e617a7a8eb7eb3917f5",

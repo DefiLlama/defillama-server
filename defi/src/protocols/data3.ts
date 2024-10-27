@@ -58634,6 +58634,29 @@ const data3: Protocol[] = [
     twitter: "fragmetric",
     listedAt: 1730019630
   },
+  {
+    id: "5287",
+    name: "Bonzo Finance",
+    address: null,
+    symbol: "-",
+    url: "https://bonzo.finance/",
+    description: "The Liquidity Layer of Hedera: An open source, non-custodial lending protocol based on Aave",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/bonzo-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Hedera"],
+    oracles: ["Supra"], // https://docs.bonzo.finance/hub/developer/oracles/supra
+    forkedFrom: ["AAVE V2"],
+    module: "bonzo/index.js",
+    twitter: "bonzo_finance",
+    audit_links: ["https://docs.bonzo.finance/hub/resources/audits"],
+    github: ["Bonzo-Labs"],
+    listedAt: 1730054887
+  },
 ];
 
 export default data3;

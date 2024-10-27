@@ -58592,6 +58592,48 @@ const data3: Protocol[] = [
     ],
     listedAt: 1729962607
   },
+  {
+    id: "5285",
+    name: "SuiMarket",
+    address: null,
+    symbol: "-",
+    url: "https://suimarket.net/markets",
+    description: "The first prediction market on Sui network",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/suimarket.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Sui"],
+    oracles: [],
+    forkedFrom: [],
+    module: "suimarket/index.js",
+    twitter: "SuiMarketNet",
+    listedAt: 1730019464
+  },
+  {
+    id: "5286",
+    name: "Fragmetric",
+    address: null,
+    symbol: "-",
+    url: "https://fragmetric.xyz",
+    description: "Fragmetric is a native liquid restaking protocol on Solana that aims to improve the economic potential and security of the Solana ecosystem. Fragmetric succeeded in carrying out NCN reward distribution by utilizing Solana's token extension. Additionally, Fragmetric created useful solutions, such as the Normalized Token Program, for utilizing various LSTs in restaking platforms. The goal of Fragmetric is to create a safe, open, and incredibly effective restaking system that empowers users and supports the stability of the Solana restaking ecosystem.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/fragmetric.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Sui"],
+    oracles: [],
+    forkedFrom: [],
+    module: "fragmetric/index.js",
+    twitter: "fragmetric",
+    listedAt: 1730019630
+  },
 ];
 
 export default data3;

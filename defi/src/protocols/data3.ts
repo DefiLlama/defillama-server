@@ -58641,7 +58641,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://bonzo.finance/",
     description: "The Liquidity Layer of Hedera: An open source, non-custodial lending protocol based on Aave",
-    chain: "Sui",
+    chain: "Hedera",
     logo: `${baseIconsUrl}/bonzo-finance.png`,
     audits: "0",
     audit_note: null,

@@ -5,13 +5,18 @@ import {
 import { getTokenInfo } from "./erc20";
 import { Write, CoinData } from "./dbInterfaces";
 
+function normalize(addr: string, chain?: string) {
+  if (!addr || ['solana'].includes(chain as any)) return addr
+  return addr.toLowerCase()
+}
+
 export default async function getWrites(params: { chain: string, timestamp: number, pricesObject: Object, writes?: Write[], projectName: string, underlyingChain?: string, confidence?: number}) {
   let { chain, timestamp, pricesObject, writes = [], underlyingChain, confidence } = params
   const entries = Object.entries(pricesObject).map(([token, obj]) => {
     return {
-      token: token.toLowerCase(),
+      token: normalize(token, chain),
       price: obj.price,
-      underlying: obj.underlying?.toLowerCase(),
+      underlying: normalize(obj.underlying, chain),
       symbol: obj.symbol ?? undefined,
       decimals: obj.decimals ?? undefined,
     }
@@ -21,7 +26,7 @@ export default async function getWrites(params: { chain: string, timestamp: numb
     tokenInfos,
     coinsData
   ] = await Promise.all([
-    getTokenInfo(underlyingChain ?? chain, entries.map(i => i.token), undefined),
+    chain === 'solana' ? {} as any : getTokenInfo(underlyingChain ?? chain, entries.map(i => i.token), undefined),
     getTokenAndRedirectDataMap(entries.map(i => i.underlying).filter(i => i), underlyingChain ?? chain, timestamp)
   ])
 

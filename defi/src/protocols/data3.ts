@@ -58679,6 +58679,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#mimo",
     listedAt: 1730113995
   },
+  {
+    id: "5289",
+    name: "Fisclend Finance",
+    address: null,
+    symbol: "-",
+    url: "https://fisclend.finance",
+    description: "FiscLend is an open lending and borrowing DeFi protocol on apeChain & worldChain.",
+    chain: "ApeChain",
+    logo: `${baseIconsUrl}/fisclend-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["ApeChain", "World Chain"],
+    oracles: [], 
+    forkedFrom: ["Compound V2"],
+    module: "fisclend/index.js",
+    twitter: "Fisclend_fi",
+    listedAt: 1730127158
+  },
 ];
 
 export default data3;

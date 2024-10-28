@@ -53858,7 +53858,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Injective"],
-    module: "dummy.js",
+    module: "injective-orderbook-derivatives/index.js",
     twitter: "HelixApp_",
     forkedFrom: [],
     oracles: [],

@@ -3887,7 +3887,7 @@ const data2: Protocol[] = [
     name: "Burrow",
     address: "near:-",
     symbol: "BRRR",
-    url: "https://burrow.finance/",
+    url: "https://app.burrow.finance/",
     description:
       "Burrow is a decentralized, non-custodial, pool-based interest rates platform that enables users to supply assets to earn interest, and to borrow against them to unlock liquidity. Burrow is similar in nature to Aave, Compound, and other pool-based protocols.",
     chain: "Near",
@@ -3898,8 +3898,12 @@ const data2: Protocol[] = [
     cmcId: "20604",
     category: "Lending",
     chains: ["Near"],
-    oracles: [],
+    oracles: ["Price Oracle"], // https://docs.burrow.finance/product-docs/how-burrow-works/oracle#price-oracle & https://github.com/DefiLlama/defillama-server/pull/8381
     forkedFrom: [],
+    audit_links: [
+      "https://github.com/NearDeFi/burrowland/blob/main/blocksec-audit-signed-1.pdf",
+      "https://github.com/NearDeFi/burrowland/blob/main/blocksec-audit-signed-2.pdf",
+    ],
     module: "burrow.cash/index.js",
     twitter: "burrow_finance",
     listedAt: 1647296278,

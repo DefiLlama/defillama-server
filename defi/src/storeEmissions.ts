@@ -45,7 +45,7 @@ async function aggregateMetadata(
     throw new Error(`no metadata for raw token ${rawData.metadata.token}`);
 
   let name = id;
-  let gecko_id = pData?.gecko_id;
+  let gecko_id = pData?.gecko_id ?? cgId;
 
   if (pData?.parentProtocol) {
     name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;
@@ -213,9 +213,9 @@ async function processProtocolList() {
 
   await handlerErrors(protocolErrors);
 
-  await storeR2JSONString("emissionsProtocolsList", JSON.stringify([...new Set(protocolsArray)]));
+  // await storeR2JSONString("emissionsProtocolsList", JSON.stringify([...new Set(protocolsArray)]));
 
-  await storeR2JSONString("emissionsBreakdown", JSON.stringify(emissionsBrakedown));
+  // await storeR2JSONString("emissionsBreakdown", JSON.stringify(emissionsBrakedown));
 }
 export async function handler() {
   try {

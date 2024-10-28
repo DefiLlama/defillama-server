@@ -2148,8 +2148,5 @@ export default {
     "metavault-amm-v2": {
         parentId: "MetaVault",
         id: "5186"
-    },
-    "dexter-tezos": {
-        id: "3040"
     }
 } as AdaptorsConfig

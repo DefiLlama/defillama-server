@@ -53,6 +53,7 @@
     "@solana/web3.js": "^1.73.3",
     "@supercharge/promise-pool": "^2.1.0",
     "axios": "^1.6.7",
+    "crypto-js": "^4.2.0",
     "dayjs": "^1.11.10",
     "dotenv": "^8.6.0",
     "ethers": "^6.0.0",

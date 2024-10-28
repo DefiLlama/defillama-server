@@ -3898,7 +3898,7 @@ const data2: Protocol[] = [
     cmcId: "20604",
     category: "Lending",
     chains: ["Near"],
-    oracles: ["Pyth"], // https://docs.burrow.finance/product-docs/how-burrow-works/oracle#pyth-oracle
+    oracles: ["Price Oracle"], // https://docs.burrow.finance/product-docs/how-burrow-works/oracle#price-oracle & https://github.com/DefiLlama/defillama-server/pull/8381
     forkedFrom: [],
     audit_links: [
       "https://github.com/NearDeFi/burrowland/blob/main/blocksec-audit-signed-1.pdf",

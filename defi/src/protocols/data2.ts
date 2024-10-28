@@ -20852,7 +20852,7 @@ const data2: Protocol[] = [
     symbol: "QUO",
     url: "https://quoll.finance",
     description:
-      "Quoll Finance is a yield booster and on-chain incubator. It leverages the veToken/boosted yield model adopted by Wombat Exchange to provide a boosted yield for LPs and extra reward to WOM holders with a tokenized version of veWOM, qWOM.",
+      "Quoll Finance is a yield booster and on-chain incubator. It leverages multi veTOKENS and boosted yield model with a single Token strategy, to provide a boosted yield for LPs and extra reward to token holders with a tokenized and liquid version of the veTOKENS",
     chain: "Binance",
     logo: `${baseIconsUrl}/quoll.png`,
     audits: "2",

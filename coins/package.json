@@ -17,7 +17,6 @@
     "fetch-cg-min": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/coingecko.ts false",
     "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/defiCoins.ts",
     "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/bridges.ts",
-    "fetch-okx-metadata": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/okxMetadata.ts",
     "update-token-mapping": "node src/adapters/utils/updateTokenMapping.js",
     "check-rpc-blocks": "ts-node src/scripts/checkRpcBlocks.ts"
   },

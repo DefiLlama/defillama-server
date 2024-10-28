@@ -13,7 +13,7 @@ async function solanaAVS(timestamp: number = 0) {
   const pricesObject: any = {}
   tokens.forEach((token, i) => {
     const price = balances[i].amount / supplies[i].amount
-    pricesObject[token.underlying] = {
+    pricesObject[token.mint] = {
       underlying: token.underlying,
       price,
       symbol: token.symbol,

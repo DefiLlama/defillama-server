@@ -44,7 +44,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     EULER_LP9: "0xbd1bd5c956684f7eb79da40f582cbe1373a1d593",
     // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab",
     PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78",
-    XYZ: "0x618679df9efcd19694bb1daa8d00718eacfa2883"
+    XYZ: "0x618679df9efcd19694bb1daa8d00718eacfa2883",
+    PT_USD0_27MAR2025: "0x5bae9a5d67d1ca5b09b14c91935f635cfbf3b685"
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'

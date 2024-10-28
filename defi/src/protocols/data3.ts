@@ -38877,18 +38877,22 @@ const data3: Protocol[] = [
     description: `Satoshi Protocol is the 1st universal stablecoin protocol backed by Bitcoin, using BTC as collateral to mint the native stablecoin satUSD across Bitcoin Mainnet, Layer 2s, and the EVM ecosystem.`,
     chain: "BEVM",
     logo: `${baseIconsUrl}/satoshi-protocol.png`,
-    audits: "2",
+    audits: "3",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "CDP",
-    chains: ["Bitlayer", "BOB"],
+    chains: ["BEVM", "Bitlayer", "BOB"],
     module: "satoshi-protocol/index.js",
-    twitter: "SatoshiBEVM",
-    forkedFrom: ["Liquity"],
-    oracles: ["DIA"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/9632
+    twitter: "Satoshi_BTCFi",
+    forkedFrom: [],
+    oraclesByChain: {
+      bevm: ["DIA"], // https://docs.satoshiprotocol.org/outro/oracle
+      btr: ["APRO"], // https://docs.satoshiprotocol.org/outro/oracle
+      bob: ["API3","DIA","APRO"] // https://docs.satoshiprotocol.org/outro/oracle
+    },
     github: ["Satoshi-Protocol"],
-    audit_links: ["https://github.com/Satoshi-Protocol/satoshi-audit-report"],
+    audit_links: ["https://docs.satoshiprotocol.org/outro/audit-reports"],
     listedAt: 1711912377,
   },
   {

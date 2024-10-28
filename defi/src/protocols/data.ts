@@ -24293,8 +24293,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "mimoswap/index.js",
     twitter: "mimoprotocol",
     forkedFrom: ["Uniswap V2"],
+    parentProtocol: "parent#mimo",
     listedAt: 1641944808,
-    github: ["mimoprotocol"],
   },
   {
     id: "1242",

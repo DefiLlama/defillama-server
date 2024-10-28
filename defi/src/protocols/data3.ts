@@ -58643,7 +58643,7 @@ const data3: Protocol[] = [
     description: "The Liquidity Layer of Hedera: An open source, non-custodial lending protocol based on Aave",
     chain: "Hedera",
     logo: `${baseIconsUrl}/bonzo-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -58656,6 +58656,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.bonzo.finance/hub/resources/audits"],
     github: ["Bonzo-Labs"],
     listedAt: 1730054887
+  },
+  {
+    id: "5288",
+    name: "Mimo V3",
+    address: null,
+    symbol: "-",
+    url: "https://mimo.exchange",
+    description: "Mimo is a decentralized liquidity protocol that will fuel the next wave of decentralized finance (DeFi) on IoTeX. mimo’s vision is to empower next-gen DeFi products that utilize our state-of-the-art automated liquidity protocol and the IoTeX's lightning-fast speed, low gas fees, and cross-chain capabilities.",
+    chain: "IoTeX",
+    logo: `${baseIconsUrl}/mimo-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["IoTeX"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    module: "mimoswap-v3/index.js",
+    twitter: "mimoprotocol",
+    parentProtocol: "parent#mimo",
+    listedAt: 1730113995
   },
 ];
 

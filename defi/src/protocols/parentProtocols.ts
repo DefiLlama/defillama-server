@@ -5698,6 +5698,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AdrasteaFinance",
   },
+  {
+    id: "parent#mimo",
+    name: "Mimo",
+    url: "https://mimo.exchange",
+    description:
+      "Mimo is a decentralized liquidity protocol that will fuel the next wave of decentralized finance (DeFi) on IoTeX. mimo’s vision is to empower next-gen DeFi products that utilize our state-of-the-art automated liquidity protocol and the IoTeX's lightning-fast speed, low gas fees, and cross-chain capabilities.",
+    logo: `${baseIconsUrl}/mimo.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "mimoprotocol",
+    github: ["mimoprotocol"],
+  },
 ];
 
 export default parentProtocols;

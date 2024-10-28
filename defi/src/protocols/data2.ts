@@ -20440,7 +20440,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Injective"],
     module: "injective-orderbook/index.js",
     twitter: "HelixApp_",

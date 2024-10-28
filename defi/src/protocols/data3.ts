@@ -53856,7 +53856,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Dexes",
     chains: ["Injective"],
     module: "injective-orderbook-spot/index.js",
     twitter: "HelixApp_",

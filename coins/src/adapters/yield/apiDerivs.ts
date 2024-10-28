@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
+import { getApi } from "../utils/sdk";
 
 type Config = {
   chain: string;
@@ -84,6 +85,34 @@ const configs: { [adapter: string]: Config } = {
     underlying: "sp102v8p0f7jx67arq77wea3d3cfb5xw39redt0am.token-wstx",
     decimals: "6",
     symbol: "stSTX",
+  },
+  LBTCv: {
+    rate: async ({ t }) => {
+      const api = await getApi("ethereum", t, true);
+      const [tvls, supply] = await Promise.all([
+        fetch("https://api.llama.fi/protocol/lombard-vault").then((r) =>
+          r.json(),
+        ),
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0x5401b8620E5FB570064CA9114fd1e135fd77D57c",
+        }),
+      ]);
+      const tvl = tvls.tvl.reduce(
+        (
+          prev: { date: number; totalLiquidityUSD: number },
+          curr: { date: number; totalLiquidityUSD: number },
+        ) => (Math.abs(curr.date - t) < Math.abs(prev.date - t) ? curr : prev),
+      );
+      if (Math.abs(tvl.date - t) > 8 * margin)
+        throw new Error(`no TVL data for Lombard Vault at this time`);
+      return (tvl.totalLiquidityUSD * 1e8) / supply;
+    },
+    chain: "ethereum",
+    address: "0x5401b8620E5FB570064CA9114fd1e135fd77D57c",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    decimals: "8",
+    symbol: "LBTCv",
   },
 };
 

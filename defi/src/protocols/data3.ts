@@ -38886,7 +38886,11 @@ const data3: Protocol[] = [
     module: "satoshi-protocol/index.js",
     twitter: "Satoshi_BTCFi",
     forkedFrom: [],
-    oracles: ["DIA", "APRO", "API3"],
+    oraclesByChain: {
+      bevm: ["DIA"], // https://docs.satoshiprotocol.org/outro/oracle
+      btr: ["APRO"], // https://docs.satoshiprotocol.org/outro/oracle
+      bob: ["API3","DIA","APRO"] // https://docs.satoshiprotocol.org/outro/oracle
+    },
     github: ["Satoshi-Protocol"],
     audit_links: ["https://docs.satoshiprotocol.org/outro/audit-reports"],
     listedAt: 1711912377,

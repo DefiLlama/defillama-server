@@ -57,70 +57,66 @@ async function fetchPrices(params?: {
     timestamp: number,
     block: number
 }): Promise<Write[]> {
-    try {
-        const xaiPricePromise =  getTokenAndRedirectData(
-            [XAI_ADDRESS],
-            CHAIN,
-            params?.timestamp ?? getCurrentUnixTimestamp()
-        );
-        // alXAI - 0, XAI - 1
-        const curvePoolRate: Promise<{ output: string }> = call({
-            target: AL_XAI_TO_XAI_CURVE_POOL,
-            abi: abi.curvePoolQuoteAlXaiToXai,
-            chain: CHAIN,
-            params: ['0', '1', String(1e18)],
-            block: params?.block
-        });
-        const rateStXaiToAlXaiPromise: Promise<{ output: string }> = call({
-            target: XAI_SERVICE_ADDRESS,
-            abi: abi.previewSharesToLiquidity,
-            chain: CHAIN,
-            params: [String(1e18)],
-            block: params?.block
-        });
-        const [xaiPriceRes, rateResult, curvePoolRateRes] = await Promise.all(
-            [
-                xaiPricePromise,
-                rateStXaiToAlXaiPromise,
-                curvePoolRate
-            ]).catch(() => {
-            throw new Error('Could not fetch pool supply or ratio')
-        });
+    const xaiPricePromise =  getTokenAndRedirectData(
+        [XAI_ADDRESS],
+        CHAIN,
+        params?.timestamp ?? getCurrentUnixTimestamp()
+    );
+    // alXAI - 0, XAI - 1
+    const curvePoolRate: Promise<{ output: string }> = call({
+        target: AL_XAI_TO_XAI_CURVE_POOL,
+        abi: abi.curvePoolQuoteAlXaiToXai,
+        chain: CHAIN,
+        params: ['0', '1', String(1e18)],
+        block: params?.block
+    });
+    const rateStXaiToAlXaiPromise: Promise<{ output: string }> = call({
+        target: XAI_SERVICE_ADDRESS,
+        abi: abi.previewSharesToLiquidity,
+        chain: CHAIN,
+        params: [String(1e18)],
+        block: params?.block
+    });
+    const [xaiPriceRes, rateResult, curvePoolRateRes] = await Promise.all(
+        [
+            xaiPricePromise,
+            rateStXaiToAlXaiPromise,
+            curvePoolRate
+        ]).catch(() => {
+        throw new Error('Could not fetch pool supply or ratio')
+    });
 
-        const usdXaiPrice = xaiPriceRes[0].price;
-        const multiplierXaiToAlXai = parseFloat(formatUnits(curvePoolRateRes.output, 18));
+    const usdXaiPrice = xaiPriceRes[0].price;
+    const multiplierXaiToAlXai = parseFloat(formatUnits(curvePoolRateRes.output, 18));
 
-        const usdAlXaiPrice = usdXaiPrice * multiplierXaiToAlXai;
-        const multiplierAlXaiToStXai = parseFloat(formatUnits(rateResult.output, 18));
+    const usdAlXaiPrice = usdXaiPrice * multiplierXaiToAlXai;
+    const multiplierAlXaiToStXai = parseFloat(formatUnits(rateResult.output, 18));
 
-        const usdStXaiPrice = usdAlXaiPrice * multiplierAlXaiToStXai;
+    const usdStXaiPrice = usdAlXaiPrice * multiplierAlXaiToStXai;
 
-        const stXaiWrites = [{
-            SK: 0,
-            ...ST_XAI_META,
-            timestamp: getCurrentUnixTimestamp(),
-            price: usdStXaiPrice
-        },
-        {
-            SK: getCurrentUnixTimestamp(),
-            ...ST_XAI_META,
-            price: usdStXaiPrice
-        }];
+    const stXaiWrites = [{
+        SK: 0,
+        ...ST_XAI_META,
+        timestamp: getCurrentUnixTimestamp(),
+        price: usdStXaiPrice
+    },
+    {
+        SK: getCurrentUnixTimestamp(),
+        ...ST_XAI_META,
+        price: usdStXaiPrice
+    }];
 
-        const alXaiWrites = [{
-            SK: 0,
-            ...AL_XAI_META,
-            price: usdAlXaiPrice,
-            timestamp: getCurrentUnixTimestamp(),
-        },
-        {
-            SK: getCurrentUnixTimestamp(),
-            ...AL_XAI_META,
-            price: usdAlXaiPrice
-        }];
+    const alXaiWrites = [{
+        SK: 0,
+        ...AL_XAI_META,
+        price: usdAlXaiPrice,
+        timestamp: getCurrentUnixTimestamp(),
+    },
+    {
+        SK: getCurrentUnixTimestamp(),
+        ...AL_XAI_META,
+        price: usdAlXaiPrice
+    }];
 
-        return [...stXaiWrites, ...alXaiWrites];
-    } catch (e) {
-        return []
-    }
+    return [...stXaiWrites, ...alXaiWrites];
 }

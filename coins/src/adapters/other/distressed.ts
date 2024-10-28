@@ -131,7 +131,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     GUAC: "AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR",
     OVOL: "4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6",
     TRUMP: "AwRErBEFGTnohzfLeRSBH9HddQEy2oeRxnWLrbvFFh95",
-    SONICSSOL: "sSo14endRuUbvQaJS3dq36Q829a3A6BEfoeeRGJywEh",
   },
   pulse: {
     GLOBO: "0x13568d812d30359756db5e617a7a8eb7eb3917f5",

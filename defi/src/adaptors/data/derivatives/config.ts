@@ -431,7 +431,7 @@ export default {
         }
     },
     "rabbitx": {
-        enabled: false,
+        enabled: true,
         "id": "2886",
         parentId: "RabbitX Fusion",
         cleanRecordsConfig: {

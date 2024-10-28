@@ -11,5 +11,7 @@ export function meanFinance(timestamp: number = 0) {
     getTokenPrices("moonbeam", timestamp),
     getTokenPrices("rsk", timestamp),
     getTokenPrices("avalanche", timestamp),
+    getTokenPrices("avax", timestamp),
+    getTokenPrices("base", timestamp),
   ]);
 }

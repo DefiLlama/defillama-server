@@ -147,7 +147,8 @@ export const chainToCoingeckoId = {
   ancient8: "ancient8",
   degen: "degen",
   cronos_zkevm: "cronos-zkevm",
-  iotaevm: 'iota-evm'
+  iotaevm: 'iota-evm', 
+  real: 're-al',
 
 
   // chz: "chiliz",

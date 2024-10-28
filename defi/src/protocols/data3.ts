@@ -58693,7 +58693,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["ApeChain", "World Chain"],
+    chains: ["ApeChain"],
     oracles: [], 
     forkedFrom: ["Compound V2"],
     module: "fisclend/index.js",

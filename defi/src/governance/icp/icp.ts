@@ -118,7 +118,7 @@ async function update_recent_proposals ( cache : GovCache, config : NervousSyste
     // 12 weeks in seconds
     let time_frame = 12 * 7 * 24 * 60 * 60
     // There are two proposal states that are terminal
-    let terminal_proposal_states = [ "EXECUTED", "FAILED", "REJECTED" ];
+    let terminal_proposal_states = [ "EXECUTED", "FAILED", "REJECTED", "Executed", "Defeated", "Canceled" ];
 
     // Go through all proposals in the past 12 weeks and update those which have not yet reached a terminal state
     let proposal_ids = Object.keys( cache.proposals );

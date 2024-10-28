@@ -4232,6 +4232,21 @@
       "to": "coingecko#pearl",
       "decimals": 18,
       "symbol": "PEARL"
+    },
+    "0xc518a88c67ceca8b3f24c4562cb71deeb2af86b7": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0xddf533a1cd8376473bfe5ae1d93b90e39e3d6fad": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0xb2d75f8aa33608cf15940ed47bf139f7cd15d073": {
+      "to": "coingecko#real-usd",
+      "decimals": 9,
+      "symbol": "USDR"
     }
   },
   "cyeth": {

@@ -2839,7 +2839,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Yield Lottery",
     chains: ["Ethereum", "Celo", "Binance"],
     module: "pooltogether/index.js",
     twitter: "PoolTogether_",

@@ -31577,7 +31577,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Liquid Restaking",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: [], //https://github.com/DefiLlama/defillama-server/pull/8417
     forkedFrom: [],
     module: "puffer/index.js",
     twitter: "puffer_finance",
@@ -43632,10 +43632,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Bridge", // move to bridge, since there is solv BTC on any l2 btc already, so double counted
     chains: ["Ethereum"],
-    oraclesByChain: {
-      ethereum: [], 
-      bsc: [],
-    },
+    oracles: [], // https://github.com/DefiLlama/defillama-server/pull/8418
     forkedFrom: [],
     module: "solvbtc/index.js",
     twitter: "SolvProtocol",
@@ -54379,7 +54376,7 @@ const data3: Protocol[] = [
     category: "Restaked BTC",
     chains: ["Bitcoin"],
     module: "lombard/index.js",
-    oracles: [],
+    oracles: [], // https://github.com/DefiLlama/defillama-server/pull/8419
     forkedFrom: [],
     twitter: "Lombard_Finance",
     parentProtocol: "parent#lombard-finance",

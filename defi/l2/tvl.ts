@@ -162,7 +162,7 @@ async function translateToChainData(
     const percOnThisChain = total.div(nativeTokenTotalValues[ownToken.ticker]);
     const mcaps = await mcapsPromise;
     const address = Object.keys(mcaps).find((k: string) => k.startsWith(chain)) ?? ownToken.address;
-    const mcap = address ? mcaps[address].mcap : total;
+    const mcap = address && address in mcaps ? mcaps[address].mcap : total;
     const thisAssetMcap = BigNumber.min(mcap, total).times(percOnThisChain);
     translatedData[chain].ownTokens.total = translatedData[chain].ownTokens.total.plus(thisAssetMcap);
     translatedData[chain].ownTokens.breakdown[ownToken.ticker] =

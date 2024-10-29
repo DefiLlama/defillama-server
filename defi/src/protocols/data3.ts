@@ -58768,7 +58768,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5293",
-    name: "NeuralAI ",
+    name: "NeuralAI",
     address: "0x32b053f2cba79f80ada5078cb6b305da92bde6e1",
     symbol: "NEURAL",
     url: "https://stake.goneural.io",

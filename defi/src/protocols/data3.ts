@@ -58707,7 +58707,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.surge.trade",
-    description: "Perpetual DEX powered by SRG",
+    description: "Surge is an on-ledger perpetual exchange, bringing cross-margin trading to Radix using oracle prices. Powered by SRG",
     chain: "Radix",
     logo: `${baseIconsUrl}/surge-trade.jpg`,
     audits: "0",

@@ -38882,7 +38882,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CDP",
-    chains: ["BEVM", "Bitlayer", "BOB"],
+    chains: ["Bitlayer", "BOB"],
     module: "satoshi-protocol/index.js",
     twitter: "Satoshi_BTCFi",
     forkedFrom: [],

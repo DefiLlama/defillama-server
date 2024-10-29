@@ -3907,10 +3907,6 @@ const data2: Protocol[] = [
     module: "burrow.cash/index.js",
     twitter: "burrow_finance",
     listedAt: 1647296278,
-    audit_links: [
-      "https://github.com/NearDeFi/burrowland/blob/main/blocksec-audit-signed-1.pdf",
-      "https://github.com/NearDeFi/burrowland/blob/main/blocksec-audit-signed-2.pdf",
-    ],
     github: ["NearDeFi"],
   },
   {

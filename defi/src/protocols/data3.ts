@@ -54379,7 +54379,7 @@ const data3: Protocol[] = [
     category: "Restaked BTC",
     chains: ["Bitcoin"],
     module: "lombard/index.js",
-    oracles: ["RedStone"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11458
+    oracles: [],
     forkedFrom: [],
     twitter: "Lombard_Finance",
     parentProtocol: "parent#lombard-finance",

@@ -57,7 +57,7 @@ async function generateAuth() {
   auth = process.env.COINS2_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 }
-async function queryPostgresWithRetry(
+export async function queryPostgresWithRetry(
   query: any,
   sql: any,
   counter: number = 0,

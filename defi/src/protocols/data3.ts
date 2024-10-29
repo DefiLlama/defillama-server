@@ -31577,7 +31577,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Liquid Restaking",
     chains: ["Ethereum"],
-    oracles: [""],
+    oracles: [],
     forkedFrom: [],
     module: "puffer/index.js",
     twitter: "puffer_finance",

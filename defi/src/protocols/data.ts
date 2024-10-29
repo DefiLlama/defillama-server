@@ -2754,7 +2754,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "marketpeak",
     cmcId: "5354",
-    category: "Services",
+    category: "Yield",
     chains: ["Ethereum"],
     module: "peakdefi/index.js",
     twitter: "PEAKDEFI",

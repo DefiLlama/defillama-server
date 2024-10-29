@@ -45,7 +45,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab",
     PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78",
     XYZ: "0x618679df9efcd19694bb1daa8d00718eacfa2883",
-    PT_USD0_27MAR2025: "0x5bae9a5d67d1ca5b09b14c91935f635cfbf3b685"
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -118,7 +117,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     LORT: "0xd24616870ca41bc01074446988faeb0085a71190",
     BCCOIN: "0x2940566Eb50F15129238f4Dc599ADC4F742D7d8E",
     PNIC: "0x76d36d44dc4595e8d2eb3ad745f175eda134284f",
-    PENDLE_LPT: "0x0921ccc98956b1599003fd9739d5e66bf319a161"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

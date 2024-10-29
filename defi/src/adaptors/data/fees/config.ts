@@ -2136,5 +2136,8 @@ export default {
     "metavault-amm-v2": {
         parentId: "MetaVault",
         id: "5186"
+    },
+    "surge-trade": {
+        id: "5290"
     }
 } as AdaptorsConfig

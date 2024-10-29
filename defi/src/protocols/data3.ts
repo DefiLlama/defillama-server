@@ -58736,7 +58736,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Avalanche", "Ethereum"],
+    chains: ["Avalanche", "Arbitrum"],
     oracles: [], 
     forkedFrom: [],
     module: "cables/index.js",

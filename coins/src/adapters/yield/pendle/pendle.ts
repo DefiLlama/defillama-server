@@ -16,6 +16,7 @@ const customMapping: { [chain: string]: { [key: string]: string } } = {
   },
 };
 const blacklist = ["0x1d83fdf6f019d0a6b2babc3c6c208224952e42fc"];
+const nullAddress = "0x0000000000000000000000000000000000000000";
 
 export default async function getTokenPrices(
   timestamp: number,
@@ -204,6 +205,7 @@ export default async function getTokenPrices(
     ]);
 
     PTs.map((PT: string, i: number) => {
+      if (underlyingTokens[i] == nullAddress) return;
       const underlying: CoinData | undefined =
         underlyingTokenData[underlyingTokens[i]];
 
@@ -246,6 +248,8 @@ export default async function getTokenPrices(
     ]);
 
     YTs.map((YT: string, i: number) => {
+      if (underlyingTokens[i] == nullAddress) return;
+
       const underlying: CoinData | undefined =
         underlyingTokenData[underlyingTokens[i]];
       const PT: Write | undefined = writes.find((u: Write) =>
@@ -311,6 +315,8 @@ export default async function getTokenPrices(
       const underlying: CoinData | undefined =
         underlyingTokenData[yieldTokens[i]] ??
         underlyingTokenData[underlyingTokens[i]];
+
+      if (underlying.address == nullAddress) return;
 
       if (
         !underlying ||

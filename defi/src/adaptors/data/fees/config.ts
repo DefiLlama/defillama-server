@@ -73,19 +73,7 @@ export default {
     },
     "gmx": {
         "id": "337",
-        parentId: "GMX",
-        protocolsData: {
-            "swap": {
-                "id": "337",
-                "category": "Dexes",
-                "displayName": "GMX - SWAP"
-            },
-            "derivatives": {
-                displayName: "GMX - Derivatives",
-                "id": "337",
-                "enabled": true
-            }
-        },
+        parentId: "GMX"
     },
     "lido": {
         "id": "182"

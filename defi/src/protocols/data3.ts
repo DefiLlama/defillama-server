@@ -31577,7 +31577,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Liquid Restaking",
     chains: ["Ethereum"],
-    oracles: ["RedStone"], // https://github.com/DefiLlama/defillama-server/pull/7986
+    oracles: [""],
     forkedFrom: [],
     module: "puffer/index.js",
     twitter: "puffer_finance",

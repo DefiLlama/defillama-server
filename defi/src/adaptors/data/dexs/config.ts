@@ -2526,5 +2526,8 @@ export default {
     },
     "dexter-tezos": {
         id: "3040"
+    },
+    "cables": {
+        id: "5291"
     }
 } as AdaptorsConfig

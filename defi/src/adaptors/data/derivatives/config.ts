@@ -736,5 +736,8 @@ export default {
     },
     "defx": {
         id: "5273",
+    },
+    "surge-trade": {
+        id: "5290"
     }
 } as AdaptorsConfig

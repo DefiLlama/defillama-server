@@ -20,6 +20,7 @@ export async function getHacksInternal() {
       source: r.fields["Link"],
       returnedFunds: r.fields["Refunded funds to users"] ?? null,
       defillamaId: r.fields["DefiLlama Id"] ?? null,
+      language: r.fields["Language"] ?? null,
     }));
 }
 

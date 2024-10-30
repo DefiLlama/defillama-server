@@ -58989,6 +58989,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bulbaswap",
     listedAt: 1730321388
   },
+  {
+    id: "5303",
+    name: "Morph Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://bridge.morphl2.io/",
+    description:
+      "Bridge between Ethereum and Morph L2",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/morph-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "morph/index.js",
+    twitter: "Morphl2",
+    listedAt: 1730320771
+  },
 ];
 
 export default data3;

@@ -1563,6 +1563,7 @@ export default {
         "id": "3260"
     },
     "deepbook-sui": {
+        parentId: "DeepBook",
         "id": "3268",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -2529,5 +2530,9 @@ export default {
     },
     "cables": {
         id: "5291"
+    },
+    "deepbookv3-sui": {
+        parentId: "DeepBook",
+        id: "5296"
     }
 } as AdaptorsConfig

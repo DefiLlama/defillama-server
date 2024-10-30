@@ -2,7 +2,7 @@ import axios from 'axios'
 import { GovCache, Proposal } from '../types';
 import { updateStats } from '../utils';
 import { setCompound, getCompound } from '../cache';
-import { update_nervous_system_cache, NervousSystemConfig, update_recent_proposals } from './icp';
+import { update_nervous_system_cache, NervousSystemConfig } from './icp';
 import sleep from '../../utils/shared/sleep';
 import { add } from 'lodash';
 export const SNS_GOV_ID = 'icp-sns'
@@ -215,8 +215,7 @@ export async function addSNSProposals(overview: any = {}): Promise<GovCache[]> {
                 proposal_filter: () => true,
                 excluded_topics: []
             };
-            //let cache: GovCache = await getCompound(metadata.id);
-            let cache: GovCache = { id: metadata.id, metadata: metadata, proposals: {} };
+            let cache: GovCache = await getCompound(metadata.id);
             cache.metadata = {
                 ...cache.metadata,
                 ...

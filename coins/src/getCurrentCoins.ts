@@ -57,6 +57,8 @@ const handler = async (event: any): Promise<IResponse> => {
       });
     });
   }
+  // THIS WILL NOT WORK IN LAMBDA WITH NODE 14 BECAUSE ETHERS HAS A BROKEN DEPENDANCY
+  // MUST UPGRADE NODE VERSION FIRST
   try {
     await withTimeout(1500, fetchOkxCurrentPrices(requestedCoins, response));
   } catch (e) {

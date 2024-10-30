@@ -18,7 +18,8 @@
     "store-defi-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/defiCoins.ts",
     "store-bridge-coins": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/bridges.ts",
     "update-token-mapping": "node src/adapters/utils/updateTokenMapping.js",
-    "check-rpc-blocks": "ts-node src/scripts/checkRpcBlocks.ts"
+    "check-rpc-blocks": "ts-node src/scripts/checkRpcBlocks.ts",
+    "fetch-okx-metadata": "export AWS_REGION='eu-central-1' && export tableName='prod-coins-table' && npx ts-node --transpile-only src/scripts/okxMetadata.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.12",

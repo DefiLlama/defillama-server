@@ -6,6 +6,7 @@ import {
   addToDBWritesList,
   getTokenAndRedirectData,
 } from "../../utils/database";
+import PromisePool from "@supercharge/promise-pool";
 
 const customMapping: { [chain: string]: { [key: string]: string } } = {
   arbitrum: {
@@ -100,15 +101,25 @@ export default async function getTokenPrices(
     markets.push(unfilteredMarkets[i]);
   });
 
-  let underlyingTokens: string[] = (
-    await api.multiCall({
-      abi: "function assetInfo() view returns (uint8 asseetType, address assetAddress, uint8 assetDecimals)",
-      calls: SYs,
-    })
-  ).map((i: any) => i.assetAddress.toLowerCase());
+  const underlyingTokensMap: { [sy: string]: string } = {};
+  await PromisePool.withConcurrency(10)
+    .for(SYs)
+    .process(async (target) => {
+      const res: any = await api.call({
+        abi: "function assetInfo() view returns (uint8 asseetType, address assetAddress, uint8 assetDecimals)",
+        target,
+      });
+      underlyingTokensMap[target] = res.assetAddress.toLowerCase();
+    });
+  let underlyingTokens: string[] = [];
+  SYs.map((sy) => underlyingTokens.push(underlyingTokensMap[sy]));
 
   let underlyingTokenDataArray: CoinData[] = await getTokenAndRedirectData(
-    [...new Set([...yieldTokens, ...underlyingTokens])],
+    [
+      ...new Set(
+        [...yieldTokens, ...underlyingTokens].filter((t) => t != null),
+      ),
+    ],
     chain,
     timestamp,
   );
@@ -316,13 +327,12 @@ export default async function getTokenPrices(
         underlyingTokenData[yieldTokens[i]] ??
         underlyingTokenData[underlyingTokens[i]];
 
-      if (underlying.address == nullAddress) return;
-
       if (
         !underlying ||
         !exchangeRates[markets[i]] ||
         !decimals[i] ||
-        !symbols[i]
+        !symbols[i] ||
+        underlying.address == nullAddress
       )
         return;
 

@@ -1405,6 +1405,15 @@ export default {
         url: "https://xend.finance/",
         chainId: 42420
     },
+    "Celestia": {
+        geckoId: "celestia",
+        symbol: "TIA",
+        cmcId: "22861",
+        categories: ["Cosmos"],
+        github: ["celestiaorg"],
+        twitter: "CelestiaOrg",
+        url: "https://celestia.org",
+    }
 } as unknown as {
     [chain: string]: {
         geckoId: string | null,

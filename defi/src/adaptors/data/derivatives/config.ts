@@ -739,5 +739,13 @@ export default {
     },
     "surge-trade": {
         id: "5290"
+    },
+    "optim-finance": {
+        id: "2380",
+        protocolsData: {
+            "derivatives": {
+                "id": "2380",
+            }
+        }
     }
 } as AdaptorsConfig

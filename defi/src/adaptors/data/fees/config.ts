@@ -2142,5 +2142,8 @@ export default {
     },
     "suilend": {
         id: "4274"
+    },
+    "juicebox": {
+        id: "4208"
     }
 } as AdaptorsConfig

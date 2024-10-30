@@ -1593,7 +1593,7 @@ const data2: Protocol[] = [
     address: "0xb3999f658c0391d94a37f7ff328f3fec942bcadc",
     symbol: "HFT",
     url: "https://www.hashflow.com",
-    description: "Hashflow Exchange OS (or xOS for short) is an engine that can turn any exchange into what we call a provable exchange. We believe that provable exchanges are the endgame for crypto trading — they retain the seamless UX and performance of a central limit order book (CLOB), which forms the backbone of every centralized exchange, while augmenting them with the new provable property.",
+    description: "Hashflow xOS is a universal zk-settlement layer, setting a new standard for provable trust across exchanges. Alongside xOS, Hashflow powers one of DeFi’s largest RFQ liquidity sources, facilitating over $20 billion in volume through professional market makers to ensure guaranteed pricing and protection against MEV exploits. With a mission to build the best trading experience, Hashflow has expanded from a decentralized exchange into a benchmark for trust across the exchange ecosystem.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hashflow.png`,
     audits: "0",

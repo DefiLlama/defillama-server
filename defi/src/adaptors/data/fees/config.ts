@@ -2139,5 +2139,8 @@ export default {
     },
     "surge-trade": {
         id: "5290"
+    },
+    "suilend": {
+        id: "4274"
     }
 } as AdaptorsConfig

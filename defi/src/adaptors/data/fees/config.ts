@@ -2142,5 +2142,8 @@ export default {
     },
     "suilend": {
         id: "4274"
+    },
+    "celestia": {
+        id: "22861"
     }
 } as AdaptorsConfig

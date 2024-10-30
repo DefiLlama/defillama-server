@@ -58875,6 +58875,50 @@ const data3: Protocol[] = [
     twitter: "LSP_Fi",
     listedAt: 1730285048
   },
+  {
+    id: "5298",
+    name: "Rabbit Swap",
+    address: null,
+    symbol: "-",
+    url: "https://rabbitswap.xyz",
+    description: "The primary liquidity center on Viction network",
+    chain: "TomoChain",
+    logo: `${baseIconsUrl}/rabbit-swap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["TomoChain"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    module: "rabbitswap-v3/index.js",
+    twitter: "RabbitSwapTeam",  //looks sus
+    github: ["RabbitDEX"],
+    listedAt: 1730298443
+  },
+  {
+    id: "5299",
+    name: "PinSwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.pinswap.finance",
+    description: "Dive into the future with decentralized trading protocol officially supported by iotex_io",
+    chain: "IoTeX",
+    logo: `${baseIconsUrl}/pinswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["IoTeX"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "PinSwap/index.js",
+    twitter: "pinSwap_ioTex",  
+    github: ["PinSwap-IoteX"],
+    listedAt: 1730298943
+  },
 ];
 
 export default data3;

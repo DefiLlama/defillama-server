@@ -58829,7 +58829,28 @@ const data3: Protocol[] = [
     twitter: "Bedrock_DeFi",
     parentProtocol: "parent#bedrock",
     listedAt: 1730219911
-  },
+  }, {
+    id: "5296",
+    name: "RabbitSwap",
+    address: null,
+    symbol: "-",
+    url: "https://rabbitswap.xyz/",
+    description: "The primary liquidity center on Viction network",
+    chain: "TomoChain",
+    logo: `${baseIconsUrl}/rabbitswap.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["TomoChain"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    module: "rabbitswap-v3/index.js",
+    twitter: "RabbitSwapTeam",
+    parentProtocol: "parent#rabbitswap",
+    listedAt: 1730279509
+  }
 ];
 
 export default data3;

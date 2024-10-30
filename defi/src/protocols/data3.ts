@@ -58943,6 +58943,52 @@ const data3: Protocol[] = [
     parentProtocol: "parent#loxodrome",
     listedAt: 1730310067,
   },
+  {
+    id: "5301",
+    name: "BulbaSwap V2",
+    address: null,
+    symbol: "-",
+    url: "https://bulbaswap.io",
+    description:
+      "BulbaSwap, the central trading and liquidity marketplace on MorphL2",
+    chain: "Morph",
+    logo: `${baseIconsUrl}/bulbaswap-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Morph"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "bulbaswap-v2/index.js",
+    twitter: "BulbaSwap",
+    parentProtocol: "parent#bulbaswap",
+    listedAt: 1730320388
+  },
+  {
+    id: "5302",
+    name: "BulbaSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://bulbaswap.io",
+    description:
+      "BulbaSwap, the central trading and liquidity marketplace on MorphL2",
+    chain: "Morph",
+    logo: `${baseIconsUrl}/bulbaswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Morph"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "bulbaswap-v3/index.js",
+    twitter: "BulbaSwap",
+    parentProtocol: "parent#bulbaswap",
+    listedAt: 1730321388
+  },
 ];
 
 export default data3;

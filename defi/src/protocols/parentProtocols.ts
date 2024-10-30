@@ -5735,6 +5735,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "_Loxodrome",
   },
+  {
+    id: "parent#bulbaswap",
+    name: "BulbaSwap",
+    url: "https://bulbaswap.io",
+    description:
+      "BulbaSwap, the central trading and liquidity marketplace on MorphL2",
+    logo: `${baseIconsUrl}/bulbaswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BulbaSwap",
+  },
 ];
 
 export default parentProtocols;

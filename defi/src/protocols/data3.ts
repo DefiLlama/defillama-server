@@ -40349,7 +40349,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4477",
-    name: "Loxodrome",
+    name: "Loxodrome AMM",
     address: null,
     symbol: "-",
     url: "https://loxodrome.xyz",
@@ -40367,6 +40367,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "loxodrome/index.js",
     twitter: "_Loxodrome",
+    parentProtocol: "parent#loxodrome",
     listedAt: 1713193262,
   },
   /*
@@ -58918,6 +58919,29 @@ const data3: Protocol[] = [
     twitter: "pinSwap_ioTex",  
     github: ["PinSwap-IoteX"],
     listedAt: 1730298943
+  },
+  {
+    id: "5300",
+    name: "Loxodrome Perp",
+    address: null,
+    symbol: "-",
+    url: "https://loxodrome.xyz",
+    description:
+      "Loxodrome is a pioneering DePIN-Focused Dex on the IoTeX, establishing itself as the first native liquidity marketplace focused on DePIN.",
+    chain: "IoTeX",
+    logo: `${baseIconsUrl}/loxodrome.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["IoTeX"],
+    oracles: [],
+    forkedFrom: ["GMX V1"],
+    module: "loxodrome-perp/index.js",
+    twitter: "_Loxodrome",
+    parentProtocol: "parent#loxodrome",
+    listedAt: 1730310067,
   },
 ];
 

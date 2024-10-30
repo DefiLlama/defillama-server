@@ -5711,6 +5711,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "mimoprotocol",
     github: ["mimoprotocol"],
   },
+  {
+    id: "parent#deepbook",
+    name: "DeepBook",
+    url: "https://deepbook.tech",
+    description:
+      "DeepBook is a fully on-chain central limit order book and the liquidity layer of Sui.",
+    logo: `${baseIconsUrl}/deepbook.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "DeepBookonSui",
+  },
 ];
 
 export default parentProtocols;

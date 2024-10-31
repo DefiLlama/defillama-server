@@ -2148,5 +2148,8 @@ export default {
     },
     "celestia": {
         id: "22861"
+    },
+    "yamfore": {
+        id: "5304"
     }
 } as AdaptorsConfig

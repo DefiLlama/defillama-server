@@ -3417,7 +3417,8 @@ export const chainCoingeckoIds = {
       types: ["L3"]
     },
     twitter: "apecoin",
-    url: "https://apechain.com/"
+    url: "https://apechain.com/",
+    chainId: 33139
   },
   "Asset Chain": {
     geckoId: "xend-finance",

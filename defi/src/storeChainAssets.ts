@@ -4,12 +4,16 @@ import { withTimeout } from "./utils/shared/withTimeout";
 import { storeR2JSONString } from "./utils/r2";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import storeHistorical from "../l2/storeToDb";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 async function getChainAssets() {
+  await setEnvSecrets();
   const res: any = await chainAssets();
   res.timestamp = getCurrentUnixTimestamp();
-  await storeR2JSONString("chainAssets", JSON.stringify(res));
-  await storeHistorical(res);
+  let a = JSON.stringify(res);
+  let b = JSON.parse(a);
+  // await storeR2JSONString("chainAssets", JSON.stringify(res));
+  // await storeHistorical(res);
   console.log("chain assets stored");
   process.exit();
 }
@@ -23,3 +27,5 @@ export async function handler() {
 }
 
 handler(); // ts-node defi/src/storeChainAssets.ts
+("1 231 905 171.69984650060294015202"); // con decimal => WRONG BECAUSE OF USDT
+("471 787 548 264.79288990485587611621787169929275"); // sin decimal => TOO BIG

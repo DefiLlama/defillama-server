@@ -13,10 +13,9 @@ import { storeNotTokens } from "./layer2pg";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { readFromPGCache, writeToPGCache } from "../src/api2/db";
 import { unixTimestampNow } from "../emissions-adapters/utils/time";
-import { Connection, PublicKey } from "@solana/web3.js"
+import { Connection, PublicKey } from "@solana/web3.js";
 import * as sdk from "@defillama/sdk";
-
-import { struct, u8, u64 } from 'buffer-layout';
+import { struct, u8, u64 } from "../DefiLlama-Adapters/projects/helper/utils/solana/layouts/layout-base.js";
 
 type CachedSupplies = { timestamp: number; data: { [token: string]: number } };
 export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
@@ -68,7 +67,8 @@ export async function getPrices(
       restCallWrapper(
         () =>
           fetch(
-            `https://coins.llama.fi/prices?source=internal${process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""
+            `https://coins.llama.fi/prices?source=internal${
+              process.env.COINS_KEY ? `?apikey=${process.env.COINS_KEY}` : ""
             }`,
             {
               method: "POST",
@@ -194,68 +194,74 @@ async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{
   return supplies;
 }
 
-let connection: any = {}
+let connection: any = {};
 
 const endpoint = (isClient = false) => {
-  if (isClient) return process.env.SOLANA_RPC_CLIENT ?? process.env.SOLANA_RPC
-  return process.env.SOLANA_RPC
-}
+  if (isClient) return process.env.SOLANA_RPC_CLIENT ?? process.env.SOLANA_RPC;
+  return process.env.SOLANA_RPC;
+};
 
 const endpointMap: any = {
   solana: endpoint,
+};
+
+function getConnection(chain = "solana") {
+  let a = endpointMap[chain](true);
+  if (!connection[chain]) connection[chain] = new Connection(endpointMap[chain](true));
+  return connection[chain];
 }
-
-function getConnection(chain = 'solana') {
-  if (!connection[chain]) connection[chain] = new Connection(endpointMap[chain](true))
-  return connection[chain]
-}
-
-
-
 async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Solana adapter!`);
 
   const solanaMintLayout = struct([
-    u8('mintAuthorityOption'),
-    u8('mintAuthority'),
-    u64('supply'),
-    u8('decimals'),
-    u8('isInitialized'),
-    u8('freezeAuthorityOption'),
-    u8('freezeAuthority'),
-  ])
-  
-  const sleepTime = tokens.length > 2000 ? 2000 : 200
-  const tokensPK = tokens.map(i => typeof i === 'string' ? new PublicKey(i) : i)
-  const connection = getConnection('solana')
-  const res = await runInChunks(tokensPK, (chunk: any) => connection.getMultipleAccountsInfo(chunk), { sleepTime })
+    u8("mintAuthorityOption"),
+    u8("mintAuthority"),
+    u64("supply"),
+    u8("decimals"),
+    u8("isInitialized"),
+    u8("freezeAuthorityOption"),
+    u8("freezeAuthority"),
+  ]);
+
+  const sleepTime = tokens.length > 2000 ? 2000 : 200;
+  const tokensPK: PublicKey[] = [];
+  const filteredTokens: string[] = [];
+  tokens.map((i) => {
+    try {
+      const key = new PublicKey(i);
+      tokensPK.push(key);
+      filteredTokens.push(i);
+    } catch (e) {}
+  });
+  const connection = getConnection("solana");
+  const res = await runInChunks(tokensPK, (chunk: any) => connection.getMultipleAccountsInfo(chunk), { sleepTime });
   const supplies: { [token: string]: number } = {};
 
   res.forEach((data, idx) => {
     if (!data) {
-      sdk.log(`Invalid account: ${tokens[idx]}`)
+      sdk.log(`Invalid account: ${tokens[idx]}`);
       return;
     }
     try {
-      const buffer = Buffer.from(data.data)
-      const decoded = solanaMintLayout.decode(buffer)
-      supplies['solana:'+tokens[idx]] = decoded.supply.toString()
+      const buffer = Buffer.from(data.data);
+      const decoded = solanaMintLayout.decode(buffer);
+      supplies["solana:" + filteredTokens[idx]] = decoded.supply.toString(); // 10 ** decoded.decimals.toString();
     } catch (e) {
-      sdk.log(`Error decoding account: ${tokens[idx]}`)
+      sdk.log(`Error decoding account: ${filteredTokens[idx]}`);
     }
-  })
+  });
 
   return supplies;
 
   async function runInChunks(inputs: any, fn: any, { chunkSize = 99, sleepTime }: any = {}) {
-    const chunks = sliceIntoChunks(inputs, chunkSize)
-    const results = []
+    const chunks = sliceIntoChunks(inputs, chunkSize);
+    const results = [];
     for (const chunk of chunks) {
-      results.push(...(await fn(chunk) ?? []))
-      if (sleepTime) await sleep(sleepTime)
+      results.push(...((await fn(chunk)) ?? []));
+      if (sleepTime) await sleep(sleepTime);
     }
 
-    return results.flat()
+    return results.flat();
 
     function sliceIntoChunks(arr: any, chunkSize = 100) {
       const res = [];

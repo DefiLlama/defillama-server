@@ -3006,6 +3006,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "bounce_bit",
     url: "https://bouncebit.io/",
+    github: ["BounceBit-Labs"],
     chainId: 6001,
   },
   "re.al": {
@@ -3417,7 +3418,8 @@ export const chainCoingeckoIds = {
       types: ["L3"]
     },
     twitter: "apecoin",
-    url: "https://apechain.com/"
+    url: "https://apechain.com/",
+    chainId: 33139
   },
   "Asset Chain": {
     geckoId: "xend-finance",
@@ -3427,6 +3429,18 @@ export const chainCoingeckoIds = {
     twitter: "xendfinance",
     url: "https://xend.finance/",
     chainId: 42420
+  },
+  "Morph": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "MorphL2",
+    url: "https://www.morphl2.io"
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -4171,6 +4185,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "ApeChain"
     case "assetchain":
       return "Asset Chain"
+    case "morph":
+      return "Morph"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

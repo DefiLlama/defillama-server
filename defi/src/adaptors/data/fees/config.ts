@@ -2145,5 +2145,8 @@ export default {
     },
     "juicebox": {
         id: "4208"
+    },
+    "celestia": {
+        id: "22861"
     }
 } as AdaptorsConfig

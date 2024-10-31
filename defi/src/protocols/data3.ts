@@ -33446,7 +33446,6 @@ const data3: Protocol[] = [
     twitter: "bounce_bit",
     forkedFrom: [],
     oracles: [],
-    github: ["BounceBit-Labs"],
     audit_links: [
       "https://3876813834-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaNWumH92fd1205exOOBs%2Fuploads%2FKFpCcHfuzqSvO1yGpUJL%2FBounceBit-Vault_audit_report_2024-02-09.pdf?alt=media&token=cbf843a2-8ec1-43bc-addc-1a584d4deacf",
     ],

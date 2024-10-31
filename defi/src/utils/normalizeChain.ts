@@ -3006,6 +3006,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "bounce_bit",
     url: "https://bouncebit.io/",
+    github: ["BounceBit-Labs"],
     chainId: 6001,
   },
   "re.al": {

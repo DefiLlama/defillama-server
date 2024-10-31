@@ -1257,7 +1257,7 @@ export default {
     "dydx": {
         parentId: "dYdX",
         "id": "144",
-        "enabled": true
+        disabled: true
     },
     "justlend": {
         "id": "494"

@@ -12526,11 +12526,11 @@ const data3: Protocol[] = [
     twitter: "LayerBankFi",
     forkedFrom: ["Compound V2"],
     oraclesByChain: {
-      zklink: ["RedStone"], //https://docs.layerbank.finance/protocol/lending/oracles
+      zklink: ["eOracle"], //https://docs.layerbank.finance/protocol/lending/oracles
       manta: ["RedStone"], // https://pacific-explorer.manta.network/address/0xF2C1E27A4Bf0D81Bb4A6E6e3E5DCD1DC6ED3A7fA?tab=read_contract#7dc0d1d0
-      scroll: ["Pyth"],
-      linea: ["Pyth"],
-      mode: ["RedStone"], // https://docs.layerbank.finance/protocol/lending/oracles
+      scroll: ["eOracle"], //https://docs.layerbank.finance/protocol/lending/oracles
+      linea: ["eOracle"], //https://docs.layerbank.finance/protocol/lending/oracles
+      mode: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
       bsquared: ["RedStone"], // https://docs.layerbank.finance/protocol/lending/oracles
       bob: ["RedStone"], // https://docs.layerbank.finance/protocol/lending/oracles
     },

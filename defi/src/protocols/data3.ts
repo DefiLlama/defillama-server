@@ -26850,7 +26850,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    oracles: ["Pyth"], // https://docs.storm.tg/protocol/price_feeds
+    oracles: ["Pyth", "Stork"], // https://docs.storm.tg/protocol/price_feeds
     forkedFrom: [],
     chains: ["TON"],
     module: "stormtrade/index.js",

@@ -21240,7 +21240,7 @@ const data2: Protocol[] = [
     module: "perp88/index.js",
     twitter: "HMXorg",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: ["Pyth","Stork"], // https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle
     github: ["HMXOrg"],
     listedAt: 1668805259,
   },

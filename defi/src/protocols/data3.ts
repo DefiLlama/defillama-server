@@ -9600,7 +9600,7 @@ const data3: Protocol[] = [
     symbol: "PEARL",
     url: "https://www.pearl.exchange",
     description:
-      "Polygon's premiere ve(3,3) exchange with deep liquidity for tokenized RWAs and premium digital assets.",
+      "The premiere ve(3,3) exchange for concentrated liquidity on tokenized RWAs and premium digital assets.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/pearl-v1.jpg`,
     audits: "3",
@@ -44685,7 +44685,7 @@ const data3: Protocol[] = [
     symbol: "PEARL",
     url: "https://www.pearl.exchange",
     description:
-      "Polygon's premiere ve(3,3) exchange with deep liquidity for tokenized RWAs and premium digital assets.",
+      "The premiere ve(3,3) exchange for concentrated liquidity on tokenized RWAs and premium digital assets.",
     chain: "re.al",
     logo: `${baseIconsUrl}/pearl-v2.jpg`,
     audits: "0",
@@ -59108,7 +59108,7 @@ const data3: Protocol[] = [
     symbol: "PEARL",
     url: "https://www.pearl.exchange/",
     description:
-      "A fully decentralized protocol for automated liquidity provision on Morph L2.​​​​​​​​​​​​​​​​",
+      "The premiere ve(3,3) exchange for concentrated liquidity on tokenized RWAs and premium digital assets.",
     chain: "re.al",
     logo: `${baseIconsUrl}/pearl-v1.5.jpg`,
     audits: "0",

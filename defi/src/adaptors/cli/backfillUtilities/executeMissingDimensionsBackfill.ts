@@ -53,15 +53,21 @@ const executeMissingDimensionBackfill = async (adapterType: AdapterType) => {
 
     rl.question("Do you wish to continue? y/n\n", async function (yn) {
       if (yn.toLowerCase() === "y") {
-        for (const event of backfillEvent.backfill) {
-          console.info(`Backfilling for ${event.dexNames} at ${formatTimestampAsDate(event.timestamp)}...`);
+        const totalBackfillEvents = backfillEvent.backfill.length;
+
+        for (const [index, event] of backfillEvent.backfill.entries()) {
+          const progressTotalBackfill = Math.floor(((index + 1) / totalBackfillEvents) * 100);
+          const progressPercentage = ((progressTotalBackfill / totalBackfillEvents) * 100).toFixed(2);
+          console.warn(`Progress: ${progressTotalBackfill}/${totalBackfillEvents} events backfilled (${progressPercentage}%)\n`);
+
+          console.info(`\nBackfilling for ${event.dexNames} at ${formatTimestampAsDate(event.timestamp)}...`);
           await executeAsyncBackfill({
             type: backfillEvent.type,
             backfill: [event],
           });
           console.info(`Backfill completed for ${formatTimestampAsDate(event.timestamp)}.`);
         }
-        console.info("Backfill completed successfully for all timestamps.");
+        console.info("\nBackfill completed successfully for all timestamps.");
       } else {
         console.info("Backfill cancelled.");
       }
@@ -187,3 +193,4 @@ if (!adapterType) {
 }
 
 executeMissingDimensionBackfill(adapterType).catch(console.error);
+

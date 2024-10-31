@@ -79,7 +79,7 @@ export default {
     "dydx": {
         parentId: "dYdX",
         "id": "144",
-        "enabled": true
+        disabled: true
     },
     "level-finance": {
         "id": "2395",

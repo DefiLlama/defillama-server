@@ -2143,6 +2143,9 @@ export default {
     "suilend": {
         id: "4274"
     },
+    "juicebox": {
+        id: "4208"
+    },
     "celestia": {
         id: "22861"
     }

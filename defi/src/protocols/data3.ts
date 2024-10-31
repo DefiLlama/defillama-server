@@ -59079,6 +59079,51 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/UnlockdFinance/maxapy/tree/development/audits"],
     listedAt: 1730369397
   },
+  {
+    id: "5307",
+    name: "MorFi",
+    address: null,
+    symbol: "-",
+    url: "https://morfi.io",
+    description:
+      "A fully decentralized protocol for automated liquidity provision on Morph L2.​​​​​​​​​​​​​​​​",
+    chain: "Morph",
+    logo: `${baseIconsUrl}/morfi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Morph"],
+    oracles: [],
+    forkedFrom: ["Algebra DEX"],
+    module: "MorFi/index.js",
+    twitter: "MorFi_finance", 
+    listedAt: 1730381123
+  },
+  {
+    id: "5308",
+    name: "Pearl V1.5",
+    address: "polygon:0x7238390d5f6f64e67c3211c343a410e2a3dec142",
+    symbol: "PEARL",
+    url: "https://www.pearl.exchange/",
+    description:
+      "A fully decentralized protocol for automated liquidity provision on Morph L2.​​​​​​​​​​​​​​​​",
+    chain: "re.al",
+    logo: `${baseIconsUrl}/pearl-v1.5.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["re.al"],
+    oracles: [],
+    forkedFrom: [],
+    module: "pearl-v1-5/index.js",
+    twitter: "PearlFi_", 
+    parentProtocol: "parent#pearlfi",
+    listedAt: 1730381923
+  },
 ];
 
 export default data3;

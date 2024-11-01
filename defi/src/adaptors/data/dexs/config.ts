@@ -2534,5 +2534,8 @@ export default {
     "deepbookv3-sui": {
         parentId: "DeepBook",
         id: "5296"
+    },
+    "kyex": {
+        id: "5310"
     }
 } as AdaptorsConfig

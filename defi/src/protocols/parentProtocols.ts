@@ -4741,6 +4741,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "CloberDEX",
+    github: ["clober-dex"]
   },
   {
     id: "parent#joltify-finance",

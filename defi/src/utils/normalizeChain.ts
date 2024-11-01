@@ -3434,7 +3434,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: "-",
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]

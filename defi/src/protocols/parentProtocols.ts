@@ -5711,6 +5711,42 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "mimoprotocol",
     github: ["mimoprotocol"],
   },
+  {
+    id: "parent#deepbook",
+    name: "DeepBook",
+    url: "https://deepbook.tech",
+    description:
+      "DeepBook is a fully on-chain central limit order book and the liquidity layer of Sui.",
+    logo: `${baseIconsUrl}/deepbook.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "DeepBookonSui",
+  },
+  {
+    id: "parent#loxodrome",
+    name: "Loxodrome",
+    url: "https://loxodrome.xyz",
+    description:
+      "Loxodrome is a pioneering DePIN-Focused Dex on the IoTeX, establishing itself as the first native liquidity marketplace focused on DePIN.",
+    logo: `${baseIconsUrl}/loxodrome.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "_Loxodrome",
+  },
+  {
+    id: "parent#bulbaswap",
+    name: "BulbaSwap",
+    url: "https://bulbaswap.io",
+    description:
+      "BulbaSwap, the central trading and liquidity marketplace on MorphL2",
+    logo: `${baseIconsUrl}/bulbaswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BulbaSwap",
+  },
 ];
 
 export default parentProtocols;

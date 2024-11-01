@@ -4190,6 +4190,16 @@
       "to": "coingecko#dai",
       "decimals": 18,
       "symbol": "DAI"
+    },
+    "0x541fd749419ca806a8bc7da8ac23d346f2df8b77": {
+      "to": "coingecko#solv-btc",
+      "decimals": 18,
+      "symbol": "SolvBTC"
+    },
+    "0xcc0966d8418d412c599a6421b760a847eb169a8c": {
+      "to": "coingecko#solv-protocol-solvbtc-bbn",
+      "decimals": 18,
+      "symbol": "SolvBTC.BBN"
     }
   },
   "real": {

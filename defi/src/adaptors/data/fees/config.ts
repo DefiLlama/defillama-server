@@ -1257,7 +1257,7 @@ export default {
     "dydx": {
         parentId: "dYdX",
         "id": "144",
-        "enabled": true
+        disabled: true
     },
     "justlend": {
         "id": "494"
@@ -2139,5 +2139,20 @@ export default {
     },
     "surge-trade": {
         id: "5290"
+    },
+    "suilend": {
+        id: "4274"
+    },
+    "juicebox": {
+        id: "4208"
+    },
+    "celestia": {
+        id: "22861"
+    },
+    "yamfore": {
+        id: "5304"
+    },
+    "bonzo": {
+        id: "5287"
     }
 } as AdaptorsConfig

@@ -79,7 +79,7 @@ export default {
     "dydx": {
         parentId: "dYdX",
         "id": "144",
-        "enabled": true
+        disabled: true
     },
     "level-finance": {
         "id": "2395",
@@ -739,5 +739,13 @@ export default {
     },
     "surge-trade": {
         id: "5290"
+    },
+    "optim-finance": {
+        id: "2380",
+        protocolsData: {
+            "derivatives": {
+                "id": "2380",
+            }
+        }
     }
 } as AdaptorsConfig

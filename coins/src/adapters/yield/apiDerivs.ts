@@ -20,7 +20,7 @@ const configs: { [adapter: string]: Config } = {
   LiNEAR: {
     rate: async ({ t }) => {
       const res = await fetch(
-        "https://gateway-arbitrum.network.thegraph.com/api/e5a80a42743d120ed405223ae2059bde/subgraphs/id/H5F5XGL2pYCBY89Ycxzafq2RkLfqJvM47X533CwwPNjg",
+        `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_API_KEY}/subgraphs/id/H5F5XGL2pYCBY89Ycxzafq2RkLfqJvM47X533CwwPNjg`,
         {
           headers: {
             accept: "*/*",
@@ -42,6 +42,7 @@ const configs: { [adapter: string]: Config } = {
           method: "POST",
         },
       ).then((r) => r.json());
+      if (!("data" in res)) throw new Error(`LiNEAR subgraph call failed`);
       const { timestamp, price } = res.data.prices[0];
       if (t - timestamp > margin) throw new Error(`LiNEAR subgraph stale rate`);
       return price;
@@ -118,7 +119,12 @@ const configs: { [adapter: string]: Config } = {
 
 export async function apiDerivs(timestamp: number) {
   return Promise.all(
-    Object.keys(configs).map((k: string) => deriv(timestamp, k, configs[k])),
+    Object.keys(configs).map((k: string) =>
+      deriv(timestamp, k, configs[k]).catch((e) => {
+        console.log(e);
+        return [];
+      }),
+    ),
   );
 }
 

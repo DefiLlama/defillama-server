@@ -4601,7 +4601,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "PearlFi",
     url: "https://www.pearl.exchange",
     description:
-      "Polygon's premiere ve(3,3) exchange with deep liquidity for tokenized RWAs and premium digital assets.",
+      "The premiere ve(3,3) exchange for concentrated liquidity on tokenized RWAs and premium digital",
     logo: `${baseIconsUrl}/pearlfi.jpg`,
     gecko_id: "pearl",
     cmcId: null,

@@ -59118,7 +59118,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["re.al"],
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["Solidly"],
     module: "pearl-v1-5/index.js",
     twitter: "PearlFi_", 
     parentProtocol: "parent#pearlfi",

@@ -2151,5 +2151,8 @@ export default {
     },
     "yamfore": {
         id: "5304"
+    },
+    "bonzo": {
+        id: "5287"
     }
 } as AdaptorsConfig

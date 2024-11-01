@@ -59140,13 +59140,37 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Arbitrum","Base"],
-    oracles: ["Pth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12127
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12127
     forkedFrom: [],
     module: "nabla/index.js",
     twitter: "NablaFi", 
     audit_links: ["https://github.com/pashov/audits/blob/master/team/pdf/Nabla-security-review.pdf"],
     listedAt: 1730407611,
     github: ["NablaFinance"]
+  },
+  {
+    id: "5310",
+    name: "KYEX",
+    address: null,
+    symbol: "-",
+    url: "https://www.kyex.io/",
+    description:
+      "KYEX is a Hybrid Exchange that uses an order book interface to link to an off-chain order matching engine and executes trades on-chain. It is also omni-chain, meaning that it operates across multiple blockchains without bridging and wrapping, which are methods adopted by cross-chain solutions. This allows users to trade various digital assets seamlessly, just like a CEX",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/kyex.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ZetaChain"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "KYEXLabs", 
+    audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/KYEX%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
+    listedAt: 1730427225,
+    github: ["kyexHead"]
   },
 ];
 

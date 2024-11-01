@@ -35845,6 +35845,7 @@ const data3: Protocol[] = [
     oracles: ["Pyth"],
     forkedFrom: [],
     audit_links: ["https://docs.suilend.fi/security/audit"],
+    parentProtocol: "parent#suilend-protocol",
     listedAt: 1710198832,
   },
   {
@@ -59193,6 +59194,7 @@ const data3: Protocol[] = [
     module: "spring-sui/index.js",
     twitter: "springsui_", 
     audit_links: ["https://docs.suilend.fi/security/suilend-audit"],
+    parentProtocol: "parent#suilend-protocol",
     listedAt: 1730473247,
   },
   {

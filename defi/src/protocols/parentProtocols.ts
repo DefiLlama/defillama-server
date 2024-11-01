@@ -5748,6 +5748,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BulbaSwap",
   },
+  {
+    id: "parent#suilend-protocol",
+    name: "Suilend Protocol",
+    url: "https://www.suilend.fi",
+    description:
+      "Lending and borrowing platform on Sui",
+    logo: `${baseIconsUrl}/suilend.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "suilendprotocol",
+  },
 ];
 
 export default parentProtocols;

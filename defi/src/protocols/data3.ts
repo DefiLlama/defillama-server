@@ -38889,8 +38889,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oraclesByChain: {
       bevm: ["DIA"], // https://docs.satoshiprotocol.org/outro/oracle
-      btr: ["APRO"], // https://docs.satoshiprotocol.org/outro/oracle
-      bob: ["API3","DIA","APRO"] // https://docs.satoshiprotocol.org/outro/oracle
+      bob: ["API3","DIA"] // https://docs.satoshiprotocol.org/outro/oracle
     },
     github: ["Satoshi-Protocol"],
     audit_links: ["https://docs.satoshiprotocol.org/outro/audit-reports"],

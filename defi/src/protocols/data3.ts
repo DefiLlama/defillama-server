@@ -59051,7 +59051,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Solana"],
-    oracles: [],
+    oracles: ["Switchboard"], // https://docs.synatra.xyz/synthetic-staking/oracles
     forkedFrom: [],
     module: "synatra/index.js",
     twitter: "synatraxyz", 

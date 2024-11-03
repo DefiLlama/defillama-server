@@ -2154,5 +2154,8 @@ export default {
     },
     "bonzo": {
         id: "5287"
+    },
+    "quenta": {
+        id: "5314"
     }
 } as AdaptorsConfig

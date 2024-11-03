@@ -59045,7 +59045,7 @@ const data3: Protocol[] = [
       "Synatra is a synthetic staking protocol providing a UX that feels traditional to traditional receipt token staking. The value accrued is achieved using various on-chain strategies such as lending, basis farming, and other automation instead of conventional staking via validators.​​​​​​​​​​​​​​​​",
     chain: "Solana",
     logo: `${baseIconsUrl}/synatra.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -59055,6 +59055,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "synatra/index.js",
     twitter: "synatraxyz", 
+    audit_links: ["https://1674869739-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FdRFaAQj48kjoF2MVHWg3%2Fuploads%2Fgit-blob-872bdeabd149767b507ca905eef51a100eb243cd%2FSynatra-Sep-2024-OffsideLabs.pdf?alt=media"],
     listedAt: 1730369210
   },
   {

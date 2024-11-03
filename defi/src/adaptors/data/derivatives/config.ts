@@ -747,5 +747,8 @@ export default {
                 "id": "2380",
             }
         }
+    },
+    "quenta": {
+        id: "5314"
     }
 } as AdaptorsConfig

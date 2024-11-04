@@ -59291,6 +59291,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#clober",
     listedAt: 1718186942,
   },
+  {
+    id: "5316",
+    name: "exSat Credit Staking",
+    address: null,
+    symbol: "-",
+    url: "https://exsat.network",
+    description:
+      "exSat Network is a scaling solution designed to expand and foster growth within the BTC ecosystem while preserving Bitcoin's core principles. Validators, as key components of the exSat network, can utilize Credit Staking for their accounts. They validate BTC blocks within the exSat network, sign the consensus, and earn XSAT rewards.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/exsat-credit-staking.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "exsat-credit-staking/index.js",
+    twitter: "exSatNetwork",
+    audit_links: ["https://3042747009-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaDUBtTPZKYj40o0zqoC8%2Fuploads%2FWh5J6fh5FmaihWpA71nD%2Fblocksec_exsat_consensus_v1.0-signed.pdf?alt=media&token=d1028151-6fe5-46d6-aca6-ce63ee8c11d1", "https://3042747009-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaDUBtTPZKYj40o0zqoC8%2Fuploads%2F3ozeFgUDhoOLswv7G8WF%2Fblocksec_exsat_evm_v1.0-signed.pdf?alt=media&token=a1333a1b-05a8-4378-8ab0-0bfff5a75671",],
+    listedAt: 1730720237
+  },
 ];
 
 export default data3;

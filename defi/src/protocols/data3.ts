@@ -33405,16 +33405,15 @@ const data3: Protocol[] = [
   },
   {
     id: "4167",
-    name: "Fluid",
+    name: "Fluid Lending",
     address: null,
     symbol: "-",
     url: "https://fluid.instadapp.io",
     description: "An ever-evolving DeFi protocol and financial system of the future by Instadapp",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/fluid.png`,
+    logo: `${baseIconsUrl}/fluid-lending.png`,
     audits: "2",
     audit_note: null,
-    audit_links: ["https://docs.fluid.instadapp.io/audits-security"],
     gecko_id: null,
     cmcId: null,
     category: "Lending",
@@ -33423,7 +33422,8 @@ const data3: Protocol[] = [
     twitter: "0xfluid",
     forkedFrom: [],
     oracles: [],
-    github: [],
+    audit_links: ["https://docs.fluid.instadapp.io/audits-security"],
+    parentProtocol: "parent#fluid",
     listedAt: 1708863218,
   },
   {
@@ -59312,6 +59312,29 @@ const data3: Protocol[] = [
     twitter: "exSatNetwork",
     audit_links: ["https://3042747009-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaDUBtTPZKYj40o0zqoC8%2Fuploads%2FWh5J6fh5FmaihWpA71nD%2Fblocksec_exsat_consensus_v1.0-signed.pdf?alt=media&token=d1028151-6fe5-46d6-aca6-ce63ee8c11d1", "https://3042747009-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaDUBtTPZKYj40o0zqoC8%2Fuploads%2F3ozeFgUDhoOLswv7G8WF%2Fblocksec_exsat_evm_v1.0-signed.pdf?alt=media&token=a1333a1b-05a8-4378-8ab0-0bfff5a75671",],
     listedAt: 1730720237
+  },
+  {
+    id: "5317",
+    name: "Fluid DEX",
+    address: null,
+    symbol: "-",
+    url: "https://fluid.instadapp.io/stats/1/dex",
+    description:
+      "With Smart Collateral, LPs are now able to utilize their position as collateral in Fluid and deploy it as AMM liquidity on the DEX.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fluid-dex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "0xfluid",
+    parentProtocol: "parent#fluid",
+    listedAt: 1730732495
   },
 ];
 

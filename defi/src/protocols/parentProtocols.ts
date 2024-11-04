@@ -5760,6 +5760,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "suilendprotocol",
   },
+  {
+    id: "parent#fluid",
+    name: "Fluid",
+    url: "https://fluid.instadapp.io",
+    description:
+      "An ever-evolving DeFi protocol and financial system of the future by Instadapp",
+    logo: `${baseIconsUrl}/fluid.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "0xfluid",
+  },
 ];
 
 export default parentProtocols;

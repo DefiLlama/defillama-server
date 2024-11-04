@@ -45007,7 +45007,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Solana"],
-    oracles: ["Pyth", "Switchboard"], // https://nx-finance.gitbook.io/nx-finance-whitepaper/protocol-mechanism/risks#oracle-risks
+    oracles: ["Pyth"], // https://nx-finance.gitbook.io/nx-finance-whitepaper/protocol-mechanism/risks#oracle-risks
     forkedFrom: [],
     module: "nxfinance/index.js",
     twitter: "NX_Finance",
@@ -47735,7 +47735,7 @@ const data3: Protocol[] = [
     module: "solayer/index.js",
     twitter: "solayer_labs",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Switchboard"],
     listedAt: 1718964090,
   },
   {

@@ -675,6 +675,11 @@
       "decimals": "18",
       "symbol": "ETHFI",
       "to": "coingecko#ether-fi"
+    },
+    "0x9737C658272e66Faad39D7AD337789Ee6D54F500": {
+      "decimals": "18",
+      "symbol": "DPI",
+      "to": "asset#ethereum:0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b"
     }
   },
   "tezos": {

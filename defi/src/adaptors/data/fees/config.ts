@@ -2157,5 +2157,9 @@ export default {
     },
     "quenta": {
         id: "5314"
+    },
+    "fluid-dex": {
+        parentId: "Fluid",
+        id: "5317"
     }
 } as AdaptorsConfig

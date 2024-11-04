@@ -2537,5 +2537,9 @@ export default {
     },
     "kyex": {
         id: "5310"
+    },
+    "fluid-dex": {
+        parentId: "Fluid",
+        id: "5317"
     }
 } as AdaptorsConfig

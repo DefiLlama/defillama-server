@@ -110,11 +110,14 @@ async function generateSummaries(
     const firstDBDate = protocolData.firstDate;
     const earliestStart = await getEarliestStartFromModule(dataModule, protocolInfo.module);
 
-    const startTimestamp = earliestStart
-      ? alignToUTCMidnight(earliestStart)
-      : firstDBDate
-      ? alignToUTCMidnight(Date.parse(firstDBDate) / 1000)
-      : null;
+    let startTimestamp: number | null = null;
+    if (earliestStart) {
+      // Adjust earliestStart to the next day's UTC midnight
+      startTimestamp = alignToNextUTCMidnight(earliestStart);
+    } else if (firstDBDate) {
+      startTimestamp = alignToUTCMidnight(Date.parse(firstDBDate) / 1000);
+    }
+
     if (!startTimestamp || startTimestamp < JAN_1ST_2023_TIMESTAMP) continue;
 
     const todayTimestamp = Math.floor(Date.now() / 1000);
@@ -145,6 +148,11 @@ async function generateSummaries(
 
 function alignToUTCMidnight(timestamp: number): number {
   const date = new Date(timestamp * 1000);
+  return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) / 1000;
+}
+
+function alignToNextUTCMidnight(timestamp: number): number {
+  const date = new Date((timestamp + (86400 *2)) * 1000);
   return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) / 1000;
 }
 

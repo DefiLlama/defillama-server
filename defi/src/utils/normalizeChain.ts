@@ -26,6 +26,7 @@ export const normalizedChainReplacements = {
   "kaia": "klaytn",
   "viction": "tomochain",
   "fuel": "fuel_ignition",
+  "oasis sapphire": "oasis_sapphire",
 } as {
   [chain: string]: string
 }
@@ -3467,6 +3468,7 @@ chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
 chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
 chainCoingeckoIds["Lyra Chain"] = chainCoingeckoIds["Derive Chain"]
 chainCoingeckoIds["Fuel"] = chainCoingeckoIds["Fuel Ignition"]
+chainCoingeckoIds["Sapphire"] = chainCoingeckoIds["Oasis Sapphire"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 

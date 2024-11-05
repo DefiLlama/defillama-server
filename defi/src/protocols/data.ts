@@ -2331,7 +2331,7 @@ const data: Protocol[] = [
     name: "Strudel Finance",
     address: "0x297d33e17e61c2ddd812389c2105193f8348188a",
     symbol: "TRDL",
-    url: "https://strudel.finance",
+    url: "https://app.strudelfinance.io",
     description: "Strudel Finance provides the first one-way, trustless bridge linking Bitcoin and Ethereum.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/strudel-finance.jpg`,

@@ -59378,6 +59378,29 @@ const data3: Protocol[] = [
     twitter: "HLiquity_",
     listedAt: 1730801574
   },
+  {
+    id: "5320",
+    name: "MORE Markets",
+    address: null,
+    symbol: "-",
+    url: "https://www.more.markets",
+    description:
+      " MORE Markets is a Morpho-based lending protocol that extends Morpho’s featureset to include non-custodial asset management by expanding Morpho’s curation function and undercollateralized loans for rated and KYC’ed borrowers in isolated premium markets.",
+    chain: "Flow",
+    logo: `${baseIconsUrl}/more-markets.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Flow"],
+    oracles: [], 
+    forkedFrom: ["Morpho"],
+    module: "more-markets/index.js",
+    twitter: "More_Protocol",
+    github: ["MoreLabsXYZ"],
+    listedAt: 1730816643
+  },
 ];
 
 export default data3;

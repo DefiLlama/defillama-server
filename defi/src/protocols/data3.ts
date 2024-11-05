@@ -59178,7 +59178,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5311",
-    name: "Spring Sui",
+    name: "SpringSui",
     address: null,
     symbol: "-",
     url: "https://springsui.com/",
@@ -59194,7 +59194,7 @@ const data3: Protocol[] = [
     chains: ["Sui"],
     oracles: [],
     forkedFrom: [],
-    module: "spring-sui/index.js",
+    module: "springsui/index.js",
     twitter: "springsui_", 
     audit_links: ["https://docs.suilend.fi/security/suilend-audit"],
     parentProtocol: "parent#suilend-protocol",

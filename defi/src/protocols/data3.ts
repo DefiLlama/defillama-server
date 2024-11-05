@@ -59334,6 +59334,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#fluid",
     listedAt: 1730732495
   },
+  {
+    id: "5318",
+    name: "g8keep",
+    address: null,
+    symbol: "-",
+    url: "https://www.g8.xyz",
+    description:
+      "Safely deploy, discover, and trade tokens. Currently on EVM.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/g8keep.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "g8keep/index.js",
+    twitter: "g8_keep",
+    listedAt: 1730801468
+  },
+  {
+    id: "5319",
+    name: "HLiquity",
+    address: null,
+    symbol: "-",
+    url: "https://hliquity.org/",
+    description:
+      "HLiquity is a decentralized borrowing protocol that enables users to take interest-free loans which are overcollateralized, backed by HBAR, and paid out in HCHF, a notoriously reliable stablecoin pegged to the Swiss Franc.",
+    chain: "Hedera",
+    logo: `${baseIconsUrl}/hliquity.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Hedera"],
+    oracles: ["Supra"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12159
+    forkedFrom: [],
+    module: "hliquity/index.js",
+    twitter: "HLiquity_",
+    listedAt: 1730801574
+  },
 ];
 
 export default data3;

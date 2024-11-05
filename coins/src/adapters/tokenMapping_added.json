@@ -9325,6 +9325,11 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "coingecko#weth"
+    },
+    "0x892aD291737249abe79C657C4A5a57e11C174566": {
+      "decimals": "18",
+      "symbol": "IVM",
+      "to": "coingecko#iota-velocimeter"
     }
   },
   "kinto": {

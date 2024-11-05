@@ -2161,5 +2161,8 @@ export default {
     "fluid-dex": {
         parentId: "Fluid",
         id: "5317"
+    },
+    "g8keep": {
+        id: "5318"
     }
 } as AdaptorsConfig

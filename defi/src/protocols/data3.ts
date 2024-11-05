@@ -59370,7 +59370,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "CDP",
     chains: ["Hedera"],
     oracles: ["Supra"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12159
     forkedFrom: [],

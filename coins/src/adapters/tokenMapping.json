@@ -229,6 +229,13 @@
       "to": "coingecko#k9-finance-dao"
     }
   },
+  "taraxa": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "TARA",
+      "to": "coingecko#taraxa"
+    }
+  },
   "ethereum": {
     "0x06824C27C8a0DbDe5F72f770eC82e3c0FD4DcEc3": {
     "decimals": "18",

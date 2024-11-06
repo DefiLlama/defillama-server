@@ -59493,6 +59493,29 @@ const data3: Protocol[] = [
     twitter: "rwaassetchain",
     listedAt: 1730895567
   },
+  {
+    id: "5325",
+    name: "Marginal",
+    address: null,
+    symbol: "-",
+    url: "https://app.marginal.network",
+    description:
+      "Permissionless Markets - With Leverage",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/marginal.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Ethereum", "Base"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "marginal/index.js",
+    twitter: "MarginalDEX",
+    listedAt: 1730900781
+  },
+
 ];
 
 export default data3;

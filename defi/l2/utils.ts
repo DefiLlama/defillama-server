@@ -206,22 +206,13 @@ const endpointMap: any = {
 };
 
 function getConnection(chain = "solana") {
-  let a = endpointMap[chain](true);
   if (!connection[chain]) connection[chain] = new Connection(endpointMap[chain](true));
   return connection[chain];
 }
 async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Solana adapter!`);
 
-  const solanaMintLayout = struct([
-    u8("mintAuthorityOption"),
-    u8("mintAuthority"),
-    u64("supply"),
-    u8("decimals"),
-    u8("isInitialized"),
-    u8("freezeAuthorityOption"),
-    u8("freezeAuthority"),
-  ]);
+  const solanaMintLayout = struct([u64("supply")]);
 
   const sleepTime = tokens.length > 2000 ? 2000 : 200;
   const tokensPK: PublicKey[] = [];
@@ -243,9 +234,9 @@ async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promi
       return;
     }
     try {
-      const buffer = Buffer.from(data.data);
-      const decoded = solanaMintLayout.decode(buffer);
-      supplies["solana:" + filteredTokens[idx]] = decoded.supply.toString(); // 10 ** decoded.decimals.toString();
+      const buffer = data.data.slice(36, 44);
+      const supply = solanaMintLayout.decode(buffer).supply.toString();
+      supplies["solana:" + filteredTokens[idx]] = supply;
     } catch (e) {
       sdk.log(`Error decoding account: ${filteredTokens[idx]}`);
     }
@@ -273,7 +264,6 @@ async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promi
     }
   }
 }
-
 async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Sui adapter!`);
   const supplies: { [token: string]: number } = {};

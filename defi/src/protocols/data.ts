@@ -11287,6 +11287,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       optimism: ["Chainlink", "TWAP"],
       ethereum: ["Chainlink", "TWAP"],
       bsc: ["Chainlink", "TWAP"],
+      rsk: ["Umbrella Network"],
     },
     github: ["balmy-protocol"],
   },

@@ -254,5 +254,8 @@ export default {
     },
     "mintswap": {
         id: "4811",
+    },
+    "nabla": {
+        id: "5309",
     }
 } as AdaptorsConfig

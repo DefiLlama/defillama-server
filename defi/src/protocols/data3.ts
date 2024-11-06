@@ -59375,7 +59375,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Hedera"],
-    oracles: ["Pyth","Supra"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12159 , https://docs.hliquity.org/deep-dive/stability-pool-and-liquidations#oracle-integration
+    oracles: ["Pyth"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12159 , https://docs.hliquity.org/deep-dive/stability-pool-and-liquidations#oracle-integration
     forkedFrom: [],
     module: "hliquity/index.js",
     twitter: "HLiquity_",

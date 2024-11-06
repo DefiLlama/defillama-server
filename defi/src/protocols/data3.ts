@@ -59515,7 +59515,30 @@ const data3: Protocol[] = [
     twitter: "MarginalDEX",
     listedAt: 1730900781
   },
-
+  {
+    id: "5326",
+    name: "NAVI Aggregator",
+    address: "sui:0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
+    symbol: "NAVX",
+    url: "https://www.navi.ag",
+    description:
+      "The NAVI DEX Aggregator is a core part of the NAVI Ecosystem, providing seamless integration for high-performance decentralized trading with optimized execution, security, and a smooth user experience",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/navi-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Sui"],
+    module: "dummy.js",
+    twitter: "navi_protocol",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: [],
+    listedAt: 1730911979,
+    parentProtocol: "parent#navi-protocol",
+  },
 ];
 
 export default data3;

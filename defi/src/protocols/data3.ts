@@ -59404,6 +59404,73 @@ const data3: Protocol[] = [
     github: ["MoreLabsXYZ"],
     listedAt: 1730816643
   },
+  {
+    id: "5321",
+    name: "AquaLoan",
+    address: "bsc:0xD1Fb55d61c2494ced556536F898D969e2F6Dd2Bf",
+    symbol: "AQUA",
+    url: "https://dev.aqualoan.io",
+    description:
+      "In the fast-paced world of decentralized finance (DeFi), innovation is the driving force behind the success of any ecosystem. As the DeFi landscape continues evolving, we proudly announce Aqualoan, an innovation-driven, decentralized and non-custodial liquidity market.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/aqualoan.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "aqualoan/index.js",
+    twitter: "aqualoan",
+    github: ["techaqualoan"],
+    listedAt: 1730894395
+  },
+  {
+    id: "5322",
+    name: "MON Protocol",
+    address: "0xc555D625828c4527d477e595fF1Dd5801B4a600e",
+    symbol: "MON",
+    url: "https://app.monprotocol.fi",
+    description:
+      "Web3 Gaming & IP Publisher",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mon-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "mon-protocol",
+    cmcId: "30950",
+    category: "Gaming",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "monprotocol/index.js",
+    twitter: "monprotocol",
+    listedAt: 1730894995
+  },
+  {
+    id: "5323",
+    name: "exSat Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://exsat.network",
+    description:
+      "exSat Network's Bridge is a secure cross-chain bridge managed by licensed custodians. It currently supports $BTC cross-chain transfers between Bitcoin and the exSat Mainnet, with plans to expand to additional blockchains soon.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/exsat-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "exsat/index.js",
+    twitter: "exSatNetwork",
+    listedAt: 1730894891
+  },
 ];
 
 export default data3;

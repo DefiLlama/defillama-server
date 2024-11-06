@@ -59471,6 +59471,28 @@ const data3: Protocol[] = [
     twitter: "exSatNetwork",
     listedAt: 1730894891
   },
+  {
+    id: "5324",
+    name: "Asset Chain Swap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.assetchain.org",
+    description:
+      "Uniswap V3 fork on Asset Chain.",
+    chain: "Asset Chain",
+    logo: `${baseIconsUrl}/asset-chain-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Asset Chain"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    module: "assetchain-swap/index.js",
+    twitter: "rwaassetchain",
+    listedAt: 1730895567
+  },
 ];
 
 export default data3;

@@ -59375,7 +59375,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Hedera"],
-    oracles: ["Supra"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12159
+    oracles: ["Pyth","Supra"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12159 , https://docs.hliquity.org/deep-dive/stability-pool-and-liquidations#oracle-integration
     forkedFrom: [],
     module: "hliquity/index.js",
     twitter: "HLiquity_",
@@ -59397,7 +59397,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Flow"],
-    oracles: [], 
+    oracles: ["Pyth"],  // https://docs.more.markets/borrow/oracles-and-pricing
     forkedFrom: ["Morpho"],
     module: "more-markets/index.js",
     twitter: "More_Protocol",

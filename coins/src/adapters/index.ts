@@ -105,5 +105,6 @@ export default {
   pancakeStable: require("./markets/pancakeStable"),
   etherfi: require("./yield/etherfi"),
   wcgUSD: require("./other/wcgUSD"),
+  usdrif: require("./other/usdrif"),
   xailocker: require("./liquidStaking/xailocker"),
 };

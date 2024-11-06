@@ -13,6 +13,9 @@ import { storeNotTokens } from "./layer2pg";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { readFromPGCache, writeToPGCache } from "../src/api2/db";
 import { unixTimestampNow } from "../emissions-adapters/utils/time";
+import { Connection, PublicKey } from "@solana/web3.js";
+import * as sdk from "@defillama/sdk";
+import { struct, u8, u64 } from "../DefiLlama-Adapters/projects/helper/utils/solana/layouts/layout-base.js";
 
 type CachedSupplies = { timestamp: number; data: { [token: string]: number } };
 export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
@@ -190,54 +193,76 @@ async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{
   await storeNotTokens(notTokens);
   return supplies;
 }
+
+let connection: any = {};
+
+const endpoint = (isClient = false) => {
+  if (isClient) return process.env.SOLANA_RPC_CLIENT ?? process.env.SOLANA_RPC;
+  return process.env.SOLANA_RPC;
+};
+
+const endpointMap: any = {
+  solana: endpoint,
+};
+
+function getConnection(chain = "solana") {
+  if (!connection[chain]) connection[chain] = new Connection(endpointMap[chain](true));
+  return connection[chain];
+}
 async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Solana adapter!`);
 
-  const now = unixTimestampNow();
-  const margin = 12 * 60 * 60; // 12hrs
-  const cachedSupplies: CachedSupplies = await readFromPGCache("L2-solanaTokenSupplies");
+  const solanaMintLayout = struct([u64("supply")]);
 
-  if (cachedSupplies && "timestamp" in cachedSupplies && now - cachedSupplies.timestamp < margin)
-    return cachedSupplies.data;
-
+  const sleepTime = tokens.length > 2000 ? 2000 : 200;
+  const tokensPK: PublicKey[] = [];
+  const filteredTokens: string[] = [];
+  tokens.map((i) => {
+    try {
+      const key = new PublicKey(i);
+      tokensPK.push(key);
+      filteredTokens.push(i);
+    } catch (e) {}
+  });
+  const connection = getConnection("solana");
+  const res = await runInChunks(tokensPK, (chunk: any) => connection.getMultipleAccountsInfo(chunk), { sleepTime });
   const supplies: { [token: string]: number } = {};
-  let i = 0;
-  let j = 0;
-  const notTokens: string[] = [];
-  console.log(`length: ${tokens.length}`);
-  if (!process.env.SOLANA_RPC) throw new Error(`no Solana RPC supplied`);
-  await PromisePool.withConcurrency(50)
-    .for(tokens)
-    .process(async (token) => {
-      tokens;
-      i;
-      try {
-        const res = await fetch(process.env.SOLANA_RPC ?? "", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            jsonrpc: "2.0",
-            id: 1,
-            method: "getTokenSupply",
-            params: [token],
-          }),
-        }).then((r) => r.json());
-        i++;
 
-        if (res.error) {
-          notTokens.push(`solana:${token}`);
-          res.error;
-        } else supplies[`solana:${token}`] = res.result.value.amount;
-      } catch (e) {
-        j++;
-      }
-    });
-
-  let a = Object.keys(supplies).length;
-  const cacheData: CachedSupplies = { data: supplies, timestamp: now };
-  await Promise.all([storeNotTokens(notTokens), writeToPGCache("L2-solanaTokenSupplies", cacheData)]);
+  res.forEach((data, idx) => {
+    if (!data) {
+      sdk.log(`Invalid account: ${tokens[idx]}`);
+      return;
+    }
+    try {
+      const buffer = data.data.slice(36, 44);
+      const supply = solanaMintLayout.decode(buffer).supply.toString();
+      supplies["solana:" + filteredTokens[idx]] = supply;
+    } catch (e) {
+      sdk.log(`Error decoding account: ${filteredTokens[idx]}`);
+    }
+  });
 
   return supplies;
+
+  async function runInChunks(inputs: any, fn: any, { chunkSize = 99, sleepTime }: any = {}) {
+    const chunks = sliceIntoChunks(inputs, chunkSize);
+    const results = [];
+    for (const chunk of chunks) {
+      results.push(...((await fn(chunk)) ?? []));
+      if (sleepTime) await sleep(sleepTime);
+    }
+
+    return results.flat();
+
+    function sliceIntoChunks(arr: any, chunkSize = 100) {
+      const res = [];
+      for (let i = 0; i < arr.length; i += chunkSize) {
+        const chunk = arr.slice(i, i + chunkSize);
+        res.push(chunk);
+      }
+      return res;
+    }
+  }
 }
 async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Sui adapter!`);

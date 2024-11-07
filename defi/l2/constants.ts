@@ -82,7 +82,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5232": "sui",
   "5218": "mint",
   "5248": "fuel",
-  "5303": "morph"
+  "5303": "morph",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -92,6 +92,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "1878": "apex",
   "344": "zkswap",
   "5130": "polynomial",
+  "5323": "exSat",
 };
 
 export const allChainKeys: string[] = [

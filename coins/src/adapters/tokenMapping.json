@@ -240,7 +240,7 @@
     "0x06824C27C8a0DbDe5F72f770eC82e3c0FD4DcEc3": {
     "decimals": "18",
       "symbol": "amphrETH",
-      "to": "coingecko#ethereum"    
+      "to": "coingecko#ethereum"
     },
     "0x9813037ee2218799597d83D4a5B6F3b6778218d9": {
       "decimals": "18",
@@ -502,6 +502,11 @@
     "0xc96de26018a54d51c097160568752c4e3bd6c364": {
       "decimals": "8",
       "symbol": "FBTC",
+      "to": "coingecko#ignition-fbtc"
+    },
+    "0x3119a1ad5b63a000ab9ca3f2470611eb997b93b9": {
+      "decimals": "8",
+      "symbol": "lfbtc-Avalon-bsc",
       "to": "coingecko#ignition-fbtc"
     }
   },
@@ -1473,6 +1478,11 @@
       "to": "coingecko#ignition-fbtc",
       "decimals": "8",
       "symbol": "FBTC"
+    },
+    "0x3119a1ad5b63a000ab9ca3f2470611eb997b93b9": {
+      "decimals": "8",
+      "symbol": "lfbtc-Avalon-mnt",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "manta": {

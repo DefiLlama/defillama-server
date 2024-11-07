@@ -25711,7 +25711,7 @@ const data2: Protocol[] = [
     name: "Liqwid",
     address: "cardano:8e420ce194ca84040ba6971e6ab816e3d76ee9ee",
     symbol: "LQ",
-    url: "https://app.liqwid.finance/",
+    url: "https://v2.liqwid.finance/",
     description: "Decentralized interest rate curves for lending and borrowing on Cardano",
     chain: "Cardano",
     logo: `${baseIconsUrl}/liqwid.png`,

@@ -263,5 +263,8 @@ export default {
   },
   "unizen": {
     id: "1336",
+  },
+  "navi": {
+    id: "5326",
   }
 } as AdaptorsConfig;

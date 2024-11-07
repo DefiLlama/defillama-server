@@ -59539,6 +59539,29 @@ const data3: Protocol[] = [
     listedAt: 1730911979,
     parentProtocol: "parent#navi-protocol",
   },
+  {
+    id: "5327",
+    name: "unagiswap",
+    address: null,
+    symbol: "-",
+    url: "https://unagiswap.xyz/",
+    description:
+      "Decentralized exchange on Taiko",
+    chain: "Taiko",
+    logo: `${baseIconsUrl}/unagiswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Taiko"],
+    module: "unagiswap/index.js",
+    twitter: "Unagi_Swap",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: [],
+    listedAt: 1730986517
+  },
 ];
 
 export default data3;

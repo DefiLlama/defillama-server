@@ -1927,6 +1927,26 @@
       "decimals": "6",
       "symbol": "DVPN",
       "to": "coingecko#sentinel"
+    },
+    "FCFF8B19C61677F3B78E2A5AE3B4A34A8D23858D16905F253B8438B3AFD07FF8": {
+      "decimals": "6",
+      "symbol": "stATOM",
+      "to": "coingecko#stride-staked-atom"
+    },
+    "E45CFCB959F4F6D1065B7033EE49A88E606E6AD82E75725219B3D68B0FA89987": {
+      "decimals": "8",
+      "symbol": "allBTC",
+      "to": "coingecko#osmosis-allbtc"
+    },
+    "762E1E45658845A12E214A91C3C05FDFC5951D60404FAADA225A369A96DCD9A9": {
+      "decimals": "9",
+      "symbol": "allSOL",
+      "to": "coingecko#osmosis-allsol"
+    },
+    "ADC63C00000CA75F909D2BE3ACB5A9980BED3A73B92746E0FCE6C67414055459": {
+      "decimals": "6",
+      "symbol": "AKT",
+      "to": "coingecko#akash-network"
     }
   },
   "zeta": {

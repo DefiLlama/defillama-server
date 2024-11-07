@@ -59562,6 +59562,29 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1730986517
   },
+  {
+    id: "5328",
+    name: "HeadStarter",
+    address: "hedera:0.0.968069",
+    symbol: "HST",
+    url: "https://headstarter.org/",
+    description:
+      "Hedera-focused Web3 launchpad and crowdfunding platform with acceleration, incubation, and grants programs",
+    chain: "Hedera",
+    logo: `${baseIconsUrl}/headstarter.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "headstarter",
+    cmcId: "21019",
+    category: "Launchpad",
+    chains: ["Hedera"],
+    module: "headstarter/index.js",
+    twitter: "HeadStarterOrg",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://docs.headstarter.org/audits"],
+    listedAt: 1731009731
+  },
 ];
 
 export default data3;

@@ -2164,5 +2164,9 @@ export default {
     },
     "g8keep": {
         id: "5318"
+    },
+    "iziswap": {
+        parentId: "iZUMI Finance",
+        "id": "1883"
     }
 } as AdaptorsConfig

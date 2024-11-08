@@ -59585,6 +59585,55 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.headstarter.org/audits"],
     listedAt: 1731009731
   },
+  {
+    id: "5329",
+    name: "ThalaSwap V2",
+    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
+    symbol: "THL",
+    url: "https://www.thala.fi/",
+    description:
+      "Thala is a decentralized finance protocol powered by the Move language, enabling seamless borrowing of a decentralized, over-collateralized stablecoin in Move Dollar and capital-efficient liquidity provisioning via a rebalancing AMM on the Aptos blockchain",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/thalaswap-v2.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aptos"],
+    module: "thalaswap-v2/index.js",
+    twitter: "ThalaLabs",
+    forkedFrom: [],
+    oracles: [], 
+    tokensExcludedFromParent: {
+      Aptos: ["STHAPT", "THAPT", "veTHL"],
+    },
+    parentProtocol: "parent#thala-labs",
+    listedAt: 1731062853
+  },
+  {
+    id: "5330",
+    name: "Bitget SOL",
+    address: null,
+    symbol: "-",
+    assetToken: "BGSOL",
+    url: "https://www.bitget.com/price/solana/staking",
+    description:
+      "Earn daily profits without risking your principal! Your returns are based on on-chain staking, and if the on-chain ROI changes, the APR will adjust accordingly.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/bitget-sol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "bgsol/index.js",
+    twitter: "bitgetglobal",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1731062934
+  },
 ];
 
 export default data3;

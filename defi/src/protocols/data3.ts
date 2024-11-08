@@ -14670,7 +14670,7 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["zkSync Era", "Metis", "Telos"],
     module: "zkdx-finance/index.js",
-    twitter: "zkera_fi",
+    twitter: "zkerafi",
     forkedFrom: ["GMX V1"],
     oraclesByChain: {
       era: ["Pyth"],

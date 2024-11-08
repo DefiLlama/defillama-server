@@ -59679,6 +59679,29 @@ const data3: Protocol[] = [
     audit_links: ["https://cer.live/exchange/p2pb2b"],
     listedAt: 1731106485
   },
+  {
+    id: "5333",
+    name: "Carrot",
+    address: "solana:CRTx1JouZhzSU6XytsE42UQraoGqiHgxabocVfARTy2s",
+    symbol: "CRT",
+    url: "https://use.deficarrot.com/",
+    description:
+      "A liquid yield bearing token that maximizes your earned interest on stablecoins, consistently increasing the token value by intelligently routing funds to capture the highest available yield, without adding speculation risk",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/carrot.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "carrot-2",
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Solana"],
+    module: "carrot/index.js",
+    twitter: "DeFiCarrot",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://deficarrot.com/assets/carrot_final_report.pdf"],
+    listedAt: 1731107322
+  },
 ];
 
 export default data3;

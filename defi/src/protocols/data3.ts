@@ -59656,6 +59656,29 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1731065044
   },
+  {
+    id: "5332",
+    name: "P2PB2B",
+    address: null,
+    symbol: "-",
+    url: "https://p2pb2b.com/",
+    description:
+      "P2B is the top-rated crypto exchange in Europe while entering the TOP-20 platforms worldwide by CoinMarketCap. It is also in the TOP-3 Crypto Exchanges by growth rate. It's number 1 among crypto exchanges providing customers with a wide variety of newly listed tokens.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/p2pb2b.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum","Bitcoin","Binance","Polygon"],
+    module: "p2pb2b/index.js",
+    twitter: "P2B_Exchange",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://cer.live/exchange/p2pb2b"],
+    listedAt: 1731106485
+  },
 ];
 
 export default data3;

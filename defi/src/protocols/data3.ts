@@ -59634,6 +59634,28 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1731062934
   },
+  {
+    id: "5331",
+    name: "ReformDAO",
+    address: "0xea3eed8616877F5d3c4aEbf5A799F2e8D6DE9A5E",
+    symbol: "RFRM",
+    url: "https://www.reformdao.com",
+    description:
+      "Reform is the first market making and liquidity providing DAO leveraging AI whilst aligning incentives across all stakeholders within the market making process.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/reformdao.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    module: "reform/index.js",
+    twitter: "ReformDAO",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1731065044
+  },
 ];
 
 export default data3;

@@ -2143,18 +2143,18 @@ export default {
     "suilend": {
         id: "4274"
     },
-    "juicebox": {
+    /*"juicebox": { // adapter not working
         id: "4208"
-    },
+    },*/
     "celestia": {
         id: "22861"
     },
     "yamfore": {
         id: "5304"
     },
-    "bonzo": {
+    /*"bonzo": { // adapter not working
         id: "5287"
-    },
+    },*/
     "quenta": {
         id: "5314"
     },

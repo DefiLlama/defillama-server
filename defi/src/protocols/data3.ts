@@ -59733,7 +59733,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://portal.skale.space/bridge",
     description:
-      "The cannonical bridge for the SKALE Network. Transfer your assets to the SKALE Network and move easily across SKALE Chains to access a variety of dApps.",
+      "The native bridge for the SKALE Network. Transfer your assets to the SKALE Network and move easily across SKALE Chains to access a variety of dApps.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/skale-network-bridge.jpg`,
     audits: "2",

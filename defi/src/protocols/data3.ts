@@ -59702,6 +59702,57 @@ const data3: Protocol[] = [
     audit_links: ["https://deficarrot.com/assets/carrot_final_report.pdf"],
     listedAt: 1731107322
   },
+  {
+    id: "5334",
+    name: "STAB Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://ilikeitstable.com",
+    description:
+      "The STAB Protocol allows for the overcollateralized borrowing of a stable asset called STAB. STAB's peg is not fixed, but variable, as an interest rate mechanism influences the peg to balance supply and demand",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/stab-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Radix"],
+    module: "stab-protocol/index.js",
+    twitter: "StabilisLabs",
+    forkedFrom: [],
+    oracles: ["Morpher"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12218
+    audit_links: [],
+    github: ["Stabilis-Labs"],
+    listedAt: 1731160413
+  },
+  {
+    id: "5335",
+    name: "SKALE Network Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://portal.skale.space/bridge",
+    description:
+      "The cannonical bridge for the SKALE Network. Transfer your assets to the SKALE Network and move easily across SKALE Chains to access a variety of dApps.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/skale-network-bridge.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    module: "skale/index.js",
+    twitter: "SkaleNetwork",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: [
+      "https://github.com/skalenetwork/IMA/blob/develop/audits/SKALE_Audit_Bramah.pdf",
+      "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20SKALE%20Self-Recharging%20Wallets.pdf",
+      "https://github.com/skalenetwork/ima-c4-audit"
+    ],
+    listedAt: 1731160419
+  },
 ];
 
 export default data3;

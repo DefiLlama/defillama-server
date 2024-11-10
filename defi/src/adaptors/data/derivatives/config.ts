@@ -1,3 +1,4 @@
+import { getCachedHistoricalTvlForAllProtocols } from "../../../storeGetCharts"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -32,7 +33,6 @@ export default {
     },
     "synfutures-v1": {
         parentId: "SynFutures",
-        "enabled": false,
         "id": "2328"
     },
     "vela": {
@@ -79,7 +79,7 @@ export default {
     "dydx": {
         parentId: "dYdX",
         "id": "144",
-        "enabled": true
+        disabled: true
     },
     "level-finance": {
         "id": "2395",
@@ -431,6 +431,7 @@ export default {
         }
     },
     "rabbitx": {
+        enabled: true,
         "id": "2886",
         parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
@@ -586,6 +587,7 @@ export default {
         "id": "4045"
     },
     "blastfutures": {
+        enabled: false,
         "id": "4221",
         parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
@@ -717,5 +719,39 @@ export default {
     },
     "filament": {
         id: "5177",
+    },
+    "idex-v4": {
+        id: "5079"
+    },
+    "trado": {
+        id: "5208",
+    },
+    "quickswap-perps": {
+        parentId: "QuickSwap",
+        id: "2980",
+    },
+    "capybara-perp": {
+        parentId: "Capybara Exchange",
+        id: "5257",
+    },
+    "defx": {
+        id: "5273",
+    },
+    "surge-trade": {
+        id: "5290"
+    },
+    "optim-finance": {
+        id: "2380",
+        protocolsData: {
+            "derivatives": {
+                "id": "2380",
+            }
+        }
+    },
+    "quenta": {
+        id: "5314"
+    },
+    "zkera-finance": {
+        id: "3343"
     }
 } as AdaptorsConfig

@@ -8,6 +8,7 @@ import * as optionsData from "./options"
 import * as incentivesData from "./incentives"
 import * as protocolsData from "./protocols"
 import * as royaltiesData from "./royalties"
+import * as bridgeAggregatorsData from "./bridge-aggregators";
 import * as aggregatorDerivativesData from "./aggregator-derivatives";
 import generateProtocolAdaptorsList, { IImportsMap, generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
 import { ADAPTER_TYPES } from "../handlers/triggerStoreAdaptorData";
@@ -21,7 +22,8 @@ const mapping = {
   [AdapterType.INCENTIVES]: incentivesData,
   [AdapterType.PROTOCOLS]: protocolsData,
   [AdapterType.ROYALTIES]: royaltiesData,
-  [AdapterType.AGGREGATOR_DERIVATIVES]: aggregatorDerivativesData
+  [AdapterType.AGGREGATOR_DERIVATIVES]: aggregatorDerivativesData,
+  [AdapterType.BRIDGE_AGGREGATORS]: bridgeAggregatorsData,
 }
 
 export const importModule = (adaptorType: AdapterType) => (mod: string) => import(all.imports[adaptorType][mod].moduleFilePath)

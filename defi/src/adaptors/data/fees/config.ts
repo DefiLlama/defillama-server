@@ -73,19 +73,7 @@ export default {
     },
     "gmx": {
         "id": "337",
-        parentId: "GMX",
-        protocolsData: {
-            "swap": {
-                "id": "337",
-                "category": "Dexes",
-                "displayName": "GMX - SWAP"
-            },
-            "derivatives": {
-                displayName: "GMX - Derivatives",
-                "id": "337",
-                "enabled": true
-            }
-        },
+        parentId: "GMX"
     },
     "lido": {
         "id": "182"
@@ -1221,10 +1209,6 @@ export default {
     "paal-ai": {
         "id": "3723"
     },
-    "kinetix": {
-        parentId: "Kinetix",
-        "id": "3534"
-    },
     "retro": {
         "id": "3311"
     },
@@ -1273,7 +1257,7 @@ export default {
     "dydx": {
         parentId: "dYdX",
         "id": "144",
-        "enabled": true
+        disabled: true
     },
     "justlend": {
         "id": "494"
@@ -2070,5 +2054,119 @@ export default {
     },
     "pocket-universe": {
         id: "5189"
+    },
+    "memecooking": {
+        id: "5185"
+    },
+    "prerich-app": {
+        id: "5196"
+    },
+    "trado": {
+        id: "5208",
+    },
+    "ntm": {
+        id: "5212",
+    },
+    "jeton": {
+      id: "5213",
+    },
+    "sparkdex-v3-1": {
+        parentId: "SparkDEX",
+        id: "5223"
+    },
+    "sparkdex-v2": {
+        parentId: "SparkDEX",
+        id: "4887",
+    },
+    "arbitrum-nova": {
+        id: "42170",
+    },
+    "kerberos": {
+        id: "5233",
+    },
+    "safe": {
+        id: "3320"
+    },
+    "botfalcon": {
+        id: "5237"
+    },
+    "mint": {
+        id: "185"
+    },
+    "grafun": {
+        id: "5195"
+    },
+    "wise-lending-v2": {
+        parentId: "Wise Lending",
+        id: "4494"
+    },
+    "makenow-meme": {
+        id: "5246"
+    },
+    "linehub-v3": {
+        parentId: "LineHub",
+        id: "4661"
+    },
+    "linehub-v2": {
+        parentId: "LineHub",
+        id: "4660"
+    },
+    "quickswap-hydra": {
+        parentId: "QuickSwap",
+        id: "5187"
+    },
+    "quickswap-perps": {
+        parentId: "QuickSwap",
+        id: "2980",
+    },
+    "step-finance": {
+        id: "4837"
+    },
+    "assetchain": {
+        id: "8519"
+    },
+    "kinetix-v2": {
+        parentId: "Kinetix",
+        id: "3533"
+    },
+    "kinetix-v3": {
+        parentId: "Kinetix",
+        id: "3534"
+    },
+    "metavault-amm-v2": {
+        parentId: "MetaVault",
+        id: "5186"
+    },
+    "surge-trade": {
+        id: "5290"
+    },
+    "suilend": {
+        id: "4274"
+    },
+    /*"juicebox": { // adapter not working
+        id: "4208"
+    },*/
+    "celestia": {
+        id: "22861"
+    },
+    "yamfore": {
+        id: "5304"
+    },
+    /*"bonzo": { // adapter not working
+        id: "5287"
+    },*/
+    "quenta": {
+        id: "5314"
+    },
+    "fluid-dex": {
+        parentId: "Fluid",
+        id: "5317"
+    },
+    "g8keep": {
+        id: "5318"
+    },
+    "iziswap": {
+        parentId: "iZUMI Finance",
+        "id": "1883"
     }
 } as AdaptorsConfig

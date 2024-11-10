@@ -251,5 +251,20 @@ export default {
   },
   "tondiamonds": {
     id: "5161",
+  },
+  "okx": {
+    id: "5201",
+  },
+  "jeton": {
+    id: "5213",
+  },
+  "hinkal": {
+      id: "4487"
+  },
+  "unizen": {
+    id: "1336",
+  },
+  "navi": {
+    id: "5326",
   }
 } as AdaptorsConfig;

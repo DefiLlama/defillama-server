@@ -249,4 +249,13 @@ export default {
         parentId: "DTX",
         id: "5141",
     },
+    "scribe-exchange-v4": {
+        id: "4943",
+    },
+    "mintswap": {
+        id: "4811",
+    },
+    "nabla": {
+        id: "5309",
+    }
 } as AdaptorsConfig

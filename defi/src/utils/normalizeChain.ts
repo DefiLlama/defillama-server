@@ -17,7 +17,6 @@ export const normalizedChainReplacements = {
   "bifrost network": "bfc",
   "horizen eon": "eon",
   "bahamut": "ftn",
-  "bevm": "chainx",
   "bitnet": "btn",
   "defichain evm": "defichain_evm",
   "hydration": "hydradx",
@@ -25,7 +24,9 @@ export const normalizedChainReplacements = {
   "bitlayer": "btr",
   "cronos zkevm": "cronos_zkevm",
   "kaia": "klaytn",
-  "viction": "tomochain"
+  "viction": "tomochain",
+  "fuel": "fuel_ignition",
+  "oasis sapphire": "oasis_sapphire",
 } as {
   [chain: string]: string
 }
@@ -1491,6 +1492,7 @@ export const chainCoingeckoIds = {
     cmcId: "4558",
     twitter: "flow_blockchain",
     url: "https://flow.com/",
+    chainId: 747,
   },
   "Kujira": {
     geckoId: "kujira",
@@ -3005,6 +3007,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "bounce_bit",
     url: "https://bouncebit.io/",
+    github: ["BounceBit-Labs"],
     chainId: 6001,
   },
   "re.al": {
@@ -3337,6 +3340,109 @@ export const chainCoingeckoIds = {
     twitter: "electroneum",
     url: "https://electroneum.com/",
   },
+  "Lisk": {
+    geckoId: "lisk",
+    symbol: "LSK",
+    cmcId: null,
+    categories: ["EVM","Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    url: "https://lisk.com/",
+    twitter: "LiskHQ",
+    github: ["LiskHQ"],
+    chainId: 1135
+  },
+  "HeLa": {
+    geckoId: "hela",
+    symbol: "HELA",
+    cmcId: "2137",
+    categories: ["EVM"],
+    chainId: 8668,
+    twitter: "Hela_Network",
+    url: "https://helalabs.com/",
+  },
+  "Matchain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "BSC",
+      types: ["L2", "gas"]
+    },
+    url: "https://www.matchain.io/",
+    twitter: "matchain_io",
+    chainId: 698
+  },
+  "Shape": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup","Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    url: "https://shape.network/",
+    twitter: "Shape_L2",
+    chainId: 360
+  },
+  "Fuel Ignition": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "fuel_network",
+    url: "https://fuel.network/",
+  },
+  "World Chain": {
+    geckoId: "worldcoin-wld",
+    symbol: "WLD",
+    cmcId: null,
+    categories: ["EVM","Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "worldcoin",
+    url: "https://world.org/",
+    chainId: 480
+  },
+  "ApeChain": {
+    geckoId: "apecoin",
+    symbol: "APE",
+    cmcId: "18876",
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "apecoin",
+    url: "https://apechain.com/",
+    chainId: 33139
+  },
+  "Asset Chain": {
+    geckoId: "xend-finance",
+    symbol: "RWA",
+    cmcId: "8519",
+    categories: ["EVM"],
+    twitter: "xendfinance",
+    url: "https://xend.finance/",
+    chainId: 42420
+  },
+  "Morph": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "MorphL2",
+    url: "https://www.morphl2.io"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3361,6 +3467,8 @@ chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
 chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
 chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
 chainCoingeckoIds["Lyra Chain"] = chainCoingeckoIds["Derive Chain"]
+chainCoingeckoIds["Fuel"] = chainCoingeckoIds["Fuel Ignition"]
+chainCoingeckoIds["Sapphire"] = chainCoingeckoIds["Oasis Sapphire"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -3432,6 +3540,8 @@ export function transformNewChainName(chain: string) {
       return "ZKsync Lite"
     case "Lyra Chain":
       return "Derive Chain"
+    case "Fuel":
+      return "Fuel Ignition"
     default:
       return chain
   }
@@ -4061,6 +4171,24 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Polynomial"
     case "etn":
       return "Electroneum"
+    case "lisk":
+      return "Lisk"
+    case "hela":
+      return "HeLa"
+    case "matchain":
+      return "Matchain"
+    case "shape":
+      return "Shape"
+    case "fuel":
+      return useNewChainNames ? "Fuel Ignition" : "Fuel"
+    case "wc":
+      return "World Chain"
+    case "apechain":
+      return "ApeChain"
+    case "assetchain":
+      return "Asset Chain"
+    case "morph":
+      return "Morph"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

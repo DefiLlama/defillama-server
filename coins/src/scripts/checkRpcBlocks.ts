@@ -13,6 +13,14 @@ type Results = { [chain: string]: Rpc[] };
 
 const margin = 0.1; // 10% error
 
+const user = "<@!577529505871167498>"; // wayne
+
+const whitelist = [
+  "https://api.metadium.com/dev",
+  "https://api.metadium.com/prod",
+  "https://rpc.publicgoods.network",
+];
+
 const findMedian = (arr: number[]): number => {
   const s = [...arr].sort((a, b) => a - b);
   const mid = Math.floor(s.length / 2);
@@ -46,6 +54,7 @@ async function logErrors(results: Results) {
     const medianBlock = findMedian(heightsArray);
 
     results[chain].map((rpc: Rpc) => {
+      if (whitelist.includes(rpc.rpc)) return;
       if (
         rpc.block > medianBlock * (1 - margin) &&
         rpc.block < medianBlock * (1 + margin)
@@ -59,16 +68,15 @@ async function logErrors(results: Results) {
 }
 
 async function main() {
-  await sendMessage(
-    "entering RPC block check",
-    process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-  );
   // await setEnvSecrets();
   const results: { [chain: string]: Rpc[] } = {};
   await collectHeights(results);
   const errors = await logErrors(results);
   if (errors.length)
-    await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
+    await sendMessage(
+      `${errors} ${user}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    );
 }
 
 main(); // ts-node coins/src/cli/checkRpcBlocks.ts

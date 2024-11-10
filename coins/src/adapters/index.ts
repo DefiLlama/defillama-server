@@ -4,6 +4,7 @@ import * as uniswap from "./markets/uniswap";
 import * as curve from "./markets/curve";
 import * as balancer from "./markets/balancer";
 import * as others from "./other/index";
+import * as others2 from "./other/others2";
 
 export default {
   ...compound.adapters,
@@ -12,6 +13,8 @@ export default {
   ...curve.adapters,
   ...balancer.adapters,
   ...others.adapters,
+  ...others2.adapters,
+  reservoirprotocol: require("./rwa/reservoir-protocol"),
   fortunafi: require("./rwa/fortunafi"),
   midas: require("./rwa/midas"),
   stobox: require("./rwa/stobox"),
@@ -96,4 +99,12 @@ export default {
   liquity: require("./other/liquity"),
   fxProtocol: require("./yield/fx-protocol"),
   crosscurve: require("./markets/crosscurve"),
+  samm: require("./markets/samm"),
+  gamma: require("./yield/gamma"),
+  thena: require("./markets/thena"),
+  pancakeStable: require("./markets/pancakeStable"),
+  etherfi: require("./yield/etherfi"),
+  wcgUSD: require("./other/wcgUSD"),
+  usdrif: require("./other/usdrif"),
+  xailocker: require("./liquidStaking/xailocker"),
 };

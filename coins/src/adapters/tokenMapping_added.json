@@ -2809,6 +2809,11 @@
       "decimals": "9",
       "symbol": "USDe",
       "to": "coingecko#ethena-usde"
+    },
+    "4MmJVdwYN8LwvbGeCowYjSx7KoEi6BJWg8XXnW4fDDp6": {
+      "decimals": "6",
+      "symbol": "TBILL",
+      "to": "coingecko#openeden-tbill"
     }
   },
   "astar": {
@@ -5397,6 +5402,12 @@
       "decimals": "18",
       "symbol": "BUSD",
       "to": "coingecko#binance-usd"
+    },
+    "KT1XnTn74bUtxHfDtBmm2bGZAQfhPbvKWR8o": {
+      "name": "tether",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   },
   "hpb": {
@@ -8154,7 +8165,7 @@
     "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token::ststx": {
       "decimals": "6",
       "symbol": "stSTX",
-      "to": "coingecko#blockstack"
+      "to": "coingecko#stacking-dao"
     },
     "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.token-susdt::bridged-usdt": {
       "decimals": "8",

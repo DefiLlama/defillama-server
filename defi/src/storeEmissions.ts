@@ -45,7 +45,7 @@ async function aggregateMetadata(
     throw new Error(`no metadata for raw token ${rawData.metadata.token}`);
 
   let name = id;
-  let gecko_id = pData?.gecko_id;
+  let gecko_id = pData?.gecko_id ?? cgId;
 
   if (pData?.parentProtocol) {
     name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;

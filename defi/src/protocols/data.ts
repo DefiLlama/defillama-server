@@ -123,7 +123,7 @@ const data: Protocol[] = [
     address: "0xa0246c9032bC3A600820415aE600c6388619A14D",
     symbol: "FARM",
     url: "https://harvest.finance/",
-    description: "Harvest automatically farms the highest yields in DeFi",
+    description: "Harvest - grows your crypto with automated yield strategies",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/harvest-finance.png`,
     audits: "1",
@@ -279,7 +279,7 @@ const data: Protocol[] = [
     address: "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
     symbol: "SUSHI",
     url: "https://sushi.com/",
-    description: "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
+    description: "SushiSwap is the most multi-chain DEX, powered by its industry's most advanced swap and aggregation stack across 40+ chains.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sushiswap.png`,
     audits: "3",
@@ -2331,7 +2331,7 @@ const data: Protocol[] = [
     name: "Strudel Finance",
     address: "0x297d33e17e61c2ddd812389c2105193f8348188a",
     symbol: "TRDL",
-    url: "https://strudel.finance",
+    url: "https://app.strudelfinance.io",
     description: "Strudel Finance provides the first one-way, trustless bridge linking Bitcoin and Ethereum.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/strudel-finance.jpg`,
@@ -2754,7 +2754,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "marketpeak",
     cmcId: "5354",
-    category: "Services",
+    category: "Yield",
     chains: ["Ethereum"],
     module: "peakdefi/index.js",
     twitter: "PEAKDEFI",
@@ -2839,7 +2839,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Yield Lottery",
     chains: ["Ethereum", "Celo", "Binance"],
     module: "pooltogether/index.js",
     twitter: "PoolTogether_",
@@ -4194,26 +4194,24 @@ const data: Protocol[] = [
   },
   {
     id: "302",
-    name: "SpookySwap",
+    name: "SpookySwap V2",
     address: "fantom:0x841fad6eae12c286d1fd18d1d525dffa75c7effe",
     symbol: "BOO",
     url: "https://spooky.fi/#/",
     description: "Automated Market Maker.",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/spookyswap.jpg`,
+    logo: `${baseIconsUrl}/spookyswap-v2.jpg`,
     audits: "3",
     audit_note: null,
-    gecko_id: "spookyswap",
-    cmcId: "9608",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Fantom"],
     module: "spookyswap/index.js",
-    treasury: "spookyswap.js",
     twitter: "SpookySwap",
     audit_links: ["https://www.certik.org/projects/spookyswap"],
     forkedFrom: ["Uniswap V2"],
-    governanceID: ["snapshot:spookyswap.eth"],
-    github: ["SpookySwap"],
+    parentProtocol: "parent#spookyswap",
   },
   {
     id: "303",
@@ -6465,14 +6463,14 @@ const data: Protocol[] = [
   },
   {
     id: "406",
-    name: "DELV", // rebrand from Element Finance to DELV https://twitter.com/delv_tech/status/1641880663174549504
+    name: "DELV Yield", // rebrand from Element Finance to DELV https://twitter.com/delv_tech/status/1641880663174549504
     address: null,
     symbol: "-",
     url: "https://www.delv.tech/",
     description:
       "DELV (formerly Element Finance) is developing the complete suite of decentralized finance. Our protocols work together to help create the new financial system..",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/delv.jpg`,
+    logo: `${baseIconsUrl}/delv-yield.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -6481,8 +6479,8 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "elementfi/index.js",
     twitter: "delv_tech",
+    parentProtocol: "parent#delv",
     audit_links: ["https://docs.element.fi/developers/bug-bounty-programs#b93e"],
-    github: ["delvtech"],
   },
   {
     id: "407",
@@ -7186,7 +7184,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "TOKE",
     url: "https://www.tokemak.xyz",
     description:
-      "Tokemak creates sustainable DeFi liquidity and capital efficient markets through a convenient decentralized market making protocol.",
+      "Tokemak Autopilot offers a new way to provide liquidity. Autopools autonomously rebalance your LP positions across a set of DEXs and correlated-assets, while keeping you composable within DeFi.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tokemak.jpg`,
     audits: "2",
@@ -7196,11 +7194,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Ethereum"],
     module: "tokemak/index.js",
-    twitter: "TokenReactor",
-    audit_links: ["https://omniscia.io/tokemak-capital-management-protocol/"],
+    twitter: "TokemakXYZ",
+    audit_links: ["https://docs.tokemak.xyz/developer-docs/security-and-audits"],
     treasury: "tokemak.js",
     governanceID: ["snapshot:tokemak.eth"],
     github: ["Tokemak"],
+    oracles: ["RedStone", "Chainlink"] // https://github.com/DefiLlama/defillama-server/pull/8088
   },
   {
     id: "439",
@@ -10630,7 +10629,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "ShapeShift is the CEXiest DEX. Open Source, Non-Custodial, Decentralized. Buy, trade, earn, borrow and more.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/shapeshift.jpg`,
+    logo: `${baseIconsUrl}/shapeshift.svg`,
     audits: "0",
     audit_note: null,
     gecko_id: "shapeshift-fox-token",
@@ -11228,7 +11227,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "626",
     name: "Reserve Protocol",
     address: "0x320623b8e4ff03373931769a31fc52a4e78b5d70",
-    symbol: "-",
+    symbol: "RSR",
     url: "https://reserve.org",
     description:
       "The Reserve Protocol is a platform which enables anyone to create yield-bearing, decentralized, and asset-backed currencies (RTokens). RTokens provide an alternative to inflation-prone currencies, empowering people to maintain their purchasing power over time and across borders",
@@ -11288,6 +11287,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       optimism: ["Chainlink", "TWAP"],
       ethereum: ["Chainlink", "TWAP"],
       bsc: ["Chainlink", "TWAP"],
+      rsk: ["Umbrella Network"], // https://medium.com/umbrella-network/umbrella-integrates-with-balmy-90cfa7f0247c
     },
     github: ["balmy-protocol"],
   },
@@ -12584,7 +12584,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "686",
-    name: "YELToken",
+    name: "Yel Finance", // previous YELToken
     address: "0x949185D3BE66775Ea648F4a306740EA9eFF9C567",
     symbol: "YEL",
     url: "https://yel.finance",
@@ -12597,7 +12597,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "yel-finance",
     cmcId: "11301",
     category: "Yield",
-    chains: ["Ethereum", "Binance", "Polygon", "Fantom", "Blast"],
+    chains: ["Ethereum", "Binance", "Polygon", "Fantom", "Blast", "Base"],
     module: "yel/index.js",
     twitter: "yel_finance",
     listedAt: 1634674060,
@@ -24294,8 +24294,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "mimoswap/index.js",
     twitter: "mimoprotocol",
     forkedFrom: ["Uniswap V2"],
+    parentProtocol: "parent#mimo",
     listedAt: 1641944808,
-    github: ["mimoprotocol"],
   },
   {
     id: "1242",
@@ -24900,6 +24900,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     listedAt: 1642210209,
   },
+  /* delist while fixing, spike to big
   {
     id: "1270",
     name: "VyFinance Vaults",
@@ -24921,6 +24922,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     parentProtocol: "parent#vyfinance",
     listedAt: 1642235543,
   },
+  */
   {
     id: "1271",
     name: "Immortal",
@@ -25008,7 +25010,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     parentProtocol: "parent#stellaswap",
     listedAt: 1642405794,
   },
-  {
+  /* {
     id: "1275",
     name: "PERI Finance",
     address: "0x5d30ad9c6374bf925d0a75454fa327aacf778492",
@@ -25029,7 +25031,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     listedAt: 1642450048,
     github: ["perifinance"],
-  },
+  }, */
   // {
   //   id: "1276",
   //   name: "KCCguru",
@@ -26297,14 +26299,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "ZCX",
     url: "https://www.unizen.io",
     description:
-      "Unizen provides a simple interface that caters to all trading personas to acquire any asset, for the best fees across a multitude of liquidity pools",
+      "Unizen trade engine enable the best swap returns, quickest quotes, best liquidity, and lower gas Fees",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/unizen.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "unizen",
     cmcId: "9263",
-    category: "Services",
+    category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "unizen/index.js",
     twitter: "unizen_io",

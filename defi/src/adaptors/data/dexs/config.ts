@@ -1563,6 +1563,7 @@ export default {
         "id": "3260"
     },
     "deepbook-sui": {
+        parentId: "DeepBook",
         "id": "3268",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -2260,6 +2261,7 @@ export default {
         }
     },
     "fenix-finance": {
+        parentId: "Fenix Finance",
         enabled: false,
         id: "4563"
     },
@@ -2455,7 +2457,89 @@ export default {
         parentId: "BlueMove",
         id: "2941"
     },
-    "hinkal": {
-        id: "4487"
+    "h2-finance": {
+        parentId: "H2 Finance",
+        id: "5017"
+    },
+    "h2-finance-v3": {
+        parentId: "H2 Finance",
+        id: "5018"
+    },
+    "harmony-swap": {
+        id: "5198"
+    },
+    "sparkdex-v3-1": {
+        parentId: "SparkDEX",
+        id: "5223",
+        protocolsData: {
+            "v3": {
+                "id": "5223",
+            }
+        }
+    },
+    "sparkdex-v2": {
+        parentId: "SparkDEX",
+        id: "4887",
+    },
+    "mitte": {
+        id: "5228"
+    },
+    "raindex": {
+        id: "5221"
+    },
+    "pixelswap": {
+        id: "5119"
+    },
+    "grafun": {
+        id: "5195"
+    },
+    "cytoswap": {
+        id: "5205"
+    },
+    "polymarket": {
+        id: "711"
+    },
+    "linehub-v2": {
+        parentId: "LineHub",
+        id: "4660"
+    },
+    "quickswap-hydra": {
+        parentId: "QuickSwap",
+        id: "5187"
+    },
+    "meridian-swap": {
+        id: "5025"
+    },
+    "mira-ly": {
+        id: "5252"
+    },
+    "fenix-finance-v3": {
+        parentId: "Fenix Finance",
+        id: "4775"
+    },
+    "kinetix-v2": {
+        parentId: "Kinetix",
+        id: "3533"
+    },
+    "metavault-amm-v2": {
+        parentId: "MetaVault",
+        id: "5186"
+    },
+    "dexter-tezos": {
+        id: "3040"
+    },
+    "cables": {
+        id: "5291"
+    },
+    "deepbookv3-sui": {
+        parentId: "DeepBook",
+        id: "5296"
+    },
+    "kyex": {
+        id: "5310"
+    },
+    "fluid-dex": {
+        parentId: "Fluid",
+        id: "5317"
     }
 } as AdaptorsConfig

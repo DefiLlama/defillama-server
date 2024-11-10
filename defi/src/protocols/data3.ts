@@ -59800,6 +59800,30 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1731234885
   },
+  {
+    id: "5338",
+    name: "SolanaHub Staked SOL",
+    address: null,
+    symbol: "-",
+    assetToken: "hubSOL",
+    url: "https://www.solanahub.app/",
+    description:
+      "SolanaHub is your all-in-one solution, designed for everyday utility. We prioritize composability and safety and encourage exploration of the Solana ecosystem",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/solanahub-staked-sol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "royco/index.js",
+    twitter: "SolanaHubApp",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://docs.solanahub.app/platform/audits"],
+    listedAt: 1731263252
+  },
 ];
 
 export default data3;

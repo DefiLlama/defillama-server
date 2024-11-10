@@ -426,6 +426,11 @@
       "decimals": "8",
       "symbol": "lfbtc-Avalon-eth",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0xeb28877d7e3dba5bcd4d0a1474c31f8afb2d6052": {
+      "decimals": "8",
+      "symbol": "lfbtc-solv-babylon-eth",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "fantom": {

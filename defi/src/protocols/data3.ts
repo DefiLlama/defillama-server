@@ -59777,6 +59777,29 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1731198987
   },
+  {
+    id: "5337",
+    name: "Royco Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.royco.org",
+    description:
+      "The Incentivized Action Market (IAM) Protocol.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/royco-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Ethereum", "Base", "Arbitrum"],
+    module: "royco/index.js",
+    twitter: "roycoprotocol",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: [],
+    listedAt: 1731234885
+  },
 ];
 
 export default data3;

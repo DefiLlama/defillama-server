@@ -59817,7 +59817,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Solana"],
-    module: "royco/index.js",
+    module: "solanahub-sol/index.js",
     twitter: "SolanaHubApp",
     forkedFrom: [],
     oracles: [], 

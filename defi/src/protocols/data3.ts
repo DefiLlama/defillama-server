@@ -59753,6 +59753,30 @@ const data3: Protocol[] = [
     ],
     listedAt: 1731160419
   },
+  {
+    id: "5336",
+    name: "Common Wealth",
+    address: "base:0x99b2b1a2adb02b38222adcd057783d7e5d1fcc7d",
+    symbol: "WLTH",
+    url: "http://app.joincommonwlth.xyz/",
+    description:
+      "Early-stage VC access for the 99%. Fully decentralised. Fully on-chain. The way it was meant to be",
+    chain: "Base",
+    logo: `${baseIconsUrl}/common-wealth.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    module: "commonwealth/index.js",
+    twitter: "joincommonwlth",
+    treasury: "commonwealth.js",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: [],
+    listedAt: 1731198987
+  },
 ];
 
 export default data3;

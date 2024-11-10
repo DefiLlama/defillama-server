@@ -238,7 +238,7 @@
   },
   "ethereum": {
     "0x06824C27C8a0DbDe5F72f770eC82e3c0FD4DcEc3": {
-    "decimals": "18",
+      "decimals": "18",
       "symbol": "amphrETH",
       "to": "coingecko#ethereum"
     },
@@ -507,6 +507,11 @@
     "0x3119a1ad5b63a000ab9ca3f2470611eb997b93b9": {
       "decimals": "8",
       "symbol": "lfbtc-Avalon-bsc",
+      "to": "coingecko#ignition-fbtc"
+    },
+    "0xEb28877D7e3DbA5bcd4D0a1474C31F8AFb2d6052": {
+      "decimals": "8",
+      "symbol": "lfbtc-bedrock-eth",
       "to": "coingecko#ignition-fbtc"
     }
   },
@@ -1482,6 +1487,11 @@
     "0x3119a1ad5b63a000ab9ca3f2470611eb997b93b9": {
       "decimals": "8",
       "symbol": "lfbtc-Avalon-mnt",
+      "to": "coingecko#ignition-fbtc"
+    },
+    "0xd681C5574b7F4E387B608ed9AF5F5Fc88662b37c": {
+      "decimals": "8",
+      "symbol": "lfbtc-bedrock-mnt",
       "to": "coingecko#ignition-fbtc"
     }
   },
@@ -4100,6 +4110,11 @@
       "decimals": "18",
       "symbol": "SOV",
       "to": "coingecko#sovryn"
+    },
+    "0xEE03e367bcB59A9b4c1c0ea495A2e9cAC36372C8": {
+      "decimals": "8",
+      "symbol": "lfbtc-bedrock-bob",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "xlayer": {

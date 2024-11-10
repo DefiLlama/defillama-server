@@ -17128,7 +17128,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Polygon"],
     module: "cygnusdao/index.js",
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "RedStone"], //https://wiki.cygnus.finance/whitepaper/cygnus-omnichain-liquidity-validation-system-lvs/cygnus-lvs-integration/cgusd-v1/token-and-contract/cgusd/on-chain-price-oracle, https://wiki.cygnus.finance/whitepaper/cygnus-omnichain-liquidity-validation-system-lvs/cygnus-lvs-integration/cgusd-v1/token-and-contract/cgusd/on-chain-price-oracle
     forkedFrom: [],
     twitter: "CygnusDAO",
     github: ["CygnusDAO"],
@@ -51057,7 +51057,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Options",
-    oracles: [],
+    oracles: ["RedStone"], //https://ton-hedge.gitbook.io/ton-hedge-docs/trading-options
     forkedFrom: [],
     chains: ["TON"],
     module: "tonhedge/index.js",

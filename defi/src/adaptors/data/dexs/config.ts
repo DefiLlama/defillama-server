@@ -2542,5 +2542,9 @@ export default {
     "fluid-dex": {
         parentId: "Fluid",
         id: "5317"
+    },
+    "dragonswap-sei-v3": {
+        parentId: "Dragon Swap",
+        id: "5066"
     }
 } as AdaptorsConfig

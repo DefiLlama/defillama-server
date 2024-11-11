@@ -27304,7 +27304,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
-    oracles: ["TWAP", "Pyth", "Switchboard"],
+    oracles: ["TWAP", "Pyth", "Switchboard"], //https://github.com/DefiLlama/defillama-server/pull/8384/files#r1829995802
     forkedFrom: [],
     module: "rain/index.js",
     twitter: "RainFi_",

@@ -59866,6 +59866,52 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1731320870
   },
+  {
+    id: "5341",
+    name: "UTONIC",
+    address: null,
+    symbol: "-",
+    assetToken: "uTON",
+    url: "https://utonic.org/home",
+    description:
+      "UTONIC is the first TON restaking platform and revenue-sharing layer for one billion users",
+    chain: "TON",
+    logo: `${baseIconsUrl}/utonic.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["TON"],
+    module: "utonic/index.js",
+    twitter: "UTONIC_uTON",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://github.com/UTONICFinance/utonic-contracts-uTON/blob/main/audits/Audit%20Report%20by%20TonBit.pdf"],
+    listedAt: 1731321219
+  },
+  {
+    id: "5342",
+    name: "Ourbit",
+    address: null,
+    symbol: "-",
+    url: "https://www.ourbit.com",
+    description:
+      "The true degen exchange. The ONLY exchange with culture",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/ourbit.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Bitcoin", "Tron", "Arbitrum", "Solana", "Avalanche"],
+    module: "ourbit/index.js",
+    twitter: "Ourbit_Official",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1731321464
+  },
 ];
 
 export default data3;

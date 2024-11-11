@@ -2331,6 +2331,7 @@ export default {
         id: "4583"
     },
     "dragonswap-sei": {
+        parentId: "Dragon Swap",
         id: "4720"
     },
     "basin": {

@@ -1736,6 +1736,7 @@ export default {
         "id": "4737"
     },
     "dragonswap-sei": {
+        parentId: "Dragon Swap",
         id: "4720"
     },
     "wen-markets": {

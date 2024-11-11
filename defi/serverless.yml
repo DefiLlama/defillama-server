@@ -834,7 +834,7 @@ functions:
     memorySize: 1000
     events:
       - http:
-          path: deposited-contracts//{addresses}/{threshold}
+          path: deposited-contracts/{addresses}/{threshold}
           method: get
 
 resources:

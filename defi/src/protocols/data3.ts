@@ -14223,6 +14223,9 @@ const data3: Protocol[] = [
     ],
     listedAt: 1690897069,
     parentProtocol: "parent#navi-protocol",
+    tokensExcludedFromParent: {
+      Sui: ["VSUI"],
+    },
   },
   {
     id: "3324",
@@ -35844,6 +35847,9 @@ const data3: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://docs.suilend.fi/security/audit"],
     parentProtocol: "parent#suilend-protocol",
+    tokensExcludedFromParent: {
+      Sui: ["SSUI"],
+    },
     listedAt: 1710198832,
   },
   {

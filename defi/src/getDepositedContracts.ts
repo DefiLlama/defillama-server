@@ -3,22 +3,12 @@ import { fetchPrices, fetchTransfers, filterDeposits, parseDeposits } from "./de
 import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared";
 import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
-const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  if (!event.pathParameters)
-    return errorResponse({
-      message: "please supply at least one wallet address",
-    });
+const handler = async (event: any): Promise<IResponse> => {
+  if (!event.pathParameters) throw new Error("please supply at least one wallet address");
 
   const { addresses, threshold } = event.pathParameters;
-  if (!addresses)
-    return errorResponse({
-      message: "please supply at least one wallet address",
-    });
-
-  if (threshold && isNaN(Number(threshold)))
-    return errorResponse({
-      message: "threshold must be a number or undefined",
-    });
+  if (!addresses) throw new Error("please supply at least one wallet address");
+  if (threshold && isNaN(Number(threshold))) throw new Error("threshold must be a number or undefined");
 
   try {
     await setEnvSecrets();
@@ -35,9 +25,9 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     console.timeEnd("total");
 
     return successResponse({ data: userData }, 3600);
-  } catch (e) {
+  } catch (e: any) {
     return errorResponse({
-      message: `${e}`,
+      message: e.message,
     });
   }
 };

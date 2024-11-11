@@ -27822,7 +27822,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://accumulated.finance",
-    description: `Accumulated Finance is a multi-chain liquid staking protocol, integrated with Curve Finance`,
+    description: `Accumulated Finance is omnichain modular liquid Staking & restaking protocol`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/accumulated-finance.png`,
     audits: "0",

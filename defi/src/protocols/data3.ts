@@ -59822,6 +59822,50 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.solanahub.app/platform/audits"],
     listedAt: 1731263252
   },
+  {
+    id: "5339",
+    name: "FluxusFi",
+    address: "base:0x643588756155cfCcC76FB267D39a8fD49dD12382",
+    symbol: "FLX",
+    url: "https://www.fluxusbase.com",
+    description:
+      "Fluxus is a next-generation AMM that combines the best of Curve, Solidly and Uniswap.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/fluxusfi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "fluxusbase/index.js",
+    twitter: "FluxusFinance",
+    forkedFrom: ["Solidly"],
+    oracles: [], 
+    listedAt: 1731320629
+  },
+  {
+    id: "5340",
+    name: "Ocean Point",
+    address: "0x509a38b7a1cc0dcd83aa9d06214663d9ec7c7f4a",
+    symbol: "BST",
+    url: "https://staking.oceanpoint.finance",
+    description:
+      "Oceanpoint is a DeFi protocol powered by Blocksquare that tokenizes real estate assets, enabling users to stake and provide liquidity for rewards. Built on Ethereum, it aims to bring liquidity and yield generation to the real estate sector​.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ocean-point.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    module: "oceanpoint/index.js",
+    twitter: "blocksquare_io",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1731320870
+  },
 ];
 
 export default data3;

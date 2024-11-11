@@ -59912,6 +59912,29 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1731321464
   },
+  {
+    id: "5343",
+    name: "Reservoir Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.reservoir.xyz",
+    description:
+      "Reservoir is a pioneering stablecoin protocol designed to be the most trusted and scalable solution in decentralized finance. Offering a suite of products, including the rUSD stablecoin, srUSD liquid yielding asset, and trUSD term-based yielding asset, Reservoir is at the forefront of DeFi innovation. With a focus on real-world asset integration and consistent yield generation, Reservoir is poised to play a crucial role in onboarding the next trillion dollars of assets into the decentralized economy.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/reservoir-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "reservoir-protocol/index.js",
+    twitter: "__reservoir",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://www.halborn.com/audits/fortunafi/reservoir-updated"],
+    listedAt: 1731322673
+  },
 ];
 
 export default data3;

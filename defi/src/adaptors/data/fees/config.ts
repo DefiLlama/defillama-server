@@ -2169,5 +2169,9 @@ export default {
     "iziswap": {
         parentId: "iZUMI Finance",
         "id": "1883"
+    },
+    "dragonswap-sei-v3": {
+        parentId: "Dragon Swap",
+        id: "5066"
     }
 } as AdaptorsConfig

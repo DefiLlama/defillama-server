@@ -28302,7 +28302,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.desyn.io/",
     description:
-      "DeSyn Protocol is an innovative decentralized asset management infrastructure on Web 3, empowering users to securely and transparently create and manage customized pool-based portfolios with various on-chain assets (tokens, NFTs, derivatives, etc.) via smart contract. Its current main product is a new type of farming launchpad for every project, featuring various structured products. (one stone catches more birds)",
+      "DeSyn Protocol, a DeFi restaking platform on Web3, has transformed the airdrop landscape with its unique D-Airdrops structure. It offers low-risk, high-reward returns and multiple airdrops across various DeFi protocols, all from a single investment.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/desyn-safe.jpg`,
     audits: "2",
@@ -48410,7 +48410,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.desyn.io",
     description:
-      "DeSyn Protocol is an innovative decentralized asset management infrastructure on Web 3, empowering users to securely and transparently create and manage customized pool-based portfolios with various on-chain assets (tokens, NFTs, derivatives, etc.) via smart contract. Its current main product is a new type of farming launchpad for every project, featuring various structured products. (one stone catches more birds)",
+      "DeSyn Protocol, a DeFi restaking platform on Web3, has transformed the airdrop landscape with its unique D-Airdrops structure. It offers low-risk, high-reward returns and multiple airdrops across various DeFi protocols, all from a single investment.",
     chain: "Merlin",
     logo: `${baseIconsUrl}/desyn-liquid-strategy.jpg`,
     audits: "0",
@@ -49684,7 +49684,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.desyn.io/#/",
     description:
-      "DeSyn Protocol is an innovative decentralized asset management infrastructure on Web 3, empowering users to securely and transparently create and manage customized pool-based portfolios with various on-chain assets (tokens, NFTs, derivatives, etc.) via smart contract. Its current main product is a new type of farming launchpad for every project, featuring various structured products.",
+      "DeSyn Protocol, a DeFi restaking platform on Web3, has transformed the airdrop landscape with its unique D-Airdrops structure. It offers low-risk, high-reward returns and multiple airdrops across various DeFi protocols, all from a single investment.",
     chain: "Bitlayer",
     logo: `${baseIconsUrl}/desyn-basis-trading.jpg`,
     audits: "0",

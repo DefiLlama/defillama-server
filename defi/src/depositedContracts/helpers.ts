@@ -26,17 +26,30 @@ export async function fetchTransfers(addresses: string): Promise<{ [chain: strin
   await PromisePool.withConcurrency(5)
     .for(Object.keys(explorers))
     .process(async (chainId) => {
-      const transfers = await get(`https://peluche.llamao.fi/token-transfers`, {
-        query: {
-          chainId: `${chainId}`,
-          addresses,
-          from_address: "true",
-          to_address: "true",
-          limit: "1000",
-          offset: "0",
-        },
-      });
-      allTransfers[chainIdMap[chainId as any]] = transfers.transfers;
+      const chainSlug: string = chainIdMap[chainId as any];
+      let offset: number = 0;
+      allTransfers[chainSlug] = [];
+
+      let transfers: any = { length: 1000 };
+      while (transfers.length == 1000) {
+        console.time(`transfer ${chainId}`);
+        transfers = (
+          await get(`https://peluche.llamao.fi/token-transfers`, {
+            query: {
+              chainId: `${chainId}`,
+              addresses,
+              from_address: "true",
+              to_address: "true",
+              limit: "1000",
+              offset: `${offset}`,
+            },
+          })
+        ).transfers;
+
+        console.timeEnd(`transfer ${chainId}`);
+        allTransfers[chainSlug].push(...transfers);
+        offset += 1000;
+      }
     });
 
   return allTransfers;
@@ -55,6 +68,7 @@ export async function filterDeposits(
         else if (addresses.includes(to) && from in rawDeposits) delete rawDeposits[from];
       });
 
+      let rpcIndex: number = 0;
       await PromisePool.withConcurrency(5)
         .for(Object.keys(rawDeposits))
         .process(async (target) => {
@@ -75,10 +89,11 @@ export async function filterDeposits(
           }
 
           try {
-            await rpcCall(0);
+            await rpcCall(rpcIndex);
           } catch (e) {
             try {
-              await rpcCall(1);
+              rpcIndex += 1;
+              await rpcCall(rpcIndex);
             } catch (e) {
               throw new Error(`rpcs failed with ${e}`);
             }
@@ -99,8 +114,8 @@ export async function fetchPrices(deposits: RawDeposits): Promise<{ [key: string
   ];
 
   for (const key of priceQueries) {
-    if (query.length + key.length > 2000) {
-      queries.push(query.slice(0, -1));
+    if (query.length + key.length > 1900) {
+      queries.push(`${query.slice(0, -1)}?apikey=${process.env.COINS_KEY}`);
       query = burl;
     }
     query += `${key},`;
@@ -126,7 +141,7 @@ export async function fetchPrices(deposits: RawDeposits): Promise<{ [key: string
 export function parseDeposits(
   rawDeposits: RawDeposits,
   coinsData: { [key: string]: CoinData },
-  threshold: number
+  threshold: number = 1
 ): ReadableDeposit[] {
   const readableDeposits: ReadableDeposit[] = [];
   Object.keys(rawDeposits).map((d: string) => {

@@ -426,6 +426,11 @@
       "decimals": "8",
       "symbol": "lfbtc-Avalon-eth",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0xEb28877D7e3DbA5bcd4D0a1474C31F8AFb2d6052": {
+      "decimals": "8",
+      "symbol": "lfbtc-solv-babylon-eth",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "fantom": {
@@ -2341,6 +2346,11 @@
       "decimals": "18",
       "symbol": "weETH.m",
       "to": "coingecko#wrapped-eeth"
+    },
+    "0x541FD749419CA806a8bc7da8ac23D346f2dF8B77": {
+      "decimals": "18",
+      "symbol": "SolvBTC",
+      "to": "coingecko#solv-btc"
     }
   },
   "fsc": {

@@ -4,9 +4,11 @@ import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared"
 import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const handler = async (event: any): Promise<IResponse> => {
-  if (!event.pathParameters) throw new Error("please supply at least one wallet address");
+  // if (!event.pathParameters) throw new Error("please supply at least one wallet address");
 
-  const { addresses, threshold } = event.pathParameters;
+  // const { addresses, threshold } = event.pathParameters;
+  const addresses = event.pathParameters?.addresses;
+  const threshold = event.pathParameters?.threshold;
   if (!addresses) throw new Error("please supply at least one wallet address");
   if (threshold && isNaN(Number(threshold))) throw new Error("threshold must be a number or undefined");
 

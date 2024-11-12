@@ -2,6 +2,7 @@ import PromisePool from "@supercharge/promise-pool";
 import { CoinData, RawDeposits, ReadableDeposit } from "./types";
 import { explorers } from "./constants";
 import providers from "@defillama/sdk/build/providers.json";
+import fetch from "node-fetch";
 
 const chainIdMap: { [id: number]: string } = {};
 Object.keys(providers).map((c: string) => {
@@ -10,7 +11,7 @@ Object.keys(providers).map((c: string) => {
 
 async function get(
   endpoint: string,
-  params?: { query?: { [param: string]: string }; body?: BodyInit; method?: "get" | "post" }
+  params?: { query?: { [param: string]: string }; body?: any; method?: "get" | "post" }
 ) {
   const { query, body, method } = params ?? {};
   let url = endpoint;

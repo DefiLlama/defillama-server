@@ -3443,6 +3443,13 @@ export const chainCoingeckoIds = {
     twitter: "MorphL2",
     url: "https://www.morphl2.io"
   },
+  "Eclipse": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "EclipseFND",
+    url: "https://www.eclipse.xyz",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4189,6 +4196,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Asset Chain"
     case "morph":
       return "Morph"
+    case "eclipse":
+      return "Eclipse"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

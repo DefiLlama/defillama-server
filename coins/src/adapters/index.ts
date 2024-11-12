@@ -107,4 +107,5 @@ export default {
   wcgUSD: require("./other/wcgUSD"),
   usdrif: require("./other/usdrif"),
   xailocker: require("./liquidStaking/xailocker"),
+  sbtc: require("./other/sbtc"),
 };

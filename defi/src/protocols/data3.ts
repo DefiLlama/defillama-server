@@ -59970,10 +59970,10 @@ const data3: Protocol[] = [
   },
   {
     id: "5345",
-    name: "BagelFinance",
+    name: "Bagel Finance",
     address: null,
     symbol: "-",
-    url: "https://x.com/bagel_fi_ton",
+    url: "https://t.me/bagel_fi_bot/app",
     description:
       "The first DEX protocol on TON that lets users exchange Telegram Stars to cryptocurrencies.",
     chain: "TON",
@@ -59982,7 +59982,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Telegram Bot",
+    category: "Dexes",
     chains: ["TON"],
     module: "BagelFinance/index.js",
     twitter: "bagel_fi_ton",

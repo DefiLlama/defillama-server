@@ -2173,5 +2173,8 @@ export default {
     "dragonswap-sei-v3": {
         parentId: "Dragon Swap",
         id: "5066"
+    },
+    "morfi": {
+        id: "5307"
     }
 } as AdaptorsConfig

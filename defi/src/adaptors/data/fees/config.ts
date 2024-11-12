@@ -2176,5 +2176,8 @@ export default {
     },
     "morFi": {
         id: "5307"
+    },
+    "solar-studios": {
+        id: "5346"
     }
 } as AdaptorsConfig

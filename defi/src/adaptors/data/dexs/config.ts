@@ -2565,5 +2565,8 @@ export default {
     "pearl-v2": {
         parentId: "PearlFi",
         id: "4668"
+    },
+    "solar-studios": {
+        id: "5346"
     }
 } as AdaptorsConfig

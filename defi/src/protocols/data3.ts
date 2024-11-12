@@ -58863,10 +58863,10 @@ const data3: Protocol[] = [
   },
   {
     id: "5297",
-    name: "Liquidity Slicing Protocol",
+    name: "LSP.Finance",
     address: null,
     symbol: "-",
-    url: "https://app.lsp.network/#/dashboard",
+    url: "https://lsp.finance",
     description: "Elevate Staking. Maximize Earnings. Capture the Next Alpha",
     chain: "Manta",
     logo: `${baseIconsUrl}/liquidity-slicing-protocol.jpg`,

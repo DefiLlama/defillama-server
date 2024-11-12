@@ -1488,6 +1488,7 @@ export default {
         id: "2795"
     },
     "pearlfi": {
+        parentId: "PearlFi",
         id: "3121"
     },
     "ambient": {
@@ -2556,5 +2557,13 @@ export default {
     "velocimeter-v4": {
         parentId: "Velocimeter",
         id: "5243"
+    },
+    "pearl-v1-5": {
+        parentId: "PearlFi",
+        id: "5308"
+    },
+    "pearl-v2": {
+        parentId: "PearlFi",
+        id: "4668"
     }
 } as AdaptorsConfig

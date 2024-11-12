@@ -9582,7 +9582,7 @@ const data2: Protocol[] = [
     twitter: "VaultCraft_io",
     governanceID: ["snapshot:popcorn-snapshot.eth"],
     listedAt: 1653901963,
-    github: ["popcorndao"],
+    github: ["Popcorn-Limited"],
   },
   {
     id: "1792",

@@ -59941,6 +59941,29 @@ const data3: Protocol[] = [
     audit_links: ["https://www.halborn.com/audits/fortunafi/reservoir-updated"],
     listedAt: 1731322673
   },
+  {
+    id: "5344",
+    name: "BitFLUX",
+    address: null,
+    symbol: "-",
+    url: "https://bitflux.finance",
+    description:
+      "BitFLUX makes it easy to securely swap Bitcoin-pegged assets, providing a seamless user experience for yield generation and liquidity.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/bitflux.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    module: "bitflux/index.js",
+    twitter: "BitFluxFi",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://docs.bitflux.finance/resources/security"],
+    listedAt: 1731410636
+  },
 ];
 
 export default data3;

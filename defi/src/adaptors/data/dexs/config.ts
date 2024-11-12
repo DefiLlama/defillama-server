@@ -2547,7 +2547,7 @@ export default {
         parentId: "Dragon Swap",
         id: "5066"
     },
-    "morfi": {
+    "morFi": {
         id: "5307"
     },
     "assetchain-swap": {

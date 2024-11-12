@@ -58,4 +58,3 @@ export async function sbtc(timestamp: number = 0) {
 
   return writes;
 }
-sbtc(); // ts-node coins/src/adapters/other/sbtc.ts

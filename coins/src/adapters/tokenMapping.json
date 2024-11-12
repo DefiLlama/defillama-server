@@ -3866,6 +3866,11 @@
       "symbol": "ssETH",
       "to": "coingecko#super-seyian-eth"
     },
+    "0x9fAaEA2CDd810b21594E54309DC847842Ae301Ce": {
+      "decimals": "18",
+      "symbol": "seiyanETH",
+      "to": "coingecko#seiyaneth"
+    },
     "0x09D9420332bff75522a45FcFf4855F82a0a3ff50": {
       "decimals": "18",
       "symbol": "dinero",

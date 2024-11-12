@@ -59990,6 +59990,28 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1731421782
   },
+  {
+    id: "5346",
+    name: "Solar Dex",
+    address: null,
+    symbol: "-",
+    url: "https://eclipse.solarstudios.co/swap",
+    description:
+      "DEX powered by solar_studios_ .Launching on Eclipse",
+    chain: "Eclipse",
+    logo: `${baseIconsUrl}/solar-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Eclipse"],
+    module: "solar-studios/index.js",
+    twitter: "solar_dex",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1731426568
+  },
 ];
 
 export default data3;

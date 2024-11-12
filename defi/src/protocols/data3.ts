@@ -1,5 +1,6 @@
 import type { Protocol } from "./types";
 import { baseIconsUrl } from "../constants";
+import { base } from "../../l2/adapters";
 
 /*
 {
@@ -34284,7 +34285,10 @@ const data3: Protocol[] = [
     module: "cygnus-finance/index.js",
     twitter: "CygnusFi",
     forkedFrom: [],
-    oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/8247
+    oraclesByChain: {
+      base: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/8247
+      ton: ["RedStone"], // https://wiki.cygnus.finance/whitepaper/cygnus-omnichain-liquidity-validation-system-lvs/cygnus-lvs-integration/cgusd-v1/token-and-contract/cgusd/on-chain-price-oracle
+    },
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Cygnus-v1.0.pdf",
     ],
@@ -51061,7 +51065,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Options",
-    oracles: [],
+    oracles: ["RedStone"], //https://ton-hedge.gitbook.io/ton-hedge-docs/trading-options
     forkedFrom: [],
     chains: ["TON"],
     module: "tonhedge/index.js",

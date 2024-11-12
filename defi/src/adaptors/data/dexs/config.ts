@@ -2552,5 +2552,9 @@ export default {
     },
     "assetchain-swap": {
         id: "5324"
+    },
+    "velocimeter-v4": {
+        parentId: "Velocimeter",
+        id: "5243"
     }
 } as AdaptorsConfig

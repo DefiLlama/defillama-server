@@ -59968,6 +59968,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.bitflux.finance/resources/security"],
     listedAt: 1731410636
   },
+  {
+    id: "5345",
+    name: "BagelFinance",
+    address: null,
+    symbol: "-",
+    url: "https://x.com/bagel_fi_ton",
+    description:
+      "The first DEX protocol on TON that lets users exchange Telegram Stars to cryptocurrencies.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/bagelfinance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["TON"],
+    module: "BagelFinance/index.js",
+    twitter: "bagel_fi_ton",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1731421782
+  },
 ];
 
 export default data3;

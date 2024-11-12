@@ -59098,7 +59098,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://morfi.io",
     description:
-      "A fully decentralized protocol for automated liquidity provision on Morph L2.​​​​​​​​​​​​​​​​",
+      "A fully decentralized protocol for automated liquidity provision on Morph L2",
     chain: "Morph",
     logo: `${baseIconsUrl}/morfi.png`,
     audits: "0",

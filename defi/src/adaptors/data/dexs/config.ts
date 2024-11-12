@@ -2549,5 +2549,8 @@ export default {
     },
     "morfi": {
         id: "5307"
+    },
+    "assetchain-swap": {
+        id: "5324"
     }
 } as AdaptorsConfig

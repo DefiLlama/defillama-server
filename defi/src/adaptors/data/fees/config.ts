@@ -2182,5 +2182,8 @@ export default {
     },
     "orca": {
         "id": "283"
+    },
+    "stabble": {
+        id: "4734"
     }
 } as AdaptorsConfig

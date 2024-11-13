@@ -9195,8 +9195,8 @@ const data3: Protocol[] = [
   {
     id: "3103",
     name: "Maple RWA",
-    address: "0x1915A8dE08A92b846dF7C845e140E4b0714820bd",
-    symbol: "MPL",
+    address: "0x643c4e15d7d62ad0abec4a9bd4b001aa3ef52d66",
+    symbol: "SYRUP",
     url: "https://www.maple.finance",
     description: "Maple Finance is an institutional capital marketplace powered by blockchain technology.",
     chain: "Ethereum",
@@ -46194,8 +46194,8 @@ const data3: Protocol[] = [
   {
     id: "4735",
     name: "Syrup.fi",
-    address: null,
-    symbol: "-",
+    address: "0x643c4e15d7d62ad0abec4a9bd4b001aa3ef52d66",
+    symbol: "SYRUP",
     url: "https://syrup.fi/",
     description: "Institutional Yield, with DeFi access; powered by Maple finance",
     chain: "Ethereum",

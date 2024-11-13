@@ -60146,6 +60146,30 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1731495943
   },
+  {
+    id: "5353",
+    name: "Adrena Protocol",
+    address: "solana:AuQaustGiaqxRvj2gtCdrd22PBzTn8kM3kEPEkZCtuDw",
+    symbol: "ADX",
+    url: "https://app.adrena.xyz",
+    description:
+      "Solana Perps DEX. 100x Leverage. 0% Slippage. 100% Rev Share. Open Source. Community Owned.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/adrena-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "adrena",
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Solana"],
+    module: "adrena/index.js",
+    twitter: "AdrenaProtocol",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://docs.adrena.xyz/technical-documentation/audits"],
+    github: ["AdrenaFoundation"],
+    listedAt: 1731508730
+  },
 ];
 
 export default data3;

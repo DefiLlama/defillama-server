@@ -2179,5 +2179,8 @@ export default {
     },
     "solar-studios": {
         id: "5346"
+    },
+    "orca": {
+        "id": "283"
     }
 } as AdaptorsConfig

@@ -60170,6 +60170,29 @@ const data3: Protocol[] = [
     github: ["AdrenaFoundation"],
     listedAt: 1731508730
   },
+  {
+    id: "5354",
+    name: "ELMA",
+    address: "fantom:0xf43cc235e686d7bc513f53fbffb61f760c3a1882",
+    symbol: "ELITE",
+    url: "https://eliteness.network/elma",
+    description:
+      "Elite Lending Market Aggregator, aka ELMA, leverages Bribe Markets to Boost Lending Yields by Splitting a Re-Deposited Asset into a user-stakeable PT & a YT thats bribed",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/elma.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Fantom"],
+    module: "elma/index.js",
+    twitter: "ftm1337",
+    forkedFrom: [],
+    oracles: [], 
+    parentProtocol: "parent#guru-network-dao",
+    listedAt: 1731539237
+  },
 ];
 
 export default data3;

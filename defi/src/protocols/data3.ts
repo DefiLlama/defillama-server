@@ -44293,7 +44293,7 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "oasys_games",
   },
-  /*{
+  /*{  Listing should remain commented until team is ready for listing
     id: "4650",
     name: "Huma Finance",
     address: null,

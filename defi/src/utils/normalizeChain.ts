@@ -3450,6 +3450,13 @@ export const chainCoingeckoIds = {
     twitter: "EclipseFND",
     url: "https://www.eclipse.xyz",
   },
+  "UNIT0": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "UnitsNetwork",
+    url: "https://units.network/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4198,6 +4205,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Morph"
     case "eclipse":
       return "Eclipse"
+    case "unit0":
+      return "UNIT0"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

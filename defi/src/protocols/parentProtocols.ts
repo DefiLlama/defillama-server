@@ -4077,7 +4077,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "A51 Finance",
     url: "https://a51.finance/",
     description:
-      "A51 Finance is an Autonomous Liquidity Provisioning (ALP) protocol offering customizable tools for creating tailored liquidity strategies empowering LPs with dynamic adjustments based on their preferences",
+      "A51 offers a liquidity automation engine to enhance the trading and liquidity provisioning experience. The automation gear, including auto-rebalance, auto-exit and reinvest, liquidity distribution, and hedging, gives LPs fine-grained control over their liquidity, allowing them to dictate asset and risk management actions.",
     logo: `${baseIconsUrl}/a51-finance.png`,
     gecko_id: null,
     cmcId: null,

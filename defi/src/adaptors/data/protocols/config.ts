@@ -257,5 +257,16 @@ export default {
     },
     "nabla": {
         id: "5309",
+    },
+    "bulbaswap": {
+        id: "5301",
+        protocolsData: {
+            "v2": {
+                id: "5301",
+            },
+            "v3": {
+                id: "5302",
+            }
+        }
     }
 } as AdaptorsConfig

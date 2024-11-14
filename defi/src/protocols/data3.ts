@@ -60215,6 +60215,28 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1731584443
   },
+  {
+    id: "5356",
+    name: "Moki",
+    address: null,
+    symbol: "-",
+    url: "https://moki.ag/",
+    description:
+      "DEX aggregator for TON blockchain.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/moki.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["TON"],
+    module: "dummy.js",
+    twitter: "moki_ag",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1731592547
+  },
 ];
 
 export default data3;

@@ -60237,6 +60237,52 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1731592547
   },
+  {
+    id: "5357",
+    name: "Elexium",
+    address: "alephium:28LgMeQGdvtXfsvWhpNNVx1DoSiz7TzrATv9qxMQP5is9",
+    symbol: "EX",
+    url: "https://elexium.finance/",
+    description:
+      "Elexium Finance: The People's choice. VE (Vote escrowed) DEX on Alephium, empowering the people's voices",
+    chain: "Alephium",
+    logo: `${baseIconsUrl}/elexium.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Alephium"],
+    module: "elexium/index.js",
+    twitter: "ElexiumFinance",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1731610465
+  },
+  {
+    id: "5358",
+    name: "Goose",
+    address: null,
+    symbol: "-",
+    url: "https://www.goose.farm/",
+    description:
+      "The First Real Super Hybrid Yield Across All Blockchains",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/goose.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CeDeFi",
+    chains: ["Binance"],
+    module: "goose-farm/index.js",
+    twitter: "GoldenGoose_app",
+    forkedFrom: [],
+    oracles: [], 
+    github: ["GooseFarmLabs"],
+    audit_links: ["https://www.goose.farm/CERTIK_Golden_Goose_Report.pdf"],
+    listedAt: 1731610472
+  },
 ];
 
 export default data3;

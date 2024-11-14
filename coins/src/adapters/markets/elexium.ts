@@ -13,7 +13,7 @@ export function elexium(timestamp: number) {
     getTokenPrices(timestamp),
   ])
 }
-const chain = 'elexium'
+const chain = 'alephium'
 
 async function getPools() {
   const { data } = await axios.get('https://api.elexium.finance/tokens')

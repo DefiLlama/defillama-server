@@ -5772,6 +5772,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "0xfluid",
   },
+  {
+    id: "parent#solayer",
+    name: "Solayer",
+    url: "https://solayer.org",
+    description:
+      "Solayer is the restaking protocol on Solana, securing both endogenous AVS (dApps) through stake-weighted quality of service and exogenous AVS via Solana-based POS primitives",
+    logo: `${baseIconsUrl}/solayer.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "solayer_labs",
+  },
 ];
 
 export default parentProtocols;

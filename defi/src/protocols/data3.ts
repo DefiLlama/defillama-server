@@ -47726,7 +47726,7 @@ const data3: Protocol[] = [
     audit_links: ["https://omniscia.io/reports/tangible-ustb-contract-655fb224a7ddc0001831f72e"],
     listedAt: 1718915196,
   },
-  {
+  /*{
     id: "4802",
     name: "Solayer",
     address: null,
@@ -47747,7 +47747,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1718964090,
-  },
+  },*/
   {
     id: "4803",
     name: "IcecreamSwap V3",
@@ -60282,6 +60282,54 @@ const data3: Protocol[] = [
     github: ["GooseFarmLabs"],
     audit_links: ["https://www.goose.farm/CERTIK_Golden_Goose_Report.pdf"],
     listedAt: 1731610472
+  },
+  {
+    id: "4802",
+    name: "Solayer SOL",
+    address: null,
+    symbol: "-",
+    url: "https://solayer.org",
+    description:
+      "sSOL is the universal liquidity layer for delegates [dApps] and LRTs on Solayer. Every unit of SOL can be perceived as a unit of blockspace lent towards dApps, securing network bandwidth and TPS.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/solayer-sol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Restaking",
+    chains: ["Solana"],
+    module: "solayer-ssol/index.js",
+    twitter: "solayer_labs",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.solayer.org/security/audits"],
+    parentProtocol: "parent#solayer",
+    listedAt: 1731623189,
+  },
+  {
+    id: "4802",
+    name: "Solayer USD",
+    address: null,
+    symbol: "-",
+    url: "https://solayer.org",
+    description:
+      "Solayer USD (sUSD) is the yield-bearing stablecoin on Solana",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/solayer-usd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Solana"],
+    module: "solayer-susd/index.js",
+    twitter: "solayer_labs",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.solayer.org/security/audits"],
+    parentProtocol: "parent#solayer",
+    listedAt: 1731623194,
   },
 ];
 

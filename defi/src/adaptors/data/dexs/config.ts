@@ -2568,5 +2568,8 @@ export default {
     },
     "solar-studios": {
         id: "5346"
+    },
+    "manifest-trade": {
+        id: "5349"
     }
 } as AdaptorsConfig

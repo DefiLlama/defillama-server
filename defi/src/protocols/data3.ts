@@ -60193,6 +60193,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#guru-network-dao",
     listedAt: 1731539237
   },
+  {
+    id: "5355",
+    name: "based AI",
+    address: null,
+    symbol: "-",
+    url: "https://basedai.fi",
+    description:
+      "Based AI is a decentralized protocol merging AI with DeFi, offering unique farming opportunities and rewards, including the use of meme tokens like Pepecoin.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/based-ai.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    module: "basedai/index.js",
+    twitter: "getbasedai",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1731584443
+  },
 ];
 
 export default data3;

@@ -266,5 +266,8 @@ export default {
   },
   "navi": {
     id: "5326",
+  },
+  "moki": {
+    id: "5356",
   }
 } as AdaptorsConfig;

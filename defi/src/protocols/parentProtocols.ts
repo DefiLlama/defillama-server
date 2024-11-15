@@ -5784,6 +5784,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "solayer_labs",
   },
+  {
+    id: "parent#swapmode",
+    name: "SwapMode",
+    url: "https://swapmode.fi",
+    description:
+      "Premiere DEX on Mode, the native all in one hub for your liquidity",
+    logo: `${baseIconsUrl}/swapmode.png`,
+    gecko_id: "swapmode",
+    cmcId: null,
+    chains: [],
+    twitter: "SwapModeFi",
+    github: ["swapmode"],
+  },
 ];
 
 export default parentProtocols;

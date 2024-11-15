@@ -1238,7 +1238,8 @@ export default {
         "id": "2748"
     },
     "acala-swap": {
-        "id": "1847"
+        "id": "1847",
+        disabled: true
     },
     "maia-v3": {
         "id": "2760"

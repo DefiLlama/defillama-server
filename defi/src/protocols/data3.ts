@@ -60284,7 +60284,7 @@ const data3: Protocol[] = [
     listedAt: 1731610472
   },
   {
-    id: "4802",
+    id: "5359",
     name: "Solayer SOL",
     address: null,
     symbol: "-",
@@ -60308,7 +60308,7 @@ const data3: Protocol[] = [
     listedAt: 1731623189,
   },
   {
-    id: "4802",
+    id: "5360",
     name: "Solayer USD",
     address: null,
     symbol: "-",
@@ -60330,6 +60330,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.solayer.org/security/audits"],
     parentProtocol: "parent#solayer",
     listedAt: 1731623194,
+  },
+  {
+    id: "5361",
+    name: "Sensi",
+    address: null,
+    symbol: "-",
+    url: "https://sensi.fi/",
+    description:
+      "Sensi is a platform that simplifies DeFi yield farming, reducing manual effort and minimizing risks for investors in high-volatility assets",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/sensi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Binance"],
+    module: "sensi/index.js",
+    twitter: "Sensi_Defi",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1731642781,
   },
 ];
 

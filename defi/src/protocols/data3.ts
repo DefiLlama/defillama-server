@@ -60440,6 +60440,29 @@ const data3: Protocol[] = [
     audit_links: ["https://movebit.xyz/reports/20241017-SuiDollar-Final-Audit-Report.pdf"],
     listedAt: 1731681962
   },
+  {
+    id: "5366",
+    name: "Shido Dex",
+    address: null,
+    symbol: "-",
+    url: "https://shido.io/",
+    description: "Build without limits. Shido combines the interoperability of the Cosmos, development power of EVM and WASM",
+    chain: "Shido",
+    logo: `${baseIconsUrl}/shido-dex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shido"],
+    module: "shido-dex/index.js",
+    twitter: "ShidoGlobal",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/zokyo-sec/audit-reports/tree/main/Shido"],
+    github: ["ShidoGlobal"],
+    listedAt: 1731691978
+  },
 ];
 
 export default data3;

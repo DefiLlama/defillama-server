@@ -3457,6 +3457,15 @@ export const chainCoingeckoIds = {
     twitter: "UnitsNetwork",
     url: "https://units.network/",
   },
+  "Shido": {
+    geckoId: "shido-2",
+    github: ['ShidoGlobal'],
+    symbol: "SHIDO",
+    cmcId: "28211",
+    categories: ["EVM", "Cosmos"],
+    twitter: "ShidoGlobal",
+    url: "https://shido.io/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4207,6 +4216,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Eclipse"
     case "unit0":
       return "UNIT0"
+    case "shido":
+      return "Shido"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

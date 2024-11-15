@@ -48901,6 +48901,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "securitize/index.js",
     twitter: "BlackRock",
+    stablecoins: ["blackrock-usd"],
     listedAt: 1720292439,
   },
   {

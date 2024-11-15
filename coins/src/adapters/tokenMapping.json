@@ -4315,6 +4315,11 @@
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
       "symbol": "SolvBTC.BBN"
+    },
+    "0xf7fb2df9280eb0a76427dc3b34761db8b1441a49": {
+      "to": "coingecko#merlin-s-seal-btc",
+      "decimals": 18,
+      "symbol": "M-BTC"
     }
   },
   "real": {

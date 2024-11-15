@@ -60375,6 +60375,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#swapmode",
     listedAt: 1731665482
   },
+  {
+    id: "5363",
+    name: "TONCO",
+    address: null,
+    symbol: "-",
+    url: "https://tonco.io",
+    description: "The first DEX on TON with concentrated liquidity",
+    chain: "TON",
+    logo: `${baseIconsUrl}/tonco.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["TON"],
+    module: "tonco/index.js",
+    twitter: "Tonco_io",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1731667316
+  },
 ];
 
 export default data3;

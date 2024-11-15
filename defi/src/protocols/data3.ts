@@ -11452,7 +11452,7 @@ const data3: Protocol[] = [
     name: "Surge",
     address: null,
     symbol: "-",
-    url: "https://www.surge-fi.com",
+    url: "", // removed to prevent confusion with the new L2 "https://www.surge-fi.com",
     description: `Borrow, lend, long or short any token on any chain. `,
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/surge.jpg`,

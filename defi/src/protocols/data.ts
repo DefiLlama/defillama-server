@@ -11268,7 +11268,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "DCA Tools",
     chains: ["Ethereum", "Arbitrum", "Polygon", "Optimism", "BSC"],
     module: "meanfinance/index.js",
     twitter: "balmy_xyz",

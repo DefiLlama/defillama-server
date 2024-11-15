@@ -242,7 +242,10 @@ test("no surprise category", async () => {
     'OTC Marketplace',
     'Yield Lottery',
     'Decentralized BTC',
-    'Token Locker'
+    'Token Locker',
+    'Bug Bounty',
+    'DCA Tools',
+    'Managed Token Pools'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

@@ -4140,6 +4140,11 @@
       "decimals": "8",
       "symbol": "lfbtc-bedrock-bob",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0xd681C5574b7F4E387B608ed9AF5F5Fc88662b37c": {
+      "decimals": "8",
+      "symbol": "lfbtc-pump-bob",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "xlayer": {

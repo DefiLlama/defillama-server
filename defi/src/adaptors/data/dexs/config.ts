@@ -1239,7 +1239,7 @@ export default {
     },
     "acala-swap": {
         "id": "1847",
-        disabled: true
+        enabled: false
     },
     "maia-v3": {
         "id": "2760"

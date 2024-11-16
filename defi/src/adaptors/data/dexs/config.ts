@@ -2575,5 +2575,8 @@ export default {
     },
     "shido-dex": {
         id: "5366"
+    },
+    "elexium": {
+        id: "5357"
     }
 } as AdaptorsConfig

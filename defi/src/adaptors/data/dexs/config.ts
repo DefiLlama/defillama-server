@@ -2572,5 +2572,8 @@ export default {
     },
     "manifest-trade": {
         id: "5349"
+    },
+    "shido-dex": {
+        id: "5366"
     }
 } as AdaptorsConfig

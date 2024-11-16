@@ -527,7 +527,7 @@
     "0x9356086146be5158E98aD827E21b5cF944699894":{
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#USDa"
+      "to": "coingecko#usda"
     }
   },
   "stacks": {

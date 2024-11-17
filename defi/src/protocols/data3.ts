@@ -60506,6 +60506,9 @@ const data3: Protocol[] = [
     twitter: "avalonfinance_",
     parentProtocol: "parent#avalon-labs",
     audit_links: [],
+        tokensExcludedFromParent: {
+      iotex: ["USDa"],
+    },
     listedAt: 1731778454
   },
 ];

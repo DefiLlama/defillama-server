@@ -23650,11 +23650,11 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Leveraged Farming",
     chains: ["Sui"],
     module: "kai/index.js",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: ["Pyth"], // https://docs.kai.finance/vaults/liquidity-provider-vaults/price-oracle
     twitter: "kai_finance_sui",
     github: ["kunalabs-io"],
     listedAt: 1699291916,

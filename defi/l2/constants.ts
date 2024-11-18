@@ -161,4 +161,6 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   zkswap: { ticker: "ZF", address: "0x31c2c031fdc9d33e974f327ab0d9883eae06ca4a" },
   merlin: { ticker: "MERL", address: "0x5c46bff4b38dc1eae09c5bac65872a1d8bc87378" },
   zksync: { ticker: "ZK", address: "0x5a7d6b2f92c77fad6ccabd7ee0624e64907eaf3e" },
+  aptos: { ticker: "APT", address: "coingecko:aptos" },
+  hyperliquid: { ticker: "HYPE", address: "coingecko:hyperliquid" },
 };

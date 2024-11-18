@@ -5810,6 +5810,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SuperSwapFi",
   },
+  {
+    id: "parent#ocelex",
+    name: "Ocelex",
+    url: "https://www.ocelex.fi",
+    description:
+      "Zircuit's intrinsic on-chain liquidity marketplace. Driven by state-of-the-art DEX infrastructure, we present an exceptionally efficient DeFi solution.",
+    logo: `${baseIconsUrl}/ocelex.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "OcelexFi",
+  },
 ];
 
 export default parentProtocols;

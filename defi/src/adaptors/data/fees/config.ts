@@ -2185,5 +2185,9 @@ export default {
     },
     "stabble": {
         id: "4734"
+    },
+    "kamino-liquidity": {
+        parentId: "Kamino",
+        id: "2062"
     }
 } as AdaptorsConfig

@@ -3466,6 +3466,13 @@ export const chainCoingeckoIds = {
     twitter: "ShidoGlobal",
     url: "https://shido.io/"
   },
+  "Redbelly": {
+    geckoId: "redbelly-network-token",
+    symbol: "RBNT",
+    cmcId: null,
+    twitter: "RedbellyNetwork",
+    url: "https://www.redbelly.network",
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4218,6 +4225,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "UNIT0"
     case "shido":
       return "Shido"
+    case "rbn":
+      return "Redbelly"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

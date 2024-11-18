@@ -17,7 +17,7 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "ethereum",
   "solana",
   // "sui",
-  // "aptos",
+  "aptos",
   // "stacks",
   "bitcoin",
   // "fantom",
@@ -83,6 +83,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5218": "mint",
   "5248": "fuel",
   "5303": "morph",
+  "4481": "hyperliquid",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

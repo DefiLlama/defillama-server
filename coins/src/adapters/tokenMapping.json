@@ -1261,6 +1261,26 @@
     }
   },
   "renec": {
+    "3r7AzTijvTDoLGgMqcNXTJimwg8XyxUG6EaVqHXF8EWC": {
+      "to": "coingecko#solana",
+      "decimals": "9",
+      "symbol": "SOL"
+    },
+    "GwGh3b7iNibT3gpGn6SwZA9xZme7Th4NZmuGVD75jpZL": {
+      "to": "coingecko#ethereum",
+      "decimals": "9",
+      "symbol": "ETH"
+    },
+    "GwPQTMg3eMVpDTEE3daZDtGsBtNHBK3X47dbBJvXUzF4": {
+      "to": "coingecko#bitcoin",
+      "decimals": "9",
+      "symbol": "BTC"
+    },
+    "7G8x2UZSgVDZzbPSUKGjg2e2YAkMV8zwiP1525yxEK47": {
+      "to": "coingecko#binancecoin",
+      "decimals": "9",
+      "symbol": "BNB"
+    },
     "So11111111111111111111111111111111111111112": {
       "to": "coingecko#renec",
       "decimals": "9",

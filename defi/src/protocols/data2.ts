@@ -8973,7 +8973,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Launchpad",
+    category: "Token Locker",
     chains: ["Ethereum", "Polygon", "Binance"],
     oracles: [],
     forkedFrom: [],

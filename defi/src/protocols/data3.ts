@@ -60659,6 +60659,28 @@ const data3: Protocol[] = [
     module: "zircuit-chain/index.js",
     twitter: "ZircuitL2",
   },
+  {
+    id: "5376",
+    name: "CIAN Yield Layer",
+    address: null,
+    symbol: "-",
+    url: "https://cian.app",
+    description: "Redistribute Yield Sources For Sustainable DeFi & Optimized APY For Your Assets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cian-yield-layer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "cian-yl/index.js",
+    twitter: "CIAN_protocol",
+    parentProtocol: "parent#cian-protocol",
+    listedAt: 1731945961
+  },
 ];
 
 export default data3;

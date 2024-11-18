@@ -5798,6 +5798,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SwapModeFi",
     github: ["swapmode"],
   },
+  {
+    id: "parent#superswap",
+    name: "SuperSwap",
+    url: "https://superswap.fi",
+    description:
+      "SuperSwap, is the central liquidity network for the entire Superchain ecosystem, unifying chains - Optimism, Base, Mode, Fraxtal, Unichain, and more. Our mission is simple yet powerful: to bring together the diverse Superchain networks under one seamless, efficient liquidity system that caters to all your trading and liquidity needs.",
+    logo: `${baseIconsUrl}/superswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SuperSwapFi",
+  },
 ];
 
 export default parentProtocols;

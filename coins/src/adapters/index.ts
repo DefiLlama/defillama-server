@@ -16,6 +16,7 @@ export default {
   ...others2.adapters,
   reservoirprotocol: require("./rwa/reservoir-protocol"),
   fortunafi: require("./rwa/fortunafi"),
+  jupAg: require("./solana/jupAg"),
   midas: require("./rwa/midas"),
   stobox: require("./rwa/stobox"),
   alex: require("./markets/alex"),

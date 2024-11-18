@@ -60746,6 +60746,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#ocelex",
     listedAt: 1731946562
   },
+  {
+    id: "5380",
+    name: "Ape Express",
+    address: null,
+    symbol: "-",
+    url: "https://ape.express/",
+    description: "The meme coin hub of ApeChain",
+    chain: "Apechain",
+    logo: `${baseIconsUrl}/ape-express.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Apechain"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ape-express/index.js",
+    twitter: "ape_express_",
+    listedAt: 1731970105
+  },
 ];
 
 export default data3;

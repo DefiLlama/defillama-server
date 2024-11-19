@@ -3205,18 +3205,18 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#spool-protocol",
-    name: "Spool Protocol",
-    url: "https://www.spool.fi",
+    name: "Yelay Protocol", // previous Spool Protocol
+    url: "https://www.yelay.io/",
     description:
-      "Spool Protocol serves as DeFi middleware, that allows users to participate in a subset of yield generating protocols in a risk diversified, automatically managed, and efficient fashion.",
-    logo: `${baseIconsUrl}/spool-protocol.png`,
+      "Automatically optimize yield across the best DeFi platforms. Transform crypto yield into things your customers really want.",
+    logo: `${baseIconsUrl}/yelay-protocol.jpg`,
     gecko_id: "spool-dao-token",
     cmcId: "18726",
     chains: [],
     github: ["SpoolFi"],
     treasury: "spool-protocol.js",
     governanceID: ["snapshot:gov.spool.eth"],
-    twitter: "SpoolFi",
+    twitter: "YieldLayer",
   },
   {
     id: "parent#gondi",

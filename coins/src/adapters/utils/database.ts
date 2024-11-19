@@ -239,7 +239,7 @@ async function getTokenAndRedirectDataDB(
         if (r.PK == undefined) return;
         return getTVLOfRecordClosestToTimestamp(
           r.PK,
-          r.SK,
+          timestamp,
           hoursRange * 60 * 60,
         );
       }),

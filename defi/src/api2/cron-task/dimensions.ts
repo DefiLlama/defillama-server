@@ -115,7 +115,9 @@ async function run() {
     const protocolSummaries = {} as any
     const parentProtocolSummaries = {} as any
     const summaries: IJSON<RecordSummary> = {}
-    const chainSet = new Set<string>()
+    const chainMappingToVal = {} as {
+      [chain:string]: number
+    }
     const parentProtocolsData: { [id: string]: any } = {}
     adapterData.protocolSummaries = protocolSummaries
     adapterData.parentProtocolSummaries = parentProtocolSummaries
@@ -139,7 +141,7 @@ async function run() {
     }
 
     adapterData.summaries = summaries
-    adapterData.allChains = Array.from(chainSet)
+    adapterData.allChains = Object.keys(chainMappingToVal).sort((a, b)=>chainMappingToVal[b]-chainMappingToVal[a])
     adapterData.lastUpdated = getUnixTimeNow()
     console.timeEnd(timeKey3)
 
@@ -184,7 +186,6 @@ async function run() {
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = (info.chains ?? []).map(getDisplayChainNameCached)
-      protocol.info.chains.forEach((chain: string) => chainSet.add(chain))
       protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
       const protocolTypeRecords = protocolRecordData[dimensionProtocolId]?.records ?? {}
@@ -404,6 +405,11 @@ async function run() {
               Object.entries(chains).forEach(([chain, value]: any) => {
                 if (!result[chain]) result[chain] = {}
                 result[chain][subModuleName] = value
+                const chainName = getDisplayChainNameCached(chain)
+                if(chainMappingToVal[chainName] === undefined){
+                  chainMappingToVal[chainName] = 0
+                }
+                chainMappingToVal[chainName] += value
               })
             })
             protocolSummary.breakdown24h = result

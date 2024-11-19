@@ -16,6 +16,7 @@ export default {
   ...others2.adapters,
   reservoirprotocol: require("./rwa/reservoir-protocol"),
   fortunafi: require("./rwa/fortunafi"),
+  jupAg: require("./solana/jupAg"),
   midas: require("./rwa/midas"),
   stobox: require("./rwa/stobox"),
   alex: require("./markets/alex"),
@@ -63,6 +64,7 @@ export default {
   aktionariat: require("./markets/aktionariat"),
   yieldYak: require("./yield/yield-yak"),
   tezos: require("./tezos"),
+  elexium: require("./markets/elexium"),
   aaveDebt: require("./moneyMarkets/aave-debt"),
   saber: require("./solana/saber"),
   solend: require("./solana/solend"),
@@ -107,4 +109,5 @@ export default {
   wcgUSD: require("./other/wcgUSD"),
   usdrif: require("./other/usdrif"),
   xailocker: require("./liquidStaking/xailocker"),
+  sbtc: require("./other/sbtc"),
 };

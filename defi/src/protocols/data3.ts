@@ -60811,6 +60811,51 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1732016301
   },
+  {
+    id: "5383",
+    name: "Delea",
+    address: null,
+    symbol: "-",
+    url: "https://delea.finance",
+    description:
+      "Deposit TON, mint the over-collateralized $DONE stablecoin, and seamlessly participate in DeFi without selling your assets",
+    chain: "TON",
+    logo: `${baseIconsUrl}/delea.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["TON"],
+    module: "Delea/index.js",
+    twitter: "deleafinance",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1732037858
+  },
+  {
+    id: "5384",
+    name: "Ruscet",
+    address: null,
+    symbol: "-",
+    url: " https://ruscet.xyz/",
+    description:
+      "Ruscet is a decentralized perpetuals exchange offering low-latency order execution, and unparalleled liquidity",
+    chain: "Fuel",
+    logo: `${baseIconsUrl}/ruscet.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Fuel"],
+    module: "ruscet/index.js",
+    twitter: "ruscetfi",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://docs.ruscet.xyz/security/audits"],
+    listedAt: 1732038069
+  },
 
 ];
 

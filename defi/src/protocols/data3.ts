@@ -60767,6 +60767,28 @@ const data3: Protocol[] = [
     twitter: "ape_express_",
     listedAt: 1731970105
   },
+  {
+    id: "5381",
+    name: "Lavarage",
+    address: null,
+    symbol: "-",
+    url: "https://lavarage.xyz",
+    description:
+      "Lavarage is a decentralized spot margin trading platform that enables leveraged token trading on DEXs, backed by stakers and lenders. While it supports a wide range of assets, Lavarage specializes in providing access to long-tail assets, such as memecoins, offering unique opportunities for traders seeking high-potential markets.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/lavarage.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Solana"],
+    module: "lavarage/index.js",
+    twitter: "Lavaragexyz",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1731991972
+  },
 ];
 
 export default data3;

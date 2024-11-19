@@ -7,14 +7,28 @@ export default async function bridge(): Promise<Token[]> {
   )) as any[];
 
   const tokens: Token[] = [];
-  res.map(({ decimals, symbol, faAddress, tokenAddress }) => {
-    if (!faAddress || !tokenAddress) return;
-    tokens.push({
-      from: `aptos:${faAddress}`,
-      to: `aptos:${tokenAddress}`,
-      decimals,
-      symbol,
-    });
+  res.map(({ decimals, symbol, faAddress, tokenAddress, coinGeckoId }) => {
+    if (faAddress && coinGeckoId)
+      tokens.push({
+        from: `aptos:${faAddress}`,
+        to: `coingecko:${coinGeckoId}`,
+        decimals,
+        symbol,
+      });
+    else if (faAddress && tokenAddress)
+      tokens.push({
+        from: `aptos:${faAddress}`,
+        to: `aptos:${tokenAddress}`,
+        decimals,
+        symbol,
+      });
+    if (coinGeckoId && tokenAddress)
+      tokens.push({
+        from: `aptos:${tokenAddress}`,
+        to: `coingecko:${coinGeckoId}`,
+        decimals,
+        symbol,
+      });
   });
 
   return tokens;

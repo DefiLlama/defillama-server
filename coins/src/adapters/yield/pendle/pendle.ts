@@ -78,13 +78,14 @@ export default async function getTokenPrices(
         "0x7e0f3511044AFdaD9B4fd5C7Fa327cBeB90BEeBf",
       ],
     );
-  const tokens: string[][] = await api.multiCall({
+  const unfilteredTokens: string[][] = await api.multiCall({
     calls: unfilteredMarkets,
     abi: "function readTokens() view returns (address _SY, address _PT, address _YT)",
   });
 
-  const unfilteredSYs: string[] = tokens.map((t: any) => t._SY.toLowerCase());
-  const PTs: string[] = tokens.map((t: any) => t._PT.toLowerCase());
+  const unfilteredSYs: string[] = unfilteredTokens.map((t: any) =>
+    t._SY.toLowerCase(),
+  );
   const unfilteredYieldTokens: string[] = await api.multiCall({
     abi: "function yieldToken() view returns (address )",
     calls: unfilteredSYs,
@@ -94,12 +95,16 @@ export default async function getTokenPrices(
   const markets: string[] = [];
   const SYs: string[] = [];
   const yieldTokens: string[] = [];
+  const tokens: string[][] = [];
   unfilteredYieldTokens.map((y: string | undefined, i: number) => {
     if (!y) return;
     yieldTokens.push(y.toLowerCase());
     SYs.push(unfilteredSYs[i]);
+    tokens.push(unfilteredTokens[i]);
     markets.push(unfilteredMarkets[i]);
   });
+
+  const PTs: string[] = tokens.map((t: any) => t._PT.toLowerCase());
 
   const underlyingTokensMap: { [sy: string]: string } = {};
   await PromisePool.withConcurrency(10)

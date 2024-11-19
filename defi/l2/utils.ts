@@ -183,8 +183,9 @@ async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{
             token.indexOf("::")
           )}/resource/0x1::coin::CoinInfo%3C${token}%3E`
         ).then((r) => r.json());
-        if (res && res.data && res.data.supply) supplies[`sui:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
-        else notTokens.push(`sui:${token}`);
+        if (res && res.data && res.data.supply)
+          supplies[`aptos:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
+        else notTokens.push(`aptos:${token}`);
       } catch (e) {
         console.log(token);
       }

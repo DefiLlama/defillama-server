@@ -1,7 +1,7 @@
 import axios from "axios";
 import getWrites from "../utils/getWrites";
 
-const chain = "rootstock";
+const chain = "rsk";
 
 const usdRIFToken = {
   address: "0x3a15461d8ae0f0fb5fa2629e9da7d66a794a6e37",
@@ -33,5 +33,5 @@ async function getTokenPrice(timestamp: number) {
     timestamp,
     pricesObject,
     projectName: "usdrif",
-  });;
+  });
 }

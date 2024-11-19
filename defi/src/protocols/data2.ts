@@ -8662,14 +8662,14 @@ const data2: Protocol[] = [
   },
   {
     id: "1752",
-    name: "Spool V1",
+    name: "Yelay V1",
     address: "0x40803cea2b2a32bda1be61d3604af6a814e70976",
     symbol: "SPOOL",
     url: "https://www.spool.fi",
     description:
-      "Spool Protocol serves as DeFi middleware, that allows users to participate in a subset of yield generating protocols in a risk diversified, automatically managed, and efficient fashion.",
+      "Automatically optimize yield across the best DeFi platforms. Transform crypto yield into things your customers really want.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/spool-v1.jpg`,
+    logo: `${baseIconsUrl}/yelay-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -8679,7 +8679,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "spool/index.js",
-    twitter: "SpoolFi",
+    twitter: "YieldLayer",
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Spool-v1.0.pdf",
       "https://www.spool.fi/documents/ZokyoAudit.pdf",

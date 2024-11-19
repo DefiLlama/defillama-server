@@ -2189,5 +2189,8 @@ export default {
     "kamino-liquidity": {
         parentId: "Kamino",
         id: "2062"
+    },
+    "blazingbot": {
+        id: "5377"
     }
 } as AdaptorsConfig

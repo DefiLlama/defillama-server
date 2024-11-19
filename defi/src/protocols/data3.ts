@@ -24324,7 +24324,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
-    oracles: ["Scope", "Pyth", "Switchboard"],
+    oracles: ["Pyth"],
     forkedFrom: [],
     module: "kamino-lending/index.js",
     twitter: "KaminoFinance",

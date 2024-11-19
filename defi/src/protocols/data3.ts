@@ -5254,7 +5254,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.spark.fi/",
     description:
-      "SparkLend is a DeFi lending platform that leverages a credit line from Maker called a Dai Direct Deposit Module (D3M) to offer predictable rates for DAI",
+      "Spark is an at-scale stablecoin allocation engine capturing yield across DeFi, RWAs and exchanges. This yield is provided cross-chain to Savings USDS holders",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/spark.jpg`,
     audits: "2",
@@ -60789,6 +60789,29 @@ const data3: Protocol[] = [
     oracles: [], 
     listedAt: 1731991972
   },
+  {
+    id: "5382",
+    name: "CORE Bridge",
+    address: null,
+    symbol: "CORE",
+    url: "https://bridge.coredao.org/bridge",
+    description:
+      "Bridge between Ethereum and Core Network",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/core-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "coredaoorg",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum", "Binance", "Polygon", "Optimism", "Avalanche"],
+    module: "core-bridge/index.js",
+    twitter: "Coredao_Org",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1732016301
+  },
+
 ];
 
 export default data3;

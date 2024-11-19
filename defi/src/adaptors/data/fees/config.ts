@@ -2192,5 +2192,8 @@ export default {
     },
     "blazingbot": {
         id: "5377"
+    },
+    "goat-protocol": {
+        id: "4162"
     }
 } as AdaptorsConfig

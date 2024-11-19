@@ -84,6 +84,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5248": "fuel",
   "5303": "morph",
   "4481": "hyperliquid",
+  "5382": "core",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

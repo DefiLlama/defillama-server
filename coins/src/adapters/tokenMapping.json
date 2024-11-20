@@ -523,6 +523,11 @@
       "to": "coingecko#universal-btc",
       "decimals": 8,
       "symbol": "uniBTC"
+    },
+    "0x5a110fc00474038f6c02e89c707d638602ea44b5": {
+      "to": "coingecko#tether",
+      "decimals": 18,
+      "symbol": "USDF"
     }
   },
   "stacks": {

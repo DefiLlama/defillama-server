@@ -59441,7 +59441,7 @@ const data3: Protocol[] = [
     name: "MON Protocol",
     address: "0xc555D625828c4527d477e595fF1Dd5801B4a600e",
     symbol: "MON",
-    url: "https://monprotocol.gg",
+    url: "https://monprotocol.ai",
     description:
       "Monprotocol is a gaming project on Ethereum, offering staking, rewards, and NFT integration. It enables secure asset ownership, transparent payouts, and a decentralized in-game economy for players and developers.",
     chain: "Ethereum",

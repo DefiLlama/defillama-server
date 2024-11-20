@@ -60926,6 +60926,28 @@ const data3: Protocol[] = [
     audit_links: ["https://blog.tcvault.xyz/tcvs-external-audit-by-trufy-a2fbd6af9f83"],
     listedAt: 1732120324
   },
+  {
+    id: "5388",
+    name: "Ninja Blaze",
+    address: null,
+    symbol: "-",
+    url: "https://app.blaze.ninja",
+    description:
+      "Ninja Blaze is a platform with several games on a blockchain, which revolutionizes the market and brings full transparency and honesty to the players.",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/ninjablaze.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Injective"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ninjablaze/index.js",
+    twitter: "NinjaBlazeApp",
+    listedAt: 1732134992,
+  }
 ];
 
 export default data3;

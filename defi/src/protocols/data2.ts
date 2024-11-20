@@ -16338,14 +16338,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2083",
-    name: "Pluto",
+    name: "Pluto on Waves",
     address: "waves:Ajso6nTTjptu2UHLx6hfSXVtHFtRBJCkKYd5SAyj7zf5",
     symbol: "PLUTO",
     url: "http://pluto.gold",
     description:
       "Innovative reserve currency designed to be resistant to bear-markets. Each issued token is collateralized with a treasury controlled by mathematical parameters.",
     chain: "Waves",
-    logo: `${baseIconsUrl}/pluto.png`,
+    logo: `${baseIconsUrl}/pluto-on-waves.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "pluto-pluto",

@@ -60926,6 +60926,53 @@ const data3: Protocol[] = [
     audit_links: ["https://blog.tcvault.xyz/tcvs-external-audit-by-trufy-a2fbd6af9f83"],
     listedAt: 1732120324
   },
+  {
+    id: "5388",
+    name: "Pluto",
+    address: null,
+    symbol: "-",
+    url: "https://pluto.so/",
+    description:
+      "Pluto is a Leveraged Yield Machine on Solana, built for smart yield farmers who don't like losing money. Lenders deposit assets to earn passive yield, while the yield seekers users borrow these assets to enter different leverage strategies with yield generating assets such as JLP & INF",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/pluto.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Solana"],
+    module: "pluto-so/index.js",
+    twitter: "plutoleverage",
+    forkedFrom: [],
+    oracles: ["Pyth"], // https://docs.pluto.so/protocol/learn/liquidation
+    github: ["plutoleverage"],
+    listedAt: 1732137324
+  },
+  {
+    id: "5389",
+    name: "Tempest Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.tempestfinance.xyz/",
+    description:
+      "Tempest is the Large Liquidity Model for Ambient Finance. Tempest's Vaults automatically manage user liquidity in a non-custodial fashion while introducing ERC4626 Compliance to Ambient Finance",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/tempest-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Scroll","Ethereum"],
+    module: "tempest-finance/index.js",
+    twitter: "tempest_fi",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://github.com/Tempest-Finance/core-public"],
+    github: ["Tempest-Finance"],
+    listedAt: 1732137329
+  },
 ];
 
 export default data3;

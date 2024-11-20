@@ -24324,7 +24324,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
-    oracles: ["Scope", "Pyth", "Switchboard"],
+    oracles: ["Pyth"], // https://docs.kamino.finance/risk/oracles team also confirmed Pyth as the primary oracle while scope and switchboard used for support
     forkedFrom: [],
     module: "kamino-lending/index.js",
     twitter: "KaminoFinance",

@@ -60838,7 +60838,7 @@ const data3: Protocol[] = [
     name: "Ruscet",
     address: null,
     symbol: "-",
-    url: " https://ruscet.xyz/",
+    url: "https://ruscet.xyz/",
     description:
       "Ruscet is a decentralized perpetuals exchange offering low-latency order execution, and unparalleled liquidity",
     chain: "Fuel",
@@ -60856,7 +60856,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.ruscet.xyz/security/audits"],
     listedAt: 1732038069
   },
-
+  {
+    id: "5385",
+    name: "NFT Hive",
+    address: null,
+    symbol: "-",
+    url: "https://nfthive.io",
+    description:
+      "NFT marketplace on WAX Blockchain. Providing NFT analytics, bulk tools and more",
+    chain: "Wax",
+    logo: `${baseIconsUrl}/nft-hive.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Wax"],
+    module: "nfthive/index.js",
+    twitter: "nfthiveio",
+    forkedFrom: [],
+    oracles: [], 
+    listedAt: 1732070731
+  },
 ];
 
 export default data3;

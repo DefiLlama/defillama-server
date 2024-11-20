@@ -60903,6 +60903,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#astherus",
     listedAt: 1732109817
   },
+  {
+    id: "5387",
+    name: "TCV Platform",
+    address: null,
+    symbol: "-",
+    url: "https://tcvault.xyz/",
+    description:
+      "TCV Platform is Web3's trustless market-making infrastructure protocol that enables running sophisticated algorithmic strategies for liquidity provision on DEX V3 & Lending pool on multi-chains. Liquidity providers can utilize TCV Vaults to have their liquidity managed in an automated, capital-efficient, non-custodial and transparent manner",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/tcv-platform.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity Manager",
+    chains: ["Arbitrum"],
+    module: "tcv_platform/index.js",
+    twitter: "tcv_platform",
+    forkedFrom: [],
+    oracles: [], 
+    audit_links: ["https://blog.tcvault.xyz/tcvs-external-audit-by-trufy-a2fbd6af9f83"],
+    listedAt: 1732120324
+  },
 ];
 
 export default data3;

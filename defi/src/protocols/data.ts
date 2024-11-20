@@ -6018,7 +6018,7 @@ const data: Protocol[] = [
     name: "Meteora pools",
     address: null,
     symbol: "-",
-    url: "https://mercurial.finance/",
+    url: "https://app.meteora.ag/",
     description: "Meteora Pools is building the infrastructure for stable and pegged assets for Solana.",
     chain: "Solana",
     logo: `${baseIconsUrl}/meteora.png`,

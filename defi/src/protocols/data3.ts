@@ -32967,7 +32967,7 @@ const data3: Protocol[] = [
     name: "Meteora DLMM",
     address: null,
     symbol: "-",
-    url: "https://app.meteora.ag/dlmm",
+    url: "https://app.meteora.ag/",
     description:
       "Meteora's DLMM introduces a zero-slippage, bin-based concentrated liquidity AMM on Solana, enhancing LP profitability with dynamic fees and enabling precise liquidity strategies and shapes for deeper market liquidity",
     chain: "Solana",

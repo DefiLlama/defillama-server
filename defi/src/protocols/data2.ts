@@ -19578,7 +19578,7 @@ const data2: Protocol[] = [
     name: "Meteora vaults",
     address: null,
     symbol: "-",
-    url: "https://vaults.mercurial.finance",
+    url: "https://app.meteora.ag/vaults",
     description:
       "Meteora Dynamic Yield Layer allows any protocol, including wallets, treasuries, and Automated Market Makers (AMMs), to build on top of this layer to generate more returns for their Liquidity Providers (LPs). The liquidity of any protocol built on this yield infra can be dynamically allocated to various lending platforms.",
     chain: "Solana",

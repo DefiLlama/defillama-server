@@ -110,4 +110,5 @@ export default {
   usdrif: require("./other/usdrif"),
   xailocker: require("./liquidStaking/xailocker"),
   sbtc: require("./other/sbtc"),
+  aries: require("./moneyMarkets/aries"),
 };

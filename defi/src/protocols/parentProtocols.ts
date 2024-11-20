@@ -5822,6 +5822,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "OcelexFi",
   },
+  {
+    id: "parent#astherus",
+    name: "Astherus",
+    url: "https://astherus.com",
+    description:
+      "Astherus is a liquidity hub for staked assets such as LSTs (liquid staking tokens) and LRTs (liquid restaking tokens), aiming to scale their utilization and boost user profitability.",
+    logo: `${baseIconsUrl}/astherus.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AstherusHub",
+  },
 ];
 
 export default parentProtocols;

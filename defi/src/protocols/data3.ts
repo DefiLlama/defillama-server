@@ -48750,14 +48750,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4847",
-    name: "Astherus",
+    name: "Astherus Perps",
     address: null,
     symbol: "-",
     url: "https://www.astherus.finance",
     description:
       "Astherus is a liquidity hub for staked assets such as LSTs (liquid staking tokens) and LRTs (liquid restaking tokens), aiming to scale their utilization and boost user profitability.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/astherus.jpg`,
+    logo: `${baseIconsUrl}/astherus-perps.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -48768,6 +48768,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "astherus/index.js",
     twitter: "AstherusHub",
+    parentProtocol: "parent#astherus",
     listedAt: 1720175975,
   },
   {
@@ -60877,6 +60878,30 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [], 
     listedAt: 1732070731
+  },
+  {
+    id: "5386",
+    name: "Astherus USDF",
+    address: null,
+    symbol: "-",
+    assetToken: "USDF",
+    url: "https://astherus.com/en/usdf",
+    description:
+      "USDF is a token minted by depositing USDT on AstherusEarn. USDT and USDF are fully convertible at a 1:1 ratio",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/astherus-usdf.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Binance"],
+    module: "astherus-basis-trading/index.js",
+    twitter: "AstherusHub",
+    forkedFrom: [],
+    oracles: [], 
+    parentProtocol: "parent#astherus",
+    listedAt: 1732109817
   },
 ];
 

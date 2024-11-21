@@ -53196,6 +53196,7 @@ const data3: Protocol[] = [
     twitter: "eulerfinance",
     audit_links: ["https://www.euler.finance/#security"],
     parentProtocol: "parent#euler",
+    wrongLiquidity: true, // missing CowAMM 80/20 pool for EUL/WETH
     listedAt: 1724665226
   },
   {

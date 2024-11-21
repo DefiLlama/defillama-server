@@ -5834,6 +5834,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AstherusHub",
   },
+  {
+    id: "parent#zkswap-finance",
+    name: "zkSwap Finance",
+    url: "https://zkswap.finance",
+    description:
+      "zkSwap Finance is the top DEX and the first Swap to Earn DeFi AMM on zkSync Era ecosystem, pioneering a unique incentive model that rewards both liquidity providers & traders",
+    logo: `${baseIconsUrl}/zkswap-finance.jpg`,
+    gecko_id: "zkswap-finance",
+    cmcId: null,
+    chains: [],
+    twitter: "zkSwap_finance",
+    github: ["ZkSwapFinance"],
+  },
 ];
 
 export default parentProtocols;

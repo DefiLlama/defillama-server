@@ -17812,7 +17812,7 @@ const data2: Protocol[] = [
     description:
       "IPOR (Inter Protocol Over-block Rate) is a DeFi permissionless interest rate index used by IPOR Protocol (an interest rate derivative DEX). IPOR Protocol allows users to hedge their exposure by leveraging non-custodian on-chain interest rate swaps.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ipor-derivatives.jpg`,
+    logo: `${baseIconsUrl}/ipor-derivatives.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -17825,7 +17825,8 @@ const data2: Protocol[] = [
     twitter: "ipor_io",
     audit_links: ["https://docs.ipor.io/audits"],
     listedAt: 1664876804,
-    parentProtocol: "parent#ipor"
+    parentProtocol: "parent#ipor",
+    governanceID: ["snapshot:ipordao.eth"]
   },
   {
     id: "2148",

@@ -1,3 +1,4 @@
+import { IJSON } from "./adaptors/data/types";
 import { Protocol } from "./protocols/types";
 
 export interface TokenPrices {
@@ -49,8 +50,22 @@ export interface ProtocolTvls {
   chainTvls: ITvlsWithChangesByChain;
 }
 
+export interface IRaise {
+  date: number;
+  name: string;
+  amount: number;
+  round: string;
+  chains: Array<string>;
+  sector: string;
+  source: string;
+  valuation: number;
+  defillamaId?: number;
+  leadInvestors: Array<string>;
+  otherInvestors: Array<string>;
+}
+
 export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "module"> {
-  symbol?: string;
+  symbol?: string | null;
   chain?: string;
   module?: string;
   otherProtocols?: Array<string>;
@@ -59,10 +74,16 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   hallmarks?: [number, string][];
   chainTvls: IChainTvl;
   currentChainTvls: ICurrentChainTvls;
-  tvl: { date: number; totalLiquidityUSD: number }[];
+  tvl: { date: number; totalLiquidityUSD: number }[] | null;
   tokensInUsd?: ITokens;
   tokens?: ITokens;
   isParentProtocol?: boolean;
+  raises: Array<IRaise>;
+  metrics?: IJSON<boolean>;
+  mcap?: number | null;
+  tokenPrice?: number | null;
+  tokenMcap?: number | null;
+  tokenSupply?: number | null;
 }
 
 export interface IProtocol
@@ -70,7 +91,7 @@ export interface IProtocol
   symbol: string;
   module: string;
   slug: string;
-  tvl: number;
+  tvl: number | null;
   chain: string;
   chainTvls: ITvlsByChain;
   change_1h: number | null;
@@ -80,6 +101,7 @@ export interface IProtocol
   fdv?: number;
   staking?: number;
   pool2?: number;
+  tokenBreakdowns: { [key: string]: number };
 }
 
 export type LiteProtocol = Pick<
@@ -96,7 +118,7 @@ export type LiteProtocol = Pick<
   | "url"
   | "parentProtocol"
 > &
-  ProtocolTvls;
+  ProtocolTvls & { defillamaId: string };
 
 export interface IChain {
   gecko_id?: string | null;

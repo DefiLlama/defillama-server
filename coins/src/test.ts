@@ -1,5 +1,18 @@
+
+// catch unhandled errors
+process.on("uncaughtException", (err) => {
+  console.error('uncaught error', err);
+  process.exit(1);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.error('unhandled rejection', err);
+  process.exit(1);
+});
+
 import adapters from "./adapters/index";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
+import { logTable } from '@defillama/sdk'
 
 if (process.argv.length < 3) {
   console.error(`Missing argument, you need to provide the adapter name.
@@ -19,24 +32,38 @@ function selectRandom(max: number) {
 
 async function main() {
   console.log(`==== Testing ${protocol} ====`);
-  const entries = Object.entries(adapters);
-  const selectedEntry = entries.filter((e: any) => e[0] == protocol)[0];
-  if (selectedEntry == null) {
+  const protocolWrapper = (adapters as any)[protocol]
+  if (!protocolWrapper) {
     console.log(
       `The passed protocol name is invalid. Make sure '${protocol}' is a key of './adapters/index.ts'`
     );
   }
 
-  const results = await selectedEntry[1][protocol](0);
-  const resultsWithoutDuplicates = filterWritesWithLowConfidence(
+  const adapterFn = typeof protocolWrapper === 'function' ? protocolWrapper : protocolWrapper[protocol];
+  const results = await adapterFn(0)
+  const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
     results.flat()
   );
 
-  console.log(`==== Example results ====`);
+  const lTable: any = []
+  resultsWithoutDuplicates.forEach(i => {
+    lTable[i.PK] = { symbol: i.symbol, price: i.price ?? i.redirect, decimals: i.decimals, PK: i.PK }
+  })
+  /* console.log(`==== Example results ====`);
   const indexesToLog = selectRandom(resultsWithoutDuplicates.length);
   for (let i of indexesToLog) {
     console.log(resultsWithoutDuplicates[i]);
   }
-  console.log(`^^^^ Example results ^^^^`);
+  console.log(`^^^^ Example results ^^^^`); */
+  let items = Object.values(lTable)
+  const itemCount = items.length;
+  if (itemCount > 999) {
+    items.sort(() => Math.random() - 0.5);
+    items = items.slice(0, 999);
+  }
+  logTable(items)
+  if (itemCount > 99)
+    console.log(`Too many items to log: ${itemCount}, showing random 99`);
+
 }
 main();

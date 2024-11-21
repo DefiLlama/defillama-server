@@ -1,0 +1,47 @@
+{
+    "getSqrtPrice": {
+        "inputs": [
+            {
+                "internalType": "contract IPool",
+                "name": "pool",
+                "type": "address"
+            }
+        ],
+        "name": "getSqrtPrice",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "sqrtPrice",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "tokenA": {
+        "inputs": [],
+        "name": "tokenA",
+        "outputs": [
+            {
+                "internalType": "contract IERC20",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    "tokenB": {
+        "inputs": [],
+        "name": "tokenB",
+        "outputs": [
+            {
+                "internalType": "contract IERC20",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+}

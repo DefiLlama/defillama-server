@@ -10,9 +10,9 @@ export function releaseCoingeckoLock() {
     firstLock(null);
   }
 }
-// Rate limit is 100 calls/min for coingecko's API
-// So we'll release one every 0.6 seconds to match it
-export function setTimer(timeBetweenTicks: number = 1500) {
+// Rate limit is 500 calls/min for coingecko's API
+// So we'll release one every 0.2 seconds to match it
+export function setTimer(timeBetweenTicks: number = 200) {
   const timer = setInterval(() => {
     releaseCoingeckoLock();
   }, timeBetweenTicks);

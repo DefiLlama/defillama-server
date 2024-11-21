@@ -1,13 +1,13 @@
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectDataMap
 } from "../../utils/database";
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import axios from "axios";
 import { multiCall } from "@defillama/sdk/build/abi";
+import * as sdk from "@defillama/sdk";
 const abi = require("./abi.json");
 import getBlock from "../../utils/block";
-import { BigNumber } from "ethers";
 import { Result } from "../../utils/sdkInterfaces";
 
 interface Market {
@@ -43,21 +43,18 @@ async function fetchFromIpfs(chain: string) {
 }
 function formWrites(
   markets: Market[],
-  underlyingPrices: CoinData[],
+  underlyingPrices: { [key: string]: CoinData },
   rates: Result[],
   chain: string,
   timestamp: number
 ) {
   const writes: Write[] = [];
   markets.map((m: any) => {
-    const coinData: CoinData = underlyingPrices.filter(
-      (c: CoinData) => c.address == m.underlying.toLowerCase()
-    )[0];
-
-    if (coinData == undefined) return;
-    const rate: Result = rates.filter(
+    const coinData: CoinData | undefined = underlyingPrices[m.underlying.toLowerCase()]
+    const rate: Result | undefined = rates.find(
       (r: Result) => r.input.target == m.address
-    )[0];
+    );
+    if (coinData == null || rate == null) return;
     const eTokenPrice: number =
       (coinData.price * rate.output) / 10 ** m.decimals;
 
@@ -68,7 +65,7 @@ function formWrites(
       chain,
       m.address,
       eTokenPrice,
-      m.decimals,
+      18,
       `e${m.symbol}`,
       timestamp,
       "euler",
@@ -89,10 +86,10 @@ export default async function getTokenPrices(
     await fetchFromIpfs(chain)
   ]);
 
-  let underlyingPrices: CoinData[];
+  let underlyingPrices: { [key: string]: CoinData };
   let rates: Result[];
   [underlyingPrices, { output: rates }] = await Promise.all([
-    getTokenAndRedirectData(
+    getTokenAndRedirectDataMap(
       markets.map((m: Market) => m.underlying),
       chain,
       timestamp
@@ -101,11 +98,10 @@ export default async function getTokenPrices(
       abi: abi.convertBalanceToUnderlying,
       calls: markets.map((m: Market) => ({
         target: m.address,
-        params: [BigNumber.from(10).pow(BigNumber.from(m.decimals)).toString()]
+        params: [sdk.util.convertToBigInt(1e18).toString()]
       })),
       chain: chain as any,
       block,
-      requery: false
     })
   ]);
 

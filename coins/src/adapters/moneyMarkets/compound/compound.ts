@@ -3,7 +3,7 @@ import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import { wrappedGasTokens } from "../../utils/gasTokens";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, Price, CoinData } from "../../utils/dbInterfaces";
@@ -19,87 +19,92 @@ interface CToken {
 async function getcTokens(
   chain: string,
   comptroller: string,
-  block: number | undefined
+  block: number | undefined,
 ) {
   const markets: string[] = (
     await call({
       target: comptroller,
       abi: abi.getAllMarkets,
       chain: chain as any,
-      block
+      block,
     })
   ).output;
+
   const [{ output: symbols }, { output: underlyings }] = await Promise.all([
     multiCall({
       calls: markets.map((m: string) => ({
-        target: m
+        target: m,
       })),
       abi: "erc20:symbol",
       chain: chain as any,
-      block
+      block,
     }),
     multiCall({
       calls: markets.map((m: string) => ({
-        target: m
+        target: m,
       })),
       abi: abi.underlying,
       chain: chain as any,
-      block
-    })
+      block,
+      permitFailure: true,
+    }),
   ]);
+
   let cTokenData = markets.map((m: string, i: number) => ({
     symbol: symbols[i].output,
     underlying:
       underlyings[i].output != null
         ? underlyings[i].output.toLowerCase()
         : wrappedGasTokens[chain],
-    address: m.toLowerCase()
+    address: m.toLowerCase(),
   }));
 
-  return cTokenData;
+  return cTokenData.filter((c: CToken) => c.underlying != null);
 }
 
 export default async function getTokenPrices(
   chain: string,
   comptroller: string,
-  timestamp: number
+  timestamp: number,
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
 
   const cTokens: CToken[] = await getcTokens(chain, comptroller, block);
 
-  const coinsData: CoinData[] = await getTokenAndRedirectData(
+  const coinsData = await getTokenAndRedirectDataMap(
     cTokens.map((c: CToken) => c.underlying),
     chain,
-    timestamp
+    timestamp,
   );
 
   const [
     tokenInfo,
     { output: underlyingDecimals },
-    { output: exchangeRates }
+    { output: exchangeRates },
   ] = await Promise.all([
     getTokenInfo(
       chain,
       cTokens.map((c: CToken) => c.address),
-      block
+      block,
     ),
     multiCall({
       calls: cTokens.map((c: CToken) => ({
-        target: c.underlying
+        target: c.underlying,
       })),
       abi: "erc20:decimals",
       chain: chain as any,
-      block
+      block,
+      permitFailure: true,
     }),
     multiCall({
       calls: cTokens.map((c: CToken) => ({
-        target: c.address
+        target: c.address,
       })),
       abi: abi.exchangeRateStored,
       chain: chain as any,
-      block
-    })
+      block,
+      permitFailure: true,
+    }),
   ]);
 
   const unknownTokens = [];
@@ -107,13 +112,16 @@ export default async function getTokenPrices(
 
   cTokens.map((t: CToken, i: number) => {
     try {
-      const coinData: CoinData = coinsData.filter(
-        (c: CoinData) => c.address == t.underlying
-      )[0];
-
+      const coinData: CoinData | undefined = coinsData[t.underlying]
+      if (
+        coinData == null ||
+        underlyingDecimals[i].output == null ||
+        exchangeRates[i].output == null
+      )
+        return;
       prices.push({
         address: t.address,
-        price: coinData.price * exchangeRates[i].output
+        price: coinData.price * exchangeRates[i].output,
       });
     } catch {
       unknownTokens.push(t.underlying);
@@ -135,7 +143,7 @@ export default async function getTokenPrices(
       tokenInfo.symbols[i].output,
       timestamp,
       "compound",
-      1
+      1,
     );
   });
 

@@ -1,5 +1,6 @@
 import { Result, MultiCallResults } from "./sdkInterfaces";
 import { multiCall } from "@defillama/sdk/build/abi/index";
+import * as sdk from '@defillama/sdk'
 
 export async function requery(
   resultsRaw: MultiCallResults,
@@ -16,10 +17,30 @@ export async function requery(
       abi,
       chain: chain as any,
       calls: failed.map((f: any) => f[0].input),
-      block
+      block, 
+      permitFailure: true 
     }).then(({ output }) => output);
     failed.forEach((f: any, i) => {
       results[f[1]] = newResults[i];
     });
   }
+}
+
+
+export async function getApi(
+  chain: string,
+  timestamp: number | undefined = 0,
+  alwaysGetBlock?: boolean
+): Promise<sdk.ChainApi> {
+  const api = new sdk.ChainApi({ chain })
+  const timeNow = Date.now() / 1e3
+  const ONE_HOUR = 60 * 60
+  if (timestamp !== 0 && timestamp < (timeNow - ONE_HOUR)) { // fetch block information only if timestamp is at least one hour back
+    api.timestamp = timestamp
+    await api.getBlock()
+  } else {
+    api.timestamp = Math.floor(timeNow)
+    if (alwaysGetBlock) await api.getBlock()
+  }
+  return api
 }

@@ -12,7 +12,7 @@ export default async function getTokenPrices(timestamp: number) {
   const writes: Write[] = [];
   let block: number | undefined = await getBlock(chain, timestamp);
 
-  const [SPELLData, stakedBalance, sSPELLInfo] = await Promise.all([
+  const [[{ price: SPELLPrice }], stakedBalance, sSPELLInfo] = await Promise.all([
     getTokenAndRedirectData([SPELLAddress], chain, timestamp),
     call({
       target: SPELLAddress,
@@ -21,10 +21,9 @@ export default async function getTokenPrices(timestamp: number) {
       abi: "erc20:balanceOf",
       block
     }),
-    getTokenInfo(chain, [sSPELLAddress], block)
+    getTokenInfo(chain, [sSPELLAddress], block, { withSupply: true, })
   ]);
 
-  const SPELLPrice: number = SPELLData[0].price;
   const price: number =
     (SPELLPrice * stakedBalance.output) / sSPELLInfo.supplies[0].output;
 

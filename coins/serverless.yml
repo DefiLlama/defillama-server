@@ -32,6 +32,11 @@ provider:
         - dynamodb:BatchWriteItem
       Resource:
         - "Fn::GetAtt": [DynamoTable, Arn]
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+      Resource:
+        - "arn:aws:dynamodb:eu-central-1:856461987125:table/secrets"
     - Effect: Allow # Lambda logs on cloudwatch
       Action:
         - logs:CreateLogGroup
@@ -108,6 +113,20 @@ functions:
       - http:
           path: prices
           method: post
+  mcaps:
+    handler: src/getMcaps.default
+    timeout: 60
+    events:
+      - http:
+          path: mcaps
+          method: post
+  chains:
+    handler: src/getChains.default
+    timeout: 60
+    events:
+      - http:
+          path: chains
+          method: get
   coinPrices:
     handler: src/getCoinPrices.default
     timeout: 60
@@ -143,6 +162,20 @@ functions:
       - http:
           path: chart/{coins}
           method: get
+  batchHistorical:
+    handler: src/getBatchHistoricalCoins.default
+    timeout: 60
+    events:
+      - http:
+          path: batchHistorical
+          method: get
+  coinPercentageChange:
+    handler: src/getPercentageChange.default
+    timeout: 60
+    events:
+      - http:
+          path: percentage/{coins}
+          method: get
   block:
     handler: src/getBlock.default
     timeout: 60
@@ -150,36 +183,57 @@ functions:
       - http:
           path: block/{chain}/{timestamp}
           method: get
+    environment:
+      LLAMA_PROVIDER_RPC_GET_BLOCKNUMBER_TIMEOUT: 3000
   corsPreflight:
     handler: src/corsPreflight.default
     events:
       - http:
           path: /{params+}
           method: options
-  fetchCoingeckoData:
-    handler: src/fetchCoingeckoData.fetchCoingeckoData
+  # fetchCoingeckoData2:
+  #     handler: src/fetchCoingeckoData.fetchCoingeckoData
+  #     timeout: 900
+  #     environment:
+  #       CG_KEY: ${env:CG_KEY}
+  # triggerFetchCoingeckoData:
+  #   handler: src/triggerFetchCoingeckoData.triggerNewFetches
+  #   events:
+  #     - schedule: rate(5 minutes)
+  #   environment:
+  #     CG_KEY: ${env:CG_KEY}
+  # triggerHourlyFetchCoingeckoData:
+  #   handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
+  #   events:
+  #     - schedule: cron(0 0,12 * * ? *) # every 12 hours
+  #   environment:
+  #     CG_KEY: ${env:CG_KEY}
+  # fetchHourlyCoingeckoData:
+  #   handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
+  #   timeout: 900
+  #   environment:
+  #     CG_KEY: ${env:CG_KEY}
+  # storeDefiCoins:
+  #   handler: src/storeCoins.default
+  #   timeout: 900
+  #   memorySize: 1024
+  #   environment: 
+  #     STALE_COINS_ADAPTERS_WEBHOOK: ${env:STALE_COINS_ADAPTERS_WEBHOOK}
+# triggerStoreDefiCoins:
+#   handler: src/triggerStoreCoins.default
+#   timeout: 900
+#   events:
+#     - schedule: cron(45 * * * ? *) # Hourly
+  StoreBridgedCoins:
+    handler: src/storeBridgedCoins.default
     timeout: 900
-  triggerFetchCoingeckoData:
-    handler: src/triggerFetchCoingeckoData.triggerNewFetches
+    memorySize: 1024
     events:
-      - schedule: rate(5 minutes)
-  triggerHourlyFetchCoingeckoData:
-    handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
-    events:
-      - schedule: cron(0 * * * ? *) # Hourly
-  fetchHourlyCoingeckoData:
-    handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
-    timeout: 900
-  storeDefiCoins:
-    handler: src/storeCoins.default
-    timeout: 900
-    memorySize: 10240
-  triggerStoreDefiCoins:
-    handler: src/triggerStoreCoins.default
-    timeout: 900
-    memorySize: 10240
-    events:
-      - schedule: cron(0 * * * ? *) # Hourly
+      - schedule: cron(45 * * * ? *) # Hourly
+    environment:
+      R2_ACCESS_KEY_ID: ${env:R2_ACCESS_KEY_ID}
+      R2_SECRET_ACCESS_KEY: ${env:R2_SECRET_ACCESS_KEY}
+      R2_ENDPOINT: ${env:R2_ENDPOINT}
 
 resources:
   # CORS for api gateway errors

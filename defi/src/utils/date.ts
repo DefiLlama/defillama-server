@@ -2,6 +2,7 @@ export const secondsBetweenCalls = 60 * 60;
 export const secondsBetweenCallsExtra = secondsBetweenCalls * 1.5; // 1.5 to add some wiggle room
 export const secondsInDay = 60 * 60 * 24;
 export const secondsInWeek = secondsInDay * 7;
+export const secondsInMonth = secondsInDay*30;
 export const secondsInHour = 60 * 60;
 export const HOUR = 3600;
 export const DAY = HOUR * 24;
@@ -104,8 +105,9 @@ function pad(s: number) {
   return s < 10 ? "0" + s : s;
 }
 
-export function formatTimestampAsDate(timestamp: string) {
-  const date = new Date(Number(timestamp) * 1000);
+export function formatTimestampAsDate(timestamp: string | number) {
+  const num = typeof timestamp === 'string' ? Number(timestamp) : timestamp
+  const date = new Date(num * 1000);
   return `${pad(date.getDate())}/${pad(
     date.getMonth() + 1
   )}/${date.getFullYear()}`;

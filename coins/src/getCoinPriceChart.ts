@@ -3,18 +3,13 @@ import {
   successResponse,
   wrap,
   IResponse,
-  errorResponse
+  errorResponse,
 } from "./utils/shared";
 import { getBasicCoins } from "./utils/getCoinsUtils";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./utils/date";
+import { quantisePeriod, getTimestampsArray } from "./utils/timestampUtils";
 
-const letterToSeconds: { [symbol: string]: number } = {
-  w: 604800,
-  d: 86400,
-  h: 3600,
-  m: 60
-};
 type TimedPrice = {
   price: number;
   timestamp: number;
@@ -35,78 +30,81 @@ type QueryParams = {
   end: number;
   searchWidth: number;
 };
-function quantisePeriod(period: string): number {
-  let normalizedPeriod: number;
-  const normalized = Object.keys(letterToSeconds)
-    .map((s: string) => {
-      if (!period.includes(s)) return;
-      const numberPeriod = period.replace(new RegExp(`[${s}]`, "i"), "");
-      normalizedPeriod = Number(numberPeriod == "" ? 1 : numberPeriod);
-      return normalizedPeriod * letterToSeconds[s];
-    })
-    .find((t: any) => t != null);
-  if (normalized == null) return Number(period);
-  return normalized;
-}
-function getTimestampsArray(
-  origin: number,
-  workingForwards: boolean,
-  delta: number,
-  span: number
-): number[] {
-  const timestamps: number[] = [origin];
-  let timestamp: number = origin;
-  for (let i = 0; i < span; i++) {
-    timestamp = workingForwards ? timestamp + delta : timestamp - delta;
-    timestamps.push(timestamp);
-  }
-  return timestamps;
-}
 function uintCheck(value: any, name: string) {
   if (value < 0 || isNaN(value))
-    return errorResponse({ message: `${name} must be uint` });
+    return errorResponse({
+      message: `${name} is not an uint`,
+    });
+
   return value;
 }
 function formParamsObject(event: any): QueryParams {
-  const paramKeys: string[] = ["period", "span", "start", "end", "searchWidth"];
-  let params: any = { coins: (event.pathParameters?.coins ?? "").split(",") };
-  for (let p of paramKeys) {
-    let value;
-    if (p == "period") {
-      value = quantisePeriod(
-        event.queryStringParameters?.period?.toLowerCase() ?? "d"
-      );
-    } else if (p == "searchWidth") {
-      value = quantisePeriod(
-        event.queryStringParameters?.searchWidth?.toLowerCase() ??
-          (params.period / 10).toString()
-      );
-    } else if (p == "end") {
-      value = parseInt(event.queryStringParameters?.[p] ?? getCurrentUnixTimestamp());
-    } else {
-      value = parseInt(event.queryStringParameters?.[p] ?? "0");
+  let params: any = {
+    coins: (event.pathParameters?.coins ?? "").split(","),
+    span: "0",
+    period: quantisePeriod("d"),
+  };
+
+  if (event.queryStringParameters) {
+    for (let p of Object.keys(event.queryStringParameters)) {
+      let value;
+
+      switch (p) {
+        case "period":
+          value = quantisePeriod(
+            event.queryStringParameters?.period?.toLowerCase(),
+          );
+          break;
+
+        case "searchWidth":
+          value = quantisePeriod(
+            event.queryStringParameters?.searchWidth?.toLowerCase(),
+          );
+          break;
+
+        case "end":
+          value = parseInt(event.queryStringParameters?.[p]);
+          break;
+
+        case "start":
+          value = parseInt(event.queryStringParameters?.[p]);
+          break;
+
+        case "span":
+          value = parseInt(event.queryStringParameters?.[p]);
+          break;
+
+        default:
+          params[p] = errorResponse({
+            message: `${p} is an invalid param`,
+          });
+          continue;
+      }
+
+      params[p] = uintCheck(value, p);
     }
-    params[p] = uintCheck(value, p);
   }
-  if (params.start + params.end == 0) params.end = getCurrentUnixTimestamp();
+  if (!params.start && !params.end) params.end = getCurrentUnixTimestamp();
+  if (!("searchWidth" in params)) params.searchWidth = params.period / 10;
+
   return params;
 }
 async function fetchDBData(
   params: QueryParams,
   timestamps: number[],
   coins: any[],
-  PKTransforms: any
+  PKTransforms: any,
 ) {
   let response = {} as PriceChartResponse;
-
   const promises: any[] = [];
+
   coins.map(async (coin) => {
     promises.push(
       ...timestamps.map(async (timestamp) => {
         const finalCoin = await getRecordClosestToTimestamp(
           coin.redirect ?? coin.PK,
           timestamp,
-          params.searchWidth
+          params.searchWidth,
         );
         if (finalCoin.SK === undefined) {
           return;
@@ -116,52 +114,69 @@ async function fetchDBData(
             symbol: coin.symbol,
             confidence: coin.confidence,
             decimals: coin.decimals,
-            prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }]
+            prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }],
           };
         } else {
           response[PKTransforms[coin.PK]].prices.push({
             timestamp: finalCoin.SK,
-            price: finalCoin.price
+            price: finalCoin.price,
           });
         }
-      })
+      }),
     );
   });
+
   await Promise.all(promises);
   return response;
 }
 const handler = async (event: any): Promise<IResponse> => {
+  if (
+    event.queryStringParameters?.start != null &&
+    event.queryStringParameters?.end != null
+  ) {
+    return errorResponse({
+      message: "use either start or end parameter, not both",
+    });
+  }
   const params = formParamsObject(event);
+
   const paramError: any = Object.values(params).find(
-    (p: any) => typeof p == "object" && p.length == undefined
+    (p: any) => typeof p == "object" && p.length == undefined,
   );
-  if (paramError) return paramError;
+  if (paramError) return errorResponse(paramError);
 
   const timestamps: number[] = getTimestampsArray(
-    params.end == 0 ? params.start : params.end,
-    params.end == 0,
+    params.end == null ? params.start : params.end,
+    params.end == null,
     params.period,
-    params.span
+    params.span,
   );
 
   const { PKTransforms, coins } = await getBasicCoins(params.coins);
 
-  const response: PriceChartResponse = await fetchDBData(
+  let response: PriceChartResponse = await fetchDBData(
     params,
     timestamps,
     coins,
-    PKTransforms
+    PKTransforms,
   );
-  Object.values(response).map((r: any) =>
-    r.prices.sort((a: TimedPrice, b: TimedPrice) =>
-      a.timestamp > b.timestamp ? 1 : -1
-    )
-  );
+
+  Object.values(response).map((r: any) => {
+    const unique = r.prices.filter(
+      (v: TimedPrice, i: number, a: TimedPrice[]) =>
+        a.findIndex((v2) => v2.timestamp === v.timestamp) === i,
+    );
+    unique.sort((a: TimedPrice, b: TimedPrice) =>
+      a.timestamp > b.timestamp ? 1 : -1,
+    );
+    r.prices = unique;
+  });
+
   return successResponse(
     {
-      coins: response
+      coins: response,
     },
-    3600
+    3600,
   ); // 1 hour cache
 };
 

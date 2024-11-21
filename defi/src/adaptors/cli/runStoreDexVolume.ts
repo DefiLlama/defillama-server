@@ -1,10 +1,10 @@
 import "./setup.ts"
 import { handler } from "../handlers/storeAdaptorData";
-import { AdapterType } from "@defillama/adaptors/adapters/types";
-import fees from "../data/fees";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+// import dexs from "../data/dexs";
 
 handler({
-    protocolIndexes: [fees?.findIndex(v=>v.name==='Bitcoin')],
-    timestamp:1665878400,
+    protocolModules: ["paraswap"],
+    timestamp: 1680134400+60*60*24,
     adaptorType: AdapterType.FEES
 })

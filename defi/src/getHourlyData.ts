@@ -3,15 +3,14 @@ import { craftProtocolResponse, wrapResponseOrRedirect } from "./getProtocol";
 
 // undocumented and likely to change whenever I want
 // data returned will be wrong, requires cleaning
-const handler = async (
-  event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
-  const response = await craftProtocolResponse(
-    event.pathParameters?.protocol,
-    true,
-    true
-  );
-  return wrapResponseOrRedirect(response);
+const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  const response = await craftProtocolResponse({
+    rawProtocolName: event.pathParameters?.protocol,
+    useNewChainNames: true,
+    useHourlyData: true,
+    skipAggregatedTvl: false,
+  });
+  return wrapResponseOrRedirect(response, "hourly/");
 };
 
 export default wrap(handler);

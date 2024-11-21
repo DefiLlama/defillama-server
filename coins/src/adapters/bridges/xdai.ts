@@ -9,7 +9,9 @@ const bridgeContracts = [
 ]
 
 export default async function bridge() {
-  const currentBlock = (await getLatestBlock("xdai")).number
+  return []
+  // TODO: refactor below code to cache getLogs data
+/*   const currentBlock = (await getLatestBlock("xdai")).number
   const fromBlock = currentBlock - 3600 // ~ 5 hours ago
 
   const bridged = await Promise.all(bridgeContracts.map(async ([originChain, bridgeContract])=>{
@@ -36,5 +38,5 @@ export default async function bridge() {
     return bridgedTokens
   }))
 
-  return ([] as typeof bridged[0]).concat(...bridged)
+  return ([] as typeof bridged[0]).concat(...bridged) */
 }

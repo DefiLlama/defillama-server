@@ -3,14 +3,10 @@ import protocols from "../protocols/data";
 import dynamodb from "../utils/shared/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
-import { getBlocksRetry } from "./utils";
-import {
-  getCoingeckoLock,
-  releaseCoingeckoLock,
-} from "../utils/shared/coingeckoLocks";
+import { getBlocksRetry } from "../storeTvlInterval/blocks";
 import { dailyTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import { date } from './utils'
-import { importAdapter } from "./utils/importAdapter";
+import { importAdapterDynamic } from "../utils/imports/importAdapter";
 
 const projectsToRefill: string[] = ["Trader Joe"];
 const notify = false;
@@ -21,11 +17,6 @@ const secondsInDay = 86400;
 async function main() {
   if(process.env.HISTORICAL !== "true"){
     throw new Error(`You must set HISTORICAL="true" in your .env`)
-  }
-  if (projectsToRefill.length > 0) {
-    setInterval(() => {
-      releaseCoingeckoLock();
-    }, 1e3);
   }
   for (const tvlPrefix of [dailyTvl, dailyTokensTvl, dailyUsdTokensTvl]) {
     console.log(`# ${tvlPrefix('')}`)
@@ -77,10 +68,10 @@ async function main() {
                     tvl,
                   });
                 } else {
+                  const adapterModule = await importAdapterDynamic(protocol)
                   const { ethereumBlock, chainBlocks } = await getBlocksRetry(
-                    nextTimestamp
+                    nextTimestamp, { adapterModule },
                   );
-                  const adapterModule = await importAdapter(protocol)
                   tvl = await storeTvl(
                     nextTimestamp,
                     ethereumBlock,
@@ -89,7 +80,6 @@ async function main() {
                     adapterModule,
                     {},
                     4,
-                    getCoingeckoLock,
                     false,
                     false,
                     true

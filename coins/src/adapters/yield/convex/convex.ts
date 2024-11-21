@@ -29,15 +29,14 @@ async function getPoolInfos(block: number | undefined, chain: any) {
       calls: poolIndexes.map((p: number) => ({ target: operator, params: p })),
       chain,
       block,
-      abi: abi.poolInfo
+      abi: abi.poolInfo[chain]
     })
   ).output;
 }
-export default async function getTokenPrices(timestamp: number) {
-  const chain: any = "ethereum";
+export default async function getTokenPrices(timestamp: number, chain: string) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const poolInfos: Result[] = await getPoolInfos(block, chain);
-
+  const address: string = chain == "ethereum" ? "token" : "rewards";
   let underlyingData: CoinData[];
   let tokenInfos: any;
   [underlyingData, tokenInfos] = await Promise.all([
@@ -48,23 +47,23 @@ export default async function getTokenPrices(timestamp: number) {
     ),
     getTokenInfo(
       chain,
-      poolInfos.map((p: Result) => p.output.token),
-      block,
-      true
+      poolInfos.map((p: Result) => p.output[address]),
+      block
     )
   ]);
 
   const writes: Write[] = [];
   underlyingData.map((u: CoinData) => {
-    const poolInfo = poolInfos.filter(
+    const poolInfo: Result | undefined = poolInfos.find(
       (p: Result) => p.output.lptoken.toLowerCase() == u.address
-    )[0];
+    );
+    if (poolInfo == null) return;
     const tokenInfoIndex = poolInfos.indexOf(poolInfo);
 
     addToDBWritesList(
       writes,
       chain,
-      poolInfo.output.token,
+      poolInfo.output[address],
       undefined,
       tokenInfos.decimals[tokenInfoIndex].output,
       tokenInfos.symbols[tokenInfoIndex].output,

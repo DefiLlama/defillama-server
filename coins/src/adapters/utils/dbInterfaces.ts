@@ -1,13 +1,22 @@
+import { Result } from "./sdkInterfaces";
+
+export interface Metadata {
+  [address: string]: {
+    symbol: string;
+    decimals: number;
+  };
+}
 export interface Write {
   SK: number;
   PK: string;
   price?: number;
-  symbol: string;
-  decimals: number;
+  symbol?: string;
+  decimals?: number;
   redirect?: string;
   adapter?: string;
   confidence: number;
   timestamp?: number;
+  mcap?: number;
 }
 export interface DbQuery {
   PK: string;
@@ -19,6 +28,13 @@ export interface DbEntry {
   redirect: string;
   price: number;
   decimals: number;
+  symbol: string;
+  confidence: number;
+}
+export interface CgEntry {
+  PK: string;
+  SK: number;
+  price: number;
   symbol: string;
   confidence: number;
 }
@@ -45,3 +61,12 @@ export interface CoinData {
   redirect: string | undefined;
   confidence: number | undefined;
 }
+export interface DbTokenInfos {
+  decimals: Result[];
+  supplies: Result[];
+  symbols: Result[];
+}
+export type CoinRead = {
+  timestamp: number;
+  key: string;
+};

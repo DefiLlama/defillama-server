@@ -19,7 +19,7 @@ An adapter is just a javascript file that exports an async function that returns
     price: 1.45632, 
     adapter: 'aave', // unique adapters identifier, used for tracability inside the database 
     symbol: "USDT", // symbol of the token
-    condfidence: 0.7, // number 0-1 desribing the reliablility of the price data (more information below) 
+    confidence: 0.7, // number 0-1 desribing the reliablility of the price data (more information below) 
     redirect: 'coingecko#ethereum', // some coins will in theory always have the same price as another token in the DB. In this case a 'redirect' can be used instead of a 'price'. This will usually be undefined
     decimals: 18, // the number of a decimals that a token has      
   };
@@ -58,4 +58,4 @@ getTokenPrices() uses a variety of functions and libraries to find token prices:
 
 The last part of the adapter code to run is formWrites(). This function is used to create the array returned by the adapter. At this stage of the adapter it is crucial to handle any errors effectively so that faulty data doesnt enter the database. Notice on lines 57 and 64 where unexpected data is excluded from the writes list by returning from the map function. 
 
-To test the Euler adapter, we can run 'ts-node coins/src/test.ts euler'. If the command successfully logs an array of database writes containing expected data, we're ready to make a PR!
+To test the Euler adapter, we can run 'LOCAL_TEST=true ts-node coins/src/test.ts euler'. If the command successfully logs an array of database writes containing expected data, we're ready to make a PR!

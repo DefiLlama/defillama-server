@@ -46,45 +46,6 @@ export async function storeDataset(filename: string, body: string | Readable, co
     .promise();
 }
 
-export async function storeLiqs(filename: string, body: string | Readable, contentType = "application/json") {
-  await new aws.S3()
-    .upload({
-      Bucket: datasetBucket,
-      Key: `liqs/${filename}`,
-      Body: body,
-      ACL: "public-read",
-      ContentType: contentType,
-    })
-    .promise();
-}
-
-export async function getCachedLiqs(protocol: string, chain: string) {
-  const data = await new aws.S3()
-    .getObject({
-      Bucket: datasetBucket,
-      Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
-    })
-    .promise();
-  return data.Body?.toString() ?? "";
-}
-
-export async function getExternalLiqs(protocol: string, chain: string) {
-  const data = (await axios.get("https://liquidations-extra-9sja.onrender.com/" + protocol + "/" + chain)).data;
-  return data;
-}
-
-export async function storeCachedLiqs(protocol: string, chain: string, body: string | Readable) {
-  await new aws.S3()
-    .upload({
-      Bucket: datasetBucket,
-      Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
-      Body: body,
-      ACL: "public-read",
-      ContentType: "application/json",
-    })
-    .promise();
-}
-
 export function buildRedirect(filename: string, cache?: number) {
   return {
     statusCode: 307,
@@ -99,5 +60,3 @@ export function buildRedirect(filename: string, cache?: number) {
     },
   };
 }
-
-export const liquidationsFilename = `liquidations.json`;

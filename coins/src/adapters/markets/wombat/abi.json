@@ -1,0 +1,88 @@
+{
+  "getTokens": {
+    "inputs": [],
+    "name": "getTokens",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "quotePotentialSwap": {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "fromToken",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "toToken",
+        "type": "address"
+      },
+      {
+        "internalType": "int256",
+        "name": "fromAmount",
+        "type": "int256"
+      }
+    ],
+    "name": "quotePotentialSwap",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "potentialOutcome",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "haircut",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "underlyingToken": {
+    "inputs": [],
+    "name": "underlyingToken",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "underlyingTokenBalance": {
+    "inputs": [],
+    "name": "underlyingTokenBalance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "underlyingTokenDecimals": {
+    "inputs": [],
+    "name": "underlyingTokenDecimals",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+}

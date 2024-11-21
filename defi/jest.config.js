@@ -12,6 +12,7 @@ module.exports = {
   transformIgnorePatterns: [
     '/node_modules/(?!@polkadot|@babel/runtime/helpers/esm/)'
   ],
+  testPathIgnorePatterns: ["src/adaptorsImprov", "src/adaptors"],
   detectOpenHandles: true,
   forceExit: true,
   maxWorkers: 1,
@@ -20,6 +21,7 @@ module.exports = {
   testEnvironment: "node",
   globals: {
     "ts-jest": {
+      transpileOnly: true,
       isolatedModules: true,
       diagnostics: false,
     }

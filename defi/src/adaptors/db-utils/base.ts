@@ -1,6 +1,6 @@
-export abstract class Item {
-    abstract get pk(): string
-    abstract get sk(): number
+export abstract class Item<T=string, K=number> {
+    abstract get pk(): T
+    abstract get sk(): K
 
     public keys() {
         return {

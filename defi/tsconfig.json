@@ -9,6 +9,9 @@
     "skipLibCheck": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
@@ -20,8 +23,19 @@
     "noImplicitThis": false,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
-    "lib": ["ES2019"]
+    "lib": [
+      "ES2019",
+      "DOM"
+    ]
   },
-  "include": ["src"],
-  "exclude": ["src/setupTestEnv.js", "DefiLlama-Adapters/**/*.js", "src/**/*js", "src/cli/backfillDexVolumes"]
+  "include": [
+    "src",
+    "/**/*.ts"
+  ],
+  "exclude": [
+    "src/setupTestEnv.js",
+    "DefiLlama-Adapters/**/*.js",
+    "src/**/*js",
+    "src/cli/backfillDexVolumes"
+  ]
 }

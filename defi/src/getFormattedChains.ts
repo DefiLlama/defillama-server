@@ -2,6 +2,7 @@ import { chainCoingeckoIds } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 import { LiteProtocol } from "./types";
 import { errorResponse, successResponse, wrap } from "./utils/shared";
+import { wrapResponseOrRedirect } from "./getProtocol";
 
 interface IResponse {
   chains: string[];
@@ -35,19 +36,16 @@ export const getPrevTvlFromChart = (chart: any, daysBefore: number) => {
 
 export const getPercentChange = (valueNow: string, value24HoursAgo: string) => {
   const adjustedPercentChange =
-    ((parseFloat(valueNow) - parseFloat(value24HoursAgo)) /
-      parseFloat(value24HoursAgo)) *
-    100;
+    ((parseFloat(valueNow) - parseFloat(value24HoursAgo)) / parseFloat(value24HoursAgo)) * 100;
   if (isNaN(adjustedPercentChange) || !isFinite(adjustedPercentChange)) {
     return null;
   }
   return adjustedPercentChange;
 };
 
-const formattedChains = async (category: string) => {
-  const res: IResponse = await fetch(
-    "https://api.llama.fi/lite/protocols2"
-  ).then((res) => res.json());
+export const getFormattedChains = async (category: string) => {
+  const res: IResponse = await fetch("https://api.llama.fi/lite/protocols2").then((res) => res.json());
+  category = decodeURIComponent(category)
 
   // get all chains by parent and not include them in categories below as we don't want to show these links, but user can access with url
   const chainsByParent: string[] = [];
@@ -70,10 +68,7 @@ const formattedChains = async (category: string) => {
 
   // check if category exists
   const categoryExists =
-    categories.includes(category) ||
-    category === "All" ||
-    category === "Non-EVM" ||
-    chainsByParent.includes(category);
+    categories.includes(category) || category === "All" || category === "Non-EVM" || chainsByParent.includes(category);
 
   // return if category not found
   if (!categoryExists) {
@@ -121,23 +116,28 @@ const formattedChains = async (category: string) => {
     chainsUnique.map(async (elem: string) => {
       for (let i = 0; i < 5; i++) {
         try {
-          return await fetch(`https://api.llama.fi/lite/charts/${elem}`).then(
-            (resp) => resp.json()
-          );
-        } catch (e) {}
+          return await fetch(`https://api.llama.fi/lite/charts/${elem}`).then((resp) => resp.json());
+        } catch (e) {
+          console.log(elem, e);
+        }
       }
       throw new Error(`https://api.llama.fi/lite/charts/${elem} is broken`);
     })
   );
 
-  // get mcaps of chains in given category
-  const chainMcaps = await fetch(
-    `https://api.coingecko.com/api/v3/simple/price?ids=${Object.values(
-      chainCoingeckoIds
-    )
-      .map((v) => v.geckoId)
-      .join(",")}&vs_currencies=usd&include_market_cap=true`
-  ).then((res) => res.json());
+  const chainMcaps = await fetch("https://coins.llama.fi/mcaps", {
+    method: "POST",
+    body: JSON.stringify({
+      coins: Object.values(chainCoingeckoIds)
+        .filter((c) => c.geckoId)
+        .map((c) => `coingecko:${c.geckoId}`),
+    }),
+  })
+    .then((r) => r.json())
+    .catch((err) => {
+      console.log(err);
+      return {};
+    });
 
   // calc no.of protocols present in each chains as well as extra tvl data like staking , pool2 etc
   const numOfProtocolsPerChain: INumOfProtocolsPerChain = {};
@@ -153,18 +153,14 @@ const formattedChains = async (category: string) => {
         if (extraPropPerChain[chain] === undefined) {
           extraPropPerChain[chain] = {};
         }
+        if(extraPropPerChain[chain][prop]?.tvl && extraPropPerChain[chain][prop]?.tvlPrevWeek && !extraPropPerChain[chain][prop]?.tvlPrevDay){
+          extraPropPerChain[chain][prop].tvlPrevDay = extraPropPerChain[chain][prop]?.tvl
+        }
         extraPropPerChain[chain][prop] = {
-          tvl:
-            (propValue.tvl || 0) + (extraPropPerChain[chain][prop]?.tvl ?? 0),
-          tvlPrevDay:
-            (propValue.tvlPrevDay || 0) +
-            (extraPropPerChain[chain][prop]?.tvlPrevDay ?? 0),
-          tvlPrevWeek:
-            (propValue.tvlPrevWeek || 0) +
-            (extraPropPerChain[chain][prop]?.tvlPrevWeek ?? 0),
-          tvlPrevMonth:
-            (propValue.tvlPrevMonth || 0) +
-            (extraPropPerChain[chain][prop]?.tvlPrevMonth ?? 0),
+          tvl: (propValue.tvl || 0) + (extraPropPerChain[chain][prop]?.tvl ?? 0),
+          tvlPrevDay: (propValue.tvlPrevDay || 0) + (extraPropPerChain[chain][prop]?.tvlPrevDay ?? 0),
+          tvlPrevWeek: (propValue.tvlPrevWeek || 0) + (extraPropPerChain[chain][prop]?.tvlPrevWeek ?? 0),
+          tvlPrevMonth: (propValue.tvlPrevMonth || 0) + (extraPropPerChain[chain][prop]?.tvlPrevMonth ?? 0),
         };
       }
     });
@@ -180,7 +176,7 @@ const formattedChains = async (category: string) => {
       const tvlPrevWeek = getPrevTvlFromChart(tvlData[i], 7);
       const tvlPrevMonth = getPrevTvlFromChart(tvlData[i], 30);
       const geckoId = chainCoingeckoIds[chainName]?.geckoId;
-      const mcap = geckoId && chainMcaps[geckoId]?.usd_market_cap;
+      const mcap = geckoId && chainMcaps?.[`coingecko:${geckoId}`]?.mcap;
       const mcaptvl = mcap && tvl && mcap / tvl;
 
       return {
@@ -210,6 +206,7 @@ const formattedChains = async (category: string) => {
     doublecounted: "d",
     liquidstaking: "l",
     dcAndLsOverlap: "dl",
+    offers: "o",
   } as {
     [name: string]: string;
   };
@@ -250,9 +247,10 @@ const formattedChains = async (category: string) => {
 };
 
 const handler = async (event: AWSLambda.APIGatewayEvent) => {
-  const data = await formattedChains(event.pathParameters?.category ?? "");
+  const category = event.pathParameters?.category ?? ""
+  const data = await getFormattedChains(category);
 
-  return successResponse(data, 10 * 60); // 10 mins cache
+  return wrapResponseOrRedirect(data, `chains/${category}/`);
 };
 
 export default wrap(handler);

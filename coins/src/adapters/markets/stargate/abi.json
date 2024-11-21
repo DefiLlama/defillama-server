@@ -1,0 +1,3 @@
+{
+  "totalLiquidity": "function totalLiquidity() view returns (uint256)"
+}

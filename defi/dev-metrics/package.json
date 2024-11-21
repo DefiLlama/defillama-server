@@ -1,0 +1,34 @@
+{
+  "name": "dev-metrics",
+  "version": "0.0.1",
+  "description": "",
+  "main": "test.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node updateDevMapping.ts",
+    "update-dev-mapping": "ts-node updateDevMapping.ts",
+    "update-twitter": "node scripts/updateTwitterData.js",
+    "update-github": "node scripts/updateOrgAndRepoInfo.js; node scripts/addArchives.js; node scripts/generateProjectReport.js",
+    "download-git-toml": "node scripts/downloadTomlFile.js",
+    "github-alerter": "ts-node --transpile-only ../src/api2/scripts/checkDevMetrics.ts",
+    "get-electric-mapping": "node scripts/createMappingFromElectricRepo.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.350.0",
+    "@defillama/sdk": "^4.0.26",
+    "@iarna/toml": "^2.2.5",
+    "@supercharge/promise-pool": "^2.4.0",
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
+    "moment": "^2.29.4",
+    "node-fetch": "^3.3.1",
+    "octokit": "^3.1.2",
+    "pg": "^8.11.0",
+    "rimraf": "^5.0.1",
+    "sequelize": "^6.31.1",
+    "simple-git": "^3.18.0",
+    "ts-node": "^10.9.1"
+  }
+}

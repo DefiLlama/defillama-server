@@ -269,5 +269,8 @@ export default {
   },
   "moki": {
     id: "5356",
+  },
+  "titan": {
+    id: "5394",
   }
 } as AdaptorsConfig;

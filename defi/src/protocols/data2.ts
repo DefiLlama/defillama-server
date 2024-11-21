@@ -22172,7 +22172,7 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1670348075,
   },
-  {
+  /*{
     id: "2337",
     name: "STON.fi",
     address: "ton:EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO",
@@ -22192,7 +22192,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1670364601,
-  },
+  },*/
   {
     id: "2338",
     name: "Bifrost Liquid Crowdloan",

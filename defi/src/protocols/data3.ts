@@ -56272,7 +56272,7 @@ const data3: Protocol[] = [
     module: "limitless-exchange/index.js",
     twitter: "trylimitless",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://x.com/kirkoyaa/status/1858123297788920123 , https://x.com/PythNetwork/status/1857445973431300419
     listedAt: 1727294687
   },
   {
@@ -58124,7 +58124,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["ApeChain"],
-    oracles: [], 
+    oracles: ["Pyth"], // https://docs.zeno.finance/lending-market/price-oracle
     forkedFrom: ["Compound V2"],
     module: "zenolend/index.js",
     twitter: "ZenoLend",
@@ -58304,7 +58304,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Fuel"],
-    oracles: [], 
+    oracles: ["Pyth"], // https://docs.swaylend.com/developers/contract-methods/contract-storage
     forkedFrom: [],
     module: "swaylend/index.js",
     twitter: "swaylend",
@@ -60167,7 +60167,7 @@ const data3: Protocol[] = [
     module: "adrena/index.js",
     twitter: "AdrenaProtocol",
     forkedFrom: [],
-    oracles: [], 
+    oracles: ["Pyth"], // https://docs.adrena.xyz/technical-documentation/oracles-and-price-feeds
     audit_links: ["https://docs.adrena.xyz/technical-documentation/audits"],
     github: ["AdrenaFoundation"],
     listedAt: 1731508730

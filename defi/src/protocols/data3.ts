@@ -61042,6 +61042,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#zkswap-finance",
     listedAt: 1732187360
   },
+  {
+    id: "5393",
+    name: "Beetroot Finance",
+    address: "ton:EQAFGhmx199oH6kmL78PGBHyAx4d5CiJdfXwSjDK5F5IFyfC",
+    symbol: "ROOT",
+    url: "https://t.me/BeetrootFiBot",
+    description:
+      "automated yield farming aggregator on TON chain",
+    chain: "TON",
+    logo: `${baseIconsUrl}/beetroot-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["TON"],
+    module: "BeetrootFinance/index.js",
+    twitter: "Beetroot_fi",
+    forkedFrom: [],
+    oracles: [], 
+    github: ["Beetroot-fi"],
+    listedAt: 1732192140
+  },
 ];
 
 export default data3;

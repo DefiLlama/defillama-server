@@ -2581,5 +2581,8 @@ export default {
     },
     "adrena": {
         id: "5353"
+    },
+    "spark": {
+        id: "5352"
     }
 } as AdaptorsConfig

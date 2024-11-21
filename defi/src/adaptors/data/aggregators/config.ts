@@ -272,5 +272,8 @@ export default {
   },
   "titan": {
     id: "5394",
+  },
+  "bitgetwallet": {
+    id: "3207",
   }
 } as AdaptorsConfig;

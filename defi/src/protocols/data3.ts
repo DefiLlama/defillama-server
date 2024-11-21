@@ -58134,11 +58134,11 @@ const data3: Protocol[] = [
   {
     id: "5264",
     name: "Harbor Liquid Staking",
-    address: null,
-    symbol: "-",
+    address: "0xd09270E917024E75086e27854740871F1C8E0E10",
+    symbol: "HBR",
     assetToken: "stAMB",
     url: "https://star-fleet.io/harbor/liquid-staking/",
-    description: "Stake AMB and receive stAMB",
+    description: "Harbor is a liquid staking platform that allows users to participate in cryptocurrency staking on AirDAO without sacrificing their liquidity. Harbor makes it easy for users to stake their AirDAO ecosystem tokens and earn rewards, while still being able to use those tokens to trade, lend, and borrow.",
     chain: "AirDAO",
     logo: `${baseIconsUrl}/harbor-liquid-staking.png`,
     audits: "0",
@@ -58150,7 +58150,7 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
     module: "airdao-harbor/index.js",
-    twitter: null,
+    twitter: "airdaostarfleet",
     listedAt: 1729665505
   },
   {

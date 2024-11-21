@@ -57462,7 +57462,7 @@ const data3: Protocol[] = [
     description:
       "USDX is a synthetic USD stablecoin built for the crypto ecosystem. It offers a crypto-native stablecoin solution that does not rely on traditional banking infrastructure which is censorship-resistant, scalable, and highly stable. Furthermore, it provides a multiple-layer savings tool including funding rate and crypto ecosystem yield accessible worldwide in USD denomination.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/usdx-money.jpg`,
+    logo: `${baseIconsUrl}/usdx-money.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -61132,6 +61132,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Acet-v1.0.pdf"],
     listedAt: 1732200954
   },
+  {
+    id: "5397",
+    name: "Bitlayer Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitlayer.org/bridge",
+    description:
+      "Bridge between Bitcoin and Bitlayer chain",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/bitlayer-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    module: "bitlayer-btc/index.js",
+    twitter: "BitlayerLabs",
+    forkedFrom: [],
+    oracles: [],  
+    listedAt: 1732201855
+  },
 ];
 
 export default data3;

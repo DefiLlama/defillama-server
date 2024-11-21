@@ -61065,6 +61065,73 @@ const data3: Protocol[] = [
     github: ["Beetroot-fi"],
     listedAt: 1732192140
   },
+  {
+    id: "5394",
+    name: "Titan Aggregator",
+    address: null,
+    symbol: "-",
+    url: "https://www.titan.tg",
+    description:
+      "The most powerful swaps on TON.  Providing you the best prices with no fees",
+    chain: "TON",
+    logo: `${baseIconsUrl}/titan-aggregator.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["TON"],
+    module: "dummy.js",
+    twitter: "TitanAggregator",
+    forkedFrom: [],
+    oracles: [], 
+  },
+  {
+    id: "5395",
+    name: "MortgageFi",
+    address: null,
+    symbol: "-",
+    url: "https://mortgagefi.app",
+    description:
+      "MortgageFI is an Open Source and Non-Custodial protocol to earn interest on liquidity deposits and create mortgages that do not carry risk of liquidation for up to 30 years.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/mortgagefi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum", "Base"],
+    module: "mortgageFi/index.js",
+    twitter: "MortgageFiApp",
+    forkedFrom: [],
+    oracles: ["Internal"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12383
+    audit_links: ["https://github.com/Decurity/audits/blob/master/MortgageFi/mortgagefi-audit-report-1.1.pdf", "https://hashlock.com/audits/mortgagefi" ],
+    listedAt: 1732200654
+  },
+  {
+    id: "5396",
+    name: "ACET",
+    address: "bsc:0x9f3bcbe48e8b754f331dfc694a894e8e686ac31d",
+    symbol: "ACT",
+    url: "https://acet.fi",
+    description:
+      "Acet is a DeFi protocol powered by BSC, enabling token swaps, yield farming, and liquidity provision with low fees and AMM mechanics, focusing on security, transparency, and community governance.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/acet.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "acet-token",
+    cmcId: null,
+    category: "Farm",
+    chains: ["Binance"],
+    module: "acet/index.js",
+    twitter: "ACTDeFansFi",
+    forkedFrom: [],
+    oracles: [],  
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Acet-v1.0.pdf"],
+    listedAt: 1732200954
+  },
 ];
 
 export default data3;

@@ -2196,5 +2196,8 @@ export default {
     },
     "goat-protocol": {
         id: "4162"
+    },
+    "adrena": {
+        id: "5353"
     }
 } as AdaptorsConfig

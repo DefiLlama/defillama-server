@@ -2578,5 +2578,8 @@ export default {
     },
     "elexium": {
         id: "5357"
+    },
+    "adrena": {
+        id: "5353"
     }
 } as AdaptorsConfig

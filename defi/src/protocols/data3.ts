@@ -56272,7 +56272,7 @@ const data3: Protocol[] = [
     module: "limitless-exchange/index.js",
     twitter: "trylimitless",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     listedAt: 1727294687
   },
   {
@@ -58124,7 +58124,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["ApeChain"],
-    oracles: [], 
+    oracles: ["Pyth"], 
     forkedFrom: ["Compound V2"],
     module: "zenolend/index.js",
     twitter: "ZenoLend",
@@ -58304,7 +58304,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Fuel"],
-    oracles: [], 
+    oracles: ["Pyth"], 
     forkedFrom: [],
     module: "swaylend/index.js",
     twitter: "swaylend",
@@ -60167,7 +60167,7 @@ const data3: Protocol[] = [
     module: "adrena/index.js",
     twitter: "AdrenaProtocol",
     forkedFrom: [],
-    oracles: [], 
+    oracles: ["Pyth"], 
     audit_links: ["https://docs.adrena.xyz/technical-documentation/audits"],
     github: ["AdrenaFoundation"],
     listedAt: 1731508730

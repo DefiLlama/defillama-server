@@ -453,6 +453,11 @@
       "decimals": "18",
       "symbol": "LL",
       "to": "coingecko#lightlink"
+    },
+    "0x8A60E489004Ca22d775C5F2c657598278d17D9c2":{
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
     }
   },
   "meter": {
@@ -519,6 +524,10 @@
       "symbol": "lfbtc-bedrock-eth",
       "to": "coingecko#ignition-fbtc"
     },
+    "0x9356086146be5158E98aD827E21b5cF944699894":{
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
     "0x6B2a01A5f79dEb4c2f3c0eDa7b01DF456FbD726a": {
       "to": "coingecko#universal-btc",
       "decimals": 8,
@@ -859,6 +868,11 @@
       "decimals": "8",
       "symbol": "pumpBTC",
       "to": "coingecko#pumpbtc"
+    },
+    "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
     },
     "0x0a27e060c0406f8ab7b64e3bee036a37e5a62853": {
       "to": "coingecko#zai-stablecoin",
@@ -1558,6 +1572,11 @@
       "decimals": "8",
       "symbol": "lfbtc-bedrock-mnt",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0x075df695b8E7f4361FA7F8c1426C63f11B06e326": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
     },
     "0x93919784C523f39CACaa98Ee0a9d96c3F32b593e": {
       "to": "coingecko#universal-btc",

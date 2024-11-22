@@ -2587,5 +2587,8 @@ export default {
     },
     "mach": {
         id: "5399"
+    },
+    "ninjablaze": {
+        id: "5400"
     }
 } as AdaptorsConfig

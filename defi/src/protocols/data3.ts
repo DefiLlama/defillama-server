@@ -61249,6 +61249,86 @@ const data3: Protocol[] = [
     github: ["Hydrogen-Labs"],
     listedAt: 1732241024
   },
+  {
+    id: "5402",
+    name: "PV01",
+    address: null,
+    symbol: "-", 
+    url: "https://pv0.one/",
+    description:
+      "PV01 is building the next-generation platform for debt capital markets, offering access to institutional-grade, yield-bearing, digitally native bonds on public blockchains. PV01's non-custodial platform, Pivio, provides issuers and investors access to bond markets with transparency and efficiency",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/pv01.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "pv01/index.js",
+    twitter: "pv01_markets",
+    forkedFrom: [],
+    oracles: ["Bespoke"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12365
+    audit_links: [
+      "https://github.com/CryptonStudio/Audits/blob/main/PV01/Smart%20Contract%20Audit%20report%20-%20PV01%20OnChain%20bonds%20-%2011.01.2024.pdf",
+      "https://github.com/CryptonStudio/Audits/blob/main/PV01/Smart%20Contract%20Audit%20report%20-%20PV01%20OnChain%20bonds%20-%2016.09.2024.pdf"
+    ],
+    listedAt: 1732315858
+  },
+  {
+    id: "5403",
+    name: "Cytonic Airdrop Capmpaign",
+    address: null,
+    symbol: "-", 
+    url: "https://www.cytonic.com/",
+    description:
+      "The Cytonic airdrop campaign is designed to incentivize users and help bootstrap the initial blockchain TVL and ecosystem",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cytonic-airdrop-campaign.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum","Binance","Base", "Arbitrum", "Polygon", "Optimism", "Avalanche", "Blast", "Solana"],
+    module: "cytonic/index.js",
+    twitter: "cytonic_com",
+    forkedFrom: [],
+    oracles: [],   
+    audit_links: [
+      "https://file.cytonic.com/cytonic-fuzzland-report.pdf",
+      "https://file.cytonic.com/ZellicAuditReport.pdf"
+    ],
+    github: ["cytonic-network"],
+    listedAt: 1732315862
+  },
+  {
+    id: "5404",
+    name: "iBTC",
+    address: null,
+    symbol: "-", 
+    assetToken: "iBTC",
+    url: "https://ibtc.kiki.finance",
+    description:
+      "iBTC is an LST protocol that provides 1:1 pegging for staked BTC, offering users unrestricted liquidity without a 28-day lock-up while ensuring the same yield as directly staking BTC on the exSat network. The protocol seamlessly combines high liquidity with stable staking rewards, making it an ideal solution for optimizing BTC staking returns",
+    chain: "exSat",
+    logo: `${baseIconsUrl}/ibtc.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["exSat"],
+    module: "ibtc/index.js",
+    twitter: "KiKi_Finance",
+    forkedFrom: [],
+    oracles: [],  
+    audit_links: [
+      "https://github.com/KikiFinance/contract_audit/blob/main/blocksec_kiki_ibtc_v1.0-signed.pdf"
+    ],
+    github: ["KikiFinance"],
+    listedAt: 1732315868
+  },
 ];
 
 export default data3;

@@ -3478,6 +3478,15 @@ export const chainCoingeckoIds = {
     twitter: "RedbellyNetwork",
     url: "https://www.redbelly.network",
   },
+  "exSat": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Bitcoin Sidechains"],
+    twitter: "exSatNetwork",
+    url: "https://exsat.network/",
+    chainId: 7200
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4232,6 +4241,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Shido"
     case "rbn":
       return "Redbelly"
+    case "xsat":
+      return "exSat"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

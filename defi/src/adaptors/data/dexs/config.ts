@@ -2584,5 +2584,8 @@ export default {
     },
     "spark": {
         id: "5352"
+    },
+    "mach": {
+        id: "5399"
     }
 } as AdaptorsConfig

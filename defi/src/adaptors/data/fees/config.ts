@@ -2199,5 +2199,8 @@ export default {
     },
     "adrena": {
         id: "5353"
+    },
+    "phantom": {
+        id: "5398"
     }
 } as AdaptorsConfig

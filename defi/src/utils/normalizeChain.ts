@@ -3393,6 +3393,11 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
     twitter: "fuel_network",
     url: "https://fuel.network/",
   },
@@ -3465,6 +3470,13 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Cosmos"],
     twitter: "ShidoGlobal",
     url: "https://shido.io/"
+  },
+  "Redbelly": {
+    geckoId: "redbelly-network-token",
+    symbol: "RBNT",
+    cmcId: null,
+    twitter: "RedbellyNetwork",
+    url: "https://www.redbelly.network",
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -4218,6 +4230,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "UNIT0"
     case "shido":
       return "Shido"
+    case "rbn":
+      return "Redbelly"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -8662,14 +8662,14 @@ const data2: Protocol[] = [
   },
   {
     id: "1752",
-    name: "Spool V1",
+    name: "Yelay V1",
     address: "0x40803cea2b2a32bda1be61d3604af6a814e70976",
     symbol: "SPOOL",
     url: "https://www.spool.fi",
     description:
-      "Spool Protocol serves as DeFi middleware, that allows users to participate in a subset of yield generating protocols in a risk diversified, automatically managed, and efficient fashion.",
+      "Automatically optimize yield across the best DeFi platforms. Transform crypto yield into things your customers really want.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/spool-v1.jpg`,
+    logo: `${baseIconsUrl}/yelay-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -8679,7 +8679,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "spool/index.js",
-    twitter: "SpoolFi",
+    twitter: "YieldLayer",
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Spool-v1.0.pdf",
       "https://www.spool.fi/documents/ZokyoAudit.pdf",
@@ -8973,7 +8973,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Launchpad",
+    category: "Token Locker",
     chains: ["Ethereum", "Polygon", "Binance"],
     oracles: [],
     forkedFrom: [],
@@ -16338,14 +16338,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2083",
-    name: "Pluto",
+    name: "Pluto on Waves",
     address: "waves:Ajso6nTTjptu2UHLx6hfSXVtHFtRBJCkKYd5SAyj7zf5",
     symbol: "PLUTO",
     url: "http://pluto.gold",
     description:
       "Innovative reserve currency designed to be resistant to bear-markets. Each issued token is collateralized with a treasury controlled by mathematical parameters.",
     chain: "Waves",
-    logo: `${baseIconsUrl}/pluto.png`,
+    logo: `${baseIconsUrl}/pluto-on-waves.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "pluto-pluto",
@@ -17812,7 +17812,7 @@ const data2: Protocol[] = [
     description:
       "IPOR (Inter Protocol Over-block Rate) is a DeFi permissionless interest rate index used by IPOR Protocol (an interest rate derivative DEX). IPOR Protocol allows users to hedge their exposure by leveraging non-custodian on-chain interest rate swaps.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ipor-derivatives.jpg`,
+    logo: `${baseIconsUrl}/ipor-derivatives.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -17825,7 +17825,7 @@ const data2: Protocol[] = [
     twitter: "ipor_io",
     audit_links: ["https://docs.ipor.io/audits"],
     listedAt: 1664876804,
-    parentProtocol: "parent#ipor"
+    parentProtocol: "parent#ipor",
   },
   {
     id: "2148",
@@ -19578,7 +19578,7 @@ const data2: Protocol[] = [
     name: "Meteora vaults",
     address: null,
     symbol: "-",
-    url: "https://vaults.mercurial.finance",
+    url: "https://app.meteora.ag/vaults",
     description:
       "Meteora Dynamic Yield Layer allows any protocol, including wallets, treasuries, and Automated Market Makers (AMMs), to build on top of this layer to generate more returns for their Liquidity Providers (LPs). The liquidity of any protocol built on this yield infra can be dynamically allocated to various lending platforms.",
     chain: "Solana",

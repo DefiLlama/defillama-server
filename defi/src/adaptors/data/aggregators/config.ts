@@ -269,5 +269,11 @@ export default {
   },
   "moki": {
     id: "5356",
+  },
+  "titan": {
+    id: "5394",
+  },
+  "bitgetwallet": {
+    id: "3207",
   }
 } as AdaptorsConfig;

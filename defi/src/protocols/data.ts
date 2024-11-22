@@ -6018,7 +6018,7 @@ const data: Protocol[] = [
     name: "Meteora pools",
     address: null,
     symbol: "-",
-    url: "https://mercurial.finance/",
+    url: "https://app.meteora.ag/",
     description: "Meteora Pools is building the infrastructure for stable and pegged assets for Solana.",
     chain: "Solana",
     logo: `${baseIconsUrl}/meteora.png`,
@@ -18664,6 +18664,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.com/projects/wannaswap"],
     listedAt: 1638702808,
     github: ["wannaswap"],
+    deadUrl: true
   },
   {
     id: "981",
@@ -22825,6 +22826,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: [],
     listedAt: 1641071171,
     github: ["AuroraSwap"],
+    deadUrl: true
   },
   {
     id: "1175",

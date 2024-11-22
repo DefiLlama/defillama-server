@@ -1743,6 +1743,7 @@ export default {
         id: "4733"
     },
     "cellula": {
+        enabled: false,
         id: "4705"
     },
     "clusters": {
@@ -2185,5 +2186,21 @@ export default {
     },
     "stabble": {
         id: "4734"
+    },
+    "kamino-liquidity": {
+        parentId: "Kamino",
+        id: "2062"
+    },
+    "blazingbot": {
+        id: "5377"
+    },
+    "goat-protocol": {
+        id: "4162"
+    },
+    "adrena": {
+        id: "5353"
+    },
+    "phantom": {
+        id: "5398"
     }
 } as AdaptorsConfig

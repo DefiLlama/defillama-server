@@ -1239,7 +1239,7 @@ export default {
     },
     "acala-swap": {
         "id": "1847",
-        disabled: true
+        enabled: false
     },
     "maia-v3": {
         "id": "2760"
@@ -2572,5 +2572,23 @@ export default {
     },
     "manifest-trade": {
         id: "5349"
+    },
+    "shido-dex": {
+        id: "5366"
+    },
+    "elexium": {
+        id: "5357"
+    },
+    "adrena": {
+        id: "5353"
+    },
+    "spark": {
+        id: "5352"
+    },
+    "mach": {
+        id: "5399"
+    },
+    "ninjablaze": {
+        id: "5400"
     }
 } as AdaptorsConfig

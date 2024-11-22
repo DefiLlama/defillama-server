@@ -2,9 +2,9 @@
 import axios from "axios"
 import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import * as sdk from '@defillama/sdk'
-import { Connection } from "@solana/web3.js"
+import { Connection, Keypair, } from "@solana/web3.js"
+import { AnchorProvider as Provider, Wallet, } from "@project-serum/anchor"
 
-let connection: Connection
 const endpoint = process.env.SOLANA_RPC || "https://rpc.ankr.com/solana" // or "https://solana-api.projectserum.com/"
 
 export async function getTokenSupplies(tokens: string[]) {
@@ -45,11 +45,6 @@ export async function getTokenAccountBalances(tokenAccounts: string[], { individ
   }
   if (individual) return balancesIndividual
   return balances
-}
-
-export function getConnection() {
-  if (!connection) connection = new Connection(endpoint)
-  return connection
 }
 
 // accountsArray is an array of base58 address strings
@@ -98,4 +93,34 @@ export async function getMultipleAccountBuffers(labeledAddresses: any) {
   });
 
   return results;
+}
+
+
+let connection = {} as { [chain: string]: Connection }
+let provider = {} as { [chain: string]: Provider }
+
+const solEndpoint = (isClient: boolean) => {
+  if (isClient) return process.env.SOLANA_RPC_CLIENT ?? process.env.SOLANA_RPC
+  return process.env.SOLANA_RPC
+}
+
+const renecEndpoint = () =>  process.env.RENEC_RPC
+const endpointMap = {
+  solana: solEndpoint,
+  renec: renecEndpoint,
+}
+
+export function getConnection(chain = 'solana') {
+  if (!connection[chain]) connection[chain] = new Connection((endpointMap as any)[chain](true))
+  return connection[chain]
+}
+
+export function getProvider(chain = 'solana') {
+  if (!provider[chain]) {
+    const dummy_keypair = Keypair.generate();
+    const wallet = new Wallet(dummy_keypair);
+
+    provider[chain] = new Provider(getConnection(chain), wallet, {})
+  }
+  return provider[chain]
 }

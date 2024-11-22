@@ -533,6 +533,7 @@
       "decimals": "18",
       "symbol": "USDa",
       "to": "coingecko#usda"
+    },
     "0x6B2a01A5f79dEb4c2f3c0eDa7b01DF456FbD726a": {
       "to": "coingecko#universal-btc",
       "decimals": 8,

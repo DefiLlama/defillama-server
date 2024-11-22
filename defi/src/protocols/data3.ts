@@ -61155,6 +61155,100 @@ const data3: Protocol[] = [
     oracles: [],  
     listedAt: 1732201855
   },
+  {
+    id: "5398",
+    name: "Phantom",
+    address: null,
+    symbol: "-",
+    url: "https://phantom.app/",
+    description:
+      "The friendly crypto wallet built for DeFi & NFTs",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/phantom.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Wallet",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "phantom",
+    forkedFrom: [],
+    oracles: [],  
+    listedAt: 1732241005
+  },
+  {
+    id: "5399",
+    name: "Mach",
+    address: null,
+    symbol: "-",
+    url: "https://www.mach.exchange/",
+    description:
+      "Mach enables instant, single-block swaps between any blockchain, with a modular, interoperable design built for stablecoin markets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mach.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum","Optimism","Arbitrum","Avalanche","Polygon","Base","Celo","Binance","Op_Bnb","Mantle","Scroll","Mode","Blast"],
+    module: "dummy.js",
+    twitter: "mach_exchange",
+    forkedFrom: [],
+    oracles: [],  
+    audit_links: ["https://docs.mach.exchange/deployments/audit"],
+    listedAt: 1732241012
+  },
+  {
+    id: "5400",
+    name: "Ninja Blaze",
+    address: null,
+    symbol: "-",
+    url: "https://blaze.ninja/",
+    description:
+      "Ninja Blaze is a gaming Web3 platform on Injective",
+    chain: "Injective",
+    logo: `${baseIconsUrl}/ninja-blaze.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Injective"],
+    module: "dummy.js",
+    twitter: "NinjaBlazeApp",
+    forkedFrom: [],
+    oracles: [],  
+    listedAt: 1732241017
+  },
+  {
+    id: "5401",
+    name: "Fluid Protocol",
+    address: null,
+    symbol: "-", // FTP has preview only
+    url: "https://fluidprotocol.xyz/",
+    description:
+      "Fluid Protocol is a decentralized borrowing protocol that allows you to draw 0% interest loans against various assets used as collateral",
+    chain: "Fuel",
+    logo: `${baseIconsUrl}/fluid-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Fuel"],
+    module: "fluid-protocol/index.js",
+    twitter: "Fluid_Protocol",
+    forkedFrom: ["Liquity"],
+    oracles: ["Pyth"], // Redstone is a secondary oracle: https://github.com/DefiLlama/DefiLlama-Adapters/pull/12388  
+    audit_links: [
+      "https://drive.google.com/file/d/1qhiI26aB9MTXfo-hLW8Qy9ki2ueCudKN/view",
+      "https://immunefi.com/audit-competition/iop-fluid-protocol/information/"
+    ],
+    github: ["Hydrogen-Labs"],
+    listedAt: 1732241024
+  },
 ];
 
 export default data3;

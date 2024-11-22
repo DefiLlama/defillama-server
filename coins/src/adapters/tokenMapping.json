@@ -5445,5 +5445,17 @@
       "decimals": 6,
       "symbol": "USDC"
     }
+  },
+  "zksync": {
+    "0xB8d7d88D042880aE87Bb61DE2dFFF8441768766D": {
+      "to": "coingecko#usda",
+      "decimals": 18,
+      "symbol": "USDa"
+    },
+    "0x4047aE7cc300b5cc5a6fac2417C76eaAD18972F6": {
+      "to": "coingecko#susda",
+      "decimals": 18,
+      "symbol": "sUSDa"
+    }
   }
 }

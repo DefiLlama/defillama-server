@@ -4945,6 +4945,16 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "WETH"
+    },
+    "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
+      "to": "coingecko#usda",
+      "decimals": 18,
+      "symbol": "USDa"
+    },
+    "0x5d5c8Aec46661f029A5136a4411C73647a5714a7": {
+      "to": "coingecko#susda",
+      "decimals": 18,
+      "symbol": "sUSDa"
     }
   },
   "islm": {

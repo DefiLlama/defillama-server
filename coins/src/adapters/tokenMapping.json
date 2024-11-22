@@ -431,6 +431,11 @@
       "decimals": "8",
       "symbol": "lfbtc-solv-babylon-eth",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0x2B66AAdE1e9C062FF411bd47C44E0Ad696d43BD9": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "coingecko#susda"
     }
   },
   "fantom": {
@@ -537,6 +542,11 @@
       "to": "coingecko#tether",
       "decimals": 18,
       "symbol": "USDF"
+    },
+    "0x73a325103935b0B5E7AA3acA6dba74AD22f82B03": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "coingecko#susda"
     }
   },
   "stacks": {

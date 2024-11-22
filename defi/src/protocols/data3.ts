@@ -61329,6 +61329,29 @@ const data3: Protocol[] = [
     github: ["KikiFinance"],
     listedAt: 1732315868
   },
+  {
+    id: "5405",
+    name: "Syde",
+    address: null,
+    symbol: "-", 
+    url: "https://app.syde.fi/",
+    description:
+      "This is the first synthetic derivatives protocol on the TON blockchain",
+    chain: "TON",
+    logo: `${baseIconsUrl}/syde.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["TON"],
+    module: "syde/index.js",
+    twitter: "sydefi",
+    forkedFrom: [],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12398  
+    github: ["sydefi"],
+    listedAt: 1732318417
+  },
 ];
 
 export default data3;

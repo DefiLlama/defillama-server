@@ -17826,7 +17826,6 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.ipor.io/audits"],
     listedAt: 1664876804,
     parentProtocol: "parent#ipor",
-    governanceID: ["snapshot:ipordao.eth"]
   },
   {
     id: "2148",

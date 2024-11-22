@@ -55437,7 +55437,6 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.ipor.io/audits"],
     listedAt: 1726236262,
     parentProtocol: "parent#ipor",
-    governanceID: ["snapshot:ipordao.eth"]
   },
   {
     id: "5146",

@@ -54,6 +54,8 @@ const config = {
     chain: "base",
     factory: "0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6",
   },
+  thruster03: { chain: 'blast', factory: '0xb4A7D971D0ADea1c73198C97d7ab3f9CE4aaFA13' },
+  thruster1: { chain: 'blast', factory: '0x37836821a2c03c171fB1a595767f4a16e2b93Fc4' },
 };
 
 export function extraUniV2Lps(timestamp: number = 0) {

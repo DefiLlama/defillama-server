@@ -51,7 +51,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "3786": "scroll",
   "3787": "starknet",
   "3788": "era",
-  "3813": "alephium",
+  // "3813": "alephium",
   "3861": "rsk",
   // "3866": "near",
   // "3866": "aurora",

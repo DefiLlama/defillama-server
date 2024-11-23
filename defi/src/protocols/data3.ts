@@ -60288,14 +60288,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5359",
-    name: "Solayer SOL",
+    name: "Solayer Restaking", //previous Solayer SOL
     address: null,
     symbol: "-",
     url: "https://solayer.org",
     description:
       "sSOL is the universal liquidity layer for delegates [dApps] and LRTs on Solayer. Every unit of SOL can be perceived as a unit of blockspace lent towards dApps, securing network bandwidth and TPS.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/solayer-sol.jpg`,
+    logo: `${baseIconsUrl}/solayer-restaking.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

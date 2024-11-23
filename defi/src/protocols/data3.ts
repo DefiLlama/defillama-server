@@ -61375,6 +61375,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/rfx-exchange/rfx-deployments/tree/main/audits"],
     listedAt: 1732386579
   },
+  {
+    id: "5407",
+    name: "BullX",
+    address: null,
+    symbol: "-", 
+    url: "https://bullx.io/",
+    description:
+      "A decentralized trading system with features like sniping, copy trading, and limit orders",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/bullx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "bullx_io",
+    forkedFrom: [],
+    oracles: [],  
+    listedAt: 1732389264
+  },
 ];
 
 export default data3;

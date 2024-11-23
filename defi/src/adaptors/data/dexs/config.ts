@@ -2579,9 +2579,6 @@ export default {
     "elexium": {
         id: "5357"
     },
-    "adrena": {
-        id: "5353"
-    },
     "spark": {
         id: "5352"
     },

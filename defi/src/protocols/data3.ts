@@ -61277,7 +61277,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5403",
-    name: "Cytonic Airdrop Capmpaign",
+    name: "Cytonic Airdrop Campaign",
     address: null,
     symbol: "-", 
     url: "https://www.cytonic.com/",

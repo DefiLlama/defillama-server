@@ -61370,7 +61370,7 @@ const data3: Protocol[] = [
     chains: ["zkSync Era"],
     module: "rfx-exchange/index.js",
     twitter: "RFX_exchange",
-    forkedFrom: [],
+    forkedFrom: ["GMX V2"],
     oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12413  
     audit_links: ["https://github.com/rfx-exchange/rfx-deployments/tree/main/audits"],
     listedAt: 1732386579

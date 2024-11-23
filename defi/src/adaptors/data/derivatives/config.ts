@@ -753,5 +753,8 @@ export default {
     },
     "zkera-finance": {
         id: "3343"
+    },
+    "adrena": {
+        id: "5353"
     }
 } as AdaptorsConfig

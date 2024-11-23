@@ -61352,6 +61352,29 @@ const data3: Protocol[] = [
     github: ["sydefi"],
     listedAt: 1732318417
   },
+  {
+    id: "5406",
+    name: "RFX Exchange",
+    address: null,
+    symbol: "-", 
+    url: "https://rfx.exchange/",
+    description:
+      "The first derivatives exchange with smart liquidity. Maximise your yield. Create your own trading pairs. Built on ZkSync Era",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/rfx-exchange.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["zkSync Era"],
+    module: "rfx-exchange/index.js",
+    twitter: "RFX_exchange",
+    forkedFrom: [],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12413  
+    audit_links: ["https://github.com/rfx-exchange/rfx-deployments/tree/main/audits"],
+    listedAt: 1732386579
+  },
 ];
 
 export default data3;

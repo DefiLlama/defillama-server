@@ -2587,5 +2587,8 @@ export default {
     },
     "ninjablaze": {
         id: "5400"
+    },
+    "memecooking": {
+        id: "5185"
     }
 } as AdaptorsConfig

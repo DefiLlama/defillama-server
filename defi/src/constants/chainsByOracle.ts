@@ -61,7 +61,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "ZKsync Era",
   ],
   "Pyth": [
-    "ApeChain"
+    "ApeChain",
     "Arbitrum",
     "Astar zkEVM",
     "Aurora",
@@ -85,12 +85,12 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Fantom",
     "Filecoin",
     "Flow",
-    "Fuel Ignition"
+    "Fuel",
     "Gnosis",
     "Gravity",
     "Hedera",
     "Horizen EON",
-    'IDEX'
+    'IDEX',
     "inEVM",
     "IOTA EVM",
     "Kaia",

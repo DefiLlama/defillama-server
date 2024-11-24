@@ -61397,6 +61397,27 @@ const data3: Protocol[] = [
     oracles: [],  
     listedAt: 1732389264
   },
+  {
+    id: "5408",
+    name: "GMGN",
+    address: null,
+    symbol: "-", 
+    url: "https://gmgn.ai",
+    description:
+      "Discover faster, Trading in seconds http://gmgn.ai",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/gmgn.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "gmgnai",
+    forkedFrom: [],
+    oracles: [],  
+  },
 ];
 
 export default data3;

@@ -747,5 +747,14 @@ export default {
                 "id": "2380",
             }
         }
+    },
+    "quenta": {
+        id: "5314"
+    },
+    "zkera-finance": {
+        id: "3343"
+    },
+    "adrena": {
+        id: "5353"
     }
 } as AdaptorsConfig

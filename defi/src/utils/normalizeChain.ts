@@ -25,7 +25,8 @@ export const normalizedChainReplacements = {
   "cronos zkevm": "cronos_zkevm",
   "kaia": "klaytn",
   "viction": "tomochain",
-  "fuel": "fuel_ignition"
+  "fuel": "fuel_ignition",
+  "oasis sapphire": "oasis_sapphire",
 } as {
   [chain: string]: string
 }
@@ -3392,6 +3393,11 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
     twitter: "fuel_network",
     url: "https://fuel.network/",
   },
@@ -3434,13 +3440,52 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: "-",
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
     },
     twitter: "MorphL2",
     url: "https://www.morphl2.io"
+  },
+  "Eclipse": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "EclipseFND",
+    url: "https://www.eclipse.xyz",
+  },
+  "UNIT0": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "UnitsNetwork",
+    url: "https://units.network/",
+  },
+  "Shido": {
+    geckoId: "shido-2",
+    github: ['ShidoGlobal'],
+    symbol: "SHIDO",
+    cmcId: "28211",
+    categories: ["EVM", "Cosmos"],
+    twitter: "ShidoGlobal",
+    url: "https://shido.io/"
+  },
+  "Redbelly": {
+    geckoId: "redbelly-network-token",
+    symbol: "RBNT",
+    cmcId: null,
+    twitter: "RedbellyNetwork",
+    url: "https://www.redbelly.network",
+  },
+  "exSat": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Bitcoin Sidechains"],
+    twitter: "exSatNetwork",
+    url: "https://exsat.network/",
+    chainId: 7200
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -3467,6 +3512,7 @@ chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
 chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
 chainCoingeckoIds["Lyra Chain"] = chainCoingeckoIds["Derive Chain"]
 chainCoingeckoIds["Fuel"] = chainCoingeckoIds["Fuel Ignition"]
+chainCoingeckoIds["Sapphire"] = chainCoingeckoIds["Oasis Sapphire"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -4187,6 +4233,16 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Asset Chain"
     case "morph":
       return "Morph"
+    case "eclipse":
+      return "Eclipse"
+    case "unit0":
+      return "UNIT0"
+    case "shido":
+      return "Shido"
+    case "rbn":
+      return "Redbelly"
+    case "xsat":
+      return "exSat"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -94,8 +94,16 @@ export default {
         "id": "4038",
         parentId: "KIM Exchange",
     },
-    "swapmode-v2": {
+    "swapmode": {
         "id": "4116",
+        protocolsData: {
+            "v2": {
+                "id": "4116",
+            },
+            "v3": {
+                "id": "5362",
+            }
+        }
     },
     "kim-exchange-v3": {
         "id": "4299",
@@ -254,5 +262,19 @@ export default {
     },
     "mintswap": {
         id: "4811",
+    },
+    "nabla": {
+        id: "5309",
+    },
+    "bulbaswap": {
+        id: "5301",
+        protocolsData: {
+            "v2": {
+                id: "5301",
+            },
+            "v3": {
+                id: "5302",
+            }
+        }
     }
 } as AdaptorsConfig

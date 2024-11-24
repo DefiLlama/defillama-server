@@ -1736,12 +1736,14 @@ export default {
         "id": "4737"
     },
     "dragonswap-sei": {
+        parentId: "Dragon Swap",
         id: "4720"
     },
     "wen-markets": {
         id: "4733"
     },
     "cellula": {
+        enabled: false,
         id: "4705"
     },
     "clusters": {
@@ -2143,16 +2145,65 @@ export default {
     "suilend": {
         id: "4274"
     },
-    "juicebox": {
+    /*"juicebox": { // adapter not working
         id: "4208"
-    },
+    },*/
     "celestia": {
         id: "22861"
     },
     "yamfore": {
         id: "5304"
     },
-    "bonzo": {
+    /*"bonzo": { // adapter not working
         id: "5287"
+    },*/
+    "quenta": {
+        id: "5314"
+    },
+    "fluid-dex": {
+        parentId: "Fluid",
+        id: "5317"
+    },
+    "g8keep": {
+        id: "5318"
+    },
+    "iziswap": {
+        parentId: "iZUMI Finance",
+        "id": "1883"
+    },
+    "dragonswap-sei-v3": {
+        parentId: "Dragon Swap",
+        id: "5066"
+    },
+    "morFi": {
+        id: "5307"
+    },
+    "solar-studios": {
+        id: "5346"
+    },
+    "orca": {
+        "id": "283"
+    },
+    "stabble": {
+        id: "4734"
+    },
+    "kamino-liquidity": {
+        parentId: "Kamino",
+        id: "2062"
+    },
+    "blazingbot": {
+        id: "5377"
+    },
+    "goat-protocol": {
+        id: "4162"
+    },
+    "adrena": {
+        id: "5353"
+    },
+    "phantom": {
+        id: "5398"
+    },
+    "bullx": {
+        id: "5407"
     }
 } as AdaptorsConfig

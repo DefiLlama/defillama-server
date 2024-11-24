@@ -376,6 +376,17 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Mantle",
     "Scroll",
   ],
+  "eOracle": [
+    "Base",
+    "Blast",
+    "Linea",
+    "Mode",
+    "Morph",
+    "Polygon zkEVM",
+    "Scroll",
+    "Taiko",
+    "zkLink Nova"
+  ],
 };
 
 export { chainsByOracle };

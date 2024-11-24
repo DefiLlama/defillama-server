@@ -1238,7 +1238,8 @@ export default {
         "id": "2748"
     },
     "acala-swap": {
-        "id": "1847"
+        "id": "1847",
+        enabled: false
     },
     "maia-v3": {
         "id": "2760"
@@ -1488,6 +1489,7 @@ export default {
         id: "2795"
     },
     "pearlfi": {
+        parentId: "PearlFi",
         id: "3121"
     },
     "ambient": {
@@ -2331,6 +2333,7 @@ export default {
         id: "4583"
     },
     "dragonswap-sei": {
+        parentId: "Dragon Swap",
         id: "4720"
     },
     "basin": {
@@ -2534,5 +2537,61 @@ export default {
     "deepbookv3-sui": {
         parentId: "DeepBook",
         id: "5296"
+    },
+    "kyex": {
+        id: "5310"
+    },
+    "fluid-dex": {
+        parentId: "Fluid",
+        id: "5317"
+    },
+    "dragonswap-sei-v3": {
+        parentId: "Dragon Swap",
+        id: "5066"
+    },
+    "morFi": {
+        id: "5307"
+    },
+    "assetchain-swap": {
+        id: "5324"
+    },
+    "velocimeter-v4": {
+        parentId: "Velocimeter",
+        id: "5243"
+    },
+    "pearl-v1-5": {
+        parentId: "PearlFi",
+        id: "5308"
+    },
+    "pearl-v2": {
+        parentId: "PearlFi",
+        id: "4668"
+    },
+    "solar-studios": {
+        id: "5346"
+    },
+    "manifest-trade": {
+        id: "5349"
+    },
+    "shido-dex": {
+        id: "5366"
+    },
+    "elexium": {
+        id: "5357"
+    },
+    "spark": {
+        id: "5352"
+    },
+    "mach": {
+        id: "5399"
+    },
+    "ninjablaze": {
+        id: "5400"
+    },
+    "memecooking": {
+        id: "5185"
+    },
+    "pumpfun": {
+        id: "4449"
     }
 } as AdaptorsConfig

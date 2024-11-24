@@ -214,3 +214,17 @@ export const osmosis = async (): Promise<Address[]> => {
 
   return addresses.osmosis;
 };
+export const aptos = async (): Promise<Address[]> => {
+  if (addresses.aptos) return addresses.aptos;
+  const res: { tokenAddress: string; bridge: string }[] = await fetch(
+    "https://raw.githubusercontent.com/PanoraExchange/Aptos-Tokens/refs/heads/main/token-list.json"
+  ).then((r) => r.json());
+
+  addresses.aptos = [];
+  res.map(({ tokenAddress, bridge }) => {
+    if (!bridge) return;
+    addresses.aptos.push(tokenAddress);
+  });
+
+  return addresses.aptos;
+};

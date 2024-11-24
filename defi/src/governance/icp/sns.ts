@@ -4,6 +4,7 @@ import { updateStats } from '../utils';
 import { setCompound, getCompound } from '../cache';
 import { update_nervous_system_cache, NervousSystemConfig } from './icp';
 import sleep from '../../utils/shared/sleep';
+import { add } from 'lodash';
 export const SNS_GOV_ID = 'icp-sns'
 const getGovId = (id: string) => SNS_GOV_ID + '-' + id
 
@@ -77,7 +78,6 @@ interface SnsMetadata {
  * @returns {Promise<SnsMetadata[]>}
  */
 async function get_sns_metadata(retiresLeft = 3): Promise<SnsMetadata[]> {
-    console.log('get_sns_metadata', retiresLeft)
     try {
 
         var { data, status } = await axios.get(
@@ -138,10 +138,8 @@ function convert_proposal_format ( proposal : ServiceNervousSystemProposalRespon
 
 export async function get_metadata(sns_metadata: SnsMetadata, retiresLeft = 3): Promise<{ [key: string]: any }> {
     try {
-        console.log('get_metadata', sns_metadata.sns_root_canister_id, retiresLeft)
         return await _get_metadata(sns_metadata);
     } catch (e) {
-        console.error('failed to fetch sns metadata', (e as any)?.message)
         if (--retiresLeft > 0) {
             await sleep(30000)
             return get_metadata(sns_metadata, retiresLeft)
@@ -225,7 +223,7 @@ export async function addSNSProposals(overview: any = {}): Promise<GovCache[]> {
             };
             cache.id = metadata.id;
             await update_nervous_system_cache(cache as any, nconf);
-
+ 
             updateStats(cache, overview, cache.id)
             if (overview[cache.id]) {
                 Object.values(overview[cache.id].months ?? {}).forEach((month: any) => delete month.proposals)
@@ -233,7 +231,6 @@ export async function addSNSProposals(overview: any = {}): Promise<GovCache[]> {
             await setCompound(cache.id, cache)
         }
     }
-
 
     return overview
 }

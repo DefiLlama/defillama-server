@@ -2205,5 +2205,8 @@ export default {
     },
     "bullx": {
         id: "5407"
+    },
+    "gmgnai": {
+        id: "5408"
     }
 } as AdaptorsConfig

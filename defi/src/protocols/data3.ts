@@ -61175,7 +61175,6 @@ const data3: Protocol[] = [
     twitter: "phantom",
     forkedFrom: [],
     oracles: [],  
-    listedAt: 1732241005
   },
   {
     id: "5399",
@@ -61198,7 +61197,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],  
     audit_links: ["https://docs.mach.exchange/deployments/audit"],
-    listedAt: 1732241012
   },
   {
     id: "5400",
@@ -61219,8 +61217,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "NinjaBlazeApp",
     forkedFrom: [],
-    oracles: [],  
-    listedAt: 1732241017
+    oracles: [],
   },
   {
     id: "5401",
@@ -61395,7 +61392,6 @@ const data3: Protocol[] = [
     twitter: "bullx_io",
     forkedFrom: [],
     oracles: [],  
-    listedAt: 1732389264
   },
   {
     id: "5408",
@@ -61415,6 +61411,48 @@ const data3: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "gmgnai",
+    forkedFrom: [],
+    oracles: [],  
+  },
+  {
+    id: "5409",
+    name: "Catton",
+    address: null,
+    symbol: "-", 
+    url: "https://catton.tech/",
+    description:
+      "A groundbreaking fusion of Gaming and CDPs protocol",
+    chain: "TON",
+    logo: `${baseIconsUrl}/catton.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["TON"],
+    module: "dummy.js",
+    twitter: "Cattontw",
+    forkedFrom: [],
+    oracles: [],  
+  },
+  {
+    id: "5410",
+    name: "DeBank Cloud",
+    address: null,
+    symbol: "-", 
+    url: "https://cloud.debank.com/",
+    description:
+      "Web3 Developer Services. Get real-time data of users, protocols, tokens, and more",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/debank-cloud.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Developer Tools",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "DeBankCloud",
     forkedFrom: [],
     oracles: [],  
   },

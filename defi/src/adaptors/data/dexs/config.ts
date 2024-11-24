@@ -2590,5 +2590,8 @@ export default {
     },
     "memecooking": {
         id: "5185"
+    },
+    "pumpfun": {
+        id: "4449"
     }
 } as AdaptorsConfig

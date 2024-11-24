@@ -2202,5 +2202,8 @@ export default {
     },
     "phantom": {
         id: "5398"
+    },
+    "bullx": {
+        id: "5407"
     }
 } as AdaptorsConfig

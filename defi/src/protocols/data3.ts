@@ -61498,6 +61498,48 @@ const data3: Protocol[] = [
     oracles: [],  
     listedAt: 1732533473
   },
+  {
+    id: "5413",
+    name: "Zuit Swap",
+    address: null,
+    symbol: "-",
+    url: "https://zuit.xyz/",
+    description: "Zuit is the decentralized exchange and native liquidity hub on Zircuit",
+    chain: "Zircuit",
+    logo: `${baseIconsUrl}/zuit-swap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Zircuit"],
+    module: "zuit/index.js",
+    twitter: "zuitDAO",
+    forkedFrom: ["SyncSwap"],
+    oracles: [],  
+    listedAt: 1732534807
+  },
+  {
+    id: "5414",
+    name: "LinqA",
+    address: "0xd4f4d0a10bcae123bb6655e8fe93a30d01eebd04",
+    symbol: "LNQ",
+    url: "https://linqai.fi",
+    description: "Revolutionizing the business world with cutting-edge AI solutions – Stake, Farm, and Reap the Rewards!",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/linqai.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "linqai",
+    cmcId: "30177",
+    category: "Farm",
+    chains: ["Ethereum"],
+    module: "linqai/index.js",
+    twitter: "linq_ai",
+    forkedFrom: [],
+    oracles: [],  
+    listedAt: 1732534997
+  },
 ];
 
 export default data3;

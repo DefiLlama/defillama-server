@@ -282,7 +282,7 @@ export default {
         parentId: "SuperSwap",
         protocolsData: {
             "v2": {
-                id: "5317",
+                id: "5372",
             },
             "v3": {
                 id: "5373",

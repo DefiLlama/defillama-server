@@ -276,5 +276,16 @@ export default {
                 id: "5302",
             }
         }
+    },
+    "superswap": {
+        id: "5372",
+        protocolsData: {
+            "v2": {
+                id: "5317",
+            },
+            "v3": {
+                id: "5373",
+            }
+        }
     }
 } as AdaptorsConfig

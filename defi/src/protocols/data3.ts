@@ -61521,7 +61521,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5414",
-    name: "LinqA",
+    name: "LinqAI",
     address: "0xd4f4d0a10bcae123bb6655e8fe93a30d01eebd04",
     symbol: "LNQ",
     url: "https://linqai.fi",

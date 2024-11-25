@@ -57473,7 +57473,7 @@ const data3: Protocol[] = [
     module: "usdx/index.js",
     twitter: "usdx_money",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["RedStone"], //https://docs.usdx.money/informaiton/oracles
     listedAt: 1728645744
   },
   {

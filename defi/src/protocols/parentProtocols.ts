@@ -5849,6 +5849,20 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "zkSwap_finance",
     github: ["ZkSwapFinance"],
   },
+  {
+    id: "parent#weft-finance",
+    name: "Weft Finance",
+    url: "https://app.weft.finance",
+    description:
+      "Weft Finance is a decentralized lending and borrowing application built on Radix DLT",
+    logo: `${baseIconsUrl}/weft-finance.jpg`,
+    gecko_id: "weft-finance",
+    cmcId: null,
+    chains: [],
+    twitter: "Weft_Finance",
+    github: ["WeftFinance"],
+  },
+
 ];
 
 export default parentProtocols;

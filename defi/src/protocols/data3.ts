@@ -61430,7 +61430,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Gaming",
     chains: ["TON"],
-    module: "dummy.js",
+    module: "catton/index.js",
     twitter: "Cattontw",
     forkedFrom: [],
     oracles: [],  

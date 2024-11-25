@@ -2209,5 +2209,8 @@ export default {
     },
     "gmgnai": {
         id: "5408"
+    },
+    "debank-cloud": {
+        id: "5410"
     }
 } as AdaptorsConfig

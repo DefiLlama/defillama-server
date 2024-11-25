@@ -70,5 +70,6 @@ async function contractCalls(
     writes,
     pricesObject,
     projectName: "pxETH",
+    confidence: 1
   });
 }

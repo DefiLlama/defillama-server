@@ -383,6 +383,8 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Polygon zkEVM",
     "Mantle",
     "Scroll",
+    "Berachain",
+    "Superseed"
   ],
   "eOracle": [
     "Base",

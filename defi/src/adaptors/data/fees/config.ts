@@ -2145,9 +2145,10 @@ export default {
     "suilend": {
         id: "4274"
     },
-    /*"juicebox": { // adapter not working
-        id: "4208"
-    },*/
+    "juicebox": { // adapter not working
+        parentId: "Juicebox",
+        id: "2833"
+    },
     "celestia": {
         id: "22861"
     },
@@ -2208,5 +2209,8 @@ export default {
     },
     "gmgnai": {
         id: "5408"
+    },
+    "debank-cloud": {
+        id: "5410"
     }
 } as AdaptorsConfig

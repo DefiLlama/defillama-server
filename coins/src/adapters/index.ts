@@ -5,6 +5,7 @@ import * as curve from "./markets/curve";
 import * as balancer from "./markets/balancer";
 import * as others from "./other/index";
 import * as others2 from "./other/others2";
+import * as graphCoins from "./markets/graphCoins";
 
 export default {
   ...compound.adapters,
@@ -14,6 +15,7 @@ export default {
   ...balancer.adapters,
   ...others.adapters,
   ...others2.adapters,
+  ...graphCoins.adapters,
   reservoirprotocol: require("./rwa/reservoir-protocol"),
   fortunafi: require("./rwa/fortunafi"),
   jupAg: require("./solana/jupAg"),

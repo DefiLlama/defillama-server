@@ -5504,11 +5504,13 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Typus Finance is a DeFi derivatives protocol on Sui Blockchain (Sui) that enables users to obtain superior risk-to-reward returns, all in one click.",
     logo: `${baseIconsUrl}/typus-finance.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "typus",
+    cmcId: "34178",
     chains: ["Sui"],
     github: ["Typus-Lab"],
     twitter: "TypusFinance",
+    treasury: "typus-finance.js",
+    address: "0xf82dc05634970553615eef6112a1ac4fb7bf10272bf6cbe0f80ef44a6c489385::typus::TYPUS",
   },
   {
     id: "parent#bounceclub",
@@ -5847,6 +5849,20 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "zkSwap_finance",
     github: ["ZkSwapFinance"],
   },
+  {
+    id: "parent#weft-finance",
+    name: "Weft Finance",
+    url: "https://app.weft.finance",
+    description:
+      "Weft Finance is a decentralized lending and borrowing application built on Radix DLT",
+    logo: `${baseIconsUrl}/weft-finance.jpg`,
+    gecko_id: "weft-finance",
+    cmcId: null,
+    chains: [],
+    twitter: "Weft_Finance",
+    github: ["WeftFinance"],
+  },
+
 ];
 
 export default parentProtocols;

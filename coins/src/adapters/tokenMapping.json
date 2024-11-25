@@ -3476,15 +3476,15 @@
     }
   },
   "tomochain": {
-    "0x8998F9289757b7E0D3eA77581bb7D4630b4158bB": {
+    "0xb55Dd628039552a7d93A70fC8932f677499Ed479": {
       "decimals": "18",
       "symbol": "ARKEN",
       "to": "coingecko#arken-finance"
     },
     "0xc054751bdbd24ae713ba3dc9bd9434abe2abc1ce": {
       "decimals": "18",
-      "symbol": "TOMO",
-      "to": "coingecko#tomochain"
+      "symbol": "VIC",
+      "to": "coingecko#viction"
     },
     "0xbbbfab9dcc27771d21d027f37f36b67cc4a25db0": {
       "decimals": "18",

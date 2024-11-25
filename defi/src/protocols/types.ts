@@ -60,4 +60,5 @@ export interface IParentProtocol {
   treasury?: string | null;
   stablecoins?: string[];
   wrongLiquidity?: boolean;
+  address?: string | null;
 }

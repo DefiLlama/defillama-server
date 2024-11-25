@@ -20,6 +20,14 @@ const contracts: string[] = [
   "0x904603366bc8acf881a35cd4c7e0d514f0477ffc", // s4pool_ba
   "0x795b38c85d6f1524b434f14aa37c1c808c2bbd6b", // sx3crv_g
 
+  "0xf515a8055e503ac86d96f0ffd0bf9121a668b8ab", // sUSDC_m
+  "0x286931c8a360c0375ec174f04feabf9a707c94e5", // sUSDB_bl
+  "0xdc06708bc4cc5b1907854f687860b96e6600d6e5", // sUSDCe_l
+  "0x5acc8f3b6fe2c7f9736bfaeef3a0870b1e2295a9", // sUSDC_t
+  "0xc8506d96647a69a2f9bfbb5fd467db700827a2ba", // s3Pool_c
+  "0x8e23f9719bbe179a68cb18595ec564116e4024eb", // sFrUsdt_t
+  "0xeb23ef286a00e96e5dc82d5f25e203c43a4b5cc4", // sUSDt_t
+  
   "0x0c935328a69155dd43aa57f23288d868bae440fe", // sWETH_e
   "0x77e1886bf34d7dc0dcf8d5407ed6a239b66ae2ee", // sWETH_ar
   "0x66917b3b128760295bf48a5382951bc63bb1768e", // sWETH_o

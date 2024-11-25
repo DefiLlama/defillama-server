@@ -55426,8 +55426,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/ipor-fusion.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "ipor",
-    cmcId: "22880",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield Aggregator",
     chains: ["Arbitrum", "Ethereum", "Base"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/11616

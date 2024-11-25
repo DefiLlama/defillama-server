@@ -2600,5 +2600,8 @@ export default {
                 "1732320000": true,
             }
         }
+    },
+    "catton": {
+        id: "5409"
     }
 } as AdaptorsConfig

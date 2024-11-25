@@ -2592,6 +2592,13 @@ export default {
         id: "5185"
     },
     "pumpfun": {
-        id: "4449"
+        id: "4449",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1732492800": true,
+                "1732406400": true,
+                "1732320000": true,
+            }
+        }
     }
 } as AdaptorsConfig

@@ -3556,6 +3556,11 @@
       "decimals": "18",
       "symbol": "CCP",
       "to": "coingecko#chainccolosseumphoenix"
+    },
+    "0x4362Be024eFbb8C6fBcF19675224b58dFd2493Ef": {
+      "decimals": "18",
+      "symbol": "bCCP",
+      "to": "coingecko#beta-chain-ccolosseum-phoenix"
     }
   },
   "xai": {

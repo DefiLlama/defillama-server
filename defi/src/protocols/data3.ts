@@ -26821,14 +26821,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3882",
-    name: "Mantle Staked ETH",
+    name: "mETH Protocol", // previous Mantle Staked ETH
     address: null,
     symbol: "-",
-    assetToken: "METH",
+    assetToken: "mETH",
     url: "https://www.mantle.xyz/meth",
     description: `A permissionless, non-custodial ETH liquid staking protocol deployed on Ethereum L1 and governed by Mantle.`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/mantle-staked-eth.png`,
+    logo: `${baseIconsUrl}/meth-protocol.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

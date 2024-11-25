@@ -5471,7 +5471,6 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ipor_io",
     treasury: "ipor.js",
     github: ["IPOR-Labs"],
-    wrongLiquidity: true,
     governanceID: ["snapshot:ipordao.eth"],
   },
   {

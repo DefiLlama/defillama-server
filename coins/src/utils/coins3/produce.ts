@@ -71,6 +71,6 @@ export default async function produce(
 ) {
   const producer: Producer = await getProducer();
   await Promise.all(
-    topics.map((topic: Topic) => produceTopics([items[1]], topic, producer)),
+    topics.map((topic: Topic) => produceTopics(items, topic, producer)),
   );
 }

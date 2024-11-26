@@ -2603,5 +2603,11 @@ export default {
     },
     "catton": {
         id: "5409"
+    },
+    "9mm-v2": {
+        id: "5416"
+    },
+    "9mm": {
+        id: "5417"
     }
 } as AdaptorsConfig

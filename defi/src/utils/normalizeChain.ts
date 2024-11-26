@@ -572,7 +572,7 @@ export const chainCoingeckoIds = {
   },
   "EOS": {
     geckoId: "eos",
-    github: ['EOSIO'],
+    github: ['EOSIO','eosnetworkfoundation','AntelopeIO'],
     symbol: "EOS",
     cmcId: "1765",
     twitter: "EOSNetworkFDN",

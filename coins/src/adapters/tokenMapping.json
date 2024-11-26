@@ -548,6 +548,11 @@
       "decimals": "18",
       "symbol": "sUSDa",
       "to": "coingecko#susda"
+    },
+    "0x184b72289c0992bdf96751354680985a7c4825d6": {
+      "decimals": "18",
+      "symbol": "asBTC",
+      "to": "coingecko#binance-bitcoin"
     }
   },
   "stacks": {

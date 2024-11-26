@@ -61601,6 +61601,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "5418",
+    name: "Astherus asBTC",
+    address: null,
+    symbol: "-",
+    url: "https://www.astherus.finance/en/earn/cedefi",
+    description: "The funds in Astherus Earn are utilized to execute stable trading strategies, generating returns that are distributed back to users.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/astherus-asbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CeDeFi",
+    chains: ["Binance"],
+    module: "astherus-asbtc/index.js",
+    twitter: "AstherusHub",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#astherus",
+    listedAt: 1732625441
+  },
 ];
 
 export default data3;

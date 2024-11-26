@@ -61260,7 +61260,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "RWA",
     chains: ["Ethereum"],
     module: "pv01/index.js",
     twitter: "pv01_markets",

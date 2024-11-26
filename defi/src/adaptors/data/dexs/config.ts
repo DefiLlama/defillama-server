@@ -2609,5 +2609,8 @@ export default {
     },
     "9mm": {
         id: "5417"
+    },
+    "catalist-dex": {
+        id: "5412"
     }
 } as AdaptorsConfig

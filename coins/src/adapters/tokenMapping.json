@@ -237,6 +237,16 @@
     }
   },
   "ethereum": {
+    "0x2f123cf3f37ce3328cc9b5b8415f9ec5109b45e7": {
+      "decimals": "18",
+      "symbol": "wbC3M",
+      "to": "asset#ethereum:0x2f123cf3f37ce3328cc9b5b8415f9ec5109b45e7"
+    },
+    "0xca2a7068e551d5c4482eb34880b194e4b945712f": {
+      "decimals": "18",
+      "symbol": "wbIB01",
+      "to": "asset#ethereum:0xca30c93b02514f86d5c86a6e375e3a330b435fb5"
+    },
     "0x06824C27C8a0DbDe5F72f770eC82e3c0FD4DcEc3": {
       "decimals": "18",
       "symbol": "amphrETH",
@@ -459,7 +469,7 @@
       "symbol": "LL",
       "to": "coingecko#lightlink"
     },
-    "0x8A60E489004Ca22d775C5F2c657598278d17D9c2":{
+    "0x8A60E489004Ca22d775C5F2c657598278d17D9c2": {
       "decimals": "18",
       "symbol": "USDa",
       "to": "coingecko#usda"
@@ -529,7 +539,7 @@
       "symbol": "lfbtc-bedrock-eth",
       "to": "coingecko#ignition-fbtc"
     },
-    "0x9356086146be5158E98aD827E21b5cF944699894":{
+    "0x9356086146be5158E98aD827E21b5cF944699894": {
       "decimals": "18",
       "symbol": "USDa",
       "to": "coingecko#usda"
@@ -815,6 +825,16 @@
     }
   },
   "base": {
+    "0x0000206329b97db379d5e1bf586bbdb969c63274": {
+      "decimals": "18",
+      "symbol": "USDA",
+      "to": "coingecko#angle-usd"
+    },
+    "0xA61BeB4A3d02decb01039e378237032B351125B4": {
+      "decimals": "18",
+      "symbol": "EURA",
+      "to": "coingecko#ageur"
+    },
     "0x5e40f26E89213660514c51Fb61b2d357DBf63C85": {
       "decimals": "18",
       "symbol": "nARS",

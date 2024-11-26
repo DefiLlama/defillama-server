@@ -5862,7 +5862,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Weft_Finance",
     github: ["WeftFinance"],
   },
-
+  {
+    id: "parent#degenhive",
+    name: "DegenHive",
+    url: "https://www.degenhive.ai",
+    description:
+      "DegenHive is a gamified meta-DEX and liquid staking platform where users can collect, breed and battle with dragon-bees while earning protocol rewards. Users can lock their dragon-bees to redirect HIVE and HONEY incentives to AMM pools, claim bribes, and shape the ecosystem in a fun and interactive way.",
+    logo: `${baseIconsUrl}/degenhive.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "DegenHive",
+  },
 ];
 
 export default parentProtocols;

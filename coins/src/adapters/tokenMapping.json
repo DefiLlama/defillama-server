@@ -2067,6 +2067,16 @@
       "decimals": "6",
       "symbol": "AKT",
       "to": "coingecko#akash-network"
+    },
+    "factory:osmo1z6r6qdknhgsc0zeracktgpcxf43j6sekq07nw8sxduc9lg0qjjlqfu25e3:alloyed:allBTC": {
+      "decimals": "8",
+      "symbol": "allBTC",
+      "to": "coingecko#osmosis-allbtc"
+    },
+    "factory:osmo1n3n75av8awcnw4jl62n3l48e6e4sxqmaf97w5ua6ddu4s475q5qq9udvx4:alloyed:allSOL": {
+      "decimals": "9",
+      "symbol": "allSOL",
+      "to": "coingecko#osmosis-allsol"
     }
   },
   "zeta": {

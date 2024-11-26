@@ -4,9 +4,7 @@ import getWrites from "../utils/getWrites";
 
 export const contracts: any = {
   ethereum: {
-    synths: [
-      '0x691Af94cC63B99bd36173eD6Fb1eF5508b2774ec'
-    ],
+    synths: ["0x691Af94cC63B99bd36173eD6Fb1eF5508b2774ec"],
   },
   optimism: {
     synths: [
@@ -16,29 +14,64 @@ export const contracts: any = {
       "0x539505dde2b9771debe0898a84441c5e7fdf6bc0",
     ],
   },
+  base: {
+    synths: ["0x7ba6f01772924a82d9626c126347a28299e98c98"],
+  },
 };
 
 export default async function getTokenPrice(chain: string, timestamp: number) {
-  const api = await getApi(chain, timestamp)
-  const pricesObject: any = {}
+  const api = await getApi(chain, timestamp);
+  const pricesObject: any = {};
   const writes: Write[] = [];
-  const { synths } = contracts[chain]
-  if (['optimism'].includes(chain)) {
-    let underlyings = await api.multiCall({ calls: synths, abi: 'address:token', })
-    const uDecimals = await api.multiCall({ calls: underlyings, abi: 'erc20:decimals', })
-    let prices = await api.multiCall({ calls: synths, abi: 'uint256:pricePerShare', })
+  const { synths } = contracts[chain];
+  if (["optimism"].includes(chain)) {
+    let underlyings = await api.multiCall({
+      calls: synths,
+      abi: "address:token",
+    });
+    const uDecimals = await api.multiCall({
+      calls: underlyings,
+      abi: "erc20:decimals",
+    });
+    let prices = await api.multiCall({
+      calls: synths,
+      abi: "uint256:pricePerShare",
+    });
     underlyings.forEach((underlying: any, i: number) => {
-      pricesObject[synths[i]] = { underlying, price: prices[i]  / (10 ** uDecimals[i])}
-    })
-
+      pricesObject[synths[i]] = {
+        underlying,
+        price: prices[i] / 10 ** uDecimals[i],
+      };
+    });
   } else {
-    let underlyings = await api.multiCall({ calls: synths, abi: 'address:underlying', })
-    const uDecimals = await api.multiCall({ calls: underlyings, abi: 'erc20:decimals', })
-    const udata = await api.multiCall({ calls: synths.map((v: any, i: number) => ({ target: v, params: '' + (10 ** uDecimals[i]) })), abi: 'function quoteWithdrawIn(uint256) view returns (uint256 amount,uint256 fee)', })
+    let underlyings = await api.multiCall({
+      calls: synths,
+      abi: "address:underlying",
+    });
+    const uDecimals = await api.multiCall({
+      calls: underlyings,
+      abi: "erc20:decimals",
+    });
+    const udata = await api.multiCall({
+      calls: synths.map((v: any, i: number) => ({
+        target: v,
+        params: "" + 10 ** uDecimals[i],
+      })),
+      abi: "function quoteWithdrawIn(uint256) view returns (uint256 amount,uint256 fee)",
+    });
     underlyings.forEach((underlying: any, i: number) => {
-      pricesObject[synths[i]] = { underlying, price: udata[i].amount / (10 ** uDecimals[i]) }
-    })
+      pricesObject[synths[i]] = {
+        underlying,
+        price: udata[i].amount / 10 ** uDecimals[i],
+      };
+    });
   }
 
-  return getWrites({ chain, timestamp, writes, pricesObject, projectName: 'metronome-synth' })
+  return getWrites({
+    chain,
+    timestamp,
+    writes,
+    pricesObject,
+    projectName: "metronome-synth",
+  });
 }

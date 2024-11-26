@@ -61258,7 +61258,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/pv01.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "rolling-t-bill",
+    gecko_id: null,
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum"],

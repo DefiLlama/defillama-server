@@ -127,7 +127,7 @@ const main = async () => {
       getHistoricalValues(dailyTokensTvl(protocol.id)),
       getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
     ]); */
-  const start = adapter.start ?? 0;
+  const start = adapter.start ? Math.round(+new Date(adapter.start) / 1000) : 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
   if (timestamp > now) {

@@ -28306,7 +28306,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.desyn.io/",
     description:
-      "DeSyn Protocol, a DeFi restaking platform on Web3, has transformed the airdrop landscape with its unique D-Airdrops structure. It offers low-risk, high-reward returns and multiple airdrops across various DeFi protocols, all from a single investment.",
+      "As the project develops, our positioning has become more precise. We would like to update the protocol information to the following: DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/desyn-safe.jpg`,
     audits: "2",
@@ -41938,7 +41938,7 @@ const data3: Protocol[] = [
     assetToken: "dlcBTC",
     url: "https://www.ibtc.network/earn",
     description:
-      "dlcBTC is a non-custodial representation of Bitcoin on Ethereum, enabling Bitcoin holders to participate in DeFi protocols while retaining full ownership of their assets.",
+      "iBTC is a decentralized wrapped Bitcoin offering a theft-proof bridge to DeFi, backed by the security of the Bitcoin network",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/ibtc-network.png`,
     audits: "2",
@@ -48420,7 +48420,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.desyn.io",
     description:
-      "DeSyn Protocol, a DeFi restaking platform on Web3, has transformed the airdrop landscape with its unique D-Airdrops structure. It offers low-risk, high-reward returns and multiple airdrops across various DeFi protocols, all from a single investment.",
+      "As the project develops, our positioning has become more precise. We would like to update the protocol information to the following: DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
     chain: "Merlin",
     logo: `${baseIconsUrl}/desyn-liquid-strategy.jpg`,
     audits: "0",
@@ -49696,7 +49696,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.desyn.io/#/",
     description:
-      "DeSyn Protocol, a DeFi restaking platform on Web3, has transformed the airdrop landscape with its unique D-Airdrops structure. It offers low-risk, high-reward returns and multiple airdrops across various DeFi protocols, all from a single investment.",
+      "As the project develops, our positioning has become more precise. We would like to update the protocol information to the following: DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
     chain: "Bitlayer",
     logo: `${baseIconsUrl}/desyn-basis-trading.jpg`,
     audits: "0",
@@ -61301,7 +61301,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5404",
-    name: "iBTC",
+    name: "iBTC Finance", // previous iBTC
     address: null,
     symbol: "-", 
     assetToken: "iBTC",
@@ -61309,7 +61309,7 @@ const data3: Protocol[] = [
     description:
       "iBTC is an LST protocol that provides 1:1 pegging for staked BTC, offering users unrestricted liquidity without a 28-day lock-up while ensuring the same yield as directly staking BTC on the exSat network. The protocol seamlessly combines high liquidity with stable staking rewards, making it an ideal solution for optimizing BTC staking returns",
     chain: "exSat",
-    logo: `${baseIconsUrl}/ibtc.jpg`,
+    logo: `${baseIconsUrl}/ibtc-finance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -4869,7 +4869,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "DeSyn Protocol",
     url: "https://www.desyn.io/#/",
     description:
-      "DeSyn Protocol, a DeFi restaking platform on Web3, has transformed the airdrop landscape with its unique D-Airdrops structure. It offers low-risk, high-reward returns and multiple airdrops across various DeFi protocols, all from a single investment.",
+      "As the project develops, our positioning has become more precise. We would like to update the protocol information to the following: DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
     logo: `${baseIconsUrl}/desyn-protocol.png`,
     gecko_id: null,
     cmcId: null,

@@ -23,7 +23,7 @@ async function produceTopics(
 
   items.map((item) => {
     const { symbol, decimals } = item;
-    if (!symbol || !decimals) return;
+    if (!symbol || decimals == null) return;
     const message: object = convertToMessage(item, topic);
     validate(message, topic);
     messages.push({ value: JSON.stringify(message) });

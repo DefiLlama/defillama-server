@@ -14,9 +14,6 @@ export const contracts: any = {
       "0x539505dde2b9771debe0898a84441c5e7fdf6bc0",
     ],
   },
-  base: {
-    synths: ["0x7ba6f01772924a82d9626c126347a28299e98c98"],
-  },
 };
 
 export default async function getTokenPrice(chain: string, timestamp: number) {

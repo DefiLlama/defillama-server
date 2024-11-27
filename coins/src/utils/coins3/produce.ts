@@ -69,6 +69,7 @@ export default async function produce(
   items: Dynamo[],
   topics: string[] = allTopics,
 ) {
+  if (!items.length) return 
   const producer: Producer = await getProducer();
   await Promise.all(
     topics.map((topic: Topic) => produceTopics(items, topic, producer)),

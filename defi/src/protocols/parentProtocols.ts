@@ -4869,7 +4869,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "DeSyn Protocol",
     url: "https://www.desyn.io/#/",
     description:
-      "As the project develops, our positioning has become more precise. We would like to update the protocol information to the following: DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
+      "DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
     logo: `${baseIconsUrl}/desyn-protocol.png`,
     gecko_id: null,
     cmcId: null,
@@ -5880,11 +5880,12 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://bluefin.io",
     description:
       "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms.",
-    logo: `${baseIconsUrl}/bluefin.jpg`,
+    logo: `${baseIconsUrl}/bluefin.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "bluefinapp",
+    github: ["fireflyprotocol"],
   },
 ];
 

@@ -2212,5 +2212,8 @@ export default {
     },
     "debank-cloud": {
         id: "5410"
+    },
+    "navi": {
+        id: "5326",
     }
 } as AdaptorsConfig

@@ -2612,5 +2612,8 @@ export default {
     },
     "catalist-dex": {
         id: "5412"
+    },
+    "hydrometer": {
+        id: "5423",
     }
 } as AdaptorsConfig

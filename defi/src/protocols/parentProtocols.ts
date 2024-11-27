@@ -5874,6 +5874,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "DegenHive",
   },
+  {
+    id: "parent#bluefin",
+    name: "Bluefin",
+    url: "https://bluefin.io",
+    description:
+      "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms.",
+    logo: `${baseIconsUrl}/bluefin.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "bluefinapp",
+  },
 ];
 
 export default parentProtocols;

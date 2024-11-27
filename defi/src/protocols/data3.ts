@@ -28306,7 +28306,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.desyn.io/",
     description:
-      "As the project develops, our positioning has become more precise. We would like to update the protocol information to the following: DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
+      "DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/desyn-safe.jpg`,
     audits: "2",
@@ -48420,7 +48420,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.desyn.io",
     description:
-      "As the project develops, our positioning has become more precise. We would like to update the protocol information to the following: DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
+      "DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
     chain: "Merlin",
     logo: `${baseIconsUrl}/desyn-liquid-strategy.jpg`,
     audits: "0",
@@ -49696,7 +49696,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.desyn.io/#/",
     description:
-      "As the project develops, our positioning has become more precise. We would like to update the protocol information to the following: DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
+      "DeSyn is a decentralized liquidity infrastructure on Web3, empowering investors, projects, and security companies to invest, build, and manage collaboratively.",
     chain: "Bitlayer",
     logo: `${baseIconsUrl}/desyn-basis-trading.jpg`,
     audits: "0",
@@ -61798,6 +61798,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/levvafi/levva-vault/tree/main/audit"],
     github: ["levvafi"],
     listedAt: 1732709180
+  },
+  {
+    id: "5427",
+    name: "Bluefin AMM",
+    address: null,
+    symbol: "-",
+    url: "https://bluefin.io",
+    description: "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/bluefin-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sui"],
+    module: "bluefin-amm/index.js",
+    twitter: "bluefinapp",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1732722519
   },
 ];
 

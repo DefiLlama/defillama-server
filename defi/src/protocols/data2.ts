@@ -28760,14 +28760,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2625",
-    name: "Bluefin",
+    name: "Bluefin Perps",
     address: null,
     symbol: "-",
     url: "https://bluefin.io",
     description:
       "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/bluefin.png`,
+    logo: `${baseIconsUrl}/bluefin-perps.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -28782,7 +28782,6 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://docsend.com/v/3rwt5/trail-of-bits-audit-bluefin-v2"],
     listedAt: 1677769578,
-    github: ["fireflyprotocol"],
   },
   {
     id: "2626",

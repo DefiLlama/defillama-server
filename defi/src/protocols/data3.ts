@@ -61428,7 +61428,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Gaming",
+    category: "CDP",
     chains: ["TON"],
     module: "catton/index.js",
     twitter: "Cattontw",

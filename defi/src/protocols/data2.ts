@@ -10063,7 +10063,6 @@ const data2: Protocol[] = [
     stablecoins: ["spiceusd"],
     deadUrl: true,
   },
-  /*
   {
     id: "1812",
     name: "FluidTokens",
@@ -10086,7 +10085,6 @@ const data2: Protocol[] = [
     twitter: "FluidTokens",
     listedAt: 1654771434,
   },
-  */
   {
     id: "1813",
     name: "Spin Spot",

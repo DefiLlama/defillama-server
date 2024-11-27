@@ -2215,5 +2215,8 @@ export default {
     },
     "navi": {
         id: "5326",
+    },
+    "hydrometer": {
+        id: "5423",
     }
 } as AdaptorsConfig

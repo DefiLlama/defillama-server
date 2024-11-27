@@ -61732,6 +61732,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1732683289
   },
+  {
+    id: "5424",
+    name: "SpringSui Ecosystem",
+    address: null,
+    symbol: "-",
+    url: "https://springsui.com/",
+    description: "SpringSui Ecosystem LSTs are those that have been deployed using the SpringSui Standard",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/springsui-ecosystem.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Sui"],
+    module: "springsui-ecosystem/index.js",
+    twitter: "springsui_",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.suilend.fi/springsui/springsui-audit"],
+    parentProtocol: "parent#suilend-protocol",
+    listedAt: 1732683791
+  },
 ];
 
 export default data3;

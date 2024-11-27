@@ -41932,15 +41932,15 @@ const data3: Protocol[] = [
   },
   {
     id: "4546",
-    name: "dlcBTC",
+    name: "iBTC Network", // previous dlcBTC
     address: null,
     symbol: "-",
     assetToken: "dlcBTC",
-    url: "https://www.dlc.link",
+    url: "https://www.ibtc.network/earn",
     description:
       "dlcBTC is a non-custodial representation of Bitcoin on Ethereum, enabling Bitcoin holders to participate in DeFi protocols while retaining full ownership of their assets.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/dlc-btc.png`,
+    logo: `${baseIconsUrl}/ibtc-network.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -41950,7 +41950,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dlc-link/index.js",
-    twitter: "DLC_Link",
+    twitter: "ibtcnetwork",
     audit_links: [
       "https://818995421-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F1d1QXmk0rpzxLZAKPlLL%2Fuploads%2FJ1UxlnMfp11FQEu7fqMr%2FDLC-Link%20Audit-Final.pdf?alt=media&token=a7a4fe86-8593-47dd-82c9-9ffcbcb779e0",
     ],

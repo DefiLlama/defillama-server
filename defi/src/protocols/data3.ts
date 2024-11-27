@@ -61820,6 +61820,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1732722519
   },
+  {
+    id: "5428",
+    name: "Ubeswap V3",
+    address: "celo:0x71e26d0E519D14591b9dE9a0fE9513A398101490",
+    symbol: "UBE",
+    url: "https://ubeswap.org",
+    description: "Ubeswap is the leading DEX on Celo network!",
+    chain: "Celo",
+    logo: `${baseIconsUrl}/ubeswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "ubeswap-2",
+    cmcId: "30225",
+    category: "Dexes",
+    chains: ["Celo"],
+    module: "ubeswap-v3/index.js",
+    twitter: "ubeswap",
+    forkedFrom: ["Uniswap V3"],
+    audit_links: ["https://docs.ubeswap.org/code-contracts/security"],
+    github: ["Ubeswap"],
+    parentProtocol: "parent#ubeswap"
+  },
 ];
 
 export default data3;

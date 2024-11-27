@@ -5899,6 +5899,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "9mm_pro",
   },
+  {
+    id: "parent#ubeswap",
+    name: "Ubeswap",
+    url: "https://ubeswap.org",
+    description: "Ubeswap is the leading DEX on Celo network!",
+    logo: `${baseIconsUrl}/ubeswap.png`,
+    gecko_id: "ubeswap-2",
+    cmcId: "30225",
+    chains: ["Celo"],
+    twitter: "ubeswap",
+    github: ["Ubeswap"],
+  },
 ];
 
 export default parentProtocols;

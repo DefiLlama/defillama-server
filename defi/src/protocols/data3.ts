@@ -53181,7 +53181,7 @@ const data3: Protocol[] = [
     symbol: "EUL",
     url: "https://www.euler.finance",
     description:
-      "Permissionless crypto lending markets are almost here. Euler is a non-custodial protocol on Ethereum that allows users to lend and borrow almost any crypto asset",
+      "Euler revolutionizes DeFi by letting any asset become collateral for a lending market. Lenders and borrowers get market leading risk-adjusted rates. Builders can create and manage markets exactly how they want them, with institutional-grade security.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/euler-v2.png`,
     audits: "2",

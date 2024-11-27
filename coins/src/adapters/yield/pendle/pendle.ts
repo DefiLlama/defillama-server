@@ -179,7 +179,7 @@ export default async function getTokenPrices(
         [
           ...yieldTokens,
           ...underlyingTokens,
-          chain in wrappedGasTokens ? wrappedGasTokens[chain] : [],
+          chain in wrappedGasTokens ? wrappedGasTokens[chain] : null,
         ].filter((t) => t != null),
       ),
     ],

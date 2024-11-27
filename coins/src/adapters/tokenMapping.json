@@ -237,7 +237,7 @@
     }
   },
   "ethereum": {
-    "0x2f123cf3f37ce3328cc9b5b8415f9ec5109b45e7": {
+    "0x95D7337d43340E2721960Dc402D9b9117f0d81a2": {
       "decimals": "18",
       "symbol": "wbC3M",
       "to": "asset#ethereum:0x2f123cf3f37ce3328cc9b5b8415f9ec5109b45e7"

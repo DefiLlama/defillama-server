@@ -5887,6 +5887,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "bluefinapp",
     github: ["fireflyprotocol"],
   },
+  {
+    id: "parent#9mm",
+    name: "9MM Pro",
+    url: "https://9mm.pro/",
+    description:
+      "9MM Pro is a suite of user-friendly protocols designed to revolutionize the decentralized finance (DeFi) landscape across multiple blockchains",
+    logo: `${baseIconsUrl}/9mm.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "9mm_pro",
+  },
 ];
 
 export default parentProtocols;

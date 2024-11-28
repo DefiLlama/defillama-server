@@ -757,6 +757,16 @@
       "to": "coingecko#universal-btc",
       "decimals": 8,
       "symbol": "uniBTC"
+    },
+    "0xC96dE26018A54D51c097160568752c4E3BD6C364": {
+      "decimals": "8",
+      "symbol": "FBTC",
+      "to": "coingecko#ignition-fbtc"
+    },
+    "0x32dF1963f4be9C9ecC0474eA9Ea028F3A019dAAf": {
+      "decimals": "8",
+      "symbol": "lfbtc-bedrock-arb",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "tezos": {

@@ -61820,6 +61820,7 @@ const data3: Protocol[] = [
     twitter: "bluefinapp",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#bluefin",
     listedAt: 1732722519
   },
   {

@@ -28780,6 +28780,7 @@ const data2: Protocol[] = [
       sui: ["Pyth"],
     },
     forkedFrom: [],
+    parentProtocol: "parent#bluefin",
     audit_links: ["https://docsend.com/v/3rwt5/trail-of-bits-audit-bluefin-v2"],
     listedAt: 1677769578,
   },

@@ -249,7 +249,7 @@
     },
     "0x06824C27C8a0DbDe5F72f770eC82e3c0FD4DcEc3": {
       "decimals": "18",
-      "symbol": "amphrETH",
+      "symbol": "amphrLRT",
       "to": "coingecko#ethereum"
     },
     "0x9813037ee2218799597d83D4a5B6F3b6778218d9": {

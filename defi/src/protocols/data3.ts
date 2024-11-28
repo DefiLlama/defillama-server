@@ -8661,7 +8661,7 @@ const data3: Protocol[] = [
     twitter: "zkLend",
     forkedFrom: [],
     oracles: ["Pragma"],
-    parentProtocol: "parent#zklend",
+    parentProtocol: "parent#zklend-finance",
     listedAt: 1686175395,
   },
   {
@@ -62080,7 +62080,7 @@ const data3: Protocol[] = [
     twitter: "zkLend",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "parent#zklend",
+    parentProtocol: "parent#zklend-finance",
     listedAt: 1732831541
   },
   {

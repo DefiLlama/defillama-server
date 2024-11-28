@@ -2615,5 +2615,14 @@ export default {
     },
     "hydrometer": {
         id: "5423",
+    },
+    "bluefin-amm": {
+        id: "5427",
+        parentId: "Bluefin",
+        protocolsData: {
+            "dexs": {
+                id: "5427"
+            }
+        }
     }
 } as AdaptorsConfig

@@ -61730,7 +61730,9 @@ const data3: Protocol[] = [
     twitter: "Hydrometer_Fi",
     forkedFrom: ["Solidly"],
     oracles: [],
-    listedAt: 1732683289
+    listedAt: 1732683289,
+    rugged: true,
+    deadUrl: true
   },
   {
     id: "5424",

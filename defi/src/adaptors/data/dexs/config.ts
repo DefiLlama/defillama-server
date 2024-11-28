@@ -2620,7 +2620,7 @@ export default {
         id: "5427",
         parentId: "Bluefin",
         protocolsData: {
-            "dexs": {
+            "dexes": {
                 id: "5427"
             }
         }

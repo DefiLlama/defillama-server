@@ -5925,6 +5925,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Compxlabs",
     github: ["compx-labs"],
   },
+  {
+    id: "parent#zklend-finance",
+    name: "zkLend Finance",
+    url: "https://zklend.com/",
+    description:
+      "zkLend is an L2 money-market protocol built on StarkNet, combining zk-rollup scalability, superior transaction speed, and cost-savings with Ethereum's security. The protocol offers a dual solution: a permissioned and compliance-focused solution for institutional clients, and a permissionless service for DeFi users - all without sacrificing decentralisation",
+    logo: `${baseIconsUrl}/zklend-finance.png`,
+    gecko_id: "zklend-2",
+    cmcId: "18990",
+    chains: [],
+    twitter: "zkLend",
+  },
 ];
 
 export default parentProtocols;

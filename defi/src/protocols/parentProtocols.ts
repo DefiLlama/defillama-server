@@ -5912,6 +5912,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ubeswap",
     github: ["Ubeswap"],
   },
+  {
+    id: "parent#compx",
+    name: "Compx",
+    url: "https://www.compx.io/",
+    description:
+      "Compx is providing a one stop DeFi platform, providing a comprehensive suite of DeFi tools under the one roof",
+    logo: `${baseIconsUrl}/compx.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Compxlabs",
+    github: ["compx-labs"],
+  },
 ];
 
 export default parentProtocols;

@@ -3721,8 +3721,8 @@ const data3: Protocol[] = [
   {
     id: "2862",
     name: "Hyperliquid Perp",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
+    symbol: "HYPE",
     url: "https://hyperliquid.xyz",
     description: "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price.",
     chain: "Hyperliquid",
@@ -40474,8 +40474,8 @@ const data3: Protocol[] = [
   {
     id: "4482",
     name: "Hyperliquid Spot",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
+    symbol: "HYPE",
     url: "https://hyperliquid.xyz",
     description: "The order book works in essentially the same way as all centralized exchanges but is fully on-chain",
     chain: "Hyperliquid",

@@ -15283,7 +15283,7 @@ const data2: Protocol[] = [
     name: "lisUSD", // rebrand from Helio Protocol (lisUSD)
     address: "bsc:0xFceB31A79F71AC9CBDCF853519c1b12D379EdC46",
     symbol: "LISTA",
-    url: "https://helio.money/",
+    url: "https://lista.org/",
     description:
       "Lista DAO functions as a open-source liquidity protocol for earning yields on collateralized Crypto assets (BNB, ETH, Stablecoins, and other cryptocurrencies) and borrowing of our decentralized stablecoin, lisUSD. It uses and expands the proven MakerDAO model for a decentralized, unbiased, collateral-backed destablecoin",
     chain: "Binance",

@@ -62147,6 +62147,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1732831997
   },
+  {
+    id: "5443",
+    name: "BigPump",
+    address: null,
+    symbol: "-",
+    url: "https://pocketfi.org",
+    description: "Create memecoins in 30 seconds, trade, invite Frens, and make a Pump!",
+    chain: "TON",
+    logo: `${baseIconsUrl}/bigpump.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["TON"],
+    module: "bigpump/index.js",
+    twitter: "pocket_fi",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1732832526
+  },
 ];
 
 export default data3;

@@ -2476,6 +2476,11 @@
       "decimals": "18",
       "symbol": "SolvBTC",
       "to": "coingecko#solv-btc"
+    },
+    "0xe3C0FF176eF92FC225096C6d1788cCB818808b35": {
+      "decimals": "8",
+      "symbol": "oBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "fsc": {

@@ -2222,5 +2222,8 @@ export default {
     "bluefin-amm": {
         id: "5427",
         parentId: "Bluefin",
+    },
+    "taraswap": {
+        id: "5437",
     }
 } as AdaptorsConfig

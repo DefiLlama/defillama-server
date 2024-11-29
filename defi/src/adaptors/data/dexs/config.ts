@@ -2624,5 +2624,8 @@ export default {
                 id: "5427"
             }
         }
+    },
+    "taraswap": {
+        id: "5437",
     }
 } as AdaptorsConfig

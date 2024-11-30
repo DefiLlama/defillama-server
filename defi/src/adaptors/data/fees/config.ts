@@ -2225,5 +2225,8 @@ export default {
     },
     "taraswap": {
         id: "5437",
+    },
+    "clanker": {
+        id: "5446"
     }
 } as AdaptorsConfig

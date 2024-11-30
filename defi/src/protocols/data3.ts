@@ -34123,7 +34123,7 @@ const data3: Protocol[] = [
       "The first decentralized lending protocol on TON that lets users lend or borrow assets without going to a centralized intermediary.",
     chain: "TON",
     logo: `${baseIconsUrl}/evaa-protocol.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -34133,6 +34133,7 @@ const data3: Protocol[] = [
     twitter: "evaaprotocol",
     forkedFrom: [],
     oracles: ["RedStone"], //https://evaa.gitbook.io/intro/details-of-protocol/risks/protocol-risks#oracle-risk
+    audit_links: ["https://certificate.quantstamp.com/full/evaa/df7aa699-793b-49f7-b348-1f78e9ca9870/index.html"],
     github: ["evaafi"],
     listedAt: 1709220208,
   },

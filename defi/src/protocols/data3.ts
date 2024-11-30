@@ -59421,12 +59421,12 @@ const data3: Protocol[] = [
     name: "AquaLoan",
     address: "bsc:0xD1Fb55d61c2494ced556536F898D969e2F6Dd2Bf",
     symbol: "AQUA",
-    url: "https://dev.aqualoan.io",
+    url: "https://aqualoan.io",
     description:
       "In the fast-paced world of decentralized finance (DeFi), innovation is the driving force behind the success of any ecosystem. As the DeFi landscape continues evolving, we proudly announce Aqualoan, an innovation-driven, decentralized and non-custodial liquidity market.",
     chain: "Binance",
     logo: `${baseIconsUrl}/aqualoan.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -59435,8 +59435,9 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
     module: "aqualoan/index.js",
-    twitter: "aqualoan",
+    twitter: "aqualoan_io",
     github: ["techaqualoan"],
+    audit_links: ["https://github.com/techaqualoan/audits/blob/main/blocksec_aqualoan_v1.0-signed.pdf"],
     listedAt: 1730894395
   },
   {

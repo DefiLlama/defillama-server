@@ -62211,6 +62211,26 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1732906342
   },
+  {
+    id: "5446",
+    name: "clanker",
+    address: null,
+    symbol: "-",
+    url: "https://www.clanker.world/",
+    description: "AI agent designed to automatically deploy tokens, specifically focusing on creating meme tokens on the Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/clanker.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "_proxystudio",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 
 export default data3;

@@ -33435,7 +33435,7 @@ const data3: Protocol[] = [
     module: "evaa/index.js",
     twitter: "evaaprotocol",
     forkedFrom: [], 
-    oracles: ["RedStone", "Pyth", "Stork"],
+    oracles: ["RedStone"], //https://evaa.gitbook.io/intro/details-of-protocol/risks/protocol-risks#oracle-risk
     audit_links: ["https://certificate.quantstamp.com/full/evaa/df7aa699-793b-49f7-b348-1f78e9ca9870/index.html"],
     github: ["evaafi"],
     listedAt: 1709220208

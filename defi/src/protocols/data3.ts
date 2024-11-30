@@ -62233,6 +62233,32 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "5447",
+    name: "EclipseFi",
+    address: null,
+    symbol: "-",
+    url: "https://www.eclipsefi.io/",
+    description: "EclipseFi dismantling predatory systems to build a launch and DeFi hub for sustainable growth—aligning and empowering communities and innovative builders to thrive together",
+    chain: "Neutron",
+    logo: `${baseIconsUrl}/eclipsefi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Neutron"],
+    module: "eclipse/index.js",
+    twitter: "Eclipsefi",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [
+      "https://github.com/ResonanceCybersecurity/audits/blob/main/CosmWasm%20Smart%20Contract%20Audits/Audit_Report_ECLP-EQN_FINAL_21.pdf",
+      "https://github.com/oak-security/audit-reports/tree/main/Eclipse%20Fi"
+    ],
+    github: ["EclipsePad"],
+    listedAt: 1732997519
+  },
 ];
 
 export default data3;

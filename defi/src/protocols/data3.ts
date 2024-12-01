@@ -62327,6 +62327,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bouncebit-cedefi",
     listedAt: 1733090351
   },
+  { 
+    id: "5451",
+    name: "Blum",
+    address: null,
+    symbol: "-",
+    url: "https://blum.io",
+    description: "Blum is a a new generation trading app in telegram and web",
+    chain: "TON",
+    logo: `${baseIconsUrl}/blum.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["TON"],
+    oracles: [],
+    forkedFrom: [],
+    module: "blum/index.js",
+    twitter: "blumcrypto",
+    listedAt: 1733093747
+  },
 ];
 
 export default data3;

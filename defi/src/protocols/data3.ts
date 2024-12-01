@@ -27319,10 +27319,10 @@ const data3: Protocol[] = [
   },
   {
     id: "3904",
-    name: "Weft Finance",
+    name: "Weft V1",
     address: "radix:resource_rdx1tk3fxrz75ghllrqhyq8e574rkf4lsq2x5a0vegxwlh3defv225cth3",
     symbol: "WEFT",
-    url: "https://app.weft.finance",
+    url: "https://app.v1.weft.finance",
     description: "Weft Finance is a decentralized lending and borrowing application built on Radix DLT",
     chain: "Radix",
     logo: `${baseIconsUrl}/weft-v1.jpg`,
@@ -27339,6 +27339,7 @@ const data3: Protocol[] = [
     audit_links: [
       "https://github.com/pessimistic-io/audits/blob/main/Weft%20Finance%20Security%20Analysis%20by%20Pessimistic.pdf",
     ],
+    parentProtocol: "parent#weft-finance",
     listedAt: 1702306055,
   },
   {
@@ -61481,6 +61482,7 @@ const data3: Protocol[] = [
     twitter: "Weft_Finance",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#weft-finance",
     listedAt: 1732533149
   },
   {

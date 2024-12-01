@@ -5399,6 +5399,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "bounce_bit",
+    github: ["BounceBit-Labs"]
   },
   {
     id: "parent#fulcrom",

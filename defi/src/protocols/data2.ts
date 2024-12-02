@@ -1683,7 +1683,7 @@ const data2: Protocol[] = [
     listedAt: 1645578071,
     github: ["solidex-fantom"],
   },
-  {
+  /* { // reason: https://github.com/DefiLlama/DefiLlama-Adapters/pull/12494
     id: "1451",
     name: "Chintai",
     address: "eos:CHEX-eos-chexchexchex",
@@ -1705,7 +1705,7 @@ const data2: Protocol[] = [
     twitter: "ChintaiNetwork",
     language: "C++",
     listedAt: 1645578660,
-  },
+  }, */
   {
     id: "1452",
     name: "PayCash",

@@ -131,6 +131,7 @@ export const normalizeDimensionChainsMap = {
     'zklink nova': CHAIN.ZKLINK,
     'immutable x': CHAIN.IMMUTABLEX,
     'bitlayer': CHAIN.BITLAYER,
+    'rootstock': CHAIN.ROOTSTOCK,
 } as IJSON<CHAIN>
 
 export const formatChainKey = (chain: string) => {

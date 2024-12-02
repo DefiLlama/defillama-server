@@ -166,7 +166,7 @@ export async function craftProtocolV2({
 
   if (parentProtocolId) {
     parentName = cache.metadata.parentProtocols.find((p) => p.id === parentProtocolId)?.name ?? null;
-    childProtocolsNames = cache.metadata.protocols.filter((p) => p.parentProtocol === parentProtocolId).map((p) => p.name);
+    childProtocolsNames = cache.metadata.protocols.filter((p) => p.parentProtocol === parentProtocolId).sort((a, b) => b.tvl - a.tvl).map((p) => p.name);
   }
 
   if (childProtocolsNames.length > 0 && parentName) {

@@ -75,15 +75,3 @@ setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
 }, 1000 * 60 * 55) // 55 minutes
-
-
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-  // Application specific logging, throwing an error, or other logic here
-});
-
-process.on('uncaughtException', (err) => {
-  console.error('Uncaught Exception thrown:', err);
-  // Application specific logging, throwing an error, or other logic here
-  // process.exit(1); // Optional: exit the process after handling the exception
-});

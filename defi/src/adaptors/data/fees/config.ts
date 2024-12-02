@@ -2228,5 +2228,9 @@ export default {
     },
     "clanker": {
         id: "5446"
+    },
+    "bouncebit-cedefi": {
+        parentId: "BounceBit CeDeFi",
+        id: "5450"
     }
 } as AdaptorsConfig

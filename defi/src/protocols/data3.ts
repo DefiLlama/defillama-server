@@ -62351,6 +62351,26 @@ const data3: Protocol[] = [
     twitter: "blumcrypto",
     listedAt: 1733093747
   },
+  { 
+    id: "5452",
+    name: "Grix",
+    address: null,
+    symbol: "-",
+    url: "https://app.grix.finance/",
+    description: "Grix is a unified liquidity protocol for the DeFi Options market",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/grix.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "GrixFinance",
+  },
 ];
 
 export default data3;

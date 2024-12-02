@@ -306,6 +306,8 @@ export default async function craftProtocol({
     response.hallmarks = module.hallmarks;
     response.hallmarks?.sort((a, b) => a[0] - b[0]);
   }
-
+  if (module.deprecated) {
+    response.deprecated = module.deprecated;
+  }
   return response;
 }

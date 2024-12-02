@@ -39,6 +39,7 @@ export interface Protocol {
     [chain:string]: string[];
   },
   note?: string;
+  deprecated?: boolean
 }
 
 export interface IParentProtocol {

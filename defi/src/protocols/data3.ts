@@ -49762,6 +49762,7 @@ const data3: Protocol[] = [
     twitter: "Nimbora_",
     listedAt: 1721146062,
     parentProtocol: "parent#nimbora",
+    deprecated: true
   },
   {
     id: "4892",

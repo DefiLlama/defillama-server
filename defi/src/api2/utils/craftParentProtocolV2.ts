@@ -36,7 +36,11 @@ export async function craftParentProtocolV2({
 
   const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap, parentRaises:[] })
 
-  res.otherProtocols = [parentProtocol.name, ...childProtocolsTvls.sort((a: any, b: any) => b.tvl - a.tvl).map((p: any) => p.name)]
+  res.otherProtocols = [parentProtocol.name, ...childProtocolsTvls.sort((a: any, b: any) => {
+    if (a.deprecated && !b.deprecated) return 1
+    if (!a.deprecated && b.deprecated) return -1
+    return b.tvl - a.tvl
+  }).map((p: any) => p.name)]
 
   const debug_totalTime = performance.now() - debug_t0
   const debug_dbTime = debug_t1 - debug_t0

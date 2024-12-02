@@ -924,6 +924,11 @@
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
       "symbol": "SolvBTC.BBN"
+    },
+    "0x820c137fa70c8691f0e44dc420a5e53c168921dc": {
+      "to": "coingecko#usds",
+      "decimals": 18,
+      "symbol": "USDS"
     }
   },
   "jbc": {

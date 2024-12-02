@@ -16182,7 +16182,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#frax-finance",
     listedAt: 1662603346,
     tokensExcludedFromParent: {
-      Ethereum: ["FRAX", "FRXETH"],
+      Ethereum: ["FRAX", "FRXETH", "SFRXETH"],
     }
   },
   {

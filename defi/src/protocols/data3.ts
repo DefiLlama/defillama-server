@@ -51414,6 +51414,7 @@ const data3: Protocol[] = [
     twitter: "DjedAlliance",
     listedAt: 1723145012,
   },
+  /* // tracked under the restaking listing
   {
     id: "4966",
     name: "uniBTC",
@@ -51438,6 +51439,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bedrock",
     listedAt: 1723145633,
   },
+  */
   {
     id: "4967",
     name: "PancakeSwap Options",

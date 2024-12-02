@@ -825,6 +825,11 @@
     }
   },
   "base": {
+    "0x59aaF835D34b1E3dF2170e4872B785f11E2a964b": {
+      "decimals": "6",
+      "symbol": "verUSDC",
+      "to": "coingecko#usd-coin"
+    },
     "0x0000206329b97db379d5e1bf586bbdb969c63274": {
       "decimals": "18",
       "symbol": "USDA",

@@ -12,7 +12,6 @@ export type Dynamo = {
   decimals?: number;
   symbol?: string;
   timestamp?: number;
-  created?: number;
 };
 
 async function produceTopics(
@@ -43,7 +42,6 @@ function convertToMessage(item: Dynamo, topic: Topic): object {
     timestamp,
     adapter,
     redirect,
-    created,
   } = item;
   const { chain, address, pid } = splitPk(PK);
 
@@ -61,13 +59,7 @@ function convertToMessage(item: Dynamo, topic: Topic): object {
     case "coins-current":
       return { pid, price, confidence, source: adapter };
     case "coins-timeseries":
-      return {
-        pid,
-        price,
-        confidence,
-        source: adapter,
-        ts: timestamp ?? created,
-      };
+      return { pid, price, confidence, source: adapter, ts: timestamp };
     default:
       throw new Error(`Topic '${topic}' is not valid`);
   }

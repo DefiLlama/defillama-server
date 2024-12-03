@@ -48136,14 +48136,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4820",
-    name: "Resolv",
+    name: "Resolv RLP",
     address: null,
     symbol: "-",
     url: "https://www.resolv.im",
     description:
       "Resolv is a protocol that maintains USR, a stablecoin fully backed by ETH and pegged to the US Dollar. The stablecoin’s delta-neutral design ensures price stability, and is backed by an innovative insurance pool (RLP) to provide additional security and overcollateralization.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/resolv.jpg`,
+    logo: `${baseIconsUrl}/resolv-rlp.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -48155,7 +48155,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://docs.resolv.im/resources/security"],
-    github: ["resolv-im"],
     stablecoins: ["resolv-usd"],
     listedAt: 1719485918,
   },
@@ -62441,6 +62440,27 @@ const data3: Protocol[] = [
     module: "nexusbtc/index.js",
     twitter: "Matrixport_EN",
     listedAt: 1733227415
+  },
+  { 
+    id: "5456",
+    name: "Resolv USR",
+    address: null,
+    symbol: "-",
+    url: "https://resolv.xyz/",
+    description: "Resolv is a protocol that maintains USR, a stablecoin fully backed by ETH and pegged to the US Dollar. The stablecoin’s delta-neutral design ensures price stability, and is backed by an innovative insurance pool (RLP) to provide additional security and overcollateralization.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/resolv-usr.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "resolv-usr/index.js",
+    twitter: "ResolvLabs",
+    listedAt: 1733227890
   },
 ];
 

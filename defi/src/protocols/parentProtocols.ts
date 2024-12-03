@@ -5938,6 +5938,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "zkLend",
   },
+  {
+    id: "parent#resolv",
+    name: "Resolv",
+    url: "https://resolv.xyz/",
+    description:
+      "Resolv is a protocol that maintains USR, a stablecoin fully backed by ETH and pegged to the US Dollar. The stablecoin’s delta-neutral design ensures price stability, and is backed by an innovative insurance pool (RLP) to provide additional security and overcollateralization.",
+    logo: `${baseIconsUrl}/resolv.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ResolvLabs",
+    github: ["resolv-im"],
+  },
 ];
 
 export default parentProtocols;

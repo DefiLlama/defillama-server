@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import { FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { allChainKeys } from "./constants";
+import { sendMessage } from "../src/utils/discord";
 
 export async function verifyChanges(chains: FinalData) {
   const res = await fetch(`https://api.llama.fi/chain-assets/chains?apikey=${process.env.COINS_KEY}`).then((r) =>
@@ -19,7 +20,7 @@ export async function verifyChanges(chains: FinalData) {
     const totalOld = allOld.total.total;
     const forwardChange = totalOld != "0" ? (100 * Math.abs(totalNew - totalOld)) / totalOld : 0;
     const backwardChange = totalNew != 0 ? (100 * Math.abs(totalNew - totalOld)) / totalNew : 0;
-    if (forwardChange < 100 || backwardChange < 100) return;
+    if (forwardChange < 30 || backwardChange < 30) return;
 
     message += `\n${chain} has had a ${totalNew > totalOld ? "increase" : "decrease"} of ${forwardChange.toFixed(
       0
@@ -28,7 +29,7 @@ export async function verifyChanges(chains: FinalData) {
 
   if (!message.length) return;
 
-  // await sendMessage(message, process.env.CHAIN_ASSET_WEBHOOK!);
+  await sendMessage(message, process.env.CHAIN_ASSET_WEBHOOK!);
   throw new Error(message);
 }
 export function flagChainErrors(chains: FinalData) {

@@ -48155,7 +48155,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://docs.resolv.im/resources/security"],
-    stablecoins: ["resolv-usd"],
     parentProtocol: "parent#resolv",
     listedAt: 1719485918,
   },

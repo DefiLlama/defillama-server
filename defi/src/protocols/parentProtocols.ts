@@ -5950,6 +5950,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ResolvLabs",
     github: ["resolv-im"],
+    stablecoins: ["resolv-usd"],
   },
 ];
 

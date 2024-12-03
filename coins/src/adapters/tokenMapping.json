@@ -840,6 +840,11 @@
       "symbol": "EURA",
       "to": "coingecko#ageur"
     },
+    "0x5875eEE11Cf8398102FdAd704C9E96607675467a": {
+      "decimals": "18",
+      "symbol": "sUSDS",
+      "to": "asset#ethereum:0xa3931d71877c0e7a3148cb7eb4463524fec27fbd"
+    },
     "0x5e40f26E89213660514c51Fb61b2d357DBf63C85": {
       "decimals": "18",
       "symbol": "nARS",

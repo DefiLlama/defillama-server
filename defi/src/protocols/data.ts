@@ -6758,7 +6758,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Solana"],
     module: "saber.js",
-    twitter: "The_Saber_DAO",
+    twitter: "thesaberdao",
     github: ["saberdao"],
   },
   {

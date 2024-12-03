@@ -55591,7 +55591,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://typus.finance/safu",
     description:
-      "Typus SAFU is the first principal-protected structured product on Sui Blockchain (Sui). It offers safe yields with 99.99% principal protection, zero fees for both bull and bear strategies, and potential upside through options. This product is designed to securely maximize your crypto returns.",
+      "Typus Secure Asset Fund for Upside (SAFU) offers safe yields with 99.99% protection, zero fees, and potential upside through options. This product is designed to securely maximize your crypto returns.",
     chain: "Sui",
     logo: `${baseIconsUrl}/typus-safu.jpg`,
     audits: "0",

@@ -2630,5 +2630,8 @@ export default {
     },
     "wagmi_ton": {
         id: "5436",
+    },
+    "bigpump": {
+        id: "5443",
     }
 } as AdaptorsConfig

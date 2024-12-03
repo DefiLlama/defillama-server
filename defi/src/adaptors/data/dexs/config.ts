@@ -2627,5 +2627,8 @@ export default {
     },
     "taraswap": {
         id: "5437",
+    },
+    "wagmi_ton": {
+        id: "5436",
     }
 } as AdaptorsConfig

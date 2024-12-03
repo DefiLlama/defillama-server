@@ -1171,6 +1171,12 @@
       "decimals": "18",
       "symbol": "PEPE",
       "to": "coingecko#pepe"
+    },
+    "0x81710203A7FC16797aC9899228a87fd622df9706": {
+      "name": "SUI",
+      "decimals": "9",
+      "symbol": "SUI",
+      "to": "coingecko#sui"
     }
   },
   "scroll": {

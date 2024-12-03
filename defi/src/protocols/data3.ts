@@ -60518,7 +60518,9 @@ const data3: Protocol[] = [
     parentProtocol: "parent#avalon-labs",
     audit_links: [],
     tokensExcludedFromParent: {
-      iotex: ["USDa"],
+      iotex: ["USDa", "sUSDa"],
+      taiko: ["USDa", "sUSDa"],
+      zircuit: ["USDa", "sUSDa"],
     },
     listedAt: 1731778454
   },

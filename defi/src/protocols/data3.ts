@@ -62487,6 +62487,27 @@ const data3: Protocol[] = [
     github: ["renec-lend"],
     listedAt: 1733240550
   },
+  { 
+    id: "5458",
+    name: "Pinto",
+    address: null,
+    symbol: "-",
+    url: "https://pinto.money/",
+    description: "Pinto is low volatility money built on Base, forked from the Beanstalk protocol",
+    chain: "Base",
+    logo: `${baseIconsUrl}/pinto.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Base"],
+    oracles: ["Switchboard"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12535
+    forkedFrom: ["Beanstalk"],
+    module: "dummy.js",
+    twitter: "pintocommunity",
+    github: ["pinto-org"]
+  },
 ];
 
 export default data3;

@@ -2633,5 +2633,8 @@ export default {
     },
     "bigpump": {
         id: "5443",
+    },
+    "pinto": {
+        id: "5458"
     }
 } as AdaptorsConfig

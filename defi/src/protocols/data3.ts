@@ -62419,6 +62419,27 @@ const data3: Protocol[] = [
     github: ["econia-labs"],
     listedAt: 1733150717
   },
+  { 
+    id: "5455",
+    name: "Nexus BTC",
+    address: null,
+    symbol: "-",
+    url: "https://www.matrixport.com/nexusbtc",
+    description: "NexusBTC is a wrapped Bitcoin token designed to facilitate cross-chain transactions within the decentralized finance (DeFi) ecosystem.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/nexus-btc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "nexusbtc/index.js",
+    twitter: "Matrixport_EN",
+    listedAt: 1733227415
+  },
 ];
 
 export default data3;

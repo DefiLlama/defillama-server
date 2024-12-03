@@ -12,6 +12,7 @@ export type Dynamo = {
   decimals?: number;
   symbol?: string;
   timestamp?: number;
+  mcap?: number;
 };
 
 async function produceTopics(
@@ -24,7 +25,7 @@ async function produceTopics(
   items.map((item) => {
     const { symbol, decimals, price } = item;
     if (topic != "coins-metadata" && !price) return;
-    if (!symbol || decimals == null) return;
+    if (topic == "coins-metadata" && (!symbol || decimals == null)) return;
     const message: object = convertToMessage(item, topic);
     validate(message, topic);
     messages.push({ value: JSON.stringify(message) });
@@ -42,6 +43,7 @@ function convertToMessage(item: Dynamo, topic: Topic): object {
     timestamp,
     adapter,
     redirect,
+    mcap,
   } = item;
 
   const { chain, address, pid } = splitPk(PK);
@@ -59,9 +61,9 @@ function convertToMessage(item: Dynamo, topic: Topic): object {
         redirect: redirectPid,
       };
     case "coins-current":
-      return { pid, price, confidence, source: adapter };
+      return { pid, price, confidence, source: adapter, mcap };
     case "coins-timeseries":
-      return { pid, price, confidence, source: adapter, ts: timestamp };
+      return { pid, price, confidence, source: adapter, ts: timestamp, mcap };
     default:
       throw new Error(`Topic '${topic}' is not valid`);
   }
@@ -89,11 +91,11 @@ export default async function produce(
   items: Dynamo[],
   topics: Topic[] = allTopics,
 ) {
+  if (!items.length) return;
   const invalidTopic = topics.find((t: any) => {
     !allTopics.includes(t);
   });
   if (invalidTopic) throw new Error(`invalid topic: ${invalidTopic}`);
-  if (!items.length) return;
   const producer: Producer = await getProducer();
   await Promise.all(
     topics.map((topic: Topic) => produceTopics(items, topic, producer)),

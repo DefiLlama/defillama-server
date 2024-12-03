@@ -77,7 +77,7 @@ async function storeCoinData(coinData: Write[]) {
     .filter((c: Write) => c.symbol != null);
   await Promise.all([
     produceKafkaTopics(
-      items.map((i) => ({ adapter: "coingecko", ...i } as Dynamo)),
+      items.map((i) => ({ adapter: "coingecko", decimals: 0, ...i } as Dynamo)),
     ),
     batchWrite(items, false),
   ]);
@@ -92,7 +92,11 @@ async function storeHistoricalCoinData(coinData: Write[]) {
   }));
   await Promise.all([
     produceKafkaTopics(
-      items.map((i) => ({ adapter: "coingecko", ...i })) as Dynamo[],
+      items.map((i) => ({
+        adapter: "coingecko",
+        timestamp: i.SK,
+        ...i,
+      })) as Dynamo[],
       ["coins-timeseries"],
     ),
     batchWrite(items, false),
@@ -331,7 +335,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     ),
   );
 
-  await Promise.all([produceKafkaTopics(kafkaItems), deleteStaleKeysPromise]);
+  await Promise.all([
+    produceKafkaTopics(
+      kafkaItems.map((i) => ({ adapter: "coingecko", ...i })),
+      ["coins-metadata"],
+    ),
+    deleteStaleKeysPromise,
+  ]);
 }
 
 const HOUR = 3600;
@@ -382,7 +392,10 @@ async function getAndStoreHourly(
 
   await Promise.all([
     produceKafkaTopics(
-      items.map((i) => ({ adapter: "coingecko", ...i }), ["coins-timeseries"]),
+      items.map(
+        (i) => ({ adapter: "coingecko", timestamp: i.SK, ...i }),
+        ["coins-timeseries"],
+      ),
     ),
     batchWrite(items, false),
   ]);

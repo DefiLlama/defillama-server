@@ -62464,6 +62464,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#resolv",
     listedAt: 1733227890
   },
+  { 
+    id: "5457",
+    name: "Renec Lend",
+    address: "solana:9HvM3nS2eDKWxNvi8vSFXRhHA1xhDW33rt4ZA1bE1DbV",
+    symbol: "REL",
+    url: "https://lend.renec.org/home",
+    description: "RENEC Lend, the first DeFi fiat lending protocol. RENEC Lend aims to revolutionize defi lending by offering enhanced accessibility, efficiency, and security.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/renec-lend.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Solana", "RENEC"],
+    oracles: ["Switchboard"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12535
+    forkedFrom: [],
+    module: "renec-lend/index.js",
+    twitter: "RelendOfficial",
+    audit_links: ["https://github.com/verichains/public-audit-reports/blob/b9d580e6b5bf86a7e7115feb7d1c18563a03aa43/Verichains%20Public%20Audit%20Report%20-%20RENEC%20LEND%20-%20v1.0.pdf"],
+    github: ["renec-lend"],
+    listedAt: 1733240550
+  },
 ];
 
 export default data3;

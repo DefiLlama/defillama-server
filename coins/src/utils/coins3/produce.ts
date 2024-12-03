@@ -43,18 +43,20 @@ function convertToMessage(item: Dynamo, topic: Topic): object {
     adapter,
     redirect,
   } = item;
+
   const { chain, address, pid } = splitPk(PK);
+  const redirectPid = redirect ? splitPk(redirect).pid : undefined;
 
   switch (topic) {
     case "coins-metadata":
       return {
         symbol,
-        decimals,
+        decimals: Number(decimals),
         address,
         pid,
         chain,
         source: adapter,
-        redirect,
+        redirect: redirectPid,
       };
     case "coins-current":
       return { pid, price, confidence, source: adapter };

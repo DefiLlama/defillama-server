@@ -2,7 +2,7 @@ import { Message, Producer } from "kafkajs";
 import { Topic, topics as allTopics, validate } from "./jsonValidation";
 import { getProducer } from "./kafka";
 
-type Dynamo = {
+export type Dynamo = {
   SK: number;
   PK: string;
   adapter: string;
@@ -12,6 +12,7 @@ type Dynamo = {
   decimals?: number;
   symbol?: string;
   timestamp?: number;
+  created?: number;
 };
 
 async function produceTopics(
@@ -22,7 +23,8 @@ async function produceTopics(
   const messages: Message[] = [];
 
   items.map((item) => {
-    const { symbol, decimals } = item;
+    const { symbol, decimals, price } = item;
+    if (topic != "coins-metadata" && !price) return;
     if (!symbol || decimals == null) return;
     const message: object = convertToMessage(item, topic);
     validate(message, topic);
@@ -32,16 +34,40 @@ async function produceTopics(
   await producer.send({ topic: `${topic}`, messages });
 }
 function convertToMessage(item: Dynamo, topic: Topic): object {
-  const { PK, symbol, decimals, price, confidence, timestamp, adapter } = item;
+  const {
+    PK,
+    symbol,
+    decimals,
+    price,
+    confidence,
+    timestamp,
+    adapter,
+    redirect,
+    created,
+  } = item;
   const { chain, address, pid } = splitPk(PK);
 
   switch (topic) {
-    case "metadata":
-      return { symbol, decimals, address, pid, chain, source: adapter };
-    case "current":
+    case "coins-metadata":
+      return {
+        symbol,
+        decimals,
+        address,
+        pid,
+        chain,
+        source: adapter,
+        redirect,
+      };
+    case "coins-current":
       return { pid, price, confidence, source: adapter };
-    case "timeseries":
-      return { pid, price, confidence, source: adapter, ts: timestamp };
+    case "coins-timeseries":
+      return {
+        pid,
+        price,
+        confidence,
+        source: adapter,
+        ts: timestamp ?? created,
+      };
     default:
       throw new Error(`Topic '${topic}' is not valid`);
   }
@@ -67,9 +93,13 @@ function splitPk(pk: string): { chain: string; address: string; pid: string } {
 
 export default async function produce(
   items: Dynamo[],
-  topics: string[] = allTopics,
+  topics: Topic[] = allTopics,
 ) {
-  if (!items.length) return 
+  const invalidTopic = topics.find((t: any) => {
+    !allTopics.includes(t);
+  });
+  if (invalidTopic) throw new Error(`invalid topic: ${invalidTopic}`);
+  if (!items.length) return;
   const producer: Producer = await getProducer();
   await Promise.all(
     topics.map((topic: Topic) => produceTopics(items, topic, producer)),

@@ -147,7 +147,7 @@ async function _storeTokensOfBridge(bridge: Bridge) {
   const redirectMap: { [redirect: string]: string } = {};
 
   const toRecords = await batchGet(
-    tokens.map((t) => ({
+    unlisted.map((t) => ({
       PK: craftToPK(t.to),
       SK: 0,
     })),
@@ -174,26 +174,9 @@ async function _storeTokensOfBridge(bridge: Bridge) {
     if (record.price) toAddressToRecord[toPK] = record.PK;
   });
 
-  const writes2: any[] = [];
   const writes: any[] = [];
   await Promise.all(
-    tokens.map(async (token) => {
-      // coins 3
-      if ("decimals" in token && "symbol" in token) {
-        const toRecord = toRecords.find((r: any) => r.PK == token.to);
-        writes2.push({
-          PK: `asset#${token.from}`,
-          timestamp: toRecord.timestamp,
-          decimals: token.decimals,
-          symbol: token.symbol,
-          confidence: 0.97,
-          adapter: "bridges",
-          price: toRecord.price,
-        });
-      }
-
-      if (!unlisted.includes(token)) return;
-
+    unlisted.map(async (token) => {
       const finalPK = toAddressToRecord[craftToPK(token.to)];
       if (finalPK === undefined) return;
 
@@ -225,7 +208,7 @@ async function _storeTokensOfBridge(bridge: Bridge) {
   );
 
   await batchWrite(writes, true);
-  await produceKafkaTopics(writes2);
+  await produceKafkaTopics(writes, ["coins-metadata"]);
   return tokens;
 }
 export async function storeTokens() {

@@ -8,7 +8,7 @@ type Schema = {
 };
 
 const schemas: { [topic: string]: Schema } = {
-  metadata: {
+  "coins-metadata": {
     type: "object",
     properties: {
       decimals: { type: "integer" },
@@ -17,11 +17,12 @@ const schemas: { [topic: string]: Schema } = {
       pid: { type: "string" },
       chain: { type: "string" },
       source: { type: "string" },
+      redirect: { type: "string" },
     },
     required: ["decimals", "symbol", "address", "pid", "chain"],
     additionalProperties: false,
   },
-  current: {
+  "coins-current": {
     type: "object",
     properties: {
       pid: { type: "string" },
@@ -32,7 +33,7 @@ const schemas: { [topic: string]: Schema } = {
     required: ["pid", "price", "confidence", "source"],
     additionalProperties: false,
   },
-  timeseries: {
+  "coins-timeseries": {
     type: "object",
     properties: {
       ts: { type: "integer" },

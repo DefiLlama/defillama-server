@@ -62553,6 +62553,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.upshift.finance/architecture/smart-contract-audits"],
     listedAt: 1733311923
   },
+  {
+    id: "5461",
+    name: "lpETH",
+    address: null,
+    symbol: "lpETH",
+    url: "https://lpeth.xyz",
+    description: "Unified liquidity for liquid (re)staked ETH",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lpeth.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    parentProtocol: "parent#tenderize",
+    oracles: [],
+    forkedFrom: [],
+    module: "lpeth/index.js",
+    twitter: "lpethxyz",
+    audit_links: ["https://docs.lpeth.xyz/smart-contracts/overview#audits"]
+  }
 ];
 
 export default data3;

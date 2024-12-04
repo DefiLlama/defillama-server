@@ -3657,7 +3657,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#tenderize",
     name: "Tenderize",
     url: "https://tenderize.me",
-    description: `Liquid Staking 2.0 - Stake to the validator of your choice and earn staking rewards. Use your validator specific LSTs in DeFi.`,
+    description: `Liquid Staking 2.0 - Liquid stake to your preferred validators, create your own LSTs and find liquidity through TenderSwa p`,
     logo: `${baseIconsUrl}/tenderize.png`,
     gecko_id: null,
     cmcId: null,

@@ -4497,7 +4497,7 @@
       "symbol": "USDa"
     },
     "0x5d5c8Aec46661f029A5136a4411C73647a5714a7": {
-      "to": "coingecko#susda",
+      "to": "coingecko#usda",
       "decimals": 18,
       "symbol": "sUSDa"
     }

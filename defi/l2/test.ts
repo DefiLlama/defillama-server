@@ -27,10 +27,7 @@ export async function verifyChanges(chains: FinalData) {
     )}% in ${hours}`;
   });
 
-  if (!message.length) return;
-
-  await sendMessage(message, process.env.CHAIN_ASSET_WEBHOOK!);
-  throw new Error(message);
+  if (message.length) throw new Error(message);
 }
 export function flagChainErrors(chains: FinalData) {
   let message: string = ``;

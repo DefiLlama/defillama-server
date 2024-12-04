@@ -33017,13 +33017,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4150",
-    name: "GGP Vault",
+    name: "SeaFi", // previous GGP Vault
     address: null,
     symbol: "-",
     url: "https://seafi.app",
     description: "GGP Vault is a protocol that allows you to earn yield on your idle GGP.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/ggp-vault.jpg`,
+    logo: `${baseIconsUrl}/seafi.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

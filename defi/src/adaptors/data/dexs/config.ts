@@ -1,3 +1,4 @@
+import { id } from "ethers"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -2636,5 +2637,8 @@ export default {
     },
     "pinto": {
         id: "5458"
+    },
+    "blum": {
+        id: "5451"
     }
 } as AdaptorsConfig

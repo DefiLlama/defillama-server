@@ -62193,6 +62193,7 @@ const data3: Protocol[] = [
     chains: ["Fantom"],
     module: "sacra/index.js",
     twitter: "sacra_fi",
+    parentProtocol: "parent#tetu",
     forkedFrom: [],
     oracles: [],
     listedAt: 1732906337

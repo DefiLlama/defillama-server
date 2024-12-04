@@ -2214,7 +2214,7 @@ export default {
         id: "5410"
     },
     "navi": {
-        id: "5326",
+        id: "3323",
     },
     "hydrometer": {
         id: "5423",

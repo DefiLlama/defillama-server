@@ -62553,6 +62553,27 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.upshift.finance/architecture/smart-contract-audits"],
     listedAt: 1733311923
   },
+  { 
+    id: "5461",
+    name: "ApeChain Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://apechain.com/portal#bridge",
+    description: "Bridge for ApeChain",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/apechain-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "apechain/index.js",
+    twitter: "apecoin",
+    listedAt: 1733352929
+  },
 ];
 
 export default data3;

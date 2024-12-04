@@ -33021,7 +33021,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://seafi.app",
-    description: "GGP Vault is a protocol that allows you to earn yield on your idle GGP.",
+    description: "Seafi is comprised of two vaults, a GGP vault and an AVAX vault. These allow you to earn yield on your idle GGP or AVAX tokens respectively",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/seafi.jpg`,
     audits: "2",
@@ -33035,8 +33035,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: [
-      "https://github.com/SeaFi-Labs/GGP-Vault/blob/main/audits/GGP%20Vault%20Audit%20Feb%2019%202024.pdf",
-      "https://github.com/SeaFi-Labs/GGP-Vault/blob/main/audits/GGP-Vault%20Audit%20Report%20Ethan%20Cemer.pdf",
+      "https://github.com/SeaFi-Labs/GGP-Vault/tree/main/audits",
     ],
     github: ["SeaFi-Labs"],
     listedAt: 1708427956,

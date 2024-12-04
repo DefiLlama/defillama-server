@@ -3483,8 +3483,9 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM","Bitcoin Sidechains"],
-    twitter: "taraxa_project",
+    twitter: "exSatNetwork",
     url: "https://exsat.network/",
+    github: ["exsat-network"],
     chainId: 7200
   },
   "Taraxa": {
@@ -3495,6 +3496,15 @@ export const chainCoingeckoIds = {
     twitter: "taraxa_project",
     url: "https://taraxa.io/",
     chainId: 841
+  },
+  "Corn": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Bitcoin Sidechains"],
+    twitter: "use_corn",
+    url: "https://usecorn.com/",
+    chainId: 21000000
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -4254,6 +4264,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "exSat"
     case "tara":
       return "Taraxa"
+    case "corn":
+      return "Corn"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

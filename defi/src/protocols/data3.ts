@@ -12755,6 +12755,9 @@ const data3: Protocol[] = [
     oracles: [],
     parentProtocol: "parent#aftermath-finance",
     listedAt: 1689860538,
+    tokensExcludedFromParent: {
+      Sui: ["afSUI"], // already counting all afSUI in Aftermath afSUI listing
+    },
   },
   {
     id: "3260",

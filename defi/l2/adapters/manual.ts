@@ -113,6 +113,10 @@ export const excluded: { [chain: string]: string[] } = {
   base: [
     "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USDC
   ],
+  apechain: [
+    "0xa2235d059f80e176d931ef76b6c51953eb3fbef4", // apeUSD
+    "0xcf800f4948d16f23333508191b1b1591daf70438", // apeETH
+  ],
 };
 export const nativeWhitelist: { [chain: string]: string[] } = {
   metis: ["0xa5b55ab1daf0f8e1efc0eb1931a957fd89b918f4", "0x4651b38e7ec14bb3db731369bfe5b08f2466bd0a"],

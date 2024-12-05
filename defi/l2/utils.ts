@@ -24,6 +24,10 @@ export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): Tok
   Object.keys(usdTokenBalances).map((id: string) => {
     const bridge = usdTokenBalances[id];
     Object.keys(bridge).map((chain: string) => {
+      if (chain == "tron") {
+        id;
+        bridge;
+      }
       if (canonicalBridgeIds[id] == chain) return;
       if (excludedTvlKeys.includes(chain)) return;
 

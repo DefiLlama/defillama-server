@@ -62591,6 +62591,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [], 
     forkedFrom: [],
+    parentProtocol: "parent#tenderize",
     module: "lpeth/index.js",
     twitter: "lpETHxyz",
     audit_links: ["https://docs.lpeth.xyz/smart-contracts/overview#audits"],

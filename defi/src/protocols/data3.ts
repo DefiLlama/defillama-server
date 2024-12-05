@@ -2438,8 +2438,9 @@ const data3: Protocol[] = [
   {
     id: "2807",
     name: "MatrixDock",
-    address: "0x530824DA86689C9C17CdC2871Ff29B058345b44a",
-    symbol: "STBT",
+    address: null,
+    symbol: "-",
+    assetToken: "0x530824DA86689C9C17CdC2871Ff29B058345b44a",
     url: "https://www.matrixdock.com/home",
     description:
       "The Matrixdock STBT token (i.e. Short-term Treasury Bill token) is a token which enables you to get exposure to U.S.",
@@ -52356,7 +52357,7 @@ const data3: Protocol[] = [
     name: "DEXTools",
     address: "0xfb7b4564402e5500db5bb6d63ae671302777c75a",
     symbol: "DEXT",
-    url: "https://info.dextools.io/",
+    url: "https://www.dextools.io/marketplace",
     description: "Trading App for DEFI. Charts, Transactions, Price Alerts and other features",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dextools.png`,

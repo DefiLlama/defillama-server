@@ -18,6 +18,7 @@ export async function verifyChanges(chains: FinalData) {
 
     const totalNew = allNew.total.total;
     const totalOld = allOld.total.total;
+    if (chain == "Tron" && totalNew < 20_000_000_000) throw new Error(`USDT not counted for Tron`);
     const forwardChange = totalOld != "0" ? (100 * Math.abs(totalNew - totalOld)) / totalOld : 0;
     const backwardChange = totalNew != 0 ? (100 * Math.abs(totalNew - totalOld)) / totalNew : 0;
     if (forwardChange < 30 || backwardChange < 30) return;

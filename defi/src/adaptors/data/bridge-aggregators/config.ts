@@ -6,5 +6,8 @@ export default {
     },
     "xy-finance": {
         id: "1885"
+    },
+    "okx": {
+        id: "5201",
     }
 } as AdaptorsConfig

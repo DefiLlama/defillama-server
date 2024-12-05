@@ -62662,6 +62662,27 @@ const data3: Protocol[] = [
     twitter: "vectis_finance",
     listedAt: 1733401280
   },
+  { 
+    id: "5466",
+    name: "RadLock",
+    address: null,
+    symbol: "-",
+    url: "https://radlock.io",
+    description: "RadLock offers trust and transparency tools for Radix, including locking, vesting, and insights",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/radlock.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Token Locker",
+    chains: ["Radix"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "radlock/index.js",
+    twitter: "radlockio",
+    listedAt: 1733432001
+  },
 ];
 
 export default data3;

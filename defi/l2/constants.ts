@@ -85,6 +85,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5303": "morph",
   "4481": "hyperliquid",
   "5382": "core",
+  "5461": "apechain",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -164,4 +165,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   zksync: { ticker: "ZK", address: "0x5a7d6b2f92c77fad6ccabd7ee0624e64907eaf3e" },
   aptos: { ticker: "APT", address: "coingecko:aptos" },
   hyperliquid: { ticker: "HYPE", address: "coingecko:hyperliquid" },
+  apechain: { ticker: "APE", address: "coingecko:apechain" },
 };

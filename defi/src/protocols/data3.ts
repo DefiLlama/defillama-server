@@ -62190,7 +62190,7 @@ const data3: Protocol[] = [
     url: "https://sacra.game/",
     description: "Sacra is a first ever decentralized RPG game with P&E mechanics where you can monetize your mind. Embark on an epic journey where your choices matter, and your rewards are real",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/sacra.jpg`,
+    logo: `${baseIconsUrl}/sacra.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -62199,9 +62199,9 @@ const data3: Protocol[] = [
     chains: ["Fantom"],
     module: "sacra/index.js",
     twitter: "sacra_fi",
+    parentProtocol: "parent#tetu",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "parent#tetu",
     listedAt: 1732906337
   },
   {

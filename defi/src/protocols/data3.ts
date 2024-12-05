@@ -59397,7 +59397,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Hedera"],
-    oracles: ["Pyth"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12159 , https://docs.hliquity.org/deep-dive/stability-pool-and-liquidations#oracle-integration
+    oracles: ["Supra"], // https://docs.hliquity.org/deep-dive/stability-pool-and-liquidations#oracle-integration "Supra is the primary oracle, Pyth is the fallback oracle"
     forkedFrom: [],
     module: "hliquity/index.js",
     twitter: "HLiquity_",

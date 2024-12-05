@@ -62602,7 +62602,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://biquid.io",
-    description: "Unified liquidity for liquid (re)staked ETH. Instantly unstake your ETH for a small fee",
+    description: "Biquid is a Liquid Staking service that lets you stake BFC to earn rewards with (w)stBFC, usable in various DeFi protocols",
     chain: "Bifrost Network",
     logo: `${baseIconsUrl}/biquid.png`,
     audits: "0",

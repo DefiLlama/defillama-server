@@ -7091,7 +7091,7 @@ const data: Protocol[] = [
   {
     id: "434",
     name: "Tarot",
-    address: "fantom:0xc5e2b037d30a390e62180970b3aa4e91868764cd",
+    address: "fantom:0xb7c2ddb1ebac1056231ef22c1b0a13988537a274",
     symbol: "TAROT",
     url: "https://www.tarot.to",
     description:
@@ -7100,7 +7100,7 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/tarot.jpg`,
     audits: "3",
     audit_note: null,
-    gecko_id: "tarot",
+    gecko_id: "tarot-2",
     cmcId: "11409",
     category: "Lending",
     chains: ["Fantom"],

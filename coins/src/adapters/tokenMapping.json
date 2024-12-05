@@ -563,6 +563,11 @@
       "decimals": "18",
       "symbol": "asBTC",
       "to": "coingecko#binance-bitcoin"
+    },
+    "0x2a3dc2d5daf9c8c46c954b8669f4643c6b1c081a": {
+      "decimals": "18",
+      "symbol": "uBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "stacks": {
@@ -5182,8 +5187,8 @@
       "decimals": 8,
       "symbol": "oBTC"
     },
-    "0x782e2b85fda9a8224c17b191fc5de1e085a962b2": {
-      "to": "coingecko#wrapped-bitcoin-universal",
+    "0xbb4a26a053b217bb28766a4ed4b062c3b4de58ce": {
+      "to": "coingecko#bitcoin",
       "decimals": 18,
       "symbol": "uBTC"
     }

@@ -9,6 +9,7 @@ import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./util
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { fetchAdaTokens } from "./adapters/ada";
 import { nativeWhitelist } from "./adapters/manual";
+import PromisePool from "@supercharge/promise-pool";
 
 export async function fetchMinted(params: {
   chains: TokenTvlData;
@@ -19,8 +20,9 @@ export async function fetchMinted(params: {
   const tvlData: TokenTvlData = {};
   const mcapData: McapData = { total: {} };
 
-  await Promise.all(
-    Object.keys(params.chains).map(async (chain: Chain) => {
+  await PromisePool.withConcurrency(3)
+    .for(Object.keys(params.chains))
+    .process(async (chain: Chain) => {
       try {
         const canonicalTokens: Address[] = await fetchBridgeTokenList(chain);
         const thirdPartyTokens: Address[] = (await fetchThirdPartyTokenList())[chain] ?? [];
@@ -57,6 +59,8 @@ export async function fetchMinted(params: {
           Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
           params.timestamp
         );
+
+        if ("tron:TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t" in supplies) console.log("tron USDT has a supply");
 
         if (ownTokenCgid && ownTokenCgid in mcaps)
           supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
@@ -98,7 +102,7 @@ export async function fetchMinted(params: {
       } catch (e) {
         console.error(`fetchMinted() failed for ${chain} with ${e}`);
       }
-    })
-  );
+    });
+
   return { tvlData, mcapData };
 }

@@ -323,7 +323,7 @@ async function getEVMSupplies(
       });
     } catch {
       try {
-        await PromisePool.withConcurrency(20)
+        await PromisePool.withConcurrency(2)
           .for(contracts.slice(i, i + step))
           .process(async (target) => {
             const res = await call({
@@ -331,14 +331,13 @@ async function getEVMSupplies(
               target,
               abi: "erc20:totalSupply",
               block,
+            }).catch((e) => {
+              if (chain == "tron") console.log(`${target}:: \t ${e.message}`);
             });
             if (res) supplies[`${chain}:${mixedCaseChains.includes(chain) ? target : target.toLowerCase()}`] = res;
-          })
-          .catch((e) => {
-            e;
           });
       } catch (e) {
-        e;
+        if (chain == "tron") console.log(`tron supply call failed`);
       }
     }
   }

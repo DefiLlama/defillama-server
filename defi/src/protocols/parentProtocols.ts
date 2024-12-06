@@ -4243,6 +4243,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "32196",
     chains: [],
     twitter: "HyperliquidX",
+    github: ["hyperliquid-dex"]
   },
   {
     id: "parent#wise-lending",

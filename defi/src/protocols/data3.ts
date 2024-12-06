@@ -62814,7 +62814,7 @@ const data3: Protocol[] = [
     listedAt: 1733496042
   },
   { 
-    id: "5472",
+    id: "5473",
     name: "Arena of Faith",
     address: null,
     symbol: "-", // ACP token TGE still on going

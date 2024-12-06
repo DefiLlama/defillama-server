@@ -369,9 +369,9 @@ export async function fetchSupplies(
 }
 export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
   const j = Object.keys(incomingAssets).indexOf(chain);
-  if (j == -1) return [];
+  // if (j == -1) return [];
   try {
-    const tokens: Address[] = await Object.values(incomingAssets)[j]();
+    const tokens: Address[] = j == -1 ? [] : await Object.values(incomingAssets)[j]();
     let filteredTokens: Address[] =
       chain in excluded ? tokens.filter((t: string) => !excluded[chain].includes(t)) : tokens;
     if (!mixedCaseChains.includes(chain)) filteredTokens = filteredTokens.map((t: string) => t.toLowerCase());

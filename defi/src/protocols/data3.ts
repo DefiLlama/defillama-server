@@ -62813,6 +62813,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#maia-dao-ecosystem",
     listedAt: 1733496042
   },
+  { 
+    id: "5472",
+    name: "Arena of Faith",
+    address: null,
+    symbol: "-", // ACP token TGE still on going
+    url: "https://aof.global/staking",
+    description: "Competitive gaming ecosystem",
+    chain: "Metis",
+    logo: `${baseIconsUrl}/arena-of-faith.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Metis"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "aof-stake-mining/index.js",
+    twitter: "moba_aof",
+    listedAt: 1733511563
+  },
 ];
 
 export default data3;

@@ -177,7 +177,7 @@ async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{
   const supplies: { [token: string]: number } = {};
   const notTokens: string[] = [];
 
-  await PromisePool.withConcurrency(5)
+  await PromisePool.withConcurrency(1)
     .for(tokens)
     .process(async (token) => {
       try {

@@ -54225,7 +54225,7 @@ const data3: Protocol[] = [
 
   {
     id: "5090",
-    name: "Level Money",
+    name: "Level",
     address: null,
     symbol: "-",
     url: "https://www.level.money",
@@ -54233,11 +54233,11 @@ const data3: Protocol[] = [
       "Level is a stablecoin protocol powered by restaked dollar tokens like USDT and USDC.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/level-money.jpg`,
-    audits: "0",
+    audits: "3",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "Stablecoin",
     chains: ["Ethereum"],
     module: "level-money/index.js",
     oracles: [],

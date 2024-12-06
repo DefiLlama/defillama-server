@@ -323,6 +323,7 @@ async function getEVMSupplies(
       });
     } catch {
       try {
+        process.env.TRON_RPC = process.env.TRON_RPC?.substring(process.env.TRON_RPC.indexOf(",") + 1);
         await PromisePool.withConcurrency(2)
           .for(contracts.slice(i, i + step))
           .process(async (target) => {

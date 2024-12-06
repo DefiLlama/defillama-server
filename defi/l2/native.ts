@@ -9,7 +9,6 @@ import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./util
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { fetchAdaTokens } from "./adapters/ada";
 import { nativeWhitelist } from "./adapters/manual";
-import PromisePool from "@supercharge/promise-pool";
 
 export async function fetchMinted(params: {
   chains: TokenTvlData;
@@ -20,9 +19,8 @@ export async function fetchMinted(params: {
   const tvlData: TokenTvlData = {};
   const mcapData: McapData = { total: {} };
 
-  await PromisePool.withConcurrency(3)
-    .for(Object.keys(params.chains))
-    .process(async (chain: Chain) => {
+  await Promise.all(
+    Object.keys(params.chains).map(async (chain: Chain) => {
       try {
         const canonicalTokens: Address[] = await fetchBridgeTokenList(chain);
         const thirdPartyTokens: Address[] = (await fetchThirdPartyTokenList())[chain] ?? [];
@@ -102,7 +100,8 @@ export async function fetchMinted(params: {
       } catch (e) {
         console.error(`fetchMinted() failed for ${chain} with ${e}`);
       }
-    });
+    })
+  );
 
   return { tvlData, mcapData };
 }

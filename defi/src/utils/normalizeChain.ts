@@ -2887,7 +2887,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["Cosmos"],
+    categories: ["EVM"],
     twitter: "HyperliquidX",
     url: "https://hyperliquid.xyz/"
   },

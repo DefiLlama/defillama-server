@@ -60479,11 +60479,11 @@ const data3: Protocol[] = [
   },
   {
     id: "5367",
-    name: "powpeg",
+    name: "PowPeg Fast Mode",
     address: null,
     symbol: "-",
     url: "https://powpeg.rootstock.io",
-    description: "The PowPeg App swaps BTC for RBTC and back, secured by the PowPeg protocol, which uses Bitcoin's own hashrate for protection",
+    description: "The RBTC Flyover, “Fast Mode” in the PowPeg app, provides a quick and trust-minimized solution for bridging Bitcoin into Rootstock with minimal friction. It enhances usability for Bitcoin users engaging with the Rootstock ecosystem through Powpeg and Flyover. The primary objective of this feature is to speed up the process of bridging from Bitcoin to Rootstock by drastically reducing the wait times typically associated with the native PowPeg.",
     chain: "RSK",
     logo: `${baseIconsUrl}/powpeg.jpg`,
     audits: "0",

@@ -1,24 +1,28 @@
+
+import '../../../api2/utils/failOnError'
 import { Adapter, AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import loadAdaptorsData from "../../data"
 import { handler2, IStoreAdaptorDataHandlerEvent } from "."
 import readline from 'readline';
-import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
+
 
 // ================== Script Config ==================
 
-const adapterType = AdapterType.DEXS
-let protocolToRun = 'thena-v3' // either protocol display name, module name or id
+const adapterType = process.env.type ?? AdapterType.DERIVATIVES
+let protocolToRun = process.env.protocol ?? 'bluefin' // either protocol display name, module name or id
 
-let toTimestamp: any = '2024-11-30' // enable next line to run to now
-// toTimestamp = Date.now()
+let toTimestamp: any = process.env.toTimestamp ?? process.env.to ?? '2024-11-30' // enable next line to run to now
+toTimestamp = Date.now()
 
-let fromTimestamp: any = '2024-09-01' // enable next line to run from the dawn of time
+let fromTimestamp: any = process.env.fromTimestamp ?? process.env.from ?? '2024-09-01' // enable next line to run from the dawn of time
 // fromTimestamp = 0
 
-let days = 0 // set to non zero to override date range to run for x days
+let days = 20 // set to non zero to override date range to run for x days
 
-const DRY_RUN = true
-const SHOW_CONFIRM_DIALOG = true
+if (process.env.days) days = parseInt(process.env.days)
+
+const DRY_RUN = process.env.dry_run ? process.env.dry_run === 'true' : true
+const SHOW_CONFIRM_DIALOG = process.env.confirm ? process.env.confirm === 'true' : true
 
 
 
@@ -34,7 +38,11 @@ async function run() {
     console.error('Invalid date range. Start date should be less than end date.')
     return;
   }
-  const { protocolAdaptors, importModule } = loadAdaptorsData(adapterType)
+  if (!Object.values(AdapterType).includes(adapterType as any)) {
+    console.error('Invalid adapter type.', adapterType, ' valid types are:', Object.values(AdapterType))
+    return;
+  }
+  const { protocolAdaptors, importModule } = loadAdaptorsData(adapterType as AdapterType)
   let protocol = protocolAdaptors.find(p => p.displayName === protocolToRun || p.module === protocolToRun || p.id === protocolToRun)
 
   if (!protocol) {

@@ -2640,5 +2640,8 @@ export default {
     },
     "blum": {
         id: "5451"
+    },
+    "trado-spot": {
+        id: "5225"
     }
 } as AdaptorsConfig

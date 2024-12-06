@@ -331,7 +331,8 @@ async function getEVMSupplies(
               target,
               abi: "erc20:totalSupply",
               block,
-            }).catch((e) => {
+            }).catch(async (e) => {
+              await sleep(2000);
               if (chain == "tron") console.log(`${target}:: \t ${e.message}`);
             });
             if (res) supplies[`${chain}:${mixedCaseChains.includes(chain) ? target : target.toLowerCase()}`] = res;

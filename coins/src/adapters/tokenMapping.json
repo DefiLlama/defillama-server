@@ -237,6 +237,11 @@
     }
   },
   "ethereum": {
+    "0x8BB97A618211695f5a6a889faC3546D1a573ea77": {
+      "decimals": "8",
+      "symbol": "NBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
     "0x95D7337d43340E2721960Dc402D9b9117f0d81a2": {
       "decimals": "18",
       "symbol": "wbC3M",

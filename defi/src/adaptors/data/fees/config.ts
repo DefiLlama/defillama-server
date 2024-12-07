@@ -2232,5 +2232,8 @@ export default {
     "bouncebit-cedefi": {
         parentId: "BounceBit CeDeFi",
         id: "5450"
+    },
+    "swing": {
+        id: "5474"
     }
 } as AdaptorsConfig

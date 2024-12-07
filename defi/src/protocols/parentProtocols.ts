@@ -5953,6 +5953,19 @@ const parentProtocols: IParentProtocol[] = [
     github: ["resolv-im"],
     stablecoins: ["resolv-usd"],
   },
+  {
+    id: "parent#plunderswap",
+    name: "PlunderSwap",
+    url: "https://plunderswap.com/swap",
+    description:
+      "PlunderSwap is the first decentralized exchange on Zilliqa EVM",
+    logo: `${baseIconsUrl}/plunderswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "plunderswap",
+    github: ["Plunderswap"],
+  },
 ];
 
 export default parentProtocols;

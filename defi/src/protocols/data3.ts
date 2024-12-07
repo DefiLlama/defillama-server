@@ -62834,6 +62834,26 @@ const data3: Protocol[] = [
     twitter: "moba_aof",
     listedAt: 1733511563
   },
+  { 
+    id: "5474",
+    name: "Swing",
+    address: null,
+    symbol: "-",
+    url: "https://swing.xyz/",
+    description: "Swing is a digital asset API platform offering liquidity routing services for web2 & web3 businesses",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/swing.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum","Solana","Binance","Polygon","Base","Arbitrum","zkSync Era"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "swing_xyz",
+  },
 ];
 
 export default data3;

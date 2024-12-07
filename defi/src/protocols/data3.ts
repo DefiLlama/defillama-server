@@ -62856,7 +62856,7 @@ const data3: Protocol[] = [
     twitter: "swing_xyz",
   },
   {
-    id: "5473",
+    id: "5475",
     name: "PlunderSwap V3",
     address: null,
     symbol: "-",
@@ -62879,7 +62879,7 @@ const data3: Protocol[] = [
     listedAt: 1733597191,
   },
   { 
-    id: "5474",
+    id: "5476",
     name: "Gud.Tech",
     address: null,
     symbol: "-",

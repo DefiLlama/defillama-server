@@ -246,7 +246,12 @@ test("no surprise category", async () => {
     'Bug Bounty',
     'DCA Tools',
     'Managed Token Pools',
-    'Developer Tools'
+    'Developer Tools',
+    'Stablecoin Issuer',
+    'Coins Tracker',
+    'Domains',
+    'NFT Launchpad',
+    'Trading App'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

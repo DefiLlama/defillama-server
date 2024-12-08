@@ -2,9 +2,6 @@ import { buildOutdatedMessage, findOutdatedPG, getOutdated } from './utils/findO
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { sendMessage } from "./utils/discord"
 import axios from 'axios'
-import protocols from './protocols/data';
-import { shuffleArray } from './utils/shared/shuffleArray';
-import invokeLambda from './utils/shared/invokeLambda';
 
 const maxDrift = 6 * 3600; // Max 4 updates missed
 const llamaRole = "<@&849669546448388107>"
@@ -13,7 +10,10 @@ const llamaRole = "<@&849669546448388107>"
 const handler = async (_event: any) => {
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
   const hourlyOutdated = await getOutdated((60 * 4 + 20) * 60); // 1hr
-  await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hour`, webhookUrl, false)
+  await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hours`, webhookUrl, false)
+  if(hourlyOutdated.length > 100){
+    await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hours ${hourlyOutdated.length>400?llamaRole:''}`, process.env.TEAM_WEBHOOK, false)
+  }
   await sendMessage(buildOutdatedMessage(hourlyOutdated) ?? "No protocols are outdated", process.env.HOURLY_OUTDATED_WEBHOOK!)
   const outdated = await getOutdated(maxDrift);
   const message = buildOutdatedMessage(outdated)

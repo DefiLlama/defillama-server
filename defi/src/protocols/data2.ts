@@ -26358,7 +26358,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "ethereum-name-service",
     cmcId: "13855",
-    category: "Services",
+    category: "Domains",
     chains: ["Ethereum"],
     module: "dummy.js",
     treasury: "ens.js",

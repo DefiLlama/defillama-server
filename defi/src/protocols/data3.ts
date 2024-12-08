@@ -10047,7 +10047,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "avalanche-2",
     cmcId: "5805",
-    category: "Services", // need
+    category: "Chain", // need
     chains: ["Avalanche"],
     module: "dummy.js", // need
     twitter: "avax",
@@ -26033,7 +26033,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Bridge",
     chains: [
       "Ethereum",
       "Arbitrum",
@@ -40633,7 +40633,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Chain",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

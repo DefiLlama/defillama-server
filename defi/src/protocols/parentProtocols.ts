@@ -2357,8 +2357,8 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "factor",
     cmcId: "23502",
     chains: [],
-    twitter: "FactorDAO",
-    github: ["FactorDAO"],
+    twitter: "Factor_fi",
+    github: ["Factor_fi"],
     treasury: "factor-dao.js",
   },
   {

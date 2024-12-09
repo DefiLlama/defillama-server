@@ -62919,6 +62919,53 @@ const data3: Protocol[] = [
     twitter: "TapbitOfficial_",
     listedAt: 1733744113
   },
+  { 
+    id: "5478",
+    name: "STONEBTC",
+    address: null,
+    symbol: "-",
+    url: "https://app.stakestone.io/u/stonebtc/stake",
+    description: "STONEBTC is a yield-bearing BTC derivative that enables users to maximize the earning potential of their Bitcoin holdings by integrating advanced BTC yield strategies. By leveraging emerging yield sources such as Bitcoin staking and restaking networks, STONEBTC allows users to earn yields without sacrificing liquidity or DeFi utility.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/stonebtc.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "stakestone-stonebtc/index.js",
+    twitter: "Stake_Stone",
+    parentProtocol: "parent#stakestone",
+    tokensExcludedFromParent: {
+      Ethereum: ["SBTC"],
+    },
+    audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/STONE%20BTC%20Vault%20-%20SlowMist%20Audit%20Report.pdf"],
+    listedAt: 1733756129
+  },
+  { 
+    id: "5479",
+    name: "RlyFun",
+    address: null,
+    symbol: "-",
+    url: "https://rly.fun/",
+    description: "Rly.Fun is a launchpad for degens",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/rlyfun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Radix"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "rlyfun/index.js",
+    twitter: "rlydotfun",
+    listedAt: 1733756829
+  },
 ];
 
 export default data3;

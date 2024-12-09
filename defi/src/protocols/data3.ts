@@ -62035,9 +62035,9 @@ const data3: Protocol[] = [
   {
     id: "5437",
     name: "Taraswap",
-    address: null,
+    address: "taraxa:0x712037beab9a29216650B8d032b4D9A59AF8AD6C",
     symbol: "-",
-    url: "www.app.taraswap.org",
+    url: "https://www.taraswap.app",
     description: "The go-to onchain marketplace for yield farming. LP, farm, buy and sell crypto on Taraxa via Taraswap",
     chain: "Taraxa",
     logo: `${baseIconsUrl}/taraswap.jpg`,

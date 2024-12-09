@@ -3193,15 +3193,15 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#dopex",
     name: "Stryke", // previous dopex
-    url: "https://www.dopex.io",
+    url: "https://www.stryke.xyz/en",
     description: "Stryke (previous Dopex) is a maximum liquidity and minimal exposure options protocol",
     logo: `${baseIconsUrl}/stryke.jpg`,
-    gecko_id: "dopex",
-    cmcId: "11188",
+    gecko_id: "stryke",
+    cmcId: "32215",
     chains: [],
-    github: ["dopex-io"],
+    github: ["dopex-io", "stryke-xyz"],
     treasury: "dopex.js",
-    twitter: "dopex_io",
+    twitter: "stryke_xyz",
   },
   {
     id: "parent#spool-protocol",

@@ -107,6 +107,28 @@
       "to": "coingecko#astroport-fi"
     }
   },
+  "nibiru": {
+    "unibi": {
+      "decimals": "6",
+      "symbol": "NIBI",
+      "to": "coingecko#nibiru"
+    },
+    "tf/nibi1vetfuua65frvf6f458xgtjerf0ra7wwjykrdpuyn0jur5x07awxsfka0ga/axv": {
+      "decimals": "6",
+      "symbol": "AXV",
+      "to": "coingecko#astrovault"
+    },
+    "nibi1cehpv50vl90g9qkwwny8mw7txw79zs6f7wsfe8ey7dgp238gpy4qhdqjhm": {
+      "decimals": "6",
+      "symbol": "xNIBI",
+      "to": "coingecko#astrovault-xnibi"
+    },
+    "ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    }
+  },
   "tron": {
     "tthzxnrlrw2brp9dctqu8i4wd9udcwedz3": {
       "decimals": "18",

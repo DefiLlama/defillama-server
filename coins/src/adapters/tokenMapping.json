@@ -234,6 +234,41 @@
       "decimals": "18",
       "symbol": "TARA",
       "to": "coingecko#taraxa"
+    },
+    "0x5d0fa4c5668e5809c83c95a7cef3a9dd7c68d4fe": {
+      "decimals": "18",
+      "symbol": "WTARA",
+      "to": "asset#taraxa:0x5d0fa4c5668e5809c83c95a7cef3a9dd7c68d4fe"
+    },
+    "0x69D411CbF6dBaD54Bfe36f81d0a39922625bC78c": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "asset#taraxa:0x69D411CbF6dBaD54Bfe36f81d0a39922625bC78c"
+    },
+    "0xC26B690773828999c2612549CC815d1F252EA15e": {
+      "decimals": "18",
+      "symbol": "USDM",
+      "to": "asset#taraxa:0xC26B690773828999c2612549CC815d1F252EA15e"
+    },
+    "0x712037beab9a29216650B8d032b4D9A59AF8AD6C": {
+      "decimals": "18",
+      "symbol": "TSWAP",
+      "to": "asset#taraxa:0x712037beab9a29216650B8d032b4D9A59AF8AD6C"
+    },
+    "0xE6A69cD4FF127ad8E53C21a593F7BaC4c608945e": {
+      "decimals": "18",
+      "symbol": "LARA",
+      "to": "asset#taraxa:0xE6A69cD4FF127ad8E53C21a593F7BaC4c608945e"
+    },
+    "0xF847ecc42565BFd2d6183d5429795549Ee89b2Ac": {
+      "decimals": "18",
+      "symbol": "TARAINU",
+      "to": "asset#taraxa:0xF847ecc42565BFd2d6183d5429795549Ee89b2Ac"
+    },
+    "0x063F255689b00A877F6be55109b3ECA24e266809": {
+      "decimals": "18",
+      "symbol": "HERB",
+      "to": "asset#taraxa:0x063F255689b00A877F6be55109b3ECA24e266809"
     }
   },
   "ethereum": {

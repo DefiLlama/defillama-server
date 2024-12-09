@@ -31,6 +31,20 @@ export const normalizedChainReplacements = {
   [chain: string]: string
 }
 
+export function replaceChainNamesForOraclesByChain(
+  useNewChainNames: boolean,
+  oraclesByChain?:
+    | {
+      [chain: string]: string[];
+    }
+    | undefined
+) {
+  if (!oraclesByChain) return oraclesByChain;
+  return Object.fromEntries(
+    Object.entries(oraclesByChain).map(([chain, vals]) => [getChainDisplayName(chain, useNewChainNames), vals])
+  );
+}
+
 export function normalizeChain(chain: string) {
   let normalizedChain = chain.toLowerCase();
   return normalizedChainReplacements[normalizedChain] ?? normalizedChain;

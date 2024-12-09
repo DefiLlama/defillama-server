@@ -62898,6 +62898,27 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.gud.tech/audits"],
     listedAt: 1733597319
   },
+  { 
+    id: "5477",
+    name: "Tapbit",
+    address: null,
+    symbol: "-",
+    url: "https://www.tapbit.com",
+    description: "Buy, sell and store digital assets at world's pioneer exchange.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/tapbit.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "tapbit-cex/index.js",
+    twitter: "TapbitOfficial_",
+    listedAt: 1733744113
+  },
 ];
 
 export default data3;

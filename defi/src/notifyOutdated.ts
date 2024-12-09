@@ -51,6 +51,14 @@ export default wrapScheduledLambda(handler);
 
 export async function notifyOutdatedPG() {
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
+  const hour12Outdated = await findOutdatedPG(12 * 3600); // 12hr
+  const ignoredSet = new Set(['Synthetix']);
+  const failedOver100m = hour12Outdated.filter((o: any) => o[1]?.tvl > 100_000_000 && !ignoredSet.has(o[0]));
+  if (failedOver100m.length > 0) {
+    await sendMessage(buildOutdatedMessage(failedOver100m) as any, process.env.TEAM_WEBHOOK!)
+  }
+
+  // await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
   const hourlyOutdated = await findOutdatedPG((60 * 4 + 20) * 60); // 4.5hr
 
   await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hour`, webhookUrl, false)

@@ -133,6 +133,14 @@ export default async function getTokenPrices(
         "0x1c48cd1179aa0c503a48fcd5852559942492e31b",
       ],
     );
+  if (chain == "bsc")
+    unfilteredMarkets.push(
+      ...[
+        "0x9daa2878a8739e66e08e7ad35316c5143c0ea7c7",
+        "0x080f52a881ba96eee2268682733c857c560e5dd4",
+      ],
+    );
+
   const unfilteredTokens: string[][] = await api.multiCall({
     calls: unfilteredMarkets,
     abi: "function readTokens() view returns (address _SY, address _PT, address _YT)",

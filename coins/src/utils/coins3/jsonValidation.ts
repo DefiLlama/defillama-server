@@ -19,7 +19,7 @@ const schemas: { [topic: string]: Schema } = {
       source: { type: "string" },
       redirect: { type: "string" },
     },
-    required: ["decimals", "symbol", "address", "pid", "chain"],
+    required: ["decimals", "symbol", "address", "pid"],
     additionalProperties: false,
   },
   "coins-current": {
@@ -31,7 +31,7 @@ const schemas: { [topic: string]: Schema } = {
       source: { type: "string" },
       mcap: { type: "number" },
     },
-    required: ["pid", "price", "confidence", "source"],
+    required: ["pid", "price"],
     additionalProperties: false,
   },
   "coins-timeseries": {
@@ -44,7 +44,7 @@ const schemas: { [topic: string]: Schema } = {
       source: { type: "string" },
       mcap: { type: "number" },
     },
-    required: ["ts", "pid", "price", "confidence", "source"],
+    required: ["ts", "pid", "price"],
     additionalProperties: false,
   },
 };

@@ -30189,7 +30189,7 @@ const data2: Protocol[] = [
     oracles: ["DIA"],
     forkedFrom: [],
     module: "factor/index.js",
-    twitter: "FactorDAO",
+    twitter: "Factor_fi",
     audit_links: ["https://docs.factor.fi/audits-and-security"],
     parentProtocol: "parent#factor",
     listedAt: 1679152920,

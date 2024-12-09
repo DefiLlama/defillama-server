@@ -5130,6 +5130,11 @@
     }
   },
   "polynomial": {
+    "0x6224dC817dC4D5c53fcF3eb08A4f84C456F9f38f": {
+      "to": "coingecko#usd0-liquid-bond",
+      "decimals": 18,
+      "symbol": "USD0++.e"
+    },
     "0x17C9D8Cef7Ef072844EEaEdE1F9f54C7E3fa8743": {
       "to": "coingecko#usd-coin",
       "decimals": 6,

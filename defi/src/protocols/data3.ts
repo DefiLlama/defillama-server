@@ -63010,6 +63010,27 @@ const data3: Protocol[] = [
     twitter: "anemoycapital",
     listedAt: 1733763997
   },
+  { 
+    id: "5482",
+    name: "HashAI",
+    address: "0x292fcdd1b104de5a00250febba9bc6a5092a0076",
+    symbol: "HashAI",
+    url: "https://hashai.fi",
+    description: "AI-Optimised Crypto Mining. High-Performance Nodes - Available for Rent.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hashai.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "hashai/index.js",
+    twitter: "OfficialHashAI",
+    listedAt: 1733831778
+  },
 ];
 
 export default data3;

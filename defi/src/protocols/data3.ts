@@ -40479,7 +40479,7 @@ const data3: Protocol[] = [
     twitter: "HyperliquidX",
     listedAt: 1713225288,
   },
-  /*{ Temporarily disable: checking tvl spike
+  { 
     id: "4482",
     name: "Hyperliquid Spot",
     address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
@@ -40500,7 +40500,7 @@ const data3: Protocol[] = [
     twitter: "HyperliquidX",
     parentProtocol: "parent#hyperliquid",
     listedAt: 1713231343,
-  },*/
+  },
   {
     id: "4483",
     name: "Volcano",

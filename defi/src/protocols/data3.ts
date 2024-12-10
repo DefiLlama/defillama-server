@@ -62728,13 +62728,13 @@ const data3: Protocol[] = [
   },
   { 
     id: "5469",
-    name: "Thetis Market",
+    name: "Thetis Perps",
     address: null,
     symbol: "-",
     url: "https://thetis.market",
     description: "The pioneer ALL-IN-ONE DEX Aggregator, Perpetual Trading DEX and Liquidity Bootstrapping Pools on Aptos",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/thetis-market.jpg`,
+    logo: `${baseIconsUrl}/thetis-perps.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -62745,7 +62745,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "thetis-market/index.js",
     twitter: "ThetisMarket", 
-    github: ["thetis-market"],
+    parentProtocol: "parent#thetis-market",
     listedAt: 1733495322
   },
   { 
@@ -63030,6 +63030,28 @@ const data3: Protocol[] = [
     module: "hashai/index.js",
     twitter: "OfficialHashAI",
     listedAt: 1733831778
+  },
+  { 
+    id: "5483",
+    name: "Thetis Aggregator",
+    address: null,
+    symbol: "-",
+    url: "https://thetis.market",
+    description: "The pioneer ALL-IN-ONE DEX Aggregator, Perpetual Trading DEX and Liquidity Bootstrapping Pools on Aptos",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/thetis-aggregator.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Aptos"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "ThetisMarket",
+    parentProtocol: "parent#thetis-market",
+    listedAt: 1733834266
   },
 ];
 

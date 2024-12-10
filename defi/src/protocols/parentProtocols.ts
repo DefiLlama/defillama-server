@@ -5966,6 +5966,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "plunderswap",
     github: ["Plunderswap"],
   },
+  {
+    id: "parent#thetis-market",
+    name: "Thetis Market",
+    url: "https://thetis.market",
+    description:
+      "The pioneer ALL-IN-ONE DEX Aggregator, Perpetual Trading DEX and Liquidity Bootstrapping Pools on Aptos",
+    logo: `${baseIconsUrl}/thetis-market.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ThetisMarket", 
+    github: ["thetis-market"],
+  },
 ];
 
 export default parentProtocols;

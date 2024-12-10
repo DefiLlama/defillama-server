@@ -62916,7 +62916,7 @@ const data3: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
     module: "tapbit-cex/index.js",
-    twitter: "TapbitOfficial_",
+    twitter: "Tapbitglobal",
     listedAt: 1733744113
   },
   { 

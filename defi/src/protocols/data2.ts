@@ -28767,7 +28767,7 @@ const data2: Protocol[] = [
     description:
       "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/bluefin-perps.jpg`,
+    logo: `${baseIconsUrl}/bluefin-perps.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

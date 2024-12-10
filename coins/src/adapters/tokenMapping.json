@@ -2150,6 +2150,31 @@
       "decimals": "6",
       "symbol": "AKT",
       "to": "coingecko#akash-network"
+    },
+    "factory:osmo1z6r6qdknhgsc0zeracktgpcxf43j6sekq07nw8sxduc9lg0qjjlqfu25e3:alloyed:allBTC": {
+      "decimals": "8",
+      "symbol": "allBTC",
+      "to": "coingecko#osmosis-allbtc"
+    },
+    "factory:osmo1n3n75av8awcnw4jl62n3l48e6e4sxqmaf97w5ua6ddu4s475q5qq9udvx4:alloyed:allSOL": {
+      "decimals": "9",
+      "symbol": "allSOL",
+      "to": "coingecko#osmosis-allsol"
+    },
+    "factory:neutron1k6hr0f83e7un2wjf29cspk7j69jrnskk65k3ek2nj9dztrlzpj6q00rtsa:udatom": {
+      "decimals": "6",
+      "symbol": "dATOM",
+      "to": "coingecko#drop-staked-atom"
+    },
+    "factory:osmo1f5vfcph2dvfeqcqkhetwv75fda69z7e5c2dldm3kvgj23crkv6wqcn47a0:umilkTIA": {
+      "decimals": "6",
+      "symbol": "milkTIA",
+      "to": "coingecko#milkyway-staked-tia"
+    },
+    "987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4": {
+      "decimals": "6",
+      "symbol": "STARS",
+      "to": "coingecko#stargaze"
     }
   },
   "zeta": {

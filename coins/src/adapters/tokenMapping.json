@@ -3669,6 +3669,16 @@
       "decimals": "6",
       "symbol": "USDC.e",
       "to": "coingecko#usd-coin"
+    },
+    "0x1Bd5Fc212cC1c881C67076694C134aE8cAEce3bd": {
+      "decimals": "18",
+      "symbol": "CCP",
+      "to": "coingecko#chainccolosseumphoenix"
+    },
+    "0x4362Be024eFbb8C6fBcF19675224b58dFd2493Ef": {
+      "decimals": "18",
+      "symbol": "bCCP",
+      "to": "coingecko#beta-chain-ccolosseum-phoenix"
     }
   },
   "xai": {

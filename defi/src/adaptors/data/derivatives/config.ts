@@ -756,5 +756,9 @@ export default {
     },
     "adrena": {
         id: "5353"
+    },
+    "thetis-market": {
+        parentId: "Thetis Market",
+        id: "5469"
     }
 } as AdaptorsConfig

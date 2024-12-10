@@ -275,5 +275,9 @@ export default {
   },
   "bitgetwallet": {
     id: "3207",
+  },
+  "thetis-market": {
+    parentId: "Thetis Market",
+    id: "5483"
   }
 } as AdaptorsConfig;

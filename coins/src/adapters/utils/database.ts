@@ -286,7 +286,10 @@ export async function filterWritesWithLowConfidence(
   allWrites = allWrites.filter((w: Write) => w != undefined);
   const allReads = (
     await batchGet(allWrites.map((w: Write) => ({ PK: w.PK, SK: 0 })))
-  ).filter((w: Write) => (w.timestamp ?? 0) > recentTime);
+  ).filter(
+    (w: any) =>
+      (w.timestamp ?? 0) > recentTime || (w.created ?? 0 > recentTime),
+  );
 
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];

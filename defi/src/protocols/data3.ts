@@ -6456,7 +6456,7 @@ const data3: Protocol[] = [
     module: "satori/index.js",
     twitter: "SatoriFinance",
     forkedFrom: [],
-    oracles: ["Internal"],
+    oracles: ["Pyth"], // https://docs.satori.finance/perpetual-trading/index-price
     audit_links: ["https://github.com/satoridao/contract_audit_report/blob/main/Satori_audit_report.pdf"],
     parentProtocol: "parent#satori-finance",
     listedAt: 1684244889,
@@ -55629,7 +55629,7 @@ const data3: Protocol[] = [
     module: "takoTako/index.js",
     twitter: null,
     forkedFrom: [],
-    oracles: ["API3"], // https://www.takotako.xyz/markets
+    oracles: ["Pyth"], // Pyth is the only oracle that supports MBTC price feed https://www.takotako.xyz/
     listedAt: 1726474986
   },
   {

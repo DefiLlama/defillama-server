@@ -63204,6 +63204,26 @@ const data3: Protocol[] = [
     oracles: [],
     treasury: "taraxa.js"
   },
+  {
+    id: "5491",
+    name: "Balancer V3",
+    address: "0xba100000625a3754423978a60c9317c58a424e3d",
+    symbol: "BAL",
+    url: "https://balancer.finance/",
+    description: "Balancer V3 is a decentralized AMM protocol featuring a flexible vault architecture and customizable pools with dynamic swap fees and hooks for tailored liquidity management.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/balancer-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum", "xDai"],
+    module: "balancer-v3/index.js",
+    twitter: "BalancerLabs",
+    parentProtocol: "parent#balancer",
+    listedAt: 1733938643
+  },
 ];
 
 export default data3;

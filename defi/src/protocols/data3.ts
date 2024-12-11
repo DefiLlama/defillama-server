@@ -63092,6 +63092,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "valence/index.js",
     twitter: "ValenceZone",
+    listedAt: 1733882397
   },
 ];
 

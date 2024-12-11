@@ -63183,7 +63183,7 @@ const data3: Protocol[] = [
     github: ["Access-Labs-Inc"],
     listedAt: 1733933535
   },
-  {
+  /*{
     id: "5490",
     name: "Taraxa Foundation",
     address: null,
@@ -63203,7 +63203,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     treasury: "taraxa.js"
-  },
+  },*/
 ];
 
 export default data3;

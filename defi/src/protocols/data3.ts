@@ -63094,6 +63094,26 @@ const data3: Protocol[] = [
     twitter: "ValenceZone",
     listedAt: 1733882397
   },
+  { 
+    id: "5486",
+    name: "IoTeX",
+    address: null,
+    symbol: "-",
+    url: "https://eosnetwork.com/eos-evm/",
+    description: "The DePIN modular infrastructure for everyone",
+    chain: "IoTeX",
+    logo: `${baseIconsUrl}/iotex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["IoTeX"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "iotex_io",
+  },
 ];
 
 export default data3;

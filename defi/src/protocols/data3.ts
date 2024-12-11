@@ -22534,7 +22534,7 @@ const data3: Protocol[] = [
     name: "Velvet V2",
     address: null,
     symbol: "-",
-    url: "https://app.velvet.capital/",
+    url: "https://dapp.velvet.capital/",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     chain: "Binance",
@@ -52687,7 +52687,7 @@ const data3: Protocol[] = [
     name: "Velvet V3",
     address: null,
     symbol: "-",
-    url: "https://www.velvet.capital/",
+    url: "https://dapp.velvet.capital/",
     description:
       "Velvet.Capital is a DeFi platform that allows users to create, manage, and launch on-chain funds and portfolios, with tools for automated trading and earning yield",
     chain: "Base",

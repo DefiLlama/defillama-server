@@ -63157,6 +63157,32 @@ const data3: Protocol[] = [
     twitter: null,
     listedAt: 1733926608
   },
+  { 
+    id: "5489",
+    name: "Access Protocol",
+    address: "solana:5MAYDfq5yxtudAhtfyuMBuHZjgAbaS9tbEyEQYAhDS5y",
+    symbol: "ACS",
+    url: "https://www.accessprotocol.co",
+    description: "Access is a content and service monetization protocol offering incentivized subscriptions by staking the native ACS token.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/access-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "access-protocol",
+    cmcId: "23195",
+    category: "SoFi",
+    chains: ["Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "access-protocol/index.js",
+    twitter: "AccessProtocol",
+    audit_links: [
+      "https://www.accessprotocol.co/resources/Access_Protocol_Solana_Program_Security_Audit.pdf",
+      "https://www.accessprotocol.co/resources/Access_Labs_Access_Protocol_Updates_Solana_Program_Security_Audit.pdf"
+    ],
+    github: ["Access-Labs-Inc"],
+    listedAt: 1733933535
+  },
 ];
 
 export default data3;

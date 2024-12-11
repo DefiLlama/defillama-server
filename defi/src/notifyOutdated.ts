@@ -11,8 +11,8 @@ const handler = async (_event: any) => {
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
   const hourlyOutdated = await getOutdated((60 * 4 + 20) * 60); // 1hr
   await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hours`, webhookUrl, false)
-  if(hourlyOutdated.length > 100){
-    await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hours ${hourlyOutdated.length>400?llamaRole:''}`, process.env.TEAM_WEBHOOK, false)
+  if (hourlyOutdated.length > 100) {
+    await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hours ${hourlyOutdated.length > 400 ? llamaRole : ''}`, process.env.TEAM_WEBHOOK, false)
   }
   await sendMessage(buildOutdatedMessage(hourlyOutdated) ?? "No protocols are outdated", process.env.HOURLY_OUTDATED_WEBHOOK!)
   const outdated = await getOutdated(maxDrift);
@@ -51,11 +51,16 @@ export default wrapScheduledLambda(handler);
 
 export async function notifyOutdatedPG() {
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
-  const hour12Outdated = await findOutdatedPG(12 * 3600); // 12hr
-  const ignoredSet = new Set(['Synthetix']);
-  const failedOver100m = hour12Outdated.filter((o: any) => o[1]?.tvl > 100_000_000 && !ignoredSet.has(o[0]));
-  if (failedOver100m.length > 0) {
-    await sendMessage(buildOutdatedMessage(failedOver100m) as any, process.env.TEAM_WEBHOOK!)
+  const currentHour = new Date().getUTCHours();
+
+  // now this check runs every 4th hour
+  if (currentHour % 4 === 0) {
+    const hour12Outdated = await findOutdatedPG(12 * 3600); // 12hr
+    const ignoredSet = new Set(['Synthetix']);
+    const failedOver100m = hour12Outdated.filter((o: any) => o[1]?.tvl > 100_000_000 && !ignoredSet.has(o[0]));
+    if (failedOver100m.length > 0) {
+      await sendMessage(buildOutdatedMessage(failedOver100m) as any, process.env.TEAM_WEBHOOK!)
+    }
   }
 
   // await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)

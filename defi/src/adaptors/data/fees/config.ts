@@ -2241,6 +2241,6 @@ export default {
         id: "5469"
     },
     "iotex": {
-        id: "5486"
+        id: "2777"
     }
 } as AdaptorsConfig

@@ -57414,7 +57414,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Solana", "Hyperliquid", "Arbitrum"],
+    chains: ["Arbitrum"],
     module: "ascentyield/index.js",
     twitter: "ascent_yield",
     forkedFrom: [],

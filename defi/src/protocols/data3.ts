@@ -63220,7 +63220,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Ethereum", "xDai"],
     module: "balancer-v3/index.js",
-    twitter: "BalancerLabs",
+    twitter: "Balancer",
     parentProtocol: "parent#balancer",
     listedAt: 1733938643
   },

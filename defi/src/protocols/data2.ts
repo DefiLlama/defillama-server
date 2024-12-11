@@ -28465,7 +28465,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Ethereum", "Polygon", "Arbitrum"],
     module: "balancer/index.js",
-    twitter: "BalancerLabs",
+    twitter: "Balancer",
     audit_links: ["https://github.com/balancer/balancer-v2-monorepo/tree/master/audits"],
     parentProtocol: "parent#balancer",
   },

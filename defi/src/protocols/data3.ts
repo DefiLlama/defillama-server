@@ -55629,7 +55629,7 @@ const data3: Protocol[] = [
     module: "takoTako/index.js",
     twitter: null,
     forkedFrom: [],
-    oracles: ["Pyth"], // Pyth is the only oracle that supports MBTC price feed https://www.takotako.xyz/
+    oracles: ["API3"], // https://www.takotako.xyz/ 
     listedAt: 1726474986
   },
   {

@@ -362,6 +362,7 @@ export default {
         "id": "420"
     },
     "lyra": {
+        parentId: "Derive",
         "id": "503"
     },
     "radioshack": {
@@ -2242,5 +2243,9 @@ export default {
     },
     "iotex": {
         id: "2777"
+    },
+    "lyra-v2": {
+        parentId: "Derive",
+        id: "3923"
     }
 } as AdaptorsConfig

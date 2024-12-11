@@ -26404,7 +26404,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Foundation",
     chains: ["Ethereum"],
     module: "dummy.js",
     treasury: "eth-foundation.js",
@@ -30373,7 +30373,7 @@ const data2: Protocol[] = [
   {
     id: "2695",
     name: "SmarDex",
-    address: "0x5de8ab7e27f6e7a1fff3e5b337584aa43961beef",
+    address: "                                                                            ",
     symbol: "SDEX",
     url: "https://smardex.io",
     description: "SMARDEX sophisticated fine-tuned algorithm transforms impermanent loss to impermanent gain!",

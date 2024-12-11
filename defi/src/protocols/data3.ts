@@ -63183,6 +63183,27 @@ const data3: Protocol[] = [
     github: ["Access-Labs-Inc"],
     listedAt: 1733933535
   },
+  {
+    id: "5490",
+    name: "Taraxa",
+    address: null,
+    symbol: "-",
+    url: "https://taraxa.io/",
+    description: "Taraxa is THE PoS, blockDAG, and EVM-compatible Layer-1.",
+    chain: "Taraxa",
+    logo: `${baseIconsUrl}/taraxa.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Taraxa"],
+    module: "dummy.js",
+    twitter: "taraxa_project",
+    forkedFrom: [],
+    oracles: [],
+    treasury: "taraxa.js"
+  },
 ];
 
 export default data3;

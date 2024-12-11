@@ -5,7 +5,7 @@ import {
   Coin,
   CoinMetadata,
   iterateOverPlatforms,
-  staleMargin
+  staleMargin,
 } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
@@ -14,6 +14,7 @@ import { batchReadPostgres, getRedisConnection } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import { Connection, PublicKey } from "@solana/web3.js";
+import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -63,32 +64,43 @@ interface IdToSymbol {
 }
 
 async function storeCoinData(coinData: Write[]) {
-  return batchWrite(
-    coinData
-      .map((c) => ({
-        PK: c.PK,
-        SK: 0,
-        price: c.price,
-        mcap: c.mcap,
-        timestamp: c.timestamp,
-        symbol: c.symbol,
-        confidence: c.confidence,
-      }))
-      .filter((c: Write) => c.symbol != null),
-    false,
-  );
+  const items = coinData
+    .map((c) => ({
+      PK: c.PK,
+      SK: 0,
+      price: c.price,
+      mcap: c.mcap,
+      timestamp: c.timestamp,
+      symbol: c.symbol,
+      confidence: c.confidence,
+    }))
+    .filter((c: Write) => c.symbol != null);
+  await Promise.all([
+    produceKafkaTopics(
+      items.map((i) => ({ adapter: "coingecko", decimals: 0, ...i } as Dynamo)),
+    ),
+    batchWrite(items, false),
+  ]);
 }
 
 async function storeHistoricalCoinData(coinData: Write[]) {
-  return batchWrite(
-    coinData.map((c) => ({
-      SK: c.SK,
-      PK: c.PK,
-      price: c.price,
-      confidence: c.confidence,
-    })),
-    false,
-  );
+  const items = coinData.map((c) => ({
+    SK: c.SK,
+    PK: c.PK,
+    price: c.price,
+    confidence: c.confidence,
+  }));
+  await Promise.all([
+    produceKafkaTopics(
+      items.map((i) => ({
+        adapter: "coingecko",
+        timestamp: i.SK,
+        ...i,
+      })) as Dynamo[],
+      ["coins-timeseries"],
+    ),
+    batchWrite(items, false),
+  ]);
 }
 
 let solanaTokens: Promise<any>;
@@ -278,6 +290,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     pricesAndMcaps[c.PK] = { price: c.price, mcap: c.mcap };
   });
 
+  const kafkaItems: any[] = [];
   await Promise.all(
     filteredCoins.map(async (coin) =>
       iterateOverPlatforms(
@@ -305,7 +318,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             return;
           }
 
-          await ddb.put({
+          const item = {
             PK,
             SK: 0,
             created,
@@ -313,14 +326,22 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             symbol,
             redirect: cgPK(coin.id),
             confidence: 0.99,
-          });
+          };
+          kafkaItems.push(item);
+          await ddb.put(item);
         },
         coinPlatformData,
       ),
     ),
   );
 
-  await deleteStaleKeysPromise;
+  await Promise.all([
+    produceKafkaTopics(
+      kafkaItems.map((i) => ({ adapter: "coingecko", ...i })),
+      ["coins-metadata"],
+    ),
+    deleteStaleKeysPromise,
+  ]);
 }
 
 const HOUR = 3600;
@@ -357,20 +378,27 @@ async function getAndStoreHourly(
     (c: any) => c.timestamp,
   );
 
-  await batchWrite(
-    coinData.prices
-      .filter((price) => {
-        const ts = toUNIXTimestamp(price[0]);
-        return !writtenTimestamps[ts];
-      })
-      .map((price) => ({
-        SK: toUNIXTimestamp(price[0]),
-        PK,
-        price: price[1],
-        confidence: 0.99,
-      })),
-    false,
-  );
+  const items = coinData.prices
+    .filter((price) => {
+      const ts = toUNIXTimestamp(price[0]);
+      return !writtenTimestamps[ts];
+    })
+    .map((price) => ({
+      SK: toUNIXTimestamp(price[0]),
+      PK,
+      price: price[1],
+      confidence: 0.99,
+    }));
+
+  await Promise.all([
+    produceKafkaTopics(
+      items.map(
+        (i) => ({ adapter: "coingecko", timestamp: i.SK, ...i }),
+        ["coins-timeseries"],
+      ),
+    ),
+    batchWrite(items, false),
+  ]);
 }
 
 async function fetchCoingeckoData(
@@ -427,7 +455,7 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   let coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
-  
+
   if (coinType || hourly) {
     const metadatas = await getCGCoinMetadatas(
       coins.map((coin) => coin.id),

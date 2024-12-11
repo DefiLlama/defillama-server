@@ -3,7 +3,7 @@ import { addToDBWritesList } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
 import fetch from "node-fetch";
 
-type Feed = { id: string; symbol: string; address: string };
+type Feed = { id: string; symbol: string; address: string; decimals: number };
 
 const feeds: Feed[] = [
   {
@@ -11,12 +11,14 @@ const feeds: Feed[] = [
     symbol: "xSTRK",
     address:
       "0x028d709c875c0ceac3dce7065bec5328186dc89fe254527084d1689910954b0a",
+    decimals: 18,
   },
   {
     id: "0x535354524b2f555344",
     symbol: "sSTRK",
     address:
       "0x0356f304b154d29d2a8fe22f1cb9107a9b564a733cf6b4cc47fd121ac1af90c9",
+    decimals: 18,
   },
 ]; // hex strings of ref from https://docs.pragma.build/v1/Resources/data-feeds/supported-assets
 
@@ -27,7 +29,7 @@ export async function pragma(timestamp: number = 0) {
 
   const writes: Write[] = [];
   await Promise.all(
-    feeds.map(async ({ id, symbol, address }: Feed) => {
+    feeds.map(async ({ id, symbol, address, decimals }: Feed) => {
       const res = await fetch(
         process.env.STARKNET_RPC ??
           "https://starknet-mainnet.public.blastapi.io",
@@ -54,7 +56,7 @@ export async function pragma(timestamp: number = 0) {
         },
       ).then((r) => r.json());
 
-      const [price, decimals, publishTime, sources] = res.result.map(
+      const [price, offset, publishTime, sources] = res.result.map(
         (r: string) => parseInt(r.substring(2), 16),
       );
 
@@ -64,7 +66,7 @@ export async function pragma(timestamp: number = 0) {
         writes,
         "starknet",
         address,
-        price / 10 ** decimals,
+        price / 10 ** offset,
         decimals,
         symbol,
         timestamp,

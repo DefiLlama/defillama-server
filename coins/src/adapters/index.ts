@@ -50,6 +50,7 @@ export default {
   alchemix: require("./yield/alchemix"),
   meanFinance: require("./yield/mean-finance"),
   misc4626: require("./yield/misc4626"),
+  balancer4626: require("./yield/balancer4626"),
   vesper: require("./yield/vesper"),
   yieldProtocol: require("./yield/yield-protocol"),
   levelFinance: require("./yield/level-finance"),

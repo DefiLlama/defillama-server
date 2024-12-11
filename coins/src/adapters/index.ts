@@ -113,4 +113,5 @@ export default {
   xailocker: require("./liquidStaking/xailocker"),
   sbtc: require("./other/sbtc"),
   aries: require("./moneyMarkets/aries"),
+  pragma: require("./oracles/pragma"),
 };

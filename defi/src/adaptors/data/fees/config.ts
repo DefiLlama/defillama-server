@@ -2239,5 +2239,8 @@ export default {
     "thetis-market": {
         parentId: "Thetis Market",
         id: "5469"
+    },
+    "iotex": {
+        id: "5486"
     }
 } as AdaptorsConfig

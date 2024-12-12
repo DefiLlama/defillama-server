@@ -1,3 +1,4 @@
+require("dotenv").config();
 
 import '../../../api2/utils/failOnError'
 import { Adapter, AdapterType } from "@defillama/dimension-adapters/adapters/types"

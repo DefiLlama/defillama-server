@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 
 import inquirer from 'inquirer'
 import * as childProcess from 'child_process'

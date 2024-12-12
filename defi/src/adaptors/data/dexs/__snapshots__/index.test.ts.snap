@@ -4082,7 +4082,7 @@ Array [
     "id": "1384",
     "language": "Solidity",
     "listedAt": 1644507498,
-    "logo": "https://icons.llama.fi/hermes-protocol.png",
+    "logo": "https://icons.llama.fi/hermes-v2.png",
     "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",

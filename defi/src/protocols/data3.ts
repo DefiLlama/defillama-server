@@ -39714,14 +39714,14 @@ const data3: Protocol[] = [
     url: "https://www.superform.xyz/",
     description:
       "Superform is the onchain wealth app. Superform earns you the best returns on your crypto to grow your onchain wealth. Use SuperVaults to automatically optimize your earnings, or build your customized portfolio by directly depositing into over 800 earning opportunities",
-    chain: "Ethereum",
+    chain: "Polygon",
     logo: `${baseIconsUrl}/superform.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Ethereum", "Polygon", "Optimism", "Arbitrum", "Avalanche", "Binance", "Base", "Fantom", "Linea", "Blast"],
+    chains: ["Polygon", "Ethereum", "Optimism", "Arbitrum", "Avalanche", "Binance", "Base", "Fantom", "Linea", "Blast"],
     module: "superform/index.js",
     forkedFrom: [],
     oracles: [],
@@ -40479,7 +40479,7 @@ const data3: Protocol[] = [
     twitter: "HyperliquidX",
     listedAt: 1713225288,
   },
-  { 
+  {
     id: "4482",
     name: "Hyperliquid Spot",
     address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
@@ -62271,7 +62271,7 @@ const data3: Protocol[] = [
     github: ["EclipsePad"],
     listedAt: 1732997519
   },
-  { 
+  {
     id: "5448",
     name: "Hyperliquid HLP",
     address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
@@ -62293,7 +62293,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hyperliquid",
     listedAt: 1733089195,
   },
-  { 
+  {
     id: "5449",
     name: "BiTomato",
     address: null,
@@ -62307,14 +62307,14 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CEX",
-    chains: ["Ethereum","Bitcoin","Binance"],
+    chains: ["Ethereum", "Bitcoin", "Binance"],
     oracles: [],
     forkedFrom: [],
     module: "bitomato/index.js",
     twitter: "Bitomato_ex",
     listedAt: 1733089735,
   },
-  { 
+  {
     id: "5450",
     name: "BounceBit CeDeFi Yield",
     address: null,
@@ -62336,7 +62336,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bouncebit-cedefi",
     listedAt: 1733090351
   },
-  { 
+  {
     id: "5451",
     name: "Blum",
     address: null,
@@ -62357,7 +62357,7 @@ const data3: Protocol[] = [
     twitter: "blumcrypto",
     listedAt: 1733093747
   },
-  { 
+  {
     id: "5452",
     name: "Grix",
     address: null,
@@ -62377,7 +62377,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "GrixFinance",
   },
-  { 
+  {
     id: "5453",
     name: "Emu",
     address: "bsc:0x0dfbB60c53d9226E8D70AA94eac614D8294D7Fa2",
@@ -62400,7 +62400,7 @@ const data3: Protocol[] = [
     github: ["emumeme"],
     listedAt: 1733150397
   },
-  { 
+  {
     id: "5454",
     name: "Emojicoin.fun",
     address: null,
@@ -62423,7 +62423,7 @@ const data3: Protocol[] = [
     github: ["econia-labs"],
     listedAt: 1733150717
   },
-  { 
+  {
     id: "5455",
     name: "Nexus BTC",
     address: null,
@@ -62444,7 +62444,7 @@ const data3: Protocol[] = [
     twitter: "Matrixport_EN",
     listedAt: 1733227415
   },
-  { 
+  {
     id: "5456",
     name: "Resolv USR",
     address: null,
@@ -62466,7 +62466,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#resolv",
     listedAt: 1733227890
   },
-  { 
+  {
     id: "5457",
     name: "Renec Lend",
     address: "solana:9HvM3nS2eDKWxNvi8vSFXRhHA1xhDW33rt4ZA1bE1DbV",
@@ -62489,7 +62489,7 @@ const data3: Protocol[] = [
     github: ["renec-lend"],
     listedAt: 1733240550
   },
-  { 
+  {
     id: "5458",
     name: "Pinto",
     address: null,
@@ -62504,13 +62504,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Algo-Stables",
     chains: ["Base"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: ["Beanstalk"],
     module: "dummy.js",
     twitter: "pintocommunity",
     github: ["pinto-org"]
   },
-  { 
+  {
     id: "5459",
     name: "Duality",
     address: null,
@@ -62525,13 +62525,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Neutron"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "Duality/index.js",
     twitter: "Neutron_org",
     listedAt: 1733311423
   },
-  { 
+  {
     id: "5460",
     name: "Upshift",
     address: null,
@@ -62546,14 +62546,14 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum", "Avalanche", "Base"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "upshift/index.js",
     twitter: "upshift_fi",
     audit_links: ["https://docs.upshift.finance/architecture/smart-contract-audits"],
     listedAt: 1733311923
   },
-  { 
+  {
     id: "5461",
     name: "ApeChain Bridge",
     address: null,
@@ -62568,13 +62568,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Bridge",
     chains: ["Ethereum"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "apechain/index.js",
     twitter: "apecoin",
     listedAt: 1733352929
   },
-  { 
+  {
     id: "5462",
     name: "lpETH",
     address: null,
@@ -62589,7 +62589,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     parentProtocol: "parent#tenderize",
     module: "lpeth/index.js",
@@ -62597,7 +62597,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.lpeth.xyz/smart-contracts/overview#audits"],
     listedAt: 1733400764
   },
-  { 
+  {
     id: "5463",
     name: "Biquid",
     address: null,
@@ -62612,13 +62612,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Bifrost Network"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "biquid/index.js",
     twitter: "Bifrost_Network",
     listedAt: 1733400960
   },
-  { 
+  {
     id: "5464",
     name: "Echo Liquid Staking",
     address: null,
@@ -62634,14 +62634,14 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Aptos"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "echo-lsd/index.js",
     twitter: "EchoProtocol_",
     parentProtocol: "parent#echo-protocol",
     listedAt: 1733401081
   },
-  { 
+  {
     id: "5465",
     name: "Vectis Finance",
     address: null,
@@ -62656,13 +62656,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Solana"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "vectis/index.js",
     twitter: "vectis_finance",
     listedAt: 1733401280
   },
-  { 
+  {
     id: "5466",
     name: "RadLock",
     address: null,
@@ -62677,13 +62677,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Token Locker",
     chains: ["Radix"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "radlock/index.js",
     twitter: "radlockio",
     listedAt: 1733432001
   },
-  { 
+  {
     id: "5467",
     name: "AGDEX",
     address: null,
@@ -62698,14 +62698,14 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Aptos"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "agdex/index.js",
-    twitter: "agdex_io", 
+    twitter: "agdex_io",
     github: ["agdex-io"],
     listedAt: 1733494841
   },
-  { 
+  {
     id: "5468",
     name: "TON Pump",
     address: null,
@@ -62720,13 +62720,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Telegram Bot",
     chains: ["TON"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "tonpump/index.js",
-    twitter: "hotdao_", 
+    twitter: "hotdao_",
     listedAt: 1733494941
   },
-  { 
+  {
     id: "5469",
     name: "Thetis Perps",
     address: null,
@@ -62741,14 +62741,14 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Aptos"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "thetis-market/index.js",
-    twitter: "ThetisMarket", 
+    twitter: "ThetisMarket",
     parentProtocol: "parent#thetis-market",
     listedAt: 1733495322
   },
-  { 
+  {
     id: "5470",
     name: "Celeron",
     address: "mode:0x8b83ECC4EF8FaEc5c05b7D6EC002B659BE137120",
@@ -62763,14 +62763,14 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Mode"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "celeron/index.js",
     twitter: "Celeron_xyz",
-    audit_links: ["https://blocksafu.com/audit/0xCeleronFarm"], 
+    audit_links: ["https://blocksafu.com/audit/0xCeleronFarm"],
     listedAt: 1733495718
   },
-  { 
+  {
     id: "5471",
     name: "OpenTrade",
     address: null,
@@ -62785,13 +62785,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum", "Avalanche"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "opentrade/index.js",
     twitter: "opentrade_io",
     listedAt: 1733496042
   },
-  { 
+  {
     id: "5472",
     name: "Hermes V2",
     address: null,
@@ -62806,14 +62806,14 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Arbitrum"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "hermes-v2/index.js",
     twitter: "HermesOmnichain",
     parentProtocol: "parent#maia-dao-ecosystem",
     listedAt: 1733496042
   },
-  { 
+  {
     id: "5473",
     name: "Arena of Faith",
     address: null,
@@ -62828,13 +62828,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Farm",
     chains: ["Metis"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "aof-stake-mining/index.js",
     twitter: "moba_aof",
     listedAt: 1733511563
   },
-  { 
+  {
     id: "5474",
     name: "Swing",
     address: null,
@@ -62848,8 +62848,8 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "DEX Aggregator",
-    chains: ["Ethereum","Solana","Binance","Polygon","Base","Arbitrum","zkSync Era"],
-    oracles: [], 
+    chains: ["Ethereum", "Solana", "Binance", "Polygon", "Base", "Arbitrum", "zkSync Era"],
+    oracles: [],
     forkedFrom: [],
     module: "dummy.js",
     twitter: "swing_xyz",
@@ -62876,7 +62876,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#plunderswap",
     listedAt: 1733597191,
   },
-  { 
+  {
     id: "5476",
     name: "Gud.Tech",
     address: null,
@@ -62891,14 +62891,14 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "AI Agents",
     chains: ["Zircuit"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "gud-tech/index.js",
     twitter: "gudtech_ai",
     audit_links: ["https://docs.gud.tech/audits"],
     listedAt: 1733597319
   },
-  { 
+  {
     id: "5477",
     name: "Tapbit",
     address: null,
@@ -62913,13 +62913,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CEX",
     chains: ["Bitcoin", "Ethereum"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "tapbit-cex/index.js",
     twitter: "Tapbitglobal",
     listedAt: 1733744113
   },
-  { 
+  {
     id: "5478",
     name: "STONEBTC",
     address: null,
@@ -62934,7 +62934,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "stakestone-stonebtc/index.js",
     twitter: "Stake_Stone",
@@ -62945,7 +62945,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/STONE%20BTC%20Vault%20-%20SlowMist%20Audit%20Report.pdf"],
     listedAt: 1733756129
   },
-  { 
+  {
     id: "5479",
     name: "RlyFun",
     address: null,
@@ -62960,13 +62960,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Launchpad",
     chains: ["Radix"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "rlyfun/index.js",
     twitter: "rlydotfun",
     listedAt: 1733756829
   },
-  { 
+  {
     id: "5480",
     name: "Hyperfluid",
     address: null,
@@ -62981,7 +62981,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Aptos"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "hyperfluid/index.js",
     twitter: "Hyperfluidxyz",
@@ -62989,7 +62989,7 @@ const data3: Protocol[] = [
     github: ["Hyperfluid"],
     listedAt: 1733763947
   },
-  { 
+  {
     id: "5481",
     name: "Anemoy Capital",
     address: null,
@@ -63004,13 +63004,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum", "Base", "Celo"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "anemoy-capital/index.js",
     twitter: "anemoycapital",
     listedAt: 1733763997
   },
-  { 
+  {
     id: "5482",
     name: "HashAI",
     address: "0x292fcdd1b104de5a00250febba9bc6a5092a0076",
@@ -63025,13 +63025,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Farm",
     chains: ["Ethereum"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "hashai/index.js",
     twitter: "OfficialHashAI",
     listedAt: 1733831778
   },
-  { 
+  {
     id: "5483",
     name: "Thetis Aggregator",
     address: null,
@@ -63046,14 +63046,14 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["Aptos"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "dummy.js",
     twitter: "ThetisMarket",
     parentProtocol: "parent#thetis-market",
     listedAt: 1733834266
   },
-  { 
+  {
     id: "5484",
     name: "EOS EVM Bridge",
     address: null,
@@ -63068,12 +63068,12 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Bridge",
     chains: ["EOS"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "eos-evm/index.js",
     twitter: "EOSNetworkFDN",
   },
-  { 
+  {
     id: "5485",
     name: "Valence",
     address: null,
@@ -63088,13 +63088,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Treasury Manager",
     chains: ["Neutron"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "valence/index.js",
     twitter: "ValenceZone",
     listedAt: 1733882397
   },
-  { 
+  {
     id: "5486",
     name: "IoTeX",
     address: null,
@@ -63109,12 +63109,12 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Chain",
     chains: ["IoTeX"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "dummy.js",
     twitter: "iotex_io",
   },
-  { 
+  {
     id: "5487",
     name: "Nucleus",
     address: null,
@@ -63129,14 +63129,14 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "nucleus/index.js",
     twitter: "nucleusearn",
     audit_links: ["https://github.com/Ion-Protocol/nucleus-boring-vault/tree/master/audit"],
     listedAt: 1733926608
   },
-  { 
+  {
     id: "5488",
     name: "jBTC",
     address: null,
@@ -63151,13 +63151,13 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Bridge",
     chains: ["Bitcoin"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "jbtc/index.js",
     twitter: null,
     listedAt: 1733926608
   },
-  { 
+  {
     id: "5489",
     name: "Access Protocol",
     address: "solana:5MAYDfq5yxtudAhtfyuMBuHZjgAbaS9tbEyEQYAhDS5y",
@@ -63172,7 +63172,7 @@ const data3: Protocol[] = [
     cmcId: "23195",
     category: "SoFi",
     chains: ["Solana"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "access-protocol/index.js",
     twitter: "AccessProtocol",

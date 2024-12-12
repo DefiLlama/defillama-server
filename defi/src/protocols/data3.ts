@@ -39713,7 +39713,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.superform.xyz/",
     description:
-      "Superform is the Universal Yield Marketplace. For yield seekers, Superform abstracts away the swap, bridge, and deposit process, letting you access any vault on any chain in one transaction. For protocols, deploy once and get instant omnichain distribution",
+      "Superform is the onchain wealth app. Superform earns you the best returns on your crypto to grow your onchain wealth. Use SuperVaults to automatically optimize your earnings, or build your customized portfolio by directly depositing into over 800 earning opportunities",
     chain: "Polygon",
     logo: `${baseIconsUrl}/superform.png`,
     audits: "2",
@@ -39721,7 +39721,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Polygon", "Ethereum", "Optimism", "Arbitrum", "Avalanche", "Binance", "Base"],
+    chains: ["Polygon", "Ethereum", "Optimism", "Arbitrum", "Avalanche", "Binance", "Base", "Fantom", "Linea", "Blast"],
     module: "superform/index.js",
     forkedFrom: [],
     oracles: [],

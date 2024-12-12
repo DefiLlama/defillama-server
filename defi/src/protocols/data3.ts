@@ -63244,7 +63244,7 @@ const data3: Protocol[] = [
     twitter: "SparkDexAI",
     oracles: ["Flare FTSO"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12676
     audit_links: ["https://github.com/SparkDEX/perp-smart-contracts/blob/main/audit"],
-    parentProtocol: "parent#sparkdexbalancer",
+    parentProtocol: "parent#sparkdex",
     listedAt: 1734027989
   },
   {

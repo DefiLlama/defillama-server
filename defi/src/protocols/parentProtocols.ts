@@ -4936,7 +4936,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SparkDexAI",
-    github: ["sparkdex"],
+    github: ["SparkDEX"],
   },
   {
     id: "parent#crust-finance",
@@ -5978,6 +5978,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ThetisMarket", 
     github: ["thetis-market"],
+  },
+  {
+    id: "parent#holdstation",
+    name: "Holdstation",
+    url: "https://holdstation.com/",
+    description:
+      "Wallet for Futures Trading & #AiAgents on ZKsync, Berachain & Worldcoin",
+    logo: `${baseIconsUrl}/holdstation.jpg`,
+    gecko_id: "holdstation",
+    cmcId: "28510",
+    chains: [],
+    twitter: "HoldstationW", 
   },
 ];
 

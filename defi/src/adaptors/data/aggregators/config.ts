@@ -279,5 +279,8 @@ export default {
   "thetis-market": {
     parentId: "Thetis Market",
     id: "5483"
+  },
+  "swing": {
+      id: "5474"
   }
 } as AdaptorsConfig;

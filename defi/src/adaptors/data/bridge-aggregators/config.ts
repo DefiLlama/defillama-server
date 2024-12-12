@@ -9,5 +9,8 @@ export default {
     },
     "okx": {
         id: "5201",
+    },
+    "swing": {
+        id: "5474",
     }
 } as AdaptorsConfig

@@ -2643,5 +2643,9 @@ export default {
     },
     "trado-spot": {
         id: "5225"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
     }
 } as AdaptorsConfig

@@ -2247,5 +2247,9 @@ export default {
     "lyra-v2": {
         parentId: "Derive",
         id: "3923"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
     }
 } as AdaptorsConfig

@@ -223,7 +223,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "balancer-v1/index.js",
-    twitter: "BalancerLabs",
+    twitter: "Balancer",
     audit_links: ["https://docs.balancer.fi/reference/contracts/security.html#audits"],
     parentProtocol: "parent#balancer",
   },

@@ -27189,8 +27189,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/maia-dao.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "maia",
-    cmcId: "17181",
+    gecko_id: null, // appears in parent
+    cmcId: null, // appears in parent
     category: "Yield",
     chains: ["Arbitrum"],
     oracles: [],

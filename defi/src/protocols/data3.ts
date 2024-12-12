@@ -61825,7 +61825,7 @@ const data3: Protocol[] = [
     url: "https://bluefin.io",
     description: "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/bluefin-amm.jpg`,
+    logo: `${baseIconsUrl}/bluefin-amm.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

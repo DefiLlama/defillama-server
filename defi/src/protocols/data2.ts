@@ -20561,7 +20561,7 @@ const data2: Protocol[] = [
     module: "orderly-network/index.js",
     twitter: "OrderlyNetwork",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     audit_links: ["https://github.com/OrderlyNetwork/Audits"],
     parentProtocol: "parent#orderly-network",
     listedAt: 1668086145,

@@ -63387,7 +63387,7 @@ const data3: Protocol[] = [
     chains: ["XDC"],
     module: "bbbpump/index.js",
     twitter: "bbbpumpdotfun",
-    listedAt: 1734028011
+    listedAt: 1734099052
   },
 ];
 

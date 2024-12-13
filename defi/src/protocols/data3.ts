@@ -45339,7 +45339,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Restaking",
     chains: ["Merlin"],
     oracles: [],
     forkedFrom: [],

@@ -204,12 +204,12 @@ export const chainCoingeckoIds = {
     url: "https://solana.com/"
   },
   "Polygon": {
-    geckoId: "matic-network",
-    symbol: "MATIC",
-    cmcId: "3890",
+    geckoId: "polygon-ecosystem-token",
+    symbol: "POL",
+    cmcId: "28321",
     categories: ["EVM"],
     chainId: 137,
-    github: ['maticnetwork'],
+    github: ['maticnetwork', '0xpolygon'],
     twitter: "0xPolygon",
     url: "https://polygon.technology/"
   },

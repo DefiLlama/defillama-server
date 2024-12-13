@@ -56722,14 +56722,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5201",
-    name: "OKX DEX", // previous OKX DEX Aggregator
+    name: "OKX Swap", // previous OKX DEX Aggregator , after that was OKX DEX 
     address: null,
     symbol: "-",
     url: "https://www.okx.com/web3/dex-swap",
     description:
       "Freely choose trading routes from all major DEX aggregators, while X Routing continues to find the best quotes across 400+ DEXs and 30+ networks.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/okx-dex.jpg`,
+    logo: `${baseIconsUrl}/okx-swap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -56739,6 +56739,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "okx",
     forkedFrom: [],
+    parentProtocol: "parent#okx-dex",
     oracles: [],
   },
   {
@@ -63310,6 +63311,25 @@ const data3: Protocol[] = [
     module: "comtech-gold/index.js",
     twitter: "ComTechOfficial",
     listedAt: 1734028011
+  },
+  {
+    id: "5496",
+    name: "OKX Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://www.okx.com/web3/dex-swap/bridge",
+    description: "Freely choose trading routes from all major DEX aggregators, while X Routing continues to find the best quotes across 400+ DEXs and 30+ networks.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/okx-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge Aggregator",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "okx",
+    parentProtocol: "parent#okx-dex",
   },
 ];
 

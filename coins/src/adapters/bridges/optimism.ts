@@ -1,7 +1,8 @@
-import { chainsThatShouldNotBeLowerCased, Token } from "./index";
+import { Token } from "./index";
 import { fetch, formatExtraTokens } from "../utils";
 // import tokenMappings from "../tokenMapping_added.json";
 import tokenMappings2 from "../tokenMapping.json";
+import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 export default async function bridge(): Promise<Token[]> {
   const bridge = (

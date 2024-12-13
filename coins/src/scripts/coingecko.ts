@@ -13,9 +13,9 @@ import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
 import { batchReadPostgres, getRedisConnection } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
-import { Connection, PublicKey } from "@solana/web3.js";
-import { chainsThatShouldNotBeLowerCased } from "../adapters/bridges";
+import { PublicKey } from "@solana/web3.js";
 import { getConnection } from "../adapters/solana/utils";
+import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 
 enum COIN_TYPES {
   over100m = "over100m",

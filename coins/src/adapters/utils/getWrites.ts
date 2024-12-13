@@ -1,7 +1,7 @@
 import { addToDBWritesList, getTokenAndRedirectDataMap } from "./database";
 import { getTokenInfo } from "./erc20";
 import { Write, CoinData } from "./dbInterfaces";
-import { chainsThatShouldNotBeLowerCased } from "../bridges";
+import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 function normalize(addr: string, chain?: string) {
   if (!addr || chainsThatShouldNotBeLowerCased.includes(chain as any))

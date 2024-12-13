@@ -2647,5 +2647,9 @@ export default {
     "balancer-v3": {
         parentId: "Balancer",
         id: "5491"
+    },
+    "plunderswap": {
+        parentId: "PlunderSwap",
+        id: "3840"
     }
 } as AdaptorsConfig

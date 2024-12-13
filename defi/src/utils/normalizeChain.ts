@@ -25,8 +25,6 @@ export const normalizedChainReplacements = {
   "cronos zkevm": "cronos_zkevm",
   "kaia": "klaytn",
   "viction": "tomochain",
-  "fuel": "fuel_ignition",
-  "oasis sapphire": "oasis_sapphire",
 } as {
   [chain: string]: string
 }

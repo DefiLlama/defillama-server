@@ -1,4 +1,5 @@
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
+import { chainsThatShouldNotBeLowerCased } from "../adapters/bridges";
 import { getCurrentUnixTimestamp } from "./date";
 import ddb from "./shared/dynamodb";
 
@@ -33,7 +34,9 @@ export interface CoinMetadata {
 }
 
 function lowercase(address: string, chain: string) {
-  return chain === "solana" ? address : address.toLowerCase();
+  return chainsThatShouldNotBeLowerCased.includes(chain)
+    ? address
+    : address.toLowerCase();
 }
 
 export async function iterateOverPlatforms(
@@ -52,7 +55,7 @@ export async function iterateOverPlatforms(
         const address =
           chain + ":" + lowercase(platforms[platform]!, chain).trim();
         const PK = `asset#${address}`;
-        const margin = getCurrentUnixTimestamp() - staleMargin
+        const margin = getCurrentUnixTimestamp() - staleMargin;
         if (!coinPlatformData[PK] || coinPlatformData[PK].timestamp < margin) {
           await iterator(PK);
         }

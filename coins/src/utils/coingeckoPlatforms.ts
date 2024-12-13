@@ -1,6 +1,6 @@
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
-import { chainsThatShouldNotBeLowerCased } from "../adapters/bridges";
 import { getCurrentUnixTimestamp } from "./date";
+import { chainsThatShouldNotBeLowerCased } from "./shared/constants";
 import ddb from "./shared/dynamodb";
 
 export const staleMargin = 6 * 60 * 60;

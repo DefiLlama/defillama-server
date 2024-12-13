@@ -1,7 +1,7 @@
 import { distressedAssets } from "../adapters/other/distressed";
 
 export function lowercaseAddress(coin: string) {
-  if (coin.startsWith("solana:") || coin.startsWith("eclipse")) {
+  if (coin.startsWith("solana:") || coin.startsWith("eclipse:")) {
     return coin;
   } else if (coin.startsWith("gnosis:")) {
     return coin.replace("gnosis:", "xdai:").toLowerCase();

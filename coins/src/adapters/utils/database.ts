@@ -16,7 +16,7 @@ import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 import pLimit from "p-limit";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
-import { chainsThatShouldNotBeLowerCased } from "../bridges";
+import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 const rateLimited = pLimit(10);
 process.env.tableName = "prod-coins-table";

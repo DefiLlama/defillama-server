@@ -1,4 +1,4 @@
-import { chainsThatShouldNotBeLowerCased } from "../bridges";
+import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {

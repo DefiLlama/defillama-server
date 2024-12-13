@@ -3520,6 +3520,16 @@ export const chainCoingeckoIds = {
     url: "https://usecorn.com/",
     chainId: 21000000
   },
+  "VinuChain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "vinuchain",
+    url: "https://www.vinuchain.org/",
+    github: ["vinuchain"],
+    chainId: 207
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4280,6 +4290,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Taraxa"
     case "corn":
       return "Corn"
+    case "vinu":
+      return "VinuChain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

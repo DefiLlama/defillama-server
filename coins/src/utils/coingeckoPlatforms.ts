@@ -1,4 +1,5 @@
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
+import { chainsThatShouldNotBeLowerCased } from "../adapters/bridges";
 import { getCurrentUnixTimestamp } from "./date";
 import ddb from "./shared/dynamodb";
 
@@ -33,7 +34,7 @@ export interface CoinMetadata {
 }
 
 function lowercase(address: string, chain: string) {
-  return ["solana", "eclipse"].includes(chain)
+  return chainsThatShouldNotBeLowerCased.includes(chain)
     ? address
     : address.toLowerCase();
 }

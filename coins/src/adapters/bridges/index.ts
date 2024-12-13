@@ -38,8 +38,8 @@ import fraxtal from "./fraxtal";
 import symbiosis from "./symbiosis";
 import fuel from "./fuel";
 import zircuit from "./zircuit";
-import morph from './morph'
-import aptos from './aptosFa'
+import morph from "./morph";
+import aptos from "./aptosFa";
 
 export type Token =
   | {
@@ -60,7 +60,7 @@ export type Token =
     };
 type Bridge = () => Promise<Token[]>;
 
-export const chainsThatShouldNotBeLowerCased = ["solana", "bitcoin"];
+export const chainsThatShouldNotBeLowerCased = ["solana", "bitcoin", "eclipse"];
 function normalizeBridgeResults(bridge: Bridge) {
   return async () => {
     const tokens = await bridge();
@@ -108,7 +108,7 @@ export const bridges = [
   fuel,
   zircuit,
   morph,
-  aptos
+  aptos,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

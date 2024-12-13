@@ -63370,7 +63370,25 @@ const data3: Protocol[] = [
     parentProtocol: "parent#mars-protocol",
     listedAt: 1734099051
   },
-
+  {
+    id: "5499",
+    name: "BBBPump.fun",
+    address: "0x2e24bfde1eeda0f1ea3e57ba7ff10ac6516ab5ec",
+    symbol: "-",
+    url: "https://bbbpump.fun",
+    description: "The First Meme Fair Launch Platform on XDC Network:swap,earn,meme culture,instantly tradable without having to seed liquidity",
+    chain: "XDC",
+    logo: `${baseIconsUrl}/bbbpump.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dex",
+    chains: ["XDC"],
+    module: "bbbpump/index.js",
+    twitter: "bbbpumpdotfun",
+    listedAt: 1734028011
+  },
 ];
 
 export default data3;

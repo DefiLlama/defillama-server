@@ -2996,6 +2996,11 @@
       "to": "coingecko#comtech-gold",
       "decimals": 18,
       "symbol": "CGO"
+    },
+    "0xfa4ddcfa8e3d0475f544d0de469277cf6e0a6fd1": {
+      "to": "coingecko#beny-bad-boy",
+      "decimals": 18,
+      "symbol": "BBB"
     }
   },
   "telos": {

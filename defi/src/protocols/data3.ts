@@ -63331,6 +63331,46 @@ const data3: Protocol[] = [
     twitter: "okx",
     parentProtocol: "parent#okx-dex",
   },
+  {
+    id: "5497",
+    name: "VinuSwap",
+    address: null,
+    symbol: "-",
+    url: "https://vinuchain.vinuswap.org/",
+    description: "The official DEX for VinuChain.",
+    chain: "VinuChain",
+    logo: `${baseIconsUrl}/vinuswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["VinuChain"],
+    module: "vinuswap/index.js",
+    twitter: "VinuChain",
+    listedAt: 1734099428
+  },
+  {
+    id: "5498",
+    name: "Mars Perps",
+    address: "terra:terra12hgwnpupflfpuual532wgrxu2gjp0tcagzgx4n",
+    symbol: "MARS",
+    url: "https://marsprotocol.io/",
+    description: "Mars is a multichain credit protocol enabling borrowing and lending primitives in the Cosmos. With Mars v2, the protocol introduced Rover credit accounts to Osmosis. Much like Binance subaccounts, credit accounts act as transferrable NFT containers where users can deposit assets, and use them as collateral for borrowing, spot or margin trading, leveraged yield farming, and hedging — all with a single liquidation point",
+    chain: "Neutron",
+    logo: `${baseIconsUrl}/mars-perps.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Neutron"],
+    module: "mars-perp/index.js",
+    twitter: "mars_protocol",
+    parentProtocol: "parent#mars-protocol",
+    listedAt: 1734099051
+  },
+
 ];
 
 export default data3;

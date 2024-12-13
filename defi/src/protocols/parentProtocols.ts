@@ -5991,6 +5991,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HoldstationW", 
   },
+  {
+    id: "parent#okx-dex",
+    name: "OKX DEX",
+    url: "https://www.okx.com/web3/dex-swap",
+    description:
+      "Freely choose trading routes from all major DEX aggregators, while X Routing continues to find the best quotes across 400+ DEXs and 30+ networks.",
+    logo: `${baseIconsUrl}/okx-dex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "okx", 
+  },
 ];
 
 export default parentProtocols;

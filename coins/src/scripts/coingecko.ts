@@ -5,7 +5,7 @@ import {
   Coin,
   CoinMetadata,
   iterateOverPlatforms,
-  staleMargin
+  staleMargin,
 } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
@@ -110,14 +110,16 @@ async function getSymbolAndDecimals(
   chain: string,
   coingeckoSymbol: string,
 ): Promise<{ symbol: string; decimals: number } | undefined> {
-  if (chain === "solana") {
+  if (["solana", "eclipse"].includes(chain)) {
     const token = ((await solanaTokens).tokens as any[]).find(
       (t) => t.address === tokenAddress,
     );
     if (token === undefined) {
       if (!solanaConnection)
         solanaConnection = new Connection(
-          process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
+          chain == "solana"
+            ? process.env.SOLANA_RPC || "https://rpc.ankr.com/solana"
+            : process.env.ECLIPSE_RPC || "https://eclipse.helius-rpc.com",
         );
       const decimalsQuery = await solanaConnection.getParsedAccountInfo(
         new PublicKey(tokenAddress),
@@ -427,7 +429,7 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   let coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
-  
+
   if (coinType || hourly) {
     const metadatas = await getCGCoinMetadatas(
       coins.map((coin) => coin.id),

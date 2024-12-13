@@ -33,7 +33,9 @@ export interface CoinMetadata {
 }
 
 function lowercase(address: string, chain: string) {
-  return chain === "solana" ? address : address.toLowerCase();
+  return ["solana", "eclipse"].includes(chain)
+    ? address
+    : address.toLowerCase();
 }
 
 export async function iterateOverPlatforms(
@@ -52,7 +54,7 @@ export async function iterateOverPlatforms(
         const address =
           chain + ":" + lowercase(platforms[platform]!, chain).trim();
         const PK = `asset#${address}`;
-        const margin = getCurrentUnixTimestamp() - staleMargin
+        const margin = getCurrentUnixTimestamp() - staleMargin;
         if (!coinPlatformData[PK] || coinPlatformData[PK].timestamp < margin) {
           await iterator(PK);
         }

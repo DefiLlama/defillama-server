@@ -1,4 +1,4 @@
-import { chainsThatShouldNotBeLowerCased, Token } from "./index";
+import { Token } from "./index";
 import { fetch, formatExtraTokens } from "../utils";
 // import tokenMappings from "../tokenMapping_added.json";
 import tokenMappings2 from "../tokenMapping.json";
@@ -50,7 +50,7 @@ export default async function bridge(): Promise<Token[]> {
   //       // if (from_lowerCase !== from)
   //       //   tokens.push([from_lowerCase, to, symbol, decimals]);
   //       let token = from;
-  //       if (!chainsThatShouldNotBeLowerCased.includes(chain)) token = token.toLowerCase();
+  //       if (!["solana"].includes(chain)) token = token.toLowerCase();
   //       tokens.push([token, to, symbol, decimals]);
   //     },
   //   );
@@ -68,8 +68,7 @@ export default async function bridge(): Promise<Token[]> {
         // if (from_lowerCase !== from)
         //   tokens.push([from_lowerCase, to, symbol, decimals]);
         let token = from;
-        if (!chainsThatShouldNotBeLowerCased.includes(chain))
-          token = token.toLowerCase();
+        if (!["solana"].includes(chain)) token = token.toLowerCase();
         tokens.push([token, to, symbol, decimals]);
       },
     );

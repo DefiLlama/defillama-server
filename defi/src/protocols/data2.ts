@@ -16173,7 +16173,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum", "Fraxtal", "Arbitrum"],
     oraclesByChain: {
       ethereum: ["Chainlink", "RedStone"],
-      fraxtal: ["RedStone"],
+      fraxtal: ["RedStone", "API3"],
       arbitrum: ["Chainlink"],
     },
     forkedFrom: [],

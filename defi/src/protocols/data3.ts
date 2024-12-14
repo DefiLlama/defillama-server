@@ -63290,8 +63290,9 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "NFT Marketplace",
+    category: "Dexes",
     chains: ["Ergo"],
+    forkedFrom: ["ErgoDEX"],
     module: "mew-fi/index.js",
     twitter: "Mew_finance",
     listedAt: 1734028004

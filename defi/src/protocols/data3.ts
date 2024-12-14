@@ -49543,13 +49543,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4882",
-    name: "Usual Money",
+    name: "Usual", // previously usual money
     address: null,
     symbol: "-",
     url: "https://usual.money",
     description: "The decentralized RWA stablecoin protocol redistributing value and power back in your hands.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/usual-money.jpg`,
+    logo: `${baseIconsUrl}/usual.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

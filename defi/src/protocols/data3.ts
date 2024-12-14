@@ -48157,7 +48157,7 @@ const data3: Protocol[] = [
     module: "resolv/index.js",
     twitter: "ResolvLabs",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.resolv.xyz/litepaper/for-developers/token-supply-operations/rlp
     audit_links: ["https://docs.resolv.im/resources/security"],
     parentProtocol: "parent#resolv",
     listedAt: 1719485918,
@@ -49558,7 +49558,10 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "usual/index.js",
     twitter: "usualmoney",
-    oracles: [],
+    oraclesByChain: {
+      ethereum: ["Chainlink"], // https://tech.usual.money/smart-contracts/utility-contracts/chainlink-oracles
+      arbitrum: ["Pyth"] // https://tech.usual.money/smart-contracts/utility-contracts/pyth-oracles
+    },
     forkedFrom: [],
     stablecoins: ["usual-usd"],
     listedAt: 1721046229,
@@ -62700,7 +62703,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Aptos"],
-    oracles: [], 
+    oracles: ["Pyth"], // https://docs.agdex.io/for-traders/start-trading/oracles 
     forkedFrom: [],
     module: "agdex/index.js",
     twitter: "agdex_io", 
@@ -62743,7 +62746,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Aptos"],
-    oracles: [], 
+    oracles: ["Pyth"], // https://docs.thetis.market/thetis-perpetual-exchange/how-it-works#oracle
     forkedFrom: [],
     module: "thetis-market/index.js",
     twitter: "ThetisMarket", 

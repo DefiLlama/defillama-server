@@ -11677,7 +11677,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "toros/index.js",
     twitter: "torosfinance",
-    audit_links: ["https://www.certik.com/projects/dhedge"],
+    audit_links: ["https://docs.dhedge.org/security/audits-timeline"],
     listedAt: 1657055333,
   },
   {

@@ -2670,7 +2670,7 @@
       "symbol": "BTC.b",
       "to": "coingecko#bitcoin"
     },
-    "0xe6e5f3d264117e030c21920356641dbd5b3d660c": { 
+    "0xe6e5f3d264117e030c21920356641dbd5b3d660c": {
       "decimals": "6",
       "symbol": "syUSDC",
       "to": "coingecko#usd-coin"
@@ -3694,7 +3694,7 @@
       "decimals": "18",
       "symbol": "INJ",
       "to": "coingecko#injective-protocol"
-    },    
+    },
     "factory:inj14ejqjyq8um4p3xfqj74yld5waqljf88f9eneuk:inj1q6zlut7gtkzknkk773jecujwsdkgq882akqksk": {
       "name": "USDT",
       "decimals": "6",
@@ -8031,6 +8031,12 @@
       "decimals": "18",
       "symbol": "SolvBTC.m",
       "to": "coingecko#solv-btc"
+    },
+    "0xe85411c030fb32a9d8b14bbbc6cb19417391f711": {
+      "name": "suBTC",
+      "decimals": "18",
+      "symbol": "suBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "rpg": {

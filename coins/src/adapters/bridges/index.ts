@@ -40,6 +40,7 @@ import fuel from "./fuel";
 import zircuit from "./zircuit";
 import morph from "./morph";
 import aptos from "./aptosFa";
+import subtc from "./subtc";
 
 export type Token =
   | {
@@ -108,6 +109,7 @@ export const bridges = [
   zircuit,
   morph,
   aptos,
+  subtc,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

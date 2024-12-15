@@ -61839,7 +61839,7 @@ const data3: Protocol[] = [
     module: "bluefin-amm/index.js",
     twitter: "bluefinapp",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://learn.bluefin.io/bluefin/bluefin-exchange/trading/oracle-and-index-price#oracle-price
     parentProtocol: "parent#bluefin",
     listedAt: 1732722519
   },

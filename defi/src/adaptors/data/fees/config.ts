@@ -2251,5 +2251,8 @@ export default {
     "balancer-v3": {
         parentId: "Balancer",
         id: "5491"
-    }
+    },
+    "memewe": {
+        id: "5501"
+    },
 } as AdaptorsConfig

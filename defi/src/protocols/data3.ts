@@ -63432,6 +63432,26 @@ const data3: Protocol[] = [
     twitter: "memeweclub",
     listedAt: 1734234227
   },
+  {
+    id: "5502",
+    name: "BBBPump",
+    address: null,
+    symbol: "-",
+    url: "https://bbbpump.fun",
+    description: "BBBPump is a DeFi protocol on the XDC Network offering liquidity mining and TVL management solutions",
+    chain: "XDC",
+    logo: `${baseIconsUrl}/bbbpump.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    treasury: "memewe.js",
+    chains: ["XDC"],
+    module: "bbbpump/index.js",
+    twitter: "bbbpumpdotfun",
+    listedAt: 1734289678
+  },
 ];
 
 export default data3;

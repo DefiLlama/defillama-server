@@ -63446,11 +63446,29 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    treasury: "memewe.js",
     chains: ["XDC"],
     module: "bbbpump/index.js",
     twitter: "bbbpumpdotfun",
     listedAt: 1734289678
+  },
+  {
+    id: "5503",
+    name: "Bondle",
+    address: null,
+    symbol: "-",
+    url: "https://www.bondle.xyz/",
+    description: "Launchpad on Shibarium",
+    chain: "Shibarium",
+    logo: `${baseIconsUrl}/bondle.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Shibarium"],
+    module: "bondle/index.js",
+    twitter: "bondlexyz",
+    listedAt: 1734299897
   },
 ];
 

@@ -5883,8 +5883,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms.",
     logo: `${baseIconsUrl}/bluefin.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "bluefin",
+    cmcId: "8724",
     chains: [],
     twitter: "bluefinapp",
     github: ["fireflyprotocol"],

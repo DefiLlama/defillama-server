@@ -54229,7 +54229,7 @@ const data3: Protocol[] = [
 
   {
     id: "5090",
-    name: "Level Money",
+    name: "Level", // previously Level Money
     address: null,
     symbol: "-",
     url: "https://www.level.money",
@@ -54241,7 +54241,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "Yield",
     chains: ["Ethereum"],
     module: "level-money/index.js",
     oracles: [],

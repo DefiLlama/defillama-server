@@ -12,5 +12,8 @@ export default {
     },
     "swing": {
         id: "5474",
+    },
+    "bitgetwallet": {
+        id: "3207",
     }
 } as AdaptorsConfig

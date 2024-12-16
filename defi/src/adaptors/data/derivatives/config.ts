@@ -761,5 +761,14 @@ export default {
     "thetis-market": {
         parentId: "Thetis Market",
         id: "5469"
+    },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
+            }
+        }
     }
 } as AdaptorsConfig

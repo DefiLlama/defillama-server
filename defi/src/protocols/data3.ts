@@ -31156,6 +31156,7 @@ const data3: Protocol[] = [
     chains: ["Mode"],
     oraclesByChain: {
       mode: ["API3", "RedStone", "Pyth"], //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
+      base: ["eOracle"],
     },
     forkedFrom: ["Compound V2"],
     module: "ionic/index.js",

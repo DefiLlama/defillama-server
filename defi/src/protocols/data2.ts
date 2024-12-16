@@ -28777,7 +28777,7 @@ const data2: Protocol[] = [
     module: "bluefin/index.js",
     twitter: "bluefinapp",
     oraclesByChain: {
-      sui: ["Pyth"],
+      sui: ["Pyth"], // https://learn.bluefin.io/bluefin/bluefin-exchange/trading/oracle-and-index-price#oracle-price
     },
     forkedFrom: [],
     parentProtocol: "parent#bluefin",

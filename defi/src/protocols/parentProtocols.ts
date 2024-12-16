@@ -1515,8 +1515,8 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#maia-dao-ecosystem",
     name: "Maia DAO Ecosystem",
     url: "https://maiadao.io",
-    description: "MAIA is the first decentralized community-owned reserve currency in Metis Andromeda.",
-    logo: `${baseIconsUrl}/maia-dao-ecosystem.jpg`,
+    description: "One-stop shop for different DeFi native financial instruments, an omnichain fully fledged trading hub.",
+    logo: `${baseIconsUrl}/maia-dao.png`,
     gecko_id: "maia",
     cmcId: "17181",
     chains: [],
@@ -3038,7 +3038,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#velvet.capital",
     name: "Velvet.Capital",
-    url: "https://app.velvet.capital",
+    url: "https://www.velvet.capital/",
     description:
       "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
     logo: `${baseIconsUrl}/velvet.capital.png`,
@@ -4936,7 +4936,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SparkDexAI",
-    github: ["sparkdex"],
+    github: ["SparkDEX"],
   },
   {
     id: "parent#crust-finance",
@@ -5881,10 +5881,10 @@ const parentProtocols: IParentProtocol[] = [
     name: "Bluefin",
     url: "https://bluefin.io",
     description:
-      "Bluefin is a decentralized orderbook-based exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms.",
+      "Bluefin is a decentralized spot and derivatives exchange built for both professional and first-time traders. It focuses on security, transparency and redefining the user experience of using on-chain trading platforms - and is backed by Polychain, SIG, Brevan Howard, and other leading firms.",
     logo: `${baseIconsUrl}/bluefin.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "bluefin",
+    cmcId: "8724",
     chains: [],
     twitter: "bluefinapp",
     github: ["fireflyprotocol"],
@@ -5978,6 +5978,55 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ThetisMarket", 
     github: ["thetis-market"],
+  },
+  {
+    id: "parent#holdstation",
+    name: "Holdstation",
+    url: "https://holdstation.com/",
+    description:
+      "Wallet for Futures Trading & #AiAgents on ZKsync, Berachain & Worldcoin",
+    logo: `${baseIconsUrl}/holdstation.jpg`,
+    gecko_id: "holdstation",
+    cmcId: "28510",
+    chains: [],
+    twitter: "HoldstationW", 
+  },
+  {
+    id: "parent#okx-dex",
+    name: "OKX DEX",
+    url: "https://www.okx.com/web3/dex-swap",
+    description:
+      "Freely choose trading routes from all major DEX aggregators, while X Routing continues to find the best quotes across 400+ DEXs and 30+ networks.",
+    logo: `${baseIconsUrl}/okx-dex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "okx", 
+  },
+  {
+    id: "parent#mars-protocol",
+    name: "Mars Protocol",
+    url: "https://marsprotocol.io",
+    description:
+      "Mars is a multichain credit protocol enabling borrowing and lending primitives in the Cosmos. With Mars v2, the protocol introduced Rover credit accounts to Osmosis. Much like Binance subaccounts, credit accounts act as transferrable NFT containers where users can deposit assets, and use them as collateral for borrowing, spot or margin trading, leveraged yield farming, and hedging — all with a single liquidation point",
+    logo: `${baseIconsUrl}/mars-protocol.png`,
+    gecko_id: "mars-protocol",
+    cmcId: "18621",
+    chains: [],
+    twitter: "mars_protocol",
+    github: ["mars-protocol"],
+  },
+  {
+    id: "parent#metropolis-exchange",
+    name: "Metropolis Exchange",
+    url: "https://metropolis.exchange/",
+    description:
+      "Metropolis is a Liquidity Book DLMM DEX native to Sonic, offering zero-slippage trades and higher yields for liquidity providers.",
+    logo: `${baseIconsUrl}/metropolis-exchange.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MetropolisDEX",
   },
 ];
 

@@ -1,13 +1,16 @@
+require("dotenv").config();
 
 import '../../../api2/utils/failOnError'
 import { Adapter, AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import loadAdaptorsData from "../../data"
 import { handler2, IStoreAdaptorDataHandlerEvent } from "."
 import readline from 'readline';
+import sleep from '../../../utils/shared/sleep';
 
 
 // ================== Script Config ==================
 
+console.log(process.env.type, process.env.protocol, process.env.to, process.env.from, process.env.days, process.env.dry_run, process.env.confirm)
 const adapterType = process.env.type ?? AdapterType.DERIVATIVES
 let protocolToRun = process.env.protocol ?? 'bluefin' // either protocol display name, module name or id
 
@@ -17,12 +20,13 @@ toTimestamp = Date.now()
 let fromTimestamp: any = process.env.fromTimestamp ?? process.env.from ?? '2024-09-01' // enable next line to run from the dawn of time
 // fromTimestamp = 0
 
-let days = 20 // set to non zero to override date range to run for x days
+let days = 0 // set to non zero to override date range to run for x days
 
 if (process.env.days) days = parseInt(process.env.days)
 
 const DRY_RUN = process.env.dry_run ? process.env.dry_run === 'true' : true
-const SHOW_CONFIRM_DIALOG = process.env.confirm ? process.env.confirm === 'true' : true
+const SHOW_CONFIRM_DIALOG = process.env.confirm ? process.env.confirm === 'true' : false
+const SHOW_CONFIG_TABLE = process.env.hide_config_table !== 'true' 
 
 
 
@@ -30,6 +34,10 @@ const SHOW_CONFIRM_DIALOG = process.env.confirm ? process.env.confirm === 'true'
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 async function run() {
+  await sleep(2000)
+
+  console.log('\n\n\n\n\n')
+  console.log('------------------------------------')
 
   fromTimestamp = getUnixTS(fromTimestamp)
   toTimestamp = getUnixTS(toTimestamp)
@@ -59,8 +67,8 @@ async function run() {
     days = getDaysBetweenTimestamps(fromTimestamp, toTimestamp)
 
   const configObj = {
-    'Start date (filled in reverse)': new Date(toTimestamp * 1000).toLocaleDateString(),
-    'End date': new Date(fromTimestamp * 1000).toLocaleDateString(),
+    'Start date': new Date(fromTimestamp * 1000).toLocaleDateString(),
+    'End date': new Date(toTimestamp * 1000).toLocaleDateString(),
     'No. of Days': days,
     'Adapter Type': adapterType,
     'Protocol to run': protocolToRun,
@@ -68,13 +76,16 @@ async function run() {
     isVersion2,
   }
 
-  console.log('Script config: ')
-  console.table(configObj)
-
-  if (SHOW_CONFIRM_DIALOG) {
-    const userInput = (await prompt('Do you want to continue? (y/n): '))?.toLowerCase();
-    if (userInput !== 'y' && userInput !== 'yes')
-      return;
+  if (SHOW_CONFIG_TABLE) {
+    console.log('Script config: \n\n')
+    console.table(configObj)
+    console.log('\n\n')
+  
+    if (SHOW_CONFIRM_DIALOG) {
+      const userInput = (await prompt('Do you want to continue? (y/n): '))?.toLowerCase();
+      if (userInput !== 'y' && userInput !== 'yes')
+        return;
+    }
   }
 
   let currentDayEndTimestamp = toTimestamp
@@ -84,7 +95,7 @@ async function run() {
   while (days > 0) {
     const eventObj: IStoreAdaptorDataHandlerEvent = {
       timestamp: currentDayEndTimestamp,
-      adapterType,
+      adapterType: adapterType as any,
       isDryRun: DRY_RUN,
       protocolNames: new Set([protocolToRun]),
       isRunFromRefillScript: true,
@@ -102,9 +113,14 @@ async function run() {
 
 function getUnixTS(i: any) {
   if (typeof i === 'string') {
-    const date = new Date(i.includes('T') ? i : `${i}T00:00:00Z`); // setting timezone as UTC
-    return Math.floor(date.getTime() / 1000);
-  } else if (typeof i === 'number') {
+    if (/^\d+$/.test(i)) {
+      i = parseInt(i, 10);
+    } else {
+      const date = new Date(i.includes('T') ? i : `${i}T00:00:00Z`); // setting timezone as UTC
+      return Math.floor(date.getTime() / 1000);
+    }
+  }
+  if (typeof i === 'number') {
     return i > 9999999999 ? Math.floor(i / 1000) : i;
   } else {
     throw new Error('Invalid input type');

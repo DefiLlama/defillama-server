@@ -362,6 +362,7 @@ export default {
         "id": "420"
     },
     "lyra": {
+        parentId: "Derive",
         "id": "503"
     },
     "radioshack": {
@@ -2239,5 +2240,19 @@ export default {
     "thetis-market": {
         parentId: "Thetis Market",
         id: "5469"
-    }
+    },
+    "iotex": {
+        id: "2777"
+    },
+    "lyra-v2": {
+        parentId: "Derive",
+        id: "3923"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
+    },
+    "memewe": {
+        id: "5501"
+    },
 } as AdaptorsConfig

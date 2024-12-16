@@ -25,8 +25,6 @@ export const normalizedChainReplacements = {
   "cronos zkevm": "cronos_zkevm",
   "kaia": "klaytn",
   "viction": "tomochain",
-  "fuel": "fuel_ignition",
-  "oasis sapphire": "oasis_sapphire",
 } as {
   [chain: string]: string
 }
@@ -204,12 +202,12 @@ export const chainCoingeckoIds = {
     url: "https://solana.com/"
   },
   "Polygon": {
-    geckoId: "matic-network",
-    symbol: "MATIC",
-    cmcId: "3890",
+    geckoId: "polygon-ecosystem-token",
+    symbol: "POL",
+    cmcId: "28321",
     categories: ["EVM"],
     chainId: 137,
-    github: ['maticnetwork'],
+    github: ['maticnetwork', '0xpolygon'],
     twitter: "0xPolygon",
     url: "https://polygon.technology/"
   },
@@ -3520,6 +3518,25 @@ export const chainCoingeckoIds = {
     url: "https://usecorn.com/",
     chainId: 21000000
   },
+  "VinuChain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "vinuchain",
+    url: "https://www.vinuchain.org/",
+    github: ["vinuchain"],
+    chainId: 207
+  },
+  "Sonic": {
+    geckoId: null,
+    symbol: "S",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "0xSonicLabs",
+    url: "https://www.soniclabs.com",
+    chainId: 146
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4280,6 +4297,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Taraxa"
     case "corn":
       return "Corn"
+    case "vinu":
+      return "VinuChain"
+    case "sonic":
+      return "Sonic"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

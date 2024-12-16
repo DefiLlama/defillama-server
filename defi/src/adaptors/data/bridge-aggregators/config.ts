@@ -9,5 +9,11 @@ export default {
     },
     "okx": {
         id: "5201",
+    },
+    "swing": {
+        id: "5474",
+    },
+    "bitgetwallet": {
+        id: "3207",
     }
 } as AdaptorsConfig

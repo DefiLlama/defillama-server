@@ -63178,7 +63178,7 @@ const data3: Protocol[] = [
     description: "Access is a content and service monetization protocol offering incentivized subscriptions by staking the native ACS token.",
     chain: "Solana",
     logo: `${baseIconsUrl}/access-protocol.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "access-protocol",
     cmcId: "23195",

@@ -3719,6 +3719,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/ingenuity-build/audits"],
     listedAt: 1681842223,
   },
+  /*
   {
     id: "2862",
     name: "Hyperliquid Perp",
@@ -3741,6 +3742,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hyperliquid",
     listedAt: 1681846146,
   },
+  */
   {
     id: "2863",
     name: "SaitaSwap",

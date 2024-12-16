@@ -6028,6 +6028,20 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MetropolisDEX",
   },
+  {
+    id: "parent#ethena",
+    name: "Ethena",
+    url: "https://www.ethena.fi/",
+    description:
+      "Ethena is a synthetic dollar protocol built on Ethereum",
+    logo: `${baseIconsUrl}/ethena.png`,
+    gecko_id: "ethena",
+    cmcId: "30171",
+    chains: [],
+    twitter: "ethena_labs",
+    github: ["ethena-labs"],
+    stablecoins: ["ethena-usde"],
+  },
 ];
 
 export default parentProtocols;

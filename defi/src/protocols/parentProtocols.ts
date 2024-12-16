@@ -6016,6 +6016,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "mars_protocol",
     github: ["mars-protocol"],
   },
+  {
+    id: "parent#metropolis-exchange",
+    name: "Metropolis Exchange",
+    url: "https://metropolis.exchange/",
+    description:
+      "Metropolis is a Liquidity Book DLMM DEX native to Sonic, offering zero-slippage trades and higher yields for liquidity providers.",
+    logo: `${baseIconsUrl}/metropolis-exchange.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MetropolisDEX",
+  },
 ];
 
 export default parentProtocols;

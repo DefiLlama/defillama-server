@@ -63447,7 +63447,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Launchpad",
     chains: ["XDC"],
     module: "bbbpump/index.js",
     twitter: "bbbpumpdotfun",

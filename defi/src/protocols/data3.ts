@@ -63440,7 +63440,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://bbbpump.fun",
-    description: "BBBPump is a DeFi protocol on the XDC Network offering liquidity mining and TVL management solutions",
+    description: "BBBPump is the First Meme Fair Launch Platform on XDC Network:swap,earn,meme culture,instantly tradable without having to seed liquidity",
     chain: "XDC",
     logo: `${baseIconsUrl}/bbbpump.jpg`,
     audits: "0",

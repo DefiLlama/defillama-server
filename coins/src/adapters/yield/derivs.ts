@@ -168,7 +168,7 @@ const configs: { [adapter: string]: Config } = {
         abi: "function getRate() external view returns (uint256)",
         target: "0x126af21dc55C300B7D0bBfC4F3898F558aE8156b",
       });
-      return rate / 1e10;
+      return rate / 1e18;
     },
     chain: "ethereum",
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",

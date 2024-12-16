@@ -3528,6 +3528,15 @@ export const chainCoingeckoIds = {
     github: ["vinuchain"],
     chainId: 207
   },
+  "Sonic": {
+    geckoId: null,
+    symbol: "S",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "0xSonicLabs",
+    url: "https://www.soniclabs.com",
+    chainId: 146
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -4290,6 +4299,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Corn"
     case "vinu":
       return "VinuChain"
+    case "sonic":
+      return "Sonic"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

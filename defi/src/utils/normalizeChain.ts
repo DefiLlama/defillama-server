@@ -3665,9 +3665,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "terra":
       return useNewChainNames ? "Terra Classic" : "Terra"
     case "nova":
-      return useNewChainNames ? "Nova Network" : "Nova Network"
+      return "Nova Network"
     case "godwoken_v1":
-      return useNewChainNames ? "GodwokenV1" : "GodwokenV1"
+      return "GodwokenV1"
     case "elrond":
       return useNewChainNames ? "MultiversX" : "Elrond"
     case "rsk":
@@ -3686,8 +3686,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "XdaiArb"
     case "defichain":
       return "DefiChain"
-    case "stacks":
-      return "Stacks"
     case "polynetwork":
       return "PolyNetwork"
     case "eos":
@@ -3698,8 +3696,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "IoTeX"
     case "thundercore":
       return "ThunderCore"
-    case "telos":
-      return "Telos"
     case "hpb":
       return "HPB"
     case "energyweb":
@@ -3708,44 +3704,14 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "GoChain"
     case "tomochain":
       return useNewChainNames ? "Viction" : "TomoChain"
-    case "fusion":
-      return "Fusion"
-    case "kardia":
-      return "Kardia"
-    case "fuse":
-      return "Fuse"
-    case "sora":
-      return "Sora"
     case "smartbch":
       return "smartBCH"
-    case "elastos":
-      return "Elastos"
-    case "hoo":
-      return "Hoo"
-    case "cronos":
-      return "Cronos"
-    case "polis":
-      return "Polis"
     case "zyx":
       return "ZYX"
-    case "stellar":
-      return "Stellar"
-    case "shiden":
-      return "Shiden"
-    case "metis":
-      return "Metis"
-    case "ubiq":
-      return "Ubiq"
-    case "mixin":
-      return "Mixin"
-    case "everscale":
-      return "Everscale"
     case "vechain":
       return "VeChain"
     case "xdc":
       return "XDC"
-    case "velas":
-      return "Velas"
     case "ethereumclassic":
       return "EthereumClassic"
     case "zksync":
@@ -3758,44 +3724,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "BEVM"
     case "horizen eon":
       return "Horizen EON"
-    case "godwoken":
-      return "Godwoken"
-    case "callisto":
-      return "Callisto"
     case "csc":
       return "CSC"
-    case "ergo":
-      return "Ergo"
-    case "parallel":
-      return "Parallel"
-    case "theta":
-      return "Theta"
-    case "meter":
-      return "Meter"
-    case "syscoin":
-      return "Syscoin"
-    case "moonbeam":
-      return "Moonbeam"
-    case "astar":
-      return "Astar"
-    case "curio":
-      return "Curio"
     case "skale":
       return "SKALE"
-    case "bittorrent":
-      return "Bittorrent"
-    case "genshiro":
-      return "Genshiro"
-    case "wax":
-      return "Wax"
-    case "evmos":
-      return "Evmos"
-    case "proton":
-      return "Proton"
-    case "kadena":
-      return "Kadena"
-    case "vite":
-      return "Vite"
     case "milkomeda":
       return useNewChainNames ? "Milkomeda C1" : "Milkomeda"
     case "dfk":
@@ -3804,56 +3736,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "CLV"
     case "rei":
       return "REI"
-    case "crab":
-      return "Crab"
-    case "hedera":
-      return "Hedera"
-    case "findora":
-      return "Findora"
-    case "hydra":
-      return "Hydra"
-    case "bitgert":
-      return "Bitgert"
-    case "reef":
-      return "Reef"
-    case "candle":
-      return "Candle"
-    case "bifrost":
-      return "Bifrost"
-    case "stafi":
-      return "Stafi"
-    case "lachain":
-      return "Lachain"
-    case "coti":
-      return "Coti"
-    case "bitcoincash":
-      return "Bitcoincash"
-    case "litcoin":
-      return "Litecoin"
-    case "doge":
-      return "Doge"
-    case "obyte":
-      return "Obyte"
     case "reichain":
       return "REIchain"
     case "ontology_evm":
       return "OntologyEVM"
-    case "carbon":
-      return "Carbon"
-    case "neo3":
-      return "Neo3"
-    case "palette":
-      return "Pallete"
-    case "bytomsidechain":
-      return "Bytomsidechain"
-    case "starcoin":
-      return "Starcoin"
-    case "terra2":
-      return "Terra2"
     case "sx":
       return "SXnetwork"
-    case "echelon":
-      return "Echelon"
     case "multivac":
       return "MultiVAC"
     case "ore":
@@ -3862,94 +3750,28 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "LBRY"
     case "rvn":
       return "Ravencoin"
-    case "acala":
-      return "Acala"
     case "icp":
       return "ICP"
-    case "kintsugi":
-      return "Kintsugi"
-    case "filecoin":
-      return "Filecoin"
-    case "flow":
-      return "Flow"
-    case "kujira":
-      return "Kujira"
-    case "heiko":
-      return "Heiko"
-    case "posichain":
-      return "Posichain"
-    case "dogechain":
-      return "Dogechain"
-    case "canto":
-      return "Canto"
     case "ripple":
       return useNewChainNames ? "XRPL" : "Ripple"
-    case "godwokenv1":
-      return "GodwokenV1"
     case "arbitrum_nova":
       return "Arbitrum Nova"
-    case "ultron":
-      return "Ultron"
-    case "interlay":
-      return "Interlay"
-    case "juno":
-      return "Juno"
-    case "tombchain":
-      return "Tombchain"
-    case "crescent":
-      return "Crescent"
-    case "vision":
-      return "Vision"
     case "ethpow":
       return "EthereumPoW"
-    case "cube":
-      return "Cube"
     case "functionx":
       return "FunctionX"
-    case "aptos":
-      return "Aptos"
-    case "kekchain":
-      return "Kekchain"
     case "milkomeda_a1":
       return "Milkomeda A1"
-    case "stride":
-      return "Stride"
     case "muuchain":
       return "MUUCHAIN"
-    case "injective":
-      return "Injective"
-    case "step":
-      return "Step"
     case "ton":
       return "TON"
-    case "starknet":
-      return "Starknet"
-    case "dexit":
-      return "Dexit"
-    case "empire":
-      return "Empire"
     case "boba_avax":
       return "Boba_Avax"
     case "boba_bnb":
       return "Boba_Bnb"
-    case "comdex":
-      return "Comdex"
-    case "flare":
-      return "Flare"
-    case "tlchain":
-      return "Tlchain"
-    case "zeniq":
-      return "Zeniq"
-    case "omax":
-      return "Omax"
-    case "bitindi":
-      return "Bitindi"
     case "map":
       return useNewChainNames ? "MAP Protocol" : "Map"
-    case "stargaze":
-      return "Stargaze"
-    case "libre":
-      return "Libre"
     case "umee":
       return useNewChainNames ? "UX" : "Umee"
     case "wemix":
@@ -3960,20 +3782,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "ENULS"
     case "orai":
       return useNewChainNames ? "Oraichain" : "Orai"
-    case "goerli":
-      return "Goerli"
     case "europa":
       return "SKALE Europa"
     case "core":
       return "CORE"
     case "rpg":
       return "Rangers"
-    case "lung":
-      return "Lung"
-    case "loop":
-      return "Loop"
-    case "bone":
-      return "Bone"
     case "era":
       return "ZKsync Era"
     case "bfc":
@@ -3984,92 +3798,38 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Bahamut"
     case "polygon_zkevm":
       return "Polygon zkEVM"
-    case "meta":
-      return "Meta"
-    case "equilibrium":
-      return "Equilibrium"
-    case "regen":
-      return "Regen"
     case "eos_evm":
       return "EOS EVM"
-    case "quicksilver":
-      return "Quicksilver"
     case "oas":
       return "Oasys"
-    case "migaloo":
-      return "Migaloo"
-    case "sui":
-      return "Sui"
-    case "grove":
-      return "Grove"
     case "xpla":
       return "XPLA"
-    case "neutron":
-      return "Neutron"
-    case "onus":
-      return "Onus"
-    case "pokt":
-      return "Pokt"
-    case "quasar":
-      return "Quasar"
-    case "concordium":
-      return "Concordium"
-    case "chihuahua":
-      return "Chihuahua"
-    case "rollux":
-      return "Rollux"
-    case "tenet":
-      return "Tenet"
-    case "mantle":
-      return "Mantle"
     case "neon_evm":
       return "Neon"
-    case "base":
-      return "Base"
-    case "linea":
-      return "Linea"
     case "gravitybridge":
       return "GravityBridge"
     case "aura":
       return "Aura Network"
-    case "sei":
-      return "Sei"
     case "op_bnb":
       return useNewChainNames ? "opBNB" : "op_bnb"
-    case "archway":
-      return "Archway"
     case "hydradx":
       return useNewChainNames ? "Hydration" : "HydraDX"
-    case "shibarium":
-      return "Shibarium"
     case "mvc":
       return "MVC"
     case "alv":
       return "ALV"
     case "dsc":
       return "DSC"
-    case "darwinia":
-      return "Darwinia"
     case "pg":
       return "Pego"
-    case "kroma":
-      return "Kroma"
-    case "manta":
-      return "Manta"
     case "shimmer_evm":
       return "ShimmerEVM"
-    case "beam":
-      return "Beam"
     case "nos":
       return "NOS"
-    case "scroll":
-      return "Scroll"
     case "renec":
       return "RENEC"
     case "radixdlt":
       return "Radix"
-    case "nolus":
-      return "Nolus"
     case "ethf":
       return "ETHF"
     case "meer":
@@ -4084,108 +3844,56 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "LightLink"
     case "pgn":
       return "PGN"
-    case "mayachain":
-      return "Mayachain"
     case "dash":
       return "Dash"
-    case "bostrom":
-      return "Bostrom"
-    case "alephium":
-      return "Alephium"
-    case "mode":
-      return "Mode"
     case "fsc":
       return "FSC"
     case "new":
       return "Newton"
     case "jbc":
       return "JBC"
-    case "sommelier":
-      return "Sommelier"
-    case "bahamut":
-      return "Bahamut"
-    case "zkfair":
-      return "Zkfair"
     case "cmp":
       return "CMP"
-    case "firechain":
-      return "Firechain"
     case "airdao":
       return "AirDAO"
     case "dydx":
       return "dYdX"
     case "btn":
       return "Bitnet"
-    case "bitnet":
-      return "Bitnet"
     case "zeta":
       return "ZetaChain"
-    case "celestia":
-      return "Celestia"
-    case "fraxtal":
-      return "Fraxtal"
     case "area":
       return "Areon Network"
     case "defiverse":
       return "DeFiVerse"
     case "manta_atlantic":
       return "Manta Atlantic"
-    case "xai":
-      return "Xai"
-    case "merlin":
-      return "Merlin"
-    case "blast":
-      return "Blast"
-    case "bitrock":
-      return "Bitrock"
     case "astrzk":
       return "Astar zkEVM"
-    case "naka":
-      return "Naka"
     case "inevm":
       return "inEVM"
-    case "dymension":
-      return "Dymension"
     case "q":
       return "Q Protocol"
       case "zklink":
         return useNewChainNames ? "zkLink Nova" : "zkLink"
-    case "kinto":
-      return "Kinto"
     case "imx":
       return "Immutable zkEVM"
-    case "zora":
-      return "Zora"
     case "defichain_evm":
       return "DeFiChain EVM"
     case "rss3_vsl":
       return "RSS3"
-    case "bittensor":
-      return "Bittensor"
-    case "degen":
-      return "Degen"
     case "islm":
       return "HAQQ"
     case "svm":
       return "SatoshiVM"
-    case "venom":
-      return "Venom"
     case "karak":
       return "K2"
     case "bitkub":
       return useNewChainNames ? "Bitkub Chain" : "Bitkub"
-    case "ancient8":
-      return "Ancient8"
-    case "hyperliquid":
-      return "Hyperliquid"
-    case "nibiru":
-      return "Nibiru"
     case "bsquared":
       return "BSquared"
     case "lyra":
       return useNewChainNames ? "Derive Chain" : "Lyra Chain"
-    case "planq":
-      return "Planq"
     case "xlayer":
       return "X Layer"
     case "lac":
@@ -4200,80 +3908,30 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "DFS Network"
     case "cyeth":
       return "Cyber"
-    case "bouncebit":
-        return "BounceBit"
     case "real":
         return "re.al"
-    case "taiko":
-        return "Taiko"
-    case "genesys":
-      return "Genesys"
-    case "kava":
-      return "Kava"
-    case "polkadex":
-      return "Polkadex"
-    case "aelf":
-      return "aelf"
-    case "lukso":
-      return "Lukso"
-    case "joltify":
-      return "Joltify"
     case "iotaevm":
       return "IOTA EVM"
-    case "ham":
-      return "Ham"
-    case "sanko":
-      return "Sanko"
-    case "rari":
-      return "Rari"
-    case "massa":
-      return "Massa"
     case "ailayer":
       return "AILayer"
-    case "mint":
-      return "Mint"
     case "ox_chain":
       return "OXFUN"
     case "etlk":
       return "Etherlink"
-    case "noble":
-      return "Noble"
-    case "aeternity":
-      return "Aeternity"
-    case "saakuru":
-      return "Saakuru"
     case "reya":
       return "Reya Network"
     case "cronos_zkevm":
       return "Cronos zkEVM"
-    case "dexalot":
-      return "Dexalot"
     case "band":
       return "BandChain"
     case "immutablex":
       return "Immutable X"
     case "neox":
       return "Neo X Mainnet"
-    case "gravity":
-      return "Gravity"
-    case "chainflip":
-      return "Chainflip"
     case "idex":
       return "IDEX"
-    case "zircuit":
-      return "Zircuit"
-    case "polynomial":
-      return "Polynomial"
     case "etn":
       return "Electroneum"
-    case "lisk":
-      return "Lisk"
-    case "hela":
-      return "HeLa"
-    case "matchain":
-      return "Matchain"
-    case "shape":
-      return "Shape"
     case "fuel":
       return useNewChainNames ? "Fuel Ignition" : "Fuel"
     case "wc":
@@ -4282,26 +3940,16 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "ApeChain"
     case "assetchain":
       return "Asset Chain"
-    case "morph":
-      return "Morph"
-    case "eclipse":
-      return "Eclipse"
     case "unit0":
       return "UNIT0"
-    case "shido":
-      return "Shido"
     case "rbn":
       return "Redbelly"
     case "xsat":
       return "exSat"
     case "tara":
       return "Taraxa"
-    case "corn":
-      return "Corn"
     case "vinu":
       return "VinuChain"
-    case "sonic":
-      return "Sonic"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

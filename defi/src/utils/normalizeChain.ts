@@ -25,9 +25,23 @@ export const normalizedChainReplacements = {
   "cronos zkevm": "cronos_zkevm",
   "kaia": "klaytn",
   "viction": "tomochain",
-  "fuel": "fuel_ignition"
+  "fuel ignition": "fuel",
 } as {
   [chain: string]: string
+}
+
+export function replaceChainNamesForOraclesByChain(
+  useNewChainNames: boolean,
+  oraclesByChain?:
+    | {
+      [chain: string]: string[];
+    }
+    | undefined
+) {
+  if (!oraclesByChain) return oraclesByChain;
+  return Object.fromEntries(
+    Object.entries(oraclesByChain).map(([chain, vals]) => [getChainDisplayName(chain, useNewChainNames), vals])
+  );
 }
 
 export function normalizeChain(chain: string) {
@@ -189,12 +203,12 @@ export const chainCoingeckoIds = {
     url: "https://solana.com/"
   },
   "Polygon": {
-    geckoId: "matic-network",
-    symbol: "MATIC",
-    cmcId: "3890",
+    geckoId: "polygon-ecosystem-token",
+    symbol: "POL",
+    cmcId: "28321",
     categories: ["EVM"],
     chainId: 137,
-    github: ['maticnetwork'],
+    github: ['maticnetwork', '0xpolygon'],
     twitter: "0xPolygon",
     url: "https://polygon.technology/"
   },
@@ -571,7 +585,7 @@ export const chainCoingeckoIds = {
   },
   "EOS": {
     geckoId: "eos",
-    github: ['EOSIO'],
+    github: ['EOSIO','eosnetworkfoundation','AntelopeIO'],
     symbol: "EOS",
     cmcId: "1765",
     twitter: "EOSNetworkFDN",
@@ -2886,7 +2900,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["Cosmos"],
+    categories: ["EVM"],
     twitter: "HyperliquidX",
     url: "https://hyperliquid.xyz/"
   },
@@ -3392,6 +3406,11 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
     twitter: "fuel_network",
     url: "https://fuel.network/",
   },
@@ -3442,6 +3461,83 @@ export const chainCoingeckoIds = {
     twitter: "MorphL2",
     url: "https://www.morphl2.io"
   },
+  "Eclipse": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "EclipseFND",
+    url: "https://www.eclipse.xyz",
+  },
+  "UNIT0": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "UnitsNetwork",
+    url: "https://units.network/",
+  },
+  "Shido": {
+    geckoId: "shido-2",
+    github: ['ShidoGlobal'],
+    symbol: "SHIDO",
+    cmcId: "28211",
+    categories: ["EVM", "Cosmos"],
+    twitter: "ShidoGlobal",
+    url: "https://shido.io/"
+  },
+  "Redbelly": {
+    geckoId: "redbelly-network-token",
+    symbol: "RBNT",
+    cmcId: null,
+    twitter: "RedbellyNetwork",
+    url: "https://www.redbelly.network",
+  },
+  "exSat": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Bitcoin Sidechains"],
+    twitter: "exSatNetwork",
+    url: "https://exsat.network/",
+    github: ["exsat-network"],
+    chainId: 7200
+  },
+  "Taraxa": {
+    geckoId: "taraxa",
+    symbol: "TARA",
+    cmcId: "8715",
+    categories: ["EVM"],
+    twitter: "taraxa_project",
+    url: "https://taraxa.io/",
+    chainId: 841
+  },
+  "Corn": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Bitcoin Sidechains"],
+    twitter: "use_corn",
+    url: "https://usecorn.com/",
+    chainId: 21000000
+  },
+  "VinuChain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "vinuchain",
+    url: "https://www.vinuchain.org/",
+    github: ["vinuchain"],
+    chainId: 207
+  },
+  "Sonic": {
+    geckoId: null,
+    symbol: "S",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "0xSonicLabs",
+    url: "https://www.soniclabs.com",
+    chainId: 146
+  },
 } as unknown as ChainCoinGekcoIds
 
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
@@ -3467,6 +3563,7 @@ chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
 chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
 chainCoingeckoIds["Lyra Chain"] = chainCoingeckoIds["Derive Chain"]
 chainCoingeckoIds["Fuel"] = chainCoingeckoIds["Fuel Ignition"]
+chainCoingeckoIds["Sapphire"] = chainCoingeckoIds["Oasis Sapphire"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -4187,6 +4284,24 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Asset Chain"
     case "morph":
       return "Morph"
+    case "eclipse":
+      return "Eclipse"
+    case "unit0":
+      return "UNIT0"
+    case "shido":
+      return "Shido"
+    case "rbn":
+      return "Redbelly"
+    case "xsat":
+      return "exSat"
+    case "tara":
+      return "Taraxa"
+    case "corn":
+      return "Corn"
+    case "vinu":
+      return "VinuChain"
+    case "sonic":
+      return "Sonic"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

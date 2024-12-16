@@ -17,6 +17,7 @@ export interface logOptions {
   timestamp?: number;
   toBlock?: number;
   fromBlock: number;
+  skipCacheRead?: boolean;
 }
 
 export async function getLogs(options: logOptions) {
@@ -104,7 +105,7 @@ export async function getLogs(options: logOptions) {
   async function _getCache(key: string) {
     let cache = await getCache(cacheFolder, key)
     // set initial structure if it is missing / reset if from block is moved to something older
-    if (!cache.logs || fromBlock < cache.fromBlock) {
+    if (!cache.logs || fromBlock < cache.fromBlock || options.skipCacheRead) {
       cache = {
         logs: []
       }

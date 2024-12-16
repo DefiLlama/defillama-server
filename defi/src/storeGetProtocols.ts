@@ -6,7 +6,7 @@ import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
 import { storeR2 } from "./utils/r2";
-import { getChainDisplayName } from "./utils/normalizeChain";
+import { replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 import { includeCategoryIntoChainTvl } from "./utils/excludeProtocols";
@@ -16,19 +16,6 @@ function compress(data: string) {
     [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
     [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
   });
-}
-
-function replaceChainNames(
-  oraclesByChain?:
-    | {
-      [chain: string]: string[];
-    }
-    | undefined
-) {
-  if (!oraclesByChain) return oraclesByChain;
-  return Object.fromEntries(
-    Object.entries(oraclesByChain).map(([chain, vals]) => [getChainDisplayName(chain, true), vals])
-  );
 }
 
 export async function storeGetProtocols({
@@ -65,7 +52,7 @@ export async function storeGetProtocols({
           category: protocol.category,
           chains: protocol.chains,
           oracles: protocol.oracles,
-          oraclesByChain: replaceChainNames(protocol.oraclesByChain),
+          oraclesByChain: replaceChainNamesForOraclesByChain(true, protocol.oraclesByChain),
           forkedFrom: protocol.forkedFrom,
           listedAt: protocol.listedAt,
           mcap: protocol.mcap,

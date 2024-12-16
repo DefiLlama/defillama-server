@@ -2,9 +2,6 @@ import { buildOutdatedMessage, findOutdatedPG, getOutdated } from './utils/findO
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { sendMessage } from "./utils/discord"
 import axios from 'axios'
-import protocols from './protocols/data';
-import { shuffleArray } from './utils/shared/shuffleArray';
-import invokeLambda from './utils/shared/invokeLambda';
 
 const maxDrift = 6 * 3600; // Max 4 updates missed
 const llamaRole = "<@&849669546448388107>"
@@ -13,7 +10,10 @@ const llamaRole = "<@&849669546448388107>"
 const handler = async (_event: any) => {
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
   const hourlyOutdated = await getOutdated((60 * 4 + 20) * 60); // 1hr
-  await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hour`, webhookUrl, false)
+  await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hours`, webhookUrl, false)
+  if (hourlyOutdated.length > 100) {
+    await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hours ${hourlyOutdated.length > 400 ? llamaRole : ''}`, process.env.TEAM_WEBHOOK, false)
+  }
   await sendMessage(buildOutdatedMessage(hourlyOutdated) ?? "No protocols are outdated", process.env.HOURLY_OUTDATED_WEBHOOK!)
   const outdated = await getOutdated(maxDrift);
   const message = buildOutdatedMessage(outdated)
@@ -51,6 +51,19 @@ export default wrapScheduledLambda(handler);
 
 export async function notifyOutdatedPG() {
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
+  const currentHour = new Date().getUTCHours();
+
+  // now this check runs every 4th hour
+  if (currentHour % 4 === 0) {
+    const hour12Outdated = await findOutdatedPG(12 * 3600); // 12hr
+    const ignoredSet = new Set(['Synthetix']);
+    const failedOver100m = hour12Outdated.filter((o: any) => o[1]?.tvl > 100_000_000 && !ignoredSet.has(o[0]));
+    if (failedOver100m.length > 0) {
+      await sendMessage(buildOutdatedMessage(failedOver100m) as any, process.env.TEAM_WEBHOOK!)
+    }
+  }
+
+  // await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
   const hourlyOutdated = await findOutdatedPG((60 * 4 + 20) * 60); // 4.5hr
 
   await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last 4 hour`, webhookUrl, false)

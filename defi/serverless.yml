@@ -828,6 +828,14 @@ functions:
       - http:
           path: chain-assets/historical-flows/{chain}/{period}
           method: get
+  # depositedContracts: 
+  #   handler: src/getDepositedContracts.default
+  #   timeout: 30
+  #   memorySize: 1000
+  #   events:
+  #     - http:
+  #         path: deposited-contracts/{addresses}/{threshold}
+  #         method: get
 
 resources:
   # CORS for api gateway errors

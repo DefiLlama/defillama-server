@@ -462,9 +462,9 @@ export default {
         parentId: "Metavault",
         "id": "3911"
     },
-    "kiloex": {
+    /*"kiloex": { // volume-to-OI discrepancy, 77x ratio
         "id": "3329"
-    },
+    },*/
     "surfone": {
         "id": "3954"
     },
@@ -694,6 +694,7 @@ export default {
     },
     "edgeX": {
         id: "4954",
+        "enabled": false,
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1723075200": true,
@@ -745,6 +746,28 @@ export default {
         protocolsData: {
             "derivatives": {
                 "id": "2380",
+            }
+        }
+    },
+    "quenta": {
+        id: "5314"
+    },
+    "zkera-finance": {
+        id: "3343"
+    },
+    "adrena": {
+        id: "5353"
+    },
+    "thetis-market": {
+        parentId: "Thetis Market",
+        id: "5469"
+    },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
             }
         }
     }

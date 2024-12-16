@@ -5,7 +5,7 @@ import {
   Coin,
   CoinMetadata,
   iterateOverPlatforms,
-  staleMargin
+  staleMargin,
 } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
@@ -13,7 +13,9 @@ import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
 import { batchReadPostgres, getRedisConnection } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
-import { Connection, PublicKey } from "@solana/web3.js";
+import { PublicKey } from "@solana/web3.js";
+import { getConnection } from "../adapters/solana/utils";
+import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -104,21 +106,17 @@ async function cacheSolanaTokens() {
   return solanaTokens;
 }
 
-let solanaConnection: any;
 async function getSymbolAndDecimals(
   tokenAddress: string,
   chain: string,
   coingeckoSymbol: string,
 ): Promise<{ symbol: string; decimals: number } | undefined> {
-  if (chain === "solana") {
+  if (chainsThatShouldNotBeLowerCased.includes(chain)) {
     const token = ((await solanaTokens).tokens as any[]).find(
       (t) => t.address === tokenAddress,
     );
     if (token === undefined) {
-      if (!solanaConnection)
-        solanaConnection = new Connection(
-          process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
-        );
+      const solanaConnection = getConnection(chain);
       const decimalsQuery = await solanaConnection.getParsedAccountInfo(
         new PublicKey(tokenAddress),
       );
@@ -427,7 +425,7 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   let coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json())) as Coin[];
-  
+
   if (coinType || hourly) {
     const metadatas = await getCGCoinMetadatas(
       coins.map((coin) => coin.id),

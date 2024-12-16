@@ -17,7 +17,7 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "ethereum",
   "solana",
   // "sui",
-  // "aptos",
+  "aptos",
   // "stacks",
   "bitcoin",
   // "fantom",
@@ -82,7 +82,10 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5232": "sui",
   "5218": "mint",
   "5248": "fuel",
-  "5303": "morph"
+  "5303": "morph",
+  "4481": "hyperliquid",
+  "5382": "core",
+  "5461": "apechain",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -92,6 +95,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "1878": "apex",
   "344": "zkswap",
   "5130": "polynomial",
+  "5323": "exSat",
 };
 
 export const allChainKeys: string[] = [
@@ -159,4 +163,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   zkswap: { ticker: "ZF", address: "0x31c2c031fdc9d33e974f327ab0d9883eae06ca4a" },
   merlin: { ticker: "MERL", address: "0x5c46bff4b38dc1eae09c5bac65872a1d8bc87378" },
   zksync: { ticker: "ZK", address: "0x5a7d6b2f92c77fad6ccabd7ee0624e64907eaf3e" },
+  aptos: { ticker: "APT", address: "coingecko:aptos" },
+  hyperliquid: { ticker: "HYPE", address: "coingecko:hyperliquid" },
+  apechain: { ticker: "APE", address: "coingecko:apechain" },
 };

@@ -2255,4 +2255,13 @@ export default {
     "memewe": {
         id: "5501"
     },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
+            }
+        }
+    }
 } as AdaptorsConfig

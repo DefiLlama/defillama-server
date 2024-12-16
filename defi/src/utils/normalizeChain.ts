@@ -1,33 +1,15 @@
 export const normalizedChainReplacements = {
   // keys should be full lowercase
-  "binance": "bsc",
-  "wanchain": "wan",
-  "kucoin": "kcc",
-  "terra classic": "terra",
-  "nova network": "nova",
-  "godwokenv1": "godwoken_v1",
-  "arbitrum nova": "arbitrum_nova",
-  "zksync era": "era",
-  "polygon zkevm": "polygon_zkevm",
-  "eos evm": "eos_evm",
-  "oasys": "oas",
-  "map protocol": "map",
-  "pulsechain": "pulse",
-  "opbnb": "op_bnb",
-  "bifrost network": "bfc",
-  "horizen eon": "eon",
-  "bahamut": "ftn",
-  "bitnet": "btn",
-  "defichain evm": "defichain_evm",
-  "hydration": "hydradx",
-  "zklink nova": "zklink",
-  "bitlayer": "btr",
-  "cronos zkevm": "cronos_zkevm",
-  "kaia": "klaytn",
-  "viction": "tomochain",
-  "fuel ignition": "fuel",
 } as {
   [chain: string]: string
+}
+
+function addNormalizedChainReplacements(obj: { [key: string]: string }) {
+  Object.entries(obj).forEach(([key, value]) => {
+    value = value.toLowerCase()
+    if (key === value) return;
+    normalizedChainReplacements[value] = key
+  })
 }
 
 export function replaceChainNamesForOraclesByChain(
@@ -48,6 +30,7 @@ export function normalizeChain(chain: string) {
   let normalizedChain = chain.toLowerCase();
   return normalizedChainReplacements[normalizedChain] ?? normalizedChain;
 }
+
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
   return moduleDoubleCounted === true || (category === "Yield Aggregator" || category === "Yield");
@@ -371,7 +354,7 @@ export const chainCoingeckoIds = {
     github: ['rsksmart'],
     symbol: "RBTC",
     cmcId: "3626",
-    categories: ["EVM","Bitcoin Sidechains"],
+    categories: ["EVM", "Bitcoin Sidechains"],
     parent: {
       chain: "Bitcoin",
       types: ["gas"]
@@ -585,7 +568,7 @@ export const chainCoingeckoIds = {
   },
   "EOS": {
     geckoId: "eos",
-    github: ['EOSIO','eosnetworkfoundation','AntelopeIO'],
+    github: ['EOSIO', 'eosnetworkfoundation', 'AntelopeIO'],
     symbol: "EOS",
     cmcId: "1765",
     twitter: "EOSNetworkFDN",
@@ -638,7 +621,7 @@ export const chainCoingeckoIds = {
   },
   "Viction": { // previously TomoChain
     geckoId: "tomochain",
-    github: ['tomochain','BuildOnViction'],
+    github: ['tomochain', 'BuildOnViction'],
     symbol: "VIC",
     cmcId: "2570",
     categories: ["EVM"],
@@ -2281,7 +2264,7 @@ export const chainCoingeckoIds = {
     geckoId: "kroma",
     symbol: "KRO",
     cmcId: null,
-    categories: ["EVM","Rollup", "Superchain"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -2602,7 +2585,7 @@ export const chainCoingeckoIds = {
     geckoId: "fraxtal",
     symbol: "FXTL",
     cmcId: null,
-    categories: ["EVM","Superchain"],
+    categories: ["EVM", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -2945,7 +2928,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     parent: {
       chain: "OKTChain",
-      types: ["L2","gas"]
+      types: ["L2", "gas"]
     },
     twitter: "okx",
     url: "https://www.okx.com/xlayer"
@@ -2978,7 +2961,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     twitter: "BitlayerLabs",
-    categories: ["Bitcoin Sidechains","EVM"],
+    categories: ["Bitcoin Sidechains", "EVM"],
     github: ["bitlayer-org"],
     chainId: 200901,
     url: "https://www.bitlayer.org"
@@ -3003,7 +2986,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup", "Superchain"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -3037,7 +3020,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3089,7 +3072,7 @@ export const chainCoingeckoIds = {
     geckoId: "joltify",
     symbol: "JOLT",
     cmcId: "19855",
-    categories: ["EVM","Cosmos"],
+    categories: ["EVM", "Cosmos"],
     twitter: "joltify_finance",
     url: "https://joltify.io/",
     github: ["joltify-finance"]
@@ -3098,7 +3081,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3167,7 +3150,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup", "Superchain"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3242,7 +3225,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3357,7 +3340,7 @@ export const chainCoingeckoIds = {
     geckoId: "lisk",
     symbol: "LSK",
     cmcId: null,
-    categories: ["EVM","Rollup", "Superchain"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3380,7 +3363,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "BSC",
       types: ["L2", "gas"]
@@ -3393,7 +3376,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup","Superchain"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -3406,7 +3389,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Rollup"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3418,7 +3401,7 @@ export const chainCoingeckoIds = {
     geckoId: "worldcoin-wld",
     symbol: "WLD",
     cmcId: null,
-    categories: ["EVM","Rollup", "Superchain"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2"]
@@ -3495,7 +3478,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Bitcoin Sidechains"],
+    categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "exSatNetwork",
     url: "https://exsat.network/",
     github: ["exsat-network"],
@@ -3514,7 +3497,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM","Bitcoin Sidechains"],
+    categories: ["EVM", "Bitcoin Sidechains"],
     twitter: "use_corn",
     url: "https://usecorn.com/",
     chainId: 21000000
@@ -3540,107 +3523,215 @@ export const chainCoingeckoIds = {
   },
 } as unknown as ChainCoinGekcoIds
 
-chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
-chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
-chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
-chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
-chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
-chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
-chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
-chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
-chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
-chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
-chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Protocol"]
-chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
-chainCoingeckoIds["WEMIX"] = chainCoingeckoIds["WEMIX3.0"]
-chainCoingeckoIds["Umee"] = chainCoingeckoIds["UX"]
-chainCoingeckoIds["TomoChain"] = chainCoingeckoIds["Viction"]
-chainCoingeckoIds["zkLink"] = chainCoingeckoIds["zkLink Nova"]
-chainCoingeckoIds["Europa"] = chainCoingeckoIds["SKALE Europa"]
-chainCoingeckoIds["HydraDX"] = chainCoingeckoIds["Hydration"]
-chainCoingeckoIds["Ripple"] = chainCoingeckoIds["XRPL"]
-chainCoingeckoIds["Persistence"] = chainCoingeckoIds["Persistence One"]
-chainCoingeckoIds["Klaytn"] = chainCoingeckoIds["Kaia"]
-chainCoingeckoIds["Lyra Chain"] = chainCoingeckoIds["Derive Chain"]
-chainCoingeckoIds["Fuel"] = chainCoingeckoIds["Fuel Ignition"]
-chainCoingeckoIds["Sapphire"] = chainCoingeckoIds["Oasis Sapphire"]
-
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
 export function transformNewChainName(chain: string) {
-  switch (chain) {
-    case "Binance":
-      return "BSC"
-    case "Kucoin":
-      return "KCC"
-    case "OKExChain":
-      return "OKTChain"
-    case "xDai":
-      return "Gnosis"
-    case "Cosmos":
-      return "CosmosHub"
-    case "Terra":
-      return "Terra Classic"
-    case "Nova":
-      return "Nova Network"
-    case "godwoken_v1":
-      return "GodwokenV1"
-    case "arbitrum_nova":
-      return "Arbitrum Nova"
-    case "Milkomeda":
-      return "Milkomeda C1"
-    case "Elrond":
-      return "MultiversX"
-    case "RSK":
-      return "Rootstock"
-    case "Orai":
-      return "Oraichain"
-    case "zkSync":
-      return "ZKsync Lite"
-    case "polygon_zkevm":
-      return "Polygon zkEVM"
-    case "eos_evm":
-      return "EOS EVM"
-    case "Map":
-      return "MAP Protocol"
-    case "Pulse":
-      return "PulseChain"
-    case "Op_Bnb":
-        return "opBNB"
-    case "WEMIX":
-      return "WEMIX3.0"
-    case "Umee":
-      return "UX"
-    case "TomoChain":
-      return "Viction"
-    case "Sapphire":
-      return "Oasis Sapphire"
-    case "Oasis":
-      return "Oasis Emerald"
-    case "zklink":
-      return "zkLink Nova"
-    case "Bitkub":
-      return "Bitkub Chain"
-    case "HydraDX":
-      return "Hydration"
-    case "Ripple":
-      return "XRPL"
-    case "Persistence":
-      return "Persistence One"
-    case "Klaytn":
-      return "Kaia"
-    case "zkSync Era":
-      return "ZKsync Era"
-    case "zkSync Lite":
-      return "ZKsync Lite"
-    case "Lyra Chain":
-      return "Derive Chain"
-    case "Fuel":
-      return "Fuel Ignition"
-    default:
-      return chain
-  }
+  return chainOldLabelToNewLabelMap[chain] || chain
 }
+
+const chainLabelMap = {
+  "zklink": "zkLink",
+  "bitkub": "Bitkub",
+  "lyra": "Lyra Chain",
+  "fuel": "Fuel",
+  "op_bnb": "op_bnb",
+  "hydradx": "HydraDX",
+  "orai": "Orai",
+  "map": "Map",
+  "umee": "Umee",
+  "wemix": "WEMIX",
+  "persistence": "Persistence",
+  "ripple": "Ripple",
+  "milkomeda": "Milkomeda",
+  "zksync": "zkSync",
+  "zksync era": "zkSync Era",
+  "tomochain": "TomoChain",
+  "elrond": "Elrond",
+  "rsk": "RSK",
+  "pulse": "Pulse",
+  "sapphire": "Sapphire",
+  "oasis": "Oasis",
+  "klaytn": "Klaytn",
+  "kcc": "Kucoin",
+  "okexchain": "OKExChain",
+  "xdai": "xDai",
+  "cosmos": "Cosmos",
+  "terra": "Terra",
+  "bsc": "Binance",
+  "wan": "Wanchain",
+  "nova": "Nova Network",
+  "godwoken_v1": "GodwokenV1",
+  "avax": "Avalanche",
+  "xdaiarb": "XdaiArb",
+  "defichain": "DefiChain",
+  "polynetwork": "PolyNetwork",
+  "eos": "EOS",
+  "neo": "NEO",
+  "iotex": "IoTeX",
+  "thundercore": "ThunderCore",
+  "hpb": "HPB",
+  "energyweb": "EnergyWeb",
+  "gochain": "GoChain",
+  "smartbch": "smartBCH",
+  "zyx": "ZYX",
+  "vechain": "VeChain",
+  "xdc": "XDC",
+  "ethereumclassic": "EthereumClassic",
+  "bifrost network": "Bifrost Network",
+  "bevm": "BEVM",
+  "horizen eon": "Horizen EON",
+  "csc": "CSC",
+  "skale": "SKALE",
+  "dfk": "DFK",
+  "clv": "CLV",
+  "rei": "REI",
+  "reichain": "REIchain",
+  "ontology_evm": "OntologyEVM",
+  "sx": "SXnetwork",
+  "multivac": "MultiVAC",
+  "ore": "ORE",
+  "lbry": "LBRY",
+  "rvn": "Ravencoin",
+  "icp": "ICP",
+  "arbitrum_nova": "Arbitrum Nova",
+  "ethpow": "EthereumPoW",
+  "functionx": "FunctionX",
+  "milkomeda_a1": "Milkomeda A1",
+  "muuchain": "MUUCHAIN",
+  "ton": "TON",
+  "boba_avax": "Boba_Avax",
+  "boba_bnb": "Boba_Bnb",
+  "enuls": "ENULS",
+  "europa": "SKALE Europa",
+  "core": "CORE",
+  "rpg": "Rangers",
+  "era": "ZKsync Era",
+  "bfc": "Bifrost Network",
+  "chainx": "BEVM",
+  "ftn": "Bahamut",
+  "polygon_zkevm": "Polygon zkEVM",
+  "eos_evm": "EOS EVM",
+  "oas": "Oasys",
+  "xpla": "XPLA",
+  "neon_evm": "Neon",
+  "gravitybridge": "GravityBridge",
+  "aura": "Aura Network",
+  "mvc": "MVC",
+  "alv": "ALV",
+  "dsc": "DSC",
+  "pg": "Pego",
+  "shimmer_evm": "ShimmerEVM",
+  "nos": "NOS",
+  "renec": "RENEC",
+  "radixdlt": "Radix",
+  "ethf": "ETHF",
+  "meer": "MEER",
+  "elsm": "Elysium",
+  "eon": "Horizen EON",
+  "chz": "Chiliz",
+  "lightlink_phoenix": "LightLink",
+  "pgn": "PGN",
+  "dash": "Dash",
+  "fsc": "FSC",
+  "new": "Newton",
+  "jbc": "JBC",
+  "cmp": "CMP",
+  "airdao": "AirDAO",
+  "dydx": "dYdX",
+  "btn": "Bitnet",
+  "zeta": "ZetaChain",
+  "area": "Areon Network",
+  "defiverse": "DeFiVerse",
+  "manta_atlantic": "Manta Atlantic",
+  "astrzk": "Astar zkEVM",
+  "inevm": "inEVM",
+  "q": "Q Protocol",
+  "bsquared": "BSquared",
+  "imx": "Immutable zkEVM",
+  "defichain_evm": "DeFiChain EVM",
+  "rss3_vsl": "RSS3",
+  "islm": "HAQQ",
+  "svm": "SatoshiVM",
+  "karak": "K2",
+  "xlayer": "X Layer",
+  "lac": "LaChain Network",
+  "bob": "BOB",
+  "btr": "Bitlayer",
+  "ace": "Endurance",
+  "dfs": "DFS Network",
+  "cyeth": "Cyber",
+  "real": "re.al",
+  "iotaevm": "IOTA EVM",
+  "ailayer": "AILayer",
+  "ox_chain": "OXFUN",
+  "etlk": "Etherlink",
+  "reya": "Reya Network",
+  "cronos_zkevm": "Cronos zkEVM",
+  "band": "BandChain",
+  "immutablex": "Immutable X",
+  "neox": "Neo X Mainnet",
+  "idex": "IDEX",
+  "etn": "Electroneum",
+  "wc": "World Chain",
+  "apechain": "ApeChain",
+  "assetchain": "Asset Chain",
+  "unit0": "UNIT0",
+  "rbn": "Redbelly",
+  "xsat": "exSat",
+  "tara": "Taraxa",
+  "vinu": "VinuChain",
+} as { [key: string]: string }
+
+const newChainLabelMap = {
+  "zklink": "zkLink Nova",
+  "bitkub": "Bitkub Chain",
+  "lyra": "Derive Chain",
+  "fuel": "Fuel Ignition",
+  "op_bnb": "opBNB",
+  "hydradx": "Hydration",
+  "orai": "Oraichain",
+  "map": "MAP Protocol",
+  "umee": "UX",
+  "wemix": "WEMIX3.0",
+  "persistence": "Persistence One",
+  "ripple": "XRPL",
+  "milkomeda": "Milkomeda C1",
+  "zksync": "ZKsync Lite",
+  "zksync era": "ZKsync Era",
+  "tomochain": "Viction",
+  "elrond": "MultiversX",
+  "rsk": "Rootstock",
+  "pulse": "PulseChain",
+  "sapphire": "Oasis Sapphire",
+  "oasis": "Oasis Emerald",
+  "klaytn": "Kaia",
+  "kcc": "KCC",
+  "okexchain": "OKTChain",
+  "xdai": "Gnosis",
+  "cosmos": "CosmosHub",
+  "terra": "Terra Classic",
+  "bsc": "BSC",
+} as { [key: string]: string }
+
+const allChainLabelMap = {
+  ...chainLabelMap,
+  ...newChainLabelMap,
+} as { [key: string]: string }
+
+const chainOldLabelToNewLabelMap = {} as { [key: string]: string }
+
+Object.entries(newChainLabelMap)
+  .filter(([key,]) => chainLabelMap[key])
+  .forEach(([key, newChainLabel]) => {
+    const chainLabel = chainLabelMap[key] as string
+    if (!chainLabel) return;
+    chainCoingeckoIds[chainLabel] = chainCoingeckoIds[newChainLabel]
+    chainOldLabelToNewLabelMap[chainLabel] = newChainLabel
+  })
+
+addNormalizedChainReplacements(chainLabelMap)
+addNormalizedChainReplacements(newChainLabelMap)
+
 
 export function getChainDisplayName(normalizedChain: string, useNewChainNames: boolean): string {
   if (extraSections.includes(normalizedChain)) {
@@ -3649,310 +3740,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
   if (normalizedChain.includes('-')) {
     return normalizedChain.split('-').map(chain => getChainDisplayName(chain, useNewChainNames)).join('-')
   }
-  switch (normalizedChain) {
-    case "bsc":
-      return useNewChainNames ? "BSC" : "Binance"
-    case "wan":
-      return "Wanchain"
-    case "kcc":
-      return useNewChainNames ? "KCC" : "Kucoin"
-    case "okexchain":
-      return useNewChainNames ? "OKTChain" : "OKExChain"
-    case "xdai":
-      return useNewChainNames ? "Gnosis" : "xDai"
-    case "cosmos":
-      return useNewChainNames ? "CosmosHub" : "Cosmos"
-    case "terra":
-      return useNewChainNames ? "Terra Classic" : "Terra"
-    case "nova":
-      return "Nova Network"
-    case "godwoken_v1":
-      return "GodwokenV1"
-    case "elrond":
-      return useNewChainNames ? "MultiversX" : "Elrond"
-    case "rsk":
-      return useNewChainNames ? "Rootstock" : "RSK"
-    case "pulse":
-      return useNewChainNames ? "PulseChain" : "Pulse"
-    case "sapphire":
-      return useNewChainNames ? "Oasis Sapphire" : "Sapphire"
-    case "oasis":
-      return useNewChainNames ? "Oasis Emerald" : "Oasis"
-    case "klaytn":
-      return useNewChainNames ? "Kaia" : "Klaytn"
-    case "avax":
-      return "Avalanche"
-    case "xdaiarb":
-      return "XdaiArb"
-    case "defichain":
-      return "DefiChain"
-    case "polynetwork":
-      return "PolyNetwork"
-    case "eos":
-      return "EOS"
-    case "neo":
-      return "NEO"
-    case "iotex":
-      return "IoTeX"
-    case "thundercore":
-      return "ThunderCore"
-    case "hpb":
-      return "HPB"
-    case "energyweb":
-      return "EnergyWeb"
-    case "gochain":
-      return "GoChain"
-    case "tomochain":
-      return useNewChainNames ? "Viction" : "TomoChain"
-    case "smartbch":
-      return "smartBCH"
-    case "zyx":
-      return "ZYX"
-    case "vechain":
-      return "VeChain"
-    case "xdc":
-      return "XDC"
-    case "ethereumclassic":
-      return "EthereumClassic"
-    case "zksync":
-      return useNewChainNames ? "ZKsync Lite" : "zkSync"
-    case "zksync era":
-      return useNewChainNames ? "ZKsync Era" : "zkSync Era"
-    case "bifrost network":
-      return "Bifrost Network"
-    case "bevm":
-      return "BEVM"
-    case "horizen eon":
-      return "Horizen EON"
-    case "csc":
-      return "CSC"
-    case "skale":
-      return "SKALE"
-    case "milkomeda":
-      return useNewChainNames ? "Milkomeda C1" : "Milkomeda"
-    case "dfk":
-      return "DFK"
-    case "clv":
-      return "CLV"
-    case "rei":
-      return "REI"
-    case "reichain":
-      return "REIchain"
-    case "ontology_evm":
-      return "OntologyEVM"
-    case "sx":
-      return "SXnetwork"
-    case "multivac":
-      return "MultiVAC"
-    case "ore":
-      return "ORE"
-    case "lbry":
-      return "LBRY"
-    case "rvn":
-      return "Ravencoin"
-    case "icp":
-      return "ICP"
-    case "ripple":
-      return useNewChainNames ? "XRPL" : "Ripple"
-    case "arbitrum_nova":
-      return "Arbitrum Nova"
-    case "ethpow":
-      return "EthereumPoW"
-    case "functionx":
-      return "FunctionX"
-    case "milkomeda_a1":
-      return "Milkomeda A1"
-    case "muuchain":
-      return "MUUCHAIN"
-    case "ton":
-      return "TON"
-    case "boba_avax":
-      return "Boba_Avax"
-    case "boba_bnb":
-      return "Boba_Bnb"
-    case "map":
-      return useNewChainNames ? "MAP Protocol" : "Map"
-    case "umee":
-      return useNewChainNames ? "UX" : "Umee"
-    case "wemix":
-      return useNewChainNames ? "WEMIX3.0" : "WEMIX"
-    case "persistence":
-      return useNewChainNames ? "Persistence One" : "Persistence"
-    case "enuls":
-      return "ENULS"
-    case "orai":
-      return useNewChainNames ? "Oraichain" : "Orai"
-    case "europa":
-      return "SKALE Europa"
-    case "core":
-      return "CORE"
-    case "rpg":
-      return "Rangers"
-    case "era":
-      return "ZKsync Era"
-    case "bfc":
-      return "Bifrost Network"
-    case "chainx":
-      return "BEVM"
-    case "ftn":
-      return "Bahamut"
-    case "polygon_zkevm":
-      return "Polygon zkEVM"
-    case "eos_evm":
-      return "EOS EVM"
-    case "oas":
-      return "Oasys"
-    case "xpla":
-      return "XPLA"
-    case "neon_evm":
-      return "Neon"
-    case "gravitybridge":
-      return "GravityBridge"
-    case "aura":
-      return "Aura Network"
-    case "op_bnb":
-      return useNewChainNames ? "opBNB" : "op_bnb"
-    case "hydradx":
-      return useNewChainNames ? "Hydration" : "HydraDX"
-    case "mvc":
-      return "MVC"
-    case "alv":
-      return "ALV"
-    case "dsc":
-      return "DSC"
-    case "pg":
-      return "Pego"
-    case "shimmer_evm":
-      return "ShimmerEVM"
-    case "nos":
-      return "NOS"
-    case "renec":
-      return "RENEC"
-    case "radixdlt":
-      return "Radix"
-    case "ethf":
-      return "ETHF"
-    case "meer":
-      return "MEER"
-    case "elsm":
-      return "Elysium"
-    case "eon":
-      return "Horizen EON"
-    case "chz":
-      return "Chiliz"
-    case "lightlink_phoenix":
-      return "LightLink"
-    case "pgn":
-      return "PGN"
-    case "dash":
-      return "Dash"
-    case "fsc":
-      return "FSC"
-    case "new":
-      return "Newton"
-    case "jbc":
-      return "JBC"
-    case "cmp":
-      return "CMP"
-    case "airdao":
-      return "AirDAO"
-    case "dydx":
-      return "dYdX"
-    case "btn":
-      return "Bitnet"
-    case "zeta":
-      return "ZetaChain"
-    case "area":
-      return "Areon Network"
-    case "defiverse":
-      return "DeFiVerse"
-    case "manta_atlantic":
-      return "Manta Atlantic"
-    case "astrzk":
-      return "Astar zkEVM"
-    case "inevm":
-      return "inEVM"
-    case "q":
-      return "Q Protocol"
-      case "zklink":
-        return useNewChainNames ? "zkLink Nova" : "zkLink"
-    case "imx":
-      return "Immutable zkEVM"
-    case "defichain_evm":
-      return "DeFiChain EVM"
-    case "rss3_vsl":
-      return "RSS3"
-    case "islm":
-      return "HAQQ"
-    case "svm":
-      return "SatoshiVM"
-    case "karak":
-      return "K2"
-    case "bitkub":
-      return useNewChainNames ? "Bitkub Chain" : "Bitkub"
-    case "bsquared":
-      return "BSquared"
-    case "lyra":
-      return useNewChainNames ? "Derive Chain" : "Lyra Chain"
-    case "xlayer":
-      return "X Layer"
-    case "lac":
-      return "LaChain Network"
-    case "bob":
-      return "BOB"
-    case "btr":
-      return "Bitlayer"
-    case "ace":
-      return "Endurance"
-    case "dfs":
-      return "DFS Network"
-    case "cyeth":
-      return "Cyber"
-    case "real":
-        return "re.al"
-    case "iotaevm":
-      return "IOTA EVM"
-    case "ailayer":
-      return "AILayer"
-    case "ox_chain":
-      return "OXFUN"
-    case "etlk":
-      return "Etherlink"
-    case "reya":
-      return "Reya Network"
-    case "cronos_zkevm":
-      return "Cronos zkEVM"
-    case "band":
-      return "BandChain"
-    case "immutablex":
-      return "Immutable X"
-    case "neox":
-      return "Neo X Mainnet"
-    case "idex":
-      return "IDEX"
-    case "etn":
-      return "Electroneum"
-    case "fuel":
-      return useNewChainNames ? "Fuel Ignition" : "Fuel"
-    case "wc":
-      return "World Chain"
-    case "apechain":
-      return "ApeChain"
-    case "assetchain":
-      return "Asset Chain"
-    case "unit0":
-      return "UNIT0"
-    case "rbn":
-      return "Redbelly"
-    case "xsat":
-      return "exSat"
-    case "tara":
-      return "Taraxa"
-    case "vinu":
-      return "VinuChain"
-    default:
-      return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
-  }
+  const label = useNewChainNames ? allChainLabelMap[normalizedChain] : chainLabelMap[normalizedChain]
+  if (label) return label
+  return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
 }
 
 export function getDisplayChain(chains: string[]) {

@@ -60957,7 +60957,7 @@ const data3: Protocol[] = [
       "Pluto is a Leveraged Yield Machine on Solana, built for smart yield farmers who don't like losing money. Lenders deposit assets to earn passive yield, while the yield seekers users borrow these assets to enter different leverage strategies with yield generating assets such as JLP & INF",
     chain: "Solana",
     logo: `${baseIconsUrl}/pluto.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -60968,6 +60968,9 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Pyth"], // https://docs.pluto.so/protocol/learn/liquidation
     github: ["plutoleverage"],
+    audit_links: [
+      "https://docs.pluto.so/security/audit",
+    ],
     listedAt: 1732137324
   },
   {

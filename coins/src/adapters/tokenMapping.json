@@ -478,6 +478,11 @@
       "to": "coingecko#ignition-fbtc",
       "decimals": 8,
       "symbol": "lfbtc-pump-eth"
+    },
+    "0xC139190F447e929f090Edeb554D95AbB8b18aC1C": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "USDtb"
     }
   },
   "fantom": {

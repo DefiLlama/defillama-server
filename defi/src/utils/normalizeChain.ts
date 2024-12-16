@@ -4,6 +4,7 @@ export const normalizedChainReplacements = {
   [chain: string]: string
 }
 
+// for adding reverse mapping, like 'Fuel Ignition' -> 'fuel' i.e converting chain display name (visible to users) to chain ids (unique string identifier we use internally)
 function addNormalizedChainReplacements(obj: { [key: string]: string }) {
   Object.entries(obj).forEach(([key, value]) => {
     value = value.toLowerCase()
@@ -3529,6 +3530,7 @@ export function transformNewChainName(chain: string) {
   return chainOldLabelToNewLabelMap[chain] || chain
 }
 
+// if chain display name is capitalized chain id that we use, we add a mapping here like 'fuel' -> 'Fuel Ignition'
 const chainLabelMap = {
   "zklink": "zkLink",
   "bitkub": "Bitkub",
@@ -3682,6 +3684,7 @@ const chainLabelMap = {
   "vinu": "VinuChain",
 } as { [key: string]: string }
 
+// When we decide to change the display name of a chain, we add the mapping for the new name here
 const newChainLabelMap = {
   "zklink": "zkLink Nova",
   "bitkub": "Bitkub Chain",
@@ -3718,6 +3721,7 @@ const allChainLabelMap = {
   ...newChainLabelMap,
 } as { [key: string]: string }
 
+// mapping from old chain name to new chain name
 const chainOldLabelToNewLabelMap = {} as { [key: string]: string }
 
 Object.entries(newChainLabelMap)

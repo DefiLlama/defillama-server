@@ -3604,7 +3604,7 @@ const chainLabelMap = {
   "boba_avax": "Boba_Avax",
   "boba_bnb": "Boba_Bnb",
   "enuls": "ENULS",
-  "europa": "SKALE Europa",
+  "europa": "Europa",
   "core": "CORE",
   "rpg": "Rangers",
   "era": "ZKsync Era",
@@ -3714,6 +3714,7 @@ const newChainLabelMap = {
   "cosmos": "CosmosHub",
   "terra": "Terra Classic",
   "bsc": "BSC",
+  "europa": "SKALE Europa"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

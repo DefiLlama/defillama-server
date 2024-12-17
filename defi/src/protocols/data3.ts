@@ -30583,7 +30583,7 @@ const data3: Protocol[] = [
       "Sudo is the first perpetual dex on Sui that offers you sub-second and zero price impact trading experience on-chain.",
     chain: "Sui",
     logo: `${baseIconsUrl}/sudo-finance.png`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -30594,6 +30594,9 @@ const data3: Protocol[] = [
     module: "sudo-finance/index.js",
     twitter: "sudofinance",
     github: ["sudofina"],
+    audit_links: [
+      "https://336728225-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FY9xZ4YEB8Gkv1YMYZ49T%2Fuploads%2FucoGPFTlQmzDYT2Ff0tQ%2FSudo%20Finance%20Audit%20Report%20(1).pdf?alt=media&token=2133b2a8-7188-47fd-9c09-7fb7ec0296f7"
+    ],
     listedAt: 1705662884,
   },
   {

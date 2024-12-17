@@ -3536,7 +3536,7 @@ const chainLabelMap = {
   "bitkub": "Bitkub",
   "lyra": "Lyra Chain",
   "fuel": "Fuel",
-  "op_bnb": "op_bnb",
+  "op_bnb": "Op_Bnb",
   "hydradx": "HydraDX",
   "orai": "Orai",
   "map": "Map",

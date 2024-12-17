@@ -15193,7 +15193,7 @@ const data3: Protocol[] = [
     module: "gmx-v2/index.js",
     twitter: "GMX_IO",
     forkedFrom: [],
-    oracles: ["Chainlink", "Edge"],
+    oracles: ["Chainlink", "Edge"], // https://x.com/GMX_IO/status/1866794916392874021 https://gov.gmx.io/t/implementation-of-chaos-labs-risk-oracles/3861
     parentProtocol: "parent#gmx",
     audit_links: ["https://github.com/gmx-io/gmx-synthetics/tree/main/audits"],
     listedAt: 1691622170,

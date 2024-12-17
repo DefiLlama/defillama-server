@@ -40604,7 +40604,7 @@ const data3: Protocol[] = [
       "Hinkal is an institutional-grade protocol enabling confidential on-chain transactions. It is a category-defining solution, that allows liquid funds and retail users to create shielded addresses and transact on major dApps in complete confidentiality (the origin and destination of transaction, value).",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hinkal.jpg`,
-    audits: "5",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

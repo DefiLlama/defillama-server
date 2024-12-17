@@ -3971,6 +3971,21 @@
       "decimals": "18",
       "symbol": "ROSY",
       "to": "coingecko#rosy"
+    },
+    "0x97eec1c29f745dc7c267f90292aa663d997a601d": {
+      "decimals": "6",
+      "symbol": "USDC.e",
+      "to": "coingecko#usd-coin"
+    },
+    "0x8c4acd74ff4385f3b7911432fa6787aa14406f8b": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xb6dc6c8b71e88642cead3be1025565a9ee74d1c6": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#weth"
     }
   },
   "q": {

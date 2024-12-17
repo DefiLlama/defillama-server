@@ -63539,6 +63539,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     parentProtocol: "parent#ethena",
+    stablecoins: ["ethena-usdtb"],
     listedAt: 1734350466
   },
   {

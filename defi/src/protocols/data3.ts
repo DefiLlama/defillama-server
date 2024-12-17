@@ -40622,6 +40622,8 @@ const data3: Protocol[] = [
       "https://github.com/zokyo-sec/audit-reports/blob/main/Hinkal/Hinkal_Zokyo_Feb20th_2024.pdf",
       "https://certificate.quantstamp.com/full/hinkal-protocol/66b9b783-8b42-4a4e-89ed-3ef2a2df5958/index.html",
       "https://github.com/Secure3Audit/Secure3Academy/blob/main/audit_reports/Hinkal/Hinkal_final_Secure3_Audit_Report.pdf",
+      "https://www.zksecurity.xyz/reports/hinkal-audit",
+      "https://immunefi.com/audit-competition/hinkal-iop/leaderboard/",
     ],
     listedAt: 1713448328,
   },

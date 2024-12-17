@@ -49562,7 +49562,7 @@ const data3: Protocol[] = [
     gecko_id: "usual",
     cmcId: "33979",
     category: "RWA",
-    chains: ["Ethereum", "Arbitrum"],
+    chains: ["Ethereum"],
     module: "usual/index.js",
     twitter: "usualmoney",
     oraclesByChain: {

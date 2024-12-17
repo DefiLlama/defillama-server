@@ -11,11 +11,10 @@ import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
 import { storeNotTokens } from "./layer2pg";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
-import { readFromPGCache, writeToPGCache } from "../src/api2/db";
-import { unixTimestampNow } from "../emissions-adapters/utils/time";
 import { Connection, PublicKey } from "@solana/web3.js";
 import * as sdk from "@defillama/sdk";
-import { struct, u8, u64 } from "../DefiLlama-Adapters/projects/helper/utils/solana/layouts/layout-base.js";
+import { struct, u64 } from "../DefiLlama-Adapters/projects/helper/utils/solana/layouts/layout-base.js";
+import fetchThirdPartyTokenList from "./adapters/thirdParty";
 
 type CachedSupplies = { timestamp: number; data: { [token: string]: number } };
 export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
@@ -370,9 +369,9 @@ export async function fetchSupplies(
 }
 export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
   const j = Object.keys(incomingAssets).indexOf(chain);
-  // if (j == -1) return [];
   try {
     const tokens: Address[] = j == -1 ? [] : await Object.values(incomingAssets)[j]();
+    tokens.push(...((await fetchThirdPartyTokenList())[chain] ?? []));
     let filteredTokens: Address[] =
       chain in excluded ? tokens.filter((t: string) => !excluded[chain].includes(t)) : tokens;
     if (!mixedCaseChains.includes(chain)) filteredTokens = filteredTokens.map((t: string) => t.toLowerCase());
@@ -383,7 +382,7 @@ export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
       ? additional[chain]
       : additional[chain].map((t: string) => t.toLowerCase());
 
-    return [...filteredTokens, ...additionalTokens];
+    return [...new Set([...filteredTokens, ...additionalTokens])];
   } catch (e) {
     throw new Error(`${chain} bridge adapter failed with ${e}`);
   }

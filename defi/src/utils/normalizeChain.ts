@@ -3522,6 +3522,20 @@ export const chainCoingeckoIds = {
     url: "https://www.soniclabs.com",
     chainId: 146
   },
+  "ink": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "inkonchain",
+    url: "https://inkonchain.com",
+    github: ["inkonchain"],
+    chainId: 57073
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

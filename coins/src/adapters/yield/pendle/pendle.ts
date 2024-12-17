@@ -9,7 +9,13 @@ import {
 import PromisePool from "@supercharge/promise-pool";
 import { wrappedGasTokens } from "../../utils/gasTokens";
 
-const customMapping: { [chain: string]: string[] } = {
+const customMapping: { [chain: string]: { [from: string]: string } } = {
+  arbitrum: {
+    "0x35fa164735182de50811e8e2e824cfb9b6118ac2":
+      "0x35751007a407ca6feffe80b3cb397736d2cf4dbe",
+  },
+};
+const gasMapping: { [chain: string]: string[] } = {
   bsc: [
     "0xeda1d0e1681d59dea451702963d6287b844cb94c",
     "0x0921ccc98956b1599003fd9739d5e66bf319a161",
@@ -25,6 +31,7 @@ const customMapping: { [chain: string]: string[] } = {
     "0x816f59ffa2239fd7106f94eabdc0a9547a892f2f",
     "0x3e4e3291ed667fb4dee680d19e5702ef8275493d",
     "0x6f02c88650837c8dfe89f66723c4743e9cf833cd",
+    "0x952083cde7aaa11ab8449057f7de23a970aa8472",
   ],
   ethereum: [
     "0xa9355a5d306c67027c54de0e5a72df76befa5694",
@@ -59,8 +66,10 @@ const customMapping: { [chain: string]: string[] } = {
     "0x1729981345aa5cacdc19ea9eeffea90cf1c6e28b",
     "0xbce250b572955c044c0c4e75b2fa8016c12cabf9",
     "0x17be998a578fd97687b24e83954fec86dc20c979",
+    "0xf7906f274c174a52d444175729e3fa98f9bde285",
   ],
 };
+
 const blacklist = ["0x1d83fdf6f019d0a6b2babc3c6c208224952e42fc"];
 const nullAddress = "0x0000000000000000000000000000000000000000";
 
@@ -121,8 +130,17 @@ export default async function getTokenPrices(
         "0x6010676bc2534652ad1ef5fa8073dcf9ad7ebfbe",
         "0x00b321D89A8C36B3929f20B7955080baeD706D1B",
         "0x7e0f3511044AFdaD9B4fd5C7Fa327cBeB90BEeBf",
+        "0x1c48cd1179aa0c503a48fcd5852559942492e31b",
       ],
     );
+  if (chain == "bsc")
+    unfilteredMarkets.push(
+      ...[
+        "0x9daa2878a8739e66e08e7ad35316c5143c0ea7c7",
+        "0x080f52a881ba96eee2268682733c857c560e5dd4",
+      ],
+    );
+
   const unfilteredTokens: string[][] = await api.multiCall({
     calls: unfilteredMarkets,
     abi: "function readTokens() view returns (address _SY, address _PT, address _YT)",
@@ -170,7 +188,7 @@ export default async function getTokenPrices(
         [
           ...yieldTokens,
           ...underlyingTokens,
-          ...(chain in wrappedGasTokens ? wrappedGasTokens[chain] : []),
+          chain in wrappedGasTokens ? wrappedGasTokens[chain] : null,
         ].filter((t) => t != null),
       ),
     ],
@@ -184,17 +202,27 @@ export default async function getTokenPrices(
         [
           "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
           "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+          ...Object.keys(customMapping[chain]),
         ],
         "ethereum",
         timestamp,
       )),
     );
 
-  if (chain in customMapping) {
+  if (chain in gasMapping) {
     underlyingTokens = markets.map((m: string, i: number) =>
-      customMapping[chain].includes(m.toLowerCase())
+      gasMapping[chain].includes(m.toLowerCase())
         ? wrappedGasTokens[chain]
         : underlyingTokens[i],
+    );
+  }
+
+  if (chain in customMapping) {
+    underlyingTokens = underlyingTokens.map((t: string) =>
+      t in customMapping[chain] ? customMapping[chain][t] : t,
+    );
+    underlyingTokenDataArray = underlyingTokenDataArray.filter(
+      (u: CoinData) => !(u.address in customMapping[chain]),
     );
   }
 

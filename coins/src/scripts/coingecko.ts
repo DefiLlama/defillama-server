@@ -13,8 +13,10 @@ import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
 import { batchReadPostgres, getRedisConnection } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
-import { Connection, PublicKey } from "@solana/web3.js";
 import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
+import { PublicKey } from "@solana/web3.js";
+import { getConnection } from "../adapters/solana/utils";
+import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -116,21 +118,17 @@ async function cacheSolanaTokens() {
   return solanaTokens;
 }
 
-let solanaConnection: any;
 async function getSymbolAndDecimals(
   tokenAddress: string,
   chain: string,
   coingeckoSymbol: string,
 ): Promise<{ symbol: string; decimals: number } | undefined> {
-  if (chain === "solana") {
+  if (chainsThatShouldNotBeLowerCased.includes(chain)) {
     const token = ((await solanaTokens).tokens as any[]).find(
       (t) => t.address === tokenAddress,
     );
     if (token === undefined) {
-      if (!solanaConnection)
-        solanaConnection = new Connection(
-          process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
-        );
+      const solanaConnection = getConnection(chain);
       const decimalsQuery = await solanaConnection.getParsedAccountInfo(
         new PublicKey(tokenAddress),
       );

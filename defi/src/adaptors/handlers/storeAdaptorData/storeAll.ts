@@ -67,9 +67,11 @@ async function run() {
   })
 }
 
-run().catch(console.error).then(() => process.exit(0))
+run().catch((e) => {
+  console.error("Error in dimensions-store-all", e)
+}).then(() => process.exit(0))
 
 setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
-}, 1000 * 60 * 55) // 55 minutes
+}, 1000 * 60 * 90) // 90 minutes

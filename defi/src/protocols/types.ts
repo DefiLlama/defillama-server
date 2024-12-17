@@ -39,6 +39,7 @@ export interface Protocol {
     [chain:string]: string[];
   },
   note?: string;
+  deprecated?: boolean
 }
 
 export interface IParentProtocol {
@@ -60,4 +61,5 @@ export interface IParentProtocol {
   treasury?: string | null;
   stablecoins?: string[];
   wrongLiquidity?: boolean;
+  address?: string | null;
 }

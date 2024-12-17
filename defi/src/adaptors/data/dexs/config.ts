@@ -1,3 +1,4 @@
+import { id } from "ethers"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -2579,9 +2580,6 @@ export default {
     "elexium": {
         id: "5357"
     },
-    "adrena": {
-        id: "5353"
-    },
     "spark": {
         id: "5352"
     },
@@ -2590,5 +2588,75 @@ export default {
     },
     "ninjablaze": {
         id: "5400"
+    },
+    "memecooking": {
+        id: "5185"
+    },
+    "pumpfun": {
+        id: "4449",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1732492800": true,
+                "1732406400": true,
+                "1732320000": true,
+            }
+        }
+    },
+    "catton": {
+        id: "5409"
+    },
+    "9mm-v2": {
+        id: "5416"
+    },
+    "9mm": {
+        id: "5417"
+    },
+    "catalist-dex": {
+        id: "5412"
+    },
+    "hydrometer": {
+        id: "5423",
+    },
+    "bluefin-amm": {
+        id: "5427",
+        parentId: "Bluefin",
+        protocolsData: {
+            "dexes": {
+                id: "5427"
+            }
+        }
+    },
+    "taraswap": {
+        id: "5437",
+    },
+    "wagmi_ton": {
+        id: "5436",
+    },
+    "bigpump": {
+        id: "5443",
+    },
+    "pinto": {
+        id: "5458"
+    },
+    "blum": {
+        id: "5451"
+    },
+    "trado-spot": {
+        id: "5225"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
+    },
+    "plunderswap": {
+        parentId: "PlunderSwap",
+        id: "3840"
+    },
+    "hyperliquid-spot": {
+        parentId: "Hyperliquid",
+        id: "4482"
+    },
+    "neby-dex": {
+        id: "5512"
     }
 } as AdaptorsConfig

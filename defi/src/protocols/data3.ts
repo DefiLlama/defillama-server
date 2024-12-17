@@ -63540,6 +63540,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#ethena",
     listedAt: 1734350466
   },
+  {
+    id: "5507",
+    name: "Hyperliquid Perp",
+    address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
+    symbol: "HYPE",
+    url: "https://hyperliquid.xyz",
+    description: "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price.",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/hyperliquid.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Hyperliquid"],
+    oracles: ["Internal"], // https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-l1/oracle
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    parentProtocol: "parent#hyperliquid",
+    listedAt: 1681846146,
+  },
 ];
 
 export default data3;

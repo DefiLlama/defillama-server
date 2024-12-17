@@ -73,7 +73,7 @@ export default {
         "id": "2814"
     },
     "hyperliquid": {
-        "id": "2862",
+        "id": "5507",
         "enabled": true
     },
     "dydx": {

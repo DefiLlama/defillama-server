@@ -16,6 +16,7 @@ import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 import pLimit from "p-limit";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
+import produceKafkaTopics from "../../utils/coins3/produce";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 const rateLimited = pLimit(10);
@@ -412,6 +413,7 @@ export async function batchWriteWithAlerts(
   const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
     await checkMovement(items, previousItems);
   await batchWrite(filteredItems, failOnError);
+  await produceKafkaTopics(filteredItems as any[]);
 }
 export async function batchWrite2WithAlerts(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],

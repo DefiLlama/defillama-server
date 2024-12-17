@@ -3522,7 +3522,7 @@ export const chainCoingeckoIds = {
     url: "https://www.soniclabs.com",
     chainId: 146
   },
-  "ink": {
+  "Ink": {
     geckoId: null,
     symbol: null,
     cmcId: null,

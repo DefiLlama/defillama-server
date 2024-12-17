@@ -23,7 +23,7 @@ export default async function getTokenPrices(
     knownBalance,
     unknownDecimals,
     knownDecimals,
-    [{ price: knownPrice }],
+    priceData,
     unknownInfo,
   ] = await Promise.all([
     getBalance({
@@ -61,6 +61,8 @@ export default async function getTokenPrices(
     getTokenInfo(chain, [unknownToken], block),
   ]);
 
+  if (!priceData.length) return [];
+  const [{ price: knownPrice }] = priceData;
   if (!knownPrice) return [];
 
   const price: number =

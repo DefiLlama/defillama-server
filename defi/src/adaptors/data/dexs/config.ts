@@ -1,3 +1,4 @@
+import { id } from "ethers"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -1238,7 +1239,8 @@ export default {
         "id": "2748"
     },
     "acala-swap": {
-        "id": "1847"
+        "id": "1847",
+        enabled: false
     },
     "maia-v3": {
         "id": "2760"
@@ -1488,6 +1490,7 @@ export default {
         id: "2795"
     },
     "pearlfi": {
+        parentId: "PearlFi",
         id: "3121"
     },
     "ambient": {
@@ -1563,6 +1566,7 @@ export default {
         "id": "3260"
     },
     "deepbook-sui": {
+        parentId: "DeepBook",
         "id": "3268",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -2260,6 +2264,7 @@ export default {
         }
     },
     "fenix-finance": {
+        parentId: "Fenix Finance",
         enabled: false,
         id: "4563"
     },
@@ -2329,6 +2334,7 @@ export default {
         id: "4583"
     },
     "dragonswap-sei": {
+        parentId: "Dragon Swap",
         id: "4720"
     },
     "basin": {
@@ -2510,5 +2516,140 @@ export default {
     },
     "mira-ly": {
         id: "5252"
+    },
+    "fenix-finance-v3": {
+        parentId: "Fenix Finance",
+        id: "4775"
+    },
+    "kinetix-v2": {
+        parentId: "Kinetix",
+        id: "3533"
+    },
+    "metavault-amm-v2": {
+        parentId: "MetaVault",
+        id: "5186"
+    },
+    "dexter-tezos": {
+        id: "3040"
+    },
+    "cables": {
+        id: "5291"
+    },
+    "deepbookv3-sui": {
+        parentId: "DeepBook",
+        id: "5296"
+    },
+    "kyex": {
+        id: "5310"
+    },
+    "fluid-dex": {
+        parentId: "Fluid",
+        id: "5317"
+    },
+    "dragonswap-sei-v3": {
+        parentId: "Dragon Swap",
+        id: "5066"
+    },
+    "morFi": {
+        id: "5307"
+    },
+    "assetchain-swap": {
+        id: "5324"
+    },
+    "velocimeter-v4": {
+        parentId: "Velocimeter",
+        id: "5243"
+    },
+    "pearl-v1-5": {
+        parentId: "PearlFi",
+        id: "5308"
+    },
+    "pearl-v2": {
+        parentId: "PearlFi",
+        id: "4668"
+    },
+    "solar-studios": {
+        id: "5346"
+    },
+    "manifest-trade": {
+        id: "5349"
+    },
+    "shido-dex": {
+        id: "5366"
+    },
+    "elexium": {
+        id: "5357"
+    },
+    "spark": {
+        id: "5352"
+    },
+    "mach": {
+        id: "5399"
+    },
+    "ninjablaze": {
+        id: "5400"
+    },
+    "memecooking": {
+        id: "5185"
+    },
+    "pumpfun": {
+        id: "4449",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1732492800": true,
+                "1732406400": true,
+                "1732320000": true,
+            }
+        }
+    },
+    "catton": {
+        id: "5409"
+    },
+    "9mm-v2": {
+        id: "5416"
+    },
+    "9mm": {
+        id: "5417"
+    },
+    "catalist-dex": {
+        id: "5412"
+    },
+    "hydrometer": {
+        id: "5423",
+    },
+    "bluefin-amm": {
+        id: "5427",
+        parentId: "Bluefin",
+        protocolsData: {
+            "dexes": {
+                id: "5427"
+            }
+        }
+    },
+    "taraswap": {
+        id: "5437",
+    },
+    "wagmi_ton": {
+        id: "5436",
+    },
+    "bigpump": {
+        id: "5443",
+    },
+    "pinto": {
+        id: "5458"
+    },
+    "blum": {
+        id: "5451"
+    },
+    "trado-spot": {
+        id: "5225"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
+    },
+    "plunderswap": {
+        parentId: "PlunderSwap",
+        id: "3840"
     }
 } as AdaptorsConfig

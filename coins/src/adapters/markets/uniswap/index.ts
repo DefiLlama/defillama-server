@@ -49,7 +49,14 @@ const config = {
   aerodrome: { chain: 'base', factory: '0x420DD381b31aEf6683db6B902084cB0FFECe40Da', hasStablePools: true, },
   jibswap: { chain: 'jbc', factory: '0x4BBdA880C5A0cDcEc6510f0450c6C8bC5773D499', },
   macaron: { chain: "btr", factory: "0x1037e9078df7ab09b9af78b15d5e7aad7c1afdd0", },
-}
+  uni_base: {
+    endpoint: sdk.graph.modifyEndpoint('C4cSs45WiwmUqyN7WCR6rFRitEhPEXSKt3uabL2tWinu'),
+    chain: "base",
+    factory: "0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6",
+  },
+  thruster03: { chain: 'blast', factory: '0xb4A7D971D0ADea1c73198C97d7ab3f9CE4aaFA13' },
+  thruster1: { chain: 'blast', factory: '0x37836821a2c03c171fB1a595767f4a16e2b93Fc4' },
+};
 
 export function extraUniV2Lps(timestamp: number = 0) {
   return Promise.all([

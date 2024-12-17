@@ -17,7 +17,7 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "ethereum",
   "solana",
   // "sui",
-  // "aptos",
+  "aptos",
   // "stacks",
   "bitcoin",
   // "fantom",
@@ -79,9 +79,13 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   // "5011": "lisk l2",
   "5055": "osmosis",
   "5011": "lisk",
-  "5232": "sui", 
+  "5232": "sui",
   "5218": "mint",
   "5248": "fuel",
+  "5303": "morph",
+  "4481": "hyperliquid",
+  "5382": "core",
+  "5461": "apechain",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -91,6 +95,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "1878": "apex",
   "344": "zkswap",
   "5130": "polynomial",
+  "5323": "exSat",
 };
 
 export const allChainKeys: string[] = [
@@ -126,8 +131,8 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   boba: { ticker: "BOBA", address: "0xa18bf3994c0cc6e3b63ac420308e5383f53120d7" },
   solana: { ticker: "SOL", address: "coingecko:solana" },
   manta: { ticker: "MANTA", address: "0x95cef13441be50d20ca4558cc0a27b601ac544e5" },
-  zklink: { ticker: "ZKL", address: "0x0000000000000000000000000000000000000000" },
-  rss3_vsl: { ticker: "RSS3", address: "" },
+  zklink: { ticker: "ZKL", address: "coingecko:zklink" },
+  rss3_vsl: { ticker: "RSS3", address: "rss3" },
   blast: { ticker: "BLAST", address: "0xb1a5700fa2358173fe465e6ea4ff52e36e88e2ad" },
   mode: { ticker: "MODE", address: "0xdfc7c877a950e49d2610114102175a06c2e3167a" },
   ronin: { ticker: "RON", address: "coingecko:ronin" },
@@ -144,7 +149,7 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   elysium: { ticker: "LAVA", address: "coingecko:lava" },
   alephium: { ticker: "ALPH", address: "" },
   rsk: { ticker: "RBTC", address: "coingecko:rootstock" },
-  cronos: { ticker: "CRO", address: "" },
+  cronos: { ticker: "CRO", address: "coingecko:crypto-com-chain" },
   kava: { ticker: "KAVA", address: "coingecko:kava" },
   bsc: { ticker: "BNB", address: "coingecko:binancecoin" },
   tron: { ticker: "TRX", address: "coingecko:tron" },
@@ -154,8 +159,11 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   xai: { ticker: "XAI", address: "0x3fB787101DC6Be47cfe18aeEe15404dcC842e6AF" },
   osmosis: { ticker: "OSMO", address: "uosmo" },
   lisk: { ticker: "LSK", address: "0x6033f7f88332b8db6ad452b7c6d5bb643990ae3f" },
-  sui: { ticker: "SUI", address: "" },
+  sui: { ticker: "SUI", address: "coingecko:sui" },
   zkswap: { ticker: "ZF", address: "0x31c2c031fdc9d33e974f327ab0d9883eae06ca4a" },
   merlin: { ticker: "MERL", address: "0x5c46bff4b38dc1eae09c5bac65872a1d8bc87378" },
   zksync: { ticker: "ZK", address: "0x5a7d6b2f92c77fad6ccabd7ee0624e64907eaf3e" },
+  aptos: { ticker: "APT", address: "coingecko:aptos" },
+  hyperliquid: { ticker: "HYPE", address: "coingecko:hyperliquid" },
+  apechain: { ticker: "APE", address: "coingecko:apechain" },
 };

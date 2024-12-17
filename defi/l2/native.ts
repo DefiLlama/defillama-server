@@ -58,6 +58,8 @@ export async function fetchMinted(params: {
           params.timestamp
         );
 
+        if ("tron:TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t" in supplies) console.log("tron USDT has a supply");
+
         if (ownTokenCgid && ownTokenCgid in mcaps)
           supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
 
@@ -100,5 +102,6 @@ export async function fetchMinted(params: {
       }
     })
   );
+
   return { tvlData, mcapData };
 }

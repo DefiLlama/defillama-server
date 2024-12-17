@@ -1395,6 +1395,24 @@ export default {
         twitter: "Mint_Blockchain",
         url: "https://www.mintchain.io/",
         chainId: 185
+    },
+    "Asset Chain": {
+        geckoId: "xend-finance",
+        symbol: "RWA",
+        cmcId: "8519",
+        categories: ["EVM"],
+        twitter: "xendfinance",
+        url: "https://xend.finance/",
+        chainId: 42420
+    },
+    "Celestia": {
+        geckoId: "celestia",
+        symbol: "TIA",
+        cmcId: "22861",
+        categories: ["Cosmos"],
+        github: ["celestiaorg"],
+        twitter: "CelestiaOrg",
+        url: "https://celestia.org",
     }
 } as unknown as {
     [chain: string]: {

@@ -73,19 +73,7 @@ export default {
     },
     "gmx": {
         "id": "337",
-        parentId: "GMX",
-        protocolsData: {
-            "swap": {
-                "id": "337",
-                "category": "Dexes",
-                "displayName": "GMX - SWAP"
-            },
-            "derivatives": {
-                displayName: "GMX - Derivatives",
-                "id": "337",
-                "enabled": true
-            }
-        },
+        parentId: "GMX"
     },
     "lido": {
         "id": "182"
@@ -374,6 +362,7 @@ export default {
         "id": "420"
     },
     "lyra": {
+        parentId: "Derive",
         "id": "503"
     },
     "radioshack": {
@@ -1221,10 +1210,6 @@ export default {
     "paal-ai": {
         "id": "3723"
     },
-    "kinetix": {
-        parentId: "Kinetix",
-        "id": "3534"
-    },
     "retro": {
         "id": "3311"
     },
@@ -1273,7 +1258,7 @@ export default {
     "dydx": {
         parentId: "dYdX",
         "id": "144",
-        "enabled": true
+        disabled: true
     },
     "justlend": {
         "id": "494"
@@ -1752,12 +1737,14 @@ export default {
         "id": "4737"
     },
     "dragonswap-sei": {
+        parentId: "Dragon Swap",
         id: "4720"
     },
     "wen-markets": {
         id: "4733"
     },
     "cellula": {
+        enabled: false,
         id: "4705"
     },
     "clusters": {
@@ -2088,12 +2075,7 @@ export default {
     },
     "sparkdex-v3-1": {
         parentId: "SparkDEX",
-        id: "5223",
-        protocolsData: {
-            "v3": {
-                "id": "5223",
-            }
-        }
+        id: "5223"
     },
     "sparkdex-v2": {
         parentId: "SparkDEX",
@@ -2139,5 +2121,147 @@ export default {
     "quickswap-perps": {
         parentId: "QuickSwap",
         id: "2980",
+    },
+    "step-finance": {
+        id: "4837"
+    },
+    "assetchain": {
+        id: "8519"
+    },
+    "kinetix-v2": {
+        parentId: "Kinetix",
+        id: "3533"
+    },
+    "kinetix-v3": {
+        parentId: "Kinetix",
+        id: "3534"
+    },
+    "metavault-amm-v2": {
+        parentId: "MetaVault",
+        id: "5186"
+    },
+    "surge-trade": {
+        id: "5290"
+    },
+    "suilend": {
+        id: "4274"
+    },
+    "juicebox": { // adapter not working
+        parentId: "Juicebox",
+        id: "2833"
+    },
+    "celestia": {
+        id: "22861"
+    },
+    "yamfore": {
+        id: "5304"
+    },
+    /*"bonzo": { // adapter not working
+        id: "5287"
+    },*/
+    "quenta": {
+        id: "5314"
+    },
+    "fluid-dex": {
+        parentId: "Fluid",
+        id: "5317"
+    },
+    "g8keep": {
+        id: "5318"
+    },
+    "iziswap": {
+        parentId: "iZUMI Finance",
+        "id": "1883"
+    },
+    "dragonswap-sei-v3": {
+        parentId: "Dragon Swap",
+        id: "5066"
+    },
+    "morFi": {
+        id: "5307"
+    },
+    "solar-studios": {
+        id: "5346"
+    },
+    "orca": {
+        "id": "283"
+    },
+    "stabble": {
+        id: "4734"
+    },
+    "kamino-liquidity": {
+        parentId: "Kamino",
+        id: "2062"
+    },
+    "blazingbot": {
+        id: "5377"
+    },
+    "goat-protocol": {
+        id: "4162"
+    },
+    "adrena": {
+        id: "5353"
+    },
+    "phantom": {
+        id: "5398"
+    },
+    "bullx": {
+        id: "5407"
+    },
+    "gmgnai": {
+        id: "5408"
+    },
+    "debank-cloud": {
+        id: "5410"
+    },
+    "navi": {
+        id: "3323",
+    },
+    "hydrometer": {
+        id: "5423",
+    },
+    "bluefin-amm": {
+        id: "5427",
+        parentId: "Bluefin",
+    },
+    "taraswap": {
+        id: "5437",
+    },
+    "clanker": {
+        id: "5446"
+    },
+    "bouncebit-cedefi": {
+        parentId: "BounceBit CeDeFi",
+        id: "5450"
+    },
+    "swing": {
+        id: "5474"
+    },
+    "thetis-market": {
+        parentId: "Thetis Market",
+        id: "5469"
+    },
+    "iotex": {
+        id: "2777"
+    },
+    "lyra-v2": {
+        parentId: "Derive",
+        id: "3923"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
+    },
+    "memewe": {
+        id: "5501"
+    },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
+            }
+        }
     }
 } as AdaptorsConfig

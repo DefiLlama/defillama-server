@@ -73,13 +73,13 @@ export default {
         "id": "2814"
     },
     "hyperliquid": {
-        "id": "2862",
+        "id": "5507",
         "enabled": true
     },
     "dydx": {
         parentId: "dYdX",
         "id": "144",
-        "enabled": true
+        disabled: true
     },
     "level-finance": {
         "id": "2395",
@@ -431,7 +431,7 @@ export default {
         }
     },
     "rabbitx": {
-        enabled: false,
+        enabled: true,
         "id": "2886",
         parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
@@ -462,9 +462,9 @@ export default {
         parentId: "Metavault",
         "id": "3911"
     },
-    "kiloex": {
+    /*"kiloex": { // volume-to-OI discrepancy, 77x ratio
         "id": "3329"
-    },
+    },*/
     "surfone": {
         "id": "3954"
     },
@@ -694,6 +694,7 @@ export default {
     },
     "edgeX": {
         id: "4954",
+        "enabled": false,
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1723075200": true,
@@ -729,5 +730,45 @@ export default {
     "quickswap-perps": {
         parentId: "QuickSwap",
         id: "2980",
+    },
+    "capybara-perp": {
+        parentId: "Capybara Exchange",
+        id: "5257",
+    },
+    "defx": {
+        id: "5273",
+    },
+    "surge-trade": {
+        id: "5290"
+    },
+    "optim-finance": {
+        id: "2380",
+        protocolsData: {
+            "derivatives": {
+                "id": "2380",
+            }
+        }
+    },
+    "quenta": {
+        id: "5314"
+    },
+    "zkera-finance": {
+        id: "3343"
+    },
+    "adrena": {
+        id: "5353"
+    },
+    "thetis-market": {
+        parentId: "Thetis Market",
+        id: "5469"
+    },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
+            }
+        }
     }
 } as AdaptorsConfig

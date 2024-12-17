@@ -4,6 +4,8 @@ import * as uniswap from "./markets/uniswap";
 import * as curve from "./markets/curve";
 import * as balancer from "./markets/balancer";
 import * as others from "./other/index";
+import * as others2 from "./other/others2";
+import * as graphCoins from "./markets/graphCoins";
 
 export default {
   ...compound.adapters,
@@ -12,8 +14,11 @@ export default {
   ...curve.adapters,
   ...balancer.adapters,
   ...others.adapters,
+  ...others2.adapters,
+  ...graphCoins.adapters,
   reservoirprotocol: require("./rwa/reservoir-protocol"),
   fortunafi: require("./rwa/fortunafi"),
+  jupAg: require("./solana/jupAg"),
   midas: require("./rwa/midas"),
   stobox: require("./rwa/stobox"),
   alex: require("./markets/alex"),
@@ -45,6 +50,7 @@ export default {
   alchemix: require("./yield/alchemix"),
   meanFinance: require("./yield/mean-finance"),
   misc4626: require("./yield/misc4626"),
+  balancer4626: require("./yield/balancer4626"),
   vesper: require("./yield/vesper"),
   yieldProtocol: require("./yield/yield-protocol"),
   levelFinance: require("./yield/level-finance"),
@@ -61,6 +67,7 @@ export default {
   aktionariat: require("./markets/aktionariat"),
   yieldYak: require("./yield/yield-yak"),
   tezos: require("./tezos"),
+  elexium: require("./markets/elexium"),
   aaveDebt: require("./moneyMarkets/aave-debt"),
   saber: require("./solana/saber"),
   solend: require("./solana/solend"),
@@ -101,4 +108,11 @@ export default {
   gamma: require("./yield/gamma"),
   thena: require("./markets/thena"),
   pancakeStable: require("./markets/pancakeStable"),
+  etherfi: require("./yield/etherfi"),
+  wcgUSD: require("./other/wcgUSD"),
+  usdrif: require("./other/usdrif"),
+  xailocker: require("./liquidStaking/xailocker"),
+  sbtc: require("./other/sbtc"),
+  aries: require("./moneyMarkets/aries"),
+  pragma: require("./oracles/pragma"),
 };

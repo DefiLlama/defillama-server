@@ -260,5 +260,27 @@ export default {
   },
   "hinkal": {
       id: "4487"
+  },
+  "unizen": {
+    id: "1336",
+  },
+  "navi": {
+    id: "5326",
+  },
+  "moki": {
+    id: "5356",
+  },
+  "titan": {
+    id: "5394",
+  },
+  "bitgetwallet": {
+    id: "3207",
+  },
+  "thetis-market": {
+    parentId: "Thetis Market",
+    id: "5483"
+  },
+  "swing": {
+      id: "5474"
   }
 } as AdaptorsConfig;

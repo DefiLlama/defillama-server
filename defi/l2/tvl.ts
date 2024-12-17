@@ -52,7 +52,7 @@ export default async function main(timestamp?: number) {
     delete chains[c];
   });
 
-  await verifyChanges(chains);
+  if (!timestamp) await verifyChanges(chains);
 
   return chains;
 }
@@ -88,6 +88,7 @@ async function translateToChainData(
       selectedChains.map((chain: Chain) => {
         if (!(chain in data[key])) return;
         Object.keys(data[key][chain]).map((symbol: string) => {
+          if (key == "outgoing") return;
           const unwrappedGas =
             symbol.startsWith("W") && nativeTokenSymbols.includes(symbol.substring(1)) ? symbol.substring(1) : symbol;
           if (!(unwrappedGas in nativeTokenTotalValues)) nativeTokenTotalValues[unwrappedGas] = zero;
@@ -160,8 +161,8 @@ async function translateToChainData(
       translatedData[chain].ownTokens = { total: zero, breakdown: { [ownToken.ticker]: zero } };
     const percOnThisChain = total.div(nativeTokenTotalValues[ownToken.ticker]);
     const mcaps = await mcapsPromise;
-    const address = Object.keys(mcaps).find((k: string) => k.startsWith(chain));
-    const mcap = address ? mcaps[address].mcap : total;
+    const address = Object.keys(mcaps).find((k: string) => k.startsWith(chain)) ?? ownToken.address;
+    const mcap = address && address in mcaps ? mcaps[address].mcap : total;
     const thisAssetMcap = BigNumber.min(mcap, total).times(percOnThisChain);
     translatedData[chain].ownTokens.total = translatedData[chain].ownTokens.total.plus(thisAssetMcap);
     translatedData[chain].ownTokens.breakdown[ownToken.ticker] =

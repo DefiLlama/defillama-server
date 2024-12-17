@@ -2,12 +2,16 @@ require("dotenv").config();
 import {
   batchWriteWithAlerts,
   batchWrite2WithAlerts,
+  filterWritesWithLowConfidence,
 } from "../adapters/utils/database";
-import { filterWritesWithLowConfidence } from "../adapters/utils/database";
-import { sendMessage } from "../../../defi/src/utils/discord";
 import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
+console.log(process.version);
 import adapters from "../adapters/index";
+console.log("adapters imported");
 import { PromisePool } from "@supercharge/promise-pool";
+// import setEnvSecrets from "../utils/shared/setEnvSecrets";
+
+console.log("imports successful");
 
 function shuffleArray(array: number[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -20,6 +24,7 @@ const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 1740000; //29mins
 
 async function storeDefiCoins() {
+  // await setEnvSecrets();
   process.env.tableName = "prod-coins-table";
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(

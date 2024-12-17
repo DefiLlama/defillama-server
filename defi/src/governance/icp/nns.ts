@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Proposal } from '../types';
+import { GovCache, Proposal } from '../types';
 import { updateStats } from '../utils';
 import { setCompound, getCompound } from '../cache';
 import { update_nervous_system_cache, NervousSystemConfig } from './icp';
@@ -107,10 +107,18 @@ export async function get_metadata ()
  */
 export function convert_proposal_format ( proposal : NetworkNervousSystemProposalResponse,config:NervousSystemConfig ) : Proposal
 {
+    const statusMap = {
+        'EXECUTED': "Executed",
+        'REJECTED': "Defeated",
+        'ADOPTED': "Succeeded",
+        'FAILED': "Canceled",
+        'OPEN': "Active",
+    };
+
     return {
         id: proposal.proposal_id.toString(),
         title: proposal.title ? proposal.title : proposal.topic,
-        state: proposal.status,
+        state: statusMap[proposal.status as keyof typeof statusMap] || proposal.status,
         app: config.app,
         description: proposal.summary,
         space: { canister_id: config.governance_canister_id },

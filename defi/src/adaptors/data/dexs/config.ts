@@ -2651,5 +2651,9 @@ export default {
     "plunderswap": {
         parentId: "PlunderSwap",
         id: "3840"
+    },
+    "hyperliquid-spot": {
+        parentId: "Hyperliquid",
+        id: "4482"
     }
 } as AdaptorsConfig

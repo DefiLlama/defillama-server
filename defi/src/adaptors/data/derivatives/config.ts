@@ -72,9 +72,9 @@ export default {
         },
         "id": "2814"
     },
-    "hyperliquid": {
+    "hyperliquid-perp": {
         parentId: "Hyperliquid",
-        "id": "5507",        
+        "id": "5507",
         "enabled": true
     },
     "dydx": {
@@ -772,5 +772,5 @@ export default {
             }
         }
     },
-    
+
 } as AdaptorsConfig

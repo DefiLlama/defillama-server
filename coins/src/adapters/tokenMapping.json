@@ -2355,6 +2355,11 @@
     }
   },
   "xdai": {
+    "0xddafbb505ad214d7b80b1f830fccc89b60fb7a83": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
     "0x6c76971f98945ae98dd7d4dfca8711ebea946ea6": {
       "decimals": "18",
       "symbol": "wstETH",

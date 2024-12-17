@@ -58045,7 +58045,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Klaytn"],
+    chains: ["Klaytn","Avalanche"],
     oracles: [],
     forkedFrom: [],
     module: "goldstation-dex/index.js",

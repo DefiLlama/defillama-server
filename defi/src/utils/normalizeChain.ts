@@ -3683,7 +3683,8 @@ const chainLabelMap = {
   "tara": "Taraxa",
   "vinu": "VinuChain",
   "bouncebit": "BounceBit",
-  "aelf": "aelf"
+  "aelf": "aelf",
+  "hela": "HeLa"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

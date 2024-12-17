@@ -6042,6 +6042,19 @@ const parentProtocols: IParentProtocol[] = [
     github: ["ethena-labs"],
     stablecoins: ["ethena-usde"],
   },
+  {
+    id: "parent#alphafi",
+    name: "AlphaFi",
+    url: "https://alphafi.xyz",
+    description:
+      "Premier Yield Optimizer on the SUI Blockchain. Earn Safe, Real Yields with AlphaFi.",
+    logo: `${baseIconsUrl}/alphafi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AlphaFiSUI",
+    github: ["AlphaFiTech"],
+  },
 ];
 
 export default parentProtocols;

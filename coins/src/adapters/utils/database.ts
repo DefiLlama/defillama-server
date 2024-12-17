@@ -397,7 +397,7 @@ export async function batchWriteWithAlerts(
   const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
     await checkMovement(items, previousItems);
   await batchWrite(filteredItems, failOnError);
-  await produceKafkaTopics(filteredItems.filter((i) => i.SK == 0) as any[]);
+  await produceKafkaTopics(filteredItems as any[]);
 }
 export async function batchWrite2WithAlerts(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],

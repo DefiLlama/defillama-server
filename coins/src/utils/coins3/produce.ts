@@ -1,4 +1,4 @@
-import { Message, Producer } from "kafkajs";
+import { Producer } from "kafkajs";
 import { Topic, topics as allTopics, validate } from "./jsonValidation";
 import { getProducer } from "./kafka";
 
@@ -20,18 +20,27 @@ async function produceTopics(
   topic: Topic,
   producer: Producer,
 ) {
-  const messages: Message[] = [];
+  const messages: string[] = [];
 
   items.map((item) => {
-    const { symbol, decimals, price } = item;
+    const { symbol, decimals, price, SK } = item;
+    if (topic != "coins-timeseries" && SK != 0) return;
     if (topic != "coins-metadata" && !price) return;
     if (topic == "coins-metadata" && (!symbol || decimals == null)) return;
-    const message: object = convertToMessage(item, topic);
-    validate(message, topic);
-    messages.push({ value: JSON.stringify(message) });
+    const messageObject: object = convertToMessage(item, topic);
+    validate(messageObject, topic);
+    const message = JSON.stringify(messageObject);
+    if (messages.includes(message)) {
+      message;
+      return;
+    }
+    messages.push(message);
   });
 
-  await producer.send({ topic: `${topic}`, messages });
+  await producer.send({
+    topic: `${topic}`,
+    messages: messages.map((value) => ({ value })),
+  });
 }
 function convertToMessage(item: Dynamo, topic: Topic): object {
   const {

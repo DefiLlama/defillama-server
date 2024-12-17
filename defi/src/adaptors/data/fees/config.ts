@@ -2266,5 +2266,8 @@ export default {
     },
     "neby-dex": {
         id: "5512"
+    },
+    "sudofinance": {
+        id: "4045"
     }
 } as AdaptorsConfig

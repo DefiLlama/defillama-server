@@ -28203,7 +28203,7 @@ const data3: Protocol[] = [
     gecko_id: "bitstable-finance",
     cmcId: "28608",
     category: "CDP",
-    chains: ["Binance", "Ethereum"],
+    chains: ["Binance", "Ethereum", "BounceBit"],
     oracles: [],
     forkedFrom: [],
     module: "bitstable-finance/index.js",

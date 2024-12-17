@@ -157,7 +157,7 @@ export function parsePgData(timeseries: any[], chain: string, removeBreakdown: b
       if (c == "timestamp") return;
       let rawData;
       try {
-        rawData = JSON.parse(t[chain]);
+        rawData = JSON.parse(t[c]);
       } catch (e) {
         console.log(e);
       }

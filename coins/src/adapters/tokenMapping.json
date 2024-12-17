@@ -5431,6 +5431,11 @@
       "to": "coingecko#lisk",
       "decimals": 18,
       "symbol": "LSK"
+    },
+    "0xf242275d3a6527d877f2c927a82d9b057609cc71": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
     }
   },
   "flow": {

@@ -20,6 +20,14 @@ const contracts: string[] = [
   "0x904603366bc8acf881a35cd4c7e0d514f0477ffc", // s4pool_ba
   "0x795b38c85d6f1524b434f14aa37c1c808c2bbd6b", // sx3crv_g
 
+  "0xf515a8055e503ac86d96f0ffd0bf9121a668b8ab", // sUSDC_m
+  "0x286931c8a360c0375ec174f04feabf9a707c94e5", // sUSDB_bl
+  "0xdc06708bc4cc5b1907854f687860b96e6600d6e5", // sUSDCe_l
+  "0x5acc8f3b6fe2c7f9736bfaeef3a0870b1e2295a9", // sUSDC_t
+  "0xc8506d96647a69a2f9bfbb5fd467db700827a2ba", // s3Pool_c
+  "0x8e23f9719bbe179a68cb18595ec564116e4024eb", // sFrUsdt_t
+  "0xeb23ef286a00e96e5dc82d5f25e203c43a4b5cc4", // sUSDt_t
+
   "0x0c935328a69155dd43aa57f23288d868bae440fe", // sWETH_e
   "0x77e1886bf34d7dc0dcf8d5407ed6a239b66ae2ee", // sWETH_ar
   "0x66917b3b128760295bf48a5382951bc63bb1768e", // sWETH_o
@@ -37,6 +45,14 @@ const contracts: string[] = [
   "0x210B2AddE074a220bCEA99051f90acD049977814", // sBTCB_b
   "0xfEa2c4377f556e35B1ddE85e80a2816F601c8D6c", // scbBTC_ba
   "0xa6c60E1C7431561971398b79Fe6B0Bf02E9f0E6C", // sWBTC_l
+
+  "0xb2137e9d90f0752089538e3c1254f36da2e8a871", // sWETH.e_av
+  "0x6b4846ba707c0b760d9c77918f70536312e264c4", // sWETH_p
+  "0x1f7759134c9f35d9b2c81002f7fac6848a13ca35", // sETH_b
+  "0x91c573fb29acaf7ab242b1de8b720787d43b5cd5", // swfrxETH_f
+  "0xee8758e413e305b1bed9e0bd147457c8254004be", // sWETH_gn
+  "0xa8e44394edfe922b5fdc722d87954aa5e605463c", // sWETH_me
+  "0x46aC86bFEC8a9f48d51620fBB1a4C26DeD1219b9", // sWETH_mo
 ];
 
 const portal: string = "0xAc8f44ceCa92b2a4b30360E5bd3043850a0FFcbE";

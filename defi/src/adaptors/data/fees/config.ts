@@ -362,6 +362,7 @@ export default {
         "id": "420"
     },
     "lyra": {
+        parentId: "Derive",
         "id": "503"
     },
     "radioshack": {
@@ -2145,9 +2146,10 @@ export default {
     "suilend": {
         id: "4274"
     },
-    /*"juicebox": { // adapter not working
-        id: "4208"
-    },*/
+    "juicebox": { // adapter not working
+        parentId: "Juicebox",
+        id: "2833"
+    },
     "celestia": {
         id: "22861"
     },
@@ -2202,5 +2204,70 @@ export default {
     },
     "phantom": {
         id: "5398"
+    },
+    "bullx": {
+        id: "5407"
+    },
+    "gmgnai": {
+        id: "5408"
+    },
+    "debank-cloud": {
+        id: "5410"
+    },
+    "navi": {
+        id: "3323",
+    },
+    "hydrometer": {
+        id: "5423",
+    },
+    "bluefin-amm": {
+        id: "5427",
+        parentId: "Bluefin",
+    },
+    "taraswap": {
+        id: "5437",
+    },
+    "clanker": {
+        id: "5446"
+    },
+    "bouncebit-cedefi": {
+        parentId: "BounceBit CeDeFi",
+        id: "5450"
+    },
+    "swing": {
+        id: "5474"
+    },
+    "thetis-market": {
+        parentId: "Thetis Market",
+        id: "5469"
+    },
+    "iotex": {
+        id: "2777"
+    },
+    "lyra-v2": {
+        parentId: "Derive",
+        id: "3923"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
+    },
+    "memewe": {
+        id: "5501"
+    },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
+            }
+        }
+    },
+    "neby-dex": {
+        id: "5512"
+    },
+    "sudofinance": {
+        id: "4045"
     }
 } as AdaptorsConfig

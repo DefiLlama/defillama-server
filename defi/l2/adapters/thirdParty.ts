@@ -99,9 +99,10 @@ const celer = async (): Promise<void> => {
 };
 
 const adapters = [axelar(), wormhole(), celer()];
+const filteredAddresses: { [chain: Chain]: Address[] } = {};
+
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
   await Promise.all(adapters);
-  const filteredAddresses: { [chain: Chain]: Address[] } = {};
   if (adapters.length == doneAdapters.length && mappingDone) return filteredAddresses;
 
   Object.keys(addresses).map((chain: string) => {
@@ -124,6 +125,5 @@ const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
 
 export default tokenAddresses;
 
-// layerzero
 // gravity bridge
 // pNetwork

@@ -72,8 +72,9 @@ export default {
         },
         "id": "2814"
     },
-    "hyperliquid": {
-        "id": "2862",
+    "hyperliquid-perp": {
+        parentId: "Hyperliquid",
+        "id": "5507",
         "enabled": true
     },
     "dydx": {
@@ -462,9 +463,9 @@ export default {
         parentId: "Metavault",
         "id": "3911"
     },
-    "kiloex": {
+    /*"kiloex": { // volume-to-OI discrepancy, 77x ratio
         "id": "3329"
-    },
+    },*/
     "surfone": {
         "id": "3954"
     },
@@ -694,6 +695,7 @@ export default {
     },
     "edgeX": {
         id: "4954",
+        "enabled": false,
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1723075200": true,
@@ -753,5 +755,22 @@ export default {
     },
     "zkera-finance": {
         id: "3343"
-    }
+    },
+    "adrena": {
+        id: "5353"
+    },
+    "thetis-market": {
+        parentId: "Thetis Market",
+        id: "5469"
+    },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
+            }
+        }
+    },
+
 } as AdaptorsConfig

@@ -276,5 +276,17 @@ export default {
                 id: "5302",
             }
         }
+    },
+    "superswap": {
+        id: "5372",
+        parentId: "SuperSwap",
+        protocolsData: {
+            "v2": {
+                id: "5372",
+            },
+            "v3": {
+                id: "5373",
+            }
+        }
     }
 } as AdaptorsConfig

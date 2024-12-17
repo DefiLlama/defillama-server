@@ -63543,7 +63543,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5507",
-    name: "Hyperliquid Perp",
+    name: "Hyperliquid Perps",
     address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
     symbol: "HYPE",
     url: "https://hyperliquid.xyz",

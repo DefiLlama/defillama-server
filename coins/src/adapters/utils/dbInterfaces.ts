@@ -37,6 +37,8 @@ export interface CgEntry {
   price: number;
   symbol: string;
   confidence: number;
+  mcap?: number
+  timestamp?: number
 }
 export interface Read {
   dbEntry: DbEntry;

@@ -226,18 +226,22 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     }
     idToSymbol[coin.id] = coin.symbol;
   });
-  const writes = Object.entries(coinData)
+  const writes: CgEntry[] = [];
+  Object.entries(coinData)
     .filter((c) => c[1]?.usd !== undefined)
     .filter((c) => !staleIds.includes(c[0]))
-    .map(([cgId, data]) => ({
-      PK: cgPK(cgId),
-      SK: data.last_updated_at,
-      price: data.usd,
-      mcap: data.usd_market_cap,
-      timestamp: data.last_updated_at,
-      symbol: idToSymbol[cgId].toUpperCase(),
-      confidence: 0.99,
-    }));
+    .map(([cgId, data]) => {
+      if (cgId in idToSymbol)
+        writes.push({
+          PK: cgPK(cgId),
+          SK: data.last_updated_at,
+          price: data.usd,
+          mcap: data.usd_market_cap,
+          timestamp: data.last_updated_at,
+          symbol: idToSymbol[cgId].toUpperCase(),
+          confidence: 0.99,
+        });
+    });
 
   const prevWrites: CgEntry[] = await batchGet(
     writes.map((w: CgEntry) => ({ PK: w.PK, SK: 0 })),

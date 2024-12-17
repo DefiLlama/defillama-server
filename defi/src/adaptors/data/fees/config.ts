@@ -2263,5 +2263,8 @@ export default {
                 "id": "5498",
             }
         }
+    },
+    "neby-dex": {
+        id: "5512"
     }
 } as AdaptorsConfig

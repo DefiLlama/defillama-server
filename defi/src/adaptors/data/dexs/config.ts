@@ -2655,5 +2655,8 @@ export default {
     "hyperliquid-spot": {
         parentId: "Hyperliquid",
         id: "4482"
+    },
+    "neby-dex": {
+        id: "5512"
     }
 } as AdaptorsConfig

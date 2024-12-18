@@ -60412,7 +60412,7 @@ const data3: Protocol[] = [
     description: "The first DEX on TON with concentrated liquidity",
     chain: "TON",
     logo: `${baseIconsUrl}/tonco.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -60420,6 +60420,7 @@ const data3: Protocol[] = [
     chains: ["TON"],
     module: "tonco/index.js",
     twitter: "Tonco_io",
+    audit_links: ["https://tonco.io/static/audits/beosin.pdf"],
     forkedFrom: [],
     oracles: [],
     listedAt: 1731667316

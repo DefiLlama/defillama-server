@@ -63677,6 +63677,27 @@ const data3: Protocol[] = [
     audit_links: ["https://dedaub.com/audits/neby/neby-september-13-2024/"],
     listedAt: 1734441986
   },
+  {
+    id: "5513",
+    name: "Ink Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://inkonchain.com/bridge",
+    description: "Bridge for Ink chain by Kraken",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ink-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "ink/index.js",
+    twitter: "inkonchain",
+    listedAt: 1734483322
+  },
 ];
 
 export default data3;

@@ -45987,8 +45987,8 @@ const data3: Protocol[] = [
   {
     id: "4725",
     name: "Spectra V2",
-    address: "0x4104b135dbc9609fc1a9490e61369036497660c8",
-    symbol: "APW",
+    address: "base:0x64fcc3a02eeeba05ef701b7eed066c6ebd5d4e51",
+    symbol: "SPECTRA",
     url: "https://app.spectra.finance/fixed-rate",
     description: "Secure your future yield at a fixed rate.",
     chain: "Ethereum",

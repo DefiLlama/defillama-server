@@ -2658,5 +2658,8 @@ export default {
     },
     "neby-dex": {
         id: "5512"
+    },
+    "mantis": {
+        id: "5514"
     }
 } as AdaptorsConfig

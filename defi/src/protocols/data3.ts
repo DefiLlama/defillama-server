@@ -63696,7 +63696,27 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "ink/index.js",
     twitter: "inkonchain",
-    listedAt: 1734483322
+  },
+  {
+    id: "5514",
+    name: "Mantis",
+    address: null,
+    symbol: "-",
+    url: "https://www.mantis.app",
+    description: "Unified intent-based trading app on Solana and Ethereum",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/mantis.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum","Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "mantis",
+    audit_links: ["https://github.com/ComposableFi/composable/tree/main/audits/mantis-contracts"]
   },
 ];
 

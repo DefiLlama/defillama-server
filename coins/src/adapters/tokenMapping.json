@@ -892,6 +892,16 @@
     }
   },
   "base": {
+    "0x2D5875ab0eFB999c1f49C798acb9eFbd1cfBF63c": {
+      "decimals": "18",
+      "symbol": "fsBLP",
+      "to": "asset#base:0xe771b4E273dF31B85D7A7aE0Efd22fb44BdD0633"
+    },
+    "0xa2242d0A8b0b5c1A487AbFC03Cd9FEf6262BAdCA": {
+      "decimals": "18",
+      "symbol": "fBLP",
+      "to": "asset#base:0xe771b4E273dF31B85D7A7aE0Efd22fb44BdD0633"
+    },
     "0x59aaF835D34b1E3dF2170e4872B785f11E2a964b": {
       "decimals": "6",
       "symbol": "verUSDC",

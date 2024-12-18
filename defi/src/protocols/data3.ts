@@ -63739,6 +63739,27 @@ const data3: Protocol[] = [
     twitter: "inswap_",
     listedAt: 1734521678
   },
+  {
+    id: "5516",
+    name: "DevvE",
+    address: "0x8248270620Aa532E4d64316017bE5E873E37cc09",
+    symbol: "DEVVE",
+    url: "https://devve.fi",
+    description: "DevvE is a decentralized launchpad that helps blockchain projects with token launches, fundraising, and community engagement. It offers tools like staking, vesting, and liquidity management for sustainable growth",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/inkswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "devve",
+    cmcId: "29461",
+    category: "Launchpad",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "devve/index.js",
+    twitter: "DevveEcosystem",
+    listedAt: 1734561655
+  },
 ];
 
 export default data3;

@@ -49,7 +49,7 @@ function convertToMessage(item: Dynamo, topic: Topic): object {
     decimals,
     price,
     confidence,
-    timestamp,
+    SK,
     adapter,
     redirect,
     mcap,
@@ -72,7 +72,7 @@ function convertToMessage(item: Dynamo, topic: Topic): object {
     case "coins-current":
       return { pid, price, confidence, source: adapter, mcap };
     case "coins-timeseries":
-      return { pid, price, confidence, source: adapter, ts: timestamp, mcap };
+      return { pid, price, confidence, source: adapter, ts: SK, mcap };
     default:
       throw new Error(`Topic '${topic}' is not valid`);
   }

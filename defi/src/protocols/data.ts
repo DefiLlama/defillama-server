@@ -17004,8 +17004,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "906",
     name: "Impossible Finance",
-    address: "bsc:0xb0e1fc65c1a741b4662b813eb787d369b8614af1",
-    symbol: "IF",
+    address: "bsc:0x0b15ddf19d47e6a86a56148fb4afffc6929bcb89",
+    symbol: "IDIA",
     url: "https://impossible.finance",
     description:
       "Impossible Finance is a DeFi-native ecosystem of multi-chain products. The core vision of IF is to nurture and accelerate top-tier blockchain projects as a product-first incubator.",
@@ -17013,8 +17013,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/impossible-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "impossible-finance",
-    cmcId: "10932",
+    gecko_id: "idia",
+    cmcId: "10933",
     category: "Launchpad",
     chains: ["Binance"],
     module: "impossiblefi/index.js",

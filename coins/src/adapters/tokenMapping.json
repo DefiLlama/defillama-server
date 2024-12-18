@@ -887,16 +887,6 @@
     }
   },
   "base": {
-    "0x2D5875ab0eFB999c1f49C798acb9eFbd1cfBF63c": {
-      "decimals": "18",
-      "symbol": "fsBLP",
-      "to": "asset#base:0xe771b4E273dF31B85D7A7aE0Efd22fb44BdD0633"
-    },
-    "0xa2242d0A8b0b5c1A487AbFC03Cd9FEf6262BAdCA": {
-      "decimals": "18",
-      "symbol": "fBLP",
-      "to": "asset#base:0xe771b4E273dF31B85D7A7aE0Efd22fb44BdD0633"
-    },
     "0x59aaF835D34b1E3dF2170e4872B785f11E2a964b": {
       "decimals": "6",
       "symbol": "verUSDC",
@@ -5368,6 +5358,24 @@
       "to": "coingecko#bitcoin",
       "decimals": 18,
       "symbol": "uBTC"
+    },
+    "0xe85411c030fb32a9d8b14bbbc6cb19417391f711": {
+      "name": "suBTC",
+      "decimals": "18",
+      "symbol": "suBTC",
+      "to": "coingecko#bitcoin"
+    },
+    "0x5a2aa871954eBdf89b1547e75d032598356caad5": {
+      "name": "pumpBTC",
+      "decimals": "8",
+      "symbol": "pumpBTC",
+      "to": "coingecko#pumpbtc"
+    },
+    "0x8BB97A618211695f5a6a889faC3546D1a573ea77": {
+      "name": "nBTC",
+      "decimals": "8",
+      "symbol": "nBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "stellar": {

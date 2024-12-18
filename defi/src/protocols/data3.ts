@@ -53899,7 +53899,7 @@ const data3: Protocol[] = [
     module: "injective-orderbook/index.js",
     twitter: "HelixApp_",
     forkedFrom: [],
-    oracles: ["Pyth", "Band"], // band oracle was confirmed by helix team
+    oracles: ["Pyth", "Band", "Stork"], // band oracle was confirmed by helix team
     parentProtocol: "parent#helix",
     listedAt: 1724923885
   },

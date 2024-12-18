@@ -3548,6 +3548,20 @@ export const chainCoingeckoIds = {
     twitter: "Duck_Chain",
     url: "https://duckchain.io/"
   },
+  "Sophon": {
+    geckoId: "sophon",
+    symbol: "SOPH",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    twitter: "sophon",
+    url: "https://sophon.xyz/",
+    github: ["sophon-org"],
+    chainId: 50104
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

@@ -63718,6 +63718,27 @@ const data3: Protocol[] = [
     twitter: "mantis",
     audit_links: ["https://github.com/ComposableFi/composable/tree/main/audits/mantis-contracts"]
   },
+  {
+    id: "5515",
+    name: "InkSwap",
+    address: null,
+    symbol: "-",
+    url: "https://dex.inkswap.io/#/swap",
+    description: "Empowering anyone to easily deploy a divisible, composable, and decentralized inscription asset, freely tradable on any DeFi and NFT markets.",
+    chain: "Ink",
+    logo: `${baseIconsUrl}/inkswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ink"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "inkswap/index.js",
+    twitter: "inswap_",
+    listedAt: 1734521678
+  },
 ];
 
 export default data3;

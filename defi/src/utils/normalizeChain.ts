@@ -3536,6 +3536,18 @@ export const chainCoingeckoIds = {
     github: ["inkonchain"],
     chainId: 57073
   },
+  "DuckChain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "Duck_Chain",
+    url: "https://duckchain.io/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -3698,7 +3710,8 @@ const chainLabelMap = {
   "vinu": "VinuChain",
   "bouncebit": "BounceBit",
   "aelf": "aelf",
-  "hela": "HeLa"
+  "hela": "HeLa",
+  "duckchain": "DuckChain"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

@@ -2661,5 +2661,8 @@ export default {
     },
     "mantis": {
         id: "5514"
+    },
+    "utyabswap": {
+        id: "5508"
     }
 } as AdaptorsConfig

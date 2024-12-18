@@ -1,5 +1,5 @@
 import { getTokenPrices } from "./parallelProtocol";
 
-export function parallelProtocol(timestamp: number = 0) {
-  return Promise.all([getTokenPrices("ethereum", timestamp)]);
+export function parallelProtocol(timestamp: number) {
+  return getTokenPrices("ethereum", timestamp);
 }

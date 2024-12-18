@@ -115,5 +115,5 @@ export default {
   sbtc: require("./other/sbtc"),
   aries: require("./moneyMarkets/aries"),
   pragma: require("./oracles/pragma"),
-  parallelProtocol: require("./markets/parallelProcotol"),
+  parallelProtocol: require("./markets/parallelProtocol"),
 };

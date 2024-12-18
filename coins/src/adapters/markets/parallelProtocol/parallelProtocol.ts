@@ -23,13 +23,13 @@ export const STABLES: Record<
 export async function getTokenPrices(chain: string, timestamp: number) {
   const stables = STABLES[chain] ?? [];
   const writes: Write[] = [];
+  const block = await getBlock(chain, timestamp);
 
   for (let i = 0; i < stables.length; i++) {
     const { symbol, address, feed } = stables[i];
-    let price = 1;
-    if (feed) {
-      price = await getPrice(timestamp, chain, feed);
-    }
+    if (!feed) continue;
+    const price = await getPrice(block, chain, feed);
+
     addToDBWritesList(
       writes,
       chain,
@@ -39,28 +39,22 @@ export async function getTokenPrices(chain: string, timestamp: number) {
       symbol,
       timestamp,
       "parallel",
-      1
+      1,
     );
   }
   return writes;
 }
 
 async function getPrice(
-  timestamp: number,
+  block: number | undefined,
   chain: any,
-  feed: string
+  target: string,
 ): Promise<number> {
-  const block = await getBlock(chain, timestamp);
-  const { answer } = await call({
-    target: feed,
-    chain,
-    block,
-    abi: CHAINLINK_FEED_ABI,
-  });
-  return answer / 10 ** 8;
+  const { output } = await call({ target, chain, block, abi });
+  return output / 10 ** 8;
 }
 
-const CHAINLINK_FEED_ABI = {
+const abi = {
   name: "latestAnswer",
   outputs: [
     {

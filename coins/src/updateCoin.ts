@@ -6,16 +6,15 @@ import {
   getBasicCoins,
 } from "./utils/getCoinsUtils";
 import { getCache, setCache } from "./utils/cache";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 import { setTimer } from "./utils/shared/coingeckoLocks";
 
 const margin = 60 * 60 * 2; // 2 hours
+
 const handler = async (event: any): Promise<IResponse> => {
-  // this should require internal key
-  await setEnvSecrets();
   const start = new Date().getTime();
   const unixStart = start / 1000;
   setTimer();
+
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
   const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
 
@@ -29,7 +28,6 @@ const handler = async (event: any): Promise<IResponse> => {
   });
 
   if (!cgIds.length) return successResponse({});
-  // fetch new data and cache
   const [newData, bulk] = await Promise.all([
     fetchCgPriceData(Object.values(cgIds)),
     getCache("coins-swap", "bulk"),
@@ -54,7 +52,7 @@ const handler = async (event: any): Promise<IResponse> => {
       confidence,
     };
 
-    if (PK in bulk && bulk[PK] > unixStart - margin * 2) return;
+    if (PK in bulk && bulk[PK] > unixStart - margin / 2) return;
     writes.push(
       ...[
         {
@@ -71,19 +69,18 @@ const handler = async (event: any): Promise<IResponse> => {
           SK,
           price,
           confidence,
+          adapter: "updateCoin",
         },
       ],
     );
     bulk[PK] = SK;
   });
 
-  // write to cache and DB
   await Promise.all([
     batchWrite(writes, false),
     setCache("coins-swap", "bulk", bulk),
   ]);
 
-  // return anyway
   const end = new Date().getTime();
   const duration = `${end - start}ms`;
   return successResponse({
@@ -93,11 +90,3 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
-
-handler({
-  pathParameters: {
-    coins:
-      "base:0xbaa5cc21fd487b8fcc2f632f3f4e8d37262a0842,base:0vdfvdfv,ethereum:0x57f6bddf2e015feb13e8f86cb7bb5a6a62723ffe",
-  },
-});
-// ts-node coins/src/updateCoin.ts

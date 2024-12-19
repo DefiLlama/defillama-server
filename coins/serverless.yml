@@ -141,6 +141,13 @@ functions:
       - http:
           path: prices/current/{coins}
           method: get
+  updateCoinPrices:
+    handler: src/updateCoin.default
+    timeout: 60
+    events:
+      - http:
+          path: prices/update/{coins}
+          method: get
   coinFirstTimestamp:
     handler: src/getCoinFirstTimestamp.default
     timeout: 60

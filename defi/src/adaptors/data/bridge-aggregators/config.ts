@@ -15,5 +15,8 @@ export default {
     },
     "bitgetwallet": {
         id: "3207",
+    },
+    "teleswap-ton": {
+        id: "5532",
     }
 } as AdaptorsConfig

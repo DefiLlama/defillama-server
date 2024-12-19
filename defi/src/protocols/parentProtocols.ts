@@ -6067,6 +6067,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "sonic_market",
   },
+  {
+    id: "parent#bucket-protocol",
+    name: "Bucket Protocol",
+    url: "https://bucketprotocol.io",
+    description:
+      "Bucket Protocol is the leading Collateralized Debt Position (CDP) protocol within the Sui ecosystem, supporting multiple assets for collateralization while extending stablecoin loans in $BUCK at a fixed low-cost. Its real-time liquidation mechanism ensures both security and capital efficiency, and the inbuilt flash loan services facilitate the price stability of the stablecoin BUCK.",
+    logo: `${baseIconsUrl}/bucket-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "bucket_protocol",
+    stablecoins: ["bucket-protocol-buck-stablecoin"],
+  },
 ];
 
 export default parentProtocols;

@@ -105,6 +105,9 @@ export const additional: { [chain: string]: string[] } = {
     "0xa2235d059f80e176d931ef76b6c51953eb3fbef4", // apeUSD
     "0xcf800f4948d16f23333508191b1b1591daf70438", // apeETH
   ],
+  hyperliquid: [
+    "0xc1fb593aeffbeb02f85e0308e9956a90", // PURR
+  ],
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [

@@ -8166,7 +8166,7 @@ const data2: Protocol[] = [
     description:
       "Goblins.Cash is the first decentralized reserve currency protocol on SmartBCH with focus on bonds and elastic supply cryptocurrencies.",
     chain: "smartBCH",
-    logo: `${baseIconsUrl}/goblins-cash-reserve.png`,
+    logo: `${baseIconsUrl}/goblins-cash-reserve.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

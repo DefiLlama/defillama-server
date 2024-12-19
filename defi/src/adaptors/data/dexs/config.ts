@@ -2670,5 +2670,8 @@ export default {
     },
     "emojicoin": {
         id: "5454"
+    },
+    "datadex": {
+        id: "5524"
     }
 } as AdaptorsConfig

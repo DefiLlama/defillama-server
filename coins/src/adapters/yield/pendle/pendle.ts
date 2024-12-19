@@ -131,6 +131,9 @@ export default async function getTokenPrices(
         "0x00b321D89A8C36B3929f20B7955080baeD706D1B",
         "0x7e0f3511044AFdaD9B4fd5C7Fa327cBeB90BEeBf",
         "0x1c48cd1179aa0c503a48fcd5852559942492e31b",
+        "0x36d3ca43ae7939645c306e26603ce16e39a89192",
+        "0x98ffefd1a51d322c8def6d0ba183e71547216f7f",
+        "0xafdc922d0059147486cc1f0f32e3a2354b0d35cc",
       ],
     );
   if (chain == "bsc")

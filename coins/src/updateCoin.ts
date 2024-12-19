@@ -21,13 +21,17 @@ const handler = async (event: any): Promise<IResponse> => {
 
   const response = {} as CoinsResponse;
   const cgIds: { [pk: string]: string } = {};
-  const bulk = await bulkPromise;
+  let bulk = await bulkPromise;
   coins.map((d) => {
     if (d.PK in bulk && bulk[d.PK] > unixStart - margin) return;
     if (d.timestamp && d.timestamp > unixStart - margin) return;
     if (!d.redirect || !d.redirect.startsWith("coingecko#")) return;
+
     const id = d.redirect.substring(d.redirect.indexOf("#") + 1);
+    if (id in bulk && bulk[id] > unixStart - margin) return;
+
     cgIds[d.PK] = id;
+    bulk[id] = unixStart;
   });
 
   if (!Object.keys(cgIds).length) return successResponse({});

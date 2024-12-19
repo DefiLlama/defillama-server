@@ -21409,7 +21409,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://gearbox.fi",
     referralUrl: "https://app.gearbox.fi/?referral=1404",
     description:
-      "Gearbox Protocol is building a permissionless credit layer. Designed for seamless wallet integrations, reimagining traditional lending. So you can lend, borrow, or 10x leverage -- directly inside your favorite wallets in one click.",
+      "Gearbox Protocol is building a permissionless credit layer. Designed for seamless wallet integrations, reimagining traditional lending. So you can lend, borrow, or 10x leverage - directly inside your favorite wallets in one click.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gearbox.jpg`,
     audits: "2",

@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
+import { setTimer } from "../utils/shared/coingeckoLocks";
 import ddb, { batchGet, batchWrite, DELETE } from "../utils/shared/dynamodb";
 import {
   Coin,
@@ -17,6 +17,10 @@ import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 import { PublicKey } from "@solana/web3.js";
 import { getConnection } from "../adapters/solana/utils";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
+import {
+  fetchCgPriceData,
+  retryCoingeckoRequest,
+} from "../utils/getCoinsUtils";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -27,38 +31,6 @@ enum COIN_TYPES {
 
 function cgPK(cgId: string) {
   return `coingecko#${cgId}`;
-}
-
-export async function retryCoingeckoRequest(
-  query: string,
-  retries: number,
-): Promise<CoingeckoResponse> {
-  for (let i = 0; i < retries; i++) {
-    await getCoingeckoLock();
-    try {
-      const res = (await fetch(
-        `https://pro-api.coingecko.com/api/v3/${query}&x_cg_pro_api_key=${process.env.CG_KEY}`,
-      ).then((r) => r.json())) as CoingeckoResponse;
-      if (Object.keys(res).length == 1 && Object.keys(res)[0] == "status")
-        throw new Error(`cg call failed`);
-      return res;
-    } catch (e) {
-      if ((i + 1) % 3 === 0 && retries > 3) {
-        await sleep(10e3); // 10s
-      }
-      continue;
-    }
-  }
-  return {};
-}
-
-interface CoingeckoResponse {
-  [cgId: string]: {
-    usd: number;
-    usd_market_cap: number;
-    last_updated_at: number;
-    usd_24h_vol: number;
-  };
 }
 
 interface IdToSymbol {
@@ -170,13 +142,7 @@ async function getSymbolAndDecimals(
 }
 
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
-  const coinIds = coins.map((c) => c.id);
-  const coinData = await retryCoingeckoRequest(
-    `simple/price?ids=${coinIds.join(
-      ",",
-    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true&include_24hr_vol=true`,
-    10,
-  );
+  const coinData = await fetchCgPriceData(coins.map((c) => c.id));
   await storeCGCoinMetadatas(coinData);
 
   const timestamp = getCurrentUnixTimestamp();

@@ -11876,7 +11876,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "654",
-    name: "Beets DEX",
+    name: "Beets - DEX",
     address: "sonic:0x2d0e0814e62d80056181f5cd932274405966e4f0",
     symbol: "BEETS",
     url: "https://beets.fi",

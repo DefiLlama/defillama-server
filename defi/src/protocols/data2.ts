@@ -8159,14 +8159,14 @@ const data2: Protocol[] = [
   },
   {
     id: "1730",
-    name: "Goblins Cash",
+    name: "Goblins Cash Reserve",
     address: "smartbch:0x56381cB87C8990971f3e9d948939e1a95eA113a3",
     symbol: "GOB",
     url: "https://goblins.cash",
     description:
       "Goblins.Cash is the first decentralized reserve currency protocol on SmartBCH with focus on bonds and elastic supply cryptocurrencies.",
     chain: "smartBCH",
-    logo: `${baseIconsUrl}/goblins-cash.png`,
+    logo: `${baseIconsUrl}/goblins-cash-reserve.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -8176,8 +8176,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Olympus DAO"],
     module: "goblinscash/api.js",
-    treasury: "goblinscash.js",
     twitter: "GoblinsCash",
+    parentProtocol: "parent#goblins-cash",
     listedAt: 1651751884,
   },
   {

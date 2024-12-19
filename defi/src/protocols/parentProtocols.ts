@@ -6043,6 +6043,19 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["ethena-usde"],
   },
   {
+    id: "parent#alphafi",
+    name: "AlphaFi",
+    url: "https://alphafi.xyz",
+    description:
+      "Premier Yield Optimizer on the SUI Blockchain. Earn Safe, Real Yields with AlphaFi.",
+    logo: `${baseIconsUrl}/alphafi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AlphaFiSUI",
+    github: ["AlphaFiTech"],
+  },
+  {
     id: "parent#sonic-market",
     name: "Sonic Market",
     url: "https://www.sonic.market",

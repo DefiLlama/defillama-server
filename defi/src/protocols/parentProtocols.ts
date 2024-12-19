@@ -6043,17 +6043,16 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["ethena-usde"],
   },
   {
-    id: "parent#alphafi",
-    name: "AlphaFi",
-    url: "https://alphafi.xyz",
+    id: "parent#sonic-market",
+    name: "Sonic Market",
+    url: "https://www.sonic.market",
     description:
-      "Premier Yield Optimizer on the SUI Blockchain. Earn Safe, Real Yields with AlphaFi.",
-    logo: `${baseIconsUrl}/alphafi.jpg`,
+      "Sonic Market is a fully on-chain orderbook DEX protocol built on Sonic, offering instant settlement and trustless trading in a decentralized environment. By leveraging the composability of on-chain infrastructure, it integrates seamlessly with third-party protocols for advanced trading strategies. It provides a highly efficient and customizable trading experience through its innovative use of on-chain central limit orderbooks.",
+    logo: `${baseIconsUrl}/sonic-market.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "AlphaFiSUI",
-    github: ["AlphaFiTech"],
+    twitter: "sonic_market",
   },
 ];
 

@@ -15302,7 +15302,7 @@ const data2: Protocol[] = [
     listedAt: 1661888773,
     parentProtocol: "parent#lista-dao",
     tokensExcludedFromParent: {
-      BSC: ["SNBNB"],
+      BSC: ["SNBNB", "SLISBNB"],
     }
   },
   {

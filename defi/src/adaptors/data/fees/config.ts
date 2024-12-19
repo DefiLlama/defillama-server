@@ -2269,5 +2269,8 @@ export default {
     },
     "sudofinance": {
         id: "4045"
+    },
+    "emojicoin": {
+        id: "5454"
     }
 } as AdaptorsConfig

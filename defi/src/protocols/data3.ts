@@ -64062,6 +64062,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#goblins-cash",
     listedAt: 1734643502
   },
+  {
+    id: "5532",
+    name: "TeleSwap TON",
+    address: null,
+    symbol: "-",
+    url: "https://teleswap.io",
+    description: "Cross-Chain Exchange Mini App in Telegram. Open our Telegram Mini App and enjoy swapping over 2000+ coins without any sign ups",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/teleswap-ton.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge Aggregator",
+    chains: ["Base", "Binance", "TON"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "TeleSwapTON",
+  },
 ];
 
 export default data3;

@@ -8,11 +8,12 @@ import {
 import { getCache, setCache } from "./utils/cache";
 import { setTimer } from "./utils/shared/coingeckoLocks";
 
-const margin = 60 * 60 * 2; // 2 hours
+const margin = 5 * 60; // 5 mins
 
 const handler = async (event: any): Promise<IResponse> => {
   const start = new Date().getTime();
-  const unixStart = start / 1000;
+  const bulkPromise = getCache("coins-swap", "bulk");
+  const unixStart = Math.floor(start / 1000);
   setTimer();
 
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
@@ -20,18 +21,17 @@ const handler = async (event: any): Promise<IResponse> => {
 
   const response = {} as CoinsResponse;
   const cgIds: { [pk: string]: string } = {};
+  const bulk = await bulkPromise;
   coins.map((d) => {
+    if (d.PK in bulk && bulk[d.PK] > unixStart - margin) return;
     if (d.timestamp && d.timestamp > unixStart - margin) return;
     if (!d.redirect || !d.redirect.startsWith("coingecko#")) return;
     const id = d.redirect.substring(d.redirect.indexOf("#") + 1);
     cgIds[d.PK] = id;
   });
 
-  if (!cgIds.length) return successResponse({});
-  const [newData, bulk] = await Promise.all([
-    fetchCgPriceData(Object.values(cgIds)),
-    getCache("coins-swap", "bulk"),
-  ]);
+  if (!Object.keys(cgIds).length) return successResponse({});
+  const newData = await fetchCgPriceData(Object.values(cgIds));
 
   const writes: any[] = [];
   coins.map(async ({ PK, symbol, decimals }) => {
@@ -44,6 +44,7 @@ const handler = async (event: any): Promise<IResponse> => {
       last_updated_at: SK,
     } = newData[id];
 
+    bulk[PK] = unixStart;
     response[PKTransforms[PK]] = {
       decimals,
       price,
@@ -73,7 +74,6 @@ const handler = async (event: any): Promise<IResponse> => {
         },
       ],
     );
-    bulk[PK] = SK;
   });
 
   await Promise.all([

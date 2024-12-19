@@ -3562,6 +3562,13 @@ export const chainCoingeckoIds = {
     github: ["sophon-org"],
     chainId: 50104
   },
+  "QL1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "QomLOne",
+    url: "https://qom.one",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -3725,7 +3732,8 @@ const chainLabelMap = {
   "bouncebit": "BounceBit",
   "aelf": "aelf",
   "hela": "HeLa",
-  "duckchain": "DuckChain"
+  "duckchain": "DuckChain",
+  "qom": "QL1"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

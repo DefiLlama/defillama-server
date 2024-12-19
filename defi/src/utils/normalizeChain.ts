@@ -3577,6 +3577,15 @@ export const chainCoingeckoIds = {
     twitter: "withvana",
     url: "https://www.vana.org"
   },
+  "Agoric": {
+    geckoId: "agoric",
+    symbol: "BLD",
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "agoric",
+    url: "https://agoric.com",
+    github: ["agoric"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

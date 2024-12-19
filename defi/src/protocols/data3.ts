@@ -61607,7 +61607,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Base", "Pulse"],
+    chains: ["Pulse"],
     module: "9mm-v2/index.js",
     twitter: "9mm_pro",
     forkedFrom: [],

@@ -2667,5 +2667,8 @@ export default {
     },
     "vinuswap": {
         id: "5497"
+    },
+    "emojicoin": {
+        id: "5454"
     }
 } as AdaptorsConfig

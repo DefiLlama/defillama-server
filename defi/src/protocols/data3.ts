@@ -64044,6 +64044,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bucket-protocol",
     listedAt: 1734642540
   },
+  {
+    id: "5531",
+    name: "Goblins AMM",
+    address: null,
+    symbol: "-",
+    url: "https://app.goblins.cash/",
+    description: "Goblins provides a cutting-edge DEX  on smartBCH",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/goblin-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base", "Binance", "smartBCH"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    module: "goblin-dex/index.js",
+    twitter: "GoblinsCash",
+    parentProtocol: "parent#goblins-cash",
+    listedAt: 1734643502
+  },
 ];
 
 export default data3;

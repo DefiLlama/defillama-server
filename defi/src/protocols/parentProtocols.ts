@@ -6080,6 +6080,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "bucket_protocol",
     stablecoins: ["bucket-protocol-buck-stablecoin"],
   },
+  {
+    id: "parent#goblins-cash",
+    name: "Goblins Cash",
+    url: "https://bucketprotocol.io",
+    description:
+      "Goblins.Cash is the first decentralized reserve currency protocol on SmartBCH with focus on bonds and elastic supply cryptocurrencies.",
+    logo: `${baseIconsUrl}/goblins-cash.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "GoblinsCash",
+    treasury: "goblinscash.js",
+  },
 ];
 
 export default parentProtocols;

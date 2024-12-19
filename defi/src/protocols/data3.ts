@@ -63762,6 +63762,48 @@ const data3: Protocol[] = [
     twitter: "DevveEcosystem",
     listedAt: 1734561655
   },
+  {
+    id: "5517",
+    name: "Bitkub",
+    address: null,
+    symbol: "KUB",
+    url: "https://www.bitkub.com/",
+    description: "No.1 licensed bitcoin exchange in Thailand that offers services to individuals who intend to buy, sell cryptocurrency",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bitkub.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "bitkub-coin",
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "bitkub-cex/index.js",
+    twitter: "BitkubOfficial",
+    listedAt: 1734606794
+  },
+  {
+    id: "5518",
+    name: "Gasp",
+    address: null,
+    symbol: "-",
+    url: "https://www.gasp.xyz",
+    description: "Gasp is a cross-chain DEX and protocol designed for exchanging crypto assets between blockchains, such as Ethereum L2s and rollups, Solana, Bitcoin, RWA protocols, web3 gaming ecosystems, and much more. Gasp provides a cross-chain communication platform that scales infinitely with large amounts of capital, and provides high-speed trading for both enterprise and individual retail users.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/gasp.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Ethereum", "Arbitrum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "gasp-xyz/index.js",
+    twitter: "Gasp_xyz",
+    listedAt: 1734606981
+  },
 ];
 
 export default data3;

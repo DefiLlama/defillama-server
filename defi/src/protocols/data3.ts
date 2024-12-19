@@ -63804,6 +63804,48 @@ const data3: Protocol[] = [
     twitter: "Gasp_xyz",
     listedAt: 1734606981
   },
+  {
+    id: "5519",
+    name: "QOMSWAP",
+    address: null,
+    symbol: "-",
+    url: "https://www.qomswap.com",
+    description: "Main highest liquidity and volume DEX on QL1 chain..",
+    chain: "QL1",
+    logo: `${baseIconsUrl}/qomswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["QL1"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "qomswap/index.js",
+    twitter: "qomswap1",
+    listedAt: 1734607597
+  },
+  {
+    id: "5520",
+    name: "Thrive On Mars",
+    address: null,
+    symbol: "-",
+    url: "https://www.thriveonmars.com",
+    description: "An interoperable game ecosystem to make humanity multiplanetary. Players manage an economic simulation that’s based on real Mars science through a real-time strategy game and an open-world RPG. Every move informs our Data Platform to drive R&D for humans-to-Mars missions.",
+    chain: "Wax",
+    logo: `${baseIconsUrl}/thrive-on-mars.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Wax"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "thriveonmars/index.js",
+    twitter: "thriveonmars",
+    listedAt: 1734607997
+  },
 ];
 
 export default data3;

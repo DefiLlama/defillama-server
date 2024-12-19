@@ -2664,5 +2664,8 @@ export default {
     },
     "utyabswap": {
         id: "5508"
+    },
+    "vinuswap": {
+        id: "5497"
     }
 } as AdaptorsConfig

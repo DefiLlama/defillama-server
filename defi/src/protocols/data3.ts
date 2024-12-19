@@ -63890,6 +63890,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#sonic-market",
     listedAt: 1734618957
   },
+  {
+    id: "5524",
+    name: "Vana Swap",
+    address: null,
+    symbol: "-",
+    url: "https://www.vana.org/",
+    description: "Vana is a distributed network for private, user-owned data, designed to enable user-owned AI. Users own, govern, and earn from the AI models they contribute to. Developers gain access to cross-platform data to power personalized applications and train frontier AI models.",
+    chain: "Vana",
+    logo: `${baseIconsUrl}/vana-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Vana"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "datadex/index.js",
+    twitter: "withvana",
+    listedAt: 1734619406
+  },
 ];
 
 export default data3;

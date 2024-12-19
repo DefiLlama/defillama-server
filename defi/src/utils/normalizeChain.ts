@@ -3569,6 +3569,14 @@ export const chainCoingeckoIds = {
     twitter: "QomLOne",
     url: "https://qom.one",
   },
+  "Vana": {
+    geckoId: "vana",
+    symbol: "VANA",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "withvana",
+    url: "https://www.vana.org"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

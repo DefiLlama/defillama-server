@@ -16,6 +16,7 @@ export const STABLES: Record<
     {
       symbol: "paUSD",
       address: "0x571f54D23cDf2211C83E9A0CbD92AcA36c48Fa02",
+      feed: undefined,
     },
   ],
 };
@@ -27,8 +28,7 @@ export async function getTokenPrices(chain: string, timestamp: number) {
 
   for (let i = 0; i < stables.length; i++) {
     const { symbol, address, feed } = stables[i];
-    if (!feed) continue;
-    const price = await getPrice(block, chain, feed);
+    const price = feed ? await getPrice(block, chain, feed) : 1;
 
     addToDBWritesList(
       writes,

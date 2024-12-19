@@ -61612,6 +61612,8 @@ const data3: Protocol[] = [
     twitter: "9mm_pro",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#9mm",
+    listedAt: 1734643415
   },
   {
     id: "5417",
@@ -61632,6 +61634,8 @@ const data3: Protocol[] = [
     twitter: "9mm_pro",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#9mm",
+    listedAt: 1734643455
   },
   {
     id: "5418",

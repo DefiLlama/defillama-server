@@ -11,15 +11,14 @@ type BlockQueryArgs = {
 
 const defaultQuery = ({ block, minVolume = 100, minTVL = 100 }: BlockQueryArgs) => `{
   tokens (where: {
-    derivedUSD_gt: 0
     volumeUSD_gt: ${minVolume}
     totalValueLockedUSD_gt: ${minTVL}
   } block: {number: ${block - 100}} first: 1000) {
     id
     symbol
     poolCount
-    derivedUSD
     totalValueLockedUSD
+    totalValueLocked
     volumeUSD
     decimals
     symbol
@@ -34,7 +33,7 @@ function getGraphCoinsAdapter({ chain, endpoint, minVolume = 1e4, minTVL = 1e5, 
     const { tokens } = await graph.request(endpoint, queryString);
     const pricesObject: any = {}
     tokens.forEach((token: any) => {
-      let price = token.derivedUSD
+      let price = token.totalValueLockedUSD / token.totalValueLocked
       let underlying: any = undefined
       if (!price&& token.derivedETH) {
         price = token.derivedETH
@@ -69,7 +68,8 @@ const taraswapQuery = ({ block, }: BlockQueryArgs) => `{
 
 const items = [
   { chain: 'ace', endpoint: 'https://endurance-subgraph-v2.fusionist.io/subgraphs/name/catalist/exchange-v3-v103', minTVL: 1e4, projectName: 'catalist' },
-  { chain: 'tara', endpoint: 'https://indexer.lswap.app/subgraphs/name/taraxa/uniswap-v3', minTVL: 1e4, projectName: 'taraswap', query: taraswapQuery, },
+  { chain: 'vana', endpoint: 'https://api.goldsky.com/api/public/project_clnbo3e3c16lj33xva5r2aqk7/subgraphs/data-dex-vana/prod/gn', minTVL: 1e4, projectName: 'datadex' },
+  { chain: 'tara', endpoint: 'https://indexer.lswap.app/subgraphs/name/taraxa/uniswap-v3', minTVL: 1e4, projectName: 'taraswap', },
 ]
 
 items.forEach((config: any) => adapters[config.projectName] = getGraphCoinsAdapter(config));

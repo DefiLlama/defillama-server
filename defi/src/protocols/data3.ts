@@ -32482,7 +32482,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "beethovenx-sftmx/index.js",
     twitter: "beets_fi",
-    parentProtocol: "parent#beets",
+    parentProtocol: "parent#beethoven-x",
     listedAt: 1707837410,
   },
   {

@@ -3726,8 +3726,8 @@ const parentProtocols: IParentProtocol[] = [
     github: ["supswap"],
   },
   {
-    id: "parent#beets",
-    name: "Beets",
+    id: "parent#beethoven-x",
+    name: "Beets", // previously Beethoven X
     url: "https://beets.fi",
     description:
       "The Flagship LST Hub on Sonic. From seamless staking to earning real yield on LST-focused liquidity pools, beets is the ultimate destination for your liquid-staked tokens.",

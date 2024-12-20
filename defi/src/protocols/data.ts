@@ -11893,7 +11893,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "beethovenx/index.js",
     twitter: "beets_fi",
     forkedFrom: ["Balancer"],
-    parentProtocol: "parent#beets",
+    parentProtocol: "parent#beethoven-x",
   },
   {
     id: "655",

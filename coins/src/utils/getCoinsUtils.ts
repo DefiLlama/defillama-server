@@ -47,7 +47,7 @@ export async function retryCoingeckoRequest(
   retries: number,
 ): Promise<CoingeckoResponse> {
   for (let i = 0; i < retries; i++) {
-    // await getCoingeckoLock();
+    await getCoingeckoLock();
     try {
       const res = (await fetch(
         `https://pro-api.coingecko.com/api/v3/${query}&x_cg_pro_api_key=${process.env.CG_KEY}`,

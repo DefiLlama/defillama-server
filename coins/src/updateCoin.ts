@@ -5,7 +5,7 @@ import {
   fetchCgPriceData,
   getBasicCoins,
 } from "./utils/getCoinsUtils";
-// import { getCache, setCache } from "./utils/cache";
+import { getCache, setCache } from "./utils/cache";
 import { setTimer } from "./utils/shared/coingeckoLocks";
 // import setEnvSecrets from "./utils/shared/setEnvSecrets";
 console.log("imports done");
@@ -16,7 +16,7 @@ const handler = async (event: any): Promise<IResponse> => {
   // await setEnvSecrets();
   console.log("entered handler");
   const start = new Date().getTime();
-  // const bulkPromise = getCache("coins-swap", "bulk");
+  const bulkPromise = getCache("coins-swap", "bulk");
   const unixStart = Math.floor(start / 1000);
   setTimer();
 
@@ -28,7 +28,7 @@ const handler = async (event: any): Promise<IResponse> => {
 
   const response = {} as CoinsResponse;
   const cgIds: { [pk: string]: string } = {};
-  let bulk: { [id: string]: any } = {}; // await bulkPromise;
+  let bulk: { [id: string]: any } = await bulkPromise;
   coins.map((d) => {
     if (d.PK in bulk && bulk[d.PK] > unixStart - margin) return;
     if (d.timestamp && d.timestamp > unixStart - margin) return;
@@ -52,6 +52,7 @@ const handler = async (event: any): Promise<IResponse> => {
     if (!(PK in cgIds)) return;
     const confidence = 0.99;
     const id = cgIds[PK];
+    if (!(id in newData)) return;
     const {
       usd_market_cap: mcap,
       usd: price,
@@ -93,7 +94,7 @@ const handler = async (event: any): Promise<IResponse> => {
   console.log(`writes length: ${writes.length}`);
   await Promise.all([
     batchWrite(writes, false),
-    // setCache("coins-swap", "bulk", bulk),
+    setCache("coins-swap", "bulk", bulk),
   ]);
 
   console.log(`writes written`);
@@ -108,9 +109,9 @@ const handler = async (event: any): Promise<IResponse> => {
 
 export default wrap(handler);
 
-handler({
-  pathParameters: {
-    coins: "ethereum:0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
-  },
-});
+// handler({
+//   pathParameters: {
+//     coins: "ethereum:0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+//   },
+// });
 // ts-node coins/src/updateCoin.ts

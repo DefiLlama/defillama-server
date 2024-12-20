@@ -1,6 +1,6 @@
 require("dotenv").config();
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import getRecordClosestToTimestamp from "./utils/getRecordClosestToTimestamp";
+import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
 import { quantisePeriod } from "./utils/timestampUtils";
 

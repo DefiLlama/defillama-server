@@ -1,7 +1,7 @@
 require("dotenv").config();
 import fetch from "node-fetch";
 import { toUNIXTimestamp, getCurrentUnixTimestamp } from "../utils/date";
-import { batchWrite } from "../utils/dynamodbV3";
+import { batchWrite } from "../utils/shared/dynamodb";
 import { cgPK } from "../utils/keys";
 import { Coin } from "../utils/coingeckoPlatforms";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";

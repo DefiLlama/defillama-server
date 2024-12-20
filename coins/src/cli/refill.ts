@@ -4,10 +4,10 @@ import {
   batchWrite,
   DELETE,
   getHistoricalValues,
-} from "../utils/dynamodbV3";
+} from "../utils/shared/dynamodb";
 import { filterWritesWithLowConfidence } from "../adapters/utils/database";
 import { withTimeout } from "../utils/shared/withTimeout";
-import setEnvSecrets from "../utils/setEnvSecrets";
+import setEnvSecrets from "../utils/shared/setEnvSecrets";
 import PromisePool from "@supercharge/promise-pool";
 import { getCurrentUnixTimestamp } from "../utils/date";
 

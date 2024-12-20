@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared";
-import ddb from "./utils/dynamodbV3";
+import ddb from "./utils/shared/dynamodb";
 import parseRequestBody from "./utils/shared/parseRequestBody";
-import getRecordClosestToTimestamp from "./utils/getRecordClosestToTimestamp";
+import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { coinToPK, DAY } from "./utils/processCoin";
 
 const handler = async (

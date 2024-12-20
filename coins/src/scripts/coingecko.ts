@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { setTimer } from "../utils/shared/coingeckoLocks";
-import ddb, { batchGet, batchWrite, DELETE } from "../utils/dynamodbV3";
+import ddb, { batchGet, batchWrite, DELETE } from "../utils/shared/dynamodb";
 import {
   Coin,
   CoinMetadata,

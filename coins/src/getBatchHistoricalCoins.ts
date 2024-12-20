@@ -4,7 +4,7 @@ import {
   IResponse,
   errorResponse,
 } from "./utils/shared";
-import getRecordClosestToTimestamp from "./utils/getRecordClosestToTimestamp";
+import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { quantisePeriod } from "./utils/timestampUtils";
 import { getBasicCoins } from "./utils/getCoinsUtils";
 import { lowercaseAddress } from "./utils/processCoin";

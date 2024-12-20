@@ -1,4 +1,4 @@
-import { batchGet } from "./dynamodbV3";
+import { batchGet } from "./shared/dynamodb";
 import { coinToPK } from "./processCoin";
 import { getCoingeckoLock } from "../utils/shared/coingeckoLocks";
 import sleep from "../utils/shared/sleep";

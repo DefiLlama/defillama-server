@@ -8,7 +8,7 @@ console.log(process.version);
 import adapters from "../adapters/index";
 console.log("adapters imported");
 import { PromisePool } from "@supercharge/promise-pool";
-// import setEnvSecrets from "../utils/setEnvSecrets";
+// import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
 console.log("imports successful");
 

@@ -1,7 +1,7 @@
 require("dotenv").config()
 import { writeFileSync } from "fs";
 import adapters from "../adapters/index";
-import { batchWrite } from "../utils/dynamodbV3";
+import { batchWrite } from "../utils/shared/dynamodb";
 
 const adapterName = "backed";
 const timestamp = +(new Date())/1e3;

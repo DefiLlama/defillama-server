@@ -7,17 +7,23 @@ import {
 } from "./utils/getCoinsUtils";
 import { getCache, setCache } from "./utils/cache";
 import { setTimer } from "./utils/shared/coingeckoLocks";
-
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
+console.log("imports done");
 const margin = 5 * 60; // 5 mins
 
 const handler = async (event: any): Promise<IResponse> => {
+  await setEnvSecrets();
+  console.log("entered handler");
   const start = new Date().getTime();
   const bulkPromise = getCache("coins-swap", "bulk");
   const unixStart = Math.floor(start / 1000);
   setTimer();
 
+  console.log("timer set");
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
+  console.log("fetching basic coins");
   const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
+  console.log(`basic coins length: ${coins.length}`);
 
   const response = {} as CoinsResponse;
   const cgIds: { [pk: string]: string } = {};
@@ -34,8 +40,11 @@ const handler = async (event: any): Promise<IResponse> => {
     bulk[id] = unixStart;
   });
 
+  console.log(`mapped`);
   if (!Object.keys(cgIds).length) return successResponse({});
+  console.log(`fetching from cg`);
   const newData = await fetchCgPriceData(Object.values(cgIds));
+  console.log(`new data length: ${coins.length}`);
 
   const writes: any[] = [];
   coins.map(async ({ PK, symbol, decimals }) => {
@@ -80,13 +89,16 @@ const handler = async (event: any): Promise<IResponse> => {
     );
   });
 
+  console.log(`writes length: ${writes.length}`);
   await Promise.all([
     batchWrite(writes, false),
     setCache("coins-swap", "bulk", bulk),
   ]);
 
+  console.log(`writes written`);
   const end = new Date().getTime();
   const duration = `${end - start}ms`;
+  console.log(`response`);
   return successResponse({
     coins: response,
     duration,
@@ -94,3 +106,9 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
+
+// handler({
+//   pathParameters: {
+//     coins: "ethereum:0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+//   },
+// });

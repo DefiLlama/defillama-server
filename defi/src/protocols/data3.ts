@@ -45973,7 +45973,7 @@ const data3: Protocol[] = [
       "Sceptre is an innovative multi network Liquid Staking solution build by Rome Blockchain Labs, with extensive knowledge and experience in Liquid Staking.",
     chain: "Flare",
     logo: `${baseIconsUrl}/sceptre-liquid.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -45983,6 +45983,7 @@ const data3: Protocol[] = [
     twitter: "SceptreLS",
     forkedFrom: [],
     oracles: [],
+    audit_links: ["https://3366350479-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FHWp56Ub8ewtAZ0NZ6C3r%2Fuploads%2FaGyvxLuf1DSHpn8gl1KH%2FSceptre_sFLR_Audit_Report_by_WatchPug.pdf?alt=media&token=43db5064-1f71-4ae9-a546-0216e9f50f1d"],
     listedAt: 1717589999,
   },
   {

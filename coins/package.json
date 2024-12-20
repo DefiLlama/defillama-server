@@ -53,7 +53,7 @@
     "@solana/web3.js": "^1.73.3",
     "@supercharge/promise-pool": "^2.1.0",
     "ajv": "^6.12.6",
-    "aws-sdk": "^2.1150.0",
+    "aws-sdk": "^2.1692.0",
     "axios": "^1.6.7",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.10",

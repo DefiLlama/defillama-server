@@ -12971,7 +12971,7 @@ const data3: Protocol[] = [
   {
     id: "3269",
     name: "Arkham",
-    address: null,
+    address: "0x6E2a43be0B1d33b726f0CA3b8de60b3482b8b050",
     symbol: "ARKM",
     url: "https://www.arkhamintelligence.com",
     description: "Deanonymizing the Blockchain.",
@@ -62207,7 +62207,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5444",
-    name: "Sacra",
+    name: "Sacra", // on geckoterminal
     address: null,
     symbol: "-",
     url: "https://sacra.game/",
@@ -62363,7 +62363,7 @@ const data3: Protocol[] = [
     id: "5451",
     name: "Blum",
     address: null,
-    symbol: "-",
+    symbol: "-", // BLUM preview only
     url: "https://blum.io",
     description: "Blum is a a new generation trading app in telegram and web",
     chain: "TON",
@@ -62645,7 +62645,7 @@ const data3: Protocol[] = [
     id: "5464",
     name: "Echo Liquid Staking",
     address: null,
-    symbol: "-",
+    symbol: "-", // on geckoterminal
     assetToken: "eAPT",
     url: "https://www.echo-protocol.xyz/stake",
     description: "eAPT is an LST of APT to collect staking rewards from Aptos validators. Users can deposit APT into the Echo LSD protocol at any time to exchange it for eAPT, enabling them to earn staking rewards on their deposited APT.",
@@ -62773,7 +62773,7 @@ const data3: Protocol[] = [
   },
   { 
     id: "5470",
-    name: "Celeron",
+    name: "Celeron", // ong geckoterminal
     address: "mode:0x8b83ECC4EF8FaEc5c05b7D6EC002B659BE137120",
     symbol: "CEL",
     url: "https://celeron.xyz/",
@@ -62865,15 +62865,15 @@ const data3: Protocol[] = [
   { 
     id: "5474",
     name: "Swing",
-    address: null,
-    symbol: "-",
+    address: "ethereum:-",
+    symbol: "$SWING",
     url: "https://swing.xyz/",
     description: "Swing is a digital asset API platform offering liquidity routing services for web2 & web3 businesses",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/swing.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "swing-xyz",
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["Ethereum","Solana","Binance","Polygon","Base","Arbitrum","zkSync Era"],
@@ -63042,15 +63042,15 @@ const data3: Protocol[] = [
     id: "5482",
     name: "HashAI",
     address: "0x292fcdd1b104de5a00250febba9bc6a5092a0076",
-    symbol: "HashAI",
+    symbol: "HASHAI",
     url: "https://hashai.fi",
     description: "AI-Optimised Crypto Mining. High-Performance Nodes - Available for Rent.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hashai.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "hashai",
+    cmcId: "30369",
     category: "Farm",
     chains: ["Ethereum"],
     oracles: [], 
@@ -63580,16 +63580,16 @@ const data3: Protocol[] = [
   {
     id: "5508",
     name: "UtyabSwap",
-    address: null,
-    symbol: "-",
+    address: "ton:EQAw63ZqLmnwRA77PW07CWIEngwg-eIiysaqZ8IWpUL0nP7a",
+    symbol: "UTYAB",
     url: "https://utyabswap.com/",
     description: "UtyabSwap is a decentralized exchange on the TON blockchain offering 0% swap fees and transactions with ludicrous speed. With no liquidity provider fees and a 0.15% referral program, it maximizes profits and simplifies trading.",
     chain: "TON",
     logo: `${baseIconsUrl}/utyabswap.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "utya-black",
+    cmcId: "31267",
     category: "Dexes",
     chains: ["TON"],
     oracles: [], 
@@ -63621,7 +63621,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5510",
-    name: "Sboom",
+    name: "Sboom", // on geckoterminal
     address: null,
     symbol: "-",
     url: "https://sboom.fi",
@@ -63665,7 +63665,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5512",
-    name: "NEBY DEX",
+    name: "NEBY DEX", // on geckoterminal
     address: null,
     symbol: "-",
     url: "https://www.neby.exchange",
@@ -63812,7 +63812,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5519",
-    name: "QOMSWAP",
+    name: "QOMSWAP", // on geckoterminal
     address: null,
     symbol: "-",
     url: "https://www.qomswap.com",

@@ -6049,8 +6049,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Premier Yield Optimizer on the SUI Blockchain. Earn Safe, Real Yields with AlphaFi.",
     logo: `${baseIconsUrl}/alphafi.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "alpha-fi",
+    cmcId: "32745",
     chains: [],
     twitter: "AlphaFiSUI",
     github: ["AlphaFiTech"],

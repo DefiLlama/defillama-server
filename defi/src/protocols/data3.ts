@@ -32464,7 +32464,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4126",
-    name: "Beets - LST",
+    name: "Beets LST", // previously Beethoven X LST
     address: "sonic:0x2d0e0814e62d80056181f5cd932274405966e4f0",
     symbol: "BEETS",
     assetToken: "stS",

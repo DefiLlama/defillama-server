@@ -110,7 +110,7 @@ export const bridges = [
   aptos,
 ].map(normalizeBridgeResults) as Bridge[];
 
-import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
+import { batchGet, batchWrite } from "../../utils/dynamodbV3";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import produceKafkaTopics from "../../utils/coins3/produce";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";

@@ -1,4 +1,4 @@
-import dynamodb from "../utils/shared/dynamodb";
+import dynamodb from "../utils/dynamodbV3";
 
 async function main() {
     await dynamodb.put({

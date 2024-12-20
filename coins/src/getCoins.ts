@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import ddb, { batchGet } from "./utils/shared/dynamodb";
+import ddb, { batchGet } from "./utils/dynamodbV3";
 import parseRequestBody from "./utils/shared/parseRequestBody";
-import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
+import getRecordClosestToTimestamp from "./utils/getRecordClosestToTimestamp";
 import { coinToPK, PKToCoin } from "./utils/processCoin";
 import { CoinsResponse } from "./utils/getCoinsUtils";
 import { getCurrentUnixTimestamp } from "./utils/date";

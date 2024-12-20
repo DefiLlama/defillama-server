@@ -1,6 +1,6 @@
 import { getProvider } from "@defillama/sdk";
 import PromisePool from "@supercharge/promise-pool";
-import setEnvSecrets from "../utils/shared/setEnvSecrets";
+import setEnvSecrets from "../utils/setEnvSecrets";
 import { adaptersRepoChainsJson as chains } from "../getChains";
 import { sendMessage } from "../../../defi/src/utils/discord";
 

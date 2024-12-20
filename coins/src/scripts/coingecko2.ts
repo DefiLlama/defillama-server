@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
-import ddb, { batchWrite, batchGet } from "../utils/shared/dynamodb";
+import ddb, { batchWrite, batchGet } from "../utils/dynamodbV3";
 import { getCoinPlatformData } from "../utils/coingeckoPlatforms";
 import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";

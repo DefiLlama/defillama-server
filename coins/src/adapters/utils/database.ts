@@ -406,21 +406,17 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
   return coinData;
 }
 export async function batchWriteWithAlerts(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
   failOnError: boolean,
 ): Promise<void> {
   const previousItems: DbEntry[] = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
-    await checkMovement(items, previousItems);
+  const filteredItems: any[] = await checkMovement(items, previousItems);
   await batchWrite(filteredItems, failOnError);
   await produceKafkaTopics(filteredItems as any[]);
 }
-export async function batchWrite2WithAlerts(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-) {
+export async function batchWrite2WithAlerts(items: any[]) {
   const previousItems: DbEntry[] = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
-    await checkMovement(items, previousItems);
+  const filteredItems: any[] = await checkMovement(items, previousItems);
 
   await batchWrite2(
     await translateItems(filteredItems),
@@ -430,19 +426,17 @@ export async function batchWrite2WithAlerts(
   );
 }
 async function readPreviousValues(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
   latencyHours: number = 6,
 ): Promise<DbEntry[]> {
   let queries: { PK: string; SK: number }[] = [];
-  items.map(
-    (t: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap, i: number) => {
-      if (i % 2) return;
-      queries.push({
-        PK: t.PK,
-        SK: 0,
-      });
-    },
-  );
+  items.map((t: any, i: number) => {
+    if (i % 2) return;
+    queries.push({
+      PK: t.PK,
+      SK: 0,
+    });
+  });
   const results = await batchGet(queries);
   const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
   return results.filter(
@@ -450,12 +444,11 @@ async function readPreviousValues(
   );
 }
 async function checkMovement(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: any[],
   previousItems: DbEntry[],
   margin: number = 0.5,
-): Promise<AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]> {
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
-    [];
+): Promise<any[]> {
+  const filteredItems: any[] = [];
   const obj: { [PK: string]: any } = {};
   let errors: string = "";
   previousItems.map((i: any) => (obj[i.PK] = i));

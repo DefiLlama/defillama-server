@@ -12,12 +12,13 @@ console.log("imports done");
 const margin = 5 * 60; // 5 mins
 
 const handler = async (event: any): Promise<IResponse> => {
+  process.env.READABLE_STREAM = "disable";
   await setEnvSecrets();
   console.log("entered handler");
   const start = new Date().getTime();
   const bulkPromise = getCache("coins-swap", "bulk");
   const unixStart = Math.floor(start / 1000);
-  setTimer();
+  // setTimer();
 
   console.log("timer set");
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
@@ -107,8 +108,9 @@ const handler = async (event: any): Promise<IResponse> => {
 
 export default wrap(handler);
 
-// handler({
-//   pathParameters: {
-//     coins: "ethereum:0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
-//   },
-// });
+handler({
+  pathParameters: {
+    coins: "ethereum:0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+  },
+});
+// ts-node coins/src/updateCoin.ts

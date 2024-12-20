@@ -7,13 +7,13 @@ import {
 } from "./utils/getCoinsUtils";
 // import { getCache, setCache } from "./utils/cache";
 import { setTimer } from "./utils/shared/coingeckoLocks";
-// import setEnvSecrets from "./utils/shared/setEnvSecrets";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 console.log("imports done");
 const margin = 5 * 60; // 5 mins
 
 const handler = async (event: any): Promise<IResponse> => {
   // process.env.READABLE_STREAM = "disable";
-  // await setEnvSecrets();
+  await setEnvSecrets();
   console.log("entered handler");
   const start = new Date().getTime();
   // const bulkPromise = getCache("coins-swap", "bulk");

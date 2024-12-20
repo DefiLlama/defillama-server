@@ -6,7 +6,7 @@ import {
   getBasicCoins,
 } from "./utils/getCoinsUtils";
 // import { getCache, setCache } from "./utils/cache";
-// import { setTimer } from "./utils/shared/coingeckoLocks";
+import { setTimer } from "./utils/shared/coingeckoLocks";
 // import setEnvSecrets from "./utils/shared/setEnvSecrets";
 console.log("imports done");
 const margin = 5 * 60; // 5 mins
@@ -18,7 +18,7 @@ const handler = async (event: any): Promise<IResponse> => {
   const start = new Date().getTime();
   // const bulkPromise = getCache("coins-swap", "bulk");
   const unixStart = Math.floor(start / 1000);
-  // setTimer();
+  setTimer();
 
   console.log("timer set");
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",");

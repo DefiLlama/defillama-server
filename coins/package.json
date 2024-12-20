@@ -68,7 +68,6 @@
     "node-fetch": "^2.7.0",
     "p-limit": "^3.1.0",
     "path": "^0.12.7",
-    "postgres": "^3.4.3",
-    "starknet": "^5.24.3"
+    "postgres": "^3.4.3"
   }
 }

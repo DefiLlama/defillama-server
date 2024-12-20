@@ -1016,11 +1016,6 @@
       "to": "coingecko#usds",
       "decimals": 18,
       "symbol": "USDS"
-    },
-    "0xEdC68c4c54228D273ed50Fc450E253F685a2c6b9": {
-      "to": "coingecko#javsphere",
-      "decimals": 18,
-      "symbol": "JAV"
     }
   },
   "jbc": {

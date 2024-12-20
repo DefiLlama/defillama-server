@@ -64151,6 +64151,28 @@ const data3: Protocol[] = [
     twitter: "Vader_AI_",
     listedAt: 1734701945
   },
+  {
+    id: "5535",
+    name: "Zivoe",
+    address: "0xe412D46a0fBD567332b7689cFFfE1F8A4f19A9d2",
+    symbol: "ZVE",
+    url: "https://www.zivoe.com",
+    description: "Zivoe is a Real-World Asset (RWA) protocol that connects DeFi users to private credit opportunities in the consumer lending market. By pooling on-chain capital and lending to consumers via our network of origination/servicing partners, Zivoe helps underserved borrowers escape high-interest debt while generating sustainable returns for liquidity providers.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zivoe.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Uncollateralized Lending",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "zivoe/index.js",
+    twitter: "ZivoeProtocol",
+    github: ["Zivoe"],
+    listedAt: 1734702192
+  },
 ];
 
 export default data3;

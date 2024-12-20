@@ -3586,6 +3586,19 @@ export const chainCoingeckoIds = {
     url: "https://agoric.com",
     github: ["agoric"],
   },
+  "Swellchain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 1923,
+    twitter: "swellnetworkio",
+    url: "https://www.swellnetwork.io/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

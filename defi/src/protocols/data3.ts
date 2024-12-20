@@ -64131,7 +64131,7 @@ const data3: Protocol[] = [
     listedAt: 1734701645
   },
   {
-    id: "5534",
+    id: "5535",
     name: "Vader AI",
     address: "base:0x731814e491571a2e9ee3c5b1f7f3b962ee8f4870",
     symbol: "VADER",
@@ -64152,7 +64152,7 @@ const data3: Protocol[] = [
     listedAt: 1734701945
   },
   {
-    id: "5535",
+    id: "5536",
     name: "Zivoe",
     address: "0xe412D46a0fBD567332b7689cFFfE1F8A4f19A9d2",
     symbol: "ZVE",

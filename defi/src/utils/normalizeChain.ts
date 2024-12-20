@@ -3599,6 +3599,15 @@ export const chainCoingeckoIds = {
     twitter: "swellnetworkio",
     url: "https://www.swellnetwork.io/"
   },
+  "Elys": {
+    geckoId: "elys-network",
+    symbol: "ELYS",
+    cmcId: "32959",
+    categories: ["Cosmos"],
+    twitter: "elys_network",
+    url: "https://elys.network/",
+    github: ["elys-network"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

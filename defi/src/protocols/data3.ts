@@ -64332,6 +64332,52 @@ const data3: Protocol[] = [
     github: ["hknio"],
     listedAt: 1734725727
   },
+  {
+    id: "5544",
+    name: "Elys DEX",
+    address: null,
+    symbol: "-",
+    url: "https://app.elys.network/",
+    description: "Decentralized Exchange on Elys Network",
+    chain: "Elys",
+    logo: `${baseIconsUrl}/elys-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Elys"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "elys-dex/index.js",
+    twitter: "elys_network",
+    listedAt: 1734734073
+  },
+  {
+    id: "5545",
+    name: "Theo Network",
+    address: null,
+    symbol: "-",
+    url: "https://theo.xyz/",
+    description: "Theo Network is a set of onchain contracts and off-chain systems built to capture onchain funding rates at scale",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/theo-network.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Ethereum","Arbitrum","Base"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "theo-network/index.js",
+    twitter: "TheoNetwork_",
+    audit_links: [
+      "https://github.com/theo-network/theo/blob/main/contracts/Vault/audit.md",
+      "https://github.com/theo-network/theo/blob/main/contracts/Vault/audit_2.md"
+    ],
+    listedAt: 1734734529
+  },
 ];
 
 export default data3;

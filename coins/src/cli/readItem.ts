@@ -1,4 +1,4 @@
-import dynamodb from "../utils/shared/dynamodb";
+import dynamodb from "../utils/dynamodbV3";
 
 async function main(){
     console.log(await dynamodb.get({PK:`asset#${process.argv[2]}`, SK:0}))

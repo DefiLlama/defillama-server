@@ -1,7 +1,7 @@
 require("dotenv").config();
 import fetch from "node-fetch";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
-import ddb from "../utils/shared/dynamodb";
+import ddb from "../utils/dynamodbV3";
 import { cgPK } from "../utils/keys";
 import { iterateOverPlatforms } from "../utils/coingeckoPlatforms";
 import { retryCoingeckoRequest } from "../fetchCoingeckoData"

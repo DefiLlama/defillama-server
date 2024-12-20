@@ -1,9 +1,9 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
-import getRecordEarliestTimestamp from "./utils/shared/getRecordEarliestTimestamp";
+import getRecordEarliestTimestamp from "./utils/getRecordEarliestTimestamp";
 
 const handler = async (
-  event: AWSLambda.APIGatewayEvent
+  event: AWSLambda.APIGatewayEvent,
 ): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
   const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
@@ -11,7 +11,7 @@ const handler = async (
   await Promise.all(
     coins.map(async (coin) => {
       const finalCoin = await getRecordEarliestTimestamp(
-        coin.redirect ?? coin.PK
+        coin.redirect ?? coin.PK,
       );
       if (finalCoin === undefined) {
         return;
@@ -19,15 +19,15 @@ const handler = async (
       response[PKTransforms[coin.PK]] = {
         symbol: coin.symbol,
         price: finalCoin.price,
-        timestamp: finalCoin.SK
+        timestamp: finalCoin.SK,
       };
-    })
+    }),
   );
   return successResponse(
     {
-      coins: response
+      coins: response,
     },
-    3600
+    3600,
   ); // 1 hour cache
 };
 

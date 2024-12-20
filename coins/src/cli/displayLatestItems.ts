@@ -1,5 +1,5 @@
 require("dotenv").config()
-import ddb from "../utils/shared/dynamodb";
+import ddb from "../utils/dynamodbV3";
 import adapterResults from "../../adapterResults.json"
 
 const start = 1660313930

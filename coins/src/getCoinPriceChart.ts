@@ -6,7 +6,7 @@ import {
   errorResponse,
 } from "./utils/shared";
 import { getBasicCoins } from "./utils/getCoinsUtils";
-import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
+import getRecordClosestToTimestamp from "./utils/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { quantisePeriod, getTimestampsArray } from "./utils/timestampUtils";
 

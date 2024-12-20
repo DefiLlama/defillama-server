@@ -1,5 +1,5 @@
 import { blockPK } from "../getBlock"
-import ddb, { getHistoricalValues } from "../utils/shared/dynamodb"
+import ddb, { getHistoricalValues } from "../utils/dynamodbV3"
 
 const chains = ["ethereum"]
 const DRY_RUN:boolean = true

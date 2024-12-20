@@ -1,8 +1,8 @@
 require("dotenv").config();
 import axios from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
-import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
+import { batchGet, batchWrite } from "../../utils/dynamodbV3";
+import getTVLOfRecordClosestToTimestamp from "../../utils/getRecordClosestToTimestamp";
 import {
   Write,
   DbEntry,

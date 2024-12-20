@@ -1,6 +1,6 @@
 import { stargate } from "../adapters/markets/stargate";
 import { getCurrentUnixTimestamp } from "../utils/date";
-import ddb from "../utils/shared/dynamodb";
+import ddb from "../utils/dynamodbV3";
 
 const secondsToDelete = 4*3600;
 

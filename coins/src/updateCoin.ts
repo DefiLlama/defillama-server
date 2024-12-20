@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import { batchWrite } from "./utils/shared/dynamodb";
+import { batchWrite } from "./utils/dynamodbV3";
 import {
   CoinsResponse,
   fetchCgPriceData,

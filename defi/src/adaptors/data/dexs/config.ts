@@ -2673,5 +2673,8 @@ export default {
     },
     "datadex": {
         id: "5524"
+    },
+    "goblin-dex": {
+        id: "5531"
     }
 } as AdaptorsConfig

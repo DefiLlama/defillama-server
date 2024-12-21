@@ -943,7 +943,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "b-protocol",
     cmcId: "10556",
-    category: "Lending",
+    category: "Liquidations",
     chains: ["Ethereum"],
     module: "bprotocol/index.js",
     twitter: "bprotocoleth",

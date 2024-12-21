@@ -4237,6 +4237,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#hyperliquid",
     name: "Hyperliquid",
     url: "https://hyperliquid.xyz",
+    referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description: "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price",
     logo: `${baseIconsUrl}/hyperliquid.png`,
     gecko_id: "hyperliquid",

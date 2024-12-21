@@ -1995,11 +1995,11 @@ const data: Protocol[] = [
   */
   {
     id: "199",
-    name: "Sablier V1",
+    name: "Sablier Legacy",
     address: null,
     symbol: "-",
-    url: "https://sablier.finance/",
-    description: "The first release of the Sablier protocol",
+    url: "https://legacy-recipient.sablier.com/",
+    description: "A legacy version of Sablier, released in 2019",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sablier-finance.jpg`,
     audits: "2",
@@ -2008,7 +2008,7 @@ const data: Protocol[] = [
     cmcId: null,
     category: "Payments",
     chains: ["Ethereum"],
-    module: "sablier/index.js",
+    module: "sablier-legacy/index.js",
     twitter: "Sablier",
     audit_links: ["https://certificate.quantstamp.com/full/sablier"],
     parentProtocol: "parent#sablier-finance",

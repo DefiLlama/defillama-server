@@ -2406,7 +2406,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Sablier",
     url: "https://sablier.com/",
     description:
-      "Sablier is a token streaming protocol that enables by-the-second payments. DAOs and businesses use it for vesting, payroll, airdrops, and more. The sender of a payment stream first deposits a specific amount of ERC-20 tokens in a contract. Then, the contract progressively allocates the funds to the recipient, who can access them as they become available over time. The payment rate is influenced by various factors, including the start and end times, as well as the total amount of tokens deposited",
+      "Sablier provides infrastructure for onchain token distribution. DAOs and businesses use Sablier for vesting, payroll, airdrops, and more.",
     logo: `${baseIconsUrl}/sablier-finance.jpg`,
     gecko_id: null,
     cmcId: null,

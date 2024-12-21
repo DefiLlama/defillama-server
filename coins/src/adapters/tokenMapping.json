@@ -647,6 +647,11 @@
       "to": "coingecko#blockstack",
       "decimals": 6,
       "symbol": "vlqSTX"
+    },
+    "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token::sbtc-token": {
+      "to": "coingecko#bitcoin",
+      "decimals": 8,
+      "symbol": "sBTC"
     }
   },
   "arbitrum": {

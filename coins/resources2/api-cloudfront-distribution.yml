@@ -2,7 +2,7 @@ Resources:
   ApiCloudfront:
     Type: AWS::CloudFront::Distribution
     DependsOn:
-    - ApiGatewayHttpApi
+    - ApiGatewayRestApi
     Properties:
       DistributionConfig:
         Origins:
@@ -10,7 +10,7 @@ Resources:
           DomainName:
             Fn::Join:
               - ""
-              - - Ref: ApiGatewayHttpApi
+              - - Ref: ApiGatewayRestApi
                 - ".execute-api."
                 - Ref: AWS::Region
                 - ".amazonaws.com"

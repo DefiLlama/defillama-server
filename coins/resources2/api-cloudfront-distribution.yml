@@ -13,13 +13,13 @@ Resources:
               - - Ref: HttpApi
                 - ".execute-api."
                 - Ref: AWS::Region
+                - "."
                 - Ref: AWS::URLSuffix
           CustomOriginConfig:
             HTTPPort: 80
             HTTPSPort: 443
             OriginProtocolPolicy: https-only
             OriginSSLProtocols: [ "TLSv1.2" ]
-          OriginPath: /${self:custom.stage}
         Enabled: true
         HttpVersion: http2
         Comment: CDN for API Gateway (${self:custom.stage})

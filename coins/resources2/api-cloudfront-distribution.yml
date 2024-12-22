@@ -2,7 +2,7 @@ Resources:
   ApiCloudfront:
     Type: AWS::CloudFront::Distribution
     DependsOn:
-    - ApiGatewayRestApi
+    - HttpApi
     Properties:
       DistributionConfig:
         Origins:
@@ -10,10 +10,10 @@ Resources:
           DomainName:
             Fn::Join:
               - ""
-              - - Ref: ApiGatewayRestApi
+              - - Ref: HttpApi
                 - ".execute-api."
                 - Ref: AWS::Region
-                - ".amazonaws.com"
+                - Ref: AWS::URLSuffix
           CustomOriginConfig:
             HTTPPort: 80
             HTTPSPort: 443

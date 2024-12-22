@@ -3608,6 +3608,16 @@ export const chainCoingeckoIds = {
     url: "https://elys.network/",
     github: ["elys-network"],
   },
+  "Odyssey": {
+    geckoId: "dione",
+    symbol: "DIONE",
+    cmcId: "21473",
+    categories: ["EVM"],
+    twitter: "DioneProtocol",
+    url: "https://www.dioneprotocol.com/",
+    github: ["DioneProtocol"],
+    chainId: 153153
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

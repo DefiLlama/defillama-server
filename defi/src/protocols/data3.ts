@@ -64382,6 +64382,27 @@ const data3: Protocol[] = [
     ],
     listedAt: 1734734529
   },
+  {
+    id: "5546",
+    name: "Diamondswap",
+    address: null,
+    symbol: "-",
+    url: "https://diamondswap.com/exchange",
+    description: "DiamondSwap - Multi-Chain DEX and DEX Aggregator",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/diamondswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum","Binance","Base","Avalanche","Odyssey"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V2"],
+    module: "diamondswap/index.js",
+    twitter: "DiamondSwapTeam",
+    listedAt: 1734887072
+  },
 ];
 
 export default data3;

@@ -10,6 +10,8 @@ provider:
   region: eu-central-1
   endpointType: REGIONAL # Set to regional because the api gateway will be behind a cloudfront distribution
   stage: prod # Default to dev if no stage is specified
+  httpApi:
+    cors: true
   iamRoleStatements:
     - Effect: Allow # X-Ray permissions
       Action:
@@ -100,91 +102,91 @@ functions:
   fallback:
     handler: src/fallback.default
     events:
-      - http:
+      - httpApi:
           path: /{params+}
           method: any
   coins:
     handler: src/getCoins.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: prices
           method: post
   mcaps:
     handler: src/getMcaps.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: mcaps
           method: post
   chains:
     handler: src/getChains.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: chains
           method: get
   coinPrices:
     handler: src/getCoinPrices.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: coin/timestamps
           method: post
   currentCoinPrices:
     handler: src/getCurrentCoins.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: prices/current/{coins}
           method: get
   updateCoinPrices:
     handler: src/updateCoin.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: prices/update/{coins}
           method: get
   coinFirstTimestamp:
     handler: src/getCoinFirstTimestamp.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: prices/first/{coins}
           method: get
   historicalCoinPrices:
     handler: src/getHistoricalCoins.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: prices/historical/{timestamp}/{coins}
           method: get
   coinPriceChart:
     handler: src/getCoinPriceChart.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: chart/{coins}
           method: get
   batchHistorical:
     handler: src/getBatchHistoricalCoins.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: batchHistorical
           method: get
   coinPercentageChange:
     handler: src/getPercentageChange.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: percentage/{coins}
           method: get
   block:
     handler: src/getBlock.default
     timeout: 60
     events:
-      - http:
+      - httpApi:
           path: block/{chain}/{timestamp}
           method: get
     environment:
@@ -192,7 +194,7 @@ functions:
   corsPreflight:
     handler: src/corsPreflight.default
     events:
-      - http:
+      - httpApi:
           path: /{params+}
           method: options
   # fetchCoingeckoData2:
@@ -240,12 +242,10 @@ functions:
       R2_ENDPOINT: ${env:R2_ENDPOINT}
 
 resources:
-  # CORS for api gateway errors
-  - ${file(resources/api-gateway-errors.yml)}
   # DynamoDB
   - ${file(resources/dynamodb-table.yml)}
   # Cloudfront API distribution
-  - ${file(resources/api-cloudfront-distribution.yml)}
+  - ${file(resources2/api-cloudfront-distribution.yml)}
 
 plugins:
   - serverless-esbuild

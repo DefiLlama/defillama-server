@@ -110,84 +110,84 @@ functions:
     timeout: 60
     events:
       - httpApi:
-          path: prices
+          path: /prices
           method: post
   mcaps:
     handler: src/getMcaps.default
     timeout: 60
     events:
       - httpApi:
-          path: mcaps
+          path: /mcaps
           method: post
   chains:
     handler: src/getChains.default
     timeout: 60
     events:
       - httpApi:
-          path: chains
+          path: /chains
           method: get
   coinPrices:
     handler: src/getCoinPrices.default
     timeout: 60
     events:
       - httpApi:
-          path: coin/timestamps
+          path: /coin/timestamps
           method: post
   currentCoinPrices:
     handler: src/getCurrentCoins.default
     timeout: 60
     events:
       - httpApi:
-          path: prices/current/{coins}
+          path: /prices/current/{coins}
           method: get
   updateCoinPrices:
     handler: src/updateCoin.default
     timeout: 60
     events:
       - httpApi:
-          path: prices/update/{coins}
+          path: /prices/update/{coins}
           method: get
   coinFirstTimestamp:
     handler: src/getCoinFirstTimestamp.default
     timeout: 60
     events:
       - httpApi:
-          path: prices/first/{coins}
+          path: /prices/first/{coins}
           method: get
   historicalCoinPrices:
     handler: src/getHistoricalCoins.default
     timeout: 60
     events:
       - httpApi:
-          path: prices/historical/{timestamp}/{coins}
+          path: /prices/historical/{timestamp}/{coins}
           method: get
   coinPriceChart:
     handler: src/getCoinPriceChart.default
     timeout: 60
     events:
       - httpApi:
-          path: chart/{coins}
+          path: /chart/{coins}
           method: get
   batchHistorical:
     handler: src/getBatchHistoricalCoins.default
     timeout: 60
     events:
       - httpApi:
-          path: batchHistorical
+          path: /batchHistorical
           method: get
   coinPercentageChange:
     handler: src/getPercentageChange.default
     timeout: 60
     events:
       - httpApi:
-          path: percentage/{coins}
+          path: /percentage/{coins}
           method: get
   block:
     handler: src/getBlock.default
     timeout: 60
     events:
       - httpApi:
-          path: block/{chain}/{timestamp}
+          path: /block/{chain}/{timestamp}
           method: get
     environment:
       LLAMA_PROVIDER_RPC_GET_BLOCKNUMBER_TIMEOUT: 3000

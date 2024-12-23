@@ -55645,7 +55645,7 @@ const data3: Protocol[] = [
     module: "takoTako/index.js",
     twitter: null,
     forkedFrom: [],
-    oracles: ["Pyth"], // https://taikoscan.io/address/0x9B4B2129D237740f97819C192C1Eb5D03ecF3Ed3#code
+    oracles: ["Pyth"], // https://taikoscan.io/address/0x9B4B2129D237740f97819C192C1Eb5D03ecF3Ed3#code Pyth pricefee for M-BTC
     listedAt: 1726474986
   },
   {

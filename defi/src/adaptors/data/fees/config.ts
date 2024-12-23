@@ -2271,5 +2271,8 @@ export default {
     },
     "invariant": {
         id: "1788"
+    },
+    "memejob": {
+        id: "5533"
     }
 } as AdaptorsConfig

@@ -1719,10 +1719,6 @@ export default {
     "danogo": {
         "id": "3454"
     },
-    "aerodrome": {
-        parentId: "Aerodrome",
-        "id": "3450"
-    },
     "morphex-old": {
         parentId: "Morphex",
         "protocolsData": {

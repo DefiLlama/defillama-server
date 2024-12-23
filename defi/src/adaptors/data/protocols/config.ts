@@ -288,5 +288,9 @@ export default {
                 id: "5373",
             }
         }
+    },
+    "aerodrome": {
+        parentId: "Aerodrome",
+        "id": "3450"
     }
 } as AdaptorsConfig

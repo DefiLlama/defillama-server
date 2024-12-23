@@ -64442,7 +64442,7 @@ const data3: Protocol[] = [
     chains: ["Solana"],
     oracles: [], 
     forkedFrom: [],
-    module: "lagoon/index.js",
+    module: "neutral-trade/index.js",
     twitter: "TradeNeutral",
     github: ["neutral-trade"],
     listedAt: 1734973177

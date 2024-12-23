@@ -64403,6 +64403,28 @@ const data3: Protocol[] = [
     twitter: "DiamondSwapTeam",
     listedAt: 1734887072
   },
+  {
+    id: "5547",
+    name: "Lagoon",
+    address: null,
+    symbol: "-",
+    url: "https://lagoon.finance/",
+    description: "Lagoon is a vault protocol for asset manager. Users can deposit into vaults and enjoy managers strategies",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lagoon.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Treasury Manager",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "diamondswap/index.js",
+    twitter: "lagoon_finance",
+    github: ["hopperlabsxyz"],
+    listedAt: 1734930934
+  },
 ];
 
 export default data3;

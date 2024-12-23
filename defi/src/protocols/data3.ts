@@ -21477,7 +21477,6 @@ const data3: Protocol[] = [
       "https://github.com/AmphorProtocol/synthetic-vault/blob/main/audits/Salus_final_report.pdf",
       "https://github.com/AmphorProtocol/synthetic-vault/blob/main/audits/Bailsec_final_report.pdf",
     ],
-    github: ["AmphorProtocol"],
     parentProtocol: "parent#inception",
     listedAt: 1697566472,
   },

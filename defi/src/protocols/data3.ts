@@ -64420,7 +64420,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [], 
     forkedFrom: [],
-    module: "diamondswap/index.js",
+    module: "lagoon/index.js",
     twitter: "lagoon_finance",
     github: ["hopperlabsxyz"],
     listedAt: 1734930934

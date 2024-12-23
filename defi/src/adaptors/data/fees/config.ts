@@ -1020,10 +1020,6 @@ export default {
         "enabled": false, // has several dates with { "error" : { "S" : "Request failed with status code 500" } }
         "id": "3129"
     },
-    "aerodrome": {
-        parentId: "Aerodrome",
-        "id": "3450"
-    },
     "apex": {
         parentId: "ApeX Protocol",
         "id": "1878"

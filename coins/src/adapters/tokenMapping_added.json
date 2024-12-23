@@ -7964,6 +7964,24 @@
       "decimals": "18",
       "symbol": "DAI",
       "to": "ethereum:0x6b175474e89094c44da98b954eedeac495271d0f"
+    },
+    "0xE0a320b0d525BA7a97afcE932F78789Db23c0e4a": {
+      "name": "SKIVVY",
+      "decimals": "8",
+      "symbol": "SKIVVY",
+      "to": "ethereum:0x246908BfF0b1ba6ECaDCF57fb94F6AE2FcD43a77"
+    },
+    "0xcdF030a3E65f917DFa8d74555A64a5eC5303c88e": {
+      "name": "ForLootAndGlory",
+      "decimals": "18",
+      "symbol": "FLAG",
+      "to": "ethereum:0x9348e94a447bf8b2ec11f374d3f055fd47d936df"
+    },
+    "0x7cA58393EB55aeC51204f2370c1B9cCCAa9D9784": {
+      "name": "Unipoly",
+      "decimals": "18",
+      "symbol": "UNP",
+      "to": "ethereum:0x23d7Ff057c696fEE679c60cEf61Fee6614218f04"
     }
   },
   "core": {

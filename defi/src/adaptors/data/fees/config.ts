@@ -2268,5 +2268,8 @@ export default {
     },
     "emojicoin": {
         id: "5454"
+    },
+    "invariant": {
+        id: "1788"
     }
 } as AdaptorsConfig

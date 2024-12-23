@@ -2672,5 +2672,8 @@ export default {
     },
     "goblin-dex": {
         id: "5531"
+    },
+    "invariant": {
+        id: "1788"
     }
 } as AdaptorsConfig

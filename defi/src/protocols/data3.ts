@@ -39309,7 +39309,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield Aggregator",
+    category: "Managed Token Pools",
     chains: ["Ethereum"],
     module: "etherfi-liquid/index.js",
     twitter: "ether_fi",

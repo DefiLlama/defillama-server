@@ -34,7 +34,7 @@ export function normalizeChain(chain: string) {
 
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager"].includes(category??"none");
+  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager", "Managed Token Pools","Treasury Manager"].includes(category??"none");
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']

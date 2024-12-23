@@ -1,4 +1,11 @@
 {
+  "alephium": {
+    "19246e8c2899bc258a1156e08466e3cdd3323da756d8a543c7fc911847b96f00": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    }
+  },
   "kava": {
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
@@ -521,7 +528,7 @@
   },
   "bsc": {
     "0x55d398326f99059ff775485246999027b3197955": {
-    "decimals": "18",
+      "decimals": "18",
       "symbol": "USDT",
       "to": "coingecko#tether"
     },

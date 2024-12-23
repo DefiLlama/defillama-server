@@ -55645,7 +55645,7 @@ const data3: Protocol[] = [
     module: "takoTako/index.js",
     twitter: null,
     forkedFrom: [],
-    oracles: ["API3"], // https://www.takotako.xyz/ 
+    oracles: ["Pyth"], // https://taikoscan.io/address/0x9B4B2129D237740f97819C192C1Eb5D03ecF3Ed3#code
     listedAt: 1726474986
   },
   {

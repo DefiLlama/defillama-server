@@ -4010,7 +4010,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Liquidations",
     chains: ["Kujira"],
     oracles: [],
     forkedFrom: [],
@@ -17628,7 +17628,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "sommelier",
     cmcId: "18248",
-    category: "Yield Aggregator",
+    category: "Managed Token Pools",
     chains: ["Ethereum", "Arbitrum"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/5226
     forkedFrom: [],

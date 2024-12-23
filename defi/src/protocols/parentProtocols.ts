@@ -4398,6 +4398,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "InceptionLRT",
+    github: ["AmphorProtocol"] // added post-merger
   },
   {
     id: "parent#bitgenie",

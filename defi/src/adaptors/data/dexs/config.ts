@@ -2675,5 +2675,8 @@ export default {
     },
     "invariant": {
         id: "1788"
+    },
+    "rabbitswap-v3": {
+        id: "5298"
     }
 } as AdaptorsConfig

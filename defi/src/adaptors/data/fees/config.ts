@@ -2285,5 +2285,8 @@ export default {
     },
     "zivoe": {
         id: "5551"
+    },
+    "rabbitswap-v3": {
+        id: "5298"
     }
 } as AdaptorsConfig

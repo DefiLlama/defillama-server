@@ -2277,6 +2277,7 @@ export default {
     },
     "hyperliquid": {
         parentId: "Hyperliquid",
+        displayName: "HyperLiquid",
         id: "4482"
     }
 } as AdaptorsConfig

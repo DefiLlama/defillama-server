@@ -3618,6 +3618,15 @@ export const chainCoingeckoIds = {
     github: ["DioneProtocol"],
     chainId: 153153
   },
+  "Kopi": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "kopi_money",
+    url: "https://kopi.money",
+    github: ["kopi-money"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

@@ -108,9 +108,9 @@ const handler = async (event: any): Promise<IResponse> => {
 
 export default wrap(handler);
 
-handler({
-  pathParameters: {
-    coins: "ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-  },
-});
+// handler({
+//   pathParameters: {
+//     coins: "ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+//   },
+// });
 // ts-node coins/src/updateCoin.ts

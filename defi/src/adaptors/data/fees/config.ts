@@ -2279,5 +2279,8 @@ export default {
         parentId: "Hyperliquid",
         displayName: "HyperLiquid",
         id: "4482"
+    },
+    "liquidity-slicing": {
+        id: "5297"
     }
 } as AdaptorsConfig

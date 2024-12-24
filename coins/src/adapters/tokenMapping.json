@@ -1468,6 +1468,11 @@
     }
   },
   "op_bnb": {
+    "0xf7fb2df9280eb0a76427dc3b34761db8b1441a49": {
+      "decimals": "18",
+      "symbol": "uBTC",
+      "to": "asset#bsquared:0x796e4d53067ff374b89b2ac101ce0c1f72ccaac2"
+    },
     "0x9e5aac1ba1a2e6aed6b32689dfcf62a509ca96f3": {
       "to": "coingecko#tether",
       "decimals": "18",
@@ -2602,6 +2607,11 @@
     }
   },
   "mode": {
+    "0xd0d1b59ca62ce194e882455fd36632d6277b192a": {
+      "decimals": "18",
+      "symbol": "uBTC",
+      "to": "asset#bsquared:0x796e4d53067ff374b89b2ac101ce0c1f72ccaac2"
+    },
     "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
       "decimals": "18",
       "symbol": "rsETH",

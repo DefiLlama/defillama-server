@@ -64520,6 +64520,27 @@ const data3: Protocol[] = [
     ],
     github: ["Zivoe"]
   },
+  {
+    id: "5552",
+    name: "Cronos zkEVM Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://zkevm.cronos.org/",
+    description: "The next generation zero-knowledge layer 2 chain",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cronos-zkevm-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "cronos-zk/index.js",
+    twitter: "cronos_chain",
+    listedAt: 1735045020
+  },
 ];
 
 export default data3;

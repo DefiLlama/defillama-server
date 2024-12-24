@@ -627,6 +627,11 @@
       "to": "coingecko#ignition-fbtc",
       "decimals": 8,
       "symbol": "lfbtc-pump-bsc"
+    },
+    "0x26c5e01524d2E6280A48F2c50fF6De7e52E9611C": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "asset#ethereum:0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
     }
   },
   "stacks": {

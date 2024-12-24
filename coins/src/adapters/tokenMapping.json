@@ -266,6 +266,11 @@
     }
   },
   "ethereum": {
+    "0x7DC9748DA8E762e569F9269f48F69A1a9F8Ea761": {
+      "decimals": "6",
+      "symbol": "zeUSD",
+      "to": "coingecko#usd-coin"
+    },
     "0x8BB97A618211695f5a6a889faC3546D1a573ea77": {
       "decimals": "8",
       "symbol": "NBTC",

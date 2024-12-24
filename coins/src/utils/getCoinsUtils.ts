@@ -2,7 +2,9 @@ import { batchGet } from "./shared/dynamodb";
 import { coinToPK } from "./processCoin";
 import { getCoingeckoLock } from "../utils/shared/coingeckoLocks";
 import sleep from "../utils/shared/sleep";
+import fetch from "node-fetch";
 console.log("imports done");
+
 export type CoinsResponse = {
   [coin: string]: {
     decimals?: number;

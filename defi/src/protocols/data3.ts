@@ -64469,6 +64469,55 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Lander/Lander.pdf"],
     listedAt: 1734973452
   },
+  {
+    id: "5550",
+    name: "Tren Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.tren.finance/",
+    description: " Liquidity (re)Enabling Protocol using Proof-of-Liquidity and Hooks to (re)Collateralise LP, Money Market Deposits and (re)Staked Positions",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/tren-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Arbitrum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "tren-finance/index.js",
+    twitter: "TrenFinance",
+    audit_links: ["https://github.com/zokyo-sec/audit-reports/blob/main/Tren%20Finance/Tren%20Finance_Zokyo_audit_report_Nov19th_2024.pdf"],
+    github: ["Tren-Finance"],
+    listedAt: 1734999437
+  },
+  {
+    id: "5551",
+    name: "Zivoe",
+    address: "0xe412D46a0fBD567332b7689cFFfE1F8A4f19A9d2",
+    symbol: "ZVE",
+    url: "https://zivoe.com/",
+    description: "Zivoe is a Real-World Asset (RWA) protocol that connects DeFi users to private credit opportunities in the consumer lending market. By pooling on-chain capital and lending to consumers via our network of origination/servicing partners, Zivoe helps underserved borrowers escape high-interest debt while generating sustainable returns for liquidity providers",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zivoe.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "landerfinance",
+    audit_links: [
+      "https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2024.04.25%20-%20Final%20-%20Zivoe%20Audit%20Report.pdf",
+      "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Zivoe_Core_Contracts.pdf",
+      "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Zivoe_Locker_Contracts.pdf"
+    ],
+    github: ["Zivoe"]
+  },
 ];
 
 export default data3;

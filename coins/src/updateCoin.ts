@@ -12,10 +12,15 @@ console.log("imports done");
 const margin = 5 * 60; // 5 mins
 
 const handler = async (event: any): Promise<IResponse> => {
-  // await setEnvSecrets();
+  await setEnvSecrets();
+  process.env.tableName = "prod-coins-table";
   console.log("entered handler");
   const start = new Date().getTime();
-  const bulkPromise = getR2(`updated-coins`).then((r) => JSON.parse(r.body!));
+  console.log("fetching r2");
+  const bulkPromise = await getR2(`updated-coins`).then((r) =>
+    JSON.parse(r.body!),
+  );
+  console.log("fetched r2");
   const unixStart = Math.floor(start / 1000);
   setTimer();
 
@@ -27,7 +32,7 @@ const handler = async (event: any): Promise<IResponse> => {
 
   const response = {} as CoinsResponse;
   const cgIds: { [pk: string]: string } = {};
-  let bulk: { [id: string]: any } = await bulkPromise;
+  let bulk: { [id: string]: any } = bulkPromise;
   coins.map((d) => {
     if (d.PK in bulk && bulk[d.PK] > unixStart - margin) return;
     if (d.timestamp && d.timestamp > unixStart - margin) return;
@@ -108,9 +113,9 @@ const handler = async (event: any): Promise<IResponse> => {
 
 export default wrap(handler);
 
-// handler({
-//   pathParameters: {
-//     coins: "ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-//   },
-// });
+handler({
+  pathParameters: {
+    coins: "ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+  },
+});
 // ts-node coins/src/updateCoin.ts

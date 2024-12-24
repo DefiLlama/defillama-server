@@ -45,7 +45,7 @@ const handler = async (event: any): Promise<IResponse> => {
   if (!Object.keys(cgIds).length) return successResponse({});
   console.log(`fetching from cg`);
   const newData = await fetchCgPriceData(Object.values(cgIds), true);
-  console.log(`new data length: ${coins.length}`);
+  console.log(`new data length: ${newData.length}`);
 
   const writes: any[] = [];
   coins.map(async ({ PK, symbol, decimals }) => {
@@ -111,7 +111,7 @@ export default wrap(handler);
 
 // handler({
 //   pathParameters: {
-//     coins: "ethereum:0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+//     coins: "ethereum:0xdc035d45d973e3ec169d2276ddab16f1e407384f",
 //   },
 // });
 // ts-node coins/src/updateCoin.ts

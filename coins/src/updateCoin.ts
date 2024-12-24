@@ -12,7 +12,7 @@ console.log("imports done");
 const margin = 5 * 60; // 5 mins
 
 const handler = async (event: any): Promise<IResponse> => {
-  await setEnvSecrets();
+  // await setEnvSecrets();
   console.log("entered handler");
   const start = new Date().getTime();
   const bulkPromise = getR2(`updated-coins`).then((r) => JSON.parse(r.body!));
@@ -108,9 +108,9 @@ const handler = async (event: any): Promise<IResponse> => {
 
 export default wrap(handler);
 
-// handler({
-//   pathParameters: {
-//     coins: "ethereum:0xdc035d45d973e3ec169d2276ddab16f1e407384f",
-//   },
-// });
+handler({
+  pathParameters: {
+    coins: "ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+  },
+});
 // ts-node coins/src/updateCoin.ts

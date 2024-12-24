@@ -44,7 +44,7 @@ const handler = async (event: any): Promise<IResponse> => {
   console.log(`mapped`);
   if (!Object.keys(cgIds).length) return successResponse({});
   console.log(`fetching from cg`);
-  const newData = await fetchCgPriceData(Object.values(cgIds));
+  const newData = await fetchCgPriceData(Object.values(cgIds), true);
   console.log(`new data length: ${coins.length}`);
 
   const writes: any[] = [];

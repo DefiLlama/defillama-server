@@ -45,17 +45,22 @@ export async function getBasicCoins(requestedCoins: string[]) {
 export async function retryCoingeckoRequest(
   query: string,
   retries: number,
+  log: boolean = false,
 ): Promise<CoingeckoResponse> {
   for (let i = 0; i < retries; i++) {
     await getCoingeckoLock();
     try {
-      const res = (await fetch(
+      const fetched = await fetch(
         `https://pro-api.coingecko.com/api/v3/${query}&x_cg_pro_api_key=${process.env.CG_KEY}`,
-      ).then((r) => r.json())) as CoingeckoResponse;
+      );
+      if (log) console.log(fetched);
+      const res = (await fetched.json()) as CoingeckoResponse;
+      if (log) console.log(res);
       if (Object.keys(res).length == 1 && Object.keys(res)[0] == "status")
         throw new Error(`cg call failed`);
       return res;
     } catch (e) {
+      if (log) console.log(e);
       if ((i + 1) % 3 === 0 && retries > 3) {
         await sleep(10e3); // 10s
       }
@@ -65,11 +70,15 @@ export async function retryCoingeckoRequest(
   return {};
 }
 
-export async function fetchCgPriceData(coinIds: string[]) {
+export async function fetchCgPriceData(
+  coinIds: string[],
+  log: boolean = false,
+) {
   return await retryCoingeckoRequest(
     `simple/price?ids=${coinIds.join(
       ",",
     )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true&include_24hr_vol=true`,
     10,
+    log,
   );
 }

@@ -64533,13 +64533,12 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
+    category: "Chain",
     chains: ["Ethereum"],
     oracles: [], 
     forkedFrom: [],
     module: "cronos-zk/index.js",
     twitter: "cronos_chain",
-    listedAt: 1735045020
   },
 ];
 

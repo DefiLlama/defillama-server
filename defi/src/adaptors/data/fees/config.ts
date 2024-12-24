@@ -2282,5 +2282,8 @@ export default {
     },
     "liquidity-slicing": {
         id: "5297"
+    },
+    "zivoe": {
+        id: "5551"
     }
 } as AdaptorsConfig

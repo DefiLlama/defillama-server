@@ -12,8 +12,8 @@ console.log("imports done");
 const margin = 5 * 60; // 5 mins
 
 const handler = async (event: any): Promise<IResponse> => {
-  await setEnvSecrets();
-  process.env.tableName = "prod-coins-table";
+  // await setEnvSecrets();
+  // process.env.tableName = "prod-coins-table";
   console.log("entered handler");
   const start = new Date().getTime();
   console.log("fetching r2");

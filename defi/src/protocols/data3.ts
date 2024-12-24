@@ -58938,7 +58938,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V3"],
     module: "rabbitswap-v3/index.js",
-    twitter: "RabbitSwapTeam",  //looks sus
+    twitter: "rabbitswapxyz",  
     github: ["RabbitDEX"],
     listedAt: 1730298443
   },

@@ -6095,6 +6095,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "GoblinsCash",
     treasury: "goblinscash.js",
   },
+  {
+    id: "parent#extra-finance",
+    name: "Extra Finance",
+    url: "https://extrafi.io/",
+    description:
+      "Extra Finance is a community-driven lending & leveraged yield farming protocol built on Optimism.",
+    logo: `${baseIconsUrl}/extra-finance.jpg`,
+    gecko_id: "extra-finance",
+    cmcId: "27603",
+    chains: [],
+    twitter: "extrafi_io",
+  },
 ];
 
 export default parentProtocols;

@@ -58866,7 +58866,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Restaked BTC",
+    category: "Anchor BTC",
     chains: ["Bitcoin"],
     oracles: [],
     forkedFrom: [],

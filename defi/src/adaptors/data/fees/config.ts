@@ -2274,5 +2274,9 @@ export default {
     },
     "memejob": {
         id: "5533"
+    },
+    "hyperliquid": {
+        parentId: "Hyperliquid",
+        id: "4482"
     }
 } as AdaptorsConfig

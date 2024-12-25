@@ -94,7 +94,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/:type", ew(getOverviewFileRoute))
   router.get("/overview/:type/:chain", ew(getOverviewFileRoute))
   router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
-  router.get("/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
+  router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
 
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set

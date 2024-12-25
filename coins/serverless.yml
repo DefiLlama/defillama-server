@@ -10,8 +10,6 @@ provider:
   region: eu-central-1
   endpointType: REGIONAL # Set to regional because the api gateway will be behind a cloudfront distribution
   stage: prod # Default to dev if no stage is specified
-  httpApi:
-    cors: true
   iamRoleStatements:
     - Effect: Allow # X-Ray permissions
       Action:

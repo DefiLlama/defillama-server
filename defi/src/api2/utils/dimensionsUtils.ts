@@ -44,6 +44,16 @@ export async function storeDimensionsCacheV2(data: any) {
   return writeToPGCache(fileKey, data)
 }
 
+const dimensionsMetadataFile = `dimensions-metadata-v1.0.0` 
+
+export async function getDimensionsMetadata() {
+  return readFromPGCache(dimensionsMetadataFile)
+}
+
+export async function storeDimensionsMetadata(data: any) {
+  return writeToPGCache(dimensionsMetadataFile, data)
+}
+
 let cacheLoaded = false
 
 export async function loadDimensionsCache() {

@@ -21641,7 +21641,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://www.gate.io",
     description:
-      "Leading cryptocurrency exchange with over 1400+ cryptocurrencies & stablecoins such as Bitcoi, Ethereum, Dogecoin",
+      "Leading cryptocurrency exchange with over 3,200+ cryptocurrencies such as Bitcoin, Ethereum, Dogecoin, and more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gate-io.jpg`,
     audits: "0",

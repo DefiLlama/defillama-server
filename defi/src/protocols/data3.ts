@@ -64675,6 +64675,50 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1735217835
   },
+  {
+    id: "5559",
+    name: "Pryzm Protocol",
+    address: null,
+    symbol: "-", // preview only
+    url: "https://app.pryzm.zone",
+    description: "Pryzm is a Layer 1 blockchain designed to help you tokenize and trade your yield with ease",
+    chain: "Pryzm",
+    logo: `${baseIconsUrl}/pryzm-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Pryzm"],
+    module: "pryzm/index.js",
+    twitter: "Pryzm_Zone",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://skynet.certik.com/projects/PRYZM"],
+    listedAt: 1735228524
+  },
+  {
+    id: "5560",
+    name: "Orbs",
+    address: "0xff56cc6b1e6ded347aa0b7676c85ab0b3d08b0fa",
+    symbol: "ORBS",
+    url: "https://staking.orbs.fi",
+    description: "Orbs is a decentralized Layer-3 (L3) blockchain infrastructure designed specifically for advanced on-chain trading. Orbs improves on-chain trading by providing technology for aggregated liquidity, advanced trading orders, and decentralized derivatives",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/orbs.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "orbs",
+    cmcId: "3835",
+    category: "Farm",
+    chains: ["Ethereum"],
+    module: "orbs/index.js",
+    twitter: "orbs_network",
+    forkedFrom: [],
+    oracles: [],
+    github: ["orbs-network"],
+    listedAt: 1735228529
+  },
 ];
 
 export default data3;

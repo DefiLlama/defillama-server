@@ -53384,7 +53384,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: [],
     module: "echo-lending/index.js",
     twitter: "EchoProtocol_",

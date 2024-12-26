@@ -19855,7 +19855,6 @@ const data3: Protocol[] = [
     parentProtocol: "parent#magicsea",
     listedAt: 1695923248,
   },
-  /* delisted, this dont make any type of sense
   {
     id: "3572",
     name: "Solv Funds",
@@ -19880,7 +19879,6 @@ const data3: Protocol[] = [
     parentProtocol: "parent#solv-protocol",
     listedAt: 1695959391,
   },
-  */
   {
     id: "3573",
     name: "Solv RWA",

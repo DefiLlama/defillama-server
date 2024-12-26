@@ -64653,6 +64653,28 @@ const data3: Protocol[] = [
     },
     listedAt: 1735149973,
   },
+  {
+    id: "5558",
+    name: "Astherus asBNB",
+    address: null,
+    symbol: "-",
+    url: "https://astherus.com/en/earn/cedefi",
+    description: "Astherus is a liquidity hub for staked assets such as LSTs (liquid staking tokens) and LRTs (liquid restaking tokens), aiming to scale their utilization and boost user profitability.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/stakestone-berachain-vault.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Binance"],
+    module: "astherus-asBNB/index.js",
+    twitter: "AstherusHub",
+    parentProtocol: "parent#astherus",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1735217835
+  },
 ];
 
 export default data3;

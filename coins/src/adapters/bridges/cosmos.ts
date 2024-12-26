@@ -1,38 +1,87 @@
 import { Token } from "./index";
-// import * as cosmosAdapter from "../../../../defi/DefiLlama-Adapters/projects/helper/chain/cosmos"
-// import * as tokenMapping from "../../../../defi/DefiLlama-Adapters/projects/helper/tokenMapping"
-import { fetch, } from "../utils";
-
-const skipChains = ['ibc', 'terra', 'terra2']
-const includeChains = ['quasar', 'chihuahua',]
-
-const gitEndpoint = 'https://raw.githubusercontent.com/cosmostation/chainlist/main/chain'
+import fs from "fs";
+import * as git from 'simple-git'
+import { batchGet } from "../../utils/shared/dynamodb";
+import { sliceIntoChunks } from "@defillama/sdk/build/util";
 
 export default async function bridge(): Promise<Token[]> {
-  // const cosmosChainsSet = new Set([...Object.keys(cosmosAdapter.endPoints), ...tokenMapping.ibcChains, ...includeChains])
-  const cosmosChainsSet = new Set([...includeChains, ...[
-    "kujira", "migaloo", "xpla", "kava", 'crescent', 'osmosis', 'stargaze', 'juno', 'injective', 'cosmos', 'comdex', 'stargaze', 'umee', 'persistence', 'neutron', 'gravitybridge',
-    "archway", "bostrom",
-  ]])
-  const chainMapping: any = {
-    'gravitybridge': 'gravity-bridge'
-  }
-  skipChains.forEach(chain => cosmosChainsSet.delete(chain))
-  const items: any = {}
-  const supportedChains: any = await fetch(`${gitEndpoint}/supports.json`)
-  const supportedChainsSet = new Set(supportedChains)
+  const items = await crawlAndPullChainTokens()
 
-  for (const chain of cosmosChainsSet) {
-    if (!supportedChainsSet.has(chainMapping[chain] ?? chain) && !['migaloo'].includes(chain)) {
-      console.log('Not yet supported by cosmostation:', chain)
-      continue
-    }
-    try {
-      const assets: any = await fetch(`${gitEndpoint}/${chainMapping[chain] ?? chain}/assets.json`)
+  // remove tokens that we already have mappings for in the server
+/*   const keys = Object.keys(items)
+  const keyMap = keys.reduce((acc, key) => {
+    acc[`asset#${key}`] = key
+    return acc
+  }, {} as any)
+  const alreadyLinked = await batchGet(Object.keys(keyMap).map(PK => ({ PK, SK: 0, })))
+  alreadyLinked.forEach(record => {
+    delete items[keyMap[record.PK]]
+  })
+
+  console.log(alreadyLinked.map(i => i.PK).slice(-32))
+  console.log('keys:', keys.slice(-32), Object.keys(items).slice(-32))
+  console.log({
+    alreadyLinked: alreadyLinked.length, keys: keys.length, keysAfterFilter: Object.keys(items).length
+  })
+ */
+
+  const keys = Object.keys(items)
+  const pricedTokens = await getPricedTokens(keys)
+  Object.keys(pricedTokens).forEach(key => delete items[key])
+  console.log({
+    keys: keys.length,
+    pricedTokens: Object.keys(pricedTokens).length,
+    keysAfterFilter: Object.keys(items).length
+  })
+  const tokens: Token[] = Object.values(items)
+  console.table(tokens)
+  return [];
+  return tokens
+}
+
+async function getPricedTokens(keys: string[]) {
+  const chunks = sliceIntoChunks(keys, 100)
+  let pricedTokens = {}
+  const burl = "https://coins.llama.fi/prices/current/";
+  for (const chunk of chunks) {
+    const res = await fetch(burl + chunk.join(","))
+    const { coins } = await res.json()
+    pricedTokens = { ...pricedTokens, ...coins }
+  }
+  return pricedTokens
+}
+
+async function crawlAndPullChainTokens() {
+
+  await cloneRepo()
+
+  const chainMapping: any = {
+    'gravity-bridge': 'gravitybridge',
+    'bnb-smart-chain': 'bsc',
+    'avalanche': 'avax',
+  }
+
+  const tokenList: {
+    [from: string]: Token
+  } = {}
+
+  const rootDir = __dirname + '/cosmos-chainlist/chainlist/chain'
+  const chains = fs.readdirSync(rootDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
+
+  for (const chain of chains) {
+    if (chain.endsWith('-testnet')) continue;
+    const chainLabel = chainMapping[chain] ?? chain
+    const assetsPath = `${rootDir}/${chain}/assets_2.json`;
+    const erc20Path = `${rootDir}/${chain}/erc20_2.json`;
+
+    if (fs.existsSync(assetsPath)) {
+      const assets = JSON.parse(fs.readFileSync(assetsPath, 'utf-8'));
       assets.map(({ decimals, symbol, denom, type: assetType, coinGeckoId, counter_party, contract, origin_chain, origin_denom, }: any) => {
         if (typeof decimals !== 'number') return;
 
-        let from = `${chain}:${denom}`
+        let from = `${chainLabel}:${denom}`
 
         if (['ibc', 'bridge'].includes(assetType)) {
           if (!denom.startsWith('ibc/')) {
@@ -44,14 +93,14 @@ export default async function bridge(): Promise<Token[]> {
         }
         from = from.replace(/\//g, ':')
         if (coinGeckoId && coinGeckoId.length) {
-          items[from] = {
+          tokenList[from] = {
             symbol,
             decimals,
             from,
             to: `coingecko#${coinGeckoId}`,
           }
         } else if (counter_party) {
-          items[from] = {
+          tokenList[from] = {
             symbol,
             decimals,
             from,
@@ -59,14 +108,59 @@ export default async function bridge(): Promise<Token[]> {
           }
         }
       })
-    } catch (e) {
-      console.error('Error fetching chain:', chain, e)
+    }
+
+    if (fs.existsSync(erc20Path)) {
+      const erc20 = JSON.parse(fs.readFileSync(erc20Path, 'utf-8'));
+      erc20.map(({ decimals, symbol, coinGeckoId, contract }: any) => {
+        if (!contract || !decimals || !coinGeckoId) return;
+        const from = `${chainLabel}:${contract}`
+        tokenList[from] = {
+          symbol,
+          decimals,
+          from,
+          to: `coingecko#${coinGeckoId}`,
+        }
+      })
     }
   }
 
-  const tokens: Token[] = Object.values(items)
-  // console.table(tokens)
-  return tokens
+  return tokenList
 }
 
-// bridge()
+
+async function cloneRepo() {
+
+  // checkout cosmosstation chainlist repo to pull cosmos token - coingecko mapping
+  try {
+    const progress = ({ method, stage, progress }: any) => {
+      console.log(`cosmos chainlist: git.${method} ${stage} stage ${progress}% complete`);
+    }
+    const gitDir = __dirname + '/cosmos-chainlist'
+    await ensureDirExists(gitDir)
+    const repo = git.simpleGit({ progress, baseDir: gitDir, });
+    const isRepo = await fs.promises.access(`${gitDir}/chainlist/.git`).then(() => true).catch(() => false);
+    if (!isRepo) {
+      await repo.clone('git@github.com:cosmostation/chainlist.git');
+    }
+
+    repo.cwd(gitDir + '/chainlist')
+    await repo.checkout('main');
+    await repo.pull();
+  } catch (e) {
+    console.error("Failed to store cosmos token mapping", e);
+  }
+}
+
+
+async function ensureDirExists(folder: string) {
+  try {
+    await fs.promises.access(folder);
+  } catch {
+    try {
+      await fs.promises.mkdir(folder, { recursive: true });
+    } catch (e) {
+      console.error(e)
+    }
+  }
+}

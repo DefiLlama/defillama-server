@@ -53384,7 +53384,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth"], // https://github.com/DefiLlama/defillama-server/pull/8889
     forkedFrom: [],
     module: "echo-lending/index.js",
     twitter: "EchoProtocol_",

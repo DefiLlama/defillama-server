@@ -3627,6 +3627,15 @@ export const chainCoingeckoIds = {
     url: "https://kopi.money",
     github: ["kopi-money"],
   },
+  "Pryzm": {
+    geckoId: "pryzm",
+    symbol: "PRYZM",
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "Pryzm_Zone",
+    url: "https://app.pryzm.zone",
+    github: ["pryzm-finance"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

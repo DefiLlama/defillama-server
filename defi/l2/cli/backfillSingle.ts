@@ -9,7 +9,7 @@ import { ChartData } from "../types";
 
 // any mappings for chains in proc() needed??
 /// select your chains in constants first!!!
-// check ../utils.ts L28 for dependancies
+// check ../utils.ts L28 for dependencies
 const start: number = 1729094263;
 const end: number = getCurrentUnixTimestamp();
 const chain: string = "Tron";

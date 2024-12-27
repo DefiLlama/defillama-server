@@ -62571,7 +62571,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Managed Token Pools",
+    category: "Yield",
     chains: ["Ethereum", "Avalanche", "Base"],
     oracles: [], 
     forkedFrom: [],

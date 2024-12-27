@@ -1,30 +1,12 @@
 import { Token } from "./index";
 import fs from "fs";
 import * as git from 'simple-git'
-import { batchGet } from "../../utils/shared/dynamodb";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
 
 export default async function bridge(): Promise<Token[]> {
   const items = await crawlAndPullChainTokens()
 
   // remove tokens that we already have mappings for in the server
-/*   const keys = Object.keys(items)
-  const keyMap = keys.reduce((acc, key) => {
-    acc[`asset#${key}`] = key
-    return acc
-  }, {} as any)
-  const alreadyLinked = await batchGet(Object.keys(keyMap).map(PK => ({ PK, SK: 0, })))
-  alreadyLinked.forEach(record => {
-    delete items[keyMap[record.PK]]
-  })
-
-  console.log(alreadyLinked.map(i => i.PK).slice(-32))
-  console.log('keys:', keys.slice(-32), Object.keys(items).slice(-32))
-  console.log({
-    alreadyLinked: alreadyLinked.length, keys: keys.length, keysAfterFilter: Object.keys(items).length
-  })
- */
-
   const keys = Object.keys(items)
   const pricedTokens = await getPricedTokens(keys)
   Object.keys(pricedTokens).forEach(key => delete items[key])
@@ -72,57 +54,75 @@ async function crawlAndPullChainTokens() {
 
   for (const chain of chains) {
     if (chain.endsWith('-testnet')) continue;
-    const chainLabel = chainMapping[chain] ?? chain
-    const assetsPath = `${rootDir}/${chain}/assets_2.json`;
-    const erc20Path = `${rootDir}/${chain}/erc20_2.json`;
+    try {
 
-    if (fs.existsSync(assetsPath)) {
-      const assets = JSON.parse(fs.readFileSync(assetsPath, 'utf-8'));
-      assets.map(({ decimals, symbol, denom, type: assetType, coinGeckoId, counter_party, contract, origin_chain, origin_denom, }: any) => {
-        if (typeof decimals !== 'number') return;
+      const chainLabel = chainMapping[chain] ?? chain
+      const assetsPath = `${rootDir}/${chain}/assets_2.json`;
+      const erc20Path = `${rootDir}/${chain}/erc20_2.json`;
+      const cw20Path = `${rootDir}/${chain}/cw20_2.json`;
 
-        let from = `${chainLabel}:${denom}`
+      if (fs.existsSync(assetsPath)) {
+        const assets = JSON.parse(fs.readFileSync(assetsPath, 'utf-8'));
+        assets.map(({ decimals, symbol, denom, type: assetType, coinGeckoId, counter_party, contract, origin_chain, origin_denom, }: any) => {
+          if (typeof decimals !== 'number') return;
 
-        if (['ibc', 'bridge'].includes(assetType)) {
-          if (!denom.startsWith('ibc/')) {
-            // console.log('Not ibc denom:', denom)
-          } else {
-            denom = denom.slice(4)
-            from = `ibc:${denom}`
+          let from = `${chainLabel}:${denom}`
+
+          if (['ibc', 'bridge'].includes(assetType)) {
+            if (!denom.startsWith('ibc/')) {
+              // console.log('Not ibc denom:', denom)
+            } else {
+              denom = denom.slice(4)
+              from = `ibc:${denom}`
+            }
           }
-        }
-        from = from.replace(/\//g, ':')
-        if (coinGeckoId && coinGeckoId.length) {
+          from = from.replace(/\//g, ':')
+          if (coinGeckoId && coinGeckoId.length) {
+            tokenList[from] = {
+              symbol,
+              decimals,
+              from,
+              to: `coingecko#${coinGeckoId}`,
+            }
+          } else if (counter_party) {
+            tokenList[from] = {
+              symbol,
+              decimals,
+              from,
+              to: `${origin_chain}:${contract ? contract : origin_denom}`.replace(/\//g, ':'),
+            }
+          }
+        })
+      }
+
+      if (fs.existsSync(cw20Path)) {
+        const erc20 = JSON.parse(fs.readFileSync(cw20Path, 'utf-8'));
+        erc20.map(({ decimals, symbol, coinGeckoId, contract }: any) => {
+          if (!contract || !decimals || !coinGeckoId) return;
+          const from = `${chainLabel}:${contract}`
           tokenList[from] = {
             symbol,
             decimals,
             from,
             to: `coingecko#${coinGeckoId}`,
           }
-        } else if (counter_party) {
+        })
+      }
+
+      if (fs.existsSync(erc20Path)) {
+        const erc20 = JSON.parse(fs.readFileSync(erc20Path, 'utf-8'));
+        erc20.map(({ decimals, symbol, coinGeckoId, contract }: any) => {
+          if (!contract || !decimals || !coinGeckoId) return;
+          const from = `${chainLabel}:${contract}`
           tokenList[from] = {
             symbol,
             decimals,
             from,
-            to: `${origin_chain}:${contract ? contract : origin_denom}`.replace(/\//g, ':'),
+            to: `coingecko#${coinGeckoId}`,
           }
-        }
-      })
-    }
-
-    if (fs.existsSync(erc20Path)) {
-      const erc20 = JSON.parse(fs.readFileSync(erc20Path, 'utf-8'));
-      erc20.map(({ decimals, symbol, coinGeckoId, contract }: any) => {
-        if (!contract || !decimals || !coinGeckoId) return;
-        const from = `${chainLabel}:${contract}`
-        tokenList[from] = {
-          symbol,
-          decimals,
-          from,
-          to: `coingecko#${coinGeckoId}`,
-        }
-      })
-    }
+        })
+      }
+    } catch (e) { }
   }
 
   return tokenList

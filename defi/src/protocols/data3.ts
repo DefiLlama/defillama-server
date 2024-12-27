@@ -42263,7 +42263,7 @@ const data3: Protocol[] = [
     twitter: "BsquaredNetwork",
     listedAt: 1714741977,
   },
-  {
+ /*  { // this is part of Bucket protocol now
     id: "4560",
     name: "Sparkling Finance",
     address: null,
@@ -42285,7 +42285,7 @@ const data3: Protocol[] = [
       "https://github.com/Sparkling-Finance/contract/blob/main/audit/Sparkling%20Finance%20Audit%20Report.pdf",
     ],
     listedAt: 1714741982,
-  },
+  }, */
   {
     id: "4561",
     name: "Ebisu Finance",

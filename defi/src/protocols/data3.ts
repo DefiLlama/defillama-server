@@ -64441,7 +64441,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Managed Token Pools",
     chains: ["Solana"],
-    oracles: ["Pyth"], 
+    oracles: ["Pyth"], // https://docs.neutral.trade/additional-info/pyth-oracles
     forkedFrom: [],
     module: "neutral-trade/index.js",
     twitter: "TradeNeutral",

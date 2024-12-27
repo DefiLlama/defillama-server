@@ -17,7 +17,7 @@ import axios from 'axios'
 
 const secondsInDay = 24 * 3600;
 
-/// ---------------- Protocol specfic code ----------------- 
+/// ---------------- Protocol specific code ----------------- 
 
 const protocolToRefill = 'Portal'
 const updateOnlyMissing = false
@@ -46,7 +46,7 @@ async function fetchData() {
     data[timestamp] = tvl
   })
 }
-// ---------------- Protocol specfic code ----------------- 
+// ---------------- Protocol specific code ----------------- 
 
 function dateInSec(str: any) {
   return (+new Date(str)) / 1000

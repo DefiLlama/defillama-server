@@ -141,7 +141,7 @@ async function cloneRepo() {
     const repo = git.simpleGit({ progress, baseDir: gitDir, });
     const isRepo = await fs.promises.access(`${gitDir}/chainlist/.git`).then(() => true).catch(() => false);
     if (!isRepo) {
-      await repo.clone('git@github.com:cosmostation/chainlist.git');
+      await repo.clone('https://github.com/cosmostation/chainlist');
     }
 
     repo.cwd(gitDir + '/chainlist')

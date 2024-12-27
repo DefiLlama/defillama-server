@@ -64441,7 +64441,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Managed Token Pools",
     chains: ["Solana"],
-    oracles: [], 
+    oracles: ["Pyth"], 
     forkedFrom: [],
     module: "neutral-trade/index.js",
     twitter: "TradeNeutral",
@@ -64485,7 +64485,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Arbitrum"],
-    oracles: [], 
+    oracles: ["Pyth","Chainlink"],  // https://docs.tren.finance/protocol/asset-risk/oracle-risk
     forkedFrom: [],
     module: "tren-finance/index.js",
     twitter: "TrenFinance",

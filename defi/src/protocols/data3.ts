@@ -64491,6 +64491,7 @@ const data3: Protocol[] = [
     twitter: "TrenFinance",
     audit_links: ["https://github.com/zokyo-sec/audit-reports/blob/main/Tren%20Finance/Tren%20Finance_Zokyo_audit_report_Nov19th_2024.pdf"],
     github: ["Tren-Finance"],
+    stablecoins: ["tren-debt-token"],
     listedAt: 1734999437
   },
   {

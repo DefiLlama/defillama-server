@@ -6107,6 +6107,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "extrafi_io",
   },
+  {
+    id: "parent#nirvana",
+    name: "Nirvana",
+    url: "https://www.nirvana.finance/",
+    description:
+      "ANA is a partially-collateralized asset with a built-in rising floor price & renewable yield. It allows for zero liquidation risk loans in the form of the NIRV superstable token.",
+    logo: `${baseIconsUrl}/extra-finance.jpg`,
+    gecko_id: "nirvana-ana",
+    cmcId: "19513",
+    chains: [],
+    twitter: "nirvana_fi",
+  },
 ];
 
 export default parentProtocols;

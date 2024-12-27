@@ -10361,7 +10361,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1825",
-    name: "Nirvana",
+    name: "Nirvana V1",
     address: "solana:ANAxByE6G2WjFp7A4NqtWYXb3mgruyzZYg3spfxe6Lbo",
     symbol: "ANA",
     url: "https://nirvana.finance",
@@ -10379,7 +10379,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "nirvana/index.js",
     twitter: "nirvana_fi",
-    listedAt: 1655289558,
+    parentProtocol: "parent#nirvana",
+    listedAt: 1655289558
   },
   {
     id: "1826",

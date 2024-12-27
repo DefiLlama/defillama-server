@@ -53342,7 +53342,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5050",
-    name: "Delta Trade",
+    name: "DeltaTrade",
     address: null,
     symbol: "-",
     url: "https://www.deltatrade.ai",
@@ -53355,7 +53355,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Near"],
+    chains: ["Near","Solana"],
     oracles: ["Pyth"], // https://docs.deltatrade.ai/technical-information/security/oracle#pyth-oracle
     forkedFrom: [],
     audit_links: [

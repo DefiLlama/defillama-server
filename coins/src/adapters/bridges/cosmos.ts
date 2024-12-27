@@ -10,14 +10,8 @@ export default async function bridge(): Promise<Token[]> {
   const keys = Object.keys(items)
   const pricedTokens = await getPricedTokens(keys)
   Object.keys(pricedTokens).forEach(key => delete items[key])
-  console.log({
-    keys: keys.length,
-    pricedTokens: Object.keys(pricedTokens).length,
-    keysAfterFilter: Object.keys(items).length
-  })
+
   const tokens: Token[] = Object.values(items)
-  console.table(tokens)
-  return [];
   return tokens
 }
 

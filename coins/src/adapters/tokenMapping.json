@@ -5980,6 +5980,11 @@
       "to": "coingecko#the-open-network",
       "decimals": 18,
       "symbol": "TON"
+    },
+    "0x9bfa177621119e64cecbeabe184ab9993e2ef727":{
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "MBTC"
     }
   },
   "qom": {

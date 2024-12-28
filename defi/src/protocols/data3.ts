@@ -48563,7 +48563,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "step-finance",
     cmcId: "9443",
-    category: "Services",
+    category: "Portfolio Tracker",
     chains: ["Solana"],
     oracles: [],
     forkedFrom: [],

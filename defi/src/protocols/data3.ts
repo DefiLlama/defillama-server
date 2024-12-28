@@ -40689,7 +40689,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "dymension",
     cmcId: "28932",
-    category: "Services",
+    category: "Chain",
     chains: ["Dymension"],
     oracles: [],
     forkedFrom: [],

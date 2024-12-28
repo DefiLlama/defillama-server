@@ -254,7 +254,8 @@ test("no surprise category", async () => {
     'Trading App',
     'Foundation',
     'Bridge Aggregator',
-    'Liquidations'
+    'Liquidations',
+    'Portfolio Tracker'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

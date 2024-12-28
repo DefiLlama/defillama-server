@@ -25526,7 +25526,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1299",
-    name: "Guru Network",
+    name: "Guru Network Classic", // previously Guru Network
     address: "fantom:0xf43Cc235E686d7BC513F53Fbffb61F760c3a1882",
     symbol: "ELITE",
     url: "https://ftm.guru",
@@ -25543,6 +25543,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "Guru/index.js",
     twitter: "FTM1337",
     oracles: ["Band"],
+    parentProtocol: "parent#guru-network-dao",
     listedAt: 1642725601,
   },
   {

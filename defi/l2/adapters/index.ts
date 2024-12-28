@@ -233,3 +233,13 @@ export const aptos = async (): Promise<Address[]> => {
 
   return addresses.aptos;
 };
+export const eclipse = async (): Promise<Address[]> => {
+  if (addresses.eclipse) return addresses.eclipse;
+  const res: { tokenAddress: string; bridge: string }[] = await fetch(
+    "https://raw.githubusercontent.com/Eclipse-Laboratories-Inc/gist/refs/heads/main/hyperlane-assets.json"
+  );
+
+  addresses.eclipse = [];
+  res.map(({ address }: any) => addresses.eclipse.push(address));
+  return addresses.eclipse;
+};

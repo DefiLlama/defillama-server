@@ -4054,8 +4054,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Sanctum is a new primitive built on Solana to power liquid staking and bring Solana into an infinite-LST future. Sanctum enables users that stake SOL natively or with a liquid staking token (LST) to tap into a powerful unified liquidity layer.",
     logo: `${baseIconsUrl}/sanctum.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "sanctum-2",
+    cmcId: "32299",
     chains: [],
     twitter: "sanctumso",
   },

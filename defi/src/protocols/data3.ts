@@ -15706,8 +15706,8 @@ const data3: Protocol[] = [
   {
     id: "3388",
     name: "Sanctum Reserve",
-    address: null,
-    symbol: "-",
+    address: "solana:CLoUDKc4Ane7HeQcPpE3YHnznRxhMimJ4MyaUqyHFzAu",
+    symbol: "CLOUD",
     url: "https://www.sanctum.so",
     description:
       "The Reserve, also known as Sanctum Reserve Pool, is a pool of idle SOL that accepts staked SOL and gives SOL from its pool in return.",
@@ -37940,8 +37940,8 @@ const data3: Protocol[] = [
   {
     id: "4368",
     name: "Sanctum Infinity",
-    address: null,
-    symbol: "-",
+    address: "solana:CLoUDKc4Ane7HeQcPpE3YHnznRxhMimJ4MyaUqyHFzAu",
+    symbol: "CLOUD",
     url: "https://www.sanctum.so",
     description: `Infinity is a multi-LST liquidity pool. It can support hundreds of different LSTs natively and enables frictionless exchanges between them.`,
     chain: "Solana",
@@ -38007,8 +38007,8 @@ const data3: Protocol[] = [
   {
     id: "4371",
     name: "Sanctum Validator LSTs",
-    address: null,
-    symbol: "-",
+    address: "solana:CLoUDKc4Ane7HeQcPpE3YHnznRxhMimJ4MyaUqyHFzAu",
+    symbol: "CLOUD",
     url: "https://www.sanctum.so",
     description: `A Sanctum validator LST is a type of LST for which stake pools were deployed with the SanctumSPL Program.`,
     chain: "Solana",

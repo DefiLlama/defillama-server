@@ -64955,7 +64955,7 @@ const data3: Protocol[] = [
     chains: ["CORE"],
     oracles: [], 
     forkedFrom: ["GMX V2"],
-    module: "shadow-cl/index.js",
+    module: "satoshi-perps/index.js",
     twitter: "SatoshiAppXYZ",
     audit_links: ["https://github.com/NLX-Protocol/shatoshi-perps/blob/main/audits/Verichains%20Public%20Report%20-%20Satoshi%20Perp.pdf"],
     github: ["NLX-Protocol"],

@@ -463,9 +463,9 @@ export default {
         parentId: "Metavault",
         "id": "3911"
     },
-    /*"kiloex": { // volume-to-OI discrepancy, 77x ratio
+    "kiloex": {
         "id": "3329"
-    },*/
+    },
     "surfone": {
         "id": "3954"
     },

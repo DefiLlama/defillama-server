@@ -189,11 +189,28 @@ export function hover(timestamp: number = 0) {
 }
 
 export function moonwell(timestamp: number = 0) {
-  return getTokenPrices(
-    "base",
-    "0xfBb21d0380beE3312B33c4353c8936a0F13EF26C",
-    timestamp,
-  );
+  return Promise.all([
+    getTokenPrices(
+      "base",
+      "0xfBb21d0380beE3312B33c4353c8936a0F13EF26C",
+      timestamp,
+    ),
+    getTokenPrices(
+      "optimism",
+      "0xCa889f40aae37FFf165BccF69aeF1E82b5C511B9",
+      timestamp,
+    ),
+    getTokenPrices(
+      "moonbeam",
+      "0x8E00D5e02E65A19337Cdba98bbA9F84d4186a180",
+      timestamp,
+    ),
+    getTokenPrices(
+      "moonriver",
+      "0x0b7a0EAA884849c6Af7a129e899536dDDcA4905E",
+      timestamp,
+    ),
+  ]);
 }
 
 export function orbitv2(timestamp: number = 0) {
@@ -226,4 +243,4 @@ export const adapters = {
   mare,
   orbitv2,
   ironBank,
-}
+};

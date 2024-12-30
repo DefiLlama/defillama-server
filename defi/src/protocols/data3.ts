@@ -64893,6 +64893,50 @@ const data3: Protocol[] = [
     twitter: "FivaProtocol",
     listedAt: 1735573225
   },
+  {
+    id: "5569",
+    name: "BitUSD",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitusd.finance",
+    description:
+      "A decentralized Multichain CDP that includes advanced privacy features.",
+    chain: "Sapphire",
+    logo: `${baseIconsUrl}/bitusd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Sapphire"],
+    oracles: ["Band"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/12897
+    forkedFrom: ["Liquity"],
+    module: "bitusd/index.js",
+    twitter: "BitUSD_finance",
+    listedAt: 1735573542
+  },
+  {
+    id: "5570",
+    name: "Shadow Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://www.shadow.so",
+    description:
+      "Sonic-native concentrated liquidity layer and exchange.",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/shadow-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sonic"],
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    module: "shadow-cl/index.js",
+    twitter: "ShadowOnSonic",
+    listedAt: 1735573781
+  },
 
 ];
 

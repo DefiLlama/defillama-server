@@ -9404,5 +9404,52 @@
       "symbol": "XTZ",
       "to": "coingecko#tezos"
     }
+  },
+  "winr": {
+    "0x59edbb343991d30f77dcdbad94003777e9b09ba9": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x0381132632e9e27a8f37f1bc56bd5a62d21a382b": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xbf6fa9d2bf9f681e7b6521b49cf8eccf9ad8d31d": {
+      "decimals": "18",
+      "symbol": "WWINR",
+      "to": "coingecko#winr"
+    },
+    "0xe60256921ae414d7b35d6e881e47931f45e027cf": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xf2857668777135e22f8cd53c97abf8821b7f0bdf": {
+      "decimals": "18",
+      "symbol": "ARB",
+      "to": "coingecko#arbitrum"
+    },
+    "0x80ff76cc453c6d8c52092bdd8b69144dcd64fe73": {
+      "decimals": "18",
+      "symbol": "Boop",
+      "to": "coingecko#boop"
+    },
+    "0xa817eeb2e2e6830521595272464399b7ace58586": {
+      "decimals": "18",
+      "symbol": "BRETT",
+      "to": "coingecko#brett"
+    },
+    "0x3a3e8f73c51b5ae1697587058f0c1da0d3a37024": {
+      "decimals": "18",
+      "symbol": "TOSHI",
+      "to": "coingecko#toshi"
+    },
+    "0xa3acd262e0313d21c101e6a927d8d87d4c7e5a14": {
+      "decimals": "9",
+      "symbol": "KLAUS",
+      "to": "coingecko#klaus"
+    }
   }
 }

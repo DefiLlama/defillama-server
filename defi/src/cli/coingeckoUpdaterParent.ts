@@ -6,6 +6,8 @@ import { IParentProtocol } from '../protocols/types';
 // Keep track of used gecko_ids to avoid duplicates
 const usedGeckoIds = new Set<string>();
 
+const CG_API_KEY = '';
+
 // Add at the top with other constants
 const EXCLUDED_CATEGORIES = [
   'Stablecoins',
@@ -27,7 +29,7 @@ async function searchCoingecko(protocolName: string): Promise<any[]> {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        'x-cg-pro-api-key': 'CG-Fe3qKxRaSdfnvWJqerP19ni6'
+        'x-cg-pro-api-key': CG_API_KEY
       }
     });
     const json = await response.json();
@@ -50,7 +52,7 @@ async function fetchCoinDetails(coinId: string, twitterHandle: string, homepage:
       method: 'GET',
       headers: {
         accept: 'application/json',
-        'x-cg-pro-api-key': 'CG-Fe3qKxRaSdfnvWJqerP19ni6'
+        'x-cg-pro-api-key': CG_API_KEY
       }
     });
     const data = await response.json();

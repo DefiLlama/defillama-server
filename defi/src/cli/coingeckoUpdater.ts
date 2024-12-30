@@ -3,6 +3,9 @@ import path from 'path';
 
 const DATA_FILE = 'data.ts';
 
+const CG_API_KEY = '';
+
+
 interface Protocol {
   id: string;
   name: string;
@@ -44,7 +47,7 @@ async function searchCoingecko(tokenSymbol: string): Promise<any[]> {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        'x-cg-pro-api-key': 'CG-Fe3qKxRaSdfnvWJqerP19ni6'
+        'x-cg-pro-api-key': CG_API_KEY
       }
     });
     const json = await response.json();
@@ -64,7 +67,7 @@ async function fetchCoinDetails(coinId: string, twitterHandle: string, homepage:
       method: 'GET',
       headers: {
         accept: 'application/json',
-        'x-cg-pro-api-key': 'CG-Fe3qKxRaSdfnvWJqerP19ni6'
+        'x-cg-pro-api-key': CG_API_KEY
       }
     });
     const data = await response.json();

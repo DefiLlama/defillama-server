@@ -64937,7 +64937,30 @@ const data3: Protocol[] = [
     twitter: "ShadowOnSonic",
     listedAt: 1735573781
   },
-
+  {
+    id: "5571",
+    name: "SATOSHI PERPS",
+    address: null,
+    symbol: "-",
+    url: "https://satoshiapp.xyz/",
+    description:
+      "On-chain Perpetual Futures exchange powered by Bitcoin liquidity. Trade & Stake to grow your BTC stack",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/satoshi-perps.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["CORE"],
+    oracles: [], 
+    forkedFrom: ["GMX V2"],
+    module: "shadow-cl/index.js",
+    twitter: "SatoshiAppXYZ",
+    audit_links: ["https://github.com/NLX-Protocol/shatoshi-perps/blob/main/audits/Verichains%20Public%20Report%20-%20Satoshi%20Perp.pdf"],
+    github: ["NLX-Protocol"],
+    listedAt: 1735583371
+  },
 ];
 
 export default data3;

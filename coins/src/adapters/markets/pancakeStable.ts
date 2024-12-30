@@ -97,6 +97,8 @@ async function getPrices(timestamp: number, chain: string): Promise<Write[]> {
     if (isNaN(aum)) return;
     const price = aum / (supplies[i] / 10 ** decimals[i]);
 
+    if (!isFinite(price)) return;
+
     addToDBWritesList(
       writes,
       chain,

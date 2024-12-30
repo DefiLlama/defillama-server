@@ -64848,6 +64848,52 @@ const data3: Protocol[] = [
     module: "zora/index.js",
     twitter: "zora",
   },
+  {
+    id: "5567",
+    name: "Bedrock brBTC",
+    address: null,
+    symbol: "-",
+    url: "https://app.bedrock.technology/brbtc",
+    description:
+      "brBTC standing for Bedrock BTC, is designed specifically for Bitcoin holders seeking to participate in the next generation of DeFi opportunities. It accepts uniBTC and multiple wrapped BTC assets and Bedrock manages those assets on multiple trusted yield source layers such as Babylon, Kernel, Pell, Satlayer and etc.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bedrock-brbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Anchor BTC",
+    chains: ["Ethereum", "Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "brbtc/index.js",
+    twitter: "Bedrock_DeFi",
+    parentProtocol: "parent#bedrock",
+    listedAt: 1735572890
+  },
+  {
+    id: "5568",
+    name: "FIVA Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.thefiva.com",
+    description:
+      "FIVA is a yield tokenization protocol that offers fixed yields on tokens, enables leveraged yield farming from other protocols, and allows liquidity provision without impermanent loss for its pools.",
+    chain: "TON",
+    logo: `${baseIconsUrl}/fiva-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["TON"],
+    oracles: [],
+    forkedFrom: [],
+    module: "fiva/index.js",
+    twitter: "FivaProtocol",
+    listedAt: 1735573225
+  },
+
 ];
 
 export default data3;

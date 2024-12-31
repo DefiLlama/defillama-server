@@ -14722,7 +14722,7 @@ const data3: Protocol[] = [
   {
     id: "3345",
     name: "DackieSwap V3",
-    address: "base:0xc2bc7a73613b9bd5f373fe10b55c59a69f4d617b",
+    address: "base:0x73326b4d0225c429bed050c11c4422d91470aaf4",
     symbol: "DACKIE",
     url: "https://dackieswap.xyz",
     description: "The Premier Multichain DEX with AI Agent Technology",
@@ -18573,7 +18573,7 @@ const data3: Protocol[] = [
   {
     id: "3515",
     name: "DackieSwap V2",
-    address: "base:0xc2bc7a73613b9bd5f373fe10b55c59a69f4d617b",
+    address: "base:0x73326b4d0225c429bed050c11c4422d91470aaf4",
     symbol: "DACKIE",
     url: "https://dackieswap.xyz",
     description: "The Premier Multichain DEX with AI Agent Technology",

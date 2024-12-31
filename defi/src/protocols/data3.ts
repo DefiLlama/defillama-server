@@ -64961,6 +64961,52 @@ const data3: Protocol[] = [
     github: ["NLX-Protocol"],
     listedAt: 1735583371
   },
+  {
+    id: "5572",
+    name: "Run Money",
+    address: null,
+    symbol: "-",
+    url: "https://runmoney.app",
+    description:
+      "Run Money is a no-loss savings game that blends decentralized finance (DeFi) with fitness accountability. Athletes stake USDC, track runs via Strava, and earn enhanced yields by meeting club challenges. Interest forfeited by non-compliant members is redistributed to those who meet weekly goals, while the collective membership pool generates additional ETH yield. This dual-yield system rewards consistency with higher returns and exclusive financial opportunities",
+    chain: "Base",
+    logo: `${baseIconsUrl}/run-money.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Lottery",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "run-money/index.js",
+    twitter: "runmoney_app",
+    github: ["Run-Money"],
+    listedAt: 1735660151
+  },
+  {
+    id: "5573",
+    name: "MachFi",
+    address: null,
+    symbol: "-",
+    url: "https://www.machfi.xyz/",
+    description:
+      "Native Sonic Borrow / Lending dApp",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/machfi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Sonic"],
+    oracles: [],
+    forkedFrom: ["Compound V2"],
+    module: "machfi/index.js",
+    twitter: "machfi_xyz",
+    audit_links: ["https://github.com/sherlock-audit/2024-12-mach-finance-judging"],
+    listedAt: 1735660157
+  },
 ];
 
 export default data3;

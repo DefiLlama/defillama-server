@@ -44444,7 +44444,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     forkedFrom: [],
     oracles: [],
-    twitter: "GullNetwork",
+    twitter: "vooi_io",
     listedAt: 1716372620,
   },
   {

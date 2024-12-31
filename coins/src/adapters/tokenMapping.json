@@ -5883,6 +5883,11 @@
     }
   },
   "sonic": {
+    "0x50c42dEAcD8Fc9773493ED674b675bE577f2634b": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#fantom",
       "decimals": 18,

@@ -8739,7 +8739,7 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1686228824,
   },
-  /*{
+  {
     id: "3083",
     name: "Penpie",
     address: "0x7dedbce5a2e31e4c75f87fea60bf796c17718715",
@@ -8760,7 +8760,7 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1686229898,
     parentProtocol: "parent#magpie-ecosystem",
-  },*/
+  },
   {
     id: "3084",
     name: "L2FINANCE",
@@ -8918,7 +8918,7 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1686243248,
   },
-  /*{
+  {
     id: "3091",
     name: "Equilibria",
     address: "arbitrum:0xbfbcfe8873fe28dfa25f1099282b088d52bbad9c",
@@ -8941,7 +8941,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.equilibria.fi/security-and-risk/audit-report"],
     github: ["eqbtech"],
     listedAt: 1686276971,
-  },*/
+  },
   {
     id: "3092",
     name: "BeamSwap V3",

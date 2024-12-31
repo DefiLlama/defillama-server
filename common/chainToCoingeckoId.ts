@@ -164,7 +164,7 @@ export const chainToCoingeckoId = {
   apechain: "apechain",
   boba_bnb: "boba-bnb",
   sui: "sui",
-
+  sonic: "sonic"
   // dl: cg
   // chz: "chiliz",
   // stellar: "stellar",

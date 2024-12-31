@@ -4054,8 +4054,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Sanctum is a new primitive built on Solana to power liquid staking and bring Solana into an infinite-LST future. Sanctum enables users that stake SOL natively or with a liquid staking token (LST) to tap into a powerful unified liquidity layer.",
     logo: `${baseIconsUrl}/sanctum.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "sanctum-2",
+    cmcId: "32299",
     chains: [],
     twitter: "sanctumso",
   },
@@ -6106,6 +6106,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "27603",
     chains: [],
     twitter: "extrafi_io",
+  },
+  {
+    id: "parent#nirvana",
+    name: "Nirvana",
+    url: "https://www.nirvana.finance/",
+    description:
+      "ANA is a partially-collateralized asset with a built-in rising floor price & renewable yield. It allows for zero liquidation risk loans in the form of the NIRV superstable token.",
+    logo: `${baseIconsUrl}/extra-finance.jpg`,
+    gecko_id: "nirvana-ana",
+    cmcId: "19513",
+    chains: [],
+    twitter: "nirvana_fi",
   },
 ];
 

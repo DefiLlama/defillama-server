@@ -89,7 +89,10 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5461": "apechain",
   "5513": "ink",
   "5538": "swellchain",
-  "5552": "cronos_zkevm"
+  "5552": "cronos_zkevm",
+  "5564": "eclipse",
+  "5565": "shape",
+  "5566": "zora"
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

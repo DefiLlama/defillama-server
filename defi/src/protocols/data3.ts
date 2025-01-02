@@ -65008,6 +65008,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/sherlock-audit/2024-12-mach-finance-judging"],
     listedAt: 1735660157
   },
+  {
+    id: "5574",
+    name: "DuckSwap",
+    address: null,
+    symbol: "-",
+    url: "https://duckswap.xyz/home",
+    description:
+      "The first DEX on Duck Chain",
+    chain: "DuckChain",
+    logo: `${baseIconsUrl}/duckswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["DuckChain"],
+    oracles: [],
+    forkedFrom: ["iZiSwap"],
+    module: "duckswap/index.js",
+    twitter: "DuckSwap_TON",
+    listedAt: 1735835859
+  },
 ];
 
 export default data3;

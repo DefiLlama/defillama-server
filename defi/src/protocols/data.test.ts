@@ -220,7 +220,7 @@ test("no surprise category", async () => {
     'Options Vault',
     'Liquidity manager',
     'Staking Pool',
-    '"Partially Algorithmic Stablecoin"',
+    'Partially Algorithmic Stablecoin',
     'SoFi',
     'DEX Aggregator',
     'Liquid Restaking',

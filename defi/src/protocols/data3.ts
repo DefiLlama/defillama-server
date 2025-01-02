@@ -57847,7 +57847,7 @@ const data3: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#eddyfinance",
   },
-  {
+  /*{ Delisted as it is a fiat-backed stablecoin only, already listed on Stables Dashboard
     id: "5250",
     name: "Moneta",
     address: null,
@@ -57868,7 +57868,7 @@ const data3: Protocol[] = [
     twitter: "usdmofficial",
     audit_links: ["https://cdn.sundaeswap.finance/audits/mehen.pdf"],
     listedAt: 1729225639
-  },
+  },*/
   {
     id: "5251",
     name: "Truemarkets",

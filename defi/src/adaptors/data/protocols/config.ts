@@ -292,5 +292,8 @@ export default {
     "aerodrome": {
         parentId: "Aerodrome",
         "id": "3450"
+    },
+    "shadow-exchange": {
+        id: "5570",
     }
 } as AdaptorsConfig

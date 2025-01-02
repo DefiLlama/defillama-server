@@ -4833,7 +4833,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "money-on-chain",
     cmcId: null,
-    category: "Decentralized Stablecoin",
+    category: "Partially Algorithmic Stablecoin",
     chains: ["RSK"],
     module: "moneyonchain.js",
     twitter: "moneyonchainok",

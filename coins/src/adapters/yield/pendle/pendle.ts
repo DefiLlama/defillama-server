@@ -67,6 +67,8 @@ const gasMapping: { [chain: string]: string[] } = {
     "0xbce250b572955c044c0c4e75b2fa8016c12cabf9",
     "0x17be998a578fd97687b24e83954fec86dc20c979",
     "0xf7906f274c174a52d444175729e3fa98f9bde285",
+    "0xcba3b226ca62e666042cb4a1e6e4681053885f75",
+    "0x9e612ff1902c5feea4fd69eb236375d5299e0ffc",
   ],
 };
 
@@ -134,6 +136,24 @@ export default async function getTokenPrices(
         "0x36d3ca43ae7939645c306e26603ce16e39a89192",
         "0x98ffefd1a51d322c8def6d0ba183e71547216f7f",
         "0xafdc922d0059147486cc1f0f32e3a2354b0d35cc",
+        "0xafdc922d0059147486cc1f0f32e3a2354b0d35cc",
+        "0x98ffefd1a51d322c8def6d0ba183e71547216f7f",
+        "0x048680f64d6dff1748ba6d9a01f578433787e24b",
+        "0x64506968e80c9ed07bff60c8d9d57474effff2c9",
+        "0x22a72b0c504cbb7f8245208f84d8f035c311adec",
+        "0x81f3a11db1de16f4f9ba8bf46b71d2b168c64899",
+        "0xcba3b226ca62e666042cb4a1e6e4681053885f75",
+        "0x523f9441853467477b4dde653c554942f8e17162",
+        "0x9e612ff1902c5feea4fd69eb236375d5299e0ffc",
+        "0x3b621df9b429ed1ad64428ea7d8d142374c45121",
+        "0x905a5a4792a0c27a2adb2777f98c577d320079ef",
+        "0x00b321d89a8c36b3929f20b7955080baed706d1b",
+        "0x40789e8536c668c6a249af61c81b9dfac3eb8f32",
+        "0x67ec4046800bc2c27a51528e9d382d43c3146d29",
+        "0x409b499780ac04dc4780f9b79fbede665ac773d5",
+        "0x1c48cd1179aa0c503a48fcd5852559942492e31b",
+        "0x36d3ca43ae7939645c306e26603ce16e39a89192",
+        "0x792b9ede7a18c26b814f87eb5e0c8d26ad189780",
       ],
     );
   if (chain == "bsc")
@@ -414,6 +434,7 @@ export default async function getTokenPrices(
         underlyingTokenData[yieldTokens[i]] ??
         underlyingTokenData[underlyingTokens[i]];
 
+      if (underlying.address == nullAddress) console.log(m);
       if (
         !underlying ||
         !exchangeRates[m] ||

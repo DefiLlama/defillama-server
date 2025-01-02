@@ -28680,7 +28680,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/cerra.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "null", // "cerra" preview only stage
+    gecko_id: null, // "cerra" preview only stage
     cmcId: null,
     category: "Lending",
     chains: ["Cardano"],

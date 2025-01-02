@@ -1220,7 +1220,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Velocimeter's twin-AMM design unites StableSwap pools with Standard 'kxy' liquidity pools. All the trading fees go to Vote-Escrowers of emission token $FLOW which has to be Locked to earn triple 'Bribes' from candidate pools via Trade Fee, Internal Bribes & External Bribes",
     logo: `${baseIconsUrl}/velocimeter.png`,
-    gecko_id: "null",
+    gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "VelocimeterDEX",
@@ -5599,7 +5599,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "The Open Network Liquid Staking protocol empowering TON DeFi ecosystem.",
     logo: `${baseIconsUrl}/tonstakers.jpg`,
-    gecko_id: "null", // tonstakers preview only
+    gecko_id: null, // tonstakers preview only
     cmcId: null,
     chains: [],
     twitter: "tonstakers",
@@ -5611,7 +5611,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "The Kelp DAO team is currently building an LRT solution, rsETH, on EigenLayer for Ethereum",
     logo: `${baseIconsUrl}/kelp-dao.png`,
-    gecko_id: "null", // kelp-dao preview only
+    gecko_id: null, // kelp-dao preview only
     cmcId: null,
     chains: [],
     twitter: "KelpDAO",

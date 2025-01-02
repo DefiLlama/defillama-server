@@ -772,5 +772,12 @@ export default {
             }
         }
     },
-
+    "satoshi-perps": {
+        id: "5571",
+        protocolsData: {
+            "derivatives": {
+                "id": "5571",
+            }
+        }
+    }
 } as AdaptorsConfig

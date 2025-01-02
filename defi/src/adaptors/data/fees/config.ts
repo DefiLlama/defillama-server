@@ -2288,5 +2288,8 @@ export default {
     },
     "rabbitswap-v3": {
         id: "5298"
+    },
+    "satoshi-perps": {
+        id: "5571",
     }
 } as AdaptorsConfig

@@ -1,7 +1,7 @@
 import { baseIconsUrl } from "../constants";
-import type { Protocol } from "./types";
 import data2 from "./data2";
 import data3 from "./data3";
+import type { Protocol } from "./types";
 
 export type { Protocol };
 /* Audits: Please follow this legend
@@ -19110,7 +19110,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/yokaiswap.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "yokaiswap",
     cmcId: null,
     category: "Dexes",
     chains: ["Godwoken", "GodwokenV1"],

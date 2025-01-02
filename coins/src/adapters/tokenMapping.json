@@ -5880,6 +5880,16 @@
       "to": "coingecko#bitcoin",
       "decimals": 18,
       "symbol": "BTCN"
+    },
+    "0x541FD749419CA806a8bc7da8ac23D346f2dF8B77": {
+      "decimals": "18",
+      "symbol": "SolvBTC",
+      "to": "coingecko#solv-btc"
+    },
+    "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
+      "to": "coingecko#solv-protocol-solvbtc-bbn",
+      "decimals": 18,
+      "symbol": "SolvBTC.BBN"
     }
   },
   "sonic": {
@@ -5912,6 +5922,16 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "WETH"
+    },
+    "0x541FD749419CA806a8bc7da8ac23D346f2dF8B77": {
+      "decimals": "18",
+      "symbol": "SolvBTC",
+      "to": "coingecko#solv-btc"
+    },
+    "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
+      "to": "coingecko#solv-protocol-solvbtc-bbn",
+      "decimals": 18,
+      "symbol": "SolvBTC.BBN"
     }
   },
   "vinu": {

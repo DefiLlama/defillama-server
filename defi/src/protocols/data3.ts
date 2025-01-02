@@ -60731,11 +60731,11 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Telegram Bot",
-    chains: ["Ethereum", "Base", "Binance", "Solana"],
+    chains: ["Ethereum", "Base", "Binance", "Solana", "Sonic"],
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "tryblazingbot",
+    twitter: "blazingbotapp",
     listedAt: 1731946483
   },
   {

@@ -170,7 +170,7 @@ test("all oracle names match exactly", async () => {
   }
 });
 
-test.only("no coingeckoId is repeated", async () => {
+test("no coingeckoId is repeated", async () => {
   const ids = [];
   for (const protocol of protocols) {
     const id = protocol.gecko_id

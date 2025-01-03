@@ -59738,7 +59738,7 @@ const data3: Protocol[] = [
     module: "carrot/index.js",
     twitter: "DeFiCarrot",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Switchboard"],
     audit_links: ["https://deficarrot.com/assets/carrot_final_report.pdf"],
     listedAt: 1731107322
   },

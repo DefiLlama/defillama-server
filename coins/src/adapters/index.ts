@@ -117,4 +117,5 @@ export default {
   aries: require("./moneyMarkets/aries"),
   pragma: require("./oracles/pragma"),
   parallelProtocol: require("./markets/parallelProtocol"),
+  sanctum: require("./solana/sanctum"),
 };

@@ -434,7 +434,6 @@ export default async function getTokenPrices(
         underlyingTokenData[yieldTokens[i]] ??
         underlyingTokenData[underlyingTokens[i]];
 
-      if (underlying.address == nullAddress) console.log(m);
       if (
         !underlying ||
         !exchangeRates[m] ||

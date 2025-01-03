@@ -2291,5 +2291,8 @@ export default {
     },
     "satoshi-perps": {
         id: "5571",
+    },
+    "virtual-protocol": {
+        id: "5575",
     }
 } as AdaptorsConfig

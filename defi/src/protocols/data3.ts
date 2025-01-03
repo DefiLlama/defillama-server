@@ -65028,6 +65028,27 @@ const data3: Protocol[] = [
     twitter: "DuckSwap_TON",
     listedAt: 1735835859
   },
+  {
+    id: "5575",
+    name: "Virtuals Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://app.virtuals.io",
+    description:
+      "Society of AI Agents base",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/virtuals-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "AI Agents",
+    chains: ["Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "virtuals_io",
+  },
 ];
 
 export default data3;

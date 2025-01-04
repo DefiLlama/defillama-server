@@ -226,7 +226,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
         // TODO: handle better errors
         if (onError) onError(error as Error)
         return {
-            defillamaId: adapter.protocolType === ProtocolType.CHAIN ? `chain#${adapter.defillamaId}` : adapter.defillamaId,
+            defillamaId: adapter.protocolType === ProtocolType.CHAIN ? `chain#${adapter.id}` : adapter.id,
             name: adapter.name,
             slug: adapter.name.split(" ").join("-").toLowerCase(),
             module: adapter.module,

@@ -3636,6 +3636,15 @@ export const chainCoingeckoIds = {
     url: "https://app.pryzm.zone",
     github: ["pryzm-finance"],
   },
+  "CrossFi": {
+    geckoId: "crossfi-2",
+    symbol: "XFI",
+    cmcId: "26202",
+    categories: ["EVM"],
+    twitter: "crossfichain",
+    url: "https://crossfi.org/",
+    chainId: 4158
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -3800,7 +3809,8 @@ const chainLabelMap = {
   "aelf": "aelf",
   "hela": "HeLa",
   "duckchain": "DuckChain",
-  "qom": "QL1"
+  "qom": "QL1",
+  "crossfi": "CrossFi"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

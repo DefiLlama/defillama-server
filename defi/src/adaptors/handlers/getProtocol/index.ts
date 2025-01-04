@@ -4,7 +4,7 @@ import { AdaptorRecordType, AdaptorRecordTypeMap, IRecordAdapterRecordChainData 
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import loadAdaptorsData from "../../data"
 import { AdaptorData, IJSON, ProtocolAdaptor } from "../../data/types";
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 import { formatNdChangeNumber, generateAggregatedVolumesChartDataImprov, generateByChainVolumesChartDataBreakdown, IChartDataBreakdown, IChartDatav2, sumAllVolumes } from "../../utils/volumeCalcs";
 import { DEFAULT_CHART_BY_ADAPTOR_TYPE, ProtocolAdaptorSummary } from "../getOverviewProcess";
@@ -95,7 +95,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
         const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType, undefined, undefined, { isApi2RestServer })
 
         dexDataResponse = {
-            defillamaId: dexData.defillamaId,
+            defillamaId: dexData.protocolType === ProtocolType.CHAIN ? `chain#${dexData.defillamaId}` : dexData.defillamaId,
             name: generatedSummary.name,
             displayName: generatedSummary.displayName,
             disabled: generatedSummary.disabled,
@@ -130,7 +130,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
     } catch (error) {
         console.error(`Error generating summary for ${dexData.module} ${JSON.stringify(error)}`)
         dexDataResponse = {
-            defillamaId: dexData.defillamaId,
+            defillamaId: dexData.protocolType === ProtocolType.CHAIN ? `chain#${dexData.defillamaId}` : dexData.defillamaId,
             name: dexData.name,
             displayName: dexData.displayName,
             logo: dexData.logo,

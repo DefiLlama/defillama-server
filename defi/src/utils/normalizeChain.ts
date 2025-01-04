@@ -3640,7 +3640,7 @@ export const chainCoingeckoIds = {
     geckoId: "crossfi-2",
     symbol: "XFI",
     cmcId: "26202",
-    categories: ["EVM"],
+    categories: ["EVM", "Cosmos"],
     twitter: "crossfichain",
     url: "https://crossfi.org/",
     chainId: 4158

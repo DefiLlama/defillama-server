@@ -65092,6 +65092,61 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "TrustWallet",
   },
+  {
+    id: "5578",
+    name: "SwapX V2",
+    address: null,
+    symbol: "-",
+    url: "https://swapx.fi/",
+    description:
+      "SwapX, Sonic's native DEX, leverages Algebra V4 for advanced concentrated liquidity management and ve(3,3) tokenomics while pioneering modular DeFi with plugin technology",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/swapx-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sonic"],
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    module: "SwapX-v2/index.js",
+    twitter: "SwapXfi",
+    parentProtocol: "parent#swapx",
+    audit_links: [
+      "https://swapx.fi/Bailsec_SwapX_Exchange_Final_Report.pdf",
+      "https://swapx.fi/Bailsec_SwapX_Staking_Airdrop_Vesting_Final_Report.pdf"
+    ],
+    listedAt: 1735971714
+  },
+  {
+    id: "5579",
+    name: "SwapX Algebra",
+    address: null,
+    symbol: "-",
+    url: "https://swapx.fi/",
+    description:
+      "SwapX, Sonic's native DEX, leverages Algebra V4 for advanced concentrated liquidity management and ve(3,3) tokenomics while pioneering modular DeFi with plugin technology",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/swapx-algebra.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sonic"],
+    oracles: [],
+    forkedFrom: ["Algebra Integral"],
+    module: "SwapX-algebra/index.js",
+    twitter: "SwapXfi",
+    parentProtocol: "parent#swapx",
+    audit_links: [
+      "https://swapx.fi/Bailsec_SwapX_Exchange_Final_Report.pdf",
+      "https://swapx.fi/Bailsec_Algebra_Finance_SwapX_Fee_Plugin_Final_Report.pdf",
+      "https://swapx.fi/Bailsec_SwapX_Staking_Airdrop_Vesting_Final_Report.pdf"
+    ],
+    listedAt: 1735971859
+  },
 ];
 
 export default data3;

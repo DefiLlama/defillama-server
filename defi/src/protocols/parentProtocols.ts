@@ -6119,6 +6119,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "nirvana_fi",
   },
+  {
+    id: "parent#swapx",
+    name: "SwapX",
+    url: "https://swapx.fi/",
+    description:
+      "SwapX, Sonic's native DEX, leverages Algebra V4 for advanced concentrated liquidity management and ve(3,3) tokenomics while pioneering modular DeFi with plugin technology",
+    logo: `${baseIconsUrl}/swapx.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SwapXfi",
+    github: ["SwapX-Exchange"]
+  },
 ];
 
 export default parentProtocols;

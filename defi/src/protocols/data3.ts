@@ -65049,6 +65049,28 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "virtuals_io",
   },
+  {
+    id: "5576",
+    name: "CrossFi xSwap",
+    address: null,
+    symbol: "-",
+    url: "https://crossfi.org/swap/",
+    description:
+      "Exchange tokens issued on the CrossFi Chain",
+    chain: "CrossFi",
+    logo: `${baseIconsUrl}/crossfi-xswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CrossFi"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "xswap/index.js",
+    twitter: "crossfichain",
+    listedAt: 1735955529
+  },
 ];
 
 export default data3;

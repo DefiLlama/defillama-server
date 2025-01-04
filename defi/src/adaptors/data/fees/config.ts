@@ -2294,5 +2294,8 @@ export default {
     },
     "virtual-protocol": {
         id: "5575",
+    },
+    "trust-wallet": {
+        id: "5577",
     }
 } as AdaptorsConfig

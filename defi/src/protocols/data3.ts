@@ -27989,7 +27989,7 @@ const data3: Protocol[] = [
     name: "Renzo",
     address: "0x3b50805453023a91a8bf641e279401a0b23fa6f9",
     symbol: "REZ",
-    assetToken: "ezETH",
+    //assetToken: "ezETH", comment to show the REZ token info on the protocol page
     url: "https://app.renzoprotocol.com/restake",
     description:
       "The Renzo Protocol acts as an interface on top of EigenLayer, enhancing Ethereum staking by securing Actively Validated Services and offering higher yields",

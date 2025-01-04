@@ -65071,6 +65071,27 @@ const data3: Protocol[] = [
     twitter: "crossfichain",
     listedAt: 1735955529
   },
+  {
+    id: "5577",
+    name: "Trust Wallet",
+    address: "bsc:0x4b0f1812e5df2a09796481ff14017e6005508003",
+    symbol: "TWT",
+    url: "https://trustwallet.com/download",
+    description:
+      "Non-custodial crypto wallet",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/trust-wallet.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "trust-wallet-token",
+    cmcId: "5964",
+    category: "Wallets",
+    chains: ["Ethereum","Arbitrum","Optimism","Polygon","Base","Avalanche","Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "TrustWallet",
+  },
 ];
 
 export default data3;

@@ -6012,7 +6012,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Mars is a multichain credit protocol enabling borrowing and lending primitives in the Cosmos. With Mars v2, the protocol introduced Rover credit accounts to Osmosis. Much like Binance subaccounts, credit accounts act as transferrable NFT containers where users can deposit assets, and use them as collateral for borrowing, spot or margin trading, leveraged yield farming, and hedging — all with a single liquidation point",
     logo: `${baseIconsUrl}/mars-protocol.png`,
-    gecko_id: "mars-protocol",
+    gecko_id: "mars-protocol-a7fcbcfb-fd61-4017-92f0-7ee9f9cc6da3",
     cmcId: "18621",
     chains: [],
     twitter: "mars_protocol",

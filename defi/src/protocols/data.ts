@@ -1,6 +1,7 @@
 import { baseIconsUrl } from "../constants";
 import data2 from "./data2";
 import data3 from "./data3";
+import data4 from "./data4";
 import type { Protocol } from "./types";
 
 export type { Protocol };
@@ -27280,7 +27281,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
 ];
 
-const protocols = data.concat(data2, data3);
+const protocols = data.concat(data2, data3, data4);
 
 export default protocols;
 

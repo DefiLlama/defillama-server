@@ -11385,7 +11385,7 @@ const data3: Protocol[] = [
     listedAt: 1688494775,
     github: ["collective-dao"],
   },
-  {
+ /*  {
     id: "3200",
     name: "MetaStreet V2",
     address: null,
@@ -11407,7 +11407,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.metastreet.xyz/v2/audits"],
     listedAt: 1688536771,
     parentProtocol: "parent#metastreet",
-  },
+  }, */
   {
     id: "3201",
     name: "ChirpFinance",

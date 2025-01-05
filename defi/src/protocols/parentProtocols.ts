@@ -2151,7 +2151,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["biswap-org"],
     governanceID: ["snapshot:biswap-org.eth"],
   },
-  {
+/*   {
     id: "parent#metastreet",
     name: "Metastreet",
     url: "https://metastreet.xyz/",
@@ -2161,7 +2161,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "metastreetxyz",
-  },
+  }, */
   {
     id: "parent#uncx-network",
     name: "UNCX Network",

@@ -14912,7 +14912,7 @@ const data2: Protocol[] = [
     listedAt: 1661480724,
     github: ["router-protocol"],
   },
-  {
+  /* {
     id: "2022",
     name: "MetaStreet V1",
     address: null,
@@ -14935,7 +14935,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.metastreet.xyz/other/audits"],
     listedAt: 1661481103,
     parentProtocol: "parent#metastreet",
-  },
+  }, */
   {
     id: "2023",
     name: "Arbswap AMM",

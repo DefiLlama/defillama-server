@@ -52915,7 +52915,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.delegate.xyz/audits"],
     listedAt: 1724263292,
   },
-  {
+  /*{
     id: "5031",
     name: "MetaStreet Airdrop Pass",
     address: null,
@@ -52937,7 +52937,7 @@ const data3: Protocol[] = [
     twitter: "metastreetxyz",
     parentProtocol: "parent#metastreet",
     listedAt: 1724263681,
-  },
+  },*/
   {
     id: "5032",
     name: "StakeWise V3",

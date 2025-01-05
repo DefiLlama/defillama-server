@@ -39,5 +39,29 @@ import type { Protocol } from "./types";
 
 `chains` is not used by the current code, but good to fill it out because it is used in our test to detect errors
 */
-const data4: Protocol[] = [];
+const data4: Protocol[] = [
+  {
+    id: "5580",
+    name: "Latch",
+    address: null,
+    symbol: "-",
+    url: "https://savings.latch.io/",
+    description:
+      "Deposit idle tokens, select a preferred vault, and earn yield and points",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/latch.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "latch/index.js",
+    twitter: "UseLatch",
+    audit_links: ["https://docs.latch.io/overview/contracts-audit"],
+    listedAt: 1736110559
+  },
+];
 export default data4;

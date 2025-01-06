@@ -31166,7 +31166,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/ionic-protocol.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "ION",
+    gecko_id: "ionic-protocol",
     cmcId: null,
     category: "Lending",
     chains: ["Mode"],

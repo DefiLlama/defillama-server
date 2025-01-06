@@ -225,5 +225,31 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "CoinbaseWallet",
   },
+  {
+    id: "5588",
+    name: "YieldFi",
+    address: null,
+    symbol: "-",
+    url: "https://yield.fi/",
+    description:
+      "YieldFi: The First Streamlined Asset Management Platform",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yieldfi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "yield-fi/index.js",
+    twitter: "getyieldfi",
+    github: ["YieldFiLabs"],
+    audit_links: [
+      "https://docs.yield.fi/resources/audits"
+    ],
+    listedAt: 1736184965
+  },
 ];
 export default data4;

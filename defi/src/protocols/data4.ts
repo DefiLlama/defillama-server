@@ -63,5 +63,50 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.latch.io/overview/contracts-audit"],
     listedAt: 1736110559
   },
+  {
+    id: "5581",
+    name: "Aquadex",
+    address: null,
+    symbol: "-",
+    url: "https://aquadex.co/swap",
+    description:
+      "Decentralized exchange on Waterfall Network",
+    chain: "Waterfall",
+    logo: `${baseIconsUrl}/aquadex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Waterfall"],
+    oracles: [],
+    forkedFrom: [],
+    module: "aquadex-v3/index.js",
+    twitter: "waterfall_dag",
+    github: ["AquaDEX"],
+    listedAt: 1736174541
+  },
+  {
+    id: "5582",
+    name: "Mantra AMM",
+    address: null,
+    symbol: "-",
+    url: "https://mantra.zone/liquidity-pools",
+    description:
+      "Decentralized exchange on Mantra chain",
+    chain: "Mantra",
+    logo: `${baseIconsUrl}/mantra-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantra"],
+    oracles: [],
+    forkedFrom: [],
+    module: "mantra-amm/index.js",
+    twitter: "MANTRA_Chain",
+    listedAt: 1736174547
+  },
 ];
 export default data4;

@@ -3645,6 +3645,23 @@ export const chainCoingeckoIds = {
     url: "https://crossfi.org/",
     chainId: 4158
   },
+  "Waterfall": {
+    geckoId: "water-3",
+    symbol: "WATER",
+    cmcId: "32282",
+    categories: ["EVM"],
+    twitter: "waterfall_dag",
+    url: "https://waterfall.network/",
+    chainId: 181
+  },
+  "Mantra": {
+    geckoId: "mantra-dao",
+    symbol: "OM",
+    cmcId: "6536",
+    categories: ["Cosmos"],
+    twitter: "MANTRA_Chain",
+    url: "https://www.mantrachain.io/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -3810,7 +3827,8 @@ const chainLabelMap = {
   "hela": "HeLa",
   "duckchain": "DuckChain",
   "qom": "QL1",
-  "crossfi": "CrossFi"
+  "crossfi": "CrossFi",
+  "water": "Waterfall"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

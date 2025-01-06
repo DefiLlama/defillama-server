@@ -240,7 +240,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
-    chains: ["Ethereum"],
+    chains: ["Ethereum","Optimism","BOB"],
     oracles: [],
     forkedFrom: [],
     module: "yield-fi/index.js",

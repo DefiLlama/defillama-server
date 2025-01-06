@@ -65147,6 +65147,26 @@ const data3: Protocol[] = [
     ],
     listedAt: 1735971859
   },
+  {
+    id: "5580",
+    name: "Aethir",
+    address: "arbitrum:0xbe0Ed4138121EcFC5c0E56B40517da27E6c5226B",
+    symbol: "ATH",
+    url: "https://aethir.com/",
+    description: "Powerful GPU compute solutions on-demand.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/aethir.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "aethir",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "AethirCloud",
+  },
 ];
 
 export default data3;

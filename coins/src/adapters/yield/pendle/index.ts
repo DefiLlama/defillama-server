@@ -1,3 +1,4 @@
+import { getApiPrices } from "./api";
 import getTokenPrices from "./pendle";
 import { getPenpiePrices } from "./penpie";
 
@@ -218,6 +219,7 @@ export function pendle(timestamp: number = 0) {
   return Promise.all(
     Object.keys(config).map((chain: string) =>
       getTokenPrices(timestamp, chain, config[chain]),
+      getApiPrices(timestamp)
     ),
   );
 }

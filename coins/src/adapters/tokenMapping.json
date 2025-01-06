@@ -1510,6 +1510,16 @@
     }
   },
   "solana": {
+    "Eh6XEPhSwoLv5wFApukmnaVSHQ6sAnoD9BmgmwQoN2sN": {
+      "decimals": "9",
+      "symbol": "sUSDe",
+      "to": "coingecko#ethena-staked-usde"
+    },
+    "susdabGDNbhrnCa6ncrYo81u4s9GM8ecK2UwMyZiq4X": {
+      "decimals": "6",
+      "symbol": "sUSD",
+      "to": "coingecko#solayer-usd"
+    },
     "4MmJVdwYN8LwvbGeCowYjSx7KoEi6BJWg8XXnW4fDDp6": {
       "decimals": "6",
       "symbol": "TBILL",

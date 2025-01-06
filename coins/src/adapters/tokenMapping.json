@@ -5586,6 +5586,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
+    },
+    "0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
     }
   },
   "flow": {

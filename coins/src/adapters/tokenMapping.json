@@ -4645,6 +4645,11 @@
     }
   },
   "btr": {
+    "0x5659b4c62897fa36c05780cd96c2d5c0a5602488": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
+    },
     "0x7dcb50b2180bc896da1200d2726a88af5d2cbb5a": {
       "decimals": "18",
       "symbol": "ordi",

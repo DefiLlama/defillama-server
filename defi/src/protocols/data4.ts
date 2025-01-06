@@ -204,5 +204,26 @@ const data4: Protocol[] = [
     ],
     listedAt: 1736176895
   },
+  {
+    id: "5587",
+    name: "Coinbase Wallet",
+    address: null,
+    symbol: "-",
+    url: "https://wallet.coinbase.com/",
+    description:
+      "Crypto wallet and dapp browser",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/coinbase-wallet.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Wallets",
+    chains: ["Ethereum","Arbitrum","Optimism","Polygon","Base","Avalanche","Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "CoinbaseWallet",
+  },
 ];
 export default data4;

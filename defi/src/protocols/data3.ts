@@ -65086,7 +65086,7 @@ const data3: Protocol[] = [
     gecko_id: "trust-wallet-token",
     cmcId: "5964",
     category: "Wallets",
-    chains: ["Ethereum","Arbitrum","Optimism","Polygon","Base","Avalanche","Binance"],
+    chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",

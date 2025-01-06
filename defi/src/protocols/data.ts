@@ -3460,6 +3460,7 @@ const data: Protocol[] = [
     audit_links: [],
     deadUrl: true,
   },
+  /*
   {
     id: "268",
     name: "UniTrade",
@@ -3481,6 +3482,7 @@ const data: Protocol[] = [
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20%20Unitrade%20%5B06.10.2020%5D.pdf",
     ],
   },
+  */
   {
     id: "269",
     name: "YFII",

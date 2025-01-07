@@ -407,7 +407,7 @@ const data4: Protocol[] = [
     twitter: "goldstation_io",
     parentProtocol: "parent#goldstation",
     tokensExcludedFromParent: {
-      Aptos: ["GPC"],
+      Avalanche: ["GPC"],
     },
     listedAt: 1736249628
   },

@@ -58063,7 +58063,7 @@ const data3: Protocol[] = [
     twitter: "goldstation_io",
     listedAt: 1729647601,
     tokensExcludedFromParent: {
-      Aptos: ["GPC"],
+      Klaytn: ["GPC"],
     },
     parentProtocol: "parent#goldstation",
   },

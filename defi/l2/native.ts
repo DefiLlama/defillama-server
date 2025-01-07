@@ -1,5 +1,5 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { fetchAllTokens } from "./layer2pg";
+import { fetchAllTokens } from "../src/utils/shared/bridgedTvlPostgres";
 import { McapData, TokenTvlData, DollarValues } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";

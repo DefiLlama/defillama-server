@@ -1,5 +1,5 @@
 import postgres from "postgres";
-import { queryPostgresWithRetry } from "../l2/layer2pg";
+import { queryPostgresWithRetry } from "../src/utils/shared/bridgedTvlPostgres";
 import { ChainTokens, ChartData, FinalChainData, FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getR2JSONString, storeR2JSONString } from "../src/utils/r2";

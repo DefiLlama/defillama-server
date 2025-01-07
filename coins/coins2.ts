@@ -2,7 +2,7 @@ import { CoinRead } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
-import { getCoins2Connection } from "./getDBConnection";
+import { getCoins2Connection } from "./src/utils/shared/getDBConnection";
 import { sendMessage } from "../defi/src/utils/discord";
 import fetch from "node-fetch";
 
@@ -23,7 +23,7 @@ const latency: number = 1 * 60 * 60; // 1hr
 const margin: number = 6 * 60 * 60; // 12hr
 const confidenceThreshold: number = 0.3;
 const zeroDecimalAdapters: string[] = [
-  'LiNEAR',
+  "LiNEAR",
   "coingecko",
   "chainlink-nft",
   "defichain",
@@ -175,7 +175,7 @@ export async function getRedisConnection() {
     } catch (e) {
       reject(e);
     }
-  })
+  });
   return _redis;
 }
 
@@ -184,7 +184,7 @@ process.on("exit", async () => {
     const redis = await _redis;
     redis.quit();
   }
-})
+});
 
 export async function queryRedis(
   values: CoinRead[],
@@ -194,7 +194,7 @@ export async function queryRedis(
   const keys: string[] = values.map((v: CoinRead) => v.key);
   // console.log(`${values.length} queried`);
 
-  const redis = await getRedisConnection()
+  const redis = await getRedisConnection();
   let res = await redis.mget(keys);
   // console.log("mget finished");
   const jsonValues: { [key: string]: Coin } = {};
@@ -529,7 +529,7 @@ export async function writeToRedis(
     );
   }
   try {
-    const redis = await getRedisConnection()
+    const redis = await getRedisConnection();
     await redis.mset(strings);
   } catch (e) {
     await sendMessage(

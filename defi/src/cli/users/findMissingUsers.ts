@@ -4,7 +4,7 @@ import getRecordEarliestTimestamp from "../../utils/shared/getRecordEarliestTime
 import { dailyTvl } from "../../utils/getLastRecord";
 import { DAY } from "../../utils/date";
 import {date} from '../utils'
-import { getAccountsDBConnection } from "../../getDBConnection";
+import { getAccountsDBConnection } from "../../utils/shared/getDBConnection";
 
 async function main(){
     const table = [

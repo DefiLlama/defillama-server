@@ -1,7 +1,8 @@
 import { Chain } from "@defillama/sdk/build/general";
 import providers from "@defillama/sdk/build/providers.json";
 import { Address } from "@defillama/sdk/build/types";
-import { allChainKeys, mixedCaseChains } from "../constants";
+import { allChainKeys } from "../constants";
+import { bridgedTvlMixedCaseChains } from "../../src/utils/shared/constants";
 import fetch from "node-fetch";
 import { additional, excluded } from "./manual";
 import axios from "axios";
@@ -120,12 +121,12 @@ const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
   Object.keys(addresses).map((chain: string) => {
     let chainAddresses =
       chain in excluded ? addresses[chain].filter((t: string) => !excluded[chain].includes(t)) : addresses[chain];
-    if (!mixedCaseChains.includes(chain)) chainAddresses = chainAddresses.map((t: string) => t.toLowerCase());
+    if (!bridgedTvlMixedCaseChains.includes(chain)) chainAddresses = chainAddresses.map((t: string) => t.toLowerCase());
     if (!(chain in additional)) {
       filteredAddresses[chain] = chainAddresses;
       return;
     }
-    const additionalTokens = mixedCaseChains.includes(chain)
+    const additionalTokens = bridgedTvlMixedCaseChains.includes(chain)
       ? additional[chain]
       : additional[chain].map((t: string) => t.toLowerCase());
     filteredAddresses[chain] = [...chainAddresses, ...additionalTokens];

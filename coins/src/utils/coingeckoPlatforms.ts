@@ -43,6 +43,7 @@ export async function iterateOverPlatforms(
   coin: Coin,
   iterator: (PK: string) => Promise<void>,
   coinPlatformData: any,
+  aggregatedPlatforms: string[],
 ) {
   const platforms = coin.platforms as StringObject;
   for (const platform in platforms) {
@@ -52,6 +53,7 @@ export async function iterateOverPlatforms(
         if (chain === undefined) {
           continue;
         }
+        aggregatePlatforms(chain, platforms[platform]!, aggregatedPlatforms);
         const address =
           chain + ":" + lowercase(platforms[platform]!, chain).trim();
         const PK = `asset#${address}`;
@@ -100,4 +102,14 @@ export async function getCoinPlatformData(coins: Coin[]) {
     console.error(e);
   }
   return coinPlatformData;
+}
+
+export async function aggregatePlatforms(
+  chain: string,
+  address: string,
+  aggregatedPlatforms: string[],
+) {
+  const normalizedAddress =
+    chain in chainsThatShouldNotBeLowerCased ? address : address.toLowerCase();
+  aggregatedPlatforms.push(`${chain}:${normalizedAddress}`);
 }

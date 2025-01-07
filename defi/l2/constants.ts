@@ -8,7 +8,6 @@ export const excludedTvlKeys = ["PK", "SK", "tvl"];
 
 export const geckoSymbols = cgSymbols as { [key: string]: string };
 
-export const mixedCaseChains: string[] = ["solana", "tron", "sui", "aptos", "eclipse"];
 export const chainsWithoutCanonicalBridges: string[] = [
   "cronos",
   "kava",

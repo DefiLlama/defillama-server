@@ -21,6 +21,7 @@ import {
   fetchCgPriceData,
   retryCoingeckoRequest,
 } from "../utils/getCoinsUtils";
+import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -140,6 +141,8 @@ async function getSymbolAndDecimals(
     }
   }
 }
+
+const aggregatedPlatforms: string[] = [];
 
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinData = await fetchCgPriceData(coins.map((c) => c.id));
@@ -299,6 +302,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           await ddb.put(item);
         },
         coinPlatformData,
+        aggregatedPlatforms,
       ),
     ),
   );
@@ -396,6 +400,7 @@ async function fetchCoingeckoData(
       requests.push(getAndStoreCoins(coins.slice(i, i + step), rejected));
     }
     await Promise.all(requests);
+    await storeAllTokens(aggregatedPlatforms);
   }
   clearInterval(timer);
   if (rejected.length > 0) {

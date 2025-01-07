@@ -58062,6 +58062,9 @@ const data3: Protocol[] = [
     module: "goldstation-dex/index.js",
     twitter: "goldstation_io",
     listedAt: 1729647601,
+    tokensExcludedFromParent: {
+      Aptos: ["GPC"],
+    },
     parentProtocol: "parent#goldstation",
   },
   {
@@ -65147,6 +65150,7 @@ const data3: Protocol[] = [
     ],
     listedAt: 1735971859
   },
+  // Please don't add new litings here; please use data4.ts
 ];
 
 export default data3;

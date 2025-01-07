@@ -22,6 +22,18 @@ Object.keys(providers).map((c: string) => {
   chainIdMap[providers[c as keyof typeof providers].chainId] = c;
 });
 
+const hyperlane = async (): Promise<void> => {
+  const bridge = "hyperlane";
+  if (!(bridge in bridgePromises))
+    bridgePromises[bridge] = fetch(
+      "https://raw.githubusercontent.com/Eclipse-Laboratories-Inc/gist/refs/heads/main/hyperlane-assets.json"
+    ).then((r) => r.json());
+  const data = await bridgePromises[bridge];
+  if (doneAdapters.includes(bridge)) return;
+  data.map(({ address }: any) => addresses.eclipse.push(address));
+  doneAdapters.push(bridge);
+};
+
 const axelar = async (): Promise<void> => {
   const bridge = "axelar";
   if (!(bridge in bridgePromises))
@@ -98,7 +110,7 @@ const celer = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
-const adapters = [axelar(), wormhole(), celer()];
+const adapters = [axelar(), wormhole(), celer(), hyperlane()];
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {

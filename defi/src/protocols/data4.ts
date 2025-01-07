@@ -411,5 +411,49 @@ const data4: Protocol[] = [
     },
     listedAt: 1736249628
   },
+  {
+    id: "5596",
+    name: "Neptune",
+    address: null,
+    symbol: "-",
+    url: "https://nep.finance/",
+    description:
+      "The Premier DEX on Swellchain",
+    chain: "Swellchain",
+    logo: `${baseIconsUrl}/neptune.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Swellchain"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "neptune/index.js",
+    twitter: "NepFinance",
+    listedAt: 1736278247
+  },
+  {
+    id: "5597",
+    name: "dappOS",
+    address: null,
+    symbol: "-",
+    url: "https://dappos.com/",
+    description:
+      "dappOS is an intent execution network",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/dappos.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Cross Chain",
+    chains: ["Op_Bnb"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "dappOS_com",  
+    listedAt: 1736278251
+  },
 ];
 export default data4;

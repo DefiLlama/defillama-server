@@ -26716,7 +26716,7 @@ const data2: Protocol[] = [
       "tBTC is Threshold's decentralized and permissionless bridge to bring BTC to the Ethereum network. tBTC has been designed to allow bitcoin holders to participate in Ethereum's Decentralized Finance (DeFi) applications. Users wishing to utilize their bitcoin on Ethereum can use the tBTC decentralized bridge to deposit their bitcoin into the system and get a minted tBTC token in their Ethereum wallet",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/tbtc.png`,
-    audits: "4",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

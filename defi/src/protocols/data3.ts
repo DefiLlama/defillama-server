@@ -59741,7 +59741,7 @@ const data3: Protocol[] = [
     module: "carrot/index.js",
     twitter: "DeFiCarrot",
     forkedFrom: [],
-    oracles: ["Switchboard", "Pyth"],
+    oracles: ["Switchboard", "Pyth"], // https://github.com/DefiLlama/defillama-server/pull/8978
     audit_links: ["https://deficarrot.com/assets/carrot_final_report.pdf"],
     listedAt: 1731107322
   },

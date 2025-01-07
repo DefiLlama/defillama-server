@@ -406,6 +406,9 @@ const data4: Protocol[] = [
     module: "goldstation-dex-v3/index.js",
     twitter: "goldstation_io",
     parentProtocol: "parent#goldstation",
+    tokensExcludedFromParent: {
+      Aptos: ["GPC"],
+    },
     listedAt: 1736249628
   },
 ];

@@ -58062,6 +58062,9 @@ const data3: Protocol[] = [
     module: "goldstation-dex/index.js",
     twitter: "goldstation_io",
     listedAt: 1729647601,
+    tokensExcludedFromParent: {
+      Aptos: ["GPC"],
+    },
     parentProtocol: "parent#goldstation",
   },
   {

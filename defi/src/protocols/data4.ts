@@ -362,5 +362,54 @@ const data4: Protocol[] = [
     github: ["InkySwap"],
     listedAt: 1736202627
   },
+  {
+    id: "5594",
+    name: "MONSTRO",
+    address: null,
+    symbol: "-",
+    url: "https://v2.monstro.fun",
+    description:
+      "Protocol on base chain",
+    chain: "Base",
+    logo: `${baseIconsUrl}/monstro.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "monstro-fun/index.js",
+    treasury: "monstro-fun.js",
+    twitter: "monstrosuni",
+    listedAt: 1736249582
+  },
+  {
+    id: "5595",
+    name: "GOLDSTATION DEX V3",
+    address: null,
+    symbol: "-",
+    url: "https://goldstation.io",
+    description:
+      "Your Gateway to Decentralized Finance with Real Asset Integration",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/goldstation-dex-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "goldstation-dex-v3/index.js",
+    twitter: "goldstation_io",
+    parentProtocol: "parent#goldstation",
+    tokensExcludedFromParent: {
+      Aptos: ["GPC"],
+    },
+    listedAt: 1736249628
+  },
 ];
 export default data4;

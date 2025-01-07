@@ -295,5 +295,9 @@ export default {
     },
     "shadow-exchange": {
         id: "5570",
+    },
+    "holdstation-swap": {
+        parentId: "Holdstation",
+        id: "5493",
     }
 } as AdaptorsConfig

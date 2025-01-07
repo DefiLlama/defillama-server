@@ -61007,7 +61007,7 @@ const data3: Protocol[] = [
     module: "tempest-finance/index.js",
     twitter: "tempest_fi",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["RedStone"],
     audit_links: ["https://github.com/Tempest-Finance/core-public"],
     github: ["Tempest-Finance"],
     listedAt: 1732137329

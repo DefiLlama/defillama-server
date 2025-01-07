@@ -453,7 +453,6 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "dappOS_com",  
-    listedAt: 1736278251
   },
 ];
 export default data4;

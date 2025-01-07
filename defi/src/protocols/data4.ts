@@ -411,5 +411,25 @@ const data4: Protocol[] = [
     },
     listedAt: 1736249628
   },
+    {
+    id: "5595",
+    name: "Lagoon",
+    symbol: "-",
+    url: "https://lagoon.finance",
+    description:
+      "Lagoon is a vault protocol for asset manager. Users can deposit into vaults and enjoy managers strategies.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lagoon.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Base"],
+    module: "lagoon/index.js",
+    language: "Solidity",
+    github: ["hopperlabsxyz"],
+    audit_links: ["https://docs.lagoon.finance/resources/audits"],
+    twitter: "lagoon_finance",
+  },
 ];
 export default data4;

@@ -2297,5 +2297,8 @@ export default {
     },
     "trust-wallet": {
         id: "5577",
+    },
+    "coinbase-wallet": {
+        id: "5587",
     }
 } as AdaptorsConfig

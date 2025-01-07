@@ -5938,6 +5938,11 @@
     }
   },
   "sonic": {
+    "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "scUSD"
+    },
     "0xe715cbA7B5cCb33790ceBFF1436809d36cb17E57": {
       "to": "coingecko#euro-coin",
       "decimals": 6,

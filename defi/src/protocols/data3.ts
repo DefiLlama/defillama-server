@@ -64652,7 +64652,7 @@ const data3: Protocol[] = [
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/Stone%20Bera%20Vault%20-%20SlowMist%20Audit%20Report.pdf",
     ],
     tokensExcludedFromParent:  {
-      Ethereum: ["STONE"],
+      Ethereum: ["STONE", "SBTC"],
     },
     listedAt: 1735149973,
   },

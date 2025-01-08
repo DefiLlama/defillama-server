@@ -1,6 +1,6 @@
 
 import { getTimestampAtStartOfDay } from "../utils/date";
-import { getAccountsDBConnection as getConnection } from "../getDBConnection";
+import { getAccountsDBConnection as getConnection } from "../utils/shared/getDBConnection";
 
 export async function storeUsers(start: number, end: number, protocolId: string, chain: string, users: number) {
   const sql = getConnection()

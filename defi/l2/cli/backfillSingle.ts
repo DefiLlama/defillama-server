@@ -4,7 +4,7 @@ import findTvls from "../tvl";
 import { overwrite, parsePgData } from "../storeToDb";
 import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
 import postgres from "postgres";
-import { queryPostgresWithRetry } from "../layer2pg";
+import { queryPostgresWithRetry } from "../../src/utils/shared/bridgedTvlPostgres";
 import { ChartData } from "../types";
 
 // any mappings for chains in proc() needed??

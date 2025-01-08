@@ -1,12 +1,21 @@
-import { Chain } from "@defillama/sdk/build/general";
-import { TokenInsert } from "./types";
-import sleep from "../src/utils/shared/sleep";
-import { mixedCaseChains } from "./constants";
-import { getCoins2Connection } from "../src/getDBConnection";
+import sleep from "./sleep";
+import { bridgedTvlMixedCaseChains } from "./constants";
+import { getCoins2Connection } from "./getDBConnection";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
+import { Address } from "@defillama/sdk/build/types";
+import { Chain } from "@defillama/sdk/build/general";
+
+export type TokenInsert = {
+  token: Address;
+  chain: Chain;
+};
 
 const maxParams = 10000;
-export async function queryPostgresWithRetry(query: any, sql: any, counter: number = 0): Promise<any> {
+export async function queryPostgresWithRetry(
+  query: any,
+  sql: any,
+  counter: number = 0,
+): Promise<any> {
   try {
     const res = await sql`
         ${query}
@@ -27,7 +36,9 @@ function splitKey(inserts: TokenInsert[], key: string) {
   } else if (!chain) {
     return;
   }
-  const token = mixedCaseChains.includes(chain) ? token1 : token1.toLowerCase();
+  const token = bridgedTvlMixedCaseChains.includes(chain)
+    ? token1
+    : token1.toLowerCase();
   if (!token) return;
   inserts.push({ chain, token });
 }
@@ -50,7 +61,7 @@ export async function storeAllTokens(tokens: string[]) {
       on conflict (chain, token)
       do nothing
     `,
-      sql
+      sql,
     );
   }
 }
@@ -73,7 +84,7 @@ export async function storeNotTokens(tokens: string[]) {
         on conflict (chain, token)
         do nothing
       `,
-      sql
+      sql,
     );
   }
 }
@@ -85,7 +96,7 @@ export async function fetchAllTokens(chain: Chain): Promise<string[]> {
       select token from alltokens
       where chain = ${chain}
     `,
-    sql
+    sql,
   );
 
   return res.map((r: any) => r.token);
@@ -98,7 +109,7 @@ export async function fetchNotTokens(chain: Chain): Promise<string[]> {
       select token from nottokens
       where chain = ${chain}
     `,
-    sql
+    sql,
   );
 
   return res.map((r: any) => r.token);

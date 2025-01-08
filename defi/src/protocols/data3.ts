@@ -58745,7 +58745,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Compound V2"],
     module: "fisclend/index.js",
     twitter: "Fisclend_fi",
-    listedAt: 1730127158
+    listedAt: 1730127158,
+    rugged: true
   },
   {
     id: "5290",

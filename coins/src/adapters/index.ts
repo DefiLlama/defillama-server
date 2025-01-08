@@ -50,7 +50,7 @@ export default {
   alchemix: require("./yield/alchemix"),
   meanFinance: require("./yield/mean-finance"),
   misc4626: require("./yield/misc4626"),
-  spectra: require("./yield/misc4626"),
+  // spectra: require("./yield/misc4626"),
   balancer4626: require("./yield/balancer4626"),
   vesper: require("./yield/vesper"),
   yieldProtocol: require("./yield/yield-protocol"),
@@ -118,4 +118,5 @@ export default {
   pragma: require("./oracles/pragma"),
   parallelProtocol: require("./markets/parallelProtocol"),
   sanctum: require("./solana/sanctum"),
+  spectra: require("./yield/spectra"),
 };

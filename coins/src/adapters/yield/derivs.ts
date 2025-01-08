@@ -278,6 +278,19 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x8457ca5040ad67fdebbcc8edce889a335bc0fbfb",
     address: "0xb6D149C8DdA37aAAa2F8AD0934f2e5682C35890B",
   },
+  LFT: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256) external view returns (uint256)",
+        target: "0x270Ee1564eC483DD83f284E4D7bDFbfaa2feA76E",
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "base",
+    underlying: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    address: "0x8c213ee79581Ff4984583C6a801e5263418C4b86",
+  },
 };
 
 export async function derivs(timestamp: number) {

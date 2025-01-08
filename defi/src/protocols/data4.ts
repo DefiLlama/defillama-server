@@ -428,7 +428,7 @@ const data4: Protocol[] = [
     category: "Dexes",
     chains: ["Swellchain"],
     oracles: [],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["Solidly"],
     module: "neptune/index.js",
     twitter: "NepFinance",
     listedAt: 1736278247

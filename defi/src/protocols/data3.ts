@@ -14713,7 +14713,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: [
-      "https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/f(x)_Protocol_Report_v1.0_2023_06_14.pdf",
+      "https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/SECBIT_f(x)_V2_Report_v1.4_20250107.pdf"
     ],
     stablecoins: ["fractional-eth"],
     listedAt: 1691149929,

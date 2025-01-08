@@ -57159,7 +57159,7 @@ const data3: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum"],
     module: "hyperdrive/index.js",
-    twitter: "delv_tech",
+    twitter: "HyperVueFDN",
     forkedFrom: [],
     oracles: [],
     parentProtocol: "parent#delv",

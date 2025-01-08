@@ -266,6 +266,11 @@
     }
   },
   "ethereum": {
+    "0x9fb7b4477576fe5b32be4c1843afb1e55f251b33": {
+      "decimals": "6",
+      "symbol": "fUSDC",
+      "to": "coingecko#fluid-usdc"
+    },
     "0x7DC9748DA8E762e569F9269f48F69A1a9F8Ea761": {
       "decimals": "6",
       "symbol": "zeUSD",
@@ -672,6 +677,16 @@
     }
   },
   "arbitrum": {
+    "0x1a996cb54bb95462040408c06122d45d6cdb6096": {
+      "decimals": "6",
+      "symbol": "fUSDC",
+      "to": "coingecko#fluid-usdc"
+    },
+    "0x4a03f37e7d3fc243e3f99341d36f4b829bee5e03": {
+      "decimals": "6",
+      "symbol": "fUSDT",
+      "to": "coingecko#fluid-usdc"
+    },
     "0x0C4681e6C0235179ec3D4F4fc4DF3d14FDD96017": {
       "decimals": "18",
       "symbol": "RDNT",
@@ -919,6 +934,11 @@
     }
   },
   "base": {
+    "0x7Ba6F01772924a82D9626c126347A28299E98c98": {
+      "decimals": "18",
+      "symbol": "msETH",
+      "to": "asset#ethereum:0x64351fc9810adad17a690e4e1717df5e7e085160"
+    },
     "0x2D5875ab0eFB999c1f49C798acb9eFbd1cfBF63c": {
       "decimals": "18",
       "symbol": "fsBLP",
@@ -5923,6 +5943,16 @@
     }
   },
   "sonic": {
+    "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "scUSD"
+    },
+    "0xe715cbA7B5cCb33790ceBFF1436809d36cb17E57": {
+      "to": "coingecko#euro-coin",
+      "decimals": 6,
+      "symbol": "EURC.e"
+    },
     "0x50c42dEAcD8Fc9773493ED674b675bE577f2634b": {
       "to": "coingecko#ethereum",
       "decimals": 18,
@@ -6036,7 +6066,7 @@
       "decimals": 18,
       "symbol": "TON"
     },
-    "0x9bfa177621119e64cecbeabe184ab9993e2ef727":{
+    "0x9bfa177621119e64cecbeabe184ab9993e2ef727": {
       "to": "coingecko#bitcoin",
       "decimals": 18,
       "symbol": "MBTC"

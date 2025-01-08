@@ -2300,5 +2300,8 @@ export default {
     },
     "coinbase-wallet": {
         id: "5587",
+    },
+    "dappos-intentEx": {
+        id: "5597",
     }
 } as AdaptorsConfig

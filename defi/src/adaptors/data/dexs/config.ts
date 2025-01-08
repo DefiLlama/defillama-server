@@ -2678,5 +2678,8 @@ export default {
     },
     "rabbitswap-v3": {
         id: "5298"
+    },
+    "dappos-intentEx": {
+        id: "5597",
     }
 } as AdaptorsConfig

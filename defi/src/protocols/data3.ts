@@ -15632,7 +15632,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Chainlink"],
     audit_links: ["https://dev-docs.pwn.xyz/more-documentation/audits"],
-    github: ["PWNFinance"],
+    github: ["PWNFinance","PWNDAO"],
     listedAt: 1692012713,
   },
   {

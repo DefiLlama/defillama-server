@@ -1,7 +1,8 @@
 import BigNumber from "bignumber.js";
 import { AllProtocols, CoinsApiData, McapsApiData, TokenTvlData } from "./types";
-import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, mixedCaseChains, zero } from "./constants";
+import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, zero } from "./constants";
 import fetch from "node-fetch";
+import { bridgedTvlMixedCaseChains } from "../src/utils/shared/constants";
 import sleep from "../src/utils/shared/sleep";
 import { call, multiCall } from "@defillama/sdk/build/abi/abi2";
 import { Address } from "@defillama/sdk/build/types";
@@ -9,14 +10,13 @@ import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
-import { storeNotTokens } from "./layer2pg";
+import { storeNotTokens } from "../src/utils/shared/bridgedTvlPostgres";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { Connection, PublicKey } from "@solana/web3.js";
 import * as sdk from "@defillama/sdk";
 import { struct, u64 } from "../DefiLlama-Adapters/projects/helper/utils/solana/layouts/layout-base.js";
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 
-type CachedSupplies = { timestamp: number; data: { [token: string]: number } };
 export function aggregateChainTokenBalances(usdTokenBalances: AllProtocols): TokenTvlData {
   const chainUsdTokenTvls: TokenTvlData = {};
 
@@ -200,21 +200,29 @@ async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{
 
 let connection: any = {};
 
-const endpoint = (isClient = false) => {
-  if (isClient) return process.env.SOLANA_RPC_CLIENT ?? process.env.SOLANA_RPC;
+const renecEndpoint = () => process.env.RENEC_RPC;
+const eclipseEndpoint = () => process.env.ECLIPSE_RPC ?? "https://eclipse.helius-rpc.com";
+const solEndpoint = (isClient: boolean) => {
+  if (isClient) return process.env.SOLANA_RPC_CLIENT ?? process.env.SOLANA_RPC ?? "https://rpc.ankr.com/solana";
   return process.env.SOLANA_RPC;
 };
 
 const endpointMap: any = {
-  solana: endpoint,
+  solana: solEndpoint,
+  renec: renecEndpoint,
+  eclipse: eclipseEndpoint,
 };
 
 function getConnection(chain = "solana") {
   if (!connection[chain]) connection[chain] = new Connection(endpointMap[chain](true));
   return connection[chain];
 }
-async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
-  if (timestamp) throw new Error(`timestamp incompatible with Solana adapter!`);
+async function getSolanaTokenSupply(
+  tokens: string[],
+  chain: string,
+  timestamp?: number
+): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with ${chain} adapter!`);
 
   const solanaMintLayout = struct([u64("supply")]);
 
@@ -228,7 +236,7 @@ async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promi
       filteredTokens.push(i);
     } catch (e) {}
   });
-  const connection = getConnection("solana");
+  const connection = getConnection(chain);
   const res = await runInChunks(tokensPK, (chunk: any) => connection.getMultipleAccountsInfo(chunk), { sleepTime });
   const supplies: { [token: string]: number } = {};
 
@@ -240,7 +248,7 @@ async function getSolanaTokenSupply(tokens: string[], timestamp?: number): Promi
     try {
       const buffer = data.data.slice(36, 44);
       const supply = solanaMintLayout.decode(buffer).supply.toString();
-      supplies["solana:" + filteredTokens[idx]] = supply;
+      supplies[`${chain}:` + filteredTokens[idx]] = supply;
     } catch (e) {
       sdk.log(`Error decoding account: ${filteredTokens[idx]}`);
     }
@@ -318,7 +326,7 @@ async function getEVMSupplies(
         block: block.block,
       });
       contracts.slice(i, i + step).map((c: Address, i: number) => {
-        if (res[i]) supplies[`${chain}:${mixedCaseChains.includes(chain) ? c : c.toLowerCase()}`] = res[i];
+        if (res[i]) supplies[`${chain}:${bridgedTvlMixedCaseChains.includes(chain) ? c : c.toLowerCase()}`] = res[i];
       });
     } catch {
       try {
@@ -335,7 +343,8 @@ async function getEVMSupplies(
               await sleep(2000);
               if (chain == "tron") console.log(`${target}:: \t ${e.message}`);
             });
-            if (res) supplies[`${chain}:${mixedCaseChains.includes(chain) ? target : target.toLowerCase()}`] = res;
+            if (res)
+              supplies[`${chain}:${bridgedTvlMixedCaseChains.includes(chain) ? target : target.toLowerCase()}`] = res;
           });
       } catch (e) {
         if (chain == "tron") console.log(`tron supply call failed`);
@@ -360,7 +369,7 @@ export async function fetchSupplies(
     const tokens = filterForNotTokens(contracts, notTokens);
     if (chain == "osmosis") return await getOsmosisSupplies(tokens, timestamp);
     if (chain == "aptos") return await getAptosSupplies(tokens, timestamp);
-    if (chain == "solana") return await getSolanaTokenSupply(tokens, timestamp);
+    if (Object.keys(endpointMap).includes(chain)) return await getSolanaTokenSupply(tokens, chain, timestamp);
     if (chain == "sui") return await getSuiSupplies(tokens, timestamp);
     return await getEVMSupplies(chain, tokens, timestamp);
   } catch (e) {
@@ -374,11 +383,11 @@ export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
     tokens.push(...((await fetchThirdPartyTokenList())[chain] ?? []));
     let filteredTokens: Address[] =
       chain in excluded ? tokens.filter((t: string) => !excluded[chain].includes(t)) : tokens;
-    if (!mixedCaseChains.includes(chain)) filteredTokens = filteredTokens.map((t: string) => t.toLowerCase());
+    if (!bridgedTvlMixedCaseChains.includes(chain)) filteredTokens = filteredTokens.map((t: string) => t.toLowerCase());
 
     if (!(chain in additional)) return filteredTokens;
 
-    const additionalTokens = mixedCaseChains.includes(chain)
+    const additionalTokens = bridgedTvlMixedCaseChains.includes(chain)
       ? additional[chain]
       : additional[chain].map((t: string) => t.toLowerCase());
 

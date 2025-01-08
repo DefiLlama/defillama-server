@@ -59,7 +59,7 @@ async function run() {
 
   // store what all metrics are available for each protocol
   const protocolSummaryMetadata: { [key: string]: Set<string> } = {}
-  
+
   Object.keys(allCache).forEach((key) => {
 
     const { protocolSummaries = {}, parentProtocolSummaries = {} } = allCache[key]
@@ -211,7 +211,7 @@ async function run() {
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = (info.chains ?? []).map(getDisplayChainNameCached)
-      protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
+      protocol.info.defillamaId = protocol.info.protocolType === ProtocolType.CHAIN ? `chain#${protocol.info.defillamaId ?? info.id}` : protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
       const protocolTypeRecords = protocolRecordData[dimensionProtocolId]?.records ?? {}
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}

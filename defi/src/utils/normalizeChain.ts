@@ -34,7 +34,7 @@ export function normalizeChain(chain: string) {
 
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager", "Managed Token Pools","Treasury Manager"].includes(category??"none");
+  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager", "Managed Token Pools","Treasury Manager","Anchor BTC"].includes(category??"none");
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -3636,6 +3636,40 @@ export const chainCoingeckoIds = {
     url: "https://app.pryzm.zone",
     github: ["pryzm-finance"],
   },
+  "CrossFi": {
+    geckoId: "crossfi-2",
+    symbol: "XFI",
+    cmcId: "26202",
+    categories: ["EVM", "Cosmos"],
+    twitter: "crossfichain",
+    url: "https://crossfi.org/",
+    chainId: 4158
+  },
+  "Waterfall": {
+    geckoId: "water-3",
+    symbol: "WATER",
+    cmcId: "32282",
+    categories: ["EVM"],
+    twitter: "waterfall_dag",
+    url: "https://waterfall.network/",
+    chainId: 181
+  },
+  "Mantra": {
+    geckoId: "mantra-dao",
+    symbol: "OM",
+    cmcId: "6536",
+    categories: ["Cosmos"],
+    twitter: "MANTRA_Chain",
+    url: "https://www.mantrachain.io/",
+  },
+  "Verus": {
+    geckoId: "verus-coin",
+    symbol: "VRSC",
+    cmcId: "5049",
+    twitter: "VerusCoin",
+    url: "https://verus.io/",
+    github: ["VerusCoin"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -3800,7 +3834,9 @@ const chainLabelMap = {
   "aelf": "aelf",
   "hela": "HeLa",
   "duckchain": "DuckChain",
-  "qom": "QL1"
+  "qom": "QL1",
+  "crossfi": "CrossFi",
+  "water": "Waterfall"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

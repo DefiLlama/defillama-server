@@ -1,7 +1,8 @@
 import { baseIconsUrl } from "../constants";
-import type { Protocol } from "./types";
 import data2 from "./data2";
 import data3 from "./data3";
+import data4 from "./data4";
+import type { Protocol } from "./types";
 
 export type { Protocol };
 /* Audits: Please follow this legend
@@ -3459,6 +3460,7 @@ const data: Protocol[] = [
     audit_links: [],
     deadUrl: true,
   },
+  /*
   {
     id: "268",
     name: "UniTrade",
@@ -3480,6 +3482,7 @@ const data: Protocol[] = [
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20%20Unitrade%20%5B06.10.2020%5D.pdf",
     ],
   },
+  */
   {
     id: "269",
     name: "YFII",
@@ -4833,7 +4836,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "money-on-chain",
     cmcId: null,
-    category: "Decentralized Stablecoin",
+    category: "Partially Algorithmic Stablecoin",
     chains: ["RSK"],
     module: "moneyonchain.js",
     twitter: "moneyonchainok",
@@ -19110,7 +19113,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/yokaiswap.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "yokaiswap",
     cmcId: null,
     category: "Dexes",
     chains: ["Godwoken", "GodwokenV1"],
@@ -27280,7 +27283,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
 ];
 
-const protocols = data.concat(data2, data3);
+const protocols = data.concat(data2, data3, data4);
 
 export default protocols;
 

@@ -1,11 +1,11 @@
-import protocols from "./data";
-import treasuries  from "./treasury";
+import dimensionConfigs from "../adaptors/data/configs";
 import { baseIconsUrl } from "../constants";
-import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
-import parentProtocols from "./parentProtocols";
 import emissionsAdapters from "../utils/imports/emissions_adapters";
 import { importAdapter, importAdapterDynamic } from "../utils/imports/importAdapter";
-import dimensionConfigs from "../adaptors/data/configs";
+import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
+import protocols from "./data";
+import parentProtocols from "./parentProtocols";
+import treasuries from "./treasury";
 const fs = require("fs");
 
 test("Dimensions: no repeated ids", async () => {
@@ -220,7 +220,7 @@ test("no surprise category", async () => {
     'Options Vault',
     'Liquidity manager',
     'Staking Pool',
-    'Decentralized Stablecoin',
+    'Partially Algorithmic Stablecoin',
     'SoFi',
     'DEX Aggregator',
     'Liquid Restaking',
@@ -257,7 +257,8 @@ test("no surprise category", async () => {
     'Liquidations',
     'Portfolio Tracker',
     'Liquidity Automation',
-    'Fundraising'
+    'Charity Fundraising',
+    'Volume Boosting'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

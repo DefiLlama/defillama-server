@@ -8,7 +8,6 @@ export const excludedTvlKeys = ["PK", "SK", "tvl"];
 
 export const geckoSymbols = cgSymbols as { [key: string]: string };
 
-export const mixedCaseChains: string[] = ["solana", "tron", "sui", "aptos"];
 export const chainsWithoutCanonicalBridges: string[] = [
   "cronos",
   "kava",
@@ -92,7 +91,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5552": "cronos_zkevm",
   "5564": "eclipse",
   "5565": "shape",
-  "5566": "zora"
+  "5566": "zora",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

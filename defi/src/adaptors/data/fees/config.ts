@@ -2288,5 +2288,23 @@ export default {
     },
     "rabbitswap-v3": {
         id: "5298"
+    },
+    "satoshi-perps": {
+        id: "5571",
+    },
+    "virtual-protocol": {
+        id: "5575",
+    },
+    "trust-wallet": {
+        id: "5577",
+    },
+    "coinbase-wallet": {
+        id: "5587",
+    },
+    "dappos-intentEx": {
+        id: "5597",
+    },
+    "volboost": {
+        id: "5598",
     }
 } as AdaptorsConfig

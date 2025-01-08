@@ -175,9 +175,8 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
                 adaptorRecords.push(data)
                 cleanRecords.cleanRecordsMap[i] = data
             }
-
         return {
-            defillamaId: adapter.defillamaId,
+            defillamaId: adapter.protocolType === ProtocolType.CHAIN ? `chain#${adapter.defillamaId}` : adapter.defillamaId,
             name: adapter.name,
             slug: adapter.name.split(" ").join("-").toLowerCase(),
             disabled: adapter.disabled,
@@ -227,7 +226,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
         // TODO: handle better errors
         if (onError) onError(error as Error)
         return {
-            defillamaId: adapter.id,
+            defillamaId: adapter.protocolType === ProtocolType.CHAIN ? `chain#${adapter.id}` : adapter.id,
             name: adapter.name,
             slug: adapter.name.split(" ").join("-").toLowerCase(),
             module: adapter.module,

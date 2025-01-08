@@ -3662,6 +3662,14 @@ export const chainCoingeckoIds = {
     twitter: "MANTRA_Chain",
     url: "https://www.mantrachain.io/",
   },
+  "Verus": {
+    geckoId: "verus-coin",
+    symbol: "VRSC",
+    cmcId: "5049",
+    twitter: "VerusCoin",
+    url: "https://verus.io/",
+    github: ["VerusCoin"],
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

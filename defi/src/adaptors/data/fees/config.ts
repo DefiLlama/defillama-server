@@ -2306,5 +2306,8 @@ export default {
     },
     "volboost": {
         id: "5598",
+    },
+    "creator-bid": {
+        id: "5600",
     }
 } as AdaptorsConfig

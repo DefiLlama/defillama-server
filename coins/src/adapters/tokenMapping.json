@@ -1530,6 +1530,11 @@
     }
   },
   "solana": {
+    "EcyEx8hGsDBHCNkHupvbfZTTtNRbAiXPkmcceNtWGWdt": {
+      "decimals": "9",
+      "symbol": "sUSDe",
+      "to": "coingecko#ethena-staked-usde"
+    },
     "Eh6XEPhSwoLv5wFApukmnaVSHQ6sAnoD9BmgmwQoN2sN": {
       "decimals": "9",
       "symbol": "sUSDe",

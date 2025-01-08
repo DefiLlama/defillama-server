@@ -53341,7 +53341,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5050",
-    name: "DeltaTrade",
+    name: "Delta Trade",
     address: null,
     symbol: "-",
     url: "https://www.deltatrade.ai",

@@ -2303,5 +2303,8 @@ export default {
     },
     "dappos-intentEx": {
         id: "5597",
+    },
+    "volboost": {
+        id: "5598",
     }
 } as AdaptorsConfig

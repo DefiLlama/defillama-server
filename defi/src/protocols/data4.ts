@@ -454,5 +454,26 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "dappOS_com",  
   },
+  {
+    id: "5598",
+    name: "VolBoost",
+    address: null,
+    symbol: "-",
+    url: "https://volboost.com/",
+    description:
+      "Boost your token's volume, liquidity and visibility in one click",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/volboost.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Volume Boosting",
+    chains: ["Ethereum","Base","Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "volboost",  
+  },
 ];
 export default data4;

@@ -435,14 +435,14 @@ const data4: Protocol[] = [
   },
   {
     id: "5597",
-    name: "dappOS",
+    name: "dappOS IntentEX", // previous dappOS 
     address: null,
     symbol: "-",
     url: "https://dappos.com/",
     description:
       "dappOS is an intent execution network",
     chain: "Op_Bnb",
-    logo: `${baseIconsUrl}/dappos.jpg`,
+    logo: `${baseIconsUrl}/dappos-intentex.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

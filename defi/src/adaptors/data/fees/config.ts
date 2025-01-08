@@ -2300,5 +2300,14 @@ export default {
     },
     "coinbase-wallet": {
         id: "5587",
+    },
+    "dappos-intentEx": {
+        id: "5597",
+    },
+    "volboost": {
+        id: "5598",
+    },
+    "creator-bid": {
+        id: "5600",
     }
 } as AdaptorsConfig

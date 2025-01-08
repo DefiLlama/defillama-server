@@ -17,7 +17,7 @@ import BigNumber from "bignumber.js";
 import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
-import { storeAllTokens } from "../../l2/layer2pg";
+import { storeAllTokens } from "../../src/utils/shared/bridgedTvlPostgres";
 import { elastic } from '@defillama/sdk';
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){

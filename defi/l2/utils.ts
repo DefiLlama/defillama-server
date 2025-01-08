@@ -1,7 +1,8 @@
 import BigNumber from "bignumber.js";
 import { AllProtocols, CoinsApiData, McapsApiData, TokenTvlData } from "./types";
-import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, mixedCaseChains, zero } from "./constants";
+import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, zero } from "./constants";
 import fetch from "node-fetch";
+import { bridgedTvlMixedCaseChains } from "../src/utils/shared/constants";
 import sleep from "../src/utils/shared/sleep";
 import { call, multiCall } from "@defillama/sdk/build/abi/abi2";
 import { Address } from "@defillama/sdk/build/types";
@@ -9,7 +10,7 @@ import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
 import { Chain } from "@defillama/sdk/build/general";
 import PromisePool from "@supercharge/promise-pool";
-import { storeNotTokens } from "./layer2pg";
+import { storeNotTokens } from "../src/utils/shared/bridgedTvlPostgres";
 import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { Connection, PublicKey } from "@solana/web3.js";
 import * as sdk from "@defillama/sdk";
@@ -325,7 +326,7 @@ async function getEVMSupplies(
         block: block.block,
       });
       contracts.slice(i, i + step).map((c: Address, i: number) => {
-        if (res[i]) supplies[`${chain}:${mixedCaseChains.includes(chain) ? c : c.toLowerCase()}`] = res[i];
+        if (res[i]) supplies[`${chain}:${bridgedTvlMixedCaseChains.includes(chain) ? c : c.toLowerCase()}`] = res[i];
       });
     } catch {
       try {
@@ -342,7 +343,8 @@ async function getEVMSupplies(
               await sleep(2000);
               if (chain == "tron") console.log(`${target}:: \t ${e.message}`);
             });
-            if (res) supplies[`${chain}:${mixedCaseChains.includes(chain) ? target : target.toLowerCase()}`] = res;
+            if (res)
+              supplies[`${chain}:${bridgedTvlMixedCaseChains.includes(chain) ? target : target.toLowerCase()}`] = res;
           });
       } catch (e) {
         if (chain == "tron") console.log(`tron supply call failed`);
@@ -381,11 +383,11 @@ export async function fetchBridgeTokenList(chain: Chain): Promise<Address[]> {
     tokens.push(...((await fetchThirdPartyTokenList())[chain] ?? []));
     let filteredTokens: Address[] =
       chain in excluded ? tokens.filter((t: string) => !excluded[chain].includes(t)) : tokens;
-    if (!mixedCaseChains.includes(chain)) filteredTokens = filteredTokens.map((t: string) => t.toLowerCase());
+    if (!bridgedTvlMixedCaseChains.includes(chain)) filteredTokens = filteredTokens.map((t: string) => t.toLowerCase());
 
     if (!(chain in additional)) return filteredTokens;
 
-    const additionalTokens = mixedCaseChains.includes(chain)
+    const additionalTokens = bridgedTvlMixedCaseChains.includes(chain)
       ? additional[chain]
       : additional[chain].map((t: string) => t.toLowerCase());
 

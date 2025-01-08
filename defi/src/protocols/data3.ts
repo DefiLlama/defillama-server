@@ -14713,7 +14713,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: [
-      "https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/f(x)_Protocol_Report_v1.0_2023_06_14.pdf",
+      "https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/SECBIT_f(x)_V2_Report_v1.4_20250107.pdf"
     ],
     stablecoins: ["fractional-eth"],
     listedAt: 1691149929,
@@ -15632,7 +15632,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Chainlink"],
     audit_links: ["https://dev-docs.pwn.xyz/more-documentation/audits"],
-    github: ["PWNFinance"],
+    github: ["PWNFinance","PWNDAO"],
     listedAt: 1692012713,
   },
   {
@@ -57159,7 +57159,7 @@ const data3: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum"],
     module: "hyperdrive/index.js",
-    twitter: "delv_tech",
+    twitter: "HyperVueFDN",
     forkedFrom: [],
     oracles: [],
     parentProtocol: "parent#delv",
@@ -58063,7 +58063,7 @@ const data3: Protocol[] = [
     twitter: "goldstation_io",
     listedAt: 1729647601,
     tokensExcludedFromParent: {
-      Aptos: ["GPC"],
+      Klaytn: ["GPC"],
     },
     parentProtocol: "parent#goldstation",
   },
@@ -58745,7 +58745,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Compound V2"],
     module: "fisclend/index.js",
     twitter: "Fisclend_fi",
-    listedAt: 1730127158
+    listedAt: 1730127158,
+    rugged: true
   },
   {
     id: "5290",
@@ -59741,7 +59742,7 @@ const data3: Protocol[] = [
     module: "carrot/index.js",
     twitter: "DeFiCarrot",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Switchboard", "Pyth"], // https://github.com/DefiLlama/defillama-server/pull/8978
     audit_links: ["https://deficarrot.com/assets/carrot_final_report.pdf"],
     listedAt: 1731107322
   },
@@ -61007,7 +61008,7 @@ const data3: Protocol[] = [
     module: "tempest-finance/index.js",
     twitter: "tempest_fi",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["RedStone"], // https://tempestfinance.gitbook.io/tempest-finance-docs/introduction/faq
     audit_links: ["https://github.com/Tempest-Finance/core-public"],
     github: ["Tempest-Finance"],
     listedAt: 1732137329
@@ -64652,7 +64653,7 @@ const data3: Protocol[] = [
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/Stone%20Bera%20Vault%20-%20SlowMist%20Audit%20Report.pdf",
     ],
     tokensExcludedFromParent:  {
-      Ethereum: ["STONE"],
+      Ethereum: ["STONE", "SBTC"],
     },
     listedAt: 1735149973,
   },

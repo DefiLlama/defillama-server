@@ -26,7 +26,7 @@ export default async function (balances: { [address: string]: string }, timestam
         prefix = "coingecko:"
       }
       let normalizedAddress = address.toLowerCase()
-      if (address.startsWith("solana:")) {
+      if (address.startsWith("solana:") || address.startsWith('eclipse')) {
         normalizedAddress = address
       }
       const PK = `${prefix}${normalizedAddress}`;

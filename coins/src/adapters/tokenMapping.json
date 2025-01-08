@@ -934,6 +934,11 @@
     }
   },
   "base": {
+    "0x7Ba6F01772924a82D9626c126347A28299E98c98": {
+      "decimals": "18",
+      "symbol": "msETH",
+      "to": "asset#ethereum:0x64351fc9810adad17a690e4e1717df5e7e085160"
+    },
     "0x2D5875ab0eFB999c1f49C798acb9eFbd1cfBF63c": {
       "decimals": "18",
       "symbol": "fsBLP",

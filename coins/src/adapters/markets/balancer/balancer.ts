@@ -13,17 +13,21 @@ import { Result } from "../../utils/sdkInterfaces";
 import { DbTokenInfos } from "../../utils/dbInterfaces";
 import { nullAddress } from "../../../utils/shared/constants";
 
-const vault: string = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
+const vaults: { [chain: string]: string } = {
+  sonic: "0xBA12222222228d8Ba445958a75a0704d566BF2C8",
+  optimism: "0xBA12222222228d8Ba445958a75a0704d566BF2C8",
+  fantom: "0x20dd72Ed959b6147912C2e529F0a0C651c33c9ce",
+};
 const subgraphNames: { [chain: string]: string } = {
-  ethereum: sdk.graph.modifyEndpoint("C4ayEZP2yTXRAB8vSaTrgN4m9anTe9Mdm2ViyiAuV9TV",),
-  xdai: sdk.graph.modifyEndpoint("EJezH1Cp31QkKPaBDerhVPRWsKVZLrDfzjrLqpmv6cGg",),
-  arbitrum: sdk.graph.modifyEndpoint("itkjv6Vdh22HtNEPQuk5c9M3T7VeGLQtXxcH8rFi1vc",),
-  polygon: sdk.graph.modifyEndpoint("78nZMyM9yD77KG6pFaYap31kJvj8eUWLEntbiVzh8ZKN",),
-  optimism: sdk.graph.modifyEndpoint("FsmdxmvBJLGjUQPxKMRtcWKzuCNpomKuMTbSbtRtggZ7",),
-  avax: sdk.graph.modifyEndpoint("7asfmtQA1KYu6CP7YVm5kv4bGxVyfAHEiptt2HMFgkHu",),
-  base: sdk.graph.modifyEndpoint("98cQDy6tufTJtshDCuhh9z2kWXsQWBHVh2bqnLHsGAeS",),
-  polygon_zkevm: "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
-  fraxtal: 'https://api.goldsky.com/api/public/project_clwhu1vopoigi01wmbn514m1z/subgraphs/balancer-fraxtal-v2/1.0.0/gn',
+  optimism: sdk.graph.modifyEndpoint(
+    "FsmdxmvBJLGjUQPxKMRtcWKzuCNpomKuMTbSbtRtggZ7",
+  ),
+  sonic: sdk.graph.modifyEndpoint(
+    "wwazpiPPt5oJMiTNnQ2VjVxKnKakGDuE2FfEZPD4TKj",
+  ),
+  fantom: sdk.graph.modifyEndpoint(
+    "CcWtE5UMUaoKTRu8LWjzambKJtgUVjcN31pD5BdffVzK",
+  ),
 };
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
@@ -57,7 +61,9 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
     query {
       pools (first: 1000, orderBy: totalLiquidity, orderDirection: desc,
           where: {
-          ${i == 0 ? `` : `totalLiquidity_lt: ${reservereThreshold.toFixed(4)}`} 
+          ${
+            i == 0 ? `` : `totalLiquidity_lt: ${reservereThreshold.toFixed(4)}`
+          } 
           totalLiquidity_gt: 10000
           ${timestamp == 0 ? `` : `createTime_lt: ${timestamp.toString()}`}
           }) {
@@ -71,7 +77,9 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
     addresses.push(...result.map((p: any) => p.id));
 
     if (result.length < 1000) return addresses;
-    reservereThreshold = Number(result[Math.max(result.length - 1, 0)].totalLiquidity);
+    reservereThreshold = Number(
+      result[Math.max(result.length - 1, 0)].totalLiquidity,
+    );
   }
   return addresses;
 }
@@ -84,7 +92,7 @@ async function getPoolTokens(
     await multiCall({
       abi: abi.getPoolTokens,
       calls: poolIds.map((p: string) => ({
-        target: vault,
+        target: vaults[chain],
         params: p,
       })),
       chain,
@@ -126,7 +134,7 @@ async function getPoolValues(
         return;
       }
 
-      const tData = coinsData[t.toLowerCase()]
+      const tData = coinsData[t.toLowerCase()];
       if (tData == undefined) {
         poolTokenValues[i].push(-1);
         return;

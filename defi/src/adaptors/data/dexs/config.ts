@@ -2681,5 +2681,8 @@ export default {
     },
     "dappos-intentEx": {
         id: "5597",
+    },
+    "mento": {
+        id: "504",
     }
 } as AdaptorsConfig

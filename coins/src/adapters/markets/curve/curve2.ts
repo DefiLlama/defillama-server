@@ -10,8 +10,7 @@ import { ChainApi } from "@defillama/sdk";
 import { getCache, setCache } from "../../../utils/cache";
 import { PromisePool } from "@supercharge/promise-pool";
 import * as sdk from '@defillama/sdk'
-
-const nullAddress = "0x0000000000000000000000000000000000000000"
+import { nullAddress } from "../../../utils/shared/constants";
 
 async function getPools(
   api: ChainApi,

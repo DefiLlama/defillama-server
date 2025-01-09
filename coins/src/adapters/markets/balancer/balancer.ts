@@ -11,9 +11,9 @@ import abi from "./abi.json";
 import { getTokenInfo } from "../../utils/erc20";
 import { Result } from "../../utils/sdkInterfaces";
 import { DbTokenInfos } from "../../utils/dbInterfaces";
+import { nullAddress } from "../../../utils/shared/constants";
 
 const vault: string = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
-const nullAddress: string = "0x0000000000000000000000000000000000000000";
 const subgraphNames: { [chain: string]: string } = {
   ethereum: sdk.graph.modifyEndpoint("C4ayEZP2yTXRAB8vSaTrgN4m9anTe9Mdm2ViyiAuV9TV",),
   xdai: sdk.graph.modifyEndpoint("EJezH1Cp31QkKPaBDerhVPRWsKVZLrDfzjrLqpmv6cGg",),

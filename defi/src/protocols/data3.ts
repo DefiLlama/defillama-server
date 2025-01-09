@@ -6681,12 +6681,12 @@ const data3: Protocol[] = [
     module: "gravita-protocol/index.js",
     twitter: "gravitaprotocol",
     oraclesByChain: {
-      ethereum: ["RedStone"], // https://github.com/DefiLlama/defillama-server/pull/5898
+      ethereum: ["Chainlink"], //https://docs.gravitaprotocol.com/gravita-docs/how-does-gravita-work/oracles
       arbitrum: ["Chainlink"],
       era: ["Chainlink"],
       linea: ["Chainlink"],
       mantle: ["API3"],
-      polygon_zkevm: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5829
+      polygon_zkevm: ["Chainlink"], // https://docs.gravitaprotocol.com/gravita-docs/how-does-gravita-work/oracles
       optimism: ["Chainlink"],
     },
     forkedFrom: ["Liquity"],
@@ -8664,8 +8664,7 @@ const data3: Protocol[] = [
     module: "zklend/index.js",
     twitter: "zkLend",
     forkedFrom: [],
-    oracles: ["Pragma"],
-    parentProtocol: "parent#zklend-finance",
+    oracles: ["Chainlink"], // Primary Oracle is Chainlink: https://zklend.gitbook.io/documentation/using-zklend/technical/oracles
     listedAt: 1686175395,
   },
   {
@@ -12359,9 +12358,10 @@ const data3: Protocol[] = [
     twitter: "zerolendxyz",
     oraclesByChain: {
       blast: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
-      linea: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
+      base: ["Chainlink"], //https://docs.zerolend.xyz/security/oracles/chainlink
+      linea: ["Chainlink"], //https://docs.zerolend.xyz/security/oracles/chainlink
       manta: ["RedStone"], //https://docs.zerolend.xyz/security/oracles/using-redstone-oracles
-      ethereum: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
+      ethereum: ["Chainlink"], // https://docs.zerolend.xyz/security/oracles/chainlink
       era: ["Pyth"], //https://docs.zerolend.xyz/security/oracles#using-pyth-oracles
       zircuit: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
       xlayer: ["API3"], // https://docs.zerolend.xyz/security/oracles#oracles-operated-by-api3
@@ -21674,7 +21674,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Starknet"],
-    oracles: ["Pragma"], // https://docs.nostra.finance/lend/deployed-contracts/lend-mainnet
+    oracles: ["Chainlink"], // https://docs.nostra.finance/lend-and-borrow/oracles
     forkedFrom: [],
     module: "nostra-alpha/index.js",
     twitter: "nostrafinance",

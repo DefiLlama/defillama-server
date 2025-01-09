@@ -15293,7 +15293,9 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Binance"],
-    oracles: ["RedStone"], // https://github.com/DefiLlama/defillama-server/pull/8309
+    // oracle dev docs: https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle#intro-of-resilient-oracle
+    // announcement: https://medium.com/listadao/lista-dao-upgrades-from-redstone-to-the-chainlink-standard-for-verifiable-market-data-d9988f94109d
+    oracles: ["Chainlink"],
     forkedFrom: ["MakerDAO"],
     module: "helio-money/index.js",
     twitter: "LISTA_DAO",

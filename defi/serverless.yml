@@ -668,6 +668,8 @@ functions:
     memorySize: 512
     events:
       - schedule: cron(30 * * * ? *)
+    environment:
+      SEARCH_MASTER_KEY: ${env:SEARCH_MASTER_KEY}
  # missedUpdates:
   #   handler: src/stats/getMissedUpdates.default
   #   timeout: 30

@@ -525,7 +525,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://eth.verusbridge.io/",
     description:
-      "Dexes on Verus chain",
+      "Dex on Verus chain",
     chain: "Verus",
     logo: `${baseIconsUrl}/verus-market.jpg`,
     audits: "0",

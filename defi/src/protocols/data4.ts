@@ -654,5 +654,49 @@ const data4: Protocol[] = [
     github: ["WavesBridge"],
     listedAt: 1736387607
   },
+  {
+    id: "5607",
+    name: "Marlin Protocol",
+    address: "arbitrum:0xdA0a57B710768ae17941a9Fa33f8B720c8bD9ddD",
+    symbol: "POND",
+    url: "https://marlinprotocol.fi/relay/operator",
+    description:
+      "TEE coprocessors for decentralized AI",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/marlin-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "marlin",
+    cmcId: "7497",
+    category: "Farm",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "marlinprotocol/index.js",
+    twitter: "MarlinProtocol",
+    listedAt: 1736432811
+  },
+  {
+    id: "5608",
+    name: "Navigator",
+    address: "sonic:0x6881B80ea7C858E4aEEf63893e18a8A36f3682f3",
+    symbol: "NAVI",
+    url: "https://www.navigator.exchange/",
+    description:
+      "Decentralized Liquidity Marketplace. Effortless trading, continuous liquidity. Across Crypto, Forex, and beyond",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/navigator.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "navi-2",
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Sonic"],
+    oracles: ["Pyth"], // https://sonicscan.org/address/0xe9263682e837efabb145f8c632b9d2c518d90652#code
+    forkedFrom: ["GMX V1"],
+    module: "navigator/index.js",
+    twitter: "NaviExSonic",
+    listedAt: 1736432817
+  },
 ];
 export default data4;

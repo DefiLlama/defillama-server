@@ -5953,6 +5953,11 @@
       "decimals": 6,
       "symbol": "scUSD"
     },
+    "0x3bcE5CB273F0F148010BbEa2470e7b5df84C7812": {
+      "to": "coingecko#weth",
+      "decimals": 18,
+      "symbol": "scETH"
+    },
     "0xe715cbA7B5cCb33790ceBFF1436809d36cb17E57": {
       "to": "coingecko#euro-coin",
       "decimals": 6,

@@ -64699,7 +64699,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://skynet.certik.com/projects/PRYZM"],
-    parentProtocol: "parent#pryzm-protocol",
+    parentProtocol: "parent#pryzm",
     listedAt: 1735228524
   },
   {

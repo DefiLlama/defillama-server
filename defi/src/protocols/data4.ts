@@ -727,7 +727,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://cvex.xyz/",
     description:
-      "Ultimate (or Decentralised) platform for crypto futures and options trading. Enjoy low fees, efficient risk management, and the freedom to trade directly from your wallet. Built for power and designed for simplicity, CVEX is your gateway to smarter trading",
+      "Decentralized platform for crypto futures and options trading. Enjoy low fees, efficient risk management, multichain support with no KYC required, and trade seamlessly using just USDC. Built for power and simplicity, CVEX is your gateway to smarter trading",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/crypto-valley-exchange.png`,
     audits: "0",

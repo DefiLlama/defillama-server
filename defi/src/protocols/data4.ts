@@ -693,10 +693,54 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Sonic"],
     oracles: ["Pyth"], // https://sonicscan.org/address/0xe9263682e837efabb145f8c632b9d2c518d90652#code
-    forkedFrom: ["GMX V1"],
+    forkedFrom: [],
     module: "navigator/index.js",
     twitter: "NaviExSonic",
     listedAt: 1736432817
+  },
+  {
+    id: "5609",
+    name: "Sophon Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://sophon.xyz/",
+    description:
+      "Sophon is a ZK chain",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sophon.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "sophon/index.js",
+    twitter: "sophon",
+    listedAt: 1736469229
+  },
+  {
+    id: "5610",
+    name: "Crypto Valley Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://cvex.xyz/",
+    description:
+      "Ultimate (or Decentralised) platform for crypto futures and options trading. Enjoy low fees, efficient risk management, and the freedom to trade directly from your wallet. Built for power and designed for simplicity, CVEX is your gateway to smarter trading",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/crypto-valley-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: ["Internal"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13046
+    forkedFrom: [],
+    module: "cvex/index.js",
+    twitter: "cvex_xyz",
+    listedAt: 1736469235
   },
 ];
 export default data4;

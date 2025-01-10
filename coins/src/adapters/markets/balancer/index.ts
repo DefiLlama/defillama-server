@@ -70,5 +70,5 @@ export const adapters = {
   balancer7,
   balancer8,
   beets,
-  // linearPools,
+  linearPools,
 };

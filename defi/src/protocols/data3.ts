@@ -64694,7 +64694,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Pryzm"],
-    module: "pryzm/index.js",
+    module: "pryzm-protocol/index.js",
     twitter: "Pryzm_Zone",
     forkedFrom: [],
     oracles: [],

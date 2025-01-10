@@ -6161,6 +6161,18 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:silofinance.eth", "eip155:1:0xA89163F7B2D68A8fbA6Ca36BEEd32Bd4f3EeAf61"],
     treasury: "silo-finance.js",
   },
+  {
+    id: "parent#pryzm",
+    name: "Pryzm",
+    url: "https://pryzm.zone",
+    description:
+      "Pryzm is a Layer 1 blockchain designed to help you tokenize and trade your yield with ease",
+    logo: `${baseIconsUrl}/pryzm-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Pryzm_Zone",
+  },
 ];
 
 export default parentProtocols;

@@ -810,6 +810,28 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "VinuChain",
   },
-
+  {
+    id: "5614",
+    name: "Pryzm Liquid Staking",
+    address: null,
+    symbol: "-", // preview only
+    url: "https://app.pryzm.zone",
+    description: "Liquid staking of native tokens for Cosmos-based chains",
+    chain: "Pryzm",
+    logo: `${baseIconsUrl}/pryzm-liquid-staking.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Pryzm"],
+    module: "pryzm-liquid-staking/index.js",
+    twitter: "Pryzm_Zone",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://skynet.certik.com/projects/PRYZM"],
+    parentProtocol: "parent#pryzm-protocol",
+    listedAt: 1736533711
+  },
 ];
 export default data4;

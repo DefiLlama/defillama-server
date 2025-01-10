@@ -2312,5 +2312,8 @@ export default {
     },
     "eisen": {
         id: "4691",
+    },
+    "vader-ai": {
+        id: "5535",
     }
 } as AdaptorsConfig

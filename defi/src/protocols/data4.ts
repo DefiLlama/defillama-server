@@ -447,7 +447,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Cross Chain",
+    category: "Dexes",
     chains: ["Op_Bnb"],
     oracles: [],
     forkedFrom: [],

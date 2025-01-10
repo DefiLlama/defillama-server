@@ -111,9 +111,6 @@ export async function unknownTokens2(timestamp: number = 0) {
     q: [
       { pool: "0x2A36b45be4C04900A5946A1B6bf991aDec93ADdE", unknown: "0xE31DD093A2A0aDc80053bF2b929E56aBFE1B1632", known: "0x79Cb92a2806BF4f82B614A84b6805963b8b1D8BB", },
     ],
-    bfc: [
-      { pool: "0x908b3CB9F8E6441B2b1844A6D4f1AC4707bd1483", unknown: "0x6906Ccda405926FC3f04240187dd4fAd5DF6d555", known: "0x1c1b06405058AbE02e4748753aeD1458BEFEE3B9", },
-    ],
     songbird: [
       { pool: "0xcD15C231b8A0Bae40bD7938AE5eA8e43f1e9a15F", unknown: "0x0D94e59332732D18CF3a3D457A8886A2AE29eA1B", known: "0xC348F894d0E939FE72c467156E6d7DcbD6f16e21", },
     ],

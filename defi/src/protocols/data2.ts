@@ -14840,7 +14840,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2020",
-    name: "Silo Finance",
+    name: "Silo V1",
     address: "0x6f80310ca7f2c654691d1383149fa1a57d8ab1f8",
     symbol: "SILO",
     url: "https://app.silo.finance",
@@ -14849,8 +14849,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/silo-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "silo-finance",
-    cmcId: "16010",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
     oraclesByChain: {
@@ -14859,17 +14859,14 @@ const data2: Protocol[] = [
     },
     forkedFrom: [],
     module: "silo/index.js",
-    treasury: "silo-finance.js",
     twitter: "SiloFinance",
-    governanceID: ["snapshot:silofinance.eth", "eip155:1:0xA89163F7B2D68A8fbA6Ca36BEEd32Bd4f3EeAf61"],
     audit_links: [
       "https://drive.google.com/file/d/1D2EIOb0XaRov5Ph2AE0DTfIsMISd7UXG/view",
       "https://drive.google.com/file/d/1WXaB3ICLv4rSEX86POK3-NaOIxXwyq9l/view",
       "https://drive.google.com/file/d/10GyfA-nBJ5jqLWW9LEYJQeFem8qSgNH6/view",
     ],
+    parentProtocol: "parent#silo-finance",
     listedAt: 1661433529,
-    stablecoins: ["xai"],
-    github: ["silo-finance"],
   },
   {
     id: "2021",

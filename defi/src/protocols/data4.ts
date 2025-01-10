@@ -789,5 +789,27 @@ const data4: Protocol[] = [
     github: ["marginzero-xyz"],
     listedAt: 1736470171
   },
+  {
+    id: "5613",
+    name: "VinuNFT",
+    address: null,
+    symbol: "-",
+    url: "VinuChain's premier NFT platform.",
+    description:
+      "MarginZero is an omni-chain, oracle-less and permission-less options & protected perpetual protocol",
+    chain: "VinuChain",
+    logo: `${baseIconsUrl}/vinunft.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["VinuChain"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "VinuChain",
+  },
+
 ];
 export default data4;

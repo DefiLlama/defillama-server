@@ -51127,7 +51127,7 @@ const data3: Protocol[] = [
     name: "STRKFarm",
     address: null,
     symbol: "-",
-    url: "https://www.strkfarm.xyz",
+    url: "https://www.strkfarm.com/",
     description:
       "STRKFarm is a DeFi yield aggregator on Starknet that automatically invests your assets across various DeFi protocols within a given strategy to maximise your returns",
     chain: "Starknet",

@@ -2309,5 +2309,11 @@ export default {
     },
     "creator-bid": {
         id: "5600",
+    },
+    "eisen": {
+        id: "4691",
+    },
+    "vader-ai": {
+        id: "5535",
     }
 } as AdaptorsConfig

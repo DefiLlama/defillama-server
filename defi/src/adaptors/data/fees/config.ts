@@ -2315,5 +2315,8 @@ export default {
     },
     "vader-ai": {
         id: "5535",
+    },
+    "vinunft": {
+        id: "5613",
     }
 } as AdaptorsConfig

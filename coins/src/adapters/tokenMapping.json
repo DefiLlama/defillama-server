@@ -5953,10 +5953,20 @@
       "decimals": 6,
       "symbol": "scUSD"
     },
+    "0x4D85bA8c3918359c78Ed09581E5bc7578ba932ba": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "stkscUSD"
+    },
     "0x3bcE5CB273F0F148010BbEa2470e7b5df84C7812": {
       "to": "coingecko#weth",
       "decimals": 18,
       "symbol": "scETH"
+    },
+    "0x455d5f11Fea33A8fa9D3e285930b478B6bF85265": {
+      "to": "coingecko#weth",
+      "decimals": 6,
+      "symbol": "stkscETH"
     },
     "0xe715cbA7B5cCb33790ceBFF1436809d36cb17E57": {
       "to": "coingecko#euro-coin",

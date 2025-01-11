@@ -8,7 +8,7 @@ const categoryGroups = {
   "Base Layers & Scaling": ["L1", "L2", "Zero Knowledge", "EVM", "Scaling Solutions", "Rollups"],
   "DeFi & CeFi": ["DeFi", "CeFi", "Stablecoins", "CeDeFi", "RWA", "Liquid Staking Protocol", "Payments", "Banking", "Insurance", "Payment gateways", "financial settlement layers"],
   "NFT, Gaming & Metaverse": ["NFT", "Gaming", "Metaverse", "Meme tokens"],
-  "Web3 Infrastructure & Tools": ["Infrastructure", "Storage", "Hardware", "DePIN", "Oracles", "IoT", "Custody", "Cloud", "Supply Chain", "Healthcare"],
+  "Web3 Infrastructure & Tools": ["Infrastructure", "Mining", "Storage", "Hardware", "DePIN", "Oracles", "IoT", "Custody", "Cloud", "Supply Chain", "Healthcare"],
   "Social, DAO & Identity": ["Social Platforms", "DAO Infrastructure", "Digital Identity"],
   "AI, Analytics & Data": ["AI", "Analytics", "Data Platforms", "Big Data"],
   "Security & Audits": ["Smart Contract Audits", "Cybersecurity", "MEV"],

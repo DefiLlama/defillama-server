@@ -2152,9 +2152,9 @@ export default {
     "yamfore": {
         id: "5304"
     },
-    /*"bonzo": { // adapter not working
+    "bonzo": { 
         id: "5287"
-    },*/
+    },
     "quenta": {
         id: "5314"
     },

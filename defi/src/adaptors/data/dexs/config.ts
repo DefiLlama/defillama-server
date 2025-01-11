@@ -2692,5 +2692,8 @@ export default {
     "sonic-market-orderbook": {
         parentId: "Sonic Market",
         id: "5522",
+    },
+    "vinunft": {
+        id: "5613",
     }
 } as AdaptorsConfig

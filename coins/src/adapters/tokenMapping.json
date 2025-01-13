@@ -5485,7 +5485,7 @@
       "symbol": "sUSDe"
     },
     "0x2369eb4a76d80fbeaa7aa73e1e1f9eaee88c07f4": {
-      "to": "ethereum:0x4f460bb11cf958606c69a963b4a17f9daeeea8b6",
+      "to": "coingecko#f-x-protocol-morpho-usdc",
       "decimals": 18,
       "symbol": "fxUSDC"
     }

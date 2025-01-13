@@ -1533,7 +1533,7 @@
     "4tARAT4ssRYhrENCTxxZrmjL741eE2G23Q1zLPDW2ipf": {
       "decimals": "9",
       "symbol": "lrtsSOL",
-      "to": "solayer-staked-sol"
+      "to": "coingecko#solayer-staked-sol"
     },
     "EcyEx8hGsDBHCNkHupvbfZTTtNRbAiXPkmcceNtWGWdt": {
       "decimals": "9",

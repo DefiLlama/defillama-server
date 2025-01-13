@@ -838,7 +838,7 @@ const data4: Protocol[] = [
     name: "Zoth ZeUSD", // previously Zoth
     address: null,
     symbol: "-",
-    url: "https://zoth.io",
+    url: "https://app.zoth.io/zeusd",
     description: `Zoth is an RWA ecosystem bringing institutional-grade yield avenues onchain.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/zoth.jpg`,

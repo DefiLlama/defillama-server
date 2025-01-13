@@ -64161,7 +64161,7 @@ const data3: Protocol[] = [
     twitter: "Vader_AI_",
     listedAt: 1734701945
   },
-  {
+  /*{
     id: "5536",
     name: "Zivoe",
     address: "0xe412D46a0fBD567332b7689cFFfE1F8A4f19A9d2",
@@ -64182,7 +64182,7 @@ const data3: Protocol[] = [
     twitter: "ZivoeProtocol",
     github: ["Zivoe"],
     listedAt: 1734702192
-  },
+  },*/
   {
     id: "5537",
     name: "Kernel DAO",
@@ -64514,7 +64514,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "zivoe/index.js",
     twitter: "landerfinance",
     audit_links: [
       "https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2024.04.25%20-%20Final%20-%20Zivoe%20Audit%20Report.pdf",

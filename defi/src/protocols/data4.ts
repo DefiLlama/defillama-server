@@ -542,12 +542,12 @@ const data4: Protocol[] = [
   },
   {
     id: "5602",
-    name: "NODO Global",
+    name: "NODO", // previously NODO Global
     address: null,
     symbol: "-",
     url: "https://nodo.xyz",
     description:
-      "NODO is an omnichain AI-driven social copytrading ecosystem with real-time, instant-payout price prediction markets",
+      "NODO is an omnichain AI-driven social copytrading ecosystem with real-time, instant-payout price prediction markets. Our flagship product NODO Trade is focused on DeFi interoperability, utilizing a robust cross-chain relayer and multi-brokerage AMM model to ensure capital efficiency and complete asset ownership for users. We're currently working to launch on SUI and Cardano. Powering our AI copytrading agent is aggregated trading data from top traders on NODO and across world-leading trading platforms, generating smart trading strategies devoid of the trappings of any emotional biases. Users can also safely farm yield from high-APY DeFi vaults via NODO Wallet, creating a robust and flexible social trading ecosystem with both high and low risk options",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/nodo-global.jpg`,
     audits: "0",

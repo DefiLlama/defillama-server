@@ -2,6 +2,7 @@ import { buildOutdatedMessage, findOutdatedPG, getOutdated } from './utils/findO
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { sendMessage } from "./utils/discord"
 import axios from 'axios'
+import { getHourlyTvlUpdatedRecordsCount, initializeTVLCacheDB, getDimensionsUpdatedRecordsCount, getTweetsPulledCount, } from './api2/db';
 
 const maxDrift = 6 * 3600; // Max 4 updates missed
 const llamaRole = "<@&849669546448388107>"
@@ -50,8 +51,43 @@ export default wrapScheduledLambda(handler);
 
 
 export async function notifyOutdatedPG() {
+
+
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
+  const teamwebhookUrl = process.env.TEAM_WEBHOOK!
   const currentHour = new Date().getUTCHours();
+
+  // check if the data is being updated for tvl, dimensions and tweets
+  try {
+
+    await initializeTVLCacheDB()
+
+    const tvlUpdateCount = await getHourlyTvlUpdatedRecordsCount()
+    const dimUpdateCount = await getDimensionsUpdatedRecordsCount()
+    const tweetsPulledCount = await getTweetsPulledCount()
+    const debugString = `
+  tvl update count: ${tvlUpdateCount} (in the last 2 hours)
+  dimensions update count: ${dimUpdateCount} (in the last 2 hours)
+  tweets pulled count: ${tweetsPulledCount} (in the last 3 days)
+    `
+
+
+
+    console.log(debugString)
+    await sendMessage(debugString, webhookUrl)
+
+    if (tvlUpdateCount < 500)
+      await sendMessage(`Only ${tvlUpdateCount} tvl records were updated in the last 2 hours, check the pipeline if everything is fine`, teamwebhookUrl)
+
+    if (dimUpdateCount < 500)
+      await sendMessage(`Only ${dimUpdateCount} dimension records were updated in the last 2 hours, check the pipeline if everything is fine`, teamwebhookUrl)
+
+    if (tweetsPulledCount < 500)
+      await sendMessage(`Only ${tweetsPulledCount} tweets were pulled in the last 3 days, check the pipeline if everything is fine`, teamwebhookUrl)
+
+  } catch (e) {
+    console.error(e)
+  }
 
   // now this check runs every 4th hour
   if (currentHour % 4 === 0) {
@@ -59,7 +95,7 @@ export async function notifyOutdatedPG() {
     const ignoredSet = new Set(['Synthetix']);
     const failedOver100m = hour12Outdated.filter((o: any) => o[1]?.tvl > 100_000_000 && !ignoredSet.has(o[0]));
     if (failedOver100m.length > 0) {
-      await sendMessage(buildOutdatedMessage(failedOver100m) as any, process.env.TEAM_WEBHOOK!)
+      await sendMessage(buildOutdatedMessage(failedOver100m) as any, teamwebhookUrl)
     }
   }
 

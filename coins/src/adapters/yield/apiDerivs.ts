@@ -115,6 +115,17 @@ const configs: { [adapter: string]: Config } = {
     decimals: "8",
     symbol: "LBTCv",
   },
+  stSUI: {
+    rate: async () =>
+      await fetch("https://api.alphafi.xyz/stsui/price").then((r) => r.json()),
+    chain: "sui",
+    address:
+      "0xd1b72982e40348d069bb1ff701e634c117bb5f741f44dff91e472d3b01461e55::stsui::STSUI",
+    underlying:
+      "0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC",
+    decimals: "9",
+    symbol: "stSUI",
+  },
 };
 
 export async function apiDerivs(timestamp: number) {

@@ -40,7 +40,7 @@ import fuel from "./fuel";
 import zircuit from "./zircuit";
 import morph from "./morph";
 import aptos from "./aptosFa";
-import sophon from './sophon';
+import sophon from "./sophon";
 
 export type Token =
   | {
@@ -78,38 +78,38 @@ function normalizeBridgeResults(bridge: Bridge) {
   };
 }
 export const bridges = [
-  // optimism,
-  // // anyswap,
-  // arbitrum,
-  // avax,
-  // // brc20,
-  // //bsc,
-  // fantom,
-  // era,
-  // gasTokens,
-  // //harmony,
-  // polygon,
-  // // solana
-  // //xdai
-  // cosmos,
-  // synapse,
-  // base,
-  // neon_evm,
-  // arbitrum_nova,
-  // mantle,
-  // axelar,
-  // linea,
-  // manta,
-  // astrzk,
-  // zklink,
-  // celer,
-  // fraxtal,
-  // symbiosis,
-  // fuel,
-  // zircuit,
-  // morph,
-  // aptos,
-  sophon
+  optimism,
+  // anyswap,
+  arbitrum,
+  avax,
+  // brc20,
+  //bsc,
+  fantom,
+  era,
+  gasTokens,
+  //harmony,
+  polygon,
+  // solana
+  //xdai
+  cosmos,
+  synapse,
+  base,
+  neon_evm,
+  arbitrum_nova,
+  mantle,
+  axelar,
+  linea,
+  manta,
+  astrzk,
+  zklink,
+  celer,
+  fraxtal,
+  symbiosis,
+  fuel,
+  zircuit,
+  morph,
+  aptos,
+  sophon,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

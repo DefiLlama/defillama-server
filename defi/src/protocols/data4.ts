@@ -967,7 +967,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: "botto",
     cmcId: "14345",
-    category: "AI Agent",
+    category: "AI Agents",
     chains: ["Ethereum", "Base"],
     module: "botto/index.js",
     twitter: "bottoproject",

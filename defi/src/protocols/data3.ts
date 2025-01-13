@@ -40674,6 +40674,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.gammaswap.com/more-info/audits"],
     parentProtocol: "parent#gammaswaplabs",
     listedAt: 1713502627,
+    wrongLiquidity: true, // missing yields integration for deltaswap
   },
   {
     id: "4490",

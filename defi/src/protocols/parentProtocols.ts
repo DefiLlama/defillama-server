@@ -3591,6 +3591,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GammaSwapLabs",
     github: ["gammaswap"],
+    wrongLiquidity: true,
   },
   {
     id: "parent#navi-protocol",

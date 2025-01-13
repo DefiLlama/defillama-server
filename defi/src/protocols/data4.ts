@@ -565,14 +565,14 @@ const data4: Protocol[] = [
   },
   {
     id: "5603",
-    name: "Equalizer CL",
-    address: "fantom:0x3Fd3A0c85B70754eFc07aC9Ac0cbBDCe664865A6",
-    symbol: "EQUAL",
-    url: "https://equalizer.exchange/liquidity/cl-farms",
+    name: "2THICK", // previously Equalizer CL
+    address: null,
+    symbol: "-",
+    url: "https://eliteness.network/thick",
     description:
       "CLMM on Sonic",
     chain: "Sonic",
-    logo: `${baseIconsUrl}/equalizer-cl.jpg`,
+    logo: `${baseIconsUrl}/2thick.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -582,8 +582,8 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V3"],
     module: "equalizer-cl/index.js",
-    twitter: "Equalizer0x",
-    parentProtocol: "parent#equalizer",
+    twitter: "FTM1337",
+    parentProtocol: "parent#guru-network-dao",
     listedAt: 1736387589
   },
   {

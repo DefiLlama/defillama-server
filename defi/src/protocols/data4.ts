@@ -898,7 +898,6 @@ const data4: Protocol[] = [
     twitter: "AurumFi_Sonic",
     forkedFrom: ["AAVE V3"],
     audit_links: ["https://github.com/aave/aave-v3-core/tree/master/audits"],
-    parentProtocol: "parent#zoth",
     github: ["aurum-protocol"],
     listedAt: 1736775047
   },

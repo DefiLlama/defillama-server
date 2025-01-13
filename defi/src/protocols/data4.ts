@@ -567,10 +567,10 @@ const data4: Protocol[] = [
     id: "5603",
     name: "2THICK", // previously Equalizer CL
     address: null,
-    symbol: "-",
+    symbol: "ELITE",
     url: "https://eliteness.network/thick",
     description:
-      "CLMM on Sonic",
+      "Protocol-agnostic Concentrated Liquidity Self-incentivizing AMM, now with Dynamic Trade Fee & Strategic TickSpacing based optimizations",
     chain: "Sonic",
     logo: `${baseIconsUrl}/2thick.png`,
     audits: "0",

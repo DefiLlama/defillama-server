@@ -26740,7 +26740,7 @@ const data3: Protocol[] = [
     id: "3878",
     name: "Thick",
     address: null,
-    symbol: "-",
+    symbol: "ELITE",
     url: "https://eliteness.network/thick",
     description: `Thick introduces the concept of Protocol-Agnostic Concentrated Liquidity into DeFi, empowering it to Distribute shared, Flywheeled self-incentivising, Concentrated Liquidity across a multitude of plugged-in protocols.`,
     chain: "Ethereum",

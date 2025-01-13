@@ -6173,6 +6173,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Pryzm_Zone",
   },
+  {
+    id: "parent#zoth",
+    name: "Zoth",
+    url: "https://zoth.io",
+    description:
+      "Zoth is an RWA ecosystem bringing institutional-grade yield avenues onchain",
+    logo: `${baseIconsUrl}/zoth.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "zothdotio",
+    github: ["0xZothio"],
+  },
 ];
 
 export default parentProtocols;

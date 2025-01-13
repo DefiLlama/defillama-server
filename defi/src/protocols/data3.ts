@@ -55375,7 +55375,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5142",
-    name: "Zoth",
+    name: "Zoth ZTLN", // previously Zoth
     address: "0x917991d52Aa2fC1b5612A6aa5e4e81d580F97532",
     symbol: "ZTLN",
     url: "https://zoth.io",
@@ -55392,7 +55392,7 @@ const data3: Protocol[] = [
     module: "ZTLN/index.js",
     twitter: "zothdotio",
     forkedFrom: [],
-    github: ["0xZothio"],
+    parentProtocol: "parent#zoth",
     listedAt: 1726215318
   },
   {

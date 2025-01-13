@@ -1530,6 +1530,16 @@
     }
   },
   "solana": {
+    "4tARAT4ssRYhrENCTxxZrmjL741eE2G23Q1zLPDW2ipf": {
+      "decimals": "9",
+      "symbol": "lrtsSOL",
+      "to": "coingecko#solayer-staked-sol"
+    },
+    "EcyEx8hGsDBHCNkHupvbfZTTtNRbAiXPkmcceNtWGWdt": {
+      "decimals": "9",
+      "symbol": "sUSDe",
+      "to": "coingecko#ethena-staked-usde"
+    },
     "Eh6XEPhSwoLv5wFApukmnaVSHQ6sAnoD9BmgmwQoN2sN": {
       "decimals": "9",
       "symbol": "sUSDe",
@@ -1538,7 +1548,7 @@
     "susdabGDNbhrnCa6ncrYo81u4s9GM8ecK2UwMyZiq4X": {
       "decimals": "6",
       "symbol": "sUSD",
-      "to": "coingecko#solayer-usd"
+      "to": "coingecko#usd-coin"
     },
     "4MmJVdwYN8LwvbGeCowYjSx7KoEi6BJWg8XXnW4fDDp6": {
       "decimals": "6",
@@ -5480,7 +5490,7 @@
       "symbol": "sUSDe"
     },
     "0x2369eb4a76d80fbeaa7aa73e1e1f9eaee88c07f4": {
-      "to": "ethereum:0x4f460bb11cf958606c69a963b4a17f9daeeea8b6",
+      "to": "coingecko#f-x-protocol-morpho-usdc",
       "decimals": 18,
       "symbol": "fxUSDC"
     }
@@ -5947,6 +5957,21 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "scUSD"
+    },
+    "0x4D85bA8c3918359c78Ed09581E5bc7578ba932ba": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "stkscUSD"
+    },
+    "0x3bcE5CB273F0F148010BbEa2470e7b5df84C7812": {
+      "to": "coingecko#weth",
+      "decimals": 18,
+      "symbol": "scETH"
+    },
+    "0x455d5f11Fea33A8fa9D3e285930b478B6bF85265": {
+      "to": "coingecko#weth",
+      "decimals": 6,
+      "symbol": "stkscETH"
     },
     "0xe715cbA7B5cCb33790ceBFF1436809d36cb17E57": {
       "to": "coingecko#euro-coin",

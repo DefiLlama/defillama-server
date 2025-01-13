@@ -2152,9 +2152,9 @@ export default {
     "yamfore": {
         id: "5304"
     },
-    /*"bonzo": { // adapter not working
+    "bonzo": { 
         id: "5287"
-    },*/
+    },
     "quenta": {
         id: "5314"
     },
@@ -2309,5 +2309,11 @@ export default {
     },
     "creator-bid": {
         id: "5600",
+    },
+    "eisen": {
+        id: "4691",
+    },
+    "vader-ai": {
+        id: "5535",
     }
 } as AdaptorsConfig

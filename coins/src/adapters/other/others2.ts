@@ -2,6 +2,7 @@
 import getWrites from "../utils/getWrites";
 import { getTokenSupplies, getTokenAccountBalances, } from "../solana/utils";
 import { getApi } from "../utils/sdk";
+import { nullAddress } from "../../utils/shared/constants";
 
 
 async function solanaAVS(timestamp: number = 0) {
@@ -29,7 +30,6 @@ async function wstBFC(timestamp: number = 0) {
   const chain = "bfc";
   const api = await getApi(chain, timestamp);
   const pricesObject: any = {};
-  const nullAddress = "0x0000000000000000000000000000000000000000";
   const wstBFC = "0x386f2F5d9A97659C86f3cA9B8B11fc3F76eFDdaE";
   const bal = await api.call({ abi: "erc20:balanceOf", target: '0xEff8378C6419b50C9D87f749f6852d96D4Cc5aE4', params: wstBFC, });
   const supply = await api.call({ abi: "erc20:totalSupply", target: wstBFC });

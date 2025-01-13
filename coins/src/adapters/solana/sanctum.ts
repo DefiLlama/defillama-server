@@ -13,6 +13,14 @@ const assets: { [address: string]: { symbol: string; decimals: number } } = {
     symbol: "picoSOL",
     decimals: 9,
   },
+  haSo1Vz5aTsqEnz8nisfnEsipvbAAWpgzRDh2WhhMEh: {
+    symbol: "haSOL",
+    decimals: 9,
+  },
+  EPCz5LK372vmvCkZH3HgSuGNKACJJwwxsofW6fypCPZL: {
+    symbol: "rkSOL",
+    decimals: 9,
+  },
 };
 
 export async function sanctum(timestamp: number) {

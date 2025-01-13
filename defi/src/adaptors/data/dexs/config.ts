@@ -2681,5 +2681,19 @@ export default {
     },
     "dappos-intentEx": {
         id: "5597",
+    },
+    "mento": {
+        id: "504",
+    },
+    "sonic-market-cpmm": {
+        parentId: "Sonic Market",
+        id: "5521",
+    },
+    "sonic-market-orderbook": {
+        parentId: "Sonic Market",
+        id: "5522",
+    },
+    "vinunft": {
+        id: "5613",
     }
 } as AdaptorsConfig

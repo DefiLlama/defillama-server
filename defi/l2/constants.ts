@@ -92,6 +92,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5564": "eclipse",
   "5565": "shape",
   "5566": "zora",
+  "5609": "sophon"
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

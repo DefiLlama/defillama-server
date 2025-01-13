@@ -6681,12 +6681,12 @@ const data3: Protocol[] = [
     module: "gravita-protocol/index.js",
     twitter: "gravitaprotocol",
     oraclesByChain: {
-      ethereum: ["RedStone"], // https://github.com/DefiLlama/defillama-server/pull/5898
+      ethereum: ["Chainlink"], //https://docs.gravitaprotocol.com/gravita-docs/how-does-gravita-work/oracles
       arbitrum: ["Chainlink"],
       era: ["Chainlink"],
       linea: ["Chainlink"],
       mantle: ["API3"],
-      polygon_zkevm: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5829
+      polygon_zkevm: ["Chainlink"], // https://docs.gravitaprotocol.com/gravita-docs/how-does-gravita-work/oracles
       optimism: ["Chainlink"],
     },
     forkedFrom: ["Liquity"],
@@ -8664,8 +8664,7 @@ const data3: Protocol[] = [
     module: "zklend/index.js",
     twitter: "zkLend",
     forkedFrom: [],
-    oracles: ["Pragma"],
-    parentProtocol: "parent#zklend-finance",
+    oracles: ["Chainlink"], // Primary Oracle is Chainlink: https://zklend.gitbook.io/documentation/using-zklend/technical/oracles
     listedAt: 1686175395,
   },
   {
@@ -12359,9 +12358,10 @@ const data3: Protocol[] = [
     twitter: "zerolendxyz",
     oraclesByChain: {
       blast: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
-      linea: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
+      base: ["Chainlink"], //https://docs.zerolend.xyz/security/oracles/chainlink
+      linea: ["Chainlink"], //https://docs.zerolend.xyz/security/oracles/chainlink
       manta: ["RedStone"], //https://docs.zerolend.xyz/security/oracles/using-redstone-oracles
-      ethereum: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
+      ethereum: ["Chainlink"], // https://docs.zerolend.xyz/security/oracles/chainlink
       era: ["Pyth"], //https://docs.zerolend.xyz/security/oracles#using-pyth-oracles
       zircuit: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
       xlayer: ["API3"], // https://docs.zerolend.xyz/security/oracles#oracles-operated-by-api3
@@ -21674,7 +21674,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Starknet"],
-    oracles: ["Pragma"], // https://docs.nostra.finance/lend/deployed-contracts/lend-mainnet
+    oracles: ["Chainlink"], // https://docs.nostra.finance/lend-and-borrow/oracles
     forkedFrom: [],
     module: "nostra-alpha/index.js",
     twitter: "nostrafinance",
@@ -26740,7 +26740,7 @@ const data3: Protocol[] = [
     id: "3878",
     name: "Thick",
     address: null,
-    symbol: "-",
+    symbol: "ELITE",
     url: "https://eliteness.network/thick",
     description: `Thick introduces the concept of Protocol-Agnostic Concentrated Liquidity into DeFi, empowering it to Distribute shared, Flywheeled self-incentivising, Concentrated Liquidity across a multitude of plugged-in protocols.`,
     chain: "Ethereum",
@@ -40674,6 +40674,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.gammaswap.com/more-info/audits"],
     parentProtocol: "parent#gammaswaplabs",
     listedAt: 1713502627,
+    wrongLiquidity: true, // missing yields integration for deltaswap
   },
   {
     id: "4490",
@@ -48960,7 +48961,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Derivatives",
     chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: [],
@@ -51127,7 +51128,7 @@ const data3: Protocol[] = [
     name: "STRKFarm",
     address: null,
     symbol: "-",
-    url: "https://www.strkfarm.xyz",
+    url: "https://www.strkfarm.com/",
     description:
       "STRKFarm is a DeFi yield aggregator on Starknet that automatically invests your assets across various DeFi protocols within a given strategy to maximise your returns",
     chain: "Starknet",
@@ -55375,7 +55376,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5142",
-    name: "Zoth",
+    name: "Zoth ZTLN", // previously Zoth
     address: "0x917991d52Aa2fC1b5612A6aa5e4e81d580F97532",
     symbol: "ZTLN",
     url: "https://zoth.io",
@@ -55392,7 +55393,7 @@ const data3: Protocol[] = [
     module: "ZTLN/index.js",
     twitter: "zothdotio",
     forkedFrom: [],
-    github: ["0xZothio"],
+    parentProtocol: "parent#zoth",
     listedAt: 1726215318
   },
   {
@@ -64161,7 +64162,7 @@ const data3: Protocol[] = [
     twitter: "Vader_AI_",
     listedAt: 1734701945
   },
-  {
+  /*{
     id: "5536",
     name: "Zivoe",
     address: "0xe412D46a0fBD567332b7689cFFfE1F8A4f19A9d2",
@@ -64182,7 +64183,7 @@ const data3: Protocol[] = [
     twitter: "ZivoeProtocol",
     github: ["Zivoe"],
     listedAt: 1734702192
-  },
+  },*/
   {
     id: "5537",
     name: "Kernel DAO",
@@ -64514,7 +64515,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "zivoe/index.js",
     twitter: "landerfinance",
     audit_links: [
       "https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2024.04.25%20-%20Final%20-%20Zivoe%20Audit%20Report.pdf",
@@ -64694,11 +64695,12 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Pryzm"],
-    module: "pryzm/index.js",
+    module: "pryzm-protocol/index.js",
     twitter: "Pryzm_Zone",
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://skynet.certik.com/projects/PRYZM"],
+    parentProtocol: "parent#pryzm",
     listedAt: 1735228524
   },
   {

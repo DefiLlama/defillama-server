@@ -8,6 +8,7 @@ import {
 } from "../../utils/database";
 import PromisePool from "@supercharge/promise-pool";
 import { wrappedGasTokens } from "../../utils/gasTokens";
+import { nullAddress } from "../../../utils/shared/constants";
 
 const customMapping: { [chain: string]: { [from: string]: string } } = {
   arbitrum: {
@@ -73,7 +74,6 @@ const gasMapping: { [chain: string]: string[] } = {
 };
 
 const blacklist = ["0x1d83fdf6f019d0a6b2babc3c6c208224952e42fc"];
-const nullAddress = "0x0000000000000000000000000000000000000000";
 
 export default async function getTokenPrices(
   timestamp: number,

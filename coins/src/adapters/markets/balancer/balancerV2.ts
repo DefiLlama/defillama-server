@@ -9,9 +9,9 @@ import { getApi } from "../../utils/sdk";
 import { getPoolValues } from "../../utils";
 import getWrites from "../../utils/getWrites";
 import { getLogs } from "../../../utils/cache/getLogs";
+import { nullAddress } from "../../../utils/shared/constants";
 
 const vault: string = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
-const nullAddress: string = "0x0000000000000000000000000000000000000000";
 
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",

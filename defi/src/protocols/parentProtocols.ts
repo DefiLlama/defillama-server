@@ -3591,6 +3591,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GammaSwapLabs",
     github: ["gammaswap"],
+    wrongLiquidity: true,
   },
   {
     id: "parent#navi-protocol",
@@ -6144,6 +6145,47 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dtrinity_defi",
     github: ["dtrinity"]
+  },
+  {
+    id: "parent#silo-finance",
+    name: "Silo Finance",
+    url: "https://app.silo.finance",
+    description:
+      "Silo Finance creates permissionless and risk-isolated lending markets",
+    logo: `${baseIconsUrl}/silo-finance.png`,
+    gecko_id: "silo-finance",
+    cmcId: "16010",
+    chains: [],
+    twitter: "SiloFinance",
+    stablecoins: ["xai"],
+    github: ["silo-finance"],
+    governanceID: ["snapshot:silofinance.eth", "eip155:1:0xA89163F7B2D68A8fbA6Ca36BEEd32Bd4f3EeAf61"],
+    treasury: "silo-finance.js",
+  },
+  {
+    id: "parent#pryzm",
+    name: "Pryzm",
+    url: "https://pryzm.zone",
+    description:
+      "Pryzm is a Layer 1 blockchain designed to help you tokenize and trade your yield with ease",
+    logo: `${baseIconsUrl}/pryzm-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Pryzm_Zone",
+  },
+  {
+    id: "parent#zoth",
+    name: "Zoth",
+    url: "https://zoth.io",
+    description:
+      "Zoth is an RWA ecosystem bringing institutional-grade yield avenues onchain",
+    logo: `${baseIconsUrl}/zoth.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "zothdotio",
+    github: ["0xZothio"],
   },
 ];
 

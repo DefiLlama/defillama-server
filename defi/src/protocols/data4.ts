@@ -1040,7 +1040,7 @@ const data4: Protocol[] = [
     chains: ["Soneium"],
     module: "sonefi-xyz/index.js",
     twitter: "SoneFi_xyz",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["SyncSwap"],
     oracles: [],
     audit_links: [],
     listedAt: 1736851567

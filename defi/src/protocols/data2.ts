@@ -9122,7 +9122,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1772",
-    name: "APX Finance", // previous ApolloX , they rebrand 22/11/23
+    name: "APX Finance", // previous ApolloX , they rebrand 22/11/23  --- They merged with astherus on december 2024 https://x.com/APX_Finance/status/1864566550466089238
     address: "bsc:0x78F5d389F5CDCcFc41594aBaB4B0Ed02F31398b3",
     symbol: "APX",
     url: "https://www.apollox.finance/en",
@@ -9132,8 +9132,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/apx-finance.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "apollox-2",
-    cmcId: "16334",
+    gecko_id: null,
+    cmcId: null,
     category: "Derivatives",
     chains: ["Binance"],
     oracles: ["Pyth"], // https://apollox-finance.gitbook.io/apollox-finance/welcome/trading-on-v2/powered-by-pyth-oracle-and-chainlink
@@ -9141,8 +9141,9 @@ const data2: Protocol[] = [
     module: "apollox/index.js",
     twitter: "APX_Finance",
     listedAt: 1652988932,
-    governanceID: ["snapshot:apolloxdao.eth"],
-    github: ["apollox-finance"],
+   // governanceID: ["snapshot:apolloxdao.eth"],
+   // github: ["apollox-finance"],
+    parentProtocol: "parent#astherus",
   },
   {
     id: "1773",

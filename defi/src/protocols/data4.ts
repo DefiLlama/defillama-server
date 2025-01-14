@@ -1118,5 +1118,33 @@ const data4: Protocol[] = [
     parentProtocol: "parent#untangled",
     listedAt: 1736886549
   },
+  {
+    id: "5627",
+    name: "Cybro",
+    address: "0x963eec23618BbC8e1766661d5f263f18094Ae4d5",
+    symbol: "CYBRO",
+    url: "https://app.cybro.io/",
+    description: "CYBRO is an AI-based yield aggregator platform on the Blast blockchain",
+    chain: "Blast",
+    logo: "https://cybro.io/cybro.png",
+    audits: "5",
+    audit_note: null,
+    gecko_id: "cybro",
+    cmcId: "32224",
+    category: "Yield Aggregator",
+    chains: ["Blast"],
+    oracles: [],
+    forkedFrom: [],
+    module: "cybro/index.js",
+    twitter: "https://x.com/Cybro_io",
+    audit_links: [
+      "https://github.com/cybro-io/dapp-contracts-audits/blob/main/CYBRO%20One%20Click%20Lending%20Security%20Analysis%20by%20Pessimistic.pdf",
+      "https://github.com/cybro-io/dapp-contracts-audits/blob/main/CYBRO%20Security%20Analysis%20by%20Pessimistic.pdf",
+      "https://github.com/cybro-io/dapp-contracts-audits/blob/main/CYBRO%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf",
+      "https://github.com/cybro-io/dapp-contracts-audits/blob/main/CYBRO%20Staking%20Security%20Analysis%20by%20Pessimistic.pdf",
+      "https://github.com/cybro-io/dapp-contracts-audits/blob/main/Cybro%20Vault%20Smart%20Contract%20Audit%20-%20QuillAudits.pdf",
+    ],
+    github: ["cybro-io"]
+  }
 ];
 export default data4;

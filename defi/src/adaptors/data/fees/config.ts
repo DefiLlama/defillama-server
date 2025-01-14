@@ -2152,7 +2152,7 @@ export default {
     "yamfore": {
         id: "5304"
     },
-    "bonzo": { 
+    "bonzo": {
         id: "5287"
     },
     "quenta": {
@@ -2315,5 +2315,8 @@ export default {
     },
     "vader-ai": {
         id: "5535",
+    },
+    "maxapy": {
+        id: "5306",
     }
 } as AdaptorsConfig

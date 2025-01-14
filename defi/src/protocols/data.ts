@@ -7410,9 +7410,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Dexes", // tvl also counts lending/cdp product
-    chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective", "Arbitrum", "Base", "Sui"],
+    chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective", "Arbitrum", "Base", "Sui", "Solana", "Stellar", "Optimism"],
     module: "balanced/index.js",
-    twitter: "BalancedDAO",
+    twitter: "BalancedDeFi",
     audit_links: [
       "https://docs.balanced.network/assets/files/balanced-audit-fyeo-2023-0079603b4be9e31d58cb5da7c1dd6823.pdf",
       "https://docs.balanced.network/assets/files/balanced-audit-slowmist-2021-b1aa5c5048546151a3c22fee5ab5c62c.pdf",

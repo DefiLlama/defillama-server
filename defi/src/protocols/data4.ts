@@ -1045,5 +1045,27 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1736851567
   },
+  {
+    id: "5624",
+    name: "Soneium Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://superbridge.app/soneium",
+    description:
+      "Bridge between Ethereum and Soneium",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/soneium-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    module: "soneium/index.js",
+    twitter: "soneium",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+  },
 ];
 export default data4;

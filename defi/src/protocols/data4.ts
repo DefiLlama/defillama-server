@@ -1069,7 +1069,7 @@ const data4: Protocol[] = [
     audit_links: [],
   },
         {
-    id: "5622",
+    id: "5625",
     name: "Lagoon",
     symbol: "-",
     url: "https://lagoon.finance",

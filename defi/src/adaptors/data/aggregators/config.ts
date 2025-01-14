@@ -282,5 +282,11 @@ export default {
   },
   "swing": {
       id: "5474"
-  }
+  },
+  "anqa": {
+      id: "5621"
+  },
+  "joe-agg": {
+      id: "5618"
+  },
 } as AdaptorsConfig;

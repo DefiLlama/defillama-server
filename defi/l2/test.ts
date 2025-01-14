@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { allChainKeys } from "./constants";
+import { allChainKeys, ownTokens } from "./constants";
 import { sendMessage } from "../src/utils/discord";
 
 export async function verifyChanges(chains: FinalData) {
@@ -46,4 +46,10 @@ export function flagChainErrors(chains: FinalData) {
   message = message.slice(0, -1) + `adapters have failed`;
 
   throw new Error(message);
+}
+
+export function checkOwnTokens() {
+  allChainKeys.map((chain: string) => {
+    if (!(chain in ownTokens)) console.log(chain); // throw new Error(`${chain} missing from ownTokens`)
+  });
 }

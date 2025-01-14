@@ -6187,6 +6187,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "zothdotio",
     github: ["0xZothio"],
   },
+  {
+    id: "parent#untangled",
+    name: "Untangled",
+    url: "https://untangled.finance/",
+    description:
+      "A non-custodial, cross-chain portfolio management solution: a data-driven, automated vault designed to attract liquidity and invest in opportunities across any EVM network to match diverse risk/return appetites",
+    logo: `${baseIconsUrl}/untangled.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "UntangledFi",
+    github: ["untangledfinance"],
+  },
 ];
 
 export default parentProtocols;

@@ -43070,7 +43070,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4595",
-    name: "Untangled",
+    name: "Untangled RWA",
     address: null,
     symbol: "-",
     url: "https://untangled.finance/",
@@ -43090,7 +43090,8 @@ const data3: Protocol[] = [
       "https://github.com/Verilog-Solutions/.github/blob/main/Audit/Untangle_Protocol_Audit/Untangled_FInance_Audit_Report.pdf",
     ],
     module: "untangled/index.js",
-    twitter: "untangledfin",
+    twitter: "UntangledFi",
+    parentProtocol: "parent#untangled",
     listedAt: 1715628381,
   },
   {

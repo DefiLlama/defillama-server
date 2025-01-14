@@ -1067,5 +1067,56 @@ const data4: Protocol[] = [
     oracles: [],
     audit_links: [],
   },
+  {
+    id: "5625",
+    name: "ParagonsDAO",
+    address: "0x375abb85c329753b1ba849a601438ae77eec9893",
+    symbol: "PDT",
+    url: "https://app.paragonsdao.com",
+    description:
+      "A gaming community focused on simplifying web3 gaming for the masses and sharing the assets, analytics, and infrastructure that help you unleash your potential with premier games",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/paragonsdao.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "paragonsdao",
+    cmcId: "17794",
+    category: "Staking",
+    chains: ["Ethereum","Base"],
+    module: "paragons-dao/index.js",
+    twitter: "ParagonsDAO",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [
+      "https://github.com/Zellic/publications/blob/master/PDT%20Staking%20V2%20-%20Zellic%20Audit%20Report.pdf",
+      "https://hashlock.com/audits/paragonsdao"
+    ],
+    github: ["ParagonsDAO"],
+    listedAt: 1736886545
+  },
+  {
+    id: "5626",
+    name: "Untangled Vault",
+    address: null,
+    symbol: "-",
+    url: "https://superbridge.app/soneium",
+    description:
+      "A non-custodial, cross-chain portfolio management solution: a data-driven, automated vault designed to attract liquidity and invest in opportunities across any EVM network to match diverse risk/return appetites",
+    chain: "Celo",
+    logo: `${baseIconsUrl}/untangled.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Managed Token Pools",
+    chains: ["Celo"],
+    module: "untangled-yield/index.js",
+    twitter: "UntangledFi",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    parentProtocol: "parent#untangled",
+    listedAt: 1736886549
+  },
 ];
 export default data4;

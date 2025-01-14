@@ -6049,6 +6049,16 @@
     }
   },
   "sophon": {
+    "0x42E5bFdC7032D1F8e4B4D3fea3Eb5dB9C01Ef997": {
+      "to": "coingecko#aethir",
+      "decimals": 18,
+      "symbol": "stAethir"
+    },
+    "0x841bE23f3872309f50E0c955c8Cb4b660f733811": {
+      "to": "coingecko#azuro-protocol",
+      "decimals": 18,
+      "symbol": "stAZUR"
+    },
     "0x72af9f169b619d85a47dfa8fefbcd39de55c567d": {
       "to": "coingecko#ethereum",
       "decimals": 18,

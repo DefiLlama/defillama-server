@@ -3670,6 +3670,19 @@ export const chainCoingeckoIds = {
     url: "https://verus.io/",
     github: ["VerusCoin"],
   },
+  "Soneium": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 1868,
+    twitter: "soneium",
+    url: "https://soneium.org"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

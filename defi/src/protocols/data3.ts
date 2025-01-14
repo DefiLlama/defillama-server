@@ -59125,6 +59125,7 @@ const data3: Protocol[] = [
     module: "maxapy/index.js",
     twitter: "max_apy",
     audit_links: ["https://github.com/UnlockdFinance/maxapy/tree/development/audits"],
+    treasury: "maxapy.js",
     listedAt: 1730369397
   },
   {

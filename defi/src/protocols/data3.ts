@@ -58114,13 +58114,13 @@ const data3: Protocol[] = [
   },
   {
     id: "5262",
-    name: "Swell ETH Earn Vault",
+    name: "Swell Earn", // previous Swell ETH Earn Vault
     address: null,
     symbol: "-",
     url: "https://app.swellnetwork.io/earn/vaults",
     description: "earnETH is an ETH denominated vault that allows users to deposit their ETH assets to get automated risk adjusted yields and points",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/swell-eth-earn-vault.png`,
+    logo: `${baseIconsUrl}/swell-earn.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -59125,6 +59125,7 @@ const data3: Protocol[] = [
     module: "maxapy/index.js",
     twitter: "max_apy",
     audit_links: ["https://github.com/UnlockdFinance/maxapy/tree/development/audits"],
+    treasury: "maxapy.js",
     listedAt: 1730369397
   },
   {

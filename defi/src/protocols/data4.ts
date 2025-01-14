@@ -999,7 +999,76 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1736794279,
   },
-      {
+
+  {
+    id: "5622",
+    name: "Kyo Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.kyo.finance",
+    description:
+      "The Most Innovative Liquidity Hub on soneium",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/kyo-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Soneium"],
+    module: "kyo-fi-v3/index.js",
+    twitter: "kyofinance",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1736851067
+  },
+  {
+    id: "5623",
+    name: "SoneFi",
+    address: null,
+    symbol: "-",
+    url: "https://sonefi.xyz",
+    description:
+      "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/sonefi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Soneium"],
+    module: "sonefi-xyz/index.js",
+    twitter: "SoneFi_xyz",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1736851567
+  },
+  {
+    id: "5624",
+    name: "Soneium Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://superbridge.app/soneium",
+    description:
+      "Bridge between Ethereum and Soneium",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/soneium-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    module: "soneium/index.js",
+    twitter: "soneium",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+  },
+        {
     id: "5622",
     name: "Lagoon",
     symbol: "-",
@@ -1019,5 +1088,6 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.lagoon.finance/resources/audits"],
     twitter: "lagoon_finance",
    }
+  
 ];
 export default data4;

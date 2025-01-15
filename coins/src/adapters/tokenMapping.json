@@ -266,6 +266,11 @@
     }
   },
   "ethereum": {
+    "0xB1e12802831Da99D2d47b6a55049D69bf7De0e3C": {
+      "decimals": "8",
+      "symbol": "oBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0x9fb7b4477576fe5b32be4c1843afb1e55f251b33": {
       "decimals": "6",
       "symbol": "fUSDC",
@@ -934,6 +939,11 @@
     }
   },
   "base": {
+    "0xe3C0FF176eF92FC225096C6d1788cCB818808b35": {
+      "decimals": "8",
+      "symbol": "oBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0x7Ba6F01772924a82D9626c126347A28299E98c98": {
       "decimals": "18",
       "symbol": "msETH",
@@ -1503,6 +1513,11 @@
     }
   },
   "op_bnb": {
+    "0xe3C0FF176eF92FC225096C6d1788cCB818808b35": {
+      "decimals": "8",
+      "symbol": "oBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0xf7fb2df9280eb0a76427dc3b34761db8b1441a49": {
       "decimals": "18",
       "symbol": "uBTC",

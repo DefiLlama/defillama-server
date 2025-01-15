@@ -8122,14 +8122,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3057",
-    name: "OpenEden T-Bills",
+    name: "OpenEden", // previous OpenEden T-Bills
     address: null,
     symbol: "-",
     url: "https://app.openeden.com/",
     description:
       "A smart contract vault managed by a regulated entity to offer 24/7 and direct access to U.S. Treasury Bills",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/openeden-tbills.png`,
+    logo: `${baseIconsUrl}/openeden.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

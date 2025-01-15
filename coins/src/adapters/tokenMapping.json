@@ -5071,6 +5071,11 @@
       "to": "coingecko#weth",
       "decimals": 18,
       "symbol": "WETH"
+    },
+    "0xbfc94cd2b1e55999cfc7347a9313e88702b83d0f": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
     }
   },
   "mint": {

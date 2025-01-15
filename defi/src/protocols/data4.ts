@@ -1041,7 +1041,7 @@ const data4: Protocol[] = [
     chains: ["Soneium"],
     module: "sonefi-xyz/index.js",
     twitter: "SoneFi_xyz",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["SyncSwap"],
     oracles: [],
     audit_links: [],
     listedAt: 1736851567
@@ -1068,8 +1068,129 @@ const data4: Protocol[] = [
     oracles: [],
     audit_links: [],
   },
-        {
+  {
     id: "5625",
+    name: "ParagonsDAO",
+    address: "0x375abb85c329753b1ba849a601438ae77eec9893",
+    symbol: "PDT",
+    url: "https://app.paragonsdao.com",
+    description:
+      "A gaming community focused on simplifying web3 gaming for the masses and sharing the assets, analytics, and infrastructure that help you unleash your potential with premier games",
+    chain: "Base",
+    logo: `${baseIconsUrl}/paragonsdao.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "paragonsdao",
+    cmcId: "17794",
+    category: "Staking",
+    chains: ["Base"],
+    module: "paragons-dao/index.js",
+    twitter: "ParagonsDAO",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [
+      "https://github.com/Zellic/publications/blob/master/PDT%20Staking%20V2%20-%20Zellic%20Audit%20Report.pdf",
+      "https://hashlock.com/audits/paragonsdao"
+    ],
+    github: ["ParagonsDAO"],
+    listedAt: 1736886545
+  },
+  {
+    id: "5626",
+    name: "Untangled Vault",
+    address: null,
+    symbol: "-",
+    url: "https://superbridge.app/soneium",
+    description:
+      "A non-custodial, cross-chain portfolio management solution: a data-driven, automated vault designed to attract liquidity and invest in opportunities across any EVM network to match diverse risk/return appetites",
+    chain: "Celo",
+    logo: `${baseIconsUrl}/untangled.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Managed Token Pools",
+    chains: ["Celo"],
+    module: "untangled-yield/index.js",
+    twitter: "UntangledFi",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    parentProtocol: "parent#untangled",
+    listedAt: 1736886549
+  },
+  {
+    id: "5627",
+    name: "SakeFinance",
+    address: null,
+    symbol: "-",
+    url: "https://app.sakefinance.com/",
+    description:
+      "Sake Finance is an integrated liquidity protocol on Soneium. Sake is pioneering a new era of decentralized finance, where different modules work together seamlessly to provide the smoothest user experience",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/sakefinance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Soneium"],
+    module: "sake-finance/index.js",
+    twitter: "sakefinance",
+    forkedFrom: ["AAVE V3"],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13098
+    audit_links: ["https://github.com/Sake-Finance/Sake-Finance-Audit/blob/main/PeckShield-Audit-Report-Sake-v1.0.pdf"],
+    listedAt: 1736960282
+  },
+  {
+    id: "5628",
+    name: "UntitledBank",
+    address: null,
+    symbol: "-",
+    url: "https://untitledbank.co/",
+    description:
+      "Untitled Bank is a permissionless, and modular lending platform designed to provide a seamless and inclusive experience for all users",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/untitledbank.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Soneium"],
+    module: "untitledbank/index.js",
+    twitter: "BankUntitled",
+    forkedFrom: [],
+    oracles: ["Pyth"], // Pyth currently used for majority of deposited value, usdc.e, astr & weth // https://docs.untitledbank.co/
+    audit_links: ["https://beosin.com/audits/Untitled-Bank_202501101523.pdf"],
+    listedAt: 1736960289
+  },
+  {
+    id: "5629",
+    name: "SquidSwap",
+    address: "ink:0xbf0cAfCbaaF0be8221Ae8d630500984eDC908861",
+    symbol: "SQUIDS",
+    url: "https://squidswap.ink",
+    description:
+      "SquidSwap is a revolutionary decentralized platform built on Kraken's Ink L2 network, designed to provide a secure and efficient way to launch, lock, and trade tokens. Our platform combines the best aspects of decentralized finance with innovative features to ensure fair and secure token launches",
+    chain: "Ink",
+    logo: `${baseIconsUrl}/squidswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ink"],
+    module: "squidswap/index.js",
+    twitter: "squidswap_ink",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    audit_links: [],
+    github: ["squidswap-ink"],
+    listedAt: 1736960299
+  },
+       {
+    id: "5630",
     name: "Lagoon",
     symbol: "-",
     url: "https://lagoon.finance",
@@ -1088,6 +1209,6 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.lagoon.finance/resources/audits"],
     twitter: "lagoon_finance",
    }
-  
+
 ];
 export default data4;

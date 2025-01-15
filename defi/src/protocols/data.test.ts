@@ -192,7 +192,7 @@ test("no surprise category", async () => {
     'CDP',
     'Services',
     'Insurance',
-    'Cross Chain',
+    'Cross Chain Bridge',
     'Options',
     'Chain',
     'Derivatives',
@@ -258,7 +258,8 @@ test("no surprise category", async () => {
     'Portfolio Tracker',
     'Liquidity Automation',
     'Charity Fundraising',
-    'Volume Boosting'
+    'Volume Boosting',
+    'DOR'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

@@ -6127,7 +6127,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "SwapX, Sonic's native DEX, leverages Algebra V4 for advanced concentrated liquidity management and ve(3,3) tokenomics while pioneering modular DeFi with plugin technology",
     logo: `${baseIconsUrl}/swapx.jpg`,
-    gecko_id: null,
+    gecko_id: "swapx-2",
     cmcId: null,
     chains: [],
     twitter: "SwapXfi",
@@ -6186,6 +6186,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "zothdotio",
     github: ["0xZothio"],
+  },
+  {
+    id: "parent#untangled",
+    name: "Untangled",
+    url: "https://untangled.finance/",
+    description:
+      "A non-custodial, cross-chain portfolio management solution: a data-driven, automated vault designed to attract liquidity and invest in opportunities across any EVM network to match diverse risk/return appetites",
+    logo: `${baseIconsUrl}/untangled.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "UntangledFi",
+    github: ["untangledfinance"],
   },
 ];
 

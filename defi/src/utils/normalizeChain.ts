@@ -3683,6 +3683,15 @@ export const chainCoingeckoIds = {
     twitter: "soneium",
     url: "https://soneium.org"
   },
+  "Plume": {
+    geckoId: "plume",
+    symbol: "PLUME",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "plumenetwork",
+    url: "https://plumenetwork.xyz/",
+    chainId: 98865,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

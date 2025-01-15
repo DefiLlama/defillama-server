@@ -5764,7 +5764,7 @@ const data: Protocol[] = [
     gecko_id: "biswap",
     cmcId: "10746",
     category: "Dexes",
-    chains: ["Binance"],
+    chains: ["Binance", "Ethereum", "Arbitrum", "Base"],
     module: "biswap/index.js",
     twitter: "Biswap_Dex",
     audit_links: ["https://www.certik.org/projects/biswap"],

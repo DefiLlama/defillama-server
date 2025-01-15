@@ -65103,8 +65103,8 @@ const data3: Protocol[] = [
   {
     id: "5578",
     name: "SwapX V2",
-    address: null,
-    symbol: "-",
+    address: "sonic:0xa04bc7140c26fc9bb1f36b1a604c7a5a88fb0e70",
+    symbol: "SWPX",
     url: "https://swapx.fi/",
     description:
       "SwapX, Sonic's native DEX, leverages Algebra V4 for advanced concentrated liquidity management and ve(3,3) tokenomics while pioneering modular DeFi with plugin technology",
@@ -65130,8 +65130,8 @@ const data3: Protocol[] = [
   {
     id: "5579",
     name: "SwapX Algebra",
-    address: null,
-    symbol: "-",
+    address: "sonic:0xa04bc7140c26fc9bb1f36b1a604c7a5a88fb0e70",
+    symbol: "SWPX",
     url: "https://swapx.fi/",
     description:
       "SwapX, Sonic's native DEX, leverages Algebra V4 for advanced concentrated liquidity management and ve(3,3) tokenomics while pioneering modular DeFi with plugin technology",

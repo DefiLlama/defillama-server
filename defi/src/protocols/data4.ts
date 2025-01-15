@@ -1118,5 +1118,75 @@ const data4: Protocol[] = [
     parentProtocol: "parent#untangled",
     listedAt: 1736886549
   },
+  {
+    id: "5627",
+    name: "SakeFinance",
+    address: null,
+    symbol: "-",
+    url: "https://app.sakefinance.com/",
+    description:
+      "Sake Finance is an integrated liquidity protocol on Soneium. Sake is pioneering a new era of decentralized finance, where different modules work together seamlessly to provide the smoothest user experience",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/sakefinance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Soneium"],
+    module: "sake-finance/index.js",
+    twitter: "sakefinance",
+    forkedFrom: ["AAVE V3"],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13098
+    audit_links: ["https://github.com/Sake-Finance/Sake-Finance-Audit/blob/main/PeckShield-Audit-Report-Sake-v1.0.pdf"],
+    listedAt: 1736960282
+  },
+  {
+    id: "5628",
+    name: "UntitledBank",
+    address: null,
+    symbol: "-",
+    url: "https://untitledbank.co/",
+    description:
+      "Untitled Bank is a permissionless, and modular lending platform designed to provide a seamless and inclusive experience for all users",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/untitledbank.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Soneium"],
+    module: "untitledbank/index.js",
+    twitter: "BankUntitled",
+    forkedFrom: [],
+    oracles: ["Pyth"], // Pyth currently used for majority of deposited value, usdc.e, astr & weth // https://docs.untitledbank.co/
+    audit_links: ["https://beosin.com/audits/Untitled-Bank_202501101523.pdf"],
+    listedAt: 1736960289
+  },
+  {
+    id: "5629",
+    name: "SquidSwap",
+    address: "ink:0xbf0cAfCbaaF0be8221Ae8d630500984eDC908861",
+    symbol: "SQUIDS",
+    url: "https://squidswap.ink",
+    description:
+      "SquidSwap is a revolutionary decentralized platform built on Kraken's Ink L2 network, designed to provide a secure and efficient way to launch, lock, and trade tokens. Our platform combines the best aspects of decentralized finance with innovative features to ensure fair and secure token launches",
+    chain: "Ink",
+    logo: `${baseIconsUrl}/squidswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ink"],
+    module: "squidswap/index.js",
+    twitter: "squidswap_ink",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    audit_links: [],
+    github: ["squidswap-ink"],
+    listedAt: 1736960299
+  },
 ];
 export default data4;

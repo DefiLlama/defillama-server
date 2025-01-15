@@ -6127,7 +6127,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "SwapX, Sonic's native DEX, leverages Algebra V4 for advanced concentrated liquidity management and ve(3,3) tokenomics while pioneering modular DeFi with plugin technology",
     logo: `${baseIconsUrl}/swapx.jpg`,
-    gecko_id: null,
+    gecko_id: "swapx-2",
     cmcId: null,
     chains: [],
     twitter: "SwapXfi",

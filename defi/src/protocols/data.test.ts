@@ -192,7 +192,7 @@ test("no surprise category", async () => {
     'CDP',
     'Services',
     'Insurance',
-    'Cross Chain',
+    'Cross Chain Bridge',
     'Options',
     'Chain',
     'Derivatives',

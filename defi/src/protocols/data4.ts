@@ -1127,7 +1127,7 @@ const data4: Protocol[] = [
     description: "CYBRO is an AI-based yield aggregator platform on the Blast blockchain",
     chain: "Blast",
     logo: "https://cybro.io/cybro.png",
-    audits: "5",
+    audits: "2",
     audit_note: null,
     gecko_id: "cybro",
     cmcId: "32224",
@@ -1144,7 +1144,8 @@ const data4: Protocol[] = [
       "https://github.com/cybro-io/dapp-contracts-audits/blob/main/CYBRO%20Staking%20Security%20Analysis%20by%20Pessimistic.pdf",
       "https://github.com/cybro-io/dapp-contracts-audits/blob/main/Cybro%20Vault%20Smart%20Contract%20Audit%20-%20QuillAudits.pdf",
     ],
-    github: ["cybro-io"]
+    github: ["cybro-io"],
+    listedAt: 1758985200
   }
 ];
 export default data4;

@@ -1189,26 +1189,6 @@ const data4: Protocol[] = [
     github: ["squidswap-ink"],
     listedAt: 1736960299
   },
-       {
-    id: "5630",
-    name: "Lagoon",
-    symbol: "-",
-    url: "https://lagoon.finance",
-    description:
-      "Lagoon provides an infrastructure to launch, manage and scale on-chain vaults — powered by ERC-4626 standard and Safe. Users can enter any strategies and earn interest over their assets. While each curator process deposits and withdrawals in an asynchronous manner and at different intervals",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/lagoon.jpg`,
-    audits: "2",
-    gecko_id: null,
-    cmcId: null,
-    category: "Yield",
-    chains: ["Ethereum", "Base"],
-    module: "lagoon/index.js",
-    language: "Solidity",
-    github: ["hopperlabsxyz"],
-    audit_links: ["https://docs.lagoon.finance/resources/audits"],
-    twitter: "lagoon_finance",
-   }
 
 ];
 export default data4;

@@ -52831,13 +52831,13 @@ const data3: Protocol[] = [
     github: ["noble-assets"],
   },
   {
-    id: "5027",
-    name: "4Cast",
+    id: "5027", 
+    name: "MEMECAST.AI", // previously 4cast
     address: null,
     symbol: "-",
-    url: "https://4cast.win",
+    url: "https://www.memecast.ai/",
     description:
-      "4CAST is the Home of Degen Mini Games on Solana. Dive into diverse mini-games to earn juicy rewards whether you win or lose. Rack up 4Cast Gold with every move, and get showered with rewards at the end of each season.",
+      "MEMECAST.AI: Memes Recreation Layer on Solana to launch, trade and evolve memes with AI agents. We empower memes to thrive, enabling users to cook, trade and turn plays into outsized positions in memes and agentic tokens. With trading, gaming, and AI fused into memes, we create a growth flywheel that pumps tokens with relentless liquidity, utility and community power",
     chain: "Solana",
     logo: `${baseIconsUrl}/4cast.png`,
     audits: "0",
@@ -52849,7 +52849,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "4castdotwin",
+    twitter: "memecastdotai",
   },
   {
     id: "5028",

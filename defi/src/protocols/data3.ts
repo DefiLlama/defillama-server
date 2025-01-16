@@ -48786,7 +48786,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Ethereum", "Binance"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.astherus.com/overview/astherusex/trading-on-astherusex-onchain-perp/powered-by-pyth-oracle-and-chainlink
     forkedFrom: [],
     module: "astherus/index.js",
     twitter: "AstherusHub",

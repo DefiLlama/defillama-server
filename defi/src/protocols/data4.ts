@@ -1042,7 +1042,7 @@ const data4: Protocol[] = [
     module: "sonefi-xyz/index.js",
     twitter: "SoneFi_xyz",
     forkedFrom: ["SyncSwap"],
-    oracles: [],
+    oracles: ["Pyth"], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
     audit_links: [],
     listedAt: 1736851567
   },
@@ -1138,7 +1138,7 @@ const data4: Protocol[] = [
     module: "sake-finance/index.js",
     twitter: "sakefinance",
     forkedFrom: ["AAVE V3"],
-    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13098
+    oracles: ["Chainlink","Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13098
     audit_links: ["https://github.com/Sake-Finance/Sake-Finance-Audit/blob/main/PeckShield-Audit-Report-Sake-v1.0.pdf"],
     listedAt: 1736960282
   },

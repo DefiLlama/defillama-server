@@ -3432,7 +3432,7 @@ const parentProtocols: IParentProtocol[] = [
     logo: `${baseIconsUrl}/balanced.png`,
     gecko_id: "balance-tokens",
     cmcId: null,
-    chains: ["Icon", "Archway", "Avalanche", "Binance", "Injective", "Arbitrum", "Base", "Sui", "Solana", "Stellar", "Optimism"],
+    chains: [],
     twitter: "BalancedDeFi",
     github: ["balancednetwork"],
     stablecoins: ["balanced-dollars"],

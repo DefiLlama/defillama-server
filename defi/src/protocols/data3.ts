@@ -28550,7 +28550,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "balanced-bnUSD/index.js",
-    twitter: "BalancedDAO",
+    twitter: "BalancedDeFi",
     parentProtocol: "parent#balanceddao",
     listedAt: 1703416030,
   },

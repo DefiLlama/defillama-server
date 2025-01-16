@@ -3433,7 +3433,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "balance-tokens",
     cmcId: null,
     chains: [],
-    twitter: "BalancedDAO",
+    twitter: "BalancedDeFi",
     github: ["balancednetwork"],
     stablecoins: ["balanced-dollars"],
   },

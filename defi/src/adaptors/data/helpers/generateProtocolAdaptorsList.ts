@@ -276,9 +276,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
-      if (childProtocols.length > 0) {
-        infoItem.childProtocols = childProtocols
-      }
+      if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
 
 
       return infoItem
@@ -290,7 +288,6 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
     }
   }).filter(notUndefined);
 }
-
 
 function getLogoKey(key: string) {
   if (key.toLowerCase() === 'bsc') return 'binance'

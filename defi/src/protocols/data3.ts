@@ -64421,6 +64421,7 @@ const data3: Protocol[] = [
   {
     id: "5547",
     name: "Lagoon",
+    address: null,
     symbol: "-",
     url: "https://lagoon.finance",
     description:
@@ -64431,9 +64432,8 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Ethereum", "Base", "Avalanche"],
+    chains: ["Ethereum"],
     module: "lagoon/index.js",
-    language: "Solidity",
     github: ["hopperlabsxyz"],
     audit_links: ["https://docs.lagoon.finance/resources/audits"],
     twitter: "lagoon_finance",

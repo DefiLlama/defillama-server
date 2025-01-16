@@ -52839,7 +52839,7 @@ const data3: Protocol[] = [
     description:
       "MEMECAST.AI: Memes Recreation Layer on Solana to launch, trade and evolve memes with AI agents. We empower memes to thrive, enabling users to cook, trade and turn plays into outsized positions in memes and agentic tokens. With trading, gaming, and AI fused into memes, we create a growth flywheel that pumps tokens with relentless liquidity, utility and community power",
     chain: "Solana",
-    logo: `${baseIconsUrl}/4cast.png`,
+    logo: `${baseIconsUrl}/memecast.ai.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

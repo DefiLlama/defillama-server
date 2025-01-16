@@ -32,7 +32,7 @@ export async function verifyChanges(chains: FinalData) {
     )}% in ${hours}`;
   });
 
-  // if (message.length) throw new Error(message);
+  if (message.length) throw new Error(message);
 }
 export function flagChainErrors(chains: FinalData) {
   let message: string = ``;

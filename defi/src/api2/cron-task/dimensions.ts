@@ -516,6 +516,7 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
   childProtocolData.forEach(({ records, info: childData }: any) => {
 
     const versionKey = childData.name ?? childData.displayName ?? childData.versionKey
+    childData.siblingProtocols = info.childProtocols.filter((name: any) => name !== versionKey)
     if (!versionKey) console.log('versionKey is missing', childData)
 
     // update child  metadata and chain info

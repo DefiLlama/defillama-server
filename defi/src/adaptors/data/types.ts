@@ -19,7 +19,6 @@ export interface ProtocolAdaptor extends Protocol {
     allAddresses?: Array<string>
     startFrom?: number
     childProtocols?: Array<ProtocolAdaptor>
-    _internal_hasAppMetrics?: boolean // flag to let rest of application know if protocol is treated as an app
 }
 
 export interface IConfig {

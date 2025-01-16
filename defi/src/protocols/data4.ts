@@ -1255,5 +1255,27 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "movementlabsxyz",
   },
+  {
+    id: "5633",
+    name: "Momodrome",
+    address: null,
+    symbol: "-",
+    url: "https://momodrome.io",
+    description:
+      "The exclusive and only ve33 DEX of the Morph ecosystem.",
+    chain: "Morph",
+    logo: `${baseIconsUrl}/momodrome.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Morph"],
+    module: "momodrome/index.js",
+    twitter: "momodrome_io",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1737059541
+  },
 ];
 export default data4;

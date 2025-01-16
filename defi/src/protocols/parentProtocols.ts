@@ -3394,8 +3394,8 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://derive.xyz",
     description: `Trade options & perps. Earn yield with restaking derivatives.`,
     logo: `${baseIconsUrl}/derive.png`,
-    gecko_id: null, // derive preview only
-    cmcId: null,
+    gecko_id: "derive", 
+    cmcId: "35014",
     chains: [],
     twitter: "derivexyz",
     governanceID: ["snapshot:lyra.eth"],

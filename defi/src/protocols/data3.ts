@@ -27761,8 +27761,8 @@ const data3: Protocol[] = [
   {
     id: "3923",
     name: "Derive V2", // rebrand from Lyra V2
-    address: "optimism:0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
-    symbol: "LYRA",
+    address: "0xb1d1eae60eea9525032a6dcb4c1ce336a1de71be",
+    symbol: "DRV",
     url: "https://derive.xyz",
     description: `Trade options, perps and spot on the most powerful self-custodial exchange.`,
     chain: "Ethereum",
@@ -53573,8 +53573,8 @@ const data3: Protocol[] = [
   {
     id: "5060",
     name: "Derive Options", // rebrand from Lyra Options
-    address: "optimism:0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
-    symbol: "LYRA",
+    address: "0xb1d1eae60eea9525032a6dcb4c1ce336a1de71be",
+    symbol: "DRV",
     url: "https://derive.xyz",
     description:
       "Trade options, perps and spot on the most powerful self-custodial exchange.",

@@ -8575,8 +8575,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "503",
     name: "Derive V1", // rebrand from Lyra V1
-    address: "optimism:0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
-    symbol: "LYRA",
+    address: "0xb1d1eae60eea9525032a6dcb4c1ce336a1de71be",
+    symbol: "DRV",
     url: "https://derive.xyz",
     description: "The first complete decentralized options protocol built on Ethereum",
     chain: "Optimism",

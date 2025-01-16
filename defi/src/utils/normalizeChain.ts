@@ -3453,9 +3453,9 @@ export const chainCoingeckoIds = {
     url: "https://www.eclipse.xyz",
   },
   "UNIT0": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "unit0",
+    symbol: "UNIT0",
+    cmcId: "33785",
     twitter: "UnitsNetwork",
     url: "https://units.network/",
   },

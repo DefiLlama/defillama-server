@@ -1235,5 +1235,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#cian-protocol",
     listedAt: 1737046884
   },
+  {
+    id: "5632",
+    name: "Movement",
+    address: "ethereum:0x3073f7aaa4db83f95e9fff17424f71d4751a3073",
+    symbol: "MOVE",
+    url: "https://www.movementnetwork.xyz/",
+    description: "Bringing Move to Ethereum and beyond.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/movement.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "movement",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "movementlabsxyz",
+  },
 ];
 export default data4;

@@ -293,8 +293,11 @@ async function run() {
         Object.entries(aggregated).forEach(addRecordData)
 
         if (hasAppMetrics) {
-          if (aggregated[AdaptorRecordType.dailyFees]) addRecordData([AdaptorRecordType.dailyAppFees, aggregated[AdaptorRecordType.dailyFees]])
-          if (aggregated[AdaptorRecordType.dailyRevenue]) addRecordData([AdaptorRecordType.dailyAppRevenue, aggregated[AdaptorRecordType.dailyRevenue]])
+          const dailyFeesData = aggregated[AdaptorRecordType.dailyFees]
+          const dailyRevenueData = aggregated[AdaptorRecordType.dailyRevenue]
+
+          if (dailyFeesData) addRecordData([AdaptorRecordType.dailyAppFees, dailyFeesData])
+          if (dailyRevenueData) addRecordData([AdaptorRecordType.dailyAppRevenue, dailyRevenueData])
         }
 
         function addRecordData([recordType, aggData]: any) {
@@ -376,9 +379,12 @@ async function run() {
         // if (!yesterdayRecord && !protocol.info.disabled) yesterdayRecord = _protocolData.latest
         const protocolSummary = initSummaryItem() as ProtocolSummary
         protocol.summaries[recordType] = protocolSummary
+        let recordLabel = recordType
+        if (recordType === AdaptorRecordType.dailyAppFees) recordLabel = AdaptorRecordType.dailyFees
+        if (recordType === AdaptorRecordType.dailyAppRevenue) recordLabel = AdaptorRecordType.dailyRevenue
 
-        addToSummary({ record: todayRecord?.aggregated[recordType], summaryKey: 'total24h', recordType, protocolSummary, skipChainSummary, })
-        addToSummary({ record: yesterdayRecord?.aggregated[recordType], summaryKey: 'total48hto24h', recordType, protocolSummary, skipChainSummary, })
+        addToSummary({ record: todayRecord?.aggregated[recordLabel], summaryKey: 'total24h', recordType, protocolSummary, skipChainSummary, })
+        addToSummary({ record: yesterdayRecord?.aggregated[recordLabel], summaryKey: 'total48hto24h', recordType, protocolSummary, skipChainSummary, })
         addToSummary({ record: _protocolData.sevenDaysAgo?.aggregated[recordType], summaryKey: 'total7DaysAgo', recordType, protocolSummary, skipChainSummary, })
         addToSummary({ record: _protocolData.thirtyDaysAgo?.aggregated[recordType], summaryKey: 'total30DaysAgo', recordType, protocolSummary, skipChainSummary, })
         addToSummary({ records: _protocolData.lastWeekData, summaryKey: 'total7d', recordType, protocolSummary, skipChainSummary, })

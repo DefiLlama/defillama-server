@@ -133,8 +133,6 @@ async function run() {
     }
   }
 
-  const customAdapterRecordTypes = [AdaptorRecordType.dailyAppFees, AdaptorRecordType.dailyAppRevenue]
-
   function generateSummaries(adapterType: AdapterType) {
     if (adapterType === AdapterType.PROTOCOLS) return;
     const timeKey1 = `data load ${adapterType}`

@@ -1189,6 +1189,51 @@ const data4: Protocol[] = [
     github: ["squidswap-ink"],
     listedAt: 1736960299
   },
-
+  {
+    id: "5630",
+    name: "OOIA",
+    address: null,
+    symbol: "-",
+    url: "https://ooia.art",
+    description:
+      "OOIA is a low-fee marketplace on TON, offering the opportunity to trade NFT assets both through traditional methods and with unique mechanics",
+    chain: "TON",
+    logo: `${baseIconsUrl}/ooia.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["TON"],
+    module: "dummy.js",
+    twitter: "OoiaTon",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+  },
+  {
+    id: "5631",
+    name: "Cian Bera",
+    address: null,
+    symbol: "-",
+    url: "https://cian.app",
+    description:
+      "Redistribute Yield Sources For Sustainable DeFi",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cian-bera.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "cian-bera/index.js",
+    twitter: "CIAN_protocol",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    parentProtocol: "parent#cian-protocol",
+    listedAt: 1737046884
+  },
 ];
 export default data4;

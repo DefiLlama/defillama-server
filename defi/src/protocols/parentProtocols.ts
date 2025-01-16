@@ -2139,14 +2139,14 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#biswap",
-    name: "BiSwap",
+    name: "Biswap",
     url: "https://biswap.org",
     description:
-      "Biswap is a trusted DEX platform on the BNB Chain network with a Multi-type Referral Program and low trade fee starting from 0.1%. Biswap is the ecosystem that offers the best service and creates new standards in the DeFi industry.",
+      "Biswap is a multichain DEX that allows trades across BNB, Ethereum, Arbitrum and Base Chains with low slippage. Liquidity providers get 80% of trading fee. By providing liquidity on BNB Chain they can also earn BSW. Core stats: 2.7M+ Users, 600K+ Community, $48B+ Total Trading Vol",
     logo: `${baseIconsUrl}/biswap.jpg`,
     gecko_id: "biswap",
     cmcId: "10746",
-    chains: [],
+    chains: ["Binance", "Ethereum", "Arbitrum", "Base"],
     twitter: "Biswap_Dex",
     github: ["biswap-org"],
     governanceID: ["snapshot:biswap-org.eth"],

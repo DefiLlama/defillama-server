@@ -5751,7 +5751,7 @@ const data: Protocol[] = [
   },
   {
     id: "373",
-    name: "Biswap",
+    name: "Biswap V2",
     address: "bsc:0x965f527d9159dce6288a2219db51fc6eef120dd1",
     symbol: "BSW",
     url: "https://biswap.org/",

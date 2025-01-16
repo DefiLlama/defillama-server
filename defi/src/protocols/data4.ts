@@ -999,6 +999,7 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1736794279,
   },
+
   {
     id: "5622",
     name: "Kyo Finance",
@@ -1188,5 +1189,6 @@ const data4: Protocol[] = [
     github: ["squidswap-ink"],
     listedAt: 1736960299
   },
+
 ];
 export default data4;

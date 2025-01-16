@@ -169,7 +169,8 @@ async function run() {
 
 
     for (const [_dimensionProtocolId, dimensionProtocolInfo] of Object.entries(dimensionProtocolMap) as any) {
-      addProtocolData({ protocolId: dimensionProtocolInfo.id2, dimensionProtocolInfo, isParentProtocol: false, adapterType, skipChainSummary: false, })
+      const hasAppMetrics = adapterType === AdapterType.FEES && getProtocolAppMetricsFlag(dimensionProtocolInfo)
+      addProtocolData({ protocolId: dimensionProtocolInfo.id2, dimensionProtocolInfo, isParentProtocol: false, adapterType, skipChainSummary: false, hasAppMetrics,})
     }
 
     for (const entry of Object.entries(parentProtocolsData)) {
@@ -182,7 +183,7 @@ async function run() {
       const parentProtocol: any = { info, }
 
       mergeChildRecords(parentProtocol, childProtocols)
-      addProtocolData({ protocolId: parentId, dimensionProtocolInfo: info, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records }) // compute summary data
+      addProtocolData({ protocolId: parentId, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records }) // compute summary data
     }
 
     adapterData.summaries = summaries
@@ -190,7 +191,7 @@ async function run() {
     adapterData.lastUpdated = getUnixTimeNow()
     console.timeEnd(timeKey3)
 
-    function addProtocolData({ protocolId, dimensionProtocolInfo = {}, isParentProtocol = false, adapterType, skipChainSummary = false, records }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: any }) {
+    function addProtocolData({ protocolId, dimensionProtocolInfo = {}, isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: any, hasAppMetrics?: boolean }) {
       if (isParentProtocol) skipChainSummary = true
 
 
@@ -207,8 +208,6 @@ async function run() {
         console.log('Unable to find protocol in data.ts', protocolId, dimensionProtocolInfo?.name, isParentProtocol, adapterType)
       }
       const info = { ...dimensionProtocolInfo }
-
-      const hasAppMetrics = adapterType === AdapterType.FEES && getProtocolAppMetricsFlag(dimensionProtocolInfo)
 
       // console.log('Processing', protocolMap[id].displayName, Object.values(adapterData.protocols[id].records).length, 'records')
 
@@ -388,7 +387,6 @@ async function run() {
         addToSummary({ records: _protocolData.last30DaysData, summaryKey: 'total30d', recordType, protocolSummary, skipChainSummary, })
         addToSummary({ records: _protocolData.last60to30DaysData, summaryKey: 'total60dto30d', recordType, protocolSummary, skipChainSummary, })
         addToSummary({ records: _protocolData.lastOneYearData, summaryKey: 'total1y', recordType, protocolSummary, skipChainSummary, })
-
 
         // totalAllTime
         const acumulativeRecordType = ACCOMULATIVE_ADAPTOR_TYPE[recordType]

@@ -23,6 +23,25 @@ import { AdaptorRecordType } from '../../adaptors/db-utils/adaptor-record';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
+
+const blacklistedAppCategorySet = new Set([
+  "Stablecoin Issuer", "MEV",
+  // "Liquid Staking", // should this be blacklisted from the app-metrics?
+])
+const blacklistedAppIdSet = new Set([
+  '4695', // bloXroute
+])
+
+function getProtocolAppMetricsFlag(info: any) {
+  if (info.protocolType && info.protocolType !== ProtocolType.PROTOCOL) return false
+  if (info.category && blacklistedAppCategorySet.has(info.category!)) return false
+  let id = info.id2 ?? info.id
+  if (id && blacklistedAppIdSet.has(info.id2)) return false
+  return true
+}
+
+
+
 function getTimeData(moveADayBack = false) {
 
   const lastTimeString = getTimeSDaysAgo(0, moveADayBack)
@@ -114,6 +133,8 @@ async function run() {
     }
   }
 
+  const customAdapterRecordTypes = [AdaptorRecordType.dailyAppFees, AdaptorRecordType.dailyAppRevenue]
+
   function generateSummaries(adapterType: AdapterType) {
     if (adapterType === AdapterType.PROTOCOLS) return;
     const timeKey1 = `data load ${adapterType}`
@@ -163,7 +184,7 @@ async function run() {
       const parentProtocol: any = { info, }
 
       mergeChildRecords(parentProtocol, childProtocols)
-      addProtocolData({ protocolId: parentId, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records }) // compute summary data
+      addProtocolData({ protocolId: parentId, dimensionProtocolInfo: info, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records }) // compute summary data
     }
 
     adapterData.summaries = summaries
@@ -189,7 +210,7 @@ async function run() {
       }
       const info = { ...dimensionProtocolInfo }
 
-      const hasAppMetrics = AdapterType.FEES === adapterType && dimensionProtocolInfo._internal_hasAppMetrics
+      const hasAppMetrics = adapterType === AdapterType.FEES && getProtocolAppMetricsFlag(dimensionProtocolInfo)
 
       // console.log('Processing', protocolMap[id].displayName, Object.values(adapterData.protocols[id].records).length, 'records')
 
@@ -359,30 +380,16 @@ async function run() {
         const protocolSummary = initSummaryItem() as ProtocolSummary
         protocol.summaries[recordType] = protocolSummary
 
-        function addSummaries({ recordType, recordLabel, }: { recordType: string, recordLabel?: string, }) {
-
-
-          addToSummary({ record: todayRecord?.aggregated[recordType], summaryKey: 'total24h', recordType, protocolSummary, skipChainSummary, recordLabel })
-          addToSummary({ record: yesterdayRecord?.aggregated[recordType], summaryKey: 'total48hto24h', recordType, protocolSummary, skipChainSummary, recordLabel })
-          addToSummary({ record: _protocolData.sevenDaysAgo?.aggregated[recordType], summaryKey: 'total7DaysAgo', recordType, protocolSummary, skipChainSummary, recordLabel })
-          addToSummary({ record: _protocolData.thirtyDaysAgo?.aggregated[recordType], summaryKey: 'total30DaysAgo', recordType, protocolSummary, skipChainSummary, recordLabel })
-          addToSummary({ records: _protocolData.lastWeekData, summaryKey: 'total7d', recordType, protocolSummary, skipChainSummary, recordLabel })
-          // addToSummary({ records: _protocolData.lastTwoWeekData, summaryKey: 'total14d', recordType, protocolSummary, skipChainSummary, recordLabel})
-          addToSummary({ records: _protocolData.lastTwoWeekToOneWeekData, summaryKey: 'total14dto7d', recordType, protocolSummary, skipChainSummary, recordLabel })
-          addToSummary({ records: _protocolData.last30DaysData, summaryKey: 'total30d', recordType, protocolSummary, skipChainSummary, recordLabel })
-          addToSummary({ records: _protocolData.last60to30DaysData, summaryKey: 'total60dto30d', recordType, protocolSummary, skipChainSummary, recordLabel })
-          addToSummary({ records: _protocolData.lastOneYearData, summaryKey: 'total1y', recordType, protocolSummary, skipChainSummary, recordLabel })
-        }
-
-        addSummaries({ recordType })
-
-        if (hasAppMetrics) {
-          if (recordType === AdaptorRecordType.dailyRevenue)
-            addSummaries({ recordType: AdaptorRecordType.dailyAppRevenue, recordLabel: AdaptorRecordType.dailyRevenue })
-          else if (recordType === AdaptorRecordType.dailyFees)
-            addSummaries({ recordType: AdaptorRecordType.dailyAppFees, recordLabel: AdaptorRecordType.dailyFees })
-        }
-
+        addToSummary({ record: todayRecord?.aggregated[recordType], summaryKey: 'total24h', recordType, protocolSummary, skipChainSummary })
+        addToSummary({ record: yesterdayRecord?.aggregated[recordType], summaryKey: 'total48hto24h', recordType, protocolSummary, skipChainSummary })
+        addToSummary({ record: _protocolData.sevenDaysAgo?.aggregated[recordType], summaryKey: 'total7DaysAgo', recordType, protocolSummary, skipChainSummary })
+        addToSummary({ record: _protocolData.thirtyDaysAgo?.aggregated[recordType], summaryKey: 'total30DaysAgo', recordType, protocolSummary, skipChainSummary })
+        addToSummary({ records: _protocolData.lastWeekData, summaryKey: 'total7d', recordType, protocolSummary, skipChainSummary })
+        // addToSummary({ records: _protocolData.lastTwoWeekData, summaryKey: 'total14d', recordType, protocolSummary, skipChainSummary})
+        addToSummary({ records: _protocolData.lastTwoWeekToOneWeekData, summaryKey: 'total14dto7d', recordType, protocolSummary, skipChainSummary })
+        addToSummary({ records: _protocolData.last30DaysData, summaryKey: 'total30d', recordType, protocolSummary, skipChainSummary })
+        addToSummary({ records: _protocolData.last60to30DaysData, summaryKey: 'total60dto30d', recordType, protocolSummary, skipChainSummary })
+        addToSummary({ records: _protocolData.lastOneYearData, summaryKey: 'total1y', recordType, protocolSummary, skipChainSummary })
 
 
         // totalAllTime
@@ -488,19 +495,16 @@ async function run() {
       }
     }
 
-
-    function addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, protocolSummary, skipChainSummary = false, recordLabel, }: { records?: any[], recordType: string, summaryKey: string, chainSummaryKey?: string, record?: any, protocolSummary: any, skipChainSummary?: boolean, recordLabel?: string, }) {
-      // we dont store summaries for custom AdapterRecordTypes like dailyAppFees, dailyAppRevenue
-      if (protocolSummary && !recordLabel) _addToSummary({ record, records, recordType, summaryKey, chainSummaryKey, summary: protocolSummary, recordLabel })
+    function addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, protocolSummary, skipChainSummary = false, }: { records?: any[], recordType: string, summaryKey: string, chainSummaryKey?: string, record?: any, protocolSummary: any, skipChainSummary?: boolean, }) {
+      if (protocolSummary) _addToSummary({ record, records, recordType, summaryKey, chainSummaryKey, summary: protocolSummary })
       // we need to skip updating summary because underlying child data is already used to update the summary
-      if (!skipChainSummary) _addToSummary({ record, records, recordType, summaryKey, chainSummaryKey, recordLabel })
+      if (!skipChainSummary) _addToSummary({ record, records, recordType, summaryKey, chainSummaryKey })
     }
-    function _addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, summary, recordLabel }: { records?: any[], recordType: string, summaryKey: string, chainSummaryKey?: string, record?: any, summary?: any, recordLabel?: string }) {
+    function _addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, summary }: { records?: any[], recordType: string, summaryKey: string, chainSummaryKey?: string, record?: any, summary?: any }) {
       if (!chainSummaryKey) chainSummaryKey = summaryKey
       if (record) records = [record]
       if (!records?.length) return;
 
-      if (!recordLabel) recordLabel = recordType  // default to recordType if recordLabel is not provided, we set this field for appRevenue & appFees which are duplicate of revenue & fees but applicable only for a filtered set of protocols
       if (!summary) {
         if (!summaries[recordType]) summaries[recordType] = initSummaryItem()
         summary = summaries[recordType] as any

@@ -272,11 +272,16 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         _stat_runAtCurrTime: JSON.stringify(adapterObj.module.default ?? '').includes('runAtCurrTime'),
       } as any
 
+      setProtocolAppMetrics(infoItem)
+
       if (singleVersionKey!) infoItem.versionKey = singleVersionKey
 
       const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
-      if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
+      if (childProtocols.length > 0) {
+        infoItem.childProtocols = childProtocols
+        childProtocols.map(setProtocolAppMetrics)
+      }
 
 
       return infoItem
@@ -287,6 +292,20 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       return undefined
     }
   }).filter(notUndefined);
+}
+
+const blacklistedAppCategorySet = new Set([
+  "Stablecoin Issuer",  "MEV",
+  // "Liquid Staking", // should this be blacklisted from the app-metrics?
+]) 
+const blacklistedAppIdSet =  new Set([
+  '4695', // bloXroute
+])
+
+function setProtocolAppMetrics(info: ProtocolAdaptor) {
+  if (info.protocolType !== ProtocolType.PROTOCOL) return;
+  if (!info.category || blacklistedAppCategorySet.has(info.category!) || blacklistedAppIdSet.has(info.id2)) return;
+  info._internal_hasAppMetrics = true
 }
 
 function getLogoKey(key: string) {

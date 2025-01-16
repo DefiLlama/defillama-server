@@ -913,7 +913,6 @@ export default {
         "id": "3025"
     },
     "zunami": {
-        disabled: true,
         "id": "1201"
     },
     "fusionx-v3": {

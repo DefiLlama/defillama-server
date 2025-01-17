@@ -6200,6 +6200,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "UntangledFi",
     github: ["untangledfinance"],
   },
+  {
+    id: "parent#ln-exchange",
+    name: "Untangled",
+    url: "https://www.ln.exchange/",
+    description:
+      "The first Orderbook on Lightning Network, LN Exchange is a vertically integrated, decentralized trading platform featuring peer-to-peer, spot, and perpetual orderbook trading for Bitcoins and Taproot Assets",
+    logo: `${baseIconsUrl}/ln-exchange.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "LNExchange",
+    github: ["lnfi-network"],
+  },
 ];
 
 export default parentProtocols;

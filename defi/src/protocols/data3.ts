@@ -60173,14 +60173,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5352",
-    name: "Spark Finance",
+    name: "V12", // previous Spark Finance
     address: null,
     symbol: "-",
-    url: "https://sprk.fi/",
+    url: "https://v12.trade/",
     description:
-      "Spark is your all-in-one DeFi hub on Fuel Network, with an integrated order book for seamless trading of your favorite assets.",
+      "V12 is your all-in-one DeFi hub on Fuel Network, with an integrated order book for seamless trading of your favorite assets.",
     chain: "Fuel",
-    logo: `${baseIconsUrl}/spark-finance.jpg`,
+    logo: `${baseIconsUrl}/v12.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -60188,7 +60188,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Fuel"],
     module: "spark/index.js",
-    twitter: "Sprkfi",
+    twitter: "v12trade",
     forkedFrom: [],
     oracles: [],
     listedAt: 1731495943

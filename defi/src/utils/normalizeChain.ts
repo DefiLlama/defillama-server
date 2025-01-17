@@ -3442,7 +3442,7 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2"]
     },
-    twitter: "MorphL2",
+    twitter: "MorphLayer",
     url: "https://www.morphl2.io"
   },
   "Eclipse": {

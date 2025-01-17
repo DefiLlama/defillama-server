@@ -1411,5 +1411,28 @@ const data4: Protocol[] = [
     oracles: [], 
     parentProtocol: "parent#ln-exchange",
   },
+  {
+    id: "5640",
+    name: "Sonex",
+    address: null,
+    symbol: "-",
+    url: "https://sonex.so",
+    description:
+      "SONEX is built on a foundation of zk co-processors and decentralized storage and leverage an AI routing terminal to deliver investment strategies.Designed to meet diverse trading needs, SONEX is set to evolve into a comprehensive Alpha Hunting Ecosystem Aggregator, empowering users to stay ahead in the ever-evolving DeFi landscape",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/sonex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Soneium"],
+    module: "sonex/index.js",
+    twitter: "OopsItsSONEX",
+    forkedFrom: [],
+    oracles: [], 
+    github: ["sonex-dex"],
+    listedAt: 1737126167
+  },
 ];
 export default data4;

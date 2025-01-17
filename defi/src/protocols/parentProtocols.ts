@@ -6202,7 +6202,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#ln-exchange",
-    name: "Untangled",
+    name: "LN Exchange",
     url: "https://www.ln.exchange/",
     description:
       "The first Orderbook on Lightning Network, LN Exchange is a vertically integrated, decentralized trading platform featuring peer-to-peer, spot, and perpetual orderbook trading for Bitcoins and Taproot Assets",

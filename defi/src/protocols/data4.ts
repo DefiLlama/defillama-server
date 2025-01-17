@@ -1329,20 +1329,21 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://zarban.io/",
     description:
-      "The exclusive and only ve33 DEX of the Morph ecosystem.",
-    chain: "Morph",
+      "Zarban is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets. It also gives you the opportunity to mint ZAR stablecoin.",
+    chain: "Arbitrum",
     logo: `${baseIconsUrl}/zarban.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
-    chains: ["Morph"],
+    category: "Lending",
+    chains: ["Arbitrum"],
     module: "zarban/index.js",
     twitter: "ZarbanProtocol",
-    forkedFrom: [],
-    oracles: [],
+    forkedFrom: ["AAVE V2"],
+    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13111
     audit_links: ["https://www.auditone.io/audit-report/zarban"],
+    github: ["zarbanio"],
     listedAt: 1737088495
   },
 ];

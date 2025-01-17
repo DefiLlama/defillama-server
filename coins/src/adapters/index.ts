@@ -119,4 +119,5 @@ export default {
   parallelProtocol: require("./markets/parallelProtocol"),
   sanctum: require("./solana/sanctum"),
   spectra: require("./yield/spectra"),
+  kamino: require("./solana/kamino"),
 };

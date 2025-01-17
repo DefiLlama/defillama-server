@@ -3453,9 +3453,9 @@ export const chainCoingeckoIds = {
     url: "https://www.eclipse.xyz",
   },
   "UNIT0": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "unit0",
+    symbol: "UNIT0",
+    cmcId: "33785",
     twitter: "UnitsNetwork",
     url: "https://units.network/",
   },
@@ -3669,6 +3669,28 @@ export const chainCoingeckoIds = {
     twitter: "VerusCoin",
     url: "https://verus.io/",
     github: ["VerusCoin"],
+  },
+  "Soneium": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 1868,
+    twitter: "soneium",
+    url: "https://soneium.org"
+  },
+  "Plume": {
+    geckoId: "plume",
+    symbol: "PLUME",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "plumenetwork",
+    url: "https://plumenetwork.xyz/",
+    chainId: 98865,
   },
 } as unknown as ChainCoinGekcoIds
 

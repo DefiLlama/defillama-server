@@ -913,7 +913,6 @@ export default {
         "id": "3025"
     },
     "zunami": {
-        disabled: true,
         "id": "1201"
     },
     "fusionx-v3": {
@@ -2152,7 +2151,7 @@ export default {
     "yamfore": {
         id: "5304"
     },
-    "bonzo": { 
+    "bonzo": {
         id: "5287"
     },
     "quenta": {
@@ -2315,5 +2314,8 @@ export default {
     },
     "vader-ai": {
         id: "5535",
+    },
+    "maxapy": {
+        id: "5306",
     }
 } as AdaptorsConfig

@@ -2139,14 +2139,14 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#biswap",
-    name: "BiSwap",
+    name: "Biswap",
     url: "https://biswap.org",
     description:
-      "Biswap is a trusted DEX platform on the BNB Chain network with a Multi-type Referral Program and low trade fee starting from 0.1%. Biswap is the ecosystem that offers the best service and creates new standards in the DeFi industry.",
+      "Biswap is a multichain DEX that allows trades across BNB, Ethereum, Arbitrum and Base Chains with low slippage. Liquidity providers get 80% of trading fee. By providing liquidity on BNB Chain they can also earn BSW. Core stats: 2.7M+ Users, 600K+ Community, $48B+ Total Trading Vol",
     logo: `${baseIconsUrl}/biswap.jpg`,
     gecko_id: "biswap",
     cmcId: "10746",
-    chains: [],
+    chains: ["Binance", "Ethereum", "Arbitrum", "Base"],
     twitter: "Biswap_Dex",
     github: ["biswap-org"],
     governanceID: ["snapshot:biswap-org.eth"],
@@ -3394,8 +3394,8 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://derive.xyz",
     description: `Trade options & perps. Earn yield with restaking derivatives.`,
     logo: `${baseIconsUrl}/derive.png`,
-    gecko_id: null, // derive preview only
-    cmcId: null,
+    gecko_id: "derive", 
+    cmcId: "35014",
     chains: [],
     twitter: "derivexyz",
     governanceID: ["snapshot:lyra.eth"],
@@ -3433,7 +3433,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "balance-tokens",
     cmcId: null,
     chains: [],
-    twitter: "BalancedDAO",
+    twitter: "BalancedDeFi",
     github: ["balancednetwork"],
     stablecoins: ["balanced-dollars"],
   },
@@ -6127,7 +6127,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "SwapX, Sonic's native DEX, leverages Algebra V4 for advanced concentrated liquidity management and ve(3,3) tokenomics while pioneering modular DeFi with plugin technology",
     logo: `${baseIconsUrl}/swapx.jpg`,
-    gecko_id: null,
+    gecko_id: "swapx-2",
     cmcId: null,
     chains: [],
     twitter: "SwapXfi",
@@ -6186,6 +6186,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "zothdotio",
     github: ["0xZothio"],
+  },
+  {
+    id: "parent#untangled",
+    name: "Untangled",
+    url: "https://untangled.finance/",
+    description:
+      "A non-custodial, cross-chain portfolio management solution: a data-driven, automated vault designed to attract liquidity and invest in opportunities across any EVM network to match diverse risk/return appetites",
+    logo: `${baseIconsUrl}/untangled.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "UntangledFi",
+    github: ["untangledfinance"],
   },
 ];
 

@@ -2317,5 +2317,8 @@ export default {
     },
     "maxapy": {
         id: "5306",
+    },
+    "zeebu": {
+        id: "5540",
     }
 } as AdaptorsConfig

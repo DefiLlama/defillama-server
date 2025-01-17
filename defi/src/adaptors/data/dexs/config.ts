@@ -2695,5 +2695,8 @@ export default {
     },
     "vinunft": {
         id: "5613",
+    },
+    "lnexchange-spot": {
+        id: "5638",
     }
 } as AdaptorsConfig

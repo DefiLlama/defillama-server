@@ -2320,5 +2320,8 @@ export default {
     },
     "zeebu": {
         id: "5540",
+    },
+    "lnexchange": {
+        id: "5638",
     }
 } as AdaptorsConfig

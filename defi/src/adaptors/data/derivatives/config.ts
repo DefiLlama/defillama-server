@@ -779,5 +779,8 @@ export default {
                 "id": "5571",
             }
         }
+    },
+    "lnexchange-perp": {
+        id: "5639",
     }
 } as AdaptorsConfig

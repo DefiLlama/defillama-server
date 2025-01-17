@@ -32066,22 +32066,25 @@ const data3: Protocol[] = [
   {
     id: "4109",
     name: "Segment Finance",
-    address: "bsc:0x5de40c1152c990492eaeaeecc4ecaab788bbc4fd",
-    symbol: "SEF",
+    address: null,
+    symbol: "-",
     url: "https://segment.finance",
-    description: "Segment Finance is a decentralized lending and borrowing platform built on BNB Chain.",
+    description: "Segment Finance is a decentralized lending and borrowing platform for Superchain and BTCFi",
     chain: "Binance",
     logo: `${baseIconsUrl}/segment-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "segment",
+    gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Binance"],
+    chains: ["Binance", "BOB", "Op_Bnb", "BSquared", "RSK", "CORE"],
     oraclesByChain: {
       bsc: ["Chainlink"],
-      bob: ["RedStone"], //https://docs.segment.finance/protocol/price-feeds
-      //  op_bnb: ["Binance Oracle"]
+      bob: ["RedStone", "DIA", "API3"],
+      op_bnb: ["Binance Oracle"],
+      rsk: ["Umbrella"],
+      core: ["API3"],
+      bsquared: ["Supra"]
     },
     forkedFrom: ["Compound V2"],
     module: "segment-finance/index.js",

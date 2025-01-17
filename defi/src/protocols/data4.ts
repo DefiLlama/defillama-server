@@ -1429,7 +1429,7 @@ const data4: Protocol[] = [
     chains: ["Soneium"],
     module: "sonex/index.js",
     twitter: "OopsItsSONEX",
-    forkedFrom: [],
+    forkedFrom: ["Uniswap V3"],
     oracles: [], 
     github: ["sonex-dex"],
     listedAt: 1737126167

@@ -3692,6 +3692,15 @@ export const chainCoingeckoIds = {
     url: "https://plumenetwork.xyz/",
     chainId: 98865,
   },
+  "EDU Chain": {
+    geckoId: "edu-coin",
+    symbol: "EDU",
+    cmcId: "24613",
+    categories: ["EVM"],
+    twitter: "opencampus_xyz",
+    url: "https://www.opencampus.xyz/",
+    chainId: 41923,
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -3891,7 +3900,8 @@ const newChainLabelMap = {
   "cosmos": "CosmosHub",
   "terra": "Terra Classic",
   "bsc": "BSC",
-  "europa": "SKALE Europa"
+  "europa": "SKALE Europa",
+  "occ": "EDU Chain"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

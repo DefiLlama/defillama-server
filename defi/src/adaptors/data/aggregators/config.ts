@@ -291,5 +291,8 @@ export default {
   },
   "ooia": {
     id: "5630"
+  },
+  "symphony": {
+    id: "5637"
   }
 } as AdaptorsConfig;

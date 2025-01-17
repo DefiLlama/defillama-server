@@ -289,4 +289,7 @@ export default {
   "joe-agg": {
       id: "5618"
   },
+  "ooia": {
+    id: "5630"
+  }
 } as AdaptorsConfig;

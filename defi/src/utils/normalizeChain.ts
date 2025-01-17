@@ -3696,7 +3696,11 @@ export const chainCoingeckoIds = {
     geckoId: "edu-coin",
     symbol: "EDU",
     cmcId: "24613",
-    categories: ["EVM"],
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
     twitter: "opencampus_xyz",
     url: "https://www.opencampus.xyz/",
     chainId: 41923,

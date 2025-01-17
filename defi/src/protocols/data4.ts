@@ -1128,7 +1128,7 @@ const data4: Protocol[] = [
     description:
       "Sake Finance is an integrated liquidity protocol on Soneium. Sake is pioneering a new era of decentralized finance, where different modules work together seamlessly to provide the smoothest user experience",
     chain: "Soneium",
-    logo: `${baseIconsUrl}/sakefinance.png`,
+    logo: `${baseIconsUrl}/sakeFinance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -1138,7 +1138,7 @@ const data4: Protocol[] = [
     module: "sake-finance/index.js",
     twitter: "sakefinance",
     forkedFrom: ["AAVE V3"],
-    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13098
+    oracles: ["Chainlink", "Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13098
     audit_links: ["https://github.com/Sake-Finance/Sake-Finance-Audit/blob/main/PeckShield-Audit-Report-Sake-v1.0.pdf"],
     listedAt: 1736960282
   },

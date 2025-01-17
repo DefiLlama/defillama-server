@@ -1042,7 +1042,7 @@ const data4: Protocol[] = [
     module: "sonefi-xyz/index.js",
     twitter: "SoneFi_xyz",
     forkedFrom: ["SyncSwap"],
-    oracles: [],
+    oracles: ["Pyth"], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
     audit_links: [],
     listedAt: 1736851567
   },

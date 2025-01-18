@@ -1128,7 +1128,7 @@ const data4: Protocol[] = [
     description:
       "Sake Finance is an integrated liquidity protocol on Soneium. Sake is pioneering a new era of decentralized finance, where different modules work together seamlessly to provide the smoothest user experience",
     chain: "Soneium",
-    logo: `${baseIconsUrl}/sakefinance.png`,
+    logo: `${baseIconsUrl}/sakeFinance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

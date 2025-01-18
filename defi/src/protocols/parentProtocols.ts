@@ -6139,7 +6139,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://dtrinity.org/",
     description:
       "dTRINITY is a decentralized and community-governed on-chain replication of the US Federal Reserve, operating under a full-reserve model for enhanced stability and sustainability. It features three core DeFi primitives: a native stablecoin (dUSD) serving as a unified liquidity layer, money markets (dLEND), and integrations with external liquidity pools like Curve",
-    logo: `${baseIconsUrl}/dtrinity.jpg`,
+    logo: `${baseIconsUrl}/dtrinity.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

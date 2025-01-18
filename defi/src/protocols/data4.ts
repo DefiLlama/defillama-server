@@ -260,7 +260,7 @@ const data4: Protocol[] = [
     description:
       "dTRINITY is a decentralized and community-governed on-chain replication of the US Federal Reserve, operating under a full-reserve model for enhanced stability and sustainability. It features three core DeFi primitives: a native stablecoin (dUSD) serving as a unified liquidity layer, money markets (dLEND), and integrations with external liquidity pools like Curve",
     chain: "Fraxtal",
-    logo: `${baseIconsUrl}/dtrinity.jpg`,
+    logo: `${baseIconsUrl}/dtrinity.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -283,7 +283,7 @@ const data4: Protocol[] = [
     description:
       "dLEND is a Fraxtal-based fork of the Aave v3 protocol, designed for secure lending and borrowing of dUSD and other digital assets. By default, dUSD is the sole borrowable asset, and loans can only be taken against other supplied assets, excluding dUSD. This prevents rehypothecation of collateral, reducing protocol risks and subsidy arbitrage. Borrowing rates for dUSD are subsidized through regular interest rebates, encouraging demand and utilization while offering lower costs for borrowers and sustainable yields for lenders",
     chain: "Fraxtal",
-    logo: `${baseIconsUrl}/dtrinity.jpg`,
+    logo: `${baseIconsUrl}/dtrinity.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

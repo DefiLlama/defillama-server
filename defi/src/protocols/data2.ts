@@ -21790,7 +21790,7 @@ const data2: Protocol[] = [
     module: "jojo/index.js",
     twitter: "jojo_exchange",
     forkedFrom: [],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink","Chronicle"],
     github: ["JOJOexchange"],
     audit_links: ["https://github.com/JOJOexchange/smart-contract-EVM/tree/main/audit"],
     listedAt: 1669732079,

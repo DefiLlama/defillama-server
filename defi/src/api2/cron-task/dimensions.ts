@@ -69,7 +69,7 @@ async function run() {
       Object.keys(summaries).forEach((summaryKey) => {
         if (!summaries[summaryKey]?.totalAllTime) return;
         if (!protocolSummaryMetadata[protocolId]) protocolSummaryMetadata[protocolId] = new Set()
-          protocolSummaryMetadata[protocolId].add(summaryKey)
+        protocolSummaryMetadata[protocolId].add(summaryKey)
       })
     }
 
@@ -516,7 +516,8 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
   childProtocolData.forEach(({ records, info: childData }: any) => {
 
     const versionKey = childData.name ?? childData.displayName ?? childData.versionKey
-    childData.siblingProtocols = info.childProtocols.filter((name: any) => name !== versionKey)
+    childData.linkedProtocols = info.childProtocols.concat([info.name])
+
     if (!versionKey) console.log('versionKey is missing', childData)
 
     // update child  metadata and chain info

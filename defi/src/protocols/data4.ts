@@ -1353,7 +1353,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://symph.ag/",
     description:
-      "a native Sei Network DEX aggregator",
+      "Symphony Exchange aggregates decentralized exchanges on the Sei Network into a single, unified interface",
     chain: "Sei",
     logo: `${baseIconsUrl}/symphony-exchange.png`,
     audits: "0",

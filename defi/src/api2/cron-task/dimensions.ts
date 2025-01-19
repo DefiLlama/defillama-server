@@ -513,10 +513,11 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
   const parentRecords: any = {}
   const { info, } = protocol
   info.childProtocols = childProtocolData.map(({ info }: any) => info?.name ?? info?.displayName)
+  info.linkedProtocols = info.childProtocols.concat([info.name])
   childProtocolData.forEach(({ records, info: childData }: any) => {
 
     const versionKey = childData.name ?? childData.displayName ?? childData.versionKey
-    childData.linkedProtocols = info.childProtocols.concat([info.name])
+    childData.linkedProtocols = info.linkedProtocols
 
     if (!versionKey) console.log('versionKey is missing', childData)
 

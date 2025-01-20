@@ -2701,5 +2701,9 @@ export default {
     },
     "sologenic": {
         id: "5644",
+    },
+    "meteora-dlmm": {
+        parentId: "Meteora",
+        id: "4148",
     }
 } as AdaptorsConfig

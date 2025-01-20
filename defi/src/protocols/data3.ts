@@ -64196,13 +64196,13 @@ const data3: Protocol[] = [
   },*/
   {
     id: "5537",
-    name: "Kernel DAO",
+    name: "Kernel", //previous Kernel DAO
     address: null,
     symbol: "-",
     url: "https://kerneldao.com",
     description: "Decentralised Security to supercharge & blitzscale BNB, while providing exciting rewards & DeFi opportunities.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/kernel-dao.jpg`,
+    logo: `${baseIconsUrl}/kernel.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

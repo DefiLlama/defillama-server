@@ -5606,12 +5606,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "tonstakers",
   },
   {
-    id: "parent#kelp-dao",
-    name: "Kelp DAO",
+    id: "parent#kelp-dao", //
+    name: "KernelDAO",  //previous KelpDAO
     url: "https://kelpdao.xyz/",
     description:
       "The Kelp DAO team is currently building an LRT solution, rsETH, on EigenLayer for Ethereum",
-    logo: `${baseIconsUrl}/kelp-dao.png`,
+    logo: `${baseIconsUrl}/kernaldao.jpg`,
     gecko_id: null, // kelp-dao preview only
     cmcId: null,
     chains: [],

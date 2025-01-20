@@ -2330,5 +2330,9 @@ export default {
     "meteora-dlmm": {
         parentId: "Meteora",
         id: "4148",
+    },
+    "meteora": {
+        parentId: "Meteora",
+        id: "385"
     }
 } as AdaptorsConfig

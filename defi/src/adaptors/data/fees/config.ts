@@ -2323,5 +2323,8 @@ export default {
     },
     "lnexchange": {
         id: "5638",
+    },
+    "waterneuron": {
+        id: "4921",
     }
 } as AdaptorsConfig

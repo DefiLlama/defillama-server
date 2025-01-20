@@ -120,4 +120,5 @@ export default {
   sanctum: require("./solana/sanctum"),
   spectra: require("./yield/spectra"),
   kamino: require("./solana/kamino"),
+  fxsp: require("./yield/fxsp"),
 };

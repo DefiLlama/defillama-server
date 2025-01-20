@@ -5606,12 +5606,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "tonstakers",
   },
   {
-    id: "parent#kelp-dao",
-    name: "Kelp DAO",
+    id: "parent#kelp-dao", //
+    name: "KernelDAO",  //previous KelpDAO
     url: "https://kelpdao.xyz/",
     description:
       "The Kelp DAO team is currently building an LRT solution, rsETH, on EigenLayer for Ethereum",
-    logo: `${baseIconsUrl}/kelp-dao.png`,
+    logo: `${baseIconsUrl}/kernaldao.jpg`,
     gecko_id: null, // kelp-dao preview only
     cmcId: null,
     chains: [],
@@ -6212,18 +6212,6 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LNExchange",
     github: ["lnfi-network"],
-  },
-  {
-    id: "parent#sonefi",
-    name: "SoneFi",
-    url: "https://www.ln.exchange/",
-    description:
-      "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
-    logo: `${baseIconsUrl}/sonefi.jpg`,
-    gecko_id: null,
-    cmcId: null,
-    chains: [],
-    twitter: "SoneFi_xyz",
   },
 ];
 

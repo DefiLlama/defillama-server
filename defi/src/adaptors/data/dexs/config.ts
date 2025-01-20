@@ -2698,5 +2698,8 @@ export default {
     },
     "lnexchange-spot": {
         id: "5638",
+    },
+    "sologenic": {
+        id: "5644",
     }
 } as AdaptorsConfig

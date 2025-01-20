@@ -1501,5 +1501,28 @@ const data4: Protocol[] = [
     oracles: [], 
     listedAt: 1737129307
   },
+  {
+    id: "5644",
+    name: "Sologenic",
+    address: null,
+    symbol: "SOLO",
+    url: "https://sologenic.org/",
+    description:
+      "Sologenic has created a fast & cost-effective decentralized ecosystem. Sologenic is committed to the asset trading industry by allowing users to trade different types of assets on the Sologenic’s DEX built on the XRP ledger",
+    chain: "Ripple",
+    logo: `${baseIconsUrl}/sologenic.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "solo-coin",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ripple"],
+    module: "dummy.js",
+    twitter: "realSologenic",
+    forkedFrom: [],
+    oracles: [], 
+    github: ["sologenic"],
+    listedAt: 1737379383
+  },
 ];
 export default data4;

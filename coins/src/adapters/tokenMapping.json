@@ -542,6 +542,11 @@
     }
   },
   "bsc": {
+    "0x7dC91cBD6CB5A3E6A95EED713Aa6bF1d987146c8": {
+      "decimals": "18",
+      "symbol": "mwBETH",
+      "to": "coingecko#wrapped-beacon-eth"
+    },
     "0x55d398326f99059ff775485246999027b3197955": {
       "decimals": "18",
       "symbol": "USDT",

@@ -1025,7 +1025,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5623",
-    name: "SoneFi",
+    name: "SoneFi AMM",
     address: null,
     symbol: "-",
     url: "https://sonefi.xyz",
@@ -1042,8 +1042,9 @@ const data4: Protocol[] = [
     module: "sonefi-xyz/index.js",
     twitter: "SoneFi_xyz",
     forkedFrom: ["SyncSwap"],
-    oracles: ["Pyth"], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
+    oracles: [], 
     audit_links: [],
+    parentProtocol: "parent#sonefi",
     listedAt: 1736851567
   },
   {
@@ -1522,7 +1523,101 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [], 
     github: ["sologenic"],
-    listedAt: 1737379383
+  },
+  {
+    id: "5645",
+    name: "Metastable mUSD",
+    address: null,
+    symbol: "-",
+    url: "https://mstable.io",
+    description:
+      "A decentralized stablecoin built on Sui",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/metastable-musd.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Sui"],
+    module: "metastable-musd/index.js",
+    twitter: "MetaStables",
+    forkedFrom: [],
+    oracles: ["Pyth"], // https://docs.mstable.io/developers/contracts, https://github.com/DefiLlama/DefiLlama-Adapters/pull/13154
+    listedAt: 1737379687
+  },
+  {
+    id: "5646",
+    name: "SoneFi Perp",
+    address: null,
+    symbol: "-",
+    url: "https://sonefi.xyz/#/trade",
+    description:
+      "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/sonefi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Soneium"],
+    module: "sonefi-perp/index.js",
+    twitter: "SoneFi_xyz",
+    forkedFrom: [],
+    oracles: ["Pyth"], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
+    audit_links: [],
+    parentProtocol: "parent#sonefi",
+    listedAt: 1737379697
+  },
+  {
+    id: "5647",
+    name: "Sailor",
+    address: null,
+    symbol: "-",
+    url: "https://sailor.finance/",
+    description:
+      "High-Capital Efficiency AMM DEX & Launchpad built on Sei Network",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/sailor.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sei"],
+    module: "sailor-finance/index.js",
+    twitter: "SailorFi",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [], 
+    audit_links: ["https://storage.googleapis.com/ktx-data/data/Verichains%20Public%20Report%20-%20Sailor%20Finance.pdf"],
+    listedAt: 1737379699
+  },
+  {
+    id: "5648",
+    name: "O.LAB",
+    address: null,
+    symbol: "-",
+    url: "https://www.olab.xyz/",
+    description:
+      "The World's Opinion Protocol, enabling anyone to create predictions using any token in a decentralized, permissionless way. The O.LAB product suite empower users to predict, trade, and verify truth like never before",
+    chain: "Base",
+    logo: `${baseIconsUrl}/o.lab.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Base"],
+    module: "olab/index.js",
+    twitter: "opinionlabsxyz",
+    forkedFrom: ["Polymarket"],
+    oracles: [], 
+    audit_links: [
+      "http://scalebit.xyz/reports/20241111-O.Lab-Final-Audit-Report.pdf",
+      "http://static.olab.xyz/Prediction%20Market%20-%20Zellic%20Audit%20Report.pdf"
+    ],
+    listedAt: 1737379705
   },
 ];
 export default data4;

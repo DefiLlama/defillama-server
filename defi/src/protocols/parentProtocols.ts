@@ -6213,6 +6213,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "LNExchange",
     github: ["lnfi-network"],
   },
+  {
+    id: "parent#sonefi",
+    name: "SoneFi",
+    url: "https://www.ln.exchange/",
+    description:
+      "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
+    logo: `${baseIconsUrl}/sonefi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SoneFi_xyz",
+  },
 ];
 
 export default parentProtocols;

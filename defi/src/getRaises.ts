@@ -4,6 +4,23 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 const SECTOR = "Description (very smol)";
 const VALUATION = "Valuation (millions)";
 
+const categoryGroups = {
+  "Base Layers & Scaling": ["L1", "L2", "Zero Knowledge", "EVM", "Scaling Solutions", "Rollups"],
+  "DeFi & CeFi": ["DeFi", "CeFi", "Stablecoins", "CeDeFi", "Centralized Exchange", "Trading", "RWA", "Liquid Staking Protocol", "Payments", "Banking", "Insurance", "Payment gateways", "financial settlement layers"],
+  "NFT, Gaming & Metaverse": ["NFT", "Gaming", "Metaverse", "Meme tokens"],
+  "Web3 Infrastructure & Tools": ["Infrastructure", "Mining", "Hardware", "Storage", "Hardware", "DePIN", "Oracles", "IoT", "Custody", "Cloud", "Supply Chain", "Healthcare"],
+  "Social, DAO & Identity": ["Social Platforms", "DAO Infrastructure", "Digital Identity"],
+  "AI, Analytics & Data": ["AI", "Analytics", "Data Platforms", "Big Data"],
+  "Security & Audits": ["Smart Contract Audits", "Cybersecurity", "MEV"],
+}
+
+const categoryGroupMapping = Object.entries(categoryGroups).reduce((acc, group) => {
+  group[1].forEach(category => {
+    acc[category] = group[0]
+  })
+  return acc
+}, {} as { [category: string]: string })
+
 export async function getRaisesInternal() {
   let allRecords = await getAllAirtableRecords('appGpVsrkpqsZ9qHH/Raises')
 
@@ -21,6 +38,7 @@ export async function getRaisesInternal() {
       chains: r.fields["Chain"] ?? [],
       sector: r.fields[SECTOR]?.endsWith("\n") ? r.fields[SECTOR].slice(-1) : r.fields[SECTOR] || null,
       category: r.fields["General Sector"] ?? null,
+      categoryGroup: categoryGroupMapping[r.fields["General Sector"]] ?? null,
       source: r.fields["Source (twitter/news links better because blogposts go down quite often)"],
       leadInvestors: r.fields["Lead Investor"] ?? [],
       otherInvestors: r.fields["Other investors"] ?? [],

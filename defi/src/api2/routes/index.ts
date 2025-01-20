@@ -20,6 +20,7 @@ import { getR2 } from "../../utils/r2";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
 import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
+import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
@@ -93,6 +94,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/:type", ew(getOverviewFileRoute))
   router.get("/overview/:type/:chain", ew(getOverviewFileRoute))
   router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
+  router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
+
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
   
@@ -394,6 +397,11 @@ async function getHistoricalChainTvlData(req: HyperExpress.Request, res: HyperEx
     return errorResponse(res, 'There is no chain with that name')
   }
 }
+
+async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {
+  return successResponse(res, await getDimensionsMetadata(), 60);
+}
+
 /* 
 async function getProtocolUsers(req: HyperExpress.Request, res: HyperExpress.Response) {
   const { protocolId, type } = req.path_parameters

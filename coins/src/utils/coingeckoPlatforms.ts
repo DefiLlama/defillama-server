@@ -1,5 +1,6 @@
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import { getCurrentUnixTimestamp } from "./date";
+import { chainsThatShouldNotBeLowerCased } from "./shared/constants";
 import ddb from "./shared/dynamodb";
 
 export const staleMargin = 6 * 60 * 60;
@@ -33,13 +34,16 @@ export interface CoinMetadata {
 }
 
 function lowercase(address: string, chain: string) {
-  return chain === "solana" ? address : address.toLowerCase();
+  return chainsThatShouldNotBeLowerCased.includes(chain)
+    ? address
+    : address.toLowerCase();
 }
 
 export async function iterateOverPlatforms(
   coin: Coin,
   iterator: (PK: string) => Promise<void>,
   coinPlatformData: any,
+  aggregatedPlatforms: string[],
 ) {
   const platforms = coin.platforms as StringObject;
   for (const platform in platforms) {
@@ -49,10 +53,11 @@ export async function iterateOverPlatforms(
         if (chain === undefined) {
           continue;
         }
+        aggregatePlatforms(chain, platforms[platform]!, aggregatedPlatforms);
         const address =
           chain + ":" + lowercase(platforms[platform]!, chain).trim();
         const PK = `asset#${address}`;
-        const margin = getCurrentUnixTimestamp() - staleMargin
+        const margin = getCurrentUnixTimestamp() - staleMargin;
         if (!coinPlatformData[PK] || coinPlatformData[PK].timestamp < margin) {
           await iterator(PK);
         }
@@ -97,4 +102,14 @@ export async function getCoinPlatformData(coins: Coin[]) {
     console.error(e);
   }
   return coinPlatformData;
+}
+
+export async function aggregatePlatforms(
+  chain: string,
+  address: string,
+  aggregatedPlatforms: string[],
+) {
+  const normalizedAddress =
+    chain in chainsThatShouldNotBeLowerCased ? address : address.toLowerCase();
+  aggregatedPlatforms.push(`${chain}:${normalizedAddress}`);
 }

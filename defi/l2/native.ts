@@ -1,12 +1,11 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { fetchAllTokens } from "./layer2pg";
+import { fetchAllTokens } from "../src/utils/shared/bridgedTvlPostgres";
 import { McapData, TokenTvlData, DollarValues } from "./types";
 import { Chain } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { Address } from "@defillama/sdk/build/types";
 import { geckoSymbols, ownTokens, zero } from "./constants";
 import { getMcaps, getPrices, fetchBridgeTokenList, fetchSupplies } from "./utils";
-import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { fetchAdaTokens } from "./adapters/ada";
 import { nativeWhitelist } from "./adapters/manual";
 
@@ -22,9 +21,7 @@ export async function fetchMinted(params: {
   await Promise.all(
     Object.keys(params.chains).map(async (chain: Chain) => {
       try {
-        const canonicalTokens: Address[] = await fetchBridgeTokenList(chain);
-        const thirdPartyTokens: Address[] = (await fetchThirdPartyTokenList())[chain] ?? [];
-        const incomingTokens = [...new Set([...canonicalTokens, ...thirdPartyTokens])];
+        const incomingTokens: Address[] = await fetchBridgeTokenList(chain);
 
         let storedTokens = await fetchAllTokens(chain);
 
@@ -57,6 +54,8 @@ export async function fetchMinted(params: {
           Object.keys(prices).map((t: string) => t.substring(t.indexOf(":") + 1)),
           params.timestamp
         );
+
+        if ("tron:TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t" in supplies) console.log("tron USDT has a supply");
 
         if (ownTokenCgid && ownTokenCgid in mcaps)
           supplies[ownTokenCgid] = mcaps[ownTokenCgid].mcap / prices[ownTokenCgid].price;
@@ -100,5 +99,6 @@ export async function fetchMinted(params: {
       }
     })
   );
+
   return { tvlData, mcapData };
 }

@@ -1,3 +1,4 @@
+import { id } from "ethers"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -1718,10 +1719,6 @@ export default {
     "danogo": {
         "id": "3454"
     },
-    "aerodrome": {
-        parentId: "Aerodrome",
-        "id": "3450"
-    },
     "morphex-old": {
         parentId: "Morphex",
         "protocolsData": {
@@ -2627,5 +2624,79 @@ export default {
     },
     "taraswap": {
         id: "5437",
+    },
+    "wagmi_ton": {
+        id: "5436",
+    },
+    "bigpump": {
+        id: "5443",
+    },
+    "pinto": {
+        id: "5458"
+    },
+    "blum": {
+        id: "5451"
+    },
+    "trado-spot": {
+        id: "5225"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
+    },
+    "plunderswap": {
+        parentId: "PlunderSwap",
+        id: "3840"
+    },
+    "hyperliquid-spot": {
+        parentId: "Hyperliquid",
+        id: "4482"
+    },
+    "neby-dex": {
+        id: "5512"
+    },
+    "mantis": {
+        id: "5514"
+    },
+    "utyabswap": {
+        id: "5508"
+    },
+    "vinuswap": {
+        id: "5497"
+    },
+    "emojicoin": {
+        id: "5454"
+    },
+    "datadex": {
+        id: "5524"
+    },
+    "goblin-dex": {
+        id: "5531"
+    },
+    "invariant": {
+        id: "1788"
+    },
+    "rabbitswap-v3": {
+        id: "5298"
+    },
+    "dappos-intentEx": {
+        id: "5597",
+    },
+    "mento": {
+        id: "504",
+    },
+    "sonic-market-cpmm": {
+        parentId: "Sonic Market",
+        id: "5521",
+    },
+    "sonic-market-orderbook": {
+        parentId: "Sonic Market",
+        id: "5522",
+    },
+    "vinunft": {
+        id: "5613",
+    },
+    "lnexchange-spot": {
+        id: "5638",
     }
 } as AdaptorsConfig

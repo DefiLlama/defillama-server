@@ -362,6 +362,7 @@ export default {
         "id": "420"
     },
     "lyra": {
+        parentId: "Derive",
         "id": "503"
     },
     "radioshack": {
@@ -912,7 +913,6 @@ export default {
         "id": "3025"
     },
     "zunami": {
-        disabled: true,
         "id": "1201"
     },
     "fusionx-v3": {
@@ -1018,10 +1018,6 @@ export default {
     "tigris": {
         "enabled": false, // has several dates with { "error" : { "S" : "Request failed with status code 500" } }
         "id": "3129"
-    },
-    "aerodrome": {
-        parentId: "Aerodrome",
-        "id": "3450"
     },
     "apex": {
         parentId: "ApeX Protocol",
@@ -2155,9 +2151,9 @@ export default {
     "yamfore": {
         id: "5304"
     },
-    /*"bonzo": { // adapter not working
+    "bonzo": {
         id: "5287"
-    },*/
+    },
     "quenta": {
         id: "5314"
     },
@@ -2214,7 +2210,7 @@ export default {
         id: "5410"
     },
     "navi": {
-        id: "5326",
+        id: "3323",
     },
     "hydrometer": {
         id: "5423",
@@ -2232,5 +2228,100 @@ export default {
     "bouncebit-cedefi": {
         parentId: "BounceBit CeDeFi",
         id: "5450"
+    },
+    "swing": {
+        id: "5474"
+    },
+    "thetis-market": {
+        parentId: "Thetis Market",
+        id: "5469"
+    },
+    "iotex": {
+        id: "2777"
+    },
+    "lyra-v2": {
+        parentId: "Derive",
+        id: "3923"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
+    },
+    "memewe": {
+        id: "5501"
+    },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
+            }
+        }
+    },
+    "neby-dex": {
+        id: "5512"
+    },
+    "sudofinance": {
+        id: "4045"
+    },
+    "emojicoin": {
+        id: "5454"
+    },
+    "invariant": {
+        id: "1788"
+    },
+    "memejob": {
+        id: "5533"
+    },
+    "hyperliquid": {
+        parentId: "Hyperliquid",
+        displayName: "HyperLiquid",
+        id: "4482"
+    },
+    "liquidity-slicing": {
+        id: "5297"
+    },
+    "zivoe": {
+        id: "5551"
+    },
+    "rabbitswap-v3": {
+        id: "5298"
+    },
+    "satoshi-perps": {
+        id: "5571",
+    },
+    "virtual-protocol": {
+        id: "5575",
+    },
+    "trust-wallet": {
+        id: "5577",
+    },
+    "coinbase-wallet": {
+        id: "5587",
+    },
+    "dappos-intentEx": {
+        id: "5597",
+    },
+    "volboost": {
+        id: "5598",
+    },
+    "creator-bid": {
+        id: "5600",
+    },
+    "eisen": {
+        id: "4691",
+    },
+    "vader-ai": {
+        id: "5535",
+    },
+    "maxapy": {
+        id: "5306",
+    },
+    "zeebu": {
+        id: "5540",
+    },
+    "lnexchange": {
+        id: "5638",
     }
 } as AdaptorsConfig

@@ -3,7 +3,7 @@ import '../utils/failOnError'
 import { ACCOMULATIVE_ADAPTOR_TYPE, getAdapterRecordTypes, } from "../../adaptors/handlers/getOverviewProcess";
 import { IJSON, AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
 import loadAdaptorsData from "../../adaptors/data"
-import { getDimensionsCacheV2, storeDimensionsCacheV2, } from "../utils/dimensionsUtils";
+import { getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, } from "../utils/dimensionsUtils";
 import { ADAPTER_TYPES } from "../../adaptors/handlers/triggerStoreAdaptorData";
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 // import { toStartOfDay } from "../../adaptors/db-utils/AdapterRecord2";
@@ -55,6 +55,31 @@ async function run() {
 
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)
+
+
+  // store what all metrics are available for each protocol
+  const protocolSummaryMetadata: { [key: string]: Set<string> } = {}
+
+  Object.keys(allCache).forEach((key) => {
+
+    const { protocolSummaries = {}, parentProtocolSummaries = {} } = allCache[key]
+
+    const addProtocol = (protocolId: any) => {
+      const { summaries = {} } = protocolSummaries[protocolId] ?? parentProtocolSummaries[protocolId] ?? {}
+      Object.keys(summaries).forEach((summaryKey) => {
+        if (!summaries[summaryKey]?.totalAllTime) return;
+        if (!protocolSummaryMetadata[protocolId]) protocolSummaryMetadata[protocolId] = new Set()
+        protocolSummaryMetadata[protocolId].add(summaryKey)
+      })
+    }
+
+    Object.keys(protocolSummaries).forEach(addProtocol)
+    Object.keys(parentProtocolSummaries).forEach(addProtocol)
+  })
+
+  const protocolSummaryMetadataArray: any = {}
+  Object.entries(protocolSummaryMetadata).map(([key, value]) => protocolSummaryMetadataArray[key] = Array.from(value))
+  await storeDimensionsMetadata(protocolSummaryMetadataArray)
 
   // // store the data as files to be used by the rest api
   await generateDimensionsResponseFiles(allCache)
@@ -116,7 +141,7 @@ async function run() {
     const parentProtocolSummaries = {} as any
     const summaries: IJSON<RecordSummary> = {}
     const chainMappingToVal = {} as {
-      [chain:string]: number
+      [chain: string]: number
     }
     const parentProtocolsData: { [id: string]: any } = {}
     adapterData.protocolSummaries = protocolSummaries
@@ -141,7 +166,7 @@ async function run() {
     }
 
     adapterData.summaries = summaries
-    adapterData.allChains = Object.keys(chainMappingToVal).sort((a, b)=>chainMappingToVal[b]-chainMappingToVal[a])
+    adapterData.allChains = Object.keys(chainMappingToVal).sort((a, b) => chainMappingToVal[b] - chainMappingToVal[a])
     adapterData.lastUpdated = getUnixTimeNow()
     console.timeEnd(timeKey3)
 
@@ -186,7 +211,7 @@ async function run() {
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = (info.chains ?? []).map(getDisplayChainNameCached)
-      protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
+      protocol.info.defillamaId = protocol.info.protocolType === ProtocolType.CHAIN ? `chain#${protocol.info.defillamaId ?? info.id}` : protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
       const protocolTypeRecords = protocolRecordData[dimensionProtocolId]?.records ?? {}
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}
@@ -196,7 +221,7 @@ async function run() {
 
 
       if (!records)
-        records = { ...adapterTypeRecords,  ...protocolTypeRecords, } // if there are duplicate records between protocol and specific adaptertype, the generic record overwrites specific record (Noticed that uniswap stores in both protocol & dex record and dex records are wrong)
+        records = { ...adapterTypeRecords, ...protocolTypeRecords, } // if there are duplicate records between protocol and specific adaptertype, the generic record overwrites specific record (Noticed that uniswap stores in both protocol & dex record and dex records are wrong)
 
       if (isBreakdownAdapter) {
         const childProtocols = dimensionProtocolInfo.childProtocols
@@ -406,7 +431,7 @@ async function run() {
                 if (!result[chain]) result[chain] = {}
                 result[chain][subModuleName] = value
                 const chainName = getDisplayChainNameCached(chain)
-                if(chainMappingToVal[chainName] === undefined){
+                if (chainMappingToVal[chainName] === undefined) {
                   chainMappingToVal[chainName] = 0
                 }
                 chainMappingToVal[chainName] += value
@@ -488,9 +513,12 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
   const parentRecords: any = {}
   const { info, } = protocol
   info.childProtocols = childProtocolData.map(({ info }: any) => info?.name ?? info?.displayName)
+  info.linkedProtocols = info.childProtocols.concat([info.name])
   childProtocolData.forEach(({ records, info: childData }: any) => {
 
     const versionKey = childData.name ?? childData.displayName ?? childData.versionKey
+    childData.linkedProtocols = info.linkedProtocols
+
     if (!versionKey) console.log('versionKey is missing', childData)
 
     // update child  metadata and chain info

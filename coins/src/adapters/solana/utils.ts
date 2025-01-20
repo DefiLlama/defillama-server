@@ -1,50 +1,76 @@
+import axios from "axios";
+import { sliceIntoChunks } from "@defillama/sdk/build/util/index";
+import * as sdk from "@defillama/sdk";
+import { Connection, Keypair } from "@solana/web3.js";
+import { AnchorProvider as Provider, Wallet } from "@project-serum/anchor";
 
-import axios from "axios"
-import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
-import * as sdk from '@defillama/sdk'
-import { Connection, Keypair, } from "@solana/web3.js"
-import { AnchorProvider as Provider, Wallet, } from "@project-serum/anchor"
-
-const endpoint = process.env.SOLANA_RPC || "https://rpc.ankr.com/solana" // or "https://solana-api.projectserum.com/"
+const endpoint = process.env.SOLANA_RPC || "https://rpc.ankr.com/solana"; // or "https://solana-api.projectserum.com/"
 
 export async function getTokenSupplies(tokens: string[]) {
-  const formBody = (key: string, i: number) => ({ "jsonrpc": "2.0", "id": i, "method": "getTokenSupply", "params": [key] })
-  const tokenBalances = []
-  const chunks = sliceIntoChunks(tokens, 99)
+  const formBody = (key: string, i: number) => ({
+    jsonrpc: "2.0",
+    id: i,
+    method: "getTokenSupply",
+    params: [key],
+  });
+  const tokenBalances = [];
+  const chunks = sliceIntoChunks(tokens, 99);
   for (let chunk of chunks) {
-    const bal = await axios.post(endpoint, chunk.map(formBody))
-    tokenBalances.push(...bal.data)
+    const bal = await axios.post(endpoint, chunk.map(formBody));
+    tokenBalances.push(...bal.data);
   }
-  return tokenBalances.map(i => i.result.value)
+  return tokenBalances.map((i) => i.result.value);
 }
 
-export async function getTokenAccountBalances(tokenAccounts: string[], { individual = false, chunkSize = 99, allowError = false, } = {}): Promise<any> {
-  const formBody = (account: string) => ({ method: "getAccountInfo", jsonrpc: "2.0", params: [account, { encoding: "jsonParsed", commitment: "confirmed" }], id: account })
-  const balancesIndividual: any[] = []
-  const balances = {}
-  const chunks = sliceIntoChunks(tokenAccounts, chunkSize)
+export async function getTokenAccountBalances(
+  tokenAccounts: string[],
+  { individual = false, chunkSize = 99, allowError = false } = {},
+): Promise<any> {
+  const formBody = (account: string) => ({
+    method: "getAccountInfo",
+    jsonrpc: "2.0",
+    params: [account, { encoding: "jsonParsed", commitment: "confirmed" }],
+    id: account,
+  });
+  const balancesIndividual: any[] = [];
+  const balances = {};
+  const chunks = sliceIntoChunks(tokenAccounts, chunkSize);
   for (const chunk of chunks) {
-    const body = chunk.map(formBody)
+    const body = chunk.map(formBody);
     const data = await axios.post(endpoint, body);
     data.data.forEach(({ result: { value } }: any, i: any) => {
       if (!value || !value.data.parsed) {
-        if (tokenAccounts[i].toString() === '11111111111111111111111111111111') {
+        if (
+          tokenAccounts[i].toString() === "11111111111111111111111111111111"
+        ) {
           return;
         }
-        console.log(data.data.map((i: any) => i.result.value)[i], tokenAccounts[i].toString())
+        // console.log(
+        //   data.data.map((i: any) => i.result.value)[i],
+        //   tokenAccounts[i].toString(),
+        // );
         if (allowError) return;
       }
-      const { data: { parsed: { info: { mint, tokenAmount: { amount } } } } } = value
-      sdk.util.sumSingleBalance(balances, mint, amount)
-      balancesIndividual.push({ mint, amount })
-    })
+      const {
+        data: {
+          parsed: {
+            info: {
+              mint,
+              tokenAmount: { amount },
+            },
+          },
+        },
+      } = value;
+      sdk.util.sumSingleBalance(balances, mint, amount);
+      balancesIndividual.push({ mint, amount });
+    });
     // if (chunks.length > 4) {
     //   log('waiting before more calls')
     //   await sleep(300)
     // }
   }
-  if (individual) return balancesIndividual
-  return balances
+  if (individual) return balancesIndividual;
+  return balances;
 }
 
 // accountsArray is an array of base58 address strings
@@ -56,16 +82,16 @@ async function getMultipleAccountsRaw(accountsArray: string[]) {
   ) {
     throw new Error("Expected accountsArray to be an array of strings");
   }
-  const res = []
-  const chunks = sliceIntoChunks(accountsArray, 99)
+  const res = [];
+  const chunks = sliceIntoChunks(accountsArray, 99);
   for (const chunk of chunks) {
     const accountsInfo = await axios.post(endpoint, {
       jsonrpc: "2.0",
       id: 1,
       method: "getMultipleAccounts",
       params: [chunk],
-    })
-    res.push(...accountsInfo.data.result.value)
+    });
+    res.push(...accountsInfo.data.result.value);
   }
 
   return res;
@@ -95,32 +121,41 @@ export async function getMultipleAccountBuffers(labeledAddresses: any) {
   return results;
 }
 
-
-let connection = {} as { [chain: string]: Connection }
-let provider = {} as { [chain: string]: Provider }
+let connection = {} as { [chain: string]: Connection };
+let provider = {} as { [chain: string]: Provider };
 
 const solEndpoint = (isClient: boolean) => {
-  if (isClient) return process.env.SOLANA_RPC_CLIENT ?? process.env.SOLANA_RPC
-  return process.env.SOLANA_RPC
-}
+  if (isClient)
+    return (
+      process.env.SOLANA_RPC_CLIENT ??
+      process.env.SOLANA_RPC ??
+      "https://rpc.ankr.com/solana"
+    );
+  return process.env.SOLANA_RPC;
+};
 
-const renecEndpoint = () =>  process.env.RENEC_RPC
+const renecEndpoint = () => process.env.RENEC_RPC;
+const eclipseEndpoint = () =>
+  process.env.ECLIPSE_RPC ?? "https://eclipse.helius-rpc.com";
+
 const endpointMap = {
   solana: solEndpoint,
   renec: renecEndpoint,
+  eclipse: eclipseEndpoint,
+};
+
+export function getConnection(chain = "solana") {
+  if (!connection[chain])
+    connection[chain] = new Connection((endpointMap as any)[chain](true));
+  return connection[chain];
 }
 
-export function getConnection(chain = 'solana') {
-  if (!connection[chain]) connection[chain] = new Connection((endpointMap as any)[chain](true))
-  return connection[chain]
-}
-
-export function getProvider(chain = 'solana') {
+export function getProvider(chain = "solana") {
   if (!provider[chain]) {
     const dummy_keypair = Keypair.generate();
     const wallet = new Wallet(dummy_keypair);
 
-    provider[chain] = new Provider(getConnection(chain), wallet, {})
+    provider[chain] = new Provider(getConnection(chain), wallet, {});
   }
-  return provider[chain]
+  return provider[chain];
 }

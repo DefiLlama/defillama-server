@@ -168,7 +168,7 @@ const configs: { [adapter: string]: Config } = {
         abi: "function getRate() external view returns (uint256)",
         target: "0x126af21dc55C300B7D0bBfC4F3898F558aE8156b",
       });
-      return rate / 1e10;
+      return rate / 1e18;
     },
     chain: "ethereum",
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -277,6 +277,32 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     underlying: "0x8457ca5040ad67fdebbcc8edce889a335bc0fbfb",
     address: "0xb6D149C8DdA37aAAa2F8AD0934f2e5682C35890B",
+  },
+  LFT: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256) external view returns (uint256)",
+        target: "0x270Ee1564eC483DD83f284E4D7bDFbfaa2feA76E",
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "base",
+    underlying: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    address: "0x8c213ee79581Ff4984583C6a801e5263418C4b86",
+  },
+  USDO: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256) external view returns (uint256)",
+        target: "0xaD55aebc9b8c03FC43cd9f62260391c13c23e7c0",
+        params: 1e12,
+      });
+      return 1e12 / rate;
+    },
+    chain: "ethereum",
+    underlying: "0xaD55aebc9b8c03FC43cd9f62260391c13c23e7c0",
+    address: "0x8238884Ec9668Ef77B90C6dfF4D1a9F4F4823BFe",
   },
 };
 

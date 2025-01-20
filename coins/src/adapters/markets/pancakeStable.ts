@@ -5,8 +5,7 @@ import {
 } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
-
-const nullAddress = "0x0000000000000000000000000000000000000000";
+import { nullAddress } from '../../utils/shared/constants'
 
 const factories: {
   [chain: string]: {
@@ -96,6 +95,8 @@ async function getPrices(timestamp: number, chain: string): Promise<Write[]> {
 
     if (isNaN(aum)) return;
     const price = aum / (supplies[i] / 10 ** decimals[i]);
+
+    if (!isFinite(price)) return;
 
     addToDBWritesList(
       writes,

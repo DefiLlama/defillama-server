@@ -46,6 +46,7 @@ export interface IParentProtocol {
   id: string;
   name: string;
   url: string;
+  referralUrl?: string;
   description: string;
   logo: string;
   chains: Array<string>;

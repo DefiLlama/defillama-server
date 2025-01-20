@@ -1,6 +1,5 @@
 import { call, multiCall } from "@defillama/sdk/build/abi/index";
 import abi from "./abi.json";
-import axios from "axios";
 import {
   addToDBWritesList,
   getTokenAndRedirectDataMap,
@@ -10,8 +9,10 @@ import {
   Result as CallResult,
 } from "../../utils/sdkInterfaces";
 import { CoinData, Write } from "../../utils/dbInterfaces";
-import { requery } from "../../utils/sdk";
+import { getApi, requery } from "../../utils/sdk";
 import getBlock from "../../utils/block";
+import { getLogs } from "../../../utils/cache/getLogs";
+
 const manualVaults: { [chain: string]: string[] } = {
   ethereum: [
     "0x04bC0Ab673d88aE9dbC9DA2380cB6B79C4BCa9aE", // yBUSD
@@ -35,12 +36,23 @@ const manualVaults: { [chain: string]: string[] } = {
   ],
   arbitrum: [],
   fantom: [],
+  base: [],
 };
-const chains: object = {
-  ethereum: 1,
-  arbitrum: 42161,
-  optimism: 42161,
-  fantom: 250,
+const registries: {
+  [chain: string]: { target: string; fromBlock: number };
+} = {
+  ethereum: {
+    target: "0xaF1f5e1c19cB68B30aAD73846eFfDf78a5863319",
+    fromBlock: 16215520,
+  },
+  optimism: {
+    target: "0x79286Dd38C9017E5423073bAc11F53357Fc5C128",
+    fromBlock: 22451155,
+  },
+  base: {
+    target: "0xF3885eDe00171997BFadAa98E01E167B53a78Ec5",
+    fromBlock: 3263740,
+  },
 };
 interface TokenKeys {
   symbol: string;
@@ -125,32 +137,28 @@ async function getUsdValues(
 }
 async function pushMoreVaults(
   chain: string,
-  vaults: VaultKeys[],
+  vaults: string[],
   block: number | undefined,
 ) {
-  if (manualVaults[chain as keyof typeof manualVaults].length == 0)
-    return vaults;
+  vaults.push(...manualVaults[chain as keyof typeof manualVaults]);
+
   let [{ output: tokens }, { output: symbols }]: MultiCallResults[] =
     await Promise.all([
       multiCall({
         abi: abi.token,
         chain: chain as any,
-        calls: manualVaults[chain as keyof typeof manualVaults].map(
-          (v: string) => ({
-            target: v,
-          }),
-        ),
+        calls: vaults.map((v: string) => ({
+          target: v,
+        })),
         block,
         permitFailure: true,
       }),
       multiCall({
         abi: "erc20:symbol",
         chain: chain as any,
-        calls: manualVaults[chain as keyof typeof manualVaults].map(
-          (v: string) => ({
-            target: v,
-          }),
-        ),
+        calls: vaults.map((v: string) => ({
+          target: v,
+        })),
         block,
       }),
     ]);
@@ -167,9 +175,7 @@ async function pushMoreVaults(
     }),
   );
 
-  const vaultInfo: VaultKeys[] = manualVaults[
-    chain as keyof typeof manualVaults
-  ].map((v: string, i: number) => ({
+  const vaultInfo: VaultKeys[] = vaults.map((v: string, i: number) => ({
     address: v,
     token: {
       address: tokens[i].output,
@@ -178,25 +184,26 @@ async function pushMoreVaults(
     symbol: symbols[i].output,
     type: "manually added",
   }));
-  vaults.push(...vaultInfo);
+  return vaultInfo;
 }
-
-const blacklistedTokens = new Set(
-  ["0xbD17B1ce622d73bD438b9E658acA5996dc394b0d"].map((i) => i.toLowerCase()),
-);
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
 
-  let vaults: VaultKeys[] = (
-    await axios.get(
-      `https://api.yexporter.io/v1/chains/${
-        chains[chain as keyof object]
-      }/vaults/all`,
-    )
-  ).data.filter((i: any) => !blacklistedTokens.has(i.address.toLowerCase()));
-  // 135
-  await pushMoreVaults(chain, vaults, block);
+  const api = await getApi(chain, timestamp);
+  const { target, fromBlock } = registries[chain];
+  const vaultEvents: any[] = await getLogs({
+    api,
+    target,
+    fromBlock,
+    eventAbi:
+      "event NewVault(address indexed token, uint256 indexed vaultId, uint256 vaultType, address vault, string apiVersion)",
+    onlyArgs: true,
+  });
+
+  const vaultAddresses: string[] = vaultEvents.map((v) => v.vault);
+
+  const vaults = await pushMoreVaults(chain, vaultAddresses, block);
 
   const coinsData = await getTokenAndRedirectDataMap(
     vaults.map((v: VaultKeys) => v.token.address.toLowerCase()),

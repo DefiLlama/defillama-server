@@ -288,5 +288,16 @@ export default {
                 id: "5373",
             }
         }
+    },
+    "aerodrome": {
+        parentId: "Aerodrome",
+        "id": "3450"
+    },
+    "shadow-exchange": {
+        id: "5570",
+    },
+    "holdstation-swap": {
+        parentId: "Holdstation",
+        id: "5493",
     }
 } as AdaptorsConfig

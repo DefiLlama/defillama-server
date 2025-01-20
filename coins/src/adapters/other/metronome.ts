@@ -14,6 +14,13 @@ export const contracts: any = {
       "0x539505dde2b9771debe0898a84441c5e7fdf6bc0",
     ],
   },
+  base: {
+    synths: [
+      "0x1e41238acd3a9ff90b0dcb9ea96cf45f104e09ef",
+      "0x82562507429876486b60af4f32390ef0947b3d13",
+      "0x46fb68eb2b1fc43654abae5691d39d18d933e4b4",
+    ],
+  },
 };
 
 export default async function getTokenPrice(chain: string, timestamp: number) {
@@ -21,7 +28,7 @@ export default async function getTokenPrice(chain: string, timestamp: number) {
   const pricesObject: any = {};
   const writes: Write[] = [];
   const { synths } = contracts[chain];
-  if (["optimism"].includes(chain)) {
+  if (["optimism", 'base'].includes(chain)) {
     let underlyings = await api.multiCall({
       calls: synths,
       abi: "address:token",

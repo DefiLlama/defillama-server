@@ -1171,6 +1171,24 @@
       "decimals": "18",
       "symbol": "PEPE",
       "to": "coingecko#pepe"
+    },
+    "0xE657b115bc45c0786274c824f83e3e02CE809185": {
+      "name": "AAVE",
+      "decimals": "18",
+      "symbol": "AAVE",
+      "to": "coingecko#aave"
+    },
+    "0xe0C7226a58f54db71eDc6289Ba2dc80349B41974": {
+      "name": "HBAR",
+      "decimals": "8",
+      "symbol": "HBAR",
+      "to": "coingecko#hedera-hashgraph"
+    },
+    "0x769409037336430A1a5890065B7853f0D1D8b58f": {
+      "name": "PENGU",
+      "decimals": "6",
+      "symbol": "PENGU",
+      "to": "coingecko#pudgy-penguins"
     }
   },
   "scroll": {

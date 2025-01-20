@@ -47,8 +47,23 @@ export async function fxsp(timestamp: number): Promise<Write[]> {
     (tokens1 * pricingData[token1].price) / 10 ** pricingData[token1].decimals;
   const price = ((aum0 + aum1) * 1e18) / supply;
 
+  const confidence = Math.min(
+    0.95,
+    ...(Object.values(pricingData).map((d) => d.confidence) as any),
+  );
+
   const writes: Write[] = [];
-  addToDBWritesList(writes, chain, sp, price, 18, "fxSP", timestamp, "fxsp", 0);
+  addToDBWritesList(
+    writes,
+    chain,
+    sp,
+    price,
+    18,
+    "fxSP",
+    timestamp,
+    "fxsp",
+    confidence,
+  );
 
   return writes;
 }

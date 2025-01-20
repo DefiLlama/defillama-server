@@ -1619,5 +1619,27 @@ const data4: Protocol[] = [
     ],
     listedAt: 1737379705
   },
+  {
+    id: "5649",
+    name: "Yoko",
+    address: null,
+    symbol: "-",
+    url: "https://yoko.live/",
+    description:
+      "Yoko is a no-code platform for launching AI Agents",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/yoko.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "AI Agents",
+    chains: ["Sonic"],
+    module: "yoko-live/index.js",
+    twitter: "yokodotlive",
+    forkedFrom: ["Polymarket"],
+    oracles: [], 
+    listedAt: 1737416137
+  },
 ];
 export default data4;

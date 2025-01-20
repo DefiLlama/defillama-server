@@ -2326,5 +2326,9 @@ export default {
     },
     "waterneuron": {
         id: "4921",
+    },
+    "meteora-dlmm": {
+        parentId: "Meteora",
+        id: "4148",
     }
 } as AdaptorsConfig

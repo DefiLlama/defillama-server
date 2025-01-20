@@ -1332,7 +1332,7 @@ const data4: Protocol[] = [
       "Zarban is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets. It also gives you the opportunity to mint ZAR stablecoin.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/zarban.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -1353,7 +1353,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://symph.ag/",
     description:
-      "Symphony Exchange aggregates decentralized exchanges on the Sei Network into a single, unified interface",
+      "Symphony Exchange aggregates decentralized exchanges on the Sei Network into a single, unified interface.",
     chain: "Sei",
     logo: `${baseIconsUrl}/symphony-exchange.png`,
     audits: "0",

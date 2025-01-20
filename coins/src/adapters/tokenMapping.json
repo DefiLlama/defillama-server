@@ -5902,6 +5902,11 @@
     }
   },
   "eclipse": {
+    "F72PqK74jc28zjC7kWDk6ykJ2ZAbjNzn2jaAY9v9M6om": {
+      "to": "asset#ethereum:0x917cee801a67f933f2e6b33fc0cd1ed2d5909d88",
+      "decimals": 9,
+      "symbol": "weETHs"
+    },
     "So11111111111111111111111111111111111111112": {
       "to": "coingecko#ethereum",
       "decimals": 9,

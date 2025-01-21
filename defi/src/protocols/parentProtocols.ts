@@ -5341,11 +5341,11 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#orderly-network",
-    name: "Orderly Network",
+    name: "Orderly", // previous Orderly Network
     url: "https://orderly.network",
     description:
       "Orderly is an omnichain CLOB infrastructure.It’s the ultimate trading lego for seamless integration by any builder on any blockchain. Give your app the transparency and composability of DEXs, with the speed and performance of CEXs.",
-    logo: `${baseIconsUrl}/orderly-network.jpg`,
+    logo: `${baseIconsUrl}/orderly.jpg`,
     gecko_id: "orderly-network",
     cmcId: "32809",
     chains: [],

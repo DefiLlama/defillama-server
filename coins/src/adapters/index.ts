@@ -34,6 +34,7 @@ export default {
   cetus: require("./markets/cetus"),
   balanced: require("./markets/balanced"),
   tinyman: require("./markets/tinyman"),
+  ston: require("./markets/ston"),
   silo: require("./moneyMarkets/silo"),
   hlp: require("./yield/hlp"),
   digift: require("./rwa/digift"),

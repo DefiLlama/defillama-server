@@ -26,7 +26,7 @@ import { AdaptorRecordType } from '../../adaptors/db-utils/adaptor-record';
 
 const blacklistedAppCategorySet = new Set([
   "Stablecoin Issuer", "MEV",
-  // "Liquid Staking", // should this be blacklisted from the app-metrics?
+  "Liquid Staking",
 ])
 const blacklistedAppIdSet = new Set([
   '4695', // bloXroute

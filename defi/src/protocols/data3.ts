@@ -58127,7 +58127,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.swellnetwork.io/earn/vaults",
-    description: "earnETH is an ETH denominated vault that allows users to deposit their ETH assets to get automated risk adjusted yields and points",
+    description: "Swell Earn vaults are designed to simplify access to DeFi strategies, allowing users to effortlessly put their tokens to work in the DeFi ecosystem. By depositing tokens into the vault, users let the system automatically distribute those assets across multiple DeFi opportunities. With vault infrastructure and vault strategies provided by the team at Nucleus and active risk guardianship provided by Gauntlet . Assets deposited by users are certain to be a) up to date with latest opportunities b) optimized to capture the best yield mix and c) risk optimized to ensure best practices",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/swell-earn.png`,
     audits: "2",

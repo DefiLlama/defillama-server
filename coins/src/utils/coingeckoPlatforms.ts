@@ -33,7 +33,15 @@ export interface CoinMetadata {
   last_updated_at: number;
 }
 
+export function padAddress(address: string, length: number = 66): string {
+  let prefix = "0x";
+  const data = address.substring(address.indexOf(prefix) + prefix.length);
+  const zeros = length - prefix.length - data.length;
+  for (let i = 0; i < zeros; i++) prefix += "0";
+  return prefix + data;
+}
 function lowercase(address: string, chain: string) {
+  if (chain == "starknet") return padAddress(address.toLowerCase());
   return chainsThatShouldNotBeLowerCased.includes(chain)
     ? address
     : address.toLowerCase();
@@ -109,7 +117,6 @@ export async function aggregatePlatforms(
   address: string,
   aggregatedPlatforms: string[],
 ) {
-  const normalizedAddress =
-    chain in chainsThatShouldNotBeLowerCased ? address : address.toLowerCase();
+  const normalizedAddress = lowercase(address, chain);
   aggregatedPlatforms.push(`${chain}:${normalizedAddress}`);
 }

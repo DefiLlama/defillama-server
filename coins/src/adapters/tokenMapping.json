@@ -1331,6 +1331,12 @@
       "decimals": "9",
       "symbol": "SUI",
       "to": "coingecko#sui"
+    },
+    "0xd1D7A0Ff6Cd3d494038b7FB93dbAeF624Da6f417": {
+      "name": "TRUMP",
+      "decimals": "6",
+      "symbol": "TRUMP",
+      "to": "coingecko#official-trump"
     }
   },
   "scroll": {

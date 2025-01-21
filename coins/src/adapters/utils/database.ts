@@ -11,13 +11,12 @@ import {
   CoinData,
   Metadata,
 } from "./dbInterfaces";
-import { sendMessage } from "./../../../../defi/src/utils/discord";
 import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 import pLimit from "p-limit";
 import { sliceIntoChunks } from "@defillama/sdk/build/util";
 import produceKafkaTopics from "../../utils/coins3/produce";
-import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
+import { lowercase } from "../../utils/coingeckoPlatforms";
 
 const rateLimited = pLimit(10);
 process.env.tableName = "prod-coins-table";
@@ -126,11 +125,7 @@ export function addToDBWritesList(
   const PK: string =
     chain == "coingecko"
       ? `coingecko#${token.toLowerCase()}`
-      : `asset#${chain}:${
-          chainsThatShouldNotBeLowerCased.includes(chain)
-            ? token
-            : token.toLowerCase()
-        }`;
+      : `asset#${chain}:${lowercase(token, chain)}`;
   if (timestamp == 0) {
     writes.push(
       ...[
@@ -208,11 +203,7 @@ async function getTokenAndRedirectDataDB(
         return getTVLOfRecordClosestToTimestamp(
           chain == "coingecko"
             ? `coingecko#${t.toLowerCase()}`
-            : `asset#${chain}:${
-                chainsThatShouldNotBeLowerCased.includes(chain)
-                  ? t
-                  : t.toLowerCase()
-              }`,
+            : `asset#${chain}:${lowercase(t, chain)}`,
           timestamp,
           hoursRange * 60 * 60,
         );
@@ -226,11 +217,7 @@ async function getTokenAndRedirectDataDB(
         PK:
           chain == "coingecko"
             ? `coingecko#${t.toLowerCase()}`
-            : `asset#${chain}:${
-                chainsThatShouldNotBeLowerCased.includes(chain)
-                  ? t
-                  : t.toLowerCase()
-              }`,
+            : `asset#${chain}:${lowercase(t, chain)}`,
         SK: 0,
       })),
     );
@@ -493,11 +480,7 @@ export async function getDbMetadata(
       PK:
         chain == "coingecko"
           ? `coingecko#${a.toLowerCase()}`
-          : `asset#${chain}:${
-              chainsThatShouldNotBeLowerCased.includes(chain)
-                ? a
-                : a.toLowerCase()
-            }`,
+          : `asset#${chain}:${lowercase(a, chain)}`,
       SK: 0,
     })),
   );

@@ -40,7 +40,7 @@ export function padAddress(address: string, length: number = 66): string {
   for (let i = 0; i < zeros; i++) prefix += "0";
   return prefix + data;
 }
-function lowercase(address: string, chain: string) {
+export function lowercase(address: string, chain: string) {
   if (chain == "starknet") return padAddress(address.toLowerCase());
   return chainsThatShouldNotBeLowerCased.includes(chain)
     ? address

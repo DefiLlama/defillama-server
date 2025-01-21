@@ -52,7 +52,7 @@ export default async function main(timestamp?: number) {
     delete chains[c];
   });
 
-  // if (!timestamp) await verifyChanges(chains);
+  if (!timestamp) await verifyChanges(chains);
 
   return chains;
 }

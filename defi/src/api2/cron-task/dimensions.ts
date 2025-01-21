@@ -19,8 +19,28 @@ import { getOverviewProcess2, getProtocolDataHandler2 } from "../routes/dimensio
 import { storeRouteData } from "../cache/file-cache"
 import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors"
 import { sluggifyString } from "../../utils/sluggify"
+import { AdaptorRecordType } from '../../adaptors/db-utils/adaptor-record';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
+
+
+const blacklistedAppCategorySet = new Set([
+  "Stablecoin Issuer", "MEV",
+  "Liquid Staking",
+])
+const blacklistedAppIdSet = new Set([
+  '4695', // bloXroute
+])
+
+function getProtocolAppMetricsFlag(info: any) {
+  if (info.protocolType && info.protocolType !== ProtocolType.PROTOCOL) return false
+  if (info.category && blacklistedAppCategorySet.has(info.category!)) return false
+  let id = info.id2 ?? info.id
+  if (id && blacklistedAppIdSet.has(info.id2)) return false
+  return true
+}
+
+
 
 function getTimeData(moveADayBack = false) {
 
@@ -149,7 +169,8 @@ async function run() {
 
 
     for (const [_dimensionProtocolId, dimensionProtocolInfo] of Object.entries(dimensionProtocolMap) as any) {
-      addProtocolData({ protocolId: dimensionProtocolInfo.id2, dimensionProtocolInfo, isParentProtocol: false, adapterType, skipChainSummary: false, })
+      const hasAppMetrics = adapterType === AdapterType.FEES && getProtocolAppMetricsFlag(dimensionProtocolInfo)
+      addProtocolData({ protocolId: dimensionProtocolInfo.id2, dimensionProtocolInfo, isParentProtocol: false, adapterType, skipChainSummary: false, hasAppMetrics,})
     }
 
     for (const entry of Object.entries(parentProtocolsData)) {
@@ -170,7 +191,7 @@ async function run() {
     adapterData.lastUpdated = getUnixTimeNow()
     console.timeEnd(timeKey3)
 
-    function addProtocolData({ protocolId, dimensionProtocolInfo = {}, isParentProtocol = false, adapterType, skipChainSummary = false, records }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: any }) {
+    function addProtocolData({ protocolId, dimensionProtocolInfo = {}, isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: any, hasAppMetrics?: boolean }) {
       if (isParentProtocol) skipChainSummary = true
 
 
@@ -269,7 +290,17 @@ async function run() {
         if (!summaries.earliestTimestamp || timestamp < summaries.earliestTimestamp) summaries.earliestTimestamp = timestamp
 
 
-        Object.entries(aggregated).forEach(([recordType, aggData]: any) => {
+        Object.entries(aggregated).forEach(addRecordData)
+
+        if (hasAppMetrics) {
+          const dailyFeesData = aggregated[AdaptorRecordType.dailyFees]
+          const dailyRevenueData = aggregated[AdaptorRecordType.dailyRevenue]
+
+          if (dailyFeesData) addRecordData([AdaptorRecordType.dailyAppFees, dailyFeesData])
+          if (dailyRevenueData) addRecordData([AdaptorRecordType.dailyAppRevenue, dailyRevenueData])
+        }
+
+        function addRecordData([recordType, aggData]: any) {
           let { chains, value } = aggData
 
           // if (value === 0) return; // skip zero values
@@ -334,7 +365,7 @@ async function run() {
             if (!chainSummary.chartBreakdown[timeS]) chainSummary.chartBreakdown[timeS] = {}
             chainSummary.chartBreakdown[timeS][protocolName] = value
           })
-        })
+        }
       })
 
       for (const recordType of recordTypes) {
@@ -348,12 +379,12 @@ async function run() {
         // if (!yesterdayRecord && !protocol.info.disabled) yesterdayRecord = _protocolData.latest
         const protocolSummary = initSummaryItem() as ProtocolSummary
         protocol.summaries[recordType] = protocolSummary
+        let recordLabel = recordType
+        if (recordType === AdaptorRecordType.dailyAppFees) recordLabel = AdaptorRecordType.dailyFees
+        if (recordType === AdaptorRecordType.dailyAppRevenue) recordLabel = AdaptorRecordType.dailyRevenue
 
-        addToSummary({ record: todayRecord?.aggregated[recordType], summaryKey: 'total24h', recordType, protocolSummary, skipChainSummary, })
-        // if (protocol.info.defillamaId === '3809') {
-        //   console.log('todayRecord',  protocolSummary, _protocolData.today, _protocolData.latest, lastTimeString, dayBeforeLastTimeString, _protocolData.today, _protocolData.yesterday)
-        // }
-        addToSummary({ record: yesterdayRecord?.aggregated[recordType], summaryKey: 'total48hto24h', recordType, protocolSummary, skipChainSummary, })
+        addToSummary({ record: todayRecord?.aggregated[recordLabel], summaryKey: 'total24h', recordType, protocolSummary, skipChainSummary, })
+        addToSummary({ record: yesterdayRecord?.aggregated[recordLabel], summaryKey: 'total48hto24h', recordType, protocolSummary, skipChainSummary, })
         addToSummary({ record: _protocolData.sevenDaysAgo?.aggregated[recordType], summaryKey: 'total7DaysAgo', recordType, protocolSummary, skipChainSummary, })
         addToSummary({ record: _protocolData.thirtyDaysAgo?.aggregated[recordType], summaryKey: 'total30DaysAgo', recordType, protocolSummary, skipChainSummary, })
         addToSummary({ records: _protocolData.lastWeekData, summaryKey: 'total7d', recordType, protocolSummary, skipChainSummary, })
@@ -465,7 +496,6 @@ async function run() {
         parentProtocolSummaries[protocol.info.id] = protocol
       }
     }
-
 
     function addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, protocolSummary, skipChainSummary = false }: { records?: any[], recordType: string, summaryKey: string, chainSummaryKey?: string, record?: any, protocolSummary: any, skipChainSummary?: boolean }) {
       if (protocolSummary) _addToSummary({ record, records, recordType, summaryKey, chainSummaryKey, summary: protocolSummary })

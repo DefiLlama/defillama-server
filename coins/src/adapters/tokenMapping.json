@@ -876,6 +876,11 @@
       "to": "coingecko#ethena-staked-usde",
       "decimals": 18,
       "symbol": "sUSDe"
+    },
+    "0xba3e932310cd1dbf5bd13079bd3d6bae4570886f": {
+      "to": "coingecko#umoja-ybtc",
+      "decimals": 18,
+      "symbol": "YBTC"
     }
   },
   "tezos": {

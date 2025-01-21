@@ -2334,5 +2334,8 @@ export default {
     "meteora": {
         parentId: "Meteora",
         id: "385"
+    },
+    "zarban": {
+        id: "5636",
     }
 } as AdaptorsConfig

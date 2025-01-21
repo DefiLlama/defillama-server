@@ -2,8 +2,10 @@ import { addToDBWritesList, getTokenAndRedirectDataMap } from "./database";
 import { getTokenInfo } from "./erc20";
 import { Write, CoinData } from "./dbInterfaces";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
+import { padAddress } from "../../utils/coingeckoPlatforms";
 
 function normalize(addr: string, chain?: string) {
+  if (chain == 'starknet') return padAddress(addr.toLowerCase())
   if (!addr || chainsThatShouldNotBeLowerCased.includes(chain as any))
     return addr;
   return addr.toLowerCase();

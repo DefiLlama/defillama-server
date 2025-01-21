@@ -21419,7 +21419,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "gearbox",
     cmcId: "16360",
-    category: "Leveraged Farming",
+    category: "Lending",
     chains: ["Ethereum"],
     oracles: ["Chainlink", "RedStone"],
     module: "gearbox/index.js",

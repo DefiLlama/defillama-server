@@ -299,5 +299,13 @@ export default {
     "holdstation-swap": {
         parentId: "Holdstation",
         id: "5493",
+    },
+    "zkswap-stable": {
+        parentId: "zkSwap Finance",
+        id: "5391",
+    },
+    "zkswap-v3": {
+        parentId: "zkSwap Finance",
+        id: "5392",
     }
 } as AdaptorsConfig

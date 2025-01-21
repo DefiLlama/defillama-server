@@ -3449,6 +3449,10 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
+    parent: {
+      chain: "Celestia",
+      types: ["L2"]
+    },
     twitter: "EclipseFND",
     url: "https://www.eclipse.xyz",
   },

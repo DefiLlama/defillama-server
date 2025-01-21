@@ -56202,7 +56202,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5177",
-    name: "Filament Finance",
+    name: "Filament Beta",
     address: null,
     symbol: "-",
     url: "https://filament.finance",
@@ -56220,7 +56220,7 @@ const data3: Protocol[] = [
     twitter: "FilamentFinance",
     forkedFrom: [],
     oracles: [],
-    github: ["FilamentFinance"],
+    parentProtocol: "parent#filament",
     listedAt: 1727184099
   },
   {

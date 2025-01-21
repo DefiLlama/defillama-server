@@ -1641,5 +1641,50 @@ const data4: Protocol[] = [
     oracles: [], 
     listedAt: 1737416137
   },
+  {
+    id: "5650",
+    name: "Filament V1",
+    address: null,
+    symbol: "-",
+    url: "https://filament.finance",
+    description:
+      "Filament is a super app for on-chain derivatives, built on Sei’s Parallelised EVM. It ensures high trading and capital efficiency, even in low liquidity situations, by using a hybrid model that combines a Central Limit Order Book (CLOB) and a Compartment-based Pool for order matching.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/filament-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Sei"],
+    module: "filament-v2/index.js",
+    twitter: "FilamentFinance",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#filament",
+    listedAt: 1737482577
+  },
+  {
+    id: "5651",
+    name: "5ire Dapp Staking",
+    address: null,
+    symbol: "-",
+    url: "https://www.5ire.org",
+    description:
+      "Stake 5ire tokens to earn a yield",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/5ire-dapp-staking.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "5ire-dapp-staking/index.js",
+    twitter: "5ireChain",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1737483187
+  },
 ];
 export default data4;

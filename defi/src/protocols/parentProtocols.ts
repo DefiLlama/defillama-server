@@ -6225,6 +6225,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SoneFi_xyz",
   },
+  {
+    id: "parent#filament",
+    name: "Filament Finance",
+    url: "https://filament.finance",
+    description:
+      "Filament is a super app for on-chain derivatives, built on Sei’s Parallelised EVM. It ensures high trading and capital efficiency, even in low liquidity situations, by using a hybrid model that combines a Central Limit Order Book (CLOB) and a Compartment-based Pool for order matching.",
+    logo: `${baseIconsUrl}/filament-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "FilamentFinance",
+    github: ["FilamentFinance"],
+  },
 ];
 
 export default parentProtocols;

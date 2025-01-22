@@ -23,7 +23,7 @@ async function getTokenPrices(timestamp: number) {
 
   function addToken({ id, symbol, decimals, price, hex }: { id: string, symbol: string, decimals: number, price: number, hex: string,}) {
     addToDBWritesList(writes, chain, hex, price, decimals, symbol, timestamp, 'ston', 0.9)
-    addToDBWritesList(writes, chain, id, undefined, decimals, symbol, timestamp, 'ston', 1, `asset#ton:${hex}`)
+    addToDBWritesList(writes, chain, id, undefined, decimals, symbol, timestamp, 'ston', 0.9, `asset#ton:${hex}`)
   }
 
   return writes

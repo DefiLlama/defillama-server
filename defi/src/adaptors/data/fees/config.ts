@@ -2337,5 +2337,8 @@ export default {
     },
     "zarban": {
         id: "5636",
+    },
+    "vectorfun": {
+        id: "5653"
     }
 } as AdaptorsConfig

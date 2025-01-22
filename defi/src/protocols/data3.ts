@@ -64816,7 +64816,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Chain",
-    chains: ["Ethereum"],
+    chains: ["Celestia", "Ethereum"],
     oracles: [],
     forkedFrom: [],
     module: "eclipse-bridge/index.js",

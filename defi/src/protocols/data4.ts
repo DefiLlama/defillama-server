@@ -1686,5 +1686,28 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1737483187
   },
+  {
+    id: "5652",
+    name: "Atoll",
+    address: "sonic:0xd1DA314f7db27DbE3c61aC172bE13d86e67688B7",
+    symbol: "ATOLL",
+    url: "https://atoll.money/",
+    description:
+      "Atoll Protocol is a decentralized stable coin (peging coin) protocol built entirely of AMOs (Algorithmic Market Operations). We do our best effort to acquire more real yield for the protocol users",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/atoll.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Sonic"],
+    module: "atoll/index.js",
+    twitter: "atoll_protocol",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/Marvin051499/atoll-smart-contracts/blob/main/PeckShield-Audit-Report-Atoll-v1.0.pdf"],
+    listedAt: 1737560233
+  },
 ];
 export default data4;

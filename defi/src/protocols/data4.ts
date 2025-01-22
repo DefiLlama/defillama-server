@@ -1634,7 +1634,7 @@ const data4: Protocol[] = [
     chains: ["Sonic"],
     module: "yoko-live/index.js",
     twitter: "yokodotlive",
-    forkedFrom: ["Polymarket"],
+    forkedFrom: [],
     oracles: [], 
     listedAt: 1737416137
   },

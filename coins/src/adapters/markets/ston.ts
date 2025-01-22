@@ -44,7 +44,7 @@ async function getPoolData() {
     id: address(i.contract_address).toString(),
     symbol: i.symbol,
     decimals: i.decimals,
-    price: i.dex_price_usd,
+    price: Number(i.dex_price_usd),
     hex: address(i.contract_address).toRawString(),
   }))
 }

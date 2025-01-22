@@ -50442,7 +50442,7 @@ const data3: Protocol[] = [
   {
     id: "4921",
     name: "WaterNeuron",
-    address: null,
+    address: "icp:jcmow-hyaaa-aaaaq-aadlq-cai",
     symbol: "WTN",
     assetToken: "nICP",
     url: "https://waterneuron.fi/",

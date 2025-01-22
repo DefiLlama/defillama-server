@@ -1706,5 +1706,26 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/Marvin051499/atoll-smart-contracts/blob/main/PeckShield-Audit-Report-Atoll-v1.0.pdf"],
     listedAt: 1737560233
   },
+  {
+    id: "5653",
+    name: "VECTOR.FUN",
+    address: null,
+    symbol: "-",
+    url: "https://www.vector.fun/",
+    description:
+      "APE MEMES WITH FRENS • LIVE ON APPLE + GOOGLE PLAY STORES",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/vector.fun.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "VECTORDOTFUN",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 export default data4;

@@ -47,6 +47,10 @@ const config: any = {
     "0x796e4d53067ff374b89b2ac101ce0c1f72ccaac2":
       "0xdc4224cea3afdddbfc6aa23ffeaa1c50a59a6493", // uBTC
   },
+  arbitrum: {
+    "0xba3e932310cd1dbf5bd13079bd3d6bae4570886f":
+      "0x695F5B9Bc0b5A41fb4eB0B1fB5DFA0F6d389A079", // yBTC
+  },
 };
 
 export function unknownTokensV3(timestamp: number = 0) {

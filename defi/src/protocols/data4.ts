@@ -1603,7 +1603,7 @@ const data4: Protocol[] = [
       "The World's Opinion Protocol, enabling anyone to create predictions using any token in a decentralized, permissionless way. The O.LAB product suite empower users to predict, trade, and verify truth like never before",
     chain: "Base",
     logo: `${baseIconsUrl}/o.lab.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -1613,10 +1613,7 @@ const data4: Protocol[] = [
     twitter: "opinionlabsxyz",
     forkedFrom: ["Polymarket"],
     oracles: [], 
-    audit_links: [
-      "http://scalebit.xyz/reports/20241111-O.Lab-Final-Audit-Report.pdf",
-      "http://static.olab.xyz/Prediction%20Market%20-%20Zellic%20Audit%20Report.pdf"
-    ],
+    audit_links: [],
     listedAt: 1737379705
   },
   {

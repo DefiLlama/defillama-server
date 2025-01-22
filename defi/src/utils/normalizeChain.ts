@@ -2907,7 +2907,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup", "Superchain"],
     twitter: "derivexyz",
     url: "https://www.derive.xyz/",
     chainId: 957,
@@ -3590,7 +3590,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -3674,7 +3674,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM", "Rollup"],
+    categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]

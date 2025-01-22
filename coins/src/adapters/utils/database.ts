@@ -126,14 +126,25 @@ export function addToDBWritesList(
     chain == "coingecko"
       ? `coingecko#${token.toLowerCase()}`
       : `asset#${chain}:${lowercase(token, chain)}`;
-  if (timestamp == 0) {
+  if (redirect && timestamp == 0) {
+    writes.push({
+      SK: 0,
+      PK,
+      price,
+      symbol,
+      decimals: Number(decimals),
+      redirect,
+      timestamp: getCurrentUnixTimestamp(),
+      adapter,
+      confidence: Number(confidence),
+    });
+  } else if (timestamp == 0) {
     writes.push(
       ...[
         {
           SK: getCurrentUnixTimestamp(),
           PK,
           price,
-          redirect,
           adapter,
           confidence: Number(confidence),
         },
@@ -396,16 +407,16 @@ export async function batchWriteWithAlerts(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
   failOnError: boolean,
 ): Promise<void> {
-  const previousItems: DbEntry[] = await readPreviousValues(items);
+  const { previousItems, redirectChanges } = await readPreviousValues(items);
   const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
     await checkMovement(items, previousItems);
-  await batchWrite(filteredItems, failOnError);
-  await produceKafkaTopics(filteredItems as any[]);
+  await batchWrite([...filteredItems, ...redirectChanges], failOnError);
+  await produceKafkaTopics([...filteredItems, ...redirectChanges] as any[]);
 }
 export async function batchWrite2WithAlerts(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
 ) {
-  const previousItems: DbEntry[] = await readPreviousValues(items);
+  const { previousItems, redirectChanges } = await readPreviousValues(items);
   const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
     await checkMovement(items, previousItems);
 
@@ -419,7 +430,7 @@ export async function batchWrite2WithAlerts(
 async function readPreviousValues(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
   latencyHours: number = 6,
-): Promise<DbEntry[]> {
+): Promise<{ previousItems: DbEntry[]; redirectChanges: any[] }> {
   let queries: { PK: string; SK: number }[] = [];
   items.map(
     (t: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap, i: number) => {
@@ -432,9 +443,41 @@ async function readPreviousValues(
   );
   const results = await batchGet(queries);
   const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
-  return results.filter(
+  const previousItems = results.filter(
     (r: any) => r.timestamp > recentTime || r.confidence > 1,
   );
+
+  const redirectChanges = findRedirectChanges(items, results);
+  return { previousItems, redirectChanges };
+}
+function findRedirectChanges(items: any[], results: any[]): any[] {
+  const newRedirects: { [key: string]: any } = {};
+  const oldRedirects: { [key: string]: any } = {};
+  items.map((i: any) => {
+    if (!i.redirect) return;
+    newRedirects[i.PK] = i;
+  });
+  results.map((i: any) => {
+    if (!i.redirect) return;
+    oldRedirects[i.PK] = i;
+  });
+
+  const redirectChanges: any[] = [];
+  Object.keys(newRedirects).map((n: string) => {
+    const old = oldRedirects[n];
+    if (!old) return;
+    const { redirect, timestamp, PK, confidence } = newRedirects[n];
+    if (old.redirect == redirect) return;
+    redirectChanges.push({
+      SK: timestamp,
+      PK,
+      adapter: old.adapter,
+      confidence,
+      redirect: old.redirect,
+    });
+  });
+
+  return redirectChanges;
 }
 async function checkMovement(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],

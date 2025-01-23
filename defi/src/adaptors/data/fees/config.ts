@@ -2340,5 +2340,8 @@ export default {
     },
     "vectorfun": {
         id: "5653"
+    },
+    "soneium": {
+        id: "1868"
     }
 } as AdaptorsConfig

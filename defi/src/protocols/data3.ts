@@ -48151,6 +48151,7 @@ const data3: Protocol[] = [
     github: ["DorianFi"],
     listedAt: 1719485418,
   },
+  /* group listing under one product
   {
     id: "4820",
     name: "Resolv RLP",
@@ -48175,6 +48176,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#resolv",
     listedAt: 1719485918,
   },
+  */
   {
     id: "4821",
     name: "Kayen Protocol",
@@ -62485,6 +62487,7 @@ const data3: Protocol[] = [
     twitter: "Matrixport_EN",
     listedAt: 1733227415
   },
+  /*
   {
     id: "5456",
     name: "Resolv USR",
@@ -62507,6 +62510,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#resolv",
     listedAt: 1733227890
   },
+  */
   {
     id: "5457",
     name: "Renec Lend",

@@ -1890,5 +1890,27 @@ const data4: Protocol[] = [
     audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
     listedAt: 1737664915
   },
+  {
+    id: "5661",
+    name: "CreateMyToken",
+    address: null,
+    symbol: "-",
+    url: "https://www.createmytoken.com/",
+    description: "Create your own token in just 1 minute and deploy it on Solana, Ethereum, Base, Polygon, BNB Smart Chain and more! No code, no setup, no login, and free!",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/createmytoken.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Ethereum","Base","Solana","Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "CreateMyToken",
+    github: ["CreateMyToken"],
+    listedAt: 1737674000,
+  },
 ];
 export default data4;

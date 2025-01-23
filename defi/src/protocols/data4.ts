@@ -1736,7 +1736,7 @@ const data4: Protocol[] = [
     description:
       "$yBTC is a multi-strategy, next-gen BTC yield vault token providing the lowest risk, highest yields for Bitcoin.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/atoll.png`,
+    logo: `${baseIconsUrl}/umoja-ybtc.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

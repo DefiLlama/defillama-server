@@ -1727,5 +1727,27 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "5654",
+    name: "Umoja yBTC",
+    address: null,
+    symbol: "-",
+    url: "https://umoja.xyz/smartcoins",
+    description:
+      "$yBTC is a multi-strategy, next-gen BTC yield vault token providing the lowest risk, highest yields for Bitcoin.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/atoll.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Arbitrum"],
+    module: "umoja-ybtc/index.js",
+    twitter: "UmojaProtocol",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1737625162
+  },
 ];
 export default data4;

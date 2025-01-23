@@ -1798,5 +1798,51 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.liquity.org/v2-documentation/technical-resources"],
     listedAt: 1737631098
   },
+  {
+    id: "5657",
+    name: "ZTLN-P",
+    address: null,
+    symbol: "-",
+    url: "https://zoth.io/",
+    description:
+      "Zoth is a community-first restaking ecosystem for RWAFi.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ztln-p.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "zoth-ztlnp/index.js",
+    twitter: "zothdotio",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#zoth",
+    audit_links: [],
+    listedAt: 1737640913
+  },
+  {
+    id: "5658",
+    name: "Moonlander",
+    address: "cronos_zkevm:0xe8E4A973Bb36E1714c805F88e2eb3A89f195D04f",
+    symbol: "MLP",
+    url: "https://moonlander.trade/",
+    description:
+      "Moonlander is a decentralized perpetual trading platform on Cronos zkEVM chain that offers both a staking pool and on-chain perpetuals, primed to empower all traders and stakers with galactic opportunities. Leveraging on the latest layer 2 zk-technology, transactions on Moonlander are executed at higher speed and lower fees",
+    chain: "Cronos zkEvm",
+    logo: `${baseIconsUrl}/moonlander.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Cronos zkEvm"],
+    module: "moonlander/index.js",
+    twitter: "MoonlanderTrade",
+    forkedFrom: ["APX Finance"],
+    oracles: ["Pyth"], // https://docs.moonlander.trade/
+    listedAt: 1737641003
+  },
 ];
 export default data4;

@@ -139,6 +139,7 @@ export default async function (
     }
   }
 
+  await checkForMissingAssets(protocol, lastHourlyUsdTVLObject, usdTokenBalances)
   let tvlPrev1Day = lastDailyTVLRecord.tvl
   let tvlPrev1Week = lastWeeklyTVLRecord.tvl
   const dayDailyTvl = dayDailyTvlRecord.tvl
@@ -184,4 +185,28 @@ export default async function (
     saveProtocolItem(hourlyTvl, { id: protocol.id, timestamp: unixTimestamp, data: hourlyData, }, writeOptions),
     saveProtocolItem(dailyTvl, { id: protocol.id, timestamp: dayTimestamp, data: tvl, }, writeOptions),
   ])
+}
+
+
+async function checkForMissingAssets(
+  protocol: Protocol,
+  previous: tvlsObject<TokensValueLocked>,
+  current: tvlsObject<TokensValueLocked>
+) {
+  let errorMessage: string = `TVL flags in ${protocol.module}: \n`;
+  const baseErrorLength: number = errorMessage.length
+  Object.keys(previous).map((chain: string) => {
+    if (chain == 'SK') return 
+    if (!(chain in current)) {
+      errorMessage += `chain ${chain} missing \n`;
+      return;
+    }
+    Object.keys(previous[chain]).map((ticker: string) => {
+      if (!(ticker in current[chain]) || current[chain][ticker] == 0) errorMessage += `symbol ${ticker} missing \n`;
+    });
+  });
+
+  if (errorMessage.length == baseErrorLength) return 
+  await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!);
+  throw new Error(errorMessage);
 }

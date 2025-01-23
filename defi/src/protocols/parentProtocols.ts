@@ -6240,6 +6240,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "FilamentFinance",
     github: ["FilamentFinance"],
   },
+  {
+    id: "parent#umoja-protocol",
+    name: "Umoja Protocol",
+    url: "https://umoja.xyz",
+    description:
+      "Umoja is DeFi's structured product and trade execution layer, offering seamless access to low-risk, high-yield crypto assets through 'smartcoins. These innovative, crypto-collateralized digital assets are designed to protect principal while generating sustainable yields, making wealth creation effortless and accessible to everyone",
+    logo: `${baseIconsUrl}/umoja-protocol.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "UmojaProtocol",
+  },
+
 ];
 
 export default parentProtocols;

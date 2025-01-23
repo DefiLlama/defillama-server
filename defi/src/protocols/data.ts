@@ -3506,18 +3506,18 @@ const data: Protocol[] = [
   },
   {
     id: "270",
-    name: "Liquity",
+    name: "Liquity V1",
     address: "0x6DEA81C8171D0bA574754EF6F8b412F2Ed88c54D",
     symbol: "LQTY",
     url: "https://www.liquity.org/",
     description:
       "Liquity is a decentralized borrowing protocol that allows you to draw 0% interest loans against Ether used as collateral.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/liquity.jpg`,
+    logo: `${baseIconsUrl}/liquity-v1.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "liquity",
-    cmcId: "7429",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Ethereum"],
     module: "liquity/index.js",
@@ -3527,9 +3527,8 @@ const data: Protocol[] = [
       "https://github.com/trailofbits/publications/blob/master/reviews/Liquity.pdf",
       "https://www.coinspect.com/liquity-audit/",
     ],
-    oracles: ["Chainlink"],
-    stablecoins: ["liquity-usd"],
-    github: ["liquity"],
+    parentProtocol: "parent#liquity",
+    oracles: ["Chainlink"]
   },
   {
     id: "271",
@@ -4652,7 +4651,7 @@ const data: Protocol[] = [
     module: "fluity/index.js",
     twitter: "FluityFinance",
     audit_links: ["https://docs.fluity.finance/audits"],
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     github: ["fluity-finance"],
   },
   {
@@ -4819,7 +4818,7 @@ const data: Protocol[] = [
     module: "aquarius/index.js",
     twitter: "Aquarius__Fi",
     audit_links: [],
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     deadUrl: true,
   },
   {
@@ -5550,7 +5549,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/xDollar-Finance/xDollar-contracts/blob/main/xDollar%20-%20Smart%20Contract%20Audit%20v210624.pdf",
     ],
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     github: ["xDollar-Finance"],
   },
   {
@@ -6055,7 +6054,7 @@ const data: Protocol[] = [
     module: "polyquity/index.js",
     twitter: "polyquity_org",
     audit_links: ["https://github.com/PolyQuity/audits/tree/main"],
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     github: ["PolyQuity"],
   },
   {
@@ -9278,7 +9277,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "teddy/index.js",
     treasury: "teddy.js",
     twitter: "TeddyCashLive",
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     github: ["teddy-cash"],
   },
   {
@@ -13645,7 +13644,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "stabilize_fi",
     oracles: ["Chainlink"],
     listedAt: 1635796872,
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     github: ["Stabilizefi"],
   },
   {
@@ -13757,7 +13756,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DefiHalal",
     oracles: ["Chainlink"],
     listedAt: 1635801672,
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     deadUrl: true,
   },
   {
@@ -17158,7 +17157,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Songbird"],
     module: "flare-loans/index.js",
     twitter: "enosys_global",
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     parentProtocol: "parent#enosys",
     listedAt: 1637821444,
   },
@@ -19013,7 +19012,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "piggy/index.js",
     twitter: "Piggy_Fi",
     audit_links: ["https://www.certik.org/projects/piggy"],
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     listedAt: 1638999656,
     deadUrl: true,
   },
@@ -19745,7 +19744,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "TopShelfFinance",
     audit_links: ["https://app.topshelf.finance/PeckShield-Audit-Report-Topshelf-v1.0.pdf"],
     listedAt: 1639732995,
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
   },
   {
     id: "1031",

@@ -1774,5 +1774,29 @@ const data4: Protocol[] = [
     github: ["resolv-im"],
     listedAt: 1737626553
   },
+  {
+    id: "5656",
+    name: "Liquity V2",
+    address: "0x6DEA81C8171D0bA574754EF6F8b412F2Ed88c54D",
+    symbol: "LQTY",
+    url: "https://www.liquity.org/",
+    description:
+      "Liquity is a decentralized borrowing protocol that allows you to draw 0% interest loans against Ether used as collateral.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/liquity-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "liquity-v2/index.js",
+    twitter: "LiquityProtocol",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#liquity",
+    audit_links: ["https://docs.liquity.org/v2-documentation/technical-resources"],
+    listedAt: 1737631098
+  },
 ];
 export default data4;

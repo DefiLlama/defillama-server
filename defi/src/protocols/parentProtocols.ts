@@ -6252,6 +6252,21 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "UmojaProtocol",
   },
+  {
+    id: "parent#liquity",
+    name: "Liquity",
+    url: "https://www.liquity.org/",
+    description:
+      "Liquity is a decentralized borrowing protocol that allows you to draw 0% interest loans against Ether used as collateral.",
+    logo: `${baseIconsUrl}/liquity.jpg`,
+    gecko_id: "liquity",
+    cmcId: "7429",
+    chains: [],
+    twitter: "LiquityProtocol",
+    treasury: "liquity-treasury.js",
+    stablecoins: ["liquity-usd"],
+    github: ["liquity"],
+  },
 
 ];
 

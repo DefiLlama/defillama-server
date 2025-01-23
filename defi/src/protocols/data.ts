@@ -4651,7 +4651,7 @@ const data: Protocol[] = [
     module: "fluity/index.js",
     twitter: "FluityFinance",
     audit_links: ["https://docs.fluity.finance/audits"],
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     github: ["fluity-finance"],
   },
   {
@@ -4818,7 +4818,7 @@ const data: Protocol[] = [
     module: "aquarius/index.js",
     twitter: "Aquarius__Fi",
     audit_links: [],
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     deadUrl: true,
   },
   {
@@ -5549,7 +5549,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/xDollar-Finance/xDollar-contracts/blob/main/xDollar%20-%20Smart%20Contract%20Audit%20v210624.pdf",
     ],
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     github: ["xDollar-Finance"],
   },
   {
@@ -6054,7 +6054,7 @@ const data: Protocol[] = [
     module: "polyquity/index.js",
     twitter: "polyquity_org",
     audit_links: ["https://github.com/PolyQuity/audits/tree/main"],
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     github: ["PolyQuity"],
   },
   {
@@ -9277,7 +9277,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "teddy/index.js",
     treasury: "teddy.js",
     twitter: "TeddyCashLive",
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     github: ["teddy-cash"],
   },
   {
@@ -13644,7 +13644,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "stabilize_fi",
     oracles: ["Chainlink"],
     listedAt: 1635796872,
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     github: ["Stabilizefi"],
   },
   {
@@ -13756,7 +13756,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DefiHalal",
     oracles: ["Chainlink"],
     listedAt: 1635801672,
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     deadUrl: true,
   },
   {
@@ -17157,7 +17157,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Songbird"],
     module: "flare-loans/index.js",
     twitter: "enosys_global",
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     parentProtocol: "parent#enosys",
     listedAt: 1637821444,
   },
@@ -19012,7 +19012,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "piggy/index.js",
     twitter: "Piggy_Fi",
     audit_links: ["https://www.certik.org/projects/piggy"],
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
     listedAt: 1638999656,
     deadUrl: true,
   },
@@ -19744,7 +19744,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "TopShelfFinance",
     audit_links: ["https://app.topshelf.finance/PeckShield-Audit-Report-Topshelf-v1.0.pdf"],
     listedAt: 1639732995,
-    forkedFrom: ["Liquity"],
+    forkedFrom: ["Liquity V1"],
   },
   {
     id: "1031",

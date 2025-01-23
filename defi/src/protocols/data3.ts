@@ -61046,7 +61046,7 @@ const data3: Protocol[] = [
     module: "elara/index.js",
     twitter: "ElaraLabs",
     forkedFrom: ["Compound V2"],
-    oracles: [],
+    oracles: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9127
     audit_links: ["https://github.com/ElaraFinance/elara-audits/blob/main/24-09-2024_Quantstamp_ElaraV1.pdf"],
     listedAt: 1732186221
   },

@@ -59846,7 +59846,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Launchpad",
+    category: "Yield",
     chains: ["Ethereum", "Base", "Arbitrum"],
     module: "royco/index.js",
     twitter: "roycoprotocol",

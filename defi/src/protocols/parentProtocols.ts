@@ -5942,6 +5942,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "zkLend",
   },
+  /*
   {
     id: "parent#resolv",
     name: "Resolv",
@@ -5956,6 +5957,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["resolv-im"],
     stablecoins: ["resolv-usd"],
   },
+  */
   {
     id: "parent#plunderswap",
     name: "PlunderSwap",

@@ -1749,5 +1749,27 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1737625162
   },
+  {
+    id: "5655",
+    name: "Resolv",
+    address: null,
+    symbol: "-",
+    url: "https://resolv.xyz/",
+    description:
+      "Resolv is a protocol that maintains USR, a stablecoin fully backed by ETH and pegged to the US Dollar. The stablecoin’s delta-neutral design ensures price stability, and is backed by an innovative insurance pool (RLP) to provide additional security and overcollateralization.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/resolv.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Ethereum"],
+    module: "resolv/index.js",
+    twitter: "ResolvLabs",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1737626553
+  },
 ];
 export default data4;

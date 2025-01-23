@@ -198,7 +198,7 @@ async function checkForMissingAssets(
   let errorMessage: string = `TVL flags in ${protocol.module}: \n`;
   const baseErrorLength: number = errorMessage.length
   Object.keys(previous).map((chain: string) => {
-    if (chain == 'SK') return 
+    if (['SK', 'tvl'].includes(chain)) return 
     if (!(chain in current)) {
       errorMessage += `chain ${chain} missing \n`;
       return;

@@ -25805,14 +25805,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3836",
-    name: "Chimp Exchange",
+    name: "ChimpX AI", // previous Chimp Exchange
     address: null,
     symbol: "-",
-    url: "https://chimp.exchange",
+    url: "https://chimpx.ai/",
     description:
-      "Chimp Dex is a next-gen DEX which innovates on the ve(3,3) using time based farms. Chimp Dex has stablepools as well as multi token weight pools.",
+      "Chimp Dex is a next-gen DEX which innovates on the ve(3,3) using time based farms. Chimp Dex has stablepools as well as multi token weight pools",
     chain: "Linea",
-    logo: `${baseIconsUrl}/chimp-exchange.jpg`,
+    logo: `${baseIconsUrl}/chimpx-ai.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -25822,8 +25822,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Balancer"],
     module: "chimpexchange/index.js",
-    twitter: "ChimpExchange",
-    github: ["Chimp-Exchange"],
+    twitter: "ChimpxAI",
+    github: ["chimpx-ai"],
     listedAt: 1700753279,
   },
   {

@@ -1413,6 +1413,19 @@ export default {
         github: ["celestiaorg"],
         twitter: "CelestiaOrg",
         url: "https://celestia.org",
+    },
+    "Soneium": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: ["EVM", "Rollup", "Superchain"],
+        parent: {
+          chain: "Ethereum",
+          types: ["L2", "gas"]
+        },
+        chainId: 1868,
+        twitter: "soneium",
+        url: "https://soneium.org"
     }
 } as unknown as {
     [chain: string]: {

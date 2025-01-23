@@ -141,7 +141,7 @@ export default async function (
     }
   }
 
-  await checkForMissingAssets(protocol, lastHourlyUsdTVLObject, usdTokenBalances)
+  // await checkForMissingAssets(protocol, lastHourlyUsdTVLObject, usdTokenBalances)
   let tvlPrev1Day = lastDailyTVLRecord.tvl
   let tvlPrev1Week = lastWeeklyTVLRecord.tvl
   const dayDailyTvl = dayDailyTvlRecord.tvl

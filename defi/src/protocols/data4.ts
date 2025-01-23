@@ -1747,6 +1747,7 @@ const data4: Protocol[] = [
     twitter: "UmojaProtocol",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#umoja-protocol",
     listedAt: 1737625162
   },
   {

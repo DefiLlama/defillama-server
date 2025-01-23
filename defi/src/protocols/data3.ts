@@ -51372,14 +51372,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4963",
-    name: "Umoja Protocol",
+    name: "Umoja Synths", // previous Umoja Protocol
     address: null,
     symbol: "-",
     url: "https://umoja.xyz/",
     description:
       "Umoja is DeFi's structured product and trade execution layer, offering seamless access to low-risk, high-yield crypto assets through 'smartcoins. These innovative, crypto-collateralized digital assets are designed to protect principal while generating sustainable yields, making wealth creation effortless and accessible to everyone",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/umoja-protocol.png`,
+    logo: `${baseIconsUrl}/umoja-synths.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -51391,6 +51391,7 @@ const data3: Protocol[] = [
     module: "umoja/index.js",
     twitter: "UmojaProtocol",
     audit_links: [],
+    parentProtocol: "parent#umoja-protocol",
     listedAt: 1723135677,
   },
   {

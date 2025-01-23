@@ -51379,7 +51379,7 @@ const data3: Protocol[] = [
     description:
       "Umoja is DeFi's structured product and trade execution layer, offering seamless access to low-risk, high-yield crypto assets through 'smartcoins. These innovative, crypto-collateralized digital assets are designed to protect principal while generating sustainable yields, making wealth creation effortless and accessible to everyone",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/umoja-synths.png`,
+    logo: `${baseIconsUrl}/umoja-synths.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

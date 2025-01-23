@@ -1867,5 +1867,28 @@ const data4: Protocol[] = [
     github: ["trebleswap"],
     listedAt: 1737647275
   },
+  {
+    id: "5660",
+    name: "Ethos Network",
+    address: null,
+    symbol: "-",
+    url: "https://ethos.network/",
+    description:
+      "Ethos is a credibility platform that creates a more trusted web3 ecosystem",
+    chain: "Base",
+    logo: `${baseIconsUrl}/ethos-network.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    module: "ethos-network/index.js",
+    twitter: "ethos_network",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
+    listedAt: 1737664915
+  },
 ];
 export default data4;

@@ -66,7 +66,11 @@ export async function iterateOverPlatforms(
           chain + ":" + lowercase(platforms[platform]!, chain).trim();
         const PK = `asset#${address}`;
         const margin = getCurrentUnixTimestamp() - staleMargin;
-        if (!coinPlatformData[PK] || coinPlatformData[PK].timestamp < margin) {
+        if (
+          !coinPlatformData[PK] ||
+          coinPlatformData[PK].timestamp < margin ||
+          coinPlatformData[PK].confidence < 0.99
+        ) {
           await iterator(PK);
         }
       } catch (e) {

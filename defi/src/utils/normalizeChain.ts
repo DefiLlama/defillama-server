@@ -104,7 +104,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 11297108109,
   },
-  "Optimism": {
+  "OP Mainnet": {
     geckoId: "optimism",
     symbol: "OP",
     cmcId: "11840",

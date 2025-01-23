@@ -1769,6 +1769,8 @@ const data4: Protocol[] = [
     twitter: "ResolvLabs",
     forkedFrom: [],
     oracles: [],
+    stablecoins: ["resolv-usd"],
+    github: ["resolv-im"],
     listedAt: 1737626553
   },
 ];

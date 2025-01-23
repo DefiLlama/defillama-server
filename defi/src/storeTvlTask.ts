@@ -213,9 +213,6 @@ async function filterProtocol(adapterModule: any, protocol: any) {
   const isHeavyProtocol = adapterModule.isHeavyProtocol ?? false
   const runLessFrequently = protocol.isEntity || protocol.isTreasury || highestRecentTvl < 200_000 || isHeavyProtocol
 
-  if (isHeavyProtocol && timeDiff < 6 * HOUR)
-    return false
-
   if (runLessFrequently && timeDiff < 4 * HOUR)
     return false
 

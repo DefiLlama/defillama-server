@@ -3873,7 +3873,7 @@ const chainLabelMap = {
   "crossfi": "CrossFi",
   "water": "Waterfall",
   "occ": "EDU Chain",
-  "optimism": "OP Mainnet"
+  "optimism": "Optimism"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

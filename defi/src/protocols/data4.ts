@@ -1844,5 +1844,28 @@ const data4: Protocol[] = [
     oracles: ["Pyth"], // https://docs.moonlander.trade/
     listedAt: 1737641003
   },
+  {
+    id: "5659",
+    name: "Treble",
+    address: "base:0xb96450dcb16e4a30b999cb5f4087bae9c0ffac4e",
+    symbol: "TREB",
+    url: "https://trebleswap.com",
+    description:
+      "Treble is the first modular V4 DEX on Base with a full-suite DeFi Hub offering cross-chain swaps, fiat on/off ramps, CEX onramps, no-KYC crypto spending, DeFAI integrations and passive income through farming and staking, bringing seamless accessibility to the Base ecosystem",
+    chain: "Base",
+    logo: `${baseIconsUrl}/treble.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "trebleswap/index.js",
+    twitter: "TrebleSwap",
+    forkedFrom: ["Algebra DEX"],
+    oracles: [],
+    github: ["trebleswap"],
+    listedAt: 1737647275
+  },
 ];
 export default data4;

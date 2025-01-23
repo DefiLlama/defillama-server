@@ -3521,7 +3521,6 @@ const data: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum"],
     module: "liquity/index.js",
-    treasury: "liquity-treasury.js",
     twitter: "LiquityProtocol",
     audit_links: [
       "https://github.com/trailofbits/publications/blob/master/reviews/Liquity.pdf",

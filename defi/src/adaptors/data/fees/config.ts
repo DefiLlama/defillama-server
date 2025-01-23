@@ -2321,8 +2321,8 @@ export default {
     "zeebu": {
         id: "5540",
     },
-    "lnexchange": {
-        id: "5638",
+    "lnexchange-perp": {
+        id: "5639",
     },
     "waterneuron": {
         id: "4921",

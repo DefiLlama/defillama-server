@@ -1426,6 +1426,20 @@ export default {
         chainId: 1868,
         twitter: "soneium",
         url: "https://soneium.org"
+    },
+    "Ink": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: ["EVM", "Rollup", "Superchain"],
+        parent: {
+        chain: "Ethereum",
+        types: ["L2"]
+        },
+        twitter: "inkonchain",
+        url: "https://inkonchain.com",
+        github: ["inkonchain"],
+        chainId: 57073
     }
 } as unknown as {
     [chain: string]: {

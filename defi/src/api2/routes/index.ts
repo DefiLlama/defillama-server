@@ -21,6 +21,8 @@ import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
 import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
+import { chainNameToIdMap } from "../../utils/normalizeChain";
+
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
@@ -95,6 +97,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/:type/:chain", ew(getOverviewFileRoute))
   router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
   router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
+  router.get("/overview/_internal/chain-name-id-map", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, chainNameToIdMap, 60))
 
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set

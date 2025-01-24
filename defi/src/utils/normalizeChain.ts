@@ -34,7 +34,7 @@ export function normalizeChain(chain: string) {
 
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager", "Managed Token Pools","Treasury Manager","Anchor BTC"].includes(category??"none");
+  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager", "Managed Token Pools", "Treasury Manager", "Anchor BTC"].includes(category ?? "none");
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -3994,3 +3994,8 @@ Object.entries(chainCoingeckoIds).forEach(([chain, obj]) => chainIdToNameMap[obj
 export function getChainNameFromId(id: string | number | undefined) {
   return chainIdToNameMap['' + id]
 }
+
+export const chainNameToIdMap: { [name: string]: string } = {}
+const chainNames = Object.keys(chainCoingeckoIds)
+chainNames.sort()
+chainNames.map(i => chainNameToIdMap[i] = normalizeChain(i))

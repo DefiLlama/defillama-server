@@ -3737,6 +3737,14 @@ export const chainCoingeckoIds = {
     twitter: "Superpositionso",
     url: "https://superposition.so"
   },
+  "Artela": {
+    geckoId: "artela-network",
+    symbol: "ART",
+    cmcId: null,
+    categories: ["EVM", "Cosmos"],
+    twitter: "Artela_Network",
+    url: "https://artela.network/"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

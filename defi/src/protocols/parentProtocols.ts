@@ -6188,6 +6188,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "zothdotio",
     github: ["0xZothio"],
+    stablecoins: ["zoth-zeusd"]
   },
   {
     id: "parent#untangled",

@@ -2343,5 +2343,8 @@ export default {
     },
     "soneium": {
         id: "1868"
+    },
+    "ink": {
+        id: "57073"
     }
 } as AdaptorsConfig

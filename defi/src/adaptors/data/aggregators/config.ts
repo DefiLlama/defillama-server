@@ -294,5 +294,8 @@ export default {
   },
   "symphony": {
     id: "5637"
+  },
+  "starbase": {
+    id: "5661"
   }
 } as AdaptorsConfig;

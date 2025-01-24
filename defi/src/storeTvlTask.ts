@@ -69,7 +69,7 @@ async function main() {
       await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       // await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
-      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,)
+      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', })
       staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
       console.log('FAILED: ', protocol?.name, e?.message)

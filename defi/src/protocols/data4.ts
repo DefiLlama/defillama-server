@@ -1890,5 +1890,27 @@ const data4: Protocol[] = [
     audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
     listedAt: 1737664915
   },
+  {
+    id: "5661",
+    name: "Starbase",
+    address: null,
+    symbol: "-",
+    url: "https://www.starbase.ag/",
+    description:
+      "Advanced DEX Aggregator on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/starbase.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "starbase_ag",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://starbase-hub.gitbook.io/guides/trust-and-safety/how-secure-is-starbase"],
+  },
 ];
 export default data4;

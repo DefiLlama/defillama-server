@@ -165,7 +165,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5069",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "GMX - SWAP"
             }
         },
@@ -996,7 +996,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "2356",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "El Dorado Exchange - SWAP"
             }
         },
@@ -1250,7 +1250,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5116",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "Morphex - SWAP"
             }
         },
@@ -1274,7 +1274,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "2814",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "SpaceDex - SWAP"
             }
         },
@@ -1302,7 +1302,7 @@ export default {
             "swap": {
                 "id": "2730",
                 disabled: true,
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "Covo V2 - SWAP",
                 cleanRecordsConfig: {
                     genuineSpikes: true
@@ -1392,7 +1392,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5117",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         },
         cleanRecordsConfig: {
@@ -1411,7 +1411,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5115",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "Fulcrom - SWAP",
             }
         },
@@ -1514,7 +1514,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "3792",
-                "category": "Dexes",
+                "category": "Dexs",
             }
         },
     },
@@ -1533,7 +1533,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "3209",
-                "category": "Dexes",
+                "category": "Dexs",
             }
         },
     },
@@ -1725,7 +1725,7 @@ export default {
             "swap": {
                 "id": "5125",
                 disabled: true,
-                "category": "Dexes"
+                "category": "Dexs"
             }
         },
         disabled: true,
@@ -1745,7 +1745,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "3509",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         },
         "id": "3509"
@@ -1756,7 +1756,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5126",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         }
     },
@@ -1854,7 +1854,7 @@ export default {
         protocolsData: {
             "orderbook": {
                 "id": "3645",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         }
     },
@@ -2617,7 +2617,7 @@ export default {
         id: "5427",
         parentId: "Bluefin",
         protocolsData: {
-            "dexes": {
+            "dexs": {
                 id: "5427"
             }
         }

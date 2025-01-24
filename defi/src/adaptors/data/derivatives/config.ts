@@ -112,7 +112,7 @@ export default {
         "protocolsData": {
             "derivatives": {
                 "id": "2356",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "El Dorado Exchange - Derivatives"
             }
         },
@@ -153,7 +153,7 @@ export default {
         "protocolsData": {
             "derivatives": {
                 "id": "3209",
-                "category": "Dexes",
+                "category": "Dexs",
             }
         },
     },

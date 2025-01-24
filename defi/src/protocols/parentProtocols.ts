@@ -1661,7 +1661,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#arbitrum-exchange",
     name: "Arbitrum Exchange",
     url: "https://arbidex.fi",
-    description: "Dexes on arbitrum.",
+    description: "Dexs on arbitrum.",
     logo: `${baseIconsUrl}/arbitrum-exchange.jpg`,
     gecko_id: "arbitrum-exchange",
     cmcId: null,

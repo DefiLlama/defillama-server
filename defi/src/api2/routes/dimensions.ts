@@ -30,7 +30,7 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   const excludeTotalDataChartBreakdown = req.query_parameters.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
   const rawDataType = req.query_parameters.dataType
   const rawCategory = req.query_parameters.category
-  const category = (rawCategory === 'dexs' ? 'dexes' : rawCategory) as CATEGORIES
+  const category = (rawCategory === 'dexs' ? 'dexs' : rawCategory) as CATEGORIES
   const fullChart = req.query_parameters.fullChart?.toLowerCase() === 'true'
   const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
   if (!adaptorType) throw new Error("Missing parameter")

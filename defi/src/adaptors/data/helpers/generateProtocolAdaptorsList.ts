@@ -11,7 +11,7 @@ import { IImportObj } from "../../../cli/buildRequires";
 import { IParentProtocol } from "../../../protocols/types";
 
 // Obtaining all dex protocols
-// const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
+// const dexs = data.filter(d => d.category === "Dexs" || d.category === 'Derivatives')
 
 export function notUndefined<T>(x: T | undefined): x is T {
   return x !== undefined;

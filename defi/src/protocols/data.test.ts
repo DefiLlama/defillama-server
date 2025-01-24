@@ -184,7 +184,7 @@ test("no coingeckoId is repeated", async () => {
 
 test("no surprise category", async () => {
   const whitelistedCategories = [
-    'Dexes',
+    'Dexs',
     'Bridge',
     'Lending',
     'Yield Aggregator',

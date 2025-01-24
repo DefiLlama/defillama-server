@@ -2346,5 +2346,8 @@ export default {
     },
     "ink": {
         id: "57073"
+    },
+    "cvex": {
+        id: "5610"
     }
 } as AdaptorsConfig

@@ -782,5 +782,8 @@ export default {
     },
     "lnexchange-perp": {
         id: "5639",
+    },
+    "cvex": {
+        id: "5610"
     }
 } as AdaptorsConfig

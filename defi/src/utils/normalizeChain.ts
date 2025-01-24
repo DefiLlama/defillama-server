@@ -3705,6 +3705,38 @@ export const chainCoingeckoIds = {
     url: "https://www.opencampus.xyz/",
     chainId: 41923,
   },
+  "Fluence": {
+    geckoId: "fluence-2",
+    symbol: "FLT",
+    cmcId: "30097",
+    categories: ["EVM"],
+    twitter: "fluence_project",
+    url: "https://www.fluence.network",
+    github: ["fluencelabs"],
+    chainId: 9999999,
+  },
+  "Swan": {
+    geckoId: "swan-chain",
+    symbol: "SWAN",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "swan_chain",
+    url: "https://swanchain.io/",
+    github: ["swanchain"],
+    chainId: 254,
+  },
+  "Superposition": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "Superpositionso",
+    url: "https://superposition.so"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

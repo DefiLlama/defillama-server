@@ -61486,7 +61486,7 @@ const data3: Protocol[] = [
     module: "catton/index.js",
     twitter: "Cattontw",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://x.com/Cattontw/status/1862096754847650156
   },
   {
     id: "5410",

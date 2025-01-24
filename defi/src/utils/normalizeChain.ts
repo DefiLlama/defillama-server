@@ -3735,7 +3735,8 @@ export const chainCoingeckoIds = {
       types: ["L3"]
     },
     twitter: "Superpositionso",
-    url: "https://superposition.so"
+    url: "https://superposition.so",
+    chainId: 55244
   },
   "Artela": {
     geckoId: "artela-network",
@@ -3743,7 +3744,8 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Cosmos"],
     twitter: "Artela_Network",
-    url: "https://artela.network/"
+    url: "https://artela.network/",
+    chainId: 11820
   },
 } as unknown as ChainCoinGekcoIds
 

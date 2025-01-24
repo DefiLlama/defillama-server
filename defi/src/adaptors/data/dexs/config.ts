@@ -2705,5 +2705,8 @@ export default {
     "meteora-dlmm": {
         parentId: "Meteora",
         id: "4148",
+    },
+    "metastable-musd": {
+        id: "5645"
     }
 } as AdaptorsConfig

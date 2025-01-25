@@ -32078,7 +32078,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Binance", "BOB", "Op_Bnb", "BSquared", "RSK", "CORE"],
-    oraclesByChain: {
+    oraclesByChain: { // https://docs.segment.finance/protocol/advanced-safety-features/oracles
       bsc: ["Chainlink"],
       bob: ["RedStone", "DIA", "API3"],
       op_bnb: ["Binance Oracle"],

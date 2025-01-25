@@ -45,11 +45,18 @@ export function uwulend(timestamp: number = 0) {
   return getTokenPrices("ethereum", "0xaC538416BA7438c773F29cF58afdc542fDcABEd4", null, "v2", timestamp,);
 }
 
+export function bonzo(timestamp: number = 0) {
+  return getTokenPrices("hedera", "0xE20273F10D1b85BaF56F6063cd5271C885427EC5", null, "v2", timestamp, {
+    lendingPool: '0x236897c518996163E7b313aD21D1C9fCC7BA1afc'
+  });
+}
+
 export const adapters = {
   aave,
   geist,
   radiant,
   uwulend,
+  bonzo,
   //klap,
   //valas,
 };

@@ -12358,7 +12358,7 @@ const data3: Protocol[] = [
     twitter: "zerolendxyz",
     oraclesByChain: {
       blast: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
-      base: ["Chainlink"], //https://docs.zerolend.xyz/security/oracles/chainlink
+      base: ["RedStone"], //https://docs.zerolend.xyz/security/oracles/redstone
       linea: ["Chainlink"], //https://docs.zerolend.xyz/security/oracles/chainlink
       manta: ["RedStone"], //https://docs.zerolend.xyz/security/oracles/using-redstone-oracles
       ethereum: ["Chainlink"], // https://docs.zerolend.xyz/security/oracles/chainlink

@@ -1526,7 +1526,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5645",
-    name: "Metastable mUSD",
+    name: "Metastable",
     address: null,
     symbol: "-",
     url: "https://mstable.io",

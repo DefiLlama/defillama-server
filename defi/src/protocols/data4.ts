@@ -2027,5 +2027,28 @@ const data4: Protocol[] = [
     parentProtocol: "parent#magpie-ecosystem",
     listedAt: 1737725867
   },
+  {
+    id: "5667",
+    name: "Sophon Farm",
+    address: null,
+    symbol: "-",
+    url: "https://farm.sophon.xyz/",
+    description:
+      "Deposit tokens to start farming Sophon Points (SP) which can later be redeemed for $SOPH",
+    chain: "Sophon",
+    logo: `${baseIconsUrl}/sophon-farm.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Sophon"],
+    module: "sophon-farm/index.js",
+    twitter: "sophon",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.sophon.xyz/links/audits"],
+    listedAt: 1737831373
+  },
 ];
 export default data4;

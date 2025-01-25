@@ -25747,7 +25747,7 @@ const data3: Protocol[] = [
       "Amped Finance is an omnichain perpetual swaps exchange that allows users to trade leveraged positions with low fees and zero price impact.",
     chain: "LightLink",
     logo: `${baseIconsUrl}/amped-finance.jpg`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

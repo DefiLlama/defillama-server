@@ -1533,7 +1533,7 @@ const data4: Protocol[] = [
     description:
       "A decentralized stablecoin built on Sui",
     chain: "Sui",
-    logo: `${baseIconsUrl}/metastable-musd.png`,
+    logo: `${baseIconsUrl}/metastable.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -2115,5 +2115,26 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1737921507
   },
+  {
+    id: "5671",
+    name: "Hfun",
+    address: null,
+    symbol: "-", // pending launch
+    url: "https://hypurr.fun/",
+    description:
+      "Hfun is a Telegram trading bot and launchpad for launching and trading memecoins on Hyperliquid, tracking PnL, sniping new launches, accessing whale chats, and competing with others",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/hfun.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Hyperliquid"],
+    module: "dummy.js",
+    twitter: "Hypurrfun",
+    forkedFrom: [],
+    oracles: [],
+  },
 ];
 export default data4;

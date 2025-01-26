@@ -31172,7 +31172,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Mode"],
     oraclesByChain: {
-      mode: ["API3", "RedStone", "Pyth"], //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
+      mode: ["API3", "RedStone", "Pyth", "eOracle"], //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
       base: ["eOracle"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#base
     },
     forkedFrom: ["Compound V2"],

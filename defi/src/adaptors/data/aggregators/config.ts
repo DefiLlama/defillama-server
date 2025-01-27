@@ -297,5 +297,8 @@ export default {
   },
   "starbase": {
     id: "5661"
+  },
+  "superswap": {
+    id: "5668",
   }
 } as AdaptorsConfig;

@@ -2252,7 +2252,7 @@ const data4: Protocol[] = [
     listedAt: 1738001617
   },
   {
-    id: "5676",
+    id: "5677",
     name: "NOXA",
     address: null,
     symbol: "-",
@@ -2274,7 +2274,7 @@ const data4: Protocol[] = [
     listedAt: 1738007747
   },
   {
-    id: "5677",
+    id: "5678",
     name: "Reservoir Tools AMM",
     address: null,
     symbol: "-",
@@ -2297,7 +2297,7 @@ const data4: Protocol[] = [
     listedAt: 1738007753
   },
   {
-    id: "5678",
+    id: "5679",
     name: "Reservoir Tools CLMM",
     address: null,
     symbol: "-",

@@ -2352,5 +2352,8 @@ export default {
     },
     "hfun": {
         id: "5671"
-    }
+    },
+    "tribe-run": {
+        id: "5669"
+    },
 } as AdaptorsConfig

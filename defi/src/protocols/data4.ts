@@ -2167,7 +2167,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://www.coin8.co",
     description:
-      "Secure, Fast, Reliable Exchange",
+      "Coin8 Exchange is a cryptocurrency platform offering spot and futures trading with high-leverage options and AI-assisted trading features",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/coin8.jpg`,
     audits: "0",

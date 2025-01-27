@@ -2249,5 +2249,26 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1738001617
   },
+  {
+    id: "5677",
+    name: "Beets DEX V3", // previously Beethoven X DEX
+    address: "sonic:0x2d0e0814e62d80056181f5cd932274405966e4f0",
+    symbol: "BEETS",
+    url: "https://beets.fi",
+    description:
+      "The Flagship LST Hub on Sonic. From seamless staking to earning real yield on LST-focused liquidity pools, beets is the ultimate destination for your liquid-staked tokens.",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/beets-sml.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sonic"],
+    module: "beethovenx-v3/index.js",
+    twitter: "beets_fi",
+    forkedFrom: ["Balancer"],
+    parentProtocol: "parent#beethoven-x",
+  },
 ];
 export default data4;

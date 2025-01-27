@@ -90,6 +90,11 @@
       "decimals": "9",
       "symbol": "NAVX",
       "to": "coingecko#navi"
+    },
+    "0xf4530aa5ef8af33c497ec38f54ff9dd45fad9157264efae9693eb62faf8667b5::coin::COIN": {
+      "to": "coingecko#dinero-staked-eth",
+      "decimals": 8,
+      "symbol": "pxETH"
     }
   },
   "neutron": {
@@ -1078,6 +1083,11 @@
       "to": "coingecko#usds",
       "decimals": 18,
       "symbol": "USDS"
+    },
+    "0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2": {
+      "to": "coingecko#ethena-staked-usde",
+      "decimals": 18,
+      "symbol": "sUSDe"
     }
   },
   "jbc": {
@@ -1789,6 +1799,16 @@
       "to": "coingecko#wemix-token",
       "decimals": "18",
       "symbol": "WEMIX"
+    },
+    "0:9bd52017d6178af6d2bc6b9097b5849b7475e43cf01758a4f2dd8cf93c7d6582": {
+      "to": "coingecko#ethereum",
+      "decimals": 9,
+      "symbol": "jETH"
+    },
+    "0:9b9117699eb5997e6d3b74fe67ff08c6c7a9653641cd21d999fa0a4841c0cff8": {
+      "to": "coingecko#bitcoin",
+      "decimals": 9,
+      "symbol": "jBTC"
     }
   },
   "mantle": {
@@ -6438,6 +6458,11 @@
       "to": "coingecko#astar",
       "decimals": 18,
       "symbol": "ASTAR"
+    },
+    "0x60336f9296c79da4294a19153ec87f8e52158e5f": {
+      "to": "coingecko#bifrost-voucher-astr",
+      "decimals": 18,
+      "symbol": "vASTR"
     }
   },
   "odyssey": {
@@ -6501,6 +6526,81 @@
       "to": "coingecko#tether",
       "decimals": 0,
       "symbol": "USDT"
+    }
+  },
+  "spn": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0x1fB719f10b56d7a85DCD32f27f897375fB21cfdd": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0xA2555701754464d32D9624149E3fDb459F3c8DE4": {
+      "to": "coingecko#arbitrum",
+      "decimals": 18,
+      "symbol": "ARB"
+    },
+    "0x6c030c5cc283f791b26816f325b9c632d964f8a1": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    },
+    "0x80eFAD50D395671C13C4b1FA2969f7a7Aa9EF7b3": {
+      "to": "coingecko#fluidity-money",
+      "decimals": 18,
+      "symbol": "FLY"
+    },
+    "0x6e142cdaefa4ba7786e8d1ff74968db67c3b910d": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
+    }
+  },
+  "occ": {
+    "0xd02e8c38a8e3db71f8b2ae30b8186d7874934e12": {
+      "to": "coingecko#edu-coin",
+      "decimals": 18,
+      "symbol": "WEDU"
+    }
+  },
+  "artela": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#artela-network",
+      "decimals": 18,
+      "symbol": "ART"
+    },
+    "0xadcd43c78a914c6b14171ab1380bcfcfa25cd3ad": {
+      "to": "coingecko#artela-network",
+      "decimals": 18,
+      "symbol": "WART"
+    }
+  },
+  "fluence": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#fluence-2",
+      "decimals": 18,
+      "symbol": "FLT"
+    },
+    "0x236501327e701692a281934230af0b6be8df3353": {
+      "to": "coingecko#fluence-2",
+      "decimals": 18,
+      "symbol": "WFLT"
+    }
+  },
+  "swan": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#swan-chain",
+      "decimals": 18,
+      "symbol": "SWAN"
+    },
+    "0xBb4eC1b56cB624863298740Fd264ef2f910d5564": {
+      "to": "coingecko#swan-chain",
+      "decimals": 18,
+      "symbol": "SWAN"
     }
   }
 }

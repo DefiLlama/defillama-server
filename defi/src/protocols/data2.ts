@@ -14811,7 +14811,7 @@ const data2: Protocol[] = [
     category: "Yield Aggregator",
     chains: ["Dogechain"],
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["Beefy"],
     module: "autobark/index.js",
     twitter: "AutoBarkYield",
     listedAt: 1661401601,

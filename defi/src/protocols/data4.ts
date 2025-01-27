@@ -1344,6 +1344,7 @@ const data4: Protocol[] = [
     forkedFrom: ["AAVE V2"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13111
     audit_links: ["https://www.auditone.io/audit-report/zarban"],
+    treasury: "zarban.js",
     github: ["zarbanio"],
     listedAt: 1737088495
   },
@@ -2180,6 +2181,29 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1737981973
+  },
+  {
+    id: "5674",
+    name: "Coffer Network",
+    address: null,
+    symbol: "-",
+    url: "https://www.coffer.network",
+    description:
+      "Coffer Network is a decentralized programmable Smart Account infrastructure for Bitcoin",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/coffer-network.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    module: "coffer-network/index.js",
+    twitter: "CofferNetwork",
+    forkedFrom: [],
+    oracles: [],
+    github: ["coffer-network"],
+    listedAt: 1737988177
   },
 ];
 export default data4;

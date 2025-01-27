@@ -6281,6 +6281,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SonusExchange",
     github: ["SonusExchange"],
   },
+  {
+    id: "parent#reservoir-tools",
+    name: "Reservoir Tools",
+    url: "https://reservoir.tools/",
+    description:
+      "Reservoir Tools provides infrastructure like SDKs and APIs for developers to integrate NFT trading across multiple blockchains and marketplaces",
+    logo: `${baseIconsUrl}/reservoir-tools.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "reservoir0x",
+  },
 ];
 
 export default parentProtocols;

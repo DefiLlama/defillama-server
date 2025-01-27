@@ -2155,7 +2155,7 @@ const data4: Protocol[] = [
     chains: ["Sonic"],
     module: "vicuna/index.js",
     twitter: "VicunaFinance",
-    forkedFrom: [],
+    forkedFrom: ["Beefy"],
     oracles: [],
     github: ["VicunaFinance-com"],
     listedAt: 1737981273

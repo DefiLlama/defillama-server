@@ -3747,6 +3747,45 @@ export const chainCoingeckoIds = {
     url: "https://artela.network/",
     chainId: 11820
   },
+  "Redstone": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    twitter: "redstonexyz",
+    url: "https://redstone.xyz/",
+    chainId: 690
+  },
+  "Abstract": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    twitter: "AbstractChain",
+    url: "https://www.abs.xyz/",
+    chainId: 2741
+  },
+  "Zero Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    twitter: "zerodotnetwork",
+    url: "https://zero.network/",
+    chainId: 543210
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -3916,7 +3955,8 @@ const chainLabelMap = {
   "water": "Waterfall",
   "occ": "EDU Chain",
   "optimism": "Optimism",
-  "spn": "Superposition"
+  "spn": "Superposition",
+  "zero_network": "Zero Network"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

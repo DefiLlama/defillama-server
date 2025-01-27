@@ -2278,7 +2278,7 @@ const data4: Protocol[] = [
     name: "Reservoir Tools AMM",
     address: null,
     symbol: "-",
-    url: "https://reservoir.tools/",
+    url: "https://swap.reservoir.tools/#/swap",
     description:
       "Uniswap V2 fork",
     chain: "Abstract",
@@ -2301,7 +2301,7 @@ const data4: Protocol[] = [
     name: "Reservoir Tools CLMM",
     address: null,
     symbol: "-",
-    url: "https://reservoir.tools/",
+    url: "https://swap.reservoir.tools/#/swap",
     description:
       "Uniswap V3 fork",
     chain: "Abstract",

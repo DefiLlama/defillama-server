@@ -785,5 +785,8 @@ export default {
     },
     "cvex": {
         id: "5610"
+    },
+    "infinityPools": {
+        id: "5662"
     }
 } as AdaptorsConfig

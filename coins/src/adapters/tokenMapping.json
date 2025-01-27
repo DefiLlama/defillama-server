@@ -5218,6 +5218,16 @@
     }
   },
   "fraxtal": {
+    "0x50e52d7cf91eb4e38a28d9cf4c554e9dc37753f0": {
+      "to": "coingecko#axlusdc",
+      "decimals": 18,
+      "symbol": "axlUSDC"
+    },
+    "0x331B9182088e2A7d6D3Fe4742AbA1fB231aEcc56": {
+      "to": "coingecko#curve-dao-token",
+      "decimals": 18,
+      "symbol": "CRV"
+    },
     "0xA8a59D73388D0c4344a7b0Ba287ddb654227c38a": {
       "to": "coingecko#ethereum",
       "decimals": 18,

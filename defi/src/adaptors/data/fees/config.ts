@@ -2349,5 +2349,8 @@ export default {
     },
     "cvex": {
         id: "5610"
+    },
+    "hfun": {
+        id: "5671"
     }
 } as AdaptorsConfig

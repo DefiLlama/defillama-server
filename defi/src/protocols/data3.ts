@@ -31172,8 +31172,12 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Mode"],
     oraclesByChain: {
-      mode: ["API3", "RedStone", "Pyth"], //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
-      base: ["eOracle"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#base
+      mode: ["Pyth"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#mode
+      base: ["eOracle","API3", "RedStone", "Chainlink", "Chronicle", "Pyth"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#base
+      optimism: ["Chainlink"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#optimism
+      fraxtal: ["API3"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#fraxtal
+      lisk: ["RedStone"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#lisk
+      //bob: ["APRO"] oracle delisted at their teams request https://doc.ionic.money/ionic-documentation/resources/market-addresses#bob
     },
     forkedFrom: ["Compound V2"],
     module: "ionic/index.js",

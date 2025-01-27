@@ -4157,6 +4157,11 @@
       "symbol": "ROSE",
       "to": "coingecko#oasis-network"
     },
+    "0xEd57966f1566dE1a90042d07403021Ea52ad4724": {
+      "decimals": "18",
+      "symbol": "stROSE",
+      "to": "coingecko#oasis-network"
+    },
     "0x8bc2b030b299964eefb5e1e0b36991352e56d2d3": {
       "decimals": "18",
       "symbol": "ROSE",

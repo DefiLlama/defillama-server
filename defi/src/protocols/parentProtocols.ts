@@ -6268,7 +6268,19 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["liquity-usd"],
     github: ["liquity"],
   },
-
+  {
+    id: "parent#sonus",
+    name: "Sonus Exchange",
+    url: "https://sonus.exchange",
+    description:
+      "Your All-in-One Trading Destination. Setting the Standard: The Native DEX on Soneium Chain, Shaping the Future of Trading and Liquidity. Join the prime ve(3,3) dex!",
+    logo: `${baseIconsUrl}/liquity.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SonusExchange",
+    github: ["SonusExchange"],
+  },
 ];
 
 export default parentProtocols;

@@ -2205,5 +2205,49 @@ const data4: Protocol[] = [
     github: ["coffer-network"],
     listedAt: 1737988177
   },
+  {
+    id: "5675",
+    name: "Sonus Exchange AMM",
+    address: "sonic:0x12BE6BA8Deaa28BC5C2FD9cdfceB47EB4FDB0B35",
+    symbol: "SONUS",
+    url: "https://sonus.exchange",
+    description:
+      "Your All-in-One Trading Destination. Setting the Standard: The Native DEX on Soneium Chain, Shaping the Future of Trading and Liquidity. Join the prime ve(3,3) dex!",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/sonus-exchange-amm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sonic"],
+    module: "sonusexchange/index.js",
+    twitter: "SonusExchange",
+    forkedFrom: ["Solidly"],
+    oracles: [],
+    listedAt: 1738001611
+  },
+  {
+    id: "5676",
+    name: "Sonus Exchange CLMM",
+    address: "sonic:0x12BE6BA8Deaa28BC5C2FD9cdfceB47EB4FDB0B35",
+    symbol: "SONUS",
+    url: "https://sonus.exchange",
+    description:
+      "Your All-in-One Trading Destination. Setting the Standard: The Native DEX on Soneium Chain, Shaping the Future of Trading and Liquidity. Join the prime ve(3,3) dex!",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/sonus-exchange-clmm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sonic"],
+    module: "sonusexchange-cl/index.js",
+    twitter: "SonusExchange",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    listedAt: 1738001617
+  },
 ];
 export default data4;

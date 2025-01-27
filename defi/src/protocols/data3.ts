@@ -31172,10 +31172,10 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Mode"],
     oraclesByChain: {
-      mode: ["Pyth"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#mode
-      base: ["eOracle","API3", "RedStone", "Chainlink", "Chronicle", "Pyth"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#base
-      optimism: ["Chainlink"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#optimism
-      fraxtal: ["API3"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#fraxtal
+      mode: ["eOracle", "RedStone", "Pyth"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#mode
+      base: ["eOracle", "RedStone", "Chainlink", "Chronicle", "Pyth"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#base
+      optimism: ["Chainlink","API3","Pyth","Chronicle"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#optimism
+      fraxtal: ["API3","RedStone"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#fraxtal
       lisk: ["RedStone"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#lisk
       //bob: ["APRO"] oracle delisted at their teams request https://doc.ionic.money/ionic-documentation/resources/market-addresses#bob
     },

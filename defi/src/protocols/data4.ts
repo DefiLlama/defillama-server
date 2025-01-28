@@ -2405,5 +2405,26 @@ const data4: Protocol[] = [
     forkedFrom: [],
     listedAt: 1738081153
   },
+  {
+    id: "5684",
+    name: "ZOO.FUN", 
+    address: null,
+    symbol: "-",
+    url: "https://www.zoo.fun/",
+    description:
+      "Platform for new coin launches on Abstract chain",
+    chain: "Abstract",
+    logo: `${baseIconsUrl}/zoo.fun.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Abstract"],
+    module: "zoodotfun/index.js",
+    twitter: "zoodotfun",
+    forkedFrom: [],
+    listedAt: 1738095359
+  },
 ];
 export default data4;

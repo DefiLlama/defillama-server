@@ -137,30 +137,10 @@ const configs: { [adapter: string]: Config } = {
     address: "0x8a053350ca5F9352a16deD26ab333e2D251DAd7c",
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
   },
-  steakLRT: {
-    rate: lrts("0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc"),
-    chain: "ethereum",
-    address: "0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc",
-  },
-  Re7LRT: {
-    rate: lrts("0x84631c0d0081fde56deb72f6de77abbbf6a9f93a"),
-    chain: "ethereum",
-    address: "0x84631c0d0081fde56deb72f6de77abbbf6a9f93a",
-  },
   Re7BTC: {
     rate: lrts("0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444"),
     chain: "ethereum",
     address: "0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444",
-  },
-  amphrETH: {
-    rate: lrts("0x5fd13359ba15a84b76f7f87568309040176167cd"),
-    chain: "ethereum",
-    address: "0x5fd13359ba15a84b76f7f87568309040176167cd",
-  },
-  rstETH: {
-    rate: lrts("0x7a4effd87c2f3c55ca251080b1343b605f327e3a"),
-    chain: "ethereum",
-    address: "0x7a4effd87c2f3c55ca251080b1343b605f327e3a",
   },
   weETHk: {
     rate: async ({ api }) => {
@@ -308,7 +288,11 @@ const configs: { [adapter: string]: Config } = {
 
 export async function derivs(timestamp: number) {
   return Promise.all(
-    Object.keys(configs).map((k: string) => deriv(timestamp, k, configs[k])),
+    Object.keys(configs).map((k: string) =>
+      deriv(timestamp, k, configs[k]).catch(() => {
+        console.log(k);
+      }),
+    ),
   );
 }
 

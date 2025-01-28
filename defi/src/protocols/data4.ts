@@ -2019,7 +2019,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Restaked BTC",
+    category: "Anchor BTC",
     chains: ["Ethereum","Bitcoin"],
     module: "babypie/index.js",
     twitter: "Babypiexyz_io",

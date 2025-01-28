@@ -6293,6 +6293,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "reservoir0x",
   },
+  {
+    id: "parent#shadow-exchange",
+    name: "Shadow Exchange",
+    url: "https://www.shadow.so",
+    description:
+      "A Sonic-native concentrated liquidity exchange",
+    logo: `${baseIconsUrl}/shadow-exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ShadowOnSonic",
+  },
 ];
 
 export default parentProtocols;

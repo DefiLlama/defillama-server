@@ -64945,7 +64945,7 @@ const data3: Protocol[] = [
   },
   {
     id: "5570",
-    name: "Shadow Exchange",
+    name: "Shadow Exchange CLMM",
     address: null,
     symbol: "-",
     url: "https://www.shadow.so",
@@ -64963,6 +64963,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "shadow-cl/index.js",
     twitter: "ShadowOnSonic",
+    parentProtocol: "parent#shadow-exchange",
     listedAt: 1735573781
   },
   {

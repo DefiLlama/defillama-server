@@ -3786,6 +3786,15 @@ export const chainCoingeckoIds = {
     url: "https://zero.network/",
     chainId: 543210
   },
+  "Parex": {
+    geckoId: "parex",
+    symbol: "PRX",
+    cmcId: "18094",
+    categories: ["EVM"],
+    twitter: "zerodotnetwork",
+    url: "https://parex.network/",
+    chainId: 322202
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

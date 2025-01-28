@@ -2379,7 +2379,7 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Sonic"],
     module: "shadow-legacy/index.js",
-    twitter: "beets_fi",
+    twitter: "ShadowOnSonic",
     forkedFrom: ["Solidly"],
     parentProtocol: "parent#shadow-exchange",
     listedAt: 1738081015

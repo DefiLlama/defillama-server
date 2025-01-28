@@ -452,8 +452,15 @@ async function run() {
 
         // breakdown24h
         protocolSummary.breakdown24h = null
-        if (todayRecord) {
-          const { aggregated, breakdown = {} } = todayRecord
+        protocolSummary.breakdown30d = null
+
+        addBreakdownData({ recordType, record: todayRecord, storeKey: 'breakdown24h' })
+        addBreakdownData({ recordType, record: _protocolData.thirtyDaysAgo, storeKey: 'breakdown30d' })
+        
+
+        function addBreakdownData({ recordType, record, storeKey }: { recordType: string, record: any, storeKey: string }) {
+          const { aggregated = {}, breakdown = {} } = record ?? {}
+
           if (aggregated[recordType]) {
             let breakdownData = Object.keys(breakdown[recordType] ?? {}).length ? breakdown[recordType] : { [protocolName]: aggregated[recordType] }
             const result: any = {}
@@ -467,11 +474,10 @@ async function run() {
                 }
                 chainMappingToVal[chainName] += value
               })
-            })
-            protocolSummary.breakdown24h = result
+            });
+            (protocolSummary as any)[storeKey] = result
           }
         }
-
 
       }
 
@@ -633,6 +639,7 @@ type ProtocolSummary = RecordSummary & {
   average1y?: number
   totalAllTime?: number
   breakdown24h?: any
+  breakdown30d?: any
 }
 
 run().catch(console.error).then(() => process.exit(0))

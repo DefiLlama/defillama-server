@@ -3514,11 +3514,11 @@ export const chainCoingeckoIds = {
     chainId: 207
   },
   "Sonic": {
-    geckoId: null,
+    geckoId: "sonic-3",
     symbol: "S",
     cmcId: null,
     categories: ["EVM"],
-    twitter: "0xSonicLabs",
+    twitter: "SonicLabs",
     url: "https://www.soniclabs.com",
     chainId: 146
   },

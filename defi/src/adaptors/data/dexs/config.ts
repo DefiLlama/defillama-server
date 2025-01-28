@@ -2708,5 +2708,8 @@ export default {
     },
     "metastable-musd": {
         id: "5645"
+    },
+    "infinityPools": {
+        id: "5662"
     }
 } as AdaptorsConfig

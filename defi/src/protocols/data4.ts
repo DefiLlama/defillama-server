@@ -2341,5 +2341,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#beethoven-x",
     listedAt: 1738009211
   },
+     {
+    id: "5681",
+    name: "RaccoonSwap V2", 
+    symbol: "WPRX",
+    url: "raccoonswap.finance",
+    description:
+      "uniswap v2 fork",
+    chain: "parex",
+    logo: `${baseIconsUrl}/raccoon.png`,
+    audits: """,
+    audit_note: null,
+    gecko_id: parex,
+    cmcId: parex,
+    category: "Dexs",
+    chains: ["parex"],
+    module: "raccoonswap/index.js",
+    twitter: "parexnetwork",
+    forkedFrom: ["Uniswap V1"],
+    listedAt: 1738009211
+  },
 ];
 export default data4;

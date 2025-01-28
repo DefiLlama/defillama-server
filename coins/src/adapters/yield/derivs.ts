@@ -288,11 +288,7 @@ const configs: { [adapter: string]: Config } = {
 
 export async function derivs(timestamp: number) {
   return Promise.all(
-    Object.keys(configs).map((k: string) =>
-      deriv(timestamp, k, configs[k]).catch(() => {
-        console.log(k);
-      }),
-    ),
+    Object.keys(configs).map((k: string) => deriv(timestamp, k, configs[k])),
   );
 }
 

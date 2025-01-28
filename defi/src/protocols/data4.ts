@@ -2359,7 +2359,7 @@ const data4: Protocol[] = [
     module: "raccoonswap/index.js",
     twitter: "parexnetwork",
     forkedFrom: ["Uniswap V1"],
-    listedAt: 1738009211
+    listedAt: 	1737324015
   },
 ];
 export default data4;

@@ -307,5 +307,8 @@ export default {
     "zkswap-v3": {
         parentId: "zkSwap Finance",
         id: "5392",
+    },
+    "nova-fi": {
+        id: "5677",
     }
 } as AdaptorsConfig

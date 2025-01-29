@@ -722,18 +722,18 @@ const data4: Protocol[] = [
   },
   {
     id: "5610",
-    name: "Crypto Valley Exchange",
+    name: "Crypto Valley Exchange (CVEX)",
     address: null,
     symbol: "-",
     url: "https://cvex.xyz/",
     description:
-      "Decentralized platform for crypto futures and options trading. Enjoy low fees, efficient risk management, multichain support with no KYC required, and trade seamlessly using just USDC. Built for power and simplicity, CVEX is your gateway to smarter trading",
+      "Decentralized derivatives clearing protocol. Enabling traders to reduce margin and unlock capital by providing exchanges with a robust clearing mechanism. First Exchange offers Crypto Derivatives with full portfolio risk. Ready to unleash and empower crypto derivatives by unlocking collateral.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/crypto-valley-exchange.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
-    cmcId: null,
+    cmcId: 30714,
     category: "Derivatives",
     chains: ["Arbitrum"],
     oracles: ["Internal"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13046

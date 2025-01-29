@@ -2361,5 +2361,8 @@ export default {
     },
     "quill-fi": {
         id: "5685"
+    },
+    "liquity-v2": {
+        id: "5656"
     }
 } as AdaptorsConfig

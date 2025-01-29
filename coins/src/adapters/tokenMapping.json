@@ -2439,6 +2439,26 @@
     }
   },
   "zeta": {
+    "0x4bC32034caCcc9B7e02536945eDbC286bACbA073": {
+      "decimals": "9",
+      "symbol": "SOL.SOL",
+      "to": "coingecko#solana"
+    },
+    "0x54Bf2B1E91FCb56853097BD2545750d218E245e1": {
+      "decimals": "8",
+      "symbol": "CBBTC.SOL",
+      "to": "coingecko#coinbase-wrapped-btc"
+    },
+    "0x8344d6f84d26f998fa070BbEA6D2E15E359e2641": {
+      "decimals": "6",
+      "symbol": "USDC.SOL",
+      "to": "coingecko#usd-coin"
+    },
+    "0xEe9CC614D03e7Dbe994b514079f4914a605B4719": {
+      "decimals": "6",
+      "symbol": "USDT.SOL",
+      "to": "coingecko#tether"
+    },
     "0x96152e6180e085fa57c7708e18af8f05e37b479d": {
       "decimals": "18",
       "symbol": "BASE.USDC",

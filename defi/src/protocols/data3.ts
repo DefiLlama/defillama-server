@@ -35867,7 +35867,7 @@ const data3: Protocol[] = [
     chains: ["Sui"],
     module: "suilend/index.js",
     twitter: "suilendprotocol",
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Switchboard"],
     forkedFrom: [],
     audit_links: ["https://docs.suilend.fi/security/audit"],
     parentProtocol: "parent#suilend-protocol",
@@ -52842,7 +52842,7 @@ const data3: Protocol[] = [
     github: ["noble-assets"],
   },
   {
-    id: "5027", 
+    id: "5027",
     name: "MEMECAST.AI", // previously 4cast
     address: null,
     symbol: "-",

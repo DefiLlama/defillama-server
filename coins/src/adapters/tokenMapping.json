@@ -6620,78 +6620,78 @@
   },
   "abstract": {
     "0x000000000000000000000000000000000000800a": {
-      "coingeckoId": "coingecko#ethereum",
+      "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
     },
     "0x0000000000000000000000000000000000000000": {
-      "coingeckoId": "coingecko#ethereum",
+      "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
     },
     "0x3439153eb7af838ad19d56e1571fbd09333c2809": {
-      "coingeckoId": "coingecko#weth",
+      "to": "coingecko#weth",
       "decimals": 18,
       "symbol": "WETH"
     },
     "0x66De4D3Ad9A490e4f090D60bFF1B82723150abB3": {
-      "coingeckoId": "coingecko#ethereum",
+      "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
     },
     "0x84A71ccD554Cc1b02749b35d22F684CC8ec987e1": {
-      "coingeckoId": "coingecko#usd-coin",
+      "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
     },
     "0x0709F39376dEEe2A2dfC94A58EdEb2Eb9DF012bD": {
-      "coingeckoId": "coingecko#tether",
+      "to": "coingecko#tether",
       "decimals": 6,
       "symbol": "USDT"
     }
   },
   "zero_network": {
     "0xac98b49576b1c892ba6bfae08fe1bb0d80cf599c": {
-      "coingeckoId": "coingecko#weth",
+      "to": "coingecko#weth",
       "decimals": 18,
       "symbol": "WETH"
     },
     "0xf1f9e08a0818594fde4713ae0db1e46672ca960e": {
-      "coingeckoId": "coingecko#wrapped-bitcoin",
+      "to": "coingecko#wrapped-bitcoin",
       "decimals": 8,
       "symbol": "WBTC"
     },
     "0x6a6394f47dd0baf794808f2749c09bd4ee874e70": {
-      "coingeckoId": "coingecko#usd-coin",
+      "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
     },
     "0x6386da73545ae4e2b2e0393688fa8b65bb9a7169": {
-      "coingeckoId": "coingecko#tether",
+      "to": "coingecko#tether",
       "decimals": 6,
       "symbol": "USDT"
     }
   },
   "redstone": {
     "0x4200000000000000000000000000000000000006": {
-      "coingeckoId": "coingecko#ethereum",
+      "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
     },
     "0xd5d59fc063e7548b6015a36feb10b875924a19be": {
-      "coingeckoId": "coingecko#usd-coin",
+      "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
     }
   },
   "parex": {
     "0x1595aBE9DCF068a969B819B64809D2bEdd3703b6": {
-      "coingeckoId": "coingecko#parex",
+      "to": "coingecko#parex",
       "decimals": 18,
       "symbol": "PRX"
     },
     "0x19a5C551e4762F232448da1984Ecb445b4a7721e": {
-      "coingeckoId": "coingecko#tether",
+      "to": "coingecko#tether",
       "decimals": 18,
       "symbol": "USDT"
     }

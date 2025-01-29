@@ -139,7 +139,9 @@ async function _storeTokensOfBridge(bridge: Bridge) {
       })),
     )
   ).reduce((all, record) => {
-    all[record.PK.substr("asset#".length)] = true;
+    if (record.confidence && record.confidence < 0.97)
+      all[record.PK.substr("asset#".length)] = false;
+    else all[record.PK.substr("asset#".length)] = true;
     return all;
   }, {});
 

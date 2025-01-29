@@ -2356,4 +2356,7 @@ export default {
     "tribe-run": {
         id: "5669"
     },
+    "zoodotfun": {
+        id: "5684"
+    },
 } as AdaptorsConfig

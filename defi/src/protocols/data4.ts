@@ -95,7 +95,7 @@ const data4: Protocol[] = [
     description:
       "Decentralized exchange on Mantra chain",
     chain: "Mantra",
-    logo: `${baseIconsUrl}/mantra-amm.jpg`,
+    logo: `${baseIconsUrl}/mantra-swap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

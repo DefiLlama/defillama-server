@@ -88,7 +88,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5582",
-    name: "Mantra AMM",
+    name: "Mantra Swap",
     address: null,
     symbol: "-",
     url: "https://mantra.zone/liquidity-pools",

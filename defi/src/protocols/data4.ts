@@ -2556,7 +2556,7 @@ const data4: Protocol[] = [
     ],
     oracles: [],
     parentProtocol: "parent#uniswap",
-    listedAt: 1666191475,
+    listedAt: 1738172667,
   },
   {
     id: "5691",

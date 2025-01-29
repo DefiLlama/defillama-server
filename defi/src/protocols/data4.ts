@@ -1863,7 +1863,7 @@ const data4: Protocol[] = [
     chains: ["Base"],
     module: "trebleswap/index.js",
     twitter: "TrebleSwap",
-    forkedFrom: ["Algebra DEX"],
+    forkedFrom: ["Algebra Integral"],
     oracles: [],
     github: ["trebleswap"],
     listedAt: 1737647275

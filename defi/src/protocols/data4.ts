@@ -2435,7 +2435,7 @@ const data4: Protocol[] = [
     description:
       "Quill Finance: An over-collateralized stablecoin protocol on Scroll's zk-Rollup network",
     chain: "Scroll",
-    logo: `${baseIconsUrl}/zoo.fun.png`,
+    logo: `${baseIconsUrl}/quill-finance.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -10,7 +10,11 @@ const UNISWAP_V3_POOL_ABI = {
     { internalType: "int24", name: "tick", type: "int24" },
     { internalType: "uint16", name: "observationIndex", type: "uint16" },
     { internalType: "uint16", name: "observationCardinality", type: "uint16" },
-    { internalType: "uint16", name: "observationCardinalityNext", type: "uint16" },
+    {
+      internalType: "uint16",
+      name: "observationCardinalityNext",
+      type: "uint16",
+    },
     { internalType: "uint8", name: "feeProtocol", type: "uint8" },
     { internalType: "bool", name: "unlocked", type: "bool" },
   ],
@@ -34,7 +38,7 @@ async function getTokenPriceFromPool() {
   const sqrtPriceX96 = slot0Data.sqrtPriceX96;
 
   // Calculate price: (sqrtPriceX96^2) / 2^192
-  const price = (Number(sqrtPriceX96) ** 2) / 2 ** 192;
+  const price = Number(sqrtPriceX96) ** 2 / 2 ** 192;
 
   return price;
 }
@@ -55,13 +59,13 @@ async function getTokenPrice(timestamp: number) {
     "ZAR", // Symbol
     timestamp, // Timestamp (optional for now)
     "zarban", // Adapter name
-    1 // Confidence score
+    0.9, // Confidence score
   );
 
   return writes;
 }
 
 // Export the adapter
-export async function zar(timestamp: number = 0) {
+export async function zarban(timestamp: number = 0) {
   return await getTokenPrice(timestamp);
 }

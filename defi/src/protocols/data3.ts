@@ -9283,8 +9283,8 @@ const data3: Protocol[] = [
   {
     id: "3107",
     name: "EigenLayer",
-    address: null,
-    symbol: "-",
+    address: "0xec53bf9167f50cdeb3ae105f56099aaab9061f83",
+    symbol: "EIGEN",
     url: "https://www.eigenlayer.xyz/",
     description:
       "EigenLayer is a protocol built on Ethereum that introduces restaking, a new primitive in cryptoeconomic security. This primitive enables the reuse of ETH on the consensus layer",
@@ -40475,8 +40475,8 @@ const data3: Protocol[] = [
   {
     id: "4481",
     name: "Hyperliquid Bridge",
-    address: null,
-    symbol: "-",
+    address: "0x0d01dc56dcaaca66ad901c959b4011ec",
+    symbol: "HYPE",
     url: "https://hyperliquid.xyz",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description: "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price.",

@@ -97,7 +97,7 @@ export function extraUniV2Lps(timestamp: number = 0) {
 export const adapters: {
   [key: string]: Function;
 } = {
-  // extraUniV2Lps,
+  extraUniV2Lps,
 };
 
 Object.entries(config).forEach(([project, value]: any) => {

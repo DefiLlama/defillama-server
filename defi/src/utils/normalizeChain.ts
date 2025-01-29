@@ -2272,6 +2272,8 @@ export const chainCoingeckoIds = {
     },
     chainId: 255,
     github: ["kroma-network"],
+    twitter: "kroma_network",
+    url: "https://kroma.network/"
   },
   "Manta": {
     geckoId: "manta-network",

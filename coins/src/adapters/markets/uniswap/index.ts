@@ -56,7 +56,6 @@ const config = {
   },
   thruster03: { chain: 'blast', factory: '0xb4A7D971D0ADea1c73198C97d7ab3f9CE4aaFA13' },
   thruster1: { chain: 'blast', factory: '0x37836821a2c03c171fB1a595767f4a16e2b93Fc4' },
-  swapx: { chain: 'sonic', factory: '0x05c1be79d3aC21Cc4B727eeD58C9B2fF757F5663' },
   equalizerSonic: { chain: 'sonic', factory: '0xDDD9845Ba0D8f38d3045f804f67A1a8B9A528FcC' }
 };
 
@@ -98,7 +97,7 @@ export function extraUniV2Lps(timestamp: number = 0) {
 export const adapters: {
   [key: string]: Function;
 } = {
-  extraUniV2Lps,
+  // extraUniV2Lps,
 };
 
 Object.entries(config).forEach(([project, value]: any) => {

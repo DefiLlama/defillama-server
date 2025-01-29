@@ -27,6 +27,7 @@ export default {
   unknownTokensV3: require("./other/unknownTokensV3"),
   dinari: require("./rwa/dinari"),
   few: require("./other/few"),
+  zarban: require("./other/zarban"),
   ociswap: require("./markets/ociswap"),
   optimBonds: require("./other/optimBonds"),
   tangleswap: require("./markets/tangleswap"),

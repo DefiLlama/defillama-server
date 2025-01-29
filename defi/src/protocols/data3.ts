@@ -64946,8 +64946,8 @@ const data3: Protocol[] = [
   {
     id: "5570",
     name: "Shadow Exchange CLMM",
-    address: null,
-    symbol: "-",
+    address: "sonic:0x3333b97138D4b086720b5aE8A7844b1345a33333",
+    symbol: "SHADOW",
     url: "https://www.shadow.so",
     description:
       "Sonic-native concentrated liquidity layer and exchange.",

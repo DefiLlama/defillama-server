@@ -6300,7 +6300,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "A Sonic-native concentrated liquidity exchange",
     logo: `${baseIconsUrl}/shadow-exchange.jpg`,
-    gecko_id: null,
+    gecko_id: "shadow-2",
     cmcId: null,
     chains: [],
     twitter: "ShadowOnSonic",

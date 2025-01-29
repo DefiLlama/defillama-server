@@ -2365,8 +2365,8 @@ const data4: Protocol[] = [
   {
     id: "5682",
     name: "Shadow Exchange Legacy", 
-    address: null,
-    symbol: "-",
+    address: "sonic:0x3333b97138D4b086720b5aE8A7844b1345a33333",
+    symbol: "SHADOW",
     url: "https://www.shadow.so/",
     description:
       "Native DEX on Sonic",
@@ -2425,6 +2425,27 @@ const data4: Protocol[] = [
     twitter: "zoodotfun",
     forkedFrom: [],
     listedAt: 1738095359
+  },
+  {
+    id: "5685",
+    name: "Quill Finance", 
+    address: null,
+    symbol: "-",
+    url: "https://app.quill.finance/",
+    description:
+      "Quill Finance: An over-collateralized stablecoin protocol on Scroll's zk-Rollup network",
+    chain: "Scroll",
+    logo: `${baseIconsUrl}/zoo.fun.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Scroll"],
+    module: "quill-fi/index.js",
+    twitter: "QuillFi",
+    forkedFrom: ["Liquity V2"],
+    listedAt: 1738101111
   },
 ];
 export default data4;

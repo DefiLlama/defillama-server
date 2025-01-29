@@ -2359,4 +2359,7 @@ export default {
     "zoodotfun": {
         id: "5684"
     },
+    "quill-fi": {
+        id: "5685"
+    }
 } as AdaptorsConfig

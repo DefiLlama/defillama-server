@@ -92,6 +92,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5566": "zora",
   "5609": "sophon",
   "5624": "soneium",
+  "5683": "sonic"
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -184,4 +185,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "sophon": { ticker: "SOPH", address: "coingecko:sophon" },
   "dydx": { ticker: "DYDX", address: "coingecko:dydx-chain" },
   "apex": { ticker: "APEX", address: "coingecko:apex-token-2" },
+  "sonic": { ticker: "FTM", address: "coingecko:fantom" },
 };

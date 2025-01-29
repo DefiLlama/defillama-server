@@ -6730,7 +6730,7 @@
     },
     "0x3938A812c54304fEffD266C7E2E70B48F9475aD6": {
       "to": "coingecko#usd-coin",
-      "decimals": 18,
+      "decimals": 6,
       "symbol": "USDC.e"
     }
   }

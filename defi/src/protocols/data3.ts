@@ -3154,7 +3154,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V3"],
     module: "wagmi-com/index.js",
-    twitter: "PopsicleFinance",
+    twitter: "wagmicom",
     audit_links: [],
     listedAt: 1681518737,
     github: ["wagmi-dev"],

@@ -2905,5 +2905,27 @@ const data4: Protocol[] = [
     audit_links: ["https://beosin.com/audits/Bondlink_202412031841.pdf"],
     listedAt: 1738233515
   },
+  {
+    id: "5708",
+    name: "Enclabs",
+    address: null,
+    symbol: "-",
+    url: "https://www.enclabs.finance/",
+    description: "Enclabs is a risk-adjusted and isolated markets lending/borrowing protocol",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/enclabs.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Sonic"],
+    module: "enclabs/index.js",
+    twitter: "EnclabsFi",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [],
+    listedAt: 1738260859
+  },
 ];
 export default data4;

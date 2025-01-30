@@ -722,7 +722,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5610",
-    name: "Crypto Valley Exchange (CVEX)",
+    name: "Crypto Valley Exchange",
     address: null,
     symbol: "-",
     url: "https://cvex.xyz/",

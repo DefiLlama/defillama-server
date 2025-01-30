@@ -1382,7 +1382,7 @@ export const chainCoingeckoIds = {
     twitter: "terra_money",
     url: "https://www.terra.money/"
   },
-  "SXnetwork": {
+  "SX Network": {
     geckoId: "sx-network",
     github: ['sx-network'],
     symbol: "SX",
@@ -3967,7 +3967,7 @@ const chainLabelMap = {
   "occ": "EDU Chain",
   "optimism": "Optimism",
   "spn": "Superposition",
-  "zero_network": "Zero Network"
+  "zero_network": "Zero Network",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4002,7 +4002,8 @@ const newChainLabelMap = {
   "bsc": "BSC",
   "europa": "SKALE Europa",
   "occ": "EDU Chain",
-  "optimism": "OP Mainnet"
+  "optimism": "OP Mainnet",
+  "sx": "SX Network"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

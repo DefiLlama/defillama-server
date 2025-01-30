@@ -2927,5 +2927,27 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1738260859
   },
+  {
+    id: "5709",
+    name: "Angles",
+    address: null,
+    symbol: "-",
+    url: "https://angles.fi",
+    description: "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/angels.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Sonic"],
+    module: "angles/index.js",
+    twitter: "Angles_Sonic",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [],
+    listedAt: 1738269622
+  },
 ];
 export default data4;

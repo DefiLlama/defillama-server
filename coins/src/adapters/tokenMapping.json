@@ -652,6 +652,11 @@
       "decimals": "18",
       "symbol": "wstETH",
       "to": "asset#ethereum:0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+    },
+    "0x918b3aa73e2d42d96cf64cbdb16838985992dabc": {
+      "decimals": "8",
+      "symbol": "CoBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "stacks": {

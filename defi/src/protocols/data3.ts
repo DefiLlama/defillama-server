@@ -60575,8 +60575,8 @@ const data3: Protocol[] = [
   {
     id: "5369",
     name: "reddex",
-    address: null,
-    symbol: "-",
+    address: "rbn:0x0233971bd2de29e81029336c46997055df3b5282",
+    symbol: "LQDX",
     url: "https://reddex.io",
     description: "Experience the future of decentralized trading with reddex - the first choice for real world asset crypto projects.",
     chain: "Redbelly",

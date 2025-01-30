@@ -2833,7 +2833,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Plume"],
-    module: "zkfair/index.js",
+    module: "rooster/index.js",
     twitter: "roosterprotocol",
     audit_links: ["https://github.com/shieldify-security/audits-portfolio/blob/main/reports/RoosterProtocol-Security-Review.pdf"],
     oracles: [],

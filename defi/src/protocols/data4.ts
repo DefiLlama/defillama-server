@@ -2855,7 +2855,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "SoFi",
     chains: ["Base"],
-    module: "zkfair/index.js",
+    module: "ethos-markets/index.js",
     twitter: "ethos_network",
     audit_links: [],
     oracles: [],

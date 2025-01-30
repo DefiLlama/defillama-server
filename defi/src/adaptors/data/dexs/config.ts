@@ -2711,5 +2711,13 @@ export default {
     },
     "infinityPools": {
         id: "5662"
+    },
+    "amped": {
+        id: "3833",
+        protocolsData: {
+            "swap": {
+                id: "3833",
+            }
+        }
     }
 } as AdaptorsConfig

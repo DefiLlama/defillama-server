@@ -2356,4 +2356,13 @@ export default {
     "tribe-run": {
         id: "5669"
     },
+    "zoodotfun": {
+        id: "5684"
+    },
+    "quill-fi": {
+        id: "5685"
+    },
+    "liquity-v2": {
+        id: "5656"
+    }
 } as AdaptorsConfig

@@ -5195,7 +5195,7 @@ const data3: Protocol[] = [
     chains: ["Fantom"],
     module: "E3/index.js",
     twitter: "ftm1337",
-    forkedFrom: ["TraderJoe"],
+    forkedFrom: ["Trader Joe DEX"],
     oracles: [],
     parentProtocol: "parent#guru-network-dao",
     audit_links: [],

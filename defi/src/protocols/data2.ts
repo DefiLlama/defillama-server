@@ -24829,7 +24829,7 @@ const data2: Protocol[] = [
     module: "metropolis/index.js",
     twitter: "MetropolisDEX",
     oracles: [],
-    forkedFrom: ["TraderJoe"],
+    forkedFrom: ["Trader Joe DEX"],
     listedAt: 1674059066,
   },
   {

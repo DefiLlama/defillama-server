@@ -8071,7 +8071,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "paribus/index.js",
     twitter: "paribus_io",
-    oracles: [],
+    oracles: ["API3"],
     forkedFrom: ["Compound V2"],
     github: ["Paribus"],
     listedAt: 1685645869,
@@ -18917,7 +18917,7 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     module: "bmx/index.js",
-    oracles: ["Chainlink", "Pyth"],
+    oracles: ["Chainlink", "Pyth", "API3"],
     forkedFrom: ["GMX V1"],
     twitter: "MorphexFTM",
     parentProtocol: "parent#bmx",
@@ -35325,7 +35325,7 @@ const data3: Protocol[] = [
     chains: ["Mode"],
     module: "ironclad/index.js",
     twitter: "IroncladFinance",
-    oracles: ["RedStone"], // https://docs.ironclad.finance/resources/protocol-security#base-oracle-provider
+    oracles: ["API3"], // https://docs.ironclad.finance/resources/protocol-security#base-oracle-provider
     forkedFrom: ["AAVE V2"],
     parentProtocol: "parent#oath-foundation",
     listedAt: 1709767737,
@@ -41554,7 +41554,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Blast"],
-    oracles: ["RedStone"], //https://docs.seismic.finance/accepted-collateral-types#oracles-utilized
+    oracles: ["RedStone", "API3"], //https://docs.seismic.finance/accepted-collateral-types#oracles-utilized
     forkedFrom: ["AAVE V2"],
     module: "seismic/index.js",
     twitter: "seismicfinance",
@@ -44848,7 +44848,7 @@ const data3: Protocol[] = [
     chains: ["Mode"],
     module: "splice-fi/index.js",
     twitter: "splice_fi",
-    oracles: [],
+    oracles: ["API3"],
     forkedFrom: ["Pendle"],
     github: ["splice-finance"],
     listedAt: 1716545909,
@@ -44914,7 +44914,7 @@ const data3: Protocol[] = [
     chains: ["Fraxtal"],
     module: "glyph-fi/index.js",
     twitter: "GlyphFinance",
-    oracles: ["RedStone"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10370
+    oracles: ["RedStone", "API3"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10370
     forkedFrom: ["AAVE V3"],
     audit_links: ["https://conclave.gitbook.io/glyph/resources/audits"],
     listedAt: 1716652465,
@@ -51628,7 +51628,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Scroll"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "API3"],
     forkedFrom: ["AAVE V2"],
     module: "lore/index.js",
     audit_links: [],
@@ -61055,7 +61055,7 @@ const data3: Protocol[] = [
     module: "elara/index.js",
     twitter: "ElaraLabs",
     forkedFrom: ["Compound V2"],
-    oracles: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9127
+    oracles: ["eOracle", "API3"], // https://github.com/DefiLlama/defillama-server/pull/9127
     audit_links: ["https://github.com/ElaraFinance/elara-audits/blob/main/24-09-2024_Quantstamp_ElaraV1.pdf"],
     listedAt: 1732186221
   },
@@ -65029,7 +65029,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sonic"],
-    oracles: [],
+    oracles: ["API3"],
     forkedFrom: ["Compound V2"],
     module: "machfi/index.js",
     twitter: "machfi_xyz",

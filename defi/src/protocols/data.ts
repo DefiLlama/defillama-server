@@ -19571,6 +19571,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639426591,
     deadUrl: true,
   },
+  /*
   {
     id: "1023",
     name: "Overnight USD+",
@@ -19598,6 +19599,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639428732,
     stablecoins: ["usd+"],
   },
+  */
   {
     id: "1024",
     name: "DefySwap",

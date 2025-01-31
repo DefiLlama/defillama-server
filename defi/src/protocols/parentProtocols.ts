@@ -1250,6 +1250,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "wynddao",
   },
+  /*
   {
     id: "parent#overnight-finance",
     name: "Overnight Finance",
@@ -1264,6 +1265,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "overnight_fi",
     github: ["ovnstable"],
   },
+  */
   {
     id: "parent#fairyswap",
     name: "FairySwap",

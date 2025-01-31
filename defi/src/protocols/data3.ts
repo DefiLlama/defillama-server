@@ -2503,6 +2503,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dove-swap",
     listedAt: 1681214153,
   },
+  /*
   {
     id: "2810",
     name: "Overnight USDT+",
@@ -2526,6 +2527,7 @@ const data3: Protocol[] = [
     stablecoins: ["usdt+"],
     listedAt: 1681228187,
   },
+  */
   {
     id: "2811",
     name: "Forge SX Ovens",
@@ -21188,6 +21190,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#factor",
     listedAt: 1697452699,
   },
+  /*
   {
     id: "3631",
     name: "Overnight ETH+",
@@ -21210,6 +21213,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#overnight-finance",
     listedAt: 1697466384,
   },
+  */
   {
     id: "3632",
     name: "Quillswap",

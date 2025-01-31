@@ -2905,5 +2905,32 @@ const data4: Protocol[] = [
     audit_links: ["https://beosin.com/audits/Bondlink_202412031841.pdf"],
     listedAt: 1738233515
   },
+  {
+    id: "5708",
+    name: "Overnight Finance",
+    address: "optimism:0x3b08fcd15280e7b5a6e404c4abb87f7c774d1b2e",
+    symbol: "OVN",
+    url: "https://overnight.fi",
+    description: "Overnight Finance is an asset management protocol offering passive yield products based on delta-neutral strategies, primarily for conservative stablecoin investors.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/overnight-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "overnight-finance",
+    cmcId: "28229",
+    category: "CDP",
+    chains: ["Optimism", "Arbitrum"],
+    module: "overnight-fi/index.js",
+    twitter: "overnight_fi",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [
+      "https://github.com/ovnstable/ovnstable-app/blob/master/audits/hacken_2022-02-03.pdf",
+      "https://github.com/ovnstable/ovnstable-core/blob/master/audits/hacken_2022-02-03.pdf",
+      "https://github.com/ovnstable/ovnstable-core/blob/master/audits/ackee_2023-03-03.pdf",
+    ],
+    github: ["ovnstable"],
+    listedAt: 1738320172
+  },
 ];
 export default data4;

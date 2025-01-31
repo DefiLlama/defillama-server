@@ -3797,6 +3797,18 @@ export const chainCoingeckoIds = {
     url: "https://parex.network/",
     chainId: 322202
   },
+  "SX Rollup": {
+    geckoId: "sx-network-2",
+    symbol: "SX",
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "SX_Bet",
+    url: "https://sx.bet"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4003,7 +4015,8 @@ const newChainLabelMap = {
   "europa": "SKALE Europa",
   "occ": "EDU Chain",
   "optimism": "OP Mainnet",
-  "sx": "SX Network"
+  "sx": "SX Network",
+  "sxr": "SX Rollup"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

@@ -652,6 +652,11 @@
       "decimals": "18",
       "symbol": "wstETH",
       "to": "asset#ethereum:0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+    },
+    "0x918b3aa73e2d42d96cf64cbdb16838985992dabc": {
+      "decimals": "8",
+      "symbol": "CoBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "stacks": {
@@ -6136,6 +6141,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "scUSD"
+    },
+    "0x33B29bcf17e866A35941e07CbAd54f1807B337f5": {
+      "to": "sonic:0xCd4D2b142235D5650fFA6A38787eD0b7d7A51c0C",
+      "decimals": 18,
+      "symbol": "bpt-rsb-gauge"
     },
     "0x4D85bA8c3918359c78Ed09581E5bc7578ba932ba": {
       "to": "coingecko#usd-coin",

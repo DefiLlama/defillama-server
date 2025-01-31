@@ -24829,7 +24829,7 @@ const data2: Protocol[] = [
     module: "metropolis/index.js",
     twitter: "MetropolisDEX",
     oracles: [],
-    forkedFrom: ["TraderJoe"],
+    forkedFrom: ["Trader Joe DEX"],
     listedAt: 1674059066,
   },
   {
@@ -30391,6 +30391,7 @@ const data2: Protocol[] = [
     audit_links: [" https://smardex.io/audit-reports"],
     listedAt: 1679329866,
   },
+  /*
   {
     id: "2696",
     name: "Overnight DAI+",
@@ -30414,6 +30415,7 @@ const data2: Protocol[] = [
     stablecoins: ["dai+"],
     listedAt: 1679332234,
   },
+  */
   {
     id: "2697",
     name: "Bond Protocol",

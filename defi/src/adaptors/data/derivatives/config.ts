@@ -785,5 +785,13 @@ export default {
     },
     "cvex": {
         id: "5610"
+    },
+    "amped": {
+        id: "3833",
+        protocolsData: {
+            "derivatives": {
+                id: "3833",
+            }
+        }
     }
 } as AdaptorsConfig

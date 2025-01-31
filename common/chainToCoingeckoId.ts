@@ -164,15 +164,15 @@ export const chainToCoingeckoId = {
   apechain: "apechain",
   boba_bnb: "boba-bnb",
   sui: "sui",
-  sonic: "sonic", 
-  abstract: 'abstract'
+  sonic: "sonic",
+  abstract: "abstract",
   // dl: cg
   // chz: "chiliz",
   // stellar: "stellar",
   // stacks: "stacks",
   // cosmos: "cosmos",
   // xrp: "xrp",
-  // hedera: "hedera-hashgraph",
+  hedera: "hedera-hashgraph",
 };
 
 export default chainToCoingeckoId;

@@ -2503,6 +2503,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dove-swap",
     listedAt: 1681214153,
   },
+  /*
   {
     id: "2810",
     name: "Overnight USDT+",
@@ -2526,6 +2527,7 @@ const data3: Protocol[] = [
     stablecoins: ["usdt+"],
     listedAt: 1681228187,
   },
+  */
   {
     id: "2811",
     name: "Forge SX Ovens",
@@ -3154,7 +3156,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V3"],
     module: "wagmi-com/index.js",
-    twitter: "PopsicleFinance",
+    twitter: "wagmicom",
     audit_links: [],
     listedAt: 1681518737,
     github: ["wagmi-dev"],
@@ -5195,7 +5197,7 @@ const data3: Protocol[] = [
     chains: ["Fantom"],
     module: "E3/index.js",
     twitter: "ftm1337",
-    forkedFrom: ["TraderJoe"],
+    forkedFrom: ["Trader Joe DEX"],
     oracles: [],
     parentProtocol: "parent#guru-network-dao",
     audit_links: [],
@@ -21188,6 +21190,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#factor",
     listedAt: 1697452699,
   },
+  /*
   {
     id: "3631",
     name: "Overnight ETH+",
@@ -21210,6 +21213,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#overnight-finance",
     listedAt: 1697466384,
   },
+  */
   {
     id: "3632",
     name: "Quillswap",
@@ -28286,13 +28290,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3946",
-    name: "Kelp rsETH",
+    name: "Kelp",
     address: null,
     symbol: "-",
-    url: "https://kelpdao.xyz/",
+    url: "https://kelpdao.xyz/restake",
     assetToken: "rsETH",
     description:
-      "rsETH is a Liquid Restaked Token (LRT) issued by Kelp DAO designed to offer liquidity to illiquid assets deposited into restaking platforms, such as EigenLayer. It aims to address the risks and challenges posed by the current offering of restaking",
+      "Kelp is the second largest liquid restaking protocol with ~$2B+ in TVL. Its liquid restaked token, rsETH, is live across 10+ major L2s and 40+ DeFi platforms, allowing users to restake while maintaining full liquidity.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/kelp-dao.png`,
     audits: "2",
@@ -57728,14 +57732,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5244",
-    name: "Kelp GAIN",
+    name: "Gain",
     address: null,
     symbol: "-",
-    url: "https://kelpdao.xyz/gain/",
+    url: "https://kelpdao.xyz/gain",
     description:
-      "Gain is your rewards concierge. Access top airdrops, high rewards all from our curated vaults",
+      "Gain is an actively managed vaults program with $150M+ in TVL, designed for users to maximise their earning potential through tokenized rewards, supported by a seamless user experience. Its flagship products are Airdrop Gain, High Gain and Grizzly Gain.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/kelp-dao.png`,
+    logo: `${baseIconsUrl}/kelp-gain.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -60575,8 +60579,8 @@ const data3: Protocol[] = [
   {
     id: "5369",
     name: "reddex",
-    address: null,
-    symbol: "-",
+    address: "rbn:0x0233971bd2de29e81029336c46997055df3b5282",
+    symbol: "LQDX",
     url: "https://reddex.io",
     description: "Experience the future of decentralized trading with reddex - the first choice for real world asset crypto projects.",
     chain: "Redbelly",
@@ -62337,7 +62341,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Yield",
     chains: ["Hyperliquid"],
     oracles: [],
     forkedFrom: [],
@@ -64210,11 +64214,11 @@ const data3: Protocol[] = [
   },*/
   {
     id: "5537",
-    name: "Kernel", //previous Kernel DAO
+    name: "Kernel", //previous KernelDAO
     address: null,
     symbol: "-",
-    url: "https://kerneldao.com",
-    description: "Decentralised Security to supercharge & blitzscale BNB, while providing exciting rewards & DeFi opportunities.",
+    url: "https://kerneldao.com/restake",
+    description: "Kernel is pioneering restaking on the BNB Chain. Restake BNB, BTC and other yield-bearing tokens and earn higher rewards.",
     chain: "Binance",
     logo: `${baseIconsUrl}/kernel.jpg`,
     audits: "0",

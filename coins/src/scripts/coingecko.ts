@@ -80,7 +80,6 @@ async function storeHistoricalCoinData(coinData: Write[]) {
 
 let solanaTokens: Promise<any>;
 let _solanaTokens: Promise<any>;
-
 async function cacheSolanaTokens() {
   if (_solanaTokens === undefined) {
     _solanaTokens = fetch(
@@ -89,6 +88,22 @@ async function cacheSolanaTokens() {
     solanaTokens = _solanaTokens.then((r) => r.json());
   }
   return solanaTokens;
+}
+
+let hyperliquidTokens: Promise<any>;
+let _hyperliquidTokens: Promise<any>;
+async function cacheHyperliquidTokens() {
+  if (_hyperliquidTokens === undefined) {
+    _hyperliquidTokens = fetch(`https://api.hyperliquid.xyz/info`, {
+      method: "POST",
+      body: JSON.stringify({ type: "spotMeta" }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    hyperliquidTokens = _hyperliquidTokens.then((r) => r.json());
+  }
+  return hyperliquidTokens;
 }
 
 async function getSymbolAndDecimals(
@@ -121,6 +136,26 @@ async function getSymbolAndDecimals(
     return {
       symbol: token.symbol,
       decimals: Number(token.decimals),
+    };
+  } else if (chain == "hedera") {
+    try {
+      const { symbol, decimals } = await fetch(
+        `${
+          process.env.HEDERA_RPC ?? "https://mainnet.mirrornode.hedera.com"
+        }/api/v1/tokens/${tokenAddress}`,
+      ).then((r) => r.json());
+      return { symbol, decimals };
+    } catch (e) {
+      return;
+    }
+  } else if (chain == "hyperliquid") {
+    const token = ((await hyperliquidTokens).tokens as any[]).find(
+      (t) => t.tokenId === tokenAddress,
+    );
+    if (!token) return;
+    return {
+      decimals: token.weiDecimals,
+      symbol: token.name,
     };
   } else if (!tokenAddress.startsWith(`0x`)) {
     return;
@@ -424,6 +459,7 @@ function shuffleArray(array: any[]) {
 
 async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   await cacheSolanaTokens();
+  await cacheHyperliquidTokens();
   const step = 500;
   let coins = (await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,

@@ -64210,7 +64210,7 @@ const data3: Protocol[] = [
   },*/
   {
     id: "5537",
-    name: "Kernel", //previous Kernel DAO
+    name: "Kernel", //previous KernelDAO
     address: null,
     symbol: "-",
     url: "https://kerneldao.com/restake",

@@ -5721,10 +5721,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#kelp-dao", //
-    name: "Kernel DAO", //previous Kelp DAO
+    name: "KernelDAO", //previous KelpDAO
     url: "https://kerneldao.com",
     description:
-      "Kernel DAO is a suite of top restaking products, with over $2 billion in total value locked and live on 10+ chains including Ethereum, BNB Chain, and expanding further. Kernel DAO’s three key products include Kernel, Kelp and Gain.",
+      "KernelDAO is a suite of top restaking products, with over $2 billion in total value locked and live on 10+ chains including Ethereum, BNB Chain, and expanding further. KernelDAO’s three key products include Kernel, Kelp and Gain.",
     logo: `${baseIconsUrl}/kerneldao.jpg`,
     gecko_id: null, // kelp-dao preview only
     cmcId: null,

@@ -2857,7 +2857,7 @@ const data4: Protocol[] = [
     chains: ["Base"],
     module: "ethos-markets/index.js",
     twitter: "ethos_network",
-    audit_links: [],
+    audit_links: ["https://whitepaper.ethos.network/security/smart-contract-audits"],
     oracles: [],
     forkedFrom: [],
     listedAt: 1738204217

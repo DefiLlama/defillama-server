@@ -733,7 +733,7 @@ const data4: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: null,
-    cmcId: 30714,
+    cmcId: "30714",
     category: "Derivatives",
     chains: ["Arbitrum"],
     oracles: ["Internal"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13046

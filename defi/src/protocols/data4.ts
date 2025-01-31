@@ -2935,7 +2935,7 @@ const data4: Protocol[] = [
     url: "https://angles.fi",
     description: "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
     chain: "Sonic",
-    logo: `${baseIconsUrl}/angels.png`,
+    logo: `${baseIconsUrl}/angles.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

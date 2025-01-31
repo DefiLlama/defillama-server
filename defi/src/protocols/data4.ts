@@ -2849,7 +2849,7 @@ const data4: Protocol[] = [
     description: "Ethos Markets provides reputation markets, allowing you to trade both trust and distrust on someone's reputation",
     chain: "Base",
     logo: `${baseIconsUrl}/ethos-markets.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

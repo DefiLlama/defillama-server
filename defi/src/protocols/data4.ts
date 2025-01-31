@@ -3018,5 +3018,26 @@ const data4: Protocol[] = [
     forkedFrom: [],
     listedAt: 1738322943
   },
+  {
+    id: "5713",
+    name: "CreateMyToken",
+    address: null,
+    symbol: "-",
+    url: "https://www.createmytoken.com/",
+    description: "Create your own token in just 1 minute and deploy it on Solana, Ethereum, Base, BNB Smart Chain and more! No code, no setup, no login, and free.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/createmytoken.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Ethereum","Base","Binance","Polygon","Arbitrum","Avalanche","Optimism","Blast"],
+    module: "createmytoken/index.js",
+    twitter: "CreateMyToken",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1738346891
+  },
 ];
 export default data4;

@@ -12008,7 +12008,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "sideshift-token",
     cmcId: "11726",
-    category: "Liquid Staking",
+    category: "Cross Chain Bridge",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

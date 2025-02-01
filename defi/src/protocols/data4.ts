@@ -3039,5 +3039,27 @@ const data4: Protocol[] = [
     forkedFrom: [],
     listedAt: 1738346891
   },
+  {
+    id: "5714",
+    name: "Rabby Wallet",
+    address: null,
+    symbol: "-",
+    url: "https://rabby.io/",
+    description: "A wallet for Ethereum and all EVM chains By DeBank",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rabby-wallet.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Wallets",
+    chains: ["Ethereum","Base","Binance","Arbitrum"],
+    module: "dummy.js",
+    twitter: "Rabby_io",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://github.com/RabbyHub/Rabby/tree/develop/docs"],
+    github: ["RabbyHub"]
+  },
 ];
 export default data4;

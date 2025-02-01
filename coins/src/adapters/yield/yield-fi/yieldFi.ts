@@ -15,7 +15,7 @@ export async function getTokenPrices(timestamp: number, chain: string) {
 	const api = await getApi(chain, timestamp, true)
 	const { yusd, decimals } = config[chain]
 
-	const price = await api.call({ abi: 'function exchageRate view returns (uin256)', target: yusd })
+	const price = await api.call({ abi: 'function exchangeRate view returns (uin256)', target: yusd })
 	pricesObject[yusd] = { underlying: yusd, price: price / (10**decimals) }
 
 	return getWrites({ chain, timestamp, writes, pricesObject, projectName: 'yield-fi' })

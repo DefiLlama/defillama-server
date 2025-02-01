@@ -6159,7 +6159,7 @@
     },
     "0x455d5f11Fea33A8fa9D3e285930b478B6bF85265": {
       "to": "coingecko#weth",
-      "decimals": 6,
+      "decimals": 18,
       "symbol": "stkscETH"
     },
     "0xe715cbA7B5cCb33790ceBFF1436809d36cb17E57": {

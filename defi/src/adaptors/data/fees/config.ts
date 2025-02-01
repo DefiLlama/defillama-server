@@ -2364,5 +2364,9 @@ export default {
     },
     "liquity-v2": {
         id: "5656"
+    },
+    "jupiter": {
+        parentId: "Jupiter",
+        id: "2141"
     }
 } as AdaptorsConfig

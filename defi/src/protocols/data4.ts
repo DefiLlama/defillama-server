@@ -239,7 +239,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield Aggregator",
+    category: "Basis Trading", // a portion of the funds go to defi protoclls and the rest is going to exchanges for basis trading. Since majority of tvl is in exchanges, category should be basis trading
     chains: ["Ethereum","Optimism","BOB"],
     oracles: [],
     forkedFrom: [],

@@ -3061,5 +3061,26 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/RabbyHub/Rabby/tree/develop/docs"],
     github: ["RabbyHub"]
   },
+  {
+    id: "5715",
+    name: "ƒlaunch",
+    address: null,
+    symbol: "-",
+    url: "https://flaunch.gg",
+    description: "Buy, sell and launch memes. 100% of trading fees go to creators and buybacks. Powered by Uniswap V4.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/ƒlaunch.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    module: "flaunch/index.js",
+    twitter: "flaunchgg",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1738497748
+  },
 ];
 export default data4;

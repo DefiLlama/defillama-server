@@ -2368,5 +2368,8 @@ export default {
     "jupiter": {
         parentId: "Jupiter",
         id: "2141"
+    },
+    "rabby": {
+        id: "5714"
     }
 } as AdaptorsConfig

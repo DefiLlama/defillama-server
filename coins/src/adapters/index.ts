@@ -123,4 +123,5 @@ export default {
   spectra: require("./yield/spectra"),
   kamino: require("./solana/kamino"),
   fxsp: require("./yield/fxsp"),
+  stakeDao: require("./yield/stakeDao"),
 };

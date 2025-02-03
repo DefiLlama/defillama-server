@@ -6182,6 +6182,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "sonic_market",
+    github: ["Sonic-Market"],
   },
   {
     id: "parent#bucket-protocol",

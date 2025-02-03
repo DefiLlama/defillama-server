@@ -271,6 +271,11 @@
     }
   },
   "ethereum": {
+    "0x86b5780b606940eb59a062aa85a07959518c0161": {
+      "decimals": "18",
+      "symbol": "sETHFI",
+      "to": "coingecko#ether-fi"
+    },
     "0xB1e12802831Da99D2d47b6a55049D69bf7De0e3C": {
       "decimals": "8",
       "symbol": "oBTC",

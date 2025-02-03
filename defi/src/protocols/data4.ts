@@ -3270,5 +3270,28 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"],
     listedAt: 1738617883
   },
+
+  {
+    id: "5724",
+    name: "SX Bet",
+    address: null,
+    symbol: "-",
+    url: "https://sx.bet",
+    description: "Web3 sports betting platform",
+    chain: "SX Rollup",
+    logo: `${baseIconsUrl}/sx-bet.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["SX Rollup"],
+    module: "sxbet/index.js",
+    twitter: "sx_bet",
+    oracles: [],
+    forkedFrom: [],  
+    audit_links: [],
+    listedAt: 1738617887
+  },
 ];
 export default data4;

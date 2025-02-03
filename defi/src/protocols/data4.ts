@@ -3152,7 +3152,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5719",
-    name: "WINK Finance",
+    name: "WINK",
     address: null,
     symbol: "-",
     url: "https://wink.finance",

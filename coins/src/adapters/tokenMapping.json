@@ -271,6 +271,16 @@
     }
   },
   "ethereum": {
+    "0xf6718b2701d4a6498ef77d7c152b2137ab28b8a3": {
+      "decimals": "18",
+      "symbol": "stBTC",
+      "to": "coingecko#lorenzo-stbtc"
+    },
+    "0xadc9c900b05f39f48bb6f402a1bae60929f4f9a8": {
+      "decimals": "8",
+      "symbol": "pumpBTC.bera",
+      "to": "coingecko#pumpbtc"
+    },
     "0x2eC37d45FCAE65D9787ECf71dc85a444968f6646": {
       "decimals": "8",
       "symbol": "brBTC",

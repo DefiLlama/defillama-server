@@ -3064,7 +3064,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5715",
-    name: "ƒlaunch",
+    name: "flaunch",
     address: null,
     symbol: "-",
     url: "https://flaunch.gg",

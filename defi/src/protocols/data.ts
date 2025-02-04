@@ -825,7 +825,7 @@ const data: Protocol[] = [
     url: "https://amptoken.org/",
     description: "Collateral for fast and efficient value transfer",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/flexa.png_small`,
+    logo: `${baseIconsUrl}/flexa.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "amp-token",

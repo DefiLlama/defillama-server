@@ -276,6 +276,11 @@
       "symbol": "brBTC",
       "to": "coingecko#wrapped-bitcoin"
     },
+    "0x86b5780b606940eb59a062aa85a07959518c0161": {
+      "decimals": "18",
+      "symbol": "sETHFI",
+      "to": "coingecko#ether-fi"
+    },
     "0xB1e12802831Da99D2d47b6a55049D69bf7De0e3C": {
       "decimals": "8",
       "symbol": "oBTC",
@@ -5979,6 +5984,11 @@
       "to": "coingecko#steam",
       "decimals": 2,
       "symbol": "STEAM"
+    },
+    "0x00000000000000000000000000000000000c01f3": {
+      "to": "coingecko#hsuite",
+      "decimals": 4,
+      "symbol": "HSUITE"
     }
   },
   "morph": {
@@ -6045,6 +6055,26 @@
       "to": "coingecko#dogwifcoin",
       "decimals": 6,
       "symbol": "WIF"
+    },
+    "HP5ksEQBkX5UZXxLThvF24TEh5ta9AUB8TLA1YSXKzDs": {
+      "to": "coingecko#neptune-protocol",
+      "decimals": 9,
+      "symbol": "NPT"
+    },
+    "V5m1Cc9VK61mKL8xVYrjR7bjD2BC5VpADLa6ws3G8KM": {
+      "to": "coingecko#stride-staked-tia",
+      "decimals": 6,
+      "symbol": "stTIA"
+    },
+    "9RryNMhAVJpAwAGjCAMKbbTFwgjapqPkzpGMfTQhEjf8": {
+      "to": "coingecko#celestia",
+      "decimals": 6,
+      "symbol": "TIA"
+    },
+    "Fu5P5ikrnQ8BKZECJ1XeeDAaTgWJUrcjw8JmFrNA8TJk": {
+      "to": "coingecko#renzo-restaked-sol",
+      "decimals": 9,
+      "symbol": "ezSOL"
     }
   },
   "unit0": {
@@ -6079,6 +6109,16 @@
       "to": "coingecko#redbelly-network-token",
       "decimals": 18,
       "symbol": "RBNT"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#redbelly-network-token",
+      "decimals": 18,
+      "symbol": "RBNT"
+    },
+    "0x0233971bd2de29e81029336c46997055df3b5282": {
+      "to": "coingecko#liquid-crypto",
+      "decimals": 18,
+      "symbol": "LQDX"
     }
   },
   "shido": {
@@ -6216,6 +6256,11 @@
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
       "symbol": "SolvBTC.BBN"
+    },
+    "0x040c10f8238e4689c5e549ef5e07478b738b2ba5": {
+      "to": "coingecko#ignition-fbtc",
+      "decimals": 8,
+      "symbol": "lfbtc-avalon-sonic"
     }
   },
   "vinu": {
@@ -6752,6 +6797,33 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
+    },
+    "0xA849026cDA282eeeBC3C39Afcbe87a69424F16B4": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0x626613B473F7eF65747967017C11225436EFaEd7": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    }
+  },
+  "sxr": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#sx-network-2",
+      "decimals": 18,
+      "symbol": "SX"
+    },
+    "0x3E96B0a25d51e3Cc89C557f152797c33B839968f": {
+      "to": "coingecko#sx-network-2",
+      "decimals": 18,
+      "symbol": "WSX"
+    },
+    "0x6629ce1cf35cc1329ebb4f63202f3f197b3f050b": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
     }
   }
 }

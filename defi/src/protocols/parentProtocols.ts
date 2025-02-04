@@ -6380,7 +6380,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LiquityProtocol",
     treasury: "liquity-treasury.js",
-    stablecoins: ["liquity-usd"],
+    stablecoins: ["liquity-usd","liquity-bold"],
     github: ["liquity"],
   },
   {

@@ -2447,6 +2447,7 @@ const data4: Protocol[] = [
     module: "quill-fi/index.js",
     twitter: "QuillFi",
     forkedFrom: ["Liquity V2"],
+    stablecoins: ["quill-usd"],
     listedAt: 1738101111
   },
   {
@@ -3218,6 +3219,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],  
     audit_links: ["https://docs.noon.capital/security/smart-contract-audits"],
+    stablecoins: ["noon-usn"],
     listedAt: 1738617865
   },
   {

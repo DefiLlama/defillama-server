@@ -24766,6 +24766,7 @@ const data3: Protocol[] = [
     oracles: [],
     twitter: "frankencoinzchf",
     github: ["Frankencoin-ZCHF"],
+    stablecoins: ["frankencoin"],
     listedAt: 1699970045,
   },
   {
@@ -54281,6 +54282,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "levelusd",
+    stablecoins: ["level-usd"],
     listedAt: 1725272779
   },
   {

@@ -64388,6 +64388,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "elys-dex/index.js",
     twitter: "elys_network",
+    parentProtocol: "parent#elys-protocol",
     listedAt: 1734734073
   },
   {

@@ -3270,7 +3270,6 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"],
     listedAt: 1738617883
   },
-
   {
     id: "5724",
     name: "SX Bet",
@@ -3292,6 +3291,70 @@ const data4: Protocol[] = [
     forkedFrom: [],  
     audit_links: [],
     listedAt: 1738617887
+  },
+  {
+    id: "5725",
+    name: "PassDEX",
+    address: null,
+    symbol: "-",
+    url: "https://passdex.finance",
+    description: "PassDEX, Leading the multichain DEX trend.",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/passdex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Soneium"],
+    module: "passdex/index.js",
+    twitter: "PassDEX",
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],  
+    listedAt: 1738668464
+  },
+  {
+    id: "5726",
+    name: "Factorial",
+    address: null,
+    symbol: "-",
+    url: "https://factorial.finance/",
+    description: "Factorial is built on The Open Network (TON), utilizing its parallelism and scalability to provide a decentralized, permissionless lending solution",
+    chain: "Soneium",
+    logo: `${baseIconsUrl}/factorial.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["TON"],
+    module: "factorial/index.js",
+    twitter: "FactorialFi",
+    oracles: ["RedStone"], // https://docs.factorial.finance/oracle
+    forkedFrom: [],  
+    listedAt: 1738669030
+  },
+  {
+    id: "5727",
+    name: "Elys Earn",
+    address: null,
+    symbol: "-",
+    url: "https://app.elys.network/earn/staking",
+    description: "Universal Liquidity Layer: multichain UniFi, one click away.",
+    chain: "Elys",
+    logo: `${baseIconsUrl}/elys-earn.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Elys"],
+    module: "elys-lending/index.js",
+    twitter: "elys_network",
+    oracles: [], 
+    forkedFrom: [],  
+    parentProtocol: "parent#elys-protocol",
+    listedAt: 1738669189
   },
 ];
 export default data4;

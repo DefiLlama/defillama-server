@@ -6419,6 +6419,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ShadowOnSonic",
   },
+  {
+    id: "parent#elys-protocol",
+    name: "Elys Protocol",
+    url: "https://elys.network",
+    description: "Elevate your DeFi portfolio with unrivaled reward potential on BTC, ETH, SOL and more.",
+    logo: `${baseIconsUrl}/elys-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "elys_network",
+  },
 ];
 
 export default parentProtocols;

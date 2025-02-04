@@ -40670,7 +40670,7 @@ const data3: Protocol[] = [
     address: "arbitrum:0xb08d8becab1bf76a9ce3d2d5fa946f65ec1d3e83",
     symbol: "GS",
     url: "https://app.gammaswap.com/",
-    description: "The first oracle free perpetual options Options platform",
+    description: "Trade perpetual options using DEX liquidity",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/gammaswap.png`,
     audits: "2",

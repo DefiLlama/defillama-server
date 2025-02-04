@@ -6441,6 +6441,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RaydiumProtocol",
   },
+  {
+    id: "parent#angles",
+    name: "Angles",
+    url: "https://angles.fi/",
+    description: "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
+    logo: `${baseIconsUrl}/angles.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Angles_Sonic",
+  },
 ];
 
 export default parentProtocols;

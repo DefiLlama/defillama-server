@@ -2929,10 +2929,10 @@ const data4: Protocol[] = [
   },
   {
     id: "5709",
-    name: "Angles",
+    name: "Angles Stake",
     address: null,
     symbol: "-",
-    url: "https://angles.fi",
+    url: "https://angles.fi/stake",
     description: "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
     chain: "Sonic",
     logo: `${baseIconsUrl}/angles.png`,
@@ -2947,6 +2947,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: [],
+    parentProtocol: "parent#angles",
     listedAt: 1738269622
   },
   {
@@ -3394,6 +3395,29 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "RaydiumProtocol",
     parentProtocol: "parent#raydium"
+  },
+  {
+    id: "5709",
+    name: "Angles Liquid",
+    address: null,
+    symbol: "-",
+    url: "https://angles.fi",
+    description: "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/angles.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Managed Token Pools",
+    chains: ["Sonic"],
+    module: "angles-liquid/index.js",
+    twitter: "Angles_Sonic",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [],
+    parentProtocol: "parent#angles",
+    listedAt: 1738689725
   },
 ];
 export default data4;

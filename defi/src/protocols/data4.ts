@@ -3397,7 +3397,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#raydium"
   },
   {
-    id: "5709",
+    id: "5730",
     name: "Angles Liquid",
     address: null,
     symbol: "-",

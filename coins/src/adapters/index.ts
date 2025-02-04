@@ -38,6 +38,7 @@ export default {
   ston: require("./markets/ston"),
   silo: require("./moneyMarkets/silo"),
   hlp: require("./yield/hlp"),
+  jeurx: require("./yield/jeurx"),
   digift: require("./rwa/digift"),
   gmxV2: require("./other/gmxV2"),
   timeswap: require("./yield/timeswap"),

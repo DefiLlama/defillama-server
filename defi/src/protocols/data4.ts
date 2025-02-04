@@ -241,7 +241,9 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum","Optimism","BOB"],
-    oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    oraclesByChain: {
+      arbitrum: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    },
     forkedFrom: [],
     module: "yield-fi/index.js",
     twitter: "getyieldfi",

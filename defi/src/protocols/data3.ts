@@ -12540,8 +12540,8 @@ const data3: Protocol[] = [
       scroll: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
       linea: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
       mode: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
-      bsquared: ["RedStone"], // https://docs.layerbank.finance/protocol/lending/oracles
-      bob: ["RedStone"], // https://docs.layerbank.finance/protocol/lending/oracles
+      bsquared: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
+      bob: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
     },
     listedAt: 1689773129,
     audit_links: [

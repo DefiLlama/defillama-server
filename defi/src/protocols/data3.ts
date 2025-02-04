@@ -44851,7 +44851,9 @@ const data3: Protocol[] = [
     chains: ["Mode"],
     module: "splice-fi/index.js",
     twitter: "splice_fi",
-    oracles: ["API3"],
+    oraclesByChain: {
+      mode: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    },
     forkedFrom: ["Pendle"],
     github: ["splice-finance"],
     listedAt: 1716545909,

@@ -18917,7 +18917,10 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     module: "bmx/index.js",
-    oracles: ["Chainlink", "Pyth", "API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    oraclesByChain: {
+      base: ["Chainlink", "Pyth"], // https://docs.morphex.trade/oracles
+      mode: ["API3"], // https://docs.morphex.trade/oracles
+    }, // https://github.com/DefiLlama/defillama-server/pull/9183
     forkedFrom: ["GMX V1"],
     twitter: "MorphexFTM",
     parentProtocol: "parent#bmx",

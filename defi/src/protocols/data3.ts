@@ -64602,7 +64602,7 @@ const data3: Protocol[] = [
     description: "Extrafi XLend is a smart lending protocol offering multi-accounts and advanced lending/borrowing management strategies",
     chain: "Optimism",
     logo: `${baseIconsUrl}/extra-finance-xlend.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

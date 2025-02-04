@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
-import { getChainDisplayName, chainCoingeckoIds, isDoubleCounted } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, isDoubleCounted, chainNameToIdMap } from "./utils/normalizeChain";
 import { IChain, } from "./types";
 import { importAdapter } from "./utils/imports/importAdapter";
 import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
@@ -47,7 +47,7 @@ export async function craftChainsResponse(excludeDoublecountedAndLSD = false, us
       if (chainsAdded === 0) { // for fetch adapters
         const chainName = protocol.chain
         if (!chainTvls[chainName]) {
-          chainTvls[chainName] = { tvl: 0, defillama_id: chainName }
+          chainTvls[chainName] = { tvl: 0, defillama_id: chainNameToIdMap[chainName] }
         }
         chainTvls[chainName].tvl += lastTvl.tvl
       }
@@ -60,7 +60,7 @@ export async function craftChainsResponse(excludeDoublecountedAndLSD = false, us
     cmcId: chainCoingeckoIds[chainName]?.cmcId ?? null,
     name: chainName,
     chainId: chainCoingeckoIds[chainName]?.chainId ?? null,
-    defillama_id: chainData.defillama_id,
+    defillamaId: chainData.defillama_id,
   }))
   return chainData
 }

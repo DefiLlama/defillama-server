@@ -127,4 +127,5 @@ export interface IChain {
   chainId: number | null;
   tvl: number;
   name: string;
+  defillamaId: string;
 }

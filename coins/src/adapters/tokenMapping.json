@@ -5737,6 +5737,11 @@
       "decimals": "8",
       "symbol": "nBTC",
       "to": "coingecko#bitcoin"
+    },
+    "0xad0c524Ce19ceA03654Dc377da7Bac52C56eDd10": {
+      "decimals": "18",
+      "symbol": "BTCUSD",
+      "to": "coingecko#bitcoin-usd-btcfi"
     }
   },
   "stellar": {

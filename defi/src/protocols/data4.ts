@@ -241,7 +241,9 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum","Optimism","BOB"],
-    oracles: [],
+    oraclesByChain: {
+      arbitrum: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    },
     forkedFrom: [],
     module: "yield-fi/index.js",
     twitter: "getyieldfi",
@@ -290,7 +292,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Fraxtal"],
-    oracles: [],
+    oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
     forkedFrom: ["AAVE V3"],
     module: "dtrinity-dlend/index.js",
     twitter: "dtrinity_defi",

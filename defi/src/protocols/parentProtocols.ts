@@ -6430,6 +6430,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "elys_network",
   },
+  {
+    id: "parent#raydium",
+    name: "Raydium",
+    url: "https://raydium.io",
+    description: "Raydium is an automated market maker (AMM) built on the Solana blockchain which enables lightning-fast trades, permissionless pool creation, and new features for earning yield",
+    logo: `${baseIconsUrl}/raydium.jpg`,
+    gecko_id: "raydium",
+    cmcId: "8526",
+    chains: [],
+    twitter: "RaydiumProtocol",
+  },
 ];
 
 export default parentProtocols;

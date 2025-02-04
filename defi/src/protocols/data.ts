@@ -2310,7 +2310,7 @@ const data: Protocol[] = [
   },
   {
     id: "214",
-    name: "Raydium",
+    name: "Raydium AMM",
     address: "solana:4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
     symbol: "RAY",
     url: "https://raydium.io",
@@ -2319,13 +2319,14 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/raydium.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "raydium",
-    cmcId: "8526",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexs",
     chains: ["Solana"],
     module: "raydium/api.js",
     twitter: "RaydiumProtocol",
     openSource: false,
+    parentProtocol: "parent#raydium"
   },
   {
     id: "215",

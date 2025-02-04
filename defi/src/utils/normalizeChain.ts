@@ -1382,7 +1382,7 @@ export const chainCoingeckoIds = {
     twitter: "terra_money",
     url: "https://www.terra.money/"
   },
-  "SXnetwork": {
+  "SX Network": {
     geckoId: "sx-network",
     github: ['sx-network'],
     symbol: "SX",
@@ -2272,6 +2272,8 @@ export const chainCoingeckoIds = {
     },
     chainId: 255,
     github: ["kroma-network"],
+    twitter: "kroma_network",
+    url: "https://kroma.network/"
   },
   "Manta": {
     geckoId: "manta-network",
@@ -3514,11 +3516,11 @@ export const chainCoingeckoIds = {
     chainId: 207
   },
   "Sonic": {
-    geckoId: null,
+    geckoId: "sonic-3",
     symbol: "S",
     cmcId: null,
     categories: ["EVM"],
-    twitter: "0xSonicLabs",
+    twitter: "SonicLabs",
     url: "https://www.soniclabs.com",
     chainId: 146
   },
@@ -3735,7 +3737,77 @@ export const chainCoingeckoIds = {
       types: ["L3"]
     },
     twitter: "Superpositionso",
-    url: "https://superposition.so"
+    url: "https://superposition.so",
+    chainId: 55244
+  },
+  "Artela": {
+    geckoId: "artela-network",
+    symbol: "ART",
+    cmcId: null,
+    categories: ["EVM", "Cosmos"],
+    twitter: "Artela_Network",
+    url: "https://artela.network/",
+    chainId: 11820
+  },
+  "Redstone": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    twitter: "redstonexyz",
+    url: "https://redstone.xyz/",
+    chainId: 690
+  },
+  "Abstract": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    twitter: "AbstractChain",
+    url: "https://www.abs.xyz/",
+    chainId: 2741
+  },
+  "Zero Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    twitter: "zerodotnetwork",
+    url: "https://zero.network/",
+    chainId: 543210
+  },
+  "Parex": {
+    geckoId: "parex",
+    symbol: "PRX",
+    cmcId: "18094",
+    categories: ["EVM"],
+    twitter: "zerodotnetwork",
+    url: "https://parex.network/",
+    chainId: 322202
+  },
+  "SX Rollup": {
+    geckoId: "sx-network-2",
+    symbol: "SX",
+    cmcId: null,
+    categories: ["EVM", "Arbitrum Orbit"],
+    parent: {
+      chain: "Arbitrum",
+      types: ["L3"]
+    },
+    twitter: "SX_Bet",
+    url: "https://sx.bet"
   },
 } as unknown as ChainCoinGekcoIds
 
@@ -3906,7 +3978,8 @@ const chainLabelMap = {
   "water": "Waterfall",
   "occ": "EDU Chain",
   "optimism": "Optimism",
-  "spn": "Superposition"
+  "spn": "Superposition",
+  "zero_network": "Zero Network",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -3941,7 +4014,9 @@ const newChainLabelMap = {
   "bsc": "BSC",
   "europa": "SKALE Europa",
   "occ": "EDU Chain",
-  "optimism": "OP Mainnet"
+  "optimism": "OP Mainnet",
+  "sx": "SX Network",
+  "sxr": "SX Rollup"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

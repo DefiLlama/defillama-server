@@ -5,6 +5,7 @@ import { calculate4626Prices } from "../utils/erc4626";
 const config: any = {
   xdai: { vault: '0xbA1333333333a1BA1108E8412f11850A5C319bA9', fromBlock: 37360338 },
   ethereum: { vault: '0xbA1333333333a1BA1108E8412f11850A5C319bA9', fromBlock: 21332121 },
+  sonic: { vault: '0xbA1333333333a1BA1108E8412f11850A5C319bA9', fromBlock: 368135 },
 }
 
 export function balancer4626(timestamp: number = 0) {

@@ -782,5 +782,16 @@ export default {
     },
     "lnexchange-perp": {
         id: "5639",
+    },
+    "cvex": {
+        id: "5610"
+    },
+    "amped": {
+        id: "3833",
+        protocolsData: {
+            "derivatives": {
+                id: "3833",
+            }
+        }
     }
 } as AdaptorsConfig

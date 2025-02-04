@@ -2346,5 +2346,30 @@ export default {
     },
     "ink": {
         id: "57073"
+    },
+    "cvex": {
+        id: "5610"
+    },
+    "hfun": {
+        id: "5671"
+    },
+    "tribe-run": {
+        id: "5669"
+    },
+    "zoodotfun": {
+        id: "5684"
+    },
+    "quill-fi": {
+        id: "5685"
+    },
+    "liquity-v2": {
+        id: "5656"
+    },
+    "jupiter": {
+        parentId: "Jupiter",
+        id: "2141"
+    },
+    "rabby": {
+        id: "5714"
     }
 } as AdaptorsConfig

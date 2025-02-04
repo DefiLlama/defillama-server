@@ -12008,7 +12008,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "sideshift-token",
     cmcId: "11726",
-    category: "Liquid Staking",
+    category: "Cross Chain Bridge",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
@@ -14811,7 +14811,7 @@ const data2: Protocol[] = [
     category: "Yield Aggregator",
     chains: ["Dogechain"],
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["Beefy"],
     module: "autobark/index.js",
     twitter: "AutoBarkYield",
     listedAt: 1661401601,
@@ -24829,7 +24829,7 @@ const data2: Protocol[] = [
     module: "metropolis/index.js",
     twitter: "MetropolisDEX",
     oracles: [],
-    forkedFrom: ["TraderJoe"],
+    forkedFrom: ["Trader Joe DEX"],
     listedAt: 1674059066,
   },
   {
@@ -30391,6 +30391,7 @@ const data2: Protocol[] = [
     audit_links: [" https://smardex.io/audit-reports"],
     listedAt: 1679329866,
   },
+  /*
   {
     id: "2696",
     name: "Overnight DAI+",
@@ -30414,6 +30415,7 @@ const data2: Protocol[] = [
     stablecoins: ["dai+"],
     listedAt: 1679332234,
   },
+  */
   {
     id: "2697",
     name: "Bond Protocol",

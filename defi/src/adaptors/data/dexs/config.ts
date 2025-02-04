@@ -2617,7 +2617,7 @@ export default {
         id: "5427",
         parentId: "Bluefin",
         protocolsData: {
-            "dexs": {
+            "dexes": {
                 id: "5427"
             }
         }
@@ -2705,5 +2705,19 @@ export default {
     "meteora-dlmm": {
         parentId: "Meteora",
         id: "4148",
+    },
+    "metastable-musd": {
+        id: "5645"
+    },
+    "infinityPools": {
+        id: "5662"
+    },
+    "amped": {
+        id: "3833",
+        protocolsData: {
+            "swap": {
+                id: "3833",
+            }
+        }
     }
 } as AdaptorsConfig

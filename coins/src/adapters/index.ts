@@ -27,6 +27,7 @@ export default {
   unknownTokensV3: require("./other/unknownTokensV3"),
   dinari: require("./rwa/dinari"),
   few: require("./other/few"),
+  zarban: require("./other/zarban"),
   ociswap: require("./markets/ociswap"),
   optimBonds: require("./other/optimBonds"),
   tangleswap: require("./markets/tangleswap"),
@@ -122,4 +123,5 @@ export default {
   spectra: require("./yield/spectra"),
   kamino: require("./solana/kamino"),
   fxsp: require("./yield/fxsp"),
+  stakeDao: require("./yield/stakeDao"),
 };

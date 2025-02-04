@@ -35,7 +35,9 @@ async function mainGauges(chain: any, block: number | undefined) {
   return gaugesListRes.output.map((res: any) => res.output);
 }
 async function childGauges(chain: string, block: number | undefined) {
-  const target: string = "0xabC000d88f23Bb45525E447528DBF656A9D55bf5";
+  let target: string = ["fraxtal", "mantle"].includes(chain)
+    ? "0xeF672bD94913CB6f1d2812a6e18c1fFdEd8eFf5c"
+    : "0xabC000d88f23Bb45525E447528DBF656A9D55bf5";
   const gaugeCount = (
     await call({
       target,
@@ -116,7 +118,7 @@ export default async function getTokenPrices(
   );
 
   successfulCallResults.map((c: any, i: number) => {
-    const dbEntry = tokenAndRedirectData[c.lp.toLowerCase()]
+    const dbEntry = tokenAndRedirectData[c.lp.toLowerCase()];
     if (
       tokenInfos.symbols[i].output == null ||
       tokenInfos.decimals[i].output == null ||

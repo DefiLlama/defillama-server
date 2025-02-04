@@ -2503,6 +2503,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#dove-swap",
     listedAt: 1681214153,
   },
+  /*
   {
     id: "2810",
     name: "Overnight USDT+",
@@ -2526,6 +2527,7 @@ const data3: Protocol[] = [
     stablecoins: ["usdt+"],
     listedAt: 1681228187,
   },
+  */
   {
     id: "2811",
     name: "Forge SX Ovens",
@@ -3154,7 +3156,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V3"],
     module: "wagmi-com/index.js",
-    twitter: "PopsicleFinance",
+    twitter: "wagmicom",
     audit_links: [],
     listedAt: 1681518737,
     github: ["wagmi-dev"],
@@ -5195,7 +5197,7 @@ const data3: Protocol[] = [
     chains: ["Fantom"],
     module: "E3/index.js",
     twitter: "ftm1337",
-    forkedFrom: ["TraderJoe"],
+    forkedFrom: ["Trader Joe DEX"],
     oracles: [],
     parentProtocol: "parent#guru-network-dao",
     audit_links: [],
@@ -9283,8 +9285,8 @@ const data3: Protocol[] = [
   {
     id: "3107",
     name: "EigenLayer",
-    address: null,
-    symbol: "-",
+    address: "0xec53bf9167f50cdeb3ae105f56099aaab9061f83",
+    symbol: "EIGEN",
     url: "https://www.eigenlayer.xyz/",
     description:
       "EigenLayer is a protocol built on Ethereum that introduces restaking, a new primitive in cryptoeconomic security. This primitive enables the reuse of ETH on the consensus layer",
@@ -12358,7 +12360,7 @@ const data3: Protocol[] = [
     twitter: "zerolendxyz",
     oraclesByChain: {
       blast: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
-      base: ["Chainlink"], //https://docs.zerolend.xyz/security/oracles/chainlink
+      base: ["RedStone"], //https://docs.zerolend.xyz/security/oracles/redstone
       linea: ["Chainlink"], //https://docs.zerolend.xyz/security/oracles/chainlink
       manta: ["RedStone"], //https://docs.zerolend.xyz/security/oracles/using-redstone-oracles
       ethereum: ["Chainlink"], // https://docs.zerolend.xyz/security/oracles/chainlink
@@ -21188,6 +21190,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#factor",
     listedAt: 1697452699,
   },
+  /*
   {
     id: "3631",
     name: "Overnight ETH+",
@@ -21210,6 +21213,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#overnight-finance",
     listedAt: 1697466384,
   },
+  */
   {
     id: "3632",
     name: "Quillswap",
@@ -24391,7 +24395,7 @@ const data3: Protocol[] = [
     address: "lightlink:-",
     symbol: "ELTK",
     url: "https://app.elektrik.network/#/swap",
-    description: "A decentralized exchange on LightLink Phoenix",
+    description: "Omnichain Perpetual Swaps Exchange",
     chain: "LightLink",
     logo: `${baseIconsUrl}/elektrik.png`,
     audits: "0",
@@ -25744,16 +25748,17 @@ const data3: Protocol[] = [
     symbol: "AMP",
     url: "https://amped.finance/",
     description:
-      "Amped Finance is a decentralized perpetual exchange on LightLink that allows users to trade leveraged positions with low fees and zero price impact, whilst having the peace of mind that all trades and collateral are stored transparently on-chain.",
+      "Amped Finance is an omnichain perpetual swaps exchange that allows users to trade leveraged positions with low fees and zero price impact.",
     chain: "LightLink",
     logo: `${baseIconsUrl}/amped-finance.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["LightLink"],
+    chains: ["LightLink","Binance","Sonic"],
     oracles: ["Pyth"], // https://amped.gitbook.io/amped/price-feeds
+    audit_links: ["https://github.com/BlockApex/Audit-Reports/blob/3d1df707bc6df3f761981b33007f8f32057c6654/Amped%20Finance%20Final%20Audit%20Report.pdf"],
     forkedFrom: ["GMX V1"],
     module: "amped/index.js",
     twitter: "ampedfinance",
@@ -28285,13 +28290,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3946",
-    name: "Kelp rsETH",
+    name: "Kelp",
     address: null,
     symbol: "-",
-    url: "https://kelpdao.xyz/",
+    url: "https://kelpdao.xyz/restake",
     assetToken: "rsETH",
     description:
-      "rsETH is a Liquid Restaked Token (LRT) issued by Kelp DAO designed to offer liquidity to illiquid assets deposited into restaking platforms, such as EigenLayer. It aims to address the risks and challenges posed by the current offering of restaking",
+      "Kelp is the second largest liquid restaking protocol with ~$2B+ in TVL. Its liquid restaked token, rsETH, is live across 10+ major L2s and 40+ DeFi platforms, allowing users to restake while maintaining full liquidity.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/kelp-dao.png`,
     audits: "2",
@@ -31171,8 +31176,12 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Mode"],
     oraclesByChain: {
-      mode: ["API3", "RedStone", "Pyth"], //https://doc.ionic.money/ionic-documentation/ionic-protocol/oracles#oracle-types
-      base: ["eOracle"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#base
+      mode: ["eOracle", "RedStone", "Pyth"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#mode
+      base: ["eOracle", "RedStone", "Chainlink", "Chronicle", "Pyth"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#base
+      optimism: ["Chainlink","API3","Pyth","Chronicle"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#optimism
+      fraxtal: ["API3","RedStone"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#fraxtal
+      lisk: ["RedStone"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#lisk
+      //bob: ["APRO"] oracle delisted at their teams request https://doc.ionic.money/ionic-documentation/resources/market-addresses#bob
     },
     forkedFrom: ["Compound V2"],
     module: "ionic/index.js",
@@ -32066,22 +32075,25 @@ const data3: Protocol[] = [
   {
     id: "4109",
     name: "Segment Finance",
-    address: "bsc:0x5de40c1152c990492eaeaeecc4ecaab788bbc4fd",
-    symbol: "SEF",
+    address: null,
+    symbol: "-",
     url: "https://segment.finance",
-    description: "Segment Finance is a decentralized lending and borrowing platform built on BNB Chain.",
+    description: "Segment Finance is a decentralized lending and borrowing platform for Superchain and BTCFi",
     chain: "Binance",
     logo: `${baseIconsUrl}/segment-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "segment",
+    gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Binance"],
-    oraclesByChain: {
+    chains: ["Binance", "BOB", "Op_Bnb", "BSquared", "RSK", "CORE"],
+    oraclesByChain: { // https://docs.segment.finance/protocol/advanced-safety-features/oracles
       bsc: ["Chainlink"],
-      bob: ["RedStone"], //https://docs.segment.finance/protocol/price-feeds
-      //  op_bnb: ["Binance Oracle"]
+      bob: ["RedStone", "DIA", "API3"],
+      op_bnb: ["Binance Oracle"],
+      rsk: ["Umbrella"],
+      core: ["API3"],
+      bsquared: ["Supra"]
     },
     forkedFrom: ["Compound V2"],
     module: "segment-finance/index.js",
@@ -40467,8 +40479,8 @@ const data3: Protocol[] = [
   {
     id: "4481",
     name: "Hyperliquid Bridge",
-    address: null,
-    symbol: "-",
+    address: "0x0d01dc56dcaaca66ad901c959b4011ec",
+    symbol: "HYPE",
     url: "https://hyperliquid.xyz",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description: "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price.",
@@ -56867,7 +56879,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://portal.yay.space/stake",
-    description: "The SocialFi “Yay!” provides a place where web2 and web3 meet, where users and investors co-exist, and where everyone can connect, create a community and earn rewards. Since January 2020, Yay! offers over 9 million users a place where users find their interests, get connected, create community, casually make group calls, and more. Now, we are building our tokenomics which require the participation of Web3 investors worldwide. Therefore, Yay! Staking Campaign is launched as part of our long-term vision.\nThe Yay! Staking Campaign is designed to strengthen the Yay! ecosystem liquidity by allowing users to earn various rewards through participation. The campaign primarily targets Yay! supporters, encouraging them to stake their assets with protocol partners such as StakeStone, Kelp, and others via Yay! Dashboard. In return, participants can earn not only various points from these partners but also Yay! Gold and additional points along with future planned airdrop by Yay!",
+    description: "Yay! is a SocialFi platform where web2 and web3 meet, offering a unique space where everyone can belong. Yay! is heading toward 10 million users, highlighting its significant growth since its launch. With seamless new web3 features, Yay! aims to accelerate onboarding and drive mass adoption through its innovative tokenomics.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/yay-staking.png`,
     audits: "2",
@@ -57720,14 +57732,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5244",
-    name: "Kelp GAIN",
+    name: "Gain",
     address: null,
     symbol: "-",
-    url: "https://kelpdao.xyz/gain/",
+    url: "https://kelpdao.xyz/gain",
     description:
-      "Gain is your rewards concierge. Access top airdrops, high rewards all from our curated vaults",
+      "Gain is an actively managed vaults program with $150M+ in TVL, designed for users to maximise their earning potential through tokenized rewards, supported by a seamless user experience. Its flagship products are Airdrop Gain, High Gain and Grizzly Gain.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/kelp-dao.png`,
+    logo: `${baseIconsUrl}/kelp-gain.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -58713,6 +58725,7 @@ const data3: Protocol[] = [
     forkedFrom: ["AAVE V2"],
     module: "bonzo/index.js",
     twitter: "bonzo_finance",
+    treasury: "bonzo.js",
     audit_links: ["https://docs.bonzo.finance/hub/resources/audits"],
     github: ["Bonzo-Labs"],
     listedAt: 1730054887
@@ -60566,8 +60579,8 @@ const data3: Protocol[] = [
   {
     id: "5369",
     name: "reddex",
-    address: null,
-    symbol: "-",
+    address: "rbn:0x0233971bd2de29e81029336c46997055df3b5282",
+    symbol: "LQDX",
     url: "https://reddex.io",
     description: "Experience the future of decentralized trading with reddex - the first choice for real world asset crypto projects.",
     chain: "Redbelly",
@@ -61486,7 +61499,7 @@ const data3: Protocol[] = [
     module: "catton/index.js",
     twitter: "Cattontw",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://x.com/Cattontw/status/1862096754847650156
   },
   {
     id: "5410",
@@ -62328,7 +62341,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Yield",
     chains: ["Hyperliquid"],
     oracles: [],
     forkedFrom: [],
@@ -64201,11 +64214,11 @@ const data3: Protocol[] = [
   },*/
   {
     id: "5537",
-    name: "Kernel", //previous Kernel DAO
+    name: "Kernel", //previous KernelDAO
     address: null,
     symbol: "-",
-    url: "https://kerneldao.com",
-    description: "Decentralised Security to supercharge & blitzscale BNB, while providing exciting rewards & DeFi opportunities.",
+    url: "https://kerneldao.com/restake",
+    description: "Kernel is pioneering restaking on the BNB Chain. Restake BNB, BTC and other yield-bearing tokens and earn higher rewards.",
     chain: "Binance",
     logo: `${baseIconsUrl}/kernel.jpg`,
     audits: "0",
@@ -64936,9 +64949,9 @@ const data3: Protocol[] = [
   },
   {
     id: "5570",
-    name: "Shadow Exchange",
-    address: null,
-    symbol: "-",
+    name: "Shadow Exchange CLMM",
+    address: "sonic:0x3333b97138D4b086720b5aE8A7844b1345a33333",
+    symbol: "SHADOW",
     url: "https://www.shadow.so",
     description:
       "Sonic-native concentrated liquidity layer and exchange.",
@@ -64954,6 +64967,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "shadow-cl/index.js",
     twitter: "ShadowOnSonic",
+    parentProtocol: "parent#shadow-exchange",
     listedAt: 1735573781
   },
   {

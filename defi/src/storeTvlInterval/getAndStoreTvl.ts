@@ -162,6 +162,7 @@ type StoreTvlOptions = {
   chainsToRefill?: string[],
   cacheData?: Object,
   overwriteExistingData?: boolean,
+  runType?: string,
 }
 
 export async function storeTvl(
@@ -184,6 +185,7 @@ export async function storeTvl(
     chainsToRefill = [],
     cacheData,
     overwriteExistingData = false,
+    runType = 'default',
   } = options
 
   if (partialRefill && (!chainsToRefill.length || !cacheData)) throw new Error('Missing chain list for refill')
@@ -209,6 +211,8 @@ export async function storeTvl(
         if (typeof tvlFunction !== "function") {
           return
         }
+
+        if (chain === 'heco' && runType === 'cron-task') tvlFunction = () => ({})
         let storedKey = `${chain}-${tvlType}`
         let tvlFunctionIsFetch = false;
         if (tvlType === "tvl") {

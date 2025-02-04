@@ -307,5 +307,16 @@ export default {
     "zkswap-v3": {
         parentId: "zkSwap Finance",
         id: "5392",
+    },
+    "nova-fi": {
+        id: "5677",
+    },
+    "reservoir-tools-amm": {
+        parentId: "Reservoir Tools",
+        id: "5678",
+    },
+    "reservoir-tools-clmm": {
+        parentId: "Reservoir Tools",
+        id: "5679",
     }
 } as AdaptorsConfig

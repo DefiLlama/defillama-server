@@ -106,7 +106,7 @@ async function run() {
 
 
   async function updateAdapterData(adapterType: AdapterType) {
-    // if (adapterType !== AdapterType.AGGREGATORS) return;
+    // if (adapterType !== AdapterType.DERIVATIVES) return;
 
     if (!allCache[adapterType]) allCache[adapterType] = {
       lastUpdated: 0,
@@ -170,7 +170,7 @@ async function run() {
 
     for (const [_dimensionProtocolId, dimensionProtocolInfo] of Object.entries(dimensionProtocolMap) as any) {
       const hasAppMetrics = adapterType === AdapterType.FEES && getProtocolAppMetricsFlag(dimensionProtocolInfo)
-      addProtocolData({ protocolId: dimensionProtocolInfo.id2, dimensionProtocolInfo, isParentProtocol: false, adapterType, skipChainSummary: false, hasAppMetrics,})
+      addProtocolData({ protocolId: dimensionProtocolInfo.id2, dimensionProtocolInfo, isParentProtocol: false, adapterType, skipChainSummary: false, hasAppMetrics, })
     }
 
     for (const entry of Object.entries(parentProtocolsData)) {
@@ -452,26 +452,42 @@ async function run() {
 
         // breakdown24h
         protocolSummary.breakdown24h = null
-        if (todayRecord) {
-          const { aggregated, breakdown = {} } = todayRecord
+        protocolSummary.breakdown30d = null
+
+        addBreakdownData({ recordType, record: todayRecord, storeKey: 'breakdown24h', skipChainSummary: false })
+        addBreakdownData({ recordType, records: _protocolData.last30DaysData, storeKey: 'breakdown30d' })
+
+
+        function addBreakdownData({ recordType, record, storeKey, skipChainSummary = true, records, }: { recordType: string, record?: any, records?: any[], storeKey: string, skipChainSummary?: boolean }) {
+
+          if (records) {
+            records.forEach((i: any) => addBreakdownData({ recordType, record: { aggregated: { [recordLabel]: i } }, storeKey, skipChainSummary }))
+            return;
+          }
+
+          const { aggregated = {}, breakdown = {} } = record ?? {}
+
           if (aggregated[recordType]) {
             let breakdownData = Object.keys(breakdown[recordType] ?? {}).length ? breakdown[recordType] : { [protocolName]: aggregated[recordType] }
-            const result: any = {}
+            const result: any = (protocolSummary as any)[storeKey] ?? {}
             Object.entries(breakdownData).forEach(([subModuleName, { chains }]: any) => {
               Object.entries(chains).forEach(([chain, value]: any) => {
                 if (!result[chain]) result[chain] = {}
-                result[chain][subModuleName] = value
-                const chainName = getDisplayChainNameCached(chain)
-                if (chainMappingToVal[chainName] === undefined) {
-                  chainMappingToVal[chainName] = 0
+                result[chain][subModuleName] = (result[chain][subModuleName] ?? 0) + value
+
+                if (!skipChainSummary) {
+                  const chainName = getDisplayChainNameCached(chain)
+                  if (chainMappingToVal[chainName] === undefined) {
+                    chainMappingToVal[chainName] = 0
+                  }
+                  chainMappingToVal[chainName] += value
                 }
-                chainMappingToVal[chainName] += value
+
               })
-            })
-            protocolSummary.breakdown24h = result
+            });
+            (protocolSummary as any)[storeKey] = result
           }
         }
-
 
       }
 
@@ -633,6 +649,7 @@ type ProtocolSummary = RecordSummary & {
   average1y?: number
   totalAllTime?: number
   breakdown24h?: any
+  breakdown30d?: any
 }
 
 run().catch(console.error).then(() => process.exit(0))

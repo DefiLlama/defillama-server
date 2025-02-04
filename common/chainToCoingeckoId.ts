@@ -173,7 +173,7 @@ export const chainToCoingeckoId = {
   // cosmos: "cosmos",
   // xrp: "xrp",
   hedera: "hedera-hashgraph",
-  bfc: "bitfrost-network"
+  bfc: "bifrost-network",
 };
 
 export default chainToCoingeckoId;

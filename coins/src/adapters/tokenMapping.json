@@ -271,6 +271,11 @@
     }
   },
   "ethereum": {
+    "0x2eC37d45FCAE65D9787ECf71dc85a444968f6646": {
+      "decimals": "8",
+      "symbol": "brBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
     "0x86b5780b606940eb59a062aa85a07959518c0161": {
       "decimals": "18",
       "symbol": "sETHFI",
@@ -552,6 +557,11 @@
     }
   },
   "bsc": {
+    "0x733a6c29eDA4a58931AE81b8d91e29f2EAf01df3": {
+      "decimals": "8",
+      "symbol": "brBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
     "0x7dC91cBD6CB5A3E6A95EED713Aa6bF1d987146c8": {
       "decimals": "18",
       "symbol": "mwBETH",

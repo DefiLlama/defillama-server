@@ -78,6 +78,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     GRAIN: "0x80bb30d62a16e1f2084deae84dc293531c3ac3a1",
     //'SolvBTC.BBN': "0x346c574c56e1a4aaa8dc88cda8f7eb12b39947ab"
     HAMI: "0x02150e97271fdc0d6e3a16d9094a0948266f07dd",
+    KNC: "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb"
   },
   bsc: {
     BGEO: "0xc342774492b54ce5f8ac662113ed702fc1b34972",

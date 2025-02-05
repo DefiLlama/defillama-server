@@ -415,10 +415,11 @@ export async function batchWriteWithAlerts(
     await batchWrite([...filteredItems, ...redirectChanges], failOnError);
     await produceKafkaTopics([...filteredItems, ...redirectChanges] as any[]);
   } catch (e) {
+    const adapter = items.find((i) => i.adapter != null)?.adapter;
     console.log(`batchWriteWithAlerts failed with: ${e}`);
     if (process.env.URGENT_COINS_WEBHOOK)
       await sendMessage(
-        `batchWriteWithAlerts failed with: ${e}`,
+        `batchWriteWithAlerts ${adapter} failed with: ${e}`,
         process.env.URGENT_COINS_WEBHOOK!,
         true,
       );

@@ -284,6 +284,19 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xaD55aebc9b8c03FC43cd9f62260391c13c23e7c0",
     address: "0x8238884Ec9668Ef77B90C6dfF4D1a9F4F4823BFe",
   },
+  asBNB: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToTokens(uint256) external view returns (uint256)",
+        target: "0x2F31ab8950c50080E77999fa456372f276952fD8",
+        params: 1e12,
+      });
+      return 1e12 / rate;
+    },
+    chain: "bsc",
+    underlying: "0xB0b84D294e0C75A6abe60171b70edEb2EFd14A1B", // slisBNB
+    address: "0x77734e70b6e88b4d82fe632a168edf6e700912b6", // asBNB
+  },
 };
 
 export async function derivs(timestamp: number) {

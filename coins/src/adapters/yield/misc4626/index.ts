@@ -52,7 +52,9 @@ async function getMetaMorphos(chain: string, timestamp: number) {
     onlyArgs: true,
   });
   const tokens = logs.map((l: any) => l.metaMorpho);
-  return calculate4626Prices(chain, timestamp, tokens, "meta-morphos");
+  return (
+    await calculate4626Prices(chain, timestamp, tokens, "meta-morphos")
+  ).filter((r) => isFinite(r.price ?? 0));
 }
 
 export async function spectra(timestamp: number) {

@@ -2374,5 +2374,8 @@ export default {
     },
     "looter": {
         id: "5728"
+    },
+    "flaunch": {
+        id: "5715"
     }
 } as AdaptorsConfig

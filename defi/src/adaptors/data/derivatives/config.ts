@@ -793,5 +793,8 @@ export default {
                 id: "3833",
             }
         }
+    },
+    "raydium-perps": {
+        id: "5729",
     }
 } as AdaptorsConfig

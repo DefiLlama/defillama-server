@@ -2377,5 +2377,8 @@ export default {
     },
     "flaunch": {
         id: "5715"
+    },
+    "jumper-exchange": {
+        id: "3524"
     }
 } as AdaptorsConfig

@@ -2371,5 +2371,8 @@ export default {
     },
     "rabby": {
         id: "5714"
+    },
+    "looter": {
+        id: "5728"
     }
 } as AdaptorsConfig

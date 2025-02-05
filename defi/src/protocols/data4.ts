@@ -3460,7 +3460,7 @@ const data4: Protocol[] = [
     category: "Chain",
     chains: ["Ethereum"],
     module: "sxr-bridge/index.js",
-    twitter: "BitrueOfficial",
+    twitter: "SX_Network",
     oracles: [],
     forkedFrom: [],
     listedAt: 1738755554

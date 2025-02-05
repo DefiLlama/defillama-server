@@ -22,6 +22,7 @@ import {
   retryCoingeckoRequest,
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
+import { sendMessage } from "../../../defi/src/utils/discord";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -458,43 +459,60 @@ function shuffleArray(array: any[]) {
 }
 
 async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
-  await cacheSolanaTokens();
-  await cacheHyperliquidTokens();
-  const step = 500;
-  let coins = (await fetch(
-    `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
-  ).then((r) => r.json())) as Coin[];
+  try {
+    await cacheSolanaTokens();
+    await cacheHyperliquidTokens();
+    const step = 500;
+    let coins = (await fetch(
+      `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
+    ).then((r) => r.json())) as Coin[];
 
-  if (coinType || hourly) {
-    const metadatas = await getCGCoinMetadatas(
-      coins.map((coin) => coin.id),
+    if (coinType || hourly) {
+      const metadatas = await getCGCoinMetadatas(
+        coins.map((coin) => coin.id),
+        coinType,
+      );
+      coins = coins.filter((coin) => {
+        const metadata = metadatas[coin.id];
+        if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
+        if (hourly) {
+          return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
+        }
+        return (
+          metadata.coinType === coinType ||
+          metadata.coinType === COIN_TYPES.over100m
+        ); // always include over100m coins
+      });
+    }
+    console.log(
+      `Fetching prices for ${coins.length} coins`,
+      "running hourly:",
+      hourly,
+      "coinType:",
       coinType,
     );
-    coins = coins.filter((coin) => {
-      const metadata = metadatas[coin.id];
-      if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
-      if (hourly) {
-        return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
-      }
-      return (
-        metadata.coinType === coinType ||
-        metadata.coinType === COIN_TYPES.over100m
-      ); // always include over100m coins
-    });
+    shuffleArray(coins);
+    let promises: Promise<void>[] = [];
+    for (let i = 0; i < coins.length; i += step) {
+      promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
+    }
+    await Promise.all(promises);
+  } catch (e) {
+    console.error("Error in coingecko script");
+    console.error(e);
+    if (process.env.URGENT_COINS_WEBHOOK)
+      await sendMessage(
+        `coingecko ${hourly} ${coinType} failed with: ${e}`,
+        process.env.URGENT_COINS_WEBHOOK,
+        true,
+      );
+    else
+      await sendMessage(
+        `coingecko error but missing urgent webhook`,
+        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        true,
+      );
   }
-  console.log(
-    `Fetching prices for ${coins.length} coins`,
-    "running hourly:",
-    hourly,
-    "coinType:",
-    coinType,
-  );
-  shuffleArray(coins);
-  let promises: Promise<void>[] = [];
-  for (let i = 0; i < coins.length; i += step) {
-    promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
-  }
-  await Promise.all(promises);
 }
 
 if (process.argv.length < 3) {
@@ -517,15 +535,10 @@ if (process.argv.length < 3) {
     console.error(`Invalid coin type: ${coinType}`);
     process.exit(1);
   }
-  triggerFetchCoingeckoData(isHourlyRun, coinType)
-    .catch((e) => {
-      console.error("Error in coingecko script");
-      console.error(e);
-    })
-    .then(() => {
-      console.log("Exiting now...");
-      process.exit(0);
-    });
+  triggerFetchCoingeckoData(isHourlyRun, coinType).then(() => {
+    console.log("Exiting now...");
+    process.exit(0);
+  });
 }
 
 async function getCGCoinMetadatas(coinIds: string[], coinType?: string) {

@@ -2863,7 +2863,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Starknet"],
-    oracles: ["Pragma"], // https://docs.nostra.finance/lend/deployed-contracts/lend-mainnet
+    oracles: ["Chainlink"], // Primary oracle for most markets: https://docs.nostra.finance/lend-and-borrow/oracles
     forkedFrom: [],
     module: "nostra/index.js",
     twitter: "nostrafinance",
@@ -30149,7 +30149,9 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    oracles: [],
+    oraclesByChain: {
+      base: ["Chainlink"], // Chainlink is the oracle for Base - https://app.morpho.org/base/market/0x8793cf302b8ffd655ab97bd1c695dbd967807e8367a65cb2f4edaf1380ba1bda/weth-usdc
+    },
     forkedFrom: [],
     module: "morpho-blue/index.js",
     twitter: "MorphoLabs",
@@ -36363,7 +36365,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Optimism"],
-    oracles: ["RedStone"], // https://docs.letsgethai.com/detailed/intro/hai.html#redstone-oracles:~:text=friendly%20stablecoin%20system.-,RedStone%20Oracles,-HAI%20uses%20RedStone
+    oracles: ["Chainlink"], // Chainlink is the primary oracle: https://docs.letsgethai.com/detailed/intro/hai.html#chainlink-oracles
     forkedFrom: [],
     module: "hai/index.js",
     twitter: "letsgethai",

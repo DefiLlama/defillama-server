@@ -2189,6 +2189,13 @@ const data: Protocol[] = [
     cmcId: "7844",
     category: "Liquidity manager",
     chains: ["Binance", "Arbitrum", "Optimism", "Base", "Polygon", "Linea", "Avalanche", "Fantom", "Moonriver", "Moonbeam", "Kava"],
+    oraclesByChain: {
+      binance: ["Chainlink"],
+      arbitrum: ["Chainlink"],
+      optimism: ["Chainlink"],
+      base: ["Chainlink"],
+      polygon: ["Chainlink"],
+    },  // https://docs.acryptos.com/tutorials-guides/resources/oracles
     module: "acryptos/index.js",
     twitter: "acryptosdao",
     audit_links: ["https://docs.acryptos.com/security-and-risks#audits"],

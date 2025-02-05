@@ -14855,8 +14855,10 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     oraclesByChain: {
-      arbitrum: ["Chainlink", "TWAP"],
-      ethereum: ["Chainlink", "TWAP"],
+      arbitrum: ["Chainlink"],
+      ethereum: ["Chainlink"],
+      base: ["Chainlink"],
+      optimism: ["Chainlink"],
     },
     forkedFrom: [],
     module: "silo/index.js",

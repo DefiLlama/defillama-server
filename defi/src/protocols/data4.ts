@@ -3463,7 +3463,6 @@ const data4: Protocol[] = [
     twitter: "SX_Network",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1738755554
   },
   {
     id: "5733",
@@ -3512,6 +3511,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#timeless",
     audit_links: ["https://docs.bunni.xyz/docs/v2/audits/"],
     listedAt: 1738784161,
+  },
+  {
+    id: "5735",
+    name: "Sorare Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://sorare.com/",
+    description: "Bridge between Ethereum and Sorare",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sorare-bridge.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    module: "sorare/index.js",
+    twitter: "sorare",
+    oracles: [],
+    forkedFrom: [],
   },
 ];
 export default data4;

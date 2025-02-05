@@ -58,7 +58,8 @@ export type ChainCoinGekcoId = {
   url?: string | null;
   parent?: {
     chain: string,
-    types: string[]
+    types: string[],
+    da?: string
   }
 }
 
@@ -89,7 +90,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 42161,
     governanceID: ["snapshot:arbitrumfoundation.eth"],
@@ -111,7 +113,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 10,
     governanceID: ["snapshot:opcollective.eth", "eip155:10:0xcDF27F107725988f2261Ce2256bDfCdE8B382B10"],
@@ -735,7 +738,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 288,
     twitter: "bobanetwork",
@@ -886,7 +890,8 @@ export const chainCoingeckoIds = {
     categories: ["Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     twitter: "zksync",
     url: "https://zksync.io/"
@@ -1729,7 +1734,8 @@ export const chainCoingeckoIds = {
     cmcId: null,
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     governanceID: ["snapshot:starknet.eth"],
     twitter: "Starknet",
@@ -1929,7 +1935,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 324,
     twitter: "zksync",
@@ -1943,7 +1950,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 1101,
     twitter: "0xPolygon",
@@ -2145,7 +2153,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 8453,
     twitter: "base",
@@ -2159,7 +2168,8 @@ export const chainCoingeckoIds = {
     github: ["ConsenSys"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     twitter: "LineaBuild",
     url: "https://linea.build/",
@@ -2268,7 +2278,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 255,
     github: ["kroma-network"],
@@ -2282,7 +2293,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Celestia',
     },
     github: ['manta-network'],
     chainId: 169, //being used as id for volume/fees
@@ -2331,7 +2343,8 @@ export const chainCoingeckoIds = {
     github: ["scroll-tech"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 534352,
     twitter: "Scroll_ZKP",
@@ -2411,7 +2424,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Celestia',
     },
     chainId: 1890
   },
@@ -2455,7 +2469,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     github: ["mode-network"],
     chainId: 34443,
@@ -2657,7 +2672,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 81457,
     twitter: "Blast_L2",
@@ -2756,7 +2772,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 7887,
     twitter: "KintoXYZ",
@@ -2779,7 +2796,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 7777777,
     twitter: "zora",
@@ -2855,6 +2873,11 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
     twitter: "Karak_Network",
     url: "https://karak.network/",
     chainId: "2410"
@@ -2876,7 +2899,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     parent: {
       chain: "Optimism",
-      types: ["L3"]
+      types: ["L3"],
+      da: 'Celestia',
     },
     chainId: 888888888,
     twitter: "Ancient8_gg",
@@ -2910,6 +2934,11 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Celestia',
+    },
     twitter: "derivexyz",
     url: "https://www.derive.xyz/",
     chainId: 957,
@@ -2952,7 +2981,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Bitcoin Sidechains", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     github: ["bob-collective"],
     chainId: 60808,
@@ -3026,7 +3056,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Ethereum',
     },
     twitter: "taikoxyz",
     url: "https://taiko.xyz",
@@ -3100,7 +3131,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Superchain"],
     parent: {
       chain: "Base",
-      types: ["L3"]
+      types: ["L3"],
+      da: 'Celestia'
     },
     twitter: "HamOnWarpcast",
     url: "https://ham.fun",
@@ -3126,7 +3158,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Arbitrum Orbit"],
     parent: {
       chain: "Arbitrum",
-      types: ["L3"]
+      types: ["L3"],
+      da: 'Celestia',
     },
     twitter: "RariChain",
     url: "https://rarichain.org/",
@@ -3156,7 +3189,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Ethereum',
     },
     twitter: "Mint_Blockchain",
     url: "https://www.mintchain.io/",
@@ -3312,7 +3346,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 48900,
     twitter: "ZircuitL2",
@@ -3325,7 +3360,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     twitter: "PolynomialFi",
     url: "https://www.polynomial.fi/"
@@ -3346,7 +3382,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Ethereum',
     },
     url: "https://lisk.com/",
     twitter: "LiskHQ",
@@ -3382,7 +3419,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     url: "https://shape.network/",
     twitter: "Shape_L2",
@@ -3395,7 +3433,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Ethereum',
     },
     twitter: "fuel_network",
     url: "https://fuel.network/",
@@ -3407,7 +3446,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Ethereum',
     },
     twitter: "worldcoin",
     url: "https://world.org/",
@@ -3442,7 +3482,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Ethereum',
     },
     twitter: "MorphLayer",
     url: "https://www.morphl2.io"
@@ -3452,6 +3493,11 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     twitter: "EclipseFND",
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+      da: 'Celestia',
+    },
     url: "https://www.eclipse.xyz",
   },
   "UNIT0": {
@@ -3531,7 +3577,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Ethereum',
     },
     twitter: "inkonchain",
     url: "https://inkonchain.com",
@@ -3557,7 +3604,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"]
+      types: ["L2"],
+      da: 'Avail',
     },
     twitter: "sophon",
     url: "https://sophon.xyz/",
@@ -3595,7 +3643,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 1923,
     twitter: "swellnetworkio",
@@ -3679,7 +3728,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     chainId: 1868,
     twitter: "soneium",
@@ -3721,7 +3771,12 @@ export const chainCoingeckoIds = {
     geckoId: "swan-chain",
     symbol: "SWAN",
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup",],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
     twitter: "swan_chain",
     url: "https://swanchain.io/",
     github: ["swanchain"],
@@ -3769,7 +3824,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     twitter: "AbstractChain",
     url: "https://www.abs.xyz/",
@@ -3782,7 +3838,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
-      types: ["L2", "gas"]
+      types: ["L2", "gas"],
+      da: 'Ethereum',
     },
     twitter: "zerodotnetwork",
     url: "https://zero.network/",

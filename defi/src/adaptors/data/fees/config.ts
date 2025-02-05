@@ -44,7 +44,7 @@ export default {
         "isChain": true
     },
     "bsc": {
-        "id": "1839"
+        "id": "56"
     },
     "compound": {
         parentId: "Compound Finance",
@@ -219,20 +219,20 @@ export default {
         "id": "1801"
     },
     "aurora": {
-        "id": "14803"
+        "id": "1313161554"
     },
     "celo": {
-        "id": "5567"
+        "id": "42220"
     },
     "optimism": {
         "category": "Rollup",
-        "id": "11840"
+        "id": "10"
     },
     "moonbeam": {
-        "id": "6836"
+        "id": "1284"
     },
     "moonriver": {
-        "id": "9285"
+        "id": "1285"
     },
     "tron": {
         "id": "1958"
@@ -243,7 +243,7 @@ export default {
         "id": "42161"
     },
     "avalanche": {
-        "id": "5805"
+        "id": "43114"
     },
     "canto": {
         "id": "21516"
@@ -253,7 +253,7 @@ export default {
         "id": "2010" // wrong id, not related to klaytn
     },
     "cronos": {
-        "id": "3635"
+        "id": "25"
     },
     "klaytn": {
         "enabled": false,
@@ -268,20 +268,20 @@ export default {
         }
     },
     "fantom": {
-        "id": "3513"
+        "id": "250"
     },
     "mixin": {
         "enabled": false,
         "id": "2349" // wrond id, not linked to mixin
     },
     "polygon": {
-        "id": "3890"
+        "id": "137"
     },
     "solana": {
         "id": "5426"
     },
     "xdai": {
-        "id": "1659"
+        "id": "100"
     },
     "abracadabra": {
         "id": "347"
@@ -1431,7 +1431,7 @@ export default {
     },
     "manta": {
         category: "Rollup",
-        "id": "13631"
+        "id": "169"
     },
     "equation-v2": {
         parentId: "Equation",
@@ -2121,7 +2121,7 @@ export default {
         id: "4837"
     },
     "assetchain": {
-        id: "8519"
+        id: "42420"
     },
     "kinetix-v2": {
         parentId: "Kinetix",
@@ -2237,7 +2237,7 @@ export default {
         id: "5469"
     },
     "iotex": {
-        id: "2777"
+        id: "4689"
     },
     "lyra-v2": {
         parentId: "Derive",

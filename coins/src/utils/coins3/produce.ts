@@ -100,13 +100,17 @@ export default async function produce(
   items: Dynamo[],
   topics: Topic[] = allTopics,
 ) {
-  if (!items.length) return;
-  const invalidTopic = topics.find((t: any) => {
-    !allTopics.includes(t);
-  });
-  if (invalidTopic) throw new Error(`invalid topic: ${invalidTopic}`);
-  const producer: Producer = await getProducer();
-  await Promise.all(
-    topics.map((topic: Topic) => produceTopics(items, topic, producer)),
-  );
+  try {
+    if (!items.length) return;
+    const invalidTopic = topics.find((t: any) => {
+      !allTopics.includes(t);
+    });
+    if (invalidTopic) throw new Error(`invalid topic: ${invalidTopic}`);
+    const producer: Producer = await getProducer();
+    await Promise.all(
+      topics.map((topic: Topic) => produceTopics(items, topic, producer)),
+    );
+  } catch (error) {
+    console.error("Error producing messages", error);
+  }
 }

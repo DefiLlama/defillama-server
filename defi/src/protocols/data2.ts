@@ -24919,7 +24919,7 @@ const data2: Protocol[] = [
     category: "Liquidity manager",
     chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon"],
     module: "bunni/index.js",
-    twitter: "Timeless_Fi",
+    twitter: "bunni_xyz",
     oracles: [],
     forkedFrom: [],
     parentProtocol: "parent#timeless",

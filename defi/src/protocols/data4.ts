@@ -3446,7 +3446,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5732",
-    name: "SX Bridge",
+    name: "SX Rollup Bridge",
     address: null,
     symbol: "-",
     url: "https://bridge.sx.technology/",
@@ -3464,6 +3464,54 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1738755554
+  },
+  {
+    id: "5733",
+    name: "Solera",
+    address: null,
+    symbol: "-",
+    url: "https://app.solera.market/",
+    description: "Solera is credit and lending hub for crypto and RWAs, backed by Plume Network",
+    chain: "Plume",
+    logo: `${baseIconsUrl}/solera.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Plume"],
+    module: "solera/index.js",
+    twitter: "soleramarkets",
+    oracles: ["Stork"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13350
+    forkedFrom: ["AAVE V3"],
+    audit_links: [
+      "https://2550339912-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FxnKyOKJHYcrZeGHpRuHg%2Fuploads%2F6AeVLSZBg1M11MFCnFfd%2FSolera%20-%20Zenith%20Audit%20Report.pdf?alt=media&token=c60b9ec1-2480-4952-abfc-ac47542c12c4"
+    ],
+    listedAt: 1738784157
+  },
+  {
+    id: "5734",
+    name: "Bunni V2",
+    address: "0xfd0205066521550d7d7ab19da8f72bb004b4c341",
+    symbol: "LIT",
+    url: "https://bunni.xyz/",
+    description:
+      "Bunni is a DEX that maximizes liquidity provider profits in all market conditions. Built on Uniswap v4",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bunni-v2.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Ethereum", "Arbitrum", "Base"],
+    module: "bunni-v2/index.js",
+    twitter: "bunni_xyz",
+    oracles: [],
+    forkedFrom: [],
+    parentProtocol: "parent#timeless",
+    audit_links: ["https://docs.bunni.xyz/docs/v2/audits/"],
+    listedAt: 1738784161,
   },
 ];
 export default data4;

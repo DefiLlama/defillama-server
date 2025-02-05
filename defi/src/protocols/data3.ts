@@ -17751,10 +17751,10 @@ const data3: Protocol[] = [
     chains: ["Mantle"],
     module: "myso-v2/index.js",
     oraclesByChain: {
-      arbitrum: [],
-      mantle: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5149
-      ethereum: [],
-      base: [],
+      arbitrum: ["RedStone"], //https://myso-finance.gitbook.io/myso-v3/system-overview/quickstart#id-4.-oracle-adapter:~:text=and%20referral%20partners.-,4.%20Oracle%20Adapter,-The%20OracleAdapter%20module
+      mantle: ["RedStone"], // https://myso-finance.gitbook.io/myso-v3/system-overview/quickstart#id-4.-oracle-adapter:~:text=and%20referral%20partners.-,4.%20Oracle%20Adapter,-The%20OracleAdapter%20module
+      ethereum: ["RedStone"], //https://myso-finance.gitbook.io/myso-v3/system-overview/quickstart#id-4.-oracle-adapter:~:text=and%20referral%20partners.-,4.%20Oracle%20Adapter,-The%20OracleAdapter%20module
+      base: ["RedStone"], //https://myso-finance.gitbook.io/myso-v3/system-overview/quickstart#id-4.-oracle-adapter:~:text=and%20referral%20partners.-,4.%20Oracle%20Adapter,-The%20OracleAdapter%20module
     },
     forkedFrom: [],
     twitter: "MysoFinance",
@@ -18285,7 +18285,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Base"],
     module: "seamless/index.js",
-    oracles: ["Chainlink"],
+    oracles: ["RedStone"], //https://docs.seamlessprotocol.com/technical/oracles
     forkedFrom: ["AAVE V3"],
     twitter: "SeamlessFi",
     github: ["seamless-protocol"],
@@ -21949,7 +21949,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Polygon"],
-    oracles: ["Pyth"], //  https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/pyth-network-oracle
+    oracles: ["RedStone"], //  https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/redstone-oracles
     forkedFrom: [],
     module: "primex-finance/index.js",
     twitter: "primex_official",
@@ -36107,7 +36107,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mantle"],
-    oracles: [],
+    oracles: ["RedStone"], //https://docs.methlab.xyz/overview/Strategy.html#strategy
     forkedFrom: [],
     module: "methlab-xyz/index.js",
     twitter: "methlabxyz",
@@ -40796,7 +40796,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     module: "wise-lending-v2/index.js",
-    oracles: ["Chainlink"],
+    oracles: ["RedStone"], //https://wisesoft.gitbook.io/wise/wise-lending#id-2-robust-oracle-safety-system
     forkedFrom: [],
     twitter: "WiseLending",
     parentProtocol: "parent#wise-lending",
@@ -42318,7 +42318,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Mode"],
-    oracles: [],
+    oracles: ["RedStone"], //https://ebisu.gitbook.io/ebisu-money/technical-documentation/deployments#oracles
     forkedFrom: ["Liquity V1"],
     module: "ebisu-finance/index.js",
     twitter: "Ebisu_Finance",

@@ -3459,7 +3459,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Chain",
     chains: ["Ethereum"],
-    module: "bitrue-cex/index.js",
+    module: "sxr-bridge/index.js",
     twitter: "BitrueOfficial",
     oracles: [],
     forkedFrom: [],

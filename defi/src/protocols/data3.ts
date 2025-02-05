@@ -5270,7 +5270,7 @@ const data3: Protocol[] = [
     module: "spark-fi/index.js",
     twitter: "sparkdotfi",
     forkedFrom: ["AAVE V3"],
-    oracles: ["Chainlink", "Chronicle", "RedStone"],
+    oracles: ["Chainlink", "Chronicle", "RedStone"], // https://github.com/DefiLlama/defillama-server/pull/9240
     audit_links: ["https://devs.spark.fi/security/security-and-audits"],
     github: ["marsfoundation"],
     listedAt: 1683144119,

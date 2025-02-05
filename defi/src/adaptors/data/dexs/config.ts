@@ -2719,5 +2719,9 @@ export default {
                 id: "3833",
             }
         }
+    },
+    "ocelex": {
+        parentId: "Ocelex",
+        id: "5379"
     }
 } as AdaptorsConfig

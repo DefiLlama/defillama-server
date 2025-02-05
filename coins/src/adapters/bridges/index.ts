@@ -88,7 +88,7 @@ export const bridges = [
   era,
   gasTokens,
   //harmony,
-  polygon,
+  // polygon,
   // solana
   //xdai
   cosmos,
@@ -109,7 +109,7 @@ export const bridges = [
   zircuit,
   morph,
   aptos,
-  sophon,
+  // sophon,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

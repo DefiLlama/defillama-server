@@ -2380,5 +2380,9 @@ export default {
     },
     "jumper-exchange": {
         id: "3524"
+    },
+    "ocelex": {
+        parentId: "Ocelex",
+        id: "5379"
     }
 } as AdaptorsConfig

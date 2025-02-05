@@ -101,7 +101,6 @@ export default async function produce(
   topics: Topic[] = allTopics,
 ) {
   try {
-
     if (!items.length) return;
     const invalidTopic = topics.find((t: any) => {
       !allTopics.includes(t);

@@ -3610,7 +3610,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Dexs",
     chains: ["Penumbra"],
     module: "penumbra-dex/index.js",
     twitter: "penumbrazone",

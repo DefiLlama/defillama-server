@@ -1,4 +1,4 @@
-import { storeChainAssets } from "./storeChainAssets";
+import storeChainAssets from "../l2";
 import { sendMessage } from "./utils/discord";
 import { withTimeout } from "./utils/shared/withTimeout";
 

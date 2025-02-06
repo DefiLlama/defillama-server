@@ -1163,7 +1163,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Soneium"],
-    oracles: ["Chainlink"], // https://docs.untitledbank.co/developer-docs/oracle
     module: "untitledbank/index.js",
     twitter: "BankUntitled",
     forkedFrom: [],

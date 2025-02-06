@@ -14859,7 +14859,7 @@ const data2: Protocol[] = [
       ethereum: ["Chainlink"],
       base: ["Chainlink"],
       optimism: ["Chainlink"],
-    },
+    }, // the oracle of each pools if provided on the UI https://app.silo.finance/
     forkedFrom: [],
     module: "silo/index.js",
     twitter: "SiloFinance",

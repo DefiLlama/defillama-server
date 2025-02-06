@@ -2400,5 +2400,13 @@ export default {
     },
     "vinufinance": {
         id: "5717"
+    },
+    "jupiter-perpetual": {
+        "id": "4077",
+        "protocolsData": {
+            "derivatives": {
+                "id": "4077",
+            }
+        }
     }
 } as AdaptorsConfig

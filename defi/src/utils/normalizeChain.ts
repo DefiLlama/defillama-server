@@ -3866,6 +3866,14 @@ export const chainCoingeckoIds = {
     twitter: "SX_Bet",
     url: "https://sx.bet"
   },
+  "Penumbra": {
+    geckoId: "penumbra",
+    symbol: "UM",
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "penumbrazone",
+    url: "https://penumbra.zone/",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

@@ -3597,5 +3597,26 @@ const data4: Protocol[] = [
     forkedFrom: ["AAVE V3"],
     listedAt: 1738844659
   },
+  {
+    id: "5739",
+    name: "Penumbra Dex",
+    address: null,
+    symbol: "-",
+    url: "https://dex.penumbra.zone/explore",
+    description: "A fully private, cross-chain proof-of-stake network and decentralized exchange for the Cosmos and beyond. PENUMBRA IS HERE.",
+    chain: "Penumbra",
+    logo: `${baseIconsUrl}/penumbra-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Penumbra"],
+    module: "penumbra-dex/index.js",
+    twitter: "penumbrazone",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1738852769
+  },
 ];
 export default data4;

@@ -3191,7 +3191,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Staking Pool",
+    category: "Farm",
     chains: ["BounceBit"],
     module: "bb-club-MusangKing/index.js",
     twitter: "BounceBitClub",

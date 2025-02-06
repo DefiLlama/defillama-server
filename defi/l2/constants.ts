@@ -106,7 +106,8 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5701": "wc",
   "5702": "zero_network",
   "5703": "zkfair",
-  // sorare,
+  "5732": "sxr",
+  "5735": "sorare",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -213,4 +214,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "wc": { ticker: "WLD", address: "coingecko:worldcoin-wld" },
   // "5702": "zero_network",
   "zkfair": { ticker: "ZKF", address: "coingecko:zkfair" },
+  "sxr": { ticker: "SX", address: "coingecko:sx-network-2" },
 };

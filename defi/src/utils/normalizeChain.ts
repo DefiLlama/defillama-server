@@ -3874,6 +3874,15 @@ export const chainCoingeckoIds = {
     twitter: "penumbrazone",
     url: "https://penumbra.zone/",
   },
+  "Berachain": {
+    geckoId: "berachain-bera",
+    symbol: "BERA",
+    cmcId: "24647",
+    categories: ["EVM"],
+    twitter: "berachain",
+    url: "https://www.berachain.com/",
+    chainId: 80094
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

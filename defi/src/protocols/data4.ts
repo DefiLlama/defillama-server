@@ -931,7 +931,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5619",
-    name: "SSI",
+    name: "SoSoValue Indexes", // previously SSI
     address: null,
     symbol: "-",
     url: "https://ssi.sosovalue.com/",

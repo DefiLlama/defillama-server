@@ -3755,7 +3755,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://magic.beraborrow.com/",
-    description: "Beraborrow unlocks instant liquidity against Berachain assets through the first PoL powered stablecoin, Nectar",
+    description: "Beraborrow unlocks instant liquidity against Berachain assets through the first PoL powered stablecoin, NECT",
     chain: "Berachain",
     logo: `${baseIconsUrl}/beraborrow.png`,
     audits: "2",

@@ -6,9 +6,9 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 import storeHistorical from "../l2/storeToDb";
 // import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
-async function getChainAssets() {
+export async function storeChainAssets(override: boolean) {
   // await setEnvSecrets();
-  const res: any = await chainAssets();
+  const res: any = await chainAssets(override);
   res.timestamp = getCurrentUnixTimestamp();
   // let a = JSON.stringify(res);
   // let b = JSON.parse(a);
@@ -19,7 +19,7 @@ async function getChainAssets() {
 }
 export async function handler() {
   try {
-    await withTimeout(8400000, getChainAssets()); // 140 mins
+    await withTimeout(8400000, storeChainAssets(false)); // 140 mins
   } catch (e) {
     process.env.CHAIN_ASSET_WEBHOOK ? await sendMessage(`${e}`, process.env.CHAIN_ASSET_WEBHOOK!) : console.log(e);
     process.exit();

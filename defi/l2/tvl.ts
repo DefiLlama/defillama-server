@@ -52,7 +52,7 @@ export default async function main(override?: boolean, timestamp?: number) {
     delete chains[c];
   });
 
-  if (!timestamp && !override) await verifyChanges(chains);
+  if (!timestamp && override != true) await verifyChanges(chains);
 
   return chains;
 }

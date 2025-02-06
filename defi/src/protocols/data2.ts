@@ -992,7 +992,7 @@ const data2: Protocol[] = [
   /*
   {
     id: "1421",
-    name: "Enso Finance",
+    name: "Enso Finance", // removed on request of the Enso team
     address: null,
     symbol: "-",
     url: "https://www.enso.finance",

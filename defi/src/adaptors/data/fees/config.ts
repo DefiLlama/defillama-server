@@ -2392,6 +2392,7 @@ export default {
         id: "3618"
     },
     "bunni-v2": {
+        parentId: "Timeless",
         id: "5734"
     },
 } as AdaptorsConfig

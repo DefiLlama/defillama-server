@@ -2723,5 +2723,9 @@ export default {
     "ocelex": {
         parentId: "Ocelex",
         id: "5379"
-    }
+    },
+    "bunni-v2": {
+        parentId: "Timeless",
+        id: "5734"
+    },
 } as AdaptorsConfig

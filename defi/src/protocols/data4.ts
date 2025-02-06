@@ -3618,5 +3618,25 @@ const data4: Protocol[] = [
     forkedFrom: [],
     listedAt: 1738852769
   },
+  {
+    id: "5740",
+    name: "1delta",
+    address: null,
+    symbol: "-",
+    url: "https://app.1delta.io/markets",
+    description: "1delta is your gateway to DeFi, offering swap aggregation, spot-margin trading, and leveraged yield farming through an intuitive, non-custodial platform.",
+    chain: "Fuel",
+    logo: `${baseIconsUrl}/1delta.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Fuel"],
+    module: "dummy.js",
+    twitter: "1deltaDAO",
+    oracles: [],
+    forkedFrom: [],
+  },
 ];
 export default data4;

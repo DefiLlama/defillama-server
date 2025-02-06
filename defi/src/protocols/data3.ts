@@ -16153,7 +16153,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3408",
-    name: "Lynex Fusion",
+    name: "Lynex V2", // previously Lynex Fusion
     address: "linea:0x1a51b19ce03dbe0cb44c1528e34a7edd7771e9af",
     symbol: "LYNX",
     url: "https://app.lynex.fi/",

@@ -2384,5 +2384,14 @@ export default {
     "ocelex": {
         parentId: "Ocelex",
         id: "5379"
-    }
+    },
+    "levvy-fi": {
+        id: "3163"
+    },
+    "levvy-fi-tokens": {
+        id: "3618"
+    },
+    "bunni-v2": {
+        id: "5734"
+    },
 } as AdaptorsConfig

@@ -2395,4 +2395,7 @@ export default {
         parentId: "Timeless",
         id: "5734"
     },
+    "amped": {
+        id: "3833"
+    }
 } as AdaptorsConfig

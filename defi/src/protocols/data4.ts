@@ -3532,5 +3532,26 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
   },
+  {
+    id: "5736",
+    name: "Diesel Dex",
+    address: null,
+    symbol: "-",
+    url: "https://www.dieseldex.com/liquidity/",
+    description: "Decentralized exchange on Fuel Ignition",
+    chain: "Fuel",
+    logo: `${baseIconsUrl}/diesel-dex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Fuel"],
+    module: "diesel-dex/index.js",
+    twitter: "DieselDex_Fuel",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1738813273
+  },
 ];
 export default data4;

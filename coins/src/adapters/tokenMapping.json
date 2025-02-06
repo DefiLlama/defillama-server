@@ -6325,6 +6325,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
+    },
+    "0x0200c29006150606b650577bbe7b6248f58470c1": {
+      "to": "coingecko#usdt0",
+      "decimals": 6,
+      "symbol": "USDT0"
     }
   },
   "sophon": {

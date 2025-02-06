@@ -2397,5 +2397,8 @@ export default {
     },
     "amped": {
         id: "3833"
+    },
+    "vinufinance": {
+        id: "5717"
     }
 } as AdaptorsConfig

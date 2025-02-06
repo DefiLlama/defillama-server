@@ -6212,6 +6212,11 @@
     }
   },
   "sonic": {
+    "0x0C4E186Eae8aCAA7F7de1315D5AD174BE39Ec987": {
+      "to": "coingecko#sonic-3",
+      "decimals": 18,
+      "symbol": "anS"
+    },
     "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE": {
       "to": "coingecko#usd-coin",
       "decimals": 6,

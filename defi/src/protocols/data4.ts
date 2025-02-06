@@ -3700,6 +3700,7 @@ const data4: Protocol[] = [
     module: "kodiak-v2/index.js",
     twitter: "KodiakFi",
     audit_links: ["https://documentation.kodiak.finance/security/audits"],
+    parentProtocol: "parent#kodiak",
     listedAt: 1738862514,
   },
   {
@@ -3722,6 +3723,7 @@ const data4: Protocol[] = [
     module: "kodiak-v3/index.js",
     twitter: "KodiakFi",
     audit_links: ["https://documentation.kodiak.finance/security/audits"],
+    parentProtocol: "parent#kodiak",
     listedAt: 1738862519,
   },
   {

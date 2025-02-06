@@ -759,7 +759,9 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Arbitrum","Sonic"],
-    oracles: [],
+    oraclesByChain: {
+      sonic: ["Chainlink"], // https://silopedia.silo.finance/oracles
+    },
     forkedFrom: [],
     module: "silo-v2/index.js",
     twitter: "SiloFinance",
@@ -1141,7 +1143,7 @@ const data4: Protocol[] = [
     module: "sake-finance/index.js",
     twitter: "sakefinance",
     forkedFrom: ["AAVE V3"],
-    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/13098
+    oracles: ["Chainlink"], // https://docs.sakefinance.com/sake-finance/resources/oracles
     audit_links: ["https://github.com/Sake-Finance/Sake-Finance-Audit/blob/main/PeckShield-Audit-Report-Sake-v1.0.pdf"],
     listedAt: 1736960282
   },
@@ -1161,6 +1163,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Soneium"],
+    oracles: ["Chainlink"], // https://docs.untitledbank.co/developer-docs/oracle
     module: "untitledbank/index.js",
     twitter: "BankUntitled",
     forkedFrom: [],

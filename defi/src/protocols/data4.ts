@@ -936,7 +936,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://ssi.sosovalue.com/",
     description:
-      "The SoSoValue Index (SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secured",
+      "The SoSoValue Indexes(SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secured",
     chain: "Base",
     logo: `${baseIconsUrl}/ssi.png`,
     audits: "2",

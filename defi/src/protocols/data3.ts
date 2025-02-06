@@ -21936,12 +21936,12 @@ const data3: Protocol[] = [
   {
     id: "3664",
     name: "Primex Finance",
-    address: "0x0B3EAEAd748facDb9d943d3407011f16Eb17D0Cf",
+    address: "ethereum:0x0B3EAEAd748facDb9d943d3407011f16Eb17D0Cf",
     symbol: "PMX",
     url: "https://primex.finance",
     description:
       "Primex Finance is a leveraged farming and trading protocol that offers the highest APYs in the market and margin trading of an unlimited range of tokens on DEXs. On Primex, borrowers utilize lender liquidity to leverage low-risk assets like LSTs and LRTs, RWAs, DEX LP positions as well as margin trade assets on spot DEXs, including those not available on CEXs including memecoins and AI agents. In its next version, the protocol will offer an advanced cross-margin portfolio with multiple positions in liquid staking, restaking, RWAs, and DEX LP tokens, all managed under a unified health factor and AI-powered rebalancing for yield optimization.",
-    chain: "Ethereum",
+    chain: "Polygon",
     logo: `${baseIconsUrl}/primex-finance.jpg`,
     audits: "3",
     audit_note: null,
@@ -21949,7 +21949,7 @@ const data3: Protocol[] = [
     cmcId: "20738",
     category: "Derivatives",
     chains: ["Polygon", "Ethereum", "Arbitrum", "Base"],
-    oracles: ["Pyth", "Chainlink"], //  https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/pyth-network-oracle
+    oracles: ["Pyth"], //  https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/pyth-network-oracle
     forkedFrom: [],
     module: "primex-finance/index.js",
     twitter: "primex_official",

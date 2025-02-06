@@ -15841,7 +15841,7 @@ const data3: Protocol[] = [
     module: "term-finance/index.js",
     twitter: "term_labs",
     forkedFrom: [],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Chronicle"],
     audit_links: ["https://docs.term.finance/security-audits/sigma-prime"],
     listedAt: 1692193295,
   },

@@ -1,4 +1,71 @@
 {
+  "berachain": {
+    "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34": {
+      "decimals": "18",
+      "symbol": "USDe",
+      "to": "coingecko#ethena-usde"
+    },
+    "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda-2"
+    },
+    "0x5B82028cfc477C4E7ddA7FF33d59A23FA7Be002a": {
+      "decimals": "18",
+      "symbol": "MIM",
+      "to": "coingecko#magic-internet-money"
+    },
+    "0x4186BFC76E2E237523CBC30FD220FE055156b41F": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "to": "coingecko#kelp-dao-restaked-eth"
+    },
+    "0x541FD749419CA806a8bc7da8ac23D346f2dF8B77": {
+      "decimals": "18",
+      "symbol": "SolvBTC",
+      "to": "coingecko#solv-btc"
+    },
+    "0xEc901DA9c68E90798BbBb74c11406A32A70652C3": {
+      "decimals": "18",
+      "symbol": "STONE",
+      "to": "coingecko#stakestone-ether"
+    },
+    "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
+      "decimals": "18",
+      "symbol": "SolvBTC.BBN",
+      "to": "coingecko#solv-protocol-solvbtc-bbn"
+    },
+    "0xC3827A4BC8224ee2D116637023b124CED6db6e90": {
+      "decimals": "8",
+      "symbol": "uniBTC",
+      "to": "coingecko#universal-btc"
+    },
+    "0x850CDF416668210ED0c36bfFF5d21921C7adA3b8": {
+      "decimals": "18",
+      "symbol": "rswETH",
+      "to": "coingecko#restaked-swell-eth"
+    },
+    "0xbAC93A69c62a1518136FF840B788Ba715cbDfE2B": {
+      "decimals": "8",
+      "symbol": "FBTC",
+      "to": "coingecko#ignition-fbtc"
+    },
+    "0x211Cc4DD073734dA055fbF44a2b4667d5E5fE5d2": {
+      "decimals": "18",
+      "symbol": "sUSDe",
+      "to": "coingecko#ethena-staked-usde"
+    },
+    "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "coingecko#susda"
+    },
+    "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E": {
+      "decimals": "18",
+      "symbol": "pumpBTC.bera",
+      "to": "coingecko#pumpbtc"
+    }
+  },
   "alephium": {
     "19246e8c2899bc258a1156e08466e3cdd3323da756d8a543c7fc911847b96f00": {
       "decimals": "18",

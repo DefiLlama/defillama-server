@@ -6452,6 +6452,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Angles_Sonic",
   },
+  {
+    id: "parent#kodiak",
+    name: "Kodiak",
+    url: "https://kodiak.finance/",
+    description: "Berachain's Native Liquidity Hub",
+    logo: `${baseIconsUrl}/kodiak.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "KodiakFi",
+  },
 ];
 
 export default parentProtocols;

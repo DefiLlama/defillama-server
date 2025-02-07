@@ -15295,7 +15295,7 @@ const data2: Protocol[] = [
     chains: ["Binance"],
     // oracle dev docs: https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle#intro-of-resilient-oracle
     // announcement: https://medium.com/listadao/lista-dao-upgrades-from-redstone-to-the-chainlink-standard-for-verifiable-market-data-d9988f94109d
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "RedStone"],//https://docs.bsc.lista.org/for-developer/collateral-debt-position/multi-oracle#intro-of-resilient-oracle
     forkedFrom: ["MakerDAO"],
     module: "helio-money/index.js",
     twitter: "LISTA_DAO",

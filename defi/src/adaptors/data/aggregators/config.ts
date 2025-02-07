@@ -303,5 +303,8 @@ export default {
   },
   "enso": {
     id: "5741",
+  },
+  "1delta": {
+    id: "5740",
   }
 } as AdaptorsConfig;

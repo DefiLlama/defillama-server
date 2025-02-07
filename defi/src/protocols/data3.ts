@@ -2753,7 +2753,7 @@ const data3: Protocol[] = [
     category: "Algo-Stables",
     chains: ["Arbitrum"],
     oracles: ["TWAP"],
-    forkedFrom: ["Tomb"],
+    forkedFrom: ["Tomb Finance"],
     module: "ArbiTen/index.js",
     twitter: "ArbiTenFinance",
     audit_links: ["https://etherauthority.io/10mb-finance-smart-contract-audit"],
@@ -11494,7 +11494,7 @@ const data3: Protocol[] = [
     module: "pulserate/index.js",
     twitter: "PulseRate_",
     oracles: ["TWAP"],
-    forkedFrom: ["Tomb"],
+    forkedFrom: ["Tomb Finance"],
     listedAt: 1688644022,
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Pulse%20Rate/Pulse%20Rate.pdf"],
     github: ["pulserate"],
@@ -17782,7 +17782,7 @@ const data3: Protocol[] = [
     chains: ["Base"],
     module: "basedfarm/index.js",
     oracles: [],
-    forkedFrom: ["Tomb"],
+    forkedFrom: ["Tomb Finance"],
     twitter: "BasedDotFarm",
     listedAt: 1693841922,
   },
@@ -40505,7 +40505,7 @@ const data3: Protocol[] = [
     twitter: "HyperliquidX",
     listedAt: 1713225288,
   },
-  {
+  /*{ // Delisted and re-listed under new listing id:5761
     id: "4482",
     name: "Hyperliquid Spot",
     address: "hyperliquid:0x0d01dc56dcaaca66ad901c959b4011ec",
@@ -40527,7 +40527,7 @@ const data3: Protocol[] = [
     twitter: "HyperliquidX",
     parentProtocol: "parent#hyperliquid",
     listedAt: 1713231343,
-  },
+  },*/
   {
     id: "4483",
     name: "Volcano",
@@ -62350,7 +62350,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Derivatives",
     chains: ["Hyperliquid"],
     oracles: [],
     forkedFrom: [],

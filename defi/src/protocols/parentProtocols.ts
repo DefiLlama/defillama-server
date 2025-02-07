@@ -6486,6 +6486,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "VicunaFinance",
     github: ["VicunaFinance-com"],
   },
+  {
+    id: "parent#beralis",
+    name: "Beralis Dex",
+    url: "https://www.beralis.xyz",
+    description: "Beralis Dex on Berachain",
+    logo: `${baseIconsUrl}/beralis-dex.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "BeralisDex",
+  },
 ];
 
 export default parentProtocols;

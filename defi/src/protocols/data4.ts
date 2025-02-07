@@ -3661,13 +3661,13 @@ const data4: Protocol[] = [
   },
   {
     id: "5742",
-    name: "BeraSwap",
+    name: "BEX",
     address: null,
     symbol: "-",
     url: "https://hub.berachain.com/swap/",
     description: "Decentralized exchange on Berachain",
     chain: "Berachain",
-    logo: `${baseIconsUrl}/beraswap.png`,
+    logo: `${baseIconsUrl}/bex.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -3859,13 +3859,13 @@ const data4: Protocol[] = [
   },
   {
     id: "5751",
-    name: "Concrete Ethena",
+    name: "Concrete",
     address: null,
     symbol: "-",
     url: "https://ethena.concrete.xyz",
     description: "Laika AI is building the comprehensive AI layer for Web3, combining enterprise RAG infrastructure, developer APIs, and analytics tools. With our multi-chain super-app chrome extension, Ai Agent Infrastructure, Telegram AI analytics, and verified ChatGPT plugins, delivering advanced blockchain intelligence and automated market analysis.",
     chain: "Berachain",
-    logo: `${baseIconsUrl}/concrete-ethena.png`,
+    logo: `${baseIconsUrl}/concrete.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -3877,6 +3877,6 @@ const data4: Protocol[] = [
     module: "concrete-xyz/index.js",
     twitter: "ConcreteXYZ",
     listedAt: 1738937447
-  },
+  }
 ];
 export default data4;

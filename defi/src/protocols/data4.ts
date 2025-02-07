@@ -3762,7 +3762,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
+    category: "CDP",
     chains: ["Berachain"],
     oracles: [],
     forkedFrom: [],

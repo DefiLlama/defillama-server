@@ -3662,9 +3662,9 @@ const data4: Protocol[] = [
   {
     id: "5742",
     name: "BeraSwap",
-    address: "berachain:0xe9a5C44078e0AcF37DEa305223b0E4548588431a",
-    symbol: "BRS",
-    url: "https://beraswap.fi/",
+    address: null,
+    symbol: "-",
+    url: "https://hub.berachain.com/swap/",
     description: "Decentralized exchange on Berachain",
     chain: "Berachain",
     logo: `${baseIconsUrl}/beraswap.png`,
@@ -3677,7 +3677,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: ["Balancer V2"],
     module: "beraswap/index.js",
-    twitter: "BeraSwap_Defi",
+    twitter: "berachain",
     listedAt: 1738859458,
   },
   {

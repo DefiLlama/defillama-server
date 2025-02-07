@@ -6474,6 +6474,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FizzswapDex",
   },
+  {
+    id: "parent#vicuna",
+    name: "Vicuna Finance",
+    url: "https://vicunafinance.com/",
+    description: "Vicuna Finance operates as a borrow and lending protocol, facilitating leveraged (CL ALM) yield farming on Sonic",
+    logo: `${baseIconsUrl}/vicuna-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "VicunaFinance",
+    github: ["VicunaFinance-com"],
+  },
 ];
 
 export default parentProtocols;

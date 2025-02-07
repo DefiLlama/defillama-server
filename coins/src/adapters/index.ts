@@ -125,4 +125,5 @@ export default {
   kamino: require("./solana/kamino"),
   fxsp: require("./yield/fxsp"),
   stakeDao: require("./yield/stakeDao"),
+  kodiak: require("./markets/kodiak"),
 };

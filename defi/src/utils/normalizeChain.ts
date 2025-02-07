@@ -3883,6 +3883,16 @@ export const chainCoingeckoIds = {
     url: "https://www.berachain.com/",
     chainId: 80094
   },
+  "Stratis": {
+    geckoId: "stratis",
+    symbol: "STRAX",
+    cmcId: "30168",
+    categories: ["EVM"],
+    twitter: "stratisplatform",
+    url: "https://www.stratisplatform.com/",
+    github: ["stratisproject"],
+    chainId: 105105
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

@@ -2161,6 +2161,7 @@ const data4: Protocol[] = [
     twitter: "VicunaFinance",
     forkedFrom: ["Beefy"],
     oracles: [],
+    parentProtocol: "parent#vicuna",
     listedAt: 1737981273
   },
   {
@@ -3963,6 +3964,7 @@ const data4: Protocol[] = [
     forkedFrom: ["AAVE V3"],
     module: "vicuna-lending/index.js",
     twitter: "VicunaFinance",
+    parentProtocol: "parent#vicuna",
     listedAt: 1738953589
   },
   {

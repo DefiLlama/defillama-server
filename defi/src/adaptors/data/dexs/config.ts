@@ -2735,5 +2735,8 @@ export default {
                 id: "5737",
             }
         }
+    },
+    "penumbra-dex": {
+        id: "5739",
     }
 } as AdaptorsConfig

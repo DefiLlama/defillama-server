@@ -3863,7 +3863,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ethena.concrete.xyz",
-    description: "Laika AI is building the comprehensive AI layer for Web3, combining enterprise RAG infrastructure, developer APIs, and analytics tools. With our multi-chain super-app chrome extension, Ai Agent Infrastructure, Telegram AI analytics, and verified ChatGPT plugins, delivering advanced blockchain intelligence and automated market analysis.",
+    description: "Access automated DeFi yields on Berachain while earning rewards from Ethena, Concrete and the Berachain ecosystem",
     chain: "Berachain",
     logo: `${baseIconsUrl}/concrete.png`,
     audits: "0",

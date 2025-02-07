@@ -3893,6 +3893,20 @@ export const chainCoingeckoIds = {
     github: ["stratisproject"],
     chainId: 105105
   },
+  "Silicon zkEVM": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    chainId: 2355,
+    twitter: "0xSilicon",
+    url: "https://silicon.network",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4064,6 +4078,7 @@ const chainLabelMap = {
   "optimism": "Optimism",
   "spn": "Superposition",
   "zero_network": "Zero Network",
+  "silicon_zk": "Silicon zkEVM"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

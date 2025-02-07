@@ -6463,6 +6463,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "KodiakFi",
   },
+  {
+    id: "parent#fizzswap",
+    name: "Fizzswap",
+    url: "https://fizzswap.io",
+    description: "Fizzswap is a Decentralized Exchange built on the Silicon chain(L2).",
+    logo: `${baseIconsUrl}/fizzswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "FizzswapDex",
+  },
 ];
 
 export default parentProtocols;

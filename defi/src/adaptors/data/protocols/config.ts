@@ -318,5 +318,9 @@ export default {
     "reservoir-tools-clmm": {
         parentId: "Reservoir Tools",
         id: "5679",
+    },
+    "kodiak-v3": {
+        parentId: "Kodiak",
+        id: "5744",
     }
 } as AdaptorsConfig

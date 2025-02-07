@@ -2728,4 +2728,12 @@ export default {
         parentId: "Timeless",
         id: "5734"
     },
+    "wavex": {
+        id: "5737",
+        protocolsData: {
+            "swap": {
+                id: "5737",
+            }
+        }
+    }
 } as AdaptorsConfig

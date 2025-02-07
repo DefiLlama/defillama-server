@@ -2408,5 +2408,8 @@ export default {
                 "id": "4077",
             }
         }
+    },
+    "wavex": {
+        id: "5737"
     }
 } as AdaptorsConfig

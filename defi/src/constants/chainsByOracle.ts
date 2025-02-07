@@ -406,7 +406,9 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Mantle",
     "Scroll",
     "Berachain",
-    "Superseed"
+    "Superseed",
+    "Plume",
+    "Corn Maizenet"
   ],
   "eOracle": [
     "Base",

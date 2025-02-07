@@ -40,7 +40,7 @@ export interface Protocol {
   },
   note?: string;
   deprecated?: boolean;
-  oraclesBreakdown: Array<{
+  oraclesBreakdown?: Array<{
     name: string,
     type: "Fallback" | "RNG" | "Primary" | "Aggregator", // pls add more as needed
     proof: string,

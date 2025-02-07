@@ -3883,7 +3883,7 @@ const data4: Protocol[] = [
     name: "Goldilocks",
     address: null,
     symbol: "-",
-    url: "https://ethena.concrete.xyz",
+    url: "https://www.goldilocksdao.io/",
     description: "Defi Infrastructure on Berachain",
     chain: "Berachain",
     logo: `${baseIconsUrl}/goldilocks.png`,

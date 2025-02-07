@@ -5814,6 +5814,16 @@
       "decimals": "18",
       "symbol": "BTCUSD",
       "to": "coingecko#bitcoin-usd-btcfi"
+    },
+    "0xe04d21d999FaEDf1e72AdE6629e20A11a1ed14FA": {
+      "decimals": "18",
+      "symbol": "SolvBTC.m",
+      "to": "coingecko#solv-btc"
+    },
+    "0x5B1Fb849f1F76217246B8AAAC053b5C7b15b7dc3": {
+      "decimals": "18",
+      "symbol": "SolvBTC.b",
+      "to": "coingecko#solv-btc"
     }
   },
   "stellar": {

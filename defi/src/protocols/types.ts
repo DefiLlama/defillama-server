@@ -42,7 +42,7 @@ export interface Protocol {
   deprecated?: boolean;
   oraclesBreakdown: Array<{
     name: string,
-    type: "Fallback" | "RNG" | "Primary" | "Median", // pls add more as needed
+    type: "Fallback" | "RNG" | "Primary" | "Aggregator", // pls add more as needed
     proof: string,
     startDate?: string, // YYYY-MM-DD
     endDate?: string,

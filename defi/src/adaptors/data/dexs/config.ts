@@ -2650,7 +2650,7 @@ export default {
     },
     "hyperliquid-spot": {
         parentId: "Hyperliquid",
-        id: "4482"
+        id: "5761"
     },
     "neby-dex": {
         id: "5512"

@@ -796,5 +796,13 @@ export default {
     },
     "raydium-perps": {
         id: "5729",
+    },
+    "wavex": {
+        id: "5737",
+        protocolsData: {
+            "derivatives": {
+                id: "5737",
+            }
+        }
     }
 } as AdaptorsConfig

@@ -300,5 +300,11 @@ export default {
   },
   "superswap": {
     id: "5668",
+  },
+  "enso": {
+    id: "5741",
+  },
+  "1delta": {
+    id: "5740",
   }
 } as AdaptorsConfig;

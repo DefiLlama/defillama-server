@@ -10,7 +10,7 @@ import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
 import { verifyChanges } from "./test";
 
-export default async function main(timestamp?: number) {
+export default async function main(override?: boolean, timestamp?: number) {
   const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp });
   let [{ tvlData: native, mcapData }, incoming, { data: protocols }] = await Promise.all([
     fetchMinted({
@@ -52,7 +52,7 @@ export default async function main(timestamp?: number) {
     delete chains[c];
   });
 
-  if (!timestamp) await verifyChanges(chains);
+  if (!timestamp && override != true) await verifyChanges(chains);
 
   return chains;
 }

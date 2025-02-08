@@ -30,6 +30,7 @@
     "interactive": "npx ts-node --transpile-only src/cli/interactive.ts",
     "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx --node-arg=--max-old-space-size=6144 ts-node --logError --transpile-only src/storeTvlTask.ts",
     "store-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeChainAssets.ts",
+    "override-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/overrideChainAssets.ts",
     "store-chain-asset-historical-flows": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeChainAssetFlows.ts",
     "store-emissions": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeEmissions.ts",
     "store-emissions-index": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeEmissionsIndex.ts",

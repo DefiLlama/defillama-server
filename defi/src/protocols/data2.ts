@@ -992,7 +992,7 @@ const data2: Protocol[] = [
   /*
   {
     id: "1421",
-    name: "Enso Finance",
+    name: "Enso Finance", // removed on request of the Enso team
     address: null,
     symbol: "-",
     url: "https://www.enso.finance",
@@ -14855,9 +14855,11 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     oraclesByChain: {
-      arbitrum: ["Chainlink", "TWAP"],
-      ethereum: ["Chainlink", "TWAP"],
-    },
+      arbitrum: ["Chainlink"],
+      ethereum: ["Chainlink"],
+      base: ["Chainlink"],
+      optimism: ["Chainlink"],
+    }, // the oracle of each pools if provided on the UI https://app.silo.finance/
     forkedFrom: [],
     module: "silo/index.js",
     twitter: "SiloFinance",

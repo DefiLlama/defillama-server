@@ -2277,7 +2277,7 @@ export default {
     "hyperliquid": {
         parentId: "Hyperliquid",
         displayName: "HyperLiquid",
-        id: "4482"
+        id: "5761"
     },
     "liquidity-slicing": {
         id: "5297"
@@ -2384,5 +2384,32 @@ export default {
     "ocelex": {
         parentId: "Ocelex",
         id: "5379"
+    },
+    "levvy-fi": {
+        id: "3163"
+    },
+    "levvy-fi-tokens": {
+        id: "3618"
+    },
+    "bunni-v2": {
+        parentId: "Timeless",
+        id: "5734"
+    },
+    "amped": {
+        id: "3833"
+    },
+    "vinufinance": {
+        id: "5717"
+    },
+    "jupiter-perpetual": {
+        "id": "4077",
+        "protocolsData": {
+            "derivatives": {
+                "id": "4077",
+            }
+        }
+    },
+    "wavex": {
+        id: "5737"
     }
 } as AdaptorsConfig

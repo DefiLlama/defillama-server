@@ -39,7 +39,19 @@ export interface Protocol {
     [chain:string]: string[];
   },
   note?: string;
-  deprecated?: boolean
+  deprecated?: boolean;
+  oraclesBreakdown?: Array<{
+    name: string,
+    type: "Fallback" | "RNG" | "Primary" | "Aggregator", // pls add more as needed
+    proof: string,
+    startDate?: string, // YYYY-MM-DD
+    endDate?: string,
+    chains?: Array<{
+      chain: string,
+      startDate?: string,
+      endDate?: string
+    }>
+  }>
 }
 
 export interface IParentProtocol {

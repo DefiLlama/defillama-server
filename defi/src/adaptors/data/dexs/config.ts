@@ -2650,7 +2650,7 @@ export default {
     },
     "hyperliquid-spot": {
         parentId: "Hyperliquid",
-        id: "4482"
+        id: "5761"
     },
     "neby-dex": {
         id: "5512"
@@ -2723,5 +2723,20 @@ export default {
     "ocelex": {
         parentId: "Ocelex",
         id: "5379"
+    },
+    "bunni-v2": {
+        parentId: "Timeless",
+        id: "5734"
+    },
+    "wavex": {
+        id: "5737",
+        protocolsData: {
+            "swap": {
+                id: "5737",
+            }
+        }
+    },
+    "penumbra-dex": {
+        id: "5739",
     }
 } as AdaptorsConfig

@@ -3866,6 +3866,47 @@ export const chainCoingeckoIds = {
     twitter: "SX_Bet",
     url: "https://sx.bet"
   },
+  "Penumbra": {
+    geckoId: "penumbra",
+    symbol: "UM",
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "penumbrazone",
+    url: "https://penumbra.zone/",
+  },
+  "Berachain": {
+    geckoId: "berachain-bera",
+    symbol: "BERA",
+    cmcId: "24647",
+    categories: ["EVM"],
+    twitter: "berachain",
+    url: "https://www.berachain.com/",
+    chainId: 80094
+  },
+  "Stratis": {
+    geckoId: "stratis",
+    symbol: "STRAX",
+    cmcId: "30168",
+    categories: ["EVM"],
+    twitter: "stratisplatform",
+    url: "https://www.stratisplatform.com/",
+    github: ["stratisproject"],
+    chainId: 105105
+  },
+  "Silicon zkEVM": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    chainId: 2355,
+    twitter: "0xSilicon",
+    url: "https://silicon.network",
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4037,6 +4078,7 @@ const chainLabelMap = {
   "optimism": "Optimism",
   "spn": "Superposition",
   "zero_network": "Zero Network",
+  "silicon_zk": "Silicon zkEVM"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

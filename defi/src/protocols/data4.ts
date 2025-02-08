@@ -1786,7 +1786,7 @@ const data4: Protocol[] = [
     symbol: "LQTY",
     url: "https://www.liquity.org/",
     description:
-      "Liquity V2 is decentralized and immutable borrowing protocol that allows you to set your own interest rate and draw loans against ETH, wstETH and rETH.",
+      "Liquity V2 is a decentralized and immutable borrowing protocol that allows you to set your own interest rate and draw loans against ETH, wstETH and rETH.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/liquity-v2.jpg`,
     audits: "2",

@@ -3519,7 +3519,7 @@ const data: Protocol[] = [
     symbol: "LQTY",
     url: "https://www.liquity.org/",
     description:
-      "Liquity V1 is decentralized and immutable borrowing protocol that allows you to draw 0% interest loans against Ether used as collateral.",
+      "Liquity V1 is a decentralized and immutable borrowing protocol that allows you to draw 0% interest loans against Ether used as collateral.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/liquity-v1.jpg`,
     audits: "2",

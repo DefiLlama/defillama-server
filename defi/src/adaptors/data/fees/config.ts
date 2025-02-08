@@ -2277,7 +2277,7 @@ export default {
     "hyperliquid": {
         parentId: "Hyperliquid",
         displayName: "HyperLiquid",
-        id: "4482"
+        id: "5761"
     },
     "liquidity-slicing": {
         id: "5297"

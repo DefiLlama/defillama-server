@@ -6373,7 +6373,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Liquity",
     url: "https://www.liquity.org/",
     description:
-      "Liquity is a decentralized borrowing protocol that allows you to draw 0% interest loans against Ether used as collateral.",
+      "Liquity is a decentralized and immutable borrowing protocol that allows you to draw capital efficient loans against ETH and LSTs.",
     logo: `${baseIconsUrl}/liquity.jpg`,
     gecko_id: "liquity",
     cmcId: "7429",

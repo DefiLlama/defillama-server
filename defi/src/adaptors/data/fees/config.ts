@@ -2411,5 +2411,8 @@ export default {
     },
     "wavex": {
         id: "5737"
+    },
+    "berachain-hub": {
+        id: "5742"
     }
 } as AdaptorsConfig

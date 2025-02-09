@@ -2738,5 +2738,8 @@ export default {
     },
     "penumbra-dex": {
         id: "5739",
+    },
+    "berachain-hub": {
+        id: "5742"
     }
 } as AdaptorsConfig

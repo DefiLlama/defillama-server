@@ -322,5 +322,9 @@ export default {
     "kodiak-v3": {
         parentId: "Kodiak",
         id: "5744",
+    },
+    "beralis-v3": {
+        parentId: "Beralis Dex",
+        id: "5759",
     }
 } as AdaptorsConfig

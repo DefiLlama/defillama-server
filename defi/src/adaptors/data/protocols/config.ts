@@ -326,5 +326,8 @@ export default {
     "beralis-v3": {
         parentId: "Beralis Dex",
         id: "5759",
+    },
+    "rooster": {
+        id: "5704",
     }
 } as AdaptorsConfig

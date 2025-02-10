@@ -21950,6 +21950,24 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["Polygon", "Ethereum", "Arbitrum", "Base"],
     oracles: ["Pyth"], //  https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/pyth-network-oracle
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/pyth-network-oracle", "https://github.com/DefiLlama/defillama-server/pull/9239"]
+   
+      },
+      {
+        name: "Chainlink",
+        type: "Secondary",
+        proof: ["https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/chainlink"],
+      },
+      {
+        name: "Redstone",
+        type: "Secondary",
+        proof: ["https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/redstone-oracles"],
+      }
+    ],
     forkedFrom: [],
     module: "primex-finance/index.js",
     twitter: "primex_official",

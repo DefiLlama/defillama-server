@@ -48,7 +48,7 @@ export interface Protocol {
       | "RNG" // Oracle just used to provide random values (eg for games), it doesn't secure any TVL
       | "Aggregator", // Oracle used in conjuction with other oracles (eg by taking the median of multiple oracles), and thus a failure of it doesn't imply direct losses
       // pls add more as needed
-    proof: string,
+    proof: Array<string>,
     startDate?: string, // YYYY-MM-DD
     endDate?: string,
     chains?: Array<{

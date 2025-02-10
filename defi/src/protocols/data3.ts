@@ -65043,7 +65043,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sonic"],
-    oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    oracles: ["API3","Pyth"], // https://machfi.gitbook.io/machfi-documentation/contracts/audit
     forkedFrom: ["Compound V2"],
     module: "machfi/index.js",
     twitter: "machfi_xyz",

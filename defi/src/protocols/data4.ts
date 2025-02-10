@@ -2448,6 +2448,7 @@ const data4: Protocol[] = [
     chains: ["Scroll"],
     module: "quill-fi/index.js",
     twitter: "QuillFi",
+    oracles: ["Pyth","Chainlink"], // https://docs.quill.finance/faq/liquidations-oracle-and-redemptions
     forkedFrom: ["Liquity V2"],
     stablecoins: ["quill-usd"],
     listedAt: 1738101111
@@ -3272,7 +3273,7 @@ const data4: Protocol[] = [
     chains: ["Eclipse"],
     module: "neptune-protocol/index.js",
     twitter: "Neptune_Stable",
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security
     forkedFrom: ["Hedge"],  
     audit_links: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"],
     listedAt: 1738617883
@@ -3572,7 +3573,7 @@ const data4: Protocol[] = [
     chains: ["Soneium"],
     module: "wavex/index.js",
     twitter: "waveX_fi",
-    oracles: [],
+    oracles: ["Pyth", "Chainlink"], // https://docs.wavex.fi/docs/key-features-of-wavex#transparent-and-secure-on-chain-transactions
     forkedFrom: ["GMX V2"],
     listedAt: 1738844419
   },
@@ -3764,7 +3765,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Berachain"],
-    oracles: [],
+    oracles: ["Pyth"], // https://beraborrow.gitbook.io/docs/audits/audits
     forkedFrom: [],
     module: "beraborrow/index.js",
     twitter: "beraborrow",

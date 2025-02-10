@@ -4100,5 +4100,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#hyperliquid",
     listedAt: 1738964061
   },
+  {
+    id: "5762",
+    name: "Zoo Finance",
+    address: null,
+    symbol: "-",
+    url: "https://zoofi.io",
+    description: "Structured Asset Protocol for Better Liquidity Utilization.",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/zoo-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Berachain"],
+    oracles: [],
+    forkedFrom: [],
+    module: "zoofi-io/index.js",
+    twitter: "ZooFinanceIO",
+    listedAt: 1739186083
+  },
 ];
 export default data4;

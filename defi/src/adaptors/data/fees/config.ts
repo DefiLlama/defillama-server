@@ -2414,5 +2414,8 @@ export default {
     },
     "berachain-hub": {
         id: "5742"
+    },
+    "polymarket": {
+        id: "711"
     }
 } as AdaptorsConfig

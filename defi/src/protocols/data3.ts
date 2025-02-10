@@ -62574,9 +62574,10 @@ const data3: Protocol[] = [
     chains: ["Base"],
     oracles: [],
     forkedFrom: ["Beanstalk"],
-    module: "dummy.js",
+    module: "pinto/index.js",
     twitter: "pintocommunity",
-    github: ["pinto-org"]
+    github: ["pinto-org"],
+    listedAt: 1739209111
   },
   {
     id: "5459",

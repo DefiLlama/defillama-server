@@ -21,7 +21,6 @@ const config: { [chain: string]: { [symbol: string]: string } } = {
 const abi = "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)";
 
 export async function kuma(timestamp: number): Promise<Write[]> {
-  console.log("starting kuma");
   const ethApi = await getApi("ethereum", timestamp);
   const polyApi = await getApi("polygon", timestamp);
   const prices: { [symbol: string]: number } = {

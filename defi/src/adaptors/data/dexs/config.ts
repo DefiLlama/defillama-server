@@ -1,3 +1,4 @@
+import { id } from "ethers"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -164,7 +165,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5069",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "GMX - SWAP"
             }
         },
@@ -995,7 +996,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "2356",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "El Dorado Exchange - SWAP"
             }
         },
@@ -1249,7 +1250,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5116",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "Morphex - SWAP"
             }
         },
@@ -1273,7 +1274,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "2814",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "SpaceDex - SWAP"
             }
         },
@@ -1301,7 +1302,7 @@ export default {
             "swap": {
                 "id": "2730",
                 disabled: true,
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "Covo V2 - SWAP",
                 cleanRecordsConfig: {
                     genuineSpikes: true
@@ -1391,7 +1392,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5117",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         },
         cleanRecordsConfig: {
@@ -1410,7 +1411,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5115",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "Fulcrom - SWAP",
             }
         },
@@ -1513,7 +1514,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "3792",
-                "category": "Dexes",
+                "category": "Dexs",
             }
         },
     },
@@ -1532,7 +1533,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "3209",
-                "category": "Dexes",
+                "category": "Dexs",
             }
         },
     },
@@ -1718,17 +1719,13 @@ export default {
     "danogo": {
         "id": "3454"
     },
-    "aerodrome": {
-        parentId: "Aerodrome",
-        "id": "3450"
-    },
     "morphex-old": {
         parentId: "Morphex",
         "protocolsData": {
             "swap": {
                 "id": "5125",
                 disabled: true,
-                "category": "Dexes"
+                "category": "Dexs"
             }
         },
         disabled: true,
@@ -1748,7 +1745,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "3509",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         },
         "id": "3509"
@@ -1759,7 +1756,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5126",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         }
     },
@@ -1857,7 +1854,7 @@ export default {
         protocolsData: {
             "orderbook": {
                 "id": "3645",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         }
     },
@@ -2592,6 +2589,157 @@ export default {
         id: "5185"
     },
     "pumpfun": {
-        id: "4449"
+        id: "4449",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1732492800": true,
+                "1732406400": true,
+                "1732320000": true,
+            }
+        }
+    },
+    "catton": {
+        id: "5409"
+    },
+    "9mm-v2": {
+        id: "5416"
+    },
+    "9mm": {
+        id: "5417"
+    },
+    "catalist-dex": {
+        id: "5412"
+    },
+    "hydrometer": {
+        id: "5423",
+    },
+    "bluefin-amm": {
+        id: "5427",
+        parentId: "Bluefin",
+        protocolsData: {
+            "dexes": {
+                id: "5427"
+            }
+        }
+    },
+    "taraswap": {
+        id: "5437",
+    },
+    "wagmi_ton": {
+        id: "5436",
+    },
+    "bigpump": {
+        id: "5443",
+    },
+    "pinto": {
+        id: "5458"
+    },
+    "blum": {
+        id: "5451"
+    },
+    "trado-spot": {
+        id: "5225"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
+    },
+    "plunderswap": {
+        parentId: "PlunderSwap",
+        id: "3840"
+    },
+    "hyperliquid-spot": {
+        parentId: "Hyperliquid",
+        id: "5761"
+    },
+    "neby-dex": {
+        id: "5512"
+    },
+    "mantis": {
+        id: "5514"
+    },
+    "utyabswap": {
+        id: "5508"
+    },
+    "vinuswap": {
+        id: "5497"
+    },
+    "emojicoin": {
+        id: "5454"
+    },
+    "datadex": {
+        id: "5524"
+    },
+    "goblin-dex": {
+        id: "5531"
+    },
+    "invariant": {
+        id: "1788"
+    },
+    "rabbitswap-v3": {
+        id: "5298"
+    },
+    "dappos-intentEx": {
+        id: "5597",
+    },
+    "mento": {
+        id: "504",
+    },
+    "sonic-market-cpmm": {
+        parentId: "Sonic Market",
+        id: "5521",
+    },
+    "sonic-market-orderbook": {
+        parentId: "Sonic Market",
+        id: "5522",
+    },
+    "vinunft": {
+        id: "5613",
+    },
+    "lnexchange-spot": {
+        id: "5638",
+    },
+    "sologenic": {
+        id: "5644",
+    },
+    "meteora-dlmm": {
+        parentId: "Meteora",
+        id: "4148",
+    },
+    "metastable-musd": {
+        id: "5645"
+    },
+    "infinityPools": {
+        id: "5662"
+    },
+    "amped": {
+        id: "3833",
+        protocolsData: {
+            "swap": {
+                id: "3833",
+            }
+        }
+    },
+    "ocelex": {
+        parentId: "Ocelex",
+        id: "5379"
+    },
+    "bunni-v2": {
+        parentId: "Timeless",
+        id: "5734"
+    },
+    "wavex": {
+        id: "5737",
+        protocolsData: {
+            "swap": {
+                id: "5737",
+            }
+        }
+    },
+    "penumbra-dex": {
+        id: "5739",
+    },
+    "berachain-hub": {
+        id: "5742"
     }
 } as AdaptorsConfig

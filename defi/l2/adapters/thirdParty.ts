@@ -1,7 +1,8 @@
 import { Chain } from "@defillama/sdk/build/general";
 import providers from "@defillama/sdk/build/providers.json";
 import { Address } from "@defillama/sdk/build/types";
-import { allChainKeys, mixedCaseChains } from "../constants";
+import { allChainKeys } from "../constants";
+import { bridgedTvlMixedCaseChains } from "../../src/utils/shared/constants";
 import fetch from "node-fetch";
 import { additional, excluded } from "./manual";
 import axios from "axios";
@@ -21,6 +22,18 @@ const chainIdMap: { [id: number]: string } = {};
 Object.keys(providers).map((c: string) => {
   chainIdMap[providers[c as keyof typeof providers].chainId] = c;
 });
+
+const hyperlane = async (): Promise<void> => {
+  const bridge = "hyperlane";
+  if (!(bridge in bridgePromises))
+    bridgePromises[bridge] = fetch(
+      "https://raw.githubusercontent.com/Eclipse-Laboratories-Inc/gist/refs/heads/main/hyperlane-assets.json"
+    ).then((r) => r.json());
+  const data = await bridgePromises[bridge];
+  if (doneAdapters.includes(bridge)) return;
+  data.map(({ address }: any) => addresses.eclipse.push(address));
+  doneAdapters.push(bridge);
+};
 
 const axelar = async (): Promise<void> => {
   const bridge = "axelar";
@@ -98,21 +111,22 @@ const celer = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
-const adapters = [axelar(), wormhole(), celer()];
+const adapters = [axelar(), wormhole(), celer(), hyperlane()];
+const filteredAddresses: { [chain: Chain]: Address[] } = {};
+
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
   await Promise.all(adapters);
-  const filteredAddresses: { [chain: Chain]: Address[] } = {};
   if (adapters.length == doneAdapters.length && mappingDone) return filteredAddresses;
 
   Object.keys(addresses).map((chain: string) => {
     let chainAddresses =
       chain in excluded ? addresses[chain].filter((t: string) => !excluded[chain].includes(t)) : addresses[chain];
-    if (!mixedCaseChains.includes(chain)) chainAddresses = chainAddresses.map((t: string) => t.toLowerCase());
+    if (!bridgedTvlMixedCaseChains.includes(chain)) chainAddresses = chainAddresses.map((t: string) => t.toLowerCase());
     if (!(chain in additional)) {
       filteredAddresses[chain] = chainAddresses;
       return;
     }
-    const additionalTokens = mixedCaseChains.includes(chain)
+    const additionalTokens = bridgedTvlMixedCaseChains.includes(chain)
       ? additional[chain]
       : additional[chain].map((t: string) => t.toLowerCase());
     filteredAddresses[chain] = [...chainAddresses, ...additionalTokens];
@@ -124,6 +138,5 @@ const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {
 
 export default tokenAddresses;
 
-// layerzero
 // gravity bridge
 // pNetwork

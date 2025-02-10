@@ -12,9 +12,6 @@ provider:
   region: eu-central-1
   endpointType: REGIONAL # Set to regional because the api gateway will be behind a cloudfront distribution
   stage: dev # Default to dev if no stage is specified
-  tracing: # Enable X-Ray tracing (debugging)
-    apiGateway: true
-    lambda: true
   iamRoleStatements:
     - Effect: Allow # X-Ray permissions
       Action:
@@ -671,6 +668,8 @@ functions:
     memorySize: 512
     events:
       - schedule: cron(30 * * * ? *)
+    environment:
+      SEARCH_MASTER_KEY: ${env:SEARCH_MASTER_KEY}
  # missedUpdates:
   #   handler: src/stats/getMissedUpdates.default
   #   timeout: 30

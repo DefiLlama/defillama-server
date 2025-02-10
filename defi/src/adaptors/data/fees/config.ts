@@ -44,7 +44,7 @@ export default {
         "isChain": true
     },
     "bsc": {
-        "id": "1839"
+        "id": "56"
     },
     "compound": {
         parentId: "Compound Finance",
@@ -219,20 +219,20 @@ export default {
         "id": "1801"
     },
     "aurora": {
-        "id": "14803"
+        "id": "1313161554"
     },
     "celo": {
-        "id": "5567"
+        "id": "42220"
     },
     "optimism": {
         "category": "Rollup",
-        "id": "11840"
+        "id": "10"
     },
     "moonbeam": {
-        "id": "6836"
+        "id": "1284"
     },
     "moonriver": {
-        "id": "9285"
+        "id": "1285"
     },
     "tron": {
         "id": "1958"
@@ -243,7 +243,7 @@ export default {
         "id": "42161"
     },
     "avalanche": {
-        "id": "5805"
+        "id": "43114"
     },
     "canto": {
         "id": "21516"
@@ -253,7 +253,7 @@ export default {
         "id": "2010" // wrong id, not related to klaytn
     },
     "cronos": {
-        "id": "3635"
+        "id": "25"
     },
     "klaytn": {
         "enabled": false,
@@ -268,20 +268,20 @@ export default {
         }
     },
     "fantom": {
-        "id": "3513"
+        "id": "250"
     },
     "mixin": {
         "enabled": false,
         "id": "2349" // wrond id, not linked to mixin
     },
     "polygon": {
-        "id": "3890"
+        "id": "137"
     },
     "solana": {
         "id": "5426"
     },
     "xdai": {
-        "id": "1659"
+        "id": "100"
     },
     "abracadabra": {
         "id": "347"
@@ -362,6 +362,7 @@ export default {
         "id": "420"
     },
     "lyra": {
+        parentId: "Derive",
         "id": "503"
     },
     "radioshack": {
@@ -912,7 +913,6 @@ export default {
         "id": "3025"
     },
     "zunami": {
-        disabled: true,
         "id": "1201"
     },
     "fusionx-v3": {
@@ -1018,10 +1018,6 @@ export default {
     "tigris": {
         "enabled": false, // has several dates with { "error" : { "S" : "Request failed with status code 500" } }
         "id": "3129"
-    },
-    "aerodrome": {
-        parentId: "Aerodrome",
-        "id": "3450"
     },
     "apex": {
         parentId: "ApeX Protocol",
@@ -1435,7 +1431,7 @@ export default {
     },
     "manta": {
         category: "Rollup",
-        "id": "13631"
+        "id": "169"
     },
     "equation-v2": {
         parentId: "Equation",
@@ -2125,7 +2121,7 @@ export default {
         id: "4837"
     },
     "assetchain": {
-        id: "8519"
+        id: "42420"
     },
     "kinetix-v2": {
         parentId: "Kinetix",
@@ -2145,18 +2141,19 @@ export default {
     "suilend": {
         id: "4274"
     },
-    /*"juicebox": { // adapter not working
-        id: "4208"
-    },*/
+    "juicebox": { // adapter not working
+        parentId: "Juicebox",
+        id: "2833"
+    },
     "celestia": {
         id: "22861"
     },
     "yamfore": {
         id: "5304"
     },
-    /*"bonzo": { // adapter not working
+    "bonzo": {
         id: "5287"
-    },*/
+    },
     "quenta": {
         id: "5314"
     },
@@ -2205,5 +2202,220 @@ export default {
     },
     "bullx": {
         id: "5407"
+    },
+    "gmgnai": {
+        id: "5408"
+    },
+    "debank-cloud": {
+        id: "5410"
+    },
+    "navi": {
+        id: "3323",
+    },
+    "hydrometer": {
+        id: "5423",
+    },
+    "bluefin-amm": {
+        id: "5427",
+        parentId: "Bluefin",
+    },
+    "taraswap": {
+        id: "5437",
+    },
+    "clanker": {
+        id: "5446"
+    },
+    "bouncebit-cedefi": {
+        parentId: "BounceBit CeDeFi",
+        id: "5450"
+    },
+    "swing": {
+        id: "5474"
+    },
+    "thetis-market": {
+        parentId: "Thetis Market",
+        id: "5469"
+    },
+    "iotex": {
+        id: "4689"
+    },
+    "lyra-v2": {
+        parentId: "Derive",
+        id: "3923"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
+    },
+    "memewe": {
+        id: "5501"
+    },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
+            }
+        }
+    },
+    "neby-dex": {
+        id: "5512"
+    },
+    "sudofinance": {
+        id: "4045"
+    },
+    "emojicoin": {
+        id: "5454"
+    },
+    "invariant": {
+        id: "1788"
+    },
+    "memejob": {
+        id: "5533"
+    },
+    "hyperliquid": {
+        parentId: "Hyperliquid",
+        displayName: "HyperLiquid",
+        id: "5761"
+    },
+    "liquidity-slicing": {
+        id: "5297"
+    },
+    "zivoe": {
+        id: "5551"
+    },
+    "rabbitswap-v3": {
+        id: "5298"
+    },
+    "satoshi-perps": {
+        id: "5571",
+    },
+    "virtual-protocol": {
+        id: "5575",
+    },
+    "trust-wallet": {
+        id: "5577",
+    },
+    "coinbase-wallet": {
+        id: "5587",
+    },
+    "dappos-intentEx": {
+        id: "5597",
+    },
+    "volboost": {
+        id: "5598",
+    },
+    "creator-bid": {
+        id: "5600",
+    },
+    "eisen": {
+        id: "4691",
+    },
+    "vader-ai": {
+        id: "5535",
+    },
+    "maxapy": {
+        id: "5306",
+    },
+    "zeebu": {
+        id: "5540",
+    },
+    "lnexchange-perp": {
+        id: "5639",
+    },
+    "waterneuron": {
+        id: "4921",
+    },
+    "meteora-dlmm": {
+        parentId: "Meteora",
+        id: "4148",
+    },
+    "meteora": {
+        parentId: "Meteora",
+        id: "385"
+    },
+    "zarban": {
+        id: "5636",
+    },
+    "vectorfun": {
+        id: "5653"
+    },
+    "soneium": {
+        id: "1868"
+    },
+    "ink": {
+        id: "57073"
+    },
+    "cvex": {
+        id: "5610"
+    },
+    "hfun": {
+        id: "5671"
+    },
+    "tribe-run": {
+        id: "5669"
+    },
+    "zoodotfun": {
+        id: "5684"
+    },
+    "quill-fi": {
+        id: "5685"
+    },
+    "liquity-v2": {
+        id: "5656"
+    },
+    "jupiter": {
+        parentId: "Jupiter",
+        id: "2141"
+    },
+    "rabby": {
+        id: "5714"
+    },
+    "looter": {
+        id: "5728"
+    },
+    "flaunch": {
+        id: "5715"
+    },
+    "jumper-exchange": {
+        id: "3524"
+    },
+    "ocelex": {
+        parentId: "Ocelex",
+        id: "5379"
+    },
+    "levvy-fi": {
+        id: "3163"
+    },
+    "levvy-fi-tokens": {
+        id: "3618"
+    },
+    "bunni-v2": {
+        parentId: "Timeless",
+        id: "5734"
+    },
+    "amped": {
+        id: "3833"
+    },
+    "vinufinance": {
+        id: "5717"
+    },
+    "jupiter-perpetual": {
+        "id": "4077",
+        "protocolsData": {
+            "derivatives": {
+                "id": "4077",
+            }
+        }
+    },
+    "wavex": {
+        id: "5737"
+    },
+    "berachain-hub": {
+        id: "5742"
+    },
+    "polymarket": {
+        id: "711"
     }
 } as AdaptorsConfig

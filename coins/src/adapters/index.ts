@@ -5,6 +5,7 @@ import * as curve from "./markets/curve";
 import * as balancer from "./markets/balancer";
 import * as others from "./other/index";
 import * as others2 from "./other/others2";
+import * as graphCoins from "./markets/graphCoins";
 
 export default {
   ...compound.adapters,
@@ -14,6 +15,7 @@ export default {
   ...balancer.adapters,
   ...others.adapters,
   ...others2.adapters,
+  ...graphCoins.adapters,
   reservoirprotocol: require("./rwa/reservoir-protocol"),
   fortunafi: require("./rwa/fortunafi"),
   jupAg: require("./solana/jupAg"),
@@ -25,6 +27,7 @@ export default {
   unknownTokensV3: require("./other/unknownTokensV3"),
   dinari: require("./rwa/dinari"),
   few: require("./other/few"),
+  zarban: require("./other/zarban"),
   ociswap: require("./markets/ociswap"),
   optimBonds: require("./other/optimBonds"),
   tangleswap: require("./markets/tangleswap"),
@@ -32,8 +35,10 @@ export default {
   cetus: require("./markets/cetus"),
   balanced: require("./markets/balanced"),
   tinyman: require("./markets/tinyman"),
+  ston: require("./markets/ston"),
   silo: require("./moneyMarkets/silo"),
   hlp: require("./yield/hlp"),
+  jeurx: require("./yield/jeurx"),
   digift: require("./rwa/digift"),
   gmxV2: require("./other/gmxV2"),
   timeswap: require("./yield/timeswap"),
@@ -48,6 +53,8 @@ export default {
   alchemix: require("./yield/alchemix"),
   meanFinance: require("./yield/mean-finance"),
   misc4626: require("./yield/misc4626"),
+  // spectra: require("./yield/misc4626"),
+  balancer4626: require("./yield/balancer4626"),
   vesper: require("./yield/vesper"),
   yieldProtocol: require("./yield/yield-protocol"),
   levelFinance: require("./yield/level-finance"),
@@ -111,4 +118,12 @@ export default {
   xailocker: require("./liquidStaking/xailocker"),
   sbtc: require("./other/sbtc"),
   aries: require("./moneyMarkets/aries"),
+  pragma: require("./oracles/pragma"),
+  parallelProtocol: require("./markets/parallelProtocol"),
+  sanctum: require("./solana/sanctum"),
+  spectra: require("./yield/spectra"),
+  kamino: require("./solana/kamino"),
+  fxsp: require("./yield/fxsp"),
+  stakeDao: require("./yield/stakeDao"),
+  kodiak: require("./markets/kodiak"),
 };

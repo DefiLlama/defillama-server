@@ -9,7 +9,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -53,7 +53,7 @@ Array [
     "address": "telos:0xa84df7aFbcbCC1106834a5feD9453bd1219B1fb5",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Telos",
     "chains": Array [
       "telos",
@@ -99,7 +99,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -147,7 +147,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -208,7 +208,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -267,7 +267,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -313,7 +313,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -364,7 +364,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -407,7 +407,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -509,7 +509,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "arbitrum",
@@ -603,7 +603,7 @@ Array [
     "address": "fantom:0x3Fd3A0c85B70754eFc07aC9Ac0cbBDCe664865A6",
     "audit_note": "Equalizer is forked from Velodrome, which had it's improvements over Solidly audited multiple times.",
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -647,7 +647,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "arbitrum",
@@ -721,7 +721,7 @@ Array [
             "id": "337",
           },
           "swap": Object {
-            "category": "Dexes",
+            "category": "Dexs",
             "displayName": "GMX - SWAP",
             "enabled": true,
             "id": "337",
@@ -744,7 +744,7 @@ Array [
           "id": "337",
         },
         "swap": Object {
-          "category": "Dexes",
+          "category": "Dexs",
           "displayName": "GMX - SWAP",
           "enabled": true,
           "id": "337",
@@ -777,7 +777,7 @@ Array [
     "address": "xdai:0x71850b7e9ee3f13ab46d67167341e4bdc905eef9",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "xDai",
     "chains": Array [
       "polygon",
@@ -818,7 +818,7 @@ Array [
     "address": "juno:-",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Juno",
     "chains": Array [
       "juno",
@@ -899,7 +899,7 @@ Array [
     ],
     "audit_note": null,
     "audits": null,
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "aurora",
@@ -965,7 +965,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "optimism",
@@ -1076,7 +1076,7 @@ Array [
     "address": "solana:LFNTYraetVioAPnGJht4yNg2aUZFXR776cMeN9VMjXp",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -1121,7 +1121,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -1204,7 +1204,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "IoTeX",
     "chains": Array [
       "iotex",
@@ -1245,7 +1245,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -1289,7 +1289,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Kucoin",
     "chains": Array [
       "kcc",
@@ -1335,7 +1335,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -1422,7 +1422,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -1464,7 +1464,7 @@ Array [
     "address": "-",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Osmosis",
     "chains": Array [
       "cosmos",
@@ -1501,7 +1501,7 @@ Array [
     "address": "avax:0x60781C2586D68229fde47564546784ab3fACA982",
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -1547,7 +1547,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Tezos",
     "chains": Array [
       "tezos",
@@ -1587,7 +1587,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -1643,7 +1643,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -1703,7 +1703,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "fantom",
@@ -1749,7 +1749,7 @@ Array [
     "address": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",
@@ -1790,7 +1790,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -1830,7 +1830,7 @@ Array [
     "address": "moonriver:0x6bD193Ee6D2104F14F94E2cA6efefae561A4334B",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Moonriver",
     "chains": Array [
       "moonriver",
@@ -1870,7 +1870,7 @@ Array [
     "address": "arbitrum:0x463913D3a3D3D291667D53B8325c598Eb88D3B0e",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -1915,7 +1915,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -1960,7 +1960,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -2004,7 +2004,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Fantom",
     "chains": Array [
       "fantom",
@@ -2051,7 +2051,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Moonbeam",
     "chains": Array [
       "moonbeam",
@@ -2095,7 +2095,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "3",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -2162,7 +2162,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "polygon",
@@ -2224,7 +2224,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "avax",
@@ -2280,7 +2280,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Avalanche",
     "chains": Array [
       "arbitrum",
@@ -2333,7 +2333,7 @@ Array [
     "address": "optimism:0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Optimism",
     "chains": Array [
       "optimism",
@@ -2379,7 +2379,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "SmartBCH",
     "chains": Array [
       "ethereum",
@@ -2430,7 +2430,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -2473,7 +2473,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "avax",
@@ -2524,7 +2524,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -2580,7 +2580,7 @@ Array [
     "address": "arbitrum:0x3b475f6f2f41853706afc9fa6a6b8c5df1a2724c",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -2634,7 +2634,7 @@ Array [
     "address": "arbitrum:0x3b475f6f2f41853706afc9fa6a6b8c5df1a2724c",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Arbitrum",
     "chains": Array [
       "arbitrum",
@@ -2852,7 +2852,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -2913,7 +2913,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -2972,7 +2972,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -3034,7 +3034,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -3095,7 +3095,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -3156,7 +3156,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -4317,7 +4317,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "address": "0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -4486,7 +4486,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Polygon",
     "chains": Array [
       "avax",

@@ -4101,6 +4101,11 @@
       "decimals": "18",
       "symbol": "SAROS",
       "to": "coingecko#saros-finance"
+    },
+    "0x69b946132b4a6c74cd29ba3ff614ceea1ef9ff2b": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#viction-bridged-usdt"
     }
   },
   "btn": {

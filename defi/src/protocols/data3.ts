@@ -62593,7 +62593,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Beanstalk"],
     module: "pinto/index.js",
-    twitter: "pintocommunity",
+    twitter: "pintodotmoney",
     github: ["pinto-org"],
     listedAt: 1739209111
   },

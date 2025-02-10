@@ -10,8 +10,12 @@ import { ChainApi } from "@defillama/sdk";
 import { getCache, setCache } from "../../../utils/cache";
 import { PromisePool } from "@supercharge/promise-pool";
 import * as sdk from '@defillama/sdk'
+import { nullAddress } from "../../../utils/shared/constants";
 
-const nullAddress = "0x0000000000000000000000000000000000000000"
+const metaRegistryContracts: {[chain: string]: string } = {
+  ethereum: '0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC', 
+  fraxtal: '0xd125E7a0cEddF89c6473412d85835450897be6Dc'
+}
 
 async function getPools(
   api: ChainApi,
@@ -44,7 +48,7 @@ async function getPools(
   }
 
   async function getPoolsFromRegistryAggregator(api: ChainApi) {
-    const target = "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC";
+    const target = metaRegistryContracts[chain]
     cache.registries.crypto = target
     const pools: any = {};
     pools["crypto"] = await api.fetchList({ lengthAbi: abi.pool_count, itemAbi: abi.pool_list, target })
@@ -53,7 +57,7 @@ async function getPools(
 
   const { chain } = api;
   if (name == "pcs") return getPcsPools(api);
-  if (chain == "ethereum") return getPoolsFromRegistryAggregator(api);
+  if (chain in metaRegistryContracts) return getPoolsFromRegistryAggregator(api);
   const registries: string[] = chain == "bsc" ? bscRegistries : (
     await api.multiCall({
       target: contracts[chain].addressProvider,
@@ -395,7 +399,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
       const decimalDiff = 10 ** (data.decimals - data.kInfo.decimals)
       const tokenPrice = (data.kInfo.price * d * decimalDiff) / rawCalls[i].params[2]
 
-      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-unknown-token", data.kInfo.confidence,);
+      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-unknown-token", Math.min(0.95, data.kInfo.confidence),);
     })
     const rawDys2 = await api.multiCall({ calls: failedCalls, abi: abi.get_dy2, permitFailure: true })
 
@@ -407,7 +411,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
       const decimalDiff = 10 ** (data.decimals - data.kInfo.decimals)
       const tokenPrice = (data.kInfo.price * d * decimalDiff) / failedCalls[i].params[2]
 
-      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-unknown-token", data.kInfo.confidence,);
+      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-unknown-token", Math.min(0.95, data.kInfo.confidence),);
     })
 
   }

@@ -111,9 +111,6 @@ export async function unknownTokens2(timestamp: number = 0) {
     q: [
       { pool: "0x2A36b45be4C04900A5946A1B6bf991aDec93ADdE", unknown: "0xE31DD093A2A0aDc80053bF2b929E56aBFE1B1632", known: "0x79Cb92a2806BF4f82B614A84b6805963b8b1D8BB", },
     ],
-    bfc: [
-      { pool: "0x908b3CB9F8E6441B2b1844A6D4f1AC4707bd1483", unknown: "0x6906Ccda405926FC3f04240187dd4fAd5DF6d555", known: "0x1c1b06405058AbE02e4748753aeD1458BEFEE3B9", },
-    ],
     songbird: [
       { pool: "0xcD15C231b8A0Bae40bD7938AE5eA8e43f1e9a15F", unknown: "0x0D94e59332732D18CF3a3D457A8886A2AE29eA1B", known: "0xC348F894d0E939FE72c467156E6d7DcbD6f16e21", },
     ],
@@ -174,18 +171,18 @@ export async function unknownTokens2(timestamp: number = 0) {
     const pools = data.map((d: any) => d.pool)
     const unknowns = data.map((d: any) => d.unknown)
     const knowns = data.map((d: any) => d.known)
-    const knownBals = await api.multiCall({  abi: 'erc20:balanceOf', calls: knowns.map((k: any, i: number) => ({ target: k, params: pools[i] }))})
-    const unknownBals = await api.multiCall({  abi: 'erc20:balanceOf', calls: unknowns.map((u: any, i: number) => ({ target: u, params: pools[i] }))})
-    const knownDecimals = await api.multiCall({  abi: 'erc20:decimals', calls: knowns})
-    const unknownDecimals = await api.multiCall({  abi: 'erc20:decimals', calls: unknowns})
+    const knownBals = await api.multiCall({ abi: 'erc20:balanceOf', calls: knowns.map((k: any, i: number) => ({ target: k, params: pools[i] })) })
+    const unknownBals = await api.multiCall({ abi: 'erc20:balanceOf', calls: unknowns.map((u: any, i: number) => ({ target: u, params: pools[i] })) })
+    const knownDecimals = await api.multiCall({ abi: 'erc20:decimals', calls: knowns })
+    const unknownDecimals = await api.multiCall({ abi: 'erc20:decimals', calls: unknowns })
 
     knownBals.forEach((_: any, i: number) => {
       const token = unknowns[i].toLowerCase()
       let underlying = knowns[i]
-      let price = (knownBals[i]/unknownBals[i]) * 10 ** (unknownDecimals[i] - knownDecimals[i])
+      let price = (knownBals[i] / unknownBals[i]) * 10 ** (unknownDecimals[i] - knownDecimals[i])
       pricesObject[token] = { underlying, price }
     })
-    return getWrites({ chain, timestamp, pricesObject, projectName,  })
+    return getWrites({ chain, timestamp, pricesObject, projectName, })
   }
 }
 
@@ -504,6 +501,25 @@ async function karakWrapped(timestamp: number = 0, writes: Write[] = []) {
   return getWrites({ chain, timestamp, pricesObject, projectName: "other", writes, })
 }
 
+async function matrixdock(timestamp: number = 0, writes: Write[] = []) {
+  const chain = 'ethereum'
+  const api = await getApi(chain, timestamp)
+  // get gold price from chainlink oracle
+  const price = (await api.call({ abi: 'uint256:latestAnswer', target: '0x214eD9Da11D2fbe465a6fc601a91E62EbEc1a0D6' })) / 1e8
+  const TROY_OUNCE_CONVERSION = 1.097142857;
+  const goldPriceInTroyOunces = price * TROY_OUNCE_CONVERSION;
+  const ethereumPricesObject = {
+    '0x2103E845C5E135493Bb6c2A4f0B8651956eA8682': { price: goldPriceInTroyOunces, }
+  }
+  const bscPricesObject = {
+    '0x23AE4fd8E7844cdBc97775496eBd0E8248656028': { price: goldPriceInTroyOunces, }
+  }
+
+  await getWrites({ chain, timestamp, pricesObject: ethereumPricesObject, projectName: "other", writes, })
+  return getWrites({ chain: 'bsc', timestamp, pricesObject: bscPricesObject, projectName: "other", writes, })
+}
+
+
 export const adapters = {
   symboitic,
   defiChain,
@@ -535,4 +551,5 @@ export const adapters = {
   // kernel,   // price taken from unknownTokensV3 instead
   reyaUSD,
   karakWrapped,
+  matrixdock,
 };

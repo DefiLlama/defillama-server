@@ -137,30 +137,10 @@ const configs: { [adapter: string]: Config } = {
     address: "0x8a053350ca5F9352a16deD26ab333e2D251DAd7c",
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
   },
-  steakLRT: {
-    rate: lrts("0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc"),
-    chain: "ethereum",
-    address: "0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc",
-  },
-  Re7LRT: {
-    rate: lrts("0x84631c0d0081fde56deb72f6de77abbbf6a9f93a"),
-    chain: "ethereum",
-    address: "0x84631c0d0081fde56deb72f6de77abbbf6a9f93a",
-  },
   Re7BTC: {
     rate: lrts("0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444"),
     chain: "ethereum",
     address: "0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444",
-  },
-  amphrETH: {
-    rate: lrts("0x5fd13359ba15a84b76f7f87568309040176167cd"),
-    chain: "ethereum",
-    address: "0x5fd13359ba15a84b76f7f87568309040176167cd",
-  },
-  rstETH: {
-    rate: lrts("0x7a4effd87c2f3c55ca251080b1343b605f327e3a"),
-    chain: "ethereum",
-    address: "0x7a4effd87c2f3c55ca251080b1343b605f327e3a",
   },
   weETHk: {
     rate: async ({ api }) => {
@@ -168,7 +148,7 @@ const configs: { [adapter: string]: Config } = {
         abi: "function getRate() external view returns (uint256)",
         target: "0x126af21dc55C300B7D0bBfC4F3898F558aE8156b",
       });
-      return rate / 1e10;
+      return rate / 1e18;
     },
     chain: "ethereum",
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -277,6 +257,45 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     underlying: "0x8457ca5040ad67fdebbcc8edce889a335bc0fbfb",
     address: "0xb6D149C8DdA37aAAa2F8AD0934f2e5682C35890B",
+  },
+  LFT: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256) external view returns (uint256)",
+        target: "0x270Ee1564eC483DD83f284E4D7bDFbfaa2feA76E",
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "base",
+    underlying: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    address: "0x8c213ee79581Ff4984583C6a801e5263418C4b86",
+  },
+  USDO: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256) external view returns (uint256)",
+        target: "0xaD55aebc9b8c03FC43cd9f62260391c13c23e7c0",
+        params: 1e12,
+      });
+      return 1e12 / rate;
+    },
+    chain: "ethereum",
+    underlying: "0xaD55aebc9b8c03FC43cd9f62260391c13c23e7c0",
+    address: "0x8238884Ec9668Ef77B90C6dfF4D1a9F4F4823BFe",
+  },
+  asBNB: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToTokens(uint256) external view returns (uint256)",
+        target: "0x2F31ab8950c50080E77999fa456372f276952fD8",
+        params: 1e12,
+      });
+      return 1e12 / rate;
+    },
+    chain: "bsc",
+    underlying: "0xB0b84D294e0C75A6abe60171b70edEb2EFd14A1B", // slisBNB
+    address: "0x77734e70b6e88b4d82fe632a168edf6e700912b6", // asBNB
   },
 };
 

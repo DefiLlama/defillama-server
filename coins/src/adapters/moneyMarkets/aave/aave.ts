@@ -15,26 +15,30 @@ async function getReserveData(
   block: number | undefined,
   registry: string,
   version: string,
+  config: AdditionalAaveConfig,
 ) {
-  const addressProvider = (
-    await call({
-      target: registry,
-      chain: chain as any,
-      abi: abi.getAddressesProviderList,
-      block,
-    })
-  ).output;
-  const lendingPool = (
-    await call({
-      target: addressProvider[0],
-      chain: chain as any,
-      abi: abi.getPool[version.toLowerCase()],
-      block,
-    })
-  ).output;
+  let lendingPool = config.lendingPool;
+  if (!lendingPool) {
+    const addressProvider = (
+      await call({
+        target: registry,
+        chain: chain as any,
+        abi: abi.getAddressesProviderList,
+        block,
+      })
+    ).output;
+    lendingPool = (
+      await call({
+        target: addressProvider[0],
+        chain: chain as any,
+        abi: abi.getPool[version.toLowerCase()],
+        block,
+      })
+    ).output;
+  }
   const reservesList = (
     await call({
-      target: lendingPool,
+      target: lendingPool!,
       chain: chain as any,
       abi: abi.getReservesList,
       block,
@@ -53,6 +57,9 @@ async function getReserveData(
   ).output;
 }
 let unknownTokens: string[] = [];
+type AdditionalAaveConfig = {
+  lendingPool?: string;
+}
 
 export default async function getTokenPrices(
   chain: string,
@@ -60,14 +67,10 @@ export default async function getTokenPrices(
   stataRegistry: string | null,
   version: string,
   timestamp: number,
+  config: AdditionalAaveConfig = {},
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
-  const reserveData: Result[] = await getReserveData(
-    chain,
-    block,
-    registry,
-    version,
-  );
+  const reserveData: Result[] = await getReserveData(chain, block, registry, version, config,);
 
   const [underlyingRedirects, tokenInfo] = await Promise.all([
     getTokenAndRedirectDataMap(

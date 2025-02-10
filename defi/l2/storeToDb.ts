@@ -1,5 +1,5 @@
 import postgres from "postgres";
-import { queryPostgresWithRetry } from "../l2/layer2pg";
+import { queryPostgresWithRetry } from "../src/utils/shared/bridgedTvlPostgres";
 import { ChainTokens, ChartData, FinalChainData, FinalData } from "./types";
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getR2JSONString, storeR2JSONString } from "../src/utils/r2";
@@ -139,7 +139,12 @@ export function parsePgData(timeseries: any[], chain: string, removeBreakdown: b
   const result: ChartData[] = [];
   timeseries.map((t: any) => {
     if (chain != "*") {
-      const rawData = JSON.parse(t[chain]);
+      let rawData;
+      try {
+        rawData = JSON.parse(t[chain]);
+      } catch (e) {
+        console.log(e);
+      }
       if (!rawData) return;
       const data = removeBreakdown ? removeTokenBreakdown(rawData) : rawData;
       result.push({ timestamp: t.timestamp, data });
@@ -150,7 +155,12 @@ export function parsePgData(timeseries: any[], chain: string, removeBreakdown: b
 
     Object.keys(t).map((c: string) => {
       if (c == "timestamp") return;
-      const rawData = JSON.parse(t[c]);
+      let rawData;
+      try {
+        rawData = JSON.parse(t[c]);
+      } catch (e) {
+        console.log(e);
+      }
       if (!rawData) return;
       // DEBUG:
       // data[c] = rawData

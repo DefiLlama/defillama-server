@@ -13,7 +13,7 @@ export default async <F extends () => Promise<any>>(key: string, fn: F): Promise
             }
             await cacheResponseOnR2(key, JSON.stringify(response.body))
         } catch (error) {
-            console.error(`Response not found and was not posible to store response with key ${key}...`, error)
+            console.error(`Response not found and was not possible to store response with key ${key}...`, error)
             throw error
         }
     }
@@ -25,7 +25,7 @@ export default async <F extends () => Promise<any>>(key: string, fn: F): Promise
             }
             await cacheResponseOnR2(key, JSON.stringify(response.body))
         } catch (error) {
-            console.error(`Response expired and was not posible to regenerate response with key ${key}...`, error)
+            console.error(`Response expired and was not possible to regenerate response with key ${key}...`, error)
         }
     }
 

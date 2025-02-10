@@ -23,7 +23,7 @@ function getTimestampArray(start: number, end: number) {
 const timestampArray: number[] = getTimestampArray(start, end);
 
 async function proc(timestamp: number) {
-  const res: any = await findTvls(timestamp);
+  const res: any = await findTvls(false, timestamp);
   res.timestamp = timestamp;
   await overwrite(res);
 }

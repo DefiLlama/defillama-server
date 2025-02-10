@@ -1,20 +1,10 @@
 // https://www.starknetjs.com/docs/API/contract
 // https://playground.open-rpc.org/?uiSchema%5BappBar%5D%5Bui:splitView%5D=false&schemaUrl=https://raw.githubusercontent.com/starkware-libs/starknet-specs/master/api/starknet_api_openrpc.json&uiSchema%5BappBar%5D%5Bui:input%5D=false&uiSchema%5BappBar%5D%5Bui:darkMode%5D=true&uiSchema%5BappBar%5D%5Bui:examplesDropdown%5D=false
 // https://docs.alchemy.com/reference/starknet-getevents
-import { Contract, validateAndParseAddress, hash, CallData, Provider, constants } from 'starknet'
-import plimit from 'p-limit'
+import { Contract, validateAndParseAddress, hash, CallData, } from 'starknet'
 import axios from 'axios'
 
-const _rateLimited = plimit(1)
-const rateLimited = (fn: any) => (...args: any[]) => _rateLimited(() => fn(...args))
-
 const STARKNET_RPC = process.env.STARKNET_RPC ?? 'https://starknet-mainnet.public.blastapi.io'
-let provider: any
-function getProvider() {
-  if (!provider)
-    provider = new Provider({ sequencer: { network: constants.NetworkName.SN_MAIN } })
-  return provider
-}
 
 function formCallBody({ abi, target, params = [], allAbi = [] }: any, id: any = 0) {
   if ((params || params === 0) && !Array.isArray(params))

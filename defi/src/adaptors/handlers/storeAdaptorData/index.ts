@@ -14,7 +14,6 @@ import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
 import { storeAdapterRecord } from "../../db-utils/db2";
 import { elastic } from '@defillama/sdk';
 import { getUnixTimeNow } from "../../../api2/utils/time";
-import { fork } from 'child_process'
 import { humanizeNumber, } from "@defillama/sdk/build/computeTVL/humanizeNumber";
 import { sendDiscordAlert } from "../../utils/notify";
 
@@ -48,18 +47,30 @@ export type IStoreAdaptorDataHandlerEvent = {
   adapterType: AdapterType
   protocolNames?: Set<string>
   maxConcurrency?: number
+  isDryRun?: boolean
+  isRunFromRefillScript?: boolean
 }
+
+const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const defaultMaxConcurrency = 21
-  let { timestamp, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency } = event
-  console.info(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
+  let { timestamp, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false, } = event
+  if (!isRunFromRefillScript)
+    console.info(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
   const isTimestampProvided = timestamp !== undefined
   const currentTimestamp = timestamp ?? LAMBDA_TIMESTAMP;
   // Get clean day
-  const toTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
-  const fromTimestamp = getTimestampAtStartOfDayUTC(toTimestamp - 1)
+  let toTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
+  let fromTimestamp = getTimestampAtStartOfDayUTC(toTimestamp - 1)
+
+  // I didnt want to touch existing implementation that affects other scripts, but it looks like it is off by a day if we store it at the end of the time range (which is next day 00:00 UTC)
+  if (isRunFromRefillScript) {
+    fromTimestamp = getTimestampAtStartOfDayUTC(timestamp!)
+    toTimestamp = fromTimestamp + ONE_DAY_IN_SECONDS - 1
+  }
+
   const _debugTimeStart = Date.now()
 
   // Import data list to be used
@@ -97,7 +108,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     .withConcurrency(maxConcurrency)
     .for(protocols)
     .onTaskFinished((item: any, _: any) => {
-      console.info(`[${adapterType}] - ${item.module} done!`)
+      if (!isRunFromRefillScript)
+        console.info(`[${adapterType}] - ${item.module} done!`)
     })
     .process(runAndStoreProtocol)
 
@@ -115,17 +127,25 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       // stack: raw.stack?.split('\n').slice(1, 2).join('\n')
     }
   })
+
+
   const debugTimeEnd = Date.now()
   const notificationType = 'dimensionLogs'
   const timeTakenSeconds = Math.floor((debugTimeEnd - _debugTimeStart) / 1000)
-  console.info(`Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
-  await sendDiscordAlert(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}`, notificationType)
+
+  if (!isRunFromRefillScript) {
+    console.info(`Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
+    await sendDiscordAlert(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}`, notificationType)
+  }
+
+
   if (errorObjects.length) {
     const logs = errorObjects.map(({ adapter, message, chain }, i) => `${i} ${adapter} - ${message} - ${chain}`)
     const headers = ['Adapter', 'Error Message', 'Chain'].join(' - ')
     logs.unshift(headers)
 
-    await sendDiscordAlert(logs.join('\n'), notificationType, true)
+    if (!isRunFromRefillScript)
+      await sendDiscordAlert(logs.join('\n'), notificationType, true)
     console.table(errorObjects)
   }
   // console.log(JSON.stringify(errorObjects, null, 2))
@@ -134,7 +154,10 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
   async function runAndStoreProtocol(protocol: ProtocolAdaptor, index: number) {
     // if (protocol.module !== 'mux-protocol') return;
-    console.info(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module}`)
+    if (!isRunFromRefillScript)
+      console.info(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module}`)
+
+
     const startTime = getUnixTimeNow()
     const metadata = {
       application: "dimensions",
@@ -153,7 +176,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       // Import adaptor
       const adaptor: Adapter = (await importModule(module)).default;
       // if an adaptor is expensive and no timestamp is provided, we try to avoid running every hour, but only from 21:55 to 01:55
-      if (adaptor.isExpensiveAdapter && !isTimestampProvided) {
+      if (!isRunFromRefillScript && adaptor.isExpensiveAdapter && !isTimestampProvided) {
         const date = new Date(currentTimestamp * 1000)
         const hours = date.getUTCHours()
         if (hours > 5) {
@@ -165,7 +188,11 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const isVersion2 = adapterVersion === 2
       const v1Timestamp = (timestamp !== undefined ? toTimestamp : fromTimestamp)
       const endTimestamp = (isVersion2 && !timestamp) ? LAMBDA_TIMESTAMP : toTimestamp // if version 2 and no timestamp, use current time as input for running the adapter
-      const recordTimestamp = isVersion2 ? toTimestamp : v1Timestamp // if version 2, store the record at with timestamp end of range, else store at start of range
+      let recordTimestamp = isVersion2 ? toTimestamp : v1Timestamp // if version 2, store the record at with timestamp end of range, else store at start of range
+      if (isRunFromRefillScript) recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 
+      // I didnt want to touch existing implementation that affects other scripts, but it looks like it is off by a day if we store it at the end of the time range (which is next day 00:00 UTC) - this led to record being stored on the next day of the 24 hour range?
+
+
       // Get list of adapters to run
       const adaptersToRun: [string, BaseAdapter][] = []
       if ("adapter" in adaptor) {
@@ -200,14 +227,16 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         // console.info("STORING -> ", module, adapterType, recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType, protocol.defillamaId, protocol.versionKey)
         storedData[adaptorRecordTypeByValue[recordType]] = record
         adaptorRecords[recordType] = new AdaptorRecord(recordType as AdaptorRecordType, id, recordTimestamp, record, adaptor.protocolType)
-        const promise = storeAdaptorRecord(adaptorRecords[recordType], LAMBDA_TIMESTAMP)
-        promises.push(promise)
+        if (!isDryRun) {
+          const promise = storeAdaptorRecord(adaptorRecords[recordType], recordTimestamp)
+          promises.push(promise)
+        }
       }
       const adapterRecord = AdapterRecord2.formAdaptarRecord2({ adaptorRecords, protocolType: adaptor.protocolType, adapterType, protocol, configIdMap })
-      if (adapterRecord)
+      if (adapterRecord && !isDryRun)
         await storeAdapterRecord(adapterRecord)
       await Promise.all(promises)
-      if (process.env.runLocal === 'true')
+      if (process.env.runLocal === 'true' || isRunFromRefillScript)
         printData(storedData, recordTimestamp, protocol.module)
     }
     catch (error) {
@@ -234,7 +263,7 @@ type chainObjet = {
 
 function printData(data: any, timestamp?: number, protocolName?: string) {
   const chains: chainObjet = {};
-  console.info(`\nrecord timestamp: ${timestamp}`)
+  console.info(`\nrecord timestamp: ${timestamp} (${new Date((timestamp ?? 0) * 1e3).toISOString()})`)
 
   // Collect data from all chains and keys
   for (const [mainKey, chainData] of Object.entries(data)) {
@@ -277,23 +306,3 @@ function printData(data: any, timestamp?: number, protocolName?: string) {
   console.info('\n')
 }
 
-/* const runAdapterInSubprocess = ({ adapter, endTimestamp, chainBlocks, module, version, adapterVersion }: any) => {
-  return new Promise((resolve, reject) => {
-
-    const child = fork(require.resolve('ts-node/dist/bin'), ['--transpile-only', __dirname + '../../../../dimension-adapters/adapters/utils/runAdapterSubProcess.ts'], { stdio: 'inherit' });
-
-    console.log('sending message', { adapter, endTimestamp, chainBlocks, module, version, adapterVersion })
-    child.send({ adapter, endTimestamp, chainBlocks, module, version, adapterVersion })
-    child.on('message', (message) => {
-      console.log('received message', message)
-    });
-
-    child.on('error', (error) => {
-      console.error('error', error)
-    });
-
-    child.on('exit', (code, signal) => {
-      console.log('exit', code, signal)
-    });
-  })
-}; */

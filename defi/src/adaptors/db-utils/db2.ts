@@ -10,7 +10,7 @@ import { IJSON } from "../data/types"
 
 let isInitialized: any
 
-async function init() {
+export async function init() {
   if (!isInitialized) isInitialized = initializeTVLCacheDB()
   return isInitialized
 }

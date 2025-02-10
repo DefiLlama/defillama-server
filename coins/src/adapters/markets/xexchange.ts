@@ -132,7 +132,7 @@ async function getTokenPrices(timestamp: number) {
     addToDBWritesList(writes, chain, identifier, +price, decimals, ticker, timestamp, 'xexchange', 0.9)
     priceLog.push({ name, symbol: ticker, price, decimals, token: identifier })
   }
-  return writes
+  return writes.filter(w => !isNaN(w.price ?? NaN))
 }
 
 

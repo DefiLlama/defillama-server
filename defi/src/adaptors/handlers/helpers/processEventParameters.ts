@@ -12,7 +12,7 @@ export default (event: AWSLambda.APIGatewayEvent) => {
     const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
     const rawDataType = event.queryStringParameters?.dataType
     const rawCategory = event.queryStringParameters?.category
-    const category = (rawCategory === 'dexs' ? 'dexes' : rawCategory) as CATEGORIES
+    const category = (rawCategory === 'dexs' ? 'dexs' : rawCategory) as CATEGORIES
     const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     const chainFilterRaw = (pathChain ? decodeURI(pathChain) : pathChain)?.toLowerCase()

@@ -39,12 +39,26 @@ export interface Protocol {
     [chain:string]: string[];
   },
   note?: string;
+  deprecated?: boolean;
+  oraclesBreakdown?: Array<{
+    name: string,
+    type: "Fallback" | "RNG" | "Primary" | "Aggregator", // pls add more as needed
+    proof: string,
+    startDate?: string, // YYYY-MM-DD
+    endDate?: string,
+    chains?: Array<{
+      chain: string,
+      startDate?: string,
+      endDate?: string
+    }>
+  }>
 }
 
 export interface IParentProtocol {
   id: string;
   name: string;
   url: string;
+  referralUrl?: string;
   description: string;
   logo: string;
   chains: Array<string>;
@@ -60,4 +74,5 @@ export interface IParentProtocol {
   treasury?: string | null;
   stablecoins?: string[];
   wrongLiquidity?: boolean;
+  address?: string | null;
 }

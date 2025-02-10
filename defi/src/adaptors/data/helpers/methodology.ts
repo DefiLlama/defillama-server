@@ -1,7 +1,7 @@
 import { IJSON } from "../types"
 
 const genericMethodologies: IJSON<IJSON<string>> = {
-    "Dexes": {
+    "Dexs": {
         UserFees: "Swap fees paid by users",
         Fees: "Swap fees paid by users",
         Revenue: "Percentage of swap fees going to treasury and/or token holders",

@@ -276,5 +276,58 @@ export default {
                 id: "5302",
             }
         }
+    },
+    "superswap": {
+        id: "5372",
+        parentId: "SuperSwap",
+        protocolsData: {
+            "v2": {
+                id: "5372",
+            },
+            "v3": {
+                id: "5373",
+            }
+        }
+    },
+    "aerodrome": {
+        parentId: "Aerodrome",
+        "id": "3450"
+    },
+    "shadow-exchange": {
+        id: "5570",
+    },
+    "holdstation-swap": {
+        parentId: "Holdstation",
+        id: "5493",
+    },
+    "zkswap-stable": {
+        parentId: "zkSwap Finance",
+        id: "5391",
+    },
+    "zkswap-v3": {
+        parentId: "zkSwap Finance",
+        id: "5392",
+    },
+    "nova-fi": {
+        id: "5677",
+    },
+    "reservoir-tools-amm": {
+        parentId: "Reservoir Tools",
+        id: "5678",
+    },
+    "reservoir-tools-clmm": {
+        parentId: "Reservoir Tools",
+        id: "5679",
+    },
+    "kodiak-v3": {
+        parentId: "Kodiak",
+        id: "5744",
+    },
+    "beralis-v3": {
+        parentId: "Beralis Dex",
+        id: "5759",
+    },
+    "rooster": {
+        id: "5704",
     }
 } as AdaptorsConfig

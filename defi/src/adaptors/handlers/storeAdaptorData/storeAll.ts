@@ -5,6 +5,7 @@ import { ADAPTER_TYPES } from "../triggerStoreAdaptorData";
 import { AdapterType } from '@defillama/dimension-adapters/adapters/types';
 import { getUnixTimeNow } from '../../../api2/utils/time';
 import { elastic } from '@defillama/sdk';
+import { getAllDimensionsRecordsOnDate } from '../../db-utils/db2';
 
 async function run() {
   const startTimeAll = getUnixTimeNow()
@@ -26,7 +27,15 @@ async function run() {
 
     try {
 
-      await handler2({ adapterType })
+      let yesterdayIdSet: Set<string> = new Set()
+
+      try {
+        const yesterdayData = await getAllDimensionsRecordsOnDate({ adapterType, date: getYesterdayTimeS() });
+        yesterdayIdSet = new Set(yesterdayData.map((d: any) => d.id));
+      } catch (e) {
+        console.error("Error in getAllDimensionsRecordsOnDate", e)
+      }
+      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all' })
 
     } catch (e) {
       console.error("error", e)
@@ -75,3 +84,13 @@ setTimeout(() => {
   console.error("Timeout reached, exiting from dimensions-store-all...")
   process.exit(1)
 }, 1000 * 60 * 90) // 90 minutes
+
+
+function getYesterdayTimeS() {
+  const yesterday = new Date();
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+  const yyyy = yesterday.getUTCFullYear();
+  const mm = String(yesterday.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(yesterday.getUTCDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}

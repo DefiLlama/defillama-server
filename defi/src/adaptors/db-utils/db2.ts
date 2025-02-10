@@ -118,3 +118,15 @@ export async function getAllItemsAfter({ adapterType, timestamp }: { adapterType
 
   return result
 }
+
+export async function getAllDimensionsRecordsOnDate({ adapterType, date }: { adapterType: AdapterType, date: string}) {
+  await init()
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where: { type: adapterType, timeS: date },
+    attributes: ['timestamp', 'id', 'timeS'],
+    raw: true,
+  })
+
+  return result
+}

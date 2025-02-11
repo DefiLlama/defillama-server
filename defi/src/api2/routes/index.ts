@@ -387,7 +387,7 @@ async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Respon
     const data = await getChainChartData(name.toLowerCase())
     return successResponse(res, data, 60);
   } catch (e) {
-    return errorResponse(res, 'There is no chain with that name')
+    return errorResponse(res, 'There is no chain with that name: ' + name)
   }
 }
 
@@ -397,7 +397,7 @@ async function getHistoricalChainTvlData(req: HyperExpress.Request, res: HyperEx
     const data = await getChainDefaultChartData(name.toLowerCase())
     return successResponse(res, data, 60);
   } catch (e) {
-    return errorResponse(res, 'There is no chain with that name')
+    return errorResponse(res, 'There is no chain with that name: ' + name)
   }
 }
 

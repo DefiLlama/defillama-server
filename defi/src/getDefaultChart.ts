@@ -8,7 +8,7 @@ export async function getChainDefaultChartData(chain: string) {
   const properChaiName = Object.keys(chainCoingeckoIds).find((k) => k.toLowerCase() === chain);
   if (properChaiName === undefined && !global) {
     return errorResponse({
-      message: "There is no chain with that name",
+      message: "There is no chain with that name " + chain,
     });
   }
   const chart = await fetch(
@@ -48,7 +48,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     const data = await getChainDefaultChartData(chain)
     return successResponse(data, 10 * 60);
   } catch (e) {
-    return errorResponse({ message: "There is no chain with that name" })
+    return errorResponse({ message: "There is no chain with that name: " + chain })
   }
 };
 

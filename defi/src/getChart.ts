@@ -7,7 +7,7 @@ export async function getChainChartData(chain: string) {
   const global = chain === "";
   const properChaiName = Object.keys(chainCoingeckoIds).find(k => k.toLowerCase() === chain)
   if (properChaiName === undefined && !global)
-    throw new Error("There is no chain with that name")
+    throw new Error("There is no chain with that name " + chain)
 
   const chart = await fetch(`https://api.llama.fi/lite/charts${global ? "" : "/" + transformNewChainName(properChaiName!)}`)
   const chartBody = await chart.json()
@@ -25,7 +25,7 @@ const handler = async (
     const data = await getChainChartData(chain)
     return successResponse(data, 10 * 60);
   } catch (e) {
-    return errorResponse({ message: "There is no chain with that name" })
+    return errorResponse({ message: "There is no chain with that name" + chain });
   }
 };
 

@@ -23,6 +23,7 @@ import {
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
+import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -158,6 +159,18 @@ async function getSymbolAndDecimals(
       decimals: token.weiDecimals,
       symbol: token.name,
     };
+  } else if (chain == "aptos") {
+    const res = await fetch(
+      `${process.env.APTOS_RPC}/v1/accounts/${tokenAddress.substring(
+        0,
+        tokenAddress.indexOf("::"),
+      )}/resource/0x1::coin::CoinInfo%3C${tokenAddress}%3E`,
+    ).then((r) => r.json());
+    if (!res.data) return 
+    return {
+      decimals: res.data.decimals,
+      symbol: res.data.symbol,
+    };
   } else if (!tokenAddress.startsWith(`0x`)) {
     return;
     // throw new Error(
@@ -175,7 +188,7 @@ async function getSymbolAndDecimals(
       //   `ERC20 methods aren't working for token ${chain}:${tokenAddress}`,
       // );
     }
-  }
+  } // ts-node coins/src/scripts/coingecko.ts false over1m
 }
 
 const aggregatedPlatforms: string[] = [];
@@ -303,17 +316,18 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       iterateOverPlatforms(
         coin,
         async (PK) => {
-          const platformData = coinPlatformData[PK];
+          const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
+          const normalizedPK = chain == "aptos" ? PK.toLowerCase() : PK;
+          const platformData = coinPlatformData[normalizedPK];
           if (platformData && platformData?.confidence > 0.99) return;
 
           const created = getCurrentUnixTimestamp();
-          const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
           const address = PK.substring(PK.indexOf(":") + 1);
           const { decimals, symbol } =
             platformData &&
             "decimals" in platformData &&
             "symbol" in platformData
-              ? (coinPlatformData[PK] as any)
+              ? (coinPlatformData[normalizedPK] as any)
               : await getSymbolAndDecimals(address, chain, coin.symbol);
 
           if (decimals == undefined) return;
@@ -326,7 +340,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           }
 
           const item = {
-            PK,
+            PK: normalizedPK,
             SK: 0,
             created,
             decimals,
@@ -460,6 +474,7 @@ function shuffleArray(array: any[]) {
 
 async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   try {
+    await setEnvSecrets();
     await cacheSolanaTokens();
     await cacheHyperliquidTokens();
     const step = 500;
@@ -467,6 +482,8 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
       `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
     ).then((r) => r.json())) as Coin[];
 
+    coins = coins.filter((c) => c.id == "amnis-aptos");
+    if (!coins.length) process.exit();
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(
         coins.map((coin) => coin.id),

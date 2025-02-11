@@ -169,7 +169,7 @@ export const chainToCoingeckoId = {
   // dl: cg
   // chz: "chiliz",
   // stellar: "stellar",
-  // stacks: "stacks",
+  stacks: "stacks",
   // cosmos: "cosmos",
   // xrp: "xrp",
   hedera: "hedera-hashgraph",

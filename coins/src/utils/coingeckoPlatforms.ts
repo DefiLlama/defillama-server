@@ -1,6 +1,9 @@
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import { getCurrentUnixTimestamp } from "./date";
-import { chainsThatShouldNotBeLowerCased } from "./shared/constants";
+import {
+  chainsThatShouldNotBeLowerCased,
+  chainsWithCaseSensitiveDataProviders,
+} from "./shared/constants";
 import ddb from "./shared/dynamodb";
 
 export const staleMargin = 6 * 60 * 60;
@@ -65,7 +68,7 @@ export async function iterateOverPlatforms(
         const address =
           chain +
           ":" +
-          (chain == "aptos"
+          (chainsWithCaseSensitiveDataProviders.includes(chain)
             ? platforms[platform]
             : lowercase(platforms[platform]!, chain).trim());
         const PK = `asset#${address}`;

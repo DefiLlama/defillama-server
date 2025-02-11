@@ -158,6 +158,18 @@ async function getSymbolAndDecimals(
       decimals: token.weiDecimals,
       symbol: token.name,
     };
+  } else if (chain == "aptos") {
+    const res = await fetch(
+      `${process.env.APTOS_RPC}/v1/accounts/${tokenAddress.substring(
+        0,
+        tokenAddress.indexOf("::"),
+      )}/resource/0x1::coin::CoinInfo%3C${tokenAddress}%3E`,
+    ).then((r) => r.json());
+    if (!res.data) return;
+    return {
+      decimals: res.data.decimals,
+      symbol: res.data.symbol,
+    };
   } else if (!tokenAddress.startsWith(`0x`)) {
     return;
     // throw new Error(
@@ -303,17 +315,18 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       iterateOverPlatforms(
         coin,
         async (PK) => {
-          const platformData = coinPlatformData[PK];
+          const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
+          const normalizedPK = chain == "aptos" ? PK.toLowerCase() : PK;
+          const platformData = coinPlatformData[normalizedPK];
           if (platformData && platformData?.confidence > 0.99) return;
 
           const created = getCurrentUnixTimestamp();
-          const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
           const address = PK.substring(PK.indexOf(":") + 1);
           const { decimals, symbol } =
             platformData &&
             "decimals" in platformData &&
             "symbol" in platformData
-              ? (coinPlatformData[PK] as any)
+              ? (coinPlatformData[normalizedPK] as any)
               : await getSymbolAndDecimals(address, chain, coin.symbol);
 
           if (decimals == undefined) return;
@@ -326,7 +339,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           }
 
           const item = {
-            PK,
+            PK: normalizedPK,
             SK: 0,
             created,
             decimals,

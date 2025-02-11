@@ -63,7 +63,11 @@ export async function iterateOverPlatforms(
         }
         aggregatePlatforms(chain, platforms[platform]!, aggregatedPlatforms);
         const address =
-          chain + ":" + lowercase(platforms[platform]!, chain).trim();
+          chain +
+          ":" +
+          (chain == "aptos"
+            ? platforms[platform]
+            : lowercase(platforms[platform]!, chain).trim());
         const PK = `asset#${address}`;
         const margin = getCurrentUnixTimestamp() - staleMargin;
         if (

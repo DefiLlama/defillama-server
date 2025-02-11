@@ -3540,6 +3540,11 @@
     }
   },
   "starknet": {
+    "0x0057912720381af14b0e5c87aa4718ed5e527eab60b3801ebf702ab09139e38b": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
+    },
     "0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d": {
       "decimals": "18",
       "symbol": "STRK",
@@ -6950,6 +6955,16 @@
     }
   },
   "plume": {
+    "0xd630fb6a07c9c723cf709d2daa9b63325d0e0b73": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "pETH"
+    },
+    "0xdddd73f5df1f0dc31373357beac77545dc5a6f3f": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "pUSD"
+    },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#ethereum",
       "decimals": 18,

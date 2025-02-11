@@ -1235,7 +1235,7 @@ const data4: Protocol[] = [
     module: "cian-bera/index.js",
     twitter: "CIAN_protocol",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["RedStone"],//https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles
     audit_links: [],
     parentProtocol: "parent#cian-protocol",
     listedAt: 1737046884

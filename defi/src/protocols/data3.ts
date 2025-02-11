@@ -5271,6 +5271,26 @@ const data3: Protocol[] = [
     twitter: "sparkdotfi",
     forkedFrom: ["AAVE V3"],
     oracles: ["Chainlink", "Chronicle", "RedStone"], // https://github.com/DefiLlama/defillama-server/pull/8015 + new  https://github.com/DefiLlama/defillama-server/pull/9240
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Aggregator",
+        proof: ["https://vote.makerdao.com/executive/template-executive-vote-rate-adjustments-sweep-pauseproxy-dai-integration-boost-funding-whistleblower-payments-spark-proxy-spell-february-6-2025"],
+        startDate: "2025/02/10"
+      },
+      {
+        name: "Chronicle",
+        type: "Aggregator",
+        proof: ["https://vote.makerdao.com/executive/template-executive-vote-rate-adjustments-sweep-pauseproxy-dai-integration-boost-funding-whistleblower-payments-spark-proxy-spell-february-6-2025"],
+        startDate: "2025/02/10"
+      },
+      {
+        name: "RedStone",
+        type: "Aggregator",
+        proof: ["https://vote.makerdao.com/executive/template-executive-vote-rate-adjustments-sweep-pauseproxy-dai-integration-boost-funding-whistleblower-payments-spark-proxy-spell-february-6-2025"],
+        startDate: "2025/02/10"
+      }
+    ],
     audit_links: ["https://devs.spark.fi/security/security-and-audits"],
     github: ["marsfoundation"],
     listedAt: 1683144119,

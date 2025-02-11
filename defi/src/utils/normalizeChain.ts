@@ -3907,6 +3907,20 @@ export const chainCoingeckoIds = {
     twitter: "0xSilicon",
     url: "https://silicon.network",
   },
+  "Unichain": {
+    geckoId: null,
+    symbol: "-",
+    cmcId: null,
+    categories: ["EVM", "Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Ethereum',
+    },
+    chainId: 130,
+    twitter: "unichain",
+    url: "https://www.unichain.org",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

@@ -332,5 +332,8 @@ export default {
     },
     "sailfish": {
         id: "5643",
+    },
+    "artexswap": {
+        id: "5665",
     }
 } as AdaptorsConfig

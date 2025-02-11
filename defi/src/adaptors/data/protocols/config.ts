@@ -329,5 +329,8 @@ export default {
     },
     "rooster": {
         id: "5704",
+    },
+    "sailfish": {
+        id: "5643",
     }
 } as AdaptorsConfig

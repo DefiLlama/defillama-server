@@ -3655,7 +3655,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "enso-finance/index.js",
+    module: "dummy.js",
     twitter: "EnsoBuild",
     listedAt: 1738858207,
   },

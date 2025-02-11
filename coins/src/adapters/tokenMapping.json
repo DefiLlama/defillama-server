@@ -7056,7 +7056,7 @@
     "0x078D782b760474a361dDA0AF3839290b0EF57AD6": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
-      "symbol": "USDC.e"
+      "symbol": "USDC"
     }
   }
 }

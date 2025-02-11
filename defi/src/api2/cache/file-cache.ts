@@ -110,7 +110,7 @@ export async function writeToPGCache(key: string, data: any) {
 
 export function getDailyTvlCacheId(id: string) {
   if (!id) throw new Error('Missing required parameter: id')
-  return `tvl-cache-daily/${id}`
+  return `tvl-cache-daily-v0.0/${id}`
 }
 
 export async function deleteFromPGCache(key: string) {

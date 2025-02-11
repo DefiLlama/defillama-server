@@ -16,7 +16,10 @@ import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 import { PublicKey } from "@solana/web3.js";
 import { getConnection } from "../adapters/solana/utils";
-import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
+import {
+  chainsThatShouldNotBeLowerCased,
+  chainsWithCaseSensitiveDataProviders,
+} from "../utils/shared/constants";
 import {
   fetchCgPriceData,
   retryCoingeckoRequest,
@@ -170,6 +173,15 @@ async function getSymbolAndDecimals(
       decimals: res.data.decimals,
       symbol: res.data.symbol,
     };
+  } else if (chain == "stacks") {
+    const res = await fetch(
+      `https://api.hiro.so/metadata/v1/ft/${tokenAddress}`,
+    ).then((r) => r.json());
+    if (!res.decimals) return;
+    return {
+      decimals: res.decimals,
+      symbol: res.symbol,
+    };
   } else if (!tokenAddress.startsWith(`0x`)) {
     return;
     // throw new Error(
@@ -187,7 +199,7 @@ async function getSymbolAndDecimals(
       //   `ERC20 methods aren't working for token ${chain}:${tokenAddress}`,
       // );
     }
-  }
+  } // ts-node coins/src/scripts/coingecko.ts false over1m
 }
 
 const aggregatedPlatforms: string[] = [];
@@ -316,7 +328,11 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         coin,
         async (PK) => {
           const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
-          const normalizedPK = chain == "aptos" ? PK.toLowerCase() : PK;
+          const normalizedPK = chainsWithCaseSensitiveDataProviders.includes(
+            chain,
+          )
+            ? PK.toLowerCase()
+            : PK;
           const platformData = coinPlatformData[normalizedPK];
           if (platformData && platformData?.confidence > 0.99) return;
 

@@ -17751,10 +17751,10 @@ const data3: Protocol[] = [
     chains: ["Mantle"],
     module: "myso-v2/index.js",
     oraclesByChain: {
-      arbitrum: ["RedStone"], //https://myso-finance.gitbook.io/myso-v3/system-overview/quickstart#id-4.-oracle-adapter:~:text=and%20referral%20partners.-,4.%20Oracle%20Adapter,-The%20OracleAdapter%20module
-      mantle: ["RedStone"], // https://myso-finance.gitbook.io/myso-v3/system-overview/quickstart#id-4.-oracle-adapter:~:text=and%20referral%20partners.-,4.%20Oracle%20Adapter,-The%20OracleAdapter%20module
-      ethereum: ["RedStone"], //https://myso-finance.gitbook.io/myso-v3/system-overview/quickstart#id-4.-oracle-adapter:~:text=and%20referral%20partners.-,4.%20Oracle%20Adapter,-The%20OracleAdapter%20module
-      base: ["RedStone"], //https://myso-finance.gitbook.io/myso-v3/system-overview/quickstart#id-4.-oracle-adapter:~:text=and%20referral%20partners.-,4.%20Oracle%20Adapter,-The%20OracleAdapter%20module
+      arbitrum: ["RedStone"], //https://myso-finance.gitbook.io/myso-v2-docs/protocol-overview/blitz-match-p2p/zero-liquidation-loans/lenders
+      mantle: ["RedStone"], // https://myso-finance.gitbook.io/myso-v2-docs/protocol-overview/blitz-match-p2p/zero-liquidation-loans/lenders
+      ethereum: ["RedStone"], //https://myso-finance.gitbook.io/myso-v2-docs/protocol-overview/blitz-match-p2p/zero-liquidation-loans/lenders
+      base: ["RedStone"], //https://myso-finance.gitbook.io/myso-v2-docs/protocol-overview/blitz-match-p2p/zero-liquidation-loans/lenders
     },
     forkedFrom: [],
     twitter: "MysoFinance",

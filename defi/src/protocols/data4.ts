@@ -4165,21 +4165,21 @@ const data4: Protocol[] = [
     listedAt: 1739208691
   },
   {
-    id: "", // DeFiLlama will assign this
+    id: "", 
     name: "Infrared Finance",
-    address: "", // Add your protocol token address once deployed
+    address: "berachain:0xb71b3DaEA39012Fb0f2B14D2a9C86da9292fC126", 
     symbol: "iBERA",
     url: "https://infrared.finance/",
     description: "BERA Liquid staking protocol utilizing Proof of Liquidity to enhance yields on Berachain",
     chain: "Berachain",
-    logo: `${baseIconsUrl}/infrared-finance.png`, // You'll need to submit your logo
-    audits: "2", // Has undergone audits
+    logo: `${baseIconsUrl}/infrared-finance.png`, 
+    audits: "2", 
     audit_note: null,
-    gecko_id: "", // Add once listed on CoinGecko
-    cmcId: "", // Add once listed on CoinMarketCap
+    gecko_id: "",
+    cmcId: "", 
     category: "Liquid Staking",
     chains: ["Berachain"],
-    oracles: [], // Add any oracles used
+    oracles: [], 
     module: "infrared-finance/index.js",
     twitter: "InfraredFinance",
     language: "Solidity",

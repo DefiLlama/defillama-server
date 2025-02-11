@@ -165,7 +165,7 @@ async function getSymbolAndDecimals(
         tokenAddress.indexOf("::"),
       )}/resource/0x1::coin::CoinInfo%3C${tokenAddress}%3E`,
     ).then((r) => r.json());
-    if (!res.data) return 
+    if (!res.data) return;
     return {
       decimals: res.data.decimals,
       symbol: res.data.symbol,
@@ -187,7 +187,7 @@ async function getSymbolAndDecimals(
       //   `ERC20 methods aren't working for token ${chain}:${tokenAddress}`,
       // );
     }
-  } // ts-node coins/src/scripts/coingecko.ts false over1m
+  }
 }
 
 const aggregatedPlatforms: string[] = [];
@@ -480,7 +480,6 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
       `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
     ).then((r) => r.json())) as Coin[];
 
-    if (!coins.length) process.exit();
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(
         coins.map((coin) => coin.id),

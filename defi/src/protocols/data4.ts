@@ -4208,6 +4208,49 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.bulla.exchange/information/audits"],
     listedAt: 1739274028
   },
-
+  {
+    id: "5767",
+    name: "UCS Finance",
+    address: null,
+    symbol: "-",
+    url: "https://ucs.finance/pools",
+    description: "Create and add LP to your tokens to trade in our DEX. We only support V2...for now",
+    chain: "Unichain",
+    logo: `${baseIconsUrl}/ucs-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Unichain"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "ucs-finance/index.js",
+    twitter: null, // account disable i think https://x.com/UniChainSwap
+    listedAt: 1739284494
+  },
+  {
+    id: "5768",
+    name: "Arkis",
+    address: null,
+    symbol: "-",
+    url: "https://ucs.finance/pools",
+    description: "Arkis is a DeFi Prime Broker that acts as a credit protocol by providing on-chain loans to institutional asset managers from the protocol lenders.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/arkis.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leverage Farming",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "arkis/index.js",
+    twitter: "ArkisXYZ",
+    audit_links: ["https://github.com/ArkisXYZ/audits/blob/main/Arkis_Quantstamp_Report.pdf", "https://github.com/ArkisXYZ/audits/blob/main/Arkis_Prime_Brokerage_Final_Report_With_Fix_Review_Final_Edit.pdf"],
+    github: ["ArkisXYZ"],
+    listedAt: 1739284994
+  },
 ];
 export default data4;

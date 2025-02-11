@@ -23,7 +23,6 @@ import {
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
-import setEnvSecrets from "../utils/shared/setEnvSecrets";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -474,7 +473,6 @@ function shuffleArray(array: any[]) {
 
 async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   try {
-    await setEnvSecrets();
     await cacheSolanaTokens();
     await cacheHyperliquidTokens();
     const step = 500;
@@ -482,7 +480,6 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
       `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
     ).then((r) => r.json())) as Coin[];
 
-    coins = coins.filter((c) => c.id == "amnis-aptos");
     if (!coins.length) process.exit();
     if (coinType || hourly) {
       const metadatas = await getCGCoinMetadatas(

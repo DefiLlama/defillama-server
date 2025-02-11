@@ -55775,6 +55775,7 @@ const data3: Protocol[] = [
     github: ["oraclefreedollar"],
     listedAt: 1726581912
   },
+  /* delist while check
   {
     id: "5156",
     name: "Cygnus Restake",
@@ -55798,6 +55799,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1726581992
   },
+  */
   {
     id: "5157",
     name: "Yellow",

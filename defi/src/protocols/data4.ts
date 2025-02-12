@@ -4322,5 +4322,25 @@ const data4: Protocol[] = [
     audit_links: ["https://omniscia.io/limechain-hashport/", "https://omniscia.io/limechain-hashport-round-2"],
     listedAt: 1739362932
   },
+  {
+    id: "5772",
+    name: "Unichain Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://www.unichain.org",
+    description: "The L2 designed for DeFi. By Uniswap. Built on the Superchain. ",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/unichain-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "unichain", 
+  },
 ];
 export default data4;

@@ -6850,6 +6850,11 @@
       "to": "coingecko#artela-network",
       "decimals": 18,
       "symbol": "WART"
+    },
+    "0x891986cf778004c86c5f2d8c18198635f725a5ce": {
+      "to": "coingecko#artela-network",
+      "decimals": 18,
+      "symbol": "WART"
     }
   },
   "fluence": {
@@ -7025,6 +7030,33 @@
       "to": "coingecko#tether",
       "decimals": 18,
       "symbol": "USDT"
+    }
+  },
+  "unichain": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0x4200000000000000000000000000000000000006": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0x20CAb320A855b39F724131C69424240519573f81": {
+      "to": "coingecko#dai",
+      "decimals": 18,
+      "symbol": "DAI"
+    },
+    "0x8f187aA05619a017077f5308904739877ce9eA21": {
+      "to": "coingecko#uniswap",
+      "decimals": 18,
+      "symbol": "UNI"
+    },
+    "0x078D782b760474a361dDA0AF3839290b0EF57AD6": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
     }
   }
 }

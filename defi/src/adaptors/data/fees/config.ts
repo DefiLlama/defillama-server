@@ -2417,5 +2417,8 @@ export default {
     },
     "polymarket": {
         id: "711"
+    },
+    "velar": {
+        id: "4339"
     }
 } as AdaptorsConfig

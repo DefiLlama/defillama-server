@@ -59,6 +59,8 @@ const config = {
   equalizerSonic: { chain: 'sonic', factory: '0xDDD9845Ba0D8f38d3045f804f67A1a8B9A528FcC' },
   bulbaswap: { chain: "morph", factory: "0x8D2A8b8F7d200d75Bf5F9E84e01F9272f90EFB8b" },
   kodiakv2: { chain: 'berachain', factory: '0x5e705e184d233ff2a7cb1553793464a9d0c3028f' },
+  swapx: { chain: 'sonic', factory: '0x05c1be79d3aC21Cc4B727eeD58C9B2fF757F5663' },
+  shadow: { chain: 'sonic', factory: '0x2dA25E7446A70D7be65fd4c053948BEcAA6374c8' },
 };
 
 export function extraUniV2Lps(timestamp: number = 0) {

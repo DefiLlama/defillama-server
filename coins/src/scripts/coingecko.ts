@@ -199,7 +199,7 @@ async function getSymbolAndDecimals(
       //   `ERC20 methods aren't working for token ${chain}:${tokenAddress}`,
       // );
     }
-  } // ts-node coins/src/scripts/coingecko.ts false over1m
+  }
 }
 
 const aggregatedPlatforms: string[] = [];

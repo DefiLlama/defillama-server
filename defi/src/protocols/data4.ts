@@ -437,7 +437,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5597",
-    name: "dappOS IntentEX", // previous dappOS 
+    name: "dappOS IntentEX",
+    previousNames: ["dappOS"],
     address: null,
     symbol: "-",
     url: "https://dappos.com/",
@@ -544,7 +545,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5602",
-    name: "NODO", // previously NODO Global
+    name: "NODO",
+    previousNames: ["NODO Global"],
     address: null,
     symbol: "-",
     url: "https://nodo.xyz",
@@ -567,7 +569,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5603",
-    name: "2THICK", // previously Equalizer CL
+    name: "2THICK",
+    previousNames: ["Equalizer CL"],
     address: null,
     symbol: "ELITE",
     url: "https://eliteness.network/thick",
@@ -839,7 +842,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5615",
-    name: "Zoth ZeUSD", // previously Zoth
+    name: "Zoth ZeUSD",
+    previousNames: ["Zoth"],
     address: null,
     symbol: "-",
     url: "https://app.zoth.io/zeusd",
@@ -931,7 +935,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5619",
-    name: "SoSoValue Indexes", // previously SSI
+    name: "SoSoValue Indexes",
+    previousNames: ["SSI"],
     address: null,
     symbol: "-",
     url: "https://ssi.sosovalue.com/",

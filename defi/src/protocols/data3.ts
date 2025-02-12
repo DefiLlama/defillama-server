@@ -3020,7 +3020,7 @@ const data3: Protocol[] = [
     description:
       "uniETH represents the staked ETH in Bedrock plus all future staking rewards. uniETH is non-rebasing, i.e. does not grow in quantity over time but grows in value instead. In other words, 1 uniETH will be worth more than 1 ETH as time goes on, and its value will continue to increase as more time passes",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bedrock-unieth.png`,
+    logo: `${baseIconsUrl}/bedrock-unieth.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -25058,7 +25058,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3801",
-    name: "uniIOTX",
+    name: "Bedrock uniIOTX", // previous uniIOTX
     address: null,
     symbol: "-",
     assetToken: "uniIOTX",
@@ -25066,7 +25066,7 @@ const data3: Protocol[] = [
     description:
       "UniIOTX is the first ever Liquid Staking dApp on IoTeX. UniIOTX token holders can earn staking rewards while keeping the tokens in play for trading, lending, or any other DeFi ventures.",
     chain: "IoTeX",
-    logo: `${baseIconsUrl}/uniiotx.jpg`,
+    logo: `${baseIconsUrl}/bedrock-uniiotx.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -58941,13 +58941,13 @@ const data3: Protocol[] = [
   },
   {
     id: "5295",
-    name: "uniBTC Restaked",
+    name: "Bedrock uniBTC", // previous uniBTC Restaked
     address: null,
     symbol: "-",
     url: "https://app.bedrock.technology/",
     description: "BTC staked into babylon",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/unibtc-restaked.jpg`,
+    logo: `${baseIconsUrl}/bedrock-unibtc.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

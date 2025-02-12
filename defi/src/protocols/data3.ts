@@ -60796,6 +60796,13 @@ const data3: Protocol[] = [
     category: "Yield Aggregator",
     chains: ["Ethereum", "Arbitrum"],
     oracles: ["RedStone"], //https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles
+    oraclesBreakdown: [
+      {
+        name: "Redstone",
+        type: "Primary",
+        proof: ["https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles"],
+      }
+    ],
     forkedFrom: [],
     module: "cian-yl/index.js",
     twitter: "CIAN_protocol",

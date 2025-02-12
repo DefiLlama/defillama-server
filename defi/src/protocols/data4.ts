@@ -4234,7 +4234,7 @@ const data4: Protocol[] = [
     name: "Arkis",
     address: null,
     symbol: "-",
-    url: "https://ucs.finance/pools",
+    url: "https://www.arkis.xyz/",
     description: "Arkis is a DeFi Prime Broker that acts as a credit protocol by providing on-chain loans to institutional asset managers from the protocol lenders.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/arkis.jpg`,

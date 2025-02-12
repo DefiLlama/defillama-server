@@ -4300,5 +4300,27 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "berachain",
   },
+  {
+    id: "5771",
+    name: "Hashport",
+    address: null,
+    symbol: "-",
+    url: "https://www.hashport.network",
+    description: "Hashport is an enterprise-grade public bridging utility that facilitates the movement of digital assets between distributed networks, helping them to extend their functionality in a quick, secure, and cost-effective way.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hashport.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hashport/index.js",
+    twitter: "HashportNetwork", 
+    audit_links: ["https://omniscia.io/limechain-hashport/", "https://omniscia.io/limechain-hashport-round-2"],
+    listedAt: 1739362932
+  },
 ];
 export default data4;

@@ -2741,5 +2741,8 @@ export default {
     },
     "berachain-hub": {
         id: "5742"
+    },
+    "uniswap-v4": {
+        id: "5690"
     }
 } as AdaptorsConfig

@@ -115,6 +115,14 @@ const data: Protocol[] = [
     twitter: "aave",
     audit_links: ["https://aave.com/security"],
     oracles: ["Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://aave.com/docs/primitives/oracle"]
+
+      }
+    ],
     parentProtocol: "parent#aave",
     wrongLiquidity: true,
   },
@@ -181,6 +189,14 @@ const data: Protocol[] = [
     twitter: "compoundfinance",
     audit_links: ["https://compound.finance/docs/security"],
     oracles: ["Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.compound.finance/helper-functions/#get-price"]
+
+      }
+    ],
     parentProtocol: "parent#compound-finance",
   },
   {
@@ -471,6 +487,14 @@ const data: Protocol[] = [
       "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
     ],
     oracles: ["Chainlink"], // https://www.cryptoninjas.net/2019/12/30/looprings-3-0-dex-protocol-integrates-chainlink-oracle-service/
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://www.cryptoninjas.net/2019/12/30/looprings-3-0-dex-protocol-integrates-chainlink-oracle-service/"]
+
+      }
+    ],
     governanceID: ["snapshot:loopringdao.eth"],
     github: ["Loopring"], //check
   },

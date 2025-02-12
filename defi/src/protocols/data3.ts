@@ -2662,6 +2662,14 @@ const data3: Protocol[] = [
     category: "Yield",
     chains: ["Binance", "Ethereum", "Avalanche"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/5973
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/5973"]
+
+      }
+    ],
     forkedFrom: [],
     module: "dypius/index.js",
     twitter: "dypius",
@@ -2864,6 +2872,20 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Starknet"],
     oracles: ["Chainlink"], // Primary oracle for most markets: https://docs.nostra.finance/lend-and-borrow/oracles
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.nostra.finance/lend-and-borrow/oracles"]
+
+      },
+      {
+        name: "Pragma",
+        type: "Secondary",
+        proof: ["https://docs.nostra.finance/lend-and-borrow/oracles"]
+
+      }
+    ],
     forkedFrom: [],
     module: "nostra/index.js",
     twitter: "nostrafinance",
@@ -8696,6 +8718,20 @@ const data3: Protocol[] = [
     twitter: "zkLend",
     forkedFrom: [],
     oracles: ["Chainlink"], // Primary Oracle is Chainlink: https://zklend.gitbook.io/documentation/using-zklend/technical/oracles
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://zklend.gitbook.io/documentation/using-zklend/technical/oracles"]
+
+      },
+      {
+        name: "Pragma",
+        type: "Secondary",
+        proof: ["https://zklend.gitbook.io/documentation/using-zklend/technical/oracles"]
+
+      }
+    ],
     listedAt: 1686175395,
   },
   {
@@ -15225,6 +15261,20 @@ const data3: Protocol[] = [
     twitter: "GMX_IO",
     forkedFrom: [],
     oracles: ["Chainlink"], // https://x.com/GMX_IO/status/1866794916392874021 https://gov.gmx.io/t/implementation-of-chaos-labs-risk-oracles/3861
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.gmx.io/docs/intro"]
+
+      },
+      {
+        name: "Edge",
+        type: "Secondary",
+        proof: ["https://x.com/GMX_IO/status/1866794916392874021", "https://gov.gmx.io/t/implementation-of-chaos-labs-risk-oracles/3861"]
+
+      }
+    ],
     parentProtocol: "parent#gmx",
     audit_links: ["https://github.com/gmx-io/gmx-synthetics/tree/main/audits"],
     listedAt: 1691622170,
@@ -21711,6 +21761,20 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Starknet"],
     oracles: ["Chainlink"], // https://docs.nostra.finance/lend-and-borrow/oracles
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.nostra.finance/lend-and-borrow/oracles"]
+
+      },
+      {
+        name: "Pragma",
+        type: "Secondary",
+        proof: ["https://docs.nostra.finance/lend-and-borrow/oracles"]
+
+      }
+    ],
     forkedFrom: [],
     module: "nostra-alpha/index.js",
     twitter: "nostrafinance",
@@ -23518,6 +23582,14 @@ const data3: Protocol[] = [
     module: "xave-finance/index.js",
     forkedFrom: [],
     oracles: ["Chainlink"], // https://docs.xave.co/general-faqs#where-are-the-fx-prices-quoted-from
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.xave.co/general-faqs#where-are-the-fx-prices-quoted-from"]
+
+      }
+    ],
     twitter: "XaveFinance",
     github: ["bleu-fi"],
     audit_links: ["https://docs.xave.co/contract-audits/fxpool-final-audit"],
@@ -25424,6 +25496,14 @@ const data3: Protocol[] = [
     category: "Dexs",
     chains: ["Linea"],
     oracles: ["Chainlink"], // https://docs.xfai.com/products/core-concepts/pools
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.xfai.com/products/core-concepts/pools"]
+
+      }
+    ],
     forkedFrom: [],
     module: "xfai/index.js",
     twitter: "xfai_official",
@@ -27765,6 +27845,14 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["Binance"],
     oracles: ["Chainlink"], // https://docs.borb.fi/borb-intro/faq#what-are-you-using-for-your-price-feed
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.borb.fi/borb-intro/faq#what-are-you-using-for-your-price-feed"]
+
+      }
+    ],
     forkedFrom: [],
     module: "borb/index.js",
     twitter: "borb_fi",
@@ -28695,6 +28783,14 @@ const data3: Protocol[] = [
     category: "RWA",
     chains: ["Ethereum"],
     oracles: ["Chainlink"], // https://landx.gitbook.io/landx/litepaper/landx-litepaper#ctokens
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://landx.gitbook.io/landx/litepaper/landx-litepaper#ctokens"]
+
+      }
+    ],
     forkedFrom: [],
     module: "landx/index.js",
     twitter: "landxfinance",
@@ -29306,7 +29402,15 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    oracles: ["Chainlink"], // https://bracket-labs.gitbook.io/bracket-labs/oracle
+    oracles: ["Chainlink"], // https://docs.bracket.fi/legacy-products/volatility-trading/technical-architecture#technical-architecture
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.bracket.fi/legacy-products/volatility-trading/technical-architecture#technical-architecture"]
+
+      }
+    ],
     forkedFrom: [],
     chains: ["Arbitrum"],
     module: "bracketX/index.js",
@@ -32656,6 +32760,14 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Binance"],
     oracles: ["Chainlink"], //https://bscscan.com/address/0xc2a0e71ddeef10d402017e027782beec250237af#code
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://bscscan.com/address/0xc2a0e71ddeef10d402017e027782beec250237af#code"]
+
+      }
+    ],
     forkedFrom: ["AAVE V2"],
     module: "harbor/index.js",
     twitter: "0xHarborMarket",
@@ -33131,6 +33243,14 @@ const data3: Protocol[] = [
     twitter: null,
     forkedFrom: [],
     oracles: ["Chainlink"], //https://docs.shprd.finance/understand-shprd/protocol-overview#vault
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.shprd.finance/understand-shprd/protocol-overview#vault"]
+
+      }
+    ],
     audit_links: [],
     github: ["stealth-defi"],
     listedAt: 1708427989,
@@ -33177,6 +33297,14 @@ const data3: Protocol[] = [
     twitter: "0xMeowProtocol",
     forkedFrom: [],
     oracles: ["Chainlink"], //:https://github.com/0xMeowProtocol/contract.git
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/0xMeowProtocol/contract.git"]
+
+      }
+    ],
     audit_links: ["https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/12/VAR-0xMeowProtocol-231127-V2.pdf"],
     github: ["0xMeowProtocol"],
     listedAt: 1708444798,
@@ -35180,6 +35308,14 @@ const data3: Protocol[] = [
     twitter: "LavaLending",
     forkedFrom: ["AAVE V2"],
     oracles: ["Chainlink"], // https://arbiscan.io/address/0x9a88F515e6269C9b3c8cB5df8b7625712FBa4297, https://basescan.org/address/0xe7ddd3104399aF09ef34d1F755a1ba2163f0eBF7
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://arbiscan.io/address/0x9a88F515e6269C9b3c8cB5df8b7625712FBa4297", "https://basescan.org/address/0xe7ddd3104399aF09ef34d1F755a1ba2163f0eBF7"]
+
+      }
+    ],
     github: [],
     listedAt: 1709648597,
   },
@@ -35245,6 +35381,14 @@ const data3: Protocol[] = [
     module: "spool-fi-sreth/index.js",
     twitter: "StakingRewards",
     oracles: ["Chainlink"], // https://github.com/SpoolFi/spool-v2-core/blob/main/src/managers/UsdPriceFeedManager.sol
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/SpoolFi/spool-v2-core/blob/main/src/managers/UsdPriceFeedManager.sol"]
+
+      }
+    ],
     audit_links: ["https://docs.spool.fi/technical-reference/audits"],
     parentProtocol: "parent#spool-protocol",
     forkedFrom: [],
@@ -36413,6 +36557,20 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Optimism"],
     oracles: ["Chainlink"], // Chainlink is the primary oracle: https://docs.letsgethai.com/detailed/intro/hai.html#chainlink-oracles
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.letsgethai.com/detailed/intro/hai.html#chainlink-oracles"]
+
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://docs.letsgethai.com/detailed/intro/hai.html#redstone-oracles"]
+
+      }
+    ],
     forkedFrom: [],
     module: "hai/index.js",
     twitter: "letsgethai",
@@ -37035,6 +37193,14 @@ const data3: Protocol[] = [
     category: "Treasury Manager",
     chains: ["Ethereum", "Polygon"],
     oracles: ["Chainlink"], //https://docs.aera.finance/
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.aera.finance/concepts/vault-assets"]
+
+      }
+    ],
     forkedFrom: [],
     module: "aera/index.js",
     twitter: "aerafinance",
@@ -37606,6 +37772,14 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     oracles: ["Chainlink"], // https://docs.fungify.it/protocol/oracle
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.fungify.it/protocol/oracle"]
+
+      }
+    ],
     forkedFrom: ["Compound V2"],
     module: "fungify/index.js",
     twitter: "FungifyNFT",
@@ -37628,6 +37802,14 @@ const data3: Protocol[] = [
     category: "Options",
     chains: ["Arbitrum"],
     oracles: ["Chainlink"], // https://docs.smilee.finance/protocol-design/oracles-and-risks
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.smilee.finance/protocol-design/oracles-and-risks"]
+
+      }
+    ],
     forkedFrom: [],
     module: "smilee-finance/index.js",
     twitter: "SmileeFinance",
@@ -37672,6 +37854,14 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Binance"],
     oracles: ["Chainlink"], // https://satoshi-finance.github.io/satofi.github.io/
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://satoshi-finance.github.io/satofi.github.io/btUSD%20stability%20pool%20and%20liquidation/"]
+
+      }
+    ],
     forkedFrom: ["Liquity V1"],
     module: "satoshi-finance/index.js",
     twitter: "finance_sa54216",
@@ -37951,6 +38141,14 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["Binance"],
     oracles: ["Chainlink"], //https://bscscan.com/address/0xe4460109425EbC1CE34cAd59Ab7ce60535956BF5#code
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://bscscan.com/address/0xe4460109425EbC1CE34cAd59Ab7ce60535956BF5#code"]
+
+      }
+    ],
     forkedFrom: [],
     module: "swych/index.js",
     twitter: "SwychFinance",
@@ -38329,6 +38527,14 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["zkSync Era"],
     oracles: ["Chainlink"], // https://github.com/Increment-Finance/increment-protocol/blob/main/contracts/Oracle.sol , https://github.com/Increment-Finance/increment-protocol/blob/36d6052c9c9996b3e4f148dc05ee7a654e2fbe4d/contracts/tokens/VBase.sol#L70-L86
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/Increment-Finance/increment-protocol/blob/main/contracts/Oracle.sol" , "https://github.com/Increment-Finance/increment-protocol/blob/36d6052c9c9996b3e4f148dc05ee7a654e2fbe4d/contracts/tokens/VBase.sol#L70-L86"]
+
+      }
+    ],
     forkedFrom: [],
     module: "increment-protocol/index.js",
     twitter: "IncrementHQ",
@@ -38440,6 +38646,14 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["zkSync Era"],
     oracles: ["Chainlink"], //https://era.zksync.network/address/0x0d6A287D3501ce6A253Be2C866c14a83bAA06391
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://era.zksync.network/address/0x0d6A287D3501ce6A253Be2C866c14a83bAA06391"]
+
+      }
+    ],
     forkedFrom: ["Compound V2"],
     module: "zoro/index.js",
     twitter: "zoroprotocol",
@@ -39521,6 +39735,20 @@ const data3: Protocol[] = [
     module: "solidlizard-lending/index.js",
     twitter: "solidlizardfi",
     oracles: ["Chainlink"], // https://solidlizard.gitbook.io/solidlizard-lending/lending-markets/oracle
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://solidlizard.gitbook.io/solidlizard-lending/lending-markets/oracle"]
+
+      },
+      {
+        name: "Pyth",
+        type: "Secondary",
+        proof: ["https://solidlizard.gitbook.io/solidlizard-lending/lending-markets/oracle#pyth"]
+
+      }
+    ],
     forkedFrom: ["Compound V2"],
     parentProtocol: "parent#solidlizard",
     listedAt: 1712268565,
@@ -39952,6 +40180,14 @@ const data3: Protocol[] = [
     module: "arcadia-finance-v2/index.js",
     forkedFrom: [],
     oracles: ["Chainlink"], //https://github.com/arcadia-finance/accounts-v2/tree/main/src/oracle-modules
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/arcadia-finance/accounts-v2/tree/main/src/oracle-modules"]
+
+      }
+    ],
     twitter: "ArcadiaFi",
     parentProtocol: "parent#arcadia-finance",
     listedAt: 1712589897,
@@ -41547,6 +41783,14 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum"],
     oracles: ["Chainlink"], //https://docs.ebtc.finance/ebtc/protocol-mechanics/oracles
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.ebtc.finance/ebtc/protocol-mechanics/oracles"]
+
+      }
+    ],
     forkedFrom: [],
     module: "ebtc/index.js",
     twitter: "eBTCprotocol",
@@ -44333,6 +44577,14 @@ const data3: Protocol[] = [
     module: "grace/index.js",
     forkedFrom: [],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10314
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/10314"]
+
+      }
+    ],
     twitter: "GraceProtocol",
     github: ["GraceProtocol"],
     audit_links: ["https://hacken.io/audits/grace-protocol/"],
@@ -45646,6 +45898,14 @@ const data3: Protocol[] = [
     twitter: "DunesFi",
     forkedFrom: [],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10466
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/10466"]
+
+      }
+    ],
     listedAt: 1717427407,
   },
   {
@@ -47084,6 +47344,14 @@ const data3: Protocol[] = [
     category: "Options Vault",
     chains: ["Ethereum"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10626
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/10626"]
+
+      }
+    ],
     forkedFrom: ["Ribbon"],
     module: "3jane/index.js",
     twitter: "3janexyz",
@@ -47766,6 +48034,20 @@ const data3: Protocol[] = [
     twitter: "TermStructLabs",
     forkedFrom: [],
     oracles: ["Chainlink"], // https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
+
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://docs.ts.finance/protocol-spec/fixed-rate-borrowing-lending-prev-primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
+
+      }
+    ],
     audit_links: ["https://github.com/term-structure/audits"],
     github: ["term-structure"],
     listedAt: 1718906602,
@@ -49059,6 +49341,14 @@ const data3: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum", "Arbitrum", "Base"],
     oracles: ["Chainlink"], // https://github.com/harmonixfi/core-smart-contract/blob/main/contracts/extensions/Chainlink/PriceConsumer.sol
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/harmonixfi/core-smart-contract/blob/main/contracts/extensions/Chainlink/PriceConsumer.sol"]
+
+      }
+    ],
     forkedFrom: [],
     module: "harmonix/index.js",
     twitter: "harmonixfi",
@@ -49263,6 +49553,14 @@ const data3: Protocol[] = [
     module: "landshare/index.js",
     twitter: "Landshareio",
     oracles: ["Chainlink"], // https://www.chainlinkecosystem.com/ecosystem/landshare
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://www.chainlinkecosystem.com/ecosystem/landshare"]
+
+      }
+    ],
     forkedFrom: [],
     audit_links: ["https://landshare.io/wp-content/uploads/2022/06/Audit.pdf"],
     listedAt: 1720574321,
@@ -51853,6 +52151,14 @@ const data3: Protocol[] = [
     category: "RWA",
     chains: ["Polygon", "Ethereum"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/11182
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/11182"]
+
+      }
+    ],
     forkedFrom: [],
     module: "spiko/index.js",
     twitter: "Spiko_finance",
@@ -54445,6 +54751,14 @@ const data3: Protocol[] = [
     module: "perfect-pool/index.js",
     treasury: "perfect-pool.js",
     oracles: ["Chainlink"],  //https://github.com/DefiLlama/DefiLlama-Adapters/pull/11517
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/11517"]
+
+      }
+    ],
     forkedFrom: [],
     twitter: "perfectpoolplay",
     github: ["Perfect-Pool"],
@@ -55539,6 +55853,14 @@ const data3: Protocol[] = [
     category: "Yield Aggregator",
     chains: ["Arbitrum", "Ethereum", "Base"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/11616
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/11616"]
+
+      }
+    ],
     forkedFrom: [],
     module: "ipor-fusion/index.js",
     twitter: "ipor_io",
@@ -55562,7 +55884,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Cross Chain Bridge",
     chains: ["Fantom"],
-    oracles: ["Chainlink"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/11616
+    oracles: [], 
     forkedFrom: [],
     module: "crosscurve/index.js",
     twitter: "eywaprotocol",

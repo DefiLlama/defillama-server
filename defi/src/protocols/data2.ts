@@ -21536,6 +21536,14 @@ const data2: Protocol[] = [
       "https://2926710696-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Ffrb9MGTK6eZJlEQJyylq%2Fuploads%2F1jfEDpGcd5YlnHusbKYO%2FNeodymeJito.pdf",
     ],
     oracles: [],
+    oraclesBreakdown: [
+      {
+        name: "Switchboard",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9193"]
+
+      }
+    ],
     listedAt: 1669265429,
     github: ["jito-foundation"],
   },

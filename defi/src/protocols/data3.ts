@@ -60795,7 +60795,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum", "Arbitrum"],
-    oracles: [],
+    oracles: ["RedStone"], //https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles
     forkedFrom: [],
     module: "cian-yl/index.js",
     twitter: "CIAN_protocol",

@@ -6497,6 +6497,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BeralisDex",
   },
+  {
+    id: "parent#sosovalue",
+    name: "SoSoValue",
+    url: "https://ssi.sosovalue.com",
+    description: "The SoSoValue Indexes(SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secured",
+    logo: `${baseIconsUrl}/sosovalue.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SoSoValueCrypto",
+    github: ["SoSoValueLabs"],
+  },
 ];
 
 export default parentProtocols;

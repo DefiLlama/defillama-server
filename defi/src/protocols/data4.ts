@@ -959,7 +959,7 @@ const data4: Protocol[] = [
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SSI%20Protocol%20-%20SlowMist%20Audit%20Report.pdf",
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/SSI%20Protocol%20Phase2%20-%20SlowMist%20Audit%20Report.pdf"
     ],
-    github: ["SoSoValueLabs"],
+    parentProtocol: "parent#sosovalue",
     listedAt: 1736793641,
   },
   {
@@ -4423,6 +4423,48 @@ const data4: Protocol[] = [
     github: ["infrared-dao"],
     listedAt: 1739442996
   },
-
+  {
+    id: "5776",
+    name: "Dopin Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://dopinfi.xyz",
+    description: "Dexs on Taraxa chain",
+    chain: "Taraxa",
+    logo: `${baseIconsUrl}/dopin-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Taraxa"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "Dopinprotocol/index.js",
+    twitter: "Dopinprotocol", 
+    listedAt: 1739443997
+  },
+  {
+    id: "5777",
+    name: "SoSoValue Basis",
+    address: null,
+    symbol: "-",
+    url: "https://ssi.sosovalue.com",
+    description: "Neutral strategy, fully hedged, delta-neutral exposure, with very little drawdown.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/sosovalue-basis.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ssi-basis-trading/index.js",
+    twitter: "SoSoValueCrypto", 
+    parentProtocol: "parent#sosovalue",
+    listedAt: 1739444198
+  },
 ];
 export default data4;

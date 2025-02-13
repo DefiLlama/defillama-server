@@ -7129,6 +7129,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
+    },
+    "0xBAb93B7ad7fE8692A878B95a8e689423437cc500": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
     }
   }
 }

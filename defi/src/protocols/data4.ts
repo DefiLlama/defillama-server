@@ -4466,5 +4466,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#sosovalue",
     listedAt: 1739444198
   },
+  {
+    id: "5778",
+    name: "Story",
+    address: null,
+    symbol: "IP",
+    url: "https://www.story.foundation/",
+    description: "Story lets you take control over your IP and earn wherever it's used.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/story.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'story-2',
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "unichain", 
+  },
 ];
 export default data4;

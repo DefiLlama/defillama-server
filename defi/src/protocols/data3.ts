@@ -59084,6 +59084,14 @@ const data3: Protocol[] = [
     category: "Liquid Restaking",
     chains: ["Solana"],
     oracles: [],
+    oraclesBreakdown: [
+      {
+        name: "Switchboard",
+        type: "Fallback",
+        proof: ["https://github.com//pull/9284"]
+
+      }
+    ],
     forkedFrom: [],
     module: "fragmetric/index.js",
     twitter: "fragmetric",

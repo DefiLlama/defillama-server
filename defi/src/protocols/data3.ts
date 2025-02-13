@@ -65511,7 +65511,7 @@ const data3: Protocol[] = [
     description:
       "Exchange tokens issued on the CrossFi Chain",
     chain: "CrossFi",
-    logo: `${baseIconsUrl}/crossfi-xswap.png`,
+    logo: `${baseIconsUrl}/xswap-dex.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

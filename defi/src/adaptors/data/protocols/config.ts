@@ -233,6 +233,7 @@ export default {
         id: "4728",
     },
     "splash": {
+        enabled: false,
         id: "4712",
     },
     "jellyverse": {

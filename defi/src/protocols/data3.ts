@@ -65485,7 +65485,8 @@ const data3: Protocol[] = [
   },
   {
     id: "5576",
-    name: "xSwap DEX", // previously CrossFi xSwap
+    name: "xSwap DEX", 
+    previousNames: ["CrossFi xSwap"],
     address: null,
     symbol: "-",
     url: "https://xswap.ms/swap/",

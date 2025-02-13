@@ -1928,6 +1928,14 @@ const data2: Protocol[] = [
     category: "Dexs",
     chains: ["Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
     oracles: ["Chainlink"], //https://learn.woo.org/v/woofi-dev-docs/resources/on-chain-price-feeds
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://learn.woo.org/v/woofi-dev-docs/resources/on-chain-price-feeds"]
+
+      }
+    ],
     forkedFrom: [],
     module: "woofi.js",
     twitter: "_WOOFi",
@@ -17632,6 +17640,14 @@ const data2: Protocol[] = [
     category: "Managed Token Pools",
     chains: ["Ethereum", "Arbitrum"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/5226
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/5226"]
+
+      }
+    ],
     forkedFrom: [],
     module: "sommelier/index.js",
     twitter: "sommfinance",
@@ -21520,6 +21536,14 @@ const data2: Protocol[] = [
       "https://2926710696-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Ffrb9MGTK6eZJlEQJyylq%2Fuploads%2F1jfEDpGcd5YlnHusbKYO%2FNeodymeJito.pdf",
     ],
     oracles: [],
+    oraclesBreakdown: [
+      {
+        name: "Switchboard",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9193"]
+
+      }
+    ],
     listedAt: 1669265429,
     github: ["jito-foundation"],
   },

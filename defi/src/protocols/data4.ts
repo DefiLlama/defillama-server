@@ -437,7 +437,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5597",
-    name: "dappOS IntentEX", // previous dappOS 
+    name: "dappOS IntentEX",
+    previousNames: ["dappOS"],
     address: null,
     symbol: "-",
     url: "https://dappos.com/",
@@ -544,7 +545,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5602",
-    name: "NODO", // previously NODO Global
+    name: "NODO",
+    previousNames: ["NODO Global"],
     address: null,
     symbol: "-",
     url: "https://nodo.xyz",
@@ -567,7 +569,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5603",
-    name: "2THICK", // previously Equalizer CL
+    name: "2THICK",
+    previousNames: ["Equalizer CL"],
     address: null,
     symbol: "ELITE",
     url: "https://eliteness.network/thick",
@@ -839,7 +842,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5615",
-    name: "Zoth ZeUSD", // previously Zoth
+    name: "Zoth ZeUSD",
+    previousNames: ["Zoth"],
     address: null,
     symbol: "-",
     url: "https://app.zoth.io/zeusd",
@@ -931,7 +935,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5619",
-    name: "SoSoValue Indexes", // previously SSI
+    name: "SoSoValue Indexes",
+    previousNames: ["SSI"],
     address: null,
     symbol: "-",
     url: "https://ssi.sosovalue.com/",
@@ -1235,7 +1240,15 @@ const data4: Protocol[] = [
     module: "cian-bera/index.js",
     twitter: "CIAN_protocol",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["RedStone"],//https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles"]
+
+      }
+    ],
     audit_links: [],
     parentProtocol: "parent#cian-protocol",
     listedAt: 1737046884
@@ -4302,6 +4315,48 @@ const data4: Protocol[] = [
   },
   {
     id: "5771",
+    name: "Hashport",
+    address: null,
+    symbol: "-",
+    url: "https://www.hashport.network",
+    description: "Hashport is an enterprise-grade public bridging utility that facilitates the movement of digital assets between distributed networks, helping them to extend their functionality in a quick, secure, and cost-effective way.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hashport.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hashport/index.js",
+    twitter: "HashportNetwork", 
+    audit_links: ["https://omniscia.io/limechain-hashport/", "https://omniscia.io/limechain-hashport-round-2"],
+    listedAt: 1739362932
+  },
+  {
+    id: "5772",
+    name: "Unichain Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://www.unichain.org",
+    description: "The L2 designed for DeFi. By Uniswap. Built on the Superchain. ",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/unichain-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "unichain", 
+  },
+  {
+    id: "5773",
     name: "thePAC Finance",
     address: null,
     symbol: "-",

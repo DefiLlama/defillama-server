@@ -643,6 +643,7 @@ const data3: Protocol[] = [
   {
     id: "2727",
     name: "Koi Finance AMM", // rebranded from Mute.io
+    previousNames: ["Mute.io"],
     address: "era:0xa995ad25ce5eb76972ab356168f5e1d9257e4d05",
     symbol: "KOI",
     url: "https://dapp.koi.finance",
@@ -868,6 +869,7 @@ const data3: Protocol[] = [
   {
     id: "2737",
     name: "Persistence DEX", // previous Dexter https://blog.persistence.one/2024/06/11/rebranding-dexter-introducing-persistence-dex-and-enhancing-ecosystem-alignment/
+    previousNames: ["Dexter"],
     address: null,
     symbol: "-",
     url: "https://app.persistence.one",
@@ -6248,6 +6250,7 @@ const data3: Protocol[] = [
   {
     id: "2971",
     name: "AstroSwap AMM", //rebrand from StarkEx
+    previousNames: ["StarkEx"],
     address: null,
     symbol: "-",
     url: "https://astroswap.xyz",
@@ -13283,6 +13286,7 @@ const data3: Protocol[] = [
   {
     id: "3280",
     name: "ZKBase", //previous ZKSwap (ZKSync)
+    previousNames: ["ZKSwap (ZKSync)"],
     address: "0xBBBbbBBB46A1dA0F0C3F64522c275BAA4C332636",
     symbol: "ZKB", //Previous token was zks
     url: "https://zkbase.org/",
@@ -14112,6 +14116,7 @@ const data3: Protocol[] = [
   {
     id: "3316",
     name: "TanX.fi", //previous Brine.fi , they rebrand
+    previousNames: ["Brine.fi"],
     address: null,
     symbol: "-",
     url: "https://www.tanx.fi",
@@ -14993,6 +14998,7 @@ const data3: Protocol[] = [
   {
     id: "3354",
     name: "slisBNB", // rebrand from Synclub Staked BNB
+    previousNames: ["Synclub Staked BNB"],
     address: "bsc:0xFceB31A79F71AC9CBDCF853519c1b12D379EdC46",
     symbol: "LISTA",
     assetToken: "slisBNB",
@@ -16233,6 +16239,7 @@ const data3: Protocol[] = [
   {
     id: "3408",
     name: "Lynex V2", // previously Lynex Fusion
+    previousNames: ["Lynex Fusion"],
     address: "linea:0x1a51b19ce03dbe0cb44c1528e34a7edd7771e9af",
     symbol: "LYNX",
     url: "https://app.lynex.fi/",
@@ -19919,6 +19926,7 @@ const data3: Protocol[] = [
   {
     id: "3571",
     name: "MagicSea AMM", // rebrand from ShimmerSea
+    previousNames: ["ShimmerSea"],
     address: null,
     symbol: "-",
     url: "https://app.magicsea.finance/swap",
@@ -22631,6 +22639,7 @@ const data3: Protocol[] = [
   {
     id: "3690",
     name: "SuperSweth Vault", // previously Swell Vault
+    previousNames: ["Swell Vault"],
     address: null,
     symbol: "-",
     url: "https://www.swellnetwork.io/vault",
@@ -26163,6 +26172,7 @@ const data3: Protocol[] = [
   {
     id: "3846",
     name: "deBridge", // previous DLN rebrand here https://github.com/DefiLlama/defillama-server/pull/6590/files
+    previousNames: ["DLN"],
     address: null,
     symbol: "-",
     url: "https://debridge.finance",
@@ -27906,6 +27916,7 @@ const data3: Protocol[] = [
   {
     id: "3923",
     name: "Derive V2", // rebrand from Lyra V2
+    previousNames: ["Lyra V2"],
     address: "0xb1d1eae60eea9525032a6dcb4c1ce336a1de71be",
     symbol: "DRV",
     url: "https://derive.xyz",
@@ -29579,6 +29590,7 @@ const data3: Protocol[] = [
   {
     id: "3995",
     name: "Parasail", // rebrand from Repl
+    previousNames: ["Repl"],
     address: null,
     symbol: "-",
     assetToken: "pFIL",
@@ -32635,6 +32647,7 @@ const data3: Protocol[] = [
   {
     id: "4126",
     name: "Beets LST", // previously Beethoven X LST
+    previousNames: ["Beethoven X LST"],
     address: "sonic:0x2d0e0814e62d80056181f5cd932274405966e4f0",
     symbol: "BEETS",
     assetToken: "stS",
@@ -39403,6 +39416,7 @@ const data3: Protocol[] = [
   {
     id: "4421",
     name: "AILayer farm", // rebrand from AINN Layer2
+    previousNames: ["AINN Layer2"],
     address: null,
     symbol: "-",
     url: "https://ailayer.xyz/",
@@ -49929,6 +49943,7 @@ const data3: Protocol[] = [
   {
     id: "4882",
     name: "Usual", // previously usual money
+    previousNames: ["Usual Money"],
     address: "0xC4441c2BE5d8fA8126822B9929CA0b81Ea0DE38E",
     symbol: "USUAL",
     url: "https://usual.money",
@@ -53214,6 +53229,7 @@ const data3: Protocol[] = [
   {
     id: "5027", 
     name: "MEMECAST.AI", // previously 4cast
+    previousNames: ["4cast"],
     address: null,
     symbol: "-",
     url: "https://www.memecast.ai/",
@@ -53954,6 +53970,7 @@ const data3: Protocol[] = [
   {
     id: "5060",
     name: "Derive Options", // rebrand from Lyra Options
+    previousNames: ["Lyra Options"],
     address: "0xb1d1eae60eea9525032a6dcb4c1ce336a1de71be",
     symbol: "DRV",
     url: "https://derive.xyz",
@@ -54625,6 +54642,7 @@ const data3: Protocol[] = [
   {
     id: "5090",
     name: "Level", // previously Level Money
+    previousNames: ["Level Money"],
     address: null,
     symbol: "-",
     url: "https://www.level.money",

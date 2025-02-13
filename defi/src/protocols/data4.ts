@@ -4595,5 +4595,27 @@ const data4: Protocol[] = [
     audit_links: ["https://takara.gitbook.io/takara-lend/protocol-information/audits"],
     listedAt: 1739459439
   },
+  {
+    id: "5784",
+    name: "Haedal AMM Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://haedal.xyz/",
+    description: "Decentralized exchange on Sui",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/haedal-amm-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sui"],
+    oracles: [],
+    forkedFrom: [],
+    module: "haedal-amm/index.js",
+    twitter: "haedalprotocol", 
+    parentProtocol: "parent#haedal",
+    listedAt: 1739465147
+  },
 ];
 export default data4;

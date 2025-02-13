@@ -18043,7 +18043,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3489",
-    name: "Haedal Protocol",
+    name: "Haedal Protocol", 
     address: null,
     symbol: "-",
     assetToken: "HASUI",
@@ -18062,6 +18062,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "HaedalProtocol",
+    parentProtocol: "parent#haedal",
     listedAt: 1693995017,
   },
   {

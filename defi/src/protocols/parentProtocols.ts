@@ -6520,6 +6520,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PiperxProtocol",
   },
+  {
+    id: "parent#haedal",
+    name: "Haedal",
+    url: "https://haedal.xyz/",
+    description: "A place to stake and earn on Sui",
+    logo: `${baseIconsUrl}/haedal.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HaedalProtocol",
+  },
 ];
 
 export default parentProtocols;

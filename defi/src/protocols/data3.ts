@@ -65477,14 +65477,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5576",
-    name: "CrossFi xSwap",
+    name: "xSwap DEX", // previously CrossFi xSwap
     address: null,
     symbol: "-",
-    url: "https://crossfi.org/swap/",
+    url: "https://xswap.ms/swap/",
     description:
       "Exchange tokens issued on the CrossFi Chain",
     chain: "CrossFi",
-    logo: `${baseIconsUrl}/crossfi-xswap.jpg`,
+    logo: `${baseIconsUrl}/crossfi-xswap.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -65494,7 +65494,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "xswap/index.js",
-    twitter: "crossfichain",
+    twitter: "xswapms",
     listedAt: 1735955529
   },
   {

@@ -6514,12 +6514,11 @@ const parentProtocols: IParentProtocol[] = [
     name: "PiperX",
     url: "https://www.piperx.xyz/",
     description: "Decentralized exchange on Story",
-    logo: `${baseIconsUrl}/sosovalue.jpg`,
+    logo: `${baseIconsUrl}/piperx.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "SoSoValueCrypto",
-    github: ["SoSoValueLabs"],
+    twitter: "PiperxProtocol",
   },
 ];
 

@@ -4352,7 +4352,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "unichain/index.js",
     twitter: "unichain", 
   },
   {

@@ -4574,7 +4574,7 @@ const data4: Protocol[] = [
     listedAt: 1739459432
   },
   {
-    id: "5782",
+    id: "5783",
     name: "Takara Lend",
     address: null,
     symbol: "-",

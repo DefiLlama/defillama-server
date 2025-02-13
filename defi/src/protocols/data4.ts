@@ -4484,7 +4484,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "unichain", 
+    twitter: "StoryProtocol", 
   },
 ];
 export default data4;

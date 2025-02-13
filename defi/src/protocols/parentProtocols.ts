@@ -6509,6 +6509,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SoSoValueCrypto",
     github: ["SoSoValueLabs"],
   },
+  {
+    id: "parent#piperx",
+    name: "PiperX",
+    url: "https://www.piperx.xyz/",
+    description: "Decentralized exchange on Story",
+    logo: `${baseIconsUrl}/sosovalue.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SoSoValueCrypto",
+    github: ["SoSoValueLabs"],
+  },
 ];
 
 export default parentProtocols;

@@ -4617,5 +4617,27 @@ const data4: Protocol[] = [
     parentProtocol: "parent#haedal",
     listedAt: 1739465147
   },
+  {
+    id: "5785",
+    name: "BitFi Basis",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitfi.one",
+    description: "Reliable returns with bfUSD, our yield-bearing stablecoin that fuels stability while amplifying your earnings in a dynamic ecosystem.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/bitfi-basis.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bitfi-cedefi/index.js",
+    twitter: "Bitfi_Org", 
+    parentProtocol: "parent#bitfi",
+    listedAt: 1739530444
+  },
 ];
 export default data4;

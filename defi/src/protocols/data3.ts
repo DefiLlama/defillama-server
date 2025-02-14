@@ -50744,14 +50744,15 @@ const data3: Protocol[] = [
   },
   {
     id: "4917",
-    name: "BitFi",
+    name: "BitFi BTC",
+    previousNames: ["BitFi"],
     address: null,
     symbol: "-",
     url: "https://bitfi.org",
     description:
       "BitFi is a revolutionary CeDeFi platform that combines secure staking mechanisms with innovative synthetic assets to create a robust and dynamic ecosystem.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/bitfi.jpg`,
+    logo: `${baseIconsUrl}/bitfi-btc.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -50762,6 +50763,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "bitfi/index.js",
     twitter: "Bitfi_Org",
+    parentProtocol: "parent#bitfi",
     listedAt: 1721821903,
   },
   {

@@ -6531,6 +6531,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HaedalProtocol",
   },
+  {
+    id: "parent#bitfi",
+    name: "BitFi",
+    url: "https://bitfi.org",
+    description: "BitFi is a revolutionary CeDeFi platform that combines secure staking mechanisms with innovative synthetic assets to create a robust and dynamic ecosystem.",
+    logo: `${baseIconsUrl}/bitfi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Bitfi_Org",
+  },
 ];
 
 export default parentProtocols;

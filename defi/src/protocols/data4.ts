@@ -1787,7 +1787,7 @@ const data4: Protocol[] = [
     module: "resolv/index.js",
     twitter: "ResolvLabs",
     forkedFrom: [],
-    oracles: ["Pyth","RedStone"], // https://docs.resolv.xyz/litepaper/for-developers/smart-contracts
+    oracles: ["Pyth", "RedStone"], // https://docs.resolv.xyz/litepaper/protocol-mechanics/collateral-pool https://docs.resolv.xyz/litepaper/for-developers/smart-contracts
     oraclesBreakdown: [
       {
         name: "RedStone",

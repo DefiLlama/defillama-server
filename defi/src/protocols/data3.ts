@@ -48546,7 +48546,7 @@ const data3: Protocol[] = [
     module: "resolv/index.js",
     twitter: "ResolvLabs",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://docs.resolv.xyz/litepaper/for-developers/token-supply-operations/rlp
+    oracles: ["Pyth", "RedStone"], // https://docs.resolv.xyz/litepaper/protocol-mechanics/collateral-pool https://docs.resolv.xyz/litepaper/for-developers/token-supply-operations/rlp
     audit_links: ["https://docs.resolv.im/resources/security"],
     parentProtocol: "parent#resolv",
     listedAt: 1719485918,
@@ -62956,7 +62956,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Ethereum"],
-    oracles: ["Pyth"], // https://docs.resolv.xyz/litepaper/for-developers/token-supply-operations/usr
+    oracles: ["Pyth", "RedStone"], // https://docs.resolv.xyz/litepaper/protocol-mechanics/collateral-pool https://docs.resolv.xyz/litepaper/for-developers/token-supply-operations/usr
     forkedFrom: [],
     module: "resolv-usr/index.js",
     twitter: "ResolvLabs",

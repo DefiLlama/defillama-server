@@ -4354,29 +4354,6 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "unichain", 
-  },
-  {
-    id: "5773",
-    name: "thePAC Finance",
-    address: null,
-    symbol: "-",
-    url: "https://thepac.xyz/",
-    description:
-      "thePAC is a multi-chain solution that offers tokens backed by Real-World Assets (RWAs), delivering stable value and high-conviction returns.",
-    chain: "HashKey",
-    logo: `${baseIconsUrl}/logo-title.png`,
-    audits: "1",
-    audit_links: ["https://the-pac.gitbook.io/thepac/technical-documentation/smart-contract-audits"],
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "RWA",
-    chains: ["HashKey"],
-    oracles: [],
-    module: "thepac/index.js",
-    twitter: "thepacrwa",
-    language: "Solidity",
-    github: ["ThePacFinance"],
   }
 ];
 export default data4;

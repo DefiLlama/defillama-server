@@ -4718,5 +4718,28 @@ const data4: Protocol[] = [
     twitter: "hyperunit", 
     listedAt: 1739557972
   },
+
+  {
+    id: "5789",
+    name: "Eggs Finance",
+    address: "sonic:0xf26Ff70573ddc8a90Bd7865AF8d7d70B8Ff019bC",
+    symbol: "EGGS",
+    url: "https://eggs.finance/",
+    description: "Eggs Finance is a protocol on the Sonic blockchain that allows users to mint $EGGS tokens using $S, use $EGGS as collateral to borrow more $S, and participate in leveraged financial strategies",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/eggs-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Reserve Currency",
+    chains: ["Sonic"],
+    oracles: [],
+    forkedFrom: [],
+    module: "eggsfinance/index.js",
+    twitter: "eggsonsonic", 
+    audit_links: ["https://eggs-finance.gitbook.io/docs/audit"],
+    listedAt: 1739556355
+  },
 ];
 export default data4;

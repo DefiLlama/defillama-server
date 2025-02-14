@@ -814,6 +814,11 @@
       "decimals": "8",
       "symbol": "CoBTC",
       "to": "coingecko#bitcoin"
+    },
+    "0x623F2774d9f27B59bc6b954544487532CE79d9DF": {
+      "decimals": "8",
+      "symbol": "bfBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "stacks": {
@@ -4681,6 +4686,31 @@
       "to": "coingecko#frax-share",
       "decimals": 18,
       "symbol": "FXS"
+    },
+    "0x83c82f0f959ad3eff528ee513b43808aa53f4b37": {
+      "to": "coingecko#zenrock",
+      "decimals": 6,
+      "symbol": "ROCK"
+    },
+    "0x95597eb8d227a7c4b4f5e807a815c5178ee6dbe1": {
+      "to": "coingecko#milli-coin",
+      "decimals": 6,
+      "symbol": "MILLI"
+    },
+    "0xe5085112160ff75ee89a540cdba570eafdaf7f57": {
+      "to": "coingecko#kryptonite-staked-sei",
+      "decimals": 6,
+      "symbol": "STSEI"
+    },
+    "0x9faaea2cdd810b21594e54309dc847842ae301ce": {
+      "to": "coingecko#seiyaneth",
+      "decimals": 18,
+      "symbol": "seiyanETH"
+    },
+    "0xa8a3a5013104e093245164ea56588dbe10a3eb48": {
+      "to": "coingecko#super-seyian-eth",
+      "decimals": 18,
+      "symbol": "seiyanETH"
     }
   },
   "rss3_vsl": {

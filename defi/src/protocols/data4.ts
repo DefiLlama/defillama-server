@@ -4697,5 +4697,26 @@ const data4: Protocol[] = [
     audit_links: ["https://1322102881-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5HvxIwoS8YhIHItpA1lt%2Fuploads%2FOaz0PbKGiCBzBI2hKZcv%2FNM_0434_METAPOOL_FINAL.pdf?alt=media&token=73e9bebd-0716-4fbd-b3cf-f935f3973275"],
     listedAt: 1739555061
   },
+  {
+    id: "5788",
+    name: "Unit",
+    address: null,
+    symbol: "-",
+    url: "https://hyperunit.xyz/deposit",
+    description: "Unit is the asset tokenization layer on Hyperliquid, enabling seamless deposits and withdrawals.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/unit.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "unit-btc/index.js",
+    twitter: "hyperunit", 
+    listedAt: 1739557972
+  },
 ];
 export default data4;

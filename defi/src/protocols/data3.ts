@@ -8735,6 +8735,7 @@ const data3: Protocol[] = [
 
       }
     ],
+    parentProtocol: "parent#zklend-finance",
     listedAt: 1686175395,
   },
   {

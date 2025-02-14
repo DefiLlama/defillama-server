@@ -1787,7 +1787,19 @@ const data4: Protocol[] = [
     module: "resolv/index.js",
     twitter: "ResolvLabs",
     forkedFrom: [],
-    oracles: ["Pyth"], // https://docs.resolv.xyz/litepaper/for-developers/smart-contracts
+    oracles: ["Pyth","RedStone"], // https://docs.resolv.xyz/litepaper/for-developers/smart-contracts
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9296"]
+      },
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9296"]
+      },
+    ],
     stablecoins: ["resolv-usd"],
     github: ["resolv-im"],
     listedAt: 1737626553

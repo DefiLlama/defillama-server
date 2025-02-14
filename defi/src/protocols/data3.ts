@@ -32638,7 +32638,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Binance"],
-    oracles: ["Chainlink"],
+    oracles: ["RedStone"], //https://docs.ambit.finance/borrowing/oracles
     forkedFrom: [],
     module: "ambit-finance/index.js",
     twitter: "ambitfinance",
@@ -57841,7 +57841,7 @@ const data3: Protocol[] = [
     module: "superlend/index.js",
     twitter: "SuperlendHQ",
     forkedFrom: ["AAVE V3"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "RedStone"], //https://docs.superlend.xyz/superlend-features/oracle
     listedAt: 1728536649
   },
   {
@@ -64936,7 +64936,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Arbitrum"],
-    oracles: ["Pyth","Chainlink"],  // https://docs.tren.finance/protocol/asset-risk/oracle-risk
+    oracles: ["Pyth","Chainlink", "RedStone"],  // https://docs.tren.finance/protocol/asset-risk/oracle-risk, https://docs.tren.finance/protocol/isolated-modules#redstone-oracles
     forkedFrom: [],
     module: "tren-finance/index.js",
     twitter: "TrenFinance",

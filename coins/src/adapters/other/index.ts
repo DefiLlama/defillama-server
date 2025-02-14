@@ -156,6 +156,7 @@ export async function unknownTokens2(timestamp: number = 0) {
     ],
     optimism: [
       { pool: "0xf3C45b45223Df6071a478851B9C17e0630fDf535", unknown: "0x1e925De1c68ef83bD98eE3E130eF14a50309C01B", known: "0x4200000000000000000000000000000000000006", },
+      { pool: "0x62191C893DF8d26aC295BA1274a00975dc07190C", unknown: "0x676f784d19c7F1Ac6C6BeaeaaC78B02a73427852", known: "0x4200000000000000000000000000000000000006", },
     ],
   }
   const projectName = 'unknownTokensV2';

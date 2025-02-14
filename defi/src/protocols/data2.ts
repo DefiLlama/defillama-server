@@ -18771,6 +18771,32 @@ const data2: Protocol[] = [
       mantle: ["Chronicle"], // https://github.com/DefiLlama/defillama-server/pull/7767
       berachain:["Chronicle"] // https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract
     },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/7767"],
+        chains: [
+          {chain: "Arbitrum"},
+          {chain: "Polygon zkEVM"},
+          {chain: "X Layer"}
+        ]
+      },
+      {
+        name: "Chronicle",
+        type: "Primary",
+        proof: ["https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract"], // check oracles using oracleByToken fn
+        chains: [
+          {chain: "Mantle"},
+          {chain: "Berachain"}
+        ]
+      },
+      {
+        name: "RedStone",
+        type: "Fallback",
+        proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general"],
+      }
+    ],
     audit_links: [
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20Cyfrin%20-%202023-08-23.pdf",
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20SECBIT%20-%202021-08-02.pdf",

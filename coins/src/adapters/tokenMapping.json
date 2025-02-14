@@ -4666,6 +4666,21 @@
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
       "symbol": "SolvBTC.BBN"
+    },
+    "0x0555e30da8f98308edb960aa94c0db47230d2b9c": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
+    },
+    "0x059a6b0ba116c63191182a0956cf697d0d2213ec": {
+      "to": "coingecko#syusd",
+      "decimals": 18,
+      "symbol": "syUSD"
+    },
+    "0x64445f0aecc51e94ad52d8ac56b7190e764e561a": {
+      "to": "coingecko#frax-share",
+      "decimals": 18,
+      "symbol": "FXS"
     }
   },
   "rss3_vsl": {

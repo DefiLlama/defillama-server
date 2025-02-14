@@ -36,7 +36,7 @@
       "to": "coingecko#staked-ether"
     },
     "0x18878Df23e2a36f81e820e4b47b4A40576D3159C": {
-      "decimals": "18",
+      "decimals": "9",
       "symbol": "OHM",
       "to": "coingecko#olympus"
     },

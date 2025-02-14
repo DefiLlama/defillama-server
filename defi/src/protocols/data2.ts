@@ -1928,6 +1928,14 @@ const data2: Protocol[] = [
     category: "Dexs",
     chains: ["Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
     oracles: ["Chainlink"], //https://learn.woo.org/v/woofi-dev-docs/resources/on-chain-price-feeds
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://learn.woo.org/v/woofi-dev-docs/resources/on-chain-price-feeds"]
+
+      }
+    ],
     forkedFrom: [],
     module: "woofi.js",
     twitter: "_WOOFi",
@@ -3564,6 +3572,7 @@ const data2: Protocol[] = [
   {
     id: "1532",
     name: "MetalX Lending", // rebrand from proton loan
+    previousNames: ["Proton Loan"],
     address: "proton:LOAN-proton-loan.token",
     symbol: "LOAN",
     url: "https://protonloan.com",
@@ -3770,6 +3779,7 @@ const data2: Protocol[] = [
   {
     id: "1541",
     name: "Portal", //rebrand from Wormhole
+    previousNames: ["Wormhole"],
     address: "solana:85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
     symbol: "W",
     url: "https://portalbridge.com",
@@ -5188,6 +5198,7 @@ const data2: Protocol[] = [
   {
     id: "1602",
     name: "Lenfi", // Aada rebranded
+    previousNames: ["Aada"],
     address: "cardano:asset1khk46tdfsknze9k84ae0ee0k2x8mcwhz93k70d",
     symbol: "AADA",
     url: "https://aada.finance",
@@ -5346,6 +5357,7 @@ const data2: Protocol[] = [
   {
     id: "1609",
     name: "MetalX Swap", // rebrand from proton swap
+    previousNames: ["Proton Swap"],
     address: null,
     symbol: "-",
     url: "https://www.protonswap.com/swap",
@@ -9123,6 +9135,7 @@ const data2: Protocol[] = [
   {
     id: "1772",
     name: "APX Finance", // previous ApolloX , they rebrand 22/11/23  --- They merged with astherus on december 2024 https://x.com/APX_Finance/status/1864566550466089238
+    previousNames: ["ApolloX"],
     address: "bsc:0x78F5d389F5CDCcFc41594aBaB4B0Ed02F31398b3",
     symbol: "APX",
     url: "https://www.apollox.finance/en",
@@ -9560,6 +9573,7 @@ const data2: Protocol[] = [
   {
     id: "1791",
     name: "VaultCraft", //previous popcorn , they rebrand https://twitter.com/VaultCraft_io/status/1724512850616430757?s=20
+    previousNames: ["Popcorn"],
     address: "0xcE246eEa10988C495B4A90a905Ee9237a0f91543",
     symbol: "VCX",
     url: "https://vaultcraft.io/",
@@ -10245,6 +10259,7 @@ const data2: Protocol[] = [
   {
     id: "1820",
     name: "A51 Finance V2", // rebrand from Unipilot
+    previousNames: ["Unipilot"],
     address: "polygon:0xe9E7c09e82328c3107d367f6c617cF9977e63ED0",
     symbol: "A51",
     url: "https://a51.finance",
@@ -15280,6 +15295,7 @@ const data2: Protocol[] = [
   {
     id: "2038",
     name: "lisUSD", // rebrand from Helio Protocol (lisUSD)
+    previousNames: ["Helio Protocol (lisUSD)"],
     address: "bsc:0xFceB31A79F71AC9CBDCF853519c1b12D379EdC46",
     symbol: "LISTA",
     url: "https://lista.org/",
@@ -17632,6 +17648,14 @@ const data2: Protocol[] = [
     category: "Managed Token Pools",
     chains: ["Ethereum", "Arbitrum"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/5226
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/5226"]
+
+      }
+    ],
     forkedFrom: [],
     module: "sommelier/index.js",
     twitter: "sommfinance",
@@ -18745,7 +18769,34 @@ const data2: Protocol[] = [
       polygon_zkevm: ["Chainlink"],
       xlayer: ["Chainlink"],
       mantle: ["Chronicle"], // https://github.com/DefiLlama/defillama-server/pull/7767
+      berachain:["Chronicle"] // https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract
     },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/7767"],
+        chains: [
+          {chain: "Arbitrum"},
+          {chain: "Polygon zkEVM"},
+          {chain: "X Layer"}
+        ]
+      },
+      {
+        name: "Chronicle",
+        type: "Primary",
+        proof: ["https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract"], // check oracles using oracleByToken fn
+        chains: [
+          {chain: "Mantle"},
+          {chain: "Berachain"}
+        ]
+      },
+      {
+        name: "RedStone",
+        type: "Fallback",
+        proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general"],
+      }
+    ],
     audit_links: [
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20Cyfrin%20-%202023-08-23.pdf",
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20SECBIT%20-%202021-08-02.pdf",
@@ -21520,6 +21571,14 @@ const data2: Protocol[] = [
       "https://2926710696-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Ffrb9MGTK6eZJlEQJyylq%2Fuploads%2F1jfEDpGcd5YlnHusbKYO%2FNeodymeJito.pdf",
     ],
     oracles: [],
+    oraclesBreakdown: [
+      {
+        name: "Switchboard",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9193"]
+
+      }
+    ],
     listedAt: 1669265429,
     github: ["jito-foundation"],
   },
@@ -25961,6 +26020,7 @@ const data2: Protocol[] = [
   {
     id: "2502",
     name: "Mantle Treasury", // rebranded from BitDAO
+    previousNames: ["BitDAO"],
     address: "0x3c3a81e81dc49a522a592e7622a7e711c06bf354",
     symbol: "MNT",
     url: "https://www.mantle.xyz/",
@@ -28628,6 +28688,7 @@ const data2: Protocol[] = [
   {
     id: "2619",
     name: "MetalX Dex", // rebrand from Proton Dex
+    previousNames: ["Proton Dex"],
     address: "proton:",
     symbol: "-",
     url: "https://app.metalx.com/dex",

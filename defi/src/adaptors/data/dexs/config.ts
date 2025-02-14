@@ -2741,5 +2741,14 @@ export default {
     },
     "berachain-hub": {
         id: "5742"
+    },
+    "uniswap-v4": {
+        id: "5690"
+    },
+    "bitflow-fi": {
+        id: "4136"
+    },
+    "velar": {
+        id: "4339"
     }
 } as AdaptorsConfig

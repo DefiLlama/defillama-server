@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
 import { IRaise, IProtocol } from '../../types';
-import sluggify from '../../utils/sluggify';
+import sluggify, { sluggifyString } from '../../utils/sluggify';
 import { getLatestProtocolItems, } from '../db';
 import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl, hourlyTvl, hourlyUsdTokensTvl, hourlyTokensTvl, } from "../../utils/getLastRecord";
 import { log } from '@defillama/sdk'
@@ -121,6 +121,7 @@ async function updateMetadata() {
 
   data.protocols.forEach((p: any) => {
     cache.protocolSlugMap[sluggify(p)] = p
+    addMappingForPreviousNames(p, cache.protocolSlugMap)
     cache.metadata.isDoubleCountedProtocol[p.id] = p.doublecounted === true
     delete p.doublecounted
     if (p.parentProtocol) {
@@ -130,13 +131,24 @@ async function updateMetadata() {
   })
   data.entities.forEach((p: any) => {
     cache.entitiesSlugMap[sluggify(p)] = p
+    addMappingForPreviousNames(p, cache.entitiesSlugMap)
   })
   data.treasuries.forEach((p: any) => {
     cache.treasurySlugMap[sluggify(p).replace("-(treasury)", '')] = p
+    addMappingForPreviousNames(p, cache.treasurySlugMap, (name: string) => sluggifyString(name).replace("-(treasury)", ''))
   })
   data.parentProtocols.forEach((p: any) => {
     cache.parentProtocolSlugMap[sluggify(p)] = p
+    addMappingForPreviousNames(p, cache.parentProtocolSlugMap)
   })
+
+  function addMappingForPreviousNames(p: Protocol, _cache: any, _sluggify = sluggifyString) {
+    if (Array.isArray(p?.previousNames)) {
+      p.previousNames.forEach((name: string) => {
+        _cache[_sluggify(name)] = p
+      })
+    }
+  }
 }
 
 async function updateRaises() {

@@ -115,6 +115,14 @@ const data: Protocol[] = [
     twitter: "aave",
     audit_links: ["https://aave.com/security"],
     oracles: ["Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://aave.com/docs/primitives/oracle"]
+
+      }
+    ],
     parentProtocol: "parent#aave",
     wrongLiquidity: true,
   },
@@ -181,6 +189,14 @@ const data: Protocol[] = [
     twitter: "compoundfinance",
     audit_links: ["https://compound.finance/docs/security"],
     oracles: ["Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.compound.finance/helper-functions/#get-price"]
+
+      }
+    ],
     parentProtocol: "parent#compound-finance",
   },
   {
@@ -471,6 +487,14 @@ const data: Protocol[] = [
       "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
     ],
     oracles: ["Chainlink"], // https://www.cryptoninjas.net/2019/12/30/looprings-3-0-dex-protocol-integrates-chainlink-oracle-service/
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://www.cryptoninjas.net/2019/12/30/looprings-3-0-dex-protocol-integrates-chainlink-oracle-service/"]
+
+      }
+    ],
     governanceID: ["snapshot:loopringdao.eth"],
     github: ["Loopring"], //check
   },
@@ -3088,6 +3112,7 @@ const data: Protocol[] = [
   {
     id: "251", // previously Mimo Protocol
     name: "Parallel Protocol",
+    previousNames: ["Mimo Protocol"],
     address: "0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc",
     symbol: "MIMO",
     url: "https://mimo.capital",
@@ -8581,6 +8606,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "503",
     name: "Derive V1", // rebrand from Lyra V1
+    previousNames: ["Lyra V1"],
     address: "0xb1d1eae60eea9525032a6dcb4c1ce336a1de71be",
     symbol: "DRV",
     url: "https://derive.xyz",
@@ -8926,6 +8952,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "519",
     name: "Sirius", // rebrand of Tezos Liquidity Baking
+    previousNames: ["Tezos Liquidity Baking"],
     address: "tezos:KT1TxqZ8QtKvLu3V3JH7Gx58n7Co8pgtpQU5",
     symbol: "SIRS",
     url: "https://siriustoken.io/",
@@ -11886,6 +11913,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "654",
     name: "Beets DEX", // previously Beethoven X DEX
+    previousNames: ["Beethoven X DEX"],
     address: "sonic:0x2d0e0814e62d80056181f5cd932274405966e4f0",
     symbol: "BEETS",
     url: "https://beets.fi",
@@ -19381,6 +19409,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1014",
     name: "TempoDAO", //rebranded to revenant
+    previousNames: ["Revenant"],
     address: "avax:0x88a425b738682f58c0ff9fcf2cceb47a361ef4cf",
     symbol: "TEMPO",
     url: "https://www.revenant.gg/",
@@ -25538,6 +25567,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1299",
     name: "Guru Network Classic", // previously Guru Network
+    previousNames: ["Guru Network"],
     address: "fantom:0xf43Cc235E686d7BC513F53Fbffb61F760c3a1882",
     symbol: "ELITE",
     url: "https://ftm.guru",

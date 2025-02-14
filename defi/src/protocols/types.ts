@@ -39,6 +39,7 @@ export interface Protocol {
     [chain:string]: string[];
   },
   note?: string;
+  previousNames?: string[];
   deprecated?: boolean;
   oraclesBreakdown?: Array<{
     name: string,

@@ -294,6 +294,7 @@ export default {
         "id": "3450"
     },
     "shadow-exchange": {
+        parentId: "Shadow Exchange",
         id: "5570",
     },
     "holdstation-swap": {
@@ -338,5 +339,9 @@ export default {
     },
     "mondrain": {
         id: "5765",
+    },
+    "shadow-legacy": {
+        parentId: "Shadow Exchange",
+        id: "5682"
     }
 } as AdaptorsConfig

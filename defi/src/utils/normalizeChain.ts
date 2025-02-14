@@ -3921,6 +3921,15 @@ export const chainCoingeckoIds = {
     twitter: "unichain",
     url: "https://www.unichain.org",
   }, 
+  "Story": {
+    geckoId: "story-2",
+    symbol: "IP",
+    cmcId: "35626",
+    categories: ["EVM"],
+    chainId: 1514,
+    twitter: "StoryProtocol",
+    url: "https://www.story.foundation/",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4092,7 +4101,8 @@ const chainLabelMap = {
   "optimism": "Optimism",
   "spn": "Superposition",
   "zero_network": "Zero Network",
-  "silicon_zk": "Silicon zkEVM"
+  "silicon_zk": "Silicon zkEVM",
+  "sty": "Story"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

@@ -4450,7 +4450,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://ssi.sosovalue.com",
-    description: "Neutral strategy, fully hedged, delta-neutral exposure, with very little drawdown.",
+    description: "The SoSoValue Indexes (SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secure.",
     chain: "Base",
     logo: `${baseIconsUrl}/sosovalue-basis.jpg`,
     audits: "0",

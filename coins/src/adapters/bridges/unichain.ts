@@ -28,9 +28,6 @@ export default async function bridge(): Promise<Token[]> {
     });
   const response =  [tokens, extraTokens]
 
-  console.table(response.flat())
-  return []
-
   return response.flat()
 }
 

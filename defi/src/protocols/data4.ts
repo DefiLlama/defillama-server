@@ -4718,7 +4718,6 @@ const data4: Protocol[] = [
     twitter: "hyperunit", 
     listedAt: 1739557972
   },
-
   {
     id: "5789",
     name: "Eggs Finance",
@@ -4740,6 +4739,84 @@ const data4: Protocol[] = [
     twitter: "eggsonsonic", 
     audit_links: ["https://eggs-finance.gitbook.io/docs/audit"],
     listedAt: 1739556355
+  },
+  {
+    id: "5790",
+    name: "KittyPunch StableKitty",
+    address: null,
+    symbol: "-",
+    url: "https://stable.kittypunch.xyz/",
+    description:
+      "KittyPunch StableKitty, a low slippage stableswap",
+    chain: "Flow",
+    logo: `${baseIconsUrl}/kittypunch-stablekitty.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Flow"],
+    module: "kittypunch-stable/index.js",
+    twitter: "KittyPunchXYZ",
+    forkedFrom: ["Curve DEX"],
+    oracles: [],
+    parentProtocol: "parent#kittypunch",
+    listedAt: 1739584037
+  },
+  {
+    id: "5791",
+    name: "King Protocol",
+    address: null,
+    symbol: "-",
+    assetToken: "KING",
+    url: "https://kingprotocol.org/",
+    description: "King Protocol, (formerly LRT²) is a unified restaking rewards protocol acting as a vault that holds the rewards tokens as underlying assets. Through King Protocol, LRT projects can pool restaking network protocol rewards into a single vault and issue vault share tokens to their stakers (or distributor contract). This system cuts transaction costs and streamlines the rewards process, great for those with smaller stakes who might find it easier to manage and trade their shares collectively",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/king-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Restaking",
+    chains: ["Ethereum"],
+    oracles: ["Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13523"]
+      }
+    ],
+    forkedFrom: [],
+    module: "king/index.js",
+    twitter: "thekingprotocol", 
+    audit_links: [
+      "https://github.com/King-Protocol/king-cross-chain/blob/master/audit/NM_0452_King_Cross_Chain_FINAL.pdf",
+      "https://github.com/King-Protocol/king-protocol-sc/tree/master/audits"
+    ],
+    github: ["King-Protocol"],
+    listedAt: 1739584043
+  },
+  {
+    id: "5792",
+    name: "NOME Protocol",
+    address: "berachain:0xfaf4c16847bd0ebac546c49a9c9c6b81abd4b08c",
+    symbol: "NOME",
+    url: "https://app.nome.gg",
+    description: "Synthetic algostable",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/nome-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Berachain"],
+    oracles: [],
+    forkedFrom: [],
+    module: "nome-protocol/index.js",
+    twitter: "NOMEprotocol", 
+    listedAt: 1739584051
   },
 ];
 export default data4;

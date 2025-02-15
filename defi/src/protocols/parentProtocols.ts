@@ -6542,6 +6542,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Bitfi_Org",
   },
+  {
+    id: "parent#kittypunch",
+    name: "KittyPunch",
+    url: "https://www.kittypunch.xyz/",
+    description: "KittyPunch is a DeFi project built for consumer blockchains. Trade digital assets, earn yield, and even collect your own Kitties with KittyPunch.",
+    logo: `${baseIconsUrl}/kittypunch.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "KittyPunchXYZ",
+    github: ["Kitty-Punch"],
+  },
 ];
 
 export default parentProtocols;

@@ -57219,14 +57219,15 @@ const data3: Protocol[] = [
   },
   {
     id: "5203",
-    name: "KittyPunch",
+    name: "KittyPunch PunchSwap",
+    previousNames: ["KittyPunch"],
     address: null,
     symbol: "-",
     url: "https://swap.kittypunch.xyz/",
     description:
       "KittyPunch, a DeFi platform designed for consumer adoption",
     chain: "Flow",
-    logo: `${baseIconsUrl}/kittypunch.png`,
+    logo: `${baseIconsUrl}/kittypunch-punchswap.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -57237,7 +57238,7 @@ const data3: Protocol[] = [
     twitter: "KittyPunchXYZ",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    github: ["Kitty-Punch"],
+    parentProtocol: "parent#kittypunch",
     listedAt: 1727971555
   },
   {

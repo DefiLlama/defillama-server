@@ -2750,5 +2750,8 @@ export default {
     },
     "velar": {
         id: "4339"
+    },
+    "storyhunt-v3": {
+        id: "5781"
     }
 } as AdaptorsConfig

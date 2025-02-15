@@ -2756,5 +2756,8 @@ export default {
     },
     "kittypunch": {
         id: "5203"
+    },
+    "four-meme": {
+        id: "5174"
     }
 } as AdaptorsConfig

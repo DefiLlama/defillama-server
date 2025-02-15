@@ -2420,5 +2420,8 @@ export default {
     },
     "velar": {
         id: "4339"
+    },
+    "four-meme": {
+        id: "5174"
     }
 } as AdaptorsConfig

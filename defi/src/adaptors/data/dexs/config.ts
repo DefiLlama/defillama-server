@@ -2753,5 +2753,8 @@ export default {
     },
     "storyhunt-v3": {
         id: "5781"
+    },
+    "kittypunch": {
+        id: "5203"
     }
 } as AdaptorsConfig

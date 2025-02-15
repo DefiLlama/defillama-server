@@ -4818,5 +4818,67 @@ const data4: Protocol[] = [
     twitter: "NOMEprotocol", 
     listedAt: 1739584051
   },
+  {
+    id: "5793",
+    name: "Unleash Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://unleashprotocol.xyz/",
+    description: "One-Stop Shop for IP Management and Leading Money Market on Story",
+    chain: "Story",
+    logo: `${baseIconsUrl}/unleash-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Story"],
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13528"]
+      },
+      {
+        name: "RedStone",
+        type: "Fallback",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13528"]
+      }
+    ],
+    forkedFrom: ["AAVE V3"],
+    module: "unleash/index.js",
+    twitter: "UnleashProtocol", 
+    audit_links: ["https://github.com/unleash-protocol/unleash-audit/tree/main/audit-reports"],
+    listedAt: 1739648145
+  },
+  {
+    id: "5794",
+    name: "AZEX",
+    address: "berachain:0xDAd7898717AdE066E1114E6bdbFaFd8A6F378B7b",
+    symbol: "AZT",
+    url: "https://azex.io/",
+    description: "AZEx is a decentralized peer-to-pool perpetual DEX (Perp DEX) deeply integrated with blockchain mechanisms. AZEx achieves decentralization, transparency, and automation to efficiently connect traders and liquidity providers (LPs). Funds within the platform are intelligently routed to top DeFi protocols in the Berachain ecosystem—such as DEXs, lending platforms, perpetuals, and yield aggregators—for farming opportunities. This approach fully unlocks the potential of on-chain assets, while AZEx incentivizes participants with validator rewards and AZT, its native platform token, maximizing user profits",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/azex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Berachain"],
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.azex.io/core-features-and-mechanisms/trading-features#id-2-smart-price-aggregation"]
+      }
+    ],
+    forkedFrom: [],
+    module: "azex/index.js",
+    twitter: "azex_io", 
+    listedAt: 1739648151
+  },
 ];
 export default data4;

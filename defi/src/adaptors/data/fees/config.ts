@@ -2423,5 +2423,13 @@ export default {
     },
     "four-meme": {
         id: "5174"
+    },
+    "pulsex-v1": {
+        parentId: "PulseX",
+        id: "2995"
+    },
+    "pulsex-v2": {
+        parentId: "PulseX",
+        id: "3060"
     }
 } as AdaptorsConfig

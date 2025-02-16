@@ -1,3 +1,4 @@
+import { getCurrentUnixTimestamp } from "../../utils/date";
 import {
   addToDBWritesList,
   getTokenAndRedirectDataMap,
@@ -10,7 +11,7 @@ const target: string = "0x5261c5A5f08818c08Ed0Eb036d9575bA1E02c1d6";
 const chain: string = "berachain";
 
 export async function kodiak(timestamp: number = 0): Promise<Write[]> {
-  const api = await getApi(chain, timestamp,);
+  const api = await getApi(chain,  timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,);
 
   const deployers: string[] = await api.call({ target, abi: "address[]:getDeployers", });
 

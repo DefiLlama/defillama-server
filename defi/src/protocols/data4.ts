@@ -4880,5 +4880,27 @@ const data4: Protocol[] = [
     twitter: "azex_io", 
     listedAt: 1739648151
   },
+  {
+    id: "5795",
+    name: "PulseX StableSwap",
+    address: "pulse:0x95B303987A60C71504D99Aa1b13B4DA07b0790ab",
+    symbol: "PLSX",
+    url: "https://app.pulsex.com/swap",
+    description: `PulseX enables you to exchange tokens ("PRC20s") on PulseChain for one another`,
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/pulsex-stableswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Pulse"],
+    module: "dummy.js",
+    twitter: "PulseXcom",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    parentProtocol: "parent#pulsex",
+  },
 ];
 export default data4;

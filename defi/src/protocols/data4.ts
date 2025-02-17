@@ -4664,7 +4664,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: "CeDeFi",
     chains: ["Ripple"],
     oracles: [],
     forkedFrom: [],

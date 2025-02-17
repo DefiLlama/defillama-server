@@ -4915,7 +4915,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP Manager",
+    category: "Yield Aggregator",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

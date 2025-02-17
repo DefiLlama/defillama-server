@@ -2759,5 +2759,9 @@ export default {
     },
     "four-meme": {
         id: "5174"
+    },
+    "pulsex-stableswap": {
+        parentId: "PulseX",
+        id: "5795",
     }
 } as AdaptorsConfig

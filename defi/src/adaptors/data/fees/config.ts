@@ -2431,5 +2431,9 @@ export default {
     "pulsex-v2": {
         parentId: "PulseX",
         id: "3060"
+    },
+    "pulsex-stableswap": {
+        parentId: "PulseX",
+        id: "5795",
     }
 } as AdaptorsConfig

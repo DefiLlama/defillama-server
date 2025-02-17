@@ -1,4 +1,3 @@
-import { getCurrentUnixTimestamp } from "../../utils/date";
 import {
   addToDBWritesList,
   getTokenAndRedirectDataMap,
@@ -11,17 +10,23 @@ const target: string = "0x5261c5A5f08818c08Ed0Eb036d9575bA1E02c1d6";
 const chain: string = "berachain";
 
 export async function kodiak(timestamp: number = 0): Promise<Write[]> {
-  const api = await getApi(chain,  timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,);
+
+  const api = await getApi(chain, timestamp);
 
   const deployers: string[] = await api.call({ target, abi: "address[]:getDeployers", });
 
-  const islands: string[] = (
+  let islands: string[] = (
     await api.multiCall({
       abi: "function getIslands(address) view returns (address[])",
       calls: deployers,
       target,
     })
   ).flat();
+
+  let infoFilters = await api.multiCall({ abi: "function getUnderlyingBalances() view returns (uint256, uint256)", calls: islands, })
+  islands = islands.filter((_, i) => {
+    return !(infoFilters[i][0] === "0" && infoFilters[i][1] === "0");
+  });
 
   const [token0s, token1s, balances, infos] = await Promise.all([
     api.multiCall({ abi: "address:token0", calls: islands, }),
@@ -31,7 +36,7 @@ export async function kodiak(timestamp: number = 0): Promise<Write[]> {
   ]);
 
   const underlyingData = await getTokenAndRedirectDataMap(
-    [...new Set([...token0s, ...token1s])],
+    [...new Set([...token0s, ...token1s].map(i => i.toLowerCase()))],
     chain,
     timestamp,
   );
@@ -40,7 +45,7 @@ export async function kodiak(timestamp: number = 0): Promise<Write[]> {
     token: string,
     balance: number,
   ): { aum: number; confidence: number } | undefined {
-    const tokenData = underlyingData[token];
+    const tokenData = underlyingData[token.toLowerCase()]
     if (!tokenData) return;
     return {
       aum: (tokenData.price * balance) / 10 ** tokenData.decimals,
@@ -73,5 +78,5 @@ export async function kodiak(timestamp: number = 0): Promise<Write[]> {
     );
   });
 
-  return writes;
+  return writes
 }

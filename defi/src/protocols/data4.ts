@@ -4942,7 +4942,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "knightrade/index.js",
-    twitter: "knightrade", 
+    twitter: "KnightradeTeam", 
     listedAt: 1739812839
   },
   {

@@ -25453,13 +25453,14 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Meter"],
+    chains: ["Meter","Berachain"],
     oraclesByChain: {
       zklink: ["RedStone"], //https://docs.sumer.money/developers/price-feeds/redstone-price-feeds-on-zklink-nova
       meter: ["Pyth"], //https://docs.sumer.money/developers/price-feeds/pyth-price-feeds-on-meter
       ethereum: ["Chainlink"],
       arbitrum: ["Chainlink"], // https://docs.sumer.money/developers/price-feeds/chainlink-price-feeds-on-arbitrum
       base: ["Chainlink"], // https://docs.sumer.money/developers/price-feeds/chainlink-price-feeds-on-base
+      berachain: ["eOracle"],
     },
     forkedFrom: ["Compound V2"],
     module: "sumer/index.js",

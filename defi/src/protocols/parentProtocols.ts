@@ -6554,6 +6554,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "KittyPunchXYZ",
     github: ["Kitty-Punch"],
   },
+  {
+    id: "parent#summer.fi",
+    name: "Summer.fi",
+    url: "https://summer.fi",
+    description: "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX.",
+    logo: `${baseIconsUrl}/summer.fi.png`,
+    gecko_id: "summer-2",
+    cmcId: null,
+    chains: [],
+    twitter: "summerfinance_",
+    github: ["OasisDEX"],
+  },
 ];
 
 export default parentProtocols;

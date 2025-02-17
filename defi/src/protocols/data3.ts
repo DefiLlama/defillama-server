@@ -46704,14 +46704,15 @@ const data3: Protocol[] = [
   },
   {
     id: "4741",
-    name: "Summer.fi",
+    name: "Summer.fi Pro",
+    previousNames: ["Summer.fi"],
     address: null,
     symbol: "-",
-    url: "https://summer.fi",
+    url: "https://pro.summer.fi/",
     description:
-      "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX. Discord: https://discord.gg/summerfi",
+      "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/summer.fi.png`,
+    logo: `${baseIconsUrl}/summer.fi-pro.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -46720,9 +46721,9 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "summer-fi/index.js",
     twitter: "summerfinance_",
+    parentProtocol: "parent#summer.fi",
     forkedFrom: [],
     oracles: [], // denied adding chronicle based on info provided here: https://github.com/DefiLlama/defillama-server/pull/8148
-    github: ["OasisDEX"],
     listedAt: 1690209925,
   },
   {

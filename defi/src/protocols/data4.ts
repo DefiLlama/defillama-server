@@ -4902,5 +4902,27 @@ const data4: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#pulsex",
   },
+  {
+    id: "5796",
+    name: "Lazy Summer Protocol",
+    address: "base:0x194f360d130f2393a5e9f3117a6a1b78abea1624",
+    symbol: "SUMR",
+    url: "https://summer.fi",
+    description: "The Lazy Summer Protocol offers Automated Yield across DeFi's highest quality protocols on Ethereum, Base and Arbitrum. It uses AI Powered Keepers to continually monitor and rebalance the supported Vaults offering users the best available yields within strict risk parameters, set and managed by leading risk management firm BlockAnalitica.",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/lazy-summer-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP Manager",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "lazy-summer-protocol/index.js",
+    twitter: "summerfinance_", 
+    parentProtocol: "parent#summer.fi",
+    listedAt: 1739789703
+  },
 ];
 export default data4;

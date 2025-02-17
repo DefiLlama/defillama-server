@@ -15277,7 +15277,7 @@ const data3: Protocol[] = [
       },
       {
         name: "Edge",
-        type: "Secondary",
+        type: "Primary",
         proof: ["https://x.com/GMX_IO/status/1866794916392874021", "https://gov.gmx.io/t/implementation-of-chaos-labs-risk-oracles/3861"]
 
       }

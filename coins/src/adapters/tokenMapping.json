@@ -6928,6 +6928,16 @@
       "to": "coingecko#edu-coin",
       "decimals": 18,
       "symbol": "WEDU"
+    },
+    "0x836d275563bab5e93fd6ca62a95db7065da94342": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0x7277cc818e3f3ffbb169c6da9cc77fc2d2a34895": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
     }
   },
   "artela": {

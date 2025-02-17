@@ -4970,6 +4970,7 @@ const data4: Protocol[] = [
       "https://3573018453-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzEE4RoSkf1KPe6qHUHZb%2Fuploads%2FUFxBvo4XJlvkU9Fzh8nH%2FAstraSec-AuditReport-Beradrome.pdf?alt=media&token=18a51c47-3e95-4340-9a1b-96502c76c590"
     ],
     github: ["BeraLabs"],
+    treasury: "beradrome",
     listedAt: 1739812845
   },
   {

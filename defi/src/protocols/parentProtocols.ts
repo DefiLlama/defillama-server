@@ -6566,6 +6566,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "summerfinance_",
     github: ["OasisDEX"],
   },
+  {
+    id: "parent#goplus-security",
+    name: "GoPlus Security",
+    url: "https://gopluslabs.io",
+    description: "GoPlus Network is an open, permissionless and user-driven Modular User Security Layer for Web3. Adaptable and designed to seamlessly integrate with any blockchain, it makes chains easy to enhance user safety to protect their users.",
+    logo: `${baseIconsUrl}/goplus-security.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "GoPlusSecurity",
+  },
 ];
 
 export default parentProtocols;

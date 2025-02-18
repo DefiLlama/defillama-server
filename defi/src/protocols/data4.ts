@@ -5149,5 +5149,28 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1739891207
   },
+  {
+    id: "5807",
+    name: "GoPlus Locker",
+    address: null,
+    symbol: "-",
+    url: "https://gopluslabs.io",
+    description:
+      "GoPlus Network is an open, permissionless and user-driven Modular User Security Layer for Web3. Adaptable and designed to seamlessly integrate with any blockchain, it makes chains easy to enhance user safety to protect their users.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/goplus-locker.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Token Locker",
+    chains: ["Ethereum", "Binance","Base", "Arbitrum", "Gravity", "Morph"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "GoPlusSecurity",
+    parentProtocol: "parent#goplus-security",
+    audit_links: [],
+  },
 ];
 export default data4;

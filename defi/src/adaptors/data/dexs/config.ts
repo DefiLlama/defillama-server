@@ -2763,5 +2763,8 @@ export default {
     "pulsex-stableswap": {
         parentId: "PulseX",
         id: "5795",
+    },
+    "sailor-finance": {
+        id: "5647",
     }
 } as AdaptorsConfig

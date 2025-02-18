@@ -64087,7 +64087,7 @@ const data3: Protocol[] = [
     description: "OpenGPU ($oGPU) is a decentralized platform for sharing GPU computing power, enabling scalable AI, rendering, and other high-performance tasks with staking rewards for participants.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/opengpu.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "open-gpu",
     cmcId: "30751",
@@ -64097,6 +64097,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "opengpu/index.js",
     twitter: "openGPUnetwork",
+    audit_links: ["https://skynet.certik.com/projects/opengpu"],
     listedAt: 1734440956
   },
   {

@@ -46704,8 +46704,8 @@ const data3: Protocol[] = [
   },
   {
     id: "4741",
-    name: "Summer.fi Pro",
-    previousNames: ["Summer.fi"],
+    name: "Summer.fi Pro", // previous Summer.fi
+   // previousNames: ["Summer.fi"], this was causing problems, since it was using the name that we attribute to the parentProtocol
     address: null,
     symbol: "-",
     url: "https://pro.summer.fi/",

@@ -5221,5 +5221,27 @@ const data4: Protocol[] = [
     audit_links: [],
     github: ["flashbots"]
   },
+  {
+    id: "5810",
+    name: "Coinbase BTC",
+    address: null,
+    symbol: "-",
+    assetToken: "cbBTC",
+    url: "https://www.coinbase.com/cbbtc/proof-of-reserves",
+    description: "cbBTC is a wrapped token backed 1:1 by BTC held by Coinbase",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/coinbase-btc.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "coinbase-btc/index.js",
+    twitter: "coinbase", 
+    listedAt: 1739912521
+  },
 ];
 export default data4;

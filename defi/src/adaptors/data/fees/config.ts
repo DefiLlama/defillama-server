@@ -2438,5 +2438,8 @@ export default {
     },
     "kodiak-v2": {
         id: "5743",
+    },
+    "bloom": {
+        id: "5806",
     }
 } as AdaptorsConfig

@@ -5127,5 +5127,27 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1739890039
   },
+  {
+    id: "5806",
+    name: "Bloom Trading Bot",
+    address: null,
+    symbol: "-",
+    url: "https://www.bloombot.app/",
+    description: "Bloom is a cross-chain trading bot offering fast, automated trading with features like sniping, AFK trading, spot buys, quick sells, and limit orders",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bloom-trading-bot.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Base","Solana"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "BloomTradingBot",
+    audit_links: [],
+    listedAt: 1739891207
+  },
 ];
 export default data4;

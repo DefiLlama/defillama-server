@@ -2435,5 +2435,8 @@ export default {
     "pulsex-stableswap": {
         parentId: "PulseX",
         id: "5795",
+    },
+    "kodiak-v2": {
+        id: "5743",
     }
 } as AdaptorsConfig

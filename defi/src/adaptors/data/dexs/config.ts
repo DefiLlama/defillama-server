@@ -2766,5 +2766,8 @@ export default {
     },
     "sailor-finance": {
         id: "5647",
+    },
+    "kodiak-v2": {
+        id: "5743",
     }
 } as AdaptorsConfig

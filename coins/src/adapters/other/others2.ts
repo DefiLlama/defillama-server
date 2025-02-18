@@ -43,7 +43,24 @@ async function wstBFC(timestamp: number = 0) {
 }
 
 
+async function stOAS(timestamp: number = 0) {
+  const chain = "oas";
+  const api = await getApi(chain, timestamp);
+  const pricesObject: any = {};
+  const stOAS = "0x804c0ab078e4810edbec24a4ffb35ceb3e5bd61b";
+  const rate = await api.call({ abi: "uint256:exchangeRate", target: stOAS });
+  pricesObject[stOAS] = { price:rate/1e18, underlying: nullAddress };
+  return getWrites({
+    chain,
+    timestamp,
+    pricesObject,
+    projectName: "other2",
+  });
+}
+
+
 export const adapters = {
   solanaAVS,
   wstBFC,
+  stOAS,
 };

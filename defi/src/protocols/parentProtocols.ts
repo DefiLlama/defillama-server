@@ -10,18 +10,14 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#aave",
     name: "AAVE",
     url: "https://aave.com\r\n",
-    description:
-      "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",
+    description: "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",
     logo: `${baseIconsUrl}/aave.png`,
     chains: [],
     gecko_id: "aave",
     cmcId: "7278",
     treasury: "aave.js",
     twitter: "aave",
-    governanceID: [
-      "snapshot:aave.eth",
-      "eip155:1:0xEC568fffba86c094cf06b22134B23074DFE2252c",
-    ],
+    governanceID: ["snapshot:aave.eth", "eip155:1:0xEC568fffba86c094cf06b22134B23074DFE2252c"],
     wrongLiquidity: true, // missing balancer v1 pool
     github: ["aave", "bgd-labs"],
   },
@@ -29,8 +25,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#sushi",
     name: "Sushi",
     url: "https://sushi.com/",
-    description:
-      "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
+    description: "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
     logo: `${baseIconsUrl}/sushi.jpg`,
     gecko_id: "sushi",
     cmcId: "6758",
@@ -44,8 +39,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#sun",
     name: "SUN",
     url: "https://sun.io",
-    description:
-      "First integrated platform for stablecoin swap, stake-mining, and self-governance on TRON",
+    description: "First integrated platform for stablecoin swap, stake-mining, and self-governance on TRON",
     logo: `${baseIconsUrl}/sun.jpg`,
     gecko_id: "sun-token",
     cmcId: "10529",
@@ -71,8 +65,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#increment-finance",
     name: "Increment Finance",
     url: "https://increment.fi",
-    description:
-      "Increment Finance, One-stop DeFi Platform on Flow Blockchain.",
+    description: "Increment Finance, One-stop DeFi Platform on Flow Blockchain.",
     logo: `${baseIconsUrl}/increment-lending.png`,
     gecko_id: null,
     cmcId: null,
@@ -84,8 +77,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#pods-finance",
     name: "Pods",
     url: "https://www.pods.finance/",
-    description:
-      "Building DeFi, Strategies, primitives and tooling. Welcome to Pods.",
+    description: "Building DeFi, Strategies, primitives and tooling. Welcome to Pods.",
     logo: `${baseIconsUrl}/pods-finance.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -136,8 +128,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#magik-finance",
     name: "Magik Finance",
     url: "https://magik.finance/",
-    description:
-      "Yield Optimization as a Service and Algorithmic token pegged to $FTM on the Fantom Opera network.",
+    description: "Yield Optimization as a Service and Algorithmic token pegged to $FTM on the Fantom Opera network.",
     logo: `${baseIconsUrl}/magik-finance.png`,
     gecko_id: "magik",
     cmcId: "17941",
@@ -174,8 +165,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#mycelium",
     name: "Mycelium",
     url: "https://mycelium.xyz",
-    description:
-      "Previously Tracer DAO. Trade with liquidity, leverage and low fees.",
+    description: "Previously Tracer DAO. Trade with liquidity, leverage and low fees.",
     logo: `${baseIconsUrl}/mycelium.jpg`,
     gecko_id: "mycelium",
     cmcId: "21437",
@@ -215,8 +205,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#interlay",
     name: "Interlay",
     url: "https://interlay.io/",
-    description:
-      "Fully trustless and decentralized Bitcoin bridge and BTC DeFi hub",
+    description: "Fully trustless and decentralized Bitcoin bridge and BTC DeFi hub",
     logo: `${baseIconsUrl}/interlay.png`,
     gecko_id: "interlay",
     cmcId: "20366",
@@ -280,8 +269,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#redacted",
     name: "Dinero", // prev Redacted
     url: "https://dinero.xyz/",
-    description:
-      "Dinero is a suite of DeFi products that scale yield for protocols and users",
+    description: "Dinero is a suite of DeFi products that scale yield for protocols and users",
     logo: `${baseIconsUrl}/dinero.jpg`,
     gecko_id: "dinero-2",
     cmcId: null,
@@ -295,8 +283,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#tomb-finance",
     name: "Tomb Finance",
     url: "https://tomb.finance/",
-    description:
-      "home to the first algorithmic token pegged to $FTM on the Fantom Opera network",
+    description: "home to the first algorithmic token pegged to $FTM on the Fantom Opera network",
     logo: `${baseIconsUrl}/tomb-finance.jpg`,
     gecko_id: "tomb",
     cmcId: "11495",
@@ -322,8 +309,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#based-finance",
     name: "Based Finance",
     url: "https://next-gen.basedfinance.io/",
-    description:
-      "An innovative fork of tomb.finance, pegged to the price of 1 TOMB via seigniorage.",
+    description: "An innovative fork of tomb.finance, pegged to the price of 1 TOMB via seigniorage.",
     logo: `${baseIconsUrl}/based finance.png`,
     gecko_id: "based-finance",
     cmcId: "17954",
@@ -403,8 +389,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#izumi-finance",
     name: "iZUMi Finance",
     url: "https://izumi.finance/home",
-    description:
-      "Liquidity Redefined - A multi-chain DeFi protocol providing One-Stop Liquidity as a Service (LaaS).",
+    description: "Liquidity Redefined - A multi-chain DeFi protocol providing One-Stop Liquidity as a Service (LaaS).",
     logo: `${baseIconsUrl}/izumi finance.png`,
     gecko_id: "izumi-finance",
     cmcId: "16305",
@@ -430,8 +415,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#trader-joe",
     name: "LFJ",
     url: "https://lfj.gg/",
-    description:
-      "Let's F***ing Joe is your one-stop decentralized trading platform",
+    description: "Let's F***ing Joe is your one-stop decentralized trading platform",
     logo: `${baseIconsUrl}/trader-joe.png`,
     gecko_id: "joe",
     cmcId: "11396",
@@ -445,8 +429,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#handle-finance",
     name: "handle finance",
     url: "https://handle.fi",
-    description:
-      "the global defi FX protocol. borrow, convert & trade multi-currency #stablecoins.",
+    description: "the global defi FX protocol. borrow, convert & trade multi-currency #stablecoins.",
     logo: `${baseIconsUrl}/handle finance.jpg`,
     gecko_id: "handle-fi",
     cmcId: "11794",
@@ -460,8 +443,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#omnidex",
     name: "Omnidex",
     url: "https://omnidex.finance",
-    description:
-      "OmniDex is building a comprehensive decentralized trading platform on the Telos Blockchain.",
+    description: "OmniDex is building a comprehensive decentralized trading platform on the Telos Blockchain.",
     logo: `${baseIconsUrl}/omnidex.jpg`,
     gecko_id: "omnidex",
     cmcId: null,
@@ -486,8 +468,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#uniswap",
     name: "Uniswap",
     url: "https://uniswap.org/",
-    description:
-      "Swap, earn, and build on the leading decentralized crypto trading protocol.",
+    description: "Swap, earn, and build on the leading decentralized crypto trading protocol.",
     logo: `${baseIconsUrl}/uniswap.png`,
     gecko_id: "uniswap",
     cmcId: "7083",
@@ -532,8 +513,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#meteora",
     name: "Meteora",
     url: "https://meteora.ag/",
-    description:
-      "Building the most secure, sustainable & composable yield layer for all of Solana and DeFi",
+    description: "Building the most secure, sustainable & composable yield layer for all of Solana and DeFi",
     logo: `${baseIconsUrl}/meteora.png`,
     gecko_id: null,
     cmcId: null,
@@ -545,8 +525,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#folks-finance",
     name: "Folks Finance",
     url: "https://folks.finance/",
-    description:
-      "Innovative DeFi platform to lend, borrow, trade and manage digital assets.",
+    description: "Innovative DeFi platform to lend, borrow, trade and manage digital assets.",
     logo: `${baseIconsUrl}/folks-finance.jpg`,
     gecko_id: null, // xalgo preview only
     cmcId: null,
@@ -592,10 +571,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "MetavaultDAO",
-    governanceID: [
-      "snapshot:metavault-trade.eth",
-      "snapshot:metavault-dao.eth",
-    ],
+    governanceID: ["snapshot:metavault-trade.eth", "snapshot:metavault-dao.eth"],
     github: ["metavaultorg"],
   },
   /*
@@ -657,8 +633,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#mstable",
     name: "mStable",
     url: "https://mstable.org/",
-    description:
-      "mStable unites stablecoins, lending and swapping into one standard.",
+    description: "mStable unites stablecoins, lending and swapping into one standard.",
     logo: `${baseIconsUrl}/mstable.png`,
     gecko_id: "meta",
     cmcId: "5748",
@@ -714,8 +689,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#opyn",
     name: "Opyn",
     url: "https://www.opyn.co",
-    description:
-      "Opyn is building Defi-native derivatives and options infrastructure in DeFi",
+    description: "Opyn is building Defi-native derivatives and options infrastructure in DeFi",
     logo: `${baseIconsUrl}/opyn.png`,
     gecko_id: null,
     cmcId: null,
@@ -775,18 +749,14 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MetronomeDAO",
     treasury: "metronome.js",
-    governanceID: [
-      "snapshot:metronome.eth",
-      "compound:ethereum:0xc8697de7c190244bfd63d276823aa20035cb5a12",
-    ],
+    governanceID: ["snapshot:metronome.eth", "compound:ethereum:0xc8697de7c190244bfd63d276823aa20035cb5a12"],
     github: ["autonomoussoftware"],
   },
   {
     id: "parent#paraluni",
     name: "Paraluni",
     url: "https://paraluni.org",
-    description:
-      "Paraluni,based on the BSC,a no holding currency, no ICO, no pre-mining decentralized platform.",
+    description: "Paraluni,based on the BSC,a no holding currency, no ICO, no pre-mining decentralized platform.",
     logo: `${baseIconsUrl}/paraluni.png`,
     gecko_id: null,
     cmcId: null,
@@ -809,8 +779,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#inverse-finance",
     name: "Inverse Finance",
     url: "https://www.inverse.finance",
-    description:
-      "DOLA Borrowing Rights replace interest rates with a fixed fee that can earn you more.",
+    description: "DOLA Borrowing Rights replace interest rates with a fixed fee that can earn you more.",
     logo: `${baseIconsUrl}/inverse-finance.jpg`,
     gecko_id: "inverse-finance",
     cmcId: "8720",
@@ -828,8 +797,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#kujira-protocol",
     name: "Kujira Protocol",
     url: "https://kujira.app",
-    description:
-      "A decentralized ecosystem for protocols, builders and web3 users seeking sustainable FinTech.",
+    description: "A decentralized ecosystem for protocols, builders and web3 users seeking sustainable FinTech.",
     logo: `${baseIconsUrl}/kujira-protocol.png`,
     gecko_id: "kujira",
     cmcId: "15185",
@@ -842,8 +810,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#steakhut-finance",
     name: "Steakhut Finance",
     url: "https://www.steakhut.finance",
-    description:
-      "Discover endless DeFi opportunities, join the liquidity layer of Avalanche.",
+    description: "Discover endless DeFi opportunities, join the liquidity layer of Avalanche.",
     logo: `${baseIconsUrl}/steakhut-finance.png`,
     gecko_id: "steakhut-finance",
     cmcId: "20266",
@@ -896,8 +863,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#cap-finance",
     name: "Cap Finance",
     url: "https://www.cap.io",
-    description:
-      "Decentralized Perps. Trade with up to 100x leverage directly from your wallet. ",
+    description: "Decentralized Perps. Trade with up to 100x leverage directly from your wallet. ",
     logo: `${baseIconsUrl}/cap-finance.jpg`,
     gecko_id: "cap",
     treasury: "cap.js",
@@ -910,8 +876,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#sphere",
     name: "SPHERE",
     url: "https://www.sphere.finance",
-    description:
-      "The center of DeFi - earn revenue from multiple innovative streams by holding one token.",
+    description: "The center of DeFi - earn revenue from multiple innovative streams by holding one token.",
     logo: `${baseIconsUrl}/sphere.jpg`,
     gecko_id: "sphere-finance",
     cmcId: "18945",
@@ -974,8 +939,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#benddao",
     name: "BendDAO",
     url: "https://www.benddao.xyz",
-    description:
-      "Use your NFTs as collateral to borrow ETH or deposit your ETH and earn yields instantly.",
+    description: "Use your NFTs as collateral to borrow ETH or deposit your ETH and earn yields instantly.",
     logo: `${baseIconsUrl}/benddao.png`,
     gecko_id: "benddao",
     cmcId: "19162",
@@ -1064,8 +1028,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#surfswap",
     name: "Surfswap",
     url: "https://surfdex.io/",
-    description:
-      "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
+    description: "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
     logo: `${baseIconsUrl}/surfswap.jpg`,
     gecko_id: "surfswap",
     cmcId: null,
@@ -1105,8 +1068,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#opensea",
     name: "OpenSea",
     url: "https://opensea.io/",
-    description:
-      "OpenSea is the world's first and largest web3 marketplace for NFTs and crypto collectibles.",
+    description: "OpenSea is the world's first and largest web3 marketplace for NFTs and crypto collectibles.",
     logo: `${baseIconsUrl}/opensea.png`,
     gecko_id: null,
     cmcId: null,
@@ -1141,8 +1103,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#rocifi",
     name: "RociFi",
     url: "https://roci.fi",
-    description:
-      "RociFi - On-chain Credit Scoring and Capital-Efficient Lending Protocol",
+    description: "RociFi - On-chain Credit Scoring and Capital-Efficient Lending Protocol",
     logo: `${baseIconsUrl}/rocifi.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -1166,8 +1127,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#oswap",
     name: "Oswap",
     url: "https://oswap.io",
-    description:
-      "A fully decentralized protocol for automated liquidity provision on Obyte.",
+    description: "A fully decentralized protocol for automated liquidity provision on Obyte.",
     logo: `${baseIconsUrl}/oswap.jpg`,
     gecko_id: "byteball",
     cmcId: "1492",
@@ -1283,8 +1243,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#wynd",
     name: "WYND",
     url: "https://app.wynddao.com",
-    description:
-      "WYND is a new ReFi protocol to leverage DeFi tokenomics to regenerate the environment.",
+    description: "WYND is a new ReFi protocol to leverage DeFi tokenomics to regenerate the environment.",
     logo: `${baseIconsUrl}/wynd.jpg`,
     gecko_id: "wynd",
     cmcId: null,
@@ -1350,8 +1309,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#puzzleswaporg",
     name: "PuzzleSwapOrg",
     url: "https://puzzleswap.org/trade",
-    description:
-      "DEX 2.0 & Lending protocol built on Waves to bring a new light to DeFi experience",
+    description: "DEX 2.0 & Lending protocol built on Waves to bring a new light to DeFi experience",
     logo: `${baseIconsUrl}/puzzle-swap.jpg`,
     gecko_id: "puzzle-swap",
     cmcId: null,
@@ -1374,8 +1332,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#hadouken-finance",
     name: "Hadouken Finance",
     url: "https://hadouken.finance/",
-    description:
-      "An integrated borrowing/lending platform and AMM on Godwoken V1 Network.",
+    description: "An integrated borrowing/lending platform and AMM on Godwoken V1 Network.",
     logo: `${baseIconsUrl}/hadouken-finance.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -1599,8 +1556,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#hydradex",
     name: "Hydradex",
     url: "https://hydradex.org/#/swap",
-    description:
-      "Hydra DEX is the native decentralized exchange of Hydra chain",
+    description: "Hydra DEX is the native decentralized exchange of Hydra chain",
     logo: `${baseIconsUrl}/hydradex.png`,
     gecko_id: null,
     cmcId: null,
@@ -1649,8 +1605,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#curve-finance",
     name: "Curve Finance",
     url: "https://curve.fi",
-    description:
-      "Creating deep on-chain liquidity using advanced bonding curves",
+    description: "Creating deep on-chain liquidity using advanced bonding curves",
     logo: `${baseIconsUrl}/curve.png`,
     gecko_id: "curve-dao-token",
     cmcId: "6538",
@@ -1674,8 +1629,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#bluemove",
     name: "BlueMove",
     url: "https://bluemove.net",
-    description:
-      "The leading Multi-chain NFT Marketplace on Aptos & Sui Blockchain.",
+    description: "The leading Multi-chain NFT Marketplace on Aptos & Sui Blockchain.",
     logo: `${baseIconsUrl}/bluemove.png`,
     gecko_id: "bluemove",
     cmcId: "23359",
@@ -1686,8 +1640,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#bubbleswap",
     name: "Bubbleswap",
     url: "https://app.bubbleswap.io",
-    description:
-      "A fully decentralized protocol for automated liquidity provision on Hedera.",
+    description: "A fully decentralized protocol for automated liquidity provision on Hedera.",
     logo: `${baseIconsUrl}/bubbleswap.png`,
     gecko_id: null,
     cmcId: null,
@@ -1698,8 +1651,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#cream-finance",
     name: "CREAM Finance",
     url: "https://cream.finance/",
-    description:
-      "Money markets, liquid staking and protocol-to-protocol lending",
+    description: "Money markets, liquid staking and protocol-to-protocol lending",
     logo: `${baseIconsUrl}/cream-finance.png`,
     gecko_id: "cream-2",
     cmcId: "6193",
@@ -1723,8 +1675,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#cozy-finance",
     name: "Cozy Finance",
     url: "https://www.cozy.finance",
-    description:
-      "Cozy is an open-source protocol for automated and trust-minimized Protection Markets",
+    description: "Cozy is an open-source protocol for automated and trust-minimized Protection Markets",
     logo: `${baseIconsUrl}/cozy-finance.png`,
     gecko_id: null,
     cmcId: null,
@@ -1749,8 +1700,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#vyfinance",
     name: "VyFinance",
     url: "https://vyfi.io",
-    description:
-      "VyFinance offers an ecosystem that's easy to use and accessible for everyone.",
+    description: "VyFinance offers an ecosystem that's easy to use and accessible for everyone.",
     logo: `${baseIconsUrl}/vyfinance.png`,
     gecko_id: "vyfinance",
     cmcId: "17160",
@@ -1781,8 +1731,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#avely-finance",
     name: "Avely Finance",
     url: "https://avely.fi",
-    description:
-      "Avely is a leading-edge liquid staking protocol built on the Zilliqa blockchain.",
+    description: "Avely is a leading-edge liquid staking protocol built on the Zilliqa blockchain.",
     logo: `${baseIconsUrl}/avely-finance.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -1794,8 +1743,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#caviar",
     name: "Caviar",
     url: "https://www.caviar.sh",
-    description:
-      "Caviar is an NFT AMM that enables you to earn yield and easily provide liquidity for collections.",
+    description: "Caviar is an NFT AMM that enables you to earn yield and easily provide liquidity for collections.",
     logo: `${baseIconsUrl}/caviar.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -1806,8 +1754,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#tranchess",
     name: "Tranchess",
     url: "https://tranchess.com",
-    description:
-      "Yield Enhancing Asset Tracker with Varied Risk-Return Solutions.",
+    description: "Yield Enhancing Asset Tracker with Varied Risk-Return Solutions.",
     logo: `${baseIconsUrl}/tranchess.png`,
     gecko_id: "tranchess",
     cmcId: "10974",
@@ -1829,10 +1776,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CryptexFinance",
     treasury: "cryptex.js",
-    governanceID: [
-      "snapshot:cryptexdao.eth",
-      "compound:ethereum:0x271901c3268d0959bbc9543de4f073d3708c88f7",
-    ],
+    governanceID: ["snapshot:cryptexdao.eth", "compound:ethereum:0x271901c3268d0959bbc9543de4f073d3708c88f7"],
   },
   {
     id: "parent#y2k-finance",
@@ -1861,8 +1805,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#pulsex",
     name: "PulseX",
     url: "https://pulsex.com/",
-    description:
-      'PulseX enables you to exchange tokens ("PRC20s") on PulseChain for one another',
+    description: 'PulseX enables you to exchange tokens ("PRC20s") on PulseChain for one another',
     logo: `${baseIconsUrl}/pulsex.png`,
     gecko_id: "pulsex",
     cmcId: "25417",
@@ -1952,8 +1895,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#magpie-ecosystem",
     name: "Magpie Ecosystem",
     url: "https://link3.to/magpiexyz",
-    description:
-      "Magpie is a Multi-chain DeFi platform providing Yield & veTokenomics boosting services",
+    description: "Magpie is a Multi-chain DeFi platform providing Yield & veTokenomics boosting services",
     logo: `${baseIconsUrl}/magpie-xyz.png`,
     gecko_id: null,
     cmcId: null,
@@ -1994,8 +1936,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#maple-finance",
     name: "Maple Finance",
     url: "https://www.maple.finance",
-    description:
-      "Maple Finance is an institutional capital marketplace powered by blockchain technology.",
+    description: "Maple Finance is an institutional capital marketplace powered by blockchain technology.",
     logo: `${baseIconsUrl}/maple-finance.jpg`,
     gecko_id: "syrup",
     cmcId: "33824",
@@ -2075,8 +2016,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#claimswap",
     name: "ClaimSwap",
     url: "https://claimswap.org/",
-    description:
-      "Swap, earn, and claim on the decentralized, community driven platform",
+    description: "Swap, earn, and claim on the decentralized, community driven platform",
     logo: `${baseIconsUrl}/claimswap.jpg`,
     gecko_id: "claimswap",
     cmcId: null,
@@ -2180,8 +2120,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#pegasys",
     name: "PegaSys",
     url: "https://pegasys.finance",
-    description:
-      "Swap, earn, and build with the leading decentralized crypto trading protocol on Syscoin.",
+    description: "Swap, earn, and build with the leading decentralized crypto trading protocol on Syscoin.",
     logo: `${baseIconsUrl}/pegasys.png`,
     gecko_id: "pegasys",
     cmcId: null,
@@ -2292,8 +2231,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#venus-finance",
     name: "Venus",
     url: "https://venus.io/",
-    description:
-      "A Decentralized Marketplace for Lenders and Borrowers with Borderless Stablecoins",
+    description: "A Decentralized Marketplace for Lenders and Borrowers with Borderless Stablecoins",
     logo: `${baseIconsUrl}/venus.jpg`,
     gecko_id: "venus",
     cmcId: "7288",
@@ -2321,8 +2259,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#rehold",
     name: "ReHold",
     url: "https://reholdio.com", // change of website link duo to: https://medium.com/@bifotofficial/700-000-unauthorized-withdrawal-from-rehold-protocol-full-disclosure-and-next-steps-097119d545cd (from 1 side of the story)  - and the other side of the story https://prnt.sc/HspPo_049Lzk on https://rehold.io/  - Made on 26/09/2024
-    description:
-      "Multichain Trading Protocol. Trade, Earn, Swap across Bitcoin and EVM.",
+    description: "Multichain Trading Protocol. Trade, Earn, Swap across Bitcoin and EVM.",
     logo: `${baseIconsUrl}/rehold.jpg`, //rehold-multichain-trading
     gecko_id: null,
     cmcId: null,
@@ -2334,8 +2271,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#stellaswap",
     name: "StellaSwap",
     url: "https://stellaswap.com",
-    description:
-      "All your DeFi needs in one place. Swap, earn and build on Moonbeam's leading DEX",
+    description: "All your DeFi needs in one place. Swap, earn and build on Moonbeam's leading DEX",
     logo: `${baseIconsUrl}/stellaswap.jpg`,
     gecko_id: "stellaswap",
     cmcId: "17358",
@@ -2382,8 +2318,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#dexfinance",
     name: "DexFinance",
     url: "https://app.dexfinance.com/swap",
-    description:
-      "Bringing the world tools to optimize and simplify DeFi investing.",
+    description: "Bringing the world tools to optimize and simplify DeFi investing.",
     logo: `${baseIconsUrl}/dexfinance.png`,
     gecko_id: "dexfi-governance",
     cmcId: null,
@@ -2434,8 +2369,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#velodrome",
     name: "Velodrome",
     url: "https://velodrome.finance",
-    description:
-      "A revolutionary new AMM based on Solidly launched on Optimism.",
+    description: "A revolutionary new AMM based on Solidly launched on Optimism.",
     logo: `${baseIconsUrl}/velodrome.png`,
     gecko_id: "velodrome-finance",
     cmcId: "20435",
@@ -2443,9 +2377,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "VelodromeFi",
     github: ["velodrome-finance"],
     treasury: "velodrome.js",
-    governanceID: [
-      "compound:ethereum:0xa1d8800ae2f4794f2910cfcd835831faae69cea0",
-    ],
+    governanceID: ["compound:ethereum:0xa1d8800ae2f4794f2910cfcd835831faae69cea0"],
   },
   {
     id: "parent#grizzlyfi",
@@ -2513,8 +2445,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#echodex",
     name: "EchoDEX",
     url: "https://www.echodex.io",
-    description:
-      "EchoDEX, a decentralized exchange platform built on the Linea Consensys network.",
+    description: "EchoDEX, a decentralized exchange platform built on the Linea Consensys network.",
     logo: `${baseIconsUrl}/echodex.jpg`,
     gecko_id: "echodex-community-portion",
     cmcId: "27690",
@@ -2539,8 +2470,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#swapbased",
     name: "SwapBased",
     url: "https://swapbased.finance",
-    description:
-      "Kickstarting the Base ecosystem, SwapBased is THE DEX on Base.",
+    description: "Kickstarting the Base ecosystem, SwapBased is THE DEX on Base.",
     logo: `${baseIconsUrl}/swapbased.jpg`,
     gecko_id: "base",
     cmcId: "27789",
@@ -2551,8 +2481,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#ede",
     name: "EDE",
     url: "https://ede.finance",
-    description:
-      "Kickstarting the Base ecosystem, SwapBased is THE DEX on Base.",
+    description: "Kickstarting the Base ecosystem, SwapBased is THE DEX on Base.",
     logo: `${baseIconsUrl}/ede.png`,
     gecko_id: "el-dorado-exchange",
     cmcId: "22810",
@@ -2600,8 +2529,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#onering",
     name: "OneRing",
     url: "https://www.onering.tools",
-    description:
-      "One Ring is a Multi-Chain Cross-Stable Yield Optimizer Platform.",
+    description: "One Ring is a Multi-Chain Cross-Stable Yield Optimizer Platform.",
     logo: `${baseIconsUrl}/onering.jpg`,
     gecko_id: "onering",
     cmcId: null,
@@ -2612,8 +2540,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#meta-pool",
     name: "Meta Pool",
     url: "https://metapool.app",
-    description:
-      "Meta Pool is a liquid staking protocol built on the NEAR and Ethereum blockchain.",
+    description: "Meta Pool is a liquid staking protocol built on the NEAR and Ethereum blockchain.",
     logo: `${baseIconsUrl}/meta-pool.png`,
     gecko_id: "meta-pool",
     cmcId: "18755",
@@ -2649,8 +2576,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#spacefi",
     name: "SpaceFi",
     url: "https://spacefi.io",
-    description:
-      "SpaceFi is a cross-chain web3.0 platform, with DEX+Farm+NFT+Starter+Spacebase.",
+    description: "SpaceFi is a cross-chain web3.0 platform, with DEX+Farm+NFT+Starter+Spacebase.",
     logo: `${baseIconsUrl}/spacefi.png`,
     gecko_id: null,
     cmcId: null,
@@ -2662,8 +2588,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#knightswap",
     name: "KnightSwap",
     url: "https://knightswap.financial",
-    description:
-      "Trade, Earn, & Raid To Stack Your Riches While Securely Storing Them Within Our Castle Vaults.",
+    description: "Trade, Earn, & Raid To Stack Your Riches While Securely Storing Them Within Our Castle Vaults.",
     logo: `${baseIconsUrl}/knightswap-finance.png`,
     gecko_id: "knightswap",
     cmcId: "15841",
@@ -2689,8 +2614,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#lybra-finance",
     name: "Lybra Finance",
     url: "https://lybra.finance",
-    description:
-      "Lybra Finance is developing the next generation of Omnichain LSD-based stablecoins",
+    description: "Lybra Finance is developing the next generation of Omnichain LSD-based stablecoins",
     logo: `${baseIconsUrl}/lybra-finance.jpg`,
     gecko_id: "lybra-finance",
     cmcId: "24700",
@@ -2727,8 +2651,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#solidly-labs",
     name: "Solidly Labs",
     url: "https://solidly.com",
-    description:
-      "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
+    description: "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
     logo: `${baseIconsUrl}/solidly-labs.jpg`,
     gecko_id: "solidlydex",
     cmcId: null,
@@ -2849,8 +2772,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#shoebill-finance",
     name: "Shoebill Finance",
     url: "https://shoebill.finance",
-    description:
-      "Positive sum DeFi lending protocol. Zero-interest borrowing and stable yield lending.",
+    description: "Positive sum DeFi lending protocol. Zero-interest borrowing and stable yield lending.",
     logo: `${baseIconsUrl}/shoebill-finance.png`,
     gecko_id: null,
     cmcId: null,
@@ -2910,8 +2832,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#glacier-finance",
     name: "Glacier Finance",
     url: "https://glacier.exchange/",
-    description:
-      "Glacier Finance is a community-driven trading and liquidity hub.",
+    description: "Glacier Finance is a community-driven trading and liquidity hub.",
     logo: `${baseIconsUrl}/glacier-finance.png`,
     gecko_id: "glacier",
     cmcId: "24434",
@@ -2985,8 +2906,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#pacificswap",
     name: "PacificSwap",
     url: "https://pacificswap.xyz",
-    description:
-      "An innovative CLAMM using incentive-alignment to keep the liquidity flywheel moving on MantaNetwork",
+    description: "An innovative CLAMM using incentive-alignment to keep the liquidity flywheel moving on MantaNetwork",
     logo: `${baseIconsUrl}/pacificswap.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -3010,8 +2930,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#hope-money",
     name: "HOPE Money",
     url: "https://hope.money",
-    description:
-      "All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.",
+    description: "All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.",
     logo: `${baseIconsUrl}/hope-money.jpg`,
     gecko_id: "hope-2",
     cmcId: null,
@@ -3049,8 +2968,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#maker",
     name: "Maker",
     url: "https://makerdao.com/en/",
-    description:
-      "Builders of Dai, a digital currency that can be used by anyone, anywhere, anytime.",
+    description: "Builders of Dai, a digital currency that can be used by anyone, anywhere, anytime.",
     logo: `${baseIconsUrl}/maker.jpg`,
     gecko_id: "maker",
     cmcId: "1518",
@@ -3114,8 +3032,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#swell",
     name: "Swell",
     url: "https://www.swellnetwork.io/",
-    description:
-      "A non-custodial ETH liquid staking protocol that helps you optimize yield in DeFi",
+    description: "A non-custodial ETH liquid staking protocol that helps you optimize yield in DeFi",
     logo: `${baseIconsUrl}/swell.png`,
     gecko_id: "swell-network",
     cmcId: "24924",
@@ -3139,8 +3056,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#pooltogether",
     name: "PoolTogether",
     url: "https://pooltogether.com/",
-    description:
-      "PoolTogether is an open source and decentralized protocol for no-loss prize games",
+    description: "PoolTogether is an open source and decentralized protocol for no-loss prize games",
     logo: `${baseIconsUrl}/pooltogether.jpg`,
     gecko_id: "pooltogether",
     cmcId: "8508",
@@ -3208,8 +3124,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#chimeradex",
     name: "Chimeradex",
     url: "https://app.chimeradex.com/",
-    description:
-      "Swap, finance and earn built on the leading liquidity lending protocol",
+    description: "Swap, finance and earn built on the leading liquidity lending protocol",
     logo: `${baseIconsUrl}/chimeradex.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -3284,8 +3199,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#dopex",
     name: "Stryke", // previous dopex
     url: "https://www.stryke.xyz/en",
-    description:
-      "Stryke (previous Dopex) is a maximum liquidity and minimal exposure options protocol",
+    description: "Stryke (previous Dopex) is a maximum liquidity and minimal exposure options protocol",
     logo: `${baseIconsUrl}/stryke.jpg`,
     gecko_id: "stryke",
     cmcId: "32215",
@@ -3313,8 +3227,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#gondi",
     name: "Gondi",
     url: "https://www.gondi.xyz",
-    description:
-      "Borrow, Lend & Refinance NFTs on the most capital efficient lending protocol",
+    description: "Borrow, Lend & Refinance NFTs on the most capital efficient lending protocol",
     logo: `${baseIconsUrl}/gondi.png`,
     gecko_id: null,
     cmcId: null,
@@ -3390,8 +3303,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#charm-finance",
     name: "Charm Finance",
     url: "https://www.charm.fi/",
-    description:
-      "The Liquidity Super App. The easiest way to provide and manage liquidity",
+    description: "The Liquidity Super App. The easiest way to provide and manage liquidity",
     logo: `${baseIconsUrl}/charm-finance.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -3403,8 +3315,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#beta-finance",
     name: "Beta Finance",
     url: "https://www.betafinance.org/",
-    description:
-      "Beta Finance is the permissionless money market for borrowing, lending, and shorting crypto assets",
+    description: "Beta Finance is the permissionless money market for borrowing, lending, and shorting crypto assets",
     logo: `${baseIconsUrl}/beta-finance.png`,
     gecko_id: "beta-finance",
     cmcId: "11307",
@@ -3415,8 +3326,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#buttonwood",
     name: "Buttonwood",
     url: "https://www.button.finance",
-    description:
-      "Building DeFi's first Tranche Stablecoin & Poolside_Party, an AMM for Liquid Staking Tokens.",
+    description: "Building DeFi's first Tranche Stablecoin & Poolside_Party, an AMM for Liquid Staking Tokens.",
     logo: `${baseIconsUrl}/buttonwood.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -3813,8 +3723,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#supswap",
     name: "SupSwap",
     url: "https://supswap.xyz",
-    description:
-      "Supswap is Native Liquidity Layer for Mode Network with Capital Efficient AMM",
+    description: "Supswap is Native Liquidity Layer for Mode Network with Capital Efficient AMM",
     logo: `${baseIconsUrl}/supswap.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -3879,8 +3788,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#jediswap",
     name: "JediSwap",
     url: "https://jediswap.xyz",
-    description:
-      "A community-led fully permissionless and composable AMM on Starknet by StarkWareLtd.",
+    description: "A community-led fully permissionless and composable AMM on Starknet by StarkWareLtd.",
     logo: `${baseIconsUrl}/jediswap.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -4016,8 +3924,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#monoswap",
     name: "MonoSwap",
     url: "https://www.monoswap.io",
-    description:
-      "Native yield reimagined. Home of the impossibles on Blast_L2.",
+    description: "Native yield reimagined. Home of the impossibles on Blast_L2.",
     logo: `${baseIconsUrl}/monoswap.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -4028,8 +3935,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#ring-protocol",
     name: "Ring Protocol",
     url: "https://ring.exchange/",
-    description:
-      "Ring is a new era in Decentralized Exchange revolutionizing asset utilization",
+    description: "Ring is a new era in Decentralized Exchange revolutionizing asset utilization",
     logo: `${baseIconsUrl}/ring-protocol.png`,
     gecko_id: "ring-protocol",
     cmcId: null,
@@ -4041,8 +3947,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#moraswap",
     name: "Moraswap",
     url: "https://moraswap.com/exchange/swap#",
-    description:
-      "Moraswap is a decentralized exchange (DEX) built on Solana's Neon EVM",
+    description: "Moraswap is a decentralized exchange (DEX) built on Solana's Neon EVM",
     logo: `${baseIconsUrl}/moraswap.png`,
     gecko_id: null,
     cmcId: null,
@@ -4054,8 +3959,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#arthswap",
     name: "ArthSwap",
     url: "https://app.arthswap.org",
-    description:
-      "ArthSwap is a one-stop Defi protocol that aspires to be the main DEX on the Astar Networks.",
+    description: "ArthSwap is a one-stop Defi protocol that aspires to be the main DEX on the Astar Networks.",
     logo: `${baseIconsUrl}/arthswap.png`,
     gecko_id: "arthswap",
     cmcId: null,
@@ -4328,8 +4232,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#particle",
     name: "Particle",
     url: "https://app.particle.trade",
-    description:
-      "Permissionless leverage trading protocol for any digital asset. Backed by Polychain built on Blast",
+    description: "Permissionless leverage trading protocol for any digital asset. Backed by Polychain built on Blast",
     logo: `${baseIconsUrl}/particle.png`,
     gecko_id: "particle-trade",
     cmcId: null,
@@ -4341,8 +4244,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Hyperliquid",
     url: "https://hyperliquid.xyz",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
-    description:
-      "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price",
+    description: "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price",
     logo: `${baseIconsUrl}/hyperliquid.png`,
     gecko_id: "hyperliquid",
     cmcId: "32196",
@@ -4366,8 +4268,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#Edge",
     name: "Vertex Edge",
     url: "https://edge.vertexprotocol.com/",
-    description:
-      "The Synchronous Orderbook Liquidity Layer unifying cross-chain liquidity in DeFi",
+    description: "The Synchronous Orderbook Liquidity Layer unifying cross-chain liquidity in DeFi",
     logo: `${baseIconsUrl}/vertex-edge.png`,
     gecko_id: null,
     cmcId: null,
@@ -4460,8 +4361,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#atlendis",
     name: "Atlendis",
     url: "https://www.atlendis.io/",
-    description:
-      "Atlendis Labs is redefining private credit in the digital age.",
+    description: "Atlendis Labs is redefining private credit in the digital age.",
     logo: `${baseIconsUrl}/atlendis.png`,
     gecko_id: null,
     cmcId: null,
@@ -4498,8 +4398,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#inception",
     name: "Inception",
     url: "https://www.inceptionlrt.com/",
-    description:
-      "Restake your Liquid Staked ETH for Layer 2 rewards while keeping it liquid",
+    description: "Restake your Liquid Staked ETH for Layer 2 rewards while keeping it liquid",
     logo: `${baseIconsUrl}/inception.png`,
     gecko_id: null,
     cmcId: null,
@@ -4511,8 +4410,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#bitgenie",
     name: "BitGenie",
     url: "https://www.bitgenie.io/swap/",
-    description:
-      "BitGenie is a one-stop shop for Ordinals, Runes, and other Bitcoin DeFi tools.",
+    description: "BitGenie is a one-stop shop for Ordinals, Runes, and other Bitcoin DeFi tools.",
     logo: `${baseIconsUrl}/bitgenie.jpg`,
     gecko_id: "bitgenie",
     cmcId: null,
@@ -4523,8 +4421,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#sundaeswap",
     name: "SundaeSwap",
     url: "https://www.sundaeswap.finance/",
-    description:
-      "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
+    description: "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
     logo: `${baseIconsUrl}/sundaeswap.jpg`,
     gecko_id: "sundaeswap",
     cmcId: "11986",
@@ -4536,8 +4433,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#flowx-finance",
     name: "FlowX Finance",
     url: "https://flowx.finance/",
-    description:
-      "FlowX Finance is the ecosystem-focused decentralized exchange built on the Sui Blockchain",
+    description: "FlowX Finance is the ecosystem-focused decentralized exchange built on the Sui Blockchain",
     logo: `${baseIconsUrl}/flowx-finance.png`,
     gecko_id: "flowx-finance",
     cmcId: null,
@@ -4573,8 +4469,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#vanillaswap",
     name: "VanillaSwap",
     url: "https://vanillalabs.org",
-    description:
-      "We contribute to VanillaSwap - a protocol for trading and automated liquidity.",
+    description: "We contribute to VanillaSwap - a protocol for trading and automated liquidity.",
     logo: `${baseIconsUrl}/vanillaswap.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -4585,8 +4480,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#cropper",
     name: "Cropper",
     url: "https://cropper.finance/",
-    description:
-      "Cropper is an decentralized exchange built on the Solana blockchain.",
+    description: "Cropper is an decentralized exchange built on the Solana blockchain.",
     logo: `${baseIconsUrl}/cropper.png`,
     gecko_id: "cropperfinance",
     cmcId: "11387",
@@ -4597,8 +4491,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#bitswap-bb",
     name: "BitSwap BB",
     url: "https://app.bouncebit.io/club/1",
-    description:
-      "The Native BounceBit Swap for BTC L2 assets, built on bounce_bit",
+    description: "The Native BounceBit Swap for BTC L2 assets, built on bounce_bit",
     logo: `${baseIconsUrl}/bitswap-bb.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -4645,8 +4538,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#tealswap",
     name: "Tealswap",
     url: "https://tealswap.com",
-    description:
-      "Tealswap is a decentralized exchange with automated market maker on Oasys hub-layer.",
+    description: "Tealswap is a decentralized exchange with automated market maker on Oasys hub-layer.",
     logo: `${baseIconsUrl}/tealswap.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -4657,8 +4549,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#nimbora",
     name: "Nimbora",
     url: "https://www.nimbora.io/",
-    description:
-      "Smooth sailing to 1-click DeFi. The best place to earn and borrow.",
+    description: "Smooth sailing to 1-click DeFi. The best place to earn and borrow.",
     logo: `${baseIconsUrl}/nimbora.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -4718,8 +4609,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#pearlfi",
     name: "PearlFi",
     url: "https://www.pearl.exchange",
-    description:
-      "The premiere ve(3,3) exchange for concentrated liquidity on tokenized RWAs and premium digital",
+    description: "The premiere ve(3,3) exchange for concentrated liquidity on tokenized RWAs and premium digital",
     logo: `${baseIconsUrl}/pearlfi.jpg`,
     gecko_id: "pearl",
     cmcId: null,
@@ -4730,8 +4620,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#koi-finance",
     name: "Koi Finance",
     url: "https://dapp.koi.finance",
-    description:
-      "A lightning fast DEX, yield, and bond platform built on zkSync Era",
+    description: "A lightning fast DEX, yield, and bond platform built on zkSync Era",
     logo: `${baseIconsUrl}/koi-finance.png`,
     gecko_id: "koi-3",
     cmcId: null,
@@ -4756,8 +4645,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#etcswap",
     name: "ETCswap",
     url: "https://etcswap.org",
-    description:
-      "Swap, earn, and build on Ethereum Classic's leading decentralized crypto trading protocol.",
+    description: "Swap, earn, and build on Ethereum Classic's leading decentralized crypto trading protocol.",
     logo: `${baseIconsUrl}/etcswap.png`,
     gecko_id: null,
     cmcId: null,
@@ -4769,8 +4657,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#blend",
     name: "Blend",
     url: "https://www.blend.capital",
-    description:
-      "Blend is a modular liquidity protocol, allowing anyone to create flexible lending markets.",
+    description: "Blend is a modular liquidity protocol, allowing anyone to create flexible lending markets.",
     logo: `${baseIconsUrl}/blend.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -4806,8 +4693,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#anzen-finance",
     name: "Anzen Finance",
     url: "https://anzen.finance/",
-    description:
-      "USDz is a digital dollar backed by institutional grade real world assets",
+    description: "USDz is a digital dollar backed by institutional grade real world assets",
     logo: `${baseIconsUrl}/anzen-finance.jpg`,
     gecko_id: "anzen-finance",
     cmcId: null,
@@ -4818,8 +4704,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#bladeswap",
     name: "BladeSwap",
     url: "https://bladeswap.xyz",
-    description:
-      "Blast native Dex with real-time vote reward & native multi-call",
+    description: "Blast native Dex with real-time vote reward & native multi-call",
     logo: `${baseIconsUrl}/bladeswap.jpg`,
     gecko_id: "bladeswap",
     cmcId: null,
@@ -4883,8 +4768,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#macaron",
     name: "Macaron",
     url: "https://www.macaron.xyz",
-    description:
-      "The First & Native DEX on bitlayerlabs, Yields & Liquidity for Users.",
+    description: "The First & Native DEX on bitlayerlabs, Yields & Liquidity for Users.",
     logo: `${baseIconsUrl}/macaron.png`,
     gecko_id: null,
     cmcId: null,
@@ -4918,8 +4802,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#netweave-finance",
     name: "NetWeave Finance",
     url: "https://www.netweave.finance",
-    description:
-      "Focus on DeFi and strive to create convenient and secure lending protocols on Mode Network.",
+    description: "Focus on DeFi and strive to create convenient and secure lending protocols on Mode Network.",
     logo: `${baseIconsUrl}/netweave-finance.png`,
     gecko_id: null,
     cmcId: null,
@@ -4967,8 +4850,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#affine-defi",
     name: "Affine DeFi",
     url: "https://app.affinedefi.com/",
-    description:
-      "Risk research-backed Liquid Restaking and Earn products for maximizing yield",
+    description: "Risk research-backed Liquid Restaking and Earn products for maximizing yield",
     logo: `${baseIconsUrl}/affine-defi.png`,
     gecko_id: null,
     cmcId: null,
@@ -5240,8 +5122,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#openworld",
     name: "OpenWorld",
     url: "https://ow.finance",
-    description:
-      "OpenWorld Portfolio: Build a portfolio of high yielding, low risk liquidity pools with one click.",
+    description: "OpenWorld Portfolio: Build a portfolio of high yielding, low risk liquidity pools with one click.",
     logo: `${baseIconsUrl}/openworld.png`,
     gecko_id: null,
     cmcId: null,
@@ -5281,8 +5162,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#kayak",
     name: "Kayak",
     url: "https://kayakfinance.io",
-    description:
-      "Enable traders to access aggregated liquidity, low-slippage swap with premium utility and yield",
+    description: "Enable traders to access aggregated liquidity, low-slippage swap with premium utility and yield",
     logo: `${baseIconsUrl}/kayak.png`,
     gecko_id: null,
     cmcId: null,
@@ -5345,8 +5225,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#aevo",
     name: "Aevo",
     url: "https://www.aevo.xyz",
-    description:
-      "Trade crypto options on the world's first high-performance decentralized options exchange.",
+    description: "Trade crypto options on the world's first high-performance decentralized options exchange.",
     logo: `${baseIconsUrl}/aevo.jpg`,
     gecko_id: "aevo-exchange",
     cmcId: "29676",
@@ -5372,8 +5251,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#tokenlon",
     name: "Tokenlon",
     url: "https://tokenlon.im",
-    description:
-      "Tokenlon is a decentralized exchange and payment settlement protocol based on blockchain technology",
+    description: "Tokenlon is a decentralized exchange and payment settlement protocol based on blockchain technology",
     logo: `${baseIconsUrl}/tokenlon.jpg`,
     gecko_id: "tokenlon",
     cmcId: "856",
@@ -5411,8 +5289,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#demex",
     name: "Demex",
     url: "https://app.dem.exchange",
-    description:
-      "The first fully decentralized DEX that supports any type of financial market.",
+    description: "The first fully decentralized DEX that supports any type of financial market.",
     logo: `${baseIconsUrl}/demex.png`,
     gecko_id: null,
     cmcId: "1240",
@@ -5423,8 +5300,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#helix",
     name: "Helix",
     url: "https://helixapp.com",
-    description:
-      "The premier decentralized crypto exchange. Trade unlimited cross-chain spot and futures markets.",
+    description: "The premier decentralized crypto exchange. Trade unlimited cross-chain spot and futures markets.",
     logo: `${baseIconsUrl}/helix.jpg`,
     gecko_id: null,
     cmcId: "1551",
@@ -5558,8 +5434,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#logx",
     name: "LogX",
     url: "https://logx.network/",
-    description:
-      "DeFi Superapp. Trade exotic perps, leveraged prediction markets and memecoins.",
+    description: "DeFi Superapp. Trade exotic perps, leveraged prediction markets and memecoins.",
     logo: `${baseIconsUrl}/logx.jpg`,
     gecko_id: "logx-2",
     cmcId: "33098",
@@ -5631,8 +5506,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["Typus-Lab"],
     twitter: "TypusFinance",
     treasury: "typus-finance.js",
-    address:
-      "0xf82dc05634970553615eef6112a1ac4fb7bf10272bf6cbe0f80ef44a6c489385::typus::TYPUS",
+    address: "0xf82dc05634970553615eef6112a1ac4fb7bf10272bf6cbe0f80ef44a6c489385::typus::TYPUS",
   },
   {
     id: "parent#bounceclub",
@@ -5688,8 +5562,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#trado-finance",
     name: "Trado Finance",
     url: "https://perp.trado.one/",
-    description:
-      "Trado Perpetual provides both order book and spot against pool trading models",
+    description: "Trado Perpetual provides both order book and spot against pool trading models",
     logo: `${baseIconsUrl}/trado-finance.png`,
     gecko_id: null,
     cmcId: null,
@@ -5700,8 +5573,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#lisa-finance",
     name: "LISA Finance",
     url: "https://www.lisalab.io",
-    description:
-      "The Goddess of Liquid Stacking, Brought to you by ALEX, Ryders Fast Pool, and Xverse Pool.",
+    description: "The Goddess of Liquid Stacking, Brought to you by ALEX, Ryders Fast Pool, and Xverse Pool.",
     logo: `${baseIconsUrl}/lisa-finance.png`,
     gecko_id: null,
     cmcId: null,
@@ -5713,8 +5585,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#tonstakers",
     name: "Tonstakers",
     url: "https://tonstakers.com",
-    description:
-      "The Open Network Liquid Staking protocol empowering TON DeFi ecosystem.",
+    description: "The Open Network Liquid Staking protocol empowering TON DeFi ecosystem.",
     logo: `${baseIconsUrl}/tonstakers.jpg`,
     gecko_id: null, // tonstakers preview only
     cmcId: null,
@@ -5787,8 +5658,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#spookyswap",
     name: "SpookySwap",
     url: "https://spooky.fi",
-    description:
-      "Community-driven, trader-focused DEX and DeFi Hub powered by $FTM with governance by $BOO.",
+    description: "Community-driven, trader-focused DEX and DeFi Hub powered by $FTM with governance by $BOO.",
     logo: `${baseIconsUrl}/spookyswap.jpg`,
     gecko_id: "spookyswap",
     cmcId: "9608",
@@ -5838,8 +5708,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#deepbook",
     name: "DeepBook",
     url: "https://deepbook.tech",
-    description:
-      "DeepBook is a fully on-chain central limit order book and the liquidity layer of Sui.",
+    description: "DeepBook is a fully on-chain central limit order book and the liquidity layer of Sui.",
     logo: `${baseIconsUrl}/deepbook.jpg`,
     gecko_id: "deep",
     cmcId: null,
@@ -5862,8 +5731,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#bulbaswap",
     name: "BulbaSwap",
     url: "https://bulbaswap.io",
-    description:
-      "BulbaSwap, the central trading and liquidity marketplace on MorphL2",
+    description: "BulbaSwap, the central trading and liquidity marketplace on MorphL2",
     logo: `${baseIconsUrl}/bulbaswap.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -5885,8 +5753,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#fluid",
     name: "Fluid",
     url: "https://fluid.instadapp.io",
-    description:
-      "An ever-evolving DeFi protocol and financial system of the future by Instadapp",
+    description: "An ever-evolving DeFi protocol and financial system of the future by Instadapp",
     logo: `${baseIconsUrl}/fluid.png`,
     gecko_id: "instadapp",
     cmcId: null,
@@ -5909,8 +5776,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#swapmode",
     name: "SwapMode",
     url: "https://swapmode.fi",
-    description:
-      "Premiere DEX on Mode, the native all in one hub for your liquidity",
+    description: "Premiere DEX on Mode, the native all in one hub for your liquidity",
     logo: `${baseIconsUrl}/swapmode.png`,
     gecko_id: "swapmode",
     cmcId: null,
@@ -5971,8 +5837,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#weft-finance",
     name: "Weft Finance",
     url: "https://app.weft.finance",
-    description:
-      "Weft Finance is a decentralized lending and borrowing application built on Radix DLT",
+    description: "Weft Finance is a decentralized lending and borrowing application built on Radix DLT",
     logo: `${baseIconsUrl}/weft-finance.jpg`,
     gecko_id: "weft-finance",
     cmcId: null,
@@ -6074,8 +5939,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#plunderswap",
     name: "PlunderSwap",
     url: "https://plunderswap.com/swap",
-    description:
-      "PlunderSwap is the first decentralized exchange on Zilliqa EVM",
+    description: "PlunderSwap is the first decentralized exchange on Zilliqa EVM",
     logo: `${baseIconsUrl}/plunderswap.png`,
     gecko_id: null,
     cmcId: null,
@@ -6100,8 +5964,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#holdstation",
     name: "Holdstation",
     url: "https://holdstation.com/",
-    description:
-      "Wallet for Futures Trading & #AiAgents on ZKsync, Berachain & Worldcoin",
+    description: "Wallet for Futures Trading & #AiAgents on ZKsync, Berachain & Worldcoin",
     logo: `${baseIconsUrl}/holdstation.jpg`,
     gecko_id: "holdstation",
     cmcId: "28510",
@@ -6162,8 +6025,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#alphafi",
     name: "AlphaFi",
     url: "https://alphafi.xyz",
-    description:
-      "Premier Yield Optimizer on the SUI Blockchain. Earn Safe, Real Yields with AlphaFi.",
+    description: "Premier Yield Optimizer on the SUI Blockchain. Earn Safe, Real Yields with AlphaFi.",
     logo: `${baseIconsUrl}/alphafi.jpg`,
     gecko_id: "alpha-fi",
     cmcId: "32745",
@@ -6214,8 +6076,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#extra-finance",
     name: "Extra Finance",
     url: "https://extrafi.io/",
-    description:
-      "Extra Finance is a community-driven lending & leveraged yield farming protocol built on Optimism.",
+    description: "Extra Finance is a community-driven lending & leveraged yield farming protocol built on Optimism.",
     logo: `${baseIconsUrl}/extra-finance.jpg`,
     gecko_id: "extra-finance",
     cmcId: "27603",
@@ -6264,8 +6125,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#silo-finance",
     name: "Silo Finance",
     url: "https://app.silo.finance",
-    description:
-      "Silo Finance creates permissionless and risk-isolated lending markets",
+    description: "Silo Finance creates permissionless and risk-isolated lending markets",
     logo: `${baseIconsUrl}/silo-finance.png`,
     gecko_id: "silo-finance",
     cmcId: "16010",
@@ -6273,18 +6133,14 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SiloFinance",
     stablecoins: ["xai"],
     github: ["silo-finance"],
-    governanceID: [
-      "snapshot:silofinance.eth",
-      "eip155:1:0xA89163F7B2D68A8fbA6Ca36BEEd32Bd4f3EeAf61",
-    ],
+    governanceID: ["snapshot:silofinance.eth", "eip155:1:0xA89163F7B2D68A8fbA6Ca36BEEd32Bd4f3EeAf61"],
     treasury: "silo-finance.js",
   },
   {
     id: "parent#pryzm",
     name: "Pryzm",
     url: "https://pryzm.zone",
-    description:
-      "Pryzm is a Layer 1 blockchain designed to help you tokenize and trade your yield with ease",
+    description: "Pryzm is a Layer 1 blockchain designed to help you tokenize and trade your yield with ease",
     logo: `${baseIconsUrl}/pryzm-protocol.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -6295,8 +6151,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#zoth",
     name: "Zoth",
     url: "https://zoth.io",
-    description:
-      "Zoth is an RWA ecosystem bringing institutional-grade yield avenues onchain",
+    description: "Zoth is an RWA ecosystem bringing institutional-grade yield avenues onchain",
     logo: `${baseIconsUrl}/zoth.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -6335,8 +6190,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#sonefi",
     name: "SoneFi",
     url: "https://www.ln.exchange/",
-    description:
-      "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
+    description: "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
     logo: `${baseIconsUrl}/sonefi.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -6380,7 +6234,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LiquityProtocol",
     treasury: "liquity-treasury.js",
-    stablecoins: ["liquity-usd","liquity-bold"],
+    stablecoins: ["liquity-usd", "liquity-bold"],
     github: ["liquity"],
   },
   {
@@ -6434,7 +6288,8 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#raydium",
     name: "Raydium",
     url: "https://raydium.io",
-    description: "Raydium is an automated market maker (AMM) built on the Solana blockchain which enables lightning-fast trades, permissionless pool creation, and new features for earning yield",
+    description:
+      "Raydium is an automated market maker (AMM) built on the Solana blockchain which enables lightning-fast trades, permissionless pool creation, and new features for earning yield",
     logo: `${baseIconsUrl}/raydium.jpg`,
     gecko_id: "raydium",
     cmcId: "8526",
@@ -6445,7 +6300,8 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#angles",
     name: "Angles",
     url: "https://angles.fi/",
-    description: "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
+    description:
+      "Angles enhances Sonic with performant and secure LST ($anS). anS is compatible and can be used in DeFi to get maximum yield out of your Sonics",
     logo: `${baseIconsUrl}/angles.png`,
     gecko_id: null,
     cmcId: null,
@@ -6478,7 +6334,8 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#vicuna",
     name: "Vicuna Finance",
     url: "https://vicunafinance.com/",
-    description: "Vicuna Finance operates as a borrow and lending protocol, facilitating leveraged (CL ALM) yield farming on Sonic",
+    description:
+      "Vicuna Finance operates as a borrow and lending protocol, facilitating leveraged (CL ALM) yield farming on Sonic",
     logo: `${baseIconsUrl}/vicuna-finance.png`,
     gecko_id: null,
     cmcId: null,
@@ -6501,7 +6358,8 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#sosovalue",
     name: "SoSoValue",
     url: "https://ssi.sosovalue.com",
-    description: "The SoSoValue Indexes(SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secured",
+    description:
+      "The SoSoValue Indexes(SSI) Protocol is a cutting-edge spot index solution designed to make crypto investments simple and secured",
     logo: `${baseIconsUrl}/sosovalue.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -6535,7 +6393,8 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#bitfi",
     name: "BitFi",
     url: "https://bitfi.org",
-    description: "BitFi is a revolutionary CeDeFi platform that combines secure staking mechanisms with innovative synthetic assets to create a robust and dynamic ecosystem.",
+    description:
+      "BitFi is a revolutionary CeDeFi platform that combines secure staking mechanisms with innovative synthetic assets to create a robust and dynamic ecosystem.",
     logo: `${baseIconsUrl}/bitfi.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -6546,7 +6405,8 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#kittypunch",
     name: "KittyPunch",
     url: "https://www.kittypunch.xyz/",
-    description: "KittyPunch is a DeFi project built for consumer blockchains. Trade digital assets, earn yield, and even collect your own Kitties with KittyPunch.",
+    description:
+      "KittyPunch is a DeFi project built for consumer blockchains. Trade digital assets, earn yield, and even collect your own Kitties with KittyPunch.",
     logo: `${baseIconsUrl}/kittypunch.png`,
     gecko_id: null,
     cmcId: null,
@@ -6558,7 +6418,8 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#summer.fi",
     name: "Summer.fi",
     url: "https://summer.fi",
-    description: "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX.",
+    description:
+      "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX.",
     logo: `${baseIconsUrl}/summer.fi.png`,
     gecko_id: "summer-2",
     cmcId: null,
@@ -6570,7 +6431,8 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#goplus-security",
     name: "GoPlus Security",
     url: "https://gopluslabs.io",
-    description: "GoPlus Network is an open, permissionless and user-driven Modular User Security Layer for Web3. Adaptable and designed to seamlessly integrate with any blockchain, it makes chains easy to enhance user safety to protect their users.",
+    description:
+      "GoPlus Network is an open, permissionless and user-driven Modular User Security Layer for Web3. Adaptable and designed to seamlessly integrate with any blockchain, it makes chains easy to enhance user safety to protect their users.",
     logo: `${baseIconsUrl}/goplus-security.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -6581,13 +6443,26 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#smilee-finance",
     name: "Smilee Finance",
     url: "https://smilee.finance/",
-    description: "gBERA is a Liquid Staking Token (LST) designed to participate in Proof of Liquidity (PoL) and generate yield automatically",
+    description:
+      "gBERA is a Liquid Staking Token (LST) designed to participate in Proof of Liquidity (PoL) and generate yield automatically",
     logo: `${baseIconsUrl}/smilee-finance.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "SmileeFinance",
     github: ["dverso"],
+  },
+  {
+    id: "parent#desk",
+    name: "DESK",
+    url: "https://desk.exchange",
+    description: "Perpetual Trading Infrastructure & Exchange",
+    logo: `${baseIconsUrl}/desk.png`,
+    gecko_id: "hmx",
+    cmcId: "29121",
+    chains: [],
+    twitter: "TradeOnDESK",
+    github: ["TradeOnDESK"],
   },
 ];
 

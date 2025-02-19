@@ -1110,7 +1110,7 @@ const data4: Protocol[] = [
     name: "Untangled Vault",
     address: null,
     symbol: "-",
-    url: "https://superbridge.app/soneium",
+    url: "https://untangled.finance",
     description:
       "A non-custodial, cross-chain portfolio management solution: a data-driven, automated vault designed to attract liquidity and invest in opportunities across any EVM network to match diverse risk/return appetites",
     chain: "Celo",

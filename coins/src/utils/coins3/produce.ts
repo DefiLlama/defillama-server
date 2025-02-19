@@ -111,6 +111,6 @@ export default async function produce(
       topics.map((topic: Topic) => produceTopics(items, topic, producer)),
     );
   } catch (error) {
-    console.error("Error producing messages", error);
+    // console.error("Error producing messages", error); // temporarily disabled
   }
 }

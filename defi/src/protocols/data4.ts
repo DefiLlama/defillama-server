@@ -5241,7 +5241,33 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "coinbase-btc/index.js",
     twitter: "coinbase", 
-    listedAt: 1739912521
+  },
+  {
+    id: "5811",
+    name: "DESK",
+    address: "arbitrum:0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
+    symbol: "HMX",
+    url: "https://desk.exchange",
+    description: "Perpetual Trading Infrastructure & Exchange",
+    chain: "Base",
+    logo: `${baseIconsUrl}/desk.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "hmx",
+    cmcId: "29121",
+    category: "Derivatives",
+    chains: ["Polygon", "Arbitrum", "Base"],
+    module: "desk/index.js",
+    twitter: "TradeOnDESK",
+    audit_links: [
+      "https://drive.google.com/file/d/1oS9lRpw7Il_cw2F21zBFXeaode-9xdM-/view?usp=sharing",
+      "https://github.com/HMXOrg/v2-evm/blob/main/audits/HMX_Audit_Report_by_WatchPug.pdf",
+      "https://github.com/HMXOrg/v2-evm/blob/main/audits/CantinaManaged-HMX-final.pdf",
+    ],
+    forkedFrom: [],
+    oracles: ["Pyth", "Stork", "RedStone"], // https://docs.desk.exchange/trading-infrastructure/oracles
+    github: ["TradeOnDESK"],
+    parentProtocol: "parent#desk",
   },
 ];
 export default data4;

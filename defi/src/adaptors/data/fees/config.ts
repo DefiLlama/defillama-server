@@ -2447,5 +2447,8 @@ export default {
     },
     "silverswap": {
         id: "5529",
+    },
+    "desk": {
+        id: "5812"
     }
 } as AdaptorsConfig

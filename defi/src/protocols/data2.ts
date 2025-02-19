@@ -12393,7 +12393,7 @@ const data2: Protocol[] = [
     url: "https://www.betswirl.com",
     description:
       "BetSwirl aims to be the decentralized gambling platform: provably fair, non-custodial, licensed, trustless and community driven.",
-    chain: "Ethereum",
+    chain: "Binance",
     logo: `${baseIconsUrl}/betswirl.jpg`,
     audits: "2",
     audit_note: null,

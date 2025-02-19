@@ -6577,6 +6577,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GoPlusSecurity",
   },
+  {
+    id: "parent#desk",
+    name: "DESK",
+    url: "https://desk.exchange",
+    description: "Perpetual Trading Infrastructure & Exchange",
+    logo: `${baseIconsUrl}/desk.png`,
+    gecko_id: "hmx",
+    cmcId: "29121",
+    chains: [],
+    twitter: "TradeOnDESK",
+    github: ["TradeOnDESK"],
+  },
 ];
 
 export default parentProtocols;

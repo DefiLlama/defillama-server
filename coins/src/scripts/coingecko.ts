@@ -50,7 +50,7 @@ async function storeCoinData(coinData: Write[]) {
       price: c.price,
       mcap: c.mcap,
       timestamp: c.timestamp,
-      symbol: c.symbol,
+      symbol: c.symbol?.replace(/\0/g, ""),
       confidence: c.confidence,
     }))
     .filter((c: Write) => c.symbol != null);
@@ -133,12 +133,12 @@ async function getSymbolAndDecimals(
         );
       }
       return {
-        symbol: coingeckoSymbol.toUpperCase(),
+        symbol: coingeckoSymbol.toUpperCase().replace(/\0/g, ""),
         decimals: decimals,
       };
     }
     return {
-      symbol: token.symbol,
+      symbol: token.symbol.replace(/\0/g, ""),
       decimals: Number(token.decimals),
     };
   } else if (chain == "hedera") {
@@ -159,7 +159,7 @@ async function getSymbolAndDecimals(
     if (!token) return;
     return {
       decimals: token.weiDecimals,
-      symbol: token.name,
+      symbol: token.name.replace(/\0/g, ""),
     };
   } else if (chain == "aptos") {
     const res = await fetch(
@@ -171,7 +171,7 @@ async function getSymbolAndDecimals(
     if (!res.data) return;
     return {
       decimals: res.data.decimals,
-      symbol: res.data.symbol,
+      symbol: res.data.symbol.replace(/\0/g, ""),
     };
   } else if (chain == "stacks") {
     const res = await fetch(
@@ -180,7 +180,7 @@ async function getSymbolAndDecimals(
     if (!res.decimals) return;
     return {
       decimals: res.decimals,
-      symbol: res.symbol,
+      symbol: res.symbol.replace(/\0/g, ""),
     };
   } else if (!tokenAddress.startsWith(`0x`)) {
     return;
@@ -190,7 +190,7 @@ async function getSymbolAndDecimals(
   } else {
     try {
       return {
-        symbol: (await symbol(tokenAddress, chain as any)).output,
+        symbol: (await symbol(tokenAddress, chain as any)).output.replace(/\0/g, ""),
         decimals: Number((await decimals(tokenAddress, chain as any)).output),
       };
     } catch (e) {
@@ -267,7 +267,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           price: data.usd,
           mcap: data.usd_market_cap,
           timestamp: data.last_updated_at,
-          symbol: idToSymbol[cgId].toUpperCase(),
+          symbol: idToSymbol[cgId].toUpperCase().replace(/\0/g, ""),
           confidence: 0.99,
         });
     });

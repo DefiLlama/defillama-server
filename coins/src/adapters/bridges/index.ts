@@ -218,7 +218,7 @@ async function _storeTokensOfBridge(bridge: Bridge) {
         SK: 0,
         created: getCurrentUnixTimestamp(),
         decimals,
-        symbol,
+        symbol: symbol.replace(/\0/g, ""),
         redirect: finalPK,
         confidence: 0.97,
         adapter: "bridges",

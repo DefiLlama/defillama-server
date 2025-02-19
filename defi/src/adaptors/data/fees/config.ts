@@ -2441,5 +2441,8 @@ export default {
     },
     "bloom": {
         id: "5806",
+    },
+    "flashbot": {
+        id: "5809",
     }
 } as AdaptorsConfig

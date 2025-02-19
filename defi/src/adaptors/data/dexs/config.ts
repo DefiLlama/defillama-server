@@ -2769,5 +2769,14 @@ export default {
     },
     "kodiak-v2": {
         id: "5743",
+    },
+    "silverswap": {
+        id: "5529",
+    },
+    "olab": {
+        id: "5648",
+    },
+    "bullaexchange": {
+        id: "5766",
     }
 } as AdaptorsConfig

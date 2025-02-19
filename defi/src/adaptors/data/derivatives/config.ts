@@ -806,6 +806,6 @@ export default {
         }
     },
     "desk": {
-        id: "5811"
+        id: "5812"
     }
 } as AdaptorsConfig

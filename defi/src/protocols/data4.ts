@@ -5243,7 +5243,7 @@ const data4: Protocol[] = [
     twitter: "coinbase", 
   },
   {
-    id: "5811",
+    id: "5812",
     name: "DESK",
     address: "arbitrum:0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
     symbol: "HMX",

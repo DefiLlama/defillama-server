@@ -2446,6 +2446,6 @@ export default {
         id: "5809",
     },
     "desk": {
-        id: "5811"
+        id: "5812"
     }
 } as AdaptorsConfig

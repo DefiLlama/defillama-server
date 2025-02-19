@@ -6577,6 +6577,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GoPlusSecurity",
   },
+  {
+    id: "parent#smilee-finance",
+    name: "Smilee Finance",
+    url: "https://smilee.finance/",
+    description: "gBERA is a Liquid Staking Token (LST) designed to participate in Proof of Liquidity (PoL) and generate yield automatically",
+    logo: `${baseIconsUrl}/smilee-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SmileeFinance",
+    github: ["dverso"],
+  },
 ];
 
 export default parentProtocols;

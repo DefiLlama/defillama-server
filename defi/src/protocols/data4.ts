@@ -4657,7 +4657,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.doppler.finance",
-    description: "Liquida Staking & Lending Protocol on XRPL",
+    description: "First XRPfi protocol on XRPL",
     chain: "Ripple",
     logo: `${baseIconsUrl}/doppler-finance.png`,
     audits: "0",

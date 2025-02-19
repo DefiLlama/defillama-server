@@ -5259,11 +5259,12 @@ const data4: Protocol[] = [
     category: "Liquid Staking",
     chains: ["Berachain"],
     forkedFrom: [],
-    module: "smilee-finance/index.js",
+    module: "smiliee-gbera/index.js",
     twitter: "SmileeFinance",
     audit_links: ["https://smilee-finance.gitbook.io/gbera-docs/audit-reports"],
     parentProtocol: "parent#smilee-finance",
     listedAt: 1739985135,
   },
+
 ];
 export default data4;

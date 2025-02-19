@@ -5272,7 +5272,7 @@ const data4: Protocol[] = [
     url: "https://desk.exchange",
     description: "Perpetual Trading Infrastructure & Exchange",
     chain: "Base",
-    logo: `${baseIconsUrl}/desk.jpg`,
+    logo: `${baseIconsUrl}/desk.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "hmx",

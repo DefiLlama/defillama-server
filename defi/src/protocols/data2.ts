@@ -21293,7 +21293,19 @@ const data2: Protocol[] = [
     twitter: "HMXorg",
     forkedFrom: [],
     oracles: ["Pyth","Stork"], // https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle
-    github: ["HMXOrg"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle"]
+      },
+      {
+        name: "Stork",
+        type: "Aggregator",
+        proof: ["https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle"]
+      },
+    ],
+    parentProtocol: "parent#desk",
     listedAt: 1668805259,
   },
   {

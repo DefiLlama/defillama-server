@@ -5265,6 +5265,66 @@ const data4: Protocol[] = [
     parentProtocol: "parent#smilee-finance",
     listedAt: 1739985135,
   },
-
+  {
+    id: "5812",
+    name: "A-DEX",
+    address: null,
+    symbol: "-",
+    url: "https://a-dex.io",
+    description: `The A-DEX is a peer-to-peer system designed for exchanging cryptocurrencies on the Antelope(EOSIO) blockchains`,
+    chain: "EOS",
+    logo: `${baseIconsUrl}/a-dex.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["EOS","Wax"],
+    forkedFrom: [],
+    module: "adex/index.js",
+    twitter: "a_dex_official",
+    audit_links: ["https://docs.a-dex.io/about-us/audits"],
+    github: ["A-DEX"],
+    listedAt: 1739992013,
+  },
+  {
+    id: "5813",
+    name: "DESK Perps",
+    address: null,
+    symbol: "-",
+    url: "https://desk.exchange/",
+    description: `Perpetual Trading Infrastructure for Traders and AI Agents on Base`,
+    chain: "Base",
+    logo: `${baseIconsUrl}/desk-perps.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    forkedFrom: [],
+    oracles: ["Pyth","Stork","Redstone"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.desk.exchange/trading-infrastructure/oracles"]
+      },
+      {
+        name: "Stork",
+        type: "Aggregator",
+        proof: ["https://docs.desk.exchange/trading-infrastructure/oracles"]
+      },
+      {
+        name: "RedStone",
+        type: "Aggregator",
+        proof: ["https://docs.desk.exchange/trading-infrastructure/oracles"]
+      }
+    ],
+    module: "DESK/index.js",
+    twitter: "TradeOnDESK",
+    parentProtocol: "parent#desk",
+    listedAt: 1739993257,
+  },
 ];
 export default data4;

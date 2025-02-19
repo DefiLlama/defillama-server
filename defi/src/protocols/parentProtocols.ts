@@ -6589,6 +6589,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SmileeFinance",
     github: ["dverso"],
   },
+  {
+    id: "parent#desk",
+    name: "DESK",
+    url: "https://smilee.finance/",
+    description: "DESK—the perpetual trading infrastructure, empowering both human traders and AI agents with cutting-edge tools and seamless automation",
+    logo: `${baseIconsUrl}/desk.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TradeOnDESK",
+    github: ["HMXOrg","TradeOnDESK"],
+  },
 ];
 
 export default parentProtocols;

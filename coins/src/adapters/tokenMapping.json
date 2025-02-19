@@ -7195,5 +7195,12 @@
       "decimals": 18,
       "symbol": "WETH"
     }
+  },
+  "oas": {
+    "0x4D17C0609B77e456Fb98Ea99a62bCeF09adae32D": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    }
   }
 }

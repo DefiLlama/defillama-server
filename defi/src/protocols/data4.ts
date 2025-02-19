@@ -3789,7 +3789,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Berachain"],
-    oracles: [],
+    oracles: ["RedStone"], //https://beraborrow.gitbook.io/docs/borrowing/understanding-collateral/eth-and-btc-based-derivatives
     oraclesBreakdown: [
       {
         name: "Restone",

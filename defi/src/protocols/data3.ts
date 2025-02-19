@@ -22066,7 +22066,7 @@ const data3: Protocol[] = [
         proof: ["https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/chainlink"],
       },
       {
-        name: "Redstone",
+        name: "RedStone",
         type: "Secondary",
         proof: ["https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/redstone-oracles"],
       }
@@ -37293,6 +37293,18 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["Canto"],
     oracles: ["Pyth"], // Pyth for price-feeds, Redstone for keeper: https://cadenceprotocol.gitbook.io/cadence-protocol/trading-on-cadence-protocol/pyth-price-feeds
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://cadenceprotocol.gitbook.io/cadence-protocol/trading-on-cadence-protocol/pyth-price-feeds"]
+      },
+      {
+        name: "RedStone",
+        type: "Fallback",
+        proof: ["https://cadenceprotocol.gitbook.io/cadence-protocol/trading-on-cadence-protocol/pyth-price-feeds"]
+      },
+    ],
     forkedFrom: ["GMX V1"],
     module: "cadence-protocol/index.js",
     twitter: "CadenceProtocol",
@@ -61180,7 +61192,7 @@ const data3: Protocol[] = [
     oracles: ["RedStone"], //https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles
     oraclesBreakdown: [
       {
-        name: "Redstone",
+        name: "RedStone",
         type: "Primary",
         proof: ["https://docs.cian.app/getting-started-with-cian/yield-layer/introduction/redstone-oracles"],
       }
@@ -61750,6 +61762,18 @@ const data3: Protocol[] = [
     twitter: "Fluid_Protocol",
     forkedFrom: ["Liquity V1"],
     oracles: ["Pyth"], // Redstone is a secondary oracle: https://github.com/DefiLlama/DefiLlama-Adapters/pull/12388
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/12388"]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/12388"]
+      }
+    ],
     audit_links: [
       "https://drive.google.com/file/d/1qhiI26aB9MTXfo-hLW8Qy9ki2ueCudKN/view",
       "https://immunefi.com/audit-competition/iop-fluid-protocol/information/"

@@ -5303,7 +5303,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     forkedFrom: [],
-    oracles: ["Pyth","Stork","Redstone"],
+    oracles: ["Pyth","Stork","RedStone"],
     oraclesBreakdown: [
       {
         name: "Pyth",

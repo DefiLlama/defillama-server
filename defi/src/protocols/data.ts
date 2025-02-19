@@ -8332,6 +8332,18 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://drive.google.com/file/d/1qd1h0dujnp4Xxrl68ZTIMzbt4aXzMWY7/view"],
     github: ["moolamarket"],
     oracles: ["cLabs"], // Redstone is only used as backup
+    oraclesBreakdown: [
+      {
+        name: "cLabs",
+        type: "Primary",
+        proof: []
+      },
+      {
+        name: "RedStone",
+        type: "Fallback",
+        proof: []
+      },
+    ],
   },
   {
     id: "490",
@@ -8647,6 +8659,18 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     stablecoins: ["celo-dollar", "celo-euro"],
     github: ["mento-protocol"],
     oracles: ["cLabs", "RedStone"], // Redstone is now being used as primary too after this GOV vote https://celo.stake.id/#/proposal/145
+    oraclesBreakdown: [
+      {
+        name: "cLabs",
+        type: "Primary",
+        proof: ["https://celo.stake.id/#/proposal/145"]
+      },
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://celo.stake.id/#/proposal/145"]
+      }
+    ],
   },
   {
     id: "505",

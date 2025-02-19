@@ -5287,7 +5287,7 @@ const data4: Protocol[] = [
       "https://github.com/HMXOrg/v2-evm/blob/main/audits/CantinaManaged-HMX-final.pdf",
     ],
     forkedFrom: [],
-    oracles: ["Pyth", "Stork"], // https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle
+    oracles: ["Pyth", "Stork", "RedStone"], // https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle
     github: ["TradeOnDESK"],
     parentProtocol: "parent#desk",
   }

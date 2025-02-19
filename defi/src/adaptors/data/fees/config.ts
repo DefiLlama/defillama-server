@@ -2445,6 +2445,9 @@ export default {
     "flashbot": {
         id: "5809",
     },
+    "silverswap": {
+        id: "5529",
+    },
     "desk": {
         id: "5812"
     }

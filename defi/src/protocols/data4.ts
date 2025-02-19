@@ -5243,6 +5243,28 @@ const data4: Protocol[] = [
     twitter: "coinbase", 
   },
   {
+    id: "5811",
+    name: "Smilee Finance gBERA",
+    address: null,
+    symbol: "-",
+    url: "https://smilee.finance/",
+    description: `gBERA is a Liquid Staking Token (LST) designed to participate in Proof of Liquidity (PoL) and generate yield automatically`,
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/smilee-finance-gbera.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Berachain"],
+    forkedFrom: [],
+    module: "smilee-finance/index.js",
+    twitter: "SmileeFinance",
+    audit_links: ["https://smilee-finance.gitbook.io/gbera-docs/audit-reports"],
+    parentProtocol: "parent#smilee-finance",
+    listedAt: 1739985135,
+  },
+  {
     id: "5812",
     name: "DESK",
     address: "arbitrum:0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
@@ -5268,6 +5290,6 @@ const data4: Protocol[] = [
     oracles: ["Pyth", "Stork", "RedStone"], // https://docs.desk.exchange/trading-infrastructure/oracles
     github: ["TradeOnDESK"],
     parentProtocol: "parent#desk",
-  },
+  }
 ];
 export default data4;

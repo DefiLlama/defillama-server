@@ -17,7 +17,7 @@ const handler = async (event: any): Promise<IResponse> => {
       let formattedCoin = {
         decimals: coin.decimals,
         price: coin.price,
-        symbol: coin.symbol,
+        symbol: coin.symbol.replace(/\0/g, ""),
         timestamp: coin.timestamp,
       };
       if (timestampRequested === undefined) {

@@ -2444,5 +2444,8 @@ export default {
     },
     "flashbot": {
         id: "5809",
+    },
+    "silverswap": {
+        id: "5529",
     }
 } as AdaptorsConfig

@@ -37818,29 +37818,21 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://smilee.finance/",
-    description: `On-chain derivatives for volatility trading. Creators of Impermanent Gain—the first DeFi native convex payoff`,
-    chain: "Arbitrum",
+    description: `Start Generating Awesome Yield with the LST that plays Proof of Liquidity for you, only on Berachain.`,
+    chain: "Berachain",
     logo: `${baseIconsUrl}/smilee-finance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Options",
-    chains: ["Arbitrum"],
-    oracles: ["Chainlink"], // https://docs.smilee.finance/protocol-design/oracles-and-risks
-    oraclesBreakdown: [
-      {
-        name: "Chainlink",
-        type: "Primary",
-        proof: ["https://docs.smilee.finance/protocol-design/oracles-and-risks"]
-
-      }
-    ],
+    category: "Liquid Staking",
+    chains: ["Berachain"],
+    oracles: [],
     forkedFrom: [],
     module: "smilee-finance/index.js",
     twitter: "SmileeFinance",
     audit_links: ["https://docs.smilee.finance/resources/audits"],
-    github: ["dverso"],
+    github: ["smilee-finance"],
     listedAt: 1711149739,
   },
   {

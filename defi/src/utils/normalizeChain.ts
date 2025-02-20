@@ -2486,12 +2486,14 @@ export const chainCoingeckoIds = {
     twitter: "FONSmartChain",
     url: "https://fonchain.io/",
   },
-  "Newton": {
+  "AB": {
     geckoId: "newton-project",
-    symbol: "NEW",
+    symbol: "AB",
     cmcId: "3871",
     github: ["newtonproject"],
     categories: ["EVM"],
+    twitter: "newton_project",
+    url: "https://ab.org/en/"
   },
   "JBC": {
     geckoId: null,
@@ -4152,7 +4154,8 @@ const newChainLabelMap = {
   "occ": "EDU Chain",
   "optimism": "OP Mainnet",
   "sx": "SX Network",
-  "sxr": "SX Rollup"
+  "sxr": "SX Rollup",
+  "new": "AB",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

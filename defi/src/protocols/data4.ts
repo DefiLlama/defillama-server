@@ -5564,5 +5564,28 @@ const data4: Protocol[] = [
     twitter: "steammfi",
     listedAt: 1740083754
   },
+  {
+    id: "5825",
+    name: "Veda",
+    address: null,
+    symbol: "-",
+    url: "https://veda.tech",
+    description: `Veda is the leading DeFi vault platform, enabling crypto applications, asset issuers, and protocols to build consumer-grade cross chain yield products. Veda's technology is powering many of DeFi's largest vault products, including ether.fi Liquid, Lombard DeFi Vault, and Mantle cmETH`,
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/veda.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Berachain"],
+    forkedFrom: [],
+    oracles: [],
+    module: "veda/index.js",
+    twitter: "veda_labs",
+    audit_links: ["https://github.com/Se7en-Seas/boring-vault/tree/main/audit", "https://0xmacro.com/library/audits/sevenSeas-1.html", "https://0xmacro.com/library/audits/sevenSeas-2.html", "https://0xmacro.com/library/audits/sevenSeas-3.html"],
+    github: ["Veda-Labs"],
+    listedAt: 1740088552
+  },
 ];
 export default data4;

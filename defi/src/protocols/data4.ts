@@ -5434,7 +5434,6 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "foomclub",
     treasury: "foom.js",
-    listedAt: 1740064391,
   },
 ];
 export default data4;

@@ -21,6 +21,7 @@ import { storeLangs } from "../../storeLangs";
 import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
 import { getOutdated } from "../../stats/getOutdated";
+import * as sdk from '@defillama/sdk'
 // import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 
 const protocolDataMap: { [key: string]: any } = {}
@@ -47,6 +48,7 @@ async function run() {
   }
 
   // await writeProtocolTvlData()  // to be served from rest api instead
+  await writeBitcoinAddressesFile()
   await writeProtocols()
   await writeConfig()
   await writeOracles()
@@ -99,7 +101,7 @@ async function run() {
     console.timeEnd('getLatestProtocolItems filterAMonthAgo')
 
     console.time('getLatestProtocolTokensUSD filterADayAgo')
-    const latestProtocolTokensUSD = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterADayAgo: true,  })
+    const latestProtocolTokensUSD = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterADayAgo: true, })
     const latestProtocolTokensUSDMap: any = {}
     latestProtocolTokensUSD.forEach((data: any) => latestProtocolTokensUSDMap[data.id] = data.data)
     console.timeEnd('getLatestProtocolTokensUSD filterADayAgo')
@@ -297,7 +299,7 @@ async function run() {
 
     // this is handled in rest server now
     // const withConcurrency = 25
- 
+
     // let items = shuffleArray(Object.entries(cache.protocolSlugMap))
     // await PromisePool.withConcurrency(withConcurrency).for(items)
     //   .process(async ([slugName, protocolData]: [string, IProtocol]) => {
@@ -352,6 +354,20 @@ async function run() {
     await storeRouteData('lite/protocols2', protocols2Data)
     await storeRouteData('lite/v2/protocols', v2ProtocolData)
     console.timeEnd(debugString)
+  }
+
+  async function writeBitcoinAddressesFile() {
+    try {
+
+      const debugString = 'write /config/smol/bitcoin-addresses'
+      console.time(debugString)
+      const Bucket = "tvl-adapter-cache"
+      const data = await await sdk.cache.readCache(`${Bucket}/bitcoin-addresses.json`)
+      await storeRouteData('/config/smol/bitcoin-addresses.json', data)
+      console.timeEnd(debugString)
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
 

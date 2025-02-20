@@ -158,6 +158,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   }
 
   function smolConfigHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
+    if (req.path_parameters.name === 'bitcoin-addresses.json')
+      return fileResponse('config/smol/bitcoin-addresses.json', res);
     let name = sluggify({ name: req.path_parameters.name } as any)
     let protocolData = cache.protocolSlugMap[name]
     if (protocolData) return successResponse(res, protocolData, 60);

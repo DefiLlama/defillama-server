@@ -31518,6 +31518,18 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["Solana"],
     oracles: ["Edge"], // https://station.jup.ag/guides/perpetual-exchange/how-it-works#oracle
+    oraclesBreakdown: [
+      {
+        name: "Edge",
+        type: "Primary",
+        proof: ["https://station.jup.ag/guides/perpetual-exchange/how-it-works#oracle"]
+      },
+      {
+        name: "Pyth",
+        type: "Fallback",
+        proof: ["https://station.jup.ag/guides/perpetual-exchange/how-it-works#working-together-with-pyth-oracle"]
+      },
+    ],
     forkedFrom: [],
     module: "jupiter-perpetual.js",
     twitter: "JupiterExchange",

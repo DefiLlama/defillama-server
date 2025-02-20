@@ -2778,5 +2778,26 @@ export default {
     },
     "bullaexchange": {
         id: "5766",
-    }
+    },
+    "ducata": {
+        id: "4896",
+    },
+    "embr": {
+        id: "1063",
+    },
+    "gaming-dex": {
+        id: "4263",
+    },
+    "ginsengswap": {
+        id: "5803",
+    },
+    "polaris-fi": {
+        id: "1440",
+    },
+    "phux": {
+        id: "3205",
+    },
+    "tanukix": {
+        id: "5038",
+    },
 } as AdaptorsConfig

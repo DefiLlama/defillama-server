@@ -2626,7 +2626,7 @@ const data: Protocol[] = [
     module: "creamswap/index.js",
     twitter: "CreamdotFinance",
     audit_links: ["https://github.com/CreamFi/compound-protocol/blob/master/audits/trailofbits-CREAMSummary.pdf"],
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     parentProtocol: "parent#cream-finance",
   },
   {
@@ -4661,7 +4661,7 @@ const data: Protocol[] = [
     module: "yogi/index.js",
     twitter: "yogi_finance",
     audit_links: ["https://docs.yogi.fi/core-concepts/security/audits"],
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     deadUrl: true,
   },
   {
@@ -9185,7 +9185,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "symmetric/index.js",
     twitter: "0xSymmetric",
     audit_links: ["https://docs.symmetric.exchange/audit"],
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     github: ["centfinance"],
   },
   {
@@ -10743,7 +10743,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "valueliquid/index.js",
     twitter: "value_defi",
     audit_links: ["https://valuedefi.io/audit"],
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     parentProtocol: "parent#value-finance",
   },
   {
@@ -11953,7 +11953,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom", "Optimism", "Sonic"],
     module: "beethovenx/index.js",
     twitter: "beets_fi",
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     parentProtocol: "parent#beethoven-x",
   },
   {
@@ -14000,7 +14000,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Moonriver"],
     module: "nileriver/index.js",
     twitter: "NileRiver_Labs",
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     listedAt: 1635821585,
     rugged: true,
     deadUrl: true,
@@ -18184,7 +18184,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "swarm-markets/index.js",
     twitter: "SwarmMarkets",
     audit_links: ["https://docs.swarm.markets/reference/smart-contract-audit"],
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     listedAt: 1638414799,
     github: ["SwarmMarkets"],
   },
@@ -20534,7 +20534,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "embr/index.js",
     twitter: "EmbrFinance",
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     listedAt: 1640080742,
   },
   {

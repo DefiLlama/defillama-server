@@ -5375,7 +5375,7 @@ const data4: Protocol[] = [
     address: "sonic:0xb0695ce12c56aae40894235e2d1888d0b62dd110",
     symbol: "FIVE",
     url: "https://defive.com/swap",
-    description: `Decentralized exchange on Sonice`,
+    description: `Decentralized exchange on Sonic`,
     chain: "Sonic",
     logo: `${baseIconsUrl}/defive-v2.png`,
     audits: "0",

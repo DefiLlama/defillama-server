@@ -41,6 +41,7 @@ export const cache: {
   historicalTvlForAllProtocolsMeta: any,
   feesAdapterCache: any,
   twitterOverview: any,
+  otherProtocolsMap: any,
 } = {
   metadata: {
     protocols: [],
@@ -66,6 +67,7 @@ export const cache: {
   historicalTvlForAllProtocolsMeta: {},
   feesAdapterCache: {},
   twitterOverview: {},
+  otherProtocolsMap: {},
 }
 
 const MINUTES = 60 * 1000
@@ -100,11 +102,26 @@ export async function initCache({ cacheType = RUN_TYPE.CRON } = { cacheType: RUN
       tvlProtocolDataUpdate(cacheType),
       updateAllTvlData(cacheType),
     ])
+    addChildProtocolNames()
   }
+
 
   cache.twitterOverview = await getTwitterOverviewFileV2()
 
   console.timeEnd('Cache initialized: ' + cacheType)
+}
+
+function addChildProtocolNames() {
+  cache.otherProtocolsMap = {}
+  Object.keys(cache.childProtocols).forEach((parentProtocolId) => {
+    const isDead = (p: any) => p.deadFrom || p.deprecated
+    const deadProtocols = cache.childProtocols[parentProtocolId].filter(isDead)
+    const liveProtocols = cache.childProtocols[parentProtocolId].filter((p: any) => !isDead(p))
+    const sortProtocols = (a: any, b: any) => (cache.tvlProtocol[b.id]?.tvl ?? 0) - (cache.tvlProtocol[a.id]?.tvl ?? 0)
+    liveProtocols.sort(sortProtocols)
+    deadProtocols.sort(sortProtocols)
+    cache.otherProtocolsMap[parentProtocolId] = [liveProtocols, deadProtocols].flat().map((p: any) => p.name)
+  })
 }
 
 async function updateMetadata() {

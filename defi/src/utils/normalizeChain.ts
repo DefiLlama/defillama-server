@@ -3930,6 +3930,19 @@ export const chainCoingeckoIds = {
     twitter: "StoryProtocol",
     url: "https://www.story.foundation/",
   }, 
+  "Lumia": {
+    geckoId: "lumia",
+    symbol: "LUMIA",
+    cmcId: "33439",
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+    },
+    chainId: 994873017,
+    twitter: "BuildOnLumia",
+    url: "https://lumia.org/",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

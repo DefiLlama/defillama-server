@@ -6601,6 +6601,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TradeOnDESK",
     github: ["HMXOrg","TradeOnDESK"],
   },
+  {
+    id: "parent#defive",
+    name: "DeFive",
+    url: "https://smilee.finance/",
+    description: "Supercharged DeFi on Sonic",
+    logo: `${baseIconsUrl}/defive.png`,
+    gecko_id: "defive",
+    cmcId: null,
+    chains: [],
+    twitter: "0xDeFive",
+    github: ["0xdefive"]
+  },
 ];
 
 export default parentProtocols;

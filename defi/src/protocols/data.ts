@@ -26697,6 +26697,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "WigoSwap",
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://certik.com/projects/wigoswap"],
+    parentProtocol: "parent#defive",
     listedAt: 1643852628,
   },
   {

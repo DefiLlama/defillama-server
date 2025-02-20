@@ -169,6 +169,7 @@ export async function craftProtocolV2({
     childProtocolsNames = cache.metadata.protocols.filter((p) => p.parentProtocol === parentProtocolId).sort((a, b) => {
       if (a.deprecated && !b.deprecated) return 1
       if (!a.deprecated && b.deprecated) return -1
+      console.log(cache.tvlProtocol[b.id], {b})
       return (cache.tvlProtocol[b.id]?.tvl ?? 0) - (cache.tvlProtocol[a.id]?.tvl ?? 0)
     }).map((p) => p.name);
   }

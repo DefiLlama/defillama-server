@@ -2800,4 +2800,10 @@ export default {
     "tanukix": {
         id: "5038",
     },
+    "piperx-v2": {
+        id: "5779",
+    },
+    "piperx-v3": {
+        id: "5780",
+    }
 } as AdaptorsConfig

@@ -2471,6 +2471,9 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Scroll"],
+    oraclesByChain: {
+      scroll: ["Chainlink"], //https://docs.quill.finance/faq/liquidations-oracle-and-redemptions
+    },
     module: "quill-fi/index.js",
     twitter: "QuillFi",
     forkedFrom: ["Liquity V2"],

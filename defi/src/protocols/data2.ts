@@ -22306,7 +22306,7 @@ const data2: Protocol[] = [
     module: "lodestar/index.js",
     twitter: "LodestarFinance",
     forkedFrom: ["Compound V2"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "RedStone"], //https://docs.jonesdao.io/jones-dao/other/security#oracles
     listedAt: 1670424005,
     parentProtocol: "parent#lodestar-finance",
   },

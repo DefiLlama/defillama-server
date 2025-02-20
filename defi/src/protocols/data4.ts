@@ -5521,5 +5521,48 @@ const data4: Protocol[] = [
     twitter: null,
     listedAt: 1740078109
   },*/
+  {
+    id: "5823",
+    name: "Hermetica USDh",
+    address: null,
+    symbol: "-",
+    url: "https://hermetica.fi",
+    description: `Hermetica is a synthetic dollar protocol built on Bitcoin.`,
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/hermetica-usdh.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Basis Trading",
+    chains: ["Bitcoin"],
+    forkedFrom: [],
+    oracles: [],
+    module: "hermetica/index.js",
+    twitter: "HermeticaFi",
+    audit_links: ["https://docs.hermetica.fi/usdh/audits"],
+    listedAt: 1740083754
+  },
+  {
+    id: "5824",
+    name: "STEAMM",
+    address: null,
+    symbol: "-",
+    url: "https://steamm.fi",
+    description: `Steamm is an Automated Market Maker with an embedded money market integration, designed to maximize capital efficiency. It features a composable architecture that allows for the integration of various quotation systems, such as a Constant-Product quoter, quoters specialized in stablecoin trading, as well as dynamic fee quoters.`,
+    chain: "Sui",
+    logo: `${baseIconsUrl}/steamm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sui"],
+    forkedFrom: [],
+    oracles: [],
+    module: "steamm/index.js",
+    twitter: "steammfi",
+    listedAt: 1740083754
+  },
 ];
 export default data4;

@@ -31469,7 +31469,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Liquid Restaking",
     chains: ["Ethereum"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink","RedStone"],
     forkedFrom: [],
     module: "eigenpie/index.js",
     twitter: "Eigenpiexyz_io",

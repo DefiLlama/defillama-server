@@ -5587,5 +5587,27 @@ const data4: Protocol[] = [
     github: ["Veda-Labs"],
     listedAt: 1740088552
   },
+  {
+    id: "5826",
+    name: "BAMM",
+    address: null,
+    symbol: "-",
+    url: "https://bamm.market/",
+    description: `The BAMM is a borrowing/lending module built on top of Fraxswap. Unlike other borrowing lending modules, the BAMM does not need an outside oracle or external liquidity to function safely`,
+    chain: "Fraxtal",
+    logo: `${baseIconsUrl}/bamm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Fraxtal"],
+    forkedFrom: [],
+    oracles: [],
+    module: "frax-bamm/index.js",
+    twitter: "fraxfinance",
+    parentProtocol: "parent#frax-finance",
+    listedAt: 1740100371
+  },
 ];
 export default data4;

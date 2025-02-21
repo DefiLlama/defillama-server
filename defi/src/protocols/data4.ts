@@ -5652,5 +5652,26 @@ const data4: Protocol[] = [
     audit_links: ["https://canary-protocol-public.s3.eu-west-2.amazonaws.com/Halborn+-+Canary+EVM+review.pdf"],
     listedAt: 1740149948
   },
+  {
+    id: "5829",
+    name: "OneDollarDCAE",
+    address: "arbitrum:0x0c083720131a22F576815EE6a691C7Ed94E86Ab3",
+    symbol: "DCAE",
+    url: "https://onedollardcae.xyz/",
+    description: `The OneDollarDCAE is an innovative decentralized finance (DeFi) solution that enables users to make efficient, automated investments in a tokenized ecosystem`,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/onedollardcae.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DCA Tools",
+    chains: ["Arbitrum"],
+    forkedFrom: [],
+    oracles: ["Uniswap V3"],
+    module: "OneDollarDCAE/index.js",
+    twitter: null,
+    listedAt: 1740166867
+  },
 ];
 export default data4;

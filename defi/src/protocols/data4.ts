@@ -5630,5 +5630,27 @@ const data4: Protocol[] = [
     twitter: "BerAtlasFi",
     listedAt: 1740149948
   },
+  {
+    id: "5828",
+    name: "Canary Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.canaryprotocol.com/",
+    description: `Canary delivers top APYs across multiple chains through streamlined, optimized strategies. Deposit once, and let Canary handle the rest—no more managing individual protocols`,
+    chain: "Plume",
+    logo: `${baseIconsUrl}/canary-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Plume"],
+    forkedFrom: [],
+    oracles: [],
+    module: "canaryprotocol/index.js",
+    twitter: "canary_proto",
+    audit_links: ["https://canary-protocol-public.s3.eu-west-2.amazonaws.com/Halborn+-+Canary+EVM+review.pdf"],
+    listedAt: 1740149948
+  },
 ];
 export default data4;

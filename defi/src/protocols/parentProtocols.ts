@@ -4941,7 +4941,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#threshold-network",
     name: "Threshold Network",
     url: "https://threshold.network/",
-    description: "A decentralized threshold cryptography network",
+    description: "Threshold Network offers a full suite of decentralized threshold cryptography services designed to address user privacy and control concerns within decentralized applications and Web 3.0 platforms.",
     logo: `${baseIconsUrl}/threshold-network.jpg`,
     gecko_id: "threshold-network-token",
     cmcId: "17751",

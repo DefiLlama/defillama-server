@@ -2,7 +2,7 @@ import { getAllAirtableRecords } from "./utils/airtable";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 
 export async function getHacksInternal() {
-  let allRecords = await getAllAirtableRecords('appopBYHROXemyCqN/Hacks')
+  let allRecords = await getAllAirtableRecords('appNED1rpGDbQDjEX/Hacks')
   return allRecords
     .filter(
       (r) =>

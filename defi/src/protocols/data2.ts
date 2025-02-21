@@ -16244,7 +16244,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "giveth/index.js",
     treasury: "giveth.js",
-    twitter: "Givethio",
+    twitter: "Giveth",
     audit_links: [
       "https://github.com/lastperson/code-reviews/blob/main/Giveth%20GIVeconomy%20Contracts%20Code%20Review.pdf",
     ],

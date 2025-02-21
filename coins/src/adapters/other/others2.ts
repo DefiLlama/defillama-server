@@ -42,14 +42,13 @@ async function wstBFC(timestamp: number = 0) {
   });
 }
 
-
 async function stOAS(timestamp: number = 0) {
   const chain = "oas";
   const api = await getApi(chain, timestamp);
   const pricesObject: any = {};
   const stOAS = "0x804c0ab078e4810edbec24a4ffb35ceb3e5bd61b";
   const rate = await api.call({ abi: "uint256:exchangeRate", target: stOAS });
-  pricesObject[stOAS] = { price:rate/1e18, underlying: nullAddress };
+  pricesObject[stOAS] = { price: rate / 1e18, underlying: nullAddress };
   return getWrites({
     chain,
     timestamp,
@@ -58,9 +57,22 @@ async function stOAS(timestamp: number = 0) {
   });
 }
 
+async function wSTBT(timestamp: number = 0) {
+  const chain = "ethereum";
+  const api = await getApi(chain, timestamp);
+  const pricesObject: any = {};
+  const wSTBT = "0x288a8005c53632d920045b7c7c2e54a3f1bc4c83";
+  const price = await api.call({ abi: "uint256:stbtPerToken", target: wSTBT });
+  pricesObject[wSTBT] = { price: price / 1e18, underlying: '0x530824DA86689C9C17CdC2871Ff29B058345b44a' };
+  return getWrites({
+    chain,
+    timestamp,
+    pricesObject,
+    projectName: "other2",
+  });
+}
 
 export const adapters = {
   solanaAVS,
-  wstBFC,
-  stOAS,
+  wstBFC, stOAS, wSTBT,
 };

@@ -5609,5 +5609,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#frax-finance",
     listedAt: 1740100371
   },
+  {
+    id: "5827",
+    name: "Beratlas Finance",
+    address: "berachain:0x5E571727c7aD0c062D009F0Fe7c17f93a02da158",
+    symbol: "BATLAS",
+    url: "https://beratlas.finance",
+    description: `Beratlas is a DeFi protocol on the Berachain that utilizes $BERA and $BATLAS to create a stable and potentially increasing value mechanism`,
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/beratlas-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Reserve Currency",
+    chains: ["Berachain"],
+    forkedFrom: ["Eggs Finance"],
+    oracles: [],
+    module: "beratlas-finance/index.js",
+    twitter: "BerAtlasFi",
+    listedAt: 1740149948
+  },
 ];
 export default data4;

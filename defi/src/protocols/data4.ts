@@ -5675,5 +5675,27 @@ const data4: Protocol[] = [
     twitter: null,
     listedAt: 1740166867
   },
+  {
+    id: "5830",
+    name: "Astake",
+    address: null,
+    symbol: "-",
+    url: "https://www.astake.dev/",
+    description: `Astake is built on a secure, reliable framework, making it simple for users to take part in Astar dApp Staking. Our protocol is designed enhance the overall liquidity and stability of the ecosystem. By leveraging advanced security measures and a user-friendly interface, Astake aims to become an integral part of Astar's and Soneium's financial landscape`,
+    chain: "Astar",
+    logo: `${baseIconsUrl}/astake.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Astar","Soneium"],
+    forkedFrom: [],
+    oracles: [],
+    module: "astake/index.js",
+    twitter: "Astake_Official",
+    audit_links: ["https://2158577729-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZvrQzyC6CUbKT18tX4R4%2Fuploads%2FHXCRcpbI42eZkcc28q71%2FPeckShield-Audit-Report-Astake-v1.0.pdf?alt=media&token=c0227917-bb21-4927-8e08-8a1525586533"],
+    listedAt: 1740192797
+  },
 ];
 export default data4;

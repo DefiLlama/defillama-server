@@ -2469,4 +2469,7 @@ export default {
     "tanukix": {
         id: "5038",
     },
+    "magma-finance": {
+        id: "5774",
+    }
 } as AdaptorsConfig

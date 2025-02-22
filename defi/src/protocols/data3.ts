@@ -28158,7 +28158,13 @@ const data3: Protocol[] = [
     cmcId: "30843",
     category: "Liquid Restaking",
     chains: ["Ethereum"],
-    oracles: [],
+    oraclesByChain: {
+      ethereum: ["Chainlink"], //https://docs.renzoprotocol.com/docs/integrations/l2-native-restaking
+      arbitrum:["Chainlink"], //https://docs.renzoprotocol.com/docs/integrations/l2-native-restaking
+      linea: ["Chainlink"],  //https://docs.renzoprotocol.com/docs/integrations/l2-native-restaking
+      base: ["Chainlink"],  //https://docs.renzoprotocol.com/docs/integrations/l2-native-restaking
+      optimism: ["Chainlink"],  //https://docs.renzoprotocol.com/docs/integrations/l2-native-restaking
+    },
     forkedFrom: [],
     module: "renzo/index.js",
     twitter: "RenzoProtocol",
@@ -55872,7 +55878,9 @@ const data3: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#lombard-finance",
     tokensExcludedFromParent: {
-      Ethereum: ["LBTC"],
+      Ethereum: ["LBTC", "PT-LBTC-27MAR2025", "gtLBTCc", "YT-LBTC-27MAR2025", "SY-LBTC"],
+      Base: ["LBTC", "LP LBTC", "PT LBTC", "YT LBTC"],
+      Bsc: ["LBTC"],
     },
     listedAt: 1726215518
   },

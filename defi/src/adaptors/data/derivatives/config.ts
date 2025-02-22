@@ -804,5 +804,14 @@ export default {
                 id: "5737",
             }
         }
+    },
+    "citrex-markets": {
+        id: "5641",
+        protocolsData: {
+            "derivatives": {
+                id: "5641",
+            }
+        }
+
     }
 } as AdaptorsConfig

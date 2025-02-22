@@ -5502,15 +5502,15 @@ const data4: Protocol[] = [
     twitter: "chickensdefi",
     listedAt: 1740078103
   },
- /* { // wait to list until url and icon are provided
+  { 
     id: "5822",
     name: "Meme Wallet",
     address: null,
     symbol: "-",
-    url: "-",
+    url: "https://nextjs-boilerplate-three-beta-84.vercel.app",
     description: `Meme coin factory to launch meme coins along a bonding curve. Only World ID verified user's are able to create new tokens`,
     chain: "World Chain",
-    logo: `${baseIconsUrl}/defiapp.png`,
+    logo: `${baseIconsUrl}/meme-wallet.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -5522,7 +5522,7 @@ const data4: Protocol[] = [
     module: "meme-wallet/index.js",
     twitter: null,
     listedAt: 1740078109
-  },*/
+  },
   {
     id: "5823",
     name: "Hermetica USDh",

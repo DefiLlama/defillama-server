@@ -28158,7 +28158,13 @@ const data3: Protocol[] = [
     cmcId: "30843",
     category: "Liquid Restaking",
     chains: ["Ethereum"],
-    oracles: [],
+    oraclesByChain: {
+      ethereum: ["Chainlink"], //https://docs.renzoprotocol.com/docs/integrations/l2-native-restaking
+      arbitrum:["Chainlink"], //https://docs.renzoprotocol.com/docs/integrations/l2-native-restaking
+      linea: ["Chainlink"],  //https://docs.renzoprotocol.com/docs/integrations/l2-native-restaking
+      base: ["Chainlink"],  //https://docs.renzoprotocol.com/docs/integrations/l2-native-restaking
+      optimism: ["Chainlink"],  //https://docs.renzoprotocol.com/docs/integrations/l2-native-restaking
+    },
     forkedFrom: [],
     module: "renzo/index.js",
     twitter: "RenzoProtocol",

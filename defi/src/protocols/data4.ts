@@ -5689,7 +5689,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",
-    chains: ["Astar","Soneium"],
+    chains: ["Astar"],
     forkedFrom: [],
     oracles: [],
     module: "astake/index.js",

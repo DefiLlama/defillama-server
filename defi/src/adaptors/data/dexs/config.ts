@@ -2805,5 +2805,8 @@ export default {
     },
     "piperx-v3": {
         id: "5780",
+    },
+    "magma-finance": {
+        id: "5774",
     }
 } as AdaptorsConfig

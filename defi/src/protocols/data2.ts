@@ -16238,7 +16238,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "giveth",
     cmcId: "17207",
-    category: "Charity Fundraising","Farm","Governance Incentives",
+    category: "Charity Fundraising",
     chains: ["Ethereum", "xDai", "optimism", "polygon_zkevm", "solana"],
     oracles: [],
     forkedFrom: [],
@@ -16250,7 +16250,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1662676779,
     github: ["Giveth"],
-  },
+  }, // https://github.com/DefiLlama/defillama-server/pull/9348#issuecomment-2675831958
   {
     id: "2079",
     name: "Inuswap",

@@ -25886,7 +25886,7 @@ const data3: Protocol[] = [
   {
     id: "3833",
     name: "Amped Finance",
-    address: "base:0xca7F14F14d975bEFfEe190Cd3cD232a3a988Ab9C",
+    address: "base:0xAc611438AE5F3953DeDB47c2ea8d6650D601C1B4",
     symbol: "AMP",
     url: "https://amped.finance/",
     description:

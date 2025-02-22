@@ -55878,7 +55878,9 @@ const data3: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#lombard-finance",
     tokensExcludedFromParent: {
-      Ethereum: ["LBTC"],
+      Ethereum: ["LBTC", "PT-LBTC-27MAR2025", "gtLBTCc", "YT-LBTC-27MAR2025", "SY-LBTC"],
+      Base: ["LBTC", "LP LBTC", "PT LBTC", "YT LBTC"],
+      Bsc: ["LBTC"],
     },
     listedAt: 1726215518
   },

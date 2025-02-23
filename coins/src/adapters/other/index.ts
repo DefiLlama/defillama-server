@@ -2,6 +2,7 @@ import synthetixAdapter from "./synthetix";
 import glp from "./glp";
 import abraAdapter from "./abracadabra";
 import unknownTokenAdapter from "./unknownToken";
+import eywaAdapter from "./eywaCrossCurve";
 import podsAdapter from "./pods";
 import distressedAdapter from "./distressedAssets";
 import { contracts } from "./distressed";
@@ -521,6 +522,11 @@ async function matrixdock(timestamp: number = 0, writes: Write[] = []) {
 }
 
 
+export async function eywa(timestamp: number = 0, writes: Write[] = []) {
+  return eywaAdapter(timestamp, writes);
+}
+
+
 export const adapters = {
   symboitic,
   defiChain,
@@ -553,4 +559,5 @@ export const adapters = {
   reyaUSD,
   karakWrapped,
   matrixdock,
+  eywa,
 };

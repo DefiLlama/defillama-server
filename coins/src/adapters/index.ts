@@ -126,4 +126,5 @@ export default {
   fxsp: require("./yield/fxsp"),
   stakeDao: require("./yield/stakeDao"),
   kodiak: require("./markets/kodiak"),
+  pac: require("./rwa/thepac")
 };

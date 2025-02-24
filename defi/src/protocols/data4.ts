@@ -5927,5 +5927,26 @@ const data4: Protocol[] = [
     audit_links: ["https://vingt-io.gitbook.io/vingt.io/miscellaneous/audit-and-security-visp"],
     listedAt: 1740401623
   },
+  {
+    id: "5840",
+    name: "Roll Fun",
+    address: null,
+    symbol: "-",
+    url: "https://fun.tryroll.com/",
+    description: `Create a Roll launchpad token on Form`,
+    chain: "Form Network",
+    logo: `${baseIconsUrl}/roll-fun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Form Network"],
+    forkedFrom: [],
+    oracles: [],
+    module: "roll-fun/index.js",
+    twitter: "tryrollhq",
+    listedAt: 1740408830
+  },
 ];
 export default data4;

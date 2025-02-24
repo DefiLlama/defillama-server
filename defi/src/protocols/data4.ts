@@ -5858,10 +5858,45 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid"],
     forkedFrom: ["Uniswap V3"],
     oracles: [],
-    module: "hyperswap-v2/index.js",
+    module: "hyperswap-v3/index.js",
     twitter: "HyperSwapX",
     parentProtocol: "parent#hyperswap",
     listedAt: 1740357237
+  },
+  {
+    id: "5838",
+    name: "HypurrFi",
+    address: null,
+    symbol: "-",
+    url: "https://hypurr.fi",
+    description: `Collateralize borrowing positions and loop and lever up your yield`,
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/hypurrfi.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Hyperliquid"],
+    forkedFrom: ["AAVE V3"],
+    oracles: ["Pyth", "RedStone"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13635"]
+      },
+      {
+        name: "RedStone",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13635"]
+      }
+    ],
+    module: "hypurrfi/index.js",
+    twitter: "hypurrfi",
+    audit_links: ["https://docs.hypurr.fi/introduction/security"],
+    github: ["lastdotnet"],
+    listedAt: 1740357778
   },
 ];
 export default data4;

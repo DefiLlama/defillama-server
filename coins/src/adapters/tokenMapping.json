@@ -6826,6 +6826,16 @@
       "to": "coingecko#bifrost-voucher-astr",
       "decimals": 18,
       "symbol": "vASTR"
+    },
+    "0x541FD749419CA806a8bc7da8ac23D346f2dF8B77": {
+      "decimals": "18",
+      "symbol": "SolvBTC",
+      "to": "coingecko#solv-btc"
+    },
+    "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
+      "decimals": "18",
+      "symbol": "SolvBTC.BBN",
+      "to": "coingecko#solv-protocol-solvbtc-bbn"
     }
   },
   "odyssey": {

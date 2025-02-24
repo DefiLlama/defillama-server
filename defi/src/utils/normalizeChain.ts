@@ -3952,11 +3952,20 @@ export const chainCoingeckoIds = {
     categories: ["EVM","Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
-      types: ["L2"],
+      types: ["L2","gas"],
     },
     chainId: 478,
     twitter: "0xForm",
     url: "https://form.network/",
+  }, 
+  "HyperEVM": {
+    geckoId: null,
+    symbol: "HYPE",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 999,
+    twitter: "HyperliquidX",
+    url: "https://hyperfoundation.org/",
   }, 
 } as unknown as ChainCoinGekcoIds
 
@@ -4131,7 +4140,8 @@ const chainLabelMap = {
   "zero_network": "Zero Network",
   "silicon_zk": "Silicon zkEVM",
   "sty": "Story",
-  "formnetwork": "Form Network"
+  "formnetwork": "Form Network",
+  "hyper_evm": "HyperEVM"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

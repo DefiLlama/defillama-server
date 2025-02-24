@@ -5794,5 +5794,30 @@ const data4: Protocol[] = [
     ],
     listedAt: 1740338355
   },
+  {
+    id: "5835",
+    name: "Lara Protocol",
+    address: "tara:0xe6a69cd4ff127ad8e53c21a593f7bac4c608945e",
+    symbol: "LARA",
+    url: "https://app.laraprotocol.com",
+    description: `Lara Protocol is the native Liquid Staking solution for Taraxa.Stake your tokens with Lara, and we'll take care of the rest. You'll instantly receive stTARA tokens, which, although tied to your staking rewards, can be used in other DeFi protocols. Backed by the first DAO on Taraxa, Lara DAO`,
+    chain: "Taraxa",
+    logo: `${baseIconsUrl}/lara-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "lara",
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Taraxa"],
+    forkedFrom: [],
+    oracles: [],
+    module: "laraProtocol/index.js",
+    twitter: "LaraProtocol",
+    audit_links: [
+      "https://github.com/Lara-staking/liquid-staking/tree/develop/audits"
+    ],
+    github: ["Lara-staking"],
+    listedAt: 1740356469
+  },
 ];
 export default data4;

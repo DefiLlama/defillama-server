@@ -4054,7 +4054,7 @@ const chainLabelMap = {
   "elsm": "Elysium",
   "eon": "Horizen EON",
   "chz": "Chiliz",
-  "lightlink_phoenix": "LightLink",
+  "lightlink": "LightLink",
   "pgn": "PGN",
   "dash": "Dash",
   "fsc": "FSC",

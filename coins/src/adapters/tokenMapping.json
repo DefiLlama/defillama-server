@@ -680,11 +680,6 @@
       "symbol": "LQRD",
       "to": "coingecko#liquiddriver"
     },
-    "0x0921799cb1d702148131024d18fcde022129dc73": {
-      "decimals": "18",
-      "symbol": "LL",
-      "to": "coingecko#lightlink"
-    },
     "0x8A60E489004Ca22d775C5F2c657598278d17D9c2": {
       "decimals": "18",
       "symbol": "USDa",
@@ -3096,13 +3091,13 @@
       "to": "coingecko#fonsmartchain"
     }
   },
-  "lightlink_phoenix": {
-    "0x18fb38404dadee1727be4b805c5b242b5413fa40": {
+  "lightlink": {
+    "0xbCF8C1B03bBDDA88D579330BDF236B58F8bb2cFd": {
       "decimals": "6",
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     },
-    "0x6308fa9545126237158778e74ae1b6b89022c5c0": {
+    "0x808d7c71ad2ba3FA531b068a2417C63106BC0949": {
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"

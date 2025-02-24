@@ -5898,5 +5898,34 @@ const data4: Protocol[] = [
     github: ["lastdotnet"],
     listedAt: 1740357778
   },
+  {
+    id: "5839",
+    name: "Vingt.io",
+    address: null,
+    symbol: "-",
+    url: "https://app.vingt.io/",
+    description: `Vingt.io is an AI-powered platform for asset management, offering optimized trades and access to index and leverage tokens, all within a single dApp for quick, one-click investing`,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/vingt.io.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Arbitrum","Binance"],
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13597"]
+      }
+    ],
+    module: "Vingt.io/index.js",
+    twitter: "vingtofficial",
+    audit_links: ["https://vingt-io.gitbook.io/vingt.io/miscellaneous/audit-and-security-visp"],
+    listedAt: 1740401623
+  },
 ];
 export default data4;

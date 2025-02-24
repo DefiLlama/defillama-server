@@ -25886,12 +25886,12 @@ const data3: Protocol[] = [
   {
     id: "3833",
     name: "Amped Finance",
-    address: "base:0xAc611438AE5F3953DeDB47c2ea8d6650D601C1B4",
+    address: "lightlink:0xca7F14F14d975bEFfEe190Cd3cD232a3a988Ab9C",
     symbol: "AMP",
     url: "https://amped.finance/",
     description:
-      "Amped Finance is an omnichain perpetual swaps exchange that allows users and agents to trade leveraged positions with low fees and zero price impact.",
-    chain: "Base",
+      "Amped Finance is an omnichain perpetual swaps exchange that allows users to trade leveraged positions with low fees and zero price impact.",
+    chain: "LightLink",
     logo: `${baseIconsUrl}/amped-finance.jpg`,
     audits: "2",
     audit_note: null,
@@ -25905,7 +25905,7 @@ const data3: Protocol[] = [
     module: "amped/index.js",
     twitter: "ampedfinance",
     github: ["amped-finance"],
-    listedAt: 1718114400,
+    listedAt: 1700740065,
   },
   {
     id: "3834",

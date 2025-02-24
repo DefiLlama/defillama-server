@@ -6613,6 +6613,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "0xDeFive",
     github: ["0xdefive"]
   },*/
+  {
+    id: "parent#hyperswap",
+    name: "HyperSwap",
+    url: "https://smilee.finance/",
+    description: "Explore token swaps, liquidity management and easy token launches",
+    logo: `${baseIconsUrl}/hyperswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HyperSwapX",
+  },
 ];
 
 export default parentProtocols;

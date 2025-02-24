@@ -64772,7 +64772,7 @@ const data3: Protocol[] = [
   {
     id: "5540",
     name: "Zeebu",
-    address: null,
+    address: "0xe77f6acd24185e149e329c1c0f479201b9ec2f4b",
     symbol: "ZBU",
     url: "https://zeebu.fi",
     description: "ZBU Protocol offers a decentralized liquidity solution specifically tailored for the DeFi ecosystem. It utilizes a unique combination of participant roles and innovative mechanisms to facilitate efficient, secure, and scalable settlements.",

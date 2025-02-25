@@ -1465,6 +1465,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC"
+    },
+    "0xb30a694a344edee467d9f82330bbe7c3b89f440a1ecd2da1f3bca266560fce69": {
+      "to": "coingecko#ethena-staked-usde",
+      "decimals": 6,
+      "symbol": "sUSDe"
     }
   },
   "velas": {

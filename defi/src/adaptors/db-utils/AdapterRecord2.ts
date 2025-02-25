@@ -62,7 +62,8 @@ export class AdapterRecord2 {
   }): AdapterRecord2 | null {
     // clone & clean to be safe
     const data: DataJSON = { aggregated: {} }
-    const adaptorId = protocol.id2
+    const adaptorId = protocol.protocolType === ProtocolType.CHAIN ? `chain#${protocol.id}` : protocol.id
+    const adapterId2 = protocol.id2;
     const configItem = configIdMap[adaptorId] ?? configIdMap[protocol.id]
     const hasBreakdown = !!configItem.protocolsData
     let whitelistedVersionKeys = new Set(hasBreakdown ? Object.keys(configItem.protocolsData) : [protocol.module])
@@ -77,7 +78,7 @@ export class AdapterRecord2 {
       return null
     }
 
-    return new AdapterRecord2({ data, adaptorId, adapterType, timestamp: timestamp!, protocolType, })
+    return new AdapterRecord2({ data, adaptorId: adapterId2, adapterType, timestamp: timestamp!, protocolType, })
 
 
     function transformRecord(record: AdaptorRecord | null, key: AdaptorRecordType) {

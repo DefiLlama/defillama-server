@@ -16189,10 +16189,37 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum", "Fraxtal", "Arbitrum"],
     oraclesByChain: {
-      ethereum: ["Chainlink", "RedStone"],
+      ethereum: ["Chainlink"],
       fraxtal: ["RedStone"],
       arbitrum: ["Chainlink"],
     },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [],
+        chains: [
+          {chain: "Ethereum"},
+          {chain: "Arbitrum"}
+        ]
+      },
+      {
+        name: "API3",
+        type: "Secondary",
+        proof: [],
+        chains: [
+          {chain: "Fraxtal"},
+        ]
+      },
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: [],
+        chains: [
+          {chain: "Fraxtal"},
+        ]
+      }
+    ],
     forkedFrom: [],
     module: "fraxlend/index.js",
     twitter: "fraxfinance",

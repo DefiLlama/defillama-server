@@ -558,7 +558,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Trading App",
+    category: "Prediction Market",
     chains: ["Avalanche", "Polygon", "Base", "Binance", "Celo"],
     oracles: [],
     forkedFrom: [],

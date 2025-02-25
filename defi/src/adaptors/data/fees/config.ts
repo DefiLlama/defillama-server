@@ -2481,5 +2481,8 @@ export default {
     },
     "goplus-locker": {
         id: "5807",
+    },
+    "caviarnine-simplepool": {
+        id: "5064",
     }
 } as AdaptorsConfig

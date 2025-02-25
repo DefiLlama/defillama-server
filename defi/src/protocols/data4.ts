@@ -5948,5 +5948,27 @@ const data4: Protocol[] = [
     twitter: "tryrollhq",
     listedAt: 1740408830
   },
+  {
+    id: "5841",
+    name: "Jupiter DCA",
+    address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    symbol: "JUP",
+    url: "https://jup.ag/recurring",
+    description: "Jupiter's DCA Tool",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jupiter-dca.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Solana"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "JupiterExchange",
+    parentProtocol: "parent#jupiter",
+    listedAt: 1740459847,
+  },
 ];
 export default data4;

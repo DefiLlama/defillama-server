@@ -14353,7 +14353,7 @@ const data2: Protocol[] = [
     symbol: "MORPHO",
     url: "https://compound.morpho.org/?network=mainnet",
     description:
-      "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
+      "Morpho Compound is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/morpho-compound.png`,
     audits: "2",
@@ -18316,7 +18316,7 @@ const data2: Protocol[] = [
     symbol: "MORPHO",
     url: "https://aavev2.morpho.org/?network=mainnet",
     description:
-      "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
+      "Morpho AaveV2 is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/morpho-aave.png`,
     audits: "2",

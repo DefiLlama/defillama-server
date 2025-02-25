@@ -377,7 +377,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Morpho",
     url: "https://morpho.org/",
     description:
-      "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
+      "Morpho is a permissionless decentralized lending platform that operates on two levels: it offers tailored solutions for users to earn and borrow on their terms and provides a flexible infrastructure stack that empowers developers and businesses to build custom applications. Morpho's unique value lies in offering users the ability to tailor their own risk-reward profile by selecting from curated vaults, markets, or products.",
     logo: `${baseIconsUrl}/morpho.png`,
     gecko_id: "morpho",
     cmcId: null,

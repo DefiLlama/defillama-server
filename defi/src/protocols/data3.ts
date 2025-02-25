@@ -46304,6 +46304,23 @@ const data3: Protocol[] = [
     twitter: "YeiFinance",
     forkedFrom: ["AAVE V3"],
     oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/8796
+    oraclesBreakdown: [
+      {
+        name: "API3",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/8796"]
+      },
+      {
+        name: "Pyth",
+        type: "Fallback",
+        proof: ["https://docs.yei.finance/welcome-to-yei/security-and-risk/oracles-and-data-feeds#multi-oracle-strategy"]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://docs.yei.finance/welcome-to-yei/security-and-risk/oracles-and-data-feeds#multi-oracle-strategy"]
+      }
+    ],
     listedAt: 1717532780,
   },
   {

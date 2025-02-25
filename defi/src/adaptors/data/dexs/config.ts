@@ -2808,5 +2808,8 @@ export default {
     },
     "magma-finance": {
         id: "5774",
+    },
+    "caviarnine-simplepool": {
+        id: "5064",
     }
 } as AdaptorsConfig

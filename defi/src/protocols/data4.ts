@@ -6058,5 +6058,26 @@ const data4: Protocol[] = [
     twitter: "WasabeeFi",
     listedAt: 1740493964
   },
+  {
+    id: "5846",
+    name: "Hedgey",
+    address: null,
+    symbol: "-",
+    url: "https://hedgey.finance/",
+    description: "Hedgey helps teams create & manage employee token vesting, investor lockups, & community token claims",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hedgey.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Ethereum","Optimism","Arbitrum","Base","Binance","Scroll"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "hedgeyfinance",
+    audit_links: ["https://hedgey.gitbook.io/hedgey-community-docs/for-developers/audits"],
+  },
 ];
 export default data4;

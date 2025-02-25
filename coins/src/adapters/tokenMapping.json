@@ -3091,7 +3091,7 @@
       "to": "coingecko#fonsmartchain"
     }
   },
-  "lightlink": {
+  "lightlink_phoenix": {
     "0xbCF8C1B03bBDDA88D579330BDF236B58F8bb2cFd": {
       "decimals": "6",
       "symbol": "USDC",

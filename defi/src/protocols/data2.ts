@@ -19984,7 +19984,7 @@ const data2: Protocol[] = [
     cmcId: "17799",
     category: "Bridge",
     chains: ["Ethereum"],
-    module: "alexar/index.js",
+    module: "axelar/index.js",
     twitter: "axelarnetwork",
     forkedFrom: [],
     oracles: [],

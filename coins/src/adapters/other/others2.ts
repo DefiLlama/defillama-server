@@ -3,6 +3,7 @@ import getWrites from "../utils/getWrites";
 import { getTokenSupplies, getTokenAccountBalances, } from "../solana/utils";
 import { getApi } from "../utils/sdk";
 import { nullAddress } from "../../utils/shared/constants";
+import { getLogs } from "../../utils/cache/getLogs";
 
 
 async function solanaAVS(timestamp: number = 0) {
@@ -72,7 +73,37 @@ async function wSTBT(timestamp: number = 0) {
   });
 }
 
+async function beraborrow(timestamp: number = 0) {
+  const chain = "berachain";
+  const api = await getApi(chain, timestamp);
+
+  const infraredLogs = await getLogs({ api, target: '0xb71b3DaEA39012Fb0f2B14D2a9C86da9292fC126', eventAbi: 'event NewVault (address _sender, address indexed _asset, address indexed _vault)', fromBlock: 562092, onlyArgs: true, })
+  const infraAssets = infraredLogs.map((log: any) => log._asset)
+  const names = await api.multiCall({ abi: 'string:name', calls: infraAssets, permitFailure: true, })
+  const bbInfraWrappers = infraAssets.filter((_: any, i: number) => names[i] && names[i].startsWith('Beraborrow: '))
+  const bbInfraWrapperUnderlyings = await api.multiCall({ abi: 'address:underlying', calls: bbInfraWrappers })
+  const balances = await api.multiCall({ abi: 'erc20:balanceOf', calls: bbInfraWrapperUnderlyings.map((target: string, i: number) => ({ target, params: bbInfraWrappers[i]})) })
+  const supplies  = await api.multiCall({  abi: 'uint256:totalSupply', calls: bbInfraWrappers})
+  const tDecimals = await api.multiCall({  abi: 'uint8:decimals', calls: bbInfraWrappers})
+  const uDecimals = await api.multiCall({  abi: 'uint8:decimals', calls: bbInfraWrapperUnderlyings})
+  const pricesObject: any = {};
+  bbInfraWrappers.forEach((wrapper: string, i: number) => {
+    if (+supplies[i] === 0) return;
+    const price = balances[i] * (10 ** (uDecimals[i] - tDecimals[i])) / supplies[i]
+    pricesObject[wrapper] = {
+      price,
+      underlying: bbInfraWrapperUnderlyings[i],
+    }
+  })
+  return getWrites({
+    chain,
+    timestamp,
+    pricesObject,
+    projectName: "other2",
+  });
+}
+
 export const adapters = {
   solanaAVS,
-  wstBFC, stOAS, wSTBT,
+  wstBFC, stOAS, wSTBT, beraborrow,
 };

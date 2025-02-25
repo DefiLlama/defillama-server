@@ -55797,7 +55797,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.elixir.xyz",
-    description: "Elixir is a high-throughput DPoS consensus network that enables anyone to supply liquidity directly to orderbooks. The protocol is fully composable: enabling orderbook-based DEXs to natively integrate Elixir into their core infrastructure to unlock retail liquidity for algorithmic market making. ",
+    description: "The Elixir network is a new primitive, purpose-built to power the next generation of institutional liquidity. Elixir powers deUSD – a fully collateralized, yield-bearing synthetic dollar. Elixir is the most widely adopted network by RWAs: exclusively bringing funds from BlackRock, Hamilton Lane, and others to DeFi for the first time through deUSD. The Elixir network is secured by 30,000+ global validators.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/elixir.jpg`,
     audits: "2",
@@ -64772,7 +64772,7 @@ const data3: Protocol[] = [
   {
     id: "5540",
     name: "Zeebu",
-    address: null,
+    address: "0xe77f6acd24185e149e329c1c0f479201b9ec2f4b",
     symbol: "ZBU",
     url: "https://zeebu.fi",
     description: "ZBU Protocol offers a decentralized liquidity solution specifically tailored for the DeFi ecosystem. It utilizes a unique combination of participant roles and innovative mechanisms to facilitate efficient, secure, and scalable settlements.",

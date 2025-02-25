@@ -5970,5 +5970,28 @@ const data4: Protocol[] = [
     parentProtocol: "parent#jupiter",
     listedAt: 1740459847,
   },
+  {
+    id: "5842",
+    name: "SIR Trading",
+    address: null,
+    symbol: "-",
+    url: "https://www.sir.trading",
+    description: "SIR is a decentralized trading protocol designed for leveraged positions with a focus on long-term investing. Key features include a one-time fee for opening positions (no recurring funding costs), no liquidations, and no volatility decay (returns aren't eroded by market fluctuations). By eliminating these traditional risks and costs, SIR offers a sustainable way to maintain leveraged exposure over extended periods, making it ideal for investors seeking leveraged assets without the stress of daily fees, margin calls, or compounding price instability.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sir-trading.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "sir-trading/index.js",
+    twitter: "leveragesir",
+    audit_links: ["https://github.com/Egis-Security/audits/blob/main/reports/SIR-Trading.pdf"],
+    github: ["SIR-trading"],
+    listedAt: 1740490512
+  },
 ];
 export default data4;

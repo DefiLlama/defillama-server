@@ -2475,5 +2475,11 @@ export default {
     "jupiter-dca": {
         parentId: "Jupiter",
         id: "5841",
+    },
+    "sablier": {
+        id: "199",
+    },
+    "goplus-locker": {
+        id: "5807",
     }
 } as AdaptorsConfig

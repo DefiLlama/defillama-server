@@ -64547,7 +64547,7 @@ const data3: Protocol[] = [
     category: "Dexs",
     chains: ["Sonic"],
     oracles: [],
-    forkedFrom: ["Uniswap V3"],
+    forkedFrom: ["Algebra Integral"],
     module: "silverswap/index.js",
     twitter: "SilverSwapDex",
     listedAt: 1734641917

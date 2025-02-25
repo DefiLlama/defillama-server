@@ -4180,6 +4180,7 @@ const newChainLabelMap = {
   "sx": "SX Network",
   "sxr": "SX Rollup",
   "new": "AB",
+  "formnetwork": "Form Network"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

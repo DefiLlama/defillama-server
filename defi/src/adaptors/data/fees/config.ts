@@ -2471,5 +2471,9 @@ export default {
     },
     "magma-finance": {
         id: "5774",
+    },
+    "jupiter-dca": {
+        parentId: "Jupiter",
+        id: "5841",
     }
 } as AdaptorsConfig

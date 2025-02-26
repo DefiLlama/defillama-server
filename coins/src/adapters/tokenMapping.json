@@ -5444,6 +5444,11 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 8,
       "symbol": "WBTC"
+    },
+    "0xFd24287551068981737F64ab5f4054DA27F01833": {
+      "to": "coingecko#weth",
+      "decimals": 18,
+      "symbol": "nETH"
     }
   },
   "rari": {

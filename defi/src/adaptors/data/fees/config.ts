@@ -2484,5 +2484,8 @@ export default {
     },
     "caviarnine-simplepool": {
         id: "5064",
+    },
+    "hedgey": {
+        id: "5846"
     }
 } as AdaptorsConfig

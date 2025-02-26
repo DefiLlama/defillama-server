@@ -5564,6 +5564,7 @@ const data4: Protocol[] = [
     oracles: [],
     module: "steamm/index.js",
     twitter: "steammfi",
+    parentProtocol: "parent#suilend-protocol",
     listedAt: 1740083754
   },
   {

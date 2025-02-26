@@ -3967,6 +3967,15 @@ export const chainCoingeckoIds = {
     twitter: "HyperliquidX",
     url: "https://hyperfoundation.org/",
   }, 
+  "Hemi": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    chainId: 43111,
+    twitter: "hemi_xyz",
+    url: "https://hemi.xyz",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

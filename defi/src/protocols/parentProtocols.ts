@@ -6334,7 +6334,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#sonefi",
     name: "SoneFi",
-    url: "https://www.ln.exchange/",
+    url: "https://sonefi.xyz",
     description:
       "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
     logo: `${baseIconsUrl}/sonefi.jpg`,

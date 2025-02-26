@@ -1042,7 +1042,7 @@ const data4: Protocol[] = [
       "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
     chain: "Soneium",
     logo: `${baseIconsUrl}/sonefi.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -1052,7 +1052,7 @@ const data4: Protocol[] = [
     twitter: "SoneFi_xyz",
     forkedFrom: ["SyncSwap"],
     oracles: [], 
-    audit_links: [],
+    audit_links: ["https://github.com/SoneFixyz/Contracts"],
     parentProtocol: "parent#sonefi",
     listedAt: 1736851567
   },
@@ -1574,7 +1574,7 @@ const data4: Protocol[] = [
       "One-stop trading Dex soneium, offering  AMM, Perp, AI Agent, and Meme Launch.",
     chain: "Soneium",
     logo: `${baseIconsUrl}/sonefi.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -1584,7 +1584,7 @@ const data4: Protocol[] = [
     twitter: "SoneFi_xyz",
     forkedFrom: [],
     oracles: ["Pyth"], //  https://docs.sonefi.xyz/overview/terminology#oracle-pricing
-    audit_links: [],
+    audit_links: ["https://github.com/SoneFixyz/Contracts"],
     parentProtocol: "parent#sonefi",
     listedAt: 1737379697
   },

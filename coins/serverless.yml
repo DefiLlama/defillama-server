@@ -56,6 +56,11 @@ provider:
         - "s3:ListBucket"
         - "s3:*Object*"
       Resource: "*"
+    - Effect: Allow
+      Action:
+        - sts:AssumeRole
+      Resource:
+        - "arn:aws:iam::345594567026:role/defillama-role-345594567026"
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     BSC_RPC: ${file(./env.js):BSC_RPC}

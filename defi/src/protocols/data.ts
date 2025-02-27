@@ -11944,7 +11944,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "The Flagship LST Hub on Sonic. From seamless staking to earning real yield on LST-focused liquidity pools, beets is the ultimate destination for your liquid-staked tokens.",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/beets-sml.jpg`,
+    logo: `${baseIconsUrl}/beets-sml-new.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: null,

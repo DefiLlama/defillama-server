@@ -18,6 +18,7 @@ import { sliceIntoChunks } from "@defillama/sdk/build/util";
 import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
 import { sendMessage } from "../../../../defi/src/utils/discord";
+import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 const rateLimited = pLimit(10);
 process.env.tableName = "prod-coins-table";
@@ -192,7 +193,10 @@ async function getTokenAndRedirectDataFromAPI(
     const pk = e[0];
     let data = e[1];
     data.chain = pk.substring(0, pk.indexOf(":"));
-    data.address = pk.substring(pk.indexOf(":") + 1);
+    const address = pk.substring(pk.indexOf(":") + 1);
+    data.address = chainsThatShouldNotBeLowerCased.includes(data.chain)
+      ? address
+      : address.toLowerCase();
     return data;
   });
 }

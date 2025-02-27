@@ -2493,5 +2493,38 @@ export default {
     },
     "flexperp": {
         id: "5843"
+    },
+    "blast": {
+        id: "81457"
+    },
+    "fraxtal": {
+        id: "252"
+    },
+    "linea": {
+        id: "59144"
+    },
+    "mantle": {
+        id: "27075"
+    },
+    "metis": {
+        id: "9640"
+    },
+    "mode": {
+        id: "34443"
+    },
+    "ronin": {
+        id: "2020"
+    },
+    "scroll": {
+        id: "534352"
+    },
+    "sei": {
+        id: "23149"
+    },
+    "sonic": {
+        id: "146"
+    },
+    "unichain": {
+        id: "130"
     }
 } as AdaptorsConfig

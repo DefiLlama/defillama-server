@@ -6167,5 +6167,57 @@ const data4: Protocol[] = [
     audit_links: ["https://certificate.quantstamp.com/full/mavia-token/c5aa6f84-0a01-4b9e-813d-6aa7201646dd/index.html"],
     listedAt: 1740574696
   },
+  {
+    id: "5851",
+    name: "CaviarNine Simple Pools",
+    address: "radixdlt:resource_rdx1t5pyvlaas0ljxy0wytm5gvyamyv896m69njqdmm2stukr3xexc2up9",
+    symbol: "FLOOP",
+    url: "https://www.caviarnine.com/earn/simple-pool",
+    description:
+      "Simple Pools on CaviarNine offer an innovative way to provide liquidity and execute trades using  a weighted pools with flexible fee structures",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/caviarnine-simple-pools.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Radix"],
+    oracles: [],
+    forkedFrom: [],
+    module: "caviarnine-simplepools/index.js",
+    twitter: "CaviarNine",
+    parentProtocol: "parent#caviarnine",
+    listedAt: 1740675637
+  },
+  {
+    id: "5852",
+    name: "PhoLend",
+    address: null,
+    symbol: "-",
+    url: "https://pholend.com/",
+    description:
+      "PhoLend is a decentralized lending platform that provides an environment for lenders and borrowers. Its open-source design supports community-driven improvements, fostering innovation and collaboration in DeFi",
+    chain: "CrossFi",
+    logo: `${baseIconsUrl}/pholend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["CrossFi"],
+    oracles: ["DIA"], 
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13683"]
+      }
+    ],
+    forkedFrom: ["AAVE V2"],
+    module: "pholend/index.js",
+    twitter: "pholend_",
+    listedAt: 1740675989
+  },
 ];
 export default data4;

@@ -2357,7 +2357,7 @@ const data4: Protocol[] = [
     description:
       "The Flagship LST Hub on Sonic. From seamless staking to earning real yield on LST-focused liquidity pools, beets is the ultimate destination for your liquid-staked tokens.",
     chain: "Sonic",
-    logo: `${baseIconsUrl}/beets-sml-new.jpg`,
+    logo: `${baseIconsUrl}/beets-sml-new.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

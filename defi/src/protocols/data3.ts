@@ -45113,7 +45113,7 @@ const data3: Protocol[] = [
   {
     id: "4669",
     name: "deFusion",
-    address: null,
+    address: "tomochain:0xcdde1f5d971a369eb952192f9a5c367f33a0a891",
     symbol: "-",
     assetToken: "SVIC",
     url: "https://www.defusion.xyz/",
@@ -45123,7 +45123,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/defusion.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "defusion-staked-vic",
     cmcId: null,
     category: "Liquid Staking",
     chains: ["TomoChain"],
@@ -50820,7 +50820,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Anchor BTC",
     chains: ["AILayer"],
-    oracles: ["RedStone"], //https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
+    oracles: [],
     forkedFrom: [],
     module: "bitfi/index.js",
     twitter: "Bitfi_Org",

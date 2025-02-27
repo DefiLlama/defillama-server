@@ -2173,7 +2173,6 @@ export const chainCoingeckoIds = {
     },
     twitter: "LineaBuild",
     url: "https://linea.build/",
-    chainId: 59144,
   },
   "GravityBridge": {
     geckoId: null,
@@ -2909,10 +2908,10 @@ export const chainCoingeckoIds = {
     twitter: "Ancient8_gg",
     url: "https://ancient8.gg/"
   },
-  "Hyperliquid": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+  "Hyperliquid L1": {
+    geckoId: "hyperliquid",
+    symbol: "HYPE",
+    cmcId: "32196",
     categories: ["EVM"],
     twitter: "HyperliquidX",
     url: "https://hyperliquid.xyz/"
@@ -3968,15 +3967,6 @@ export const chainCoingeckoIds = {
     twitter: "HyperliquidX",
     url: "https://hyperfoundation.org/",
   }, 
-  "Hemi": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
-    categories: ["EVM", "Bitcoin Sidechains"],
-    chainId: 43111,
-    twitter: "hemi_xyz",
-    url: "https://hemi.xyz",
-  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4190,7 +4180,8 @@ const newChainLabelMap = {
   "sx": "SX Network",
   "sxr": "SX Rollup",
   "new": "AB",
-  "formnetwork": "Form Network"
+  "formnetwork": "Form Network",
+  "hyperliquid": "Hyperliquid L1"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

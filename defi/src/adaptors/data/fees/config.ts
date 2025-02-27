@@ -2504,10 +2504,10 @@ export default {
         id: "59144"
     },
     "mantle": {
-        id: "27075"
+        id: "5000"
     },
     "metis": {
-        id: "9640"
+        id: "1088"
     },
     "mode": {
         id: "34443"
@@ -2526,5 +2526,8 @@ export default {
     },
     "unichain": {
         id: "130"
+    },
+    "berachain": {
+        id: "80094"
     }
 } as AdaptorsConfig

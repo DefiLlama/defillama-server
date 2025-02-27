@@ -2529,5 +2529,11 @@ export default {
     },
     "berachain": {
         id: "80094"
+    },
+    "burrbear": {
+        id: "5745"
+    },
+    "fibonacci-dex": {
+        id: "5832"
     }
 } as AdaptorsConfig

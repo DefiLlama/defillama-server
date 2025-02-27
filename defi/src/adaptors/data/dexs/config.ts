@@ -2814,5 +2814,11 @@ export default {
     },
     "xpress": {
         id: "5686"
+    },
+    "burrbear": {
+        id: "5745"
+    },
+    "fibonacci-dex": {
+        id: "5832"
     }
 } as AdaptorsConfig

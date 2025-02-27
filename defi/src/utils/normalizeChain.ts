@@ -4150,7 +4150,8 @@ const chainLabelMap = {
   "silicon_zk": "Silicon zkEVM",
   "sty": "Story",
   "formnetwork": "Form Network",
-  "hyper_evm": "HyperEVM"
+  "hyper_evm": "HyperEVM",
+  "hyperliquid": "Hyperliquid"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

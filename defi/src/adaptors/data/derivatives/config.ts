@@ -813,5 +813,8 @@ export default {
             }
         }
 
+    },
+    "flexperp": {
+        id: "5843"
     }
 } as AdaptorsConfig

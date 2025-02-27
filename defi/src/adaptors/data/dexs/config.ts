@@ -2811,5 +2811,8 @@ export default {
     },
     "caviarnine-simplepool": {
         id: "5064",
+    },
+    "xpress": {
+        id: "5686"
     }
 } as AdaptorsConfig

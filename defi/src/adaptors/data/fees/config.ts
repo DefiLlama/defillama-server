@@ -2487,5 +2487,11 @@ export default {
     },
     "hedgey": {
         id: "5846"
+    },
+    "steamm": {
+        id: "5824"
+    },
+    "flexperp": {
+        id: "5843"
     }
 } as AdaptorsConfig

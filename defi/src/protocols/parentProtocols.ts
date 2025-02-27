@@ -3828,7 +3828,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://beets.fi",
     description:
       "The Flagship LST Hub on Sonic. From seamless staking to earning real yield on LST-focused liquidity pools, beets is the ultimate destination for your liquid-staked tokens.",
-    logo: `${baseIconsUrl}/beets-sml.png`,
+    logo: `${baseIconsUrl}/beets-sml-new.png`,
     gecko_id: "beethoven-x",
     cmcId: "13244",
     chains: [],

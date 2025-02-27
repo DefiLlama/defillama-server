@@ -32680,7 +32680,7 @@ const data3: Protocol[] = [
     url: "https://beets.fi",
     description: "Liquid staked tokens on Fantom ($sFTMx) and Sonic ($stS)",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/beets-sml.jpg`,
+    logo: `${baseIconsUrl}/beets-sml-new.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

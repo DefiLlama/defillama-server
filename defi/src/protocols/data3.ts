@@ -38161,6 +38161,7 @@ const data3: Protocol[] = [
   {
     id: "4364",
     name: "IX Swap RWA", // previous IXSwap RWA
+    previousNames: ["IXSwap RWA"],
     address: "0x73d7c860998ca3c01ce8c808f5577d94d545d1b4",
     symbol: "IXS",
     url: "https://ixswap.io/",

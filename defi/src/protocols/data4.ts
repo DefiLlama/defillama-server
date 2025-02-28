@@ -6002,7 +6002,7 @@ const data4: Protocol[] = [
     url: "https://flex.trade",
     description: "Flex Perpetuals is a next-gen decentralized perpetual protocol with cross-margin and multi-asset collateral support on BASE chain",
     chain: "Base",
-    logo: `${baseIconsUrl}/flex-perppetuals.png`,
+    logo: `${baseIconsUrl}/flex-perpetuals.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

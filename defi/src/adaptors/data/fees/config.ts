@@ -2535,5 +2535,8 @@ export default {
     },
     "fibonacci-dex": {
         id: "5832"
+    },
+    "starknet": {
+        id: "22691"
     }
 } as AdaptorsConfig

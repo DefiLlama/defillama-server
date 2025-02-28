@@ -1732,7 +1732,7 @@ export const chainCoingeckoIds = {
     geckoId: "starknet",
     github: ['starknet-io'],
     symbol: "STRK",
-    cmcId: null,
+    cmcId: "22691",
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],

@@ -36113,6 +36113,13 @@ const data3: Protocol[] = [
     module: "suilend/index.js",
     twitter: "suilendprotocol",
     oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.suilend.fi/security/risks"]
+      }
+    ],  
     forkedFrom: [],
     audit_links: ["https://docs.suilend.fi/security/audit"],
     parentProtocol: "parent#suilend-protocol",

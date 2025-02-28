@@ -2474,6 +2474,18 @@ const data4: Protocol[] = [
     oraclesByChain: {
       scroll: ["Chainlink"], //https://docs.quill.finance/faq/liquidations-oracle-and-redemptions
     },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.quill.finance/faq/liquidations-oracle-and-redemptions"]
+      },
+      {
+        name: "Pyth",
+        type: "Fallback",
+        proof: ["https://docs.quill.finance/faq/liquidations-oracle-and-redemptions"]
+      }
+    ],
     module: "quill-fi/index.js",
     twitter: "QuillFi",
     forkedFrom: ["Liquity V2"],
@@ -3300,7 +3312,19 @@ const data4: Protocol[] = [
     chains: ["Eclipse"],
     module: "neptune-protocol/index.js",
     twitter: "Neptune_Stable",
-    oracles: [],
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"]
+      },
+      {
+        name: "Switchboard",
+        type: "Fallback",
+        proof: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"]
+      }
+    ],
     forkedFrom: ["Hedge"],  
     audit_links: ["https://docs.hydrogenlabs.xyz/neptune-protocol/protocol-design/security"],
     listedAt: 1738617883
@@ -3600,7 +3624,19 @@ const data4: Protocol[] = [
     chains: ["Soneium"],
     module: "wavex/index.js",
     twitter: "waveX_fi",
-    oracles: [],
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://soneium.blockscout.com/address/0x580DD7a2CfC523347F15557ad19f736F74D5677c?tab=read_contract#0x741bef1a"]
+      },
+      {
+        name: "Chainlink",
+        type: "Fallback",
+        proof: ["https://soneium.blockscout.com/address/0xE71E8c6FF0066F712F885d2c3866Fdc22E3C7E4E?tab=contract_code"]
+      },
+    ],
     forkedFrom: ["GMX V2"],
     listedAt: 1738844419
   },
@@ -3792,11 +3828,17 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Berachain"],
-    oracles: [],
+    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
-        name: "Restone",
+        name: "Pyth",
         type: "Primary",
+        proof: ["https://beraborrow.gitbook.io/docs/audits/audits"]
+   
+      },
+      {
+        name: "Restone",
+        type: "Fallback",
         proof: ["https://app.redstone.finance/app/feeds/?page=1&sortBy=popularity&sortDesc=false&perPage=32&networks=80094", "https://berascan.com//address/0x83c6f7F61A55Fc7A1337AbD45733AD9c1c68076D"]
    
       },

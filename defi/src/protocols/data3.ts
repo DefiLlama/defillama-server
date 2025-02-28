@@ -65580,6 +65580,18 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Sonic"],
     oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    oraclesBreakdown: [
+      {
+        name: "API3",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9183"]
+      },
+      {
+        name: "Pyth",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9280"]
+      }
+    ],
     forkedFrom: ["Compound V2"],
     module: "machfi/index.js",
     twitter: "machfi_xyz",

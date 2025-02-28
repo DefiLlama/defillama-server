@@ -6010,7 +6010,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Base"],
     oracles: [], 
-    forkedFrom: [],
+    forkedFrom: ["HMX"],
     module: "flexperp/index.js",
     twitter: "Flexperpetuals",
     audit_links: ["https://code4rena.com/audits/2024-12-flex-perpetuals"],

@@ -2820,5 +2820,17 @@ export default {
     },
     "fibonacci-dex": {
         id: "5832"
-    }
+    },
+    "bitflux": {
+        id: "5344"
+    },
+    "hyperswap-v2": {
+        id: "5836"
+    },
+    "hyperswap-v3": {
+        id: "5837"
+    },
+    "wasabee": {
+        id: "5845"
+    },
 } as AdaptorsConfig

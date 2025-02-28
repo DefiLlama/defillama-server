@@ -2538,5 +2538,17 @@ export default {
     },
     "starknet": {
         id: "22691"
-    }
+    },
+    "sailor-finance": {
+        id: "5647",
+    },
+    "hyperswap-v2": {
+        id: "5836"
+    },
+    "hyperswap-v3": {
+        id: "5837"
+    },
+    "wasabee": {
+        id: "5845"
+    },
 } as AdaptorsConfig

@@ -1,6 +1,6 @@
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { nullAddress } from "../../utils/shared/constants";
-import setEnvSecrets from "../../utils/shared/setEnvSecrets";
+// import setEnvSecrets from "../../utils/shared/setEnvSecrets";
 import { getTokenAndRedirectData } from "../utils/database";
 import { OFTs } from "./layerzeroOFTs";
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
@@ -31,10 +31,15 @@ export const layerZeroChainMapping: { [key: string]: string } = {
   "Meter Mainnet": "meter",
   Real: "real",
   Xlayer: "x_layer",
+  "Polygon zkEVM": "polygon_zkevm",
+  Gnosis: "xdai",
+  Avalanche: "avax",
+  "opBNB Mainnet": "op_bnb",
+  "Arbitrum Nova": "arbitrum_nova",
 };
 
-async function main() {
-  await setEnvSecrets();
+export default async function main() {
+  // await setEnvSecrets();
   const mappings: any[] = [];
   const uniquePks: { [chain: string]: string[] } = {};
 
@@ -42,8 +47,7 @@ async function main() {
     const chains = Object.keys(OFTs[symbol]);
     if (chains.length == 1) return;
     chains.map((lzChain: string) => {
-      const chain = layerZeroChainMapping[lzChain];
-      if (!chain) return;
+      const chain = layerZeroChainMapping[lzChain] ?? lzChain.toLowerCase();
       if (!(chain in uniquePks)) uniquePks[chain] = [];
       let addresses = OFTs[symbol][lzChain];
       const index = addresses.indexOf(lzNullAddress);
@@ -51,7 +55,7 @@ async function main() {
         addresses.splice(index, 1);
         addresses.push(nullAddress);
       }
-      uniquePks[chain].push(...addresses);
+      uniquePks[chain].push(...addresses.map((a) => a.toLowerCase()));
     });
   });
 
@@ -100,11 +104,9 @@ async function main() {
     const coinDatas: any[] = [];
 
     Object.keys(OFTs[symbol]).map((lzChain: string) => {
-      const chain = layerZeroChainMapping[lzChain];
-      if (!chain) return;
-
+      const chain = layerZeroChainMapping[lzChain] ?? lzChain.toLowerCase();
       OFTs[symbol][lzChain].map((address: string) => {
-        const PK = `${chain}:${address}`;
+        const PK = `${chain}:${address.toLowerCase()}`;
         if (PK in coinData) coinDatas.push(coinData[PK]);
         PKs.push(PK);
       });
@@ -143,4 +145,13 @@ async function main() {
   return mappings;
 }
 
-main(); // ts-node src/adapters/bridges/layerzero.ts
+// const chains: string[] = [];
+// Object.keys(OFTs).map((symbol) => {
+//   Object.keys(OFTs[symbol]).map((chain) => {
+//     if (chains.includes(chain)) return;
+//     if (chain in layerZeroChainMapping) return;
+//     chains.push(chain);
+//   });
+// });
+
+// chains; // ts-node coins/src/adapters/bridges/layerzero.ts

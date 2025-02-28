@@ -55,45 +55,41 @@ function convertToMessage(item: Dynamo, topic: Topic): object {
     mcap,
   } = item;
 
-  const { chain, address, pid } = splitPk(PK);
+  const { chain, address, pid } = splitPk(PK, decimals);
   const redirectPid = redirect ? splitPk(redirect).pid : undefined;
 
   switch (topic) {
     case "coins-metadata":
       return {
         symbol,
-        decimals: Number(decimals),
+        decimals: decimals ? Number(decimals) : 0,
         address,
         pid,
         chain,
-        source: adapter,
-        redirect: redirectPid,
+        adapter,
+        redirects: redirectPid ? [redirectPid]: undefined,
       };
     case "coins-current":
-      return { pid, price, confidence, source: adapter, mcap };
+      return { pid, price, confidence, adapter, mcap, updateTs: Math.floor(Date.now() / 1000) };
     case "coins-timeseries":
-      return { pid, price, confidence, source: adapter, ts: SK, mcap };
+      return { pid, price, confidence, adapter, ts: SK, mcap };
     default:
       throw new Error(`Topic '${topic}' is not valid`);
   }
 }
-function splitPk(pk: string): { chain: string; address: string; pid: string } {
-  const assetPrefix: string = "asset#";
-  const coingeckoPrefix: string = "coingecko#";
-
-  if (pk.toLowerCase().startsWith(coingeckoPrefix)) {
-    const address = pk.substring(coingeckoPrefix.length).toLowerCase();
-    return {
-      chain: "coingecko",
-      address,
-      pid: `coingecko:${address}`,
-    };
+function splitPk(pk: string, decimals?: number): { chain?: string; address?: string; pid: string } {
+  const pid = normalizeCoinId(pk)
+  const record: any = { pid }
+  if (pid.includes(':')) {
+    record.chain = pid.split(':')[0]
+    record.address = pid.slice(record.chain.length + 1)
+  } else if (pid.length === 42 && pid.startsWith('0x')) {
+    record.chain = 'ethereum'
+    record.address = pid
+  } else if (!decimals && !pid.startsWith('0x')) {
+    record.chain = 'coingecko'
   }
-
-  if (pk.startsWith(assetPrefix)) pk = pk.substring(assetPrefix.length);
-  const chain = pk.split(":")[0].toLowerCase();
-  const address = pk.substring(pk.split(":")[0].length + 1).toLowerCase();
-  return { chain, address, pid: `${chain}:${address}` };
+  return record
 }
 
 export default async function produce(
@@ -113,4 +109,19 @@ export default async function produce(
   } catch (error) {
     // console.error("Error producing messages", error); // temporarily disabled
   }
+}
+
+function normalizeCoinId(coinId: string): string {
+  coinId = coinId.toLowerCase()
+  const replaceSubStrings = ['asset#', 'coingecko#', 'coingecko:', 'ethereum:']
+  const replaceSubStringLengths = replaceSubStrings.map(str => str.length)
+  for (let i = 0; i < replaceSubStrings.length; i++) {
+    const subStr = replaceSubStrings[i]
+    const subStrLength = replaceSubStringLengths[i]
+    if (coinId.startsWith(subStr))
+      coinId = coinId.slice(subStrLength)
+
+  }
+  coinId = coinId.replace(/\//g, ':')
+  return coinId
 }

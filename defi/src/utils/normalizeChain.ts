@@ -1,3 +1,4 @@
+
 export const normalizedChainReplacements = {
   // keys should be full lowercase
 } as {
@@ -2173,6 +2174,7 @@ export const chainCoingeckoIds = {
     },
     twitter: "LineaBuild",
     url: "https://linea.build/",
+    chainId: 59144
   },
   "GravityBridge": {
     geckoId: null,

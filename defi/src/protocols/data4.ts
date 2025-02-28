@@ -5539,7 +5539,7 @@ const data4: Protocol[] = [
     category: "Basis Trading",
     chains: ["Bitcoin"],
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.hermetica.fi/resources/faqs/ststxearn/general#q.-will-hermetica-ever-change-the-oracle-for-the-contracts
     module: "hermetica/index.js",
     twitter: "HermeticaFi",
     audit_links: ["https://docs.hermetica.fi/usdh/audits"],
@@ -6009,7 +6009,19 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Base"],
-    oracles: [], 
+    oracles: ["Pyth","Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.flex.trade/#product-features"]
+      },
+      {
+        name: "Chainlink",
+        type: "Aggregator",
+        proof: ["https://docs.flex.trade/#product-features"]
+      }
+    ], 
     forkedFrom: [],
     module: "flexperp/index.js",
     twitter: "Flexperpetuals",

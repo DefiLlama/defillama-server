@@ -1,3 +1,4 @@
+
 export const normalizedChainReplacements = {
   // keys should be full lowercase
 } as {
@@ -1731,7 +1732,7 @@ export const chainCoingeckoIds = {
     geckoId: "starknet",
     github: ['starknet-io'],
     symbol: "STRK",
-    cmcId: null,
+    cmcId: "22691",
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],
@@ -2173,6 +2174,7 @@ export const chainCoingeckoIds = {
     },
     twitter: "LineaBuild",
     url: "https://linea.build/",
+    chainId: 59144
   },
   "GravityBridge": {
     geckoId: null,

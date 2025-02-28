@@ -42,6 +42,7 @@ import morph from "./morph";
 import aptos from "./aptosFa";
 import sophon from "./sophon";
 import unichan from "./unichain";
+import flow from "./flow";
 
 export type Token =
   | {
@@ -112,6 +113,7 @@ export const bridges = [
   aptos,
   // sophon,
   unichan,
+  flow,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

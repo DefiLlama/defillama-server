@@ -2133,7 +2133,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 5000,
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
     url: "https://www.mantle.xyz/",
   },
   "Neon": {

@@ -33820,14 +33820,15 @@ const data3: Protocol[] = [
   },
   {
     id: "4174",
-    name: "hyperswap",
+    name: "hyperswap on Areon Network",
+    previousNames: ["hyperswap"],
     address: null,
     symbol: "-",
     url: "https://hyperswap.pro/en/swap",
     description:
       "Our community is building a comprehensive decentralized trading platform on Areon for the future of finance.",
     chain: "Areon Network",
-    logo: `${baseIconsUrl}/hyperswap.jpg`,
+    logo: `${baseIconsUrl}/hyperswap-on-areon-network.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

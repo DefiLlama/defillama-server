@@ -6624,6 +6624,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HyperSwapX",
   },
+  {
+    id: "parent#rhea-finance",
+    name: "Rhea Finance",
+    url: "https://www.rhea.finance",
+    description: "Rhea Finance merges Ref Finance and Burrow Finance to create NEAR’s most powerful DeFi hub, connecting Bitcoin, NEAR, and EVM ecosystems. By consolidating liquidity, lending, and trading under one entity, Rhea Finance unlocks a seamless DeFi experience for institutional and retail users alike.",
+    logo: `${baseIconsUrl}/rhea-finance.png`,
+    gecko_id: "ref-finance",
+    cmcId: "11809",
+    chains: [],
+    twitter: "rhea_finance",
+    github: ["ref-finance"],
+  },
 ];
 
 export default parentProtocols;

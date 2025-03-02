@@ -6,7 +6,7 @@ import { getLatestProtocolItems, } from '../db';
 import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl, hourlyTvl, hourlyUsdTokensTvl, hourlyTokensTvl, } from "../../utils/getLastRecord";
 import { log } from '@defillama/sdk'
 import { ChainCoinGekcoIds } from "../../utils/normalizeChain";
-import { getMetadataAll, readFromPGCache } from './file-cache'
+import { clearOldCacheFolders, getMetadataAll, readFromPGCache } from './file-cache'
 import { PG_CACHE_KEYS } from "../constants";
 import { Protocol } from "../../protocols/types";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
@@ -182,6 +182,9 @@ async function updateRaises() {
 
 async function updateAllTvlData(cacheType?: string) {
   if (cacheType !== 'cron') return;
+
+  // to ensure that we dont run out of disk space
+  await clearOldCacheFolders()
   const { protocols, treasuries, entities } = cache.metadata
   let actions = [protocols, treasuries, entities].flat()
   shuffleArray(actions) // randomize order of execution

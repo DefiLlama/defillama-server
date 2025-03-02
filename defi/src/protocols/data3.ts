@@ -33823,7 +33823,7 @@ const data3: Protocol[] = [
     name: "hyperswap",
     address: null,
     symbol: "-",
-    url: "https://swap.areon.network",
+    url: "https://hyperswap.pro/en/swap",
     description:
       "Our community is building a comprehensive decentralized trading platform on Areon for the future of finance.",
     chain: "Areon Network",

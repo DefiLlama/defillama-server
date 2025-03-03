@@ -21674,6 +21674,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.paradex.trade",
+    referralUrl: "https://app.paradex.trade/r/defillama",
     description: "Trade perpetuals on a high-performance DEX with deep liquidity, capital efficiency and low fees",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/paradex.jpg`,

@@ -18,87 +18,13 @@ export type Dynamo = {
   mcap?: number;
 };
 
-async function produceTopics(
-  items: Dynamo[],
-  topic: Topic,
-  producer: Producer
-) {
-  const messages: string[] = [];
-
-  items.map((item) => {
-    const { symbol, decimals, price, SK } = item;
-    if (topic !== "coins-timeseries" && SK !== 0) return;
-    if (topic !== "coins-metadata" && !price) return;
-    if (topic === "coins-metadata" && (!symbol || decimals == null)) return;
-
-    const messageObject = convertToMessage(item, topic);
-    validate(messageObject, topic);
-
-    const message = JSON.stringify(messageObject);
-    if (!messages.includes(message)) {
-      messages.push(message);
-    }
-  });
-
-  if (!messages.length) return;
-
-  if (process.env.KAFKA_UP === 'true') {
-    try {
-      await producer.send({
-        topic: `${topic}`,
-        messages: messages.map((value) => ({ value })),
-      });
-      return;
-    } catch (error) {
-      console.error(`Kafka failed for topic "${topic}". Fallback to ES/Redis.`, error);
-    }
-  }
-
-  for (const msg of messages) {
-    const parsed = JSON.parse(msg);
-
-    if (topic === "coins-current") {
-      const redisClient = getRedis();
-      const redisKey = `price_${parsed.pid}`;
-      await redisClient.set(redisKey, msg, "EX", 24 * 3600);
-    } else if (topic === "coins-metadata") {
-      await init();
-      const esRecord = getMetadataRecord(parsed);
-      if (!esRecord) continue;
-      await esClient.index({
-        index: "coins-metadata",
-        body: esRecord,
-      });
-    } else if (topic === "coins-timeseries") {
-      const date = new Date(parsed.ts * 1000);
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, "0");
-      const index = `coins-timeseries-${year}-${month}`;
-      await esClient.index({
-        index,
-        id: `${parsed.pid}_${parsed.ts}`,
-        body: parsed,
-      });
-    }
-  }
-}
-
 function convertToMessage(item: Dynamo, topic: Topic): object {
-  const { PK, symbol, decimals, price, confidence, SK, adapter, redirect, mcap } = item;
-  const { chain, address, pid } = splitPk(PK, decimals);
-  const redirectPid = redirect ? splitPk(redirect).pid : undefined;
+  const { PK, decimals, price, confidence, SK, adapter, mcap } = item;
+  const { pid } = splitPk(PK, decimals);
 
   switch (topic) {
     case "coins-metadata":
-      return {
-        symbol,
-        decimals: decimals ? Number(decimals) : 0,
-        address,
-        pid,
-        chain,
-        adapter,
-        redirects: redirectPid ? [redirectPid] : undefined,
-      };
+      return; // for coins-metadata, we now rely on getMetadataRecord elsewhere
     case "coins-current":
       return { pid, price, confidence, adapter, mcap, updateTs: Math.floor(Date.now() / 1000) };
     case "coins-timeseries":
@@ -123,6 +49,120 @@ function splitPk(pk: string, decimals?: number): { chain?: string; address?: str
   return record;
 }
 
+async function produceMetadata(items: Dynamo[], producer: Producer) {
+  try {
+    await init();
+  } catch (initError) {
+    console.error("Error initializing coin metadata cache:", initError);
+  }
+
+  const metadataMessages: string[] = [];
+
+  items.map((item) => {
+    const record = getMetadataRecord(item);
+    if (!record) return;
+    validate(record, "coins-metadata");
+
+    const msg = JSON.stringify(record);
+    if (!metadataMessages.includes(msg)) {
+      metadataMessages.push(msg);
+    }
+  });
+
+  if (process.env.KAFKA_UP === "true") {
+    try {
+      await producer.send({
+        topic: "coins-metadata",
+        messages: metadataMessages.map((value) => ({ value })),
+      });
+      return;
+    } catch (error) {
+      console.error('Kafka failed for "coins-metadata". Fallback to ES.', error);
+    }
+  }
+
+  try {
+    const body: any[] = [];
+    for (const msg of metadataMessages) {
+      const doc = JSON.parse(msg);
+      body.push({ index: { _index: "coins-metadata" } });
+      body.push(doc);
+    }
+    if (body.length) {
+      await esClient.bulk({ body });
+    }
+  } catch (err) {
+    console.error("Metadata fallback (bulk to ES) failed:", err);
+  }
+}
+
+async function produceTopics(items: Dynamo[], topic: Topic, producer: Producer) {
+  const messages: string[] = [];
+
+  items.map((item) => {
+    const { price, SK } = item;
+
+    if (topic !== "coins-timeseries" && SK !== 0) return;
+    if (topic !== "coins-metadata" && !price) return;
+    if (topic === "coins-metadata") return;
+
+    const messageObject = convertToMessage(item, topic);
+    if (!messageObject) return;
+
+    validate(messageObject, topic);
+
+    const message = JSON.stringify(messageObject);
+    if (!messages.includes(message)) {
+      messages.push(message);
+    }
+  });
+
+  if (process.env.KAFKA_UP === "true") {
+    try {
+      await producer.send({
+        topic: `${topic}`,
+        messages: messages.map((value) => ({ value })),
+      });
+      return;
+    } catch (error) {
+      console.error(`Kafka failed for topic "${topic}". Fallback to ES/Redis.`, error);
+    }
+  }
+
+  if (topic === "coins-current") {
+    try {
+      const redisClient = getRedis();
+      const pipeline = redisClient.pipeline();
+      messages.forEach((msg) => {
+        const parsed = JSON.parse(msg);
+        pipeline.set(`price_${parsed.pid}`, msg, "EX", 24 * 3600);
+      });
+      await pipeline.exec();
+    } catch (redisError) {
+      console.error("Redis fallback failed for coins-current:", redisError);
+    }
+  } else if (topic === "coins-timeseries") {
+    try {
+      const body: any[] = [];
+      messages.forEach((msg) => {
+        const parsed = JSON.parse(msg);
+        const date = new Date(parsed.ts * 1000);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const index = `coins-timeseries-${year}-${month}`;
+
+        body.push({ index: { _index: index, _id: `${parsed.pid}_${parsed.ts}` } });
+        body.push(parsed);
+      });
+      if (body.length) {
+        await esClient.bulk({ body });
+      }
+    } catch (esError) {
+      console.error("ES fallback failed for coins-timeseries:", esError);
+    }
+  }
+}
+
 export default async function produce(
   items: Dynamo[],
   topics: Topic[] = allTopics
@@ -133,8 +173,13 @@ export default async function produce(
     if (invalidTopic) throw new Error(`invalid topic: ${invalidTopic}`);
 
     const producer: Producer = await getProducer();
+    if (topics.includes("coins-metadata")) {
+      await produceMetadata(items, producer);
+    }
+
+    const otherTopics = topics.filter((t) => t !== "coins-metadata");
     await Promise.all(
-      topics.map((topic: Topic) => produceTopics(items, topic, producer))
+      otherTopics.map((topic: Topic) => produceTopics(items, topic, producer))
     );
   } catch (error) {
     // console.error("Error producing messages", error);

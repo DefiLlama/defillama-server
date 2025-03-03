@@ -11,5 +11,7 @@ export function normalizeCoinId(coinId: string): string {
     }
   }
   coinId = coinId.replace(/\//g, ":");
+  if (coinId.length === 75 && coinId.startsWith('starknet:'))
+    coinId = coinId.replace('0x0', '0x')
   return coinId;
 }

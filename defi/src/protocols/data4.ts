@@ -6323,7 +6323,7 @@ const data4: Protocol[] = [
     symbol: "OGY",
     url: "https://www.origyn.com/",
     description:
-      "HeThe ORIGYN Protocol has been made possible thanks to the major contribution of the ORIGYN Foundation and embodies its vision of becoming the universal digital standard for certification, traceability, and authentication",
+      "The ORIGYN Protocol has been made possible thanks to the major contribution of the ORIGYN Foundation and embodies its vision of becoming the universal digital standard for certification, traceability, and authentication",
     chain: "ICP",
     logo: `${baseIconsUrl}/origyn.png`,
     audits: "2",

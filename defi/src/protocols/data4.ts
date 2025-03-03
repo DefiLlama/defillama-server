@@ -6271,5 +6271,24 @@ const data4: Protocol[] = [
     twitter: "pholend_",
     listedAt: 1740675989
   },
+  {
+    id: "5853",
+    name: "desyn-protocol",
+    address: null,
+    symbol: "-",
+    url: "https://desyn.io",
+    description: "Engages with DeFi protocols like Lending, DEX, and Restaking, offering both airdrops and structured yield options.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}protocols/desyn-protocol`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["ethereum", "arbitrum", "btr", "mode", "zklink", "core", "ailayer", "linea", "merlin", "scroll", "bsquared"],
+    oracles: ["Chainlink", "RedStone"],
+    forkedFrom: [],
+    module: "desyn-farm/index.js"
+  }
 ];
 export default data4;

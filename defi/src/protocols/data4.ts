@@ -6271,5 +6271,27 @@ const data4: Protocol[] = [
     twitter: "pholend_",
     listedAt: 1740675989
   },
+  {
+    id: "5853",
+    name: "Maple RWA",
+    address: "0x643c4e15d7d62ad0abec4a9bd4b001aa3ef52d66",
+    symbol: "SYRUP",
+    url: "https://www.maple.finance",
+    description: "Maple Finance is an institutional capital marketplace powered by blockchain technology.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/maple-rwa.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "maple-rwa/index.js",
+    twitter: "maplefinance",
+    oracles: [],
+    forkedFrom: [],
+    parentProtocol: "parent#maple-finance",
+    listedAt: 1741015414
+  },
 ];
 export default data4;

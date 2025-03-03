@@ -15,13 +15,14 @@ export function getKafka(): Kafka {
       clientId: "my-app",
       brokers: brokers.split(","),
       ssl: {
-        rejectUnauthorized: false, // Allow self-signed certificates
+        rejectUnauthorized: false,
       },
       sasl: { mechanism: "scram-sha-256", username, password },
     });
   }
   return kafka;
 }
+
 export async function getConsumer(groupId: any): Promise<Consumer> {
   if (!groupId) throw new Error("Missing groupId");
   if (!consumers[groupId])
@@ -29,6 +30,7 @@ export async function getConsumer(groupId: any): Promise<Consumer> {
   await consumers[groupId].connect();
   return consumers[groupId];
 }
+
 export async function getProducer(): Promise<Producer> {
   if (!producer) producer = getKafka().producer();
   await producer.connect();

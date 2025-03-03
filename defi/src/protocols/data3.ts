@@ -33085,9 +33085,9 @@ const data3: Protocol[] = [
   {
     id: "4143",
     name: "SOBAX",
-    address: "polygon:0x0709E962221dd8AC9eC5c56f85ef789D3C1b9776",
+    address: "zeta:0xb36377f643f67e5f9775f62b624e8907c214de3c",
     symbol: "SBX",
-    url: "https://sobax.io",
+    url: "https://sobax.app/",
     description:
       "Decentralised Perpetual Exchange. Trade BTC, ETH, MATIC and more with up to 100x leverage directly from your wallet at SobaX open-source ecosystem",
     chain: "Polygon",
@@ -33097,7 +33097,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Polygon"],
+    chains: ["Polygon","ZetaChain"],
     module: "sobax-io/index.js",
     twitter: "SOBAX_DEX",
     forkedFrom: ["GMX V1"],

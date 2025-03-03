@@ -9267,6 +9267,7 @@ const data3: Protocol[] = [
     ],
     listedAt: 1686607089,
   },
+  /* add new listing 
   {
     id: "3103",
     name: "Maple RWA",
@@ -9289,6 +9290,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#maple-finance",
     listedAt: 1686663721,
   },
+  */
   {
     id: "3104",
     name: "Ambient",

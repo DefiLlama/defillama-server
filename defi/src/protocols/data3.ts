@@ -46629,6 +46629,7 @@ const data3: Protocol[] = [
     github: ["stabbleorg"],
     listedAt: 1717693423,
   },
+  /* DELISTED - MOVE MAPLE TO TWO LISTINGS ONLY
   {
     id: "4735",
     name: "Syrup.fi",
@@ -46651,6 +46652,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#maple-finance",
     listedAt: 1717722577,
   },
+  */
   {
     id: "4736",
     name: "DoubleUp",

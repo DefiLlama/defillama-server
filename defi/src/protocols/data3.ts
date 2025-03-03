@@ -45113,7 +45113,7 @@ const data3: Protocol[] = [
   {
     id: "4669",
     name: "deFusion",
-    address: "tomochain:0xcdde1f5d971a369eb952192f9a5c367f33a0a891",
+    address: null,
     symbol: "-",
     assetToken: "SVIC",
     url: "https://www.defusion.xyz/",
@@ -45123,7 +45123,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/defusion.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "defusion-staked-vic",
+    gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",
     chains: ["TomoChain"],

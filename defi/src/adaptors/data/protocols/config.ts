@@ -343,5 +343,9 @@ export default {
     "shadow-legacy": {
         parentId: "Shadow Exchange",
         id: "5682"
+    },
+    "thalaswap-v2": {
+        parentId: "Thala",
+        id: "5329",
     }
 } as AdaptorsConfig

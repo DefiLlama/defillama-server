@@ -2833,4 +2833,8 @@ export default {
     "wasabee": {
         id: "5845"
     },
+    "thalaswap-v2": {
+        parentId: "Thala",
+        id: "5329",
+    }
 } as AdaptorsConfig

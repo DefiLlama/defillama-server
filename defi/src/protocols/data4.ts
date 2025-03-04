@@ -6477,5 +6477,29 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "hedera",
   },
+  {
+    id: "5862",
+    name: "HyperYield",
+    address: null,
+    symbol: "-",
+    url: "https://hyperyield.com/",
+    description:
+      "Lend, Borrow, Earn at Hyper Speed on HyperLiquid L1",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/hyperyield.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Hyperliquid"],
+    oracles: [], 
+    forkedFrom: ["AAVE V3"],
+    module: "hyperyield/index.js",
+    twitter: "hyperyieldx",
+    audit_links: ["https://x.com/zokyo_io/status/1892273487009763528"],
+    github: ["hyperyieldevm"],
+    listedAt: 1741119943
+  },
 ];
 export default data4;

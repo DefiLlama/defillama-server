@@ -6456,5 +6456,26 @@ const data4: Protocol[] = [
     stablecoins: ["synnax-stablecoin"],
     listedAt: 1741083240
   },
+  {
+    id: "5861",
+    name: "Hedera",
+    address: null,
+    symbol: "HBAR",
+    url: "https://hedera.com/",
+    description:
+      "Hedera enables seamless tokenization of real-world and digital assets at scale, offering unmatched performance, security, and compliance for thriving tokenized economies.",
+    chain: "Hedera",
+    logo: `${baseIconsUrl}/hedera.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'hedera-hashgraph',
+    cmcId: null,
+    category: "Chain",
+    chains: ["Hedera"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "hedera",
+  },
 ];
 export default data4;

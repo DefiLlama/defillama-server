@@ -132,6 +132,7 @@ export const normalizeDimensionChainsMap = {
     'immutable x': CHAIN.IMMUTABLEX,
     'bitlayer': CHAIN.BITLAYER,
     'rootstock': CHAIN.ROOTSTOCK,
+    'lightlink': CHAIN.LIGHTLINK_PHOENIX
 } as IJSON<CHAIN>
 
 export const formatChainKey = (chain: string) => {

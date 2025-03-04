@@ -816,5 +816,8 @@ export default {
     },
     "flexperp": {
         id: "5843"
+    },
+    "electra": {
+        id: "5817"
     }
 } as AdaptorsConfig

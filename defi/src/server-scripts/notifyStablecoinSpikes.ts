@@ -3,6 +3,14 @@ import { sendMessage } from '../utils/discord';
 
 async function fetchStablecoinData() {
 
+  const currentHour = new Date().getUTCHours();
+
+  // now this check runs every 4th hour
+  if (currentHour % 4 !== 0) {
+    console.log('Skipping stablecoin spike check');
+    return []
+  }
+
   try {
     const response = await axios.get('https://stablecoins.llama.fi/stablecoins');
     const data = response.data;

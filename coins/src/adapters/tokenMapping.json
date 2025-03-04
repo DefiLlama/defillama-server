@@ -704,6 +704,11 @@
     }
   },
   "bsc": {
+    "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
     "0x733a6c29eDA4a58931AE81b8d91e29f2EAf01df3": {
       "decimals": "8",
       "symbol": "brBTC",
@@ -1136,6 +1141,16 @@
     }
   },
   "base": {
+    "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "0x6C240DDA6b5c336DF09A4D011139beAAa1eA2Aa2": {
+      "decimals": "18",
+      "symbol": "ETHFI",
+      "to": "coingecko#ether-fi"
+    },
     "0xe3C0FF176eF92FC225096C6d1788cCB818808b35": {
       "decimals": "8",
       "symbol": "oBTC",

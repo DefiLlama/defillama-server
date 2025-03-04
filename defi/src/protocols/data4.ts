@@ -6409,5 +6409,27 @@ const data4: Protocol[] = [
     audit_links: ["https://info.spice.so/audits"],
     listedAt: 1741019257
   },
+  {
+    id: "5859",
+    name: "ERC Burner",
+    address: null,
+    symbol: "-",
+    url: "https://ercburner.xyz/app",
+    description:
+      "A tool to convert small assets to native currency on EVM compatible chains.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/erc-burner.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "ERC_Burner",
+    github: ["ercburner"],
+  },
 ];
 export default data4;

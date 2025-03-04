@@ -6438,7 +6438,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://www.synnax.fi",
     description:
-      "yUSD is Synnax’s stablecoin, secured by overcollateralized assets and designed to maintain a soft peg to the U.S. dollar.",
+      "Over-collateralized stablecoin protocol powered by market-maker yield, delivering scalable stability and robust returns for DeFi users.",
     chain: "Sei",
     logo: `${baseIconsUrl}/synnax-protocol.png`,
     audits: "2",

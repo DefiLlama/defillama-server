@@ -108,7 +108,7 @@ export async function writeToPGCache(key: string, data: any) {
   return storeData(id, { id, timestamp: Math.floor(Date.now() / 1e3), data })
 }
 
-const TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.4'  // update the version number to reset the cache
+const TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.5'  // update the version number to reset the cache
 
 export async function clearOldCacheFolders() {
   try {

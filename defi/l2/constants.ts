@@ -109,7 +109,8 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5732": "sxr",
   "5735": "sorare",
   "5772": "unichain",
-  "5833": "formnetwork"
+  "5833": "formnetwork",
+  "5854": "hemi-l2"
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

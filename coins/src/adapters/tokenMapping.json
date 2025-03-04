@@ -4937,6 +4937,16 @@
     }
   },
   "bob": {
+    "0xA45d4121b3D47719FF57a947A9d961539Ba33204": {
+      "decimals": "8",
+      "symbol": "LBTC",
+      "to": "coingecko#lombard-staked-btc"
+    },
+    "0x541FD749419CA806a8bc7da8ac23D346f2dF8B77": {
+      "decimals": "18",
+      "symbol": "SolvBTC",
+      "to": "coingecko#solv-btc"
+    },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "ETH",

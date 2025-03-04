@@ -6431,5 +6431,30 @@ const data4: Protocol[] = [
     twitter: "ERC_Burner",
     github: ["ercburner"],
   },
+  {
+    id: "5860",
+    name: "Synnax Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.synnax.fi",
+    description:
+      "yUSD is Synnax’s stablecoin, secured by overcollateralized assets and designed to maintain a soft peg to the U.S. dollar.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/synnax-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Sei"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "synnax/index.js",
+    twitter: "synnax_labs",
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Synnax-v1.0.pdf"],
+    github: ["Synnax-Protocol"],
+    stablecoins: ["synnax-stablecoin"],
+    listedAt: 1741083240
+  },
 ];
 export default data4;

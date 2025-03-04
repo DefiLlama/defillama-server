@@ -25460,7 +25460,7 @@ const data3: Protocol[] = [
       ethereum: ["Chainlink"],
       arbitrum: ["Chainlink"], // https://docs.sumer.money/developers/price-feeds/chainlink-price-feeds-on-arbitrum
       base: ["Chainlink"], // https://docs.sumer.money/developers/price-feeds/chainlink-price-feeds-on-base
-      berachain: ["eOracle"],
+      berachain: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9319
     },
     forkedFrom: ["Compound V2"],
     module: "sumer/index.js",

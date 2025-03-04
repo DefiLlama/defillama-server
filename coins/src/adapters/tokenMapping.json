@@ -1796,6 +1796,11 @@
     }
   },
   "solana": {
+    "BenJy1n3WTx9mTjEvy63e8Q1j4RqUc6E4VBMz3ir4Wo6": {
+      "decimals": "6",
+      "symbol": "USD*",
+      "to": "coingecko#usd-coin"
+    },
     "4tARAT4ssRYhrENCTxxZrmjL741eE2G23Q1zLPDW2ipf": {
       "decimals": "9",
       "symbol": "lrtsSOL",

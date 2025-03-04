@@ -6999,6 +6999,11 @@
     }
   },
   "occ": {
+    "0xd282de0c2bd41556c887f319a5c19ff441dcdf90": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "ESD"
+    },
     "0xd02e8c38a8e3db71f8b2ae30b8186d7874934e12": {
       "to": "coingecko#edu-coin",
       "decimals": 18,

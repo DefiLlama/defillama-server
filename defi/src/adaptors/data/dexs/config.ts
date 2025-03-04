@@ -2836,5 +2836,5 @@ export default {
     "thalaswap-v2": {
         parentId: "Thala",
         id: "5329",
-    }
+    },
 } as AdaptorsConfig

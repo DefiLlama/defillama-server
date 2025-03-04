@@ -28487,7 +28487,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Farm",
     chains: ["Ethereum"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "RedStone"],
     forkedFrom: [],
     module: "desyn-farm/index.js",
     twitter: "DesynLab",

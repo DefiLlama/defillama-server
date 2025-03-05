@@ -20,6 +20,7 @@ import { storeRouteData } from "../cache/file-cache"
 import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFromAdaptors"
 import { sluggifyString } from "../../utils/sluggify"
 import { AdaptorRecordType } from '../../adaptors/db-utils/adaptor-record';
+import { storeAppMetadata } from './appMetadata';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -652,8 +653,10 @@ type ProtocolSummary = RecordSummary & {
   breakdown30d?: any
 }
 
-run().catch(console.error).then(() => process.exit(0))
-// process.exit(0)
+run()
+.catch(console.error)
+.then(storeAppMetadata)
+.then(() => process.exit(0))
 
 const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYPE))
 // fill all missing data with the last available data

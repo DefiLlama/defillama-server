@@ -22,6 +22,7 @@ import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
 import { getOutdated } from "../../stats/getOutdated";
 import * as sdk from '@defillama/sdk'
+import { RUN_TYPE } from "../utils";
 // import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 
 const protocolDataMap: { [key: string]: any } = {}
@@ -31,7 +32,7 @@ let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMont
 
 async function run() {
   await initializeTVLCacheDB()
-  await initCache({ cacheType: 'cron' })
+  await initCache({ cacheType: RUN_TYPE.CRON  })
   await initializeProtocolDataMap()
   await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, cache)
   await writeToPGCache('debug-protocolDataMap', protocolDataMap) // TODO: remove this

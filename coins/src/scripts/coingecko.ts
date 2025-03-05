@@ -97,15 +97,20 @@ async function cacheSolanaTokens() {
 let hyperliquidTokens: Promise<any>;
 let _hyperliquidTokens: Promise<any>;
 async function cacheHyperliquidTokens() {
-  if (_hyperliquidTokens === undefined) {
-    _hyperliquidTokens = fetch(`https://api.hyperliquid.xyz/info`, {
-      method: "POST",
-      body: JSON.stringify({ type: "spotMeta" }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    hyperliquidTokens = _hyperliquidTokens.then((r) => r.json());
+  try {
+    if (_hyperliquidTokens === undefined) {
+      _hyperliquidTokens = fetch(`https://api.hyperliquid.xyz/info`, {
+        method: "POST",
+        body: JSON.stringify({ type: "spotMeta" }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      hyperliquidTokens = _hyperliquidTokens.then((r) => r.json());
+    }
+  } catch (e) {
+    console.error(`Hyperliquid API failed with: ${e}`);
+    hyperliquidTokens = new Promise((res) => res({ tokens: [] }));
   }
   return hyperliquidTokens;
 }

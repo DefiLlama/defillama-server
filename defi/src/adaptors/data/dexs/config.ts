@@ -2837,4 +2837,7 @@ export default {
         parentId: "Thala",
         id: "5329",
     },
+    "degen-launchpad": {
+        id: "5857"
+    }
 } as AdaptorsConfig

@@ -4756,6 +4756,11 @@
       "to": "coingecko#super-seyian-eth",
       "decimals": 18,
       "symbol": "seiyanETH"
+    },
+    "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
+      "to": "coingecko#usda-2",
+      "decimals": 18,
+      "symbol": "USDa"
     }
   },
   "rss3_vsl": {

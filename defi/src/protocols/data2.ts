@@ -1280,7 +1280,7 @@ const data2: Protocol[] = [
     cmcId: "17743",
     category: "Yield Aggregator",
     chains: ["Arbitrum"],
-    oracles: [],
+    oracles: ["RedStone"], //https://docs.jonesdao.io/jones-dao/other/security#oracles
     forkedFrom: [],
     module: "jones-dao/index.js",
     twitter: "DAOJonesOptions",

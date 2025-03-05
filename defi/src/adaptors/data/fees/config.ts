@@ -2554,5 +2554,8 @@ export default {
     "thalaswap-v2": {
         parentId: "Thala",
         id: "5329",
+    },
+    "degen-launchpad": {
+        id: "5857"
     }
 } as AdaptorsConfig

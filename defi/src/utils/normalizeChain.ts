@@ -4193,7 +4193,8 @@ const newChainLabelMap = {
   "sxr": "SX Rollup",
   "new": "AB",
   "formnetwork": "Form Network",
-  "hyperliquid": "Hyperliquid L1"
+  "hyperliquid": "Hyperliquid L1",
+  "lightlink_phoenix": "LightLink",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

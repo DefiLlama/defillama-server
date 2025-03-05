@@ -98,18 +98,14 @@ let hyperliquidTokens: Promise<any>;
 let _hyperliquidTokens: Promise<any>;
 async function cacheHyperliquidTokens() {
   if (_hyperliquidTokens === undefined) {
-    try {
-      _hyperliquidTokens = fetch(`https://api.hyperliquid.xyz/info`, {
-        method: "POST",
-        body: JSON.stringify({ type: "spotMeta" }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      hyperliquidTokens = _hyperliquidTokens.then((r) => r.json());
-    } catch (e: any) {
-      console.error(`hyperliquid API failed with: ${e.message}`);
-    }
+    _hyperliquidTokens = fetch(`https://api.hyperliquid.xyz/info`, {
+      method: "POST",
+      body: JSON.stringify({ type: "spotMeta" }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    hyperliquidTokens = _hyperliquidTokens.then((r) => r.json());
   }
   return hyperliquidTokens;
 }

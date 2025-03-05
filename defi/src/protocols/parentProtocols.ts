@@ -6636,6 +6636,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "rhea_finance",
     github: ["ref-finance"],
   },
+  {
+    id: "parent#puffer-finance",
+    name: "Puffer Finance",
+    url: "https://puffer.fi",
+    description: "Puffer operates as a decentralized native liquid restaking protocol native to its ecosystem. Prior to its mainnet launch, pufETH serves as a yield-generating token, mirroring the yield of wstETH, while also providing users the opportunity to accumulate both Puffer and EigenLayer points.",
+    logo: `${baseIconsUrl}/puffer-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "puffer_finance",
+    github: ["PufferFinance"],
+    governanceID: ["snapshot:puffer-vote.eth"],
+  },
 ];
 
 export default parentProtocols;

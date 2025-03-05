@@ -6544,5 +6544,27 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "tronsave_io",
   },
+  {
+    id: "5865",
+    name: "FlareBank",
+    address: "flare:0x194726F6C2aE988f1Ab5e1C943c17e591a6f6059  ",
+    symbol: "BANK",
+    url: "https://www.flrbank.com/",
+    description:
+      "FlareBank is a dApp built on the Flare Network, designed to create a dividend-driven ecosystem centered around its native token, $BANK",
+    chain: "Flare",
+    logo: `${baseIconsUrl}/flarebank.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Reserve Currency",
+    chains: ["Flare"],
+    oracles: [], 
+    forkedFrom: ["Eggs Finance"],
+    module: "flrbank/index.js",
+    twitter: "FlareBank",
+    listedAt: 1741195062
+  },
 ];
 export default data4;

@@ -73,7 +73,7 @@ export const cache: {
 const MINUTES = 60 * 1000
 const HOUR = 60 * MINUTES
 
-export async function initCache({ cacheType = RUN_TYPE.CRON } = { cacheType: RUN_TYPE.API_SERVER }) {
+export async function initCache({ cacheType = RUN_TYPE.API_SERVER }: { cacheType?: string } = { cacheType: RUN_TYPE.API_SERVER }) {
   console.time('Cache initialized: ' + cacheType)
   await updateMetadata()
   if (cacheType === RUN_TYPE.API_SERVER) {

@@ -2557,5 +2557,11 @@ export default {
     },
     "degen-launchpad": {
         id: "5857"
+    },
+    "tronsave": {
+        id: "5864"
+    },
+    "erc-burner": {
+        id: "5859"
     }
 } as AdaptorsConfig

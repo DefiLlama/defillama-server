@@ -6501,5 +6501,48 @@ const data4: Protocol[] = [
     github: ["hyperyieldevm"],
     listedAt: 1741119943
   },
+  {
+    id: "5863",
+    name: "Zino Finance",
+    address: null,
+    symbol: "-",
+    url: "https://zino.finance",
+    description:
+      "Zino Finance is the premier multichain DeFi hub for yield. Zino allows users to deposit capital which is then deployed by Zino across various different DeFi protocols in order to deliver the best yield to the end user.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/zino-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Arbitrum"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "zino-finance/index.js",
+    twitter: "zinoprotocol",
+    listedAt: 1741174839
+  },
+  {
+    id: "5864",
+    name: "TRONSAVE",
+    address: null,
+    symbol: "-",
+    url: "https://tronsave.io",
+    description:
+      "TronSave is the number one energy solution on the TRON Network, with especially user-friendly features.",
+    chain: "Tron",
+    logo: `${baseIconsUrl}/tronsave.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Tron"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "tronsave_io",
+  },
 ];
 export default data4;

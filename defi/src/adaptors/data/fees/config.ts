@@ -2563,5 +2563,8 @@ export default {
     },
     "erc-burner": {
         id: "5859"
+    },
+    "infrared-finance": {
+        id: "5775"
     }
 } as AdaptorsConfig

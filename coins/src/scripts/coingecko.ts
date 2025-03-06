@@ -158,6 +158,7 @@ async function getSymbolAndDecimals(
       return;
     }
   } else if (chain == "hyperliquid") {
+    await cacheHyperliquidTokens();
     const token = ((await hyperliquidTokens).tokens as any[]).find(
       (t) => t.tokenId === tokenAddress,
     );
@@ -495,7 +496,6 @@ function shuffleArray(array: any[]) {
 async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   try {
     await cacheSolanaTokens();
-    await cacheHyperliquidTokens();
     const step = 500;
     let coins = (await fetch(
       `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,

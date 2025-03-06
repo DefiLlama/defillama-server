@@ -28492,6 +28492,19 @@ const data3: Protocol[] = [
     category: "Farm",
     chains: ["Ethereum"],
     oracles: ["Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9396#issuecomment-2702619267"]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9396#issuecomment-2702619267"]
+
+      }
+    ],
     forkedFrom: [],
     module: "desyn-farm/index.js",
     twitter: "DesynLab",

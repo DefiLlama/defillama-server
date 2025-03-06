@@ -31806,7 +31806,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [], //https://github.com/DefiLlama/defillama-server/pull/8417
     forkedFrom: [],
-    module: "puffer/index.js",
+    module: "puffer-lrt/index.js",
     twitter: "puffer_finance",
     listedAt: 1706793055,
   },

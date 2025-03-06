@@ -26433,7 +26433,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "Oracles that pay you: Api3 first-party oracles deliver secure, transparent data while also turning data feed updates into a source of revenue for your dApp.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/api3.jpg`,
+    logo: `${baseIconsUrl}/api3.png`,
     audits: "6",
     audit_note: null,
     gecko_id: "api3",

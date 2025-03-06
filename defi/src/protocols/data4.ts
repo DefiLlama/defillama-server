@@ -6644,7 +6644,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Rollup",
+    category: "Yield",
     chains: ["Ethereum"],
     module: "puffer-unifi/index.js",
     twitter: "puffer_finance",

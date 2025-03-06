@@ -66,6 +66,7 @@ export default {
   ankr: require("./liquidStaking/ankr"),
   stargate: require("./markets/stargate"),
   jarvis: require("./markets/jarvis"),
+  xequity: require("./markets/xequity"),
   chainlinkNFT: require("./nft/chainlink"),
   arrakis: require("./markets/arrakis"),
   aktionariat: require("./markets/aktionariat"),

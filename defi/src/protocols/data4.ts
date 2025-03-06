@@ -6566,5 +6566,27 @@ const data4: Protocol[] = [
     twitter: "FlareBank",
     listedAt: 1741195062
   },
+  {
+    id: "5866",
+    name: "Apollo zBTC",
+    address: null,
+    symbol: "-", // APL not live yet
+    url: "https://gaia.apollobyzeus.app/dashboard",
+    description:
+      "APOLLO is the first permissionless Bitcoin terminal on Solana, redefining cross-chain liquidity by seamlessly integrating Bitcoin to Solana",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/apollo-zbtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    oracles: [], 
+    forkedFrom: [],
+    module: "zeus/index.js",
+    twitter: "ApolloByZeus",
+    listedAt: 1741269324
+  },
 ];
 export default data4;

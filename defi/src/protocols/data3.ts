@@ -44089,7 +44089,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: "CDP",
     chains: ["CORE"],
     oracles: [],
     forkedFrom: [],

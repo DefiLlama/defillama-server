@@ -62,30 +62,27 @@ async function produceMetadata(items: Dynamo[], producer: Producer) {
     const record = getMetadataRecord(item);
     if (!record) return;
     validate(record, "coins-metadata");
-
     const msg = JSON.stringify(record);
     if (!metadataMessages.includes(msg)) {
       metadataMessages.push(msg);
     }
   });
 
-  if (process.env.KAFKA_UP === "true") {
-    try {
-      await producer.send({
-        topic: "coins-metadata",
-        messages: metadataMessages.map((value) => ({ value })),
-      });
-      return;
-    } catch (error) {
-      console.error('Kafka failed for "coins-metadata". Fallback to ES.', error);
-    }
+  try {
+    await producer.send({
+      topic: "coins-metadata",
+      messages: metadataMessages.map((value) => ({ value })),
+    });
+    return;
+  } catch (error) {
+    console.error('Kafka failed for "coins-metadata". Fallback to ES.', error);
   }
 
   try {
     const body: any[] = [];
     for (const msg of metadataMessages) {
       const doc = JSON.parse(msg);
-      body.push({ index: { _index: "coins-metadata" } });
+      body.push({ index: { _index: "coins-metadata", _id: doc.pid } });
       body.push(doc);
     }
     if (body.length) {
@@ -102,31 +99,26 @@ async function produceTopics(items: Dynamo[], topic: Topic, producer: Producer) 
   items.map((item) => {
     const { price, SK } = item;
 
-    if (topic !== "coins-timeseries" && SK !== 0) return;
-    if (topic !== "coins-metadata" && !price) return;
-    if (topic === "coins-metadata") return;
-
+    if (topic === "coins-timeseries" && SK === 0) return;
+    if (topic === "coins-current" && SK !== 0) return;
+    if (!price) return;
     const messageObject = convertToMessage(item, topic);
     if (!messageObject) return;
-
     validate(messageObject, topic);
-
     const message = JSON.stringify(messageObject);
     if (!messages.includes(message)) {
       messages.push(message);
     }
   });
 
-  if (process.env.KAFKA_UP === "true") {
-    try {
-      await producer.send({
-        topic: `${topic}`,
-        messages: messages.map((value) => ({ value })),
-      });
-      return;
-    } catch (error) {
-      console.error(`Kafka failed for topic "${topic}". Fallback to ES/Redis.`, error);
-    }
+  try {
+    await producer.send({
+      topic: `${topic}`,
+      messages: messages.map((value) => ({ value })),
+    });
+    return;
+  } catch (error) {
+    console.error(`Kafka failed for topic "${topic}". Fallback to ES/Redis.`, error);
   }
 
   if (topic === "coins-current") {
@@ -171,16 +163,10 @@ export default async function produce(
     if (!items.length) return;
     const invalidTopic = topics.find((t: any) => !allTopics.includes(t));
     if (invalidTopic) throw new Error(`invalid topic: ${invalidTopic}`);
-
     const producer: Producer = await getProducer();
-    if (topics.includes("coins-metadata")) {
-      await produceMetadata(items, producer);
-    }
-
+    await produceMetadata(items, producer);
     const otherTopics = topics.filter((t) => t !== "coins-metadata");
-    await Promise.all(
-      otherTopics.map((topic: Topic) => produceTopics(items, topic, producer))
-    );
+    await Promise.all(otherTopics.map((topic: Topic) => produceTopics(items, topic, producer)));
   } catch (error) {
     // console.error("Error producing messages", error);
   }

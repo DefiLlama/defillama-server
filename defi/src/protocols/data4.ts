@@ -6624,6 +6624,9 @@ const data4: Protocol[] = [
     module: "puffer-vaults/index.js",
     twitter: "puffer_finance",
     parentProtocol: "parent#puffer-finance",
+    tokensExcludedFromParent:{
+      Ethereum: ["PUFETH"]
+    },
     listedAt: 1741275361,
   },
   /*{

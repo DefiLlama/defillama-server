@@ -31,6 +31,7 @@ const hyperlane = async (): Promise<void> => {
     ).then((r) => r.json());
   const data = await bridgePromises[bridge];
   if (doneAdapters.includes(bridge)) return;
+  if (!addresses.eclipse) addresses.eclipse = [];
   data.map(({ address }: any) => addresses.eclipse.push(address));
   doneAdapters.push(bridge);
 };

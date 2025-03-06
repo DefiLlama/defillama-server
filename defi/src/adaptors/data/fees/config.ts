@@ -2566,5 +2566,8 @@ export default {
     },
     "infrared-finance": {
         id: "5775"
+    },
+    "desk": {
+        id: "5813"
     }
 } as AdaptorsConfig

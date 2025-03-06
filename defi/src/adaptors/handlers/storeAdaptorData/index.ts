@@ -19,6 +19,8 @@ import { sendDiscordAlert } from "../../utils/notify";
 
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
+const timestampAtStartofHour = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
+const timestampAnHourAgo = timestampAtStartofHour - 60 * 60
 
 export interface IHandlerEvent {
   protocolModules: string[]
@@ -29,7 +31,6 @@ export interface IHandlerEvent {
   protocolVersion?: string
 }
 
-const timeStartofTheHourToday = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
 
 export const handler = async (event: IHandlerEvent) => {
   return handler2({
@@ -49,6 +50,7 @@ export type IStoreAdaptorDataHandlerEvent = {
   isDryRun?: boolean
   isRunFromRefillScript?: boolean
   yesterdayIdSet?: Set<string>
+  todayIdSet?: Set<string>
   runType?: 'store-all' | 'default'
 }
 
@@ -57,13 +59,13 @@ const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const defaultMaxConcurrency = 21
   let { timestamp, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
-    runType = 'default', yesterdayIdSet = new Set()
+    runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
 
   } = event
   if (!isRunFromRefillScript)
     console.info(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
-  const currentTimestamp = timestamp ?? timeStartofTheHourToday;
+  const currentTimestamp = timestamp ?? timestampAnHourAgo;
   // Get clean day
   let toTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
   let fromTimestamp = getTimestampAtStartOfDayUTC(toTimestamp - 1)
@@ -72,8 +74,14 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   if (isRunFromRefillScript) {
     fromTimestamp = getTimestampAtStartOfDayUTC(timestamp!)
     toTimestamp = fromTimestamp + ONE_DAY_IN_SECONDS - 1
+
+    if (toTimestamp * 1000 > Date.now()) {
+      console.info(`[${adapterType}] - cant refill data for today, it's not over yet`)
+      return;
+    }
+
   } else if (runType === 'store-all') {
-    fromTimestamp = getTimestampAtStartOfDayUTC(timeStartofTheHourToday - ONE_DAY_IN_SECONDS)
+    fromTimestamp = timestampAnHourAgo - ONE_DAY_IN_SECONDS
     toTimestamp = fromTimestamp + ONE_DAY_IN_SECONDS - 1
   }
 
@@ -182,7 +190,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       // Import adaptor
       const adaptor: Adapter = (await importModule(module)).default;
       // if an adaptor is expensive and no timestamp is provided, we try to avoid running every hour, but only from 21:55 to 01:55
-      const adapterVersion = adaptor.version
+      const adapterVersion = adaptor.version ?? 1
+      const isAdapterVersionV1 = adapterVersion !== 2
+
       let endTimestamp = toTimestamp
       let recordTimestamp = toTimestamp
       if (isRunFromRefillScript) recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 
@@ -208,21 +218,29 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
         const date = new Date()
         const hours = date.getUTCHours()
+        const isExpensiveAdapter = adaptor.isExpensiveAdapter
+        // if it is an expensive adapter run every 4 hours or after 20:00 UTC
+        const runNow = !isExpensiveAdapter || (hours % 4 === 0 || hours > 20)
+        const haveTodayData = todayIdSet.has(id)
+        const haveYesterdayData = yesterdayIdSet.has(id)
 
-        if (runAtCurrTime) {
-          recordTimestamp = timeStartofTheHourToday
-          endTimestamp = timeStartofTheHourToday
 
-          if (hours < 19) {
-            console.info(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module} - skipping because it's not the right time (too early to fetch today's data)`)
+        if (runAtCurrTime || !isAdapterVersionV1) {
+          recordTimestamp = timestampAtStartofHour
+          endTimestamp = timestampAtStartofHour
+
+          if (haveTodayData && !runNow) {
+            console.info(`Skipping ${adapterType} - ${index + 1}/${protocols.length} - ${protocol.module} - skipping, already have today data for adapter running at current time`)
             return
           }
-        } else if (yesterdayIdSet.has(id)) {
-          console.info(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module} - skipping because it's already stored`)
-          return
-        } else if (hours < 2) {
-          console.info(`[${adapterType}] - ${index + 1}/${protocols.length} - ${protocol.module} - skipping because it's not the right time (too early to fetch yesterday's data, wait for indexer to catch up)`)
-          return
+        } else { // it is a version 1 adapter - we pull yesterday's data
+          if (haveYesterdayData) {
+            console.info(`Skipping ${adapterType} - ${index + 1}/${protocols.length} - ${protocol.module} - skipping, already have yesterday data`)
+            return;
+          }
+
+          endTimestamp = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000) - 1)
+          recordTimestamp = getTimestampAtStartOfDayUTC(endTimestamp)
         }
       }
 

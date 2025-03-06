@@ -28,14 +28,17 @@ async function run() {
     try {
 
       let yesterdayIdSet: Set<string> = new Set()
+      let todayIdSet: Set<string> = new Set()
 
       try {
         const yesterdayData = await getAllDimensionsRecordsOnDate({ adapterType, date: getYesterdayTimeS() });
+        const todayData = await getAllDimensionsRecordsOnDate({ adapterType, date: getTodayTimeS() });
         yesterdayIdSet = new Set(yesterdayData.map((d: any) => d.id));
+        todayIdSet = new Set(todayData.map((d: any) => d.id));
       } catch (e) {
         console.error("Error in getAllDimensionsRecordsOnDate", e)
       }
-      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all' })
+      await handler2({ adapterType, yesterdayIdSet, runType: 'store-all', todayIdSet, })
 
     } catch (e) {
       console.error("error", e)
@@ -92,5 +95,13 @@ function getYesterdayTimeS() {
   const yyyy = yesterday.getUTCFullYear();
   const mm = String(yesterday.getUTCMonth() + 1).padStart(2, '0');
   const dd = String(yesterday.getUTCDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+function getTodayTimeS() {
+  const today = new Date();
+  const yyyy = today.getUTCFullYear();
+  const mm = String(today.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(today.getUTCDate()).padStart(2, '0');
   return `${yyyy}-${mm}-${dd}`;
 }

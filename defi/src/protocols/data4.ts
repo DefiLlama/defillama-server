@@ -4643,7 +4643,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sei"],
-    oracles: [],
+    oracles: ["RedStone"], //https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures, https://app.takaralend.com/market/WSEI
     forkedFrom: ["Compound V2"],
     module: "takara/index.js",
     twitter: "TakaraLend", 

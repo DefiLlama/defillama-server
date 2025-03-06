@@ -26428,7 +26428,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "1339",
     name: "Api3",
     address: "0x0b38210ea11411557c13457d4da7dc6ea731b88a",
-    symbol: "Api3",
+    symbol: "API3",
     url: "https://api3.eth.link/#/",
     description:
       "Oracles that pay you: Api3 first-party oracles deliver secure, transparent data while also turning data feed updates into a source of revenue for your dApp.",

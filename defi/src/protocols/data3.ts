@@ -31799,7 +31799,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "pufETH",
-    url: "https://www.puffer.fi/",
+    url: "https://www.app.puffer.fi/stake",
     description:
       "Puffer operates as a decentralized native liquid restaking protocol native to its ecosystem. Prior to its mainnet launch, pufETH serves as a yield-generating token, mirroring the yield of wstETH, while also providing users the opportunity to accumulate both Puffer and EigenLayer points.",
     chain: "Ethereum",
@@ -31813,6 +31813,7 @@ const data3: Protocol[] = [
     oracles: [], //https://github.com/DefiLlama/defillama-server/pull/8417
     forkedFrom: [],
     module: "puffer-lrt/index.js",
+    parentProtocol: "parent#puffer-finance",
     twitter: "puffer_finance",
     listedAt: 1706793055,
   },

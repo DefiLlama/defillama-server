@@ -2569,5 +2569,8 @@ export default {
     },
     "desk": {
         id: "5813"
+    },
+    "beradrome": {
+        id: "5798"
     }
 } as AdaptorsConfig

@@ -315,6 +315,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: nullAddress, // IP
     address: "0x5267F7eE069CEB3D8F1c760c215569b79d0685aD",
   },
+  hywstHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:balancePerShare",
+        target: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
+    address: "0xC8b6E0acf159E058E22c564C0C513ec21f8a1Bf5",
+  },
 };
 
 export async function derivs(timestamp: number) {

@@ -6592,7 +6592,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#desk",
     name: "DESK",
-    url: "https://smilee.finance/",
+    url: "https://desk.exchange/",
     description: "DESK—the perpetual trading infrastructure, empowering both human traders and AI agents with cutting-edge tools and seamless automation",
     logo: `${baseIconsUrl}/desk.png`,
     gecko_id: "hmx",

@@ -31795,7 +31795,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4088",
-    name: "Puffer Finance",
+    name: "Puffer Stake", // previous Puffer Finance
     address: null,
     symbol: "-",
     assetToken: "pufETH",
@@ -31803,7 +31803,7 @@ const data3: Protocol[] = [
     description:
       "Puffer operates as a decentralized native liquid restaking protocol native to its ecosystem. Prior to its mainnet launch, pufETH serves as a yield-generating token, mirroring the yield of wstETH, while also providing users the opportunity to accumulate both Puffer and EigenLayer points.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/puffer-finance.jpg`,
+    logo: `${baseIconsUrl}/puffer-stake.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -31814,7 +31814,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "puffer/index.js",
     twitter: "puffer_finance",
-    github: ["PufferFinance"],
     listedAt: 1706793055,
   },
   {

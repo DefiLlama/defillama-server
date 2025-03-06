@@ -4644,6 +4644,23 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Sei"],
     oracles: ["RedStone"], //https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures, https://app.takaralend.com/market/WSEI
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures","https://app.takaralend.com/market/WSEI"]
+      },
+      {
+        name: "Pyth",
+        type: "Fallback",
+        proof: ["https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures","https://app.takaralend.com/market/WSEI"]
+      },
+      {
+        name: "Api3",
+        type: "Fallback",
+        proof: ["https://takara.gitbook.io/takara-lend/protocol-information/security#takara-security-measures","https://app.takaralend.com/market/WSEI"]
+      }
+    ],
     forkedFrom: ["Compound V2"],
     module: "takara/index.js",
     twitter: "TakaraLend", 

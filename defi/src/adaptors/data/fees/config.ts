@@ -2572,5 +2572,8 @@ export default {
     },
     "beradrome": {
         id: "5798"
+    },
+    "rings": {
+        id: "5526"
     }
 } as AdaptorsConfig

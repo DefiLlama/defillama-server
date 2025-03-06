@@ -21332,6 +21332,11 @@ const data2: Protocol[] = [
         type: "Aggregator",
         proof: ["https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle"]
       },
+      {
+        name: "RedStone",
+        type: "Aggregator",
+        proof: ["https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle"]
+      },
     ],
     parentProtocol: "parent#desk",
     listedAt: 1668805259,

@@ -16205,7 +16205,7 @@ const data2: Protocol[] = [
         ]
       },
       {
-        name: "API3",
+        name: "Api3",
         type: "Secondary",
         proof: [],
         chains: [
@@ -29822,7 +29822,7 @@ const data2: Protocol[] = [
     cmcId: "24771",
     category: "Lending",
     chains: ["Polygon", "Linea"],
-    oracles: ["Chainlink", "API3"],
+    oracles: ["Chainlink", "Api3"],
     forkedFrom: ["Compound V2"],
     module: "paxo-finance/index.js",
     twitter: "wefi_xyz",

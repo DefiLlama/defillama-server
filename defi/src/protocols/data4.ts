@@ -242,7 +242,7 @@ const data4: Protocol[] = [
     category: "Yield Aggregator",
     chains: ["Ethereum","Optimism","BOB"],
     oraclesByChain: {
-      arbitrum: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+      arbitrum: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
     },
     forkedFrom: [],
     module: "yield-fi/index.js",
@@ -292,7 +292,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Fraxtal"],
-    oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    oracles: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
     forkedFrom: ["AAVE V3"],
     module: "dtrinity-dlend/index.js",
     twitter: "dtrinity_defi",
@@ -901,7 +901,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sonic"],
-    oracles: ["API3"], // https://aurum-finance.gitbook.io/docs
+    oracles: ["Api3"], // https://aurum-finance.gitbook.io/docs
     module: "aurum/index.js",
     twitter: "AurumFi_Sonic",
     forkedFrom: ["AAVE V3"],

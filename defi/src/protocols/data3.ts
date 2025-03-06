@@ -83,7 +83,7 @@ const data3: Protocol[] = [
     chains: ["Polygon", "Polygon zkEVM"],
     oraclesByChain: {
       polygon: ["Chainlink"], // https://docs.mantissa.finance/developers/security#de-peg-protection
-      polygon_zkevm: ["API3"],
+      polygon_zkevm: ["Api3"],
     },
     forkedFrom: [],
     module: "MantisSwap/index.js",
@@ -6472,7 +6472,7 @@ const data3: Protocol[] = [
     audit_links: [],
     forkedFrom: ["GMX V1"],
     parentProtocol: "parent#quickswap",
-    oracles: ["Pyth", "API3"], // https://github.com/DefiLlama/defillama-server/pull/5164
+    oracles: ["Pyth", "Api3"], // https://github.com/DefiLlama/defillama-server/pull/5164
     listedAt: 1684213007,
   },
   {
@@ -6714,7 +6714,7 @@ const data3: Protocol[] = [
     chains: ["Polygon zkEVM"],
     module: "shrike-perps/index.js",
     twitter: "DovishFi",
-    oracles: ["API3"],
+    oracles: ["Api3"],
     forkedFrom: ["GMX V1"],
     listedAt: 1684332007,
   },
@@ -6741,7 +6741,7 @@ const data3: Protocol[] = [
       arbitrum: ["Chainlink"],
       era: ["Chainlink"],
       linea: ["Chainlink"],
-      mantle: ["API3"],
+      mantle: ["Api3"],
       polygon_zkevm: ["Chainlink"], // https://docs.gravitaprotocol.com/gravita-docs/how-does-gravita-work/oracles
       optimism: ["Chainlink"],
     },
@@ -8127,7 +8127,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "paribus/index.js",
     twitter: "paribus_io",
-    oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    oracles: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
     forkedFrom: ["Compound V2"],
     github: ["Paribus"],
     listedAt: 1685645869,
@@ -8219,7 +8219,7 @@ const data3: Protocol[] = [
     module: "tropykus-zkevm/index.js",
     twitter: "tropykus",
     forkedFrom: ["AAVE V2"],
-    oracles: ["API3"], // https://medium.com/api3/tropykus-to-launch-on-polygon-zkevm-using-api3s-data-feeds-710fdc29b1c8
+    oracles: ["Api3"], // https://medium.com/api3/tropykus-to-launch-on-polygon-zkevm-using-api3s-data-feeds-710fdc29b1c8
     parentProtocol: "parent#tropykus-finance",
     listedAt: 1685700448,
   },
@@ -12437,7 +12437,7 @@ const data3: Protocol[] = [
       ethereum: ["Chainlink"], // https://docs.zerolend.xyz/security/oracles/chainlink
       era: ["Pyth"], //https://docs.zerolend.xyz/security/oracles#using-pyth-oracles
       zircuit: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
-      xlayer: ["API3"], // https://docs.zerolend.xyz/security/oracles#oracles-operated-by-api3
+      xlayer: ["Api3"], // https://docs.zerolend.xyz/security/oracles#oracles-operated-by-api3
     },
     forkedFrom: ["AAVE V3"],
     audit_links: ["https://github.com/zerolend/audits/blob/main/mundus/zerolend_report_depcheck_final.pdf"],
@@ -13775,7 +13775,7 @@ const data3: Protocol[] = [
     cmcId: "29006",
     category: "Lending",
     chains: ["Mantle"],
-    oracles: ["API3", "Pyth"], // https://docs.lendle.xyz/using-the-lendle-application/markets/borrow/liquidations-and-flashloans#oracles API3 is used for mETH
+    oracles: ["Api3", "Pyth"], // https://docs.lendle.xyz/using-the-lendle-application/markets/borrow/liquidations-and-flashloans#oracles Api3 is used for mETH
     forkedFrom: ["AAVE V2"],
     module: "lendle/index.js",
     twitter: "lendlexyz",
@@ -16526,7 +16526,7 @@ const data3: Protocol[] = [
     module: "mendi-finance/index.js",
     twitter: "MendiFinance",
     forkedFrom: ["Compound V2"],
-    oracles: ["API3", "Chainlink", "eOracle"], // https://github.com/DefiLlama/defillama-server/pull/7002 , https://github.com/DefiLlama/defillama-server/pull/8792
+    oracles: ["Api3", "Chainlink", "eOracle"], // https://github.com/DefiLlama/defillama-server/pull/7002 , https://github.com/DefiLlama/defillama-server/pull/8792
     github: ["mendi-finance"],
     listedAt: 1692625594,
   },
@@ -17519,7 +17519,7 @@ const data3: Protocol[] = [
     category: "Derivatives",
     chains: ["Kava"],
     module: "kinetix/index.js",
-    oracles: ["Pyth", "API3"],
+    oracles: ["Pyth", "Api3"],
     forkedFrom: ["GMX V1"],
     twitter: "KinetixFi",
     parentProtocol: "parent#kinetix",
@@ -19011,7 +19011,7 @@ const data3: Protocol[] = [
     module: "bmx/index.js",
     oraclesByChain: {
       base: ["Chainlink", "Pyth"], // https://docs.morphex.trade/oracles
-      mode: ["API3"], // https://docs.morphex.trade/oracles
+      mode: ["Api3"], // https://docs.morphex.trade/oracles
     }, // https://github.com/DefiLlama/defillama-server/pull/9183
     forkedFrom: ["GMX V1"],
     twitter: "MorphexFTM",
@@ -19414,7 +19414,7 @@ const data3: Protocol[] = [
       Klaytn: ["Witnet"],
       metis: ["Chainlink"],
       mode: ["RedStone"],
-      kroma: ["API3"],
+      kroma: ["Api3"],
     },
     forkedFrom: ["Compound V2"],
     twitter: "ShoebillFinance",
@@ -27654,7 +27654,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Linea"],
-    oracles: ["Pyth", "API3"], // https://github.com/DefiLlama/defillama-server/pull/5205 , API3: https://docs.metavault.trade/more/smart-contract-overview/v1-and-v2-perps , https://github.com/DefiLlama/defillama-server/pull/5208
+    oracles: ["Pyth", "Api3"], // https://github.com/DefiLlama/defillama-server/pull/5205 , Api3: https://docs.metavault.trade/more/smart-contract-overview/v1-and-v2-perps , https://github.com/DefiLlama/defillama-server/pull/5208
     forkedFrom: [],
     module: "metavault-derivatives-v2/index.js",
     twitter: "MetavaultTRADE",
@@ -30944,7 +30944,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Mantle"],
     oraclesByChain: {
       ethereum: ["Chainlink"],
-      mantle: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5644
+      mantle: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/5644
     },
     forkedFrom: ["Compound V2"],
     module: "minterest/index.js",
@@ -30999,7 +30999,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mantle"],
-    oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/5644
+    oracles: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/5644
     forkedFrom: [],
     module: "init-capital/index.js",
     twitter: "InitCapital_",
@@ -31372,8 +31372,8 @@ const data3: Protocol[] = [
     oraclesByChain: {
       mode: ["eOracle", "RedStone", "Pyth"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#mode
       base: ["eOracle", "RedStone", "Chainlink", "Chronicle", "Pyth"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#base
-      optimism: ["Chainlink","API3","Pyth","Chronicle"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#optimism
-      fraxtal: ["API3","RedStone"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#fraxtal
+      optimism: ["Chainlink","Api3","Pyth","Chronicle"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#optimism
+      fraxtal: ["Api3","RedStone"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#fraxtal
       lisk: ["RedStone"], // https://doc.ionic.money/ionic-documentation/resources/market-addresses#lisk
       //bob: ["APRO"] oracle delisted at their teams request https://doc.ionic.money/ionic-documentation/resources/market-addresses#bob
     },
@@ -32294,10 +32294,10 @@ const data3: Protocol[] = [
     chains: ["Binance", "BOB", "Op_Bnb", "BSquared", "RSK", "CORE"],
     oraclesByChain: { // https://docs.segment.finance/protocol/advanced-safety-features/oracles
       bsc: ["Chainlink"],
-      bob: ["RedStone", "DIA", "API3"],
+      bob: ["RedStone", "DIA", "Api3"],
       op_bnb: ["Binance Oracle"],
       rsk: ["Umbrella"],
-      core: ["API3"],
+      core: ["Api3"],
       bsquared: ["Supra"]
     },
     forkedFrom: ["Compound V2"],
@@ -32323,7 +32323,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Kava"],
-    oracles: ["Pyth", "API3"], // https://github.com/DefiLlama/defillama-server/pull/5845
+    oracles: ["Pyth", "Api3"], // https://github.com/DefiLlama/defillama-server/pull/5845
     forkedFrom: [],
     module: "kinetix-derivatives-v2/index.js",
     twitter: "KinetixFi",
@@ -32846,7 +32846,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     oraclesByChain: {
-      mode: ["API3", "RedStone"], //https://docs.sturdy.finance/overview/security-and-audits
+      mode: ["Api3", "RedStone"], //https://docs.sturdy.finance/overview/security-and-audits
     },
     forkedFrom: ["AAVE V2"],
     module: "sturdy-v2/index.js",
@@ -33250,7 +33250,7 @@ const data3: Protocol[] = [
     module: "aurelius/index.js",
     twitter: "AureliusFi",
     forkedFrom: ["Liquity", "AAVE V2"],
-    oracles: ["API3"], // https://docs.aurelius.finance/security#oracles
+    oracles: ["Api3"], // https://docs.aurelius.finance/security#oracles
     audit_links: ["https://docs.aurelius.finance/security"],
     parentProtocol: "parent#oath-foundation",
     listedAt: 1708396298,
@@ -34624,7 +34624,7 @@ const data3: Protocol[] = [
     module: "juice-finance/index.js",
     twitter: "Juice_Finance",
     forkedFrom: [],
-    oracles: ["API3"], //https://juice-finance.gitbook.io/juice-finance/juice-protocol/borrowing/liquidations#oracles API3 has ETH, USDB & ezETH feeds
+    oracles: ["Api3"], //https://juice-finance.gitbook.io/juice-finance/juice-protocol/borrowing/liquidations#oracles Api3 has ETH, USDB & ezETH feeds
     listedAt: 1709308594,
   },
   {
@@ -34689,7 +34689,7 @@ const data3: Protocol[] = [
     module: "pac-finance/index.js",
     twitter: "pac_finance",
     forkedFrom: ["AAVE V3"],
-    oracles: ["API3"], // https://docs.pac.finance/security#oracle
+    oracles: ["Api3"], // https://docs.pac.finance/security#oracle
     listedAt: 1709315721,
   },
   {
@@ -34734,7 +34734,7 @@ const data3: Protocol[] = [
     module: "orbitlending-io/index.js",
     twitter: "OrbitLending",
     forkedFrom: ["Compound V2"],
-    oracles: ["API3", "RedStone", "Pyth"], // https://book.orbitlending.io/protocol-design/price-oracle
+    oracles: ["Api3", "RedStone", "Pyth"], // https://book.orbitlending.io/protocol-design/price-oracle
     audit_links: [],
     listedAt: 1709316471,
   },
@@ -35587,7 +35587,7 @@ const data3: Protocol[] = [
     chains: ["Mode"],
     module: "ironclad/index.js",
     twitter: "IroncladFinance",
-    oracles: ["API3"], // https://docs.ironclad.finance/resources/protocol-security#base-oracle-provider
+    oracles: ["Api3"], // https://docs.ironclad.finance/resources/protocol-security#base-oracle-provider
     forkedFrom: ["AAVE V2"],
     parentProtocol: "parent#oath-foundation",
     listedAt: 1709767737,
@@ -36799,7 +36799,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Leveraged Farming",
     chains: ["Ethereum"],
-    oracles: ["API3"], //https://arbiscan.io/address/0x6295248f578bfa9c057a3e1182bed27121530e7a#readProxyContract , API3Oracle address : 0x28c1576eb118f2Ccd02eF2e6Dbd732F5C8D2e86B.
+    oracles: ["Api3"], //https://arbiscan.io/address/0x6295248f578bfa9c057a3e1182bed27121530e7a#readProxyContract , Api3Oracle address : 0x28c1576eb118f2Ccd02eF2e6Dbd732F5C8D2e86B.
     forkedFrom: [],
     module: "airpuff/index.js",
     twitter: "airpuff_io",
@@ -39270,7 +39270,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oraclesByChain: {
       bevm: ["DIA"], // https://docs.satoshiprotocol.org/outro/oracle
-      bob: ["API3", "DIA"] // https://docs.satoshiprotocol.org/outro/oracle
+      bob: ["Api3", "DIA"] // https://docs.satoshiprotocol.org/outro/oracle
     },
     github: ["Satoshi-Protocol"],
     audit_links: ["https://docs.satoshiprotocol.org/outro/audit-reports"],
@@ -45246,7 +45246,7 @@ const data3: Protocol[] = [
     module: "splice-fi/index.js",
     twitter: "splice_fi",
     oraclesByChain: {
-      mode: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+      mode: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
     },
     forkedFrom: ["Pendle"],
     github: ["splice-finance"],
@@ -45313,7 +45313,7 @@ const data3: Protocol[] = [
     chains: ["Fraxtal"],
     module: "glyph-fi/index.js",
     twitter: "GlyphFinance",
-    oracles: ["RedStone", "API3"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10370 , https://github.com/DefiLlama/defillama-server/pull/9183
+    oracles: ["RedStone", "Api3"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/10370 , https://github.com/DefiLlama/defillama-server/pull/9183
     forkedFrom: ["AAVE V3"],
     audit_links: ["https://conclave.gitbook.io/glyph/resources/audits"],
     listedAt: 1716652465,
@@ -46334,10 +46334,10 @@ const data3: Protocol[] = [
     module: "yei-fi/index.js",
     twitter: "YeiFinance",
     forkedFrom: ["AAVE V3"],
-    oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/8796
+    oracles: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/8796
     oraclesBreakdown: [
       {
-        name: "API3",
+        name: "Api3",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/8796"]
       },
@@ -47068,7 +47068,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Taiko"],
-    oracles: ["API3"], // confirmed by team https://docs.hana.finance/contracts-and-security/price-oracle WETH-API3OracleWrapper-Taiko 0x987c740ecedC426c7b08a8cf041511446b1cDd55, USDC-API3OracleWrapper-Taiko 0x311A245b0119983fd015d60950C0c4AD9e0D16A1
+    oracles: ["Api3"], // confirmed by team https://docs.hana.finance/contracts-and-security/price-oracle WETH-Api3OracleWrapper-Taiko 0x987c740ecedC426c7b08a8cf041511446b1cDd55, USDC-Api3OracleWrapper-Taiko 0x311A245b0119983fd015d60950C0c4AD9e0D16A1
     forkedFrom: [],
     module: "hana-finance/index.js",
     twitter: "Hana_Finance",
@@ -49135,7 +49135,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Linea"],
-    oracles: ["API3", "Pyth"], // https://docs.linehub.io/linehub-products/more#enhanced-security , https://lineascan.build/address/0xcea91eaa9f4d968c082efe8e48a107e6a74fef21#code, https://lineascan.build/address/0x09b573a41d389fef53cb3abeaebfdebf9a32dbaa
+    oracles: ["Api3", "Pyth"], // https://docs.linehub.io/linehub-products/more#enhanced-security , https://lineascan.build/address/0xcea91eaa9f4d968c082efe8e48a107e6a74fef21#code, https://lineascan.build/address/0x09b573a41d389fef53cb3abeaebfdebf9a32dbaa
     forkedFrom: [],
     module: "linehub-perps/index.js",
     twitter: "LineDefiHub",
@@ -52098,7 +52098,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Scroll"],
-    oracles: ["Chainlink", "API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    oracles: ["Chainlink", "Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
     forkedFrom: ["AAVE V2"],
     module: "lore/index.js",
     audit_links: [],
@@ -61604,7 +61604,7 @@ const data3: Protocol[] = [
     module: "elara/index.js",
     twitter: "ElaraLabs",
     forkedFrom: ["Compound V2"],
-    oracles: ["eOracle", "API3"], // https://github.com/DefiLlama/defillama-server/pull/9127, https://github.com/DefiLlama/defillama-server/pull/9183
+    oracles: ["eOracle", "Api3"], // https://github.com/DefiLlama/defillama-server/pull/9127, https://github.com/DefiLlama/defillama-server/pull/9183
     audit_links: ["https://github.com/ElaraFinance/elara-audits/blob/main/24-09-2024_Quantstamp_ElaraV1.pdf"],
     listedAt: 1732186221
   },
@@ -65600,10 +65600,10 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sonic"],
-    oracles: ["API3"], // https://github.com/DefiLlama/defillama-server/pull/9183
+    oracles: ["Api3"], // https://github.com/DefiLlama/defillama-server/pull/9183
     oraclesBreakdown: [
       {
-        name: "API3",
+        name: "Api3",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/9183"]
       },

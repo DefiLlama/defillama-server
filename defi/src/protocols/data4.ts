@@ -6626,7 +6626,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#puffer-finance",
     listedAt: 1741275361,
   },
-  {
+  /*{
     id: "5868",
     name: "Puffer UniFi AVS",
     address: null,
@@ -6646,7 +6646,7 @@ const data4: Protocol[] = [
     twitter: "puffer_finance",
     parentProtocol: "parent#puffer-finance",
     listedAt: 1741275362,
-  },
+  },*/
   {
     id: "5869",
     name: "Puffer UniFi",

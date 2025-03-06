@@ -6651,5 +6651,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#puffer-finance",
     listedAt: 1741275363,
   },
+  {
+    id: "5870",
+    name: "BeraTrax",
+    address: null,
+    symbol: "-",
+    url: "https://beratrax.com/",
+    description:
+      "BeraTrax is the premier way to interact with DeFi on Berachain, all from your mobile device. It’s an upcoming mobile application designed to let you seamlessly enter yield-earning vaults with just a single click.",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/beratrax.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Berachain"],
+    module: "beratrax/index.js",
+    twitter: "beratrax",
+    audit_links: ["https://www.cyberscope.io/audits/c5-btx"],
+    listedAt: 1741279402,
+  },
 ];
 export default data4;

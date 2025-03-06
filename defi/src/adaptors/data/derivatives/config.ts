@@ -819,5 +819,8 @@ export default {
     },
     "electra": {
         id: "5817"
+    },
+    "desk": {
+        id: "5813"
     }
 } as AdaptorsConfig

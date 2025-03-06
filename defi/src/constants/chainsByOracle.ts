@@ -239,7 +239,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Polynomial"
   ],
   "UMA": ["Ethereum", "Polygon", "Boba", "OP Mainnet", "Arbitrum", "Gnosis", "Avalanche"],
-  "API3": [
+  "Api3": [
     "Arbitrum",
     "Avalanche",
     "Base",

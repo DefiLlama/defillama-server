@@ -6145,7 +6145,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum","Optimism","Arbitrum","Base","Binance","Scroll"],
     oracles: [], 
     forkedFrom: [],
-    module: "dummy.js",
+    module: "hedgey/index.js",
     twitter: "hedgeyfinance",
     audit_links: ["https://hedgey.gitbook.io/hedgey-community-docs/for-developers/audits"],
   },

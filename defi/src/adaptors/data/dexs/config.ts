@@ -2839,5 +2839,8 @@ export default {
     },
     "degen-launchpad": {
         id: "5857"
+    },
+    "hyperfluid": {
+        id: "5480"
     }
 } as AdaptorsConfig

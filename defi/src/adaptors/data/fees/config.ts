@@ -2575,5 +2575,8 @@ export default {
     },
     "rings": {
         id: "5526"
+    },
+    "hyperfluid": {
+        id: "5480"
     }
 } as AdaptorsConfig

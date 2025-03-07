@@ -3978,6 +3978,15 @@ export const chainCoingeckoIds = {
     twitter: "hemi_xyz",
     url: "https://hemi.xyz",
   }, 
+  "Saga": {
+    geckoId: "saga-2",
+    symbol: "SAGA",
+    cmcId: "30372",
+    categories: ["EVM"],
+    chainId: 5464,
+    twitter: "Sagaxyz__",
+    url: "https://www.saga.xyz/",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

@@ -56009,8 +56009,8 @@ const data3: Protocol[] = [
   {
     id: "5146",
     name: "CrossCurve (by EYWA)",
-    address: null,
-    symbol: "-",
+    address: "0x8cb8c4263eb26b2349d74ea2cb1b27bc40709e12",
+    symbol: "EYWA",
     url: "https://crosscurve.fi",
     description:
       "CrossCurve is a cross-chain trading and yield protocol built on Curve, creating a unified cross-chain liquidity market by aggregating existing Curve pools",
@@ -56018,8 +56018,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/crosscurve-(by-eywa).png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "eywa",
+    cmcId: "33841",
     category: "Cross Chain Bridge",
     chains: ["Fantom"],
     oracles: [], 

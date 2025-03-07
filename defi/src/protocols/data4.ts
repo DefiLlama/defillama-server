@@ -6580,6 +6580,7 @@ const data4: Protocol[] = [
     oracles: [], 
     forkedFrom: ["Eggs Finance"],
     module: "flrbank/index.js",
+    treasury: "flrbank.js",
     twitter: "FlareBank",
     listedAt: 1741195062
   },

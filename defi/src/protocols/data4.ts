@@ -6669,7 +6669,7 @@ const data4: Protocol[] = [
     twitter: "puffer_finance",
     parentProtocol: "parent#puffer-finance",
     tokensExcludedFromParent:{
-      Ethereum: ["pufETH"]
+      Ethereum: ["PUFETH"]
     },
     listedAt: 1741275363,
   },

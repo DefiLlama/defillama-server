@@ -215,7 +215,8 @@ async function _storeAppMetadata() {
       }
     }
   }
-  for (const chain of feesData.allChains ?? []) {
+  const chainsWithFees = feesData.protocols.filter((i: any) => i.category === 'Chain').map((i: any) => i.name)
+  for (const chain of chainsWithFees) {
     finalChains[slug(chain)] = {
       ...(finalChains[slug(chain)] ?? { name: chain }),
       fees: true

@@ -6589,6 +6589,7 @@ const data4: Protocol[] = [
     name: "Apollo zBTC",
     address: null,
     symbol: "-", // APL not live yet
+    assetToken: "zBTC",
     url: "https://gaia.apollobyzeus.app/dashboard",
     description:
       "APOLLO is the first permissionless Bitcoin terminal on Solana, redefining cross-chain liquidity by seamlessly integrating Bitcoin to Solana",
@@ -6598,7 +6599,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Bridge",
+    category: "Decentralized BTC",
     chains: ["Bitcoin"],
     oracles: [], 
     forkedFrom: [],

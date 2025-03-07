@@ -2578,5 +2578,11 @@ export default {
     },
     "hyperfluid": {
         id: "5480"
+    },
+    "ton": {
+        id: "820"
+    },
+    "sui": {
+        id: "20947"
     }
 } as AdaptorsConfig

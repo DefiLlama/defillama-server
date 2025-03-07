@@ -7344,5 +7344,12 @@
       "decimals": 18,
       "symbol": "STHYPE"
     }
+  },
+  "hemi": {
+    "0x8154Aaf094c2f03Ad550B6890E1d4264B5DdaD9A": {
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "iBTC"
+    }
   }
 }

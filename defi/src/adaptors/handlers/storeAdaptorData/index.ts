@@ -241,7 +241,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
               await handler2({
                 timestamp: yesterdayEndTimestamp,
                 adapterType,
-                protocolNames: new Set([protocol.module]),
+                protocolNames: new Set([protocol.displayName]),
                 isRunFromRefillScript: true,
               })
             } catch (e) {

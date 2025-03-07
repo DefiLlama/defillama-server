@@ -18,18 +18,18 @@ export async function storeAppMetadata() {
   }
 }
 
-async function pullRaisesDataIfMissing() {  
+async function pullRaisesDataIfMissing() {
   const raises = await readRouteData('/raises')
   if (!raises) {
     await new Promise((resolve, reject) => {
       exec('npm run cron-raises', (error: any, stdout: any, stderr: any) => {
-      if (error) {
-        console.error(`exec error: ${error}`);
-        return reject(error);
-      }
-      console.log(`stdout: ${stdout}`);
-      console.error(`stderr: ${stderr}`);
-      resolve(stdout);
+        if (error) {
+          console.error(`exec error: ${error}`);
+          return reject(error);
+        }
+        console.log(`stdout: ${stdout}`);
+        console.error(`stderr: ${stderr}`);
+        resolve(stdout);
       });
     });
   }
@@ -215,11 +215,19 @@ async function _storeAppMetadata() {
       }
     }
   }
+
+  for (const chain of feesData.allChains ?? []) {
+    finalChains[slug(chain)] = {
+      ...(finalChains[slug(chain)] ?? { name: chain }),
+      fees: true
+    }
+  }
+
   const chainsWithFees = feesData.protocols.filter((i: any) => i.category === 'Chain').map((i: any) => i.name)
   for (const chain of chainsWithFees) {
     finalChains[slug(chain)] = {
       ...(finalChains[slug(chain)] ?? { name: chain }),
-      fees: true
+      chainFees: true
     }
   }
 

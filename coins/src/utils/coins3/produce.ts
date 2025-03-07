@@ -133,6 +133,19 @@ async function produceTopics(items: Dynamo[], topic: Topic, producer: Producer) 
     } catch (redisError) {
       console.error("Redis fallback failed for coins-current:", redisError);
     }
+    try {
+      const body: any [] = [];
+      messages.forEach((msg) => {
+        const parsed = JSON.parse(msg)
+        body.push({ index: { _index: "coins-current-backup", _id: parsed.pid }});
+        body.push(parsed)
+      });
+      if (body.length) {
+        await esClient.bulk({ body })
+      }
+    } catch (esError) {
+      console.error("ES fallback failed for coins-current:", esError);
+    }
   } else if (topic === "coins-timeseries") {
     try {
       const body: any[] = [];

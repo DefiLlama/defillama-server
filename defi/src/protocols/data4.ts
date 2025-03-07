@@ -6142,7 +6142,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Payments",
-    chains: ["Ethereum","Optimism","Arbitrum","Base","Binance","Scroll"],
+    chains: ["Ethereum","Optimism","Arbitrum","Base","Binance","Polygon","Mode","zkSync Era","Avalanche","Linea","Berachain"],
     oracles: [], 
     forkedFrom: [],
     module: "hedgey/index.js",

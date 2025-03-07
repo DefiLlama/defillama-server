@@ -3982,7 +3982,7 @@ export const chainCoingeckoIds = {
     geckoId: "saga-2",
     symbol: "SAGA",
     cmcId: "30372",
-    categories: ["EVM"],
+    categories: ["EVM", "Cosmos"],
     chainId: 5464,
     twitter: "Sagaxyz__",
     url: "https://www.saga.xyz/",

@@ -1,6 +1,6 @@
 import { wrapScheduledLambda } from "../../../utils/shared/wrap";
 import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
-import { ChainBlocks, Adapter, AdapterType, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import { Adapter, AdapterType, BaseAdapter, } from "@defillama/dimension-adapters/adapters/types";
 import canGetBlock from "../../utils/canGetBlock";
 import runAdapter from "@defillama/dimension-adapters/adapters/utils/runAdapter";
 import { getBlock } from "@defillama/dimension-adapters/helpers/getBlock";
@@ -16,6 +16,7 @@ import { elastic } from '@defillama/sdk';
 import { getUnixTimeNow } from "../../../api2/utils/time";
 import { humanizeNumber, } from "@defillama/sdk/build/computeTVL/humanizeNumber";
 import { sendDiscordAlert } from "../../utils/notify";
+import { getTimestampString } from "../../../api2/utils";
 
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
@@ -64,11 +65,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   } = event
   if (!isRunFromRefillScript)
     console.info(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
-  // Timestamp to query, defaults current timestamp - 2 minutes delay
-  const currentTimestamp = timestamp ?? timestampAnHourAgo;
   // Get clean day
-  let toTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
-  let fromTimestamp = getTimestampAtStartOfDayUTC(toTimestamp - 1)
+  let toTimestamp: number
+  let fromTimestamp: number
 
   // I didnt want to touch existing implementation that affects other scripts, but it looks like it is off by a day if we store it at the end of the time range (which is next day 00:00 UTC)
   if (isRunFromRefillScript) {
@@ -84,6 +83,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     fromTimestamp = timestampAnHourAgo - ONE_DAY_IN_SECONDS
     toTimestamp = fromTimestamp + ONE_DAY_IN_SECONDS - 1
   }
+
+  if (!toTimestamp!) throw new Error('toTimestamp is not set')
 
   const _debugTimeStart = Date.now()
 
@@ -118,6 +119,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     })
   );
 
+  // const timeTable: any = []
   const { errors, results } = await PromisePool
     .withConcurrency(maxConcurrency)
     .for(protocols)
@@ -163,6 +165,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     console.table(errorObjects)
   }
   // console.log(JSON.stringify(errorObjects, null, 2))
+  /* console.log(` ${adapterType} Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
+  console.table(timeTable) */
 
   console.info(`**************************`)
 
@@ -223,26 +227,53 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const runNow = !isExpensiveAdapter || (hours % 4 === 0 || hours > 20)
         const haveTodayData = todayIdSet.has(id)
         const haveYesterdayData = yesterdayIdSet.has(id)
+        const yesterdayEndTimestamp = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000)) -1
 
 
         if (runAtCurrTime || !isAdapterVersionV1) {
           recordTimestamp = timestampAtStartofHour
           endTimestamp = timestampAtStartofHour
 
+          // check if data for yesterday is missing for v2 adapter and attemp to refill it if refilling is supported
+          if (!runAtCurrTime && !haveYesterdayData) {
+            console.info(`Refill ${adapterType} - ${protocol.module} - missing yesterday data, attempting to refill`)
+            try {
+              await handler2({
+                timestamp: yesterdayEndTimestamp,
+                adapterType,
+                protocolNames: new Set([protocol.module]),
+                isRunFromRefillScript: true,
+              })
+            } catch (e) {
+              console.error(`Error refilling ${adapterType} - ${protocol.module} - ${(e as any)?.message}`)
+            }
+          }
+
           if (haveTodayData && !runNow) {
-            console.info(`Skipping ${adapterType} - ${index + 1}/${protocols.length} - ${protocol.module} - skipping, already have today data for adapter running at current time`)
-            return
+            console.info(`Skipping ${adapterType} - ${protocol.module} - already have today data for adapter running at current time`)
+            return;
           }
         } else { // it is a version 1 adapter - we pull yesterday's data
           if (haveYesterdayData) {
-            console.info(`Skipping ${adapterType} - ${index + 1}/${protocols.length} - ${protocol.module} - skipping, already have yesterday data`)
+            console.info(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
             return;
           }
 
-          endTimestamp = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000) - 1)
+          endTimestamp = yesterdayEndTimestamp
           recordTimestamp = getTimestampAtStartOfDayUTC(endTimestamp)
         }
+
+       /*  timeTable.push({
+          module: protocol.module,
+          timeS: getTimestampString(recordTimestamp),
+          version: adapterVersion,
+          runAtCurrTime,
+          endTimestamp: new Date(endTimestamp * 1e3).toISOString(),
+          recordTimestamp: new Date(recordTimestamp * 1e3).toISOString(),
+        })
+        return; */
       }
+
 
       const promises: any = []
       const rawRecords: RawRecordMap = {}

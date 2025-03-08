@@ -61301,7 +61301,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Trading App",
-    chains: ["Ethereum", "Base", "Binance", "Solana", "Sonic", "Bera", "Avalanche"],
+    chains: ["Ethereum", "Base", "Binance", "Solana", "Sonic", "Berachain", "Avalanche"],
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",

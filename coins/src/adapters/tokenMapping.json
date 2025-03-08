@@ -53,7 +53,7 @@
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
       "decimals": "18",
       "symbol": "USDa",
-      "to": "coingecko#usda-2"
+      "to": "coingecko#usda"
     },
     "0x5B82028cfc477C4E7ddA7FF33d59A23FA7Be002a": {
       "decimals": "18",
@@ -1138,6 +1138,16 @@
       "decimals": "18",
       "symbol": "rsAVAX",
       "to": "coingecko#avalanche-2"
+    },
+    "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
+    },
+    "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
+      "to": "coingecko#susda",
+      "decimals": "18",
+      "symbol": "sUSDa"
     }
   },
   "base": {
@@ -1265,6 +1275,11 @@
       "decimals": "18",
       "symbol": "USDa",
       "to": "coingecko#usda"
+    },
+    "0xd329f9A8589723357C36727a2D5e15974c835cCf": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "coingecko#susda"
     },
     "0x0a27e060c0406f8ab7b64e3bee036a37e5a62853": {
       "to": "coingecko#zai-stablecoin",
@@ -2074,6 +2089,11 @@
       "decimals": "18",
       "symbol": "USDa",
       "to": "coingecko#usda"
+    },
+    "0x5A61B1d8272B250729EA3F5eD3Ef843f4D66BC6e": {
+      "to": "coingecko#susda",
+      "decimals": "18",
+      "symbol": "sUSDa"
     },
     "0x93919784C523f39CACaa98Ee0a9d96c3F32b593e": {
       "to": "coingecko#universal-btc",
@@ -4763,7 +4783,7 @@
       "symbol": "seiyanETH"
     },
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
-      "to": "coingecko#usda-2",
+      "to": "coingecko#usda",
       "decimals": 18,
       "symbol": "USDa"
     },
@@ -5061,6 +5081,16 @@
       "to": "coingecko#universal-btc",
       "decimals": 8,
       "symbol": "uniBTC"
+    },
+    "0x250fC55c82bcE84C991ba25698A142B21cDC778A": {
+      "to": "coingecko#usda",
+      "decimals": 18,
+      "symbol": "USDa"
+    },
+    "0xd76fDbDfc39798c10E734A8fdf27186528188311": {
+      "to": "coingecko#susda",
+      "decimals": "18",
+      "symbol": "sUSDa"
     }
   },
   "xlayer": {
@@ -5155,6 +5185,16 @@
       "to": "coingecko#solv-protocol-solvbtc",
       "decimals": 18,
       "symbol": "aBitSOLVBTC"
+    },
+    "0x91bd7f5e328aecd1024e4118ade0ccb786f55db1": {
+      "to": "coingecko#usda",
+      "decimals": 18,
+      "symbol": "USDa"
+    },
+    "0xe8cfc9f5c3ad6eeeced88534aa641355451db326": {
+      "to": "coingecko#susda",
+      "decimals": "18",
+      "symbol": "sUSDa"
     }
   },
   "iotaevm": {
@@ -6348,6 +6388,16 @@
       "to": "coingecko#wrapped-eeth",
       "decimals": 18,
       "symbol": "weETH"
+    },
+    "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "coingecko#susda"
+    },
+    "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
     }
   },
   "iotex": {
@@ -6521,6 +6571,16 @@
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
       "symbol": "SolvBTC.BBN"
+    },
+    "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
+    },
+    "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
+      "to": "coingecko#susda",
+      "decimals": "18",
+      "symbol": "sUSDa"
     }
   },
   "sonic": {
@@ -6618,6 +6678,16 @@
       "to": "coingecko#lombard-staked-btc",
       "decimals": 8,
       "symbol": "LBTC"
+    },
+    "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda"
+    },
+    "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
+      "to": "coingecko#susda",
+      "decimals": "18",
+      "symbol": "sUSDa"
     }
   },
   "vinu": {

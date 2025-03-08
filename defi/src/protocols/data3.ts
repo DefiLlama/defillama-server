@@ -32876,7 +32876,7 @@ const data3: Protocol[] = [
     module: "sobax-io/index.js",
     twitter: "SOBAX_DEX",
     forkedFrom: ["GMX V1"],
-    oracles: [],
+    oracles: ["Pyth"], // https://sobax.gitbook.io/sobax
     listedAt: 1708338460,
   },
   {

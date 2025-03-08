@@ -6888,5 +6888,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#axion-finance",
     listedAt: 1741397587,
   },
+  {
+    id: "5880",
+    name: "Ooga Booga",
+    address: null,
+    symbol: "-",
+    url: "https://app.oogabooga.io",
+    description:
+      "Berachain's native liquidity aggregator.",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/ooga-booga.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Berachain"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "0xoogabooga",
+    github: ["0xoogabooga"],
+  },
 ];
 export default data4;

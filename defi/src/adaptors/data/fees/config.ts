@@ -2584,5 +2584,8 @@ export default {
     },
     "sui": {
         id: "20947"
+    },
+    "aptos": {
+        id: "21794"
     }
 } as AdaptorsConfig

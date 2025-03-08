@@ -61256,7 +61256,7 @@ const data3: Protocol[] = [
     chain: "Ethereum",
     logo: `${baseIconsUrl}/blazing-bot.jpg`,
     audits: "1",
-    audit_note: "https://dedaub.com/audits/blazing-trading-suite/blazing-trading-suite-july-20-2024/",
+    audit_note: "0",
     gecko_id: null,
     cmcId: null,
     category: "Trading App",
@@ -61265,6 +61265,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "blazingapp",
+    audit_links: ["https://dedaub.com/audits/blazing-trading-suite/blazing-trading-suite-july-20-2024/"],
     listedAt: 1731946483
   },
   {

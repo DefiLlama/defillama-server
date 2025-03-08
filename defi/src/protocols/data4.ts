@@ -6587,15 +6587,16 @@ const data4: Protocol[] = [
   },
   {
     id: "5866",
-    name: "Apollo zBTC",
+    name: "Zeus Network",
+    previousNames: ["Apollo zBTC"],
     address: null,
     symbol: "-", // APL not live yet
     assetToken: "zBTC",
-    url: "https://gaia.apollobyzeus.app/dashboard",
+    url: "https://zeusnetwork.xyz/",
     description:
-      "APOLLO is the first permissionless Bitcoin terminal on Solana, redefining cross-chain liquidity by seamlessly integrating Bitcoin to Solana",
+      "Zeus Network is a multi-chain layer on SVM that enables permissionless Bitcoin interoperability across leading blockchain ecosystems. Bitcoin holders can now lock their native BTC for validation by Zeus Network and receive ZPL-assets on Solana to participate in decentralized finance applications.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/apollo-zbtc.jpg`,
+    logo: `${baseIconsUrl}/zeus-network.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -6605,7 +6606,7 @@ const data4: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
     module: "zeus/index.js",
-    twitter: "ApolloByZeus",
+    twitter: "ZeusNetworkHQ",
     listedAt: 1741269324
   },
   {

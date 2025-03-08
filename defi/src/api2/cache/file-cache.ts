@@ -108,6 +108,7 @@ export async function writeToPGCache(key: string, data: any) {
   return storeData(id, { id, timestamp: Math.floor(Date.now() / 1e3), data })
 }
 
+// ANY CHANGE TO THIS VALUE NEEDS TO BE SYNCED WITH A CHANGE ON https://github.com/DefiLlama/born-to-llama/blob/master/src/commands/deleteCache.ts#L30 TOO
 const TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.5'  // update the version number to reset the cache
 
 export async function clearOldCacheFolders() {

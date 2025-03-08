@@ -6821,5 +6821,27 @@ const data4: Protocol[] = [
     twitter: "kittenswaphype",
     listedAt: 1741394492,
   },
+  {
+    id: "5877",
+    name: "Fluxtra",
+    address: null,
+    symbol: "-",
+    assetToken: "ftOM",
+    url: "https://fluxtra.xyz/",
+    description:
+      "The pioneer Liquid Staking Protocol on Mantra. Stake OM to receive ftOM",
+    chain: "Mantra",
+    logo: `${baseIconsUrl}/fluxtra.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Mantra"],
+    forkedFrom: ["Eris Protocol"],
+    module: "fluxtra/index.js",
+    twitter: "FluxtraMantra",
+    listedAt: 1741396515  ,
+  },
 ];
 export default data4;

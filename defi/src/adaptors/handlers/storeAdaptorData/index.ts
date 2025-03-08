@@ -21,7 +21,7 @@ import { getTimestampString } from "../../../api2/utils";
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 const timestampAtStartofHour = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
-const timestampAnHourAgo = timestampAtStartofHour - 2 * 60 * 60
+const timestampAnHourAgo = timestampAtStartofHour - 4 * 60 * 60
 
 export interface IHandlerEvent {
   protocolModules: string[]
@@ -227,7 +227,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const runNow = !isExpensiveAdapter || (hours % 4 === 0 || hours > 20)
         const haveTodayData = todayIdSet.has(id)
         const haveYesterdayData = yesterdayIdSet.has(id)
-        const yesterdayEndTimestamp = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000)) -1
+        const yesterdayEndTimestamp = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000)) - 1
 
 
         if (runAtCurrTime || !isAdapterVersionV1) {
@@ -263,15 +263,15 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
           recordTimestamp = getTimestampAtStartOfDayUTC(endTimestamp)
         }
 
-       /*  timeTable.push({
-          module: protocol.module,
-          timeS: getTimestampString(recordTimestamp),
-          version: adapterVersion,
-          runAtCurrTime,
-          endTimestamp: new Date(endTimestamp * 1e3).toISOString(),
-          recordTimestamp: new Date(recordTimestamp * 1e3).toISOString(),
-        })
-        return; */
+        /*  timeTable.push({
+           module: protocol.module,
+           timeS: getTimestampString(recordTimestamp),
+           version: adapterVersion,
+           runAtCurrTime,
+           endTimestamp: new Date(endTimestamp * 1e3).toISOString(),
+           recordTimestamp: new Date(recordTimestamp * 1e3).toISOString(),
+         })
+         return; */
       }
 
 
@@ -285,7 +285,18 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
 
         const recordWithTimestamp = runAdapterRes.find((r: any) => r.timestamp)
-        if (recordWithTimestamp) recordTimestamp = recordWithTimestamp.timestamp
+        if (recordWithTimestamp) {
+          if (runType === 'store-all') {
+            // check if the timestamp is valid by checking if it is in the current year
+            const year = new Date(recordWithTimestamp.timestamp * 1e3).getUTCFullYear()
+            if (year !== new Date().getUTCFullYear()) {
+              console.error(`Record timestamp ${adapterType} - ${module} - ${version} - invalid timestamp`, new Date(recordWithTimestamp.timestamp * 1e3).toISOString(), 'current time: ', new Date().toISOString())
+            } else
+              recordTimestamp = recordWithTimestamp.timestamp
+          } else {
+            recordTimestamp = recordWithTimestamp.timestamp
+          }
+        }
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }
       const storedData: any = {}

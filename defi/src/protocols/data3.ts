@@ -61248,6 +61248,7 @@ const data3: Protocol[] = [
   {
     id: "5377",
     name: "BlazingApp",
+    previousNames: ["Blazing Bot"],
     address: null,
     symbol: "-",
     url: "https://blazingapp.com",

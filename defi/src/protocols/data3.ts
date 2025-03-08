@@ -58930,7 +58930,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.defx.com/docs/defx-product-docs/price-oracle
     forkedFrom: [],
     module: "defx/index.js",
     twitter: "DefxOfficial",

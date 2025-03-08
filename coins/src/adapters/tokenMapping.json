@@ -4196,6 +4196,11 @@
       "decimals": "18",
       "symbol": "SAROS",
       "to": "coingecko#saros-finance"
+    },
+    "0xcdde1f5d971a369eb952192f9a5c367f33a0a891": {
+      "decimals": "18",
+      "symbol": "SVIC",
+      "to": "coingecko#defusion-staked-vic"
     }
   },
   "btn": {

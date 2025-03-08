@@ -6800,5 +6800,26 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/Tea-Fi/audits"],
     listedAt: 1741359499,
   },
+  {
+    id: "5876",
+    name: "Kittenswap",
+    address: null,
+    symbol: "-",
+    url: "https://kittenswap.finance",
+    description:
+      "The community owned DEX for seamless trading on HyperEVM",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/kittenswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid"],
+    forkedFrom: ["Solidly"],
+    module: "kittenswap/index.js",
+    twitter: "kittenswaphype",
+    listedAt: 1741394492,
+  },
 ];
 export default data4;

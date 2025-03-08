@@ -25902,7 +25902,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["LightLink","Sonic","Berachain","Binance"],
+    chains: ["LightLink","Sonic","Berachain","Binance","Base"],
     oracles: ["Pyth"], // https://amped.gitbook.io/amped/price-feeds
     audit_links: ["https://github.com/BlockApex/Audit-Reports/blob/3d1df707bc6df3f761981b33007f8f32057c6654/Amped%20Finance%20Final%20Audit%20Report.pdf"],
     forkedFrom: ["GMX V1"],

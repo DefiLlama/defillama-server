@@ -5791,6 +5791,11 @@
       "to": "coingecko#susda",
       "decimals": 18,
       "symbol": "sUSDa"
+    },
+    "0x1C1Fb35334290b5ff1bF7B4c09130885b10Fc0f4": {
+      "to": "coingecko#eigenpie-msteth",
+      "decimals": 18,
+      "symbol": "mstETH"
     }
   },
   "islm": {

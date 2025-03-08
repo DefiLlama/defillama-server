@@ -6649,6 +6649,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["PufferFinance"],
     governanceID: ["snapshot:puffer-vote.eth"],
   },
+  {
+    id: "parent#axion-finance",
+    name: "Axion Finance",
+    url: "https://axion.finance",
+    description: "AMM + Perp + AI-Agent launchpad on Taiko",
+    logo: `${baseIconsUrl}/axion-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "axion_finance_",
+    github: ["Axion-Finance"],
+  },
 ];
 
 export default parentProtocols;

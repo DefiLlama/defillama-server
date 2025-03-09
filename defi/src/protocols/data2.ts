@@ -11256,6 +11256,7 @@ const data2: Protocol[] = [
     listedAt: 1656496979,
     deadUrl: true,
   },
+  /* API RETURNING WRONG VALUES
   {
     id: "1863",
     name: "Ceres Demeter",
@@ -11278,6 +11279,7 @@ const data2: Protocol[] = [
     twitter: "TokenCeres",
     listedAt: 1656496979,
   },
+  */
   {
     id: "1864",
     name: "Team Finance",

@@ -313,7 +313,7 @@ export default {
   "erc-burner": {
       id: "5859"
   },
-  "ooga-booga": {
+  "oogabooga": {
     id: "5880"
 }
 } as AdaptorsConfig;

@@ -6909,5 +6909,26 @@ const data4: Protocol[] = [
     twitter: "0xoogabooga",
     github: ["0xoogabooga"],
   },
+  {
+    id: "5881",
+    name: "hemiBTC",
+    address: null,
+    symbol: "-",
+    url: "https://app.hemi.xyz/en/tunnel/",
+    description:
+      "Hemi's native BTC representation.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/hemibtc.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Bitcoin"],
+    forkedFrom: [],
+    module: "hemi-btc/index.js",
+    twitter: "hemi_xyz",
+    listedAt: 1741547481
+  },
 ];
 export default data4;

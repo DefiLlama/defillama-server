@@ -6529,6 +6529,16 @@
     }
   },
   "sonic": {
+    "0x8221312e9cF90A2B160eCdabf922408a5ef1CF9E": {
+      "to": "asset#sonic:0x97a10beebb25e0ebfa55ca0a7d00e37afe957dea",
+      "decimals": 18,
+      "symbol": "veSTTX"
+    },
+    "0xe30e73Cc52EF50A4E4a8b1a3dd0b002b2276F854": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "DUSX"
+    },
     "0x0C4E186Eae8aCAA7F7de1315D5AD174BE39Ec987": {
       "to": "coingecko#sonic-3",
       "decimals": 18,
@@ -7373,28 +7383,28 @@
       "decimals": 6,
       "symbol": "USDC"
     }
-  }, 
+  },
   "hsk": {
     "0xb210d2120d57b758ee163cffb43e73728c471cf1": {
       "to": "coingecko#hashkey-ecopoints",
       "decimals": 18,
       "symbol": "WHSK"
-    }, 
+    },
     "0xf1b50ed67a9e2cc94ad3c477779e2d4cbfff9029": {
       "to": "coingecko#tether",
       "decimals": 6,
       "symbol": "USDT"
-    }, 
+    },
     "0xefd4bc9afd210517803f293ababd701caeecdfd0": {
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "WETH"
-    }, 
+    },
     "0xc7dcece84ec314f08014da2036632afb7fb1e05c": {
       "to": "coingecko#cellula",
       "decimals": 18,
       "symbol": "CELA"
-    }, 
+    },
     "0x054ed45810dbbab8b27668922d110669c9d88d0a": {
       "to": "coingecko#usd-coin",
       "decimals": 6,

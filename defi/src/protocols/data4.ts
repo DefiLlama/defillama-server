@@ -763,7 +763,7 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Arbitrum","Sonic"],
     oraclesByChain: {
-      sonic: ["Chainlink"], // https://silopedia.silo.finance/oracles
+      sonic: ["Chainlink", "RedStone"], // https://silopedia.silo.finance/oracles
     },
     forkedFrom: [],
     module: "silo-v2/index.js",

@@ -2,7 +2,7 @@ import Ajv from "ajv";
 
 type Schema = {
   type: string;
-  properties: { [prop: string]: { type: string } };
+  properties: { [prop: string]: { type: string; items?: { type: string } } };
   required: string[];
   additionalProperties: Boolean;
 };
@@ -16,10 +16,10 @@ const schemas: { [topic: string]: Schema } = {
       address: { type: "string" },
       pid: { type: "string" },
       chain: { type: "string" },
-      source: { type: "string" },
-      redirect: { type: "string" },
+      adapter: { type: "string" },
+      redirects: { type: "array", items: { type: "string" } },
     },
-    required: ["decimals", "symbol", "address", "pid"],
+    required: ["pid"],
     additionalProperties: false,
   },
   "coins-current": {
@@ -28,8 +28,9 @@ const schemas: { [topic: string]: Schema } = {
       pid: { type: "string" },
       price: { type: "number" },
       confidence: { type: "number" },
-      source: { type: "string" },
+      adapter: { type: "string" },
       mcap: { type: "number" },
+      updateTs: { type: "integer" },
     },
     required: ["pid", "price"],
     additionalProperties: false,
@@ -41,7 +42,7 @@ const schemas: { [topic: string]: Schema } = {
       pid: { type: "string" },
       price: { type: "number" },
       confidence: { type: "number" },
-      source: { type: "string" },
+      adapter: { type: "string" },
       mcap: { type: "number" },
     },
     required: ["ts", "pid", "price"],

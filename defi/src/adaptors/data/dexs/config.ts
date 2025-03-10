@@ -2842,5 +2842,11 @@ export default {
     },
     "hyperfluid": {
         id: "5480"
+    },
+    "metropolis-amm": {
+        id: "5504"
+    },
+    "metropolis-dlmm": {
+        id: "5505"
     }
 } as AdaptorsConfig

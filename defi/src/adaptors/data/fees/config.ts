@@ -2587,5 +2587,11 @@ export default {
     },
     "aptos": {
         id: "21794"
+    },
+    "metropolis-amm": {
+        id: "5504"
+    },
+    "metropolis-dlmm": {
+        id: "5505"
     }
 } as AdaptorsConfig

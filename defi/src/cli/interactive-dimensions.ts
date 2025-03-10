@@ -86,11 +86,11 @@ async function run(prompt: any) {
   const runner = state.runner
 
   while (runner === state.runner) {
-    await onPropmtAnswer(await inquirer.prompt([prompts[state.nextPrompt]]))
+    await onPromptAnswer(await inquirer.prompt([prompts[state.nextPrompt]]))
   }
 
 
-  async function onPropmtAnswer(response: any) {
+  async function onPromptAnswer(response: any) {
     if (runner !== state.runner) return;
 
     const currentPrompt = state.nextPrompt
@@ -181,8 +181,9 @@ async function runScript() {
   }
 
   return new Promise((resolve: any, _reject: any) => {
-    const subProcess = childProcess.spawn('npm', ['run', 'fillOld-dimensions'], { stdio: 'inherit', env: env });
-
+    const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+    const subProcess = childProcess.spawn(npmPath, ['run', 'fillOld-dimensions'], { stdio: 'inherit', env: env });
+    
     // catch unhandled errors
     process.on('uncaughtException', function (err) {
       console.error('Caught exception: ', err);

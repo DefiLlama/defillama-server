@@ -43109,7 +43109,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://flipster.io",
     description:
-      "Flipster has a wide selection of over 200 perpetual futures listings, including Bitcoin (BTC) and Ethereum (ETH), that can be traded with leverage of up to 100x.",
+      "Flipster has a wide selection of over 300 perpetual futures listings, including Bitcoin (BTC) and Ethereum (ETH), that can be traded with leverage of up to 100x.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/flipster.jpg`,
     audits: "0",

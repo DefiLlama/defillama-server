@@ -7368,5 +7368,32 @@
       "decimals": 6,
       "symbol": "USDC"
     }
+  }, 
+  "hsk": {
+    "0xb210d2120d57b758ee163cffb43e73728c471cf1": {
+      "to": "coingecko#hashkey-ecopoints",
+      "decimals": 18,
+      "symbol": "WHSK"
+    }, 
+    "0xf1b50ed67a9e2cc94ad3c477779e2d4cbfff9029": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    }, 
+    "0xefd4bc9afd210517803f293ababd701caeecdfd0": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    }, 
+    "0xc7dcece84ec314f08014da2036632afb7fb1e05c": {
+      "to": "coingecko#cellula",
+      "decimals": 18,
+      "symbol": "CELA"
+    }, 
+    "0x054ed45810dbbab8b27668922d110669c9d88d0a": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    }
   }
 }

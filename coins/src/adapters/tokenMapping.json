@@ -6596,7 +6596,7 @@
     },
     "0xe30e73Cc52EF50A4E4a8b1a3dd0b002b2276F854": {
       "to": "coingecko#usd-coin",
-      "decimals": 6,
+      "decimals": 18,
       "symbol": "DUSX"
     },
     "0x0C4E186Eae8aCAA7F7de1315D5AD174BE39Ec987": {

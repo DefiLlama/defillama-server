@@ -21,7 +21,7 @@ import { getTimestampString } from "../../../api2/utils";
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 const timestampAtStartofHour = getTimestampAtStartOfHour(Math.trunc((Date.now()) / 1000))
-const timestampAnHourAgo = timestampAtStartofHour - 4 * 60 * 60
+const timestampAnHourAgo = timestampAtStartofHour - 2 * 60 * 60
 
 export interface IHandlerEvent {
   protocolModules: string[]

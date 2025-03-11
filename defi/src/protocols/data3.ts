@@ -55867,6 +55867,7 @@ const data3: Protocol[] = [
     module: "elixir/index.js",
     twitter: "elixir",
     audit_links: ["https://docs.elixir.xyz/audit"],
+    stablecoins: ["elixir-deusd"],
     listedAt: 1726153138
   },
   {

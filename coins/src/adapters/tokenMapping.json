@@ -7438,6 +7438,11 @@
       "to": "coingecko#staked-hype",
       "decimals": 18,
       "symbol": "STHYPE"
+    },
+    "0x94e8396e0869c9f2200760af0621afd240e1cf38": {
+      "to": "coingecko#hyperliquid",
+      "decimals": 18,
+      "symbol": "wstHYPE"
     }
   },
   "hemi": {
@@ -7445,6 +7450,21 @@
       "to": "coingecko#bitcoin",
       "decimals": 18,
       "symbol": "iBTC"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0x4200000000000000000000000000000000000006": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0xad11a8BEb98bbf61dbb1aa0F6d6F2ECD87b35afA": {
+      "to": "coingecko#hemi",
+      "decimals": 6,
+      "symbol": "USDC.e"
     }
   },
   "oas": {
@@ -7479,6 +7499,60 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
+    }
+  },
+  "saga": {
+    "0xfc960c233b8e98e0cf282e29bde8d3f105fc24d5": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0xc8fe3c1de344854f4429bb333affaef97ef88cea": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0xeb41d53f14cb9a67907f2b8b5dbc223944158ccb": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    },
+    "0x4e33613add93463e82a14080021f2ffaf1e062cf": {
+      "to": "coingecko#uniswap",
+      "decimals": 18,
+      "symbol": "UNI"
+    },
+    "0xa19377761fed745723b90993988e04d641c2cffe": {
+      "to": "coingecko#saga-2",
+      "decimals": 6,
+      "symbol": "SAGA"
+    }
+  },
+  "move": {
+    "0xa": {
+      "to": "coingecko#movement",
+      "decimals": 8,
+      "symbol": "MOVE"
+    },
+    "0x447721a30109c662dde9c73a0c2c9c9c459fb5e5a9c92f03c50fa69737f5d08d": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT.e"
+    },
+    "0x83121c9f9b0527d1f056e21a950d6bf3b9e9e2e8353d0e95ccea726713cbea39": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    },
+    "0xb06f29f24dde9c6daeec1f930f14a441a8d6c0fbea590725e88b340af3e1939c": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
+    },
+    "0x908828f4fb0213d4034c3ded1630bbd904e8a3a6bf3c63270887f0b06653a376": {
+      "to": "coingecko#ethereum",
+      "decimals": 8,
+      "symbol": "ETH"
     }
   }
 }

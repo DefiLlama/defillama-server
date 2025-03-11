@@ -2886,7 +2886,7 @@ export const chainCoingeckoIds = {
     url: "https://karak.network/",
     chainId: "2410"
   },
-  "Bitkub Chain": {
+  "KUB": {
     geckoId: "bitkub-coin",
     symbol: "KUB",
     cmcId: "16093",
@@ -4181,7 +4181,7 @@ const chainLabelMap = {
 // When we decide to change the display name of a chain, we add the mapping for the new name here
 const newChainLabelMap = {
   "zklink": "zkLink Nova",
-  "bitkub": "Bitkub Chain",
+  "bitkub": "KUB",
   "lyra": "Derive Chain",
   "fuel": "Fuel Ignition",
   "op_bnb": "opBNB",

@@ -2599,5 +2599,8 @@ export default {
     },
     "beethoven-x-v3": {
         id: "5680"
+    },
+    "trade-wiz": {
+        id: "5886"
     }
 } as AdaptorsConfig

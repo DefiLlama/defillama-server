@@ -6996,5 +6996,46 @@ const data4: Protocol[] = [
     twitter: "LendOnApe",
     listedAt: 1741613364
   },
+  {
+    id: "5885",
+    name: "Meridian AMM",
+    address: null,
+    symbol: "-",
+    url: "https://www.meridian.money",
+    description:
+      "The Central Liquidity Hub on Movement chain.",
+    chain: "Movement",
+    logo: `${baseIconsUrl}/meridian-amm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Movement"],
+    forkedFrom: [],
+    module: "meridian-amm/index.js",
+    twitter: "meridian_money",
+    listedAt: 1741693564
+  },
+  {
+    id: "5886",
+    name: "TradeWiz",
+    address: null,
+    symbol: "-",
+    url: "https://www.fastradewiz.com",
+    description:
+      "Fastest Copy Trading Bot on Solana",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/tradewiz.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "TradeWiz_Bot",
+  },
 ];
 export default data4;

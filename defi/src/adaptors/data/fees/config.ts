@@ -2596,5 +2596,8 @@ export default {
     },
     "tea-fi": {
         id: "5875"
+    },
+    "beethoven-x-v3": {
+        id: "5680"
     }
 } as AdaptorsConfig

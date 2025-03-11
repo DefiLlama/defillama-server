@@ -7037,5 +7037,26 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "TradeWiz_Bot",
   },
+  {
+    id: "5887",
+    name: "Extended",
+    address: null,
+    symbol: "-",
+    url: "https://extended.exchange",
+    description:
+      "Extended, built by ex-Revolut team, is a self-custody exchange with on-chain trade settlement and complete transparency. Currently live with perps but we’re on a mission to build the most extended portfolio in DeFi that rivals CEXs with spot, borrowing & lending and portfolio margin.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/extended.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "extended/index.js",
+    twitter: "extendedapp",
+    listedAt: 1741703740
+  },
 ];
 export default data4;

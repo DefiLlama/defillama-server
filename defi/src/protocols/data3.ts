@@ -8199,6 +8199,7 @@ const data3: Protocol[] = [
     audit_links: [
       "https://openeden.com/static/Verichains%20Public%20Audit%20Report%20-%20OpenEden%20Vault%20-%20310323.pdf",
     ],
+    stablecoins: ["opendollar-usdo"],
     listedAt: 1685661527,
   },
   {

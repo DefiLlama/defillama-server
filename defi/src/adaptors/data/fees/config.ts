@@ -2593,5 +2593,8 @@ export default {
     },
     "metropolis-dlmm": {
         id: "5505"
+    },
+    "tea-fi": {
+        id: "5875"
     }
 } as AdaptorsConfig

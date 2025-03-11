@@ -2848,5 +2848,11 @@ export default {
     },
     "metropolis-dlmm": {
         id: "5505"
+    },
+    "enosys": {
+        id: "5158"
+    },
+    "tea-fi": {
+        id: "5875"
     }
 } as AdaptorsConfig

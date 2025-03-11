@@ -6703,6 +6703,11 @@
       "to": "coingecko#susda",
       "decimals": "18",
       "symbol": "sUSDa"
+    },
+    "0xBb30e76d9Bb2CC9631F7fC5Eb8e87B5Aff32bFbd": {
+      "to": "coingecko#lombard-staked-btc",
+      "decimals": "8",
+      "symbol": "scBTC"
     }
   },
   "vinu": {

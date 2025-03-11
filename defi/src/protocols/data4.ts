@@ -7058,5 +7058,27 @@ const data4: Protocol[] = [
     twitter: "extendedapp",
     listedAt: 1741703740
   },
+  {
+    id: "5888",
+    name: "Magnify Cash",
+    address: null,
+    symbol: "-",
+    url: "https://magnify.cash/",
+    description:
+      "Magnify Cash is revolutionizing micro-lending by combining WorldID verification with gas-free transactions, making loans accessible to billions globally",
+    chain: "World Chain",
+    logo: `${baseIconsUrl}/magnify-cash.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["World Chain"],
+    forkedFrom: [],
+    module: "magnify-cash/index.js",
+    twitter: "MagnifyCash",
+    github: ["Magnify-Cash"],
+    listedAt: 1741725771
+  },
 ];
 export default data4;

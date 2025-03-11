@@ -2854,5 +2854,8 @@ export default {
     },
     "tea-fi": {
         id: "5875"
+    },
+    "beets-v3": {
+        id: "5680"
     }
 } as AdaptorsConfig

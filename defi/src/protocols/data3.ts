@@ -58027,24 +58027,26 @@ const data3: Protocol[] = [
   },
   {
     id: "5234",
-    name: "USDX Money",
-    address: null,
-    symbol: "-",
-    url: "https://usdx.money",
+    name: "Stables Labs USDX", // previous USDX Money
+    address: "0xf3527ef8dE265eAa3716FB312c12847bFBA66Cef",
+    symbol: "USDX",
+    url: "https://usdx.money/",
     description:
-      "USDX is a synthetic USD stablecoin built for the crypto ecosystem. It offers a crypto-native stablecoin solution that does not rely on traditional banking infrastructure which is censorship-resistant, scalable, and highly stable. Furthermore, it provides a multiple-layer savings tool including funding rate and crypto ecosystem yield accessible worldwide in USD denomination.",
+      "USDX is a synthetic USD stablecoin designed to provide stability without relying on traditional banking infrastructure. Backed by delta-neutral positions across multiple exchanges, USDX seamlessly bridges the gap between DeFi, CeFi, and TradFi. It enables DeFi users to access traditional delta-neutral strategies executed in CeFi platforms. As a crypto-native stablecoin, USDX offers a scalable, censorship-resistant, and highly stable solution for users looking to navigate the world of decentralized finance with confidence.",
     chain: "Binance",
     logo: `${baseIconsUrl}/usdx-money.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "stables-labs-usdx",
+    cmcId: "34060",
     category: "Basis Trading",
-    chains: ["Binance", "Arbitrum"],
-    module: "usdx/index.js",
-    twitter: "usdx_money",
+    chains: ["Ethereum", "Binance", "Arbitrum"],
+    module: "stables-labs/index.js",
+    twitter: "StablesLabs",
+    parentProtocol: "parent#stables-labs",
     forkedFrom: [],
     oracles: ["RedStone"], //https://docs.usdx.money/informaiton/oracles
+    audit_links: ["https://docs.usdx.money/informaiton/audit"],
     listedAt: 1728645744
   },
   {

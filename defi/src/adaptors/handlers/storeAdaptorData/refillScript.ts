@@ -15,7 +15,7 @@ const adapterType = process.env.type ?? AdapterType.DERIVATIVES
 let protocolToRun = process.env.protocol ?? 'bluefin' // either protocol display name, module name or id
 
 let toTimestamp: any = process.env.toTimestamp ?? process.env.to ?? '2024-11-30' // enable next line to run to now
-toTimestamp = Date.now()
+// toTimestamp = Date.now()
 
 let fromTimestamp: any = process.env.fromTimestamp ?? process.env.from ?? '2024-09-01' // enable next line to run from the dawn of time
 // fromTimestamp = 0

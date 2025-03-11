@@ -7080,5 +7080,26 @@ const data4: Protocol[] = [
     github: ["Magnify-Cash"],
     listedAt: 1741725771
   },
+  {
+    id: "5889",
+    name: "Hemi Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hemi.xyz/en/stake/dashboard/",
+    description:
+      "Stake your assets to earn rewards and boost your points",
+    chain: "Hemi",
+    logo: `${baseIconsUrl}/hemi-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Hemi"],
+    forkedFrom: [],
+    module: "hemi-staking/index.js",
+    twitter: "hemi_xyz",
+    listedAt: 1741734255
+  },
 ];
 export default data4;

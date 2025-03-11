@@ -4217,6 +4217,7 @@ const newChainLabelMap = {
   "formnetwork": "Form Network",
   "hyperliquid": "Hyperliquid L1",
   "lightlink_phoenix": "LightLink",
+  "move": "Movement"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

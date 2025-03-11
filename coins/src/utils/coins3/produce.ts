@@ -181,6 +181,6 @@ export default async function produce(
     const otherTopics = topics.filter((t) => t !== "coins-metadata");
     await Promise.all(otherTopics.map((topic: Topic) => produceTopics(items, topic, producer)));
   } catch (error) {
-    // console.error("Error producing messages", error);
+    console.error("Error producing messages", error);
   }
 }

@@ -2602,5 +2602,8 @@ export default {
     },
     "trade-wiz": {
         id: "5886"
+    },
+    "meridian-amm": {
+        id: "5885"
     }
 } as AdaptorsConfig

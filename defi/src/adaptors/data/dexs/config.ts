@@ -2857,5 +2857,8 @@ export default {
     },
     "beets-v3": {
         id: "5680"
+    },
+    "meridian-amm": {
+        id: "5885"
     }
 } as AdaptorsConfig

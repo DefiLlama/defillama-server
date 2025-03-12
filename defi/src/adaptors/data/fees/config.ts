@@ -2603,6 +2603,15 @@ export default {
     "trade-wiz": {
         id: "5886"
     },
+    "rain": {
+        id: "3903"
+    },
+    "SwapX-algebra": {
+        id: "5579"
+    },
+    "SwapX-v2": {
+        id: "5578"
+    },
     "meridian-amm": {
         id: "5885"
     }

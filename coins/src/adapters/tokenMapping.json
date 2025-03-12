@@ -7470,6 +7470,11 @@
       "to": "coingecko#hemi",
       "decimals": 6,
       "symbol": "USDC.e"
+    },
+    "0xaa40c0c7644e0b2b224509571e10ad20d9c4ef28": {
+      "to": "coingecko#bitcoin",
+      "decimals": 8,
+      "symbol": "hemiBTC"
     }
   },
   "oas": {

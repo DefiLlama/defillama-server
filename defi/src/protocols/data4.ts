@@ -7231,5 +7231,28 @@ const data4: Protocol[] = [
     twitter: "puppydotfun",
     listedAt: 1741790269
   },
+  {
+    id: "5896",
+    name: "SuperHedge",
+    address: null,
+    symbol: "-",
+    url: "https://superhedge.com/",
+    description:
+      "100% Principal-Protected Defi Structured Products, built on Pendle Finance",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/superhedge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "SuperHedge/index.js",
+    twitter: "superhedgeio",
+    audit_links: ["https://www.halborn.com/audits/superhedge-finance/superhedge-v1-core"],
+    github: ["superhedge-finance"],
+    listedAt: 1741815021
+  },
 ];
 export default data4;

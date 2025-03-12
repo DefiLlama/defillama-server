@@ -34532,7 +34532,7 @@ const data3: Protocol[] = [
     category: "RWA",
     chains: ["Base"],
     module: "cygnus-finance/index.js",
-    twitter: "CygnusFi",
+    twitter: "",
     forkedFrom: [],
     oraclesByChain: {
       base: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/8247
@@ -56071,7 +56071,7 @@ const data3: Protocol[] = [
     category: "Liquid Staking",
     chains: ["TON"],
     module: "cygnus-fi-ton/index.js",
-    twitter: "CygnusFi",
+    twitter: "",
     forkedFrom: [],
     oracles: [],
     audit_links: [],
@@ -56233,6 +56233,13 @@ const data3: Protocol[] = [
     twitter: "CygnusFi",
     forkedFrom: [],
     oracles: ["RedStone"], //https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work
+    oraclesBreakdown: [
+      {
+        name: "Restone",
+        type: "Primary",
+        proof: ["https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work"]
+      }
+    ],
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1726581992
   },

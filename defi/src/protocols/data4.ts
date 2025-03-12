@@ -7217,7 +7217,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://puppy.fun",
     description:
-      "Launchpad on binance",
+      "Launchpad on BNB Chain",
     chain: "Binance",
     logo: `${baseIconsUrl}/puppyfun.png`,
     audits: "0",

@@ -2611,5 +2611,8 @@ export default {
     },
     "SwapX-v2": {
         id: "5578"
+    },
+    "meridian-amm": {
+        id: "5885"
     }
 } as AdaptorsConfig

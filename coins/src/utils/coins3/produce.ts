@@ -18,7 +18,7 @@ export type Dynamo = {
   mcap?: number;
 };
 
-function convertToMessage(item: Dynamo, topic: Topic): object {
+function convertToMessage(item: Dynamo, topic: Topic): object | undefined {
   const { PK, decimals, price, confidence, SK, adapter, mcap } = item;
   const { pid } = splitPk(PK, decimals);
 

@@ -58455,6 +58455,7 @@ const data3: Protocol[] = [
     github: ["mira-amm"],
     listedAt: 1729254583
   },
+  /* // need to confirm this collateral
   {
     id: "5253",
     name: "Lorenzo stBTC",
@@ -58477,6 +58478,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#lorenzo-protocol",
     listedAt: 1729589412
   },
+  */
   {
     id: "5254",
     name: "Exmo",

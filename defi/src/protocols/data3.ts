@@ -56250,7 +56250,14 @@ const data3: Protocol[] = [
     module: "cygnus-fi-restake/index.js",
     twitter: "CygnusFi",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["RedStone"], //https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work
+    oraclesBreakdown: [
+      {
+        name: "Restone",
+        type: "Primary",
+        proof: ["https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work"]
+      }
+    ],
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1726581992
   },

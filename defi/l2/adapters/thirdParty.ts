@@ -121,6 +121,7 @@ const layerzero = async (): Promise<void> => {
   };
 
   Object.keys(staticTokens).map((chain: string) => {
+    if (!(chain in addresses)) addresses[chain] = [];
     addresses[chain].push(...staticTokens[chain]);
   });
 

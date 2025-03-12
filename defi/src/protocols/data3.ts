@@ -50198,7 +50198,14 @@ const data3: Protocol[] = [
     chains: ["Bitlayer"],
     module: "desyn-basisTrading/index.js",
     twitter: "DesynLab",
-    oracles: [],
+    oracles: ["RedStone"],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.desyn.io/mechanism/product-introduction/desyns-contracts-overview#id-4-desynoracle"]
+      },
+    ],
     forkedFrom: [],
     parentProtocol: "parent#desyn-protocol",
     listedAt: 1721135854,

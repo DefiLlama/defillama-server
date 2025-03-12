@@ -2857,5 +2857,11 @@ export default {
     },
     "beets-v3": {
         id: "5680"
+    },
+    "SwapX-algebra": {
+        id: "5579"
+    },
+    "SwapX-v2": {
+        id: "5578"
     }
 } as AdaptorsConfig

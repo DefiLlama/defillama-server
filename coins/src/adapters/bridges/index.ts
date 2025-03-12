@@ -228,7 +228,7 @@ async function _storeTokensOfBridge(bridge: Bridge) {
     }),
   );
 
-  await batchWrite(writes, true);
+  // await batchWrite(writes, true);
   await produceKafkaTopics(writes, ["coins-metadata"]);
   return tokens;
 }

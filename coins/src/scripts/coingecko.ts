@@ -58,7 +58,7 @@ async function storeCoinData(coinData: Write[]) {
     produceKafkaTopics(
       items.map((i) => ({ adapter: "coingecko", decimals: 0, ...i } as Dynamo)),
     ),
-    batchWrite(items, false),
+    // batchWrite(items, false),
   ]);
 }
 
@@ -78,7 +78,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
       })) as Dynamo[],
       ["coins-timeseries"],
     ),
-    batchWrite(items, false),
+    // batchWrite(items, false),
   ]);
 }
 
@@ -243,12 +243,12 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     )
   ).filter((c) => !c.adapter && c.confidence == 0.99);
 
-  const deleteStaleKeysPromise = DELETE(
-    staleEntries.map((e) => ({
-      PK: e.PK,
-      SK: 0,
-    })),
-  );
+  // const deleteStaleKeysPromise = DELETE(
+  //   staleEntries.map((e) => ({
+  //     PK: e.PK,
+  //     SK: 0,
+  //   })),
+  // );
 
   const idToSymbol = {} as IdToSymbol;
   const returnedCoins = new Set(Object.keys(coinData));
@@ -370,7 +370,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             confidence: 0.99,
           };
           kafkaItems.push(item);
-          await ddb.put(item);
+          // await ddb.put(item);
         },
         coinPlatformData,
         aggregatedPlatforms,
@@ -383,7 +383,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       kafkaItems.map((i) => ({ adapter: "coingecko", ...i })),
       ["coins-metadata"],
     ),
-    deleteStaleKeysPromise,
+    // deleteStaleKeysPromise,
   ]);
 }
 
@@ -440,7 +440,7 @@ async function getAndStoreHourly(
         ["coins-timeseries"],
       ),
     ),
-    batchWrite(items, false),
+    // batchWrite(items, false),
   ]);
 }
 
@@ -618,7 +618,7 @@ async function storeCGCoinMetadatas(coinMetadatas: any) {
       JSON.stringify(metadata),
     ]);
     if (!writes.length) return;
-    await redis.mset(writes.flat());
+    // await redis.mset(writes.flat());
   } catch (e) {
     console.error("Error writing to CG metadata to redis");
     console.error(e);

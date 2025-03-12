@@ -416,7 +416,8 @@ export async function batchWriteWithAlerts(
     const { previousItems, redirectChanges } = await readPreviousValues(items);
     const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
       await checkMovement(items, previousItems);
-    await batchWrite([...filteredItems, ...redirectChanges], failOnError);
+      failOnError
+    // await batchWrite([...filteredItems, ...redirectChanges], failOnError);
     await produceKafkaTopics([...filteredItems, ...redirectChanges] as any[]);
   } catch (e) {
     const adapter = items.find((i) => i.adapter != null)?.adapter;

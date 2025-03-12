@@ -34532,7 +34532,7 @@ const data3: Protocol[] = [
     category: "RWA",
     chains: ["Base"],
     module: "cygnus-finance/index.js",
-    twitter: "",
+    twitter: "CygnusFi",
     forkedFrom: [],
     oraclesByChain: {
       base: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/8247
@@ -56071,7 +56071,7 @@ const data3: Protocol[] = [
     category: "Liquid Staking",
     chains: ["TON"],
     module: "cygnus-fi-ton/index.js",
-    twitter: "",
+    twitter: "CygnusFi",
     forkedFrom: [],
     oracles: [],
     audit_links: [],

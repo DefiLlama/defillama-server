@@ -4796,6 +4796,11 @@
       "to": "coingecko#susda",
       "decimals": 18,
       "symbol": "sUSDa"
+    },
+    "0x549943e04f40284185054145c6e4e9568c1d3241": {
+      "to": "coingecko#wrapped-steth",
+      "decimals": 18,
+      "symbol": "wstETH"
     }
   },
   "rss3_vsl": {

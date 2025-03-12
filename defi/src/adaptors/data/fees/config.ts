@@ -2614,5 +2614,8 @@ export default {
     },
     "meridian-amm": {
         id: "5885"
+    },
+    "merkle-trade": {
+        "id": "3678"
     }
 } as AdaptorsConfig

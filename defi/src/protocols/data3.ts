@@ -58041,7 +58041,7 @@ const data3: Protocol[] = [
     cmcId: "34060",
     category: "Basis Trading",
     chains: ["Ethereum", "Binance", "Arbitrum"],
-    module: "stables-labs/index.js",
+    module: "usdx/index.js",
     twitter: "StablesLabs",
     parentProtocol: "parent#stables-labs",
     forkedFrom: [],

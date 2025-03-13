@@ -7390,6 +7390,7 @@ const data4: Protocol[] = [
         proof: ["https://stout.gitbook.io/docs/ecosystem/oracles"]
       }
     ],
+    treasury: "stout.js",
     module: "stout/index.js",
     twitter: "stout_fi",
     listedAt: 1741885291

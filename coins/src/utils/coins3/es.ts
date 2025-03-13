@@ -212,6 +212,8 @@ export function getMetadataRecord(json: any): MetadataRecord | undefined {
 
   const recordClone = { ...record };
   delete recordClone.allRedirects; // we dont want to store this field in the metadata record
+  delete recordClone.mcap;
+  delete recordClone.timestamp
   return recordClone;
 }
 

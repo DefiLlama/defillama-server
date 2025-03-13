@@ -58288,7 +58288,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#kelp-dao",
     listedAt: 1729134534,
     tokensExcludedFromParent: {
-      Ethereum: ["rsETH"],
+      Ethereum: ["RSETH"],
     },
   },
   {

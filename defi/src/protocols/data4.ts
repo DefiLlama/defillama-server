@@ -7365,5 +7365,34 @@ const data4: Protocol[] = [
     ],
     listedAt: 1741877325
   },
+  {
+    id: "5902",
+    name: "Stout",
+    address: "sonic:0x97a10beEbB25e0eBfA55Ca0A7d00E37AFe957DEa",
+    symbol: "STTX",
+    url: "https://stout.fi/",
+    description:
+      "Stout is a Sonic-native CDP protocol offering low, quasi-fixed interest loans and creator of veSTTX, the most capital-efficient collateral (98% LTV) and immune to liquidations due to price swings.",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/stout.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Sonic"],
+    forkedFrom: [],
+    oracles: ["Api3"],
+    oraclesBreakdown: [
+      {
+        name: "Api3",
+        type: "Primary",
+        proof: ["https://stout.gitbook.io/docs/ecosystem/oracles"]
+      }
+    ],
+    module: "stout/index.js",
+    twitter: "stout_fi",
+    listedAt: 1741885291
+  },
 ];
 export default data4;

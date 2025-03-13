@@ -61,7 +61,16 @@ async function produceMetadata(items: Dynamo[], producer: Producer) {
   items.map((item) => {
     const record = getMetadataRecord(item);
     if (!record) return;
-    validate(record, "coins-metadata");
+
+
+    try {
+      validate(record, "coins-metadata");
+    } catch (error) {
+      console.error("Error validating metadata record:", error, record);
+      return;
+    }
+
+
     const msg = JSON.stringify(record);
     if (!metadataMessages.includes(msg)) {
       metadataMessages.push(msg);
@@ -104,7 +113,16 @@ async function produceTopics(items: Dynamo[], topic: Topic, producer: Producer) 
     if (!price) return;
     const messageObject = convertToMessage(item, topic);
     if (!messageObject) return;
-    validate(messageObject, topic);
+
+    try {
+      validate(messageObject, topic);
+    } catch (error) {
+      console.error("Error validating message object:", error, messageObject);
+      return;
+    }
+
+
+
     const message = JSON.stringify(messageObject);
     if (!messages.includes(message)) {
       messages.push(message);
@@ -134,10 +152,10 @@ async function produceTopics(items: Dynamo[], topic: Topic, producer: Producer) 
       console.error("Redis fallback failed for coins-current:", redisError);
     }
     try {
-      const body: any [] = [];
+      const body: any[] = [];
       messages.forEach((msg) => {
         const parsed = JSON.parse(msg)
-        body.push({ index: { _index: "coins-current-backup", _id: parsed.pid }});
+        body.push({ index: { _index: "coins-current-backup", _id: parsed.pid } });
         body.push(parsed)
       });
       if (body.length) {

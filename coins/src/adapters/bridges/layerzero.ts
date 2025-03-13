@@ -36,6 +36,7 @@ export const layerZeroChainMapping: { [key: string]: string } = {
   Avalanche: "avax",
   "opBNB Mainnet": "op_bnb",
   "Arbitrum Nova": "arbitrum_nova",
+  "Lightlink": "lightlink_phoenix",
 };
 
 export default async function main() {

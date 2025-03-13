@@ -58060,7 +58060,6 @@ const data3: Protocol[] = [
     chains: ["Ethereum", "Binance", "Arbitrum"],
     module: "usdx/index.js",
     twitter: "StablesLabs",
-    parentProtocol: "parent#stables-labs",
     forkedFrom: [],
     oracles: ["RedStone"], //https://docs.usdx.money/informaiton/oracles
     audit_links: ["https://docs.usdx.money/informaiton/audit"],

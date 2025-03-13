@@ -6661,6 +6661,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "axion_finance_",
     github: ["Axion-Finance"],
   },
+  {
+    id: "parent#token-tool",
+    name: "Token Tool",
+    url: "https://tokentool.bitbond.com/",
+    description: "Token Tool by Bitbond is a no-code dApp that enables users to effortlessly create tokens and launch token sales across major chains. Use Token Tool's convenient user interface instead of coding your own smart contracts",
+    logo: `${baseIconsUrl}/token-tool.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Bitbond",
+  },
 ];
 
 export default parentProtocols;

@@ -7273,7 +7273,7 @@ const data4: Protocol[] = [
     twitter: "",
   },
   {
-    id: "5897",
+    id: "5898",
     name: "USDD",
     address: null,
     symbol: "-",
@@ -7294,7 +7294,7 @@ const data4: Protocol[] = [
     listedAt: 1741877201
   },
   {
-    id: "5898",
+    id: "5899",
     name: "Bitbond Lockers",
     address: null,
     symbol: "-",
@@ -7317,7 +7317,7 @@ const data4: Protocol[] = [
     listedAt: 1741877311
   },
   {
-    id: "5899",
+    id: "5900",
     name: "Bitbond Sales",
     address: null,
     symbol: "-",
@@ -7340,7 +7340,7 @@ const data4: Protocol[] = [
     listedAt: 1741877319
   },
   {
-    id: "5900",
+    id: "5901",
     name: "USDT0",
     address: null,
     symbol: "-",

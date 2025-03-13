@@ -12590,6 +12590,7 @@ const data3: Protocol[] = [
   {
     id: "3250",
     name: "LayerBank", // previous LineaBank
+    previousNames: ["LineaBank"],
     address: "linea:0xB97F21D1f2508fF5c73E7B5AF02847640B1ff75d",
     symbol: "LAB",
     url: "https://layerbank.finance",

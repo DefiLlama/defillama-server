@@ -7629,6 +7629,11 @@
     }
   },
   "move": {
+    "0x1::aptos_coin::AptosCoin": {
+      "decimals": "8",
+      "symbol": "MOVE",
+      "to": "coingecko#movement"
+    },
     "0xa": {
       "to": "coingecko#movement",
       "decimals": 8,

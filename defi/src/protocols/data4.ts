@@ -7102,5 +7102,23 @@ const data4: Protocol[] = [
     twitter: "hemi_xyz",
     listedAt: 1741734255
   },
+  {
+    id: "5890",
+    name: "Bridged TVL Excluded Asets",
+    address: null,
+    symbol: "-",
+    url: "",
+    description: "Tokens and Owners to be excluded from Bridged TVL.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/xdai-stake.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    module: "bridged-tvl-excluded/index.js",
+    twitter: "",
+  },
 ];
 export default data4;

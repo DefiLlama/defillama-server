@@ -7254,5 +7254,23 @@ const data4: Protocol[] = [
     github: ["superhedge-finance"],
     listedAt: 1741815021
   },
+  {
+    id: "5897",
+    name: "Bridged TVL Excluded Asets",
+    address: null,
+    symbol: "-",
+    url: "",
+    description: "Tokens and Owners to be excluded from Bridged TVL.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/xdai-stake.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    module: "bridged-tvl-excluded/index.js",
+    twitter: "",
+  },
 ];
 export default data4;

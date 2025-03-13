@@ -7346,7 +7346,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://usdt0.to",
     description:
-      "100% Principal-Protected Defi Structured Products, built on Pendle Finance",
+      "USDT0 is a one stop solution for Tether’s Interoperability and Expansion.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/usdt0.jpg`,
     audits: "0",

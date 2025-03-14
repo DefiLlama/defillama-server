@@ -5211,12 +5211,13 @@ const data4: Protocol[] = [
   },
   {
     id: "5807",
-    name: "GoPlus Locker",
+    name: "GoPlus Locker V2",
+    previousNames: ["GoPlus Locker"],
     address: null,
     symbol: "-",
     url: "https://gopluslabs.io",
     description:
-      "GoPlus Network is an open, permissionless and user-driven Modular User Security Layer for Web3. Adaptable and designed to seamlessly integrate with any blockchain, it makes chains easy to enhance user safety to protect their users.",
+      "A multi-chain token and liquidity locker by GoPlus Security.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/goplus-locker.png`,
     audits: "0",
@@ -5224,13 +5225,14 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Token Locker",
-    chains: ["Ethereum", "Binance","Base", "Arbitrum", "Gravity", "Morph"],
+    chains: ["Ethereum", "Binance","Base", "Arbitrum"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "goplus-locker-v2/index.js",
     twitter: "GoPlusSecurity",
     parentProtocol: "parent#goplus-security",
     audit_links: [],
+    listedAt: 1741988372
   },
   {
     id: "5808",
@@ -7531,6 +7533,30 @@ const data4: Protocol[] = [
     twitter: "play_witty",
     github: ["maketh-labs"],
     listedAt: 1741969793
+  },
+  {
+    id: "5909",
+    name: "GoPlus Locker V3",
+    address: null,
+    symbol: "-",
+    url: "https://gopluslabs.io",
+    description:
+      "A multi-chain token and liquidity locker by GoPlus Security.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/goplus-locker.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Token Locker",
+    chains: ["Ethereum", "Binance","Base", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "goplus-locker-v3/index.js",
+    twitter: "GoPlusSecurity",
+    parentProtocol: "parent#goplus-security",
+    audit_links: [],
+    listedAt: 1741988038
   },
 ];
 export default data4;

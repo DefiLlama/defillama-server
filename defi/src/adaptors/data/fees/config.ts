@@ -2620,5 +2620,11 @@ export default {
     },
     "gyroscope": {
         "id": "2397"
+    },
+    "wildcat": {
+        "id": "3871"
+    },
+    "napier": {
+        "id": "4834"
     }
 } as AdaptorsConfig

@@ -129,4 +129,5 @@ export default {
   kodiak: require("./markets/kodiak"),
   kSTRK: require("./other/kSTRK"),
   jtoDerivs: require("./solana/jtoDerivs"),
+  pac: require("./rwa/thepac"),
 };

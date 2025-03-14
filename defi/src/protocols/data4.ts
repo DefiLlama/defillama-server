@@ -7486,5 +7486,51 @@ const data4: Protocol[] = [
     github: ["YuzuFinance"],
     listedAt: 1741969294
   },
+  {
+    id: "5907",
+    name: "DefiTuna",
+    address: null,
+    symbol: "-",
+    url: "https://defituna.com",
+    description:
+      "DefiTuna is a decentralized finance (DeFi) platform offering concentrated liquidity market making (CLMM) with leveraged positions. DefiTuna allows users to open positions with leverage. Initially, we will support some of the most liquid pairs but later we plan on expanding to a more permission-less approach.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/defituna.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Solana"],
+    forkedFrom: [],
+    oracles: [],
+    module: "defituna.js",
+    twitter: "DeFiTuna",
+    audit_links: ["https://github.com/Torii-Security/audits/blob/main/solana/torii-defituna-report.pdf"],
+    listedAt: 1741969773
+  },
+  {
+    id: "5908",
+    name: "Witty",
+    address: null,
+    symbol: "-",
+    url: "https://www.witty.game/",
+    description:
+      "Witty is a player-versus-puzzle (PvZ) gaming platform where users create and solve puzzles with real stakes",
+    chain: "Abstract",
+    logo: `${baseIconsUrl}/witty.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Abstract"],
+    forkedFrom: [],
+    oracles: [],
+    module: "witty/index.js",
+    twitter: "play_witty",
+    github: ["maketh-labs"],
+    listedAt: 1741969793
+  },
 ];
 export default data4;

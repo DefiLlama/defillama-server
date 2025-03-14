@@ -7438,7 +7438,7 @@ const data4: Protocol[] = [
     oracles: [],
     module: "dummy.js",
     twitter: "legacynetworkio",
-    audit_links: [],
+    audit_links: []
   },
 ];
 export default data4;

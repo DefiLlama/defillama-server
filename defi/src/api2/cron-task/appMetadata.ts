@@ -1,3 +1,10 @@
+/**
+ * 
+ * Almost all of this code is copied from here: 
+ * https://github.com/DefiLlama/defillama-app/blob/main/src/api/categories/protocols/getProtocolData.tsx
+ */
+
+
 import { getMetadataAll, readRouteData, storeRouteData } from '../cache/file-cache'
 import { cache } from '@defillama/sdk'
 import { colord } from 'colord'
@@ -777,7 +784,7 @@ async function _storeAppMetadata() {
 
 
       // dimensions data
-      const metrics = protocolData.metrics || {}
+      // const metrics = protocolData.metrics || {}
       const dimensionMetrics: any = {}
       let feesData: any = []
       let revenueData: any = []
@@ -965,7 +972,7 @@ async function _storeAppMetadata() {
           // ...protocolData,
           symbol: protocolData.symbol ?? null,
           metrics: {
-            ...metrics,
+            // ...metrics,
             tvl: !!protocolMetadata[protocolId]?.tvl,
             devMetrics: !!devMetrics,
             fees: !!protocolMetadata[protocolId]?.fees,
@@ -1001,6 +1008,10 @@ async function _storeAppMetadata() {
           }
           : null,
         ...dimensionMetrics,
+
+        // we stop showing governance data for now
+        controversialProposals: [],
+        governanceApis: [],
         // controversialProposals,
         // governanceApis: governanceApis.filter((x) => !!x),
         treasury: treasury?.tokenBreakdowns ?? null,

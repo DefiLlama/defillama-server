@@ -7419,5 +7419,26 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.prosper-fi.com/app-overview/security"],
     listedAt: 1741944904
   },
+  {
+    id: "5904",
+    name: "Legacy Network",
+    address: "bsc:0xD38B305CaC06990c0887032A02C03D6839f770A8",
+    symbol: "LGCT",
+    url: "https://www.legacynetwork.io/",
+    description: "Building an ecosystem of gamified educational products.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/legacy-network.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "legacy-token",
+    cmcId: null,
+    category: "Farm",
+    chains: ["Binance"],
+    forkedFrom: [],
+    oracles: [],
+    module: "dummy.js",
+    twitter: "legacynetworkio",
+    audit_links: [],
+  },
 ];
 export default data4;

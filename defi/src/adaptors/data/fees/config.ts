@@ -2617,5 +2617,8 @@ export default {
     },
     "merkle-trade": {
         "id": "3678"
+    },
+    "gyroscope": {
+        "id": "2397"
     }
 } as AdaptorsConfig

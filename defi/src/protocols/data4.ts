@@ -7440,5 +7440,51 @@ const data4: Protocol[] = [
     twitter: "legacynetworkio",
     audit_links: []
   },
+  {
+    id: "5905",
+    name: "Multipli.fi",
+    address: null,
+    symbol: "-",
+    url: "https://multipli.fi",
+    description:
+      "Multipli fi is a multi-chain yield generation protocol designed to address two key challenges: the limited number of cryptocurrencies on which yield can be generated and the typically low yields.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/multipli.fi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    oracles: [],
+    module: "multipli/index.js",
+    twitter: "multiplifi",
+    listedAt: 1741969274
+  },
+  {
+    id: "5906",
+    name: "Yuzu Finance",
+    address: null,
+    symbol: "-",
+    url: "https://multipli.fi",
+    description:
+      "Multipli fi is a multi-chain yield generation protocol designed to address two key challenges: the limited number of cryptocurrencies on which yield can be generated and the typically low yields.",
+    chain: "Movement",
+    logo: `${baseIconsUrl}/yuzu-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Movement"],
+    forkedFrom: [],
+    oracles: [],
+    module: "yuzu/index.js",
+    twitter: "YuzuFinance",
+    audit_links: ["https://github.com/YuzuFinance/Audits"],
+    github: ["YuzuFinance"],
+    listedAt: 1741969294
+  },
 ];
 export default data4;

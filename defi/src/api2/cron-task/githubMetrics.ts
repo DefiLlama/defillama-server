@@ -6,7 +6,7 @@ import { readRouteData, storeRouteData } from '../cache/file-cache'
 
 const allDataFile = '/github-metrics/allData'
 const cacheDir = path.join(__dirname, '.cache')
-const lastRunFile = path.join(cacheDir, '.cron-task-github-last-run')
+const lastRunFile = path.join(cacheDir, '.cron-task-github-last-run-v2')
 
 export async function pullDevMetricsData() {
   try {
@@ -15,7 +15,6 @@ export async function pullDevMetricsData() {
       return getDevMetricsData()
     }
 
-    fs.writeFileSync(lastRunFile, new Date().toISOString())
 
 
 
@@ -29,6 +28,7 @@ export async function pullDevMetricsData() {
     })
 
     await storeRouteData(allDataFile, projectReports)
+    fs.writeFileSync(lastRunFile, new Date().toISOString()) 
     return projectReports
   } catch (error) {
     console.error('Dev metrics: Error pulling data', error)

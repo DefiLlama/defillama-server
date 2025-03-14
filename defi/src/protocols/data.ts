@@ -7650,7 +7650,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "Save (formerly Solend) is an algorithmic, decentralized protocol for lending and borrowing on Solana. Lending and borrowing has proven itself as being key in a DeFi ecosystem. However, current products are slow and expensive. On Solana, Solend can scale to being 100x faster and 100x cheaper. Solend aims to be the easiest to use and most secure solution on Solana.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/save.jpg`, 
+    logo: `${baseIconsUrl}/save.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "solend",
@@ -10233,7 +10233,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Celo", "Ethereum", "Polygon", "Binance", "Fantom", "Avalanche", "Solana", "Terra"],
+    chains: ["Celo", "Ethereum", "Polygon", "Binance", "Fantom", "Avalanche", "Solana", "Near", "Harmony", "Fuse", "Stacks", "Klaytn", "Stellar", "Ripple"],
     module: "allbridge/index.js",
     audit_links: [
       "https://hacken.io/audits/allbridge",

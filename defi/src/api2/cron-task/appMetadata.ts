@@ -65,6 +65,7 @@ async function _storeAppMetadata() {
   const yieldPoolsProtocolMap: any = {}
   const liquidityTokenPoolsMap: any = {}
   const hacksMap: any = {}
+  const emissionsProtocolMap: any = {}
 
   const protocolMetadata = finalProtocols
 
@@ -99,6 +100,7 @@ async function _storeAppMetadata() {
     allDevMetricsData,
     allNFTVolumes,
     allMetadata,
+    emmissionsDataAll,
   ] = await Promise.all([
     readRouteData('/lite/protocols2'),
     fetchJson(YIELD_POOLS_API).then((res) => res.data ?? []),
@@ -130,6 +132,7 @@ async function _storeAppMetadata() {
     pullDevMetricsData().catch(() => ([])),
     fetchJson(NFT_MARKETPLACES_VOLUME_API).catch(() => ([])),
     getMetadataAll(),
+    fetchJson(EMISSIONS_API).catch(() => ([])),
   ])
 
 
@@ -299,6 +302,12 @@ async function _storeAppMetadata() {
     hacksData.forEach((hack: any) => {
       if (hack.defillamaId)
         hacksMap[hack.defillamaId] = hack
+    })
+
+    // emissions
+    emmissionsDataAll.forEach((emission: any) => {
+      if (emission.protocolId)
+        emissionsProtocolMap[emission.protocolId] = emission
     })
   }
 
@@ -766,6 +775,8 @@ async function _storeAppMetadata() {
       // dimensions data
       const metrics = protocolData.metrics || {}
       const dimensionMetrics: any = {}
+      let feesData: any = []
+      let revenueData: any = []
 
       dimensionsConfig.forEach(({ mapKey, finalDataKeys }: any) => {
         const allData = dimensionsMap[mapKey]
@@ -776,6 +787,11 @@ async function _storeAppMetadata() {
           data = childProtocols.map(getData).flat()
         } else {
           data = getData(protocolData)
+        }
+
+        switch (mapKey) {
+          case 'fees': feesData = data; break;
+          case 'revenue': revenueData = data; break;
         }
 
         Object.entries(finalDataKeys).forEach(([responseKey, dimensionsKey]: any) => {
@@ -826,7 +842,7 @@ async function _storeAppMetadata() {
 
 
       // token liquidity
-      let tokenPools =  liquidityTokenPoolsMap[protocolData.id]?.tokenPools ?? []
+      let tokenPools = liquidityTokenPoolsMap[protocolData.id]?.tokenPools ?? []
       if (!tokenPools.length && parentProtocolId) tokenPools = liquidityTokenPoolsMap[parentProtocolId]?.tokenPools ?? []
 
       const liquidityAggregated = tokenPools.reduce((agg: any, pool: any) => {
@@ -847,36 +863,29 @@ async function _storeAppMetadata() {
 
       // active users data
       let users = activeUsersData[protocolData.id] ?? null
-      
 
-      const protocolUpcomingEvent = emissions?.events?.find((e) => e.timestamp >= Date.now() / 1000)
-      let upcomingEvent = []
-      if (
-        !protocolUpcomingEvent ||
-        (protocolUpcomingEvent.noOfTokens.length === 1 && protocolUpcomingEvent.noOfTokens[0] === 0)
-      ) {
-        upcomingEvent = [{ timestamp: null }]
-      } else {
-        const comingEvents = emissions?.events?.filter((e) => e.timestamp === protocolUpcomingEvent.timestamp) ?? []
-        upcomingEvent = [...comingEvents]
+
+
+      // emissions data
+
+      let upcomingEvent: any = []
+      let emissions = emissionsProtocolMap[protocolData.id] ?? null
+      if (!emissions && parentProtocolId) emissions = emissionsProtocolMap[parentProtocolId] ?? null
+
+      if (emissions) {
+        const protocolUpcomingEvent = emissions?.events?.find((e: any) => e.timestamp >= Date.now() / 1000)
+        const upcomingEventTS = protocolUpcomingEvent?.timestamp ?? null
+        if (
+          !protocolUpcomingEvent ||
+          (protocolUpcomingEvent.noOfTokens.length === 1 && protocolUpcomingEvent.noOfTokens[0] === 0)
+        ) {
+          upcomingEvent = [{ timestamp: null }]
+        } else {
+          const comingEvents = emissions?.events?.filter((e: any) => e.timestamp === upcomingEventTS) ?? []
+          upcomingEvent = [...comingEvents]
+        }
+
       }
-
-      const tokensUnlockedInNextEvent = upcomingEvent
-        .map((x) => x.noOfTokens ?? [])
-        .reduce((acc, curr) => (acc += curr.length === 2 ? curr[1] - curr[0] : curr[0]), 0)
-
-      const tokenMcap = tokenCGData?.mcaps ? last(tokenCGData.mcaps)[1] : null
-      const tokenPrice = tokenCGData?.prices ? last(tokenCGData.prices)[1] : null
-      const tokenInfo = tokenCGData?.coinData
-      const tokenValue = tokenPrice ? tokensUnlockedInNextEvent * tokenPrice : null
-      const unlockPercent = tokenValue && tokenMcap ? (tokenValue / tokenMcap) * 100 : null
-
-      const nextEventDescription = unlockPercent
-        ? `${formatPercentage(unlockPercent)}% ${protocolData.symbol ?? 'tokens'}`
-        : tokensUnlockedInNextEvent
-          ? `${tokensUnlockedInNextEvent.toLocaleString(undefined, { maximumFractionDigits: 2 })} ${protocolData.symbol ?? 'tokens'
-          }`
-          : null
 
       const chartDenominations = []
 
@@ -891,137 +900,98 @@ async function _storeAppMetadata() {
       }
 
       return {
-        props: {
-          articles: fetchProtocolArticles({ tags: protocolData.name }),
-          // protocol,
-          devMetrics,
-          nftVolumeData,
-          protocolData: {
-            ...protocolData,
-            symbol: protocolData.symbol ?? null,
-            metrics: {
-              ...metrics,
-              tvl: protocolMetadata[protocolData.id]?.tvl,
-              devMetrics: !!devMetrics,
-              fees: protocolMetadata[protocolData.id]?.fees,
-              revenue: protocolMetadata[protocolData.id]?.revenue,
-              dexs: protocolMetadata[protocolData.id]?.dexs,
-              perps: protocolMetadata[protocolData.id]?.perps,
-              aggregators: protocolMetadata[protocolData.id]?.aggregator,
-              perpsAggregators: protocolMetadata[protocolData.id]?.perpsAggregators,
-              bridgeAggregators: protocolMetadata[protocolData.id]?.bridgeAggregators,
-              options: protocolMetadata[protocolData.id]?.options,
-              // medianApy: medianApy.data.length > 0,
-              inflows: inflowsExist,
-              unlocks: protocolMetadata[protocolData.id]?.unlocks,
-              bridge: protocolData.category === 'Bridge' || protocolData.category === 'Cross Chain',
-              treasury: protocolMetadata[protocolData.id]?.treasury,
-              tokenLiquidity: protocolMetadata[protocolData.id]?.liquidity,
-              nftVolume: (nftVolumeData?.length ?? 0) > 0,
-              yields: projectYields.length > 0,
-              forks: protocolMetadata[protocolData.id]?.forks,
-            }
-          },
-          backgroundColor,
-          similarProtocols: Array.from(similarProtocolsSet).map((protocolName) =>
-            similarProtocols.find((p) => p.name === protocolName)
-          ),
-          chartColors: colorTones,
-          users: users
-            ? {
-              activeUsers: users.users?.value ?? null,
-              newUsers: users.newUsers?.value ?? null,
-              transactions: users.txs?.value ?? null,
-              gasUsd: users.gasUsd?.value ?? null
-            }
-            : null,
-          ...dimensionMetrics,
-          // controversialProposals,
-          // governanceApis: governanceApis.filter((x) => !!x),
-          treasury: treasury?.tokenBreakdowns ?? null,
-          yields: projectYields.length > 0
-              ? {
-                noOfPoolsTracked: projectYields.length,
-                averageAPY: projectYields.reduce((acc: any, { apy }: any) => acc + apy, 0) / projectYields.length
-              }
-              : null,
-          helperTexts: {
-            fees:
-              feesData?.length > 1
-                ? 'Sum of all fees from ' +
-                (feesData.reduce((acc, curr) => (acc = [...acc, curr.name]), []) ?? []).join(',')
-                : feesData?.[0]?.methodology?.['Fees'] ?? null,
-            revenue:
-              revenueData?.length > 1
-                ? 'Sum of all revenue from ' +
-                (revenueData.reduce((acc, curr) => (acc = [...acc, curr.name]), []) ?? []).join(',')
-                : revenueData?.[0]?.methodology?.['Revenue'] ?? null,
-            users:
-              'This only counts users that interact with protocol directly (so not through another contract, such as a dex aggregator), and only on arbitrum, avax, bsc, ethereum, xdai, optimism, polygon.'
-          },
-          expenses,
-          tokenLiquidity,
-          tokenCGData: {
-            price: {
-              current: tokenPrice ?? null,
-              ath: tokenInfo?.['market_data']?.['ath']?.['usd'] ?? null,
-              athDate: tokenInfo?.['market_data']?.['ath_date']?.['usd'] ?? null,
-              atl: tokenInfo?.['market_data']?.['atl']?.['usd'] ?? null,
-              atlDate: tokenInfo?.['market_data']?.['atl_date']?.['usd'] ?? null
-            },
-            marketCap: { current: tokenInfo?.['market_data']?.['market_cap']?.['usd'] ?? null },
-            totalSupply: tokenInfo?.['market_data']?.['total_supply'] ?? null,
-            fdv: { current: tokenInfo?.['market_data']?.['fully_diluted_valuation']?.['usd'] ?? null },
-            volume24h: {
-              total: tokenInfo?.['market_data']?.['total_volume']?.['usd'] ?? null,
-              cex:
-                tokenInfo?.['tickers']?.reduce(
-                  (acc, curr) =>
-                  (acc +=
-                    curr['trust_score'] !== 'red' && cg_volume_cexs.includes(curr.market.identifier)
-                      ? curr.converted_volume.usd ?? 0
-                      : 0),
-                  0
-                ) ?? null,
-              dex:
-                tokenInfo?.['tickers']?.reduce(
-                  (acc, curr) =>
-                  (acc +=
-                    curr['trust_score'] === 'red' || cg_volume_cexs.includes(curr.market.identifier)
-                      ? 0
-                      : curr.converted_volume.usd ?? 0),
-                  0
-                ) ?? null
-            }
-          },
-          nextEventDescription:
-            upcomingEvent[0]?.timestamp && nextEventDescription
-              ? `${nextEventDescription} will be unlocked ${timeFromNow(upcomingEvent[0].timestamp)}`
-              : null,
-          methodologyUrls: {
-            tvl: protocolData.module
-              ? `https://github.com/DefiLlama/DefiLlama-Adapters/tree/main/projects/${protocolData.module}`
-              : null,
-            fees: feesData?.[0]?.methodologyURL ?? null,
-            dexs: volumeData?.[0]?.methodologyURL ?? null,
-            perps: perpsData?.[0]?.methodologyURL ?? null,
-            treasury: protocolData.treasury
-              ? `https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/projects/treasury/${protocolData.treasury}`
-              : null,
-            stablecoins: protocolData.stablecoins
-              ? protocolData.stablecoins
-                .map(
-                  (name: any) =>
-                    `${name}$https://github.com/DefiLlama/peggedassets-server/blob/master/src/adapters/peggedAssets/${name}/index.ts`
-                )
-                .join(',')
-              : null
-          },
-          chartDenominations,
-          hacksData,
-          // clientSide: isCpusHot
+        articles: fetchProtocolArticles({ tags: protocolData.name }),
+        // protocol,
+        devMetrics,
+        nftVolumeData,
+        protocolData: {
+          ...protocolData,
+          symbol: protocolData.symbol ?? null,
+          metrics: {
+            ...metrics,
+            tvl: protocolMetadata[protocolData.id]?.tvl,
+            devMetrics: !!devMetrics,
+            fees: protocolMetadata[protocolData.id]?.fees,
+            revenue: protocolMetadata[protocolData.id]?.revenue,
+            dexs: protocolMetadata[protocolData.id]?.dexs,
+            perps: protocolMetadata[protocolData.id]?.perps,
+            aggregators: protocolMetadata[protocolData.id]?.aggregator,
+            perpsAggregators: protocolMetadata[protocolData.id]?.perpsAggregators,
+            bridgeAggregators: protocolMetadata[protocolData.id]?.bridgeAggregators,
+            options: protocolMetadata[protocolData.id]?.options,
+            // medianApy: medianApy.data.length > 0,
+            inflows: inflowsExist,
+            unlocks: protocolMetadata[protocolData.id]?.unlocks,
+            bridge: protocolData.category === 'Bridge' || protocolData.category === 'Cross Chain',
+            treasury: protocolMetadata[protocolData.id]?.treasury,
+            tokenLiquidity: protocolMetadata[protocolData.id]?.liquidity,
+            nftVolume: (nftVolumeData?.length ?? 0) > 0,
+            yields: projectYields.length > 0,
+            forks: protocolMetadata[protocolData.id]?.forks,
+          }
         },
-        // revalidate: maxAgeForNext([22])
+        backgroundColor,
+        similarProtocols: Array.from(similarProtocolsSet).map((protocolName) =>
+          similarProtocols.find((p: any) => p.name === protocolName)
+        ),
+        chartColors: colorTones,
+        users: users
+          ? {
+            activeUsers: users.users?.value ?? null,
+            newUsers: users.newUsers?.value ?? null,
+            transactions: users.txs?.value ?? null,
+            gasUsd: users.gasUsd?.value ?? null
+          }
+          : null,
+        ...dimensionMetrics,
+        // controversialProposals,
+        // governanceApis: governanceApis.filter((x) => !!x),
+        treasury: treasury?.tokenBreakdowns ?? null,
+        yields: projectYields.length > 0
+          ? {
+            noOfPoolsTracked: projectYields.length,
+            averageAPY: projectYields.reduce((acc: any, { apy }: any) => acc + apy, 0) / projectYields.length
+          }
+          : null,
+        helperTexts: {
+          fees:
+            feesData?.length > 1
+              ? 'Sum of all fees from ' +
+              (feesData.reduce((acc: any, curr: any) => (acc = [...acc, curr.name]), []) ?? []).join(',')
+              : feesData?.[0]?.methodology?.['Fees'] ?? null,
+          revenue:
+            revenueData?.length > 1
+              ? 'Sum of all revenue from ' +
+              (revenueData.reduce((acc: any, curr: any) => (acc = [...acc, curr.name]), []) ?? []).join(',')
+              : revenueData?.[0]?.methodology?.['Revenue'] ?? null,
+          users:
+            'This only counts users that interact with protocol directly (so not through another contract, such as a dex aggregator), and only on arbitrum, avax, bsc, ethereum, xdai, optimism, polygon.'
+        },
+        expenses,
+        tokenLiquidity,
+        upcomingEvent,
+        methodologyUrls: {
+          tvl: protocolData.module
+            ? `https://github.com/DefiLlama/DefiLlama-Adapters/tree/main/projects/${protocolData.module}`
+            : null,
+          fees: feesData?.[0]?.methodologyURL ?? null,
+          dexs: volumeData?.[0]?.methodologyURL ?? null,
+          perps: perpsData?.[0]?.methodologyURL ?? null,
+          treasury: protocolData.treasury
+            ? `https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/projects/treasury/${protocolData.treasury}`
+            : null,
+          stablecoins: protocolData.stablecoins
+            ? protocolData.stablecoins
+              .map(
+                (name: any) =>
+                  `${name}$https://github.com/DefiLlama/peggedassets-server/blob/master/src/adapters/peggedAssets/${name}/index.ts`
+              )
+              .join(',')
+            : null
+        },
+        chartDenominations,
+        hacksData,
+        // clientSide: isCpusHot
       }
     }
   }
@@ -1042,15 +1012,16 @@ function selectColor(number: any, color: any) {
 }
 
 const sluggify = (input: string) => {
-	const slug = decodeURIComponent(input)
-		.toLowerCase()
-		.replace(/[^\w\/]+/g, '-')
-	return slug.replace(/^-+/, '').replace(/-+$/, '')
+  const slug = decodeURIComponent(input)
+    .toLowerCase()
+    .replace(/[^\w\/]+/g, '-')
+  return slug.replace(/^-+/, '').replace(/-+$/, '')
 }
 
 
 // API endpoints
 const ACTIVE_USERS_API = 'https://api.llama.fi/activeUsers'
+const EMISSIONS_API = 'https://api.llama.fi/emissions'
 const PROTOCOLS_EXPENSES_API =
   'https://raw.githubusercontent.com/DefiLlama/defillama-server/master/defi/src/operationalCosts/output/expenses.json'
 

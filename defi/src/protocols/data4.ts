@@ -7471,7 +7471,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://multipli.fi",
     description:
-      "Multipli fi is a multi-chain yield generation protocol designed to address two key challenges: the limited number of cryptocurrencies on which yield can be generated and the typically low yields.",
+      "Yuzu is a permissionless Concentrated Liquidity Marketmaker on the Movement Network.",
     chain: "Movement",
     logo: `${baseIconsUrl}/yuzu-finance.jpg`,
     audits: "2",

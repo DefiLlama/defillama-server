@@ -1064,7 +1064,8 @@ async function _storeAppMetadata() {
 
 
 
-      await storeRouteData(`/config/smol/protocol-${protocolId}.json`, data)
+      // store data in file, replace # with - in protocol id to get around fragment identifier issue in urls
+      await storeRouteData(`/config/smol/protocol-${protocolId}.json`.replace('#', '-'), data)
     }
   }
 

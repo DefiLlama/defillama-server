@@ -97,6 +97,7 @@
     "axios": "^1.6.5",
     "bignumber.js": "^9.0.1",
     "buffer-layout": "^1.2.2",
+    "colord": "^2.9.3",
     "dotenv": "^16.0.1",
     "ethers": "^6.0.0",
     "hyper-express": "^6.8.7",

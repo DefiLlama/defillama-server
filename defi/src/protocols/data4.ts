@@ -7395,5 +7395,29 @@ const data4: Protocol[] = [
     twitter: "stout_fi",
     listedAt: 1741885291
   },
+  {
+    id: "5903",
+    name: "Prosper",
+    address: null,
+    symbol: "-",
+    url: "https://www.prosper-fi.com",
+    description:
+      "Prosper is building the largest RWA protocol for Bitcoin hashrate and treasury.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/prosper.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Binance"],
+    forkedFrom: [],
+    oracles: [],
+    treasury: "prosper.js",
+    module: "prosper/index.js",
+    twitter: "Prosperfi_BTC",
+    audit_links: ["https://docs.prosper-fi.com/app-overview/security"],
+    listedAt: 1741944904
+  },
 ];
 export default data4;

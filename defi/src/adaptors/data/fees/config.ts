@@ -2626,5 +2626,8 @@ export default {
     },
     "napier": {
         "id": "4834"
+    },
+    "yuzu-finance": {
+        "id": "5906"
     }
 } as AdaptorsConfig

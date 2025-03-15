@@ -48934,6 +48934,7 @@ const data3: Protocol[] = [
   {
     id: "4834",
     name: "Napier",
+    previousNames: ["Napier Finance"],
     address: null,
     symbol: "-",
     url: "https://app.napier.finance/",

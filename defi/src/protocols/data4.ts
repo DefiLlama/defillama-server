@@ -5219,7 +5219,7 @@ const data4: Protocol[] = [
     description:
       "A multi-chain token and liquidity locker by GoPlus Security.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/goplus-locker.png`,
+    logo: `${baseIconsUrl}/goplus-locker-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -7543,7 +7543,7 @@ const data4: Protocol[] = [
     description:
       "A multi-chain token and liquidity locker by GoPlus Security.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/goplus-locker.png`,
+    logo: `${baseIconsUrl}/goplus-locker-v3.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -7469,7 +7469,7 @@ const data4: Protocol[] = [
     name: "Yuzu Finance",
     address: null,
     symbol: "-",
-    url: "https://multipli.fi",
+    url: "https://app.yuzu.finance/",
     description:
       "Yuzu is a permissionless Concentrated Liquidity Marketmaker on the Movement Network.",
     chain: "Movement",

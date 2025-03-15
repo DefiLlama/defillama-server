@@ -48941,7 +48941,7 @@ const data3: Protocol[] = [
     description:
       "A modular yield tokenization protocol that enables you to own, manage, create any yield products without permissions.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/napier-finance.jpg`,
+    logo: `${baseIconsUrl}/napier.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

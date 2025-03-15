@@ -2629,5 +2629,14 @@ export default {
     },
     "yuzu-finance": {
         "id": "5906"
+    },
+    "beets-staked-sonic": {
+        id: "4126"
+    },
+    "stout": {
+        id: "5902"
+    },
+    "rfx": {
+        id: "5406"
     }
 } as AdaptorsConfig

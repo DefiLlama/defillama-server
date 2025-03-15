@@ -343,5 +343,8 @@ export default {
     "shadow-legacy": {
         parentId: "Shadow Exchange",
         id: "5682"
+    },
+    "puppyfun": {
+        id: "5895"
     }
 } as AdaptorsConfig

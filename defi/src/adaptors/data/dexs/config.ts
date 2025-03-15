@@ -2868,5 +2868,13 @@ export default {
     },
     "yuzu-finance": {
         "id": "5906"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-swap": {
+                id: "5406"
+            }
+        }
     }
 } as AdaptorsConfig

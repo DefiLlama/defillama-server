@@ -822,5 +822,13 @@ export default {
     },
     "desk": {
         id: "5813"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-trade": {
+                id: "5406"
+            }
+        }
     }
 } as AdaptorsConfig

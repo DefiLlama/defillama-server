@@ -315,5 +315,8 @@ export default {
   },
   "oogabooga": {
     id: "5880"
-}
+  },
+  "mosaic": {
+    id: "5890"
+  }
 } as AdaptorsConfig;

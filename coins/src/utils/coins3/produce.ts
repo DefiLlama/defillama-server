@@ -195,9 +195,9 @@ export default async function produce(
     const invalidTopic = topics.find((t: any) => !allTopics.includes(t));
     if (invalidTopic) throw new Error(`invalid topic: ${invalidTopic}`);
     const producer: Producer = await getProducer();
-    await produceMetadata(items, producer);
     const otherTopics = topics.filter((t) => t !== "coins-metadata");
     await Promise.all(otherTopics.map((topic: Topic) => produceTopics(items, topic, producer)));
+    await produceMetadata(items, producer);
   } catch (error) {
     console.error("Error producing messages", error);
   }

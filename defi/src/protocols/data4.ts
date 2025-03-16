@@ -5603,6 +5603,7 @@ const data4: Protocol[] = [
     module: "hermetica/index.js",
     twitter: "HermeticaFi",
     audit_links: ["https://docs.hermetica.fi/usdh/audits"],
+    stablecoins: ["hermetica-usdh"],
     listedAt: 1740083754
   },
   {

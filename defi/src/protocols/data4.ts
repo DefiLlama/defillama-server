@@ -7102,5 +7102,29 @@ const data4: Protocol[] = [
     twitter: "hemi_xyz",
     listedAt: 1741734255
   },
+  {
+    id: "5900",
+    name: "RFX Exchange v2",
+    address: null,
+    symbol: "-",
+    url: "https://rfx.exchange/",
+    description:
+      "The first derivatives exchange with smart liquidity. Maximise your yield. Create your own trading pairs. Built on ZkSync Era and Sophon",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/rfx-exchange.jpg`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["zkSync Era", "Sophon"],
+    module: "rfx-exchange-v2/index.js",
+    twitter: "RFX_exchange",
+    forkedFrom: [],
+    oracles: ["Pyth", "Stork"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12413
+    audit_links: ["https://github.com/rfx-exchange/rfx-deployments/tree/main/audits"],
+    parentProtocol: "parent#rfx-exchange",
+    listedAt: 1742137510
+  },
 ];
 export default data4;

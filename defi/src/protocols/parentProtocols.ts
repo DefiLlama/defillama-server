@@ -6661,6 +6661,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "axion_finance_",
     github: ["Axion-Finance"],
   },
+  {
+    id: "parent#rfx-exchange",
+    name: "RFX Exchange",
+    url: "https://rfx.exchange",
+    description: "The first derivatives exchange with smart liquidity. Maximise your yield. Create your own trading pairs. Built on ZkSync Era and Sophon",
+    logo: `${baseIconsUrl}/rfx-exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "RFX_exchange",
+    github: ["rfx-exchange"],
+  },
 ];
 
 export default parentProtocols;

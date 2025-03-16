@@ -61966,12 +61966,12 @@ const data3: Protocol[] = [
   },
   {
     id: "5406",
-    name: "RFX Exchange",
+    name: "RFX Exchange v1",
     address: null,
     symbol: "-",
     url: "https://rfx.exchange/",
     description:
-      "The first derivatives exchange with smart liquidity. Maximise your yield. Create your own trading pairs. Built on ZkSync Era",
+      "The first derivatives exchange with smart liquidity. Maximise your yield. Create your own trading pairs. Built on ZkSync Era and Sophon",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/rfx-exchange.jpg`,
     audits: "2",
@@ -61979,12 +61979,13 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["zkSync Era"],
+    chains: ["zkSync Era", "Sophon"],
     module: "rfx-exchange/index.js",
     twitter: "RFX_exchange",
-    forkedFrom: ["GMX V2"],
-    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12413
+    forkedFrom: [],
+    oracles: ["Pyth", "Stork"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12413
     audit_links: ["https://github.com/rfx-exchange/rfx-deployments/tree/main/audits"],
+    parentProtocol: "parent#rfx-exchange",
     listedAt: 1732386579
   },
   {

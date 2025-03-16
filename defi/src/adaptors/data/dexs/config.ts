@@ -1,4 +1,3 @@
-import { id } from "ethers"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -2866,5 +2865,16 @@ export default {
     },
     "meridian-amm": {
         id: "5885"
+    },
+    "yuzu-finance": {
+        "id": "5906"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-swap": {
+                id: "5406"
+            }
+        }
     }
 } as AdaptorsConfig

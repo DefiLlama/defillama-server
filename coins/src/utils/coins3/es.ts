@@ -175,7 +175,7 @@ export function getMetadataRecord(json: any): MetadataRecord | undefined {
 
   let record: any = json;
   if (record.PK) {
-    // it is a dynamodb record, need to chang to elastic search record
+    // it is a dynamodb record, need to change to elastic search record
     record = normalizeRecord(record);
   }
 
@@ -221,8 +221,8 @@ function normalizeRecord(record: any): MetadataRecord {
   const pid = normalizeCoinId(record.PK);
   if (record.redirect) {
     record.redirects = [record.redirect];
-    delete record.redirect;
   }
+  delete record.redirect;  // sometimes the field exists but is empty/undefined
   if (Array.isArray(record.redirects)) {
     record.redirects = record.redirects.map(normalizeCoinId);
   }

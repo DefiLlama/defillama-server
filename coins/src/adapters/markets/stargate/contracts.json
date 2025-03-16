@@ -376,7 +376,7 @@
       ]
     }
   },
-  "lightlink": {
+  "lightlink_phoenix": {
     "eth": {
       "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
       "pools": [

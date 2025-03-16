@@ -2614,5 +2614,29 @@ export default {
     },
     "meridian-amm": {
         id: "5885"
+    },
+    "merkle-trade": {
+        "id": "3678"
+    },
+    "gyroscope": {
+        "id": "2397"
+    },
+    "wildcat": {
+        "id": "3871"
+    },
+    "napier": {
+        "id": "4834"
+    },
+    "yuzu-finance": {
+        "id": "5906"
+    },
+    "beets-staked-sonic": {
+        id: "4126"
+    },
+    "stout": {
+        id: "5902"
+    },
+    "rfx": {
+        id: "5406"
     }
 } as AdaptorsConfig

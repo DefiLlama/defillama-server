@@ -403,6 +403,21 @@
     }
   },
   "ethereum": {
+    "0xD533a949740bb3306d119CC777fa900bA034cd52": {
+      "decimals": "18",
+      "symbol": "CRV",
+      "to": "coingecko#curve-dao-token"
+    },
+    "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E": {
+      "decimals": "18",
+      "symbol": "crvUSD",
+      "to": "coingecko#crvusd"
+    },
+    "0x0655977FEb2f289A4aB78af67BAB0d17aAb84367": {
+      "decimals": "18",
+      "symbol": "scrvUSD",
+      "to": "coingecko#savings-crvusd"
+    },
     "0x4F8E1426A9d10bddc11d26042ad270F16cCb95F2": {
       "decimals": "18",
       "symbol": "sUSD",
@@ -874,6 +889,21 @@
     }
   },
   "arbitrum": {
+    "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978": {
+      "decimals": "18",
+      "symbol": "CRV",
+      "to": "coingecko#curve-dao-token"
+    },
+    "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5": {
+      "decimals": "18",
+      "symbol": "crvUSD",
+      "to": "coingecko#crvusd"
+    },
+    "0xEfB6601Df148677A338720156E2eFd3c5Ba8809d": {
+      "decimals": "18",
+      "symbol": "scrvUSD",
+      "to": "coingecko#savings-crvusd"
+    },
     "0x1a996cb54bb95462040408c06122d45d6cdb6096": {
       "decimals": "6",
       "symbol": "fUSDC",
@@ -1078,6 +1108,26 @@
     }
   },
   "optimism": {
+    "0x16ed8e219cde31e14a80dcb6c9127a5ec6e88e46": {
+      "decimals": "18",
+      "symbol": "apxETH",
+      "to": "asset#ethereum:0x9ba021b0a9b958b5e75ce9f6dff97c7ee52cb3e6"
+    },
+    "0x0994206dfE8De6Ec6920FF4D779B0d950605Fb53": {
+      "decimals": "18",
+      "symbol": "CRV",
+      "to": "coingecko#curve-dao-token"
+    },
+    "0xC52D7F23a2e460248Db6eE192Cb23dD12bDDCbf6": {
+      "decimals": "18",
+      "symbol": "crvUSD",
+      "to": "coingecko#crvusd"
+    },
+    "0x289f635106d5b822A505b39AC237A0AE9189335B": {
+      "decimals": "18",
+      "symbol": "scrvUSD",
+      "to": "coingecko#savings-crvusd"
+    },
     "0xAed882F117b78034829E2cfFA11206706837B1b1": {
       "decimals": "18",
       "symbol": "WQ",
@@ -1151,6 +1201,21 @@
     }
   },
   "base": {
+    "0x8Ee73c484A26e0A5df2Ee2a4960B789967dd0415": {
+      "decimals": "18",
+      "symbol": "CRV",
+      "to": "coingecko#curve-dao-token"
+    },
+    "0x417Ac0e078398C154EdFadD9Ef675d30Be60Af93": {
+      "decimals": "18",
+      "symbol": "crvUSD",
+      "to": "coingecko#crvusd"
+    },
+    "0x646A737B9B6024e49f5908762B3fF73e65B5160c": {
+      "decimals": "18",
+      "symbol": "scrvUSD",
+      "to": "coingecko#savings-crvusd"
+    },
     "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
       "decimals": "8",
       "symbol": "WBTC",
@@ -4796,6 +4861,11 @@
       "to": "coingecko#susda",
       "decimals": 18,
       "symbol": "sUSDa"
+    },
+    "0x549943e04f40284185054145c6e4e9568c1d3241": {
+      "to": "coingecko#wrapped-steth",
+      "decimals": 18,
+      "symbol": "wstETH"
     }
   },
   "rss3_vsl": {
@@ -5242,6 +5312,21 @@
     }
   },
   "taiko": {
+    "0x09413312b263fD252C16e592A45f4689F26cb79d": {
+      "decimals": "18",
+      "symbol": "CRV",
+      "to": "coingecko#curve-dao-token"
+    },
+    "0xc8F4518ed4bAB9a972808a493107926cE8237068": {
+      "decimals": "18",
+      "symbol": "crvUSD",
+      "to": "coingecko#crvusd"
+    },
+    "0x8c74d11da5E6cE0498cd280F9209dFB0C5e048A7": {
+      "decimals": "18",
+      "symbol": "scrvUSD",
+      "to": "coingecko#savings-crvusd"
+    },
     "0xA51894664A773981C6C112C43ce576f315d5b1B6": {
       "decimals": "18",
       "symbol": "ETH",
@@ -5586,15 +5671,25 @@
     }
   },
   "fraxtal": {
+    "0x331B9182088e2A7d6D3Fe4742AbA1fB231aEcc56": {
+      "decimals": "18",
+      "symbol": "CRV",
+      "to": "coingecko#curve-dao-token"
+    },
+    "0xB102f7Efa0d5dE071A8D37B3548e1C7CB148Caf3": {
+      "decimals": "18",
+      "symbol": "crvUSD",
+      "to": "coingecko#crvusd"
+    },
+    "0xaB94C721040b33aA8b0b4D159Da9878e2a836Ed0": {
+      "decimals": "18",
+      "symbol": "scrvUSD",
+      "to": "coingecko#savings-crvusd"
+    },
     "0x50e52d7cf91eb4e38a28d9cf4c554e9dc37753f0": {
       "to": "coingecko#axlusdc",
       "decimals": 18,
       "symbol": "axlUSDC"
-    },
-    "0x331B9182088e2A7d6D3Fe4742AbA1fB231aEcc56": {
-      "to": "coingecko#curve-dao-token",
-      "decimals": 18,
-      "symbol": "CRV"
     },
     "0xA8a59D73388D0c4344a7b0Ba287ddb654227c38a": {
       "to": "coingecko#ethereum",
@@ -7539,6 +7634,11 @@
     }
   },
   "move": {
+    "0x1::aptos_coin::AptosCoin": {
+      "decimals": "8",
+      "symbol": "MOVE",
+      "to": "coingecko#movement"
+    },
     "0xa": {
       "to": "coingecko#movement",
       "decimals": 8,

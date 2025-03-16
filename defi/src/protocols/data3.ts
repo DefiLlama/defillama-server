@@ -9123,7 +9123,7 @@ const data3: Protocol[] = [
     module: "ramses-cl/index.js",
     twitter: "RamsesExchange",
     oracles: [],
-    forkedFrom: ["Uniswap V3"],
+    forkedFrom: ["Uniswap V3", "Solidly"],
     parentProtocol: "parent#ramses-exchange",
     listedAt: 1686345425,
   },
@@ -12590,6 +12590,7 @@ const data3: Protocol[] = [
   {
     id: "3250",
     name: "LayerBank", // previous LineaBank
+    previousNames: ["LineaBank"],
     address: "linea:0xB97F21D1f2508fF5c73E7B5AF02847640B1ff75d",
     symbol: "LAB",
     url: "https://layerbank.finance",
@@ -27892,7 +27893,7 @@ const data3: Protocol[] = [
     category: "Dexs",
     chains: ["Avalanche"],
     oracles: [],
-    forkedFrom: ["Uniswap V3"],
+    forkedFrom: ["Uniswap V3", "Solidly"],
     module: "pharaoh-exchange/index.js",
     twitter: "PharaohExchange",
     parentProtocol: "parent#pharaoh-exchange",
@@ -31412,7 +31413,7 @@ const data3: Protocol[] = [
     category: "Dexs",
     chains: ["Linea"],
     oracles: [],
-    forkedFrom: ["Uniswap V3"],
+    forkedFrom: ["Uniswap V3", "Solidly"],
     module: "nile-exchange/index.js",
     twitter: "NileExchange",
     parentProtocol: "parent#nile-exchange",
@@ -36403,7 +36404,7 @@ const data3: Protocol[] = [
     category: "Dexs",
     chains: ["Mantle"],
     oracles: [],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["Solidly"],
     module: "cleopatra-exchange-v1/index.js",
     twitter: "CleopatraDEX",
     parentProtocol: "parent#cleopatra-exchange",
@@ -36426,7 +36427,7 @@ const data3: Protocol[] = [
     category: "Dexs",
     chains: ["Avalanche"],
     oracles: [],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["Solidly"],
     module: "pharaoh-exchange-v1/index.js",
     twitter: "PharaohExchange",
     parentProtocol: "parent#pharaoh-exchange",
@@ -42761,7 +42762,7 @@ const data3: Protocol[] = [
     category: "Dexs",
     chains: ["Scroll"],
     oracles: [],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["Solidly"],
     module: "nuri-exchange-v1/index.js",
     twitter: "NuriExchange",
     audit_links: [],
@@ -42785,7 +42786,7 @@ const data3: Protocol[] = [
     category: "Dexs",
     chains: ["Scroll"],
     oracles: [],
-    forkedFrom: ["Uniswap V3"],
+    forkedFrom: ["Uniswap V3", "Solidly"],
     module: "nuri-exchange/index.js",
     twitter: "NuriExchange",
     audit_links: [],
@@ -48932,25 +48933,26 @@ const data3: Protocol[] = [
   },
   {
     id: "4834",
-    name: "Napier Finance",
+    name: "Napier",
+    previousNames: ["Napier Finance"],
     address: null,
     symbol: "-",
     url: "https://app.napier.finance/",
     description:
-      "The end game for Curve ecosystem. A liquidity hub for yield/point trading powered by Curve ecosystem.",
+      "A modular yield tokenization protocol that enables you to own, manage, create any yield products without permissions.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/napier-finance.jpg`,
+    logo: `${baseIconsUrl}/napier.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Base", "Sonic", "Mantle", "Arbitrum", "Optimism", "Polygon", "Avalanche", "BSC", "Fraxtal", "Hyperliquid"],
     oracles: [],
     forkedFrom: [],
     module: "napier/index.js",
     twitter: "NapierFinance",
-    audit_links: ["https://github.com/sherlock-audit/2024-05-napier-update"],
+    audit_links: ["https://github.com/sherlock-audit/2024-05-napier-update", "https://github.com/napierfi/napier-v2-public/tree/main/audits"],
     listedAt: 1719925946,
   },
   {
@@ -50198,7 +50200,14 @@ const data3: Protocol[] = [
     chains: ["Bitlayer"],
     module: "desyn-basisTrading/index.js",
     twitter: "DesynLab",
-    oracles: [],
+    oracles: ["RedStone"],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.desyn.io/mechanism/product-introduction/desyns-contracts-overview#id-4-desynoracle"]
+      },
+    ],
     forkedFrom: [],
     parentProtocol: "parent#desyn-protocol",
     listedAt: 1721135854,
@@ -56243,7 +56252,14 @@ const data3: Protocol[] = [
     module: "cygnus-fi-restake/index.js",
     twitter: "CygnusFi",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["RedStone"], //https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work
+    oraclesBreakdown: [
+      {
+        name: "Restone",
+        type: "Primary",
+        proof: ["https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work"]
+      }
+    ],
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1726581992
   },
@@ -58029,24 +58045,26 @@ const data3: Protocol[] = [
   },
   {
     id: "5234",
-    name: "USDX Money",
-    address: null,
-    symbol: "-",
-    url: "https://usdx.money",
+    name: "Stables Labs USDX", // previous USDX Money
+    previousNames: ["USDX Money"],
+    address: "0xf3527ef8dE265eAa3716FB312c12847bFBA66Cef",
+    symbol: "USDX",
+    url: "https://usdx.money/",
     description:
-      "USDX is a synthetic USD stablecoin built for the crypto ecosystem. It offers a crypto-native stablecoin solution that does not rely on traditional banking infrastructure which is censorship-resistant, scalable, and highly stable. Furthermore, it provides a multiple-layer savings tool including funding rate and crypto ecosystem yield accessible worldwide in USD denomination.",
+      "USDX is a synthetic USD stablecoin designed to provide stability without relying on traditional banking infrastructure. Backed by delta-neutral positions across multiple exchanges, USDX seamlessly bridges the gap between DeFi, CeFi, and TradFi. It enables DeFi users to access traditional delta-neutral strategies executed in CeFi platforms. As a crypto-native stablecoin, USDX offers a scalable, censorship-resistant, and highly stable solution for users looking to navigate the world of decentralized finance with confidence.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/usdx-money.png`,
+    logo: `${baseIconsUrl}/stables-labs-usdx.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "stables-labs-usdx",
+    cmcId: "34060",
     category: "Basis Trading",
-    chains: ["Binance", "Arbitrum"],
+    chains: ["Ethereum", "Binance", "Arbitrum"],
     module: "usdx/index.js",
-    twitter: "usdx_money",
+    twitter: "StablesLabs",
     forkedFrom: [],
     oracles: ["RedStone"], //https://docs.usdx.money/informaiton/oracles
+    audit_links: ["https://docs.usdx.money/informaiton/audit"],
     listedAt: 1728645744
   },
   {
@@ -58274,7 +58292,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#kelp-dao",
     listedAt: 1729134534,
     tokensExcludedFromParent: {
-      Ethereum: ["rsETH"],
+      Ethereum: ["RSETH"],
     },
   },
   {
@@ -58455,6 +58473,7 @@ const data3: Protocol[] = [
     github: ["mira-amm"],
     listedAt: 1729254583
   },
+  /* // need to confirm this collateral
   {
     id: "5253",
     name: "Lorenzo stBTC",
@@ -58477,6 +58496,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#lorenzo-protocol",
     listedAt: 1729589412
   },
+  */
   {
     id: "5254",
     name: "Exmo",

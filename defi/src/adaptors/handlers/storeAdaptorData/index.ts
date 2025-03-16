@@ -53,6 +53,7 @@ export type IStoreAdaptorDataHandlerEvent = {
   yesterdayIdSet?: Set<string>
   todayIdSet?: Set<string>
   runType?: 'store-all' | 'default'
+  throwError?: boolean
 }
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
@@ -61,6 +62,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
   const defaultMaxConcurrency = 21
   let { timestamp = timestampAnHourAgo, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
+    throwError = false,
 
   } = event
   if (!isRunFromRefillScript)
@@ -164,6 +166,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       await sendDiscordAlert(logs.join('\n'), notificationType, true)
     console.table(errorObjects)
   }
+
+  if (throwError && errorObjects.length) 
+    throw new Error('Errors found')
   // console.log(JSON.stringify(errorObjects, null, 2))
   /* console.log(` ${adapterType} Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
   console.table(timeTable) */
@@ -216,9 +221,15 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       } else
         throw new Error("Invalid adapter")
 
+      let runAtCurrTime = adaptersToRun.some(([_version, adapter]) => Object.values(adapter).some(a => a.runAtCurrTime))
+
+      if (isRunFromRefillScript && runAtCurrTime) {
+        if (Date.now() - fromTimestamp * 1000 > 1000 * 60 * 60 * 24) {
+          throw new Error(`${adapterType} - ${module} - runAtCurrTime is set, but the refill script is running for more than 24 hours`)
+        }
+      }
 
       if (runType === 'store-all') {
-        let runAtCurrTime = adaptersToRun.some(([_version, adapter]) => Object.values(adapter).some(a => a.runAtCurrTime))
 
         const date = new Date()
         const hours = date.getUTCHours()

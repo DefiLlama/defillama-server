@@ -60,7 +60,13 @@ const prompts: any = {
   dryRun: {
     type: 'confirm',
     name: 'dryRun',
-    message: 'Is this a dry run?',
+    message: 'Is this a dry run? (default: false)',
+    default: false,
+  },
+  onlyMissing: {
+    type: 'confirm',
+    name: 'onlyMissing',
+    message: 'Refilling only missing days? (default: false)',
     default: false,
   },
 }
@@ -78,6 +84,7 @@ const runConfigEnv = {
   dry_run: 'false',
   confirm: 'false',
   hide_config_table: 'true',
+  refill_only_missing_data: 'false',
 }
 
 async function run(prompt: any) {
@@ -113,7 +120,7 @@ async function run(prompt: any) {
         if (adapterChoices[0] !== answer)
           adapterChoices.unshift(answer)
         runConfigEnv.protocol = answer
-        state.nextPrompt = 'dateFrom'
+        state.nextPrompt = 'onlyMissing'
         break;
       case 'dateFrom':
         runConfigEnv.from = answer
@@ -125,10 +132,17 @@ async function run(prompt: any) {
         prompts[currentPrompt].default = new Date(answer * 1000)
         state.nextPrompt = 'dryRun'
         break;
+      case 'onlyMissing':
+        runConfigEnv.refill_only_missing_data = answer ? 'true' : 'false'
+        prompts[currentPrompt].default = answer
+        if (answer)
+          state.nextPrompt = 'dryRun'
+        else state.nextPrompt = 'dateFrom'
+        break;
       case 'dryRun':
         runConfigEnv.dry_run = answer ? 'true' : 'false'
         await runScript()
-        state.nextPrompt = 'adapter'
+        state.nextPrompt = 'dryRun'
         break;
     }
 
@@ -183,7 +197,7 @@ async function runScript() {
   return new Promise((resolve: any, _reject: any) => {
     const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
     const subProcess = childProcess.spawn(npmPath, ['run', 'fillOld-dimensions'], { stdio: 'inherit', env: env });
-    
+
     // catch unhandled errors
     process.on('uncaughtException', function (err) {
       console.error('Caught exception: ', err);

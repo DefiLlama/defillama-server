@@ -182,6 +182,10 @@ function prompt(query: string): Promise<string> {
 
 async function refillAllProtocols() {
 
+  setTimeout(() => {
+    console.error("Timeout reached, exiting from refillAllProtocols...")
+    process.exit(1)
+  }, 1000 * 60 * 60 * 4) // 4 hours
   let timeRange = 90 // 3 months
   const envTimeRange = process.env.refill_adapters_timeRange
   if (envTimeRange && !isNaN(+envTimeRange)) timeRange = +envTimeRange

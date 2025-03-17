@@ -173,7 +173,7 @@ export function getMetadataRecord(json: any): MetadataRecord | undefined {
   // probably a price record that does not contain any metadata info
   if (!json.decimals && !json.symbol) return undefined;
 
-  let record: any = json;
+  let record: any = JSON.parse(JSON.stringify(json)); // deep copy
   if (record.PK) {
     // it is a dynamodb record, need to change to elastic search record
     record = normalizeRecord(record);

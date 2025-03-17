@@ -2924,7 +2924,19 @@ const data4: Protocol[] = [
     chains: ["Hedera"],
     module: "sirio-fi/index.js",
     twitter: "SirioFinance",
-    oracles: [],
+    oracles: ["Supra"],
+    oraclesBreakdown: [
+      {
+        name: "Supra",
+        type: "Primary",
+        proof: ["https://astrid.gitbook.io/sirio/architecture/risk-framework/price-feeds-and-backup"]
+      },
+      {
+        name: "TWAP",
+        type: "Fallback",
+        proof: ["https://astrid.gitbook.io/sirio/architecture/risk-framework/price-feeds-and-backup"]
+      }
+    ],
     forkedFrom: [],
     listedAt: 1738233223
   },

@@ -2653,5 +2653,8 @@ export default {
     },
     "tonco": {
         id: "5363"
+    },
+    "witty": {
+        id: "5908"
     }
 } as AdaptorsConfig

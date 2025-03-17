@@ -2638,5 +2638,23 @@ export default {
     },
     "rfx": {
         id: "5406"
+    },
+    "stability": {
+        id: "4256"
+    },
+    "sedge": {
+        id: "366"
+    },
+    "vicuna-finance": {
+        id: "5672"
+    },
+    "eggs-finance": {
+        id: "5789"
+    },
+    "tonco": {
+        id: "5363"
+    },
+    "witty": {
+        id: "5908"
     }
 } as AdaptorsConfig

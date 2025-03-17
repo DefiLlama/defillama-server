@@ -2656,5 +2656,8 @@ export default {
     },
     "witty": {
         id: "5908"
+    },
+    "logx": {
+        id: "5137"
     }
 } as AdaptorsConfig

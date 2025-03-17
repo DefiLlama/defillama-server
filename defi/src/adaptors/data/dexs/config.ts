@@ -2876,5 +2876,8 @@ export default {
                 id: "5406"
             }
         }
+    },
+    "tonco": {
+        id: "5363"
     }
 } as AdaptorsConfig

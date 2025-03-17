@@ -54756,7 +54756,7 @@ const data3: Protocol[] = [
     url: "https://www.level.money",
     description:
       "Level is a yield-bearing stablecoin protocol powered by USDT and USDC deposited into DeFi-native sources.",
-    chain: "Ethereum",g
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/level-money.jpg`,
     audits: "0",
     audit_note: null,

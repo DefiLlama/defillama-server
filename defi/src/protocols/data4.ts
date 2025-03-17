@@ -7575,7 +7575,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["zkSync Era"],
-    module: "rfx-exchange/index.js",
+    module: "rfx-exchange-v2/index.js",
     twitter: "RFX_exchange",
     forkedFrom: ["GMX V2"],
     oracles: ["Pyth","Stork"], 

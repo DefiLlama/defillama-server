@@ -7559,5 +7559,95 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1741988038
   },
+  {
+    id: "5910",
+    name: "RFX Exchange V2",
+    address: null,
+    symbol: "-",
+    url: "https://rfx.exchange/",
+    description:
+      "The first derivatives exchange with smart liquidity. Maximise your yield. Create your own trading pairs. Built on ZkSync Era",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/rfx-exchange-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["zkSync Era"],
+    module: "rfx-exchange/index.js",
+    twitter: "RFX_exchange",
+    forkedFrom: ["GMX V2"],
+    oracles: ["Pyth","Stork"], 
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.rfx.exchange/oracle-system"]
+      },
+      {
+        name: "Stork",
+        type: "Primary",
+        proof: ["https://docs.rfx.exchange/oracle-system"]
+      }
+    ],
+    audit_links: ["https://github.com/rfx-exchange/rfx-deployments/tree/main/audits"],
+    parentProtocol: "parent#rfx-exchange",
+    listedAt: 1742218425
+  },
+  {
+    id: "5911",
+    name: "CLAMM",
+    address: null,
+    symbol: "-",
+    url: "https://app.clamm.io",
+    description:
+      "Concentrated liquidity AMM with Plugins (v4).",
+    chain: "Base",
+    logo: `${baseIconsUrl}/clamm.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: ["Algebra Integral"],
+    module: "clamm/index.js",
+    twitter: "clamm_dex",
+    audit_links: [],
+    listedAt: 1742218435
+  },
+  {
+    id: "5912",
+    name: "Chedda Finance",
+    address: null,
+    symbol: "-",
+    url: "https://chedda.finance/",
+    description:
+      "Chedda Finance is the lending platform for AI, Meme Coins and GameFi tokens",
+    chain: "Base",
+    logo: `${baseIconsUrl}/chedda-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    oracles: ["DIA"],
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13883"]
+      }
+    ],
+    forkedFrom: [],
+    module: "chedda-finance/index.js",
+    twitter: "chedda_finance",
+    audit_links: ["https://github.com/chedda-tech/chedda-protocol/blob/develop/audit/Chedda%20Finance%20Smart%20Contract%20Audit%20Report%20-%20Final%20Report.pdf"],
+    github: ["chedda-tech"],
+    listedAt: 1742218445
+  },
 ];
 export default data4;

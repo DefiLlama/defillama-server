@@ -6672,6 +6672,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Bitbond",
   },
+  {
+    id: "parent#rfx-exchange",
+    name: "RFX Exchange",
+    url: "https://rfx.exchange/",
+    description: "Token Tool by Bitbond is a no-code dApp that enables users to effortlessly create tokens and launch token sales across major chains. Use Token Tool's convenient user interface instead of coding your own smart contracts",
+    logo: `${baseIconsUrl}/rfx-exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "RFX_exchange",
+    github: ["rfx-exchange"]
+  },
 ];
 
 export default parentProtocols;

@@ -61986,14 +61986,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5406",
-    name: "RFX Exchange",
+    name: "RFX Exchange V1", // previously RFX Exchange
     address: null,
     symbol: "-",
     url: "https://rfx.exchange/",
     description:
       "The first derivatives exchange with smart liquidity. Maximise your yield. Create your own trading pairs. Built on ZkSync Era",
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/rfx-exchange.jpg`,
+    logo: `${baseIconsUrl}/rfx-exchange-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -62005,6 +62005,7 @@ const data3: Protocol[] = [
     forkedFrom: ["GMX V2"],
     oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/12413
     audit_links: ["https://github.com/rfx-exchange/rfx-deployments/tree/main/audits"],
+    parentProtocol: "parent#rfx-exchange",
     listedAt: 1732386579
   },
   {

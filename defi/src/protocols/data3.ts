@@ -22095,7 +22095,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["Chronicle"],
     forkedFrom: [],
     module: "maker-rwa/index.js",
     twitter: "MakerDAO",

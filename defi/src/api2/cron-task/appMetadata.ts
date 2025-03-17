@@ -12,7 +12,11 @@ import { colord } from 'colord'
 import fetch from "node-fetch";
 import { pullDevMetricsData } from './githubMetrics';
 import { chainCoingeckoIds } from '../../utils/normalizeChain';
+import protocols from '../../protocols/data';
 const { exec } = require('child_process');
+
+const protocolInfoMap: any = {}
+protocols.forEach((protocol: any) => protocolInfoMap[protocol.id] = protocol)
 
 
 const fetchJson = async (url: string) => fetch(url).then(res => res.json())
@@ -963,6 +967,11 @@ async function _storeAppMetadata() {
         }
       }
 
+      let tvlMethodolodyUrl = null
+      if (!isParentProtocol && protocolInfoMap[protocolId]?.module) {
+        tvlMethodolodyUrl = `https://github.com/DefiLlama/DefiLlama-Adapters/tree/main/projects/${protocolInfoMap[protocolId]?.module}`
+      }
+
       const data = {
         articles: fetchProtocolArticles({ tags: protocolData.name }),
         // protocol,
@@ -1039,9 +1048,7 @@ async function _storeAppMetadata() {
         tokenLiquidity,
         upcomingEvent,
         methodologyUrls: {
-          tvl: protocolData.module
-            ? `https://github.com/DefiLlama/DefiLlama-Adapters/tree/main/projects/${protocolData.module}`
-            : null,
+          tvl: tvlMethodolodyUrl,
           fees: feesData?.[0]?.methodologyURL ?? null,
           dexs: volumeData?.[0]?.methodologyURL ?? null,
           perps: perpsData?.[0]?.methodologyURL ?? null,

@@ -21,14 +21,15 @@ async function run1() {
   })
 
   console.log(result.length)
-  fs.writeFileSync('data.log', JSON.stringify(result, null, 2))
+  return result
+  // fs.writeFileSync('data.log', JSON.stringify(result, null, 2))
 
 }
 
 async function run() {
-  // await run1()
-  const data = fs.readFileSync('data.log', 'utf8')
-  const result = JSON.parse(data)
+  const result = await run1()
+  // const data = fs.readFileSync('data.log', 'utf8')
+  // const result = JSON.parse(data)
   const res1 = result.filter((i: any) => {
     const createTs = (+new Date(i.createdat)) / 1e3
     return createTs - i.timestamp > 48 * 60 * 60 // 48 hours
@@ -55,7 +56,7 @@ async function run() {
     console.log(adapterType)
     Object.entries(protocols).forEach(([protocolId, data]: any) => {
       if (data.length < 3) return;
-      console.table(data)
+      // console.table(data)
       let data0 = data[0].value
       if (data[1].value === data0 && data[2].value === data0) {
         possibleDuplicates.push({ adapterType, protocolId, data })

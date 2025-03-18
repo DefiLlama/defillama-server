@@ -7060,7 +7060,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://extended.exchange",
     description:
-      "Extended, built by ex-Revolut team, is a self-custody exchange with on-chain trade settlement and complete transparency. Currently live with perps but we’re on a mission to build the most extended portfolio in DeFi that rivals CEXs with spot, borrowing & lending and portfolio margin.",
+      "Extended is a perp DEX, built by ex-Revolut team, on a mission to offer the most extensive product portfolio in DeFi—featuring cross-asset collateral, unified margin, perps, spot, and lending markets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/extended.jpg`,
     audits: "0",

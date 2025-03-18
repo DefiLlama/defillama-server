@@ -7661,5 +7661,51 @@ const data4: Protocol[] = [
     github: ["chedda-tech"],
     listedAt: 1742218445
   },
+  {
+    id: "5913",
+    name: "exit.tech",
+    address: null,
+    symbol: "-",
+    url: "https://exit.tech",
+    description:
+      "A platform that lets you easily exit your locked DeFi positions, while still earning rewards, and rewards those that support your move.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/exit.tech.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "exit-tech/index.js",
+    twitter: "exit_tech_",
+    parentProtocol: "parent#bonsaidao-ecosystem",
+    audit_links: ["https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FU7Q6UV6CGLwU33vLuGwo%2Fuploads%2FtzTGuvytvqAikGukksoj%2FeGMX%20Exit%20Tech%20Audit%20Report.pdf?alt=media&token=9b9afe04-c6ab-431b-9075-d9d9d6517e4b"],
+    listedAt: 1742305759
+  },
+  {
+    id: "5914",
+    name: "Ekubo EVM",
+    address: null,
+    symbol: "-",
+    url: "https://evm.ekubo.org",
+    description:
+      "The most powerful AMM ever",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ekubo-evm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ekubo-evm/index.js",
+    twitter: "EkuboProtocol",
+    listedAt: 1742305799
+  },
 ];
 export default data4;

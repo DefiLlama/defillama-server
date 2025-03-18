@@ -55946,7 +55946,7 @@ const data3: Protocol[] = [
     tokensExcludedFromParent: {
       Ethereum: ["LBTC", "PT-LBTC-27MAR2025", "gtLBTCc", "YT-LBTC-27MAR2025", "SY-LBTC"],
       Base: ["LBTC", "LP LBTC", "PT LBTC", "YT LBTC"],
-      Bsc: ["LBTC"],
+      Binance: ["LBTC"],
       Sonic: ["LBTC"],
     },
     listedAt: 1726215518
@@ -65481,6 +65481,10 @@ const data3: Protocol[] = [
     module: "brbtc/index.js",
     twitter: "Bedrock_DeFi",
     parentProtocol: "parent#bedrock",
+    tokensExcludedFromParent: {
+      Binance: ["UNIBTC"],
+      Ethereum: ["UNIBTC"],
+    },
     listedAt: 1735572890
   },
   {

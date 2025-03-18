@@ -3843,7 +3843,7 @@ const data4: Protocol[] = [
     oracles: ["Restone"],
     oraclesBreakdown: [
       {
-        name: "Restone",
+        name: "RedStone",
         type: "Primary",
         proof: ["https://app.redstone.finance/app/feeds/?page=1&sortBy=popularity&sortDesc=false&perPage=32&networks=80094", "https://berascan.com//address/0x83c6f7F61A55Fc7A1337AbD45733AD9c1c68076D"]
       },

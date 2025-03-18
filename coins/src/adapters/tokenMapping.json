@@ -7575,6 +7575,21 @@
       "to": "coingecko#babypie-wrapped-btc",
       "decimals": 8,
       "symbol": "mBTC"
+    },
+    "0x6a9a65b84843f5fd4ac9a0471c4fc11afffbce4a": {
+      "decimals": "8",
+      "symbol": "enzoBTC",
+      "to": "coingecko#lorenzo-stbtc"
+    },
+    "0x9BFA177621119e64CecbEabE184ab9993E2ef727": {
+      "decimals": "18",
+      "symbol": "M-BTC",
+      "to": "coingecko#merlin-s-seal-btc"
+    },
+    "0xF469fBD2abcd6B9de8E169d128226C0Fc90a012e": {
+      "decimals": "8",
+      "symbol": "pumpBTC",
+      "to": "coingecko#pumpbtc"
     }
   },
   "oas": {

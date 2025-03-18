@@ -39257,7 +39257,7 @@ const data3: Protocol[] = [
     chains: [ "Bitlayer", "BOB", "Binance"],
     module: "satoshi-protocol/index.js",
     twitter: "Satoshi_BTCFi",
-    forkedFrom: [],11111
+    forkedFrom: [],
     oraclesByChain: {
       bevm: ["DIA"], // https://docs.satoshiprotocol.org/outro/oracle
       bob: ["Api3", "DIA"], // https://docs.satoshiprotocol.org/outro/oracle

@@ -21,14 +21,15 @@ export type Dynamo = {
 function convertToMessage(item: Dynamo, topic: Topic): object | undefined {
   const { PK, decimals, price, confidence, SK, adapter, mcap } = item;
   const { pid } = splitPk(PK, decimals);
+  const numberPrice: number = Number(price)
 
   switch (topic) {
     case "coins-metadata":
       return; // for coins-metadata, we now rely on getMetadataRecord elsewhere
     case "coins-current":
-      return { pid, price, confidence, adapter, mcap, updateTs: Math.floor(Date.now() / 1000) };
+      return { pid, price: numberPrice, confidence, adapter, mcap, updateTs: Math.floor(Date.now() / 1000) };
     case "coins-timeseries":
-      return { pid, price, confidence, adapter, ts: SK, mcap };
+      return { pid, price: numberPrice, confidence, adapter, ts: SK, mcap };
     default:
       throw new Error(`Topic '${topic}' is not valid`);
   }

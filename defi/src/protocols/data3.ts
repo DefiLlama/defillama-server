@@ -2048,7 +2048,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#thala-labs",
     listedAt: 1680889424,
     tokensExcludedFromParent: {
-      Aptos: ["STHAPT", "THAPT", "veTHL"],
+      Aptos: ["STHAPT", "THAPT", "VETHL"],
     },
   },
   {
@@ -2183,7 +2183,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#thala-labs",
     listedAt: 1680980221,
     tokensExcludedFromParent: {
-      Aptos: ["STHAPT", "THAPT", "veTHL"],
+      Aptos: ["STHAPT", "THAPT", "VETHL"],
     },
   },
   {
@@ -12836,7 +12836,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#aftermath-finance",
     listedAt: 1689860538,
     tokensExcludedFromParent: {
-      Sui: ["afSUI"], // already counting all afSUI in Aftermath afSUI listing
+      Sui: ["AFSUI"], // already counting all afSUI in Aftermath afSUI listing
     },
   },
   {
@@ -39670,7 +39670,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#ether-fi",
     listedAt: 1712171943,
     tokensExcludedFromParent: {
-      Ethereum: ["EETH", "weETH"],
+      Ethereum: ["EETH", "WEETH"],
     },
   },
   {
@@ -40682,7 +40682,7 @@ const data3: Protocol[] = [
     audit_links: ["https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/2024/Avalon-AVAF_audit_report_2024-06-11.pdf", 'https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/2024/Avalon_Finance-ORACLE_audit_report_2024-04-09.pdf'],
     listedAt: 1712919585,
     tokensExcludedFromParent: {
-      taiko: ["USDa", "sUSDa"],
+      taiko: ["USDA", "SUSDA"],
     },
   },
   {
@@ -43528,7 +43528,7 @@ const data3: Protocol[] = [
     twitter: "ThalaLabs",
     parentProtocol: "parent#thala-labs",
     tokensExcludedFromParent: {
-      Aptos: ["STHAPT", "THAPT", "veTHL"],
+      Aptos: ["STHAPT", "THAPT", "VETHL"],
     },
     listedAt: 1715679178,
   },
@@ -48444,7 +48444,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#threshold-network",
     stablecoins: ["threshold-usd"],
     tokensExcludedFromParent: {
-      Ethereum: ["tBTC"],
+      Ethereum: ["TBTC"],
     },
     listedAt: 1719351634,
   },
@@ -55944,7 +55944,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#lombard-finance",
     tokensExcludedFromParent: {
-      Ethereum: ["LBTC", "PT-LBTC-27MAR2025", "gtLBTCc", "YT-LBTC-27MAR2025", "SY-LBTC"],
+      Ethereum: ["LBTC", "PT-LBTC-27MAR2025", "GTLBTCC", "YT-LBTC-27MAR2025", "SY-LBTC"],
       Base: ["LBTC", "LP LBTC", "PT LBTC", "YT LBTC"],
       Binance: ["LBTC"],
       Sonic: ["LBTC"],
@@ -58702,7 +58702,7 @@ const data3: Protocol[] = [
     ],
     parentProtocol: "parent#swell",
     tokensExcludedFromParent: {
-      Ethereum: ["rswETH", "swETH"],
+      Ethereum: ["RWSETH", "SWETH"],
     },
   },
   {
@@ -60224,7 +60224,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     tokensExcludedFromParent: {
-      Aptos: ["STHAPT", "THAPT", "veTHL"],
+      Aptos: ["STHAPT", "THAPT", "VETHL"],
     },
     parentProtocol: "parent#thala-labs",
     listedAt: 1731062853
@@ -61117,9 +61117,9 @@ const data3: Protocol[] = [
     parentProtocol: "parent#avalon-labs",
     audit_links: [],
     tokensExcludedFromParent: {
-      iotex: ["USDa", "sUSDa"],
-      taiko: ["USDa", "sUSDa"],
-      zircuit: ["USDa", "sUSDa"],
+      iotex: ["USDA", "SUSDA"],
+      taiko: ["USDA", "SUSDA"],
+      zircuit: ["USDA", "SUSDA"],
     },
     listedAt: 1731778454
   },

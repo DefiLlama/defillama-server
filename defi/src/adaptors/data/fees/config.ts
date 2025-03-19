@@ -2659,5 +2659,14 @@ export default {
     },
     "logx": {
         id: "5137"
+    },
+    "ekubo-evm": {
+        id: "5914"
+    },
+    "contango": {
+        id: "3602"
+    },
+    "ripple": {
+        id: "52"
     }
 } as AdaptorsConfig

@@ -2879,5 +2879,8 @@ export default {
     },
     "tonco": {
         id: "5363"
+    },
+    "ekubo-evm": {
+        id: "5914"
     }
 } as AdaptorsConfig

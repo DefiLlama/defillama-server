@@ -6616,7 +6616,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hyperswap",
     name: "HyperSwap",
-    url: "https://smilee.finance/",
+    url: "https://app.hyperswap.exchange/#/swap",
     description: "Explore token swaps, liquidity management and easy token launches",
     logo: `${baseIconsUrl}/hyperswap.png`,
     gecko_id: null,

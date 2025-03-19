@@ -7365,12 +7365,12 @@
     }
   },
   "parex": {
-    "0x1595aBE9DCF068a969B819B64809D2bEdd3703b6": {
+    "0x0B4231f1b076b78B04ab46c455b9129aF70541D5": {
       "to": "coingecko#parex",
       "decimals": 18,
-      "symbol": "PRX"
+      "symbol": "WPRX"
     },
-    "0x19a5C551e4762F232448da1984Ecb445b4a7721e": {
+    "0x64C22C9a13143dda17c0477d7959D084Bc566334": {
       "to": "coingecko#tether",
       "decimals": 18,
       "symbol": "USDT"

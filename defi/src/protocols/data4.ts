@@ -1223,7 +1223,7 @@ const data4: Protocol[] = [
     oracles: [],
     audit_links: [],
   },
-  {
+  /*{
     id: "5631",
     name: "Cian Bera",
     address: null,
@@ -1254,7 +1254,7 @@ const data4: Protocol[] = [
     audit_links: [],
     parentProtocol: "parent#cian-protocol",
     listedAt: 1737046884
-  },
+  },*/
   {
     id: "5632",
     name: "Movement",

@@ -36159,9 +36159,10 @@ const data3: Protocol[] = [
     audit_links: ["https://dedaub.com/audits/illuminex/illuminex-jan-19-2024/"],
     listedAt: 1710199785,
   },
-  {
+ /* {
     id: "4276",
     name: "CIAN Vaults", // previous CIAN LSTs
+    previousNames: ["CIAN LSTs"],
     address: null,
     symbol: "-",
     url: "https://cian.app",
@@ -36184,7 +36185,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.cian.app/security-and-risk/audit-report"],
     parentProtocol: "parent#cian-protocol",
     listedAt: 1710212538,
-  },
+  },*/
   {
     id: "4277",
     name: "OPT Finance", //dex aggregator

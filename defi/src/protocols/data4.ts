@@ -7706,6 +7706,27 @@ const data4: Protocol[] = [
     module: "ekubo-evm/index.js",
     twitter: "EkuboProtocol",
     listedAt: 1742305799
-  },
+  },{
+    id: "5915",
+    name: "gacha.game",
+    address: null,
+    symbol: "-",
+    url: "https://gacha.game/",
+    description:
+      "Play To Win",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/gacha-game.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["abstract"],
+    oracles: [],
+    forkedFrom: [],
+    module: "",
+    twitter: "gacha_game_",
+    listedAt: 1742361394
+  }
 ];
 export default data4;

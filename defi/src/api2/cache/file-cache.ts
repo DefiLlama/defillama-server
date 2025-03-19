@@ -59,13 +59,15 @@ export async function getMetadataAll() {
   return JSON.parse(data)
 }
 
+const fileNameNormalizer = (fileName: string) => decodeURIComponent(fileName).replace(/[^a-zA-Z0-9-\/\.]/g, '').toLowerCase()
+
 export async function storeRouteData(subPath: string, data: any) {
-  subPath = `build/${subPath}`
+  subPath = fileNameNormalizer(`build/${subPath}`)
   return storeData(subPath, data)
 }
 
 export async function readRouteData(subPath: string) {
-  subPath = `build/${subPath}`
+  subPath = fileNameNormalizer(`build/${subPath}`)
   return readFileData(subPath)
 }
 

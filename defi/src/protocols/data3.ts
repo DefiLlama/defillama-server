@@ -59269,7 +59269,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Hedera"],
-    oracles: ["Supra"], // https://docs.bonzo.finance/hub/developer/oracles/supra
+    oracles: ["Supra", "Chainlink"], // https://docs.bonzo.finance/hub/developer/oracles/supra || HBAR and USDC Markets secured by Chainlink: https://docs.bonzo.finance/hub/developer/oracles/chainlink & https://bonzo.finance/blog/bonzo-finance-has-integrated-the-chainlink-standard-for-verifiable-data-on-hedera
     forkedFrom: ["AAVE V2"],
     module: "bonzo/index.js",
     twitter: "bonzo_finance",

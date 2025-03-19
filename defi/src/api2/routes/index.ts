@@ -384,7 +384,7 @@ async function emissionProtocolHandler(req: HyperExpress.Request, res: HyperExpr
 async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
-    const data = await getChainChartData(name.toLowerCase())
+    const data = await getChainChartData(name.toLowerCase(), await _getChainChartData(name))
     return successResponse(res, data, 60);
   } catch (e) {
     return errorResponse(res, 'There is no chain with that name: ' + name)
@@ -394,11 +394,17 @@ async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Respon
 async function getHistoricalChainTvlData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
-    const data = await getChainDefaultChartData(name.toLowerCase())
+    const data = await getChainDefaultChartData(name.toLowerCase(), await _getChainChartData(name))
     return successResponse(res, data, 60);
   } catch (e) {
     return errorResponse(res, 'There is no chain with that name: ' + name)
   }
+}
+
+async function _getChainChartData(name: string) {
+  const global = name === "";
+  const route = global ? 'lite/charts-total' : `lite/charts/${name}`;
+  return readRouteData(route);
 }
 
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {

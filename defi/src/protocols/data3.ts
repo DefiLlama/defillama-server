@@ -8198,6 +8198,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: [
       "https://openeden.com/static/Verichains%20Public%20Audit%20Report%20-%20OpenEden%20Vault%20-%20310323.pdf",
+      "https://www.chainsecurity.com/security-audit/openeden-usdoexpress"
     ],
     stablecoins: ["opendollar-usdo"],
     listedAt: 1685661527,

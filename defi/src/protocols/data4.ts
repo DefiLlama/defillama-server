@@ -23,6 +23,9 @@ import type { Protocol } from "./types";
   twitter: string;
   language?: string;
   treasury?: string;
+  tokensExcludedFromParent: {
+      Avalanche: ["GPC"],    // ADD ALL TIME WITH BIG LETTER, NOT SMALL LETTER
+    },
 },
 */
 /* Audits: Please follow this legend

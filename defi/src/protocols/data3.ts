@@ -26178,7 +26178,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3846",
-    name: "deBridge", // previous DLN rebrand here https://github.com/DefiLlama/defillama-server/pull/6590/files
+    name: "deBridge fees", // previous DLN rebrand here https://github.com/DefiLlama/defillama-server/pull/6590/files
     previousNames: ["DLN"],
     address: null,
     symbol: "-",
@@ -33827,7 +33827,7 @@ const data3: Protocol[] = [
   {
     id: "4174",
     name: "hyperswap on Areon Network",
-    previousNames: ["hyperswap"],
+    //previousNames: ["hyperswap"], // already used by another protocol
     address: null,
     symbol: "-",
     url: "https://hyperswap.pro/en/swap",
@@ -50832,7 +50832,6 @@ const data3: Protocol[] = [
   {
     id: "4917",
     name: "BitFi BTC",
-    previousNames: ["BitFi"],
     address: null,
     symbol: "-",
     url: "https://bitfi.org",
@@ -57330,7 +57329,6 @@ const data3: Protocol[] = [
   {
     id: "5203",
     name: "KittyPunch PunchSwap",
-    previousNames: ["KittyPunch"],
     address: null,
     symbol: "-",
     url: "https://swap.kittypunch.xyz/",

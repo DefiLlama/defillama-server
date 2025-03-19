@@ -843,7 +843,6 @@ const data4: Protocol[] = [
   {
     id: "5615",
     name: "Zoth ZeUSD",
-    previousNames: ["Zoth"],
     address: null,
     symbol: "-",
     url: "https://app.zoth.io/zeusd",

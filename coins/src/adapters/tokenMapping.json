@@ -2448,6 +2448,18 @@
       "to": "coingecko#usd-coin"
     }
   },
+  "osmosis": {
+    "osmo1z6r6qdknhgsc0zeracktgpcxf43j6sekq07nw8sxduc9lg0qjjlqfu25e3:alloyed:allBTC": {
+      "to": "coingecko#osmosis-allbtc",
+      "decimals": 6,
+      "symbol": "allBTC"
+    }, 
+    "osmo1n3n75av8awcnw4jl62n3l48e6e4sxqmaf97w5ua6ddu4s475q5qq9udvx4:alloyed:allSOL": {
+      "to": "coingecko#osmosis-allsol",
+      "decimals": 6,
+      "symbol": "allSOL"
+    }
+  },
   "ibc": {
     "25418646C017D377ADF3202FF1E43590D0DAE3346E594E8D78176A139A928F88": {
       "to": "coingecko#cosmos",

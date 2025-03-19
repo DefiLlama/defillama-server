@@ -7780,5 +7780,49 @@ const data4: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/unchain-x"],
     listedAt: 1742383265
   },
+  {
+    id: "5918",
+    name: "Golden Finance",
+    address: null,
+    symbol: "-",
+    url: "https://goldenfinance.xyz/",
+    description:
+      "Native PerpDex & Social Trading Platform on ZetaChain. Trade with 100x leverage and earn sustainable real yield",
+    chain: "ZetaChain",
+    logo: `${baseIconsUrl}/golden-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["ZetaChain"],
+    oracles: [],
+    forkedFrom: ["GMX V2"],
+    module: "golden-finance/index.js",
+    twitter: "0xGoldenFinance",
+    listedAt: 1742386544
+  },
+  {
+    id: "5919",
+    name: "Hanji Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://hanji.io",
+    description:
+      "On-chain CLOB dex on Etherlink.",
+    chain: "Etherlink",
+    logo: `${baseIconsUrl}/hanji-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Etherlink"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hanji/index.js",
+    twitter: "HanjiProtocol",
+    listedAt: 1742386774
+  },
 ];
 export default data4;

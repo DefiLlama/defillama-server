@@ -1946,6 +1946,7 @@ const data2: Protocol[] = [
   {
     id: "1462",
     name: "deBridge",
+    previousNames: ["DLN"],
     address: null,
     symbol: "-",
     url: "https://debridge.finance",

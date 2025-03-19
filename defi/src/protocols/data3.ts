@@ -26177,7 +26177,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.oceanos.finance/risk-and-security/audit"],
     listedAt: 1701085925,
   },
-  {
+  /* {
     id: "3846",
     name: "deBridge fees", // previous DLN rebrand here https://github.com/DefiLlama/defillama-server/pull/6590/files
     previousNames: ["DLN"],
@@ -26208,7 +26208,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "deBridgeFinance",
-  },
+  }, */
   {
     id: "3847",
     name: "LlamaSwap",

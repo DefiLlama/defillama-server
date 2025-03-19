@@ -37,8 +37,9 @@ export async function pullDevMetricsData() {
 }
 
 
-export function getDevMetricsData() {
-  return readRouteData(allDataFile)
+export async function getDevMetricsData() {
+  const data = await readRouteData(allDataFile)
+  return data ?? []
 }
 
 

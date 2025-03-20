@@ -7965,5 +7965,26 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.mayan.finance/resources/audits"],
     github: ["mayan-finance"]
   },
+  {
+    id: "5926",
+    name: "Aave-Chan",
+    address: null,
+    symbol: "-",
+    url: "https://www.aavechan.com/",
+    description:
+      "Aave DAO Delegate & service provider",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/aave-chan.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Governance Incentives",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "AaveChan",
+  },
 ];
 export default data4;

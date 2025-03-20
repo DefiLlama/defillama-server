@@ -8092,31 +8092,24 @@ const data4: Protocol[] = [
   {
     id: "5931",
     name: "Spartacadabra",
-    address: null,
-    symbol: "-",
-    url: "https://sedge.fi/",
+    address: "fantom:0x248cb87dda803028dfead98101c9465a2fbda0d4",
+    symbol: "CHARM",
+    url: "https://spartacadabra.money/",
     description:
-      "FX on Base.",
-    chain: "Base",
-    logo: `${baseIconsUrl}/sedge.jpg`,
+      "Spartacadabra unlocks yield bearing assets and conjures magic crypto money Lambda (λ)",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/spartacadabra.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs",
-    chains: ["Base"],
-    oracles: ["Chainlink"],
-    oraclesBreakdown: [
-      {
-        name: "Chainlink",
-        type: "Primary",
-        proof: ["https://x.com/sedge_fi/status/1892327685067583561"]
-      }
-    ],
-    forkedFrom: [],
-    module: "dummy.js",
-    twitter: "sedge_fi",
-    parentProtocol: "parent#dfx-finance",
+    category: "CDP",
+    chains: ["Fantom"],
+    oracles: [],
+    forkedFrom: ["Abracadabra Spell"],
+    module: "spartacadabra/index.js",
+    twitter: "spartacadabra",
+    listedAt: 1742497621
   },
   {
     id: "5932",

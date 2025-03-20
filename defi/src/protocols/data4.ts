@@ -8060,5 +8060,26 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "getHemiNames",
   },
+  {
+    id: "5930",
+    name: "sedge",
+    address: null,
+    symbol: "-",
+    url: "https://sedge.fi/",
+    description:
+      "FX on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/sedge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "sedge_fi",
+  },
 ];
 export default data4;

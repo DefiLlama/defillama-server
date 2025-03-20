@@ -2643,7 +2643,7 @@ export default {
         id: "4256"
     },
     "sedge": {
-        id: "3864"
+        id: "5930"
     },
     "vicuna-finance": {
         id: "5672"

@@ -2680,5 +2680,11 @@ export default {
     },
     "xswap-v2": {
         id: "2145"
+    },
+    "mayan": {
+        id: "5925"
+    },
+    "unchain-x": {
+        id: "5917"
     }
 } as AdaptorsConfig

@@ -31833,8 +31833,8 @@ const data3: Protocol[] = [
   {
     id: "4090",
     name: "Mint Club V2",
-    address: "bsc:0x1f3Af095CDa17d63cad238358837321e95FC5915",
-    symbol: "MINT",
+    address: "base:0xFf45161474C39cB00699070Dd49582e417b57a7E",
+    symbol: "MT",
     url: "https://mint.club",
     description:
       "Mint Club provides a seamless platform for creating bonding curve-backed tokens or NFTs, using any ERC20 token as the base asset in the bonding curve pool. It facilitates easy tokenization with a completely no-code solution, offering highly customizable bonding curve designs, adjustable creator royalties, a variety of creator tools, and a user-friendly interface for trading bonding curve assets.",
@@ -31845,7 +31845,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Launchpad",
-    chains: ["Binance"],
+    chains: ["Base"],
     oracles: [],
     forkedFrom: [],
     module: "mint-club-v2/index.js",

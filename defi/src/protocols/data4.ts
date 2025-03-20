@@ -8080,6 +8080,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "sedge_fi",
+    parentProtocol: "parent#dfx-finance",
   },
 ];
 export default data4;

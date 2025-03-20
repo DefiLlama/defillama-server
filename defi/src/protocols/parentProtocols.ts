@@ -3767,7 +3767,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://mint.club",
     description: `Mint Club is a smart token building platform that has no need to code and provides instant liquidity. Anyone can launch a smart token with just a few simple clicks.`,
     logo: `${baseIconsUrl}/mint-club.png`,
-    gecko_id: "mint-club",
+    gecko_id: "mint-token",
     cmcId: "35964",
     chains: [],
     github: ["Steemhunt"],

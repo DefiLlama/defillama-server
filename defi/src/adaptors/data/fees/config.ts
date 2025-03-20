@@ -2689,5 +2689,23 @@ export default {
     },
     "aavechan": {
         id: "5926"
-    }
+    },
+    "paint-swap": {
+        id: "421"
+    },
+    "energyweb": {
+        id: "5932"
+    },
+    "finder-bot": {
+        id: "5934"
+    },
+    "sol-trading-bot": {
+        id: "4909"
+    },
+    "suite": {
+        id: "5933"
+    },
+    "stakedao": {
+        id: "249"
+    },
 } as AdaptorsConfig

@@ -2526,7 +2526,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "GMX",
     url: "https://gmx.io",
     description:
-      "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
+      "GMX is a leading decentralized exchange for perpetual and spot trading, offering deep liquidity, low fees, and seamless multi-chain support. Powered by isolated and multi-asset pools, it enables permissionless liquidity provision and integrates with 80+ DeFi projects across Arbitrum, Avalanche, and Solana.",
     logo: `${baseIconsUrl}/gmx.png`,
     gecko_id: "gmx",
     cmcId: "11857",

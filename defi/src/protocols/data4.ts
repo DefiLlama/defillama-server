@@ -8174,5 +8174,27 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "FinderBotX",
   },
+  {
+    id: "5935",
+    name: "Qearn",
+    address: null,
+    symbol: "-",
+    url: "https://www.qearn.org/home",
+    description:
+      "Qearn is a smart contract-based platform that allows users to lock funds for rewards while offering flexible unlocking options with associated penalties for early unlocking. It's designed to incentivize long-term participation while maintaining liquidity for users",
+    chain: "Qubic",
+    logo: `${baseIconsUrl}/qearn.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Qubic"],
+    oracles: [],
+    forkedFrom: [],
+    module: "qearn/index.js",
+    twitter: "_Qubic_",
+    listedAt: 1742505841
+  },
 ];
 export default data4;

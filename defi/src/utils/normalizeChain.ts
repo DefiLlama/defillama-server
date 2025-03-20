@@ -4000,6 +4000,14 @@ export const chainCoingeckoIds = {
     twitter: "movementlabsxyz",
     url: "https://movementlabs.xyz/",
   }, 
+  "Qubic": {
+    geckoId: "qubic-network",
+    symbol: "QUBIC",
+    cmcId: "29169",
+    twitter: "_Qubic_",
+    url: "https://qubic.org/",
+    github: ["qubic"]
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

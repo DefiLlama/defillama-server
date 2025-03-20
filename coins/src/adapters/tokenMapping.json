@@ -709,6 +709,11 @@
       "decimals": "18",
       "symbol": "USDa",
       "to": "coingecko#usda-2"
+    },
+    "0xc152d5a599f83b3d0098cbadb23fce95f27ff30b": {
+      "decimals": "8",
+      "symbol": "lfbtc-cian-eth",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "meter": {
@@ -2453,7 +2458,7 @@
       "to": "coingecko#osmosis-allbtc",
       "decimals": 6,
       "symbol": "allBTC"
-    }, 
+    },
     "osmo1n3n75av8awcnw4jl62n3l48e6e4sxqmaf97w5ua6ddu4s475q5qq9udvx4:alloyed:allSOL": {
       "to": "coingecko#osmosis-allsol",
       "decimals": 6,

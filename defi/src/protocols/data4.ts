@@ -8089,5 +8089,55 @@ const data4: Protocol[] = [
     twitter: "sedge_fi",
     parentProtocol: "parent#dfx-finance",
   },
+  {
+    id: "5931",
+    name: "Spartacadabra",
+    address: null,
+    symbol: "-",
+    url: "https://sedge.fi/",
+    description:
+      "FX on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/sedge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Base"],
+    oracles: ["Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://x.com/sedge_fi/status/1892327685067583561"]
+      }
+    ],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "sedge_fi",
+    parentProtocol: "parent#dfx-finance",
+  },
+  {
+    id: "5932",
+    name: "Energy Web Chain",
+    address: "energyweb:-",
+    symbol: "EWT",
+    url: "https://www.energyweb.org/",
+    description:
+      "We build open-source digital technologies that help companies navigate the energy transition.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/energy-web-chain.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "energywebx",
+  },
 ];
 export default data4;

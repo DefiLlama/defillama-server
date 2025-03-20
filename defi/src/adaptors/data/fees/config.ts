@@ -2686,5 +2686,8 @@ export default {
     },
     "unchain-x": {
         id: "5917"
+    },
+    "aavechan": {
+        id: "5926"
     }
 } as AdaptorsConfig

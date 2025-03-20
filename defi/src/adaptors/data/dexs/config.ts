@@ -2882,5 +2882,14 @@ export default {
     },
     "ekubo-evm": {
         id: "5914"
+    },
+    "equalizer-cl": {
+        id: "5603"
+    },
+    "xswap-v3": {
+        id: "3914"
+    },
+    "unchain-x": {
+        id: "5917"
     }
 } as AdaptorsConfig

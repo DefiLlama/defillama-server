@@ -2668,5 +2668,17 @@ export default {
     },
     "ripple": {
         id: "52"
+    },
+    "equalizer-cl": {
+        id: "5603"
+    },
+    "balanced": {
+        id: "448"
+    },
+    "xswap-v3": {
+        id: "3914"
+    },
+    "xswap-v2": {
+        id: "2145"
     }
 } as AdaptorsConfig

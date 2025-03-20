@@ -8076,7 +8076,14 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Base"],
-    oracles: [],
+    oracles: ["Chainlink"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://x.com/sedge_fi/status/1892327685067583561"]
+      }
+    ],
     forkedFrom: [],
     module: "dummy.js",
     twitter: "sedge_fi",

@@ -7942,5 +7942,28 @@ const data4: Protocol[] = [
     twitter: "_atlasexchange_",
     listedAt: 1742416611
   },
+  {
+    id: "5925",
+    name: "Mayan",
+    address: null,
+    symbol: "-",
+    url: "https://mayan.finance/",
+    description:
+      "Mayan is a cross-chain swap auction protocol with the goal of offering the best  swap rates using auction mechanism",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mayan.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum","Arbitrum","Avalanche","Binance","Polygon","Solana","Base","Optimism"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "MayanFinance",
+    audit_links: ["https://docs.mayan.finance/resources/audits"],
+    github: ["mayan-finance"]
+  },
 ];
 export default data4;

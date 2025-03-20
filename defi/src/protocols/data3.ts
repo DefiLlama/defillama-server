@@ -30315,7 +30315,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     oraclesByChain: {
-      base: ["Chainlink"], // Chainlink is the oracle for Base - https://app.morpho.org/base/market/0x8793cf302b8ffd655ab97bd1c695dbd967807e8367a65cb2f4edaf1380ba1bda/weth-usdc
+      base: ["Chainlink", "Chronicle"], // Chainlink is the oracle for Base - https://app.morpho.org/base/market/0x8793cf302b8ffd655ab97bd1c695dbd967807e8367a65cb2f4edaf1380ba1bda/weth-usdc
     },
     forkedFrom: [],
     module: "morpho-blue/index.js",

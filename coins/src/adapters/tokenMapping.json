@@ -7558,6 +7558,11 @@
     }
   },
   "hemi": {
+    "0x623F2774d9f27B59bc6b954544487532CE79d9DF": {
+      "to": "coingecko#bitcoin",
+      "decimals": 8,
+      "symbol": "bfBTC"
+    },
     "0x8154Aaf094c2f03Ad550B6890E1d4264B5DdaD9A": {
       "to": "coingecko#bitcoin",
       "decimals": 18,

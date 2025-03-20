@@ -3840,7 +3840,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Berachain"],
-    oracles: ["Restone"],
+    oracles: ["RedStone"],
     oraclesBreakdown: [
       {
         name: "RedStone",

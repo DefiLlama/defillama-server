@@ -4969,12 +4969,13 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Pulse"],
-    module: "dummy.js",
+    module: "pulsex-stableswap/index.js",
     twitter: "PulseXcom",
     forkedFrom: [],
     oracles: [],
     audit_links: [],
     parentProtocol: "parent#pulsex",
+    listedAt: 1742452505
   },
   {
     id: "5796",

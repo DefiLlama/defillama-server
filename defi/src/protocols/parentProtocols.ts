@@ -6684,6 +6684,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "RFX_exchange",
     github: ["rfx-exchange"]
   },
+  {
+    id: "parent#pump",
+    name: "Pump",
+    url: "https://www.pump.fun/",
+    description: "Launch a coin that is instantly tradeable in one click for free",
+    logo: `${baseIconsUrl}/pump.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "pumpdotfun",
+  },
 ];
 
 export default parentProtocols;

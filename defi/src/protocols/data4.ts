@@ -8196,5 +8196,28 @@ const data4: Protocol[] = [
     twitter: "_Qubic_",
     listedAt: 1742505841
   },
+  {
+    id: "5936",
+    name: "PumpSwap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.pump.fun",
+    description:
+      "The native dex for pump.fun",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/pumpswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana"],
+    module: "pump-swap/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "pumpdotfun",
+    parentProtocol: "parent#pump",
+    listedAt: 1742516927
+  },
 ];
 export default data4;

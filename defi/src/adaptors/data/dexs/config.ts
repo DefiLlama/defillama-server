@@ -2894,5 +2894,8 @@ export default {
     },
     "pump-swap": {
         id: "5936"
+    },
+    "steamm": {
+        id: "5824"
     }
 } as AdaptorsConfig

@@ -2276,7 +2276,7 @@ export const chainCoingeckoIds = {
   "Kroma": {
     geckoId: "kroma",
     symbol: "KRO",
-    cmcId: null,
+    cmcId: "27190",
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
@@ -3382,7 +3382,7 @@ export const chainCoingeckoIds = {
   "Lisk": {
     geckoId: "lisk",
     symbol: "LSK",
-    cmcId: null,
+    cmcId: "1214",
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",

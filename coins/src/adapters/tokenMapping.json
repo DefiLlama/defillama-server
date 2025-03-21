@@ -5334,6 +5334,16 @@
     }
   },
   "taiko": {
+    "0x5d5c8aec46661f029a5136a4411c73647a5714a7": {
+      "decimals": "18",
+      "symbol": "sUSDa",
+      "to": "coingecko#susda"
+    },
+    "0xff12470a969dd362eb6595ffb44c82c959fe9acc": {
+      "decimals": "18",
+      "symbol": "USDa",
+      "to": "coingecko#usda-2"
+    },
     "0x09413312b263fD252C16e592A45f4689F26cb79d": {
       "decimals": "18",
       "symbol": "CRV",

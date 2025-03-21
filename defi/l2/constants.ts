@@ -5,6 +5,7 @@ import cgSymbols from "../src/utils/symbols/symbols.json";
 
 export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
+export const excludedTvlId = "5897";
 
 export const geckoSymbols = cgSymbols as { [key: string]: string };
 
@@ -109,6 +110,8 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5732": "sxr",
   "5735": "sorare",
   "5772": "unichain",
+  "5833": "formnetwork",
+  "5854": "hemi-l2",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {

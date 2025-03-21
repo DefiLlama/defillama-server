@@ -1,4 +1,3 @@
-import { id } from "ethers"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -2769,5 +2768,128 @@ export default {
     },
     "kodiak-v2": {
         id: "5743",
+    },
+    "silverswap": {
+        id: "5529",
+    },
+    "olab": {
+        id: "5648",
+    },
+    "bullaexchange": {
+        id: "5766",
+    },
+    "ducata": {
+        id: "4896",
+    },
+    "embr": {
+        id: "1063",
+    },
+    "gaming-dex": {
+        id: "4263",
+    },
+    "ginsengswap": {
+        id: "5803",
+    },
+    "polaris-fi": {
+        id: "1440",
+    },
+    "phux": {
+        id: "3205",
+    },
+    "tanukix": {
+        id: "5038",
+    },
+    "piperx-v2": {
+        id: "5779",
+    },
+    "piperx-v3": {
+        id: "5780",
+    },
+    "magma-finance": {
+        id: "5774",
+    },
+    "caviarnine-simplepool": {
+        id: "5064",
+    },
+    "xpress": {
+        id: "5686"
+    },
+    "burrbear": {
+        id: "5745"
+    },
+    "fibonacci-dex": {
+        id: "5832"
+    },
+    "bitflux": {
+        id: "5344"
+    },
+    "hyperswap-v2": {
+        id: "5836"
+    },
+    "hyperswap-v3": {
+        id: "5837"
+    },
+    "wasabee": {
+        id: "5845"
+    },
+    "thalaswap-v2": {
+        parentId: "Thala",
+        id: "5329",
+    },
+    "degen-launchpad": {
+        id: "5857"
+    },
+    "hyperfluid": {
+        id: "5480"
+    },
+    "metropolis-amm": {
+        id: "5504"
+    },
+    "metropolis-dlmm": {
+        id: "5505"
+    },
+    "enosys": {
+        id: "5158"
+    },
+    "tea-fi": {
+        id: "5875"
+    },
+    "beets-v3": {
+        id: "5680"
+    },
+    "SwapX-algebra": {
+        id: "5579"
+    },
+    "SwapX-v2": {
+        id: "5578"
+    },
+    "meridian-amm": {
+        id: "5885"
+    },
+    "yuzu-finance": {
+        "id": "5906"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-swap": {
+                id: "5406"
+            }
+        }
+    },
+    "tonco": {
+        id: "5363"
+    },
+    "ekubo-evm": {
+        id: "5914"
+    },
+    "equalizer-cl": {
+        id: "5603"
+    },
+    "xswap-v3": {
+        id: "3914"
+    },
+    "unchain-x": {
+        id: "5917"
     }
 } as AdaptorsConfig

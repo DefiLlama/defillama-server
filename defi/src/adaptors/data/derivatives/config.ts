@@ -804,5 +804,31 @@ export default {
                 id: "5737",
             }
         }
+    },
+    "citrex-markets": {
+        id: "5641",
+        protocolsData: {
+            "derivatives": {
+                id: "5641",
+            }
+        }
+
+    },
+    "flexperp": {
+        id: "5843"
+    },
+    "electra": {
+        id: "5817"
+    },
+    "desk": {
+        id: "5813"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-trade": {
+                id: "5406"
+            }
+        }
     }
 } as AdaptorsConfig

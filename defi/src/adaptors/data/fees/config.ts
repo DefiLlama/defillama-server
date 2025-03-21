@@ -1265,7 +1265,7 @@ export default {
         "id": "3836"
     },
     "dln": {
-        "id": "3846"
+        "id": "1462"
     },
     "near": {
         "id": "6535"
@@ -2276,7 +2276,7 @@ export default {
     },
     "hyperliquid": {
         parentId: "Hyperliquid",
-        displayName: "HyperLiquid",
+        displayName: "Hyperliquid",
         id: "5761"
     },
     "liquidity-slicing": {
@@ -2444,5 +2444,268 @@ export default {
     },
     "flashbot": {
         id: "5809",
-    }
+    },
+    "silverswap": {
+        id: "5529",
+    },
+    "ducata": {
+        id: "4896",
+    },
+    "embr": {
+        id: "1063",
+    },
+    "gaming-dex": {
+        id: "4263",
+    },
+    "ginsengswap": {
+        id: "5803",
+    },
+    "polaris-fi": {
+        id: "1440",
+    },
+    "phux": {
+        id: "3205",
+    },
+    "tanukix": {
+        id: "5038",
+    },
+    "magma-finance": {
+        id: "5774",
+    },
+    "jupiter-dca": {
+        parentId: "Jupiter",
+        id: "5841",
+    },
+    "sablier": {
+        id: "199",
+    },
+    "goplus-locker": {
+        id: "5807",
+    },
+    "caviarnine-simplepool": {
+        id: "5064",
+    },
+    "hedgey": {
+        id: "5846"
+    },
+    "steamm": {
+        id: "5824"
+    },
+    "flexperp": {
+        id: "5843"
+    },
+    "blast": {
+        id: "81457"
+    },
+    "fraxtal": {
+        id: "252"
+    },
+    "linea": {
+        id: "59144"
+    },
+    "mantle": {
+        id: "5000"
+    },
+    "metis": {
+        id: "1088"
+    },
+    "mode": {
+        id: "34443"
+    },
+    "ronin": {
+        id: "2020"
+    },
+    "scroll": {
+        id: "534352"
+    },
+    "sei": {
+        id: "23149"
+    },
+    "sonic": {
+        id: "146"
+    },
+    "unichain": {
+        id: "130"
+    },
+    "berachain": {
+        id: "80094"
+    },
+    "burrbear": {
+        id: "5745"
+    },
+    "fibonacci-dex": {
+        id: "5832"
+    },
+    "starknet": {
+        id: "22691"
+    },
+    "sailor-finance": {
+        id: "5647",
+    },
+    "hyperswap-v2": {
+        id: "5836"
+    },
+    "hyperswap-v3": {
+        id: "5837"
+    },
+    "wasabee": {
+        id: "5845"
+    },
+    "thalaswap-v2": {
+        parentId: "Thala",
+        id: "5329",
+    },
+    "degen-launchpad": {
+        id: "5857"
+    },
+    "tronsave": {
+        id: "5864"
+    },
+    "erc-burner": {
+        id: "5859"
+    },
+    "infrared-finance": {
+        id: "5775"
+    },
+    "desk": {
+        id: "5813"
+    },
+    "beradrome": {
+        id: "5798"
+    },
+    "rings": {
+        id: "5526"
+    },
+    "hyperfluid": {
+        id: "5480"
+    },
+    "ton": {
+        id: "11419"
+    },
+    "sui": {
+        id: "20947"
+    },
+    "aptos": {
+        id: "21794"
+    },
+    "metropolis-amm": {
+        id: "5504"
+    },
+    "metropolis-dlmm": {
+        id: "5505"
+    },
+    "tea-fi": {
+        id: "5875"
+    },
+    "beethoven-x-v3": {
+        id: "5680"
+    },
+    "trade-wiz": {
+        id: "5886"
+    },
+    "rain": {
+        id: "3903"
+    },
+    "SwapX-algebra": {
+        id: "5579"
+    },
+    "SwapX-v2": {
+        id: "5578"
+    },
+    "meridian-amm": {
+        id: "5885"
+    },
+    "merkle-trade": {
+        "id": "3678"
+    },
+    "gyroscope": {
+        "id": "2397"
+    },
+    "wildcat": {
+        "id": "3871"
+    },
+    "napier": {
+        "id": "4834"
+    },
+    "yuzu-finance": {
+        "id": "5906"
+    },
+    "beets-staked-sonic": {
+        id: "4126"
+    },
+    "stout": {
+        id: "5902"
+    },
+    "rfx": {
+        id: "5406"
+    },
+    "stability": {
+        id: "4256"
+    },
+    "sedge": {
+        id: "5930"
+    },
+    "vicuna-finance": {
+        id: "5672"
+    },
+    "eggs-finance": {
+        id: "5789"
+    },
+    "tonco": {
+        id: "5363"
+    },
+    "witty": {
+        id: "5908"
+    },
+    "logx": {
+        id: "5137"
+    },
+    "ekubo-evm": {
+        id: "5914"
+    },
+    "contango": {
+        id: "3602"
+    },
+    "ripple": {
+        id: "52"
+    },
+    "equalizer-cl": {
+        id: "5603"
+    },
+    "balanced": {
+        id: "448"
+    },
+    "xswap-v3": {
+        id: "3914"
+    },
+    "xswap-v2": {
+        id: "2145"
+    },
+    "mayan": {
+        id: "5925"
+    },
+    "unchain-x": {
+        id: "5917"
+    },
+    "aavechan": {
+        id: "5926"
+    },
+    "paint-swap": {
+        id: "421"
+    },
+    "energyweb": {
+        id: "5932"
+    },
+    "finder-bot": {
+        id: "5934"
+    },
+    "sol-trading-bot": {
+        id: "4909"
+    },
+    "suite": {
+        id: "5933"
+    },
+    "stakedao": {
+        id: "249"
+    },
 } as AdaptorsConfig

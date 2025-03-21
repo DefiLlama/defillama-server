@@ -1,3 +1,4 @@
+
 export const normalizedChainReplacements = {
   // keys should be full lowercase
 } as {
@@ -1731,7 +1732,7 @@ export const chainCoingeckoIds = {
     geckoId: "starknet",
     github: ['starknet-io'],
     symbol: "STRK",
-    cmcId: null,
+    cmcId: "22691",
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],
@@ -2132,7 +2133,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 5000,
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
     url: "https://www.mantle.xyz/",
   },
   "Neon": {
@@ -2173,6 +2174,7 @@ export const chainCoingeckoIds = {
     },
     twitter: "LineaBuild",
     url: "https://linea.build/",
+    chainId: 59144
   },
   "GravityBridge": {
     geckoId: null,
@@ -2486,12 +2488,14 @@ export const chainCoingeckoIds = {
     twitter: "FONSmartChain",
     url: "https://fonchain.io/",
   },
-  "Newton": {
+  "AB": {
     geckoId: "newton-project",
-    symbol: "NEW",
+    symbol: "AB",
     cmcId: "3871",
     github: ["newtonproject"],
     categories: ["EVM"],
+    twitter: "newton_project",
+    url: "https://ab.org/en/"
   },
   "JBC": {
     geckoId: null,
@@ -2882,7 +2886,7 @@ export const chainCoingeckoIds = {
     url: "https://karak.network/",
     chainId: "2410"
   },
-  "Bitkub Chain": {
+  "KUB": {
     geckoId: "bitkub-coin",
     symbol: "KUB",
     cmcId: "16093",
@@ -2906,10 +2910,10 @@ export const chainCoingeckoIds = {
     twitter: "Ancient8_gg",
     url: "https://ancient8.gg/"
   },
-  "Hyperliquid": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+  "Hyperliquid L1": {
+    geckoId: "hyperliquid",
+    symbol: "HYPE",
+    cmcId: "32196",
     categories: ["EVM"],
     twitter: "HyperliquidX",
     url: "https://hyperliquid.xyz/"
@@ -3930,6 +3934,80 @@ export const chainCoingeckoIds = {
     twitter: "StoryProtocol",
     url: "https://www.story.foundation/",
   }, 
+  "Lumia": {
+    geckoId: "lumia",
+    symbol: "LUMIA",
+    cmcId: "33439",
+    categories: ["EVM","Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+    },
+    chainId: 994873017,
+    twitter: "BuildOnLumia",
+    url: "https://lumia.org/",
+  }, 
+  "Form Network": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM","Rollup", "Superchain"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2","gas"],
+    },
+    chainId: 478,
+    twitter: "0xForm",
+    url: "https://form.network/",
+  }, 
+  "HyperEVM": {
+    geckoId: null,
+    symbol: "HYPE",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 999,
+    twitter: "HyperliquidX",
+    url: "https://hyperfoundation.org/",
+  }, 
+  "Hemi": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    chainId: 43111,
+    twitter: "hemi_xyz",
+    url: "https://hemi.xyz",
+  }, 
+  "Saga": {
+    geckoId: "saga-2",
+    symbol: "SAGA",
+    cmcId: "30372",
+    categories: ["EVM", "Cosmos"],
+    chainId: 5464,
+    twitter: "Sagaxyz__",
+    url: "https://www.saga.xyz/",
+  }, 
+  "Movement": {
+    geckoId: "movement",
+    symbol: "MOVE",
+    cmcId: "32452",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    chainId: 3073,
+    twitter: "movementlabsxyz",
+    url: "https://movementlabs.xyz/",
+  }, 
+  "Qubic": {
+    geckoId: "qubic-network",
+    symbol: "QUBIC",
+    cmcId: "29169",
+    twitter: "_Qubic_",
+    url: "https://qubic.org/",
+    github: ["qubic"]
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4102,13 +4180,16 @@ const chainLabelMap = {
   "spn": "Superposition",
   "zero_network": "Zero Network",
   "silicon_zk": "Silicon zkEVM",
-  "sty": "Story"
+  "sty": "Story",
+  "formnetwork": "Form Network",
+  "hyper_evm": "HyperEVM",
+  "hyperliquid": "Hyperliquid"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
 const newChainLabelMap = {
   "zklink": "zkLink Nova",
-  "bitkub": "Bitkub Chain",
+  "bitkub": "KUB",
   "lyra": "Derive Chain",
   "fuel": "Fuel Ignition",
   "op_bnb": "opBNB",
@@ -4139,7 +4220,13 @@ const newChainLabelMap = {
   "occ": "EDU Chain",
   "optimism": "OP Mainnet",
   "sx": "SX Network",
-  "sxr": "SX Rollup"
+  "sxr": "SX Rollup",
+  "new": "AB",
+  "formnetwork": "Form Network",
+  "hyperliquid": "Hyperliquid L1",
+  "lightlink_phoenix": "LightLink",
+  "move": "Movement", 
+  "wax": "Wax"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

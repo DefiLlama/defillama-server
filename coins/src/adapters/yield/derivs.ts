@@ -1,4 +1,5 @@
 import { getCurrentUnixTimestamp } from "../../utils/date";
+import { nullAddress } from "../../utils/shared/constants";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
@@ -296,6 +297,35 @@ const configs: { [adapter: string]: Config } = {
     chain: "bsc",
     underlying: "0xB0b84D294e0C75A6abe60171b70edEb2EFd14A1B", // slisBNB
     address: "0x77734e70b6e88b4d82fe632a168edf6e700912b6", // asBNB
+  },
+  vIP: {
+    rate: async ({ api }) => {
+      const target = await api.call({
+        abi: "address:stakePool",
+        target: "0x20Cb9DCb6FC306c31325bdA6221AA5e067B9Da51",
+      });
+      const rate = await api.call({
+        abi: "function calculateIPWithdrawal(uint256) view returns (uint256)",
+        target,
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "sty",
+    underlying: nullAddress, // IP
+    address: "0x5267F7eE069CEB3D8F1c760c215569b79d0685aD",
+  },
+  hywstHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:balancePerShare",
+        target: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
+    address: "0xC8b6E0acf159E058E22c564C0C513ec21f8a1Bf5",
   },
 };
 

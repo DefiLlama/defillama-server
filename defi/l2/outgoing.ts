@@ -2,7 +2,14 @@ import getTVLOfRecordClosestToTimestamp from "../src/utils/shared/getRecordClose
 import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { AllProtocols, DollarValues, McapData, TokenTvlData } from "./types";
 import { aggregateChainTokenBalances } from "./utils";
-import { canonicalBridgeIds, chainsWithoutCanonicalBridges, geckoSymbols, protocolBridgeIds, zero } from "./constants";
+import {
+  canonicalBridgeIds,
+  chainsWithoutCanonicalBridges,
+  excludedTvlId,
+  geckoSymbols,
+  protocolBridgeIds,
+  zero,
+} from "./constants";
 import BigNumber from "bignumber.js";
 
 let allProtocols: AllProtocols = {};
@@ -16,7 +23,7 @@ export default async function fetchBridgeUsdTokenTvls(
 ): Promise<AllProtocols | void> {
   const allProtocolsTemp: AllProtocols = persist ? allProtocols : {};
   if (Object.keys(allProtocolsTemp).length) return;
-  const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds)];
+  const ids: string[] = [...Object.keys(canonicalBridgeIds), ...Object.keys(protocolBridgeIds), excludedTvlId];
   const filteredIds: string[] = [];
   ids.map((i: string) => (excludedIds.includes(i) ? [] : filteredIds.push(i)));
   const tokenBalances: any[] = await Promise.all(
@@ -132,7 +139,7 @@ function addOutgoingToMcapData(
     if (!(chain in adjustedNative)) adjustedNative[chain] = {};
     Object.keys(allMcapData[chain]).map((symbol: string) => {
       const { native, outgoing } = allMcapData[chain][symbol];
-      if (!native.isNaN()) adjustedNative[chain][symbol] = native 
+      if (!native.isNaN()) adjustedNative[chain][symbol] = native;
       if (outgoing && outgoing != zero) adjustedOutgoing[chain][symbol] = outgoing;
     });
   });

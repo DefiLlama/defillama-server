@@ -108,6 +108,11 @@ export const additional: { [chain: string]: string[] } = {
   hyperliquid: [
     "0xc1fb593aeffbeb02f85e0308e9956a90", // PURR
   ],
+  degen: [
+    "0xF1815bd50389c46847f0Bda824eC8da914045D14", // USDC
+    "0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8", // aUSDT
+    "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590", // WETH
+  ],
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [

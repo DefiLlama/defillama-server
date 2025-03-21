@@ -85,7 +85,7 @@ export async function storeAdapterRecordBulk(records: AdapterRecord2[]) {
   }
 }
 
-export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adapterType: AdapterType, timestamp: number}) {
+export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adapterType: AdapterType, timestamp: number }) {
   await init()
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
 
@@ -93,7 +93,7 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
   console.time(label)
 
   const result: any = await Tables.DIMENSIONS_DATA.findAll({
-    where: { type: adapterType, updatedat: { [Op.gte]: timestamp*1000  } },
+    where: { type: adapterType, updatedat: { [Op.gte]: timestamp * 1000 } },
     attributes: ['data', 'timestamp', 'id', 'timeS'],
     raw: true,
     order: [['timestamp', 'ASC']],
@@ -105,15 +105,42 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
 }
 
 
-export async function getAllItemsAfter({ adapterType, timestamp }: { adapterType: AdapterType, timestamp: number}) {
+export async function getAllItemsAfter({ adapterType, timestamp }: { adapterType: AdapterType, timestamp: number }) {
   await init()
   if (timestamp < 946684800) timestamp = 946684800 // 2000-01-01
 
   const result: any = await Tables.DIMENSIONS_DATA.findAll({
-    where: { type: adapterType, timestamp: { [Op.gte]: timestamp  } },
+    where: { type: adapterType, timestamp: { [Op.gte]: timestamp } },
     attributes: ['data', 'timestamp', 'id', 'timeS'],
     raw: true,
     order: [['timestamp', 'ASC']],
+  })
+
+  return result
+}
+
+export async function getAllDimensionsRecordsOnDate({ adapterType, date }: { adapterType: AdapterType, date: string }) {
+  await init()
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where: { type: adapterType, timeS: date },
+    attributes: ['timestamp', 'id', 'timeS'],
+    raw: true,
+  })
+
+  return result
+}
+export async function getAllDimensionsRecordsTimeS({ adapterType, id, timestamp }: { adapterType: AdapterType, id?: string, timestamp?: number }) {
+  await init()
+
+  const where: any = { type: adapterType, }
+  if (id) where['id'] = id
+  if (timestamp) where['timestamp'] = { [Op.gte]: timestamp }
+
+  const result: any = await Tables.DIMENSIONS_DATA.findAll({
+    where,
+    attributes: ['timestamp', 'id', 'timeS'],
+    raw: true,
   })
 
   return result

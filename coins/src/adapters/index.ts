@@ -66,6 +66,7 @@ export default {
   ankr: require("./liquidStaking/ankr"),
   stargate: require("./markets/stargate"),
   jarvis: require("./markets/jarvis"),
+  xequity: require("./markets/0xequity"),
   chainlinkNFT: require("./nft/chainlink"),
   arrakis: require("./markets/arrakis"),
   aktionariat: require("./markets/aktionariat"),
@@ -126,4 +127,7 @@ export default {
   fxsp: require("./yield/fxsp"),
   stakeDao: require("./yield/stakeDao"),
   kodiak: require("./markets/kodiak"),
+  kSTRK: require("./other/kSTRK"),
+  jtoDerivs: require("./solana/jtoDerivs"),
+  pac: require("./rwa/thepac"),
 };

@@ -156,6 +156,16 @@ test("no id is repeated", async () => {
   }
 });
 
+test("no name is repeated", async () => {
+  const names = new Set();
+  for (const protocol of (protocols as {name:string, previousNames?:string[]}[]).concat(parentProtocols)) {
+    for(const name of [protocol.name, ...(protocol.previousNames ?? [])]){
+      expect(names).not.toContain(name.toLowerCase());
+      names.add(name.toLowerCase())
+    }
+  }
+});
+
 test("all oracle names match exactly", async () => {
   const oracles = {} as any;
   for (const protocol of (protocols).concat(parentProtocols as any)) {

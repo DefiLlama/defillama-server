@@ -22,6 +22,10 @@ const contracts: {
   sapphire: [
     { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438" },
   ],
+  etlk: [
+    { name: "mTBILL", token: "0xDD629E5241CbC5919847783e6C96B2De4754e438" },
+    { name: "mBASIS", token: "0x2247B5A46BB79421a314aB0f0b67fFd11dd37Ee4" },
+  ]
 };
 
 const btcToUsdOracle: { [chain: string]: string } = {

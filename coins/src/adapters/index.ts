@@ -130,4 +130,5 @@ export default {
   kSTRK: require("./other/kSTRK"),
   jtoDerivs: require("./solana/jtoDerivs"),
   pac: require("./rwa/thepac"),
+  tonDerivs: require("./other/ton"),
 };

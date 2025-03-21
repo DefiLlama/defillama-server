@@ -722,7 +722,7 @@ export default {
     "filament": {
         id: "5177",
     },
-    "idex-v4": {
+    "kuma-v1": {
         id: "5079"
     },
     "trado": {

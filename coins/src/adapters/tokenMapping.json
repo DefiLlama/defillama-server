@@ -5473,6 +5473,11 @@
     }
   },
   "cyeth": {
+    "0x14778860E937f509e651192a90589dE711Fb88a9": {
+      "decimals": "18",
+      "symbol": "CYBER",
+      "to": "coingecko#cyberconnect"
+    },
     "0x4200000000000000000000000000000000000006": {
       "decimals": "18",
       "symbol": "ETH",

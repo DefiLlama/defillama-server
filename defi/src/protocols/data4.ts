@@ -1474,7 +1474,7 @@ const data4: Protocol[] = [
     module: "citrex-markets/index.js",
     twitter: "citrex_markets",
     forkedFrom: [],
-    oracles: [], 
+    oracles: ["Stork"], 
     listedAt: 1737129117
   },
   {

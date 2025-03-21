@@ -2708,4 +2708,76 @@ export default {
     "stakedao": {
         id: "249"
     },
+    "apechain": {
+        id: "18876"
+    },
+    "chiliz": {
+        id: "4066"
+    },
+    "ethereumclassic": {
+        id: "1321"
+    },
+    "etherlink": {
+        id: "42793"
+    },
+    "flare": {
+        id: "4172"
+    },
+    "fuse": {
+        id: "5634"
+    },
+    "harmony": {
+        id: "3945"
+    },
+    "hemi": {
+        id: "43111"
+    },
+    "imx": {
+        id: "10603"
+    },
+    "kardia": {
+        id: "5453"
+    },
+    "kcc": {
+        id: "2087"
+    },
+    "kroma": {
+        id: "27190"
+    },
+    "lisk": {
+        id: "1214"
+    },
+    "nuls": {
+        id: "2092"
+    },
+    "oasys": {
+        id: "22265"
+    },
+    "redstone": {
+        id: "690"
+    },
+    "rootstock": {
+        id: "3626"
+    },
+    "shimmer_evm": {
+        id: "14801"
+    },
+    "story": {
+        id: "35626"
+    },
+    "syscoin": {
+        id: "541"
+    },
+    "telos": {
+        id: "4660"
+    },
+    "thundercore": {
+        id: "3930"
+    },
+    "velas": {
+        id: "4747"
+    },
+    "zeta": {
+        id: "21259"
+    }
 } as AdaptorsConfig

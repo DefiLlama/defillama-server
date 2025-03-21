@@ -830,5 +830,8 @@ export default {
                 id: "5406"
             }
         }
+    },
+    "extended": {
+        id: "5887"
     }
 } as AdaptorsConfig

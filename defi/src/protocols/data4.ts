@@ -589,7 +589,7 @@ const data4: Protocol[] = [
     chains: ["Sonic"],
     oracles: [],
     forkedFrom: ["Uniswap V3"],
-    module: "equalizer-cl/index.js",
+    module: "2thick/index.js",
     twitter: "FTM1337",
     parentProtocol: "parent#guru-network-dao",
     listedAt: 1736387589

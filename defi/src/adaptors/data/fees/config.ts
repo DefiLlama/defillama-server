@@ -2708,4 +2708,7 @@ export default {
     "stakedao": {
         id: "249"
     },
+    "getHemiNames": {
+        id: "5929"
+    }
 } as AdaptorsConfig

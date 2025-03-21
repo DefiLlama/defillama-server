@@ -2891,5 +2891,8 @@ export default {
     },
     "unchain-x": {
         id: "5917"
+    },
+    "pump-swap": {
+        id: "5936"
     }
 } as AdaptorsConfig

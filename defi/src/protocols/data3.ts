@@ -39256,13 +39256,14 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CDP",
-    chains: [ "Bitlayer", "BOB"],
+    chains: [ "Bitlayer", "BOB", "Binance"],
     module: "satoshi-protocol/index.js",
     twitter: "Satoshi_BTCFi",
     forkedFrom: [],
     oraclesByChain: {
       bevm: ["DIA"], // https://docs.satoshiprotocol.org/outro/oracle
-      bob: ["Api3", "DIA"] // https://docs.satoshiprotocol.org/outro/oracle
+      bob: ["Api3", "DIA"], // https://docs.satoshiprotocol.org/outro/oracle
+      binance: ["eOracle"]
     },
     github: ["Satoshi-Protocol"],
     audit_links: ["https://docs.satoshiprotocol.org/outro/audit-reports"],

@@ -2897,5 +2897,8 @@ export default {
     },
     "steamm": {
         id: "5824"
+    },
+    "extended": {
+        id: "5887"
     }
 } as AdaptorsConfig

@@ -2694,7 +2694,7 @@ export default {
         id: "421"
     },
     "energyweb": {
-        id: "5932"
+        id: "5268"
     },
     "finder-bot": {
         id: "5934"

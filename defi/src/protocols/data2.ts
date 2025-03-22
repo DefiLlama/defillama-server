@@ -20644,7 +20644,7 @@ const data2: Protocol[] = [
     module: "orderly-network/index.js",
     twitter: "OrderlyNetwork",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update (Upgraded to Pyth Lazer for price feeds)
     audit_links: ["https://github.com/OrderlyNetwork/Audits"],
     parentProtocol: "parent#orderly-network",
     listedAt: 1668086145,

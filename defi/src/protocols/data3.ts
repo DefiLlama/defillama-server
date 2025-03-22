@@ -34747,7 +34747,7 @@ const data3: Protocol[] = [
     module: "blitz-exchange/index.js",
     twitter: "tradeonblitz",
     forkedFrom: ["Vertex"], // it uses edges product from vertex https://edge.vertexprotocol.com/ "Vertex Edge’s composable orderbook solves the problems of liquidity fragmentation and creates economic alliances across chains."
-    oracles: [],
+    oracles: ["Stork"],
     audit_links: [],
     parentProtocol: "parent#Edge",
     listedAt: 1709318288,

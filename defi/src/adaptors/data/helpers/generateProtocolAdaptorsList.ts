@@ -34,6 +34,7 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
   if (!obj.cmcId && !obj.chainId) return undefined
   let id = obj.chainId ?? obj.cmcId
   if (key === 'Ethereum') id = '' + obj.cmcId // because ethereum chain id clashes with bitcoin cmcId
+  if (key === 'Kardia') id = '' + obj.cmcId // because ethereum chain id clashes with bitcoin cmcId
 
   return {
     ...obj,

@@ -2694,7 +2694,7 @@ export default {
         id: "421"
     },
     "energyweb": {
-        id: "5268"
+        id: "246"
     },
     "finder-bot": {
         id: "5934"
@@ -2709,13 +2709,13 @@ export default {
         id: "249"
     },
     "apechain": {
-        id: "18876"
+        id: "33139"
     },
     "chiliz": {
-        id: "4066"
+        id: "88888"
     },
     "ethereumclassic": {
-        id: "1321"
+        id: "61"
     },
     "etherlink": {
         id: "42793"
@@ -2724,60 +2724,60 @@ export default {
         id: "4172"
     },
     "fuse": {
-        id: "5634"
+        id: "122"
     },
     "harmony": {
-        id: "3945"
+        id: "1666600000"
     },
     "hemi": {
         id: "43111"
     },
     "imx": {
-        id: "10603"
+        id: "13371"
     },
     "kardia": {
         id: "5453"
     },
     "kcc": {
-        id: "2087"
+        id: "321"
     },
     "kroma": {
-        id: "27190"
+        id: "255"
     },
     "lisk": {
-        id: "1214"
+        id: "1135"
     },
     "nuls": {
         id: "2092"
     },
     "oasys": {
-        id: "22265"
+        id: "16116"
     },
     "redstone": {
         id: "690"
     },
     "rootstock": {
-        id: "3626"
+        id: "30"
     },
     "shimmer_evm": {
-        id: "14801"
+        id: "148"
     },
     "story": {
-        id: "35626"
+        id: "1514"
     },
     "syscoin": {
-        id: "541"
+        id: "57"
     },
     "telos": {
-        id: "4660"
+        id: "40"
     },
     "thundercore": {
-        id: "3930"
+        id: "108"
     },
     "velas": {
-        id: "4747"
+        id: "106"
     },
     "zeta": {
-        id: "21259"
+        id: "7000"
     }
 } as AdaptorsConfig

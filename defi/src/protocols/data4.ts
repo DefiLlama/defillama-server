@@ -8289,5 +8289,63 @@ const data4: Protocol[] = [
     twitter: "BaseFinanceLabs",
     listedAt: 1742570641
   },
+  {
+    id: "5940",
+    name: "HyperLend",
+    address: null,
+    symbol: "-",
+    url: "https://hyperlend.finance",
+    description:
+      "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/hyperlend.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Hyperliquid"],
+    module: "hyperlend/index.js",
+    forkedFrom: ["AAVE V3"],
+    oracles: ["Pyth","Redstone"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
+      },
+      {
+        name: "RedStone",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13990"]
+      }
+    ],
+    twitter: "hyperlendx",
+    audit_links: ["https://github.com/hyperlendx/audits"],
+    github: ["hyperlendx"],
+    listedAt: 1742675675
+  },
+  {
+    id: "5941",
+    name: "Ringswap",
+    address: "sonic:0x4931CE8f4130a723cC6fF8A0B23B7F33550aB3a4",
+    symbol: "RING",
+    url: "https://ringswap.finance",
+    description:
+      "Farming protocol on Sonic",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/ringswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Sonic"],
+    module: "Ringswap/index.js",
+    forkedFrom: ["Goose Finance"],
+    oracles: [],
+    twitter: "ringswaponsonic",
+    listedAt: 1742675684
+  },
 ];
 export default data4;

@@ -43409,7 +43409,7 @@ const data3: Protocol[] = [
     module: "origami/index.js",
     twitter: "origami_fi",
     audit_links: [
-      "https://github.com/TempleDAO/origami-public/blob/main/audits/origami-v2/Origami%20Finance%20-%20Zellic%20Audit%20Report.pdf",
+      "https://docs.origami.finance/technical-reference/audits",
     ],
     parentProtocol: "parent#temple-dao",
     listedAt: 1715612691,

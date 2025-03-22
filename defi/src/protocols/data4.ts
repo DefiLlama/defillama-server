@@ -174,7 +174,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Leveraged Farming",
     chains: ["Mantle"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: ["Juice Finance"],
     module: "omega/index.js",
     twitter: "omega_infra",
@@ -458,7 +458,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "dappOS_com",  
+    twitter: "dappOS_com",
   },
   {
     id: "5598",
@@ -479,7 +479,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "volboost",  
+    twitter: "volboost",
   },
   {
     id: "5599",
@@ -722,7 +722,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Chain",
     chains: ["Ethereum"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "sophon/index.js",
     twitter: "sophon",
@@ -791,7 +791,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Options",
     chains: ["Sonic"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "margin-zero/index.js",
     audit_links: ["https://github.com/marginzero-xyz/contracts/blob/main/audits/yAudits/MarginZero_yAudits_December2024_OptionsOTM.pdf"],
@@ -815,7 +815,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "NFT Marketplace",
     chains: ["VinuChain"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "dummy.js",
     twitter: "VinuChain",
@@ -868,7 +868,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5616",
-    name: "Republic Note", 
+    name: "Republic Note",
     address: null,
     symbol: "-",
     url: "https://republic.com/note",
@@ -890,7 +890,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5617",
-    name: "Aurum", 
+    name: "Aurum",
     address: "avax:0x7F144F8691CbA3d2EfD8e5bcf042f9303EE31a46",
     symbol: "AUR",
     url: "https://aurumfi.io/",
@@ -1316,7 +1316,7 @@ const data4: Protocol[] = [
     module: "neemo-finance/index.js",
     twitter: "neemofinance",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Chainsight"],
     audit_links: ["https://audits.hacken.io/neemo-finance/"],
     listedAt: 1737088474
   },
@@ -1386,7 +1386,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "SymphonyAg",
     forkedFrom: [],
-    oracles: [], 
+    oracles: [],
   },
   {
     id: "5638",
@@ -1407,7 +1407,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "LNExchange",
     forkedFrom: [],
-    oracles: [], 
+    oracles: [],
     parentProtocol: "parent#ln-exchange",
   },
   {
@@ -1429,7 +1429,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "LNExchange",
     forkedFrom: [],
-    oracles: [], 
+    oracles: [],
     parentProtocol: "parent#ln-exchange",
   },
   {
@@ -1451,7 +1451,7 @@ const data4: Protocol[] = [
     module: "sonex/index.js",
     twitter: "OopsItsSONEX",
     forkedFrom: ["Uniswap V3"],
-    oracles: [], 
+    oracles: [],
     github: ["sonex-dex"],
     listedAt: 1737126167
   },
@@ -1474,7 +1474,7 @@ const data4: Protocol[] = [
     module: "citrex-markets/index.js",
     twitter: "citrex_markets",
     forkedFrom: [],
-    oracles: [], 
+    oracles: [],
     listedAt: 1737129117
   },
   {
@@ -1496,7 +1496,7 @@ const data4: Protocol[] = [
     module: "edbank-xyz/index.js",
     twitter: "edbankDao",
     forkedFrom: [],
-    oracles: [], 
+    oracles: [],
     audit_links: ["https://edbank.gitbook.io/edbank-docs/security/audit"],
     listedAt: 1737129301
   },
@@ -1519,7 +1519,7 @@ const data4: Protocol[] = [
     module: "sailfish-v3/index.js",
     twitter: "SailFishFinance",
     forkedFrom: ["Uniswap V3"],
-    oracles: [], 
+    oracles: [],
     listedAt: 1737129307
   },
   {
@@ -1541,7 +1541,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "realSologenic",
     forkedFrom: [],
-    oracles: [], 
+    oracles: [],
     github: ["sologenic"],
   },
   {
@@ -1609,7 +1609,7 @@ const data4: Protocol[] = [
     module: "sailor-finance/index.js",
     twitter: "SailorFi",
     forkedFrom: ["Uniswap V3"],
-    oracles: [], 
+    oracles: [],
     audit_links: ["https://storage.googleapis.com/ktx-data/data/Verichains%20Public%20Report%20-%20Sailor%20Finance.pdf"],
     listedAt: 1737379699
   },
@@ -1632,7 +1632,7 @@ const data4: Protocol[] = [
     module: "olab/index.js",
     twitter: "opinionlabsxyz",
     forkedFrom: ["Polymarket"],
-    oracles: [], 
+    oracles: [],
     audit_links: [],
     listedAt: 1737379705
   },
@@ -1655,7 +1655,7 @@ const data4: Protocol[] = [
     module: "yoko-live/index.js",
     twitter: "yokodotlive",
     forkedFrom: [],
-    oracles: [], 
+    oracles: [],
     listedAt: 1737416137
   },
   {
@@ -2151,7 +2151,7 @@ const data4: Protocol[] = [
     id: "5671",
     name: "Hfun",
     address: "hyperliquid:0xbaf265ef389da684513d98d68edf4eae",
-    symbol: "HFUN", 
+    symbol: "HFUN",
     url: "https://hypurr.fun/",
     description:
       "Hfun is a Telegram trading bot and launchpad for launching and trading memecoins on Hyperliquid, tracking PnL, sniping new launches, accessing whale chats, and competing with others",
@@ -2352,7 +2352,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5680",
-    name: "Beets DEX V3", 
+    name: "Beets DEX V3",
     address: "sonic:0x2d0e0814e62d80056181f5cd932274405966e4f0",
     symbol: "BEETS",
     url: "https://beets.fi",
@@ -2374,7 +2374,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5681",
-    name: "RaccoonSwap", 
+    name: "RaccoonSwap",
     address: null,
     symbol: "-",
     url: "https://raccoonswap.finance/",
@@ -2395,7 +2395,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5682",
-    name: "Shadow Exchange Legacy", 
+    name: "Shadow Exchange Legacy",
     address: "sonic:0x3333b97138D4b086720b5aE8A7844b1345a33333",
     symbol: "SHADOW",
     url: "https://www.shadow.so/",
@@ -2417,7 +2417,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5683",
-    name: "Sonic Gateway", 
+    name: "Sonic Gateway",
     address: null,
     symbol: "-",
     url: "https://gateway.soniclabs.com/ethereum/sonic/s",
@@ -2438,7 +2438,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5684",
-    name: "ZOO.FUN", 
+    name: "ZOO.FUN",
     address: null,
     symbol: "-",
     url: "https://www.zoo.fun/",
@@ -2459,7 +2459,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5685",
-    name: "Quill Finance", 
+    name: "Quill Finance",
     address: null,
     symbol: "-",
     url: "https://app.quill.finance/",
@@ -2496,7 +2496,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5686",
-    name: "XPress Protocol", 
+    name: "XPress Protocol",
     address: null,
     symbol: "-",
     url: "https://xpressprotocol.com",
@@ -2517,7 +2517,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5687",
-    name: "Moose", 
+    name: "Moose",
     address: null,
     symbol: "-",
     url: "https://moose.market",
@@ -2538,7 +2538,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5688",
-    name: "Origin Sonic", 
+    name: "Origin Sonic",
     address: null,
     symbol: "-",
     url: "https://www.originprotocol.com",
@@ -2561,7 +2561,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5689",
-    name: "Libre Capital", 
+    name: "Libre Capital",
     address: null,
     symbol: "-",
     url: "https://www.librecapital.com/",
@@ -2885,7 +2885,7 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/shieldify-security/audits-portfolio/blob/main/reports/RoosterProtocol-Security-Review.pdf"],
     oracles: [],
     forkedFrom: ["Maverick V2"],
-    listedAt: 1738203899 
+    listedAt: 1738203899
   },
   {
     id: "5705",
@@ -3203,7 +3203,7 @@ const data4: Protocol[] = [
     module: "sonic-market-liquidity-vault/index.js",
     twitter: "sonic_market",
     oracles: [],
-    forkedFrom: [],  
+    forkedFrom: [],
     audit_links: ["https://docs.clober.io/assets/files/Clober_Liquidity_Vault_v2_Audit_Report_by_Trust_Security-7d8bcf5e7f6b488122f7974aef1d70c7.pdf",
                   "https://docs.clober.io/assets/files/2025_1_Clober_LiquidityVault-50ac1ebac2c19b9449389bcdf1c788bf.pdf"
                  ],
@@ -3228,7 +3228,7 @@ const data4: Protocol[] = [
     module: "wink/index.js",
     twitter: "WinkFinance",
     oracles: [],
-    forkedFrom: [],  
+    forkedFrom: [],
     audit_links: ["https://skynet.certik.com/projects/wink"],
     listedAt: 1738582660
   },
@@ -3250,7 +3250,7 @@ const data4: Protocol[] = [
     module: "bb-club-MusangKing/index.js",
     twitter: "BounceBitClub",
     oracles: [],
-    forkedFrom: [],  
+    forkedFrom: [],
     parentProtocol: "parent#bounceclub",
     audit_links: [],
     listedAt: 1738617392
@@ -3273,7 +3273,7 @@ const data4: Protocol[] = [
     module: "noon/index.js",
     twitter: "noon_capital",
     oracles: [],
-    forkedFrom: [],  
+    forkedFrom: [],
     audit_links: ["https://docs.noon.capital/security/smart-contract-audits"],
     stablecoins: ["noon-usn"],
     listedAt: 1738617865
@@ -3296,7 +3296,7 @@ const data4: Protocol[] = [
     module: "exponent/index.js",
     twitter: "ExponentFinance",
     oracles: [],
-    forkedFrom: [],  
+    forkedFrom: [],
     audit_links: [
       "https://github.com/exponent-finance/exponent-audits/blob/main/Exponent-ExponentCore-Oct-2024-OffsideLabs.pdf",
       "https://github.com/exponent-finance/exponent-audits/blob/main/Exponent-KaminoLendStandard-Oct-2024-OffsideLabs.pdf",
@@ -3361,7 +3361,7 @@ const data4: Protocol[] = [
     module: "sxbet/index.js",
     twitter: "sx_bet",
     oracles: [],
-    forkedFrom: [],  
+    forkedFrom: [],
     audit_links: [],
     listedAt: 1738617887
   },
@@ -3383,7 +3383,7 @@ const data4: Protocol[] = [
     module: "passdex/index.js",
     twitter: "PassDEX",
     oracles: [],
-    forkedFrom: ["Uniswap V3"],  
+    forkedFrom: ["Uniswap V3"],
     listedAt: 1738668464
   },
   {
@@ -3404,7 +3404,7 @@ const data4: Protocol[] = [
     module: "factorial/index.js",
     twitter: "FactorialFi",
     oracles: ["RedStone"], // https://docs.factorial.finance/oracle
-    forkedFrom: [],  
+    forkedFrom: [],
     listedAt: 1738669030
   },
   {
@@ -3424,8 +3424,8 @@ const data4: Protocol[] = [
     chains: ["Elys"],
     module: "elys-lending/index.js",
     twitter: "elys_network",
-    oracles: [], 
-    forkedFrom: [],  
+    oracles: [],
+    forkedFrom: [],
     parentProtocol: "parent#elys-protocol",
     listedAt: 1738669189
   },
@@ -3446,8 +3446,8 @@ const data4: Protocol[] = [
     chains: ["Ethereum","Solana","Base"],
     module: "dummy.js",
     twitter: "looter_ai",
-    oracles: [], 
-    forkedFrom: [],  
+    oracles: [],
+    forkedFrom: [],
   },
   {
     id: "5729",
@@ -4400,7 +4400,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "hashport/index.js",
-    twitter: "HashportNetwork", 
+    twitter: "HashportNetwork",
     audit_links: ["https://omniscia.io/limechain-hashport/", "https://omniscia.io/limechain-hashport-round-2"],
     listedAt: 1739362932
   },
@@ -4422,7 +4422,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "unichain/index.js",
-    twitter: "unichain", 
+    twitter: "unichain",
   },
   {
     id: "5773",
@@ -4442,7 +4442,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "aarna/index.js",
-    twitter: "aarnasays", 
+    twitter: "aarnasays",
     audit_links: ["https://skynet.certik.com/projects/aarna-protocol"],
     listedAt: 1739442586
   },
@@ -4464,7 +4464,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "magma-finance/index.js",
-    twitter: "Magma_Finance", 
+    twitter: "Magma_Finance",
     audit_links: ["https://github.com/Zellic/publications/blob/master/Magma%20Finance%20-%20Zellic%20Audit%20Report.pdf"],
     github: ["MagmaFinanceIO"],
     listedAt: 1739442886
@@ -4488,7 +4488,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "infrared-finance/index.js",
-    twitter: "InfraredFinance", 
+    twitter: "InfraredFinance",
     github: ["infrared-dao"],
     listedAt: 1739442996
   },
@@ -4510,7 +4510,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "Dopinprotocol/index.js",
-    twitter: "Dopinprotocol", 
+    twitter: "Dopinprotocol",
     listedAt: 1739443997
   },
   {
@@ -4531,7 +4531,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "ssi-basis-trading/index.js",
-    twitter: "SoSoValueCrypto", 
+    twitter: "SoSoValueCrypto",
     parentProtocol: "parent#sosovalue",
     listedAt: 1739444198
   },
@@ -4553,7 +4553,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "StoryProtocol", 
+    twitter: "StoryProtocol",
   },
   {
     id: "5779",
@@ -4573,7 +4573,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "piperx-v2/index.js",
-    twitter: "PiperxProtocol", 
+    twitter: "PiperxProtocol",
     parentProtocol: "parent#piperx",
     listedAt: 1739459267
   },
@@ -4595,7 +4595,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V3"],
     module: "piperx-v3/index.js",
-    twitter: "PiperxProtocol", 
+    twitter: "PiperxProtocol",
     parentProtocol: "parent#piperx",
     listedAt: 1739459418
   },
@@ -4615,9 +4615,9 @@ const data4: Protocol[] = [
     category: "Dexs",
     chains: ["Story"],
     oracles: [],
-    forkedFrom: ["Uniswap V3"], 
+    forkedFrom: ["Uniswap V3"],
     module: "storyhunt-v3/index.js",
-    twitter: "0xStoryHunt", 
+    twitter: "0xStoryHunt",
     listedAt: 1739459427
   },
   {
@@ -4639,7 +4639,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "verio/index.js",
-    twitter: "verio_story", 
+    twitter: "verio_story",
     listedAt: 1739459432
   },
   {
@@ -4677,7 +4677,7 @@ const data4: Protocol[] = [
     ],
     forkedFrom: ["Compound V2"],
     module: "takara/index.js",
-    twitter: "TakaraLend", 
+    twitter: "TakaraLend",
     audit_links: ["https://takara.gitbook.io/takara-lend/protocol-information/audits"],
     listedAt: 1739459439
   },
@@ -4699,7 +4699,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "haedal-amm/index.js",
-    twitter: "haedalprotocol", 
+    twitter: "haedalprotocol",
     parentProtocol: "parent#haedal",
     listedAt: 1739465147
   },
@@ -4721,7 +4721,7 @@ const data4: Protocol[] = [
     oracles: ["RedStone"],//https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
     forkedFrom: [],
     module: "bitfi-cedefi/index.js",
-    twitter: "Bitfi_Org", 
+    twitter: "Bitfi_Org",
     parentProtocol: "parent#bitfi",
     listedAt: 1739530444
   },
@@ -4743,7 +4743,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "doppler-finance/index.js",
-    twitter: "doppler_fi", 
+    twitter: "doppler_fi",
     github: ["girin-app"],
     listedAt: 1739555054
   },
@@ -4766,7 +4766,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "metapool-stip/index.js",
-    twitter: "meta_pool", 
+    twitter: "meta_pool",
     parentProtocol: "parent#meta-pool",
     audit_links: ["https://1322102881-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5HvxIwoS8YhIHItpA1lt%2Fuploads%2FOaz0PbKGiCBzBI2hKZcv%2FNM_0434_METAPOOL_FINAL.pdf?alt=media&token=73e9bebd-0716-4fbd-b3cf-f935f3973275"],
     listedAt: 1739555061
@@ -4789,7 +4789,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "unit-btc/index.js",
-    twitter: "hyperunit", 
+    twitter: "hyperunit",
     listedAt: 1739557972
   },
   {
@@ -4810,7 +4810,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "eggsfinance/index.js",
-    twitter: "eggsonsonic", 
+    twitter: "eggsonsonic",
     audit_links: ["https://eggs-finance.gitbook.io/docs/audit"],
     listedAt: 1739556355
   },
@@ -4863,7 +4863,7 @@ const data4: Protocol[] = [
     ],
     forkedFrom: [],
     module: "king/index.js",
-    twitter: "thekingprotocol", 
+    twitter: "thekingprotocol",
     audit_links: [
       "https://github.com/King-Protocol/king-cross-chain/blob/master/audit/NM_0452_King_Cross_Chain_FINAL.pdf",
       "https://github.com/King-Protocol/king-protocol-sc/tree/master/audits"
@@ -4889,7 +4889,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "nome-protocol/index.js",
-    twitter: "NOMEprotocol", 
+    twitter: "NOMEprotocol",
     listedAt: 1739584051
   },
   {
@@ -4922,7 +4922,7 @@ const data4: Protocol[] = [
     ],
     forkedFrom: ["AAVE V3"],
     module: "unleash/index.js",
-    twitter: "UnleashProtocol", 
+    twitter: "UnleashProtocol",
     audit_links: ["https://github.com/unleash-protocol/unleash-audit/tree/main/audit-reports"],
     listedAt: 1739648145
   },
@@ -4951,7 +4951,7 @@ const data4: Protocol[] = [
     ],
     forkedFrom: [],
     module: "azex/index.js",
-    twitter: "azex_io", 
+    twitter: "azex_io",
     listedAt: 1739648151
   },
   {
@@ -4995,7 +4995,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "lazy-summer-protocol/index.js",
-    twitter: "summerfinance_", 
+    twitter: "summerfinance_",
     parentProtocol: "parent#summer.fi",
     listedAt: 1739789703
   },
@@ -5017,7 +5017,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "knightrade/index.js",
-    twitter: "KnightradeTeam", 
+    twitter: "KnightradeTeam",
     listedAt: 1739812839
   },
   {
@@ -5088,7 +5088,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "chiliz-peppercoin/index.js",
-    twitter: "PepperChain", 
+    twitter: "PepperChain",
     listedAt: 1739812859
   },
   {
@@ -5268,7 +5268,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "metapool-mpsol/index.js",
-    twitter: "meta_pool", 
+    twitter: "meta_pool",
     parentProtocol: "parent#meta-pool",
     audit_links: [
       "https://1322102881-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5HvxIwoS8YhIHItpA1lt%2Fuploads%2FUMkSZziqO0AyoCGzxE7D%2Ftpyrced_blocksec_metapool_restaking_v1.0-signed.pdf?alt=media&token=890ab4b0-4ed1-48e9-8478-d114eb44c447"
@@ -5317,7 +5317,7 @@ const data4: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "coinbase-btc/index.js",
-    twitter: "coinbase", 
+    twitter: "coinbase",
     listedAt: 1739912521
   },
   {

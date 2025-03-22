@@ -39466,6 +39466,14 @@ const data3: Protocol[] = [
     twitter: "ZestProtocol",
     forkedFrom: [],
     oracles: ["Pyth"], // https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth"]
+
+      }
+    ],
     listedAt: 1712075269,
   },
   {

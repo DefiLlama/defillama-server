@@ -7073,6 +7073,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     forkedFrom: [],
+    oracles: ["Stork"],
     module: "extended/index.js",
     twitter: "extendedapp",
     listedAt: 1741703740

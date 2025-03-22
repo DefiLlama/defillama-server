@@ -17,6 +17,7 @@ export default {
   ...others2.adapters,
   ...graphCoins.adapters,
   reservoirprotocol: require("./rwa/reservoir-protocol"),
+  trize: require("./rwa/t-rize"),
   fortunafi: require("./rwa/fortunafi"),
   jupAg: require("./solana/jupAg"),
   midas: require("./rwa/midas"),

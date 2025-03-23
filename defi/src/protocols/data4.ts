@@ -8307,7 +8307,7 @@ const data4: Protocol[] = [
     chains: ["Hyperliquid"],
     module: "hyperlend/index.js",
     forkedFrom: ["AAVE V3"],
-    oracles: ["Pyth","Redstone"],
+    oracles: ["Pyth","RedStone"],
     oraclesBreakdown: [
       {
         name: "Pyth",

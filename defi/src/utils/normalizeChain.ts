@@ -4008,6 +4008,13 @@ export const chainCoingeckoIds = {
     url: "https://qubic.org/",
     github: ["qubic"]
   }, 
+  "WINR": {
+    geckoId: "winr-protocol",
+    symbol: "WINR",
+    cmcId: "23681",
+    twitter: "WINRProtocol",
+    url: "https://link3.to/winrprotocol",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4183,7 +4190,8 @@ const chainLabelMap = {
   "sty": "Story",
   "formnetwork": "Form Network",
   "hyper_evm": "HyperEVM",
-  "hyperliquid": "Hyperliquid"
+  "hyperliquid": "Hyperliquid",
+  "winr": "WINR",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4226,7 +4234,7 @@ const newChainLabelMap = {
   "hyperliquid": "Hyperliquid L1",
   "lightlink_phoenix": "LightLink",
   "move": "Movement", 
-  "wax": "Wax"
+  "wax": "Wax",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

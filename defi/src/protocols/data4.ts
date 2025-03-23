@@ -8347,5 +8347,48 @@ const data4: Protocol[] = [
     twitter: "ringswaponsonic",
     listedAt: 1742675684
   },
+  {
+    id: "5942",
+    name: "Gacha",
+    address: null,
+    symbol: "-",
+    url: "https://gacha.game/",
+    description:
+      "A new super app making crypto fun, simple, and accessible for everyone",
+    chain: "Abstract",
+    logo: `${baseIconsUrl}/gacha.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Abstract"],
+    module: "gacha/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "gacha_game_",
+    listedAt: 1742726734
+  },
+  {
+    id: "5943",
+    name: "Umbra",
+    address: null,
+    symbol: "-",
+    url: "https://umbra.finance/swap",
+    description:
+      "Dexs on Eclipse Chain",
+    chain: "Eclipse",
+    logo: `${baseIconsUrl}/umbra.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Eclipse"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "UmbraFi",
+  },
 ];
 export default data4;

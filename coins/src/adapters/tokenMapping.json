@@ -7642,6 +7642,16 @@
       "decimals": "18",
       "symbol": "uBTC",
       "to": "coingecko#wrapped-bitcoin"
+    },
+    "0x93919784c523f39cacaa98ee0a9d96c3f32b593e": {
+      "decimals": "8",
+      "symbol": "brBTC",
+      "to": "coingecko#bedrock-btc"
+    },
+    "0x7a06c4aef988e7925575c50261297a946ad204a8": {
+      "decimals": "18",
+      "symbol": "VUSD",
+      "to": "coingecko#vesper-vdollar"
     }
   },
   "oas": {

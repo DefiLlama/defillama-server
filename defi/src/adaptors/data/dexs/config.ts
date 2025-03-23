@@ -2900,5 +2900,8 @@ export default {
     },
     "extended": {
         id: "5887"
+    },
+    "umbra": {
+        id: "5943"
     }
 } as AdaptorsConfig

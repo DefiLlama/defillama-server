@@ -2783,4 +2783,13 @@ export default {
     "archerswap": {
         id: "2648"
     },
+    "superposition": {
+        id: "55244"
+    },
+    "gacha": {
+        id: "5942"
+    },
+    "pump-swap": {
+        id: "5936"
+    }
 } as AdaptorsConfig

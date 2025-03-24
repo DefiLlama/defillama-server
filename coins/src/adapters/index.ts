@@ -131,4 +131,5 @@ export default {
   jtoDerivs: require("./solana/jtoDerivs"),
   pac: require("./rwa/thepac"),
   tonDerivs: require("./other/ton"),
+  radixUnkownToken: require("./markets/radix"),
 };

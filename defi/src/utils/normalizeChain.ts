@@ -4015,6 +4015,13 @@ export const chainCoingeckoIds = {
     twitter: "WINRProtocol",
     url: "https://link3.to/winrprotocol",
   }, 
+  "MTT Network": {
+    geckoId: null,
+    symbol: "MTT",
+    cmcId: null,
+    twitter: "MTT_NETWORK",
+    url: "https://www.mtt.network/",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4192,6 +4199,7 @@ const chainLabelMap = {
   "hyper_evm": "HyperEVM",
   "hyperliquid": "Hyperliquid",
   "winr": "WINR",
+  "mtt_network": "MTT Network",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

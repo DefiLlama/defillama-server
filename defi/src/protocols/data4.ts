@@ -8465,5 +8465,27 @@ const data4: Protocol[] = [
     parentProtocol: "parent#termfinance",
     listedAt: 1742831758
   },
+  {
+    id: "5947",
+    name: "MTT Dex",
+    address: null,
+    symbol: "-",
+    url: "https://www.mtt.network/",
+    description:
+      "Dex on MTT Network",
+    chain: "MTT Network",
+    logo: `${baseIconsUrl}/mtt-dex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["MTT Network"],
+    module: "mtt-dex/index.js",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    twitter: "MTT_NETWORK",
+    listedAt: 1742832184
+  },
 ];
 export default data4;

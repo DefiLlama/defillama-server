@@ -2120,6 +2120,11 @@
     }
   },
   "mantle": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#mantle",
+      "decimals": "18",
+      "symbol": "MNT"
+    },
     "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34": {
       "to": "coingecko#ethena-usde",
       "decimals": "18",
@@ -2463,7 +2468,7 @@
       "to": "coingecko#osmosis-allbtc",
       "decimals": 6,
       "symbol": "allBTC"
-    }, 
+    },
     "osmo1n3n75av8awcnw4jl62n3l48e6e4sxqmaf97w5ua6ddu4s475q5qq9udvx4:alloyed:allSOL": {
       "to": "coingecko#osmosis-allsol",
       "decimals": 6,

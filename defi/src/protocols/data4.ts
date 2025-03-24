@@ -8390,5 +8390,35 @@ const data4: Protocol[] = [
     oracles: [],
     twitter: "UmbraFi",
   },
+  {
+    id: "5944",
+    name: "DegenPrime",
+    address: null,
+    symbol: "-",
+    url: "https://www.degenprime.io",
+    description:
+      "DegenPrime is the community-driven Prime Brokerage for the Based Degen. Here you lend, or trade and LP Base’s most prominent meme- and AI coins, with up to 10X leverage",
+    chain: "Base",
+    logo: `${baseIconsUrl}/degenprime.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Base"],
+    module: "degenPrime/index.js",
+    forkedFrom: ["DeltaPrime"],
+    oracles: ["RedStone"],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/13997"]
+      }
+    ],
+    twitter: "DegenPrimeDefi",
+    audit_links: ["https://github.com/DeltaPrimeLabs/deltaprime-primeloans/tree/dev/main/audits","https://drive.google.com/file/d/1ysFrJhsnwFu5QmngrcQIHefG9Kx3rj5J/view"],
+    listedAt: 1742826681
+  },
 ];
 export default data4;

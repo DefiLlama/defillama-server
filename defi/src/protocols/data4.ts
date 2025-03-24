@@ -8420,5 +8420,26 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/DeltaPrimeLabs/deltaprime-primeloans/tree/dev/main/audits","https://drive.google.com/file/d/1ysFrJhsnwFu5QmngrcQIHefG9Kx3rj5J/view"],
     listedAt: 1742826681
   },
+  {
+    id: "5945",
+    name: "Magnum Bot",
+    address: null,
+    symbol: "-",
+    url: "https://magnum.trade/",
+    description:
+      "Magnum is the on-chain Automated Trading Platform with web and mobile app interfaces",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/magnum-bot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Solana"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "DegenPrimeDefi",
+  },
 ];
 export default data4;

@@ -15915,14 +15915,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3393",
-    name: "TermFinance",
+    name: "TermFinance Lend",
     address: null,
     symbol: "-",
     url: "https://term.finance",
     description:
       "TermFinance is a fixed rate borrow/lend protocol pioneering an auction model to originate fixed rate, fixed term crypto backed loans at scale.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/termfinance.png`,
+    logo: `${baseIconsUrl}/termfinance-lend.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -15933,6 +15933,7 @@ const data3: Protocol[] = [
     twitter: "term_labs",
     forkedFrom: [],
     oracles: ["Chainlink"],
+    parentProtocol: "parent#termfinance",
     audit_links: ["https://docs.term.finance/security-audits/sigma-prime"],
     listedAt: 1692193295,
   },
@@ -39465,7 +39466,15 @@ const data3: Protocol[] = [
     module: "zest/index.js",
     twitter: "ZestProtocol",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth"]
+
+      }
+    ],
     listedAt: 1712075269,
   },
   {
@@ -43409,7 +43418,7 @@ const data3: Protocol[] = [
     module: "origami/index.js",
     twitter: "origami_fi",
     audit_links: [
-      "https://github.com/TempleDAO/origami-public/blob/main/audits/origami-v2/Origami%20Finance%20-%20Zellic%20Audit%20Report.pdf",
+      "https://docs.origami.finance/technical-reference/audits",
     ],
     parentProtocol: "parent#temple-dao",
     listedAt: 1715612691,

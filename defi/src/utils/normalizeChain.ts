@@ -2276,7 +2276,7 @@ export const chainCoingeckoIds = {
   "Kroma": {
     geckoId: "kroma",
     symbol: "KRO",
-    cmcId: null,
+    cmcId: "27190",
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
@@ -3382,7 +3382,7 @@ export const chainCoingeckoIds = {
   "Lisk": {
     geckoId: "lisk",
     symbol: "LSK",
-    cmcId: null,
+    cmcId: "1214",
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
@@ -3471,9 +3471,9 @@ export const chainCoingeckoIds = {
     chainId: 33139
   },
   "Asset Chain": {
-    geckoId: "xend-finance",
-    symbol: "RWA",
-    cmcId: "8519",
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
     categories: ["EVM"],
     twitter: "xendfinance",
     url: "https://xend.finance/",
@@ -4008,6 +4008,20 @@ export const chainCoingeckoIds = {
     url: "https://qubic.org/",
     github: ["qubic"]
   }, 
+  "WINR": {
+    geckoId: "winr-protocol",
+    symbol: "WINR",
+    cmcId: "23681",
+    twitter: "WINRProtocol",
+    url: "https://link3.to/winrprotocol",
+  }, 
+  "MTT Network": {
+    geckoId: null,
+    symbol: "MTT",
+    cmcId: null,
+    twitter: "MTT_NETWORK",
+    url: "https://www.mtt.network/",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4183,7 +4197,9 @@ const chainLabelMap = {
   "sty": "Story",
   "formnetwork": "Form Network",
   "hyper_evm": "HyperEVM",
-  "hyperliquid": "Hyperliquid"
+  "hyperliquid": "Hyperliquid",
+  "winr": "WINR",
+  "mtt_network": "MTT Network",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4226,7 +4242,7 @@ const newChainLabelMap = {
   "hyperliquid": "Hyperliquid L1",
   "lightlink_phoenix": "LightLink",
   "move": "Movement", 
-  "wax": "Wax"
+  "wax": "Wax",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

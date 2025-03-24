@@ -6696,6 +6696,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "pumpdotfun",
   },
   {
+    id: "parent#termfinance",
+    name: "TermFinance",
+    url: "https://term.finance",
+    description: "TermFinance is a fixed rate borrow/lend protocol pioneering an auction model to originate fixed rate, fixed term crypto backed loans at scale.",
+    logo: `${baseIconsUrl}/termfinance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "term_labs",
+  },
+  {
     id: "parent#centrifuge",
     name: "Centrifuge",
     url: "https://centrifuge.io/",
@@ -6706,7 +6717,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: ["Ethereum", "Arbitrum", "Base"],
     twitter: "centrifuge",
     github: ["centrifuge"]
-  },
+  }
 ];
 
 export default parentProtocols;

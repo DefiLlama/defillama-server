@@ -65,4 +65,3 @@ export async function radixUnkownToken(timestamp: number = 0) {
     writes,
   });
 }
-radixUnkownToken(); // ts-node coins/src/adapters/markets/radix.ts

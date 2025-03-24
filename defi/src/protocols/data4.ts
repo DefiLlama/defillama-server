@@ -7073,6 +7073,7 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     forkedFrom: [],
+    oracles: ["Stork"],
     oraclesBreakdown: [
       name: "Stork",
       type: "Primary",

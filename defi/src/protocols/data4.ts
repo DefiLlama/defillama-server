@@ -7073,9 +7073,11 @@ const data4: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     forkedFrom: [],
-    oracles: ["Stork"],
-    type: "Primary",
-    proof: ["https://docs.extended.exchange/extended-resources/trading/oracle-prices"],
+    oraclesBreakdown: [
+      name: "Stork",
+      type: "Primary",
+      proof: ["https://docs.extended.exchange/extended-resources/trading/oracle-prices"]
+    ],
     module: "extended/index.js",
     twitter: "extendedapp",
     listedAt: 1741703740

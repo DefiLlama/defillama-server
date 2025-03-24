@@ -8385,10 +8385,11 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Eclipse"],
-    module: "dummy.js",
+    module: "umbra/index.js",
     forkedFrom: [],
     oracles: [],
-    twitter: "UmbraFi",
+    github: ["UmbraDEX"],
+    twitter: "UmbraFi"
   },
   {
     id: "5944",
@@ -8440,6 +8441,29 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "DegenPrimeDefi",
+  },
+  {
+    id: "5946",
+    name: "TermFinance Vaults",
+    address: null,
+    symbol: "-",
+    url: "https://www.term.finance",
+    description:
+      "Fixed-rate lending via on-chain auctions",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/termfinance-vaults.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Avalanche"],
+    module: "term-finance-vaults/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "term_labs",
+    parentProtocol: "parent#termfinance",
+    listedAt: 1742831758
   },
 ];
 export default data4;

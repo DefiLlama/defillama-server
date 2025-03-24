@@ -6695,6 +6695,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "pumpdotfun",
   },
+  {
+    id: "parent#termfinance",
+    name: "TermFinance",
+    url: "https://term.finance",
+    description: "TermFinance is a fixed rate borrow/lend protocol pioneering an auction model to originate fixed rate, fixed term crypto backed loans at scale.",
+    logo: `${baseIconsUrl}/termfinance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "term_labs",
+  },
 ];
 
 export default parentProtocols;

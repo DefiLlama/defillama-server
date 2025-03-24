@@ -103,7 +103,7 @@
     "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
       "decimals": "18",
       "symbol": "sUSDa",
-      "to": "coingecko#susda"
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     },
     "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E": {
       "decimals": "8",
@@ -681,7 +681,7 @@
     "0x2B66AAdE1e9C062FF411bd47C44E0Ad696d43BD9": {
       "decimals": "18",
       "symbol": "sUSDa",
-      "to": "coingecko#susda"
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     },
     "0x777B2913b1BB171A83cA3cdf79CB40523Ac76fDb": {
       "to": "coingecko#ignition-fbtc",
@@ -823,7 +823,7 @@
     "0x73a325103935b0B5E7AA3acA6dba74AD22f82B03": {
       "decimals": "18",
       "symbol": "sUSDa",
-      "to": "coingecko#susda"
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     },
     "0x184b72289c0992bdf96751354680985a7c4825d6": {
       "decimals": "18",
@@ -1205,7 +1205,7 @@
       "to": "coingecko#usda-2"
     },
     "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
-      "to": "coingecko#susda",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": "18",
       "symbol": "sUSDa"
     }
@@ -1354,7 +1354,7 @@
     "0xd329f9A8589723357C36727a2D5e15974c835cCf": {
       "decimals": "18",
       "symbol": "sUSDa",
-      "to": "coingecko#susda"
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     },
     "0x0a27e060c0406f8ab7b64e3bee036a37e5a62853": {
       "to": "coingecko#zai-stablecoin",
@@ -2166,7 +2166,7 @@
       "to": "coingecko#usda-2"
     },
     "0x5A61B1d8272B250729EA3F5eD3Ef843f4D66BC6e": {
-      "to": "coingecko#susda",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": "18",
       "symbol": "sUSDa"
     },
@@ -4880,7 +4880,7 @@
       "symbol": "USDa"
     },
     "0x6aB5d5E96aC59f66baB57450275cc16961219796": {
-      "to": "coingecko#susda",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": 18,
       "symbol": "sUSDa"
     },
@@ -5190,7 +5190,7 @@
       "symbol": "USDa"
     },
     "0xd76fDbDfc39798c10E734A8fdf27186528188311": {
-      "to": "coingecko#susda",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": "18",
       "symbol": "sUSDa"
     }
@@ -5294,7 +5294,7 @@
       "symbol": "USDa"
     },
     "0xe8cfc9f5c3ad6eeeced88534aa641355451db326": {
-      "to": "coingecko#susda",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": "18",
       "symbol": "sUSDa"
     }
@@ -5342,7 +5342,7 @@
     "0x5d5c8aec46661f029a5136a4411c73647a5714a7": {
       "decimals": "18",
       "symbol": "sUSDa",
-      "to": "coingecko#susda"
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     },
     "0xff12470a969dd362eb6595ffb44c82c959fe9acc": {
       "decimals": "18",
@@ -5430,7 +5430,7 @@
       "symbol": "USDa"
     },
     "0x5d5c8Aec46661f029A5136a4411C73647a5714a7": {
-      "to": "coingecko#susda",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": 18,
       "symbol": "sUSDa"
     }
@@ -5975,7 +5975,7 @@
       "symbol": "USDa"
     },
     "0x5d5c8Aec46661f029A5136a4411C73647a5714a7": {
-      "to": "coingecko#susda",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": 18,
       "symbol": "sUSDa"
     },
@@ -6534,7 +6534,7 @@
     "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
       "decimals": "18",
       "symbol": "sUSDa",
-      "to": "coingecko#susda"
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
     },
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
       "decimals": "18",
@@ -6664,7 +6664,7 @@
       "symbol": "USDa"
     },
     "0x4047aE7cc300b5cc5a6fac2417C76eaAD18972F6": {
-      "to": "coingecko#susda",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": 18,
       "symbol": "sUSDa"
     }
@@ -6720,7 +6720,7 @@
       "to": "coingecko#usda-2"
     },
     "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
-      "to": "coingecko#susda",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": "18",
       "symbol": "sUSDa"
     }
@@ -6837,7 +6837,7 @@
       "to": "coingecko#usda-2"
     },
     "0x2840F9d9f96321435Ab0f977E7FDBf32EA8b304f": {
-      "to": "coingecko#susda",
+      "to": "asset#ethereum:0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
       "decimals": "18",
       "symbol": "sUSDa"
     },

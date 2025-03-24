@@ -1474,7 +1474,14 @@ const data4: Protocol[] = [
     module: "citrex-markets/index.js",
     twitter: "citrex_markets",
     forkedFrom: [],
-    oracles: [], 
+    oracles: ["Stork"],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Primary",
+      proof: ["https://citrex.gitbook.io/citrex-markets/citrex-markets/funding-and-pricing"],
+      }
+    ],
     listedAt: 1737129117
   },
   {

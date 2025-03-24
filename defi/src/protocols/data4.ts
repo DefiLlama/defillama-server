@@ -8503,5 +8503,28 @@ const data4: Protocol[] = [
     twitter: "MTT_NETWORK",
     listedAt: 1742832184
   },
+  {
+    id: "5948",
+    name: "Centrifuge Pool",
+    address: "0xc221b7e65ffc80de234bbb6667abdd46593d34f0",
+    symbol: "CFG",
+    url: "https://centrifuge.io",
+    description:
+      "Centrifuge protocol enables asset managers to tokenize, manage, and distribute tokenized funds onchain, while providing investors access to a diversified portfolio of high-quality tokenized assets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/centrifuge-pool.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum", "Base", "Arbitrum"],
+    module: "centrifuge/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "centrifuge",
+    parentProtocol: "parent#centrifuge",
+    listedAt: 1742845841
+  },
 ];
 export default data4;

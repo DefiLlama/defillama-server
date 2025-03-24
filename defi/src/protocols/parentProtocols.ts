@@ -6706,6 +6706,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "term_labs",
   },
+  {
+    id: "parent#centrifuge",
+    name: "Centrifuge",
+    url: "https://centrifuge.io/",
+    description: "Centrifuge protocol enables asset managers to tokenize, manage, and distribute tokenized funds onchain, while providing investors access to a diversified portfolio of high-quality tokenized assets.",
+    logo: `${baseIconsUrl}/centrifuge.jpg`,
+    gecko_id: "centrifuge",
+    cmcId: "6748",
+    chains: [],
+    twitter: "centrifuge",
+    github: ["centrifuge"]
+  }
 ];
 
 export default parentProtocols;

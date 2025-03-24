@@ -7168,6 +7168,21 @@
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
       "symbol": "SolvBTC.BBN"
+    },
+    "0xc67476893C166c537afd9bc6bc87b3f228b44337": {
+      "to": "coingecko#neemo-staked-astar",
+      "decimals": 18,
+      "symbol": "NSASTR"
+    },
+    "0x2fc9a87b1ef46dCDdF4801C36d752E0d5F243E4b": {
+      "to": "coingecko#weth",
+      "decimals": 18,
+      "symbol": "nrETH"
+    },
+    "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 18,
+      "symbol": "WBTC"
     }
   },
   "odyssey": {

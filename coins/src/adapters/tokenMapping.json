@@ -1952,7 +1952,7 @@
       "to": "coingecko#tether"
     },
     "7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs": {
-      "decimals": "6",
+      "decimals": "8",
       "symbol": "WETH",
       "to": "coingecko#weth"
     },

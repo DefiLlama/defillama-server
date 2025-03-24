@@ -8404,7 +8404,8 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     github: ["UmbraDEX"],
-    twitter: "UmbraFi"
+    twitter: "UmbraFi",
+    listedAt: 1742845591
   },
   {
     id: "5944",

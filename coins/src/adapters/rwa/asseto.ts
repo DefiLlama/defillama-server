@@ -4,7 +4,7 @@ import {getApi} from "../utils/sdk";
 
 const CHAIN = "hsk";
 
-const TOKENS: any = [
+const TOKENS: any[] = [
     {
         name: "AoABT",
         tokenAddress: "0x80C080acd48ED66a35Ae8A24BC1198672215A9bD",

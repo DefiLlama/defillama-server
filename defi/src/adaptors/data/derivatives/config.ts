@@ -833,5 +833,8 @@ export default {
     },
     "extended": {
         id: "5887"
+    },
+    "agdex": {
+        id: "5467"
     }
 } as AdaptorsConfig

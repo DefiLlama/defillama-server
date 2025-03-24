@@ -2791,5 +2791,8 @@ export default {
     },
     "pump-swap": {
         id: "5936"
+    },
+    "agdex": {
+        id: "5467"
     }
 } as AdaptorsConfig

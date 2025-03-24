@@ -22101,7 +22101,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["Chronicle"],
     forkedFrom: [],
     module: "maker-rwa/index.js",
     twitter: "MakerDAO",
@@ -31745,7 +31745,7 @@ const data3: Protocol[] = [
     symbol: "SEED",
     url: "https://garden.finance",
     description:
-      "Garden provides one of the easiest ways for you to acquire WBTC with real BTC. The Garden uses atomic swaps to facilitate trustless conversions.",
+      "Garden is the fastest Bitcoin bridge, enabling cross-chain Bitcoin swaps in as little as 30 seconds. It is built using an intents-based architecture with trustless settlements, ensuring zero custody risk for the users.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/garden.jpg`,
     audits: "2",
@@ -31833,8 +31833,8 @@ const data3: Protocol[] = [
   {
     id: "4090",
     name: "Mint Club V2",
-    address: "bsc:0x1f3Af095CDa17d63cad238358837321e95FC5915",
-    symbol: "MINT",
+    address: "base:0xFf45161474C39cB00699070Dd49582e417b57a7E",
+    symbol: "MT",
     url: "https://mint.club",
     description:
       "Mint Club provides a seamless platform for creating bonding curve-backed tokens or NFTs, using any ERC20 token as the base asset in the bonding curve pool. It facilitates easy tokenization with a completely no-code solution, offering highly customizable bonding curve designs, adjustable creator royalties, a variety of creator tools, and a user-friendly interface for trading bonding curve assets.",
@@ -31845,7 +31845,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Launchpad",
-    chains: ["Binance"],
+    chains: ["Base"],
     oracles: [],
     forkedFrom: [],
     module: "mint-club-v2/index.js",
@@ -39465,7 +39465,15 @@ const data3: Protocol[] = [
     module: "zest/index.js",
     twitter: "ZestProtocol",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth"]
+
+      }
+    ],
     listedAt: 1712075269,
   },
   {
@@ -40106,14 +40114,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4449",
-    name: "Pump",
+    name: "pump.fun", // previously Pump
     address: null,
     symbol: "-",
     url: "https://www.pump.fun/",
     description:
-      "Launch a coin that is instantly tradeable without having to seed liquidity. Deploy a coin for under 2$ in one click",
+      "Launch a coin that is instantly tradeable in one click for free",
     chain: "Solana",
-    logo: `${baseIconsUrl}/pump.png`,
+    logo: `${baseIconsUrl}/pump.fun.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -40124,6 +40132,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "pumpdotfun",
+    parentProtocol: "parent#pump",
     listedAt: 1712427917,
   },
   {
@@ -43408,7 +43417,7 @@ const data3: Protocol[] = [
     module: "origami/index.js",
     twitter: "origami_fi",
     audit_links: [
-      "https://github.com/TempleDAO/origami-public/blob/main/audits/origami-v2/Origami%20Finance%20-%20Zellic%20Audit%20Report.pdf",
+      "https://docs.origami.finance/technical-reference/audits",
     ],
     parentProtocol: "parent#temple-dao",
     listedAt: 1715612691,

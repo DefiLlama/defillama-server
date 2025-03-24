@@ -2643,7 +2643,7 @@ export default {
         id: "4256"
     },
     "sedge": {
-        id: "366"
+        id: "5930"
     },
     "vicuna-finance": {
         id: "5672"
@@ -2689,5 +2689,110 @@ export default {
     },
     "aavechan": {
         id: "5926"
+    },
+    "paint-swap": {
+        id: "421"
+    },
+    "energyweb": {
+        id: "246"
+    },
+    "finder-bot": {
+        id: "5934"
+    },
+    "sol-trading-bot": {
+        id: "4909"
+    },
+    "suite": {
+        id: "5933"
+    },
+    "stakedao": {
+        id: "249"
+    },
+    "apechain": {
+        id: "33139"
+    },
+    "chiliz": {
+        id: "88888"
+    },
+    "ethereumclassic": {
+        id: "61"
+    },
+    "etherlink": {
+        id: "42793"
+    },
+    "flare": {
+        id: "4172"
+    },
+    "fuse": {
+        id: "122"
+    },
+    "harmony": {
+        id: "1666600000"
+    },
+    "hemi": {
+        id: "43111"
+    },
+    "imx": {
+        id: "13371"
+    },
+    "kardia": {
+        id: "5453"
+    },
+    "kcc": {
+        id: "321"
+    },
+    "kroma": {
+        id: "255"
+    },
+    "lisk": {
+        id: "1135"
+    },
+    "nuls": {
+        id: "2092"
+    },
+    "oasys": {
+        id: "16116"
+    },
+    "redstone": {
+        id: "690"
+    },
+    "rootstock": {
+        id: "30"
+    },
+    "shimmer_evm": {
+        id: "148"
+    },
+    "story": {
+        id: "1514"
+    },
+    "syscoin": {
+        id: "57"
+    },
+    "telos": {
+        id: "40"
+    },
+    "thundercore": {
+        id: "108"
+    },
+    "velas": {
+        id: "106"
+    },
+    "zeta": {
+        id: "7000"
+    },
+    "archerswap": {
+        id: "2648"
+    },
+    "superposition": {
+        id: "55244"
+    },
+    "gacha": {
+        id: "5942"
+    },
+    "pump-swap": {
+        id: "5936"
+    },
+    "agdex": {
+        id: "5467"
     }
 } as AdaptorsConfig

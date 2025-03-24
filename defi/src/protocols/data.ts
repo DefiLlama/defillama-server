@@ -6961,8 +6961,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/mint-club-v1.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "mint-club",
+    cmcId: "10977",
     category: "Launchpad",
     chains: ["Binance"],
     module: "mint-club/index.js",
@@ -12664,6 +12664,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Binance", "Polygon", "Fantom", "Blast", "Base"],
     module: "yel/index.js",
     twitter: "yel_finance",
+    oraclesByChain: {
+      sonic: ["Chainlink"], //Source: https://yield-enhancement-labs.gitbook.io/yield-enhancement-labs/about-yel/oracles
+      base: ["Chainlink"], //Source: https://yield-enhancement-labs.gitbook.io/yield-enhancement-labs/about-yel/oracles
+    },
     listedAt: 1634674060,
     github: ["YieldEnhancementLabs"],
     governanceID: ["snapshot:yelfinance.eth"],

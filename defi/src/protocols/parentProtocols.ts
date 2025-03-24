@@ -2526,7 +2526,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "GMX",
     url: "https://gmx.io",
     description:
-      "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
+      "GMX is a leading onchain exchange for perpetual and spot trading, offering deep liquidity, low fees, multi-chain support, and seamless one-click trading. Powered by isolated and multi-asset pools, the permissionless DEX enables anybody to provide liquidity and integrates with 80+ DeFi projects across Arbitrum, Avalanche, and Solana.",
     logo: `${baseIconsUrl}/gmx.png`,
     gecko_id: "gmx",
     cmcId: "11857",
@@ -3767,8 +3767,8 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://mint.club",
     description: `Mint Club is a smart token building platform that has no need to code and provides instant liquidity. Anyone can launch a smart token with just a few simple clicks.`,
     logo: `${baseIconsUrl}/mint-club.png`,
-    gecko_id: "mint-club",
-    cmcId: "10977",
+    gecko_id: "mint-token",
+    cmcId: "35964",
     chains: [],
     github: ["Steemhunt"],
     twitter: "MintClubPro",
@@ -6683,6 +6683,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RFX_exchange",
     github: ["rfx-exchange"]
+  },
+  {
+    id: "parent#pump",
+    name: "Pump",
+    url: "https://www.pump.fun/",
+    description: "Launch a coin that is instantly tradeable in one click for free",
+    logo: `${baseIconsUrl}/pump.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "pumpdotfun",
   },
 ];
 

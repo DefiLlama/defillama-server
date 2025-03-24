@@ -7367,7 +7367,7 @@ const data4: Protocol[] = [
       "USDT0 is a one stop solution for Tether’s Interoperability and Expansion.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/usdt0.jpg`,
-    audits: "3",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

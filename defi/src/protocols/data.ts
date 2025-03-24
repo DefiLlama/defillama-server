@@ -8762,7 +8762,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "509",
-    name: "Centrifuge",
+    name: "Tinlake",
     address: "0xc221b7e65ffc80de234bbb6667abdd46593d34f0",
     symbol: "CFG",
     url: "https://tinlake.centrifuge.io",
@@ -8777,8 +8777,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "tinlake/index.js",
     twitter: "centrifuge",
-    audit_links: ["https://github.com/centrifuge/security/blob/master/audits/tinlake/LA-Tinlake-Audit-v0.3.0.pdf"],
     github: ["centrifuge"],
+    parentProtocol: "parent#centrifuge",
+    audit_links: ["https://docs.centrifuge.io/developer/security/"]
   },
   {
     id: "510",

@@ -8219,5 +8219,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#pump",
     listedAt: 1742516927
   },
+  {
+    id: "5937",
+    name: "Centrifuge",
+    address: "0xc221b7e65ffc80de234bbb6667abdd46593d34f0",
+    symbol: "CFG",
+    chain: "Ethereum",
+    url: "https://centrifuge.io/",
+    description: "Centrifuge protocol enables asset managers to tokenize, manage, and distribute tokenized funds onchain, while providing investors access to a diversified portfolio of high-quality tokenized assets.",
+    logo: `${baseIconsUrl}/centrifuge.jpg`,
+    audits: "5",
+    audit_note: null,
+    gecko_id: "centrifuge",
+    cmcId: "6748",
+    category: "RWA",
+    chains: ["Ethereum", "Arbitrum", "Base"],
+    module: "centrifuge/index.js",
+    twitter: "centrifuge",
+    github: ["centrifuge"],
+    parentProtocol: "parent#centrifuge",
+    audit_links: ["https://docs.centrifuge.io/developer/security/"]
+  },
 ];
 export default data4;

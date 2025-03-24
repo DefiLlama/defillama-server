@@ -14870,10 +14870,10 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     oraclesByChain: {
-      arbitrum: ["Chainlink"],
+      arbitrum: ["Chainlink","Chronicle"],
       ethereum: ["Chainlink"],
-      base: ["Chainlink"],
-      optimism: ["Chainlink"],
+      base: ["Chainlink","Chronicle"],
+      optimism: ["Chainlink","Chronicle"],
     }, // the oracle of each pools if provided on the UI https://app.silo.finance/
     forkedFrom: [],
     module: "silo/index.js",

@@ -3116,8 +3116,8 @@ export const chainCoingeckoIds = {
     github: ["joltify-finance"]
   },
   "IOTA EVM": {
-    geckoId: null,
-    symbol: null,
+    geckoId: 'iota',
+    symbol: 'IOTA',
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {

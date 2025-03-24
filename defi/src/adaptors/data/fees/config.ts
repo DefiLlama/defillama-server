@@ -2794,5 +2794,32 @@ export default {
     },
     "agdex": {
         id: "5467"
-    }
+    },
+    "ancient8": {
+        id: "888888888"
+    },
+    "bob": {
+        id: "60808"
+    },
+    "corn": {
+        id: "21000000"
+    },
+    "gravity": {
+        id: "1625"
+    },
+    "iota_evm": {
+        id: "8822"
+    },
+    "lightlink": {
+        id: "1890"
+    },
+    "reya": {
+        id: "1729"
+    },
+    "swellchain": {
+        id: "1923"
+    },
+    "worldchain": {
+        id: "480"
+    },
 } as AdaptorsConfig

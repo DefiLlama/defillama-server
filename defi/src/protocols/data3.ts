@@ -44909,7 +44909,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://lendos.org/",
-    description: "Fastest lending, liquidity & leverage end-point for NeonEVM & Solana ecosystem",
+    description: "Cross-Chain Lending OS Supporting Multiple Collateral Types Deployed on Hemi and Neon EVM",
     chain: "Neon",
     logo: `${baseIconsUrl}/lendos.png`,
     audits: "0",

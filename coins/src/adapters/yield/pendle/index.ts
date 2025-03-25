@@ -213,6 +213,20 @@ const config: { [chain: string]: any } = {
       },
     ],
   },
+  sonic: {
+    toAsset: "0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2",
+    factories: [
+      {
+        factory: "0xFeE31A6eC6eBefa0b5A594Bf5b1139e3c6fAA0fB",
+        fromBlock: 7830440,
+        eventAbi:
+          "event CreateNewMarket (address indexed market, address indexed PT, int256 scalarRoot, int256 initialAnchor, uint256 lnFeeRateRoot)",
+        topics: [
+          "0xae811fae25e2770b6bd1dcb1475657e8c3a976f91d1ebf081271db08eef920af",
+        ],
+      },
+    ],
+  },
 };
 
 export function pendle(timestamp: number = 0) {
@@ -220,7 +234,7 @@ export function pendle(timestamp: number = 0) {
     ...Object.keys(config).map((chain: string) =>
       getTokenPrices(timestamp, chain, config[chain]),
     ),
-    // getApiPrices(timestamp),
+    getApiPrices(timestamp),
   ]);
 }
 

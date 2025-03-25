@@ -19,6 +19,8 @@ const allAssets: { [chainId: string]: string[] } = {
     "0x38ea452219524bb87e18de1c24d3bb59510bd783",
     "0x84631c0d0081fde56deb72f6de77abbbf6a9f93a",
     "0xc673ef7791724f0dcca38adb47fbb3aef3db6c80",
+    "0x46e6b4a950eb1abba159517dea956afd01ea9497", 
+    "0xc387ad871d94990e073f1bd0b759ffdb5e0313aa"
   ],
   56: [
     // bsc
@@ -44,6 +46,7 @@ const allAssets: { [chainId: string]: string[] } = {
     "0x86aacbed3e7b3d33149d5dcfd2def3c6d8498b8b",
     "0xb6cfcf89a7b22988bfc96632ac2a9d6dab60d641",
     "0x5402b5f40310bded796c7d0f3ff6683f5c0cffdf",
+    "0xb7ffe52ea584d2169ae66e7f0423574a5e15056f"
   ],
 };
 

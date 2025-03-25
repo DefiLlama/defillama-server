@@ -2828,5 +2828,11 @@ export default {
     },
     "hop-protocol": {
         id: "435"
+    },
+    "squadswap-dynamo": {
+        id: "5921"
+    },
+    "squadswap-wow": {
+        id: "5922"
     }
 } as AdaptorsConfig

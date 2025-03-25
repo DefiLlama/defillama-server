@@ -2822,4 +2822,7 @@ export default {
     "worldchain": {
         id: "480"
     },
+    "hop-protocol": {
+        id: "435"
+    }
 } as AdaptorsConfig

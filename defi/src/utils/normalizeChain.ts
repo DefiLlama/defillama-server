@@ -4014,6 +4014,7 @@ export const chainCoingeckoIds = {
     cmcId: "23681",
     twitter: "WINRProtocol",
     url: "https://link3.to/winrprotocol",
+    chainId: 777777
   }, 
   "MTT Network": {
     geckoId: null,
@@ -4021,6 +4022,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     twitter: "MTT_NETWORK",
     url: "https://www.mtt.network/",
+    chainId: 6880
   }, 
 } as unknown as ChainCoinGekcoIds
 

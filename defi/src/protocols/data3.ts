@@ -15915,14 +15915,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3393",
-    name: "TermFinance",
+    name: "TermFinance Lend",
     address: null,
     symbol: "-",
     url: "https://term.finance",
     description:
       "TermFinance is a fixed rate borrow/lend protocol pioneering an auction model to originate fixed rate, fixed term crypto backed loans at scale.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/termfinance.png`,
+    logo: `${baseIconsUrl}/termfinance-lend.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -15933,6 +15933,7 @@ const data3: Protocol[] = [
     twitter: "term_labs",
     forkedFrom: [],
     oracles: ["Chainlink"],
+    parentProtocol: "parent#termfinance",
     audit_links: ["https://docs.term.finance/security-audits/sigma-prime"],
     listedAt: 1692193295,
   },
@@ -22087,14 +22088,15 @@ const data3: Protocol[] = [
   },
   {
     id: "3665",
-    name: "Maker RWA",
+    name: "Sky RWA",
+    previousNames: ["Maker RWA"],
     address: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
     symbol: "MKR",
     url: "https://makerdao.com/en/",
     description:
       "Real World Assets (RWAs) are a collateral type in the Maker Protocol which require legal entities to represent the MakerDAO in order to interact with real world counterparties in deals ratified by governance.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/maker-rwa.jpg`,
+    logo: `${baseIconsUrl}/sky-rwa.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -22104,7 +22106,7 @@ const data3: Protocol[] = [
     oracles: ["Chronicle"],
     forkedFrom: [],
     module: "maker-rwa/index.js",
-    twitter: "MakerDAO",
+    twitter: "SkyEcosystem",
     parentProtocol: "parent#maker",
     listedAt: 1697730940,
   },
@@ -34747,7 +34749,14 @@ const data3: Protocol[] = [
     module: "blitz-exchange/index.js",
     twitter: "tradeonblitz",
     forkedFrom: ["Vertex"], // it uses edges product from vertex https://edge.vertexprotocol.com/ "Vertex Edge’s composable orderbook solves the problems of liquidity fragmentation and creates economic alliances across chains."
-    oracles: [],
+    oracles: ["Stork"],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Primary",
+      proof: ["https://docs.blitz.exchange/basics/pricing-oracles"],
+      }
+    ],
     audit_links: [],
     parentProtocol: "parent#Edge",
     listedAt: 1709318288,
@@ -39465,7 +39474,15 @@ const data3: Protocol[] = [
     module: "zest/index.js",
     twitter: "ZestProtocol",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth"]
+
+      }
+    ],
     listedAt: 1712075269,
   },
   {
@@ -44893,7 +44910,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://lendos.org/",
-    description: "Fastest lending, liquidity & leverage end-point for NeonEVM & Solana ecosystem",
+    description: "Cross-Chain Lending OS Supporting Multiple Collateral Types Deployed on Hemi and Neon EVM",
     chain: "Neon",
     logo: `${baseIconsUrl}/lendos.png`,
     audits: "0",
@@ -44906,6 +44923,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "lendOSorg",
+    github: ["lendos-labs"],
     listedAt: 1716396261,
   },
   {

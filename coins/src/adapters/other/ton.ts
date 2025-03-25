@@ -54,6 +54,19 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
     decimals: 18,
   },
+  TON_STORM: {
+    rate: async () => {
+      const res = await call({
+        target: "EQDpJnZP89Jyxz3euDaXXFUhwCWtaOeRmiUJTi3jGYgF8fnj",
+        abi: "get_vault_data",
+      });
+      return res[1] / 10 ** 9;
+    },
+    underlyingChain: "ethereum",
+    address: "EQCNY2AQ3ZDYwJAqx_nzl9i9Xhd_Ex7izKJM6JTxXRnO6n1F",
+    underlying: "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+    decimals: 18,
+  },
 };
 
 export async function tonDerivs(timestamp: number) {

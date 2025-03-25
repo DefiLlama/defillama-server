@@ -220,7 +220,7 @@ export function pendle(timestamp: number = 0) {
     ...Object.keys(config).map((chain: string) =>
       getTokenPrices(timestamp, chain, config[chain]),
     ),
-    getApiPrices(timestamp),
+    // getApiPrices(timestamp),
   ]);
 }
 

@@ -3047,15 +3047,15 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#maker",
-    name: "Maker",
-    url: "https://makerdao.com/en/",
+    name: "Sky", // previous Maker 
+    url: "https://sky.money/",
     description:
-      "Builders of Dai, a digital currency that can be used by anyone, anywhere, anytime.",
-    logo: `${baseIconsUrl}/maker.jpg`,
+      "Sky enables users to get rewarded for non-custodial saving with USDS.",
+    logo: `${baseIconsUrl}/sky.jpg`,
     gecko_id: "maker",
     cmcId: "1518",
     chains: [],
-    twitter: "MakerDAO",
+    twitter: "SkyEcosystem",
     treasury: "maker.js",
     stablecoins: ["dai"],
     github: ["makerdao"],
@@ -6695,6 +6695,29 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "pumpdotfun",
   },
+  {
+    id: "parent#termfinance",
+    name: "TermFinance",
+    url: "https://term.finance",
+    description: "TermFinance is a fixed rate borrow/lend protocol pioneering an auction model to originate fixed rate, fixed term crypto backed loans at scale.",
+    logo: `${baseIconsUrl}/termfinance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "term_labs",
+  },
+  {
+    id: "parent#centrifuge",
+    name: "Centrifuge",
+    url: "https://centrifuge.io/",
+    description: "Centrifuge protocol enables asset managers to tokenize, manage, and distribute tokenized funds onchain, while providing investors access to a diversified portfolio of high-quality tokenized assets.",
+    logo: `${baseIconsUrl}/centrifuge.jpg`,
+    gecko_id: "centrifuge",
+    cmcId: "6748",
+    chains: [],
+    twitter: "centrifuge",
+    github: ["centrifuge"]
+  }
 ];
 
 export default parentProtocols;

@@ -2634,6 +2634,7 @@ export default {
         id: "4126"
     },
     "stout": {
+        disabled: true,
         id: "5902"
     },
     "rfx": {
@@ -2708,6 +2709,10 @@ export default {
     "stakedao": {
         id: "249"
     },
+
+    "getHemiNames": {
+        id: "5929"
+    },
     "apechain": {
         id: "33139"
     },
@@ -2779,5 +2784,56 @@ export default {
     },
     "zeta": {
         id: "7000"
+    },
+    "archerswap": {
+        id: "2648"
+    },
+    "superposition": {
+        id: "55244"
+    },
+    "gacha": {
+        id: "5942"
+    },
+    "pump-swap": {
+        id: "5936"
+    },
+    "agdex": {
+        id: "5467"
+    },
+    "ancient8": {
+        id: "888888888"
+    },
+    "bob": {
+        id: "60808"
+    },
+    "corn": {
+        id: "21000000"
+    },
+    "gravity": {
+        id: "1625"
+    },
+    "iota_evm": {
+        id: "8822"
+    },
+    "lightlink": {
+        id: "1890"
+    },
+    "reya": {
+        id: "1729"
+    },
+    "swellchain": {
+        id: "1923"
+    },
+    "worldchain": {
+        id: "480"
+    },
+    "hop-protocol": {
+        id: "435"
+    },
+    "squadswap-dynamo": {
+        id: "5921"
+    },
+    "squadswap-wow": {
+        id: "5922"
     }
 } as AdaptorsConfig

@@ -2898,7 +2898,13 @@ export default {
     "steamm": {
         id: "5824"
     },
-    "extended": {
-        id: "5887"
+    "umbra": {
+        id: "5943"
+    },
+    "squadswap-dynamo": {
+        id: "5921"
+    },
+    "squadswap-wow": {
+        id: "5922"
     }
 } as AdaptorsConfig

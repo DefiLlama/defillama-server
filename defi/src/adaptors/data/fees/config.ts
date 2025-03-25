@@ -2835,5 +2835,8 @@ export default {
     },
     "squadswap-wow": {
         id: "5922"
+    },
+    "magnum-trading-bot": {
+        id: "5945"
     }
 } as AdaptorsConfig

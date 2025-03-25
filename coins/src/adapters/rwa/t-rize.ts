@@ -17,15 +17,16 @@ type ChainConfig = {
 const configs: Record<string, ChainConfig> = {
   base: {
     oraclesRegistry: '0x6A96Db69c0FAAe20998247FAE7E79b04BFdc4DB5',
+    // TODO: instead of hardcoding the contract addresses, pull the list from the events
+    // of the factory contract that deploys them. Like this we won't need a new PR for each
+    // new project tokenized
     tokens: [
       "0x35b5129e86EBE5Fd00b7DbE99aa202BE5CF5FA04"
     ]
   }
-};
-
+}
 
 async function getTokenPrices(chain: string, timestamp: number): Promise<Write[]> {
-  console.log("hello")
   const api = await getApi(chain, timestamp);
   const { tokens, oraclesRegistry } = configs[chain];
   const [oracles, symbols, tokenDecimals] = await Promise.all([
@@ -50,19 +51,23 @@ async function getTokenPrices(chain: string, timestamp: number): Promise<Write[]
     })
   ])
 
-  const [prices, oracleDecimals] = await Promise.all([api.multiCall({
-    calls: oracles.map((oracle: { output: string }) => ({
-      target: oracle.output
-    })),
-    abi: abis.latestAnswer,
-  }),
-  api.multiCall({
-    calls: oracles.map((oracle: { output: string }) => ({
-      target: oracle.output
-    })),
-    abi: abis.oracleDecimals,
-  })
-  ]);
+
+  const [prices, oracleDecimals] = await Promise.all(
+    [
+      api.multiCall({
+        calls: oracles.map((oracle) => ({
+          target: oracle
+        })),
+        abi: abis.latestAnswer,
+      }),
+      api.multiCall({
+        calls: oracles.map((oracle) => ({
+          target: oracle
+        })),
+        abi: abis.oracleDecimals,
+      })
+    ]
+  );
 
   const writes: Write[] = [];
   tokens.forEach((token, i) => {
@@ -85,5 +90,3 @@ async function getTokenPrices(chain: string, timestamp: number): Promise<Write[]
 export function trize(timestamp: number): Promise<Write[]> {
   return getTokenPrices("base", timestamp);
 }
-console.log("tedadaw")
-trize(Date.now()).then((writes) => console.log("test", writes));

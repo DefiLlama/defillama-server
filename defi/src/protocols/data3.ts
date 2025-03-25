@@ -39271,7 +39271,7 @@ const data3: Protocol[] = [
     oraclesByChain: {
       bevm: ["DIA"], // https://docs.satoshiprotocol.org/outro/oracle
       bob: ["Api3", "DIA"], // https://docs.satoshiprotocol.org/outro/oracle
-      binance: ["eOracle"]
+      bsc: ["eOracle"] // https://github.com/DefiLlama/defillama-server/pull/9478
     },
     github: ["Satoshi-Protocol"],
     audit_links: ["https://docs.satoshiprotocol.org/outro/audit-reports"],

@@ -6092,7 +6092,7 @@ const data: Protocol[] = [
   },
   {
     id: "387",
-    name: "Bearn",
+    name: "BearnFi",
     address: "bsc:0x81859801b01764d4f0fa5e64729f5a6c3b91435b",
     symbol: "BFI",
     url: "https://www.bearn.fi/",

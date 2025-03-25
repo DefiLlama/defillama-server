@@ -12616,6 +12616,7 @@ const data3: Protocol[] = [
       mode: ["eOracle"], // https://docs.layerbank.finance/protocol/lending/oracles
       bsquared: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9219
       bob: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9219
+      hemi: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9533
     },
     listedAt: 1689773129,
     audit_links: [

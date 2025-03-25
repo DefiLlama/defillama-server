@@ -52,7 +52,7 @@ const configs: { [adapter: string]: Config } = {
     underlyingChain: "ethereum",
     address: "EQCup4xxCulCcNwmOocM9HtDYPU8xe0449tQLp6a-5BLEegW",
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
-    decimals: 18,
+    decimals: 9,
   },
   TON_STORM: {
     rate: async () => {
@@ -65,7 +65,7 @@ const configs: { [adapter: string]: Config } = {
     underlyingChain: "ethereum",
     address: "EQCNY2AQ3ZDYwJAqx_nzl9i9Xhd_Ex7izKJM6JTxXRnO6n1F",
     underlying: "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
-    decimals: 18,
+    decimals: 9,
   },
 };
 

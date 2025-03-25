@@ -8526,5 +8526,49 @@ const data4: Protocol[] = [
     parentProtocol: "parent#centrifuge",
     listedAt: 1742845841
   },
+  {
+    id: "5949",
+    name: "Lume Finance",
+    address: "cronos:0xB3551aCf805D5F90A1Fd7444B6571BdC069F40b2",
+    symbol: "LUME",
+    url: "https://www.lume.finance/",
+    description:
+      "The Next Generation of DeFi",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/lume-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Cronos"],
+    module: "lume/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "LumeonCro",
+    listedAt: 1742911826
+  },
+  {
+    id: "5950",
+    name: "JustBet",
+    address: null,
+    symbol: "-",
+    url: "https://www.just.bet",
+    description:
+      "JustBet is an onchain decentralized autonomous casino. All games, reward systems, bankrolls, and revenue-sharing are built onchain and provide authentic peer-to-peer fair entertainment.",
+    chain: "WINR",
+    logo: `${baseIconsUrl}/justbet.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["WINR"],
+    module: "justbet/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "JustBetOfficial",
+    listedAt: 1742911896
+  },
 ];
 export default data4;

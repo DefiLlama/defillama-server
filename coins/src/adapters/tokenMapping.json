@@ -697,6 +697,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 18,
       "symbol": "USDtb"
+    },
+    "0xc152d5a599f83b3d0098cbadb23fce95f27ff30b": {
+      "decimals": "8",
+      "symbol": "lfbtc-cian-eth",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "fantom": {

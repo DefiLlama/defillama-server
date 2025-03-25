@@ -8505,7 +8505,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5948",
-    name: "Centrifuge Pool",
+    name: "Centrifuge Protocol",
     address: "0xc221b7e65ffc80de234bbb6667abdd46593d34f0",
     symbol: "CFG",
     url: "https://centrifuge.io",
@@ -8513,7 +8513,8 @@ const data4: Protocol[] = [
       "Centrifuge protocol enables asset managers to tokenize, manage, and distribute tokenized funds onchain, while providing investors access to a diversified portfolio of high-quality tokenized assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/centrifuge-pool.jpg`,
-    audits: "0",
+    audits: "5",
+    audit_links: ["https://docs.centrifuge.io/developer/security/"],
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -8524,7 +8525,7 @@ const data4: Protocol[] = [
     oracles: [],
     twitter: "centrifuge",
     parentProtocol: "parent#centrifuge",
-    listedAt: 1742845841
+    listedAt: 1722495600
   },
 ];
 export default data4;

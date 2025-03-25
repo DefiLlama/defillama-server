@@ -2894,5 +2894,11 @@ export default {
     },
     "pump-swap": {
         id: "5936"
+    },
+    "steamm": {
+        id: "5824"
+    },
+    "umbra": {
+        id: "5943"
     }
 } as AdaptorsConfig

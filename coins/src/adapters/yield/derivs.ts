@@ -327,6 +327,19 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
     address: "0xC8b6E0acf159E058E22c564C0C513ec21f8a1Bf5",
   },
+  sUSDa: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getAmountByShares(uint256) view returns (uint256)",
+        target: "0x01e3cc8E17755989ad2CAFE78A822354Eb5DdFA6",
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "ethereum",
+    underlying: "0x8A60E489004Ca22d775C5F2c657598278d17D9c2",
+    address: "0x2B66AAdE1e9C062FF411bd47C44E0Ad696d43BD9",
+  },
 };
 
 export async function derivs(timestamp: number) {

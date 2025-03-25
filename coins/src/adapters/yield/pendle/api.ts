@@ -99,4 +99,3 @@ export async function getApiPrices(timestamp: number) {
 
   return writes;
 }
-getApiPrices(0); // ts-node coins/src/adapters/yield/pendle/api.ts

@@ -3047,15 +3047,15 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#maker",
-    name: "Maker",
-    url: "https://makerdao.com/en/",
+    name: "Sky", // previous Maker 
+    url: "https://sky.money/",
     description:
-      "Builders of Dai, a digital currency that can be used by anyone, anywhere, anytime.",
-    logo: `${baseIconsUrl}/maker.jpg`,
+      "Sky enables users to get rewarded for non-custodial saving with USDS.",
+    logo: `${baseIconsUrl}/sky.jpg`,
     gecko_id: "maker",
     cmcId: "1518",
     chains: [],
-    twitter: "MakerDAO",
+    twitter: "SkyEcosystem",
     treasury: "maker.js",
     stablecoins: ["dai"],
     github: ["makerdao"],

@@ -8570,5 +8570,29 @@ const data4: Protocol[] = [
     twitter: "JustBetOfficial",
     listedAt: 1742911896
   },
+  {
+    id: "5951",
+    name: "Arbius",
+    address: "0x8afe4055ebc86bd2afb3940c0095c9aca511d852",
+    symbol: "AIUS",
+    url: "https://arbius.ai",
+    description:
+      "Arbius is a decentralized onchain AI ecosystem that lets users access the power of AI free from censorship and needing to trust centralized authorities. Miners run open source AI models for users who pay for these services using $AIUS. Arbius AI is open, scalable, and trustless.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/arbius.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "arbius",
+    cmcId: null,
+    category: "AI Agents",
+    chains: ["Arbitrum"],
+    module: "arbius/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "arbius_ai",
+    audit_links: ["https://docs.arbius.ai/Arbius-V4-audit.pdf", "https://docs.arbius.ai/Arbius-Protocol_final-audit.pdf"],
+    github: ["semperai"],
+    listedAt: 1742912328
+  },
 ];
 export default data4;

@@ -403,6 +403,11 @@
     }
   },
   "ethereum": {
+    "0xc673ef7791724f0dcca38adb47fbb3aef3db6c80": {
+      "to": "coingecko#bitcoin",
+      "decimals": 8,
+      "symbol": "liquidBeraBTC"
+    },
     "0xc96Aa65F31E41b4Ca6924B86D93e25686019E59C": {
       "to": "coingecko#aethir",
       "decimals": 18,
@@ -1211,6 +1216,11 @@
     }
   },
   "base": {
+    "0x35E5dB674D8e93a03d814FA0ADa70731efe8a4b9": {
+      "to": "resolv-usr",
+      "decimals": "18",
+      "symbol": "USR"
+    },
     "0x8Ee73c484A26e0A5df2Ee2a4960B789967dd0415": {
       "decimals": "18",
       "symbol": "CRV",

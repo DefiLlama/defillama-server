@@ -7724,6 +7724,11 @@
       "decimals": "18",
       "symbol": "VUSD",
       "to": "coingecko#vesper-vdollar"
+    },
+    "0x027a9d301fb747cd972cfb29a63f3bda551dfc5c": {
+      "decimals": "18",
+      "symbol": "egETH",
+      "to": "coingecko#weth"
     }
   },
   "oas": {

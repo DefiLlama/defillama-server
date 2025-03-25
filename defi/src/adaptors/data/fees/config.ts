@@ -2634,6 +2634,7 @@ export default {
         id: "4126"
     },
     "stout": {
+        disabled: true,
         id: "5902"
     },
     "rfx": {

@@ -8958,9 +8958,8 @@ const data4: Protocol[] = [
     description:
       "Centrifuge protocol enables asset managers to tokenize, manage, and distribute tokenized funds onchain, while providing investors access to a diversified portfolio of high-quality tokenized assets.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/centrifuge-pool.jpg`,
-    audits: "5",
-    audit_links: ["https://docs.centrifuge.io/developer/security/"],
+    logo: `${baseIconsUrl}/centrifuge-protocol.jpg`,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -8969,6 +8968,7 @@ const data4: Protocol[] = [
     module: "centrifuge/index.js",
     forkedFrom: [],
     oracles: [],
+    audit_links: ["https://docs.centrifuge.io/developer/security/"],
     twitter: "centrifuge",
     parentProtocol: "parent#centrifuge",
     listedAt: 1722495600

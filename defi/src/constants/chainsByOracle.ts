@@ -135,7 +135,11 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Juno",
     "Near",
     "Story",
-    "Eclipse"
+    "Eclipse",
+    "Sonic",
+    "Berachain",
+    "Abstract",
+    "Hyperliquid"
   ],
   "Chainlink": [
     "Ethereum",
@@ -228,7 +232,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "BOB",
     "Hyperliquid",
     "BSquared",
-    "“Sonic”",
+    "Sonic",
     "Radix",
     "Reya Network",
     "zkLink Nova",

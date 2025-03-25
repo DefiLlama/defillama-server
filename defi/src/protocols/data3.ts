@@ -44922,6 +44922,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "lendOSorg",
+    github: ["lendos-labs"],
     listedAt: 1716396261,
   },
   {

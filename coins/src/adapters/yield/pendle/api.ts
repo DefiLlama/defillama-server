@@ -37,7 +37,7 @@ const allAssets: { [chainId: string]: string[] } = {
   8453: [
     // base
     "0x727cEbAcfb10fFd353Fc221D06A862B437eC1735",
-    "0xe15578523937ed7f08e8f7a1fa8a021e07025a08",
+    // "0xe15578523937ed7f08e8f7a1fa8a021e07025a08",
     "0x14936c9b8eb798ca6291c2d6ce5de2c6cb5f1f9c",
     "0x3124d41708edbdc7995a55183e802e3d9d0d5ef1",
     "0x5d746848005507da0b1717c137a10c30ad9ee307",
@@ -99,3 +99,4 @@ export async function getApiPrices(timestamp: number) {
 
   return writes;
 }
+getApiPrices(0); // ts-node coins/src/adapters/yield/pendle/api.ts

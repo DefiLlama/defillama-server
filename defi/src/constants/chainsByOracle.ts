@@ -138,7 +138,8 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Eclipse",
     "Sonic",
     "Berachain",
-    "Abstract"
+    "Abstract",
+    "Hyperliquid"
   ],
   "Chainlink": [
     "Ethereum",

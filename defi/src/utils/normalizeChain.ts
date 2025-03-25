@@ -4024,6 +4024,28 @@ export const chainCoingeckoIds = {
     url: "https://www.mtt.network/",
     chainId: 6880
   }, 
+  "HashKey Chain": { // added for the bridge dashboard, because of the slug of the chain
+    geckoId: "hashkey-ecopoints",
+    symbol: "HSK",
+    cmcId: "33849",
+    twitter: "HashKeyHSK",
+    url: "https://hsk.xyz/",
+    chainId: 177
+  }, 
+  "Mind Network": { // added for the bridge dashboard, because of the slug of the chain
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    chainId: 228,
+    twitter: "mindnetwork_xyz",
+    github: ["mind-network"],
+    url: "https://www.mindnetwork.xyz",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4202,6 +4224,8 @@ const chainLabelMap = {
   "hyperliquid": "Hyperliquid",
   "winr": "WINR",
   "mtt_network": "MTT Network",
+  "hskt": "HashKey Chain",
+  "fhe": "Mind Network",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

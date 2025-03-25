@@ -17,6 +17,7 @@ const vaults: { [chain: string]: string } = {
   sonic: "0xBA12222222228d8Ba445958a75a0704d566BF2C8",
   optimism: "0xBA12222222228d8Ba445958a75a0704d566BF2C8",
   fantom: "0x20dd72Ed959b6147912C2e529F0a0C651c33c9ce",
+  berachain: "0x4Be03f781C497A489E3cB0287833452cA9B9E80B",
 };
 const subgraphNames: { [chain: string]: string } = {
   optimism: sdk.graph.modifyEndpoint(
@@ -28,6 +29,7 @@ const subgraphNames: { [chain: string]: string } = {
   fantom: sdk.graph.modifyEndpoint(
     "CcWtE5UMUaoKTRu8LWjzambKJtgUVjcN31pD5BdffVzK",
   ),
+  berachain: "https://api.berachain.com/",
 };
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
@@ -40,6 +42,9 @@ const gaugeFactories: { [chain: string]: string } = {
 type GqlResult = {
   id: string;
   totalLiquidity: string;
+  dynamicData: {
+    totalLiquidity: string;
+  };
 };
 type PoolInfo = {
   balances: number[];
@@ -57,7 +62,21 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
   const subgraph: string = subgraphNames[chain] || chain;
 
   for (let i = 0; i < 20; i++) {
-    const lpQuery = `
+    const lpQuery =
+      chain == "berachain"
+        ? `query {
+      poolGetPools (first: 1000, orderBy: totalLiquidity, orderDirection: desc,
+          where: {
+          minTvl: 10000
+          ${timestamp == 0 ? `` : `createTime_lt: ${timestamp.toString()}`}
+          }) {
+        id 
+        dynamicData {
+          totalLiquidity 
+        }
+      }
+    }`
+        : `
     query {
       pools (first: 1000, orderBy: totalLiquidity, orderDirection: desc,
           where: {
@@ -73,13 +92,17 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
     }`;
 
     const res: any = await request(subgraph, lpQuery);
-    const result: GqlResult[] = res.pools;
+    const result: GqlResult[] =
+      chain == "berachain" ? res.poolGetPools : res.pools;
     addresses.push(...result.map((p: any) => p.id));
 
     if (result.length < 1000) return addresses;
-    reservereThreshold = Number(
-      result[Math.max(result.length - 1, 0)].totalLiquidity,
-    );
+    reservereThreshold =
+      chain == "berachain"
+        ? Number(
+            result[Math.max(result.length - 1, 0)].dynamicData.totalLiquidity,
+          )
+        : Number(result[Math.max(result.length - 1, 0)].totalLiquidity);
   }
   return addresses;
 }

@@ -7630,7 +7630,6 @@ const data3: Protocol[] = [
     oracles: [],
     github: ["MetaMask"],
   },
-  /*
   {
     id: "3032",
     name: "WINR Protocol",
@@ -7654,7 +7653,6 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.winr.games/extra/audits"],
     listedAt: 1685097004,
   },
-  */
   {
     id: "3033",
     name: "FireBot",

@@ -6,7 +6,7 @@ import { readRouteData, storeRouteData } from '../cache/file-cache'
 
 const allDataFile = '/github-metrics/allData'
 const cacheDir = path.join(__dirname, '.cache')
-const lastRunFile = path.join(cacheDir, '.cron-task-github-last-run-v2')
+const lastRunFile = path.join(cacheDir, '.cron-task-github-last-run-v3')
 
 export async function pullDevMetricsData() {
   try {
@@ -37,8 +37,9 @@ export async function pullDevMetricsData() {
 }
 
 
-export function getDevMetricsData() {
-  return readRouteData(allDataFile)
+export async function getDevMetricsData() {
+  const data = await readRouteData(allDataFile)
+  return data ?? []
 }
 
 

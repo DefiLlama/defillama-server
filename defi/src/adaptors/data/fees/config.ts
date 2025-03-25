@@ -1265,7 +1265,7 @@ export default {
         "id": "3836"
     },
     "dln": {
-        "id": "3846"
+        "id": "1462"
     },
     "near": {
         "id": "6535"
@@ -2643,7 +2643,7 @@ export default {
         id: "4256"
     },
     "sedge": {
-        id: "366"
+        id: "5930"
     },
     "vicuna-finance": {
         id: "5672"
@@ -2659,5 +2659,180 @@ export default {
     },
     "logx": {
         id: "5137"
+    },
+    "ekubo-evm": {
+        id: "5914"
+    },
+    "contango": {
+        id: "3602"
+    },
+    "ripple": {
+        id: "52"
+    },
+    "equalizer-cl": {
+        id: "5603"
+    },
+    "balanced": {
+        id: "448"
+    },
+    "xswap-v3": {
+        id: "3914"
+    },
+    "xswap-v2": {
+        id: "2145"
+    },
+    "mayan": {
+        id: "5925"
+    },
+    "unchain-x": {
+        id: "5917"
+    },
+    "aavechan": {
+        id: "5926"
+    },
+    "paint-swap": {
+        id: "421"
+    },
+    "energyweb": {
+        id: "246"
+    },
+    "finder-bot": {
+        id: "5934"
+    },
+    "sol-trading-bot": {
+        id: "4909"
+    },
+    "suite": {
+        id: "5933"
+    },
+    "stakedao": {
+        id: "249"
+    },
+
+    "getHemiNames": {
+        id: "5929"
+    },
+    "apechain": {
+        id: "33139"
+    },
+    "chiliz": {
+        id: "88888"
+    },
+    "ethereumclassic": {
+        id: "61"
+    },
+    "etherlink": {
+        id: "42793"
+    },
+    "flare": {
+        id: "4172"
+    },
+    "fuse": {
+        id: "122"
+    },
+    "harmony": {
+        id: "1666600000"
+    },
+    "hemi": {
+        id: "43111"
+    },
+    "imx": {
+        id: "13371"
+    },
+    "kardia": {
+        id: "5453"
+    },
+    "kcc": {
+        id: "321"
+    },
+    "kroma": {
+        id: "255"
+    },
+    "lisk": {
+        id: "1135"
+    },
+    "nuls": {
+        id: "2092"
+    },
+    "oasys": {
+        id: "16116"
+    },
+    "redstone": {
+        id: "690"
+    },
+    "rootstock": {
+        id: "30"
+    },
+    "shimmer_evm": {
+        id: "148"
+    },
+    "story": {
+        id: "1514"
+    },
+    "syscoin": {
+        id: "57"
+    },
+    "telos": {
+        id: "40"
+    },
+    "thundercore": {
+        id: "108"
+    },
+    "velas": {
+        id: "106"
+    },
+    "zeta": {
+        id: "7000"
+    },
+    "archerswap": {
+        id: "2648"
+    },
+    "superposition": {
+        id: "55244"
+    },
+    "gacha": {
+        id: "5942"
+    },
+    "pump-swap": {
+        id: "5936"
+    },
+    "agdex": {
+        id: "5467"
+    },
+    "ancient8": {
+        id: "888888888"
+    },
+    "bob": {
+        id: "60808"
+    },
+    "corn": {
+        id: "21000000"
+    },
+    "gravity": {
+        id: "1625"
+    },
+    "iota_evm": {
+        id: "8822"
+    },
+    "lightlink": {
+        id: "1890"
+    },
+    "reya": {
+        id: "1729"
+    },
+    "swellchain": {
+        id: "1923"
+    },
+    "worldchain": {
+        id: "480"
+    },
+    "hop-protocol": {
+        id: "435"
+    },
+    "squadswap-dynamo": {
+        id: "5921"
+    },
+    "squadswap-wow": {
+        id: "5922"
     }
 } as AdaptorsConfig

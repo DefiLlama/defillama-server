@@ -1946,6 +1946,7 @@ const data2: Protocol[] = [
   {
     id: "1462",
     name: "deBridge",
+    previousNames: ["DLN"],
     address: null,
     symbol: "-",
     url: "https://debridge.finance",
@@ -29432,9 +29433,9 @@ const data2: Protocol[] = [
     name: "CoreSwap",
     address: "0x8326321a7777Cd5D650c1da6A497f0D06633781e",
     symbol: "cSWAP",
-    url: "https://www.coreswap.finance/",
+    url: "https://www.coreswap.io/",
     description:
-      "coreswap.finance is an Automated Market Maker (AMM) protocol and liquidity pool designed for efficient trading between crypto-assets. The trading activity on coreswap.finance captures fees as revenue for liquidity providers, resulting in a decentralized market and trading experience.",
+      "coreswap.io is an Automated Market Maker (AMM) protocol and liquidity pool designed for efficient trading between crypto-assets. The trading activity on coreswap.finance captures fees as revenue for liquidity providers, resulting in a decentralized market and trading experience.",
     chain: "CORE",
     logo: `${baseIconsUrl}/coreswap.jpg`,
     audits: "0",

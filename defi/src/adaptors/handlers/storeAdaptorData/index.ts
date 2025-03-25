@@ -202,6 +202,11 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const adapterVersion = adaptor.version ?? 1
       const isAdapterVersionV1 = adapterVersion !== 2
 
+      if (adaptor.deadFrom) {
+        console.log(`Skipping ${adapterType}- ${module} - deadFrom: ${adaptor.deadFrom}`)
+        return;
+      }
+
       let endTimestamp = toTimestamp
       let recordTimestamp = toTimestamp
       if (isRunFromRefillScript) recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 

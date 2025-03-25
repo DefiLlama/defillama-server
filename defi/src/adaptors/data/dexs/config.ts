@@ -2879,5 +2879,32 @@ export default {
     },
     "tonco": {
         id: "5363"
+    },
+    "ekubo-evm": {
+        id: "5914"
+    },
+    "equalizer-cl": {
+        id: "5603"
+    },
+    "xswap-v3": {
+        id: "3914"
+    },
+    "unchain-x": {
+        id: "5917"
+    },
+    "pump-swap": {
+        id: "5936"
+    },
+    "steamm": {
+        id: "5824"
+    },
+    "umbra": {
+        id: "5943"
+    },
+    "squadswap-dynamo": {
+        id: "5921"
+    },
+    "squadswap-wow": {
+        id: "5922"
     }
 } as AdaptorsConfig

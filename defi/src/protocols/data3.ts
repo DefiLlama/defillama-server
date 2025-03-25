@@ -2048,7 +2048,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#thala-labs",
     listedAt: 1680889424,
     tokensExcludedFromParent: {
-      Aptos: ["STHAPT", "THAPT", "veTHL"],
+      Aptos: ["STHAPT", "THAPT", "VETHL"],
     },
   },
   {
@@ -2183,7 +2183,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#thala-labs",
     listedAt: 1680980221,
     tokensExcludedFromParent: {
-      Aptos: ["STHAPT", "THAPT", "veTHL"],
+      Aptos: ["STHAPT", "THAPT", "VETHL"],
     },
   },
   {
@@ -8198,6 +8198,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: [
       "https://openeden.com/static/Verichains%20Public%20Audit%20Report%20-%20OpenEden%20Vault%20-%20310323.pdf",
+      "https://www.chainsecurity.com/security-audit/openeden-usdoexpress"
     ],
     stablecoins: ["opendollar-usdo"],
     listedAt: 1685661527,
@@ -12835,7 +12836,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#aftermath-finance",
     listedAt: 1689860538,
     tokensExcludedFromParent: {
-      Sui: ["afSUI"], // already counting all afSUI in Aftermath afSUI listing
+      Sui: ["AFSUI"], // already counting all afSUI in Aftermath afSUI listing
     },
   },
   {
@@ -15914,14 +15915,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3393",
-    name: "TermFinance",
+    name: "TermFinance Lend",
     address: null,
     symbol: "-",
     url: "https://term.finance",
     description:
       "TermFinance is a fixed rate borrow/lend protocol pioneering an auction model to originate fixed rate, fixed term crypto backed loans at scale.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/termfinance.png`,
+    logo: `${baseIconsUrl}/termfinance-lend.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -15932,6 +15933,7 @@ const data3: Protocol[] = [
     twitter: "term_labs",
     forkedFrom: [],
     oracles: ["Chainlink"],
+    parentProtocol: "parent#termfinance",
     audit_links: ["https://docs.term.finance/security-audits/sigma-prime"],
     listedAt: 1692193295,
   },
@@ -22100,7 +22102,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["Chronicle"],
     forkedFrom: [],
     module: "maker-rwa/index.js",
     twitter: "MakerDAO",
@@ -26176,9 +26178,9 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.oceanos.finance/risk-and-security/audit"],
     listedAt: 1701085925,
   },
-  {
+  /* {
     id: "3846",
-    name: "deBridge", // previous DLN rebrand here https://github.com/DefiLlama/defillama-server/pull/6590/files
+    name: "deBridge fees", // previous DLN rebrand here https://github.com/DefiLlama/defillama-server/pull/6590/files
     previousNames: ["DLN"],
     address: null,
     symbol: "-",
@@ -26207,7 +26209,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "deBridgeFinance",
-  },
+  }, */
   {
     id: "3847",
     name: "LlamaSwap",
@@ -31744,7 +31746,7 @@ const data3: Protocol[] = [
     symbol: "SEED",
     url: "https://garden.finance",
     description:
-      "Garden provides one of the easiest ways for you to acquire WBTC with real BTC. The Garden uses atomic swaps to facilitate trustless conversions.",
+      "Garden is the fastest Bitcoin bridge, enabling cross-chain Bitcoin swaps in as little as 30 seconds. It is built using an intents-based architecture with trustless settlements, ensuring zero custody risk for the users.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/garden.jpg`,
     audits: "2",
@@ -31832,8 +31834,8 @@ const data3: Protocol[] = [
   {
     id: "4090",
     name: "Mint Club V2",
-    address: "bsc:0x1f3Af095CDa17d63cad238358837321e95FC5915",
-    symbol: "MINT",
+    address: "base:0xFf45161474C39cB00699070Dd49582e417b57a7E",
+    symbol: "MT",
     url: "https://mint.club",
     description:
       "Mint Club provides a seamless platform for creating bonding curve-backed tokens or NFTs, using any ERC20 token as the base asset in the bonding curve pool. It facilitates easy tokenization with a completely no-code solution, offering highly customizable bonding curve designs, adjustable creator royalties, a variety of creator tools, and a user-friendly interface for trading bonding curve assets.",
@@ -31844,7 +31846,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Launchpad",
-    chains: ["Binance"],
+    chains: ["Base"],
     oracles: [],
     forkedFrom: [],
     module: "mint-club-v2/index.js",
@@ -33827,7 +33829,7 @@ const data3: Protocol[] = [
   {
     id: "4174",
     name: "hyperswap on Areon Network",
-    previousNames: ["hyperswap"],
+    //previousNames: ["hyperswap"], // already used by another protocol
     address: null,
     symbol: "-",
     url: "https://hyperswap.pro/en/swap",
@@ -34746,7 +34748,14 @@ const data3: Protocol[] = [
     module: "blitz-exchange/index.js",
     twitter: "tradeonblitz",
     forkedFrom: ["Vertex"], // it uses edges product from vertex https://edge.vertexprotocol.com/ "Vertex Edge’s composable orderbook solves the problems of liquidity fragmentation and creates economic alliances across chains."
-    oracles: [],
+    oracles: ["Stork"],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Primary",
+      proof: ["https://docs.blitz.exchange/basics/pricing-oracles"],
+      }
+    ],
     audit_links: [],
     parentProtocol: "parent#Edge",
     listedAt: 1709318288,
@@ -36158,9 +36167,10 @@ const data3: Protocol[] = [
     audit_links: ["https://dedaub.com/audits/illuminex/illuminex-jan-19-2024/"],
     listedAt: 1710199785,
   },
-  {
+ /* {
     id: "4276",
     name: "CIAN Vaults", // previous CIAN LSTs
+    previousNames: ["CIAN LSTs"],
     address: null,
     symbol: "-",
     url: "https://cian.app",
@@ -36183,7 +36193,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.cian.app/security-and-risk/audit-report"],
     parentProtocol: "parent#cian-protocol",
     listedAt: 1710212538,
-  },
+  },*/
   {
     id: "4277",
     name: "OPT Finance", //dex aggregator
@@ -39464,7 +39474,15 @@ const data3: Protocol[] = [
     module: "zest/index.js",
     twitter: "ZestProtocol",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.zestprotocol.com/start/borrow/zest-protocol-borrow-overview/oracles#zest-protocol-uses-pyth"]
+
+      }
+    ],
     listedAt: 1712075269,
   },
   {
@@ -39670,7 +39688,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#ether-fi",
     listedAt: 1712171943,
     tokensExcludedFromParent: {
-      Ethereum: ["EETH", "weETH"],
+      Ethereum: ["EETH", "WEETH"],
     },
   },
   {
@@ -40105,14 +40123,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4449",
-    name: "Pump",
+    name: "pump.fun", // previously Pump
     address: null,
     symbol: "-",
     url: "https://www.pump.fun/",
     description:
-      "Launch a coin that is instantly tradeable without having to seed liquidity. Deploy a coin for under 2$ in one click",
+      "Launch a coin that is instantly tradeable in one click for free",
     chain: "Solana",
-    logo: `${baseIconsUrl}/pump.png`,
+    logo: `${baseIconsUrl}/pump.fun.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -40123,6 +40141,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "pumpdotfun",
+    parentProtocol: "parent#pump",
     listedAt: 1712427917,
   },
   {
@@ -40682,7 +40701,7 @@ const data3: Protocol[] = [
     audit_links: ["https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/2024/Avalon-AVAF_audit_report_2024-06-11.pdf", 'https://cert-api.salusec.io/api/v1/salus/contract/certificate/full/2024/Avalon_Finance-ORACLE_audit_report_2024-04-09.pdf'],
     listedAt: 1712919585,
     tokensExcludedFromParent: {
-      taiko: ["USDa", "sUSDa"],
+      taiko: ["USDA", "SUSDA"],
     },
   },
   {
@@ -42345,11 +42364,11 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     assetToken: "dlcBTC",
-    url: "https://www.ibtc.network/earn",
+    url: "https://www.ibtc.network",
     description:
-      "iBTC is a decentralized wrapped Bitcoin offering a theft-proof bridge to DeFi, backed by the security of the Bitcoin network",
+      "iBTC, a Bitcoin L1 native wrapper, uses a decentralized network of node operators, merchants, and custodians to enable bridgeless yield on Bitcoin.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/ibtc-network.png`,
+    logo: `${baseIconsUrl}/ibtc-network.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -43407,7 +43426,7 @@ const data3: Protocol[] = [
     module: "origami/index.js",
     twitter: "origami_fi",
     audit_links: [
-      "https://github.com/TempleDAO/origami-public/blob/main/audits/origami-v2/Origami%20Finance%20-%20Zellic%20Audit%20Report.pdf",
+      "https://docs.origami.finance/technical-reference/audits",
     ],
     parentProtocol: "parent#temple-dao",
     listedAt: 1715612691,
@@ -43528,7 +43547,7 @@ const data3: Protocol[] = [
     twitter: "ThalaLabs",
     parentProtocol: "parent#thala-labs",
     tokensExcludedFromParent: {
-      Aptos: ["STHAPT", "THAPT", "veTHL"],
+      Aptos: ["STHAPT", "THAPT", "VETHL"],
     },
     listedAt: 1715679178,
   },
@@ -48444,7 +48463,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#threshold-network",
     stablecoins: ["threshold-usd"],
     tokensExcludedFromParent: {
-      Ethereum: ["tBTC"],
+      Ethereum: ["TBTC"],
     },
     listedAt: 1719351634,
   },
@@ -50833,7 +50852,6 @@ const data3: Protocol[] = [
   {
     id: "4917",
     name: "BitFi BTC",
-    previousNames: ["BitFi"],
     address: null,
     symbol: "-",
     url: "https://bitfi.org",
@@ -55945,7 +55963,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#lombard-finance",
     tokensExcludedFromParent: {
-      Ethereum: ["LBTC", "PT-LBTC-27MAR2025", "gtLBTCc", "YT-LBTC-27MAR2025", "SY-LBTC"],
+      Ethereum: ["LBTC", "PT-LBTC-27MAR2025", "GTLBTCC", "YT-LBTC-27MAR2025", "SY-LBTC"],
       Base: ["LBTC", "LP LBTC", "PT LBTC", "YT LBTC"],
       Binance: ["LBTC"],
       Sonic: ["LBTC"],
@@ -57331,7 +57349,6 @@ const data3: Protocol[] = [
   {
     id: "5203",
     name: "KittyPunch PunchSwap",
-    previousNames: ["KittyPunch"],
     address: null,
     symbol: "-",
     url: "https://swap.kittypunch.xyz/",
@@ -58704,7 +58721,7 @@ const data3: Protocol[] = [
     ],
     parentProtocol: "parent#swell",
     tokensExcludedFromParent: {
-      Ethereum: ["rswETH", "swETH"],
+      Ethereum: ["RWSETH", "SWETH"],
     },
   },
   {
@@ -60226,7 +60243,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     tokensExcludedFromParent: {
-      Aptos: ["STHAPT", "THAPT", "veTHL"],
+      Aptos: ["STHAPT", "THAPT", "VETHL"],
     },
     parentProtocol: "parent#thala-labs",
     listedAt: 1731062853
@@ -61119,9 +61136,9 @@ const data3: Protocol[] = [
     parentProtocol: "parent#avalon-labs",
     audit_links: [],
     tokensExcludedFromParent: {
-      iotex: ["USDa", "sUSDa"],
-      taiko: ["USDa", "sUSDa"],
-      zircuit: ["USDa", "sUSDa"],
+      iotex: ["USDA", "SUSDA"],
+      taiko: ["USDA", "SUSDA"],
+      zircuit: ["USDA", "SUSDA"],
     },
     listedAt: 1731778454
   },

@@ -193,7 +193,7 @@ export async function craftProtocolsResponseInternal(
 
         const dataToReturn: Omit<IProtocol, "raises"> = {
           ...protocol,
-          oraclesByChain: replaceChainNamesForOraclesByChain(false, protocol.oraclesByChain),
+          oraclesByChain: replaceChainNamesForOraclesByChain(useNewChainNames, protocol.oraclesByChain),
           slug: sluggify(protocol),
           tvl: lastHourlyRecord?.tvl ?? null,
           chainTvls,

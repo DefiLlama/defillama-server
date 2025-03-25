@@ -51837,7 +51837,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     oracles: [],
-    forkedFrom: ["Curve DEX"],
+    forkedFrom: ["Curve"],
     chains: ["BEVM"],
     module: "bitdrome/index.js",
     twitter: "BitdromeFi",

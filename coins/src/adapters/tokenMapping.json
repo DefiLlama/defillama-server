@@ -1623,6 +1623,38 @@
       "to": "coingecko#mixmarvel"
     }
   },
+  "winr": {
+    "0xbf6fa9d2bf9f681e7b6521b49cf8eccf9ad8d31d": {
+      "decimals": "18",
+      "symbol": "WIMR",
+      "to": "coingecko#winr-protocol"
+    },
+    "0x59edbb343991d30f77dcdbad94003777e9b09ba9": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x0381132632E9E27A8f37F1bc56bd5a62d21a382B": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xF2857668777135E22f8CD53C97aBf8821b7F0bdf": {
+      "decimals": "18",
+      "symbol": "ARB",
+      "to": "coingecko#arbitrum"
+    },
+    "0xE60256921AE414D7B35d6e881e47931f45E027cf": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x5B20DcAB6B91f157A39036c6c0e6F16e56d74CDb": {
+      "decimals": "18",
+      "symbol": "SOL",
+      "to": "coingecko#solana"
+    }
+  },
   "cronos": {
     "0xafe470ae215e48c144c7158eae3ccf0c451cb0cb": {
       "name": "NEAR",

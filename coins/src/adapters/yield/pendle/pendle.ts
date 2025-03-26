@@ -70,7 +70,9 @@ const gasMapping: { [chain: string]: string[] } = {
     "0xf7906f274c174a52d444175729e3fa98f9bde285",
     "0xcba3b226ca62e666042cb4a1e6e4681053885f75",
     "0x9e612ff1902c5feea4fd69eb236375d5299e0ffc",
+    "0x46e6b4a950eb1abba159517dea956afd01ea9497",
   ],
+  sonic: ["0x3aef1d372d0a7a7e482f465bc14a42d78f920392"],
 };
 
 const blacklist = ["0x1d83fdf6f019d0a6b2babc3c6c208224952e42fc"];

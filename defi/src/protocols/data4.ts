@@ -8914,7 +8914,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     forkedFrom: [],
     oracles: [],
-    twitter: "DegenPrimeDefi",
+    twitter: "MagnumDexBot",
   },
   {
     id: "5946",
@@ -8941,7 +8941,8 @@ const data4: Protocol[] = [
   },
   {
     id: "5947",
-    name: "MTT Dex",
+    name: "Yaakoswap",
+    previousNames: ["MTT Dex"],
     address: null,
     symbol: "-",
     url: "https://www.mtt.network/",
@@ -9052,6 +9053,29 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.arbius.ai/Arbius-V4-audit.pdf", "https://docs.arbius.ai/Arbius-Protocol_final-audit.pdf"],
     github: ["semperai"],
     listedAt: 1742912328
+  },
+  {
+    id: "5952",
+    name: "Corepound",
+    address: "core:0x56663F56333717A32Cd91ec41182d6d76D98864e",
+    symbol: "CORP",
+    url: "https://corepound.xyz/",
+    description:
+      "Corepound is a BTCfi yield layer built on the Core chain. With AI-driven algorithms and advancing strategies embedded, it aims to optimize yields for users. Corepound also offers impressive features, dedicated to delivering an impact to the DeFi world.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/corepound.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["CORE"],
+    module: "corepound/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "corepoundxyz",
+    audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/Corepound%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
+    listedAt: 1743001221
   },
 ];
 export default data4;

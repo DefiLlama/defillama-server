@@ -10678,7 +10678,7 @@ const data2: Protocol[] = [
     module: "aave-v1/index.js",
     twitter: "aave",
     audit_links: ["https://aave.com/security"],
-    
+
     listedAt: 1655586107,
     parentProtocol: "parent#aave",
     wrongLiquidity: true,
@@ -15849,7 +15849,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Liquidity manager",
     chains: ["Solana"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Switchboard"],
     forkedFrom: [],
     module: "kamino/index.js",
     twitter: "KaminoFinance",
@@ -20441,10 +20441,10 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Injective"],
-    module: "injective-orderbook-spot/index.js", 
+    module: "injective-orderbook-spot/index.js",
     twitter: "HelixApp_",
     forkedFrom: [],
-    oracles: [], 
+    oracles: [],
     parentProtocol: "parent#helix",
     listedAt: 1668004664,
   },
@@ -21023,7 +21023,7 @@ const data2: Protocol[] = [
   {
     id: "2287",
     name: "ThorChain DEX",
-    address: null, 
+    address: null,
     symbol: "RUNE",
     url: "https://thorchain.org/",
     description:
@@ -23517,7 +23517,6 @@ const data2: Protocol[] = [
       "https://obeliskauditing.com/audits/level-finance-trading",
     ],
     listedAt: 1672230595,
-    
   },
   {
     id: "2396",

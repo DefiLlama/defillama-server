@@ -1214,6 +1214,18 @@ const data4: Protocol[] = [
     oraclesByChain: {
       sonic: ["Chainlink"], // https://silopedia.silo.finance/oracles
     },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://silopedia.silo.finance/oracles"]
+      },
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9388"]
+      }
+    ],
     forkedFrom: [],
     module: "silo-v2/index.js",
     twitter: "SiloFinance",

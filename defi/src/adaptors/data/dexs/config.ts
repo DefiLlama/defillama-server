@@ -2906,5 +2906,8 @@ export default {
     },
     "squadswap-wow": {
         id: "5922"
+    },
+    "gacha": {
+        id: "5942"
     }
 } as AdaptorsConfig

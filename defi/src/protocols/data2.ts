@@ -21749,7 +21749,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://www.gate.io",
     description:
-      "Leading cryptocurrency exchange with over 3,200+ cryptocurrencies such as Bitcoin, Ethereum, Dogecoin, and more.",
+      "Established in 2013, Gate.io is a cryptocurrency exchange serving over 22 million global users. The platform supports spot trading, futures contracts, margin trading, and wealth management products for more than 3,800 cryptocurrencies, using zero-knowledge technology to ensure transparency and verifiability of user assets. Gate entities are licensed or registered in jurisdictions including Hong Kong, Gibraltar, Malta, Italy, Australia, Lithuania, Dubai DMCC, and the Bahamas",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gate-io.jpg`,
     audits: "0",

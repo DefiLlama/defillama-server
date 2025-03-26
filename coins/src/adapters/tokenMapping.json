@@ -11,7 +11,7 @@
       "decimals": "8",
       "symbol": "WBTC",
       "to": "coingecko#wrapped-bitcoin"
-    }, 
+    },
     "0x657e8C867D8B37dCC18fA4Caead9C45EB088C642": {
       "decimals": "8",
       "symbol": "eBTC",
@@ -1234,7 +1234,7 @@
   },
   "base": {
     "0x35E5dB674D8e93a03d814FA0ADa70731efe8a4b9": {
-      "to": "resolv-usr",
+      "to": "coingecko#resolv-usr",
       "decimals": "18",
       "symbol": "USR"
     },

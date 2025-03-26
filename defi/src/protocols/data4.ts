@@ -9063,20 +9063,19 @@ const data4: Protocol[] = [
     description:
       "Corepound is a BTCfi yield layer built on the Core chain. With AI-driven algorithms and advancing strategies embedded, it aims to optimize yields for users. Corepound also offers impressive features, dedicated to delivering an impact to the DeFi world.",
     chain: "CORE",
-    logo: `${baseIconsUrl}/arbius.png`,
+    logo: `${baseIconsUrl}/corepound.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "arbius",
+    gecko_id: null,
     cmcId: null,
-    category: "AI Agents",
+    category: "Yield",
     chains: ["CORE"],
-    module: "arbius/index.js",
+    module: "corepound/index.js",
     forkedFrom: [],
     oracles: [],
     twitter: "corepoundxyz",
     audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/Corepound%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
-    github: ["semperai"],
-    listedAt: 1742912328
+    listedAt: 1743001221
   },
 ];
 export default data4;

@@ -8914,7 +8914,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     forkedFrom: [],
     oracles: [],
-    twitter: "DegenPrimeDefi",
+    twitter: "MagnumDexBot",
   },
   {
     id: "5946",

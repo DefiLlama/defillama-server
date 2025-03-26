@@ -7501,36 +7501,31 @@
     }
   },
   "plume": {
-    "0xd630fb6a07c9c723cf709d2daa9b63325d0e0b73": {
-      "to": "coingecko#ethereum",
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#plume",
       "decimals": 18,
-      "symbol": "pETH"
+      "symbol": "PLUME"
     },
-    "0xdddd73f5df1f0dc31373357beac77545dc5a6f3f": {
+    "0xEa237441c92CAe6FC17Caaf9a7acB3f953be4bd1": {
+      "to": "coingecko#plume",
+      "decimals": 18,
+      "symbol": "WPLUME"
+    }
+    "0xdddD73F5Df1F0DC31373357beAC77545dC5A6f3F": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "pUSD"
     },
-    "0x0000000000000000000000000000000000000000": {
-      "to": "coingecko#ethereum",
-      "decimals": 18,
-      "symbol": "ETH"
-    },
-    "0x3938A812c54304fEffD266C7E2E70B48F9475aD6": {
+    "0x60219C44E146BAf36002eA73767820238Ebc1db6": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
     },
-    "0xA849026cDA282eeeBC3C39Afcbe87a69424F16B4": {
+    "0xda6087E69C51E7D31b6DBAD276a3c44703DFdCAd": {
       "to": "coingecko#tether",
       "decimals": 6,
       "symbol": "USDT"
     },
-    "0x626613B473F7eF65747967017C11225436EFaEd7": {
-      "to": "coingecko#ethereum",
-      "decimals": 18,
-      "symbol": "WETH"
-    }
   },
   "sxr": {
     "0x0000000000000000000000000000000000000000": {

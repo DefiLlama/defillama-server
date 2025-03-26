@@ -9077,5 +9077,28 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/Corepound%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
     listedAt: 1743001221
   },
+  {
+    id: "5953",
+    name: "PICWE",
+    address: null,
+    symbol: "-",
+    url: "https://www.picwe.org/en",
+    description:
+      "A decentralized, trustless, omni-chain liquidity infrastructure enabling seamless, cost-efficient trading across multiple blockchains and liquidity pools.",
+    chain: "Movement",
+    logo: `${baseIconsUrl}/picwe.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Movement"],
+    module: "picwe/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "PicWeGlobal",
+    audit_links: ["https://drive.google.com/file/d/12APmNFf_dy2HBnDof_u0mM03_5vKSPWN/view?usp=sharing"],
+    listedAt: 1743002205
+  },
 ];
 export default data4;

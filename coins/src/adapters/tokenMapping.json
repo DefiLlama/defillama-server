@@ -7500,7 +7500,7 @@
       "symbol": "USDT"
     }
   },
-  "plume": {
+  "plume-mainnet": {
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#plume",
       "decimals": 18,

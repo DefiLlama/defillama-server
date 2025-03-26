@@ -2838,5 +2838,38 @@ export default {
     },
     "magnum-trading-bot": {
         id: "5945"
+    },
+    "canto-lending": {
+        id: "1986"
+    },
+    "deepr-finance": {
+        id: "4015"
+    },
+    "elara": {
+        id: "5390"
+    },
+    "fluxfinance": {
+        id: "2537"
+    },
+    "hover": {
+        id: "3822"
+    },
+    "ironbank": {
+        id: "1303"
+    },
+    "machfi": {
+        id: "5573"
+    },
+    "mendi-finance": {
+        id: "3421"
+    },
+    "strike": {
+        id: "589"
+    },
+    "sumer": {
+        id: "3814"
+    },
+    "traderjoe-lend": {
+        id: "2179"
     }
 } as AdaptorsConfig

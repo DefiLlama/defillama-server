@@ -8941,7 +8941,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5947",
-    name: "MTT Dex",
+    name: "Yaakoswap",
     address: null,
     symbol: "-",
     url: "https://www.mtt.network/",

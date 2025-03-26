@@ -1,4 +1,3 @@
-import { id } from "ethers"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -2650,7 +2649,7 @@ export default {
     },
     "hyperliquid-spot": {
         parentId: "Hyperliquid",
-        id: "4482"
+        id: "5761"
     },
     "neby-dex": {
         id: "5512"
@@ -2711,5 +2710,204 @@ export default {
     },
     "infinityPools": {
         id: "5662"
+    },
+    "amped": {
+        id: "3833",
+        protocolsData: {
+            "swap": {
+                id: "3833",
+            }
+        }
+    },
+    "ocelex": {
+        parentId: "Ocelex",
+        id: "5379"
+    },
+    "bunni-v2": {
+        parentId: "Timeless",
+        id: "5734"
+    },
+    "wavex": {
+        id: "5737",
+        protocolsData: {
+            "swap": {
+                id: "5737",
+            }
+        }
+    },
+    "penumbra-dex": {
+        id: "5739",
+    },
+    "berachain-hub": {
+        id: "5742"
+    },
+    "uniswap-v4": {
+        id: "5690"
+    },
+    "bitflow-fi": {
+        id: "4136"
+    },
+    "velar": {
+        id: "4339"
+    },
+    "storyhunt-v3": {
+        id: "5781"
+    },
+    "kittypunch": {
+        id: "5203"
+    },
+    "four-meme": {
+        id: "5174"
+    },
+    "pulsex-stableswap": {
+        parentId: "PulseX",
+        id: "5795",
+    },
+    "sailor-finance": {
+        id: "5647",
+    },
+    "kodiak-v2": {
+        id: "5743",
+    },
+    "silverswap": {
+        id: "5529",
+    },
+    "olab": {
+        id: "5648",
+    },
+    "bullaexchange": {
+        id: "5766",
+    },
+    "ducata": {
+        id: "4896",
+    },
+    "embr": {
+        id: "1063",
+    },
+    "gaming-dex": {
+        id: "4263",
+    },
+    "ginsengswap": {
+        id: "5803",
+    },
+    "polaris-fi": {
+        id: "1440",
+    },
+    "phux": {
+        id: "3205",
+    },
+    "tanukix": {
+        id: "5038",
+    },
+    "piperx-v2": {
+        id: "5779",
+    },
+    "piperx-v3": {
+        id: "5780",
+    },
+    "magma-finance": {
+        id: "5774",
+    },
+    "caviarnine-simplepool": {
+        id: "5064",
+    },
+    "xpress": {
+        id: "5686"
+    },
+    "burrbear": {
+        id: "5745"
+    },
+    "fibonacci-dex": {
+        id: "5832"
+    },
+    "bitflux": {
+        id: "5344"
+    },
+    "hyperswap-v2": {
+        id: "5836"
+    },
+    "hyperswap-v3": {
+        id: "5837"
+    },
+    "wasabee": {
+        id: "5845"
+    },
+    "thalaswap-v2": {
+        parentId: "Thala",
+        id: "5329",
+    },
+    "degen-launchpad": {
+        id: "5857"
+    },
+    "hyperfluid": {
+        id: "5480"
+    },
+    "metropolis-amm": {
+        id: "5504"
+    },
+    "metropolis-dlmm": {
+        id: "5505"
+    },
+    "enosys": {
+        id: "5158"
+    },
+    "tea-fi": {
+        id: "5875"
+    },
+    "beets-v3": {
+        id: "5680"
+    },
+    "SwapX-algebra": {
+        id: "5579"
+    },
+    "SwapX-v2": {
+        id: "5578"
+    },
+    "meridian-amm": {
+        id: "5885"
+    },
+    "yuzu-finance": {
+        "id": "5906"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-swap": {
+                id: "5406"
+            }
+        }
+    },
+    "tonco": {
+        id: "5363"
+    },
+    "ekubo-evm": {
+        id: "5914"
+    },
+    "equalizer-cl": {
+        id: "5603"
+    },
+    "xswap-v3": {
+        id: "3914"
+    },
+    "unchain-x": {
+        id: "5917"
+    },
+    "pump-swap": {
+        id: "5936"
+    },
+    "steamm": {
+        id: "5824"
+    },
+    "umbra": {
+        id: "5943"
+    },
+    "squadswap-dynamo": {
+        id: "5921"
+    },
+    "squadswap-wow": {
+        id: "5922"
+    },
+    "gacha": {
+        id: "5942"
     }
 } as AdaptorsConfig

@@ -16,12 +16,16 @@ import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 import { PublicKey } from "@solana/web3.js";
 import { getConnection } from "../adapters/solana/utils";
-import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
+import {
+  chainsThatShouldNotBeLowerCased,
+  chainsWithCaseSensitiveDataProviders,
+} from "../utils/shared/constants";
 import {
   fetchCgPriceData,
   retryCoingeckoRequest,
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
+import { sendMessage } from "../../../defi/src/utils/discord";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -80,7 +84,6 @@ async function storeHistoricalCoinData(coinData: Write[]) {
 
 let solanaTokens: Promise<any>;
 let _solanaTokens: Promise<any>;
-
 async function cacheSolanaTokens() {
   if (_solanaTokens === undefined) {
     _solanaTokens = fetch(
@@ -89,6 +92,27 @@ async function cacheSolanaTokens() {
     solanaTokens = _solanaTokens.then((r) => r.json());
   }
   return solanaTokens;
+}
+
+let hyperliquidTokens: Promise<any>;
+let _hyperliquidTokens: Promise<any>;
+async function cacheHyperliquidTokens() {
+  try {
+    if (_hyperliquidTokens === undefined) {
+      _hyperliquidTokens = fetch(`https://api.hyperliquid.xyz/info`, {
+        method: "POST",
+        body: JSON.stringify({ type: "spotMeta" }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      hyperliquidTokens = _hyperliquidTokens.then((r) => r.json());
+    }
+  } catch (e) {
+    console.error(`Hyperliquid API failed with: ${e}`);
+    hyperliquidTokens = new Promise((res) => res({ tokens: [] }));
+  }
+  return hyperliquidTokens;
 }
 
 async function getSymbolAndDecimals(
@@ -121,6 +145,48 @@ async function getSymbolAndDecimals(
     return {
       symbol: token.symbol,
       decimals: Number(token.decimals),
+    };
+  } else if (chain == "hedera") {
+    try {
+      const { symbol, decimals } = await fetch(
+        `${
+          process.env.HEDERA_RPC ?? "https://mainnet.mirrornode.hedera.com"
+        }/api/v1/tokens/${tokenAddress}`,
+      ).then((r) => r.json());
+      return { symbol, decimals };
+    } catch (e) {
+      return;
+    }
+  } else if (chain == "hyperliquid") {
+    await cacheHyperliquidTokens();
+    const token = ((await hyperliquidTokens).tokens as any[]).find(
+      (t) => t.tokenId === tokenAddress,
+    );
+    if (!token) return;
+    return {
+      decimals: token.weiDecimals,
+      symbol: token.name,
+    };
+  } else if (chain == "aptos") {
+    const res = await fetch(
+      `${process.env.APTOS_RPC}/v1/accounts/${tokenAddress.substring(
+        0,
+        tokenAddress.indexOf("::"),
+      )}/resource/0x1::coin::CoinInfo%3C${tokenAddress}%3E`,
+    ).then((r) => r.json());
+    if (!res.data) return;
+    return {
+      decimals: res.data.decimals,
+      symbol: res.data.symbol,
+    };
+  } else if (chain == "stacks") {
+    const res = await fetch(
+      `https://api.hiro.so/metadata/v1/ft/${tokenAddress}`,
+    ).then((r) => r.json());
+    if (!res.decimals) return;
+    return {
+      decimals: res.decimals,
+      symbol: res.symbol,
     };
   } else if (!tokenAddress.startsWith(`0x`)) {
     return;
@@ -267,17 +333,22 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       iterateOverPlatforms(
         coin,
         async (PK) => {
-          const platformData = coinPlatformData[PK];
+          const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
+          const normalizedPK = chainsWithCaseSensitiveDataProviders.includes(
+            chain,
+          )
+            ? PK.toLowerCase()
+            : PK;
+          const platformData = coinPlatformData[normalizedPK];
           if (platformData && platformData?.confidence > 0.99) return;
 
           const created = getCurrentUnixTimestamp();
-          const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
           const address = PK.substring(PK.indexOf(":") + 1);
           const { decimals, symbol } =
             platformData &&
             "decimals" in platformData &&
             "symbol" in platformData
-              ? (coinPlatformData[PK] as any)
+              ? (coinPlatformData[normalizedPK] as any)
               : await getSymbolAndDecimals(address, chain, coin.symbol);
 
           if (decimals == undefined) return;
@@ -290,7 +361,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           }
 
           const item = {
-            PK,
+            PK: normalizedPK,
             SK: 0,
             created,
             decimals,
@@ -423,42 +494,59 @@ function shuffleArray(array: any[]) {
 }
 
 async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
-  await cacheSolanaTokens();
-  const step = 500;
-  let coins = (await fetch(
-    `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
-  ).then((r) => r.json())) as Coin[];
+  try {
+    await cacheSolanaTokens();
+    const step = 500;
+    let coins = (await fetch(
+      `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
+    ).then((r) => r.json())) as Coin[];
 
-  if (coinType || hourly) {
-    const metadatas = await getCGCoinMetadatas(
-      coins.map((coin) => coin.id),
+    if (coinType || hourly) {
+      const metadatas = await getCGCoinMetadatas(
+        coins.map((coin) => coin.id),
+        coinType,
+      );
+      coins = coins.filter((coin) => {
+        const metadata = metadatas[coin.id];
+        if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
+        if (hourly) {
+          return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
+        }
+        return (
+          metadata.coinType === coinType ||
+          metadata.coinType === COIN_TYPES.over100m
+        ); // always include over100m coins
+      });
+    }
+    console.log(
+      `Fetching prices for ${coins.length} coins`,
+      "running hourly:",
+      hourly,
+      "coinType:",
       coinType,
     );
-    coins = coins.filter((coin) => {
-      const metadata = metadatas[coin.id];
-      if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
-      if (hourly) {
-        return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
-      }
-      return (
-        metadata.coinType === coinType ||
-        metadata.coinType === COIN_TYPES.over100m
-      ); // always include over100m coins
-    });
+    shuffleArray(coins);
+    let promises: Promise<void>[] = [];
+    for (let i = 0; i < coins.length; i += step) {
+      promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
+    }
+    await Promise.all(promises);
+  } catch (e) {
+    console.error("Error in coingecko script");
+    console.error(e);
+    if (process.env.URGENT_COINS_WEBHOOK)
+      await sendMessage(
+        `coingecko ${hourly} ${coinType} failed with: ${e}`,
+        process.env.URGENT_COINS_WEBHOOK,
+        true,
+      );
+    else
+      await sendMessage(
+        `coingecko error but missing urgent webhook`,
+        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        true,
+      );
   }
-  console.log(
-    `Fetching prices for ${coins.length} coins`,
-    "running hourly:",
-    hourly,
-    "coinType:",
-    coinType,
-  );
-  shuffleArray(coins);
-  let promises: Promise<void>[] = [];
-  for (let i = 0; i < coins.length; i += step) {
-    promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
-  }
-  await Promise.all(promises);
 }
 
 if (process.argv.length < 3) {
@@ -481,15 +569,10 @@ if (process.argv.length < 3) {
     console.error(`Invalid coin type: ${coinType}`);
     process.exit(1);
   }
-  triggerFetchCoingeckoData(isHourlyRun, coinType)
-    .catch((e) => {
-      console.error("Error in coingecko script");
-      console.error(e);
-    })
-    .then(() => {
-      console.log("Exiting now...");
-      process.exit(0);
-    });
+  triggerFetchCoingeckoData(isHourlyRun, coinType).then(() => {
+    console.log("Exiting now...");
+    process.exit(0);
+  });
 }
 
 async function getCGCoinMetadatas(coinIds: string[], coinType?: string) {

@@ -5,6 +5,7 @@ import cgSymbols from "../src/utils/symbols/symbols.json";
 
 export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
+export const excludedTvlId = "5897";
 
 export const geckoSymbols = cgSymbols as { [key: string]: string };
 
@@ -92,7 +93,25 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5566": "zora",
   "5609": "sophon",
   "5624": "soneium",
-  "5683": "sonic"
+  "5683": "sonic",
+  "5691": "abstract",
+  "5692": "ancient8",
+  "5693": "cyber",
+  "5694": "fraxtal",
+  "5695": "gravity",
+  "5696": "karak",
+  "5697": "kroma",
+  "5698": "orderly",
+  "5699": "rari",
+  "5700": "redstone",
+  "5701": "wc",
+  "5702": "zero_network",
+  "5703": "zkfair",
+  "5732": "sxr",
+  "5735": "sorare",
+  "5772": "unichain",
+  "5833": "formnetwork",
+  "5854": "hemi-l2",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -186,4 +205,19 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "dydx": { ticker: "DYDX", address: "coingecko:dydx-chain" },
   "apex": { ticker: "APEX", address: "coingecko:apex-token-2" },
   "sonic": { ticker: "FTM", address: "coingecko:fantom" },
+  //  "abstract": { ticker: "", address: "coingecko:" },
+  "ancient8": { ticker: "A8", address: "coingecko:ancient8" },
+  "cyber": { ticker: "CYBER", address: "coingecko:cyberconnect" },
+  "fraxtal": { ticker: "FXS", address: "coingecko:frax-share" },
+  "gravity": { ticker: "G", address: "coingecko:g-token" },
+  // "5696": "karak",
+  "kroma": { ticker: "KRO", address: "coingecko:kroma" },
+  "orderly": { ticker: "ORDER", address: "coingecko:orderly-network" },
+  //  "rari": { ticker: "", }
+  // "5700": "redstone",
+  "wc": { ticker: "WLD", address: "coingecko:worldcoin-wld" },
+  // "5702": "zero_network",
+  "zkfair": { ticker: "ZKF", address: "coingecko:zkfair" },
+  "sxr": { ticker: "SX", address: "coingecko:sx-network-2" },
+  "unichain": { ticker: "UNI", address: "coingecko:uniswap" },
 };

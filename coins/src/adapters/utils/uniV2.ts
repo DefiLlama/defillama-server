@@ -283,7 +283,7 @@ export function getUniV2Adapter({
     const tokenData: any = {};
     pairs.forEach((pair: any, idx: number) => {
       const totalSupply = lpSupplies[idx];
-      if (!totalSupply) return;
+      if (!totalSupply || reserves[idx] == null) return;
 
       const [reserve0, reserve1] = reserves[idx];
       const token0 = token0s[idx];

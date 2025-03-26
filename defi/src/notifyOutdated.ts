@@ -92,7 +92,7 @@ export async function notifyOutdatedPG() {
   // now this check runs every 4th hour
   if (currentHour % 4 === 0) {
     const hour12Outdated = await findOutdatedPG(12 * 3600); // 12hr
-    const ignoredSet = new Set(['Synthetix']);
+    const ignoredSet = new Set(['Synthetix', 'Defi Saver']);
     const failedOver100m = hour12Outdated.filter((o: any) => o[1]?.tvl > 100_000_000 && !ignoredSet.has(o[0]));
     if (failedOver100m.length > 0) {
       await sendMessage(buildOutdatedMessage(failedOver100m) as any, teamwebhookUrl)

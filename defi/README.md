@@ -1,4 +1,4 @@
-# Defillama server
+# DefiLlama server
 
 ## Setup
 

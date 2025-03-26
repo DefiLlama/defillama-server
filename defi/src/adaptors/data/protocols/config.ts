@@ -294,6 +294,7 @@ export default {
         "id": "3450"
     },
     "shadow-exchange": {
+        parentId: "Shadow Exchange",
         id: "5570",
     },
     "holdstation-swap": {
@@ -318,5 +319,32 @@ export default {
     "reservoir-tools-clmm": {
         parentId: "Reservoir Tools",
         id: "5679",
+    },
+    "kodiak-v3": {
+        parentId: "Kodiak",
+        id: "5744",
+    },
+    "beralis-v3": {
+        parentId: "Beralis Dex",
+        id: "5759",
+    },
+    "rooster": {
+        id: "5704",
+    },
+    "sailfish": {
+        id: "5643",
+    },
+    "artexswap": {
+        id: "5665",
+    },
+    "mondrain": {
+        id: "5765",
+    },
+    "shadow-legacy": {
+        parentId: "Shadow Exchange",
+        id: "5682"
+    },
+    "puppyfun": {
+        id: "5895"
     }
 } as AdaptorsConfig

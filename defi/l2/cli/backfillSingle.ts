@@ -46,7 +46,7 @@ async function getTimestampArray(): Promise<number[]> {
 }
 
 async function proc(timestamp: number) {
-  const res: any = await findTvls(timestamp);
+  const res: any = await findTvls(false, timestamp);
   if (res.Tron.total.total < 10_000_000_000) throw new Error(`bad tvl`);
   const write: any = { Tron: res.Tron, timestamp };
   await overwrite(write);

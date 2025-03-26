@@ -56,6 +56,6 @@ getTokenPrices() uses a variety of functions and libraries to find token prices:
 3. getTokenAndRedirectData() fetches information from the DefiLlama coins database, about coins deposited to the Euler markets.
 4. multiCall()is a function from the DefiLlama SDK which allows us to fetch on-chain data from many functions at once. There are lots of examples on how to use the DefiLlama SDK in the DefiLlama/DefiLlama-Adapters repo.
 
-The last part of the adapter code to run is formWrites(). This function is used to create the array returned by the adapter. At this stage of the adapter it is crucial to handle any errors effectively so that faulty data doesnt enter the database. Notice on lines 57 and 64 where unexpected data is excluded from the writes list by returning from the map function. 
+The last part of the adapter code to run is formWrites(). This function is used to create the array returned by the adapter. At this stage of the adapter it is crucial to handle any errors effectively so that faulty data doesn't enter the database. Notice on lines 57 and 64 where unexpected data is excluded from the writes list by returning from the map function. 
 
 To test the Euler adapter, we can run 'LOCAL_TEST=true ts-node coins/src/test.ts euler'. If the command successfully logs an array of database writes containing expected data, we're ready to make a PR!

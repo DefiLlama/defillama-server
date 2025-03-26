@@ -415,6 +415,16 @@
     }
   },
   "ethereum": {
+    "0x83599937c2c9bea0e0e8ac096c6f32e86486b410": {
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "liquidBeraETH"
+    },
+    "0xE7C253EAD50976Caf7b0C2cbca569146A7741B50": {
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "SolvBTC.BERA"
+    },
     "0xc673ef7791724f0dcca38adb47fbb3aef3db6c80": {
       "to": "coingecko#bitcoin",
       "decimals": 8,

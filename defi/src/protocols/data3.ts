@@ -44365,7 +44365,7 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     module: "superposition/index.js",
     forkedFrom: [],
-    oracles: ["Pyth"], //  https://docs.superposition.finance/asset-pricing
+    oracles: ["Pyth", "Switchboard"], //  https://docs.superposition.finance/asset-pricing
     twitter: "superp_fi",
     listedAt: 1716371512,
   },
@@ -52842,7 +52842,7 @@ const data3: Protocol[] = [
     github: ["noble-assets"],
   },
   {
-    id: "5027", 
+    id: "5027",
     name: "MEMECAST.AI", // previously 4cast
     address: null,
     symbol: "-",

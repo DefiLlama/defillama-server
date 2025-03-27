@@ -24480,6 +24480,18 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Solana"],
     oracles: ["Pyth", "Switchboard"], // https://docs.kamino.finance/risk/oracles team also confirmed Pyth as the primary oracle while scope and switchboard used for support
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.kamino.finance/risk/oracles"]
+      },
+      {
+        name: "Switchboard",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9552"]
+      }
+    ],
     forkedFrom: [],
     module: "kamino-lending/index.js",
     twitter: "KaminoFinance",

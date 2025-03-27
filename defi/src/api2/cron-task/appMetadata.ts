@@ -480,7 +480,7 @@ async function _storeAppMetadata() {
       }
     }
 
-    const chainsWithFees = feesData.protocols.filter((i: any) => i.category === 'Chain').map((i: any) => i.name)
+    const chainsWithFees = feesData.protocols.filter((i: any) => i.defillamaId.startsWith('chain#')).map((i: any) => i.name)
     for (const chain of chainsWithFees) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),

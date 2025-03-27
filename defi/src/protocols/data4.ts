@@ -714,7 +714,7 @@ const data4: Protocol[] = [
     logo: `${baseIconsUrl}/dtrinity.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "dtrinity-usd",
     cmcId: null,
     category: "Partially Algorithmic Stablecoin",
     chains: ["Fraxtal"],

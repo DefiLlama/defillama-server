@@ -6259,6 +6259,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "dtrinity_defi",
     github: ["dtrinity"],
+    categories: ["Lending"],
   },
   {
     id: "parent#silo-finance",

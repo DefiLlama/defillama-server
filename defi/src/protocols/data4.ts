@@ -9186,7 +9186,7 @@ const data4: Protocol[] = [
     category: "CDP",
     chains: ["Filecoin"],
     module: "usdfc/index.js",
-    forkedFrom: [],
+    forkedFrom: ["Liquity V1"],
     oracles: ["Pyth"],
     oraclesBreakdown: [
       {

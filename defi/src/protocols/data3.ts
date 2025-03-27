@@ -59269,7 +59269,18 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Hedera"],
-    oracles: ["Supra", "Chainlink"], // https://docs.bonzo.finance/hub/developer/oracles/supra || HBAR and USDC Markets secured by Chainlink: https://docs.bonzo.finance/hub/developer/oracles/chainlink & https://bonzo.finance/blog/bonzo-finance-has-integrated-the-chainlink-standard-for-verifiable-data-on-hedera
+    oracles: ["Chainlink"], //HBAR and USDC Markets secured by Chainlink: 
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.bonzo.finance/hub/developer/oracles/chainlink", "https://bonzo.finance/blog/bonzo-finance-has-integrated-the-chainlink-standard-for-verifiable-data-on-hedera"]
+      },
+            {
+        name: "Supra",
+        type: "Secondary",
+        proof: ["https://docs.bonzo.finance/hub/developer/oracles/supra"]
+      },
     forkedFrom: ["AAVE V2"],
     module: "bonzo/index.js",
     twitter: "bonzo_finance",

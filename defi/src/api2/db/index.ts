@@ -68,7 +68,15 @@ async function initializeTVLCacheDB({
     }
     if (isApi2Server)
       dbOptions.pool = {
-        max: 10,
+        max: 5,
+        min: 0,
+        idle: 5000,
+        acquire: 300000, // increase this if your queries take a long time to run
+        evict: 1000, // how often to run eviction checks
+      }
+    else
+      dbOptions.pool = {
+        max: 5,
         min: 0,
         idle: 5000,
         acquire: 30000, // increase this if your queries take a long time to run
@@ -90,9 +98,11 @@ async function initializeTVLCacheDB({
     }
 
     if (ENV.isCoolifyTask) {
-      dbOptions.host = ENV.internalHost
+      if (ENV.internalHost) {
+        dbOptions.host = ENV.internalHost
+        delete dbOptions.port
+      }
       // metricsDbOptions.host = ENV.metrics_internalHost
-      delete dbOptions.port
       // delete metricsDbOptions.port
     }
 
@@ -240,6 +250,29 @@ async function getLatestProtocolItems(ddbPKFunction: Function, { filterLast24Hou
   }
 }
 
+// return count of hourly tvl records updated in the last 2 hours
+async function getHourlyTvlUpdatedRecordsCount() {
+  const table = TABLES.HOURLY_TVL;
+  const query = `SELECT COUNT(*) as count FROM "${table.getTableName()}" WHERE timestamp >= ${Math.floor(Date.now() / 1000) - 2 * 60 * 60}`;
+  const result = await table.sequelize!.query(query, { type: QueryTypes.SELECT });
+  return (result[0] as any).count;
+}
+
+// return count of dimensions records updated in the last 2 hours
+async function getDimensionsUpdatedRecordsCount() {
+  const table = TABLES.DIMENSIONS_DATA;
+  const query = `SELECT COUNT(*) as count FROM "${table.getTableName()}" WHERE updatedat >= to_timestamp(${Math.floor(Date.now() / 1000) - 2 * 60 * 60})`;
+  const result = await table.sequelize!.query(query, { type: QueryTypes.SELECT });
+  return (result[0] as any).count;
+}
+
+// return count of tweets pulled in the last 3 days
+async function getTweetsPulledCount() {
+  const query = `SELECT COUNT(*) as count FROM twitter_tweets WHERE createdat >= to_timestamp(${Math.floor(Date.now() / 1000) - 3 * 24 * 60 * 60})`;
+  const result = await TABLES.DIMENSIONS_DATA.sequelize!.query(query, { type: QueryTypes.SELECT });
+  return (result[0] as any).count;
+}
+
 function validateRecord(record: TVLCacheRecord) {
   if (!record.id || typeof record.id !== 'string') throw new Error('Missing id')
   if (!record.timeS || typeof record.timeS !== 'string') throw new Error('Missing timeS')
@@ -275,6 +308,10 @@ const getAllProtocolItems = callWrapper(_getAllProtocolItems)
 const getClosestProtocolItem = callWrapper(_getClosestProtocolItem)
 const saveProtocolItem = callWrapper(_saveProtocolItem)
 
+function getPGConnection() {
+  return sequelize
+}
+
 export {
   TABLES,
   sequelize,
@@ -282,6 +319,7 @@ export {
   getAllProtocolItems,
   getClosestProtocolItem,
   saveProtocolItem,
+  getPGConnection,
   initializeTVLCacheDB,
   closeConnection,
   deleteProtocolItems,
@@ -290,6 +328,9 @@ export {
   deleteFromPGCache,
   getDailyTvlCacheId,
   getLatestProtocolItems,
+  getHourlyTvlUpdatedRecordsCount,
+  getDimensionsUpdatedRecordsCount,
+  getTweetsPulledCount,
 }
 
 // Add a process exit hook to close the database connection

@@ -153,6 +153,18 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       decimals: 18,
       redirect: "asset#ethereum:0x326290a1b0004eee78fa6ed4f1d8f4b2523ab669",
     },
+    {
+      symbol: "eETH",
+      address: "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
+      decimals: 18,
+      redirect: "coingecko#ethereum",
+    },
+    {
+      symbol: "GHO",
+      address: "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+      decimals: 18,
+      redirect: "coingecko#gho",
+    },
   ],
 };
 

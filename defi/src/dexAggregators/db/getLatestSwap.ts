@@ -1,9 +1,9 @@
 import { SwapEvent } from "./Models/SwapEvent";
-import { connection } from ".";
+import { getConnection } from ".";
 import { ILike } from "typeorm";
 
 export async function getLatestSwap(tokenA: string, tokenB: string) {
-  const swapEventRepository = (await connection).getRepository(SwapEvent);
+  const swapEventRepository = (await getConnection()).getRepository(SwapEvent);
   const trade = await swapEventRepository.findOne({
     where: {
       aggregator: "1inch",

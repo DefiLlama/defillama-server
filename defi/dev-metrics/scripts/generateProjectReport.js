@@ -36,15 +36,24 @@ async function updateProjectReportMapping() {
     const project_id = item.type === 'chain' ? `chain#${key}` : item.id
     const name = item.type === 'chain' ? key : item.name
     let projectReport = projectReports.find(i => i.project_id === project_id)
+
     if (!projectReport) {
-      await ProjectReport.create({
-        project_id,
-        name,
-        project_type: item.type,
-        linked_orgs: item.github,
-        last_report_generated_time: null,
-        last_commit_update_time: null,
-      })
+      let github = item.github
+      if (typeof github === 'string') console.log('github is string', github, name, project_id, item.type)
+      if (typeof github === 'string') github = [github]
+      try {
+        await ProjectReport.create({
+          project_id,
+          name,
+          project_type: item.type,
+          linked_orgs: github,
+          last_report_generated_time: null,
+          last_commit_update_time: null,
+        })
+      } catch (e) {
+        console.error(e)
+        console.log({ project_id, name, type: item.type, github })
+      }
       continue;
     }
 
@@ -64,6 +73,8 @@ async function updateProjectReportMapping() {
   }
 }
 
+const blacklistedProjects = new Set(['5226'])
+
 async function pushReportsToR2() {
   console.log('Pushing reports to R2')
   const projectReports = await ProjectReport.findAll({
@@ -74,7 +85,8 @@ async function pushReportsToR2() {
   })
   console.log('Reports not yet in R2', projectReports.length)
   for (const projectReport of projectReports) {
-    await saveGithubData(projectReport.project_id, projectReport)
+    if (!blacklistedProjects.has(projectReport.project_id + ''))
+      await saveGithubData(projectReport.project_id, projectReport)
     await projectReport.update({ exported_to_r2: true })
   }
 }

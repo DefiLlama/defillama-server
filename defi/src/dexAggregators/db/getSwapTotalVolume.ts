@@ -1,8 +1,8 @@
 import { SwapEvent } from "./Models/SwapEvent";
-import { connection } from ".";
+import { getConnection } from ".";
 
 export async function getSwapTotalVolume(date: string, chain: string): Promise<string> {
-  const swapEventRepository = (await connection).getRepository(SwapEvent);
+  const swapEventRepository = (await getConnection()).getRepository(SwapEvent);
 
   const result = await swapEventRepository
     .createQueryBuilder("swapEvent")

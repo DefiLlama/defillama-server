@@ -1,23 +1,23 @@
 require("dotenv").config();
 
 import protocols from "../protocols/data";
-import { importAdapter } from "./utils/importAdapter";
 import * as sdk from '@defillama/sdk'
+import { importAdapterDynamic } from "../utils/imports/importAdapter";
 import * as childProcess from 'child_process'
 import { hourlyTvl, } from "../utils/getLastRecord";
 import { getHistoricalValues } from "../utils/shared/dynamodb";
 // @ts-ignore
 import { ibcChains, caseSensitiveChains, } from "@defillama/adapters/projects/helper/tokenMapping";
 
-const chainsWithoutRefillSupport = new Set([ ibcChains, caseSensitiveChains ].flat())
+const chainsWithoutRefillSupport = new Set([ibcChains, caseSensitiveChains].flat())
 
 
 const main = async () => {
   const protocolCount = +(process.argv[2] ?? 200) // how many protocols to fill
   const allProtocols = protocols.reverse().slice(0, protocolCount)
-  const checkRefillSuppport = (adapter: any) =>Object.keys(adapter).filter( i => typeof adapter[i] === 'function' && chainsWithoutRefillSupport.has(i)).length === 0
+  const checkRefillSuppport = (adapter: any) => Object.keys(adapter).filter(i => typeof adapter[i] === 'function' && chainsWithoutRefillSupport.has(i)).length === 0
   for (const protocol of allProtocols) {
-    const adapter = await importAdapter(protocol);
+    const adapter = await importAdapterDynamic(protocol);
     if (adapter.timetravel === false || !checkRefillSuppport(adapter)) {
       console.log("Adapter doesn't support refilling: ", protocol.name, 'skipping');
       continue;

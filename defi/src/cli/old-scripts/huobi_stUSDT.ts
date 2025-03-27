@@ -14,7 +14,7 @@ import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
-import { importAdapter } from "./utils/importAdapter";
+import { importAdapterDynamic } from "../../utils/imports/importAdapter";
 import * as sdk from '@defillama/sdk'
 import { Chain } from "@defillama/sdk/build/general";
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
@@ -103,7 +103,7 @@ async function getAndStore(
     console.log('More than 3 failures in a row, exiting now')
     process.exit(0)
   }
-  const adapterModule = await importAdapter(protocol)
+  const adapterModule = await importAdapterDynamic(protocol)
 
   let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
   const chains = chainsToRefill.map(i => i.split('-')[0])
@@ -159,7 +159,7 @@ const main = async () => {
 
   if (!chainsToRefill) throw new Error('Missing chain parameter')
   const protocol = getProtocol(protocolToRefill);
-  const adapter = await importAdapter(protocol);
+  const adapter = await importAdapterDynamic(protocol);
   const chains = chainsToRefill.map(i => i.split('-')[0])
 
   for (const chain of chains)

@@ -9,6 +9,7 @@ import { PromisePool } from '@supercharge/promise-pool'
 import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import * as sdk from '@defillama/sdk'
 import { shuffleArray } from "./utils/shared/shuffleArray";
+import { importAdapterDynamic } from "./utils/imports/importAdapter";
 
 const maxRetries = 1;
 
@@ -31,7 +32,7 @@ async function main() {
     .process(async (protocol: any) => {
       const startTime = +Date.now()
       try {
-        const adapterModule = importAdapter(protocol)
+        const adapterModule: any = importAdapterDynamic(protocol)
         if (!adapterModule.tron) {
           i++
           return;
@@ -70,10 +71,6 @@ main().then(() => {
   sdk.log('Exitting now...')
   process.exit(0)
 })
-
-function importAdapter(protocol: Protocol) {
-  return require("@defillama/adapters/projects/" + [protocol.module])
-}
 
 async function rejectAfterXMinutes(promiseFn: any, minutes = 5) {
   const ms = minutes * 60 * 1e3

@@ -1,34 +1,35 @@
+import * as sdk from "@defillama/sdk";
 import { multiCall } from "@defillama/sdk/build/abi/index";
-import { request, gql } from "graphql-request";
+import { request } from "graphql-request";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
-import { Write, CoinData } from "../../utils/dbInterfaces";
+import { Write } from "../../utils/dbInterfaces";
 import getBlock from "../../utils/block";
 import abi from "./abi.json";
 import { getTokenInfo } from "../../utils/erc20";
 import { Result } from "../../utils/sdkInterfaces";
 import { DbTokenInfos } from "../../utils/dbInterfaces";
+import { nullAddress } from "../../../utils/shared/constants";
 
-const vault: string = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
-const nullAddress: string = "0x0000000000000000000000000000000000000000";
+const vaults: { [chain: string]: string } = {
+  sonic: "0xBA12222222228d8Ba445958a75a0704d566BF2C8",
+  optimism: "0xBA12222222228d8Ba445958a75a0704d566BF2C8",
+  fantom: "0x20dd72Ed959b6147912C2e529F0a0C651c33c9ce",
+  berachain: "0x4Be03f781C497A489E3cB0287833452cA9B9E80B",
+};
 const subgraphNames: { [chain: string]: string } = {
-  ethereum: "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-v2",
-  arbitrum:
-    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-arbitrum-v2",
-  polygon:
-    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-polygon-v2",
-  optimism:
-    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-optimism-v2",
-  avax:
-    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-avalanche-v2",
-  xdai:
-    "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-gnosis-chain-v2",
-  polygon_zkevm:
-    "https://api.studio.thegraph.com/query/24660/balancer-polygon-zk-v2/version/latest",
-  base:
-    "https://api.studio.thegraph.com/query/24660/balancer-base-v2/version/latest",
+  optimism: sdk.graph.modifyEndpoint(
+    "FsmdxmvBJLGjUQPxKMRtcWKzuCNpomKuMTbSbtRtggZ7",
+  ),
+  sonic: sdk.graph.modifyEndpoint(
+    "wwazpiPPt5oJMiTNnQ2VjVxKnKakGDuE2FfEZPD4TKj",
+  ),
+  fantom: sdk.graph.modifyEndpoint(
+    "CcWtE5UMUaoKTRu8LWjzambKJtgUVjcN31pD5BdffVzK",
+  ),
+  berachain: "https://api.berachain.com/",
 };
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
@@ -41,6 +42,9 @@ const gaugeFactories: { [chain: string]: string } = {
 type GqlResult = {
   id: string;
   totalLiquidity: string;
+  dynamicData: {
+    totalLiquidity: string;
+  };
 };
 type PoolInfo = {
   balances: number[];
@@ -58,26 +62,47 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
   const subgraph: string = subgraphNames[chain] || chain;
 
   for (let i = 0; i < 20; i++) {
-    const lpQuery = gql`
+    const lpQuery =
+      chain == "berachain"
+        ? `query {
+      poolGetPools (first: 1000, orderBy: totalLiquidity, orderDirection: desc,
+          where: {
+          minTvl: 10000
+          ${timestamp == 0 ? `` : `createTime_lt: ${timestamp.toString()}`}
+          }) {
+        id 
+        dynamicData {
+          totalLiquidity 
+        }
+      }
+    }`
+        : `
     query {
       pools (first: 1000, orderBy: totalLiquidity, orderDirection: desc,
-          where: {${
+          where: {
+          ${
             i == 0 ? `` : `totalLiquidity_lt: ${reservereThreshold.toFixed(4)}`
-          } ${
-      timestamp == 0 ? `` : `createTime_gt: ${(timestamp * 1000).toString()}`
-    }}) {
+          } 
+          totalLiquidity_gt: 10000
+          ${timestamp == 0 ? `` : `createTime_lt: ${timestamp.toString()}`}
+          }) {
         id
         totalLiquidity
       }
     }`;
+
     const res: any = await request(subgraph, lpQuery);
-    const result: GqlResult[] = res.pools;
-    if (result.length < 1000) i = 20;
-    if (result.length == 0) return addresses;
-    reservereThreshold = Number(
-      result[Math.max(result.length - 1, 0)].totalLiquidity,
-    );
+    const result: GqlResult[] =
+      chain == "berachain" ? res.poolGetPools : res.pools;
     addresses.push(...result.map((p: any) => p.id));
+
+    if (result.length < 1000) return addresses;
+    reservereThreshold =
+      chain == "berachain"
+        ? Number(
+            result[Math.max(result.length - 1, 0)].dynamicData.totalLiquidity,
+          )
+        : Number(result[Math.max(result.length - 1, 0)].totalLiquidity);
   }
   return addresses;
 }
@@ -90,7 +115,7 @@ async function getPoolTokens(
     await multiCall({
       abi: abi.getPoolTokens,
       calls: poolIds.map((p: string) => ({
-        target: vault,
+        target: vaults[chain],
         params: p,
       })),
       chain,
@@ -118,7 +143,7 @@ async function getPoolValues(
   poolIds: string[],
 ): Promise<{ [poolId: string]: number }> {
   const uniqueTokens: string[] = findAllUniqueTokens(poolTokens);
-  const coinsData: CoinData[] = await getTokenAndRedirectData(
+  const coinsData = await getTokenAndRedirectDataMap(
     uniqueTokens,
     chain,
     timestamp,
@@ -132,9 +157,7 @@ async function getPoolValues(
         return;
       }
 
-      const tData = coinsData.find(
-        (d: CoinData) => d.address == t.toLowerCase(),
-      );
+      const tData = coinsData[t.toLowerCase()];
       if (tData == undefined) {
         poolTokenValues[i].push(-1);
         return;

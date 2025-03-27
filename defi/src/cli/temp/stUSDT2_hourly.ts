@@ -103,7 +103,7 @@ async function getAndStore(
     console.log('More than 3 failures in a row, exiting now')
     process.exit(0)
   }
-  const adapterModule = await importAdapter(protocol)
+  const adapterModule = await importAdapterDynamic(protocol)
 
   let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
   const chains = chainsToRefill.map(i => i.split('-')[0])
@@ -164,7 +164,7 @@ const main = async () => {
 
   if (!chainsToRefill) throw new Error('Missing chain parameter')
   const protocol = getProtocol(protocolToRefill);
-  const adapter = await importAdapter(protocol);
+  const adapter = await importAdapterDynamic(protocol);
   const chains = chainsToRefill.map(i => i.split('-')[0])
 
   for (const chain of chains)

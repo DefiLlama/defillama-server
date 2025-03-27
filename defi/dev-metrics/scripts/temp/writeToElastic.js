@@ -21,15 +21,6 @@ const botUsers = new Set([
   'mergify[bot]',
   'github actions',
   'klaytndocs',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
 ])
 
 async function main() {

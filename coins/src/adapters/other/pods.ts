@@ -16,7 +16,7 @@ export default async function getTokenPrices(timestamp: number) {
   const [
     { output: totalAssets },
     { output: totalSupply },
-    stEthInfo,
+    [{ price: stEthPrice }],
     stEthVvInfo
   ] = await Promise.all([
     call({
@@ -35,7 +35,7 @@ export default async function getTokenPrices(timestamp: number) {
     getTokenInfo(chain, [stETHvv], block)
   ]);
   const price: number =
-    (parseInt(totalAssets) / totalSupply) * stEthInfo[0].price;
+    (parseInt(totalAssets) / totalSupply) * stEthPrice;
 
   addToDBWritesList(
     writes,

@@ -7,18 +7,18 @@ import {
   chainCoingeckoIds,
   transformNewChainName,
   extraSections,
-  isDoubleCounted,
-  isExcludedFromChainTvl,
+  isDoubleCounted
 } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";
 import { getR2, storeR2, storeR2JSONString } from "./utils/r2";
-import { writeToPGCache, PG_CACHE_KEYS,storeRouteData, } from "./api2/cache/file-cache";
-import { excludeProtocolInCharts } from "./utils/excludeProtocols";
+import { writeToPGCache, PG_CACHE_KEYS, storeRouteData } from "./api2/cache/file-cache";
+import { excludeProtocolInCharts, isExcludedFromChainTvl } from "./utils/excludeProtocols";
 
-export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
+export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestampRaw: number, itemTvl: number) {
+  const timestamp = getClosestDayStartTimestamp(timestampRaw)
   if (sumDailyTvls[chain] === undefined) {
     sumDailyTvls[chain] = {};
   }
@@ -52,23 +52,29 @@ export type getHistoricalTvlForAllProtocolsOptionalOptions = {
   getModule?: Function;
   readFromR2Cache?: boolean;
   storeMeta?: boolean;
-}
+};
 
 const allProtocolRes: {
-  [key: string]: any
-} = {}
-export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, excludeProtocolsFromCharts = true, getHistTvlOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {}) {
+  [key: string]: any;
+} = {};
+export async function getHistoricalTvlForAllProtocols(
+  includeBridge: boolean,
+  excludeProtocolsFromCharts = true,
+  getHistTvlOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {}
+) {
   // get last daily timestamp by checking out all protocols most recent tvl value
   let lastDailyTimestamp = 0;
   const protocolList = getHistTvlOptions.protocolList ?? protocols;
-  const { storeMeta = false } = getHistTvlOptions
-  const excludedProcolsIds: any = {}
-  const excludedProcolsIdsExceptBridge: any = {}
+  const { storeMeta = false } = getHistTvlOptions;
+  const excludedProcolsIds: any = {};
+  const excludedProcolsIdsExceptBridge: any = {};
 
   const historicalProtocolTvls = await Promise.all(
     protocolList.map(async (protocol) => {
-      excludedProcolsIds[protocol.id] = excludeProtocolInCharts(protocol, false) || isExcludedFromChainTvl(protocol.category)
-      excludedProcolsIdsExceptBridge[protocol.id] = excludeProtocolInCharts(protocol, true) || isExcludedFromChainTvl(protocol.category)
+      excludedProcolsIds[protocol.id] =
+        excludeProtocolInCharts(protocol, false) || isExcludedFromChainTvl(protocol.category);
+      excludedProcolsIdsExceptBridge[protocol.id] =
+        excludeProtocolInCharts(protocol, true) || isExcludedFromChainTvl(protocol.category);
       if (!protocol || (!storeMeta && excludeProtocolsFromCharts && excludeProtocolInCharts(protocol, includeBridge))) {
         return;
       }
@@ -87,7 +93,7 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, ex
             importAdapter(protocol),
           ]);
         }
-        return allProtocolRes[protocol.id]
+        return allProtocolRes[protocol.id];
       }
 
       if (!getHistTvlOptions.isApi2CronProcess) {
@@ -101,8 +107,7 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, ex
         module = getHistTvlOptions.getModule!(protocol);
       }
 
-      if (lastTvl && !historicalTvl?.length)
-        historicalTvl = [lastTvl];
+      if (lastTvl && !historicalTvl?.length) historicalTvl = [lastTvl];
 
       if (!historicalTvl || historicalTvl?.length < 1 || !module) {
         return;
@@ -143,7 +148,7 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, ex
       excludedProcolsIdsExceptBridge,
       lastDailyTimestamp,
       historicalProtocolTvls,
-    }
+    };
 
   return {
     lastDailyTimestamp,
@@ -156,43 +161,45 @@ export type processProtocolsOption = getHistoricalTvlForAllProtocolsOptionalOpti
   includeBridge: boolean;
 };
 
-export async function getCachedHistoricalTvlForAllProtocols(includeBridge = false, excludeProtocolsFromCharts = true, { getHistTvlMeta }: {
-  getHistTvlMeta?: Function
-} = {}) {
-  includeBridge = includeBridge === true
-  excludeProtocolsFromCharts = excludeProtocolsFromCharts === true
+export async function getCachedHistoricalTvlForAllProtocols(
+  includeBridge = false,
+  excludeProtocolsFromCharts = true,
+  {
+    getHistTvlMeta,
+  }: {
+    getHistTvlMeta?: Function;
+  } = {}
+) {
+  includeBridge = includeBridge === true;
+  excludeProtocolsFromCharts = excludeProtocolsFromCharts === true;
 
   if (getHistTvlMeta) {
-
-    const {
-      excludedProcolsIds,
-      excludedProcolsIdsExceptBridge,
-      lastDailyTimestamp,
-      historicalProtocolTvls,
-    } = await getHistTvlMeta()
+    const { excludedProcolsIds, excludedProcolsIdsExceptBridge, lastDailyTimestamp, historicalProtocolTvls } =
+      await getHistTvlMeta();
 
     const filteredHistoricalProtocolTvls = historicalProtocolTvls.map((i: any) => {
-      if (!excludeProtocolsFromCharts) return i // if excludeProtocolsFromCharts is false, return all protocols
+      if (!excludeProtocolsFromCharts) return i; // if excludeProtocolsFromCharts is false, return all protocols
 
-      if (!i?.protocol?.id) return i // if protocol is undefined/id is missing, return it
-      const id = i.protocol.id
+      if (!i?.protocol?.id) return i; // if protocol is undefined/id is missing, return it
+      const id = i.protocol.id;
 
       if (includeBridge) {
-        if (!excludedProcolsIdsExceptBridge[id]) return i // it might be a bridge protocol but not excluded, return it
+        if (!excludedProcolsIdsExceptBridge[id]) return i; // it might be a bridge protocol but not excluded, return it
       } else if (!excludedProcolsIds[id]) {
-        return i // if protocol is excluded, return undefined
+        return i; // if protocol is excluded, return undefined
       }
       return;
-    })
+    });
 
     return {
       lastDailyTimestamp,
       historicalProtocolTvls: filteredHistoricalProtocolTvls,
-    }
+    };
   }
 
-
-  return JSON.parse((await getR2(`cache/getHistoricalTvlForAllProtocols/${includeBridge}-${excludeProtocolsFromCharts}.json`)).body!)
+  return JSON.parse(
+    (await getR2(`cache/getHistoricalTvlForAllProtocols/${includeBridge}-${excludeProtocolsFromCharts}.json`)).body!
+  );
 }
 
 export async function processProtocols(
@@ -200,14 +207,18 @@ export async function processProtocols(
   { includeBridge, ...getHistTvlOptions }: processProtocolsOption,
   excludeProtocolsFromCharts = true
 ) {
-  let historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>
+  let historicalProtocolTvlsData: Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>;
 
   if (getHistTvlOptions.isApi2CronProcess) {
-    historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(includeBridge, excludeProtocolsFromCharts, getHistTvlOptions);
+    historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(
+      includeBridge,
+      excludeProtocolsFromCharts,
+      getHistTvlOptions
+    );
   } else {
     historicalProtocolTvlsData = await getCachedHistoricalTvlForAllProtocols(includeBridge, excludeProtocolsFromCharts);
   }
-  const { historicalProtocolTvls, lastDailyTimestamp } = historicalProtocolTvlsData
+  const { historicalProtocolTvls, lastDailyTimestamp } = historicalProtocolTvlsData;
 
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (!protocolTvl) {
@@ -241,13 +252,32 @@ export async function processProtocols(
 }
 
 export async function storeGetCharts({ ...options }: any = {}) {
-
   // store overall tvl charts and individual chain charts
   const sumDailyTvls: SumDailyTvls = {};
+  const sumCategoryTvls: SumDailyTvls = {};
+
+  if (options.isApi2CronProcess) {
+    const data = await getHistoricalTvlForAllProtocols(false, false, { ...options, storeMeta: true });
+    // await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/meta.json", JSON.stringify(await data))
+    await writeToPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META, data);
+    // TODO: I hope cache/getHistoricalTvlForAllProtocols/false-true.json is not used anywhere else
+  } else {
+    const dataFalseTrue = getHistoricalTvlForAllProtocols(false, true, options);
+    const dataFalseFalse = getHistoricalTvlForAllProtocols(false, false, options);
+    await storeR2JSONString(
+      "cache/getHistoricalTvlForAllProtocols/false-true.json",
+      JSON.stringify(await dataFalseTrue)
+    );
+    await storeR2JSONString(
+      "cache/getHistoricalTvlForAllProtocols/false-false.json",
+      JSON.stringify(await dataFalseFalse)
+    );
+  }
 
   await processProtocols(
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
       // total - sum of all protocols on all chains
+
       sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl);
 
       // doublecounted and liquid staking values === sum of tvl on all chains
@@ -287,6 +317,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
           // doublecounted and liquidstaking === tvl on the chain, so check if tvlSection is not staking, pool2 etc
 
           if (tvlSection === "tvl") {
+            sum(sumCategoryTvls, (protocol.category || "").toLowerCase().replace(" ", "_"), chain, timestamp, tvl);
             if (protocol?.doublecounted) {
               sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
             }
@@ -335,32 +366,51 @@ export async function storeGetCharts({ ...options }: any = {}) {
       let filename = chain === "total" ? "lite/charts" : `lite/charts/${chain}`;
 
       if (options.isApi2CronProcess) {
-        if (chain === "total") 
-          filename = "lite/charts-total"
-        
-        await storeRouteData(filename, chainResponse)
+        if (chain === "total") filename = "lite/charts-total";
+
+        await storeRouteData(filename, roundNumbersInObject(chainResponse));
+      } else {
+        const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
+          [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
+          [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
+        });
+        await storeR2(filename, compressedRespone, true);
       }
+    })
+  );
+
+  await Promise.all(
+    Object.entries(sumCategoryTvls).map(async ([category, chainDailyTvls]) => {
+      const chainResponse = Object.fromEntries(
+        Object.entries(chainDailyTvls).map(([section, tvls]) => [section, Object.entries(tvls)])
+      );
+      let filename = `lite/charts/categories/${category}`;
+
+      if (options.isApi2CronProcess) {
+        await storeRouteData(filename, roundNumbersInObject(chainResponse));
+      } 
       else {
         const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
           [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
           [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
         });
-        await storeR2(filename, compressedRespone, true)
+        await storeR2(filename, compressedRespone, true);
       }
     })
   );
+}
 
-  if (options.isApi2CronProcess) {
-    const data = await getHistoricalTvlForAllProtocols(false, false, { ...options, storeMeta: true });
-    // await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/meta.json", JSON.stringify(await data))
-    await writeToPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META, data)
-    // TODO: I hope cache/getHistoricalTvlForAllProtocols/false-true.json is not used anywhere else
-  } else {
-    const dataFalseTrue = getHistoricalTvlForAllProtocols(false, true, options);
-    const dataFalseFalse = getHistoricalTvlForAllProtocols(false, false, options);
-    await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-true.json", JSON.stringify(await dataFalseTrue))
-    await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-false.json", JSON.stringify(await dataFalseFalse))
+function roundNumbersInObject(obj: any): any {
+  if (typeof obj === 'number') {
+    return Math.round(obj);
+  } else if (Array.isArray(obj)) {
+    return obj.map(roundNumbersInObject);
+  } else if (typeof obj === 'object' && obj !== null) {
+    return Object.fromEntries(
+      Object.entries(obj).map(([key, value]) => [key, roundNumbersInObject(value)])
+    );
   }
+  return obj;
 }
 
 const handler = async (_event: any) => {

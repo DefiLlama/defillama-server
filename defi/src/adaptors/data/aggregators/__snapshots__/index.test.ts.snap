@@ -9,7 +9,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Algorand",
     "chains": Array [
       "algorand",
@@ -52,7 +52,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "1",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -106,7 +106,7 @@ Array [
     "address": null,
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Solana",
     "chains": Array [
       "solana",

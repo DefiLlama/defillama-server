@@ -15,3 +15,11 @@ export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: bool
     return exclude;
   }
   
+export function isExcludedFromChainTvl(category?: string) {
+  return category === "RWA" || category === "Basis Trading" || category === "CeDeFi";
+}
+
+export const includeCategoryIntoChainTvl = (category?:string)=>{
+  if(category === undefined) return true
+  return !["Bridge", "RWA", "Basis Trading", "CeDeFi"].includes(category)
+}

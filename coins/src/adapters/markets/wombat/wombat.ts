@@ -5,7 +5,6 @@ import {
   addToDBWritesList,
   getTokenAndRedirectData,
 } from "../../utils/database";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
 import abi from "./abi.json";
 import { getCurrentUnixTimestamp } from "../../../utils/date";
 import { getTokenInfo } from "../../utils/erc20";
@@ -23,7 +22,7 @@ export default async function getTokenPrices(
     timestamp ? timestamp : getCurrentUnixTimestamp(),
   );
 
-  const poolTokens = await multiCall({
+  const poolTokens = await api.multiCall({
     abi: abi.getTokens,
     calls: contracts.markets.map((target: string) => ({ target })),
     chain,
@@ -64,7 +63,7 @@ export default async function getTokenPrices(
     });
   });
 
-  const swapRates: any[] = await multiCall({
+  const swapRates: any[] = await api.multiCall({
     abi: abi.quotePotentialSwap,
     calls,
     chain,

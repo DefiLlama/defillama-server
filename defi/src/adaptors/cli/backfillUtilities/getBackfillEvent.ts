@@ -3,7 +3,7 @@ import fs, { writeFileSync } from "fs"
 import path from "path"
 import loadAdaptorsData from "../../data"
 import { IJSON } from "../../data/types"
-import { Adapter } from "@defillama/dimension-adapters/adapters/types";
+import { Adapter, BaseAdapter, IStartTimestamp } from "@defillama/dimension-adapters/adapters/types";
 import { getAdaptorRecord, AdaptorRecordType, AdaptorRecord } from "../../db-utils/adaptor-record"
 import getDataPoints from "../../utils/getDataPoints"
 import { getUniqStartOfTodayTimestamp } from "@defillama/dimension-adapters/helpers/getUniSubgraphVolume"
@@ -30,6 +30,29 @@ const KEYS_TO_CHECK: TKeysToCheck = {
     [AdapterType.OPTIONS]: 'dv',
     [AdapterType.PROTOCOLS]: 'dv',
     [AdapterType.ROYALTIES]: 'dv',
+    [AdapterType.AGGREGATOR_DERIVATIVES]: 'dv',
+}
+
+const getStartTime = async (start: string | number | undefined | IStartTimestamp, default_time: number|undefined) => {
+    if (start === undefined) { return default_time }
+    if (typeof start === 'function') {
+        const result = await start();
+        return result !== undefined ? result : default_time;
+    } else if (typeof start === 'string') {
+        return new Date(start).getTime() / 1000
+    } else {
+        return start
+    }
+}
+
+function pickLowestTimestamp(a: number|undefined, b:number | undefined){
+    if(a === undefined){
+        return b
+    }
+    if(b === undefined){
+        return a
+    }
+    return a < b?a:b;
 }
 
 export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {
@@ -38,7 +61,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
 
     // load all adapters data
     const adapterName = adapter
-    const adaptorsData = await loadAdaptorsData(adaptorType)
+    const adaptorsData = loadAdaptorsData(adaptorType)
 
     // build event with all adapters with missing data for specified timestamp
     if (adapterName[0] === 'all') {
@@ -49,7 +72,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         console.info(`Checking missing ${type} at ${formatTimestampAsDate(timestamp)}`)
         const adapters2Backfill: string[] = []
         // Go through all adapters checking if data for today is available
-        for (const adapter of adaptorsData.default) {
+        for (const adapter of adaptorsData.default.filter(adapter => adapter.enabled).filter(ad => ad?.disabled !== true)) {
             // Query timestamp data from dynamo
             const volume = await getAdaptorRecord(adapter.id, type as AdaptorRecordType, adapter.protocolType, "TIMESTAMP", timestamp).catch(_e => { })
             // if data is missing add 2 backfill
@@ -59,7 +82,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             else if (volume instanceof AdaptorRecord) {
                 const cleanRecord = volume.getCleanAdaptorRecord()
                 if (
-                    // if clean data (filtering errors, posible NaN values, event data) is null
+                    // if clean data (filtering errors, possible NaN values, event data) is null
                     cleanRecord === null
                     // or sum of timestamp's dimension is 0
                     || sumAllVolumes(cleanRecord.data) === 0
@@ -90,7 +113,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             type: adaptorType,
             backfill: [{
                 dexNames: adapterName,
-                timestamp: cliArguments.timestamp + ONE_DAY_IN_SECONDS,
+                timestamp: cliArguments.timestamp,
                 chain: cliArguments.chain as Chain,
                 adaptorRecordTypes: cliArguments.recordTypes,
                 protocolVersion: cliArguments.version,
@@ -100,37 +123,37 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
     // build event for historical backfill
     else {
         // TODO: IMPROVE code
-        let startTimestamp = 0
+        let startTimestamp:number|undefined = undefined
         // Looking for start time from adapter, if not found will default to the above
         const nowSTimestamp = Math.trunc((Date.now()) / 1000)
         const adapterData = adaptorsData.default.find(adapter => adapter.module === (adapterName[0]))
         if (adapterData) {
-            const dexAdapter: Adapter = adaptorsData.importModule(adapterData.module).default
+            const dexAdapter: Adapter = (await adaptorsData.importModule(adapterData.module)).default
+
+            function findLowestTimestampAmongChains(adapter:BaseAdapter){
+                return Object.values(adapter)
+                .reduce(async (accP, { start, runAtCurrTime }) => {
+                    const acc = await accP;
+                    const currstart = runAtCurrTime ? nowSTimestamp + 2 : await getStartTime(start, undefined).catch(() => undefined);
+                    if(currstart === undefined || currstart === 0) return acc
+                    return pickLowestTimestamp(currstart, acc)
+                }, Promise.resolve(undefined as number|undefined));
+            }
             if ("adapter" in dexAdapter) {
-                const st = await Object.values(dexAdapter.adapter)
-                    .reduce(async (accP, { start, runAtCurrTime }) => {
-                        const acc = await accP
-                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : +(await start().catch(() => nowSTimestamp))
-                        return (currstart && currstart < acc && currstart !== 0) ? currstart : acc
-                    }, Promise.resolve(nowSTimestamp + 1))
-                startTimestamp = st
+                startTimestamp = await findLowestTimestampAmongChains(dexAdapter.adapter);
             } else {
                 const st = await Object.values(dexAdapter.breakdown).reduce(async (accP, dexAdapter) => {
                     const acc = await accP
-                    const bst = await Object.values(dexAdapter).reduce(async (accP, { start, runAtCurrTime }) => {
-                        const acc = await accP
-                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (await start().catch(() => nowSTimestamp))
-                        return (typeof currstart === 'number' && currstart < acc && currstart !== 0) ? currstart : acc
-                    }, Promise.resolve(nowSTimestamp + 1))
+                    const bst = await findLowestTimestampAmongChains(dexAdapter); 
 
-                    return bst < acc ? bst : acc
-                }, Promise.resolve(nowSTimestamp + 1))
+                    return pickLowestTimestamp(bst, acc)
+                }, Promise.resolve(undefined as number|undefined))
                 startTimestamp = st
             }
-            if (startTimestamp > 0) startTimestamp *= 1000
+            if (typeof startTimestamp === "number" && startTimestamp > 0) startTimestamp *= 1000
             else startTimestamp = new Date(Date.UTC(2018, 0, 1)).getTime()
         } else {
-            throw new Error(`No adapter found with name ${adapterName} of type ${adaptorType}`)
+            throw new Error(`No adapter found with name ${adapterName} of type ${adaptorType}. Try to run "cd dimension-adapters && git pull && cd .. &&npm run prebuild"`)
         }
         // For specific ranges (remember months starts with 0)
         // const startDate = new Date(Date.UTC(2022, 8, 1))
@@ -139,7 +162,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         const startDate = new Date(getUniqStartOfTodayTimestamp(new Date(startTimestamp)) * 1000)
         console.info("Starting timestamp", startTimestamp, "->", startDate)
         const endDate = new Date(nowSTimestamp * 1000)
-        const dates: Date[] = []
+        let dates: Date[] = []
         if (cliArguments.onlyMissing) {
             let volTimestamps = {} as IJSON<boolean>
             for (const type of [KEYS_TO_CHECK[adaptorType]]) {
@@ -173,6 +196,10 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
                     dates.push(new Date(dayInMilis))
                     dayInMilis += DAY_IN_MILISECONDS
                 }
+        }
+        if(cliArguments.endTimestamp){
+            const end = new Date(cliArguments.endTimestamp*1e3)
+            dates = dates.filter(d=>d<end)
         }
         event = {
             type: adaptorType,

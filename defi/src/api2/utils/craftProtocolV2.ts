@@ -28,7 +28,7 @@ export async function craftProtocolV2({
   useHourlyData,
   skipAggregatedTvl,
 }: CraftProtocolV2Options) {
-  const { misrepresentedTokens = false, hallmarks, methodology, ...restProtocolData } = protocolData as any
+  const { misrepresentedTokens = false, hallmarks, methodology,deprecated, ...restProtocolData } = protocolData as any
 
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
@@ -139,7 +139,7 @@ export async function craftProtocolV2({
   if (response.chainTvls[singleChain] === undefined && response.chains.length === 0) {
     response.chains.push(singleChain);
     response.chainTvls[singleChain] = {
-      tvl: response.tvl,
+      tvl: response.tvl ?? [],
       tokensInUsd: response.tokensInUsd,
       tokens: response.tokens,
     };
@@ -147,11 +147,11 @@ export async function craftProtocolV2({
 
   if (
     response.chainTvls[singleChain] !== undefined &&
-    response.chainTvls[singleChain].tvl.length < response.tvl.length
+    response.chainTvls[singleChain].tvl.length < (response.tvl ?? []).length
   ) {
     const singleChainTvls = response.chainTvls[singleChain].tvl;
     const first = singleChainTvls[0].date;
-    response.chainTvls[singleChain].tvl = response.tvl.filter((t: any) => t.date < first).concat(singleChainTvls);
+    response.chainTvls[singleChain].tvl = (response.tvl ?? []).filter((t: any) => t.date < first).concat(singleChainTvls);
   }
 
   if (skipAggregatedTvl) {
@@ -166,7 +166,7 @@ export async function craftProtocolV2({
 
   if (parentProtocolId) {
     parentName = cache.metadata.parentProtocols.find((p) => p.id === parentProtocolId)?.name ?? null;
-    childProtocolsNames = cache.metadata.protocols.filter((p) => p.parentProtocol === parentProtocolId).map((p) => p.name);
+    childProtocolsNames = cache.otherProtocolsMap[parentProtocolId] ?? []
   }
 
   if (childProtocolsNames.length > 0 && parentName) {
@@ -182,6 +182,10 @@ export async function craftProtocolV2({
   if (Array.isArray(hallmarks) && hallmarks.length > 0) {
     response.hallmarks = hallmarks;
     response.hallmarks?.sort((a, b) => a[0] - b[0]);
+  }
+
+  if (deprecated) {
+    response.deprecated = true
   }
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime

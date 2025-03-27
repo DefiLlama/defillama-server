@@ -13,7 +13,7 @@ import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
-import { importAdapter } from "./utils/importAdapter";
+import { importAdapterDynamic } from "../utils/imports/importAdapter"; 
 import * as sdk from '@defillama/sdk'
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
 import { closeConnection } from "../api2/db";
@@ -47,6 +47,12 @@ let failed = 0
 
 const IS_DRY_RUN = !!process.env.DRY_RUN
 
+process.on('SIGINT', async () => {
+  console.log('Received SIGINT. Cleaning up and exiting...');
+  process.exit(0);
+});
+
+
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
@@ -55,7 +61,7 @@ async function getAndStore(
     console.log('More than 3 failures in a row, exiting now')
     process.exit(0)
   }
-  const adapterModule = await importAdapter(protocol)
+  const adapterModule = await importAdapterDynamic(protocol)
   let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
   if (!process.env.SKIP_BLOCK_FETCH) {
     const res = await getBlocksRetry(timestamp, { adapterModule })
@@ -63,24 +69,29 @@ async function getAndStore(
     chainBlocks = res.chainBlocks
   }
 
-  const tvl: any = await storeTvl(
-    timestamp,
-    ethereumBlock as unknown as number,
-    chainBlocks,
-    protocol,
-    adapterModule,
-    {},
-    4,
-    false,
-    false,
-    true,
-    // () => deleteItemsOnSameDay(dailyItems, timestamp),
-    undefined,
-    {
-      returnCompleteTvlObject: true,
-      overwriteExistingData: true,
-    }
-  );
+  let tvl: any = undefined
+  try {
+    tvl = await storeTvl(
+      timestamp,
+      ethereumBlock as unknown as number,
+      chainBlocks,
+      protocol,
+      adapterModule,
+      {},
+      4,
+      false,
+      false,
+      true,
+      // () => deleteItemsOnSameDay(dailyItems, timestamp),
+      undefined,
+      {
+        returnCompleteTvlObject: true,
+        overwriteExistingData: true,
+      }
+    );
+  } catch (e) {
+    console.error(e)
+  }
 
   //  sdk.log(tvl);
   if (typeof tvl === 'object') {
@@ -104,7 +115,7 @@ const main = async () => {
     throw new Error(`You must set HISTORICAL="true" in your .env`)
   }
   const protocol = getProtocol(protocolToRefill);
-  const adapter = await importAdapter(protocol);
+  const adapter = await importAdapterDynamic(protocol);
   if (adapter.timetravel === false) {
     throw new Error("Adapter doesn't support refilling");
   }
@@ -116,7 +127,7 @@ const main = async () => {
       getHistoricalValues(dailyTokensTvl(protocol.id)),
       getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
     ]); */
-  const start = adapter.start ?? 0;
+  const start = adapter.start ? Math.round(+new Date(adapter.start) / 1000) : 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
   if (timestamp > now) {
@@ -143,6 +154,12 @@ const main = async () => {
     return clearProtocolCacheById(protocol.id)
 
 };
+
+// catch unhandled errors
+process.on('uncaughtException', function (err) {
+  console.error('Caught exception: ', err);
+  process.exit(1);
+});
 
 main().then(async () => {
   console.log('Done!!!')

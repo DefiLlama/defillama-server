@@ -9,7 +9,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -70,7 +70,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -129,7 +129,7 @@ Array [
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
     "audit_note": null,
     "audits": "0",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Binance",
     "chains": Array [
       "bsc",
@@ -191,7 +191,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -252,7 +252,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
@@ -313,7 +313,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Dexs",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",

@@ -3,7 +3,7 @@ import { call } from "@defillama/sdk/build/abi/index";
 import getBlock from "../utils/block";
 import { getTokenInfo } from "../utils/erc20";
 import { CoinData, Write } from "../utils/dbInterfaces";
-import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
+import { addToDBWritesList, getTokenAndRedirectData, getTokenAndRedirectDataMap } from "../utils/database";
 
 const vault: string = "0x8080B5cE6dfb49a6B86370d6982B3e2A86FBBb08";
 const chain: any = "arbitrum";
@@ -42,12 +42,10 @@ async function contractCalls(
       block,
     }),
     getTokenInfo(chain, tokens, block),
-    getTokenAndRedirectData(underlyings, chain, timestamp),
+    getTokenAndRedirectDataMap(underlyings, chain, timestamp),
   ]);
   for (let i = 0; i < tokens.length; i++) {
-    const underlying: CoinData | undefined = underlyingData.find(
-      (u: CoinData) => u.address == underlyings[i].toLowerCase(),
-    );
+    const underlying: CoinData | undefined = underlyingData[underlyings[i].toLowerCase()]
     if (!underlying) continue;
     const price: number = (rate * underlying.price) / 10 ** 18;
 

@@ -47,7 +47,8 @@ jobs:
       - name: Run tests
         run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
         env:
-          ETHEREUM_RPC: ETHEREUM_RPC
+          ETHEREUM_RPC: FAKE_ETHEREUM_RPC
+          GRAPH_API_KEY: FAKE_GRAPH_API_KEY
       - name: Deploy infrastructure stack
         run: npm run deploy:prod
         env:
@@ -85,10 +86,11 @@ jobs:
           AGGREGATORS_WEBHOOK: ${{ secrets.AGGREGATORS_WEBHOOK }}
           OPTIONS_WEBHOOK: ${{ secrets.OPTIONS_WEBHOOK }}
           ZEROx_API_KEY: ${{ secrets.ZEROx_API_KEY }}
+          PANCAKESWAP_OPBNB_SUBGRAPH: ${{ secrets.PANCAKESWAP_OPBNB_SUBGRAPH }}
+          PERENNIAL_V2_SUBGRAPH_API_KEY: ${{ secrets.PERENNIAL_V2_SUBGRAPH_API_KEY }}
           INDEXER_DB: ${{ secrets.INDEXER_DB }}
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           AGGREGATOR_DB_URL: ${{ secrets.AGGREGATOR_DB_URL }}
-          AGGREGATOR_DB_URL_NEW: ${{ secrets.AGGREGATOR_DB_URL_NEW }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
@@ -108,3 +110,4 @@ jobs:
           SMARDEX_SUBGRAPH_API_KEY: ${{ secrets.SMARDEX_SUBGRAPH_API_KEY }}
           DUNE_API_KEYS: ${{ secrets.DUNE_API_KEYS }}
           APIKEY: ${{ secrets.APIKEY }}
+          SEARCH_MASTER_KEY: ${{ secrets.SEARCH_MASTER_KEY }}

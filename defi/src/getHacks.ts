@@ -2,7 +2,7 @@ import { getAllAirtableRecords } from "./utils/airtable";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 
 export async function getHacksInternal() {
-  let allRecords = await getAllAirtableRecords('appopBYHROXemyCqN/Sheet1')
+  let allRecords = await getAllAirtableRecords('appNED1rpGDbQDjEX/Hacks')
   return allRecords
     .filter(
       (r) =>
@@ -18,8 +18,9 @@ export async function getHacksInternal() {
       bridgeHack: r.fields["Bridge / Multichain Application"] ?? false,
       targetType: r.fields["Target Type"] ?? null,
       source: r.fields["Link"],
-      returnedFunds: r.fields["Returned Funds"] ?? null,
+      returnedFunds: r.fields["Refunded funds to users"] ?? null,
       defillamaId: r.fields["DefiLlama Id"] ?? null,
+      language: r.fields["Language"] ?? null,
     }));
 }
 

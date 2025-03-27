@@ -1,12 +1,11 @@
 require("dotenv").config();
 import { addressList } from "../../../dimension-adapters/users/list";
-import postgres from "postgres";
+import { getAccountsDBConnection } from "../../utils/shared/getDBConnection";
 import { DAY } from "../../utils/date";
 import { storeAllNewUsers } from "./queries/newUsers";
 
-const sql = postgres(process.env.ACCOUNTS_DB!);
-
 async function main(){
+    const sql = getAccountsDBConnection();
     await Promise.all(addressList.map(async (protocol:any)=>{
         const earliestUsers = (await sql`SELECT start FROM dailyNewUsers where protocolId=${protocol.id} order by start asc`)[0]
         try{

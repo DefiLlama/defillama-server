@@ -50,11 +50,10 @@ export function selectChainFromItem(item: any, normalizedChain: string) {
 
 let raisesPromise: Promise<any> | undefined = undefined;
 
-async function getRaises() {
-  if (!raisesPromise) raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json())
-  return raisesPromise
+export async function getRaises() {
+  if (!raisesPromise) raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json());
+  return raisesPromise;
 }
-
 
 export const protocolMcap = async (geckoId?: string | null) => {
   if (!geckoId) return null;
@@ -85,7 +84,7 @@ export async function buildCoreData({
 }) {
   const module = await importAdapter(protocolData);
   const misrepresentedTokens = module.misrepresentedTokens === true;
-  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, ] = await Promise.all([
+  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
     getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
     misrepresentedTokens
       ? ([] as any[])
@@ -169,23 +168,7 @@ export default async function craftProtocol({
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
 }) {
-  const cacheKey = `protocolCache/${protocolData.id}-${useNewChainNames}-${useHourlyData}`;
-  let previousRun: Awaited<ReturnType<typeof buildCoreData>>;
-  try {
-    const data = (await getR2(cacheKey)).body;
-    if (data === undefined) {
-      throw new Error("No previous run");
-    }
-    previousRun = JSON.parse(data);
-  } catch (e) {
-    previousRun = await buildCoreData({ protocolData, useNewChainNames, useHourlyData });
-    await storeR2(cacheKey, JSON.stringify(previousRun));
-  }
-  const lastTimestamp = previousRun.tvl[previousRun.tvl.length - 1]?.date ?? 0; // Consider the case when array is empty
-  /* TODO: Update cache
-  if ((getCurrentUnixTimestamp() - lastTimestamp) > 24 * 3600) {
-  }
-  */
+  const lastTimestamp = 0;
 
   const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
     fetchFrom((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id), lastTimestamp),
@@ -217,7 +200,10 @@ export default async function craftProtocol({
   }
 
   let response: IProtocolResponse = {
-    ...previousRun,
+    tvl: [],
+    chainTvls: {},
+    tokensInUsd: [],
+    tokens: [],
     ...protocolData,
     chains: [],
     currentChainTvls: {},
@@ -278,13 +264,14 @@ export default async function craftProtocol({
   if (response.chainTvls[singleChain] === undefined && response.chains.length === 0) {
     response.chains.push(singleChain);
     response.chainTvls[singleChain] = {
-      tvl: response.tvl,
+      tvl: response.tvl ?? [],
       tokensInUsd: response.tokensInUsd,
       tokens: response.tokens,
     };
   }
 
   if (
+    response.tvl &&
     response.chainTvls[singleChain] !== undefined &&
     response.chainTvls[singleChain].tvl.length < response.tvl.length
   ) {
@@ -319,6 +306,8 @@ export default async function craftProtocol({
     response.hallmarks = module.hallmarks;
     response.hallmarks?.sort((a, b) => a[0] - b[0]);
   }
-
+  if (module.deprecated) {
+    response.deprecated = module.deprecated;
+  }
   return response;
 }

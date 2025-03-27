@@ -175,6 +175,5 @@ describe( 'internet computer adapter ', () =>
         var latest_proposal_id = data.latest_proposal_id;
         var metadata = await get_metadata();
         expect( metadata.id ).toBe( "rrkah-fqaaa-aaaaa-aaaaq-cai" );
-        expect( metadata.proposalsCount ).toBe( latest_proposal_id );
     }, 100000 );
 } );

@@ -1,7 +1,7 @@
 import { Write, } from "../../utils/dbInterfaces";
-import getBlock from "../../utils/block";
 import getWrites from "../../utils/getWrites";
-import * as sdk from '@defillama/sdk'
+import { getConfig } from "../../../utils/cache";
+import { getApi } from "../../utils/sdk";
 
 export const config = {
   optimism: {
@@ -76,49 +76,70 @@ export const config = {
     tokenVaults: [
       '0xbc10c4f7b9fe0b305e8639b04c536633a3db7065',
     ],
-  }
+  },
+  mantle: {},
+  bsc: {},
+  linea: {},
+  xdai: {},
+  base: {},
+  era: {},
 } as any
 
+const beefyKeys = {
+  polygon_zkevm: 'zkevm',
+  xdai: 'gnosis',
+  era: 'zksync',
+} as any
+
+
+
 export default async function getTokenPrices(chain: string, timestamp: number) {
+  const api = await getApi(chain, timestamp)
   const data = config[chain]
   const writes: Write[] = [];
-  const block: number | undefined = await getBlock(chain, timestamp);
-  await Promise.all(Object.entries(data).map(_getWrites))
+  const beefyVaults = await getConfig('beefy', 'https://api.beefy.finance/vaults')
+  const beefyKey = beefyKeys[chain] ?? chain
+  data.wantVaults = data.wantVaults || []
+  data.wantVaults.push(...beefyVaults.filter((i: any) => i.network === beefyKey && i.earnContractAddress).map((i: any) => i.earnContractAddress))
 
+  await Promise.all(Object.entries(data).map(_getWrites))
   return writes
 
   async function _getWrites(params: any) {
-    const [underlyingABIType, vaults] = params
+    let [underlyingABIType, vaults] = params
+    vaults = vaults.map((vault: any) => vault.toLowerCase())
+    vaults = [...new Set(vaults)]
     if (!vaults.length) return;
     let underlyingABI: string
 
-    switch(underlyingABIType) {
-      case 'nativeVaults': underlyingABI = 'native'; break; 
-      case 'wantVaults': underlyingABI = 'want'; break; 
-      case 'tokenVaults': underlyingABI = 'token'; break; 
-      default: underlyingABI = 'underlying'; break; 
+    switch (underlyingABIType) {
+      case 'nativeVaults': underlyingABI = 'native'; break;
+      case 'wantVaults': underlyingABI = 'want'; break;
+      case 'tokenVaults': underlyingABI = 'token'; break;
+      default: underlyingABI = 'underlying'; break;
     }
 
-    const prices = await sdk.api2.abi.multiCall({
+    const prices = await api.multiCall({
       abi: 'uint256:getPricePerFullShare',
       calls: vaults,
-      chain, block,
+      permitFailure: true,
     } as any)
 
-    const decimals = await sdk.api2.abi.multiCall({
+    const decimals = await api.multiCall({
       abi: 'uint8:decimals',
       calls: vaults,
-      chain, block,
+      permitFailure: true,
     } as any)
 
-    const underlyingTokens = await sdk.api2.abi.multiCall({
+    const underlyingTokens = await api.multiCall({
       abi: 'address:' + underlyingABI,
       calls: vaults,
-      chain, block,
+      permitFailure: true,
     } as any)
 
     const pricesObject: any = {}
     vaults.forEach((vault: any, i: any) => {
+      if (!prices[i] || !decimals[i] || !underlyingTokens[i]) return;
       pricesObject[vault] = { underlying: underlyingTokens[i], price: prices[i] / (10 ** decimals[i]) }
     })
 

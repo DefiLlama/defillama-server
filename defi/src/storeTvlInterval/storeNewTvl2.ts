@@ -9,7 +9,7 @@ import {
   secondsInWeek,
   HOUR,
 } from "../utils/date";
-import { hourlyTvl, dailyTvl } from "../utils/getLastRecord";
+import { hourlyTvl, dailyTvl, hourlyUsdTokensTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
 import { TokensValueLocked, tvlsObject } from "../types";
 import { util } from "@defillama/sdk";
@@ -38,12 +38,14 @@ export default async function (
 
   const [
     lastHourlyTVLObject,
+    lastHourlyUsdTVLObject,
     lastDailyTVLRecord,
     lastWeeklyTVLRecord,
     dayDailyTvlRecord,
     weekDailyTvlRecord,
   ] = (await Promise.all([
     getLatestProtocolItem(hourlyTvl, protocol.id),
+    getLatestProtocolItem(hourlyUsdTokensTvl, protocol.id),
     getClosestProtocolItem(hourlyTvl, protocol.id, unixTimestamp - secondsInDay, { timestampFrom: unixTimestamp - 2 * secondsInDay }),
     getClosestProtocolItem(hourlyTvl, protocol.id, unixTimestamp - secondsInWeek, { timestampFrom: unixTimestamp - 2 * secondsInWeek }),
     getClosestProtocolItem(dailyTvl, protocol.id, unixTimestamp - secondsInDay, { timestampFrom: unixTimestamp - 2 * secondsInDay }),
@@ -64,8 +66,8 @@ export default async function (
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
     const currentTvl = calculateTVLWithAllExtraSections(tvl)
-    if (currentTvl > 100e9) {
-      let errorMessage = `TVL of ${protocol.name} is over 100bn`
+    if (currentTvl > 200e9) {
+      let errorMessage = `TVL of ${protocol.name} is over 200bn`
       Object.values(usdTokenBalances).forEach(tokenBalances => {
         for (const [token, value] of Object.entries(tokenBalances))
           if (value > 1e7) {
@@ -117,8 +119,29 @@ export default async function (
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
       }
     }
+    if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
+      let tvlFromMissingTokens = 0;
+      let missingTokens = '';
+      [...extraSections, "tvl"].forEach(section => {
+        if (!lastHourlyUsdTVLObject || !lastHourlyUsdTVLObject[section]) return;
+        Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
+          if (usdTokenBalances[section]?.[coin] === undefined) {
+            tvlFromMissingTokens += Number(tvl)
+            missingTokens += `${coin},`
+          }
+        })
+      })
+      if (tvlFromMissingTokens > lastHourlyTVL * 0.25) {
+        const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). It's been disabled.`
+        await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
+        throw new Error(
+          errorMessage
+        );
+      }
+    }
   }
 
+  // await checkForMissingAssets(protocol, lastHourlyUsdTVLObject, usdTokenBalances)
   let tvlPrev1Day = lastDailyTVLRecord.tvl
   let tvlPrev1Week = lastWeeklyTVLRecord.tvl
   const dayDailyTvl = dayDailyTvlRecord.tvl
@@ -164,4 +187,28 @@ export default async function (
     saveProtocolItem(hourlyTvl, { id: protocol.id, timestamp: unixTimestamp, data: hourlyData, }, writeOptions),
     saveProtocolItem(dailyTvl, { id: protocol.id, timestamp: dayTimestamp, data: tvl, }, writeOptions),
   ])
+}
+
+
+async function checkForMissingAssets(
+  protocol: Protocol,
+  previous: tvlsObject<TokensValueLocked>,
+  current: tvlsObject<TokensValueLocked>
+) {
+  let errorMessage: string = `TVL flags in ${protocol.module}: \n`;
+  const baseErrorLength: number = errorMessage.length
+  Object.keys(previous).map((chain: string) => {
+    if (['SK', 'tvl'].includes(chain)) return 
+    if (!(chain in current)) {
+      errorMessage += `chain ${chain} missing \n`;
+      return;
+    }
+    Object.keys(previous[chain]).map((ticker: string) => {
+      if (!(ticker in current[chain]) || current[chain][ticker] == 0) errorMessage += `symbol ${ticker} missing \n`;
+    });
+  });
+
+  if (errorMessage.length == baseErrorLength) return 
+  await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!);
+  throw new Error(errorMessage);
 }

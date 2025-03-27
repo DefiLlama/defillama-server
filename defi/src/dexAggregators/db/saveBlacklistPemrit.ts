@@ -1,4 +1,4 @@
-import { connection } from ".";
+import { getConnection } from ".";
 import { PermitBlackList } from "./Models/PermitBlackList";
 
 export const saveBlacklistPemrit = async ({ address, chain }: PermitBlackList) => {
@@ -6,6 +6,6 @@ export const saveBlacklistPemrit = async ({ address, chain }: PermitBlackList) =
   blacklistedToken.address = address;
   blacklistedToken.chain = chain;
 
-  const res = await (await connection).manager.save(blacklistedToken);
+  const res = await (await getConnection()).manager.save(blacklistedToken);
   return res;
 };

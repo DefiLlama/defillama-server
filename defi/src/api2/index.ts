@@ -1,14 +1,18 @@
+import './utils/failOnError'
 import * as HyperExpress from "hyper-express";
 import { initCache } from "./cache/index";
 import { initializeTVLCacheDB } from "./db";
 import setTvlRoutes from "./routes";
 import process from "process";
+import fs from 'fs'
+import { RUN_TYPE } from "./utils";
 
 const webserver = new HyperExpress.Server()
 
 const port = +(process.env.PORT ?? 5001)
+const skipSubPath = process.env.API2_SKIP_SUBPATH === 'true'
 
-if (!process.env.API2_SUBPATH) throw new Error('Missing API2_SUBPATH env var')
+if (!skipSubPath && !process.env.API2_SUBPATH) throw new Error('Missing API2_SUBPATH env var')
 
 async function main() {
   console.time('Api Server init')
@@ -20,22 +24,37 @@ async function main() {
 
   await Promise.all([
     initializeTVLCacheDB({ isApi2Server: true }),
-    initCache({ cacheType: 'api-server' }),
+    initCache({ cacheType: RUN_TYPE.API_SERVER }),
   ])
 
-  const router = new HyperExpress.Router()
-  const subPath = '/' + process.env.API2_SUBPATH
-  webserver.use(subPath, router)
+  if (skipSubPath) {
+    setTvlRoutes(webserver, '/')
+  }
 
-  setTvlRoutes(router, subPath)
+  if (process.env.API2_SUBPATH) {
+    const router = new HyperExpress.Router()
+    const subPath = '/' + process.env.API2_SUBPATH
+    webserver.use(subPath, router)
+
+    setTvlRoutes(router, subPath)
+  }
+  webserver.get('/hash', (_req, res) => res.send(process.env.CURRENT_COMMIT_HASH))
 
   webserver.listen(port)
     .then(() => {
       console.timeEnd('Api Server init')
       console.log('Webserver started on port ' + port)
-      process.send!('ready')
+      try {
+        const currentCommitHash = fs.readFileSync(__dirname + '/../../.current_commit_hash', 'utf8')
+        process.env.CURRENT_COMMIT_HASH = currentCommitHash
+        console.log('current code hash: ', currentCommitHash)
+        fs.writeFileSync(__dirname + '/../../.safe_commit_hash', currentCommitHash)
+      } catch (e) { console.error('Failed to read current commit hash', (e as any).message) }
+      try {
+        process.send!('ready')
+      } catch (e) { console.error('Failed to send ready message to parent process') }
     })
-    .catch(() => console.log('Failed to start webserver on port ' + port))
+    .catch((e) => console.log('Failed to start webserver on port ' + port, e.message))
 }
 
 process.on('SIGINT', shutdown);
@@ -43,6 +62,7 @@ process.on('SIGTERM', shutdown);
 
 function shutdown() {
   console.log('Shutting down gracefully...');
+  setTimeout(() => process.exit(0), 5000); // wait 5 seconds before forcing shutdown
   webserver.close(() => {
     console.log('Server has been shut down gracefully');
     process.exit(0);

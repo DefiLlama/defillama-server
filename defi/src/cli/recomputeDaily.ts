@@ -2,11 +2,11 @@ import { client, TableName, dailyPrefix, getDailyTxs } from "./dynamodb";
 import { getProtocol } from "./utils";
 import { api } from "@defillama/sdk";
 import computeTVL from "../storeTvlInterval/computeTVL";
-import { importAdapter } from "../utils/imports/importAdapter";
+import { importAdapterDynamic } from "../utils/imports/importAdapter";
 
 async function main() {
   const protocol = getProtocol("Yearn Finance");
-  const adapter = await importAdapter(protocol);
+  const adapter = await importAdapterDynamic(protocol);
   const PK = `${dailyPrefix}#${protocol.id}`;
   const dailyTxs = await getDailyTxs(protocol.id);
   await Promise.all(

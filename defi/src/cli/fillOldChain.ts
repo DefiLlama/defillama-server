@@ -14,7 +14,7 @@ import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
-import { importAdapter } from "./utils/importAdapter";
+import { importAdapterDynamic } from "../utils/imports/importAdapter";
 import * as sdk from '@defillama/sdk'
 import { Chain } from "@defillama/sdk/build/general";
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
@@ -50,7 +50,7 @@ let failed = 0
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
-  dailyItems: DailyItems,
+  _dailyItems: DailyItems,
   options: {
     chainsToRefill: string[],
     rawTokenTvl: DocumentClient.ItemList
@@ -68,7 +68,7 @@ async function getAndStore(
     console.log('More than 3 failures in a row, exiting now')
     process.exit(0)
   }
-  const adapterModule = await importAdapter(protocol)
+  const adapterModule = await importAdapterDynamic(protocol)
 
   let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
   const chains = chainsToRefill.map(i => i.split('-')[0])
@@ -80,27 +80,32 @@ async function getAndStore(
   ethereumBlock = res.ethereumBlock
   chainBlocks = res.chainBlocks
 
-  const tvl: any = await storeTvl(
-    timestamp,
-    ethereumBlock as unknown as number,
-    chainBlocks,
-    protocol,
-    adapterModule,
-    {},
-    4,
-    false,
-    false,
-    true,
-    // () => deleteItemsOnSameDay(dailyItems, timestamp),
-    undefined,
-    {
-      chainsToRefill,
-      partialRefill: true,
-      returnCompleteTvlObject: true,
-      cacheData,
-      overwriteExistingData: true,
-    }
-  );
+  let tvl: any = undefined
+  try {
+    tvl = await storeTvl(
+      timestamp,
+      ethereumBlock as unknown as number,
+      chainBlocks,
+      protocol,
+      adapterModule,
+      {},
+      4,
+      false,
+      false,
+      true,
+      // () => deleteItemsOnSameDay(dailyItems, timestamp),
+      undefined,
+      {
+        chainsToRefill,
+        partialRefill: true,
+        returnCompleteTvlObject: true,
+        cacheData,
+        overwriteExistingData: true,
+      }
+    );
+  } catch (e) {
+    console.error(e)
+  }
   if (typeof tvl === 'object') {
     Object.entries(tvl).forEach(([key, val]) => sdk.log(key, humanizeNumber((val ?? 0) as number)))
   }
@@ -126,7 +131,7 @@ const main = async () => {
 
   if (!chainsToRefill) throw new Error('Missing chain parameter')
   const protocol = getProtocol(protocolToRefill);
-  const adapter = await importAdapter(protocol);
+  const adapter = await importAdapterDynamic(protocol);
   const chains = chainsToRefill.map(i => i.split('-')[0])
 
   for (const chain of chains)
@@ -138,13 +143,13 @@ const main = async () => {
     // getHistoricalValues(dailyTokensTvl(protocol.id)),
     // getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
   ]);
-  const [ rawTokenTvl, ...dailyItems] = data
+  const [rawTokenTvl, ...dailyItems] = data
   // const [dailyTvls, dailyTokens, dailyUsdTokens, ] = dailyItems
   // debugPrintDailyItems(dailyTvls, 'dailyTvls')
   // debugPrintDailyItems(dailyTokens, 'dailyTokens')
   // debugPrintDailyItems(dailyUsdTokens, 'dailyUsdTokens')
   // debugPrintDailyItems(rawTokenTvl, 'rawTokenTvl')
-  const start = adapter.start ?? 0;
+  const start = adapter.start ? Math.round(+new Date(adapter.start) / 1000) : 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
   if (timestamp > now) {
@@ -169,6 +174,11 @@ const main = async () => {
   if (!process.env.DRY_RUN && atLeastOneUpdateSuccessful)
     return clearProtocolCacheById(protocol.id)
 };
+
+process.on('uncaughtException', function (err) {
+  console.error('Caught exception: ', err);
+  process.exit(1);
+});
 
 main().then(async () => {
   console.log('Done!!!')

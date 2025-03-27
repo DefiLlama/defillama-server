@@ -1,5 +1,5 @@
 import { getLogs } from "../../utils/cache/getLogs";
-import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
+import { addToDBWritesList, getTokenAndRedirectData, getTokenAndRedirectDataMap } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
 import * as ethers from 'ethers'
@@ -9,9 +9,9 @@ const config: any = {
   arbitrum: [
     { eventEmitter: '0xc8ee91a54287db53897056e12d9819156d3822fb', fromBlock: 107737756, gmReader: '0x38d91ED96283d62182Fc6d990C24097A918a4d9b', tickers: 'https://arbitrum-api.gmxinfra.io/prices/tickers' },
   ],
-  // avax: [
-  //   { eventEmitter: '0xDb17B211c34240B014ab6d61d4A31FA0C0e20c26', fromBlock: 32162455, tickers: 'https://avalanche-api.gmxinfra.io/prices/tickers', gmReader: '0x73BA021ACF4Bb6741E82690DdB821e7936050f8C', },
-  // ], // TODO: re-enable it after upgrading avax rpc node
+  avax: [
+    { eventEmitter: '0xDb17B211c34240B014ab6d61d4A31FA0C0e20c26', fromBlock: 32162455, tickers: 'https://avalanche-api.gmxinfra.io/prices/tickers', gmReader: '0x73BA021ACF4Bb6741E82690DdB821e7936050f8C', },
+  ], // TODO: re-enable it after upgrading avax rpc node
 }
 
 const chains = Object.keys(config)
@@ -22,7 +22,6 @@ export function gmxV2(timestamp: number = 0) {
   if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
     throw new Error("Can't fetch historical data")
 
-  console.log("starting GMX V2");
   return Promise.all(chains.map(i => getTokenPrices(i, timestamp)))
 }
 
@@ -57,8 +56,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
       const [_, index, long, short] = i[4].addressItems.items.map((i: any) => i.value)
       return [index, long, short].map((i: any) => i.toLowerCase())
     }).flat()
-    const coinData = await getTokenAndRedirectData(underlyingTokens, chain, timestamp)
-    const coinDataObj = Object.fromEntries(coinData.map((i: any) => [i.address.toLowerCase(), i]))
+    const coinData = await getTokenAndRedirectDataMap(underlyingTokens, chain, timestamp)
     const symbols: string[] = []
     const marketTokens: string[] = []
 
@@ -67,7 +65,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
       if (address === '0x0000000000000000000000000000000000000000') return { min: 0, max: 0 }
       let i = tickerDataObj[address]
       if (i) return { min: i.minPrice, max: i.maxPrice }
-      i = coinDataObj[address]
+      i = coinData[address]
       if (!i) return null
       const price = Math.floor(i.price * 1e12).toString()
       return { min: price, max: price }
@@ -85,7 +83,8 @@ async function getTokenPrices(chain: string, timestamp: number) {
 
       // if (index === '0x0000000000000000000000000000000000000000') return; // skip for now, until non USDC base is handled correctly
       // if (market === '0xe2fedb9e6139a182b98e7c2688ccfa3e9a53c665') return; // skip for now, until DAI - USDC base is handled correctly
-      symbols.push(`${coinDataObj[long].symbol}-${coinDataObj[short].symbol}-GMX-V2`)
+      if (!coinData[long] || !coinData[short]) return 
+      symbols.push(`${coinData[long].symbol}-${coinData[short].symbol}-GMX-V2`)
       marketTokens.push(market)
 
       return {
@@ -123,8 +122,8 @@ async function getTokenPrices(chain: string, timestamp: number) {
 
 
 function hashData(dataTypes: any, dataValues: any) {
-  const bytes = ethers.utils.defaultAbiCoder.encode(dataTypes, dataValues);
-  const hash = ethers.utils.keccak256(ethers.utils.arrayify(bytes));
+  const bytes = ethers.AbiCoder.defaultAbiCoder().encode(dataTypes, dataValues);
+  const hash = ethers.keccak256(ethers.getBytes(bytes));
 
   return hash;
 }

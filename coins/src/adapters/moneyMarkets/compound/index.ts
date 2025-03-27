@@ -2,7 +2,6 @@ import { compoundPrices } from "../../utils/compound-fork";
 import getTokenPrices from "./compound";
 
 export function compound(timestamp: number = 0) {
-  console.log("starting compound");
   return Promise.all([
     getTokenPrices(
       "ethereum",
@@ -12,17 +11,12 @@ export function compound(timestamp: number = 0) {
   ]);
 }
 export function venus(timestamp: number = 0) {
-  console.log("starting venus");
   return Promise.all([
-    getTokenPrices(
-      "bsc",
-      "0xfd36e2c2a6789db23113685031d7f16329158384",
-      timestamp,
-    ),
+    getTokenPrices("bsc", "0xfd36e2c2a6789db23113685031d7f16329158384", timestamp,),
+    getTokenPrices("era", "0xddE4D098D9995B659724ae6d5E3FB9681Ac941B1", timestamp,),
   ]);
 }
 export function ironbank(timestamp: number = 0) {
-  console.log("starting ironbank");
   return Promise.all([
     getTokenPrices(
       "ethereum",
@@ -32,7 +26,6 @@ export function ironbank(timestamp: number = 0) {
   ]);
 }
 export function benqi(timestamp: number = 0) {
-  console.log("starting benqi");
   return Promise.all([
     getTokenPrices(
       "avax",
@@ -42,7 +35,6 @@ export function benqi(timestamp: number = 0) {
   ]);
 }
 export function rari(timestamp: number = 0) {
-  console.log("starting rari");
   return Promise.all([
     getTokenPrices(
       "arbitrum",
@@ -52,7 +44,6 @@ export function rari(timestamp: number = 0) {
   ]);
 }
 export function cream(timestamp: number = 0) {
-  console.log("starting cream");
   return Promise.all([
     getTokenPrices(
       "arbitrum",
@@ -71,8 +62,26 @@ export function cream(timestamp: number = 0) {
     ),
   ]);
 }
+export function ironBank(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices(
+      "optimism",
+      "0xE0B57FEEd45e7D908f2d0DaCd26F113Cf26715BF",
+      timestamp,
+    ),
+    getTokenPrices(
+      "fantom",
+      "0x4250a6d3bd57455d7c6821eecb6206f507576cd2",
+      timestamp,
+    ),
+    getTokenPrices(
+      "avax",
+      "0x2eE80614Ccbc5e28654324a66A396458Fa5cD7Cc",
+      timestamp,
+    ),
+  ]);
+}
 export function Ovix(timestamp: number = 0) {
-  console.log("starting 0vix");
   return Promise.all([
     getTokenPrices(
       "polygon",
@@ -87,7 +96,6 @@ export function Ovix(timestamp: number = 0) {
   ]);
 }
 export function scream(timestamp: number = 0) {
-  console.log("starting scream");
   return Promise.all([
     getTokenPrices(
       "fantom",
@@ -97,7 +105,6 @@ export function scream(timestamp: number = 0) {
   ]);
 }
 export function aurigami(timestamp: number = 0) {
-  console.log("starting aurigami");
   return Promise.all([
     getTokenPrices(
       "aurora",
@@ -107,7 +114,6 @@ export function aurigami(timestamp: number = 0) {
   ]);
 }
 export function traderjoe(timestamp: number = 0) {
-  console.log("starting traderjoe");
   return Promise.all([
     getTokenPrices(
       "avax",
@@ -117,7 +123,6 @@ export function traderjoe(timestamp: number = 0) {
   ]);
 }
 export function mare(timestamp: number = 0) {
-  console.log("starting mare");
   return Promise.all([
     getTokenPrices(
       "kava",
@@ -127,7 +132,6 @@ export function mare(timestamp: number = 0) {
   ]);
 }
 export function tonpound(timestamp: number = 0) {
-  console.log("starting tonpound");
   return getTokenPrices(
     "ethereum",
     "0x79645effe4dc7df2ecf52e267d56c98d239fd838",
@@ -136,7 +140,6 @@ export function tonpound(timestamp: number = 0) {
 }
 
 export function lodestar(timestamp: number = 0) {
-  console.log("starting lodestar");
   return getTokenPrices(
     "arbitrum",
     "0x92a62f8c4750D7FbDf9ee1dB268D18169235117B",
@@ -144,7 +147,6 @@ export function lodestar(timestamp: number = 0) {
   );
 }
 export function marev2(timestamp: number = 0) {
-  console.log("starting marev2");
   return getTokenPrices(
     "kava",
     "0xFcD7D41D5cfF03C7f6D573c9732B0506C72f5C72",
@@ -152,7 +154,6 @@ export function marev2(timestamp: number = 0) {
   );
 }
 export function tenderfi(timestamp: number = 0) {
-  console.log("starting tenderfi");
   return getTokenPrices(
     "arbitrum",
     "0xeed247Ba513A8D6f78BE9318399f5eD1a4808F8e",
@@ -161,20 +162,82 @@ export function tenderfi(timestamp: number = 0) {
 }
 
 export function cantoLending(timestamp: number = 0) {
-  console.log("starting canto-Lending");
   return compoundPrices({
     chain: "canto",
     timestamp,
-    cether: '0xB65Ec550ff356EcA6150F733bA9B954b2e0Ca488',
+    cether: "0xB65Ec550ff356EcA6150F733bA9B954b2e0Ca488",
     comptroller: "0x5e23dc409fc2f832f83cec191e245a191a4bcc5c",
-    projectName: 'canto-lending',
+    projectName: "canto-lending",
   });
 }
 export function sumerian(timestamp: number = 0) {
-  console.log("starting sumerian");
   return getTokenPrices(
     "meter",
     "0xcb4cdda50c1b6b0e33f544c98420722093b7aa88",
     timestamp,
   );
 }
+export function hover(timestamp: number = 0) {
+  return getTokenPrices(
+    "kava",
+    "0x3A4Ec955a18eF6eB33025599505E7d404a4d59eC",
+    timestamp,
+  );
+}
+
+export function moonwell(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices(
+      "base",
+      "0xfBb21d0380beE3312B33c4353c8936a0F13EF26C",
+      timestamp,
+    ),
+    getTokenPrices(
+      "optimism",
+      "0xCa889f40aae37FFf165BccF69aeF1E82b5C511B9",
+      timestamp,
+    ),
+    getTokenPrices(
+      "moonbeam",
+      "0x8E00D5e02E65A19337Cdba98bbA9F84d4186a180",
+      timestamp,
+    ),
+    getTokenPrices(
+      "moonriver",
+      "0x0b7a0EAA884849c6Af7a129e899536dDDcA4905E",
+      timestamp,
+    ),
+  ]);
+}
+
+export function orbitv2(timestamp: number = 0) {
+  return getTokenPrices(
+    "blast",
+    "0x1E18C3cb491D908241D0db14b081B51be7B6e652",
+    timestamp,
+  );
+}
+
+export const adapters = {
+  cantoLending,
+  moonwell,
+  hover,
+  sumerian,
+  compound,
+  venus,
+  ironbank,
+  benqi,
+  traderjoe,
+  rari,
+  aurigami,
+  cream,
+  scream,
+  tonpound,
+  lodestar,
+  marev2,
+  tenderfi,
+  Ovix,
+  mare,
+  orbitv2,
+  ironBank,
+};

@@ -2,28 +2,18 @@ import { multiCall } from "@defillama/sdk/build/abi/index";
 import { request, gql } from "graphql-request";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
-import { Write, CoinData } from "../../utils/dbInterfaces";
+import { Write } from "../../utils/dbInterfaces";
 import getBlock from "../../utils/block";
 import abi from "./abi.json";
 import { getTokenInfo } from "../../utils/erc20";
 import { Result } from "../../utils/sdkInterfaces";
 import { DbTokenInfos } from "../../utils/dbInterfaces";
+import { nullAddress } from "../../../utils/shared/constants";
 
 const vault: string = "0x7F51AC3df6A034273FB09BB29e383FCF655e473c";
-const nullAddress: string = "0x0000000000000000000000000000000000000000";
-const subgraphNames: {
-  [chain: string]: {
-    pool: string;
-    gauge: string
-  }
-} = {
-  pulse: {
-    pool: "pools-v2",
-    gauge: "gauges"
-  }
-};
+
 type GqlResult = {
   id: string;
   totalLiquidity: string;
@@ -44,11 +34,10 @@ export type TokenValues = {
   price: number;
   symbol: string;
 };
-async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
+async function getPoolIds(_chain: string, timestamp: number): Promise<string[]> {
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
-  const subgraph: string = `https://sub.phatty.io/subgraphs/name/phux/${subgraphNames[chain].pool || chain
-    }`;
+  const subgraph: string = `https://sub5.phatty.io/subgraphs/name/phux/pools-v3`;
   for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
     query {
@@ -71,10 +60,9 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
   }
   return addresses;
 }
-async function getGauges(chain: string): Promise<GqlGaugeResult[]> {
+async function getGauges(_chain: string): Promise<GqlGaugeResult[]> {
   let poolGauges: GqlGaugeResult[] = [];
-  const subgraph: string = `https://sub.phatty.io/subgraphs/name/phux/${subgraphNames[chain].gauge || chain
-    }`;
+  const subgraph: string = `https://sub5.phatty.io/subgraphs/name/phux/gauges`;
   let skip = 0;
   for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
@@ -136,7 +124,7 @@ async function getPoolValues(
   poolIds: string[],
 ): Promise<{ [poolId: string]: number }> {
   const uniqueTokens: string[] = findAllUniqueTokens(poolTokens);
-  const coinsData: CoinData[] = await getTokenAndRedirectData(
+  const coinsData = await getTokenAndRedirectDataMap(
     uniqueTokens,
     chain,
     timestamp,
@@ -150,9 +138,7 @@ async function getPoolValues(
         return;
       }
 
-      const tData = coinsData.find(
-        (d: CoinData) => d.address == t.toLowerCase(),
-      );
+      const tData = coinsData[t.toLowerCase()]
       if (tData == undefined) {
         poolTokenValues[i].push(-1);
         return;

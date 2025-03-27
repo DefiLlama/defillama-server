@@ -38,7 +38,8 @@ class HOURLY_TVL extends Model { }
 class HOURLY_TOKENS_TVL extends Model { }
 class HOURLY_USD_TOKENS_TVL extends Model { }
 class HOURLY_RAW_TOKENS_TVL extends Model { }
-class JSON_CACHE extends Model { }
+// class JSON_CACHE extends Model { }
+class DIMENSIONS_DATA extends Model { }
 
 
 class TvlMetricsErrors extends Model { }
@@ -56,7 +57,8 @@ export const Tables = {
   HOURLY_TOKENS_TVL,
   HOURLY_USD_TOKENS_TVL,
   HOURLY_RAW_TOKENS_TVL,
-  JSON_CACHE,
+  // JSON_CACHE,
+  DIMENSIONS_DATA,
   TvlMetricsErrors,
   TvlMetricsErrors2,
   TvlMetricsCompleted,
@@ -91,8 +93,45 @@ export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
   HOURLY_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyTokensTvl'))
   HOURLY_USD_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyUsdTokensTvl'))
   HOURLY_RAW_TOKENS_TVL.init(defaultDataColumns, getTableOptions('hourlyRawTokensTvl'))
+  
+  DIMENSIONS_DATA.init({
+    id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    timestamp: {
+      type: DataTypes.INTEGER, // Assuming 'unixtimestamp' is an integer type
+    },
+    data: {
+      type: DataTypes.JSON,
+    },
+    timeS: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    type: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+  }, {
+    sequelize,
+    timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
+    tableName: 'dimensions_data',
+    indexes: [
+      {
+        name: 'dimensions_data_id_index', // Name of the index for the 'id' field
+        fields: ['id'],
+      },
+      { name: 'dimensions_data_type_index', fields: ['type'], },
+      { name: 'dimensions_data_timestamp_index', fields: ['timestamp'], },
+      { name: 'dimensions_data_updatedat_index', fields: ['updatedat'], },
+      
+    ]
+  })
 
-  JSON_CACHE.init({
+  /* JSON_CACHE.init({
     id: {
       type: DataTypes.STRING,
       primaryKey: true,
@@ -115,7 +154,7 @@ export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
         fields: ['id'],
       },
     ]
-  })
+  }) */
 
   if (!mSequalize) {
     console.log('Metrics DB config is missing, skipping metrics tables initialization')

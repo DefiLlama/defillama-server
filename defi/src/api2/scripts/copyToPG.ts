@@ -1,10 +1,8 @@
-
+require("dotenv").config();
 import { PromisePool } from "@supercharge/promise-pool";
 import {
-  dailyTokensTvl,
-  dailyTvl,
-  dailyUsdTokensTvl,
-  dailyRawTokensTvl,
+  dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, dailyRawTokensTvl,
+  hourlyTokensTvl, hourlyTvl, hourlyUsdTokensTvl, hourlyRawTokensTvl,
 } from "../../utils/getLastRecord";
 import { getHistoricalValues } from "../../utils/shared/dynamodb";
 
@@ -26,13 +24,18 @@ const keyToRecord: any = {
   dailyTokensTvl: { ddb: dailyTokensTvl, pg: TABLES.DAILY_TOKENS_TVL },
   dailyUsdTokensTvl: { ddb: dailyUsdTokensTvl, pg: TABLES.DAILY_USD_TOKENS_TVL },
   dailyRawTokensTvl: { ddb: dailyRawTokensTvl, pg: TABLES.DAILY_RAW_TOKENS_TVL },
+  /* hourlyTvl: { ddb: hourlyTvl, pg: TABLES.HOURLY_TVL },
+  hourlyTokensTvl: { ddb: hourlyTokensTvl, pg: TABLES.HOURLY_TOKENS_TVL },
+  hourlyUsdTokensTvl: { ddb: hourlyUsdTokensTvl, pg: TABLES.HOURLY_USD_TOKENS_TVL },
+  hourlyRawTokensTvl: { ddb: hourlyRawTokensTvl, pg: TABLES.HOURLY_RAW_TOKENS_TVL }, */
 };
+const keyCount = Object.keys(keyToRecord).length
 
-async function main() {
+async function copyAll() {
   await initializeTVLCacheDB()
 
   const items = [protocols, entities, treasuries].flat()
-    // .filter((p: any) => p.id === '308')
+  // .filter((p: any) => p.id === '308')
   shuffleArray(items)
   console.log('Total Items', items.length)
   await PromisePool.withConcurrency(21)
@@ -40,7 +43,21 @@ async function main() {
     .process(copyProtocolData);
 }
 
-main().catch(console.error).then(() => {
+
+async function copyFiltered() {
+  await initializeTVLCacheDB()
+
+  const items = protocols
+    .filter((p: any) => p.id === '4293')
+    // .filter((p: any) => p.category === 'CEX')
+  shuffleArray(items)
+  console.log('Total Items', items.length)
+  await PromisePool.withConcurrency(5)
+    .for(items)
+    .process(copyProtocolData);
+}
+
+copyFiltered().catch(console.error).then(() => {
   console.log('Done')
   process.exit(0)
 })
@@ -67,7 +84,7 @@ async function copyProtocolData(protocol: any) {
         upsert: true, // Enable upsert mode
       })
       doneIndex++
-      console.log(Math.floor(doneIndex / 4), protocol.name, key, items.length, i.length, ddb(id))
+      console.log(Math.floor(doneIndex / keyCount), protocol.name, key, items.length, i.length, ddb(id))
     }
   } catch (e) {
     console.error(e)

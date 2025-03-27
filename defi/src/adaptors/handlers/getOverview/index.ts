@@ -46,6 +46,10 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (!enableAlerts)
         delete response.body.errors
 
+    if(chainFilter === undefined && adaptorType === "fees" && response.body.protocols.length < 10){
+        throw new Error("Too few protocols")
+    }
+
     return wrapResponseOrRedirect(response.body, `dimensions/${cacheKey}`);
 };
 

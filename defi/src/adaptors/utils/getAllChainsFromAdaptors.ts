@@ -10,6 +10,13 @@ export const getStringArrUnique = (arr: string[]) => {
     })
 }
 
+const chainNameCache: IJSON<string> = {}
+
+export function getDisplayChainNameCached(chain: string) {
+  if (!chainNameCache[chain]) chainNameCache[chain] = getDisplayChainName(chain) ?? chain
+  return chainNameCache[chain]
+}
+
 const getAllChainsFromAdaptors = (dexs2Filter: string[], moduleAdapter: Adapter, filter: boolean = true) => {
     return getStringArrUnique(dexs2Filter.reduce((acc, adapterName) => {
         const adaptor = moduleAdapter
@@ -81,7 +88,7 @@ export const getMethodologyData = (displayName: string, adaptorKey: string, modu
 }
 
 export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
-    const methodology = Object.values(adapter)[0].meta?.methodology
+    const methodology = Object.values(adapter)[0]?.meta?.methodology
     if (!methodology && type === AdapterType.FEES) return { ...(getDefaultMethodologyByCategory(category ?? '') ?? {}) }
     if (typeof methodology === 'string') return methodology
     return {
@@ -92,7 +99,7 @@ export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: str
 
 export const getDisplayChainName = (chain: string) => {
     if (!chain) return chain
-    let c = chain.toLowerCase()
+    let c = formatChainKey(chain.toLowerCase())
     return getChainDisplayName(c, true)
 }
 
@@ -118,7 +125,13 @@ export const normalizeDimensionChainsMap = {
     'wanchain': CHAIN.WAN,
     'oasys': CHAIN.OAS,
     'wemix3.0': CHAIN.WEMIX,
-    'radix': CHAIN.RADIXDLT
+    'radix': CHAIN.RADIXDLT,
+    'neon': CHAIN.NEON,
+    'zetachain': CHAIN.ZETA,
+    'zklink nova': CHAIN.ZKLINK,
+    'immutable x': CHAIN.IMMUTABLEX,
+    'bitlayer': CHAIN.BITLAYER,
+    'rootstock': CHAIN.ROOTSTOCK,
 } as IJSON<CHAIN>
 
 export const formatChainKey = (chain: string) => {

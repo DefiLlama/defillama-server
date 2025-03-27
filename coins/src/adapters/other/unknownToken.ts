@@ -12,7 +12,7 @@ export default async function getTokenPrices(
   knownToken: string,
   knownTokenIsGas: boolean,
   chain: any,
-  confidence: number = 0.51
+  confidence: number = 0.51,
 ) {
   const writes: Write[] = [];
   const block: number | undefined = await getBlock(chain, timestamp);
@@ -23,7 +23,7 @@ export default async function getTokenPrices(
     knownBalance,
     unknownDecimals,
     knownDecimals,
-    knownInfo,
+    priceData,
     unknownInfo,
   ] = await Promise.all([
     getBalance({
@@ -60,11 +60,16 @@ export default async function getTokenPrices(
     getTokenAndRedirectData([knownToken], chain, timestamp),
     getTokenInfo(chain, [unknownToken], block),
   ]);
+
+  if (!priceData.length) return [];
+  const [{ price: knownPrice }] = priceData;
+  if (!knownPrice) return [];
+
   const price: number =
     ((parseInt(knownTokenIsGas ? gasBalance.output : knownBalance.output) *
       10 ** (unknownDecimals.output - knownDecimals.output)) /
       unknownBalance.output) *
-    knownInfo[0].price;
+    knownPrice;
   const symbol =
     unknownToken == "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359"
       ? "SAI"
@@ -79,7 +84,7 @@ export default async function getTokenPrices(
     symbol,
     timestamp,
     "unknownTokenRequested",
-    confidence
+    confidence,
   );
 
   return writes;

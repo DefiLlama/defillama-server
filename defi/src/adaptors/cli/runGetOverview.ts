@@ -1,11 +1,11 @@
 import "./setup.ts"
 import { IGetOverviewEventParams, IGetOverviewResponseBody } from "../handlers/getOverviewProcess";
-import { handler } from "../handlers/getOverview";
+import { handler } from "../handlers/getOverviewProcess";
 import { APIGatewayProxyEvent } from "aws-lambda";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "fees" },
+    pathParameters: { chain: "avalanche", type: "dexs" },
     queryStringParameters: {
         excludeTotalDataChart: "false",
         excludeTotalDataChartBreakdown: "false"

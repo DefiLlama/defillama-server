@@ -43,7 +43,6 @@ const api: AxiosInstance = axios.create({
 });
 let calls: number = 0;
 export function minswap(timestamp: number) {
-  console.log("starting minswap");
   return getTokenPrices(timestamp);
 }
 function normalizeAssets(a: string, b: string): [string, string] {
@@ -263,12 +262,12 @@ function priceTokensThroughPoolWeights(
 async function getTokenPrices(timestamp: number): Promise<Write[]> {
   const writes: Write[] = [];
 
-  const basePrice: CoinData[] = await getTokenAndRedirectData(
+  const [basePrice]: CoinData[] = await getTokenAndRedirectData(
     ["cardano"],
     "coingecko",
     timestamp,
   );
-  const cardanoPrice: number = basePrice[0].price;
+  const cardanoPrice: number = basePrice.price;
   const pricedTokens: PricedTokens = {
     lovelace: { price: cardanoPrice, reserve: 100000000000 },
   };

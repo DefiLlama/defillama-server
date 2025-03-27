@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Proposal } from '../types';
+import { GovCache, Proposal } from '../types';
 import { updateStats } from '../utils';
 import { setCompound, getCompound } from '../cache';
 import { update_nervous_system_cache, NervousSystemConfig } from './icp';
@@ -82,7 +82,8 @@ export async function get_metadata ()
         // id: "rrkah-fqaaa-aaaaa-aaaaq-cai",
         id: NNS_GOV_ID,
         type: "Network Nervous System",
-        latest_proposal_id,
+        latestProposalId: latest_proposal_id,
+        proposalsCount:latest_proposal_id,
         symbol: "NNS",
         chainName: "Internet Computer",
         name: "Network Nervous System",
@@ -106,10 +107,18 @@ export async function get_metadata ()
  */
 export function convert_proposal_format ( proposal : NetworkNervousSystemProposalResponse,config:NervousSystemConfig ) : Proposal
 {
+    const statusMap = {
+        'EXECUTED': "Executed",
+        'REJECTED': "Defeated",
+        'ADOPTED': "Succeeded",
+        'FAILED': "Canceled",
+        'OPEN': "Active",
+    };
+
     return {
         id: proposal.proposal_id.toString(),
         title: proposal.title ? proposal.title : proposal.topic,
-        state: proposal.status,
+        state: statusMap[proposal.status as keyof typeof statusMap] || proposal.status,
         app: config.app,
         description: proposal.summary,
         space: { canister_id: config.governance_canister_id },
@@ -143,14 +152,14 @@ export async function addICPProposals ( overview : any = {} )
         ns_api_url:NNS_API_BASE_URL,
         dashboard_url:DASHBOARD_BASE_URL,
         ledger_url:ICP_LEDGER_API_BASE_URL,
-        latest_proposal_id: cache.metadata.latest_proposal_id,
+        latest_proposal_id: cache.metadata.latestProposalId,
         decimals:DECIMALS,
         convert_proposals:convert_proposal_format,
         proposal_filter:(p:NetworkNervousSystemProposalResponse) => p.topic ? !EXCLUDED_TOPICS.includes( p.topic ) : false,
         excluded_topics:EXCLUDED_TOPICS
     };
     await update_nervous_system_cache( cache as any ,config)
-
+    cache.metadata.proposalsCount = Object.keys(cache.proposals).length
     cache.id = NNS_GOV_ID
     updateStats( cache, overview, cache.id )
     if ( overview[ cache.id ] )

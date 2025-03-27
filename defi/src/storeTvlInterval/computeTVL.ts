@@ -1,17 +1,18 @@
 import BigNumber from "bignumber.js";
 import fetch from "node-fetch";
-import { addStaleCoin, StaleCoins } from "./staleCoins";
+import { appendToStaleCoins, checkForStaleness, StaleCoins } from "./staleCoins";
 import * as sdk from '@defillama/sdk'
 import { once, EventEmitter } from 'events'
+import { searchWidth } from "../utils/shared/constants";
 
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
-const DAY = 24 * 3600;
+
 type Balances = {
   [symbol: string]: number;
 };
 
-export default async function (balances: { [address: string]: string }, timestamp: "now" | number, staleCoins: StaleCoins) {
+export default async function (balances: { [address: string]: string }, timestamp: "now" | number, protocol: string, staleCoins: StaleCoins) {
   replaceETHwithWETH(balances)
 
   const PKsToTokens = {} as { [t: string]: string[] };
@@ -25,7 +26,7 @@ export default async function (balances: { [address: string]: string }, timestam
         prefix = "coingecko:"
       }
       let normalizedAddress = address.toLowerCase()
-      if (address.startsWith("solana:")) {
+      if (address.startsWith("solana:") || address.startsWith('eclipse')) {
         normalizedAddress = address
       }
       const PK = `${prefix}${normalizedAddress}`;
@@ -43,11 +44,9 @@ export default async function (balances: { [address: string]: string }, timestam
   const usdTokenBalances = {} as Balances;
   const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
   const tokenData = await getTokenData(readKeys, timestamp)
+  const staleCoinsInclusive: any = {};
   tokenData.forEach((response: any) => {
-    if (Math.abs(response.timestamp - now) > 3600 * 1.2) { // 1.2 hours
-      addStaleCoin(staleCoins, response.PK, response.symbol, response.timestamp);
-    }
-    if (Math.abs(response.timestamp - now) < DAY) {
+    if (Math.abs(response.timestamp - now) < searchWidth) {
       PKsToTokens[response.PK].forEach((address) => {
         const balance = balances[address];
         const { price, decimals } = response;
@@ -61,21 +60,22 @@ export default async function (balances: { [address: string]: string }, timestam
           amount = new BigNumber(balance).div(10 ** decimals).toNumber();
         }
         const usdAmount = amount * price;
+        checkForStaleness(usdAmount, response, now, protocol, staleCoinsInclusive);
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
         usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
         usdTvl += usdAmount;
       });
-    } else {
-      // sdk.log(`Data for ${response.PK} is stale`);
     }
   });
+
+  appendToStaleCoins(usdTvl, staleCoinsInclusive, staleCoins);
+
   return {
     usdTvl,
     tokenBalances,
     usdTokenBalances,
   };
 }
-
 
 function replaceETHwithWETH(balances: { [address: string]: string }) {
   const keys = [ethereumAddress, 'ethereum:' + ethereumAddress]

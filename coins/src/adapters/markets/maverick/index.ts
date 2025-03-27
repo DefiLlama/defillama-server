@@ -3,7 +3,7 @@ import abi from "./abi.json";
 import allContracts from "./contracts.json";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
@@ -24,8 +24,8 @@ async function getTokenPrices(chain: string, timestamp: number) {
 
   function calculateUsdPrices() {
     poolLength.map((i: number) => {
-      const aData = tokenData.find((d: CoinData) => d.address == tokenAs[i]);
-      const bData = tokenData.find((d: CoinData) => d.address == tokenBs[i]);
+      const aData = tokenData[tokenAs[i]]
+      const bData = tokenData[tokenBs[i]]
       if (aData) {
         usdPrices[tokenAs[i]] = aData.price;
         usdPrices[tokenBs[i]] = (aData.price * sqrtPrices[i] ** 2) / 10 ** 36;
@@ -109,7 +109,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
       chain,
       block,
     }),
-    getTokenAndRedirectData(uniqueAssets, chain, timestamp),
+    getTokenAndRedirectDataMap(uniqueAssets, chain, timestamp),
   ]);
 
   const usdPrices: { [asset: string]: number } = {};

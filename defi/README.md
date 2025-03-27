@@ -1,11 +1,11 @@
-# Defillama server
+# DefiLlama server
 
 ## Setup
-```bash
-aws configure
-```
+
+Make sure to have the env variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` set.
 
 ## Development
+
 ```bash
 npm run build # Build with webpack & check for type errors
 npm test # Run tests
@@ -13,14 +13,17 @@ npm run format # Format code
 ```
 
 ### Local dev server
+
 ```bash
 npm run serve
 ```
 
 ## Deploy
+
 Just push your changes to the `master` branch.
 
 ## Filling data
+
 ```
 # fetch latest adapters (important to run this before any refilling commands)
 npm run updateAdapters
@@ -40,22 +43,34 @@ npm run fillLast aave
 ```
 
 If you run into the error `Error: Cannot find module '[...]'` then run:
+
 ```
 npm run prebuild
 ```
 
 Run general scripts:
+
 ```
 export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/<script>
 ```
 
 If you run into problems updating submodule
+
 ```
 git submodule update --init --recursive
 git submodule update --remote --merge
 ```
 
 To ignore submodule (on git status for example):
+
 ```
 git config submodule.DefiLlama-Adapters.ignore all
 ```
+
+## To run a specific file ex: storeGetProtocols.ts
+
+```bash
+export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeGetProtocols.ts
+```
+
+make sure to add `handler({pathParameters:{protocol: "uncx-network"}} as any).then(console.log)` (replace parameters as needed) at the end of the file, and remove it before pushing the code!

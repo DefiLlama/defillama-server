@@ -1,8 +1,8 @@
 import { SwapEvent } from "./Models/SwapEvent";
-import { connection } from ".";
+import { getConnection } from ".";
 
 export async function getSwapDailyVolume(date: string, chain: string): Promise<string> {
-  const swapEventRepository = (await connection).getRepository(SwapEvent);
+  const swapEventRepository = (await getConnection()).getRepository(SwapEvent);
   const startOfDay = new Date(+date * 1000);
   startOfDay.setHours(0, 0, 0, 0);
 

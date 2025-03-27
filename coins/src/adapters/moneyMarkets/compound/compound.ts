@@ -3,7 +3,7 @@ import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import { wrappedGasTokens } from "../../utils/gasTokens";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, Price, CoinData } from "../../utils/dbInterfaces";
@@ -71,7 +71,7 @@ export default async function getTokenPrices(
 
   const cTokens: CToken[] = await getcTokens(chain, comptroller, block);
 
-  const coinsData: CoinData[] = await getTokenAndRedirectData(
+  const coinsData = await getTokenAndRedirectDataMap(
     cTokens.map((c: CToken) => c.underlying),
     chain,
     timestamp,
@@ -103,6 +103,7 @@ export default async function getTokenPrices(
       abi: abi.exchangeRateStored,
       chain: chain as any,
       block,
+      permitFailure: true,
     }),
   ]);
 
@@ -111,10 +112,13 @@ export default async function getTokenPrices(
 
   cTokens.map((t: CToken, i: number) => {
     try {
-      const coinData: CoinData | undefined = coinsData.find(
-        (c: CoinData) => c.address == t.underlying,
-      );
-      if (coinData == null || underlyingDecimals[i].output == null) return;
+      const coinData: CoinData | undefined = coinsData[t.underlying]
+      if (
+        coinData == null ||
+        underlyingDecimals[i].output == null ||
+        exchangeRates[i].output == null
+      )
+        return;
       prices.push({
         address: t.address,
         price: coinData.price * exchangeRates[i].output,

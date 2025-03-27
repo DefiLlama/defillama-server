@@ -6,7 +6,7 @@ import parentProtocols from "./protocols/parentProtocols";
 
 type userTypes = "users" | "newUsers" | "txs" | "gasUsd"
 
-const handler = async (): Promise<IResponse> => {
+export const getActiveUsers = async () => {
     const latestRecords = await Promise.all((["users", "newUsers", "txs", "gasUsd"] as (userTypes)[])
         .map(type => getLatestUsersData(type, getCurrentUnixTimestamp() - 8 * 3600).then(rows => ({type, rows})))) // -8h
     const latestRecordByProtocol = {} as {
@@ -30,7 +30,11 @@ const handler = async (): Promise<IResponse> => {
             }
         })
     })
-    return cache20MinResponse(latestRecordByProtocol)
+    return latestRecordByProtocol
+}
+
+async function handler(): Promise<IResponse> {
+    return cache20MinResponse(await getActiveUsers())
 }
 
 export default wrap(handler);

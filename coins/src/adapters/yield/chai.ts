@@ -11,9 +11,11 @@ const decimals = 18;
 const symbol = "CHAI";
 
 export async function chai(timestamp = 0) {
-  console.log("starting chai");
-
-  const [daiData] = await getTokenAndRedirectData([dai], chain, timestamp);
+  const [{ price: daiPrice }] = await getTokenAndRedirectData(
+    [dai],
+    chain,
+    timestamp,
+  );
 
   const api = await getApi(chain, timestamp);
   const chi = await api.call({
@@ -21,11 +23,21 @@ export async function chai(timestamp = 0) {
     abi: "function chi() view returns (uint256)",
   });
 
-  const price = daiData.price * (chi / 1e27);
-  const confidence = daiData.confidence ?? 0.99;
+  const price = daiPrice * (chi / 1e27);
+  const confidence = 0.98;
 
   const writes: Write[] = [];
-  addToDBWritesList(writes, chain, token, price, decimals, symbol, timestamp, "chai", confidence);
+  addToDBWritesList(
+    writes,
+    chain,
+    token,
+    price,
+    decimals,
+    symbol,
+    timestamp,
+    "chai",
+    confidence,
+  );
 
   return writes;
 }

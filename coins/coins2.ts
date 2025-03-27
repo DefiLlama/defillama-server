@@ -1,10 +1,16 @@
-import { CoinRead, DbEntry } from "./src/adapters/utils/dbInterfaces";
+import { CoinRead } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
-import postgres from "postgres";
-import { sleep } from "zksync-web3/build/src/utils";
+import { getCoins2Connection } from "./src/utils/shared/getDBConnection";
+import { sendMessage } from "../defi/src/utils/discord";
+import fetch from "node-fetch";
 
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const changedAdapterColumns: any[] = ["key", "from", "to", "change"];
 const pgColumns: string[] = [
   "key",
   "chain",
@@ -14,14 +20,20 @@ const pgColumns: string[] = [
   "mcap",
 ];
 const latency: number = 1 * 60 * 60; // 1hr
-const margin: number = 12 * 60 * 60; // 12hr
+const margin: number = 6 * 60 * 60; // 12hr
 const confidenceThreshold: number = 0.3;
 const zeroDecimalAdapters: string[] = [
+  "LiNEAR",
   "coingecko",
   "chainlink-nft",
   "defichain",
   "radixdlt",
-  "reservoir"
+  "reservoir",
+  "ociswap",
+  "aktionariat",
+  "minswap",
+  "optimBonds",
+  "distressed",
 ];
 export type Coin = {
   price: number;
@@ -37,9 +49,14 @@ export type Coin = {
 type CoinDict = {
   [key: string]: Coin;
 };
+type ChangedAdapter = { to: string; from: string; change: number };
 
 let auth: string[];
 
+async function generateAuth() {
+  auth = process.env.COINS2_AUTH?.split(",") ?? [];
+  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
+}
 async function queryPostgresWithRetry(
   query: any,
   sql: any,
@@ -50,17 +67,16 @@ async function queryPostgresWithRetry(
     const res = await sql`
         ${query}
         `;
-    sql.end();
     return res;
   } catch (e) {
     if (counter > 5) throw e;
     await sleep(5000 + 1e4 * Math.random());
+    if (counter == 3) {
+      // await closeConnection();
+      // sql = await getCoins2Connection();
+    }
     return await queryPostgresWithRetry(query, sql, counter + 1);
   }
-}
-async function generateAuth() {
-  auth = process.env.COINS2_AUTH?.split(",") ?? [];
-  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 }
 export async function translateItems(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
@@ -141,6 +157,35 @@ export async function translateItems(
 
   return remapped;
 }
+let _redis: Redis;
+
+export async function getRedisConnection() {
+  if (_redis) return _redis;
+  // _redis is a promise that resolves to a redis connection because we want to wait for the auth to be generated
+  (_redis as any) = new Promise(async (resolve, reject) => {
+    try {
+      if (!auth) await generateAuth();
+      _redis = new Redis({
+        port: 6379,
+        host: auth[1],
+        password: auth[2],
+        connectTimeout: 10000,
+      });
+      resolve(_redis);
+    } catch (e) {
+      reject(e);
+    }
+  });
+  return _redis;
+}
+
+process.on("exit", async () => {
+  if (_redis) {
+    const redis = await _redis;
+    redis.quit();
+  }
+});
+
 export async function queryRedis(
   values: CoinRead[],
   error: number = margin,
@@ -149,15 +194,9 @@ export async function queryRedis(
   const keys: string[] = values.map((v: CoinRead) => v.key);
   // console.log(`${values.length} queried`);
 
-  const redis = new Redis({
-    port: 6379,
-    host: auth[1],
-    password: auth[2],
-    connectTimeout: 10000,
-  });
+  const redis = await getRedisConnection();
   let res = await redis.mget(keys);
   // console.log("mget finished");
-  redis.quit();
   const jsonValues: { [key: string]: Coin } = {};
   const now = getCurrentUnixTimestamp();
 
@@ -180,9 +219,11 @@ async function queryPostgres(
   target: number,
   batchPostgresReads: boolean,
 ): Promise<CoinDict> {
+  return {};
+
   if (values.length == 0) return {};
-  const upper: number = target + margin;
-  const lower: number = target - margin;
+  const upper: number = Number(target) + Number(margin);
+  const lower: number = Number(target) - Number(margin);
 
   let data: Coin[] = [];
 
@@ -194,7 +235,7 @@ async function queryPostgres(
 
   let sql;
   if (batchPostgresReads) {
-    sql = postgres(auth[0]);
+    sql = await getCoins2Connection();
     data = await queryPostgresWithRetry(
       sql`
     select ${sql(pgColumns)} from splitkey where 
@@ -208,14 +249,14 @@ async function queryPostgres(
   } else {
     await Promise.all(
       splitKeys.map(async (key) => {
-        sql = postgres(auth[0]);
+        sql = await getCoins2Connection();
         const read = await queryPostgresWithRetry(
           sql`
         select ${sql(pgColumns)} from splitkey where 
         key = ${key.key}
         and chain = ${key.chain}
-        and timestamp < ${upper}
-        and timestamp > ${lower}
+        and timestamp < ${Number(key.timestamp) + Number(margin)}
+        and timestamp > ${Number(key.timestamp) - Number(margin)}
       `,
           sql,
         );
@@ -232,7 +273,7 @@ async function queryPostgres(
     const key = d.key.toString();
     const chain = d.chain.toString();
     const confidence = d.confidence / 30000;
-    if (!(key in dict)) {
+    if (!(`${chain}:${key}` in dict)) {
       dict[`${chain}:${key}`] = {
         ...d,
         confidence,
@@ -305,7 +346,7 @@ export async function readCoins2(
   batchPostgresReads: boolean = true,
   error: number = margin,
 ): Promise<CoinDict> {
-  await generateAuth();
+  if (!auth) await generateAuth();
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
   const redisData: CoinDict = await queryRedis(currentQueries, error);
@@ -321,15 +362,14 @@ export async function readCoins2(
     : redisData;
 }
 export async function readFirstTimestamp(pk: string) {
-  await generateAuth();
-  const sql = postgres(auth[0]);
-  const chain = pk.split(":")[0];
-  const key = pk.substring(pk.split(":")[0].length + 1);
+  if (!auth) await generateAuth();
+  const sql = await getCoins2Connection();
+  const chain = Buffer.from(pk.split(":")[0], "utf8");
+  const key = Buffer.from(pk.substring(pk.split(":")[0].length + 1), "utf8");
   const read = await sql`
     select MIN (timestamp) from splitkey where 
     chain = ${chain} and key = ${key}
   `;
-  sql.end();
   if (read[0] && read[0].min) return read[0].min;
 }
 function cleanTimestamps(values: Coin[], margin: number = 15 * 60): Coin[] {
@@ -345,7 +385,11 @@ function cleanTimestamps(values: Coin[], margin: number = 15 * 60): Coin[] {
 
   return values.map((c: Coin) => ({ ...c, timestamp: maxTimestamp }));
 }
-function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
+async function findRedisWrites(
+  values: Coin[],
+  storedRecords: CoinDict,
+  source?: string,
+): Promise<Coin[]> {
   const writesToRedis: Coin[] = [];
   values.map((c: Coin) => {
     const record = storedRecords[c.key];
@@ -358,16 +402,75 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
     }
   });
 
-  const filtered: Coin[] = [];
+  const filtered: CoinDict = {};
   writesToRedis.map((c: Coin) => {
-    if (c.symbol && (zeroDecimalAdapters.includes(c.adapter) || c.decimals))
-      filtered.push(c);
+    if (
+      (c.symbol && (zeroDecimalAdapters.includes(c.adapter) || c.decimals)) ||
+      c.key == "tezos:tezos" ||
+      c.key?.startsWith("bitcoin:")
+    )
+      filtered[c.key] = c;
   });
 
+  return await checkMetadataChanges(filtered, writesToRedis, source);
+}
+async function checkMetadataChanges(
+  writes: CoinDict,
+  storedRecords: Coin[],
+  source: string = "UNKNOWN",
+): Promise<Coin[]> {
+  const filtered: Coin[] = [];
+  let errors: string = ``;
+  storedRecords.map((c: Coin) => {
+    const record = writes[c.key];
+    if (record && record.decimals != c.decimals)
+      errors += `\n${c.key} is trying to change metadata from ${record.decimals} to ${c.decimals} source: ${source}, skipping!!`;
+    // else if (record && record.symbol != c.symbol)
+    //   errors += `\n${c.key} is trying to change metadata from ${record.symbol} to ${c.symbol} source: ${source}, skipping!!`;
+    else filtered.push(c);
+  });
+
+  if (errors.length)
+    await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!);
   return filtered;
 }
-function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
+async function storeChangedAdapter(changedAdapters: {
+  [key: string]: ChangedAdapter;
+}) {
+  try {
+    if (Object.keys(changedAdapters).length == 0) return;
+    if (!auth) await generateAuth();
+    let sql = await getCoins2Connection();
+
+    const inserts: ChangedAdapter[] = Object.entries(changedAdapters).map(
+      ([key, c]) => ({
+        key,
+        from: c.from,
+        to: c.to,
+        change: c.change,
+      }),
+    );
+
+    if (inserts.length)
+      await queryPostgresWithRetry(
+        sql`
+      insert into adapterchanges
+      ${sql(inserts, ...changedAdapterColumns)}
+      on conflict (key)
+      do nothing
+      `,
+        sql,
+      );
+  } catch (e) {
+    console.error(`storeChangedAdapters failed with: ${e}`);
+  }
+}
+async function cleanConfidences(
+  values: Coin[],
+  storedRecords: CoinDict,
+): Promise<Coin[]> {
   const confidentValues: Coin[] = [];
+  const changedAdapters: { [key: string]: ChangedAdapter } = {};
 
   values.map((c: Coin) => {
     if (c.confidence < confidenceThreshold) return;
@@ -377,25 +480,63 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
       return;
     }
     if (c.confidence < storedRecord.confidence) return;
+    if (c.adapter && c.adapter != storedRecord.adapter) {
+      const change =
+        (100 * Math.abs(c.price - storedRecord.price)) / storedRecord.price;
+      if (change < 5 || ["minswap", "sundaeswap"].includes(c.adapter)) return;
+      changedAdapters[c.key] = {
+        to: c.adapter,
+        from: storedRecord.adapter,
+        change,
+      };
+    }
     confidentValues.push(c);
   });
 
+  // await storeChangedAdapter(changedAdapters);
   return confidentValues;
 }
-export async function writeToRedis(strings: {
-  [key: string]: string;
-}): Promise<void> {
+export async function writeToRedis(
+  strings: {
+    [key: string]: string;
+  },
+  source: string = "UNKNOWN",
+): Promise<void> {
   if (Object.keys(strings).length == 0) return;
   // console.log("starting mset");
 
-  const redis = new Redis({
-    port: 6379,
-    host: auth[1],
-    password: auth[2],
-    connectTimeout: 10000,
-  });
-  await redis.mset(strings);
-  redis.quit();
+  const key = "";
+  let debug = strings[key];
+  const query = "price";
+  try {
+    if (debug) {
+      let ob = JSON.parse(debug);
+      const real = await fetch(
+        `https://coins.llama.fi/prices/current/${key}`,
+      ).then((r) => r.json());
+      const realData = real.coins[key][query];
+      if (Math.abs(ob[query] - realData) / realData > 0.05) {
+        await sendMessage(
+          `redis ${query} is being written as ${ob[query]} when it should be about ${realData}!! SOURCE: ${source}`,
+          process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        );
+      }
+    }
+  } catch (e) {
+    await sendMessage(
+      `Redis debug error: ${e}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    );
+  }
+  try {
+    const redis = await getRedisConnection();
+    await redis.mset(strings);
+  } catch (e) {
+    await sendMessage(
+      `write to coins redis is fugged with ${e}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    );
+  }
 }
 async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
@@ -407,15 +548,16 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
   const splitKey = values.map((v: Coin) => ({
     ...v,
     key: Buffer.from(v.key.substring(v.key.indexOf(":") + 1), "utf8"),
-    chain: Buffer.from(v.chain || "", "utf8"),
+    chain: Buffer.from(v.key.split(":")[0], "utf8"),
     mcap: v.mcap ? Math.round(v.mcap) : null,
     confidence: Math.round(v.confidence * 30000),
   }));
-  // console.log("creating a new pg instance");
-  const sql = postgres(auth[0]);
-  // console.log("created a new pg instance");
-  await queryPostgresWithRetry(
-    sql`
+  try {
+    // console.log("creating a new pg instance");
+    let sql = await getCoins2Connection();
+    // console.log("created a new pg instance");
+    await queryPostgresWithRetry(
+      sql`
       insert into splitkey
       ${sql(
         splitKey,
@@ -429,42 +571,55 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
       on conflict (key, chain, timestamp) 
       do nothing
       `,
-    sql,
-  );
+      sql,
+    );
+  } catch (e) {
+    await sendMessage(
+      `write to coins pg is fugged with ${e}`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+    );
+  }
 }
 export async function writeCoins2(
   values: any[],
   batchPostgresReads: boolean = true,
   margin?: number,
+  source?: string,
 ) {
+  if (!auth) await generateAuth();
   const cleanValues = batchPostgresReads
     ? cleanTimestamps(values, margin)
     : values;
   const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
-  values = cleanConfidences(values, storedRecords);
-  const writesToRedis = findRedisWrites(values, storedRecords);
+  values = await cleanConfidences(values, storedRecords);
+  const writesToRedis = await findRedisWrites(values, storedRecords, source);
   const strings: { [key: string]: string } = {};
   writesToRedis.map((v: Coin) => {
     strings[v.key] = JSON.stringify(v);
   });
 
-  await writeToPostgres(values);
-  await writeToRedis(strings);
+  await writeToRedis(strings, source);
+  // await Promise.all([
+  //   writeToPostgres(values),
+  //writeToRedis(strings, source)
+  // ]);
+  // await closeConnection();
 }
 export async function batchWrite2(
   values: Coin[],
   batchPostgresReads: boolean = true,
   margin: number = 15 * 60,
+  source?: string,
 ) {
-  await writeCoins2(values, batchPostgresReads, margin);
+  await writeCoins2(values, batchPostgresReads, margin, source);
 }
 export async function batchReadPostgres(
   key: string,
   start: number,
   end: number,
 ): Promise<any[]> {
-  await generateAuth();
-  let sql = postgres(auth[0]);
+  if (!auth) await generateAuth();
+  let sql = await getCoins2Connection();
   const chain = key.split(":")[0];
   const address = key.substring(key.split(":")[0].length + 1);
   let data = await queryPostgresWithRetry(
@@ -477,7 +632,7 @@ export async function batchReadPostgres(
     timestamp > ${start} 
     and 
     timestamp < ${end}
-  `,
+    `,
     sql,
   ); //start  1696287600
   return data;

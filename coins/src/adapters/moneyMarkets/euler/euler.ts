@@ -1,13 +1,13 @@
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectDataMap
 } from "../../utils/database";
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import axios from "axios";
 import { multiCall } from "@defillama/sdk/build/abi";
+import * as sdk from "@defillama/sdk";
 const abi = require("./abi.json");
 import getBlock from "../../utils/block";
-import { BigNumber } from "ethers";
 import { Result } from "../../utils/sdkInterfaces";
 
 interface Market {
@@ -43,17 +43,14 @@ async function fetchFromIpfs(chain: string) {
 }
 function formWrites(
   markets: Market[],
-  underlyingPrices: CoinData[],
+  underlyingPrices: { [key: string]: CoinData },
   rates: Result[],
   chain: string,
   timestamp: number
 ) {
   const writes: Write[] = [];
   markets.map((m: any) => {
-    const coinData: CoinData | undefined = underlyingPrices.find(
-      (c: CoinData) => c.address == m.underlying.toLowerCase()
-    );
-
+    const coinData: CoinData | undefined = underlyingPrices[m.underlying.toLowerCase()]
     const rate: Result | undefined = rates.find(
       (r: Result) => r.input.target == m.address
     );
@@ -89,10 +86,10 @@ export default async function getTokenPrices(
     await fetchFromIpfs(chain)
   ]);
 
-  let underlyingPrices: CoinData[];
+  let underlyingPrices: { [key: string]: CoinData };
   let rates: Result[];
   [underlyingPrices, { output: rates }] = await Promise.all([
-    getTokenAndRedirectData(
+    getTokenAndRedirectDataMap(
       markets.map((m: Market) => m.underlying),
       chain,
       timestamp
@@ -101,7 +98,7 @@ export default async function getTokenPrices(
       abi: abi.convertBalanceToUnderlying,
       calls: markets.map((m: Market) => ({
         target: m.address,
-        params: [BigNumber.from(10).pow(BigNumber.from(18)).toString()]
+        params: [sdk.util.convertToBigInt(1e18).toString()]
       })),
       chain: chain as any,
       block,

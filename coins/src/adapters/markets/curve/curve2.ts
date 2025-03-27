@@ -1,18 +1,21 @@
 const abi = require("./abi.json");
 const contracts = require("./contracts.json");
-import { Write, CoinData } from "../../utils/dbInterfaces";
+import { Write } from "../../utils/dbInterfaces";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
-import { BigNumber } from "ethers";
 import { getApi, } from "../../utils/sdk";
 import { ChainApi } from "@defillama/sdk";
 import { getCache, setCache } from "../../../utils/cache";
 import { PromisePool } from "@supercharge/promise-pool";
 import * as sdk from '@defillama/sdk'
+import { nullAddress } from "../../../utils/shared/constants";
 
-const nullAddress = "0x0000000000000000000000000000000000000000"
+const metaRegistryContracts: {[chain: string]: string } = {
+  ethereum: '0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC', 
+  fraxtal: '0xd125E7a0cEddF89c6473412d85835450897be6Dc'
+}
 
 async function getPools(
   api: ChainApi,
@@ -45,7 +48,7 @@ async function getPools(
   }
 
   async function getPoolsFromRegistryAggregator(api: ChainApi) {
-    const target = "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC";
+    const target = metaRegistryContracts[chain]
     cache.registries.crypto = target
     const pools: any = {};
     pools["crypto"] = await api.fetchList({ lengthAbi: abi.pool_count, itemAbi: abi.pool_list, target })
@@ -54,7 +57,7 @@ async function getPools(
 
   const { chain } = api;
   if (name == "pcs") return getPcsPools(api);
-  if (chain == "ethereum") return getPoolsFromRegistryAggregator(api);
+  if (chain in metaRegistryContracts) return getPoolsFromRegistryAggregator(api);
   const registries: string[] = chain == "bsc" ? bscRegistries : (
     await api.multiCall({
       target: contracts[chain].addressProvider,
@@ -195,7 +198,7 @@ export default async function getTokenPrices2(chain: any, registries: string[], 
   const writes: Write[] = [];
   const cache = await getCache('curve', name ? name : chain)
   const api = await getApi(chain, timestamp)
-  let poolList 
+  let poolList
   if (customPools) {
     poolList = { custom: customPools }
     registries = ['custom']
@@ -247,19 +250,19 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
 
         // set pool tokens information
         if (!poolData.tokens)
-        try {
-          poolData.tokens = await getPoolTokens(api, pool, cache.registries[registryType], registryType)
-        } catch {
-          delete cPoolInfo[pool];
-          console.log('failed to get pool underlyings', pool)
-          return;
-        }
+          try {
+            poolData.tokens = await getPoolTokens(api, pool, cache.registries[registryType], registryType)
+          } catch {
+            delete cPoolInfo[pool];
+            console.log('failed to get pool underlyings', pool)
+            return;
+          }
 
         poolData.tokens = poolData.tokens.map((t: string) => t.toLowerCase())
       });
 
     sdk.log('curve', api.chain, poolList[registryType].length, registryType)
-    
+
     let filteredIndicies: number[] = []
     let lps: string[] = []
     // set total supplies
@@ -270,9 +273,9 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     // filter pools with no token 
     let filteredOut = 0
     const filteredRPoolList: string[] = []
-    rPoolList.map((p: any, i: number) => 
+    rPoolList.map((p: any, i: number) =>
       filteredIndicies.includes(i) ? filteredOut++ : filteredRPoolList.push(p)
-      )
+    )
     // filter out pools with no supplies
     const filteredData: any[] = []
     filteredRPoolList.forEach((pool: any, i: number) => {
@@ -293,9 +296,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
     // get pool tokens prices/info
     let allPoolTokens = filteredData.map((p: any) => p.tokens).flat()
     allPoolTokens = [...new Set(allPoolTokens)]
-    const coinsData = await getTokenAndRedirectData(allPoolTokens, api.chain, api.timestamp!, 4);
-    const coinDataMap: { [key: string]: CoinData } = {}
-    coinsData.forEach((c: CoinData) => coinDataMap[c.address] = c)
+    const coinDataMap = await getTokenAndRedirectDataMap(allPoolTokens, api.chain, api.timestamp!, 4);
     unknownTokensList.push(...allPoolTokens.filter((t: string) => !coinDataMap[t]))
 
     // add pools to write list
@@ -340,7 +341,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
       if (isNaN(price) || price == 0 || price == Infinity) return;
 
       const confidence = poolComponents.map((p: any) => {
-        if (p.confidence == undefined) return 1;
+        if (p.confidence == undefined) return 0.9;
         return p.confidence;
       }).reduce((a: any, b: any) => a + b, 0) / poolComponents.length;
 
@@ -367,10 +368,10 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
         p.poolComponents.forEach((c: any) => {
           if (!c || c.token === t || c.value < 20000) return; // ignore tokens with less than $20k
           if (!knownTokenInfo || knownTokenInfo.value < c.value) {
-            const realQuantity = BigNumber.from((usdSwapSize).toFixed(0));
-            const decimalFactor = BigNumber.from("10").pow(decimals);
-            const priceBN = BigNumber.from((c.price * 1e8).toFixed(0));
-            const rawQuantity = realQuantity.mul(decimalFactor).div(priceBN).mul(1e8);
+            const realQuantity = usdSwapSize
+            const decimalFactor = 10 ** decimals
+            const priceBN = c.price * 1e8
+            const rawQuantity = sdk.util.convertToBigInt(Number(realQuantity * decimalFactor * 1e8 / priceBN).toFixed(0))
             knownTokenInfo = { kInfo: c, pool: p.pool, uTokenIndex, kTokenIndex: p.tokens.indexOf(c.token), rawQuantity: rawQuantity.toString(), realQuantity: realQuantity.toString() }
           }
         })
@@ -398,7 +399,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
       const decimalDiff = 10 ** (data.decimals - data.kInfo.decimals)
       const tokenPrice = (data.kInfo.price * d * decimalDiff) / rawCalls[i].params[2]
 
-      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-unknown-token", data.kInfo.confidence,);
+      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-unknown-token", Math.min(0.95, data.kInfo.confidence),);
     })
     const rawDys2 = await api.multiCall({ calls: failedCalls, abi: abi.get_dy2, permitFailure: true })
 
@@ -410,7 +411,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
       const decimalDiff = 10 ** (data.decimals - data.kInfo.decimals)
       const tokenPrice = (data.kInfo.price * d * decimalDiff) / failedCalls[i].params[2]
 
-      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-unknown-token", data.kInfo.confidence,);
+      addToDBWritesList(writes, api.chain, data.uToken, tokenPrice, +data.decimals, data.symbol, timestamp, "curve-unknown-token", Math.min(0.95, data.kInfo.confidence),);
     })
 
   }
@@ -427,7 +428,7 @@ async function unknownPools2(api: ChainApi, timestamp: number, poolList: any, re
           const token = await api.call({ target: pool, abi: 'function coins(uint256) view returns (address)', params: [i] })
           tokens.push(token)
         } catch (e) {
-          console.log('failed to get token', e)
+          // console.log('failed to get token', e)
           i = 1000;
         }
       } while (i++ < 10)

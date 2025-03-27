@@ -1,18 +1,17 @@
 require("dotenv").config();
 import { addressList } from "../../../dimension-adapters/users/list";
-import postgres from "postgres";
 import getRecordEarliestTimestamp from "../../utils/shared/getRecordEarliestTimestamp";
 import { dailyTvl } from "../../utils/getLastRecord";
 import { DAY } from "../../utils/date";
 import {date} from '../utils'
-
-const sql = postgres(process.env.ACCOUNTS_DB!);
+import { getAccountsDBConnection } from "../../utils/shared/getDBConnection";
 
 async function main(){
     const table = [
         ["Protocol", "Time difference", "Earliest TVL date", "Earliest Users date"]
     ]
     await Promise.all(addressList.map(async ({id, name} )=>{
+        const sql = getAccountsDBConnection()
         const earliestTvl = await getRecordEarliestTimestamp(dailyTvl(id))
         const earliestUsers = (await sql`SELECT start FROM dailyUsers where protocolId=${id} order by start asc`)[0]
         if(!earliestUsers){

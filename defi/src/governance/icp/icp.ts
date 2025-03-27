@@ -113,35 +113,24 @@ export async function update_nervous_system_cache ( cache : GovCache, config : N
 async function update_recent_proposals ( cache : GovCache, config : NervousSystemConfig ) : Promise<GovCache>
 {
     if ( !cache.proposals ) cache.proposals = {};
-    // Get current UNIX timestamp in seconds
-    const now = Math.floor( Date.now() / 1000 );
-    // 12 weeks in seconds
-    let time_frame = 12 * 7 * 24 * 60 * 60
     // There are two proposal states that are terminal
-    let terminal_proposal_states = [ "EXECUTED", "FAILED", "REJECTED" ];
+    let terminal_proposal_states = [ "EXECUTED", "FAILED", "REJECTED", "Executed", "Defeated", "Canceled" ];
 
     // Go through all proposals in the past 12 weeks and update those which have not yet reached a terminal state
     let proposal_ids = Object.keys( cache.proposals );
-    proposal_ids.reverse();
+    proposal_ids.sort();
 
     await PromisePool.withConcurrency( 42 )
         .for( proposal_ids )
         .process( async ( key ) =>
         {
             let current_proposal = cache.proposals[ key ];
-            // If the current proposal was created more than 12 weeks ago, the updating process is completed
-            if ( current_proposal.start + time_frame < now )
-                return
 
             // Only update those proposals which have not reached a terminal state yet
             if ( !terminal_proposal_states.includes( current_proposal.state ) )
             {
                 let proposal_response : any = await get_nervous_system_proposal( parseInt( key ), config );
-                // Check for the topic of the proposal. Only include those which are not set to be excluded. 
-                if ( proposal_response.topic ? !config.excluded_topics.includes( proposal_response.topic ) : false )
-                {
-                    cache.proposals[ key ] = config.convert_proposals( proposal_response, config );
-                }
+                cache.proposals[ key ] = config.convert_proposals( proposal_response, config );
             }
         } );
 

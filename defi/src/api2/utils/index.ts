@@ -46,3 +46,19 @@ export function mergeSortAndRemoveDups(arr: any[] | undefined, arr2: any[] | und
   }
   return deduped
 }
+
+export enum RUN_TYPE {
+  CRON = 'cron',
+  API_SERVER = 'api-server',
+}
+
+export function roundVaules(obj: any) {
+  if (!obj) return obj;
+  if (typeof obj === 'number') return Math.round(obj)
+  if (typeof obj === 'object') {
+    Object.entries(obj).forEach(([key, value]) => {
+      obj[key] = roundVaules(value)
+    })
+  }
+  return obj
+}

@@ -19,7 +19,7 @@ async function main() {
   await initializeTVLCacheDB()
 
   for (const tvlFunc of [dailyTokensTvl, dailyTvl, dailyUsdTokensTvl,
-    // hourlyTvl // - we retain hourly in case we want to refill using it for some reason
+    // hourlyTvl, // - we retain hourly in case we want to refill using it for some reason
     // hourlyTokensTvl, hourlyUsdTokensTvl, hourlyTvl
   ]) {
     await deleteProtocolItems(tvlFunc, { id: protocol.id, timestamp: { [Op.lte]: deleteFrom, [Op.gte]: deleteTo } })

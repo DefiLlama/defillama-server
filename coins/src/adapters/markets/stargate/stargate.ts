@@ -1,7 +1,7 @@
 import { multiCall } from "@defillama/sdk/build/abi/index";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
+  getTokenAndRedirectDataMap,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
@@ -12,20 +12,20 @@ import abi from "./abi.json";
 import { wrappedGasTokens } from "../../utils/gasTokens";
 const gasTokenDummyAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
+type FlatPools = { [pool: string]: string };
+
 async function processDbData(
-  pools: { [pool: string]: { [address: string]: string } },
-  coinsData: CoinData[],
+  pools: FlatPools,
+  coinsData: { [key: string]: CoinData },
   chain: string,
 ) {
   return Object.keys(pools)
     .map((b: string) => {
       const token =
-        pools[b].underlying.toLowerCase() === gasTokenDummyAddress
+        pools[b].toLowerCase() === gasTokenDummyAddress
           ? wrappedGasTokens[chain]
-          : pools[b].underlying.toLowerCase();
-      const coinData: CoinData = coinsData.filter(
-        (c: CoinData) => c.address.toLowerCase() === token,
-      )[0];
+          : pools[b].toLowerCase();
+      const coinData: CoinData = coinsData[token];
 
       if (coinData == undefined) {
         console.log(
@@ -44,7 +44,7 @@ async function processDbData(
 }
 function formWrites(
   underlyingTokenData: any[],
-  pools: { [pool: string]: { [address: string]: string } },
+  pools: FlatPools,
   chain: string,
   poolTokenLiquidities: Result[],
   tokenInfos: any,
@@ -52,12 +52,11 @@ function formWrites(
   timestamp: number,
 ) {
   Object.keys(pools).forEach((p: string) => {
-    const curr = pools[p];
     const underlying: string =
-      curr.underlying.toLowerCase() === gasTokenDummyAddress
+      pools[p].toLowerCase() === gasTokenDummyAddress
         ? wrappedGasTokens[chain]
-        : curr.underlying.toLowerCase();
-    const pool: string = curr.pool.toLowerCase();
+        : pools[p].toLowerCase();
+    const pool: string = p.toLowerCase();
     const underlyingInfo = underlyingTokenData.find(
       (x: any) => x.address.toLowerCase() === underlying,
     );
@@ -96,44 +95,62 @@ function formWrites(
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const writes: Write[] = [];
   const block: number | undefined = await getBlock(chain, timestamp);
-  const pools: { [pool: string]: { [address: string]: string } } =
+  const pools: { [pool: string]: { underlying: string; pools: string[] } } =
     contracts[chain as keyof typeof contracts];
+
+  const flatPools: FlatPools = {};
+  Object.keys(pools).map((key: string) =>
+    pools[key].pools.map((pool: string) => {
+      flatPools[pool] = pools[key].underlying;
+    }),
+  );
 
   let tokenSupplies: Result[];
   let tokenInfos: any;
-  [{ output: tokenSupplies }, tokenInfos] = await Promise.all([
-    multiCall({
-      abi: abi["totalLiquidity"],
-      calls: Object.entries(pools).map((p: any) => ({
-        target: p[1].pool,
-      })),
-      chain: chain as any,
-      block,
-      permitFailure: true,
-    }),
-    getTokenInfo(
-      chain,
-      Object.entries(pools).map((p: any) => p[1].pool),
-      block,
-      { withSupply: true },
-    ),
-  ]);
+  let tokenSupplies2: Result[];
+  [{ output: tokenSupplies }, { output: tokenSupplies2 }, tokenInfos] =
+    await Promise.all([
+      multiCall({
+        abi: abi.totalLiquidity,
+        calls: Object.keys(flatPools).map((target) => ({
+          target,
+        })),
+        chain: chain as any,
+        block,
+        permitFailure: true,
+      }),
+      multiCall({
+        abi: abi.totalLiquidity,
+        calls: Object.keys(flatPools).map((target) => ({
+          target,
+        })),
+        chain: chain as any,
+        block,
+        permitFailure: true,
+      }),
+      getTokenInfo(
+        chain,
+        Object.keys(flatPools).map((p) => p),
+        block,
+        { withSupply: true },
+      ),
+    ]);
 
-  let coinsData: CoinData[] = await getTokenAndRedirectData(
-    Object.entries(pools).map((p: any) =>
-      p[1].underlying.toLowerCase() === gasTokenDummyAddress
+  let coinsData = await getTokenAndRedirectDataMap(
+    Object.values(flatPools).map((p) =>
+      p.toLowerCase() === gasTokenDummyAddress
         ? wrappedGasTokens[chain]
-        : p[1].underlying.toLowerCase(),
+        : p.toLowerCase(),
     ),
     chain,
     timestamp,
   );
 
-  const underlyingTokenData = await processDbData(pools, coinsData, chain);
+  const underlyingTokenData = await processDbData(flatPools, coinsData, chain);
 
   return formWrites(
     underlyingTokenData.filter((d: any) => d != undefined),
-    pools,
+    flatPools,
     chain,
     tokenSupplies.filter((d: any) => d != undefined),
     tokenInfos,

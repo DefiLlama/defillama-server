@@ -729,6 +729,11 @@
       "decimals": "8",
       "symbol": "lfbtc-cian-eth",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0x7aAd7A95fCf14B826AC96176590C8e7aad19bbd4": {
+      "decimals": "8",
+      "symbol": "WFBTC",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "fantom": {

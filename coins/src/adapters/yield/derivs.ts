@@ -13,6 +13,7 @@ type Config = {
   underlyingChain?: string;
   symbol?: string;
   decimals?: number;
+  confidence?: number;
 };
 
 const lrts = (target: string) => {
@@ -339,6 +340,7 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     underlying: "0x8A60E489004Ca22d775C5F2c657598278d17D9c2",
     address: "0x2B66AAdE1e9C062FF411bd47C44E0Ad696d43BD9",
+    confidence: 1
   },
 };
 
@@ -349,8 +351,15 @@ export async function derivs(timestamp: number) {
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {
-  const { chain, underlying, address, underlyingChain, symbol, decimals } =
-    config;
+  const {
+    chain,
+    underlying,
+    address,
+    underlyingChain,
+    symbol,
+    decimals,
+    confidence,
+  } = config;
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const api = await getApi(chain, t, true);
   const pricesObject: any = {
@@ -370,5 +379,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
     pricesObject,
     projectName,
     writes,
+    confidence,
   });
 }

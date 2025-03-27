@@ -1,5 +1,10 @@
 {
   "supra": {
+    "0x1::supra_coin::SupraCoin": {
+      "decimals": "8",
+      "symbol": "SUPRA",
+      "to": "coingecko#supra"
+    },
     "0x8f7d16ade319b0fce368ca6cdb98589c4527ce7f5b51e544a9e68e719934458b::hyper_coin::DexlynUSDC": {
       "decimals": "6",
       "symbol": "dexUSDC",
@@ -11,7 +16,7 @@
       "decimals": "8",
       "symbol": "WBTC",
       "to": "coingecko#wrapped-bitcoin"
-    }, 
+    },
     "0x657e8C867D8B37dCC18fA4Caead9C45EB088C642": {
       "decimals": "8",
       "symbol": "eBTC",
@@ -415,6 +420,16 @@
     }
   },
   "ethereum": {
+    "0x83599937c2c9bea0e0e8ac096c6f32e86486b410": {
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "liquidBeraETH"
+    },
+    "0xE7C253EAD50976Caf7b0C2cbca569146A7741B50": {
+      "to": "coingecko#bitcoin",
+      "decimals": 18,
+      "symbol": "SolvBTC.BERA"
+    },
     "0xc673ef7791724f0dcca38adb47fbb3aef3db6c80": {
       "to": "coingecko#bitcoin",
       "decimals": 8,
@@ -1234,7 +1249,7 @@
   },
   "base": {
     "0x35E5dB674D8e93a03d814FA0ADa70731efe8a4b9": {
-      "to": "resolv-usr",
+      "to": "coingecko#resolv-usr",
       "decimals": "18",
       "symbol": "USR"
     },
@@ -7741,6 +7756,11 @@
       "decimals": "18",
       "symbol": "egETH",
       "to": "coingecko#weth"
+    },
+    "0xF9775085d726E782E83585033B58606f7731AB18": {
+      "decimals": "8",
+      "symbol": "uniBTC",
+      "to": "coingecko#universal-btc"
     }
   },
   "oas": {

@@ -24479,7 +24479,19 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
-    oracles: ["Pyth"], // https://docs.kamino.finance/risk/oracles team also confirmed Pyth as the primary oracle while scope and switchboard used for support
+    oracles: ["Pyth", "Switchboard"], // https://docs.kamino.finance/risk/oracles team also confirmed Pyth as the primary oracle while scope and switchboard used for support
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.kamino.finance/risk/oracles"]
+      },
+      {
+        name: "Switchboard",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9552"]
+      }
+    ],
     forkedFrom: [],
     module: "kamino-lending/index.js",
     twitter: "KaminoFinance",
@@ -32873,6 +32885,9 @@ const data3: Protocol[] = [
     twitter: "ethena_labs",
     parentProtocol: "parent#ethena",
     audit_links: ["https://ethena-labs.gitbook.io/ethena-labs/resources/audits#quantstamp-audit-on-v2-of-contracts"],
+    tokensExcludedFromParent: {
+      Ethereum: ["USDTB"],
+    },
     listedAt: 1708016301,
   },
   {
@@ -53341,7 +53356,7 @@ const data3: Protocol[] = [
     github: ["noble-assets"],
   },
   {
-    id: "5027", 
+    id: "5027",
     name: "MEMECAST.AI", // previously 4cast
     previousNames: ["4cast"],
     address: null,
@@ -59290,7 +59305,19 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Hedera"],
-    oracles: ["Supra"], // https://docs.bonzo.finance/hub/developer/oracles/supra
+    oracles: ["Chainlink"], //HBAR and USDC Markets secured by Chainlink: 
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.bonzo.finance/hub/developer/oracles/chainlink", "https://bonzo.finance/blog/bonzo-finance-has-integrated-the-chainlink-standard-for-verifiable-data-on-hedera"]
+      },
+            {
+        name: "Supra",
+        type: "Secondary",
+        proof: ["https://docs.bonzo.finance/hub/developer/oracles/supra"]
+      },
+    ],
     forkedFrom: ["AAVE V2"],
     module: "bonzo/index.js",
     twitter: "bonzo_finance",
@@ -63624,13 +63651,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5480",
-    name: "Hyperfluid",
+    name: "Hyperion",
+    previousNames: ["Hyperfluid"],
     address: null,
     symbol: "-",
-    url: "https://hyperfluid.xyz/",
-    description: "Hyperfluid is a fully on-chain hybrid Orderbook-AMM DEX built natively for Aptos, leveraging its exceptional throughput and minimal latency to deliver a seamless trading experience for both professional and retail users.",
+    url: "https://hyperion.xyz/",
+    description: "Hyperion is a fully on-chain hybrid Orderbook-AMM DEX built natively for Aptos, leveraging its exceptional throughput and minimal latency to deliver a seamless trading experience for both professional and retail users.",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/hyperfluid.jpg`,
+    logo: `${baseIconsUrl}/hyperion.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -63640,9 +63668,9 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "hyperfluid/index.js",
-    twitter: "Hyperfluidxyz",
-    audit_links: ["https://github.com/Hyperfluid/audits/blob/main/Hyperfluid%20Audit%20Report%20By%20MoveBit.pdf"],
-    github: ["Hyperfluid"],
+    twitter: "hyperion_xyz",
+    audit_links: ["https://github.com/Hyperionxyz/audits/blob/main/Hyperion%20Audit%20Report.pdf"],
+    github: ["Hyperionxyz"],
     listedAt: 1733763947
   },
   {

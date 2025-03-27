@@ -19792,7 +19792,19 @@ const data2: Protocol[] = [
     module: "aries-markets/index.js",
     twitter: "AriesMarkets",
     forkedFrom: [],
-    oracles: ["Switchboard", "Pyth"], // https://twitter.com/AriesMarkets/status/1747453053442429338
+    oracles: ["Pyth"], 
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.ariesmarkets.xyz/aries-markets/protocol-parameters/oracles"]
+      },
+      {
+        name: "Switchboard",
+        type: "Fallback",
+        proof: ["https://discord.com/channels/1000012426479153172/1000012426923757631/1354436228518514801","https://twitter.com/AriesMarkets/status/1747453053442429338"]
+      },
+    ],
     audit_links: ["https://drive.google.com/file/d/1yyGcE3bT0D-5G_hwINMwF-4PgSzOKmz4/view"],
     listedAt: 1666868387,
   },
@@ -20644,7 +20656,7 @@ const data2: Protocol[] = [
     module: "orderly-network/index.js",
     twitter: "OrderlyNetwork",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update (Upgraded to Pyth Lazer for price feeds)
     audit_links: ["https://github.com/OrderlyNetwork/Audits"],
     parentProtocol: "parent#orderly-network",
     listedAt: 1668086145,

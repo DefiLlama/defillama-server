@@ -59317,6 +59317,7 @@ const data3: Protocol[] = [
         type: "Secondary",
         proof: ["https://docs.bonzo.finance/hub/developer/oracles/supra"]
       },
+    ],
     forkedFrom: ["AAVE V2"],
     module: "bonzo/index.js",
     twitter: "bonzo_finance",

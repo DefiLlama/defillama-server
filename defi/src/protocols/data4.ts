@@ -9167,5 +9167,140 @@ const data4: Protocol[] = [
     github: ["Bearn-Sucks"],
     listedAt: 1743074892
   },
+  {
+    id: "5957",
+    name: "USDFC",
+    address: null,
+    symbol: "-",
+    url: "https://app.usdfc.net/#/",
+    description:
+      "USDFC is a Filecoin-backed Stablecoin.",
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/usdfc.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Filecoin"],
+    module: "usdfc/index.js",
+    forkedFrom: [],
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"]
+      },
+      {
+        name: "Pyth",
+        type: "Fallback",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"]
+      }
+    ],
+    twitter: "USDFC_Protocol",
+    audit_links: [
+      "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-01-Hexens.pdf", 
+      "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-03-Decurity.pdf"
+    ],
+    listedAt: 1743107377
+  },
+  {
+    id: "5958",
+    name: "GoldMiner",
+    address: null,
+    symbol: "-",
+    url: "https://goldminer.finance/",
+    description:
+      "First miner on Sonic. Earn up to 8% daily on your staked $S and earn 15% referral rewards.",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/goldminer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Ponzi",
+    chains: ["Sonic"],
+    module: "GoldMiner/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "goldminersonic",
+    listedAt: 1743107385
+  },
+  {
+    id: "5959",
+    name: "Evoq Finance",
+    address: null,
+    symbol: "-",
+    url: "https://evoq.finance",
+    description:
+      "Evoq Finance is a p2p-based lending optimizer that operates alongside existing pool-based lending protocols, such as Aave, Compound, and Venus, to provide better rates for both suppliers and borrowers through peer-to-peer (p2p) matching.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/evoq-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    module: "evoq/index.js",
+    forkedFrom: ["Morpho Compound"],
+    oracles: [],
+    twitter: "Evoq_Finance",
+    audit_links: [
+      "https://drive.google.com/file/d/1lMosZQvcDvGoX60d-h8C0YxJD_IhyxJD/view",
+      "https://github.com/zokyo-sec/audit-reports/blob/main/Evoq%20Finance/Evoq%20Finance_Zokyo_audit_report_Jan9th_2025.pdf"
+    ],
+    github: ["evoqfinance"],
+    listedAt: 1743107397
+  },
+  {
+    id: "5960",
+    name: "Hyperpie",
+    address: null,
+    symbol: "-",
+    url: "https://www.hyperliquid.magpiexyz.io/stake",
+    description:
+      "Hyperpie is an integrated DeFi ecosystem built on Hyperliquid, composed of a Liquid Staking platform, a MEME launchpad, and a MEME DEX. Designed around a ve(3,3) tokenomics model, it aligns incentives across HYPE stakers, meme project creators, liquidity providers, and HPP token holders. HPP is the governance token of Hyperpie",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/hyperpie.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Hyperliquid"],
+    module: "hyperpie/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Hyperpiexyz_io",
+    audit_links: [
+      "https://github.com/astrasecai/audit-reports/blob/main/AstraSec-AuditReport-Hyperpie.pdf",
+      "https://github.com/SupremacyTeam/publications/blob/main/Magpie/Supremacy-Audit-Report-Hyperpie-v1.0.pdf"
+    ],
+    listedAt: 1743107407
+  },
+  {
+    id: "5961",
+    name: "QX",
+    address: null,
+    symbol: "-",
+    url: "https://qx.qubic.org/",
+    description:
+      "QX is a decentralized exchange running as a smart contract on the Qubic network.",
+    chain: "Qubic",
+    logo: `${baseIconsUrl}/qx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Qubic"],
+    module: "qx/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "_Qubic_",
+    listedAt: 1743107417
+  },
 ];
 export default data4;

@@ -57,9 +57,9 @@ async function main() {
   console.log(`^^^^ Example results ^^^^`); */
   let items = Object.values(lTable)
   const itemCount = items.length;
-  if (itemCount > 999) {
+  if (itemCount > 99) {
     items.sort(() => Math.random() - 0.5);
-    items = items.slice(0, 999);
+    items = items.slice(0, 99);
   }
   logTable(items)
   if (itemCount > 99)

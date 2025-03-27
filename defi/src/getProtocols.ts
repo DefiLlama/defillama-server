@@ -11,6 +11,7 @@ import {
   addToChains,
   extraSections,
   transformNewChainName,
+  replaceChainNamesForOraclesByChain,
 } from "./utils/normalizeChain";
 import { craftChainsResponse } from "./getChains";
 import type { IProtocol, IChain, ITvlsByChain } from "./types";
@@ -192,6 +193,7 @@ export async function craftProtocolsResponseInternal(
 
         const dataToReturn: Omit<IProtocol, "raises"> = {
           ...protocol,
+          oraclesByChain: replaceChainNamesForOraclesByChain(useNewChainNames, protocol.oraclesByChain),
           slug: sluggify(protocol),
           tvl: lastHourlyRecord?.tvl ?? null,
           chainTvls,

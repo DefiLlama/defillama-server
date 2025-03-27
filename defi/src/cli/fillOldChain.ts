@@ -149,7 +149,7 @@ const main = async () => {
   // debugPrintDailyItems(dailyTokens, 'dailyTokens')
   // debugPrintDailyItems(dailyUsdTokens, 'dailyUsdTokens')
   // debugPrintDailyItems(rawTokenTvl, 'rawTokenTvl')
-  const start = adapter.start ?? 0;
+  const start = adapter.start ? Math.round(+new Date(adapter.start) / 1000) : 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
   if (timestamp > now) {
@@ -174,6 +174,11 @@ const main = async () => {
   if (!process.env.DRY_RUN && atLeastOneUpdateSuccessful)
     return clearProtocolCacheById(protocol.id)
 };
+
+process.on('uncaughtException', function (err) {
+  console.error('Caught exception: ', err);
+  process.exit(1);
+});
 
 main().then(async () => {
   console.log('Done!!!')

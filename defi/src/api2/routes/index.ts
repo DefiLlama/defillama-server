@@ -20,6 +20,9 @@ import { getR2 } from "../../utils/r2";
 import { getChainChartData } from "../../getChart";
 import { getChainDefaultChartData } from "../../getDefaultChart";
 import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
+import { getDimensionsMetadata } from "../utils/dimensionsUtils";
+import { chainNameToIdMap } from "../../utils/normalizeChain";
+
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
@@ -93,6 +96,9 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/overview/:type", ew(getOverviewFileRoute))
   router.get("/overview/:type/:chain", ew(getOverviewFileRoute))
   router.get("/summary/:type/:name", ew(getDimensionProtocolFileRoute))
+  router.get("/overview/_internal/dimensions-metadata", ew(getDimensionsMetadataRoute))
+  router.get("/overview/_internal/chain-name-id-map", async (_req: HyperExpress.Request, res: HyperExpress.Response) => successResponse(res, chainNameToIdMap, 60))
+
   /* 
     router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
   
@@ -157,7 +163,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     if (protocolData) return successResponse(res, protocolData, 60);
     protocolData = cache.parentProtocolSlugMap[name]
     if (protocolData) return successResponse(res, protocolData, 60);
-    return errorResponse(res, 'Protocol not found')
+    return fileResponse('config/smol/' + req.path_parameters.name, res);
   }
 
   async function fileResponse(filePath: string, res: HyperExpress.Response) {
@@ -378,22 +384,33 @@ async function emissionProtocolHandler(req: HyperExpress.Request, res: HyperExpr
 async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
-    const data = await getChainChartData(name.toLowerCase())
+    const data = await getChainChartData(name.toLowerCase(), await _getChainChartData(name))
     return successResponse(res, data, 60);
   } catch (e) {
-    return errorResponse(res, 'There is no chain with that name')
+    return errorResponse(res, 'There is no chain with that name: ' + name)
   }
 }
 
 async function getHistoricalChainTvlData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
-    const data = await getChainDefaultChartData(name.toLowerCase())
+    const data = await getChainDefaultChartData(name.toLowerCase(), await _getChainChartData(name))
     return successResponse(res, data, 60);
   } catch (e) {
-    return errorResponse(res, 'There is no chain with that name')
+    return errorResponse(res, 'There is no chain with that name: ' + name)
   }
 }
+
+async function _getChainChartData(name: string) {
+  const global = name === "";
+  const route = global ? 'lite/charts-total' : `lite/charts/${name}`;
+  return readRouteData(route);
+}
+
+async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {
+  return successResponse(res, await getDimensionsMetadata(), 60);
+}
+
 /* 
 async function getProtocolUsers(req: HyperExpress.Request, res: HyperExpress.Response) {
   const { protocolId, type } = req.path_parameters

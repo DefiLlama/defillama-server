@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import ddb, { batchGet } from "./utils/shared/dynamodb";
+import ddb from "./utils/shared/dynamodb";
 import parseRequestBody from "./utils/shared/parseRequestBody";
-import { coinToPK, PKToCoin } from "./utils/processCoin";
+import { getBasicCoins } from "./utils/getCoinsUtils";
 
 type McapsResponse = {
   [coin: string]: {
@@ -15,16 +15,10 @@ const handler = async (
 ): Promise<IResponse> => {
   const body = parseRequestBody(event.body);
   const requestedCoins = body.coins;
-  const coins = await batchGet(
-    requestedCoins.map((coin: string) => ({
-      PK: coinToPK(coin),
-      SK: 0,
-    })),
-  );
+  const {PKTransforms, coins} = await getBasicCoins(requestedCoins)
   const response = {} as McapsResponse;
   await Promise.all(
     coins.map(async (coin) => {
-      const coinName = PKToCoin(coin.PK);
       const formattedCoin = {
         mcap: coin.mcap,
         timestamp: coin.timestamp,
@@ -41,7 +35,7 @@ const handler = async (
           formattedCoin.mcap = redirectedCoin.Item?.mcap;
         formattedCoin.timestamp = redirectedCoin.Item?.timestamp;
       }
-      response[coinName] = formattedCoin;
+      response[PKTransforms[coin.PK]] = formattedCoin;
     }),
   );
   return successResponse(response);

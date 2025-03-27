@@ -4,14 +4,13 @@ import { AdaptorsConfig, IJSON } from "../types"
 import { getDisplayChainName, getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { AdapterType, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
-import { getChainDisplayName } from "../../../utils/normalizeChain"
-import chainCoingeckoIds from "./chains"
+import { getChainDisplayName, chainCoingeckoIds } from "../../../utils/normalizeChain"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
 import { IParentProtocol } from "../../../protocols/types";
 
 // Obtaining all dex protocols
-// const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
+// const dexs = data.filter(d => d.category === "Dexs" || d.category === 'Derivatives')
 
 export function notUndefined<T>(x: T | undefined): x is T {
   return x !== undefined;
@@ -33,11 +32,15 @@ const parentProtocolDataMap = parentProtocols.reduce((acc, curr) => {
 
 const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
   if (!obj.cmcId && !obj.chainId) return undefined
+  let id = obj.chainId ?? obj.cmcId
+  if (key === 'Ethereum') id = '' + obj.cmcId // because ethereum chain id clashes with bitcoin cmcId
+  if (key === 'Kardia') id = '' + obj.cmcId // because ethereum chain id clashes with bitcoin cmcId
+
   return {
     ...obj,
     displayName: getChainDisplayName(key, true),
     name: key,
-    id: obj.cmcId ?? obj.chainId,
+    id,
     gecko_id: obj.geckoId,
     category: "Chain",
     logo: `${baseIconsUrl}/chains/rsz_${getLogoKey(key)}.jpg`
@@ -45,6 +48,7 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
 }).filter(c => c !== undefined) as unknown as Protocol[]
 
 const chainDataMap = chainData.reduce((acc, curr) => {
+  if (acc[curr.id]) return acc;
   acc[curr.id] = curr
   return acc
 }, {} as IJSON<Protocol>)
@@ -103,7 +107,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
             ...dexFoundInProtocols,
             ...configObj,
             id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id, // used to query db, eventually should be changed to defillamaId,
-            id2: protocolType === ProtocolType.CHAIN ? `chain#${id}` : id,
+            id2: protocolType === ProtocolType.CHAIN ? `chain#${adapterKey}` : id,
             defillamaId: isNaN(+configObj?.id) ? configObj.id : config[adapterKey].id,
             module: adapterKey,
             config: {
@@ -196,7 +200,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
           }
 
           if (!childProtocol) console.error(`Protocol not found with id ${versionConfig.id} and key ${adapterKey}`)
-          const id2 = protocolType === ProtocolType.CHAIN ? `chain#${id}` : id
+          const id2 = protocolType === ProtocolType.CHAIN ? `chain#${adapterKey}` : id
 
           childProtocols.push({
             ...childProtocol,
@@ -248,7 +252,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       }
       delete parentConfig.protocolsData
       const id = isNaN(+configObj.id) ? configObj.id : config[adapterKey].id // used to query db, eventually should be changed to defillamaId
-      const id2 = protocolType === ProtocolType.CHAIN ? `chain#${id}` : id
+      const id2 = protocolType === ProtocolType.CHAIN ? `chain#${adapterKey}` : id
 
 
       const infoItem: ProtocolAdaptor = {
@@ -277,7 +281,6 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
       if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
-
 
       return infoItem
 

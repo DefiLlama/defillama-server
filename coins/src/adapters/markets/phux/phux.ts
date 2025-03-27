@@ -10,9 +10,9 @@ import abi from "./abi.json";
 import { getTokenInfo } from "../../utils/erc20";
 import { Result } from "../../utils/sdkInterfaces";
 import { DbTokenInfos } from "../../utils/dbInterfaces";
+import { nullAddress } from "../../../utils/shared/constants";
 
 const vault: string = "0x7F51AC3df6A034273FB09BB29e383FCF655e473c";
-const nullAddress: string = "0x0000000000000000000000000000000000000000";
 
 type GqlResult = {
   id: string;

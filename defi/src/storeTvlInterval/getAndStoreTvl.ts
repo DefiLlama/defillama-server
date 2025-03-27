@@ -17,7 +17,7 @@ import BigNumber from "bignumber.js";
 import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
-import { storeAllTokens } from "../../l2/layer2pg";
+import { storeAllTokens } from "../../src/utils/shared/bridgedTvlPostgres";
 import { elastic } from '@defillama/sdk';
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
@@ -162,6 +162,7 @@ type StoreTvlOptions = {
   chainsToRefill?: string[],
   cacheData?: Object,
   overwriteExistingData?: boolean,
+  runType?: string,
 }
 
 export async function storeTvl(
@@ -184,6 +185,7 @@ export async function storeTvl(
     chainsToRefill = [],
     cacheData,
     overwriteExistingData = false,
+    runType = 'default',
   } = options
 
   if (partialRefill && (!chainsToRefill.length || !cacheData)) throw new Error('Missing chain list for refill')
@@ -209,6 +211,8 @@ export async function storeTvl(
         if (typeof tvlFunction !== "function") {
           return
         }
+
+        if (chain === 'heco' && runType === 'cron-task') tvlFunction = () => ({})
         let storedKey = `${chain}-${tvlType}`
         let tvlFunctionIsFetch = false;
         if (tvlType === "tvl") {

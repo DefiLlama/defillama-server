@@ -38,8 +38,11 @@ import fraxtal from "./fraxtal";
 import symbiosis from "./symbiosis";
 import fuel from "./fuel";
 import zircuit from "./zircuit";
-import morph from './morph'
-import aptos from './aptosFa'
+import morph from "./morph";
+import aptos from "./aptosFa";
+import sophon from "./sophon";
+import unichan from "./unichain";
+import flow from "./flow";
 
 export type Token =
   | {
@@ -60,7 +63,6 @@ export type Token =
     };
 type Bridge = () => Promise<Token[]>;
 
-export const chainsThatShouldNotBeLowerCased = ["solana", "bitcoin"];
 function normalizeBridgeResults(bridge: Bridge) {
   return async () => {
     const tokens = await bridge();
@@ -88,7 +90,7 @@ export const bridges = [
   era,
   gasTokens,
   //harmony,
-  polygon,
+  // polygon,
   // solana
   //xdai
   cosmos,
@@ -108,11 +110,17 @@ export const bridges = [
   fuel,
   zircuit,
   morph,
-  aptos
+  aptos,
+  // sophon,
+  unichan,
+  flow,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../../utils/date";
+import produceKafkaTopics from "../../utils/coins3/produce";
+import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
+import { sendMessage } from "../../../../defi/src/utils/discord";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
@@ -122,6 +130,18 @@ async function storeTokensOfBridge(bridge: Bridge, i: number) {
     return res;
   } catch (e) {
     console.error("Failed to store tokens of bridge", i, e);
+    if (process.env.URGENT_COINS_WEBHOOK)
+      await sendMessage(
+        `bridge ${i} storeTokens failed with: ${e}`,
+        process.env.URGENT_COINS_WEBHOOK,
+        true,
+      );
+    else
+      await sendMessage(
+        "bridges error but missing urgent webhook",
+        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        true,
+      );
   }
 }
 
@@ -136,7 +156,9 @@ async function _storeTokensOfBridge(bridge: Bridge) {
       })),
     )
   ).reduce((all, record) => {
-    all[record.PK.substr("asset#".length)] = true;
+    if (record.confidence && record.confidence < 0.97)
+      all[record.PK.substr("asset#".length)] = false;
+    else all[record.PK.substr("asset#".length)] = true;
     return all;
   }, {});
 
@@ -206,50 +228,8 @@ async function _storeTokensOfBridge(bridge: Bridge) {
     }),
   );
 
-  // const writes2: Coin[] = [];
-  // const data = await readCoins2(
-  //   tokens.map((t: Token) => ({
-  //     key: t.to.includes("coingecko#") ? t.to.replace("#", ":") : t.to,
-  //     timestamp: getCurrentUnixTimestamp(),
-  //   })),
-  // );
-  // tokens.map(async (token) => {
-  //   const to = token.to.includes("coingecko#")
-  //     ? token.to.replace("#", ":")
-  //     : token.to;
-  //   if (!(to in data)) return;
-  //   let PK: string = token.from.includes("coingecko#")
-  //     ? token.from.replace("#", ":")
-  //     : token.from.substring(token.from.indexOf("#") + 1);
-  //   const chain = PK.split(":")[0];
-  //   let decimals: number, symbol: string;
-  //   if ("getAllInfo" in token) {
-  //     try {
-  //       const newToken = await token.getAllInfo();
-  //       decimals = newToken.decimals;
-  //       symbol = newToken.symbol;
-  //     } catch (e) {
-  //       console.log("Skipping token", PK, e);
-  //       return;
-  //     }
-  //   } else {
-  //     decimals = token.decimals;
-  //     symbol = token.symbol;
-  //   }
-  //   writes2.push({
-  //     timestamp: getCurrentUnixTimestamp(),
-  //     price: data[to].price,
-  //     confidence: Math.min(data[to].confidence, 0.9),
-  //     key: PK,
-  //     chain,
-  //     adapter: "bridges",
-  //     symbol,
-  //     decimals,
-  //   });
-  // });
-
   await batchWrite(writes, true);
-  // await batchWrite2(writes2, true, undefined, `bridge index ${i}`);
+  await produceKafkaTopics(writes, ["coins-metadata"]);
   return tokens;
 }
 export async function storeTokens() {

@@ -10,7 +10,7 @@ async function yields(){
     const pools = await fetch(`https://yields.llama.fi/pools`).then(r=>r.json())
     const config = await fetch(`https://api.llama.fi/config/yields`).then(r=>r.json())
     const tokenPools = (pools.data as any[]).filter(
-        (p)=>config.protocols[p.project]?.category === "Dexes" 
+        (p)=>config.protocols[p.project]?.category === "Dexs" 
             && p.underlyingTokens?.map((t:string)=>t.toLowerCase()).includes(token)
         )
     console.log("yields", tokenPools.length, tokenPools.reduce((sum, curr)=>sum + curr.tvlUsd, 0)/1e6)
@@ -22,7 +22,7 @@ async function yieldSymbol(){
         fetch(`https://api.llama.fi/config/yields`).then(r=>r.json())
     ])
     const tokenPools = (pools.data as any[]).filter(
-        (p)=>config.protocols[p.project]?.category === "Dexes" 
+        (p)=>config.protocols[p.project]?.category === "Dexs" 
             && p.symbol.includes(symbol)
         )
     console.log("yieldSymbol", tokenPools.length, tokenPools.reduce((sum, curr)=>sum + curr.tvlUsd, 0)/1e6)
@@ -39,7 +39,7 @@ async function historicalYields(){
     const pools = await fetch(`https://yields.llama.fi/pools`).then(r=>r.json())
     const config = await fetch(`https://api.llama.fi/config/yields`).then(r=>r.json())
     const tokenPools = (pools.data as any[]).filter(
-        (p)=>config.protocols[p.project]?.category === "Dexes" 
+        (p)=>config.protocols[p.project]?.category === "Dexs" 
             && p.underlyingTokens?.map((t:string)=>t.toLowerCase()).includes(token)
         )
     const historicalPoolInfo = await Promise.all(tokenPools.map(p=>fetch(`https://yields.llama.fi/chart/${p.pool}`).then(r=>r.json()).catch(e=>{
@@ -75,7 +75,7 @@ async function getLiquidity(symbol:string){
         fetch(`https://api.llama.fi/config/yields`).then(r=>r.json())
     ])
     const tokenPools = (pools.data as any[]).filter(
-        (p)=>config.protocols[p.project]?.category === "Dexes" 
+        (p)=>config.protocols[p.project]?.category === "Dexs" 
             && p.symbol.toUpperCase().includes(symbol)
         )
     const liquidityAggregated = tokenPools.reduce((agg, pool)=>{
@@ -95,7 +95,7 @@ async function getLiquidityProtocols() {
         fetch(`https://api.llama.fi/config/yields`).then(r => r.json())
     ])
     const dexPools = (pools.data as any[]).filter(
-        (p) => config.protocols[p.project]?.category === "Dexes")
+        (p) => config.protocols[p.project]?.category === "Dexs")
     const liqByProtocol = protocols.map((p: any) => {
         if (p.symbol === "-" || p.symbol === null) {
             return
@@ -119,7 +119,7 @@ async function getLiquidityProtocolsCompare() {
         fetch(`https://api.coingecko.com/api/v3/coins/list?include_platform=true`).then(r => r.json())
     ])
     const dexPools = (pools.data as any[]).filter(
-        (p) => config.protocols[p.project]?.category === "Dexes")
+        (p) => config.protocols[p.project]?.category === "Dexs")
     const liqByProtocol = protocols
         //.filter((p:any)=>p.symbol==="QI")
         .map((p: any) => {
@@ -209,7 +209,7 @@ async function getLiquidityProtocolsCompared() {
         fetch(`https://api.llama.fi/config/yields`).then(r => r.json())
     ])
     const dexPools = (pools.data as any[]).filter(
-        (p) => config.protocols[p.project]?.category === "Dexes")
+        (p) => config.protocols[p.project]?.category === "Dexs")
     console.log("name, symbol, tvl, # pools, our liq, agg liq, biggestPool, biggestPool tvl")
     const protocolList = (protocols as any[]).filter((p: any) => p.symbol !== "-" && p.symbol !== null).map((p:any)=>{
         const tokenPools = dexPools.filter(pool =>

@@ -30,6 +30,10 @@ export const glpConfig: {
     manager: "0xfE84703DF7E6F9A71e8d44c78ba24Ded1F631F30",
     glp: "0x98b799a29710738db188604c3C78BaC4B2bD4193"
   }],
+  base: [{ // bmx
+    manager: "0x9fAc7b75f367d5B35a6D6D0a09572eFcC3D406C5",
+    glp: "0xe771b4E273dF31B85D7A7aE0Efd22fb44BdD0633"
+  }],
 }
 
 
@@ -42,15 +46,16 @@ export default function glp(timestamp: number = 0) {
     const api = await getApi(chain, timestamp)
     const managers = glpConfig[chain].map(i => i.manager);
     const glps = glpConfig[chain].map(i => i.glp);
-    const [ aums, pricePrecisions, decimals, supplies] = await Promise.all([
-      api.multiCall({ abi: abi.getAums, calls: managers, }),
-      api.multiCall({ abi: abi.pricePrecision, calls: managers, }),
-      api.multiCall({ abi: 'erc20:decimals', calls: glps, }),
-      api.multiCall({ abi: 'erc20:totalSupply', calls: glps, }),
+    const [aums, pricePrecisions, decimals, supplies] = await Promise.all([
+      api.multiCall({ abi: abi.getAums, calls: managers, permitFailure: true }),
+      api.multiCall({ abi: abi.pricePrecision, calls: managers, permitFailure: true }),
+      api.multiCall({ abi: 'erc20:decimals', calls: glps, permitFailure: true }),
+      api.multiCall({ abi: 'erc20:totalSupply', calls: glps, permitFailure: true }),
     ])
     const pricesObject: any = {}
-    aums.forEach(([aum], i) => {
-      pricesObject[glps[i]] = { price: aum * 10 ** decimals[i] / (supplies[i] * pricePrecisions[i]) }
+    aums.forEach((aum, i) => {
+      if (!aums[i] || !pricePrecisions[i] || !supplies[i] || !decimals[i]) return
+      pricesObject[glps[i]] = { price: aum[0] * 10 ** decimals[i] / (supplies[i] * pricePrecisions[i]) }
     })
     return getWrites({ chain, timestamp, pricesObject, projectName: 'glp' })
   }

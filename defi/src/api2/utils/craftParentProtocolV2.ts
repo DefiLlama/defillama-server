@@ -35,8 +35,9 @@ export async function craftParentProtocolV2({
     tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
 
   const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap, parentRaises:[] })
+  const childNames = cache.otherProtocolsMap[parentProtocol.id] ?? []
 
-  res.otherProtocols = [parentProtocol.name, ...childProtocols.map((p: any) => p.name)]
+  res.otherProtocols = [parentProtocol.name, ...childNames]
 
   const debug_totalTime = performance.now() - debug_t0
   const debug_dbTime = debug_t1 - debug_t0

@@ -1,5 +1,5 @@
-import { queryPostgresWithRetry } from "../../l2/layer2pg";
-import { getCoins2Connection } from "../getDBConnection";
+import { queryPostgresWithRetry } from "../../src/utils/shared/bridgedTvlPostgres";
+import { getCoins2Connection } from "../utils/shared/getDBConnection";
 import { sendMessage } from "../utils/discord";
 import { searchWidth } from "../utils/shared/constants";
 

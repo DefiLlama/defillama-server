@@ -104,5 +104,8 @@ export default {
     },
     "ton-hedge": {
         id: "4950"
+    },
+    "olab": {
+        id: "5648"
     }
 } as AdaptorsConfig

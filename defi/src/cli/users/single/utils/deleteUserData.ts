@@ -1,4 +1,4 @@
-import { getAccountsDBConnection } from "../../../../getDBConnection"
+import { getAccountsDBConnection } from "../../../../utils/shared/getDBConnection"
 
 export async function deleteUserDataForProtocol(protocolId:string){
     const sql = getAccountsDBConnection()

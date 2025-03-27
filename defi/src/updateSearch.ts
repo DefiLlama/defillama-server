@@ -50,12 +50,12 @@ async function generateSearchList() {
         name: chain,
         logo: `https://icons.llamao.fi/icons/chains/rsz_${standardizeProtocolName(chain)}?w=48&h=48`,
         tvl: chainTvl[chain],
-        route: `/chain/${chain}`
+        route: `/chain/${standardizeProtocolName(chain)}`
     }))).concat(protocols.protocolCategories.map(category=>({
         id: `category_${normalize(category)}`,
         name: `All protocols in ${category}`,
         tvl: categoryTvl[category],
-        route: `/protocols/${category}`
+        route: `/protocols/${standardizeProtocolName(category)}`
     })))
     return results
 }

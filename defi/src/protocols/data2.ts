@@ -19792,7 +19792,7 @@ const data2: Protocol[] = [
     module: "aries-markets/index.js",
     twitter: "AriesMarkets",
     forkedFrom: [],
-    oracles: ["Switchboard", "Pyth"], // https://twitter.com/AriesMarkets/status/1747453053442429338
+    oracles: ["Pyth"], 
     oraclesBreakdown: [
       {
         name: "Pyth",
@@ -19802,7 +19802,7 @@ const data2: Protocol[] = [
       {
         name: "Switchboard",
         type: "Fallback",
-        proof: ["https://discord.com/channels/1000012426479153172/1000012426923757631/1354436228518514801"]
+        proof: ["https://discord.com/channels/1000012426479153172/1000012426923757631/1354436228518514801","https://twitter.com/AriesMarkets/status/1747453053442429338"]
       },
     ],
     audit_links: ["https://drive.google.com/file/d/1yyGcE3bT0D-5G_hwINMwF-4PgSzOKmz4/view"],

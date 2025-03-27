@@ -63655,7 +63655,7 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     oracles: [],
     forkedFrom: [],
-    module: "hyperion/index.js",
+    module: "hyperfluid/index.js",
     twitter: "hyperion_xyz",
     audit_links: ["https://github.com/Hyperionxyz/audits/blob/main/Hyperion%20Audit%20Report.pdf"],
     github: ["Hyperionxyz"],

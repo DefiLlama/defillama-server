@@ -208,7 +208,7 @@ const data4: Protocol[] = [
       "FIVA is a yield optimization protocol on TON that enables users to lock in guaranteed fixed yields, farm future airdrops with up to 100x leverage, and provide liquidity with near-zero impermanent loss.",
     chain: "TON",
     logo: `${baseIconsUrl}/fiva-protocol.jpg`,
-    audits: "1",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

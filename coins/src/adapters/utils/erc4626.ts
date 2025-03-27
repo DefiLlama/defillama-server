@@ -25,7 +25,7 @@ export async function calculate4626Prices(
     if (!uTokens[i] || !supply[i] || !tokenBals[i] || !tokenDecimals[i]) return; // Skip if any of the values are null/call failed
     const decimalDiff = +tokenDecimals[i] - uTokenDecimals[i]
     const price = (tokenBals[i] / supply[i]) * (10 ** decimalDiff)
-    if (isNaN(price)) return; // Skip if price is not a number
+    if (isNaN(price) || !isFinite(price)) return; // Skip if price is not a number
     pricesObject[token] = { underlying: uTokens[i], price }
   })
   return getWrites({ chain, timestamp, pricesObject, projectName, })

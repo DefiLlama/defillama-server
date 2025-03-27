@@ -31,6 +31,7 @@ const hyperlane = async (): Promise<void> => {
     ).then((r) => r.json());
   const data = await bridgePromises[bridge];
   if (doneAdapters.includes(bridge)) return;
+  if (!addresses.eclipse) addresses.eclipse = [];
   data.map(({ address }: any) => addresses.eclipse.push(address));
   doneAdapters.push(bridge);
 };
@@ -111,7 +112,23 @@ const celer = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
-const adapters = [axelar(), wormhole(), celer(), hyperlane()];
+const layerzero = async (): Promise<void> => {
+  const bridge = "layerzero";
+  if (doneAdapters.includes(bridge)) return;
+
+  const staticTokens: { [chain: string]: string[] } = {
+    morph: ["0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34", "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7"],
+  };
+
+  Object.keys(staticTokens).map((chain: string) => {
+    if (!(chain in addresses)) addresses[chain] = [];
+    addresses[chain].push(...staticTokens[chain]);
+  });
+
+  doneAdapters.push(bridge);
+};
+
+const adapters = [axelar(), wormhole(), celer(), hyperlane(), layerzero()];
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {

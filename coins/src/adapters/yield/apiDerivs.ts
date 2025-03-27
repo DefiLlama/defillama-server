@@ -174,13 +174,15 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
   };
 
   const writes: Write[] = [];
-  return await getWrites({
-    underlyingChain,
-    chain,
-    timestamp,
-    pricesObject,
-    projectName,
-    writes,
-    confidence,
-  });
+  return (
+    await getWrites({
+      underlyingChain,
+      chain,
+      timestamp,
+      pricesObject,
+      projectName,
+      writes,
+      confidence,
+    })
+  ).filter((w) => !isNaN(w.price ?? NaN));
 }

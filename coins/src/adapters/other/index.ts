@@ -95,6 +95,9 @@ export function unknownTokens(timestamp: number = 0) {
 }
 export async function unknownTokens2(timestamp: number = 0) {
   const config: any = {
+    sonic: [
+      { pool: '0xD1CB1622a50506F0fDdf329CB857a0935C7FbbF9', unknown: '0x0e899dA2aD0817ed850ce68f7f489688E4D42D9D', known: '0xb1e25689d55734fd3fffc939c4c3eb52dff8a794'}
+    ],
     beam: [
       { pool: "0xe510c67dd0a54d06f04fd5af9094fe64ed605eab", unknown: "0xd51bfa777609213a653a2cd067c9a0132a2d316a", known: "0x76bf5e7d2bcb06b1444c0a2742780051d8d0e304", confidence: 1.01 },
     ],
@@ -156,6 +159,7 @@ export async function unknownTokens2(timestamp: number = 0) {
     ],
     optimism: [
       { pool: "0xf3C45b45223Df6071a478851B9C17e0630fDf535", unknown: "0x1e925De1c68ef83bD98eE3E130eF14a50309C01B", known: "0x4200000000000000000000000000000000000006", },
+      { pool: "0x62191C893DF8d26aC295BA1274a00975dc07190C", unknown: "0x676f784d19c7F1Ac6C6BeaeaaC78B02a73427852", known: "0x4200000000000000000000000000000000000006", },
     ],
   }
   const projectName = 'unknownTokensV2';

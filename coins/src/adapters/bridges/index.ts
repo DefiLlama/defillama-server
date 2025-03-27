@@ -41,6 +41,8 @@ import zircuit from "./zircuit";
 import morph from "./morph";
 import aptos from "./aptosFa";
 import sophon from "./sophon";
+import unichan from "./unichain";
+import flow from "./flow";
 
 export type Token =
   | {
@@ -88,7 +90,7 @@ export const bridges = [
   era,
   gasTokens,
   //harmony,
-  polygon,
+  // polygon,
   // solana
   //xdai
   cosmos,
@@ -109,13 +111,16 @@ export const bridges = [
   zircuit,
   morph,
   aptos,
-  sophon,
+  // sophon,
+  unichan,
+  flow,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import produceKafkaTopics from "../../utils/coins3/produce";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
+import { sendMessage } from "../../../../defi/src/utils/discord";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 
@@ -125,6 +130,18 @@ async function storeTokensOfBridge(bridge: Bridge, i: number) {
     return res;
   } catch (e) {
     console.error("Failed to store tokens of bridge", i, e);
+    if (process.env.URGENT_COINS_WEBHOOK)
+      await sendMessage(
+        `bridge ${i} storeTokens failed with: ${e}`,
+        process.env.URGENT_COINS_WEBHOOK,
+        true,
+      );
+    else
+      await sendMessage(
+        "bridges error but missing urgent webhook",
+        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        true,
+      );
   }
 }
 

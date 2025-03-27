@@ -992,7 +992,7 @@ const data2: Protocol[] = [
   /*
   {
     id: "1421",
-    name: "Enso Finance",
+    name: "Enso Finance", // removed on request of the Enso team
     address: null,
     symbol: "-",
     url: "https://www.enso.finance",
@@ -1439,7 +1439,7 @@ const data2: Protocol[] = [
     category: "Dexs",
     chains: ["Aurora"],
     oracles: [],
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     module: "polaris-finance/index.js",
     twitter: "PolarisFinance_",
     listedAt: 1645384779,
@@ -1928,6 +1928,14 @@ const data2: Protocol[] = [
     category: "Dexs",
     chains: ["Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
     oracles: ["Chainlink"], //https://learn.woo.org/v/woofi-dev-docs/resources/on-chain-price-feeds
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://learn.woo.org/v/woofi-dev-docs/resources/on-chain-price-feeds"]
+
+      }
+    ],
     forkedFrom: [],
     module: "woofi.js",
     twitter: "_WOOFi",
@@ -1938,6 +1946,7 @@ const data2: Protocol[] = [
   {
     id: "1462",
     name: "deBridge",
+    previousNames: ["DLN"],
     address: null,
     symbol: "-",
     url: "https://debridge.finance",
@@ -3564,6 +3573,7 @@ const data2: Protocol[] = [
   {
     id: "1532",
     name: "MetalX Lending", // rebrand from proton loan
+    previousNames: ["Proton Loan"],
     address: "proton:LOAN-proton-loan.token",
     symbol: "LOAN",
     url: "https://protonloan.com",
@@ -3770,6 +3780,7 @@ const data2: Protocol[] = [
   {
     id: "1541",
     name: "Portal", //rebrand from Wormhole
+    previousNames: ["Wormhole"],
     address: "solana:85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
     symbol: "W",
     url: "https://portalbridge.com",
@@ -3882,18 +3893,19 @@ const data2: Protocol[] = [
   },
   {
     id: "1546",
-    name: "Burrow",
+    name: "Rhea Lend",
+    previousNames: ["Burrow"],
     address: "near:-",
     symbol: "BRRR",
     url: "https://app.burrow.finance/",
     description:
       "Burrow is a decentralized, non-custodial, pool-based interest rates platform that enables users to supply assets to earn interest, and to borrow against them to unlock liquidity. Burrow is similar in nature to Aave, Compound, and other pool-based protocols.",
     chain: "Near",
-    logo: `${baseIconsUrl}/burrow.png`,
+    logo: `${baseIconsUrl}/rhea-lend.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "burrow",
-    cmcId: "20604",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Near"],
     oracles: ["Price Oracle"], // https://docs.burrow.finance/product-docs/how-burrow-works/oracle#price-oracle & https://github.com/DefiLlama/defillama-server/pull/8381
@@ -3904,8 +3916,8 @@ const data2: Protocol[] = [
     ],
     module: "burrow.cash/index.js",
     twitter: "burrow_finance",
+    parentProtocol: "parent#rhea-finance",
     listedAt: 1647296278,
-    github: ["NearDeFi"],
   },
   {
     id: "1547",
@@ -4109,7 +4121,7 @@ const data2: Protocol[] = [
     category: "Dexs",
     chains: ["Cronos"],
     oracles: [],
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     module: "darkness/index.js",
     twitter: "DarkCryptoFi",
     audit_links: [
@@ -5188,6 +5200,7 @@ const data2: Protocol[] = [
   {
     id: "1602",
     name: "Lenfi", // Aada rebranded
+    previousNames: ["Aada"],
     address: "cardano:asset1khk46tdfsknze9k84ae0ee0k2x8mcwhz93k70d",
     symbol: "AADA",
     url: "https://aada.finance",
@@ -5346,6 +5359,7 @@ const data2: Protocol[] = [
   {
     id: "1609",
     name: "MetalX Swap", // rebrand from proton swap
+    previousNames: ["Proton Swap"],
     address: null,
     symbol: "-",
     url: "https://www.protonswap.com/swap",
@@ -8429,7 +8443,7 @@ const data2: Protocol[] = [
     category: "Dexs",
     chains: ["Astar"],
     oracles: [],
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     module: "starbank/index.js",
     twitter: "StarbankFinance",
     audit_links: ["https://github.com/starbank-finance/starbank-contract/tree/main/audits"],
@@ -9001,7 +9015,7 @@ const data2: Protocol[] = [
     category: "Dexs",
     chains: ["Boba"],
     oracles: [],
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     module: "koyo/index.js",
     treasury: "koyo.js",
     twitter: "KoyoFinance",
@@ -9123,6 +9137,7 @@ const data2: Protocol[] = [
   {
     id: "1772",
     name: "APX Finance", // previous ApolloX , they rebrand 22/11/23  --- They merged with astherus on december 2024 https://x.com/APX_Finance/status/1864566550466089238
+    previousNames: ["ApolloX"],
     address: "bsc:0x78F5d389F5CDCcFc41594aBaB4B0Ed02F31398b3",
     symbol: "APX",
     url: "https://www.apollox.finance/en",
@@ -9560,6 +9575,7 @@ const data2: Protocol[] = [
   {
     id: "1791",
     name: "VaultCraft", //previous popcorn , they rebrand https://twitter.com/VaultCraft_io/status/1724512850616430757?s=20
+    previousNames: ["Popcorn"],
     address: "0xcE246eEa10988C495B4A90a905Ee9237a0f91543",
     symbol: "VCX",
     url: "https://vaultcraft.io/",
@@ -10245,6 +10261,7 @@ const data2: Protocol[] = [
   {
     id: "1820",
     name: "A51 Finance V2", // rebrand from Unipilot
+    previousNames: ["Unipilot"],
     address: "polygon:0xe9E7c09e82328c3107d367f6c617cF9977e63ED0",
     symbol: "A51",
     url: "https://a51.finance",
@@ -11240,6 +11257,7 @@ const data2: Protocol[] = [
     listedAt: 1656496979,
     deadUrl: true,
   },
+  /* API RETURNING WRONG VALUES
   {
     id: "1863",
     name: "Ceres Demeter",
@@ -11262,6 +11280,7 @@ const data2: Protocol[] = [
     twitter: "TokenCeres",
     listedAt: 1656496979,
   },
+  */
   {
     id: "1864",
     name: "Team Finance",
@@ -12008,7 +12027,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "sideshift-token",
     cmcId: "11726",
-    category: "Liquid Staking",
+    category: "Cross Chain Bridge",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
@@ -12386,12 +12405,12 @@ const data2: Protocol[] = [
     treasury: "betswirl.js",
     cmcId: "18453",
     category: "Prediction Market",
-    chains: ["Binance", "Ethereum", "Polygon"],
+    chains: ["Binance", "Ethereum", "Polygon", "Arbitrum", "Avalanche"],
     oracles: ["Chainlink"],
     forkedFrom: [],
     module: "betswirl/index.js",
     twitter: "BetSwirl",
-    audit_links: ["https://github.com/BetSwirl/Smart-Contracts"],
+    audit_links: ["https://paladinsec.co/projects/betswirl/"],
     listedAt: 1658236552,
     github: ["BetSwirl"],
   },
@@ -14338,7 +14357,7 @@ const data2: Protocol[] = [
     symbol: "MORPHO",
     url: "https://compound.morpho.org/?network=mainnet",
     description:
-      "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
+      "Morpho Compound is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/morpho-compound.png`,
     audits: "2",
@@ -14855,9 +14874,11 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     oraclesByChain: {
-      arbitrum: ["Chainlink", "TWAP"],
-      ethereum: ["Chainlink", "TWAP"],
-    },
+      arbitrum: ["Chainlink"],
+      ethereum: ["Chainlink"],
+      base: ["Chainlink"],
+      optimism: ["Chainlink"],
+    }, // the oracle of each pools if provided on the UI https://app.silo.finance/
     forkedFrom: [],
     module: "silo/index.js",
     twitter: "SiloFinance",
@@ -15278,6 +15299,7 @@ const data2: Protocol[] = [
   {
     id: "2038",
     name: "lisUSD", // rebrand from Helio Protocol (lisUSD)
+    previousNames: ["Helio Protocol (lisUSD)"],
     address: "bsc:0xFceB31A79F71AC9CBDCF853519c1b12D379EdC46",
     symbol: "LISTA",
     url: "https://lista.org/",
@@ -15547,7 +15569,7 @@ const data2: Protocol[] = [
     category: "Dexs",
     chains: ["Klaytn"],
     oracles: [],
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     module: "klex/index.js",
     twitter: "klexfinance",
     audit_links: ["https://github.com/balancer-labs/balancer-v2-monorepo/tree/master/audits"],
@@ -16171,10 +16193,37 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum", "Fraxtal", "Arbitrum"],
     oraclesByChain: {
-      ethereum: ["Chainlink", "RedStone"],
+      ethereum: ["Chainlink"],
       fraxtal: ["RedStone"],
       arbitrum: ["Chainlink"],
     },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: [],
+        chains: [
+          {chain: "Ethereum"},
+          {chain: "Arbitrum"}
+        ]
+      },
+      {
+        name: "Api3",
+        type: "Secondary",
+        proof: [],
+        chains: [
+          {chain: "Fraxtal"},
+        ]
+      },
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: [],
+        chains: [
+          {chain: "Fraxtal"},
+        ]
+      }
+    ],
     forkedFrom: [],
     module: "fraxlend/index.js",
     twitter: "fraxfinance",
@@ -16226,7 +16275,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "giveth/index.js",
     treasury: "giveth.js",
-    twitter: "Givethio",
+    twitter: "Giveth",
     audit_links: [
       "https://github.com/lastperson/code-reviews/blob/main/Giveth%20GIVeconomy%20Contracts%20Code%20Review.pdf",
     ],
@@ -17630,6 +17679,14 @@ const data2: Protocol[] = [
     category: "Managed Token Pools",
     chains: ["Ethereum", "Arbitrum"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/5226
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/5226"]
+
+      }
+    ],
     forkedFrom: [],
     module: "sommelier/index.js",
     twitter: "sommfinance",
@@ -18290,7 +18347,7 @@ const data2: Protocol[] = [
     symbol: "MORPHO",
     url: "https://aavev2.morpho.org/?network=mainnet",
     description:
-      "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
+      "Morpho AaveV2 is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/morpho-aave.png`,
     audits: "2",
@@ -18743,7 +18800,34 @@ const data2: Protocol[] = [
       polygon_zkevm: ["Chainlink"],
       xlayer: ["Chainlink"],
       mantle: ["Chronicle"], // https://github.com/DefiLlama/defillama-server/pull/7767
+      berachain:["Chronicle"] // https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract
     },
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/7767"],
+        chains: [
+          {chain: "Arbitrum"},
+          {chain: "Polygon zkEVM"},
+          {chain: "X Layer"}
+        ]
+      },
+      {
+        name: "Chronicle",
+        type: "Primary",
+        proof: ["https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract"], // check oracles using oracleByToken fn
+        chains: [
+          {chain: "Mantle"},
+          {chain: "Berachain"}
+        ]
+      },
+      {
+        name: "RedStone",
+        type: "Fallback",
+        proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general"],
+      }
+    ],
     audit_links: [
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20Cyfrin%20-%202023-08-23.pdf",
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20SECBIT%20-%202021-08-02.pdf",
@@ -19518,7 +19602,7 @@ const data2: Protocol[] = [
     chains: ["Velas"],
     module: "wavelength/index.js",
     twitter: "Wavelength_DAO",
-    forkedFrom: ["Balancer"],
+    forkedFrom: ["Balancer V2"],
     oracles: [],
     listedAt: 1666624359,
   },
@@ -19708,7 +19792,19 @@ const data2: Protocol[] = [
     module: "aries-markets/index.js",
     twitter: "AriesMarkets",
     forkedFrom: [],
-    oracles: ["Switchboard", "Pyth"], // https://twitter.com/AriesMarkets/status/1747453053442429338
+    oracles: ["Pyth"], 
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.ariesmarkets.xyz/aries-markets/protocol-parameters/oracles"]
+      },
+      {
+        name: "Switchboard",
+        type: "Fallback",
+        proof: ["https://discord.com/channels/1000012426479153172/1000012426923757631/1354436228518514801","https://twitter.com/AriesMarkets/status/1747453053442429338"]
+      },
+    ],
     audit_links: ["https://drive.google.com/file/d/1yyGcE3bT0D-5G_hwINMwF-4PgSzOKmz4/view"],
     listedAt: 1666868387,
   },
@@ -19931,7 +20027,7 @@ const data2: Protocol[] = [
     cmcId: "17799",
     category: "Bridge",
     chains: ["Ethereum"],
-    module: "alexar/index.js",
+    module: "axelar/index.js",
     twitter: "axelarnetwork",
     forkedFrom: [],
     oracles: [],
@@ -20560,7 +20656,7 @@ const data2: Protocol[] = [
     module: "orderly-network/index.js",
     twitter: "OrderlyNetwork",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update (Upgraded to Pyth Lazer for price feeds)
     audit_links: ["https://github.com/OrderlyNetwork/Audits"],
     parentProtocol: "parent#orderly-network",
     listedAt: 1668086145,
@@ -21232,7 +21328,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/hmx.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "hmx",
+    gecko_id: null,
     cmcId: null,
     category: "Derivatives",
     chains: ["Polygon", "Arbitrum"],
@@ -21240,7 +21336,24 @@ const data2: Protocol[] = [
     twitter: "HMXorg",
     forkedFrom: [],
     oracles: ["Pyth","Stork"], // https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle
-    github: ["HMXOrg"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle"]
+      },
+      {
+        name: "Stork",
+        type: "Aggregator",
+        proof: ["https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle"]
+      },
+      {
+        name: "RedStone",
+        type: "Aggregator",
+        proof: ["https://docs.hmx.org/hmx/about-hmx-protocol/price-oracle"]
+      },
+    ],
+    parentProtocol: "parent#desk",
     listedAt: 1668805259,
   },
   {
@@ -21518,6 +21631,14 @@ const data2: Protocol[] = [
       "https://2926710696-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Ffrb9MGTK6eZJlEQJyylq%2Fuploads%2F1jfEDpGcd5YlnHusbKYO%2FNeodymeJito.pdf",
     ],
     oracles: [],
+    oraclesBreakdown: [
+      {
+        name: "Switchboard",
+        type: "Secondary",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9193"]
+
+      }
+    ],
     listedAt: 1669265429,
     github: ["jito-foundation"],
   },
@@ -21640,7 +21761,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://www.gate.io",
     description:
-      "Leading cryptocurrency exchange with over 3,200+ cryptocurrencies such as Bitcoin, Ethereum, Dogecoin, and more.",
+      "Established in 2013, Gate.io is a cryptocurrency exchange serving over 22 million global users. The platform supports spot trading, futures contracts, margin trading, and wealth management products for more than 3,800 cryptocurrencies, using zero-knowledge technology to ensure transparency and verifiability of user assets. Gate entities are licensed or registered in jurisdictions including Hong Kong, Gibraltar, Malta, Italy, Australia, Lithuania, Dubai DMCC, and the Bahamas",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gate-io.jpg`,
     audits: "0",
@@ -24829,7 +24950,7 @@ const data2: Protocol[] = [
     module: "metropolis/index.js",
     twitter: "MetropolisDEX",
     oracles: [],
-    forkedFrom: ["TraderJoe"],
+    forkedFrom: ["Trader Joe DEX"],
     listedAt: 1674059066,
   },
   {
@@ -24919,7 +25040,7 @@ const data2: Protocol[] = [
     category: "Liquidity manager",
     chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon"],
     module: "bunni/index.js",
-    twitter: "Timeless_Fi",
+    twitter: "bunni_xyz",
     oracles: [],
     forkedFrom: [],
     parentProtocol: "parent#timeless",
@@ -25959,6 +26080,7 @@ const data2: Protocol[] = [
   {
     id: "2502",
     name: "Mantle Treasury", // rebranded from BitDAO
+    previousNames: ["BitDAO"],
     address: "0x3c3a81e81dc49a522a592e7622a7e711c06bf354",
     symbol: "MNT",
     url: "https://www.mantle.xyz/",
@@ -28626,6 +28748,7 @@ const data2: Protocol[] = [
   {
     id: "2619",
     name: "MetalX Dex", // rebrand from Proton Dex
+    previousNames: ["Proton Dex"],
     address: "proton:",
     symbol: "-",
     url: "https://app.metalx.com/dex",
@@ -29322,9 +29445,9 @@ const data2: Protocol[] = [
     name: "CoreSwap",
     address: "0x8326321a7777Cd5D650c1da6A497f0D06633781e",
     symbol: "cSWAP",
-    url: "https://www.coreswap.finance/",
+    url: "https://www.coreswap.io/",
     description:
-      "coreswap.finance is an Automated Market Maker (AMM) protocol and liquidity pool designed for efficient trading between crypto-assets. The trading activity on coreswap.finance captures fees as revenue for liquidity providers, resulting in a decentralized market and trading experience.",
+      "coreswap.io is an Automated Market Maker (AMM) protocol and liquidity pool designed for efficient trading between crypto-assets. The trading activity on coreswap.finance captures fees as revenue for liquidity providers, resulting in a decentralized market and trading experience.",
     chain: "CORE",
     logo: `${baseIconsUrl}/coreswap.jpg`,
     audits: "0",
@@ -29714,7 +29837,7 @@ const data2: Protocol[] = [
     cmcId: "24771",
     category: "Lending",
     chains: ["Polygon", "Linea"],
-    oracles: ["Chainlink", "API3"],
+    oracles: ["Chainlink", "Api3"],
     forkedFrom: ["Compound V2"],
     module: "paxo-finance/index.js",
     twitter: "wefi_xyz",
@@ -30391,6 +30514,7 @@ const data2: Protocol[] = [
     audit_links: [" https://smardex.io/audit-reports"],
     listedAt: 1679329866,
   },
+  /*
   {
     id: "2696",
     name: "Overnight DAI+",
@@ -30414,6 +30538,7 @@ const data2: Protocol[] = [
     stablecoins: ["dai+"],
     listedAt: 1679332234,
   },
+  */
   {
     id: "2697",
     name: "Bond Protocol",

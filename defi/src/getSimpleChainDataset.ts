@@ -126,7 +126,7 @@ export async function getSimpleChainDatasetInternal(rawChain: string, params: an
   });
 
   if (grid.length <= 2) {
-    return { error: "No chain with that name exists" }
+    return { error: "No chain with that name exists " + globalChain };
   } else {
     // convert data to csv format
     const csv = grid.map((r) => r.join(",")).join("\n");

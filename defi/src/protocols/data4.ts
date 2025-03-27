@@ -1212,18 +1212,18 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Arbitrum","Sonic"],
     oraclesByChain: {
-      sonic: ["RedStone"], // https://app.silo.finance/
+      sonic: ["RedStone"], 
     },
     oraclesBreakdown: [
       {
         name: "RedStone",
         type: "Primary",
-        proof: ["https://silopedia.silo.finance/oracles"]
+        proof: ["https://app.silo.finance","https://github.com/DefiLlama/defillama-server/pull/9560"]
       },
       {
         name: "Chainlink",
         type: "Secondary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9388"]
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9388","https://silopedia.silo.finance/oracles"]
       }
     ],
     forkedFrom: [],

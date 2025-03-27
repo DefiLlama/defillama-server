@@ -1,4 +1,4 @@
-import { getErrorDBConnection } from "./getDBConnection";
+import { getErrorDBConnection } from "./utils/shared/getDBConnection";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { sendMessage } from "./utils/discord";
 import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared";

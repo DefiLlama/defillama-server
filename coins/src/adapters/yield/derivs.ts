@@ -1,4 +1,5 @@
 import { getCurrentUnixTimestamp } from "../../utils/date";
+import { nullAddress } from "../../utils/shared/constants";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
@@ -12,6 +13,7 @@ type Config = {
   underlyingChain?: string;
   symbol?: string;
   decimals?: number;
+  confidence?: number;
 };
 
 const lrts = (target: string) => {
@@ -137,30 +139,10 @@ const configs: { [adapter: string]: Config } = {
     address: "0x8a053350ca5F9352a16deD26ab333e2D251DAd7c",
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
   },
-  steakLRT: {
-    rate: lrts("0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc"),
-    chain: "ethereum",
-    address: "0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc",
-  },
-  Re7LRT: {
-    rate: lrts("0x84631c0d0081fde56deb72f6de77abbbf6a9f93a"),
-    chain: "ethereum",
-    address: "0x84631c0d0081fde56deb72f6de77abbbf6a9f93a",
-  },
   Re7BTC: {
     rate: lrts("0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444"),
     chain: "ethereum",
     address: "0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444",
-  },
-  amphrETH: {
-    rate: lrts("0x5fd13359ba15a84b76f7f87568309040176167cd"),
-    chain: "ethereum",
-    address: "0x5fd13359ba15a84b76f7f87568309040176167cd",
-  },
-  rstETH: {
-    rate: lrts("0x7a4effd87c2f3c55ca251080b1343b605f327e3a"),
-    chain: "ethereum",
-    address: "0x7a4effd87c2f3c55ca251080b1343b605f327e3a",
   },
   weETHk: {
     rate: async ({ api }) => {
@@ -168,7 +150,7 @@ const configs: { [adapter: string]: Config } = {
         abi: "function getRate() external view returns (uint256)",
         target: "0x126af21dc55C300B7D0bBfC4F3898F558aE8156b",
       });
-      return rate / 1e10;
+      return rate / 1e18;
     },
     chain: "ethereum",
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -278,6 +260,88 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x8457ca5040ad67fdebbcc8edce889a335bc0fbfb",
     address: "0xb6D149C8DdA37aAAa2F8AD0934f2e5682C35890B",
   },
+  LFT: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256) external view returns (uint256)",
+        target: "0x270Ee1564eC483DD83f284E4D7bDFbfaa2feA76E",
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "base",
+    underlying: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    address: "0x8c213ee79581Ff4984583C6a801e5263418C4b86",
+  },
+  USDO: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256) external view returns (uint256)",
+        target: "0xaD55aebc9b8c03FC43cd9f62260391c13c23e7c0",
+        params: 1e12,
+      });
+      return 1e12 / rate;
+    },
+    chain: "ethereum",
+    underlying: "0xaD55aebc9b8c03FC43cd9f62260391c13c23e7c0",
+    address: "0x8238884Ec9668Ef77B90C6dfF4D1a9F4F4823BFe",
+  },
+  asBNB: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToTokens(uint256) external view returns (uint256)",
+        target: "0x2F31ab8950c50080E77999fa456372f276952fD8",
+        params: 1e12,
+      });
+      return 1e12 / rate;
+    },
+    chain: "bsc",
+    underlying: "0xB0b84D294e0C75A6abe60171b70edEb2EFd14A1B", // slisBNB
+    address: "0x77734e70b6e88b4d82fe632a168edf6e700912b6", // asBNB
+  },
+  vIP: {
+    rate: async ({ api }) => {
+      const target = await api.call({
+        abi: "address:stakePool",
+        target: "0x20Cb9DCb6FC306c31325bdA6221AA5e067B9Da51",
+      });
+      const rate = await api.call({
+        abi: "function calculateIPWithdrawal(uint256) view returns (uint256)",
+        target,
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "sty",
+    underlying: nullAddress, // IP
+    address: "0x5267F7eE069CEB3D8F1c760c215569b79d0685aD",
+  },
+  hywstHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:balancePerShare",
+        target: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0xfFaa4a3D97fE9107Cef8a3F48c069F577Ff76cC1",
+    address: "0xC8b6E0acf159E058E22c564C0C513ec21f8a1Bf5",
+  },
+  sUSDa: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function getAmountByShares(uint256) view returns (uint256)",
+        target: "0x01e3cc8E17755989ad2CAFE78A822354Eb5DdFA6",
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "ethereum",
+    underlying: "0x8A60E489004Ca22d775C5F2c657598278d17D9c2",
+    address: "0x2B66AAdE1e9C062FF411bd47C44E0Ad696d43BD9",
+    confidence: 1
+  },
 };
 
 export async function derivs(timestamp: number) {
@@ -287,8 +351,15 @@ export async function derivs(timestamp: number) {
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {
-  const { chain, underlying, address, underlyingChain, symbol, decimals } =
-    config;
+  const {
+    chain,
+    underlying,
+    address,
+    underlyingChain,
+    symbol,
+    decimals,
+    confidence,
+  } = config;
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const api = await getApi(chain, t, true);
   const pricesObject: any = {
@@ -308,5 +379,6 @@ async function deriv(timestamp: number, projectName: string, config: Config) {
     pricesObject,
     projectName,
     writes,
+    confidence,
   });
 }

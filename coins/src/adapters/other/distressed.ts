@@ -1,3 +1,5 @@
+import { lowercase } from "../../utils/coingeckoPlatforms";
+
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
     pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
@@ -45,7 +47,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     // AIUS: "0xe3dbc4f88eaa632ddf9708732e2832eeaa6688ab",
     PEAK: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78",
     XYZ: "0x618679df9efcd19694bb1daa8d00718eacfa2883",
-    "PT-USD0++-27MAR2025": "0x5bae9a5d67d1ca5b09b14c91935f635cfbf3b685"
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -77,6 +78,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     GRAIN: "0x80bb30d62a16e1f2084deae84dc293531c3ac3a1",
     //'SolvBTC.BBN': "0x346c574c56e1a4aaa8dc88cda8f7eb12b39947ab"
     HAMI: "0x02150e97271fdc0d6e3a16d9094a0948266f07dd",
+    KNC: "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb"
   },
   bsc: {
     BGEO: "0xc342774492b54ce5f8ac662113ed702fc1b34972",
@@ -119,7 +121,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     BCCOIN: "0x2940566Eb50F15129238f4Dc599ADC4F742D7d8E",
     PNIC: "0x76d36d44dc4595e8d2eb3ad745f175eda134284f",
     "PENDLE-LPT": "0x0921ccc98956b1599003fd9739d5e66bf319a161",
-    "PT-USD0++-27MAR2025": "0x5bae9a5d67d1ca5b09b14c91935f635cfbf3b685"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
@@ -293,7 +294,11 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   base: {
     WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E",
+    WANDER: "0xef0fd52e65ddcdc201e2055a94d2abff6ff10a7a",
   },
+  sonic: {
+    wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6"
+  }
   // merlin: {
   //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"
   // }
@@ -303,10 +308,7 @@ export const distressedAssets = Object.fromEntries(
   Object.entries(contracts)
     .map(([chain, tokens]) => {
       return Object.entries(tokens).map(([_symbol, address]) => {
-        return [
-          `${chain}:${chain === "solana" ? address : address.toLowerCase()}`,
-          true,
-        ];
+        return [`${chain}:${lowercase(address, chain)}`, true];
       });
     })
     .flat(),

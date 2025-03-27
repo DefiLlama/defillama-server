@@ -1,5 +1,5 @@
 import { addressList } from "../../../../dimension-adapters/users/list";
-import { getAccountsDBConnection } from "../../../getDBConnection";
+import { getAccountsDBConnection } from "../../../utils/shared/getDBConnection";
 import { storeChainGas } from "../queries/gas";
 import { storeAllNewUsers } from "../queries/newUsers";
 import { storeChainTxs } from "../queries/txs";

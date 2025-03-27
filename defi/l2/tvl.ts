@@ -10,7 +10,7 @@ import { getCurrentUnixTimestamp } from "../src/utils/date";
 import { getChainDisplayName } from "../src/utils/normalizeChain";
 import { verifyChanges } from "./test";
 
-export default async function main(timestamp?: number) {
+export default async function main(override?: boolean, timestamp?: number) {
   const { data: canonical } = await fetchTvls({ isCanonical: true, timestamp });
   let [{ tvlData: native, mcapData }, incoming, { data: protocols }] = await Promise.all([
     fetchMinted({
@@ -52,7 +52,7 @@ export default async function main(timestamp?: number) {
     delete chains[c];
   });
 
-  await verifyChanges(chains);
+  if (!timestamp && override != true) await verifyChanges(chains);
 
   return chains;
 }
@@ -163,7 +163,7 @@ async function translateToChainData(
     const mcaps = await mcapsPromise;
     const address = Object.keys(mcaps).find((k: string) => k.startsWith(chain)) ?? ownToken.address;
     const mcap = address && address in mcaps ? mcaps[address].mcap : total;
-    const thisAssetMcap = BigNumber.min(mcap, total).times(percOnThisChain);
+    const thisAssetMcap = BigNumber.min(total, percOnThisChain.times(mcap));
     translatedData[chain].ownTokens.total = translatedData[chain].ownTokens.total.plus(thisAssetMcap);
     translatedData[chain].ownTokens.breakdown[ownToken.ticker] =
       translatedData[chain].ownTokens.breakdown[ownToken.ticker].plus(thisAssetMcap);

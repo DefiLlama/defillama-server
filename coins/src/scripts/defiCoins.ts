@@ -1,7 +1,6 @@
 require("dotenv").config();
 import {
   batchWriteWithAlerts,
-  batchWrite2WithAlerts,
   filterWritesWithLowConfidence,
 } from "../adapters/utils/database";
 import { withTimeout } from "../../../defi/src/utils/shared/withTimeout";
@@ -53,9 +52,9 @@ async function storeDefiCoins() {
               true,
             ),
           ]);
-          await batchWrite2WithAlerts(
-            resultsWithoutDuplicates.slice(i, i + step),
-          );
+          // await batchWrite2WithAlerts(
+          //   resultsWithoutDuplicates.slice(i, i + step),
+          // );
         }
       } catch (e) {
         console.error(`ERROR: ${adapterKey} adapter failed ${e}`);

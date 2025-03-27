@@ -52,6 +52,8 @@ async function contractCalls(
 
   let price = (val.output * priceEth) / balance.output;
 
+  if (isNaN(price)) return;
+
   addToDBWritesList(
     writes,
     chain,

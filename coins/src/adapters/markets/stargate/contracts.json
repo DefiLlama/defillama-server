@@ -375,5 +375,13 @@
         "0x23A46eFDa973Bd4e97Ee84bAc87018537538D078"
       ]
     }
+  },
+  "lightlink_phoenix": {
+    "eth": {
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "pools": [
+        "0x2237919c01d752262c696617eaCf352a7e712267"
+      ]
+    }
   }
 }

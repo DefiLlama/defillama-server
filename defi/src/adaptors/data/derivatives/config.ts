@@ -72,8 +72,9 @@ export default {
         },
         "id": "2814"
     },
-    "hyperliquid": {
-        "id": "2862",
+    "hyperliquid-perp": {
+        parentId: "Hyperliquid",
+        "id": "5507",
         "enabled": true
     },
     "dydx": {
@@ -111,7 +112,7 @@ export default {
         "protocolsData": {
             "derivatives": {
                 "id": "2356",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "El Dorado Exchange - Derivatives"
             }
         },
@@ -152,7 +153,7 @@ export default {
         "protocolsData": {
             "derivatives": {
                 "id": "3209",
-                "category": "Dexes",
+                "category": "Dexs",
             }
         },
     },
@@ -694,6 +695,7 @@ export default {
     },
     "edgeX": {
         id: "4954",
+        "enabled": true,
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1723075200": true,
@@ -720,7 +722,7 @@ export default {
     "filament": {
         id: "5177",
     },
-    "idex-v4": {
+    "kuma-v1": {
         id: "5079"
     },
     "trado": {
@@ -756,5 +758,83 @@ export default {
     },
     "adrena": {
         id: "5353"
+    },
+    "thetis-market": {
+        parentId: "Thetis Market",
+        id: "5469"
+    },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
+            }
+        }
+    },
+    "satoshi-perps": {
+        id: "5571",
+        protocolsData: {
+            "derivatives": {
+                "id": "5571",
+            }
+        }
+    },
+    "lnexchange-perp": {
+        id: "5639",
+    },
+    "cvex": {
+        id: "5610"
+    },
+    "amped": {
+        id: "3833",
+        protocolsData: {
+            "derivatives": {
+                id: "3833",
+            }
+        }
+    },
+    "raydium-perps": {
+        id: "5729",
+    },
+    "wavex": {
+        id: "5737",
+        protocolsData: {
+            "derivatives": {
+                id: "5737",
+            }
+        }
+    },
+    "citrex-markets": {
+        id: "5641",
+        protocolsData: {
+            "derivatives": {
+                id: "5641",
+            }
+        }
+
+    },
+    "flexperp": {
+        id: "5843"
+    },
+    "electra": {
+        id: "5817"
+    },
+    "desk": {
+        id: "5813"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-trade": {
+                id: "5406"
+            }
+        }
+    },
+    "extended": {
+        id: "5887"
+    },
+    "agdex": {
+        id: "5467"
     }
 } as AdaptorsConfig

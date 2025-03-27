@@ -275,5 +275,48 @@ export default {
   },
   "bitgetwallet": {
     id: "3207",
+  },
+  "thetis-market": {
+    parentId: "Thetis Market",
+    id: "5483"
+  },
+  "swing": {
+      id: "5474"
+  },
+  "anqa": {
+      id: "5621"
+  },
+  "joe-agg": {
+      id: "5618"
+  },
+  "ooia": {
+    id: "5630"
+  },
+  "symphony": {
+    id: "5637"
+  },
+  "starbase": {
+    id: "5661"
+  },
+  "superswap": {
+    id: "5668",
+  },
+  "enso": {
+    id: "5741",
+  },
+  "1delta": {
+    id: "5740",
+  },
+  "defiapp": {
+    id: "5819",
+  },
+  "erc-burner": {
+      id: "5859"
+  },
+  "oogabooga": {
+    id: "5880"
+  },
+  "mosaic": {
+    id: "5890"
   }
 } as AdaptorsConfig;

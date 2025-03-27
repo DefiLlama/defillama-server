@@ -9195,7 +9195,7 @@ const data4: Protocol[] = [
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"]
       },
       {
-        name: "Pyth",
+        name: "Tellor",
         type: "Fallback",
         proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"]
       }

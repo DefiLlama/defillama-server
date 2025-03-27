@@ -200,15 +200,15 @@ const data4: Protocol[] = [
   },
   {
     id: "5568",
-    name: "FIVA Protocol",
+    name: "FIVA",
     address: null,
     symbol: "-",
     url: "https://www.thefiva.com",
     description:
-      "FIVA is a yield tokenization protocol that offers fixed yields on tokens, enables leveraged yield farming from other protocols, and allows liquidity provision without impermanent loss for its pools.",
+      "FIVA is a yield optimization protocol on TON that enables users to lock in guaranteed fixed yields, farm future airdrops with up to 100x leverage, and provide liquidity with near-zero impermanent loss.",
     chain: "TON",
     logo: `${baseIconsUrl}/fiva-protocol.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -216,6 +216,7 @@ const data4: Protocol[] = [
     chains: ["TON"],
     oracles: [],
     forkedFrom: [],
+    audit_links: ["https://www.thefiva.com/fiva_audit_report_032025.pdf"],
     module: "fiva/index.js",
     twitter: "FivaProtocol",
     listedAt: 1735573225

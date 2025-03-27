@@ -44790,7 +44790,19 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     module: "superposition/index.js",
     forkedFrom: [],
-    oracles: ["Pyth", "Switchboard"], //  https://docs.superposition.finance/asset-pricing
+    oracles: ["Pyth", "Switchboard"], 
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.superposition.finance/asset-pricing"]
+      },
+      {
+        name: "Switchboard",
+        type: "Aggregator",
+        proof: ["https://docs.superposition.finance/asset-pricing"]
+      }
+    ],
     twitter: "superp_fi",
     listedAt: 1716371512,
   },

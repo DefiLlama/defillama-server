@@ -146,6 +146,11 @@
       "to": "coingecko#ethereum:0x8236a87084f8B84306f72007F36F2618A5634494",
       "decimals": 18,
       "symbol": "LBTC"
+    },
+    "0xA18717e22dfAbB36f0242259df4e9E563b6Ec70a": {
+      "decimals": "8",
+      "symbol": "WFBTC",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "alephium": {
@@ -728,6 +733,11 @@
     "0xc152d5a599f83b3d0098cbadb23fce95f27ff30b": {
       "decimals": "8",
       "symbol": "lfbtc-cian-eth",
+      "to": "coingecko#ignition-fbtc"
+    },
+    "0x7aAd7A95fCf14B826AC96176590C8e7aad19bbd4": {
+      "decimals": "8",
+      "symbol": "WFBTC",
       "to": "coingecko#ignition-fbtc"
     }
   },
@@ -4972,6 +4982,11 @@
       "to": "coingecko#universal-btc",
       "decimals": 18,
       "symbol": "uBTC"
+    },
+    "0x5fabd1D440a90eE57Dd698ea096B91F994B6DF56": {
+      "decimals": "8",
+      "symbol": "WFBTC",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "rss3_vsl": {

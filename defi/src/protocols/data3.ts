@@ -44791,14 +44791,19 @@ const data3: Protocol[] = [
     module: "superposition/index.js",
     forkedFrom: [],
     oracles: ["Pyth", "Switchboard"], 
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
+    oraclesBreakdown: [ // concordia aggregator
+      { 
+        name: "Pyth", 
         type: "Aggregator",
         proof: ["https://docs.superposition.finance/asset-pricing"]
       },
       {
         name: "Switchboard",
+        type: "Aggregator",
+        proof: ["https://docs.superposition.finance/asset-pricing"]
+      },
+      {
+        name: "Coingecko",
         type: "Aggregator",
         proof: ["https://docs.superposition.finance/asset-pricing"]
       }

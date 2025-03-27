@@ -60072,7 +60072,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.more.markets",
     description:
-      " MORE Markets is a Morpho-based lending protocol that extends Morpho’s featureset to include non-custodial asset management by expanding Morpho’s curation function and undercollateralized loans for rated and KYC’ed borrowers in isolated premium markets.",
+      "MORE Markets is a decentralized lending protocol that lets users easily lend and borrow digital assets. The protocol is designed for permissionless market creation, removing any need for approval or oversight from a central authority.",
     chain: "Flow",
     logo: `${baseIconsUrl}/more-markets.png`,
     audits: "0",
@@ -60082,7 +60082,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Flow"],
     oracles: ["Pyth"],  // https://docs.more.markets/borrow/oracles-and-pricing
-    forkedFrom: ["Morpho"],
+    forkedFrom: ["AAVE V3"],
     module: "more-markets/index.js",
     twitter: "More_Protocol",
     github: ["MoreLabsXYZ"],

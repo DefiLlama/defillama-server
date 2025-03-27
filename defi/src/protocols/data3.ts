@@ -32873,6 +32873,9 @@ const data3: Protocol[] = [
     twitter: "ethena_labs",
     parentProtocol: "parent#ethena",
     audit_links: ["https://ethena-labs.gitbook.io/ethena-labs/resources/audits#quantstamp-audit-on-v2-of-contracts"],
+    tokensExcludedFromParent: {
+      Ethereum: ["USDTB"],
+    },
     listedAt: 1708016301,
   },
   {

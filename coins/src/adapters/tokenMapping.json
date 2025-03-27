@@ -7756,6 +7756,11 @@
       "decimals": "18",
       "symbol": "egETH",
       "to": "coingecko#weth"
+    },
+    "0xF9775085d726E782E83585033B58606f7731AB18": {
+      "decimals": "8",
+      "symbol": "uniBTC",
+      "to": "coingecko#universal-btc"
     }
   },
   "oas": {

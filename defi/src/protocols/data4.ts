@@ -201,14 +201,15 @@ const data4: Protocol[] = [
   {
     id: "5568",
     name: "FIVA",
+    previousNames: ["FIVA Protocol"],
     address: null,
     symbol: "-",
     url: "https://www.thefiva.com",
     description:
       "FIVA is a yield optimization protocol on TON that enables users to lock in guaranteed fixed yields, farm future airdrops with up to 100x leverage, and provide liquidity with near-zero impermanent loss.",
     chain: "TON",
-    logo: `${baseIconsUrl}/fiva-protocol.jpg`,
-    audits: "1",
+    logo: `${baseIconsUrl}/fiva.jpg`,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

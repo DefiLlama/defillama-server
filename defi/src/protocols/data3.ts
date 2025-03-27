@@ -63646,7 +63646,7 @@ const data3: Protocol[] = [
     url: "https://hyperion.xyz/",
     description: "Hyperion is a fully on-chain hybrid Orderbook-AMM DEX built natively for Aptos, leveraging its exceptional throughput and minimal latency to deliver a seamless trading experience for both professional and retail users.",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/hyperfluid.jpg`,
+    logo: `${baseIconsUrl}/hyperion.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

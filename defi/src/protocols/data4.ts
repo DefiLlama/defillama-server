@@ -9100,5 +9100,26 @@ const data4: Protocol[] = [
     audit_links: ["https://drive.google.com/file/d/12APmNFf_dy2HBnDof_u0mM03_5vKSPWN/view?usp=sharing"],
     listedAt: 1743002205
   },
+  {
+    id: "5954",
+    name: "DexToro",
+    address: null,
+    symbol: "-",
+    url: "https://www.dextoro.com/",
+    description:
+      "Discover, Buy, and Sell Memecoins & Altcoins on Solana with Apple Pay",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/dextoro.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Solana"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "DexToroApp",
+  },
 ];
 export default data4;

@@ -61004,6 +61004,13 @@ const data3: Protocol[] = [
     twitter: "solayer_labs",
     forkedFrom: [],
     oracles: ["Switchboard"],
+    oraclesBreakdown: [
+      {
+        name: "Switchboard",
+        type: "Primary",
+        proof: ["https://docs.solayer.org/assets/susd/protocol-info/oracle&price_feeds#api-overview"]
+      }
+    ],
     audit_links: ["https://docs.solayer.org/security/audits"],
     parentProtocol: "parent#solayer",
     listedAt: 1731623194,

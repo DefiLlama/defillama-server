@@ -34391,13 +34391,13 @@ const data3: Protocol[] = [
     oraclesBreakdown: [
       {
       name: "Stork",
-      type: "Primary",
+      type: "Aggregator",
       proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
       }
       {
       name: "Redstone",
-      type: "Secondary",
-      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/risks/protocol-risks#oracle-risk"],
+      type: "Aggregator",
+      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
       }
     ],
     audit_links: ["https://certificate.quantstamp.com/full/evaa/df7aa699-793b-49f7-b348-1f78e9ca9870/index.html"],

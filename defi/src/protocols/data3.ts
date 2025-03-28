@@ -34406,7 +34406,7 @@ const data3: Protocol[] = [
     module: "evaa/index.js",
     twitter: "evaaprotocol",
     forkedFrom: [],
-    oracles: ["Stork", "Redstone", "Pyth"],
+    oracles: ["Stork", "RedStone", "Pyth"],
     oraclesBreakdown: [
       {
       name: "Stork",
@@ -34414,7 +34414,7 @@ const data3: Protocol[] = [
       proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
       },
       {
-      name: "Redstone",
+      name: "RedStone",
       type: "Aggregator",
       proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
       },

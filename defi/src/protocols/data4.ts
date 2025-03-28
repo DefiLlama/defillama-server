@@ -9205,6 +9205,7 @@ const data4: Protocol[] = [
       "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-01-Hexens.pdf", 
       "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-03-Decurity.pdf"
     ],
+    parentProtocol: "parent#secured-finance",
     listedAt: 1743107377
   },
   {

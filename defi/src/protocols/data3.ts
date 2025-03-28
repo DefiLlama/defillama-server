@@ -34365,14 +34365,15 @@ const data3: Protocol[] = [
   },
   {
     id: "4197",
-    name: "Secured Finance",
+    name: "Secured Finance Lending",
+    previousNames: ["Secured Finance"],
     address: null,
     symbol: "-",
     url: "https://secured.finance",
     description:
       "Secured Finance built a full on-chain Orderbook-based Rates DeFi Trading Platform to facilitate the lending and borrowing of digital assets to construct yield curves in the DeFi space.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/secured-finance.jpg`,
+    logo: `${baseIconsUrl}/secured-finance-lending.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -34384,7 +34385,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/Secured-Finance/contracts/blob/develop/audits/2023-12-Quantstamp.pdf"],
-    github: ["Secured-Finance"],
+    parentProtocol: "parent#secured-finance",
     listedAt: 1709216649,
   },
   {

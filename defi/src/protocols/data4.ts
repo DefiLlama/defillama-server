@@ -9321,7 +9321,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CEX",
     chains: ["Bitcoin", "Ethereum"],
-    module: "qx/index.js",
+    module: "lbank-exchange/index.js",
     forkedFrom: [],
     oracles: [],
     twitter: "LBank_Exchange",

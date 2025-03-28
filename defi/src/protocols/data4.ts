@@ -200,15 +200,16 @@ const data4: Protocol[] = [
   },
   {
     id: "5568",
-    name: "FIVA Protocol",
+    name: "FIVA",
+    previousNames: ["FIVA Protocol"],
     address: null,
     symbol: "-",
     url: "https://www.thefiva.com",
     description:
-      "FIVA is a yield tokenization protocol that offers fixed yields on tokens, enables leveraged yield farming from other protocols, and allows liquidity provision without impermanent loss for its pools.",
+      "FIVA is a yield optimization protocol on TON that enables users to lock in guaranteed fixed yields, farm future airdrops with up to 100x leverage, and provide liquidity with near-zero impermanent loss.",
     chain: "TON",
-    logo: `${baseIconsUrl}/fiva-protocol.jpg`,
-    audits: "0",
+    logo: `${baseIconsUrl}/fiva.jpg`,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -216,6 +217,7 @@ const data4: Protocol[] = [
     chains: ["TON"],
     oracles: [],
     forkedFrom: [],
+    audit_links: ["https://www.thefiva.com/fiva_audit_report_032025.pdf"],
     module: "fiva/index.js",
     twitter: "FivaProtocol",
     listedAt: 1735573225
@@ -1212,18 +1214,18 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Arbitrum","Sonic"],
     oraclesByChain: {
-      sonic: ["Chainlink"], // https://silopedia.silo.finance/oracles
+      sonic: ["RedStone"], 
     },
     oraclesBreakdown: [
       {
-        name: "Chainlink",
+        name: "RedStone",
         type: "Primary",
-        proof: ["https://silopedia.silo.finance/oracles"]
+        proof: ["https://app.silo.finance","https://github.com/DefiLlama/defillama-server/pull/9560"]
       },
       {
-        name: "RedStone",
+        name: "Chainlink",
         type: "Secondary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9388"]
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9388","https://silopedia.silo.finance/oracles"]
       }
     ],
     forkedFrom: [],
@@ -8942,6 +8944,7 @@ const data4: Protocol[] = [
   {
     id: "5947",
     name: "Yaakoswap",
+    previousNames: ["MTT Dex"],
     address: null,
     symbol: "-",
     url: "https://www.mtt.network/",
@@ -9052,6 +9055,255 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.arbius.ai/Arbius-V4-audit.pdf", "https://docs.arbius.ai/Arbius-Protocol_final-audit.pdf"],
     github: ["semperai"],
     listedAt: 1742912328
+  },
+  {
+    id: "5952",
+    name: "Corepound",
+    address: "core:0x56663F56333717A32Cd91ec41182d6d76D98864e",
+    symbol: "CORP",
+    url: "https://corepound.xyz/",
+    description:
+      "Corepound is a BTCfi yield layer built on the Core chain. With AI-driven algorithms and advancing strategies embedded, it aims to optimize yields for users. Corepound also offers impressive features, dedicated to delivering an impact to the DeFi world.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/corepound.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["CORE"],
+    module: "corepound/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "corepoundxyz",
+    audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/Corepound%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
+    listedAt: 1743001221
+  },
+  {
+    id: "5953",
+    name: "PICWE",
+    address: null,
+    symbol: "-",
+    url: "https://www.picwe.org/en",
+    description:
+      "A decentralized, trustless, omni-chain liquidity infrastructure enabling seamless, cost-efficient trading across multiple blockchains and liquidity pools.",
+    chain: "Movement",
+    logo: `${baseIconsUrl}/picwe.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Movement"],
+    module: "picwe/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "PicWeGlobal",
+    audit_links: ["https://drive.google.com/file/d/12APmNFf_dy2HBnDof_u0mM03_5vKSPWN/view?usp=sharing"],
+    listedAt: 1743002205
+  },
+  {
+    id: "5954",
+    name: "DexToro",
+    address: null,
+    symbol: "-",
+    url: "https://www.dextoro.com/",
+    description:
+      "Discover, Buy, and Sell Memecoins & Altcoins on Solana with Apple Pay",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/dextoro.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Solana"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "DexToroApp",
+  },
+  {
+    id: "5955",
+    name: "Keiko Finance",
+    address: null,
+    symbol: "-",
+    url: "https://keikofinance.com/",
+    description:
+      "Keiko is a permissionless borrowing protocol with dynamic interest rates and liquidation ratios on Hyperliquid",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/keiko-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Hyperliquid"],
+    module: "keiko/index.js",
+    forkedFrom: ["Liquity V1"],
+    oracles: [],
+    twitter: "KeikoFinance",
+    audit_links: ["https://868243508-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FX9T1gtc0GaUwKt6nB7re%2Fuploads%2FtlH8qUSse1o03zsH2WVm%2FKeiko_audit_report.pdf?alt=media&token=e5b0fc71-ca73-4be5-a1c3-c8d9862d28ec"],
+    listedAt: 1743074842
+  },
+  {
+    id: "5956",
+    name: "Bearn",
+    address: null,
+    symbol: "-",
+    url: "https://bearn.sucks/home",
+    description:
+      "BGT liquid locker and autocompounder.",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/bearn.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Berachain"],
+    module: "bearn/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Bearnsucks",
+    github: ["Bearn-Sucks"],
+    listedAt: 1743074892
+  },
+  {
+    id: "5957",
+    name: "USDFC",
+    address: null,
+    symbol: "-",
+    url: "https://app.usdfc.net/#/",
+    description:
+      "USDFC is a Filecoin-backed Stablecoin.",
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/usdfc.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Filecoin"],
+    module: "usdfc/index.js",
+    forkedFrom: ["Liquity V1"],
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"]
+      },
+      {
+        name: "Tellor",
+        type: "Fallback",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"]
+      }
+    ],
+    twitter: "USDFC_Protocol",
+    audit_links: [
+      "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-01-Hexens.pdf", 
+      "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-03-Decurity.pdf"
+    ],
+    parentProtocol: "parent#secured-finance",
+    listedAt: 1743107377
+  },
+  {
+    id: "5958",
+    name: "GoldMiner",
+    address: null,
+    symbol: "-",
+    url: "https://goldminer.finance/",
+    description:
+      "First miner on Sonic. Earn up to 8% daily on your staked $S and earn 15% referral rewards.",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/goldminer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Ponzi",
+    chains: ["Sonic"],
+    module: "GoldMiner/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "goldminersonic",
+    listedAt: 1743107385
+  },
+  {
+    id: "5959",
+    name: "Evoq Finance",
+    address: null,
+    symbol: "-",
+    url: "https://evoq.finance",
+    description:
+      "Evoq Finance is a p2p-based lending optimizer that operates alongside existing pool-based lending protocols, such as Aave, Compound, and Venus, to provide better rates for both suppliers and borrowers through peer-to-peer (p2p) matching.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/evoq-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    module: "evoq/index.js",
+    forkedFrom: ["Morpho Compound"],
+    oracles: [],
+    twitter: "Evoq_Finance",
+    audit_links: [
+      "https://drive.google.com/file/d/1lMosZQvcDvGoX60d-h8C0YxJD_IhyxJD/view",
+      "https://github.com/zokyo-sec/audit-reports/blob/main/Evoq%20Finance/Evoq%20Finance_Zokyo_audit_report_Jan9th_2025.pdf"
+    ],
+    github: ["evoqfinance"],
+    listedAt: 1743107397
+  },
+  {
+    id: "5960",
+    name: "Hyperpie",
+    address: null,
+    symbol: "-",
+    url: "https://www.hyperliquid.magpiexyz.io/stake",
+    description:
+      "Hyperpie is an integrated DeFi ecosystem built on Hyperliquid, composed of a Liquid Staking platform, a MEME launchpad, and a MEME DEX. Designed around a ve(3,3) tokenomics model, it aligns incentives across HYPE stakers, meme project creators, liquidity providers, and HPP token holders. HPP is the governance token of Hyperpie",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/hyperpie.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Hyperliquid"],
+    module: "hyperpie/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Hyperpiexyz_io",
+    audit_links: [
+      "https://github.com/astrasecai/audit-reports/blob/main/AstraSec-AuditReport-Hyperpie.pdf",
+      "https://github.com/SupremacyTeam/publications/blob/main/Magpie/Supremacy-Audit-Report-Hyperpie-v1.0.pdf"
+    ],
+    listedAt: 1743107407
+  },
+  {
+    id: "5961",
+    name: "QX",
+    address: null,
+    symbol: "-",
+    url: "https://qx.qubic.org/",
+    description:
+      "QX is a decentralized exchange running as a smart contract on the Qubic network.",
+    chain: "Qubic",
+    logo: `${baseIconsUrl}/qx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Qubic"],
+    module: "qx/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "_Qubic_",
+    listedAt: 1743107417
   },
 ];
 export default data4;

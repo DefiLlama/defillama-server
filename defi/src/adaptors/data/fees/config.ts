@@ -2576,7 +2576,7 @@ export default {
     "rings": {
         id: "5526"
     },
-    "hyperfluid": {
+    "hyperion": {
         id: "5480"
     },
     "ton": {
@@ -2871,5 +2871,17 @@ export default {
     },
     "traderjoe-lend": {
         id: "2179"
+    },
+    "vaultcraft": {
+        id: "1791"
+    },
+    "dextoro": {
+        id: "5954"
+    },
+    "filament-v1": {
+        id: "5650"
+    },
+    "move": {
+        id: "3073"
     }
 } as AdaptorsConfig

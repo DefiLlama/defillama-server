@@ -16262,7 +16262,7 @@ const data2: Protocol[] = [
     address: "0x900dB999074d9277c5DA2A43F252D74366230DA0",
     symbol: "GIV",
     url: "https://giveth.io",
-    description: "Get rewarded for giving to for-good projects with zero added fees.",
+    description: "Crypto donations since 2016 | $900K+ in $GIV rewarded | $3.8M+ raised for impact projects | Quadratic Funding since 2023 | Evolving Nonprofits: https://blog.giveth.io/the-power-of-giv-reimagining-public-goods-funding-1c5ab2a867e9",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/giveth.png`,
     audits: "2",
@@ -18894,7 +18894,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Ethereum", "Fantom", "Avalanche", "Arbitrum", "Moonbeam", "Optimism", "Polygon", "xDai"],
+    chains: ["Ethereum", "Avalanche", "Arbitrum", "Moonbeam", "Optimism", "Polygon", "xDai"],
     module: "sushiswap-bentobox/index.js",
     forkedFrom: [],
     oracles: [],
@@ -19792,7 +19792,19 @@ const data2: Protocol[] = [
     module: "aries-markets/index.js",
     twitter: "AriesMarkets",
     forkedFrom: [],
-    oracles: ["Switchboard", "Pyth"], // https://twitter.com/AriesMarkets/status/1747453053442429338
+    oracles: ["Pyth"], 
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.ariesmarkets.xyz/aries-markets/protocol-parameters/oracles"]
+      },
+      {
+        name: "Switchboard",
+        type: "Fallback",
+        proof: ["https://discord.com/channels/1000012426479153172/1000012426923757631/1354436228518514801","https://twitter.com/AriesMarkets/status/1747453053442429338"]
+      },
+    ],
     audit_links: ["https://drive.google.com/file/d/1yyGcE3bT0D-5G_hwINMwF-4PgSzOKmz4/view"],
     listedAt: 1666868387,
   },
@@ -20644,7 +20656,7 @@ const data2: Protocol[] = [
     module: "orderly-network/index.js",
     twitter: "OrderlyNetwork",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://orderly.network/docs/changelog/evm#february-25th%2C-2025-major-update (Upgraded to Pyth Lazer for price feeds)
     audit_links: ["https://github.com/OrderlyNetwork/Audits"],
     parentProtocol: "parent#orderly-network",
     listedAt: 1668086145,

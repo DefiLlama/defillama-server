@@ -2880,5 +2880,8 @@ export default {
     },
     "filament-v1": {
         id: "5650"
+    },
+    "move": {
+        id: "3073"
     }
 } as AdaptorsConfig

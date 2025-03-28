@@ -2909,5 +2909,8 @@ export default {
     },
     "gacha": {
         id: "5942"
+    },
+    "kittypunch-stable": {
+        id: "5790"
     }
 } as AdaptorsConfig

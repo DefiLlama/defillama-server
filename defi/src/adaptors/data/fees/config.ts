@@ -2877,5 +2877,8 @@ export default {
     },
     "dextoro": {
         id: "5954"
+    },
+    "filament-v1": {
+        id: "5650"
     }
 } as AdaptorsConfig

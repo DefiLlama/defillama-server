@@ -16530,7 +16530,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Linea"],
     module: "mendi-finance/index.js",
-    twitter: "MendiFinance",
+    twitter: "malda_xyz",
     forkedFrom: ["Compound V2"],
     oracles: ["Api3", "Chainlink", "eOracle"], // https://github.com/DefiLlama/defillama-server/pull/7002 , https://github.com/DefiLlama/defillama-server/pull/8792
     github: ["mendi-finance"],

@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"@defillama/sdk": "^5.0.129",
+		"@elastic/elasticsearch": "^8.17.1",
+		"aws-sdk": "^2.1692.0",
+		"node-fetch": "^3.3.2",
+		"postgres": "^3.4.5"
+	}
+}

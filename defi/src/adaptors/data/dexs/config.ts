@@ -2910,7 +2910,7 @@ export default {
     "gacha": {
         id: "5942"
     },
-    "filament-v1": {
-        id: "5650"
+    "kittypunch-stable": {
+        id: "5790"
     }
 } as AdaptorsConfig

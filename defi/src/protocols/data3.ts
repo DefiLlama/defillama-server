@@ -34406,7 +34406,24 @@ const data3: Protocol[] = [
     module: "evaa/index.js",
     twitter: "evaaprotocol",
     forkedFrom: [],
-    oracles: ["RedStone"], //https://evaa.gitbook.io/intro/details-of-protocol/risks/protocol-risks#oracle-risk
+    oracles: ["Stork", "Redstone", "Pyth"],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Aggregator",
+      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
+      },
+      {
+      name: "Redstone",
+      type: "Aggregator",
+      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
+      },
+            {
+      name: "Pyth",
+      type: "Aggregator",
+      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
+      }
+    ],
     audit_links: ["https://certificate.quantstamp.com/full/evaa/df7aa699-793b-49f7-b348-1f78e9ca9870/index.html"],
     github: ["evaafi"],
     listedAt: 1709220208,
@@ -60616,7 +60633,7 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum"],
     module: "reservoir-protocol/index.js",
-    twitter: "__reservoir",
+    twitter: "reservoir_xyz",
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://www.halborn.com/audits/fortunafi/reservoir-updated"],

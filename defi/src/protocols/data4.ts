@@ -9281,6 +9281,7 @@ const data4: Protocol[] = [
       "https://github.com/astrasecai/audit-reports/blob/main/AstraSec-AuditReport-Hyperpie.pdf",
       "https://github.com/SupremacyTeam/publications/blob/main/Magpie/Supremacy-Audit-Report-Hyperpie-v1.0.pdf"
     ],
+    parentProtocol: "parent#magpie-ecosystem",
     listedAt: 1743107407
   },
   {
@@ -9304,6 +9305,51 @@ const data4: Protocol[] = [
     oracles: [],
     twitter: "_Qubic_",
     listedAt: 1743107417
+  },
+  {
+    id: "5962",
+    name: "LBank",
+    address: null,
+    symbol: "-",
+    url: "https://www.lbank.com",
+    description:
+      "Founded in 2015, LBank Exchange is a top cryptocurrency trading platform with licenses of NFA, MSB, and Canada MSB. LBank Exchange provides global users with secure, professional, and convenient products and services, including Cryptocurrency Trading, Derivatives, Staking, NFT, and LBK Labs investment",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/lbank.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum"],
+    module: "lbank-exchange/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "LBank_Exchange",
+  },
+  {
+    id: "5963",
+    name: "Resupply",
+    address: null,
+    symbol: "-",
+    url: "https://resupply.fi/",
+    description:
+      "A decentralized stablecoin protocol, leveraging the liquidity and stability of lending markets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/resupply.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "resupply/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "ResupplyFi",
+    audit_links: ["https://docs.resupply.fi/faq/audits"],
+    github: ["resupplyfi"],
+    listedAt: 1743178567
   },
 ];
 export default data4;

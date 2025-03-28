@@ -15270,7 +15270,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum", "Avalanche"],
+    chains: ["Arbitrum", "Avalanche", "Solana"],
     module: "gmx-v2/index.js",
     twitter: "GMX_IO",
     forkedFrom: [],

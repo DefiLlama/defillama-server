@@ -7650,7 +7650,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "Save (formerly Solend) is an algorithmic, decentralized protocol for lending and borrowing on Solana. Lending and borrowing has proven itself as being key in a DeFi ecosystem. However, current products are slow and expensive. On Solana, Solend can scale to being 100x faster and 100x cheaper. Solend aims to be the easiest to use and most secure solution on Solana.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/save.jpg`, 
+    logo: `${baseIconsUrl}/save.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "solend",
@@ -8762,7 +8762,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "509",
-    name: "Tinlake", 
+    name: "Tinlake",
   //  previousNames: ["Centrifuge"],
     address: "0xc221b7e65ffc80de234bbb6667abdd46593d34f0",
     symbol: "CFG",
@@ -18502,7 +18502,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "drift.js",
     twitter: "DriftProtocol",
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Switchboard"],
     audit_links: ["https://github.com/Zellic/publications/blob/master/Drift%20Protocol%20Audit%20Report.pdf"],
     parentProtocol: "parent#drift",
     listedAt: 1638568951,

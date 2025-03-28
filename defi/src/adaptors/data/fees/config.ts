@@ -2871,5 +2871,11 @@ export default {
     },
     "traderjoe-lend": {
         id: "2179"
+    },
+    "vaultcraft": {
+        id: "1791"
+    },
+    "dextoro": {
+        id: "5954"
     }
 } as AdaptorsConfig

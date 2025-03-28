@@ -34365,8 +34365,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4197",
-    name: "Secured Finance Lending",
-    previousNames: ["Secured Finance"],
+    name: "Secured Finance Lending", // previously Secured Finance
     address: null,
     symbol: "-",
     url: "https://secured.finance",

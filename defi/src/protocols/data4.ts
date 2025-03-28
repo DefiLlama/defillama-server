@@ -9305,5 +9305,26 @@ const data4: Protocol[] = [
     twitter: "_Qubic_",
     listedAt: 1743107417
   },
+  {
+    id: "5962",
+    name: "LBank",
+    address: null,
+    symbol: "-",
+    url: "https://www.lbank.com",
+    description:
+      "Founded in 2015, LBank Exchange is a top cryptocurrency trading platform with licenses of NFA, MSB, and Canada MSB. LBank Exchange provides global users with secure, professional, and convenient products and services, including Cryptocurrency Trading, Derivatives, Staking, NFT, and LBK Labs investment",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/lbank.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum"],
+    module: "qx/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "LBank_Exchange",
+  },
 ];
 export default data4;

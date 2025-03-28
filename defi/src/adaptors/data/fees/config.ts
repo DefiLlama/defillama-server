@@ -2883,5 +2883,8 @@ export default {
     },
     "move": {
         id: "3073"
+    },
+    "snakefinance": {
+        id: "5760"
     }
 } as AdaptorsConfig

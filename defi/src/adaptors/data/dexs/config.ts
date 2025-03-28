@@ -2839,7 +2839,7 @@ export default {
     "degen-launchpad": {
         id: "5857"
     },
-    "hyperfluid": {
+    "hyperion": {
         id: "5480"
     },
     "metropolis-amm": {
@@ -2909,5 +2909,8 @@ export default {
     },
     "gacha": {
         id: "5942"
+    },
+    "kittypunch-stable": {
+        id: "5790"
     }
 } as AdaptorsConfig

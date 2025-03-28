@@ -200,15 +200,16 @@ const data4: Protocol[] = [
   },
   {
     id: "5568",
-    name: "FIVA Protocol",
+    name: "FIVA",
+    previousNames: ["FIVA Protocol"],
     address: null,
     symbol: "-",
     url: "https://www.thefiva.com",
     description:
-      "FIVA is a yield tokenization protocol that offers fixed yields on tokens, enables leveraged yield farming from other protocols, and allows liquidity provision without impermanent loss for its pools.",
+      "FIVA is a yield optimization protocol on TON that enables users to lock in guaranteed fixed yields, farm future airdrops with up to 100x leverage, and provide liquidity with near-zero impermanent loss.",
     chain: "TON",
-    logo: `${baseIconsUrl}/fiva-protocol.jpg`,
-    audits: "0",
+    logo: `${baseIconsUrl}/fiva.jpg`,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -216,6 +217,7 @@ const data4: Protocol[] = [
     chains: ["TON"],
     oracles: [],
     forkedFrom: [],
+    audit_links: ["https://www.thefiva.com/fiva_audit_report_032025.pdf"],
     module: "fiva/index.js",
     twitter: "FivaProtocol",
     listedAt: 1735573225
@@ -1212,18 +1214,18 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Arbitrum","Sonic"],
     oraclesByChain: {
-      sonic: ["Chainlink"], // https://silopedia.silo.finance/oracles
+      sonic: ["RedStone"], 
     },
     oraclesBreakdown: [
       {
-        name: "Chainlink",
+        name: "RedStone",
         type: "Primary",
-        proof: ["https://silopedia.silo.finance/oracles"]
+        proof: ["https://app.silo.finance","https://github.com/DefiLlama/defillama-server/pull/9560"]
       },
       {
-        name: "RedStone",
+        name: "Chainlink",
         type: "Secondary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/9388"]
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9388","https://silopedia.silo.finance/oracles"]
       }
     ],
     forkedFrom: [],
@@ -9166,6 +9168,188 @@ const data4: Protocol[] = [
     twitter: "Bearnsucks",
     github: ["Bearn-Sucks"],
     listedAt: 1743074892
+  },
+  {
+    id: "5957",
+    name: "USDFC",
+    address: null,
+    symbol: "-",
+    url: "https://app.usdfc.net/#/",
+    description:
+      "USDFC is a Filecoin-backed Stablecoin.",
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/usdfc.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Filecoin"],
+    module: "usdfc/index.js",
+    forkedFrom: ["Liquity V1"],
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"]
+      },
+      {
+        name: "Tellor",
+        type: "Fallback",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14034"]
+      }
+    ],
+    twitter: "USDFC_Protocol",
+    audit_links: [
+      "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-01-Hexens.pdf", 
+      "https://github.com/Secured-Finance/stablecoin-contracts/blob/develop/audits/2025-03-Decurity.pdf"
+    ],
+    parentProtocol: "parent#secured-finance",
+    listedAt: 1743107377
+  },
+  {
+    id: "5958",
+    name: "GoldMiner",
+    address: null,
+    symbol: "-",
+    url: "https://goldminer.finance/",
+    description:
+      "First miner on Sonic. Earn up to 8% daily on your staked $S and earn 15% referral rewards.",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/goldminer.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Ponzi",
+    chains: ["Sonic"],
+    module: "GoldMiner/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "goldminersonic",
+    listedAt: 1743107385
+  },
+  {
+    id: "5959",
+    name: "Evoq Finance",
+    address: null,
+    symbol: "-",
+    url: "https://evoq.finance",
+    description:
+      "Evoq Finance is a p2p-based lending optimizer that operates alongside existing pool-based lending protocols, such as Aave, Compound, and Venus, to provide better rates for both suppliers and borrowers through peer-to-peer (p2p) matching.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/evoq-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    module: "evoq/index.js",
+    forkedFrom: ["Morpho Compound"],
+    oracles: [],
+    twitter: "Evoq_Finance",
+    audit_links: [
+      "https://drive.google.com/file/d/1lMosZQvcDvGoX60d-h8C0YxJD_IhyxJD/view",
+      "https://github.com/zokyo-sec/audit-reports/blob/main/Evoq%20Finance/Evoq%20Finance_Zokyo_audit_report_Jan9th_2025.pdf"
+    ],
+    github: ["evoqfinance"],
+    listedAt: 1743107397
+  },
+  {
+    id: "5960",
+    name: "Hyperpie",
+    address: null,
+    symbol: "-",
+    url: "https://www.hyperliquid.magpiexyz.io/stake",
+    description:
+      "Hyperpie is an integrated DeFi ecosystem built on Hyperliquid, composed of a Liquid Staking platform, a MEME launchpad, and a MEME DEX. Designed around a ve(3,3) tokenomics model, it aligns incentives across HYPE stakers, meme project creators, liquidity providers, and HPP token holders. HPP is the governance token of Hyperpie",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/hyperpie.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Hyperliquid"],
+    module: "hyperpie/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Hyperpiexyz_io",
+    audit_links: [
+      "https://github.com/astrasecai/audit-reports/blob/main/AstraSec-AuditReport-Hyperpie.pdf",
+      "https://github.com/SupremacyTeam/publications/blob/main/Magpie/Supremacy-Audit-Report-Hyperpie-v1.0.pdf"
+    ],
+    parentProtocol: "parent#magpie-ecosystem",
+    listedAt: 1743107407
+  },
+  {
+    id: "5961",
+    name: "QX",
+    address: null,
+    symbol: "-",
+    url: "https://qx.qubic.org/",
+    description:
+      "QX is a decentralized exchange running as a smart contract on the Qubic network.",
+    chain: "Qubic",
+    logo: `${baseIconsUrl}/qx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Qubic"],
+    module: "qx/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "_Qubic_",
+    listedAt: 1743107417
+  },
+  {
+    id: "5962",
+    name: "LBank",
+    address: null,
+    symbol: "-",
+    url: "https://www.lbank.com",
+    description:
+      "Founded in 2015, LBank Exchange is a top cryptocurrency trading platform with licenses of NFA, MSB, and Canada MSB. LBank Exchange provides global users with secure, professional, and convenient products and services, including Cryptocurrency Trading, Derivatives, Staking, NFT, and LBK Labs investment",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/lbank.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum"],
+    module: "lbank-exchange/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "LBank_Exchange",
+  },
+  {
+    id: "5963",
+    name: "Resupply",
+    address: null,
+    symbol: "-",
+    url: "https://resupply.fi/",
+    description:
+      "A decentralized stablecoin protocol, leveraging the liquidity and stability of lending markets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/resupply.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "resupply/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "ResupplyFi",
+    audit_links: ["https://docs.resupply.fi/faq/audits"],
+    github: ["resupplyfi"],
+    listedAt: 1743178567
   },
 ];
 export default data4;

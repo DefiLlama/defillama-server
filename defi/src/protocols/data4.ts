@@ -9281,6 +9281,7 @@ const data4: Protocol[] = [
       "https://github.com/astrasecai/audit-reports/blob/main/AstraSec-AuditReport-Hyperpie.pdf",
       "https://github.com/SupremacyTeam/publications/blob/main/Magpie/Supremacy-Audit-Report-Hyperpie-v1.0.pdf"
     ],
+    parentProtocol: "parent#magpie-ecosystem",
     listedAt: 1743107407
   },
   {

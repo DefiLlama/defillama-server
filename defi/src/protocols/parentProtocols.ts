@@ -6717,6 +6717,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "centrifuge",
     github: ["centrifuge"]
+  },
+  {
+    id: "parent#secured-finance",
+    name: "Secured Finance",
+    url: "https://secured.finance/",
+    description: "Secured Finance brings you next-generation DeFi solutions, combining fixed-rate lending, stable yields, and RWA integration.",
+    logo: `${baseIconsUrl}/secured-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Secured_Fi",
+    github: ["Secured-Finance"],
   }
 ];
 

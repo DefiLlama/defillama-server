@@ -2839,7 +2839,7 @@ export default {
     "degen-launchpad": {
         id: "5857"
     },
-    "hyperfluid": {
+    "hyperion": {
         id: "5480"
     },
     "metropolis-amm": {

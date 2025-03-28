@@ -2576,7 +2576,7 @@ export default {
     "rings": {
         id: "5526"
     },
-    "hyperfluid": {
+    "hyperion": {
         id: "5480"
     },
     "ton": {

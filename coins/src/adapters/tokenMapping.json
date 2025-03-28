@@ -936,6 +936,11 @@
     }
   },
   "arbitrum": {
+    "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
     "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978": {
       "decimals": "18",
       "symbol": "CRV",
@@ -6247,12 +6252,6 @@
       "to": "coingecko#bitcoin",
       "decimals": 18,
       "symbol": "uBTC"
-    },
-    "0xe85411c030fb32a9d8b14bbbc6cb19417391f711": {
-      "name": "suBTC",
-      "decimals": "18",
-      "symbol": "suBTC",
-      "to": "coingecko#bitcoin"
     },
     "0x5a2aa871954eBdf89b1547e75d032598356caad5": {
       "name": "pumpBTC",

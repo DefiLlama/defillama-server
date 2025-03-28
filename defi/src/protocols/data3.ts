@@ -60633,7 +60633,7 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum"],
     module: "reservoir-protocol/index.js",
-    twitter: "__reservoir",
+    twitter: "reservoir_xyz",
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://www.halborn.com/audits/fortunafi/reservoir-updated"],

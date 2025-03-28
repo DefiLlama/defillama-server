@@ -2909,8 +2909,5 @@ export default {
     },
     "gacha": {
         id: "5942"
-    },
-    "filament-v1": {
-        id: "5650"
     }
 } as AdaptorsConfig

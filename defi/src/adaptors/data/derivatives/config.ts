@@ -836,5 +836,8 @@ export default {
     },
     "agdex": {
         id: "5467"
+    },
+    "filament-v1": {
+        id: "5650"
     }
 } as AdaptorsConfig

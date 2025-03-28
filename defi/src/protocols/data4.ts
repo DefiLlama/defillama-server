@@ -9327,5 +9327,29 @@ const data4: Protocol[] = [
     oracles: [],
     twitter: "LBank_Exchange",
   },
+  {
+    id: "5963",
+    name: "Resupply",
+    address: null,
+    symbol: "-",
+    url: "https://resupply.fi/",
+    description:
+      "A decentralized stablecoin protocol, leveraging the liquidity and stability of lending markets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/resupply.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "resupply/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "ResupplyFi",
+    audit_links: ["https://docs.resupply.fi/faq/audits"],
+    github: ["resupplyfi"],
+    listedAt: 1743178567
+  },
 ];
 export default data4;

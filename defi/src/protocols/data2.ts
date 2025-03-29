@@ -16262,7 +16262,7 @@ const data2: Protocol[] = [
     address: "0x900dB999074d9277c5DA2A43F252D74366230DA0",
     symbol: "GIV",
     url: "https://giveth.io",
-    description: "Get rewarded for giving to for-good projects with zero added fees.",
+    description: "Crypto donations since 2016 | $900K+ in $GIV rewarded | $3.8M+ raised for impact projects | Quadratic Funding since 2023 | Evolving Nonprofits: https://blog.giveth.io/the-power-of-giv-reimagining-public-goods-funding-1c5ab2a867e9",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/giveth.png`,
     audits: "2",

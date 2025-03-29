@@ -15270,7 +15270,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum", "Avalanche"],
+    chains: ["Arbitrum", "Avalanche", "Solana"],
     module: "gmx-v2/index.js",
     twitter: "GMX_IO",
     forkedFrom: [],
@@ -16530,7 +16530,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Linea"],
     module: "mendi-finance/index.js",
-    twitter: "MendiFinance",
+    twitter: "malda_xyz",
     forkedFrom: ["Compound V2"],
     oracles: ["Api3", "Chainlink", "eOracle"], // https://github.com/DefiLlama/defillama-server/pull/7002 , https://github.com/DefiLlama/defillama-server/pull/8792
     github: ["mendi-finance"],
@@ -28436,7 +28436,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Solana", "Arbitrum", "Avalanche", "Tron"],
+    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Solana", "Arbitrum", "Avalanche", "Tron", "Base", "Celo", "Stellar", "Sui"],
     oracles: [],
     forkedFrom: [],
     module: "allbridge-core/index.js",
@@ -34365,14 +34365,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4197",
-    name: "Secured Finance",
+    name: "Secured Finance Lending", // previously Secured Finance
     address: null,
     symbol: "-",
     url: "https://secured.finance",
     description:
       "Secured Finance built a full on-chain Orderbook-based Rates DeFi Trading Platform to facilitate the lending and borrowing of digital assets to construct yield curves in the DeFi space.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/secured-finance.jpg`,
+    logo: `${baseIconsUrl}/secured-finance-lending.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -34384,7 +34384,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/Secured-Finance/contracts/blob/develop/audits/2023-12-Quantstamp.pdf"],
-    github: ["Secured-Finance"],
+    parentProtocol: "parent#secured-finance",
     listedAt: 1709216649,
   },
   {
@@ -34406,7 +34406,24 @@ const data3: Protocol[] = [
     module: "evaa/index.js",
     twitter: "evaaprotocol",
     forkedFrom: [],
-    oracles: ["RedStone"], //https://evaa.gitbook.io/intro/details-of-protocol/risks/protocol-risks#oracle-risk
+    oracles: ["Stork", "RedStone", "Pyth"],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Aggregator",
+      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
+      },
+      {
+      name: "RedStone",
+      type: "Aggregator",
+      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
+      },
+            {
+      name: "Pyth",
+      type: "Aggregator",
+      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
+      }
+    ],
     audit_links: ["https://certificate.quantstamp.com/full/evaa/df7aa699-793b-49f7-b348-1f78e9ca9870/index.html"],
     github: ["evaafi"],
     listedAt: 1709220208,
@@ -54811,14 +54828,14 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.level.money",
     description:
-      "Level is a stablecoin protocol powered by restaked dollar tokens like USDT and USDC.",
+      "Level is a yield-bearing stablecoin protocol powered by USDT and USDC deposited into DeFi-native sources.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/level-money.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "CDP",
     chains: ["Ethereum"],
     module: "level-money/index.js",
     oracles: [],
@@ -60072,7 +60089,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.more.markets",
     description:
-      " MORE Markets is a Morpho-based lending protocol that extends Morpho’s featureset to include non-custodial asset management by expanding Morpho’s curation function and undercollateralized loans for rated and KYC’ed borrowers in isolated premium markets.",
+      "MORE Markets is a decentralized lending protocol that lets users easily lend and borrow digital assets. The protocol is designed for permissionless market creation, removing any need for approval or oversight from a central authority.",
     chain: "Flow",
     logo: `${baseIconsUrl}/more-markets.png`,
     audits: "0",
@@ -60082,7 +60099,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Flow"],
     oracles: ["Pyth"],  // https://docs.more.markets/borrow/oracles-and-pricing
-    forkedFrom: ["Morpho"],
+    forkedFrom: ["AAVE V3"],
     module: "more-markets/index.js",
     twitter: "More_Protocol",
     github: ["MoreLabsXYZ"],
@@ -60616,7 +60633,7 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum"],
     module: "reservoir-protocol/index.js",
-    twitter: "__reservoir",
+    twitter: "reservoir_xyz",
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://www.halborn.com/audits/fortunafi/reservoir-updated"],
@@ -61003,7 +61020,14 @@ const data3: Protocol[] = [
     module: "solayer-susd/index.js",
     twitter: "solayer_labs",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Switchboard"],
+    oraclesBreakdown: [
+      {
+        name: "Switchboard",
+        type: "Primary",
+        proof: ["https://docs.solayer.org/assets/susd/protocol-info/oracle&price_feeds#api-overview"]
+      }
+    ],
     audit_links: ["https://docs.solayer.org/security/audits"],
     parentProtocol: "parent#solayer",
     listedAt: 1731623194,

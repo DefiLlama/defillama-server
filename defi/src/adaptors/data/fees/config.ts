@@ -2890,4 +2890,10 @@ export default {
     "baker-dao": {
         id: "5964"
     },
+    "hedera": {
+        id: "295"
+    },
+    "pinksale": {
+        id: "1807"
+    }
 } as AdaptorsConfig

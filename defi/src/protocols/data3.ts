@@ -9269,7 +9269,7 @@ const data3: Protocol[] = [
     ],
     listedAt: 1686607089,
   },
-  /* add new listing 
+  /* add new listing
   {
     id: "3103",
     name: "Maple RWA",
@@ -18059,7 +18059,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3489",
-    name: "Haedal Protocol", 
+    name: "Haedal Protocol",
     address: null,
     symbol: "-",
     assetToken: "HASUI",
@@ -22067,7 +22067,7 @@ const data3: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/pyth-network-oracle", "https://github.com/DefiLlama/defillama-server/pull/9239"]
-   
+
       },
       {
         name: "Chainlink",
@@ -31193,7 +31193,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs", 
+    category: "Dexs",
     chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: ["Uniswap V2"],
@@ -36153,7 +36153,7 @@ const data3: Protocol[] = [
         type: "Primary",
         proof: ["https://docs.suilend.fi/security/risks"]
       }
-    ],  
+    ],
     forkedFrom: [],
     audit_links: ["https://docs.suilend.fi/security/audit"],
     parentProtocol: "parent#suilend-protocol",
@@ -38291,7 +38291,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oracles: ["Pyth"], //https://docs.echelon.market/echelon-v1/risks#oracle-risk
+    oracles: ["Pyth", "Switchboard"], //https://docs.echelon.market/echelon-v1/risks#oracle-risk
     forkedFrom: [],
     module: "echelon/index.js",
     twitter: "EchelonMarket",
@@ -44790,10 +44790,10 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     module: "superposition/index.js",
     forkedFrom: [],
-    oracles: ["Pyth", "Switchboard"], 
+    oracles: ["Pyth", "Switchboard"],
     oraclesBreakdown: [ // concordia aggregator
-      { 
-        name: "Pyth", 
+      {
+        name: "Pyth",
         type: "Aggregator",
         proof: ["https://docs.superposition.finance/asset-pricing"]
       },
@@ -56075,7 +56075,7 @@ const data3: Protocol[] = [
     cmcId: "33841",
     category: "Cross Chain Bridge",
     chains: ["Fantom"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "crosscurve/index.js",
     twitter: "eywaprotocol",
@@ -59323,7 +59323,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Hedera"],
-    oracles: ["Chainlink"], //HBAR and USDC Markets secured by Chainlink: 
+    oracles: ["Chainlink"], //HBAR and USDC Markets secured by Chainlink:
     oraclesBreakdown: [
       {
         name: "Chainlink",

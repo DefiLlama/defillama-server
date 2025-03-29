@@ -2040,7 +2040,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Aptos"],
-    oracles: ["Pyth", "Switchboard"],
+    oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",

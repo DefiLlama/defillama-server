@@ -38318,8 +38318,8 @@ const data3: Protocol[] = [
       {
         name: "Switchboard",
         type: "Secondary",
-        proof: "https://app.echelon.market/markets?network=aptos_mainnet"],
-      }
+        proof: ["https://app.echelon.market/markets?network=aptos_mainnet"],
+      },
     ],
     forkedFrom: [],
     module: "echelon/index.js",

@@ -384,6 +384,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MorphoLabs",
     governanceID: ["snapshot:morpho.eth"],
+    treasury: "morpho.js",
     github: ["morpho-org"],
   },
   {

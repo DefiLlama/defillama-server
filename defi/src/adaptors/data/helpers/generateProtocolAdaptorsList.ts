@@ -179,7 +179,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         const ids: Array<string> = []
         const parentIds: Array<string> = []
 
-        Object.entries(protocolsData as any).forEach(([versionKey, versionConfig]: any) => {
+        Object.entries((protocolsData ?? {}) as any).forEach(([versionKey, versionConfig]: any) => {
           if (!versionConfig || versionConfig.enabled === false) return;
 
           const childConfig = { ...configObj, ...versionConfig }

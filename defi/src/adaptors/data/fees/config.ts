@@ -2883,5 +2883,11 @@ export default {
     },
     "move": {
         id: "3073"
-    }
+    },
+    "snakefinance": {
+        id: "5760"
+    },
+    "baker-dao": {
+        id: "5964"
+    },
 } as AdaptorsConfig

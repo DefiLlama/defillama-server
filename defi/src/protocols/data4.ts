@@ -8519,7 +8519,7 @@ const data4: Protocol[] = [
     name: "getHemiNames",
     address: null,
     symbol: "-",
-    url: "https://app.quokkalend.xyz",
+    url: "https://www.getheminames.me/",
     description:
       "Digital identities natively issued on Hemi Chain to connect you with all the chains across Web3.",
     chain: "Hemi",

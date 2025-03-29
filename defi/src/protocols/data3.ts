@@ -2041,6 +2041,18 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Aptos"],
     oracles: ["Pyth", "Switchboard"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
+      },
+      {
+        name: "Switchboard",
+        type: "Secondary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
+      }
+    ],
     forkedFrom: [],
     module: "move-dollar/index.js",
     twitter: "ThalaLabs",

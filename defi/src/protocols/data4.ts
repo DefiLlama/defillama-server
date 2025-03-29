@@ -9351,5 +9351,27 @@ const data4: Protocol[] = [
     github: ["resupplyfi"],
     listedAt: 1743178567
   },
+  {
+    id: "5964",
+    name: "BakerDAO",
+    address: "berachain:0x0003eedfdd020bf60d10cf684abac7c4534b7ead",
+    symbol: "BREAD",
+    url: "https://www.bakerdao.io/",
+    description:
+      "BakerDAO combines token economics, collateralized lending, leverage, and Proof-of-Liquidity into a single cohesive financial ecosystem",
+    chain: "Berachain",
+    logo: `${baseIconsUrl}/bakerdao.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "bread-2",
+    cmcId: null,
+    category: "Reserve Currency",
+    chains: ["Berachain"],
+    module: "dummy.js",
+    forkedFrom: ["Eggs Finance"],
+    oracles: [],
+    twitter: "BakerDAO420",
+    audit_links: ["https://documentation.bakerdao.io/security"],
+  },
 ];
 export default data4;

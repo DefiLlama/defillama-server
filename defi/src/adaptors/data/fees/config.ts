@@ -2886,5 +2886,8 @@ export default {
     },
     "snakefinance": {
         id: "5760"
-    }
+    },
+    "baker-dao": {
+        id: "5964"
+    },
 } as AdaptorsConfig

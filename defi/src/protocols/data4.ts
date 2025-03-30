@@ -9373,5 +9373,26 @@ const data4: Protocol[] = [
     twitter: "BakerDAO420",
     audit_links: ["https://documentation.bakerdao.io/security"],
   },
+  {
+    id: "5965",
+    name: "Sandglass",
+    address: null,
+    symbol: "-",
+    url: "https://sandglass.so/markets",
+    description:
+      "Solana's yield trading protocol. Built by the Lifinity team",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/sandglass.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Solana"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "sandglass_so",
+  },
 ];
 export default data4;

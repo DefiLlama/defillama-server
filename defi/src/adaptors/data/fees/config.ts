@@ -2895,5 +2895,11 @@ export default {
     },
     "pinksale": {
         id: "1807"
-    }
+    },
+    "katana": {
+        id: "797"
+    },
+    "saucerswap": {
+        id: "1979"
+    },
 } as AdaptorsConfig

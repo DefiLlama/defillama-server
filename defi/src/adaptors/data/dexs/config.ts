@@ -2918,4 +2918,7 @@ export default {
     "justbet": {
         id:"5950"
     },
+    "katana-v3": {
+        id: "5972"
+    },
 } as AdaptorsConfig

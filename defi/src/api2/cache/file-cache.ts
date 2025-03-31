@@ -59,7 +59,7 @@ export async function getMetadataAll() {
   return JSON.parse(data)
 }
 
-const fileNameNormalizer = (fileName: string) => decodeURIComponent(fileName).replace(/[^a-zA-Z0-9-\/\.]/g, '').toLowerCase()
+export const fileNameNormalizer = (fileName: string) => decodeURIComponent(fileName).replace(/[^a-zA-Z0-9\/\.]/g, '').toLowerCase()
 
 export async function storeRouteData(subPath: string, data: any) {
   subPath = fileNameNormalizer(`build/${subPath}`)

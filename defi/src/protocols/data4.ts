@@ -9625,5 +9625,49 @@ const data4: Protocol[] = [
     twitter: "clutchmarkets",
     listedAt: 1743442083
   },
+  {
+    id: "5976",
+    name: "Spindash",
+    address: "sonic:0x5fd9cd00c975ccedb4298a562d132fb2683164d9",
+    symbol: "SPINDASH",
+    url: "https://spindash.gg/",
+    description:
+      "Spindash is a prediction market game where users can stake tokens to predict outcomes and earn rewards",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/spindash.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "spindash",
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Sonic"],
+    module: "spindash/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "spindash_sonic",
+    listedAt: 1743456601
+  },
+  {
+    id: "5977",
+    name: "Privacy Pools",
+    address: null,
+    symbol: "-",
+    url: "https://privacypools.com/",
+    description:
+      "Privacy Pools is a protocol that enables private asset withdrawals using zero-knowledge proofs and commitment schemes, allowing users to deposit and later withdraw assets without creating an on-chain link between their deposit and withdrawal addresses",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/privacy-pools.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Privacy",
+    chains: ["Ethereum"],
+    module: "privacypools/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "0xbowio",
+    listedAt: 1743456615
+  },
 ];
 export default data4;

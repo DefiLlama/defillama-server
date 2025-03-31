@@ -2931,4 +2931,7 @@ export default {
     "katana-v3": {
         id: "5972"
     },
+    "privacy-pools": {
+        id: "5977"
+    },
 } as AdaptorsConfig

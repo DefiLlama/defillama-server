@@ -249,8 +249,7 @@ export default {
         "id": "21516"
     },
     "cardano": {
-        "enabled": false,
-        "id": "2010" // wrong id, not related to klaytn
+        "id": "2010"
     },
     "cronos": {
         "id": "25"
@@ -2886,5 +2885,20 @@ export default {
     },
     "snakefinance": {
         id: "5760"
-    }
+    },
+    "baker-dao": {
+        id: "5964"
+    },
+    "hedera": {
+        id: "295"
+    },
+    "pinksale": {
+        id: "1807"
+    },
+    "katana": {
+        id: "797"
+    },
+    "saucerswap": {
+        id: "1979"
+    },
 } as AdaptorsConfig

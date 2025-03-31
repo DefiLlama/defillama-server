@@ -1203,7 +1203,8 @@ export const chainCoingeckoIds = {
     cmcId: "4642",
     categories: ["EVM"],
     twitter: "hedera",
-    url: "https://hedera.com/"
+    url: "https://hedera.com/",
+    chainId: 295,
   },
   "Findora": {
     geckoId: "findora",

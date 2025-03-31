@@ -2041,6 +2041,18 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Aptos"],
     oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
+      },
+      {
+        name: "Switchboard",
+        type: "Secondary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
+      }
+    ],
     forkedFrom: [],
     module: "move-dollar/index.js",
     twitter: "ThalaLabs",
@@ -34406,7 +34418,7 @@ const data3: Protocol[] = [
     module: "evaa/index.js",
     twitter: "evaaprotocol",
     forkedFrom: [],
-    oracles: ["Stork", "Redstone", "Pyth"],
+    oracles: ["Stork", "RedStone", "Pyth"],
     oraclesBreakdown: [
       {
       name: "Stork",
@@ -34414,7 +34426,7 @@ const data3: Protocol[] = [
       proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
       },
       {
-      name: "Redstone",
+      name: "RedStone",
       type: "Aggregator",
       proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
       },
@@ -38308,7 +38320,19 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oracles: ["Pyth"], //https://docs.echelon.market/echelon-v1/risks#oracle-risk
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://app.echelon.market/markets?network=aptos_mainnet","https://docs.echelon.market/echelon-v1/risks#oracle-risk"]
+      },
+      {
+        name: "Switchboard",
+        type: "Secondary",
+        proof: ["https://app.echelon.market/markets?network=aptos_mainnet"],
+      },
+    ],
     forkedFrom: [],
     module: "echelon/index.js",
     twitter: "EchelonMarket",

@@ -9523,7 +9523,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: "orcfax",
     cmcId: "28158",
-    category: "Farm",
+    category: "Oracle",
     chains: ["Cardano"],
     module: "orcfax/index.js",
     forkedFrom: [],

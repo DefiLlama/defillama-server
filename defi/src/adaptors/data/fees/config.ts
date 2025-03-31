@@ -249,8 +249,7 @@ export default {
         "id": "21516"
     },
     "cardano": {
-        "enabled": false,
-        "id": "2010" // wrong id, not related to klaytn
+        "id": "2010"
     },
     "cronos": {
         "id": "25"

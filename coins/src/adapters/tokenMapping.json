@@ -1690,6 +1690,11 @@
       "decimals": "18",
       "symbol": "SOL",
       "to": "coingecko#solana"
+    },
+    "0xd77b108d4f6cefaa0cae9506a934e825becca46e": {
+      "to": "coingecko#winr-protocol",
+      "decimals": 18,
+      "symbol": "WINR"
     }
   },
   "cronos": {
@@ -6291,6 +6296,16 @@
       "to": "coingecko#aquarius",
       "decimals": 7,
       "symbol": "AQUA"
+    },
+    "XLM": {
+      "to": "coingecko#stellar",
+      "decimals": 7,
+      "symbol": "XLM"
+    },
+    "USDC-GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN-1": {
+      "to": "coingecko#usd-coin",
+      "decimals": 7,
+      "symbol": "USDC"
     }
   },
   "shape": {
@@ -6556,6 +6571,36 @@
       "to": "coingecko#hsuite",
       "decimals": 4,
       "symbol": "HSUITE"
+    },
+    "0x0000000000000000000000000000000000101ae3": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC[hts]"
+    },
+    "0x0000000000000000000000000000000000101af0": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT[hts]"
+    },
+    "0x0000000000000000000000000000000000101af5": {
+      "to": "coingecko#dai",
+      "decimals": 8,
+      "symbol": "DAI[hts]"
+    },
+    "0x0000000000000000000000000000000000101afb": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC[hts]"
+    },
+    "0x000000000000000000000000000000000008437c": {
+      "to": "coingecko#ethereum",
+      "decimals": 8,
+      "symbol": "WETH[hts]"
+    },
+    "0x00000000000000000000000000000000007e545e": {
+      "to": "coingecko#bonzo-finance",
+      "decimals": 8,
+      "symbol": "BONZO"
     }
   },
   "morph": {
@@ -7760,6 +7805,26 @@
       "decimals": "8",
       "symbol": "uniBTC",
       "to": "coingecko#universal-btc"
+    },
+    "0x6c851f501a3f24e29a8e39a29591cddf09369080": {
+      "to": "coingecko#dai",
+      "decimals": 18,
+      "symbol": "DAI"
+    },
+    "0xbb0d083fb1be0a9f6157ec484b6c79e0a4e31c2e": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "WBTC"
+    },
+    "0xc3eACf0612346366Db554C991D7858716db09f58": {
+      "to": "coingecko#kelp-dao-restaked-eth",
+      "decimals": 18,
+      "symbol": "rsETH"
     }
   },
   "oas": {
@@ -7853,6 +7918,20 @@
       "to": "coingecko#ethereum",
       "decimals": 8,
       "symbol": "ETH"
+    }
+  },
+  "mtt_network": {
+    "0xecEEEfCEE421D8062EF8d6b4D814efe4dc898265": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    }
+  },
+  "waves": {
+    "GjwAHMjqWzYR4LgoNy91CxUKAGJN79h2hseZoae4nU8t": {
+      "to": "coingecko#unit0",
+      "decimals": 8,
+      "symbol": "UNIT0"
     }
   }
 }

@@ -9556,6 +9556,7 @@ const data4: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     oracles: [],
     twitter: "AxieInfinity",
+    parentProtocol: "parent#katana-ronin-dex",
     listedAt: 1743432895
   },
 ];

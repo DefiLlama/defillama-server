@@ -6742,6 +6742,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SaucerSwapLabs",
     github: ["saucerswaplabs"],
+  },
+  {
+    id: "parent#katana-ronin-dex",
+    name: "Katana Ronin Dex",
+    url: "https://app.roninchain.com/swap#/swap",
+    description: "Decentralized exchange on the Ronin Network",
+    logo: `${baseIconsUrl}/katana-ronin-dex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AxieInfinity",
   }
 ];
 

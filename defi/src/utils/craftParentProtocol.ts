@@ -184,6 +184,20 @@ export async function craftParentProtocolInternal({
       keyCount += Object.keys(tokens).length;
     });
   }
+  let totalBytes = 40; // Base overhea
+  for (const chain in response.chainTvls) {
+    (response.chainTvls[chain]?.tokens || []).forEach(({ tokens }: any) => {
+      for (const token in tokens) {
+         // Key size (UTF-16, 2 bytes per char)
+         totalBytes += token.length * 2;
+         // Value size
+         totalBytes += 8; // 64-bit number
+         // Pair overhead
+         totalBytes += 12;
+      }
+    });
+  }
+console.log({keyCount, totalBytes: totalBytes / (1024 * 1024)})
   if (keyCount >= 5e5) { // there are more than 500k keys
     for (const chain in response.chainTvls) {
       response.chainTvls[chain].tokens = null;

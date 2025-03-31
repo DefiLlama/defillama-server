@@ -2915,4 +2915,7 @@ export default {
     "saucerswap-v2": {
         id: "5966"
     },
+    "justbet": {
+        id:"5950"
+    },
 } as AdaptorsConfig

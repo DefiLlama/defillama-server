@@ -2904,4 +2904,28 @@ export default {
     "saucerswap-v2": {
         id: "5966"
     },
+    "syncswap": {
+        id: "2728"
+    },
+    "filecoin": {
+        id: "314"
+    },
+    "paycash": {
+        id: "1452"
+    },
+    "paradex": {
+        id: "3648"
+    },
+    "tornado": {
+        id: "148"
+    },
+    "karak": {
+        id: "4460"
+    },
+    "saber": {
+        id: "419"
+    },
+    "justbet": {
+        id:"5950"
+    },
 } as AdaptorsConfig

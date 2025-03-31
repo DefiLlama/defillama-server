@@ -7996,7 +7996,7 @@ const data4: Protocol[] = [
     category: "Liquidity manager",
     chains: ["Solana"],
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: ["Pyth"], //https://defituna.gitbook.io/defituna-docs/security-and-risks/platform-risks
     module: "defituna.js",
     twitter: "DeFiTuna",
     audit_links: ["https://github.com/Torii-Security/audits/blob/main/solana/torii-defituna-report.pdf"],

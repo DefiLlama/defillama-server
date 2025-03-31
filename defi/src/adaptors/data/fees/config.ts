@@ -2901,4 +2901,7 @@ export default {
     "saucerswap": {
         id: "1979"
     },
+    "saucerswap-v2": {
+        id: "5966"
+    },
 } as AdaptorsConfig

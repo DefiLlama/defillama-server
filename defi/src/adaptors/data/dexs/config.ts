@@ -2911,5 +2911,8 @@ export default {
     },
     "kittypunch-stable": {
         id: "5790"
-    }
+    },
+    "saucerswap-v2": {
+        id: "5966"
+    },
 } as AdaptorsConfig

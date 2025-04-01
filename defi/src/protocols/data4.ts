@@ -9437,6 +9437,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "HaedalProtocol",
+    parentProtocol: "parent#haedal", 
     listedAt: 1743419307
   },
   {

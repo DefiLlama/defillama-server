@@ -4237,6 +4237,7 @@ const chainLabelMap = {
   "mtt_network": "MTT Network",
   "hsk": "HashKey Chain",
   "fhe": "Mind Network",
+  "ao": "AO"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

@@ -6869,6 +6869,11 @@
     }
   },
   "sonic": {
+    "0x02f92800F57BCD74066F5709F1Daa1A4302Df875": {
+      "decimals": "18",
+      "symbol": "PEAS",
+      "to": "coingecko#peapods-finance"
+    },
     "0x8221312e9cF90A2B160eCdabf922408a5ef1CF9E": {
       "to": "asset#sonic:0x97a10beebb25e0ebfa55ca0a7d00e37afe957dea",
       "decimals": 18,

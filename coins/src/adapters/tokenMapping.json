@@ -1632,6 +1632,11 @@
       "to": "coingecko#ethena-staked-usde",
       "decimals": 6,
       "symbol": "sUSDe"
+    },
+    "0xb36527754eb54d7ff55daf13bcb54b42b88ec484bd6f0e3b2e0d1db169de6451": {
+      "to": "coingecko#ami",
+      "decimals": 8,
+      "symbol": "AMI"
     }
   },
   "velas": {

@@ -6767,6 +6767,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ImpermaxFinance",
     governanceID: ["snapshot:impermax.eth"],
     github: ["Impermax-Finance"],
+    treasury: "impermax.js",
   }
 ];
 

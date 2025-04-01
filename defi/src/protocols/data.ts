@@ -5130,7 +5130,6 @@ const data: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum", "Polygon", "Arbitrum"],
     module: "impermax/index.js",
-    treasury: "impermax.js",
     twitter: "ImpermaxFinance",
     audit_links: ["https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/tree/main/audit"],
     oracles: ["Chainlink"],

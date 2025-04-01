@@ -139,11 +139,11 @@ const configs: { [adapter: string]: Config } = {
     address: "0x8a053350ca5F9352a16deD26ab333e2D251DAd7c",
     underlying: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
   },
-  Re7BTC: {
-    rate: lrts("0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444"),
-    chain: "ethereum",
-    address: "0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444",
-  },
+  // Re7BTC: {
+  //   rate: lrts("0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444"),
+  //   chain: "ethereum",
+  //   address: "0x7F43fDe12A40dE708d908Fb3b9BFB8540d9Ce444",
+  // },
   weETHk: {
     rate: async ({ api }) => {
       const rate = await api.call({
@@ -340,13 +340,18 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     underlying: "0x8A60E489004Ca22d775C5F2c657598278d17D9c2",
     address: "0x2B66AAdE1e9C062FF411bd47C44E0Ad696d43BD9",
-    confidence: 1
+    confidence: 1,
   },
 };
 
 export async function derivs(timestamp: number) {
   return Promise.all(
-    Object.keys(configs).map((k: string) => deriv(timestamp, k, configs[k])),
+    Object.keys(configs).map((k: string) =>
+      deriv(timestamp, k, configs[k]).catch((e) => {
+        k;
+        e;
+      }),
+    ),
   );
 }
 

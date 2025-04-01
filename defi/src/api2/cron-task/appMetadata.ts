@@ -335,10 +335,16 @@ async function _storeAppMetadata() {
     // chart denominations
     const chainDenominationsKeys = ['geckoId', 'cmcId', 'symbol']
     Object.entries(chainCoingeckoIds).map(([chain, data]: any) => {
-      const obj: any = {}
+      let obj: any = {}
       chainDenominationsKeys.forEach((key) => {
         obj[key] = data[key] ?? null
       })
+      if (data.parent?.chain === 'Ethereum') 
+        obj = {
+          "geckoId": "ethereum",
+          "cmcId": "1027",
+          "symbol": "ETH"
+        }
       chartDenominationsChainMap[chain] = obj
     })
   }
@@ -480,7 +486,7 @@ async function _storeAppMetadata() {
       }
     }
 
-    const chainsWithFees = feesData.protocols.filter((i: any) => i.category === 'Chain').map((i: any) => i.name)
+    const chainsWithFees = feesData.protocols.filter((i: any) => i.defillamaId.startsWith('chain#')).map((i: any) => i.name)
     for (const chain of chainsWithFees) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),

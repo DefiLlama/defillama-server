@@ -249,8 +249,7 @@ export default {
         "id": "21516"
     },
     "cardano": {
-        "enabled": false,
-        "id": "2010" // wrong id, not related to klaytn
+        "id": "2010"
     },
     "cronos": {
         "id": "25"
@@ -2576,7 +2575,7 @@ export default {
     "rings": {
         id: "5526"
     },
-    "hyperfluid": {
+    "hyperion": {
         id: "5480"
     },
     "ton": {
@@ -2871,5 +2870,68 @@ export default {
     },
     "traderjoe-lend": {
         id: "2179"
-    }
+    },
+    "vaultcraft": {
+        id: "1791"
+    },
+    "dextoro": {
+        id: "5954"
+    },
+    "filament-v1": {
+        id: "5650"
+    },
+    "move": {
+        id: "3073"
+    },
+    "snakefinance": {
+        id: "5760"
+    },
+    "baker-dao": {
+        id: "5964"
+    },
+    "hedera": {
+        id: "295"
+    },
+    "pinksale": {
+        id: "1807"
+    },
+    "katana": {
+        id: "797"
+    },
+    "saucerswap": {
+        id: "1979"
+    },
+    "saucerswap-v2": {
+        id: "5966"
+    },
+    "syncswap": {
+        id: "2728"
+    },
+    "filecoin": {
+        id: "314"
+    },
+    "paycash": {
+        id: "1452"
+    },
+    "paradex": {
+        id: "3648"
+    },
+    "tornado": {
+        id: "148"
+    },
+    "karak": {
+        id: "2410"
+    },
+    "saber": {
+        id: "419"
+    },
+    "justbet": {
+        id:"5950"
+    },
+    "katana-v3": {
+        id: "5972"
+    },
+    "privacy-pools": {
+        id: "5977"
+    },
 } as AdaptorsConfig

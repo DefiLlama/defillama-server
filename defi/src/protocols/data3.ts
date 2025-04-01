@@ -2041,6 +2041,18 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Aptos"],
     oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
+      },
+      {
+        name: "Switchboard",
+        type: "Secondary",
+        proof: ["https://docs.thala.fi/overview/move-dollar-mod/oracles#switchboard"]
+      }
+    ],
     forkedFrom: [],
     module: "move-dollar/index.js",
     twitter: "ThalaLabs",
@@ -2439,9 +2451,9 @@ const data3: Protocol[] = [
   {
     id: "2807",
     name: "MatrixDock",
-    address: null,
-    symbol: "-",
-    assetToken: "0x530824DA86689C9C17CdC2871Ff29B058345b44a",
+    address: "0x530824DA86689C9C17CdC2871Ff29B058345b44a",
+    symbol: "STBT",
+    assetToken: "STBT",
     url: "https://www.matrixdock.com/home",
     description:
       "The Matrixdock STBT token (i.e. Short-term Treasury Bill token) is a token which enables you to get exposure to U.S.",
@@ -2449,7 +2461,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/matrixdock.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "short-term-t-bill-token",
+    gecko_id: null,
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum"],
@@ -9269,7 +9281,7 @@ const data3: Protocol[] = [
     ],
     listedAt: 1686607089,
   },
-  /* add new listing 
+  /* add new listing
   {
     id: "3103",
     name: "Maple RWA",
@@ -12440,6 +12452,7 @@ const data3: Protocol[] = [
       era: ["Pyth"], //https://docs.zerolend.xyz/security/oracles#using-pyth-oracles
       zircuit: ["RedStone"], //https://docs.zerolend.xyz/security/oracles#using-redstone-oracles:~:text=zerolend/pyth%2Doracles-,Using%20Redstone%20Oracles,-RedStone%20is%20a
       xlayer: ["Api3"], // https://docs.zerolend.xyz/security/oracles#oracles-operated-by-api3
+      hemi: ["eOracle"], // https://github.com/DefiLlama/defillama-server/pull/9559
     },
     forkedFrom: ["AAVE V3"],
     audit_links: ["https://github.com/zerolend/audits/blob/main/mundus/zerolend_report_depcheck_final.pdf"],
@@ -15269,7 +15282,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Arbitrum", "Avalanche"],
+    chains: ["Arbitrum", "Avalanche", "Solana"],
     module: "gmx-v2/index.js",
     twitter: "GMX_IO",
     forkedFrom: [],
@@ -16529,7 +16542,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Linea"],
     module: "mendi-finance/index.js",
-    twitter: "MendiFinance",
+    twitter: "malda_xyz",
     forkedFrom: ["Compound V2"],
     oracles: ["Api3", "Chainlink", "eOracle"], // https://github.com/DefiLlama/defillama-server/pull/7002 , https://github.com/DefiLlama/defillama-server/pull/8792
     github: ["mendi-finance"],
@@ -18058,7 +18071,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3489",
-    name: "Haedal Protocol", 
+    name: "Haedal Protocol",
     address: null,
     symbol: "-",
     assetToken: "HASUI",
@@ -22066,7 +22079,7 @@ const data3: Protocol[] = [
         name: "Pyth",
         type: "Primary",
         proof: ["https://docs.primex.finance/guides/what-is-primex/economic-security/oracles/pyth-network-oracle", "https://github.com/DefiLlama/defillama-server/pull/9239"]
-   
+
       },
       {
         name: "Chainlink",
@@ -24479,7 +24492,19 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Solana"],
-    oracles: ["Pyth"], // https://docs.kamino.finance/risk/oracles team also confirmed Pyth as the primary oracle while scope and switchboard used for support
+    oracles: ["Pyth", "Switchboard"], // https://docs.kamino.finance/risk/oracles team also confirmed Pyth as the primary oracle while scope and switchboard used for support
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.kamino.finance/risk/oracles"]
+      },
+      {
+        name: "Switchboard",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9552"]
+      }
+    ],
     forkedFrom: [],
     module: "kamino-lending/index.js",
     twitter: "KaminoFinance",
@@ -28423,7 +28448,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Solana", "Arbitrum", "Avalanche", "Tron"],
+    chains: ["Ethereum", "Optimism", "Binance", "Polygon", "Solana", "Arbitrum", "Avalanche", "Tron", "Base", "Celo", "Stellar", "Sui"],
     oracles: [],
     forkedFrom: [],
     module: "allbridge-core/index.js",
@@ -31180,7 +31205,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexs", 
+    category: "Dexs",
     chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: ["Uniswap V2"],
@@ -32873,6 +32898,9 @@ const data3: Protocol[] = [
     twitter: "ethena_labs",
     parentProtocol: "parent#ethena",
     audit_links: ["https://ethena-labs.gitbook.io/ethena-labs/resources/audits#quantstamp-audit-on-v2-of-contracts"],
+    tokensExcludedFromParent: {
+      Ethereum: ["USDTB"],
+    },
     listedAt: 1708016301,
   },
   {
@@ -34349,14 +34377,14 @@ const data3: Protocol[] = [
   },
   {
     id: "4197",
-    name: "Secured Finance",
+    name: "Secured Finance Lending", // previously Secured Finance
     address: null,
     symbol: "-",
     url: "https://secured.finance",
     description:
       "Secured Finance built a full on-chain Orderbook-based Rates DeFi Trading Platform to facilitate the lending and borrowing of digital assets to construct yield curves in the DeFi space.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/secured-finance.jpg`,
+    logo: `${baseIconsUrl}/secured-finance-lending.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -34368,7 +34396,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/Secured-Finance/contracts/blob/develop/audits/2023-12-Quantstamp.pdf"],
-    github: ["Secured-Finance"],
+    parentProtocol: "parent#secured-finance",
     listedAt: 1709216649,
   },
   {
@@ -34390,7 +34418,24 @@ const data3: Protocol[] = [
     module: "evaa/index.js",
     twitter: "evaaprotocol",
     forkedFrom: [],
-    oracles: ["RedStone"], //https://evaa.gitbook.io/intro/details-of-protocol/risks/protocol-risks#oracle-risk
+    oracles: ["Stork", "RedStone", "Pyth"],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Aggregator",
+      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
+      },
+      {
+      name: "RedStone",
+      type: "Aggregator",
+      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
+      },
+            {
+      name: "Pyth",
+      type: "Aggregator",
+      proof: ["https://evaa.gitbook.io/intro/details-of-protocol/organization-of-work-with-price-oracles"],
+      }
+    ],
     audit_links: ["https://certificate.quantstamp.com/full/evaa/df7aa699-793b-49f7-b348-1f78e9ca9870/index.html"],
     github: ["evaafi"],
     listedAt: 1709220208,
@@ -36137,7 +36182,7 @@ const data3: Protocol[] = [
         type: "Primary",
         proof: ["https://docs.suilend.fi/security/risks"]
       }
-    ],  
+    ],
     forkedFrom: [],
     audit_links: ["https://docs.suilend.fi/security/audit"],
     parentProtocol: "parent#suilend-protocol",
@@ -38275,7 +38320,19 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oracles: ["Pyth"], //https://docs.echelon.market/echelon-v1/risks#oracle-risk
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://app.echelon.market/markets?network=aptos_mainnet","https://docs.echelon.market/echelon-v1/risks#oracle-risk"]
+      },
+      {
+        name: "Switchboard",
+        type: "Secondary",
+        proof: ["https://app.echelon.market/markets?network=aptos_mainnet"],
+      },
+    ],
     forkedFrom: [],
     module: "echelon/index.js",
     twitter: "EchelonMarket",
@@ -44774,7 +44831,24 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     module: "superposition/index.js",
     forkedFrom: [],
-    oracles: ["Pyth"], //  https://docs.superposition.finance/asset-pricing
+    oracles: ["Pyth", "Switchboard"],
+    oraclesBreakdown: [ // concordia aggregator
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://docs.superposition.finance/asset-pricing"]
+      },
+      {
+        name: "Switchboard",
+        type: "Aggregator",
+        proof: ["https://docs.superposition.finance/asset-pricing"]
+      },
+      {
+        name: "Coingecko",
+        type: "Aggregator",
+        proof: ["https://docs.superposition.finance/asset-pricing"]
+      }
+    ],
     twitter: "superp_fi",
     listedAt: 1716371512,
   },
@@ -53341,7 +53415,7 @@ const data3: Protocol[] = [
     github: ["noble-assets"],
   },
   {
-    id: "5027", 
+    id: "5027",
     name: "MEMECAST.AI", // previously 4cast
     previousNames: ["4cast"],
     address: null,
@@ -54778,14 +54852,14 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.level.money",
     description:
-      "Level is a stablecoin protocol powered by restaked dollar tokens like USDT and USDC.",
+      "Level is a yield-bearing stablecoin protocol powered by USDT and USDC deposited into DeFi-native sources.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/level-money.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "CDP",
     chains: ["Ethereum"],
     module: "level-money/index.js",
     oracles: [],
@@ -56042,7 +56116,7 @@ const data3: Protocol[] = [
     cmcId: "33841",
     category: "Cross Chain Bridge",
     chains: ["Fantom"],
-    oracles: [], 
+    oracles: [],
     forkedFrom: [],
     module: "crosscurve/index.js",
     twitter: "eywaprotocol",
@@ -59290,7 +59364,19 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Hedera"],
-    oracles: ["Supra"], // https://docs.bonzo.finance/hub/developer/oracles/supra
+    oracles: ["Chainlink"], //HBAR and USDC Markets secured by Chainlink:
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.bonzo.finance/hub/developer/oracles/chainlink", "https://bonzo.finance/blog/bonzo-finance-has-integrated-the-chainlink-standard-for-verifiable-data-on-hedera"]
+      },
+            {
+        name: "Supra",
+        type: "Secondary",
+        proof: ["https://docs.bonzo.finance/hub/developer/oracles/supra"]
+      },
+    ],
     forkedFrom: ["AAVE V2"],
     module: "bonzo/index.js",
     twitter: "bonzo_finance",
@@ -60027,7 +60113,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://www.more.markets",
     description:
-      " MORE Markets is a Morpho-based lending protocol that extends Morpho’s featureset to include non-custodial asset management by expanding Morpho’s curation function and undercollateralized loans for rated and KYC’ed borrowers in isolated premium markets.",
+      "MORE Markets is a decentralized lending protocol that lets users easily lend and borrow digital assets. The protocol is designed for permissionless market creation, removing any need for approval or oversight from a central authority.",
     chain: "Flow",
     logo: `${baseIconsUrl}/more-markets.png`,
     audits: "0",
@@ -60037,7 +60123,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Flow"],
     oracles: ["Pyth"],  // https://docs.more.markets/borrow/oracles-and-pricing
-    forkedFrom: ["Morpho"],
+    forkedFrom: ["AAVE V3"],
     module: "more-markets/index.js",
     twitter: "More_Protocol",
     github: ["MoreLabsXYZ"],
@@ -60571,7 +60657,7 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum"],
     module: "reservoir-protocol/index.js",
-    twitter: "__reservoir",
+    twitter: "reservoir_xyz",
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://www.halborn.com/audits/fortunafi/reservoir-updated"],
@@ -60958,7 +61044,14 @@ const data3: Protocol[] = [
     module: "solayer-susd/index.js",
     twitter: "solayer_labs",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Switchboard"],
+    oraclesBreakdown: [
+      {
+        name: "Switchboard",
+        type: "Primary",
+        proof: ["https://docs.solayer.org/assets/susd/protocol-info/oracle&price_feeds#api-overview"]
+      }
+    ],
     audit_links: ["https://docs.solayer.org/security/audits"],
     parentProtocol: "parent#solayer",
     listedAt: 1731623194,
@@ -63624,13 +63717,14 @@ const data3: Protocol[] = [
   },
   {
     id: "5480",
-    name: "Hyperfluid",
+    name: "Hyperion",
+    previousNames: ["Hyperfluid"],
     address: null,
     symbol: "-",
-    url: "https://hyperfluid.xyz/",
-    description: "Hyperfluid is a fully on-chain hybrid Orderbook-AMM DEX built natively for Aptos, leveraging its exceptional throughput and minimal latency to deliver a seamless trading experience for both professional and retail users.",
+    url: "https://hyperion.xyz/",
+    description: "Hyperion is a fully on-chain hybrid Orderbook-AMM DEX built natively for Aptos, leveraging its exceptional throughput and minimal latency to deliver a seamless trading experience for both professional and retail users.",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/hyperfluid.jpg`,
+    logo: `${baseIconsUrl}/hyperion.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -63639,10 +63733,10 @@ const data3: Protocol[] = [
     chains: ["Aptos"],
     oracles: [],
     forkedFrom: [],
-    module: "hyperfluid/index.js",
-    twitter: "Hyperfluidxyz",
-    audit_links: ["https://github.com/Hyperfluid/audits/blob/main/Hyperfluid%20Audit%20Report%20By%20MoveBit.pdf"],
-    github: ["Hyperfluid"],
+    module: "hyperion/index.js",
+    twitter: "hyperion_xyz",
+    audit_links: ["https://github.com/Hyperionxyz/audits/blob/main/Hyperion%20Audit%20Report.pdf"],
+    github: ["Hyperionxyz"],
     listedAt: 1733763947
   },
   {

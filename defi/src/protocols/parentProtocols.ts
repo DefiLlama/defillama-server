@@ -384,6 +384,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MorphoLabs",
     governanceID: ["snapshot:morpho.eth"],
+    treasury: "morpho.js",
     github: ["morpho-org"],
   },
   {
@@ -553,6 +554,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FolksFinance",
     github: ["Folks-Finance"],
+    treasury: "folks.js"
   },
   {
     id: "parent#yield-yak",
@@ -6717,6 +6719,41 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "centrifuge",
     github: ["centrifuge"]
+  },
+  {
+    id: "parent#secured-finance",
+    name: "Secured Finance",
+    url: "https://secured.finance/",
+    description: "Secured Finance brings you next-generation DeFi solutions, combining fixed-rate lending, stable yields, and RWA integration.",
+    logo: `${baseIconsUrl}/secured-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Secured_Fi",
+    github: ["Secured-Finance"],
+  },
+  {
+    id: "parent#saucerswap",
+    name: "SaucerSwap",
+    url: "https://www.saucerswap.finance",
+    description: "SaucerSwap is an automated market maker protocol that leverages the Hedera Smart Contract Service to include Solidity smart contract integration with the Hedera Token Service.",
+    logo: `${baseIconsUrl}/saucerswap.jpg`,
+    gecko_id: "saucerswap",
+    cmcId: "21914",
+    chains: [],
+    twitter: "SaucerSwapLabs",
+    github: ["saucerswaplabs"],
+  },
+  {
+    id: "parent#katana-ronin-dex",
+    name: "Katana Ronin Dex",
+    url: "https://app.roninchain.com/swap#/swap",
+    description: "Decentralized exchange on the Ronin Network",
+    logo: `${baseIconsUrl}/katana-ronin-dex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AxieInfinity",
   }
 ];
 

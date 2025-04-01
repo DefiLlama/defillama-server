@@ -59,7 +59,7 @@ export async function getMetadataAll() {
   return JSON.parse(data)
 }
 
-const fileNameNormalizer = (fileName: string) => decodeURIComponent(fileName).replace(/[^a-zA-Z0-9-\/\.]/g, '').toLowerCase()
+export const fileNameNormalizer = (fileName: string) => decodeURIComponent(fileName).replace(/[^a-zA-Z0-9\/\.]/g, '').toLowerCase()
 
 export async function storeRouteData(subPath: string, data: any) {
   subPath = fileNameNormalizer(`build/${subPath}`)
@@ -111,7 +111,7 @@ export async function writeToPGCache(key: string, data: any) {
 }
 
 // ANY CHANGE TO THIS VALUE NEEDS TO BE SYNCED WITH A CHANGE ON https://github.com/DefiLlama/born-to-llama/blob/master/src/commands/deleteCache.ts#L30 TOO
-let TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.7'  // update the version number to reset the cache
+let TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.8'  // update the version number to reset the cache
 if (process.env.LLAMA_RUN_LOCAL === 'true') {
   TVL_CACHE_FOLDER = 'tvl-cache-daily'
 }

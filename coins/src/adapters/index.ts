@@ -17,6 +17,7 @@ export default {
   ...others2.adapters,
   ...graphCoins.adapters,
   reservoirprotocol: require("./rwa/reservoir-protocol"),
+  trize: require("./rwa/t-rize"),
   fortunafi: require("./rwa/fortunafi"),
   jupAg: require("./solana/jupAg"),
   midas: require("./rwa/midas"),
@@ -132,5 +133,5 @@ export default {
   pac: require("./rwa/thepac"),
   tonDerivs: require("./other/ton"),
   asseto: require("./rwa/asseto"),
-  radixUnkownToken: require("./markets/radix"),
+  // radixUnkownToken: require("./markets/radix"),
 };

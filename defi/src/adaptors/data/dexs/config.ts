@@ -1983,7 +1983,6 @@ export default {
     },
     "aftermath-fi-amm": {
         parentId: "Aftermath Finance",
-        "enabled": false,
         "id": "3259"
     },
     "sanctum": {
@@ -2839,7 +2838,7 @@ export default {
     "degen-launchpad": {
         id: "5857"
     },
-    "hyperfluid": {
+    "hyperion": {
         id: "5480"
     },
     "metropolis-amm": {
@@ -2909,5 +2908,20 @@ export default {
     },
     "gacha": {
         id: "5942"
-    }
+    },
+    "kittypunch-stable": {
+        id: "5790"
+    },
+    "saucerswap-v2": {
+        id: "5966"
+    },
+    "justbet": {
+        id:"5950"
+    },
+    "katana-v3": {
+        id: "5972"
+    },
+    "sandglass": {
+        id: "5965"
+    },
 } as AdaptorsConfig

@@ -4226,7 +4226,7 @@ const chainLabelMap = {
   "hyperliquid": "Hyperliquid",
   "winr": "WINR",
   "mtt_network": "MTT Network",
-  "hskt": "HashKey Chain",
+  "hsk": "HashKey Chain",
   "fhe": "Mind Network",
 } as { [key: string]: string }
 

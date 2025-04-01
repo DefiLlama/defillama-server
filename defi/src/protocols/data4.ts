@@ -9669,5 +9669,28 @@ const data4: Protocol[] = [
     twitter: "0xbowio",
     listedAt: 1743456615
   },
+  {
+    id: "5978",
+    name: "Polkadot",
+    address: "polkadot:-",
+    symbol: "DOT",
+    url: "https://polkadot.com/",
+    description:
+      "Polkadot is a next-generation blockchain protocol connecting multiple specialized blockchains into one unified network",
+    chain: "Polkadot",
+    logo: `${baseIconsUrl}/polkadot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "polkadot",
+    cmcId: "6636",
+    category: "Chain",
+    chains: ["Polkadot"],
+    module: "dummy.js",
+    treasury: "polkadot.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Polkadot",
+    listedAt: 1743470333
+  },
 ];
 export default data4;

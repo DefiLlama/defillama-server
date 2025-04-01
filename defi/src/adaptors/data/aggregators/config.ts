@@ -318,8 +318,5 @@ export default {
   },
   "mosaic": {
     id: "5890"
-  },
-  "sandglass": {
-    id: "5965"
-  },
+  }
 } as AdaptorsConfig;

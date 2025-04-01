@@ -2921,4 +2921,7 @@ export default {
     "katana-v3": {
         id: "5972"
     },
+    "sandglass": {
+        id: "5965"
+    },
 } as AdaptorsConfig

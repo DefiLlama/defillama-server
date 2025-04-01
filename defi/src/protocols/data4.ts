@@ -9671,7 +9671,7 @@ const data4: Protocol[] = [
   },
   {
     id: "5978",
-    name: "Polkadot",
+    name: "Polkadot Treasury",
     address: "polkadot:-",
     symbol: "DOT",
     url: "https://polkadot.com/",
@@ -9683,7 +9683,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: "polkadot",
     cmcId: "6636",
-    category: "Chain",
+    category: "Foundation",
     chains: ["Polkadot"],
     module: "dummy.js",
     treasury: "polkadot.js",

@@ -9693,5 +9693,27 @@ const data4: Protocol[] = [
     twitter: "Polkadot",
     listedAt: 1743470333
   },
+  {
+    id: "5979",
+    name: "HyperInDex",
+    address: null,
+    symbol: "-",
+    url: "https://www.hyperindex.trade",
+    description:
+      "Hybrid crypto and stablecoin exchange and Hashkey on-chain DEX supporting Orderbook",
+    chain: "HashKey Chain",
+    logo: `${baseIconsUrl}/hyperindex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["HashKey Chain"],
+    module: "in_dex/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "hyperindex_",
+    listedAt: 1743520357
+  },
 ];
 export default data4;

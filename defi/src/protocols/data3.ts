@@ -2451,9 +2451,9 @@ const data3: Protocol[] = [
   {
     id: "2807",
     name: "MatrixDock",
-    address: null,
-    symbol: "-",
-    assetToken: "0x530824DA86689C9C17CdC2871Ff29B058345b44a",
+    address: "0x530824DA86689C9C17CdC2871Ff29B058345b44a",
+    symbol: "STBT",
+    assetToken: "STBT",
     url: "https://www.matrixdock.com/home",
     description:
       "The Matrixdock STBT token (i.e. Short-term Treasury Bill token) is a token which enables you to get exposure to U.S.",
@@ -2461,7 +2461,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/matrixdock.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "short-term-t-bill-token",
+    gecko_id: null,
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum"],

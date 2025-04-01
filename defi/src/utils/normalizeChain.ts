@@ -1488,6 +1488,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "Filecoin",
     url: "https://filecoin.io/",
+    chainId: 314,
   },
   "Flow": {
     geckoId: "flow",

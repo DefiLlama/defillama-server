@@ -7137,30 +7137,30 @@ const data4: Protocol[] = [
     parentProtocol: "parent#puffer-finance",
     listedAt: 1741275362,
   },*/
-  {
-    id: "5869",
-    name: "Puffer UniFi",
-    address: null,
-    symbol: "-",
-    url: "https://www.puffer.fi/unifi",
-    description:
-      "UniFi is Puffer's based rollup to Ethereum that is decentralized, has in-built native yield, and allows for instant withdrawal of assets to Ethereum.",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/puffer-unifi.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Yield",
-    chains: ["Ethereum"],
-    module: "puffer-unifi/index.js",
-    twitter: "puffer_finance",
-    parentProtocol: "parent#puffer-finance",
-    tokensExcludedFromParent:{
-      Ethereum: ["PUFETH"]
-    },
-    listedAt: 1741275363,
-  },
+  // {
+  //   id: "5869",
+  //   name: "Puffer UniFi",
+  //   address: null,
+  //   symbol: "-",
+  //   url: "https://www.puffer.fi/unifi",
+  //   description:
+  //     "UniFi is Puffer's based rollup to Ethereum that is decentralized, has in-built native yield, and allows for instant withdrawal of assets to Ethereum.",
+  //   chain: "Ethereum",
+  //   logo: `${baseIconsUrl}/puffer-unifi.jpg`,
+  //   audits: "0",
+  //   audit_note: null,
+  //   gecko_id: null,
+  //   cmcId: null,
+  //   category: "Yield",
+  //   chains: ["Ethereum"],
+  //   module: "puffer-unifi/index.js",
+  //   twitter: "puffer_finance",
+  //   parentProtocol: "parent#puffer-finance",
+  //   tokensExcludedFromParent:{
+  //     Ethereum: ["PUFETH"]
+  //   },
+  //   listedAt: 1741275363,
+  // },
   {
     id: "5870",
     name: "BeraTrax",

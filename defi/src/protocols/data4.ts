@@ -9678,7 +9678,7 @@ const data4: Protocol[] = [
     description:
       "Polkadot is a next-generation blockchain protocol connecting multiple specialized blockchains into one unified network",
     chain: "Polkadot",
-    logo: `${baseIconsUrl}/polkadot.jpg`,
+    logo: `${baseIconsUrl}/polkadot-treasury.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "polkadot",

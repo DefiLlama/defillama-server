@@ -554,6 +554,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FolksFinance",
     github: ["Folks-Finance"],
+    treasury: "folks.js"
   },
   {
     id: "parent#yield-yak",

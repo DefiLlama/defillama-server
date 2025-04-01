@@ -45270,7 +45270,7 @@ const data3: Protocol[] = [
     github: ["c3exchange"],
     listedAt: 1716544663,
   },
-  {
+  /*{
     id: "4671",
     name: "Sailing Portfolios",
     address: null,
@@ -45291,7 +45291,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1716545297,
-  },
+  },*/
   {
     id: "4672",
     name: "UniRouter",

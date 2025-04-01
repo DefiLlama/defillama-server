@@ -184,7 +184,7 @@ export async function craftParentProtocolInternal({
       keyCount += Object.keys(tokens).length;
     });
   }
-  if (keyCount >= 5e5) { // there are more than 500k keys
+  if (keyCount >= 1.5e5) { // there are more than 150k keys
     for (const chain in response.chainTvls) {
       response.chainTvls[chain].tokens = null;
       response.chainTvls[chain].tokensInUsd = null;

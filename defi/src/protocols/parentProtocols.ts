@@ -6754,6 +6754,19 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "AxieInfinity",
+  },
+  {
+    id: "parent#impermax-finance",
+    name: "Impermax Finance",
+    url: "https://impermax.finance/",
+    description: "One-click access to DeFi yield farming with no risk of impermanent loss",
+    logo: `${baseIconsUrl}/impermax-finance.jpg`,
+    gecko_id: "impermax-2",
+    cmcId: null,
+    chains: [],
+    twitter: "ImpermaxFinance",
+    governanceID: ["snapshot:impermax.eth"],
+    github: ["Impermax-Finance"],
   }
 ];
 

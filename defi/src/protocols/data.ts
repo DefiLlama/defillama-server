@@ -5116,16 +5116,16 @@ const data: Protocol[] = [
   },
   {
     id: "343",
-    name: "Impermax Finance",
+    name: "Impermax V2", // previously Impermax Finance
     address: "0xf655c8567e0f213e6c634cd2a68d992152161dc6",
     symbol: "IBEX",
     url: "https://impermax.finance/",
     description: "Impermax is a DeFi ecosystem that enables liquidity providers to leverage their LP tokens",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/impermax-finance.png`,
+    logo: `${baseIconsUrl}/impermax-v2.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "impermax-2",
+    gecko_id: null,
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum", "Polygon", "Arbitrum"],
@@ -5134,8 +5134,7 @@ const data: Protocol[] = [
     twitter: "ImpermaxFinance",
     audit_links: ["https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/tree/main/audit"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:impermax.eth"],
-    github: ["Impermax-Finance"],
+    parentProtocol: "parent#impermax-finance"
   },
   {
     id: "344",

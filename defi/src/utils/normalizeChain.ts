@@ -4047,6 +4047,15 @@ export const chainCoingeckoIds = {
     twitter: "mindnetwork_xyz",
     github: ["mind-network"],
     url: "https://www.mindnetwork.xyz",
+  },
+  "AO": {
+    geckoId: "ao-computer",
+    symbol: "AO",
+    cmcId: "35386",
+    categories: [],
+    twitter: "aoTheComputer",
+    github: ["permaweb"],
+    url: "https://ao.arweave.net/",
   }, 
 } as unknown as ChainCoinGekcoIds
 

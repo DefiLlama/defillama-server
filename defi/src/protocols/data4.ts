@@ -9715,5 +9715,55 @@ const data4: Protocol[] = [
     twitter: "hyperindex_",
     listedAt: 1743520357
   },
+  {
+    id: "5980",
+    name: "LiquidOps",
+    address: null,
+    symbol: "-",
+    url: "https://liquidops.io",
+    description:
+      "LiquidOps is an over collateralized lending and borrowing protocol built on ao.arweave.dev and arweave.org",
+    chain: "AO",
+    logo: `${baseIconsUrl}/liquidops.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["AO"],
+    module: "LiquidOps/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Liquid_Ops",
+    github: ["useLiquidOps"],
+    listedAt: 1743528701
+  },
+  {
+    id: "5981",
+    name: "Impermax V3",
+    address: "0xf655c8567e0f213e6c634cd2a68d992152161dc6",
+    symbol: "IBEX",
+    url: "https://impermax.finance",
+    description:
+      "Impermax is a DeFi ecosystem that enables liquidity providers to leverage their LP tokens",
+    chain: "Base",
+    logo: `${baseIconsUrl}/impermax-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base", "Arbitrum"],
+    module: "impermax-v3/index.js",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [
+      "https://github.com/GuardianAudits/Audits/blob/main/Impermax/2025-02-08_Impermax.pdf",
+      "https://github.com/bailsec/BailSec/blob/main/Bailsec%20-%20Impermax%20-%20V3%20Core%20-%20Final%20Report.pdf"
+    ],
+    twitter: "ImpermaxFinance",
+    parentProtocol: "parent#impermax-finance",
+    listedAt: 1743529344
+  },
 ];
 export default data4;

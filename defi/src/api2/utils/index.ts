@@ -62,3 +62,14 @@ export function roundVaules(obj: any) {
   }
   return obj
 }
+
+export function getObjectKeyCount(obj: any) {
+  if (!obj || typeof obj !== 'object') {
+    return 1
+  }
+  let count = 1
+  for (const key in obj) {
+    count += getObjectKeyCount(obj[key])
+  }
+  return count
+}

@@ -10,11 +10,13 @@ import {
 } from "../../utils/getLastRecord"
 import * as sdk from '@defillama/sdk'
 import { getProtocolAllTvlData } from "./cachedFunctions";
+import { getObjectKeyCount } from ".";
 
 export type CraftProtocolV2Common = {
   useNewChainNames: boolean;
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
+  restrictResponseSize?: boolean;
 }
 
 
@@ -27,8 +29,9 @@ export async function craftProtocolV2({
   useNewChainNames,
   useHourlyData,
   skipAggregatedTvl,
+  restrictResponseSize,
 }: CraftProtocolV2Options) {
-  const { misrepresentedTokens = false, hallmarks, methodology,deprecated, ...restProtocolData } = protocolData as any
+  const { misrepresentedTokens = false, hallmarks, methodology, deprecated, ...restProtocolData } = protocolData as any
 
   const debug_t0 = performance.now(); // start the timer
   let protocolCache: any = {}
@@ -189,14 +192,31 @@ export async function craftProtocolV2({
   }
 
   // const debug_formTime = performance.now() - debug_t0 - debug_dbTime
-  const debug_totalTime = performance.now() - debug_t0
+  // const debug_totalTime = performance.now() - debug_t0
   // sdk.log(`${protocolData.name} |${useHourlyData ? 'h' : 'd'}| #: ${historicalUsdTvl.length} ${historicalUsdTokenTvl.length} ${historicalTokenTvl.length} | Db: ${(debug_dbTimeAll / 1e3).toFixed(2)}s | All: ${(debug_totalTime / 1e3).toFixed(2)}s`)
+
+
+  if (restrictResponseSize) {
+    const keyCount = getObjectKeyCount(response)
+    if (keyCount > 1.5e5) { // there are more than 150k keys
+      // console.log(`${response.name} Response size is too large: ${keyCount} keys. Limiting response size.`)
+      Object.keys(response?.chainTvls ?? {}).forEach((key) => {
+        response.chainTvls[key].tokensInUsd = null
+        response.chainTvls[key].tokens = null
+      })
+    }
+  }
 
   return response;
 }
 
 export async function cachedCraftProtocolV2(options: CraftProtocolV2Options) {
-  const id = `${options.protocolData.id}-${options.useHourlyData ? 'hourly' : 'daily'}-${options.skipAggregatedTvl ? 'noAgg' : 'agg'}-${options.useNewChainNames ? 'new' : 'old'}`
+  const sizeKey = options.restrictResponseSize ? 'smol' : 'normal'
+  const protoId = options.protocolData.id
+  const hourlyKey = options.useHourlyData ? 'hourly' : 'daily'
+  const aggKey = options.skipAggregatedTvl ? 'noAgg' : 'agg'
+  const newChainKey = options.useNewChainNames ? 'new' : 'old'
+  const id = `${protoId}-${hourlyKey}-${aggKey}-${newChainKey}-${sizeKey}`
   const CACHE_KEY = CACHE_KEYS.PROTOCOL
   return cacheAndRespond({ key: CACHE_KEY, id, origFunction: craftProtocolV2, args: [options] })
 }

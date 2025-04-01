@@ -7,7 +7,7 @@ import fetch from "node-fetch";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
 import { protocolMcap, getRaises } from "./craftProtocol";
-import { getClosestDayStartTimestamp } from "./date";
+import { getObjectKeyCount } from "../api2/utils";
 
 export interface ICombinedTvls {
   chainTvls: {
@@ -169,21 +169,7 @@ export async function craftParentProtocolInternal({
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB
-  // const jsonData = JSON.stringify(response); // this is too expensive, replacing it with counting keys and if it over 500k
-  // const dataLength = jsonData.length;
-
-  // if (dataLength >= 5.8e6) {
-  //   for (const chain in response.chainTvls) {
-  //     response.chainTvls[chain].tokens = null;
-  //     response.chainTvls[chain].tokensInUsd = null;
-  //   }
-  // }
-  let keyCount = 0;
-  for (const chain in response.chainTvls) {
-    (response.chainTvls[chain]?.tokens || []).forEach(({ tokens }: any) => {
-      keyCount += Object.keys(tokens).length;
-    });
-  }
+  let keyCount = getObjectKeyCount(response);
   if (keyCount >= 1.5e5) { // there are more than 150k keys
     for (const chain in response.chainTvls) {
       response.chainTvls[chain].tokens = null;

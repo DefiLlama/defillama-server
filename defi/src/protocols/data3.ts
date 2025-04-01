@@ -38320,19 +38320,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Aptos"],
-    oracles: ["Pyth"],
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://app.echelon.market/markets?network=aptos_mainnet","https://docs.echelon.market/echelon-v1/risks#oracle-risk"]
-      },
-      {
-        name: "Switchboard",
-        type: "Secondary",
-        proof: ["https://app.echelon.market/markets?network=aptos_mainnet"],
-      },
-    ],
+    oracles: ["Pyth", "Switchboard"], // https://docs.echelon.market/echelon-v1/risks#oracle-risk
     forkedFrom: [],
     module: "echelon/index.js",
     twitter: "EchelonMarket",

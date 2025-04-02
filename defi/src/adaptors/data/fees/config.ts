@@ -2937,4 +2937,7 @@ export default {
     "syncswap-v3": {
         id: "5982"
     },
+    "oxfun": {
+        id: "6699" // chainId
+    },
 } as AdaptorsConfig

@@ -52,6 +52,10 @@ export function bonzo(timestamp: number = 0) {
   });
 }
 
+export function hyperlend(timestamp: number = 0) {
+  return getTokenPrices("hyperliquid", "0x24E301BcBa5C098B3b41eA61a52bFe95Cb728b20", null, "v3", timestamp);
+}
+
 export const adapters = {
   aave,
   geist,
@@ -60,4 +64,5 @@ export const adapters = {
   bonzo,
   //klap,
   //valas,
+  hyperlend
 };

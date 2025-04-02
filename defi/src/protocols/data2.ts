@@ -26840,7 +26840,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Decentralized BTC",
+    category: "Bridge",
     chains: ["Ethereum"],
     module: "tbtc/index.js",
     twitter: "TheTNetwork",

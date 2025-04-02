@@ -6770,7 +6770,7 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "impermax.js",
   },
   {
-    id: "parent#SyncSwap Protocol",
+    id: "parent#syncswap-protocol",
     name: "SyncSwap",
     url: "https://syncswap.xyz/",
     description: "SyncSwap is a decentralized exchange (DEX) on zkSync Era",
@@ -6780,7 +6780,21 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "syncswap",
     governanceID: ["snapshot:syncswapxyz.eth"],
+  },
+  {
+    id: "parent#axelar-network",
+    name: "Axelar",
+    url: "https://axelar.network",
+    description: "Axelar delivers secure cross-chain communication for Web3. Our infrastructure enables dApp users to interact with any asset or application, on any chain, with one click.",
+    logo: `${baseIconsUrl}/axelar-network.jpg`,
+    gecko_id: "axelar",
+    cmcId: "17799",
+    chains: [],
+    twitter: "axelar",
+    treasury: "axelar.js",
+    github: ["axelarnetwork"],
   }
+
 ];
 
 export default parentProtocols;

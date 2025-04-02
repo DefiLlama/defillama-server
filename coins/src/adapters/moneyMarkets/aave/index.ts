@@ -7,6 +7,7 @@ export function aave(timestamp: number = 0) {
     getTokenPrices("arbitrum", "0x770ef9f4fe897e59daCc474EF11238303F9552b6", "0x411D79b8cC43384FDE66CaBf9b6a17180c842511", "v3", timestamp,),
     getTokenPrices("ethereum", "0x52D306e36E3B6B02c153d0266ff0f85d18BCD413", null, "v2", timestamp,),
     getTokenPrices("ethereum", "0xbaA999AC55EAce41CcAE355c77809e68Bb345170", "0x411D79b8cC43384FDE66CaBf9b6a17180c842511", "v3", timestamp,),
+    getTokenPrices("ethereum",  "0xC6cAB8D39D93DC0Bd5986E7Ce5Bb956E30103A43", null, "v3", timestamp), 
     // AMM market has no registry
     //getTokenPrices("ethereum", "0x7937d4799803fbbe595ed57278bc4ca21f3bffcb");
     getTokenPrices("polygon", "0x3ac4e9aa29940770aeC38fe853a4bbabb2dA9C19", null, "v2", timestamp,),

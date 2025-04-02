@@ -683,7 +683,7 @@ const data3: Protocol[] = [
     module: "syncswap/index.js",
     twitter: "syncswap",
     listedAt: 1679883857,
-    governanceID: ["snapshot:syncswapxyz.eth"],
+    parentProtocol: "parent#syncswap-protocol"
   },
   {
     id: "2729",

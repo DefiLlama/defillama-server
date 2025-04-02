@@ -2924,4 +2924,7 @@ export default {
     "sandglass": {
         id: "5965"
     },
+    "syncswap-v3": {
+        id: "5982"
+    },
 } as AdaptorsConfig

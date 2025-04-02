@@ -9765,5 +9765,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#impermax-finance",
     listedAt: 1743529344
   },
+  {
+    id: "5982",
+    name: "SyncSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://syncswap.xyz/",
+    description: "SyncSwap is a decentralized exchange (DEX) on zkSync Era ",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/syncswap-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "syncswap",
+    parentProtocol: "parent#syncswap-protocol"
+  },
 ];
 export default data4;

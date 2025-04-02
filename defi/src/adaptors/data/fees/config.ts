@@ -2934,4 +2934,7 @@ export default {
     "privacy-pools": {
         id: "5977"
     },
+    "syncswap-v3": {
+        id: "5982"
+    },
 } as AdaptorsConfig

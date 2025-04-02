@@ -6768,6 +6768,18 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:impermax.eth"],
     github: ["Impermax-Finance"],
     treasury: "impermax.js",
+  },
+  {
+    id: "parent#SyncSwap Protocol",
+    name: "SyncSwap",
+    url: "https://syncswap.xyz/",
+    description: "SyncSwap is a decentralized exchange (DEX) on zkSync Era",
+    logo: `${baseIconsUrl}/syncswap-protocol.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "syncswap",
+    governanceID: ["snapshot:syncswapxyz.eth"],
   }
 ];
 

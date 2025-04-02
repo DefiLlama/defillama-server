@@ -9827,7 +9827,11 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "anvil/index.js",
     twitter: "anvil_xyz",
-    audit_links: ["https://blog.openzeppelin.com/anvil-audit"],
+    audit_links: [
+      "https://blog.openzeppelin.com/anvil-audit",
+      "https://blog.openzeppelin.com/anvil-protocol-audit",
+      "https://github.com/trailofbits/publications/blob/master/reviews/2023-12-acronym-foundation-securityreview.pdf"
+    ],
     github: ["AcronymFoundation"],
     listedAt: 1743588194
   },

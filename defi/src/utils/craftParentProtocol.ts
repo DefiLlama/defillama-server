@@ -309,9 +309,17 @@ function mergeChildProtocolData(childProtocolsTvls: any, isHourlyTvl: Function) 
   function getDateMapWithMissingData(data: any[] = [], isTvlDataHourly = false): { [date: number]: any } {
     const dateMap: { [date: number]: any } = {}
 
-    if (data.length === 0) return dateMap;
+    const recordCount = data.length
+    if (recordCount === 0) return dateMap;
+
     let lastRecordWithDate = data[0]
-    data.forEach((record) => {
+    data.forEach((record, idx) => {
+
+      // if it is not an hourly tvl data, we need to round the timestamp to the start of the day, we leave the last record as is (as it can be the latest hourly record)
+      if (!isTvlDataHourly && idx < recordCount - 1) {
+        record.date = getStartOfDayTimestamp(record.date)
+      }
+
       if (record.date < lastRecordWithDate.date) {
         lastRecordWithDate = record
       }
@@ -320,6 +328,8 @@ function mergeChildProtocolData(childProtocolsTvls: any, isHourlyTvl: Function) 
     })
 
     let lastDate = lastRecordWithDate.date
+    // // round it to the nearest start of the day
+    // lastDate = Math.floor(lastDate / 86400) * 86400
     // we fill missing data only for daily tvl data
     while (lastDate < latestTS && !isTvlDataHourly) {
       lastDate += 86400
@@ -356,4 +366,15 @@ function mergeChildProtocolData(childProtocolsTvls: any, isHourlyTvl: Function) 
       return original
     }
   }
+}
+
+const tsNoonMap: { [key: number]: number } = {}
+
+function getStartOfDayTimestamp(ts: number) {
+  if (!tsNoonMap[ts]) {
+    const date = new Date(ts * 1000)
+    date.setUTCHours(0, 0, 0, 0)
+    tsNoonMap[ts] = Math.floor(date.getTime() / 1000)
+  }
+  return tsNoonMap[ts]
 }

@@ -56,6 +56,13 @@ export function hyperlend(timestamp: number = 0) {
   return getTokenPrices("hyperliquid", "0x24E301BcBa5C098B3b41eA61a52bFe95Cb728b20", null, "v3", timestamp);
 }
 
+export function sparkLend(timestamp: number = 0) {
+  return Promise.all([
+     getTokenPrices("ethereum", "0x03cFa0C4622FF84E50E75062683F44c9587e6Cc1", null, "v3", timestamp),
+     getTokenPrices("xdai", "0x49d24798d3b84965F0d1fc8684EF6565115e70c1", null, "v3", timestamp)
+  ])
+}
+
 export const adapters = {
   aave,
   geist,
@@ -64,5 +71,6 @@ export const adapters = {
   bonzo,
   //klap,
   //valas,
-  hyperlend
+  hyperlend, 
+  sparkLend
 };

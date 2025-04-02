@@ -307,7 +307,6 @@ function mergeChildProtocolData(childProtocolsTvls: any, isHourlyTvl: Function) 
 
 
   function getDateMapWithMissingData(data: any[] = [], isTvlDataHourly = false): { [date: number]: any } {
-    console.log('getDateMapWithMissingData', data.length, isTvlDataHourly)
     const dateMap: { [date: number]: any } = {}
 
     const recordCount = data.length

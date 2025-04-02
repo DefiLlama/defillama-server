@@ -1263,6 +1263,11 @@
     }
   },
   "base": {
+    "0xB7EcE25d412210499C35A9525FF01553E39A2927": {
+      "to": "asset#arbitrum:0xba3e932310cd1dbf5bd13079bd3d6bae4570886f",
+      "decimals": "18",
+      "symbol": "yBTC"
+    },
     "0x35E5dB674D8e93a03d814FA0ADa70731efe8a4b9": {
       "to": "coingecko#resolv-usr",
       "decimals": "18",

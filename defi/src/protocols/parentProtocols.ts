@@ -6783,7 +6783,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#axelar-network",
-    name: "Axelar",
+    name: "Axelar Network",
     url: "https://axelar.network",
     description: "Axelar delivers secure cross-chain communication for Web3. Our infrastructure enables dApp users to interact with any asset or application, on any chain, with one click.",
     logo: `${baseIconsUrl}/axelar-network.jpg`,

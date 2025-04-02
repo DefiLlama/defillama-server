@@ -165,7 +165,7 @@ type StoreTvlOptions = {
   runType?: string,
 }
 
-const deadChains = new Set(['heco', 'astarzk'])
+const deadChains = new Set(['heco', 'astrzk'])
 
 export async function storeTvl(
   unixTimestamp: number,

@@ -8067,7 +8067,7 @@ const data4: Protocol[] = [
     chains: ["zkSync Era"],
     module: "rfx-exchange-v2/index.js",
     twitter: "RFX_exchange",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: [],
     oracles: ["Pyth","Stork"], 
     oraclesBreakdown: [
       {

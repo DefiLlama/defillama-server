@@ -51589,7 +51589,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4947",
-    name: "Function",
+    name: "Function FBTC",
     previousNames: ["Ignition FBTC"],
     address: null,
     symbol: "-",
@@ -51597,7 +51597,7 @@ const data3: Protocol[] = [
     description:
       "Function is building the standard infrastructure that transforms Bitcoin into a capital-efficient, hyperliquid, and composable asset through ƒBTC (FBTC). By enabling Bitcoin to flow freely across financial markets, Function is positioning BTC as the reserve asset for both traditional and decentralized finance. ƒBTC is powered by core contributors Antalpha Prime, Mantle, and Galaxy Digital.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/function.jpg`,
+    logo: `${baseIconsUrl}/function-fbtc.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

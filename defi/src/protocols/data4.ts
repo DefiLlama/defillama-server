@@ -9813,7 +9813,7 @@ const data4: Protocol[] = [
     name: "Anvil",
     address: "0x2Ca9242c1810029Efed539F1c60D68B63AD01BFc",
     symbol: "ANVL",
-    url: "https://www.t-rize.io",
+    url: "https://anvil.xyz/",
     description: "Anvil is a DeFi protocol for onchain collateral management that allows users to issue fully secured credit.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/anvil.jpg`,

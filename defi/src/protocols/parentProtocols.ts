@@ -6771,7 +6771,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#syncswap-protocol",
-    name: "SyncSwap",
+    name: "SyncSwap Protocol",
     url: "https://syncswap.xyz/",
     description: "SyncSwap is a decentralized exchange (DEX) on zkSync Era",
     logo: `${baseIconsUrl}/syncswap-protocol.png`,

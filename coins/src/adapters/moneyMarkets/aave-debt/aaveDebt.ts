@@ -34,6 +34,7 @@ export const config = {
   hyperliquid: {
     pools: [
       { version: "v3", pool: "0xceCcE0EB9DD2Ef7996e01e25DD70e461F918A14b" },
+      { version: "v3", pool: "0x00A89d7a5A02160f20150EbEA7a2b5E4879A1A8b" },
     ],
   },
 } as any;

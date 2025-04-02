@@ -269,7 +269,8 @@ test("no surprise category", async () => {
     'Liquidity Automation',
     'Charity Fundraising',
     'Volume Boosting',
-    'DOR'
+    'DOR',
+    'Collateral Management'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

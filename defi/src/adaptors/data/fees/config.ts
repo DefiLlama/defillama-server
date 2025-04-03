@@ -1739,7 +1739,6 @@ export default {
         id: "4733"
     },
     "cellula": {
-        enabled: false,
         id: "4705"
     },
     "clusters": {

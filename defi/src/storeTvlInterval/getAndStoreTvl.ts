@@ -165,6 +165,8 @@ type StoreTvlOptions = {
   runType?: string,
 }
 
+const deadChains = new Set(['heco', 'astrzk'])
+
 export async function storeTvl(
   unixTimestamp: number,
   ethBlock: number,
@@ -212,7 +214,7 @@ export async function storeTvl(
           return
         }
 
-        if (chain === 'heco' && runType === 'cron-task') tvlFunction = () => ({})
+        if (runType === 'cron-task' && deadChains.has(chain)) tvlFunction = () => ({})
         let storedKey = `${chain}-${tvlType}`
         let tvlFunctionIsFetch = false;
         if (tvlType === "tvl") {

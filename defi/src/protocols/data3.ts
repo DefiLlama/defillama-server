@@ -683,7 +683,7 @@ const data3: Protocol[] = [
     module: "syncswap/index.js",
     twitter: "syncswap",
     listedAt: 1679883857,
-    governanceID: ["snapshot:syncswapxyz.eth"],
+    parentProtocol: "parent#syncswap-protocol"
   },
   {
     id: "2729",
@@ -2451,9 +2451,9 @@ const data3: Protocol[] = [
   {
     id: "2807",
     name: "MatrixDock",
-    address: null,
-    symbol: "-",
-    assetToken: "0x530824DA86689C9C17CdC2871Ff29B058345b44a",
+    address: "0x530824DA86689C9C17CdC2871Ff29B058345b44a",
+    symbol: "STBT",
+    assetToken: "STBT",
     url: "https://www.matrixdock.com/home",
     description:
       "The Matrixdock STBT token (i.e. Short-term Treasury Bill token) is a token which enables you to get exposure to U.S.",
@@ -2461,7 +2461,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/matrixdock.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "short-term-t-bill-token",
+    gecko_id: null,
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum"],
@@ -45270,7 +45270,7 @@ const data3: Protocol[] = [
     github: ["c3exchange"],
     listedAt: 1716544663,
   },
-  {
+  /*{
     id: "4671",
     name: "Sailing Portfolios",
     address: null,
@@ -45291,7 +45291,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1716545297,
-  },
+  },*/
   {
     id: "4672",
     name: "UniRouter",
@@ -51589,7 +51589,7 @@ const data3: Protocol[] = [
   },
   {
     id: "4947",
-    name: "Function",
+    name: "Function FBTC",
     previousNames: ["Ignition FBTC"],
     address: null,
     symbol: "-",
@@ -51597,7 +51597,7 @@ const data3: Protocol[] = [
     description:
       "Function is building the standard infrastructure that transforms Bitcoin into a capital-efficient, hyperliquid, and composable asset through ƒBTC (FBTC). By enabling Bitcoin to flow freely across financial markets, Function is positioning BTC as the reserve asset for both traditional and decentralized finance. ƒBTC is powered by core contributors Antalpha Prime, Mantle, and Galaxy Digital.",
     chain: "Bitcoin",
-    logo: `${baseIconsUrl}/function.jpg`,
+    logo: `${baseIconsUrl}/function-fbtc.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

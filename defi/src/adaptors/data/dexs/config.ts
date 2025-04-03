@@ -2911,5 +2911,20 @@ export default {
     },
     "kittypunch-stable": {
         id: "5790"
-    }
+    },
+    "saucerswap-v2": {
+        id: "5966"
+    },
+    "justbet": {
+        id:"5950"
+    },
+    "katana-v3": {
+        id: "5972"
+    },
+    "sandglass": {
+        id: "5965"
+    },
+    "syncswap-v3": {
+        id: "5982"
+    },
 } as AdaptorsConfig

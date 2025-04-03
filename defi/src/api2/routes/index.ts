@@ -244,6 +244,7 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
     useNewChainNames,
     useHourlyData,
     skipAggregatedTvl,
+    restrictResponseSize: true,
   });
   return res.json(responseData);
 }

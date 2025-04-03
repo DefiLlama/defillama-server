@@ -134,4 +134,5 @@ export default {
   tonDerivs: require("./other/ton"),
   asseto: require("./rwa/asseto"),
   // radixUnkownToken: require("./markets/radix"),
+  sandglass: require("./yield/sandglass"),
 };

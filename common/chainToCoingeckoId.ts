@@ -174,6 +174,7 @@ export const chainToCoingeckoId = {
   // xrp: "xrp",
   hedera: "hedera-hashgraph",
   bfc: "bifrost-network",
+  occ: "edu-chain",
 };
 
 export default chainToCoingeckoId;

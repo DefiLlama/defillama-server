@@ -554,6 +554,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FolksFinance",
     github: ["Folks-Finance"],
+    treasury: "folks.js"
   },
   {
     id: "parent#yield-yak",
@@ -6742,7 +6743,58 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SaucerSwapLabs",
     github: ["saucerswaplabs"],
+  },
+  {
+    id: "parent#katana-ronin-dex",
+    name: "Katana Ronin Dex",
+    url: "https://app.roninchain.com/swap#/swap",
+    description: "Decentralized exchange on the Ronin Network",
+    logo: `${baseIconsUrl}/katana-ronin-dex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AxieInfinity",
+  },
+  {
+    id: "parent#impermax-finance",
+    name: "Impermax Finance",
+    url: "https://impermax.finance/",
+    description: "One-click access to DeFi yield farming with no risk of impermanent loss",
+    logo: `${baseIconsUrl}/impermax-finance.jpg`,
+    gecko_id: "impermax-2",
+    cmcId: null,
+    chains: [],
+    twitter: "ImpermaxFinance",
+    governanceID: ["snapshot:impermax.eth"],
+    github: ["Impermax-Finance"],
+    treasury: "impermax.js",
+  },
+  {
+    id: "parent#syncswap-protocol",
+    name: "SyncSwap Protocol",
+    url: "https://syncswap.xyz/",
+    description: "SyncSwap is a decentralized exchange (DEX) on zkSync Era",
+    logo: `${baseIconsUrl}/syncswap-protocol.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "syncswap",
+    governanceID: ["snapshot:syncswapxyz.eth"],
+  },
+  {
+    id: "parent#axelar-network",
+    name: "Axelar Network",
+    url: "https://axelar.network",
+    description: "Axelar delivers secure cross-chain communication for Web3. Our infrastructure enables dApp users to interact with any asset or application, on any chain, with one click.",
+    logo: `${baseIconsUrl}/axelar-network.jpg`,
+    gecko_id: "axelar",
+    cmcId: "17799",
+    chains: [],
+    twitter: "axelar",
+    treasury: "axelar.js",
+    github: ["axelarnetwork"],
   }
+
 ];
 
 export default parentProtocols;

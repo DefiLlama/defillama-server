@@ -146,6 +146,11 @@
       "to": "coingecko#ethereum:0x8236a87084f8B84306f72007F36F2618A5634494",
       "decimals": 18,
       "symbol": "LBTC"
+    },
+    "0xA18717e22dfAbB36f0242259df4e9E563b6Ec70a": {
+      "decimals": "8",
+      "symbol": "WFBTC",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "alephium": {
@@ -729,6 +734,11 @@
       "decimals": "8",
       "symbol": "lfbtc-cian-eth",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0x7aAd7A95fCf14B826AC96176590C8e7aad19bbd4": {
+      "decimals": "8",
+      "symbol": "WFBTC",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "fantom": {
@@ -1253,6 +1263,11 @@
     }
   },
   "base": {
+    "0xB7EcE25d412210499C35A9525FF01553E39A2927": {
+      "to": "asset#arbitrum:0xba3e932310cd1dbf5bd13079bd3d6bae4570886f",
+      "decimals": "18",
+      "symbol": "yBTC"
+    },
     "0x35E5dB674D8e93a03d814FA0ADa70731efe8a4b9": {
       "to": "coingecko#resolv-usr",
       "decimals": "18",
@@ -1622,6 +1637,11 @@
       "to": "coingecko#ethena-staked-usde",
       "decimals": 6,
       "symbol": "sUSDe"
+    },
+    "0xb36527754eb54d7ff55daf13bcb54b42b88ec484bd6f0e3b2e0d1db169de6451": {
+      "to": "coingecko#ami",
+      "decimals": 8,
+      "symbol": "AMI"
     }
   },
   "velas": {
@@ -4982,6 +5002,11 @@
       "to": "coingecko#universal-btc",
       "decimals": 18,
       "symbol": "uBTC"
+    },
+    "0x5fabd1D440a90eE57Dd698ea096B91F994B6DF56": {
+      "decimals": "8",
+      "symbol": "WFBTC",
+      "to": "coingecko#ignition-fbtc"
     }
   },
   "rss3_vsl": {

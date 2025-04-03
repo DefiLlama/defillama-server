@@ -2901,4 +2901,43 @@ export default {
     "saucerswap": {
         id: "1979"
     },
+    "saucerswap-v2": {
+        id: "5966"
+    },
+    "syncswap": {
+        id: "2728"
+    },
+    "filecoin": {
+        id: "314"
+    },
+    "paycash": {
+        id: "1452"
+    },
+    "paradex": {
+        id: "3648"
+    },
+    "tornado": {
+        id: "148"
+    },
+    "karak": {
+        id: "2410"
+    },
+    "saber": {
+        id: "419"
+    },
+    "justbet": {
+        id:"5950"
+    },
+    "katana-v3": {
+        id: "5972"
+    },
+    "privacy-pools": {
+        id: "5977"
+    },
+    "syncswap-v3": {
+        id: "5982"
+    },
+    "oxfun": {
+        id: "6699" // chainId
+    },
 } as AdaptorsConfig

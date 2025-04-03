@@ -1488,6 +1488,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "Filecoin",
     url: "https://filecoin.io/",
+    chainId: 314,
   },
   "Flow": {
     geckoId: "flow",
@@ -4046,6 +4047,15 @@ export const chainCoingeckoIds = {
     twitter: "mindnetwork_xyz",
     github: ["mind-network"],
     url: "https://www.mindnetwork.xyz",
+  },
+  "AO": {
+    geckoId: "ao-computer",
+    symbol: "AO",
+    cmcId: "35386",
+    categories: [],
+    twitter: "aoTheComputer",
+    github: ["permaweb"],
+    url: "https://ao.arweave.net/",
   }, 
 } as unknown as ChainCoinGekcoIds
 
@@ -4225,8 +4235,9 @@ const chainLabelMap = {
   "hyperliquid": "Hyperliquid",
   "winr": "WINR",
   "mtt_network": "MTT Network",
-  "hskt": "HashKey Chain",
+  "hsk": "HashKey Chain",
   "fhe": "Mind Network",
+  "ao": "AO"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

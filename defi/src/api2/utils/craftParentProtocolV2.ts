@@ -26,7 +26,7 @@ export async function craftParentProtocolV2({
     });
   }
 
-  const getProtocolData = (protocolData: any) => cachedCraftProtocolV2({ protocolData, useNewChainNames: true, useHourlyData, skipAggregatedTvl: false, })
+  const getProtocolData = (protocolData: any) => cachedCraftProtocolV2({ protocolData, useNewChainNames: true, useHourlyData, skipAggregatedTvl: false, restrictResponseSize: false })
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(childProtocols.map(getProtocolData));
 
@@ -34,7 +34,7 @@ export async function craftParentProtocolV2({
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
     tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
 
-  const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap, parentRaises:[] })
+  const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, isHourlyTvl, fetchMcap: getCachedMCap, parentRaises: [] })
   const childNames = cache.otherProtocolsMap[parentProtocol.id] ?? []
 
   res.otherProtocols = [parentProtocol.name, ...childNames]

@@ -4162,7 +4162,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["zkSync Era"],
-    oracles: ["Pyth"],
+    oracles: ["Chainlink"], // https://docs.reactorfusion.xyz/protocol/oracles for token prices, checks staleness and is crucial for liquidations. 
     forkedFrom: ["Compound V2"],
     module: "reactorfusion/index.js",
     twitter: "ReactorFusionR",

@@ -434,6 +434,11 @@ export const chainCoingeckoIds = {
     symbol: "CELO",
     cmcId: "5567",
     categories: ["EVM"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Eigen',
+    },
     chainId: 42220,
     twitter: "Celo",
     url: "https://celo.org/"

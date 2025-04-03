@@ -1,22 +1,21 @@
-import { wrapScheduledLambda } from "../../../utils/shared/wrap";
-import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
 import { Adapter, AdapterType, BaseAdapter, } from "@defillama/dimension-adapters/adapters/types";
-import canGetBlock from "../../utils/canGetBlock";
 import runAdapter from "@defillama/dimension-adapters/adapters/utils/runAdapter";
 import { getBlock } from "@defillama/dimension-adapters/helpers/getBlock";
-import { Chain } from "@defillama/sdk/build/general";
-import { AdaptorRecord, AdaptorRecordType, RawRecordMap, storeAdaptorRecord } from "../../db-utils/adaptor-record";
-import { processFulfilledPromises, } from "./helpers";
-import loadAdaptorsData from "../../data"
-import { ProtocolAdaptor, } from "../../data/types";
-import { PromisePool } from '@supercharge/promise-pool'
-import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
-import { storeAdapterRecord } from "../../db-utils/db2";
 import { elastic } from '@defillama/sdk';
-import { getUnixTimeNow } from "../../../api2/utils/time";
 import { humanizeNumber, } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+import { Chain } from "@defillama/sdk/build/general";
+import { PromisePool } from '@supercharge/promise-pool';
+import { getUnixTimeNow } from "../../../api2/utils/time";
+import { getTimestampAtStartOfDayUTC, getTimestampAtStartOfHour } from "../../../utils/date";
+import { wrapScheduledLambda } from "../../../utils/shared/wrap";
+import loadAdaptorsData from "../../data";
+import { ProtocolAdaptor, } from "../../data/types";
+import { AdapterRecord2, } from "../../db-utils/AdapterRecord2";
+import { AdaptorRecord, AdaptorRecordType, RawRecordMap, storeAdaptorRecord } from "../../db-utils/adaptor-record";
+import { storeAdapterRecord } from "../../db-utils/db2";
+import canGetBlock from "../../utils/canGetBlock";
 import { sendDiscordAlert } from "../../utils/notify";
-import { getTimestampString } from "../../../api2/utils";
+import { processFulfilledPromises, } from "./helpers";
 
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
@@ -59,7 +58,7 @@ export type IStoreAdaptorDataHandlerEvent = {
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  const defaultMaxConcurrency = 21
+  const defaultMaxConcurrency = 10
   let { timestamp = timestampAnHourAgo, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
     throwError = false,

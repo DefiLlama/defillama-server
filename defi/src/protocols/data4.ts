@@ -8477,7 +8477,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Berachain"],
-    oracles: [],
+    oracles: ["Pyth"],  //    https://docs.dahlia.xyz/key-concepts/oracles
     forkedFrom: [],
     module: "dahlia/index.js",
     twitter: "DahliaProtocol",

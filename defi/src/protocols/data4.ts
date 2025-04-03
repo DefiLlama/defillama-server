@@ -10003,5 +10003,53 @@ const data4: Protocol[] = [
     github: ["DexlynLabs"],
     listedAt: 1743696245
   },
+  {
+    id: "5992",
+    name: "GoatSwap V2",
+    address: null,
+    symbol: "-",
+    url: "https://goatswap.fi/",
+    description: "Community-driven, trader-focused 1st party native DEX on GOAT Network, with support for Uniswap V2, Uniswap V3, Permissionless and Free Community Farms, Launchpad, Perps and more",
+    chain: "Goat",
+    logo: `${baseIconsUrl}/goatswap-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Goat"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "goatswap-v2/index.js",
+    audit_links: [
+      "https://skynet.certik.com/projects/spookyswap"
+    ],
+    twitter: "Goatswap_fi",
+    listedAt: 1743712405
+  },
+  {
+    id: "5993",
+    name: "GoatSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://goatswap.fi/",
+    description: "Community-driven, trader-focused 1st party native DEX on GOAT Network, with support for Uniswap V2, Uniswap V3, Permissionless and Free Community Farms, Launchpad, Perps and more",
+    chain: "Goat",
+    logo: `${baseIconsUrl}/goatswap-v3.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Goat"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "goatswap-v3/index.js",
+    audit_links: [
+      "https://skynet.certik.com/projects/spookyswap"
+    ],
+    twitter: "Goatswap_fi",
+    listedAt: 1743712413
+  },
 ];
 export default data4;

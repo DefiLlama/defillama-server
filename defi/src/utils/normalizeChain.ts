@@ -4073,6 +4073,15 @@ export const chainCoingeckoIds = {
     twitter: "prom_io",
     url: "https://prom.io/",
     chainId: 277
+  },
+  "Goat": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "GOATRollup",
+    url: "https://www.goat.network/",
+    chainId: 2345
   }, 
 } as unknown as ChainCoinGekcoIds
 

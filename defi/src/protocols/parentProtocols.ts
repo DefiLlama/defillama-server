@@ -6805,6 +6805,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "sparkdotfi",
     github: ["marsfoundation"],
+  },
+  {
+    id: "parent#goatswap",
+    name: "GoatSwap",
+    url: "https://goatswap.fi/",
+    description: "Community-driven, trader-focused 1st party native DEX on GOAT Network, with support for Uniswap V2, Uniswap V3, Permissionless and Free Community Farms, Launchpad, Perps and more.",
+    logo: `${baseIconsUrl}/goatswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Goatswap_fi",
+    github: ["SpookySwapV3"],
   }
 ];
 

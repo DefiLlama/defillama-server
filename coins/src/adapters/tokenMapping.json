@@ -7982,6 +7982,11 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC"
+    },
+    "0x78a39b9101983D2009Ff14773E8e47Ca3a23BBfD": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
     }
   },
   "waves": {

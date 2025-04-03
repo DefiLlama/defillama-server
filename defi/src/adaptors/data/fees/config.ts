@@ -867,6 +867,7 @@ export default {
         "id": "831"
     },
     "agni-fi": {
+        enabled: false,
         "id": "3265"
     },
     "benqi-lending": {

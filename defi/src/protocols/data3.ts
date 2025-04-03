@@ -14790,7 +14790,7 @@ const data3: Protocol[] = [
     module: "fx-Protocol/index.js",
     twitter: "protocol_fx",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Chainlink"], // https://fxprotocol.gitbook.io/fx-docs/risk-management/oracle/ Applies for both assets stETH and WBTC to calculate the Anchor price. Used for rebalancing, minting, redeeming and staleness checks. 
     audit_links: [
       "https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/SECBIT_f(x)_V2_Report_v1.4_20250107.pdf"
     ],

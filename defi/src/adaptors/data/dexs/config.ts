@@ -1574,7 +1574,6 @@ export default {
         }
     },
     "agni-fi": {
-        enabled: false,
         "id": "3265"
     },
     "horizondex": {

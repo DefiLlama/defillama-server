@@ -1245,6 +1245,33 @@
       "to": "coingecko#zyx"
     }
   },
+  "goat": {
+    "0xE1AD845D93853fff44990aE0DcecD8575293681e": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x3022b87ac063DE95b1570F46f5e470F8B53112D8": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0xbC10000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "WGBTC",
+      "to": "coingecko#bitcoin"
+    },
+    "0x3a1293Bdb83bBbDd5Ebf4fAc96605aD2021BbC0f": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xfe41e7e5cB3460c483AB2A38eb605Cda9e2d248E": {
+      "decimals": "18",
+      "symbol": "BTCB",
+      "to": "coingecko#bitcoin"
+    }
+  },
   "avax": {
     "0xa38bfa13beef9beb75f3698b4647f027fbe8f61d": {
       "decimals": "18",

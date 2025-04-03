@@ -9936,7 +9936,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Onchain Capital Allocator",
     chains: ["Ethereum", "Arbitrum", "Base"],
     oracles: [],
     forkedFrom: [],

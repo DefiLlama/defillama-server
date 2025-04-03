@@ -9902,7 +9902,7 @@ const data4: Protocol[] = [
     listedAt: 1743672976
   },
   {
-    id: "5986",
+    id: "5988",
     name: "Hotcoin",
     address: null,
     symbol: "-",

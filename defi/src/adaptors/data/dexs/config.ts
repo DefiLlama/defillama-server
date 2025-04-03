@@ -1238,8 +1238,7 @@ export default {
         "id": "2748"
     },
     "acala-swap": {
-        "id": "1847",
-        enabled: false
+        "id": "1847"
     },
     "maia-v3": {
         "id": "2760"
@@ -2229,7 +2228,6 @@ export default {
         id: "4510"
     },
     "glowswap": {
-        enabled: false,
         id: "4515"
     },
     "merlinswap": {

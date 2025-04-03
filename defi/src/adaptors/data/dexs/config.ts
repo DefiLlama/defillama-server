@@ -2257,7 +2257,6 @@ export default {
     },
     "fenix-finance": {
         parentId: "Fenix Finance",
-        enabled: false,
         id: "4563"
     },
     "nuri-exchange-v1": {

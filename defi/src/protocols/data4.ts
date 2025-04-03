@@ -9922,5 +9922,86 @@ const data4: Protocol[] = [
     twitter: "HotcoinGlobal",
     listedAt: 1743673056
   },
+  {
+    id: "5989",
+    name: "Spark Liquidity Layer",
+    address: null,
+    symbol: "-",
+    url: "https://www.spark.fi/",
+    description:
+      "The Spark Liquidity Layer (SLL) automates liquidity provision of USDS, sUSDS, and USDC directly from Sky across various blockchain networks and DeFi protocols",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/spark-liquidity-layer.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum", "Arbitrum", "Base"],
+    oracles: [],
+    forkedFrom: [],
+    module: "spark-liquidity-layer/index.js",
+    audit_links: ["https://docs.spark.fi/dev/security/security-and-audits#spark-liquidity-layer"],
+    twitter: "sparkdotfi",
+    parentProtocol: "parent#spark",
+    listedAt: 1743696229
+  },
+  {
+    id: "5990",
+    name: "Mirage Protocol",
+    address: null,
+    symbol: "-",
+    url: "http://mirage.money/",
+    description: "Mirage is a composable liquidity layer. Users can deposit collateral and borrow a self-repaying stablecoin loan powered by perps",
+    chain: "Movement",
+    logo: `${baseIconsUrl}/mirage-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Movement"],
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14149"]
+      }
+    ],
+    forkedFrom: [],
+    module: "mirage-protocol/index.js",
+    twitter: "mirage_protocol",
+    audit_links: ["https://github.com/movebit/Sampled-Audit-Reports"],
+    github: ["mirage-protocol"],
+    listedAt: 1743696237
+  },
+  {
+    id: "5991",
+    name: "Dexlyn Labs",
+    address: null,
+    symbol: "-",
+    url: "https://dexlyn.com/",
+    description: "Dexlyn is a decentralized exchange on Supra Network for token trading, liquidity pools, cross-chain bridging, and IDO launches",
+    chain: "Supra",
+    logo: `${baseIconsUrl}/dexlyn-labs.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Supra"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dexlyn-dex/index.js",
+    audit_links: [
+      "https://github.com/CDSecurity/audits/blob/main/audit%20reports/DexlynBridge%20-%20report.pdf",
+      "https://hacken.io/audits/dexlyn/",
+      "https://hackenproof.com/audit-programs/dexlyn-sca-dualdefense-audit"
+    ],
+    twitter: "DexlynLabs",
+    github: ["DexlynLabs"],
+    listedAt: 1743696245
+  },
 ];
 export default data4;

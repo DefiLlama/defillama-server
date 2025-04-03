@@ -6793,8 +6793,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "axelar",
     treasury: "axelar.js",
     github: ["axelarnetwork"],
+  },
+  {
+    id: "parent#spark",
+    name: "Spark",
+    url: "https://www.spark.fi/",
+    description: "Axelar delivers secure cross-chain communication for Web3. Our infrastructure enables dApp users to interact with any asset or application, on any chain, with one click.",
+    logo: `${baseIconsUrl}/spark.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "sparkdotfi",
+    github: ["marsfoundation"],
   }
-
 ];
 
 export default parentProtocols;

@@ -4056,6 +4056,14 @@ export const chainCoingeckoIds = {
     twitter: "aoTheComputer",
     github: ["permaweb"],
     url: "https://ao.arweave.net/",
+  },
+  "Supra": {
+    geckoId: "supra",
+    symbol: "SUPRA",
+    cmcId: "34240",
+    categories: ["EVM"],
+    twitter: "SUPRA_Labs",
+    url: "https://supra.com/",
   }, 
 } as unknown as ChainCoinGekcoIds
 

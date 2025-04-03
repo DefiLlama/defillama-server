@@ -5289,14 +5289,15 @@ const data3: Protocol[] = [
   },
   {
     id: "2929",
-    name: "Spark",
+    name: "SparkLend",
+    //previousNames: ["Spark"],
     address: null,
     symbol: "-",
     url: "https://www.spark.fi/",
     description:
       "Spark is an at-scale stablecoin allocation engine capturing yield across DeFi, RWAs and exchanges. This yield is provided cross-chain to Savings USDS holders",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/spark.jpg`,
+    logo: `${baseIconsUrl}/sparklend.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -5337,7 +5338,7 @@ const data3: Protocol[] = [
       }
     ],
     audit_links: ["https://devs.spark.fi/security/security-and-audits"],
-    github: ["marsfoundation"],
+    parentProtocol: "parent#spark",
     listedAt: 1683144119,
   },
   /*

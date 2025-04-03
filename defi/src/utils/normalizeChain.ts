@@ -4065,6 +4065,15 @@ export const chainCoingeckoIds = {
     twitter: "SUPRA_Labs",
     url: "https://supra.com/",
   }, 
+  "Prom": {
+    geckoId: "prometeus",
+    symbol: "PROM",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "prom_io",
+    url: "https://prom.io/",
+    chainId: 277
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

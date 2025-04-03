@@ -239,12 +239,16 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   if (!protocolData)
     return errorResponse(res, 'Protocol not found')
 
+  let restrictResponseSize = true
+  if (protocolData.category === 'CEX')
+    restrictResponseSize = false
+
   const responseData = await cachedCraftProtocolV2({
     protocolData,
     useNewChainNames,
     useHourlyData,
     skipAggregatedTvl,
-    restrictResponseSize: true,
+    restrictResponseSize,
   });
   return res.json(responseData);
 }

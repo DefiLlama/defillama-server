@@ -255,7 +255,7 @@ test("no surprise category", async () => {
     'Token Locker',
     'Bug Bounty',
     'DCA Tools',
-    'Managed Token Pools',
+    'Onchain Capital Allocator',
     'Developer Tools',
     'Stablecoin Issuer',
     'Coins Tracker',

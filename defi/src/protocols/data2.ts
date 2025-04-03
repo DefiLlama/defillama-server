@@ -17676,7 +17676,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "sommelier",
     cmcId: "18248",
-    category: "Managed Token Pools",
+    category: "Onchain Capital Allocator",
     chains: ["Ethereum", "Arbitrum"],
     oracles: ["Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/5226
     oraclesBreakdown: [

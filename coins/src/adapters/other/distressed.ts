@@ -298,7 +298,10 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6"
-  }
+  },
+  occ: {
+    BLEND: "0x526e8a66e357ffeaeeec6d7be1e5ea44a788dd1d"
+  },
   // merlin: {
   //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"
   // }

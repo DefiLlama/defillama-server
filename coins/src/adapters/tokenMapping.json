@@ -1270,6 +1270,11 @@
       "decimals": "18",
       "symbol": "BTCB",
       "to": "coingecko#bitcoin"
+    },
+    "0xc7517f481Cc0a645e63f870830A4B2e580421e32": {
+      "decimals": "18",
+      "symbol": "ArtBTC",
+      "to": "coingecko#bitcoin"
     }
   },
   "avax": {

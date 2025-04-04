@@ -6817,6 +6817,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Goatswap_fi",
     github: ["SpookySwapV3"],
+  },
+  {
+    id: "parent#openeden",
+    name: "OpenEden",
+    url: "https://app.openeden.com/",
+    description: "A smart contract vault managed by a regulated entity to offer 24/7 and direct access to U.S. Treasury Bills",
+    logo: `${baseIconsUrl}/openeden.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "OpenEden_X",
+    stablecoins: ["opendollar-usdo"],
   }
 ];
 

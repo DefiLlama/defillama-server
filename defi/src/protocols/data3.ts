@@ -8191,14 +8191,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3057",
-    name: "OpenEden", // previous OpenEden T-Bills
+    name: "OpenEden TBILL", // previous OpenEden T-Bills
     address: null,
     symbol: "-",
     url: "https://app.openeden.com/",
     description:
       "A smart contract vault managed by a regulated entity to offer 24/7 and direct access to U.S. Treasury Bills",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/openeden.png`,
+    logo: `${baseIconsUrl}/openeden-tbill.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -8206,7 +8206,7 @@ const data3: Protocol[] = [
     category: "RWA",
     chains: ["Ethereum"],
     module: "openeden-tbill/index.js",
-    twitter: "OpenEden_Labs",
+    twitter: "OpenEden_X",
     forkedFrom: [],
     oracles: [],
     audit_links: [
@@ -8214,6 +8214,7 @@ const data3: Protocol[] = [
       "https://www.chainsecurity.com/security-audit/openeden-usdoexpress"
     ],
     stablecoins: ["opendollar-usdo"],
+    parentProtocol: "parent#openeden",
     listedAt: 1685661527,
   },
   {

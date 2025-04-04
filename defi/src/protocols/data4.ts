@@ -10081,5 +10081,28 @@ const data4: Protocol[] = [
     twitter: "coin98_wallet",
     listedAt: 1743757586
   },
+  {
+    id: "5995",
+    name: "OpenEden USDO",
+    address: null,
+    symbol: "-",
+    assetToken: "USDO",
+    url: "https://openeden.com/usdo",
+    description: "USDO is collateralized by tokenized U.S. Treasury Bills and money market funds (such as OpenEden’s TBILL), from which USDO’s yield is generated. The reserves serve as the foundation for maintaining a minimum 100% collateralization ratio, meaning every USDO token in circulation is fully backed by equivalent assets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/openeden-usdo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "openeden-usdo/index.js",
+    twitter: "OpenEden_X",
+    parentProtocol: "parent#openeden",
+    listedAt: 1743761401
+  },
 ];
 export default data4;

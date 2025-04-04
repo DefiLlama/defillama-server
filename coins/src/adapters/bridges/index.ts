@@ -99,7 +99,7 @@ export const bridges = [
   neon_evm,
   arbitrum_nova,
   mantle,
-  axelar,
+  // axelar,
   linea,
   manta,
   astrzk,

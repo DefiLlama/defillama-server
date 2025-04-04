@@ -10060,5 +10060,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#goatswap",
     listedAt: 1743712413
   },
+  {
+    id: "5994",
+    name: "Coin98",
+    address: null,
+    symbol: "-",
+    url: "https://coin98.com/",
+    description: "Pave the way to a world where everyone can easily capture new opportunities to build their own future with Coin98 Super Wallet.",
+    chain: "TomoChain",
+    logo: `${baseIconsUrl}/coin98.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["TomoChain"],
+    oracles: [],
+    forkedFrom: [],
+    module: "coin98/index.js",
+    twitter: "coin98_wallet",
+    listedAt: 1743757586
+  },
 ];
 export default data4;

@@ -739,6 +739,11 @@
       "decimals": "8",
       "symbol": "WFBTC",
       "to": "coingecko#ignition-fbtc"
+    },
+    "0x7743e50f534a7f9f1791dde7dcd89f7783eefc39": {
+      "decimals": "18",
+      "symbol": "fxSAVE",
+      "to": "coingecko#fx-save"
     }
   },
   "fantom": {

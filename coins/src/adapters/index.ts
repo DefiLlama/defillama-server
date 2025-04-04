@@ -135,4 +135,5 @@ export default {
   asseto: require("./rwa/asseto"),
   // radixUnkownToken: require("./markets/radix"),
   sandglass: require("./yield/sandglass"),
+  concentrator: require("./yield/concentrator"),
 };

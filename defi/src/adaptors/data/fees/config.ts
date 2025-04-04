@@ -2939,4 +2939,34 @@ export default {
     "oxfun": {
         id: "6699" // chainId
     },
+    "verus": {
+        id: "5601" 
+    },
+    "haedal": {
+        id: "5784"
+    },
+    "haedal-vault": {
+        id: "5967"
+    },
+    "equilibria": {
+        id: "3091"
+    },
+    "arweave": {
+        id: "35386" // cmcId
+    },
+    "usdx": {
+        id: "5234"
+    },
+    "rocketpool": {
+        id: "900"
+    },
+    "winr": {
+        id: "777777" // chainId
+    },
+    "sofa-org": {
+        id: "4779"
+    },
+    "edgex": {
+        id: "4954"
+    }
 } as AdaptorsConfig

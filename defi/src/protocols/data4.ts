@@ -10114,7 +10114,7 @@ const data4: Protocol[] = [
     address: "solana:jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
     symbol: "JTO",
     url: "https://jito.network",
-    description: "MEV-Boosted Staking Rewards",
+    description: "Jito Restaking is a multi-asset staking protocol for node consensus networks. The protocol tokenizes staked assets as vault receipt tokens for enhanced liquidity and composability",
     chain: "Solana",
     logo: `${baseIconsUrl}/jito-restaking.png`,
     audits: "2",

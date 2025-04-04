@@ -433,7 +433,7 @@ export const chainCoingeckoIds = {
     github: ['celo-org'],
     symbol: "CELO",
     cmcId: "5567",
-    categories: ["EVM"],
+    categories: ["EVM",  "Rollup"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],

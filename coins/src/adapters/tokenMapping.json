@@ -7990,7 +7990,7 @@
     },
     "0x78a39b9101983D2009Ff14773E8e47Ca3a23BBfD": {
       "to": "coingecko#tether",
-      "decimals": 6,
+      "decimals": 18,
       "symbol": "USDT"
     }
   },
@@ -8000,7 +8000,7 @@
       "decimals": 8,
       "symbol": "UNIT0"
     }
-  }, 
+  },
   "perennial": {
     "0x39CD9EF9E511ec008247aD5DA01245D84a9521be": {
       "to": "coingecko#usd-coin",

@@ -13,10 +13,30 @@ import fetch from "node-fetch";
 import { pullDevMetricsData } from './githubMetrics';
 import { chainCoingeckoIds } from '../../utils/normalizeChain';
 import protocols from '../../protocols/data';
+import parentProtocols from '../../protocols/parentProtocols';
 const { exec } = require('child_process');
 
 const protocolInfoMap: any = {}
-protocols.forEach((protocol: any) => protocolInfoMap[protocol.id] = protocol)
+const parentProtocolsInfoMap: any = {}
+const protocolChainSetMap: {
+  [key: string]: Set<string>
+} = {}
+
+parentProtocols.forEach((protocol: any) => {
+  parentProtocolsInfoMap[protocol.id] = protocol
+  protocolChainSetMap[protocol.id] = new Set(protocol.chains ?? [])
+  protocol.chainSet = protocolChainSetMap[protocol.id]
+  protocol.childProtocols = []
+})
+
+protocols.forEach((protocol: any) => {
+  protocolInfoMap[protocol.id] = protocol
+  protocolChainSetMap[protocol.id] = new Set(protocol.chains ?? [])
+  protocol.chainSet = protocolChainSetMap[protocol.id]
+  if (protocol.parentProtocol) {
+    parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol)
+  }
+})
 
 
 const fetchJson = async (url: string) => fetch(url).then(res => res.json())
@@ -210,7 +230,7 @@ async function _storeAppMetadata() {
   createDataMaps()
 
   await _storeMetadataFile()
-  await _storeProtocolData()
+  // await _storeProtocolData()
 
   function createDataMaps() {
 
@@ -292,6 +312,14 @@ async function _storeAppMetadata() {
       const dataMap: any = {}
       dimensionsMap[mapKey] = dataMap
       data.protocols.map((pData: any) => {
+        let id = pData.id ?? pData.defillamaId ?? pData.name
+        if (protocolChainSetMap[id] && pData.chains?.length) {
+          const protocolChainSet = protocolChainSetMap[id]
+          pData.chains.forEach((chain: any) => {
+              protocolChainSet.add(chain)
+          })
+        }
+
         if (!pData.hasOwnProperty('total24h')) return; // skip if this total24h field is missing
         if (pData.id) dataMap[pData.id] = pData
         if (pData.defillamaId)  dataMap[pData.defillamaId] = pData
@@ -490,6 +518,7 @@ async function _storeAppMetadata() {
     for (const chain of chainsWithFees) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),
+        displayName: chain,
         chainFees: true
       }
     }
@@ -639,7 +668,23 @@ async function _storeAppMetadata() {
 
     const sortedProtocolData = Object.keys(finalProtocols)
       .sort()
-      .reduce((r: any, k) => ((r[k] = finalProtocols[k]), r), {})
+      .reduce((r: any, k) => {
+        r[k] = finalProtocols[k]
+        if (protocolInfoMap[k]) {
+          r[k].displayName = protocolInfoMap[k].name
+          r[k].chains = protocolInfoMap[k].chainSet ? Array.from(protocolInfoMap[k].chainSet) : []
+        }
+        if (parentProtocolsInfoMap[k]) {
+          r[k].displayName = parentProtocolsInfoMap[k].name
+          const chainSet = new Set()
+          parentProtocolsInfoMap[k].childProtocols?.forEach((p: any) => {
+            const chains = p.chainSet ? Array.from(p.chainSet) : []
+            chains.forEach((chain: any) => chainSet.add(chain))
+          })
+          r[k].chains = Array.from(chainSet)
+        }
+        return r
+      }, {})
 
     await storeRouteData('/config/smol/appMetadata-protocols.json', sortedProtocolData)
 

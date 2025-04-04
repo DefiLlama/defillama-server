@@ -10102,6 +10102,10 @@ const data4: Protocol[] = [
     module: "openeden-usdo/index.js",
     twitter: "OpenEden_X",
     parentProtocol: "parent#openeden",
+    tokensExcludedFromParent: {
+      Ethereum: ["TBILL"],
+      Arbitrum: ["TBILL"],
+    },
     listedAt: 1743761401
   },
 ];

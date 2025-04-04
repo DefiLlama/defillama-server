@@ -720,7 +720,7 @@ export default {
         id: "5151"
     },
     "filament": {
-        id: "5177",
+        id: "5650",
     },
     "kuma-v1": {
         id: "5079"
@@ -836,8 +836,5 @@ export default {
     },
     "agdex": {
         id: "5467"
-    },
-    "filament-v1": {
-        id: "5650"
     }
 } as AdaptorsConfig

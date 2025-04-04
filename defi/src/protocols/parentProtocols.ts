@@ -6830,6 +6830,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "OpenEden_X",
     stablecoins: ["opendollar-usdo"],
+  },
+  {
+    id: "parent#jito",
+    name: "Jito",
+    url: "https://jito.network",
+    description: "A smart contract vault managed by a regulated entity to offer 24/7 and direct access to U.S. Treasury Bills",
+    logo: `${baseIconsUrl}/jito.jpg`,
+    gecko_id: "jito-governance-token",
+    cmcId: null,
+    chains: [],
+    twitter: "jito_sol",
+    github: ["jito-foundation"],
   }
 ];
 

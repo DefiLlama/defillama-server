@@ -21608,17 +21608,18 @@ const data2: Protocol[] = [
   },
   {
     id: "2308",
-    name: "Jito",
+    name: "Jito Liquid Staking",
+    //previousNames: ["Jito"],
     address: "solana:jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
     symbol: "JTO",
     //assetToken: "JitoSOL", // gives JTO price to jitoSOL
     url: "https://jito.network",
     description: "MEV-Boosted Staking Rewards",
     chain: "Solana",
-    logo: `${baseIconsUrl}/jito.png`,
+    logo: `${baseIconsUrl}/jito-liquid-staking.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "jito-governance-token",
+    gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Solana"],
@@ -21638,8 +21639,8 @@ const data2: Protocol[] = [
 
       }
     ],
+    parentProtocol: "parent#jito",
     listedAt: 1669265429,
-    github: ["jito-foundation"],
   },
   {
     id: "2309",

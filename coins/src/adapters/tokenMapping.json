@@ -7995,5 +7995,12 @@
       "decimals": 8,
       "symbol": "UNIT0"
     }
+  }, 
+  "perennial": {
+    "0x39CD9EF9E511ec008247aD5DA01245D84a9521be": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    }
   }
 }

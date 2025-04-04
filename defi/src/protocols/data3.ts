@@ -51040,7 +51040,7 @@ const data3: Protocol[] = [
     id: "4922",
     name: "PumpBTC",
     address: null,
-    symbol: "-",
+    symbol: "-", // token is not yet deployed PUMP
     assetToken: "PumpBTC",
     url: "https://pumpbtc.xyz/",
     description:

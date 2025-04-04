@@ -2043,7 +2043,7 @@ export default {
         id: "5188"
     },
     "filament": {
-        id: "5177",
+        id: "5650",
     },
     "bifrost-liquid-staking": {
         id: "1738"
@@ -2875,9 +2875,6 @@ export default {
     },
     "dextoro": {
         id: "5954"
-    },
-    "filament-v1": {
-        id: "5650"
     },
     "move": {
         id: "3073"

@@ -6731,6 +6731,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Secured_Fi",
     github: ["Secured-Finance"],
+    stablecoins: ["usdfc"]
   },
   {
     id: "parent#saucerswap",

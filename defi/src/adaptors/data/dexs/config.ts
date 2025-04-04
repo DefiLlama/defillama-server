@@ -2924,4 +2924,10 @@ export default {
     "syncswap-v3": {
         id: "5982"
     },
+    "verus": {
+        id: "5601" 
+    },
+    "haedal": {
+        id: "5784"
+    }
 } as AdaptorsConfig

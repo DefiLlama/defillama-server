@@ -10025,6 +10025,7 @@ const data4: Protocol[] = [
       "https://skynet.certik.com/projects/spookyswap"
     ],
     twitter: "Goatswap_fi",
+    parentProtocol: "parent#goatswap",
     listedAt: 1743712405
   },
   {
@@ -10049,6 +10050,7 @@ const data4: Protocol[] = [
       "https://skynet.certik.com/projects/spookyswap"
     ],
     twitter: "Goatswap_fi",
+    parentProtocol: "parent#goatswap",
     listedAt: 1743712413
   },
 ];

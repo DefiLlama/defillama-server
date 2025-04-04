@@ -24,6 +24,7 @@ export const chainsWithoutCanonicalBridges: string[] = [
   // "filecoin",
   // "near",
   // "aurora",
+  "berachain",
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -220,4 +221,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "zkfair": { ticker: "ZKF", address: "coingecko:zkfair" },
   "sxr": { ticker: "SX", address: "coingecko:sx-network-2" },
   "unichain": { ticker: "UNI", address: "coingecko:uniswap" },
+  "berachain": { ticker: "BERA", address: "coingecko:berachain-bera" },
 };

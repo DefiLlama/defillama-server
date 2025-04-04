@@ -13,7 +13,7 @@ import type { Protocol } from "./types";
   logo: null | string;
   audits: null | "0" | "1" | "2" | "3";
   audit_note: null;
-  gecko_id: string;
+  gecko_id: string;ƒ
   cmcId: string;
   category: string;
   chains: string[];
@@ -8477,7 +8477,14 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Berachain"],
-    oracles: ["Pyth"],  //    https://docs.dahlia.xyz/key-concepts/oracles
+    oracles: ["Pyth"], 
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://app.dahlia.xyz/", "https://docs.dahlia.xyz/key-concepts/oracles"]
+      }
+    ],
     forkedFrom: [],
     module: "dahlia/index.js",
     twitter: "DahliaProtocol",

@@ -2965,5 +2965,17 @@ export default {
     },
     "edgex": {
         id: "4954"
-    }
+    },
+    "royco": {
+        id: "5337"
+    },
+    "dolomite": {
+        id: "2187"
+    },
+    "stader": {
+        id: "1044"
+    },
+    "cian-yieldlayer": {
+        id: "5376"
+    },
 } as AdaptorsConfig

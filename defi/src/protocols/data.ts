@@ -16805,14 +16805,15 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "894",
-    name: "Paraswap",
+    name: "Velora",
+    previousNames: ["Paraswap"],
     address: "0xcAfE001067cDEF266AfB7Eb5A286dCFD277f3dE5",
     symbol: "PSP",
-    url: "https://paraswap.io/",
+    url: "https://www.velora.xyz",
     description:
-      "ParaSwap aggregates decentralized exchanges and other DeFi services in one comprehensive interface to streamline and facilitate users' interactions with Ethereum's decentralized finance. By aggregating DEX, AMMs and PMMs, Paraswap offers its users the best exchange rate across major chains.",
+      "Velora is the most comprehensive and flexible trading protocol for Decentralized Finance (DeFi). We use decentralized intents to provide advanced features such as limit orders, super hooks, and chain-abstracted swaps.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/paraswap.jpg`,
+    logo: `${baseIconsUrl}/velora.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "paraswap",
@@ -16820,7 +16821,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "paraswap.js",
-    twitter: "paraswap",
+    twitter: "VeloraDEX",
     governanceID: ["snapshot:paraswap-dao.eth"],
     audit_links: [
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20ParaSwap%20%5B20.01.2021%5D.pdf",

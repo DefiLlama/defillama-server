@@ -18519,20 +18519,20 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/goosefx.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "goosefx",
-    cmcId: "12898",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexs",
     chains: ["Solana"],
     oracles: ["Pyth"], // https://docs.goosefx.io/features/perpetual-futures/understanding-perpetual-futures/oracles
     forkedFrom: [],
     module: "goosefx/index.js",
     twitter: "GooseFX1",
+    parentProtocol: "parent#goosefx",
     audit_links: [
       "https://safefiles.defiyield.info/safe/files/audit/pdf/GooseFX_Swap_Program_Security_Audit_Report_Halborn_Final.pdf",
       "https://github.com/GooseFX1/gfx-swap/blob/master/audit/goosefx_ssl-audit-public.pdf",
     ],
     listedAt: 1665568360,
-    github: ["GooseFX1"],
   },
   {
     id: "2176",

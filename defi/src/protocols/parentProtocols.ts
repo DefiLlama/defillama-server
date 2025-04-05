@@ -6842,6 +6842,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "jito_sol",
     github: ["jito-foundation"],
+  },
+  {
+    id: "parent#goosefx",
+    name: "GooseFX",
+    url: "https://goosefx.io",
+    description: "The best DEX in Solana to swap, trade derivatives and earn yield through single sided pools.",
+    logo: `${baseIconsUrl}/goosefx.jpg`,
+    gecko_id: "goosefx",
+    cmcId: "12898",
+    chains: [],
+    twitter: "GooseFX1",
+    github: ["GooseFX1"],
   }
 ];
 

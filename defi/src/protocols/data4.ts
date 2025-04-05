@@ -10159,5 +10159,27 @@ const data4: Protocol[] = [
     github: ["strike-finance"],
     listedAt: 1743787721,
   },
+  {
+    id: "5998",
+    name: "GooseFX V2",
+    address: "solana:GFX1ZjR2P15tmrSwow6FjyDYcEkoFb4p4gJCpLBjaxHD",
+    symbol: "GOFX",
+    url: "https://app.goosefx.io/gamma",
+    description: "The best DEX in Solana to swap, trade derivatives and earn yield through single sided pools.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/goosefx-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "GooseFX1",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#goosefx",
+    listedAt: 1743849733
+  },
 ];
 export default data4;

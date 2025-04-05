@@ -2984,4 +2984,7 @@ export default {
     "apestore": {
         id: "4584"
     },
+    "euler": { // euler v2
+        id: "5044"
+    }
 } as AdaptorsConfig

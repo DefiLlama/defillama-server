@@ -836,5 +836,8 @@ export default {
     },
     "agdex": {
         id: "5467"
+    },
+    "vest": {
+        id: "4400"
     }
 } as AdaptorsConfig

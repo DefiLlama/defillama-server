@@ -56350,14 +56350,10 @@ const data3: Protocol[] = [
     module: "cygnus-fi-restake/index.js",
     twitter: "CygnusFi",
     forkedFrom: [],
-    oracles: ["RedStone"], //https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work
-    oraclesBreakdown: [
-      {
-        name: "Restone",
-        type: "Primary",
-        proof: ["https://wiki.cygnus.finance/whitepaper/cygnus-network/how-does-cygnus-work"]
-      }
-    ],
+    oraclesByChain: {
+      ton: ["RedStone"], // https://wiki.cygnus.finance/whitepaper/cygnus-omnichain-liquidity-validation-system-lvs/cygnus-lvs-integration/cgusd-v1/token-and-contract/cgusd/on-chain-price-oracle
+      bsquared: ["RedStone"], // https://wiki.cygnus.finance/whitepaper/cygnus-omnichain-liquidity-validation-system-lvs/cygnus-lvs-integration/cgusd-v1/token-and-contract/cgusd/on-chain-price-oracle
+    },
     parentProtocol: "parent#cygnus-finance",
     listedAt: 1726581992
   },

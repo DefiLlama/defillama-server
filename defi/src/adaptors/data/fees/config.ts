@@ -2981,4 +2981,7 @@ export default {
     "beraborrow": {
         id: "5746"
     },
+    "apestore": {
+        id: "4584"
+    },
 } as AdaptorsConfig

@@ -2978,4 +2978,7 @@ export default {
     "cian-yieldlayer": {
         id: "5376"
     },
+    "beraborrow": {
+        id: "5746"
+    },
 } as AdaptorsConfig

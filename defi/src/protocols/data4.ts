@@ -7263,7 +7263,7 @@ const data4: Protocol[] = [
     chains: ["Sonic"],
     oracles: [],
     module: "usury/index.js",
-    twitter: "UsuryFinance",
+    twitter: "Usury_Finance",
     listedAt: 1741358957,
   },
   {

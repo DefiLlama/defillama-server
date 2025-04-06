@@ -839,5 +839,8 @@ export default {
     },
     "vest": {
         id: "4400"
+    },
+    "goosefx_v2": {
+        id: "5998"
     }
 } as AdaptorsConfig

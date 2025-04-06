@@ -2654,7 +2654,7 @@ const data4: Protocol[] = [
     module: "vicuna/index.js",
     twitter: "VicunaFinance",
     forkedFrom: ["Beefy"],
-    oracles: [],
+    oracles: ["Pyth"],            //  https://vicuna-finance.gitbook.io/vicuna-finance-sonic/other-info/integrations#pyth
     parentProtocol: "parent#vicuna",
     listedAt: 1737981273
   },

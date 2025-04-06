@@ -2991,4 +2991,7 @@ export default {
     "hardswap": {
         id: "5990"
     },
+    "spark": {
+        id: "2929"
+    }
 } as AdaptorsConfig

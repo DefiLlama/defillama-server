@@ -49577,7 +49577,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#magpie-ecosystem",
     listedAt: 1720434611,
   },
-  {
+  /*{
     id: "4858",
     name: "Mind Network",
     address: null,
@@ -49599,7 +49599,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/mind-network/mind-restaking-contracts/tree/main/audit"],
     github: ["mind-network"],
     listedAt: 1720434911,
-  },
+  },*/
   {
     id: "4859",
     name: "BingX",

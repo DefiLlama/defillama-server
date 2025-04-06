@@ -247,6 +247,8 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   if (protocolData.category === 'CEX')
     restrictResponseSize = false
 
+  restrictResponseSize = false // hack to revert to old behavior
+
   const responseData = await cachedCraftProtocolV2({
     protocolData,
     useNewChainNames,

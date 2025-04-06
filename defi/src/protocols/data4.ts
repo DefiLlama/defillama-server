@@ -10181,5 +10181,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#goosefx",
     listedAt: 1743849733
   },
+  {
+    id: "5999",
+    name: "HARD Swap",
+    address: "kava:0x25e9171C98Fc1924Fa9415CF50750274F0664764",
+    symbol: "HARD",
+    url: "https://swap.hard.fun/",
+    description: "HARD Swap is Kava’s AI-powered DEX, using historical trading data and machine learning to optimize yields, improve trading strategies, and manage risk. Integrated with HARD.fun and Kava Lend, and governed by HARD token holders, it advances secure and efficient DeFi trading.",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/hard-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Kava"],
+    module: "hardswap/index.js",
+    twitter: "hard_protocol",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    listedAt: 1743978301
+  },
 ];
 export default data4;

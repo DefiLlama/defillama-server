@@ -2414,6 +2414,7 @@ export default {
         id: "5742"
     },
     "polymarket": {
+        enabled: false, // fees value is wrong
         id: "711"
     },
     "velar": {

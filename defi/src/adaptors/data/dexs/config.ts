@@ -2929,5 +2929,8 @@ export default {
     },
     "haedal": {
         id: "5784"
-    }
+    },
+    "hardswap": {
+        id: "5990"
+    },
 } as AdaptorsConfig

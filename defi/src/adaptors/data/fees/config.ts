@@ -2987,5 +2987,8 @@ export default {
     },
     "euler": { // euler v2
         id: "5044"
-    }
+    },
+    "hardswap": {
+        id: "5990"
+    },
 } as AdaptorsConfig

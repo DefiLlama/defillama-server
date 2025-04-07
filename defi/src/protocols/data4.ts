@@ -9375,11 +9375,12 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Reserve Currency",
     chains: ["Berachain"],
-    module: "dummy.js",
+    module: "baker-dao/index.js",
     forkedFrom: ["Eggs Finance"],
     oracles: [],
     twitter: "BakerDAO420",
     audit_links: ["https://documentation.bakerdao.io/security"],
+    listedAt: 1744062627
   },
   {
     id: "5965",

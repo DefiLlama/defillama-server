@@ -16,6 +16,9 @@ import {
 import { craftChainsResponse } from "./getChains";
 import type { IProtocol, IChain, ITvlsByChain } from "./types";
 import fetch from "node-fetch";
+import cgSymbolsJson from './utils/symbols/symbols.json'
+
+const cgSymbols: {[id: string]: string } = cgSymbolsJson
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -111,9 +114,10 @@ function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownT
   }
 
   for (const token in lastRecord.tvl) {
-    if (majors.includes(token)) {
+    const normalizedToken = cgSymbols[token] ?? token
+    if (majors.includes(normalizedToken)) {
       breakdown.majors = breakdown.majors + lastRecord.tvl[token];
-    } else if (stablecoins.some((stable) => token.includes(stable))) {
+    } else if (stablecoins.some((stable) => normalizedToken.includes(stable))) {
       breakdown.stablecoins = breakdown.stablecoins + lastRecord.tvl[token];
     } else {
       breakdown.others = breakdown.others + lastRecord.tvl[token];

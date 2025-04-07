@@ -744,6 +744,11 @@
       "decimals": "18",
       "symbol": "fxSAVE",
       "to": "coingecko#fx-save"
+    },
+    "0xfc82bb4ba86045af6f327323a46e80412b91b27d": {
+      "to": "coingecko#prometeus",
+      "decimals": 18,
+      "symbol": "PROM"
     }
   },
   "fantom": {
@@ -911,6 +916,11 @@
       "decimals": "8",
       "symbol": "enzoBTC",
       "to": "coingecko#lorenzo-stbtc"
+    },
+    "0xaf53d56ff99f1322515e54fdde93ff8b3b7dafd5": {
+      "to": "coingecko#prometeus",
+      "decimals": 18,
+      "symbol": "PROM"
     }
   },
   "stacks": {
@@ -5785,6 +5795,16 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 8,
       "symbol": "WBTC"
+    },
+    "0xe4880249745eAc5F1eD9d8F7DF844792D560e750": {
+      "to": "coingecko#USTBL",
+      "decimals": 5,
+      "symbol": "USTBL"
+    },
+    "0xa0769f7A8fC65e47dE93797b4e21C073c117Fc80": {
+      "to": "coingecko#EUTBL",
+      "decimals": 5,
+      "symbol": "EUTBL"
     }
   },
   "mint": {
@@ -8016,6 +8036,33 @@
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC.e"
+    }
+  },
+  "prom": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#prometeus",
+      "decimals": 18,
+      "symbol": "PROM"
+    },
+    "0x7e942605B5028E3B751dBB5Ef8afC5CF85a5A7eD": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0xd9c95e2ad330E11D7Dfa58f18504049f625E955e": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
+    "0x6064C9028d069a7822d30EF17065A57524A5FcAb": {
+      "to": "coingecko#tether",
+      "decimals": 18,
+      "symbol": "USDT"
+    },
+    "0x04A21a38D5E275d6023B27504beB3095dC43B0C0": {
+      "to": "coingecko#prometeus",
+      "decimals": 18,
+      "symbol": "WPROM"
     }
   }
 }

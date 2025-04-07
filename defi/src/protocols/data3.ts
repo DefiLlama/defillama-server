@@ -22038,7 +22038,7 @@ const data3: Protocol[] = [
     symbol: "NLS",
     url: "https://nolus.io/",
     description:
-      "Nolus is a semi-permissioned blockchain bridging lenders and borrowers in a DeFi money market. With its DeFi Lease, borrowers can secure up to 150% financing on their initial investments, and access to the underlying leveraged assets through whitelisted strategies. Inspired by traditional leasing, where one pays a fraction upfront and gains ownership after repayment, Nolus' approach cuts down the DeFi sector's high over-collateralization standards. This boosts capital efficiency and offers borrowers better loan terms.",
+      "Nolus Protocol introduces a novel DeFi primitive that delivers an asset-backed margin product combining predictability with risk management. By offering fixed interest rates, structured liquidity, and controlled leverage, Nolus redefines how users access and interact with capital in crypto markets. Built for both seasoned users and new participants, the protocol enables confident decision-making in volatile environments—empowering users to capitalize on strategic opportunities while maintaining stability and control.",
     chain: "Nolus",
     logo: `${baseIconsUrl}/nolus-protocol.jpg`,
     audits: "2",

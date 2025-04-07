@@ -4088,6 +4088,15 @@ export const chainCoingeckoIds = {
     url: "https://www.goat.network/",
     chainId: 2345
   }, 
+  "Plume Mainnet": {
+    geckoId: null,
+    symbol: "PLUME",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "plumenetwork",
+    url: "https://plumenetwork.xyz/",
+    chainId: 98866
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4268,7 +4277,8 @@ const chainLabelMap = {
   "mtt_network": "MTT Network",
   "hsk": "HashKey Chain",
   "fhe": "Mind Network",
-  "ao": "AO"
+  "ao": "AO",
+  "plume_mainnet": "Plume Mainnet",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

@@ -493,7 +493,7 @@ async function run() {
       }
 
       if (!isParentProtocol) {
-        protocolSummaries[protocol.info.id] = protocol
+        protocolSummaries[protocolId] = protocol
 
 
         const parentId = protocol.info.parentProtocol
@@ -510,7 +510,7 @@ async function run() {
 
         parentProtocolsData[parentId].childProtocols.push(protocol)
       } else {
-        parentProtocolSummaries[protocol.info.id] = protocol
+        parentProtocolSummaries[protocolId] = protocol
       }
     }
 

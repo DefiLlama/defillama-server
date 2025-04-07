@@ -7146,6 +7146,11 @@
       "to": "coingecko#savings-dai",
       "decimals": 18,
       "symbol": "sDAI"
+    },
+    "0xC1AA99c3881B26901aF70738A7C217dc32536d36": {
+      "to": "coingecko#noon-usn",
+      "decimals": 18,
+      "symbol": "USN"
     }
   },
   "duckchain": {

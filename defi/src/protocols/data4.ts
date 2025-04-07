@@ -10314,5 +10314,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#kittenswap",
     listedAt: 1744050215,
   },
+  {
+    id: "6005",
+    name: "Momentum",
+    address: null,
+    symbol: "-",
+    url: "ttps://app.mmt.finance/trade",
+    description:
+      "Decentralized exchange on Sui",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/momentum.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Sui"],
+    forkedFrom: [],
+    module: "momentum/index.js",
+    twitter: "MMTFinance",
+    listedAt: 1744050462,
+  },
 ];
 export default data4;

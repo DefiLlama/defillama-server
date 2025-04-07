@@ -7306,6 +7306,7 @@ const data4: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "kittenswap/index.js",
     twitter: "kittenswaphype",
+    parentProtocol: "parent#kittenswap",
     listedAt: 1741394492,
   },
   {
@@ -10290,6 +10291,28 @@ const data4: Protocol[] = [
     oracles: [],
     audit_links: ["https://docsend.com/view/xd2ijhvvnngc92ai"],
     listedAt: 1744041503
+  },
+  {
+    id: "6004",
+    name: "Kittenswap CL",
+    address: null,
+    symbol: "-",
+    url: "https://kittenswap.finance",
+    description:
+      "The community owned DEX for seamless trading on HyperEVM",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/kittenswap-cl.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Hyperliquid"],
+    forkedFrom: ["Uniswap V3"],
+    module: "kittenswap-cl/index.js",
+    twitter: "kittenswaphype",
+    parentProtocol: "parent#kittenswap",
+    listedAt: 1744050215,
   },
 ];
 export default data4;

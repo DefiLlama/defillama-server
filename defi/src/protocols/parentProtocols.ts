@@ -6866,6 +6866,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SeamlessFi",
     github: ["seamless-protocol"],
+  },
+  {
+    id: "parent#kittenswap",
+    name: "Kittenswap Finance",
+    url: "https://kittenswap.finance",
+    description: "The community owned DEX for seamless trading on HyperEVM",
+    logo: `${baseIconsUrl}/kittenswap-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "kittenswaphype",
   }
 ];
 

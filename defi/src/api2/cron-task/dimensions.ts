@@ -24,7 +24,6 @@ import { storeAppMetadata } from './appMetadata';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
-
 const blacklistedAppCategorySet = new Set([
   "Stablecoin Issuer", "MEV",
   "Liquid Staking",
@@ -284,11 +283,10 @@ async function run() {
       Object.entries(protocolRecordMapWithMissingData).forEach(([timeS, record]: any) => {
         // we dont create summary for items in protocols instead use the fetched records for others
         if (adapterType === AdapterType.PROTOCOLS) return;
-        let { aggregated, timestamp } = record
+        let { aggregated, } = record
+        const timestamp = timeSToUnix(timeS)
 
         // if (timestamp > startOfDayTimestamp) return; // skip today's data
-
-        if (!summaries.earliestTimestamp || timestamp < summaries.earliestTimestamp) summaries.earliestTimestamp = timestamp
 
 
         Object.entries(aggregated).forEach(addRecordData)
@@ -311,6 +309,7 @@ async function run() {
 
           const summary = summaries[recordType] as RecordSummary
           const protocolRecord = protocolData[recordType]
+          if (!summary.earliestTimestamp || timestamp < summary.earliestTimestamp) summary.earliestTimestamp = timestamp
 
           if (!skipChainSummary) {
 
@@ -423,7 +422,7 @@ async function run() {
         // average1y
         protocolSummaryAction(protocolSummary, (summary: any) => {
           if (summary.total1y && _protocolData.lastOneYearData?.length > 0)
-            summary.average1y = summary.total1y / protocol.records.length
+            summary.average1y = summary.total1y / _protocolData.lastOneYearData.length
         })
         // change_1d
         protocolSummaryAction(protocolSummary, (summary: any) => {
@@ -654,9 +653,9 @@ type ProtocolSummary = RecordSummary & {
 }
 
 run()
-.catch(console.error)
-.then(storeAppMetadata)
-.then(() => process.exit(0))
+  .catch(console.error)
+  .then(storeAppMetadata)
+  .then(() => process.exit(0))
 
 const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYPE))
 // fill all missing data with the last available data
@@ -855,11 +854,12 @@ async function generateDimensionsResponseFiles(cache: any) {
           continue
         }
 
-        id = protocol.info.defillamaId ?? protocol.info.id ?? id
-
         const data = await getProtocolDataHandler2({ recordType, protocolData: protocol })
         const protocolSlug = sluggifyString(data.name)
         const protocolSlugDN = data.displayName ? sluggifyString(data.displayName) : null
+
+        if (!data.totalDataChart?.length) continue; // skip if there is no data
+
         const differentDisplayName = protocolSlugDN && protocolSlug !== protocolSlugDN
         let fileLabels = differentDisplayName ? [protocolSlugDN] : []
         if (Array.isArray(data.previousNames)) fileLabels.push(...data.previousNames.map(sluggifyString))

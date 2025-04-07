@@ -10401,5 +10401,27 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/d-EURO/landingPage/blob/develop/audits/ChainSecurity_dEURO_intermediate_report.pdf"],
     listedAt: 1744062991,
   },
+  {
+    id: "6009",
+    name: "Stable Jack scUSD",
+    address: null,
+    symbol: "-",
+    url: "https://deuro.com/",
+    description:
+      "Stable Jack provides high-yield, principal-protected stablecoin offerings on the Sonic Chain, enhancing DeFi opportunities for users",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/stable-jack-scusd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Sonic"],
+    forkedFrom: [],
+    module: "stablejack-scusd/index.js",
+    twitter: "StableJack_xyz",
+    parentProtocol: "parent#stable-jack",
+    listedAt: 1744065310,
+  },
 ];
 export default data4;

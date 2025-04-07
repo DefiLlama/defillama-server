@@ -6877,6 +6877,19 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "kittenswaphype",
+  },
+  {
+    id: "parent#stable-jack",
+    name: "Stable Jack",
+    url: "https://www.stablejack.xyz",
+    description: "Stable Jack is a yield, volatility, and points trading protocol for any asset",
+    logo: `${baseIconsUrl}/stable-jack.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "StableJack_xyz",
+    github: ["stable-jack"],
+    stablecoins: ["stable-jack-ausd"],
   }
 ];
 

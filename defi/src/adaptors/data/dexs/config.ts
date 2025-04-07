@@ -2936,4 +2936,7 @@ export default {
     "momentum": {
         id: "6005"
     },
+    "jup-ape": {
+        id: "4860"
+    },
 } as AdaptorsConfig

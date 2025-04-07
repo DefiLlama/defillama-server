@@ -230,7 +230,7 @@ async function _storeAppMetadata() {
   createDataMaps()
 
   await _storeMetadataFile()
-  // await _storeProtocolData()
+  await _storeProtocolData()
 
   function createDataMaps() {
 

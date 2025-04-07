@@ -1,13 +1,12 @@
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { nullAddress } from "../../utils/shared/constants";
 import { Write } from "../utils/dbInterfaces";
 import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
-import * as sdk from "@defillama/sdk";
 
 type Config = { address: string; rateProvider: string; symbol: string };
 
 const underlying: string = "0x039e2fB66102314Ce7b64Ce5Ce3E5183bc94aD38";
+const decimals: number = 18;
 
 const rateProviders: {
   [chain: string]: Config[];
@@ -47,8 +46,8 @@ async function getPrices(timestamp: number, chain: string, configs: Config[]) {
       pricesObject[address] = {
         underlying,
         symbol,
-        decimals: 18,
-        price,
+        decimals,
+        price: price / 1 ** decimals,
       };
     }),
   );

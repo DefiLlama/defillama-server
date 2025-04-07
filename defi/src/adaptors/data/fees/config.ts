@@ -2989,9 +2989,18 @@ export default {
         id: "5044"
     },
     "hardswap": {
-        id: "5990"
+        id: "5999"
     },
     "spark": {
         id: "2929"
-    }
+    },
+    "hypurrfi": {
+        id: "5838"
+    },
+    "stakestone-stone": {
+        id: "3558"
+    },
+    "resupply": {
+        id: "5963"
+    },
 } as AdaptorsConfig

@@ -2931,6 +2931,6 @@ export default {
         id: "5784"
     },
     "hardswap": {
-        id: "5990"
+        id: "5999"
     },
 } as AdaptorsConfig

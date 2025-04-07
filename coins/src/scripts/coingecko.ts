@@ -26,6 +26,7 @@ import {
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
+import { cairoErc20Abis, call, feltArrToStr } from "../adapters/utils/starknet";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -146,6 +147,22 @@ async function getSymbolAndDecimals(
       symbol: token.symbol,
       decimals: Number(token.decimals),
     };
+  } else if (chain == "starknet") {
+    try {
+      const [symbol, decimals] = await Promise.all([
+        call({
+          abi: cairoErc20Abis.symbol,
+          target: tokenAddress,
+        }).then((r) => feltArrToStr([r])),
+        call({
+          abi: cairoErc20Abis.decimals,
+          target: tokenAddress,
+        }).then((r) => Number(r)),
+      ]);
+      return { symbol, decimals };
+    } catch (e) {
+      return;
+    }
   } else if (chain == "hedera") {
     try {
       const { symbol, decimals } = await fetch(

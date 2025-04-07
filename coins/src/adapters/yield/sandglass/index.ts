@@ -10,6 +10,7 @@ const baseTokens: { [symbol: string]: string } = {
   SOL: "solana",
   JTO: "jito-governance-token",
   JLP: "jupiter-perpetuals-liquidity-provider-token",
+  ETH: "ethereum",
 };
 
 type MarketInfo = {
@@ -19,6 +20,7 @@ type MarketInfo = {
   decimals: number;
   unit: string;
   oracleDecimals: number;
+  chain: string;
 };
 
 const marketInfos: MarketInfo[] = [
@@ -29,6 +31,7 @@ const marketInfos: MarketInfo[] = [
     decimals: 6,
     unit: "JLP",
     oracleDecimals: 0,
+    chain: "solana",
   },
   {
     address: "wwcj6seMTdkUxjTeqh7posUhwgqvJKh4Axi1ziajxJf",
@@ -37,6 +40,7 @@ const marketInfos: MarketInfo[] = [
     decimals: 6,
     unit: "SOL",
     oracleDecimals: 3,
+    chain: "solana",
   },
   {
     address: "4TwkkaaDHyKhqDh59JYrYCGyRf9FRwDmGgvwwXyVzwYs",
@@ -45,6 +49,7 @@ const marketInfos: MarketInfo[] = [
     decimals: 6,
     unit: "USDC",
     oracleDecimals: 0,
+    chain: "solana",
   },
   {
     address: "9s19JHfKLMmw2b8yP6xdhE5jEqZYsJj6jL8SexAgLTeC",
@@ -53,6 +58,7 @@ const marketInfos: MarketInfo[] = [
     decimals: 6,
     unit: "USDC",
     oracleDecimals: 0,
+    chain: "solana",
   },
   {
     address: "B4mgGx4HHYMsWYv2dbJyNHtCNFx5dfUUt1EJYicEMNPp",
@@ -61,6 +67,7 @@ const marketInfos: MarketInfo[] = [
     decimals: 6,
     unit: "USDC",
     oracleDecimals: 0,
+    chain: "solana",
   },
   {
     address: "5ofpU1rU4ajg3LuHKSMBBWHDubTW1XF7x6tCAXsk5Gju",
@@ -69,6 +76,7 @@ const marketInfos: MarketInfo[] = [
     decimals: 9,
     unit: "SOL",
     oracleDecimals: 0,
+    chain: "solana",
   },
   {
     address: "BSrrKn29jrEbag3QRyH7qy4pcMZ9mXEp9Sqfs9iW5fmK",
@@ -77,6 +85,7 @@ const marketInfos: MarketInfo[] = [
     decimals: 6,
     unit: "USDC",
     oracleDecimals: 0,
+    chain: "solana",
   },
   {
     address: "Amu99crLdqbfpzrBbfrXHu1myWoCNXrSu7RRkHZJ1Ymv",
@@ -85,6 +94,7 @@ const marketInfos: MarketInfo[] = [
     unit: "SOL",
     decimals: 9,
     oracleDecimals: 0,
+    chain: "solana",
   },
   {
     address: "4K9VeqpZNCVHtZN9mKJpTihp4N8a9LeS35qBnqqM83Et",
@@ -93,6 +103,7 @@ const marketInfos: MarketInfo[] = [
     unit: "SOL",
     decimals: 9,
     oracleDecimals: 0,
+    chain: "solana",
   },
   {
     address: "GLbDcuvEB2TLPQrAH6aG9tfRTkUeTHW9Nher2bsLVDu4",
@@ -101,6 +112,7 @@ const marketInfos: MarketInfo[] = [
     unit: "SOL",
     decimals: 9,
     oracleDecimals: 0,
+    chain: "solana",
   },
   {
     address: "FaZ6MkHZxU9D8nbbT6FjzzeYC4bevQq3ZNnzmLQEZY8G",
@@ -109,6 +121,7 @@ const marketInfos: MarketInfo[] = [
     unit: "SOL",
     decimals: 9,
     oracleDecimals: 0,
+    chain: "solana",
   },
   {
     address: "7Rywj5jGRqHr4YHPPoMUUZ1MSZPQzUVrVvZVUiKxaWnj",
@@ -117,6 +130,16 @@ const marketInfos: MarketInfo[] = [
     unit: "JTO",
     decimals: 9,
     oracleDecimals: 0,
+    chain: "solana",
+  },
+  {
+    address: "DAsYPZgVAgFikzHU2R55RGPtmjJ4ia5zLSzCAyXHzznE",
+    mintAddress: "A8uPGauLyDTw9dMjBpb9Vrgq7frbWX46XqX71paW4pri",
+    symbol: "CRT",
+    unit: "ETH",
+    decimals: 9,
+    oracleDecimals: 0,
+    chain: "eclipse",
   },
 ];
 
@@ -130,21 +153,20 @@ export async function sandglass(timestamp: number = 0): Promise<Write[]> {
       headers: {
         Origin: "https://sandglass.so",
       },
-    },
+    }
   );
 
   const baseTokenPrices = await getTokenAndRedirectDataMap(
     Object.values(baseTokens),
     "coingecko",
-    timestamp,
+    timestamp
   );
 
   marketInfos.map((marketInfo: MarketInfo) => {
     const marketAddress = marketInfo.address;
     const mintAddress = marketInfo.mintAddress;
     const oraclePrice = Number(
-      prices.find((price: any) => price.address === marketAddress)?.price ??
-        "0",
+      prices.find((price: any) => price.address === marketAddress)?.price ?? "0"
     );
 
     const baseTokenInfo =
@@ -160,14 +182,14 @@ export async function sandglass(timestamp: number = 0): Promise<Write[]> {
 
     addToDBWritesList(
       writes,
-      "solana",
+      marketInfo.chain,
       mintAddress,
       price,
       marketInfo.decimals,
       marketInfo.symbol,
       timestamp,
       "sandglass-api",
-      0.5,
+      0.5
     );
   });
 

@@ -6799,7 +6799,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#spark",
     name: "Spark",
     url: "https://www.spark.fi/",
-    description: "Axelar delivers secure cross-chain communication for Web3. Our infrastructure enables dApp users to interact with any asset or application, on any chain, with one click.",
+    description: "Maximize your stablecoin rewards with . Withdraw to USDC, USDS, or DAI at any time with no slippage or platform fees.",
     logo: `${baseIconsUrl}/spark.jpg`,
     gecko_id: null,
     cmcId: null,

@@ -6854,6 +6854,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "GooseFX1",
     github: ["GooseFX1"],
+  },
+  {
+    id: "parent#seamless-protocol",
+    name: "Seamless Protocol",
+    url: "https://www.seamlessprotocol.com",
+    description: "A decentralized, non-custodial liquidity market that creates a more seamless experience for Suppliers and Borrowers.",
+    logo: `${baseIconsUrl}/seamless-protocol.jpg`,
+    gecko_id: "seamless-protocol",
+    cmcId: "28652",
+    chains: [],
+    twitter: "SeamlessFi",
+    github: ["seamless-protocol"],
   }
 ];
 

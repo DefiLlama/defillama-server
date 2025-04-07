@@ -4094,7 +4094,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
     twitter: "plumenetwork",
-    url: "https://perennial.finance/",
+    url: "https://plumenetwork.xyz",
     chainId: 98866
   }, 
   "Perennial": {
@@ -4103,7 +4103,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
     twitter: "perenniallabs",
-    url: "https://plumenetwork.xyz/",
+    url: "https://perennial.finance/",
     chainId: 1424
   }, 
 } as unknown as ChainCoinGekcoIds

@@ -2933,4 +2933,7 @@ export default {
     "hardswap": {
         id: "5999"
     },
+    "momentum": {
+        id: "6005"
+    },
 } as AdaptorsConfig

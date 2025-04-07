@@ -3003,4 +3003,7 @@ export default {
     "resupply": {
         id: "5963"
     },
+    "momentum": {
+        id: "6005"
+    },
 } as AdaptorsConfig

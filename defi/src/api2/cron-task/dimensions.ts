@@ -240,6 +240,8 @@ async function run() {
 
       const isBreakdownAdapter = !isParentProtocol && dimensionProtocolInfo?.childProtocols?.length > 0
 
+      if (protocol.info.protocolType === ProtocolType.CHAIN) skipChainSummary = true
+
 
       if (!records)
         records = { ...adapterTypeRecords, ...protocolTypeRecords, } // if there are duplicate records between protocol and specific adaptertype, the generic record overwrites specific record (Noticed that uniswap stores in both protocol & dex record and dex records are wrong)

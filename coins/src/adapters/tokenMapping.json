@@ -7790,6 +7790,11 @@
       "to": "coingecko#hyperliquid",
       "decimals": 18,
       "symbol": "wstHYPE"
+    },
+    "0xbe6727b535545c67d5caa73dea54865b92cf7907": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "UETH"
     }
   },
   "hemi": {

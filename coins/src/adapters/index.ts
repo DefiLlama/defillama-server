@@ -136,4 +136,5 @@ export default {
   // radixUnkownToken: require("./markets/radix"),
   sandglass: require("./yield/sandglass"),
   concentrator: require("./yield/concentrator"),
+  liquidly: require("./yield/liquidly"),
 };

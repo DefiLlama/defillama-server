@@ -9927,9 +9927,28 @@ const data2: Protocol[] = [
     category: "Yield",
     chains: ["Sui", "Aptos"],
     oraclesByChain: {
-      sui: ["Supra"], // https://github.com/DefiLlama/defillama-server/pull/5169
-      aptos: ["Pyth"], // https://doc-en.mole.fi/security/oracle
+      Sui: ["Supra", "Pyth"], //https://doc-en.mole.fi/security/oracle
+      Aptos: ["Pyth"],
     },
+    oraclesBreakdown: [
+      {
+        name: "Supra",
+        type: "Aggregator",
+        proof: ["https://discord.com/channels/978894592579620864/978901360479191040/1357973763198554386"],
+        chains: [
+          {chain: "Sui"},
+        ]
+      },
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://discord.com/channels/978894592579620864/978901360479191040/1357973763198554386"],
+        chains: [
+          {chain: "Sui"},
+          {chain: "Aptos"},
+        ]
+      }
+    ],
     forkedFrom: [],
     module: "mole/index.js",
     twitter: "moledefi",

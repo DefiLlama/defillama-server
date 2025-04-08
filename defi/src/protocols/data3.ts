@@ -44518,6 +44518,7 @@ const data3: Protocol[] = [
     twitter: "bounce_bit",
     listedAt: 1716205027,
   },
+  /*
   {
     id: "4638",
     name: "BounceBit Premium",
@@ -44541,6 +44542,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bouncebit-cedefi",
     listedAt: 1716205258,
   },
+  */
   {
     id: "4639",
     name: "Saga",
@@ -50191,6 +50193,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1721046921,
   },
+  /* grouped under one listing, same product
   {
     id: "4885",
     name: "BounceBit Easy",
@@ -50214,6 +50217,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#bouncebit-cedefi",
     listedAt: 1721072868,
   },
+  */
   {
     id: "4886",
     name: "Opal DeFi",
@@ -63076,7 +63080,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "bouncebit-cedefi/index.js",
     twitter: "bounce_bit",
-    parentProtocol: "parent#bouncebit-cedefi",
+   // parentProtocol: "parent#bouncebit-cedefi",
     listedAt: 1733090351
   },
   {

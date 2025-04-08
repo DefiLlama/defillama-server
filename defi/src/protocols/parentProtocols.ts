@@ -5506,6 +5506,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["avalonfinancexyz"],
     twitter: "avalonfinance_",
   },
+  /*
   {
     id: "parent#bouncebit-cedefi",
     name: "BounceBit CeDeFi",
@@ -5519,6 +5520,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "bounce_bit",
     github: ["BounceBit-Labs"],
   },
+  */
   {
     id: "parent#fulcrom",
     name: "Fulcrom",

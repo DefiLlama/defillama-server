@@ -10456,5 +10456,25 @@ const data4: Protocol[] = [
     twitter: "OrangeXExchange",
     listedAt: 1744103517
   },
+  {
+    id: "6011",
+    name: "Fuel Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.fuel.network/staking/on-fuel",
+    description:
+      "Help secure the FUEL network by delegating your tokens to Fuel validators.",
+    chain: "Fuel",
+    logo: `${baseIconsUrl}/fuel-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Chain",
+    chains: ["Fuel"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "fuel_network",
+  },
 ];
 export default data4;

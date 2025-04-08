@@ -2917,7 +2917,7 @@ export default {
         id: "148"
     },
     "karak": {
-        id: "2410"
+        id: "4460"
     },
     "saber": {
         id: "419"

@@ -10,4 +10,5 @@ const webhooks = {
     dimensionLogs: process.env.DIMENSION_LOGS_WEBHOOK,
 } as IJSON<string>
 
-export const sendDiscordAlert = async (message: string, type: string, formatted?: boolean) => sendMessage(message, webhooks[type] ?? webhooks.fees, formatted)
+export const sendDiscordAlert = async (message: string, type: string, formatted?: boolean) => process.env.runLocal === 'true'?
+    console.log(message) : sendMessage(message, webhooks[type] ?? webhooks.fees, formatted)

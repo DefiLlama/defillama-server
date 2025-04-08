@@ -17,7 +17,7 @@ jobs:
       defi: ${{ steps.filter.outputs.defi }}
     steps:
       - uses: actions/checkout@v2
-      - uses: dorny/paths-filter@v2
+      - uses: dorny/paths-filter@4512585405083f25c027a35db413c2b3b9006d50
         id: filter
         with:
           filters: |
@@ -110,3 +110,4 @@ jobs:
           SMARDEX_SUBGRAPH_API_KEY: ${{ secrets.SMARDEX_SUBGRAPH_API_KEY }}
           DUNE_API_KEYS: ${{ secrets.DUNE_API_KEYS }}
           APIKEY: ${{ secrets.APIKEY }}
+          SEARCH_MASTER_KEY: ${{ secrets.SEARCH_MASTER_KEY }}

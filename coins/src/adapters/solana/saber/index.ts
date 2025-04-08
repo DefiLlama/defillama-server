@@ -126,16 +126,12 @@ async function priceMSOL2(timestamp: number) {
     const res = await getMultipleAccountBuffers({ mint, vaultA, vaultB, lvaultA, lvaultB, lvtA, lvtB, });
 
     const lpSupply = getSupply(res.mint, decimals)
-    // console.log(lpSupply)
-    // console.log(getBalance(res.vaultA)/1e12, getBalance(res.lvaultA)/1e12, getSupply(res.lvtA)/1e12, getBalance(res.lvaultA) / getSupply(res.lvtA))
-    // console.log(getBalance(res.vaultB)/1e12, getBalance(res.lvaultB)/1e12, getSupply(res.lvtB)/1e12, getBalance(res.lvaultB) / getSupply(res.lvtB))
     const tokenABal = getBalance(res.vaultA) * getBalance(res.lvaultA) / getSupply(res.lvtA)
     const tokenBBal = getBalance(res.vaultB) * getBalance(res.lvaultB) / getSupply(res.lvtB)
     const coinBalances = new sdk.ChainApi({ chain: 'solana', })
     coinBalances.add(tokenAMint, tokenABal)
     coinBalances.add(tokenBMint, tokenBBal)
     const price = (await coinBalances.getUSDValue()) / lpSupply
-    // console.log(tokenABal/1e12, tokenBBal/1e12, (await coinBalances.getUSDValue())/1e6, lpSupply/1e3)
     addToDBWritesList(writes, chain, mint, price, decimals, symbol, timestamp, 'saber', 0.95)
   }
 

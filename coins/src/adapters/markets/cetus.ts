@@ -30,7 +30,8 @@ async function getTokenPrices(timestamp: number) {
     }
 
     if (coinInfo.coingecko_id)
-      addToDBWritesList(writes, chain, i.address, undefined, coinInfo.decimals, i.symbol, timestamp, 'cetus', 0.9, 'coingecko#' + coinInfo.coingecko_id)
+      addToDBWritesList(writes, chain, i.address, undefined, coinInfo.decimals, i.symbol, timestamp, 'cetus', 0.9, `coingecko#${
+        i.address.toLowerCase() == '0x909cba62ce96d54de25bec9502de5ca7b4f28901747bbf96b76c2e63ec5f1cba::coin::coin' ? 'usd-coin' : coinInfo.coingecko_id}`)
     else
       addToDBWritesList(writes, chain, i.address, i.price, coinInfo.decimals, i.symbol, timestamp, 'cetus', 0.9)
   })

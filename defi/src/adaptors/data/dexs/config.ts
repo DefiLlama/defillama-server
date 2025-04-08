@@ -164,7 +164,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5069",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "GMX - SWAP"
             }
         },
@@ -995,7 +995,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "2356",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "El Dorado Exchange - SWAP"
             }
         },
@@ -1248,7 +1248,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5116",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "Morphex - SWAP"
             }
         },
@@ -1272,7 +1272,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "2814",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "SpaceDex - SWAP"
             }
         },
@@ -1300,7 +1300,7 @@ export default {
             "swap": {
                 "id": "2730",
                 disabled: true,
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "Covo V2 - SWAP",
                 cleanRecordsConfig: {
                     genuineSpikes: true
@@ -1390,7 +1390,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5117",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         },
         cleanRecordsConfig: {
@@ -1409,7 +1409,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5115",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "Fulcrom - SWAP",
             }
         },
@@ -1488,6 +1488,7 @@ export default {
         id: "2795"
     },
     "pearlfi": {
+        parentId: "PearlFi",
         id: "3121"
     },
     "ambient": {
@@ -1511,7 +1512,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "3792",
-                "category": "Dexes",
+                "category": "Dexs",
             }
         },
     },
@@ -1530,7 +1531,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "3209",
-                "category": "Dexes",
+                "category": "Dexs",
             }
         },
     },
@@ -1563,6 +1564,7 @@ export default {
         "id": "3260"
     },
     "deepbook-sui": {
+        parentId: "DeepBook",
         "id": "3268",
         cleanRecordsConfig: {
             genuineSpikes: {
@@ -1715,17 +1717,13 @@ export default {
     "danogo": {
         "id": "3454"
     },
-    "aerodrome": {
-        parentId: "Aerodrome",
-        "id": "3450"
-    },
     "morphex-old": {
         parentId: "Morphex",
         "protocolsData": {
             "swap": {
                 "id": "5125",
                 disabled: true,
-                "category": "Dexes"
+                "category": "Dexs"
             }
         },
         disabled: true,
@@ -1745,7 +1743,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "3509",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         },
         "id": "3509"
@@ -1756,7 +1754,7 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "5126",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         }
     },
@@ -1854,7 +1852,7 @@ export default {
         protocolsData: {
             "orderbook": {
                 "id": "3645",
-                "category": "Dexes"
+                "category": "Dexs"
             }
         }
     },
@@ -1984,7 +1982,6 @@ export default {
     },
     "aftermath-fi-amm": {
         parentId: "Aftermath Finance",
-        "enabled": false,
         "id": "3259"
     },
     "sanctum": {
@@ -2231,7 +2228,6 @@ export default {
         id: "4510"
     },
     "glowswap": {
-        enabled: false,
         id: "4515"
     },
     "merlinswap": {
@@ -2260,7 +2256,7 @@ export default {
         }
     },
     "fenix-finance": {
-        enabled: false,
+        parentId: "Fenix Finance",
         id: "4563"
     },
     "nuri-exchange-v1": {
@@ -2329,6 +2325,7 @@ export default {
         id: "4583"
     },
     "dragonswap-sei": {
+        parentId: "Dragon Swap",
         id: "4720"
     },
     "basin": {
@@ -2455,9 +2452,6 @@ export default {
         parentId: "BlueMove",
         id: "2941"
     },
-    "hinkal": {
-        id: "4487"
-    },
     "h2-finance": {
         parentId: "H2 Finance",
         id: "5017"
@@ -2468,5 +2462,481 @@ export default {
     },
     "harmony-swap": {
         id: "5198"
-    }
+    },
+    "sparkdex-v3-1": {
+        parentId: "SparkDEX",
+        id: "5223",
+        protocolsData: {
+            "v3": {
+                "id": "5223",
+            }
+        }
+    },
+    "sparkdex-v2": {
+        parentId: "SparkDEX",
+        id: "4887",
+    },
+    "mitte": {
+        id: "5228"
+    },
+    "raindex": {
+        id: "5221"
+    },
+    "pixelswap": {
+        id: "5119"
+    },
+    "grafun": {
+        id: "5195"
+    },
+    "cytoswap": {
+        id: "5205"
+    },
+    "polymarket": {
+        id: "711"
+    },
+    "linehub-v2": {
+        parentId: "LineHub",
+        id: "4660"
+    },
+    "quickswap-hydra": {
+        parentId: "QuickSwap",
+        id: "5187"
+    },
+    "meridian-swap": {
+        id: "5025"
+    },
+    "mira-ly": {
+        id: "5252"
+    },
+    "fenix-finance-v3": {
+        parentId: "Fenix Finance",
+        id: "4775"
+    },
+    "kinetix-v2": {
+        parentId: "Kinetix",
+        id: "3533"
+    },
+    "metavault-amm-v2": {
+        parentId: "MetaVault",
+        id: "5186"
+    },
+    "dexter-tezos": {
+        id: "3040"
+    },
+    "cables": {
+        id: "5291"
+    },
+    "deepbookv3-sui": {
+        parentId: "DeepBook",
+        id: "5296"
+    },
+    "kyex": {
+        id: "5310"
+    },
+    "fluid-dex": {
+        parentId: "Fluid",
+        id: "5317"
+    },
+    "dragonswap-sei-v3": {
+        parentId: "Dragon Swap",
+        id: "5066"
+    },
+    "morFi": {
+        id: "5307"
+    },
+    "assetchain-swap": {
+        id: "5324"
+    },
+    "velocimeter-v4": {
+        parentId: "Velocimeter",
+        id: "5243"
+    },
+    "pearl-v1-5": {
+        parentId: "PearlFi",
+        id: "5308"
+    },
+    "pearl-v2": {
+        parentId: "PearlFi",
+        id: "4668"
+    },
+    "solar-studios": {
+        id: "5346"
+    },
+    "manifest-trade": {
+        id: "5349"
+    },
+    "shido-dex": {
+        id: "5366"
+    },
+    "elexium": {
+        id: "5357"
+    },
+    "spark": {
+        id: "5352"
+    },
+    "mach": {
+        id: "5399"
+    },
+    "ninjablaze": {
+        id: "5400"
+    },
+    "memecooking": {
+        id: "5185"
+    },
+    "pumpfun": {
+        id: "4449",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1732492800": true,
+                "1732406400": true,
+                "1732320000": true,
+            }
+        }
+    },
+    "catton": {
+        id: "5409"
+    },
+    "9mm-v2": {
+        id: "5416"
+    },
+    "9mm": {
+        id: "5417"
+    },
+    "catalist-dex": {
+        id: "5412"
+    },
+    "hydrometer": {
+        id: "5423",
+    },
+    "bluefin-amm": {
+        id: "5427",
+        parentId: "Bluefin",
+        protocolsData: {
+            "dexes": {
+                id: "5427"
+            }
+        }
+    },
+    "taraswap": {
+        id: "5437",
+    },
+    "wagmi_ton": {
+        id: "5436",
+    },
+    "bigpump": {
+        id: "5443",
+    },
+    "pinto": {
+        id: "5458"
+    },
+    "blum": {
+        id: "5451"
+    },
+    "trado-spot": {
+        id: "5225"
+    },
+    "balancer-v3": {
+        parentId: "Balancer",
+        id: "5491"
+    },
+    "plunderswap": {
+        parentId: "PlunderSwap",
+        id: "3840"
+    },
+    "hyperliquid-spot": {
+        parentId: "Hyperliquid",
+        id: "5761"
+    },
+    "neby-dex": {
+        id: "5512"
+    },
+    "mantis": {
+        id: "5514"
+    },
+    "utyabswap": {
+        id: "5508"
+    },
+    "vinuswap": {
+        id: "5497"
+    },
+    "emojicoin": {
+        id: "5454"
+    },
+    "datadex": {
+        id: "5524"
+    },
+    "goblin-dex": {
+        id: "5531"
+    },
+    "invariant": {
+        id: "1788"
+    },
+    "rabbitswap-v3": {
+        id: "5298"
+    },
+    "dappos-intentEx": {
+        id: "5597",
+    },
+    "mento": {
+        id: "504",
+    },
+    "sonic-market-cpmm": {
+        parentId: "Sonic Market",
+        id: "5521",
+    },
+    "sonic-market-orderbook": {
+        parentId: "Sonic Market",
+        id: "5522",
+    },
+    "vinunft": {
+        id: "5613",
+    },
+    "lnexchange-spot": {
+        id: "5638",
+    },
+    "sologenic": {
+        id: "5644",
+    },
+    "meteora-dlmm": {
+        parentId: "Meteora",
+        id: "4148",
+    },
+    "metastable-musd": {
+        id: "5645"
+    },
+    "infinityPools": {
+        id: "5662"
+    },
+    "amped": {
+        id: "3833",
+        protocolsData: {
+            "swap": {
+                id: "3833",
+            }
+        }
+    },
+    "ocelex": {
+        parentId: "Ocelex",
+        id: "5379"
+    },
+    "bunni-v2": {
+        parentId: "Timeless",
+        id: "5734"
+    },
+    "wavex": {
+        id: "5737",
+        protocolsData: {
+            "swap": {
+                id: "5737",
+            }
+        }
+    },
+    "penumbra-dex": {
+        id: "5739",
+    },
+    "berachain-hub": {
+        id: "5742"
+    },
+    "uniswap-v4": {
+        id: "5690"
+    },
+    "bitflow-fi": {
+        id: "4136"
+    },
+    "velar": {
+        id: "4339"
+    },
+    "storyhunt-v3": {
+        id: "5781"
+    },
+    "kittypunch": {
+        id: "5203"
+    },
+    "four-meme": {
+        id: "5174"
+    },
+    "pulsex-stableswap": {
+        parentId: "PulseX",
+        id: "5795",
+    },
+    "sailor-finance": {
+        id: "5647",
+    },
+    "kodiak-v2": {
+        id: "5743",
+    },
+    "silverswap": {
+        id: "5529",
+    },
+    "olab": {
+        id: "5648",
+    },
+    "bullaexchange": {
+        id: "5766",
+    },
+    "ducata": {
+        id: "4896",
+    },
+    "embr": {
+        id: "1063",
+    },
+    "gaming-dex": {
+        id: "4263",
+    },
+    "ginsengswap": {
+        id: "5803",
+    },
+    "polaris-fi": {
+        id: "1440",
+    },
+    "phux": {
+        id: "3205",
+    },
+    "tanukix": {
+        id: "5038",
+    },
+    "piperx-v2": {
+        id: "5779",
+    },
+    "piperx-v3": {
+        id: "5780",
+    },
+    "magma-finance": {
+        id: "5774",
+    },
+    "caviarnine-simplepool": {
+        id: "5064",
+    },
+    "xpress": {
+        id: "5686"
+    },
+    "burrbear": {
+        id: "5745"
+    },
+    "fibonacci-dex": {
+        id: "5832"
+    },
+    "bitflux": {
+        id: "5344"
+    },
+    "hyperswap-v2": {
+        id: "5836"
+    },
+    "hyperswap-v3": {
+        id: "5837"
+    },
+    "wasabee": {
+        id: "5845"
+    },
+    "thalaswap-v2": {
+        parentId: "Thala",
+        id: "5329",
+    },
+    "degen-launchpad": {
+        id: "5857"
+    },
+    "hyperion": {
+        id: "5480"
+    },
+    "metropolis-amm": {
+        id: "5504"
+    },
+    "metropolis-dlmm": {
+        id: "5505"
+    },
+    "enosys": {
+        id: "5158"
+    },
+    "tea-fi": {
+        id: "5875"
+    },
+    "beets-v3": {
+        id: "5680"
+    },
+    "SwapX-algebra": {
+        id: "5579"
+    },
+    "SwapX-v2": {
+        id: "5578"
+    },
+    "meridian-amm": {
+        id: "5885"
+    },
+    "yuzu-finance": {
+        "id": "5906"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-swap": {
+                id: "5406"
+            }
+        }
+    },
+    "tonco": {
+        id: "5363"
+    },
+    "ekubo-evm": {
+        id: "5914"
+    },
+    "equalizer-cl": {
+        id: "5603"
+    },
+    "xswap-v3": {
+        id: "3914"
+    },
+    "unchain-x": {
+        id: "5917"
+    },
+    "pump-swap": {
+        id: "5936"
+    },
+    "steamm": {
+        id: "5824"
+    },
+    "umbra": {
+        id: "5943"
+    },
+    "squadswap-dynamo": {
+        id: "5921"
+    },
+    "squadswap-wow": {
+        id: "5922"
+    },
+    "gacha": {
+        id: "5942"
+    },
+    "kittypunch-stable": {
+        id: "5790"
+    },
+    "saucerswap-v2": {
+        id: "5966"
+    },
+    "justbet": {
+        id:"5950"
+    },
+    "katana-v3": {
+        id: "5972"
+    },
+    "sandglass": {
+        id: "5965"
+    },
+    "syncswap-v3": {
+        id: "5982"
+    },
+    "verus": {
+        id: "5601" 
+    },
+    "haedal": {
+        id: "5784"
+    },
+    "hardswap": {
+        id: "5999"
+    },
+    "momentum": {
+        id: "6005"
+    },
+    "jup-ape": {
+        id: "4860"
+    },
 } as AdaptorsConfig

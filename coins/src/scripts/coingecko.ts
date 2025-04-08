@@ -1,11 +1,11 @@
 import fetch from "node-fetch";
-import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
+import { setTimer } from "../utils/shared/coingeckoLocks";
 import ddb, { batchGet, batchWrite, DELETE } from "../utils/shared/dynamodb";
 import {
   Coin,
   CoinMetadata,
   iterateOverPlatforms,
-  staleMargin
+  staleMargin,
 } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
@@ -13,7 +13,20 @@ import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
 import { batchReadPostgres, getRedisConnection } from "../../coins2";
 import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
-import { Connection, PublicKey } from "@solana/web3.js";
+import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
+import { PublicKey } from "@solana/web3.js";
+import { getConnection } from "../adapters/solana/utils";
+import {
+  chainsThatShouldNotBeLowerCased,
+  chainsWithCaseSensitiveDataProviders,
+} from "../utils/shared/constants";
+import {
+  fetchCgPriceData,
+  retryCoingeckoRequest,
+} from "../utils/getCoinsUtils";
+import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
+import { sendMessage } from "../../../defi/src/utils/discord";
+import { cairoErc20Abis, call, feltArrToStr } from "../adapters/utils/starknet";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -26,74 +39,52 @@ function cgPK(cgId: string) {
   return `coingecko#${cgId}`;
 }
 
-export async function retryCoingeckoRequest(
-  query: string,
-  retries: number,
-): Promise<CoingeckoResponse> {
-  for (let i = 0; i < retries; i++) {
-    await getCoingeckoLock();
-    try {
-      const res = (await fetch(
-        `https://pro-api.coingecko.com/api/v3/${query}&x_cg_pro_api_key=${process.env.CG_KEY}`,
-      ).then((r) => r.json())) as CoingeckoResponse;
-      if (Object.keys(res).length == 1 && Object.keys(res)[0] == "status")
-        throw new Error(`cg call failed`);
-      return res;
-    } catch (e) {
-      if ((i + 1) % 3 === 0 && retries > 3) {
-        await sleep(10e3); // 10s
-      }
-      continue;
-    }
-  }
-  return {};
-}
-
-interface CoingeckoResponse {
-  [cgId: string]: {
-    usd: number;
-    usd_market_cap: number;
-    last_updated_at: number;
-    usd_24h_vol: number;
-  };
-}
-
 interface IdToSymbol {
   [id: string]: string;
 }
 
 async function storeCoinData(coinData: Write[]) {
-  return batchWrite(
-    coinData
-      .map((c) => ({
-        PK: c.PK,
-        SK: 0,
-        price: c.price,
-        mcap: c.mcap,
-        timestamp: c.timestamp,
-        symbol: c.symbol,
-        confidence: c.confidence,
-      }))
-      .filter((c: Write) => c.symbol != null),
-    false,
-  );
+  const items = coinData
+    .map((c) => ({
+      PK: c.PK,
+      SK: 0,
+      price: c.price,
+      mcap: c.mcap,
+      timestamp: c.timestamp,
+      symbol: c.symbol,
+      confidence: c.confidence,
+    }))
+    .filter((c: Write) => c.symbol != null);
+  await Promise.all([
+    produceKafkaTopics(
+      items.map((i) => ({ adapter: "coingecko", decimals: 0, ...i } as Dynamo)),
+    ),
+    batchWrite(items, false),
+  ]);
 }
 
 async function storeHistoricalCoinData(coinData: Write[]) {
-  return batchWrite(
-    coinData.map((c) => ({
-      SK: c.SK,
-      PK: c.PK,
-      price: c.price,
-      confidence: c.confidence,
-    })),
-    false,
-  );
+  const items = coinData.map((c) => ({
+    SK: c.SK,
+    PK: c.PK,
+    price: c.price,
+    confidence: c.confidence,
+  }));
+  await Promise.all([
+    produceKafkaTopics(
+      items.map((i) => ({
+        adapter: "coingecko",
+        timestamp: i.SK,
+        ...i,
+      })) as Dynamo[],
+      ["coins-timeseries"],
+    ),
+    batchWrite(items, false),
+  ]);
 }
 
 let solanaTokens: Promise<any>;
 let _solanaTokens: Promise<any>;
-
 async function cacheSolanaTokens() {
   if (_solanaTokens === undefined) {
     _solanaTokens = fetch(
@@ -104,21 +95,38 @@ async function cacheSolanaTokens() {
   return solanaTokens;
 }
 
-let solanaConnection: any;
+let hyperliquidTokens: Promise<any>;
+let _hyperliquidTokens: Promise<any>;
+async function cacheHyperliquidTokens() {
+  try {
+    if (_hyperliquidTokens === undefined) {
+      _hyperliquidTokens = fetch(`https://api.hyperliquid.xyz/info`, {
+        method: "POST",
+        body: JSON.stringify({ type: "spotMeta" }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      hyperliquidTokens = _hyperliquidTokens.then((r) => r.json());
+    }
+  } catch (e) {
+    console.error(`Hyperliquid API failed with: ${e}`);
+    hyperliquidTokens = new Promise((res) => res({ tokens: [] }));
+  }
+  return hyperliquidTokens;
+}
+
 async function getSymbolAndDecimals(
   tokenAddress: string,
   chain: string,
   coingeckoSymbol: string,
 ): Promise<{ symbol: string; decimals: number } | undefined> {
-  if (chain === "solana") {
+  if (chainsThatShouldNotBeLowerCased.includes(chain)) {
     const token = ((await solanaTokens).tokens as any[]).find(
       (t) => t.address === tokenAddress,
     );
     if (token === undefined) {
-      if (!solanaConnection)
-        solanaConnection = new Connection(
-          process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
-        );
+      const solanaConnection = getConnection(chain);
       const decimalsQuery = await solanaConnection.getParsedAccountInfo(
         new PublicKey(tokenAddress),
       );
@@ -138,6 +146,64 @@ async function getSymbolAndDecimals(
     return {
       symbol: token.symbol,
       decimals: Number(token.decimals),
+    };
+  } else if (chain == "starknet") {
+    try {
+      const [symbol, decimals] = await Promise.all([
+        call({
+          abi: cairoErc20Abis.symbol,
+          target: tokenAddress,
+        }).then((r) => feltArrToStr([r])),
+        call({
+          abi: cairoErc20Abis.decimals,
+          target: tokenAddress,
+        }).then((r) => Number(r)),
+      ]);
+      return { symbol, decimals };
+    } catch (e) {
+      return;
+    }
+  } else if (chain == "hedera") {
+    try {
+      const { symbol, decimals } = await fetch(
+        `${
+          process.env.HEDERA_RPC ?? "https://mainnet.mirrornode.hedera.com"
+        }/api/v1/tokens/${tokenAddress}`,
+      ).then((r) => r.json());
+      return { symbol, decimals };
+    } catch (e) {
+      return;
+    }
+  } else if (chain == "hyperliquid") {
+    await cacheHyperliquidTokens();
+    const token = ((await hyperliquidTokens).tokens as any[]).find(
+      (t) => t.tokenId === tokenAddress,
+    );
+    if (!token) return;
+    return {
+      decimals: token.weiDecimals,
+      symbol: token.name,
+    };
+  } else if (chain == "aptos") {
+    const res = await fetch(
+      `${process.env.APTOS_RPC}/v1/accounts/${tokenAddress.substring(
+        0,
+        tokenAddress.indexOf("::"),
+      )}/resource/0x1::coin::CoinInfo%3C${tokenAddress}%3E`,
+    ).then((r) => r.json());
+    if (!res.data) return;
+    return {
+      decimals: res.data.decimals,
+      symbol: res.data.symbol,
+    };
+  } else if (chain == "stacks") {
+    const res = await fetch(
+      `https://api.hiro.so/metadata/v1/ft/${tokenAddress}`,
+    ).then((r) => r.json());
+    if (!res.decimals) return;
+    return {
+      decimals: res.decimals,
+      symbol: res.symbol,
     };
   } else if (!tokenAddress.startsWith(`0x`)) {
     return;
@@ -159,14 +225,10 @@ async function getSymbolAndDecimals(
   }
 }
 
+const aggregatedPlatforms: string[] = [];
+
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
-  const coinIds = coins.map((c) => c.id);
-  const coinData = await retryCoingeckoRequest(
-    `simple/price?ids=${coinIds.join(
-      ",",
-    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true&include_24hr_vol=true`,
-    10,
-  );
+  const coinData = await fetchCgPriceData(coins.map((c) => c.id));
   await storeCGCoinMetadatas(coinData);
 
   const timestamp = getCurrentUnixTimestamp();
@@ -216,18 +278,22 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     }
     idToSymbol[coin.id] = coin.symbol;
   });
-  const writes = Object.entries(coinData)
+  const writes: CgEntry[] = [];
+  Object.entries(coinData)
     .filter((c) => c[1]?.usd !== undefined)
     .filter((c) => !staleIds.includes(c[0]))
-    .map(([cgId, data]) => ({
-      PK: cgPK(cgId),
-      SK: data.last_updated_at,
-      price: data.usd,
-      mcap: data.usd_market_cap,
-      timestamp: data.last_updated_at,
-      symbol: idToSymbol[cgId].toUpperCase(),
-      confidence: 0.99,
-    }));
+    .map(([cgId, data]) => {
+      if (cgId in idToSymbol)
+        writes.push({
+          PK: cgPK(cgId),
+          SK: data.last_updated_at,
+          price: data.usd,
+          mcap: data.usd_market_cap,
+          timestamp: data.last_updated_at,
+          symbol: idToSymbol[cgId].toUpperCase(),
+          confidence: 0.99,
+        });
+    });
 
   const prevWrites: CgEntry[] = await batchGet(
     writes.map((w: CgEntry) => ({ PK: w.PK, SK: 0 })),
@@ -278,22 +344,28 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     pricesAndMcaps[c.PK] = { price: c.price, mcap: c.mcap };
   });
 
+  const kafkaItems: any[] = [];
   await Promise.all(
     filteredCoins.map(async (coin) =>
       iterateOverPlatforms(
         coin,
         async (PK) => {
-          const platformData = coinPlatformData[PK];
+          const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
+          const normalizedPK = chainsWithCaseSensitiveDataProviders.includes(
+            chain,
+          )
+            ? PK.toLowerCase()
+            : PK;
+          const platformData = coinPlatformData[normalizedPK];
           if (platformData && platformData?.confidence > 0.99) return;
 
           const created = getCurrentUnixTimestamp();
-          const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
           const address = PK.substring(PK.indexOf(":") + 1);
           const { decimals, symbol } =
             platformData &&
             "decimals" in platformData &&
             "symbol" in platformData
-              ? (coinPlatformData[PK] as any)
+              ? (coinPlatformData[normalizedPK] as any)
               : await getSymbolAndDecimals(address, chain, coin.symbol);
 
           if (decimals == undefined) return;
@@ -305,22 +377,31 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             return;
           }
 
-          await ddb.put({
-            PK,
+          const item = {
+            PK: normalizedPK,
             SK: 0,
             created,
             decimals,
             symbol,
             redirect: cgPK(coin.id),
             confidence: 0.99,
-          });
+          };
+          kafkaItems.push(item);
+          await ddb.put(item);
         },
         coinPlatformData,
+        aggregatedPlatforms,
       ),
     ),
   );
 
-  await deleteStaleKeysPromise;
+  await Promise.all([
+    produceKafkaTopics(
+      kafkaItems.map((i) => ({ adapter: "coingecko", ...i })),
+      ["coins-metadata"],
+    ),
+    deleteStaleKeysPromise,
+  ]);
 }
 
 const HOUR = 3600;
@@ -357,20 +438,27 @@ async function getAndStoreHourly(
     (c: any) => c.timestamp,
   );
 
-  await batchWrite(
-    coinData.prices
-      .filter((price) => {
-        const ts = toUNIXTimestamp(price[0]);
-        return !writtenTimestamps[ts];
-      })
-      .map((price) => ({
-        SK: toUNIXTimestamp(price[0]),
-        PK,
-        price: price[1],
-        confidence: 0.99,
-      })),
-    false,
-  );
+  const items = coinData.prices
+    .filter((price) => {
+      const ts = toUNIXTimestamp(price[0]);
+      return !writtenTimestamps[ts];
+    })
+    .map((price) => ({
+      SK: toUNIXTimestamp(price[0]),
+      PK,
+      price: price[1],
+      confidence: 0.99,
+    }));
+
+  await Promise.all([
+    produceKafkaTopics(
+      items.map(
+        (i) => ({ adapter: "coingecko", timestamp: i.SK, ...i }),
+        ["coins-timeseries"],
+      ),
+    ),
+    batchWrite(items, false),
+  ]);
 }
 
 async function fetchCoingeckoData(
@@ -400,6 +488,7 @@ async function fetchCoingeckoData(
       requests.push(getAndStoreCoins(coins.slice(i, i + step), rejected));
     }
     await Promise.all(requests);
+    await storeAllTokens(aggregatedPlatforms);
   }
   clearInterval(timer);
   if (rejected.length > 0) {
@@ -422,42 +511,59 @@ function shuffleArray(array: any[]) {
 }
 
 async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
-  await cacheSolanaTokens();
-  const step = 500;
-  let coins = (await fetch(
-    `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
-  ).then((r) => r.json())) as Coin[];
-  
-  if (coinType || hourly) {
-    const metadatas = await getCGCoinMetadatas(
-      coins.map((coin) => coin.id),
+  try {
+    await cacheSolanaTokens();
+    const step = 500;
+    let coins = (await fetch(
+      `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,
+    ).then((r) => r.json())) as Coin[];
+
+    if (coinType || hourly) {
+      const metadatas = await getCGCoinMetadatas(
+        coins.map((coin) => coin.id),
+        coinType,
+      );
+      coins = coins.filter((coin) => {
+        const metadata = metadatas[coin.id];
+        if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
+        if (hourly) {
+          return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
+        }
+        return (
+          metadata.coinType === coinType ||
+          metadata.coinType === COIN_TYPES.over100m
+        ); // always include over100m coins
+      });
+    }
+    console.log(
+      `Fetching prices for ${coins.length} coins`,
+      "running hourly:",
+      hourly,
+      "coinType:",
       coinType,
     );
-    coins = coins.filter((coin) => {
-      const metadata = metadatas[coin.id];
-      if (!metadata) return true; // if we don't have metadata, we don't know if it's over 10m
-      if (hourly) {
-        return metadata.usd_market_cap > 1e8 && metadata.usd_24h_vol > 1e8;
-      }
-      return (
-        metadata.coinType === coinType ||
-        metadata.coinType === COIN_TYPES.over100m
-      ); // always include over100m coins
-    });
+    shuffleArray(coins);
+    let promises: Promise<void>[] = [];
+    for (let i = 0; i < coins.length; i += step) {
+      promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
+    }
+    await Promise.all(promises);
+  } catch (e) {
+    console.error("Error in coingecko script");
+    console.error(e);
+    if (process.env.URGENT_COINS_WEBHOOK)
+      await sendMessage(
+        `coingecko ${hourly} ${coinType} failed with: ${e}`,
+        process.env.URGENT_COINS_WEBHOOK,
+        true,
+      );
+    else
+      await sendMessage(
+        `coingecko error but missing urgent webhook`,
+        process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+        true,
+      );
   }
-  console.log(
-    `Fetching prices for ${coins.length} coins`,
-    "running hourly:",
-    hourly,
-    "coinType:",
-    coinType,
-  );
-  shuffleArray(coins);
-  let promises: Promise<void>[] = [];
-  for (let i = 0; i < coins.length; i += step) {
-    promises.push(fetchCoingeckoData(coins.slice(i, i + step), hourly, 0));
-  }
-  await Promise.all(promises);
 }
 
 if (process.argv.length < 3) {
@@ -480,15 +586,10 @@ if (process.argv.length < 3) {
     console.error(`Invalid coin type: ${coinType}`);
     process.exit(1);
   }
-  triggerFetchCoingeckoData(isHourlyRun, coinType)
-    .catch((e) => {
-      console.error("Error in coingecko script");
-      console.error(e);
-    })
-    .then(() => {
-      console.log("Exiting now...");
-      process.exit(0);
-    });
+  triggerFetchCoingeckoData(isHourlyRun, coinType).then(() => {
+    console.log("Exiting now...");
+    process.exit(0);
+  });
 }
 
 async function getCGCoinMetadatas(coinIds: string[], coinType?: string) {

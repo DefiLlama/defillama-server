@@ -26,6 +26,4 @@ const handler = async (
     return cache20MinResponse(getYieldsConfig());
 };
 
-handler({} as any).then(console.log)
-
 export default wrap(handler);

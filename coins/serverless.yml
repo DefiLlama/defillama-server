@@ -5,14 +5,11 @@ package:
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs16.x
   memorySize: 250
   region: eu-central-1
   endpointType: REGIONAL # Set to regional because the api gateway will be behind a cloudfront distribution
   stage: prod # Default to dev if no stage is specified
-  tracing: # Enable X-Ray tracing (debugging)
-    apiGateway: true
-    lambda: true
   iamRoleStatements:
     - Effect: Allow # X-Ray permissions
       Action:
@@ -59,6 +56,11 @@ provider:
         - "s3:ListBucket"
         - "s3:*Object*"
       Resource: "*"
+    - Effect: Allow
+      Action:
+        - sts:AssumeRole
+      Resource:
+        - "arn:aws:iam::345594567026:role/defillama-role-345594567026"
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     BSC_RPC: ${file(./env.js):BSC_RPC}
@@ -73,6 +75,9 @@ provider:
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
+    R2_ACCESS_KEY_ID: ${file(./env.js):R2_ACCESS_KEY_ID}
+    R2_SECRET_ACCESS_KEY: ${file(./env.js):R2_SECRET_ACCESS_KEY}
+    R2_ENDPOINT: ${file(./env.js):R2_ENDPOINT}
 
 custom:
   stage: ${opt:stage, self:provider.stage}
@@ -103,92 +108,99 @@ functions:
   fallback:
     handler: src/fallback.default
     events:
-      - http:
+      - httpApi:
           path: /{params+}
           method: any
   coins:
     handler: src/getCoins.default
     timeout: 60
     events:
-      - http:
-          path: prices
+      - httpApi:
+          path: /prices
           method: post
   mcaps:
     handler: src/getMcaps.default
     timeout: 60
     events:
-      - http:
-          path: mcaps
+      - httpApi:
+          path: /mcaps
           method: post
   chains:
     handler: src/getChains.default
     timeout: 60
     events:
-      - http:
-          path: chains
+      - httpApi:
+          path: /chains
           method: get
   coinPrices:
     handler: src/getCoinPrices.default
     timeout: 60
     events:
-      - http:
-          path: coin/timestamps
+      - httpApi:
+          path: /coin/timestamps
           method: post
   currentCoinPrices:
     handler: src/getCurrentCoins.default
     timeout: 60
     events:
-      - http:
-          path: prices/current/{coins}
+      - httpApi:
+          path: /prices/current/{coins}
+          method: get
+  updateCoinPrices:
+    handler: src/updateCoin.default
+    timeout: 60
+    events:
+      - httpApi:
+          path: /prices/update/{coins}
           method: get
   coinFirstTimestamp:
     handler: src/getCoinFirstTimestamp.default
     timeout: 60
     events:
-      - http:
-          path: prices/first/{coins}
+      - httpApi:
+          path: /prices/first/{coins}
           method: get
   historicalCoinPrices:
     handler: src/getHistoricalCoins.default
     timeout: 60
     events:
-      - http:
-          path: prices/historical/{timestamp}/{coins}
+      - httpApi:
+          path: /prices/historical/{timestamp}/{coins}
           method: get
   coinPriceChart:
     handler: src/getCoinPriceChart.default
     timeout: 60
     events:
-      - http:
-          path: chart/{coins}
+      - httpApi:
+          path: /chart/{coins}
           method: get
   batchHistorical:
     handler: src/getBatchHistoricalCoins.default
     timeout: 60
     events:
-      - http:
-          path: batchHistorical
+      - httpApi:
+          path: /batchHistorical
           method: get
   coinPercentageChange:
     handler: src/getPercentageChange.default
     timeout: 60
     events:
-      - http:
-          path: percentage/{coins}
+      - httpApi:
+          path: /percentage/{coins}
           method: get
   block:
     handler: src/getBlock.default
     timeout: 60
     events:
-      - http:
-          path: block/{chain}/{timestamp}
+      - httpApi:
+          path: /block/{chain}/{timestamp}
           method: get
     environment:
       LLAMA_PROVIDER_RPC_GET_BLOCKNUMBER_TIMEOUT: 3000
   corsPreflight:
     handler: src/corsPreflight.default
     events:
-      - http:
+      - httpApi:
           path: /{params+}
           method: options
   # fetchCoingeckoData2:
@@ -236,12 +248,10 @@ functions:
       R2_ENDPOINT: ${env:R2_ENDPOINT}
 
 resources:
-  # CORS for api gateway errors
-  - ${file(resources/api-gateway-errors.yml)}
   # DynamoDB
   - ${file(resources/dynamodb-table.yml)}
   # Cloudfront API distribution
-  - ${file(resources/api-cloudfront-distribution.yml)}
+  - ${file(resources2/api-cloudfront-distribution.yml)}
 
 plugins:
   - serverless-esbuild

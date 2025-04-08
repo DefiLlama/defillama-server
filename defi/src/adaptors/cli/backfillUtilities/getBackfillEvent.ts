@@ -3,7 +3,7 @@ import fs, { writeFileSync } from "fs"
 import path from "path"
 import loadAdaptorsData from "../../data"
 import { IJSON } from "../../data/types"
-import { Adapter } from "@defillama/dimension-adapters/adapters/types";
+import { Adapter, BaseAdapter, IStartTimestamp } from "@defillama/dimension-adapters/adapters/types";
 import { getAdaptorRecord, AdaptorRecordType, AdaptorRecord } from "../../db-utils/adaptor-record"
 import getDataPoints from "../../utils/getDataPoints"
 import { getUniqStartOfTodayTimestamp } from "@defillama/dimension-adapters/helpers/getUniSubgraphVolume"
@@ -33,6 +33,28 @@ const KEYS_TO_CHECK: TKeysToCheck = {
     [AdapterType.AGGREGATOR_DERIVATIVES]: 'dv',
 }
 
+const getStartTime = async (start: string | number | undefined | IStartTimestamp, default_time: number|undefined) => {
+    if (start === undefined) { return default_time }
+    if (typeof start === 'function') {
+        const result = await start();
+        return result !== undefined ? result : default_time;
+    } else if (typeof start === 'string') {
+        return new Date(start).getTime() / 1000
+    } else {
+        return start
+    }
+}
+
+function pickLowestTimestamp(a: number|undefined, b:number | undefined){
+    if(a === undefined){
+        return b
+    }
+    if(b === undefined){
+        return a
+    }
+    return a < b?a:b;
+}
+
 export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {
     // declare event used to trigger backfill
     let event: ITriggerStoreVolumeEventHandler | undefined
@@ -60,7 +82,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             else if (volume instanceof AdaptorRecord) {
                 const cleanRecord = volume.getCleanAdaptorRecord()
                 if (
-                    // if clean data (filtering errors, posible NaN values, event data) is null
+                    // if clean data (filtering errors, possible NaN values, event data) is null
                     cleanRecord === null
                     // or sum of timestamp's dimension is 0
                     || sumAllVolumes(cleanRecord.data) === 0
@@ -101,37 +123,34 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
     // build event for historical backfill
     else {
         // TODO: IMPROVE code
-        let startTimestamp = 0
+        let startTimestamp:number|undefined = undefined
         // Looking for start time from adapter, if not found will default to the above
         const nowSTimestamp = Math.trunc((Date.now()) / 1000)
         const adapterData = adaptorsData.default.find(adapter => adapter.module === (adapterName[0]))
         if (adapterData) {
             const dexAdapter: Adapter = (await adaptorsData.importModule(adapterData.module)).default
+
+            function findLowestTimestampAmongChains(adapter:BaseAdapter){
+                return Object.values(adapter)
+                .reduce(async (accP, { start, runAtCurrTime }) => {
+                    const acc = await accP;
+                    const currstart = runAtCurrTime ? nowSTimestamp + 2 : await getStartTime(start, undefined).catch(() => undefined);
+                    if(currstart === undefined || currstart === 0) return acc
+                    return pickLowestTimestamp(currstart, acc)
+                }, Promise.resolve(undefined as number|undefined));
+            }
             if ("adapter" in dexAdapter) {
-                const st = await Object.values(dexAdapter.adapter)
-                    .reduce(async (accP, { start, runAtCurrTime }) => {
-                        const acc = await accP;
-                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (typeof start === 'function' ? await start().catch(() => nowSTimestamp) : start);
-                        return (currstart && currstart < acc && currstart !== 0) ? currstart : acc;
-                    }, Promise.resolve(nowSTimestamp + 1));
-                startTimestamp = st;
+                startTimestamp = await findLowestTimestampAmongChains(dexAdapter.adapter);
             } else {
                 const st = await Object.values(dexAdapter.breakdown).reduce(async (accP, dexAdapter) => {
                     const acc = await accP
-                    const bst = await Object.values(dexAdapter).reduce(async (accP, { start, runAtCurrTime }) => {
-                        const acc = await accP
-                        const currstart = runAtCurrTime ? nowSTimestamp + 2 : (typeof start === 'function' ? await start().catch(() => nowSTimestamp) : start)
-                        return (typeof currstart === 'number' && currstart < acc && currstart !== 0) ? currstart : acc
-                    }, Promise.resolve(nowSTimestamp + 1))
+                    const bst = await findLowestTimestampAmongChains(dexAdapter); 
 
-                    return bst < acc ? bst : acc
-                }, Promise.resolve(nowSTimestamp + 1))
+                    return pickLowestTimestamp(bst, acc)
+                }, Promise.resolve(undefined as number|undefined))
                 startTimestamp = st
             }
-            if(startTimestamp === nowSTimestamp+1){
-                throw new Error("You need to export a start parameter in adapter!")
-            }
-            if (startTimestamp > 0) startTimestamp *= 1000
+            if (typeof startTimestamp === "number" && startTimestamp > 0) startTimestamp *= 1000
             else startTimestamp = new Date(Date.UTC(2018, 0, 1)).getTime()
         } else {
             throw new Error(`No adapter found with name ${adapterName} of type ${adaptorType}. Try to run "cd dimension-adapters && git pull && cd .. &&npm run prebuild"`)

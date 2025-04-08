@@ -94,8 +94,16 @@ export default {
         "id": "4038",
         parentId: "KIM Exchange",
     },
-    "swapmode-v2": {
+    "swapmode": {
         "id": "4116",
+        protocolsData: {
+            "v2": {
+                "id": "4116",
+            },
+            "v3": {
+                "id": "5362",
+            }
+        }
     },
     "kim-exchange-v3": {
         "id": "4299",
@@ -251,5 +259,92 @@ export default {
     },
     "scribe-exchange-v4": {
         id: "4943",
+    },
+    "mintswap": {
+        id: "4811",
+    },
+    "nabla": {
+        id: "5309",
+    },
+    "bulbaswap": {
+        id: "5301",
+        protocolsData: {
+            "v2": {
+                id: "5301",
+            },
+            "v3": {
+                id: "5302",
+            }
+        }
+    },
+    "superswap": {
+        id: "5372",
+        parentId: "SuperSwap",
+        protocolsData: {
+            "v2": {
+                id: "5372",
+            },
+            "v3": {
+                id: "5373",
+            }
+        }
+    },
+    "aerodrome": {
+        parentId: "Aerodrome",
+        "id": "3450"
+    },
+    "shadow-exchange": {
+        parentId: "Shadow Exchange",
+        id: "5570",
+    },
+    "holdstation-swap": {
+        parentId: "Holdstation",
+        id: "5493",
+    },
+    "zkswap-stable": {
+        parentId: "zkSwap Finance",
+        id: "5391",
+    },
+    "zkswap-v3": {
+        parentId: "zkSwap Finance",
+        id: "5392",
+    },
+    "nova-fi": {
+        id: "5677",
+    },
+    "reservoir-tools-amm": {
+        parentId: "Reservoir Tools",
+        id: "5678",
+    },
+    "reservoir-tools-clmm": {
+        parentId: "Reservoir Tools",
+        id: "5679",
+    },
+    "kodiak-v3": {
+        parentId: "Kodiak",
+        id: "5744",
+    },
+    "beralis-v3": {
+        parentId: "Beralis Dex",
+        id: "5759",
+    },
+    "rooster": {
+        id: "5704",
+    },
+    "sailfish": {
+        id: "5643",
+    },
+    "artexswap": {
+        id: "5665",
+    },
+    "mondrain": {
+        id: "5765",
+    },
+    "shadow-legacy": {
+        parentId: "Shadow Exchange",
+        id: "5682"
+    },
+    "puppyfun": {
+        id: "5895"
     }
 } as AdaptorsConfig

@@ -72,7 +72,7 @@ async function contractCalls(
   let price =
     (reserve0.output * priceEth + reserve1.output * priceBvm) /
     totalSupply.output;
-  price *= multiplier.output / 1e18; // mutiplier decimals removed
+  price *= multiplier.output / 1e18; // multiplier decimals removed
   price = priceEth / price;
 
   addToDBWritesList(

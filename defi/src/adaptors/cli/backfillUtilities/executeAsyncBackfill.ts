@@ -35,7 +35,7 @@ export default async (backfillEvent?: ITriggerStoreVolumeEventHandler) => {
         if (process.env.runLocal !== 'true')
             console.info("Lambda invoked correctly, volumes are being stored in the ☁️")
         else console.log("Bye:)")
-    } catch (e) { (e: Error) => console.log(e) }
+    } catch (e) { console.log("ERROR", e) }
 
     /* console.info("Deleting event file...")
     fs.unlinkSync(EVENT_PATH)

@@ -33,7 +33,6 @@ export default {
     },
     "synfutures-v1": {
         parentId: "SynFutures",
-        "enabled": false,
         "id": "2328"
     },
     "vela": {
@@ -73,14 +72,15 @@ export default {
         },
         "id": "2814"
     },
-    "hyperliquid": {
-        "id": "2862",
+    "hyperliquid-perp": {
+        parentId: "Hyperliquid",
+        "id": "5507",
         "enabled": true
     },
     "dydx": {
         parentId: "dYdX",
         "id": "144",
-        "enabled": true
+        disabled: true
     },
     "level-finance": {
         "id": "2395",
@@ -112,7 +112,7 @@ export default {
         "protocolsData": {
             "derivatives": {
                 "id": "2356",
-                "category": "Dexes",
+                "category": "Dexs",
                 "displayName": "El Dorado Exchange - Derivatives"
             }
         },
@@ -153,7 +153,7 @@ export default {
         "protocolsData": {
             "derivatives": {
                 "id": "3209",
-                "category": "Dexes",
+                "category": "Dexs",
             }
         },
     },
@@ -432,7 +432,7 @@ export default {
         }
     },
     "rabbitx": {
-        enabled: false,
+        enabled: true,
         "id": "2886",
         parentId: "RabbitX Fusion",
         cleanRecordsConfig: {
@@ -456,7 +456,6 @@ export default {
         "id": "2175"
     },
     "synfutures-v2": {
-        enabled: false,
         parentId: "SynFutures",
         "id": "3061"
     },
@@ -602,7 +601,6 @@ export default {
         }
     },
     "synfutures-v3": {
-        enabled: false,
         parentId: "SynFutures",
         "id": "4215"
     },
@@ -697,6 +695,7 @@ export default {
     },
     "edgeX": {
         id: "4954",
+        "enabled": true,
         cleanRecordsConfig: {
             genuineSpikes: {
                 "1723075200": true,
@@ -721,12 +720,127 @@ export default {
         id: "5151"
     },
     "filament": {
-        id: "5177",
+        id: "5650",
     },
-    "idex-v4": {
+    "kuma-v1": {
         id: "5079"
     },
     "trado": {
         id: "5208",
+    },
+    "quickswap-perps": {
+        parentId: "QuickSwap",
+        id: "2980",
+    },
+    "capybara-perp": {
+        parentId: "Capybara Exchange",
+        id: "5257",
+    },
+    "defx": {
+        id: "5273",
+    },
+    "surge-trade": {
+        id: "5290"
+    },
+    "optim-finance": {
+        id: "2380",
+        protocolsData: {
+            "derivatives": {
+                "id": "2380",
+            }
+        }
+    },
+    "quenta": {
+        id: "5314"
+    },
+    "zkera-finance": {
+        id: "3343"
+    },
+    "adrena": {
+        id: "5353"
+    },
+    "thetis-market": {
+        parentId: "Thetis Market",
+        id: "5469"
+    },
+    "mars-perp": {
+        parentId: "Mars Protocol",
+        id: "5498",
+        protocolsData: {
+            "derivatives": {
+                "id": "5498",
+            }
+        }
+    },
+    "satoshi-perps": {
+        id: "5571",
+        protocolsData: {
+            "derivatives": {
+                "id": "5571",
+            }
+        }
+    },
+    "lnexchange-perp": {
+        id: "5639",
+    },
+    "cvex": {
+        id: "5610"
+    },
+    "amped": {
+        id: "3833",
+        protocolsData: {
+            "derivatives": {
+                id: "3833",
+            }
+        }
+    },
+    "raydium-perps": {
+        id: "5729",
+    },
+    "wavex": {
+        id: "5737",
+        protocolsData: {
+            "derivatives": {
+                id: "5737",
+            }
+        }
+    },
+    "citrex-markets": {
+        id: "5641",
+        protocolsData: {
+            "derivatives": {
+                id: "5641",
+            }
+        }
+
+    },
+    "flexperp": {
+        id: "5843"
+    },
+    "electra": {
+        id: "5817"
+    },
+    "desk": {
+        id: "5813"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-trade": {
+                id: "5406"
+            }
+        }
+    },
+    "extended": {
+        id: "5887"
+    },
+    "agdex": {
+        id: "5467"
+    },
+    "vest": {
+        id: "4400"
+    },
+    "goosefx_v2": {
+        id: "5998"
     }
 } as AdaptorsConfig

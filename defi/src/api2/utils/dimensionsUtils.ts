@@ -21,7 +21,7 @@ export function getFileCacheKey(adaptorRecordType: AdapterType) {
 
 
 export function getFileCacheKeyV2() {
-  return `dimensions-data-v2-v1.0.6`
+  return `dimensions-data-v2-v1.0.36`
 }
 
 // to ensure that we pull the cache data only once
@@ -42,6 +42,16 @@ export async function storeDimensionsCacheV2(data: any) {
   const fileKey = getFileCacheKeyV2()
 
   return writeToPGCache(fileKey, data)
+}
+
+const dimensionsMetadataFile = `dimensions-metadata-v1.0.0`
+
+export async function getDimensionsMetadata() {
+  return readFromPGCache(dimensionsMetadataFile)
+}
+
+export async function storeDimensionsMetadata(data: any) {
+  return writeToPGCache(dimensionsMetadataFile, data)
 }
 
 let cacheLoaded = false

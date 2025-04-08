@@ -73,5 +73,4 @@ export const liquity = async (timestamp: number = 0) =>
     ),
   );
 
-getTokenPrice("telos", 0);
 // ts-node coins/src/adapters/other/liquity.ts

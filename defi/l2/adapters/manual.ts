@@ -101,6 +101,31 @@ export const additional: { [chain: string]: string[] } = {
     "0x592786e04c47844aa3b343b19ef2f50a255a477f", // axlWBTC
     "0x522b61755b5ff8176b2931da7bf1a5f9414eb710", // axlWETH
   ],
+  apechain: [
+    "0xa2235d059f80e176d931ef76b6c51953eb3fbef4", // apeUSD
+    "0xcf800f4948d16f23333508191b1b1591daf70438", // apeETH
+  ],
+  hyperliquid: [
+    "0xc1fb593aeffbeb02f85e0308e9956a90", // PURR
+  ],
+  degen: [
+    "0xF1815bd50389c46847f0Bda824eC8da914045D14", // USDC
+    "0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8", // aUSDT
+    "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590", // WETH
+  ],
+  berachain: [
+    "0x09D4214C03D01F49544C0448DBE3A27f768F2b34", // rUSD
+    "0xC3827A4BC8224ee2D116637023b124CED6db6e90", // uniBTC
+    "0xCC0966D8418d412c599A6421b760a847eB169A8c", // solvBTC
+    "0xecAc9C5F704e954931349Da37F60E39f515c11c1", // LBTC
+    "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c", // WBTC
+    "0x549943e04f40284185054145c6E4e9568C1D3241", // USDC.e
+    "0x211Cc4DD073734dA055fbF44a2b4667d5E5fE5d2", // sUSDe
+    "0x4186BFC76E2E237523CBC30FD220FE055156b41F", // rsETH
+    "0xf6718b2701D4a6498eF77D7c152b2137Ab28b8A3", // stBTC
+    "0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116", // sBTC
+    "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc", // USDa
+  ],
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [

@@ -59,13 +59,15 @@ export async function getMetadataAll() {
   return JSON.parse(data)
 }
 
+export const fileNameNormalizer = (fileName: string) => decodeURIComponent(fileName).replace(/[^a-zA-Z0-9\/\.]/g, '').toLowerCase()
+
 export async function storeRouteData(subPath: string, data: any) {
-  subPath = `build/${subPath}`
+  subPath = fileNameNormalizer(`build/${subPath}`)
   return storeData(subPath, data)
 }
 
 export async function readRouteData(subPath: string) {
-  subPath = `build/${subPath}`
+  subPath = fileNameNormalizer(`build/${subPath}`)
   return readFileData(subPath)
 }
 
@@ -108,9 +110,35 @@ export async function writeToPGCache(key: string, data: any) {
   return storeData(id, { id, timestamp: Math.floor(Date.now() / 1e3), data })
 }
 
+// ANY CHANGE TO THIS VALUE NEEDS TO BE SYNCED WITH A CHANGE ON https://github.com/DefiLlama/born-to-llama/blob/master/src/commands/deleteCache.ts#L30 TOO
+let TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.8'  // update the version number to reset the cache
+if (process.env.LLAMA_RUN_LOCAL === 'true') {
+  TVL_CACHE_FOLDER = 'tvl-cache-daily'
+}
+
+export async function clearOldCacheFolders() {
+  try {
+    const parentPath = path.join(CACHE_DIR!, 'pg-cache')
+    console.log('parentPath', parentPath)
+    const folders = fs.readdirSync(parentPath!, { withFileTypes: true })
+      .filter(dirent => dirent.isDirectory() && dirent.name.startsWith('tvl-cache-daily-'))
+      .map(dirent => dirent.name);
+
+    for (const folder of folders) {
+      if (folder !== TVL_CACHE_FOLDER) {
+        const folderPath = path.join(parentPath, folder);
+        fs.rmSync(folderPath, { recursive: true, force: true });
+        log(`Deleted old cache folder: ${folder}`);
+      }
+    }
+  } catch (e) {
+    console.error('Error clearing old cache folders:', e)
+  }
+}
+
 export function getDailyTvlCacheId(id: string) {
   if (!id) throw new Error('Missing required parameter: id')
-  return `tvl-cache-daily/${id}`
+  return `${TVL_CACHE_FOLDER}/${id}`
 }
 
 export async function deleteFromPGCache(key: string) {

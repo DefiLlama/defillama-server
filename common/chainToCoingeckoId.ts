@@ -1,6 +1,6 @@
 // https://api.coingecko.com/api/v3/asset_platforms
 export const chainToCoingeckoId = {
-  shibarium: 'shibarium',
+  shibarium: "shibarium",
   bsc: "binance-smart-chain",
   ethereum: "ethereum",
   polygon: "polygon-pos",
@@ -146,17 +146,37 @@ export const chainToCoingeckoId = {
   hyperliquid: "hyperliquid",
   ancient8: "ancient8",
   degen: "degen",
-  cronos_zkevm: "cronos-zkevm"
-
-
-
+  cronos_zkevm: "cronos-zkevm",
+  iotaevm: "iota-evm",
+  real: "re-al",
+  eclipse: "eclipse",
+  kusama: "kusama",
+  empire: "empire",
+  vite: "vite",
+  hoo: "hoo",
+  neutron: "neutron",
+  celestia: "celestia",
+  aura: "aura-network",
+  echelon: "echelon",
+  ton: "the-open-network",
+  alephium: "alephium",
+  berachain: "berachain",
+  apechain: "apechain",
+  boba_bnb: "boba-bnb",
+  sui: "sui",
+  sonic: "sonic",
+  abstract: "abstract",
+  // dl: cg
   // chz: "chiliz",
   // stellar: "stellar",
-  // stacks: "stacks",
+  stacks: "stacks",
   // cosmos: "cosmos",
-  // sui: "sui",
   // xrp: "xrp",
-  // hedera: "hedera-hashgraph",
+  hedera: "hedera-hashgraph",
+  bfc: "bifrost-network",
+  occ: "edu-chain",
+  wc: "world-chain",
+  soneium: "soneium",
 };
 
 export default chainToCoingeckoId;

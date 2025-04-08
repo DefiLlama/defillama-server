@@ -175,7 +175,8 @@ export const chainToCoingeckoId = {
   hedera: "hedera-hashgraph",
   bfc: "bifrost-network",
   occ: "edu-chain",
-  wc: "world-chain"
+  wc: "world-chain",
+  soneium: "soneium",
 };
 
 export default chainToCoingeckoId;

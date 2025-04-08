@@ -6963,7 +6963,24 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Sei"],
-    oracles: [], 
+    oracles: ["Pyth"], 
+    oraclesBreakdown: [
+        {
+         name: "Pyth",
+         type: "Primary",
+         proof: ["https://docs.synnax.fi/security/oracles"]
+       },
+       {
+         name: "RedStone",
+         type: "Secondary",
+         proof: ["https://docs.synnax.fi/security/oracles"]
+       },
+       {
+         name: "Api3",
+         type: "Secondary",
+         proof: ["https://docs.synnax.fi/security/oracles"]
+       },
+     ],          
     forkedFrom: [],
     module: "synnax/index.js",
     twitter: "synnax_labs",

@@ -2939,4 +2939,7 @@ export default {
     "jup-ape": {
         id: "4860"
     },
+    "sonex": {
+        id: "5640"
+    },
 } as AdaptorsConfig

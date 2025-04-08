@@ -3006,4 +3006,7 @@ export default {
     "momentum": {
         id: "6005"
     },
+    "sonex": {
+        id: "5640"
+    },
 } as AdaptorsConfig

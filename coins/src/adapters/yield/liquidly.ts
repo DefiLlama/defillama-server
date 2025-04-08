@@ -47,7 +47,7 @@ async function getPrices(timestamp: number, chain: string, configs: Config[]) {
         underlying,
         symbol,
         decimals,
-        price: price / 1 ** decimals,
+        price: price / 10 ** decimals,
       };
     }),
   );

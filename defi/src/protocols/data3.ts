@@ -40328,7 +40328,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Leveraged Farming",
+    category: "Liquidity manager",
     chains: ["Base"],
     module: "arcadia-finance-v2/index.js",
     forkedFrom: [],

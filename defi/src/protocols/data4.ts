@@ -10550,5 +10550,28 @@ const data4: Protocol[] = [
     parentProtocol: "parent#typus-finance",
     listedAt: 1744133053
   },
+  {
+    id: "6015",
+    name: "Felix",
+    address: null,
+    symbol: "-",
+    url: "https://usefelix.xyz/borrow",
+    description:
+      "Felix is a synthetic dollar protocol on Hyperliquid L1",
+    chain: "Hyperliquid",
+    logo: `${baseIconsUrl}/felix.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Hyperliquid"],
+    module: "felix/index.js",
+    twitter: "felixprotocol",
+    forkedFrom: ["Liquity V2"],
+    oracles: [],
+    audit_links: ["https://usefelix.gitbook.io/felix-docs/advanced/smart-contract-audits#felix-audits"],
+    listedAt: 1744135586
+  },
 ];
 export default data4;

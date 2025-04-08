@@ -10415,14 +10415,14 @@ const data4: Protocol[] = [
   },
   {
     id: "6009",
-    name: "Stable Jack scUSD",
+    name: "Stable Jack V2",
     address: null,
     symbol: "-",
     url: "https://deuro.com/",
     description:
       "Stable Jack provide a high-yield, principal-protected stablecoin offering on Sonic though scUSD",
     chain: "Sonic",
-    logo: `${baseIconsUrl}/stable-jack-scusd.jpg`,
+    logo: `${baseIconsUrl}/stable-jack-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

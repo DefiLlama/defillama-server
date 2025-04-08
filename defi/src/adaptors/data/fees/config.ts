@@ -3020,5 +3020,8 @@ export default {
     },
     "veda": {
         id: "5825"
+    },
+    "felix": {
+        id: "6015"
     }
 } as AdaptorsConfig

@@ -10420,7 +10420,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://deuro.com/",
     description:
-      "Stable Jack provides high-yield, principal-protected stablecoin offerings on the Sonic Chain, enhancing DeFi opportunities for users",
+      "Stable Jack provide a high-yield, principal-protected stablecoin offering on Sonic though scUSD",
     chain: "Sonic",
     logo: `${baseIconsUrl}/stable-jack-scusd.jpg`,
     audits: "0",

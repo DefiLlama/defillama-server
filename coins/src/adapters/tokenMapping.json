@@ -7398,7 +7398,12 @@
       "to": "coingecko#wrapped-bitcoin",
       "decimals": 18,
       "symbol": "WBTC"
-    }
+    },
+    "0x3b0dc2dac9498a024003609031d973b1171de09e": {
+      "to": "coingecko#wrapped-stastr",
+      "decimals": 18,
+      "symbol": "wstASTR"
+    }	
   },
   "odyssey": {
     "0x0000000000000000000000000000000000000000": {

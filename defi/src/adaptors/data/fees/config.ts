@@ -2917,7 +2917,7 @@ export default {
         id: "148"
     },
     "karak": {
-        id: "4460"
+        id: "2410" // chainId
     },
     "saber": {
         id: "419"
@@ -3009,4 +3009,10 @@ export default {
     "sonex": {
         id: "5640"
     },
+    "kyo-fi-v3": {
+        id: "5622"
+    },
+    "hashkey": {
+        id: "177" // chainId
+    }
 } as AdaptorsConfig

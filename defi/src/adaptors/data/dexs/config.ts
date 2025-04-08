@@ -2942,4 +2942,7 @@ export default {
     "sonex": {
         id: "5640"
     },
+    "kyo-fi-v3": {
+        id: "5622"
+    },
 } as AdaptorsConfig

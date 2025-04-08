@@ -10435,5 +10435,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#stable-jack",
     listedAt: 1744065310,
   },
+  {
+    id: "6010",
+    name: "OrangeX",
+    address: null,
+    symbol: "-",
+    url: "https://www.orangex.com",
+    description:
+      "Registered in Czech Republic, OrangeX is a trading company with the combined strengths of skilled staff and the experience of core copy trading services in 20 languages worldwide, OrangeX dedicated to empowering investors to make a better future through cryptocurrency investment.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/orangex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin","Ethereum"],
+    forkedFrom: [],
+    module: "orangex-cex/index.js",
+    twitter: "OrangeXExchange",
+    listedAt: 1744103517
+  },
 ];
 export default data4;

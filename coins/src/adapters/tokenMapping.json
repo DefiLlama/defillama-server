@@ -7991,6 +7991,46 @@
     }
   },
   "move": {
+    "0x51ffc9885233adf3dd411078cad57535ed1982013dc82d9d6c433a55f2e0035d": {
+      "to": "coingecko#kelp-dao-restaked-eth",
+      "decimals": 8,
+      "symbol": "rsETH"
+    },
+    "0x2f6af255328fe11b88d840d1e367e946ccd16bd7ebddd6ee7e2ef9f7ae0c53ef": {
+      "to": "coingecko#renzo-restaked-eth",
+      "decimals": 8,
+      "symbol": "ezETH"
+    },
+    "0x527c43638a6c389a9ad702e7085f31c48223624d5102a5207dfab861f482c46d": {
+      "to": "coingecko#solv-btc",
+      "decimals": 8,
+      "symbol": "SolvBTC"
+    },
+    "0x95c0fd13373299ada1b9f09ff62473ab8b3908e6a30011730210c141dffdc990": {
+      "to": "coingecko#lorenzo-stbtc",
+      "decimals": 8,
+      "symbol": "stBTC"
+    },
+    "0xe4354602aa4311f36240dd57f3f3435ffccdbd0cd2963f1a69da39a2dbcd59b5": {
+      "to": "coingecko#layerzero-bridged-frxusd",
+      "decimals": 6,
+      "symbol": "frxUSD"
+    },
+    "0xbf2efbffbbd7083aaf006379d96b866b73bb4eb9684a7504c62feafe670962c2": {
+      "to": "coingecko#staked-frax",
+      "decimals": 6,
+      "symbol": "sfrxUSD"
+    },
+    "0x658f4ef6f76c8eeffdc06a30946f3f06723a7f9532e2413312b2a612183759c": {
+      "to": "coingecko#lombard-staked-btc",
+      "decimals": 8,
+      "symbol": "LBTC"
+    },
+    "0xe956f5062c3b9cba00e82dc775d29acf739ffa1e612e619062423b58afdbf035": {
+      "to": "coingecko#wrapped-eeth",
+      "decimals": 8,
+      "symbol": "weETH"
+    },
     "0x1::aptos_coin::AptosCoin": {
       "decimals": "8",
       "symbol": "MOVE",

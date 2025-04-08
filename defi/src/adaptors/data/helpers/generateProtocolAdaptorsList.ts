@@ -34,6 +34,7 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
   if (!obj.cmcId && !obj.chainId) return undefined
   let id = obj.chainId ?? obj.cmcId
   if (key === 'Ethereum') id = '' + obj.cmcId // because ethereum chain id clashes with bitcoin cmcId
+  if (key === 'Kardia') id = '' + obj.cmcId // because ethereum chain id clashes with bitcoin cmcId
 
   return {
     ...obj,
@@ -47,6 +48,7 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
 }).filter(c => c !== undefined) as unknown as Protocol[]
 
 const chainDataMap = chainData.reduce((acc, curr) => {
+  if (acc[curr.id]) return acc;
   acc[curr.id] = curr
   return acc
 }, {} as IJSON<Protocol>)
@@ -177,7 +179,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         const ids: Array<string> = []
         const parentIds: Array<string> = []
 
-        Object.entries(protocolsData as any).forEach(([versionKey, versionConfig]: any) => {
+        Object.entries((protocolsData ?? {}) as any).forEach(([versionKey, versionConfig]: any) => {
           if (!versionConfig || versionConfig.enabled === false) return;
 
           const childConfig = { ...configObj, ...versionConfig }
@@ -279,7 +281,6 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
       if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
-
 
       return infoItem
 

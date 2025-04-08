@@ -720,9 +720,9 @@ export default {
         id: "5151"
     },
     "filament": {
-        id: "5177",
+        id: "5650",
     },
-    "idex-v4": {
+    "kuma-v1": {
         id: "5079"
     },
     "trado": {
@@ -813,5 +813,34 @@ export default {
             }
         }
 
+    },
+    "flexperp": {
+        id: "5843"
+    },
+    "electra": {
+        id: "5817"
+    },
+    "desk": {
+        id: "5813"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-trade": {
+                id: "5406"
+            }
+        }
+    },
+    "extended": {
+        id: "5887"
+    },
+    "agdex": {
+        id: "5467"
+    },
+    "vest": {
+        id: "4400"
+    },
+    "goosefx_v2": {
+        id: "5998"
     }
 } as AdaptorsConfig

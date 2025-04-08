@@ -26,6 +26,7 @@ import {
 } from "../utils/getCoinsUtils";
 import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
+import { cairoErc20Abis, call, feltArrToStr } from "../adapters/utils/starknet";
 
 enum COIN_TYPES {
   over100m = "over100m",
@@ -97,15 +98,20 @@ async function cacheSolanaTokens() {
 let hyperliquidTokens: Promise<any>;
 let _hyperliquidTokens: Promise<any>;
 async function cacheHyperliquidTokens() {
-  if (_hyperliquidTokens === undefined) {
-    _hyperliquidTokens = fetch(`https://api.hyperliquid.xyz/info`, {
-      method: "POST",
-      body: JSON.stringify({ type: "spotMeta" }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    hyperliquidTokens = _hyperliquidTokens.then((r) => r.json());
+  try {
+    if (_hyperliquidTokens === undefined) {
+      _hyperliquidTokens = fetch(`https://api.hyperliquid.xyz/info`, {
+        method: "POST",
+        body: JSON.stringify({ type: "spotMeta" }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      hyperliquidTokens = _hyperliquidTokens.then((r) => r.json());
+    }
+  } catch (e) {
+    console.error(`Hyperliquid API failed with: ${e}`);
+    hyperliquidTokens = new Promise((res) => res({ tokens: [] }));
   }
   return hyperliquidTokens;
 }
@@ -141,6 +147,22 @@ async function getSymbolAndDecimals(
       symbol: token.symbol,
       decimals: Number(token.decimals),
     };
+  } else if (chain == "starknet") {
+    try {
+      const [symbol, decimals] = await Promise.all([
+        call({
+          abi: cairoErc20Abis.symbol,
+          target: tokenAddress,
+        }).then((r) => feltArrToStr([r])),
+        call({
+          abi: cairoErc20Abis.decimals,
+          target: tokenAddress,
+        }).then((r) => Number(r)),
+      ]);
+      return { symbol, decimals };
+    } catch (e) {
+      return;
+    }
   } else if (chain == "hedera") {
     try {
       const { symbol, decimals } = await fetch(
@@ -153,6 +175,7 @@ async function getSymbolAndDecimals(
       return;
     }
   } else if (chain == "hyperliquid") {
+    await cacheHyperliquidTokens();
     const token = ((await hyperliquidTokens).tokens as any[]).find(
       (t) => t.tokenId === tokenAddress,
     );
@@ -490,7 +513,6 @@ function shuffleArray(array: any[]) {
 async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
   try {
     await cacheSolanaTokens();
-    await cacheHyperliquidTokens();
     const step = 500;
     let coins = (await fetch(
       `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`,

@@ -309,5 +309,14 @@ export default {
   },
   "defiapp": {
     id: "5819",
+  },
+  "erc-burner": {
+      id: "5859"
+  },
+  "oogabooga": {
+    id: "5880"
+  },
+  "mosaic": {
+    id: "5890"
   }
 } as AdaptorsConfig;

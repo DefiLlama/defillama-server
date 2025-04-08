@@ -41,10 +41,15 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   // router.get("/config/:chain/:contract", ew(getContractName));  // too many requests to handle here
   // add secret route to delete from PG cache
 
-  router.get("/protocol/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'protocol', skipAggregatedTvl: false, useNewChainNames: false, })));
+  router.get("/protocol/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, {
+    dataType: 'protocol', skipAggregatedTvl: false, useNewChainNames: false, restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false'
+  })));
   router.get("/treasury/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'treasury' })));
   router.get("/entity/:name", ew(async (req: any, res: any) => getProtocolishData(req, res, { dataType: 'entities' })));
-  router.get("/updatedProtocol/:name", (async (req, res) => getProtocolishData(req, res, { dataType: 'protocol', useHourlyData: false, skipAggregatedTvl: req.query_parameters.includeAggregatedTvl !== 'true' })));
+  router.get("/updatedProtocol/:name", (async (req, res) => getProtocolishData(req, res, {
+    dataType: 'protocol', useHourlyData: false, skipAggregatedTvl: req.query_parameters.includeAggregatedTvl !== 'true',
+    restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false',
+  })));
 
   router.get("/tokenProtocols/:symbol", ew(getTokenInProtocols));
   router.get("/protocols", protocolsRouteResponse);
@@ -158,14 +163,12 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   }
 
   function smolConfigHandler(req: HyperExpress.Request, res: HyperExpress.Response) {
-    if (req.path_parameters.name === 'bitcoin-addresses.json')
-      return fileResponse('config/smol/bitcoin-addresses.json', res);
     let name = sluggify({ name: req.path_parameters.name } as any)
     let protocolData = cache.protocolSlugMap[name]
     if (protocolData) return successResponse(res, protocolData, 60);
     protocolData = cache.parentProtocolSlugMap[name]
     if (protocolData) return successResponse(res, protocolData, 60);
-    return errorResponse(res, 'Protocol not found')
+    return fileResponse('config/smol/' + req.path_parameters.name, res);
   }
 
   async function fileResponse(filePath: string, res: HyperExpress.Response) {
@@ -217,7 +220,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   }
 }
 
-async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true }: GetProtocolishOptions) {
+async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true }: GetProtocolishOptions) {
   let name = decodeURIComponent(req.path_parameters.name);
   name = sluggify({ name } as any);
   const protocolData = (cache as any)[dataType + 'SlugMap'][name];
@@ -241,11 +244,17 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   if (!protocolData)
     return errorResponse(res, 'Protocol not found')
 
+  if (protocolData.category === 'CEX')
+    restrictResponseSize = false
+
+  restrictResponseSize = false // hack to revert to old behavior
+
   const responseData = await cachedCraftProtocolV2({
     protocolData,
     useNewChainNames,
     useHourlyData,
     skipAggregatedTvl,
+    restrictResponseSize,
   });
   return res.json(responseData);
 }
@@ -315,6 +324,7 @@ type GetProtocolishOptions = {
   useHourlyData?: boolean,
   skipAggregatedTvl?: boolean,
   useNewChainNames?: boolean,
+  restrictResponseSize?: boolean,
 }
 
 async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response) {
@@ -386,7 +396,7 @@ async function emissionProtocolHandler(req: HyperExpress.Request, res: HyperExpr
 async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
-    const data = await getChainChartData(name.toLowerCase())
+    const data = await getChainChartData(name.toLowerCase(), await _getChainChartData(name))
     return successResponse(res, data, 60);
   } catch (e) {
     return errorResponse(res, 'There is no chain with that name: ' + name)
@@ -396,11 +406,17 @@ async function getChartsData(req: HyperExpress.Request, res: HyperExpress.Respon
 async function getHistoricalChainTvlData(req: HyperExpress.Request, res: HyperExpress.Response) {
   const name = decodeURIComponent(req.path_parameters?.name ?? '')
   try {
-    const data = await getChainDefaultChartData(name.toLowerCase())
+    const data = await getChainDefaultChartData(name.toLowerCase(), await _getChainChartData(name))
     return successResponse(res, data, 60);
   } catch (e) {
     return errorResponse(res, 'There is no chain with that name: ' + name)
   }
+}
+
+async function _getChainChartData(name: string) {
+  const global = name === "";
+  const route = global ? 'lite/charts-total' : `lite/charts/${name}`;
+  return readRouteData(route);
 }
 
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {

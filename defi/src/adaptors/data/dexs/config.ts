@@ -1,4 +1,3 @@
-import { id } from "ethers"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -1239,8 +1238,7 @@ export default {
         "id": "2748"
     },
     "acala-swap": {
-        "id": "1847",
-        enabled: false
+        "id": "1847"
     },
     "maia-v3": {
         "id": "2760"
@@ -1984,7 +1982,6 @@ export default {
     },
     "aftermath-fi-amm": {
         parentId: "Aftermath Finance",
-        "enabled": false,
         "id": "3259"
     },
     "sanctum": {
@@ -2231,7 +2228,6 @@ export default {
         id: "4510"
     },
     "glowswap": {
-        enabled: false,
         id: "4515"
     },
     "merlinswap": {
@@ -2261,7 +2257,6 @@ export default {
     },
     "fenix-finance": {
         parentId: "Fenix Finance",
-        enabled: false,
         id: "4563"
     },
     "nuri-exchange-v1": {
@@ -2808,5 +2803,140 @@ export default {
     },
     "magma-finance": {
         id: "5774",
-    }
+    },
+    "caviarnine-simplepool": {
+        id: "5064",
+    },
+    "xpress": {
+        id: "5686"
+    },
+    "burrbear": {
+        id: "5745"
+    },
+    "fibonacci-dex": {
+        id: "5832"
+    },
+    "bitflux": {
+        id: "5344"
+    },
+    "hyperswap-v2": {
+        id: "5836"
+    },
+    "hyperswap-v3": {
+        id: "5837"
+    },
+    "wasabee": {
+        id: "5845"
+    },
+    "thalaswap-v2": {
+        parentId: "Thala",
+        id: "5329",
+    },
+    "degen-launchpad": {
+        id: "5857"
+    },
+    "hyperion": {
+        id: "5480"
+    },
+    "metropolis-amm": {
+        id: "5504"
+    },
+    "metropolis-dlmm": {
+        id: "5505"
+    },
+    "enosys": {
+        id: "5158"
+    },
+    "tea-fi": {
+        id: "5875"
+    },
+    "beets-v3": {
+        id: "5680"
+    },
+    "SwapX-algebra": {
+        id: "5579"
+    },
+    "SwapX-v2": {
+        id: "5578"
+    },
+    "meridian-amm": {
+        id: "5885"
+    },
+    "yuzu-finance": {
+        "id": "5906"
+    },
+    "rfx": {
+        id: "5406",
+        protocolsData: {
+            "rfx-swap": {
+                id: "5406"
+            }
+        }
+    },
+    "tonco": {
+        id: "5363"
+    },
+    "ekubo-evm": {
+        id: "5914"
+    },
+    "equalizer-cl": {
+        id: "5603"
+    },
+    "xswap-v3": {
+        id: "3914"
+    },
+    "unchain-x": {
+        id: "5917"
+    },
+    "pump-swap": {
+        id: "5936"
+    },
+    "steamm": {
+        id: "5824"
+    },
+    "umbra": {
+        id: "5943"
+    },
+    "squadswap-dynamo": {
+        id: "5921"
+    },
+    "squadswap-wow": {
+        id: "5922"
+    },
+    "gacha": {
+        id: "5942"
+    },
+    "kittypunch-stable": {
+        id: "5790"
+    },
+    "saucerswap-v2": {
+        id: "5966"
+    },
+    "justbet": {
+        id:"5950"
+    },
+    "katana-v3": {
+        id: "5972"
+    },
+    "sandglass": {
+        id: "5965"
+    },
+    "syncswap-v3": {
+        id: "5982"
+    },
+    "verus": {
+        id: "5601" 
+    },
+    "haedal": {
+        id: "5784"
+    },
+    "hardswap": {
+        id: "5999"
+    },
+    "momentum": {
+        id: "6005"
+    },
+    "jup-ape": {
+        id: "4860"
+    },
 } as AdaptorsConfig

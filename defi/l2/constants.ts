@@ -5,6 +5,7 @@ import cgSymbols from "../src/utils/symbols/symbols.json";
 
 export const zero = BigNumber(0);
 export const excludedTvlKeys = ["PK", "SK", "tvl"];
+export const excludedTvlId = "5897";
 
 export const geckoSymbols = cgSymbols as { [key: string]: string };
 
@@ -23,6 +24,7 @@ export const chainsWithoutCanonicalBridges: string[] = [
   // "filecoin",
   // "near",
   // "aurora",
+  "berachain",
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -109,6 +111,8 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5732": "sxr",
   "5735": "sorare",
   "5772": "unichain",
+  "5833": "formnetwork",
+  "5854": "hemi-l2",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -217,4 +221,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "zkfair": { ticker: "ZKF", address: "coingecko:zkfair" },
   "sxr": { ticker: "SX", address: "coingecko:sx-network-2" },
   "unichain": { ticker: "UNI", address: "coingecko:uniswap" },
+  "berachain": { ticker: "BERA", address: "coingecko:berachain-bera" },
 };

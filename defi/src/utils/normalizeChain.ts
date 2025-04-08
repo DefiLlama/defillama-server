@@ -1,3 +1,4 @@
+
 export const normalizedChainReplacements = {
   // keys should be full lowercase
 } as {
@@ -34,7 +35,7 @@ export function normalizeChain(chain: string) {
 
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
-  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager", "Managed Token Pools", "Treasury Manager", "Anchor BTC"].includes(category ?? "none");
+  return moduleDoubleCounted === true || ["Yield Aggregator", "Yield", "Liquidity manager", "Onchain Capital Allocator", "Treasury Manager", "Anchor BTC"].includes(category ?? "none");
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -432,7 +433,12 @@ export const chainCoingeckoIds = {
     github: ['celo-org'],
     symbol: "CELO",
     cmcId: "5567",
-    categories: ["EVM"],
+    categories: ["EVM",  "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"],
+      da: 'Eigen',
+    },
     chainId: 42220,
     twitter: "Celo",
     url: "https://celo.org/"
@@ -1202,7 +1208,8 @@ export const chainCoingeckoIds = {
     cmcId: "4642",
     categories: ["EVM"],
     twitter: "hedera",
-    url: "https://hedera.com/"
+    url: "https://hedera.com/",
+    chainId: 295,
   },
   "Findora": {
     geckoId: "findora",
@@ -1486,6 +1493,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "Filecoin",
     url: "https://filecoin.io/",
+    chainId: 314,
   },
   "Flow": {
     geckoId: "flow",
@@ -1731,7 +1739,7 @@ export const chainCoingeckoIds = {
     geckoId: "starknet",
     github: ['starknet-io'],
     symbol: "STRK",
-    cmcId: null,
+    cmcId: "22691",
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"],
@@ -2132,7 +2140,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 5000,
-    twitter: "0xMantle",
+    twitter: "Mantle_Official",
     url: "https://www.mantle.xyz/",
   },
   "Neon": {
@@ -2173,6 +2181,7 @@ export const chainCoingeckoIds = {
     },
     twitter: "LineaBuild",
     url: "https://linea.build/",
+    chainId: 59144
   },
   "GravityBridge": {
     geckoId: null,
@@ -2274,7 +2283,7 @@ export const chainCoingeckoIds = {
   "Kroma": {
     geckoId: "kroma",
     symbol: "KRO",
-    cmcId: null,
+    cmcId: "27190",
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
@@ -2884,7 +2893,7 @@ export const chainCoingeckoIds = {
     url: "https://karak.network/",
     chainId: "2410"
   },
-  "Bitkub Chain": {
+  "KUB": {
     geckoId: "bitkub-coin",
     symbol: "KUB",
     cmcId: "16093",
@@ -2908,10 +2917,10 @@ export const chainCoingeckoIds = {
     twitter: "Ancient8_gg",
     url: "https://ancient8.gg/"
   },
-  "Hyperliquid": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+  "Hyperliquid L1": {
+    geckoId: "hyperliquid",
+    symbol: "HYPE",
+    cmcId: "32196",
     categories: ["EVM"],
     twitter: "HyperliquidX",
     url: "https://hyperliquid.xyz/"
@@ -3114,8 +3123,8 @@ export const chainCoingeckoIds = {
     github: ["joltify-finance"]
   },
   "IOTA EVM": {
-    geckoId: null,
-    symbol: null,
+    geckoId: 'iota',
+    symbol: 'IOTA',
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {
@@ -3380,7 +3389,7 @@ export const chainCoingeckoIds = {
   "Lisk": {
     geckoId: "lisk",
     symbol: "LSK",
-    cmcId: null,
+    cmcId: "1214",
     categories: ["EVM", "Rollup", "Superchain"],
     parent: {
       chain: "Ethereum",
@@ -3469,9 +3478,9 @@ export const chainCoingeckoIds = {
     chainId: 33139
   },
   "Asset Chain": {
-    geckoId: "xend-finance",
-    symbol: "RWA",
-    cmcId: "8519",
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
     categories: ["EVM"],
     twitter: "xendfinance",
     url: "https://xend.finance/",
@@ -3967,6 +3976,136 @@ export const chainCoingeckoIds = {
     twitter: "HyperliquidX",
     url: "https://hyperfoundation.org/",
   }, 
+  "Hemi": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    chainId: 43111,
+    twitter: "hemi_xyz",
+    url: "https://hemi.xyz",
+  }, 
+  "Saga": {
+    geckoId: "saga-2",
+    symbol: "SAGA",
+    cmcId: "30372",
+    categories: ["EVM", "Cosmos"],
+    chainId: 5464,
+    twitter: "Sagaxyz__",
+    url: "https://www.saga.xyz/",
+  }, 
+  "Movement": {
+    geckoId: "movement",
+    symbol: "MOVE",
+    cmcId: "32452",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    chainId: 3073,
+    twitter: "movementlabsxyz",
+    url: "https://movementlabs.xyz/",
+  }, 
+  "Qubic": {
+    geckoId: "qubic-network",
+    symbol: "QUBIC",
+    cmcId: "29169",
+    twitter: "_Qubic_",
+    url: "https://qubic.org/",
+    github: ["qubic"]
+  }, 
+  "WINR": {
+    geckoId: "winr-protocol",
+    symbol: "WINR",
+    cmcId: "23681",
+    twitter: "WINRProtocol",
+    url: "https://link3.to/winrprotocol",
+    chainId: 777777
+  }, 
+  "MTT Network": {
+    geckoId: null,
+    symbol: "MTT",
+    cmcId: null,
+    twitter: "MTT_NETWORK",
+    url: "https://www.mtt.network/",
+    chainId: 6880
+  }, 
+  "HashKey Chain": { // added for the bridge dashboard, because of the slug of the chain
+    geckoId: "hashkey-ecopoints",
+    symbol: "HSK",
+    cmcId: "33849",
+    twitter: "HashKeyHSK",
+    url: "https://hsk.xyz/",
+    chainId: 177
+  }, 
+  "Mind Network": { // added for the bridge dashboard, because of the slug of the chain
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"]
+    },
+    chainId: 228,
+    twitter: "mindnetwork_xyz",
+    github: ["mind-network"],
+    url: "https://www.mindnetwork.xyz",
+  },
+  "AO": {
+    geckoId: "ao-computer",
+    symbol: "AO",
+    cmcId: "35386",
+    categories: [],
+    twitter: "aoTheComputer",
+    github: ["permaweb"],
+    url: "https://ao.arweave.net/",
+  },
+  "Supra": {
+    geckoId: "supra",
+    symbol: "SUPRA",
+    cmcId: "34240",
+    categories: ["EVM"],
+    twitter: "SUPRA_Labs",
+    url: "https://supra.com/",
+  }, 
+  "Prom": {
+    geckoId: "prometeus",
+    symbol: "PROM",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "prom_io",
+    url: "https://prom.io/",
+    chainId: 277
+  },
+  "Goat": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Bitcoin Sidechains"],
+    twitter: "GOATRollup",
+    url: "https://www.goat.network/",
+    chainId: 2345
+  }, 
+  "Plume Mainnet": {
+    geckoId: null,
+    symbol: "PLUME",
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "plumenetwork",
+    url: "https://plumenetwork.xyz",
+    chainId: 98866
+  }, 
+  "Perennial": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "perenniallabs",
+    url: "https://perennial.finance/",
+    chainId: 1424
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4141,13 +4280,20 @@ const chainLabelMap = {
   "silicon_zk": "Silicon zkEVM",
   "sty": "Story",
   "formnetwork": "Form Network",
-  "hyper_evm": "HyperEVM"
+  "hyper_evm": "HyperEVM",
+  "hyperliquid": "Hyperliquid",
+  "winr": "WINR",
+  "mtt_network": "MTT Network",
+  "hsk": "HashKey Chain",
+  "fhe": "Mind Network",
+  "ao": "AO",
+  "plume_mainnet": "Plume Mainnet",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
 const newChainLabelMap = {
   "zklink": "zkLink Nova",
-  "bitkub": "Bitkub Chain",
+  "bitkub": "KUB",
   "lyra": "Derive Chain",
   "fuel": "Fuel Ignition",
   "op_bnb": "opBNB",
@@ -4180,6 +4326,11 @@ const newChainLabelMap = {
   "sx": "SX Network",
   "sxr": "SX Rollup",
   "new": "AB",
+  "formnetwork": "Form Network",
+  "hyperliquid": "Hyperliquid L1",
+  "lightlink_phoenix": "LightLink",
+  "move": "Movement", 
+  "wax": "Wax",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

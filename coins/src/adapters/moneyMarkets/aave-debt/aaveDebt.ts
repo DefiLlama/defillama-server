@@ -31,6 +31,12 @@ export const config = {
       { version: "v3", pool: "0x794a61358D6845594F94dc1DB02A252b5b4814aD" },
     ],
   },
+  hyperliquid: {
+    pools: [
+      { version: "v3", pool: "0xceCcE0EB9DD2Ef7996e01e25DD70e461F918A14b" },
+      { version: "v3", pool: "0x00A89d7a5A02160f20150EbEA7a2b5E4879A1A8b" },
+    ],
+  },
 } as any;
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

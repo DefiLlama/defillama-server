@@ -8,10 +8,10 @@ import { formatChainKey, getDisplayChainNameCached, normalizeDimensionChainsMap 
 import { sluggifyString } from "../../utils/sluggify";
 import { errorResponse, successResponse } from "./utils";
 import { timeSToUnix, } from "../utils/time";
-import { getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
+import { fileNameNormalizer, getAllFileSubpathsSync, readRouteData } from "../cache/file-cache";
 
 const sluggifiedNormalizedChains: IJSON<string> = Object.keys(normalizeDimensionChainsMap).reduce((agg, chain) => ({ ...agg, [chain]: sluggifyString(chain.toLowerCase()) }), {})
-const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
+// const dimensionsFileSet = getAllFileSubpathsSync('dimensions')
 
 function formatChartData(data: any = {}) {
   return Object.entries(data)
@@ -215,9 +215,9 @@ export async function getOverviewFileRoute(req: HyperExpress.Request, res: Hyper
   const routeSubPath = `${adaptorType}/${dataType}${chainStr}${isLiteStr}`
   const routeFile = `dimensions/${routeSubPath}`
 
-  if (!dimensionsFileSet.has(routeSubPath)) {
-    return errorResponse(res, 'Data not found', { statusCode: 404 })
-  }
+  // if (!dimensionsFileSet.has(fileNameNormalizer(routeSubPath))) {
+  //   return errorResponse(res, 'Data not found', { statusCode: 404 })
+  // }
   const data = await readRouteData(routeFile)
 
   if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 })
@@ -239,9 +239,9 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
   const routeFile = `dimensions/${routeSubPath}`
   const errorMessage = `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
 
-  if (!dimensionsFileSet.has(routeSubPath)) {
-    return errorResponse(res, errorMessage, { statusCode: 404 })
-  }
+  // if (!dimensionsFileSet.has(fileNameNormalizer(routeSubPath))) {
+  //   return errorResponse(res, errorMessage, { statusCode: 404 })
+  // }
   const data = await readRouteData(routeFile)
   if (!data)
     return errorResponse(res, errorMessage)

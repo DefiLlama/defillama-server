@@ -134,6 +134,12 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Sei",
     "Juno",
     "Near",
+    "Story",
+    "Eclipse",
+    "Sonic",
+    "Berachain",
+    "Abstract",
+    "Hyperliquid"
   ],
   "Chainlink": [
     "Ethereum",
@@ -226,7 +232,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "BOB",
     "Hyperliquid",
     "BSquared",
-    "“Sonic”",
+    "Sonic",
     "Radix",
     "Reya Network",
     "zkLink Nova",
@@ -239,7 +245,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Polynomial"
   ],
   "UMA": ["Ethereum", "Polygon", "Boba", "OP Mainnet", "Arbitrum", "Gnosis", "Avalanche"],
-  "API3": [
+  "Api3": [
     "Arbitrum",
     "Avalanche",
     "Base",

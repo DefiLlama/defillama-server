@@ -368,7 +368,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
       if (options.isApi2CronProcess) {
         if (chain === "total") filename = "lite/charts-total";
 
-        await storeRouteData(filename, chainResponse);
+        await storeRouteData(filename, roundNumbersInObject(chainResponse));
       } else {
         const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
           [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
@@ -387,7 +387,7 @@ export async function storeGetCharts({ ...options }: any = {}) {
       let filename = `lite/charts/categories/${category}`;
 
       if (options.isApi2CronProcess) {
-        await storeRouteData(filename, chainResponse);
+        await storeRouteData(filename, roundNumbersInObject(chainResponse));
       } 
       else {
         const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
@@ -398,6 +398,19 @@ export async function storeGetCharts({ ...options }: any = {}) {
       }
     })
   );
+}
+
+function roundNumbersInObject(obj: any): any {
+  if (typeof obj === 'number') {
+    return Math.round(obj);
+  } else if (Array.isArray(obj)) {
+    return obj.map(roundNumbersInObject);
+  } else if (typeof obj === 'object' && obj !== null) {
+    return Object.fromEntries(
+      Object.entries(obj).map(([key, value]) => [key, roundNumbersInObject(value)])
+    );
+  }
+  return obj;
 }
 
 const handler = async (_event: any) => {

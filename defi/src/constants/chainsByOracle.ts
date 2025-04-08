@@ -244,7 +244,8 @@ const chainsByOracle: Record<string, Array<string>> = {
     "CORE",
     "Cronos zkEVM",
     "Kaia",
-    "Polynomial"
+    "Polynomial",
+    "Plume"
   ],
   "UMA": ["Ethereum", "Polygon", "Boba", "OP Mainnet", "Arbitrum", "Gnosis", "Avalanche"],
   "Api3": [
@@ -400,7 +401,7 @@ const chainsByOracle: Record<string, Array<string>> = {
   "Ojo Oracle": ["Archway", "Comdex", "Injective", "Juno", "Neutron", "Osmosis", "Secret", "Stargaze"],
   "Pragma": ["Starknet"],
   "Harbinger": ["Tezos"],
-  "SEDA": ["Aurora", "Evmos", "OP Mainnet"],
+  "SEDA": ["Aurora", "Evmos", "OP Mainnet", "Plume"],
   "Nest": ["Ethereum", "BSC", "Aurora", "KCC", "CLV", "Polygon"],
   "Chronicle": [
     "Ethereum",

@@ -7500,7 +7500,39 @@
       "symbol": "USDT"
     }
   },
-  "plume-mainnet": {
+  "plume": {
+    "0xd630fb6a07c9c723cf709d2daa9b63325d0e0b73": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "pETH"
+    },
+    "0xdddd73f5df1f0dc31373357beac77545dc5a6f3f": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "pUSD"
+    },
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0x3938A812c54304fEffD266C7E2E70B48F9475aD6": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    },
+    "0xA849026cDA282eeeBC3C39Afcbe87a69424F16B4": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    },
+    "0x626613B473F7eF65747967017C11225436EFaEd7": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    }
+  },
+  "plume_mainnet": {
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#plume",
       "decimals": 18,

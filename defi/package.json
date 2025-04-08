@@ -28,7 +28,7 @@
     "get-snapshot-ids": "npx ts-node --logError src/governance/getSnapshotIds.ts",
     "get-overview-local": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node --logError --transpile-only src/adaptors/cli/runGetOverview.ts",
     "interactive": "npx ts-node --logError --transpile-only src/cli/interactive.ts",
-    "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx --node-arg=--max-old-space-size=6144 ts-node --logError --transpile-only src/storeTvlTask.ts",
+    "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx --node-arg=--max-old-space-size=10144 ts-node --logError --transpile-only src/storeTvlTask.ts",
     "store-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError src/storeChainAssets.ts",
     "override-chain-assets": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError src/overrideChainAssets.ts",
     "store-chain-asset-historical-flows": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node --logError src/storeChainAssetFlows.ts",

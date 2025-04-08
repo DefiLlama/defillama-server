@@ -6951,7 +6951,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Sei"],
-    oracles: ["Pyth","Redstone","Api3"], 
+    oracles: ["Pyth"], 
     oraclesBreakdown: [
         {
          name: "Pyth",

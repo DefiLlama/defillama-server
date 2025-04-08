@@ -3014,5 +3014,11 @@ export default {
     },
     "hashkey": {
         id: "177" // chainId
+    },
+    "polynomial": {
+        id: "8008" // chainId
+    },
+    "veda": {
+        id: "5825"
     }
 } as AdaptorsConfig

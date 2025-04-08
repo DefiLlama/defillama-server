@@ -3375,7 +3375,8 @@ export const chainCoingeckoIds = {
       da: 'Ethereum',
     },
     twitter: "PolynomialFi",
-    url: "https://www.polynomial.fi/"
+    url: "https://www.polynomial.fi/",
+    chainId: 8008
   },
   "Electroneum": {
     geckoId: "electroneum",

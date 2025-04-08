@@ -10539,7 +10539,14 @@ const data4: Protocol[] = [
     module: "typus-perp/index.js",
     twitter: "TypusFinance",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
+    oraclesBreakdown: [
+      {
+        name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.typus.finance/typus-perps#nGTof"],
+      }
+    ],
     parentProtocol: "parent#typus-finance",
     listedAt: 1744133053
   },

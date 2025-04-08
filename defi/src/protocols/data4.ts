@@ -10520,5 +10520,28 @@ const data4: Protocol[] = [
     audit_links: ["https://movebit.xyz/reports/20241211-Moar-Market-Final-Audit-Report.pdf"],
     listedAt: 1744113622
   },
+  {
+    id: "6014",
+    name: "Typus Perp",
+    address: null,
+    symbol: "-",
+    url: "https://typus.finance/tlp/",
+    description:
+      "Typus Perp is a decentralized spot and perpetual exchange on Sui. Powered by the Typus Liquidity Pool (TLP) and Pyth oracle, it offers deep liquidity, high leverage, low fees, and fast execution",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/typus-perp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Sui"],
+    module: "typus-perp/index.js",
+    twitter: "TypusFinance",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#typus-finance",
+    listedAt: 1744133053
+  },
 ];
 export default data4;

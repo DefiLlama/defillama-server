@@ -59,6 +59,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Tron",
     "Sui",
     "ZKsync Era",
+    "Plume Mainnet",
   ],
   "Pyth": [
     "ApeChain",

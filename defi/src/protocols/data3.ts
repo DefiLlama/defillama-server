@@ -26665,7 +26665,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hatom-protocol",
     listedAt: 1701352413,
   },
-  {
+/*   { // not used anywhere
     id: "3866",
     name: "Rainbow Bridge",
     address: null,
@@ -26686,7 +26686,7 @@ const data3: Protocol[] = [
     module: "rainbow/index.js",
     twitter: "auroraisnear",
     listedAt: 1701356713,
-  },
+  }, */
   {
     id: "3867",
     name: "Ascent Exchange V1",

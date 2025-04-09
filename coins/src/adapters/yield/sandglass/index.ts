@@ -135,7 +135,7 @@ const marketInfos: MarketInfo[] = [
   {
     address: "DAsYPZgVAgFikzHU2R55RGPtmjJ4ia5zLSzCAyXHzznE",
     mintAddress: "A8uPGauLyDTw9dMjBpb9Vrgq7frbWX46XqX71paW4pri",
-    symbol: "CRT",
+    symbol: "tETH",
     unit: "ETH",
     decimals: 9,
     oracleDecimals: 0,

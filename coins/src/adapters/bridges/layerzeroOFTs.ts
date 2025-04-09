@@ -68,6 +68,7 @@ export const OFTs: { [symbol: string]: { [chain: string]: string[] } } = {
     Gravity: ["0xfbda5f676cb37624f28265a144a48b0d6e87d3b6"],
     "Rari Chain": ["0xfbda5f676cb37624f28265a144a48b0d6e87d3b6"],
     Degen: ["0xf1815bd50389c46847f0bda824ec8da914045d14"],
+    "Plume Mainnet": ["0x60219C44E146BAf36002eA73767820238Ebc1db6"]
   },
   MATIC: {
     Polygon: ["\\\\n"],
@@ -117,6 +118,7 @@ export const OFTs: { [symbol: string]: { [chain: string]: string[] } } = {
     Fantom: ["0xcc1b99ddac1a33c201a742a1851662e87bc7f22c"],
     Lightlink: ["0x808d7c71ad2ba3fa531b068a2417c63106bc0949"],
     Ink: ["0x1cb6de532588fca4a21b7209de7c456af8434a65"],
+    "Plume Mainnet": ["0xda6087E69C51E7D31b6DBAD276a3c44703DFdCAd"]
   },
   FTM: {
     Fantom: ["\\\\n"],

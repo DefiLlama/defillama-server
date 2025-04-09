@@ -415,7 +415,7 @@ async function getAndStoreHourly(
     `coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`,
     3,
   );
-  if (!Array.isArray(coinData.prices)) {
+  if (!Array.isArray(coinData.prices) || !coinData.prices.length) {
     console.error(
       `[scripts - getAndStoreHourly] Couldn't get data for ${coin.id}`,
     );

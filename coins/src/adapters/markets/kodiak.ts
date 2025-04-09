@@ -23,9 +23,9 @@ export async function kodiak(timestamp: number = 0): Promise<Write[]> {
     })
   ).flat();
 
-  let infoFilters = await api.multiCall({ abi: "function getUnderlyingBalances() view returns (uint256, uint256)", calls: islands, })
+  let infoFilters = await api.multiCall({ abi: "function getUnderlyingBalances() view returns (uint256, uint256)", calls: islands, permitFailure: true,})
   islands = islands.filter((_, i) => {
-    return !(infoFilters[i][0] === "0" && infoFilters[i][1] === "0");
+    return infoFilters[i] && !(infoFilters[i][0] === "0" && infoFilters[i][1] === "0");
   });
 
   const [token0s, token1s, balances, infos] = await Promise.all([

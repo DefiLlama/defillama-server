@@ -138,4 +138,5 @@ export default {
   sandglass: require("./yield/sandglass"),
   concentrator: require("./yield/concentrator"),
   liquidly: require("./yield/liquidly"),
+  cyclex: require("./rwa/cyclex"),
 };

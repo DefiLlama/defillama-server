@@ -342,6 +342,20 @@ const configs: { [adapter: string]: Config } = {
     address: "0x2B66AAdE1e9C062FF411bd47C44E0Ad696d43BD9",
     confidence: 1,
   },
+  JSTRY: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256 shares) external view returns (uint256)",
+        target: "0x36036fFd9B1C6966ab23209E073c68Eb9A992f50",
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0x8c213ee79581Ff4984583C6a801e5263418C4b86",
+    confidence: 1,
+  },
 };
 
 export async function derivs(timestamp: number) {

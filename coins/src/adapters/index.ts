@@ -133,7 +133,7 @@ export default {
   pac: require("./rwa/thepac"),
   tonDerivs: require("./other/ton"),
   asseto: require("./rwa/asseto"),
-  // radixUnkownToken: require("./markets/radix"),
+  lsulp: require("./markets/radix"),
   sandglass: require("./yield/sandglass"),
   concentrator: require("./yield/concentrator"),
   liquidly: require("./yield/liquidly"),

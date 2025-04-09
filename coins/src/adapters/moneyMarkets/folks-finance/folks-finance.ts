@@ -3,7 +3,7 @@ import { getApi } from "../../utils/sdk";
 import getWrites from "../../utils/getWrites";
 import getBlock from '../../utils/block';
 import { ChainApi } from '@defillama/sdk';
-import {formatUnits} from "ethers";
+import { formatUnits } from "ethers";
 
 export const oracleManager: string = '0x7218Bd1050D41A9ECfc517abdd294FB8116aEe81';
 export const loanManager: string = '0xF4c542518320F09943C35Db6773b2f9FeB2F847e';
@@ -40,15 +40,15 @@ export default async function getTokenPrice(chain: string, timestamp: number) {
     abi: 'function processPriceFeed(uint8 poolId) view returns (uint256 price, uint8 decimals)',
     block: block,
   });
-  let depositData = await api.multiCall({
+  let interestIndexes = await api.multiCall({
     calls: Object.values(pools).map(fTokenAddress => ({ target: fTokenAddress })),
-    abi: 'function getDepositData() view returns (uint16 optimalUtilisationRatio, uint256 totalAmount, uint256 interestRate, uint256 interestIndex)',
+    abi: 'function getUpdatedDepositInterestIndex() view returns (uint256 interestIndex)',
     block: block,
   });
   Object.values(pools).forEach((fTokenAddress, i) => {
     pricesObject[fTokenAddress] = {
       fTokenAddress,
-      price: parseFloat(formatUnits(BigInt(prices[i].price) * BigInt(depositData[i].interestIndex), 36)),
+      price: parseFloat(formatUnits(BigInt(prices[i].price) * BigInt(interestIndexes[i]), 36)),
     };
   });
 

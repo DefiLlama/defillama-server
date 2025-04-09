@@ -191,7 +191,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     let success = true
     let errorObject: any
     // Get adapter info
-    let { id, module, } = protocol;
+    let { id, id2, module, } = protocol;
     // console.info(`Adapter found ${id} ${module} ${versionKey}`)
 
     try {
@@ -240,8 +240,8 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         const isExpensiveAdapter = adaptor.isExpensiveAdapter
         // if it is an expensive adapter run every 4 hours or after 20:00 UTC
         const runNow = !isExpensiveAdapter || (hours % 4 === 0 || hours > 20)
-        const haveTodayData = todayIdSet.has(id)
-        const haveYesterdayData = yesterdayIdSet.has(id)
+        const haveTodayData = todayIdSet.has(id2)
+        const haveYesterdayData = yesterdayIdSet.has(id2)
         const yesterdayEndTimestamp = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000)) - 1
 
 
@@ -398,4 +398,3 @@ function printData(data: any, timestamp?: number, protocolName?: string) {
   }
   console.info('\n')
 }
-

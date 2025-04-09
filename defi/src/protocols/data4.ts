@@ -10678,5 +10678,29 @@ const data4: Protocol[] = [
     audit_links: [],
     listedAt: 1744213581
   },
+  {
+    id: "6020",
+    name: "Liquid Ron",
+    address: null,
+    symbol: "-",
+    assetToken: "LRON",
+    url: "https://www.liquidron.com/",
+    description: "Deposit RON, get Liquid RON, unlock your liquidity",
+    chain: "Ronin",
+    logo: `${baseIconsUrl}/liquid-ron.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ronin"],
+    forkedFrom: [],
+    oracles: [],
+    module: "liquid-ron/index.js",
+    twitter: "Ronin_Network",
+    audit_links: ["https://code4rena.com/reports/2025-01-liquid-ron"],
+    github: ["OwlOfMoistness"],
+    listedAt: 1744229587
+  },
 ];
 export default data4;

@@ -41790,7 +41790,7 @@ const data3: Protocol[] = [
     chains: ["CORE"],
     module: "colend/index.js",
     twitter: "colend_xyz",
-    oracles: ["Pyth"], //https://scan.coredao.org/address/0xc0AF4FC83EF00340293368cc3ABE089D2D85308f#code
+    oracles: ["Pyth", "Switchboard"], //https://scan.coredao.org/address/0xc0AF4FC83EF00340293368cc3ABE089D2D85308f#code
     forkedFrom: ["AAVE V3"],
     github: ["Colend-Protocol"],
     listedAt: 1713962936,

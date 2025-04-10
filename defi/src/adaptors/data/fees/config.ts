@@ -3023,5 +3023,26 @@ export default {
     },
     "felix": {
         id: "6015"
-    }
+    },
+    "zo": {
+        id: "6018"
+    },
+    "liquidloans-io": {
+        id: "4043"
+    },
+    "powercity-earn-protocols": {
+        id: "4376"
+    },
+    "powercity-flex-protocols": {
+        id: "4881"
+    },
+    "sable-finance": {
+        id: "3355"
+    },
+    "teddy-cash": {
+        id: "535"
+    },
+    "threshold-thusd": {
+        id: "4812"
+    },
 } as AdaptorsConfig

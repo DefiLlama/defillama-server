@@ -8351,7 +8351,6 @@ const data4: Protocol[] = [
     module: "tearex/index.js",
     audit_links: ["ttps://github.com/TeahouseFinance/Tea-REX/blob/master/audit.pdf"],
     twitter: "0xteaRex",
-    parentProtocol: "parent#teahouse-finance",
     listedAt: 1742416571
   },
   {

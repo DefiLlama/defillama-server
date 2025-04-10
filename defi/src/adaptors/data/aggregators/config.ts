@@ -318,5 +318,8 @@ export default {
   },
   "mosaic": {
     id: "5890"
-  }
+  },
+  "houdiniswap": {
+    id: "3041"
+  },
 } as AdaptorsConfig;

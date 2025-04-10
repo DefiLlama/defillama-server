@@ -295,6 +295,23 @@
       "to": "coingecko#usd-coin"
     }
   },
+  "cataclysm_1": {
+    "unibi": {
+      "decimals": "6",
+      "symbol": "NIBI",
+      "to": "coingecko#nibiru"
+    },
+    "0x0CaCF669f8446BeCA826913a3c6B96aCD4b02a97": {
+      "decimals": "18",
+      "symbol": "WNIBI",
+      "to": "coingecko#nibiru"
+    },
+    "0x08EBA8ff53c6ee5d37A90eD4b5239f2F85e7B291": {
+      "decimals": "18",
+      "symbol": "USDC.arb",
+      "to": "coingecko#usd-coin"
+    }
+  },
   "tron": {
     "tthzxnrlrw2brp9dctqu8i4wd9udcwedz3": {
       "decimals": "18",

@@ -10786,5 +10786,26 @@ const data4: Protocol[] = [
     github: ["Aegis-im"],
     listedAt: 1744284096
   },
+  {
+    id: "6025",
+    name: "Tardly",
+    address: "algorand:2614577662",
+    symbol: "ATARD",
+    url: "https://algotard.io",
+    description: "The Tardly No Loss Lottery is a yield lottery utilizing an on-chain verifiable random function to select a winner. Users stake ALGO into a pool that accumulates yield to a smart contract over an epoch. At the end of an epoch, the smart contract uses Algorand's Randomness Beacon to trustlessly select a winner of accumulated reward based on users' weighted stake. Users can withdraw their initial deposit at any time.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/tardly.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Lottery",
+    chains: ["Algorand"],
+    forkedFrom: [],
+    oracles: [],
+    module: "tardly/index.js",
+    twitter: "ALGOTARDIO69",
+    listedAt: 1744305284
+  },
 ];
 export default data4;

@@ -26665,7 +26665,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hatom-protocol",
     listedAt: 1701352413,
   },
-/*   { // not used anywhere
+   { 
     id: "3866",
     name: "Rainbow Bridge",
     address: null,
@@ -26673,20 +26673,20 @@ const data3: Protocol[] = [
     url: "https://rainbowbridge.app/transfer",
     description:
       "The Rainbow Bridge is the official bridge for transferring tokens between Ethereum, NEAR and the Aurora networks. The bridge is the product of Aurora, the Ethereum-compatible scaling solution built on NEAR.",
-    chain: "Aurora",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/rainbow-bridge.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Chain",
-    chains: ["Aurora", "Ethereum"],
+    chains: ["Near", "Ethereum"],
     oracles: [],
     forkedFrom: [],
     module: "rainbow/index.js",
     twitter: "auroraisnear",
-    listedAt: 1701356713,
-  }, */
+    listedAt: 1744262362,
+  }, 
   {
     id: "3867",
     name: "Ascent Exchange V1",
@@ -30794,14 +30794,15 @@ const data3: Protocol[] = [
   },
   {
     id: "4045",
-    name: "Sudo Finance",
+    name: "Sudo Perps",
+    // previousName: "Sudo Finance",
     address: "sui:0xc44d97a4bc4e5a33ca847b72b123172c88a6328196b71414f32c3070233604b2::slp::SLP",
     symbol: "SLP",
     url: "https://sudo.finance",
     description:
       "Sudo is the first perpetual dex on Sui that offers you sub-second and zero price impact trading experience on-chain.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/sudo-finance.png`,
+    logo: `${baseIconsUrl}/sudo-perps.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "slp",
@@ -30812,10 +30813,10 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "sudo-finance/index.js",
     twitter: "sudofinance",
-    github: ["sudofina"],
     audit_links: [
       "https://336728225-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FY9xZ4YEB8Gkv1YMYZ49T%2Fuploads%2FucoGPFTlQmzDYT2Ff0tQ%2FSudo%20Finance%20Audit%20Report%20(1).pdf?alt=media&token=2133b2a8-7188-47fd-9c09-7fb7ec0296f7"
     ],
+    parentProtocol: "parent#sudo-finance",
     listedAt: 1705662884,
   },
   {

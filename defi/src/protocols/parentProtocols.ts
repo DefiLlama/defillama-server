@@ -6892,6 +6892,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "StableJack_xyz",
     github: ["stable-jack"],
     stablecoins: ["stable-jack-ausd"],
+  },
+  {
+    id: "parent#sudo-finance",
+    name: "Sudo Finance",
+    url: "https://sudo.finance",
+    description: "Sudo is the first perpetual dex on Sui that offers you sub-second and zero price impact trading experience on-chain",
+    logo: `${baseIconsUrl}/sudo-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "sudofinance",
+    github: ["sudofina"],
   }
 ];
 

@@ -111,7 +111,18 @@ export default async function getTokenPrices(
     .map((l: any) => l.market)
     .filter((m: string) => !blacklist.includes(m.toLowerCase()));
 
-  if (chain == "arbitrum")
+  if (chain == "berachain")
+    unfilteredMarkets.push(
+      ...[
+        "0xd8079e0929d67390067529974b116212903cac69",
+        "0x0651c3f8ba59e312529d9a92fcebd8bb159cbaed",
+        "0xbfc42d9cb3358603e4804ac9ab54159fd5a85098",
+        "0x227d4a2e5734b500fa0bed940e4df54bdda25636",
+        "0x31ed9f16c7bbc26ae3404b14abc68adc7611b1a6",
+        "0xd8f42a92a0e2995eee9aed66d630de00a9b49e22",
+      ],
+    );
+  else if (chain == "arbitrum")
     unfilteredMarkets.push(
       ...[
         "0xe11f9786b06438456b044b3e21712228adcaa0d1",
@@ -123,7 +134,7 @@ export default async function getTokenPrices(
         "0xba4a858d664ddb052158168db04afa3cff5cfcc8",
       ],
     );
-  if (chain == "ethereum")
+  else if (chain == "ethereum")
     unfilteredMarkets.push(
       ...[
         "0x1729981345aa5cacdc19ea9eeffea90cf1c6e28b",
@@ -158,7 +169,7 @@ export default async function getTokenPrices(
         "0x792b9ede7a18c26b814f87eb5e0c8d26ad189780",
       ],
     );
-  if (chain == "bsc")
+  else if (chain == "bsc")
     unfilteredMarkets.push(
       ...[
         "0x9daa2878a8739e66e08e7ad35316c5143c0ea7c7",

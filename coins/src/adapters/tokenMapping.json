@@ -94,7 +94,7 @@
     },
     "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
       "decimals": "18",
-      "symbol": "SolvBTC.BBN",
+      "symbol": "xSolvBTC",
       "to": "coingecko#solv-protocol-solvbtc-bbn"
     },
     "0xC3827A4BC8224ee2D116637023b124CED6db6e90": {
@@ -861,7 +861,7 @@
     },
     "0x346c574C56e1A4aAa8dc88Cda8F7EB12b39947aB": {
       "decimals": "18",
-      "symbol": "SolvBTC.BBN",
+      "symbol": "xSolvBTC",
       "to": "coingecko#solv-btc"
     },
     "0xc96de26018a54d51c097160568752c4e3bd6c364": {
@@ -1150,7 +1150,7 @@
     },
     "0x346c574C56e1A4aAa8dc88Cda8F7EB12b39947aB": {
       "decimals": "18",
-      "symbol": "SolvBTC.BBN",
+      "symbol": "xSolvBTC",
       "to": "coingecko#solv-btc"
     },
     "0x7189fb5b6504bbff6a852b13b7b82a3c118fdc27": {
@@ -1490,7 +1490,7 @@
     "0xc26c9099bd3789107888c35bb41178079b282561": {
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
-      "symbol": "SolvBTC.BBN"
+      "symbol": "xSolvBTC"
     },
     "0x820c137fa70c8691f0e44dc420a5e53c168921dc": {
       "to": "coingecko#usds",
@@ -4639,7 +4639,7 @@
     },
     "0x1760900aCA15B90Fa2ECa70CE4b4EC441c2CF6c5": {
       "decimals": "18",
-      "symbol": "SolvBTC.BBN",
+      "symbol": "xSolvBTC",
       "to": "coingecko#solv-btc"
     }
   },
@@ -5005,7 +5005,7 @@
     "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
-      "symbol": "SolvBTC.BBN"
+      "symbol": "xSolvBTC"
     },
     "0x0555e30da8f98308edb960aa94c0db47230d2b9c": {
       "to": "coingecko#wrapped-bitcoin",
@@ -5355,7 +5355,7 @@
     "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
-      "symbol": "SolvBTC.BBN"
+      "symbol": "xSolvBTC"
     },
     "0x236f8c0a61dA474dB21B693fB2ea7AAB0c803894": {
       "to": "coingecko#universal-btc",
@@ -5590,7 +5590,7 @@
     "0xcc0966d8418d412c599a6421b760a847eb169a8c": {
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
-      "symbol": "SolvBTC.BBN"
+      "symbol": "xSolvBTC"
     },
     "0xf7fb2df9280eb0a76427dc3b34761db8b1441a49": {
       "to": "coingecko#merlin-s-seal-btc",
@@ -6934,7 +6934,7 @@
     "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
-      "symbol": "SolvBTC.BBN"
+      "symbol": "xSolvBTC"
     },
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc": {
       "decimals": "18",
@@ -7036,7 +7036,7 @@
     "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
-      "symbol": "SolvBTC.BBN"
+      "symbol": "xSolvBTC"
     },
     "0x040c10f8238e4689c5e549ef5e07478b738b2ba5": {
       "to": "coingecko#ignition-fbtc",
@@ -7399,7 +7399,7 @@
     "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
       "to": "coingecko#solv-protocol-solvbtc-bbn",
       "decimals": 18,
-      "symbol": "SolvBTC.BBN"
+      "symbol": "xSolvBTC"
     },
     "0xc67476893C166c537afd9bc6bc87b3f228b44337": {
       "to": "coingecko#neemo-staked-astar",

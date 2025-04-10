@@ -842,5 +842,8 @@ export default {
     },
     "goosefx_v2": {
         id: "5998"
-    }
+    },
+    "zo": {
+        id: "6018"
+    },
 } as AdaptorsConfig

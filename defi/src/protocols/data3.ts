@@ -48215,44 +48215,6 @@ const data3: Protocol[] = [
     listedAt: 1718906598,
   },
   {
-    id: "4799",
-    name: "Term Structure",
-    address: null,
-    symbol: "-",
-    url: "https://ts.finance/",
-    description:
-      "Term Structure is a non-custodial, fixed rate and maturity lending/borrowing protocol backed by customized Zk-Rollup with orders matched via auction",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/term-structure.png`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Lending",
-    chains: ["Ethereum"],
-    module: "term-structure/index.js",
-    twitter: "TermStructLabs",
-    forkedFrom: [],
-    oracles: ["Chainlink"], // https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation
-    oraclesBreakdown: [
-      {
-        name: "Chainlink",
-        type: "Primary",
-        proof: ["https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
-
-      },
-      {
-        name: "RedStone",
-        type: "Secondary",
-        proof: ["https://docs.ts.finance/protocol-spec/fixed-rate-borrowing-lending-prev-primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
-
-      }
-    ],
-    audit_links: ["https://github.com/term-structure/audits"],
-    github: ["term-structure"],
-    listedAt: 1718906602,
-  },
-  {
     id: "4800",
     name: "Allstake",
     address: null,

@@ -10808,5 +10808,26 @@ const data4: Protocol[] = [
     twitter: "ALGOTARDIO69",
     listedAt: 1744305284
   },
+  {
+    id: "6026",
+    name: "Cro.ag",
+    address: null,
+    symbol: "-",
+    url: "https://cro.ag/",
+    description: "Cro Protocol is a super aggregator in the Sui ecosystem that optimizes swap and yield paths, helping users discover the best investment opportunities",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/cro.ag.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Sui"],
+    forkedFrom: [],
+    oracles: [],
+    module: "dummy.js",
+    twitter: "cro_aggregator",
+    listedAt: 1744329003
+  },
 ];
 export default data4;

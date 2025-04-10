@@ -10804,6 +10804,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     module: "tardly/index.js",
+    treasury: "tardly-treasury.js",
     twitter: "ALGOTARDIO69",
     listedAt: 1744305284
   },

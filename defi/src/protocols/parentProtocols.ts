@@ -5948,15 +5948,15 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#astherus",
-    name: "Astherus",
-    url: "https://astherus.com",
+    name: "Aster",
+    url: "https://www.asterdex.com/en",
     description:
-      "Astherus is a liquidity hub for staked assets such as LSTs (liquid staking tokens) and LRTs (liquid restaking tokens), aiming to scale their utilization and boost user profitability.",
-    logo: `${baseIconsUrl}/astherus.jpg`,
+      "Aster is a decentralized perpetual exchange built for everyone. It offers MEV-free, one-click trading with up to 1001x leverage in Simple Mode, and full-featured, pro-grade tools in Pro Mode. Backed by YZi Labs, Aster is building the future of DeFi: fast, flexible, and community-first",
+    logo: `${baseIconsUrl}/aster.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "AstherusHub",
+    twitter: "Aster_DEX",
   },
   {
     id: "parent#zkswap-finance",
@@ -6892,6 +6892,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "StableJack_xyz",
     github: ["stable-jack"],
     stablecoins: ["stable-jack-ausd"],
+  },
+  {
+    id: "parent#sudo-finance",
+    name: "Sudo Finance",
+    url: "https://sudo.finance",
+    description: "Sudo is the first perpetual dex on Sui that offers you sub-second and zero price impact trading experience on-chain",
+    logo: `${baseIconsUrl}/sudo-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "sudofinance",
+    github: ["sudofina","zofinance"],
   }
 ];
 

@@ -7403,7 +7403,12 @@
       "to": "coingecko#wrapped-stastr",
       "decimals": 18,
       "symbol": "wstASTR"
-    }	
+    },
+    "0xAffEb8576b927050f5a3B6fbA43F360D2883A118": {
+      "to": "coingecko#solv-protocol-solvbtc-jupiter",
+      "decimals": 18,
+      "symbol": "SOLVBTC.JUP"
+    }		
   },
   "odyssey": {
     "0x0000000000000000000000000000000000000000": {

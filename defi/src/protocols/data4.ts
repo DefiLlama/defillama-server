@@ -10739,7 +10739,7 @@ const data4: Protocol[] = [
     chains: ["Sonic"],
     forkedFrom: [],
     oracles: [],
-    module: "TradeOgre/index.js",
+    module: "mainstreet/index.js",
     twitter: "Main_StFinance",
     listedAt: 1744280825
   },

@@ -322,4 +322,7 @@ export default {
   "houdiniswap": {
     id: "3041"
   },
+  "cro-ag": {
+    id: "6026"
+  },
 } as AdaptorsConfig;

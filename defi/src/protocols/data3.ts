@@ -7854,7 +7854,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "houdini-swap",
     cmcId: "23396",
-    category: "Dexs",
+    category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "houdiniswap/index.js",
     twitter: "HoudiniSwap",

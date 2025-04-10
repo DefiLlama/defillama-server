@@ -9885,7 +9885,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Cross Chain Bridge",
+    category: "Bridge",
     chains: ["Ethereum", "Binance", "Arbitrum"],
     oracles: [],
     forkedFrom: [],

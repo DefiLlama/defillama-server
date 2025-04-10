@@ -6903,7 +6903,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "sudofinance",
-    github: ["sudofina"],
+    github: ["sudofina","zofinance"],
   }
 ];
 

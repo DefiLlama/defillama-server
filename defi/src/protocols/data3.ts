@@ -4174,7 +4174,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["zkSync Era"],
-    oracles: ["Chainlink"], // https://docs.reactorfusion.xyz/protocol/oracles for token prices, checks staleness and is crucial for liquidations. 
+    oracles: ["Chainlink"], // https://docs.reactorfusion.xyz/protocol/oracles for token prices, checks staleness and is crucial for liquidations.
     forkedFrom: ["Compound V2"],
     module: "reactorfusion/index.js",
     twitter: "ReactorFusionR",
@@ -14805,7 +14805,7 @@ const data3: Protocol[] = [
     module: "fx-Protocol/index.js",
     twitter: "protocol_fx",
     forkedFrom: [],
-    oracles: ["Chainlink"], // https://fxprotocol.gitbook.io/fx-docs/risk-management/oracle/ Applies for both assets stETH and WBTC to calculate the Anchor price. Used for rebalancing, minting, redeeming and staleness checks. 
+    oracles: ["Chainlink"], // https://fxprotocol.gitbook.io/fx-docs/risk-management/oracle/ Applies for both assets stETH and WBTC to calculate the Anchor price. Used for rebalancing, minting, redeeming and staleness checks.
     audit_links: [
       "https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/SECBIT_f(x)_V2_Report_v1.4_20250107.pdf"
     ],
@@ -36177,10 +36177,15 @@ const data3: Protocol[] = [
     chains: ["Sui"],
     module: "suilend/index.js",
     twitter: "suilendprotocol",
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Switchboard"],
     oraclesBreakdown: [
       {
         name: "Pyth",
+        type: "Primary",
+        proof: ["https://docs.suilend.fi/security/risks"]
+      },
+      {
+        name: "Switchboard",
         type: "Primary",
         proof: ["https://docs.suilend.fi/security/risks"]
       }

@@ -295,7 +295,7 @@
       "to": "coingecko#usd-coin"
     }
   },
-  "nibiru_evm": {
+  "cataclysm_1": {
     "unibi": {
       "decimals": "6",
       "symbol": "NIBI",

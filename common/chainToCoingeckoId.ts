@@ -143,7 +143,6 @@ export const chainToCoingeckoId = {
   planq: "planq-network",
   bsquared: "bsquared-network",
   nibiru: "nibiru",
-  cataclysm_1: "nibiru",
   hyperliquid: "hyperliquid",
   ancient8: "ancient8",
   degen: "degen",

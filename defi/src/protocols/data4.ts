@@ -7632,18 +7632,20 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://mosaic.ag",
     description:
-      "Mosaic is the ultimate DEX aggregator on Movement, delivering unparalleled trading efficiency, seamless liquidity, and tools to maximize your every move.",
+      "Mosaic is a DEX aggregator and AMM-based DEX built on Movement, designed to give users the best possible swap outcomes across the ecosystem. By combining smart routing with native liquidity, Mosaic ensures optimized trades, deeper markets, and a smoother DeFi experience—all from a single interface.",
     chain: "Movement",
     logo: `${baseIconsUrl}/mosaic.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["Movement"],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "mosaic/index.js",
     twitter: "mosaicagg",
+    audit_links: ["https://github.com/MosaicAG/mosaic-audits"],
+    listedAt: 1744384037
   },
   {
     id: "5891",

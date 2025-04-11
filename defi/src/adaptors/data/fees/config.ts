@@ -3045,4 +3045,7 @@ export default {
     "threshold-thusd": {
         id: "4812"
     },
+    "jellyverse": {
+        id: "4772"
+    },
 } as AdaptorsConfig

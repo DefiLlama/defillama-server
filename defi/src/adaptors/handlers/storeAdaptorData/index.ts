@@ -189,6 +189,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
     }
 
     let success = true
+    let refillYesterdayPromise = undefined
     let errorObject: any
     // Get adapter info
     let { id, id2, module, } = protocol;
@@ -253,7 +254,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
           if (!runAtCurrTime && !haveYesterdayData) {
             console.info(`Refill ${adapterType} - ${protocol.module} - missing yesterday data, attempting to refill`)
             try {
-              await handler2({
+              refillYesterdayPromise = handler2({
                 timestamp: yesterdayEndTimestamp,
                 adapterType,
                 protocolNames: new Set([protocol.displayName]),
@@ -295,9 +296,14 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       const adaptorRecords: {
         [key: string]: AdaptorRecord
       } = {}
+
+      let noDataReturned = true  // flag to track if any data was returned from the adapter, idea is this would be empty if we run for a timestamp before the adapter's start date
+
+
       for (const [version, adapter] of adaptersToRun) { // the version is the key for the record (like uni v2) not the version of the adapter
         const chainBlocks = {} // WARNING: reset chain blocks for each adapter, sharing this between v1 & v2 adapters that have different end timestamps have nasty side effects
         const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
+        if (noDataReturned) noDataReturned = runAdapterRes.length === 0
 
         const recordWithTimestamp = runAdapterRes.find((r: any) => r.timestamp)
         if (recordWithTimestamp) {
@@ -314,6 +320,13 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
         }
         processFulfilledPromises(runAdapterRes, rawRecords, version, KEYS_TO_STORE)
       }
+
+
+      if (noDataReturned && isRunFromRefillScript) {
+        console.info(`[${new Date(endTimestamp*1000).toISOString().slice(0, 10)}] No data returned for ${adapterType} - ${module} - skipping`)
+        return;
+      }
+
       const storedData: any = {}
       const adaptorRecordTypeByValue: any = Object.fromEntries(Object.entries(AdaptorRecordType).map(([key, value]) => [value, key]))
       for (const [recordType, record] of Object.entries(rawRecords)) {
@@ -331,6 +344,9 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
       await Promise.all(promises)
       if (process.env.runLocal === 'true' || isRunFromRefillScript)
         printData(storedData, recordTimestamp, protocol.module)
+
+      if (refillYesterdayPromise) 
+        await refillYesterdayPromise
     }
     catch (error) {
       try { (error as any).module = module } catch (e) { }

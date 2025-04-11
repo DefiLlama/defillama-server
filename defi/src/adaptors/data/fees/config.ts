@@ -3053,4 +3053,13 @@ export default {
             }
         }
     },
+    "usual": {
+        id: "4882"
+    },
+    "ondo": {
+        id: "2542"
+    },
+    "traderjoe-lb-v2-2": {
+        id: "4794"
+    },
 } as AdaptorsConfig

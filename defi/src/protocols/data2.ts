@@ -9934,7 +9934,7 @@ const data2: Protocol[] = [
       {
         name: "Supra",
         type: "Aggregator",
-        proof: ["https://discord.com/channels/978894592579620864/978901360479191040/1357973763198554386"],
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9651"],
         chains: [
           {chain: "Sui"},
         ]
@@ -9942,7 +9942,7 @@ const data2: Protocol[] = [
       {
         name: "Pyth",
         type: "Aggregator",
-        proof: ["https://discord.com/channels/978894592579620864/978901360479191040/1357973763198554386"],
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9651"],
         chains: [
           {chain: "Sui"},
           {chain: "Aptos"},

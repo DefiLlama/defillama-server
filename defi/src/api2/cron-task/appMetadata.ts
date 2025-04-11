@@ -897,17 +897,17 @@ async function _storeAppMetadata() {
 
       const similarProtocolsSet = new Set()
 
-      const protocolsWithCommonChains = [...similarProtocols].sort((a, b) => b.commonChains - a.commonChains).slice(0, 5)
+      const protocolsWithCommonChains = [...similarProtocols].sort((a, b) => b.commonChains - a.commonChains).slice(0, 10)
 
       // first 5 are the protocols that are on same chain + same category
       protocolsWithCommonChains.forEach((p) => similarProtocolsSet.add(p.name))
 
       // last 5 are the protocols in same category
-      similarProtocols.forEach((p: any) => {
-        if (similarProtocolsSet.size < 10) {
-          similarProtocolsSet.add(p.name)
-        }
-      })
+      // similarProtocols.forEach((p: any) => {
+      //   if (similarProtocolsSet.size < 10) {
+      //     similarProtocolsSet.add(p.name)
+      //   }
+      // })
 
 
 

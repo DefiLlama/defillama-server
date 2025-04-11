@@ -6904,6 +6904,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "sudofinance",
     github: ["sudofina","zofinance"],
+  },
+  {
+    id: "parent#interest-labs",
+    name: "Interest Labs",
+    url: "https://www.interestlabs.io",
+    description: "Shaping the future of DeFi with state-of-the-art Web3 solutions. Driving the growth of Move-based ecosystems",
+    logo: `${baseIconsUrl}/interest-labs.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "IPXLabs",
+    github: ["interest-protocol"],
   }
 ];
 

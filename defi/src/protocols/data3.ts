@@ -7275,11 +7275,12 @@ const data3: Protocol[] = [
     category: "Dexs",
     chains: ["Sui"],
     module: "interest-protocol/index.js",
-    twitter: "interest_dinero",
+    twitter: "IPXLabs",
     oracles: ["Pyth"], // https://twitter.com/interest_dinero/status/1756237453910835644
     audit_links: [
       "https://github.com/interest-protocol/sui-defi/blob/main/audits/Interest%20Protocol%20DEX%20Smart%20Contract%20Audit%20Report.pdf",
     ],
+    parentProtocol: "parent#interest-labs",
     listedAt: 1684902341,
   },
   {

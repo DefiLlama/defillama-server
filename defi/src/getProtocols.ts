@@ -96,7 +96,9 @@ const stablecoins = [
   "avUSDT",
   "aOptUSDC",
   "sUSDe",
-  "USDY"
+  "USDY",
+  "coingecko:tether",
+  "coingecko:usd-coin"
 ].map((t) => t.toUpperCase());
 
 function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownTokens: { [token: string]: number } }) {

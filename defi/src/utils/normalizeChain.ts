@@ -4106,6 +4106,15 @@ export const chainCoingeckoIds = {
     twitter: "perenniallabs",
     url: "https://perennial.finance/",
     chainId: 1424
+  },
+  "Peaq": {
+    geckoId: "peaq-2",
+    symbol: "PEAQ",
+    cmcId: "14588",
+    categories: ["EVM"],
+    twitter: "peaq",
+    url: "https://www.peaq.xyz/",
+    chainId: 3338
   }, 
 } as unknown as ChainCoinGekcoIds
 

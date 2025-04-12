@@ -4041,13 +4041,13 @@ export const chainCoingeckoIds = {
     chainId: 177
   }, 
   "Mind Network": { // added for the bridge dashboard, because of the slug of the chain
-    geckoId: null,
-    symbol: null,
+    geckoId: "mind-network",
+    symbol: "FHE",
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "Ethereum",
-      types: ["L2"]
+      chain: "arbitrum",
+      types: ["L3"]
     },
     chainId: 228,
     twitter: "mindnetwork_xyz",

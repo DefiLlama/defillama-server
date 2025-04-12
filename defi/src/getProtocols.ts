@@ -114,7 +114,7 @@ function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownT
   }
 
   for (const token in lastRecord.tvl) {
-    const normalizedToken = cgSymbols[token] ?? token
+    const normalizedToken = cgSymbols[token.replace("coingecko:", "")] ?? token
     if (majors.includes(normalizedToken)) {
       breakdown.majors = breakdown.majors + lastRecord.tvl[token];
     } else if (stablecoins.some((stable) => normalizedToken.includes(stable))) {

@@ -2945,4 +2945,7 @@ export default {
     "kyo-fi-v3": {
         id: "5622"
     },
+    "kongswap": {
+        id: "5528"
+    }
 } as AdaptorsConfig

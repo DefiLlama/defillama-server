@@ -3062,7 +3062,7 @@ export default {
     "traderjoe-lb-v2-2": {
         id: "4794"
     },
-    "kongswaop": {
+    "kongswap": {
         id: "5528"
     },
 } as AdaptorsConfig

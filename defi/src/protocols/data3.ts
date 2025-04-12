@@ -21705,7 +21705,19 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Ethereum"],
-    oracles: ["Pyth"],
+    oracles: ["Stork", "Pyth"],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Aggregator",
+      proof: ["https://docs.paradex.trade/documentation/risk-system/mark-price-calculation"],
+      },
+      {
+      name: "Pyth",
+      type: "Aggregator",
+      proof: ["https://docs.paradex.trade/documentation/risk-system/mark-price-calculation"],
+      }
+    ],
     forkedFrom: [],
     module: "paradex/index.js",
     twitter: "tradeparadex",

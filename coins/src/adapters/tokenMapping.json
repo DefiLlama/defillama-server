@@ -8163,5 +8163,12 @@
       "decimals": 6,
       "symbol": "USDT"
     }
+  },
+  "polkadot": {
+    "coingecko#tether": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
+    }
   }
 }

@@ -2565,7 +2565,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#throne",
     name: "Throne",
-    url: "hhttps://throne.exchange",
+    url: "https://throne.exchange",
     description:
       "A Majestic Native DEX Reigning over the Base Ecosystem. Fortified by the Community, Empowered by V3 Protocol.",
     logo: `${baseIconsUrl}/throne.jpg`,

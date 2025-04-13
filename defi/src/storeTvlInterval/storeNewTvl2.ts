@@ -132,6 +132,7 @@ export default async function (
         })
       })
       if (tvlFromMissingTokens > lastHourlyTVL * 0.25) {
+        console.log(`TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). It's been disabled. Current tvl: ${currentTvl}, previous tvl: ${lastHourlyTVL}, tvl from missing tokens: ${tvlFromMissingTokens}`)
         const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). It's been disabled.`
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
         throw new Error(

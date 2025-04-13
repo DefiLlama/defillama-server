@@ -3077,4 +3077,7 @@ export default {
     "tsunami-fi": {
         id: "2979"
     },
+    "kinetix-v1": {
+        id: "3465"
+    },
 } as AdaptorsConfig

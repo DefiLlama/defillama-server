@@ -10206,7 +10206,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "goosefx-v2/index.js",
     twitter: "GooseFX1",
     forkedFrom: [],
     oracles: [],

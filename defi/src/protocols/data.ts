@@ -12871,14 +12871,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "696",
-    name: "Agave (Deprecated)",
+    name: "Agave",
     address: "xdai:0x3a97704a1b25f08aa230ae53b352e2e72ef52843",
     symbol: "AGVE",
     url: "https://agave.finance",
     description:
       "Agave rewards depositors with passive income and lets them use their deposits as collateral to borrow and lend digital assets. Forked from Aave.",
     chain: "xDai",
-    logo: `${baseIconsUrl}/agave-(deprecated).jpg`,
+    logo: `${baseIconsUrl}/agave.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "agave-token",
@@ -12890,6 +12890,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["AAVE V2"],
     listedAt: 1634918843,
     governanceID: ["snapshot:agavedao.eth"],
+    deprecated: true
   },
   {
     id: "697",

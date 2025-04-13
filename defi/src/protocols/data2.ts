@@ -16454,13 +16454,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2086",
-    name: "Rage Trade v1 (Deprecated)", // previous Rage Trade, is a deprecated product now
+    name: "Rage Trade v1", // previous Rage Trade, is a deprecated product now
     address: null,
     symbol: "-",
     url: "https://www.rage.trade/",
     description: "The most liquid, composable, and omnichain ETH perp.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/rage-trade-v1-(deprecated).png`, //rage-trade-v1-(deprecated).png
+    logo: `${baseIconsUrl}/rage-trade-v1.png`, //rage-trade-v1-(deprecated).png
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -16478,6 +16478,7 @@ const data2: Protocol[] = [
       "https://docs.google.com/document/d/1joxRpf1D-KoACf7h1xnB72YkPYKxd27oDX-9axTbIQw/edit#heading=h.mnockoickb7e", //Insurance
     ],
     listedAt: 1663144131,
+    deprecated: true
   },
   {
     id: "2087",

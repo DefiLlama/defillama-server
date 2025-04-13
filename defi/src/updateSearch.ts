@@ -38,7 +38,8 @@ async function generateSearchList() {
         symbol: p.symbol,
         tvl: p.tvl,
         logo: `https://icons.llamao.fi/icons/protocols/${standardizeProtocolName(p.name)}?w=48&h=48`,
-        route: `/protocol/${standardizeProtocolName(p.name)}`
+        route: `/protocol/${standardizeProtocolName(p.name)}`,
+        ...(p.deprecated ? {deprecated: true} : {})
     }) as any).concat(protocols.parentProtocols.map(parent=>({
         id: normalize(parent.id.replace("#", "_")),
         name: parent.name,

@@ -175,6 +175,7 @@ export async function storeGetProtocols({
       mcap: protocol.mcap,
       gecko_id: protocol.gecko_id,
       parent: protocol.parentProtocol,
+      ...(protocol.deprecated ? {deprecated: true} : {})
     }))
     .concat(extendedParentProtocols);
 

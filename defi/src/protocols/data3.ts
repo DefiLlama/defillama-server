@@ -8287,13 +8287,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3061",
-    name: "SynFutures V2 (Deprecated)", // sunset
+    name: "SynFutures V2", // sunset
     address: null,
     symbol: "-",
     url: "https://trade.synfutures.com/#/trade",
     description: "SynFutures is a permissionless web3 infrastructure for derivatives",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/synfutures-v2-(deprecated).jpg`,
+    logo: `${baseIconsUrl}/synfutures-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -8307,6 +8307,7 @@ const data3: Protocol[] = [
     audit_links: ["https://www.synfutures.com/PeckShield-Audit-Report-SynFuturesV2-v1.0.pdf"],
     parentProtocol: "parent#synfutures",
     listedAt: 1685750365,
+    deprecated: true
   },
   {
     id: "3062",
@@ -16785,14 +16786,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3432",
-    name: "Vooi V1 (Deprecated)", //previous Vooi, deprecated product
+    name: "Vooi V1", //previous Vooi, deprecated product
     address: null,
     symbol: "-",
     url: "https://vooi.io",
     description:
       "Experience seamless stablecoin swaps on your favorite L2 networks. Discover better yields with single-token staking.",
     chain: "Linea",
-    logo: `${baseIconsUrl}/vooi-v1-(deprecated).jpg`,
+    logo: `${baseIconsUrl}/vooi-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -16804,6 +16805,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1692719840,
+    deprecated: true
   },
   {
     id: "3433",

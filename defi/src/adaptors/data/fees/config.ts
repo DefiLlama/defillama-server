@@ -3065,4 +3065,16 @@ export default {
     "kongswap": {
         id: "5528"
     },
+    "alpacafinance-gmx": {
+        id: "2658"
+    },
+    "phame-protocol": {
+        id: "3569"
+    },
+    "sobax-io": {
+        id: "4143"
+    },
+    "tsunami-fi": {
+        id: "2979"
+    },
 } as AdaptorsConfig

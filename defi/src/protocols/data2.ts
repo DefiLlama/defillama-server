@@ -18511,6 +18511,7 @@ const data2: Protocol[] = [
   {
     id: "2175",
     name: "GooseFX V1",
+    deprecated: true,
     address: "solana:GFX1ZjR2P15tmrSwow6FjyDYcEkoFb4p4gJCpLBjaxHD",
     symbol: "GOFX",
     url: "https://app.goosefx.io",

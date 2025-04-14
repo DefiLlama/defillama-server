@@ -3080,4 +3080,10 @@ export default {
     "kinetix-v1": {
         id: "3465"
     },
+    "axiom": {
+        id: "6049"
+    },
+    "mellow-lrt": {
+        id: "4756"
+    },
 } as AdaptorsConfig

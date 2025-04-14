@@ -22184,6 +22184,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "amnis-finance/index.js",
+    treasury: "amnis.finance.js",
     twitter: "AmnisFinance",
     audit_links: [
       "https://2003663820-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FS1BuIoYSwiJZqNrZeQzd%2Fuploads%2FnvGzDkVyQvLbQs5vmIFW%2FAmnis%20Finance%20Audit%20Report.pdf?alt=media&token=a5a0d5e2-597f-4e24-a920-7535ed9cd667",

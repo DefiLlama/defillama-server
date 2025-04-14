@@ -50154,7 +50154,7 @@ const data3: Protocol[] = [
     category: "RWA",
     chains: ["Ethereum"],
     module: "usual/index.js",
-    //treasury: "usual.js", remove this. its the same as the tvl
+    treasury: "usual.js", //its fixed now
     twitter: "usualmoney",
     oraclesByChain: {
       ethereum: ["Chainlink"], // https://tech.usual.money/smart-contracts/utility-contracts/chainlink-oracles

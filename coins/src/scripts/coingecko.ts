@@ -174,16 +174,16 @@ async function getSymbolAndDecimals(
     } catch (e) {
       return;
     }
-  } else if (chain == "hyperliquid") {
-    await cacheHyperliquidTokens();
-    const token = ((await hyperliquidTokens).tokens as any[]).find(
-      (t) => t.tokenId === tokenAddress,
-    );
-    if (!token) return;
-    return {
-      decimals: token.weiDecimals,
-      symbol: token.name,
-    };
+    // } else if (chain == "hyperliquid") {
+    //   await cacheHyperliquidTokens();
+    //   const token = ((await hyperliquidTokens).tokens as any[]).find(
+    //     (t) => t.tokenId === tokenAddress,
+    //   );
+    //   if (!token) return;
+    //   return {
+    //     decimals: token.weiDecimals,
+    //     symbol: token.name,
+    //   };
   } else if (chain == "aptos") {
     const res = await fetch(
       `${process.env.APTOS_RPC}/v1/accounts/${tokenAddress.substring(

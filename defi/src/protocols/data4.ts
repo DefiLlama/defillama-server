@@ -10164,6 +10164,9 @@ const data4: Protocol[] = [
     ],
     oracles: [],
     parentProtocol: "parent#jito",
+    tokensExcludedFromParent: {
+      Solana: ["JITOSOL"],    
+    },
     listedAt: 1743787467,
   },
   {

@@ -367,13 +367,14 @@ const data3: Protocol[] = [
     module: "boneriumtech/index.js",
     twitter: "Bonerscan",
     listedAt: 1679526967,
+    deadUrl: true,
   },
   {
     id: "2715",
     name: "OnyxDAO",
     address: "arbitrum:0xb7cd6c8c4600aed9985d2c0eb174e0bee56e8854",
     symbol: "ONYX",
-    url: "https://www.onyxdao.finance/",
+    url: "https://app.onyx.org/#/stake",
     description: "Farms to earn $ONYX",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/onyxdao.png`,
@@ -912,6 +913,7 @@ const data3: Protocol[] = [
     module: "kafidao/index.js",
     twitter: null,
     listedAt: 1680009928,
+    deadUrl: true,
   },
   {
     id: "2739",
@@ -1047,6 +1049,7 @@ const data3: Protocol[] = [
     audit_links: [],
     twitter: null,
     listedAt: 1680130701,
+    deadUrl: true,
   },
   {
     id: "2745",
@@ -1230,6 +1233,7 @@ const data3: Protocol[] = [
     twitter: "OnchainTrade",
     audit_links: ["https://onchaintrade.gitbook.io/ot/audit-reports"],
     listedAt: 1680201542,
+    deadUrl: true,
   },
   {
     id: "2753",
@@ -1727,6 +1731,7 @@ const data3: Protocol[] = [
     twitter: "twtstake",
     audit_links: ["https://skynet.certik.com/projects/twt-stake"],
     listedAt: 1680730891,
+    deadUrl: true,
   },
   /*{
     id: "2775",
@@ -1943,6 +1948,7 @@ const data3: Protocol[] = [
     module: "ysmart/index.js",
     twitter: "YsmartFinance",
     listedAt: 1680811354,
+    deadUrl: true,
   },
   {
     id: "2785",
@@ -2106,6 +2112,7 @@ const data3: Protocol[] = [
     module: "trainswap/index.js",
     twitter: "trainswap0",
     listedAt: 1680918802,
+    deadUrl: true,
   },
   {
     id: "2792",
@@ -2150,6 +2157,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1680973653,
+    deadUrl: true,
   },
   {
     id: "2794",
@@ -2171,6 +2179,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1680973947,
+    deadUrl: true,
   },
   {
     id: "2795",
@@ -2220,6 +2229,7 @@ const data3: Protocol[] = [
     twitter: "Zksminer",
     listedAt: 1681001887,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "2797",
@@ -2266,6 +2276,7 @@ const data3: Protocol[] = [
     twitter: "future_swap",
     listedAt: 1681122435,
     github: ["futureswap"],
+    deadUrl: true,
   },
   {
     id: "2799",
@@ -2310,6 +2321,7 @@ const data3: Protocol[] = [
     module: "beekava/index.js",
     twitter: null,
     listedAt: 1681133587,
+    deadUrl: true,
   },
   {
     id: "2801",
@@ -2332,6 +2344,7 @@ const data3: Protocol[] = [
     twitter: "SpoonExchange",
     audit_links: ["https://docs.spoon.exchange/resources-and-security/audit"],
     listedAt: 1681133589,
+    deadUrl: true,
   },
   {
     id: "2802",
@@ -2448,6 +2461,7 @@ const data3: Protocol[] = [
     module: "AstroFi/index.js",
     twitter: "Astrofiorg",
     listedAt: 1681212811,
+    deadUrl: true,
   },
   {
     id: "2807",

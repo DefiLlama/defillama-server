@@ -29407,6 +29407,7 @@ const data2: Protocol[] = [
     ],
     parentProtocol: "parent#ruby.exchange",
     listedAt: 1678200473,
+    deadUrl: true,
   },
   {
     id: "2640",
@@ -29432,6 +29433,7 @@ const data2: Protocol[] = [
     ],
     parentProtocol: "parent#ruby.exchange",
     listedAt: 1678200478,
+    deadUrl: true,
   },
   {
     id: "2641",

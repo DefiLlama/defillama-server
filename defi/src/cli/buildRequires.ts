@@ -72,7 +72,15 @@ for (const folderPath of importPaths) {
         `
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
 export default {
-${paths_keys.map(path => createDimensionAdaptersModule(path, folderPath)).join('\n')}
+${paths_keys.map(path => {
+  try {
+    const response = createDimensionAdaptersModule(path, folderPath)
+    return response
+  } catch (error) {
+    console.log(`Error creating module for ${path} in ${folderPath}:`, error)
+    return ''
+  }
+}).join('\n')}
 } as {[key:string]: {
     module: { default: Adapter },
     codePath: string

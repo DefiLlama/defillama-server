@@ -177,7 +177,7 @@ export const chainToCoingeckoId = {
   occ: "edu-chain",
   wc: "world-chain",
   soneium: "soneium",
-  hyper_evm: "hyperevm",
+  Hyperliquid: "hyperevm",
 };
 
 export default chainToCoingeckoId;

@@ -70,7 +70,7 @@ export async function storeGetProtocols({
           defillamaId: protocol.id,
           governanceID: protocol.governanceID,
           geckoId: protocol.gecko_id,
-        ...(protocol.deprecated ? {deprecared: protocol.deprecated} : {})
+        ...(protocol.deprecated ? {deprecated: protocol.deprecated} : {})
         };
       })
     )

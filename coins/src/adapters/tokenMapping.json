@@ -1278,6 +1278,16 @@
     }
   },
   "goat": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "WBTC",
+      "to": "coingecko#bitcoin"
+    },
+    "0x1E0d0303a8c4aD428953f5ACB1477dB42bb838cf": {
+      "decimals": "18",
+      "symbol": "DOGEB",
+      "to": "coingecko#dogecoin"
+    },
     "0xE1AD845D93853fff44990aE0DcecD8575293681e": {
       "decimals": "6",
       "symbol": "USDT",

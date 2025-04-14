@@ -11138,5 +11138,27 @@ const data4: Protocol[] = [
     audit_links: ["https://celo.org/audits"],
     twitter: "Celo",
   },
+  {
+    id: "6042",
+    name: "Lighter V2",
+    address: null,
+    symbol: "-",
+    url: "https://lighter.xyz/",
+    description: "Experience the next generation of trading with Lighter, where every operation is cryptographically proven to be fair and correct.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lighter-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum", "Arbitrum"],
+    forkedFrom: [],
+    oracles: [],
+    module: "lighter-v2/index.js",
+    twitter: "Lighter_xyz",
+    parentProtocol: "parent#lighter",
+    listedAt: 1744624979
+  },
 ];
 export default data4;

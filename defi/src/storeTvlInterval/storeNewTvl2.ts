@@ -33,7 +33,9 @@ export default async function (
   storePreviousData: boolean,
   usdTokenBalances: tvlsObject<TokensValueLocked>,
   overwriteExistingData = false,
+  extraOptions: any = {},
 ) {
+  const { debugData } = extraOptions
   const hourlyPK = hourlyTvl(protocol.id);
   const currentTvl = calculateTVLWithAllExtraSections(tvl)
 
@@ -82,6 +84,10 @@ export default async function (
       })
 
       await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+      await sendMessage(`
+        ${errorMessage}
+        debug data: ${JSON.stringify(debugData)}
+        `, process.env.OUTDATED_WEBHOOK!)
       throw new Error(errorMessage)
     }
     if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0) {

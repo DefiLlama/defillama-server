@@ -279,7 +279,9 @@ export async function storeTvl(
   }
   try {
     if (!process.env.DRY_RUN) {
-      await storeNewTvl2(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances, overwriteExistingData ); // Checks circuit breakers
+      await storeNewTvl2(protocol, unixTimestamp, usdTvls, storePreviousData, usdTokenBalances, overwriteExistingData, {
+        debugData: { tokensBalances, usdTokenBalances, rawTokenBalances, usdTvls },
+      } ); // Checks circuit breakers
 
       const options = { protocol, unixTimestamp, storePreviousData, overwriteExistingData, }
       const storeTokensAction = storeNewTokensValueLocked({

@@ -11294,5 +11294,25 @@ const data4: Protocol[] = [
     github: ["datamine-crypto"],
     listedAt: 1744638390
   },
+  {
+    id: "6049",
+    name: "Axiom",
+    address: null,
+    symbol: "-",
+    url: "https://axiom.trade/",
+    description: "A decentralized trading platform designed to offer a comprehensive suite of tools for on-chain trading",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/axiom.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Solana"],
+    forkedFrom: [],
+    oracles: [],
+    module: "dummy.js",
+    twitter: "AxiomExchange",
+  },
 ];
 export default data4;

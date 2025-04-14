@@ -1434,6 +1434,7 @@ const data3: Protocol[] = [
     twitter: "Hector_Network",
     parentProtocol: "parent#hector-network",
     listedAt: 1680514599,
+    deadUrl: true
   },
   {
     id: "2762",
@@ -55590,7 +55591,7 @@ const data3: Protocol[] = [
     name: "Mango Markets V4 AMM",
     address: "solana:MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac",
     symbol: "MNGO",
-    url: "https://mango.markets",
+    url: "https://mango-v4-ui.vercel.app/",
     description: "A magical new way to interact with DeFi. Groundbreaking safety features designed to keep your funds secure. The easiest way to margin trade any token pair. All powered by flashloans.",
     chain: "Solana",
     logo: `${baseIconsUrl}/mango-markets-v4-amm.jpg`,
@@ -55604,7 +55605,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "mangomarkets",
-    parentProtocol: "parent#mango-markets"
+    parentProtocol: "parent#mango-markets",
+    deadUrl: true,
   },
   {
     id: "5123",

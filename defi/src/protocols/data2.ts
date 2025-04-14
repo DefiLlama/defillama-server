@@ -182,6 +182,7 @@ const data2: Protocol[] = [
     twitter: "solunaDAO",
     listedAt: 1644516018,
     github: ["soluna-protocol"],
+    deadUrl: true,
   },
   {
     id: "1387",
@@ -917,6 +918,7 @@ const data2: Protocol[] = [
     twitter: "defi_waterfall",
     parentProtocol: "parent#waterfall-finance",
     listedAt: 1644970013,
+    deadUrl: true,
   },
   {
     id: "1418",
@@ -2838,6 +2840,7 @@ const data2: Protocol[] = [
     audit_links: ["https://paladinsec.co/projects/waterfall-finance/"],
     parentProtocol: "parent#waterfall-finance",
     listedAt: 1646308732,
+    deadUrl: true,
   },
   {
     id: "1500",
@@ -3684,6 +3687,7 @@ const data2: Protocol[] = [
     audit_links: ["https://paladinsec.co/projects/waterfall-finance/"],
     parentProtocol: "parent#waterfall-finance",
     listedAt: 1646960602,
+    deadUrl: true,
   },
   {
     id: "1537",
@@ -16590,6 +16594,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algofi.pdf"],
     parentProtocol: "parent#algofi",
     listedAt: 1663197511,
+    deadUrl: true,
   },
   {
     id: "2092",
@@ -24447,6 +24452,7 @@ const data2: Protocol[] = [
     ],
     parentProtocol: "parent#waterfall-finance",
     listedAt: 1673572003,
+    deadUrl: true,
   },
   {
     id: "2431",
@@ -30606,6 +30612,7 @@ const data2: Protocol[] = [
     twitter: "defi_waterfall",
     parentProtocol: "parent#waterfall-finance",
     listedAt: 1679394807,
+    deadUrl: true,
   },
   {
     id: "2700",

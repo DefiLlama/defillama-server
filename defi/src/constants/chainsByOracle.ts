@@ -113,7 +113,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Unichain",
     "Volmex",
     "XLayer",
-    "Zetachain,
+    "Zetachain",
     "Solana",
     "Aptos",
   ],

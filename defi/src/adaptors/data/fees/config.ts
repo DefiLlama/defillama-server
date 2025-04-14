@@ -3086,4 +3086,7 @@ export default {
     "mellow-lrt": {
         id: "4756"
     },
+    "liquid-ron": {
+        id: "6020"
+    },
 } as AdaptorsConfig

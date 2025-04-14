@@ -35,6 +35,13 @@ export default async function (
   overwriteExistingData = false,
 ) {
   const hourlyPK = hourlyTvl(protocol.id);
+  const currentTvl = calculateTVLWithAllExtraSections(tvl)
+
+  if (currentTvl < 0) {
+    const errorMessage = `TVL for ${protocol.name} is negative TVL(${currentTvl}), fix the adapter.`
+    await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+    throw new Error(errorMessage);
+  }
 
   const [
     lastHourlyTVLObject,
@@ -65,7 +72,6 @@ export default async function (
 
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
-    const currentTvl = calculateTVLWithAllExtraSections(tvl)
     if (currentTvl > 200e9) {
       let errorMessage = `TVL of ${protocol.name} is over 200bn`
       Object.values(usdTokenBalances).forEach(tokenBalances => {

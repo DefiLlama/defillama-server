@@ -6762,7 +6762,13 @@
       "decimals": "18",
       "symbol": "USDa",
       "to": "coingecko#usda-2"
+    },
+    "0x950e7FB62398C3CcaBaBc0e3e0de3137fb0daCd2": {
+      "decimals": "10",
+      "symbol": "mphBTC",
+      "to": "asset#bsquared:0x796e4d53067ff374b89b2ac101ce0c1f72ccaac2"
     }
+
   },
   "iotex": {
     "0x236f8c0a61da474db21b693fb2ea7aab0c803894": {

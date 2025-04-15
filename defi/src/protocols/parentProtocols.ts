@@ -6929,6 +6929,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MoonwellDeFi",
     governanceID: ["snapshot:moonwell-governance.eth"],
     github: ["moonwell-fi"],
+  },
+  {
+    id: "parent#hypurfi",
+    name: "HypurrFi",
+    url: "https://hypurr.fi",
+    description: "Collateralize borrowing positions and loop and lever up your yield",
+    logo: `${baseIconsUrl}/hypurrfi.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "hypurrfi",
+    github: ["lastdotnet"],
   }
 
 ];

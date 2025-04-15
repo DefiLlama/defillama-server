@@ -11328,7 +11328,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Onchain Capital Allocator",
-    chains: ["Base", "Arbitrum"],
+    chains: ["Base", "Optimism"],
     forkedFrom: [],
     oracles: [],
     module: "moonwell-vaults/index.js",

@@ -139,7 +139,7 @@ const chainsByOracle: Record<string, Array<string>> = {
     "Sonic",
     "Berachain",
     "Abstract",
-    "Hyperliquid"
+    "Hyperliquid L1"
   ],
   "Chainlink": [
     "Ethereum",

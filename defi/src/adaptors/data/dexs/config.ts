@@ -2947,5 +2947,8 @@ export default {
     },
     "kongswap": {
         id: "5528"
-    }
+    },
+    "elys-dex": {
+        id: "5544"
+    },
 } as AdaptorsConfig

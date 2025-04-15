@@ -17,7 +17,7 @@
   /* background-color: #f0f0f0; */
   border-radius: 4px;
   padding: 16px;
-  max-height: 1600px;
+  max-height: 60vh;
   overflow-y: auto;
   font-family: 'Courier New', Courier, monospace;
 }

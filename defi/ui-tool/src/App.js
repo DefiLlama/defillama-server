@@ -3,9 +3,11 @@ import {
   ConfigProvider, theme, Layout, Form, Select, DatePicker, InputNumber, Switch,
   Button, Typography, Divider,
   Splitter,
-  Tabs
+  Tabs,
+  Table,
+  Flex
 } from 'antd';
-import { PlayCircleOutlined, ClearOutlined } from '@ant-design/icons';
+import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined } from '@ant-design/icons';
 
 import './App.css';
 
@@ -15,22 +17,27 @@ const { Option } = Select;
 const { defaultAlgorithm, darkAlgorithm } = theme;
 
 const App = () => {
-  const [form] = Form.useForm();
+
   const [output, setOutput] = useState('');
   const [isConnected, setIsConnected] = useState(false);
-  const [loading, setLoading] = useState(false);
   const wsRef = useRef(null);
   const outputRef = useRef(null);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
-  const [protocols, setProtocols] = useState([]);
-  const [adapterTypes, setAdapterTypes] = useState([]);
   const [formOptions, setFormOptions] = useState({
     dimensionFormChoices: {
       adapterTypes: ['fees'],
       adapterTypeChoices: { fees: [] },
     }
   });
+
+
+  const [dimensionRefillForm] = Form.useForm();
+  const [adapterTypes, setAdapterTypes] = useState([]);
+  const [dimensionRefillProtocols, setDimensionRefillProtocols] = useState([]);
+  const [dimRefillWaitingRecords, setDimRefillWaitingRecords] = useState([]);
+  const [waitingRecordsShowChainColumns, setWaitingRecordsShowChainColumns] = useState(false);
+  const [waitingRecordsDeletableIds, setWaitingRecordsDeletableIds] = useState([]);
 
   // WebSocket connection
   useEffect(() => {
@@ -51,63 +58,32 @@ const App = () => {
       const data = JSON.parse(event.data);
       switch (data.type) {
         case 'init':
-          console.log('WebSocket initialized', data);
+          console.log('WebSocket initialized');
           setFormOptions(data.data);
           setAdapterTypes(data.data.dimensionFormChoices.adapterTypes);
-          setProtocols(data.data.dimensionFormChoices.adapterTypeChoices['fees'] ?? [])
           break;
         case 'output':
         case 'error':
-          console.log('WebSocket output', data);
-          setOutput((prev) => prev + data.content);
+          if (data.type === 'error') data.content = `Error: ${data.content}`;
+          setOutput((prev) => prev + '\n' + data.content);
           if (outputRef.current) {
             outputRef.current.scrollTop = outputRef.current.scrollHeight;
           }
           break;
+        case 'waiting-records':
+          console.log('Waiting for records', data);
+          setDimRefillWaitingRecords(data.data);
+          break;
+        default:
+          console.log('Unknown message type', data);
+          break;
       }
-
-      /* if (data.type === 'output') {
-        setOutput((prev) => prev + data.content);
-        if (outputRef.current) {
-          outputRef.current.scrollTop = outputRef.current.scrollHeight;
-        }
-      } else if (data.type === 'protocols') {
-        setProtocols(data.protocols);
-      } else if (data.type === 'done') {
-        setLoading(false);
-      } */
     };
 
     return () => {
       ws.close();
     };
   }, []);
-
-  // Handle adapter type change
-  const handleAdapterTypeChange = (value) => {
-    setProtocols(formOptions.dimensionFormChoices.adapterTypeChoices[value]);
-  };
-
-  // Handle form submission
-  const handleSubmit = (values) => {
-    setLoading(true);
-    setOutput('');
-
-    const payload = {
-      type: 'runCommand',
-      adapterType: values.adapterType,
-      protocol: values.protocol,
-      dateFrom: values.dateFrom ? Math.floor(values.dateFrom.valueOf() / 1000) : undefined,
-      dateTo: values.dateTo ? Math.floor(values.dateTo.valueOf() / 1000) : undefined,
-      onlyMissing: values.onlyMissing || false,
-      parallelCount: values.parallelCount || 3,
-      dryRun: values.dryRun || false
-    };
-
-    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
-      wsRef.current.send(JSON.stringify(payload));
-    }
-  };
 
   const clearOutput = () => {
     setOutput('');
@@ -120,6 +96,8 @@ const App = () => {
       <Layout className='layout'>
         <Button
           type="text"
+          shape='round'
+          icon={< MoonOutlined />}
           onClick={() => setIsDarkMode(!isDarkMode)}
           style={{ display: 'flex', alignSelf: 'flex-end', maxWidth: 100, margin: 10 }}
         > {isDarkMode ? 'Light Mode' : 'Dark Mode'}  </Button>
@@ -139,6 +117,8 @@ const App = () => {
               />
             </Splitter.Panel>
             <Splitter.Panel>
+              {getWaitingRecordsTable()}
+
               <Divider>Output</Divider>
               <div
                 ref={outputRef}
@@ -154,13 +134,43 @@ const App = () => {
   );
 
   function getDimensionsRefillForm() {
+
+
+    // Handle adapter type change
+    const handleAdapterTypeChange = (value) => {
+      setDimensionRefillProtocols(formOptions.dimensionFormChoices.adapterTypeChoices[value]);
+    };
+
+    // Handle form submission
+    const handleSubmit = (values) => {
+      setOutput('');
+      console.log('Form values:', values);
+
+      const payload = {
+        type: 'dimensions-refill-runCommand',
+        data: {
+          adapterType: values.adapterType,
+          protocol: values.protocol,
+          dateFrom: Math.floor(values.dateRange[0].valueOf() / 1000),
+          dateTo: Math.floor(values.dateRange[1].valueOf() / 1000),
+          onlyMissing: values.onlyMissing || false,
+          parallelCount: values.parallelCount || 1,
+          dryRun: values.dryRun || false,
+          checkBeforeInsert: values.checkBeforeInsert || false,
+        }
+      };
+
+      if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+        wsRef.current.send(JSON.stringify(payload));
+      }
+    };
+
     return (<Form
-      form={form}
+      form={dimensionRefillForm}
       layout="vertical"
       onFinish={handleSubmit}
       initialValues={{
-        adapterType: adapterTypes[0],
-        parallelCount: 3,
+        parallelCount: 1,
         onlyMissing: false,
         dryRun: false
       }}
@@ -191,7 +201,7 @@ const App = () => {
             option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
           }
         >
-          {protocols.map(protocol => (
+          {dimensionRefillProtocols.map(protocol => (
             <Option key={protocol} value={protocol}>{protocol}</Option>
           ))}
         </Select>
@@ -205,42 +215,22 @@ const App = () => {
         <Switch checkedChildren="Yes" unCheckedChildren="No" />
       </Form.Item>
 
-      <Form.Item
-        label="Date From"
-        name="dateFrom"
-        dependencies={["onlyMissing"]}
-        disabled={form.getFieldValue('onlyMissing')}
-        rules={[
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (getFieldValue('onlyMissing') || value) {
-                return Promise.resolve();
-              }
-              return Promise.reject(new Error('Please select start date'));
-            },
-          }),
-        ]}
-      >
-        <DatePicker />
-      </Form.Item>
 
       <Form.Item
-        label="Date To"
-        name="dateTo"
-        dependencies={["onlyMissing"]}
-        disabled={form.getFieldValue('onlyMissing')}
+        label="Date Range"
+        name="dateRange"
         rules={[
           ({ getFieldValue }) => ({
             validator(_, value) {
-              if (getFieldValue('onlyMissing') || value) {
+              if (getFieldValue('onlyMissing') || (value && value.length === 2)) {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error('Please select end date'));
+              return Promise.reject(new Error('Please select a valid date range'));
             },
           }),
         ]}
       >
-        <DatePicker />
+        <DatePicker.RangePicker />
       </Form.Item>
 
       <Form.Item
@@ -255,6 +245,14 @@ const App = () => {
       <Form.Item
         label="Dry Run"
         name="dryRun"
+        valuePropName="checked"
+      >
+        <Switch checkedChildren="Yes" unCheckedChildren="No" />
+      </Form.Item>
+
+      <Form.Item
+        label="Check before inserting data"
+        name="checkBeforeInsert"
         valuePropName="checked"
       >
         <Switch checkedChildren="Yes" unCheckedChildren="No" />
@@ -280,6 +278,98 @@ const App = () => {
         {!isConnected && <Text type="danger" style={{ marginLeft: 10 }}>WebSocket disconnected</Text>}
       </Form.Item>
     </Form>)
+  }
+
+  function getWaitingRecordsTable() {
+    if (!dimRefillWaitingRecords?.length) return null;
+
+    const colSet = new Set(['id', 'adapterType'])
+    const stringColSet = new Set(['id', 'adapterType', 'protocolName', 'timeS'])
+    const columns = []
+    dimRefillWaitingRecords.forEach(record => {
+      Object.keys(record).forEach(key => {
+        if (colSet.has(key)) return;
+        if (!waitingRecordsShowChainColumns && key.includes('_')) return;
+        if (key.startsWith('_')) return;
+        const column = { title: key, dataIndex: key, key, }
+        if (stringColSet.has(key))
+          column.sorter = (a, b) => a[key].localeCompare(b[key]);
+        else
+          column.sorter = (a, b) => a['_'+key] - b['_'+key];
+        columns.push(column);
+        colSet.add(key);
+      });
+    });
+
+    return (
+      <div>
+        <div style={{ marginBottom: 10 }}>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '30px' }}>
+            <Button type="primary" icon={<SaveOutlined />}
+              onClick={() => {
+                const payload = {
+                  type: 'dimensions-refill-save-all',
+                  data: [],
+                };
+
+                wsRef.current.send(JSON.stringify(payload));
+                setWaitingRecordsDeletableIds([]);
+              }}
+
+            > Store everything in DB </Button>
+
+
+
+
+            <Button
+              type="default"
+              icon={<ClearOutlined />}
+              disabled={waitingRecordsDeletableIds.length === 0}
+              danger
+              onClick={() => {
+                if (waitingRecordsDeletableIds.length === 0) {
+                  return;
+                }
+                const payload = {
+                  type: 'dimensions-refill-deleteRecords',
+                  data: waitingRecordsDeletableIds,
+                };
+
+                wsRef.current.send(JSON.stringify(payload));
+                setWaitingRecordsDeletableIds([]);
+              }}
+            >
+              Delete Selected
+            </Button>
+
+
+
+
+            <Switch
+              checked={waitingRecordsShowChainColumns}
+              onChange={(checked) => setWaitingRecordsShowChainColumns(checked)}
+              unCheckedChildren="Show chain info"
+              checkedChildren="Hide chain info"
+            />
+          </div>
+        </div>
+
+
+        <Table
+          columns={columns}
+          dataSource={dimRefillWaitingRecords}
+          pagination={{ pageSize: 50 }}
+          rowKey={(record) => record.id}
+          rowSelection={{
+            type: 'checkbox',
+            onChange: (selectedRowKeys) => {
+              setWaitingRecordsDeletableIds(selectedRowKeys);
+            },
+          }}
+        />
+      </div >
+    );
   }
 };
 

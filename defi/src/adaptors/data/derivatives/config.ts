@@ -846,4 +846,10 @@ export default {
     "zo": {
         id: "6018"
     },
+    "d8x": {
+        id: "3924"
+    },
+    "elfi": {
+        id: "5160"
+    },
 } as AdaptorsConfig

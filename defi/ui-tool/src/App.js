@@ -5,7 +5,6 @@ import {
   Splitter,
   Tabs,
   Table,
-  Flex
 } from 'antd';
 import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined } from '@ant-design/icons';
 
@@ -71,7 +70,6 @@ const App = () => {
           }
           break;
         case 'waiting-records':
-          console.log('Waiting for records', data);
           setDimRefillWaitingRecords(data.data);
           break;
         default:
@@ -119,12 +117,12 @@ const App = () => {
             <Splitter.Panel>
               {getWaitingRecordsTable()}
 
-              <Divider>Output</Divider>
+             { output && ( <Divider>Console Output</Divider>)}
               <div
                 ref={outputRef}
                 className="output-container"
               >
-                <pre>{output || "No output yet. Run a command to see results here."}</pre>
+                <pre>{output || ""}</pre>
               </div>
             </Splitter.Panel>
           </Splitter>
@@ -263,7 +261,6 @@ const App = () => {
           type="primary"
           htmlType="submit"
           icon={<PlayCircleOutlined />}
-          // loading={loading}
           disabled={!isConnected}
         >
           Run

@@ -17,8 +17,9 @@ console.log('WebSocket server running on port 8080');
 
 
 // Start the React app
-// const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-// spawn(npmPath, ['run', 'start'], { cwd: __dirname });
+console.log('Opening tool on the browser... (click here if it does not open automatically: http://localhost:5001)');
+const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+spawn(npmPath, ['run', 'start'], { cwd: __dirname });
 
 const originalConsoleLog = console.log
 const originalConsoleError = console.error

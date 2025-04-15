@@ -1,7 +1,5 @@
 
-import path from "path";
 import loadAdaptorsData from "../../src/adaptors/data"
-import * as childProcess from "child_process";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { getAllDimensionsRecordsTimeS } from "../../src/adaptors/db-utils/db2";
 import { getTimestampString } from "../../src/api2/utils";

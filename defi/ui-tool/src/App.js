@@ -117,7 +117,7 @@ const App = () => {
             <Splitter.Panel>
               {getWaitingRecordsTable()}
 
-             { output && ( <Divider>Console Output</Divider>)}
+              {output && (<Divider>Console Output</Divider>)}
               <div
                 ref={outputRef}
                 className="output-container"
@@ -152,9 +152,11 @@ const App = () => {
           dateFrom: Math.floor(values.dateRange[0].valueOf() / 1000),
           dateTo: Math.floor(values.dateRange[1].valueOf() / 1000),
           onlyMissing: values.onlyMissing || false,
-          parallelCount: values.parallelCount || 1,
-          dryRun: values.dryRun || false,
-          checkBeforeInsert: values.checkBeforeInsert || false,
+          parallelCount: values.parallelCount,
+          // dryRun: values.dryRun || false,
+          // checkBeforeInsert: values.checkBeforeInsert || false,
+          dryRun: false,
+          checkBeforeInsert: true,
         }
       };
 
@@ -168,7 +170,7 @@ const App = () => {
       layout="vertical"
       onFinish={handleSubmit}
       initialValues={{
-        parallelCount: 1,
+        parallelCount: 3,
         onlyMissing: false,
         dryRun: false
       }}
@@ -235,12 +237,11 @@ const App = () => {
         label="Parallel Count"
         name="parallelCount"
         rules={[{ required: true, message: 'Please enter parallel count' }]}
-        defaultValue={1}
       >
         <InputNumber min={1} max={100} />
       </Form.Item>
 
-      <Form.Item
+      {/*       <Form.Item
         label="Dry Run"
         name="dryRun"
         valuePropName="checked"
@@ -254,7 +255,7 @@ const App = () => {
         valuePropName="checked"
       >
         <Switch checkedChildren="Yes" unCheckedChildren="No" />
-      </Form.Item>
+      </Form.Item> */}
 
       <Form.Item>
         <Button
@@ -292,7 +293,7 @@ const App = () => {
         if (stringColSet.has(key))
           column.sorter = (a, b) => a[key].localeCompare(b[key]);
         else
-          column.sorter = (a, b) => a['_'+key] - b['_'+key];
+          column.sorter = (a, b) => a['_' + key] - b['_' + key];
         columns.push(column);
         colSet.add(key);
       });

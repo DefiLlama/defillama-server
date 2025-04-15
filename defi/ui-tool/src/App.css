@@ -1,0 +1,28 @@
+.layout {
+  min-height: 100vh;
+}
+
+.content {
+  padding: 24px;
+  max-width: 500px;
+  margin: 24px auto;
+  border-radius: 8px;
+}
+
+.footer {
+  text-align: center;
+}
+
+.output-container {
+  /* background-color: #f0f0f0; */
+  border-radius: 4px;
+  padding: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.output-container pre {
+  margin: 0;
+  white-space: pre-wrap;
+}

@@ -5,7 +5,6 @@ import { Adapter, AdapterType } from "@defillama/dimension-adapters/adapters/typ
 import loadAdaptorsData from "../../data"
 import { handler2, IStoreAdaptorDataHandlerEvent } from "."
 import readline from 'readline';
-import sleep from '../../../utils/shared/sleep';
 import { getAllDimensionsRecordsTimeS } from '../../db-utils/db2';
 import { getTimestampString } from '../../../api2/utils';
 import { ADAPTER_TYPES } from '../triggerStoreAdaptorData';
@@ -51,7 +50,6 @@ if (refillAllProtocolsMissing)
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 async function refillAdapter() {
-  await sleep(2000)
 
   console.log('\n\n\n\n\n')
   console.log('------------------------------------')

@@ -28487,7 +28487,14 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Farm",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["RedStone"],
+    oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.desyn.io/mechanism/product-introduction/desyns-contracts-overview#id-18-oracle"]
+      },
+    ],
     forkedFrom: [],
     module: "desyn-farm/index.js",
     twitter: "DesynLab",

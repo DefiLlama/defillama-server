@@ -6916,7 +6916,21 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "IPXLabs",
     github: ["interest-protocol"],
+  },
+  {
+    id: "parent#moonwell",
+    name: "Moonwell",
+    url: "https://moonwell.fi",
+    description: "Moonwell is an open lending and borrowing protocol on Optimism, Base, Moonbeam, and Moonriver. Moonwell`s intuitive interface simplifies the lending experience for everyone, from newcomers to crypto experts.",
+    logo: `${baseIconsUrl}/moonwell.jpg`,
+    gecko_id: "moonwell-artemis",
+    cmcId: "20734",
+    chains: [],
+    twitter: "MoonwellDeFi",
+    governanceID: ["snapshot:moonwell-governance.eth"],
+    github: ["moonwell-fi"],
   }
+
 ];
 
 export default parentProtocols;

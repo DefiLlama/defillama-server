@@ -11314,5 +11314,27 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "AxiomExchange",
   },
+  {
+    id: "6050",
+    name: "Moonwell Vaults",
+    address: "base:0xa88594d404727625a9437c3f886c7643872296ae",
+    symbol: "WELL",
+    url: "https://moonwell.fi/vaults",
+    description: "Moonwell is an open lending and borrowing protocol on Optimism, Base, Moonbeam, and Moonriver. Moonwell`s intuitive interface simplifies the lending experience for everyone, from newcomers to crypto experts.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/moonwell-vaults.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Base", "Arbitrum"],
+    forkedFrom: [],
+    oracles: [],
+    module: "moonwell-vaults/index.js",
+    twitter: "MoonwellDeFi",
+    parentProtocol: "parent#moonwell",
+    listedAt: 1744712150
+  },
 ];
 export default data4;

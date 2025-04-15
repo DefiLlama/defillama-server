@@ -2951,4 +2951,7 @@ export default {
     "elys-dex": {
         id: "5544"
     },
+    "razordex": {
+        id: "6054"
+    }
 } as AdaptorsConfig

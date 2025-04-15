@@ -3089,4 +3089,7 @@ export default {
     "liquid-ron": {
         id: "6020"
     },
+    "razordex": {
+        id: "6054"
+    }
 } as AdaptorsConfig

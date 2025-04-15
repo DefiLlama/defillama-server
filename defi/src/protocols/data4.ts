@@ -11414,5 +11414,26 @@ const data4: Protocol[] = [
     parentProtocol: "parent#hypurfi",
     listedAt: 1744734037
   },
+  {
+    id: "6054",
+    name: "Razor DEX",
+    address: null,
+    symbol: "-",
+    url: "https://app.razordex.xyz/",
+    description: `A decentralized exchange on Movement powered by RazorDAO`,
+    chain: "Movement",
+    logo: `${baseIconsUrl}/razor-dex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Movement"],
+    forkedFrom: [],
+    oracles: [],
+    module: "dummy.js",
+    twitter: "RazorDex_",
+    audit_links: [],
+  },
 ];
 export default data4;

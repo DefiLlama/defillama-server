@@ -2410,6 +2410,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://starbase-hub.gitbook.io/guides/trust-and-safety/how-secure-is-starbase"],
+    deadUrl: true,
   },
   {
     id: "5662",

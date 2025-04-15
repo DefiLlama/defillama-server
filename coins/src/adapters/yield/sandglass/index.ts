@@ -80,7 +80,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "BSrrKn29jrEbag3QRyH7qy4pcMZ9mXEp9Sqfs9iW5fmK",
-    mintAddress: "3Kwsdqgxp5c6yQQLVU3L6LC9LWThwvPr1urwc9UhqH2P",
+    mintAddress: "89dkr9ZhU3TGNzMKF7WbbuNBaqaGEgjtWsE33Vi3RBxY",
     symbol: "cPYUSD",
     decimals: 6,
     unit: "USDC",

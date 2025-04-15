@@ -1583,7 +1583,7 @@ const data3: Protocol[] = [
     name: "LSDx Farm",
     address: "0xfAC77A24E52B463bA9857d6b758ba41aE20e31FF",
     symbol: "LSD",
-    url: "https://www.lsdx.finance",
+    url: "https://www.lsdx.xyz/",
     description: "LSDx is an ultra-liquid protocol for all LSD. MasterChef",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lsdx-farm.jpg`,
@@ -2626,6 +2626,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/spearbit/portfolio/blob/master/pdfs/CronFinance-Spearbit-Security-Review.pdf"],
     twitter: "cronfinance",
     listedAt: 1681240568,
+    deadUrl: true,
   },
   {
     id: "2814",
@@ -2673,6 +2674,7 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1681262189,
     github: ["holdr-fi"],
+    deadUrl: true,
   },
   {
     id: "2816",
@@ -2795,6 +2797,7 @@ const data3: Protocol[] = [
     twitter: "ArbiTenFinance",
     audit_links: ["https://etherauthority.io/10mb-finance-smart-contract-audit"],
     listedAt: 1681382692,
+    deadUrl: true,
   },
   {
     id: "2821",
@@ -3038,6 +3041,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/BrokkrFinance/public-audits/tree/main/audits"],
     twitter: "BrokkrFinance",
     listedAt: 1681514979,
+    deadUrl: true,
   },
   {
     id: "2831",
@@ -3437,6 +3441,7 @@ const data3: Protocol[] = [
     module: "solisnek/index.js",
     twitter: "solisnekfi",
     listedAt: 1681644926,
+    deadUrl: true,
   },
   {
     id: "2847",
@@ -3590,6 +3595,7 @@ const data3: Protocol[] = [
     module: "eoswap/index.js",
     twitter: "EoswapFinance",
     listedAt: 1681749460,
+    deadUrl: true,
   },
   {
     id: "2854",
@@ -3612,6 +3618,7 @@ const data3: Protocol[] = [
     twitter: null,
     listedAt: 1681749462,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "2855",
@@ -3678,6 +3685,7 @@ const data3: Protocol[] = [
     module: "frogge-fi/index.js",
     twitter: null,
     listedAt: 1681767845,
+    deadUrl: true,
   },
   {
     id: "2858",
@@ -3973,6 +3981,7 @@ const data3: Protocol[] = [
     module: "jlswap/index.js",
     twitter: "JLSwap0001",
     listedAt: 1682105777,
+    deadUrl: true,
   },
   {
     id: "2871",
@@ -4015,6 +4024,7 @@ const data3: Protocol[] = [
     module: "printy/index.js",
     twitter: "printyfinance",
     listedAt: 1682200817,
+    deadUrl: true,
   },
   {
     id: "2873",
@@ -4083,6 +4093,7 @@ const data3: Protocol[] = [
     module: "privcash/index.js",
     twitter: "PrivCash_",
     listedAt: 1682274918,
+    deadUrl: true,
   },
   {
     id: "2876",
@@ -4150,6 +4161,7 @@ const data3: Protocol[] = [
     twitter: "Avatr_LSD",
     listedAt: 1682275843,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "2879",
@@ -4172,6 +4184,7 @@ const data3: Protocol[] = [
     module: "usesugarswap/index.js",
     twitter: "UseSugarSwap",
     listedAt: 1682275846,
+    deadUrl: true,
   },
   {
     id: "2880",
@@ -4283,6 +4296,7 @@ const data3: Protocol[] = [
     twitter: "Zolidly_Finance",
     listedAt: 1682356965,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "2885",
@@ -4351,6 +4365,7 @@ const data3: Protocol[] = [
     twitter: "array_capital",
     audit_links: ["https://contractwolf.io/projects/array"],
     listedAt: 1682430569,
+    deadUrl: true,
   },
   {
     id: "2888",
@@ -4843,6 +4858,7 @@ const data3: Protocol[] = [
     oracles: ["Witnet"],
     audit_links: ["https://v3.docs.pooltogether.com/security/audits-and-testing"],
     listedAt: 1682677684,
+    deadUrl: true,
   },
   {
     id: "2909",
@@ -5093,6 +5109,7 @@ const data3: Protocol[] = [
     twitter: "backed_xyz",
     listedAt: 1682951218,
     github: ["with-backed"],
+    deadUrl: true,
   },
   {
     id: "2920",
@@ -5497,6 +5514,7 @@ const data3: Protocol[] = [
     oracles: ["Chainlink", "Pyth"],
     audit_links: ["https://blaize.tech/clients/smart-contract-security-audit-for-synthex/"],
     listedAt: 1683258145,
+    deadUrl: true,
   },
   {
     id: "2936",
@@ -5568,6 +5586,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1683394047,
+    deadUrl: true,
   },
   {
     id: "2939",
@@ -5863,6 +5882,7 @@ const data3: Protocol[] = [
     twitter: "OctoLSD",
     audit_links: ["https://app.solidproof.io/projects/octolsd?audit_id=494"],
     listedAt: 1683639043,
+    deadUrl: true,
   },
   {
     id: "2952",
@@ -6252,6 +6272,7 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1683861152,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "2970",
@@ -7430,6 +7451,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     listedAt: 1685023275,
+    deadUrl: true,
   },
   {
     id: "3022",
@@ -7452,6 +7474,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     audit_links: [],
     listedAt: 1685023882,
+    deadUrl: true,
   },
   {
     id: "3023",
@@ -7476,6 +7499,7 @@ const data3: Protocol[] = [
     audit_links: ["https://app.solidproof.io/projects/goldbanktoken"],
     listedAt: 1685023885,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "3024",
@@ -7498,6 +7522,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Agility LSD"],
     oracles: [],
     listedAt: 1685029444,
+    deadUrl: true,
   },
   {
     id: "3025",
@@ -7548,6 +7573,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: [],
     listedAt: 1685047742,
+    deadUrl: true,
   },
   {
     id: "3027",
@@ -7592,6 +7618,7 @@ const data3: Protocol[] = [
     module: "autocoreDefi/index.js",
     twitter: "AUTOCoreChain",
     listedAt: 1685048181,
+    deadUrl: true,
   },
   {
     id: "3029",
@@ -7856,6 +7883,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     audit_links: [],
     listedAt: 1685390561,
+    deadUrl: true,
   },
   {
     id: "3041",
@@ -8348,6 +8376,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#magicfox",
     wrongLiquidity: true,
     listedAt: 1685824211,
+    deadUrl: true,
   },
   {
     id: "3063",
@@ -8931,6 +8960,7 @@ const data3: Protocol[] = [
     oracles: ["Pyth"],
     github: ["xbank-lab"],
     listedAt: 1686231975,
+    deadUrl: true,
   },
   {
     id: "3087",
@@ -9226,6 +9256,7 @@ const data3: Protocol[] = [
     ],
     listedAt: 1686410187,
     rugged: true,
+    deadUrl: true,
   },
   {
     id: "3100",
@@ -9502,6 +9533,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1686784328,
+    deadUrl: true,
   },
   {
     id: "3112",
@@ -9591,6 +9623,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1686838812,
+    deadUrl: true,
   },
   {
     id: "3116",
@@ -10452,6 +10485,7 @@ const data3: Protocol[] = [
     twitter: "Pulsemax_defi",
     audit_links: [],
     listedAt: 1687717377,
+    deadUrl: true,
   },
   {
     id: "3154",
@@ -10607,6 +10641,7 @@ const data3: Protocol[] = [
     audit_links: ["https://dehacker.io/audit_reports_store/Themis.pdf"],
     parentProtocol: "parent#themis-pro",
     listedAt: 1687830897,
+    deadUrl: true,
   },
   {
     id: "3161",
@@ -10630,6 +10665,7 @@ const data3: Protocol[] = [
     audit_links: ["https://dehacker.io/audit_reports_store/Themis.pdf"],
     parentProtocol: "parent#themis-pro",
     listedAt: 1687831472,
+    deadUrl: true,
   },
   {
     id: "3162",
@@ -11151,6 +11187,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#jet",
     audit_links: ["https://docs.jetprotocol.io/jet-protocol/audit-reports"],
     listedAt: 1688231574,
+    deadUrl: true,
   },
   {
     id: "3185",
@@ -11196,6 +11233,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: [],
     listedAt: 1688325459,
+    deadUrl: true,
   },
   {
     id: "3187",
@@ -11259,6 +11297,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Curve"],
     oracles: [],
     listedAt: 1688393148,
+    deadUrl: true,
   },
   {
     id: "3190",
@@ -11396,6 +11435,7 @@ const data3: Protocol[] = [
     twitter: "lenftapp",
     audit_links: ["https://lenft.gitbook.io/lenft-docs/protocol/audits"],
     listedAt: 1688474860,
+    deadUrl: true,
   },
   {
     id: "3196",
@@ -11757,6 +11797,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1688728448,
+    deadUrl: true,
   },
   {
     id: "3212",
@@ -11801,6 +11842,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Fantasm"],
     listedAt: 1688857145,
     github: ["dinotopiafi"],
+    deadUrl: true,
   },
   {
     id: "3214",
@@ -11844,6 +11886,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1689070727,
+    deadUrl: true,
   },
   {
     id: "3216",
@@ -12331,6 +12374,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1689589537,
+    deadUrl: true,
   },
   {
     id: "3238",
@@ -12725,6 +12769,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Compound V2"],
     oracles: [],
     listedAt: 1689796727,
+    deadUrl: true,
   },
   {
     id: "3254",
@@ -12894,6 +12939,7 @@ const data3: Protocol[] = [
     oracles: ["netwo", "Pyth"], // https://docs.reax.one/#secure
     listedAt: 1689876117,
     parentProtocol: "parent#reax-finance",
+    deadUrl: true,
   },
   {
     id: "3261",
@@ -12940,6 +12986,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://www.quillaudits.com/leaderboard/zilch-capital"],
     listedAt: 1689895591,
+    deadUrl: true,
   },
   {
     id: "3263",
@@ -13142,6 +13189,7 @@ const data3: Protocol[] = [
     oracles: [],
     treasury: "evmos-dao.js",
     github: ["EvmosGov"],
+    deadUrl: true,
   },
   {
     id: "3272",
@@ -13185,6 +13233,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1690136249,
+    deadUrl: true,
   },
   {
     id: "3274",
@@ -14151,6 +14200,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://prismashield.com/audit/crescentswap"],
     listedAt: 1690797866,
+    deadUrl: true,
   },
   {
     id: "3316",
@@ -14531,6 +14581,7 @@ const data3: Protocol[] = [
     oracles: [],
     parentProtocol: "parent#tetu",
     listedAt: 1691011007,
+    deadUrl: true,
   },
   {
     id: "3332",
@@ -14876,6 +14927,7 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1691326424,
     parentProtocol: "parent#cookiebase",
+    deadUrl: true,
   },
   {
     id: "3347",
@@ -15486,6 +15538,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1691747179,
+    deadUrl: true,
   },
   {
     id: "3373",
@@ -15530,6 +15583,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Chainlink"],
     listedAt: 1691812141,
+    deadUrl: true,
   },
   {
     id: "3375",
@@ -15827,6 +15881,7 @@ const data3: Protocol[] = [
     forkedFrom: ["ArbiNYAN"],
     oracles: [],
     listedAt: 1692094265,
+    deadUrl: true,
   },
   {
     id: "3388",
@@ -16076,6 +16131,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1692220046,
+    deadUrl: true,
   },
   {
     id: "3399",
@@ -16164,6 +16220,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1692264440,
+    deadUrl: true,
   },
   {
     id: "3403",
@@ -16410,6 +16467,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1692339093,
+    deadUrl: true,
   },
   {
     id: "3415",
@@ -16543,6 +16601,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1692618839,
+    deadUrl: true,
   },
   {
     id: "3421",
@@ -16612,6 +16671,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1692626893,
+    deadUrl: true,
   },
   {
     id: "3424",
@@ -16704,6 +16764,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1692679099,
+    deadUrl: true,
   },
   {
     id: "3428",
@@ -16911,6 +16972,7 @@ const data3: Protocol[] = [
     twitter: "FedexOfficial_",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1692788839,
+    deadUrl: true,
   },
   {
     id: "3437",
@@ -17650,6 +17712,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     twitter: "bonedex_shib",
     listedAt: 1693453632,
+    deadUrl: true,
   },
   {
     id: "3470",
@@ -17673,6 +17736,7 @@ const data3: Protocol[] = [
     twitter: "andromeada_",
     github: ["andromedafi"],
     listedAt: 1693488744,
+    deadUrl: true,
   },
   {
     id: "3471",
@@ -17717,6 +17781,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     twitter: "shibfi",
     listedAt: 1693488755,
+    deadUrl: true,
   },
   {
     id: "3473",
@@ -18021,6 +18086,7 @@ const data3: Protocol[] = [
     twitter: "BasetasmFinance",
     github: ["basetasmfinance"],
     listedAt: 1693922475,
+    deadUrl: true,
   },
   {
     id: "3486",

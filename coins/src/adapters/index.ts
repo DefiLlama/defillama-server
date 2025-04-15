@@ -139,4 +139,5 @@ export default {
   concentrator: require("./yield/concentrator"),
   liquidly: require("./yield/liquidly"),
   cyclex: require("./rwa/cyclex"),
+  icETH: require("./yield/icETH"),
 };

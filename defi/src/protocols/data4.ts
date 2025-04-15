@@ -9774,7 +9774,7 @@ const data4: Protocol[] = [
     chains: ["AO"],
     module: "LiquidOps/index.js",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Redstone"],
     twitter: "Liquid_Ops",
     github: ["useLiquidOps"],
     listedAt: 1743528701

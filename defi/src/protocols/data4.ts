@@ -11370,7 +11370,7 @@ const data4: Protocol[] = [
     description:
       "An all-in-one platform for efficient trading, automated liquidity strategies, and governance alignment. Built for protocols, traders, and liquidity providers to thrive.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/kittypunch-punchswap-v3.png`,
+    logo: `${baseIconsUrl}/cadex-metadex.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -18402,7 +18402,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/ekubo.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "ekubo-protocol",
+    gecko_id: null,
     cmcId: null,
     category: "Dexs",
     chains: ["Starknet"],
@@ -18411,6 +18411,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     twitter: "EkuboProtocol",
     audit_links: ["https://docs.ekubo.org/integration-guides/reference/audits"],
+    parentProtocol: "parent#ekubo",
     listedAt: 1694136553,
   },
   {

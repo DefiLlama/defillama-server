@@ -6953,6 +6953,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "InterestDEX",
   }*/
+    {
+      id: "parent#ekubo",
+      name: "Ekubo Protocol",
+      url: "https://ekubo.org/",
+      description: "Ekubo Protocol is an AMM with concentrated liquidity and TWAMM for capital-efficient, zero-slippage swaps",
+      logo: `${baseIconsUrl}/ekubo-protocol.jpg`,
+      gecko_id: "ekubo-protocol",
+      cmcId: null,
+      chains: [],
+      twitter: "EkuboProtocol",
+      github: ["EkuboProtocol"],
+    },
 ];
 
 export default parentProtocols;

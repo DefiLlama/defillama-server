@@ -8200,8 +8200,8 @@ const data4: Protocol[] = [
   {
     id: "5914",
     name: "Ekubo EVM",
-    address: null,
-    symbol: "-",
+    address: "0x04c46e830bb56ce22735d5d8fc9cb90309317d0f",
+    symbol: "EKUBO",
     url: "https://evm.ekubo.org",
     description:
       "The most powerful AMM ever",
@@ -8217,6 +8217,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "ekubo-evm/index.js",
     twitter: "EkuboProtocol",
+    parentProtocol: "parent#ekubo",
     listedAt: 1742305799
   },
   {

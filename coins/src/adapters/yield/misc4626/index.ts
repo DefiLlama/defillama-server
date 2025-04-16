@@ -71,3 +71,54 @@ export async function spectra(timestamp: number) {
     ),
   );
 }
+
+const siloV2Config: {
+  [chain: string]: { START_BLOCK: number; SILO_FACTORY: string }[];
+} = {
+  sonic: [
+    {
+      START_BLOCK: 2672166,
+      SILO_FACTORY: "0xa42001D6d2237d2c74108FE360403C4b796B7170",
+    },
+  ],
+};
+
+export async function siloV2(timestamp: number) {
+  return Promise.all(
+    Object.keys(siloV2Config).map(async (chain) => {
+      const api = await getApi(chain, timestamp);
+      const toBlock = await api.getBlock();
+
+      let logs: any[] = [];
+      for (let factory of siloV2Config[chain]) {
+        const { SILO_FACTORY, START_BLOCK } = factory;
+        let logChunk = await api.getLogs({
+          target: SILO_FACTORY,
+          fromBlock: START_BLOCK,
+          toBlock,
+          eventAbi:
+            "event NewSilo (address indexed implementation, address indexed token0, address indexed token1, address silo0, address silo1, address siloConfig)",
+          topics: [
+            "0x3d6b896c73b628ec6ba0bdfe3cdee1356ea2af31af2a97bbd6b532ca6fa00acb",
+          ],
+        });
+        logs = [...logs, ...logChunk];
+      }
+
+      const silos = [
+        ...new Set(
+          logs
+            .map((log: any) => [
+              log.args[3].toLowerCase(),
+              log.args[4].toLowerCase(),
+            ])
+            .flat(),
+        ),
+      ];
+
+      return (
+        await calculate4626Prices(chain, timestamp, silos, "silo-v2")
+      ).filter((r) => isFinite(r.price ?? 0));
+    }),
+  );
+}

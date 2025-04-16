@@ -10676,7 +10676,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Plume Mainnet", "Arbitrum", "Polygon", "Plume"],
+    chains: ["Plume Mainnet", "Plume"],
     forkedFrom: ["AAVE V3"],
     oracles: [],
     module: "mystic-finance/index.js",

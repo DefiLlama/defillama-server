@@ -122,7 +122,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "1878": "apex",
   "344": "zkswap",
   "5130": "polynomial",
-  "5323": "exSat",
+  // "5323": "exSat",
   "4947": "ignition-fbtc",
   "4702": "immutable zkevm",
 };

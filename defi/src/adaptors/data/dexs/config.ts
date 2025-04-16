@@ -2953,5 +2953,8 @@ export default {
     },
     "razordex": {
         id: "6054"
-    }
+    },
+    "tonpump": {
+        id: "5468"
+    },
 } as AdaptorsConfig

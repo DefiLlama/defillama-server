@@ -107,7 +107,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5700": "redstone",
   "5701": "wc",
   "5702": "zero_network",
-  "5703": "zkfair",
+  // "5703": "zkfair",
   "5732": "sxr",
   "5735": "sorare",
   "5772": "unichain",

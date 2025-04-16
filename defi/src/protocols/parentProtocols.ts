@@ -6941,8 +6941,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "hypurrfi",
     github: ["lastdotnet"],
-  }
-
+  },
+  /*{
+    id: "parent#interest-dex",
+    name: "Interest DEX",
+    url: "https://interestdex.com",
+    description: "A decentralized exchange with two invariants: Stable and Volatile",
+    logo: `${baseIconsUrl}/interest-dex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "InterestDEX",
+  }*/
 ];
 
 export default parentProtocols;

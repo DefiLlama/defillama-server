@@ -6377,6 +6377,11 @@
       "decimals": 8,
       "symbol": "oBTC"
     },
+    "0xd60d60b168360dbd3496ec0ed0afe4a7498de3ce": {
+      "to": "coingecko#bitcoin",
+      "decimals": 8,
+      "symbol": "PT-dualBTC"
+    },
     "0xbb4a26a053b217bb28766a4ed4b062c3b4de58ce": {
       "to": "coingecko#bitcoin",
       "decimals": 18,

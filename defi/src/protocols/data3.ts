@@ -54695,23 +54695,18 @@ const data3: Protocol[] = [
     module: "injective-orderbook/index.js",
     twitter: "HelixApp_",
     forkedFrom: [],
-    oracles: ["Band"], // band oracle was confirmed by helix team
+    oracles: ["Stork","Pyth"],
     oraclesBreakdown: [
       {
-        name: "Band",
+        name: "Stork",
         type: "Primary",
-        proof: ["https://api.injective.exchange/#injectiveoraclerpc-oraclelist"]
+        proof: ["https://docs.helixapp.com/trading/perpetuals"]
       },
       {
         name: "Pyth",
         type: "Secondary",
-        proof: ["https://api.injective.exchange/#injectiveoraclerpc-oraclelist"]
+        proof: ["https://docs.helixapp.com/trading/perpetuals"]
       },
-      {
-        name: "Stork",
-        type: "Fallback",
-        proof: ["https://helixapp.zendesk.com/hc/en-us/articles/8790962218383-Which-oracle-provider-does-Helix-use"]
-      }
     ],
     parentProtocol: "parent#helix",
     listedAt: 1724923885

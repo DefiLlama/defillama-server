@@ -3355,7 +3355,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Lighter",
     url: "https://lighter.xyz",
     description:
-      "Liquid digital assets traded the way they were meant to be with the fully decentralized order book exchange for spot trading on L2’s, now live on Arbitrum.",
+      "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     logo: `${baseIconsUrl}/lighter.jpg`,
     gecko_id: null,
     cmcId: null,

@@ -11149,7 +11149,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://lighter.xyz/",
-    description: "Experience the next generation of trading with Lighter, where every operation is cryptographically proven to be fair and correct.",
+    description: "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lighter-v2.jpg`,
     audits: "0",

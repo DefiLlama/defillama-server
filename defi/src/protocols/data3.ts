@@ -20712,7 +20712,14 @@ const data3: Protocol[] = [
     module: "perennial-v2/index.js",
     twitter: "perenniallabs",
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: ["Stork"],
+    oraclesBreakdown: [
+      {
+      name: "Stork",
+      type: "Primary",
+      proof: ["https://docs.perennial.finance/protocol/markets/oracles-and-settlement"],
+      },
+    ],
     parentProtocol: "parent#perennial",
     listedAt: 1696533115,
   },

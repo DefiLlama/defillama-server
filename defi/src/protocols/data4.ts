@@ -11467,7 +11467,7 @@ const data4: Protocol[] = [
     description:
       "Lista Lending is a decentralized P2P lending protocol on BNB Chain that uses a vault-based system to pool liquidity and allocate it across lending markets based on supply and demand.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/lista-dao.png`,
+    logo: `${baseIconsUrl}/lista-lending.png`,
     audits: "2",
     audit_links: ["https://github.com/lista-dao/moolah/tree/master/docs/audits"],
     audit_note: null,

@@ -21218,7 +21218,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.sentiment.xyz",
-    description: "Sentiment is a liquidity protocol Enabling Onchain Permissionless Undercollateralized Borrowing.",
+    description: "The Sentiment Protocol is a leveraged lending protocol, specialized for complex portfolio positions on-chain. Sentiment provides additional flexibility and extensibility of the core protocol without compromising security. Lenders benefit from adaptive risk management and borrowers benefit from capital efficient collateral management",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/sentiment.jpg`,
     audits: "2",

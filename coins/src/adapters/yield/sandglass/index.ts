@@ -175,9 +175,7 @@ export async function sandglass(timestamp: number = 0): Promise<Write[]> {
 
     const decimals = 10 ** marketInfo.oracleDecimals;
     const price =
-      (oraclePrice *
-        (marketInfo.symbol !== "JLP" ? oraclePrice : 1) *
-        baseTokenInfo.price) /
+      ((marketInfo.symbol !== "JLP" ? oraclePrice : 1) * baseTokenInfo.price) /
       decimals;
 
     addToDBWritesList(

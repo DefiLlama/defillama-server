@@ -21225,7 +21225,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Leveraged Farming",
+    category: "Lending",
     chains: ["Arbitrum"],
     module: "sentiment/index.js",
     twitter: "sentimentxyz",

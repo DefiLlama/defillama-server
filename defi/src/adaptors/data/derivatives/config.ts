@@ -852,4 +852,10 @@ export default {
     "elfi": {
         id: "5160"
     },
+    "tearex": {
+        id: "5920"
+    },
+    "typus-perp": {
+        id: "6014",
+    },
 } as AdaptorsConfig

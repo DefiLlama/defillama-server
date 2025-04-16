@@ -39,7 +39,7 @@ const hyperlane = async (): Promise<void> => {
 const axelar = async (): Promise<void> => {
   const bridge = "axelar";
   if (!(bridge in bridgePromises))
-    bridgePromises[bridge] = fetch("https://api.axelarscan.io/?method=getAssets").then((r) => r.json());
+    bridgePromises[bridge] = fetch("https://api.axelarscan.io/api/getAssets").then((r) => r.json());
   const data = await bridgePromises[bridge];
   if (doneAdapters.includes(bridge)) return;
   data.map((token: any) => {
@@ -128,7 +128,23 @@ const layerzero = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
-const adapters = [axelar(), wormhole(), celer(), hyperlane(), layerzero()];
+const adapters = [
+  axelar().catch((e) => {
+    throw new Error(`Axelar fails with: ${e}`);
+  }),
+  wormhole().catch((e) => {
+    throw new Error(`Wormhole fails with: ${e}`);
+  }),
+  celer().catch((e) => {
+    throw new Error(`Celer fails with: ${e}`);
+  }),
+  hyperlane().catch((e) => {
+    throw new Error(`Hyperlane fails with: ${e}`);
+  }),
+  layerzero().catch((e) => {
+    throw new Error(`Layerzero fails with: ${e}`);
+  }),
+];
 const filteredAddresses: { [chain: Chain]: Address[] } = {};
 
 const tokenAddresses = async (): Promise<{ [chain: Chain]: Address[] }> => {

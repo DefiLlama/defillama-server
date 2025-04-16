@@ -3091,5 +3091,8 @@ export default {
     },
     "razordex": {
         id: "6054"
+    },
+    "yei-finance": {
+        id: "4721"
     }
 } as AdaptorsConfig

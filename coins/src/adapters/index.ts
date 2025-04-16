@@ -140,4 +140,5 @@ export default {
   liquidly: require("./yield/liquidly"),
   cyclex: require("./rwa/cyclex"),
   icETH: require("./yield/icETH"),
+  siloV2: require("./yield/misc4626"),
 };

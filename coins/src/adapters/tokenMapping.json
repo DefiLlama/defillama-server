@@ -8213,5 +8213,32 @@
       "decimals": 6,
       "symbol": "USDT"
     }
+  },
+  "mxczkevm": {
+    "0xcBCE60BAD702026d6385E5f449e44099A655d14f": {
+      "to": "coingecko#mxc",
+      "decimals": 18,
+      "symbol": "WMXC"
+    }, 
+    "0x623676Ec0a440f2Fe6308b8bdaC9482ee1b64796": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "WETH"
+    }, 
+    "0x30B7FB8CC9749029bc81d8fB3B4e9E0a529A7b44": {
+      "to": "coingecko#usdt0",
+      "decimals": 6,
+      "symbol": "USDT0"
+    }, 
+    "0x7c55B4842d13C5fbA418e8f65BF5BE3E47A4ac2d": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    }, 
+    "0xac790d98Ec71e713880488adBe23F441aebBa846": {
+      "to": "coingecko#dai",
+      "decimals": 18,
+      "symbol": "DAI"
+    }
   }
 }

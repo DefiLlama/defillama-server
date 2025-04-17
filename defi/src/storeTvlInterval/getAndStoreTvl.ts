@@ -17,7 +17,6 @@ import BigNumber from "bignumber.js";
 import {TABLES} from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
-import { storeAllTokens } from "../../src/utils/shared/bridgedTvlPostgres";
 import { elastic } from '@defillama/sdk';
 
 async function insertOnDb(useCurrentPrices:boolean, table: any, data: any, probabilitySampling: number = 1){
@@ -73,7 +72,6 @@ async function getTvl(
         } else {
           tvlBalances = await tvlFunction(api, ethBlock, chainBlocks, api);
           if (tvlBalances === undefined) tvlBalances = api.getBalances()
-          chainDashPromise = storeAllTokens(Object.keys(tvlBalances));
         }
         Object.keys(tvlBalances).forEach((key) => {
           if (+tvlBalances[key] === 0) delete tvlBalances[key]

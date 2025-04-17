@@ -11295,7 +11295,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Ponzi",
+    category: "Reserve Currency",
     chains: ["Arbitrum"],
     forkedFrom: [],
     oracles: [],

@@ -179,6 +179,7 @@ export const chainToCoingeckoId = {
   soneium: "soneium",
   Hyperliquid: "hyperevm",
   unichain: "unichain",
+  ink: "ink"
 };
 
 export default chainToCoingeckoId;

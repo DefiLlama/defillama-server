@@ -18519,8 +18519,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/goosefx.jpg`,
     audits: "3",
     audit_note: null,
-    gecko_id: "goosefx",
-    cmcId: "12898",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexs",
     chains: ["Solana"],
     oracles: ["Pyth"], // https://docs.goosefx.io/features/perpetual-futures/understanding-perpetual-futures/oracles

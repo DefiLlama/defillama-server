@@ -4115,6 +4115,15 @@ export const chainCoingeckoIds = {
     twitter: "peaq",
     url: "https://www.peaq.xyz/",
     chainId: 3338
+  },
+  "Moonchain": {
+    geckoId: "mxc",
+    symbol: "MXC",
+    cmcId: "3628",
+    categories: ["EVM"],
+    twitter: "Moonchain_com",
+    url: "https://www.moonchain.com/",
+    chainId: 18686
   }, 
 } as unknown as ChainCoinGekcoIds
 
@@ -4298,6 +4307,7 @@ const chainLabelMap = {
   "fhe": "Mind Network",
   "ao": "AO",
   "plume_mainnet": "Plume Mainnet",
+  "mxczkevm": "Moonchain",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4341,7 +4351,7 @@ const newChainLabelMap = {
   "lightlink_phoenix": "LightLink",
   "move": "Movement", 
   "wax": "Wax",
-  "unit0": "Unit Zero"
+  "unit0": "Unit Zero",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

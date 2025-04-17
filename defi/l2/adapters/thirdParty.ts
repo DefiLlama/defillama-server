@@ -107,6 +107,7 @@ const celer = async (): Promise<void> => {
     let normalizedChain: string = chain;
     if (chain in chainMap) normalizedChain = chainMap[chain];
     if (!allChainKeys.includes(normalizedChain)) return;
+    if (!addresses[normalizedChain]) addresses[normalizedChain] = [];
     addresses[normalizedChain].push(pp.pegged_token.token.address.toLowerCase());
   });
   doneAdapters.push(bridge);
@@ -128,6 +129,24 @@ const layerzero = async (): Promise<void> => {
   doneAdapters.push(bridge);
 };
 
+const flow = async (): Promise<void> => {
+  const bridge = "flow";
+  if (!(bridge in bridgePromises))
+    bridgePromises[bridge] = fetch(
+      "https://raw.githubusercontent.com/onflow/assets/refs/heads/main/tokens/outputs/mainnet/token-list.json"
+    ).then((r) => r.json());
+  const data = await bridgePromises[bridge];
+  if (doneAdapters.includes(bridge)) return;
+  data.tokens.map(({ chainId, address, tags }: any) => {
+    const chain = chainIdMap[chainId];
+    if (!allChainKeys.includes(chain)) return;
+    if (!tags.includes("bridged-coin")) return;
+    if (!(chain in addresses)) addresses[chain] = [];
+    addresses[chain].push(address);
+  });
+
+  doneAdapters.push(bridge);
+};
 const adapters = [
   axelar().catch((e) => {
     throw new Error(`Axelar fails with: ${e}`);
@@ -143,6 +162,9 @@ const adapters = [
   }),
   layerzero().catch((e) => {
     throw new Error(`Layerzero fails with: ${e}`);
+  }),
+  flow().catch((e) => {
+    throw new Error(`flow fails with: ${e}`);
   }),
 ];
 const filteredAddresses: { [chain: Chain]: Address[] } = {};

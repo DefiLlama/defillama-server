@@ -2957,4 +2957,7 @@ export default {
     "tonpump": {
         id: "5468"
     },
+    "flowx-v3": {
+        id: "4582"
+    }
 } as AdaptorsConfig

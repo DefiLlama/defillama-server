@@ -325,4 +325,7 @@ export default {
   "cro-ag": {
     id: "6026"
   },
+  "kame-aggregator": {
+    id: "6064"
+  },
 } as AdaptorsConfig;

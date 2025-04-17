@@ -3355,7 +3355,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Lighter",
     url: "https://lighter.xyz",
     description:
-      "Liquid digital assets traded the way they were meant to be with the fully decentralized order book exchange for spot trading on L2’s, now live on Arbitrum.",
+      "Lighter is a decentralized trading platform that is designed to deliver unmatched security and scale. Lighter provides verifiable matching and liquidations, while operating at the best-in-class traditional exchange level performances.",
     logo: `${baseIconsUrl}/lighter.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -6160,7 +6160,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ethena_labs",
     github: ["ethena-labs"],
-    stablecoins: ["ethena-usde"],
+    stablecoins: ["ethena-usde", "ethena-usdtb"],
   },
   {
     id: "parent#alphafi",
@@ -6831,7 +6831,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "OpenEden_X",
-    stablecoins: ["opendollar-usdo"],
+    stablecoins: ["opendollar-usdo", "openeden-tbill"],
   },
   {
     id: "parent#jito",
@@ -6916,7 +6916,55 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "IPXLabs",
     github: ["interest-protocol"],
-  }
+  },
+  {
+    id: "parent#moonwell",
+    name: "Moonwell",
+    url: "https://moonwell.fi",
+    description: "Moonwell is an open lending and borrowing protocol on Optimism, Base, Moonbeam, and Moonriver. Moonwell`s intuitive interface simplifies the lending experience for everyone, from newcomers to crypto experts.",
+    logo: `${baseIconsUrl}/moonwell.jpg`,
+    gecko_id: "moonwell-artemis",
+    cmcId: "20734",
+    chains: [],
+    twitter: "MoonwellDeFi",
+    governanceID: ["snapshot:moonwell-governance.eth"],
+    github: ["moonwell-fi"],
+  },
+  {
+    id: "parent#hypurfi",
+    name: "HypurrFi",
+    url: "https://hypurr.fi",
+    description: "Collateralize borrowing positions and loop and lever up your yield",
+    logo: `${baseIconsUrl}/hypurrfi.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "hypurrfi",
+    github: ["lastdotnet"],
+  },
+  /*{
+    id: "parent#interest-dex",
+    name: "Interest DEX",
+    url: "https://interestdex.com",
+    description: "A decentralized exchange with two invariants: Stable and Volatile",
+    logo: `${baseIconsUrl}/interest-dex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "InterestDEX",
+  }*/
+    {
+      id: "parent#ekubo",
+      name: "Ekubo Protocol",
+      url: "https://ekubo.org/",
+      description: "Ekubo Protocol is an AMM with concentrated liquidity and TWAMM for capital-efficient, zero-slippage swaps",
+      logo: `${baseIconsUrl}/ekubo-protocol.jpg`,
+      gecko_id: "ekubo-protocol",
+      cmcId: null,
+      chains: [],
+      twitter: "EkuboProtocol",
+      github: ["EkuboProtocol"],
+    },
 ];
 
 export default parentProtocols;

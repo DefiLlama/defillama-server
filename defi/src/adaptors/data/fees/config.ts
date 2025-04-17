@@ -3086,4 +3086,13 @@ export default {
     "mellow-lrt": {
         id: "4756"
     },
+    "liquid-ron": {
+        id: "6020"
+    },
+    "razordex": {
+        id: "6054"
+    },
+    "yei-finance": {
+        id: "4721"
+    }
 } as AdaptorsConfig

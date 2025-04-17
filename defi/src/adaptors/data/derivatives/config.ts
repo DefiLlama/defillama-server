@@ -846,4 +846,16 @@ export default {
     "zo": {
         id: "6018"
     },
+    "d8x": {
+        id: "3924"
+    },
+    "elfi": {
+        id: "5160"
+    },
+    "tearex": {
+        id: "5920"
+    },
+    "typus-perp": {
+        id: "6014",
+    },
 } as AdaptorsConfig

@@ -178,6 +178,8 @@ export const chainToCoingeckoId = {
   wc: "world-chain",
   soneium: "soneium",
   Hyperliquid: "hyperevm",
+  unichain: "unichain",
+  ink: "ink"
 };
 
 export default chainToCoingeckoId;

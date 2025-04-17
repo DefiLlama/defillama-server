@@ -80,7 +80,7 @@ const marketInfos: MarketInfo[] = [
   },
   {
     address: "BSrrKn29jrEbag3QRyH7qy4pcMZ9mXEp9Sqfs9iW5fmK",
-    mintAddress: "3Kwsdqgxp5c6yQQLVU3L6LC9LWThwvPr1urwc9UhqH2P",
+    mintAddress: "89dkr9ZhU3TGNzMKF7WbbuNBaqaGEgjtWsE33Vi3RBxY",
     symbol: "cPYUSD",
     decimals: 6,
     unit: "USDC",
@@ -175,9 +175,7 @@ export async function sandglass(timestamp: number = 0): Promise<Write[]> {
 
     const decimals = 10 ** marketInfo.oracleDecimals;
     const price =
-      (oraclePrice *
-        (marketInfo.symbol !== "JLP" ? oraclePrice : 1) *
-        baseTokenInfo.price) /
+      ((marketInfo.symbol !== "JLP" ? oraclePrice : 1) * baseTokenInfo.price) /
       decimals;
 
     addToDBWritesList(

@@ -25,6 +25,7 @@ export const chainsWithoutCanonicalBridges: string[] = [
   // "near",
   // "aurora",
   "berachain",
+  "flow",
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -107,11 +108,11 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5700": "redstone",
   "5701": "wc",
   "5702": "zero_network",
-  "5703": "zkfair",
+  // "5703": "zkfair",
   "5732": "sxr",
   "5735": "sorare",
   "5772": "unichain",
-  "5833": "formnetwork",
+  // "5833": "formnetwork",
   "5854": "hemi-l2",
 };
 
@@ -122,7 +123,7 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "1878": "apex",
   "344": "zkswap",
   "5130": "polynomial",
-  "5323": "exSat",
+  // "5323": "exSat",
   "4947": "ignition-fbtc",
   "4702": "immutable zkevm",
 };
@@ -222,4 +223,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "sxr": { ticker: "SX", address: "coingecko:sx-network-2" },
   "unichain": { ticker: "UNI", address: "coingecko:uniswap" },
   "berachain": { ticker: "BERA", address: "coingecko:berachain-bera" },
+  "flow": { ticker: "FLOW", address: "coingecko:flow" },
 };

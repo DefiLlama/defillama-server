@@ -5,7 +5,6 @@ import { Adapter, AdapterType } from "@defillama/dimension-adapters/adapters/typ
 import loadAdaptorsData from "../../data"
 import { handler2, IStoreAdaptorDataHandlerEvent } from "."
 import readline from 'readline';
-import sleep from '../../../utils/shared/sleep';
 import { getAllDimensionsRecordsTimeS } from '../../db-utils/db2';
 import { getTimestampString } from '../../../api2/utils';
 import { ADAPTER_TYPES } from '../triggerStoreAdaptorData';
@@ -33,6 +32,8 @@ const SHOW_CONFIRM_DIALOG = process.env.confirm ? process.env.confirm === 'true'
 const SHOW_CONFIG_TABLE = process.env.hide_config_table !== 'true'
 let refillOnlyMissingData = process.env.refill_only_missing_data === 'true'
 let refillAllProtocolsMissing = process.env.refill_all_missing_protocols === 'true'
+let parallelCount = process.env.parallel_count ? parseInt(process.env.parallel_count) : 1
+let storeInFile = process.env.store_in_file === 'true'
 /* 
 refillOnlyMissingData = true
 protocolToRun = '4449'
@@ -49,7 +50,6 @@ if (refillAllProtocolsMissing)
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 async function refillAdapter() {
-  await sleep(2000)
 
   console.log('\n\n\n\n\n')
   console.log('------------------------------------')
@@ -103,8 +103,15 @@ async function refillAdapter() {
     }
   }
 
+  let i = 0
+  const items: any = []
   let timeSWithData = new Set()
+
+
+
   if (refillOnlyMissingData) {
+
+
     const allTimeSData = await getAllDimensionsRecordsTimeS({ adapterType: adapterType as any, id: protocol.id2 })
     timeSWithData = new Set(allTimeSData.map((d: any) => d.timeS))
     allTimeSData.sort((a: any, b: any) => a.timestamp - b.timestamp)
@@ -123,32 +130,41 @@ async function refillAdapter() {
           protocolNames: new Set([protocolToRun]),
           isRunFromRefillScript: true,
         }
-        await handler2(eventObj)
+        items.push(eventObj)
       }
       lastTimestamp -= ONE_DAY_IN_SECONDS
     } while (lastTimestamp > firstTimestamp)
-    return;
-  }
 
-  let currentDayEndTimestamp = toTimestamp
-  // if (!isVersion2) currentDayEndTimestamp += ONE_DAY_IN_SECONDS 
-  let i = 0
 
-  while (days > 0) {
-    const eventObj: IStoreAdaptorDataHandlerEvent = {
-      timestamp: currentDayEndTimestamp,
-      adapterType: adapterType as any,
-      isDryRun: DRY_RUN,
-      protocolNames: new Set([protocolToRun]),
-      isRunFromRefillScript: true,
+  } else {
+
+    let currentDayEndTimestamp = toTimestamp
+    // if (!isVersion2) currentDayEndTimestamp += ONE_DAY_IN_SECONDS 
+
+    while (days > 0) {
+      const eventObj: IStoreAdaptorDataHandlerEvent = {
+        timestamp: currentDayEndTimestamp,
+        adapterType: adapterType as any,
+        isDryRun: DRY_RUN,
+        protocolNames: new Set([protocolToRun]),
+        isRunFromRefillScript: true,
+      }
+      items.push(eventObj)
+
+      days--
+      currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
     }
 
-    console.log(++i, 'refilling data on', new Date((currentDayEndTimestamp) * 1000).toLocaleDateString())
-    await handler2(eventObj)
-
-    days--
-    currentDayEndTimestamp -= ONE_DAY_IN_SECONDS
   }
+
+  await PromisePool
+    .withConcurrency(parallelCount)
+    .for(items)
+    .process(async (eventObj: any) => {
+
+      console.log(++i, 'refilling data on', new Date((eventObj.timestamp) * 1000).toLocaleDateString())
+      await handler2(eventObj)
+    })
 
 }
 

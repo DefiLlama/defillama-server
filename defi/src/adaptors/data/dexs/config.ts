@@ -2947,5 +2947,17 @@ export default {
     },
     "kongswap": {
         id: "5528"
+    },
+    "elys-dex": {
+        id: "5544"
+    },
+    "razordex": {
+        id: "6054"
+    },
+    "tonpump": {
+        id: "5468"
+    },
+    "flowx-v3": {
+        id: "4582"
     }
 } as AdaptorsConfig

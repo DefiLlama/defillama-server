@@ -18517,7 +18517,7 @@ const data2: Protocol[] = [
     description: "The best DEX in Solana to swap and earn yield from dynamic fee AMMs",
     chain: "Solana",
     logo: `${baseIconsUrl}/goosefx.jpg`,
-    audits: "3",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

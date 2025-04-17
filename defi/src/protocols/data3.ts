@@ -31343,6 +31343,9 @@ const data3: Protocol[] = [
     chains: ["Telos"],
     oraclesByChain: {
       meter: ["Pyth"], // https://docs.meridianfinance.net/resources/technical-and-security/oracles/pyth
+      taiko: ["Pyth"], // https://docs.meridianfinance.net/resources/technical-and-security/oracles/pyth
+      base: ["Chainlink"], // https://docs.meridianfinance.net/resources/technical-and-security/oracles/chainlink
+      taraxa: ["Stork"], // https://docs.meridianfinance.net/resources/technical-and-security/oracles/stork
     },
     forkedFrom: ["AAVE V2"],
     module: "meridian-lend/index.js",

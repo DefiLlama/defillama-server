@@ -1761,7 +1761,7 @@ const parentProtocols: IParentProtocol[] = [
     github: ["VYFI"],
   },
   {
-    id: "parent#origin-defi",
+    id: "parent#origin-protocol",
     name: "Origin Protocol",
     url: "https://www.originprotocol.com",
     description:

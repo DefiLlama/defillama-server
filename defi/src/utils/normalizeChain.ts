@@ -3512,7 +3512,7 @@ export const chainCoingeckoIds = {
     },
     url: "https://www.eclipse.xyz",
   },
-  "UNIT0": {
+  "Unit Zero": {
     geckoId: "unit0",
     symbol: "UNIT0",
     cmcId: "33785",
@@ -4341,6 +4341,7 @@ const newChainLabelMap = {
   "lightlink_phoenix": "LightLink",
   "move": "Movement", 
   "wax": "Wax",
+  "unit0": "Unit Zero"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

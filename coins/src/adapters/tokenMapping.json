@@ -1332,6 +1332,11 @@
     }
   },
   "base": {
+    "0x102d758f688a4C1C5a80b116bD945d4455460282": {
+      "to": "coingecko#usdt0",
+      "decimals": 18,
+      "symbol": "USDT0"
+    },
     "0xB7EcE25d412210499C35A9525FF01553E39A2927": {
       "to": "asset#arbitrum:0xba3e932310cd1dbf5bd13079bd3d6bae4570886f",
       "decimals": "18",
@@ -6582,6 +6587,11 @@
     }
   },
   "wc": {
+    "0x102d758f688a4C1C5a80b116bD945d4455460282": {
+      "to": "coingecko#usdt0",
+      "decimals": 18,
+      "symbol": "USDT0"
+    },
     "0x79A02482A880bCE3F13e09Da970dC34db4CD24d1": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
@@ -7396,6 +7406,11 @@
     }
   },
   "soneium": {
+    "0x102d758f688a4C1C5a80b116bD945d4455460282": {
+      "to": "coingecko#usdt0",
+      "decimals": 18,
+      "symbol": "UST0" 
+    },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#ethereum",
       "decimals": 18,

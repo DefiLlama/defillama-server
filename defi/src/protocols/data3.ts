@@ -8257,7 +8257,6 @@ const data3: Protocol[] = [
       "https://openeden.com/static/Verichains%20Public%20Audit%20Report%20-%20OpenEden%20Vault%20-%20310323.pdf",
       "https://www.chainsecurity.com/security-audit/openeden-usdoexpress"
     ],
-    stablecoins: ["opendollar-usdo"],
     parentProtocol: "parent#openeden",
     listedAt: 1685661527,
   },
@@ -64492,7 +64491,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     parentProtocol: "parent#ethena",
-    stablecoins: ["ethena-usdtb"],
     listedAt: 1734350466
   },
   {

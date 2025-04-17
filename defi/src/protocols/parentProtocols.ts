@@ -6160,7 +6160,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ethena_labs",
     github: ["ethena-labs"],
-    stablecoins: ["ethena-usde"],
+    stablecoins: ["ethena-usde", "ethena-usdtb"],
   },
   {
     id: "parent#alphafi",
@@ -6831,7 +6831,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "OpenEden_X",
-    stablecoins: ["opendollar-usdo"],
+    stablecoins: ["opendollar-usdo", "openeden-tbill"],
   },
   {
     id: "parent#jito",

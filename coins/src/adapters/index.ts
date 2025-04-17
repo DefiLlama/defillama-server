@@ -141,4 +141,5 @@ export default {
   cyclex: require("./rwa/cyclex"),
   icETH: require("./yield/icETH"),
   siloV2: require("./yield/misc4626"),
+  convexStaked: require("./yield/convexStaked"),
 };

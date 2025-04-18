@@ -11662,5 +11662,26 @@ const data4: Protocol[] = [
     twitter: "kame_agg",
     listedAt: 1744908119,
   },
+    {
+      id: "6065",
+      name: "Arbitrum Timeboost",
+      address: null,
+      symbol: "-",
+      url: "https://arbitrum.io/",
+      description:
+        "Arbitrum Timeboost is a mechanism used in Arbitrum’s sequencer to prioritize certain transactions in the order they’re included in a block. Users can “boost” their transactions by paying a small fee, giving them priority over others in the mempool.",
+      chain: "Arbitrum",
+      logo: `${baseIconsUrl}/arbitrum-timeboost.jpg`,
+      audits: "0",
+      audit_note: null,
+      gecko_id: null,
+      cmcId: null,
+      category: "MEV",
+      chains: ["Arbitrum"],
+      oracles: [],
+      forkedFrom: [],
+      module: "dummy.js",
+      twitter: "arbitrum",
+    },
 ];
 export default data4;

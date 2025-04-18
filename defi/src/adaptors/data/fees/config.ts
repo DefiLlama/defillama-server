@@ -3094,5 +3094,14 @@ export default {
     },
     "yei-finance": {
         id: "4721"
-    }
+    },
+    "chedda-finance": {
+        id: "5912"
+    },
+    "arbitrum-timeboost": {
+        id: "6065"
+    },
+    "kairos": {
+        id: "6066"
+    },
 } as AdaptorsConfig

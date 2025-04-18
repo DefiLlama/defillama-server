@@ -7696,8 +7696,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "460",
     name: "Ondo v1 (Legacy)",
-    address: "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
-    symbol: "ONDO",
+    address: null,
+    symbol: "-",
     url: "https://v1.ondo.finance",
     description:
       "Ondo is a DeFi protocol that allows investors to better balance risk with rewards while gaining exposure to yield-generating crypto-assets on Ethereum.",

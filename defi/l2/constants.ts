@@ -114,6 +114,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "5772": "unichain",
   // "5833": "formnetwork",
   "5854": "hemi-l2",
+  "6063": "mxczkevm",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -224,4 +225,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "unichain": { ticker: "UNI", address: "coingecko:uniswap" },
   "berachain": { ticker: "BERA", address: "coingecko:berachain-bera" },
   "flow": { ticker: "FLOW", address: "coingecko:flow" },
+  "mxczkevm": { ticker: "MXC", address: "coingecko:mxc" },
 };

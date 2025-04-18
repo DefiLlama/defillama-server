@@ -761,6 +761,11 @@
       "to": "coingecko#prometeus",
       "decimals": 18,
       "symbol": "PROM"
+    },
+    "0x325DC9EBceC31940C658aCACa45f8293418d811E": {
+      "decimals": "18",
+      "symbol": "SolvBTC.ENA",
+      "to": "coingecko#solv-btc"
     }
   },
   "fantom": {
@@ -933,6 +938,11 @@
       "to": "coingecko#prometeus",
       "decimals": 18,
       "symbol": "PROM"
+    },
+    "0x38a001e57430f781404ffF7a81DE4Bd67d1f6117": {
+      "to": "coingecko#solv-protocol-solvbtc-jupiter",
+      "decimals": 18,
+      "symbol": "SOLVBTC.JUP"
     }
   },
   "stacks": {

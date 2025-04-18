@@ -2898,9 +2898,9 @@ export const chainCoingeckoIds = {
     symbol: "KUB",
     cmcId: "16093",
     categories: ["EVM"],
-    twitter: "bitkubchain",
-    url: "https://www.bitkubchain.com",
-    github: ["bitkub-chain"],
+    twitter: "KUBChain",
+    url: "https://www.kubchain.com/",
+    github: ["bitkub-chain", "bitkub-blockchain"],
     chainId: 96
   },
   "Ancient8": {
@@ -4120,7 +4120,11 @@ export const chainCoingeckoIds = {
     geckoId: "mxc",
     symbol: "MXC",
     cmcId: "3628",
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2"],
+    },
     twitter: "Moonchain_com",
     url: "https://www.moonchain.com/",
     chainId: 18686

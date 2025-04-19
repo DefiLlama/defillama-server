@@ -60159,7 +60159,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Binance", "Mantle"],
-    oracles: [],
+    oracles: ["Chainlink"], //https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions 
     forkedFrom: [],
     module: "avalon-finance-usda/index.js",
     twitter: "avalonfinance_",

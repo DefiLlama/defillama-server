@@ -3104,4 +3104,7 @@ export default {
     "kairos": {
         id: "6066"
     },
+    "ostium": {
+        id: "4932"
+    },
 } as AdaptorsConfig

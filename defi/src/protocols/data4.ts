@@ -7711,7 +7711,7 @@ const data4: Protocol[] = [
     category: "Lending",
     chains: ["Movement"],
     forkedFrom: [],
-    oracles: ["Pyth"],
+    oracles: ["Pyth"], //https://docs.moveposition.xyz/asset-pricing#asset-pricing, https://docs.concordia.systems/platform-spec/pricing-engine
     module: "moveposition/index.js",
     twitter: "MovePosition",
     audit_links: ["https://cdn.prod.website-files.com/667eba24a3bcd02c2396724a/67a1e1fe8acfd2fc8bf1668d_MovePosition%20Audit%20Report.pdf"],

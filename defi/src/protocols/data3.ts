@@ -38506,18 +38506,25 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Aptos"],
+    chains: ["Aptos", "Movement"],
     oracles: ["Pyth"],
     oraclesBreakdown: [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://app.echelon.market/markets?network=aptos_mainnet","https://docs.echelon.market/echelon-v1/risks#oracle-risk"]
+        proof: ["https://app.echelon.market/markets?network=aptos_mainnet", "https://app.echelon.market/markets?network=movement_mainnet", "https://docs.echelon.market/echelon-v1/risks#oracle-risk"],
+        chains: [
+          {chain: "Aptos"},
+          {chain: "Movement"},
+        ]
       },
       {
         name: "Switchboard",
         type: "Secondary",
         proof: ["https://app.echelon.market/markets?network=aptos_mainnet"],
+          chains: [
+          {chain: "Aptos"},
+        ]      
       },
     ],
     forkedFrom: [],
@@ -60159,7 +60166,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Binance", "Mantle"],
-    oracles: [],
+    oracles: ["Chainlink"], //https://docs.avalonfinance.xyz/avalon-products/cedefi-cdp-usda/risk-management#oracle-solutions 
     forkedFrom: [],
     module: "avalon-finance-usda/index.js",
     twitter: "avalonfinance_",

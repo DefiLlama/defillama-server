@@ -858,4 +858,7 @@ export default {
     "typus-perp": {
         id: "6014",
     },
+    "loxodrome-perp": {
+        id: "5300",
+    },
 } as AdaptorsConfig

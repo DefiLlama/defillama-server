@@ -3350,6 +3350,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DeriProtocol",
     github: ["deri-protocol"],
   },
+  /*
   {
     id: "parent#lighter",
     name: "Lighter",
@@ -3362,6 +3363,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Lighter_xyz",
   },
+  */
   {
     id: "parent#dfx-finance",
     name: "DFX Finance",

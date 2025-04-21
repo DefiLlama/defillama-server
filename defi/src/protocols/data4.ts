@@ -11389,14 +11389,14 @@ const data4: Protocol[] = [
   },
   {
     id: "6052",
-    name: "Catex MetaDEX",
+    name: "Catex",
     address: null,
-    symbol: "CATX",
+    symbol: "-",
     url: "https://app.catex.fi/",
     description:
       "An all-in-one platform for efficient trading, automated liquidity strategies, and governance alignment. Built for protocols, traders, and liquidity providers to thrive.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/cadex-metadex.png`,
+    logo: `${baseIconsUrl}/cadex.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

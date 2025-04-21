@@ -25,14 +25,12 @@ const protocolChainSetMap: {
 parentProtocols.forEach((protocol: any) => {
   parentProtocolsInfoMap[protocol.id] = protocol
   protocolChainSetMap[protocol.id] = new Set(protocol.chains ?? [])
-  protocol.chainSet = protocolChainSetMap[protocol.id]
   protocol.childProtocols = []
 })
 
 protocols.forEach((protocol: any) => {
   protocolInfoMap[protocol.id] = protocol
   protocolChainSetMap[protocol.id] = new Set(protocol.chains ?? [])
-  protocol.chainSet = protocolChainSetMap[protocol.id]
   if (protocol.parentProtocol) {
     parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol)
   }
@@ -314,9 +312,8 @@ async function _storeAppMetadata() {
       data.protocols.map((pData: any) => {
         let id = pData.id ?? pData.defillamaId ?? pData.name
         if (protocolChainSetMap[id] && pData.chains?.length) {
-          const protocolChainSet = protocolChainSetMap[id]
           pData.chains.forEach((chain: any) => {
-              protocolChainSet.add(chain)
+            protocolChainSetMap[id].add(chain)
           })
         }
 
@@ -672,13 +669,13 @@ async function _storeAppMetadata() {
         r[k] = finalProtocols[k]
         if (protocolInfoMap[k]) {
           r[k].displayName = protocolInfoMap[k].name
-          r[k].chains = protocolInfoMap[k].chainSet ? Array.from(protocolInfoMap[k].chainSet) : []
+          r[k].chains = protocolChainSetMap[k] ? Array.from(protocolChainSetMap[k]) : []
         }
         if (parentProtocolsInfoMap[k]) {
           r[k].displayName = parentProtocolsInfoMap[k].name
           const chainSet = new Set()
           parentProtocolsInfoMap[k].childProtocols?.forEach((p: any) => {
-            const chains = p.chainSet ? Array.from(p.chainSet) : []
+            const chains = protocolChainSetMap[p.id] ? Array.from(protocolChainSetMap[p.id]) : []
             chains.forEach((chain: any) => chainSet.add(chain))
           })
           r[k].chains = Array.from(chainSet)
@@ -687,7 +684,6 @@ async function _storeAppMetadata() {
       }, {})
 
     await storeRouteData('/config/smol/appMetadata-protocols.json', sortedProtocolData)
-
 
     for (const chain of bridgesData.chains) {
       if (finalChains[slug(chain.name)]) {

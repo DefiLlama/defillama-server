@@ -11887,7 +11887,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6074",
-    name: "Launchlab",
+    name: "LaunchLab",
     address: "solana:4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
     symbol: "RAY",
     url: "https://raydium.io/launchpad/",

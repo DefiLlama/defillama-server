@@ -43691,7 +43691,6 @@ const data3: Protocol[] = [
     audit_links: [
       "https://docs.origami.finance/technical-reference/audits",
     ],
-    parentProtocol: "parent#temple-dao",
     listedAt: 1715612691,
   },
   {

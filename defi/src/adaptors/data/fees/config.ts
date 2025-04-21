@@ -3110,4 +3110,7 @@ export default {
     "lista-lending": {
         id: "6056"
     },
+    "zora-chain": {
+        id: "7777777" // chainId
+    },
 } as AdaptorsConfig

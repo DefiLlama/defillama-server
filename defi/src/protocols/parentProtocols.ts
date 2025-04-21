@@ -6969,10 +6969,10 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#zora",
-    name: "ZORA",
+    name: "ZORA Protocol",
     url: "https://zora.co/explore",
     description: "A social network where every post is a coin.",
-    logo: `${baseIconsUrl}/zora.jpg`,
+    logo: `${baseIconsUrl}/zora-protocol.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

@@ -49521,7 +49521,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "d2-token",
     cmcId: null,
-    category: "Yield",
+    category: "Onchain Capital Allocator",
     chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: [],

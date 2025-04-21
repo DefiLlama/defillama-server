@@ -62049,6 +62049,7 @@ const data3: Protocol[] = [
     twitter: "TitanAggregator",
     forkedFrom: [],
     oracles: [],
+    audit_links: ["https://docs.titan.tg/colossus-concentrated-liquidity-amm/colossus-audits"],
     listedAt: 1745245067
   },
   {

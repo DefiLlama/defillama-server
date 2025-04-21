@@ -3107,4 +3107,7 @@ export default {
     "ostium": {
         id: "4932"
     },
+    "lista-lending": {
+        id: "6056"
+    },
 } as AdaptorsConfig

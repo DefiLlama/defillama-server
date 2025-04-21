@@ -194,7 +194,8 @@ export async function getProtocolTvl(
       });
 
       if (chainsLength === 0 || (chainsLength <= 3 && allTvlsAreAddl)) {
-        let defaultChain = protocol.chains[0] ?? protocolsById[protocol.id]?.chains[0] ?? protocolsById[protocol.id]?.chain
+        // let defaultChain = protocol.chains[0] ?? protocolsById[protocol.id]?.chains[0] ?? protocolsById[protocol.id]?.chain
+        let defaultChain = protocol.chains[0]
         if (defaultChain) {
         chainTvls[defaultChain] = {
           tvl,

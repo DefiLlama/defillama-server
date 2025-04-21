@@ -6983,7 +6983,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#bemo",
     name: "bemo",
-    url: "https://bemo.finance",
+    url: "https://bemo.fi/",
     description: "The liquid staking protocol on the TON blockchain.",
     logo: `${baseIconsUrl}/bemo.jpg`,
     gecko_id: null,

@@ -49803,7 +49803,7 @@ const data3: Protocol[] = [
     gecko_id: "mind-network",
     cmcId: "36153",
     category: "AI Agents",
-    chains: [ "Mind Network", "Binance"],
+    chains: [ "Ethereum", "Scroll", "Binance"],
     oracles: [],
     forkedFrom: [],
     module: "mind-restake/index.js",

@@ -11863,5 +11863,27 @@ const data4: Protocol[] = [
     listedAt: 1745246240,
     parentProtocol: "parent#bemo",
   },
+  {
+    id: "6073",
+    name: "Arche Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.archeprotocol.xyz/home",
+    description: `Arche Protocol is the leading CDP protocol within the Movement ecosystem, supporting multiple assets for collateralization while extending stablecoin loans in $MSD. Arche is modular, capital-efficient, and designed for on-chain builders who MOVE fast`,
+    chain: "Movement",
+    logo: `${baseIconsUrl}/arche-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Movement"],
+    module: "arche-protocol/index.js",
+    twitter: "ArcheProtocol",
+    oracles: ["Pyth"], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/14315
+    forkedFrom: [],
+    audit_links: ["https://github.com/arche-labs/assets/blob/main/audits/Arche%20Protocol%20Audit%20Report.pdf"],
+    listedAt: 1745249658
+  },
 ];
 export default data4;

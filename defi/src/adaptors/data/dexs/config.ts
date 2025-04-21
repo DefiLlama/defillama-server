@@ -2962,4 +2962,10 @@ export default {
     "zora-sofi": {
         id: "6069" 
     },
+    "launchlab": {
+        id: "6074" 
+    },
+    "beezie": {
+        id: "6075" 
+    },
 } as AdaptorsConfig

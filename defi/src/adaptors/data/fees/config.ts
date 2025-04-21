@@ -3113,4 +3113,7 @@ export default {
     "zora-chain": {
         id: "7777777" // chainId
     },
+    "zora-sofi": {
+        id: "6069" 
+    },
 } as AdaptorsConfig

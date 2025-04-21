@@ -279,6 +279,13 @@ async function _storeAppMetadata() {
     })
 
     tvlData.protocols.forEach((protocol: any) => {
+      let id = protocol.id ?? protocol.defillamaId 
+      if (id && protocol.chains?.length) {
+        if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([])
+        protocol.chains.forEach((chain: any) => {
+          protocolChainSetMap[id].add(chain)
+        })
+      }
 
       if (protocol.category) {
         if (!protocolCategoriesMap[protocol.category]) {

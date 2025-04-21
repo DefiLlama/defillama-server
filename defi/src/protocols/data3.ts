@@ -62045,10 +62045,11 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["TON"],
-    module: "dummy.js",
+    module: "titan/index.js",
     twitter: "TitanAggregator",
     forkedFrom: [],
     oracles: [],
+    listedAt: 1745245067
   },
   {
     id: "5395",

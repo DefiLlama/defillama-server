@@ -3116,4 +3116,16 @@ export default {
     "zora-sofi": {
         id: "6069" 
     },
+    "yearn-ether": {
+        id: "3973" 
+    },
+    "yearn-finance": {
+        id: "113" 
+    },
+    "compound-v3": {
+        id: "2088" 
+    },
+    "amnis-finance": {
+        id: "3667" 
+    },
 } as AdaptorsConfig

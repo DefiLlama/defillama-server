@@ -12,6 +12,11 @@
     }
   },
   "berachain": {
+    "0x5475611dffb8ef4d697ae39df9395513b6e947d7": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "asset#ethereum:0x738d1115b90efa71ae468f1287fc864775e23a31"
+    },
     "0x0555E30da8f98308EdB960aa94C0Db47230d2B9c": {
       "decimals": "8",
       "symbol": "WBTC",

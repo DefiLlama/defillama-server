@@ -11845,7 +11845,7 @@ const data4: Protocol[] = [
     name: "bemo V2",
     address: null,
     symbol: "-",
-    assetToken: "stTON",
+    assetToken: "bmTON",
     url: "https://bemo.fi/",
     description: `The liquid staking protocol on the TON blockchain.`,
     chain: "TON",

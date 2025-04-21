@@ -3017,6 +3017,13 @@
       "to": "coingecko#pumpbtc"
     }
   },
+  "eos_evm": {
+    "0xc00592aa41d32d137dc480d9f6d0df19b860104f": {
+      "decimals": "18",
+      "symbol": "WEOS",
+      "to": "coingecko#eos"
+    }
+  },
   "eon": {
     "0x2c2E0B0c643aB9ad03adBe9140627A645E99E054": {
       "decimals": "18",
@@ -7409,7 +7416,7 @@
     "0x102d758f688a4C1C5a80b116bD945d4455460282": {
       "to": "coingecko#usdt0",
       "decimals": 18,
-      "symbol": "UST0" 
+      "symbol": "UST0"
     },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#ethereum",
@@ -8219,22 +8226,22 @@
       "to": "coingecko#mxc",
       "decimals": 18,
       "symbol": "WMXC"
-    }, 
+    },
     "0x623676Ec0a440f2Fe6308b8bdaC9482ee1b64796": {
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "WETH"
-    }, 
+    },
     "0x30B7FB8CC9749029bc81d8fB3B4e9E0a529A7b44": {
       "to": "coingecko#usdt0",
       "decimals": 6,
       "symbol": "USDT0"
-    }, 
+    },
     "0x7c55B4842d13C5fbA418e8f65BF5BE3E47A4ac2d": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
       "symbol": "USDC"
-    }, 
+    },
     "0xac790d98Ec71e713880488adBe23F441aebBa846": {
       "to": "coingecko#dai",
       "decimals": 18,

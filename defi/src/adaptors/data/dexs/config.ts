@@ -2958,5 +2958,8 @@ export default {
     },
     "flowx-v3": {
         id: "4582"
-    }
+    },
+    "zora-sofi": {
+        id: "6069" 
+    },
 } as AdaptorsConfig

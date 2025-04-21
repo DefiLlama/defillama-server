@@ -311,7 +311,8 @@ async function _storeAppMetadata() {
       dimensionsMap[mapKey] = dataMap
       data.protocols.map((pData: any) => {
         let id = pData.id ?? pData.defillamaId ?? pData.name
-        if (protocolChainSetMap[id] && pData.chains?.length) {
+        if ( pData.chains?.length) {
+          if (!protocolChainSetMap[id]) protocolChainSetMap[id] = new Set([])
           pData.chains.forEach((chain: any) => {
             protocolChainSetMap[id].add(chain)
           })

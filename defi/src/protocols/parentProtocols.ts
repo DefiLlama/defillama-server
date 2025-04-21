@@ -6967,6 +6967,19 @@ const parentProtocols: IParentProtocol[] = [
       twitter: "EkuboProtocol",
       github: ["EkuboProtocol"],
     },
+    {
+      id: "parent#zora",
+      name: "ZORA",
+      url: "https://zora.co/explore",
+      description: "A social network where every post is a coin.",
+      logo: `${baseIconsUrl}/zora.jpg`,
+      gecko_id: null,
+      cmcId: null,
+      chains: [],
+      twitter: "zora",
+      governanceID: ["snapshot:zora.eth"],
+      github: ["ourzora"],
+    },
 ];
 
 export default parentProtocols;

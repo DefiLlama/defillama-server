@@ -28727,13 +28727,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2610",
-    name: "ZORA",
+    name: "ZORA Marketplace",  // previous ZORA , cant use the previous name field cause parent will have that name
     address: null,
     symbol: "-",
     url: "https://market.zora.co",
     description: "The NFT Marketplace Protocol",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/zora.jpg`,
+    logo: `${baseIconsUrl}/zora-marketplace.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -28743,10 +28743,9 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "ourZORA",
+    twitter: "zora",
+    parentProtocol: "parent#zora",
     listedAt: 1677604484,
-    governanceID: ["snapshot:zora.eth"],
-    github: ["ourzora"],
   },
   {
     id: "2611",

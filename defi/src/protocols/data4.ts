@@ -170,6 +170,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "zora/index.js",
     twitter: "zora",
+    parentProtocol: "parent#zora",
   },
   {
     id: "5567",
@@ -11766,6 +11767,28 @@ const data4: Protocol[] = [
     twitter: "fomodotbiz",
     github: ["fomodotbiz"],
     listedAt: 1745005003,
+  },
+  {
+    id: "6069",
+    name: "ZORA Coins",
+    address: null,
+    symbol: "-",
+    url: "https://zora.co/explore",
+    description:
+      "A social network where every post is a coin.",
+    chain: "Zora",
+    logo: `${baseIconsUrl}/zora-coins.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Zora"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "zora",
+    parentProtocol: "parent#zora",
   },
 ];
 export default data4;

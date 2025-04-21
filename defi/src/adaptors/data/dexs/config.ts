@@ -275,7 +275,6 @@ export default {
         }
     },
     "baryon": {
-        "enabled": false,
         "id": "1950"
     },
     "cherryswap": {

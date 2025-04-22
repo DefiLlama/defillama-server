@@ -142,4 +142,5 @@ export default {
   icETH: require("./yield/icETH"),
   siloV2: require("./yield/misc4626"),
   convexStaked: require("./yield/convexStaked"),
+  folksFinance: require("./moneyMarkets/folks-finance"),
 };

@@ -861,4 +861,7 @@ export default {
     "loxodrome-perp": {
         id: "5300",
     },
+    "ostium": {
+        id: "4932",
+    },
 } as AdaptorsConfig

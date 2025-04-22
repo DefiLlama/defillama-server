@@ -3479,8 +3479,8 @@ export const chainCoingeckoIds = {
     chainId: 33139
   },
   "Asset Chain": {
-    geckoId: null,
-    symbol: null,
+    geckoId: "xend-finance",
+    symbol: "RWA",
     cmcId: null,
     categories: ["EVM"],
     twitter: "xendfinance",

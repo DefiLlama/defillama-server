@@ -48432,7 +48432,7 @@ const data3: Protocol[] = [
     description:
       "TermMax is a DeFi AMM protocol that allows users to lend, borrow and one-click leverage at fixed-rates and with maturity dates. Users may earn passive yields via Vaults without the hassle of managing positions. Curators and Order Makers are empowered by the Range Order Tool to set their pricing curves and slippages to manage risk and return efficiently with ease",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/term-structure.png`,
+    logo: `${baseIconsUrl}/termmax.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

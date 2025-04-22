@@ -48424,12 +48424,13 @@ const data3: Protocol[] = [
   },
   {
     id: "4799",
-    name: "Term Structure",
+    name: "TermMax",
+    previousNames: ["Term Structure"],
     address: null,
     symbol: "-",
-    url: "https://ts.finance/",
+    url: "https://ts.finance/termmax/",
     description:
-      "Term Structure is a non-custodial, fixed rate and maturity lending/borrowing protocol backed by customized Zk-Rollup with orders matched via auction",
+      "TermMax is a DeFi AMM protocol that allows users to lend, borrow and one-click leverage at fixed-rates and with maturity dates. Users may earn passive yields via Vaults without the hassle of managing positions. Curators and Order Makers are empowered by the Range Order Tool to set their pricing curves and slippages to manage risk and return efficiently with ease",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/term-structure.png`,
     audits: "2",
@@ -48437,9 +48438,9 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Arbitrum"],
     module: "term-structure/index.js",
-    twitter: "TermStructLabs",
+    twitter: "TermMaxFi",
     forkedFrom: [],
     oracles: ["Chainlink"], // https://docs.ts.finance/protocol-spec/primary-markets/liquidation-mechanism#fully-on-chain-liquidation
     oraclesBreakdown: [
@@ -48454,7 +48455,12 @@ const data3: Protocol[] = [
         type: "Secondary",
         proof: ["https://docs.ts.finance/protocol-spec/fixed-rate-borrowing-lending-prev-primary-markets/liquidation-mechanism#fully-on-chain-liquidation"]
 
-      }
+      },
+      {
+        name: "eOracle",
+        type: "Secondary",
+        proof: ["https://docs.ts.finance/technical-details/deployments"]
+      },
     ],
     audit_links: ["https://github.com/term-structure/audits"],
     github: ["term-structure"],

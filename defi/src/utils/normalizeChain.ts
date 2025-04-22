@@ -576,13 +576,13 @@ export const chainCoingeckoIds = {
     twitter: "NEARProtocol",
     url: "https://near.org/"
   },
-  "EOS": {
+  "Vaulta": {
     geckoId: "eos",
     github: ['EOSIO', 'eosnetworkfoundation', 'AntelopeIO'],
     symbol: "EOS",
     cmcId: "1765",
-    twitter: "EOSNetworkFDN",
-    url: "https://eosnetwork.com/"
+    twitter: "Vaulta_",
+    url: "https://eosnetwork.com/resources/resource-type/vaulta/"
   },
   "Songbird": {
     geckoId: "songbird",
@@ -4366,6 +4366,7 @@ const newChainLabelMap = {
   "move": "Movement", 
   "wax": "Wax",
   "unit0": "Unit Zero",
+  "eos": "Vaulta",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

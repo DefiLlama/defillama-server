@@ -143,4 +143,5 @@ export default {
   siloV2: require("./yield/misc4626"),
   convexStaked: require("./yield/convexStaked"),
   folksFinance: require("./moneyMarkets/folks-finance"),
+  xlpt: require("./markets/xlpt"),
 };

@@ -4129,7 +4129,7 @@ export const chainCoingeckoIds = {
     url: "https://www.moonchain.com/",
     chainId: 18686
   }, 
-  "Babylon": {
+  "Babylon Genesis": {
     geckoId: "babylon",
     symbol: "BABY",
     cmcId: null,
@@ -4321,6 +4321,7 @@ const chainLabelMap = {
   "ao": "AO",
   "plume_mainnet": "Plume Mainnet",
   "mxczkevm": "Moonchain",
+  "babylon": "Babylon Genesis"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

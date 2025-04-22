@@ -29170,14 +29170,15 @@ const data3: Protocol[] = [
   },
   {
     id: "3968",
-    name: "EOS RAM",
+    name: "Vaulta RAM",
+    previousNames: ["EOS RAM"],
     address: null,
     symbol: "-",
     url: "https://docs.eosnetwork.com/docs/latest/core-concepts/resources/#ram",
     description:
-      "RAM can be purchased and sold by users on the EOS blockchain. The price of RAM is determined by a Bancor algorithm that is implemented in the system contract. The price of RAM is determined by the amount of free RAM available. The less free RAM available, the more expensive it is to buy RAM.",
+      "RAM can be purchased and sold by users on the Vaulta (previous EOS) blockchain. The price of RAM is determined by a Bancor algorithm that is implemented in the system contract. The price of RAM is determined by the amount of free RAM available. The less free RAM available, the more expensive it is to buy RAM.",
     chain: "EOS",
-    logo: `${baseIconsUrl}/eos-ram.jpg`,
+    logo: `${baseIconsUrl}/vaulta-ram.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -29187,7 +29188,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "eos-ram/index.js",
-    twitter: "EOSNetworkFDN",
+    twitter: "Vaulta_",
     listedAt: 1703765158,
   },
   {

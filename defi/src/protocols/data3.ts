@@ -62047,10 +62047,11 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["TON"],
-    module: "titan/index.js",
+    module: "dummy.js",
     twitter: "TitanAggregator",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#titan-protocol",
     audit_links: ["https://docs.titan.tg/colossus-concentrated-liquidity-amm/colossus-audits"],
     listedAt: 1745245067
   },

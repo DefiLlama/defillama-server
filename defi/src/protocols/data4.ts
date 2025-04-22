@@ -11926,5 +11926,27 @@ const data4: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
   },
+  {
+    id: "6076",
+    name: "Titan Dex",
+    address: null,
+    symbol: "-",
+    url: "https://titan.tg",
+    description: `The most powerful swaps on TON.  Providing you the best prices with no fees`,
+    chain: "TON",
+    logo: `${baseIconsUrl}/titan-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["TON"],
+    module: "titan/index.js",
+    twitter: "TitanAggregator",
+    oracles: [], 
+    forkedFrom: [], 
+    parentProtocol: "parent#titan-protocol",
+    listedAt: 1745329325
+  },
 ];
 export default data4;

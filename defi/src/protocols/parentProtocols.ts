@@ -6991,6 +6991,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "bemo_finance",
   },
+  {
+    id: "parent#titan-protocol",
+    name: "Titan Protocol",
+    url: "https://titan.tg",
+    description: "The most powerful swaps on TON.  Providing you the best prices with no fees",
+    logo: `${baseIconsUrl}/titan-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TitanAggregator",
+  },
 ];
 
 export default parentProtocols;

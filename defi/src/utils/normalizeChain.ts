@@ -4129,6 +4129,15 @@ export const chainCoingeckoIds = {
     url: "https://www.moonchain.com/",
     chainId: 18686
   }, 
+  "Babylon": {
+    geckoId: "babylon",
+    symbol: "BABY",
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "babylonlabs_io",
+    github: ["babylonlabs-io"],
+    url: "https://babylonlabs.io"
+  },
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

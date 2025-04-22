@@ -30403,7 +30403,7 @@ const data3: Protocol[] = [
     category: "Partially Algorithmic Stablecoin",
     chains: ["RSK"],
     module: "rif-on-chain/index.js",
-    twitter: "rifonchain",
+    twitter: "rocprotocol",
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://github.com/money-on-chain/Audits"],

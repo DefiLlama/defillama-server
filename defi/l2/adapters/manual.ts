@@ -126,6 +126,7 @@ export const additional: { [chain: string]: string[] } = {
     "0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116", // sBTC
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc", // USDa
   ],
+  unichain: ["0x078D782b760474a361dDA0AF3839290b0EF57AD6"],
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [

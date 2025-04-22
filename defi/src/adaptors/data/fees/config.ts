@@ -3128,4 +3128,7 @@ export default {
     "amnis-finance": {
         id: "3667" 
     },
+    "kittypunch-v3": {
+        id: "6051"
+    },
 } as AdaptorsConfig

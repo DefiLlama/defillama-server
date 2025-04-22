@@ -2968,4 +2968,7 @@ export default {
     "beezie": {
         id: "6075" 
     },
+    "kittypunch-v3": {
+        id: "6051"
+    },
 } as AdaptorsConfig

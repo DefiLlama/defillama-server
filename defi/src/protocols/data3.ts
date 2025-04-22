@@ -47278,7 +47278,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["Chroncile"],
     forkedFrom: [],
     module: "jigsaw/index.js",
     twitter: "jigsawdefi",

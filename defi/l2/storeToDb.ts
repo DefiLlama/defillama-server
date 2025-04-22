@@ -176,29 +176,34 @@ export function parsePgData(timeseries: any[], chain: string, removeBreakdown: b
 export async function fetchHistoricalFromDB(chain: string = "*") {
   const sql = await iniDbConnection();
 
-  let latestOldTimestamp: string = "0";
+  let latestOldTimestamp: any = "0";
   let oldTimeseries: any[] = [];
 
-  // try {
-  //   const oldTimestampsObj = await getR2JSONString(`chain-assets-chart-timestamps-${chain}`);
-  //   const oldTimestamps: string[] = oldTimestampsObj.timestamps;
-  //   if (oldTimestamps.length) {
-  //     latestOldTimestamp = oldTimestamps[oldTimestamps.length - 1];
-  //     oldTimeseries = await queryPostgresWithRetry(
-  //       chain == "*"
-  //         ? sql`select * from chainassets where timestamp in ${sql(oldTimestamps)}`
-  //         : sql`select ${sql(chain)}, timestamp from chainassets where timestamp in ${sql(oldTimestamps)}`,
-  //       sql
-  //     );
-  //   }
-  // } catch {}
+  try {
+    const oldTimestampsObj = await getR2JSONString(`chain-assets-chart-timestamps-${chain}`);
+    const oldTimestamps: string[] = oldTimestampsObj.timestamps;
+    if (oldTimestamps.length) {
+      latestOldTimestamp = oldTimestamps[oldTimestamps.length - 1];
+      oldTimeseries = await queryPostgresWithRetry(
+        chain == "*"
+          ? sql`select * from chainassets where timestamp in ${sql(oldTimestamps)}`
+          : sql`select ${sql(chain)}, timestamp from chainassets where timestamp in ${sql(oldTimestamps)}`,
+        sql
+      );
+    }
+  } catch (e) {
+    e;
+  }
 
-  const newTimeseries = await queryPostgresWithRetry(
-    chain == "*"
-      ? sql`select * from chainassets where timestamp > ${latestOldTimestamp}`
-      : sql`select ${sql(chain)}, timestamp from chainassets where timestamp > ${latestOldTimestamp}`,
-    sql
-  );
+  const newTimeseries =
+    getCurrentUnixTimestamp() - latestOldTimestamp > 2 * secondsInADay
+      ? await queryPostgresWithRetry(
+          chain == "*"
+            ? sql`select * from chainassets where timestamp > ${latestOldTimestamp}`
+            : sql`select ${sql(chain)}, timestamp from chainassets where timestamp > ${latestOldTimestamp}`,
+          sql
+        )
+      : [];
   sql.end();
 
   const timeseries = [...oldTimeseries, ...newTimeseries];

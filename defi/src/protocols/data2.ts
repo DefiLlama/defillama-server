@@ -14450,7 +14450,7 @@ const data2: Protocol[] = [
   {
     id: "1997",
     name: "Morpho Compound",
-    address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
+    address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://compound.morpho.org/?network=mainnet",
     description:
@@ -18476,7 +18476,7 @@ const data2: Protocol[] = [
   {
     id: "2168",
     name: "Morpho Aave",
-    address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
+    address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://aavev2.morpho.org/?network=mainnet",
     description:

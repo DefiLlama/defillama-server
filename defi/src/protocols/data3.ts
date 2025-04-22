@@ -7275,7 +7275,7 @@ const data3: Protocol[] = [
   {
     id: "3014",
     name: "Morpho AaveV3",
-    address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
+    address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://aavev3.morpho.org/",
     description:
@@ -30500,7 +30500,7 @@ const data3: Protocol[] = [
   {
     id: "4025",
     name: "Morpho Blue",
-    address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
+    address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://app.morpho.org",
     description: "Morpho Blue is a trustless and efficient lending primitive with permissionless market creation",

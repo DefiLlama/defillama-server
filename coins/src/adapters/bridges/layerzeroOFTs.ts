@@ -117,7 +117,7 @@ export const OFTs: { [symbol: string]: { [chain: string]: string[] } } = {
     Fantom: ["0xcc1b99ddac1a33c201a742a1851662e87bc7f22c"],
     Lightlink: ["0x808d7c71ad2ba3fa531b068a2417c63106bc0949"],
     Ink: ["0x1cb6de532588fca4a21b7209de7c456af8434a65"],
-    "Plume Mainnet": ["0xda6087E69C51E7D31b6DBAD276a3c44703DFdCAd"],
+    "Plume Mainnet": ["0xda6087E69C51E7D31b6DBAD276a3c44703DFdCAd"]
   },
   FTM: {
     Fantom: ["\\\\n"],

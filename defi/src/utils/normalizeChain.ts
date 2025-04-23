@@ -3742,11 +3742,11 @@ export const chainCoingeckoIds = {
   "Plume": {
     geckoId: "plume",
     symbol: "PLUME",
-    cmcId: 35364,
+    cmcId: null,
     categories: ["EVM"],
     twitter: "plumenetwork",
     url: "https://plumenetwork.xyz/",
-    chainId: 98866,
+    chainId: 98865,
   },
   "EDU Chain": {
     geckoId: "edu-coin",

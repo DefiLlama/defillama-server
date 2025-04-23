@@ -5915,6 +5915,11 @@
       "decimals": "8",
       "symbol": "PUZZLE",
       "to": "coingecko#puzzle-swap"
+    },
+    "GjwAHMjqWzYR4LgoNy91CxUKAGJN79h2hseZoae4nU8t": {
+      "decimals": "8",
+      "symbol": "UNIT0",
+      "to": "coingecko#unit0"
     }
   },
   "songbird": {

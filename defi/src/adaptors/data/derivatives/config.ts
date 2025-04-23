@@ -864,4 +864,7 @@ export default {
     "ostium": {
         id: "4932",
     },
+    "vanilla-finance-perps": {
+        id: "6079",
+    },
 } as AdaptorsConfig

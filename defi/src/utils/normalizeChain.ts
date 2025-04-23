@@ -4368,7 +4368,6 @@ const newChainLabelMap = {
   "wax": "Wax",
   "unit0": "Unit Zero",
   "eos": "Vaulta",
-  "lukso": "LUKSO",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

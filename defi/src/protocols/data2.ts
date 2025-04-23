@@ -18935,11 +18935,11 @@ const data2: Protocol[] = [
     twitter: "Dolomite_io",
     forkedFrom: [],
     oraclesByChain: {
-      arbitrum: ["Chainlink"],
+      arbitrum: ["Chainlink", "Chronicle"],
       polygon_zkevm: ["Chainlink"],
       xlayer: ["Chainlink"],
       mantle: ["Chronicle"], // https://github.com/DefiLlama/defillama-server/pull/7767
-      berachain:["Chronicle"] // https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract
+      berachain:["Chronicle", "Redstone", "Chainsight"] // https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract
     },
     oraclesBreakdown: [
       {
@@ -18965,7 +18965,11 @@ const data2: Protocol[] = [
         name: "RedStone",
         type: "Fallback",
         proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general"],
-      }
+      },
+      {
+        name: "Chainsight",
+        type: "Fallback",
+        proof: ["https://berascan.com/address/0x655a589a224b091a1950dcebe9c1da4ab06b4bc1"],
     ],
     audit_links: [
       "https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite%20Margin%20-%20Cyfrin%20-%202023-08-23.pdf",

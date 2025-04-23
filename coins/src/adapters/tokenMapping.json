@@ -5770,7 +5770,7 @@
     "0x2db41674f2b882889e5e1bd09a3f3613952bc472": {
       "decimals": "18",
       "symbol": "WLYX",
-      "to": "coingecko#wrapped-lyx-universalswaps-2"
+      "to": "coingecko#wrapped-lyx-universalswaps"
     },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#lukso-token-2",
@@ -7932,6 +7932,11 @@
     }
   },
   "hyperliquid": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#hyperliquid",
+      "decimals": 18,
+      "symbol": "HYPE"
+    },
     "0x5555555555555555555555555555555555555555": {
       "to": "coingecko#hyperliquid",
       "decimals": 18,

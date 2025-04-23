@@ -18939,7 +18939,7 @@ const data2: Protocol[] = [
       polygon_zkevm: ["Chainlink"],
       xlayer: ["Chainlink"],
       mantle: ["Chronicle"], // https://github.com/DefiLlama/defillama-server/pull/7767
-      berachain:["Chronicle", "Redstone", "Chainsight"] // https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract
+      berachain:["Chronicle", "RedStone", "Chainsight"] // https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract
     },
     oraclesBreakdown: [
       {

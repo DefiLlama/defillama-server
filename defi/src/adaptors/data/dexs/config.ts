@@ -2971,4 +2971,7 @@ export default {
     "kittypunch-v3": {
         id: "6051"
     },
+    "sonicxswap": {
+        id: "6083"
+    },
 } as AdaptorsConfig

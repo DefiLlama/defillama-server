@@ -7,7 +7,7 @@ import { getR2JSONString, storeR2JSONString } from "../src/utils/r2";
 let auth: string[] = [];
 const secondsInADay = 86400;
 async function iniDbConnection() {
-  auth = process.env.COINS2_AUTH?.split(",") ?? [];
+  auth = process.env.PG_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there aren't 3 auth params");
 
   return postgres(auth[0], { idle_timeout: 90 });
@@ -293,4 +293,9 @@ export async function fetchHistoricalFlows(period: number, chain: string) {
   sql.end();
   const result = parsePgData(timeseries, chain, false);
   return findDailyEntries(result, period);
+}
+export async function fetchAllChainData(chain: string) {
+  const sql = await iniDbConnection();
+  const res: any = await queryPostgresWithRetry(sql`select ${sql(chain)}, timestamp from chainassets`, sql);
+  return res;
 }

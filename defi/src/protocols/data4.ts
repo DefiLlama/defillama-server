@@ -12030,7 +12030,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Launchpad",
     chains: ["Lukso"],
-    module: "vanillaFinance/index.js",
+    module: "universalpage/index.js",
     twitter: "_universalpage",
     oracles: [], 
     forkedFrom: [],

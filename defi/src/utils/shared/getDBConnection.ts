@@ -2,42 +2,37 @@ import postgres from "postgres";
 
 let accountsDBConnection: ReturnType<typeof postgres>;
 let errorReportsConnection: ReturnType<typeof postgres>;
-let coins2Connection: Promise<ReturnType<typeof postgres>>;
+let pgConnection: Promise<ReturnType<typeof postgres>>;
 
 export function getAccountsDBConnection() {
-  if (!accountsDBConnection)
-    accountsDBConnection = postgres(process.env.ACCOUNTS_DB!);
+  if (!accountsDBConnection) accountsDBConnection = postgres(process.env.ACCOUNTS_DB!);
 
   return accountsDBConnection;
 }
 
 export function getErrorDBConnection() {
-  if (!errorReportsConnection)
-    errorReportsConnection = postgres(process.env.ERROR_REPORTS_DB!);
+  if (!errorReportsConnection) errorReportsConnection = postgres(process.env.ERROR_REPORTS_DB!);
 
   return errorReportsConnection;
 }
 
-export async function getCoins2Connection() {
-  if (!coins2Connection) {
-    coins2Connection = new Promise(async (resolve) => {
+export async function getPgConnection() {
+  if (!pgConnection) {
+    pgConnection = new Promise(async (resolve) => {
       // @ts-ignore
-      let auth: any = process.env.COINS2_AUTH;
+      let auth: any = process.env.PG_AUTH;
       // @ts-ignore
-      auth = process.env.COINS2_AUTH?.split(",") ?? [];
-      if (!auth || auth.length != 3)
-        throw new Error(
-          "there arent 3 auth params. Cannot initialize coins2 connection.",
-        );
+      auth = process.env.PG_AUTH?.split(",") ?? [];
+      if (!auth || auth.length != 3) throw new Error("there arent 3 auth params. Cannot initialize pg connection.");
       resolve(
         postgres(auth[0], {
           idle_timeout: 90,
           // max_lifetime: 60 * 10
-        }),
+        })
       );
     });
   }
-  return coins2Connection;
+  return pgConnection;
 }
 
 export async function closeConnection() {
@@ -53,10 +48,10 @@ export async function closeConnection() {
     console.log("Error Reports DB connection closed");
   }
 
-  if (coins2Connection && (coins2Connection as any) !== "isBeingSet") {
-    console.log("Closing Coins2 DB connection");
-    await (await coins2Connection).end({ timeout: 2 });
-    console.log("Coins2 DB connection closed");
+  if (pgConnection && (pgConnection as any) !== "isBeingSet") {
+    console.log("Closing PG DB connection");
+    await (await pgConnection).end({ timeout: 2 });
+    console.log("PG DB connection closed");
   }
 }
 

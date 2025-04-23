@@ -21,6 +21,7 @@ import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFr
 import { sluggifyString } from "../../utils/sluggify"
 import { AdaptorRecordType } from '../../adaptors/db-utils/adaptor-record';
 import { storeAppMetadata } from './appMetadata';
+import { sendMessage } from '../../utils/discord';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -76,6 +77,22 @@ async function run() {
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)
 
+  if (NOTIFY_ON_DISCORD) {
+    if (spikeRecords.length) {
+      await sendMessage(`
+        Spikes detected and removed:
+      ${spikeRecords.join('\n')}
+        `, process.env.DIM_CHANNEL_WEBHOOK!)
+    }
+    if (invalidDataRecords.length) {
+      await sendMessage(`
+        Invalid records detected and removed:
+      ${invalidDataRecords.join('\n')}
+        `, process.env.DIM_CHANNEL_WEBHOOK!)
+    }
+  }
+
+  process.exit(0)
 
   // store what all metrics are available for each protocol
   const protocolSummaryMetadata: { [key: string]: Set<string> } = {}
@@ -709,6 +726,11 @@ run()
   .then(storeAppMetadata)
   .then(() => process.exit(0))
 
+const spikeRecords = [] as any[]
+const invalidDataRecords = [] as any[]
+
+const NOTIFY_ON_DISCORD = process.env.DIM_CRON_NOTIFY_ON_DISCORD === 'true'
+
 const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYPE))
 // fill all missing data with the last available data
 function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, metadata, }: { records: IJSON<any>, info?: any, adapterType: any, metadata: any, versionKey?: string }) {
@@ -730,6 +752,8 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
     const values = dataKeys.map(key => record.aggregated?.[key]?.value ?? 0)
     const improbableValue = 5e10 // 50 billion
     if (values.some((i: any) => i > improbableValue)) {
+      if (NOTIFY_ON_DISCORD)
+        invalidDataRecords.push([adapterType, metadata?.id, info?.name, timeS, values.find((i: any) => i > improbableValue)].map(i => i + ' ').join(' '))
       sdk.log('Invalid value found (removing it)', adapterType, metadata?.id, info?.name, timeS, values.find((i: any) => i > improbableValue))
       delete records[timeS]
       return;
@@ -744,6 +768,8 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
         const surroundingKeys = getSurroundingKeysExcludingCurrent(allKeys, idx)
         const highestCloseValue = surroundingKeys.map(i => records[i]?.aggregated?.[key]?.value ?? 0).filter(i => i).reduce((a, b) => Math.max(a, b), 0)
         if (highestCloseValue > 0 && currentValue > 10 * highestCloseValue) {
+          if (NOTIFY_ON_DISCORD)
+            spikeRecords.push([adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x'].map(i => i + ' ').join(' '))
           sdk.log('Spike detected (removing it)', adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')
           delete records[timeS]
           return;

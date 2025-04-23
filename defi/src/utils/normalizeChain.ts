@@ -3103,7 +3103,7 @@ export const chainCoingeckoIds = {
     url: "https://aelf.com/",
     github: ["aelfProject"],
   },
-  "Lukso": {
+  "LUKSO": {
     geckoId: "lukso-token-2",
     symbol: "LYX",
     cmcId: "27622",

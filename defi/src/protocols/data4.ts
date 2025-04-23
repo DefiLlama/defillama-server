@@ -12106,7 +12106,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/expelee-co/Smart-Contract-Audit/tree/main/SonicxSwap%20Contracts%20Audit"],
     github: ["Universal-Page"],
-    listedAt: 1745416702
+    listedAt: 1745425049
   },
 ];
 export default data4;

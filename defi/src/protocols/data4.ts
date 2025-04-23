@@ -12028,7 +12028,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Launchpad",
+    category: "Staking Pool",
     chains: ["LUKSO"],
     module: "universalpage/index.js",
     twitter: "_universalpage",

@@ -3103,7 +3103,7 @@ export const chainCoingeckoIds = {
     url: "https://aelf.com/",
     github: ["aelfProject"],
   },
-  "Lukso": {
+  "LUKSO": {
     geckoId: "lukso-token-2",
     symbol: "LYX",
     cmcId: "27622",
@@ -4367,6 +4367,7 @@ const newChainLabelMap = {
   "wax": "Wax",
   "unit0": "Unit Zero",
   "eos": "Vaulta",
+  "lukso": "LUKSO",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

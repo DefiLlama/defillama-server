@@ -4321,7 +4321,8 @@ const chainLabelMap = {
   "ao": "AO",
   "plume_mainnet": "Plume Mainnet",
   "mxczkevm": "Moonchain",
-  "babylon": "Babylon Genesis"
+  "babylon": "Babylon Genesis",
+  "lukso": "LUKSO",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

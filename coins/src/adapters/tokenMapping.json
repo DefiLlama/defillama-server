@@ -5781,6 +5781,16 @@
       "to": "coingecko#lukso-token-2",
       "decimals": 18,
       "symbol": "LYX"
+    },
+    "0x5b8b0e44d4719f8a328470dccd3746bfc73d6b14": {
+      "decimals": "18",
+      "symbol": "CHILL",
+      "to": "coingecko#chillwhales"
+    },
+    "0x650e14f636295af421d9bb788636356aa7f5924c": {
+      "to": "coingecko#fabs",
+      "decimals": 18,
+      "symbol": "FABS"
     }
   },
   "joltify": {

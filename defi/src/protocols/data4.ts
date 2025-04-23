@@ -12108,5 +12108,27 @@ const data4: Protocol[] = [
     github: ["Universal-Page"],
     listedAt: 1745425049
   },
+  {
+    id: "6084",
+    name: "Rank Trading",
+    address: null,
+    symbol: "-",
+    url: "https://rank.trading/",
+    description: `Rank establishing a marketplace where both human traders and AI agents compete and collaborate as autonomous hedge fund managers`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/rank-trading.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Binance"],
+    module: "rank-trading/index.js",
+    twitter: "ranktrading",
+    oracles: [], 
+    forkedFrom: [],
+    audit_links: ["https://hashlock.com/audits/rank-trading"],
+    listedAt: 1745437977
+  },
 ];
 export default data4;

@@ -59438,8 +59438,8 @@ const data3: Protocol[] = [
   {
     id: "5281",
     name: "Xend Finance",
-    address: null,
-    symbol: "-",
+    address: "0x4563554284aa7148d6e6d0351519e954ba3b6e02",
+    symbol: "RWA",
     url: "https://xend.finance",
     description:
       "Xend Finance, the first DeFi project out of Africa that’s backed by Binance and Google, is now evolving into a platform where any asset, tangible or intangible, can be legally tokenized and accessed by anyone, anywhere.",

@@ -92,8 +92,6 @@ async function run() {
     }
   }
 
-  process.exit(0)
-
   // store what all metrics are available for each protocol
   const protocolSummaryMetadata: { [key: string]: Set<string> } = {}
 

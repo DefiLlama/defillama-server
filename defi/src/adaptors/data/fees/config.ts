@@ -3139,4 +3139,22 @@ export default {
     "sonicxswap": {
         id: "6083"
     },
+    "m0": {
+        id: "5241"
+    },
+    "bucket-protocol": {
+        id: "3206"
+    },
+    "oogabooga": {
+        id: "5880"
+    },
+    "typus-dov": {
+        id: "2946"
+    },
+    "typus-perp": {
+        id: "6014"
+    },
+    "typus-safu": {
+        id: "5152"
+    },
 } as AdaptorsConfig

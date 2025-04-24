@@ -12239,5 +12239,26 @@ const data4: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     listedAt: 1745493830
   },
+  {
+    id: "6090",
+    name: "Excellar",
+    address: null,
+    symbol: "-",
+    url: "https://excellar.finance",
+    description: `Excellar offers institutions and enterprises yield on stablecoins and major cryptocurrencies via delta-neutral strategies. It provides APIs to purchase, redeem, and manage USDXLR and other products. Using a segregated account structure, Excellar ensures transparent asset segregation and regulatory compliance. Its products are not available in the US and other restricted jurisdictions`,
+    chain: "Stellar",
+    logo: `${baseIconsUrl}/excellar.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Stellar"],
+    module: "excellar/index.js",
+    twitter: "excellarfinance",
+    oracles: [], 
+    forkedFrom: [],
+    listedAt: 1745516313
+  },
 ];
 export default data4;

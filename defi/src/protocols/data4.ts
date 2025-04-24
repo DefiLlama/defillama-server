@@ -12314,7 +12314,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge Aggregator",
-    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Avalanche", "Binance", "Sonic", "Blast", "Swellchain", "Abstract", "Berachain", "Scroll", "xDai", "Sonieum", "Aurora", "Sei", "Fuse", "Unichain", "zkSync Era", "ApeChain", "Cronos", "Evmos", "Velas", "Taiko", "Superposition", "RSK", "Moonbeam", "Moonriver", "Boba", "Celo", "Mantle", "Ink", "Gravity", "Polygon zkEVM", "Fraxtal", "Fantom", "Lisk", "Metis", "Mode"],
+    chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Avalanche", "Binance", "Sonic", "Blast", "Swellchain", "Abstract", "Berachain", "Scroll", "xDai", "Soneium", "Aurora", "Sei", "Fuse", "Unichain", "zkSync Era", "ApeChain", "Cronos", "Evmos", "Velas", "Taiko", "Superposition", "RSK", "Moonbeam", "Moonriver", "Boba", "Celo", "Mantle", "Ink", "Gravity", "Polygon zkEVM", "Fraxtal", "Fantom", "Lisk", "Metis", "Mode"],
     module: "dummy.js",
     twitter: "lifiprotocol",
     oracles: [], 

@@ -1544,6 +1544,11 @@
       "decimals": "18",
       "symbol": "rUSD",
       "to": "coingecko#fx-rusd"
+    },
+    "0x0Fb765ddBD4d26AC524AA5990B0643D0Ab6Ac2fE": {
+      "decimals": "8",
+      "symbol": "WAVES",
+      "to": "coingecko#waves"
     }
   },
   "klaytn": {
@@ -5910,6 +5915,11 @@
       "decimals": "8",
       "symbol": "PUZZLE",
       "to": "coingecko#puzzle-swap"
+    },
+    "GjwAHMjqWzYR4LgoNy91CxUKAGJN79h2hseZoae4nU8t": {
+      "decimals": "8",
+      "symbol": "UNIT0",
+      "to": "coingecko#unit0"
     }
   },
   "songbird": {

@@ -2974,4 +2974,7 @@ export default {
     "sonicxswap": {
         id: "6083"
     },
+    "1dex": {
+        id: "6003"
+    },
 } as AdaptorsConfig

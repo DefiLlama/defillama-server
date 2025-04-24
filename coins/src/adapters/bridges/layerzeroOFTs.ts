@@ -64,7 +64,7 @@ export const OFTs: { [symbol: string]: { [chain: string]: string[] } } = {
     "Klaytn Mainnet Cypress": ["0xe2053bcf56d2030d2470fb454574237cf9ee3d4b"],
     Flare: ["0xfbda5f676cb37624f28265a144a48b0d6e87d3b6"],
     "Fuse Mainnet": ["0xc6bc407706b7140ee8eef2f86f9504651b63e7f9"],
-    Plume: ["0x3938a812c54304feffd266c7e2e70b48f9475ad6"],
+    "Plume Mainnet": ["0x60219C44E146BAf36002eA73767820238Ebc1db6"],
     Gravity: ["0xfbda5f676cb37624f28265a144a48b0d6e87d3b6"],
     "Rari Chain": ["0xfbda5f676cb37624f28265a144a48b0d6e87d3b6"],
     Degen: ["0xf1815bd50389c46847f0bda824ec8da914045d14"],

@@ -18992,7 +18992,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "JumperExchange",
-    github: ["lifinance"],
+    github: ["jumperexchange"],
   },
   {
     id: "3525",

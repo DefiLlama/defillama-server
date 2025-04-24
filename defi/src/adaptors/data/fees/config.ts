@@ -3163,4 +3163,7 @@ export default {
     "sanctum": {
         id: "3388"
     },
+    "lifi": {
+        id: "6093"
+    },
 } as AdaptorsConfig

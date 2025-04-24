@@ -7814,33 +7814,6 @@
       "symbol": "WETH"
     }
   },
-  "plume_mainnet": {
-    "0x0000000000000000000000000000000000000000": {
-      "to": "coingecko#plume",
-      "decimals": 18,
-      "symbol": "PLUME"
-    },
-    "0xEa237441c92CAe6FC17Caaf9a7acB3f953be4bd1": {
-      "to": "coingecko#plume",
-      "decimals": 18,
-      "symbol": "WPLUME"
-    }
-    "0xdddD73F5Df1F0DC31373357beAC77545dC5A6f3F": {
-      "to": "coingecko#usd-coin",
-      "decimals": 6,
-      "symbol": "pUSD"
-    },
-    "0x60219C44E146BAf36002eA73767820238Ebc1db6": {
-      "to": "coingecko#usd-coin",
-      "decimals": 6,
-      "symbol": "USDC.e"
-    },
-    "0xda6087E69C51E7D31b6DBAD276a3c44703DFdCAd": {
-      "to": "coingecko#tether",
-      "decimals": 6,
-      "symbol": "USDT"
-    },
-  },
   "sxr": {
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#sx-network-2",

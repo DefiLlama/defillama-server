@@ -294,3 +294,8 @@ export async function fetchHistoricalFlows(period: number, chain: string) {
   const result = parsePgData(timeseries, chain, false);
   return findDailyEntries(result, period);
 }
+export async function fetchAllChainData(chain: string) {
+  const sql = await iniDbConnection();
+  const res: any = await queryPostgresWithRetry(sql`select ${sql(chain)}, timestamp from chainassets`, sql);
+  return res;
+}

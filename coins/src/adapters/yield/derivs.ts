@@ -356,6 +356,25 @@ const configs: { [adapter: string]: Config } = {
     address: "0x8c213ee79581Ff4984583C6a801e5263418C4b86",
     confidence: 1,
   },
+  M: {
+    rate: async ({ api }) => {
+      const [assets, supply] = await Promise.all([
+        api.call({
+          abi: "erc20:balanceOf",
+          target: "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b",
+          params: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+        }),
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+        }),
+      ]);
+      return supply / assets;
+    },
+    chain: "ethereum",
+    underlying: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+    address: "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b",
+  },
 };
 
 export async function derivs(timestamp: number) {

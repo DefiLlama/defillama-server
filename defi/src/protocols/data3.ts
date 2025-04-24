@@ -58535,7 +58535,7 @@ const data3: Protocol[] = [
     description:
       "M^0 is decentralized money middleware that allows institutions to issue cryptodollars",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/m0.png`,
+    logo: `${baseIconsUrl}/m0.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

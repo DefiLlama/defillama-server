@@ -3160,4 +3160,7 @@ export default {
     "echo": {
         id: "6091"
     },
+    "swaps-io": {
+        id: "6092"
+    },
 } as AdaptorsConfig

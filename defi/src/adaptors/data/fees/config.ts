@@ -73,7 +73,12 @@ export default {
     },
     "gmx": {
         "id": "337",
-        parentId: "GMX"
+        parentId: "GMX",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1744070398": true
+            },
+        }
     },
     "lido": {
         "id": "182"

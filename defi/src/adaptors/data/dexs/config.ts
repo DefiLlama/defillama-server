@@ -2977,4 +2977,7 @@ export default {
     "1dex": {
         id: "6003"
     },
+    "swaps-io": {
+        id: "6092"
+    },
 } as AdaptorsConfig

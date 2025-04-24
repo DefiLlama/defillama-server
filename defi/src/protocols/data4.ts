@@ -12218,5 +12218,26 @@ const data4: Protocol[] = [
     audit_links: ["https://docs.zyf.ai/audits"],
     listedAt: 1745493197
   },
+  {
+    id: "6089",
+    name: "Haven1 Swap",
+    address: null,
+    symbol: "-",
+    url: "https://swap.haven1.org/",
+    description: `Uniswap V3 fork on Haven1 chain`,
+    chain: "Haven1",
+    logo: `${baseIconsUrl}/haven1-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Haven1"],
+    module: "haven1/index.js",
+    twitter: "Haven1official",
+    oracles: [], 
+    forkedFrom: ["Uniswap V3"],
+    listedAt: 1745493830
+  },
 ];
 export default data4;

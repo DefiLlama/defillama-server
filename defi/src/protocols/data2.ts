@@ -10004,9 +10004,28 @@ const data2: Protocol[] = [
     category: "Yield",
     chains: ["Sui", "Aptos"],
     oraclesByChain: {
-      sui: ["Supra"], // https://github.com/DefiLlama/defillama-server/pull/5169
-      aptos: ["Pyth"], // https://doc-en.mole.fi/security/oracle
+      Sui: ["Supra", "Pyth"], //https://doc-en.mole.fi/security/oracle
+      Aptos: ["Pyth"],
     },
+    oraclesBreakdown: [
+      {
+        name: "Supra",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9651"],
+        chains: [
+          {chain: "Sui"},
+        ]
+      },
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9651"],
+        chains: [
+          {chain: "Sui"},
+          {chain: "Aptos"},
+        ]
+      }
+    ],
     forkedFrom: [],
     module: "mole/index.js",
     twitter: "moledefi",

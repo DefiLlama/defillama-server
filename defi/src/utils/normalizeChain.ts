@@ -4138,6 +4138,15 @@ export const chainCoingeckoIds = {
     github: ["babylonlabs-io"],
     url: "https://babylonlabs.io"
   },
+  "Haven1": {
+    geckoId: "haven1",
+    symbol: "H1",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 8811,
+    twitter: "Haven1official",
+    url: "https://haven1.org/",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]

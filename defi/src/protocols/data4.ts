@@ -12196,5 +12196,27 @@ const data4: Protocol[] = [
     forkedFrom: [],
     listedAt: 1745492824
   },
+  {
+    id: "6088",
+    name: "ZyFAI",
+    address: "era:0x5d0d7bca050e2e98fd4a5e8d3ba823b49f39868d",
+    symbol: "ZFI",
+    url: "https://zyf.ai",
+    description: `ZyFAI is a DeFi Agent built to optimize DeFi yields with real-time data and automated on-chain actions`,
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/zyfai.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "zyfi",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Sonic"],
+    module: "zyfai/index.js",
+    twitter: "ZyfAI_",
+    oracles: [], 
+    forkedFrom: [],
+    audit_links: ["https://docs.zyf.ai/audits"],
+    listedAt: 1745493197
+  },
 ];
 export default data4;

@@ -12262,7 +12262,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6091",
-    name: "Echo",
+    name: "Echo.xyz",
     address: null,
     symbol: "-",
     url: "https://echo.xyz/",

@@ -3160,4 +3160,7 @@ export default {
     "echo": {
         id: "6091"
     },
+    "sanctum": {
+        id: "3388"
+    },
 } as AdaptorsConfig

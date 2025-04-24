@@ -12130,5 +12130,28 @@ const data4: Protocol[] = [
     audit_links: ["https://hashlock.com/audits/rank-trading"],
     listedAt: 1745437977
   },
+  {
+    id: "6085",
+    name: "Save SOL",
+    address: "solana:SLNDpmoWTVADgEdndyvWzroNL7zSi1dF9PC3xHGtPwp",
+    symbol: "SLND",
+    assetToken: "saveSOL",
+    url: "https://save.finance/saveSOL",
+    description: `Save Staked SOL (saveSOL) is an LST built by the Save team. Earn staking yields by converting your SOL into saveSOL and deposit it into Save Finance as collateral.`,
+    chain: "Solana",
+    logo: `${baseIconsUrl}/save-sol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "saveSOL/index.js",
+    twitter: "save_finance",
+    oracles: [], 
+    forkedFrom: [],
+    parentProtocol: "parent#save-protocol",
+    listedAt: 1745485876
+  },
 ];
 export default data4;

@@ -7002,6 +7002,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "TitanAggregator",
   },
+  {
+    id: "parent#save-protocol",
+    name: "Save Protocol",
+    url: "https://www.save.finance/",
+    description: "Save (formerly Solend) is an algorithmic, decentralized protocol for lending and borrowing on Solana. Lending and borrowing has proven itself as being key in a DeFi ecosystem. However, current products are slow and expensive. On Solana, Solend can scale to being 100x faster and 100x cheaper. Solend aims to be the easiest to use and most secure solution on Solana.",
+    logo: `${baseIconsUrl}/save-protocol.jpg`,
+    gecko_id: "solend",
+    cmcId: "13524",
+    chains: [],
+    twitter: "save_finance",
+    github: ["solendprotocol"],
+  },
+
 ];
 
 export default parentProtocols;

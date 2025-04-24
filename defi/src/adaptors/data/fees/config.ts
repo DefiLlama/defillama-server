@@ -3157,4 +3157,7 @@ export default {
     "typus-safu": {
         id: "5152"
     },
+    "echo": {
+        id: "6091"
+    },
 } as AdaptorsConfig

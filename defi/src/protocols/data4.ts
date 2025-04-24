@@ -12260,5 +12260,25 @@ const data4: Protocol[] = [
     forkedFrom: [],
     listedAt: 1745516313
   },
+  {
+    id: "6091",
+    name: "Echo",
+    address: null,
+    symbol: "-",
+    url: "https://echo.xyz/",
+    description: `Echo.xyz is an on-chain private investment platform that enables qualified investors to fund startups directly through blockchain transactions`,
+    chain: "Base",
+    logo: `${baseIconsUrl}/echo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "echodotxyz",
+    oracles: [], 
+    forkedFrom: [],
+  },
 ];
 export default data4;

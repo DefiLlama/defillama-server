@@ -20,9 +20,9 @@ export async function getPgConnection() {
   if (!pgConnection) {
     pgConnection = new Promise(async (resolve) => {
       // @ts-ignore
-      let auth: any = process.env.PG_AUTH;
+      let auth: any = process.env.COINS2_AUTH;
       // @ts-ignore
-      auth = process.env.PG_AUTH?.split(",") ?? [];
+      auth = process.env.COINS2_AUTH?.split(",") ?? [];
       if (!auth || auth.length != 3) throw new Error("there arent 3 auth params. Cannot initialize pg connection.");
       resolve(
         postgres(auth[0], {

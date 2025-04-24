@@ -54,7 +54,7 @@ type ChangedAdapter = { to: string; from: string; change: number };
 let auth: string[];
 
 async function generateAuth() {
-  auth = process.env.PG_AUTH?.split(",") ?? [];
+  auth = process.env.COINS2_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 }
 async function queryPostgresWithRetry(

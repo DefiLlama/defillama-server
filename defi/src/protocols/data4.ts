@@ -12252,7 +12252,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "RWA",
+    category: "Basis Trading",
     chains: ["Stellar"],
     module: "excellar/index.js",
     twitter: "excellarfinance",

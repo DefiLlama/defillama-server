@@ -880,13 +880,7 @@ export default {
         "id": "2299"
     },
     "cetus": {
-        parentId: "Cetus",
         "id": "2289",
-        protocolsData: {
-            "cetus": {
-                "id": "2289",
-            }
-        }
     },
     "opx-finance": {
         "id": "2256"
@@ -2912,7 +2906,7 @@ export default {
         id: "5966"
     },
     "justbet": {
-        id:"5950"
+        id: "5950"
     },
     "katana-v3": {
         id: "5972"
@@ -2924,7 +2918,7 @@ export default {
         id: "5982"
     },
     "verus": {
-        id: "5601" 
+        id: "5601"
     },
     "haedal": {
         id: "5784"
@@ -2960,13 +2954,13 @@ export default {
         id: "4582"
     },
     "zora-sofi": {
-        id: "6069" 
+        id: "6069"
     },
     "launchlab": {
-        id: "6074" 
+        id: "6074"
     },
     "beezie": {
-        id: "6075" 
+        id: "6075"
     },
     "kittypunch-v3": {
         id: "6051"

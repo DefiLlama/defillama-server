@@ -3169,4 +3169,7 @@ export default {
     "humanfi": {
         id: "6094"
     },
+    "launchlab": {
+        id: "6074"
+    },
 } as AdaptorsConfig

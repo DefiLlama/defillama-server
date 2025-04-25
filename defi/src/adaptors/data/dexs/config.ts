@@ -2974,4 +2974,7 @@ export default {
     "swaps-io": {
         id: "6092"
     },
+    "humanfi": {
+        id: "6094"
+    },
 } as AdaptorsConfig

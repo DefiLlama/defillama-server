@@ -3166,4 +3166,7 @@ export default {
     "lifi": {
         id: "6093"
     },
+    "humanfi": {
+        id: "6094"
+    },
 } as AdaptorsConfig

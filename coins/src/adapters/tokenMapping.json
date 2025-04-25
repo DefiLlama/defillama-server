@@ -7947,6 +7947,11 @@
     }
   },
   "hyperliquid": {
+    "0x1Ecd15865D7F8019D546f76d095d9c93cc34eDFa": {
+      "to": "coingecko#liquidlaunch",
+      "decimals": 18,
+      "symbol": "LIQD"
+    },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#hyperliquid",
       "decimals": 18,

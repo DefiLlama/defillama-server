@@ -54,13 +54,9 @@ async function main() {
     } as any
     let success = true
     const startTime = getUnixTimeNow()
-    
     let protocolName = protocol.name
-    if (protocolName)
-      runningSet.add(protocolName)
 
-    
-    
+
     try {
       const staleCoins: StaleCoins = {};
       const adapterModule = importAdapterDynamic(protocol)
@@ -76,9 +72,16 @@ async function main() {
       await getCurrentBlock({ adapterModule, catchOnlyStaleRPC: true, })
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       // await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
+
+      if (protocolName) runningSet.add(protocolName)
+
+
       await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', })
       staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
+
+      if (protocolName) runningSet.delete(protocolName)
+
       console.log('FAILED: ', protocol?.name, e?.message)
       failed++
 
@@ -113,7 +116,7 @@ async function main() {
     timeTaken += timeTakenI
     const avgTimeTaken = timeTaken / ++i
     if (protocolName) runningSet.delete(protocolName)
-    
+
     console.log('                   Still running:', Array.from(runningSet).join(', '), '...')
     console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
   }

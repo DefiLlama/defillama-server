@@ -6,7 +6,6 @@ const { setTomlFile } = require('../utils/r2')
 
 const path = require('path');
 const toml = require('@iarna/toml');
-const { exec } = require('child_process');
 let orgData = []
 let allOrgData = []
 let repoOrgs = []
@@ -44,7 +43,7 @@ async function cloneRepo() {
   await git.clone(repoUrl, repoDir, { '--depth': 1 })
   // git.cwd(path.join(repoPath, 'crypto-ecosystems'))
   sdk.log('Cloned repo')
-  // crawlAndParseTomlFiles(path.join(repoDir, 'data', 'ecosystems'))
+  crawlAndParseTomlFiles(path.join(repoDir, 'data', 'ecosystems'))
   sdk.log('Parsed TOML files')
   Object.keys(ecosystemData).forEach(consolidateOrgData)
   Object.keys(ecosystemData).forEach(i => i.orgs = getUnique(i.orgs))
@@ -62,34 +61,8 @@ async function cloneRepo() {
   })
   sdk.log(orgData.length, Object.keys(repos).length, Object.keys(ecosystemData).length)
   const tomlFile = { orgData, repos, ecosystemData }
-  // await setTomlFile(tomlFile)
-  // cache.writeJSON('tomlData.json', tomlFile, { compressed: false })
-
-
-
-async function getAllRepoData() {
-  const command = 'run.sh export res.jsonl';
-  sdk.log(`Executing command: ${command} in directory: ${repoDir}`);
-  await new Promise((resolve, reject) => {
-    exec(command, { cwd: repoDir }, (error, stdout, stderr) => {
-      if (error) {
-        sdk.log(`Error executing command: ${error.message}`);
-        reject(error);
-        return;
-      }
-      if (stderr) {
-        sdk.log(`Command stderr: ${stderr}`);
-      }
-      sdk.log(`Command stdout: ${stdout}`);
-      resolve();
-    });
-  })
-  const jsonLdata = fs.readFileSync(path.join(repoDir, 'res.jsonl'), 'utf8');
-  const lines = jsonLdata.split('\n');
-  const jsonData = lines.map(line => JSON.parse(line))
-  console.log(jsonData.length)
-  return jsonData
-}
+  await setTomlFile(tomlFile)
+  cache.writeJSON('tomlData.json', tomlFile, { compressed: false })
 }
 
 let i = 0

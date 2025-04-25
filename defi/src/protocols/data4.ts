@@ -12174,6 +12174,7 @@ const data4: Protocol[] = [
     oracles: [], 
     forkedFrom: [],
     github: ["crypto-pepe"],
+    parentProtocol: "parent#pepeteam",
     listedAt: 1745492701
   },
   {

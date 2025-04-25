@@ -3172,4 +3172,10 @@ export default {
     "launchlab": {
         id: "6074"
     },
+    "sanctum-infinity": {
+        id: "4368"
+    },
+    "sanctum-validator-lsts": {
+        id: "4371"
+    },
 } as AdaptorsConfig

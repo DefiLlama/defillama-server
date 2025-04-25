@@ -12134,8 +12134,8 @@ const data4: Protocol[] = [
   {
     id: "6085",
     name: "Save SOL",
-    address: "solana:SLNDpmoWTVADgEdndyvWzroNL7zSi1dF9PC3xHGtPwp",
-    symbol: "SLND",
+    address: "solana:SAVEaeeqeXNKYb4Lyx28DkUms5gyZ76vGa6fCfdzWfK",
+    symbol: "SAVE",
     assetToken: "saveSOL",
     url: "https://save.finance/saveSOL",
     description: `Save Staked SOL (saveSOL) is an LST built by the Save team. Earn staking yields by converting your SOL into saveSOL and deposit it into Save Finance as collateral.`,

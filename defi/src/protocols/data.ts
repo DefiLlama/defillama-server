@@ -7652,8 +7652,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "458",
     name: "Save", // previous Solend
-    address: "solana:SLNDpmoWTVADgEdndyvWzroNL7zSi1dF9PC3xHGtPwp",
-    symbol: "SLND",
+    address: "solana:SAVEaeeqeXNKYb4Lyx28DkUms5gyZ76vGa6fCfdzWfK",
+    symbol: "SAVE",
     url: "https://www.save.finance/",
     description:
       "Save (formerly Solend) is an algorithmic, decentralized protocol for lending and borrowing on Solana. Lending and borrowing has proven itself as being key in a DeFi ecosystem. However, current products are slow and expensive. On Solana, Solend can scale to being 100x faster and 100x cheaper. Solend aims to be the easiest to use and most secure solution on Solana.",

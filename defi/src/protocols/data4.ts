@@ -12388,7 +12388,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["CORE"],
-    module: "dummy.js",
+    module: "nawa/index.js",
     twitter: "nawafinance",
     oracles: [], 
     forkedFrom: [],

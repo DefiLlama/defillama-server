@@ -261,7 +261,11 @@ export async function storeGetCharts({ ...options }: any = {}) {
 
   if (options.isApi2CronProcess) {
     const data = await getHistoricalTvlForAllProtocols(false, false, { ...options, storeMeta: true });
-    await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/meta.json", JSON.stringify(data))
+    await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/meta.json", JSON.stringify({
+      excludedProcolsIds: data.excludedProcolsIds,
+      lastDailyTimestamp: data.lastDailyTimestamp,
+      doublecountedProtocolIds: data.doublecountedProtocolIds
+    }))
     await writeToPGCache(PG_CACHE_KEYS.HISTORICAL_TVL_DATA_META, data);
     // TODO: I hope cache/getHistoricalTvlForAllProtocols/false-true.json is not used anywhere else
   } else {

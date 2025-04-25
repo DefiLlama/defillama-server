@@ -459,6 +459,7 @@ export default async function getTokenPrices(
       const customDecimals: { [SY: string]: number } = {
         "0xec30e55b51d9518cfcf5e870bcf89c73f5708f72": 8,
         "0xd5cf704dc17403343965b4f9cd4d7b5e9b20cc52": 8,
+        "0x068def65b9dbaff02b4ee54572a9fa7dfb188ea3": 3,
       };
 
       const price =

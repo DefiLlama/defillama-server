@@ -18953,18 +18953,11 @@ const data2: Protocol[] = [
     module: "dolomite/index.js",
     twitter: "Dolomite_io",
     forkedFrom: [],
-    oraclesByChain: {
-      arbitrum: ["Chainlink"],
-      polygon_zkevm: ["Chainlink"],
-      xlayer: ["Chainlink"],
-      mantle: ["Chronicle"], // https://github.com/DefiLlama/defillama-server/pull/7767
-      berachain:["Chronicle"] // https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract
-    },
     oraclesBreakdown: [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/7767"],
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/7767","https://app.dolomite.io/balances"],
         chains: [
           {chain: "Arbitrum"},
           {chain: "Polygon zkEVM"},
@@ -18974,16 +18967,26 @@ const data2: Protocol[] = [
       {
         name: "Chronicle",
         type: "Primary",
-        proof: ["https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract"], // check oracles using oracleByToken fn
+        proof: ["https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract"], 
         chains: [
           {chain: "Mantle"},
-          {chain: "Berachain"}
         ]
       },
       {
         name: "RedStone",
-        type: "Fallback",
-        proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general"],
+        type: "Primary",
+        proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general","https://app.dolomite.io/balances"],
+        chains: [
+          {chain: "Berachain"}
+        ]
+      },
+      {
+        name: "Chainsight",
+        type: "Secondary",
+        proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general","https://app.dolomite.io/balances"],
+        chains: [
+          {chain: "Berachain"}
+        ]
       }
     ],
     audit_links: [

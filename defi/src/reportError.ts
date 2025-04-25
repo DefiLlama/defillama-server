@@ -11,7 +11,7 @@ export async function reportError({ message, protocol, dataType, correctSource, 
   insert into errorReports (
     time, protocol, dataType, message, correctSource, contact
   ) values (
-    ${getCurrentUnixTimestamp()}, ${protocol}, ${dataType}, ${message}, ${correctSource}, ${contact}
+    ${getCurrentUnixTimestamp()}, ${protocol}, ${dataType ?? null}, ${message ?? null}, ${correctSource ?? null}, ${contact ?? null}
   )`
     await sendMessage(
       `Protocol: ${protocol}

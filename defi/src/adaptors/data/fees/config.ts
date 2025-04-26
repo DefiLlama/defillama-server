@@ -3178,4 +3178,7 @@ export default {
     "sanctum-validator-lsts": {
         id: "4371"
     },
+    "socket": {
+        id: "6097"
+    },
 } as AdaptorsConfig

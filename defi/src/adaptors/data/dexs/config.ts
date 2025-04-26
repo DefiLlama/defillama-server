@@ -2982,4 +2982,7 @@ export default {
     "humanfi": {
         id: "6094"
     },
+    "mosaic-amm": {
+        id: "6098"
+    },
 } as AdaptorsConfig

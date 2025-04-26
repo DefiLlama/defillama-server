@@ -3181,4 +3181,7 @@ export default {
     "socket": {
         id: "6097"
     },
+    "mosaic-amm": {
+        id: "6098"
+    },
 } as AdaptorsConfig

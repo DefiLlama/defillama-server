@@ -2957,7 +2957,12 @@ export default {
         id: "6069"
     },
     "launchlab": {
-        id: "6074"
+        id: "6074",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1745539200": true,
+            }
+        }
     },
     "beezie": {
         id: "6075"

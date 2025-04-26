@@ -7631,14 +7631,15 @@ const data4: Protocol[] = [
   },
   {
     id: "5890",
-    name: "Mosaic",
+    name: "Mosaic Aggregator",
+    // previousNames: ["Mosaic"],
     address: null,
     symbol: "-",
     url: "https://mosaic.ag",
     description:
       "Mosaic is a DEX aggregator and AMM-based DEX built on Movement, designed to give users the best possible swap outcomes across the ecosystem. By combining smart routing with native liquidity, Mosaic ensures optimized trades, deeper markets, and a smoother DeFi experience—all from a single interface.",
     chain: "Movement",
-    logo: `${baseIconsUrl}/mosaic.jpg`,
+    logo: `${baseIconsUrl}/mosaic-aggregator.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -7646,9 +7647,10 @@ const data4: Protocol[] = [
     category: "DEX Aggregator",
     chains: ["Movement"],
     forkedFrom: [],
-    module: "mosaic/index.js",
+    module: "dummy.js",
     twitter: "mosaicagg",
     audit_links: ["https://github.com/MosaicAG/mosaic-audits"],
+    parentProtocol: "parent#mosaic",
     listedAt: 1744384037
   },
   {
@@ -12415,6 +12417,29 @@ const data4: Protocol[] = [
     twitter: "SOCKETProtocol",
     oracles: [], 
     forkedFrom: [],
+  },
+  {
+    id: "6098",
+    name: "Mosaic AMM",
+    address: null,
+    symbol: "-",
+    url: "https://mosaic.ag",
+    description:
+      "Mosaic is a DEX aggregator and AMM-based DEX built on Movement, designed to give users the best possible swap outcomes across the ecosystem. By combining smart routing with native liquidity, Mosaic ensures optimized trades, deeper markets, and a smoother DeFi experience—all from a single interface.",
+    chain: "Movement",
+    logo: `${baseIconsUrl}/mosaic-amm.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexs",
+    chains: ["Movement"],
+    forkedFrom: [],
+    module: "mosaic/index.js",
+    twitter: "mosaicagg",
+    audit_links: ["https://github.com/MosaicAG/mosaic-audits"],
+    parentProtocol: "parent#mosaic",
+    listedAt: 1744384037
   },
 ];
 export default data4;

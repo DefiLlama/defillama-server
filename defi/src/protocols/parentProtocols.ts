@@ -7014,6 +7014,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "save_finance",
     github: ["solendprotocol"],
   },
+  {
+    id: "parent#mosaic",
+    name: "Mosaic",
+    url: "https://mosaic.ag",
+    description: "Mosaic is a DEX aggregator and AMM-based DEX built on Movement, designed to give users the best possible swap outcomes across the ecosystem. By combining smart routing with native liquidity, Mosaic ensures optimized trades, deeper markets, and a smoother DeFi experience—all from a single interface.",
+    logo: `${baseIconsUrl}/save-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "mosaicagg",
+  },
 
 ];
 

@@ -20514,7 +20514,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/ton-locker.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "the-open-network",
+    gecko_id: null,
     cmcId: null,
     category: "Chain",
     chains: ["TON"],

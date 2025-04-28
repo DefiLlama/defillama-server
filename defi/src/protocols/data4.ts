@@ -12550,7 +12550,7 @@ const data4: Protocol[] = [
     description:
       "Launch frictionless Web3 apps with low fees and instant transactions",
     chain: "Flow",
-    logo: `${baseIconsUrl}/tron.jpg`,
+    logo: `${baseIconsUrl}/flow.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "flow",

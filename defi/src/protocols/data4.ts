@@ -10481,7 +10481,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "Yield",
     chains: ["Sonic"],
     forkedFrom: [],
     module: "stablejack-scusd/index.js",

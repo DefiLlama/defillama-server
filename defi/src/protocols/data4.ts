@@ -12561,5 +12561,25 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "flow_blockchain",
   },
+  {
+    id: "6105",
+    name: "Sonic",
+    address: null,
+    symbol: "-",
+    url: "https://www.soniclabs.com",
+    description:
+      "Sonic is the highest-performing EVM L1, combining speed, incentives, and world-class infrastructure. Powered by S.",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/sonic.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "sonic-3",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Sonic"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "SonicLabs",
+  },
 ];
 export default data4;

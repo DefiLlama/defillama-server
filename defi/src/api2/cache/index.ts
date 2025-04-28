@@ -14,7 +14,7 @@ import PromisePool from "@supercharge/promise-pool";
 import { getProtocolAllTvlData } from "../utils/cachedFunctions";
 // import { getDimensionsCacheV2, } from "../utils/dimensionsUtils";
 import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
-import { RUN_TYPE } from "../utils";
+import { roundNumbersInObject, RUN_TYPE } from "../utils";
 
 export const cache: {
   metadata: {
@@ -103,6 +103,7 @@ export async function initCache({ cacheType = RUN_TYPE.API_SERVER }: { cacheType
       updateAllTvlData(cacheType),
     ])
     addChildProtocolNames()
+    cache.allTvlData = roundNumbersInObject(cache.allTvlData)
   }
 
 

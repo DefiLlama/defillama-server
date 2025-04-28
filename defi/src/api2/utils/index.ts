@@ -73,3 +73,16 @@ export function getObjectKeyCount(obj: any) {
   }
   return count
 }
+
+export function roundNumbersInObject(obj: any): any {
+  if (typeof obj === 'number') {
+    return Math.round(obj);
+  } else if (Array.isArray(obj)) {
+    return obj.map(roundNumbersInObject);
+  } else if (typeof obj === 'object' && obj !== null) {
+    return Object.fromEntries(
+      Object.entries(obj).map(([key, value]) => [key, roundNumbersInObject(value)])
+    );
+  }
+  return obj;
+}

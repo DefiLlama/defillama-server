@@ -35,7 +35,6 @@ async function run() {
   await initCache({ cacheType: RUN_TYPE.CRON  })
   await initializeProtocolDataMap()
   await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, cache)
-  await writeToPGCache('debug-protocolDataMap', protocolDataMap) // TODO: remove this
 
 
   const processProtocolsOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {

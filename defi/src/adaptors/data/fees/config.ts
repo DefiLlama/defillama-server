@@ -3184,6 +3184,9 @@ export default {
     "mosaic-amm": {
         id: "6098"
     },
+    "lobbyfi": {
+        id: "6109"
+    },
     "assetchain-swap": {
         id: "5324"
     },

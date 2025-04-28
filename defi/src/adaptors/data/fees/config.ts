@@ -3184,4 +3184,10 @@ export default {
     "mosaic-amm": {
         id: "6098"
     },
+    "assetchain-swap": {
+        id: "5324"
+    },
+    "1dex": {
+        id: "6003"
+    },
 } as AdaptorsConfig

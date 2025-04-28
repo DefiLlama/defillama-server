@@ -11461,7 +11461,7 @@ const data2: Protocol[] = [
     description:
       "Swap tokens, earn fees as a liquidity provider, and build on the Internet Computer's Automated Market Maker (AMM)",
     chain: "ICP",
-    logo: `${baseIconsUrl}/sonic.jpg`,
+    logo: `${baseIconsUrl}/sonic-icp.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "sonic-2",

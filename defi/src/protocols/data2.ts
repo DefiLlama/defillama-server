@@ -18953,6 +18953,13 @@ const data2: Protocol[] = [
     module: "dolomite/index.js",
     twitter: "Dolomite_io",
     forkedFrom: [],
+    oraclesByChain: {
+      arbitrum: ["Chainlink"],
+      polygon_zkevm: ["Chainlink"],
+      xlayer: ["Chainlink"],
+      mantle: ["Chronicle"],
+      berachain: ["RedStone"],
+    },
     oraclesBreakdown: [
       {
         name: "Chainlink",

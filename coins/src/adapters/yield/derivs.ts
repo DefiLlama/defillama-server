@@ -375,6 +375,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x437cc33344a0B27A429f795ff6B469C72698B291",
     address: "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b",
   },
+  mHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:exchangeRateToUnderlying",
+        target: "0xdAbB040c428436d41CECd0Fb06bCFDBAaD3a9AA8",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x0d01dc56dcaaca66ad901c959b4011ec",
+    address: "0xdAbB040c428436d41CECd0Fb06bCFDBAaD3a9AA8",
+  },
 };
 
 export async function derivs(timestamp: number) {

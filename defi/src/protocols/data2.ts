@@ -11454,7 +11454,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1867",
-    name: "Sonic",
+    name: "Sonic ICP", // previously Sonic
     address: "icp:lcyu6-siaaa-aaaah-adk2a-cai",
     symbol: "SONIC",
     url: "https://sonic.ooo",

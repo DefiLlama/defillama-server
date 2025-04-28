@@ -2985,4 +2985,7 @@ export default {
     "mosaic-amm": {
         id: "6098"
     },
+    "goosefx_v2": {
+        id: "5998"
+    },
 } as AdaptorsConfig

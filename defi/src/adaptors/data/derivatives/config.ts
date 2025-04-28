@@ -841,6 +841,7 @@ export default {
         id: "4400"
     },
     "goosefx_v2": {
+        enabled: false, // team asked to have adapter moved to dexs config
         id: "5998"
     },
     "zo": {

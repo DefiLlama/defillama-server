@@ -105,6 +105,8 @@ export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdaptorRecordType.dailyCreatorRevenue]: AdaptorRecordType.totalCreatorRevenue,
     [AdaptorRecordType.dailySupplySideRevenue]: AdaptorRecordType.totalSupplySideRevenue,
     [AdaptorRecordType.dailyProtocolRevenue]: AdaptorRecordType.totalProtocolRevenue,
+    [AdaptorRecordType.dailyBribesRevenue]: AdaptorRecordType.totalBribesRevenue,
+    [AdaptorRecordType.dailyTokenTaxes]: AdaptorRecordType.totalTokenTaxes,
 }
 
 const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {

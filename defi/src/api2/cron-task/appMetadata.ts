@@ -512,6 +512,38 @@ async function _storeAppMetadata() {
       }
     }
 
+    for (const protocol of feeBribeRevenueData.protocols) {
+      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+
+      finalProtocols[protocol.defillamaId] = {
+        ...finalProtocols[protocol.defillamaId],
+        bribeRevenue: true
+      }
+
+      if (protocol.parentProtocol) {
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          bribeRevenue: true
+        }
+      }
+    }
+
+    for (const protocol of feeTokenTaxData.protocols) {
+      if (!protocol.totalAllTime) continue; // skip if this totalAllTime field is missing
+
+      finalProtocols[protocol.defillamaId] = {
+        ...finalProtocols[protocol.defillamaId],
+        tokenTax: true
+      }
+
+      if (protocol.parentProtocol) {
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          tokenTax: true
+        }
+      }
+    }
+
     for (const chain of feesData.allChains ?? []) {
       finalChains[slug(chain)] = {
         ...(finalChains[slug(chain)] ?? { name: chain }),

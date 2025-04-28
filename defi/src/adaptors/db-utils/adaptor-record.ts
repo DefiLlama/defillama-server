@@ -35,6 +35,8 @@ export enum AdaptorRecordType {
     totalProtocolRevenue = "tpr",
     totalHoldersRevenue = "thr",
     totalCreatorRevenue = "tcr",
+    totalBribesRevenue = "tbr",
+    totalTokenTaxes = "ttt",
 
     dailyBridgeVolume = "dbv",
     totalBridgeVolume = "tbv",

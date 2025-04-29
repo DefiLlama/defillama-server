@@ -12762,7 +12762,7 @@ const data4: Protocol[] = [
     symbol: "YAKA",
     url: "https://yaka.finance/",
     description:
-      "Yaka Finance is Sei network's native ve(3,3) DEX integrating Algebra Integral's concentrated liquidity framework with Gamma Strategies' automated management system. ",
+      "Yaka Finance is Sei network's native ve(3,3) DEX integrating Algebra Integral's concentrated liquidity framework with Gamma Strategies' automated management system.",
     chain: "Sei",
     logo: `${baseIconsUrl}/yaka-v3.jpg`,
     audits: "0",
@@ -12774,6 +12774,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "yakafinance-v3/index.js",
     twitter: "YakaFinance",
+    parentProtocol: "parent#yaka-finance",
     listedAt: 1745939395,
   },
 ];

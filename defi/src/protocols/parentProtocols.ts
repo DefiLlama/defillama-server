@@ -7037,6 +7037,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TholgarFi",
     github: ["astrodevs-labs","tholgar-finance"],
   },
+  {
+    id: "parent#yaka-finance",
+    name: "Yaka Finance",
+    url: "https://mosaic.ag",
+    description: "Yaka Finance is Sei network's native ve(3,3) DEX integrating Algebra Integral's concentrated liquidity framework with Gamma Strategies' automated management system",
+    logo: `${baseIconsUrl}/yaka-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "YakaFinance",
+  },
 ];
 
 export default parentProtocols;

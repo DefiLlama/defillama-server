@@ -50102,7 +50102,8 @@ const data3: Protocol[] = [
   },
   {
     id: "4871",
-    name: "Yaka Finance",
+    name: "Yaka V2",
+    //previousNames: ["Yaka Finance"],
     address: null,
     symbol: "-",
     url: "https://yaka.finance",
@@ -50121,6 +50122,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.beosin.com/audits/YAKA_202405231200.pdf"],
+    parentProtocol: "parent#yaka-finance",
     listedAt: 1720774333,
   },
   {

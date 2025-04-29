@@ -469,7 +469,7 @@ export default async function getTokenPrices(
       const price =
         (underlying.price * exchangeRates[m]) /
         10 **
-          (SYs[i] in customDecimals && exceptions.includes(m)
+          (SYs[i] in customDecimals && exceptions.includes(m.toLowerCase())
             ? customDecimals[SYs[i]]
             : underlying.decimals);
 

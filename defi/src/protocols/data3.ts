@@ -28682,6 +28682,10 @@ const data3: Protocol[] = [
     twitter: "DesynLab",
     audit_links: ["https://desynprotocol.gitbook.io/docs/security/audit-report"],
     parentProtocol: "parent#desyn-protocol",
+    tokensExcludedFromParent: {
+      AILayer: ["BFBTC"],
+      Bitlayer: ["WBTC"],
+    },
     listedAt: 1703178529,
   },
   {
@@ -49228,6 +49232,10 @@ const data3: Protocol[] = [
     module: "desyn-yieldAggregator/index.js",
     twitter: "DesynLab",
     parentProtocol: "parent#desyn-protocol",
+    tokensExcludedFromParent: {
+      AILayer: ["BFBTC"],
+      Hemi: ["BFBTC"],
+    },
     listedAt: 1719915986,
   },
   {

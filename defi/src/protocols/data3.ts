@@ -47045,7 +47045,7 @@ const data3: Protocol[] = [
     module: "tradoor/index.js",
     twitter: "tradoor_io",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.tradoor.io/tradoor-user-guide-v2/others/oracle-data
     audit_links: ["https://docs.tradoor.io/audits"],
     github: ["TonTradoor"],
     listedAt: 1717758106,

@@ -32466,7 +32466,7 @@ const data3: Protocol[] = [
     oracles: ["Pyth", "Chainlink"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/8865
     forkedFrom: [],
     module: "avantisfi/index.js",
-    twitter: "avantisfinance",
+    twitter: "avantisfi",
     audit_links: [
       "https://586275454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F76vAZHPcNKY10NzuKsC4%2Fuploads%2FQugrQyVYa7gCMa8FUQdy%2FAvantis_-_Zellic_Audit_Report.pdf?alt=media&token=6c659734-a0f8-4190-b020-bf0c9ce2d9ab",
       "https://586275454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F76vAZHPcNKY10NzuKsC4%2Fuploads%2Fap10BwpWhzNMappneMgr%2FAvantis%20audit%20report.pdf?alt=media&token=cf670d4b-e0ff-48b0-be2c-42a415c74e61",

@@ -7025,7 +7025,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "mosaicagg",
   },
-
+  {
+    id: "parent#tholgar",
+    name: "Tholgar Protocol",
+    url: "https://mosaic.ag",
+    description: "The governance tokens yielder. Pioneering Synergy with Paladin_vote",
+    logo: `${baseIconsUrl}/tholgar-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TholgarFi",
+    github: ["astrodevs-labs","tholgar-finance"],
+  },
 ];
 
 export default parentProtocols;

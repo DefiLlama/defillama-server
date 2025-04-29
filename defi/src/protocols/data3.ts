@@ -19600,7 +19600,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "TholgarFi",
-    github: ["astrodevs-labs"],
+    parentProtocol: "parent#tholgar",
     listedAt: 1695474711,
   },
   {

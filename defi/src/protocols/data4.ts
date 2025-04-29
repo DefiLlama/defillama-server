@@ -12711,7 +12711,7 @@ const data4: Protocol[] = [
     forkedFrom: [],
     module: "tholgar-rings-autovoter/index.js",
     twitter: "TholgarFi",
-    github: ["tholgar-finance"],
+    parentProtocol: "parent#tholgar",
     listedAt: 1745857297,
   },
 ];

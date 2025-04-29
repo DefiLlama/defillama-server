@@ -12591,7 +12591,7 @@ const data4: Protocol[] = [
       "Cyclo enables users to access leverage by locking collateral and minting tradable tokens, without relying on lending pools, interest rates, or liquidation risks",
     chain: "Flare",
     logo: `${baseIconsUrl}/cyclo.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

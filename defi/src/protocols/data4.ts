@@ -12714,5 +12714,25 @@ const data4: Protocol[] = [
     parentProtocol: "parent#tholgar",
     listedAt: 1745857297,
   },
+  {
+    id: "6112",
+    name: "RedStone Finance",
+    address: null,
+    symbol: "-",
+    url: "Modular oracles for DeFi & institutions.",
+    description:
+      "An auto voter on top of Rings. It let users enjoy the high rewards of Rings's vote incentives without the hustle to vote each week and having to swap multiple tokens",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/redstone-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "redstone-oracles",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "redstone_defi",
+  },
 ];
 export default data4;

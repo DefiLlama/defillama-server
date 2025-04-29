@@ -31727,17 +31727,22 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Solana"],
-    oracles: ["Edge"], // https://station.jup.ag/guides/perpetual-exchange/how-it-works#oracle
+    oracles: ["Edge", "Pyth", "Chainlink"], // https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles
     oraclesBreakdown: [
       {
         name: "Edge",
-        type: "Primary",
-        proof: ["https://station.jup.ag/guides/perpetual-exchange/how-it-works#oracle"]
+        type: "Aggregator",
+        proof: ["https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles"]
       },
       {
         name: "Pyth",
-        type: "Fallback",
-        proof: ["https://station.jup.ag/guides/perpetual-exchange/how-it-works#working-together-with-pyth-oracle"]
+        type: "Aggregator",
+        proof: ["https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles"]
+      },
+      {
+        name: "Chainlink",
+        type: "Aggregator",
+        proof: ["https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles"]
       },
     ],
     forkedFrom: [],

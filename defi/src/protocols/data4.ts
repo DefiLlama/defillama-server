@@ -12296,7 +12296,7 @@ const data4: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "AI Agents",
+    category: "Bridge",
     chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon", "Base", "Avalanche", "Binance", "Sonic", "Blast"],
     module: "dummy.js",
     twitter: "swaps_io",

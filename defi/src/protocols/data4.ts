@@ -10623,7 +10623,7 @@ const data4: Protocol[] = [
     module: "felix/index.js",
     twitter: "felixprotocol",
     forkedFrom: ["Liquity V2"],
-    oracles: [],
+    oracles: ["RedStone"], //https://usefelix.gitbook.io/felix-docs/advanced/risk-management#redstone-oracles
     audit_links: ["https://usefelix.gitbook.io/felix-docs/advanced/smart-contract-audits#felix-audits"],
     listedAt: 1744135586
   },

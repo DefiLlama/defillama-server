@@ -12879,5 +12879,24 @@ const data4: Protocol[] = [
     twitter: "Unilendone",
     listedAt: 1746008832
   },
+  {
+    id: "6120",
+    name: "ACI", // whitelist url and can also have fees
+    address: null,
+    symbol: "-",
+    url: "https://apps.aavechan.com/",
+    description: "Established in the dawn of 2023, the ACI stands as one of the driving force behind the Aave protocol. We amplify your voice within the Aave DAO community and want to lead by example, catalysing progress with a steadfast focus on results.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/aci.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "AaveChan",
+  },
 ];
 export default data4;

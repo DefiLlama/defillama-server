@@ -2955,9 +2955,9 @@ export default {
     "equilibria": {
         id: "3091"
     },
-    "arweave": {
-        id: "35386" // cmcId
-    },
+    // "arweave": {
+    //     id: "35386", // cmcId // this is arweave fees, should not be linked to AO
+    // },
     "usdx": {
         id: "5234"
     },

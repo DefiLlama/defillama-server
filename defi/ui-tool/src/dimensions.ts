@@ -157,6 +157,7 @@ export async function storeAllWaitingRecords(ws: any) {
       console.error(e)
     }
   }
+  console.log('all records are stored');
   sendWaitingRecords(ws)
 }
 

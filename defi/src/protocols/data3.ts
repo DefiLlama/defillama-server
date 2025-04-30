@@ -31727,21 +31727,21 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Solana"],
-    oracles: ["Edge", "Pyth", "Chainlink"], // https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles
+    oracles: ["Edge"], // https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles
     oraclesBreakdown: [
       {
         name: "Edge",
-        type: "Aggregator",
+        type: "Primary",
         proof: ["https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles"]
       },
       {
         name: "Pyth",
-        type: "Aggregator",
+        type: "Fallback",
         proof: ["https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles"]
       },
       {
         name: "Chainlink",
-        type: "Aggregator",
+        type: "Fallback",
         proof: ["https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles"]
       },
     ],

@@ -2,7 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { METADATA_FILE, PG_CACHE_KEYS } from '../constants';
 import getEnv from '../env';
-import { log } from '@defillama/sdk'
+import { log, } from '@defillama/sdk'
+import { sliceIntoChunks } from '@defillama/sdk/build/util';
 export { PG_CACHE_KEYS }
 
 const CACHE_DIR = getEnv().api2CacheDir;
@@ -145,4 +146,42 @@ export async function deleteFromPGCache(key: string) {
   log('Deleting from db cache:', key)
   const id = getCacheFile(key)
   return deleteFileData(id)
+}
+
+
+// allTvlData is quite big, so we need to chunk it
+// into smaller pieces to avoid hitting the file size limit, json.stringify error
+export async function storeTvlCacheAllFile(data: any) {
+  if (typeof data !== 'object') {
+    throw new Error('Invalid data type. Expected an object.')
+  }
+  const { allTvlData = {}, ...restCache } = data
+  const  tvlEntries = Object.entries(allTvlData)
+  const chunkedTvlEntries = sliceIntoChunks(tvlEntries, 1000)
+  restCache.tvlEntryCount = chunkedTvlEntries.length
+
+  await writeToPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL, restCache)
+  let i = 0 
+  for (const chunk of chunkedTvlEntries) {
+    const key = `${PG_CACHE_KEYS.CACHE_DATA_ALL}-tvlChunk-${i}`
+    await writeToPGCache(key, chunk)
+    i++
+  }
+}
+
+export async function readTvlCacheAllFile() {
+  const restCache = await readFromPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL)
+  if (!restCache) return {}
+  const { tvlEntryCount } = restCache
+  const allTvlData: any = {}
+  for (let i = 0; i < tvlEntryCount; i++) {
+    const key = `${PG_CACHE_KEYS.CACHE_DATA_ALL}-tvlChunk-${i}`
+    const chunk = await readFromPGCache(key)
+    if (chunk) {
+      for (const [id, data] of chunk)
+        allTvlData[id] = data
+    }
+  }
+
+  return { ...restCache, allTvlData }
 }

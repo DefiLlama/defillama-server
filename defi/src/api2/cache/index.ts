@@ -6,7 +6,7 @@ import { getLatestProtocolItems, } from '../db';
 import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl, hourlyTvl, hourlyUsdTokensTvl, hourlyTokensTvl, } from "../../utils/getLastRecord";
 import { log } from '@defillama/sdk'
 import { ChainCoinGekcoIds } from "../../utils/normalizeChain";
-import { clearOldCacheFolders, getMetadataAll, readFromPGCache } from './file-cache'
+import { clearOldCacheFolders, getMetadataAll, readFromPGCache, readTvlCacheAllFile } from './file-cache'
 import { PG_CACHE_KEYS } from "../constants";
 import { Protocol } from "../../protocols/types";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
@@ -14,7 +14,7 @@ import PromisePool from "@supercharge/promise-pool";
 import { getProtocolAllTvlData } from "../utils/cachedFunctions";
 // import { getDimensionsCacheV2, } from "../utils/dimensionsUtils";
 import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
-import { roundNumbersInObject, RUN_TYPE } from "../utils";
+import { RUN_TYPE } from "../utils";
 
 export const cache: {
   metadata: {
@@ -77,7 +77,7 @@ export async function initCache({ cacheType = RUN_TYPE.API_SERVER }: { cacheType
   console.time('Cache initialized: ' + cacheType)
   await updateMetadata()
   if (cacheType === RUN_TYPE.API_SERVER) {
-    const _cache = (await readFromPGCache(PG_CACHE_KEYS.CACHE_DATA_ALL)) ?? {}
+    const _cache = await readTvlCacheAllFile()
     Object.entries(_cache).forEach(([k, v]: any) => (cache as any)[k] = v)
 
     // await getDimensionsCacheV2(cacheType) // initialize dimensions cache // no longer needed since we pre-generate the files
@@ -103,7 +103,6 @@ export async function initCache({ cacheType = RUN_TYPE.API_SERVER }: { cacheType
       updateAllTvlData(cacheType),
     ])
     addChildProtocolNames()
-    cache.allTvlData = roundNumbersInObject(cache.allTvlData)
   }
 
 

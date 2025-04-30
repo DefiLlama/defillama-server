@@ -31727,17 +31727,22 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Solana"],
-    oracles: ["Edge"], // https://station.jup.ag/guides/perpetual-exchange/how-it-works#oracle
+    oracles: ["Edge"], // https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles
     oraclesBreakdown: [
       {
         name: "Edge",
         type: "Primary",
-        proof: ["https://station.jup.ag/guides/perpetual-exchange/how-it-works#oracle"]
+        proof: ["https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles"]
       },
       {
         name: "Pyth",
         type: "Fallback",
-        proof: ["https://station.jup.ag/guides/perpetual-exchange/how-it-works#working-together-with-pyth-oracle"]
+        proof: ["https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles"]
+      },
+      {
+        name: "Chainlink",
+        type: "Fallback",
+        proof: ["https://support.jup.ag/hc/en-us/articles/19355326396700-Jupiter-Perpetuals-price-oracles"]
       },
     ],
     forkedFrom: [],
@@ -32461,7 +32466,7 @@ const data3: Protocol[] = [
     oracles: ["Pyth", "Chainlink"], //https://github.com/DefiLlama/DefiLlama-Adapters/pull/8865
     forkedFrom: [],
     module: "avantisfi/index.js",
-    twitter: "avantisfinance",
+    twitter: "avantisfi",
     audit_links: [
       "https://586275454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F76vAZHPcNKY10NzuKsC4%2Fuploads%2FQugrQyVYa7gCMa8FUQdy%2FAvantis_-_Zellic_Audit_Report.pdf?alt=media&token=6c659734-a0f8-4190-b020-bf0c9ce2d9ab",
       "https://586275454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F76vAZHPcNKY10NzuKsC4%2Fuploads%2Fap10BwpWhzNMappneMgr%2FAvantis%20audit%20report.pdf?alt=media&token=cf670d4b-e0ff-48b0-be2c-42a415c74e61",
@@ -47040,7 +47045,7 @@ const data3: Protocol[] = [
     module: "tradoor/index.js",
     twitter: "tradoor_io",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"], // https://docs.tradoor.io/tradoor-user-guide-v2/others/oracle-data
     audit_links: ["https://docs.tradoor.io/audits"],
     github: ["TonTradoor"],
     listedAt: 1717758106,

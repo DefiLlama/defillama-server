@@ -65478,7 +65478,7 @@ const data3: Protocol[] = [
     address: "0xe412D46a0fBD567332b7689cFFfE1F8A4f19A9d2",
     symbol: "ZVE",
     url: "https://zivoe.com/",
-    description: "Zivoe is a Real-World Asset (RWA) protocol that connects DeFi users to private credit opportunities in the consumer lending market. By pooling on-chain capital and lending to consumers via our network of origination/servicing partners, Zivoe helps underserved borrowers escape high-interest debt while generating sustainable returns for liquidity providers",
+    description: "Zivoe is a real-world asset (RWA) credit protocol that enables qualified participants to gain tokenized exposure to the consumer lending market",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/zivoe.jpg`,
     audits: "2",
@@ -65490,7 +65490,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "zivoe/index.js",
-    twitter: "landerfinance",
+    twitter: "ZivoeProtocol",
     audit_links: [
       "https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2024.04.25%20-%20Final%20-%20Zivoe%20Audit%20Report.pdf",
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Zivoe_Core_Contracts.pdf",

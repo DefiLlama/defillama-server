@@ -145,17 +145,25 @@ export function removeWaitingRecords(ws: any, ids: any) {
 }
 
 export async function storeAllWaitingRecords(ws: any) {
-  const allRecords = Object.entries(recordItems)
-  for (const [id, record] of allRecords) {
-    try {
 
+  const allRecords = Object.entries(recordItems)
+  // randomize the order of the records
+  allRecords.sort(() => Math.random() - 0.5)
+
+  const { errors } = await PromisePool
+    .withConcurrency(11)
+    .for(allRecords)
+    .process(async ([id, record]: any) => {
+      if (recordItems[id]) delete recordItems[id]  // sometimes users double click or the can trigger this multiple times
       const { storeRecordV2Function, storeDDBFunctions } = record as any
       if (storeRecordV2Function) await storeRecordV2Function()
       if (storeDDBFunctions?.length) await Promise.all(storeDDBFunctions.map((fn: any) => fn()))
       delete recordItems[id]
-    } catch (e) {
-      console.error(e)
-    }
+    })
+
+  if (errors.length > 0) {
+    console.log('Errors storing data in db:', errors.length)
+    console.error(errors)
   }
   console.log('all records are stored');
   sendWaitingRecords(ws)
@@ -179,7 +187,7 @@ function getRecordItem(record: any) {
   try {
     Object.entries(recordV2.data.aggregated).forEach(([key, data]: any) => {
       res[key] = humanizeNumber(data.value)
-      res['_'+key] = +data.value
+      res['_' + key] = +data.value
       if (data.chains) {
         Object.entries(data.chains).forEach(([chain, value]: any) => {
           res[`${key}_${chain}`] = humanizeNumber(value)

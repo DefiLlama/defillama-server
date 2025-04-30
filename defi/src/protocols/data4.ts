@@ -12840,7 +12840,7 @@ const data4: Protocol[] = [
   },
   {
     id: "6118",
-    name: "BetterSwap V2",
+    name: "BetterSwap",
     address: null,
     symbol: "-",
     url: "https://www.betterswap.io",

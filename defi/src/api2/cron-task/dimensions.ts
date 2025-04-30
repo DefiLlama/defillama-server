@@ -233,9 +233,13 @@ async function run() {
         continue;
       }
       const parentProtocol: any = { info, }
+      const childDimensionsInfo = childProtocols.map((child: any) => dimensionProtocolMap[child.info.id2] ?? dimensionProtocolMap[child.info.id]).map((i: any) => i)
 
       mergeChildRecords(parentProtocol, childProtocols)
-      addProtocolData({ protocolId: parentId, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records }) // compute summary data
+      addProtocolData({ protocolId: parentId, dimensionProtocolInfo: {
+        ...info,
+        cleanRecordsConfig: mergeSpikeConfigs(childDimensionsInfo)
+      }, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records }) // compute summary data
     }
 
     adapterData.summaries = summaries
@@ -839,6 +843,22 @@ function getPercentage(a: number, b: number) {
 type SpikeConfig = {
   allSpikesAreGenuine?: boolean
   whitelistedSpikeSet?: Set<string>
+}
+
+function mergeSpikeConfigs(childProtocols: any[]) {
+  const cleanRecordsConfig: any = {  }
+  childProtocols.forEach(({ cleanRecordsConfig: childConfig }: any = {}) => {
+    if (childConfig?.genuineSpikes === true) {
+      cleanRecordsConfig.genuineSpikes = true
+    } else if (typeof childConfig?.genuineSpikes === 'object') {
+      cleanRecordsConfig.genuineSpikes = cleanRecordsConfig.genuineSpikes ?? {}
+      Object.entries(childConfig.genuineSpikes).forEach(([key, value]: any) => {
+        if (!value) return;
+        cleanRecordsConfig.genuineSpikes[key] = value
+      })
+    }
+  })
+  return cleanRecordsConfig
 }
 
 function getSpikeConfig(protocol: any): SpikeConfig {

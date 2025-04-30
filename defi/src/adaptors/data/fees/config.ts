@@ -76,7 +76,8 @@ export default {
         parentId: "GMX",
         cleanRecordsConfig: {
             genuineSpikes: {
-                "1744070398": true
+                "1744070398": true,
+                "1743984000": true
             },
         }
     },

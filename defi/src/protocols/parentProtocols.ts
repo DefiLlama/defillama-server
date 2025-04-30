@@ -6227,6 +6227,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "27603",
     chains: [],
     twitter: "extrafi_io",
+    treasury: "extrafi.js",
   },
   {
     id: "parent#nirvana",

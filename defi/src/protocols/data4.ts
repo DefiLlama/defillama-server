@@ -8501,7 +8501,7 @@ const data4: Protocol[] = [
     name: "Aave-Chan",
     address: null,
     symbol: "-",
-    url: "https://www.aavechan.com/",
+    url: "https://apps.aavechan.com/",
     description:
       "Aave DAO Delegate & service provider",
     chain: "Ethereum",
@@ -12879,6 +12879,7 @@ const data4: Protocol[] = [
     twitter: "Unilendone",
     listedAt: 1746008832
   },
+  /*
   {
     id: "6120",
     name: "ACI", // whitelist url and can also have fees
@@ -12898,6 +12899,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "AaveChan",
   },
+  */
   {
     id: "6121",
     name: "Blend Backstop V2",

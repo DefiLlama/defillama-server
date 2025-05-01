@@ -7885,12 +7885,6 @@
       "decimals": "18",
       "symbol": "SolvBTC.m",
       "to": "coingecko#solv-btc"
-    },
-    "0xe85411c030fb32a9d8b14bbbc6cb19417391f711": {
-      "name": "suBTC",
-      "decimals": "18",
-      "symbol": "suBTC",
-      "to": "coingecko#bitcoin"
     }
   },
   "rpg": {

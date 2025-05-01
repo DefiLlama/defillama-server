@@ -3321,7 +3321,7 @@ export const chainCoingeckoIds = {
     twitter: "Neo_Blockchain",
     url: "https://x.neo.org/"
   },
-  "Gravity": {
+  "Gravity by Galxe": {
     geckoId: "g-token",
     symbol: "G",
     cmcId: null,
@@ -4387,6 +4387,7 @@ const newChainLabelMap = {
   "wax": "Wax",
   "unit0": "Unit Zero",
   "eos": "Vaulta",
+  "gravity": "Gravity by Galxe"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

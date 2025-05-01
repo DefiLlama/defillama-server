@@ -7575,6 +7575,11 @@
     }
   },
   "crossfi": {
+    "0x7bbce15166bbc008ec1adf9b3d6bba0602fce7ba": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    },
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#crossfi-2",
       "decimals": 18,

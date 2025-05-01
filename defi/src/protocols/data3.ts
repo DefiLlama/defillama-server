@@ -28684,7 +28684,6 @@ const data3: Protocol[] = [
     parentProtocol: "parent#desyn-protocol",
     tokensExcludedFromParent: {
       AILayer: ["BFBTC"],
-      Bitlayer: ["WBTC"],
     },
     listedAt: 1703178529,
   },

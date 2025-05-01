@@ -813,6 +813,11 @@
       "to": "coingecko#ripple-usd",
       "decimals": 18,
       "symbol": "RLUSD"
+    },
+    "0xfe4EcD930A1282325aeF8e946f17c0E25744de45": {
+      "to": "coingecko#ignition-fbtc",
+      "decimals": 8,
+      "symbol": "lfbtc-lorenzo-eth"
     }
   },
   "fantom": {

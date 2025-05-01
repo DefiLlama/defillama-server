@@ -3194,4 +3194,7 @@ export default {
     "1dex": {
         id: "6003"
     },
+    "eigenlayer": {
+        id: "3107"
+    }
 } as AdaptorsConfig

@@ -12972,5 +12972,27 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/quasar-finance/babydex/blob/main/Tower_BabyDEX%20_Smart_Contract_Security_Assessment_Report_Halborn.pdf"],
     listedAt: 1746089713,
   },
+  {
+    id: "6124",
+    name: "Subunit",
+    address: null,
+    symbol: "-",
+    url: "https://www.subunit.xyz",
+    description: "Subunit is an on-chain real-estate tokenization protocol on a mission to tokenize the $400T real-estate industry. Subunit enables USDC staking in its Subvault for fractional property exposure and pro-rata yields—unlocking real assets. Real value. Real liquidity. Subunit.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/subunit.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Base"],
+    module: "subunit/index.js",
+    twitter: "subunit_xyz",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1746099238
+  },
+
 ];
 export default data4;

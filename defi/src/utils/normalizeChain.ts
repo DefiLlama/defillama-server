@@ -4147,6 +4147,15 @@ export const chainCoingeckoIds = {
     twitter: "Haven1official",
     url: "https://haven1.org/",
   }, 
+  "Aleph Zero EVM": {
+    geckoId: "aleph-zero",
+    symbol: "AZERO",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 41455,
+    twitter: "Aleph__Zero",
+    url: "https://alephzero.org",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4332,6 +4341,7 @@ const chainLabelMap = {
   "mxczkevm": "Moonchain",
   "babylon": "Babylon Genesis",
   "lukso": "LUKSO",
+  "aleph_zero": "Aleph Zero EVM",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

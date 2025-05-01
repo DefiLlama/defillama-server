@@ -10155,7 +10155,10 @@ const data4: Protocol[] = [
     description: "USDO is collateralized by tokenized U.S. Treasury Bills and money market funds (such as OpenEden’s TBILL), from which USDO’s yield is generated. The reserves serve as the foundation for maintaining a minimum 100% collateralization ratio, meaning every USDO token in circulation is fully backed by equivalent assets",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/openeden-usdo.jpg`,
-    audits: "0",
+    audits: "2",
+    audit_links: [
+      "https://www.chainsecurity.com/security-audit/openeden-usdoexpress",
+    ],
     audit_note: null,
     gecko_id: null,
     cmcId: null,

@@ -6828,7 +6828,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#openeden",
     name: "OpenEden",
     url: "https://app.openeden.com/",
-    description: "A smart contract vault managed by a regulated entity to offer 24/7 and direct access to U.S. Treasury Bills",
+    description: "OpenEden is a real-world asset tokenization platform, building the bridge to a new financial system. OpenEden's mission is to unlock trillions by bringing real-world assets on-chain, seamlessly and securely.",
     logo: `${baseIconsUrl}/openeden.jpg`,
     gecko_id: null,
     cmcId: null,

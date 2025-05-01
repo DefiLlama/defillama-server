@@ -8254,8 +8254,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: [
-      "https://openeden.com/static/Verichains%20Public%20Audit%20Report%20-%20OpenEden%20Vault%20-%20310323.pdf",
-      "https://www.chainsecurity.com/security-audit/openeden-usdoexpress"
+      "https://openeden.com/Verichains%20Public%20Audit%20Report%20-%20OpenEden%20Vault%20-%20310323.pdf",
+      "https://hacken.io/audits/openeden/sca-openeden-vault-nov2024",
     ],
     parentProtocol: "parent#openeden",
     listedAt: 1685661527,

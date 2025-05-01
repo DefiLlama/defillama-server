@@ -2988,4 +2988,7 @@ export default {
     "goosefx_v2": {
         id: "5998"
     },
+    "sanctum-infinity": {
+        id: "4368"
+    },
 } as AdaptorsConfig

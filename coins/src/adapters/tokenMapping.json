@@ -6446,6 +6446,12 @@
     }
   },
   "core": {
+    "0xe85411c030fb32a9d8b14bbbc6cb19417391f711": {
+      "name": "suBTC",
+      "decimals": "18",
+      "symbol": "suBTC",
+      "to": "coingecko#bitcoin"
+    },
     "0x9410e8052bc661041e5cb27fdf7d9e9e842af2aa": {
       "to": "coingecko#free-bridged-solvbtcb-core",
       "decimals": 18,

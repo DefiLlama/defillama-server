@@ -2589,7 +2589,7 @@ const data: Protocol[] = [
     module: "enzyme/index.js",
     twitter: "enzymefinance",
     audit_links: ["https://audit.enzyme.finance/"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink" "RedStone"] //https://docs.enzyme.finance/general-info/risks-and-nuances#oracle-risk,
     governanceID: ["snapshot:enzymefinance.eth"],
     github: ["enzymefinance"],
   },

@@ -143,6 +143,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
 
 export function generateProtocolAdaptorsList2({ allImports, config, adapterType, otherATId2s }: { allImports: IImportsMap, config: AdaptorsConfig, adapterType?: AdapterType, otherATId2s: Set<string> }): ProtocolAdaptor[] {
   return Object.entries(allImports).map(([adapterKey, adapterObj]) => {
+    
     try {
       let list = protocolMap
       if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN)
@@ -274,6 +275,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         methodology: undefined,
         _stat_adapterVersion: adapterObj.module.default?.version ?? 1,
         _stat_runAtCurrTime: JSON.stringify(adapterObj.module.default ?? '').includes('runAtCurrTime'),
+        _stat_allowNegative: !!adapterObj.module.default?.allowNegativeValue,
       } as any
 
       if (singleVersionKey!) infoItem.versionKey = singleVersionKey

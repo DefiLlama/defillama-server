@@ -5895,9 +5895,10 @@ const parentProtocols: IParentProtocol[] = [
       "An ever-evolving DeFi protocol and financial system of the future by Instadapp",
     logo: `${baseIconsUrl}/fluid.png`,
     gecko_id: "instadapp",
-    cmcId: null,
+    cmcId: "10508",
     chains: [],
     twitter: "0xfluid",
+    treasury: "instadapp.js",
   },
   {
     id: "parent#solayer",

@@ -1,7 +1,6 @@
-import fetch from "node-fetch";
 import * as HyperExpress from "hyper-express";
 import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
-import { readRouteData, readFromPGCache, deleteFromPGCache, } from "../cache/file-cache";
+import { readRouteData, } from "../cache/file-cache";
 import sluggify from "../../utils/sluggify";
 import { cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { cachedCraftParentProtocolV2 } from "../utils/craftParentProtocolV2";
@@ -22,6 +21,7 @@ import { getChainDefaultChartData } from "../../getDefaultChart";
 import { getOverviewFileRoute, getDimensionProtocolFileRoute } from "./dimensions";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { chainNameToIdMap } from "../../utils/normalizeChain";
+import { setInternalRoutes } from "./internalRoutes";
 
 /* import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getActiveUsers } from "../../getActiveUsers";
@@ -195,29 +195,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     return successResponse(res, data, 60);
   }
 
-  router.get('/debug-pg/*', debugHandler)
-  router.delete('/debug-pg/*', debugHandler)
-
-  async function debugHandler(req: any, res: any) {
-    const fullPath = req.path;
-    const routerPath = fullPath.replace(routerBasePath + '/debug-pg', '');
-    console.log('debug-pg', routerPath)
-    try {
-
-      switch (req.method) {
-        case 'GET':
-          return res.json(await readFromPGCache(routerPath))
-        case 'DELETE':
-          await deleteFromPGCache(routerPath)
-          return res.json({ success: true })
-        default:
-          throw new Error('Unsupported method')
-      }
-    } catch (e) {
-      console.error(e);
-      return errorResponse(res, 'Internal server error', { statusCode: 500 })
-    }
-  }
+  setInternalRoutes(router, routerBasePath)
 }
 
 async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, useHourlyData = false, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true }: GetProtocolishOptions) {

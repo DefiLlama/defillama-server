@@ -111,6 +111,7 @@ export async function writeToPGCache(key: string, data: any) {
   return storeData(id, { id, timestamp: Math.floor(Date.now() / 1e3), data })
 }
 
+// it is no longer needed thanks to change to deleteFromPGCache
 // ANY CHANGE TO THIS VALUE NEEDS TO BE SYNCED WITH A CHANGE ON https://github.com/DefiLlama/born-to-llama/blob/master/src/commands/deleteCache.ts#L30 TOO
 let TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.9'  // update the version number to reset the cache
 if (process.env.LLAMA_RUN_LOCAL === 'true') {
@@ -144,6 +145,12 @@ export function getDailyTvlCacheId(id: string) {
 
 export async function deleteFromPGCache(key: string) {
   log('Deleting from db cache:', key)
+  let keySplit = key.split('/')
+  if (typeof keySplit[1] === 'string' && keySplit[1].startsWith('tvl-cache-daily')) {
+    keySplit[1] = TVL_CACHE_FOLDER
+    key = keySplit.join('/');
+    log("delete key changed to:", key)
+  }
   const id = getCacheFile(key)
   return deleteFileData(id)
 }

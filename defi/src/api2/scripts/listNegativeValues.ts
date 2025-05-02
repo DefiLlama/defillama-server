@@ -65,7 +65,8 @@ async function run() {
 
   console.log('Overall stats:')
   console.table(overallStats)
-  const fileName = `negativeValues-${new Date().toISOString()}.log`
+  const fileName = `negativeValues-${new Date().toISOString().split('T')[0]}-${Math.floor(Math.random() * 10000)}.log`
+  console.log('Saving to file:', fileName)
   fs.writeFileSync(fileName, JSON.stringify(protocolDataMap, null, 2))
 }
 

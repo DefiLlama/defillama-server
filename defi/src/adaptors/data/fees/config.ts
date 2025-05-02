@@ -3206,4 +3206,6 @@ export default {
     "boop-fun": {
         id: "6129"
     },
+    "bancor-v2": { id: "162"},
+    "bancor-v3": { id: "1995"},
 } as AdaptorsConfig

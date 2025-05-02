@@ -5,6 +5,7 @@ import { getDimensionsCacheV2, } from "../utils/dimensionsUtils";
 
 import { RUN_TYPE, } from "../utils";
 import { ADAPTER_TYPES } from '../../adaptors/handlers/triggerStoreAdaptorData';
+import * as fs from 'fs'
 
 function iterateAndGetNegativeValueInfo(info: any, negativeData: any[] = [], key = '') {
   if (typeof info === 'object') {
@@ -27,6 +28,7 @@ function iterateAndGetNegativeValueInfo(info: any, negativeData: any[] = [], key
 
 async function run() {
   const overallStats = [] as any
+  const protocolDataMap = {} as any
   // Go over all types
   const allCache = await getDimensionsCacheV2(RUN_TYPE.CRON)
   for (const adapterType of ADAPTER_TYPES) {
@@ -35,20 +37,26 @@ async function run() {
     const adapterTypeData = allCache[adapterType]
     const protocolIds = Object.keys(adapterTypeData.protocols ?? {})
     for (const protocolId of protocolIds) {
-      const { name, category, } = protocolMap[protocolId] ?? {}
+      const { name, category, _stat_allowNegative } = (protocolMap[protocolId] ?? {}) as any
+      if (_stat_allowNegative) continue;
       const protocolData = adapterTypeData.protocols[protocolId]?.records
       const negativeData = [] as any
       let negativeCount = 0
       Object.entries(protocolData).forEach(([timeS, record]: any) => {
         let previousCount = negativeData.length
         iterateAndGetNegativeValueInfo(record, negativeData, timeS)
-        if (negativeData.length > previousCount) negativeCount++
+        if (negativeData.length > previousCount) {
+          negativeCount++
+          if (!protocolDataMap[adapterType]) protocolDataMap[adapterType] = {}
+          if (!protocolDataMap[adapterType][protocolId]) protocolDataMap[adapterType][protocolId] = { name, category, badRecords: {} }
+          protocolDataMap[adapterType][protocolId].badRecords[timeS] = record
+        }
           
       })
       if (negativeData.length) {
         console.log('----------------------------\n\n')
         console.log(adapterType, protocolId, name, category, negativeCount)
-        overallStats.push({ adapterType, protocolId, name, category, negativeCount })
+        overallStats.push({ adapterType, protocolId, name, category, negativeCount, allowNegative: _stat_allowNegative })
         console.table(negativeData)
         console.log('\n\n----------------------------\n\n')
       }
@@ -57,6 +65,9 @@ async function run() {
 
   console.log('Overall stats:')
   console.table(overallStats)
+  const fileName = `negativeValues-${new Date().toISOString().split('T')[0]}-${Math.floor(Math.random() * 10000)}.log`
+  console.log('Saving to file:', fileName)
+  fs.writeFileSync(fileName, JSON.stringify(protocolDataMap, null, 2))
 }
 
 

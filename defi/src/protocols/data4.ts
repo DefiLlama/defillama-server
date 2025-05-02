@@ -13079,5 +13079,26 @@ const data4: Protocol[] = [
     audit_links: ["https://cdn.sundaeswap.finance/audits/metera.pdf"],
     listedAt: 1746126325
   },
+  {
+    id: "6129",
+    name: "boop.fun",
+    address: null,
+    symbol: "-",
+    url: "https://boop.fun/",
+    description: "A Solana-based memecoin launchpad that incentivizes influencers and creators with BOOP tokens for deploying tokens meeting market cap thresholds",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/boop.fun.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "boop-fun/index.js",
+    twitter: "boopdotfun",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1746147057
+  },
 ];
 export default data4;

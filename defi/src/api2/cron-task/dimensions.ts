@@ -236,10 +236,12 @@ async function run() {
       const childDimensionsInfo = childProtocols.map((child: any) => dimensionProtocolMap[child.info.id2] ?? dimensionProtocolMap[child.info.id]).map((i: any) => i)
 
       mergeChildRecords(parentProtocol, childProtocols)
-      addProtocolData({ protocolId: parentId, dimensionProtocolInfo: {
-        ...info,
-        cleanRecordsConfig: mergeSpikeConfigs(childDimensionsInfo)
-      }, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records }) // compute summary data
+      addProtocolData({
+        protocolId: parentId, dimensionProtocolInfo: {
+          ...info,
+          cleanRecordsConfig: mergeSpikeConfigs(childDimensionsInfo)
+        }, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records
+      }) // compute summary data
     }
 
     adapterData.summaries = summaries
@@ -468,22 +470,37 @@ async function run() {
         if (acumulativeRecordType) {
           const allKeys = Object.keys(protocol.records)
           allKeys.sort() // this is to ensure that we are processing the records in order
-          allKeys.forEach((timeS: string) => {
+          allKeys.forEach((timeS: string, idx: number) => {
             const { aggregated } = protocol.records[timeS]
             if (!aggregated[recordType]) return;
             const { value, chains } = aggregated[recordType]
-            const { value: totalValue, chains: chainsTotal } = aggregated[acumulativeRecordType] ?? { value: 0, chains: {} }
+             // if are not tracking the protocol's data from it's launch
+             // we accept the accumulative record as the total value if it exists in the first 10 records
+             // else, we dont trust the accumulative record and compute it using daily data
+            const canUseAccumulativeRecord = idx < 10 
+            let accumulativeRecord = { value: 0, chains: {} }
+
+            if (canUseAccumulativeRecord && aggregated[acumulativeRecordType])
+              accumulativeRecord = aggregated[acumulativeRecordType]
+
+            const { value: totalValue, chains: chainsTotal = {} } = accumulativeRecord
+
             if (!protocolSummary.totalAllTime) protocolSummary.totalAllTime = 0
             protocolSummary.totalAllTime += value
+
+
             if (totalValue)
               protocolSummary.totalAllTime = totalValue
+
+
+
             Object.entries(chains).forEach(([chain, value]: any) => {
               if (!protocolSummary.chainSummary![chain]) protocolSummary.chainSummary![chain] = initSummaryItem(true)
               const chainSummary = protocolSummary.chainSummary![chain] as ProtocolSummary
               if (!chainSummary.totalAllTime) chainSummary.totalAllTime = 0
               chainSummary.totalAllTime += value
-              if (chainsTotal[chain])
-                chainSummary.totalAllTime = chainsTotal[chain]
+              if ((chainsTotal as any)[chain])
+                chainSummary.totalAllTime = (chainsTotal as any)[chain]
             })
           })
         }
@@ -857,7 +874,7 @@ type SpikeConfig = {
 }
 
 function mergeSpikeConfigs(childProtocols: any[]) {
-  const cleanRecordsConfig: any = {  }
+  const cleanRecordsConfig: any = {}
   childProtocols.forEach(({ cleanRecordsConfig: childConfig }: any = {}) => {
     if (childConfig?.genuineSpikes === true) {
       cleanRecordsConfig.genuineSpikes = true

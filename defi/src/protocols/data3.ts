@@ -56218,7 +56218,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["Chainlink"], // https://x.com/chainlink/status/1918395597352255792
     forkedFrom: [],
     module: "elixir/index.js",
     twitter: "elixir",

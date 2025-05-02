@@ -769,7 +769,18 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
       if (idx > 7 && currentValue > 1e7 && !allSpikesAreGenuine && !whitelistedSpikeSet.has(timeS)) {
         const surroundingKeys = getSurroundingKeysExcludingCurrent(allKeys, idx)
         const highestCloseValue = surroundingKeys.map(i => records[i]?.aggregated?.[key]?.value ?? 0).filter(i => i).reduce((a, b) => Math.max(a, b), 0)
-        if (highestCloseValue > 0 && currentValue > 10 * highestCloseValue) {
+        let isSpike = false 
+        if (highestCloseValue > 0) {
+          let currentValueisHigh = currentValue > 1e6 // 1 million
+          switch (key) {
+            case 'dv':
+            case 'dnv': currentValueisHigh = currentValue > 3e8; break; // 300 million
+          }
+          let spikeRatio = currentValueisHigh ? 3 : 10
+          isSpike = currentValue > spikeRatio * highestCloseValue
+        }
+
+        if (isSpike) {
           if (NOTIFY_ON_DISCORD)
             spikeRecords.push([adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x'].map(i => i + ' ').join(' '))
           sdk.log('Spike detected (removing it)', adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')

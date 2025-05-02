@@ -3203,4 +3203,7 @@ export default {
     "binance-staked-eth": {
         id: "2914"
     },
+    "boop-fun": {
+        id: "6129"
+    },
 } as AdaptorsConfig

@@ -2993,5 +2993,8 @@ export default {
     },
     "pepe-dex": {
         id: "6086"
-    }
+    },
+    "boop-fun": {
+        id: "6129"
+    },
 } as AdaptorsConfig

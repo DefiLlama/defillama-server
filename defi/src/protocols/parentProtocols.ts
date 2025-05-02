@@ -5899,6 +5899,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "0xfluid",
     treasury: "instadapp.js",
+    governanceID: ["snapshot:instadapp-gov.eth"],
   },
   {
     id: "parent#solayer",

@@ -47136,7 +47136,6 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "instadapp-lite/index.js",
     twitter: "Instadapp",
-    governanceID: ["snapshot:instadapp-gov.eth"],
     parentProtocol: "parent#fluid",
   },
   {

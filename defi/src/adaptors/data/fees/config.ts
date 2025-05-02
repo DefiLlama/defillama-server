@@ -3199,5 +3199,8 @@ export default {
     },
     "kittypunch": {
         id: "5203"
-    }
+    },
+    "binance-staked-eth": {
+        id: "2914"
+    },
 } as AdaptorsConfig

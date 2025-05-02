@@ -73,14 +73,14 @@ async function main() {
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: [] });
       // await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
 
-      if (protocolName) runningSet.add(protocolName)
+      // if (protocolName) runningSet.add(protocolName)
 
 
       await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', })
       staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
 
-      if (protocolName) runningSet.delete(protocolName)
+      // if (protocolName) runningSet.delete(protocolName)
 
       console.log('FAILED: ', protocol?.name, e?.message)
       failed++
@@ -115,13 +115,13 @@ async function main() {
 
     timeTaken += timeTakenI
     const avgTimeTaken = timeTaken / ++i
-    if (protocolName) runningSet.delete(protocolName)
+    // if (protocolName) runningSet.delete(protocolName)
 
-    console.log('                   Still running:', Array.from(runningSet).join(', '), '...')
+    // console.log('                   Still running:', Array.from(runningSet).join(', '), '...')
     console.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped} | failed: ${failed}`)
   }
 
-  const runningSet = new Set()
+  // const runningSet = new Set()
 
   const normalAdapterRuns = PromisePool
     .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 32))

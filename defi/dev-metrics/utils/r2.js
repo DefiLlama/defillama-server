@@ -79,12 +79,21 @@ async function setCache(govType, project, cache) {
   }
 }
 
-async function getTomlFile() {
+async function getTomlFileV1() {
   return getCache('config', 'tomlData')
 }
 
-async function setTomlFile(cache) {
+async function setTomlFileV1(cache) {
   return setCache('config', 'tomlData', cache)
+}
+
+// v2 is for the new format of records kept in electric repo
+async function getTomlFileV2() {
+  return getCache('config', 'tomlDataV2')
+}
+
+async function setTomlFileV2(cache) {
+  return setCache('config', 'tomlDataV2', cache)
 }
 
 async function getTwitterOverviewFile() {
@@ -137,8 +146,10 @@ async function testFetchWithoutCache(govType, project) {
 module.exports = {
   getCache,
   setCache,
-  getTomlFile,
-  setTomlFile,
+  getTomlFileV1,
+  setTomlFileV1,
+  getTomlFileV2,
+  setTomlFileV2,
   saveChartData,
   getChartData,
   getTwitterOverviewFile,

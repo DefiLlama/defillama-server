@@ -3196,5 +3196,8 @@ export default {
     },
     "eigenlayer": {
         id: "3107"
+    },
+    "kittypunch": {
+        id: "5203"
     }
 } as AdaptorsConfig

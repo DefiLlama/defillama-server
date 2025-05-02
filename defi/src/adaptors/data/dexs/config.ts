@@ -2991,4 +2991,7 @@ export default {
     "sanctum-infinity": {
         id: "4368"
     },
+    "pepe-dex": {
+        id: "6086"
+    }
 } as AdaptorsConfig

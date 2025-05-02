@@ -13143,5 +13143,26 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1746193727
   },
+  {
+    id: "6132",
+    name: "XFI Native Staking Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://xficonsole.com/",
+    description: "Native Staking is a protocol that enables users to stake XFI connecting EVM and Cosmos parts of CrossFI Ecosystem",
+    chain: "CrossFi",
+    logo: `${baseIconsUrl}/xfi-native-staking-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["CrossFi"],
+    module: "xfi-native-staking/index.js",
+    twitter: null,
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1746202669
+  },
 ];
 export default data4;

@@ -3,6 +3,11 @@ import { AdaptorsConfig } from "../types";
 export default {
   "jupiter-aggregator": {
     id: "2141",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1741564800": true,
+      },
+    },
   },
   "dexible": {
     disabled: true,
@@ -80,12 +85,18 @@ export default {
     cleanRecordsConfig: {
       genuineSpikes: {
         1674172800: true,
-        1680739200: true
+        1680739200: true,
+        1678492800: true,
       }
-  }
+    }
   },
   "cowswap": {
     id: "2643",
+    cleanRecordsConfig: {
+      genuineSpikes: {
+        "1722816000": true,
+      },
+    },
   },
   "kyberswap": {
     id: "3982",

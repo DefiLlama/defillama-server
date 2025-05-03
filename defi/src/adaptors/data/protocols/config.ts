@@ -19,7 +19,12 @@ export default {
         },
         cleanRecordsConfig: {
             genuineSpikes: {
-                1665446400: true
+                1603670400: true,
+                1665446400: true,
+                1661990400: true,
+                1670630400: true,
+                1725580800: true,
+                1722816000: true,
             }
         },
     },

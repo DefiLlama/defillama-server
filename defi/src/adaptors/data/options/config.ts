@@ -107,5 +107,8 @@ export default {
     },
     "olab": {
         id: "5648"
-    }
+    },
+    "paradex": {
+        id: "3648"
+    },
 } as AdaptorsConfig

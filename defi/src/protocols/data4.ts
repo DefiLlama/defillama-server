@@ -13105,7 +13105,7 @@ const data4: Protocol[] = [
     name: "Sentinel Trader Bot",
     address: "solana:GVeaBeaHZDJHji4UTzaPJgB1PRiVeCV2EaArjYyiwNdT",
     symbol: "SENTBOT",
-    url: "https://sentineltradebot.com",
+    url: "https://www.sentineltraderbot.com/",
     description: "Sentinel Trader Bot is a next-generation automated trading platform that leverages artificial intelligence and blockchain technology",
     chain: "Solana",
     logo: `${baseIconsUrl}/sentinel-trader-bot.jpg`,

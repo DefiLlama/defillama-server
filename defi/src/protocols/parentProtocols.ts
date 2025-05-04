@@ -7051,6 +7051,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "YakaFinance",
   },
+  {
+    id: "parent#torch",
+    name: "Torch Finance",
+    url: "https://torch.finance",
+    description: "Torch is the core liquidity layer for stablecoins on the TON blockchain. Built with a highly optimized Curve-style StableSwap AMM, Torch enables deep, low-slippage swaps between major stablecoins. At its center is tgUSD, a cross-chain yield-bearing stablecoin 1:1 backed by USDT, designed for both DeFi and real-world payments.",
+    logo: `${baseIconsUrl}/torch-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TorchTon",
+    github: ["torch-core"],
+  }
 ];
 
 export default parentProtocols;

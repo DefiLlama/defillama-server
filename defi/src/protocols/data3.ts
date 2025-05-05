@@ -54704,7 +54704,7 @@ const data3: Protocol[] = [
       },
       {
         name: "Pyth",
-        type: "Secondary",
+        type: "Primary",
         proof: ["https://docs.helixapp.com/trading/perpetuals"]
       },
     ],

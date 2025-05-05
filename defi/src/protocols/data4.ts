@@ -7880,7 +7880,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Launchpad",
-    chains: ["Ethereum","Arbitrum","Base","Optimism","Polygon","Avalanche","Blast","Binance","Fantom","Polygon zkEVM"],
+    chains: ["Ethereum","Arbitrum","Base","Optimism","Polygon","Avalanche","Blast","Binance"],
     forkedFrom: [],
     module: "BitbondSales/index.js",
     audit_links: ["https://skynet.certik.com/projects/bitbond"],

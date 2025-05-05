@@ -3001,5 +3001,8 @@ export default {
     },
     "pancakeswap-infinity": {
         id: "6133"
-    }
+    },
+    "voltage-v4": {
+        id: "5754"
+    },
 } as AdaptorsConfig

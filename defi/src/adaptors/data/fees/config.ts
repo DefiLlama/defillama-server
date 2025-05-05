@@ -3210,5 +3210,11 @@ export default {
     "bancor-v3": { id: "1995"},
     "pancakeswap-infinity": {
         id: "6133"
-    }
+    },
+    "catex": {
+        id: "6052"
+    },
+    "voltage-v4": {
+        id: "5754"
+    },
 } as AdaptorsConfig

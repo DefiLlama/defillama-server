@@ -127,6 +127,7 @@ export const additional: { [chain: string]: string[] } = {
     "0xff12470a969Dd362EB6595FFB44C82c959Fe9ACc", // USDa
   ],
   unichain: ["0x078D782b760474a361dDA0AF3839290b0EF57AD6"],
+  reya: ["0x162B78e827A8DB8173D13735C08c8D40Cb5cCdAB"],
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [

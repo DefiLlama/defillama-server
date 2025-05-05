@@ -1190,8 +1190,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/homora-v2.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "alpha-finance",
-    cmcId: "7232",
+    gecko_id: null, // added to stella id:3148
+    cmcId: null, // added to stella id:3148
     category: "Leveraged Farming",
     chains: ["Ethereum", "Avalanche", "Fantom", "Optimism"],
     module: "alpha-homora/index.js",
@@ -15084,6 +15084,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Empire_DEX",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1636439712,
+    deadUrl: true
   },
   /*
 {
@@ -19195,6 +19196,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BrincFi",
     audit_links: ["https://www.certik.com/projects/brincfi"],
     listedAt: 1639098493,
+    deadUrl: true
   },
   {
     id: "1001",
@@ -19343,7 +19345,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "0",
     audit_note: null,
     gecko_id: "safeswap-token",
-    cmcId: null,
+    cmcId: "15021",
     category: "Dexs",
     chains: ["Polygon", "Ethereum"],
     module: "safeswap/index.js",

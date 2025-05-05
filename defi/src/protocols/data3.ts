@@ -49393,12 +49393,13 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "common-wealth",
     cmcId: "31440",
-    category: "Chain",
+    category: "Launchpad",
     chains: ["Base"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "commonwealth/index.js",
     twitter: "joincommonwlth",
+    listedAt: 1731198987
   },
   {
     id: "4840",
@@ -60732,7 +60733,7 @@ const data3: Protocol[] = [
     ],
     listedAt: 1731160419
   },
-  {
+  /*{ Remove duplicate
     id: "5336",
     name: "Common Wealth",
     address: "base:0x99b2b1a2adb02b38222adcd057783d7e5d1fcc7d",
@@ -60755,7 +60756,7 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: [],
     listedAt: 1731198987
-  },
+  },*/
   {
     id: "5337",
     name: "Royco Protocol",

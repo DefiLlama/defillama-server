@@ -7,6 +7,7 @@ import { RUN_TYPE, } from "../utils";
 import { ADAPTER_TYPES } from '../../adaptors/handlers/triggerStoreAdaptorData';
 import * as fs from 'fs'
 
+const badWords = ['undefined', 'immutablex', 'chiliz', 'haqq', 'bitlayer', 'superposition', 'archway-1' ]
 
 async function run() {
   const overallStats = [] as any
@@ -22,13 +23,14 @@ async function run() {
       const { name, category, } = (protocolMap[protocolId] ?? {}) as any
       const protocolData = adapterTypeData.protocols[protocolId]?.records
       let undefinedCount = 0
+      const badwordSet = new Set()
       Object.entries(protocolData).forEach(([timeS, record]: any) => {
 
         const recordString = JSON.stringify(record)
-        if (timeS=== '2025-05-03' && protocolId === '4831') {
-          console.log(recordString, recordString.includes('undefined'))
-        }
-        if (recordString.includes('undefined')) {
+        const wordsFound = badWords.filter((word) => recordString.includes(word))
+
+        if (wordsFound.length) {
+          wordsFound.forEach((word) => badwordSet.add(word))
           undefinedCount++
           if (!protocolDataMap[adapterType]) protocolDataMap[adapterType] = {}
           if (!protocolDataMap[adapterType][protocolId]) protocolDataMap[adapterType][protocolId] = { name, category, badRecords: {} }
@@ -39,7 +41,7 @@ async function run() {
       if (undefinedCount) {
         console.log('----------------------------\n\n')
         console.log(adapterType, protocolId, name, category, undefinedCount)
-        overallStats.push({ adapterType, protocolId, name, category, undefinedCount })
+        overallStats.push({ adapterType, protocolId, name, category, undefinedCount, badwordSet })
         console.log('\n\n----------------------------\n\n')
       }
     }

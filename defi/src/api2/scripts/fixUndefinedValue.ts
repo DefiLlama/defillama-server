@@ -2,12 +2,67 @@ import * as fs from 'fs';
 import { initializeTVLCacheDB } from '../db';
 import { TABLES } from '../db';
 
-const file = 'undefined-2025-05-05-8152.log'
+const file = 'undefined-2025-05-05-7943.log'
 
 const fixInfo: any = {
   fees: {
-    '4831': 'lightlink_phoenix'
-  }
+    '4831': {
+      'undefined': 'lightlink_phoenix',
+    },
+    '447': {
+      'immutablex': 'imx',
+    },
+    '1892': {
+      'chiliz': 'chz',
+    },
+    '2251': {
+      'haqq': 'islm',
+    },
+    '5474': {
+      'bitlayer': 'btr',
+      'archway-1': 'archway',
+    },
+    'chain#chiliz': {
+      'chiliz': 'chz',
+    },
+    'chain#bitlayer': {
+      'bitlayer': 'btr',
+    },
+    'chain#superposition': {
+      'superposition': 'spn',
+    },
+  },
+  dexs: {
+    '4590': {
+      'bitlayer': 'btr',
+    },
+  },
+  aggregators: {
+    '1282': {
+      'bitlayer': 'btr',
+    },
+    '4691': {
+      'bitlayer': 'btr',
+    },
+    '4926': {
+      'bitlayer': 'btr',
+    },
+    '5474': {
+      'bitlayer': 'btr',
+      'archway-1': 'archway',
+    },
+  },
+  options: {
+    '4630': {
+      'bitlayer': 'btr',
+    },
+  },
+  'bridge-aggregators': {
+    '5474': {
+      'bitlayer': 'btr',
+      'archway-1': 'archway',
+    },
+  },
 }
 const filePath = `./${file}`
 const fileData = fs.readFileSync(filePath, 'utf8')
@@ -15,15 +70,17 @@ const parsedData = JSON.parse(fileData)
 
 let fixedDataAll = {} as any
 for (const [adapterType, protocols] of Object.entries(parsedData)) {
-  for (const [id, data ] of Object.entries(protocols as any)) {
+  for (const [id, data] of Object.entries(protocols as any)) {
     const fixValue = fixInfo[adapterType]?.[id]
     if (!fixValue) {
       delete (protocols as any)[id]
-    }    else {
-      const fixedData = fixUndefinedValues(data, fixValue);
-      (protocols as any)[id] = fixedData
+    } else {
+      let fixedData = data
+      for (const [origValue, fixedValue] of Object.entries(fixValue)) {
+        fixedData = fixUndefinedValues(fixedData, origValue, fixedValue);
+        (protocols as any)[id] = fixedData
+      }
     }
-    
   }
   fixedDataAll[adapterType] = protocols
 }
@@ -32,9 +89,10 @@ fs.writeFileSync(`fixed-${file}`, JSON.stringify(fixedDataAll, null, 2), 'utf8')
 console.log('Fixed data saved to fixed-', file)
 
 
-function fixUndefinedValues(data: any, fixValue: any) {
+function fixUndefinedValues(data: any, origValue: string, fixValue: any) {
+  fixValue = '"' + fixValue + '"'
   const fixedDataStr = JSON.stringify(data) // Deep clone the data to avoid mutating the original object
-  const replaced = fixedDataStr.replace(/undefined/g, fixValue)
+  const replaced = fixedDataStr.replace(new RegExp('"'+origValue+'"', 'g'), fixValue)
   return JSON.parse(replaced)
 }
 
@@ -58,7 +116,7 @@ async function run() {
         const matchingRecord = await TABLES.DIMENSIONS_DATA.findOne({
           where: { id, timeS, type: adapterType },
         });
-    
+
         if (matchingRecord) {
           await matchingRecord.update({ data });
           console.log(`Updated record with id: ${id} ${pInfo.name}, timeS: ${timeS}, adapterType: ${adapterType}`);
@@ -66,7 +124,7 @@ async function run() {
           console.log(`No matching record found for id: ${id}, timeS: ${timeS}, adapterType: ${adapterType}`);
         }
       }
-    
+
     }
   }
 }

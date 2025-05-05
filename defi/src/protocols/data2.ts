@@ -6584,6 +6584,7 @@ const data2: Protocol[] = [
       "https://github.com/SCV-Security/PublicReports/blob/main/CW/St4k3h0us3/St4k3h0us3%20-%20Steak%20Contracts%20Audit%20Review%20-%20%20v1.0.pdf",
     ],
     listedAt: 1650320654,
+    deadUrl: true
   },
   {
     id: "1659",
@@ -17270,7 +17271,7 @@ const data2: Protocol[] = [
     audits: "2",
     audit_note: null,
     gecko_id: "flash-stake",
-    cmcId: null,
+    cmcId: "8627",
     category: "Yield",
     chains: ["Ethereum"],
     module: "flashstake/index.js",
@@ -19309,7 +19310,7 @@ const data2: Protocol[] = [
     audits: "0",
     audit_note: null,
     gecko_id: "ion",
-    cmcId: null,
+    cmcId: "23547",
     category: "Synthetics",
     chains: ["Osmosis"],
     module: "ion-dao/index.js",

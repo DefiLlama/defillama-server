@@ -21,6 +21,7 @@ import { normalizeDimensionChainsMap } from "../../adaptors/utils/getAllChainsFr
 import { sluggifyString } from "../../utils/sluggify"
 import { AdaptorRecordType } from '../../adaptors/db-utils/adaptor-record';
 import { storeAppMetadata } from './appMetadata';
+import { sendMessage } from '../../utils/discord';
 
 // const startOfDayTimestamp = toStartOfDay(new Date().getTime() / 1000)
 
@@ -76,6 +77,20 @@ async function run() {
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)
 
+  if (NOTIFY_ON_DISCORD) {
+    if (spikeRecords.length) {
+      await sendMessage(`
+        Spikes detected and removed:
+      ${spikeRecords.join('\n')}
+        `, process.env.DIM_CHANNEL_WEBHOOK!)
+    }
+    if (invalidDataRecords.length) {
+      await sendMessage(`
+        Invalid records detected and removed:
+      ${invalidDataRecords.join('\n')}
+        `, process.env.DIM_CHANNEL_WEBHOOK!)
+    }
+  }
 
   // store what all metrics are available for each protocol
   const protocolSummaryMetadata: { [key: string]: Set<string> } = {}
@@ -218,9 +233,15 @@ async function run() {
         continue;
       }
       const parentProtocol: any = { info, }
+      const childDimensionsInfo = childProtocols.map((child: any) => dimensionProtocolMap[child.info.id2] ?? dimensionProtocolMap[child.info.id]).map((i: any) => i)
 
       mergeChildRecords(parentProtocol, childProtocols)
-      addProtocolData({ protocolId: parentId, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records }) // compute summary data
+      addProtocolData({
+        protocolId: parentId, dimensionProtocolInfo: {
+          ...info,
+          cleanRecordsConfig: mergeSpikeConfigs(childDimensionsInfo)
+        }, isParentProtocol: true, adapterType, skipChainSummary: true, records: parentProtocol.records
+      }) // compute summary data
     }
 
     adapterData.summaries = summaries
@@ -449,22 +470,37 @@ async function run() {
         if (acumulativeRecordType) {
           const allKeys = Object.keys(protocol.records)
           allKeys.sort() // this is to ensure that we are processing the records in order
-          allKeys.forEach((timeS: string) => {
+          allKeys.forEach((timeS: string, idx: number) => {
             const { aggregated } = protocol.records[timeS]
             if (!aggregated[recordType]) return;
             const { value, chains } = aggregated[recordType]
-            const { value: totalValue, chains: chainsTotal } = aggregated[acumulativeRecordType] ?? { value: 0, chains: {} }
+             // if are not tracking the protocol's data from it's launch
+             // we accept the accumulative record as the total value if it exists in the first 10 records
+             // else, we dont trust the accumulative record and compute it using daily data
+            const canUseAccumulativeRecord = idx < 10 
+            let accumulativeRecord = { value: 0, chains: {} }
+
+            if (canUseAccumulativeRecord && aggregated[acumulativeRecordType])
+              accumulativeRecord = aggregated[acumulativeRecordType]
+
+            const { value: totalValue, chains: chainsTotal = {} } = accumulativeRecord
+
             if (!protocolSummary.totalAllTime) protocolSummary.totalAllTime = 0
             protocolSummary.totalAllTime += value
+
+
             if (totalValue)
               protocolSummary.totalAllTime = totalValue
+
+
+
             Object.entries(chains).forEach(([chain, value]: any) => {
               if (!protocolSummary.chainSummary![chain]) protocolSummary.chainSummary![chain] = initSummaryItem(true)
               const chainSummary = protocolSummary.chainSummary![chain] as ProtocolSummary
               if (!chainSummary.totalAllTime) chainSummary.totalAllTime = 0
               chainSummary.totalAllTime += value
-              if (chainsTotal[chain])
-                chainSummary.totalAllTime = chainsTotal[chain]
+              if ((chainsTotal as any)[chain])
+                chainSummary.totalAllTime = (chainsTotal as any)[chain]
             })
           })
         }
@@ -709,6 +745,11 @@ run()
   .then(storeAppMetadata)
   .then(() => process.exit(0))
 
+const spikeRecords = [] as any[]
+const invalidDataRecords = [] as any[]
+
+const NOTIFY_ON_DISCORD = process.env.DIM_CRON_NOTIFY_ON_DISCORD === 'true'
+
 const accumulativeRecordTypeSet = new Set(Object.values(ACCOMULATIVE_ADAPTOR_TYPE))
 // fill all missing data with the last available data
 function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, metadata, }: { records: IJSON<any>, info?: any, adapterType: any, metadata: any, versionKey?: string }) {
@@ -730,6 +771,8 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
     const values = dataKeys.map(key => record.aggregated?.[key]?.value ?? 0)
     const improbableValue = 5e10 // 50 billion
     if (values.some((i: any) => i > improbableValue)) {
+      if (NOTIFY_ON_DISCORD)
+        invalidDataRecords.push([adapterType, metadata?.id, info?.name, timeS, values.find((i: any) => i > improbableValue)].map(i => i + ' ').join(' '))
       sdk.log('Invalid value found (removing it)', adapterType, metadata?.id, info?.name, timeS, values.find((i: any) => i > improbableValue))
       delete records[timeS]
       return;
@@ -743,7 +786,27 @@ function getProtocolRecordMapWithMissingData({ records, info = {}, adapterType, 
       if (idx > 7 && currentValue > 1e7 && !allSpikesAreGenuine && !whitelistedSpikeSet.has(timeS)) {
         const surroundingKeys = getSurroundingKeysExcludingCurrent(allKeys, idx)
         const highestCloseValue = surroundingKeys.map(i => records[i]?.aggregated?.[key]?.value ?? 0).filter(i => i).reduce((a, b) => Math.max(a, b), 0)
-        if (highestCloseValue > 0 && currentValue > 10 * highestCloseValue) {
+        let isSpike = false 
+        if (highestCloseValue > 0) {
+          let currentValueisHigh = currentValue > 1e6 // 1 million
+          switch (key) {
+            case 'dv':
+            case 'dnv': currentValueisHigh = currentValue > 3e8; break; // 300 million
+          }
+          let spikeRatio = currentValueisHigh ? 3 : 10
+          isSpike = currentValue > spikeRatio * highestCloseValue
+        }
+
+        if (isSpike) {
+
+          // delay till 7th May to notify on discord for spikes with ratio < 8
+          const may7thTimestamp = +new Date('2023-05-07T00:00:00Z')
+          let notifyOnDiscord = currentValue / highestCloseValue > 8
+          if (+Date.now() > may7thTimestamp)
+            notifyOnDiscord = true
+          
+          if (NOTIFY_ON_DISCORD && notifyOnDiscord)
+            spikeRecords.push([adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x'].map(i => i + ' ').join(' '))
           sdk.log('Spike detected (removing it)', adapterType, metadata?.id, info?.name, timeS, timeSToUnix(timeS), key, Number(currentValue / 1e6).toFixed(2) + 'm', Number(highestCloseValue / 1e6).toFixed(2) + 'm', Math.round(currentValue * 100 / highestCloseValue) / 100 + 'x')
           delete records[timeS]
           return;
@@ -815,6 +878,22 @@ function getPercentage(a: number, b: number) {
 type SpikeConfig = {
   allSpikesAreGenuine?: boolean
   whitelistedSpikeSet?: Set<string>
+}
+
+function mergeSpikeConfigs(childProtocols: any[]) {
+  const cleanRecordsConfig: any = {}
+  childProtocols.forEach(({ cleanRecordsConfig: childConfig }: any = {}) => {
+    if (childConfig?.genuineSpikes === true) {
+      cleanRecordsConfig.genuineSpikes = true
+    } else if (typeof childConfig?.genuineSpikes === 'object') {
+      cleanRecordsConfig.genuineSpikes = cleanRecordsConfig.genuineSpikes ?? {}
+      Object.entries(childConfig.genuineSpikes).forEach(([key, value]: any) => {
+        if (!value) return;
+        cleanRecordsConfig.genuineSpikes[key] = value
+      })
+    }
+  })
+  return cleanRecordsConfig
 }
 
 function getSpikeConfig(protocol: any): SpikeConfig {

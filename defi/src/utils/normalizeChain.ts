@@ -576,13 +576,13 @@ export const chainCoingeckoIds = {
     twitter: "NEARProtocol",
     url: "https://near.org/"
   },
-  "EOS": {
+  "Vaulta": {
     geckoId: "eos",
     github: ['EOSIO', 'eosnetworkfoundation', 'AntelopeIO'],
     symbol: "EOS",
     cmcId: "1765",
-    twitter: "EOSNetworkFDN",
-    url: "https://eosnetwork.com/"
+    twitter: "Vaulta_",
+    url: "https://eosnetwork.com/resources/resource-type/vaulta/"
   },
   "Songbird": {
     geckoId: "songbird",
@@ -3103,7 +3103,7 @@ export const chainCoingeckoIds = {
     url: "https://aelf.com/",
     github: ["aelfProject"],
   },
-  "Lukso": {
+  "LUKSO": {
     geckoId: "lukso-token-2",
     symbol: "LYX",
     cmcId: "27622",
@@ -3321,7 +3321,7 @@ export const chainCoingeckoIds = {
     twitter: "Neo_Blockchain",
     url: "https://x.neo.org/"
   },
-  "Gravity": {
+  "Gravity by Galxe": {
     geckoId: "g-token",
     symbol: "G",
     cmcId: null,
@@ -4129,6 +4129,33 @@ export const chainCoingeckoIds = {
     url: "https://www.moonchain.com/",
     chainId: 18686
   }, 
+  "Babylon Genesis": {
+    geckoId: "babylon",
+    symbol: "BABY",
+    cmcId: null,
+    categories: ["Cosmos"],
+    twitter: "babylonlabs_io",
+    github: ["babylonlabs-io"],
+    url: "https://babylonlabs.io"
+  },
+  "Haven1": {
+    geckoId: "haven1",
+    symbol: "H1",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 8811,
+    twitter: "Haven1official",
+    url: "https://haven1.org/",
+  }, 
+  "Aleph Zero EVM": {
+    geckoId: "aleph-zero",
+    symbol: "AZERO",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 41455,
+    twitter: "Aleph__Zero",
+    url: "https://alephzero.org",
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -4312,6 +4339,10 @@ const chainLabelMap = {
   "ao": "AO",
   "plume_mainnet": "Plume Mainnet",
   "mxczkevm": "Moonchain",
+  "babylon": "Babylon Genesis",
+  "lukso": "LUKSO",
+  "aleph_zero": "Aleph Zero EVM",
+  "gravity": "Gravity"
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -4356,6 +4387,8 @@ const newChainLabelMap = {
   "move": "Movement", 
   "wax": "Wax",
   "unit0": "Unit Zero",
+  "eos": "Vaulta",
+  "gravity": "Gravity by Galxe"
 } as { [key: string]: string }
 
 const allChainLabelMap = {

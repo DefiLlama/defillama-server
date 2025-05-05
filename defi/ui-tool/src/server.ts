@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 process.on('uncaughtException', (err) => {
   console.error('Uncaught Exception:', err);
 })
@@ -19,7 +21,11 @@ console.log('WebSocket server running on port 8080');
 // Start the React app
 console.log('Opening tool on the browser... (click here if it does not open automatically: http://localhost:5001)');
 const npmPath = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-spawn(npmPath, ['run', 'start'], { cwd: __dirname });
+if(process.platform === 'win32') {
+  spawn(npmPath, ['run', 'start'], { cwd: __dirname, windowsVerbatimArguments: true, shell: true });
+} else {
+  spawn(npmPath, ['run', 'start'], { cwd: __dirname });
+}
 
 const originalConsoleLog = console.log
 const originalConsoleError = console.error

@@ -295,6 +295,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   base: {
     WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E",
     WANDER: "0xef0fd52e65ddcdc201e2055a94d2abff6ff10a7a",
+    AETX: "0xfe0c0b15798b8c9107cd4aa556a87eb031263e8b",
   },
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6"

@@ -119,6 +119,11 @@ const layerzero = async (): Promise<void> => {
 
   const staticTokens: { [chain: string]: string[] } = {
     morph: ["0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34", "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7"],
+    unichain: [
+      "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "0xc3eACf0612346366Db554C991D7858716db09f58",
+      "0x7DCC39B4d1C53CB31e1aBc0e358b43987FEF80f7",
+    ],
   };
 
   Object.keys(staticTokens).map((chain: string) => {

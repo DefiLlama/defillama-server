@@ -22,7 +22,7 @@ import optimism from "./optimism";
 import polygon from "./polygon";
 // import solana from "./solana";
 // import xdai from "./xdai";
-import cosmos from "./cosmos";
+// import cosmos from "./cosmos";
 import synapse from "./synapse";
 import base from "./base";
 import neon_evm from "./neon_evm";
@@ -93,7 +93,7 @@ export const bridges = [
   // polygon,
   // solana
   //xdai
-  cosmos,
+  // cosmos,
   synapse,
   base,
   neon_evm,

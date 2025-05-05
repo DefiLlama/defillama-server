@@ -1742,24 +1742,25 @@ const data2: Protocol[] = [
   },
   {
     id: "1453",
-    name: "EOS REX",
+    name: "Vaulta REX",
+    previousNames: ["EOS REX"],
     address: "eos:eos",
     symbol: "EOS",
     url: "https://eosauthority.com/rex/statistics?network=eos",
     description:
       "REX (Resource Exchange) used for lending and borrowing CPU & NET resources and earning system protocol income (RAM fees, Name Bids, CPU/Net loans, PowerUp fees).",
     chain: "EOS",
-    logo: `${baseIconsUrl}/eos-rex.png`,
+    logo: `${baseIconsUrl}/vaulta-rex.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "eos",
-    cmcId: "1765",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["EOS"],
     oracles: [],
     forkedFrom: [],
     module: "rex/index.js",
-    twitter: "EosNFoundation",
+    twitter: "Vaulta_",
     language: "C++",
     listedAt: 1645579151,
   },
@@ -10003,9 +10004,28 @@ const data2: Protocol[] = [
     category: "Yield",
     chains: ["Sui", "Aptos"],
     oraclesByChain: {
-      sui: ["Supra"], // https://github.com/DefiLlama/defillama-server/pull/5169
-      aptos: ["Pyth"], // https://doc-en.mole.fi/security/oracle
+      Sui: ["Supra", "Pyth"], //https://doc-en.mole.fi/security/oracle
+      Aptos: ["Pyth"],
     },
+    oraclesBreakdown: [
+      {
+        name: "Supra",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9651"],
+        chains: [
+          {chain: "Sui"},
+        ]
+      },
+      {
+        name: "Pyth",
+        type: "Aggregator",
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/9651"],
+        chains: [
+          {chain: "Sui"},
+          {chain: "Aptos"},
+        ]
+      }
+    ],
     forkedFrom: [],
     module: "mole/index.js",
     twitter: "moledefi",
@@ -11434,14 +11454,14 @@ const data2: Protocol[] = [
   },
   {
     id: "1867",
-    name: "Sonic",
+    name: "Sonic ICP", // previously Sonic
     address: "icp:lcyu6-siaaa-aaaah-adk2a-cai",
     symbol: "SONIC",
     url: "https://sonic.ooo",
     description:
       "Swap tokens, earn fees as a liquidity provider, and build on the Internet Computer's Automated Market Maker (AMM)",
     chain: "ICP",
-    logo: `${baseIconsUrl}/sonic.jpg`,
+    logo: `${baseIconsUrl}/sonic-icp.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "sonic-2",
@@ -14450,7 +14470,7 @@ const data2: Protocol[] = [
   {
     id: "1997",
     name: "Morpho Compound",
-    address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
+    address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://compound.morpho.org/?network=mainnet",
     description:
@@ -18476,7 +18496,7 @@ const data2: Protocol[] = [
   {
     id: "2168",
     name: "Morpho Aave",
-    address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
+    address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://aavev2.morpho.org/?network=mainnet",
     description:
@@ -18937,14 +18957,14 @@ const data2: Protocol[] = [
       arbitrum: ["Chainlink"],
       polygon_zkevm: ["Chainlink"],
       xlayer: ["Chainlink"],
-      mantle: ["Chronicle"], // https://github.com/DefiLlama/defillama-server/pull/7767
-      berachain:["Chronicle"] // https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract
+      mantle: ["Chronicle"],
+      berachain: ["RedStone"],
     },
     oraclesBreakdown: [
       {
         name: "Chainlink",
         type: "Primary",
-        proof: ["https://github.com/DefiLlama/defillama-server/pull/7767"],
+        proof: ["https://github.com/DefiLlama/defillama-server/pull/7767","https://app.dolomite.io/balances"],
         chains: [
           {chain: "Arbitrum"},
           {chain: "Polygon zkEVM"},
@@ -18954,16 +18974,26 @@ const data2: Protocol[] = [
       {
         name: "Chronicle",
         type: "Primary",
-        proof: ["https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract"], // check oracles using oracleByToken fn
+        proof: ["https://beratrail.io/address/0xa150Ef2D5827dB283321D15d62d5D07fB41d636E/contract/80094/readContract"], 
         chains: [
           {chain: "Mantle"},
-          {chain: "Berachain"}
         ]
       },
       {
         name: "RedStone",
-        type: "Fallback",
-        proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general"],
+        type: "Primary",
+        proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general","https://app.dolomite.io/balances"],
+        chains: [
+          {chain: "Berachain"}
+        ]
+      },
+      {
+        name: "Chainsight",
+        type: "Secondary",
+        proof: ["https://docs.dolomite.io/smart-contract-addresses/module-general","https://app.dolomite.io/balances"],
+        chains: [
+          {chain: "Berachain"}
+        ]
       }
     ],
     audit_links: [
@@ -28727,13 +28757,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2610",
-    name: "ZORA",
+    name: "ZORA Marketplace",  // previous ZORA , cant use the previous name field cause parent will have that name
     address: null,
     symbol: "-",
     url: "https://market.zora.co",
     description: "The NFT Marketplace Protocol",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/zora.jpg`,
+    logo: `${baseIconsUrl}/zora-marketplace.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -28743,10 +28773,9 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
-    twitter: "ourZORA",
+    twitter: "zora",
+    parentProtocol: "parent#zora",
     listedAt: 1677604484,
-    governanceID: ["snapshot:zora.eth"],
-    github: ["ourzora"],
   },
   {
     id: "2611",

@@ -356,6 +356,37 @@ const configs: { [adapter: string]: Config } = {
     address: "0x8c213ee79581Ff4984583C6a801e5263418C4b86",
     confidence: 1,
   },
+  M: {
+    rate: async ({ api }) => {
+      const [assets, supply] = await Promise.all([
+        api.call({
+          abi: "erc20:balanceOf",
+          target: "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b",
+          params: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+        }),
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+        }),
+      ]);
+      return supply / assets;
+    },
+    chain: "ethereum",
+    underlying: "0x437cc33344a0B27A429f795ff6B469C72698B291",
+    address: "0x866A2BF4E572CbcF37D5071A7a58503Bfb36be1b",
+  },
+  mHYPE: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:exchangeRateToUnderlying",
+        target: "0xdAbB040c428436d41CECd0Fb06bCFDBAaD3a9AA8",
+      });
+      return rate / 1e18;
+    },
+    chain: "hyperliquid",
+    underlying: "0x0d01dc56dcaaca66ad901c959b4011ec",
+    address: "0xdAbB040c428436d41CECd0Fb06bCFDBAaD3a9AA8",
+  },
 };
 
 export async function derivs(timestamp: number) {

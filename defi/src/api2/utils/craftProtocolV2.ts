@@ -22,6 +22,7 @@ export type CraftProtocolV2Common = {
 
 export type CraftProtocolV2Options = CraftProtocolV2Common & {
   protocolData: Protocol;
+  getCachedProtocolData?: Function;
 }
 
 export async function craftProtocolV2({
@@ -30,6 +31,7 @@ export async function craftProtocolV2({
   useHourlyData,
   skipAggregatedTvl,
   restrictResponseSize,
+  getCachedProtocolData = getProtocolAllTvlData,
 }: CraftProtocolV2Options) {
   const { misrepresentedTokens = false, hallmarks, methodology, deprecated, ...restProtocolData } = protocolData as any
 
@@ -38,7 +40,7 @@ export async function craftProtocolV2({
   const isDeadProtocolOrHourly = !!protocolData.deadFrom || useHourlyData
 
   if (!useHourlyData)
-    protocolCache = await getProtocolAllTvlData(protocolData, true)
+    protocolCache = await getCachedProtocolData(protocolData, true)
 
   let [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
     !useHourlyData ? null : getAllProtocolItems(hourlyTvl, protocolData.id),

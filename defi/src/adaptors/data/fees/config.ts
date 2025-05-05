@@ -73,7 +73,13 @@ export default {
     },
     "gmx": {
         "id": "337",
-        parentId: "GMX"
+        parentId: "GMX",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1744070398": true,
+                "1743984000": true
+            },
+        }
     },
     "lido": {
         "id": "182"
@@ -2949,9 +2955,9 @@ export default {
     "equilibria": {
         id: "3091"
     },
-    "arweave": {
-        id: "35386" // cmcId
-    },
+    // "arweave": {
+    //     id: "35386", // cmcId // this is arweave fees, should not be linked to AO
+    // },
     "usdx": {
         id: "5234"
     },
@@ -3107,4 +3113,99 @@ export default {
     "ostium": {
         id: "4932"
     },
+    "lista-lending": {
+        id: "6056"
+    },
+    "zora-chain": {
+        id: "7777777" // chainId
+    },
+    "zora-sofi": {
+        id: "6069" 
+    },
+    "yearn-ether": {
+        id: "3973" 
+    },
+    "yearn-finance": {
+        id: "113" 
+    },
+    "compound-v3": {
+        id: "2088" 
+    },
+    "amnis-finance": {
+        id: "3667" 
+    },
+    "kittypunch-v3": {
+        id: "6051"
+    },
+    "sonicxswap": {
+        id: "6083"
+    },
+    "m0": {
+        id: "5241"
+    },
+    "bucket-protocol": {
+        id: "3206"
+    },
+    "oogabooga": {
+        id: "5880"
+    },
+    "typus-dov": {
+        id: "2946"
+    },
+    "typus-perp": {
+        id: "6014"
+    },
+    "typus-safu": {
+        id: "5152"
+    },
+    "echo": {
+        id: "6091"
+    },
+    "sanctum": {
+        id: "3388"
+    },
+    "lifi": {
+        id: "6093"
+    },
+    "humanfi": {
+        id: "6094"
+    },
+    "launchlab": {
+        id: "6074"
+    },
+    "sanctum-infinity": {
+        id: "4368"
+    },
+    "sanctum-validator-lsts": {
+        id: "4371"
+    },
+    "socket": {
+        id: "6097"
+    },
+    "mosaic-amm": {
+        id: "6098"
+    },
+    "lobbyfi": {
+        id: "6109"
+    },
+    "assetchain-swap": {
+        id: "5324"
+    },
+    "1dex": {
+        id: "6003"
+    },
+    "eigenlayer": {
+        id: "3107"
+    },
+    "kittypunch": {
+        id: "5203"
+    },
+    "binance-staked-eth": {
+        id: "2914"
+    },
+    "boop-fun": {
+        id: "6129"
+    },
+    "bancor-v2": { id: "162"},
+    "bancor-v3": { id: "1995"},
 } as AdaptorsConfig

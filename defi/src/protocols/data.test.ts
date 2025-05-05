@@ -6,6 +6,7 @@ import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewCha
 import protocols from "./data";
 import parentProtocols from "./parentProtocols";
 import treasuries from "./treasury";
+import operationalCosts from "../operationalCosts/daos";
 const fs = require("fs");
 
 test("Dimensions: no repeated ids", async () => {
@@ -20,6 +21,12 @@ test("Dimensions: no repeated ids", async () => {
     }
   }
 })
+
+test("operational expenses: script has been run", async () => {
+  const outputData = JSON.parse(fs.readFileSync(`${__dirname}/../operationalCosts/output/expenses.json`, 'utf8'));
+
+  expect(outputData).toEqual(operationalCosts)
+});
 
 test("all the dynamic imports work", async () => {
   await Promise.all(protocols.map(importAdapter))
@@ -271,7 +278,8 @@ test("no surprise category", async () => {
     'Volume Boosting',
     'DOR',
     'Collateral Management',
-    'Meme'
+    'Meme',
+    'Private Investment Platform'
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

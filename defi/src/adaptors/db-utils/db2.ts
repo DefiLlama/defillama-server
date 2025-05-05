@@ -92,12 +92,25 @@ export async function getAllItemsUpdatedAfter({ adapterType, timestamp }: { adap
   const label = `getAllItemsUpdatedAfter(${adapterType})`
   console.time(label)
 
-  const result: any = await Tables.DIMENSIONS_DATA.findAll({
-    where: { type: adapterType, updatedat: { [Op.gte]: timestamp * 1000 } },
-    attributes: ['data', 'timestamp', 'id', 'timeS'],
-    raw: true,
-    order: [['timestamp', 'ASC']],
-  })
+  let result: any = []
+  let offset = 0
+  const limit = 30000
+
+  while (true) {
+    const batch: any = await Tables.DIMENSIONS_DATA.findAll({
+      where: { type: adapterType, updatedat: { [Op.gte]: timestamp * 1000 } },
+      attributes: ['data', 'timestamp', 'id', 'timeS'],
+      raw: true,
+      order: [['timestamp', 'ASC']],
+      offset,
+      limit,
+    })
+
+    result = result.concat(batch)
+    sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${batch.length} total fetched: ${result.length} items updated after ${new Date(timestamp * 1000)}`)
+    if (batch.length < limit) break
+    offset += limit
+  }
 
   sdk.log(`getAllItemsUpdatedAfter(${adapterType}) found ${result.length} items updated after ${new Date(timestamp * 1000)}`)
   console.timeEnd(label)

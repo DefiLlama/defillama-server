@@ -59,7 +59,7 @@ export type IStoreAdaptorDataHandlerEvent = {
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
 export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
-  const defaultMaxConcurrency = 10
+  const defaultMaxConcurrency = 21
   let { timestamp = timestampAnHourAgo, adapterType, protocolNames, maxConcurrency = defaultMaxConcurrency, isDryRun = false, isRunFromRefillScript = false,
     runType = 'default', yesterdayIdSet = new Set(), todayIdSet = new Set(),
     throwError = false, checkBeforeInsert = false,
@@ -306,7 +306,7 @@ export const handler2 = async (event: IStoreAdaptorDataHandlerEvent) => {
 
       for (const [version, adapter] of adaptersToRun) { // the version is the key for the record (like uni v2) not the version of the adapter
         const chainBlocks = {} // WARNING: reset chain blocks for each adapter, sharing this between v1 & v2 adapters that have different end timestamps have nasty side effects
-        const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion })
+        const runAdapterRes = await runAdapter(adapter, endTimestamp, chainBlocks, module, version, { adapterVersion, _module: adaptor })
         if (noDataReturned) noDataReturned = runAdapterRes.length === 0
 
         const recordWithTimestamp = runAdapterRes.find((r: any) => r.timestamp)

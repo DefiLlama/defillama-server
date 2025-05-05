@@ -17,7 +17,9 @@ export default {
         cleanRecordsConfig: {
             genuineSpikes: {
                 1718755200: true,
-                1722297600: true
+                1722297600: true,
+                1722816000: true,
+                1738540800: true,
             }
         }
     },
@@ -275,7 +277,6 @@ export default {
         }
     },
     "baryon": {
-        "enabled": false,
         "id": "1950"
     },
     "cherryswap": {
@@ -881,13 +882,7 @@ export default {
         "id": "2299"
     },
     "cetus": {
-        parentId: "Cetus",
         "id": "2289",
-        protocolsData: {
-            "cetus": {
-                "id": "2289",
-            }
-        }
     },
     "opx-finance": {
         "id": "2256"
@@ -2913,7 +2908,7 @@ export default {
         id: "5966"
     },
     "justbet": {
-        id:"5950"
+        id: "5950"
     },
     "katana-v3": {
         id: "5972"
@@ -2925,7 +2920,7 @@ export default {
         id: "5982"
     },
     "verus": {
-        id: "5601" 
+        id: "5601"
     },
     "haedal": {
         id: "5784"
@@ -2959,5 +2954,49 @@ export default {
     },
     "flowx-v3": {
         id: "4582"
-    }
+    },
+    "zora-sofi": {
+        id: "6069"
+    },
+    "launchlab": {
+        id: "6074",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1745539200": true,
+            }
+        }
+    },
+    "beezie": {
+        id: "6075"
+    },
+    "kittypunch-v3": {
+        id: "6051"
+    },
+    "sonicxswap": {
+        id: "6083"
+    },
+    "1dex": {
+        id: "6003"
+    },
+    "swaps-io": {
+        id: "6092"
+    },
+    "humanfi": {
+        id: "6094"
+    },
+    "mosaic-amm": {
+        id: "6098"
+    },
+    "goosefx_v2": {
+        id: "5998"
+    },
+    "sanctum-infinity": {
+        id: "4368"
+    },
+    "pepe-dex": {
+        id: "6086"
+    },
+    "boop-fun": {
+        id: "6129"
+    },
 } as AdaptorsConfig

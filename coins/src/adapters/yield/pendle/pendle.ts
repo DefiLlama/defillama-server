@@ -459,12 +459,17 @@ export default async function getTokenPrices(
       const customDecimals: { [SY: string]: number } = {
         "0xec30e55b51d9518cfcf5e870bcf89c73f5708f72": 8,
         "0xd5cf704dc17403343965b4f9cd4d7b5e9b20cc52": 8,
+        "0x068def65b9dbaff02b4ee54572a9fa7dfb188ea3": 3,
       };
+
+      const exceptions: string[] = [
+        "0x84ecc6be573f15991736131f924f7bf571ed3b60",
+      ];
 
       const price =
         (underlying.price * exchangeRates[m]) /
         10 **
-          (SYs[i] in customDecimals
+          (SYs[i] in customDecimals && exceptions.includes(m.toLowerCase())
             ? customDecimals[SYs[i]]
             : underlying.decimals);
 

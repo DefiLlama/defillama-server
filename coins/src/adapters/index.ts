@@ -139,7 +139,9 @@ export default {
   concentrator: require("./yield/concentrator"),
   liquidly: require("./yield/liquidly"),
   cyclex: require("./rwa/cyclex"),
-  icETH: require("./yield/icETH"),
+  indexCoop: require("./yield/indexCoop"),
   siloV2: require("./yield/misc4626"),
   convexStaked: require("./yield/convexStaked"),
+  folksFinance: require("./moneyMarkets/folks-finance"),
+  xlpt: require("./markets/xlpt"),
 };

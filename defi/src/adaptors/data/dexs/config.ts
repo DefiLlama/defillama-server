@@ -2999,4 +2999,7 @@ export default {
     "boop-fun": {
         id: "6129"
     },
+    "pancakeswap-infinity": {
+        id: "6133"
+    }
 } as AdaptorsConfig

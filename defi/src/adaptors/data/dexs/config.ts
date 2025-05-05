@@ -2397,7 +2397,12 @@ export default {
         id: "4670"
     },
     "pendle": {
-        id: "382"
+        id: "382",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1746230400": true,
+            }
+        }
     },
     "seiyan-fun": {
         id: "5019"

@@ -3208,4 +3208,7 @@ export default {
     },
     "bancor-v2": { id: "162"},
     "bancor-v3": { id: "1995"},
+    "pancakeswap-infinity": {
+        id: "6133"
+    }
 } as AdaptorsConfig

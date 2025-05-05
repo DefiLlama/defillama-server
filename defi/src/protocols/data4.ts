@@ -8112,7 +8112,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://rfx.exchange/",
     description:
-      "The first derivatives exchange with smart liquidity. Maximise your yield. Create your own trading pairs. Built on ZkSync Era",
+      "RFX is a decentralized perpetuals exchange that maximizes capital efficiency for Traders and LPs through permissionless markets, native pair trading, and smart liquidity vaults.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/rfx-exchange-v2.jpg`,
     audits: "2",

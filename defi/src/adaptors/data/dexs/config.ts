@@ -3015,4 +3015,10 @@ export default {
     "voltage-v4": {
         id: "5754"
     },
+    "initia-dex": {
+        id: "6138"
+    },
+    "titan": {
+        id: "6076"
+    },
 } as AdaptorsConfig

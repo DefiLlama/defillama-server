@@ -4127,6 +4127,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "CIAN_protocol",
+    oracles: ["Chainlink"],
     github: ["cian-ai"],
   },
   {

@@ -1323,6 +1323,16 @@
     }
   },
   "rsk": {
+    "0xCC0966D8418d412c599A6421b760a847eB169A8c": {
+      "decimals": "18",
+      "symbol": "xSolvBTC",
+      "to": "coingecko#solv-protocol-solvbtc-bbn"
+    },
+    "0x541fd749419ca806a8bc7da8ac23d346f2df8b77": {
+      "to": "coingecko#solv-btc",
+      "decimals": 18,
+      "symbol": "SolvBTC"
+    },
     "0xaf368c91793cb22739386dfcbbb2f1a9e4bcbebf": {
       "decimals": "6",
       "symbol": "USDT",

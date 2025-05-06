@@ -20083,7 +20083,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Basis trading",
+    category: "Basis Trading",
     chains: ["Arbitrum", "Mantle"],
     oracles: [],
     forkedFrom: [],

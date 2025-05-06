@@ -13229,5 +13229,27 @@ const data4: Protocol[] = [
     oracles: [],
     listedAt: 1746445991
   },
+  {
+    id: "6136",
+    name: "Yala",
+    address: "0x",
+    symbol: "Yala",
+    url: "https://www.yala.org/",
+    description: "Bitcoin-backed stablecoin protocol connecting Bitcoin's liquidity across blockchains",
+    chain: "Ethereum",
+    logo: "https://www.yala.org/yala.jpg",
+    audits: "2",
+    audit_note: null,
+    audit_links: ["https://docs.yala.org/security-audits"],
+    gecko_id: null,
+    cmcId: "35877",
+    category: "Lending",
+    chains: ["Bitcoin", "Ethereum", "Solana"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "yala/index.js",
+    twitter: "https://x.com/yalaorg",
+    treasury: "",
+},
 ];
 export default data4;

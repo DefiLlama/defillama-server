@@ -12965,7 +12965,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Dexs",
     chains: ["Babylon Genesis"],
-    module: "TowerDEX/factoryTvl.js",
+    module: "TowerDEX/index.js",
     twitter: "Tower",
     forkedFrom: [],
     oracles: [],

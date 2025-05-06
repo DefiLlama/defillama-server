@@ -2037,7 +2037,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Solv Protocol",
     url: "https://solv.finance/",
     description:
-      "Solv Protocol is a leading Bitcoin staking platform, allowing Bitcoin holders to unlock the full potential of over $1 trillion in Bitcoin assets. By providing secure, transparent staking infrastructure and access to liquid staking tokens (LSTs) like SolvBTC.BBN, Solv is paving the way for Bitcoin’s role in the future of decentralized finance.",
+      "Solv Protocol is a premier on-chain platform offering global Bitcoin holders a full suite of Bitcoin financial services, including lending, liquid staking, yield generation and fund management, all powered by the largest on-chain Bitcoin Reserve.\n\nBy bridging the gap between Traditional Finance (TradFi), Centralized Finance (CeFi), and Decentralized Finance (DeFi), Solv unlocks the full potential of over $1 trillion in Bitcoin.",
     logo: `${baseIconsUrl}/solv-protocol.png`,
     gecko_id: null,
     cmcId: null,

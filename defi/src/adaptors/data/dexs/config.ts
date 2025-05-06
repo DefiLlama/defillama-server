@@ -1952,7 +1952,12 @@ export default {
     },
     "phoenix": {
         displayName: "Phoenix",
-        "id": "3170"
+        "id": "3170",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            }
+        }
     },
     "ryze": {
         "id": "3907"

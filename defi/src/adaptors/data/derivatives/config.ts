@@ -208,7 +208,12 @@ export default {
         },
     },
     "aevo": {
-        "id": "2797"
+        "id": "2797",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1722816000": true,
+            }
+        }
     },
     "grizzly-trade": {
         disabled: true,

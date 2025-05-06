@@ -4178,6 +4178,15 @@ export const chainCoingeckoIds = {
     twitter: "campnetworkxyz",
     url: "https://www.campnetwork.xyz/",
   }, 
+  "Initia": {
+    geckoId: "initia",
+    symbol: "INIT",
+    cmcId: "33120",
+    categories: null,
+    twitter: "initia",
+    url: "https://initia.xyz", 
+    github: ["initia-labs"],
+  }, 
 } as unknown as ChainCoinGekcoIds
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
